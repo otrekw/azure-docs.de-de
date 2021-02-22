@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: a7b51138abe6d8e97f55ceae11d4cf13b9ebc136
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 096549c37c9f1feb04cd9214e1835956dae53735
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820601"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516837"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Untersuchen eines verdächtigen IoT-Geräts
 
@@ -39,12 +39,12 @@ So suchen Sie Ihren Log Analytics-Arbeitsbereich für die Datenspeicherung
 1. Öffnen Sie Ihren IoT-Hub.
 1. Wählen Sie unter **Sicherheit** die Option **Einstellungen** und dann **Datensammlung** aus.
 1. Ändern Sie die Konfigurationsdetails für Ihren Log Analytics-Arbeitsbereich.
-1. Klicken Sie auf **Speichern**.
+1. Wählen Sie **Speichern** aus.
 
 Gehen Sie nach der Konfiguration wie folgt vor, um auf Daten zuzugreifen, die in Ihrem Log Analytics-Arbeitsbereich gespeichert sind:
 
-1. Wählen Sie in Ihrem IoT-Hub eine Defender für IoT-Warnung aus, und klicken Sie darauf.
-1. Klicken Sie auf **Further investigation** (Weitere Untersuchung).
+1. Wählen Sie in Ihrem IoT-Hub eine Defender für IoT-Warnung aus.
+1. Wählen Sie **Further investigation** (Weitere Untersuchung) aus.
 1. Wählen Sie **To see which devices have this alert click here and view the DeviceId column** (Klicken Sie hier, und zeigen Sie die Spalte „DeviceId“ an, um die Geräte mit dieser Warnung anzuzeigen).
 
 ## <a name="investigation-steps-for-suspicious-iot-devices"></a>Untersuchungsschritte für verdächtige IoT-Geräte
@@ -55,7 +55,7 @@ Informationen zu den ersten Schritten zum Untersuchen von Warnungen und Aktivit�
 
 ### <a name="related-alerts"></a>Zugehörige Warnungen
 
-Verwenden Sie die folgende KQL-Abfrage, um zu ermitteln, ob im gleichen Zeitraum andere Warnungen ausgelöst wurden:
+Mithilfe der folgenden KQL-Abfrage können Sie ermitteln, ob in ungefähr demselben Zeitraum andere Warnungen ausgelöst wurden:
 
   ```
   let device = "YOUR_DEVICE_ID";
@@ -182,7 +182,7 @@ Nutzen Sie die Abfrageergebnisse, um Folgendes zu ermitteln:
 
 - Wurden auf dem Gerät verdächtige Prozesse ausgeführt?
 - Wurden Prozesse von entsprechenden Benutzern ausgeführt?
-- Haben Ausführungen über die Befehlszeile die richtigen und erwarteten Argumente enthalten?
+- Waren in Ausführungen über die Befehlszeile die richtigen und erwarteten Argumente enthalten?
 
 ## <a name="next-steps"></a>Nächste Schritte
 

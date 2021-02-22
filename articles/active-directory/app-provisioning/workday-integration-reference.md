@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/18/2021
+ms.date: 02/09/2021
 ms.author: chmutali
-ms.openlocfilehash: f260bca196839a091ae7d12be6d5f85912bf92db
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2b1a43ee6b13d32c0eaed92538cf9c25405e061b
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255983"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104330"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Integration der Azure Active Directory-Bereitstellung mit Workday
 
@@ -448,6 +448,21 @@ Angenommen, Sie möchten Zertifizierungen abrufen, die einem Benutzer zugeordnet
 Angenommen, Sie möchten die *Bereitstellungsgruppen* abrufen, die einem Mitarbeiter zugewiesen sind. Diese Informationen sind im Dataset mit den *Kontobereitstellungsdaten* enthalten. Verwenden Sie den folgenden XPATH-Ausdruck, um dieses Dataset in der *Get_Workers*-Antwort abzurufen: 
 
 `wd:Worker/wd:Worker_Data/wd:Account_Provisioning_Data/wd:Provisioning_Group_Assignment_Data[wd:Status='Assigned']/wd:Provisioning_Group/text()`
+
+## <a name="handling-different-hr-scenarios"></a>Umgang mit verschiedenen HR-Szenarien
+
+### <a name="retrieving-international-job-assignments-and-secondary-job-details"></a>Abrufen von Details zu zugewiesenen internationalen Aufträgen und sekundären Aufträgen
+
+Standardmäßig ruft der Workday-Connector Attribute ab, die dem primären Auftrag des Workers zugeordnet sind. Der Connector unterstützt auch das Abrufen *zusätzlicher Auftragsdaten*, die den zugewiesenen internationalen Aufträgen oder sekundären Aufträgen zugeordnet sind. 
+
+Führen Sie die folgenden Schritte aus, um Attribute abzurufen, die den zugewiesenen internationalen Aufträgen zugeordnet sind: 
+
+1. Legen Sie die Workday-Verbindungs-URL fest. Es wird die Workday-Webdienst-API-Version 30.0 oder höher verwendet. Legen Sie die [richtigen XPATH-Werte](workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30) in Ihrer Workday-Bereitstellungs-App entsprechend fest. 
+1. Verwenden Sie den Selektor `@wd:Primary_Job=0` für den `Worker_Job_Data`-Knoten, um das richtige Attribut abzurufen. 
+   * **Beispiel 1:** Verwenden Sie zum Abrufen von `SecondaryBusinessTitle` den XPATH `wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Worker_Job_Data[@wd:Primary_Job=0]/wd:Position_Data/wd:Business_Title/text()`.
+   * **Beispiel 2:** Verwenden Sie zum Abrufen von `SecondaryBusinessLocation` den XPATH `wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Worker_Job_Data[@wd:Primary_Job=0]/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Location_Reference/@wd:Descriptor`.
+
+ 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

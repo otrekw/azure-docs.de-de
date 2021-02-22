@@ -74,7 +74,7 @@
           href: concepts/telephony-sms/concepts.md
         - name: Telefoniekonzepte
           href: concepts/telephony-sms/telephony-concept.md
-        - name: Telefonnummerntypen in Azure Communication Services
+        - name: Telefonnummerntypen
           href: concepts/telephony-sms/plan-solution.md
         - name: Infrastrukturanforderungen für die SIP-Schnittstelle
           href: concepts/telephony-sms/sip-interface-infrastructure.md

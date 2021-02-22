@@ -1,30 +1,30 @@
 ---
 title: Anzeigen von Warnungen
-description: Zeigen Sie Warnungen nach verschiedenen Kategorien an, und verwenden Sie Suchfunktionen, um nach bestimmten Warnungen zu suchen.
+description: Zeigen Sie Warnungen nach verschiedenen Kategorien an, und verwenden Sie Suchfunktionen zum Suchen nach bestimmten Warnungen.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: bce83e11a0d4567d37e78388445c108385ca9a61
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 6dc2a9683a48f20816adc8ce0ee0c1e8dc57b287
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509068"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523667"
 ---
 # <a name="view-alerts"></a>Anzeigen von Warnungen
 
 In diesem Artikel wird beschrieben, wie Sie von Ihrem Sensor ausgelöste Warnungen anzeigen und mit Benachrichtigungstools verwalten.
 
-Sie können Warnungen nach verschiedenen Kategorien anzeigen, wie z. B. archivierte oder angeheftete Warnungen. Oder Sie können nach bestimmten Warnungen suchen, z. B. nach Warnungen, die auf einer IP- oder MAC-Adresse basieren.  
+Sie können Warnungen nach verschiedenen Kategorien anzeigen, wie z. B. archivierte oder angeheftete Warnungen. Sie können auch nach bestimmten Warnungen suchen, z. B. nach Warnungen, die auf einer IP- oder MAC-Adresse basieren.  
 
 Sie können auch Warnungen aus dem Sensordashboard anzeigen.
 
 So zeigen Sie Warnungen an:
 
-- Wählen Sie im Seitenmenü die Option **Warnungen** aus. Im Fenster **Warnungen** werden die vom Sensor erkannten Warnungen angezeigt.
+- Wählen Sie im Seitenmenü die Option **Warnungen** aus. Im Fenster Warnungen werden die vom Sensor erkannten Warnungen angezeigt.
 
   :::image type="content" source="media/how-to-work-with-alerts-sensor/alerts-screen.png" alt-text="Anzeige des Bildschirms „Warnungen“":::
 
@@ -42,21 +42,21 @@ In der Hauptansicht **Warnungen** können Sie Warnungen nach verschiedenen Kateg
 
 ## <a name="search-for-alerts-of-interest"></a>Suchen nach bestimmten Warnungen
 
-Die Hauptansicht **Warnungen** bietet verschiedene Suchfunktionen, mit denen Sie nach bestimmten Warnungen suchen können.
+Die Hauptansicht Warnungen bietet verschiedene Suchfunktionen, mit denen Sie nach bestimmten Warnungen suchen können.
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/main-alerts-view.png" alt-text="Screenshot: Erlernen von Warnungen":::
 
-### <a name="text-search"></a>Textsuche 
+### <a name="text-search"></a>Textsuche
 
-Verwenden Sie die Option **Freie Suche**, um anhand von Text, Zahlen oder Zeichen nach Warnungen zu suchen.
+Verwenden Sie die Option Freie Suche, um anhand von Text, Zahlen oder Zeichen nach Warnungen zu suchen.
 
 Gehen Sie zum Suchen wie folgt vor:
 
-- Geben Sie im Feld **Freie Suche** den erforderlichen Text ein, und drücken Sie auf der Tastatur die EINGABETASTE.
+- Geben Sie im Feld Freie Suche den erforderlichen Text ein, und drücken Sie auf der Tastatur die EINGABETASTE.
 
 Gehen Sie wie folgt vor, um die Suche zu löschen:
 
-- Löschen Sie den Text im Feld **Freie Suche**, und drücken Sie auf der Tastatur die EINGABETASTE.
+- Löschen Sie den Text im Feld Freie Suche, und drücken Sie auf der Tastatur die EINGABETASTE.
 
 ### <a name="device-group-or-device-ip-address-search"></a>Suche nach Gerätegruppen oder IP-Adressen von Geräten
 
@@ -100,7 +100,7 @@ Für Warnmeldungen sind die folgenden Aktionen verfügbar:
 
 - Wählen Sie :::image type="icon" source="media/how-to-work-with-alerts-sensor/learn-and-acknowledge-all-alerts.png" border="false"::: aus, um alle Warnungen zu erlernen und zu bestätigen.
 
-- Wählen Sie :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false"::: aus, um die Warnungsliste in eine CSV-Datei zu exportieren, und wählen Sie die entsprechende Exportoption aus. Wählen Sie **Warnungsexport** für die Standardoption zum Exportieren in das CSV-Format aus. Oder wählen Sie **Erweiterter Warnungsexport** aus, um separate Zeilen für zusätzliche Informationen zu einer Warnung in der CSV-Datei hinzufügen zu können.
+- Wählen Sie :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false"::: aus, um Warnungsinformationen in eine CSV-Datei zu exportieren. Wählen Sie die Option **Extended Alert Export** (Export von erweiterten Warnungen) aus, um für jede Warnung, die mehrere Geräte abdeckt, Warnungsinformationen in separaten Zeilen zu exportieren.
 
 ## <a name="alert-pop-up-window-options"></a>Optionen im Popupfenster „Warnung“
 

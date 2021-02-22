@@ -1,23 +1,18 @@
 ---
 title: Verschieben von Daten aus Sybase mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Sie Daten aus der Sybase-Datenbank mithilfe von Azure Data Factory verschieben.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: b379ee10-0ff5-4974-8c87-c95f82f1c5c6
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/02/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cefa0c15dd50f95780034dcb63f888a2e1c6b65e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8142ec51f93a066faafa1f3e44d0f87517187425
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84707360"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387239"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Verschieben von Daten aus Sybase mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -146,7 +141,7 @@ Als Erstes richten Sie das Datenverwaltungsgateway ein. Anweisungen dazu finden 
 
 **Sybase-Eingabedataset:**
 
-Im Beispiel wird vorausgesetzt, dass Sie die Tabelle "MyTable" in Sybase erstellt haben, die für Zeitreihendaten eine Spalte namens "timestamp" enthält.
+Im Beispiel wird vorausgesetzt, dass Sie in Sybase die Tabelle „MyTable“ erstellt haben, die für Zeitreihendaten die Spalte „timestamp“ enthält.
 
 Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst mitgeteilt, dass dieses Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird. Beachten Sie, dass **type** für den verknüpften Dienst wie folgt festgelegt ist: **RelationalTable**.
 

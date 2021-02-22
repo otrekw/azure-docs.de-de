@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: e003d0121721838bd5ae038a3a8b4d1b8cd9d1eb
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 9975533e00b0ca184e7cc16c5d8ea51d4eafa0a8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573189"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361705"
 ---
 # <a name="azure-data-box-disk-limits"></a>Begrenzungen für Azure Data Box Disk
 
@@ -64,7 +64,7 @@ Dies sind die Grenzwerte für die Datenmenge, die in ein Speicherkonto kopiert w
 
 | Datentyp             | Standardlimit          |
 |--------------------------|------------------------|
-| Blockblob, Seitenblob    | Aktuelle Informationen zu diesen Grenzwerten finden Sie unter [Skalierbarkeitsziele für Blob Storage](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage), [Skalierbarkeitsziele für Standardspeicherkonten](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts) und [Skalierungsziele für Dateifreigaben und Dateien](../storage/files/storage-files-scale-targets.md#file-share-and-file-scale-targets). <br /><br /> Die Grenzwerte schließen Daten aus allen Quellen ein, einschließlich Data Box Disk.|
+| Blockblob, Seitenblob    | Aktuelle Informationen zu diesen Grenzwerten finden Sie unter [Skalierbarkeitsziele für Azure Blob Storage](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage), [Skalierbarkeitsziele für Azure-Standardspeicher](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts) und [Skalierbarkeitsziele für Azure Files](../storage/files/storage-files-scale-targets.md). <br /><br /> Die Grenzwerte schließen Daten aus allen Quellen ein, einschließlich Data Box Disk.|
 
 
 ## <a name="azure-object-size-limits"></a>Größenbeschränkungen für das Azure-Objekt

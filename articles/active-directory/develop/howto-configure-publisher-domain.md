@@ -13,12 +13,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: d793ed912af1c6fdd6e0da417b8709cad8bf08b9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 9b3840ffb39a204cfa24dcb0430f20ac16587582
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013633"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104177"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Gewusst wie: Konfigurieren der Herausgeberdomäne einer Anwendung
 
@@ -48,18 +48,12 @@ Wenn Ihre App vor dem 21. Mai 2019 registriert wurde und Sie keine Herausgeberd
 
 Gehen Sie folgendermaßen vor, um die Herausgeberdomäne Ihrer App festzulegen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
-
-1. Wenn Ihr Konto in mehreren Azure AD-Mandanten enthalten ist:
-   1. Wählen Sie im Menü rechts oben auf der Seite Ihr Profil und dann **Verzeichnis wechseln** aus.
-   1. Ändern Sie die Sitzung auf den Azure AD-Mandanten, bei dem Sie Ihre Anwendung erstellen möchten.
-
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> an.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, unter dem die App registriert ist.
 1. Navigieren Sie zu [Azure Active Directory > App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908), um die App, die Sie konfigurieren möchten, zu suchen und auszuwählen.
 
    Nachdem Sie die App ausgewählt haben, wird die Seite **Übersicht** der App angezeigt.
-
-1. Wählen Sie auf der Seite **Übersicht** der App den Abschnitt **Branding** aus.
-
+1. Wählen Sie unter **Verwalten** die Option **Branding** aus.
 1. Suchen Sie das Feld **Herausgeberdomäne**, und wählen Sie eine der folgenden Optionen aus:
 
    - Wählen Sie **Domäne konfigurieren** aus, wenn Sie noch keine Domäne konfiguriert haben.

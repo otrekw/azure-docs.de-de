@@ -7,7 +7,7 @@
     - name: Vergleich von Messagingdiensten
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
-    - name: Verwenden von Service Bus mit Java Message Service (JMS) 2.0 (Vorschauversion)
+    - name: Verwenden von Service Bus mit Java Message Service (JMS) 2.0
       href: how-to-use-java-message-service-20.md
 - name: Schnellstarts
   items:
@@ -90,6 +90,10 @@
       href: service-bus-samples.md
 - name: Konzepte
   items:
+    - name: 'Service Bus-Warteschlangen, -Themen und -Abonnements'
+      href: service-bus-queues-topics-subscriptions.md
+    - name: Themenfilter und -aktionen
+      href: topic-filters.md
     - name: Premium-Messaging
       href: service-bus-premium-messaging.md
     - name: Vergleich von Azure-Warteschlangen und Service Bus-Warteschlangen
@@ -158,12 +162,16 @@
       href: service-bus-create-namespace-portal.md
     - name: Entwickeln
       items:
+        - name: Festlegen von Abonnementfiltern und -aktionen
+          href: service-bus-filter-examples.md
         - name: Behandlung von Nachrichten
           items:
             - name: 'Service Bus-Warteschlangen, -Themen und -Abonnements'
               href: service-bus-queues-topics-subscriptions.md
-            - name: "Java Message Service\_2.0-Entitäten (JMS) (Vorschauversion)"
+            - name: "Java Message Service\_2.0-Entitäten (JMS)"
               href: java-message-service-20-entities.md
+            - name: Java Message Service-Entwicklerhandbuch (JMS)
+              href: jms-developer-guide.md
             - name: 'Nachrichten, Nutzlasten und Serialisierung'
               href: service-bus-messages-payloads.md
             - name: 'Nachrichtenübertragungen, Sperren und Abgleich'
@@ -172,8 +180,6 @@
               href: message-sequencing.md
             - name: Nachrichtenablauf (Gültigkeitsdauer)
               href: message-expiration.md
-        - name: Themenfilter und -aktionen
-          href: topic-filters.md
         - name: Migrieren von Standard- zu Premium-Namespaces
           href: service-bus-migrate-standard-premium.md
         - name: Partitionierte Warteschlangen und Themen
@@ -218,7 +224,7 @@
       items:
         - name: Migrieren von ActiveMQ zu Azure Service Bus
           href: migrate-jms-activemq-to-servicebus.md
-    - name: Monitor
+    - name: Überwachen
       items:
         - name: End-to-End-Ablaufverfolgung und Diagnose
           href: service-bus-end-to-end-tracing.md

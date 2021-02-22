@@ -1,22 +1,18 @@
 ---
 title: Migrieren von Daten aus Amazon S3 zu Azure Data Lake Storage Gen2
 description: Hier erfahren Sie, wie Sie mithilfe einer Lösungsvorlage Daten aus Amazon S3 migrieren, indem Sie eine externe Steuertabelle zum Speichern einer Partitionsliste in AWS S3 mit Azure Data Factory verwenden.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
-ms.openlocfilehash: e25299c2ce5d31da8f3caa5b02ab8def816b31ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1fd4cb248abdc219c6ee5d098e10c329826c160
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398219"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361986"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Migrieren von Daten aus Amazon S3 zu Azure Data Lake Storage Gen2
 
@@ -119,7 +115,7 @@ Die Vorlage enthält zwei Parameter:
 
     ![Screenshot: Zwei Pipelines und drei Datasets, die mithilfe der Vorlage erstellt wurden](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
 
-6. Klicken Sie auf **Debuggen**, geben Sie die **Parameter** ein, und klicken Sie dann auf **Fertig stellen**.
+6. Wechseln Sie zur Pipeline „BulkCopyFromS3“, wählen Sie **Debug** aus, und geben Sie die **Parameter** ein. Wählen Sie **Fertig stellen** aus.
 
     ![Screenshot, der zeigt, wo Sie „Debuggen“ auswählen und die Parameter eingeben, bevor Sie „Fertig stellen“ auswählen](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
 
@@ -182,7 +178,7 @@ Die Vorlage enthält zwei Parameter:
 
     ![Überprüfen der Pipeline](media/solution-template-migration-s3-azure/delta-migration-s3-azure3.png)
 
-6. Klicken Sie auf **Debuggen**, geben Sie die **Parameter** ein, und klicken Sie dann auf **Fertig stellen**.
+6.  Wechseln Sie zur Pipeline „DeltaCopyFromS3“, wählen Sie **Debug** aus, und geben Sie die **Parameter** ein. Wählen Sie **Fertig stellen** aus.
 
     ![Auf **Debuggen** klicken](media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png)
 

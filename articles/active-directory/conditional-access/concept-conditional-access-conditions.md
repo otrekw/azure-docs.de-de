@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/07/2020
+ms.date: 02/10/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96d1eaff4d1b93ad3bb489f177020c351fe4d13d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fecf3f1a302a6734d92335bc15722df4d5288a56
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95904034"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362419"
 ---
 # <a name="conditional-access-conditions"></a>Bedingter Zugriff: Bedingungen
 
@@ -34,7 +34,7 @@ Für Kunden mit Zugriff auf [Identity Protection](../identity-protection/overvie
 
 ## <a name="user-risk"></a>Benutzerrisiko 
 
-Für Kunden mit Zugriff auf [Identity Protection](../identity-protection/overview-identity-protection.md) kann das Benutzerrisiko im Rahmen einer Richtlinie für bedingten Zugriff ausgewertet werden. Ein Benutzerrisiko stellt die Wahrscheinlichkeit dar, dass eine bestimmte Identität oder ein bestimmtes Konto kompromittiert wird. Weitere Informationen zum Benutzerrisiko finden Sie in den Artikeln [Was bedeutet Risiko?](../identity-protection/concept-identity-protection-risks.md#user-risk) und [Anleitung: Konfigurieren und Aktivieren von Risikorichtlinien](../identity-protection/howto-identity-protection-configure-risk-policies.md).
+Für Kunden mit Zugriff auf [Identity Protection](../identity-protection/overview-identity-protection.md) kann das Benutzerrisiko im Rahmen einer Richtlinie für bedingten Zugriff ausgewertet werden. Ein Benutzerrisiko stellt die Wahrscheinlichkeit dar, dass eine bestimmte Identität oder ein bestimmtes Konto kompromittiert wurde. Weitere Informationen zum Benutzerrisiko finden Sie in den Artikeln [Was bedeutet Risiko?](../identity-protection/concept-identity-protection-risks.md#user-risk) und [Anleitung: Konfigurieren und Aktivieren von Risikorichtlinien](../identity-protection/howto-identity-protection-configure-risk-policies.md).
 
 ## <a name="device-platforms"></a>Geräteplattformen
 

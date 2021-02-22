@@ -1,23 +1,18 @@
 ---
 title: Features für die Leistungsoptimierung bei Kopieraktivitäten
 description: Erfahren Sie mehr über die wichtigsten Funktionen, mit denen Sie die Leistung bei Kopieraktivitäten in Azure Data Factory optimieren können.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/24/2020
-ms.openlocfilehash: 8e46e9b323657b747fd73bad3b25ed66390f3aa9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ecb4550b218b069273cba2e3d70a9510c1cc74ca
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324330"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387800"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Features für die Leistungsoptimierung bei Kopieraktivitäten
 
@@ -126,7 +121,7 @@ Berücksichtigen Sie bei der Angabe eines Werts für die Eigenschaft `parallelCo
 
 Beim Kopieren von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher können Sie ggf. Azure Blob Storage oder Azure Data Lake Storage Gen2 als Stagingzwischenspeicher verwenden. Staging ist besonders in folgenden Fällen hilfreich:
 
-- **Sie möchten Daten aus verschiedenen Datenspeichern in Azure Synapse Analytics (vormals „SQL Data Warehouse“) über PolyBase erfassen, Daten aus/in Snowflake kopieren oder Daten aus Amazon Redshift/HDFS leistungsstark erfassen.** Ausführliche Informationen finden Sie unter:
+- **Sie möchten Daten aus verschiedenen Datenspeichern in Azure Synapse Analytics über PolyBase erfassen, Daten aus/in Snowflake kopieren oder Daten aus Amazon Redshift/HDFS leistungsstark erfassen.** Ausführliche Informationen finden Sie unter:
   - [Verwenden von PolyBase zum Laden von Daten in Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics).
   - [Snowflake-Connector](connector-snowflake.md)
   - [Amazon Redshift-Connector](connector-amazon-redshift.md)
@@ -148,7 +143,7 @@ Derzeit können Sie keine Daten zwischen zwei Datenspeichern kopieren, die über
 
 Konfigurieren Sie für die Kopieraktivität die Einstellung **enableStaging**, um anzugeben, ob die Daten vor dem Laden in einen Zielspeicher im Speicher bereitgestellt werden sollen. Wenn Sie **enableStaging** auf `TRUE` festlegen, müssen Sie zusätzliche Eigenschaften angeben. Diese sind in der folgenden Tabelle aufgeführt. 
 
-| Eigenschaft | Beschreibung | Standardwert | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Standardwert | Erforderlich |
 | --- | --- | --- | --- |
 | enableStaging |Geben Sie an, ob Sie Daten über einen Stagingzwischenspeicher kopieren möchten. |False |Nein |
 | linkedServiceName |Geben Sie den Namen eines verknüpften Diensts vom Typ [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) oder [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) an, der auf die Storage-Instanz verweist, die Sie als Stagingzwischenspeicher verwenden. |– |Ja, wenn **enableStaging** auf „TRUE“ festgelegt ist. |

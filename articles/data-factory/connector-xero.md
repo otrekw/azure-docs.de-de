@@ -1,22 +1,17 @@
 ---
 title: Kopieren von Daten aus Xero mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten aus Xero mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/26/2021
 ms.author: jingwang
-ms.openlocfilehash: 3f8c74f36c1c441e00b808954ce7f7710d3fbd52
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d795f8355943032751b911423b8aaa93b2df3206
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879964"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366907"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopieren von Daten aus Xero mithilfe von Azure Data Factory
 
@@ -52,10 +47,10 @@ Folgende Eigenschaften werden für den mit Xero verknüpften Dienst unterstützt
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Xero** | Ja |
 | connectionProperties | Eine Gruppe von Eigenschaften zum Definieren, wie eine Verbindung mit Xero hergestellt werden soll. | Ja |
-| **_Unter `connectionProperties`:_* _ | | |
+| ***Unter `connectionProperties`:*** | | |
 | host | Der Endpunkt des Xero-Servers (`api.xero.com`).  | Ja |
 | authenticationType | Zulässige Werte sind `OAuth_2.0` und `OAuth_1.0`. | Ja |
-| consumerKey | Geben Sie für OAuth 2.0 die _ *Client-ID** für Ihre Xero-Anwendung an.<br>Geben Sie für OAuth 1.0 den Consumerschlüssel an, der der Xero-Anwendung zugeordnet ist.<br>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| consumerKey | Geben Sie für OAuth 2.0 die **Client-ID** für Ihre Xero-Anwendung an.<br>Geben Sie für OAuth 1.0 den Consumerschlüssel an, der der Xero-Anwendung zugeordnet ist.<br>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | privateKey | Geben Sie für OAuth 2.0 den **geheimen Clientschlüssel** für Ihre Xero-Anwendung an.<br>Geben Sie für OAuth 1.0 den privaten Schlüssel aus der PEM-Datei an, der für Ihre private Xero-Anwendung generiert wurde. Weitere Informationen finden Sie unter [Erstellen eines Schlüsselpaars aus öffentlichem und privatem Schlüssel](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Achten Sie darauf, **„privatekey.pem“ mit dem NumBits-Wert 512** mithilfe von `openssl genrsa -out privatekey.pem 512` zu generieren – 1.024 wird nicht unterstützt. Schließen Sie gesamten Text der PEM-Datei einschließlich der Unix-Zeilenschaltungen (\n) ein (siehe Beispiel unten).<br/><br>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | tenantId | Die Mandanten-ID, die Ihrer Xero-Anwendung zugeordnet ist. Gilt für die OAuth 2.0-Authentifizierung.<br>Informationen zum Abrufen der Mandanten-ID finden Sie im Abschnitt [Check the tenants you're authorized to access](https://developer.xero.com/documentation/oauth2/auth-flow) (Überprüfen der Mandanten, denen Zugriff gewährt wurde). | Ja, für die OAuth 2.0-Authentifizierung |
 | refreshToken | Gilt für die OAuth 2.0-Authentifizierung.<br/>Das OAuth 2.0-Aktualisierungstoken ist der Xero-Anwendung zugeordnet und wird zum Aktualisieren des Zugriffstokens verwendet. Das Zugriffstoken läuft nach 30 Minuten ab. In [diesem Artikel](https://developer.xero.com/documentation/oauth2/auth-flow) erfahren Sie, wie der Xero-Autorisierungsflow funktioniert und wie Sie das Aktualisierungstoken abrufen. Um ein Aktualisierungstoken zu erhalten, müssen Sie den [offline_access-Bereich](https://developer.xero.com/documentation/oauth2/scopes) anfordern. <br/>**Bekannte Beschränkung**: Beachten Sie, dass Xero das Aktualisierungstoken zurücksetzt, nachdem es zur Aktualisierung des Zugriffstokens verwendet wurde. Bei operationalisierten Workloads müssen Sie vor jeder Ausführung der Kopieraktivität ein gültiges Aktualisierungstoken festlegen, das von Azure Data Factory verwendet werden kann.<br/>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja, für die OAuth 2.0-Authentifizierung |

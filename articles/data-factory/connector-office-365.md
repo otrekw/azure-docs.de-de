@@ -1,22 +1,17 @@
 ---
 title: Kopieren von Daten aus Office 365 mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten aus Office 365 mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 365896fec555340c3932192aa82086d140d4db0c
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: a7df69e7c5701074b40d6fa8340d8a0e247f00de
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632990"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393002"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Kopieren von Daten aus Office 365 mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -49,7 +44,7 @@ Zum Kopieren von Daten aus Office 365 in Azure müssen Sie die folgenden Schritt
 
 ## <a name="approving-new-data-access-requests"></a>Genehmigen neuer Datenzugriffsanforderungen
 
-Wenn Sie erstmals Daten für diesen Kontext anfordern (also für eine Kombination daraus, auf welche Datentabelle zugegriffen wird, in welches Zielkonto die Daten geladen werden und welche Benutzeridentität die Datenzugriffsanforderung sendet), wird als Status der Kopieraktivität „In Bearbeitung“ angezeigt. Nur wenn Sie unter [„Aktionen“ auf den Link „Details“](copy-activity-overview.md#monitoring) klicken, wird als Status „RequestingConsent“ angezeigt.  Ein Mitglied aus der Gruppe der Datenzugriffsgenehmiger muss die Anforderung in Privileged Access Management genehmigen, bevor die Datenextraktion fortgesetzt werden kann.
+Wenn Sie erstmals Daten für diesen Kontext anfordern (also für eine Kombination daraus, auf welche Datentabelle zugegriffen wird, in welches Zielkonto die Daten geladen werden und welche Benutzeridentität die Datenzugriffsanforderung sendet), wird Ihnen als Status der Kopieraktivität „In Bearbeitung“ angezeigt. Nur wenn Sie [unter „Aktionen“ auf den Link „Details“](copy-activity-overview.md#monitoring) klicken, wird als Status „RequestingConsent“ angezeigt.  Ein Mitglied aus der Gruppe der Datenzugriffsgenehmiger muss die Anforderung in Privileged Access Management genehmigen, bevor die Datenextraktion fortgesetzt werden kann.
 
 [Hier](/graph/data-connect-tips#approve-pam-requests-via-office-365-admin-portal) erfahren Sie, wie die genehmigende Person die Datenzugriffsanforderung genehmigen kann, und [hier](/graph/data-connect-pam) finden Sie eine Erläuterung der allgemeinen Integration in Privileged Access Management, einschließlich Informationen zum Einrichten der Gruppe von genehmigenden Personen für den Datenzugriff.
 
@@ -89,7 +84,7 @@ Folgende Eigenschaften werden für den mit Office 365 verknüpften Dienst unters
 >[!NOTE]
 > Der Unterschied zwischen **office365TenantId** und **servicePrincipalTenantId** und der entsprechende anzugebende Wert:
 >- Wenn Sie ein Unternehmensentwickler sind und eine Anwendung für Office 365-Daten für die Nutzung in Ihrer eigenen Organisation entwickeln, sollten Sie die gleiche Mandanten-ID für beide Eigenschaften angeben, und zwar die AAD-Mandanten-ID Ihrer Organisation.
->- Wenn Sie ein ISV-Entwickler sind und eine Anwendung für Ihre Kunden entwickeln, dann ist „office365TenantId“ die AAD-Mandanten-ID Ihres Kunden (der die Anwendung installiert), und „servicePrincipalTenantId“ ist die AAD-Mandanten-ID Ihres Unternehmens.
+>- Wenn Sie ein ISV-Entwickler sind und eine Anwendung für Ihre Kunden entwickeln, ist „office365TenantId“ die AAD-Mandanten-ID Ihres Kunden (der die Anwendung installiert), und „servicePrincipalTenantId“ ist die AAD-Mandanten-ID Ihres Unternehmens.
 
 **Beispiel:**
 

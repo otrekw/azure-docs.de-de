@@ -1,14 +1,14 @@
 ---
 title: Onboarding eines Kunden in Azure Lighthouse durchführen
 description: Erfahren Sie, wie Sie das Onboarding eines Kunden in Azure Lighthouse durchführen, sodass Ihr eigener Mandant über die delegierte Azure-Ressourcenverwaltung auf dessen Ressourcen zugreifen und sie verwalten kann.
-ms.date: 01/14/2021
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 1a7c8fc85819b2c34b5c64dc83cb908b7bee3c41
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 4487dd82b30e14f9db2001dc10f7437a53e745f3
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232674"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556109"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding eines Kunden in Azure Lighthouse durchführen
 
@@ -205,7 +205,7 @@ Die letzte Autorisierung im obigen Beispiel fügt eine **prinzipalId** mit der R
 Nachdem Sie Ihre Parameterdatei aktualisiert haben, muss ein Benutzer im Kundenmandanten die Azure Resource Manager-Vorlage im Mandanten bereitstellen. Eine gesonderte Bereitstellung ist für jedes Abonnement erforderlich, für das Sie ein Onboarding durchführen möchten (oder für jedes Abonnement, das Ressourcengruppen enthält, die Sie integrieren möchten).
 
 > [!IMPORTANT]
-> Diese Bereitstellung muss von einem Nicht-Gastkonto im Mandanten des Kunden durchgeführt werden, das über die [integrierte Rolle „Besitzer“](../../role-based-access-control/built-in-roles.md#owner) für das Abonnement verfügt, das integriert wird (oder das die Ressourcengruppen enthält, die integriert werden). Um alle Benutzer anzuzeigen, die das Abonnement delegieren können, kann ein Benutzer im Mandanten des Kunden das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription). 
+> Diese Bereitstellung muss von einem Nicht-Gastkonto im Mandanten des Kunden durchgeführt werden, das über die Rolle `Microsoft.Authorization/roleAssignments/write`, z. B. [Besitzer](../../role-based-access-control/built-in-roles.md#owner), für das Abonnement verfügt, das integriert wird (oder das die Ressourcengruppen enthält, die integriert werden). Um Benutzer aufzufinden, die das Abonnement delegieren können, kann ein Benutzer im Mandanten des Kunden das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription). 
 >
 > Wenn das Abonnement über das [CSP-Programm (Cloud Solution Provider)](../concepts/cloud-solution-provider.md) erstellt wurde, kann jeder Benutzer, der die Rolle [Administrator-Agent](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) in Ihrem Dienstanbietermandanten ausübt, die Bereitstellung ausführen.
 
@@ -311,12 +311,13 @@ Wenn Sie nach dem Onboarding des Kunden Änderungen vornehmen müssen, können S
 Wenn Sie das Onboarding Ihres Kunden nicht erfolgreich durchführen können oder wenn Ihre Benutzer Probleme beim Zugriff auf die delegierten Ressourcen haben, überprüfen Sie die folgenden Tipps und Anforderungen, und versuchen Sie es erneut.
 
 - Der Wert `managedbyTenantId` darf nicht mit der Mandanten-ID für das Abonnement übereinstimmen, für das das Onboarding durchgeführt wird.
-- Sie können nicht mehrere Zuweisungen im selben Bereich mit demselben `mspOfferName` verwenden. 
+- Sie können nicht mehrere Zuweisungen im selben Bereich mit demselben `mspOfferName` verwenden.
 - Der **Microsoft.ManagedServices**-Ressourcenanbieter muss für das delegierte Abonnement registriert sein. Dies sollte während der Bereitstellung automatisch erfolgen, aber wenn dies nicht der Fall ist, können Sie es [manuell registrieren](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 - Die Autorisierungen dürfen keine Benutzer mit der integrierten Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner) und keine integrierten Rollen mit [DataActions](../../role-based-access-control/role-definitions.md#dataactions) enthalten.
 - Gruppen müssen so erstellt werden, dass der [**Gruppentyp**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) auf **Sicherheit** und nicht **Microsoft 365** festgelegt ist.
 - Es kann zu einer zusätzlichen Verzögerung kommen, bevor der Zugriff für [geschachtelte Gruppen](../..//active-directory/fundamentals/active-directory-groups-membership-azure-portal.md) aktiviert wird.
 - Benutzer, die Ressourcen im Azure-Portal anzeigen müssen, müssen die Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) (oder eine andere integrierte Rolle, die Lesezugriff umfasst) aufweisen.
+- Die [integrierten Azure-Rollen](../../role-based-access-control/built-in-roles.md), die Sie in Autorisierungen einschließen, dürfen keine veralteten Rollen enthalten. Wenn eine integrierte Azure-Rolle veraltet ist, verlieren alle Benutzer, die mit dieser Rolle integriert wurden, den Zugriff, und Sie können keine weiteren Delegierungen mehr integrieren. Um dies zu korrigieren, aktualisieren Sie Ihre Vorlage so, dass nur unterstützte integrierte Rollen verwendet werden, und führen Sie dann eine neue Bereitstellung aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,24 +1,28 @@
 ---
-title: Vorgehensweise zum Einrichten der Georeplikation für Azure Cache for Redis | Microsoft-Dokumentation
-description: Erfahren Sie, wie Ihre Azure Cache for Redis-Instanzen über geografische Regionen hinweg repliziert werden.
+title: Konfigurieren der Georeplikation für Azure Cache for Redis-Instanzen (Premium)
+description: Erfahren Sie, wie Ihre Azure Cache for Redis-Instanzen (Premium) über Azure-Regionen hinweg repliziert werden.
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 33d5ec89ef7563df16e0fe9b447eca88b1dba7fe
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 27ccc81ddf0a771de9fb15f60820dfd3efa6146e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536877"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386871"
 ---
-# <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Vorgehensweise zum Einrichten der Georeplikation für Azure Cache for Redis
+# <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>Konfigurieren der Georeplikation für Azure Cache for Redis-Instanzen (Premium)
 
-Georeplikation bietet einen Mechanismus zum Verknüpfen von zwei Azure Cache for Redis-Instanzen im Premium-Tarif. Ein Cache wird als primärer verknüpfter Cache und der andere als sekundärer verknüpfter Cache ausgewählt. Der sekundäre verknüpfte Cache ist schreibgeschützt. Und die in den primären Cache geschriebenen Daten werden im sekundären verknüpften Cache repliziert. Die Datenübertragung zwischen primärer und sekundärer Cache-Instanz wird durch TLS geschützt. Mithilfe der Georeplikation kann ein Cache eingerichtet werden, der sich über zwei Azure-Regionen erstreckt. Dieser Artikel enthält eine Anleitung zum Konfigurieren der Georeplikation für Ihre Azure Cache for Redis-Instanzen im Premium-Tarif.
+In diesem Artikel erfahren Sie, wie Sie einen georeplizierten Azure Cache über das Azure-Portal konfigurieren.
+
+Georeplikation verknüpft zwei Azure Cache for Redis-Instanzen (Premium) und erstellt eine Datenreplikationsbeziehung. Diese Cache-Instanzen befinden sich normalerweise in unterschiedlichen Azure-Regionen, obwohl sie dies nicht müssen. Eine Instanz fungiert als primärer und die andere als sekundärer Cache. Der primäre Cache verarbeitet Lese- und Schreibanforderungen und gibt Änderungen an den sekundären weiter. Dieser Prozess wird fortgesetzt, bis die Verknüpfung zwischen den beiden Instanzen entfernt wird.
 
 > [!NOTE]
-> Die Georeplikation ist als Lösung für die Notfallwiederherstellung konzipiert. Standardmäßig wird bei Schreib- und Lesevorgängen Ihrer Anwendung die primäre Region verwendet. Die Anwendung kann optional so konfiguriert werden, dass sie aus der sekundären Region liest. Die Georeplikation bietet kein automatisches Failover. Der Grund sind Bedenken hinsichtlich zusätzlicher Netzwerkwartezeit zwischen Regionen, wenn der Rest Ihrer Anwendung in der primären Region verbleibt. Zur Verwaltung und Initiierung des Failovers muss die Verknüpfung mit dem sekundären Cache aufgehoben werden. Dadurch wird er zur neuen primären Instanz hochgestuft.
+> Die Georeplikation ist als Lösung für die Notfallwiederherstellung konzipiert.
+>
+>
 
 ## <a name="geo-replication-prerequisites"></a>Voraussetzungen für die Georeplikation
 
@@ -51,7 +55,7 @@ Nach der Konfiguration der Georeplikation gelten folgende Einschränkungen für 
 
 ## <a name="add-a-geo-replication-link"></a>Hinzufügen einer Verknüpfung für die Georeplikation
 
-1. Klicken Sie zum Verknüpfen von zwei Caches für die Georeplikation zuerst im Menü „Ressource“ des Caches, der als primärer verknüpfter Cache verwendet werden soll, auf **Georeplikation** . Klicken Sie anschließend auf dem Blatt **Georeplikation** auf **Link für Cachereplikation hinzufügen** .
+1. Klicken Sie zum Verknüpfen von zwei Caches für die Georeplikation zuerst im Menü „Ressource“ des Caches, der als primärer verknüpfter Cache verwendet werden soll, auf **Georeplikation**. Klicken Sie anschließend auf dem Blatt **Georeplikation** auf **Link für Cachereplikation hinzufügen**.
 
     ![Hinzufügen einer Verknüpfung](./media/cache-how-to-geo-replication/cache-geo-location-menu.png)
 
@@ -63,7 +67,7 @@ Nach der Konfiguration der Georeplikation gelten folgende Einschränkungen für 
 
     ![Kontextmenü für die Georeplikation](./media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png)
 
-3. Klicken Sie auf **Verknüpfen** , um zwei Caches zu verknüpfen und den Replikationsvorgang zu starten.
+3. Klicken Sie auf **Verknüpfen**, um zwei Caches zu verknüpfen und den Replikationsvorgang zu starten.
 
     ![Verknüpfen von Caches](./media/cache-how-to-geo-replication/cache-geo-location-confirm-link.png)
 
@@ -75,7 +79,7 @@ Nach der Konfiguration der Georeplikation gelten folgende Einschränkungen für 
 
     ![Screenshot: Anzeigen des Verknüpfungsstatus für den primären Cache und sekundäre Caches.](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
-    Nach Abschluss des Replikationsvorgangs wechselt der **Verknüpfungsstatus** zu **Erfolgreich** .
+    Nach Abschluss des Replikationsvorgangs wechselt der **Verknüpfungsstatus** zu **Erfolgreich**.
 
     ![Cachestatus](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
 
@@ -83,7 +87,7 @@ Nach der Konfiguration der Georeplikation gelten folgende Einschränkungen für 
 
 ## <a name="remove-a-geo-replication-link"></a>Entfernen einer Verknüpfung für die Georeplikation
 
-1. Um die Verknüpfung zwischen zwei Caches zu entfernen und die Georeplikation zu beenden, klicken Sie auf dem Blatt **Georeplikation** auf **Verknüpfung von Caches aufheben** .
+1. Um die Verknüpfung zwischen zwei Caches zu entfernen und die Georeplikation zu beenden, klicken Sie auf dem Blatt **Georeplikation** auf **Verknüpfung von Caches aufheben**.
     
     ![Aufheben der Verknüpfung von Caches](./media/cache-how-to-geo-replication/cache-geo-location-unlink.png)
 

@@ -1,24 +1,19 @@
 ---
 title: Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
 description: Erfahren Sie, wie Sie benutzerdefinierte Aktivitäten erstellen und in einer Azure Data Factory-Pipeline verwenden.
-services: data-factory
-documentationcenter: ''
-ms.assetid: 8dd7ba14-15d2-4fd9-9ada-0b2c684327e9
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-csharp
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: 0ef6c97f7924c890bb6665100259970372f1cd26
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 3832175910f3a6d3e6a7de8da932b32436cc2452
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606945"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393019"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Pipeline von Azure Data Factory Version 1
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -167,7 +162,7 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
 
 8. Implementieren bzw. fügen Sie die **Execute**-Methode der **IDotNetActivity**-Schnittstelle der **MyDotNetActivity**-Klasse hinzu, und kopieren Sie den folgenden Beispielcode in die Methode.
 
-    Das folgende Beispiel zählt, wie oft der Suchbegriff („Microsoft“) in jedem Blob, das einem Datenslice zugeordnet ist, vorkommt.
+    Das folgende Beispiel zählt, wie oft der Suchbegriff („Microsoft“) in jedem einem Datenslice zugeordneten Blob enthalten ist.
 
     ```csharp
     /// <summary>
@@ -247,7 +242,7 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
                                      null);
 
             // Calculate method returns the number of occurrences of
-            // the search term (“Microsoft”) in each blob associated
+            // the search term ("Microsoft") in each blob associated
             // with the data slice. definition of the method is shown in the next step.
 
             output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");
@@ -373,7 +368,7 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
             "folderPath": "adftutorial/inputfolder/",
     ```
 
-    Die „Calculate“-Methode berechnet die Anzahl der Instanzen des Schlüsselworts „Microsoft“ in den Eingabedateien (Blobs im Ordner). Der Suchbegriff („Microsoft“) ist hartcodiert.
+    Die „Calculate“-Methode berechnet die Anzahl der Instanzen des Schlüsselworts „Microsoft“ in den Eingabedateien (Blobs im Ordner). Der Suchbegriff („Microsoft“) ist im Code hartcodiert.
 
 10. Kompilieren Sie das Projekt. Klicken Sie im Menü auf **Erstellen** und dann auf **Projektmappe erstellen**.
 
@@ -434,7 +429,7 @@ In diesem Abschnitt erstellen Sie Folgendes:
    3. Klicken Sie auf dem Blatt **Datenanalyse** auf **Data Factory**.
 
       ![Menü für neue Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
-2. Geben Sie auf dem Blatt **Neue Data Factory** als Namen die Zeichenfolge **CustomActivityFactory** ein. Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name „CustomActivityFactory“ ist nicht verfügbar** ändern Sie den Namen der Data Factory (z. B.in **IhrNameCustomActivityFactory**) und wiederholen den Vorgang.
+2. Geben Sie auf dem Blatt **Neue Data Factory** als Namen die Zeichenfolge **CustomActivityFactory** ein. Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name „CustomActivityFactory“ ist nicht verfügbar** ändern Sie den Namen der Data Factory (z. B. in **IhrNameCustomActivityFactory**) und wiederholen den Vorgang.
 
     ![Blatt für neue Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
 3. Klicken Sie auf **RESSOURCENGRUPPENNAME**, und wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine Ressourcengruppe.
@@ -568,7 +563,7 @@ In diesem Schritt erstellen Sie Datasets zur Darstellung von Eingabe- und Ausgab
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
 
-    Denken Sie daran, dass alle Dateien in einem Eingabeordner zu einem Slice mit den oben genannten Startzeiten gehören. Wenn dieser Slice verarbeitet wird, durchsucht die benutzerdefinierte Aktivität jede Datei und erzeugt eine Zeile in der Ausgabedatei mit der Anzahl der Vorkommnisse des Suchbegriffs („Microsoft“). Wenn im Eingabeordner drei Dateien vorhanden sind, enthält die Ausgabedatei drei Zeilen für jeden stündlichen Slice: 2016-11-16-00.txt, 2016-11-16:01:00:00.txt usw.
+    Denken Sie daran, dass alle Dateien in einem Eingabeordner zu einem Slice mit den oben genannten Startzeiten gehören. Wenn dieser Slice verarbeitet wird, durchsucht die benutzerdefinierte Aktivität jede Datei und erzeugt in der Ausgabedatei eine Zeile mit der Anzahl der Vorkommen des Suchbegriffs („Microsoft“). Wenn im Eingabeordner drei Dateien vorhanden sind, enthält die Ausgabedatei drei Zeilen für jeden stündlichen Slice: 2016-11-16-00.txt, 2016-11-16:01:00:00.txt usw.
 3. Klicken Sie in der Befehlsleiste auf **Bereitstellen**, um das **OutputDataset** bereitzustellen.
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>Erstellen Sie eine Pipeline, die die benutzerdefinierte Aktivität verwendet, und führen Sie sie aus.

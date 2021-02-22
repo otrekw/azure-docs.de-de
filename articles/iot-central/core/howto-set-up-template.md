@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 236acc2ded3fcb651295e0342ab4e1e88174be46
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 22e948a0100f23dbddef8fc138576bb4b9372c77
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202962"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363201"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definieren eines neuen IoT-Gerätetyps in Ihrer Azure IoT Central-Anwendung
 
@@ -31,9 +31,9 @@ Beispielsweise kann ein Hersteller eine Gerätevorlage für einen verbundenen L�
 - Sendet Lüfterbetriebszustand
 - Bietet eine schreibbare Eigenschaft für die Lüftergeschwindigkeit
 - Bietet einen Befehl zum Neustarten des Geräts
-- Bietet eine allgemeine Übersicht über das Gerät mithilfe eines Dashboards
+- Gibt Ihnen mithilfe einer Ansicht eine allgemeine Übersicht über das Gerät
 
-Anhand dieser Gerätevorlage kann ein Bediener echte Lüftergeräte erstellen und verbinden. Alle diese Lüfter weisen Messungen, Eigenschaften und Befehle auf, die von Bedienern zum Überwachen und Verwalten verwendet werden. Bediener verwenden die [Gerätedashboards](#add-dashboards) und -formulare zum Interagieren mit den Lüftergeräten. Ein Geräteentwickler verwendet die Vorlage, um zu verstehen, wie das Gerät mit der Anwendung interagiert. Weitere Informationen finden Sie unter [Telemetrie-, Eigenschaften- und Befehlsnutzlasten](concepts-telemetry-properties-commands.md).
+Anhand dieser Gerätevorlage kann ein Bediener echte Lüftergeräte erstellen und verbinden. Alle diese Lüfter weisen Messungen, Eigenschaften und Befehle auf, die von Bedienern zum Überwachen und Verwalten verwendet werden. Bediener verwenden die [Geräteansichten](#add-views) und -formulare zum Interagieren mit den Lüftergeräten. Ein Geräteentwickler verwendet die Vorlage, um zu verstehen, wie das Gerät mit der Anwendung interagiert. Weitere Informationen finden Sie unter [Telemetrie-, Eigenschaften- und Befehlsnutzlasten](concepts-telemetry-properties-commands.md).
 
 > [!NOTE]
 > Nur Ersteller und Administratoren können Gerätevorlagen erstellen, bearbeiten und löschen. Auf der Seite **Geräte** kann jeder Benutzer Geräte anhand vorhandener Gerätevorlagen erstellen.
@@ -46,8 +46,8 @@ In einer IoT Central-Anwendung verwendet eine Gerätevorlage ein Gerätemodell, 
 > Weil IoT Central das vollständige Modell mit allen referenzierten Schnittstellen in derselben Datei erfordert, verwenden Sie beim Importieren eines Modells aus dem Modellrepository das Schlüsselwort "Erweitert", um die Vollversion zu erhalten.
 Beispiel: https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json
 
-- Erstellen Sie ein Gerätemodell mithilfe von [Digital Twins Definition Language (DTDL) – Version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Visual Studio Code weist eine Erweiterung auf, die das Erstellen von DTDL-Modellen unterstützt. Weitere Informationen finden Sie unter [Installieren und Verwenden der DTDL-Erstellungstools](../../iot-pnp/howto-use-dtdl-authoring-tools.md). Veröffentlichen Sie das Modell dann im öffentlichen Modellrepository. Weitere Informationen finden Sie unter [Gerätemodellrepository](../../iot-pnp/concepts-model-repository.md). Implementieren Sie den Gerätecode aus dem Modell, und verbinden Sie Ihr reales Gerät mit Ihrer IoT Central-Anwendung. IoT Central ermittelt das Gerätemodell, importiert es für Sie aus dem öffentlichen Repository und generiert eine Gerätevorlage. Sie können dann alle Cloudeigenschaften, Anpassungen und Dashboards, die Ihre IoT Central-Anwendung benötigt, der Gerätevorlage hinzufügen.
-- Erstellen Sie ein Gerätemodell per DTDL. Implementieren Sie Ihren Gerätecode aus dem Modell. Importieren Sie das Gerätemodell manuell in Ihre IoT Central-Anwendung, und fügen Sie dann alle Cloudeigenschaften, Anpassungen und Dashboards hinzu, die Ihre IoT Central-Anwendung benötigt.
+- Erstellen Sie ein Gerätemodell mithilfe von [Digital Twins Definition Language (DTDL) – Version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Visual Studio Code weist eine Erweiterung auf, die das Erstellen von DTDL-Modellen unterstützt. Weitere Informationen finden Sie unter [Installieren und Verwenden der DTDL-Erstellungstools](../../iot-pnp/howto-use-dtdl-authoring-tools.md). Veröffentlichen Sie das Modell dann im öffentlichen Modellrepository. Weitere Informationen finden Sie unter [Gerätemodellrepository](../../iot-pnp/concepts-model-repository.md). Implementieren Sie den Gerätecode aus dem Modell, und verbinden Sie Ihr reales Gerät mit Ihrer IoT Central-Anwendung. IoT Central ermittelt das Gerätemodell, importiert es für Sie aus dem öffentlichen Repository und generiert eine Gerätevorlage. Dann können Sie alle Cloudeigenschaften, Anpassungen und Ansichten, die Ihre IoT Central-Anwendung benötigt, der Gerätevorlage hinzufügen.
+- Erstellen Sie ein Gerätemodell per DTDL. Implementieren Sie Ihren Gerätecode aus dem Modell. Importieren Sie das Gerätemodell manuell in Ihre IoT Central-Anwendung, und fügen Sie dann alle Cloudeigenschaften, Anpassungen und Ansichten hinzu, die Ihre IoT Central-Anwendung benötigt.
 
 > [!TIP]
 > IoT Central erfordert das vollständige Modell mit allen referenzierten Schnittstellen in derselben Datei. Wenn Sie ein Modell aus dem Modellrepository importieren, verwenden Sie das Schlüsselwort *erweitert*, um die Vollversion zu erhalten.
@@ -72,8 +72,8 @@ Eine Gerätevorlage umfasst Folgendes:
 
 - Ein _Gerätemodell_, das die Telemetrie, Eigenschaften und Befehle angibt, die das Gerät implementiert. Diese Funktionen sind in einer oder mehreren Komponenten organisiert.
 - _Cloudeigenschaften_, die Informationen definieren, die Ihre IoT Central-Anwendung über Ihre Geräte speichert. Beispielsweise kann eine Cloudeigenschaft das Datum der letzten Wartung eines Geräts erfassen. Diese Informationen werden niemals für das Gerät freigegeben.
-- Durch _Anpassungen_ kann der Ersteller einige der Definitionen im Gerätemodell überschreiben. Beispielsweise kann der Ersteller den Namen einer Geräteeigenschaft überschreiben. Eigenschaftsnamen werden in IoT Central-Dashboards und -Formularen angezeigt.
-- Mithilfe von _Dashboards und Formularen_ kann der Ersteller eine Benutzeroberfläche erstellen, mit der Bediener die mit der Anwendung verbundenen Geräte überwachen und verwalten können.
+- Durch _Anpassungen_ kann der Ersteller einige der Definitionen im Gerätemodell überschreiben. Beispielsweise kann der Ersteller den Namen einer Geräteeigenschaft überschreiben. Eigenschaftsnamen werden in IoT Central-Ansichten und -Formularen angezeigt.
+- Mithilfe von _Ansichten und Formularen_ kann der Ersteller eine Benutzeroberfläche erstellen, mit der Bediener die mit Ihrer Anwendung verbundenen Geräte überwachen und verwalten können.
 
 Zum Erstellen einer Gerätevorlage in IoT Central führen Sie die folgenden Schritte aus:
 
@@ -129,7 +129,7 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Telemetr
 
 | Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Anzeigename | Der Anzeigename für den Telemetriewert, der in Dashboards und Formularen verwendet wird. |
+| Anzeigename | Der Anzeigename für den Telemetriewert, der in Ansichten und Formularen verwendet wird. |
 | Name | Der Name des Felds in der Telemetrienachricht. IoT Central generiert einen Wert für dieses Feld aus dem Anzeigenamen, Sie können aber ggf. einen eigenen Wert auswählen. Dieses Feld muss alphanumerisch sein. |
 | Funktionstyp | Telemetrie. |
 | Semantischer Typ | Der semantische Typ der Telemetriedaten, z. B. Temperatur, Zustand oder Ereignis. Die Auswahl des semantischen Typs bestimmt, welches der folgenden Felder verfügbar ist. |
@@ -137,7 +137,7 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Telemetr
 | severity | Nur für den semantischen Typ „Ereignis“ verfügbar. Die Schweregrade lauten **Fehler**, **Information** und **Warnung**. |
 | Zustandswerte | Nur für den semantischen Typ „Zustand“ verfügbar. Definieren Sie die möglichen Zustandswerte, die jeweils einen Anzeigenamen, Namen, Enumerationstyp und Wert umfassen. |
 | Einheit | Eine Einheit für den Telemetriewert, z. B. **km/h**, **%** oder **&deg;C**. |
-| Anzeigeeinheit | Eine Anzeigeeinheit zur Verwendung in Dashboards und Formularen. |
+| Anzeigeeinheit | Eine Anzeigeeinheit zur Verwendung in Ansichten und Formularen. |
 | Comment | Beliebige Kommentare zur Telemetriefunktion. |
 | BESCHREIBUNG | Eine Beschreibung der Telemetriefunktion. |
 
@@ -149,7 +149,7 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Eigensch
 
 | Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Anzeigename | Der Anzeigename für den Eigenschaftswert, der in Dashboards und Formularen verwendet wird. |
+| Anzeigename | Der Anzeigename für den Eigenschaftswert, der in Ansichten und Formularen verwendet wird. |
 | Name | Der Name der Eigenschaft. IoT Central generiert einen Wert für dieses Feld aus dem Anzeigenamen, Sie können aber ggf. einen eigenen Wert auswählen. Dieses Feld muss alphanumerisch sein. |
 | Funktionstyp | Eigenschaft. |
 | Semantischer Typ | Der semantische Typ der Eigenschaft, z. B. Temperatur, Zustand oder Ereignis. Die Auswahl des semantischen Typs bestimmt, welches der folgenden Felder verfügbar ist. |
@@ -158,7 +158,7 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Eigensch
 | severity | Nur für den semantischen Typ „Ereignis“ verfügbar. Die Schweregrade lauten **Fehler**, **Information** und **Warnung**. |
 | Zustandswerte | Nur für den semantischen Typ „Zustand“ verfügbar. Definieren Sie die möglichen Zustandswerte, die jeweils einen Anzeigenamen, Namen, Enumerationstyp und Wert umfassen. |
 | Einheit | Eine Einheit für den Eigenschaftswert, z. B. **km/h**, **%** oder **&deg;C**. |
-| Anzeigeeinheit | Eine Anzeigeeinheit zur Verwendung in Dashboards und Formularen. |
+| Anzeigeeinheit | Eine Anzeigeeinheit zur Verwendung in Ansichten und Formularen. |
 | Comment | Beliebige Kommentare zur Eigenschaftsfunktion. |
 | BESCHREIBUNG | Eine Beschreibung der Eigenschaftsfunktion. |
 
@@ -170,7 +170,7 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Befehlsf
 
 | Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Anzeigename | Der Anzeigename für den Befehl, der in Dashboards und Formularen verwendet wird. |
+| Anzeigename | Der Anzeigename für den Befehl, der in Ansichten und Formularen verwendet wird. |
 | Name | Der Name des Befehls. IoT Central generiert einen Wert für dieses Feld aus dem Anzeigenamen, Sie können aber ggf. einen eigenen Wert auswählen. Dieses Feld muss alphanumerisch sein. |
 | Funktionstyp | Befehl. |
 | Comment | Beliebige Kommentare zur Befehlsfunktion. |
@@ -209,7 +209,7 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Cloudeig
 
 | Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Anzeigename | Der Anzeigename für den Cloudeigenschaftswert, der in Dashboards und Formularen verwendet wird. |
+| Anzeigename | Der Anzeigename für den Cloudeigenschaftswert, der in Ansichten und Formularen verwendet wird. |
 | Name | Der Name der Cloudeigenschaft. IoT Central generiert einen Wert für dieses Feld aus dem Anzeigenamen, Sie können aber ggf. einen eigenen Wert auswählen. |
 | Semantischer Typ | Der semantische Typ der Eigenschaft, z. B. Temperatur, Zustand oder Ereignis. Die Auswahl des semantischen Typs bestimmt, welches der folgenden Felder verfügbar ist. |
 | Schema | Der Datentyp der Cloudeigenschaft, z.B. „double“, „string“ oder „vector“. Die verfügbaren Optionen werden durch den semantischen Typ bestimmt. |
@@ -234,24 +234,24 @@ Das Generieren von Standardansichten ist eine schnelle Möglichkeit, Ihre wichti
 
 Nachdem Sie **Standardansichten generieren** ausgewählt haben, werden diese automatisch im Abschnitt **Ansichten** Ihrer Gerätevorlage hinzugefügt.
 
-## <a name="add-dashboards"></a>Hinzufügen von Dashboards
+## <a name="add-views"></a>Hinzufügen von Ansichten
 
-Fügen Sie einer Gerätevorlage Dashboards hinzu, um Bedienern die Visualisierung eines Geräts mithilfe von Diagrammen und Metriken zu ermöglichen. Sie können über mehrere Dashboards für eine Gerätevorlage verfügen.
+Fügen Sie einer Gerätevorlage Ansichten hinzu, um Bedienern die Visualisierung eines Geräts mithilfe von Diagrammen und Metriken zu ermöglichen. Bei einer Gerätevorlage kann es mehrere Ansichten geben.
 
-Zum Hinzufügen eines Dashboards zu einer Gerätevorlage führen Sie die folgenden Schritte aus:
+So fügen Sie einer Gerätevorlage eine Ansicht hinzu:
 
 1. Navigieren Sie zu Ihrer Gerätevorlage, und wählen Sie **Ansichten** aus.
 1. Wählen Sie **Gerät visualisieren** aus.
-1. Geben Sie im Feld **Dashboardname** einen Namen für das Dashboard ein.
-1. Fügen Sie dem Dashboard Kacheln aus der Liste mit statischen Kacheln und Kacheln für Eigenschaften, Cloudeigenschaften, Telemetrie und Befehle hinzu. Ziehen Sie die Kacheln, die Sie dem Dashboard hinzufügen möchten, per Drag & Drop.
+1. Geben Sie in **Anzeigename** einen Namen für Ihre Ansicht ein.
+1. Fügen Sie der Ansicht Kacheln aus der Liste mit statischen Kacheln sowie mit Kacheln für Eigenschaften, Cloudeigenschaften, Telemetrie und Befehle hinzu. Verschieben Sie die Kacheln, die Sie Ihrer Ansicht hinzufügen möchten, per Drag & Drop.
 1. Wenn Sie mehrere Telemetriewerte auf einer einzelnen Diagrammkachel darstellen möchten, wählen Sie die Telemetriewerte und dann **Kombinieren** aus.
 1. Konfigurieren Sie jede Kachel, die Sie hinzufügen, um die Anzeige von Daten auf ihr anzupassen. Greifen Sie auf diese Option zu, indem Sie das Zahnradsymbol auswählen, oder wählen Sie auf der Diagrammkachel **Konfiguration ändern** aus.
-1. Ordnen Sie die Kacheln auf Ihrem Dashboard an, und ändern Sie deren Größe.
+1. Ordnen Sie die Kacheln auf Ihrer Ansicht an, und ändern Sie die Kachelgröße.
 1. Speichern Sie die Änderungen.
 
-### <a name="configure-preview-device-to-view-dashboard"></a>Konfigurieren eines Vorschaugeräts zum Anzeigen des Dashboards
+### <a name="configure-preview-device-to-view"></a>Konfigurieren eines Vorschaugeräts zum Anzeigen der Ansicht
 
-Wählen Sie **Vorschaugerät konfigurieren** aus, um das Dashboard anzuzeigen und zu testen. Mit diesem Feature können Sie das Dashboard so anzeigen, wie es nach der Veröffentlichung dem Bediener angezeigt wird. Überprüfen Sie mit diesem Feature, ob in Ihren Ansichten die richtigen Daten angezeigt werden. Sie können eine der folgenden Optionen auswählen:
+Wählen Sie **Vorschaugerät konfigurieren** aus, um Ihre Ansicht anzuzeigen und zu testen. Mit diesem Feature können Sie die Ansicht so anzeigen, wie sie dem Bediener nach ihrer Veröffentlichung angezeigt wird. Überprüfen Sie mit diesem Feature, ob in Ihren Ansichten die richtigen Daten angezeigt werden. Sie können eine der folgenden Optionen auswählen:
 
 - Kein Vorschaugerät
 - Das tatsächliche Testgerät, das Sie für Ihre Gerätevorlage konfiguriert haben

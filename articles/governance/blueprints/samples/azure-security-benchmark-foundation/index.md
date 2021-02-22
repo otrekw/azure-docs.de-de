@@ -1,20 +1,20 @@
 ---
 title: Übersicht über das Blaupausenbeispiel „Azure Security Benchmark Foundation“
 description: Übersicht und Architektur für das Blaupausenbeispiel „Azure Security Benchmark Foundation“.
-ms.date: 02/12/2020
+ms.date: 02/17/2020
 ms.topic: sample
-ms.openlocfilehash: 4bbc5b94ea9b977a2b71edbf15cf5a7aa0566974
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b3b58f2fb603e23e4b188e527fa4fc60f4041a29
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416222"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095273"
 ---
 # <a name="overview-of-the-azure-security-benchmark-foundation-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „Azure Security Benchmark Foundation“
 
 Das Blaupausenbeispiel „Azure Security Benchmark Foundation“ enthält eine Reihe grundlegender Infrastrukturmuster, die Sie bei der Erstellung einer sicheren und konformen Azure-Umgebung unterstützen. Mithilfe der Blaupause können Sie eine cloudbasierte Architektur mit Lösungen für Szenarien bereitstellen, in denen Akkreditierungs- oder Konformitätsanforderungen erfüllt werden müssen. Dieses grundlegende Blaupausenbeispiel ist eine Erweiterung des [Blaupausenbeispiel „Azure Security Benchmark“](../azure-security-benchmark/index.md). Es dient zum Bereitstellen und Konfigurieren von Netzwerkgrenzen, Überwachungsmöglichkeiten und anderen Ressourcen im Einklang mit den Richtlinien und anderen Schutzmaßnahmen, die im [Azure-Sicherheitsvergleichstest](../../../../security/benchmarks/index.yml) definiert sind.
 
-## <a name="architecture"></a>Architektur
+## <a name="architecture"></a>Aufbau
 
 Die grundlegende Umgebung, die durch dieses Blaupausenbeispiel erstellt wird, basiert auf den Architekturprinzipien eines [Hub-and-Spoke-Modells](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke).
 Durch die Blaupause wird ein virtuelles Hub-Netzwerk mit folgenden Komponenten bereitgestellt: allgemeine und gemeinsam genutzte Ressourcen, Dienste und Artefakte wie Bastion, Gateway und Firewall für Konnektivität sowie Verwaltungs- und Jumpbox-Subnetze zum Hosten zusätzlicher/optionaler Wartungs-, Verwaltungs- und Konnektivitätsinfrastruktur. Darüber hinaus wird mindestens ein virtuelles Spoke-Netzwerk zum Hosten von Anwendungsworkloads wie etwa Web- und Datenbankdienste bereitgestellt. Virtuelle Spoke-Netzwerke werden mittels Peering in virtuellen Azure-Netzwerken mit dem virtuellen Hub-Netzwerk verbunden, um eine nahtlose und sichere Konnektivität zu gewährleisten. Durch erneutes Zuweisen der Beispielblaupause oder manuelles Erstellen eines virtuellen Azure-Netzwerks und anschließendes Peering mit dem virtuellen Hub-Netzwerk können weitere Spokes hinzugefügt werden. Die gesamte externe Konnektivität mit den virtuellen Spoke-Netzwerken und Subnetzen wird so konfiguriert, dass Datenverkehr das virtuelle Hub-Netzwerk durchläuft und über Firewall, Gateway und Verwaltungs-Jumpboxes geleitet wird.

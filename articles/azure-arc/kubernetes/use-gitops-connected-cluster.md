@@ -2,51 +2,47 @@
 title: Bereitstellen von Konfigurationen mithilfe von GitOps in Arc-fähigen Kubernetes-Clustern (Vorschauversion)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 02/15/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Verwenden von GitOps zum Konfigurieren eines Azure Arc-fähigen Kubernetes-Clusters (Vorschau)
 keywords: GitOps, Kubernetes, K8s, Azure, Arc, Azure Kubernetes Service, AKS, Container
-ms.openlocfilehash: 72dc42fffb3653de81477fa504c11b9b0328d2eb
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 3cadcdf80abd997ec10aeb9521680944d455898f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988702"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560171"
 ---
-# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Bereitstellen von Konfigurationen mithilfe von GitOps in Arc-fähigen Kubernetes-Clustern (Vorschauversion)
+# <a name="deploy-configurations-using-gitops-on-an-arc-enabled-kubernetes-cluster-preview"></a>Bereitstellen von Konfigurationen mithilfe von GitOps in einem Arc-fähigen Kubernetes-Cluster (Vorschauversion)
 
-GitOps ist, das es auf Kubernetes basiert, die Praxis des Deklarierens des gewünschten Zustands einer Kubernetes-Konfiguration (Bereitstellungen, Namespaces usw.) in einem Git-Repository gefolgt von einer abruf- und pullbasierten Bereitstellung dieser Konfigurationen im Cluster mithilfe eines Operators. In diesem Dokument wird das Einrichten solcher Workflows in Azure Arc-fähigen Kubernetes-Clustern beschrieben.
+In diesem Artikel wird das Anwenden von Konfigurationen auf einen Azure Arc-fähigen Kubernetes-Cluster veranschaulicht. Eine konzeptionelle Übersicht dazu finden Sie [hier](./conceptual-configurations.md).
 
-Die Verbindung zwischen Ihrem Cluster und einem Git-Repository wird in Azure Resource Manager als `Microsoft.KubernetesConfiguration/sourceControlConfigurations`-Erweiterungsressource erstellt. Die `sourceControlConfiguration`-Ressourceneigenschaften stellen dar, wohin und wie Kubernetes-Ressourcen von Git an Ihren Cluster weitergeleitet werden sollen. Die `sourceControlConfiguration`-Daten werden im Ruhezustand verschlüsselt in einer Azure Cosmos DB-Datenbank gespeichert, um ihre Vertraulichkeit zu gewährleisten.
+## <a name="before-you-begin"></a>Vorbereitung
 
-Der in Ihrem Cluster ausgeführte `config-agent` ist für die Überwachung neuer oder aktualisierter `sourceControlConfiguration`-Erweiterungsressourcen in der Azure Arc-fähigen Kubernetes-Ressource, für das Bereitstellen eines Flux-Operators zum Überwachen des Git-Repositorys für jede `sourceControlConfiguration` und für das Anwenden aller Updates auf jede `sourceControlConfiguration` verantwortlich. Es ist möglich, mehrere `sourceControlConfiguration`-Ressourcen im selben Azure Arc-fähigen Kubernetes-Cluster zu erstellen, um die Mehrinstanzenfähigkeit zu erzielen. Sie können jede `sourceControlConfiguration` mit einem anderen `namespace`-Bereich erstellen, um Bereitstellungen auf innerhalb der jeweiligen Namespaces zu beschränken.
+* Überprüfen Sie, ob Sie über einen verbundenen, Azure Arc-fähigen Kubernetes-Cluster verfügen. Wenn Sie einen verbundenen Cluster benötigen, sehen Sie sich den [Schnellstart zum Verbinden eines Azure Arc-fähigen Kubernetes-Clusters](./connect-cluster.md) an.
 
-Das Git-Repository kann Manifeste im YAML-Fomat enthalten, die gültige Kubernetes-Ressourcen einschließlich Namespaces, ConfigMaps, Bereitstellungen, DaemonSets usw. beschreiben.  Es kann auch Helm-Charts für die Bereitstellung von Anwendungen enthalten. Mehrere allgemeine Szenarios umfassen das Definieren einer Baselinekonfiguration für Ihre Organisation, die allgemeine Azure-Rollen und -Bindungen, Überwachungs- oder Protokollierungs-Agents oder clusterweite Dienste beinhalten kann.
-
-Das gleiche Muster kann verwendet werden, um eine größere Sammlung von Clustern zu verwalten, die in heterogenen Umgebungen bereitgestellt werden können. Sie können beispielsweise mit einem Repository die Baselinekonfiguration für Ihre Organisation definieren und diese auf zehn Kubernetes-Cluster gleichzeitig anwenden. [Azure Policy kann die Erstellung](use-azure-policy.md) einer `sourceControlConfiguration`-Ressource mit bestimmten Parametern in allen Azure Arc-fähigen Kubernetes-Ressourcen in einem Bereich (Abonnement oder Ressourcengruppe) automatisieren.
-
-Dieser Leitfaden für die ersten Schritte erläutert das Anwenden mehrerer Konfigurationen für Cluster auf Administratorebene.
-
-## <a name="before-you-begin"></a>Voraussetzungen
-
-In diesem Artikel wird davon ausgegangen, dass Sie über einen verbundenen, Azure Arc-fähigen Kubernetes-Cluster verfügen. Wenn Sie einen verbundenen Cluster benötigen, finden Sie weitere Informationen im [Schnellstart zum Verbinden eines Clusters](./connect-cluster.md).
+* Informationen zu den Vorteilen und der Architektur dieses Features finden Sie im [Artikel „Konfigurationen und GitOps mit Arc für Kubernetes“](./conceptual-configurations.md).
 
 ## <a name="create-a-configuration"></a>Erstellen einer Konfiguration
 
-Das in diesem Dokument verwendete [Beispielrepository](https://github.com/Azure/arc-k8s-demo) ist um die Persona eines Clusteroperators strukturiert, der einige Namespaces, eine gemeinsame Workload und teamspezifische Konfigurationen bereitstellen möchte. Durch Verwendung dieses Repositorys werden die folgenden Ressourcen in Ihrem Cluster erstellt:
+Das in diesem Artikel verwendete [Beispielrepository](https://github.com/Azure/arc-k8s-demo) ist um die Persona eines Clusteroperators strukturiert, der einige Namespaces, eine gemeinsame Workload und teamspezifische Konfigurationen bereitstellen möchte. Durch Verwendung dieses Repositorys werden die folgenden Ressourcen in Ihrem Cluster erstellt:
 
-**Namespaces:** `cluster-config`, `team-a`, `team-b`
-**Bereitstellung:** `cluster-config/azure-vote`
-**ConfigMap:** `team-a/endpoints`
+* **Namespaces:** `cluster-config`, `team-a`, `team-b`
+* **Bereitstellung:** `cluster-config/azure-vote`
+* **ConfigMap:** `team-a/endpoints`
 
-Der `config-agent` fragt Azure alle 30 Sekunden nach neuen oder aktualisierten `sourceControlConfiguration`-Ressourcen. Dies ist der maximale Zeitraum, den der `config-agent` zum Abrufen einer neuen oder aktualisierten Konfiguration benötigt.
-Stellen Sie sicher, dass Sie auch die Schritte unter [Anwenden der Konfiguration über ein privates Git-Repository](#apply-configuration-from-a-private-git-repository) ausführen, wenn Sie ein privates Repository mit `sourceControlConfiguration` zuordnen.
+Der `config-agent` fragt Azure nach einer neuen oder aktualisierten `sourceControlConfiguration` ab. Diese Aufgabe kann bis zu 30 Sekunden dauern.
+
+Führen Sie auch die Schritte unter [Anwenden der Konfiguration über ein privates Git-Repository](#apply-configuration-from-a-private-git-repository) aus, wenn Sie ein privates Repository mit `sourceControlConfiguration` zuordnen.
 
 ### <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
-Verwenden Sie die Azure CLI-Erweiterung für `k8sconfiguration`, um einen verbundenen Cluster mit dem [Git-Beispielrepository](https://github.com/Azure/arc-k8s-demo) zu verknüpfen. Wir geben dieser Konfiguration den Namen `cluster-config`, weisen den Agent an, den Operator im `cluster-config`-Namespace bereitzustellen, und erteilen ihm `cluster-admin`-Berechtigungen.
+Verwenden Sie die Azure CLI-Erweiterung für `k8sconfiguration`, um einen verbundenen Cluster mit dem [Git-Beispielrepository](https://github.com/Azure/arc-k8s-demo) zu verknüpfen. 
+1. Benennen Sie diese Konfiguration `cluster-config`.
+1. Weisen Sie den Agent an, den Operator im `cluster-config`-Namespace bereitzustellen.
+1. Erteilen Sie dem Operator `cluster-admin`-Berechtigungen.
 
 ```azurecli
 az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name cluster-config --operator-namespace cluster-config --repository-url https://github.com/Azure/arc-k8s-demo --scope cluster --cluster-type connectedClusters
@@ -93,87 +89,84 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 | Parameter | Format |
 | ------------- | ------------- |
-| --repository-url | http[s]://server/repo[.git] oder git://server/repo[.git]
+| `--repository-url` | http[s]://server/repo[.git] oder git://server/repo[.git]
 
 #### <a name="use-a-private-git-repo-with-ssh-and-flux-created-keys"></a>Verwenden eines privaten Git-Repositorys mit SSH und mit Flux erstellten Schlüsseln
 
 | Parameter | Format | Notizen
 | ------------- | ------------- | ------------- |
-| --repository-url | ssh://user@server/repo[.git] oder user@server:repo[.git] | `git@` kann `user@` ersetzen
+| `--repository-url` | ssh://user@server/repo[.git] oder user@server:repo[.git] | `git@` kann `user@` ersetzen
 
 > [!NOTE]
-> Der mit Flux generierte öffentliche Schlüssel muss dem Benutzerkonto in Ihrem Git-Dienstanbieter hinzugefügt werden. Wenn der Schlüssel dem Repository statt dem Benutzerkonto hinzugefügt wird, verwenden Sie in der URL `git@` anstelle von `user@`. [Anzeigen weiterer Details](#apply-configuration-from-a-private-git-repository)
+> Der mit Flux generierte öffentliche Schlüssel muss dem Benutzerkonto in Ihrem Git-Dienstanbieter hinzugefügt werden. Wenn der Schlüssel dem Repository statt dem Benutzerkonto hinzugefügt wird, verwenden Sie in der URL `git@` anstelle von `user@`. Weitere Informationen finden Sie im Abschnitt [Anwenden einer Konfiguration aus einem privaten Git-Repository](#apply-configuration-from-a-private-git-repository).
 
 #### <a name="use-a-private-git-repo-with-ssh-and-user-provided-keys"></a>Verwenden eines privaten Git-Repositorys mit SSH und benutzerseitig bereitgestellten Schlüsseln
 
 | Parameter | Format | Notizen |
 | ------------- | ------------- | ------------- |
-| --repository-url  | ssh://user@server/repo[.git] oder user@server:repo[.git] | `git@` kann `user@` ersetzen |
-| --ssh-private-key | base64-codierter Schlüssel im [PEM-Format](https://aka.ms/PEMformat) | Direktes Bereitstellen des Schlüssels |
-| --ssh-private-key-file | Vollständiger Pfad zur lokalen Datei | Bereitstellen des vollständigen Pfads zur lokalen Datei, die den Schlüssel im PEM-Format enthält
+| `--repository-url`  | ssh://user@server/repo[.git] oder user@server:repo[.git] | `git@` kann `user@` ersetzen |
+| `--ssh-private-key` | base64-codierter Schlüssel im [PEM-Format](https://aka.ms/PEMformat) | Direktes Bereitstellen des Schlüssels |
+| `--ssh-private-key-file` | Vollständiger Pfad zur lokalen Datei | Bereitstellen des vollständigen Pfads zur lokalen Datei, die den Schlüssel im PEM-Format enthält
 
 > [!NOTE]
-> Stellen Sie Ihren eigenen privaten Schlüssel direkt oder in einer Datei bereit. Der Schlüssel muss im [PEM-Format](https://aka.ms/PEMformat) sein und mit einem Zeilenumbruch (\n) enden.  Der zugeordnete öffentliche Schlüssel muss dem Benutzerkonto in Ihrem Git-Dienstanbieter hinzugefügt werden. Wenn der Schlüssel dem Repository statt dem Benutzerkonto hinzugefügt wird, verwenden Sie `git@` anstelle von `user@`. [Anzeigen weiterer Details](#apply-configuration-from-a-private-git-repository)
+> Stellen Sie Ihren eigenen privaten Schlüssel direkt oder in einer Datei bereit. Der Schlüssel muss im [PEM-Format](https://aka.ms/PEMformat) sein und mit einem Zeilenumbruch (\n) enden.  Der zugeordnete öffentliche Schlüssel muss dem Benutzerkonto in Ihrem Git-Dienstanbieter hinzugefügt werden. Wenn der Schlüssel dem Repository statt dem Benutzerkonto hinzugefügt wird, verwenden Sie `git@` anstelle von `user@`. Weitere Informationen finden Sie im Abschnitt [Anwenden einer Konfiguration aus einem privaten Git-Repository](#apply-configuration-from-a-private-git-repository).
 
 #### <a name="use-a-private-git-host-with-ssh-and-user-provided-known-hosts"></a>Verwenden eines privaten Git-Hosts mit SSH und benutzerseitig bereitgestellten bekannten Hosts
 
 | Parameter | Format | Notizen |
 | ------------- | ------------- | ------------- |
-| --repository-url  | ssh://user@server/repo[.git] oder user@server:repo[.git] | `git@` kann `user@` ersetzen |
-| --ssh-known-hosts | base64-codiert | Direkt bereitgestellter Inhalt von bekannten Hosts |
-| --ssh-known-hosts-file | Vollständiger Pfad zur lokalen Datei | In einer lokalen Datei bereitgestellter Inhalt von bekannten Hosts
+| `--repository-url`  | ssh://user@server/repo[.git] oder user@server:repo[.git] | `git@` kann `user@` ersetzen |
+| `--ssh-known-hosts` | base64-codiert | Inhalte bekannter Hosts direkt bereitstellen |
+| `--ssh-known-hosts-file` | Vollständiger Pfad zur lokalen Datei | Inhalte bekannter Hosts in einer lokalen Datei bereitstellen |
 
 > [!NOTE]
-> Der Flux-Operator verwaltet eine Liste gängiger Git-Hosts in seiner Datei bekannter Hosts, um das Git-Repository vor dem Einrichten der SSH-Verbindung zu authentifizieren. Wenn Sie ein nicht gängiges Git-Repository oder Ihren eigenen Git-Host verwenden, müssen Sie möglicherweise den Hostschlüssel bereitstellen, um sicherzustellen, dass Flux Ihr Repository identifizieren kann. Sie können Ihren Inhalt von bekannten Hosts direkt oder in einer Datei bereitstellen. [Anzeigen der Formatspezifikation für Inhalt von bekannten Hosts](https://aka.ms/KnownHostsFormat).
-> Sie können diese in Verbindung mit einem der oben beschriebenen SSH-Schlüsselszenarien verwenden.
+> Um das Git-Repository vor dem Einrichten der SSH-Verbindung zu authentifizieren, verwaltet der Flux-Operator eine Liste gängiger Git-Hosts in seiner Datei bekannter Hosts. Wenn Sie ein nicht gängiges Git-Repository oder Ihren eigenen Git-Host verwenden, müssen Sie möglicherweise den Hostschlüssel bereitstellen, um sicherzustellen, dass Flux Ihr Repository identifizieren kann. Sie können Ihren known_hosts-Inhalt (bekannte Hosts) direkt oder in einer Datei bereitstellen. Verwenden Sie die [Formatspezifikationen für known_hosts-Inhalt](https://aka.ms/KnownHostsFormat) zusammen mit einem der oben beschriebenen SSH-Schlüsselszenarien, wenn Sie Ihren eigenen Inhalt bereitstellen.
 
 #### <a name="use-a-private-git-repo-with-https"></a>Verwenden eines privaten Git-Repository mit HTTPS
 
 | Parameter | Format | Notizen |
 | ------------- | ------------- | ------------- |
-| --repository-url | https://server/repo [.git] | HTTPS mit Standardauthentifizierung |
-| --https-user | Unformatiert (raw) base64-codiert | HTTPS-Benutzername |
-| --https-key | Unformatiert (raw) base64-codiert | Persönliches HTTPS-Zugriffstoken oder -Kennwort
+| `--repository-url` | https://server/repo [.git] | HTTPS mit Standardauthentifizierung |
+| `--https-user` | Unformatiert (raw) base64-codiert | HTTPS-Benutzername |
+| `--https-key` | Unformatiert (raw) base64-codiert | Persönliches HTTPS-Zugriffstoken oder -Kennwort
 
 > [!NOTE]
-> Die private Authentifizierung von HTTPS Helm Release wird nur mit der Chartversion >= 1.2.0 des Helm-Operators unterstützt.  Version 1.2.0 wird standardmäßig verwendet.
+> Die private Authentifizierung von HTTPS Helm Release wird nur mit der Chartversion 1.2.0 und höher (Standard) des Helm-Operators unterstützt.
 > Die private Authentifizierung von HTTPS Helm Release wird für verwaltete Azure Kubernetes Services-Cluster derzeit nicht unterstützt.
-> Wenn Sie Flux benötigen, um über Ihren Proxy auf das Git-Repository zuzugreifen, müssen Sie die Azure Arc-Agents mit den Proxyeinstellungen aktualisieren. [Weitere Informationen](./connect-cluster.md#connect-using-an-outbound-proxy-server)
+> Wenn Sie Flux benötigen, um über Ihren Proxy auf das Git-Repository zuzugreifen, müssen Sie die Azure Arc-Agents mit den Proxyeinstellungen aktualisieren. Informationen finden Sie unter [Herstellen einer Verbindung mithilfe eines ausgehenden Proxyservers](./connect-cluster.md#connect-using-an-outbound-proxy-server).
 
 #### <a name="additional-parameters"></a>Zusätzliche Parameter
 
-Hier finden Sie einige weitere Parameter, um die Konfiguration anzupassen:
+Passen Sie die Konfiguration mit den folgenden optionalen Parametern an:
 
-`--enable-helm-operator` : *Optionaler* Switch zum Aktivieren der Unterstützung für Helm-Chartbereitstellungen.
+| Parameter | BESCHREIBUNG |
+| ------------- | ------------- |
+| `--enable-helm-operator`| Switch zum Aktivieren der Unterstützung für Helm-Chartbereitstellungen. |
+| `--helm-operator-params` | Chartwerte für den Helm-Operator (falls aktiviert). Beispiel: `--set helm.versions=v3`. |
+| `--helm-operator-version` | Chartversion für den Helm-Operator (falls aktiviert). Verwenden Sie Version 1.2.0 und höher. Standardwert: ‚1.2.0‘. |
+| `--operator-namespace` | Name für den Operatornamespace. Standardwert: „default“. Max: 23 Zeichen. |
+| `--operator-params` | Parameter für den Operator. Diese müssen in einfachen Anführungszeichen angegeben werden. Zum Beispiel, ```--operator-params='--git-readonly --sync-garbage-collection --git-branch=main' ``` 
 
-`--helm-operator-params` : *Optionale* Chartwerte für den Helm-Operator (falls aktiviert).  Beispiel: „--set helm.versions=v3“
-
-`--helm-operator-version` : *Optionale* Chartversion für den Helm-Operator (falls aktiviert). Verwenden Sie „1.2.0“ oder höher. Standardwert: ‚1.2.0‘.
-
-`--operator-namespace` : *Optionaler* Name für den Operatornamespace. Standardwert: „default“. Maximal 23 Zeichen
-
-`--operator-params` : *Optionale* Parameter für den Operator. Diese müssen in einfachen Anführungszeichen angegeben werden. Zum Beispiel, ```--operator-params='--git-readonly --sync-garbage-collection --git-branch=main' ```
-
-Unterstützte Optionen in „--operator-params“
+##### <a name="options-supported-in----operator-params"></a>In `--operator-params` unterstützte Optionen:
 
 | Option | BESCHREIBUNG |
 | ------------- | ------------- |
-| --git-branch  | Die Verzweigung des Git-Repositorys für Kubernetes-Manifeste. Der Standardwert ist „master“. Neuere Repositorys haben einen Stammzweig namens „main“, in diesem Fall müssen Sie --git-branch=main festlegen. |
-| --git-path  | Dies ist der relative Pfad im Git-Repository für Flux zum Suchen von Kubernetes-Manifesten. |
-| --git-readonly | Das Git-Repository wird als schreibgeschützt betrachtet. Flux versucht nicht, in die Datei zu schreiben. |
-| --manifest-generation  | Wenn diese Option aktiviert ist, sucht Flux nach „.flux.yaml“ und führt Kustomize oder andere Manifest-Generatoren aus. |
-| --git-poll-interval  | Dies ist die Zeitspanne, in der das Git-Repository für neue Commits abgerufen wird. Der Standardwert ist „5m“ (fünf Minuten). |
-| --sync-garbage-collection  | Wenn diese Option aktiviert ist, werden die von Flux erstellten Ressourcen gelöscht und sind nicht mehr in Git verfügbar. |
-| --git-label  | Dies ist die Bezeichnung zum Nachverfolgen des Synchronisierungsprozesses, der verwendet wird, um die Git-Verzweigung zu markieren.  Der Standardwert ist „flux-sync“. |
-| --git-user  | Benutzername für Git-Commits. |
-| --git-email  | Für Git-Commits zu verwendende E-Mail-Adresse. |
+| `--git-branch`  | Die Verzweigung des Git-Repositorys für Kubernetes-Manifeste. Der Standardwert ist „master“. Neuere Repositorys haben einen Stammzweig namens `main`, in diesem Fall müssen Sie `--git-branch=main` festlegen. |
+| `--git-path`  | Dies ist der relative Pfad im Git-Repository für Flux zum Suchen von Kubernetes-Manifesten. |
+| `--git-readonly` | Das Git-Repository wird als schreibgeschützt betrachtet. Flux versucht nicht, in die Datei zu schreiben. |
+| `--manifest-generation`  | Wenn diese Option aktiviert ist, sucht Flux nach „.flux.yaml“ und führt Kustomize oder andere Manifest-Generatoren aus. |
+| `--git-poll-interval`  | Dies ist die Zeitspanne, in der das Git-Repository für neue Commits abgerufen wird. Der Standardwert ist `5m` (fünf Minuten). |
+| `--sync-garbage-collection`  | Wenn diese Option aktiviert ist, werden die von Flux erstellten Ressourcen gelöscht und sind nicht mehr in Git verfügbar. |
+| `--git-label`  | Bezeichnung zum Nachverfolgen des Synchronisierungsprozesses. Wird verwendet, um die Git-Verzweigung zu markieren.  Der Standardwert ist `flux-sync`. |
+| `--git-user`  | Benutzername für Git-Commits. |
+| `--git-email`  | Für Git-Commits zu verwendende E-Mail-Adresse. 
 
-* Wenn „--git-user“ oder „--git-email“ nicht festgelegt ist, da Sie nicht möchten, dass Flux in das Repository schreibt, wird „--git-readonly“ (falls nicht bereits festgelegt) automatisch festgelegt.
+Wenn Flux nicht in das Repository schreiben soll und `--git-user` oder `--git-email` nicht festgelegt ist, wird `--git-readonly` automatisch festgelegt.
 
 Weitere Informationen finden Sie in der [Flux-Dokumentation](https://aka.ms/FluxcdReadme).
 
 > [!TIP]
-> Es ist möglich, im Azure-Portal auf der Registerkarte **GitOps** der Azure Arc-fähigen Kubernetes-Ressource eine sourceControlConfiguration zu erstellen.
+> Sie können eine `sourceControlConfiguration` im Azure-Portal auf der Registerkarte **GitOps** der Azure Arc-fähigen Kubernetes-Ressource erstellen.
 
 ## <a name="validate-the-sourcecontrolconfiguration"></a>Überprüfen der „sourceControlConfiguration“-Ressource
 
@@ -183,7 +176,7 @@ Weitere Informationen finden Sie in der [Flux-Dokumentation](https://aka.ms/Flux
 az k8sconfiguration show --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
-Beachten Sie, dass die `sourceControlConfiguration`-Ressource mit einem Compliancestatus, Nachrichten und Debuginformationen aktualisiert wird.
+Die `sourceControlConfiguration`-Ressource wird mit Compliancestatus, mit Nachrichten und Debuginformationen aktualisiert.
 
 **Ausgabe:**
 
@@ -236,19 +229,23 @@ Wenn die Ressource `sourceControlConfiguration` erstellt oder aktualisiert wird,
 
 Während des Bereitstellungsprozesses wird der Status der `sourceControlConfiguration`-Ressource mehrfach geändert. Überwachen Sie den Fortschritt mit dem obigen `az k8sconfiguration show ...`-Befehl:
 
-1. `complianceStatus` -> `Pending`: Hiermit werden der anfängliche Status und der Status während der Bearbeitung dargestellt.
-1. `complianceStatus` -> `Installed`: Der `config-agent` konnte den Cluster erfolgreich konfigurieren und `flux` ohne Fehler bereitstellen.
-1. `complianceStatus` -> `Failed`: Der `config-agent` hat einen Fehler beim Bereitstellen von `flux` gefunden, die Details sind im Antworttext `complianceStatus.message` verfügbar.
+| Phasenänderung | BESCHREIBUNG |
+| ------------- | ------------- |
+| `complianceStatus`-> `Pending` | Hiermit werden der anfängliche Status und der Status während der Bearbeitung dargestellt. |
+| `complianceStatus` -> `Installed`  | `config-agent` konnte den Cluster erfolgreich konfigurieren und `flux` ohne Fehler bereitstellen. |
+| `complianceStatus` -> `Failed` | Bei `config-agent` ist ein Fehler beim Bereitstellen von `flux` aufgetreten. Details sollten im `complianceStatus.message`-Antworttext zu finden sein. |
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Anwenden der Konfiguration aus einem privaten Git-Repository
 
-Wenn Sie ein privates Git-Repository verwenden, müssen Sie den öffentlichen SSH-Schlüssel in Ihrem Repository konfigurieren. Sie können den öffentlichen Schlüssel entweder für das spezifische Git-Repository oder den Git-Benutzer konfigurieren, der Zugriff auf das Repository hat. Der öffentliche SSH-Schlüssel ist entweder der von Ihnen bereitgestellte oder der von Flux generierte.
+Wenn Sie ein privates Git-Repository verwenden, müssen Sie den öffentlichen SSH-Schlüssel in Ihrem Repository konfigurieren. Der öffentliche SSH-Schlüssel ist entweder der von Flux generierte oder der von Ihnen bereitgestellte. Sie können den öffentlichen Schlüssel entweder für das spezifische Git-Repository oder den Git-Benutzer konfigurieren, der Zugriff auf das Repository hat. 
 
-**Abrufen Ihres eigenen öffentlichen Schlüssels**
+### <a name="get-your-own-public-key"></a>Abrufen Ihres eigenen öffentlichen Schlüssels
 
 Wenn Sie Ihre eigenen SSH-Schlüssel generiert haben, verfügen Sie bereits über die privaten und öffentlichen Schlüssel.
 
-**Abrufen des öffentlichen Schlüssels mithilfe der Azure CLI (nützlich, wenn Flux die Schlüssel generiert)**
+#### <a name="get-the-public-key-using-azure-cli"></a>Abrufen des öffentlichen Schlüssels mithilfe der Azure CLI 
+
+Folgendes ist nützlich, wenn Flux die Schlüssel generiert.
 
 ```console
 $ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --cluster-type connectedClusters --query 'repositoryPublicKey' 
@@ -256,45 +253,51 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAREDACTED"
 ```
 
-**Abrufen des öffentlichen Schlüssels aus dem Azure-Portal (nützlich, wenn Flux die Schlüssel generiert)**
+#### <a name="get-the-public-key-from-the-azure-portal"></a>Abrufen des öffentlichen Schlüssels über das Azure-Portal
+
+Folgendes ist nützlich, wenn Flux die Schlüssel generiert.
 
 1. Navigieren Sie im Azure-Portal zur verbundenen Clusterressource.
 2. Wählen Sie auf der Ressourcenseite „GitOps“ aus, um die Liste der Konfigurationen für diesen Cluster anzuzeigen.
 3. Klicken Sie auf die Konfiguration, die das private Git-Repository verwendet.
 4. Kopieren Sie den **öffentlichen Repositoryschlüssel** im geöffneten Kontextfenster unten auf der Seite.
 
-Wenn Sie GitHub verwenden, verwenden Sie eine der folgenden beiden Optionen:
+#### <a name="add-public-key-using-github"></a>Hinzufügen eines öffentlichen Schlüssels mithilfe von GitHub
 
-**Option 1: Hinzufügen des öffentlichen Schlüssels zu Ihrem Benutzerkonto (gilt für alle Repositorys in Ihrem Konto)**
+Nutzen Sie eine der folgenden Optionen:
 
-1. Öffnen Sie GitHub, und klicken Sie in der oberen rechten Ecke der Seite auf Ihr Profilsymbol.
-2. Klicken Sie auf **Einstellungen**.
-3. Klicken Sie auf **SSH- und GPG-Schlüssel**.
-4. Klicken Sie auf **Neuer SSH-Schlüssel**.
-5. Geben Sie einen Titel an.
-6. Fügen Sie den öffentlichen Schlüssel ohne die diesen umgebenden Anführungszeichen ein.
-7. Klicken Sie auf **SSH-Schlüssel hinzufügen**.
+* Option 1: Hinzufügen des öffentlichen Schlüssels zu Ihrem Benutzerkonto (gilt für alle Repositorys in Ihrem Konto):  
+    1. Öffnen Sie GitHub, und klicken Sie in der oberen rechten Ecke der Seite auf Ihr Profilsymbol.
+    2. Klicken Sie auf **Einstellungen**.
+    3. Klicken Sie auf **SSH- und GPG-Schlüssel**.
+    4. Klicken Sie auf **Neuer SSH-Schlüssel**.
+    5. Geben Sie einen Titel an.
+    6. Fügen Sie den öffentlichen Schlüssel ohne die diesen umgebenden Anführungszeichen ein.
+    7. Klicken Sie auf **SSH-Schlüssel hinzufügen**.
 
-**Option 2: Hinzufügen des öffentlichen Schlüssels als Bereitstellungsschlüssel zum Git-Repository (gilt nur für dieses Repository)**
+* Option 2: Hinzufügen des öffentlichen Schlüssels als Bereitstellungsschlüssel zum Git-Repository (gilt nur für dieses Repository):  
+    1. Öffnen Sie GitHub, und navigieren Sie zu Ihrem Repository.
+    1. Klicken Sie auf **Einstellungen**.
+    1. Klicken Sie auf **Bereitstellungsschlüssel**.
+    1. Klicken Sie auf **Bereitstellungsschlüssel hinzufügen**.
+    1. Geben Sie einen Titel an.
+    1. Aktivieren Sie **Schreibzugriff gewähren**.
+    1. Fügen Sie den öffentlichen Schlüssel ohne die diesen umgebenden Anführungszeichen ein.
+    1. Klicken Sie auf **Schlüssel hinzufügen**.
 
-1. Öffnen Sie GitHub, navigieren Sie zunächst zu Ihrem Repository, dann zu **Einstellungen** und anschließend zu **Deploy keys** (Bereitstellungsschlüssel).
-2. Klicken Sie auf **Bereitstellungsschlüssel hinzufügen**.
-3. Geben Sie einen Titel an.
-4. Aktivieren Sie die Option **Allow write access** (Schreibzugriff gewähren).
-5. Fügen Sie den öffentlichen Schlüssel ohne die diesen umgebenden Anführungszeichen ein.
-6. Klicken Sie auf **Schlüssel hinzufügen**.
+#### <a name="add-public-key-using-an-azure-devops-repository"></a>Hinzufügen eines öffentlichen Schlüssels mit einem Azure DevOps-Repository
 
-**Hinzufügen des Schlüssels zu den SSH-Schlüsseln bei Verwendung eines Azure DevOps-Repositorys**
+Führen Sie die folgenden Schritte aus, um den Schlüssel zu Ihren SSH-Schlüsseln hinzuzufügen:
 
 1. Klicken Sie unter **Benutzereinstellungen** oben rechts (neben dem Profilbild) auf **Öffentliche SSH-Schlüssel**.
-1. Klicken Sie auf **Neuer Schlüssel**.
+1. Klicken Sie auf **+ Neuer Schlüssel**.
 1. Geben Sie einen Namen an.
 1. Fügen Sie den öffentlichen Schlüssel ohne die diesen umgebenden Anführungszeichen ein.
 1. Klicken Sie auf **Hinzufügen**.
 
 ## <a name="validate-the-kubernetes-configuration"></a>Überprüfen der Kubernetes-Konfiguration
 
-Nachdem der `config-agent` die `flux`-Instanz installiert hat, sollten die im Git-Repository gespeicherten Ressourcen an den Cluster weitergeleitet werden. Überprüfen Sie, ob die Namcespaces, Bereitstellungen und Ressourcen erstellt wurden:
+Nachdem der `config-agent` die `flux`-Instanz installiert hat, sollten die im Git-Repository gespeicherten Ressourcen an den Cluster weitergeleitet werden. Überprüfen Sie, ob die Namespaces, Bereitstellungen und Ressourcen erstellt wurden, mit dem folgenden Befehl:
 
 ```console
 kubectl get ns --show-labels
@@ -333,7 +336,7 @@ memcached        1/1     1            1           3h    memcached    memcached:1
 
 ## <a name="further-exploration"></a>Weitere Untersuchungen
 
-Sie können die anderen Ressourcen untersuchen, die als Teil des Konfigurationsrepositorys bereitgestellt werden:
+Sie können die anderen Ressourcen, die als Teil des Konfigurationsrepositorys bereitgestellt werden, mit Folgendem untersuchen:
 
 ```console
 kubectl -n team-a get cm -o yaml
@@ -342,10 +345,10 @@ kubectl -n itops get all
 
 ## <a name="delete-a-configuration"></a>Löschen einer Konfiguration
 
-Löschen Sie eine `sourceControlConfiguration`-Ressource mithilfe der Azure CLI oder über das Azure-Portal.  Nachdem Sie den Löschbefehl initiiert haben, wird die `sourceControlConfiguration`-Ressource sofort in Azure gelöscht, und die vollständige Löschung der zugeordneten Objekte aus dem Cluster sollte innerhalb von 10 Minuten erfolgen.  Wenn sich die `sourceControlConfiguration` beim Löschen in einem fehlerhaften Zustand befindet, kann das vollständige Löschen der zugeordneten Objekte bis zu einer Stunde dauern.
+Löschen Sie eine `sourceControlConfiguration`-Ressource mithilfe der Azure CLI oder über das Azure-Portal.  Nachdem Sie den Löschenbefehl initiiert haben, wird die `sourceControlConfiguration`-Ressource sofort in Azure gelöscht. Das vollständige Löschen der zugeordneten Objekte aus dem Cluster sollte innerhalb von 10 Minuten erfolgen. Wenn sich die `sourceControlConfiguration` beim Entfernen in einem fehlerhaften Zustand befindet, kann das vollständige Löschen der zugeordneten Objekte bis zu einer Stunde dauern.
 
 > [!NOTE]
-> Nachdem eine sourceControlConfiguration mit Namespacebereich erstellt wurde, können Benutzer mit der `edit`-Rollenbindung an den Namespace Workloads für diesen Namespace bereitstellen. Wenn diese `sourceControlConfiguration`-Ressource mit Namespacebereich gelöscht wird, bleibt der Namespace intakt und wird nicht gelöscht, um zu vermeiden, dass diese anderen Workloads unterbrochen werden.  Bei Bedarf können Sie diesen Namespace manuell mit kubectl löschen.
+> Nachdem eine `sourceControlConfiguration` mit `namespace`-Umfang erstellt wurde, können Benutzer mit der `edit`-Rollenbindung an den Namespace Workloads in diesem Namespace bereitstellen. Wenn diese `sourceControlConfiguration`-Ressource mit Namespacebereich gelöscht wird, bleibt der Namespace intakt und wird nicht gelöscht, um zu vermeiden, dass diese anderen Workloads unterbrochen werden. Bei Bedarf können Sie diesen Namespace manuell mit `kubectl` löschen.  
 > Alle Änderungen am Cluster, die das Ergebnis von Bereitstellungen aus dem nachverfolgten Git-Repository sind, werden beim Löschen der `sourceControlConfiguration`-Ressource nicht gelöscht.
 
 ```azurecli

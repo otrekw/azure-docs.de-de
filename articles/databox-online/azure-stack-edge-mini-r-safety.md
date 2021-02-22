@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: aa363b1eeddff6c3b10d8e36371becb8b690697c
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: eb42a9a77927d8577dfec3c9167294eb8f809fec
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981036"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382622"
 ---
 # <a name="azure-stack-edge-mini-r-safety-instructions"></a>Sicherheitsanweisungen für Azure Stack Edge Mini R
 
@@ -161,7 +161,6 @@ Der Betrieb im Band 5.150–5.250 MHz ist nur für die Verwendung im Innenberei
 
 ![Rechtliche Informationen, Warnung zur Verwendung im Innenbereich](./media/azure-stack-edge-mini-r-safety/regulatory-information-indoor-use-only.png)
 
-
 Es wird empfohlen, Hochleistungsradars als primäre Benutzer (Prioritätsbenutzer) der Bänder 5.250–5.350 MHz und 5.650–5.850 MHz zuzuordnen. Diese Radars können zu Interferenzen führen und Schäden bei LE-LAN-Geräten verursachen.
 
 Dieses Gerät erzeugt und nutzt Hochfrequenzenergie und kann diese ausstrahlen. Wenn es nicht gemäß Bedienungsanleitung installiert und eingesetzt wird, kann es zu schädlichen Störungen der Hochfrequenzkommunikation kommen. Es kann jedoch auch bei einer sachgemäßen Installation nicht garantiert werden, dass keine Störungen auftreten.
@@ -205,11 +204,13 @@ Eine Tabelle mit dem SAR-Wert (Specific Absorption Rate, spezifische Absorptions
 
 #### <a name="european-union"></a>EUROPÄISCHE UNION:
 
-Fordern Sie eine Kopie der EU-Konformitätserklärung für dieses Gerät an.
+Fordern Sie eine Kopie der EU-Konformitätserklärung für dieses Gerät an. Senden Sie eine E-Mail an [CSI_Compliance@microsoft.com](mailto:CSI_Compliance@microsoft.com).
 
 Der USB-WLAN-Adapter Netgear A6150, der mit diesem Gerät bereitgestellt wird, ist mit der Direktive 2014/53/EU konform, die auf Anforderung bereitgestellt wird.
 
-> ![Warnsymbol 13](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png) Dies ist ein Produkt der Klasse A. In einem Privathaushalt kann dieses Produkt Funkstörungen verursachen. In einem solchen Fall kann der Benutzer aufgefordert werden, geeignete Maßnahmen zu ergreifen.
+![Warnsymbol 13](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png)  **WARNUNG:**
+
+Dies ist ein Produkt der Klasse A. In einem Privathaushalt kann dieses Produkt Funkstörungen verursachen. In einem solchen Fall kann der Benutzer aufgefordert werden, geeignete Maßnahmen zu ergreifen.
 
 Entsorgung von Altbatterien sowie Elektro- und Elektronikgeräten:
 

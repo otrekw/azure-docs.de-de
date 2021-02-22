@@ -7,18 +7,45 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 12/09/2020
+ms.date: 02/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2c9b239269aa00255aa08d6c233cd7978b253d94
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: f303ddb4d32da4c4cb6609f3ceec34e5c83529a8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653570"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391455"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Versionshinweise – Azure Arc-fähige Datendienste (Vorschauversion)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="january-2021"></a>Januar 2021
+
+### <a name="new-capabilities-and-features"></a>Neue Funktionen und Features
+
+Versionsnummer der Azure Data CLI (`azdata`): 20.3.0. Download: [https://aka.ms/azdata](https://aka.ms/azdata). Sie können `azdata` über [Installieren der Azure Data CLI (`azdata`)](/sql/azdata/install/deploy-install-azdata) installieren.
+
+
+Zusätzliche Updates umfassen:
+- Lokalisiertes Portal für 17 neue Sprachen verfügbar.
+- Kleinere Änderungen an Kube-nativen YAML-Dateien.
+- Neue Versionen von Grafana und Kibana.
+- Probleme mit Python-Umgebungen bei der Verwendung von azdata in Notebooks in Azure Data Studio gelöst.
+- Die pg_audit-Erweiterung ist jetzt für die PostgreSQL Hyperscale verfügbar.
+- Eine Sicherungs-ID ist bei einer vollständigen Wiederherstellung einer PostgreSQL Hyperscale-Datenbank nicht mehr erforderlich.
+- Der Status (Integritätszustand) wird für jede der PostgreSQL-Instanzen gemeldet, die eine Servergruppe bilden.
+
+   In früheren Versionen wurde der Status auf Servergruppenebene aggregiert und nicht auf PostgreSQL-Knotenebene aufgeschlüsselt.
+
+- PostgreSQL-Bereitstellungen berücksichtigen jetzt die in create-Befehlen angegebenen Volumegrößenparameter.
+- Die Engineversionsparameter werden beim Bearbeiten einer Servergruppe nun berücksichtigt.
+- Die Namenskonvention der Pods für PostgreSQL Hyperscale mit Azure Arc-Unterstützung hat sich geändert:
+
+    Sie hat nun folgende Form: `ServergroupName{c, w}-n`. Beispielsweise wird eine Servergruppe mit drei Knoten, einem Koordinatorknoten und zwei Workerknoten wie folgt dargestellt:
+   - `Postgres01c-0` (Koordinatorknoten)
+   - `Postgres01w-0` (Workerknoten)
+   - `Postgres01w-1` (Workerknoten)
 
 ## <a name="december-2020"></a>Dezember 2020
 

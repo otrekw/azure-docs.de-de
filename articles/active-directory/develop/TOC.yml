@@ -36,7 +36,7 @@
           href: quickstart-v2-aspnet-core-webapp.md
         - name: ASP.NET Core (Aufrufen von Microsoft Graph)
           href: quickstart-v2-aspnet-core-webapp-calls-graph.md
-        - name: 'Node.js: MSAL | Vorschau'
+        - name: 'Node.js: MSAL'
           href: quickstart-v2-nodejs-webapp-msal.md
         - name: 'Node.js: Passport.js'
           displayName: 'OIDC, express'
@@ -62,12 +62,16 @@
           href: quickstart-v2-uwp.md
         - name: Windows Desktop .NET
           href: quickstart-v2-windows-desktop.md
+        - name: Node.js Electron
+          href: quickstart-v2-nodejs-desktop.md
     - name: Daemon oder Back-End-Dienst
       items:
         - name: .NET Core-Konsole (Daemon)
           href: quickstart-v2-netcore-daemon.md
         - name: Python-Konsole (Daemon)
           href: quickstart-v2-python-daemon.md
+        - name: Node.js-Konsole (Daemon)
+          href: quickstart-v2-nodejs-console.md
         - name: Java-Konsole (Daemon)
           href: quickstart-v2-java-daemon.md
 - name: Tutorials
@@ -88,6 +92,8 @@
           href: tutorial-v2-asp-webapp.md
         - name: Blazor Server
           href: tutorial-blazor-server.md
+        - name: Tutorial zu Node.js-Web-Apps
+          href: tutorial-v2-nodejs-webapp-msal.md
     - name: Mobil und Desktop
       items:
         - name: Android
@@ -101,10 +107,14 @@
           href: tutorial-v2-windows-desktop.md
         - name: Verwenden des Modus für gemeinsam genutzte Geräte in Ihrer Android-App
           href: tutorial-v2-shared-device-mode.md
+        - name: Electron-Desktop-App
+          href: tutorial-v2-nodejs-desktop.md
     - name: Daemon oder Back-End-Dienst
       items:
         - name: ASP.NET-Daemon-Web-App
           href: tutorial-v2-aspnet-daemon-web-app.md
+        - name: Node.js-Konsole (Daemon)
+          href: tutorial-v2-nodejs-console.md
 - name: Beispiele
   href: sample-v2-code.md
 - name: Konzepte
