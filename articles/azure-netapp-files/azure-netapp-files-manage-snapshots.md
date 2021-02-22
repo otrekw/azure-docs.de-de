@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 02/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 35fce3723e92a3a7c68aaa62b28b756432182a8c
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4d992bcc202dc8bdacdda6426371df1adb1ec3e6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629662"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379113"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files
 
@@ -187,7 +187,9 @@ Wenn Sie nicht [die gesamte Momentaufnahme auf einem Volume wiederherstellen](#r
 
 Das eingebundene Volume enthält ein Momentaufnahmeverzeichnis namens `.snapshot` (in NFS-Clients) oder `~snapshot` (bei SMB-Clients), auf das der Client Zugriff hat. Das Momentaufnahmeverzeichnis enthält Unterverzeichnisse, die den Momentaufnahmen des Volumes entsprechen. Jedes Unterverzeichnis enthält die Dateien der Momentaufnahme. Wenn Sie versehentlich eine Datei löschen oder überschreiben, können Sie die Datei im übergeordneten Lese-/Schreibverzeichnis wiederherstellen, indem Sie die Datei aus einem Unterverzeichnis der Momentaufnahme in das Lese-/Schreibverzeichnis kopieren. 
 
-Wenn das Momentaufnahmeverzeichnis nicht angezeigt wird, ist es möglicherweise ausgeblendet, weil die Option „Momentaufnahmepfad ausblenden“ aktuell aktiviert ist. Sie können [die Option „Momentaufnahmepfad ausblenden“ bearbeiten](#edit-the-hide-snapshot-path-option), um sie deaktivieren.  
+Sie können den Zugriff auf die Momentaufnahmeverzeichnisse mithilfe der [Option „Momentaufnahmepfad ausblenden“](#edit-the-hide-snapshot-path-option) steuern. Mit dieser Option wird gesteuert, ob das Verzeichnis auf den Clients ausgeblendet werden soll. Daher steuert sie auch den Zugriff auf Dateien und Ordner in Momentaufnahmen.  
+
+In NFSV4.1 wird das Verzeichnis `.snapshot` (`ls -la`) nicht angezeigt. Wenn die Option „Momentaufnahmepfad ausblenden“ jedoch nicht festgelegt ist, können Sie immer noch über NFSV4.1 auf das Verzeichnis `.snapshot` zugreifen, indem Sie den Befehl `cd <snapshot-path>` in der Befehlszeile des Clients verwenden. 
 
 ### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Wiederherstellen einer Datei mithilfe eines Linux-NFS-Clients 
 

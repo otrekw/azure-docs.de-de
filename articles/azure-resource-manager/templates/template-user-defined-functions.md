@@ -2,13 +2,13 @@
 title: Benutzerdefinierte Funktionen in Vorlagen
 description: Beschreibt, wie benutzerdefinierte Funktionen in einer Azure Resource Manager-Vorlage (ARM-Vorlage) definiert und verwendet werden.
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: f428fa3bc827af3820ad9f928f4f92b881c9c84c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 02/11/2021
+ms.openlocfilehash: 9c7480958e6315c8aea1fd8d12613bcf9d606723
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934678"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379623"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>Benutzerdefinierte Funktionen in ARM-Vorlagen
 
@@ -44,7 +44,7 @@ Für benutzerdefinierte Funktionen müssen Namespacewerte verwendet werden, um N
 
 ## <a name="use-the-function"></a>Verwenden der Funktion
 
-Das folgende Beispiel zeigt eine Vorlage, die eine benutzerdefinierte Funktion enthält. Die Funktion wird dazu verwendet, einen eindeutigen Namen für ein Speicherkonto abzurufen. Die Vorlage weist den Parameter `storageNamePrefix` auf, der als Parameter an die Funktion übergeben wird.
+Das folgende Beispiel zeigt eine Vorlage, die eine benutzerdefinierte Funktion enthält, um einen eindeutigen Namen für ein Speicherkonto abzurufen. Die Vorlage weist einen Parameter namens `storageNamePrefix` auf, der als Parameter an die Funktion übergeben wird.
 
 ```json
 {
@@ -92,6 +92,12 @@ Das folgende Beispiel zeigt eine Vorlage, die eine benutzerdefinierte Funktion e
  ]
 }
 ```
+
+Während der Bereitstellung wird der Parameter `storageNamePrefix` an die-Funktion übergeben:
+
+* Die Vorlage definiert einen Parameter namens `storageNamePrefix`.
+* Die Funktion verwendet `namePrefix`, weil Sie nur Parameter verwenden können, die in der Funktion definiert sind. Weitere Informationen finden Sie unter [Einschränkungen](#limitations).
+* Im Abschnitt `resources` der Vorlage verwendet das- `name`-Element die Funktion und übergibt den `storageNamePrefix`-Wert an das `namePrefix` der Funktion.
 
 ## <a name="limitations"></a>Einschränkungen
 

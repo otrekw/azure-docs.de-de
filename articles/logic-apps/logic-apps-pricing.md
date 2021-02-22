@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 0de0c5d53bd3195a24f75f4a2e65c19602e2a2b3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 103855748c4b5d998dfc81eeb4044f5f53dae9e5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99088920"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372007"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Preis- und Abrechnungsmodelle für Azure Logic Apps
 
@@ -72,8 +72,8 @@ Für Logik-Apps, die in einer [*Integrationsdienstumgebung* (ISE)](../logic-apps
 
 | ISE SKU | BESCHREIBUNG |
 |---------|-------------|
-| **Premium** | Die Basiseinheit bietet eine feste Kapazität und wird für [die SKU „Premium“ mit einem Stundensatz abgerechnet](https://azure.microsoft.com/pricing/details/logic-apps). Falls Sie mehr Durchsatz benötigen, können Sie bei der Erstellung Ihrer ISE oder nachträglich [weitere Skalierungseinheiten hinzufügen](../logic-apps/ise-manage-integration-service-environment.md#add-capacity). Jede Skalierungseinheit wird mit einem [Stundensatz abgerechnet, der etwa der Hälfte des Satzes der Basiseinheit entspricht](https://azure.microsoft.com/pricing/details/logic-apps). <p><p>Informationen zu Grenzwerten finden Sie unter [ISE-Grenzwerte in Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
-| **Developer** | Die Basiseinheit bietet eine feste Kapazität und wird für [die SKU „Developer“ mit einem Stundensatz abgerechnet](https://azure.microsoft.com/pricing/details/logic-apps). Diese SKU bietet nicht die Möglichkeit des Hochskalierens, keine Vereinbarung zum Servicelevel (SLA) oder veröffentlichte Grenzwerte. Diese SKU eignet sich nur für Erkundung, Experimente, Entwicklung und Tests, nicht jedoch für die Produktion oder Leistungstests. |
+| **Premium** | Die Basiseinheit bietet eine [feste Kapazität](logic-apps-limits-and-config.md#integration-service-environment-ise) und wird [für die SKU „Premium“ mit einem Stundensatz abgerechnet](https://azure.microsoft.com/pricing/details/logic-apps). Falls Sie mehr Durchsatz benötigen, können Sie bei der Erstellung Ihrer ISE oder nachträglich [weitere Skalierungseinheiten hinzufügen](../logic-apps/ise-manage-integration-service-environment.md#add-capacity). Jede Skalierungseinheit wird mit einem [Stundensatz abgerechnet, der etwa der Hälfte des Satzes der Basiseinheit entspricht](https://azure.microsoft.com/pricing/details/logic-apps). <p><p>Informationen zu Grenzwerten und Kapazitäten finden Sie unter [ISE-Grenzwerte in Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
+| **Developer** | Die Basiseinheit bietet eine [feste Kapazität](logic-apps-limits-and-config.md#integration-service-environment-ise) und wird [für die SKU „Developer“ mit einem Stundensatz abgerechnet](https://azure.microsoft.com/pricing/details/logic-apps). Diese SKU umfasst keine Vereinbarung zum Servicelevel (Service-Level Agreement, SLA), Funktion zum zentralen Hochskalieren der Kapazität oder Redundanz während der Wiederverwendung. Dies bedeutet, dass Verzögerungen oder Ausfallzeiten auftreten können. Der Dienst kann vorübergehend von Back-End-Updates unterbrochen werden. <p><p>**Wichtig**: Stellen Sie sicher, dass Sie diese SKU nur für Erkundung, Experimente, Entwicklung und Tests verwenden, nicht jedoch für die Produktion oder für Leistungstests. <p><p>Informationen zu Grenzwerten und Kapazitäten finden Sie unter [ISE-Grenzwerte in Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
 |||
 
 ### <a name="included-at-no-extra-cost"></a>Ohne zusätzliche Kosten inbegriffen

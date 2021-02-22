@@ -1,19 +1,19 @@
 ---
 title: Grundlegendes zu den erforderlichen Rollen zum Ausführen allgemeiner Aufgaben in Synapse
 description: In diesem Artikel wird beschrieben, welche integrierten Synapse RBAC-Rollen für bestimmte Aufgaben erforderlich sind.
-author: billgib
+author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 12/1/2020
-ms.author: billgib
+ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9735293c182e7fe67a498529425459c13a199101
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 950a786b29a8144c4bb192fa6078e8c88d67481d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109792"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384451"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>Grundlegendes zu den erforderlichen Rollen zum Ausführen allgemeiner Aufgaben in Synapse
 
@@ -87,7 +87,7 @@ Anzeigen der Protokolle für Notebook- und Auftragsausführungen |Operator von S
 Abbrechen der Ausführung von Notebooks oder Spark-Aufträgen in einem Apache Spark-Pool|Operator von Synapse-Computeressourcen für den Apache Spark-Pool|bigDataPools/useCompute
 Erstellen einer Notebook- oder Auftragsdefinition|Synapse-Benutzer oder </br>Azure-Besitzer, Mitwirkender oder Leser im Arbeitsbereich</br> *Zum Ausführen, Veröffentlichen oder Committen von Änderungen sind zusätzliche Berechtigungen erforderlich.*|Lesen</br></br></br></br></br> 
 Auflisten und Öffnen einer veröffentlichten Notebook- oder Auftragsdefinition, einschließlich der Überprüfung gespeicherter Ausgaben|Benutzer von Synapse-Artefakten, Herausgeber von Synapse-Artefakten, Synapse-Mitwirkender für den Arbeitsbereich|artifacts/read
-Ausführen eines Notebooks und Überprüfen der Ausgabe|Synapse-Apache Spark-Administrator, Operator von Synapse-Computeressourcen für den ausgewählten Apache Spark-Pool|bigDataPools/useCompute 
+Ausführen eines Notebooks und Überprüfen seiner Ausgabe oder Übermitteln eines Spark-Auftrags|Synapse-Apache Spark-Administrator, Operator von Synapse-Computeressourcen für den ausgewählten Apache Spark-Pool|bigDataPools/useCompute 
 Veröffentlichen oder Löschen einer Notebook- oder Auftragsdefinition (einschließlich Ausgabe) für den Dienst|Herausgeber von Synapse-Artefakten für den Arbeitsbereich, Synapse-Apache Spark-Administrator|notebooks/write, delete
 Committen von Änderungen an einer Notebook- oder Auftragsdefinition im Git-Repository|Git-Berechtigungen|none
 PIPELINES, INTEGRATION RUNTIMES, DATENFLÜSSE, DATASETS UND TRIGGER|

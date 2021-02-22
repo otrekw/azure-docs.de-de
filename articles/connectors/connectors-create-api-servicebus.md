@@ -3,16 +3,16 @@ title: Austauschen von Meldungen mit Azure Service Bus
 description: Erstellen von automatisierten Aufgaben und Workflows, die Nachrichten mithilfe von Azure Service Bus in Azure Logic Apps senden und empfangen
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: logicappspm, azla
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 02/10/2021
 tags: connectors
-ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 98d2ee8a85d25065c0021841a9b99a6d616a35d8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019707"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367417"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Austauschen von Nachrichten in der Cloud mit Azure Logic Apps und Azure Service Bus
 
@@ -169,7 +169,7 @@ Beim Erstellen einer Logik-App können Sie die Vorlage für eine **korrelierte g
 
 ## <a name="delays-in-updates-to-your-logic-app-taking-effect"></a>Verzögerungen bei Updates Ihrer Logik-App haben Auswirkungen
 
-Wenn das Abrufintervall eines Service Bus-Triggers niedrig ist (z. B. 10 Sekunden), dauert es möglicherweise bis zu 10 Minuten, bis Updates für Ihre Logik-App wirksam werden. Um dieses Problem zu umgehen, können Sie das Abrufintervall vorübergehend auf einen größeren Wert erhöhen (z. B. 30 Sekunden oder 1 Minute), bevor Sie Ihre Logik-App aktualisieren. Nachdem Sie das Update vorgenommen haben, können Sie das Abrufintervall auf den ursprünglichen Wert zurücksetzen. 
+Wenn das Abrufintervall eines Service Bus-Triggers niedrig ist (z. B. 10 Sekunden), dauert es möglicherweise bis zu 10 Minuten, bis Updates für Ihre Logik-App wirksam werden. Um dieses Problem zu umgehen, können Sie die Logik-App deaktivieren, die Änderungen vornehmen und dann die Logik-App erneut aktivieren.
 
 <a name="connector-reference"></a>
 

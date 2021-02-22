@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e2ab39f090124aaf590798795f446bda5b0fe48a
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 6faec27bf368b3eb45e05a91307df6027bda93b1
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008553"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093997"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux
 
@@ -110,7 +110,7 @@ Ja. Bei einer Git-Bereitstellung erkennt Kudu, dass Sie eine PHP-Anwendung berei
 
 **Ich verwende meinen eigenen benutzerdefinierten Container. Ich möchte, dass die Plattform eine SMB-Freigabe im Verzeichnis `/home/` bereitstellt.**
 
-Wenn die Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE`**nicht angegeben** oder auf *TRUE* festgelegt ist, wird das Verzeichnis `/home/` nicht über Skalierungsinstanzen **freigegeben** und geschriebene Dateien werden **über Neustarts hinweg beibehalten**. Das explizite Festlegen von `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf *FALSE* deaktiviert die Bereitstellung.
+Wenn die Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE`**nicht angegeben** oder auf *false* festgelegt ist, wird das Verzeichnis `/home/` **nicht über Skalierungsinstanzen freigegeben**, und geschriebene Dateien werden über Neustarts hinweg **nicht beibehalten**. Das explizite Festlegen von `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf *true* aktiviert die Einbindung.
 
 **Mein benutzerdefinierter Container benötigt für den Start sehr lange, und die Plattform startet den Container neu, bevor er den Startvorgang abgeschlossen hat.**
 

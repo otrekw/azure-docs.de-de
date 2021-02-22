@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 41403a59be0395a6d9874c7369bfe59c22f5ac17
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: de7c5dba5a4868b7a8fdb390f974134cfaef7395
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218364"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384519"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>Herstellen einer Verbindung mit Arbeitsbereichsressourcen über ein eingeschränktes Netzwerk
 
@@ -146,7 +146,8 @@ Nachdem die Verknüpfung des virtuellen Netzwerks hinzugefügt wurde, müssen Si
 
 * Geben Sie im Feld **Name** die dedizierte Namenszeichenfolge für den jeweiligen privaten Endpunkt ein: 
   * **web** gilt für den privaten Endpunkt für den Zugriff auf Azure Synapse Analytics Studio.
-  * „***YourWorkSpaceName**_“ gilt für den privaten Endpunkt für die Ausführung von SQL-Abfragen im SQL-Pool sowie für den privaten Endpunkt für den Zugriff auf alles andere innerhalb der Azure Synapse Analytics Studio-Arbeitsbereiche. _ „*** YourWorkSpaceName*-ondemand**“ gilt für den privaten Endpunkt für die Ausführung von SQL-Abfragen im integrierten Pool.
+  * „***YourWorkSpaceName***“ gilt für den privaten Endpunkt für die Ausführung von SQL-Abfragen im SQL-Pool sowie für den privaten Endpunkt für den Zugriff auf alles andere innerhalb der Azure Synapse Analytics Studio-Arbeitsbereiche.
+  * „***YourWorkSpaceName*-ondemand**“ gilt für den privaten Endpunkt für die Ausführung von SQL-Abfragen im integrierten Pool.
 * Wählen Sie im Feld **Typ** nur den DNS-Eintragstyp **A** aus. 
 * Geben Sie im Feld **IP-Adresse** die entsprechende IP-Adresse jedes privaten Endpunkts ein. Sie können die IP-Adresse in der Übersicht über den privaten Endpunkt über die **Netzwerkschnittstelle** ermitteln.
 

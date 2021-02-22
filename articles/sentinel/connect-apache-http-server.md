@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 59ef34f9d6d42277d8e83bf4e0ebb8ee29096f52
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 6a1a2a2a7dac961e49e6ced38803649ebf5ad523
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99566609"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096853"
 ---
 # <a name="connect-your-apache-http-server-to-azure-sentinel"></a>Verbinden von Apache HTTP Server mit Azure Sentinel
 
@@ -37,7 +37,7 @@ In diesem Artikel wird erläutert, wie Sie Apache HTTP Server mit Azure Sentinel
 
 ## <a name="configure-and-integrate-apache-http-server-logs-via-log-analytics-agent"></a>Konfigurieren und Integrieren von Apache HTTP Server-Protokollen über den Log Analytics-Agent
 
-Konfigurieren Sie den Speicherort der Apache HTTP Server-Protokolldateien, um Daten über den Log Analytics-Agent an Ihren Azure-Arbeitsbereich weiterzuleiten.
+Konfigurieren Sie den Apache HTTP Server für das Senden von Protokolldateien an Ihren Azure-Arbeitsbereich über den Log Analytics-Agent.
 Konfigurieren Sie den Log Analytics-Agent für das Lesen von Apache HTTP Server-Protokolldateien.
 
 1. Folgen Sie den Anweisungen unter https://httpd.apache.org/docs/2.4/logs.html, um den Speicherort der Protokolldateien in Apache HTTP Server einzurichten.

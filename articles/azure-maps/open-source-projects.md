@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: df82e76fa2e5a9ea70c447411beafb8a2df9b036
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 16e7f04c62f25e787c3cab44b85a075e1c7d7277
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601588"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386746"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps-Community: Open-Source-Projekte
 
@@ -66,11 +66,14 @@ Im Folgenden finden Sie eine Liste von Open-Source-Projekten, mit denen die Funk
 | [Implementieren der räumlichen IoT-Analyse mit Azure Maps](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | Das Nachverfolgen und Erfassen relevanter Ereignisse, die in Raum und Zeit eintreten, ist ein häufiges IoT-Szenario. |
 
 **Kartensteuerelement-Plug-Ins von Drittanbietern**
+<a name="third-part-map-control-plugins"></a>
 
 | Projektname | BESCHREIBUNG |
 |-|-|
+| [Azure Maps-Cesium-Plug-In](https://github.com/azure-samples/azure-maps-cesium) | Ein [Cesium JS](https://cesium.com/cesiumjs/)-Plug-In, das die Integration von Azure Maps-Diensten wie [Kachelebenen](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) und [Geocodierungsdienste](https://docs.microsoft.com/rest/api/maps/search) vereinfacht. |
 | [Azure Maps-Leaflet-Plug-In](https://github.com/azure-samples/azure-maps-leaflet) | Ein [Leaflet](https://leafletjs.com/)-JavaScript-Plug-In, das die Überlagerung von Kachelebenen aus [Azure Maps-Kacheldiensten](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) erleichtert. |
- 
+ | [Azure Maps-OpenLayers-Plug-In](https://github.com/azure-samples/azure-maps-openlayers) | Ein [OpenLayers](https://www.openlayers.org/)-JavaScript-Plug-In, das die Überlagerung von Kachelebenen aus [Azure Maps-Kacheldiensten](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) erleichtert. |
+
 **Tools und Ressourcen**
 
 | Projektname | BESCHREIBUNG |

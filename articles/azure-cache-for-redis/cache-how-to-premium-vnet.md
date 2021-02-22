@@ -4,29 +4,24 @@ description: Erfahren Sie, wie Sie die Unterstützung für virtuelle Netzwerke f
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
-ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.date: 10/09/2020
-ms.openlocfilehash: 908254fec0d9e92b0e30c2e4968c3c505bbbdbf8
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.date: 02/08/2021
+ms.openlocfilehash: 94bbb9bb683f40d44d6649802b66bda6feeee218
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833829"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375271"
 ---
-# <a name="configure-virtual-network-support-for-a-premium-tier-azure-cache-for-redis-instance"></a>Konfigurieren der Unterstützung virtueller Netzwerke einer Azure Cache for Redis-Instanz im Premium-Tarif
+# <a name="configure-virtual-network-support-for-a-premium-azure-cache-for-redis-instance"></a>Konfigurieren der Unterstützung virtueller Netzwerke einer Azure Cache for Redis-Instanz vom Typ „Premium“
 
-Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -funktionen bieten. Der Premium-Tarif umfasst Clustering, Persistenz und die Unterstützung virtueller Netzwerke. Ein virtuelles Netzwerk ist ein privates Netzwerk in der Cloud. Wenn eine Azure Cache for Redis-Instanz mit einem virtuellen Netzwerk konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das virtuelle Netzwerk kann nur über virtuelle Computer und Anwendungen innerhalb des virtuellen Netzwerks zugegriffen werden. In diesem Artikel erfahren Sie, wie Sie die Unterstützung eines virtuellen Netzwerks für eine Azure Cache for Redis-Instanz im Premium-Tarif konfigurieren.
+Die Bereitstellung über [Azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) bietet für Subnetze ein höheres Maß an Sicherheit und Isolation. Sie profitieren außerdem von Richtlinien für die Zugriffssteuerung sowie von weiteren Features zur Begrenzung des Zugriffs. Wenn eine Azure Cache for Redis-Instanz mit einem virtuellen Netzwerk konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das virtuelle Netzwerk kann nur über virtuelle Computer und Anwendungen innerhalb des virtuellen Netzwerks zugegriffen werden. In diesem Artikel erfahren Sie, wie Sie die Unterstützung eines virtuellen Netzwerks für eine Azure Cache for Redis-Instanz im Premium-Tarif konfigurieren.
 
 > [!NOTE]
 > Azure Cache for Redis unterstützt sowohl das klassische Bereitstellungsmodell als auch virtuelle Netzwerke unter Azure Resource Manager.
 > 
 
-## <a name="why-virtual-network"></a>Warum virtuelle Netzwerke?
-
-Die Bereitstellung über [Azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) bietet sowohl für Ihre Azure Cache for Redis-Instanz als auch für Subnetze ein höheres Maß an Sicherheit und Isolation. Sie profitieren außerdem von Richtlinien für die Zugriffssteuerung sowie von weiteren Features zur Begrenzung des Zugriffs.
-
-## <a name="virtual-network-support"></a>Unterstützung für virtuelle Netzwerke
+## <a name="set-up-virtual-network-support"></a>Einrichten der Unterstützung für virtuelle Netzwerke
 
 Die Unterstützung für ein virtuelles Netzwerk wird während der Erstellung des Caches auf dem Blatt **Neue Azure Cache for Redis-Instanz** konfiguriert.
 

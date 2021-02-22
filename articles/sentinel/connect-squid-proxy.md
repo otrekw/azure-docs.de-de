@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: b183abf8d42e6f4b1c43db2d87b2650721e0c2a9
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: eec88bf85f1b7a2ec8db2bf23c43629d84cc5106
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567831"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090444"
 ---
 # <a name="connect-your-squid-proxy-to-azure-sentinel"></a>Verbinden von Squid Proxy mit Azure Sentinel
 
 > [!IMPORTANT]
 > Der Squid Proxy-Connector befindet sich derzeit in der **VORSCHAUVERSION**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
-In diesem Artikel wird erläutert, wie Sie Ihre Squid Proxy-Appliance mit Azure Sentinel verbinden. Mit dem Squid Proxy-Datenconnector lassen sich Ihre Squid-Protokolle problemlos mit Azure Sentinel verbinden, sodass Sie die Daten dann in Arbeitsmappen anzeigen, als Vorlage für benutzerdefinierte Warnungen und zur Verbesserung der Untersuchung von Problemen verwenden können. Für die Integration von Squid Proxy und Azure Sentinel wird Syslog genutzt.
+In diesem Artikel wird erläutert, wie Sie Ihre Squid Proxy-Appliance mit Azure Sentinel verbinden. Mit dem Squid Proxy-Datenconnector lassen sich Ihre Squid-Protokolle problemlos mit Azure Sentinel verbinden, sodass Sie die Daten dann in Arbeitsmappen anzeigen, als Vorlage für benutzerdefinierte Warnungen und zur Verbesserung der Untersuchung von Problemen verwenden können. Die Integration von Squid Proxy und Azure Sentinel basiert auf der lokalen Dateiverarbeitung durch den Log Analytics-Agent.
 
 > [!NOTE]
 > Daten werden am geografischen Standort des Arbeitsbereichs gespeichert, in dem Sie Azure Sentinel ausführen.
@@ -35,9 +35,9 @@ In diesem Artikel wird erläutert, wie Sie Ihre Squid Proxy-Appliance mit Azure 
 
 - Sie benötigen Lese- und Schreibberechtigungen für den Azure Sentinel-Arbeitsbereich.
 
-## <a name="forward-squid-proxy-logs-to-the-syslog-agent"></a>Weiterleiten von Squid Proxy-Protokollen an den Syslog-Agent  
+## <a name="forward-squid-proxy-logs-to-the-log-analytics-agent"></a>Weiterleiten von Squid Proxy-Protokollen an den Log Analytics-Agent  
 
-Konfigurieren Sie Squid Proxy für das Weiterleiten von Syslog-Nachrichten an Ihren Azure-Arbeitsbereich über den Syslog-Agent.
+Konfigurieren des Squid Proxys für das Senden von Protokolldateien an Ihren Azure-Arbeitsbereich über den Log Analytics-Agent.
 
 1. Wählen Sie im Azure Sentinel-Navigationsmenü **Datenconnectors** aus.
 

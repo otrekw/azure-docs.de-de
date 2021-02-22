@@ -3,12 +3,12 @@ title: Grenzwerte und Kontingente von Azure-Abonnements
 description: Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschränkungen, Kontingenten und Einschränkungen bereit. Dieser Artikel enthält Informationen zum Erhöhen von Grenzwerten und Höchstwerten.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 0a20d38d0f8d5be4a19dcdb8b6b846699bac6cc1
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 5d003392eeeca56bbfb0033db22e6bde4ae5e136
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920465"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520686"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
@@ -170,7 +170,7 @@ Die aktuellen Werte für Azure Machine Learning Compute-Kontingente finden Sie a
 
 ### <a name="application-insights"></a>Application Insights
 
-[!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-app-insights.md)]
+[!INCLUDE [monitoring-limits](../../../includes/application-insights-limits.md)]
 
 ## <a name="azure-policy-limits"></a>Azure Policy-Grenzwerte
 
@@ -364,6 +364,9 @@ Weitere Informationen zu Grenzwerten für SQL-Datenbank finden Sie unter [Ressou
 
 Informationen zu den Grenzwerten für Azure Synapse Analytics finden Sie unter [Azure Synapse-Ressourcenlimits](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
+## <a name="azure-files-and-azure-file-sync"></a>Azure Files und Azure-Dateisynchronisierung
+Informationen zu den Limits für Azure Files und Azure-Dateisynchronisierung finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Files](../../storage/files/storage-files-scale-targets.md).
+
 ## <a name="storage-limits"></a>Speichergrenzwerte
 
 <!--like # storage accts -->
@@ -378,16 +381,6 @@ Weitere Informationen zu den Grenzwerten für Standardspeicherkonten finden Sie 
 ### <a name="azure-blob-storage-limits"></a>Limits bei Azure Blob Storage
 
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
-
-### <a name="azure-files-limits"></a>Azure Files-Limits
-
-Weitere Informationen zu Grenzwerten für Azure Files finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Files](../../storage/files/storage-files-scale-targets.md).
-
-[!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
-
-### <a name="azure-file-sync-limits"></a>Grenzwerte der Azure-Dateisynchronisierung
-
-[!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
 ### <a name="azure-queue-storage-limits"></a>Azure Queue-Speicherlimits
 
