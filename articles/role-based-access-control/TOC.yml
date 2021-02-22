@@ -55,13 +55,13 @@
           href: role-assignments-list-cli.md
         - name: REST-API
           href: role-assignments-list-rest.md
-    - name: Hinzufügen oder Entfernen von Rollenzuweisungen
+    - name: Zuweisen von Rollen
       items:
-        - name: Schritte zum Hinzufügen einer Rollenzuweisung
+        - name: Schritte zum Zuweisen einer Rolle
           href: role-assignments-steps.md
         - name: Portal
           items:
-            - name: Hinzufügen oder Entfernen von Rollenzuweisungen
+            - name: Zuweisen von Rollen
               href: role-assignments-portal.md
             - name: Abonnementadministrator
               href: role-assignments-portal-subscription-admin.md
@@ -78,6 +78,8 @@
         - name: ARM-Vorlage
           displayName: Resource Manager
           href: role-assignments-template.md
+    - name: Entfernen von Rollenzuweisungen
+      href: role-assignments-remove.md
     - name: Auflisten von Ablehnungszuweisungen
       items:
         - name: Übersicht

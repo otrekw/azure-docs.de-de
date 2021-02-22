@@ -4,6 +4,14 @@
   items:
     - name: "Informationen zu Kubernetes mit Azure\_Arc-Aktivierung"
       href: overview.md
+- name: Konzepte
+  items:
+    - name: Agent-Architektur
+      href: conceptual-agent-architecture.md
+    - name: Konfigurationen und GitOps
+      href: conceptual-configurations.md
+    - name: Häufig gestellte Fragen
+      href: faq.md
 - name: Anleitungen
   items:
     - name: Herstellen einer Verbindung mit Azure Arc
@@ -12,7 +20,7 @@
           href: connect-cluster.md
         - name: Durchführen des Onboardings für den Dienstprinzipal
           href: create-onboarding-service-principal.md
-    - name: Verwalten
+    - name: Szenarien
       items:
         - name: Bereitstellen von Konfigurationen mithilfe von GitOps
           href: use-gitops-connected-cluster.md

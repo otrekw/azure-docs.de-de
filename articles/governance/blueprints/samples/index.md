@@ -1,14 +1,14 @@
 ---
 title: Index der Blaupausenbeispiele
 description: Index der Beispiele für Compliance und Standards für die Bereitstellung von Umgebungen, Richtlinien und Cloud Adoption Framework-Grundlagen mit Azure Blueprints.
-ms.date: 02/01/2021
+ms.date: 02/08/2020
 ms.topic: sample
-ms.openlocfilehash: 17bacecf8fcf7c0f1969a489561a3a3ac976872e
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: c64bc02c1dea4e2c53d4ff195add2ac7fa57874f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225140"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370953"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-Beispiele
 
@@ -18,8 +18,9 @@ In der folgenden Tabelle sind Links zu Beispielen für Azure Blueprints enthalte
 
 | Beispiel | BESCHREIBUNG |
 |---------|---------|
-| [ISM PROTECTED der australischen Regierung](./ism-protected/index.md) | Enthält Leitlinien für die Einhaltung von ISM PROTECTED der australischen Regierung. |
-| [Azure-Sicherheitsvergleichstest v1](./azure-security-benchmark.md) | Enthält Leitlinien für die Einhaltung des [Azure-Sicherheitsvergleichstests v1](../../../security/benchmarks/overview.md). |
+| [ISM PROTECTED der australischen Regierung](./ism-protected/index.md) | Stellt Schutzmaßnahmen für die Konformität mit ISM PROTECTED der australischen Regierung bereit. |
+| [Einführung zum Azure Security-Vergleichstest](./azure-security-benchmark.md) | Enthält Leitlinien für die Einhaltung des [Azure-Sicherheitsvergleichstests](../../../security/benchmarks/overview.md). |
+| [Azure Security Benchmark Foundation](./azure-security-benchmark-foundation/index.md) | Dient zum Bereitstellen und Konfigurieren von Azure Security Benchmark Foundation. |
 | [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Enthält Leitlinien für die Einhaltung von PBMM (Canada Federal Protected B, Medium Integrity, Medium Availability). |
 | [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1-1-0.md)| Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung der Empfehlungen von CIS Microsoft Azure Foundations Benchmark helfen. |
 | [DoD-Auswirkungsstufe 4](./dod-impact-level-4/index.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung der DoD-Auswirkungsstufe 4 helfen. |

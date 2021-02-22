@@ -143,8 +143,10 @@
       items:
         - name: Anfordern der Kontingenterhöhung
           href: database/quota-increase-request.md
-        - name: Auftragsautomatisierung
+        - name: Auftragsautomatisierung mit elastischen Aufträgen
           href: database/job-automation-overview.md
+        - name: Auftragsautomatisierung mit SQL-Agent
+          href: database/job-automation-managed-instances.md
         - name: Geschäftskontinuität
           items:
             - name: Konfigurieren einer Failovergruppe

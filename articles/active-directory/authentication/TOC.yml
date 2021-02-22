@@ -154,6 +154,8 @@
           href: howto-password-ban-bad-on-premises-faq.md
         - name: Verlauf der Agent-Version
           href: howto-password-ban-bad-on-premises-agent-versions.md
+    - name: Verwenden eines befristeten Zugriffspasses (Vorschau)
+      href: howto-authentication-temporary-access-pass.md
     - name: Verwenden der SMS-basierten Authentifizierung
       href: howto-authentication-sms-signin.md
     - name: Verwenden der Anmeldung mit E-Mail-Adresse
@@ -245,6 +247,8 @@
       href: /graph/api/resources/authenticationmethods-overview?view=graph-rest-beta
     - name: Dienstgrenzwerte und Einschränkungen
       href: ../enterprise-users/directory-service-limits-restrictions.md
+    - name: FIDO2-Kompatibilität
+      href: fido2-compatibility.md
 - name: Ressourcen
   items:
     - name: Azure-Feedbackforum

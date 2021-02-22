@@ -7,20 +7,22 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/28/2021
-ms.openlocfilehash: dfd8526a035d4eef4d07539e541e37c88023b500
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/09/2021
+ms.openlocfilehash: 8ae9a89ddba2010603ae5a5f6b812e3aa1e1e3a6
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063212"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097975"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Festlegen eines Zeitplans für Indexer in der kognitiven Azure-Suche
 
 Ein Indexer wird normal einmal ausgeführt, und zwar sofort nach der Erstellung. Anschließend können Sie ihn im Azure-Portal, über [Indexer ausführen (REST-API)](/rest/api/searchservice/run-indexer) oder über ein Azure SDK nach Bedarf erneut ausführen. Alternativ können Sie einen Indexer auch so konfigurieren, dass er nach einem Zeitplan ausgeführt wird. Fälle, in denen das Festlegen eines Zeitplans für einen Indexer nützlich ist:
 
-* Die Quelldaten ändern sich im Lauf der Zeit, und der Suchindexer soll die Deltadaten automatisch verarbeiten.
-* Die Quelldaten sind sehr groß, und die Indexerausführung soll auf verschiedene Zeiten verteilt werden. Weitere Informationen zur Indizierung großer Datenmengen finden Sie unter [Indizieren großer Datasets in der kognitiven Azure-Suche](search-howto-large-index.md).
+* Die Quelldaten ändern sich im Lauf der Zeit, und der Suchindexer soll die Unterschiede automatisch verarbeiten.
+
+* Die Quelldaten sind sehr groß, und die Indexerausführung soll auf verschiedene Zeiten verteilt werden. Für Indexer-Aufträge gilt eine maximale Laufzeit von 24 Stunden für reguläre Datenquellen und 2 Stunden für Indexer mit Skillsets. Wenn die Indizierung nicht innerhalb des maximalen Intervalls abgeschlossen werden kann, können Sie einen Zeitplan konfigurieren, der alle 2 Stunden ausgeführt wird. Indexer können automatisch dort fortfahren, wo sie aufgehört haben, was durch einen internen oberen Grenzwert angezeigt wird, der markiert, wo die Indizierung beim letzten Mal beendet wurde. Das Ausführen eines Indexers alle 2 Stunden laut Zeitplan ermöglicht es, ein sehr großes Dataset (viele Millionen von Dokumenten) über das für einen einzelnen Auftrag zulässige Intervall hinaus zu verarbeiten. Weitere Informationen zur Indizierung großer Datenmengen finden Sie unter [Indizieren großer Datasets in Azure Cognitive Search](search-howto-large-index.md).
+
 * Ein Suchindex wird aus mehreren Datenquellen aufgefüllt, und die Indexer sollen zu unterschiedlichen Zeiten ausgeführt werden, um Konflikte zu vermeiden.
 
 Ein Zeitplan kann beispielsweise wie folgt aussehen: Beginn am 1. Januar und Ausführung alle 50 Minuten.

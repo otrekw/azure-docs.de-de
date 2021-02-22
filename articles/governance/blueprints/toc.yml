@@ -42,6 +42,14 @@
     - name: Vergleichstest für die Azure-Sicherheit
       displayName: 'standards, azure, benchmark'
       href: ./samples/azure-security-benchmark.md
+    - name: Azure Security Benchmark Foundation
+      items:
+        - name: Übersicht
+          displayName: 'standards, azure, benchmark, foundation'
+          href: ./samples/azure-security-benchmark-foundation/index.md
+        - name: Schritte zum Bereitstellen
+          displayName: 'standards, azure, benchmark, foundation, deploy'
+          href: ./samples/azure-security-benchmark-foundation/deploy.md
     - name: ISM PROTECTED der australischen Regierung
       items:
         - name: Übersicht

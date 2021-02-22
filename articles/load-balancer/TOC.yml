@@ -33,8 +33,12 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: Konfigurieren der Portweiterleitung in Load Balancer
       href: tutorial-load-balancer-port-forwarding-portal.md
-    - name: 'Erstellen eines regionsübergreifenden Lastenausgleichs: Portal'
-      href: tutorial-cross-region-portal.md
+    - name: Regionsübergreifender Lastenausgleich
+      items:
+        - name: 'Erstellen eines regionsübergreifenden Lastenausgleichs: Portal'
+          href: tutorial-cross-region-portal.md
+        - name: 'Erstellen eines regionsübergreifenden Lastenausgleichs: PowerShell'
+          href: tutorial-cross-region-powershell.md
 - name: Beispiele
   items:
     - name: Azure CLI
@@ -89,6 +93,8 @@
       href: backend-pool-management.md
     - name: Load Balancer Standard und Virtual Machine Scale Sets
       href: load-balancer-standard-virtual-machine-scale-sets.md
+    - name: Abrufen von Informationen mithilfe von Azure Instance Metadata Service
+      href: instance-metadata-service-load-balancer.md
 - name: Vorgehensweise
   items:
     - name: Portaleinstellungen
@@ -144,6 +150,8 @@
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: Lastenausgleichskonfiguration (nur ausgehender Datenverkehr)
       href: egress-only.md
+    - name: "Abrufen von Metadaten mithilfe von Azure\_IMDS"
+      href: howto-load-balancer-imds.md
     - name: Problembehandlung
       items:
         - name: Beheben von Problemen mit Azure Load Balancer
@@ -181,6 +189,8 @@
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.network/loadbalancers
       displayName: ARM
+    - name: Allgemeine Fehlercodes für Azure Instance Metadata Service (IMDS)
+      href: troubleshoot-load-balancer-imds.md
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

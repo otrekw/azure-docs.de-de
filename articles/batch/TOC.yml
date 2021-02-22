@@ -172,6 +172,11 @@
         - name: Erstellen eines Pools ohne öffentliche IP-Adressen
           displayName: private
           href: batch-pool-no-public-ip-address.md
+        - name: Verwenden von Erweiterungen mit Pools
+          href: create-pool-extensions.md
+        - name: Konfigurieren von verwalteten Identitäten
+          displayName: user-assigned
+          href: managed-identity-pools.md
         - name: Einbinden eines virtuellen Dateisystems
           href: virtual-file-mount.md
         - name: Bereitstellen einer Azure-Dateifreigabe

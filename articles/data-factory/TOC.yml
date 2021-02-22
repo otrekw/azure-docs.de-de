@@ -105,6 +105,8 @@
       items:
         - name: Transformieren von Daten mit Zuordnungsdatenflüssen
           items:
+            - name: Transformieren von Daten im Lake mit Delta Lake
+              href: tutorial-data-flow-delta-lake.md
             - name: Transformieren von Daten mit Zuordnungsdatenflüssen
               href: tutorial-data-flow.md
             - name: Videotutorials zum Zuordnungsdatenfluss
@@ -556,6 +558,8 @@
           href: data-flow-lookup.md
         - name: Neuer Branch
           href: data-flow-new-branch.md
+        - name: Analysieren
+          href: data-flow-parse.md
         - name: Pivotieren
           href: data-flow-pivot.md
         - name: Rang
@@ -732,6 +736,8 @@
               href: how-to-sqldb-to-cosmosdb.md
             - name: Deduplizieren und NULL-Überprüfung mit Codeausschnitten
               href: how-to-data-flow-dedupe-nulls-snippets.md
+            - name: Verarbeiten von Daten aus AML-Modellen mittels Datenfluss
+              href: scenario-dataflow-process-data-aml-models.md
         - name: Lokale SSIS-Migration
           items:
             - name: Übersicht über die SSIS-Migration
@@ -806,6 +812,8 @@
       href: /azure/templates/microsoft.datafactory/allversions
     - name: Python
       href: /python/api/overview/azure/datafactory
+    - name: Azure Policy-Integrationen
+      href: policy-reference.md
 - name: Ressourcen
   items:
     - name: Whitepaper

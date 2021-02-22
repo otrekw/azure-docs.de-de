@@ -59,6 +59,8 @@
           href: managed-identity-authentication.md
         - name: Agent verwalten
           href: manage-agent.md
+        - name: Regionsübergreifendes Migrieren von Computern
+          href: manage-howto-migrate.md
     - name: Szenarien
       items:
         - name: Durchführen des Onboardings in Azure Sentinel

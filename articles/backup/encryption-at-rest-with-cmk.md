@@ -3,12 +3,12 @@ title: Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsse
 description: Hier erfahren Sie, wie Sie mit Azure Backup Sicherungsdaten mithilfe von kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK) verschlüsseln können.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: d5daa88475e3becde6e513391c555471f80396c5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 230669e0a3543a0709dda3f7fee35a0cae300d5a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735859"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369457"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
 
@@ -36,6 +36,7 @@ In diesem Artikel werden die folgenden Themen behandelt:
 - Der Recovery Services-Tresor kann nur mit Schlüsseln verschlüsselt werden, die in einem Azure Key Vault gespeichert sind, der sich in der **gleichen Region** befindet. Außerdem dürfen nur **RSA 2048-Schlüssel** im Zustand **Aktiviert** als Schlüssel verwendet werden.
 
 - Das Verschieben eines mit CMK verschlüsselten Recovery Services-Tresors in andere Ressourcengruppen und Abonnements wird derzeit nicht unterstützt.
+- Wenn Sie einen Recovery Services-Tresor, der bereits mit vom Kunden verwalteten Schlüsseln (CMK) verschlüsselt ist, auf einen neuen Mandanten verschieben, müssen Sie den Recovery Services-Tresor aktualisieren, um die verwaltete Identität des Tresors und die CMK (die sich auf dem neuen Mandanten befinden sollen) neu zu erstellen und zu konfigurieren. Wenn dies nicht getan wird, kommt es zu Fehlern bei den Sicherungs- und Wiederherstellungsvorgängen. Außerdem müssen alle innerhalb des Abonnements eingerichteten Berechtigungen der rollenbasierten Zugriffssteuerung (RBAC) neu konfiguriert werden.
 
 - Diese Funktion kann über das Azure-Portal und PowerShell konfiguriert werden.
 
@@ -119,32 +120,6 @@ Sie müssen jetzt dem Recovery Services-Tresor gestatten, auf den Azure Key Vaul
 
 1. Wählen Sie **Speichern** aus, um die Änderungen an der Zugriffsrichtlinie von Azure Key Vault zu speichern.
 
-**Mit PowerShell:**
-
-Verwenden Sie den Befehl [Set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty), um die Verschlüsselung mithilfe von kundenseitig verwalteten Schlüsseln zu aktivieren und den zu verwendenden Verschlüsselungsschlüssel zuzuweisen oder zu aktualisieren.
-
-Beispiel:
-
-```azurepowershell
-$keyVault = Get-AzKeyVault -VaultName "testkeyvault" -ResourceGroupName "testrg" 
-$key = Get-AzKeyVaultKey -VaultName $keyVault -Name "testkey" 
-Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -KeyVaultSubscriptionId "xxxx-yyyy-zzzz"  -VaultId $vault.ID
-
-
-$enc=Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
-$enc.encryptionProperties | fl
-```
-
-Ausgabe:
-
-```output
-EncryptionAtRestType          : CustomerManaged
-KeyUri                        : testkey
-SubscriptionId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
-LastUpdateStatus              : Succeeded
-InfrastructureEncryptionState : Disabled
-```
-
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Aktivieren des vorläufigen Löschens und des Löschschutzes im Azure Key Vault
 
 Sie müssen für den Azure Key Vault, in dem Ihr Verschlüsselungsschlüssel gespeichert ist, **vorläufiges Löschen und Löschschutz aktivieren**. Dies können Sie über die Azure Key Vault-Benutzeroberfläche ausführen, wie unten gezeigt. (Alternativ können diese Eigenschaften beim Erstellen des Key Vault festgelegt werden.) Weitere Informationen zu diesen Key Vault-Eigenschaften finden Sie [hier](../key-vault/general/soft-delete-overview.md).
@@ -197,7 +172,7 @@ Sie können vorläufiges Löschen und Löschschutz auch über PowerShell aktivie
 
 Sobald Sie sich versichert haben, dass die genannten Bedingungen erfüllt sind, können Sie mit der Auswahl des Verschlüsselungsschlüssels für Ihren Tresor fortfahren.
 
-So weisen Sie den Schlüssel zu
+#### <a name="to-assign-the-key-in-the-portal"></a>So weisen Sie den Schlüssel im Portal zu
 
 1. Navigieren Sie zu Ihrem Recovery Services-Tresor und dann zu **Eigenschaften**.
 
@@ -230,6 +205,32 @@ So weisen Sie den Schlüssel zu
     Die Updates für den Verschlüsselungsschlüssel werden auch im Aktivitätsprotokoll des Tresors aufgezeichnet.
 
     ![Aktivitätsprotokoll](./media/encryption-at-rest-with-cmk/activity-log.png)
+
+#### <a name="to-assign-the-key-with-powershell"></a>So weisen Sie den Schlüssel mit PowerShell zu
+
+Verwenden Sie den Befehl [Set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty), um die Verschlüsselung mithilfe von kundenseitig verwalteten Schlüsseln zu aktivieren und den zu verwendenden Verschlüsselungsschlüssel zuzuweisen oder zu aktualisieren.
+
+Beispiel:
+
+```azurepowershell
+$keyVault = Get-AzKeyVault -VaultName "testkeyvault" -ResourceGroupName "testrg" 
+$key = Get-AzKeyVaultKey -VaultName $keyVault -Name "testkey" 
+Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -KeyVaultSubscriptionId "xxxx-yyyy-zzzz"  -VaultId $vault.ID
+
+
+$enc=Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+$enc.encryptionProperties | fl
+```
+
+Ausgabe:
+
+```output
+EncryptionAtRestType          : CustomerManaged
+KeyUri                        : testkey
+SubscriptionId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
+LastUpdateStatus              : Succeeded
+InfrastructureEncryptionState : Disabled
+```
 
 >[!NOTE]
 > Den gleichen Prozess führen Sie aus, wenn Sie den Verschlüsselungsschlüssel aktualisieren oder ändern möchten. Wenn Sie den Schlüssel aktualisieren und einen Schlüssel aus einer anderen Key Vault-Instanz verwenden möchten (der sich von dem derzeit verwendeten unterscheidet), stellen Sie Folgendes sicher:

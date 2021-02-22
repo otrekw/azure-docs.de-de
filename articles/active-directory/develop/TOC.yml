@@ -475,6 +475,10 @@
           href: reference-third-party-cookies-spas.md
         - name: Verarbeiten von SameSite-Cookieänderungen in Chrome
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
+    - name: Unterstützen der kennwortlosen Authentifizierung
+      items:
+        - name: Unterstützen der FIDO2-Authentifizierung
+          href: support-fido2-authentication.md
     - name: Authentifizieren von Apps und Diensten
       items:
         - name: Erstellen eines Dienstprinzipals mit Azure PowerShell

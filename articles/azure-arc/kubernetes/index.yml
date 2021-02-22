@@ -1,20 +1,20 @@
 ### YamlMime:Landing
-title: Kubernetes in Azure Arc (Vorschauversion)
+title: Kubernetes mit Azure Arc-Aktivierung (Vorschauversion)
 summary: Hier erfahren Sie, wie Sie Kubernetes-Cluster mit Azure Arc verwalten.
 metadata:
-  title: Kubernetes in Azure Arc
+  title: Kubernetes mit Azure Arc-Aktivierung
   description: Informationen zur Verwaltung lokaler Computer in Azure
-  author: 
+  author: shashankbarsin
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 06/26/2020
-  ms.author: 
-  ms.openlocfilehash: 9eeddfefe451eb524484df8a1986c7ec736c4c0f
-  ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+  ms.date: 02/15/2021
+  ms.author: shasb
+  ms.openlocfilehash: 97343e8c23e202e70ec30bb0a522105889ea08b3
+  ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 12/18/2020
-  ms.locfileid: "97674371"
+  ms.lasthandoff: 02/17/2021
+  ms.locfileid: "100560242"
 landingContent:
 - title: Verbinden von Kubernetes-Clustern mit Azure mithilfe von Azure Arc
   linkLists:
@@ -22,10 +22,22 @@ landingContent:
     links:
     - text: Was ist Kubernetes mit Azure Arc-Aktivierung?
       url: overview.md
+  - linkListType: concept
+    links:
+    - text: Agent-Architektur
+      url: conceptual-agent-architecture.md
+    - text: Konfigurationen und GitOps
+      url: conceptual-configurations.md
+    - text: Häufig gestellte Fragen
+      url: faq.md
+- title: Erste Schritte
+  linkLists:
   - linkListType: quickstart
     links:
     - text: Herstellen einer Clusterverbindung
       url: connect-cluster.md
+- title: Konfigurieren, Steuern und Überwachen von Clustern
+  linkLists:
   - linkListType: how-to-guide
     links:
     - text: Bereitstellen von Konfigurationen mithilfe von GitOps

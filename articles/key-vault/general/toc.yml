@@ -96,10 +96,12 @@
               href: assign-access-policy-powershell.md
             - name: Portal
               href: assign-access-policy-portal.md
-        - name: "Verwenden der Azure\_RBAC zum Verwalten des Zugriffs auf Schlüssel, Geheimnisse und Zertifikate (Vorschau)"
-          href: rbac-guide.md
-        - name: Handbuch für die Migration von Tresorzugriffsrichtlinien zu Azure RBAC
-          href: rbac-migration.md
+        - name: "Azure\_RBAC-Berechtigungsmodell"
+          items:
+            - name: "Verwalten des Zugriffs auf Schlüssel, Geheimnisse und Zertifikate mithilfe von Azure\_RBAC"
+              href: rbac-guide.md
+            - name: Handbuch für die Migration von Tresorzugriffsrichtlinien zu Azure RBAC
+              href: rbac-migration.md
         - name: Behandeln von Zugriffsproblemen
           href: troubleshooting-access-issues.md
     - name: Entwickeln
@@ -162,7 +164,7 @@
       href: versions.md
     - name: Azure PowerShell
       href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/keyvault
     - name: .NET
       href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet

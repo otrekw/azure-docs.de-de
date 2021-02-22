@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: df393f54e7dfa83c8fc0feab3dbf42a156b296b7
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a274e96defa8b6b74c046923d87f198029399dd4
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430461"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098094"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexer in Azure Cognitive Search
 
@@ -118,6 +118,7 @@ Sie können den Indexerstatus im Portal oder über die [API zum Abrufen des Inde
 Nach dieser Einführung können Sie sich als Nächstes mit Indexereigenschaften und -parametern sowie mit der Planung und Überwachung von Indexern vertraut machen. Alternativ können Sie zur Liste mit den [unterstützten Datenquellen](#supported-data-sources) zurückkehren und sich ausführlicher über eine bestimmte Quelle informieren.
 
 + [Erstellen von Indexern in Azure Cognitive Search](search-howto-create-indexers.md)
++ [Zurücksetzen und Ausführen von Indexern](search-howto-run-reset-indexers.md)
 + [Zeitplanindexer](search-howto-schedule-indexers.md)
 + [Definieren von Feldzuordnungen](search-indexer-field-mappings.md)
 + [Überwachen des Status und der Ergebnisse von Indexern der kognitiven Azure-Suche](search-howto-monitor-indexers.md)

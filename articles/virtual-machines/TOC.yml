@@ -101,20 +101,12 @@
       href: ./workloads/oracle/oracle-database-quick-create.md
     - name: Elasticsearch
       href: ./linux/tutorial-elasticsearch.md
-    - name: FreeBSD-Paketfilter
-      href: ./linux/freebsd-pf-nat.md
     - name: Erneutes Hosten von Mainframes
       href: ./workloads/mainframe-rehosting/overview.md
-    - name: Datenbanken
-      items:
-        - name: MongoDB
-        - name: MS SQL unter Linux
-          href: /sql/linux/sql-server-linux-azure-virtual-machine
+    - name: SQL in Virtual Machines
+      href: 'https://docs.microsoft.com/azure/azure-sql/virtual-machines/'
     - name: High Performance Computing (HPC)
       href: /azure/architecture/topics/high-performance-computing/
-    - name: Container
-    - name: Visual Studio
-      href: ./windows/using-visual-studio-vm.md
 - name: Instanzen
   items:
     - name: Größen
@@ -218,6 +210,12 @@
                   href: ./windows/n-series-driver-setup.md
             - name: Einrichten von AMD GPU-Treibern
               href: ./windows/n-series-amd-driver-setup.md
+        - name: 'FPGA: beschleunigte Computevorgänge'
+          items:
+            - name: Übersicht
+              href: sizes-field-programmable-gate-arrays.md?context=/azure/virtual-machines/context/context
+            - name: NP-Serie
+              href: np-series.md
         - name: High Performance Computing
           displayName: H-series
           items:
@@ -329,7 +327,8 @@
           href: ./linux/tutorial-build-deploy-azure-pipelines.md
         - name: Erstellen eines LAMP-Stapels
           href: ./linux/tutorial-lamp-stack.md
-        - name: Sichern von Webservern mit SSL
+        - name: Schützen des Webservers mit TLS/SSL
+          displayname: SSL TLS
           items:
             - name: Linux
               href: ./linux/tutorial-secure-web-server.md
@@ -592,6 +591,8 @@
               href: ./linux/flatcar-create-upload-vhd.md
             - name: FreeBSD
               href: ./linux/freebsd-intro-on-azure.md
+            - name: FreeBSD-Paketfilter
+              href: ./linux/freebsd-pf-nat.md
             - name: Oracle Linux
               href: ./linux/oracle-create-upload-vhd.md
             - name: OpenBSD
@@ -636,6 +637,8 @@
           href: ./windows/capture-image-resource.md
         - name: Erstellen eines virtuellen Computers aus einem verwalteten Image
           href: ./windows/create-vm-generalized-managed.md
+        - name: Visual Studio
+          href: ./windows/using-visual-studio-vm.md
     - name: Kataloge mit freigegebenen Images
       items:
         - name: Übersicht
@@ -987,7 +990,7 @@
       href: ephemeral-os-disks.md
     - name: Migration und Konvertierung
       items:
-        - name: Konvertieren von Datenträgern zwischen Standard und Premium
+        - name: Konvertieren eines Datenträgers zu einem anderen Datenträgertyp
           items:
             - name: Befehlszeilenschnittstelle (CLI)
               href: ./linux/convert-disk-storage.md
@@ -1225,6 +1228,8 @@
       href: maintenance-and-updates.md
     - name: Automatisches Patchen von VM-Gästen (Vorschau)
       href: ./windows/automatic-vm-guest-patching.md
+    - name: Automatisches Erweiterungsupgrade (Vorschau)
+      href: ./automatic-extension-upgrade.md
     - name: Wartungssteuerung
       items:
         - name: Wartungsbenachrichtigungen
