@@ -1,23 +1,18 @@
 ---
 title: SQL Server-Aktivität "Gespeicherte Prozedur"
 description: Hier erfahren Sie, wie Sie die SQL Server-Aktivität „Gespeicherte Prozedur“ in einer Data Factory-Pipeline zum Aufrufen einer gespeicherten Prozedur in einer Azure SQL-Datenbank- oder Azure Synapse Analytics-Instanz verwenden.
-services: data-factory
-documentationcenter: ''
-ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: f702633f6311d4ae4a79452e9b1c9176125c56f9
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 05717352936bed888e108277d0163e43bc5a37af
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508398"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368760"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server-Aktivität "Gespeicherte Prozedur"
 > [!div class="op_single_selector" title1="Transformationsaktivitäten"]
@@ -308,13 +303,13 @@ In der folgenden Tabelle werden diese JSON-Eigenschaften beschrieben:
 | name | Der Name der Aktivität |Ja |
 | description |Ein Text, der beschreibt, wofür die Aktivität verwendet wird. |Nein |
 | type | Muss festgelegt werden auf: **SqlServerStoredProcedure** | Ja |
-| inputs | Optional. Wenn Sie ein Eingabedataset angeben, muss es (im Status „Bereit“) verfügbar sein, damit die Aktivität „Gespeicherte Prozedur“ ausgeführt wird. Das Eingabedataset kann nicht als Parameter in der gespeicherten Prozedur genutzt werden. Es wird nur verwendet, um vor dem Start der Aktivität „Gespeicherte Prozedur“ die Abhängigkeit zu überprüfen. |Nein |
+| inputs | Optional. Wenn Sie ein Eingabedataset angeben, muss es verfügbar sein (im Status „Bereit“), damit die Aktivität „Gespeicherte Prozedur“ ausgeführt wird. Das Eingabedataset kann nicht als Parameter in der gespeicherten Prozedur genutzt werden. Es wird nur verwendet, um vor dem Start der Aktivität „Gespeicherte Prozedur“ die Abhängigkeit zu überprüfen. |Nein |
 | outputs | Sie müssen ein Ausgabedataset für eine Aktivität „Gespeicherte Prozedur“ angeben. Das Ausgabedataset gibt den **Zeitplan** für die Aktivität „Gespeicherte Prozedur“ an (stündlich, wöchentlich, monatlich usw.). <br/><br/>Das Ausgabedataset muss einen **verknüpften Dienst** verwenden, der auf eine Azure SQL-Datenbank, eine Azure Synapse Analytics-Instanz oder eine SQL Server-Datenbank verweist, in der die gespeicherte Prozedur ausgeführt werden soll. <br/><br/>Das Ausgabedataset kann verwendet werden, um das Ergebnis der gespeicherten Prozedur für die nachfolgende Verarbeitung durch eine andere Aktivität in der Pipeline zu übergeben ([Verketten von Aktivitäten](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)). Data Factory schreibt die Ausgabe einer gespeicherten Prozedur jedoch nicht automatisch in dieses Dataset. Die gespeicherte Prozedur schreibt die Ausgabe in eine SQL-Tabelle, auf die das Ausgabedataset verweist. <br/><br/>In einigen Fällen kann das Ausgabedataset ein **Dummy-Dataset** sein, das nur dazu dient, den Zeitplan für die Ausführung der Aktivität „Gespeicherte Prozedur“ anzugeben. |Ja |
 | storedProcedureName |Geben Sie den Namen der gespeicherten Prozedur in der Azure SQL-Datenbank-, Azure Synapse Analytics- oder SQL Server-Instanz an, die durch den von der Ausgabetabelle verwendeten verknüpften Dienst dargestellt wird. |Ja |
 | storedProcedureParameters |Geben Sie Werte für Parameter der gespeicherten Prozedur an. Wenn Sie für einen Parameter Null übergeben müssen, verwenden Sie die folgende Syntax: "param1": null (nur Kleinbuchstaben). Das folgende Beispiel veranschaulicht die Verwendung dieser Eigenschaft. |Nein |
 
 ## <a name="passing-a-static-value"></a>Übergeben eines statischen Werts
-Lassen Sie uns nun der Tabelle eine weitere Spalte mit dem Namen "Scenario" hinzufügen, die den statischen Wert "Document sample" enthält.
+Nun fügen wir der Tabelle eine weitere Spalte mit dem Namen „Scenario“ hinzu, die den statischen Wert „Document sample“ enthält.
 
 ![Beispieldaten 2](./media/data-factory-stored-proc-activity/sample-data-2.png)
 

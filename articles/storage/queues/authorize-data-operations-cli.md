@@ -6,17 +6,17 @@ author: tamram
 services: storage
 ms.author: tamram
 ms.reviewer: ozgun
-ms.date: 11/13/2020
+ms.date: 02/10/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 01b78fa3250f371cfc4d713668531664ef8c139e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 2f7092d8ce184d7021774814e96935e46d1ffb56
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587603"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363167"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>Auswählen der Autorisierung des Zugriffs auf Warteschlangendaten mit der Azure CLI
 
@@ -34,6 +34,9 @@ Azure CLI-Befehle zum Lesen und Schreiben von Warteschlangendaten enthalten den 
 
 Damit Sie den Parameter `--auth-mode` verwenden können, vergewissern Sie sich, dass mindestens Version v2.0.46 der Azure-Befehlszeilenschnittstelle installiert ist. Führen Sie `az --version` aus, um Ihre installierte Version zu überprüfen.
 
+> [!NOTE]
+> Wenn ein Speicherkonto mit **ReadOnly** in Azure Resource Manager gesperrt ist, ist der Vorgang [Schlüssel auflisten](/rest/api/storagerp/storageaccounts/listkeys) für dieses Speicherkonto nicht zulässig. **Schlüssel auflisten** ist ein POST-Vorgang, und alle POST-Vorgänge werden verhindert, wenn die Sperre **ReadOnly** für das Konto festgelegt wurde. Aus diesem Grund müssen Benutzer, die nicht bereits über die Kontoschlüssel verfügen, Azure AD-Anmeldeinformationen für den Zugriff auf Warteschlangendaten verwenden, wenn das Konto mit **ReadOnly** gesperrt ist.
+
 > [!IMPORTANT]
 > Wenn Sie den Parameter `--auth-mode` weglassen oder auf `key`festlegen, versucht die Azure CLI, den Kontozugriffsschlüssel für die Autorisierung zu verwenden. In diesem Fall empfiehlt Microsoft, den Zugriffsschlüssel entweder im Befehl oder in der Umgebungsvariablen `AZURE_STORAGE_KEY` bereitzustellen. Weitere Informationen zu Umgebungsvariablen finden Sie im Abschnitt [Festlegen von Umgebungsvariablen für Autorisierungsparameter](#set-environment-variables-for-authorization-parameters).
 >
@@ -41,7 +44,7 @@ Damit Sie den Parameter `--auth-mode` verwenden können, vergewissern Sie sich, 
 
 ## <a name="authorize-with-azure-ad-credentials"></a>Autorisieren mit Azure AD-Anmeldeinformationen
 
-Wenn Sie sich mit Azure AD-Anmeldeinformationen bei der Azure-Befehlszeilenschnittstelle anmelden, wird ein OAuth 2.0-Zugriffstoken zurückgegeben. Dieses Token wird dann automatisch von der Azure-Befehlszeilenschnittstelle verwendet, um nachfolgende Vorgänge für Blobspeicher- oder Queue Storage-Daten zu autorisieren. Für unterstützte Vorgänge müssen Sie mit dem Befehl keinen Kontoschlüssel und kein SAS-Token mehr übergeben.
+Wenn Sie sich mit Azure AD-Anmeldeinformationen bei der Azure-Befehlszeilenschnittstelle anmelden, wird ein OAuth 2.0-Zugriffstoken zurückgegeben. Dieses Token wird dann automatisch von der Befehlszeilenschnittstelle verwendet, um nachfolgende Vorgänge für Queue Storage-Daten zu autorisieren. Für unterstützte Vorgänge müssen Sie mit dem Befehl keinen Kontoschlüssel und kein SAS-Token mehr übergeben.
 
 Sie können einem Azure AD-Sicherheitsprinzipal über die rollenbasierte Zugriffssteuerung (Azure RBAC) Berechtigungen für Warteschlangendaten zuweisen. Weitere Informationen zu Azure-Rollen in Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Azure Storage-Daten mit Azure RBAC](../common/storage-auth-aad-rbac-portal.md).
 
@@ -55,7 +58,7 @@ Einzelheiten zu den Berechtigungen, die für die einzelnen Azure Storage-Vorgä
 
 Im folgenden Beispiel sehen Sie, wie mithilfe Ihrer Azure AD-Anmeldeinformationen über die Azure CLI eine Warteschlange erstellt wird. Damit Sie die Warteschlange erstellen können, müssen Sie sich bei der Azure CLI anmelden, und Sie benötigen eine Ressourcengruppe und ein Speicherkonto.
 
-1. Weisen Sie sich vor der Erstellung der Warteschlange selbst die Rolle [Mitwirkender an Storage-Blobdaten](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) zu. Obwohl Sie der Kontobesitzer sind, benötigen Sie explizite Berechtigungen, um Datenvorgänge in Ihrem Speicherkonto ausführen zu können. Weitere Informationen zum Zuweisen von Azure-Rollen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](../common/storage-auth-aad-rbac-portal.md).
+1. Weisen Sie sich vor der Erstellung der Warteschlange selbst die Rolle [Mitwirkender an Storage-Warteschlangendaten](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) zu. Obwohl Sie der Kontobesitzer sind, benötigen Sie explizite Berechtigungen, um Datenvorgänge in Ihrem Speicherkonto ausführen zu können. Weitere Informationen zum Zuweisen von Azure-Rollen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](../common/storage-auth-aad-rbac-portal.md).
 
     > [!IMPORTANT]
     > Die Azure-Rollenzuweisungen können einige Minuten dauern.

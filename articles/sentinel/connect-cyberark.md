@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2020
 ms.author: yelevin
-ms.openlocfilehash: c375595951eb760d5341db424c5572719b97046a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: aa57963ce369e4c8f84f4aae5f99fe343181ff6b
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102694"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530500"
 ---
 # <a name="connect-cyberark-enterprise-password-vault-epv-to-azure-sentinel"></a>Verbinden von CyberArk EPV (Enterprise Password Vault) mit Azure Sentinel
 
@@ -36,9 +36,9 @@ Mit dem Syslog-Connector für CyberArk können Sie alle Protokolle Ihrer CyberAr
 
 CyberArk EPV-Protokolle werden vom Vault an einen Linux-basierten Protokollweiterleitungsserver (auf dem rsyslog oder syslog-ng ausgeführt wird) gesendet. Auf diesem ist der Log Analytics-Agent installiert, der die Protokolle in Azure Sentinel exportiert. Wenn Sie nicht über einen solchen Protokollweiterleitungsserver verfügen, können Sie über [diese Anweisungen](connect-cef-agent.md) einen Server einrichten.
 
-1. Klicken Sie im Azure Sentinel-Portal auf **Datenconnectors** , und wählen Sie **CyberArk Enterprise Password Vault (EPV) Events (Preview)** (CyberArk EPV-Ereignisse (Enterprise Password Vault, Vorschau)) und dann **Connectorseite öffnen** aus.
+1. Klicken Sie im Azure Sentinel-Portal auf **Datenconnectors**, und wählen Sie **CyberArk Enterprise Password Vault (EPV) Events (Preview)** (CyberArk EPV-Ereignisse (Enterprise Password Vault, Vorschau)) und dann **Connectorseite öffnen** aus.
 
-1. Befolgen Sie die Anweisungen in CyberArk EPV, um das Senden von Syslog-Daten an den Protokollweiterleitungsserver zu konfigurieren.
+1. Befolgen Sie die [Anweisungen in CyberArk EPV](https://docs.cyberark.com/Product-Doc/OnlineHelp/PAS/Latest/en/Content/PASIMP/DV-Integrating-with-SIEM-Applications.htm), um das Senden von Syslog-Daten an den Protokollweiterleitungsserver zu konfigurieren.
 
 1. Überprüfen Sie die Verbindung und die Datenerfassung mithilfe [dieser Anweisungen](connect-cef-verify.md). Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeigt werden.
 

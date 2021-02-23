@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 6ac3a492c5544a4a782871ff50cda9a248fe50f4
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 678b6f02245e463870fc5b2c4bfc8b5ffa50de60
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882380"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381687"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Blob Storage-Eingabebindung für Azure Functions
 
@@ -349,7 +349,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction** | – | Muss auf `in` festgelegt sein. Ausnahmen sind im Abschnitt [Verwendung](#usage) angegeben. |
 |**name** | – | Der Name der Variablen, die das Blob im Funktionscode darstellt.|
 |**path** |**BlobPath** | Der Pfad des Blobs. |
-|**connection** |**Connection**| Der Name einer App-Einstellung, die die [Speicherverbindungszeichenfolge](../storage/common/storage-configure-connection-string.md) für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Bei der Verbindungszeichenfolge muss es sich um eine Verbindungszeichenfolge für ein allgemeines Speicherkonto (nicht für ein [reines Blob Storage-Konto](../storage/common/storage-account-overview.md#types-of-storage-accounts)) handeln.|
+|**connection** |**Connection**| Der Name einer App-Einstellung, die die [Speicherverbindungszeichenfolge](../storage/common/storage-configure-connection-string.md) für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Bei der Verbindungszeichenfolge muss es sich um eine Verbindungszeichenfolge für ein allgemeines Speicherkonto (nicht für ein [reines Blob Storage-Konto](../storage/common/storage-account-overview.md#types-of-storage-accounts)) handeln.<br><br>Wenn Sie [Version 5.x oder höher der Erweiterung](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher) verwenden, können Sie anstelle einer Verbindungszeichenfolge einen Verweis auf einen Konfigurationsabschnitt angeben, der die Verbindung definiert. Siehe [Verbindungen](./functions-reference.md#connections).|
 |**dataType**| – | Gibt für dynamisch typisierte Sprachen den zugrunde liegenden Datentyp an. Mögliche Werte sind `string`, `binary` oder `stream`. Weitere Details finden Sie in den [Konzepten für Trigger und Bindungen](functions-triggers-bindings.md?tabs=python#trigger-and-binding-definitions). |
 |– | **zugreifen** | Gibt an, ob Sie einen Lesevorgang oder einen Schreibvorgang ausführen möchten. |
 

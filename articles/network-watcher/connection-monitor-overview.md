@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 0fa5e09dbe7c0a8cd45557d535353ea4a0a00b16
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: ccc2b6baba0e97320a5352013dbecfc121188457
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833098"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361025"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Überwachung der Netzwerkkonnektivität mit dem Verbindungsmonitor
 
@@ -74,11 +74,24 @@ Durch Regeln für eine Netzwerksicherheitsgruppe (NSG) oder Firewall kann die Ko
 
 ### <a name="agents-for-on-premises-machines"></a>Agents für lokale Computer
 
-Damit der Verbindungsmonitor die lokalen Computer als Quellen für die Überwachung erkennt, installieren Sie den Log Analytics-Agent auf den Computern. Dann aktivieren Sie die Netzwerkleistungsmonitor-Lösung. Diese Agents sind mit den Log Analytics-Arbeitsbereichen verknüpft. Daher müssen Sie die Arbeitsbereichs-ID und den Primärschlüssel einrichten, bevor die Agents mit der Überwachung beginnen können.
+Damit der Verbindungsmonitor die lokalen Computer als Quellen für die Überwachung erkennt, installieren Sie den Log Analytics-Agent auf den Computern.  Dann aktivieren Sie die Netzwerkleistungsmonitor-Lösung. Diese Agents sind mit den Log Analytics-Arbeitsbereichen verknüpft. Daher müssen Sie die Arbeitsbereichs-ID und den Primärschlüssel einrichten, bevor die Agents mit der Überwachung beginnen können.
 
 Informationen zum Installieren des Log Analytics-Agents für Windows-Computer finden Sie unter [Azure Monitor-VM-Erweiterung für Windows](../virtual-machines/extensions/oms-windows.md).
 
 Wenn der Pfad Firewalls oder virtuelle Netzwerkgeräte (NVAs) umfasst, stellen Sie sicher, dass das Ziel erreichbar ist.
+
+Um den Port auf Windows-Computern zu öffnen, führen Sie das PowerShell-Skript [EnableRules.ps1](https://aka.ms/npmpowershellscript) ohne Parameter in einem PowerShell-Fenster mit Administratorrechten aus.
+
+Auf Linux-Computern müssen die zu verwendenden Portnummern manuell geändert werden. 
+* Navigieren Sie zum Pfad „/var/opt/microsoft/omsagent/npm_state“. 
+* Öffnen Sie die Datei „npmdregistry“.
+* Ändern Sie den Wert für die Portnummer ```“PortNumber:<port of your choice>”```.
+
+ Beachten Sie, dass die verwendeten Portnummern für alle in einem Arbeitsbereich verwendeten Agents identisch sein sollten. 
+
+Das Skript erstellt die für die Lösung erforderlichen Registrierungsschlüssel. Außerdem erstellt es Regeln für die Windows-Firewall, damit Agents TCP-Verbindungen miteinander herstellen können. Die vom Skript erstellten Registrierungsschlüssel geben an, ob die Debugprotokolle und der Pfad zur Protokolldatei protokolliert werden sollen. Ferner definiert das Skript den für die Kommunikation verwendeten TCP-Port des Agents. Die Werte für diese Schlüssel werden vom Skript automatisch festgelegt. Ändern Sie diese Schlüssel nicht manuell. Standardmäßig wird Port 8084 geöffnet. Sie können einen benutzerdefinierten Port verwenden, indem Sie im Skript den Parameter „portNumber“ angeben. Verwenden Sie auf allen Computern, auf denen das Skript ausgeführt wird, den gleichen Port. [Erfahren Sie mehr](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#network-requirements) über die Netzwerkanforderungen für Log Analytics-Agents.
+
+Das Skript konfiguriert nur die lokale Windows-Firewall. Bei Verwendung einer Netzwerkfirewall müssen Sie sicherstellen, dass diese den Datenverkehr zum TCP-Port erlaubt, der vom Netzwerkleistungsmonitor verwendet wird.
 
 ## <a name="enable-network-watcher-on-your-subscription"></a>Aktivieren von Network Watcher für Ihr Abonnement
 

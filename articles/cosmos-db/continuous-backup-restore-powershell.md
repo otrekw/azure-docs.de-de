@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 73652f821abfa4a092e4a61ffe2be9e7262a2f10
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 5261075a82eaefd91cbedd2dd2fe08cb1e0a20b4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538543"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381833"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-powershell"></a>Konfigurieren und Verwalten von fortlaufender Sicherung und Zeitpunktwiederherstellung (Vorschau) – Verwendung von Azure PowerShell
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -50,7 +50,7 @@ In diesem Artikel wird beschrieben, wie Sie ein Konto mit fortlaufenden Sicherun
 
 Fügen Sie zum Bereitstellen eines Kontos mit fortlaufender Sicherung das Argument `-BackupPolicyType Continuous` zusammen mit dem regulären Bereitstellungsbefehl hinzu.
 
-Das folgende Cmdlet ist ein Beispiel für das Konto `pitracct2` mit einer einzelnen Schreibregion und einer Richtlinie für die fortlaufende Sicherung, das in der Region „USA, Westen“ unter der Ressourcengruppe „myrg“ erstellt wurde:
+Das folgende Cmdlet ist ein Beispiel für das Konto `pitracct2` mit einer einzelnen Schreibregion und einer Richtlinie für die fortlaufende Sicherung, das in der Region *USA, Westen* unter der Ressourcengruppe *myrg* erstellt wurde:
 
 ```azurepowershell
 
@@ -65,7 +65,7 @@ New-AzCosmosDBAccount `
 
 ## <a name="provision-a-mongodb-api-account-with-continuous-backup"></a><a id="provision-mongodb-api"></a>Bereitstellen eines MongoDB-API-Kontos mit fortlaufender Sicherung
 
-Das folgende Cmdlet ist ein Beispiel für das fortlaufende Sicherungskonto „pitracct2“, das in der Region „USA, Westen“ unter der Ressourcengruppe „myrg“ erstellt wurde:
+Das folgende Cmdlet ist ein Beispiel für das fortlaufende Sicherungskonto *pitracct2*, das in der Region *USA, Westen* unter der Ressourcengruppe *myrg* erstellt wurde:
 
 ```azurepowershell
 
@@ -162,13 +162,13 @@ Die Antwort enthält alle Datenbankkonten (sowohl aktive als auch gelöschte), d
   },
 ```
 
-Genauso wie bei „CreationTime“ oder „DeletionTime“ für das Konto gibt es auch für die Region Werte für „CreationTime“ und „DeletionTime“. Diese Zeiten ermöglichen es Ihnen, die richtige Region und einen gültigen Zeitbereich für die Wiederherstellung in dieser Region auszuwählen.
+Genauso wie bei `CreationTime` oder `DeletionTime` für das Konto gibt es auch für die Region Werte für `CreationTime` und `DeletionTime`. Diese Zeiten ermöglichen es Ihnen, die richtige Region und einen gültigen Zeitbereich für die Wiederherstellung in dieser Region auszuwählen.
 
 **Auflisten aller Versionen von SQL-Datenbanken in einem aktiven Datenbankkonto**
 
 Durch das Auflisten aller Versionen von Datenbanken können Sie die richtige Datenbank in einem Szenario auswählen, in dem die tatsächliche Zeit, in der die Datenbank vorhanden war, unbekannt ist.
 
-Führen Sie den folgenden PowerShell-Befehl aus, um alle Versionen von Datenbanken aufzulisten. Dieser Befehl funktioniert nur bei aktiven Konten. Die Parameter „DatabaseAccountInstanceId“ und „LocationName“ werden aus der Antwort des Cmdlets `Get-AzCosmosDBRestorableDatabaseAccount` von den Eigenschaften „name“ und „location“ abgeleitet. Das Attribut „DatabaseAccountInstanceId“ verweist auf die Eigenschaft "instanceId" des Quelldatenbankkontos, das gerade wiederhergestellt wird:
+Führen Sie den folgenden PowerShell-Befehl aus, um alle Versionen von Datenbanken aufzulisten. Dieser Befehl funktioniert nur bei aktiven Konten. Die Parameter `DatabaseAccountInstanceId` und `LocationName` werden aus der Antwort des Cmdlets `Get-AzCosmosDBRestorableDatabaseAccount` von den Eigenschaften `name` und `location` abgeleitet. Das `DatabaseAccountInstanceId`-Attribut verweist auf die `instanceId`-Eigenschaft des wiederhergestellten Quelldatenbankkontos:
 
 
 ```azurepowershell
@@ -181,7 +181,7 @@ Get-AzCosmosdbSqlRestorableDatabase `
 
 **Auflisten aller Versionen von SQL-Containern einer Datenbank in einem aktiven Datenbankkonto.**
 
-Mit dem folgenden Befehl können Sie alle Versionen von SQL-Containern auflisten. Dieser Befehl funktioniert nur bei aktiven Konten. Der Parameter „databaseRid“ ist die „ResourceId“ der Datenbank, die Sie wiederherstellen möchten. Dies ist der Wert des Attributs „ownerResourceid“ in der Antwort des Cmdlets `Get-AzCosmosdbSqlRestorableDatabase`. Die Antwort enthält auch eine Liste der Vorgänge, die für alle Container in dieser Datenbank ausgeführt wurden.
+Mit dem folgenden Befehl können Sie alle Versionen von SQL-Containern auflisten. Dieser Befehl funktioniert nur bei aktiven Konten. Der Parameter `DatabaseRid` ist die `ResourceId` der Datenbank, die Sie wiederherstellen möchten. Dies ist der Wert des Attributs `ownerResourceid` aus der Antwort des Cmdlets `Get-AzCosmosdbSqlRestorableDatabase`. Die Antwort enthält auch eine Liste der Vorgänge, die für alle Container in dieser Datenbank ausgeführt wurden.
 
 ```azurepowershell
 
@@ -208,7 +208,7 @@ Get-AzCosmosdbSqlRestorableResource `
 
 ## <a name="enumerate-restorable-resources-for-mongodb"></a><a id="enumerate-mongodb-api"></a>Aufzählen von wiederherstellbaren Ressourcen für MongoDB
 
-Mithilfe der unten beschriebenen Enumerationsbefehle können Sie die Ressourcen ermitteln, die für die Wiederherstellung zu verschiedenen Zeitstempeln zur Verfügung stehen. Außerdem bieten sie einen Feed von Schlüsselereignissen für die wiederherstellbaren Konto-, Datenbank- und Containerressourcen. Diese Befehle funktionieren nur bei aktiven Konten und ähneln SQL-API-Befehlen, aber mit „MongoDB“ statt „sql“ im Befehlsnamen.
+Mithilfe der unten beschriebenen Enumerationsbefehle können Sie die Ressourcen ermitteln, die für die Wiederherstellung zu verschiedenen Zeitstempeln zur Verfügung stehen. Außerdem bieten sie einen Feed von Schlüsselereignissen für die wiederherstellbaren Konto-, Datenbank- und Containerressourcen. Diese Befehle funktionieren nur bei aktiven Konten und ähneln SQL-API-Befehlen, aber mit `MongoDB` statt `sql` im Befehlsnamen.
 
 **Auflisten aller Versionen von MongoDB-Datenbanken in einem aktiven Datenbankkonto**
 

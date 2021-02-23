@@ -1,22 +1,17 @@
 ---
 title: Überwachen der Kopieraktivität
 description: Hier erfahren Sie, wie Sie die Ausführung der Kopieraktivität in Azure Data Factory überwachen können.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 92119709aa260f3180c503a77064f6e80dece6e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58860e404dff3030e51ff2977eaee081a15247f7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440608"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388293"
 ---
 # <a name="monitor-copy-activity"></a>Überwachen der Kopieraktivität
 
@@ -67,7 +62,7 @@ Ausführungsdetails und Leistungsmerkmale zur Kopieraktivität werden auch im Ab
 | throughput | Die Datenübertragungsrate. | Gleitkommazahl in KB/s |
 | sourcePeakConnections | Die maximale Anzahl gleichzeitiger Verbindungen mit dem Quelldatenspeicher während der Ausführung der Kopieraktivität. | Int32-Wert (ohne Einheit) |
 | sinkPeakConnections| Die maximale Anzahl gleichzeitiger Verbindungen mit dem Senkendatenspeicher während der Ausführung der Kopieraktivität.| Int32-Wert (ohne Einheit) |
-| sqlDwPolyBase | Gibt an, ob PolyBase beim Kopieren von Daten in Azure Synapse Analytics (vormals SQL Data Warehouse) verwendet wird. | Boolean |
+| sqlDwPolyBase | Gibt an, ob PolyBase beim Kopieren von Daten in Azure Synapse Analytics verwendet wird. | Boolean |
 | redshiftUnload | Gibt an, ob UNLOAD beim Kopieren von Daten aus Redshift verwendet wird. | Boolean |
 | hdfsDistcp | Gibt an, ob DistCp beim Kopieren von Daten aus HDFS verwendet wird. | Boolean |
 | effectiveIntegrationRuntime | Die Integration Runtimes (IR), die zur Unterstützung der Aktivitätsausführung verwendet werden, im Format `<IR name> (<region if it's Azure IR>)`. | Text (Zeichenfolge) |

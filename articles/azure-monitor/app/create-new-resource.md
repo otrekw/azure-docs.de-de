@@ -2,17 +2,20 @@
 title: Erstellen einer neuen Azure Application Insights-Ressource | Microsoft Docs
 description: Richten Sie manuell die Application Insights-Überwachung für eine neue Liveanwendung ein.
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: e69611d650f61630c8b36f7387b79cffbb61f227
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/10/2021
+ms.openlocfilehash: 3233aed895eac269bd34a961728b3302581ff360
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062912"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104585"
 ---
 # <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
 
 Azure Application Insights zeigt Daten über Ihre Anwendung in einer Microsoft Azure-*Ressource* an. Die Erstellung einer neuen Ressource gehört daher zur [Einrichtung von Application Insights zur Überwachung einer neuen Anwendung][start]. Nach dem Erstellen der neuen Ressource erhalten Sie den Instrumentierungsschlüssel, den Sie zum Konfigurieren des Application Insights SDK verwenden. Der Instrumentierungsschlüssel verknüpft Ihre Telemetriedaten mit der Ressource.
+
+> [!IMPORTANT]
+> Klassisches Application Insights ist veraltet. Befolgen Sie diese [Anweisungen zur Vorgehensweise beim Upgrade auf arbeitsbereichsbasierte Application Insights-Ressourcen](convert-classic-resource.md).
 
 ## <a name="sign-in-to-microsoft-azure"></a>Anmelden bei Microsoft Azure
 

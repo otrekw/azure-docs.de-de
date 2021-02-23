@@ -2,30 +2,30 @@
 title: Erstellen eines Azure Arc-fähigen Onboardingdienstprinzipals (Vorschauversion)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 02/09/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: 'Erstellen eines Azure Arc-fähigen Onboardingdienstprinzipals '
 keywords: Kubernetes, Arc, Azure, Container
-ms.openlocfilehash: 8eb38dbc04d964c0ab4869e801099ee9420d6ac2
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8772cf7634d9a833af120784e3e7868b41d202c4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184695"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390486"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Erstellen eines Azure Arc-fähigen Onboardingdienstprinzipals (Vorschauversion)
 
 ## <a name="overview"></a>Übersicht
 
-Es ist möglich, Dienstprinzipale mit einer Rollenzuweisung mit eingeschränkten Berechtigungen zum Integrieren von Kubernetes-Clustern in Azure Arc zu verwenden. Dies ist für CI/CD-Pipelines (Continuous Integration/Continuous Deployment) wie Azure Pipelines und GitHub Actions nützlich.
+Sie können Kubernetes-Cluster mithilfe von Dienstprinzipalen mit Rollenzuweisungen mit eingeschränkten Berechtigungen in Azure Arc integrieren. Diese Funktion ist für CI/CD-Pipelines (Continuous Integration/Continuous Deployment) wie Azure Pipelines und GitHub Actions nützlich.
 
-Die folgenden Schritte bieten eine exemplarische Vorgehensweise zur Verwendung von Dienstprinzipalen für das Onboarding von Kubernetes-Clustern in Azure Arc.
+In den folgenden Schritten lernen Sie, Dienstprinzipale für das Onboarding von Kubernetes-Clustern in Azure Arc zu verwenden.
 
 ## <a name="create-a-new-service-principal"></a>Erstellen eines neuen Dienstprinzipals
 
-Erstellen Sie einen neuen Dienstprinzipal mit einem aussagekräftigen Namen. Beachten Sie, dass dieser Name in Ihrem Azure Active Directory-Mandanten eindeutig sein muss:
+Erstellen Sie einen neuen Dienstprinzipal mit einem aussagekräftigen Namen, der für Ihren Azure Active Directory-Mandanten eindeutig ist.
 
 ```console
 az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onboarding"
@@ -45,11 +45,11 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onb
 
 ## <a name="assign-permissions"></a>Zuweisen von Berechtigungen
 
-Nachdem Sie den neuen Dienstprinzipal erstellt haben, weisen Sie ihm die Rolle „Kubernetes-Cluster – Azure Arc-Onboarding“ zu. Dabei handelt es sich um eine integrierte Azure-Rolle mit eingeschränkten Berechtigungen, die dem Prinzipal ausschließlich das Registrieren von Clustern in Azure gestattet. Der Prinzipal kann keine anderen Cluster oder Ressourcen im Abonnement aktualisieren, löschen oder ändern.
+Weisen Sie dem neu erstellten Dienstprinzipal die Rolle „Kubernetes-Cluster – Azure Arc-Onboarding“ zu. Diese integrierte Azure-Rolle mit eingeschränkten Berechtigungen gestattet dem Prinzipal ausschließlich das Registrieren von Clustern in Azure. Der Prinzipal kann mit dieser zugewiesenen Rolle keine anderen Cluster oder Ressourcen im Abonnement aktualisieren, löschen oder ändern.
 
 Aufgrund der begrenzten Möglichkeiten können Kunden diesen Prinzipal problemlos wiederverwenden, um mehrere Cluster zu integrieren.
 
-Die Berechtigungen können weiter eingeschränkt werden, indem beim Zuweisen der Rolle das entsprechende Argument `--scope` übergeben wird. Dies ermöglicht es Kunden, die Clusterregistrierung einzuschränken. Die folgenden Szenarien werden durch verschiedene `--scope`-Parameter unterstützt:
+Sie können Berechtigungen weiter einschränken, indem Sie beim Zuweisen der Rolle das entsprechende `--scope`-Argument übergeben. Dies ermöglicht es Kunden, die Clusterregistrierung einzuschränken. Die folgenden Szenarien werden durch verschiedene `--scope`-Parameter unterstützt:
 
 | Resource  | `scope`-Argument| Wirkung |
 | ------------- | ------------- | ------------- |
@@ -80,7 +80,7 @@ az role assignment create \
 
 ## <a name="use-service-principal-with-the-azure-cli"></a>Verwenden eines Dienstprinzipals mit der Azure-Befehlszeilenschnittstelle
 
-Verweisen auf den neu erstellten Dienstprinzipal:
+Verweisen Sie mit den folgenden Befehlen auf den neu erstellten Dienstprinzipal:
 
 ```azurecli
 az login --service-principal -u mySpnClientId -p mySpnClientSecret --tenant myTenantID

@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1012dad1b7e0a314687a38e420ff9ad4780051da
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e2aab537c2235fe3e008fa619c96a3098cfa7a27
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97110986"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361212"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Sprachanpassung in Azure Active Directory B2C
 
@@ -181,7 +181,7 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 
 ## <a name="add-custom-languages"></a>Hinzufügen benutzerdefinierter Sprachen
 
-Sie können auch Sprachen hinzufügen, für die Microsoft aktuell keine Übersetzungen bereitstellt. Sie müssen in diesem Fall die Übersetzungen für alle Zeichenfolgen im Benutzerflow bereitstellen. Sprach- und Gebietsschema-Codes sind auf die begrenzt, die im ISO-Standard 639-1 festgelegt sind.
+Sie können auch Sprachen hinzufügen, für die Microsoft aktuell keine Übersetzungen bereitstellt. Sie müssen in diesem Fall die Übersetzungen für alle Zeichenfolgen im Benutzerflow bereitstellen. Sprach- und Gebietsschema-Codes sind auf die begrenzt, die im ISO-Standard 639-1 festgelegt sind. Das Gebietsschema-Codeformat sollte „ISO_639-1_Code“-„Ländercode“ lauten, z. B. „de-DE“ für „Deutsch – Deutschland“. Weitere Informationen zu Gebietsschema-ID-Formaten finden Sie unter https://docs.microsoft.com/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a.
 
 1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Benutzerflows** aus.
 2. Klicken Sie auf den Benutzerflow, für den Sie benutzerdefinierte Sprachen hinzufügen möchten, und klicken Sie dann auf **Sprachen**.

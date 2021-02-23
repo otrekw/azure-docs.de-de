@@ -4,13 +4,13 @@ description: Erfahren Sie, wie Sie Azure-VMs, die in Näherungsplatzierungsgrupp
 author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
-ms.date: 05/25/2020
-ms.openlocfilehash: 7ac836992db33c6212fd009b914b30b7221249d8
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.date: 02/11/2021
+ms.openlocfilehash: 681b635099d450f061e0bcdb5b2c5d60d56c20a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745582"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380735"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Replizieren von virtuellen Azure-Computern, die in Näherungsplatzierungsgruppen ausgeführt werden
 
@@ -25,21 +25,72 @@ In einem typischen Szenario können Ihre virtuellen Computer in einer Näherungs
 ## <a name="considerations"></a>Überlegungen
 
 - Der beste Ansatz ist ein Failover/Failback der virtuellen Computer in eine Näherungsplatzierungsgruppe. Wenn die VM während des Failovers/Failbacks jedoch nicht innerhalb der Näherungsplatzierungsgruppe hochgefahren werden kann, wird trotzdem ein Failover/Failback durchgeführt, und virtuelle Computer werden außerhalb einer Näherungsplatzierungsgruppe erstellt.
--  Wenn eine Verfügbarkeitsgruppe an eine Näherungsplatzierungsgruppe fixiert ist und während des Failover/Failbacks VMs in der Verfügbarkeitsgruppe eine Zuordnungsbeschränkung aufweisen, werden die virtuellen Computer außerhalb sowohl der Verfügbarkeitsgruppe als auch der Näherungsplatzierungsgruppe erstellt.
--  Site Recovery für Näherungsplatzierungsgruppen wird für nicht verwaltete Datenträger nicht unterstützt.
+- Wenn eine Verfügbarkeitsgruppe an eine Näherungsplatzierungsgruppe fixiert ist und während des Failover/Failbacks VMs in der Verfügbarkeitsgruppe eine Zuordnungsbeschränkung aufweisen, werden die virtuellen Computer außerhalb sowohl der Verfügbarkeitsgruppe als auch der Näherungsplatzierungsgruppe erstellt.
+- Site Recovery für Näherungsplatzierungsgruppen wird für nicht verwaltete Datenträger nicht unterstützt.
 
 > [!NOTE]
 > Das Failback von verwalteten Datenträgern für Szenarien vom Typ „Hyper-V zu Azure“ wird von Azure Site Recovery nicht unterstützt. Daher wird das Failback von der Näherungsplatzierungsgruppe in Azure zu Hyper-V nicht unterstützt.
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="set-up-disaster-recovery-for-vms-in-proximity-placement-groups-via-portal"></a>Einrichten der Notfallwiederherstellung für VMs in Näherungsplatzierungsgruppen über das Portal
+
+### <a name="azure-to-azure-via-portal"></a>Azure zu Azure über das Portal
+
+Sie können die Replikation für einen virtuellen Computer auf der VM-Notfallwiederherstellungs-Seite aktivieren, oder indem Sie zu einem vorab erstellten Tresor und dort zum Abschnitt „Sitewiederherstellung“ navigieren und dann die Replikation aktivieren. Sitewiederherstellung kann für virtuelle Computer in einer PPG (Proximity Placement Group, Näherungsplatzierungsgruppe) durch beide Ansätze eingerichtet werden:
+
+- Auswählen einer PPG in der Notfallwiederherstellungsregion beim Aktivieren der Replikation über das IaaS-VM-DR-Blatt:
+  1. Erstellen Sie den virtuellen Computer. Wählen Sie auf dem Blatt auf der linken Seite unter „Vorgänge“ die Option „Notfallwiederherstellung“ aus.
+  2. Wählen Sie auf der Registerkarte „Grundlagen“ die Notfallwiederherstellungsregion aus, in der Sie die VM replizieren möchten. Gehen Sie zu „Erweiterte Einstellungen“.
+  3. Hier sehen Sie die Näherungsplatzierungsgruppe Ihrer VM und die Option zum Auswählen einer PPG in der Notfallwiederherstellungsregion. Die Sitewiederherstellung bietet Ihnen auch die Möglichkeit, eine neue PPG zu verwenden, die für Sie erstellt wird, wenn Sie diese Standardoption verwenden möchten. Sie können die gewünschte Näherungsplatzierungsgruppe auswählen, dann zu „Replikation überprüfen und starten“ wechseln und schließlich die Replikation aktivieren.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-group-a2a-1.png" alt-text="Aktivieren der Replikation":::
+
+- Auswählen einer PPG in der Notfallwiederherstellungsregion beim Aktivieren der Replikation über das Tresorblatt:
+  1. Wechseln Sie zu Ihrem Recovery Services-Tresor und dann zur Registerkarte „Site Recovery“.
+  2. Klicken Sie auf „+ Site Recovery aktivieren“, und wählen Sie „1: Replikation aktivieren“ unter Azure-VMs aus (da Sie eine Azure-VM replizieren möchten).
+  3. Füllen Sie die erforderlichen Felder auf der Registerkarte „Quelle“ aus, und klicken Sie auf „Weiter“.
+  4. Wählen Sie auf der Registerkarte „Virtuelle Computer“ die Liste der VMs aus, für die Sie die Replikation aktivieren möchten, und klicken Sie auf „Weiter“.
+  5. Hier können Sie die Option zum Auswählen einer PPG in der Notfallwiederherstellungsregion sehen. Die Sitewiederherstellung bietet Ihnen auch die Möglichkeit, eine neue PPG zu verwenden, die für Sie erstellt wird, wenn Sie diese Standardoption verwenden möchten. Sie können die gewünschte PPG auswählen und dann mit dem Aktivieren der Replikation fortfahren.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-group-a2a-2.png" alt-text="Aktivieren der Replikation per Tresor.":::
+
+Beachten Sie, dass Sie die PPG-Auswahl in der Notfallwiederherstellungsregion nach der Aktivierung der Replikation für die VM problemlos aktualisieren können.
+
+1. Wechseln Sie zum virtuellen Computer, und wählen Sie auf der linken Seite unter „Vorgänge“ die Option „Notfallwiederherstellung“ aus.
+2. Wechseln Sie zum Blatt „Compute und Netzwerk“, und klicken Sie oben auf der Seite auf „Bearbeiten“.
+3. Sie können die Optionen zum Bearbeiten mehrerer Zieleinstellungen einschließlich der Ziel-PPG sehen. Wählen Sie die PPG aus, zu der der virtuelle Computer ein Failover durchführen soll, und klicken Sie auf „Speichern“.
+
+### <a name="vmware-to-azure-via-portal"></a>VMware zu Azure über das Portal
+
+Nach dem Aktivieren der Replikation für den virtuellen Computer kann die Näherungsplatzierungsgruppe für die Ziel-VM eingerichtet werden. Stellen Sie sicher, dass Sie die PPG gemäß Ihrer Anforderungen separat in der Zielregion erstellen. Später können Sie die PPG-Auswahl in der Notfallwiederherstellungsregion nach der Aktivierung der Replikation für die VM problemlos aktualisieren.
+
+1. Wählen Sie den virtuellen Computer im Tresor und dann auf der linken Seite unter „Vorgänge“ die Option „Notfallwiederherstellung“ aus.
+2. Wechseln Sie zum Blatt „Compute und Netzwerk“, und klicken Sie oben auf der Seite auf „Bearbeiten“.
+3. Sie können die Optionen zum Bearbeiten mehrerer Zieleinstellungen einschließlich der Ziel-PPG sehen. Wählen Sie die PPG aus, zu der der virtuelle Computer ein Failover durchführen soll, und klicken Sie auf „Speichern“.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-groups-update-v2a.png" alt-text="Aktualisieren von PPG V2A":::
+
+### <a name="hyper-v-to-azure-via-portal"></a>Hyper-V zu Azure über das Portal
+
+Nach dem Aktivieren der Replikation für den virtuellen Computer kann die Näherungsplatzierungsgruppe für die Ziel-VM eingerichtet werden. Stellen Sie sicher, dass Sie die PPG gemäß Ihrer Anforderungen separat in der Zielregion erstellen. Später können Sie die PPG-Auswahl in der Notfallwiederherstellungsregion nach der Aktivierung der Replikation für die VM problemlos aktualisieren.
+
+1. Wählen Sie den virtuellen Computer im Tresor und dann auf der linken Seite unter „Vorgänge“ die Option „Notfallwiederherstellung“ aus.
+2. Wechseln Sie zum Blatt „Compute und Netzwerk“, und klicken Sie oben auf der Seite auf „Bearbeiten“.
+3. Sie können die Optionen zum Bearbeiten mehrerer Zieleinstellungen einschließlich der Ziel-PPG sehen. Wählen Sie die PPG aus, zu der der virtuelle Computer ein Failover durchführen soll, und klicken Sie auf „Speichern“.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-groups-update-h2a.png" alt-text="Aktualisieren von PPG H2A":::
+
+## <a name="set-up-disaster-recovery-for-vms-in-proximity-placement-groups-via-powershell"></a>Einrichten der Notfallwiederherstellung für VMs in Näherungsplatzierungsgruppen über PowerShell
+
+### <a name="prerequisites"></a>Voraussetzungen 
 
 1. Stellen Sie sicher, dass Sie über das PowerShell-Modul „Az“ verfügen. Wenn Sie PowerShell installieren oder aktualisieren müssen, befolgen Sie die Anweisungen unter [Handbuch zum Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-az-ps).
 2. Die Mindestversion von Azure PowerShell Az sollte 4.1.0 sein. Verwenden Sie den folgenden Befehl, um die aktuelle Version zu überprüfen:
+
     ```
     Get-InstalledModule -Name Az
     ```
 
-## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Einrichten von Site Recovery für Virtual Machines in einer Näherungsplatzierungsgruppe
+### <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Einrichten von Site Recovery für Virtual Machines in einer Näherungsplatzierungsgruppe
 
 > [!NOTE]
 > Vergewissern Sie sich, dass Sie die eindeutige ID der Ziel-Näherungsplatzierungsgruppe zur Hand haben. Wenn Sie eine neue Näherungsplatzierungsgruppe erstellen, überprüfen Sie den Befehl [hier](../virtual-machines/windows/proximity-placement-groups.md#create-a-proximity-placement-group), und wenn Sie eine vorhandene Näherungsplatzierungsgruppe verwenden, verwenden Sie den Befehl [hier](../virtual-machines/windows/proximity-placement-groups.md#list-proximity-placement-groups).
@@ -165,7 +216,7 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 
 14. Führen Sie zum Deaktivieren der Replikation die [hier](./azure-to-azure-powershell.md#disable-replication) beschriebenen Schritte aus.
 
-### <a name="vmware-to-azure"></a>VMware zu Azure
+### <a name="vmware-to-azure-via-powershell"></a>VMware zu Azure über PowerShell
 
 1. Stellen Sie sicher, dass Sie die Schritte unter [Vorbereiten lokaler VMware-Server](./vmware-azure-tutorial-prepare-on-premises.md) für die Notfallwiederherstellung in Azure ausgeführt haben.
 2. Melden Sie sich bei Ihrem Azure-Konto an, und legen Sie Ihr Abonnement fest, wie [hier](./vmware-azure-disaster-recovery-powershell.md#log-into-azure) beschrieben.
@@ -203,7 +254,7 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
 10. [Führen Sie ein Testfailover durch](./vmware-azure-disaster-recovery-powershell.md#run-a-test-failover).
 11. Führen Sie das Failover auf Azure mithilfe [dieser](./vmware-azure-disaster-recovery-powershell.md#fail-over-to-azure) Schritte aus.
 
-### <a name="hyper-v-to-azure"></a>Hyper-V in Azure
+### <a name="hyper-v-to-azure-via-powershell"></a>Hyper-V zu Azure über PowerShell
 
 1. Stellen Sie sicher, dass Sie die Schritte unter [Vorbereiten lokaler Hyper-V-Server](./hyper-v-prepare-on-premises-tutorial.md) für die Notfallwiederherstellung in Azure ausgeführt haben.
 2. [Melden Sie sich bei Azure an](./hyper-v-azure-powershell-resource-manager.md#step-1-sign-in-to-your-azure-account).

@@ -3,15 +3,15 @@ title: 'Windows Virtual Desktop: Portalvorschau zum Anfügen von Apps mit MSIX �
 description: Einrichten des MSIX-Features zum Anfügen von Apps für Windows Virtual Desktop über das Azure-Portal.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 02/11/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 34bcef24d5e7fbda53984f14a2307859c9210262
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 19ce054ce29b744f900676ecf4e55af3487d9891
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185953"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373469"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Einrichten des MSIX-Features zum Anfügen von Apps mit dem Azure-Portal
 
@@ -65,7 +65,7 @@ Als nächstes müssen Sie die Verwaltungsschnittstelle für das MSIX-Feature zum
 
 So richten Sie die Verwaltungsschnittstelle ein
 
-1. [Öffnen Sie das Vorschauportal](https://preview.portal.azure.com/?feature.msixapplications=true#home).
+1. [Öffnen Sie das Azure-Portal](https://portal.azure.com).
 2. Wenn Sie eine Eingabeaufforderung erhalten, ob Sie die Erweiterung für vertrauenswürdig halten, wählen Sie **Zulassen** aus.
 
       > [!div class="mx-imgBorder"]
@@ -171,6 +171,9 @@ So veröffentlichen Sie die Apps
 ## <a name="assign-a-user-to-an-app-group"></a>Zuweisen eines Benutzers zu einer App-Gruppe
 
 Nachdem Sie MSIX-Apps einer App-Gruppe zugewiesen haben, müssen Sie Benutzern den Zugriff auf diese Apps gewähren. Sie können den Zugriff zuweisen, indem Sie Benutzer oder Benutzergruppen zu einer App-Gruppe mit veröffentlichten MSIX-Anwendungen hinzufügen. Folgen Sie den Anweisungen in [Verwalten von App-Gruppen mit dem Azure-Portal](manage-app-groups.md), um Ihre Benutzer einer App-Gruppe zuzuweisen.
+
+>[!NOTE]
+>Das MSIX-Feature zum Anfügen von Apps für Remote-Apps verschwindet möglicherweise aus dem Feed, wenn Sie Remote-Apps während der öffentlichen Vorschau testen. Die Apps werden nicht angezeigt, da der Hostpool, den Sie in der Testumgebung verwenden, von einem RD-Broker in der Produktionsumgebung versorgt wird. Da der RD-Broker in der Produktionsumgebung das Vorhandensein des MSIX-Features zum Anfügen von Apps für Remote-Apps nicht registriert, werden die Apps nicht im Feed angezeigt.
 
 ## <a name="change-msix-package-state"></a>Ändern des MSIX-Paketstatus
 

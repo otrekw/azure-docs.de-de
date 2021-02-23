@@ -6,14 +6,14 @@ documentationcenter: ''
 author: vladvino
 ms.service: api-management
 ms.topic: article
-ms.date: 12/14/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 344500d5635f591b34a45130c7dd6b63659ad84d
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 2bc9b1c5724fa7bab1fdf5ac9332d87ba03a6d11
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491010"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545818"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Verwenden von benannten Werten in Azure API Management-Richtlinien
 
@@ -86,6 +86,8 @@ Weitere Informationen finden Sie unter [Voraussetzungen für die Key Vault-Integ
 
 ### <a name="add-a-plain-or-secret-value"></a>Hinzufügen eines Plain- oder Geheimniswerts
 
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer API Management-Instanz.
 1. Wählen Sie unter **APIs** die Optionen **Benannte Werte** >  **+ Hinzufügen** aus.
 1. Geben Sie als Bezeichner einen **Namen** sowie einen **Anzeigenamen** ein, der zum Verweisen auf die Eigenschaft in Richtlinien verwendet wird.
@@ -95,6 +97,50 @@ Weitere Informationen finden Sie unter [Voraussetzungen für die Key Vault-Integ
 1. Klicken Sie auf **Erstellen**.
 
 Nachdem der benannte Wert erstellt wurde, können Sie ihn bearbeiten, indem Sie den Namen auswählen. Wenn Sie den Anzeigenamen ändern, werden alle Richtlinien, die auf diesen benannten Wert verweisen, automatisch aktualisiert, sodass sie den neuen Anzeigenamen verwenden.
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+So beginnen Sie mit der Verwendung der Azure CLI:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Um einen benannten Wert hinzuzufügen, verwenden Sie den Befehl [az apim nv create](/cli/azure/apim/nv#az_apim_nv_create):
+
+```azurecli
+az apim nv create --resource-group apim-hello-word-resource-group \
+    --display-name "named_value_01" --named-value-id named_value_01 \
+    --secret true --service-name apim-hello-world --value test
+```
+
+Nachdem Sie einen benannten Wert erstellt haben, können Sie ihn mithilfe des Befehls [az apim nv update](/cli/azure/apim/nv#az_apim_nv_update) aktualisieren. Wenn Sie alle benannten Werte anzeigen möchten, führen Sie den Befehl [az apim nv list](/cli/azure/apim/nv#az_apim_nv_list) aus:
+
+```azurecli
+az apim nv list --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --output table
+```
+
+Führen Sie den Befehl [az apim nv show](/cli/azure/apim/nv#az_apim_nv_show) aus, um die Details des benannten Werts anzuzeigen, den Sie für dieses Beispiel erstellt haben:
+
+```azurecli
+az apim nv show --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+Dieses Beispiel ist ein geheimer Wert. Der vorherige Befehl gibt den Wert nicht zurück. Um den Wert anzuzeigen, führen Sie den Befehl [az apim nv show-secret](/cli/azure/apim/nv#az_apim_nv_show_secret) aus:
+
+```azurecli
+az apim nv show-secret --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+Um einen benannten Wert zu löschen, verwenden Sie den Befehl [az apim nv delete](/cli/azure/apim/nv#az_apim_nv_delete):
+
+```azurecli
+az apim nv delete --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+---
 
 ## <a name="use-a-named-value"></a>Verwenden benannter Werte
 

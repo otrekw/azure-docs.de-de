@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 0dccd8ac4f852688bf7e59e7ed96c4458c08d18b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 3f3e945a00ec7bba75deebb56118d45aa7ff571d
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784727"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530721"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Aktivieren von User and Entity Behavior Analytics (UEBA) in Azure Sentinel 
 
 > [!IMPORTANT]
 >
-> - Die Features UEBA und Entitätsseiten sind nun in **_allen_* _ Azure Sentinel-Regionen **allgemein verfügbar**.
+> - Die Features „UEBA“ und „Entitätsseiten“ sind nun in **_allen_** Azure Sentinel-Geografien **allgemein verfügbar**.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,13 +33,16 @@ So aktivieren oder deaktivieren Sie dieses Feature (diese Voraussetzungen müsse
 
 - Der Benutzer muss Mitglied des Azure Active Directory Ihrer Organisation und darf kein Gastbenutzer sein.
 
-- Ihrem Benutzer muss die Rolle _ *Globaler Administrator** oder **Sicherheitsadministrator** in Azure AD zugewiesen sein.
+- Ihrem Benutzer muss die Rolle **Globaler Administrator** oder **Sicherheitsadministrator** in Azure AD zugewiesen sein.
 
 - Ihrem Benutzer muss mindestens eine der folgenden **Azure-Rollen**  zugewiesen sein ([Weitere Informationen zu Azure RBAC](roles.md)):
     - **Azure Sentinel-Mitwirkender** auf Arbeitsbereichs -oder Ressourcengruppenebene.
     - **Log Analytics-Mitwirkender** auf Ressourcengruppen- oder Abonnementebene.
 
 - In Ihrem Arbeitsbereich dürfen keine Azure-Ressourcensperren aktiviert sein. [Erfahren Sie mehr über Azure-Ressourcensperren](../azure-resource-manager/management/lock-resources.md).
+
+> [!NOTE]
+> Zum Hinzufügen von UEBA-Funktionalität zu Azure Sentinel ist keine spezielle Lizenz erforderlich, aber evtl. fallen **zusätzliche Gebühren** an.
 
 ## <a name="how-to-enable-user-and-entity-behavior-analytics"></a>Aktivieren von User and Entity Behavior Analytics
 

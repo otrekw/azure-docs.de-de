@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: dad02735228bb639981bf3f053a74f29d1944e5a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.date: 02/08/2021
+ms.openlocfilehash: 1228234b6a2904c453ec92f3c09a7b3f55604953
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961480"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363762"
 ---
 # <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>Benutzerdefinierte Rollen für Onlinemigrationsvorgänge von SQL Server zu verwalteten Azure SQL-Instanzen
 
@@ -32,7 +32,7 @@ Derzeit wird empfohlen, mindestens zwei benutzerdefinierte Rollen für die App-I
 > [!NOTE]
 > Die Anforderung für die letzte benutzerdefinierte Rolle kann zu einem bestimmten Zeitpunkt nicht mehr nötig sein, da neuer Code für die verwaltete SQL-Instanz in Azure bereitgestellt wird.
 
-**Benutzerdefinierte Rolle für die App-ID:** Diese Rolle ist für die Migration von Azure Database Migration Service auf *Ressourcenebene* oder *Ressourcengruppenebene* erforderlich. (Weitere Informationen zur App-ID finden Sie im Artikel [Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md).)
+**Benutzerdefinierte Rolle für die App-ID:** Diese Rolle ist für die Azure Database Migration Service-Migration auf der *Ressourcenebene* oder *Ressourcengruppenebene* erforderlich, die den Azure Database Migration Service hostet (weitere Informationen zur App-ID finden Sie im Artikel [Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md)).
 
 ```json
 {
@@ -63,7 +63,7 @@ Derzeit wird empfohlen, mindestens zwei benutzerdefinierte Rollen für die App-I
 }
 ```
 
-**Benutzerdefinierte Rolle für die App-ID – Abonnement:** Diese Rolle ist für die Migration von Azure Database Migration Service auf *Abonnementebene* erforderlich.
+**Benutzerdefinierte Rolle für die App-ID – Abonnement:** Diese Rolle ist für die Azure Database Migration Service-Migration auf der *Abonnementebene* erforderlich, die die SQL Managed Instance-Instanz hostet.
 
 ```json
 {
@@ -87,8 +87,8 @@ Weitere Informationen finden Sie im Artikel [Benutzerdefinierte Azure-Rollen](..
 
 Nach dem Erstellen dieser benutzerdefinierten Rollen müssen Sie den Benutzern und App-IDs für die entsprechenden Ressourcen oder Ressourcengruppen Rollenzuweisungen hinzufügen:
 
-* Die Rolle „DMS Role – App ID“ muss der App-ID, die für die Migrationsvorgänge verwendet wird, sowie auf den Ressourcenebenen des Speicherkontos, der Azure Database Migration Service-Instanz und der verwalteten SQL-Instanz zugewiesen werden.
-* Die Rolle „DMS Role – App ID - Sub“ muss der App-ID auf Abonnementebene zugewiesen werden. (Bei der Zuweisung auf Ressourcen- oder Ressourcengruppenebene treten Fehler auf.) Diese Anforderung gilt, bis ein Codeupdate bereitgestellt wurde.
+* Die Rolle „DMS Role – App ID“ muss der App-ID, die für die Migrationsvorgänge verwendet wird, sowie auf den Ressourcenebenen des Speicherkontos, der Azure Database Migration Service-Instanz und der verwalteten SQL-Instanz zugewiesen werden. Sie wird auf der Ressourcen- oder Ressourcengruppenebene zugewiesen, die den Azure Database Migration Service hostet.
+* Die Rolle „DMS Role – App ID – Sub“ muss der App-ID auf der Abonnementebene zugewiesen werden, die die SQL Managed Instance-Instanz hostet (bei der Zuweisung auf Ressourcen- oder Ressourcengruppenebene treten Fehler auf). Diese Anforderung gilt, bis ein Codeupdate bereitgestellt wurde.
 
 ## <a name="expanded-number-of-roles"></a>Erweiterte Anzahl von Rollen
 

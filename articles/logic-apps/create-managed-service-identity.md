@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 01/15/2021
-ms.openlocfilehash: 9ac8a23569d9a85787768419a0377967026e9bd9
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 02/12/2021
+ms.openlocfilehash: 9a3a511a287f093b4fc317213afedd5fdc3c21be
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251603"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520662"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Authentifizieren des Zugriffs auf Azure-Ressourcen mithilfe verwalteter Identitäten in Azure Logic Apps
 
@@ -30,6 +30,9 @@ Derzeit können nur [bestimmte integrierte Trigger und Aktionen](../logic-apps/l
 * Azure-Funktionen
 * HTTP
 * HTTP + Webhook
+
+> [!NOTE]
+> Der HTTP-Trigger und die Aktion können zwar mithilfe der vom System zugewiesenen verwalteten Identität Verbindungen mit Azure Storage-Konten hinter Azure-Firewalls authentifizieren, jedoch nicht dieselben Verbindungen mit der vom Benutzer zugewiesenen verwalteten Identität authentifizieren.
 
 **Verwaltete Connectors**
 
@@ -177,7 +180,7 @@ Um eine vom Benutzer zugewiesene verwaltete Identität für Ihre Logik-App einzu
 
    ![Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](./media/create-managed-service-identity/create-user-assigned-identity.png)
 
-   | Eigenschaft | Erforderlich | Wert | Beschreibung |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Der Name des zu verwendenden Azure-Abonnements |
    | **Ressourcengruppe** | Ja | <*Name der Azure-Ressourcengruppe*> | Der Name der zu verwendenden Ressourcengruppe. Erstellen Sie eine neue Gruppe, oder wählen Sie eine vorhandene Gruppe aus. Dieses Beispiel erstellt eine neue Gruppe namens `fabrikam-managed-identities-RG`. |

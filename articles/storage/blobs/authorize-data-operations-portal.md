@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 8c963f11a34217253f02cb5d116d66cdbf8bcc19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 319bbdd7809e224ca608fdac06d4b304c2052e86
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033956"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391540"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>Auswählen der Autorisierung des Zugriffs auf Blobdaten im Azure-Portal
 
@@ -37,6 +37,9 @@ Für den Zugriff auf Blobdaten mit dem Kontozugriffsschlüssel muss Ihnen eine A
 - Die Rolle [Speicherkontomitwirkender](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
 Wenn Sie versuchen, im Azure-Portal auf Blobdaten zuzugreifen, prüft das Portal zunächst, ob Ihnen eine Rolle mit **Microsoft.Storage/storageAccounts/listkeys/action** zugewiesen ist. Wenn Ihnen eine Rolle mit dieser Aktion zugewiesen wurde, verwendet das Portal den Kontoschlüssel für den Zugriff auf Blobdaten. Wenn Ihnen keine Rolle mit dieser Aktion zugewiesen wurde, versucht das Portal, über Ihr Azure AD-Konto auf Daten zuzugreifen.
+
+> [!IMPORTANT]
+> Wenn ein Speicherkonto mit **ReadOnly** in Azure Resource Manager gesperrt ist, ist der Vorgang [Schlüssel auflisten](/rest/api/storagerp/storageaccounts/listkeys) für dieses Speicherkonto nicht zulässig. **Schlüssel auflisten** ist ein POST-Vorgang, und alle POST-Vorgänge werden verhindert, wenn die Sperre **ReadOnly** für das Konto festgelegt wurde. Wenn das Konto mit einer **ReadOnly**-Sperre gesperrt ist, müssen die Benutzer aus diesem Grund Anmeldeinformationen von Azure AD verwenden, um auf Blobdaten im Portal zuzugreifen. Informationen zum Zugreifen auf Blobdaten im Portal mit Azure AD finden Sie unter [Verwenden des Azure AD-Kontos](#use-your-azure-ad-account).
 
 > [!NOTE]
 > Die zu „Administrator für klassisches Abonnement“ gehörigen Rollen „Dienstadministrator“ und „Co-Administrator“ schließen die Entsprechung der Azure Resource Manager-Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner) ein. Die Rolle **Besitzer** schließt alle Aktionen einschließlich **Microsoft.Storage/storageAccounts/listkeys/action** ein, sodass ein Benutzer mit einer dieser Administratorrollen auch mit dem Kontoschlüssel auf Blobdaten zugreifen kann. Weitere Informationen finden Sie unter [Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).

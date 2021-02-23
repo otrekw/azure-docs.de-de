@@ -4,12 +4,12 @@ description: Verhindern Sie, dass Benutzer Azure-Ressourcen aktualisieren oder l
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 912c7e86d253aa18b9a6c60717ceaa70e32fcf0e
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 6df6aec06fadaacc6b1d08ed9ee33b72c5971359
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428316"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369474"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Sperren von Ressourcen, um unerwartete Änderungen zu verhindern
 
@@ -32,7 +32,7 @@ Resource Manager-Sperren gelten nur für Vorgänge auf der Verwaltungsebene (als
 
 Das Anwenden von Sperren kann zu unerwarteten Ergebnissen führen, da einige Vorgänge, die die Ressource nicht zu ändern scheinen, tatsächlich Aktionen erfordern, die von der Sperre blockiert werden. Sperren verhindern alle Vorgänge, für die eine POST-Anforderung an die Azure Resource Manager-API erforderlich ist. Einige gängige Beispiele für die Vorgänge, die durch Sperren blockiert werden, sind:
 
-* Eine Schreibschutzsperre für ein **Speicherkonto** hindert alle Benutzer am Auflisten der Schlüssel. Der Vorgang zum Auflisten von Schlüsseln wird über eine POST-Anforderung behandelt, da die zurückgegebenen Schlüssel für Schreibvorgänge zur Verfügung stehen.
+* Eine Schreibschutzsperre für ein **Speicherkonto** hindert Benutzer am Auflisten der Kontoschlüssel. Der Vorgang Azure Storage [List Keys](/rest/api/storagerp/storageaccounts/listkeys) wird durch eine Post-Anforderung verarbeitet, um den Zugriff auf die Kontoschlüssel zu schützen, die den gesamten Zugriff auf die Daten im Speicherkonto ermöglichen. Wenn eine Schreibschutzsperre für ein Speicherkonto konfiguriert ist, müssen Benutzer, die die Kontoschlüssel nicht besitzen, Azure AD-Anmeldeinformationen verwenden, um auf Blob- oder Warteschlangendaten zuzugreifen. Eine Schreibschutzsperre verhindert auch die Zuweisung von Azure RBAC-Rollen, die auf das Speicherkonto oder einen Datencontainer (Blobcontainer oder Warteschlange) beschränkt sind.
 
 * Das Festlegen einer Schreibschutzsperre für eine **App Service**-Ressource verhindert, dass der Server-Explorer von Visual Studio Dateien für die Ressource anzeigen kann, da für diese Interaktion Schreibzugriff erforderlich ist.
 

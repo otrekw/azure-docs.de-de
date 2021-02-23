@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: sttsinar
 ms.custom: include file
-ms.openlocfilehash: bd31152c6742271658cf4fd7ac2a5e2957651c84
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e22c2b7cb561e30e84ea5ede5481fbdc35be8cdf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96478403"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515130"
 ---
 Azure Compute bietet VM-Größen, die für einen bestimmten Hardwaretyp isoliert und für einen einzelnen Kunden bestimmt sind. Die Größen isolierter VMs gelten für eine bestimmte Hardwaregeneration und sind veraltet, sobald die Hardwaregeneration außer Betrieb gesetzt wird.
 
@@ -23,14 +23,14 @@ Die Größen isolierter VMs eignen sich am besten für Workloads, die ein hohes 
 Da isolierte VMs groß sind, können Kunden die Ressourcen dieser VMs zudem unterteilen, indem sie die [Azure-Support für geschachtelte VMs](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) verwenden.
 
 Zu den aktuellen Angebote isolierter virtueller Computer zählen Folgende:
-* Standard_E64is_v3
-* Standard_E64i_v3
 * Standard_E80ids_v4
 * Standard_E80is_v4
+* Standard_F72s_v2
+* Standard_E64is_v3
+* Standard_E64i_v3
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
-* Standard_F72s_v2
 
 
 > [!NOTE]
@@ -38,7 +38,7 @@ Zu den aktuellen Angebote isolierter virtueller Computer zählen Folgende:
 
 ## <a name="deprecation-of-isolated-vm-sizes"></a>Eingestellte Unterstützung von Größen isolierter VMs
 
-Da es sich bei der Größe isolierter VMs um eine hardwaregebundene Größe handelt, werden über Azure 12 Monate vor der offiziellen Einstellung der Unterstützung der Größe Erinnerungen bereitgestellt.  Zudem wird über Azure eine aktualisierte Größe isolierter VMs für die nächste Hardwareversion bereitgestellt, auf die der Kunde seine Workload verschieben kann.
+Die Größen von isolierten VMs haben eine durch die Hardware begrenzte Lebensdauer. Azure wird 12 Monate vor dem offiziellen Datum für „Veraltet ab“ der Größen entsprechende Erinnerungen ausgeben und ein aktualisiertes isoliertes Angebot für Sie bereitstellen.
 
 | Size | Datum für die Außerbetriebnahme der Isolation | 
 | --- | --- |
@@ -49,7 +49,7 @@ Da es sich bei der Größe isolierter VMs um eine hardwaregebundene Größe hand
 
 
 ## <a name="faq"></a>Häufig gestellte Fragen
-### <a name="q-is-the-size-going-to-get-retired-or-only-isolation-feature-is"></a>F: Wird die Unterstützung der Größe eingestellt oder nur das Feature „Isolation“?
+### <a name="q-is-the-size-going-to-get-retired-or-only-its-isolation-feature"></a>F: Wird die Unterstützung der Größe eingestellt oder nur ihr Feature „Isolation“?
 **A:** Wenn die VM-Größe keinen „i“-Index aufweist, wird nur die Unterstützung des Features „Isolation“ eingestellt. Wenn keine Isolation erforderlich ist, muss nichts unternommen werden und die VM funktioniert weiterhin erwartungsgemäß. Beispiele hierfür sind Standard_DS15_v2, Standard_D15_v2, Standard_M128ms usw. Wenn die VM-Größe einen „i“-Index aufweist, wird die Unterstützung der Größe eingestellt.
 
 ### <a name="q-is-there-a-downtime-when-my-vm-lands-on-a-non-isolated-hardware"></a>F: Gibt es eine Ausfallzeit, wenn meine VM auf nicht isolierte Hardware verschoben wird?

@@ -9,12 +9,12 @@ ms.date: 01/27/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 8172abb5e220f28061c7826af24a5d9a2043f4ad
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 5e08af509487188245b0fad9ba2d0f490944868f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219908"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371786"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -371,10 +371,12 @@ Manchmal ist eine Anwendung unter Umständen auf Azure-Ressourcen angewiesen, di
 
 Die Arten von Vorgängen, die von einer Ressourceninstanz für Speicherkontodaten ausgeführt werden können, werden durch die [Azure-Rollenzuweisungen](storage-auth-aad.md#assign-azure-roles-for-access-rights) der Ressourceninstanz bestimmt. Ressourceninstanzen müssen aus dem gleichen Mandanten stammen wie Ihr Speicherkonto, können aber zu einem beliebigen Abonnement im Mandanten gehören.
 
-Die Liste mit den unterstützten Azure-Diensten finden Sie im Abschnitt [Vertrauenswürdiger Zugriff auf der Grundlage einer systemseitig zugewiesenen verwalteten Identität](#trusted-access-system-assigned-managed-identity) dieses Artikels.
+> [!NOTE]
+> Dieses Feature befindet sich in der Public Preview-Phase und ist in allen öffentlichen Cloudregionen verfügbar.
 
 > [!NOTE]
-> Dieses Feature befindet sich in der Public Preview-Phase und ist in allen öffentlichen Cloudregionen verfügbar. 
+> Ressourceninstanzregeln werden zurzeit nur für Azure Synapse unterstützt. Die Unterstützung für andere Azure-Dienste, die im Abschnitt [Vertrauenswürdiger Zugriff auf der Grundlage einer systemseitig zugewiesenen verwalteten Identität](#trusted-access-system-assigned-managed-identity) dieses Artikels aufgeführt sind, wird in den nächsten Wochen verfügbar sein.
+
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 

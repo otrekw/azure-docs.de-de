@@ -6,20 +6,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5802070bf9b495c0e866d160d6661349369a444e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5b6bd16eacf4b1bbb7b93f5500813e7fa9dc7eef
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993742"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095839"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>Aktivieren und Verwalten von Blobversionsverwaltung
 
-Sie können die Blob Storage-Versionsverwaltung aktivieren, um frühere Versionen eines Objekts automatisch zu verwalten.  Wenn Blobversionsverwaltung aktiviert ist, können Sie eine frühere Version eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden.
+Sie können die Blob Storage-Versionsverwaltung aktivieren, um frühere Versionen eines Blobs automatisch zu verwalten, wenn er geändert oder gelöscht wird. Wenn die Blobversionsverwaltung aktiviert ist, können Sie eine frühere Version eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden.
 
 In diesem Artikel wird gezeigt, wie Sie die Blobversionsverwaltung für das Speicherkonto über das Azure-Portal oder mithilfe einer Azure Resource Manager-Vorlage aktivieren oder deaktivieren können. Informationen zur Blobversionsverwaltung finden Sie unter [Blobversionsverwaltung](versioning-overview.md).
 
@@ -29,13 +29,39 @@ In diesem Artikel wird gezeigt, wie Sie die Blobversionsverwaltung für das Spei
 
 # <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
-So aktivieren Sie Blobversionsverwaltung im Azure-Portal:
+So aktivieren Sie die Blobversionsverwaltung für ein Speicherkonto im Azure-Portal
 
 1. Navigieren Sie im Portal zu Ihrem Speicherkonto.
 1. Wählen Sie unter **Blob-Dienst** die Option **Datenschutz** aus.
 1. Wählen Sie im Abschnitt **Versionsverwaltung** die Option **Aktiviert** aus.
 
 :::image type="content" source="media/versioning-enable/portal-enable-versioning.png" alt-text="Screenshot: Aktivieren von Blobversionsverwaltung im Azure-Portal":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Um die Blobversionsverwaltung für ein Speicherkonto mit PowerShell zu aktivieren, installieren Sie zunächst das [Az.Storage](https://www.powershellgallery.com/packages/Az.Storage)-Modul, Version 2.3.0 oder höher. Rufen Sie dann den Befehl [Update-AzStorageBlobServiceProperty](/powershell/module/az.storage/update-azstorageblobserviceproperty) auf, um die Versionsverwaltung zu aktivieren, wie im folgenden Beispiel gezeigt. Denken Sie daran, die Werte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
+
+```powershell
+# Set resource group and account variables.
+$rgName = "<resource-group>"
+$accountName = "<storage-account>"
+
+# Enable versioning.
+Update-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
+    -StorageAccountName $accountName `
+    -IsVersioningEnabled $true
+```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Um die Blobversionsverwaltung für ein Speicherkonto mit der Azure CLI zu aktivieren, installieren Sie zunächst die Azure CLI-Version 2.2.0 oder höher. Rufen Sie dann den Befehl [az storage account blob-service-properties update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) auf, um die Versionsverwaltung zu aktivieren, wie im folgenden Beispiel gezeigt. Denken Sie daran, die Werte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
+
+```azurecli
+az storage account blob-service-properties update \
+    --resource-group <resource_group> \
+    --account-name <storage-account> \
+    --enable-versioning true
+```
 
 # <a name="template"></a>[Vorlage](#tab/template)
 
