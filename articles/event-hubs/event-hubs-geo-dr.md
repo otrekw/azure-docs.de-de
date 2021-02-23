@@ -2,13 +2,13 @@
 title: 'Georedundante Notfallwiederherstellung: Azure Event Hubs | Microsoft-Dokumentation'
 description: Verwenden von geografischen Regionen für Failover und Notfallwiederherstellung in Azure Event Hubs
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 4470b55973f53c924caba8665199d261fe63a8fc
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.date: 02/10/2021
+ms.openlocfilehash: 2fd13ac98e80aa67a2a3150e8406a0b0b1b08d13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222881"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390673"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs: Georedundante Notfallwiederherstellung 
 
@@ -75,24 +75,27 @@ Im folgenden Abschnitt finden Sie eine Übersicht über den Failoverprozess und 
 Zuerst erstellen bzw. verwenden Sie einen vorhandenen primären Namespace und einen neuen sekundären Namespace und koppeln diese anschließend. Über diese Kopplung erhalten Sie einen Alias, mit dem Sie eine Verbindung herstellen können. Da Sie einen Alias verwenden, müssen Sie keine Verbindungszeichenfolgen ändern. Nur neue Namespaces können der Failoverkopplung hinzugefügt werden. 
 
 1. Erstellen Sie den primären Namespace.
-1. Erstellen Sie den sekundären Namespace in dem Abonnement und der Ressourcengruppe, zu denen der primäre Namespace gehört. Dieser Schritt ist optional. Sie können den sekundären Namespace während der Erstellung der Kopplung im nächsten Schritt erstellen. 
+1. Erstellen Sie den sekundären Namespace in dem Abonnement und der Ressourcengruppe, zu denen der primäre Namespace gehört, jedoch in einer anderen Region. Dieser Schritt ist optional. Sie können den sekundären Namespace während der Erstellung der Kopplung im nächsten Schritt erstellen. 
 1. Navigieren Sie im Azure-Portal zu Ihrem primären Namespace.
 1. Wählen Sie im linken Menü **Georedundante Wiederherstellung** und auf der Symbolleiste **Kopplung initiieren** aus. 
 
     :::image type="content" source="./media/event-hubs-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="Initiieren der Kopplung vom primären Namespace":::    
-1. Wählen Sie auf der Seite **Kopplung initiieren** einen vorhandenen sekundären Namespace aus, oder erstellen Sie einen in dem Abonnement und der Ressourcengruppe, zu denen der primäre Namespace gehört. Wählen Sie anschließend **Erstellen**. Im folgenden Beispiel wird ein vorhandener sekundärer Namespace ausgewählt. 
+1. Führen Sie auf der Seite **Kopplung initiieren** die folgenden Schritte aus:
+    1. Wählen Sie einen vorhandenen sekundären Namespace aus, oder erstellen Sie einen in dem Abonnement und der Ressourcengruppe, zu denen der primäre Namespace gehört. In diesem Beispiel wurde ein vorhandener Namespace ausgewählt.  
+    1. Geben Sie als **Alias** einen Alias für die georedundanten Kopplung ein. 
+    1. Wählen Sie anschließend **Erstellen**. 
 
     :::image type="content" source="./media/event-hubs-geo-dr/initiate-pairing-page.png" alt-text="Auswählen des sekundären Namespaces":::        
-1. Wenn Sie jetzt **Georedundante Wiederherstellung** für den primären Namespace auswählen, wird die Seite **Event Hubs-Alias für georedundante Notfallwiederherstellung** ähnlich der folgenden Abbildung angezeigt:
+1. Die Seite mit dem **Alias für georedundante Notfallwiederherstellung** sollte angezeigt werden. Sie können auch vom primären Namespace zu dieser Seite navigieren, indem Sie im linken Menü die Option **Georedundante Wiederherstellung** auswählen.
 
     :::image type="content" source="./media/event-hubs-geo-dr/geo-dr-alias-page.png" alt-text="Seite „Event Hubs-Alias für georedundante Notfallwiederherstellung“":::    
+1. Wählen Sie auf der Seite **Alias für georedundante Notfallwiederherstellung** im linken Menü die Option **SAS-Richtlinien** aus, um auf die primäre Verbindungszeichenfolge für den Alias zuzugreifen. Verwenden Sie diese Verbindungszeichenfolge anstelle der direkten Verbindungszeichenfolge zum primären bzw. sekundären Namespace. 
 1. Auf der Seite **Übersicht** können Sie die folgenden Aktionen ausführen: 
     1. Aufheben der Kopplung zwischen dem primären und sekundären Namespace. Wählen Sie auf der Symbolleiste die Option **Kopplung aufheben** aus. 
     1. Manuelles Failover zum sekundären Namespace. Wählen Sie auf der Symbolleiste die Option **Failover** aus. 
     
         > [!WARNING]
         > Ein Failover aktiviert den sekundären Namespace und entfernt den primären Namespace aus der Kopplung für die georedundante Notfallwiederherstellung. Erstellen Sie einen weiteren Namespace, um eine neue Kopplung für die georedundante Notfallwiederherstellung zu erhalten. 
-1. Wählen Sie auf der Seite **Event Hubs-Alias für georedundante Notfallwiederherstellung** die Option **Richtlinien für gemeinsamen Zugriff** aus, um auf die primäre Verbindungszeichenfolge für den Alias zuzugreifen. Verwenden Sie diese Verbindungszeichenfolge anstelle der direkten Verbindungszeichenfolge zum primären bzw. sekundären Namespace. 
 
 Abschließend sollten Sie einige Überwachungsfunktionen hinzufügen, um zu ermitteln, ob ein Failover erforderlich ist. In den meisten Fällen ist der Dienst Teil eines großen Ökosystems, sodass automatische Failover selten möglich sind, da Failover häufig synchron mit dem restlichen Subsystem oder der Infrastruktur durchgeführt werden müssen.
 
@@ -133,9 +136,9 @@ Beachten Sie Folgendes:
 
 1. Die georedundante Notfallwiederherstellung von Event Hubs repliziert entwurfsbedingt keine Daten. Daher können Sie den alten Offsetwert Ihres primären Event Hubs für den sekundären Event Hub nicht wiederverwenden. Es wird empfohlen, den Ereignisempfänger mit einer der folgenden Methoden neu zu starten:
 
-- *EventPosition.FromStart()* : Wenn Sie alle Daten auf dem sekundären Event Hub lesen möchten.
-- *EventPosition.FromEnd()* : Wenn Sie alle neuen Daten ab dem Zeitpunkt der Verbindung mit dem sekundären Event Hub lesen möchten.
-- *EventPosition.FromEnqueuedTime(dateTime)* : Wenn Sie alle Daten lesen möchten, die im sekundären Event Hub ab einem bestimmten Datum und einer bestimmten Uhrzeit empfangen wurden.
+   - *EventPosition.FromStart()* : Wenn Sie alle Daten auf dem sekundären Event Hub lesen möchten.
+   - *EventPosition.FromEnd()* : Wenn Sie alle neuen Daten ab dem Zeitpunkt der Verbindung mit dem sekundären Event Hub lesen möchten.
+   - *EventPosition.FromEnqueuedTime(dateTime)* : Wenn Sie alle Daten lesen möchten, die im sekundären Event Hub ab einem bestimmten Datum und einer bestimmten Uhrzeit empfangen wurden.
 
 2. Berücksichtigen Sie bei der Failoverplanung auch den Zeitfaktor. Falls beispielsweise länger als 15 bis 20 Minuten keine Konnektivität vorhanden ist, empfiehlt es sich unter Umständen, das Failover zu initiieren. 
  
@@ -153,6 +156,8 @@ Die Event Hubs-Standard-SKU unterstützt [Verfügbarkeitszonen](../availability-
 > Die Unterstützung für Verfügbarkeitszonen für Azure Event Hubs Standard ist nur in [Azure-Regionen](../availability-zones/az-region.md) verfügbar, in denen Verfügbarkeitszonen vorhanden sind.
 
 Sie können Verfügbarkeitszonen nur für neue Namespaces über das Azure-Portal aktivieren. In Event Hubs wird die Migration vorhandener Namespaces nicht unterstützt. Sie können die Zonenredundanz nicht deaktivieren, wenn Sie sie für Ihren Namespace aktiviert haben.
+
+Wenn Sie Verfügbarkeitszonen verwenden, werden sowohl Metadaten als auch Daten (Ereignisse) zwischen Rechenzentren in der Verfügbarkeitszone repliziert. 
 
 ![3][]
 

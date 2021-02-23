@@ -7,15 +7,15 @@ ms.author: keli19
 ms.custom: seodec18
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: overview
 ms.date: 08/19/2020
-ms.openlocfilehash: 0a18f9adb8c3723619b44b30bfa334edf4300c0d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ad0550dc20edfbc10fb8877ad049c27fc2edf086
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95509487"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517534"
 ---
 # <a name="what-can-i-do-with-machine-learning-studio-classic"></a>Welche Möglichkeiten bietet Machine Learning Studio (Classic)?
 
@@ -30,14 +30,14 @@ Machine Learning Studio (Classic) ist ein Drag & Drop-Tool, mit dem Sie Machin
 
 Für die Entwicklung eines prädiktiven Analysemodells verwendet man typischerweise Daten aus einer oder mehreren Quellen, transformiert und analysiert diese Daten mithilfe verschiedener Datenbearbeitungen und Statistikfunktionen und generiert einen Ergebnissatz. Das Entwickeln eines solchen Modells ist ein iterativer Prozess. Sie ändern die verschiedenen Funktionen und deren Parameter, und die Ergebnisse nähern sich an, bis Sie der Ansicht sind, dass Sie ein trainiertes, effektives Modell erreicht haben.
 
-Azure Machine Learning Studio (Classic) stellt Ihnen einen interaktiven, visuellen Arbeitsbereich zur Verfügung, in dem Sie ein Vorhersageanalysemodell ganz einfach entwickeln, testen und durchlaufen können. Dazu ziehen Sie **_Datasets_* _ und _*_Analysemodule_*_ per Drag & Drop auf eine interaktive Canvas und verbinden sie zu einem _*_Experiment_*_, das Sie dann in Machine Learning Studio (klassisch) ausführen. Für die Iteration des Modelldesigns bearbeiten Sie das Experiment, speichern ggf. eine Kopie und führen es erneut aus. Wenn Sie bereit sind, können Sie Ihr _*_Trainingsexperiment_*_ in ein _*_Vorhersageexperiment_*_ konvertieren und anschließend als _*_Webdienst_*_ veröffentlichen, damit andere Benutzer auf das Modell zugreifen können.
+Azure Machine Learning Studio (Classic) stellt Ihnen einen interaktiven, visuellen Arbeitsbereich zur Verfügung, in dem Sie ein Vorhersageanalysemodell ganz einfach entwickeln, testen und durchlaufen können. Dazu ziehen Sie ***Datasets** _ und _*_Analysemodule_*_ per Drag & Drop auf eine interaktive Canvas und verbinden sie zu einem _*_Experiment_*_, das Sie dann in Machine Learning Studio (klassisch) ausführen. Für die Iteration des Modelldesigns bearbeiten Sie das Experiment, speichern ggf. eine Kopie und führen es erneut aus. Wenn Sie bereit sind, können Sie Ihr _*_Trainingsexperiment_*_ in ein _*_Vorhersageexperiment_*_ konvertieren und anschließend als _ *_Webdienst_** veröffentlichen, damit andere Benutzer auf das Modell zugreifen können.
 
 Es ist keinerlei Programmierung erforderlich. Sie müssen lediglich Datasets und Module auf der grafischen Benutzeroberfläche miteinander verbinden, um Ihr Predictive Analytics-Modell zu erstellen.
 
 ![Diagramm von Machine Learning Studio (Classic): Erstellen von Experimenten, Lesen von Daten aus vielen Quellen, Schreiben der ausgewerteten Daten, Erstellen von Modellen.](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
 
 ## <a name="download-the-ml-studio-classic-overview-diagram"></a>Herunterladen des Übersichtsdiagramms für ML Studio (Classic)
-Laden Sie das _ *Diagramm mit der Übersicht über die Funktionen von Microsoft ML Studio (klassisch)* * herunter, und verschaffen Sie sich einen allgemeinen Überblick über die Funktionen von Machine Learning Studio (klassisch). Drucken Sie das Diagramm in Tabloid-Größe (28 x 43 cm, 11 x 17 Zoll) aus, um schnell darauf zugreifen zu können.
+Laden Sie das **Diagramm mit der Übersicht über die Funktionen von Microsoft ML Studio (Classic)** herunter, und verschaffen Sie sich einen allgemeinen Überblick über die Funktionen von Machine Learning Studio (Classic). Drucken Sie das Diagramm in Tabloid-Größe (28 x 43 cm, 11 x 17 Zoll) aus, um schnell darauf zugreifen zu können.
 
 **Laden Sie das Diagramm hier herunter: [Übersicht über die Funktionen von Microsoft Machine Learning Studio (Classic)](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)** 
 ![Übersicht über die Funktionen von Microsoft Machine Learning Studio (Classic)](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)

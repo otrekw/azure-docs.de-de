@@ -9,22 +9,31 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/28/2019
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 5104783aff5684471819ecf04e965670fff2798b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d17c6cb038bf5550f76a8aef7ac2d41244cfda1
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798141"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096564"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Anzeigen, wie Ihre Organisation Ihre datenschutzrelevanten Daten verwendet
 
 Im Portal **Mein Konto** können Sie auf der Seite **Einstellungen und Datenschutz** anzeigen, wie Ihre Organisation Ihre Daten verwendet.
 
+>[!Note]
+> Wenn bei der Anmeldung mit einem persönlichen Microsoft-Konto ein Fehler auftritt, können Sie sich trotzdem mit dem Domänennamen für Ihre Organisation (z. B. „contoso.com“) oder der **Mandanten-ID** Ihrer Organisation, die Sie von Ihrem Administrator erhalten, über eine der folgenden URLs anmelden:
+>
+>   - https://myaccount.microsoft.com?tenantId=*Ihr_Domänenname*
+>   - https://myaccount.microsoft.com?tenant=*Ihre_Mandanten_ID*
+
 ## <a name="view-your-privacy-related-info"></a>Anzeigen der datenschutzrelevanten Informationen
 
-1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myaccount.microsoft.com/ auf.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myaccount.microsoft.com/ auf. Wenn Sie sich mit einem persönlichen Microsoft-Konto anmelden, können Sie sich trotzdem mit dem Domänennamen für Ihre Organisation (z. B. „contoso.com“) oder der **Mandanten-ID** Ihrer Organisation, die Sie von Ihrem Administrator erhalten, über eine der folgenden URLs anmelden:
+
+   - https://myaccount.microsoft.com?tenantId=*Ihr_Domänenname*
+   - https://myaccount.microsoft.com?tenant=*Ihre_Mandanten_ID*
 
 2. Wählen Sie im linken Navigationsbereich **Einstellungen und Datenschutz** oder im Block **Einstellungen und Datenschutz** den Link **Einstellungen und Datenschutz anzeigen** aus.
 

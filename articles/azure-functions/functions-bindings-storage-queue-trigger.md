@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 95560801d4132735435e4d45e8a588476636ec38
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 59cedb25295770ba4ae4a33aac3287c5fed1297d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96001234"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381493"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Queue Storage-Trigger für Azure Functions
 
@@ -357,13 +357,15 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction**| – | Nur in der Datei *function.json*. Muss auf `in` festgelegt sein. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
 |**name** | – |Der Name der Variablen, die die Nutzlast des Warteschlangenelements im Funktionscode enthält.  |
 |**queueName** | **QueueName**| Der Name der abzufragenden Warteschlange. |
-|**connection** | **Connection** |Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Runtime nach einer App-Einstellung namens „MyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.|
+|**connection** | **Connection** |Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben.<br><br>Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Runtime nach einer App-Einstellung namens „MyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Wenn Sie [Version 5.x oder höher der Erweiterung](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) verwenden, können Sie anstelle einer Verbindungszeichenfolge einen Verweis auf einen Konfigurationsabschnitt angeben, der die Verbindung definiert. Weitere Informationen finden Sie unter [Verbindungen](./functions-reference.md#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Verwendung
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="default"></a>Standard
 
 Zugriff auf die Nachrichtendaten mittels eines Methodenparameters wie `string paramName`. Eine Bindung kann mit folgenden Typen erstellt werden:
 
@@ -374,7 +376,17 @@ Zugriff auf die Nachrichtendaten mittels eines Methodenparameters wie `string pa
 
 Wenn Sie versuchen, eine Bindung an `CloudQueueMessage` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x) vorliegt.
 
+### <a name="additional-types"></a>Zusätzliche Typen
+
+Apps, die die [Version 5.0.0 oder höher der Storage-Erweiterung](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) verwenden, können auch Typen aus dem [Azure SDK für .NET](/dotnet/api/overview/azure/storage.queues-readme) verwenden. In dieser Version wird Unterstützung des Legacytyps `CloudQueueMessage` zugunsten der folgenden Typen aufgegeben:
+
+- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
+ 
+Beispiele für die Verwendung dieser Typen finden Sie im [GitHub-Repository für die jeweilige Erweiterung](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples).
+
 # <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
+
+### <a name="default"></a>Standard
 
 Zugriff auf die Nachrichtendaten mittels eines Methodenparameters wie `string paramName`. `paramName` ist der Wert, der in der Eigenschaft `name` von *function.json* angegeben wird. Eine Bindung kann mit folgenden Typen erstellt werden:
 
@@ -384,6 +396,14 @@ Zugriff auf die Nachrichtendaten mittels eines Methodenparameters wie `string pa
 * [CloudQueueMessage]
 
 Wenn Sie versuchen, eine Bindung an `CloudQueueMessage` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x) vorliegt.
+
+### <a name="additional-types"></a>Zusätzliche Typen
+
+Apps, die die [Version 5.0.0 oder höher der Storage-Erweiterung](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) verwenden, können auch Typen aus dem [Azure SDK für .NET](/dotnet/api/overview/azure/storage.queues-readme) verwenden. In dieser Version wird Unterstützung des Legacytyps `CloudQueueMessage` zugunsten der folgenden Typen aufgegeben:
+
+- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
+
+Beispiele für die Verwendung dieser Typen finden Sie im [GitHub-Repository für die jeweilige Erweiterung](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -448,7 +468,7 @@ Mit dem Warteschlangentrigger wird automatisch verhindert, dass eine Funktion Wa
 
 ## <a name="hostjson-properties"></a>Eigenschaften von „host.json“
 
-Die Datei [host.json](functions-host-json.md#queues) enthält Einstellungen, mit denen das Verhalten des Warteschlangentriggers gesteuert werden kann. Informationen zu verfügbaren Einstellungen finden Sie im Abschnitt [Einstellungen für „host.json“](functions-bindings-storage-queue-output.md#hostjson-settings).
+Die Datei [host.json](functions-host-json.md#queues) enthält Einstellungen, mit denen das Verhalten des Warteschlangentriggers gesteuert werden kann. Informationen zu verfügbaren Einstellungen finden Sie im Abschnitt [Einstellungen für „host.json“](functions-bindings-storage-queue.md#hostjson-settings).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,23 +1,18 @@
 ---
 title: Kopieren von Daten in und aus Azure Blob Storage
 description: 'Hier erfahren Sie, wie Sie Blobdaten in Azure Data Factory kopieren. Verwenden Sie unser Beispiel: Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank (und umgekehrt).'
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: bec8160f-5e07-47e4-8ee1-ebb14cfb805d
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fa6e19fd9759d6e489d0945b5521a2e0ae3881e0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f1343f900e12bff09c0436ca52d8b091fe48a181
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462635"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393546"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -77,7 +72,7 @@ Um ein Dataset zur Darstellung von Eingabe- oder Ausgabedaten in einem Azure Blo
 
 Eine vollständige Liste der JSON-Abschnitte und -Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
-Data Factory unterstützt die folgenden CLS-konformen und auf .NET basierenden Typwerte für die Bereitstellung von Typinformationen in „structure“ für Schema-on-Read-Datenquellen wie Azure-Blob: Int16, Int32, Int64, Single, Double, Decimal, Byte[], Bool, String, Guid, Datetime, Datetimeoffset, Timespan. Data Factory führt beim Verschieben von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher automatisch Typkonvertierungen durch.
+Data Factory unterstützt die folgenden CLS-konformen und auf .NET basierenden Typwerte für die Bereitstellung von Typinformationen in „structure“ für Schema-on-Read-Datenquellen wie Azure-Blobs: Int16, Int32, Int64, Single, Double, Decimal, Byte[], Bool, String, Guid, Datetime, Datetimeoffset, Timespan. Data Factory führt beim Verschieben von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher automatisch Typkonvertierungen durch.
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jeder Art von Dataset und enthält unter anderem Informationen zum Speicherort und Format der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset des Typs **AzureBlob** hat die folgenden Eigenschaften:
 
@@ -187,7 +182,7 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie links oben auf **Ressource erstellen** und anschließend auf **Intelligence + Analyse** und **Data Factory**.
 3. Gehen Sie im Bereich **Neue Data Factory** wie folgt vor:  
-    1. Geben Sie **ADFBlobConnectorDF** für **Name** ein. Der Name der Azure Data Factory muss global eindeutig sein. Sollte der Fehler `*Data factory name “ADFBlobConnectorDF” is not available` angezeigt werden, ändern Sie den Namen der Data Factory (etwa „IhrNameADFBlobConnectorDF“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .
+    1. Geben Sie **ADFBlobConnectorDF** für **Name** ein. Der Name der Azure Data Factory muss global eindeutig sein. Sollte der Fehler `*Data factory name "ADFBlobConnectorDF" is not available` angezeigt werden, ändern Sie den Namen der Data Factory (etwa „IhrNameADFBlobConnectorDF“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .
     2. Wählen Sie Ihr Azure- **Abonnement** aus.
     3. Wählen Sie für „Ressourcengruppe“ die Option **Vorhandene verwenden** aus, um eine vorhandene Ressourcengruppe auszuwählen, oder wählen Sie **Erstellen** aus, um einen Namen für eine Ressourcengruppe einzugeben.
     4. Wählen Sie einen **Standort** für die Data Factory aus.
@@ -656,7 +651,7 @@ Azure Data Factory unterstützt zwei Arten von verknüpften Azure Storage-Dienst
 
 **Azure SQL-Eingabedataset:**
 
-Im Beispiel wird vorausgesetzt, dass Sie die Tabelle "MyTable" in Azure SQL erstellt haben, die für Zeitreihendaten eine Spalte namens "timestampcolumn" enthält.
+Im Beispiel wird vorausgesetzt, dass Sie die Tabelle „MyTable“ in Azure SQL erstellt haben, die für Zeitreihendaten eine Spalte namens „timestampcolumn“ enthält.
 
 Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst mitgeteilt, dass die Tabelle für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
 

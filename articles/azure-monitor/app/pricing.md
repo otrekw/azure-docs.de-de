@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 5/7/2020
+ms.date: 2/7/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 477a96f1bf66255b11b2fee36c38e55b18cddb69
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 3ae3224ae17d0dee2ed1080669c6057ca62959d9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556124"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384502"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
@@ -286,15 +286,18 @@ Um die E-Mails zum täglichen Volumenobergrenze zu ändern, klicken Sie im Absch
 
 Für Kunden, die schon lange Azure Application Insights nutzen, gibt es weiterhin zwei mögliche Tarife: Basic und Enterprise. Der Basic-Tarif entspricht der obigen Beschreibung und ist der Standardtarif. Er umfasst alle Features des Enterprise-Tarifs ohne zusätzliche Kosten. Im Basic-Tarif wird in erster Linie das Volumen der erfassten Daten abgerechnet.
 
-> [!NOTE]
-> Diese älteren Tarife wurden umbenannt: Der Enterprise-Tarif heißt jetzt **Pro Knoten**, der Basic-Tarif heißt jetzt **Pro GB**. Diese neuen Namen werden nachfolgend und im Azure-Portal verwendet.  
+Diese älteren Tarife wurden umbenannt: Der Enterprise-Tarif heißt jetzt **Pro Knoten**, der Basic-Tarif heißt jetzt **Pro GB**. Diese neuen Namen werden nachfolgend und im Azure-Portal verwendet.  
 
-Für den Tarif „Pro Knoten“ (ehemals „Enterprise“) wird eine knotenbasierte Gebühr erhoben, und jedem Knoten ist ein tägliches Datenkontingent zugewiesen. Im Tarif „Pro Knoten“ werden die Daten, die über das enthaltene Datenkontingent hinausgehen, berechnet. Bei Verwendung der Operations Management Suite sollten Sie sich für den Tarif „Pro Knoten“ entscheiden.
+Für den Tarif „Pro Knoten“ (ehemals „Enterprise“) wird eine knotenbasierte Gebühr erhoben, und jedem Knoten ist ein tägliches Datenkontingent zugewiesen. Im Tarif „Pro Knoten“ werden die Daten, die über das enthaltene Datenkontingent hinausgehen, berechnet. Bei Verwendung der Operations Management Suite sollten Sie sich für den Tarif „Pro Knoten“ entscheiden. Im April 2018 haben wir ein [neues Preismodell für die Azure-Überwachung eingeführt](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/). Bei diesem Modell gilt für das gesamte Portfolio der Überwachungsdienste das einfache Prinzip der nutzungsbasierten Bezahlung. [Weitere Informationen zum neuen Preismodell.](../platform/usage-estimated-costs.md)
 
 Aktuelle Preise in Ihrer Währung und für Ihre Region finden Sie auf der Seite [Application Insights – Preise](https://azure.microsoft.com/pricing/details/application-insights/).
 
-> [!NOTE]
-> Im April 2018 haben wir ein [neues Preismodell für die Azure-Überwachung eingeführt](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/). Bei diesem Modell gilt für das gesamte Portfolio der Überwachungsdienste das einfache Prinzip der nutzungsbasierten Bezahlung. Erfahren Sie mehr über das [neue Preismodell](../platform/usage-estimated-costs.md), die [Bewertung der Auswirkungen einer Migration zu diesem Modell](../platform/usage-estimated-costs.md#understanding-your-azure-monitor-costs) basierend auf Ihren Verwendungsmustern und [die Auswahl des neuen Modells](../platform/usage-estimated-costs.md#azure-monitor-pricing-model).
+### <a name="understanding-billed-usage-on-the-legacy-enterprise-per-node-tier"></a>Grundlegendes zur Abrechnung des Verbrauchs mit dem alten Enterprise-Tarif (pro Knoten) 
+
+Wie im Folgenden ausführlicher beschrieben, wird beim älteren Enterprise-Tarif (pro Knoten) die Nutzung von allen Application Insights-Ressourcen in einem Abonnement zusammengefasst, um die Anzahl der Knoten und die Datenüberschreitung zu berechnen. Aufgrund dieser Zusammenfassung wird die **Nutzung für alle Application Insights-Ressourcen in einem Abonnement nur für eine der Ressourcen gemeldet**.  Dadurch wird ein Abgleich Ihres [abgerechneten Verbrauchs](https://docs.microsoft.com/azure/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill) mit der Nutzung, die Sie für die einzelnen Application Insights-Ressourcen selbst beobachten, äußerst schwierig. 
+
+> [!WARNING]
+> Aufgrund der Komplexität der Nachverfolgung und der Analyse des Verbrauchs von Application Insights-Ressourcen im alten Enterprise-Tarif (pro Knoten) wird dringend empfohlen, den aktuellen Tarif mit nutzungsbasierter Bezahlung zu verwenden. 
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>Tarif „Pro Knoten“ und Berechtigungen für Operations Management Suite-Abonnements
 
@@ -347,4 +350,3 @@ Sie können mit der Azure-Ressourcenverwaltung ein Skript schreiben, um den Tari
 [start]: ./app-insights-overview.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
-

@@ -1,7 +1,7 @@
 ---
 title: Einführung in Microsoft Spark-Hilfsprogramme
 description: 'Tutorial: MSSparkutils in Azure Synapse Analytics-Notebooks'
-author: ruxu
+author: ruixinxu
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: reference
@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: d36086052f4e5719fd17989e3326a4b5728ee3ca
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 58672bd68d9a2ea85f58b3761f3b89098b9f5afc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954292"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368658"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Einführung in Microsoft Spark-Hilfsprogramme
 
@@ -25,9 +25,9 @@ Microsoft Spark-Hilfsprogramme (MSSparkUtils) sind ein integriertes Paket, mit d
 
 ### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>Konfigurieren des Zugriffs auf Azure Data Lake Storage Gen2 
 
-Synapse-Notebooks verwenden Azure Active Directory (Azure AD)-Passthrough für den Zugriff auf ADLS Gen2-Konten. Sie müssen **Mitwirkender an Blob Storage** sein, um auf das ADLS Gen2-Konto (oder den Ordner) zugreifen zu können. 
+Synapse-Notebooks verwenden Azure Active Directory (Azure AD)-Passthrough für den Zugriff auf ADLS Gen2-Konten. Sie müssen **Mitwirkender an Storage-Blobdaten** sein, um auf das ADLS Gen2-Konto (oder den Ordner) zugreifen zu können. 
 
-Synapse-Pipelines verwenden die Arbeitsbereichsidentität (MSI) für den Zugriff auf die Speicherkonten. Um MSSparkUtils in Ihren Pipelineaktivitäten zu verwenden, muss Ihre Arbeitsbereichsidentität **Mitwirkender an Blob Storage** sein, um auf das ADLS Gen2-Konto (oder den Ordner) zuzugreifen.
+Synapse-Pipelines verwenden die Arbeitsbereichsidentität (MSI) für den Zugriff auf die Speicherkonten. Um MSSparkUtils in Ihren Pipelineaktivitäten zu verwenden, muss Ihre Arbeitsbereichsidentität **Mitwirkender an Storage-Blobdaten** sein, um auf das ADLS Gen2-Konto (oder den Ordner) zuzugreifen.
 
 Gehen Sie folgendermaßen vor, um sicherzustellen, dass Ihr Azure AD- und Arbeitsbereichs-MSI Zugriff auf das ADLS Gen2-Konto haben:
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/) und das Speicherkonto, auf das sie zugreifen möchten. Sie können zu dem spezifischen Container navigieren, auf den Sie zugreifen möchten.

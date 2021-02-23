@@ -2,13 +2,13 @@
 title: Konfigurieren Ihres eigenen Schlüssels zum Verschlüsseln ruhender Azure Service Bus-Daten
 description: Dieser Artikel enthält Informationen dazu, wie Sie einen eigenen Schlüssel für die Verschlüsselung ruhender Azure Service Bus-Daten konfigurieren.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: 132ee3883b818dcc5a5d8e0cc7b372daee41e273
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/10/2021
+ms.openlocfilehash: 5d14c8953819575d1c2688520838135efc7121e5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928098"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378314"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Verschlüsselung ruhender Azure Service Bus-Daten mithilfe des Azure-Portals
 Azure Service Bus Premium ermöglicht die Verschlüsselung ruhender Daten mit der Azure-Speicherdienstverschlüsselung (Azure Storage Service Encryption, SSE). Service Bus Premium verwendet Azure Storage, um die Daten zu speichern. Alle in Azure Storage gespeicherten Daten werden mit von Microsoft verwalteten Schlüsseln verschlüsselt. Wenn Sie einen eigenen Schlüssel verwenden – Bring Your Own Key (BYOK) oder kundenseitig verwalteter Schlüssel –, werden die Daten trotzdem mit dem von Microsoft verwalteten Schlüssel verschlüsselt. Zusätzlich wird der von Microsoft verwaltete Schlüssel jedoch mit dem kundenseitig verwalteten Schlüssel verschlüsselt. Mit dieser Funktion können Sie kundenseitig verwaltete Schlüssel, die zum Verschlüsseln der von Microsoft verwalteten Schlüssel verwendet werden, erstellen, rotieren, deaktivieren und den Zugriff darauf widerrufen. Die Aktivierung der BYOK-Funktion ist ein einmaliger Setupvorgang für Ihren Namespace.
@@ -95,7 +95,18 @@ Wenn Sie den Zugriff auf die Verschlüsselungsschlüssel widerrufen, werden die 
 
 Nachdem der Verschlüsselungsschlüssel widerrufen wurde, funktioniert der Service Bus-Dienst im verschlüsselten Namespace nicht mehr. Wenn der Zugriff auf den Schlüssel aktiviert oder der gelöschte Schlüssel wiederhergestellt wird, wählt der Service Bus-Dienst den Schlüssel aus, sodass Sie aus dem verschlüsselten Service Bus-Namespace auf die Daten zugreifen können.
 
-## <a name="use-resource-manager-template-to-enable-encryption"></a>Verwenden von Resource Manager-Vorlagen zum Aktivieren von Verschlüsselung
+## <a name="caching-of-keys"></a>Zwischenspeichern von Schlüsseln
+Die Service Bus-Instanz fragt die aufgelisteten Verschlüsselungsschlüssel alle fünf Minuten ab. Sie werden zwischengespeichert und bis zum nächsten Abruf nach weiteren fünf Minuten verwendet. Wenn mindestens ein Schlüssel verfügbar ist, können Sie auf Warteschlangen und Themen zugreifen. Wenn bei der Abfrage auf keinen der aufgelisteten Schlüssel zugegriffen werden kann, sind sämtliche Warteschlangen und Themen nicht mehr verfügbar. 
+
+Es folgen weitere Informationen: 
+
+- Alle fünf Minuten fragt der Service Bus-Dienst alle kundenseitig verwalteten Schlüssel ab, die im Datensatz des Namespace aufgelistet sind:
+    - Wenn ein Schlüssel rotiert wurde, wird der Datensatz mit dem neuen Schlüssel aktualisiert.
+    - Wenn ein Schlüssel widerrufen wurde, wird er aus dem Datensatz entfernt.
+    - Wenn alle Schlüssel widerrufen wurden, wird der Verschlüsselungsstatus des Namespace auf **Widerrufen** festgelegt. Es kann dann nicht über den Service Bus-Namespace auf die Daten zugegriffen werden. 
+    
+
+## <a name="use-resource-manager-template-to-enable-encryption"></a>Verwenden von Resource Manager-Vorlagen zum Aktivieren der Verschlüsselung
 In diesem Abschnitt wird gezeigt, wie die folgenden Aufgaben mithilfe von **Azure Resource Manager-Vorlagen** ausgeführt werden. 
 
 1. Erstellen Sie einen Service Bus-Namespace vom Typ **Premium** mit einer **verwalteten Dienstidentität**.

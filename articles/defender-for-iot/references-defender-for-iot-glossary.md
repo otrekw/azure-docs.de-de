@@ -7,16 +7,19 @@ ms.author: shhazam
 ms.date: 12/09/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 8007f11cb37063cef46ac7f3ac51e23bdfaae11a
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: d983369db3fbd03c41c248439a5c1aabec14ea55
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226453"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535364"
 ---
 # <a name="defender-for-iot-glossary"></a>Glossar zu Defender für IoT
 
 Dieses Glossar enthält eine Kurzbeschreibung wichtiger Begriffe und Konzepte der Azure Defender für IoT-Plattform. Wählen Sie die Links unter **Weitere Informationen** aus, um zu verwandten Begriffen im Glossar zu gelangen. So können Sie Tools im Produkt schneller erlernen und einsetzen.
+
+> [!Note]
+> Jeder Begriff, dessen Name mit `(DB)` aufgeführt wird, ist ein Begriff aus der Agent-basierten Geräteentwicklung. 
 
 <a name="glossary-a"></a>
 
@@ -58,6 +61,7 @@ Dieses Glossar enthält eine Kurzbeschreibung wichtiger Begriffe und Konzepte de
 | **Gerätebestand: Sensor** | Im Gerätebestand wird eine umfangreiche Palette der von Defender für IoT erfassten Geräteattribute angezeigt. Für die folgenden Aufgaben stehen Optionen zur Verfügung:<br /><br />Filtern der angezeigten Informationen<br /><br />Exportieren dieser Informationen in eine CSV-Datei<br /><br />Importieren von Windows-Registrierungsdetails | **[Gruppe](#g)** <br /><br />**[Gerätebestand: lokale Verwaltungskonsole](#d)** |
 | **Gerätebestand: lokale Verwaltungskonsole** | Von angeschlossenen Sensoren stammende Geräteinformationen können über die lokale Verwaltungskonsole im Gerätebestand eingesehen werden. Dadurch erhalten Benutzer der lokalen Verwaltungskonsole eine umfassende Übersicht über alle Netzwerkinformationen. | **[Gerätebestand: Sensor](#d)<br /><br />[Gerätebestand: Datenintegration](#d)** |
 | **Gerätebestand: Datenintegration** | Mit den Datenintegrationsfunktionen der lokalen Verwaltungskonsole können Sie die Daten im Gerätebestand mit Informationen aus anderen Unternehmensressourcen verbessern. Beispielressourcen sind Datenbanken für die Konfigurationsverwaltung, DNS, Firewalls und Web-APIs. | **[Gerätebestand: lokale Verwaltungskonsole](#d)** |
+| **Gerätezwillinge** `(DB)` | Gerätezwillinge sind JSON-Dokumente, in denen Gerätestatusinformationen gespeichert werden, z. B. Metadaten, Konfigurationen und Bedingungen. | [Modulzwilling](#m) <br /> <br />[Sicherheitsmodulzwilling](#s) |
 
 ## <a name="e"></a>E
 
@@ -90,6 +94,7 @@ Dieses Glossar enthält eine Kurzbeschreibung wichtiger Begriffe und Konzepte de
 
 | Begriff | BESCHREIBUNG | Weitere Informationen |
 |--|--|--|
+| **IoT Hub** `(DB)` | Ein in der Cloud gehosteter, verwalteter Dienst, der als zentraler Nachrichtenhub für die bidirektionale Kommunikation zwischen Ihrer IoT-Anwendung und den Geräten dient, die von der Anwendung verwaltet werden.  |   |
 | **Integrationen** | Erweitern Sie Defender für IoT-Funktionen, indem Sie Geräteinformationen mit Partnersystemen teilen. Unternehmen können bisher isolierte Lösungen für Sicherheit, Steuerung des Netzwerkzugriffs, Vorfallreaktion und Geräteverwaltung miteinander verbinden, um systemweite Reaktionen zu beschleunigen und Risiken schneller zu entschärfen. | **[Weiterleitungsregel](#f)** |
 | **Internes Subnetz** | Von Defender für IoT definierte Subnetzkonfigurationen. In einigen Fällen, etwa in Umgebungen, in denen öffentliche Bereiche als interne Bereiche fungieren, können Sie Defender für IoT anweisen, alle Subnetze als interne Subnetze aufzulösen. Subnetze werden in der Übersicht und verschiedenen Defender für IoT-Berichten angezeigt. | **[Subnetze](#s)** |
 
@@ -103,8 +108,11 @@ Dieses Glossar enthält eine Kurzbeschreibung wichtiger Begriffe und Konzepte de
 
 ## <a name="m"></a>M
 
+
 | Begriff | BESCHREIBUNG | Weitere Informationen |
 |--|--|--|
+| **Micro-Agent** `(DB)` | Bietet umfassende Sicherheitsfunktionen für IoT-Geräte, einschließlich Sicherheitsstatus und Bedrohungserkennung. | |
+| **Modulzwilling** `(DB)` | Modulzwillinge sind JSON-Dokumente, in denen Modulstatusinformationen gespeichert werden, einschließlich Metadaten, Konfigurationen und Bedingungen. | [Gerätezwilling](#d) <br /> <br />[Sicherheitsmodulzwilling](#s) |
 | **Stummschalten des Warnungsereignisses** | Weisen Sie Defender für IoT an, Aktivitäten mit identischen Geräten und vergleichbarem Datenverkehr durchgängig zu ignorieren. | **[Warnung](#glossary-a)<br /><br />[Ausschlussregel](#e)<br /><br />[Bestätigen des Wartungsereignisses](#glossary-a)<br /><br />[Erfassen des Warnungsereignisses](#l)** |
 
 ## <a name="n"></a>N
@@ -140,6 +148,7 @@ Dieses Glossar enthält eine Kurzbeschreibung wichtiger Begriffe und Konzepte de
 | Begriff | BESCHREIBUNG | Weitere Informationen |
 |--|--|--|
 | **Sicherheitswarnung** | Warnungen, die sich auf Sicherheitsprobleme beziehen, z. B. übermäßige SMB-Anmeldeversuche oder Erkennungen von Schadsoftware. | **[Warnung](#glossary-a)<br /><br />[Betriebswarnung](#o)** |
+| **Sicherheitsmodulzwilling** `(DB)` | Der Sicherheitsmodulzwilling enthält alle für die Gerätesicherheit relevanten Informationen für jedes einzelne Gerät in Ihrer Lösung. | [Gerätezwilling](#d) <br /> <br />[Modulzwilling](#m)  |
 | **Selektive Untersuchung** | Defender für IoT untersucht passiv den IT- und OT-Datenverkehr und erkennt u. a. relevante Informationen über Geräte, ihre Attribute und ihr Verhalten. In bestimmten Fällen sind einige Informationen in passiven Netzwerkanalysen möglicherweise nicht sichtbar.<br /><br />Dann können Sie die sicheren, zielgerichteten Untersuchungstools in Defender für IoT verwenden, um wichtige Informationen auf bislang nicht erreichbaren Geräten zu entdecken. | - |
 | **Sensor** | Der physische oder virtuelle Computer, auf dem die Defender für IoT-Plattform installiert ist. | **[Lokale Verwaltungskonsole](#o)** |
 | **Website** | Der Ort einer Fabrik oder anderen Entität. Der Standort sollte eine oder mehrere Zonen aufweisen, in denen ein Sensor installiert ist. | **[Zone](#z)** |

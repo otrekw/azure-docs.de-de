@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: e8d21e57f9a844b3cc0538f4805780829a1350f4
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 96031642efb1248fb3b1acabeb9d7381177a2c70
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428587"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098077"
 ---
 # <a name="trusted-storage-for-media-services"></a>Vertrauenswürdiger Speicher für Media Services
 
@@ -22,7 +22,11 @@ Wenn Sie ein Media Services-Konto erstellen, müssen Sie es einem Speicherkonto
 
 ## <a name="trusted-storage-with-a-firewall"></a>Vertrauenswürdiger Speicher mit einer Firewall
 
-Wenn Sie jedoch eine Firewall einsetzen möchten, um Ihr Speicherkonto zu schützen und vertrauenswürdigen Speicher zu ermöglichen, ist die Authentifizierung mit [verwalteten Identitäten](concept-managed-identities.md) die bevorzugte Option. Dadurch kann von Media Services per vertrauenswürdigem Speicherzugriff auf das Speicherkonto zugegriffen werden, das mit einer Firewall oder mit einer VNET-Einschränkung konfiguriert wurde. Dadurch kann von Media Services per vertrauenswürdigem Speicherzugriff auf das Speicherkonto zugegriffen werden, das mit einer Firewall oder mit einer VNET-Einschränkung konfiguriert wurde.
+Wenn Sie jedoch eine Firewall einsetzen möchten, um Ihr Speicherkonto zu schützen und vertrauenswürdigen Speicher zu ermöglichen, ist die Authentifizierung mit [verwalteten Identitäten](concept-managed-identities.md) die bevorzugte Option. Dadurch kann von Media Services per vertrauenswürdigem Speicherzugriff auf das Speicherkonto zugegriffen werden, das mit einer Firewall oder mit einer VNET-Einschränkung konfiguriert wurde.
+
+## <a name="tutorial"></a>Lernprogramm
+
+Weitere Informationen zum Aktivieren von vertrauenswürdigem Speicher finden Sie im Tutorial [Media Services: Vertrauenswürdiger Speicher](tutorial-trusted-storage-rest.md).
 
 > [!NOTE]
 > Sie müssen den Zugriff „Mitwirkender an Storage-Blobdaten“ der Funktion „Verwaltete Identität“ von Azure Media Services gewähren, damit Media Services Speicherkontodaten lesen und schreiben kann.  Das Gewähren der allgemeinen Rolle „Mitwirkender“ funktioniert nicht, da dadurch nicht die ordnungsgemäßen Berechtigungen auf Datenebene aktiviert werden.

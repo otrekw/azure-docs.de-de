@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 0583846fcd847e92a6f001dae828d31d9d11cb00
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: b10c47a31bf1be10c278d4d9e0dce633bc7bff6c
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567814"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530636"
 ---
 # <a name="connect-your-juniper-srx-firewall-to-azure-sentinel"></a>Verbinden Ihrer Juniper SRX-Firewall mit Azure Sentinel
 
@@ -53,7 +53,7 @@ Konfigurieren Sie Juniper SRX für das Weiterleiten von Syslog-Nachrichten an Ih
 
     1. Konfigurieren der zu erfassenden Protokolle
 
-        - Wählen Sie die Einrichtungen und Schweregrade in der Konfiguration der erweiterten Einstellungen für den Arbeitsbereich aus.
+        - Wählen Sie die Einrichtungen und Schweregrade in der Konfiguration der Arbeitsbereichs-Agents aus.
 
     1. Konfigurieren und Verbinden von Juniper SRX
 

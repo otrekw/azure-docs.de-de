@@ -4,24 +4,24 @@ description: Azure IoT Central ist eine IoT-Anwendungsplattform, die die Erstell
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/05/2020
-ms.topic: overview
+ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: e33f48c9496ffa3cca9d8b1aa71d524be9a311bb
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 326fed659be43be3115cae1d7c2b14d0708f4a96
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122252"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377804"
 ---
-# <a name="iot-central-device-development-overview"></a>Übersicht über die Geräteentwicklung für IoT Central
+# <a name="iot-central-device-development-guide"></a>Entwicklungshandbuch für IoT Central-Geräte
 
 *Dieser Artikel gilt für Geräteentwickler.*
 
-Mit einer IoT Central-Anwendung können Sie Millionen von Geräten während ihres gesamten Lebenszyklus überwachen und verwalten. Diese Übersicht ist für Geräteentwickler konzipiert, die Code zur Ausführung auf Geräten implementieren, die eine Verbindung mit IoT Central herstellen.
+Mit einer IoT Central-Anwendung können Sie Millionen von Geräten während ihres gesamten Lebenszyklus überwachen und verwalten. Dieses Handbuch ist für Geräteentwickler konzipiert, die Code zur Ausführung auf Geräten implementieren, die eine Verbindung mit IoT Central herstellen.
 
 Geräte interagieren mit einer IoT Central-Anwendung mithilfe der folgenden Primitiven (Grundtypen):
 

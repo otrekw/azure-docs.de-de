@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, azuread-video-2020
-ms.openlocfilehash: a39ae904bb1dd36c3d3e19e8f51ff24e8d975f9b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5bf9b79621ae1cd2c73f2e3ce18b0780bcdd2a71
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033917"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559331"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?
 
@@ -38,7 +38,7 @@ Hier sind einige Beispiele für die Verwendungsmöglichkeiten von Azure RBAC:
 
 ## <a name="how-azure-rbac-works"></a>Funktionsweise von Azure RBAC
 
-Sie können den Zugriff auf Ressourcen mit Azure RBAC steuern, indem Sie Rollenzuweisungen erstellen. Dies ist ein wesentliches Konzept, das zur Durchsetzung von Berechtigungen verwendet wird. Eine Rollenzuweisung besteht aus drei Elementen: Sicherheitsprinzipal, Rollendefinition und Bereich.
+Sie können den Zugriff auf Ressourcen mit Azure RBAC steuern, indem Sie Azure-Rollen zuweisen. Dies ist ein wesentliches Konzept, das zur Durchsetzung von Berechtigungen verwendet wird. Eine Rollenzuweisung besteht aus drei Elementen: Sicherheitsprinzipal, Rollendefinition und Bereich.
 
 ### <a name="security-principal"></a>Sicherheitsprinzipal
 
@@ -80,9 +80,9 @@ Das folgende Diagramm zeigt ein Beispiel für eine Rollenzuweisung. In diesem Be
 
 ![Rollenzuweisung zum Steuern des Zugriffs](./media/overview/rbac-overview.png)
 
-Sie können über das Azure-Portal, die Azure-Befehlszeilenschnittstelle, Azure PowerShell, Azure SDKs oder REST-APIs Rollenzuweisungen erstellen.
+Sie können über das Azure-Portal, die Azure CLI, Azure PowerShell, Azure SDKs oder REST-APIs Rollen zuweisen.
 
-Weitere Informationen finden Sie unter [Steps to add a role assignment](role-assignments-steps.md) (Schritte zum Hinzufügen einer Rollenzuweisung, in englischer Sprache).
+Weitere Informationen finden Sie unter [Schritte zum Hinzufügen einer Rollenzuweisung](role-assignments-steps.md).
 
 ## <a name="multiple-role-assignments"></a>Mehrere Rollenzuweisungen
 
@@ -122,6 +122,6 @@ Im Folgenden finden Sie die allgemeinen Schritte, über die Azure RBAC ermittel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe des Azure-Portals](role-assignments-portal.md)
+- [Zuweisen von Azure-Rollen über das Azure-Portal](role-assignments-portal.md)
 - [Grundlegendes zu den verschiedenen Rollen](rbac-and-directory-admin-roles.md)
 - [Cloud Adoption Framework: Ressourcenzugriffsverwaltung in Azure](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

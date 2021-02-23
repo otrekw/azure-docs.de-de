@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 01/07/2021
-ms.openlocfilehash: c2b89450c0e474f5030f8812e888890f1fedde7e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.date: 02/12/2021
+ms.openlocfilehash: 4b431220dbab49b74f38a8f37be8aac1a0c5c460
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019634"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382887"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Connectors für Azure Logic Apps
 
@@ -452,15 +452,21 @@ Zum Aufrufen von APIs, die benutzerdefinierten Code ausführen oder nicht als Co
 >
 > Weitere Informationen zum Erstellen von ISEs finden Sie unter [Verbinden mit Azure Virtual Networks über Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
 
+## <a name="get-ready-for-deployment"></a>Vorbereiten der Bereitstellung
+
+Obwohl Sie Verbindungen in einer Logik-App erstellen, sind Verbindungen separate Azure-Ressourcen mit eigenen Ressourcendefinitionen. Zum Überprüfen dieser Verbindungsressourcendefinitionen [laden Sie die Logik-App von Azure in Visual Studio herunter](../logic-apps/manage-logic-apps-with-visual-studio.md). Dies ist die einfachste Möglichkeit, eine gültige parametrisierte Logik-App-Vorlage zu erstellen, die größtenteils für die Bereitstellung bereit ist.
+
 <a name="block-connections"></a>
 
 ## <a name="block-creating-connections"></a>Blockieren der Verbindungserstellung
 
 Falls Ihre Organisation das Herstellen einer Verbindung mit bestimmten Ressourcen mithilfe der Connectors in Azure Logic Apps nicht erlaubt, können Sie mithilfe von [Azure Policy](../governance/policy/overview.md) für bestimmte Connectors in Logik-App-Workflows die [Funktion zum Erstellen dieser Verbindungen blockieren](../logic-apps/block-connections-connectors.md) Weitere Informationen finden Sie unter [Blockieren der von Connectors in Azure Logic Apps erstellten Verbindungen](../logic-apps/block-connections-connectors.md)
 
-## <a name="get-ready-for-deployment"></a>Vorbereiten der Bereitstellung
+## <a name="known-issues"></a>Bekannte Probleme
 
-Obwohl Sie Verbindungen in einer Logik-App erstellen, sind Verbindungen separate Azure-Ressourcen mit eigenen Ressourcendefinitionen. Zum Überprüfen dieser Verbindungsressourcendefinitionen [laden Sie die Logik-App von Azure in Visual Studio herunter](../logic-apps/manage-logic-apps-with-visual-studio.md). Dies ist die einfachste Möglichkeit, eine gültige parametrisierte Logik-App-Vorlage zu erstellen, die größtenteils für die Bereitstellung bereit ist.
+#### <a name="error-badgateway-client-request-id-guid"></a>Error: BadGateway. Clientanforderungs-ID: „{GUID}“
+
+Dieser Fehler tritt beim Aktualisieren der Tags in einer Logik-App auf, bei der mindestens eine Verbindung die OAuth-Authentifizierung mit Azure Active Directory (Azure AD) nicht unterstützt (z. B. SFTP und SQL), sodass diese Verbindungen unterbrochen werden. Um dieses Verhalten zu vermeiden, sollten Sie diese Tags nicht aktualisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

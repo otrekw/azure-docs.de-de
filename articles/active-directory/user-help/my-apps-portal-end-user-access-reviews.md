@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 10/19/2020
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 8da9e97aaa2c6d99990df4221d8b6e99ab18ac83
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 34885e2a364778a2f81f4920aa26aa3bb5f40320
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124811"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095017"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Durchführen einer Zugriffsüberprüfung im Portal „Meine Apps“
 
@@ -29,6 +29,11 @@ Sollten Sie keinen Zugriff auf das Portal **Meine Apps** haben, wenden Sie sich 
 
 >[!Important]
 >Dieser Inhalt richtet sich an Benutzer von **Meine Apps**. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](../manage-apps/index.yml) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
+>
+> Wenn bei der Anmeldung mit einem persönlichen Microsoft-Konto ein Fehler auftritt, können Sie sich trotzdem mit dem Domänennamen für Ihre Organisation (z. B. „contoso.com“) oder der **Mandanten-ID** Ihrer Organisation, die Sie von Ihrem Administrator erhalten, über eine der folgenden URLs anmelden:
+>
+>   - https://myapplications.microsoft.com?tenantId=*Ihr_Domänenname*
+>   - https://myapplications.microsoft.com?tenant=*Ihre_Mandanten_ID*
 
 ## <a name="manage-access-reviews"></a>Verwalten von Zugriffsüberprüfungen
 
@@ -41,17 +46,17 @@ Wenn Ihr Administrator Ihnen die Berechtigung zum Durchführen eigener Zugriffs�
 
 1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an.
 
-2. Öffnen Sie Ihren Webbrowser, und navigieren Sie zu https://myapps.microsoft.com, oder verwenden Sie den von Ihrer Organisation bereitgestellten Link. So können Sie beispielsweise zu einer benutzerdefinierten Seite Ihrer Organisation wie https://myapps.microsoft.com/contoso.com geleitet werden.
+1. Öffnen Sie Ihren Webbrowser, und navigieren Sie zu https://myapps.microsoft.com, oder verwenden Sie den von Ihrer Organisation bereitgestellten Link. So können Sie beispielsweise zu einer benutzerdefinierten Seite Ihrer Organisation wie https://myapps.microsoft.com/contoso.com geleitet werden.
 
     Die Seite **Apps** wird mit allen im Besitz Ihrer Organisation befindlichen Cloud-Apps angezeigt, die Ihnen zur Verfügung stehen.
 
     ![Seite „Apps“ im Portal „Meine Apps“](media/my-apps-portal/my-apps-home.png)
 
-3. Wählen Sie die Kachel **Zugriffsüberprüfungen** aus, um eine Liste der Zugriffsüberprüfungen anzuzeigen, die auf Ihre Genehmigung warten.
+1. Wählen Sie die Kachel **Zugriffsüberprüfungen** aus, um eine Liste der Zugriffsüberprüfungen anzuzeigen, die auf Ihre Genehmigung warten.
 
     ![Seite „Zugriffsüberprüfungen“ mit ausstehenden Zugriffsüberprüfungen für die Organisation](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
 
-4. Wählen Sie **Überprüfung starten** aus, um Ihre Zugriffsüberprüfung zu starten.
+1. Wählen Sie **Überprüfung starten** aus, um Ihre Zugriffsüberprüfung zu starten.
 
 5. Überprüfen Sie den Zugriff, und entscheiden Sie, ob dieser weiterhin benötigt wird.
 
@@ -66,7 +71,7 @@ Wenn Ihr Administrator Ihnen die Berechtigung zum Durchführen eigener Zugriffs�
 
     ![Seite „Zugriffsüberprüfung“ mit dem Feld „Grund“, das Beispieltext enthält](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
 
-7. Klicken Sie auf **Submit** (Senden).
+7. Klicken Sie auf **Senden**.
 
     Ihre Zugriffsüberprüfung ist abgeschlossen, und Sie kehren zum Portal **Meine Apps** zurück.
 

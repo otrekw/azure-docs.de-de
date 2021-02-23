@@ -2,13 +2,13 @@
 title: 'Azure Event Hubs: Ausnahmen (Legacy)'
 description: Dieser Artikel stellt eine Liste von Azure Event Hubs-Messagingausnahmen und vorgeschlagenen Aktionen zur Verfügung.
 ms.topic: article
-ms.date: 11/02/2020
-ms.openlocfilehash: 357a87c53023962dd9195a616bd9ce9e01c55bf9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 02/10/2021
+ms.openlocfilehash: a76c98ec7d6d1f3370ed8787bf10d1d16a7baaa5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340966"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390894"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>Event Hubs-Messagingausnahmen: .NET (Legacy)
 In diesem Abschnitt werden die von .NET Framework-APIs generierten .NET-Ausnahmen aufgelistet. 
@@ -125,14 +125,14 @@ Dieser Fehler kann aus zwei Gründen auftreten:
 
     Wenn Sie Werte sehen, die höher sind als die Anzahl von Durchsatzeinheiten * Grenzwerte (1 MB pro Sekunde für eingehenden Datenverkehr oder 1.000 Anforderungen für eingehende Anforderungen/Sekunde, 2 MB pro Sekunde für ausgehenden Datenverkehr), erhöhen Sie die Anzahl der Durchsatzeinheiten, indem Sie die Seite **Skalierung** (im linken Menü) eines Event Hubs-Namespace verwenden, um manuell hochzuskalieren, oder verwenden Sie das Feature [Automatische Vergrößerung](event-hubs-auto-inflate.md) von Event Hubs. Beachten Sie, dass die automatische Vergrößerung nur auf bis zu 20 Durchsatzeinheiten vergrößern kann. Wenn Sie den Wert auf genau 40 TUs erhöhen möchten, übermitteln Sie eine [Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
-### <a name="error-code-50001"></a>Fehlercode 50001
+### <a name="error-code-50008"></a>Fehlercode 50008
 
 Dieser Fehler sollte kaum auftreten. Er tritt auf, wenn der Container, der Code für Ihren Namespace ausführt, nicht über ausreichend CPU-Kapazität verfügt – wenige Sekunden vor Beginn des Event Hubs-Lastenausgleichs.
 
-**Lösung:** Grenzwert für Aufrufe der GetRuntimeInformation-Methode. Azure Event Hubs unterstützt bis zu 50 Aufrufe der GetRuntimeInfo pro Sekunde. Sobald der Grenzwert erreicht wurde, erhalten Sie eventuell eine ähnliche Ausnahme wie die folgende:
+**Lösung:** Beschränken Sie Aufrufe auf die GetRuntimeInformation-Methode. Azure Event Hubs unterstützt bis zu 50 Aufrufe von GetRuntimeInfo pro Sekunde und pro Consumergruppe. Sobald der Grenzwert erreicht wurde, erhalten Sie eventuell eine ähnliche Ausnahme wie die folgende:
 
 ```
-ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.
+ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50008. Please wait 10 seconds and try again.
 ```
 
 

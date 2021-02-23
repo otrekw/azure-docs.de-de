@@ -3,17 +3,17 @@ title: Erstellen eines privaten Endpunkts für sichere Verbindungen
 titleSuffix: Azure Cognitive Search
 description: Einrichten eines privaten Endpunkts in einem virtuellen Netzwerk für sichere Verbindungen mit einem Azure Cognitive Search-Dienst.
 manager: nitinme
-author: mrcarter8
-ms.author: mcarter
+author: markheff
+ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/19/2020
-ms.openlocfilehash: 6ee72a25fc8435159ae75ac3296742eda58617b6
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.date: 02/16/2021
+ms.openlocfilehash: 7445ac5d750ac29d3e6ce466a48e82efd1bcde40
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779939"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545529"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Erstellen eines privaten Endpunkts für sichere Verbindungen mit Azure Cognitive Search
 
@@ -21,8 +21,10 @@ In diesem Artikel verwenden Sie das Azure-Portal, um eine neue Azure Cognitive S
 
 Private Endpunkte werden durch [Azure Private Link](../private-link/private-link-overview.md) als separater Dienst bereitgestellt. Weitere Informationen zu den Kosten finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/private-link/).
 
-> [!Important]
-> Die Unterstützung privater Endpunkte für Azure Cognitive Search kann mithilfe des Azure-Portals oder der [Verwaltungs-REST-API, Version 2020-03-13,](/rest/api/searchmanagement/) konfiguriert werden. Wenn der Dienstendpunkt privat ist, sind einige Portalfunktionen deaktiviert. Sie können Informationen auf Dienstebene anzeigen und verwalten, aber der Portalzugriff auf Indexdaten und die verschiedenen Komponenten im Dienst sind aus Sicherheitsgründen eingeschränkt. Dazu zählen beispielsweise Index-, Indexer- und Skillsetdefinitionen. Als Alternative zum Portal können Sie die [VS Code-Erweiterung](https://aka.ms/vscode-search) verwenden, um mit den verschiedenen Komponenten im Dienst zu interagieren.
+Sie können einen privaten Endpunkt über das Azure-Portal erstellen, wie in diesem Artikel beschrieben. Alternativ können Sie die [Verwaltungs-REST-API Version 2020-03-13](/rest/api/searchmanagement/), [Azure PowerShell](/powershell/module/az.search) oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/search) verwenden.
+
+> [!NOTE]
+> Wenn der Dienstendpunkt privat ist, sind einige Portalfunktionen deaktiviert. Sie können Informationen auf Dienstebene anzeigen und verwalten, aber die Informationen zu Index, Indexer und Skillset werden aus Sicherheitsgründen ausgeblendet. Als Alternative zum Portal können Sie die [VS Code-Erweiterung](https://aka.ms/vscode-search) verwenden, um mit den verschiedenen Komponenten im Dienst zu interagieren.
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>Gründe für den sicheren Zugriff über einen privaten Endpunkt
 

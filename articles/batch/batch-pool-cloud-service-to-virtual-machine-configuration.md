@@ -2,13 +2,13 @@
 title: Migrieren der Batch-Poolkonfiguration von Cloud Services zu Virtual Machines
 description: Erfahren Sie, wie Sie Ihre Poolkonfiguration auf die neueste und empfohlene Konfiguration aktualisieren.
 ms.topic: how-to
-ms.date: 1/6/2021
-ms.openlocfilehash: 417738be2c69101129079b8ff3a3d80634f9f99c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 2/16/2021
+ms.openlocfilehash: 9cbcf3864526bd8f8132f3b0f729e2d728e07bb8
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731498"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546039"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Migrieren der Batch-Poolkonfiguration von Cloud Services zu Virtual Machines
 
@@ -36,6 +36,19 @@ Beim Aktualisieren von Poolkonfiguration sind folgende Aspekte zu berücksichtig
    > Ebenso wie bei Virtual Machines und Virtual Machine Scale Sets verursachen die verwalteten Betriebssystem-Datenträger der einzelnen Knoten Kosten, die zusätzlich zu den VM-Gebühren anfallen. Da die Betriebssystem-Datenträger auf den lokalen SSDs der Knoten erstellt werden, fallen für Knoten mit „cloudServiceConfiguration“ keine Kosten für diese Datenträger an.
 
 - Die Start- und Löschzeiten für Pools und Knoten können sich bei Pools mit „cloudServiceConfiguration“ und Pools mit „virtualMachineConfiguration“ geringfügig unterscheiden.
+
+## <a name="azure-data-factory-custom-activity-pools"></a>Pools benutzerdefinierter Azure Data Factory-Aktivitäten
+
+Mithilfe von Azure Batch-Pools können benutzerdefinierte Data Factory-Aktivitäten ausgeführt werden. Alle Pools mit „cloudServiceConfiguration“, die zum Ausführen von benutzerdefinierten Aktivitäten verwendet werden, müssen gelöscht werden, und neue Pools mit „virtualMachineConfiguration“ müssen erstellt werden.
+
+- Pipelines sollten vor dem Löschen und Neuerstellen angehalten werden, um sicherzustellen, dass keine Ausführungen unterbrochen werden.
+- Die gleiche Pool-ID kann verwendet werden, um Änderungen an der Konfiguration von verknüpften Diensten zu vermeiden.
+- Setzen Sie die Pipelines fort, nachdem die neuen Pools erstellt wurden.
+
+Weitere Informationen zur Verwendung von Azure Batch zum Ausführen von benutzerdefinierten Data Factory-Aktivitäten:
+
+- [Verknüpfter Azure Batch-Dienst](../data-factory/compute-linked-services.md#azure-batch-linked-service)
+- [Verwenden von benutzerdefinierten Aktivitäten in der Data Factory-Pipeline](../data-factory/transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

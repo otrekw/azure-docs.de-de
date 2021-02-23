@@ -5,15 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 02/11/2021
 ms.author: normesta
-ms.reviewer: stewu
-ms.openlocfilehash: 2b195d865a07af9f3166c5225e8de3d0a9b0e749
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 769163dd09ec29c2c206d0273e71de27732fb9db
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879308"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516277"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Verfügbare Blob Storage-Features in Azure Data Lake Storage Gen2
 
@@ -45,18 +44,19 @@ Die folgende Tabelle zeigt, wie jedes Blob Storage-Feature mit Data Lake Storage
 |Unveränderlicher Speicher|Vorschau<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Vorschau<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher](storage-blob-immutable-storage.md)|
 |Vorläufiges Löschen von Containern|Vorschau|Vorschau|[Vorläufiges Löschen für Container (Vorschau)](soft-delete-container-overview.md)|
 |Azure Storage-Inventar|Vorschau|Vorschau|[Verwalten von Blobdaten mit dem Azure Storage-Inventar (Vorschau)](blob-inventory.md)|
+|Benutzerdefinierte Domänen|Vorschau<div role="complementary" aria-labelledby="preview-form-2"><sup>2</sup></div>|Vorschau<div role="complementary" aria-labelledby="preview-form-2"><sup>2</sup></div>|[Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](storage-custom-domain-name.md)|
 |Vorläufiges Löschen von Blobs|Noch nicht unterstützt|Noch nicht unterstützt|[Vorläufiges Löschen für Blobs](./soft-delete-blob-overview.md)|
 |blobfuse|Allgemein verfügbar|Allgemein verfügbar|[Einbinden von Blob Storage als Dateisystem mit blobfuse](storage-how-to-mount-container-linux.md)|
 |Anonymer öffentlicher Zugriff |Allgemein verfügbar|Allgemein verfügbar| Siehe [Konfigurieren des anonymen, öffentlichen Lesezugriffs auf Container und Blobs](anonymous-read-access-configure.md).|
 |Failover für kundenseitig verwaltetes Konto|Noch nicht unterstützt|Noch nicht unterstützt|[Notfallwiederherstellung und Kontofailover](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Vom Kunden bereitgestellte Schlüssel|Noch nicht unterstützt|Noch nicht unterstützt|[Angeben eines Verschlüsselungsschlüssels bei Richten einer Anforderung an Blob Storage](encryption-customer-provided-keys.md)|
-|Benutzerdefinierte Domänen|Noch nicht unterstützt|Noch nicht unterstützt|[Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](storage-custom-domain-name.md)|
 |Verschlüsselungsbereiche|Noch nicht unterstützt|Noch nicht unterstützt|[Erstellen und Verwalten von Verschlüsselungsbereichen (Vorschauversion)](encryption-scope-manage.md)|
 |Änderungsfeed|Noch nicht unterstützt|Noch nicht unterstützt|[Unterstützung für Änderungsfeeds in Azure Blob Storage](storage-blob-change-feed.md)|
 |Objektreplikation|Noch nicht unterstützt|Noch nicht unterstützt|[Konfigurieren der Objektreplikation für Blockblobs](object-replication-configure.md)|
 |Blobversionsverwaltung|Noch nicht unterstützt|Noch nicht unterstützt|[Aktivieren und Verwalten der Blobversionsverwaltung](versioning-enable.md)|
 
 <div id="preview-form"><sup>1</sup> Für die Verwendung von Momentaufnahmen, unveränderlichem Speicher oder statischen Websites mit Data Lake Storage Gen2 müssen Sie sich für die Vorschau registrieren. Füllen Sie dazu dieses <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>Formular</a> aus.  </div>
+<div id="preview-form-2"><sup>2</sup>Ein benutzerdefinierter Domänenname kann nur dem Blob-Dienstendpunkt oder dem statischen Websiteendpunkt zugeordnet werden. Der Data Lake Storage-Endpunkt wird nicht unterstützt.</a>.  </div>
 
 ## <a name="see-also"></a>Weitere Informationen
 

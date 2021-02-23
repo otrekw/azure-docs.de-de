@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: fecd707d96b03eef4f093c0b256e32f11bb8a3f7
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 84987b12657a37264d3a1ca67fdc423ed8085662
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095855"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557914"
 ---
 # <a name="dcsv2-series"></a>DCsv2-Serie
 
@@ -21,15 +21,15 @@ Die DCsv2-Serie kann Ihnen beim Schutz der Vertraulichkeit und Integrität Ihrer
 
 Beispiele für Anwendungsfälle sind Freigabe von vertraulichen Mehrparteiendaten, Betrugserkennung, Geldwäschebekämpfung, Blockchain, vertrauliche Nutzungsanalyse, Business Intelligence-Analyse und vertrauliches maschinelles Lernen.
 
-[Storage Premium](premium-storage-performance.md): Unterstützt*<br>
+[Storage Premium:](premium-storage-performance.md) Unterstützt *<br>
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
 [Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
-[Unterstützung von VM-Generationen:](generation-2.md) Generation 2<br>
-[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 2<br>
+[Beschleunigte Netzwerke:](../virtual-network/create-vm-accelerated-networking-cli.md) Unterstützt (* erfordert mindestens 4 vCPU*) <br>
 [Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt <br>
 
-\* Außer für Standard_DC8_v2
+\* Außer für Standard_DC8_v2 <br>
 
 | Size             | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s) | EPC-Speicher (MiB) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|----------------------------------------------|---------------------|

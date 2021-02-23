@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 3e99b156d220b4c24a368886b1c0ca0813ffdc51
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 58e31cfa42faabbfab217a451e14d33f2cf45863
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674132"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100554818"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -20,7 +20,7 @@ Wenn Sie noch nicht mit Azure Functions vertraut sind, sollten Sie als Express.j
 
 | Erste Schritte | Konzepte| Geführte Tutorials |
 | -- | -- | -- | 
-| <ul><li>[Node.js-Funktion unter Verwendung von Visual Studio Code](./create-first-function-vs-code-node.md)</li><li>[Node.js-Funktion mit Terminal/Eingabeaufforderung](./create-first-function-cli-node.md)</li></ul> | <ul><li>[Entwicklerhandbuch](functions-reference.md)</li><li>[Hostingoptionen](functions-scale.md)</li><li>[TypeScript-Funktionen](#typescript)</li><li>[Überlegungen&nbsp; zur Leistung](functions-best-practices.md)</li></ul> | <ul><li>[Erstellen serverloser Anwendungen](/learn/paths/create-serverless-applications/)</li><li>[Umgestalten von Node js- und Express-APIs auf serverlose APIs](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[Node.js-Funktion unter Verwendung von Visual Studio Code](./create-first-function-vs-code-node.md)</li><li>[Node.js-Funktion mit Terminal/Eingabeaufforderung](./create-first-function-cli-node.md)</li><li>[Node.js-Funktion mit dem Azure-Portal](functions-create-function-app-portal.md)</li></ul> | <ul><li>[Entwicklerhandbuch](functions-reference.md)</li><li>[Hostingoptionen](functions-scale.md)</li><li>[TypeScript-Funktionen](#typescript)</li><li>[Überlegungen&nbsp; zur Leistung](functions-best-practices.md)</li></ul> | <ul><li>[Erstellen serverloser Anwendungen](/learn/paths/create-serverless-applications/)</li><li>[Umgestalten von Node js- und Express-APIs auf serverlose APIs](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>JavaScript-Funktionsgrundlagen
 

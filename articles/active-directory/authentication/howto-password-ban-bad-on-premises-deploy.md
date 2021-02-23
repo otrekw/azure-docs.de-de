@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0a082149d85736000b5bb6a91e2fc7132205a88
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 6f17f6eb913d1ea54e8db6acd369d165553e16ec
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220285"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091039"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Planen und Bereitstellen des lokalen Azure AD-Kennwortschutzes
 
@@ -85,7 +85,8 @@ Es gelten die folgenden zentralen Anforderungen:
 * Alle Computer (auch Domänencontroller), auf denen Azure AD-Kennwortschutzkomponenten installiert sind, müssen über eine Installation der Universal C-Runtime verfügen.
     * Sie können die Runtime abrufen, indem Sie sicherstellen, dass Sie über alle Updates von Windows Update verfügen. Sie können sie auch in einem betriebssystemspezifischen Updatepaket abrufen. Weitere Informationen finden Sie unter [Update für die Universal C-Runtime in Windows](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
 * Sie benötigen ein Konto mit Active Directory-Domänenadministratorrechten in der Stammdomäne der Gesamtstruktur, um die Windows Server Active Directory-Gesamtstruktur bei Azure AD zu registrieren.
-* Den Schlüsselverteilungsdienst muss auf allen Domänencontrollern in der Domäne aktiviert sein, auf denen Windows Server 2012 ausgeführt wird. Standardmäßig wird dieser Dienst über das Starten eines manuellen Triggers aktiviert.
+* Den Schlüsselverteilungsdienst muss auf allen Domänencontrollern in der Domäne aktiviert sein, auf denen Windows Server 2012 oder eine höhere Version ausgeführt wird. Standardmäßig wird dieser Dienst über das Starten eines manuellen Triggers aktiviert.
+
 * Netzwerkkonnektivität muss zwischen mindestens einem Domänencontroller in jeder Domäne und mindestens einem Server bestehen, der den Proxydienst für den Azure AD-Kennwortschutz hostet. Diese Konnektivität muss es dem Domänencontroller gestatten, auf den RPC-Endpunktzuordnungsport 135 und den RPC-Serverport für den Proxydienst zuzugreifen.
     * Der RPC-Serverport ist standardmäßig ein dynamischer RPC-Port. Er kann jedoch so konfiguriert werden, dass er einen [statischen Port verwendet](#static).
 * Alle Computer, auf denen der Proxydienst für den AD-Kennwortschutz installiert werden soll, müssen Netzwerkzugriff auf die folgenden Endpunkte besitzen:

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Hinzufügen einer Azure-Rollenzuweisung mithilfe einer Azure Resource Manager-Vorlage – Azure RBAC'
+title: 'Schnellstart: Zuweisen einer Azure-Rolle mithilfe einer Azure Resource Manager-Vorlage – Azure RBAC'
 description: Erfahren Sie, wie Sie einem Benutzer im Ressourcengruppenbereich mithilfe von Azure Resource Manager-Vorlagen und der rollenbasierten Zugriffssteuerung in Azure (Azure RBAC) Zugriff auf Azure-Ressourcen gewähren.
 services: role-based-access-control,azure-resource-manager
 author: rolyon
@@ -8,16 +8,16 @@ ms.service: role-based-access-control
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.workload: identity
-ms.date: 05/21/2020
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: 622f37fa4fda20fdc854edf5cd7c192b4113c4e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6e8f194cd85a3c381bdabf206777a99dce3c29b6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88690441"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559266"
 ---
-# <a name="quickstart-add-an-azure-role-assignment-using-an-arm-template"></a>Schnellstart: Hinzufügen einer Azure-Rollenzuweisung mithilfe einer Resource Manager-Vorlage
+# <a name="quickstart-assign-an-azure-role-using-an-arm-template"></a>Schnellstart: Zuweisen einer Azure-Rolle mithilfe einer ARM-Vorlage
 
 Der Zugriff auf Azure-Ressourcen wird mithilfe der [rollenbasierten Zugriffssteuerung in Azure (Azure RBAC)](overview.md) verwaltet. In diesem Schnellstart erstellen Sie eine Ressourcengruppe und gewähren einem Benutzer Zugriff, um virtuelle Computer in dieser Ressourcengruppe zu erstellen und zu verwalten. In dieser Schnellstartanleitung wird eine Azure Resource Manager-Vorlage (ARM-Vorlage) zum Gewähren des Zugriffs verwendet.
 
@@ -29,11 +29,11 @@ Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von A
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen Folgendes, um Rollenzuweisungen hinzufügen zu können:
+Sie benötigen Folgendes, um Azure-Rollen zuzuweisen und Rollenzuweisungen zu entfernen:
 
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 - `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, wie z.B. [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) oder [Besitzer](built-in-roles.md#owner)
-- Sie müssen drei Elemente angeben, um eine Rollenzuweisung hinzuzufügen: Sicherheitsprinzipal, Rollendefinition und Bereich. Für diesen Schnellstart sind Sie oder ein anderer Benutzer in Ihrem Verzeichnis der Sicherheitsprinzipal, die Rollendefinition lautet [Mitwirkender von virtuellen Computern](built-in-roles.md#virtual-machine-contributor), und der Bereich ist eine von Ihnen angegebene Ressourcengruppe.
+- Sie müssen drei Elemente angeben, um eine Rolle zuzuweisen: Sicherheitsprinzipal, Rollendefinition und Bereich. Für diesen Schnellstart sind Sie oder ein anderer Benutzer in Ihrem Verzeichnis der Sicherheitsprinzipal, die Rollendefinition lautet [Mitwirkender von virtuellen Computern](built-in-roles.md#virtual-machine-contributor), und der Bereich ist eine von Ihnen angegebene Ressourcengruppe.
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 

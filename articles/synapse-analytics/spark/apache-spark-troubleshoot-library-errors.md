@@ -1,0 +1,101 @@
+---
+title: Beheben von Fehlern bei der Bibliotheksinstallation
+description: Dieses Tutorial enthält eine Übersicht über die Problembehandlung für Fehler bei der Bibliotheksinstallation.
+services: synapse-analytics
+author: midesa
+ms.author: midesa
+ms.service: synapse-analytics
+ms.subservice: spark
+ms.topic: conceptual
+ms.date: 01/04/2021
+ms.openlocfilehash: 60ea97ea2df271f867febec3fa0f0826a18dbbbf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100416553"
+---
+# <a name="troubleshoot-library-installation-errors"></a>Beheben von Fehlern bei der Bibliotheksinstallation 
+Wenn Sie Code eines Drittanbieters oder lokal erstellten Code für Ihre Anwendungen verfügbar machen möchten, können Sie in einem Ihrer serverlosen Apache Spark-Pools eine Bibliothek installieren. Die in der Datei „requirements.txt“ aufgeführten Pakete werden zum Zeitpunkt des Poolstarts von PyPi heruntergeladen. Diese Anforderungsdatei wird jedes Mal verwendet, wenn eine Spark-Instanz aus diesem Spark-Pool erstellt wird. Nachdem eine Bibliothek für einen Spark-Pool installiert wurde, ist sie für alle Sitzungen verfügbar, die denselben Pool verwenden. 
+
+In einigen Fällen wird die Bibliothek, die Sie installieren möchten, möglicherweise nicht in Ihrem Apache Spark-Pool angezeigt. Dieser Fall tritt häufig auf, wenn ein Fehler in der bereitgestellten Datei „requirements.txt“ oder in den angegebenen Bibliotheken vorliegt. Wenn beim Installationsvorgang der Bibliothek ein Fehler auftritt, wird der Apache Spark-Pool auf die in der Synapse-Basisruntime angegebenen Bibliotheken zurückgesetzt.
+
+In diesem Dokument finden Sie Informationen zu häufig auftretenden Problemen und Hilfe beim Debuggen von Fehlern bei der Bibliotheksinstallation.
+
+## <a name="force-update-your-apache-spark-pool"></a>Erzwingen eines Updates Ihres Apache Spark-Pools
+Wenn Sie die Bibliotheken in Ihrem Apache Spark-Pool aktualisieren, werden diese Änderungen nach dem Neustart des Pools übernommen. Wenn Sie über aktive Aufträge verfügen, werden diese weiterhin in der ursprünglichen Version des Spark-Pools ausgeführt.
+
+Sie können die Anwendung der Änderungen erzwingen, indem Sie die Option **Neue Einstellungen erzwingen** auswählen. Mit dieser Einstellung werden alle aktuellen Sitzungen für den ausgewählten Spark-Pool beendet. Nachdem die Sitzungen beendet wurden, müssen Sie warten, bis der Pool neu gestartet wird. 
+
+![Hinzufügen von Python-Bibliotheken](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "Hinzufügen von Python-Bibliotheken")
+
+## <a name="validate-your-permissions"></a>Überprüfen von Berechtigungen
+Um Bibliotheken zu installieren und zu aktualisieren, müssen Sie über die Berechtigung **Mitwirkender an Storage-Blobdaten** oder **Besitzer von Speicherblobdaten** für das primäre Azure Data Lake Storage Gen2-Speicherkonto verfügen, das mit dem Azure Synapse Analytics-Arbeitsbereich verknüpft ist.
+
+Um zu überprüfen, ob Sie über diese Berechtigungen verfügen, können Sie folgenden Code ausführen:
+
+```python
+from pyspark.sql.types import StructType,StructField, StringType, IntegerType
+data2 = [("James","Smith","Joe","4355","M",3000),
+    ("Michael","Rose","Edward","40288","F",4000)
+  ]
+
+schema = StructType([ \
+    StructField("firstname",StringType(),True), \
+    StructField("middlename",StringType(),True), \
+    StructField("lastname",StringType(),True), \
+    StructField("id", StringType(), True), \
+    StructField("gender", StringType(), True), \
+    StructField("salary", IntegerType(), True) \
+  ])
+ 
+df = spark.createDataFrame(data=data2,schema=schema)
+
+df.write.csv("abfss://<<ENTER NAME OF FILE SYSTEM>>@<<ENTER NAME OF PRIMARY STORAGE ACCOUNT>>.dfs.core.windows.net/validate_permissions.csv")
+
+```
+Wenn Sie einen Fehler erhalten, fehlen Ihnen wahrscheinlich die erforderlichen Berechtigungen. Informationen dazu, wie Sie die erforderlichen Berechtigungen erhalten, finden Sie in diesem Dokument: [Zuweisen der Berechtigungen „Mitwirkender an Storage-Blobdaten“ oder „Besitzer von Speicherblobdaten“](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-an-azure-built-in-role).
+
+Wenn Sie eine Pipeline ausführen, muss die Arbeitsbereichs-MSI auch über eine der Berechtigungen „Besitzer von Speicherblobdaten“ oder „Mitwirkender an Storage-Blobdaten“ verfügen. Informationen dazu, wie Sie Ihrer Arbeitsbereichsidentität diese Berechtigung zuweisen, finden Sie unter: [Erteilen von Berechtigungen für die verwaltete Identität eines Arbeitsbereichs](../security/how-to-grant-workspace-managed-identity-permissions.md).
+
+## <a name="check-the-requirements-file"></a>Überprüfen der Anforderungsdatei
+Sie können eine Datei ***requirements.txt*** (Ausgabe des Befehls „pip freeze“) verwenden, um die virtuelle Umgebung zu aktualisieren. Diese Datei hat das Format, das in der Referenzdokumentation zu [pip freeze](https://pip.pypa.io/en/stable/reference/pip_freeze/) beschrieben wird.
+
+Beachten Sie dabei folgende Einschränkungen:
+   -  Der Name des PyPi-Pakets muss zusammen mit einer exakten Version aufgeführt werden. 
+   -  Der Inhalt der Anforderungsdatei darf keine zusätzlichen leeren Zeilen oder Leerzeichen enthalten. 
+   -  Die [Synapse-Runtime](apache-spark-version-support.md) enthält eine Reihe von Bibliotheken, die in jedem serverlosen Apache Spark-Pool vorinstalliert sind. Pakete, die in der Basisruntime vorinstalliert sind, können nicht herabgestuft werden. Pakete können nur hinzugefügt oder aktualisiert werden.
+   -  Das Ändern der Version von PySpark, Python, Scala/Java, .NET oder Spark wird nicht unterstützt.
+
+Der folgende Codeausschnitt zeigt das erforderliche Format für die Anforderungsdatei.
+
+```
+absl-py==0.7.0
+adal==1.2.1
+alabaster==0.7.10
+```
+
+## <a name="validate-wheel-files"></a>Überprüfen von Wheel-Dateien
+Die serverlosen Synapse-Apache Spark-Pools basieren auf einer Linux-Distribution. Wenn Sie die Wheel-Dateien direkt von PyPi herunterladen und installieren, müssen Sie darauf eine Version auswählen, die unter Linux erstellt wurde und unter der gleichen Python-Version wie der Spark-Pool ausgeführt wird.
+
+>[!IMPORTANT]
+>Benutzerdefinierte Pakete können zwischen Sitzungen hinzugefügt oder geändert werden. Sie müssen jedoch warten, bis der Pool und die Sitzung neu gestartet werden, damit das aktualisierte Paket angezeigt wird.
+
+## <a name="check-for-dependency-conflicts"></a>Überprüfen auf Abhängigkeitskonflikte
+ Ganz allgemein kann das Auflösen von Python-Abhängigkeiten schwierig sein. Um das Debuggen lokaler Abhängigkeitskonflikte zu unterstützen, können Sie Ihre eigene virtuelle Umgebung basierend auf der Synapse-Runtime erstellen und darin Ihre Änderungen überprüfen.
+
+So stellen Sie die Umgebung nach und überprüfen Ihre Updates
+ 1. [Laden Sie die Vorlage herunter](https://github.com/Azure-Samples/Synapse/blob/main/Spark/Python/base_environment.yml), um die Synapse-Runtime lokal neu zu erstellen. Möglicherweise gibt es geringfügige Unterschiede zwischen der Vorlage und der tatsächlichen Synapse-Umgebung.
+   
+ 2. Erstellen Sie mithilfe der [folgenden Anweisungen](https://docs.conda.io/projects/conda/latest/user-guide/tasks/manage-environments.html) eine virtuelle Umgebung. In dieser Umgebung können Sie eine isolierte Python-Installation mit der angegebenen Liste von Bibliotheken erstellen. 
+    
+    ```
+    conda myenv create -f environment.yml
+    conda activate myenv
+    ```
+   
+ 3. Mit ``pip install -r <provide your req.txt file>`` aktualisieren Sie die virtuelle Umgebung mit den angegebenen Paketen. Wenn bei der Installation ein Fehler auftritt, liegt möglicherweise ein Konflikt zwischen den in der Synapse-Basisruntime vorinstallierten Komponenten und den Angaben in der Anforderungsdatei vor. Diese Abhängigkeitskonflikte müssen aufgelöst werden, damit Sie die aktualisierten Bibliotheken in Ihrem serverlosen Apache Spark-Pool anwenden können.
+
+## <a name="next-steps"></a>Nächste Schritte
+- Anzeigen der Standardbibliotheken: [Versionsunterstützung für Apache Spark](apache-spark-version-support.md)
+

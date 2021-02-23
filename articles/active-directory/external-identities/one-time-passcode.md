@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 12/18/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a0668b3ea651d129dc076e5f2247e38f5ab7d0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f37c7e2f21c76fcc902b0922399081b9be949e99
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725494"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365530"
 ---
 # <a name="email-one-time-passcode-authentication"></a>Authentifizierung mit Einmalkennung per E-Mail
 
@@ -26,7 +26,7 @@ In diesem Artikel wird das Aktivieren der Authentifizierung mit Einmalkennung pe
 ![Einmalkennung per E-Mail, Übersichtsdiagramm](media/one-time-passcode/email-otp.png)
 
 > [!IMPORTANT]
-> **Ab März 2021** wird die Funktion „Einmalkennung per E-Mail“ für alle vorhandenen Mandanten und standardmäßig bei neuen Mandanten aktiviert. Wenn Sie nicht möchten, dass diese Funktion automatisch aktiviert wird, können Sie sie deaktivieren. Lesen Sie dazu [Deaktivieren der Einmalkennung per E-Mail](#disable-email-one-time-passcode) weiter unten.
+> **Ab Oktober 2021** wird die Funktion „Einmalkennung per E-Mail“ für alle vorhandenen Mandanten und standardmäßig bei neuen Mandanten aktiviert. Wenn Sie nicht möchten, dass diese Funktion automatisch aktiviert wird, können Sie sie deaktivieren. Lesen Sie dazu [Deaktivieren der Einmalkennung per E-Mail](#disable-email-one-time-passcode) weiter unten.
 
 > [!NOTE]
 > Benutzer mit Einmalkennung müssen sich über einen Link anmelden, der den Mandantenkontext enthält (z.B. `https://myapps.microsoft.com/?tenantid=<tenant id>` oder `https://portal.azure.com/<tenant id>` bzw. `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com` bei einer überprüften Domäne). Direkte Links zu Anwendungen und Ressourcen funktionieren ebenfalls, sofern sie den Mandantenkontext enthalten. Gastbenutzer können sich derzeit nicht über Endpunkte, die keinen Mandantenkontext aufweisen, anmelden. Bei der Verwendung von `https://myapps.microsoft.com` tritt bei `https://portal.azure.com` ein Fehler auf.
@@ -71,7 +71,7 @@ Gastbenutzer teri@gmail.com wird von Fabrikam eingeladen. Das Unternehmen hat ke
 
 ## <a name="disable-email-one-time-passcode"></a>Deaktivieren der Einmalkennung per E-Mail
 
-Ab März 2021 wird die Funktion „Einmalkennung per E-Mail“ für alle vorhandenen Mandanten und standardmäßig bei neuen Mandanten aktiviert. Ab diesem Zeitpunkt wird das Einlösen von Einladungen durch die Erstellung nicht verwalteter Azure AD-Konten und -Mandanten („viral“ oder „Just-In-Time“) für B2B-Zusammenarbeitsszenarien von Microsoft nicht mehr unterstützt. Wir aktivieren die Funktion „Einmalkennung per E-Mail“, da sie eine nahtlose alternative Authentifizierungsmethode für Ihre Gastbenutzer bietet. Sie können diese Funktion jedoch deaktivieren, wenn Sie sie nicht verwenden möchten.
+Ab Oktober 2021 wird die Funktion „Einmalkennung per E-Mail“ für alle vorhandenen Mandanten und standardmäßig bei neuen Mandanten aktiviert. Ab diesem Zeitpunkt wird das Einlösen von Einladungen durch die Erstellung nicht verwalteter Azure AD-Konten und -Mandanten („viral“ oder „Just-In-Time“) für B2B-Zusammenarbeitsszenarien von Microsoft nicht mehr unterstützt. Wir aktivieren die Funktion „Einmalkennung per E-Mail“, da sie eine nahtlose alternative Authentifizierungsmethode für Ihre Gastbenutzer bietet. Sie können diese Funktion jedoch deaktivieren, wenn Sie sie nicht verwenden möchten.
 
 > [!NOTE]
 >
@@ -87,10 +87,8 @@ Ab März 2021 wird die Funktion „Einmalkennung per E-Mail“ für alle vorhand
 
 4. Wählen Sie unter **Einmalkennung per E-Mail für Gastbenutzer** die Option **Einmalkennung per E-Mail für Gastbenutzer deaktivieren** aus.
 
-    ![Einstellungen für die Einmalkennung per E-Mail](media/one-time-passcode/otp-admin-settings.png)
-
    > [!NOTE]
-   > Wenn anstelle der oben dargestellten Optionen die folgende Umschaltfläche angezeigt wird, bedeutet dies, dass Sie zuvor die Funktion aktiviert oder deaktiviert bzw. die Vorschauversion genutzt haben. Wählen Sie **Nein** aus, um die Funktion zu deaktivieren.
+   > Wenn anstelle der Optionen für die Einmalkennung per E-Mail die folgende Umschaltfläche angezeigt wird, bedeutet dies, dass Sie zuvor die Funktion aktiviert oder deaktiviert bzw. die Vorschauversion genutzt haben. Wählen Sie **Nein** aus, um die Funktion zu deaktivieren.
    >
    >![Aktivieren der Einmalkennung per E-Mail für Nutzer der Vorschauversion](media/delegate-invitations/enable-email-otp-opted-in.png)
 
@@ -98,14 +96,14 @@ Ab März 2021 wird die Funktion „Einmalkennung per E-Mail“ für alle vorhand
 
 ## <a name="note-for-public-preview-customers"></a>Hinweis für Kunden der öffentlichen Vorschauversion
 
-Wenn Sie die öffentliche Vorschauversion der Funktion „Einmalkennung per E-Mail“ genutzt haben, gilt die automatische Funktionsaktivierung im März 2021 nicht für Sie, sodass ihre zugehörigen Geschäftsprozesse nicht beeinträchtigt werden. Außerdem wird im Azure-Portal in den Eigenschaften der Funktion **Einmalkennung per E-Mail für Gastbenutzer** nicht die Option **Einmalkennung per E-Mail für Gastbenutzer im März 2021 automatisch aktivieren** angezeigt. Stattdessen wird die folgende Umschaltfläche (**Ja**/**Nein**) angezeigt:
+Wenn Sie die öffentliche Vorschauversion der Funktion „Einmalkennung per E-Mail“ genutzt haben, gilt die automatische Funktionsaktivierung im Oktober 2021 nicht für Sie, sodass Ihre zugehörigen Geschäftsprozesse nicht beeinträchtigt werden. Außerdem wird im Azure-Portal in den Eigenschaften der Funktion **Einmalkennung per E-Mail für Gastbenutzer** nicht die Option **Einmalkennung per E-Mail für Gastbenutzer im Oktober 2021 automatisch aktivieren** angezeigt. Stattdessen wird die folgende Umschaltfläche (**Ja**/**Nein**) angezeigt:
 
 ![Aktivieren der Einmalkennung per E-Mail für Nutzer der Vorschauversion](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-Wenn Sie die Vorschauversion nicht mehr nutzen und das automatische Aktivieren der Funktion im März 2021 zulassen möchten, können Sie die Standardeinstellungen wiederherstellen. Verwenden Sie dazu in der Microsoft Graph-API den [Ressourcentyp „emailAuthenticationMethodConfiguration“](/graph/api/resources/emailauthenticationmethodconfiguration). Nachdem Sie die Standardeinstellungen wiederhergestellt haben, stehen unter **Einmalkennung per E-Mail für Gastbenutzer** die folgenden Optionen zur Verfügung:
+Wenn Sie die Vorschauversion nicht mehr nutzen und das automatische Aktivieren der Funktion im Oktober 2021 zulassen möchten, können Sie die Standardeinstellungen wiederherstellen. Verwenden Sie dazu in der Microsoft Graph-API den [Ressourcentyp „emailAuthenticationMethodConfiguration“](/graph/api/resources/emailauthenticationmethodconfiguration). Nachdem Sie die Standardeinstellungen wiederhergestellt haben, stehen unter **Einmalkennung per E-Mail für Gastbenutzer** die folgenden Optionen zur Verfügung:
 
-- **Einmalkennung per E-Mail für Gastbenutzer im März 2021 automatisch aktivieren**. (Standardeinstellung) Wenn die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten noch nicht aktiviert ist, wird sie im März 2021 automatisch aktiviert. Wenn die Funktion zu diesem Zeitpunkt aktiviert werden soll, ist keine weitere Aktion erforderlich. Wenn Sie die Funktion bereits aktiviert oder deaktiviert haben, ist diese Option nicht verfügbar.
+- **Einmalkennung per E-Mail für Gastbenutzer im Oktober 2021 automatisch aktivieren**. (Standardeinstellung) Wenn die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten noch nicht aktiviert ist, wird sie im Oktober 2021 automatisch aktiviert. Wenn die Funktion zu diesem Zeitpunkt aktiviert werden soll, ist keine weitere Aktion erforderlich. Wenn Sie die Funktion bereits aktiviert oder deaktiviert haben, ist diese Option nicht verfügbar.
 
 - **Einmalkennung per E-Mail für Gastbenutzer sofort aktivieren**. Aktiviert die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten.
 
-- **Einmalkennung per E-Mail für Gastbenutzer deaktivieren**. Deaktiviert die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten und verhindert, dass die Funktion im März 2021 aktiviert wird.
+- **Einmalkennung per E-Mail für Gastbenutzer deaktivieren**. Deaktiviert die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten und verhindert, dass die Funktion im Oktober 2021 aktiviert wird.

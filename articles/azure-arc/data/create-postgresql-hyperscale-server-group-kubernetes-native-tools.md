@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 30852b6b3f9a4b490c4b58fe07f34ee49c60fa9f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 250c1ef837793c2149ff653f395f40272cf43335
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955245"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384944"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Erstellen einer PostgreSQL Hyperscale-Servergruppe mit Kubernetes-Tools
 
@@ -44,14 +44,14 @@ data:
   password: <your base64 encoded password>
 kind: Secret
 metadata:
-  name: example-login-secret
+  name: pg1-login-secret
 type: Opaque
 ---
 apiVersion: arcdata.microsoft.com/v1alpha1
 kind: postgresql-12
 metadata:
   generation: 1
-  name: example
+  name: pg1
 spec:
   engine:
     extensions:
@@ -107,7 +107,7 @@ echo '<your string to encode here>' | base64
 
 ### <a name="customizing-the-name"></a>Anpassen des Namens
 
-Die Vorlage hat für das Attribut „Name“ den Wert „example“ (Beispiel).  Sie können diesen ändern, hierbei muss es sich aber um Zeichen handeln, die die DNS-Benennungsstandards einhalten.  Sie müssen außerdem den Namen des Geheimnisses entsprechend ändern.  Wenn Sie z. B. den Namen der PostgreSQL Hyperscale-Servergruppe in „postgres1“ ändern, müssen Sie den Namen des Geheimnisses von „example-login-secret“ in „postgres1-login-secret“ ändern.
+Die Vorlage hat für das Attribut „name“ den Wert „pg1“.  Sie können diesen ändern, hierbei muss es sich aber um Zeichen handeln, die die DNS-Benennungsstandards einhalten.  Sie müssen außerdem den Namen des Geheimnisses entsprechend ändern.  Wenn Sie z. B. den Namen der PostgreSQL Hyperscale-Servergruppe in „pg2“ ändern, müssen Sie den Namen des Geheimnisses von „pg1-login-secret“ in „pg2-login-secret“ ändern.
 
 ### <a name="customizing-the-engine-version"></a>Anpassen der Engine-Version
 
@@ -152,10 +152,10 @@ kubectl create -n <your target namespace> -f <path to your yaml file>
 Es dauert einige Minuten, bis die PostgreSQL Hyperscale-Servergruppe erstellt ist. Mithilfe der folgenden Befehle können Sie den Status in einem anderen Terminalfenster überwachen:
 
 > [!NOTE]
->  Bei den folgenden Beispielbefehlen wird davon ausgegangen, dass Sie eine PostgreSQL Hyperscale-Servergruppe namens „postgres1“ sowie einen Kubernetes-Namespace namens „arc“ erstellt haben.  Wenn Sie einen anderen Namespace-/PostgreSQL Hyperscale-Servergruppennamen verwendet haben, können Sie "Arc" und "postgres1" durch Ihre Namen ersetzen.
+>  Bei den folgenden Beispielbefehlen wird davon ausgegangen, dass Sie eine PostgreSQL Hyperscale-Servergruppe namens „pg1“ sowie einen Kubernetes-Namespace namens „arc“ erstellt haben.  Wenn Sie einen anderen Namen für den Namespace oder die PostgreSQL Hyperscale-Servergruppe verwendet haben, können Sie „arc“ und „pg1“ durch Ihre Namen ersetzen.
 
 ```console
-kubectl get postgresql-12/postgres1 --namespace arc
+kubectl get postgresql-12/pg1 --namespace arc
 ```
 
 ```console
@@ -168,7 +168,7 @@ Sie können auch den Erstellungsstatus eines bestimmten Pods überprüfen, indem
 kubectl describe po/<pod name> --namespace arc
 
 #Example:
-#kubectl describe po/postgres1-0 --namespace arc
+#kubectl describe po/pg1-0 --namespace arc
 ```
 
 ## <a name="troubleshooting-creation-problems"></a>Beheben von Problemen bei der Erstellung

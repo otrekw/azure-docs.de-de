@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9d4eb90d49e8cc671156833f22a85e7c2b4dd15b
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 24671a34214864e253d96c356dc8b2853bf6d560
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626659"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519795"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Szenario: Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
 
@@ -30,9 +30,9 @@ Wenn Sie mit Virtual WAN-Routing für virtuelle Hubs arbeiten, stehen Ihnen eine
 
 In diesem Szenario wird die folgende Benennungskonvention verwendet:
 
-* „NVA-VNETs“ für virtuelle Netzwerke, in denen Benutzer eine NVA bereitgestellt und andere virtuelle Netzwerke als Spokes verbunden haben (VNET 2 und VNET 4 unten in der **Konnektivitätsmatrix**).
-* „NVA-Spokes“ für virtuelle Netzwerke, die mit einem NVA-VNET (VNET 5, VNET 6, VNET 7 und VNET 8 unten in der **Konnektivitätsmatrix**) verbunden sind.
-* „Nicht-NVA-VNETs“ für mit Virtual WAN verbundene virtuelle Netzwerke, für die kein NVA vorhanden ist bzw. keine anderen VNETs per Peering verbunden sind (VNET 1 und VNET 3 unten in der **Konnektivitätsmatrix**).
+* „NVA-VNETs“ für virtuelle Netzwerke, in denen Benutzer eine NVA bereitgestellt und andere virtuelle Netzwerke als Spokes verbunden haben (VNET 2 und VNET 4 in **Abbildung 2** weiter unten im Artikel).
+* „NVA-Spokes“ für virtuelle Netzwerke, die mit einem NVA-VNET (VNET 5, VNET 6, VNET 7 und VNET 8 in **Abbildung 2** weiter unten im Artikel) verbunden sind.
+* „NVA-fremde VNETs“ für mit Virtual WAN verbundene virtuelle Netzwerke, für die kein NVA vorhanden ist bzw. keine anderen VNETs per Peering verbunden sind (VNET 1 und VNET 3 in **Abbildung 2** weiter unten im Artikel).
 * „Hubs“ für von Microsoft verwaltete Virtual WAN-Hubs, mit denen NVA-VNETs verbunden sind. NVA-Spoke-VNETs müssen nicht mit Virtual WAN-Hubs verbunden sein, sondern nur mit NVA-VNETs.
 
 In der folgenden Konnektivitätsmatrix sind die für dieses Szenario unterstützten Datenflüsse zusammengefasst:
@@ -49,7 +49,7 @@ In der folgenden Konnektivitätsmatrix sind die für dieses Szenario unterstütz
 In den einzelnen Zellen der Konnektivitätsmatrix ist jeweils beschrieben, wie ein VNET oder Branch (Von-Seite des Flows bzw. Zeilenüberschrift in der Tabelle) mit einem Ziel-VNET oder Zielbranch (An-Seite des Flows bzw. kursive Spaltenüberschrift in der Tabelle) kommuniziert. „Direkt“ bedeutet, dass die Konnektivität nativ von Virtual WAN bereitgestellt wird. „Peering“ bedeutet, dass die Konnektivität durch eine benutzerdefinierte Route im VNET bereitgestellt wird. „Über NVA-VNET“ bedeutet, dass die Konnektivität das im NVA-VNET bereitgestellte NVA durchläuft. Beachten Sie Folgendes:
 
 * NVA-Spokes werden nicht mit Virtual WAN verwaltet. Die Mechanismen, über die die Kommunikation mit anderen VNETs oder Branches erfolgt, werden also vom Benutzer verwaltet. Die Konnektivität mit dem NVA-VNET wird per VNET-Peering bereitgestellt, und eine Standardroute zu „0.0.0.0/0“, die auf das NVA als nächsten Hop verweist, sollte die Konnektivität für das Internet, die anderen Spokes und die Branches abdecken.
-* NVA-VNETs kennen ihre eigenen NVA-Spokes, aber keine NVA-Spokes, die mit anderen NVA-VNETs verbunden sind. In Tabelle 1 ist VNET 2 über VNET 5 und VNET 6 informiert, aber nicht über andere Spokes, z. B. VNET 7 und VNET 8. Eine statische Route ist erforderlich, um die Präfixe anderer Spokes in NVA-VNETs einzufügen.
+* NVA-VNETs kennen ihre eigenen NVA-Spokes, aber keine NVA-Spokes, die mit anderen NVA-VNETs verbunden sind. In der Abbildung 2 weiter unten in diesem Artikel ist beispielsweise VNET 2 über VNET 5 und VNET 6 informiert, aber nicht über andere Spokes (beispielsweise VNET 7 und VNET 8). Eine statische Route ist erforderlich, um die Präfixe anderer Spokes in NVA-VNETs einzufügen.
 * Auch Branches und NVA-fremde VNETs sind nicht über NVA-Spokes informiert, da NVA-Spokes nicht mit Virtual WAN-Hubs verbunden sind. Aus diesem Grund werden hier ebenfalls statische Routen benötigt.
 
 Die NVA-Spokes werden wie oben erwähnt nicht per Virtual WAN verwaltet, aber in allen restlichen Zeilen ist das gleiche Konnektivitätsmuster angegeben. Daher deckt eine einzelne Routingtabelle (Standardtabelle) Folgendes ab:

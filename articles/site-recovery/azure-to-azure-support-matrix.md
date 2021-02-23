@@ -4,12 +4,12 @@ description: Fasst die Unterstützung für die Notfallwiederherstellung für vir
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: 856d8961cbdf77fc848df41502678cb438773dbe
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 522af9738cac098dcc9e8cb73183c0bd6b3b4902
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550116"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534673"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Azure-VMs zwischen Azure-Regionen
 
@@ -35,6 +35,7 @@ Dieser Artikel fasst die Unterstützung und die Voraussetzungen für die Notfall
 **Replizieren von Azure-VMs von einem Abonnement in ein anderes zur Notfallwiederherstellung** | Innerhalb des gleichen Azure Active Directory-Mandanten unterstützt.
 **Migrieren von VMs zwischen Regionen innerhalb von unterstützten geografischen Clustern (innerhalb von Abonnements und übergreifend)** | Innerhalb des gleichen Azure Active Directory-Mandanten unterstützt.
 **Migrieren von VMs in derselben Region** | Wird nicht unterstützt.
+**Dedizierte Azure-Hosts** | Wird nicht unterstützt.
 
 ## <a name="region-support"></a>Unterstützung für Regionen
 
@@ -72,6 +73,16 @@ Allgemeine V2-Speicherkonten (heiße und kalte Ebene) | Unterstützt | Die Nutzu
 Storage Premium | Nicht unterstützt | Standard-Speicherkonten werden für den Cachespeicher verwendet, um die Kosten zu optimieren.
 Azure Storage-Firewalls für virtuelle Netzwerke  | Unterstützt | Wenn Sie ein Cache- oder Zielspeicherkonto mit aktivierter Firewall verwenden, müssen Sie [vertrauenswürdigen Microsoft-Diensten den Zugriff erlauben](../storage/common/storage-network-security.md#exceptions), indem Sie die entsprechende Option auswählen.<br></br>Stellen Sie außerdem sicher, dass Sie den Zugriff auf mindestens ein Subnetz des Quell-VNET zulassen.
 
+In der folgenden Tabelle sind die Grenzwerte in Bezug auf die Anzahl von Datenträgern aufgeführt, die in ein einzelnes Speicherkonto repliziert werden können.
+
+**Speicherkontotyp**    |    **Churn = 4 MBit/s pro Datenträger**    |    **Churn = 8 MBit/s pro Datenträger**
+---    |    ---    |    ---
+V1-Speicherkonto    |    300 Datenträger    |    150 Datenträger
+V2-Speicherkonto    |    750 Datenträger    |    375 Datenträger
+
+Wenn der durchschnittliche Churn auf den Datenträgern zunimmt, verringert sich die Anzahl von Datenträgern, die von einem Speicherkonto unterstützt werden können. Die obige Tabelle kann als Leitfaden für Entscheidungen über die Anzahl von Speicherkonten verwendet werden, die bereitgestellt werden müssen.
+
+Beachten Sie, dass die oben genannten Grenzwerte speziell für Notfallwiederherstellungsszenarien von Azure zu Azure und Zone zu Zone gelten. 
 
 ## <a name="replicated-machine-operating-systems"></a>Replizierte Computerbetriebssysteme
 
@@ -125,19 +136,19 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5,
 --- | --- | --- |
 14.04 LTS | [9.36](https://support.microsoft.com/help/4578241/), [9.37](https://support.microsoft.com/help/4582666/), [9.38](https://support.microsoft.com/help/4590304/), [9.39](https://support.microsoft.com/help/4597409/), [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)| 3.13.0-24-generic bis 3.13.0-170-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-148-generic,<br/>4.15.0-1023-azure bis 4.15.0-1045-azure |
 |||
-16.04 LTS | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 4.4.0-21-generic bis 4.4.0-197-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-128-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1102-azure </br> 4.15.0-132-generic, 4.4.0-200-generic bis Hotfix-Patch 9.40**|
+16.04 LTS | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 4.4.0-21-generic bis 4.4.0-197-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-128-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1102-azure </br> 4.15.0-132-generic, 4.4.0-200-generic, 4.15.0-1106-azure, 4.15.0-133-generic, 4.4.0-201-generic bis Hotfix-Patch 9.40**|
 16.04 LTS | [9.39](https://support.microsoft.com/help/4597409/) | 4.4.0-21-generic bis 4.4.0-194-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-123-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1098-azure </br> 4.4.0-197-generic, 4.15.0-126-generic, 4.15.0-128-generic, 4.15.0-1100-azure, 4.15.0-1102-azure bis Hotfix-Patch 9.39**|
 16.04 LTS | [9.38](https://support.microsoft.com/help/4590304/) | 4.4.0-21-generic bis 4.4.0-190-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-118-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1096-azure </br> 4.4.0-193-generic, 4.15.0-120-generic, 4.15.0-122-generic, 4.15.0-1098-azure bis Hotfix-Patch 9.38**|
 16.04 LTS | [9.37](https://support.microsoft.com/help/4582666/) | 4.4.0-21-generic bis 4.4.0-189-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-115-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1093-azure </br> 4.4.0-190-generic, 4.15.0-117-generic, 4.15.0-118-generic, 4.15.0-1095-azure, 4.15.0-1096-azure bis 9.37 Hotfix-Patch**|
 16.04 LTS | [9.36](https://support.microsoft.com/help/4578241/)| 4.4.0-21-generic bis 4.4.0-187-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-112-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1092-azure |
 |||
-18.04 LTS | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 4.15.0-20-generic bis 4.15.0-129-generic </br> 4.18.0-13-generic bis 4.18.0-25-generic </br> 5.0.0-15-generic bis 5.0.0-63-generic </br> 5.3.0-19-generic bis 5.3.0-69-generic </br> 5.4.0-37-generic bis 5.4.0-59-generic</br> 4.15.0-1009-azure bis 4.15.0-1103-azure </br> 4.18.0-1006-azure bis 4.18.0-1025-azure </br> 5.0.0-1012-azure bis 5.0.0-1036-azure </br> 5.3.0-1007-azure bis 5.3.0-1035-azure </br> 5.4.0-1020-azure bis 5.4.0-1035-azure </br> 4.15.0-1104-azure, 4.15.0-130-generic, 4.15.0-132-generic, 5.4.0-1036-azure, 5.4.0-60-generic, 5.4.0-62-generic bis Hotfix-Patch 9.40**|
+18.04 LTS | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 4.15.0-20-generic bis 4.15.0-129-generic </br> 4.18.0-13-generic bis 4.18.0-25-generic </br> 5.0.0-15-generic bis 5.0.0-63-generic </br> 5.3.0-19-generic bis 5.3.0-69-generic </br> 5.4.0-37-generic bis 5.4.0-59-generic</br> 4.15.0-1009-azure bis 4.15.0-1103-azure </br> 4.18.0-1006-azure bis 4.18.0-1025-azure </br> 5.0.0-1012-azure bis 5.0.0-1036-azure </br> 5.3.0-1007-azure bis 5.3.0-1035-azure </br> 5.4.0-1020-azure bis 5.4.0-1035-azure </br> 4.15.0-1104-azure, 4.15.0-130-generic, 4.15.0-132-generic, 5.4.0-1036-azure, 5.4.0-60-generic, 5.4.0-62-generic, 4.15.0-1106-azure, 4.15.0-134-generic, 4.15.0-135-generic, 5.4.0-1039-azure, 5.4.0-64-generic, 5.4.0-65-generic bis Hotfix-Patch 9.40**|
 18.04 LTS | [9.39](https://support.microsoft.com/help/4597409/) | 4.15.0-20-generic bis 4.15.0-123-generic </br> 4.18.0-13-generic bis 4.18.0-25-generic </br> 5.0.0-15-generic bis 5.0.0-63-generic </br> 5.3.0-19-generic bis 5.3.0-69-generic </br> 5.4.0-37-generic bis 5.4.0-53-generic</br> 4.15.0-1009-azure bis 4.15.0-1099-azure </br> 4.18.0-1006-azure bis 4.18.0-1025-azure </br> 5.0.0-1012-azure bis 5.0.0-1036-azure </br> 5.3.0-1007-azure bis 5.3.0-1035-azure </br> 5.4.0-1020-azure bis 5.4.0-1031-azure </br> 4.15.0-124-generic, 5.4.0-54-generic, 5.4.0-1032-azure, 5.4.0-56-generic, 4.15.0-1100-azure, 4.15.0-126-generic, 4.15.0-128-generic, 5.4.0-58-generic, 4.15.0-1102-azure, 5.4.0-1034-azure bis Hotfix-Patch 9.39**|
 18.04 LTS | [9.38](https://support.microsoft.com/help/4590304/) | 4.15.0-20-generic bis 4.15.0-118-generic </br> 4.18.0-13-generic bis 4.18.0-25-generic </br> 5.0.0-15-generic bis 5.0.0-61-generic </br> 5.3.0-19-generic bis 5.3.0-67-generic </br> 5.4.0-37-generic bis 5.4.0-48-generic</br> 4.15.0-1009-azure bis 4.15.0-1096-azure </br> 4.18.0-1006-azure bis 4.18.0-1025-azure </br> 5.0.0-1012-azure bis 5.0.0-1036-azure </br> 5.3.0-1007-azure bis 5.3.0-1035-azure </br> 5.4.0-1020-azure bis 5.4.0-1026-azure </br> 4.15.0-121-generic, 4.15.0-122-generic, 5.0.0-62-generic, 5.3.0-68-generic, 5.4.0-51-generic, 5.4.0-52-generic, 4.15.0-1099-azure, 5.4.0-1031-azure bis Hotfix-Patch 9.38**|
 18.04 LTS | [9.37](https://support.microsoft.com/help/4582666/) | 4.15.0-20-generic bis 4.15.0-115-generic </br> 4.18.0-13-generic bis 4.18.0-25-generic </br> 5.0.0-15-generic bis 5.0.0-60-generic </br> 5.3.0-19-generic bis 5.3.0-66-generic </br> 5.4.0-37-generic bis 5.4.0-45-generic</br> 4.15.0-1009-azure bis 4.15.0-1093-azure </br> 4.18.0-1006-azure bis 4.18.0-1025-azure </br> 5.0.0-1012-azure bis 5.0.0-1036-azure </br> 5.3.0-1007-azure bis 5.3.0-1035-azure </br> 5.4.0-1020-azure bis 5.4.0-1023-azure</br> 4.15.0-117-generic, 4.15.0-118-generic, 5.0.0-61-generic, 5.3.0-67-generic, 5.4.0-47-generic, 5.4.0-48-generic, 4.15.0-1095-azure, 4.15.0-1096-azure, 5.4.0-1025-azure, 5.4.0-1026-azure bis 9.37 Hotfix-Patch**|
 18.04 LTS | [9.36](https://support.microsoft.com/help/4578241/) | 4.15.0-20-generic bis 4.15.0-112-generic </br> 4.18.0-13-generic bis 4.18.0-25-generic </br> 5.0.0-15-generic bis 5.0.0-58-generic </br> 5.3.0-19-generic bis 5.3.0-65-generic </br> 5.4.0-37-generic bis 5.4.0-42-generic</br> 4.15.0-1009-azure bis 4.15.0-1092-azure </br> 4.18.0-1006-azure bis 4.18.0-1025-azure </br> 5.0.0-1012-azure bis 5.0.0-1036-azure </br> 5.3.0-1007-azure bis 5.3.0-1032-azure </br> 5.4.0-1020-azure bis 5.4.0-1022-azure </br> 5.0.0-60-generic & 5.3.0-1035-azure bis Hotfix-Patch 9.36**|
 |||
-20.04 LTS |[9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)| 5.4.0-26-generic bis 5.4.0-59 </br> -generic 5.4.0-1010-azure bis 5.4.0-1035-azure </br> 5.8.0-29-generic bis 5.8.0-34-generic </br> 5.4.0-1036-azure, 5.4.0-60-generic, 5.4.0-62-generic, 5.8.0-36-generic, 5.8.0-38-generic bis Hotfix-Patch 9.40**|
+20.04 LTS |[9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)| 5.4.0-26-generic bis 5.4.0-59 </br> -generic 5.4.0-1010-azure bis 5.4.0-1035-azure </br> 5.8.0-29-generic bis 5.8.0-34-generic </br> 5.4.0-1036-azure, 5.4.0-60-generic, 5.4.0-62-generic, 5.8.0-36-generic, 5.8.0-38-generic, 5.4.0-1039-azure, 5.4.0-64-generic, 5.4.0-65-generic, 5.8.0-40-generic, 5.8.0-41-generic bis Hotfix-Patch 9.40**|
 20.04 LTS |[9.39](https://support.microsoft.com/help/4597409/) | 5.4.0-26-generic bis 5.4.0-53 </br> -generic 5.4.0-1010-azure bis 5.4.0-1031-azure </br> 5.4.0-54-generic, 5.8.0-29-generic, 5.4.0-1032-azure, 5.4.0-56-generic, 5.8.0-31-generic, 5.8.0-33-generic, 5.4.0-58-generic, 5.4.0-1034-azure bis Hotfix-Patch 9.39**
 20.04 LTS |[9.39](https://support.microsoft.com/help/4597409/) | 5.4.0-26-generic bis 5.4.0-53 </br> -generic 5.4.0-1010-azure bis 5.4.0-1031-azure </br> 5.4.0-54-generic, 5.8.0-29-generic, 5.4.0-1032-azure, 5.4.0-56-generic, 5.8.0-31-generic, 5.8.0-33-generic, 5.4.0-58-generic, 5.4.0-1034-azure bis Hotfix-Patch 9.39**
 20.04 LTS |[9.38](https://support.microsoft.com/help/4590304/) | 5.4.0-26-generic bis 5.4.0-48 </br> -generic 5.4.0-1010-azure bis 5.4.0-1026-azure </br> 5.4.0-51-generic, 5.4.0-52-generic, 5.8.0-23-generic, 5.8.0-25-generic, 5.4.0-1031-azure bis 9.38 Hotfix-Patch**
@@ -205,7 +216,7 @@ Mit Site Recovery migrierte virtuelle Computer | Unterstützt | Wenn eine VMware
 Azure RBAC-Richtlinien | Nicht unterstützt | Richtlinien für die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) auf virtuellen Computern werden nicht in die Failover-VM in der Zielregion repliziert.
 Erweiterungen | Nicht unterstützt | Erweiterungen werden nicht auf die Failover-VM in der Zielregion repliziert. Nach dem Failover müssen sie manuell installiert werden.
 Näherungsplatzierungsgruppen | Unterstützt | Virtuelle Computer innerhalb einer Näherungsplatzierungsgruppe können mithilfe von Site Recovery geschützt werden.
-Tags  | Unterstützt | Auf virtuelle Quellcomputer angewendete benutzergenerierte Tags werden nach einem Testfailover oder einem Failover auf die virtuellen Zielcomputer übertragen.
+Tags  | Unterstützt | Auf virtuelle Quellcomputer angewendete benutzergenerierte Tags werden nach einem Testfailover oder einem Failover auf die virtuellen Zielcomputer übertragen. Tags auf VMs werden alle 24 Stunden repliziert, solange die VM s in der Zielregion vorhanden sind.
 
 
 ## <a name="replicated-machines---disk-actions"></a>Replizierte Computer – Datenträgeraktionen
@@ -265,7 +276,7 @@ NVMe-Datenträger | Nicht unterstützt
 Freigegebene Azure-Datenträger | Nicht unterstützt
 Option für die sichere Übertragung | Unterstützt
 Datenträger mit aktivierter Schreibbeschleunigung | Nicht unterstützt
-Tags  | Benutzergenerierte Tags werden alle 24 Stunden repliziert.
+Tags  | Unterstützt | Benutzergenerierte Tags werden alle 24 Stunden repliziert.
 
 >[!IMPORTANT]
 > Um Leistungsprobleme zu vermeiden, stellen Sie sicher, dass Sie die Skalierbarkeits- und Leistungsziele für [verwaltete Datenträger](../virtual-machines/disks-scalability-targets.md) beachten. Wenn Sie die Standardeinstellungen verwenden, erstellt Site Recovery die erforderlichen Datenträger und Speicherkonten auf Basis der Quellkonfiguration. Wenn Sie Ihre eigenen Einstellungen anpassen und verwenden möchten, halten Sie die Skalierbarkeits- und Leistungsziele für Datenträger für Ihre virtuellen Quellcomputer ein.

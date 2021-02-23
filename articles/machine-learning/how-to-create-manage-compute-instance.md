@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 40882f2a0c1a65650d633d0784214afbeef9ae63
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5fc5b52cb8fb4d654bef136f44d8579036921364
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842888"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097193"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Erstellen und Verwalten einer Azure Machine Learning-Compute-Instanz
 
@@ -44,9 +44,9 @@ Sie können Aufträge sicher in einer [virtuellen Netzwerkumgebung](how-to-secur
 
 **Geschätzter Zeitaufwand**: Ca. fünf Minuten.
 
-Das Erstellen einer Compute-Instanz ist ein für Ihren Arbeitsbereich einmaliger Prozess. Sie können diese Compute als Entwicklungsarbeitsstation oder als Computeziel für das Training wiederverwenden. Sie können mehrere Compute-Instanzen an Ihren Arbeitsbereich anfügen.
+Das Erstellen einer Compute-Instanz ist ein für Ihren Arbeitsbereich einmaliger Prozess. Sie können die Compute-Instanz als Entwicklungsarbeitsstation oder als Computeziel für das Training wiederverwenden. Sie können mehrere Compute-Instanzen an Ihren Arbeitsbereich anfügen.
 
-Das Kontingent dedizierter Kerne pro Region pro VM-Familie und gesamte regionale Kontingent, das für die Erstellung von Compute-Instanzen gilt, ist einheitlich und wird mit dem Kontingent für Azure Machine Learning-Trainingcomputecluster gemeinsam genutzt. Das Beenden der Compute-Instanz gibt keine Kontingente frei, um sicherzustellen, dass Sie die Compute-Instanz erneut starten können. Beachten Sie, dass es nach Erstellung der Compute-Instanz nicht möglich ist, die Größe des virtuellen Computers zu ändern.
+Das Kontingent dedizierter Kerne pro Region pro VM-Familie und gesamte regionale Kontingent, das für die Erstellung von Compute-Instanzen gilt, ist einheitlich und wird mit dem Kontingent für Azure Machine Learning-Trainingcomputecluster gemeinsam genutzt. Das Beenden der Compute-Instanz gibt keine Kontingente frei, um sicherzustellen, dass Sie die Compute-Instanz erneut starten können. Beachten Sie, dass die Größe des virtuellen Computers nach Erstellung der Compute-Instanz nicht mehr geändert werden kann.
 
 Das folgende Beispiel veranschaulicht das Erstellen einer Compute-Instanz:
 
@@ -125,7 +125,7 @@ Die wissenschaftliche Fachkraft für Daten kann die Compute-Instanz starten, bee
 
 ## <a name="manage"></a>Verwalten
 
-Hier erfahren Sie, wie Sie eine Compute-Instanz starten, beenden, neu starten und löschen. Eine Compute-Instanz wird nicht automatisch herunterskaliert. Stellen Sie daher sicher, dass die Ressource beendet wird, um laufende Gebühren zu vermeiden.
+Starten, Beenden, Neustarten und Löschen einer Compute-Instanz. Eine Compute-Instanz wird nicht automatisch herunterskaliert. Stellen Sie daher sicher, dass die Ressource beendet wird, um laufende Gebühren zu vermeiden.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -226,7 +226,7 @@ Für jede Compute-Instanz in Ihrem Arbeitsbereich, die Sie erstellt haben (oder 
 
 ---
 
-Mithilfe von [Azure RBAC](../role-based-access-control/overview.md) können Sie steuern, welche Benutzer im Arbeitsbereich eine Compute-Instanz erstellen, löschen, starten, beenden und neu starten können. Alle Benutzer mit der Rolle „Mitwirkender“ und „Besitzer“ des Arbeitsbereichs können Compute-Instanzen im gesamten Arbeitsbereich erstellen, löschen, starten, beenden und neu starten. Allerdings darf nur der Ersteller einer bestimmten Compute-Instanz oder der zugewiesene Benutzer (falls sie in seinem Namen erstellt wurde) auf dieser Compute-Instanz auf Jupyter, JupyterLab und RStudio zugreifen. Eine Compute-Instanz ist für einen einzelnen Benutzer vorgesehen, der über Root-Zugriff und Terminalzugriff über Jupyter/JupyterLab/RStudio verfügt. Die Compute-Instanz weist die Einzelbenutzeranmeldung auf, und alle Aktionen verwenden die Identität dieses Benutzers für Azure RBAC und die Zuordnung von Experimentausführungen. Der SSH-Zugriff wird über einen Mechanismus mit öffentlichem/privatem Schlüssel gesteuert.
+Mithilfe von [Azure RBAC](../role-based-access-control/overview.md) können Sie steuern, welche Benutzer im Arbeitsbereich eine Compute-Instanz erstellen, löschen, starten, beenden und neu starten können. Alle Benutzer mit der Rolle „Mitwirkender“ und „Besitzer“ des Arbeitsbereichs können Compute-Instanzen im gesamten Arbeitsbereich erstellen, löschen, starten, beenden und neu starten. Allerdings darf nur der Ersteller einer bestimmten Compute-Instanz oder der zugewiesene Benutzer (falls sie in seinem Namen erstellt wurde) auf dieser Compute-Instanz auf Jupyter, JupyterLab und RStudio zugreifen. Eine Compute-Instanz ist für einen einzelnen Benutzer vorgesehen, der über Root-Zugriff und Terminalzugriff über Jupyter/JupyterLab/RStudio verfügt. Die Compute-Instanz verfügt über eine Einzelbenutzeranmeldung, und bei allen Aktionen wird die Identität dieses Benutzers für Azure RBAC und die Zuordnung von Experimentausführungen verwendet. Der SSH-Zugriff wird über einen Mechanismus mit öffentlichem/privatem Schlüssel gesteuert.
 
 Diese Aktionen können von Azure RBAC gesteuert werden:
 * *Microsoft.MachineLearningServices/workspaces/computes/read*
@@ -236,62 +236,8 @@ Diese Aktionen können von Azure RBAC gesteuert werden:
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
 
-
-## <a name="access-the-terminal-window"></a>Zugreifen auf das Terminalfenster
-
-Öffnen Sie das Terminalfenster Ihrer Compute-Instanz auf eine der folgenden Weisen:
-
-* RStudio: Wählen Sie die Registerkarte **Terminal** oben links aus.
-* Jupyter Lab:  Wählen Sie die Kachel **Terminal** unter der Überschrift **Other** (Andere) auf der Registerkarte „Launcher“ aus.
-* Jupyter:  Wählen Sie **Neu > Terminal** oben rechts auf der Registerkarte „Dateien“ aus.
-* Wenn Sie beim Erstellen der Compute-Instanz den SSH-Zugriff aktiviert haben, können Sie eine SSH-Verbindung mit dem Computer herstellen.
-
-Verwenden Sie das Terminalfenster, um Pakete zu installieren und zusätzliche Kernels zu erstellen.
-
-## <a name="install-packages"></a>Installieren von Paketen
-
-Sie können Pakete direkt in einem Jupyter-Notebook oder in RStudio installieren:
-
-* Verwenden Sie die Registerkarte **Pakete** unten rechts oder die Registerkarte **Konsole** oben links.  
-* Python: Fügen Sie Installationscode hinzu, und führen Sie ihn in einer Zelle im Jupyter-Notebook aus.
-
-Sie können Pakete auch über ein Terminalfenster installieren. Installieren Sie Python-Pakete in der Umgebung **Python 3.6 – AzureML**.  Installieren Sie R-Pakete in der **R**-Umgebung.
-
-> [!NOTE]
-> Für die Paketverwaltung innerhalb eines Notebooks verwenden Sie die magischen Funktionen **%pip** oder **%conda**, um Pakete automatisch in den **aktuell aktiven Kernel** zu installieren, anstatt **!pip** oder **!conda**, die sich auf alle Pakete beziehen (einschließlich der Pakete außerhalb des aktuell aktiven Kernels).
-
-## <a name="add-new-kernels"></a>Hinzufügen neuer Kernel
-
-> [!WARNING]
->  Wenn Sie Ihre Compute-Instanz anpassen, sollten Sie sicherstellen, dass Sie die conda-Umgebung **azureml_py36** oder den Kernel **Python 3.6 – AzureML** nicht löschen. Diese sind für die Funktionalität von Jupyter bzw. JupyterLab erforderlich.
-
-So fügen Sie einen neuen Jupyter-Kernel zur Compute-Instanz hinzu:
-
-1. Erstellen Sie über Jupyter, JupyterLab, den Notebookbereich oder SSH ein neues Terminal in der Compute-Instanz.
-2. Verwenden Sie das Terminalfenster, um eine neue Umgebung zu erstellen.  Beispielsweise erstellt der folgende Code `newenv`:
-
-    ```shell
-    conda create --name newenv
-    ```
-
-3. Aktivieren Sie die Umgebung.  Beispielsweise nach dem Erstellen von `newenv`:
-
-    ```shell
-    conda activate newenv
-    ```
-
-4. Installieren Sie das pip- und ipykernel-Paket in der neuen Umgebung, und erstellen Sie einen Kernel für diese conda-Umgebung.
-
-    ```shell
-    conda install pip
-    conda install ipykernel
-    python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
-    ```
-
-Jeder der [verfügbaren Jupyter-Kernel](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) kann installiert werden.
-
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Zugreifen auf ein Compute-Instanzterminal in Ihrem Arbeitsbereich](how-to-access-terminal.md)
+* [Erstellen und Verwalten von Dateien](how-to-manage-files.md)
 * [Übermitteln einer Trainingsausführung](how-to-set-up-training-targets.md)

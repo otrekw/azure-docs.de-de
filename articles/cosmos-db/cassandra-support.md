@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 3b2d1bbe2de0ae72087fdf3debeaf42f8745fed9
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: f48935edd5746b0f3f3440e249024cbe2901317b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576480"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374370"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Apache Cassandra-Features, die von der Cassandra-API für Azure Cosmos DB unterstützt werden 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -238,7 +238,7 @@ Die Cassandra-API für Azure Cosmos DB ist eine verwaltete Dienstplattform. Sie 
 
 ## <a name="hosted-cql-shell-preview"></a>Gehostete CQL-Shell (Vorschauversion)
 
-Sie können eine gehostete native Cassandra-Shell (CQLSH v5.0.1) direkt über den Daten-Explorer im [Azure-Portal](data-explorer.md) oder über den [Azure Cosmos DB-Explorer](https://cosmos.azure.com/) öffnen. Vor dem Aktivieren der CQL-Shell müssen Sie [das Feature „Notebooks“ in Ihrem Konto aktivieren](enable-notebooks.md). (Sollte es noch nicht aktiviert sein, werden Sie beim Klicken auf `Open Cassandra Shell` dazu aufgefordert.) Informationen zu unterstützten Azure-Regionen finden Sie im hervorgehobenen Hinweis des Artikels [Aktivieren von Notebooks für Azure Cosmos DB-Konten (Vorschau)](enable-notebooks.md).
+Sie können eine gehostete native Cassandra-Shell (CQLSH v5.0.1) direkt über den Daten-Explorer im [Azure-Portal](data-explorer.md) oder über den [Azure Cosmos DB-Explorer](https://cosmos.azure.com/) öffnen. Vor dem Aktivieren der CQL-Shell müssen Sie [das Feature „Notebooks“ in Ihrem Konto aktivieren](enable-notebooks.md). (Sollte es noch nicht aktiviert sein, werden Sie beim Klicken auf `Open Cassandra Shell` dazu aufgefordert.) Informationen zu unterstützten Azure-Regionen finden Sie im Artikel [Aktivieren von Notebooks für Azure Cosmos DB-Konten (Vorschau)](enable-notebooks.md#supported-regions).
 
 :::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="Öffnen von CQLSH":::
 

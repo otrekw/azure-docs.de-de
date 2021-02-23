@@ -1,28 +1,82 @@
 ---
 title: Variablen in Vorlagen
-description: Beschreibt, wie Variablen in einer Azure Resource Manager-Vorlage (ARM-Vorlage) definiert werden.
+description: Beschreibt, wie Variablen in einer Azure Resource Manager-Vorlage (ARM-Vorlage) und einer Bicep-Datei definiert werden.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: feecc4b5df77e6a3bf51294cb12aabf44899dde5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 02/12/2021
+ms.openlocfilehash: cafd42112e5d296cb73f88e292a66ca2203f3810
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874433"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364459"
 ---
-# <a name="variables-in-arm-template"></a>Variablen in ARM-Vorlagen
+# <a name="variables-in-arm-templates"></a>Variablen in ARM-Vorlagen
 
-Dieser Artikel beschreibt, wie Sie Variablen in Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) definieren und verwenden. Mit Variablen vereinfachen Sie Ihre Vorlage. Anstatt komplizierte Ausdrücke innerhalb der Vorlage zu wiederholen, definieren Sie eine Variable, die den komplizierten Ausdruck enthält. Anschließend verweisen Sie in der gesamten Vorlage auf diese Variable.
+Dieser Artikel beschreibt, wie Sie Variablen in Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) oder Bicep-Datei definieren und verwenden. Mit Variablen vereinfachen Sie Ihre Vorlage. Anstatt komplizierte Ausdrücke innerhalb der Vorlage zu wiederholen, definieren Sie eine Variable, die den komplizierten Ausdruck enthält. Anschließend verwenden Sie diese Variable wie gewünscht in der gesamten Vorlage.
 
 Resource Manager löst Variablen vor Beginn der Bereitstellungsvorgänge auf. Jedes Vorkommen der Variablen in der Vorlage wird von Resource Manager durch den aufgelösten Wert ersetzt.
 
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
+
 ## <a name="define-variable"></a>Definieren einer Variablen
 
-Geben Sie beim Definieren einer Variablen einen Wert oder einen Vorlagenausdruck an, der in einen [Datentyp](template-syntax.md#data-types) aufgelöst wird. Sie können beim Erstellen der Variablen den Wert eines Parameters oder einer anderen Variablen verwenden.
+Wenn Sie eine Variable definieren, geben Sie keinen [Datentyp](template-syntax.md#data-types) für die Variable an. Sie geben stattdessen einen Wert oder einen Vorlagenausdruck an. Der Variablentyp wird vom aufgelösten Wert abgeleitet. Im folgenden Beispiel wird eine Variable auf eine Zeichenfolge festgelegt.
 
-In der Variablendeklaration können Sie [Vorlagenfunktionen](template-functions.md) verwenden, aber nicht die Funktion [reference](template-functions-resource.md#reference) oder die [list](template-functions-resource.md#list)-Funktionen. Diese Funktionen rufen den Laufzeitstatus einer Ressource ab und können nicht vor der Bereitstellung ausgeführt werden, wenn Variablen aufgelöst werden.
+# <a name="json"></a>[JSON](#tab/json)
 
-Im folgenden Beispiel wird eine Variablendefinition gezeigt. Dabei wird ein Zeichenfolgenwert für einen Speicherkontonamen erstellt. Es werden mehrere Vorlagenfunktionen verwendet, um einen Parameterwert abzurufen und zu einer eindeutigen Zeichenfolge zu verketten.
+```json
+"variables": {
+  "stringVar": "example value"
+},
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var stringVar = 'example value'
+```
+
+---
+
+Sie können beim Erstellen der Variablen den Wert eines Parameters oder einer anderen Variablen verwenden.
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+"parameters": {
+  "inputValue": {
+    "defaultValue": "deployment parameter",
+    "type": "string"
+  }
+},
+"variables": {
+  "stringVar": "myVariable",
+  "concatToVar": "[concat(variables('stringVar'), '-addtovar') ]",
+  "concatToParam": "[concat(parameters('inputValue'), '-addtoparam')]"
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param inputValue string = 'deployment parameter'
+
+var stringVar = 'myVariable'
+var concatToVar =  '${stringVar}-addtovar'
+var concatToParam = '${inputValue}-addtoparam'
+```
+
+---
+
+Sie können [Vorlagenfunktionen](template-functions.md) verwenden, um den Variablenwert zu erstellen.
+
+Bei JSON-Vorlagen können Sie in der Variablendeklaration nicht die [reference](template-functions-resource.md#reference)-Funktion oder eine der [list](template-functions-resource.md#list)-Funktionen verwenden. Diese Funktionen rufen den Laufzeitstatus einer Ressource ab und können nicht vor der Bereitstellung ausgeführt werden, wenn Variablen aufgelöst werden.
+
+Die Funktionen „reference“ und „list“ sind beim Deklarieren einer Variable in einer Bicep-Datei gültig.
+
+Im folgenden Beispiel wird ein Zeichenfolgenwert für ein Speicherkonto erstellt. Es werden mehrere Vorlagenfunktionen verwendet, um einen Parameterwert abzurufen und zu einer eindeutigen Zeichenfolge zu verketten.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "variables": {
@@ -30,9 +84,21 @@ Im folgenden Beispiel wird eine Variablendefinition gezeigt. Dabei wird ein Zeic
 },
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
+```
+
+---
+
 ## <a name="use-variable"></a>Verwenden einer Variablen
 
-In der Vorlage verweisen Sie mithilfe der [variables](template-functions-deployment.md#variables)-Funktion auf den Wert für den Parameter. Im folgenden Beispiel wird gezeigt, wie die Variable für eine Ressourceneigenschaft verwendet wird.
+Im folgenden Beispiel wird gezeigt, wie die Variable für eine Ressourceneigenschaft verwendet wird.
+
+# <a name="json"></a>[JSON](#tab/json)
+
+In einer JSON-Vorlage verweisen Sie mithilfe der [variables](template-functions-deployment.md#variables)-Funktion auf den Wert für die Variable.
 
 ```json
 "resources": [
@@ -44,17 +110,46 @@ In der Vorlage verweisen Sie mithilfe der [variables](template-functions-deploym
 ]
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+In einer Bicep-Datei verweisen Sie über die Angabe des Variablennamens auf den Wert für die Variable.
+
+```bicep
+resource demoAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+  name: storageName
+```
+
+---
+
 ## <a name="example-template"></a>Beispielvorlage
 
-Von der folgenden Vorlage werden keine Ressourcen bereitgestellt. Es werden nur einige Möglichkeiten zum Deklarieren von Variablen angegeben.
+Von der folgenden Vorlage werden keine Ressourcen bereitgestellt. Sie zeigt einige Möglichkeiten, Variablen unterschiedlicher Typen zu deklarieren.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variables.json":::
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Bicep unterstützt derzeit keine Schleifen.
+
+:::code language="bicep" source="~/resourcemanager-templates/azure-resource-manager/variables.bicep":::
+
+---
 
 ## <a name="configuration-variables"></a>Konfigurationsvariablen
 
 Sie können Variablen definieren, die zugehörige Werte zum Konfigurieren einer Umgebung enthalten. Die Variable wird als ein Objekt mit den Werten definiert. Das folgende Beispiel zeigt ein Objekt, das Werte für zwei Umgebungen enthält: **test** und **prod**. Sie übergeben einen dieser Werte während der Bereitstellung.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.json":::
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.bicep":::
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,13 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 6432cc9affd34c0fa9b832aea91932a2b9e7540f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.custom: references_regions
+ms.openlocfilehash: 9a73f9b734d5404d07e05dd37d5ad8571c1aab2e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576671"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383890"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Unterstützte Datenquellen und Dateitypen in Azure Purview
 
@@ -70,6 +71,28 @@ Dateiüberprüfung für Ressourcensätze nach Dateitypen:
 - **Andere strukturierte Dateitypen (JSON, XML, TXT)** : 1 aus 100 Dateien wird in einem Ordner oder einer Gruppe von Partitionsdateien, die als „ Ressourcensatz“' angesehen werden, überprüft (L3-Überprüfung).
 - **SQL-Objekte und CosmosDB-Entitäten**: Jede Datei wird einer L3-Überprüfung unterzogen.
 - **Dokumentdateitypen**: Jede Datei wird einer L3-Überprüfung unterzogen. Ressourcensatzmuster gelten für diese Dateitypen nicht.
+
+## <a name="scan-regions"></a>Überprüfungsregionen
+Im Folgenden finden Sie eine Liste aller Azure-Datenquellregionen (Rechenzentren), in denen die Purview-Überprüfung ausgeführt wird. Wenn sich Ihre Azure-Datenquelle in einer Region befindet, die nicht in der Liste aufgeführt ist, erfolgt die Überprüfung in der Region Ihrer Purview-Instanz.
+ 
+### <a name="purview-scanner-regions"></a>Regionen der Purview-Überprüfung
+
+- EastUs
+- EastUs2 
+- USA, Süden-Mitte
+- WestUs
+- WestUs2
+- SoutheastAsia
+- Europa, Westen
+- Europa, Norden
+- UkSouth
+- Australien, Osten
+- CanadaCentral
+- Brasilien, Süden
+- CentralIndia
+- JapanEast
+- Südafrika, Nord
+- Frankreich, Mitte
 
 ## <a name="classification"></a>Klassifizierung
 

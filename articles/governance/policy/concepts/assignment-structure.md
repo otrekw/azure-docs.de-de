@@ -3,12 +3,12 @@ title: Details zur Richtlinienzuweisungsstruktur
 description: Beschreibt die Definition der Richtlinienzuweisung, die von Azure Policy verwendet wird, um Richtliniendefinitionen und -parameter zur Bewertung mit Ressourcen in Beziehung zu setzen.
 ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 12acbe368c9ccd6fa5654d3394e0fecb286984bf
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 1151c931863e1139b76c34ced12c4e2842f83cc6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219565"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558445"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-Zuweisungsstruktur
 
@@ -98,7 +98,7 @@ Legen Sie `nonComplianceMessages` in der Zuweisungsdefinition fest, um eine benu
 ]
 ```
 
-Wenn die Zuweisung für eine Initiative erfolgt, können für jede Richtliniendefinition in der Initiative verschiedene Meldungen konfiguriert werden. Für die Meldungen wird der `policyDefinitionReferenceId`-Wert verwendet, der in der Initiativendefinition konfiguriert wurde. Einzelheiten finden Sie in den [Definitionseigenschaften](./initiative-definition-structure.md#policy-definition-properties).
+Wenn die Zuweisung für eine Initiative erfolgt, können für jede Richtliniendefinition in der Initiative verschiedene Meldungen konfiguriert werden. Für die Meldungen wird der `policyDefinitionReferenceId`-Wert verwendet, der in der Initiativendefinition konfiguriert wurde. Einzelheiten finden Sie in den [Definitionseigenschaften der Richtlinie](./initiative-definition-structure.md#policy-definition-properties).
 
 ```json
 "nonComplianceMessages": [

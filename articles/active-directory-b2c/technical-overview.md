@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fef192ab273a0e53958cda315932f91b427a5d7d
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 3a044faf5546a22c997b8358d8809e240d563ac9
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108382"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556822"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technische und Funktionsübersicht für Azure Active Directory B2C
 
@@ -79,7 +79,7 @@ Azure AD B2C bietet auf der Registrierungs- oder Anmeldeseite eine Liste externe
 
 ![Beispiel für die mobile Anmeldung mit einem Konto für soziale Netzwerke (Facebook)](media/technical-overview/external-idp.png)
 
-Weitere Informationen zum Hinzufügen von Identitätsanbietern in Azure AD B2C finden Sie unter [Tutorial: Hinzufügen von Identitätsanbietern zu Ihren Anwendungen in Azure Active Directory B2C](tutorial-add-identity-providers.md).
+Weitere Informationen zum Hinzufügen von Identitätsanbietern in Azure AD B2C finden Sie unter [Hinzufügen von Identitätsanbietern zu Ihren Anwendungen in Azure Active Directory B2C](add-identity-provider.md).
 
 ## <a name="identity-experiences-user-flows-or-custom-policies"></a>Identitätsverwaltung: Benutzerflows oder benutzerdefinierte Richtlinien
 

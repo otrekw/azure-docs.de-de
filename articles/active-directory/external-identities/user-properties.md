@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/19/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c97958add682a4c49d7832843c0b95ffd2663bf
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 0e9189b6608b74be6a72dbdfe66276c5050f042f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859630"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365462"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers
 
@@ -28,7 +28,7 @@ Je nach Anforderungen der einladenden Organisation kann ein Azure AD B2B-Zusamme
 - Zustand 1: Befindet sich in einer externen Instanz von Azure AD und wird als Gastbenutzer in der einladenden Organisation dargestellt. In diesem Fall meldet sich der B2B-Benutzer mit einem Azure AD-Konto an, das zum eingeladenen Mandanten gehört. Wenn die Partnerorganisation nicht Azure AD verwendet, werden die Gastbenutzer trotzdem in Azure AD erstellt. Voraussetzung ist, dass sie ihre Einladung einlösen und Azure AD ihre E-Mail-Adressen überprüft. Eine solche Vereinbarung wird auch als Just-in-Time-Mandant (JIT) oder „viraler“ Mandant bezeichnet.
 
    > [!IMPORTANT]
-   > **Ab dem 31. März 2021** wird das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten für B2B Collaboration-Szenarien von Microsoft nicht mehr unterstützt. Zur Vorbereitung hierauf raten wir Kunden, sich für die [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md) zu entscheiden. Wir freuen uns über Ihr Feedback zu diesem Feature, das sich derzeit in der öffentlichen Vorschauphase befindet, und möchten noch mehr Möglichkeiten zur Zusammenarbeit schaffen.
+   > **Ab Oktober 2021** wird das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten für B2B Collaboration-Szenarien von Microsoft nicht mehr unterstützt. Zur Vorbereitung hierauf raten wir Kunden, sich für die [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md) zu entscheiden. Wir freuen uns über Ihr Feedback zu diesem Feature, das sich derzeit in der öffentlichen Vorschauphase befindet, und möchten noch mehr Möglichkeiten zur Zusammenarbeit schaffen.
 
 - Zustand 2: Befindet sich in einem Microsoft-Konto oder anderen Konto und wird als Gastbenutzer in der Hostorganisation dargestellt. In diesem Fall meldet sich der Gastbenutzer mit einem Microsoft-Konto oder einem Konto eines sozialen Netzwerks (z.B. google.com) an. Die Identität eines eingeladenen Benutzers wird während der Einlösung des Angebots im Verzeichnis der einladenden Organisation als Microsoft-Konto erstellt.
 

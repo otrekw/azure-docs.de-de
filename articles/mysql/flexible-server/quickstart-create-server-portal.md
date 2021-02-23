@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/22/2020
-ms.openlocfilehash: 864152d1f1d0074305cbba448946bc05888b4f3b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 074b799a4f0e83c47aac0b2b3fca5386bd45429f
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566757"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521967"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Schnellstart: Verwenden des Azure-Portals zum Erstellen einer Azure Database for MySQL Flexible Server-Instanz
 
@@ -85,17 +85,35 @@ Unter Ihrem Server werden standardmäßig folgende Datenbanken erstellt: „info
 
 ## <a name="connect-to-the-server-by-using-mysqlexe"></a>Herstellen einer Serverbindung über „mysql.exe“
 
-Wenn Sie Ihre Flexible Server-Instanz mit privatem Zugriff (VNET-Integration) erstellt haben, müssen Sie eine Verbindung mit der Serverinstanz über eine Ressource innerhalb desselben virtuellen Netzwerks herstellen. Sie können einen virtuellen Computer erstellen und zum virtuellen Netzwerk hinzufügen, das mit Ihrer Flexible Server-Instanz erstellt wurde.
+Wenn Sie Ihre Flexible Server-Instanz mit privatem Zugriff (VNET-Integration) erstellt haben, müssen Sie eine Verbindung mit der Serverinstanz über eine Ressource innerhalb desselben virtuellen Netzwerks herstellen. Sie können einen virtuellen Computer erstellen und zum virtuellen Netzwerk hinzufügen, das mit Ihrer Flexible Server-Instanz erstellt wurde. Weitere Informationen finden Sie in der [Dokumentation zum Konfigurieren von privatem Zugriff](how-to-manage-virtual-network-portal.md).
 
-Wenn Sie Ihre Flexible Server-Instanz mit öffentlichem Zugriff (zulässige IP-Adressen) erstellt haben, können Sie die lokale IP-Adresse der Liste der Firewallregeln für die Serverinstanz hinzufügen.
+Wenn Sie Ihre Flexible Server-Instanz mit öffentlichem Zugriff (zulässige IP-Adressen) erstellt haben, können Sie die lokale IP-Adresse der Liste der Firewallregeln für die Serverinstanz hinzufügen. Eine Schritt-für-Schritt-Anleitung finden Sie unter [Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL – Flexible Server mit Azure-Portal](how-to-manage-firewall-portal.md).
 
 Sie können [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) oder [MySQL Workbench](./connect-workbench.md) auswählen, um aus Ihrer lokalen Umgebung eine Verbindung mit dem Server herzustellen. 
 
-Stellen Sie bei Verwendung von „mysql.exe“ mithilfe des folgenden Befehls eine Verbindung her. Verwenden Sie im Befehl Ihren Servernamen, Benutzernamen und Ihr Kennwort. 
-
 ```bash
- mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p
+wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
+mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
+
+Wenn Sie Ihren flexiblen Server mit **öffentlichem Zugriff** bereitgestellt haben, können Sie auch [Azure Cloud Shell](https://shell.azure.com/bash) verwenden, um über den vorinstallierten MySQL-Client eine Verbindung mit Ihrem flexiblen Server herzustellen:
+
+Wenn Sie Azure Cloud Shell verwenden möchten, um eine Verbindung mit Ihrem flexiblen Server herzustellen, müssen Sie für Azure Cloud Shell Netzwerkzugriff auf Ihren flexiblen Server zulassen. Navigieren Sie hierzu im Azure-Portal zum Blatt **Netzwerk** für Ihren flexiblen MySQL-Server, und aktivieren Sie im Abschnitt **Firewall** das Kontrollkästchen „Öffentlichen Zugriff auf diesen Server über beliebigen Azure-Dienst in Azure gestatten“. Klicken Sie anschließend auf „Speichern“, um die Einstellung zu speichern.
+
+> [!NOTE]
+> Das Kontrollkästchen **Öffentlichen Zugriff auf diesen Server über beliebigen Azure-Dienst in Azure gestatten** sollte nur zu Entwicklungs- und Testzwecken aktiviert werden. Durch diese Option wird die Firewall so konfiguriert, dass Verbindungen von IP-Adressen zugelassen werden, die einem beliebigen Azure-Dienst oder einer beliebigen Azure-Ressource zugeordnet sind. Dies schließt auch Verbindungen aus den Abonnements anderer Kunden mit ein.
+
+Klicken Sie auf **Jetzt testen**, um Azure Cloud Shell zu starten, und verwenden Sie die folgenden Befehle, um eine Verbindung mit Ihrem flexiblen Server herzustellen. Verwenden Sie im Befehl Ihren Servernamen, Benutzernamen und Ihr Kennwort. 
+
+```azurecli-interactive
+wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
+mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
+```
+
+Sollte bei dem Versuch, mithilfe des obigen Befehls eine Verbindung mit Ihrem flexiblen Server herzustellen, die folgende Fehlermeldung angezeigt werden, haben Sie vergessen, die Firewallregel mithilfe des Kontrollkästchens „Öffentlichen Zugriff auf diesen Server über beliebigen Azure-Dienst in Azure gestatten“ festzulegen, oder die Option wurde nicht gespeichert. Konfigurieren Sie die Firewall, und wiederholen Sie anschließend den Vorgang.
+
+FEHLER 2002 (HY000): Verbindungsherstellung mit MySQL-Server nicht möglich auf <servername> (115)
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Sie haben jetzt eine Azure Database for MySQL Flexible Server-Instanz in einer Ressourcengruppe erstellt. Wenn Sie diese Ressourcen in Zukunft nicht mehr benötigen, können Sie sie löschen, indem Sie die Ressourcengruppe oder einfach den MySQL-Server löschen. Um die Ressourcengruppe zu löschen, führen Sie die folgenden Schritte aus:
 

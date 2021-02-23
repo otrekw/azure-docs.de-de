@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 03/21/2019
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 5ae946f82590f2270719570e4b589d49542ffec8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4377ed76de971f78336ea9024b59dafc5d513487
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833978"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094966"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Problembehandlung beim Portal „Meine Apps“
 
@@ -31,9 +31,9 @@ Wenn Sie Probleme mit der Installation der My Apps Secure Sign-in-Erweiterung ha
 
     - **Microsoft Edge.** Ausführung unter Windows 10 Anniversary Edition oder höher.
 
-    - **Google Chrome**. Ausführung unter Windows 7 oder höher und Mac OS X oder höher.
+    - **Google Chrome**. Ausführung unter Windows 7 oder höher und macOS X oder höher.
 
-    - **Mozilla Firefox 26.0 oder höher.** Ausführung unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher.
+    - **Mozilla Firefox 26.0 oder höher.** Ausführung unter Windows XP SP2 oder höher und macOS X 10.6 oder höher.
 
     - **Internet Explorer 11.** Ausführung unter Windows 7 oder höher (eingeschränkte Unterstützung).
 
@@ -46,6 +46,11 @@ Wenn Sie Probleme mit der Installation der My Apps Secure Sign-in-Erweiterung ha
 ## <a name="i-cant-sign-in-to-the-my-apps-portal"></a>Ich kann mich nicht am Portal **Meine Apps** anmelden
 
 Wenn Sie Probleme haben, sich am Portal **Meine Apps** anzumelden, können Sie Folgendes versuchen:
+
+- Wenn bei der Anmeldung mit einem persönlichen Microsoft-Konto ein Fehler auftritt, können Sie sich trotzdem mit dem Domänennamen für Ihre Organisation (z. B. „contoso.com“) oder der **Mandanten-ID** Ihrer Organisation, die Sie von Ihrem Administrator erhalten, über eine der folgenden URLs anmelden:
+
+   - https://myapplications.microsoft.com?tenantId=*Ihr_Domänenname*
+   - https://myapplications.microsoft.com?tenant=*Ihre_Mandanten-ID*
 
 - Stellen Sie sicher, dass Sie die richtige URL verwenden. Hierbei muss es sich um https://myapps.microsoft.com oder um eine benutzerdefinierte Seite Ihrer Organisation handeln, z. B. https://myapps.microsoft.com/contoso.com.
 

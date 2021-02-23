@@ -1,14 +1,14 @@
 ---
 title: Angebote für verwaltete Dienste im Azure Marketplace
 description: Angebote für verwaltete Dienste ermöglichen es Ihnen, Ressourcenverwaltungsangebote an Kunden in Azure Marketplace zu verkaufen.
-ms.date: 07/28/2020
+ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6c3047cd95128f689e75d9c1f5fba5a39f86291c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f3a12f34b4cedcb12ad2786fcb687044c30c211
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88163321"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375543"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Angebote für verwaltete Dienste im Azure Marketplace
 
@@ -18,7 +18,7 @@ In diesem Artikel wird der neue Angebotstyp **Verwaltete Dienste** im [Azure Mar
 
 Angebote für verwaltete Dienste optimieren den Prozess des Onboardings von Kunden für Azure Lighthouse. Wenn ein Kunde ein Angebot im Azure Marketplace kauft, kann er angeben, welche Abonnements und/oder Ressourcengruppen integriert werden sollen.
 
-Danach können Benutzer in Ihrer Organisation entsprechend dem Zugriff, den Sie beim Erstellen des Angebots festgelegt haben, mithilfe der [delegierten Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) mit diesen Ressourcen in Ihrem Verwaltungsmandanten arbeiten. Dazu wird ein Manifest verwendet, das die Azure Active Directory-Benutzer (Azure AD), -Gruppen und -Dienstprinzipale, die Zugriff auf Kundenressourcen erhalten, sowie die Rollen für ihre Zugriffsebene angibt. Dadurch, dass Sie einer Azure AD-Gruppe Berechtigungen anstelle einer Reihe einzelner Benutzer- oder Anwendungskonten zuweisen, können Sie einzelne Benutzer hinzufügen oder entfernen, wenn sich Ihre Zugriffsanforderungen ändern.
+Danach können Benutzer in Ihrer Organisation entsprechend dem Zugriff, den Sie beim Erstellen des Angebots festgelegt haben, mithilfe der [delegierten Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) mit diesen Ressourcen in Ihrem Verwaltungsmandanten arbeiten. Dazu wird ein Manifest verwendet, das die Azure Active Directory-Benutzer (Azure AD), -Gruppen und -Dienstprinzipale, die Zugriff auf Kundenressourcen erhalten, sowie die [Rollen](tenants-users-roles.md) für die jeweilige Zugriffsebene angibt.
 
 ## <a name="public-and-private-offers"></a>Öffentliche und private Angebote
 

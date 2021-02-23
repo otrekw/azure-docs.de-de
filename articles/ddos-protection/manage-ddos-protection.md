@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: f4ce830c889feaeda05745eeb02b72f55ad9314a
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 336eeee7d522647d11f55a65dc9dc4e65e8b7d47
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99819842"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535234"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Schnellstart: Erstellen und Konfigurieren von Azure DDoS Protection Standard
 
@@ -88,6 +88,11 @@ Diese [Richtlinie](https://aka.ms/ddosvnetpolicy) erkennt alle virtuellen Netzwe
 3. Wählen Sie den DDoS-Schutzplan in der Liste aus.
 
 Das virtuelle Netzwerk _MyVnet_ sollte aufgeführt werden. 
+
+### <a name="view-protected-resources"></a>Anzeigen geschützter Ressourcen
+Unter **Geschützte Ressourcen** können Sie geschützte virtuelle Netzwerke und öffentliche IP-Adressen anzeigen oder dem DDoS-Schutzplan weitere virtuelle Netzwerke hinzufügen:
+
+![Anzeigen geschützter Ressourcen](./media/manage-ddos-protection/ddos-protected-resources.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

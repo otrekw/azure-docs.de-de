@@ -2,14 +2,14 @@
 title: Datenresidenz
 description: Datenresidenz und Informationen zu Azure Arc-fähigen Servern.
 ms.topic: reference
-ms.date: 10/08/2020
+ms.date: 02/16/2021
 ms.custom: references_regions
-ms.openlocfilehash: c5ece96acc3ee07ba2896279888363c7d52d737e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4764772473bbf2e5aafe2607a9462c9a6a15203
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856448"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559514"
 ---
 # <a name="azure-arc-enabled-servers-data-residency"></a>Server mit Azure Arc-Unterstützung: Datenresidenz
 
@@ -23,10 +23,16 @@ Azure Arc-fähige Server speichern Konfigurationseinstellungen (d. h. Eigenscha
 
 Metadateninformationen zum verbundenen Computer werden ebenfalls gesammelt. Dies betrifft insbesondere:
 
-* Betriebssystemname und -version
+* Betriebssystemname, -typ und -version
 * Computername
 * Vollqualifizierter Domänenname (FQDN) des Computers
 * Version des Connected Machine-Agents
+* Vollqualifizierter Domänenname (FQDN) für Active Directory und DNS
+* UUID (BIOS-ID)
+* Connected Machine-Agent-Takt
+* Version des Connected Machine-Agents
+* Öffentlicher Schlüssel für verwaltete Identität
+* Richtlinienkonformitätsstatus und Details (bei Verwendung von Azure Policy-Richtlinien für Gastkonfigurationen)
 
 Bei Azure Arc-fähigen Servern können Sie die Region angeben, in der Ihre Daten gespeichert werden sollen. Microsoft kann die Daten in Hinblick auf die Datenresilienz in andere Regionen replizieren; Microsoft repliziert aber keine Daten außerhalb des geografischen Gebiets oder verschiebt Daten in diesen Raum. Diese Daten werden in der Region gespeichert, in der die Azure Arc-Computerressource konfiguriert wird. Wenn der Computer z. B. mit Azure Arc in der Region „USA, Osten“ registriert ist, werden diese Daten in der Region „USA“ gespeichert.
 

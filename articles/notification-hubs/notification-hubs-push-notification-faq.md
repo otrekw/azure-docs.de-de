@@ -11,16 +11,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 11/13/2019
+ms.date: 02/12/2021
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 9d476b1db645ed1f91b62fcf11464f7077a8fb3c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e34fbdca51e7680a80c768e49bae891cb56dfa9d
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491425"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546447"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Pushbenachrichtigungen mit Azure Notification Hubs: Häufig gestellte Fragen
 
@@ -102,6 +102,10 @@ Die Zustellung von Benachrichtigungen durch den PNS wird nicht per SLA garantier
 ### <a name="is-there-any-latency-guarantee"></a>Gibt es garantierte Latenzzeiten?
 
 Da Pushbenachrichtigungen von einem externen, plattformspezifischen PNS übermittelt werden, können keine Latenzzeiten garantiert werden. Die Mehrzahl der Pushbenachrichtigungen wird jedoch innerhalb weniger Minuten zugestellt.
+
+### <a name="where-does-azure-notification-hubs-store-data"></a>Wo werden die Daten von Azure Notification Hubs gespeichert?
+
+In Azure Notification Hubs werden Kundenregistrierungsdaten in der Region gespeichert, die vom Kunden ausgewählt wurde. Notification Hubs bietet eine Notfallwiederherstellung der Metadaten (Notification Hubs-Name, Verbindungszeichenfolge und andere wichtige Informationen). Für alle Regionen mit Ausnahme von „Brasilien, Süden“ und „Asien, Südosten“ wird die Metadatensicherung in einer anderen Region gehostet (normalerweise in der anderen Region des Azure-Regionspaars). Für die Regionen „Brasilien, Süden“ und „Asien, Südosten“ werden Datenbanksicherungen in derselben Region gespeichert, um die Anforderungen an die Datenresidenz für diese Regionen zu erfüllen.
 
 ### <a name="what-do-i-need-to-consider-when-designing-a-solution-with-namespaces-and-notification-hubs"></a>Welche Aspekte müssen beim Entwerfen einer Lösung mit Namespaces und Notification Hubs berücksichtigt werden?
 

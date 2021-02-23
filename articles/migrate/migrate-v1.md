@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 4fda6c51121838bfa1f3624759b1230d8554d573
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 00e44185c938c94903e9b85a4748906721dac27f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753942"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571699"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Arbeiten mit der vorherigen Version von Azure Migrate
 
@@ -22,7 +22,7 @@ Dieser Artikel enthält Informationen zum Arbeiten mit der vorherigen Version vo
 Es sind zwei Versionen des Azure Migrate-Diensts verfügbar:
 
 - **Aktuelle Version**: Verwenden Sie diese Version, um Azure Migrate-Projekte zu erstellen, lokale Computer zu ermitteln und Bewertungen und Migrationen zu orchestrieren. [Erfahren Sie mehr](whats-new.md) über die Neuerungen in dieser Version.
-- **Vorherige Version**: Wenn Sie zurzeit die Vorgängerversion von Azure Migrate verwenden (es wird nur die Bewertung von lokalen VMware-VMs unterstützt), sollten Sie ab sofort die aktuelle Version verwenden. Die Projekte der Vorgängerversion werden in diesem Artikel als „klassische“ Projekte bezeichnet. Wenn Sie noch immer Azure Migrate-Projekte verwenden müssen, die in der vorherigen Version erstellt wurden, sind die folgenden Vorgänge möglich bzw. nicht möglich:
+- **Vorherige Version**: Wenn Sie zurzeit die Vorgängerversion von Azure Migrate verwenden (es wird nur die Bewertung von lokalen VMware-VMs unterstützt), sollten Sie ab sofort die aktuelle Version verwenden. Die Projekte der Vorgängerversion werden in diesem Artikel als „klassische“ Projekte bezeichnet. Die klassische Version von Azure Migrate wird im Februar 2024 eingestellt. Ab Februar 2024 wird die klassische Version von Azure Migrate nicht mehr unterstützt, und die Bestandsmetadaten in klassischen Projekten werden gelöscht. Wenn Sie trotzdem klassische Azure Migrate-Projekte verwenden müssen, sind die folgenden Vorgänge möglich bzw. nicht möglich:
     - Migrationsprojekte können nicht mehr erstellt werden.
     - Es wird empfohlen, keine neuen Ermittlungen auszuführen.
     - Sie können weiterhin auf vorhandene Projekte zugreifen.
@@ -210,14 +210,14 @@ Wenn Sie Abhängigkeitsvisualisierung verwenden möchten, ordnen Sie einen Log A
 1. Um einem Projekt einen Log Analytics-Arbeitsbereich anzufügen, klicken Sie unter **Übersicht** > **Zusammenfassung** auf **Erfordert Konfiguration**.
 2. Sie können einen neuen Arbeitsbereich erstellen oder einen vorhandenen Arbeitsbereich anfügen:
   - Um einen neuen Arbeitsbereich zu erstellen, geben Sie einen Namen an. Der Arbeitsbereich wird in einer Region in derselben [Azure-Geografie](https://azure.microsoft.com/global-infrastructure/geographies/) erstellt, in der auch das Migrationsprojekt erstellt wurde.
-  - Wenn Sie einen vorhandenen Arbeitsbereich anfügen, können Sie zwischen allen verfügbaren Arbeitsbereichen im selben Abonnement wie das Migrationsprojekt auswählen. Nur die Arbeitsbereiche werden aufgeführt, die in einer [unterstützten Dienstzuordnungsregion](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions) erstellt wurden. Um einen Arbeitsbereich anzufügen, stellen Sie sicher, dass Sie Lesezugriff auf den Arbeitsbereich besitzen.
+  - Wenn Sie einen vorhandenen Arbeitsbereich anfügen, können Sie zwischen allen verfügbaren Arbeitsbereichen im selben Abonnement wie das Migrationsprojekt auswählen. Nur die Arbeitsbereiche werden aufgeführt, die in einer [unterstützten Dienstzuordnungsregion](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions) erstellt wurden. Um einen Arbeitsbereich anzufügen, stellen Sie sicher, dass Sie Lesezugriff auf den Arbeitsbereich besitzen.
 
 > [!NOTE]
 > Den einem Migrationsprojekt zugeordneten Arbeitsbereich können Sie nicht ändern.
 
 ### <a name="download-and-install-vm-agents"></a>Herunterladen und Installieren von VM-Agents
 
-Nach dem Konfigurieren eines Arbeitsbereichs müssen Sie auf allen lokalen Computern, für die Sie eine Bewertung durchführen möchten, Agents herunterladen und installieren. Falls Sie über Computer ohne Internetverbindung verfügen, ist es außerdem erforderlich, dafür das [Log Analytics-Gateway](../azure-monitor/platform/gateway.md) herunterzuladen und zu installieren.
+Nach dem Konfigurieren eines Arbeitsbereichs müssen Sie auf allen lokalen Computern, für die Sie eine Bewertung durchführen möchten, Agents herunterladen und installieren. Falls Sie über Computer ohne Internetverbindung verfügen, ist es außerdem erforderlich, dafür das [Log Analytics-Gateway](../azure-monitor/agents/gateway.md) herunterzuladen und zu installieren.
 
 1. Klicken Sie unter **Übersicht** auf **Verwalten** > **Computer**, und wählen Sie den gewünschten Computer aus.
 2. Klicken Sie in der Spalte **Abhängigkeiten** auf **Agents installieren**.
@@ -238,7 +238,7 @@ Gehen Sie wie folgt vor, um den Agent auf einem Windows-Computer zu installieren
 4. Wählen Sie unter **Agent-Setupoptionen** die Optionen **Azure Log Analytics** > **Weiter**.
 5. Klicken Sie auf **Hinzufügen**, um einen neuen Log Analytics-Arbeitsbereich hinzuzufügen. Fügen Sie die Arbeitsbereichs-ID und den dazugehörigen Schlüssel ein, die bzw. den Sie im Portal kopiert haben. Klicken Sie auf **Weiter**.
 
-Sie können den Agent über die Befehlszeile oder mithilfe einer automatisierten Methode wie Configuration Manager installieren. [Weitere Informationen](../azure-monitor/platform/log-analytics-agent.md#installation-options) zur Verwendung dieser Methoden zum Installieren des MMA-Agent.
+Sie können den Agent über die Befehlszeile oder mithilfe einer automatisierten Methode wie Configuration Manager installieren. [Weitere Informationen](../azure-monitor/agents/log-analytics-agent.md#installation-options) zur Verwendung dieser Methoden zum Installieren des MMA-Agent.
 
 #### <a name="install-the-mma-agent-on-a-linux-machine"></a>Installieren des MMA-Agents auf einem Linux-Computer
 
@@ -249,11 +249,11 @@ Gehen Sie wie folgt vor, um einen Agent auf einem Linux-Computer zu installieren
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[Erfahren Sie mehr](../azure-monitor/platform/agents-overview.md#supported-operating-systems) über die Liste der Unterstützungen durch den MMA für Linux-Betriebssysteme.
+[Erfahren Sie mehr](../azure-monitor/agents/agents-overview.md#supported-operating-systems) über die Liste der Unterstützungen durch den MMA für Linux-Betriebssysteme.
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Installieren des MMA-Agents auf einem Computer, der von Operations Manager überwacht wird
 
-Bei Computern, die von System Center Operations Manager 2012 R2 oder höher überwacht werden, besteht keine Notwendigkeit den MMA-Agent zu installieren. Die Dienstzuordnung wird in den MMA von Operations Manager integriert, um die erforderlichen Abhängigkeitsdaten zu erfassen. [Weitere Informationen](../azure-monitor/insights/service-map-scom.md#prerequisites) Der Abhängigkeits-Agent muss installiert werden.
+Bei Computern, die von System Center Operations Manager 2012 R2 oder höher überwacht werden, besteht keine Notwendigkeit den MMA-Agent zu installieren. Die Dienstzuordnung wird in den MMA von Operations Manager integriert, um die erforderlichen Abhängigkeitsdaten zu erfassen. [Weitere Informationen](../azure-monitor/vm/service-map-scom.md#prerequisites) Der Abhängigkeits-Agent muss installiert werden.
 
 ### <a name="install-the-dependency-agent"></a>Installieren des Abhängigkeits-Agents
 
@@ -262,8 +262,8 @@ Bei Computern, die von System Center Operations Manager 2012 R2 oder höher übe
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- Erfahren Sie mehr zur [Unterstützung des Dependency-Agents](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) für die Betriebssysteme Windows und Linux.
-- [Erfahren Sie mehr](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent) darüber, wie Sie den Dependency-Agent mithilfe von Skripts installieren können.
+- Erfahren Sie mehr zur [Unterstützung des Dependency-Agents](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) für die Betriebssysteme Windows und Linux.
+- [Erfahren Sie mehr](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent) darüber, wie Sie den Dependency-Agent mithilfe von Skripts installieren können.
 
 >[!NOTE]
 > Der angegebene Artikel zu Azure Monitor für VMs enthält eine Übersicht über die Systemvoraussetzungen und die Methoden zur Bereitstellung des Dependency-Agents und gilt auch für die Dienstzuordnungslösung.
@@ -298,7 +298,7 @@ Nach der Erstellung der Gruppe wird empfohlen, alle Agents auf sämtlichen Compu
 
 ## <a name="query-dependency-data-from-azure-monitor-logs"></a>Abfragen von Abhängigkeitsdaten aus Azure Monitor-Protokollen
 
-Von der Dienstzuordnung erfasste Abhängigkeitsdaten stehen zur Abfrage im Log Analytics-Arbeitsbereich zur Verfügung, der Ihrem Azure Migrate-Projekt zugeordnet ist. [Erfahren Sie mehr](../azure-monitor/insights/service-map.md#log-analytics-records) über die Dienstzuordnungs-Datentabellen, die in Azure Monitor-Protokollen abgefragt werden sollen. 
+Von der Dienstzuordnung erfasste Abhängigkeitsdaten stehen zur Abfrage im Log Analytics-Arbeitsbereich zur Verfügung, der Ihrem Azure Migrate-Projekt zugeordnet ist. [Erfahren Sie mehr](../azure-monitor/vm/service-map.md#log-analytics-records) über die Dienstzuordnungs-Datentabellen, die in Azure Monitor-Protokollen abgefragt werden sollen. 
 
 So führen Sie die Kusto-Abfragen aus:
 
@@ -308,15 +308,15 @@ So führen Sie die Kusto-Abfragen aus:
 4. Schreiben Sie Ihre Abfrage, um mit Azure Monitor-Protokollen Abhängigkeitsdaten zu sammeln. Beispielabfragen finden Sie im nächsten Abschnitt.
 5. Führen Sie Ihre Abfrage aus, indem Sie auf „Ausführen“ klicken. 
 
-[Erfahren Sie mehr](../azure-monitor/log-query/log-analytics-tutorial.md) über das Schreiben von Kusto-Abfragen. 
+[Erfahren Sie mehr](../azure-monitor/logs/log-analytics-tutorial.md) über das Schreiben von Kusto-Abfragen. 
 
 ### <a name="sample-azure-monitor-logs-queries"></a>Beispielabfragen für Azure Monitor-Protokolle
 
-Nachfolgend finden Sie Beispielabfragen, mit denen Sie Abhängigkeitsdaten extrahieren können. Sie können die Abfragen ändern, um Ihre bevorzugten Datenpunkte zu extrahieren. Eine vollständige Liste der Felder in Abhängigkeitsdatensätzen ist [hier](../azure-monitor/insights/service-map.md#log-analytics-records) verfügbar. Weitere Beispielabfragen finden Sie [hier](../azure-monitor/insights/service-map.md#sample-log-searches).
+Nachfolgend finden Sie Beispielabfragen, mit denen Sie Abhängigkeitsdaten extrahieren können. Sie können die Abfragen ändern, um Ihre bevorzugten Datenpunkte zu extrahieren. Eine vollständige Liste der Felder in Abhängigkeitsdatensätzen ist [hier](../azure-monitor/vm/service-map.md#log-analytics-records) verfügbar. Weitere Beispielabfragen finden Sie [hier](../azure-monitor/vm/service-map.md#sample-log-searches).
 
 #### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>Zusammenfassen von eingehenden Verbindungen in einer Gruppe von Computern
 
-Die Datensätze in der Tabelle für Verbindungsmetriken „VMConnection“ stellen keine einzelnen physischen Netzwerkverbindungen dar. Mehrere physische Netzwerkverbindungen werden in einer logischen Verbindung gruppiert. Weitere Informationen dazu, wie Daten von physischen Netzwerkverbindungen in einem einzelnen logischen Datensatz in VMConnection aggregiert werden, finden Sie [hier](../azure-monitor/insights/service-map.md#connections). 
+Die Datensätze in der Tabelle für Verbindungsmetriken „VMConnection“ stellen keine einzelnen physischen Netzwerkverbindungen dar. Mehrere physische Netzwerkverbindungen werden in einer logischen Verbindung gruppiert. Weitere Informationen dazu, wie Daten von physischen Netzwerkverbindungen in einem einzelnen logischen Datensatz in VMConnection aggregiert werden, finden Sie [hier](../azure-monitor/vm/service-map.md#connections). 
 
 ```
 // the machines of interest

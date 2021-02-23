@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2020
 ms.author: kumud
-ms.openlocfilehash: 54228ac0aa582d15509fbf967728364841e52453
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: d591194f09e85c3e34ed4b904249df994a14bff5
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220574"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558585"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Hinzufügen, Ändern oder Löschen von Subnetzen virtueller Netzwerke
 
@@ -81,7 +81,7 @@ Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindun
     | Einstellung | BESCHREIBUNG |
     | --- | --- |
     | **Adressbereich** | Wenn innerhalb des Subnetzes keine Ressourcen bereitgestellt sind, können Sie den Adressbereich ändern. Wenn Ressourcen im Subnetz vorhanden sind, müssen Sie die Ressourcen zuerst entweder in ein anderes Subnetz verschieben oder aus dem Subnetz löschen. Die Schritte zum Verschieben oder Löschen einer Ressource variieren abhängig von der Ressource. Informationen zum Verschieben oder Löschen von Ressourcen in Subnetzen finden Sie in der Dokumentation zum jeweiligen Ressourcentyp. Die Einschränkungen für den **Adressbereich** finden Sie in Schritt 4 von [Hinzufügen eines Subnetzes](#add-a-subnet). |
-    | **Benutzer** | Sie können den Zugriff auf das Subnetz über integrierte Rollen oder eigene benutzerdefinierte Rollen steuern. Weitere Informationen zum Zuweisen von Rollen und Benutzern für den Zugriff auf das Subnetz finden Sie unter [Hinzufügen einer Rollenzuweisung](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment). |
+    | **Benutzer** | Sie können den Zugriff auf das Subnetz über integrierte Rollen oder eigene benutzerdefinierte Rollen steuern. Weitere Informationen zum Zuweisen von Rollen und Benutzern für den Zugriff auf das Subnetz finden Sie unter [Zuweisen von Azure-Rollen](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). |
     | **Netzwerksicherheitsgruppe** und **Routingtabelle** | Siehe Schritt 4 unter [Hinzufügen eines Subnetzes](#add-a-subnet). |
     | **Dienstendpunkte** | <p>Siehe „Dienstendpunkte“ Schritt 4 von [Hinzufügen eines Subnetzes](#add-a-subnet). Wenn Sie einen Dienstendpunkt für ein vorhandenes Subnetz aktivieren, stellen Sie sicher, dass auf keiner Ressource im Subnetz kritische Tasks ausgeführt werden. Dienstendpunkte ändern die Routen jeder Netzwerkschnittstelle im Subnetz. Dienstendpunkte wechseln von der Standardroute mit dem Adresspräfix *0.0.0.0/0* und *Internet* als Typ des nächsten Hops zu einer neuen Route mit dem Adresspräfix des Diensts und *VirtualNetworkServiceEndpoint* als Typ des nächsten Hops.</p><p>Während dieses Wechsels werden alle offenen TCP-Verbindungen geschlossen. Der Dienstendpunkt wird erst aktiviert, wenn der gesamte Datenverkehr an den Dienst in allen Netzwerkschnittstellen mit der neuen Route aktualisiert wurde. Weitere Informationen zum Routing finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](virtual-networks-udr-overview.md).</p> |
     | **Subnetzdelegierung** | Siehe „Dienstendpunkte“ Schritt 4 von [Hinzufügen eines Subnetzes](#add-a-subnet). Die Subnetzdelegierung kann so geändert werden, dass dafür null oder mehr Delegierungen aktiviert sind. Wenn im Subnetz bereits eine Ressource für einen Dienst bereitgestellt ist, kann Subnetzdelegierung erst hinzugefügt oder entfernt werden, nachdem alle Ressourcen für den Dienst entfernt wurden. Wählen Sie in der Liste **Dienste** den Dienst aus, der als neues Ziel für die Delegierung fungieren soll. |

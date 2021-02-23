@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: f76a05757f86308785d4ca678675b87b3fa9d63e
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: db3954b0368392d63680a8d92f13d6a0423e8ef5
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550481"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526866"
 ---
 # <a name="troubleshoot-your-connections-in-azure-purview"></a>Problembehandlung für Ihre Verbindungen in Azure Purview
 
@@ -53,7 +53,10 @@ Vergewissern Sie sich, dass zum Zugreifen auf Ihre Azure Key Vault-Instanz die r
 Führen Sie die folgenden Schritte aus, um dies zu überprüfen:
 
 1. Navigieren Sie zu Ihrem Schlüsseltresor und dann zum Abschnitt **Zugriffsrichtlinien**.
-1. Vergewissern Sie sich, dass für Ihre verwaltete Purview-Identität im Abschnitt *Aktuelle Zugriffsrichtlinien* mindestens die Berechtigung zum Abrufen (**Get**) von Geheimnissen angezeigt wird.
+
+1. Vergewissern Sie sich, dass für Ihre verwaltete Purview-Identität im Abschnitt *Aktuelle Zugriffsrichtlinien* mindestens die Berechtigung zum Abrufen (**Get**) und Auflisten (**List**) von Geheimnissen angezeigt wird.
+
+   :::image type="content" source="./media/troubleshoot-connections/verify-minimum-permissions.png" alt-text="Abbildung der Dropdownliste zum Auswählen der Berechtigungen „Get“ und „List“":::
 
 Falls Ihre verwaltete Purview-Identität nicht aufgeführt ist, sollten Sie die Schritte unter [Anmeldeinformationen für die Quellenauthentifizierung in Azure Purview](manage-credentials.md) ausführen, um sie hinzuzufügen. 
 

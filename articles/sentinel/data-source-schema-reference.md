@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: reference
 ms.custom: ''
 ms.date: 01/14/2021
-ms.openlocfilehash: 32ec711309190d4bb7c6c98a05b6a75cf88a8f5c
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b5d53ec6c6a8002c72a53d6928d56e55d520ef38
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920489"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390826"
 ---
 # <a name="data-source-schema-reference"></a>Referenz zum Datenquellenschema
 
@@ -37,6 +37,9 @@ In diesem Artikel werden die unterstützten Datenquellenschemas von Azure und Dr
 | **Network**                          | NSG-Flussprotokolle          | AzureNetworkAnalytics  | [Schema und Datenaggregation in Traffic Analytics](/azure/network-watcher/traffic-analytics-schema) |
 | | | | |
 
+> [!NOTE]
+> Weitere Informationen finden Sie in der gesamten [Azure Monitor-Datenreferenz](/azure/azure-monitor/reference/).
+>
 ## <a name="3rd-party-vendor-data-sources"></a>Drittanbieter-Datenquellen
 
 In der folgenden Tabelle sind die unterstützten Drittanbieter und deren Dokumentation zur Syslog- oder CEF-Zuordnung (Common Event Format) für verschiedene unterstützte Protokolltypen aufgeführt. Dies umfasst auch CEF-Feldzuordnungen und Beispielprotokolle für jeden Kategorietyp.

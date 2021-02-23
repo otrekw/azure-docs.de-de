@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 91421b66af441ed2c7e9c8b66c16ee83f489b03e
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: d838425583638aef5199b52df4869923c826553d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538501"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369967"
 ---
 # <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Ressourcenmodell für das Feature „Zeitpunktwiederherstellung“ von Azure Cosmos DB (Vorschau)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -30,14 +30,14 @@ Das Ressourcenmodell des Datenbankkontos wird mit einigen zusätzlichen Eigensch
 
 ### <a name="backuppolicy"></a>BackupPolicy
 
-Eine neue Eigenschaft in der Sicherungsrichtlinie auf Kontoebene mit dem Namen „Type“ unter dem Parameter „backuppolicy“ aktiviert die Funktionen „Fortlaufende Sicherung“ „Zeitpunktwiederherstellung“. Dieser Modus wird als **fortlaufende Sicherung** bezeichnet. In der öffentlichen Vorschau können Sie diesen Modus nur beim Erstellen des Kontos festlegen. Nachdem er aktiviert wurde, sind bei allen in diesem Konto erstellten Container und Datenbanken die Funktionen „Fortlaufende Sicherung“ und „Zeitpunktwiederherstellung“ standardmäßig aktiviert.
+Eine neue Eigenschaft in der Sicherungsrichtlinie auf Kontoebene mit dem Namen `Type` unter dem `backuppolicy`-Parameter aktiviert die Funktionen „Fortlaufende Sicherung“ „Zeitpunktwiederherstellung“. Dieser Modus wird als **fortlaufende Sicherung** bezeichnet. In der öffentlichen Vorschau können Sie diesen Modus nur beim Erstellen des Kontos festlegen. Nachdem er aktiviert wurde, sind bei allen in diesem Konto erstellten Container und Datenbanken die Funktionen „Fortlaufende Sicherung“ und „Zeitpunktwiederherstellung“ standardmäßig aktiviert.
 
 > [!NOTE]
 > Das Feature „Zeitpunktwiederherstellung“ befindet sich zurzeit in der öffentlichen Vorschau und steht für Azure Cosmos DB-API für MongoDB- und SQL-Konten zur Verfügung. Nachdem Sie ein Konto mit fortlaufendem Modus erstellt haben, können Sie es nicht auf einen regelmäßigen Modus umstellen.
 
 ### <a name="createmode"></a>CreateMode
 
-Diese Eigenschaft gibt an, wie das Konto erstellt wurde. Die möglichen Werte sind „Default“ (Standard) und „Restore“ (Wiederherstellen). Legen Sie diesen Wert zum Ausführen einer Wiederherstellung auf „Restore“ fest, und geben Sie die entsprechenden Werte in der Eigenschaft `RestoreParameters` an.
+Diese Eigenschaft gibt an, wie das Konto erstellt wurde. Die möglichen Werte sind *Default* (Standard) und *Restore* (Wiederherstellen). Legen Sie diesen Wert zum Ausführen einer Wiederherstellung auf *Restore* fest, und geben Sie die entsprechenden Werte in der `RestoreParameters`-Eigenschaft an.
 
 ### <a name="restoreparameters"></a>RestoreParameters
 
@@ -45,7 +45,7 @@ Die Ressource `RestoreParameters` enthält die Details zum Wiederherstellungsvor
 
 |Eigenschaftenname |BESCHREIBUNG  |
 |---------|---------|
-|restoreMode  | Der Wiederherstellungsmodus sollte „PointInTime“ lauten. |
+|restoreMode  | Der Wiederherstellungsmodus sollte *PointInTime* lauten. |
 |restoreSource   |  Die InstanceId des Quellkontos, aus dem die Wiederherstellung eingeleitet wird.       |
 |restoreTimestampInUtc  | Die Zeit in UTC (koordinierte Weltzeit), zu der das Konto wiederhergestellt werden soll. |
 |databasesToRestore   | Eine Liste von `DatabaseRestoreSource`-Objekten zur Angabe, welche Datenbanken und Container wiederhergestellt werden sollen. Wenn dieser Wert leer ist, wird das gesamte Konto wiederhergestellt.   |

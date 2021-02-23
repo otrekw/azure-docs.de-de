@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2020
+ms.date: 02/15/2021
 ms.author: memildin
-ms.openlocfilehash: 519285f2bad352aa16bdc8d9a1db7a63c2eb04e5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5a0fefd91e0aa60f6a3813513aa82a75b3557c7c
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876392"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526968"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Schützen Sie Ihre Endpunkte mit der in Security Center integrierten EDR-Lösung: Microsoft Defender für den Endpunkt
 
@@ -43,12 +43,11 @@ Microsoft Defender für den Endpunkt ist eine ganzheitliche, cloudbasierte Lösu
 | Status des Release:                  | Allgemein verfügbar (Generally Available, GA)                                                                                                                                                                                                                                                                                      |
 | Preise:                        | Erfordert [Azure Defender für Server](security-center-pricing.md)                                                                                                                                                                                                                                             |
 | Unterstützte Plattformen:            | Azure-Computer unter Windows<br>Azure Arc-Computer unter Windows|
-| Unterstützte Windows-Versionen:  |  • Security Center unterstützt die Erkennung unter Windows Server 2016, 2012 R2 und 2008 R2 SP1.<br> • Die Serverendpunktüberwachung, die diese Integration verwendet, wurde für Office 365-GCC-Kunden deaktiviert.|
-| Nicht unterstützte Betriebssysteme:  |  • Windows Server 2019<br> • Windows 10<br> • Linux|
+| Unterstützte Windows-Versionen:  |  • Security Center unterstützt die Erkennung unter Windows Server 2019, 2016, 2012 R2 und 2008 R2 SP1.<br> • Die Serverendpunktüberwachung, die diese Integration verwendet, wurde für Office 365-GCC-Kunden deaktiviert.<br> • [Windows 10 Enterprise Multi-Session](../virtual-desktop/windows-10-multisession-faq.md) (ehemals Enterprise for Virtual Desktops (EVD))<br> • [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)|
+| Nicht unterstützte Betriebssysteme:  |  • Windows 10 (außer EVD und WVD)<br> • Linux|
 | Erforderliche Rollen und Berechtigungen: | So aktivieren/deaktivieren Sie die Integration: **Sicherheitsadministrator** oder **Besitzer**<br>So zeigen Sie MDATP-Warnungen in Security Center an: **Sicherheitsleseberechtigter**, **Leser**, **Ressourcengruppenmitwirkender**, **Ressourcengruppenbesitzer**, **Sicherheitsadministrator**, **Abonnementbesitzer** oder **Abonnementmitwirkender**|
 | Clouds:                         | ![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nein](./media/icons/no-icon.png) China Gov/andere Gov-Clouds<br>![Nein](./media/icons/no-icon.png) GCC-Kunden, die Workloads in globalen Azure-Clouds ausführen                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
-
 
 ## <a name="microsoft-defender-for-endpoint-features-in-security-center"></a>Features von Microsoft Defender für den Endpunkt in Security Center
 
@@ -62,7 +61,7 @@ Microsoft Defender für den Endpunkt bietet folgende Features:
 
 Durch die Integration von Defender für den Endpunkt in Security Center können Sie von den folgenden zusätzlichen Funktionen profitieren:
 
-- **Automatisiertes Onboarding**. Security Center aktiviert automatisch den Sensor von Microsoft Defender für Endpunkte für alle Windows-Server, die von Security Center überwacht werden. Dies gilt nicht für Server, auf denen Windows Server 2019 ausgeführt wird. Für diese muss über ein lokales Skript, ein Gruppenrichtlinienobjekt (Group Policy Object, GPO) oder [Microsoft Endpoint Configuration Manager](/mem/configmgr/) (früher SCCM) ein Onboarding durchgeführt werden.
+- **Automatisiertes Onboarding**. Security Center aktiviert automatisch den Sensor von Microsoft Defender für Endpunkte für alle Windows-Server, die von Security Center überwacht werden.
 
 - **Zentralisierte Benutzeroberfläche**. Die Security Center-Konsole zeigt Warnungen aus Microsoft Defender für den Endpunkt an. Zur weiteren Untersuchung verwenden Sie die speziellen Portalseiten von Microsoft Defender für den Endpunkt, auf denen Sie zusätzliche Informationen wie die Warnungsprozessstruktur und das Incidentdiagramm finden. Sie können auch eine detaillierte Computerzeitachse verwenden, die jedes Verhalten über einen historischen Zeitraum von bis zu sechs Monaten anzeigt.
 

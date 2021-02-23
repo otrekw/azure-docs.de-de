@@ -1,23 +1,18 @@
 ---
 title: Hochverfügbarkeit mit Datenverwaltungsgateway in Azure Data Factory
 description: In diesem Artikel wird beschrieben, wie Sie ein Datenverwaltungsgateway aufskalieren können, indem Sie mehr Knoten hinzufügen. Außerdem erfahren Sie, wie Sie das Hochskalieren durchführen, indem Sie die Anzahl von gleichzeitigen Aufträgen erhöhen, die für einen Knoten ausgeführt werden können.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b8d05293359cff16bb6d8c9a629a1fbf68104365
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ad34ed14682d729157f45e67eb3e0d3bb3eb39b7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003615"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391727"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit (Vorschauversion)
 > [!NOTE]
@@ -98,7 +93,7 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie die beiden folgenden Artike
         > Der Abschnitt [TLS/SSL-Zertifikatanforderungen](#tlsssl-certificate-requirements) enthält eine Liste mit Anforderungen zur Verwendung eines TLS/SSL-Zertifikats. 
     5. Klicken Sie auf „Konfigurations-Manager starten“, nachdem das Gateway erfolgreich installiert wurde:
     
-        ![Manuelles Setup – Konfigurations-Manager starten](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)   
+        ![Manuelles Setup – Konfigurations-Manager starten](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)     
     6. Der Konfigurations-Manager für das Datenverwaltungsgateway auf dem Knoten (lokaler Windows-Computer) mit dem Verbindungsstatus, **Gatewaynamen** und **Knotennamen** wird angezeigt.  
 
         ![Datenverwaltungsgateway – Installation erfolgreich](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
@@ -200,7 +195,7 @@ Role | Es gibt zwei Arten von Rollen: „Verteiler“ und „Worker“. Alle Kno
 
 Die folgende Tabelle enthält die möglichen Status eines **Gatewayknotens**: 
 
-Status  | Kommentare/Szenarien
+Status    | Kommentare/Szenarien
 :------- | :------------------
 Online | Knoten, der mit dem Data Factory-Dienst verbunden ist.
 Offline | Knoten ist offline.
@@ -246,7 +241,7 @@ Wenn die Auslastung des verfügbaren Arbeitsspeichers und der CPU nicht hoch ist
 - Sie können ein Gatewayknoten nicht auf einem logischen Gateway registrieren, wenn die Knotenversion niedriger als die Version des logischen Gateways ist. Löschen Sie alle Knoten des logischen Gateways aus dem Portal, damit Sie einen Knoten mit einer niedrigeren Version registrieren können (Downgrade). Wenn Sie alle Knoten eines logischen Gateways löschen, müssen Sie auf diesem logischen Gateway neue Knoten manuell installieren und registrieren. Das Express-Setup wird in diesem Fall nicht unterstützt.
 - Sie können das Express-Setup nicht nutzen, um Knoten auf einem vorhandenen logischen Gateway zu installieren, für das noch Cloudanmeldeinformationen verwendet werden. Im Gatewaykonfigurations-Manager auf der Registerkarte „Einstellungen“ können Sie prüfen, wo die Anmeldeinformationen gespeichert sind.
 - Es ist nicht möglich, das Express-Setup zum Installieren eines vorhandenen logischen Gateways zu verwenden, für das die Verschlüsselung von Knoten zu Knoten aktiviert ist. Da das Festlegen des Verschlüsselungsmodus das manuelle Hinzufügen von Zertifikaten umfasst, ist die Expressinstallation keine Option mehr. 
-- Für einen Dateikopiervorgang aus der lokalen Umgebung sollten Sie „\\localhost“ oder „C:\files“ nicht mehr verwenden, da „localhost“ oder das lokale Laufwerk unter Umständen nicht über alle Knoten zugänglich ist. Verwenden Sie stattdessen „\\ServerName\files“, um den Speicherort der Dateien anzugeben.
+- Für einen Dateikopiervorgang aus der lokalen Umgebung sollten Sie „\\localhost“ oder „C:\files“ nicht mehr verwenden, da „localhost“ oder das lokale Laufwerk unter Umständen nicht über alle Knoten zugänglich ist. Verwenden Sie stattdessen „\\<Servername>\files“, um den Speicherort der Dateien anzugeben.
 
 
 ## <a name="rolling-back-from-the-preview"></a>Rollback der Vorschauversion 

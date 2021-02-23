@@ -5,15 +5,14 @@ author: ssabat
 ms.author: susabat
 ms.reviewer: susabat
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: e5e1a4ff676a6677357638dc4b67dc94926adbd2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 091c0cb20877090453f38ab922cc2bd277e90093
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556306"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393750"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Beheben von CI/CD-, Azure DevOps- und GitHub-Problemen in ADF 
 
@@ -78,14 +77,14 @@ Bei der CI/CD-Releasepipeline tritt der folgende Fehler auf:
 
 #### <a name="cause"></a>Ursache
 
-Dies liegt an einer Integration Runtime, die in der Zielfactory denselben Namen, aber einen anderen Typ aufweist. Die Integration Runtime muss bei der Bereitstellung denselben Typ aufweisen.
+Dies liegt an einer Integration Runtime, die in der Zielfactory den gleichen Namen, aber einen anderen Typ aufweist. Die Integration Runtime muss bei der Bereitstellung denselben Typ aufweisen.
 
 #### <a name="recommendation"></a>Empfehlung
 
 - Sehen Sie sich die folgenden Best Practices für CI/CD an:
 
     https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd 
-- Integration Runtimes ändern sich nicht häufig und sind in allen CI/CD-Phasen gleich. Daher erwartet Data Factory, dass Sie in allen Phasen von CI/CD eine Integration Runtime mit demselben Namen und demselben Typ verwenden. Wenn die Namen, Typen und Eigenschaften sich unterscheiden, stellen Sie sicher, dass Sie die Quell- und Zielkonfigurationen der Integration Runtime abgleichen, und stellen Sie erst dann die Releasepipeline bereit.
+- Integration Runtimes ändern sich nicht häufig und sind in allen CI/CD-Phasen gleich. Daher erwartet Data Factory, dass Sie in allen Phasen von CI/CD eine Integration Runtime mit demselben Namen und demselben Typ verwenden. Wenn sich die Namen, Typen und Eigenschaften unterscheiden, sollten Sie sicherstellen, dass Sie die Quell- und Zielkonfigurationen der Integration Runtime abgleichen und erst dann die Releasepipeline bereitstellen.
 - Wenn Sie Integration Runtimes über alle Stufen hinweg freigeben möchten, können Sie eine ternäre Factory verwenden, die nur die freigegebenen Integration Runtimes enthält. Diese freigegebene Factory können Sie in allen Umgebungen als verknüpften Integration Runtime-Typ verwenden.
 
 ### <a name="document-creation-or-update-failed-because-of-invalid-reference"></a>Fehler bei Dokumenterstellung oder -aktualisierung aufgrund eines ungültigen Verweises
@@ -133,7 +132,7 @@ Sie können Data Factory nicht von einer Ressourcengruppe in eine andere verschi
 
 #### <a name="resolution"></a>Lösung
 
-Sie müssen die SSIS-IR und die freigegebenen IRs löschen, um den Verschiebungsvorgang zuzulassen. Wenn Sie die IRs nicht löschen möchten, empfiehlt es sich, die Anweisungen im Dokument zum Kopieren und Klonen zu befolgen und anschließend die alte Data Factory zu löschen.
+Sie müssen die SSIS-IR und die freigegebenen IRs löschen, um den Verschiebungsvorgang zuzulassen. Wenn Sie die Integration Runtimes nicht löschen möchten, empfiehlt es sich, die Anweisungen im Dokument zum Kopieren und Klonen zu befolgen und anschließend die alte Data Factory zu löschen.
 
 ###  <a name="unable-to-export-and-import-arm-template"></a>Exportieren und Importieren von ARM-Vorlagen nicht möglich
 
@@ -150,6 +149,34 @@ Sie haben als Benutzer eine Kundenrolle erstellt und verfügten nicht über die 
 #### <a name="resolution"></a>Lösung
 
 Um dieses Problem zu lösen, müssen Sie Ihrer Rolle die folgende Berechtigung hinzufügen: *Microsoft.DataFactory/factories/queryFeaturesValue/action*. Diese Berechtigung sollte standardmäßig in der Rolle „Data Factory-Mitwirkender“ enthalten sein.
+
+###  <a name="automatic-publishing-for-cicd-without-clicking-publish-button"></a>Automatisches Veröffentlichen für CI/CD ohne Klick auf die Schaltfläche „Veröffentlichen“  
+
+#### <a name="issue"></a>Problem
+
+Beim manuellen Veröffentlichen per Klick auf die Schaltfläche im ADF-Portal wird der automatische CI/CD-Vorgang nicht aktiviert.
+
+#### <a name="cause"></a>Ursache
+
+Bis vor Kurzem war die einzige Möglichkeit zum Veröffentlichen einer ADF-Pipeline für Bereitstellungen das Klicken auf die Schaltfläche im ADF-Portal. Diesen Prozess können Sie nun automatisieren. 
+
+#### <a name="resolution"></a>Lösung
+
+Der CI/CD-Prozess wurde erweitert. Mit dem Feature **Automatisierte Veröffentlichung** werden alle ARM-Vorlagenfunktionen (Azure Resource Manager) aus der ADF-Benutzeroberfläche verwendet, überprüft und exportiert. Hierdurch kann die Logik über das öffentlich verfügbare npm-Paket [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) genutzt werden. So können Sie diese Aktionen programmgesteuert initiieren und müssen nicht zur ADF-Benutzeroberfläche wechseln und auf Schaltflächen klicken. So werden Ihre CI/CD-Pipelines zu **echten** Continuous Integration-Prozessen. Weitere Informationen finden Sie unter [Automatisiertes Veröffentlichen für Continuous Integration und Delivery](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment-improvements). 
+
+###  <a name="cannot-publish-because-of-4mb-arm-template-limit"></a>Veröffentlichung aufgrund von 4-MB-Grenzwert für ARM-Vorlagen nicht möglich  
+
+#### <a name="issue"></a>Problem
+
+Sie können die Bereitstellung nicht durchführen, weil Sie für Azure Resource Manager den Grenzwert von 4 MB für die Vorlagengesamtgröße erreicht haben. Sie benötigen eine Lösung für die Bereitstellung nach dem Erreichen dieses Grenzwerts. 
+
+#### <a name="cause"></a>Ursache
+
+Für Azure Resource Manager ist die Vorlagengröße auf 4 MB beschränkt. Begrenzen Sie die Größe der Vorlage auf 4 MB und die jeder Parameterdatei auf 64 KB. Die 4-MB-Beschränkung gilt für den endgültigen Status der Vorlage, nachdem sie durch iterative Ressourcendefinitionen und Werte für variables und Parameter erweitert wurde. Sie haben den Grenzwert aber überschritten. 
+
+#### <a name="resolution"></a>Lösung
+
+Bei kleinen bis mittelgroßen Lösungen lässt sich eine Einzelvorlage einfacher verstehen und verwalten. Sie können alle Ressourcen und Werte in einer einzelnen Datei anzeigen. In erweiterten Szenarien können Sie mithilfe verknüpfter Vorlagen die Lösung in Zielkomponenten unterteilen. Halten Sie sich an die bewährte Methode unter [Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/templates/linked-templates?tabs=azure-powershell).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

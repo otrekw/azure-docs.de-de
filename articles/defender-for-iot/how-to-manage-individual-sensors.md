@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie einzelne Sensoren verwalten. Dazu gehören da
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/12/2021
+ms.date: 02/02/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b35851bae8db39392d10a302d5f1059ba3ace696
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: c8bb44d323574f6815aa570b271ed4c0df1fc6be
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508759"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526917"
 ---
 # <a name="manage-individual-sensors"></a>Verwalten einzelner Sensoren
 
@@ -86,7 +86,7 @@ Sie erhalten eine Fehlermeldung, wenn die Aktivierungsdatei nicht hochgeladen we
 
 - **Mit der Cloud verbundene Sensoren**: Der Sensor kann keine Verbindung mit dem Internet herstellen. Überprüfen Sie die Netzwerkkonfiguration des Sensors. Wenn der Sensor für den Zugriff auf das Internet eine Verbindung über einen Webproxy herstellen muss, vergewissern Sie sich auf dem Bildschirm **Sensornetzwerkkonfiguration**, dass der Proxyserver ordnungsgemäß konfiguriert ist. Stellen Sie sicher, dass in der Firewall und/oder im Proxy „\*.azure-devices.net:443“ zulässig ist. Wenn keine Platzhalter unterstützt werden oder Sie mehr Kontrolle wünschen, sollte der FQDN für den spezifischen Defender für IoT-Hub in der Firewall und/oder dem Proxy geöffnet werden. Ausführliche Informationen finden Sie unter [Referenz: IoT Hub-Endpunkte](../iot-hub/iot-hub-devguide-endpoints.md).  
 
-- **Mit der Cloud verbundene Sensoren**: Die Aktivierungsdatei ist gültig, aber Defender für IoT hat sie abgelehnt. Wenn dieses Problem nicht behoben werden kann, können Sie eine andere Aktivierung von der Seite **Sensorverwaltung** im Defender für IoT-Portal herunterladen. Wenn das nicht funktioniert, wenden Sie sich an den Microsoft-Support.
+- **Mit der Cloud verbundene Sensoren**: Die Aktivierungsdatei ist gültig, aber Defender für IoT hat sie abgelehnt. Wenn dieses Problem nicht behoben werden kann, können Sie eine andere Aktivierung von der Seite „Standorte und Sensoren“ im Defender für IoT-Portal herunterladen. Wenn das nicht funktioniert, wenden Sie sich an den Microsoft-Support.
 
 ## <a name="manage-certificates"></a>Verwalten von Zertifikaten
 
@@ -114,7 +114,7 @@ Der Defender für IoT-Sensor und die lokale Verwaltungskonsole verwenden SSL- un
  
  - Sichere Kommunikation zwischen den Sensoren und einer lokalen Verwaltungskonsole. 
 
-Nach der Installation generiert die Appliance ein lokales selbstsigniertes Zertifikat, um den vorläufigen Zugriff auf die Webkonsole zuzulassen. Enterprise SSL- und TLS-Zertifikate können mithilfe des Befehlszeilentools [`cyberx-xsense-certificate-import`](#cli-commands) installiert werden. 
+Nach der Installation generiert die Appliance ein lokales selbstsigniertes Zertifikat, um den vorläufigen Zugriff auf die Webkonsole zuzulassen. Enterprise SSL- und TLS-Zertifikate können mithilfe des Befehlszeilentools [`cyberx-xsense-certificate-import`](#cli-commands) installiert werden.
 
  > [!NOTE]
  > Für Integrationen und Weiterleitungsregeln, bei denen es sich bei der Appliance um den Client und den Initiator der Sitzung handelt, werden spezifische Zertifikate verwendet, die nicht mit den Systemzertifikaten verknüpft sind.  
@@ -363,15 +363,23 @@ Wenn der Sensor als ein mit der Cloud verbundener Sensor registriert wurde, ist 
 
 So ändern Sie den Namen
 
-1. Navigieren Sie im Azure Defender für IoT-Portal zur Seite **Sensorverwaltung**.
+1. Navigieren Sie im Azure Defender für IoT-Portal zur Seite „Standorte und Sensoren“.
 
-1. Löschen Sie den Sensor aus dem Fenster **Sensorverwaltung**.
+1. Löschen Sie den Sensor auf der Seite „Standorte und Sensoren“.
 
-1. Führen Sie eine erneute Registrierung mit dem neuen Namen aus.
+1. Führen Sie die Registrierung mit dem neuen Namen durch, indem Sie auf der Seite „Erste Schritte“ die Option **Sensor integrieren** auswählen.
 
 1. Laden Sie die neue Aktivierungsdatei herunter.
 
-1. Melden Sie sich beim Sensor an, und laden Sie die neue Aktivierungsdatei hoch.
+1. Melden Sie sich bei der Sensorkonsole von Defender für IoT an.
+
+1. Wählen Sie in der Sensorkonsole **Systemeinstellungen** und dann **Reaktivierung** aus.
+
+   :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/reactivate.png" alt-text="Hochladen Ihrer Aktivierungsdatei zum erneuten Aktivieren des Sensors":::
+
+1. Wählen Sie **Hochladen** und dann die gespeicherte Datei aus.
+
+1. Wählen Sie **Aktivieren** aus.
 
 ## <a name="update-the-sensor-network-configuration"></a>Aktualisieren der Sensornetzwerkkonfiguration
 
@@ -387,7 +395,7 @@ Zum Ändern der Konfiguration gehen Sie folgendermaßen vor:
 
     :::image type="content" source="media/how-to-manage-individual-sensors/edit-network-configuration-screen.png" alt-text="Konfigurieren Ihrer Netzwerkeinstellungen":::
 
-3. Legen Sie die Parameter wie folgt fest:
+3. Legen Sie die Parameter fest:
 
     | Parameter | BESCHREIBUNG |
     |--|--|
@@ -458,7 +466,7 @@ So speichern Sie die Sicherung auf einem externen SMB-Server
 
     - `sudo chmod 777 /<backup_folder_name_on_cyberx_server>/`
 
-3. Bearbeiten Sie `fstab`: 
+3. Bearbeiten Sie `fstab`:
 
     - `sudo nano /etc/fstab`
 
@@ -526,7 +534,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie einen eigenständigen Sensor mi
 
     :::image type="content" source="media/how-to-manage-individual-sensors/defender-for-iot-version.png" alt-text="Screenshot der Upgradeversion, die nach der Anmeldung angezeigt wird":::
 
-## <a name="forward-sensor-failure-alerts"></a>Weiterleiten von Warnungen für Sensorfehler 
+## <a name="forward-sensor-failure-alerts"></a>Weiterleiten von Warnungen für Sensorfehler
 
 Sie können Warnungen an Dritte weiterleiten, um Details zu Folgendem bereitzustellen:
 

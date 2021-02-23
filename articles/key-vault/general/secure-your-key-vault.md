@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: ee1c59c71834ab9d80f1ed66a002e211bdcacbbf
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 552aad3e3b41bcfd55d1b57a53d8dff2080a6210
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796498"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534701"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Sicherer Zugriff auf einen Schlüsseltresor
 
@@ -26,7 +26,7 @@ Weitere Informationen zu Key Vault finden Sie unter [Informationen zu Azure Key 
 
 Der Zugriff auf einen Schlüsseltresor wird über zwei Schnittstellen gesteuert: die **Verwaltungsebene** und die **Datenebene**. Die Verwaltungsebene dient zum Verwalten des Schlüsseltresors selbst. Zu den Vorgängen in dieser Ebene gehören das Erstellen und Löschen von Schlüsseltresoren, das Abrufen von Schlüsseltresor-Eigenschaften und das Aktualisieren von Zugriffsrichtlinien. Auf der Datenebene arbeiten Sie mit den in einem Schlüsseltresor gespeicherten Daten. Sie können Schlüssel, Geheimnisse und Zertifikate hinzufügen, löschen und ändern.
 
-Für die Authentifizierung verwenden beide Ebenen [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md). Für die Autorisierung wird auf der Verwaltungsebene die [rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md) verwendet, während auf der Datenebene eine [Key Vault-Zugriffsrichtlinie](./assign-access-policy-portal.md) und [Azure RBAC für Key Vault-Vorgänge auf Datenebene (Vorschau)](./rbac-guide.md) zum Einsatz kommen.
+Für die Authentifizierung verwenden beide Ebenen [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md). Für die Autorisierung wird auf der Verwaltungsebene die [rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md) verwendet, während auf der Datenebene eine [Key Vault-Zugriffsrichtlinie](./assign-access-policy-portal.md) und [Azure RBAC für Key Vault-Vorgänge auf Datenebene](./rbac-guide.md) zum Einsatz kommen.
 
 Um auf einen Schlüsseltresor in beiden Ebenen zugreifen zu können, müssen alle Anrufe (Benutzer oder Anwendungen) über eine ordnungsgemäße Authentifizierung und Autorisierung verfügen. Die Authentifizierung stellt die Identität des Anrufers fest. Die Autorisierung bestimmt, welche Vorgänge der Aufrufer ausführen darf. Die Authentifizierung mit Key Vault funktioniert in Verbindung mit [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md), was für die Authentifizierung der Identität eines bestimmten **Sicherheitsprinzipals** zuständig ist.
 
@@ -111,7 +111,7 @@ Wenn einem Azure AD-Sicherheitsprinzipal eine Azure-Rolle zugewiesen wird, gew�
 
 Die Hauptvorteile der Verwendung von Azure RBAC-Berechtigungen gegenüber Tresorzugriffsrichtlinien liegen in der zentralisierten Verwaltung der Zugriffssteuerung und ihrer Integration in [Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md). Privileged Identity Management bietet eine zeit- und genehmigungsbasierte Rollenaktivierung, um die Risiken durch übermäßige, unnötige oder missbrauchte Zugriffsberechtigungen für wichtige Ressourcen zu verringern.
 
-Weitere Informationen zur Key Vault-Datenebene mit Azure RBAC finden Sie unter [Key Vault Schlüssel, -Zertifikate und -Geheimnisse mit einer rollenbasierten Zugriffssteuerung in Azure (Vorschau)](rbac-guide.md).
+Weitere Informationen zur Key Vault-Datenebene mit Azure RBAC finden Sie unter [Key Vault Schlüssel, -Zertifikate und -Geheimnisse mit einer rollenbasierten Zugriffssteuerung in Azure](rbac-guide.md).
 
 ## <a name="firewalls-and-virtual-networks"></a>Firewalls und virtuelle Netzwerke
 
@@ -182,13 +182,13 @@ Wir müssen die folgenden Vorgänge für unsere Rollen autorisieren:
 
 Die folgende Tabelle fasst die Zugriffsberechtigungen für unsere Rollen und die Anwendung zusammen.
 
-| Role | Berechtigungen auf Verwaltungsebene | Berechtigungen auf Datenebene: Tresorzugriffsrichtlinien | Berechtigungen auf Datenebene: Azure RBAC (Vorschau)  |
+| Role | Berechtigungen auf Verwaltungsebene | Berechtigungen auf Datenebene: Tresorzugriffsrichtlinien | Berechtigungen auf Datenebene: Azure RBAC  |
 | --- | --- | --- | --- |
-| Sicherheitsteam | [Key Vault-Mitwirkender](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | Zertifikate: alle Vorgänge <br> Schlüssel: alle Vorgänge <br> Geheimnisse: alle Vorgänge | [Key Vault-Administrator (Vorschau)](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
+| Sicherheitsteam | [Key Vault-Mitwirkender](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | Zertifikate: alle Vorgänge <br> Schlüssel: alle Vorgänge <br> Geheimnisse: alle Vorgänge | [Key Vault-Administrator](../../role-based-access-control/built-in-roles.md#key-vault-administrator) |
 | Entwickler und&nbsp;Operatoren | Berechtigung zum Bereitstellen von Schlüsseltresoren<br><br> **Hinweis**: Mit dieser Berechtigung können die bereitgestellten VMs Geheimnisse aus einem Schlüsseltresor abrufen. | Keine | Keine |
-| Prüfer | Keine | Zertifikate: Auflisten <br> Schlüssel: Auflisten<br>Geheimnisse: Auflisten<br><br> **Hinweis**: Diese Berechtigung ermöglicht es den Prüfern, Attribute (Tags, Aktivierungsdaten, Verfallsdaten) auf Schlüssel und Geheimnisse zu überprüfen, die nicht in den Protokollen ausgegeben werden. | [Key Vault Reader (Vorschau)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
-| Azure Storage-Konto | Keine | Schlüssel: get, list, wrapKey, unwrapKey <br> | [Key Vault Crypto Service Encryption-Benutzer](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
-| Application | Keine | Geheimnisse: get, list <br> Zertifikate: get, list | [Key Vault Reader (Vorschau)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview), [Key Vault Secret User (Vorschau)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
+| Prüfer | Keine | Zertifikate: Auflisten <br> Schlüssel: Auflisten<br>Geheimnisse: Auflisten<br><br> **Hinweis**: Diese Berechtigung ermöglicht es den Prüfern, Attribute (Tags, Aktivierungsdaten, Verfallsdaten) auf Schlüssel und Geheimnisse zu überprüfen, die nicht in den Protokollen ausgegeben werden. | [Key Vault-Leser](../../role-based-access-control/built-in-roles.md#key-vault-reader) |
+| Azure Storage-Konto | Keine | Schlüssel: get, list, wrapKey, unwrapKey <br> | [Key Vault Crypto Service Encryption-Benutzer](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user) |
+| Application | Keine | Geheimnisse: get, list <br> Zertifikate: get, list | [Key Vault-Leser](../../role-based-access-control/built-in-roles.md#key-vault-reader), [Key Vault-Geheimnisbenutzer](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user) |
 
 Die drei Teamrollen benötigen neben Schlüsseltresor-Berechtigungen auch Zugriff auf andere Ressourcen. Damit Entwickler oder Operatoren VMs (oder das Web-Apps-Feature von Azure App Service) bereitstellen können, müssen diese den Zugriff bereitstellen. Prüfer benötigen Lesezugriff auf das Speicherkonto mit den gespeicherten Schlüsseltresorprotokollen.
 

@@ -15,12 +15,12 @@ ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: e30af9522d7c8fa81c4d93e11d252aefc4426586
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d77468619fcd67887273b2fbd452b37add1e19b0
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184262"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555877"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Behandeln von Problemen bei Azure RBAC
 
@@ -51,7 +51,7 @@ $ras.Count
 
 ## <a name="problems-with-azure-role-assignments"></a>Probleme bei RBAC-Rollenzuweisungen
 
-- Wenn Sie keine Rollenzuweisung im Azure-Portal für die **Zugriffssteuerung (IAM)** hinzufügen können, weil die Option **Hinzufügen** > **Rollenzuweisung hinzufügen** deaktiviert ist, oder weil der Berechtigungsfehler „The client with object id does not have authorization to perform action“ (Der Client mit der Objekt-ID ist zum Ausführen der Aktion nicht autorisiert) ausgegeben wird, überprüfen Sie, ob Sie aktuell mit einem Benutzer angemeldet sind, dem eine Rolle mit der Berechtigung `Microsoft.Authorization/roleAssignments/write`, wie z. B. [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator), in dem Bereich zugewiesen ist, dem Sie versuchen die Rolle zuzuweisen.
+- Wenn Sie keine Rollenzuweisung im Azure-Portal für die **Zugriffssteuerung (IAM)** hinzufügen können, da die Option **Hinzufügen** > **Rollenzuweisung hinzufügen** deaktiviert ist, oder weil der Berechtigungsfehler „Der Client mit der Objekt-ID verfügt über keine Autorisierung zum Ausführen der Aktion“ ausgegeben wird, überprüfen Sie, ob Sie aktuell mit einem Benutzer angemeldet sind, dem eine Rolle mit der Berechtigung `Microsoft.Authorization/roleAssignments/write`, wie z. B. [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator), in dem Bereich zugewiesen ist, dem Sie versuchen die Rolle zuzuweisen.
 - Wenn Sie einen Dienstprinzipal zum Zuweisen von Rollen verwenden, erhalten Sie möglicherweise die Fehlermeldung „Unzureichende Berechtigungen zum Durchführen des Vorgangs“. Angenommen, Sie verfügen über einen Dienstprinzipal, dem die Rolle „Besitzer“ zugewiesen wurde, und Sie versuchen, die folgende Rollenzuweisung als Dienstprinzipal mithilfe der Azure CLI zu erstellen:
 
     ```azurecli
@@ -63,7 +63,7 @@ $ras.Count
 
     Es gibt zwei Möglichkeiten, diesen Fehler möglicherweise zu beheben. Die erste Möglichkeit besteht darin, dem Dienstprinzipal die Rolle [Verzeichnis lesen](../active-directory/roles/permissions-reference.md#directory-readers) zuzuweisen, damit er Daten in dem Verzeichnis lesen kann.
 
-    Die zweite Möglichkeit, diesen Fehler zu beheben, besteht darin, die Rollenzuweisung mithilfe des Parameters `--assignee-object-id` anstelle von `--assignee` zu erstellen. Durch die Verwendung von `--assignee-object-id` überspringt Azure CLI die Azure AD-Suche. Sie müssen die Objekt-ID des Benutzers, der Gruppe oder der Anwendung abrufen, dem bzw. der Sie die Rolle zuweisen möchten. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure CLI](role-assignments-cli.md#add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope).
+    Die zweite Möglichkeit, diesen Fehler zu beheben, besteht darin, die Rollenzuweisung mithilfe des Parameters `--assignee-object-id` anstelle von `--assignee` zu erstellen. Durch die Verwendung von `--assignee-object-id` überspringt Azure CLI die Azure AD-Suche. Sie müssen die Objekt-ID des Benutzers, der Gruppe oder der Anwendung abrufen, dem bzw. der Sie die Rolle zuweisen möchten. Weitere Informationen finden Sie unter [Zuweisen von Azure-Rollen mit der Azure-Befehlszeilenschnittstelle](role-assignments-cli.md#assign-a-role-for-a-new-service-principal-at-a-resource-group-scope).
 
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
@@ -151,7 +151,7 @@ Wenn Sie diese Rollenzuweisung mit der Azure CLI anzeigen, ist `principalName` m
 }
 ```
 
-Sie können diese Rollenzuweisungen ohne Probleme beibehalten, wenn der Sicherheitsprinzipal gelöscht wurde. Sie können diese Rollenzuweisungen jedoch bei Bedarf entfernen, indem Sie die Schritte ausführen, die denen für andere Rollenzuweisungen entsprechen. Informationen zum Entfernen von Rollenzuweisungen finden Sie unter [Azure-Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment) oder [Azure CLI](role-assignments-cli.md#remove-a-role-assignment).
+Sie können diese Rollenzuweisungen ohne Probleme beibehalten, wenn der Sicherheitsprinzipal gelöscht wurde. Sie können diese Rollenzuweisungen jedoch bei Bedarf entfernen, indem Sie die Schritte ausführen, die denen für andere Rollenzuweisungen entsprechen. Informationen zum Entfernen von Rollenzuweisungen finden Sie unter [Entfernen von Azure-Rollenzuweisungen](role-assignments-remove.md).
 
 Wenn Sie in PowerShell versuchen, die Rollenzuweisungen unter Verwendung der Objekt-ID und des Rollendefinitionsnamens zu entfernen, und mehr als eine Rollenzuweisung Ihren Parametern entspricht, wird die folgende Fehlermeldung angezeigt: „The provided information does not map to a role assignment“ (Die angegebenen Informationen stimmen mit keiner Rollenzuweisung überein). Die folgende Ausgabe zeigt ein Beispiel für die Fehlermeldung:
 
@@ -174,7 +174,7 @@ PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -
 
 ## <a name="role-assignment-changes-are-not-being-detected"></a>Änderungen bei der Rollenzuweisung werden nicht erkannt.
 
-Azure Resource Manager speichert Konfigurationen und Daten manchmal zwischen, um die Leistung zu verbessern. Beim Hinzufügen oder Entfernen von Rollenzuweisungen kann es bis zu 30 Minuten dauern, bis Änderungen wirksam werden. Wenn Sie das Azure-Portal, Azure PowerShell oder die Azure CLI verwenden, können Sie eine Aktualisierung der Rollenzuweisungsänderungen erzwingen, indem Sie sich abmelden und wieder anmelden. Wenn Sie Rollenzuweisungsänderungen mit REST-API-Aufrufen vornehmen, können Sie eine Aktualisierung erzwingen, indem Sie das Zugriffstoken aktualisieren.
+Azure Resource Manager speichert Konfigurationen und Daten manchmal zwischen, um die Leistung zu verbessern. Beim Zuweisen von Rollen oder Entfernen von Rollenzuweisungen kann es bis zu 30 Minuten dauern, bis Änderungen wirksam werden. Wenn Sie das Azure-Portal, Azure PowerShell oder die Azure CLI verwenden, können Sie eine Aktualisierung der Rollenzuweisungsänderungen erzwingen, indem Sie sich abmelden und wieder anmelden. Wenn Sie Rollenzuweisungsänderungen mit REST-API-Aufrufen vornehmen, können Sie eine Aktualisierung erzwingen, indem Sie das Zugriffstoken aktualisieren.
 
 Wenn Sie im Verwaltungsgruppenbereich eine Rollenzuweisung hinzufügen oder entfernen und die Rolle über `DataActions` verfügt, wird der Zugriff auf Datenebene möglicherweise mehrere Stunden lang nicht aktualisiert. Dies gilt nur für den Verwaltungsgruppenbereich und die Datenebene.
 
@@ -249,5 +249,5 @@ Ein Leser kann auf die Registerkarte **Plattformfeatures** und dann auf **Alle E
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Problembehandlung für Gastbenutzer](role-assignments-external-users.md#troubleshoot)
-- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](role-assignments-portal.md)
+- [Zuweisen von Azure-Rollen über das Azure-Portal](role-assignments-portal.md)
 - [Anzeigen von Aktivitätsprotokollen für Azure RBAC-Änderungen](change-history-report.md)

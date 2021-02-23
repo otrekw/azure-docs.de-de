@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: 489c6be7bf977d01207fee4d1bd1fda13dc12025
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: d2308d065755df834a224ef3b1df202d7b7dc5ae
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820516"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518945"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-Versionen in der kognitiven Azure-Suche
 
@@ -96,19 +96,19 @@ In der folgenden Tabelle finden Sie Links zu neueren SDK-Versionen.
 
 | SDK-Version | Status | BESCHREIBUNG  |
 |-------------|--------|------------------------------|
-| [Java azure-search-documents 11](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Stable | Neue Clientbibliothek aus dem Azure .NET SDK, veröffentlicht im Juli 2020. Gilt für die Such-REST-API, api-version=2019-05-06. |
+| [Java azure-search-documents 11](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Stable | Neue Clientbibliothek aus dem Azure Java SDK, veröffentlicht im Juli 2020. Gilt für die Such-REST-API, api-version=2019-05-06. |
 | [Java Management Client 1.35.0](/java/api/overview/azure/search/management) | Stable | Gilt für die Management REST-API, api-version=2015-08-19. |
 
 ## <a name="azure-sdk-for-javascript"></a>Azure SDK für JavaScript
 
 | SDK-Version | Status | BESCHREIBUNG  |
 |-------------|--------|------------------------------|
-| [JavaScript azure-search 11.0](https://azure.github.io/azure-sdk-for-node/azure-search/latest/) | Stable | Neue Clientbibliothek aus dem Azure .NET SDK, veröffentlicht im Juli 2020. Gilt für die Such-REST-API, api-version=2016-09-01. |
-| [JavaScript azure-arm-search](https://azure.github.io/azure-sdk-for-node/azure-arm-search/latest/) | Stable | Gilt für die Management REST-API, api-version=2015-08-19. |
+| [JavaScript @azure/search-documents 11.0](https://www.npmjs.com/package/@azure/search-documents) | Stable | Neue Clientbibliothek aus dem Azure JavaScript SDK und TypesScript SDK, veröffentlicht im Juli 2020. Gilt für die Such-REST-API, api-version=2016-09-01. |
+| [JavaScript @azure/arm-search](https://www.npmjs.com/package/@azure/arm-search) | Stable | Gilt für die Management REST-API, api-version=2015-08-19. |
 
 ## <a name="azure-sdk-for-python"></a>Azure SDK für Python
 
 | SDK-Version | Status | BESCHREIBUNG  |
 |-------------|--------|------------------------------|
-| [Python azure-search-documents 11.0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents/11.0.0/index.html) | Stable | Neue Clientbibliothek aus dem Azure .NET SDK, veröffentlicht im Juli 2020. Gilt für die Such-REST-API, api-version=2019-05-06. |
-| [Python azure-mgmt-search 1.0](/python/api/overview/azure/search) | Stable | Gilt für die Management REST-API, api-version=2015-08-19. |
+| [Python azure-search-documents 11.0](https://pypi.org/project/azure-search-documents/) | Stable | Neue Clientbibliothek aus dem Azure Python SDK, veröffentlicht im Juli 2020. Gilt für die Such-REST-API, api-version=2019-05-06. |
+| [Python azure-mgmt-search 8.0](https://pypi.org/project/azure-mgmt-search/) | Stable | Gilt für die Management REST-API, api-version=2015-08-19. |

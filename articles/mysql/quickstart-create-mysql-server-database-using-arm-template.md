@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/19/2020
-ms.openlocfilehash: 983bda94af9b8595bfb3ce24b7437a35db70efe8
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 3da3b1694a16507203d7f1f1f6cb5df58dd54423
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098553"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366176"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Schnellstart: Erstellen eines Azure Database for MySQL-Servers mithilfe einer ARM-Vorlage
 
@@ -187,15 +187,24 @@ Sie können über das Azure-Portal [eine ARM-Vorlage exportieren](../azure-resou
 - [Export aus Ressourcengruppe oder Ressource](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource). Diese Option generiert eine neue Vorlage aus vorhandenen Ressourcen. Die exportierte Vorlage ist eine „Momentaufnahme“ des aktuellen Zustands der Ressourcengruppe. Sie können eine gesamte Ressourcengruppe oder bestimmte Ressourcen innerhalb dieser Ressourcengruppe exportieren.
 - [Export vor der Bereitstellung oder über den Verlauf](../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment). Diese Option ruft eine exakte Kopie einer für die Bereitstellung verwendeten Vorlage ab.
 
-Beim Exportieren der Vorlage sehen Sie im Abschnitt ```"parameters":{ }``` der Vorlage, dass ```administratorLogin``` und ```administratorLoginPassword``` aus Sicherheitsgründen nicht enthalten sind. Diese Parameter **MÜSSEN** der Vorlage vor ihrer Bereitstellung hinzugefügt werden, andernfalls tritt bei der Vorlage ein Fehler auf.
+Beim Exportieren der Vorlage sehen Sie im Abschnitt ```"properties":{ }``` der MySQL-Serverressource, dass ```administratorLogin``` und ```administratorLoginPassword``` aus Sicherheitsgründen nicht enthalten sind. Diese Parameter **MÜSSEN** der Vorlage vor ihrer Bereitstellung hinzugefügt werden, andernfalls tritt bei der Vorlage ein Fehler auf.
 
-```json
-"administratorLogin": {
-      "type": "String"
-    },
-"administratorLoginPassword": {
-      "type": "SecureString"
-    },  
+```
+"resources": [
+    {
+      "type": "Microsoft.DBforMySQL/servers",
+      "apiVersion": "2017-12-01",
+      "name": "[parameters('servers_name')]",
+      "location": "southcentralus",
+      "sku": {
+                "name": "B_Gen5_1",
+                "tier": "Basic",
+                "family": "Gen5",
+                "capacity": 1
+            },
+      "properties": {
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
 ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

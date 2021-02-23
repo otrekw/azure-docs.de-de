@@ -7,17 +7,20 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: 68c690b9cbd2028f73492550adbe86111f9ec3a7
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: e06a388f2391f4ed94370dd072a66a162ba5240f
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257945"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526662"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen
 
 > [!IMPORTANT]
 > Sie müssen vorläufiges Löschen für Ihre Schlüsseltresore sofort aktivieren. Die Möglichkeit, vorläufiges Löschen abzuwählen, wird bald eingestellt. Ausführliche Informationen finden Sie [hier](soft-delete-change.md).
+
+> [!IMPORTANT]
+> Durch das vorläufige Löschen eines Tresors werden die Löscheinstellungen für Dienste ausgelöst, die mit Key Vault integriert sind, z. B. Azure RBAC-Rollenzuweisungen, Event Grid-Abonnements, Azure Monitor-Diagnoseeinstellungen. Nach der Wiederherstellung einer vorläufig gelöschten Key Vault-Instanz müssen die Einstellungen für die integrierten Dienste manuell neu erstellt werden. 
 
 Das Key Vault-Feature für vorläufiges Löschen ermöglicht die Wiederherstellung der gelöschten Tresore und Tresorobjekte, z. B. Schlüssel, Geheimnisse und Zertifikate. Insbesondere werden die folgenden Szenarien behandelt:  Dieser Schutz bietet die folgenden Schutzmaßnahmen:
 
@@ -27,7 +30,7 @@ Das Key Vault-Feature für vorläufiges Löschen ermöglicht die Wiederherstellu
 
 ## <a name="supporting-interfaces"></a>Unterstützende Schnittstellen
 
-Das Feature für vorläufiges Löschen ist über die [REST-API](/rest/api/keyvault/), die [Azure CLI](./key-vault-recovery.md), über [Azure PowerShell](./key-vault-recovery.md) und über die [.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet)-Schnittstellen sowie über die [ARM-Vorlagen](/azure/templates/microsoft.keyvault/2019-09-01/vaults) verfügbar.
+Das Feature für vorläufiges Löschen ist über die [REST-API](/rest/api/keyvault/), die [Azure CLI](./key-vault-recovery.md), über [Azure PowerShell](./key-vault-recovery.md) und über die [.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet&preserve-view=true)-Schnittstellen sowie über die [ARM-Vorlagen](/azure/templates/microsoft.keyvault/2019-09-01/vaults) verfügbar.
 
 ## <a name="scenarios"></a>Szenarien
 

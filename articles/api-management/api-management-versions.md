@@ -6,15 +6,15 @@ documentationcenter: ''
 author: johndowns
 ms.service: api-management
 ms.topic: article
-ms.date: 06/12/2020
+ms.date: 02/10/2021
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: 578bb511175d88a1507af9520265a1acd068b27c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dc44b4b898603df88d1bdd8c36ddfb6449335ac
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87094406"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547195"
 ---
 # <a name="versions-in-azure-api-management"></a>Versionen in Azure API Management
 
@@ -64,9 +64,13 @@ Wenn Sie einer API ohne Versionsverwaltung eine Version hinzufügen, wird automa
 
 ## <a name="how-versions-are-represented"></a>Darstellungsweise von Versionen
 
-Azure API Management verwaltet eine Ressource namens *version set*, die einen Satz von Versionen für eine einzelne logische API darstellt. Wenn Sie das Azure-Portal zum Verwalten von Versionen verwenden, wird der Versionssatz nicht angezeigt, aber wenn Sie mit Ihrem API Management-Dienst mithilfe von PowerShell, Resource Manager-Vorlagen oder der Azure Resource Manager-API interagieren, können Sie Versionssätze direkt anzeigen und verwalten. Ein Versionssatz enthält den Anzeigenamen der API mit Versionsverwaltung sowie das [Versionsverwaltungsschema](#versioning-schemes), das verwendet wird, um Anforderungen an bestimmte Versionen weiterzuleiten.
+Azure API Management verwaltet eine Ressource namens *version set*, die einen Satz von Versionen für eine einzelne logische API darstellt. Ein Versionssatz enthält den Anzeigenamen der API mit Versionsverwaltung sowie das verwendete [Versionsverwaltungsschema](#versioning-schemes) zum Weiterleiten von Anforderungen an bestimmte Versionen.
 
-Jede Version einer API wird als eigene API-Ressource verwaltet, die dann einem Versionssatz zugeordnet wird. Ein Versionssatz kann APIs mit sehr unterschiedlichen Vorgängen oder Richtlinien enthalten, was die Tatsache widerspiegelt, dass Sie signifikante Änderungen zwischen Versionen Ihrer API durchführen können.
+Jede Version einer API wird als eigene API-Ressource verwaltet, die dann einem Versionssatz zugeordnet wird. Ein Versionssatz kann APIs mit unterschiedlichen Vorgängen oder Richtlinien enthalten. Möglicherweise nehmen Sie erhebliche Änderungen zwischen den Versionen in einem Satz vor.
+
+Das Azure-Portal erstellt die Versionssätze für Sie. Sie können den Namen und die Beschreibung für einen Versionssatz im Azure-Portal ändern.
+
+Sie können Versionssätze mit der [Azure-Befehlszeilenschnittstelle](/cli/azure/apim/api/versionset), [Azure PowerShell](/powershell/module/az.apimanagement/#api-management), [Resource Manager-Vorlagen](/azure/templates/microsoft.apimanagement/service/apiversionsets) oder der [Azure Resource Manager-API](/rest/api/apimanagement/2020-06-01-preview/apiversionset) direkt anzeigen und verwalten.
 
 ### <a name="migrating-a-non-versioned-api-to-a-versioned-api"></a>Migrieren einer API ohne Versionsverwaltung zu einer API mit Versionsverwaltung
 

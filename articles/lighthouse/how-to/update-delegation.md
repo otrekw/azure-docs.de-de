@@ -1,14 +1,14 @@
 ---
 title: Aktualisieren einer Delegierung
 description: Hier erfahren Sie, wie Sie eine Delegierung für einen Kunden aktualisieren, für den zuvor ein Onboarding in Azure Lighthouse durchgeführt wurde.
-ms.date: 12/03/2020
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: eec5d1f2d34e8e3c9e0ded59cb111624b1981873
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: f0ed5222cdbac3d0e4d193941c2a6f233d15938c
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791338"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555774"
 ---
 # <a name="update-a-delegation"></a>Aktualisieren einer Delegierung
 
@@ -48,7 +48,7 @@ Wenn Sie nur Autorisierungen im Angebot anpassen und denselben **mspOfferName** 
 Jeder Benutzer im Verwaltungsmandanten, dem in der ursprünglichen Delegierung die [Rolle „Registrierungszuweisung für verwaltete Dienste löschen“](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) zugewiesen wurde, kann den Zugriff auf die Delegierung entfernen. Wenn kein Benutzer im Verwaltungsmandanten über diese Rolle verfügt, können Sie den Kunden bitten, [den Zugriff auf das Angebot im Azure-Portal zu entfernen](view-manage-service-providers.md#add-or-remove-service-provider-offers).
 
 > [!TIP]
-> Wenn Sie die vorherige Delegierung anhand der oben beschriebenen Schritte entfernt haben und die neue ARM-Vorlage dennoch nicht bereitstellen können, müssen Sie möglicherweise [die Registrierungsdefinition vollständig entfernen](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition). Dieser Vorgang kann von jedem Benutzer mit der Rolle „Besitzer“ im Kundenmandanten ausgeführt werden.  
+> Wenn Sie die vorherige Delegierung anhand der oben beschriebenen Schritte entfernt haben und die neue ARM-Vorlage dennoch nicht bereitstellen können, müssen Sie möglicherweise [die Registrierungsdefinition vollständig entfernen](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition). Dieser Vorgang kann von jedem Benutzer mit einer Rolle im Kundenmandanten durchgeführt werden, die die Berechtigung `Microsoft.Authorization/roleAssignments/write` beinhaltet, z. B. [Besitzer](../../role-based-access-control/built-in-roles.md#owner).  
 
 ## <a name="deploy-the-arm-template"></a>Bereitstellen der ARM-Vorlage
 

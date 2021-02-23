@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/22/2020
+ms.date: 02/15/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: a18e3cb65b2ef70a04ca1d7e74dd9d5f42e3a933
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 0345362e0e5bce9912a247fc90dee63943a1cb3b
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355765"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557836"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory
 
@@ -27,9 +27,9 @@ In diesem Artikel werden die Anwendungsregistrierung, Anwendungsobjekte und Dien
 ## <a name="application-registration"></a>Anwendungsregistrierung
 Um die Identitäts- und Zugriffsverwaltungsfunktionen an Azure AD zu delegieren, muss eine Anwendung bei einem Azure AD-[Mandanten](developer-glossary.md#tenant) registriert werden. Wenn Sie Ihre Anwendung bei Azure AD registrieren, erstellen Sie eine Identitätskonfiguration für Ihre Anwendung, die die Integration in Azure AD ermöglicht. Wenn Sie eine App im [Azure-Portal][AZURE-Portal] registrieren, wählen Sie aus, ob es sich um einen Mandanten (Zugriff nur in Ihrem Mandanten möglich) oder um mehrere Mandanten (Zugriff in anderen Mandanten möglich) handelt. Optional können Sie auch einen Umleitungs-URI festlegen, an den das Zugriffstoken gesendet wird.
 
-:::image type="content" source="media/app-objects-and-service-principals/app-registration.png" alt-text="Screenshot des Bereichs „Anwendung registrieren“ im Azure-Portal":::
+Eine ausführliche Anleitung zum Registrieren einer App finden Sie im [Schnellstart zur App-Registrierung](quickstart-register-app.md).
 
-Wenn Sie die App-Registrierung abgeschlossen haben, verfügen Sie über eine global eindeutige Instanz der App (das Anwendungsobjekt), die sich in Ihrem Basismandanten oder -verzeichnis befindet.  Außerdem verfügen Sie über eine global eindeutige ID für Ihre App (App- oder Client-ID).  Im Portal können Sie dann Geheimnisse oder Zertifikate und Geltungsbereiche hinzufügen, damit Ihre App funktioniert. Sie können auch das Branding Ihrer App im Anmeldedialogfeld anpassen und vieles mehr.
+Wenn Sie die App-Registrierung abgeschlossen haben, verfügen Sie über eine global eindeutige Instanz der App (das [Anwendungsobjekt](#application-object)), die sich in Ihrem Basismandanten oder -verzeichnis befindet.  Außerdem verfügen Sie über eine global eindeutige ID für Ihre App (App- oder Client-ID).  Im Portal können Sie dann Geheimnisse oder Zertifikate und Geltungsbereiche hinzufügen, damit Ihre App funktioniert. Sie können auch das Branding Ihrer App im Anmeldedialogfeld anpassen und vieles mehr.
 
 Wenn Sie eine Anwendung im Portal registrieren, werden automatisch ein Anwendungsobjekt sowie ein Dienstprinzipalobjekt in Ihrem Basismandanten erstellt.  Wenn Sie eine Anwendung mit den Microsoft Graph-APIs registrieren/erstellen, wird das Dienstprinzipalobjekt in einem separaten Schritt erstellt.
 

@@ -4,16 +4,19 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 999cb4c764e9960c509d19faa61016b2522259ac
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 38c066c20399b39d676fb0c25aa158993258b979
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99819859"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370987"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Unterstützungsmatrix für Sicherungen von Azure-Dateifreigaben
 
 Sie können den [Azure Backup-Dienst](./backup-overview.md) verwenden, um Azure-Dateifreigaben zu sichern. Dieser Artikel enthält eine Zusammenfassung der Unterstützungseinstellungen bei der Sicherung von Azure-Dateifreigaben mit Azure Backup.
+
+> [!NOTE]
+> Azure Backup unterstützt derzeit keine NFS-Freigaben.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 

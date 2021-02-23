@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie den neuen Datenexport verwenden, um Ihre
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 11/05/2020
+ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 350cd7c14a4f1ee5058a60ccf60c1205ce97916a
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 7152012c7c4a342c7491e5f8b835eaede4269c4c
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226060"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522613"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Exportieren von IoT-Daten zu Cloudzielen mithilfe des Datenexports
 
@@ -166,6 +166,17 @@ Sie haben ein Ziel für den Export Ihrer Daten eingerichtet und richten jetzt de
 
 1. Wenn Sie das Einrichten Ihres Exports abgeschlossen haben, wählen Sie **Speichern** aus. Nach einigen Minuten werden Ihre Daten in Ihren Zielen angezeigt.
 
+## <a name="monitor-your-export"></a>Überwachen des Exports
+
+Zusätzlich zum Anzeigen des Status Ihrer Exporte in IoT Central können Sie mit [Azure Monitor](../../azure-monitor/overview.md) auch anzeigen, wie viele Daten exportiert werden und welche Exportfehler auftreten. Die Metriken zum Export und zur Geräteintegrität sind über Diagramme im Azure-Portal, eine REST-API sowie Abfragen in PowerShell oder der Azure-Befehlszeilenschnittstelle zugänglich. Derzeit können Sie die folgenden Datenexportmetriken in Azure Monitor überwachen:
+
+- Anzahl der eingehenden Nachrichten für den Export vor dem Anwenden von Filtern
+- Anzahl der Nachrichten, die die Filter durchlaufen
+- Anzahl von Nachrichten, die erfolgreich an die Ziele exportiert wurden
+- Anzahl der aufgetretenen Fehler.
+
+Weitere Informationen finden Sie unter [Überwachen der Gesamtintegrität einer IoT Central-Anwendung](howto-monitor-application-health.md).
+
 ## <a name="destinations"></a>Destinations
 
 ### <a name="azure-blob-storage-destination"></a>Azure Blob Storage-Ziel
@@ -233,7 +244,6 @@ Das folgende Beispiel zeigt eine exportierte Telemetrienachricht:
     }
 }
 ```
-
 ### <a name="message-properties"></a>Nachrichteneigenschaften
 
 Telemetrienachrichten verfügen zusätzlich zu den Telemetrienutzdaten über Eigenschaften für Metadaten. Der vorherige Codeausschnitt zeigt Beispiele für Systemmeldungen wie `deviceId` und `enqueuedTime`. Weitere Informationen zu den Eigenschaften von Systemmeldungen finden Sie unter [Systemeigenschaften von D2C-IoT Hub-Nachrichten](../../iot-hub/iot-hub-devguide-messages-construct.md#system-properties-of-d2c-iot-hub-messages).

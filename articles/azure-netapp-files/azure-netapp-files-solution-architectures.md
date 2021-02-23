@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 02/16/2021
 ms.author: b-juche
-ms.openlocfilehash: 390b025ec039d5b04cead3f6bb22fedd0e987673
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: e9e7451e411ed9160eace0a60c65b5b74bf8f750
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537778"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559474"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösungsarchitekturen mit Azure NetApp Files
 Dieser Artikel enthält Verweise auf bewährte Methoden, die Ihnen helfen können, die Lösungsarchitekturen für die Verwendung von Azure NetApp Files zu verstehen.  
@@ -94,6 +94,8 @@ Dieser Abschnitt enthält Referenzen zu Lösungen für SAP in Azure.
 * [Azure NetApp Files – SAP HANA-Abladung der Sicherung mit Cloudsynchronisierung](https://blog.netapp.com/azure-netapp-files-sap-hana)
 * [Beschleunigen Sie Ihre SAP HANA-Systemkopien mithilfe von Azure NetApp Files](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
 * [Cloudvolumes ONTAP und unter Azure NetApp Files: SAP HANA-Systemmigration leicht gemacht](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
+* [Architectural Decisions to maximize ANF investment in HANA N+M Scale-Out Architecture - Part 1 - Microsoft Tech Community](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737) (Architekturentscheidungen zum Maximieren von ANF-Investitionen in HANA N+M-Architekturen mit horizontaler Skalierung – Teil 1 – Microsoft Tech Community)
+* [Architectural Decisions to maximize ANF investment in HANA N+M Scale-Out Architecture - Part 2 - Microsoft Tech Community](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130) (Architekturentscheidungen zum Maximieren von ANF-Investitionen in HANA N+M-Architekturen mit horizontaler Skalierung – Teil 2 – Microsoft Tech Community)
 
 ## <a name="azure-vmware-solutions"></a>Azure VMware Solutions
 
@@ -146,6 +148,7 @@ Dieser Abschnitt enthält Lösungen für Azure-Plattformdienste.
 
 * [Integrieren von Azure NetApp Files in Azure Kubernetes Service](../aks/azure-netapp-files.md)
 * [Out-of-This-World Kubernetes performance on Azure with Azure NetApp Files](https://cloud.netapp.com/blog/ma-anf-blg-configure-kubernetes-openshift) (Überirdische Leistung von Kubernetes in Azure mit Azure NetApp Files)
+* [Azure NetApp Files + Trident = Dynamic and Persistent Storage for Kubernetes](https://anfcommunity.com/2021/02/16/azure-netapp-files-trident-dynamic-and-persistent-storage-for-kubernetes/) (Azure NetApp Files + Trident = dynamische und dauerhafte Speicherung für Kubernetes)
 * [Trident - Storage Orchestrator for Containers](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html) (Trident: Speicherorchestrator für Container)
 * [Magento-E-Commerce-Plattform in Azure Kubernetes Service (AKS)](/azure/architecture/example-scenario/magento/magento-azure)
 

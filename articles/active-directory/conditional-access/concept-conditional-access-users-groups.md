@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14c9330977296630ee58bc2b508f4304472044c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c4c654f70af2188264465d97abded9cae95e9275
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366359"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364578"
 ---
 # <a name="conditional-access-users-and-groups"></a>Bedingter Zugriff: Benutzer und Gruppen
 
@@ -41,6 +41,9 @@ Beim Erstellen einer Richtlinie für bedingten Zugriff sind die folgenden Option
       - Diese Option ermöglicht Administratoren das Auswählen bestimmter Azure AD-Verzeichnisrollen, die zum Bestimmen der Zuweisung verwendet werden. Beispielsweise können Organisationen eine restriktivere Richtlinie für Benutzer erstellen, denen die Rolle „Globaler Administrator“ zugewiesen ist.
    - Benutzer und Gruppen
       - Ermöglicht das Einbeziehen bestimmter Gruppen von Benutzern. Beispielsweise können Organisationen eine Gruppe auswählen, die alle Mitglieder der Personalabteilung enthält, wenn eine HR-App als Cloud-App ausgewählt wurde. Als Gruppe gilt eine beliebige Gruppe in Azure AD, einschließlich dynamischer oder zugewiesener Sicherheits- und Verteilungsgruppen. Die Richtlinie wird auf geschachtelte Benutzer und Gruppen angewendet.
+
+> [!IMPORTANT]
+> Bei der Auswahl der Benutzer und Gruppen, die Sie einer Richtlinie für bedingten Zugriff hinzufügen, gilt eine Beschränkung für die Anzahl einzelner Benutzer, die einer Richtlinie für bedingten Zugriff direkt hinzugefügt werden können. Wenn Sie einer Richtlinie für bedingten Zugriff eine sehr hohe Anzahl von Benutzern direkt hinzufügen möchten, sollten Sie diese Benutzer einer Gruppe hinzufügen und dann der Richtlinie für den bedingten Zugriff stattdessen die Gruppe zuweisen.
 
 > [!WARNING]
 > Wenn Benutzer oder Gruppen zu mehr als 2048 Gruppen gehören, kann ihr Zugriff blockiert werden. Diese Begrenzung gilt sowohl für die direkte als auch für die geschachtelte Gruppenmitgliedschaft.

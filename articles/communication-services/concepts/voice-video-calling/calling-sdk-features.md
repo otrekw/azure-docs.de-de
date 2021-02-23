@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f949747649e351947ba65666fdb57c0beac3aa23
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 07ad53191c8212ccde5633a4068f31aa00ab69b1
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492109"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100554731"
 ---
 # <a name="calling-client-library-overview"></a>Übersicht über die Clientbibliothek für Telefonie
 
@@ -96,9 +96,10 @@ Die Clientbibliothek für Telefonie von Communication Services unterstützt die 
 
 |           |Web | Android/iOS|
 |-----------|----|------------|
-|**Anzahl der ausgehenden Datenströme, die gleichzeitig gesendet werden können.** |1 Video- und 1 Bildschirmfreigabe | 1 Video |
-|**Anzahl der eingehenden Datenströme, die gleichzeitig gerendert werden können.** |1 Video- und 1 Bildschirmfreigabe| 6 Video- und 1 Bildschirmfreigabe |
+|**Anzahl der ausgehenden Datenströme, die gleichzeitig gesendet werden können.** |1 Audio-/Videostream oder 1 Audio-/Bildschirmfreigabe | 1 Audio-/Videostream | 
+|**Anzahl der eingehenden Datenströme, die gleichzeitig gerendert werden können.** |1 Audio-/Videostream oder 1 Audio-/Bildschirmfreigabe| 6 Audio-/Videostreams oder 1 Bildschirmfreigabe |
 
+Beachten Sie, dass in Gruppenszenarien ein gemischter Audiostream zur Unterstützung aller Audioteilnehmer verwendet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -106,6 +107,6 @@ Die Clientbibliothek für Telefonie von Communication Services unterstützt die 
 > [Erste Schritte mit Anrufen](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
-- Machen Sie sich mit allgemeinen [Anrufflows](../call-flows.md) vertraut.
+- Machen Sie sich mit allgemeinen [Anrufflows](../call-flows.md) vertraut. 
 - Informieren Sie sich über [Anruftypen](../voice-video-calling/about-call-types.md).
 - [Planen Sie Ihre PSTN-Lösung.](../telephony-sms/plan-solution.md)

@@ -1,7 +1,7 @@
 ---
-title: Planen Ihrer Azure Communication Services-Lösung für Telefonie und SMS
+title: Telefonnummerntypen in Azure Communication Services
 titleSuffix: An Azure Communication Services concept document
-description: Es wird beschrieben, wie Sie die Verwendung von Telefonnummern und der Telefoniefunktionen effektiv planen.
+description: Hier erfahren Sie, wie Sie verschiedene Arten von Telefonnummern für SMS oder Telefonie verwenden.
 author: prakulka
 manager: nmurav
 services: azure-communication-services
@@ -10,26 +10,21 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 271d7ce38d50fd21975327eb1f21528aeacc485e
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 97ac8a63740bb3a0df74a2a698cacecf842760e9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937235"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366465"
 ---
-# <a name="plan-your-telephony-and-sms-solution"></a>Planen Ihrer Telefonie- und SMS-Lösung
+# <a name="phone-number-types-in-azure-communication-services"></a>Telefonnummerntypen in Azure Communication Services
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Mit Azure Communication Services können Sie Telefonnummern verwenden, um Sprachanrufe zu tätigen und SMS-Nachrichten über das Telefonfestnetz (Public Switched Telephone Network, PSTN) zu versenden. In diesem Dokument werden die Telefonnummerntypen, Konfigurationsoptionen und die regionale Verfügbarkeit für die Planung Ihrer Telefonie- und SMS-Lösung mithilfe von Communication Services überprüft.
 
-
-
-
-
-## <a name="phone-number-types-in-azure-communication-services"></a>Telefonnummerntypen in Azure Communication Services
- 
+## <a name="number-types-and-features"></a>Typen und Features von Telefonnummern
 Communication Services bietet zwei Arten von Telefonnummern an: **lokale** und **gebührenfreie**. 
 
 ### <a name="local-numbers"></a>Lokale Nummern
@@ -52,7 +47,7 @@ In der folgenden Tabelle sind diese Telefonnummerntypen zusammengefasst:
 | Gebührenfrei         | +1 (gebührenfreie *Ortsvorwahl*) XXX XX XX | US                      | Anrufe (ausgehend), SMS (eingehend/ausgehend)| Zuweisen von Telefonnummern zu IVR-Systemen (Interactive Voice Response, Interaktive Sprachantwort) oder Bots, SMS-Anwendungen                                        |
 
 
-## <a name="phone-number-features-in-azure-communication-services"></a>Telefonnummernfeatures in Azure Communication Services 
+### <a name="phone-number-features-in-azure-communication-services"></a>Telefonnummernfeatures in Azure Communication Services 
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -92,5 +87,6 @@ Derzeit ist die Verfügbarkeit von Telefonnummern auf Azure-Abonnements beschrä
 ### <a name="conceptual-documentation"></a>Dokumentation
 
 - [Sprach- und Videokonzepte](../voice-video-calling/about-call-types.md)
+- [Telefoniekonzepte](./telephony-concept.md)
 - [Anrufabläufe](../call-flows.md)
 - [Preise](../pricing.md)

@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: dd71b03f55cc1522727f6c496c1bdbe0f42cb828
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 13c07da7393c70bb1fc61930dd1179994c68ed75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97678614"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389806"
 ---
 # <a name="what-is-azure-data-box"></a>Was ist Azure Data Box?
 
@@ -42,7 +42,7 @@ Im Folgenden finden Sie verschiedene Szenarien, in denen Data Box zum Exportiere
 
 - **Notfallwiederherstellung**: Wenn eine Kopie der Daten aus Azure in einem lokalen Netzwerk wiederhergestellt wird. In einem typischen Notfallwiederherstellungsszenario wird eine große Menge an Azure-Daten in Data Box exportiert. Microsoft liefert diese Data Box dann aus, und die Daten werden in kurzer Zeit bei Ihnen vor Ort wiederhergestellt.
 
-- **Sicherheitsanforderungen**: Wenn Sie in der Lage sein müssen, Daten aus Azure aufgrund von behördlichen oder Sicherheitsanforderungen zu exportieren. Beispielsweise ist Azure Storage in den US-Clouds „Secret“ und „Top Secret“ verfügbar, und Sie können Data Box verwenden, um Daten aus Azure zu exportieren. 
+- **Sicherheitsanforderungen**: Wenn Sie in der Lage sein müssen, Daten aus Azure aufgrund von behördlichen Anforderungen oder Sicherheitsanforderungen zu exportieren. Beispielsweise ist Azure Storage in den US-Clouds „Secret“ und „Top Secret“ verfügbar, und Sie können Data Box verwenden, um Daten aus Azure zu exportieren. 
 
 - **Rückmigration zu einer lokalen Lösung oder zu einem anderen Clouddienstanbieter**: Wenn Sie alle Daten zurück an Ihren lokalen Standort oder zu einem anderen Clouddienstanbieter verschieben möchten, exportieren Sie Daten über Data Box, um die Workloads zu migrieren.
 

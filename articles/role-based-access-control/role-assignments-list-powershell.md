@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 980e9f1ffd453a070dde72f8c7ca34c7ef08f948
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: bf5445f6ca04e56aab466e97967a58c3e4b735a4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964353"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556942"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>Auflisten von Azure-Rollenzuweisungen mit Azure PowerShell
 
@@ -188,4 +188,4 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe von Azure PowerShell](role-assignments-powershell.md)
+- [Zuweisen von Azure-Rollen mithilfe von Azure PowerShell](role-assignments-powershell.md)

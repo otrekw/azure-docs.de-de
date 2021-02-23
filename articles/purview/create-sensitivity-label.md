@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: b376883ab7d8ef0ffd57a271e74862b684788ebd
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 70aaa528fc86c9e543267b68b5b4cf157ec2dc65
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630275"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535262"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Automatisches Bezeichnen Ihrer Daten in Azure Purview
 
@@ -41,17 +41,17 @@ Vertraulichkeitsbezeichnungen in Azure Purview können zum automatischen Anwende
 Weitere Informationen finden Sie unter
 
 - [Informationen zu Vertraulichkeitsbezeichnungen](/microsoft-365/compliance/sensitivity-labels) in der Microsoft 365-Dokumentation
-- [Was sind Regeln für die automatische Bezeichnung?](#what-are-autolabeling-rules)
+- [Was sind Regeln für die automatische Bezeichnung?](#what-are-auto-labeling-rules)
 - [Unterstützte Datentypen für Vertraulichkeitsbezeichnungen in Azure Purview](#supported-data-types-for-sensitivity-labels-in-azure-purview)
 - [Bezeichnungen für Spalten von SQL-Datenbanken](#labeling-for-sql-database-columns)
 
-#### <a name="what-are-autolabeling-rules"></a>Was sind Regeln für die automatische Bezeichnung?
+#### <a name="what-are-auto-labeling-rules"></a>Was sind Regeln für die automatische Bezeichnung?
 
 Die Menge Ihrer Daten nimmt ständig zu und sie werden ständig geändert. Das Nachverfolgen der zurzeit nicht bezeichneten Daten und manuelle Bezeichnen ist nicht nur mühsam, sondern sorgt auch für unnötiges Kopfzerbrechen. 
 
-Die Regeln für die automatische Bezeichnung sind Bedingungen, mit denen Sie angeben, wann eine bestimmte Bezeichnung angewendet werden soll. Wenn diese Bedingungen erfüllt sind, wird die Bezeichnung automatisch den Daten zugewiesen, sodass konsistente Vertraulichkeitsbezeichnungen für Ihre Daten im großen Stil beibehalten werden.
+Die Regeln für die automatische Bezeichnung sind Bedingungen, mit denen Sie angeben, wann eine bestimmte Bezeichnung angewandt werden soll. Wenn diese Bedingungen erfüllt sind, wird die Bezeichnung automatisch den Daten zugewiesen, sodass konsistente Vertraulichkeitsbezeichnungen für Ihre Daten im großen Stil beibehalten werden.
 
-Stellen Sie beim Erstellen der Bezeichnungen sicher, dass Sie sowohl für [Dateien](#define-autolabeling-rules-for-files) als auch [Datenbankspalten](#define-autolabeling-rules-for-database-columns) Regeln für die automatische Bezeichnung definieren, um die Bezeichnungen automatisch mit jedem Datenscan anzuwenden. 
+Stellen Sie beim Erstellen der Bezeichnungen sicher, dass Sie sowohl für [Dateien](#define-auto-labeling-rules-for-files) als auch [Datenbankspalten](#define-auto-labeling-rules-for-database-columns) Regeln für die automatische Bezeichnung definieren, um die Bezeichnungen automatisch mit jedem Datenscan anzuwenden. 
 
 Nachdem Sie Ihre Daten in Purview gescannt haben, können Sie die automatisch angewendeten Bezeichnungen im Purview Catalog und in den Erkenntnisse-Berichten anzeigen.
 #### <a name="supported-data-types-for-sensitivity-labels-in-azure-purview"></a>Unterstützte Datentypen für Vertraulichkeitsbezeichnungen in Azure Purview
@@ -125,8 +125,8 @@ Nachdem Sie die Bezeichnung auf Ressourcen in Azure Purview erweitert haben, kö
 
     Definieren Sie insbesondere die Regeln für die automatische Bezeichnung von Dateien und Datenbankspalten:
 
-    - [Definieren von Regeln für die automatische Bezeichnung von Dateien](#define-autolabeling-rules-for-files)
-    - [Definieren von Regeln für die automatische Bezeichnung von Datenbankspalten](#define-autolabeling-rules-for-database-columns)
+    - [Definieren von Regeln für die automatische Bezeichnung von Dateien](#define-auto-labeling-rules-for-files)
+    - [Definieren von Regeln für die automatische Bezeichnung von Datenbankspalten](#define-auto-labeling-rules-for-database-columns)
 
     Weitere Informationen zu den Optionen des Assistenten finden Sie unter [Wirkung von Vertraulichkeitsbezeichnungen](/microsoft-365/compliance/sensitivity-labels#what-sensitivity-labels-can-do) in der Microsoft 365-Dokumentation.
 
@@ -156,7 +156,7 @@ Fahren Sie fort, indem Sie [Ihre Daten scannen, um Bezeichnungen automatisch anz
 - [Anzeigen von Bezeichnungen für Ressourcen](#view-labels-on-assets)
 - [Anzeigen von Erkenntnisse-Berichten für die Klassifizierungen und Vertraulichkeitsbezeichnungen](#view-insight-reports-for-the-classifications-and-sensitivity-labels)
 
-#### <a name="define-autolabeling-rules-for-files"></a>Definieren von Regeln für die automatische Bezeichnung von Dateien
+#### <a name="define-auto-labeling-rules-for-files"></a>Definieren von Regeln für die automatische Bezeichnung von Dateien
 
 Definieren Sie die Regeln für die automatische Bezeichnung von Dateien im Assistenten, wenn Sie die Bezeichnung erstellen oder bearbeiten. 
 
@@ -168,7 +168,7 @@ Beispiel:
  
 Weitere Informationen finden Sie unter [Konfigurieren der automatischen Zuweisung von Bezeichnungen für Office-Apps](/microsoft-365/compliance/apply-sensitivity-label-automatically#how-to-configure-auto-labeling-for-office-apps) in der Microsoft 365-Dokumentation. 
 
-#### <a name="define-autolabeling-rules-for-database-columns"></a>Definieren von Regeln für die automatische Bezeichnung von Datenbankspalten
+#### <a name="define-auto-labeling-rules-for-database-columns"></a>Definieren von Regeln für die automatische Bezeichnung von Datenbankspalten
 
 Definieren Sie die Regeln für die automatische Bezeichnung von Datenbankspalten im Assistenten, wenn Sie die Bezeichnung erstellen oder bearbeiten. 
 
@@ -184,7 +184,7 @@ Beispiel:
 
 ## <a name="scan-your-data-to-apply-labels-automatically"></a>Scannen Ihrer Daten, um Bezeichnungen automatisch anzuwenden
 
-Überprüfen Sie Ihre Daten in Azure Purview, um die von Ihnen erstellten Bezeichnungen automatisch auf Grundlage der von Ihnen definierten Regeln für die automatische Bezeichnung anzuwenden. 
+Überprüfen Sie Ihre Daten in Azure Purview, um die erstellten Bezeichnungen automatisch auf Grundlage der definierten Regeln für die automatische Bezeichnung anzuwenden. 
 
 Weitere Informationen zum Einrichten von Scans für verschiedene Ressourcen in Azure Purview finden Sie unter:
 
@@ -197,7 +197,7 @@ Weitere Informationen zum Einrichten von Scans für verschiedene Ressourcen in A
 
 ## <a name="view-labels-on-assets"></a>Anzeigen von Bezeichnungen für Ressourcen
 
-Nachdem Sie die Regeln für die automatische Bezeichnung in Microsoft 365 definiert und Ihre Daten in Azure Purview gescannt haben, werden automatisch Bezeichnungen auf Ihre Ressourcen angewendet. 
+Nachdem Sie die Regeln für die automatische Bezeichnung in Microsoft 365 definiert und Ihre Daten in Azure Purview gescannt haben, werden automatisch Bezeichnungen auf Ihre Ressourcen angewandt. 
 
 **So zeigen Sie die Bezeichnungen an, die im Azure Purview Catalog auf Ihre Ressourcen angewendet werden:**
 

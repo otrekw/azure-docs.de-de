@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: dcd8222b46262f6ec70459ec670789ae4a433c1d
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 93f90520f9a5f6ec424a7558418abfa4de4699ee
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625263"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364833"
 ---
 # <a name="chat-client-library-overview"></a>Übersicht über die Clientbibliothek für Chats
 
@@ -44,7 +44,7 @@ Die folgende Liste enthält die Features, die aktuell in den Clientbibliotheken 
 |                   | Senden und Empfangen von Eingabebenachrichtigungen, wenn ein Mitglied aktiv eine Nachricht in einem Chatthread eingibt <br/> *Bei Chatthreads mit mehr als 20 Mitgliedern nicht verfügbar*      | ✔️   | ✔️   | ✔️    | ✔️    |
 |                   | Abrufen aller Nachrichten in einem Chatthread <br/> *Unicode-Emojis werden unterstützt.*                                                  | ✔️   | ✔️  | ✔️    | ✔️  |
 |                   | Senden von Emojis im Nachrichteninhalt                                                                              | ✔️   | ✔️  | ✔️    | ✔️  |
-|Echtzeitsignalisierung (durch proprietäres Signalisierungspaket)| Erhalten einer Benachrichtigung, wenn ein Benutzer in einem Chatthread, dem er angehört, eine neue Nachricht erhält                                     | ✔️   | ❌    | ❌  | ❌  |
+|Echtzeitsignalisierung (durch proprietäres Signalisierungspaket**)| Erhalten einer Benachrichtigung, wenn ein Benutzer in einem Chatthread, dem er angehört, eine neue Nachricht erhält                                     | ✔️   | ❌    | ❌  | ❌  |
 |                    | Erhalten einer Benachrichtigung, wenn in einem Chatthread, dem der Benutzer angehört, eine Nachricht durch einen anderen Benutzer bearbeitet wurde                | ✔️   | ❌    | ❌    | ❌  |
 |                    | Erhalten einer Benachrichtigung, wenn in einem Chatthread, dem der Benutzer angehört, eine Nachricht durch einen anderen Benutzer gelöscht wurde                | ✔️   | ❌    | ❌    | ❌  |
 |                    | Erhalten einer Benachrichtigung, wenn ein anderes Chatthreadmitglied etwas eingibt                                                             | ✔️   | ❌    | ❌    | ❌  |
@@ -53,6 +53,8 @@ Die folgende Liste enthält die Features, die aktuell in den Clientbibliotheken 
 | Überwachung        | Überwachen der Nutzung (gesendete Nachrichten)                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | Überwachen der Qualität und des Status von API-Anforderungen Ihrer App sowie Konfigurieren von Warnungen über das Portal                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
 |Zusätzliche Features | Verwenden von [Cognitive Services-APIs](../../../cognitive-services/index.yml) zusammen mit der Clientbibliothek für Chats, um die Verwendung intelligenter Features zu ermöglichen: *Sprachübersetzung und Standpunktanalyse der eingehenden Nachricht auf einem Client, Spracherkennung zur Erstellung einer Nachricht, während der Teilnehmer spricht, usw.*                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
+
+**Das proprietäre Signalisierungspaket wird mithilfe von Websockets implementiert. Es wird ein Fallback auf ein langes Abrufintervall durchgeführt, falls Websockets nicht unterstützt werden.
 
 ## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>JavaScript-Chatclientbibliothek: Unterstützung nach Betriebssystemen und Browsern
 

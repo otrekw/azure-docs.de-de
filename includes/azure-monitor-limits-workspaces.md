@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 86c5c6fff06f43bf66427ba1935852fcf97a71c6
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 1f461c4870b398a49387472c49d45b90929405c7
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356209"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100529744"
 ---
 **Umfang und Aufbewahrung der Datensammlung** 
 
@@ -56,13 +56,19 @@ ms.locfileid: "96356209"
 | Maximale Ausführungszeit der Abfrage | 10 Minuten | Weitere Informationen finden Sie unter [Timeouts (Zeitlimit)](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts).  |
 | Maximale Anforderungsrate | 200 Anforderungen pro 30 Sekunden und Azure AD-Benutzer oder Client-IP-Adresse | Weitere Informationen finden Sie unter [Rate limits (Ratenlimits)](https://dev.loganalytics.io/documentation/Using-the-API/Limits). |
 
+**Connector für Azure Monitor-Protokolle**
+| Category | Begrenzung | Kommentare |
+|:---|:---|:---|
+| Maximale Anzahl von Datensätzen | 500.000 | |
+| Maximales Abfragetimeout | 110 Sekunden | |
+| Diagramme | | Die Visualisierung auf der Seite „Protokolle“ und der Connector nutzen unterschiedliche Diagrammbibliotheken, und einige Funktionen sind derzeit im Connector nicht verfügbar. |
+
 **Allgemeine Grenzwerte für Arbeitsbereiche**
 
 | Category | Begrenzung | Kommentare |
 |:---|:---|:---|
 | Maximale Anzahl von Spalten in einer Tabelle         | 500 | |
 | Maximale Anzahl an Zeichen für einen Spaltennamen | 500 | |
-| Datenexport | Derzeit nicht verfügbar | Verwenden Sie Azure Functions oder Logic Apps, um Daten zu aggregieren und zu exportieren. | 
 
 **<a name="data-ingestion-volume-rate">Rate für Datenerfassungsvolumen</a>**
 

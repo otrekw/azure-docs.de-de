@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 506e568f44d8dd5354ed7bd3ec20d0c71d484b85
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 41db671e4ab76dc56dc2c01f4852640acfe3fd83
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475183"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389738"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken
 <a name="network-service-tags"></a>
@@ -153,6 +153,7 @@ Die IP-Adressbereiche in diesen Dateien liegen in CIDR-Notation vor.
 ### <a name="tips"></a>Tipps 
 - Sie können Updates zwischen verschiedenen Veröffentlichungen anhand der erhöhten *changeNumber*-Werte in der JSON-Datei erkennen. Jeder Teilabschnitt (z. B. **Storage.WestUS**) weist einen eigenen *changeNumber*-Wert auf, der bei Änderungen erhöht wird. Die oberste Ebene des *changeNumber*-Werts einer Datei wird erhöht, wenn einer der Teilabschnitte geändert wird.
 - Beispiele für die Analyse der Diensttaginformationen (z. B. zum Abrufen aller Adressbereiche für „Storage“ in „USA, Westen“) finden Sie in der Dokumentation zur [Diensttagermittlungs-API in PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag?viewFallbackFrom=azps-2.3.2).
+- Wenn Diensttags neue IP-Adressen hinzugefügt werden, werden diese frühestens nach einer Woche in Azure verwendet. Dadurch haben Sie Zeit, die Systeme zu aktualisieren, von denen ggf. die den Diensttags zugeordneten IP-Adressen nachverfolgt werden müssen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen einer Netzwerksicherheitsgruppe](tutorial-filter-network-traffic.md).

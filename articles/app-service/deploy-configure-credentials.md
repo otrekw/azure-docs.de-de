@@ -2,28 +2,26 @@
 title: Konfigurieren von Anmeldeinformationen für die Bereitstellung
 description: Erfahren Sie, welche Arten von Anmeldeinformationen für die Bereitstellung in Azure App Service verfügbar sind und wie Sie diese konfigurieren und verwenden.
 ms.topic: article
-ms.date: 08/14/2019
+ms.date: 02/11/2021
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: e5793d21f27128162095e2d86e13006c5b6e7b7c
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 2a53ecb1b3411561da50f7dbf3be79f9d70b42bc
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007992"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560416"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Konfigurieren von Anmeldeinformationen für die Azure App Service-Bereitstellung
-[Azure App Service](./overview.md) unterstützt zwei Arten von Anmeldeinformationen für [lokale Git-Bereitstellungen](deploy-local-git.md) und [FTP/S-Bereitstellungen](deploy-ftp.md). Diese Anmeldeinformationen sind nicht identisch mit den Anmeldeinformationen Ihres Azure-Abonnements.
+Um die App-Bereitstellung von einem lokalen Computer aus zu schützen, unterstützt [Azure App Service](./overview.md) zwei Arten von Anmeldeinformationen für die [lokale Git-Bereitstellung](deploy-local-git.md) und [FTP/S-Bereitstellungen](deploy-ftp.md). Diese Anmeldeinformationen sind nicht identisch mit den Anmeldeinformationen Ihres Azure-Abonnements.
 
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
 
-## <a name="configure-user-level-credentials"></a><a name="userscope"></a>Konfigurieren von Anmeldeinformationen auf Benutzerebene
+## <a name="configure-user-scope-credentials"></a><a name="userscope"></a>Konfigurieren der Anmeldeinformationen für den Benutzerbereich
 
-Sie können die Anmeldeinformationen auf Benutzerebene auf der [Ressourcenseite](../azure-resource-manager/management/manage-resources-portal.md#manage-resources) einer App konfigurieren. Unabhängig von der App, in der Sie diese Anmeldeinformationen konfigurieren, gelten sie für alle Apps und für alle Abonnements in Ihrem Azure-Konto. 
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
 
-### <a name="in-the-cloud-shell"></a>In der Cloud Shell
-
-Führen Sie zum Konfigurieren des Bereitstellungsbenutzers in der [Cloud Shell](https://shell.azure.com) den Befehl [az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) aus. Ersetzen Sie \<username> und \<password> durch Ihren Benutzernamen und Ihr Kennwort für die Bereitstellung. 
+Führen Sie den Befehl [az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) aus. Ersetzen Sie \<username> und \<password> durch Ihren Benutzernamen bzw. Ihr Kennwort für die Bereitstellung. 
 
 - Der Benutzername muss in Azure eindeutig sein und darf bei lokalen Git-Pushes nicht das Symbol „@“ enthalten. 
 - Das Kennwort muss mindestens acht Zeichen lang sein und zwei der folgenden drei Elemente enthalten: Buchstaben, Zahlen und Symbole. 
@@ -32,21 +30,23 @@ Führen Sie zum Konfigurieren des Bereitstellungsbenutzers in der [Cloud Shell](
 az webapp deployment user set --user-name <username> --password <password>
 ```
 
-In der JSON-Ausgabe wird das Kennwort als `null` angezeigt. Wenn Sie den Fehler `'Conflict'. Details: 409` erhalten, müssen Sie den Benutzernamen ändern. Wenn Sie den Fehler `'Bad Request'. Details: 400` erhalten, müssen Sie ein sichereres Kennwort verwenden. 
+In der JSON-Ausgabe wird das Kennwort als `null` angezeigt.
 
-### <a name="in-the-portal"></a>Im Portal
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-Im Azure-Portal muss mindestens eine App vorhanden sein, bevor Sie auf die Seite mit den Anmeldeinformationen für die Bereitstellung zugreifen können. So konfigurieren Sie die Anmeldeinformationen auf Benutzerebene
+Die Anmeldeinformationen für den Benutzerbereich können nicht mit Azure PowerShell konfiguriert werden. Verwenden Sie eine andere Methode, oder ziehen Sie die Verwendung von [Anmeldeinformationen für den Anwendungsbereich](#appscope) in Erwägung. 
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Menü die Optionen **App Services** >  **\<any_app>**  > **Bereitstellungscenter** > **FTP** > **Dashboard** aus.
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+Sie können die Anmeldeinformationen für den Benutzerbereich auf der [Ressourcenseite](../azure-resource-manager/management/manage-resources-portal.md#manage-resources) einer App konfigurieren. Unabhängig von der App, in der Sie diese Anmeldeinformationen konfigurieren, gelten sie für alle Apps und alle Abonnements in Ihrem Azure-Konto. 
+
+Im [Azure-Portal](https://portal.azure.com) muss mindestens eine App vorhanden sein, bevor Sie auf die Seite mit den Anmeldeinformationen für die Bereitstellung zugreifen können. So konfigurieren Sie die Anmeldeinformationen für Ihren Benutzerbereich
+
+1. Wählen Sie im linken Menü Ihrer App **Bereitstellungscenter** > **FTPS-Anmeldeinformationen** oder **Lokale Git-/FTPS-Anmeldeinformationen** aus.
 
     ![Zeigt, wie Sie das FTP-Dashboard im Bereitstellungscenter in Azure App Services auswählen.](./media/app-service-deployment-credentials/access-no-git.png)
 
-    Oder wenn Sie Git-Bereitstellung bereits konfiguriert haben, wählen Sie **App Services** >  **&lt;beliebige_App>**  > **Bereitstellungscenter** > **FTP/Anmeldeinformationen** aus.
-
-    ![Zeigt, wie Sie das FTP-Dashboard für Ihre konfigurierte Git-Bereitstellung im Bereitstellungscenter in Azure App Services auswählen.](./media/app-service-deployment-credentials/access-with-git.png)
-
-2. Wählen Sie **Benutzeranmeldeinformationen** aus, konfigurieren Sie den Benutzernamen und das Kennwort, und wählen Sie dann **Anmeldeinformationen speichern** aus.
+2. Scrollen Sie nach unten zu **Benutzerbereich**, konfigurieren Sie **Benutzername** und **Kennwort**, und wählen Sie dann **Speichern** aus.
 
 Wenn Sie Anmeldeinformationen für die Bereitstellung festgelegt haben, finden Sie den *Git*-Benutzernamen für Bereitstellungen auf der Seite **Übersicht** Ihrer App.
 
@@ -55,24 +55,79 @@ Wenn Sie Anmeldeinformationen für die Bereitstellung festgelegt haben, finden S
 Wenn die Git-Bereitstellung konfiguriert ist, wird auf der Seite ein **Git-/Bereitstellungsbenutzername** angezeigt, andernfalls ein **FTP-/Bereitstellungsbenutzername**.
 
 > [!NOTE]
-> Ihr Kennwort auf Benutzerebene für die Bereitstellung wird von Azure nicht angezeigt. Wenn Sie das Kennwort vergessen, können Sie Ihre Anmeldeinformationen über die Schritte in diesem Abschnitt zurücksetzen.
+> Ihr Kennwort für den Benutzerbereich für die Bereitstellung wird von Azure nicht angezeigt. Wenn Sie das Kennwort vergessen, können Sie Ihre Anmeldeinformationen über die Schritte in diesem Abschnitt zurücksetzen.
 >
 > 
 
-## <a name="use-user-level-credentials-with-ftpftps"></a>Verwenden von Anmeldeinformationen auf Benutzerebene mit FTP/FTPS
+-----
 
-Für die Authentifizierung an einem FTP/FTPS-Endpunkt mit Anmeldeinformationen auf Benutzerebene ist ein Benutzername im folgenden Format erforderlich: `<app-name>\<user-name>`
+## <a name="use-user-scope-credentials-with-ftpftps"></a>Verwenden von Anmeldeinformationen für den Benutzerbereich mit FTP/FTPS
 
-Weil Anmeldeinformationen auf Benutzerebene mit dem Benutzer und nicht einer bestimmten Ressource verknüpft sind, muss der Benutzername dieses Format aufweisen, damit die Anmeldeaktion an den richtigen App-Endpunkt weitergeleitet wird.
+Für die Authentifizierung an einem FTP-/FTPS-Endpunkt mit Anmeldeinformationen für den Benutzerbereich ist ein Benutzername im folgenden Format erforderlich: `<app-name>\<user-name>`
 
-## <a name="get-and-reset-app-level-credentials"></a><a name="appscope"></a>Abrufen und Zurücksetzen der Anmeldeinformationen auf App-Ebene
-So rufen Sie die Anmeldeinformationen auf App-Ebene ab
+Da Anmeldeinformationen für den Benutzerbereich mit dem Benutzer und nicht einer bestimmten Ressource verknüpft sind, muss der Benutzername dieses Format aufweisen, damit die Anmeldeaktion an den richtigen App-Endpunkt weitergeleitet wird.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Menü **App Services** >  **&lt;beliebige_App>**  > **Bereitstellungscenter** > **FTP/Anmeldeinformationen** aus.
+## <a name="get-application-scope-credentials"></a><a name="appscope"></a>Abrufen von Anmeldeinformationen für den Anwendungsbereich
 
-2. Wählen Sie **App-Anmeldeinformationen** aus und dann den Link **Kopieren**, um den Benutzernamen oder das Kennwort zu kopieren.
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
 
-Um die Anmeldeinformationen auf App-Ebene zurückzusetzen, wählen Sie im selben Dialogfeld **Anmeldeinformationen zurücksetzen** aus.
+Verwenden Sie den Befehl [az webapp deployment list-publishing-profiles](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles), um die Anmeldeinformationen für den Anwendungsbereich abzurufen. Beispiel:
+
+```azurecli-interactive
+az webapp deployment list-publishing-profiles --resource-group <group-name> --name <app-name>
+```
+
+Bei einer [lokalen Git-Bereitstellung](deploy-local-git.md) können Sie auch den Befehl [az webapp deployment list-publishing-credentials](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_credentials) verwenden, um einen Git-Remote-URI für Ihre App abzurufen. Darin sind die Anmeldeinformationen für den Anwendungsbereich bereits eingebettet. Beispiel:
+
+```azurecli-interactive
+az webapp deployment list-publishing-credentials --resource-group <group-name> --name <app-name> --query scmUri
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Rufen Sie die Anmeldeinformationen für den Anwendungsbereich mithilfe des Befehls [Get-AzWebAppPublishingProfile](/powershell/module/az.websites/get-azwebapppublishingprofile) ab. Beispiel:
+
+```azurepowershell-interactive
+Get-AzWebAppPublishingProfile -ResourceGroupName <group-name> -Name <app-name>
+```
+
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+1. Wählen Sie im linken Menü Ihrer App **Bereitstellungscenter** > **FTPS-Anmeldeinformationen** oder **Lokale Git-/FTPS-Anmeldeinformationen** aus.
+
+    ![Zeigt, wie Sie das FTP-Dashboard im Bereitstellungscenter in Azure App Services auswählen.](./media/app-service-deployment-credentials/access-no-git.png)
+
+2. Wählen Sie im Abschnitt **Anwendungsbereich** den Link **Kopieren** aus, um den Benutzernamen oder das Kennwort zu kopieren.
+
+-----
+
+## <a name="reset-application-scope-credentials"></a>Zurücksetzen von Anmeldeinformationen für den Anwendungsbereich
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
+
+Sie setzen die Anmeldeinformationen für den Anwendungsbereich mit dem Befehl [az resource invoke-action](/cli/azure/resource#az_resource_invoke_action) zurück:
+
+```azurecli-interactive
+az resource invoke-action --action newpassword --resource-group <group-name> --name <app-name> --resource-type Microsoft.Web/sites
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Sie setzen die Anmeldeinformationen für den Anwendungsbereich mit dem Befehl [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) zurück:
+
+```azurepowershell-interactive
+Invoke-AzResourceAction -ResourceGroupName <group-name> -ResourceType Microsoft.Web/sites -ResourceName <app-name> -Action newpassword
+```
+
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+1. Wählen Sie im linken Menü Ihrer App **Bereitstellungscenter** > **FTPS-Anmeldeinformationen** oder **Lokale Git-/FTPS-Anmeldeinformationen** aus.
+
+    ![Zeigt, wie Sie das FTP-Dashboard im Bereitstellungscenter in Azure App Services auswählen.](./media/app-service-deployment-credentials/access-no-git.png)
+
+2. Wählen Sie im Abschnitt **Anwendungsbereich** die Option **Zurücksetzen** aus.
+
+-----
 
 ## <a name="disable-basic-authentication"></a>Deaktivieren der Standardauthentifizierung
 
@@ -82,7 +137,7 @@ Einige Organisationen müssen Sicherheitsanforderungen erfüllen und möchten da
 
 Um den FTP-Zugriff auf die Website zu deaktivieren, führen Sie den folgenden CLI-Befehl aus. Ersetzen Sie die Platzhalter durch die Ressourcengruppe und den Websitenamen. 
 
-```bash
+```azurecli-interactive
 az resource update --resource-group <resource-group> --name ftp --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
@@ -92,7 +147,7 @@ Um zu bestätigen, dass der FTP-Zugriff blockiert ist, können Sie versuchen, si
 
 Führen Sie den folgenden CLI-Befehl aus, um Standardauthentifizierungszugriff auf den WebDeploy-Port und die SCM-Website zu deaktivieren. Ersetzen Sie die Platzhalter durch die Ressourcengruppe und den Websitenamen. 
 
-```bash
+```azurecli-interactive
 az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
