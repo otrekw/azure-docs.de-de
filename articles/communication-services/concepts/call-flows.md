@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 410f8ab4de0d93262647cbc07e0792cd39f7a844
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 79382dde5780827d7b0393858fe8896c5da1b56d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593636"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559433"
 ---
-# <a name="call-flows"></a>Anrufflows
+# <a name="call-flow-basics"></a>Grundlegendes zu Anrufabläufen
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
@@ -76,6 +76,14 @@ Falls für die Clientbibliothek UDP für Medien aufgrund von Firewalleinschränk
 
 :::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="Diagramm: Ablauf des TCP-Medienprozesses in Communication Services":::
 
+### <a name="case-5-communication-services-client-library-and-microsoft-teams-in-a-scheduled-teams-meeting"></a>Fall 5: Communication Services-Clientbibliothek und Microsoft Teams in einer geplanten Teams-Besprechung
+
+Die Signalisierung wird über den Signalisierungscontroller abgewickelt. Medien durchlaufen den Medienprozessor. Signalisierungscontroller und Medienprozessor werden von Communication Services und Microsoft Teams gemeinsam genutzt. 
+
+:::image type="content" source="./media/call-flows/teams-communication-services-meeting.png" alt-text="Diagramm: Communication Services-Clientbibliothek und Team-Client in einer geplanten Teams-Besprechung":::
+
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
@@ -85,3 +93,4 @@ Die Artikel zu den folgenden Themen könnten Sie auch interessieren:
 
 - [Anruftypen](../concepts/voice-video-calling/about-call-types.md)
 - [Client-Server-Architektur](./client-and-server-architecture.md)
+- [Topologien für Anrufabläufe](./detailed-call-flows.md)

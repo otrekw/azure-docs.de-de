@@ -3,14 +3,14 @@ title: Schema für arbeitsbereichsbasierte Application Insights-Ressourcen in Az
 description: Erfahren Sie mehr über die neue Tabellenstruktur und das neue Tabellenschema für arbeitsbereichsbasierte Application Insights-Ressourcen in Azure Monitor.
 ms.topic: conceptual
 ms.date: 05/09/2020
-ms.openlocfilehash: 8f0bee64d74cfd5b6abef5c918c023974fda3fcf
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e63d4a680ad76ccd6895aed53f3276a5775b1226
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931052"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385964"
 ---
-# <a name="workspace-based-resource-changes-preview"></a>Änderungen bei arbeitsbereichsbasierten Ressourcen (Vorschau)
+# <a name="workspace-based-resource-changes"></a>Änderungen bei arbeitsbereichsbasierten Ressourcen
 
 Vor der Einführung von [arbeitsbereichsbasierten Application Insights-Ressourcen](create-workspace-resource.md) wurden Application Insights-Daten getrennt von anderen Protokolldaten in Azure Monitor gespeichert. Beide basieren auf Azure Data Explorer und verwenden dieselbe Kusto-Abfragesprache (KQL). Dies ist unter [Protokolle in Azure Monitor](../platform/data-platform-logs.md) beschrieben.
 

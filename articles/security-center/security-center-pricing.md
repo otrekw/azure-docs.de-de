@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2021
+ms.date: 02/14/2021
 ms.author: memildin
-ms.openlocfilehash: 9e537bfa782569fb8fa2a7957c6874bda69d8c06
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 845697b9d2fd8d43caa3a9992fea8a780b7d9b7c
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805353"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522868"
 ---
 # <a name="pricing-of-azure-security-center"></a>Preise für Azure Security Center
 Azure Security Center ermöglicht eine einheitliche Sicherheitsverwaltung und erweiterten Schutz vor Bedrohungen für Workloads, die in Azure, lokal und in anderen Clouds ausgeführt werden. Security Center bietet Transparenz und Kontrolle für Hybridcloud-Workloads, aktive Abwehrmaßnahmen zur Verringerung Ihrer Anfälligkeit für Bedrohungen sowie eine intelligente Erkennung, damit Sie mit der schnellen Entwicklung bei Cyberrisiken Schritt halten können.
@@ -118,10 +118,18 @@ Wenn Sie bereits eine Lizenz für Microsoft Defender für Endpunkt besitzen, mü
 Wenden Sie sich an das Security Center-Supportteam, um den Rabatt zu bestätigen, und geben Sie für jede relevante Lizenz die entsprechende Arbeitsbereichs-ID, die Region und die Lizenzinformationen an.
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>Für mein Abonnement ist Azure Defender für Server aktiviert. Muss ich für Server bezahlen, die nicht ausgeführt werden? 
-Nein. Wenn Sie [Azure Defender für Server](defender-for-servers-introduction.md) für ein Abonnement aktivieren, werden Ihnen nur stündliche Kosten für die Ausführung von Servern berechnet. Für alle Server, die ausgeschaltet sind, fallen für Sie während dieses Zeitraums keine Kosten an. 
+Nein. Wenn Sie für ein Abonnement [Azure Defender für Server](defender-for-servers-introduction.md) aktivieren, fallen für Computer im Zustand „Zuordnung aufgehoben“ keine Gebühren an, solange sie sich in diesem Zustand befinden. Computer werden gemäß ihrem Energiezustand abgerechnet, wie in der folgenden Tabelle zu sehen:
 
-> [!TIP]
-> Dies gilt auch für die anderen Ressourcentypen, die mit Security Center geschützt sind. 
+| State        | BESCHREIBUNG                                                                                                                                      | Abgerechnete Instanznutzung |
+|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| Wird gestartet     | Die VM wird gestartet.                                                                                                                               | Nicht in Rechnung gestellt            |
+| Wird ausgeführt      | Dies ist der normale Ausführungszustand einer VM.                                                                                                                    | In Rechnung gestellt                |
+| Wird beendet     | Dies ist ein Übergangszustand. Nach Abschluss des Vorgangs wird für die VM Beendet angezeigt.                                                                           | In Rechnung gestellt                |
+| Beendet      | Die VM wurde über das Gastbetriebssystem oder mithilfe der PowerOff-APIs heruntergefahren. Der VM ist weiterhin Hardware zugeordnet, und sie verbleibt auf dem Host. | In Rechnung gestellt                |
+| Zuordnung wird aufgehoben | Dies ist ein Übergangszustand. Nach Abschluss des Vorgangs wird für die VM Zuordnung aufgehoben angezeigt.                                                                             | Nicht in Rechnung gestellt            |
+| Zuordnung aufgehoben  | Die VM wurde erfolgreich beendet und vom Host entfernt.                                                                                  | Nicht in Rechnung gestellt            |
+
+:::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="Computer mit aufgehobener Zuordnung in Azure Virtual Machines":::
 
 ### <a name="will-i-be-charged-for-machines-without-the-log-analytics-agent-installed"></a>Werden mir für Computer, auf denen der Log Analytics-Agent nicht installiert ist, Kosten berechnet?
 Ja. Wenn Sie für ein Abonnement [Azure Defender für Server](defender-for-servers-introduction.md) aktivieren, werden für die Computer dieses Abonnements auch dann einige Schutzmaßnahmen getroffen, wenn Sie den Log Analytics-Agent nicht installiert haben.

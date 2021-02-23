@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 09/30/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: e4231f5c4e947f29a72e581cf461ff737c1a0c82
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 5b537b88052ce4042e346732f3dc63aaec6621cc
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97956523"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100529722"
 ---
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Veröffentlichen** aus.
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Veröffentlichen** aus. Wählen Sie unter **Ziel** die Option **Azure** und anschließend **Weiter** aus.
 
-1. Wählen Sie unter **Ziel** die Option **Azure** :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-profile-step-1.png" alt-text="Auswählen von „Azure“ als Ziel"::: aus.
+1. Wählen Sie für **Bestimmtes Ziel** die Option **Azure-Funktions-App (Windows)** aus, um eine Funktions-App zu erstellen, die unter Windows ausgeführt wird.
 
-1. Wählen Sie unter **Spezifisches Ziel** die Option **Azure-Funktions-App (Windows)** aus.
+1. Wählen Sie unter **Functions-Instanz** die Option **Neue Azure Functions-Instanz erstellen...** aus. 
 
-    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-profile-step-2.png" alt-text="Auswählen von „Azure-Funktions-App“":::
+    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-new-resource.png" alt-text="Erstellen einer neuen Funktions-App-Instanz":::
 
-1. Wählen Sie unter **Funktionsinstanz** die Option **Neue Azure-Funktion erstellen...** aus, und verwenden Sie dann die in der folgenden Tabelle angegebenen Werte:
+1. Erstellen Sie eine neue Instanz mit den Werten aus der folgenden Tabelle:
 
     | Einstellung      | Wert  | BESCHREIBUNG                                |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -36,7 +36,8 @@ ms.locfileid: "97956523"
 
     ![Dialogfeld „App Service erstellen“](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 
-1. Wählen Sie **Erstellen** aus, um eine Funktions-App und die zugehörigen Ressourcen in Azure zu erstellen. 
+1. Wählen Sie **Erstellen** aus, um eine Funktions-App und die zugehörigen Ressourcen in Azure zu erstellen. Der Status der Ressourcenerstellung wird links unten im Fenster angezeigt. 
+
 1. Vergewissern Sie sich unter **Funktionsinstanz**, dass die Option **Aus Paketdatei ausführen** aktiviert ist. Ihre Funktions-App wird unter Verwendung der [ZIP-Bereitstellung](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) mit aktiviertem Modus [Run-From-Package](../articles/azure-functions/run-functions-from-deployment-package.md) bereitgestellt. Dies ist die empfohlene Bereitstellungsmethode für Ihr Funktionsprojekt, da damit eine bessere Leistung erzielt wird. 
 
     :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-profile-step-4.png" alt-text="Abschließen der Profilerstellung":::

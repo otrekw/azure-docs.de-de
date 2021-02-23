@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/10/2021
 ms.author: tisande
-ms.openlocfilehash: 58ee3bcd0ba14359ea9adaa131b8280b81008b57
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 26465eb9826c60daad7b44e1c2fe6ae3c19b1ed0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526754"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378807"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indizierungsrichtlinien in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -308,6 +308,26 @@ Bei der Erstellung zusammengesetzter Indizes für die Optimierung einer Abfrage 
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC``` | ```No```   |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.age ASC, c.name ASC,c.timestamp ASC``` | `Yes` |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.timestamp ASC``` | `No` |
+
+### <a name="queries-with-a-filter-and-an-aggregate"></a>Abfragen mit einem Filter und einem Aggregat 
+
+Wenn eine Abfrage nach einer oder mehreren Eigenschaften filtert und eine Aggregatsystemfunktion aufweist, kann es hilfreich sein, einen zusammengesetzten Index für die Eigenschaften im Filter und in der Aggregatsystemfunktion zu erstellen. Diese Optimierung betrifft die Systemfunktionen [SUM](sql-query-aggregate-sum.md) und [AVG](sql-query-aggregate-avg.md).
+
+Bei der Erstellung zusammengesetzter Indizes für die Optimierung einer Abfrage mit einem Filter und einer Aggregatsystemfunktion muss Folgendes berücksichtigt werden:
+
+* Zusammengesetzte Indizes sind beim Ausführen von Abfragen mit Aggregaten optional. Mit einem zusammengesetzten Index beansprucht die Abfrage allerdings häufig sehr viel weniger RUs.
+* Wenn die Abfrage nach mehreren Eigenschaften filtert, müssen die Gleichheitsfilter die ersten Eigenschaften im zusammengesetzten Index sein.
+* Sie können pro zusammengesetztem Index maximal über einen Bereichsfilter verfügen, und dieser muss in der Eigenschaft in der Aggregatsystemfunktion enthalten sein.
+* Die Eigenschaft in der Aggregatsystemfunktion muss im zusammengesetzten Index zuletzt definiert werden.
+* Die Sortierfolge `order` (`ASC` oder `DESC`) spielt keine Rolle.
+
+| **Zusammengesetzter Index**                      | **Beispielabfrage**                                  | **Unterstützung durch zusammengesetzten Index?** |
+| ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
+| ```(name ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John"``` | `Yes` |
+| ```(timestamp ASC, name ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John"``` | `No` |
+| ```(name ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name > "John"``` | `No` |
+| ```(name ASC, age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age = 25``` | `Yes` |
+| ```(age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age > 25``` | `No` |
 
 ## <a name="index-transformationmodifying-the-indexing-policy"></a><index-transformation>Ändern der Indizierungsrichtlinie
 

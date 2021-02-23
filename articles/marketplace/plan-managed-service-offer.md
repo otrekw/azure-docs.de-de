@@ -8,22 +8,22 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
-ms.openlocfilehash: 57a6883a2c4fff14507df27b55ac0f6621306bf5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f096e53f8054039f361bde1c5f2adffac615c53d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879274"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371939"
 ---
 # <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>Vorgehensweise beim Planen eines Angebots für verwaltete Dienste für den kommerziellen Microsoft-Marketplace
 
 In diesem Artikel werden die Anforderungen zum Veröffentlichen eines Angebots für verwaltete Dienste für den kommerziellen Marketplace von Microsoft über das Partner Center erläutert.
 
-Verwaltete Dienste sind Azure Marketplace-Angebote, die mandantenübergreifende und mehrinstanzenfähige Verwaltung mit Azure Lighthouse ermöglichen. Weitere Informationen finden Sie unter [Was ist Azure Lighthouse?](../lighthouse/overview.md) Wenn ein Kunde ein Angebot für verwaltete Dienste erwirbt, kann er ein oder mehrere Abonnements oder Ressourcengruppen delegieren.
+Verwaltete Dienste sind Azure Marketplace-Angebote, die mandantenübergreifende und mehrinstanzenfähige Verwaltung mit Azure Lighthouse ermöglichen. Weitere Informationen finden Sie unter [Was ist Azure Lighthouse?](../lighthouse/overview.md) Wenn ein Kunde ein Angebot für verwaltete Dienste erwirbt, kann er ein oder mehrere Abonnements oder Ressourcengruppen delegieren. Anschließend können Sie mithilfe der Funktionen für die [delegierte Azure-Ressourcenverwaltung](../lighthouse/concepts/azure-delegated-resource-management.md) von Azure Lighthouse mit diesen Ressourcen arbeiten.
 
 ## <a name="eligibility-requirements"></a>Qualifizierungsanforderungen
 
-Zum Veröffentlichen eines verwalteten Diensts müssen Sie in der Cloudplattform eine Gold- oder Silver-Kompetenz von Microsoft erworben haben. Diese Kompetenz belegt Ihr Fachwissen gegenüber Kunden. Weitere Informationen finden Sie unter [Kompetenzen für das Microsoft Partner Network](https://partner.microsoft.com/membership/competencies).
+Zum Veröffentlichen eines Angebots für einen verwalteten Dienst müssen Sie über eine Gold- oder Silver-Kompetenz von Microsoft in der Kategorie „Cloudplattform“ verfügen. Diese Kompetenz belegt Ihr Fachwissen gegenüber Kunden. Weitere Informationen finden Sie unter [Kompetenzen für das Microsoft Partner Network](https://partner.microsoft.com/membership/competencies).
 
 Für die Veröffentlichung im Azure Marketplace müssen Angebote allen gültigen [Zertifizierungsrichtlinien für den kommerziellen Marketplace](/legal/marketplace/certification-policies) entsprechen.
 

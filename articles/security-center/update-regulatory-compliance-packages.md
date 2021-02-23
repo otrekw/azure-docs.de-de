@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 3fca96c6cf11e0b35cd830fe4c0d8ccac8e66bd2
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 768f686889663d9b1af4b88d84b361ac9460a5a0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99548863"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381731"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Anpassen der Standards in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen
 
@@ -92,7 +92,7 @@ In den folgenden Schritten wird erklärt, wie Sie ein Paket hinzufügen, um Ihre
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Dashboard für die Einhaltung gesetzlicher Bestimmungen" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
-## <a name="removing-a-standard-from-your-dashboard"></a>Entfernen eines Standards aus Ihrem Dashboard
+## <a name="remove-a-standard-from-your-dashboard"></a>Entfernen eines Standards aus Ihrem Dashboard
 
 Falls einer der angegebenen gesetzlichen Standards für Ihre Organisation nicht relevant ist, ist es problemlos möglich, ihn aus der Benutzeroberfläche zu entfernen. Auf diese Weise können Sie das Dashboard für die Einhaltung gesetzlicher Bestimmungen weiter anpassen und nur die Standards nutzen, die für Sie zutreffen.
 
