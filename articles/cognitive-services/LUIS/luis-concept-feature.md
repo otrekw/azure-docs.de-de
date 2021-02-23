@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 08ab71375171d4bb4167c725bc7118bec2e1ebfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da85abdff3d1022659f2d4e83fd14c5ae6003fc9
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372006"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546056"
 ---
 # <a name="machine-learning-features"></a>Features des maschinellen Lernens
 
@@ -160,11 +160,9 @@ Lieferadresse (durch maschinelles Lernen erworbene Entität)
 
 ### <a name="required-feature-using-prebuilt-entities"></a>Erforderliches Feature mit vordefinierten Entitäten
 
-Bei Ort, Bundesland/Kanton und Land/Region handelt es sich meist um feste Listen, die sich in der Regel nur selten ändern. Unter Umständen verfügen diese Entitäten über die relevanten empfohlenen Features, und diese Features können dann als erforderlich gekennzeichnet werden. Das bedeutet, dass die gesamte Lieferadresse nicht zurückgegeben wird, wenn die Entitäten mit erforderlichen Features nicht gefunden werden.
+Bei vorgefertigten Entitäten wie Ort, Bundesland/Kanton und Land/Region handelt es sich meist um feste Listen, die sich in der Regel nur selten ändern. Unter Umständen verfügen diese Entitäten über die relevanten empfohlenen Features, und diese Features können dann als erforderlich gekennzeichnet werden. Allerdings gehört das `isRequired`-Flag nur zu der Entität, der es zugewiesen ist, und wirkt sich nicht auf die Hierarchie aus. Wenn das vorgefertigte untergeordnete Entitätsfeature nicht gefunden wird, wirkt sich dies nicht auf die Erkennung und Rückgabe der übergeordneten Entität aus.
 
-Was passiert, wenn Ort, Bundesland/Kanton oder Land/Region in der Äußerung enthalten sind, sich aber an einem Ort oder in einem Slangausdruck befinden, der von LUIS nicht erwartet wird? Falls Sie eine Nachverarbeitung als Hilfe bei der Auflösung der Entität durchführen möchten, weil von LUIS eine niedrige Zuverlässigkeitsbewertung vergeben wurde, kennzeichnen Sie das Feature nicht als erforderlich.
-
-Ein weiteres Beispiel für ein erforderliches Feature für die Lieferadresse ist es, die Hausnummer als erforderliche [vordefinierte](luis-reference-prebuilt-entities.md) Zahl festzulegen. Benutzer können dann entweder „1 Microsoft Way“ oder „One Microsoft Way“ eingeben. Beide Fälle werden für die untergeordnete Entität „Hausnummer“ als Ziffer „1“ aufgelöst.
+Angenommen, Sie benötigen ein erforderliches Feature zum Erkennen von Adressen. Möglicherweise sollten Sie die Angabe einer Hausnummer als erforderlich festlegen. Dies ermöglicht es Benutzern, „1 Microsoft Way“ oder „One Microsoft Way“ einzugeben, wobei beide Angaben zum numerischen Wert „1“ für die untergeordnete Entität für die Hausnummer aufgelöst werden würden. Weitere Informationen finden Sie im Artikel zu [vorgefertigten Entitäten](luis-reference-prebuilt-entities.md).
 
 ### <a name="required-feature-using-list-entities"></a>Erforderliches Feature bei Verwendung von Listenentitäten
 
@@ -226,7 +224,7 @@ Nach dem Erstellen der Machine Learning-Entität müssen Sie einer Absicht Beisp
 
 Bezeichnen Sie beim Beispiel für die Ticketbuchung die Beispieläußerungen in der Absicht mit der Entität `TicketBooking` und allen untergeordneten Entitäten des Texts.
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Schema der Entität für die Ticketbuchung":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Bezeichnen von Beispieläußerungen":::
 
 ### <a name="example-pizza-ordering-app"></a>Beispiel: App für Pizzabestellung
 
@@ -234,13 +232,13 @@ In einem zweiten Beispiel geht es um eine App für eine Pizzeria, mit der Pizzab
 
 In diesem Beispiel ist die Machine Learning-Entität komplexer und umfasst geschachtelte untergeordnete Entitäten, Ausdruckslisten und vordefinierte und benutzerdefinierte Entitäten.
 
-:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Schema der Entität für die Ticketbuchung":::
+:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Schema der Entität für Pizzabestellung":::
 
 In diesem Beispiel werden Features auf der Ebene der untergeordneten Entität und noch auf einer weiteren untergeordneten Ebene verwendet. Es ist ein wichtiger Teil Ihres Entitätsentwurfs, welche Ebene welche Art von Ausdrucksliste oder Modell als Feature erhält.
 
 Untergeordnete Entitäten können zwar über viele Ausdruckslisten als Features verfügen, die zur Erkennung der Entität beitragen, aber jede untergeordnete Entität weist nur ein Modell als Feature auf. Im Falle dieser [Pizza-App](https://github.com/Azure/pizza_luis_bot/blob/master/CognitiveModels/MicrosoftPizza.json) handelt es sich bei diesen Modellen hauptsächlich um Listen.
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Schema der Entität für die Ticketbuchung":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Absicht „Pizzabestellung“ mit bezeichneten Beispieläußerungen":::
 
 Die richtig bezeichneten Beispieläußerungen werden so angezeigt, dass die Schachtelung der Entitäten veranschaulicht wird. 
 

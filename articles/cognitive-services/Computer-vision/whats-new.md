@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 31ca65099d645b7fdfee70275515f0a864cd905f
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: dbe0b5ac207b361a9584603bbe2d59abd5e5ca4e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007396"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390401"
 ---
 # <a name="whats-new-in-computer-vision"></a>Neuerungen beim maschinellen Sehen
 
@@ -26,7 +26,7 @@ Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versi
 ### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>Lese-API v3.2 (Public Preview) mit OCR-Unterstützung für 73 Sprachen
 Die Lese-API v3.2 (Public Preview) für maschinelles Sehen ist als Clouddienst und Docker-Container verfügbar und beinhaltet diese Updates:
 * [OCR für 73 Sprachen](./language-support.md#optical-character-recognition-ocr), einschließlich vereinfachtes und traditionelles Chinesisch, Japanisch, Koreanisch und lateinische Sprachen
-* Natürliche Leserichtung für die Textzeilenausgabe
+* Natürliche Leserichtung für die Textzeilenausgabe (nur lateinische Sprachen)
 * Klassifizierung der Handschrift für Textzeilen zusammen mit einer Konfidenzbewertung (nur lateinische Sprachen)
 * Extrahieren von Text nur für ausgewählte Seiten bei mehrseitigen Dokumenten
 * Verfügbar als [Container ohne Distribution](./computer-vision-how-to-install-containers.md?tabs=version-3-2) für die lokale Bereitstellung

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/07/2020
+ms.date: 02/03/2021
 ms.author: jeedes
-ms.openlocfilehash: d9e348d456d517cd20e899648b9e92b3cd802ffb
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: dd4114f417fa266d8d638e28167d513fdf01aa97
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806305"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380843"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>Tutorial: Integrieren von Bynder in Azure Active Directory
 
@@ -30,7 +30,7 @@ In diesem Tutorial erfahren Sie, wie Sie Bynder in Azure Active Directory (Azure
 
 Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Falls Sie kein Abonnement besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige kostenlose Testversion erhalten.
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Bynder-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
@@ -40,7 +40,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * Bynder unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
 * Bynder unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
-## <a name="adding-bynder-from-the-gallery"></a>Hinzufügen von Bynder aus dem Katalog
+## <a name="add-bynder-from-the-gallery"></a>Hinzufügen von Bynder aus dem Katalog
 
 Zum Konfigurieren der Integration von Bynder in Azure AD müssen Sie Bynder aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -65,13 +65,13 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
    1. **[Erstellen eines Bynder-Testbenutzers](#create-bynder-test-user)** , um in Bynder eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Bynder** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -163,4 +163,4 @@ Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Bynder können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Bynder können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

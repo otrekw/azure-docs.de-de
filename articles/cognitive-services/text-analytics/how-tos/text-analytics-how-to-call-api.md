@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 57fda08a996b7d46da74c0ce35bff0df20821b31
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 708c70a5144e4e38dd5de9524711c80ef28cd839
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654828"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092127"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Aufrufen der Textanalyse-REST-API
 
@@ -34,6 +34,16 @@ Bevor Sie die Textanalyse-API verwenden, müssen Sie eine Azure-Ressource mit ei
 2.  Wählen Sie die Region aus, die Sie für Ihren Endpunkt verwenden möchten.  Beachten Sie, dass die Endpunkte `/analyze` und `/health` nur in den folgenden Regionen verfügbar sind: USA, Westen 2; USA, Osten 2; USA, Mitte; Europa, Norden; Europa, Westen.
 
 3.  Erstellen Sie die Ressource der Textanalyse, und wechseln Sie links auf der Seite zum Blatt mit den Schlüsseln und Endpunkten. Kopieren Sie den Schlüssel, mit dem Sie später die APIs aufrufen werden. Sie werden ihn später als Wert für den Header `Ocp-Apim-Subscription-Key` hinzufügen.
+
+## <a name="change-your-pricing-tier"></a>Ändern des Tarifs 
+
+Wenn Sie über eine Textanalyseressource mit einem der Tarife S0 bis S4 verfügen, können Sie den Tarif so aktualisieren, dass der [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) „Standard (S)“ verwendet wird:
+
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zur Textanalyseressource.
+2. Klicken Sie im Navigationsmenü auf der linken Seite auf **Tarif**. Die Option befindet sich unter **RESSOURCENVERWALTUNG**. 
+3. Wählen Sie als Tarif „Standard (S)“ aus. Klicken Sie dann auf **Auswählen**.
+
+Sie können auch eine neue Textanalyseressource mit Tarif „Standard (S)“ erstellen und Ihre Anwendungen migrieren, sodass die Anmeldeinformationen für die neue Ressource verwendet werden. 
 
 ## <a name="using-the-api-synchronously"></a>Synchrones Verwenden der API
 

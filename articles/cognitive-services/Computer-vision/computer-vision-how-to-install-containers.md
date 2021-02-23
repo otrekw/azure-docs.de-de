@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: Lokal, OCR, Docker, Container
-ms.openlocfilehash: fc5d281a6c0c9dd9620109de9d8deea27462ad0e
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 843000963bc05cab5415c9bb1db32b3272c8dc9f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008586"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391768"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Installieren von Read-OCR-Docker-Containern (Vorschau) 
 
@@ -41,7 +41,7 @@ Der Read 3.2-OCR-Vorschaucontainer bietet Folgendes:
 * Zuverlässigkeitsbewertungen
 * Unterstützung für Dokumente mit gedrucktem und handgeschriebenem Text
 * Möglichkeit, Text nur von ausgewählten Seiten in einem Dokument zu extrahieren
-* Wählen Sie für die Reihenfolge der Textzeilenausgabe statt der Standardrichtung eine natürlichere Leserichtung aus.
+* Änderung der Reihenfolge der Textzeilenausgabe von der Standardrichtung in eine natürlichere Leserichtung nur für lateinische Sprachen
 * Klassifizierung der Textzeilen als handschriftlich oder nicht nur für lateinische Sprachen
 
 Wenn Sie heute Read 2.0-Container verwenden, lesen Sie den [Migrationsleitfaden](read-container-migration-guide.md), um sich über die Änderungen in den neuen Versionen zu informieren.

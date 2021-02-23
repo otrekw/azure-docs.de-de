@@ -1,35 +1,27 @@
 ---
 title: Bereitstellen und Konfigurieren von Azure VMware Solution
-description: Erfahren Sie, wie Sie die in der Planungsphase gesammelten Informationen verwenden, um die private Azure VMware Solution-Cloud bereitzustellen.
+description: Hier erfahren Sie, wie Sie die in der Planungsphase gesammelten Informationen verwenden, um die private Azure VMware Solution-Cloud bereitzustellen und zu konfigurieren.
 ms.topic: tutorial
-ms.date: 12/24/2020
-ms.openlocfilehash: f2b6f3c4ad82117fee96e0c2e5973a7011384d48
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.custom: contperf-fy21q3
+ms.date: 02/17/2021
+ms.openlocfilehash: bfd057a19ebe26a66d11b52ddf17c285a1f9a308
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760876"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652733"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Bereitstellen und Konfigurieren von Azure VMware Solution
 
-In diesem Artikel verwenden Sie die Informationen aus dem [Planungsprozess](production-ready-deployment-steps.md), um Azure VMware Solution bereitzustellen. 
+In diesem Artikel verwenden Sie die Informationen aus dem [Planungsprozess](production-ready-deployment-steps.md), um Azure VMware Solution bereitzustellen und zu konfigurieren. 
 
 >[!IMPORTANT]
 >Wenn Sie die Informationen noch nicht definiert haben, wechseln Sie zurück zum [Planungsprozess](production-ready-deployment-steps.md), bevor Sie den Vorgang fortsetzen.
 
-## <a name="register-the-resource-provider"></a>Registrieren des Ressourcenanbieters
 
-[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
+## <a name="create-an-azure-vmware-solution-private-cloud"></a>Erstellen einer privaten Cloud von Azure VMware Solution
 
-
-## <a name="deploy-azure-vmware-solution"></a>Bereitstellen von Azure VMware Solution
-
-Verwenden Sie die Informationen, die Sie im Artikel [Planen der Azure VMware Solution-Bereitstellung](production-ready-deployment-steps.md) gesammelt haben:
-
->[!NOTE]
->Damit Sie Azure VMware Solution bereitstellen können, müssen Sie mindestens die Rolle „Mitwirkender“ im Abonnement haben.
-
-[!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
+Beachten Sie die Voraussetzungen und Schritte unter [Tutorial: Bereitstellen einer privaten Azure VMware Solution-Cloud in Azure](tutorial-create-private-cloud.md). Sie können eine private Azure VMware Solution-Cloud über das [Azure-Portal](tutorial-create-private-cloud.md#azure-portal) oder mithilfe der [Azure-Befehlszeilenschnittstelle](tutorial-create-private-cloud.md#azure-cli) erstellen.  
 
 >[!NOTE]
 >Eine umfassende Übersicht über diesen Schritt vermittelt das Video [Azure VMware Solution: Bereitstellen](https://www.youtube.com/embed/gng7JjxgayI).
@@ -60,7 +52,7 @@ Wenn Sie im Bereitstellungsschritt kein virtuelles Netzwerk definiert und die Ab
 
 Die Jumpbox befindet sich in dem virtuellen Netzwerk, in dem Azure VMware Solution über seine ExpressRoute-Leitung eine Verbindung herstellt.  Wechseln Sie in Azure zur Netzwerkschnittstelle der Jumpbox, und [zeigen Sie die effektiven Routen an](../virtual-network/manage-route-table.md#view-effective-routes).
 
-In der Liste der effektive Routen sollten die Netzwerke angezeigt werden, die während der Azure VMware Solution-Bereitstellung erstellt wurden. Es werden mehrere Netzwerke angezeigt, die aus dem [`/22`-Netzwerk abgeleitet wurden, das Sie](production-ready-deployment-steps.md#ip-address-segment) während des [Bereitstellungsschritts](#deploy-azure-vmware-solution) weiter oben in diesem Artikel definiert haben.
+In der Liste der effektive Routen sollten die Netzwerke angezeigt werden, die während der Azure VMware Solution-Bereitstellung erstellt wurden. Sie sehen mehrere Netzwerke, die von dem [`/22`-Netzwerk](production-ready-deployment-steps.md#ip-address-segment) abgeleitet sind, das Sie beim [Erstellen einer privaten Cloud](#create-an-azure-vmware-solution-private-cloud) definiert haben.  
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Netzwerkrouten überprüfen, die von Azure VMware Solution zu Azure Virtual Network aufgeführt sind" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 
@@ -68,13 +60,13 @@ In diesem Beispiel wird für das 10.74.72.0/22-Netzwerk, das bei der Bereitstell
 
 ## <a name="connect-and-sign-in-to-vcenter-and-nsx-t"></a>Verbinden mit und Anmelden bei vCenter und NSX-T
 
-Melden Sie sich bei der Jumpbox an, die Sie im früheren Schritt erstellt haben. Nachdem Sie sich angemeldet haben, öffnen Sie einen Webbrowser, navigieren Sie sowohl zu vCenter als auch zur NSX-T-Administratorkonsole, und melden Sie sich bei beiden an.  
+Melden Sie sich bei der Jumpbox an, die Sie im früheren Schritt erstellt haben. Öffnen Sie nach der Anmeldung einen Webbrowser, navigieren Sie sowohl zu vCenter als auch zu NSX-T Manager, und melden Sie sich bei beiden an.  
 
-Sie können die IP-Adresse und Anmeldeinformationen von vCenter und der NSX-T-Administratorkonsole im Azure-Portal ermitteln.  Wählen Sie Ihre private Cloud aus, und navigieren Sie in der Ansicht **Übersicht** zu **Identität > Standard**. 
+Sie können die IP-Adressen und Anmeldeinformationen von vCenter und NSX-T Manager im Azure-Portal ermitteln.  Wählen Sie Ihre private Cloud aus, und navigieren Sie in der Ansicht **Übersicht** zu **Identität > Standard**. 
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>Erstellen eines Netzwerksegments in Ihrer Azure VMware Solution-Umgebung
 
-Sie verwenden NSX-T, um neue Netzwerksegmente in ihrer Azure VMware Solution-Umgebung zu erstellen.  Sie haben die Netzwerke, die Sie erstellen möchten, im [Planungsprozess](production-ready-deployment-steps.md) definiert.  Wenn Sie die Netzwerke noch nicht definiert haben, wechseln Sie zurück zum [Planungsprozess](production-ready-deployment-steps.md), bevor Sie den Vorgang fortsetzen.
+Sie verwenden NSX-T Manager, um neue Netzwerksegmente in ihrer Azure VMware Solution-Umgebung zu erstellen.  Sie haben die Netzwerke, die Sie erstellen möchten, im [Planungsprozess](production-ready-deployment-steps.md) definiert.  Wenn Sie die Netzwerke noch nicht definiert haben, wechseln Sie zurück zum [Planungsprozess](production-ready-deployment-steps.md), bevor Sie den Vorgang fortsetzen.
 
 >[!IMPORTANT]
 >Vergewissern Sie sich, dass sich der von Ihnen definierte CIDR-Netzwerkadressblock nicht mit irgendwelchen Adressen in ihren Azure- oder lokalen Umgebungen überlappt.  

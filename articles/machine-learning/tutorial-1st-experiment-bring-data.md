@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 09/15/2020
+ms.date: 02/11/2021
 ms.custom: tracking-python
-ms.openlocfilehash: c08d9ee6704203d0634d7a1b90a57de9c6a99d31
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 5e1af60cccb48195db38e420dfe3df01f404669c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622794"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377997"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Tutorial: Verwenden eigener Daten (Teil 4 von 4)
 
@@ -82,21 +82,8 @@ optimizer = optim.SGD(
 
 Ihr Skript akzeptiert nun _data path_ als Argument. Testen Sie es zunächst lokal. Fügen Sie Ihrer Tutorial-Verzeichnisstruktur einen Ordner mit dem Namen `data`hinzu. Ihre Verzeichnisstruktur sollte wie folgt aussehen:
 
-```txt
-tutorial
-└──.azureml
-|  └──config.json
-|  └──pytorch-env.yml
-└──data
-└──src
-|  └──hello.py
-|  └──model.py
-|  └──train.py
-└──01-create-workspace.py
-└──02-create-compute.py
-└──03-run-hello.py
-└──04-run-pytorch.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-bring-data/directory-structure.png" alt-text="Verzeichnisstruktur mit den Unterverzeichnissen „.azureml“, „data“ und „src“":::
+
 
 Wenn Sie `train.py` im vorherigen Tutorial nicht lokal ausgeführt haben, ist das `data/`-Verzeichnis nicht vorhanden. Führen Sie in diesem Fall die `torchvision.datasets.CIFAR10` -Methode lokal mit `download=True` im `train.py`-Skript aus.
 

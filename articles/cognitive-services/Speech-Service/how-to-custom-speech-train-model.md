@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 41fdb3d2e69ae39dbe80f21a953fd9fdaa6d1127
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 4da93503c32e380adb82028e7c5e11dddb247d6f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968465"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373367"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Trainieren und Bereitstellen eines Custom Speech-Modells
 
@@ -40,7 +40,19 @@ Der erste Schritt beim Trainieren eines Modells ist das Hochladen von Trainingsd
 3. Wählen Sie **Modell trainieren** aus.
 4. Geben Sie einen **Namen** und eine **Beschreibung** für Ihr Training ein.
 5. Wählen Sie aus der Liste für **Szenario und Basismodell** das für Ihre Domäne am besten geeignete Szenario aus. Wenn Sie sich nicht sicher sind, welches Szenario Sie wählen sollen, wählen Sie **Allgemein** aus. Das Basismodell stellt den Ausgangspunkt für das Training dar. Das neueste Modell ist in der Regel die beste Wahl.
-6. Wählen Sie auf der Seite **Trainingsdaten auswählen** ein oder mehrere Datasets mit zugehörigem Text oder Audiodatasets und Humantranskriptionsdatasets aus, die Sie für das Training verwenden möchten. Wenn Sie ein neues Modell trainieren, starten Sie mit zugehörigem Text. Das Training mit Audiodaten und Humantranskriptionen kann etwas länger dauern (bis zu [mehreren Tagen](how-to-custom-speech-evaluate-data.md#improve-model-recognition)).
+6. Wählen Sie auf der Seite **Trainingsdaten auswählen** ein oder mehrere Datasets mit zugehörigem Text oder Audiodatasets und Humantranskriptionsdatasets aus, die Sie für das Training verwenden möchten.
+
+> [!NOTE]
+> Wenn Sie ein neues Modell trainieren, starten Sie mit zugehörigem Text. Das Training mit Audiodaten und Humantranskriptionen kann deutlich länger dauern **(bis zu [mehreren Tagen](how-to-custom-speech-evaluate-data.md#add-audio-with-human-labeled-transcripts)** ).
+
+> [!NOTE]
+> Nicht alle Basismodelle unterstützen das Training mit Audiodaten. Wenn es von einem Basismodell nicht unterstützt wird, verwendet der Speech-Dienst nur den Text aus den Transkriptionen und ignoriert die Audiodaten. Eine Liste mit Basismodellen, die das Training mit Audiodaten unterstützen, finden Sie unter [Sprachunterstützung](language-support.md#speech-to-text).
+
+> [!NOTE]
+> Wenn Sie das für das Training verwendete Basismodell ändern und das Trainingsdataset Audiodaten enthält, überprüfen Sie *immer*, ob das neue ausgewählte Basismodell [das Training mit Audiodaten unterstützt](language-support.md#speech-to-text). Wenn das zuvor verwendete Basismodell kein Training mit Audiodaten unterstützt hat und das Trainingsdataset Audiodaten enthält, verlängert sich die Trainingsdauer mit dem neuen Basismodell **deutlich** und kann schnell einige Stunden oder sogar mehrere Tage und mehr betragen. Dies ist insbesondere dann der Fall, wenn es sich bei der Region Ihres Abonnements für den Speech-Dienst **nicht** um eine [Region mit dedizierter Hardware](custom-speech-overview.md#set-up-your-azure-account) für Training handelt.
+>
+> Wenn das im obigen Abschnitt beschriebene Problem auftritt, können Sie die Trainingsdauer schnell verkürzen, indem Sie die Menge der Audiodaten im Dataset verringern oder die Audiodaten ganz daraus entfernen, sodass das Dataset nur noch Text enthält. Letzteres ist sehr empfehlenswert, wenn es sich bei der Region Ihres Abonnements für den Speech-Dienst **nicht** um eine [Region mit dedizierter Hardware](custom-speech-overview.md#set-up-your-azure-account) für Training handelt.
+
 7. Nachdem das Training abgeschlossen ist, können Sie Genauigkeitsprüfungen für das neu trainierte Modell ausführen. Dieser Schritt ist optional.
 8. Wählen Sie **Erstellen** aus, um ein benutzerdefiniertes Modell zu erstellen.
 

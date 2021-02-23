@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 02/12/2021
 ms.author: erhopf
-ms.openlocfilehash: 85f239afd1b9263440abff1f924c12cdb7eeadaa
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: db3d8f4424f59d8432221753af776a5b55859882
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560284"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388854"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Erstellen von menschenmarkierten Transkriptionen
 
@@ -24,7 +24,12 @@ Wenn Sie die Genauigkeit der Spracherkennung verbessern möchten, insbesondere b
 Zum Verbessern der Erkennung ist eine umfangreiche Stichprobe von Transkriptionsdaten erforderlich. Es wird empfohlen, zwischen 10 und 20 Stunden an Transkriptionsdaten bereitzustellen. Auf dieser Seite werden Richtlinien besprochen, die Ihnen beim Erstellen qualitativ hochwertiger Transkriptionen helfen sollen. Dieser Leitfaden ist nach Gebietsschema unterteilt und enthält Abschnitte für Englisch (USA), Chinesisch (Mandarin) und Deutsch.
 
 > [!NOTE]
-> Nicht alle Basismodelle unterstützen die Anpassung mit Audiodateien. Wenn ein Basismodell Anpassungen nicht unterstützt, wird für das Training nur der Text der Transkriptionen auf die gleiche Weise verwendet, wie der zugehörige Text genutzt wird.
+> Nicht alle Basismodelle unterstützen die Anpassung mit Audiodateien. Wenn ein Basismodell Anpassungen nicht unterstützt, wird für das Training nur der Text der Transkriptionen auf die gleiche Weise verwendet, wie der zugehörige Text genutzt wird. Eine Liste mit Basismodellen, die das Training mit Audiodaten unterstützen, finden Sie unter [Sprachunterstützung](language-support.md#speech-to-text).
+
+> [!NOTE]
+> Wenn Sie das für das Training verwendete Basismodell ändern und das Trainingsdataset Audiodaten enthält, überprüfen Sie *immer*, ob das neue ausgewählte Basismodell [das Training mit Audiodaten unterstützt](language-support.md#speech-to-text). Wenn das zuvor verwendete Basismodell kein Training mit Audiodaten unterstützt hat und das Trainingsdataset Audiodaten enthält, verlängert sich die Trainingsdauer mit dem neuen Basismodell **deutlich** und kann schnell einige Stunden oder sogar mehrere Tage und mehr betragen. Dies ist insbesondere dann der Fall, wenn es sich bei der Region Ihres Abonnements für den Speech-Dienst **nicht** um eine [Region mit dedizierter Hardware](custom-speech-overview.md#set-up-your-azure-account) für Training handelt.
+>
+> Wenn das im obigen Abschnitt beschriebene Problem auftritt, können Sie die Trainingsdauer schnell verkürzen, indem Sie die Menge der Audiodaten im Dataset verringern oder die Audiodaten ganz daraus entfernen, sodass das Dataset nur noch Text enthält. Letzteres ist sehr empfehlenswert, wenn es sich bei der Region Ihres Abonnements für den Speech-Dienst **nicht** um eine [Region mit dedizierter Hardware](custom-speech-overview.md#set-up-your-azure-account) für Training handelt.
 
 ## <a name="us-english-en-us"></a>Englisch (USA) (en-US)
 

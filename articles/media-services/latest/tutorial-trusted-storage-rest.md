@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 2/8/2021
-ms.openlocfilehash: b20da64c135f7e54a7f6bc74beea073140a1e0a9
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 18cb4e3ada94822c2f4cb1ca7675310a37e44e84
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100100892"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590648"
 ---
 # <a name="tutorial-media-services-trusted-storage"></a>Tutorial: Media Services: Vertrauenswürdiger Speicher
 
@@ -23,6 +23,9 @@ In diesem Lernprogramm lernen Sie Folgendes:
 > - Gewähren des Zugriffs auf ein Speicherkonto für Azure-Dienste, wenn eine Zugriffssteuerung wie eine Firewall oder ein VPN für das Netzwerk genutzt wird
 
 Mit der 2020-05-01-API können Sie vertrauenswürdigen Speicher aktivieren, indem Sie eine verwaltete Identität einem Media Services-Konto zuordnen.
+
+>[!NOTE]
+>Der vertrauenswürdige Speicher ist nur in der API verfügbar und derzeit nicht im Azure-Portal aktiviert.
 
 Für Media Services ist der automatische Zugriff auf Ihr Speicherkonto per Systemauthentifizierung möglich. Von Media Services wird überprüft, ob sich das Media Services-Konto und das Speicherkonto unter demselben Abonnement befinden. Darüber hinaus wird mit der rollenbasierten Zugriffssteuerung für Azure Resource Manager überprüft, ob der Benutzer, von dem die Zuordnung hinzufügt wird, Zugriff auf das Speicherkonto hat.
 

@@ -9,14 +9,15 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 09/15/2020
+ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 0d099d31db3619e14da4fe66e26b25a0e36ee39c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+adobe-target: true
+ms.openlocfilehash: 5d61f330c823aff755a25e637bb58c132aa58100
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250688"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369121"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Tutorial: Erste Schritte mit Azure Machine Learning in Ihrer Entwicklungsumgebung (Teil 1 von 4)
 
@@ -78,20 +79,29 @@ pip install azureml-core
 
 Wir empfehlen Ihnen, für dieses Tutorial die folgende einfache Verzeichnisstruktur einzurichten:
 
-```markdown
-tutorial
-└──.azureml
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-1.png" alt-text="Verzeichnisstruktur: oberste Ebene des Tutorials mit dem Unterverzeichnis „.azureml“":::
+
 
 - `tutorial`: Oberstes Verzeichnis des Projekts.
 - `.azureml`: Ausgeblendetes Unterverzeichnis zum Speichern von Azure Machine Learning-Konfigurationsdateien.
 
+So erstellen Sie es beispielsweise in einem Bash-Fenster:
+
+```bash
+mkdir tutorial
+cd tutorial
+mkdir .azureml
+```
+
 > [!TIP]
-> Sie können das ausgeblendete Unterverzeichnis „.azureml“ in einem Terminalfenster erstellen.  Oder verwenden Sie Folgendes:
+> Um die Struktur in einem grafischen Fenster zu erstellen oder anzuzeigen, aktivieren Sie zunächst die Option zum Anzeigen und Erstellen ausgeblendeter Dateien und Ordner:
 >
-> * Verwenden Sie auf einem Macintosh-Computer in einem Suchfenster die Tastenkombination **BEFEHL+UMSCHALT+.** , um das Anzeigen und Erstellen von Verzeichnissen, die mit einem Punkt beginnen, zu aktivieren.  
+> * Verwenden Sie auf einem Macintosh-Computer in einem Suchfenster die Tastenkombination **BEFEHL+UMSCHALT+.** zum Umschalten der Anzeige ausgeblendeter Dateien/Ordner.  
 > * Informationen zum Windows 10-Datei-Explorer finden Sie unter [Anzeigen ausgeblendeter Dateien und Ordner](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5). 
 > * Verwenden Sie auf der grafischen Linux-Benutzeroberfläche **STRG+h** oder das Menü **Ansicht**, und aktivieren Sie das Kontrollkästchen **Show hidden files** (Ausgeblendete Dateien anzeigen).
+
+
+
 
 > [!div class="nextstepaction"]
 > [Ich habe ein Verzeichnis erstellt.](?success=create-dir#workspace) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7C8Z3DN?issue=create-dir)
@@ -138,12 +148,7 @@ python ./01-create-workspace.py
 
 Nachdem Sie *01-create-workspace.py* erfolgreich ausgeführt haben, sieht Ihre Ordnerstruktur wie folgt aus:
 
-```markdown
-tutorial
-└──.azureml
-|  └──config.json
-└──01-create-workspace.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-2.png" alt-text="Nach dem Ausführen von „01-create-workspace.py“ wird die Datei „config.json“ im Unterverzeichnis „.azureml“ angezeigt.":::
 
 Die Datei `.azureml/config.json` enthält die Metadaten, die für die Verbindungsherstellung mit Ihrem Azure Machine Learning-Arbeitsbereich benötigt werden. Sie enthält die Abonnement-ID, die Ressourcengruppe und den Namen des Arbeitsbereichs. 
 
@@ -196,13 +201,7 @@ python ./02-create-compute.py
 
 Ihre Ordnerstruktur sieht nun wie folgt aus:
 
-```bash
-tutorial
-└──.azureml
-|  └──config.json
-└──01-create-workspace.py
-└──02-create-compute.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-3.png" alt-text="Hinzufügen von „02-create-compute.py“ zum Tutorialverzeichnis":::
 
 > [!div class="nextstepaction"]
 > [Ich habe einen Computecluster erstellt.](?success=create-compute-cluster#next-steps) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)

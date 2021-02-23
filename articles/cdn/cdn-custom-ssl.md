@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: c4ad270b989e0e212c1d362ae4bfafc91fe07f3e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 61ba50f8ec9e1de18238160b23096670753cffd6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943550"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367502"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne
 
@@ -158,7 +158,9 @@ Gewähren Sie Azure CDN Berechtigungen für den Zugriff auf die Zertifikate (Geh
 
 5. Wählen Sie **Hinzufügen**. 
 
-    Das Azure CDN kann nun auf diesen Schlüsseltresor und auf die darin gespeicherten Zertifikate (Geheimnisse) zugreifen.
+> [!NOTE]
+> Das Azure CDN kann nun auf diesen Schlüsseltresor und auf die darin gespeicherten Zertifikate (Geheimnisse) zugreifen. Alle in diesem Abonnement erstellten CDN-Instanzen haben Zugriff auf die Zertifikate in diesem Schlüsseltresor. 
+
  
 ### <a name="select-the-certificate-for-azure-cdn-to-deploy"></a>Auswählen des bereitzustellenden Zertifikats für Azure CDN
  

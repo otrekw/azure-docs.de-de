@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory mit Kendis-Scaling Agile Platform | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Kendis-Scaling Agile Platform konfigurieren.
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory in Kendis – Azure AD-Integration | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Kendis – Azure AD-Integration konfigurieren.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/28/2021
+ms.date: 02/12/2021
 ms.author: jeedes
-ms.openlocfilehash: e02ff4926897fafc72e1a5081366faad5d2f03ba
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 802ccc1989bf0930e8c0c9818227a49eb03fc1c8
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509622"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534837"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kendis-scaling-agile-platform"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory mit Kendis-Scaling Agile Platform
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kendis---azure-ad-integration"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Kendis – Azure AD-Integration
 
-In diesem Tutorial erfahren Sie, wie Sie Kendis-Scaling Agile Platform in Azure Active Directory (Azure AD) integrieren. Die Integration von Kendis-Scaling Agile Platform in Azure AD ermöglicht Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie Kendis – Azure AD-Integration in Azure Active Directory (Azure AD) integrieren. Die Integration von Kendis – Azure AD-Integration in Azure AD ermöglicht Folgendes:
 
-* Steuern Sie in Azure AD, wer Zugriff auf Kendis-Scaling Agile Platform hat.
-* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Kendis-Scaling Agile Platform anzumelden.
+* Steuern Sie in Azure AD, wer Zugriff auf Kendis – Azure AD-Integration hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihrem Azure AD-Konto automatisch bei Kendis – Azure AD-Integration anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -31,46 +31,46 @@ In diesem Tutorial erfahren Sie, wie Sie Kendis-Scaling Agile Platform in Azure 
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Ein Kendis-Scaling Agile Platform-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+* Abonnement für Kendis – Azure AD-Integration, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Kendis-Scaling Agile Platform unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
-* Kendis-Scaling Agile Platform unterstützt die **Just-In-Time**-Benutzerbereitstellung.
+* Kendis – Azure AD-Integration unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
+* Kendis – Azure AD-Integration unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
 
-## <a name="adding-kendis-scaling-agile-platform-from-the-gallery"></a>Hinzufügen von Kendis-Scaling Agile Platform aus dem Katalog
+## <a name="adding-kendis---azure-ad-integration-from-the-gallery"></a>Hinzufügen von Kendis – Azure AD-Integration aus dem Katalog
 
-Zum Konfigurieren der Integration von Kendis-Scaling Agile Platform in Azure AD müssen Sie Kendis-Scaling Agile Platform aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von Kendis – Azure AD-Integration in Azure AD müssen Sie Kendis – Azure AD-Integration über den Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
-1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Kendis-Scaling Agile Platform** in das Suchfeld ein.
-1. Wählen Sie im Ergebnisbereich **Kendis-Scaling Agile Platform** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Kendis – Azure AD-Integration** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Kendis – Azure AD-Integration** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 
-## <a name="configure-and-test-azure-ad-sso-for-kendis-scaling-agile-platform"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Kendis-Scaling Agile Platform
+## <a name="configure-and-test-azure-ad-sso-for-kendis---azure-ad-integration"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Kendis – Azure AD-Integration
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Kendis-Scaling Agile Platform mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Kendis-Scaling Agile Platform eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Kendis – Azure AD-Integration unter Verwendung eines Testbenutzers namens **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Kendis – Azure AD-Integration eingerichtet werden.
 
-Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Kendis-Scaling Agile Platform die folgenden Schritte aus:
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Kendis – Azure AD-Integration zu konfigurieren und zu testen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für Kendis-Scaling Agile Platform](#configure-kendis-scaling-agile-platform-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines Kendis-Scaling Agile Platform-Testbenutzers](#create-kendis-scaling-agile-platform-test-user)** , um ein Pendant von B. Simon in Kendis-Scaling Agile Platform zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Konfigurieren des einmaligen Anmeldens für Kendis – Azure AD-Integration](#configure-kendis-azure-ad-integration-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines Testbenutzers für Kendis – Azure AD-Integration](#create-kendis-azure-ad-integration-test-user)** , um in Kendis – Azure AD-Integration eine Entsprechung von B. Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Kendis-Scaling Agile Platform** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Kendis – Azure AD-Integration** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
@@ -87,13 +87,13 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.kendis.io/login`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Diese Werte erhalten Sie vom [Supportteam für den Kendis-Scaling Agile Platform-Client](mailto:support@kendis.io). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Diese Werte erhalten Sie vom [Supportteam für den Client für Kendis – Azure AD-Integration](mailto:support@kendis.io). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-1. Kopieren Sie im Abschnitt **Kendis-Scaling Agile Platform einrichten** die entsprechenden URLs basierend auf Ihren Anforderungen.
+1. Kopieren Sie im Abschnitt **Kendis – Azure AD-Integration einrichten** die entsprechenden URLs basierend auf Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
@@ -111,19 +111,19 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Kendis-Scaling Agile Platform gewähren.
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Kendis – Azure AD-Integration gewähren.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
-1. Wählen Sie in der Anwendungsliste **Kendis-Scaling Agile Platform** aus.
+1. Wählen Sie in der Anwendungsliste die Option **Kendis – Azure AD-Integration** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name="configure-kendis-scaling-agile-platform-sso"></a>Konfigurieren des einmaligen Anmeldens für Kendis-Scaling Agile Platform
+## <a name="configure-kendis-azure-ad-integration-sso"></a>Konfigurieren des einmaligen Anmeldens für Kendis – Azure AD-Integration
 
-1. Melden Sie sich in einem anderen Webbrowserfenster bei der Kendis-Scaling Agile Platform-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der Plattform für Kendis – Azure AD-Integration als Administrator an.
 
 1. Navigieren Sie zu **Settings > SAML Configurations** (Einstellungen > SAML-Konfigurationen).
 
@@ -145,9 +145,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     f. Klicken Sie auf **Speichern**.
 
-### <a name="create-kendis-scaling-agile-platform-test-user"></a>Erstellen eines Testbenutzers für Kendis-Scaling Agile Platform
+### <a name="create-kendis-azure-ad-integration-test-user"></a>Erstellen eines Testbenutzers für Kendis – Azure AD-Integration
 
-In diesem Abschnitt wird in Kendis-Scaling Agile Platform ein Benutzer mit dem Namen Britta Simon erstellt. Kendis-Scaling Agile Platform unterstützt die Just-In-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Kendis-Scaling Agile Platform vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+In diesem Abschnitt wird in Kendis – Azure AD-Integration ein Benutzer namens Britta Simon erstellt. Kendis – Azure AD-Integration unterstützt die Just-In-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Kendis – Azure AD-Integration vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
@@ -155,19 +155,19 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 #### <a name="sp-initiated"></a>SP-initiiert:
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Kendis-Scaling Agile Platform weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Kendis – Azure AD-Integration umgeleitet, wo Sie den Anmeldeflow initiieren können.  
 
-* Rufen Sie direkt die Kendis-Scaling Agile Platform-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+* Navigieren Sie direkt zur Anmelde-URL für Kendis – Azure AD-Integration, und initiieren Sie den Anmeldeflow.
 
 #### <a name="idp-initiated"></a>IDP-initiiert:
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Kendis-Scaling Agile Platform-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Instanz von Kendis – Azure AD-Integration angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie unter „Meine Apps“ auf die Kachel „Kendis-Scaling Agile Platform“ klicken, geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet, und wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Kendis-Scaling Agile Platform-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie unter „Meine Apps“ auf die Kachel „Kendis – Azure AD-Integration“ klicken, geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet, und wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Instanz für Kendis – Azure AD-Integration angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Kendis-Scaling Agile Platform können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Kendis – Azure AD-Integration können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: c1ae52b2b92c5c8d5a1a98632e19d3140672d6ea
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 565ba3f7cd02a5ca8a3a858dc29a8fa6c7df16c1
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585040"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546005"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Vordefiniertes Belegmodell der Formularerkennung
 
@@ -115,7 +115,12 @@ Wenn im Feld **status** der Wert **succeeded** angezeigt wird, enthält die JSON
 
 ### <a name="sample-json-output"></a>JSON-Beispielausgabe
 
-Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus: Der readResults-Knoten enthält den gesamten erkannten Text. Der Text ist nach Seite, dann nach Zeile und dann nach einzelnen Wörtern sortiert. Der documentResults-Knoten enthält die visitenkartenspezifischen Werte, die vom Modell erkannt wurden. Er enthält nützliche Schlüssel-Wert-Paare wie Vorname, Nachname, Firmenname usw.
+
+Die Antwort auf den Vorgang zum Abrufen des Ergebnisses der Beleganalyse ist die strukturierte Darstellung des Belegs mit allen extrahierten Informationen.  Hier sehen Sie eine [Beispieldatei eines Belegs](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg) und die dazugehörige strukturierte Ausgabe ([Beispielausgabe eines Belegs](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json)).
+
+Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus:
+* Der Knoten `"readResults"` enthält den gesamten erkannten Text. Der Text ist nach Seite, dann nach Zeile und dann nach einzelnen Wörtern sortiert. 
+* Der Knoten `"documentResults"` enthält die visitenkartenspezifischen Werte, die vom Modell erkannt wurden. Er enthält nützliche Schlüssel-Wert-Paare wie Vorname, Nachname, Firmenname usw.
 
 ```json
 { 

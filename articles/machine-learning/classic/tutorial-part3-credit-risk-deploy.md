@@ -6,15 +6,15 @@ author: likebupt
 ms.author: keli19
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 3afcf87c360651ac314450910fbf5ab72afd289a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 68a5f6773543b922d024336556e4de24dd96fd33
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503915"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517381"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Tutorial 3: Bereitstellen eines Kreditrisikomodells – Azure Machine Learning Studio (klassisch)
 
@@ -48,12 +48,12 @@ Schließen Sie den [zweiten Teil des Tutorials](tutorial-part2-credit-risk-train
 ## <a name="prepare-for-deployment"></a>Vorbereiten der Bereitstellung
 Um anderen die Möglichkeit zu geben, das Vorhersagemodell zu nutzen, das Sie in diesem Tutorial entwickelt haben, können Sie es in Azure als Webdienst bereitstellen.
 
-Bis jetzt haben Sie mit dem Trainieren des Modells experimentiert. Der bereitgestellte Dienst führt jedoch kein Training mehr durch, sondern generiert neue Vorhersagen durch Bewerten der Benutzereingaben basierend auf unserem Modell. Wir führen einige vorbereitende Schritte durch, um dieses Experiment von einem ***Trainingsexperiment** _ in ein _*_Vorhersageexperiment_*_ umzuwandeln. 
+Bis jetzt haben Sie mit dem Trainieren des Modells experimentiert. Der bereitgestellte Dienst führt jedoch kein Training mehr durch, sondern generiert neue Vorhersagen durch Bewerten der Benutzereingaben basierend auf unserem Modell. Sie führen einige vorbereitende Schritte durch, um dieses Experiment von einem ***Trainingsexperiment** _ in ein _ *_Vorhersageexperiment_** umzuwandeln. 
 
 Die Bereitstellungsvorbereitung umfasst drei Schritte:  
 
 1. Entfernen eines der Modelle
-1. Konvertieren des erstellten _Trainingsexperiments* in ein *Vorhersageexperiment*
+1. Konvertieren des erstellten *Trainingsexperiments* in ein *Vorhersageexperiment*
 1. Bereitstellung des Vorhersageexperiments als Webdienst
 
 ### <a name="remove-one-of-the-models"></a>Entfernen eines der Modelle

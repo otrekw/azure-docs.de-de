@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: b0b0c43039648737b229edc79dd4e0a3dc45f38e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 014c592713a8568b3bbc7e8e536f81b203271ccc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683339"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388072"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Verwenden von verwalteten Identitäten mit Azure Machine Learning (Vorschau)
 
@@ -29,6 +29,7 @@ In diesem Artikel erfahren Sie, wie Sie verwaltete Identitäten für Folgendes v
 
  * Konfigurieren und Verwenden von ACR für Ihren Azure Machine Learning-Arbeitsbereich, ohne dass Sie den Zugriff für Administratorbenutzer für ACR aktivieren müssen.
  * Zugreifen auf eine private ACR außerhalb Ihres Arbeitsbereichs, um Basisimages für Training oder Rückschlüsse zu pullen.
+ * Erstellen eines Arbeitsbereichs mit einer vom Benutzer zugewiesenen verwalteten Identität für den Zugriff auf zugeordnete Ressourcen.
 
 > [!IMPORTANT]
 > Das Verwenden von verwalteten Identitäten zur Zugriffssteuerung auf Ressourcen mit Azure Machine Learning befindet sich derzeit in der Vorschau. Die Vorschaufunktionalität wird „wie besehen“ zur Verfügung gestellt, ohne Garantien hinsichtlich Support oder Vereinbarung zum Servicelevel (Service Level Agreement, SLA). Weitere Informationen finden Sie in den [zusätzlichen Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -102,7 +103,7 @@ Wenn Sie keine eigene ACR bereitstellen, wird der Azure Machine Learning Service
 
 ### <a name="create-compute-with-managed-identity-to-access-docker-images-for-training"></a>Erstellen von Compute mit verwalteter Identität für den Zugriff auf Docker-Images für das Training
 
-Erstellen Sie für den Zugriff auf die ACR des Arbeitsbereichs einen Computecluster für maschinelles Lernen mit aktivierter, vom System zugewiesener verwalteter Identität. Sie können die Identität über das Azure-Portal oder Studio aktivieren, wenn Sie den Compute erstellen, oder über die Azure CLI mithilfe von
+Erstellen Sie für den Zugriff auf die ACR des Arbeitsbereichs einen Computecluster für maschinelles Lernen mit aktivierter, vom System zugewiesener verwalteter Identität. Sie können die Identität über das Azure-Portal oder Studio bei der Erstellung der Compute-Instanz oder über die Azure CLI wie folgt aktivieren. Weitere Informationen finden Sie unter [Verwenden der verwalteten Identität mit Compute-Clustern](how-to-create-attach-compute-cluster.md#managed-identity).
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -171,7 +172,7 @@ env.python.user_managed_dependencies = True
 
 ### <a name="build-azure-machine-learning-managed-environment-into-base-image-from-private-acr-for-training-or-inference"></a>Erstellen einer von Azure Machine Learning verwalteten Umgebung in das Basisimage von der privaten ACR für Training oder Rückschluss
 
-In diesem Szenario erstellt Azure Machine Learning Service die Trainings- oder Rückschlussumgebung auf einem Basisimage, das Sie von einer privaten ACR zur Verfügung stellen. Da die Imageerstellungsaufgabe mithilfe von ACR-Aufgaben in der ACR des Arbeitsbereichs erfolgt, müssen Sie zusätzliche Schritte durchführen, um den Zugriff zu ermöglichen.
+In diesem Szenario erstellt Azure Machine Learning Service die Trainings- oder Rückschlussumgebung auf einem Basisimage, das Sie von einer privaten ACR zur Verfügung stellen. Da die Imageerstellungsaufgabe mithilfe von ACR-Aufgaben in der ACR des Arbeitsbereichs erfolgt, müssen Sie weitere Schritte durchführen, um den Zugriff zu ermöglichen.
 
 1. Erstellen Sie eine __benutzerseitig zugewiesene verwaltete Identität__, und erteilen Sie der Identität den ACRPull-Zugriff auf die __private ACR__.  
 1. Gewähren Sie der __systemseitig zugewiesenen verwalteten Identität__ des Arbeitsbereichs die Rolle „Operator für verwaltete Identität“ für die __benutzerseitig zugewiesene verwaltete Identität__ aus dem vorherigen Schritt. Diese Rolle ermöglicht es dem Arbeitsbereich, die benutzerseitig zugewiesene verwaltete Identität der ACR-Aufgabe zum Erstellen der verwalteten Umgebung zuzuweisen. 
@@ -228,6 +229,41 @@ Nachdem Sie ACR ohne Administratorbenutzer (wie oben beschrieben) konfiguriert h
 
 > [!NOTE]
 > Wenn Sie Ihren eigenen AKS-Cluster bereitstellen, muss für den Cluster anstelle der verwalteten Identität ein Dienstprinzipal aktiviert sein.
+
+## <a name="create-workspace-with-user-assigned-managed-identity"></a>Erstellen eines Arbeitsbereichs mit benutzerseitig zugewiesene verwalteter Identität
+
+Beim Erstellen eines Arbeitsbereichs können Sie eine benutzerseitig zugewiesene verwaltete Identität angeben, die für den Zugriff auf die zugehörigen Ressourcen verwendet werden soll: ACR, KeyVault, Storage und App Insights.
+
+Erstellen Sie zunächst [eine vom Benutzer zugewiesene verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli]), und notieren Sie sich die ARM-Ressourcen-ID der verwalteten Identität.
+
+Verwenden Sie dann die Azure CLI oder das Python SDK zum Erstellen des Arbeitsbereichs. Wenn Sie die CLI verwenden, geben Sie die ID mithilfe des Parameters `--primary-user-assigned-identity` an. Verwenden Sie `primary_user_assigned_identity`, wenn Sie das SDK verwenden. Im Folgenden finden Sie Beispiele für die Verwendung der Azure CLI und von Python, um mithilfe dieser Parameter einen neuen Arbeitsbereich zu erstellen:
+
+__Azure-Befehlszeilenschnittstelle__
+
+```azurecli-interactive
+az ml workspace create -w <workspace name> -g <resource group> --primary-user-assigned-identity <managed identity ARM ID>
+```
+
+__Python__
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.create(name="workspace name", 
+    subscription_id="subscription id", 
+    resource_group="resource group name",
+    primary_user_assigned_identity="managed identity ARM ID")
+```
+
+Sie können auch [eine ARM-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) verwenden, um einen Arbeitsbereich mit einer benutzerseitig zugewiesenen verwalteten Identität zu erstellen.
+
+> [!IMPORTANT]
+> Wenn Sie Ihre eigenen zugehörigen Ressourcen bereitstellen, anstatt sie vom Azure Machine Learning Service erstellen zu lassen, müssen Sie der verwalteten Identität entsprechende Rollen für diese Ressourcen gewähren. Verwenden Sie die [ARM-Vorlage für die Rollenzuweisung](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment), um die Zuweisungen vorzunehmen.
+
+Für einen Arbeitsbereich mit (kundenseitig verwalteten Schlüsseln für die Verschlüsselung)[https://docs.microsoft.com/azure/machine-learning/concept-data-encryption ] können Sie eine benutzerseitig zugewiesene verwaltete Identität zur Authentifizierung über den Speicher an Key Vault übergeben. Verwenden Sie das Argument __user-assigned-identity-for-cmk-encryption__ (CLI) oder __user_assigned_identity_for_cmk_encryption__ (SDK), um die verwaltete Identität zu übergeben. Diese verwaltete Identität kann dieselbe oder eine andere sein als die primäre benutzerseitig zugewiesene verwaltete Identität des Arbeitsbereichs.
+
+Wenn Sie über einen vorhandenen Arbeitsbereich verfügen, können Sie ihn mithilfe des CLI-Befehls ```az ml workspace update``` oder der Python SDK-Methode ```Workspace.update``` von der systemseitig zur benutzerseitig zugewiesenen verwalteten Identität aktualisieren.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

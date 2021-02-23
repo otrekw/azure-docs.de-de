@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: f43fa06cf93d383efcb0fe746de28ab143280e50
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: c411250f7d850e56c9c54c27e888cba8f3acfece
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988017"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522205"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Zusammenarbeiten mit anderen Autoren und Redakteuren
 
@@ -23,6 +23,9 @@ Alle Berechtigungen werden durch die Berechtigungen gesteuert, die für die QnA�
 Dieses Azure RBAC-Feature umfasst Folgendes:
 * Azure Active Directory (AAD) ist vollständig mit der schlüsselbasierten Authentifizierung für Besitzer und Mitwirkende abwärtskompatibel. Kunden können in ihren Anforderungen entweder die schlüsselbasierte Authentifizierung oder die Azure RBAC-basierte Authentifizierung verwenden.
 * Da die Steuerung auf der Ressourcenebene und nicht auf der Ebene der Wissensdatenbank erfolgt, können Autoren und Redakteure schnell allen Wissensdatenbanken in der Ressource hinzugefügt werden.
+
+> [!NOTE]
+> Stellen Sie sicher, dass eine benutzerdefinierte Unterdomäne für die Ressource hinzugefügt wird. [Eine benutzerdefinierte Unterdomäne](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) sollte standardmäßig vorhanden sein. Wenn dies nicht der Fall ist, fügen Sie eine hinzu.
 
 ## <a name="access-is-provided-by-a-defined-role"></a>Zugriff durch eine definierte Rolle
 

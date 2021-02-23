@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/14/2021
+ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: c6932292b86924cfab6d17c315cbd6946bd63f61
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 0be2e2f6ce22525cb4c3a7e0656ce9ce75fb7f77
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621328"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363474"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Tutorial: Azure Active Directory-Integration mit Coupa
 
@@ -28,10 +28,10 @@ In diesem Tutorial erfahren Sie, wie Sie Coupa in Azure Active Directory (Azure�
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Coupa konfigurieren zu können, benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Sollten Sie über keine Azure AD-Umgebung verfügen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* Ein Coupa-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* Coupa-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -63,7 +63,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
     1. **[Erstellen eines Coupa-Testbenutzers](#create-coupa-test-user)** , um ein Pendant von B. Simon in Coupa zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
@@ -128,17 +128,17 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="configure-coupa-sso"></a>Konfigurieren des einmaligen Anmeldens für Coupa
+## <a name="configure-coupa-sso"></a>Konfigurieren des einmaligen Anmeldens für Coupa
 
 1. Melden Sie sich bei der Coupa-Unternehmenswebsite als Administrator an.
 
 2. Navigieren Sie zu **Einrichtung \> Sicherheitskontrollen**.
 
-    ![Security Controls (Sicherheitskontrollen)](./media/coupa-tutorial/ic791900.png "Einstellungen für einmaliges Anmelden")
+    ![Security Controls (Sicherheitskontrollen)](./media/coupa-tutorial/setup.png "Einstellungen für einmaliges Anmelden")
 
 3. Führen Sie im Abschnitt **Log in using Coupa credentials** die folgenden Schritte aus:
 
-    ![Coupa-SP-Metadaten](./media/coupa-tutorial/ic791901.png "Coupa-SP-Metadaten")
+    ![Coupa-SP-Metadaten](./media/coupa-tutorial/login.png "Coupa-SP-Metadaten")
 
     a. Wählen Sie **Log in using SAML** aus.
 
@@ -158,15 +158,15 @@ Damit sich Azure AD-Benutzer bei Coupa anmelden können, müssen sie in Coupa be
 
 2. Klicken Sie auf der oben angezeigten Symbolleiste auf **Setup**, und klicken Sie dann auf **Users**.
 
-    ![Benutzer](./media/coupa-tutorial/ic791908.png "Benutzer")
+    ![Benutzer](./media/coupa-tutorial/user.png "Benutzer")
 
 3. Klicken Sie auf **Erstellen**.
 
-    ![Erstellen von Benutzern](./media/coupa-tutorial/ic791909.png "Benutzer erstellen")
+    ![Erstellen von Benutzern](./media/coupa-tutorial/create.png "Benutzer erstellen")
 
 4. Führen Sie im Abschnitt **User Create** die folgenden Schritte aus:
 
-    ![User Details (Benutzerdetails)](./media/coupa-tutorial/ic791910.png "User Details")
+    ![User Details (Benutzerdetails)](./media/coupa-tutorial/details.png "User Details")
 
     a. Geben Sie die Attributwerte von **Login**, **First Name**, **Last Name**, **Single Sign-On ID** und **Email** eines gültigen Azure Active Directory-Kontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
 
@@ -179,7 +179,7 @@ Damit sich Azure AD-Benutzer bei Coupa anmelden können, müssen sie in Coupa be
 >[!NOTE]
 >Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von Coupa-Benutzerkonten oder mit den APIs von Coupa bereitstellen.
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 

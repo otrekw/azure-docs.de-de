@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 037e7fd13f55a0f5de939197f71324221392bd55
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: b713a19cbe572998bb6e5050ab2d7721a844f07a
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601063"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530449"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Verwalten eines Graphen von digitalen Zwillingen mithilfe von Beziehungen
 
@@ -49,11 +49,11 @@ Sie müssen Folgendes angeben, um eine Beziehung zu erstellen:
 Die Beziehungs-ID muss innerhalb des angegebenen Quellzwillings eindeutig sein. Sie muss nicht global eindeutig sein.
 Für den Zwilling *foo* muss z. B. jede bestimmte Beziehungs-ID eindeutig sein. Ein weiterer Zwilling *bar* kann jedoch eine ausgehende Beziehung aufweisen, die derselben ID einer *foo*-Beziehung entspricht.
 
-Im folgenden Codebeispiel wird veranschaulicht, wie Sie in Ihrer Azure Digital Twins-Instanz eine Beziehung erstellen.
+Im folgenden Codebeispiel wird veranschaulicht, wie Sie in Ihrer Azure Digital Twins-Instanz eine Beziehung erstellen. Der SDK-Aufruf (hervorgehoben) innerhalb einer benutzerdefinierten Methode wird verwendet, die im Kontext eines größeren Programms angezeigt werden kann.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="CreateRelationshipMethod":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="CreateRelationshipMethod" highlight="13":::
 
-In Ihrer Hauptmethode können Sie jetzt die `CreateRelationship()`-Funktion aufrufen, um eine _Enthält_-Beziehung wie die folgende zu erstellen: 
+Diese benutzerdefinierte Funktion kann nun aufgerufen werden, um eine _contains_-Beziehung zu erstellen. Sehen Sie sich dazu das folgende Beispiel an: 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseCreateRelationship":::
 
@@ -82,11 +82,11 @@ Sie können die Methode `GetRelationships()` wie folgt verwenden, um auf die Lis
 
 Dies gibt ein `Azure.Pageable<T>` oder `Azure.AsyncPageable<T>` zurück, je nachdem, ob Sie die synchrone oder asynchrone Version des Aufrufs verwenden.
 
-Im Folgenden finden Sie ein Beispiel, das eine Liste von Beziehungen abruft:
+Im Folgenden finden Sie ein Beispiel, das eine Liste von Beziehungen abruft. Der SDK-Aufruf (hervorgehoben) innerhalb einer benutzerdefinierten Methode wird verwendet, die im Kontext eines größeren Programms angezeigt werden kann.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod" highlight="8":::
 
-Sie können diese Methode jetzt aufrufen, um die ausgehenden Beziehungen der Zwillinge wie folgt anzuzeigen:
+Sie können diese benutzerdefinierte Methode jetzt aufrufen, um die ausgehenden Beziehungen der Zwillinge wie folgt anzuzeigen:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFindOutgoingRelationships":::
 
@@ -96,33 +96,53 @@ Sie können die abgerufenen Beziehungen verwenden, um zu anderen Zwillingen in I
 
 Azure Digital Twins verfügt auch über eine API, um alle **eingehenden** Beziehungen für einen bestimmten Zwilling zu finden. Dies ist oft nützlich bei der umgekehrten Navigation oder beim Löschen eines Zwillings.
 
-Das Codebeispiel oben hat sich auf die Suche nach ausgehenden Beziehungen von einem Zwilling konzentriert. Das folgende Beispiel ist ähnlich strukturiert, findet aber stattdessen *eingehende* Beziehungen vom Zwilling.
+>[!NOTE]
+> `IncomingRelationship`-Aufrufe geben nicht den vollständigen Text der Beziehung zurück. Weitere Informationen finden Sie in der [Referenzdokumentation](/dotnet/api/azure.digitaltwins.core.incomingrelationship?view=azure-dotnet&preserve-view=true) zur `IncomingRelationship`-Klasse.
 
-Beachten Sie, dass die `IncomingRelationship`-Aufrufe nicht den vollständigen Text der Beziehung zurückgeben.
+Das Codebeispiel oben hat sich auf die Suche nach ausgehenden Beziehungen eines Zwillings konzentriert. Das folgende Beispiel ist ähnlich strukturiert, findet aber stattdessen *eingehende* Beziehungen vom Zwilling. Für dieses Beispiel wird auch der SDK-Aufruf (hervorgehoben) innerhalb einer benutzerdefinierten Methode verwendet, die im Kontext eines größeren Programms angezeigt werden kann.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindIncomingRelationshipsMethod":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindIncomingRelationshipsMethod" highlight="8":::
 
-Sie können diese Methode jetzt aufrufen, um die eingehenden Beziehungen der Zwillinge wie folgt anzuzeigen:
+Sie können diese benutzerdefinierte Methode jetzt aufrufen, um die eingehenden Beziehungen der Zwillinge wie folgt anzuzeigen:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFindIncomingRelationships":::
 
 ### <a name="list-all-twin-properties-and-relationships"></a>Auflisten aller Zwillingseigenschaften und -beziehungen
 
-Mithilfe der oben genannten Methoden zur Auflistung der aus- und eingehenden Beziehungen zu einem Zwilling können Sie eine Methode erstellen, die vollständige Zwillingsinformationen ausgibt, einschließlich der Eigenschaften des Zwillings und beider Arten seiner Beziehungen. Hier folgt eine Beispielmethode namens `FetchAndPrintTwinAsync()`, die die Vorgehensweise veranschaulicht.
+Mithilfe der oben genannten Methoden zur Auflistung der aus- und eingehenden Beziehungen zu einem Zwilling können Sie eine Methode erstellen, die vollständige Zwillingsinformationen ausgibt, einschließlich der Eigenschaften des Zwillings und beider Arten seiner Beziehungen. Hier finden Sie eine benutzerdefinierte Beispielmethode, die zeigt, wie Sie die obigen Methoden zu diesem Zweck kombinieren.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FetchAndPrintMethod":::
 
-Sie können diese Funktion jetzt in Ihrer Hauptmethode wie folgt aufrufen: 
+Sie können nun diese benutzerdefinierte Funktion wie folgt aufrufen: 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFetchAndPrint":::
+
+## <a name="update-relationships"></a>Aktualisieren von Beziehungen
+
+Beziehungen werden mit der `UpdateRelationship`-Methode aktualisiert. 
+
+>[!NOTE]
+>Diese Methode dient zur Aktualisierung der **Eigenschaften** einer Beziehung. Wenn Sie den Quellzwilling oder den Zielzwilling der Beziehung ändern müssen, müssen Sie die [Beziehung löschen](#delete-relationships) und mithilfe der neuen Zwillinge [eine neue erstellen](#create-relationships).
+
+Die für den Clientaufruf erforderlichen Parameter sind die ID des Quellzwillings (der Zwilling, von dem die Beziehung ausgeht), die ID der Beziehung, die aktualisiert werden soll, sowie ein [JSON Patch](http://jsonpatch.com/)-Dokument, das die Eigenschaften und neue Werte enthält, die Sie aktualisieren möchten.
+
+Hier sehen Sie Beispielcode, der zeigt, wie Sie diese Methode verwenden. Für dieses Beispiel wird der SDK-Aufruf (hervorgehoben) innerhalb einer benutzerdefinierten Methode verwendet, die im Kontext eines größeren Programms angezeigt werden kann.
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod" highlight="6":::
+
+Hier sehen Sie ein Beispiel eines Aufrufs dieser benutzerdefinierten Methode. Dabei wird ein JSON Patch-Dokument mit den Informationen übergeben, mit denen eine Eigenschaft aktualisiert wird.
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseUpdateRelationship":::
 
 ## <a name="delete-relationships"></a>Löschen von Beziehungen
 
 Der erste Parameter gibt den Quellzwilling an (der Zwilling, von dem die Beziehung ausgeht). Der andere Parameter ist die Beziehungs-ID. Sie benötigen sowohl die Zwillings-ID als auch die Beziehungs-ID, da Beziehungs-IDs nur innerhalb des Bereichs eines Zwillings eindeutig sind.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="DeleteRelationshipMethod":::
+Hier sehen Sie Beispielcode, der zeigt, wie Sie diese Methode verwenden. Für dieses Beispiel wird der SDK-Aufruf (hervorgehoben) innerhalb einer benutzerdefinierten Methode verwendet, die im Kontext eines größeren Programms angezeigt werden kann.
 
-Sie können jetzt diese Methode aufrufen, um eine Beziehung wie folgt zu löschen:
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="DeleteRelationshipMethod" highlight="5":::
+
+Sie können jetzt diese benutzerdefinierte Methode aufrufen, um eine Beziehung wie folgt zu löschen:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseDeleteRelationship":::
 

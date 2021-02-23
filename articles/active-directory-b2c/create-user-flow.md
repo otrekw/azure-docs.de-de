@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 418446e0d465b606b8d580297cebd73c466d4841
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 9bd436b972dfb1549232831b1f07c3726ff459dd
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109011"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556489"
 ---
 # <a name="create-a-user-flow-in-azure-active-directory-b2c"></a>Erstellen eines Benutzerflows in Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ Sie können [Benutzerflows](user-flow-overview.md) verschiedener Typen in Ihrem 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 - **Registrieren der Anwendung**, die zum Testen des neuen Benutzerflows verwendet werden soll. Ein Beispiel finden Sie unter [Tutorial: Registrieren einer Webanwendung in Azure Active Directory B2C](tutorial-register-applications.md).
-- **Hinzufügen von externen Identitätsanbietern**, wenn Sie Benutzern die Anmeldung mit Anbietern wie Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft oder Twitter ermöglichen möchten. Ein Beispiel finden Sie unter [Tutorial: Hinzufügen von Identitätsanbietern zu Ihren Anwendungen in Azure Active Directory B2C](tutorial-add-identity-providers.md).
+- **Hinzufügen von externen Identitätsanbietern**, wenn Sie Benutzern die Anmeldung mit Anbietern wie Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft oder Twitter ermöglichen möchten. Informationen finden Sie unter [Hinzufügen von Identitätsanbietern zu Ihren Anwendungen in Azure Active Directory B2C](add-identity-provider.md).
 - **Konfigurieren des Identitätsanbieter „Lokales Konto“** , um die Identitätstypen (E-Mail, Benutzername, Telefonnummer) anzugeben, die für lokale Konten in Ihrem Mandanten unterstützt werden sollen. Anschließend können Sie beim Erstellen einzelner Benutzerflows aus diesen unterstützten Identitätstypen wählen. Wenn ein Benutzer den Benutzerflow abschließt, wird in Ihrem Azure AD B2C-Verzeichnis ein lokales Konto erstellt, und der Identitätsanbieter **Lokales Konto** authentifiziert die Informationen des Benutzers. Konfigurieren Sie den Identitätsanbieter „Lokales Konto“ Ihres Mandanten mit den folgenden Schritten:
 
    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. 
@@ -66,7 +66,7 @@ Sie können [Benutzerflows](user-flow-overview.md) verschiedener Typen in Ihrem 
 
    - **Lokales Konto:** Wenn Sie es Benutzern gestatten möchten, lokale Konten in Ihrem Azure AD B2C-Mandanten zu erstellen, wählen Sie den Typ des Bezeichners aus, den Sie verwenden möchten (z. B. E-Mail, Benutzer-ID oder Telefon). Nur die Identitätstypen werden aufgeführt, die in den Einstellungen für [Identitätsanbieter „Lokales Konto“](#before-you-begin) konfiguriert sind.
 
-   - **Soziales Netzwerk als Identitätsanbieter:** Wenn Sie Benutzern die Anmeldung mit [von Ihnen hinzugefügten Identitätsanbietern für soziale Netzwerke](tutorial-add-identity-providers.md) wie Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft oder Twitter ermöglichen möchten, wählen Sie die entsprechenden Anbieter in der Liste aus.
+   - **Soziales Netzwerk als Identitätsanbieter:** Wenn Sie Benutzern die Anmeldung mit [von Ihnen hinzugefügten Identitätsanbietern für soziale Netzwerke](add-identity-provider.md) wie Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft oder Twitter ermöglichen möchten, wählen Sie die entsprechenden Anbieter in der Liste aus.
 
 9. Wählen Sie für **Benutzerattribute und Ansprüche** die Ansprüche und Attribute aus, die Sie bei der Registrierung vom Benutzer sammeln und senden möchten. Wählen Sie **Mehr anzeigen** aus. Wählen Sie die Attribute und Ansprüche und dann **OK** aus.
 

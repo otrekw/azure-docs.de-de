@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 1d633b1a9f5fee0a5cceb48f2b37aaec2092069f
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 2833fd44b75f4bebf41b5100eb2350ca69436520
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979532"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362793"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optische Zeichenerkennung (OCR)
 
@@ -132,8 +132,8 @@ Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus:
 }
 ```
 
-## <a name="natural-reading-order-output"></a>Ausgabe der natürlichen Leserichtung
-Geben Sie mit der [Read 3.2-API (Vorschauversion)](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005) die Reihenfolge an, in der die Textzeilen mit dem `readingOrder`-Abfrageparameter ausgegeben werden. Verwenden Sie `natural` für eine benutzerfreundlichere Ausgabe der Lesereihenfolge, wie im folgenden Beispiel gezeigt.
+## <a name="natural-reading-order-output-latin-only"></a>Ausgabe der natürlichen Leserichtung (nur lateinische Sprachen)
+Geben Sie mit der [Read 3.2-API (Vorschauversion)](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005) die Reihenfolge an, in der die Textzeilen mit dem `readingOrder`-Abfrageparameter ausgegeben werden. Verwenden Sie `natural` für eine benutzerfreundlichere Ausgabe der Lesereihenfolge, wie im folgenden Beispiel gezeigt. Dieses Feature wird nur für lateinische Sprachen unterstützt.
 
 :::image border type="content" source="./Images/ocr-reading-order-example.png" alt-text="Beispiel für OCR-Leserichtung":::
 

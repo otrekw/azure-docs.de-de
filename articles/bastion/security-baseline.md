@@ -4,15 +4,15 @@ description: Die Sicherheitsbaseline für Azure Bastion enthält Anweisungen zur
 author: msmbaldwin
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 02/12/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 92c57c863cf09fee500b3ea7392757a4f729e4a5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d20a646eb7675efdab4cbdc5f13e929544dceaa3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723930"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392373"
 ---
 # <a name="azure-security-baseline-for-azure-bastion"></a>Azure-Sicherheitsbaseline für Azure Bastion
 
@@ -69,7 +69,11 @@ Die Konnektivität mit dem Gateway-Manager und dem Azure-Diensttag ist durch Azu
 
 **Leitfaden**: Azure Bastion ist mit Azure Active Directory (Azure AD) integriert, dem standardmäßigen Identitäts- und Zugriffsverwaltungsdienst von Azure. Benutzer können mithilfe der Azure AD-Authentifizierung auf das Azure-Portal zugreifen, um den Azure Bastion-Dienst zu verwalten (Erstellen, Aktualisieren und Löschen von Bastion-Ressourcen).
 
-Das Herstellen einer Verbindung mit VMs mithilfe von Azure Bastion basiert entweder auf einem SSH-Schlüssel oder auf einer Kombination aus Benutzername und Kennwort. Die Verwendung von Azure AD-Anmeldeinformationen wird derzeit nicht unterstützt.
+Das Herstellen einer Verbindung mit VMs mithilfe von Azure Bastion basiert entweder auf einem SSH-Schlüssel oder auf einer Kombination aus Benutzername und Kennwort. Die Verwendung von Azure AD-Anmeldeinformationen wird derzeit nicht unterstützt. 
+
+Sie können Ihre SSH-Schlüssel als Azure Key Vault-Geheimnisse speichern und diese Geheimnisse verwenden, um die Verbindung zu Ihren virtuellen Computern mit Azure Bastion herzustellen. Sie können den Benutzerzugriff auf diese Geheimnisse steuern, indem Sie [Key Vault-Zugriffsrichtlinien zuweisen](../key-vault/general/assign-access-policy-portal.md), und zwar entweder für einzelne Benutzer oder Azure AD-Gruppen. Ihre Benutzer benötigen die folgenden Berechtigungen, um mit dieser Methode eine Verbindung zu einem virtuellen Computer herzustellen:
+- **Abrufen**: Zugriff auf die im gewählten Azure Key Vault gespeicherten Geheimnisse erhalten
+- **Auflisten**: Zugriff auf die im gewählten Azure Key Vault gespeicherten Geheimnisse auflisten
 
 Zusätzlich zu einem SSH-Schlüssel oder einem Benutzernamen/Kennwort benötigt der Benutzer zum Herstellen einer Verbindung mit VMs mithilfe von Azure Bastion die folgenden Rollenzuweisungen:
 - Rolle „Leser“ für die Ziel-VM
@@ -106,7 +110,8 @@ Weitere Informationen finden Sie in den folgenden Referenzen:
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4: Verwenden stärkerer Authentifizierungssteuerungen für den gesamten Azure Active Directory-basierten Zugriff
 
-**Leitfaden**: Azure Bastion ist mit Azure Active Directory (Azure AD) integriert, um auf den Dienst zuzugreifen und ihn zu verwalten. Konfigurieren Sie Azure Multi-Factor Authentication für Ihren Azure AD-Mandanten. Azure AD unterstützt starke Authentifizierungskontrollelemente durch Multi-Factor Authentication (MFA) und starke kennwortlose Methoden.  
+**Leitfaden**: Azure Bastion ist mit Azure Active Directory (Azure AD) integriert, um auf den Dienst zuzugreifen und ihn zu verwalten. Konfigurieren Sie Azure Active Directory MFA (Multi-Factor Authentication, mehrstufige Authentifizierung) für Ihren Azure AD-Mandanten. Azure AD unterstützt starke Authentifizierungskontrollelemente durch Multi-Factor Authentication (MFA) und starke kennwortlose Methoden.
+  
 - Multi-Factor Authentication: Aktivieren Sie Azure AD MFA, und befolgen Sie die Empfehlungen für die Identitäts- und Zugriffsverwaltung in Azure Security Center für Ihr MFA-Setup. MFA kann für alle Benutzer, für ausgewählte Benutzer oder auf Benutzerebene auf der Grundlage von Anmeldebedingungen und Risikofaktoren durchgesetzt werden. 
 
 - Kennwortlose Authentifizierung: Es sind drei kennwortlose Authentifizierungsoptionen verfügbar: Windows Hello for Business, die Microsoft Authenticator-App und lokale Authentifizierungsmethoden wie Smartcards. 

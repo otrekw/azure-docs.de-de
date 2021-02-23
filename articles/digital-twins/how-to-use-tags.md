@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9a1a55bdf21b74116450ca32f66d891f1aa206d3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 70bf46de072a97eca810dda60a5331df14172ed6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045409"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555160"
 ---
 # <a name="add-tags-to-digital-twins"></a>Hinzufügen von Tags zu digitalen Zwillingen 
 
@@ -91,7 +91,7 @@ Im Folgenden finden Sie eine Abfrage, mit der alle Entitäten abgerufen werden, 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über das Entwerfen und Verwalten von Modellen digitaler Zwillinge:
-* [*Verwenden Verwalten von Azure Digital Twins-Modellen*](how-to-manage-model.md)
+* [*Vorgehensweise: Verwalten von DTDL-Modellen*](how-to-manage-model.md)
 
 Erfahren Sie mehr über das Abfragen des Zwillingsgraphen:
 * [*Verwenden Abfragen des Zwillingsgraphen*](how-to-query-graph.md)

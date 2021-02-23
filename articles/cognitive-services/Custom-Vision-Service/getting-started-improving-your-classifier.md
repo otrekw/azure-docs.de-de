@@ -1,28 +1,28 @@
 ---
-title: Verbessern der Klassifizierung – Custom Vision Service
+title: Verbessern Ihres Modells – Custom Vision-Dienst
 titleSuffix: Azure Cognitive Services
-description: In diesem Artikel erfahren Sie, wie die Menge, Qualität und Vielfalt der Daten die Qualität Ihres Klassifizierers im Custom Vision-Dienst verbessern kann.
+description: In diesem Artikel erfahren Sie, wie die Menge, Qualität und Vielfalt von Daten die Qualität Ihres Modells im Custom Vision-Dienst verbessern kann.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 02/09/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: a77d3d5c1225fdd85e27db20cdae23e0c77a5e28
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 328bfe57c675d49aa951388e2808fcecfe8da8b5
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91271357"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096530"
 ---
-# <a name="how-to-improve-your-classifier"></a>Verbessern der Klassifizierung
+# <a name="how-to-improve-your-custom-vision-model"></a>Verbessern Ihres Custom Vision-Modells
 
-In diesem Leitfaden wird beschrieben, wie Sie die Qualität Ihrer Custom Vision Service-Klassifizierung verbessern. Die Qualität Ihrer Klassifizierung ist abhängig von der Menge, Qualität und Vielseitigkeit der von Ihnen bereitgestellten gekennzeichneten Daten sowie von der Ausgewogenheit des gesamten Datasets. Eine gute Klassifizierung verfügt über ein ausgewogenes Trainingsdataset, das repräsentativ für die Elemente ist, die an die Klassifizierung übermittelt werden. Der Prozess zum Erstellen einer solchen Klassifizierung ist iterativ; es ist üblich, einige Trainingsrunden durchzuführen, um die erwarteten Ergebnisse zu erreichen.
+In diesem Leitfaden erfahren Sie, wie Sie die Qualität Ihres Modells für den Custom Vision-Dienst verbessern. Die Qualität Ihrer [Klassifizierung](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) oder [Objekterkennung](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector) hängt von der Menge, Qualität und Vielseitigkeit der von Ihnen bereitgestellten getaggten Daten sowie von der Ausgewogenheit des gesamten Datasets ab. Ein gutes Modell verfügt über ein ausgewogenes Trainingsdataset, das repräsentativ für das ist, was an das Modell übermittelt wird. Solche Modelle werden iterativ erstellt. Üblicherweise werden einige Trainingsrunden durchlaufen, um die erwarteten Ergebnisse zu erzielen.
 
-Im Folgenden finden Sie ein allgemeines Muster, um eine genauere Klassifizierung zu erstellen:
+Im Folgenden wird ein allgemeines Muster erläutert, das Ihnen dabei hilft, ein genaueres Modell zu trainieren:
 
 1. Erste Trainingsrunde
 1. Hinzufügen weiterer Bilder und Ausgleichen von Daten; erneutes Trainieren
@@ -32,15 +32,15 @@ Im Folgenden finden Sie ein allgemeines Muster, um eine genauere Klassifizierung
 
 ## <a name="prevent-overfitting"></a>Verhindern der Überanpassung
 
-In einigen Fällen lernt eine Klassifizierung, Vorhersagen basierend auf beliebigen Merkmalen zu machen, die Ihre Bilder gemeinsam haben. Wenn Sie z.B. eine Klassifizierung zur Unterscheidung von Äpfeln und Zitrusfrüchten erstellen und dafür Bilder von Äpfeln in Händen und Zitrusfrüchten auf weißen Tellern verwendet haben, wird die Klassifizierung möglicherweise dem Unterschied zwischen Händen und weißen Tellern gegenüber dem Unterschied zwischen Äpfeln und Zitrusfrüchten einen ungerechtfertigten Schwerpunkt einräumen.
+Manchmal lernt ein Modell, Vorhersagen basierend auf zufälligen Merkmalen zu treffen, die Ihre Bilder gemeinsam haben. Wenn Sie z.B. eine Klassifizierung zur Unterscheidung von Äpfeln und Zitrusfrüchten erstellen und dafür Bilder von Äpfeln in Händen und Zitrusfrüchten auf weißen Tellern verwendet haben, wird die Klassifizierung möglicherweise dem Unterschied zwischen Händen und weißen Tellern gegenüber dem Unterschied zwischen Äpfeln und Zitrusfrüchten einen ungerechtfertigten Schwerpunkt einräumen.
 
 ![Abbildung: unerwartete Klassifizierung](./media/getting-started-improving-your-classifier/unexpected.png)
 
-Um dieses Problem zu beheben, befolgen Sie die folgende Anleitung zum Trainieren mit Bildern, die mehr Unterschiede aufweisen: Stellen Sie Bilder mit verschiedenen Winkeln, Hintergründen, Objektgrößen und anderen Variationen bereit.
+Stellen Sie zum Beheben dieses Problems Bilder mit verschiedenen Blickwinkeln, Hintergründen, Objektgrößen, Gruppen und anderen Variationen bereit. In den folgenden Abschnitten werden diese Konzepte näher erläutert.
 
 ## <a name="data-quantity"></a>Datenmenge
 
-Die Anzahl der Trainingsbilder ist der wichtigste Faktor. Es sollten mindestens 50 Bilder pro Bezeichnung als Ausgangspunkt verwendet werden. Mit weniger Bildern besteht ein höheres Risiko der Überanpassung, und während Ihre Leistungszahlen vermeintlich auf gute Qualität hindeuten, könnte Ihr Modell mit echten Daten im Konflikt stehen. 
+Die Anzahl der Trainingsbilder ist der wichtigste Faktor für Ihr Dataset. Es sollten mindestens 50 Bilder pro Bezeichnung als Ausgangspunkt verwendet werden. Mit weniger Bildern besteht ein höheres Risiko der Überanpassung, und während Ihre Leistungszahlen vermeintlich auf gute Qualität hindeuten, könnte Ihr Modell mit echten Daten im Konflikt stehen. 
 
 ## <a name="data-balance"></a>Datenausgleich
 
@@ -48,11 +48,11 @@ Sie müssen auch die relativen Mengen Ihrer Trainingsdaten berücksichtigen. Bei
 
 ## <a name="data-variety"></a>Datenvielzahl
 
-Verwenden Sie unbedingt Bilder, die für die Elemente repräsentativ sind, die während der normalen Nutzung an die Klassifizierung übermittelt werden. Andernfalls könnte Ihre Klassifizierung lernen, Vorhersagen basierend auf beliebigen Merkmalen zu machen, die Ihre Bilder gemeinsam haben. Wenn Sie z.B. eine Klassifizierung zur Unterscheidung von Äpfeln und Zitrusfrüchten erstellen und dafür Bilder von Äpfeln in Händen und Zitrusfrüchten auf weißen Tellern verwendet haben, wird die Klassifizierung möglicherweise dem Unterschied zwischen Händen und weißen Tellern gegenüber dem Unterschied zwischen Äpfeln und Zitrusfrüchten einen ungerechtfertigten Schwerpunkt einräumen.
+Verwenden Sie unbedingt Bilder, die für die Elemente repräsentativ sind, die während der normalen Nutzung an die Klassifizierung übermittelt werden. Andernfalls könnte Ihr Modell lernen, Vorhersagen basierend auf zufälligen Merkmalen zu treffen, die Ihre Bilder gemeinsam haben. Wenn Sie z.B. eine Klassifizierung zur Unterscheidung von Äpfeln und Zitrusfrüchten erstellen und dafür Bilder von Äpfeln in Händen und Zitrusfrüchten auf weißen Tellern verwendet haben, wird die Klassifizierung möglicherweise dem Unterschied zwischen Händen und weißen Tellern gegenüber dem Unterschied zwischen Äpfeln und Zitrusfrüchten einen ungerechtfertigten Schwerpunkt einräumen.
 
 ![Abbildung: unerwartete Klassifizierung](./media/getting-started-improving-your-classifier/unexpected.png)
 
-Um dieses Problem zu korrigieren, beziehen Sie eine Vielzahl von Bildern ein, um sicherzustellen, dass Ihre Klassifizierung gut verallgemeinern kann. Im Folgenden finden Sie einige Möglichkeiten, um Ihren Trainingssatz vielseitiger zu machen:
+Beziehen Sie zum Beheben dieses Problems eine große Vielfalt von Bildern ein, um sicherzustellen, dass Ihr Modell gut generalisieren kann. Im Folgenden finden Sie einige Möglichkeiten, um Ihren Trainingssatz vielseitiger zu machen:
 
 * __Hintergrund:__ Stellen Sie die Bilder Ihres Objekts vor andere Hintergründe. Fotos in natürlichen Kontexten eignen sich besser als Fotos vor neutralen Hintergründen, da erstere weitere Informationen für die Klassifizierung bereitstellen.
 
@@ -74,30 +74,39 @@ Um dieses Problem zu korrigieren, beziehen Sie eine Vielzahl von Bildern ein, um
 
     ![Abbildung: Beispiele für Ausführungen](./media/getting-started-improving-your-classifier/style.png)
 
-## <a name="negative-images"></a>Negative Bilder
+## <a name="negative-images-classifiers-only"></a>Als negativ klassifizierte Bilder (nur Klassifizierung)
 
-Möglicherweise müssen Sie in Ihrem Projekt irgendwann _Negativbeispiele_ hinzufügen, damit Ihre Klassifizierung genauer wird. Negativbeispiele sind jene, die mit keinen der anderen Tags übereinstimmen. Wenn Sie diese Bilder hochladen, wenden Sie die spezielle **Negativ**-Bezeichnung auf sie an.
+Wenn Sie eine Bildklassifizierung verwenden, müssen Sie möglicherweise _Negativbeispiele_ hinzufügen, um die Genauigkeit Ihrer Klassifizierung zu verbessern. Negativbeispiele sind Bilder, die zu keinen der anderen Tags passen. Wenn Sie diese Bilder hochladen, wenden Sie die spezielle **Negativ**-Bezeichnung auf sie an.
+
+Objekterkennungen verarbeiten Negativbeispiele automatisch, da alle Bildbereiche außerhalb der festgelegten Begrenzungsrahmen als negativ angesehen werden.
 
 > [!NOTE]
 > Der Custom Vision Service unterstützt teilweise die automatische Verarbeitung von negativen Bildern. Wenn Sie beispielsweise eine Klassifizierung zur Unterscheidung von Trauben und Bananen erstellen und ein Bild eines Schuhs für die Vorhersage übermitteln, sollte die Klassifizierung dieses Bild in Bezug auf Trauben und Bananen mit nahezu 0 % bewerten.
 > 
 > Andererseits ist es in Fällen, in denen die negativen Bilder nur eine Variation der im Training verwendeten Bilder sind, wahrscheinlich, dass das Modell die negativen Bilder aufgrund der großen Ähnlichkeiten als eine bezeichnete Klasse klassifiziert. Falls Sie eine Klassifizierung zur Unterscheidung von Orangen und Grapefruits verwenden und ein Bild einer Clementine übermitteln, wird die Clementine ggf. als Orange eingestuft, da sich die Merkmale von Clementinen und Orangen stark ähneln. Wenn Ihre negativen Bilder dieser Art sind, raten wir Ihnen, mindestens ein zusätzliches Tag (z. B. **Sonstiges**) zu erstellen und die negativen Bilder während des Trainings mit diesem Tag zu bezeichnen, damit das Modell besser zwischen diesen Klassen unterscheiden kann.
 
+## <a name="consider-occlusion-and-truncation-object-detectors-only"></a>Berücksichtigen von Verdeckung und Abschneiden (nur Objekterkennung)
+
+Wenn Sie möchten, dass Ihre Objekterkennung abgeschnittene Objekte (Objekt ist teilweise nicht mehr im Bild) oder verdeckte Objekte (Objekt wird von einem anderen Objekt im Bild teilweise verdeckt) erkennt, müssen Sie Trainingsbilder einschließen, die diese Fälle abdecken.
+
+> [!NOTE]
+> Das Problem, dass Objekte von anderen Objekten verdeckt werden, ist nicht mit dem **Überlappungsschwellenwert** zu verwechseln, bei dem es sich um einen Parameter für die Bewertung der Modellleistung handelt. Der Schieberegler **Overlap Threshold** (Überlappungsschwellenwert) auf der [Custom Vision-Website](https://customvision.ai) gibt an, wie stark sich ein vorhergesagter Begrenzungsrahmen und der richtige Begrenzungsrahmen überlappen müssen, damit eine Vorhersage als richtig angesehen wird.
+
 ## <a name="use-prediction-images-for-further-training"></a>Verwenden Sie Vorhersagebilder für das weitere Training
 
-Wenn Sie die Bildklassifizierung durch Senden von Bildern an den Endpunkt der Vorhersage verwenden oder testen, speichert der Custom Vision-Dienst diese Bilder. Sie können sie dann verwenden, um das Modell zu verbessern.
+Wenn Sie Bilder an den Vorhersageendpunkt übermitteln, um das Modell zu verwenden oder zu testen, speichert der Custom Vision-Dienst diese Bilder. Sie können sie dann verwenden, um das Modell zu verbessern.
 
-1. Um die an die Klassifizierung gesendeten Bilder anzuzeigen, öffnen Sie die [Custom Vision-Webseite](https://customvision.ai) und wählen die Registerkarte __Vorhersagen__ aus. In der Standardansicht werden Bilder aus der aktuellen Iteration angezeigt. Sie können das Dropdownmenü __Iteration__ verwenden, um Bilder anzuzeigen, die während früherer Iterationen gesendet wurden.
+1. Öffnen Sie die [Custom Vision-Webseite](https://customvision.ai), navigieren Sie zu Ihrem Projekt, und klicken Sie auf die Registerkarte __Predictions__ (Vorhersagen), um an die Klassifizierung übermittelte Bilder anzuzeigen. In der Standardansicht werden Bilder aus der aktuellen Iteration angezeigt. Sie können das Dropdownmenü __Iteration__ verwenden, um Bilder anzuzeigen, die während früherer Iterationen gesendet wurden.
 
     ![Screenshot der Registerkarte „Vorhersagen“ mit Bildern in der Ansicht](./media/getting-started-improving-your-classifier/predictions.png)
 
-2. Zeigen Sie mit dem Mauszeiger auf ein Bild, um die Kategorien anzuzeigen, die von der Klassifizierung vorhergesagt wurden. Die Bilder sind so sortiert, dass diejenigen, die bei der Klassifizierung die meisten Verbesserungen bewirken können, im oberen Bereich aufgeführt werden. Um eine andere Sortiermethode zu verwenden, nehmen Sie eine Auswahl im Abschnitt __Sort__ vor. 
+2. Zeigen Sie auf ein Bild, um die vom Modell vorhergesagten Tags anzuzeigen. Die Bilder sind so sortiert, dass diejenigen, die am meisten zur Verbesserung des Modells beitragen können, oben sind. Um eine andere Sortiermethode zu verwenden, nehmen Sie eine Auswahl im Abschnitt __Sort__ vor. 
 
     Um Ihren vorhandenen Trainingsdaten ein Bild hinzuzufügen, wählen Sie das Bild und die richtigen Tags aus, und klicken Sie auf __Save and close__ (Speichern und schließen). Das Bild wird aus dem Bereich __Predictions__ (Vorhersagen) entfernt und dem Trainingsbildersatz hinzugefügt. Sie können es anzeigen, indem Sie die Registerkarte __Training Images__ (Trainingsbilder) auswählen.
 
     ![Bild der Kategorienseite](./media/getting-started-improving-your-classifier/tag.png)
 
-3. Verwenden Sie dann die Schaltfläche __Train__ (Trainieren), um die Klassifizierung erneut zu trainieren.
+3. Klicken Sie dann auf __Trainieren__, um das Modell erneut zu trainieren.
 
 ## <a name="visually-inspect-predictions"></a>Visuelle Überprüfung von Vorhersagen
 
@@ -109,7 +118,7 @@ Bei der visuellen Untersuchung werden ggf. Muster identifiziert, die Sie dann ko
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Handbuch haben Sie mehrere Verfahren gelernt, die Präzision Ihres benutzerdefinierten Bildklassifizierungsmodell zu verbessern. Finden Sie als Nächstes heraus, wie Sie Bilder programmgesteuert testen, indem Sie sie an die Vorhersage-API senden.
+In diesem Leitfaden haben Sie einige Verfahren kennengelernt, mit denen Sie die Genauigkeit Ihres benutzerdefinierten Bildklassifizierungsmodells oder Objekterkennungsmodells verbessern können. Finden Sie als Nächstes heraus, wie Sie Bilder programmgesteuert testen, indem Sie sie an die Vorhersage-API senden.
 
 > [!div class="nextstepaction"]
 > [Verwenden der Vorhersage-API](use-prediction-api.md)

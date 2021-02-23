@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: f86b2a50040704aac2827c463a362a04f78ba34f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: eb59bb43d493609ae408a402eaea2dcc9c6fab29
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881821"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548776"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Bereitstellen eines Clouddiensts (erweiterter Support) mithilfe von ARM-Vorlagen
 
@@ -134,7 +134,7 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von [ARM-Vorlagen](https://doc
     ```
  
 
-4. Fügen Sie im Abschnitt `OsProfile` der ARM-Vorlage Ihren Schlüsseltresorverweis hinzu. Key Vault wird zum Speichern von Zertifikaten verwendet, die Cloud Services (erweiterter Support) zugeordnet sind. Fügen Sie Key Vault die Zertifikate hinzu, und verweisen Sie dann in der Dienstkonfigurationsdatei (.cscfg) auf die Zertifikatfingerabdrücke. Außerdem müssen Sie Key Vault für entsprechende Berechtigungen aktivieren, damit Cloud Services (erweiterter Support) als Geheimnisse gespeicherte Zertifikate aus Key Vault abrufen kann. Weitere Informationen finden Sie unter [Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)](certificates-and-key-vault.md).
+4. Fügen Sie im Abschnitt `OsProfile` der ARM-Vorlage Ihren Schlüsseltresorverweis hinzu. Key Vault wird zum Speichern von Zertifikaten verwendet, die Cloud Services (erweiterter Support) zugeordnet sind. Fügen Sie Key Vault die Zertifikate hinzu, und verweisen Sie dann in der Dienstkonfigurationsdatei (.cscfg) auf die Zertifikatfingerabdrücke. Außerdem müssen Sie Key Vault für entsprechende Berechtigungen aktivieren, damit Cloud Services (erweiterter Support) als Geheimnisse gespeicherte Zertifikate aus Key Vault abrufen kann. Die Key Vault-Instanz muss in der gleichen Region und im gleichen Abonnement erstellt werden wie der Clouddienst und einen eindeutigen Namen besitzen. Weitere Informationen finden Sie unter [Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)](certificates-and-key-vault.md).
      
     ```json
     "osProfile": { 
@@ -441,14 +441,15 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von [ARM-Vorlagen](https://doc
             ]
           }
         }
-      }
+       }
+      ]
     }
     ```
  
-8. Stellen Sie die Vorlage bereit, und erstellen Sie die Clouddienstbereitstellung mit erweitertem Support. 
+8. Stellen Sie die Vorlagen- und Parameterdatei (definierende Parameter in der Vorlagendatei) zum Erstellen der Clouddienstbereitstellung (erweiterter Support) bereit. Weitere Informationen finden Sie bei Bedarf in [diesen Beispielvorlagen](https://github.com/Azure-Samples/cloud-services-extended-support).
 
     ```powershell
-    New-AzResourceGroupDeployment -ResourceGroupName “ContosOrg -TemplateFile "file path to your template file”  
+    New-AzResourceGroupDeployment -ResourceGroupName “ContosOrg"  -TemplateFile "file path to your template file” -TemplateParameterFile "file path to your parameter file"
     ```
  
 ## <a name="next-steps"></a>Nächste Schritte 

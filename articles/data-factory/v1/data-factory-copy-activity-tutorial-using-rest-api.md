@@ -1,24 +1,18 @@
 ---
 title: 'Tutorial: Verwenden der REST-API zum Erstellen einer Azure Data Factory-Pipeline '
 description: In diesem Tutorial erstellen Sie über die REST-API eine Azure Data Factory-Pipeline mit einer Kopieraktivität, um Daten aus Azure Blob Storage in Azure SQL-Datenbank zu kopieren.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: ''
-editor: ''
-ms.assetid: 1704cdf8-30ad-49bc-a71c-4057e26e7350
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 91a92f9dd0eaf55b8ba35f38102ee30b8cda4bfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7488834252dcd4e231c2d91a1435838befe7b1d1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87053822"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377022"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Tutorial: Verwenden der REST-API zum Erstellen einer Azure Data Factory-Pipeline zum Kopieren von Daten 
 > [!div class="op_single_selector"]
@@ -330,15 +324,15 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 ## <a name="create-data-factory"></a>Erstellen einer Data Factory
 In diesem Schritt erstellen Sie eine Azure Data Factory mit dem Namen **ADFCopyTutorialDF**. Eine Data Factory kann eine oder mehrere Pipelines haben. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Beispiel: eine Kopieraktivität zum Kopieren von Daten aus einer Quelle an einen Zieldatenspeicher. Eine HDInsight-Hive-Aktivität zum Ausführen eines Hive-Skripts zum Transformieren von Eingabedaten in Produktausgabedaten. Führen Sie die folgenden Befehle zum Erstellen der Data Factory aus: 
 
-1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd**zu. 
+1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd** zu. 
    
     > [!IMPORTANT]
-    > Stellen Sie sicher, dass der hier angegebene Name der Data Factory (ADFCopyTutorialDF) mit dem Namen übereinstimmt, der in der Datei **datafactory.json**angegeben ist. 
+    > Stellen Sie sicher, dass der hier angegebene Name der Data Factory (ADFCopyTutorialDF) mit dem Namen übereinstimmt, der in der Datei **datafactory.json** angegeben ist. 
    
     ```PowerShell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@datafactory.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/ADFCopyTutorialDF0411?api-version=2015-10-01};
     ```
-2. Führen Sie den Befehl mithilfe von **Invoke-Command**aus.
+2. Führen Sie den Befehl mithilfe von **Invoke-Command** aus.
    
     ```PowerShell
     $results = Invoke-Command -scriptblock $cmd;
@@ -351,7 +345,7 @@ In diesem Schritt erstellen Sie eine Azure Data Factory mit dem Namen **ADFCopyT
 
 Beachten Sie folgende Punkte:
 
-* Der Name der Azure Data Factory muss global eindeutig sein. Führen Sie die folgenden Schritte aus, wenn der Fehler **Der Data Factory-Name „ADFCopyTutorialDF“ ist nicht verfügbar** in Ergebnissen angezeigt wird:  
+* Der Name der Azure Data Factory muss global eindeutig sein. Führen Sie die folgenden Schritte aus, wenn der Fehler **Der Data Factory-Name „ADFCopyTutorialDF“ ist nicht verfügbar** in Ergebnissen angezeigt wird:  
   
   1. Ändern Sie den Namen (z.B. „ihrnameADFCopyTutorialDF“) in der Datei **datafactory.json**.
   2. Ersetzen Sie im ersten Befehl an der Stelle, an der der Variablen **$cmd** ein Wert zugewiesen wird, „ADFCopyTutorialDF“ durch den neuen Namen, und führen Sie den Befehl aus. 
@@ -386,12 +380,12 @@ Die AzureStorageLinkedService-Instanz verknüpft Ihr Azure Storage-Konto mit der
 ### <a name="create-azure-storage-linked-service"></a>Erstellen des mit Azure Storage verknüpften Diensts
 In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit Ihrer Data Factory. In diesem Abschnitt geben Sie Name und Schlüssel Ihres Azure Storage-Kontos an. Informationen zu JSON-Eigenschaften zum Definieren eines mit Azure Storage verknüpften Diensts finden Sie unter [Mit Azure Storage verknüpfter Dienst](data-factory-azure-blob-connector.md#azure-storage-linked-service).  
 
-1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd**zu. 
+1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd** zu. 
 
     ```PowerShell   
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@azurestoragelinkedservice.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureStorageLinkedService?api-version=2015-10-01};
     ```
-2. Führen Sie den Befehl mithilfe von **Invoke-Command**aus.
+2. Führen Sie den Befehl mithilfe von **Invoke-Command** aus.
 
     ```PowerShell   
     $results = Invoke-Command -scriptblock $cmd;
@@ -405,12 +399,12 @@ In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit Ihrer Data Factory
 ### <a name="create-azure-sql-linked-service"></a>Erstellen eines mit Azure SQL verknüpften Diensts
 In diesem Schritt verknüpfen Sie Azure SQL-Datenbank mit Ihrer Data Factory. In diesem Abschnitt geben Sie den Namen des logischen SQL Servers, den Datenbanknamen, den Benutzernamen und das Benutzerkennwort an. Informationen zu JSON-Eigenschaften zum Definieren eines mit Azure SQL verknüpften Diensts finden Sie unter [Mit Azure SQL verknüpfter Dienst](data-factory-azure-sql-connector.md#linked-service-properties).
 
-1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd**zu. 
+1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd** zu. 
    
     ```PowerShell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@azuresqllinkedservice.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureSqlLinkedService?api-version=2015-10-01};
     ```
-2. Führen Sie den Befehl mithilfe von **Invoke-Command**aus.
+2. Führen Sie den Befehl mithilfe von **Invoke-Command** aus.
    
     ```PowerShell
     $results = Invoke-Command -scriptblock $cmd;
@@ -431,12 +425,12 @@ Gleichermaßen gilt: Der mit Azure SQL-Datenbank verknüpfte Dienst gibt die Ver
 ### <a name="create-input-dataset"></a>Erstellen eines Eingabedatasets
 In diesem Schritt erstellen Sie ein Dataset namens „AzureBlobInput“, das auf eine Blobdatei (emp.txt) im Stammordner eines Blobcontainers (adftutorial) in Azure Storage (dargestellt durch den verknüpften Dienst „AzureStorageLinkedService“) verweist. Wenn Sie keinen Wert für „fileName“ festlegen (oder diesen überspringen), werden Daten aus allen Blobs im Eingabeordner in das Ziel kopiert. In diesem Tutorial legen Sie einen Wert für „fileName“ fest. 
 
-1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd**zu. 
+1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd** zu. 
 
     ```PowerSHell   
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@inputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobInput?api-version=2015-10-01};
     ```
-2. Führen Sie den Befehl mithilfe von **Invoke-Command**aus.
+2. Führen Sie den Befehl mithilfe von **Invoke-Command** aus.
    
     ```PowerShell
     $results = Invoke-Command -scriptblock $cmd;
@@ -450,12 +444,12 @@ In diesem Schritt erstellen Sie ein Dataset namens „AzureBlobInput“, das auf
 ### <a name="create-output-dataset"></a>Erstellen des Ausgabedatasets
 Der mit Azure SQL-Datenbank verknüpfte Dienst gibt die Verbindungszeichenfolge an, die der Data Factory-Dienst zur Laufzeit für die Herstellung einer Verbindung zu Azure SQL-Datenbank verwendet. Das in diesem Schritt erstellte SQL-Tabellenausgabedataset (OututDataset) gibt die Tabelle in der Datenbank an, in die die Daten aus dem Blobspeicher kopiert werden.
 
-1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd**zu.
+1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd** zu.
 
     ```PowerShell   
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@outputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureSqlOutput?api-version=2015-10-01};
     ```
-2. Führen Sie den Befehl mithilfe von **Invoke-Command**aus.
+2. Führen Sie den Befehl mithilfe von **Invoke-Command** aus.
     
     ```PowerShell   
     $results = Invoke-Command -scriptblock $cmd;
@@ -471,12 +465,12 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer **Kopieraktivität**, f�
 
 Derzeit steuert das Ausgabedataset den Zeitplan. In diesem Tutorial wird ein Ausgabedataset konfiguriert, um einmal pro Stunde einen Slice zu erzeugen. Für die Pipeline ist eine Start- und Endzeit festgelegt, die einen Tag, d.h. 24 Stunden, auseinander liegen. Aus diesem Grund werden 24 Ausgabedatasetslices von der Pipeline erzeugt. 
 
-1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd**zu.
+1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd** zu.
 
     ```PowerShell   
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@pipeline.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datapipelines/MyFirstPipeline?api-version=2015-10-01};
     ```
-2. Führen Sie den Befehl mithilfe von **Invoke-Command**aus.
+2. Führen Sie den Befehl mithilfe von **Invoke-Command** aus.
 
     ```PowerShell   
     $results = Invoke-Command -scriptblock $cmd;
@@ -522,11 +516,11 @@ Für jeden Slice werden zwei Zeilen mit Daten aus der Quelldatei in die Tabelle 
 ## <a name="summary"></a>Zusammenfassung
 In diesem Tutorial haben Sie über die REST-API eine Azure Data Factory erstellt, um Daten aus einem Azure-Blob in Azure SQL-Datenbank zu kopieren. Im Anschluss sind die allgemeinen Schritte aufgeführt, die Sie in diesem Tutorial ausgeführt haben:  
 
-1. Sie haben eine Azure **Data Factory**erstellt.
-2. Sie haben **verknüpfte Dienste**erstellt:
+1. Sie haben eine Azure **Data Factory** erstellt.
+2. Sie haben **verknüpfte Dienste** erstellt:
    1. Einen verknüpften Azure Storage-Dienst zum Verknüpfen Ihres Azure Storage-Kontos, in dem Eingabedaten enthalten sind.     
    2. Einen verknüpften Azure SQL-Dienst zum Verknüpfen Ihrer Datenbank, in der die Ausgabedaten gespeichert sind. 
-3. Sie haben **Datasets**erstellt, mit denen Eingabedaten und Ausgabedaten für Pipelines beschrieben werden.
+3. Sie haben **Datasets** erstellt, mit denen Eingabedaten und Ausgabedaten für Pipelines beschrieben werden.
 4. Sie haben eine **Pipeline** mit einer Kopieraktivität und „BlobSource“ als Quelle und „SqlSink“ als Senke erstellt. 
 
 ## <a name="next-steps"></a>Nächste Schritte

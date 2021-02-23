@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: c6736bb2642ff08d0aa3cda536ef1599324efded
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcba9cad208c2ac170f91cc06a6db22e271f2a70
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85362012"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559316"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit dem Azure-Portal
 
@@ -58,7 +58,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="grant-access"></a>Gewähren von Zugriff
 
-In Azure RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung.
+In Azure RBAC weisen Sie zum Gewähren des Zugriffs eine Azure-Rolle zu.
 
 1. Klicken Sie in der Liste der **Ressourcengruppen** auf die neue Ressourcengruppe **rbac-resource-group**.
 
@@ -82,7 +82,7 @@ In Azure RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung.
 
 1. Wählen Sie in der Liste **Auswählen** sich selbst oder einen anderen Benutzer aus.
 
-1. Klicken Sie auf **Speichern**, um die Rollenzuweisung zu erstellen.
+1. Klicken Sie auf **Speichern**, um die Rolle zuzuweisen.
 
    Nach einigen Augenblicken wird dem Benutzer die Rolle „Mitwirkender für virtuelle Computer“ im Bereich der Ressourcengruppe „rbac-resource-group“ zugewiesen.
 
