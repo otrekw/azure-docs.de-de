@@ -2,21 +2,20 @@
 title: Azure SignalR als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für SignalR-Ereignisse bereitgestellt werden
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 2ac391f366c4b9a82741a1b6b3135f5d7b5fe331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/11/2021
+ms.openlocfilehash: 321dc4d21485af23a9cca0d42d74da0a3e121b7c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86106650"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363691"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>Azure Event Grid-Ereignisschema für SignalR
 
-In diesem Artikel werden die Eigenschaften und das Schema für SignalR-Ereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md). Außerdem erhalten Sie eine Liste mit Schnellstarts und Tutorials, die Azure SignalR als Ereignisquelle verwenden.
+In diesem Artikel werden die Eigenschaften und das Schema für SignalR-Ereignisse beschrieben.  Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md). Außerdem erhalten Sie eine Liste mit Schnellstarts und Tutorials, die Azure SignalR als Ereignisquelle verwenden.
 
-## <a name="event-grid-event-schema"></a>Event Grid-Ereignisschema
 
-### <a name="available-event-types"></a>Verfügbare Ereignistypen
+## <a name="available-event-types"></a>Verfügbare Ereignistypen
 
 SignalR Service gibt die folgenden Ereignistypen aus:
 
@@ -25,8 +24,9 @@ SignalR Service gibt die folgenden Ereignistypen aus:
 | Microsoft.SignalRService.ClientConnectionConnected | Wird ausgelöst, wenn eine Clientverbindung verbunden wird. |
 | Microsoft.SignalRService.ClientConnectionDisconnected | Wird ausgelöst, wenn eine Clientverbindung getrennt wird. |
 
-### <a name="example-event"></a>Beispielereignis
+## <a name="example-event"></a>Beispielereignis
 
+# <a name="event-grid-event-schema"></a>[Event Grid-Ereignisschema](#tab/event-grid-event-schema)
 Das folgende Beispiel zeigt das Schema eines Ereignisses vom Typ „Clientverbindung verbunden“: 
 
 ```json
@@ -68,30 +68,92 @@ Das Schema für ein Ereignis vom Typ „Clientverbindung getrennt“ ist ähnlic
 }]
 ```
 
+# <a name="cloud-event-schema"></a>[Cloudereignisschema](#tab/cloud-event-schema)
+
+Das folgende Beispiel zeigt das Schema eines Ereignisses vom Typ „Clientverbindung verbunden“: 
+
+```json
+[{
+  "source": "/subscriptions/{subscription-id}/resourceGroups/signalr-rg/providers/Microsoft.SignalRService/SignalR/signalr-resource",
+  "subject": "/hub/chat",
+  "type": "Microsoft.SignalRService.ClientConnectionConnected",
+  "time": "2019-06-10T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "timestamp": "2019-06-10T18:41:00.9584103Z",
+    "hubName": "chat",
+    "connectionId": "crH0uxVSvP61p5wkFY1x1A",
+    "userId": "user-eymwyo23"
+  },
+  "specversion": "1.0"
+}]
+```
+
+Das Schema für ein Ereignis vom Typ „Clientverbindung getrennt“ ist ähnlich: 
+
+```json
+[{
+  "source": "/subscriptions/{subscription-id}/resourceGroups/signalr-rg/providers/Microsoft.SignalRService/SignalR/signalr-resource",
+  "subject": "/hub/chat",
+  "type": "Microsoft.SignalRService.ClientConnectionDisconnected",
+  "time": "2019-06-10T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "timestamp": "2019-06-10T18:41:00.9584103Z",
+    "hubName": "chat",
+    "connectionId": "crH0uxVSvP61p5wkFY1x1A",
+    "userId": "user-eymwyo23",
+    "errorMessage": "Internal server error."
+  },
+  "specversion": "1.0"
+}]
+```
+
+---
+
+
 ### <a name="event-properties"></a>Ereigniseigenschaften
+
+
+# <a name="event-grid-event-schema"></a>[Event Grid-Ereignisschema](#tab/event-grid-event-schema)
+Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
+
+| Eigenschaft | type | BESCHREIBUNG |
+| -------- | ---- | ----------- |
+| `topic` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| `eventType` | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| `eventTime` | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| `id` | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| `data` | Objekt (object) | SignalR Service-Ereignisdaten. |
+| `dataVersion` | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| `metadataVersion` | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+
+# <a name="cloud-event-schema"></a>[Cloudereignisschema](#tab/cloud-event-schema)
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| topic | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
-| data | Objekt (object) | SignalR Service-Ereignisdaten. |
-| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| `source` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| `type` | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| `time` | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| `id` | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| `data` | Objekt (object) | SignalR Service-Ereignisdaten. |
+| `specversion` | Zeichenfolge | Version der CloudEvents-Schemaspezifikation. |
+
+---
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| timestamp | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| hubName | Zeichenfolge | Der Hub, zu dem die Clientverbindung gehört. |
-| connectionId | Zeichenfolge | Der eindeutige Bezeichner für die Clientverbindung. |
-| userId | Zeichenfolge | Der im Anspruch definierte Benutzerbezeichner. |
-| errorMessage | Zeichenfolge | Der Fehler, der bewirkt, dass die Verbindung getrennt wird. |
+| `timestamp` | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| `hubName` | Zeichenfolge | Der Hub, zu dem die Clientverbindung gehört. |
+| `connectionId` | Zeichenfolge | Der eindeutige Bezeichner für die Clientverbindung. |
+| `userId` | Zeichenfolge | Der im Anspruch definierte Benutzerbezeichner. |
+| `errorMessage` | Zeichenfolge | Der Fehler, der bewirkt, dass die Verbindung getrennt wird. |
 
 ## <a name="tutorials-and-how-tos"></a>Tutorials und Vorgehensweisen
 |Titel | BESCHREIBUNG |

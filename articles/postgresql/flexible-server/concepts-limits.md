@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: cc17a66aceb6ab3eba9a18f8f07902822f4c81bb
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 0221022c342735744d59f956d6047b4abf23b5cf
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937660"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516514"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Beschränkungen in Azure Database for PostgreSQL – Flexible Server
 
@@ -66,6 +66,13 @@ Eine PostgreSQL-Verbindung kann selbst im Leerlauf ca. 10 MB Arbeitsspeicher be
 
 - Die automatisierte Migration zwischen Hauptversionen von Datenbank-Engines wird derzeit nicht unterstützt. Wenn Sie auf die nächste Hauptversion upgraden möchten, führen Sie eine [Sicherung und Wiederherstellung](../howto-migrate-using-dump-and-restore.md) auf einem Server aus, der mit der neuen Engine-Version erstellt wurde.
 
+### <a name="storage"></a>Storage
+
+- Nach der Konfiguration kann die Speichergröße nicht mehr verringert werden.
+- Derzeit ist automatische Speichervergrößerung nicht verfügbar. Überwachen Sie die Nutzung, und vergrößern Sie den Speicher auf einen höheren Wert. 
+- Wenn die Speichernutzung 95 % erreicht oder die verfügbare Kapazität weniger als 5 GiB beträgt, wird der Server automatisch in den **schreibgeschützten Modus** umgeschaltet, um Fehler im Zusammenhang mit vollen Datenträgern zu vermeiden. 
+- Es wird empfohlen, Warnungsregeln für `storage used` oder `storage percent` festzulegen, wenn diese bestimmte Schwellenwerte überschreiten, damit Sie proaktiv Maßnahmen ergreifen können, z. B. eine Erhöhung der Speichergröße. Sie können z. B. eine Warnung festlegen, wenn der Speicherprozentsatz eine Auslastung von 80 % überschreitet.
+  
 ### <a name="networking"></a>Netzwerk
 
 - Das Verschieben in und aus einem VNET wird derzeit nicht unterstützt.

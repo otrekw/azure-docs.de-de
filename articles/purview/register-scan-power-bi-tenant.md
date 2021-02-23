@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 78187b2cbb6603a0ae0df55465b9a5ce5e7dca7f
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a4883bfce2469af0ee8bcc34933f94b0b5329959
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807545"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518078"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrieren und Überprüfen eines Power BI-Mandanten (Vorschau)
 
@@ -23,7 +23,7 @@ In diesem Artikel wird gezeigt, wie Sie das Azure Purview-Portal zum Registriere
 
 ## <a name="create-a-security-group-for-permissions"></a>Erstellen einer Sicherheitsgruppe für Berechtigungen
 
-Erstellen Sie zum Einrichten der Authentifizierung eine Sicherheitsgruppe, und fügen Sie ihr die verwaltete Identität des Katalogs hinzu.
+Erstellen Sie zum Einrichten der Authentifizierung eine Sicherheitsgruppe, und fügen Sie ihr die verwaltete Purview-Identität hinzu.
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Azure Active Directory**.
 1. Erstellen Sie eine neue Sicherheitsgruppe in Ihrem Azure Active Directory-System, indem Sie gemäß [Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) vorgehen.
@@ -35,11 +35,11 @@ Erstellen Sie zum Einrichten der Authentifizierung eine Sicherheitsgruppe, und f
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/security-group.png" alt-text="Gruppentyp „Sicherheit“":::
 
-1. Fügen Sie die verwaltete Identität Ihres Katalogs zu dieser Sicherheitsgruppe hinzu. Wählen Sie **Mitglieder** und dann **+ Mitglieder hinzufügen** aus.
+1. Fügen Sie dieser Sicherheitsgruppe die verwaltete Purview-Identität hinzu. Wählen Sie **Mitglieder** und dann **+ Mitglieder hinzufügen** aus.
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/add-group-member.png" alt-text="Der Gruppe die verwaltete Instanz des Katalogs hinzufügen.":::
 
-1. Suchen Sie nach Ihrem Katalog, und wählen Sie ihn aus.
+1. Suchen Sie nach Ihrer verwalteten Purview-Identität, und wählen Sie sie aus.
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/add-catalog-to-group-by-search.png" alt-text="Katalog hinzufügen, indem nach ihm gesucht wird":::
 
@@ -61,14 +61,14 @@ Erstellen Sie zum Einrichten der Authentifizierung eine Sicherheitsgruppe, und f
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="Bild, das zeigt, wie Dienstprinzipale schreibgeschützte Power BI-Administrator-API-Berechtigungen erhalten können":::
 
     > [!Caution]
-    > Wenn Sie der von Ihnen erstellten Sicherheitsgruppe (die Ihre verwaltete Datenkatalogidentität als Mitglied hat) gestatten, schreibgeschützte Power BI-Administrator-APIs zu verwenden, gestatten Sie ihr auch, auf die Metadaten (z. B. Dashboard- und Berichtsnamen, Besitzer, Beschreibungen usw.) für sämtliche Ihrer Power BI-Artefakte in diesem Mandanten zugreifen zu können. Sobald die Metadaten in Azure Purview eingelesen wurden, wird anhand der Pruview-Berechtigungen, nicht anhand der Power BI-Berechtigungen, festgelegt, wer diese Metadaten anzeigen kann.
+    > Wenn Sie der von Ihnen erstellten Sicherheitsgruppe (die Ihre verwaltete Purview-Identität als Mitglied hat) gestatten, schreibgeschützte Power BI-Administrator-APIs zu verwenden, gestatten Sie ihr auch, auf die Metadaten (z. B. Dashboard- und Berichtsnamen, Besitzer, Beschreibungen usw.) für sämtliche Ihrer Power BI-Artefakte in diesem Mandanten zugreifen zu können. Sobald die Metadaten in Azure Purview eingelesen wurden, wird anhand der Pruview-Berechtigungen, nicht anhand der Power BI-Berechtigungen, festgelegt, wer diese Metadaten anzeigen kann.
 
     > [!Note]
     > Sie können die Sicherheitsgruppe aus Ihren Entwicklereinstellungen entfernen, die zuvor extrahierten Metadaten werden jedoch nicht aus dem Purview-Konto entfernt. Bei Bedarf können Sie sie separat löschen.
 
 ## <a name="register-your-power-bi-and-set-up-a-scan"></a>Registrieren von Power BI und Einrichten einer Überprüfung
 
-Nachdem Sie dem Katalog Berechtigungen zum Herstellen einer Verbindung mit der Administrator-API Ihres Power BI-Mandanten erteilt haben, können Sie Ihre Überprüfung über das Katalogportal einrichten.
+Nachdem Sie nun der verwalteten Purview-Identität die Berechtigung erteilt haben, eine Verbindung mit der Administrator-API Ihres Power BI-Mandanten herzustellen, können Sie Ihre Überprüfung über Azure Purview Studio einrichten.
 
 Fügen Sie zunächst ein spezielles Featureflag zu Ihrer Purview-URL hinzu. 
 

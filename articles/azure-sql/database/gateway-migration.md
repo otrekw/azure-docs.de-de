@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 01e5095e5ff5c65bff508f4bd526ee5f85e3dc56
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 8fa61855b5647c1caefd939af17b70c9d08c2f8f
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575159"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517823"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Migration des Azure SQL-Datenbank-Datenverkehrs zu neueren Gateways
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,6 +29,22 @@ Aktuelle Informationen finden Sie in der Tabelle mit den [Gateway-IP-Adressen vo
 ## <a name="status-updates"></a>Statusaktualisierungen
 
 # <a name="in-progress"></a>[Vorgang wird ausgeführt](#tab/in-progress-ip)
+## <a name="march-2021"></a>März 2021
+Die folgenden SQL-Gateways in mehreren Regionen werden gerade deaktiviert:
+
+- Brasilien, Süden: 104.41.11.5
+- Asien, Osten: 191.234.2.139
+- USA, Osten: 191.238.6.43
+- Japan, Osten: 191.237.240.43
+- Japan, Westen: 191.238.68.11
+- Europa, Norden: 191.235.193.75
+- USA, Süden-Mitte: 23.98.162.75
+- Asien, Südosten: 23.100.117.95
+- Europa, Westen: 191.237.232.75
+- USA, Westen: 23.99.34.75
+
+Es wird keine Beeinträchtigung der Kunden erwartet, da diese Gateways (die auf älterer Hardware ausgeführt werden) keinen Kundendatenverkehr weiterleiten. Die IP-Adressen für diese Gateways werden am 15. März 2021 deaktiviert.
+
 ## <a name="february-2021"></a>Februar 2021
 Neue SQL-Gateways werden den folgenden Regionen hinzugefügt:
 
@@ -40,14 +56,14 @@ Diese SQL-Gateways sollen ab dem 28. Februar 2021 Kundendatenverkehr akzeptier
 Neue SQL-Gateways werden den folgenden Regionen hinzugefügt:
 
 - Australien, Mitte: 20.36.104.6 , 20.36.104.7 
-- Australien, Mitte 2: 20.36.112.6 
+- Australien, Mitte 2:  20.36.112.6 
 - Brasilien, Süden: 191.234.144.16 ,191.234.152.3 
 - Kanada, Osten: 40.69.105.9 ,40.69.105.10
 - Indien, Mitte: 104.211.86.30 , 104.211.86.31 
 - Asien, Osten: 13.75.32.14 
 - Frankreich, Mitte: 40.79.137.8, 40.79.145.12 
 - Frankreich, Süden: 40.79.177.10 ,40.79.177.12
-- Korea, Mitte: 52.231.17.22 ,52.231.17.23
+- Südkorea, Mitte: 52.231.17.22 ,52.231.17.23
 - Indien, Westen: 104.211.144.4
 
 Diese SQL-Gateways sollen ab dem 31. Januar 2021 Kundendatenverkehr akzeptieren.

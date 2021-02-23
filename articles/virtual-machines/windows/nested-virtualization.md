@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 03df7db13ebd3ebec407bb046cc735c835e01068
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e85ac58c80e1fd695938bf09b6435dba1f4ee083
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074257"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091345"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Aktivieren der geschachtelten Virtualisierung auf einer Azure-VM
 
@@ -24,7 +24,7 @@ In diesem Artikel werden die Schritte erläutert, die zum Aktivieren von Hyper-V
 
 Erstellen Sie einen neuen virtuellen Windows Server 2016-Azure-Computer. Eine vollständige Liste der VM-Größen, die Schachtelung unterstützen, finden Sie im [Artikel zur Azure-Compute-Einheit](../acu.md).
 
-Denken Sie daran, eine ausreichende VM-Größe zu wählen, um die Anforderungen eines virtuellen Gastcomputers zu unterstützen. Bei diesem Beispiel wird eine Azure-VM der Größe D3_v3 verwendet. 
+Denken Sie daran, eine ausreichende VM-Größe zu wählen, um die Anforderungen eines virtuellen Gastcomputers zu unterstützen. In diesem Beispiel wird eine Azure-VM der Größe D4_v3 verwendet. 
 
 Informationen zur regionalen Verfügbarkeit von VMs der Serien Dv3 oder Ev3 finden Sie [hier](https://azure.microsoft.com/regions/services/).
 

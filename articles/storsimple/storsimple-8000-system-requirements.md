@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/28/2017
+ms.date: 02/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 6dcaa83980210a1f5449e8a2e0982cb8e39ff03d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: fa7616a740e8246fa08e950494428095f41ee404
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966189"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382853"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>Software für StorSimple 8000-Serie, Hochverfügbarkeit und Netzwerkanforderungen
 
@@ -41,7 +41,7 @@ Die folgenden Softwareanforderungen gelten für Speicherclients, die auf das Sto
 
 | Unterstützte Betriebssysteme | Erforderliche Version | Weitere Anforderungen/Hinweise |
 | --- | --- | --- |
-| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |StorSimple iSCSI-Volumes werden nur für die Verwendung auf den folgenden Windows-Datenträgertypen unterstützt:<ul><li>Einfaches Volume auf Basisfestplatte</li><li>Einfaches und gespiegeltes Volume auf dynamischem Datenträger</li></ul>Es werden nur die nativ im Betriebssystem vorhandenen Software-iSCSI-Initiatoren unterstützt. Hardware-iSCSI-Initiatoren werden nicht unterstützt.<br></br>Die schlanke Speicherzuweisung von Windows Server 2012 und 2016 sowie ODX-Features werden unterstützt, wenn Sie ein StorSimple-iSCSI-Volume verwenden.<br><br>Mit StorSimple können Sie Volumes mit schlanker Speicherzuweisung und vollständig bereitgestellte Volumes erstellen. Es können damit keine teilweise bereitgestellten Volumes erstellt werden.<br><br>Das erneute Formatieren eines mit schlanker Speicherzuweisung erstellten Volumes kann lange dauern. Es wird empfohlen, das Volume zu löschen und dann ein neues Volume zu erstellen, anstatt neu zu formatieren. Falls Sie trotzdem das Neuformatieren eines Volumes vorziehen:<ul><li>Führen Sie vor der Neuformatierung den folgenden Befehl aus, um Verzögerungen bei der Freigabe von Speicherplatz zu vermeiden: <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Verwenden Sie nach Abschluss der Neuformatierung den folgenden Befehl, um die Freigabe von Speicherplatz erneut zu aktivieren:<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Wenden Sie das Windows Server 2012-Hotfix wie in [KB 2878635](https://support.microsoft.com/kb/2870270) beschrieben auf Ihren Windows Server-Computer an.</li></ul></li></ul></ul> Greifen Sie auf [Softwareanforderungen für optionale Komponenten](#software-requirements-for-optional-components)zu, wenn Sie StorSimple Snapshot Manager oder den StorSimple-Adapter für SharePoint konfigurieren. |
+| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |StorSimple iSCSI-Volumes werden nur für die Verwendung auf den folgenden Windows-Datenträgertypen unterstützt:<ul><li>Einfaches Volume auf Basisfestplatte</li><li>Einfaches und gespiegeltes Volume auf dynamischem Datenträger</li></ul>Es werden nur die nativ im Betriebssystem vorhandenen Software-iSCSI-Initiatoren unterstützt. Hardware-iSCSI-Initiatoren werden nicht unterstützt.<br></br>Die schlanke Speicherzuweisung von Windows Server 2012 und 2016 sowie ODX-Features werden unterstützt, wenn Sie ein StorSimple-iSCSI-Volume verwenden.<br><br>Mit StorSimple können Sie Volumes mit schlanker Speicherzuweisung und vollständig bereitgestellte Volumes erstellen. Es können damit keine teilweise bereitgestellten Volumes erstellt werden.<br><br>Das erneute Formatieren eines mit schlanker Speicherzuweisung erstellten Volumes kann lange dauern. Es wird empfohlen, das Volume zu löschen und dann ein neues Volume zu erstellen, anstatt neu zu formatieren. Falls Sie trotzdem das Neuformatieren eines Volumes vorziehen:<ul><li>Führen Sie vor der Neuformatierung den folgenden Befehl aus, um Verzögerungen bei der Freigabe von Speicherplatz zu vermeiden: <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Verwenden Sie nach Abschluss der Neuformatierung den folgenden Befehl, um die Freigabe von Speicherplatz erneut zu aktivieren:<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Wenden Sie das Windows Server 2012-Hotfix wie in [KB 2878635](https://support.microsoft.com/kb/2870270) beschrieben auf Ihren Windows Server-Computer an.</li></ul></li></ul></ul> Greifen Sie auf [Softwareanforderungen für optionale Komponenten](#software-requirements-for-optional-components)zu, wenn Sie StorSimple Snapshot Manager oder den StorSimple-Adapter für SharePoint konfigurieren. <br> Wenn Ihr Windows Server-Client das SMB-Protokoll verwendet, um auf das StorSimple-Gerät zuzugreifen, wechseln Sie zu [Leistungsoptimierung für SMB-Dateiserver](/windows-server/administration/performance-tuning/role/file-server/smb-file-server), um eine Anleitung zur Erhöhung der Parallelverarbeitung zu erhalten.|
 | VMware ESX |5.5 und 6.0 |Wird für VMware vSphere als iSCSI-Client unterstützt. Die VAAI-Blockfunktion wird für VMware vSphere auf StorSimple-Geräten unterstützt. |
 | Linux RHEL/CentOS |5, 6 und 7 |Unterstützung für Linux-iSCSI-Clients mit Open-iSCSI-Initiator, Versionen 5, 6 und 7. |
 | Linux |SUSE Linux 11 | |
@@ -98,7 +98,7 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 
 | URL-Muster | Komponente/Funktionalität | Geräte-IPs |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple-Geräte-Manager-Dienst<br>Zugriffssteuerungsdienst (ACS)<br>Azure-Servicebus<br>Authentifizierungsdienst |Cloudaktivierte Netzwerkschnittstellen |
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple-Geräte-Manager-Dienst<br>Zugriffssteuerungsdienst (ACS)<br>Azure Service Bus<br>Authentifizierungsdienst |Cloudaktivierte Netzwerkschnittstellen |
 | `https://*.backup.windowsazure.com` |Geräteregistrierung |Nur DATA 0 |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Zertifikatswiderruf |Cloudaktivierte Netzwerkschnittstellen |
 | `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure-Speicherkonten und Überwachung |Cloudaktivierte Netzwerkschnittstellen |
@@ -110,7 +110,7 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 
 | URL-Muster | Komponente/Funktionalität | Geräte-IPs |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |StorSimple-Geräte-Manager-Dienst<br>Zugriffssteuerungsdienst (ACS)<br>Azure-Servicebus<br>Authentifizierungsdienst |Cloudaktivierte Netzwerkschnittstellen |
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |StorSimple-Geräte-Manager-Dienst<br>Zugriffssteuerungsdienst (ACS)<br>Azure Service Bus<br>Authentifizierungsdienst |Cloudaktivierte Netzwerkschnittstellen |
 | `https://*.backup.windowsazure.us` |Geräteregistrierung |Nur DATA 0 |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Zertifikatswiderruf |Cloudaktivierte Netzwerkschnittstellen |
 | `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure-Speicherkonten und Überwachung |Cloudaktivierte Netzwerkschnittstellen |
@@ -157,7 +157,7 @@ Der für Update 2 und höhere Versionen verwendete Routingmetrikalgorithmus läs
 * Außerdem wird eine Warnung auf dem StorSimple-Gerät ausgelöst, wenn ein VIP-Fehler vorliegt. Weitere Informationen finden Sie unter [Kurzübersicht zu Warnungen](storsimple-8000-manage-alerts.md).
 * Im Hinblick auf Wiederholungsversuche erhält iSCSI Vorrang vor der Cloud.
   
-    Betrachten Sie das folgenden Beispiel: Für ein StorSimple-Gerät sind zwei Netzwerkschnittstellen aktiviert, Data 0 und Data 1. Data 0 ist cloudfähig, Data 1 ist sowohl cloudfähig als auch iSCSI-aktiviert. Keine anderen Netzwerkschnittstellen auf diesem Gerät sind für die Cloud oder iSCSI aktiviert.
+    Im folgenden Beispiel sind für ein StorSimple-Gerät zwei Netzwerkschnittstellen aktiviert, Data 0 und Data 1. Data 0 ist cloudfähig, Data 1 ist sowohl cloudfähig als auch iSCSI-aktiviert. Keine anderen Netzwerkschnittstellen auf diesem Gerät sind für die Cloud oder iSCSI aktiviert.
   
     Wenn bei Data 1 ein Fehler auftritt und es sich dabei um die letzte iSCSI-Netzwerkschnittstelle handelt, führt dies zu einem Controllerfailover auf Data 1 auf dem anderen Controller.
 

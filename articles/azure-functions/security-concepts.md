@@ -3,12 +3,12 @@ title: Absichern von Azure Functions
 description: Erfahren Sie, wie Sie Ihren in Azure ausgeführten Funktionscode vor gängigen Angriffen schützen können.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: ee54ff8c1efaee00999888891e6de255060aa416
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 351bdca7ff94b6c058b5ab62fd9c16d707e7dc78
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491323"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368488"
 ---
 # <a name="securing-azure-functions"></a>Absichern von Azure Functions
 
@@ -107,6 +107,8 @@ Verbindungszeichenfolgen und andere in den Anwendungseinstellungen gespeicherte 
 
 [!INCLUDE [app-service-managed-identities](../../includes/app-service-managed-identities.md)]
 
+Verwaltete Identitäten können anstelle von Geheimnissen für Verbindungen von einigen Triggern und Bindungen verwendet werden. Siehe [identitätsbasierte Verbindungen](#identity-based-connections).
+
 Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten für App Service und Azure Functions](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json).
 
 #### <a name="restrict-cors-access"></a>Beschränken des CORS-Zugriffs
@@ -136,6 +138,14 @@ Sie können Einstellungen in der Datei „local.settings.json“ auch standardm�
 Während Anwendungseinstellungen für die meisten Funktionen ausreichend sind, möchten Sie möglicherweise die gleichen Geheimnisse für mehrere Dienste gemeinsam nutzen. In diesem Fall führt die redundante Speicherung von Geheimnissen zu mehr potenziellen Sicherheitsrisiken. Ein sichererer Ansatz ist das Einrichten eines zentralen Geheimnisspeicherdiensts und das Arbeiten mit Verweisen auf diesen Dienst statt mit den Geheimnissen selbst.      
 
 [Azure Key Vault](../key-vault/general/overview.md) ist ein Dienst, der eine zentralisierte Verwaltung von Geheimnissen mit voller Kontrolle über Zugriffsrichtlinien und Überprüfungsverlauf ermöglicht. Sie können in Ihren Anwendungseinstellungen einen Key Vault-Verweis anstelle einer Verbindungszeichenfolge oder eines Schlüssels nutzen. Weitere Informationen finden Sie unter [Verwenden von Key Vault-Verweisen in App Service und Azure Functions](../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json).
+
+### <a name="identity-based-connections"></a>Identitätsbasierte Verbindungen
+
+Identitäten können anstelle von Geheimnissen verwendet werden, um eine Verbindung mit einigen Ressourcen herzustellen. Dies hat den Vorteil, dass die Verwaltung eines Geheimnisses nicht erforderlich ist, und bietet eine präzisere Zugriffssteuerung und Überwachung. 
+
+Wenn Sie Code schreiben, der die Verbindung mit [Azure-Diensten herstellt, die Azure AD Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), können Sie wahlweise eine Identität anstelle eines Geheimnisses oder einer Verbindungszeichenfolge verwenden. Details zu beiden Verbindungsmethoden finden Sie in der Dokumentation zu den einzelnen Diensten.
+
+Einige Azure Functions-Trigger und -Bindungserweiterungen können mithilfe einer identitätsbasierten Verbindung konfiguriert werden. Zurzeit umfasst dies die Erweiterungen [Azure-Blob](./functions-bindings-storage-blob.md) und [Azure-Warteschlangen](./functions-bindings-storage-queue.md). Informationen zum Konfigurieren dieser Erweiterungen für die Verwendung einer Identität finden Sie unter [Verwenden von identitätsbasierten Verbindungen in Azure Functions](./functions-reference.md#configure-an-identity-based-connection).
 
 ### <a name="set-usage-quotas"></a>Festlegen von Nutzungskontingenten
 

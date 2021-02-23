@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dfd0156907f18dcb7f38246993ddc4abcd508631
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 25d9d53b9bc597b5eb51586c594dd631609f476e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549387"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362147"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Verwenden von Azure zum Hosten und Ausführen von SAP-Workloadszenarien
 
@@ -84,6 +84,7 @@ In diesem Abschnitt finden Sie Dokumente zur Integration von Microsoft Power BI
 
 ## <a name="change-log"></a>Änderungsprotokoll
 
+- 11.02.2021: Änderungen der [Hochverfügbarkeit von IBM Db2 LUW auf Azure-VM unter Red Hat Enterprise Linux Server](./high-availability-guide-rhel-ibm-db2-luw.md) zum Ändern der Pacemaker-Clusterbefehle für RHEL 8.x
 - 02/03/2021: Änderung in [Einrichten von Pacemaker unter RHEL in Azure](./high-availability-guide-rhel-pacemaker.md), um pcmk_host_map im Befehl „stonith create“ zu aktualisieren
 - 02/03/2021: Änderung in [Einrichten von Pacemaker unter SLES in Azure](./high-availability-guide-suse-pacemaker.md), um pcmk_host_map im Befehl „stonith create“ hinzuzufügen 
 - 02/03/2021: Weitere Informationen zu den Einstellungen für den E/A-Scheduler für SUSE finden Sie im Artikel [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md).

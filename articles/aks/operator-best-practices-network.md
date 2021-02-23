@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices für virtuelle Netzwerkressourcen und
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 9ec6423a853aacbc8a03cc5472bf1a95a5623b1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f004e0e78d7a626f878ba3651e4c6078f9cd21e8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89482724"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366567"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Best Practices für Netzwerkkonnektivität und Sicherheit in Azure Kubernetes Service (AKS)
 
@@ -19,7 +19,7 @@ Beim Erstellen und Verwalten von Clustern in Azure Kubernetes Service (AKS) stel
 In diesem Artikel zu bewährten Methoden liegt der Schwerpunkt auf der Netzwerkkonnektivität und der Sicherheit für Clusteroperatoren. In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
-> * Vergleichen der Netzwerkmodi „kubenet“ und „Azure CNI“ in AKS
+> * Vergleichen der Netzwerkmodi kubenet und Azure CNI (Container Networking Interface) in AKS
 > * Planen der erforderlichen IP-Adressierung und -Konnektivität
 > * Verteilen von Datenverkehr mit Lastenausgleichsmodulen, Controllern für eingehenden Datenverkehr oder einer Web Application Firewall (WAF)
 > * Herstellen sicherer Verbindungen mit Clusterknoten
@@ -33,11 +33,13 @@ Virtuelle Netzwerke bieten die grundlegende Konnektivität für AKS-Knoten und K
 * **kubenet-Netzwerk**: Azure verwaltet die virtuellen Netzwerkressourcen während der Bereitstellung des Clusters und verwendet das Kubernetes-Plug-In [kubenet][kubenet].
 * **Azure CNI-Netzwerk**: Führt die Bereitstellung in einem virtuellen Netzwerk aus und verwendet das Kubernetes-Plug-In [Azure Container Networking Interface (CNI)][cni-networking]. Pods erhalten einzelne IP-Adressen, die an anderen Netzwerkdienste oder lokale Ressourcen weitergeleitet werden können.
 
+Bei Produktionsbereitstellungen sind sowohl kubenet als auch Azure CNI gültige Optionen.
+
+### <a name="cni-networking"></a>CNI-Netzwerke
+
 Die Container Networking Interface (CNI) ist ein herstellerneutrales Protokoll, mit dem die Containerlaufzeit Anfragen an einen Netzwerkanbieter richten kann. Azure CNI weist Pods und Knoten IP-Adressen zu und stellt Features zur IP-Adressverwaltung (IPAM) bereit, wenn Sie die Verbindung zu bestehenden virtuellen Azure-Netzwerken herstellen. Jeder Knoten und jede Podressource erhält eine IP-Adresse im virtuellen Azure-Netzwerk, und es ist kein zusätzliches Routing erforderlich, um mit anderen Ressourcen oder Diensten zu kommunizieren.
 
 ![Diagramm mit zwei Knoten jeweils mit Bridges für die Verbindungsherstellung mit einem Azure VNET](media/operator-best-practices-network/advanced-networking-diagram.png)
-
-Bei Produktionsbereitstellungen sind sowohl kubenet als auch Azure CNI gültige Optionen.
 
 Ein beachtlicher Vorteil des Azure CNI-Netzwerks besteht darin, dass das Netzwerkmodell eine Trennung von Steuerung und Verwaltung von Ressourcen ermöglicht. Aus Sicherheitssicht möchten Sie diese Ressourcen oft von verschiedenen Teams verwalten und absichern lassen. Mit Azure CNI-Netzwerken können Sie die Verbindung zu vorhandenen Azure-Ressourcen, lokalen Ressourcen oder anderen Diensten direkt über die jedem Pod zugeordneten IP-Adressen herstellen.
 
@@ -47,9 +49,11 @@ Wenn Sie Azure CNI-Netzwerke verwenden, befindet sich die virtuelle Netzwerkress
 
 Weitere Informationen zur AKS-Dienstprinzipaldelegierung finden Sie unter [Delegieren des Zugriffs auf andere Azure-Ressourcen][sp-delegation]. Anstelle eines Dienstprinzipals können Sie für Berechtigungen auch die vom System zugewiesene verwaltete Identität verwenden. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md).
 
-Da jeder Knoten und Pod seine eigene IP-Adresse erhält, planen Sie die Adressbereiche für die AKS-Subnetze. Das Subnetz muss groß genug sein, um IP-Adressen für jeden Knoten, jeden Pod und jede bereitgestellte Netzwerkressource zu bieten. Jeder AKS-Cluster muss in einem eigenen Subnetz platziert werden. Um die Konnektivität zu lokalen oder Peernetzwerken in Azure zu ermöglichen, sollten Sie keine IP-Adressbereiche verwenden, die sich mit bestehenden Netzwerkressourcen überschneiden. Es gibt Standardbegrenzungen für die Anzahl der Pods, die jeder Knoten in einem kubernet- bzw. Azure CNI-Netzwerk ausführen kann. Um Aufskalierungsereignisse oder Clusterupgrades behandeln zu können, benötigen Sie außerdem zusätzliche IP-Adressen, die für die Verwendung im zugewiesenen Subnetz zur Verfügung stehen. Dieser zusätzliche Adressraum ist besonders wichtig, wenn Sie Windows Server-Container verwenden, da diese Knotenpools ein Upgrade erfordern, damit die neuesten Sicherheitspatches angewandt werden. Weitere Informationen zu Windows Server-Knoten finden Sie unter [Durchführen eines Upgrades für einen Knotenpool in AKS][nodepool-upgrade].
+Da jeder Knoten und Pod seine eigene IP-Adresse erhält, planen Sie die Adressbereiche für die AKS-Subnetze. Das Subnetz muss groß genug sein, um IP-Adressen für jeden Knoten, jeden Pod und jede bereitgestellte Netzwerkressource zu bieten. Jeder AKS-Cluster muss in einem eigenen Subnetz platziert werden. Um die Konnektivität zu lokalen oder Peernetzwerken in Azure zu ermöglichen, sollten Sie keine IP-Adressbereiche verwenden, die sich mit bestehenden Netzwerkressourcen überschneiden. Es gibt Standardbegrenzungen für die Anzahl der Pods, die jeder Knoten in einem kubernet- bzw. Azure CNI-Netzwerk ausführen kann. Um Aufskalierungsereignisse oder Clusterupgrades behandeln zu können, benötigen Sie außerdem zusätzliche IP-Adressen, die für die Verwendung im zugewiesenen Subnetz zur Verfügung stehen. Dieser zusätzliche Adressraum ist besonders wichtig, wenn Sie Windows Server-Container verwenden, da diese Knotenpools ein Upgrade erfordern, damit die neuesten Sicherheitspatches angewendet werden. Weitere Informationen zu Windows Server-Knoten finden Sie unter [Durchführen eines Upgrades für einen Knotenpool in AKS][nodepool-upgrade].
 
 Informationen zum Berechnen der erforderlichen IP-Adresse finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in AKS][advanced-networking].
+
+Wenn Sie einen Cluster mit Azure CNI-Netzwerken erstellen, geben Sie andere Adressbereiche für die Verwendung durch den Cluster an, z. B. die Docker-Bridgeadresse, die DNS-Dienst-IP und den Dienstadressbereich. Im Allgemeinen dürfen sich diese Adressbereiche nicht gegenseitig oder mit Netzwerken überlappen, die dem Cluster zugeordnet sind, einschließlich aller virtuellen Netzwerke, Subnetze, lokaler Netzwerke und Peernetzwerke. Ausführliche Informationen zu Grenzwerten und zur Größenanpassung für diese Adressbereiche finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in AKS][advanced-networking].
 
 ### <a name="kubenet-networking"></a>Kubenet-Netzwerke
 
@@ -58,11 +62,13 @@ Für „kubernet“ ist es zwar nicht erforderlich, dass Sie die virtuellen Netz
 * Knoten und Pods werden in unterschiedliche IP-Subnetze platziert. Benutzerdefiniertes Routing (UDR) und IP-Weiterleitung werden verwendet, um den Datenverkehr zwischen Pods und Knoten zu routen. Dieses zusätzliche Routing kann die Netzwerkleistung reduzieren.
 * Verbindungen zu bestehenden lokalen Netzwerken oder das Peering mit anderen virtuellen Netzwerken von Azure können komplex sein.
 
-„Kubernet“ eignet sich für kleine Entwicklungs- oder Testworkloads, da Sie das virtuelle Netzwerk und die Subnetze nicht getrennt vom AKS-Cluster erstellen müssen. Einfache Websites mit geringem Datenverkehr oder das Verschieben von Workloads in Container per Lift & Shift können ebenfalls von der Einfachheit der mit kubernet-Netzwerken bereitgestellten AKS-Cluster profitieren. Für die meisten Produktionsbereitstellungen sollten Sie Azure CNI-Netzwerke planen und verwenden. Sie können auch [Ihre eigenen IP-Adressbereiche und virtuellen Netzwerke mit kubenet][aks-configure-kubenet-networking] konfigurieren.
+„Kubernet“ eignet sich für kleine Entwicklungs- oder Testworkloads, da Sie das virtuelle Netzwerk und die Subnetze nicht getrennt vom AKS-Cluster erstellen müssen. Einfache Websites mit geringem Datenverkehr oder das Verschieben von Workloads in Container per Lift & Shift können ebenfalls von der Einfachheit der mit kubernet-Netzwerken bereitgestellten AKS-Cluster profitieren. Für die meisten Produktionsbereitstellungen sollten Sie Azure CNI-Netzwerke planen und verwenden.
+
+Sie können auch [Ihre eigenen IP-Adressbereiche und virtuellen Netzwerke mit kubenet][aks-configure-kubenet-networking] konfigurieren. Ähnlich wie bei Azure CNI-Netzwerken dürfen sich diese Adressbereiche nicht gegenseitig oder mit Netzwerken überlappen, die dem Cluster zugeordnet sind, einschließlich aller virtuellen Netzwerke, Subnetze, lokaler Netzwerke und Peernetzwerke. Ausführliche Informationen zu Grenzwerten und zur Größenanpassung für diese Adressbereiche finden Sie unter [Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in AKS][aks-configure-kubenet-networking].
 
 ## <a name="distribute-ingress-traffic"></a>Verteilen des Eingangsdatenverkehrs
 
-**Best Practice-Anleitung** – Um HTTP- oder HTTPS-Datenverkehr an Ihre Anwendungen zu verteilen, verwenden Sie Eingangsressourcen und -controller. Eingangscontroller bieten zusätzliche Features gegenüber einem normalen Azure Load Balancer und können als native Kubernetes-Ressourcen verwaltet werden.
+**Best Practice-Anleitung** – Um HTTP- oder HTTPS-Datenverkehr an Ihre Anwendungen zu verteilen, verwenden Sie Eingangsressourcen und -controller. Eingangscontroller bieten zusätzliche Features im Vergleich zu einem normalen Azure Load Balancer und können als native Kubernetes-Ressourcen verwaltet werden.
 
 Ein Azure Load Balancer kann den Kundendatenverkehr auf Anwendungen in Ihrem AKS-Cluster verteilen, aber er ist in seinem Verständnis dieses Datenverkehrs eingeschränkt. Eine Lastenausgleichsressource wird auf Ebene 4 ausgeführt und verteilt den Datenverkehr basierend auf dem Protokoll oder den Ports. Die meisten Webanwendungen, die HTTP oder HTTPS verwenden, sollten Kubernetes-Eingangsressourcen und -controller verwenden, die auf Ebene 7 ausgeführt werden. Eingangsdatenverkehr kann den Datenverkehr basierend auf der URL der Anwendung verteilen und die TLS/SSL-Terminierung behandeln. Diese Fähigkeit reduziert auch die Anzahl der IP-Adressen, die Sie freigeben und zuordnen. Bei einem Load Balancer benötigt jede Anwendung typischerweise eine öffentliche IP-Adresse, die dem Dienst im AKS-Cluster zugewiesen und zugeordnet wird. Bei Verwendung einer Eingangsressource kann eine einzige IP-Adresse den Datenverkehr auf mehrere Anwendungen verteilen.
 

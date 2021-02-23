@@ -2,25 +2,25 @@
 title: Azure-Event Hubs als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Event Hubs-Ereignisse bereitgestellt werden
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 960aa1fe7184e1d02d28fdc135907119fee8f123
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/11/2021
+ms.openlocfilehash: e9bb4b5a27173181c7295e96a1eb0654a1a929e6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86113682"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363508"
 ---
 # <a name="azure-event-hubs-as-an-event-grid-source"></a>Azure Event Hubs als Event Grid-Quelle
 
-In diesem Artikel werden die Eigenschaften und das Schema für Event Hubs-Ereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
+In diesem Artikel werden die Eigenschaften und das Schema für Event Hubs-Ereignisse beschrieben.  Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
-## <a name="event-grid-event-schema"></a>Event Grid-Ereignisschema
-
-### <a name="available-event-types"></a>Verfügbare Ereignistypen
+## <a name="available-event-types"></a>Verfügbare Ereignistypen
 
 Event Hubs gibt den Ereignistyp **Microsoft.EventHub.CaptureFileCreated** aus, wenn eine Erfassungsdatei erstellt wird.
 
-### <a name="example-event"></a>Beispielereignis
+## <a name="example-event"></a>Beispielereignis
+
+# <a name="event-grid-event-schema"></a>[Event Grid-Ereignisschema](#tab/event-grid-event-schema)
 
 In diesem Beispielereignis ist das Schema eines Event Hubs-Ereignisses dargestellt, das ausgelöst wird, wenn eine Datei über das Feature „Erfassen“ gespeichert wird: 
 
@@ -49,34 +49,83 @@ In diesem Beispielereignis ist das Schema eines Event Hubs-Ereignisses dargestel
 ]
 ```
 
-### <a name="event-properties"></a>Ereigniseigenschaften
+# <a name="cloud-event-schema"></a>[Cloudereignisschema](#tab/cloud-event-schema)
+
+In diesem Beispielereignis ist das Schema eines Event Hubs-Ereignisses dargestellt, das ausgelöst wird, wenn eine Datei über das Feature „Erfassen“ gespeichert wird: 
+
+```json
+[
+    {
+        "source": "/subscriptions/<guid>/resourcegroups/rgDataMigrationSample/providers/Microsoft.EventHub/namespaces/tfdatamigratens",
+        "subject": "eventhubs/hubdatamigration",
+        "type": "Microsoft.EventHub.CaptureFileCreated",
+        "time": "2017-08-31T19:12:46.0498024Z",
+        "id": "14e87d03-6fbf-4bb2-9a21-92bd1281f247",
+        "data": {
+            "fileUrl": "https://tf0831datamigrate.blob.core.windows.net/windturbinecapture/tfdatamigratens/hubdatamigration/1/2017/08/31/19/11/45.avro",
+            "fileType": "AzureBlockBlob",
+            "partitionId": "1",
+            "sizeInBytes": 249168,
+            "eventCount": 1500,
+            "firstSequenceNumber": 2400,
+            "lastSequenceNumber": 3899,
+            "firstEnqueueTime": "2017-08-31T19:12:14.674Z",
+            "lastEnqueueTime": "2017-08-31T19:12:44.309Z"
+        },
+        "specversion": "1.0"
+    }
+]
+```
+
+
+---
+
+
+## <a name="event-properties"></a>Ereigniseigenschaften
+
+# <a name="event-grid-event-schema"></a>[Event Grid-Ereignisschema](#tab/event-grid-event-schema)
+Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
+
+| Eigenschaft | type | BESCHREIBUNG |
+| -------- | ---- | ----------- |
+| `topic` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| `eventType` | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| `eventTime` | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| `id` | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| `data` | Objekt (object) | Event Hub-Ereignisdaten. |
+| `dataVersion` | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| `metadataVersion` | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+
+# <a name="cloud-event-schema"></a>[Cloudereignisschema](#tab/cloud-event-schema)
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| topic | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
-| data | Objekt (object) | Event Hub-Ereignisdaten. |
-| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| `source` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| `type` | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| `time` | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| `id` | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| `data` | Objekt (object) | Event Hub-Ereignisdaten. |
+| `specversion` | Zeichenfolge | Version der CloudEvents-Schemaspezifikation. |
+
+---
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| fileUrl | Zeichenfolge | Der Pfad zur Erfassungsdatei. |
-| fileType | Zeichenfolge | Der Dateityp der Erfassungsdatei. |
-| partitionId | Zeichenfolge | Die Shard-ID. |
-| sizeInBytes | integer | Die Dateigröße. |
-| eventCount | integer | Die Anzahl der Ereignisse in der Datei. |
-| firstSequenceNumber | integer | Die kleinste Sequenznummer aus der Warteschlange. |
-| lastSequenceNumber | integer | Die größte Sequenznummer aus der Warteschlange. |
-| firstEnqueueTime | Zeichenfolge | Die erste Zeit aus der Warteschlange. |
-| lastEnqueueTime | Zeichenfolge | Die letzte Zeit aus der Warteschlange. |
+| `fileUrl` | Zeichenfolge | Der Pfad zur Erfassungsdatei. |
+| `fileType` | Zeichenfolge | Der Dateityp der Erfassungsdatei. |
+| `partitionId` | Zeichenfolge | Die Shard-ID. |
+| `sizeInBytes` | integer | Die Dateigröße. |
+| `eventCount` | integer | Die Anzahl der Ereignisse in der Datei. |
+| `firstSequenceNumber` | integer | Die kleinste Sequenznummer aus der Warteschlange. |
+| `lastSequenceNumber` | integer | Die größte Sequenznummer aus der Warteschlange. |
+| `firstEnqueueTime` | Zeichenfolge | Die erste Zeit aus der Warteschlange. |
+| `lastEnqueueTime` | Zeichenfolge | Die letzte Zeit aus der Warteschlange. |
 
 ## <a name="tutorials-and-how-tos"></a>Tutorials und Vorgehensweisen
 

@@ -1,27 +1,27 @@
 ---
-title: 'Hinzufügen einer Rollenzuweisung für eine verwaltete Identität (Vorschau): Azure RBAC'
-description: Erfahren Sie, wie Sie eine Rollenzuweisung hinzufügen. Beginnen Sie mit der verwalteten Identität, und wählen Sie dann im Azure-Portal und über die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) eine Rolle und den zugehörigen Gültigkeitsbereich aus.
+title: 'Zuweisen von Azure-Rollen zu einer verwalteten Identität (Vorschau): Azure RBAC'
+description: Erfahren Sie, wie Sie Azure-Rollen zuweisen, indem Sie mit der verwalteten Identität beginnen und dann im Azure-Portal und über die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) eine Rolle und den zugehörigen Gültigkeitsbereich auswählen.
 services: active-directory
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 01/11/2021
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: a01246c0cf35653f4d13262183cf9df28b056c69
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 57c8c00a64996bc6223fbe7e514db9db38ccdcc2
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121792"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556846"
 ---
-# <a name="add-a-role-assignment-for-a-managed-identity-preview"></a>Hinzufügen einer Rollenzuweisung für eine verwaltete Identität (Vorschau)
+# <a name="assign-azure-roles-to-a-managed-identity-preview"></a>Zuweisen von Azure-Rollen zu einer verwalteten Identität (Vorschau)
 
-Sie können Rollenzuweisungen für eine verwaltete Identität über die Seite **Zugriffssteuerung (IAM)** hinzufügen, wie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](role-assignments-portal.md) beschrieben. Dabei beginnen Sie auf der Seite „Zugriffssteuerung (IAM)“ zunächst mit dem Bereich und wählen anschließend die verwaltete Identität und die Rolle aus. In diesem Artikel wird eine alternative Vorgehensweise zum Hinzufügen von Rollenzuweisungen für eine verwaltete Identität beschrieben. Dabei beginnen Sie mit der verwalteten Identität und wählen anschließend den Bereich und die Rolle aus.
+Sie können einer verwalteten Identität über die Seite **Zugriffssteuerung (IAM)** eine Rolle hinzufügen, wie unter [Zuweisen von Azure-Rollen über das Azure-Portal](role-assignments-portal.md) beschrieben wird. Dabei beginnen Sie auf der Seite „Zugriffssteuerung (IAM)“ zunächst mit dem Bereich und wählen anschließend die verwaltete Identität und die Rolle aus. In diesem Artikel wird eine alternative Vorgehensweise zum Zuweisen von Rollen für eine verwaltete Identität beschrieben. Dabei beginnen Sie mit der verwalteten Identität und wählen anschließend den Bereich und die Rolle aus.
 
 > [!IMPORTANT]
-> Diese alternative Vorgehensweise zum Hinzufügen einer Rollenzuweisung für eine verwaltete Identität befindet sich derzeit in der Vorschauphase.
+> Das Zuweisen einer Rolle zu einer verwalteten Identität befindet sich derzeit in der Vorschauphase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -92,5 +92,5 @@ Führen Sie die folgenden Schritte aus, um einer benutzerseitig zugewiesenen ver
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md)
-- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](role-assignments-portal.md)
+- [Zuweisen von Azure-Rollen über das Azure-Portal](role-assignments-portal.md)
 - [Auflisten von Azure-Rollenzuweisungen über das Azure-Portal](role-assignments-list-portal.md)

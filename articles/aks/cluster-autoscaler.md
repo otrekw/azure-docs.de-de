@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Ihren Cluster mithilfe der 
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 5f0754638be1aa29672b6a59218a6c9d695261a5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: c0564dc3b394b4a65e70a487b6f6989cb306bdda
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223141"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373248"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)
 
@@ -273,6 +273,9 @@ az aks nodepool update \
 ```
 
 Wenn Sie die automatische Clusterskalierung für einen vorhandenen Cluster wieder aktivieren möchten, können Sie sie mit dem Befehl [az aks nodepool update][az-aks-nodepool-update] unter Angabe der Parameter `--enable-cluster-autoscaler`, `--min-count` und `--max-count` wieder aktivieren.
+
+> [!NOTE]
+> Wenn Sie planen, die automatische Clusterskalierung mit Knotenpools zu verwenden, die sich über mehrere Zonen erstrecken, und zonenbezogene Planungsfunktionen wie die topologische Volumenplanung zu nutzen, wird empfohlen, einen Knotenpool pro Zone zu verwenden und `--balance-similar-node-groups` über das Profil für automatische Skalierung zu aktivieren. Dadurch wird sichergestellt, dass die automatische Skalierung erfolgreich hochskaliert und versucht wird, die Größe der Knotenpools auszugleichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 12/8/2020
-ms.openlocfilehash: b0d599b7d52d8a0e93f16761d1983ad25fa45c61
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 1b8be7fc6295c6332d26718b5752d2fd8f2a6f73
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97687398"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393240"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL-Datenbank – Serverlos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "97687398"
 
 ## <a name="serverless-compute-tier"></a>Serverlose Computeebene
 
-Die serverlose Computeebene für Singletons in Azure SQL-Datenbank wird durch einen automatischen Computeskalierungsbereich und eine Verzögerung durch automatisches Anhalten parametrisiert. Die Konfiguration dieser Parameter beeinflusst die Leistung und die Computekosten der Datenbank.
+Die serverlose Computeebene für einzelne Datenbanken in Azure SQL-Datenbank wird durch einen automatischen Computeskalierungsbereich und eine Verzögerung durch automatisches Anhalten parametrisiert. Die Konfiguration dieser Parameter beeinflusst die Leistung und die Computekosten der Datenbank.
 
 ![Abrechnung – serverlos](./media/serverless-tier-overview/serverless-billing.png)
 
@@ -57,7 +57,7 @@ Serverlos ist preis-/leistungsoptimiert für Einzeldatenbanken mit zeitweiligen,
 ### <a name="scenarios-well-suited-for-provisioned-compute"></a>Ideal geeignete Szenarien für bereitgestelltes Computing
 
 - Einzeldatenbanken mit regelmäßigeren, vorhersagbaren Nutzungsmustern und höherer durchschnittlicher Computenutzung im Zeitverlauf.
-- Datenbanken, die keine Leistungskompromisse durch häufigeres Begrenzen des Speichers oder Verzögerung beim automatischen Fortsetzen aus dem angehaltenen Zustand tolerieren können.
+- Datenbanken, die keine Leistungskompromisse durch häufigeres Begrenzen des Speichers oder Verzögerung beim Fortsetzen aus dem angehaltenen Zustand tolerieren können.
 - Mehrere Datenbanken mit wechselnden, unvorhersehbaren Nutzungsmustern, die für bessere Preis-/Leistungsoptimierung in Pools für elastische Datenbanken konsolidiert werden können.
 
 ## <a name="comparison-with-provisioned-compute-tier"></a>Vergleich mit der bereitgestellten Computeebene
@@ -97,36 +97,36 @@ Im Gegensatz zu bereitgestellten Computedatenbanken wird der Speicher aus dem SQ
 
 Sowohl in serverlosen als auch in bereitgestellten Computedatenbanken können Cacheeinträge entfernt werden, wenn der gesamte verfügbare Arbeitsspeicher verwendet wird.
 
-Beachten Sie, dass die aktive Cachenutzung je nach Verwendungsmuster trotz geringer CPU-Auslastung hoch bleiben und die Speicherfreigabe verhindern kann.  Außerdem kann es nach Ende der Benutzeraktivität zu einer zusätzlichen Verzögerung kommen, bevor die Speicherfreigabe aufgrund von periodischen Hintergrundprozessen erfolgt, die auf vorherige Benutzeraktivitäten reagieren.  Beispielsweise werden bei Löschvorgängen und QDS-Cleanuptasks inaktive Datensätze generiert, die zum Löschen markiert sind. Physisch werden sie jedoch erst gelöscht, wenn der inaktive Cleanupprozess inaktiver Datensätze ausgeführt wird, der das Lesen von Datenseiten in den Cache umfassen kann.
+Beachten Sie, dass die aktive Cachenutzung je nach Verwendungsmuster trotz geringer CPU-Auslastung hoch bleiben und die Speicherfreigabe verhindern kann.  Außerdem kann es nach Ende der Benutzeraktivität zu zusätzlichen Verzögerungen kommen, bevor die Speicherfreigabe aufgrund von periodischen Hintergrundprozessen erfolgt, die auf vorherige Benutzeraktivitäten reagieren.  Beispielsweise werden bei Löschvorgängen und QDS-Bereinigungstasks inaktive Datensätze generiert, die zum Löschen markiert sind. Physisch werden sie jedoch erst gelöscht, wenn der inaktive Bereinigungsprozess inaktiver Datensätze ausgeführt wird, der das Lesen von Datenseiten in den Cache umfassen kann.
 
 #### <a name="cache-hydration"></a>Cachehydration
 
 Der SQL-Cache wächst an, während Daten auf die gleiche Weise und mit der gleichen Geschwindigkeit wie für bereitgestellte Datenbanken vom Datenträger abgerufen werden. Wenn die Datenbank ausgelastet ist, kann die Größe des Caches uneingeschränkt bis zum maximalen Arbeitsspeichergrenzwert zunehmen.
 
-## <a name="autopausing-and-autoresuming"></a>Automatisches Anhalten und automatisches Fortsetzen
+## <a name="auto-pause-and-auto-resume"></a>AutoAnhalten und automatisches Fortsetzen
 
-### <a name="autopausing"></a>Automatisches Anhalten
+### <a name="auto-pause"></a>AutoAnhalten
 
-Das automatische Anhalten wird ausgelöst, wenn die folgenden Bedingungen für die Dauer der Verzögerung für automatisches Anhalten erfüllt sind:
+AutoAnhalten wird ausgelöst, wenn die folgenden Bedingungen für die Dauer der Verzögerung für AutoAnhalten erfüllt sind:
 
 - Anzahl der Sitzungen = 0
 - CPU = 0 für Benutzerworkload im Benutzerpool
 
-Es ist eine Option verfügbar, mit der das automatische Anhalten ggf. deaktiviert werden kann.
+Es ist eine Option verfügbar, mit der AutoAnhalten ggf. deaktiviert werden kann.
 
-Die folgenden Features unterstützen nicht das automatische Anhalten, sondern nur die automatische Skalierung.  Bei Verwendung eines der folgenden Features sollte das automatische Anhalten deaktiviert werden, und die Datenbank bleibt online (ungeachtet der Dauer der Inaktivität der Datenbank):
+Die folgenden Features unterstützen AutoAnhalten nicht, sondern nur automatische Skalierung.  Bei Verwendung eines der folgenden Features sollte AutoAnhalten deaktiviert werden, und die Datenbank bleibt online (ungeachtet der Dauer der Inaktivität der Datenbank):
 
 - Georeplikation (aktive Georeplikation und Gruppen für automatisches Failover).
 - Langzeitaufbewahrung (Long-Term Retention, LTR) von Sicherungen.
-- In SQL-Datensynchronisierung verwendete Synchronisierungsdatenbank  Im Gegensatz zu Synchronisierungsdatenbanken unterstützen Hub-Datenbanken und Mitgliedsdatenbanken das automatische Anhalten.
+- In SQL-Datensynchronisierung verwendete Synchronisierungsdatenbank  Im Gegensatz zu Synchronisierungsdatenbanken unterstützen Hub-Datenbanken und Mitgliedsdatenbanken AutoAnhalten.
 - DNS-Aliasing
 - die in elastischen Aufträgen (Vorschauversion) verwendete Auftragsdatenbank
 
-Das automatische Anhalten wird während der Bereitstellung bestimmter Dienstupdates vorübergehend verhindert, die erfordern, dass die Datenbank online ist.  In solchen Fällen ist das automatische Anhalten wieder zulässig, sobald das Dienstupdate abgeschlossen ist.
+AutoAnhalten wird während der Bereitstellung bestimmter Dienstupdates vorübergehend verhindert, die erfordern, dass die Datenbank online ist.  In solchen Fällen ist AutoAnhalten wieder zulässig, sobald das Dienstupdate abgeschlossen ist.
 
-### <a name="autoresuming"></a>Automatisches Fortsetzen
+### <a name="auto-resuming"></a>Automatisches Fortsetzen
 
-Das automatische Fortsetzen wird ausgelöst, wenn eine der folgenden Bedingungen erfüllt ist:
+Automatisches Fortsetzen wird ausgelöst, wenn eine der folgenden Bedingungen erfüllt ist:
 
 |Funktion|Trigger für automatisches Fortsetzen|
 |---|---|
@@ -139,7 +139,7 @@ Das automatische Fortsetzen wird ausgelöst, wenn eine der folgenden Bedingungen
 |Sicherheitsrisikobewertung|Ad-hoc-Scans und periodische Scans, falls aktiviert|
 |Abfragedatenspeicher (Leistung)|Ändern oder Anzeigen von Abfragespeichereinstellungen|
 |Empfehlungen zur Leistung|Anzeigen oder Anwenden von Empfehlungen zur Leistung|
-|Automatische Optimierung|Anwendung und Überprüfung von Empfehlungen für die automatische Optimierung, z.B. die automatische Indizierung|
+|Automatische Optimierung|Anwendung und Überprüfung von Empfehlungen für automatische Optimierung, z. B. automatische Indizierung|
 |Kopieren von Datenbanken|Erstellen von Datenbanken als Kopie.<br>Exportieren in eine BACPAC-Datei.|
 |SQL-Datensynchronisierung|Die Synchronisierung zwischen Hub- und Mitgliedsdatenbanken, die nach einem konfigurierbaren Zeitplan oder manuell ausgeführt werden|
 |Ändern bestimmter Datenbankmetadaten|Hinzufügen von neuen Datenbanktags.<br>Ändern der Mindest- und Höchstwerte für virtuelle Kerne oder der Verzögerung für das automatische Anhalten.|
@@ -147,7 +147,7 @@ Das automatische Fortsetzen wird ausgelöst, wenn eine der folgenden Bedingungen
 
 Überwachung und Verwaltung sowie andere Lösungen, die einen der oben aufgeführten Vorgänge ausführen, lösen eine automatische Fortsetzung aus.
 
-Das automatische Fortsetzen wird ebenfalls während der Bereitstellung bestimmter Dienstupdates ausgelöst, die erfordern, dass die Datenbank online ist.
+Automatisches Fortsetzen wird ebenfalls während der Bereitstellung bestimmter Dienstupdates ausgelöst, die erfordern, dass die Datenbank online ist.
 
 ### <a name="connectivity"></a>Konnektivität
 
@@ -155,7 +155,7 @@ Wenn eine serverlose Datenbank angehalten wird, wird die Datenbank bei der erste
 
 ### <a name="latency"></a>Latency
 
-Die Wartezeit für das automatische Fortsetzen und das automatische Anhalten einer serverlosen Datenbank liegt normalerweise im Bereich von 1 für das automatische Fortsetzen und zwischen 1 und 10 Minuten für das automatische Anhalten.
+Die Wartezeit für automatisches Fortsetzen und AutoAnhalten einer serverlosen Datenbank liegt normalerweise im Bereich von 1 für automatisches Fortsetzen und zwischen 1 und 10 Minuten für AutoAnhalten.
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>Vom Kunden verwaltete transparente Datenverschlüsselung (BYOK)
 
@@ -209,7 +209,7 @@ CREATE DATABASE testdb
 ( EDITION = 'GeneralPurpose', SERVICE_OBJECTIVE = 'GP_S_Gen5_1' ) ;
 ```
 
-Weitere Informationen finden Sie unter [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).  
+Weitere Informationen finden Sie unter [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true).  
 
 ### <a name="move-a-database-from-the-provisioned-compute-tier-into-the-serverless-compute-tier"></a>Verschieben einer Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene
 
@@ -234,14 +234,14 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Verwenden von Transact-SQL (T-SQL)
 
-Bei Verwendung von T-SQL werden Standardwerte für die Mindestanzahl virtueller Kerne und die automatische Pausenverzögerung angewendet.
+Bei Verwendung von T-SQL werden Standardwerte für die Mindestanzahl virtueller Kerne und die AutoAnhalten-Verzögerung angewendet.
 
 ```sql
 ALTER DATABASE testdb 
 MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 ```
 
-Weitere Informationen finden Sie unter [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current).
+Weitere Informationen finden Sie unter [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true).
 
 ### <a name="move-a-database-from-the-serverless-compute-tier-into-the-provisioned-compute-tier"></a>Verschieben einer Datenbank aus der serverlosen Computeebene in die bereitgestellte Computeebene
 

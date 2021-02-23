@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle – Azure RBAC
+title: 'Zuweisen von Azure-Rollen mithilfe der Azure CLI: Azure RBAC'
 description: Erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten mit der Azure CLI und der rollenbasierten Zugriffssteuerung in Azure (Azure RBAC) erteilen.
 services: active-directory
 author: rolyon
@@ -10,31 +10,31 @@ ms.workload: identity
 ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: e1aa4945391e159f99c82fecff99c238ae0e7e93
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: ee356f32b6799c6182ec1c9e061a35271a4bbc23
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964404"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556977"
 ---
-# <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle
+# <a name="assign-azure-roles-using-azure-cli"></a>Zuweisen von Azure-Rollen mithilfe der Azure CLI
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] In diesem Artikel wird das Zuweisen von Rollen mithilfe der Azure-Befehlszeilenschnittstelle beschrieben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen Folgendes, um Rollenzuweisungen hinzufügen oder entfernen zu können:
+Zum Zuweisen von Rollen müssen Sie über Folgendes verfügen:
 
-- `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, wie z.B. [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) oder [Besitzer](built-in-roles.md#owner)
+- `Microsoft.Authorization/roleAssignments/write`-Berechtigungen, z. B. [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) oder [Besitzer](built-in-roles.md#owner)
 - [Bash in der Azure Cloud Shell](../cloud-shell/overview.md) oder [Azure-Befehlszeilenschnittstelle](/cli/azure)
 
-## <a name="steps-to-add-a-role-assignment"></a>Schritte zum Hinzufügen einer Rollenzuweisung
+## <a name="steps-to-assign-an-azure-role"></a>Schritte zum Zuweisen einer Azure-Rolle
 
-In Azure RBAC fügen Sie zum Gewähren des Zugriffs eine Rollenzuweisung hinzu. Eine Rollenzuweisung besteht aus drei Elementen: Sicherheitsprinzipal, Rollendefinition und Bereich. Führen Sie die folgenden Schritte aus, um eine Rollenzuweisung hinzuzufügen.
+Das Zuweisen einer Rolle besteht aus drei Elementen: Sicherheitsprinzipal, Rollendefinition und Bereich.
 
 ### <a name="step-1-determine-who-needs-access"></a>Schritt 1: Ermitteln, wer Zugriff benötigt
 
-Sie können eine Rolle einem Benutzer, einer Gruppe, einem Dienstprinzipal oder einer verwalteten Identität zuweisen. Sie müssen eventuell die eindeutige ID des Objekts angeben, um Rollenzuweisungen hinzufügen zu können. Die ID weist dieses Format auf: `11111111-1111-1111-1111-111111111111`. Sie können die ID über das Azure-Portal oder die Azure-Befehlszeilenschnittstelle (Azure CLI) abrufen.
+Sie können eine Rolle einem Benutzer, einer Gruppe, einem Dienstprinzipal oder einer verwalteten Identität zuweisen. Sie müssen ggf. die eindeutige ID des Objekts angeben, um eine Rolle zuzuweisen. Die ID weist dieses Format auf: `11111111-1111-1111-1111-111111111111`. Sie können die ID über das Azure-Portal oder die Azure-Befehlszeilenschnittstelle (Azure CLI) abrufen.
 
 **Benutzer**
 
@@ -75,7 +75,7 @@ Sie können auch [az identity list](/cli/azure/identity#az_identity_list) verwen
 az identity list
 ```
     
-### <a name="step-2-find-the-appropriate-role"></a>Schritt 2: Suchen der gewünschten Rolle
+### <a name="step-2-select-the-appropriate-role"></a>Schritt 2: Auswählen der geeigneten Rolle
 
 Berechtigungen sind in Rollen zusammengefasst. Sie können aus einer Liste von verschiedenen [in Azure integrierten Rollen](built-in-roles.md) auswählen oder eigene benutzerdefinierte Rollen verwenden. Es hat sich bewährt, den Zugriff mit den minimal erforderlichen Berechtigungen zu gewähren. Daher sollten Sie keine allgemeine Rolle zuweisen.
 
@@ -129,9 +129,9 @@ Für den Verwaltungsgruppenbereich benötigen Sie den Namen der Verwaltungsgrupp
 az account management-group list --query "[].{name:name, id:id}" --output tsv
 ```
     
-### <a name="step-4-add-role-assignment"></a>Schritt 4: Rollenzuweisung hinzufügen
+### <a name="step-4-assign-role"></a>Schritt 4: Zuweisen einer Rolle
 
-Verwenden Sie zum Hinzufügen einer Rollenzuweisung den Befehl [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create). Abhängig vom Bereich weist der Befehl in der Regel eines der folgenden Formate auf.
+Verwenden Sie zum Zuweisen einer Rolle den Befehl [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create). Abhängig vom Bereich weist der Befehl in der Regel eines der folgenden Formate auf.
 
 **Ressourcenumfang**
 
@@ -181,9 +181,9 @@ Im Folgenden finden Sie eine Beispielausgabe, wenn Sie einem Benutzer die Rolle 
 }
 ```
     
-## <a name="add-role-assignment-examples"></a>Beispiele für das Hinzufügen von Rollenzuweisungen
+## <a name="assign-role-examples"></a>Beispiele für das Zuweisen einer Rolle
 
-#### <a name="add-role-assignment-for-all-blob-containers-in-a-storage-account-resource-scope"></a>Hinzufügen einer Rollenzuweisung für alle Blobcontainer in einem Speicherkonto-Ressourcenbereich
+#### <a name="assign-a-role-for-all-blob-containers-in-a-storage-account-resource-scope"></a>Zuweisen einer Rolle für alle Blobcontainer in einem Speicherkonto-Ressourcenbereich
 
 Weist einem Dienstprinzipal mit der Objekt-ID *55555555-5555-5555-5555-555555555555* die Rolle [Mitwirkender an Speicherblobdaten](built-in-roles.md#storage-blob-data-contributor) im Ressourcenbereich für das Speicherkonto *storage12345* zu.
 
@@ -193,7 +193,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg/providers/Microsoft.Storage/storageAccounts/storage12345"
 ```
 
-#### <a name="add-role-assignment-for-a-specific-blob-container-resource-scope"></a>Hinzufügen einer Rollenzuweisung für einen bestimmten Blobcontainer-Ressourcenbereich
+#### <a name="assign-a-role-for-a-specific-blob-container-resource-scope"></a>Zuweisen einer Rolle für einen bestimmten Blobcontainer-Ressourcenbereich
 
 Weist einem Dienstprinzipal mit der Objekt-ID *55555555-5555-5555-5555-555555555555* die Rolle [Mitwirkender an Speicherblobdaten](built-in-roles.md#storage-blob-data-contributor) im Ressourcenbereich für den Blobcontainer *blob-container-01* zu.
 
@@ -203,7 +203,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg/providers/Microsoft.Storage/storageAccounts/storage12345/blobServices/default/containers/blob-container-01"
 ```
 
-#### <a name="add-role-assignment-for-a-group-in-a-specific-virtual-network-resource-scope"></a>Hinzufügen einer Rollenzuweisung für eine Gruppe im Ressourcenbereich eines bestimmten virtuellen Netzwerks
+#### <a name="assign-a-role-for-a-group-in-a-specific-virtual-network-resource-scope"></a>Zuweisen einer Rolle für eine Gruppe im Ressourcenbereich eines bestimmten virtuellen Netzwerks
 
 Weist der Gruppe *Ann Mack Team* mit der ID „22222222-2222-2222-2222-222222222222“ die Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) im Ressourcenbereich für das virtuelle Netzwerk *pharma-sales-project-network* zu.
 
@@ -213,7 +213,7 @@ az role assignment create --assignee "22222222-2222-2222-2222-222222222222" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/pharma-sales/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network"
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-resource-group-scope"></a>Hinzufügen einer Rollenzuweisung für einen Benutzer in einem Ressourcengruppenbereich
+#### <a name="assign-a-role-for-a-user-at-a-resource-group-scope"></a>Zuweisen einer Rolle für einen Benutzer im Ressourcengruppenbereich
 
 Weist dem Benutzer *patlong\@contoso.com* die Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) im Ressourcengruppenbereich *pharma-sales* zu.
 
@@ -223,7 +223,7 @@ az role assignment create --assignee "patlong@contoso.com" \
 --resource-group "pharma-sales"
 ```
 
-#### <a name="add-role-assignment-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>Hinzufügen einer Rollenzuweisung für einen Benutzer mithilfe der eindeutigen Rollen-ID in einem Ressourcengruppenbereich
+#### <a name="assign-a-role-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>Zuweisen einer Rolle für einen Benutzer mithilfe der eindeutigen Rollen-ID in einem Ressourcengruppenbereich
 
 In bestimmten Fällen kann sich ein Rollenname ändern, z. B.:
 
@@ -240,7 +240,7 @@ az role assignment create --assignee "patlong@contoso.com" \
 --resource-group "pharma-sales"
 ```
 
-#### <a name="add-role-assignment-for-all-blob-containers-at-a-resource-group-scope"></a>Hinzufügen einer Rollenzuweisung für alle Blobcontainer in einem Ressourcengruppenbereich
+#### <a name="assign-a-role-for-all-blob-containers-at-a-resource-group-scope"></a>Zuweisen einer Rolle für alle Blobcontainer in einem Ressourcengruppenbereich
 
 Weist einem Dienstprinzipal mit der Objekt-ID *55555555-5555-5555-5555-555555555555* die Rolle [Mitwirkender an Speicherblobdaten](built-in-roles.md#storage-blob-data-contributor) im Ressourcengruppenbereich *Example-Storage-rg* zu.
 
@@ -258,7 +258,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg"
 ```
 
-#### <a name="add-role-assignment-for-an-application-at-a-resource-group-scope"></a>Hinzufügen einer Rollenzuweisung für eine Anwendung in einem Ressourcengruppenbereich
+#### <a name="assign-a-role-for-an-application-at-a-resource-group-scope"></a>Zuweisen einer Rolle für eine Anwendung in einem Ressourcengruppenbereich
 
 Weist einer Anwendung mit der Objekt-ID „44444444-4444-4444-4444-444444444444“ des Dienstprinzipals die Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) im Ressourcengruppenbereich *pharma-sales* zu.
 
@@ -268,11 +268,11 @@ az role assignment create --assignee "44444444-4444-4444-4444-444444444444" \
 --resource-group "pharma-sales"
 ```
 
-#### <a name="add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope"></a>Hinzufügen einer Rollenzuweisung für einen neuen Dienstprinzipal in einem Ressourcengruppenbereich
+#### <a name="assign-a-role-for-a-new-service-principal-at-a-resource-group-scope"></a>Zuweisen einer Rolle für einen neuen Dienstprinzipal in einem Ressourcengruppenbereich
 
 Wenn Sie einen neuen Dienstprinzipal erstellen und sofort versuchen, diesem eine Rolle zuzuweisen, kann die Rollenzuweisung in einigen Fällen fehlschlagen. Wenn Sie z.B. ein Skript verwenden, um eine neue verwaltete Identität zu erstellen, und dann versuchen, dem Dienstprinzipal eine Rolle zuzuweisen, kann die Rollenzuweisung fehlschlagen. Der Grund für diesen Fehler ist wahrscheinlich eine Replikationsverzögerung. Der Dienstprinzipal wird in einer Region erstellt, die Rollenzuweisung kann aber in einer anderen Region stattfinden, in die der Dienstprinzipal noch nicht repliziert wurde. Um dieses Szenario zu beheben, sollten Sie beim Erstellen der Rollenzuweisung den Prinzipaltyp angeben.
 
-Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) zum Hinzufügen einer Rollenzuweisung, geben Sie einen Wert für `--assignee-object-id` an, und legen Sie `--assignee-principal-type` dann auf `ServicePrincipal` fest.
+Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) zum Zuweisen einer Rolle, geben Sie einen Wert für `--assignee-object-id` an, und legen Sie dann `--assignee-principal-type` auf `ServicePrincipal` fest.
 
 ```azurecli
 az role assignment create --assignee-object-id "{assigneeObjectId}" \
@@ -291,7 +291,7 @@ az role assignment create --assignee-object-id "33333333-3333-3333-3333-33333333
 --resource-group "pharma-sales"
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-subscription-scope"></a>Hinzufügen einer Rollenzuweisung für einen Benutzer im Abonnementbereich
+#### <a name="assign-a-role-for-a-user-at-a-subscription-scope"></a>Zuweisen einer Rolle für einen Benutzer in einem Abonnementbereich
 
 Weist dem Benutzer *annm\@example.com* die Rolle [Leser](built-in-roles.md#reader) im Abonnementbereich zu.
 
@@ -301,7 +301,7 @@ az role assignment create --assignee "annm@example.com" \
 --subscription "00000000-0000-0000-0000-000000000000"
 ```
 
-#### <a name="add-role-assignment-for-a-group-at-a-subscription-scope"></a>Hinzufügen einer Rollenzuweisung für eine Gruppe im Abonnementbereich
+#### <a name="assign-a-role-for-a-group-at-a-subscription-scope"></a>Zuweisen einer Rolle für eine Gruppe in einem Abonnementbereich
 
 Weist der Gruppe *Ann Mack Team* mit der ID „22222222-2222-2222-2222-222222222222“ die Rolle [Leser](built-in-roles.md#reader) im Abonnementbereich zu.
 
@@ -311,7 +311,7 @@ az role assignment create --assignee "22222222-2222-2222-2222-222222222222" \
 --subscription "00000000-0000-0000-0000-000000000000"
 ```
 
-#### <a name="add-role-assignment-for-all-blob-containers-at-a-subscription-scope"></a>Hinzufügen einer Rollenzuweisung für alle Blobcontainer im Abonnementbereich
+#### <a name="assign-a-role-for-all-blob-containers-at-a-subscription-scope"></a>Zuweisen einer Rolle für alle Blobcontainer in einem Abonnementbereich
 
 Weist dem Benutzer *alain\@example.com* die Rolle [Leser von Speicherblobdaten](built-in-roles.md#storage-blob-data-reader) im Abonnementbereich zu.
 
@@ -321,40 +321,12 @@ az role assignment create --assignee "alain@example.com" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000"
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-management-group-scope"></a>Hinzufügen einer Rollenzuweisung für einen Benutzer in einem Verwaltungsgruppenbereich
+#### <a name="assign-a-role-for-a-user-at-a-management-group-scope"></a>Zuweisen einer Rolle für einen Benutzer in einem Verwaltungsgruppenbereich
 
 Weist dem Benutzer *alain\@example.com* die Rolle [Abrechnungsleser](built-in-roles.md#billing-reader) im Verwaltungsgruppenbereich zu.
 
 ```azurecli
 az role assignment create --assignee "alain@example.com" \
---role "Billing Reader" \
---scope "/providers/Microsoft.Management/managementGroups/marketing-group"
-```
-
-## <a name="remove-a-role-assignment"></a>Entfernen einer Rollenzuweisung
-
-In Azure RBAC entfernen Sie mit [az role assignment delete](/cli/azure/role/assignment#az_role_assignment_delete) eine Rollenzuweisung und heben damit den Zugriff auf.
-
-Im folgenden Beispiel wird die Zuweisung der Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) von Benutzer *patlong\@contoso.com* für die Ressourcengruppe *pharma-sales* entfernt:
-
-```azurecli
-az role assignment delete --assignee "patlong@contoso.com" \
---role "Virtual Machine Contributor" \
---resource-group "pharma-sales"
-```
-
-Entfernt die Rolle [Leser](built-in-roles.md#reader) von der Gruppe *Ann Mack Team* mit der ID „22222222-2222-2222-2222-222222222222“ im Abonnementbereich.
-
-```azurecli
-az role assignment delete --assignee "22222222-2222-2222-2222-222222222222" \
---role "Reader" \
---subscription "00000000-0000-0000-0000-000000000000"
-```
-
-Entfernt die Rolle [Abrechnungsleser](built-in-roles.md#billing-reader) vom Benutzer *alain\@example.com* im Verwaltungsgruppenbereich.
-
-```azurecli
-az role assignment delete --assignee "alain@example.com" \
 --role "Billing Reader" \
 --scope "/providers/Microsoft.Management/managementGroups/marketing-group"
 ```

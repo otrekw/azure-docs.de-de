@@ -5,35 +5,32 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 89ff49b3ea5abae7ced046f714d34943a58c64a6
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 5783f8092a6435b43ab8720df18cc5200e390d46
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428299"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378246"
 ---
-# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimieren der Leistung und Zuverlässigkeit von Azure Functions
+# <a name="best-practices-for-performance-and-reliability-of-azure-functions"></a>Bewährte Methoden für Leistung und Zuverlässigkeit von Azure Functions
 
 Dieser Artikel enthält Informationen zur Verbesserung der Leistung und Zuverlässigkeit Ihrer [serverlosen](https://azure.microsoft.com/solutions/serverless/) Funktionen-Apps.  
 
-## <a name="general-best-practices"></a>Allgemeine bewährte Methoden
-
 Nachfolgend finden Sie bewährte Methoden zum Entwickeln und Erstellen serverloser Lösungen mit Azure Functions.
 
-### <a name="avoid-long-running-functions"></a>Vermeiden von Funktionen mit langer Ausführungsdauer
+## <a name="avoid-long-running-functions"></a>Vermeiden von Funktionen mit langer Ausführungsdauer
 
-Umfangreiche Funktionen mit langer Ausführungsdauer können zu unerwarteten Zeitüberschreitungsfehlern führen. Weitere Informationen zu Timeouts für einen bestimmten Hostingplan finden Sie unter [Optimieren der Leistung und Zuverlässigkeit von Azure Functions](functions-scale.md#timeout). 
+Umfangreiche Funktionen mit langer Ausführungsdauer können zu unerwarteten Zeitüberschreitungsfehlern führen. Weitere Informationen zu Timeouts für einen bestimmten Hostingplan finden Sie unter [Optimieren der Leistung und Zuverlässigkeit von Azure Functions](functions-scale.md#timeout).
 
-Eine Funktion kann umfangreich werden, wenn sie über viele Node.js-Abhängigkeiten verfügt. Zudem kann das Importieren von Abhängigkeiten zu längeren Ladezeiten und somit zu unerwarteten Timeouts führen. Abhängigkeiten werden sowohl explizit als auch implizit geladen. Ein einzelnes Modul, das über Ihren Code geladen wird, kann eigene zusätzliche Module laden. 
+Eine Funktion kann umfangreich werden, wenn sie über viele Node.js-Abhängigkeiten verfügt. Zudem kann das Importieren von Abhängigkeiten zu längeren Ladezeiten und somit zu unerwarteten Timeouts führen. Abhängigkeiten werden sowohl explizit als auch implizit geladen. Ein einzelnes Modul, das über Ihren Code geladen wird, kann eigene zusätzliche Module laden.
 
 Nach Möglichkeit sollten Sie umfangreiche Funktionen durch Refactoring immer in kleinere Funktionssätze unterteilen, die zusammenarbeiten und schnelle Reaktionen ermöglichen. Für einen Webhook oder eine HTTP-Triggerfunktion ist unter Umständen eine Bestätigungsantwort innerhalb eines bestimmten Zeitraums erforderlich. Bei Webhooks ist üblicherweise eine unmittelbare Antwort notwendig. Sie können die HTTP-Triggernutzlast an eine Warteschlange übergeben, damit sie von einer Funktion des Warteschlangentriggers verarbeitet wird. Dieser Ansatz ermöglicht es Ihnen, die eigentliche Arbeit zurückzustellen und sofort eine Antwort zurückzugeben.
 
-
-### <a name="cross-function-communication"></a>Funktionsübergreifende Kommunikation
+## <a name="cross-function-communication"></a>Funktionsübergreifende Kommunikation
 
 [Durable Functions](durable/durable-functions-overview.md) und [Azure Logic Apps](../logic-apps/logic-apps-overview.md) dienen zum Verwalten der Statusübergänge und der Kommunikation zwischen mehreren Funktionen.
 
-Wenn weder Durable Functions noch Logic Apps zum Integrieren mit mehreren Funktionen verwendet werden, haben sich Speicherwarteschlangen für die funktionsübergreifende Kommunikation bewährt. Der Hauptgrund ist, dass Speicherwarteschlangen kostengünstiger und deutlich einfacher als andere Speicheroptionen bereitzustellen sind. 
+Wenn weder Durable Functions noch Logic Apps zum Integrieren mit mehreren Funktionen verwendet werden, haben sich Speicherwarteschlangen für die funktionsübergreifende Kommunikation bewährt. Der Hauptgrund ist, dass Speicherwarteschlangen kostengünstiger und deutlich einfacher als andere Speicheroptionen bereitzustellen sind.
 
 Einzelne Nachrichten in einer Speicherwarteschlange sind auf eine Größe von 64 KB beschränkt. Wenn Sie größere Nachrichten zwischen Funktionen übergeben müssen, kann eine Azure Service Bus-Warteschlange verwendet werden, um Nachrichtengrößen von bis zu 256 KB im Standard-Tarif und bis zu 1 MB im Premium-Tarif zu unterstützen.
 
@@ -41,28 +38,26 @@ Service Bus-Themen sind nützlich, wenn die Nachrichten vor der Verarbeitung gef
 
 Event Hubs sind hilfreich, um die Kommunikation mit hohen Volumina zu unterstützen.
 
+## <a name="write-functions-to-be-stateless"></a>Schreiben von zustandslosen Funktionen
 
-### <a name="write-functions-to-be-stateless"></a>Schreiben von zustandslosen Funktionen 
-
-Funktionen sollten nach Möglichkeit zustandslos und idempotent sein. Ordnen Sie Ihren Daten alle erforderlichen Zustandsinformationen zu. Einer Bestellung, die verarbeitet wird, ist beispielsweise meist ein `state`-Member zugeordnet. Eine Funktion kann eine Bestellung basierend auf diesem Zustand verarbeiten, während die Funktion selbst zustandslos bleibt. 
+Funktionen sollten nach Möglichkeit zustandslos und idempotent sein. Ordnen Sie Ihren Daten alle erforderlichen Zustandsinformationen zu. Einer Bestellung, die verarbeitet wird, ist beispielsweise meist ein `state`-Member zugeordnet. Eine Funktion kann eine Bestellung basierend auf diesem Zustand verarbeiten, während die Funktion selbst zustandslos bleibt.
 
 Idempotente Funktionen sind besonders bei Triggern mit Timer zu empfehlen. Wenn bei Ihnen beispielsweise eine bestimmte Komponente immer ein Mal am Tag ausgeführt werden muss, sollten Sie sie so schreiben, dass sie zu einer beliebigen Tageszeit ausgeführt werden kann und immer die gleichen Ergebnisse liefert. Die Funktion kann beendet werden, wenn für einen bestimmten Tag keine Arbeit vorhanden ist. Falls die letzte Ausführung nicht abgeschlossen werden konnte, sollte die nächste Ausführung am entsprechenden Punkt fortgesetzt werden.
 
-
-### <a name="write-defensive-functions"></a>Schreiben von defensiven Funktionen
+## <a name="write-defensive-functions"></a>Schreiben von defensiven Funktionen
 
 Gehen Sie davon aus, dass es für Ihre Funktion jederzeit zu einer Ausnahme kommen kann. Entwerfen Sie Ihre Funktionen so, dass bei der nächsten Ausführung an einem vorherigen Fehlerpunkt angeknüpft werden kann. Stellen Sie sich ein Szenario mit den folgenden Aktionen vor:
 
 1. Abfrage von 10.000 Zeilen in einer Datenbank.
 2. Erstellen Sie eine Warteschlangennachricht für jede Zeile, um die spätere Verarbeitung zu ermöglichen.
- 
+
 Je nach Komplexität Ihres Systems verfügen Sie ggf. über Folgendes: fehlerhaftes Verhalten von nachgelagerten Diensten, Netzwerkausfälle, Erreichung von Kontingentgrenzen usw. Alle diese Faktoren können sich jederzeit auf Ihre Funktion auswirken. Sie müssen Ihre Funktionen entsprechend entwerfen, um darauf vorbereitet zu sein.
 
 Wie reagiert Ihr Code, wenn nach dem Einfügen von 5.000 dieser Elemente in eine Warteschlange zur Verarbeitung ein Fehler auftritt? Verfolgen Sie, welche Elemente eines Satzes bereits abgeschlossen sind. Andernfalls kann es ein, dass Sie sie beim nächsten Mal erneut einfügen. Diese doppelte Einfügung kann ernsthafte Auswirkung auf Ihren Workflow haben, sodass Sie [idempotente](functions-idempotent.md) Funktionen verwenden sollten. 
 
 Wenn ein Warteschlangenelement bereits verarbeitet wurde, sollte es möglich sein, dass die Funktion eine No-Op-Funktion ist.
 
-Nutzen Sie Verteidigungsmaßnahmen, die für auf der Azure Functions-Plattform verwendete Komponenten bereits bereitgestellt wurden. Informationen hierzu finden Sie beispielsweise in der [Dokumentation zu Azure Storage-Warteschlangentriggern und -bindungen](functions-bindings-storage-queue-trigger.md#poison-messages) unter **Behandeln von Nachrichten in der Warteschlange für nicht verarbeitbare Nachrichten**. 
+Nutzen Sie Verteidigungsmaßnahmen, die für auf der Azure Functions-Plattform verwendete Komponenten bereits bereitgestellt wurden. Informationen hierzu finden Sie beispielsweise in der [Dokumentation zu Azure Storage-Warteschlangentriggern und -bindungen](functions-bindings-storage-queue-trigger.md#poison-messages) unter **Behandeln von Nachrichten in der Warteschlange für nicht verarbeitbare Nachrichten**.
 
 ## <a name="function-organization-best-practices"></a>Bewährte Methoden für die Funktionsorganisation
 
@@ -85,7 +80,7 @@ Funktions-Apps verfügen über eine Datei `host.json`, mit der das erweiterte Ve
 
 Alle Funktionen in Ihrem lokalen Projekt werden zusammen als Gruppe von Dateien in Ihrer Funktions-App in Azure bereitgestellt. Möglicherweise müssen Sie einige Funktionen separat bereitstellen oder Features wie [Bereitstellungsslots](./functions-deployment-slots.md) nur für einzelne Funktionen verwenden. In solchen Fällen sollten Sie diese Funktionen (aus separaten Codeprojekten) in verschiedenen Funktions-Apps bereitstellen.
 
-### <a name="organize-functions-by-privilege"></a>Organisieren von Funktionen nach Berechtigungen 
+### <a name="organize-functions-by-privilege"></a>Organisieren von Funktionen nach Berechtigungen
 
 Verbindungszeichenfolgen und andere in den Anwendungseinstellungen gespeicherte Anmeldeinformationen erteilen allen Funktionen in der Funktions-App die gleichen Berechtigungen in der zugehörigen Ressource. Erwägen Sie, die Anzahl der Funktionen mit Zugriff auf bestimmte Anmeldeinformationen zu minimieren, indem Sie Funktionen, die diese Anmeldeinformationen nicht nutzen, in eine separate Funktions-App verlagern. Sie können stets Techniken wie [Funktionsverkettung](/learn/modules/chain-azure-functions-data-using-bindings/) nutzen, um Daten in verschiedenen Funktions-Apps zwischen Funktionen zu übergeben.  
 
@@ -99,7 +94,7 @@ Verwenden Sie Verbindungen mit externen Ressourcen nach Möglichkeit wieder. Wei
 
 ### <a name="avoid-sharing-storage-accounts"></a>Vermeiden der Freigabe von Speicherkonten
 
-Wenn Sie eine Funktions-App erstellen, müssen Sie sie einem Speicherkonto zuordnen. Die Speicherkontoverbindung wird in der Anwendungseinstellung [AzureWebJobsStorage](./functions-app-settings.md#azurewebjobsstorage) verwaltet. 
+Wenn Sie eine Funktions-App erstellen, müssen Sie sie einem Speicherkonto zuordnen. Die Speicherkontoverbindung wird in der Anwendungseinstellung [AzureWebJobsStorage](./functions-app-settings.md#azurewebjobsstorage) verwaltet.
 
 [!INCLUDE [functions-shared-storage](../../includes/functions-shared-storage.md)]
 
@@ -123,9 +118,9 @@ Vermeiden Sie in C# stets Verweise auf die `Result`-Eigenschaft oder Aufrufe der
 
 ### <a name="use-multiple-worker-processes"></a>Verwenden mehrerer Workerprozesse
 
-Standardmäßig verwendet jede Hostinstanz für Functions einen einzelnen Workerprozess. Um die Leistung zu verbessern, insbesondere bei Single Thread-Runtimes wie Python, verwenden Sie [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count), um die Anzahl von Workerprozessen pro Host zu erhöhen (bis zu 10). Azure Functions versucht dann, gleichzeitige Funktionsaufrufe gleichmäßig auf diese Worker zu verteilen. 
+Standardmäßig verwendet jede Hostinstanz für Functions einen einzelnen Workerprozess. Um die Leistung zu verbessern, insbesondere bei Single Thread-Runtimes wie Python, verwenden Sie [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count), um die Anzahl von Workerprozessen pro Host zu erhöhen (bis zu 10). Azure Functions versucht dann, gleichzeitige Funktionsaufrufe gleichmäßig auf diese Worker zu verteilen.
 
-Die FUNCTIONS_WORKER_PROCESS_COUNT gilt für jeden Host, der von Functions erstellt wird, wenn Ihre Anwendung horizontal skaliert wird, um die Anforderungen zu erfüllen. 
+Die FUNCTIONS_WORKER_PROCESS_COUNT gilt für jeden Host, der von Functions erstellt wird, wenn Ihre Anwendung horizontal skaliert wird, um die Anforderungen zu erfüllen.
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Empfangen von Nachrichten in Batches (sofern möglich)
 

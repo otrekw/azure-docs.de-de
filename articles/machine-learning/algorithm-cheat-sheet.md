@@ -9,18 +9,19 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: b824604ce9d0171b5612ab559eace4b35fd01eb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+adobe-target: true
+ms.openlocfilehash: 730fcf3fb552b92a02b255ad654f64d5ff7a92fa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82890977"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367055"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Spickzettel mit Machine Learning-Algorithmen für Azure Machine Learning-Designer
 
 Mithilfe des **Spickzettels für Azure Machine Learning-Algorithmen** können Sie im Designer den richtigen Algorithmus für ein Predictive Analytics-Modell wählen.
 
-Azure Machine Learning bietet eine umfangreiche Bibliothek von Algorithmen der Typen ***Klassifizierung***, ***Empfehlungssystem***, ***Clustering***, ***Anomalieerkennung***, ***Regression*** und ***Textanalyse***. Jede ist speziell auf eine andere Art von Machine Learning-Problem ausgelegt.
+Azure Machine Learning bietet eine umfangreiche Bibliothek von Algorithmen der Typen ***Klassifizierung** _, _*_Empfehlungssystem_*_, _*_Clustering_*_, _*_Anomalieerkennung_*_, _*_Regression_*_ und _ *_Textanalyse_* *. Jede ist speziell auf eine andere Art von Machine Learning-Problem ausgelegt.
 
 Weitere Anweisungen finden Sie unter [Auswählen von Algorithmen](how-to-select-algorithms.md).
 

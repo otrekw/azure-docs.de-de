@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 11/10/2020
+ms.date: 1/12/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: cc31ad851441c980365841b1131405339a1092fa
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: d43f794d6d73e26d791c5a11961470d2131b8951
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626273"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378620"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -284,6 +284,7 @@ Weitere Informationen finden Sie unter [ALTER DATABASE](/sql/t-sql/statements/al
 ### <a name="sql-server-agent"></a>SQL Server-Agent
 
 - Das Aktivieren und Deaktivieren des SQL Server-Agents wird derzeit in SQL Managed Instance nicht unterstützt. Der SQL-Agent wird immer ausgeführt.
+- Der auf einer CPU im Leerlauf basierende Auftragszeitplan-Trigger wird nicht unterstützt.
 - SQL Server-Agent-Einstellungen sind schreibgeschützt. Die Prozedur `sp_set_agent_properties` wird in SQL Managed Instance nicht unterstützt. 
 - Aufträge
   - T-SQL-Auftragsschritte werden unterstützt.
@@ -306,13 +307,7 @@ Weitere Informationen finden Sie unter [ALTER DATABASE](/sql/t-sql/statements/al
   - Proxys werden nicht unterstützt.
 - EventLog wird nicht unterstützt.
 - Der Benutzer muss dem Azure AD-Serverprinzipal (Anmeldung) direkt zugeordnet sein, um SQL-Agent-Aufträge zu erstellen, zu ändern oder auszuführen. Benutzer, die nicht direkt zugeordnet sind, z. B. Benutzer, die einer Azure AD-Gruppe angehören, die über die Berechtigungen zum Erstellen, Ändern oder Ausführen von SQL-Agent-Aufträgen verfügt, können diese Aktionen nicht effektiv ausführen. Dies liegt an Einschränkungen beim Identitätswechsel für verwaltete Instanzen und bei [EXECUTE AS](#logins-and-users).
-
-Die folgenden SQL-Agent-Funktionen werden derzeit nicht unterstützt:
-
-- Proxys
-- Planen von Aufträgen für eine CPU im Leerlauf
-- Aktivieren oder Deaktivieren eines Agents
-- Alerts
+- Das Feature „Multi Server Administration“ für Master-/Zielaufträge (MSX/TSX) wird nicht unterstützt.
 
 Weitere Informationen zum SQL Server-Agent finden Sie unter [SQL Server-Agent](/sql/ssms/agent/sql-server-agent).
 

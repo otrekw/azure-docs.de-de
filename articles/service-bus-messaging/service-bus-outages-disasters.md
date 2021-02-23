@@ -2,13 +2,13 @@
 title: Schützen von Azure Service Bus-Anwendungen vor Ausfällen und Notfällen
 description: Dieser Artikel stellt Verfahren vor, die Anwendungen vor einem potenziellen Azure Service Bus-Ausfall schützen können.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/10/2021
+ms.openlocfilehash: b9090a54cd58788dbd13f528af4dda4aa96005b7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88065623"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374591"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Bewährte Methoden zum Schützen von Anwendungen vor Service Bus-Ausfällen und Notfällen
 
@@ -23,11 +23,13 @@ Die Konzepte der Hochverfügbarkeit und Notfallwiederherstellung sind direkt im 
 
 ### <a name="geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung
 
-Service Bus Premium unterstützt die georedundante Notfallwiederherstellung auf Namespaceebene. Weitere Informationen finden Sie unter [Georedundante Notfallwiederherstellung in Azure Service Bus](service-bus-geo-dr.md). Bei der Funktion zur Notfallwiederherstellung, die nur für [Premium SKU](service-bus-premium-messaging.md) verfügbar ist, wird die Notfallwiederherstellung von Metadaten implementiert. Diese basiert auf speziellen primären und sekundären Namespaces.
+Service Bus Premium unterstützt die georedundante Notfallwiederherstellung auf Namespaceebene. Weitere Informationen finden Sie unter [Georedundante Notfallwiederherstellung in Azure Service Bus](service-bus-geo-dr.md). Bei der Funktion zur Notfallwiederherstellung, die nur für [Premium SKU](service-bus-premium-messaging.md) verfügbar ist, wird die Notfallwiederherstellung von Metadaten implementiert. Diese basiert auf speziellen primären und sekundären Namespaces. Bei der georedundanten Notfallwiederherstellung werden nur Metadaten für Entitäten zwischen primären und sekundären Namespaces repliziert.  
 
 ### <a name="availability-zones"></a>Verfügbarkeitszonen
 
 Die Service Bus Premium-SKU unterstützt [Verfügbarkeitszonen](../availability-zones/az-overview.md), die fehlerisolierte Standorte innerhalb einer Azure-Region bieten. Service Bus verwaltet drei Kopien des Messagingstores (ein primäres und zwei sekundäre Replikate). Service Bus hält alle drei Kopien für Daten- und Verwaltungsvorgänge synchron. Wenn bei der primären Kopie ein Fehler auftritt, wird eine der sekundären Kopien ohne wahrnehmbare Ausfallzeit zum primären Replikat heraufgestuft. Wenn bei den Anwendungen vorübergehende Trennungen von Service Bus auftreten, stellt die Wiederholungslogik im SDK automatisch erneut eine Verbindung mit Service Bus her. 
+
+Wenn Sie Verfügbarkeitszonen verwenden, werden sowohl Metadaten als auch Daten (Nachrichten) zwischen Rechenzentren in der Verfügbarkeitszone repliziert. 
 
 > [!NOTE]
 > Die Unterstützung für Verfügbarkeitszonen für Azure Service Bus Premium ist nur in [Azure-Regionen](../availability-zones/az-region.md) verfügbar, in denen Verfügbarkeitszonen vorhanden sind.

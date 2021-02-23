@@ -11,18 +11,21 @@ ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
 ms.custom: references_regions
-ms.openlocfilehash: 9afe58434d60280f635deab75b763077bc76b93c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 601c8dfb4b4e2f16da5c560f67e2d251a5d3072a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797631"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362742"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Konfigurieren der Netzwerkroutingpräferenz für Azure Storage (Vorschau)
 
 Sie können die [Netzwerkroutingpräferenz](../../virtual-network/routing-preference-overview.md) (Vorschau) für Ihr Azure-Speicherkonto konfigurieren, um festzulegen, wie Netzwerkdatenverkehr von Clients über das Internet zu Ihrem Konto geleitet wird. Standardmäßig wird der Datenverkehr aus dem Internet über das [globale Microsoft-Netzwerk](../../networking/microsoft-global-network.md) an den öffentlichen Endpunkt Ihres Speicherkontos geleitet. Azure Storage bietet zusätzliche Optionen für die Konfiguration, wie der Datenverkehr zu Ihrem Speicherkonto geleitet wird.
 
 Das Konfigurieren von Routingpräferenzen bietet Ihnen die Flexibilität, Ihren Datenverkehr entweder für eine erstklassige Netzwerkleistung oder hinsichtlich der Kosten zu optimieren. Wenn Sie eine Routingpräferenz konfigurieren, geben Sie an, wie der Datenverkehr für Ihr Speicherkonto standardmäßig zum öffentlichen Endpunkt geleitet wird. Sie können auch routenspezifische Endpunkte für Ihr Speicherkonto veröffentlichen.
+
+> [!NOTE]
+> Dieses Feature wird nicht in Speicherkonten unterstützt, die so konfiguriert sind, dass sie die Premium-Leistungsstufe oder zonenredundanten Speicher (ZRS) verwenden.
 
 ## <a name="microsoft-global-network-versus-internet-routing"></a>Globales Microsoft-Netzwerk und Internetrouting
 

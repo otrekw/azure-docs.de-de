@@ -1,6 +1,6 @@
 ---
-title: Verwenden einer Vorlage zum Bereitstellen von Azure Spot-VMs
-description: Erfahren Sie, wie Sie eine Vorlage für die Bereitstellung von Spot-VMs verwenden, um Kosten zu sparen.
+title: Verwenden einer Vorlage zum Bereitstellen von Azure Spot Virtual Machines
+description: Erfahren Sie, wie Sie mithilfe einer Vorlage Azure Spot Virtual Machines bereitstellen, um Kosten zu sparen.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -8,25 +8,25 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 0cf6fc1b37064ef6193f35334711dcc5b8d01088
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 44134e73f2e654d7bfdb9119942a5c3982859c7a
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200786"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557759"
 ---
-# <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Bereitstellen von Spot-VMs mithilfe einer Resource Manager-Vorlage
+# <a name="deploy-azure-spot-virtual-machines-using-a-resource-manager-template"></a>Bereitstellen von Azure Spot Virtual Machines mithilfe einer Resource Manager-Vorlage
 
-Mithilfe von [Spot-VMs](../spot-vms.md) können Sie unsere ungenutzte Kapazität mit signifikanten Kosteneinsparungen nutzen. Wenn die Kapazität von Azure wieder benötigt wird, werden die Spot-VMs durch die Azure-Infrastruktur entfernt. Aus diesem Grund eignen sich Spot-VMs hervorragend für Workloads, die Unterbrechungen tolerieren, z. B. Batchverarbeitungsaufträge, Dev/Test-Umgebungen, umfangreiche Computeworkloads und mehr.
+Wenn Sie [Azure Spot Virtual Machines](../spot-vms.md) verwenden, profitieren Sie von unserer ungenutzten Kapazität und erzielen erhebliche Kosteneinsparungen. Wenn die Kapazität von Azure wieder benötigt wird, werden die Azure Spot Virtual Machines durch die Azure-Infrastruktur entfernt. Aus diesem Grund eignen sich Azure Spot Virtual Machines hervorragend für Workloads, die Unterbrechungen tolerieren, z. B. Batchverarbeitungsaufträge, Dev/Test-Umgebungen, umfangreiche Computeworkloads und mehr.
 
-Die Preise für Spot-VMs variieren je nach Region und SKU. Weitere Informationen finden Sie unter den VM-Preisen für [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) und [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
+Die Preise für Azure Spot Virtual Machines variieren je nach Region und SKU. Weitere Informationen finden Sie unter den VM-Preisen für [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) und [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
 
-Sie haben die Möglichkeit, einen maximalen Preis festzulegen, den Sie pro Stunde für die VM bezahlen möchten. Der maximale Preis für eine Spot-VM kann in US-Dollar (USD) mit bis zu fünf Dezimalstellen festgelegt werden. Der Wert `0.98765` würde beispielsweise einem maximalen Preis von 0,98765 US-Dollar pro Stunde entsprechen. Wenn Sie den maximalen Preis auf `-1` festlegen, wird die VM nicht basierend auf dem Preis entfernt. Der Preis für die VM entspricht dem aktuellen Preis für Spot-VMs oder dem Preis für eine Standard-VM, je nachdem, welcher Preis niedriger ist, solange Kapazität und Kontingente verfügbar sind. Weitere Informationen zum Festlegen des maximalen Preises finden Sie unter [Spot-VMs – Preise](../spot-vms.md#pricing).
+Sie haben die Möglichkeit, einen maximalen Preis festzulegen, den Sie pro Stunde für die VM bezahlen möchten. Der maximale Preis für eine Azure Spot-VM kann in US-Dollar (USD) mit bis zu fünf Dezimalstellen festgelegt werden. Der Wert `0.98765` würde beispielsweise einem maximalen Preis von 0,98765 US-Dollar pro Stunde entsprechen. Wenn Sie den maximalen Preis auf `-1` festlegen, wird die VM nicht basierend auf dem Preis entfernt. Der Preis für die VM entspricht dem aktuellen Preis für Azure Spot Virtual Machines oder dem Preis für eine Standard-VM, je nachdem, welcher Preis niedriger ist, solange Kapazität und Kontingente verfügbar sind. Weitere Informationen zum Festlegen des maximalen Preises finden Sie unter [Azure Spot Virtual Machines: Preise](../spot-vms.md#pricing).
 
 
 ## <a name="use-a-template"></a>Verwenden einer Vorlage
 
-Verwenden Sie `"apiVersion": "2019-03-01"` oder höher für Spot-Vorlagenbereitstellungen. Fügen Sie die Eigenschaften `priority`, `evictionPolicy` und `billingProfile` zu Ihrer Vorlage hinzu:
+Verwenden Sie für die Bereitstellung von Azure Spot Virtual Machines mithilfe einer Vorlage `"apiVersion": "2019-03-01"` oder höher. Fügen Sie die Eigenschaften `priority`, `evictionPolicy` und `billingProfile` zu Ihrer Vorlage hinzu:
 
 ```json
 "priority": "Spot",
@@ -36,7 +36,7 @@ Verwenden Sie `"apiVersion": "2019-03-01"` oder höher für Spot-Vorlagenbereits
 }
 ```
 
-In der folgenden Beispielvorlage wurden die Eigenschaften für eine Spot-VM hinzugefügt. Ersetzen Sie die Ressourcennamen durch Ihre eigenen und `<password>` durch das Kennwort für das lokale Administratorkonto auf der VM.
+In der folgenden Beispielvorlage wurden die Eigenschaften für eine Azure Spot-VM hinzugefügt. Ersetzen Sie die Ressourcennamen durch Ihre eigenen und `<password>` durch das Kennwort für das lokale Administratorkonto auf der VM.
 
 ```json
 {
@@ -175,7 +175,7 @@ In der folgenden Beispielvorlage wurden die Eigenschaften für eine Spot-VM hinz
 
 ## <a name="simulate-an-eviction"></a>Simulieren einer Entfernung
 
-Sie können die Entfernung einer Spot-VM [simulieren](/rest/api/compute/virtualmachines/simulateeviction), um zu testen, wie gut die Anwendung auf einen plötzlichen Entfernungsvorgang reagiert. 
+Sie können die Entfernung einer Azure Spot-VM [simulieren](/rest/api/compute/virtualmachines/simulateeviction), um zu testen, wie gut die Anwendung auf einen plötzlichen Entfernungsvorgang reagiert. 
 
 Ersetzen Sie Folgendes durch Ihre Informationen: 
 
@@ -190,8 +190,8 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können eine Spot-VM auch mit [Azure PowerShell](../windows/spot-powershell.md) oder der [Azure CLI](spot-cli.md) erstellen.
+Sie können eine Azure Spot-VM auch mithilfe von [Azure PowerShell](../windows/spot-powershell.md), oder mit der [Azure CLI](spot-cli.md) erstellen.
 
-Fragen Sie Preisinformationen ab, indem Sie die [Azure-Einzelhandelspreis-API](/rest/api/cost-management/retail-prices/azure-retail-prices) verwenden, um Informationen zu Preisen von Spot-VMs zu erhalten. `meterName` und `skuName` enthalten beide `Spot`.
+Fragen Sie aktuelle Preisinformationen ab, indem Sie die [Azure-Einzelhandelspreis-API](/rest/api/cost-management/retail-prices/azure-retail-prices) verwenden, um Informationen zu Preisen von Azure Spot-VMs zu erhalten. `meterName` und `skuName` enthalten beide `Spot`.
 
 Informationen zu eventuell auftretenden Fehlern finden Sie unter [Fehlercodes](../error-codes-spot.md).

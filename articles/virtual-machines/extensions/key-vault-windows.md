@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e1a9f5d08168841d7651a17e2de4995b7a7cf38b
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f7c8a7eb06490a46e1c5b633944dcd596fa08515
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820720"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093623"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault-VM-Erweiterung für Windows
 
@@ -35,25 +35,31 @@ Die Key Vault-VM-Erweiterung wird auch auf einer benutzerdefinierten lokalen VM 
 - PKCS #12
 - PEM
 
-## <a name="prerequisities"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
+
   - Key Vault-Instanz mit Zertifikat. Siehe [Erstellen eines Schlüsseltresors](../../key-vault/general/quick-create-portal.md).
   - Der VM muss eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) zugewiesen sein.
   - Die Key Vault-Zugriffsrichtlinie muss mit geheimen Schlüsseln `get` und `list` Berechtigung für die verwaltete VM/VMSS-Identität festgelegt werden, um den Teil des Zertifikats für den geheimen Schlüssel abzurufen. Weitere Informationen finden Sie unter [Authentifizieren bei Key Vault](../../key-vault/general/authentication.md) und [Zuweisen einer Key Vault-Zugriffsrichtlinie](../../key-vault/general/assign-access-policy-cli.md).
-  -  VMSS sollte die folgende Identitätseinstellung aufweisen: ` 
+  -  Virtual Machine Scale Sets sollte die folgende Identitätseinstellung aufweisen:
+
+  ``` 
   "identity": {
-  "type": "UserAssigned",
-  "userAssignedIdentities": {
-  "[parameters('userAssignedIdentityResourceId')]": {}
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "[parameters('userAssignedIdentityResourceId')]": {}
+    }
   }
-  }
-  `
+  ```
   
-- Die AKV-Erweiterung sollte die folgende Einstellung aufweisen: `
-                  "authenticationSettings": {
-                    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
-                    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
-                  }
-   `
+  - Die AKV-Erweiterung sollte die folgende Einstellung aufweisen: 
+
+  ```
+  "authenticationSettings": {
+    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
+    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
+  }
+  ```
+
 ## <a name="extension-schema"></a>Erweiterungsschema
 
 Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung dargestellt. Für die Erweiterung sind keine geschützten Einstellungen erforderlich. Alle Einstellungen werden als öffentliche Informationen betrachtet. Für die Erweiterung werden eine Liste mit berücksichtigten Zertifikaten, die Abrufhäufigkeit und ein Zielzertifikatspeicher benötigt. Dies gilt insbesondere in folgenden Fällen:  
@@ -164,7 +170,9 @@ Zum Aktivieren legen Sie Folgendes fest:
     ...
 }
 ```
-> [Hinweis] Die Verwendung dieses Features ist mit einer ARM-Vorlage, die eine vom System zugewiesene Identität erstellt und eine Key Vault-Zugriffsrichtlinie mit dieser Identität aktualisiert, nicht kompatibel. Dies würde zu einem Deadlock führen, da die Key Vault-Zugriffsrichtlinie erst aktualisiert werden kann, nachdem alle Erweiterungen gestartet wurden. Verwenden Sie stattdessen eine *einzelne vom Benutzer zugewiesene MSI-Identität*, und wenden Sie vor der Bereitstellung eine Zugriffssteuerungsliste mit dieser Identität auf Ihre Key Vaults an.
+
+> [!Note] 
+> Die Verwendung dieses Features ist mit einer ARM-Vorlage, die eine vom System zugewiesene Identität erstellt und eine Key Vault-Zugriffsrichtlinie mit dieser Identität aktualisiert, nicht kompatibel. Dies würde zu einem Deadlock führen, da die Key Vault-Zugriffsrichtlinie erst aktualisiert werden kann, nachdem alle Erweiterungen gestartet wurden. Verwenden Sie stattdessen eine *einzelne vom Benutzer zugewiesene MSI-Identität*, und wenden Sie vor der Bereitstellung eine Zugriffssteuerungsliste mit dieser Identität auf Ihre Key Vaults an.
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell-Bereitstellung
 > [!WARNING]
@@ -222,9 +230,9 @@ Die Azure-Befehlszeilenschnittstelle kann verwendet werden, um die Key Vault-VM
     
     ```azurecli
        # Start the deployment
-         az vm extension set --name "KeyVaultForWindows" `
+         az vm extension set -name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         --resource-group "<resourcegroup>" `
+         -resource-group "<resourcegroup>" `
          --vm-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
@@ -233,9 +241,9 @@ Die Azure-Befehlszeilenschnittstelle kann verwendet werden, um die Key Vault-VM
 
    ```azurecli
         # Start the deployment
-        az vmss extension set --name "KeyVaultForWindows" `
+        az vmss extension set -name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         --resource-group "<resourcegroup>" `
+         -resource-group "<resourcegroup>" `
          --vmss-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```

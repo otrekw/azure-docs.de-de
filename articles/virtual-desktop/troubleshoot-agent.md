@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 8e3c372cb186d3043e89b0b084a86b7be128146d
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 1500a635d5177ed8899cdc3f1364e57a8525892c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475251"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099947"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Behandeln häufiger Probleme beim Windows Virtual Desktop-Agent
 
@@ -184,7 +184,7 @@ Um dieses Problem zu lösen, ändern Sie den Schwellenwert für den Heartbeat:
 1. Öffnen Sie eine Eingabeaufforderung als Administrator.
 2. Geben Sie den Befehl **qwinsta** ein, und führen Sie ihn aus.
 3. Es sollten zwei Stapelkomponenten angezeigt werden: **rdp-tcp** und **rdp-sxs**. 
-   - Je nach verwendeter Betriebssystemversion folgt nach **rdp-sxs** möglicherweise eine Buildnummer, wie im folgenden Screenshot gezeigt. Wenn dies der Fall ist, notieren Sie sich diese Nummer für später.
+   - Je nach verwendeter Betriebssystemversion folgt nach **rdp-sxs** möglicherweise eine Buildnummer. Wenn dies der Fall ist, notieren Sie sich diese Nummer für später.
 4. Öffnen Sie den Registrierungs-Editor.
 5. Wechseln Sie zu **HKEY_LOCAL_MACHINE** > **SYSTEM** > **CurrentControlSet** > **Control** > **Terminal Server** > **WinStations**.
 6. Unter **WinStations** werden möglicherweise mehrere Ordner für verschiedene Stapelversionen angezeigt. Wählen Sie den Ordner aus, der der Versionsnummer aus Schritt 3 entspricht.
@@ -207,7 +207,7 @@ Um dieses Problem zu beheben, geben Sie durch eine der folgenden Aktionen Speich
 Öffnen Sie ein PowerShell-Fenster als Administrator, und führen Sie das folgende Cmdlet aus:
 
 ```powershell
-Get-AzWvdSessionHost -TenantName <tenantname> -HostPoolName <hostpoolname>|Select-Object *
+Get-AzWvdSessionHost -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> | Select-Object *
 ```
 
 Wenn der Status für den Sitzungshost oder die Hosts im Hostpool immer **Nicht verfügbar** oder **Upgrade wird durchgeführt** lautet, liegt möglicherweise ein Fehler in der Agent- oder Stapelinstallation vor.

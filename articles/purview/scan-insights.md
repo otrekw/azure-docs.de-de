@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: 00f72e1de230cdc68f86010b7b25d86debaa5eb5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 7807659a30127f39bb79ad99bdb733c12eb1d25d
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575787"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548675"
 ---
 # <a name="scan-insights-on-your-data-in-azure-purview"></a>Überprüfungserkenntnisse über Ihre Daten in Azure Purview
 
@@ -51,15 +51,27 @@ Sie können in Azure Purview Quelltypen registrieren und überprüfen. Der Über
 
 1. Wählen Sie im Bereich **Erkenntnisse** :::image type="icon" source="media/scan-insights/ico-insights.png" border="false"::: die Option **Überprüfungen** aus, um den Purview-Bericht mit **Überprüfungserkenntnissen** anzuzeigen.
 
-### <a name="view-high-level-kpis-to-show-count-of-scans-by-status"></a>Überprüfen allgemeiner KPIs zum Anzeigen der Anzahl der Überprüfungen nach dem Status
+### <a name="view-high-level-kpis-to-show-count-of-scans-by-status-and-deep-dive-into-each-scan"></a>Anzeigen von KPIs auf hoher Ebene, um die Anzahl der Überprüfungen nach Status anzuzeigen und ausführliche Informationen zu den einzelnen Überprüfungen abzurufen
  
-Die allgemeinen KPIs zeigen an, wie viele Überprüfungen insgesamt innerhalb eines Zeitraums ausgeführt wurden. Standardmäßig umfasst dieser Zeitraum die letzten 30 Tage. Sie können jedoch auch die letzten sieben Tage auswählen. Basierend auf dem Zeitfilter geben die KPI-Werte die entsprechende Anzahl der Überprüfungen wieder.
+1. Die allgemeinen KPIs zeigen an, wie viele Überprüfungen insgesamt innerhalb eines Zeitraums ausgeführt wurden. Standardmäßig umfasst dieser Zeitraum die letzten 30 Tage. Sie können jedoch auch die letzten sieben Tage auswählen. Basierend auf dem Zeitfilter geben die KPI-Werte die entsprechende Anzahl der Überprüfungen wieder.
 
 
-Sie können je nach ausgewähltem Zeitfilterwert die Verteilung erfolgreicher, fehlerhafter und abgebrochener Überprüfungen pro Woche oder pro Tag im Diagramm anzeigen.
+1. Sie können je nach ausgewähltem Zeitfilterwert die Verteilung erfolgreicher, fehlerhafter und abgebrochener Überprüfungen pro Woche oder pro Tag im Diagramm anzeigen.
 
-   :::image type="content" source="./media/scan-insights/scan-insights.png" alt-text="Anzeigen von Scanerkenntnissen":::
+1. Am unteren Rand des Diagramms finden Sie einen Link **Mehr anzeigen**, über den Sie weitere Informationen erhalten. Der Link öffnet die Seite **Überprüfungsstatus** in der Scan Insights-Benutzeroberfläche. Dort sehen Sie einen Überprüfungsnamen und die Häufigkeit, mit der die Überprüfung innerhalb der letzten 30 Tage erfolgreich war, fehlgeschlagen ist oder abgebrochen wurde.
+
+    :::image type="content" source="./media/scan-insights/main-graph.png" alt-text="Anzeigen des Überprüfungsstatus im Zeitverlauf":::
+
+4. Sie können eine bestimmte Überprüfung weiter untersuchen, indem Sie auf den **Überprüfungsnamen** klicken, wodurch Sie mit dem Überprüfungsverlauf in der Benutzeroberfläche **Quellen** von Azure Purview verbunden werden. Auf der Seite „Ausführungsverlauf“ können Sie die Ausführungs-ID abrufen, die Sie bei der weiteren Untersuchung von Fehlern unterstützt.
+
+    :::image type="content" source="./media/scan-insights/scan-status.png" alt-text="Überprüfungsdetails anzeigen":::
+
+5. Schließlich können Sie zur Seite **Überprüfungsstatus** von Scan Insights zurückkehren, indem Sie den Breadcrumbs in der oberen linken Ecke der Seite „Ausführungsverlauf“ folgen.
+
+    :::image type="content" source="./media/scan-insights/scan-history.png" alt-text="Anzeigen des Überprüfungsverlaufs"::: 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure Purview-Erkenntnisberichten finden Sie unter [Ressourcenerkenntnisse zu Ihren Daten in Azure Purview](./asset-insights.md).
+* Weitere Informationen zu Azure Purview **Insights** mit [Data Insights](./concept-insights.md)
+
+* Weitere Informationen zur Benutzeroberfläche **Quellen** von Azure Purview mit [Verwalten von Datenquellen](./manage-data-sources.md)

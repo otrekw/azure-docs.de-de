@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7214a1eb41e4434818123ee26765ceb10ad551a5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 78958dc0f95d2bc7a9e393ac2e769a97f7e92efa
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094908"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556451"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -186,13 +186,21 @@ In der folgenden Tabelle wird gezeigt, ob Ihre Daten in einem bestimmten Szenari
 
 <sup>1</sup> Ein Kontofailover ist erforderlich, um die Schreibverfügbarkeit wiederherzustellen, wenn die primäre Region nicht mehr verfügbar ist. Weitere Informationen finden Sie unter [Notfallwiederherstellung und Speicherkontofailover](storage-disaster-recovery-guidance.md).
 
+### <a name="supported-azure-storage-services"></a>Unterstützte Azure Storage-Dienste
+
+In der folgenden Tabelle wird dargestellt, welche Redundanzoptionen von den einzelnen Azure Storage-Diensten unterstützt werden.
+
+| LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
+|:-|:-|:-|:-|
+| Blob Storage<br />Queue Storage<br />Tabellenspeicher<br />Azure Files<br />Verwaltete Azure-Datenträger | Blobspeicher<br />Queue Storage<br />Tabellenspeicher<br />Azure Files | Blobspeicher<br />Queue Storage<br />Tabellenspeicher<br />Azure Files<br /> | Blobspeicher<br />Queue Storage<br />Tabellenspeicher<br />Azure Files<br /> |
+
 ### <a name="supported-storage-account-types"></a>Unterstützte Speicherkontotypen
 
 In der folgenden Tabelle wird dargestellt, welche Redundanzoptionen von den einzelnen Speicherkontotypen unterstützt werden. Weitere Informationen zu Speicherkontotypen finden Sie unter [Speicherkontoübersicht](storage-account-overview.md).
 
 | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|
-| General Purpose v2<br /> General Purpose v1<br /> Blockblobspeicher<br /> Blob Storage<br /> File Storage | General Purpose v2<br /> Blockblobspeicher<br /> File Storage | General Purpose v2<br /> General Purpose v1<br /> Blob Storage | General Purpose v2 |
+| General Purpose v2<br /> General Purpose v1<br /> BlockBlobStorage<br /> BlobStorage<br /> FileStorage | General Purpose v2<br /> BlockBlobStorage<br /> FileStorage | General Purpose v2<br /> General Purpose v1<br /> BlobStorage | General Purpose v2 |
 
 Alle Daten eines Speicherkontos werden gemäß der Redundanzoption für das Speicherkonto kopiert. Es werden Objekte einschließlich Blockblobs, Anfügeblobs, Seitenblobs, Warteschlangen, Tabellen und Dateien kopiert. Die Daten aller Ebenen werden kopiert, einschließlich der Archivebene. Weitere Informationen zu Blobebenen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 
