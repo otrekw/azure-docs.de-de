@@ -17,7 +17,7 @@ Sie können Elemente in der Liste Ihrer **Favoriten** hinzufügen oder entfernen
 
 ## <a name="add-a-favorite"></a>Hinzufügen von Favoriten
 
-Elemente, die unter **Favoriten** aufgeführt sind, werden unter **Alle Dienste** ausgewählt. Bewegen Sie den Mauszeiger über einen Dienstnamen, um Informationen und Ressourcen anzuzeigen, die sich auf den Dienst beziehen. Ein gefülltes Sternsymbol ![Gefülltes Sternsymbol](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-graystar.png) neben dem Dienstnamen zeigt an, dass das Element in der Liste **Favoriten** angezeigt wird. Wählen Sie das Sternsymbol aus, um einen Dienst zur Liste **Favoriten** hinzufügen.
+Elemente, die unter **Favoriten** aufgeführt sind, werden unter **Alle Dienste** ausgewählt. Bewegen Sie den Mauszeiger über einen Dienstnamen, um Informationen und Ressourcen anzuzeigen, die sich auf den Dienst beziehen. Ein gefülltes Sternsymbol ![Gefülltes Sternsymbol](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-graystar.png) neben dem Dienstnamen zeigt an, dass das Element in der Liste **Favoriten** angezeigt wird. Wählen Sie das Sternsymbol aus, um einen Dienst zur Liste **Favoriten** hinzuzufügen.
 
 ### <a name="add-cost-management--billing-to-favorites"></a>Hinzufügen von „Kostenverwaltung + Abrechnung“ zu „Favoriten“
 
