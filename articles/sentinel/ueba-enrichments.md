@@ -51,7 +51,7 @@ Die ersten beiden Tabellen, **Benutzererkenntnisse** und **Geräteerkenntnisse**
 
 | Anreicherungsname | BESCHREIBUNG | Beispielwert |
 | --- | --- | --- | --- |
-| **Browser**<br>*(Browser)* | Der in der Aktion verwendete Browser. | Edge, Chrome |
+| **Browser**<br>*(Browser)* | Der in der Aktion verwendete Browser. | Microsoft Edge, Chrome |
 | **Gerätefamilie**<br>*(DeviceFamily)* | Die in der Aktion verwendete Gerätefamilie. | Windows |
 | **Gerätetyp**<br>*(DeviceType)* | Der in der Aktion verwendete Clientgerätetyp. | Desktop |
 | **ISP**<br>*(ISP)* | Der in der Aktion verwendete Internetdienstanbieter. |  |
@@ -59,7 +59,7 @@ Die ersten beiden Tabellen, **Benutzererkenntnisse** und **Geräteerkenntnisse**
 | **Threat Intelligence-Indikatorbeschreibung**<br>*(ThreatIntelIndicatorDescription)* | Beschreibung des beobachteten Bedrohungsindikators, der aus der in der Aktion verwendeten IP-Adresse aufgelöst wurde. | Host ist Mitglied von Botnet: azorult |
 | **Threat Intelligence-Indikatortyp**<br>*(ThreatIntelIndicatorType)* | Der Typ des Bedrohungsindikators, der aus der in der Aktion verwendeten IP-Adresse aufgelöst wurde. | Botnet, C2, CryptoMining, Darknet, Ddos, MaliciousUrl, Malware, Phishing, Proxy, PUA, Watchlist |
 | **Benutzer-Agent**<br>*(UserAgent)* | Der in der Aktion verwendete Benutzer-Agent. | Microsoft Azure Graph Client Library 1.0,<br>Swagger-Codegen/1.4.0.0/csharp,<br>EvoSTS |
-| **Benutzer-Agent-Familie**<br>*(UserAgentFamily)* | Die in der Aktion verwendete Benutzer-Agent-Familie. | Chrome, Edge, Firefox |
+| **Benutzer-Agent-Familie**<br>*(UserAgentFamily)* | Die in der Aktion verwendete Benutzer-Agent-Familie. | Chrome, Microsoft Edge, Firefox |
 |
 
 ## <a name="activity-insights-tables"></a>Aktivitätserkenntnissetabelle

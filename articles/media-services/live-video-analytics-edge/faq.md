@@ -76,7 +76,7 @@ Empfohlene Player für Tests:
 * [Shaka Player](https://github.com/google/shaka-player)
 * [ExoPlayer](https://github.com/google/ExoPlayer)
 * [Natives HTTP Live Streaming (HLS) von Apple](https://developer.apple.com/streaming/)
-* Edge, Chrome oder Safari mit integriertem HTML5-Videoplayer
+* Microsoft Edge, Chrome oder Safari mit integriertem HTML5-Videoplayer
 * Kommerzielle Player, die die HLS- oder DASH-Wiedergabe unterstützen
 
 **Welche Einschränkungen gelten für das Streaming eines Medienobjekts aus einem Mediendiagramm?**
