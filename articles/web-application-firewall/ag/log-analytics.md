@@ -7,16 +7,16 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/06/2019
 ms.author: victorh
-ms.openlocfilehash: 733a9af589718e9abe8736491023003744428cd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c928d4234e82e7c43c2365e20d57d0b97d4dbc1c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361061"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589004"
 ---
 # <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-waf-logs"></a>Verwenden der Protokollanalyse zur Untersuchung von Protokollen der Web Application Firewall (WAF) für Application Gateway
 
-Sobald Ihre Application Gateway-WAF betriebsbereit ist, können Sie Protokolle aktivieren, um zu überprüfen, was bei jeder Anforderung passiert. Firewallprotokolle geben Aufschluss darüber, was die WAF auswertet, abgleicht und blockiert. Mit Azure Monitor Log Analytics können Sie die Daten in den Firewallprotokollen untersuchen, um noch mehr Erkenntnisse zu erhalten. Weitere Informationen zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../../azure-monitor/learn/quick-create-workspace.md). Weitere Informationen zu Protokollabfragen finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../../azure-monitor/log-query/log-query-overview.md).
+Sobald Ihre Application Gateway-WAF betriebsbereit ist, können Sie Protokolle aktivieren, um zu überprüfen, was bei jeder Anforderung passiert. Firewallprotokolle geben Aufschluss darüber, was die WAF auswertet, abgleicht und blockiert. Mit Azure Monitor Log Analytics können Sie die Daten in den Firewallprotokollen untersuchen, um noch mehr Erkenntnisse zu erhalten. Weitere Informationen zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../../azure-monitor/logs/quick-create-workspace.md). Weitere Informationen zu Protokollabfragen finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="import-waf-logs"></a>Importieren von WAF-Protokollen
 
@@ -79,7 +79,7 @@ AzureDiagnostics
 
 Nachdem Sie eine Abfrage erstellt haben, können Sie sie zu Ihrem Dashboard hinzufügen.  Wählen Sie **An Dashboard anheften** in der oberen rechten Ecke des Log Analytics-Arbeitsbereichs aus. Wenn die vorherigen vier Abfragen an ein Beispieldashboard angeheftet sind, sind dies die Daten, die Sie auf einen Blick sehen können:
 
-![Screenshot, der ein Azure-Dashboard zeigt, in dem Sie Ihre Abfrage hinzufügen können.](../media/log-analytics/dashboard.png)
+![Screenshot: Ein Azure-Dashboard, in dem Sie Ihre Abfrage hinzufügen können](../media/log-analytics/dashboard.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

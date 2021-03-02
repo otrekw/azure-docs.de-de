@@ -3,12 +3,12 @@ title: Aktivieren der VM-Erweiterung mithilfe einer Azure Resource Manager-Vorla
 description: In diesem Artikel wird beschrieben, wie Sie mit einer Azure Resource Manager-Vorlage VM-Erweiterungen auf Azure Arc-fähigen Servern bereitstellen, die in Hybrid Cloud-Umgebungen ausgeführt werden.
 ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0115bda614133891275daff96c94dc4b1a680ccf
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: b84f9d4d13de3ce2d661e254528e1f0a304001f4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555106"
+ms.locfileid: "100580917"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Aktivieren von Azure-VM-Erweiterungen mithilfe einer ARM-Vorlage
 
@@ -545,7 +545,7 @@ Zum Verwenden der PowerShell DSC-Erweiterung steht das folgende Beispiel für di
 
 ## <a name="deploy-the-dependency-agent-extension"></a>Bereitstellen der Dependency-Agent-Erweiterung
 
-Zum Verwenden der Azure Monitor Dependency-Agent-Erweiterung steht das folgende Beisiel für Windows und Linux zur Verfügung. Wenn Sie mit dem Dependency-Agent nicht vertraut sind, informieren Sie sich in der [Übersicht zu Azure Monitor-Agents](../../azure-monitor/platform/agents-overview.md#dependency-agent).
+Zum Verwenden der Azure Monitor Dependency-Agent-Erweiterung steht das folgende Beisiel für Windows und Linux zur Verfügung. Wenn Sie mit dem Dependency-Agent nicht vertraut sind, informieren Sie sich in der [Übersicht zu Azure Monitor-Agents](../../azure-monitor/agents/agents-overview.md#dependency-agent).
 
 ### <a name="template-file-for-linux"></a>Vorlagendatei für Linux
 

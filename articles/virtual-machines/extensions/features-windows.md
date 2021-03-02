@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 565f98126cea8cc03874bb4f83ecdc2c65f8d5fb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 44d071c635967e4ce3078be8419414bc9ff0c653
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016453"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580143"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
 
@@ -36,7 +36,7 @@ Dieser Artikel enthält eine Übersicht der VM-Erweiterungen, erläutert Vorauss
 Es sind verschiedene Azure VM-Erweiterungen für jeweils spezifische Anwendungsfälle verfügbar. Beispiele hierfür sind:
 
 - Anwenden von gewünschten Statuskonfigurationen mit PowerShell auf eine VM mithilfe der DSC-Erweiterung für Windows. Weitere Informationen finden Sie unter [Azure Desired State configuration extension](dsc-overview.md) (Azure-Erweiterung für die gewünschte Statuskonfiguration).
-- Konfigurieren der Überwachung einer VM mit der Log Analytics-Agent-VM-Erweiterung. Weitere Informationen finden Sie unter [Verbinden von virtuellen Azure-Computern mit Azure Monitor-Protokollen](../../azure-monitor/learn/quick-collect-azurevm.md).
+- Konfigurieren der Überwachung einer VM mit der Log Analytics-Agent-VM-Erweiterung. Weitere Informationen finden Sie unter [Verbinden von virtuellen Azure-Computern mit Azure Monitor-Protokollen](../../azure-monitor/vm/quick-collect-azurevm.md).
 - Konfigurieren eines virtuellen Azure-Computers mit Chef. Weitere Informationen finden Sie unter [Automatisieren der Bereitstellung virtueller Azure-Computer mit Chef](/azure/developer/chef/windows-vm-configure).
 - Konfigurieren der Überwachung Ihrer Azure-Infrastruktur mit der Datadog-Erweiterung. Weitere Informationen finden Sie im [Datadog-Blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 

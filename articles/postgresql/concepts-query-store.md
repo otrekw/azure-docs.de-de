@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 5dff78989eef17f95d8b8dd108baafc53a3f761a
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1779df1c5f9baf2aa46ff809ecae9ec5e3cd7adb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657021"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581568"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Überwachen der Leistung mit dem Abfragespeicher
 
@@ -178,7 +178,7 @@ Query_store.staging_data_reset() gibt „void“ zurück
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
-Azure Database for PostgreSQL ist in die [Azure Monitor-Diagnoseeinstellungen](../azure-monitor/platform/diagnostic-settings.md) integriert. Mit Diagnoseeinstellungen können Sie Ihre Postgres-Protokolle im JSON-Format an [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md) (Analyse und Warnungen), Event Hubs (Streaming) und Azure Storage (Archivierung) senden.
+Azure Database for PostgreSQL ist in die [Azure Monitor-Diagnoseeinstellungen](../azure-monitor/essentials/diagnostic-settings.md) integriert. Mit Diagnoseeinstellungen können Sie Ihre Postgres-Protokolle im JSON-Format an [Azure Monitor-Protokolle](../azure-monitor/logs/log-query-overview.md) (Analyse und Warnungen), Event Hubs (Streaming) und Azure Storage (Archivierung) senden.
 
 >[!IMPORTANT]
 > Dieses Diagnosefeature steht nur in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ zur Verfügung.
@@ -195,7 +195,7 @@ So aktivieren Sie Ressourcenprotokolle über das Azure-Portal:
 5. Wählen Sie die Protokolltypen **QueryStoreRuntimeStatistics** und **QueryStoreWaitStatistics** aus.
 6. Speichern Sie die Einstellungen.
 
-Informationen zum Aktivieren dieser Einstellung über PowerShell, die CLI oder die REST-API finden Sie im [Artikel zu den Diagnoseeinstellungen](../azure-monitor/platform/diagnostic-settings.md).
+Informationen zum Aktivieren dieser Einstellung über PowerShell, die CLI oder die REST-API finden Sie im [Artikel zu den Diagnoseeinstellungen](../azure-monitor/essentials/diagnostic-settings.md).
 
 ### <a name="json-log-format"></a>JSON-Protokollformat
 In den folgenden Tabellen werden die Felder für die beiden Protokolltypen beschrieben. Je nach dem ausgewählten Ausgabeendpunkt können die enthaltenen Felder und ihre Reihenfolge variieren.

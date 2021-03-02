@@ -5,12 +5,12 @@ ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 617a2717a1d1265d067cb3e1f26531d135d47941
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb0ce5cfadbab247299cd3c22bf6ee618bf19731
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743912"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582481"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Hochskalieren einer App in Azure App Service
 
@@ -18,7 +18,7 @@ In diesem Artikel wird die Vorgehensweise beim Skalieren Ihrer App in Azure App 
 
 * [Hochskalieren:](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)Bei dieser Methode erhalten Sie mehr CPUs, mehr Arbeitsspeicher und mehr Speicherplatz sowie zusätzliche Features wie dedizierte virtuelle Computer, benutzerdefinierte Domänen und Zertifikate, Stagingslots, automatische Skalierung und mehr. Zum Hochskalieren muss der Tarif des App Service-Plans geändert werden, zu dem die App gehört.
 * [Aufskalieren:](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling) Bei dieser Methode wird die Anzahl von VM-Instanzen erhöht, die Ihre App ausführen.
-  Die Instanzenanzahl kann je nach Tarif auf bis zu 30 aufskaliert werden. [App Service-Umgebungen](environment/intro.md) im Tarif **Isolated** erhöhen die Anzahl der Instanzen beim horizontalen Hochskalieren weiter auf 100. Weitere Informationen zum Aufskalieren finden Sie unter [Scale instance count manually or automatically](../azure-monitor/platform/autoscale-get-started.md) (Manuelles oder automatisches Skalieren der Instanzanzahl). Dort erfahren Sie, wie Sie die automatische Skalierung verwenden, d.h. das automatische Skalieren der Instanzenzahl basierend auf vordefinierten Regeln und Zeitplänen.
+  Die Instanzenanzahl kann je nach Tarif auf bis zu 30 aufskaliert werden. [App Service-Umgebungen](environment/intro.md) im Tarif **Isolated** erhöhen die Anzahl der Instanzen beim horizontalen Hochskalieren weiter auf 100. Weitere Informationen zum Aufskalieren finden Sie unter [Scale instance count manually or automatically](../azure-monitor/autoscale/autoscale-get-started.md) (Manuelles oder automatisches Skalieren der Instanzanzahl). Dort erfahren Sie, wie Sie die automatische Skalierung verwenden, d.h. das automatische Skalieren der Instanzenzahl basierend auf vordefinierten Regeln und Zeitplänen.
 
 Diese Skalierungseinstellungen werden innerhalb von Sekunden angewendet und wirken sich auf alle Apps im [App Service-Plan](../app-service/overview-hosting-plans.md)aus.
 Dazu müssen Sie weder Ihren Code ändern noch Ihre Anwendung erneut bereitstellen.
@@ -77,7 +77,7 @@ Eine Tabelle der Dienstbeschränkungen, Kontingente und Einschränkungen sowie u
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 
-[Manuelles oder automatisches Skalieren der Instanzenzahl](../azure-monitor/platform/autoscale-get-started.md)  
+[Manuelles oder automatisches Skalieren der Instanzenzahl](../azure-monitor/autoscale/autoscale-get-started.md)  
 [Konfigurieren des PremiumV3-Tarifs für App Service](app-service-configure-premium-tier.md)
 
 <!-- LINKS -->

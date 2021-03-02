@@ -6,12 +6,12 @@ ms.date: 11/22/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 115e1ec347cdcd80904b47a0c8798206360d0dad
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: cdad5a0ec158f216a63ae7e1e2abc10d2841b3bc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131779"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593734"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Schnellstart: Erste Schritte mit Application Insights in einem Java-Webprojekt
 
@@ -168,7 +168,7 @@ Klicken Sie sich durch einen bestimmten Anforderungstyp, um einzelne Instanzen a
 ![Detailinformationen in einer spezifischen Beispielansicht](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>Analytics: Leistungsfähige Abfragesprache
-Wenn sich mehr Daten ansammeln, können Sie Abfragen sowohl zum Aggregieren von Daten als auch zum Ermitteln einzelner Instanzen ausführen.  [Analytics](../log-query/log-query-overview.md) ist ein leistungsfähiges Tool zum Nachvollziehen der Leistung und Nutzung sowie für Diagnosezwecke.
+Wenn sich mehr Daten ansammeln, können Sie Abfragen sowohl zum Aggregieren von Daten als auch zum Ermitteln einzelner Instanzen ausführen.  [Analytics](../logs/log-query-overview.md) ist ein leistungsfähiges Tool zum Nachvollziehen der Leistung und Nutzung sowie für Diagnosezwecke.
 
 ![Analytics-Beispiel](./media/java-get-started/0025.png)
 
@@ -292,7 +292,7 @@ Application Insights kann Ihre Website in regelmäßigen Abständen testen, um z
 * [Überwachen von Unix-Leistungsindikatoren](java-collectd.md)
 * Richten Sie die [Überwachung für Ihre Webseiten ein](javascript.md), um Seitenladezeiten, AJAX-Aufrufe und Browserausnahmen zu überwachen.
 * Schreiben Sie [benutzerdefinierte Telemetriedaten](./api-custom-events-metrics.md), um die Nutzung im Browser oder auf dem Server nachzuverfolgen.
-* Verwenden Sie [Analytics](../log-query/log-query-overview.md) für leistungsfähige Abfragen über Telemetriedaten in Ihrer App.
+* Verwenden Sie [Analytics](../logs/log-query-overview.md) für leistungsfähige Abfragen über Telemetriedaten in Ihrer App.
 * Weitere Informationen finden Sie im Artikel [Azure für Java-Entwickler](/java/azure).
 
 <!--Link references-->
@@ -302,5 +302,5 @@ Application Insights kann Ihre Website in regelmäßigen Abständen testen, um z
 [availability]: ./monitor-web-app-availability.md
 [diagnostic]: ./diagnostic-search.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 [usage]: javascript.md

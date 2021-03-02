@@ -3,12 +3,12 @@ title: Verwalten des Agents für Azure Arc-fähige Server
 description: In diesem Artikel werden die verschiedenen Verwaltungsaufgaben beschrieben, die Sie typischerweise während des Lebenszyklus des Connected Machine-Agents für Azure Arc-fähige Server ausführen.
 ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: cc42830fc73612e744942bdd8b353832e0ccbf2a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 36ae081f939cbf865db7755a2f766a7ccd87d619
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368454"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587619"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Verwalten des Connected Machine-Agent
 
@@ -312,7 +312,7 @@ Wenn Sie beabsichtigen, die Verwaltung des Computers mit unterstützenden Dienst
 Um den Agent für die Kommunikation mit dem Dienst über einen Proxyserver zu konfigurieren, entfernen Sie diese Konfiguration nach der Bereitstellung, oder führen Sie eine der folgenden Methoden aus, um diese Aufgabe durchzuführen.
 
 > [!NOTE]
-> Azure Arc-fähige Server unterstützen die Verwendung eines [Log Analytics-Gateways](../../azure-monitor/platform/gateway.md) als Proxy für den Connected Machine-Agent nicht.
+> Azure Arc-fähige Server unterstützen die Verwendung eines [Log Analytics-Gateways](../../azure-monitor/agents/gateway.md) als Proxy für den Connected Machine-Agent nicht.
 >
 
 ### <a name="windows"></a>Windows
@@ -355,6 +355,6 @@ sudo azcmagent_proxy remove
 
 * Informationen zur Problembehandlung finden Sie im [Handbuch zur Problembehandlung des Connected Machine-Agents](troubleshoot-agent-onboard.md).
 
-* Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/insights/vminsights-enable-policy.md) und vieles mehr.
+* Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/vm/vminsights-enable-policy.md) und vieles mehr.
 
-* Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie Daten zur Betriebssystem- und Workloadüberwachung erfassen, diese mithilfe von Automation Runbooks oder Funktionen wie Updateverwaltung oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-introduction.md) nutzen möchten.
+* Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/agents/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie Daten zur Betriebssystem- und Workloadüberwachung erfassen, diese mithilfe von Automation Runbooks oder Funktionen wie Updateverwaltung oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-introduction.md) nutzen möchten.

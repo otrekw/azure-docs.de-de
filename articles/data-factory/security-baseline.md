@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 387c5e70d50e53f922530cfb1fa91494fa7cc624
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ab4f92c9723dc98d0b6c32d3a49df8d4f724ebfa
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100376308"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585472"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure-Sicherheitsbaseline für Azure Data Factory
 
@@ -175,9 +175,9 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen der Konfigurationen von Netzwerkressourcen und zum Erkennen von Änderungen bei Netzwerkressourcen im Zusammenhang mit Ihren Azure Data Factory-Instanzen. Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzwerkressourcen ausgelöst werden.
 
-* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -201,7 +201,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 Alternativ können Sie Azure Sentinel oder ein SIEM-System eines Drittanbieters aktivieren und einrichten. Sie können Azure Data Factory zudem mit Git integrieren, um verschiedene Vorteile bei der Quellcodeverwaltung zu nutzen, z. B. das Nachverfolgen und Auditing von Änderungen und das Rückgängigmachen von Änderungen, die zu Fehlern führen.
 
-* [Erstellen von Diagnoseeinstellungen im Azure-Portal](../azure-monitor/platform/diagnostic-settings.md)
+* [Erstellen von Diagnoseeinstellungen im Azure-Portal](../azure-monitor/essentials/diagnostic-settings.md)
 
 * [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -219,7 +219,7 @@ Alternativ können Sie Azure Sentinel oder ein SIEM-System eines Drittanbieters 
 
 Verwenden Sie Diagnoseeinstellungen, um Diagnoseprotokolle für Nicht-Compute-Ressourcen in Azure Data Factory zu konfigurieren, z. B. Metriken und Pipelineausführungsdaten. Azure Data Factory speichert Pipelineausführungsdaten 45 Tage lang. Wenn Sie diese Daten für einen längeren Zeitraum aufbewahren möchten, speichern Sie die Diagnoseprotokolle in einem Speicherkonto zum Auditing oder zur manuellen Überprüfung, und geben Sie die Aufbewahrungsdauer in Tagen an. Sie können die Protokolle auch an Azure Event Hubs streamen oder zur Analyse an einen Log Analytics-Arbeitsbereich senden.
 
-* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 * [Grundlegendes zu Azure Data Factory-Diagnoseprotokollen](./monitor-using-azure-monitor.md)
 
@@ -233,7 +233,7 @@ Verwenden Sie Diagnoseeinstellungen, um Diagnoseprotokolle für Nicht-Compute-Re
 
 Wenn Ihre Organisation die Daten des Sicherheitsereignisprotokolls aufbewahren möchte, kann es in einer Datensammlungsebene gespeichert werden. Dann kann es in Log Analytics abgefragt werden.
 
-* [Sammeln von Daten von einem virtuellen Azure-Computer in Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+* [Sammeln von Daten von einem virtuellen Azure-Computer in Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 * [Aktivieren der Datensammlung in Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
@@ -247,7 +247,7 @@ Wenn Ihre Organisation die Daten des Sicherheitsereignisprotokolls aufbewahren m
 
 * [Aktivieren der Diagnoseprotokollierung in Azure Data Factory](./monitor-using-azure-monitor.md)
 
-* [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -263,7 +263,7 @@ Alternativ dazu können Sie auch Daten in Azure Sentinel oder einer Drittanbiete
 
 * [Log Analytics-Schema](./monitor-using-azure-monitor.md#schema-of-logs-and-events)
 
-* [Sammeln von Daten von einem virtuellen Azure-Computer mit Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+* [Sammeln von Daten von einem virtuellen Azure-Computer mit Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 * [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -281,9 +281,9 @@ Stellen Sie außerdem sicher, dass Sie die Diagnoseeinstellungen für Dienste ak
 
 * [Warnungen in Azure Data Factory](./monitor-visually.md#alerts)
 
-* [Alle unterstützten Metriken](../azure-monitor/platform/metrics-supported.md)
+* [Alle unterstützten Metriken](../azure-monitor/essentials/metrics-supported.md)
 
-* [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../azure-monitor/platform/alerts-log.md)
+* [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../azure-monitor/alerts/alerts-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -652,9 +652,9 @@ Sie können Anmeldeinformationen oder Geheimniswerte in Azure Key Vault speicher
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen zu erstellen, die bei Änderungen an Azure Data Factory und zugehörigen Ressourcen ausgegeben werden.
 
-* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
-* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Azure Storage Analytics-Protokollierung](../storage/common/storage-analytics-logging.md)
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9672d18fe99d8baae3c73fa3782531eb84114713
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 05d312296b48f35ea87c5443cc587989e2d11fd5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97515637"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587975"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Bereitstellen des Diagnosetools für Windows Virtual Desktop (klassisch)
 
@@ -116,7 +116,7 @@ Im Folgenden wird erläutert, wie die empfohlenen Leistungsindikatoren manuell k
     -   Prozessorinformationen(\*)\\Prozessorzeit
     -   Benutzereingabeverzögerung pro Sitzung(\*)\\Maximale Eingabeverzögerung
 
-Weitere Informationen zu den Leistungsindikatoren finden Sie unter [Windows- und Linux-Leistungsdatenquellen in Azure Monitor](../../azure-monitor/platform/data-sources-performance-counters.md).
+Weitere Informationen zu den Leistungsindikatoren finden Sie unter [Windows- und Linux-Leistungsdatenquellen in Azure Monitor](../../azure-monitor/agents/data-sources-performance-counters.md).
 
 >[!NOTE]
 >Alle weiteren Indikatoren, die Sie konfigurieren, werden im Diagnosetool selbst nicht angezeigt. Damit sie im Diagnosetool angezeigt werden, müssen Sie die Konfigurationsdatei des Tools konfigurieren. Anleitungen dazu, wie Sie dies mit der erweiterten Verwaltung durchführen, werden zu einem späteren Zeitpunkt auf GitHub verfügbar sein.
@@ -199,7 +199,7 @@ So legen Sie den Umleitungs-URI fest
 
 Bevor Sie das Diagnosetool für Ihre Benutzer verfügbar machen, stellen Sie sicher, dass diese über die folgenden Berechtigungen verfügen:
 
-- Benutzer benötigen Lesezugriff für Log Analytics. Weitere Informationen finden Sie unter [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../../azure-monitor/platform/roles-permissions-security.md).
+- Benutzer benötigen Lesezugriff für Log Analytics. Weitere Informationen finden Sie unter [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../../azure-monitor/roles-permissions-security.md).
 -  Benutzer benötigen ferner Lesezugriff für den Windows Virtual Desktop-Mandanten (RDS-Rolle „Leser“). Weitere Informationen finden Sie unter [Delegierter Zugriff in Windows Virtual Desktop](delegated-access-virtual-desktop-2019.md).
 
 Sie müssen Ihren Benutzern außerdem noch folgende Informationen zur Verfügung stellen:

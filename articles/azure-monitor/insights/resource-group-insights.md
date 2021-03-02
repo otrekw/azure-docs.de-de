@@ -7,12 +7,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 620dadbaba049d6baea54b3b64c9e248fc48004a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87045769"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573452"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Überwachen von Ressourcengruppen mit Azure Monitor (Vorschauversion)
 
@@ -46,9 +46,9 @@ Die Seite mit den Einblicken in die Ressourcengruppe bietet mehrere Tools zur Di
 
    |         |          |
    | ---------------- |:-----|
-   | [**Warnungen**](../platform/alerts-overview.md)      |  Dient zum Anzeigen, Erstellen und Verwalten von Warnungen. |
-   | [**Metriken**](../platform/data-platform.md) | Dient zum Visualisieren und Untersuchen Ihrer auf Metriken basierenden Daten.    |
-   | [**Aktivitätsprotokolle**](../platform/platform-logs-overview.md) | Enthält Ereignisse auf Abonnementebene, die in Azure aufgetreten sind.  |
+   | [**Warnungen**](../alerts/alerts-overview.md)      |  Dient zum Anzeigen, Erstellen und Verwalten von Warnungen. |
+   | [**Metriken**](../data-platform.md) | Dient zum Visualisieren und Untersuchen Ihrer auf Metriken basierenden Daten.    |
+   | [**Aktivitätsprotokolle**](../essentials/platform-logs-overview.md) | Enthält Ereignisse auf Abonnementebene, die in Azure aufgetreten sind.  |
    | [**Anwendungszuordnung**](../app/app-map.md) | Navigieren Sie durch die Topologie Ihrer verteilten Anwendung, um Leistungsengpässe oder Fehlerquellen auszumachen. |
 
 ## <a name="failures-and-performance"></a>Fehler und Leistung
@@ -117,6 +117,6 @@ Azure Monitor für Ressourcengruppen nutzt das Warnungsverwaltungssystem von Azu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md)
+- [Azure Monitor-Arbeitsmappen](../visualize/workbooks-overview.md)
 - [Azure Resource Health](../../service-health/resource-health-overview.md)
-- [Azure Monitor-Warnungen](../platform/alerts-overview.md)
+- [Azure Monitor-Warnungen](../alerts/alerts-overview.md)

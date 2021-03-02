@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: v-erkel
-ms.openlocfilehash: 067b12d4dcfd5ba2b730204ef680b900d79f1b72
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 40d091782f37a32b75659cd274e49798dbe527cb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648071"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590785"
 ---
 # <a name="manage-your-cache"></a>Verwalten Ihres Caches
 
@@ -253,7 +253,7 @@ Auf der Übersichtsseite werden Diagramme für einige grundlegende Cachestatisti
 
 ![Screenshot: drei Liniendiagramme mit den oben genannten Statistiken für einen Beispielcache](media/hpc-cache-overview-stats.png)
 
-Diese Diagramme sind Bestandteil der integrierten Überwachungs- und Analysetools von Azure. Weitere Tools und Warnungen sind auf den Seiten unter der Überschrift **Überwachung** auf der Seitenleiste des Portals verfügbar. Weitere Informationen finden Sie im Abschnitt zum Azure-Portal in der [Dokumentation zur Überwachung mit Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md#monitoring-in-the-azure-portal).
+Diese Diagramme sind Bestandteil der integrierten Überwachungs- und Analysetools von Azure. Weitere Tools und Warnungen sind auf den Seiten unter der Überschrift **Überwachung** auf der Seitenleiste des Portals verfügbar. Weitere Informationen finden Sie im Abschnitt zum Azure-Portal in der [Dokumentation zur Überwachung mit Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-in-the-azure-portal).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

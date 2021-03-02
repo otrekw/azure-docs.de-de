@@ -4,12 +4,12 @@ description: Sie können die Standardeinstellungen des Azure-Portals ändern, um
 keywords: Einstellungen, Timeout, Sprache, regional
 ms.date: 08/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 5a108f1cd3b5af6655b592e7283192d4d54498ac
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 591b1ce6c2c069f9c0266588bf32f7303bf49708
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094109"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588797"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Verwalten von Einstellungen und Voreinstellungen im Azure-Portal
 
@@ -71,7 +71,7 @@ Wenn Sie alle während der aktuellen Sitzung empfangenen Benachrichtigungen lese
 
 ![Screenshot, der die globale Kopfzeile des Azure-Portals mit hervorgehobenen Benachrichtigungen zeigt](./media/set-preferences/read-notifications.png)
 
-Wenn Sie Benachrichtigungen aus vorherigen Sitzungen lesen möchten, suchen Sie nach Ereignissen im Aktivitätsprotokoll. Weitere Informationen finden Sie unter [Anzeigen des Aktivitätsprotokolls](../azure-monitor/platform/activity-log.md#view-the-activity-log). 
+Wenn Sie Benachrichtigungen aus vorherigen Sitzungen lesen möchten, suchen Sie nach Ereignissen im Aktivitätsprotokoll. Weitere Informationen finden Sie unter [Anzeigen des Aktivitätsprotokolls](../azure-monitor/essentials/activity-log.md#view-the-activity-log). 
 
 ## <a name="change-the-inactivity-timeout-setting"></a>Ändern der Einstellung für das Inaktivitätstimeout
 

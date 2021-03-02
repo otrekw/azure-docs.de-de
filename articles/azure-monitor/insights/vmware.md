@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: be50deb836082354db899e84ef24d75c4d403432
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dc31cd4f492a4e95ce8232a8df28f07206e23b1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450397"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587171"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware-Überwachungslösung (veraltet) in Azure Monitor
 
@@ -33,7 +33,7 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 vSphere ESXi-Host 5.5, 6.0 und 6.5
 
 #### <a name="prepare-a-linux-server"></a>Vorbereiten eines Linux-Servers
-Erstellen Sie eine VM mit Linux-Betriebssystem, um alle Syslog-Daten von den ESXi-Hosts zu empfangen. Vom [Log Analytics-Linux-Agent](../learn/quick-collect-linux-computer.md) werden alle Syslog-Daten von ESXi-Hosts gesammelt. Sie können mehrere ESXi-Hosts verwenden, um die Protokolle an einen Linux-Server weiterzuleiten, wie im folgenden Beispiel veranschaulicht.
+Erstellen Sie eine VM mit Linux-Betriebssystem, um alle Syslog-Daten von den ESXi-Hosts zu empfangen. Vom [Log Analytics-Linux-Agent](../vm/quick-collect-linux-computer.md) werden alle Syslog-Daten von ESXi-Hosts gesammelt. Sie können mehrere ESXi-Hosts verwenden, um die Protokolle an einen Linux-Server weiterzuleiten, wie im folgenden Beispiel veranschaulicht.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
@@ -122,7 +122,7 @@ In der **VMware**-Dashboardansicht sind die Blätter nach Folgendem angeordnet:
 
 Klicken Sie auf ein Blatt, um den Log Analytics-Suchbereich zu öffnen, der detaillierte Informationen für das Blatt enthält.
 
-Hier können Sie die Protokollabfrage bearbeiten, um nach etwas Bestimmtem zu suchen. Informationen zum Erstellen von Protokollabfragen finden Sie unter [Suchen von Daten mithilfe von Protokollabfragen in Azure Monitor](../log-query/log-query-overview.md).
+Hier können Sie die Protokollabfrage bearbeiten, um nach etwas Bestimmtem zu suchen. Informationen zum Erstellen von Protokollabfragen finden Sie unter [Suchen von Daten mithilfe von Protokollabfragen in Azure Monitor](../logs/log-query-overview.md).
 
 #### <a name="find-esxi-host-events"></a>Suchen von ESXi-Hostereignissen
 Ein einzelner ESXi-Host generiert basierend auf seinen Prozessen mehrere Protokolle. Die VMware-Überwachungslösung zentralisiert sie und fasst die auftretenden Ereignisse zusammen. Mit dieser zentralisierten Ansicht können Sie erkennen, auf welchem ESXi-Host eine große Anzahl von Ereignissen auftritt und welche Ereignisse in Ihrer Umgebung am häufigsten vorkommen.
@@ -151,12 +151,12 @@ Die Lösung umfasst andere nützliche Abfragen, die Sie bei der Verwaltung Ihrer
 
 
 #### <a name="save-queries"></a>Speichern von Abfragen
-Das Speichern von Protokollabfragen ist ein Standardfeature in Azure Monitor und hilft Ihnen, Abfragen zu behalten, die Sie für nützlich befunden haben. Nachdem Sie eine Abfrage erstellt haben, die für Sie nützlich ist, speichern Sie sie, indem Sie auf **Favoriten** klicken. Eine gespeicherte Abfrage können Sie später auf einfache Weise über die Seite [Mein Dashboard](../learn/tutorial-logs-dashboards.md) wiederverwenden, wo Sie eigene benutzerdefinierte Dashboards erstellen können.
+Das Speichern von Protokollabfragen ist ein Standardfeature in Azure Monitor und hilft Ihnen, Abfragen zu behalten, die Sie für nützlich befunden haben. Nachdem Sie eine Abfrage erstellt haben, die für Sie nützlich ist, speichern Sie sie, indem Sie auf **Favoriten** klicken. Eine gespeicherte Abfrage können Sie später auf einfache Weise über die Seite [Mein Dashboard](../visualize/tutorial-logs-dashboards.md) wiederverwenden, wo Sie eigene benutzerdefinierte Dashboards erstellen können.
 
 ![Screenshot eines Teils eines benutzerdefinierten Dashboards mit der Bezeichnung „Protokollsuche“ mit Symbolen für Rückgängigmachen, Exportieren, Warnung, Speichern, Favoriten und Verlauf](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Erstellen von Warnungen aus Abfragen
-Nachdem Sie Ihre Abfragen erstellt haben, könnten Sie die Abfragen dazu verwenden, dass Sie auf bestimmte Ereignisse hingewiesen werden. Informationen zum Erstellen von Warnungen finden Sie unter [Warnungen in Log Analytics](../platform/alerts-overview.md). Beispiele für Warnungen durch Abfragen und weitere Beispiele für Abfragen finden Sie im Blogbeitrag [Monitor VMware using Log Analytics](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) (Überwachen von VMware mit Log Analytics).
+Nachdem Sie Ihre Abfragen erstellt haben, könnten Sie die Abfragen dazu verwenden, dass Sie auf bestimmte Ereignisse hingewiesen werden. Informationen zum Erstellen von Warnungen finden Sie unter [Warnungen in Log Analytics](../alerts/alerts-overview.md). Beispiele für Warnungen durch Abfragen und weitere Beispiele für Abfragen finden Sie im Blogbeitrag [Monitor VMware using Log Analytics](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) (Überwachen von VMware mit Log Analytics).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Was muss ich bei den ESXi-Hosteinstellungen beachten? Wie wirken diese sich auf meine aktuelle Umgebung aus?
@@ -197,7 +197,7 @@ Dafür kann es mehrere Gründe geben:
      d. Wenn die Datei nicht vorhanden oder die Benutzer- und Gruppeneinstellung nicht richtig ist, beheben Sie das Problem durch [Vorbereiten eines Linux-Servers](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie [Protokollabfragen](../log-query/log-query-overview.md) in Log Analytics, um ausführliche VMware-Hostdaten anzuzeigen.
-* [Erstellen Sie eigene Dashboards](../learn/tutorial-logs-dashboards.md), die VMware-Hostdaten anzeigen.
-* [Erstellen Sie Warnungen](../platform/alerts-overview.md) für das Auftreten bestimmter VMware-Hostereignisse.
+* Verwenden Sie [Protokollabfragen](../logs/log-query-overview.md) in Log Analytics, um ausführliche VMware-Hostdaten anzuzeigen.
+* [Erstellen Sie eigene Dashboards](../visualize/tutorial-logs-dashboards.md), die VMware-Hostdaten anzeigen.
+* [Erstellen Sie Warnungen](../alerts/alerts-overview.md) für das Auftreten bestimmter VMware-Hostereignisse.
 

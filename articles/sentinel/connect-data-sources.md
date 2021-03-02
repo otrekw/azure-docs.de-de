@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: c3bb05af3e0a24ebb10dc98b9174cfb235ddda13
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: aeb92dce41c12ada41175964835d9c89a634a6e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555930"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590268"
 ---
 # <a name="connect-data-sources"></a>Herstellen einer Verbindung mit Datenquellen
 
@@ -151,7 +151,7 @@ Alternativ können Sie den Agent manuell auf einem vorhandenen virtuellen Azure-
 | **Datentyp** | **Herstellen einer Verbindung** | **Datenconnector** | **Kommentare** |
 |------|---------|-------------|------|
 | AWSCloudTrail | [Herstellen einer Verbindung mit AWS](connect-aws.md) | &#10003; | |
-| AzureActivity | [Herstellen einer Verbindung mit Azure-Aktivitäten](connect-azure-activity.md) und [Übersicht über Aktivitätsprotokolle](../azure-monitor/platform/platform-logs-overview.md)| &#10003; | |
+| AzureActivity | [Herstellen einer Verbindung mit Azure-Aktivitäten](connect-azure-activity.md) und [Übersicht über Aktivitätsprotokolle](../azure-monitor/essentials/platform-logs-overview.md)| &#10003; | |
 | AuditLogs | [Herstellen einer Verbindung mit Azure AD](connect-azure-active-directory.md)  | &#10003; | |
 | SigninLogs | [Herstellen einer Verbindung mit Azure AD](connect-azure-active-directory.md)  | &#10003; | |
 | AzureFirewall |[Azure-Diagnose](../firewall/firewall-diagnostics.md) | &#10003; | |
@@ -164,9 +164,9 @@ Alternativ können Sie den Agent manuell auf einem vorhandenen virtuellen Azure-
 | Microsoft Web Application Firewall (WAF) – (AzureDiagnostics) |[Herstellen einer Verbindung mit Microsoft Web Application Firewall](./connect-azure-waf.md) | &#10003; | |
 | SymantecICDx_CL | [Herstellen einer Verbindung mit Symantec](connect-symantec.md) | &#10003; | |
 | ThreatIntelligenceIndicator  | [Herstellen einer Verbindung mit Threat Intelligence](connect-threat-intelligence.md)  | &#10003; | |
-| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Monitor-Dienstzuordnung](../azure-monitor/insights/service-map.md)<br>[Onboarding von Azure Monitor-VM-Insights](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Aktivieren von Azure Monitor-VM-Insights](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Verwenden von Onboarding für einen einzelnen virtuellen Computer](../azure-monitor/insights/vminsights-enable-portal.md)<br>  [Verwenden von Onboarding per Richtlinie](../azure-monitor/insights/vminsights-enable-policy.md)| &#10007; | VM Insights-Arbeitsmappe  |
+| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Monitor-Dienstzuordnung](../azure-monitor/vm/service-map.md)<br>[Onboarding von Azure Monitor-VM-Insights](../azure-monitor/vm/vminsights-enable-overview.md) <br> [Aktivieren von Azure Monitor-VM-Insights](../azure-monitor/vm/vminsights-enable-overview.md) <br> [Verwenden von Onboarding für einen einzelnen virtuellen Computer](../azure-monitor/vm/vminsights-enable-portal.md)<br>  [Verwenden von Onboarding per Richtlinie](../azure-monitor/vm/vminsights-enable-policy.md)| &#10007; | VM Insights-Arbeitsmappe  |
 | DnsEvents | [Herstellen einer Verbindung mit DNS](connect-dns.md) | &#10003; | |
-| W3CIISLog | [Herstellen einer Verbindung mit IIS-Protokollen](../azure-monitor/platform/data-sources-iis-logs.md)  | &#10007; | |
+| W3CIISLog | [Herstellen einer Verbindung mit IIS-Protokollen](../azure-monitor/agents/data-sources-iis-logs.md)  | &#10007; | |
 | WireData | [Herstellen einer Verbindung mit Wire Data](../azure-monitor/insights/wire-data.md) | &#10007; | |
 | WindowsFirewall | [Herstellen einer Verbindung mit der Windows-Firewall](connect-windows-firewall.md) | &#10003; | |
 | AADIP SecurityAlert  | [Herstellen einer Verbindung mit Azure AD Identity Protection](connect-azure-ad-identity-protection.md)  | &#10003; | |
@@ -174,7 +174,7 @@ Alternativ können Sie den Agent manuell auf einem vorhandenen virtuellen Azure-
 | ASC SecurityAlert  | [Verbinden von Azure Defender-Benachrichtigungen](connect-azure-security-center.md) aus Azure Security Center  | &#10003; | |
 | MCAS SecurityAlert  | [Herstellen einer Verbindung mit Microsoft Cloud App Security](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
-| Sysmon (Ereignis) | [Herstellen einer Verbindung mit Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Herstellen einer Verbindung mit Windows-Ereignissen](../azure-monitor/platform/data-sources-windows-events.md) <br> [Sysmon-Parser herunterladen](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | Die Sysmon-Sammlung wird auf virtuellen Computern standardmäßig nicht installiert. Weitere Informationen zum Installieren des Sysmon-Agents finden Sie unter [Sysmon](/sysinternals/downloads/sysmon). |
+| Sysmon (Ereignis) | [Herstellen einer Verbindung mit Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Herstellen einer Verbindung mit Windows-Ereignissen](../azure-monitor/agents/data-sources-windows-events.md) <br> [Sysmon-Parser herunterladen](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | Die Sysmon-Sammlung wird auf virtuellen Computern standardmäßig nicht installiert. Weitere Informationen zum Installieren des Sysmon-Agents finden Sie unter [Sysmon](/sysinternals/downloads/sysmon). |
 | ConfigurationData  | [Automatisieren des VM-Bestands](../automation/change-tracking/overview.md)| &#10007; | |
 | ConfigurationChange  | [Automatisieren der VM-Nachverfolgung](../automation/change-tracking/overview.md) | &#10007; | |
 | F5 BIG-IP | [Herstellen einer Verbindung mit F5 BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | &#10007; | |

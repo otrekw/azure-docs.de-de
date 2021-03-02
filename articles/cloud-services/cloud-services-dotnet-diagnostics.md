@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 89ba50b91e8ff2e2d7a05d59f2b738a1f87a5fd2
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: e4b5372a2b6e9b833f3a0213d69649b75ae2589b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742147"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578189"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Aktivieren der Azure-Diagnose in Azure Cloud Services (klassisch)
 
@@ -189,13 +189,13 @@ Navigieren Sie in Visual Studio im **Server-Explorer** zum Speicherkonto „wade
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>Konfigurationsdateischema
-Die Diagnosekonfigurationsdatei definiert Werte, die verwendet werden, um beim Start des Diagnoseagenten die Diagnosekonfigurationseinstellungen zu initialisieren. Gültige Werte und Beispiele finden Sie unter [Azure-Diagnose-Konfigurationsschemas](../azure-monitor/platform/diagnostics-extension-versions.md) .
+Die Diagnosekonfigurationsdatei definiert Werte, die verwendet werden, um beim Start des Diagnoseagenten die Diagnosekonfigurationseinstellungen zu initialisieren. Gültige Werte und Beispiele finden Sie unter [Azure-Diagnose-Konfigurationsschemas](../azure-monitor/agents/diagnostics-extension-versions.md) .
 
 ## <a name="troubleshooting"></a>Problembehandlung
-Unter [Problembehandlung bei Azure-Diagnose](../azure-monitor/platform/diagnostics-extension-troubleshooting.md) finden Sie Informationen zur Behebung von häufig auftretenden Problemen.
+Unter [Problembehandlung bei Azure-Diagnose](../azure-monitor/agents/diagnostics-extension-troubleshooting.md) finden Sie Informationen zur Behebung von häufig auftretenden Problemen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[In der Liste der Artikel zur Azure-Diagnose im Zusammenhang mit virtuellen Computern](../azure-monitor/platform/diagnostics-extension-overview.md) finden Sie eine Anleitung zum Ändern erfasster Daten und zur Fehlerbehebung und erfahren mehr über Diagnose im Allgemeinen.
+[In der Liste der Artikel zur Azure-Diagnose im Zusammenhang mit virtuellen Computern](../azure-monitor/agents/diagnostics-extension-overview.md) finden Sie eine Anleitung zum Ändern erfasster Daten und zur Fehlerbehebung und erfahren mehr über Diagnose im Allgemeinen.
 
 [EventSource Class]: /dotnet/api/system.diagnostics.tracing.eventsource
 

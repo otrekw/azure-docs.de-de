@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: 41b058cf41aa1a8fb1def68851457385c8187823
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 91aed191e3bb165d6690759426a596df39f8c10f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209881"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582298"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Überwachen Ihres Schlüsseltresordiensts mit Azure Monitor für Key Vault
 Azure Monitor für Key Vault ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Wartezeit im Zusammenhang mit Key Vault bereitgestellt.
@@ -169,4 +169,4 @@ Sie können die vorhandene Arbeitsmappe im Bearbeitungsmodus bearbeiten und Ihre
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.
+Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../visualize/workbooks-overview.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.

@@ -3,12 +3,12 @@ title: Schützen von Azure VMware Solution-VMs mit Azure Security Center-Integra
 description: Schützen Ihrer Azure VMware Solution-VMs über das Azure Security Center-Dashboard mit den nativen Sicherheitstools von Azure
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: b37d09d6e8f239586a18c0fa3b1dcd7bfee98102
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 7292ea4486a61f5b0cfd8f656d2763a3ce655e79
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516361"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578253"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Schützen von Azure VMware Solution-VMs mit Azure Security Center-Integration
 
@@ -50,7 +50,7 @@ Sie können den Log Analytics-Arbeitsbereich mit Azure Sentinel für Folgendes k
 
 ## <a name="create-a-log-analytics-workspace"></a>Erstellen eines Log Analytics-Arbeitsbereichs
 
-Sie benötigen einen Log Analytics-Arbeitsbereich, um Daten aus verschiedenen Quellen zu sammeln. Weitere Informationen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/learn/quick-create-workspace.md). 
+Sie benötigen einen Log Analytics-Arbeitsbereich, um Daten aus verschiedenen Quellen zu sammeln. Weitere Informationen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/logs/quick-create-workspace.md). 
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>Bereitstellen von Security Center und Konfigurieren von Azure VMware Solution-VMs
 
@@ -243,5 +243,5 @@ Sie können Abfragen erstellen oder vordefinierte Abfragen in Azure Sentinel ver
 Nachdem Sie sich mit dem Schützen Ihrer Azure VMware Solution-VMs vertraut gemacht haben, informieren Sie sich über die folgenden Themen:
 
 - Verwenden des [Azure Defender-Dashboards](../security-center/azure-defender-dashboard.md)
-- [Erweiterte Erkennung von mehrstufigen Angriffen in Azure Sentinel](../azure-monitor/learn/quick-create-workspace.md)
+- [Erweiterte Erkennung von mehrstufigen Angriffen in Azure Sentinel](../azure-monitor/logs/quick-create-workspace.md)
 - [Lebenszyklusverwaltung von Azure VMware Solution-VMs](lifecycle-management-of-azure-vmware-solution-vms.md)

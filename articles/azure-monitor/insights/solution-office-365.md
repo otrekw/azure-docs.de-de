@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: bde1c503d0aaaff1afcee67a26245d5021c43bb4
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d031b64b36bd7ff91c64960642cfbf00fb1682ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807749"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587303"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
@@ -118,7 +118,7 @@ Mit der Office 365-Verwaltungslösung können Sie Ihre Office 365-Umgebung in Az
 - Überwachen Sie Administratoraktivitäten, um Konfigurationsänderungen oder Vorgänge mit erhöhten Rechten nachzuverfolgen.
 - Ermitteln und untersuchen Sie unerwünschtes Benutzerverhalten. Dies kann an die Anforderungen Ihrer Organisation angepasst werden.
 - Demonstrieren Sie Überwachung und Compliance. Beispielsweise können Sie Dateizugriffe auf vertrauliche Dateien überwachen und so den Überwachungs- und Complianceprozess unterstützen.
-- Führen Sie eine operative Problembehandlung mithilfe der [Protokollabfragen](../log-query/log-query-overview.md) in den Office 365-Aktivitätsdaten Ihrer Organisation durch.
+- Führen Sie eine operative Problembehandlung mithilfe der [Protokollabfragen](../logs/log-query-overview.md) in den Office 365-Aktivitätsdaten Ihrer Organisation durch.
 
 
 ## <a name="uninstall"></a>Deinstallieren
@@ -473,6 +473,6 @@ Die folgende Tabelle enthält Beispielprotokollabfragen für Updatedatensätze, 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Verwenden Sie [Protokollabfragen in Azure Monitor](../log-query/log-query-overview.md), um ausführliche Aktualisierungsdaten anzuzeigen.
-* [Erstellen Sie eigene Dashboards](../learn/tutorial-logs-dashboards.md), um Ihre bevorzugten Office 365-Suchabfragen anzuzeigen.
-* [Erstellen Sie Warnungen](../platform/alerts-overview.md), um proaktiv über wichtige Office 365-Aktivitäten benachrichtigt zu werden.  
+* Verwenden Sie [Protokollabfragen in Azure Monitor](../logs/log-query-overview.md), um ausführliche Aktualisierungsdaten anzuzeigen.
+* [Erstellen Sie eigene Dashboards](../visualize/tutorial-logs-dashboards.md), um Ihre bevorzugten Office 365-Suchabfragen anzuzeigen.
+* [Erstellen Sie Warnungen](../alerts/alerts-overview.md), um proaktiv über wichtige Office 365-Aktivitäten benachrichtigt zu werden.  

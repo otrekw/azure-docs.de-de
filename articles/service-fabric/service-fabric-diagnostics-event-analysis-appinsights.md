@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: e35206b5fa9466cda064c09f060f45b437fafd20
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: f4d77cc3b2f2182b02d47f047070b819daa5f3c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329575"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589019"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Ereignisanalyse und Visualisierung mit Application Insights
 
@@ -48,7 +48,7 @@ Wenn Sie EventFlow zum Aggregieren von Ereignissen verwenden, müssen Sie das Nu
 "outputs": [
     {
         "type": "ApplicationInsights",
-        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE**_"
+        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE***"
     }
 ]
 ```
@@ -65,13 +65,13 @@ Wenn Sie beim Entwickeln in .NET voraussichtlich einige der Service Fabric-Progr
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Navigieren zur Application Insights-Ressource im Azure-Portal
 
-Wenn Sie Application Insights als Ausgabe für die Ereignisse und Protokolle konfiguriert haben, sollten nach wenigen Minuten Informationen in der Application Insights-Ressource angezeigt werden. Navigieren Sie zur Application Insights-Ressource, um zum Dashboard für die Ressource zu gelangen. Klicken Sie auf der Application Insights-Taskleiste auf _ *Suchen* *, um die zuletzt empfangenen Ablaufverfolgungen anzuzeigen und zu filtern.
+Wenn Sie Application Insights als Ausgabe für die Ereignisse und Protokolle konfiguriert haben, sollten nach wenigen Minuten Informationen in der Application Insights-Ressource angezeigt werden. Navigieren Sie zur Application Insights-Ressource, um zum Dashboard für die Ressource zu gelangen. Klicken Sie auf der Application Insights-Taskleiste auf **Suchen**, um die zuletzt empfangenen Ablaufverfolgungen anzuzeigen und zu filtern.
 
-*Metrik-Explorer* ist ein nützliches Tool zum Erstellen von benutzerdefinierten Dashboards basierend auf den Metriken, die Ihre Anwendungen, Dienste und Cluster melden. Informationen zum Einrichten einiger benutzerdefinierter Diagramme basierend auf Ihren gesammelten Daten finden Sie unter [Untersuchen von Metriken in Application Insights](../azure-monitor/platform/metrics-charts.md).
+*Metrik-Explorer* ist ein nützliches Tool zum Erstellen von benutzerdefinierten Dashboards basierend auf den Metriken, die Ihre Anwendungen, Dienste und Cluster melden. Informationen zum Einrichten einiger benutzerdefinierter Diagramme basierend auf Ihren gesammelten Daten finden Sie unter [Untersuchen von Metriken in Application Insights](../azure-monitor/essentials/metrics-charts.md).
 
-Durch Klicken auf **Analytics** gelangen Sie zum Application Insights Analytics-Portal, in dem Sie Ereignisse und Ablaufverfolgungen in größerem Umfang und mit mehr Optionen abfragen können. Weitere Informationen hierzu finden Sie unter [Analytics in Application Insights](../azure-monitor/log-query/log-query-overview.md).
+Durch Klicken auf **Analytics** gelangen Sie zum Application Insights Analytics-Portal, in dem Sie Ereignisse und Ablaufverfolgungen in größerem Umfang und mit mehr Optionen abfragen können. Weitere Informationen hierzu finden Sie unter [Analytics in Application Insights](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Richten Sie Warnungen in AI ein](../azure-monitor/platform/alerts-log.md), um Benachrichtigungen zu Änderungen der Leistung oder Nutzung zu erhalten.
+* [Richten Sie Warnungen in AI ein](../azure-monitor/alerts/alerts-log.md), um Benachrichtigungen zu Änderungen der Leistung oder Nutzung zu erhalten.
 * Die [intelligente Erkennung in Application Insights](../azure-monitor/app/proactive-diagnostics.md) führt eine proaktive Analyse der an Application Insights gesendeten Telemetriedaten durch, um Sie vor potenziellen Leistungsproblemen zu warnen.

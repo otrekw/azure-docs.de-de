@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: 213f7d95916555ea32925a5b0af0865d900b0209
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: c08ce3bc8b722f2ea417c854a606f1060aa174e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257912"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580057"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planen der Bereitstellung eines Azure AD-Anwendungsproxys
 
@@ -302,7 +302,7 @@ Die Connectors und der Dienst führen alle Aufgaben in Bezug auf Hochverfügbark
 
 #### <a name="windows-event-logs-and-performance-counters"></a>Windows-Ereignisprotokolle und -Leistungsindikatoren
 
-Connectors verfügen über Administrator- und Sitzungsprotokolle. Die Administratorprotokolle enthalten wichtige Ereignisse und die dazugehörigen Fehler. Die Sitzungsprotokolle enthalten alle Transaktionen und die dazugehörigen Verarbeitungsdetails. Protokolle und Indikatoren befinden sich in Windows-Ereignisprotokollen. Weitere Informationen finden Sie unter [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](./application-proxy-connectors.md#under-the-hood). Befolgen Sie dieses [Tutorial für die Konfiguration von Datenquellen für das Ereignisprotokoll in Azure Monitor](../../azure-monitor/platform/data-sources-windows-events.md).
+Connectors verfügen über Administrator- und Sitzungsprotokolle. Die Administratorprotokolle enthalten wichtige Ereignisse und die dazugehörigen Fehler. Die Sitzungsprotokolle enthalten alle Transaktionen und die dazugehörigen Verarbeitungsdetails. Protokolle und Indikatoren befinden sich in Windows-Ereignisprotokollen. Weitere Informationen finden Sie unter [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](./application-proxy-connectors.md#under-the-hood). Befolgen Sie dieses [Tutorial für die Konfiguration von Datenquellen für das Ereignisprotokoll in Azure Monitor](../../azure-monitor/agents/data-sources-windows-events.md).
 
 ### <a name="troubleshooting-guide-and-steps"></a>Leitfaden zur Problembehandlung und zu den Schritten
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 120f160e3c7bc7a9a0e81586ea4b97ee827dd33e
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 5999e8da5dffce85dd12ecd01cd5991ea4abc098
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807427"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590247"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>Verbinden von virtuellen Azure Stack Hub-Computern mit Azure Sentinel
 
@@ -50,9 +50,9 @@ Fügen Sie die VM-Erweiterung zur **Update- und Konfigurationsverwaltung für Az
 
 1. Nach Abschluss der Installation wird die Erweiterung mit dem Status **Bereitstellung erfolgreich** angezeigt. Es kann bis zu einer Stunde dauern, bis der virtuelle Computer im Azure Sentinel-Portal angezeigt wird.
 
-Weitere Informationen zur Installation und Konfiguration des Agents für Windows finden Sie unter [Verbinden von Windows-Computern](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard).
+Weitere Informationen zur Installation und Konfiguration des Agents für Windows finden Sie unter [Verbinden von Windows-Computern](../azure-monitor/agents/agent-windows.md#install-agent-using-setup-wizard).
 
-Informationen zum Beheben von Problemen mit dem Agent für Linux finden Sie unter [Behandeln von Problemen mit dem Log Analytics-Agent für Linux](../azure-monitor/platform/agent-linux-troubleshoot.md).
+Informationen zum Beheben von Problemen mit dem Agent für Linux finden Sie unter [Behandeln von Problemen mit dem Log Analytics-Agent für Linux](../azure-monitor/agents/agent-linux-troubleshoot.md).
 
 Im Azure Sentinel-Portal in Azure wird unter **Virtuelle Computer** eine Übersicht aller virtuellen und physischen Computer mit dem jeweiligen Status angezeigt. 
 

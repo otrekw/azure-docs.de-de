@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 69168060cbce4a904c53d7f79895e909c8c42e01
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: b7e40eb936a6151f0f31c34c5a8030153a87f08c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935222"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571090"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung für Azure NetApp Files
 
@@ -57,7 +57,7 @@ Für die Verschlüsselung des NFSv4.1-Clients gelten die folgenden Anforderungen
 
 ## <a name="configure-the-azure-portal"></a>Konfigurieren des Azure-Portals 
 
-1.  Befolgen Sie die Anweisungen unter [Erstellen einer Active Directory-Verbindung](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection).  
+1.  Befolgen Sie die Anweisungen unter [Erstellen einer Active Directory-Verbindung](create-active-directory-connections.md).  
 
     Kerberos erfordert, dass Sie mindestens ein Computerkonto in Active Directory erstellen. Die angegebenen Kontoinformationen werden für die Erstellung der Konten für SMB- *sowie* NFSv4.1-Kerberos-Volumes verwendet. Dieses Computerkonto wird bei der Volumeerstellung automatisch erstellt.
 
@@ -175,5 +175,5 @@ Leistungsauswirkungen von krb5p:
 * [Problembehandlung für NFSv4.1-Kerberos-Volumes](troubleshoot-nfsv41-kerberos-volumes.md)
 * [Häufig gestellte Fragen zu Azure NetApp Files](azure-netapp-files-faqs.md)
 * [Erstellen eines NFS-Volumes für Azure NetApp Files](azure-netapp-files-create-volumes.md)
-* [Erstellen einer Active Directory-Verbindung](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)
+* [Erstellen einer Active Directory-Verbindung](create-active-directory-connections.md)
 * [Konfigurieren eines NFS-Clients für Azure NetApp Files](configure-nfs-clients.md) 

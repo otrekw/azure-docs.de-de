@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: dde2c3e4cf496bb15ca91c72d9a41936af7051c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36f885416c5e9cb656d01a65b9c503f8897d2f9f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83743757"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593901"
 ---
 # <a name="enable-startstop-vms-during-off-hours"></a>Aktivieren von „VMs außerhalb der Geschäftszeiten starten/beenden“
 
@@ -51,8 +51,8 @@ Nachdem die Ressource erstellt wurde, wird die Seite „Lösung hinzufügen“ a
    - Geben Sie einen Namen für den neuen Log Analytics-Arbeitsbereich an, z. B. **ContosoLAWorkspace**.
    - Wählen Sie ein **Abonnement** aus, mit dem eine Verknüpfung erstellt werden soll, indem Sie in der Dropdownliste einen anderen Eintrag auswählen, falls der Standardeintrag nicht geeignet ist.
    - Unter **Ressourcengruppe** können Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe auswählen.
-   - Wählen Sie einen **Speicherort**aus.
-   - Wählen Sie einen **Tarif**aus. Wählen Sie die Option **Pro GB (eigenständig)** aus. Für Azure Monitor-Protokolle wurden die [Preise](https://azure.microsoft.com/pricing/details/log-analytics/) aktualisiert, und der Tarif „Pro GB“ ist die einzige Option.
+   - Wählen Sie einen **Speicherort** aus.
+   - Wählen Sie einen **Tarif** aus. Wählen Sie die Option **Pro GB (eigenständig)** aus. Für Azure Monitor-Protokolle wurden die [Preise](https://azure.microsoft.com/pricing/details/log-analytics/) aktualisiert, und der Tarif „Pro GB“ ist die einzige Option.
 
    > [!NOTE]
    > Wenn Sie Funktionen aktivieren, werden nur bestimmte Regionen zum Verknüpfen mit einem Log Analytics-Arbeitsbereich und einem Automation-Konto unterstützt. Eine Liste der unterstützten Zuordnungspaare finden Sie unter [Regionszuordnung für Automation-Konto und Log Analytics-Arbeitsbereich](how-to/region-mappings.md).
@@ -82,7 +82,7 @@ Nach dem Klicken auf **OK** werden die Konfigurationsoptionen überprüft, und d
   
 4. Verwenden Sie das Feld **Zeitplan**, um einen Zeitplan für die VM-Verwaltung durch die Funktion auszuwählen. Wählen Sie ein Startdatum und eine Uhrzeit für Ihren Zeitplan aus, um einen sich täglich wiederholenden Zeitplan zu erstellen, der zur ausgewählten Uhrzeit startet. Es kann keine andere Region ausgewählt werden. Falls Sie den Zeitplan nach dem Konfigurieren der Funktion für Ihre Zeitzone konfigurieren möchten, helfen Ihnen die Informationen unter [Ändern des Zeitplans für das Starten und Herunterfahren](automation-solution-vm-management-config.md#modify-the-startup-and-shutdown-schedules) weiter.
 
-5. Um E-Mail-Benachrichtigungen von einer [Aktionsgruppe](../azure-monitor/platform/action-groups.md) zu empfangen, übernehmen Sie den Standardwert **Ja** im Feld **E-Mail-Adresse**, und geben Sie eine gültige E-Mail-Adresse an. Wenn Sie **Nein** auswählen, sich aber zu einem späteren Zeitpunkt entscheiden, dass Sie E-Mail-Benachrichtigungen erhalten möchten, können Sie die erstellte Aktionsgruppe mit gültigen E-Mail-Adressen, die durch Kommas getrennt sind, aktualisieren. 
+5. Um E-Mail-Benachrichtigungen von einer [Aktionsgruppe](../azure-monitor/alerts/action-groups.md) zu empfangen, übernehmen Sie den Standardwert **Ja** im Feld **E-Mail-Adresse**, und geben Sie eine gültige E-Mail-Adresse an. Wenn Sie **Nein** auswählen, sich aber zu einem späteren Zeitpunkt entscheiden, dass Sie E-Mail-Benachrichtigungen erhalten möchten, können Sie die erstellte Aktionsgruppe mit gültigen E-Mail-Adressen, die durch Kommas getrennt sind, aktualisieren. 
 
 6. Aktivieren Sie die folgenden Warnungsregeln:
 
@@ -92,7 +92,7 @@ Nach dem Klicken auf **OK** werden die Konfigurationsoptionen überprüft, und d
 
 ## <a name="create-alerts"></a>Erstellen von Warnungen
 
-„VMs außerhalb der Geschäftszeiten starten/beenden“ umfasst keinen vordefinierten Satz von Warnungen. Informationen zum Erstellen von Warnungen bei fehlgeschlagenen Aufträgen zur Unterstützung Ihrer DevOps oder Betriebsprozesse und -verfahren finden Sie unter [Erstellen von Protokollwarnungen mit Azure Monitor](../azure-monitor/platform/alerts-log.md).
+„VMs außerhalb der Geschäftszeiten starten/beenden“ umfasst keinen vordefinierten Satz von Warnungen. Informationen zum Erstellen von Warnungen bei fehlgeschlagenen Aufträgen zur Unterstützung Ihrer DevOps oder Betriebsprozesse und -verfahren finden Sie unter [Erstellen von Protokollwarnungen mit Azure Monitor](../azure-monitor/alerts/alerts-log.md).
 
 ## <a name="deploy-the-feature"></a>Bereitstellen der Funktion
 

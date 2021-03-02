@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 8dcc6dd355e0c89aa4120a6cc7f331159d56c1bc
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 0b6096f980234c09bf1c2da2b4621b8ed66b495d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742181"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578167"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-classic-using-powershell"></a>Aktivieren der Diagnose mithilfe von PowerShell in Azure Cloud Services (klassisch)
 
@@ -134,5 +134,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Anleitungen zur Verwendung von Azure-Diagnose und anderen Techniken zur Problembehandlung finden Sie unter [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](cloud-services-dotnet-diagnostics.md).
-* Das [Diagnosekonfigurationsschema](../azure-monitor/platform/diagnostics-extension-schema-windows.md) erläutert die verschiedenen Optionen der XML-Konfigurationen für die Diagnoseerweiterung.
+* Das [Diagnosekonfigurationsschema](../azure-monitor/agents/diagnostics-extension-schema-windows.md) erläutert die verschiedenen Optionen der XML-Konfigurationen für die Diagnoseerweiterung.
 * Weitere Informationen zum Aktivieren der Diagnoseerweiterung für virtuelle Computer finden Sie unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure-Ressourcen-Manager-Vorlagen](../virtual-machines/extensions/diagnostics-template.md)

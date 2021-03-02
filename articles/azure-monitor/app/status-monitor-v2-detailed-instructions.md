@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: a8a27a782d5e05b5febda659009284c22d3608c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a955273c01d8c0d865aabd91bb1bfcce70fd373
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318979"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587377"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights-Agent (ehemals „Statusmonitor v2“): Ausführliche Anleitungen
 
@@ -231,9 +231,9 @@ Lesen Sie die [API-Referenz](./status-monitor-v2-api-reference.md#enable-applica
 
  Anzeigen der Telemetrie:
 
-- [Untersuchen Sie Metriken](../platform/metrics-charts.md) zum Überwachen der Leistung und Nutzung.
+- [Untersuchen Sie Metriken](../essentials/metrics-charts.md) zum Überwachen der Leistung und Nutzung.
 - [Durchsuchen Sie Ereignisse und Protokolle](./diagnostic-search.md), um Probleme zu diagnostizieren.
-- Verwenden Sie [Analytics](../log-query/log-query-overview.md) für erweiterte Abfragen.
+- Verwenden Sie [Analytics](../logs/log-query-overview.md) für erweiterte Abfragen.
 - [Erstellen Sie Dashboards](./overview-dashboard.md).
 
  Hinzufügen weiterer Telemetrieelemente:

@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: c5dd09292897d69f90606e8661b4e6cb28090612
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 04a30a2446061df75d133bdbd088b7e71c59cade
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742589"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578222"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Probleme mit der Konfiguration und Verwaltung für Azure Cloud Services (klassisch): Häufig gestellte Fragen (FAQs)
 
@@ -240,9 +240,9 @@ Die automatische Skalierung auf Grundlage von Speichermetriken für Cloud Servic
 
 Um dieses Problem zu umgehen, können Sie Application Insights verwenden. Die automatische Skalierung unterstützt Application Insights als Quelle für Metriken und kann die Anzahl der Rolleninstanzen anhand einer Gastmetrik wie „Speicher“ skalieren.  Sie müssen Application Insights in der Paketdatei Ihres Clouddienstprojekts (*.cspkg) konfigurieren und die Azure-Diagnoseerweiterung für den Dienst aktivieren, um dieses Feature zu implementieren.
 
-Weitere Informationen dazu, wie Sie über Application Insights eine benutzerdefinierte Metrik verwenden, um die automatische Skalierung für Cloud Services zu konfigurieren, finden Sie unter [Erste Schritte mit der automatischen Skalierung durch eine benutzerdefinierte Metrik in Azure](../azure-monitor/platform/autoscale-custom-metric.md).
+Weitere Informationen dazu, wie Sie über Application Insights eine benutzerdefinierte Metrik verwenden, um die automatische Skalierung für Cloud Services zu konfigurieren, finden Sie unter [Erste Schritte mit der automatischen Skalierung durch eine benutzerdefinierte Metrik in Azure](../azure-monitor/autoscale/autoscale-custom-metric.md).
 
-Weitere Informationen zur Integration der Azure-Diagnose in Application Insights für Cloud Services finden Sie unter [Senden von Cloud Services-, Virtual Machines- oder Service Fabric-Diagnosedaten an Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
+Weitere Informationen zur Integration der Azure-Diagnose in Application Insights für Cloud Services finden Sie unter [Senden von Cloud Services-, Virtual Machines- oder Service Fabric-Diagnosedaten an Application Insights](../azure-monitor/agents/diagnostics-extension-to-application-insights.md).
 
 Weitere Informationen dazu, wie Sie Application Insights für Cloud Services aktivieren, finden Sie unter [Application Insights für Azure Cloud Services](../azure-monitor/app/cloudservices.md).
 

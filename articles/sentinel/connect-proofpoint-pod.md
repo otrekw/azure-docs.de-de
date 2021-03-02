@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: bdc9cbf942b88af93befa34f73eb3a90469cfcef
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 73a9d9c7ab321aebd615922e5d4395c0318e809c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98873500"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580451"
 ---
 # <a name="connect-your-proofpoint-on-demand-email-security-pod-solution-to-azure-sentinel"></a>Verknüpfen der Proofpoint On Demand Email Security-Lösung (POD) mit Azure Sentinel
 
@@ -35,7 +35,7 @@ In diesem Artikel wird erläutert, wie Sie Ihre Proofpoint On Demand Email Secur
 
 - Sie benötigen Lese- und Schreibberechtigungen für den Azure Sentinel-Arbeitsbereich.
 
-- Sie müssen über Leseberechtigungen für freigegebene Schlüssel für den Arbeitsbereich verfügen. [Weitere Informationen zu Arbeitsbereichsschlüsseln](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)
+- Sie müssen über Leseberechtigungen für freigegebene Schlüssel für den Arbeitsbereich verfügen. [Weitere Informationen zu Arbeitsbereichsschlüsseln](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)
 
 - Sie müssen über Lese- und Schreibberechtigungen für Azure Functions verfügen, um eine Funktions-App erstellen zu können. [Informieren Sie sich ausführlicher über Azure Functions](../azure-functions/index.yml).
 

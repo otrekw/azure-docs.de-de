@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af9921510ba11ab1bd7d0664b2c4c19e042864d3
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 1a7f0d937d41ee42bf0fe678eb2f49e78882f881
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746642"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577859"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archivieren von Protokollen und Erstellen von Berichten mit Azure Monitor in der Azure AD-Berechtigungsverwaltung
 
@@ -59,7 +59,7 @@ Zum Archivieren von Azure AD-Überwachungsprotokollen müssen Sie über Azure Mo
 
 ## <a name="view-events-for-an-access-package"></a>Anzeigen von Ereignissen für ein Zugriffspaket  
 
-Um Ereignisse für ein Zugriffspaket anzuzeigen, benötigen Sie Zugriff auf den zugrunde liegenden Azure Monitor-Arbeitsbereich (siehe [Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions)) und eine der folgenden Rollen: 
+Um Ereignisse für ein Zugriffspaket anzuzeigen, benötigen Sie Zugriff auf den zugrunde liegenden Azure Monitor-Arbeitsbereich (siehe [Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor](../../azure-monitor/logs/manage-access.md#manage-access-using-azure-permissions)) und eine der folgenden Rollen: 
 
 - Globaler Administrator  
 - Sicherheitsadministrator  
@@ -189,4 +189,4 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte:
-- [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md)
+- [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../../azure-monitor/visualize/workbooks-overview.md)

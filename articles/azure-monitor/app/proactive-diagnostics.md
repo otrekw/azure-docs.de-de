@@ -3,12 +3,12 @@ title: Intelligente Erkennung in Azure Application Insights | Microsoft Docs
 description: Application Insights führt eine automatische umfassende Analyse Ihrer App-Telemetrie durch und warnt Sie vor potenziellen Problemen.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 2b6e9370387bf3bb87555261b3949db2917e9911
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 974795e853416ff7a4c051530b050fc663c9423d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186251"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585659"
 ---
 # <a name="smart-detection-in-application-insights"></a>Intelligente Erkennung in Application Insights
  Die intelligente Erkennung warnt Sie automatisch vor potenziellen Leistungsproblemen und Fehleranomalien in Ihrer Webanwendung. Sie führt eine proaktive Analyse der Telemetriedaten durch, die Ihre App an [Application Insights](./app-insights-overview.md) sendet. Bei einem plötzlichen Anstieg der Fehlerraten oder bei ungewöhnlichen Mustern in der Client- oder Serverleistung erhalten Sie eine Warnung. Diese Funktion muss nicht konfiguriert werden. Sie wird ausgeführt, wenn Ihre Anwendung genügend Telemetriedaten sendet.
@@ -53,11 +53,11 @@ Alternativ können Sie die Konfiguration mithilfe von Azure Resource Manager-Vor
 ## <a name="next-steps"></a>Nächste Schritte
 Mit den folgenden Diagnosetools können Sie die Telemetrie Ihrer App untersuchen:
 
-* [Metrik-Explorer](../platform/metrics-charts.md)
+* [Metrik-Explorer](../essentials/metrics-charts.md)
 * [Suchexplorer](./diagnostic-search.md)
-* [Analytics: Leistungsfähige Abfragesprache](../log-query/log-analytics-tutorial.md)
+* [Analytics: Leistungsfähige Abfragesprache](../logs/log-analytics-tutorial.md)
 
 Die intelligente Erkennungen erfolgt vollkommen automatisch. Vielleicht möchten Sie aber weitere Warnungen einrichten?
 
-* [Einrichten von Warnungen in Application Insights](../platform/alerts-log.md)
+* [Einrichten von Warnungen in Application Insights](../alerts/alerts-log.md)
 * [Verfügbarkeitswebtests](./monitor-web-app-availability.md)

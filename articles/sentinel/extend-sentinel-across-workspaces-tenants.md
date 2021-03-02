@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 9cbafa2a87db9aa59769ac759da9b56a6463874a
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 49b267d36fb6c365cf2125912c0d27fe7d669474
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100006682"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585277"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten
 
@@ -35,7 +35,7 @@ Sie können die Vorteile von Azure Sentinel in vollem Umfang nutzen, wenn Sie ei
 | Datenbesitz | Die Grenzen des Datenbesitzes, z. B. nach Tochtergesellschaften oder Partnerunternehmen, lassen sich durch separate Arbeitsbereiche besser nachvollziehen. |  |
 | Mehrere Azure-Mandanten | Azure Sentinel unterstützt die Datenerfassung von Microsoft- und Azure-SaaS-Ressourcen nur innerhalb einer eigenen Azure Active Directory-Mandantenbegrenzung (Azure AD). Daher wird für jeden Azure AD-Mandanten ein separater Arbeitsbereich benötigt. |  |
 | Differenzierte Steuerung des Datenzugriffs | Es kann vorkommen, dass eine Organisation verschiedenen internen oder externen Gruppen Zugriff auf einen Teil der von Azure Sentinel gesammelten Daten gewähren muss. Beispiel:<br><ul><li>Zugriff von Ressourcenbesitzern auf Daten, die sich auf ihre Ressourcen beziehen</li><li>Zugriff regionaler oder untergeordneter SOCs auf Daten, die für den jeweiligen Zuständigkeitsbereich relevant sind</li></ul> | Verwenden Sie [Azure RBAC für Ressourcen](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) oder [Azure RBAC auf Tabellenebene](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) |
-| Differenzierte Einstellungen für die Datenaufbewahrung | Die einzige Möglichkeit, unterschiedliche Aufbewahrungsfristen für verschiedene Datentypen festzulegen, bestand in der Vergangenheit in der Einrichtung mehrerer Arbeitsbereiche. Durch die Einführung von Aufbewahrungseinstellungen auf Tabellenebene ist dies in vielen Fällen nicht mehr erforderlich. | [Aufbewahrungseinstellungen auf Tabellenebene](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) verwenden oder [Datenlöschung](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) automatisieren |
+| Differenzierte Einstellungen für die Datenaufbewahrung | Die einzige Möglichkeit, unterschiedliche Aufbewahrungsfristen für verschiedene Datentypen festzulegen, bestand in der Vergangenheit in der Einrichtung mehrerer Arbeitsbereiche. Durch die Einführung von Aufbewahrungseinstellungen auf Tabellenebene ist dies in vielen Fällen nicht mehr erforderlich. | [Aufbewahrungseinstellungen auf Tabellenebene](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) verwenden oder [Datenlöschung](../azure-monitor/logs/personal-data-mgmt.md#how-to-export-and-delete-private-data) automatisieren |
 | Getrennte Abrechnung | Durch die Zuordnung von Arbeitsbereichen zu separaten Abonnements können diese verschiedenen Parteien in Rechnung gestellt werden. | Nutzungsberichte und interne Verrechnung |
 | Legacy-Architektur | Die Verwendung mehrerer Arbeitsbereiche kann auf einen historischen Designansatz zurückzuführen sein, durch den Einschränkungen oder bewährte Methoden berücksichtigt wurden, die heute nicht mehr gültig sind. Es kann sich aber auch um eine zufällige Designentscheidung handeln, die korrigiert werden kann, um Azure Sentinel besser zu unterstützen.<br><br>Beispiele:<br><ul><li>Verwenden eines abonnementbasierten Standardarbeitsbereichs bei der Azure Security Center-Bereitstellung</li><li>Manchmal unverzichtbar: differenzierte Zugriffsteuerung und differenzierte Einstellungen für die Datenaufbewahrung (relativ neu)</li></ul> | Arbeitsbereiche umgestalten |
 
@@ -81,12 +81,12 @@ Azure Sentinel unterstützt eine [arbeitsbereichsübergreifende Incident-Ansicht
 
 ### <a name="cross-workspace-querying"></a>Arbeitsbereichsübergreifende Abfragen
 
-Azure Sentinel unterstützt das Abfragen [mehrerer Arbeitsbereiche in einer einzigen Abfrage](../azure-monitor/log-query/cross-workspace-query.md). So lassen sich Daten aus mehreren Arbeitsbereichen mit einer Abfrage suchen und korrelieren. 
+Azure Sentinel unterstützt das Abfragen [mehrerer Arbeitsbereiche in einer einzigen Abfrage](../azure-monitor/logs/cross-workspace-query.md). So lassen sich Daten aus mehreren Arbeitsbereichen mit einer Abfrage suchen und korrelieren. 
 
-- Um auf eine Tabelle in einem anderen Arbeitsbereich zu verweisen, verwenden Sie den [workspace()-Ausdruck](../azure-monitor/log-query/workspace-expression.md). 
+- Um auf eine Tabelle in einem anderen Arbeitsbereich zu verweisen, verwenden Sie den [workspace()-Ausdruck](../azure-monitor/logs/workspace-expression.md). 
 - Verwenden Sie den [union-Operator](/azure/data-explorer/kusto/query/unionoperator?pivots=azuremonitor) zusammen mit dem workspace()-Ausdruck, um eine Abfrage tabellenübergreifend auf mehrere Arbeitsbereiche anzuwenden.
 
-Sie können gespeicherte [Funktionen](../azure-monitor/log-query/functions.md) verwenden, um arbeitsbereichsübergreifende Abfragen zu vereinfachen. Wenn z. B. ein Verweis auf einen Arbeitsbereich lang ist, können Sie den Ausdruck `workspace("customer-A's-hard-to-remember-workspace-name").SecurityEvent` als eine Funktion mit dem Namen `SecurityEventCustomerA` speichern. Anschließend können Sie Abfragen als `SecurityEventCustomerA | where ...` schreiben.
+Sie können gespeicherte [Funktionen](../azure-monitor/logs/functions.md) verwenden, um arbeitsbereichsübergreifende Abfragen zu vereinfachen. Wenn z. B. ein Verweis auf einen Arbeitsbereich lang ist, können Sie den Ausdruck `workspace("customer-A's-hard-to-remember-workspace-name").SecurityEvent` als eine Funktion mit dem Namen `SecurityEventCustomerA` speichern. Anschließend können Sie Abfragen als `SecurityEventCustomerA | where ...` schreiben.
 
 Durch eine Funktion kann auch eine häufig verwendete Union vereinfacht werden. Beispielsweise können Sie den folgenden Ausdruck als eine Funktion mit dem Namen `unionSecurityEvent` speichern:
 

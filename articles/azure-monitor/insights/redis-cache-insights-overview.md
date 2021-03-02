@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: 35f575410caa7a8a8ffbda35bdfa876418db8945
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: fee454073c50b9542e140576ef0629a39b8f4294
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210374"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573455"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>Informationen zu Azure Monitor für Azure Cache for Redis
 
@@ -186,6 +186,6 @@ Anleitungen zur Problembehandlung finden Sie im Artikel zur [Problembehandlung f
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Konfigurieren Sie [Metrikwarnungen](../platform/alerts-metric.md) und [Dienstintegritätsbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications-portal.md), um automatisierte Warnungen einzurichten, die beim Erkennen von Problemen hilfreich sind.
+* Konfigurieren Sie [Metrikwarnungen](../alerts/alerts-metric.md) und [Dienstintegritätsbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications-portal.md), um automatisierte Warnungen einzurichten, die beim Erkennen von Problemen hilfreich sind.
 
-* Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md) über die von Arbeitsmappen unterstützten Szenarien, wie Sie Berichte erstellen und anpassen können, und vieles mehr.
+* Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../visualize/workbooks-overview.md) über die von Arbeitsmappen unterstützten Szenarien, wie Sie Berichte erstellen und anpassen können, und vieles mehr.

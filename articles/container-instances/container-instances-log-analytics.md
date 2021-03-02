@@ -3,12 +3,12 @@ title: Erfassen und Analysieren von Ressourcenprotokollen
 description: Erfahren Sie, wie Sie Ressourcenprotokolle und Ereignisdaten aus Containergruppen in Azure Container Instances an Azure Monitor-Protokolle senden können.
 ms.topic: article
 ms.date: 07/13/2020
-ms.openlocfilehash: b110ba46bdcf2741e5f16845f28fe8305bcee1a1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cfdcd1cc8e36a118c4e3c4435eaa002e4d3b1b93
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148649"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579325"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen
 
@@ -27,7 +27,7 @@ In den folgenden Abschnitten wird beschrieben, wie Sie eine Containergruppe mit 
 
 Zum Aktivieren der Protokollierung in Ihren Containerinstanzen benötigen Sie Folgendes:
 
-* [Log Analytics-Arbeitsbereich](../azure-monitor/learn/quick-create-workspace.md)
+* [Log Analytics-Arbeitsbereich](../azure-monitor/logs/quick-create-workspace.md)
 * [Azure CLI](/cli/azure/install-azure-cli) (oder [Cloud Shell](../cloud-shell/overview.md))
 
 ## <a name="get-log-analytics-credentials"></a>Abrufen der Log Analytics-Anmeldeinformationen
@@ -153,8 +153,8 @@ ContainerInstanceLog_CL
 
 Weitere Informationen zum Abfragen von Protokollen und Konfigurieren von Warnungen in Azure Monitor-Protokollen finden Sie in den folgenden Themen:
 
-* [Analysieren von Protokolldaten in Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
-* [Die neue Oberfläche „Warnungen“ in Azure Monitor](../azure-monitor/platform/alerts-overview.md)
+* [Analysieren von Protokolldaten in Azure Monitor](../azure-monitor/logs/log-query-overview.md)
+* [Die neue Oberfläche „Warnungen“ in Azure Monitor](../azure-monitor/alerts/alerts-overview.md)
 
 
 ### <a name="monitor-container-cpu-and-memory"></a>Überwachen von Container-CPU und -Arbeitsspeicher

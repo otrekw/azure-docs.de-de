@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: afe78dd00ecebdc54b6d73c4c8324729e117d95b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a02062edd1a940bcc6588ab53457e0af91fedd9a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75649594"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578274"
 ---
 # <a name="monitor-a-deployed-instance-of-a-managed-application"></a>Überwachen einer bereitgestellten Instanz einer verwalteten Anwendung
 
@@ -22,7 +22,7 @@ Nachdem Sie eine verwaltete Anwendung in Ihrem Azure-Abonnement bereitgestellt h
 
    ![Auswählen der verwalteten Anwendung](./media/monitor-managed-application-portal/select-managed-application.png)
 
-1. Wählen Sie **Ressourcenintegrität** aus.
+1. Klicken Sie auf **Ressourcenintegrität**.
 
    ![Auswählen der Ressourcenintegrität](./media/monitor-managed-application-portal/select-resource-health.png)
 
@@ -44,7 +44,7 @@ Nachdem Sie eine verwaltete Anwendung in Ihrem Azure-Abonnement bereitgestellt h
 
    ![Erstellen einer Warnung](./media/monitor-managed-application-portal/create-new-alert.png)
 
-Sie können Warnungen für Ihre verwaltete Anwendungsinstanz oder die Ressourcen in der verwalteten Anwendung erstellen. Weitere Informationen zum Erstellen von Warnungen finden Sie unter [Überblick über Warnungen in Microsoft Azure](../../azure-monitor/platform/alerts-overview.md).
+Sie können Warnungen für Ihre verwaltete Anwendungsinstanz oder die Ressourcen in der verwalteten Anwendung erstellen. Weitere Informationen zum Erstellen von Warnungen finden Sie unter [Überblick über Warnungen in Microsoft Azure](../../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

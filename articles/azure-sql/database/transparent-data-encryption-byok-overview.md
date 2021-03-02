@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/01/2021
-ms.openlocfilehash: 74c0dbaaa511e2fd2f20a3c245a561a177dd2b9a
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 62bdafd2dba31d875b0befccca0fb4a0e94f4e79
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223439"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582816"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption mithilfe eines kundenseitig verwalteten Schlüssels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -164,7 +164,7 @@ Konfigurieren Sie die folgenden Azure-Features, um den Datenbankzustand zu über
 
 - [Azure Resource Health](../../service-health/resource-health-overview.md): Eine Datenbank, auf die nicht zugegriffen werden kann und die den Zugriff auf die TDE-Schutzvorrichtung verloren hat, wird als „Nicht verfügbar“ angezeigt, nachdem die erste Verbindung mit der Datenbank verweigert wurde.
 - [Aktivitätsprotokoll](../../service-health/alerts-activity-log-service-notifications-portal.md): Ist der Zugriff auf die TDE-Schutzvorrichtung im vom Kunden verwalteten Schlüsseltresor nicht möglich, werden dem Aktivitätsprotokoll entsprechende Einträge hinzugefügt.  Durch die Erstellung von Warnungen für diese Ereignisse können Sie den Zugriff schnellstmöglich wiederherstellen.
-- [Aktionsgruppen](../../azure-monitor/platform/action-groups.md) können definiert werden, um Benachrichtigungen und Warnungen gemäß Ihren Präferenzen zu senden – also etwa per E-Mail/SMS/Pushbenachrichtigung/Sprachnachricht, per Logik-App, per Webhook, per ITSM oder per Automation-Runbook.
+- [Aktionsgruppen](../../azure-monitor/alerts/action-groups.md) können definiert werden, um Benachrichtigungen und Warnungen gemäß Ihren Präferenzen zu senden – also etwa per E-Mail/SMS/Pushbenachrichtigung/Sprachnachricht, per Logik-App, per Webhook, per ITSM oder per Automation-Runbook.
 
 ## <a name="database-backup-and-restore-with-customer-managed-tde"></a>Datenbanksicherung und -wiederherstellung mit der kundenseitig verwalteten TDE
 

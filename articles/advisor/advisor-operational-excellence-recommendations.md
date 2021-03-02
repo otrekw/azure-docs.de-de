@@ -3,12 +3,12 @@ title: Verbessern des optimalen Betriebs mit Advisor
 description: Verwenden Sie Azure Advisor, um den optimalen Betrieb für Ihre Azure-Abonnements zu verbessern und weiterzuentwickeln.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 63e88129a7418e82ea13429c33d8735e96616476
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 0b938a0c7a42182bb8d2a50b48d65a0844d952a6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122618"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579952"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Sicherstellen des optimalen Betriebs mit Azure Advisor
 
@@ -38,7 +38,7 @@ Wenn Ihr Pool eine veraltete interne Komponente verwendet, löschen Sie den Pool
 
 ## <a name="repair-invalid-log-alert-rules"></a>Reparieren ungültiger Protokollwarnungsregeln
 
-Azure Advisor erkennt Warnungsregeln mit ungültigen Abfragen im Bedingungsabschnitt. Sie können in Azure Monitor Protokollwarnungsregeln erstellen und diese zum Ausführen von Analyseabfragen in bestimmten Intervallen verwenden. Anhand der Ergebnisse der Abfrage wird ermittelt, ob eine Warnung ausgelöst werden muss. Es kann vorkommen, dass Analytics-Abfragen aufgrund von Änderungen an referenzierten Ressourcen, Tabellen oder Befehlen im Laufe der Zeit ungültig werden. Von Advisor wird empfohlen, die Abfrage in der Warnungsregel zu korrigieren, um eine automatische Deaktivierung zu verhindern und die Überwachung Ihrer Ressourcen in Azure sicherzustellen. [Weitere Informationen zur Behandlung von Problemen mit Warnungsregeln](../azure-monitor/platform/alerts-troubleshoot-log.md).
+Azure Advisor erkennt Warnungsregeln mit ungültigen Abfragen im Bedingungsabschnitt. Sie können in Azure Monitor Protokollwarnungsregeln erstellen und diese zum Ausführen von Analyseabfragen in bestimmten Intervallen verwenden. Anhand der Ergebnisse der Abfrage wird ermittelt, ob eine Warnung ausgelöst werden muss. Es kann vorkommen, dass Analytics-Abfragen aufgrund von Änderungen an referenzierten Ressourcen, Tabellen oder Befehlen im Laufe der Zeit ungültig werden. Von Advisor wird empfohlen, die Abfrage in der Warnungsregel zu korrigieren, um eine automatische Deaktivierung zu verhindern und die Überwachung Ihrer Ressourcen in Azure sicherzustellen. [Weitere Informationen zur Behandlung von Problemen mit Warnungsregeln](../azure-monitor/alerts/alerts-troubleshoot-log.md).
 
 ## <a name="use-azure-policy-recommendations"></a>Verwenden von Azure Policy-Empfehlungen
 
@@ -50,9 +50,9 @@ Azure Policy ist ein Dienst in Azure, mit dem Sie Richtlinien erstellen, zuweise
 
 **Angeben von zulässigen VM-SKUs für Bereitstellungen.** Über diese Richtlinie können Sie einen Satz von SKUs für virtuelle Computer angeben, die Ihre Organisation bereitstellen kann.
 
-**Erzwingen Sie *Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden* .**
+**Erzwingen Sie *Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden*.**
 
-**Aktivieren Sie *Tag von der Ressourcengruppe erben* .** Diese Richtlinie dient zum Hinzufügen oder Ersetzen des angegebenen Tags aus der übergeordneten Ressourcengruppe und des zugehörigen Werts, wenn eine Ressource erstellt oder aktualisiert wird. Vorhandene Ressourcen können durch Auslösen eines Wartungstasks gewartet werden.
+**Aktivieren Sie *Tag von der Ressourcengruppe erben*.** Diese Richtlinie dient zum Hinzufügen oder Ersetzen des angegebenen Tags aus der übergeordneten Ressourcengruppe und des zugehörigen Werts, wenn eine Ressource erstellt oder aktualisiert wird. Vorhandene Ressourcen können durch Auslösen eines Wartungstasks gewartet werden.
 
 Advisor empfiehlt ein paar einzelne Azure-Richtlinien, die Kunden dabei helfen, einen optimalen Betrieb durch Umsetzung bewährter Methoden zu erzielen. Wenn ein Kunde beschließt, eine empfohlene Richtlinie zuzuweisen, wird die Empfehlung unterdrückt. Wenn sich der Kunde entscheidet, die Richtlinie zu einem späteren Zeitpunkt zu entfernen, wird die Empfehlung weiterhin von Advisor unterdrückt, da wir die Entfernung als sicheres Signal für folgende Absichten interpretieren:
 

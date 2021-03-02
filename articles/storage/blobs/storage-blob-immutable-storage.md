@@ -9,12 +9,12 @@ ms.date: 02/01/2021
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 9654ff6eab53acfe3e656afdcacd758c548232ba
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: ad660ee69bb568e1a76d59344cf31fbf044aaae9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979135"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581430"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher
 
@@ -46,7 +46,7 @@ Unveränderlicher Speicher unterstützt folgende Features:
 
 - **Konfiguration auf Containerebene**: Benutzer können zeitbasierte Aufbewahrungsrichtlinien und Tags für gesetzliche Aufbewahrungspflichten auf Containerebene konfigurieren. Mit den Einstellungen auf Containerebene können Benutzer zeitbasierte Aufbewahrungsrichtlinien erstellen und sperren, Aufbewahrungszeiträume verlängern, Zeiträume für gesetzliche Aufbewahrungspflichten festlegen und aufheben usw. Diese Richtlinien gelten für alle Blobs im Container (vorhandene und neue).
 
-- **Unterstützung der Überwachungsprotokollierung**: Jeder Container enthält ein Richtlinien-Überwachungsprotokoll. Es enthält bis zu sieben zeitbasierte Aufbewahrungsbefehle für gesperrte zeitbasierte Aufbewahrungsrichtlinien sowie die Benutzer-ID, den Befehlstyp, Zeitstempel und den Aufbewahrungszeitraum. Für Zeiträume zur gesetzlichen Aufbewahrungspflicht enthält das Protokoll Benutzer-ID, Befehlstyp, Zeitstempel und die entsprechenden Tags. Dieses Protokoll wird für die Lebensdauer der Richtlinie gemäß den SEC 17a-4(f)-Bestimmungsrichtlinien aufbewahrt. Im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/platform-logs-overview.md) werden umfassendere Protokolldaten mit allen Aktivitäten auf Steuerungsebene angezeigt. Wenn Sie [Azure-Ressourcenprotokolle](../../azure-monitor/platform/platform-logs-overview.md) aktivieren, werden dagegen nur Vorgänge auf Datenebene aufbewahrt und angezeigt. Der Benutzer ist für die dauerhafte Speicherung dieser Protokolle verantwortlich, die aus gesetzlichen oder anderen Gründen ggf. erforderlich ist.
+- **Unterstützung der Überwachungsprotokollierung**: Jeder Container enthält ein Richtlinien-Überwachungsprotokoll. Es enthält bis zu sieben zeitbasierte Aufbewahrungsbefehle für gesperrte zeitbasierte Aufbewahrungsrichtlinien sowie die Benutzer-ID, den Befehlstyp, Zeitstempel und den Aufbewahrungszeitraum. Für Zeiträume zur gesetzlichen Aufbewahrungspflicht enthält das Protokoll Benutzer-ID, Befehlstyp, Zeitstempel und die entsprechenden Tags. Dieses Protokoll wird für die Lebensdauer der Richtlinie gemäß den SEC 17a-4(f)-Bestimmungsrichtlinien aufbewahrt. Im [Azure-Aktivitätsprotokoll](../../azure-monitor/essentials/platform-logs-overview.md) werden umfassendere Protokolldaten mit allen Aktivitäten auf Steuerungsebene angezeigt. Wenn Sie [Azure-Ressourcenprotokolle](../../azure-monitor/essentials/platform-logs-overview.md) aktivieren, werden dagegen nur Vorgänge auf Datenebene aufbewahrt und angezeigt. Der Benutzer ist für die dauerhafte Speicherung dieser Protokolle verantwortlich, die aus gesetzlichen oder anderen Gründen ggf. erforderlich ist.
 
 ## <a name="how-it-works"></a>Funktionsweise
 

@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 03814766d7bc873855df261a50a40b8d342fa69b
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: add2bbb7b8f9eeb72c8c58b8c54b070a6b14d8e6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054245"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586071"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Verwenden einer Warnung zum Auslösen eines Azure Automation-Runbooks
 
-Sie können [Azure Monitor](../azure-monitor/overview.md) verwenden, um in Azure grundlegende Metriken und Protokolle für die meisten Dienste zu überwachen. Sie können Azure Automation-Runbooks aufrufen, indem Sie [Aktionsgruppen](../azure-monitor/platform/action-groups.md) oder klassische Warnungen verwenden, um Aufgaben basierend auf Warnungen zu automatisieren. In diesem Artikel erfahren Sie, wie Sie ein Runbook mit Warnungen konfigurieren und ausführen.
+Sie können [Azure Monitor](../azure-monitor/overview.md) verwenden, um in Azure grundlegende Metriken und Protokolle für die meisten Dienste zu überwachen. Sie können Azure Automation-Runbooks aufrufen, indem Sie [Aktionsgruppen](../azure-monitor/alerts/action-groups.md) oder klassische Warnungen verwenden, um Aufgaben basierend auf Warnungen zu automatisieren. In diesem Artikel erfahren Sie, wie Sie ein Runbook mit Warnungen konfigurieren und ausführen.
 
 ## <a name="alert-types"></a>Warnungstypen
 
@@ -25,15 +25,15 @@ Sie können Automation-Runbooks mit drei Warnungstypen verwenden:
 * Metrikwarnungen nahezu in Echtzeit
 
 > [!NOTE]
-> Mit dem allgemeinen Warnungsschema wird die Benutzeroberfläche für Warnungsbenachrichtigungen in Azure standardisiert. Bisher wurden für die Warnungstypen von Azure (Metrik, Protokoll und Aktivitätsprotokoll) eigene E-Mail-Vorlagen, Webhookschemas usw. verwendet. Weitere Informationen finden Sie unter [Allgemeines Warnungsschema](../azure-monitor/platform/alerts-common-schema.md).
+> Mit dem allgemeinen Warnungsschema wird die Benutzeroberfläche für Warnungsbenachrichtigungen in Azure standardisiert. Bisher wurden für die Warnungstypen von Azure (Metrik, Protokoll und Aktivitätsprotokoll) eigene E-Mail-Vorlagen, Webhookschemas usw. verwendet. Weitere Informationen finden Sie unter [Allgemeines Warnungsschema](../azure-monitor/alerts/alerts-common-schema.md).
 
 Wenn eine Warnung ein Runbook aufruft, erfolgt der eigentliche Aufruf in Form einer HTTP POST-Anforderung an den Webhook. Der Text der POST-Anforderung enthält ein JSON-formatiertes Objekt, das nützliche Eigenschaften im Zusammenhang mit der Warnung enthält. In der folgenden Tabelle sind Links zu den Nutzlastschemas der einzelnen Warnungstypen angegeben:
 
 |Warnung  |BESCHREIBUNG|Nutzlast und Schema  |
 |---------|---------|---------|
-|[Allgemeines Warnungsschema](../azure-monitor/platform/alerts-common-schema.md)|Mit dem allgemeinen Warnungsschema wird die Benutzeroberfläche für Warnungsbenachrichtigungen in Azure standardisiert.|Nutzlastschema von allgemeinen Warnungen|
-|[Aktivitätsprotokollwarnung](../azure-monitor/platform/activity-log-alerts.md)    |Sendet eine Benachrichtigung, wenn ein beliebiges neues Ereignis im Azure-Aktivitätsprotokoll bestimmte Bedingungen erfüllt. Beispiel: Wenn ein `Delete VM`-Vorgang in **myProductionResourceGroup** auftritt oder wenn ein neues Azure Service Health-Ereignis mit dem Status „Aktiv“ angezeigt wird.| [Nutzlastschema vom Typ „Aktivitätsprotokollwarnung“](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[Near Real-Time Metric Alerts](../azure-monitor/platform/alerts-metric-near-real-time.md)    |Sendet eine Benachrichtigung schneller als Metrikwarnungen, wenn mindestens eine Metrik auf Plattformebene bestimmte Bedingungen erfüllt. Beispiel: Wenn der Wert für **CPU in %** auf einer VM größer als „90“ ist und der Wert für **Netzwerk eingehend** in den letzten fünf Minuten über „500 MB“ gelegen hat.| [Nutzlastschema vom Typ „Near Real-Time Metric Alert“](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
+|[Allgemeines Warnungsschema](../azure-monitor/alerts/alerts-common-schema.md)|Mit dem allgemeinen Warnungsschema wird die Benutzeroberfläche für Warnungsbenachrichtigungen in Azure standardisiert.|Nutzlastschema von allgemeinen Warnungen|
+|[Aktivitätsprotokollwarnung](../azure-monitor/alerts/activity-log-alerts.md)    |Sendet eine Benachrichtigung, wenn ein beliebiges neues Ereignis im Azure-Aktivitätsprotokoll bestimmte Bedingungen erfüllt. Beispiel: Wenn ein `Delete VM`-Vorgang in **myProductionResourceGroup** auftritt oder wenn ein neues Azure Service Health-Ereignis mit dem Status „Aktiv“ angezeigt wird.| [Nutzlastschema vom Typ „Aktivitätsprotokollwarnung“](../azure-monitor/alerts/activity-log-alerts-webhook.md)        |
+|[Near Real-Time Metric Alerts](../azure-monitor/alerts/alerts-metric-near-real-time.md)    |Sendet eine Benachrichtigung schneller als Metrikwarnungen, wenn mindestens eine Metrik auf Plattformebene bestimmte Bedingungen erfüllt. Beispiel: Wenn der Wert für **CPU in %** auf einer VM größer als „90“ ist und der Wert für **Netzwerk eingehend** in den letzten fünf Minuten über „500 MB“ gelegen hat.| [Nutzlastschema vom Typ „Near Real-Time Metric Alert“](../azure-monitor/alerts/alerts-webhooks.md#payload-schema)          |
 
 Da sich die Daten unterscheiden, die von den einzelnen Typen von Warnungen bereitgestellt werden, wird jeder Warnungstyp anders behandelt. Im nächsten Abschnitt erfahren Sie, wie Sie ein Runbook erstellen, um verschiedene Warnungstypen zu behandeln.
 
@@ -185,7 +185,7 @@ Warnungen verwenden Aktionsgruppen, die Sammlungen von Aktionen sind, die von de
 
     ![Seite „Aktionsgruppe hinzufügen“](./media/automation-create-alert-triggered-runbook/add-action-group.png)
 
-    Sie können diese Aktionsgruppe in den [Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts.md) und [Near Real-Time Alerts](../azure-monitor/platform/alerts-overview.md) verwenden, die Sie erstellen.
+    Sie können diese Aktionsgruppe in den [Aktivitätsprotokollwarnungen](../azure-monitor/alerts/activity-log-alerts.md) und [Near Real-Time Alerts](../azure-monitor/alerts/alerts-overview.md) verwenden, die Sie erstellen.
 
 1. Fügen Sie unter **Warnungsdetails** einen Warnungsregelnamen und eine Beschreibung hinzu, und klicken Sie auf **Warnungsregel erstellen**.
 
@@ -193,6 +193,6 @@ Warnungen verwenden Aktionsgruppen, die Sammlungen von Aktionen sind, die von de
 
 * Informationen zum Starten eines Runbooks mithilfe eines Webhook finden Sie unter [Starten eines Runbooks mit einem Webhook](automation-webhooks.md).
 * Informationen zu verschiedenen Methoden zum Starten eines Runbooks finden Sie unter [Starten eines Runbooks](./start-runbooks.md).
-* Informationen zum Erstellen von Aktivitätsprotokollwarnungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts.md).
-* Informationen zum Erstellen von Near Real-Time Alerts finden Sie unter [Erstellen einer Warnungsregel im Azure-Portal](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json).
+* Informationen zum Erstellen von Aktivitätsprotokollwarnungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen](../azure-monitor/alerts/activity-log-alerts.md).
+* Informationen zum Erstellen von Near Real-Time Alerts finden Sie unter [Erstellen einer Warnungsregel im Azure-Portal](../azure-monitor/alerts/alerts-metric.md?toc=/azure/azure-monitor/toc.json).
 * Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation).

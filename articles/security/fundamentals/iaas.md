@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9b9a83cf71dfa7658c34c3c98f8d12a056adad0c
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e7e8d51b8227acd033c95583d6e61d78a56d62a3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698783"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590271"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 Dieser Artikel beschreibt bewährte Best Practices für die Sicherheit von virtuellen Computern und Betriebssystemen.
@@ -130,17 +130,17 @@ Den Sicherheitsstatus Ihrer [virtuellen Windows-Computer](../../security-center/
 
 Security Center kann aktiv nach Bedrohungen suchen, und potenzielle Bedrohungen werden in Sicherheitswarnungen angezeigt. Korrelierte Bedrohungen werden in einer zentralen Ansicht namens „Sicherheitsvorfall“ aggregiert.
 
-Security Center speichert Daten in [Azure Monitor-Protokolle](../../azure-monitor/log-query/log-query-overview.md). Azure Monitor-Protokolle bietet eine Abfragesprache und eine Analyseengine, die Ihnen Einblicke in den Betrieb Ihrer Anwendungen und Ressourcen gibt. Zudem werden Daten aus [Azure Monitor](../../batch/monitoring-overview.md), Verwaltungslösungen und auf den virtuellen Computern in der Cloud oder lokal installierten Agents gesammelt. Dadurch erhalten Sie ein vollständiges Bild von Ihrer gesamten Umgebung.
+Security Center speichert Daten in [Azure Monitor-Protokolle](../../azure-monitor/logs/log-query-overview.md). Azure Monitor-Protokolle bietet eine Abfragesprache und eine Analyseengine, die Ihnen Einblicke in den Betrieb Ihrer Anwendungen und Ressourcen gibt. Zudem werden Daten aus [Azure Monitor](../../batch/monitoring-overview.md), Verwaltungslösungen und auf den virtuellen Computern in der Cloud oder lokal installierten Agents gesammelt. Dadurch erhalten Sie ein vollständiges Bild von Ihrer gesamten Umgebung.
 
 Organisationen, die für ihre virtuellen Computer kein hohes Maß an Sicherheit erzwingen, bleiben potenzielle Vorfälle, bei denen nicht autorisierte Benutzer versuchen, die Sicherheitskontrollen zu umgehen, verborgen.
 
 ## <a name="monitor-vm-performance"></a>Überwachen der Leistung virtueller Computer
 Ressourcenmissbrauch kann problematisch sein, wenn Prozesse von virtuellen Computern mehr Ressourcen beanspruchen als sie sollten. Leistungsprobleme bei einem virtuellen Computer können zu einer Dienstunterbrechung führen und gegen das Sicherheitsprinzip der Verfügbarkeit verstoßen. Dies ist besonders wichtig für virtuelle Computer, die IIS oder andere Webserver hosten, da hohe CPU-Auslastung oder Arbeitsspeichernutzung auf einen DoS-Angriff (Denial of Service) hinweisen. Der Zugriff auf virtuelle Computer muss nicht nur reaktiv – also wenn bereits ein Problem auftritt – sondern auch proaktiv anhand einer im Normalbetrieb ermittelten Baseline überwacht werden.
 
-Sie sollten sich mit [Azure Monitor](../../azure-monitor/platform/data-platform.md) Einblick in den Zustand Ihrer Ressourcen verschaffen. Azure Monitor umfasst:
+Sie sollten sich mit [Azure Monitor](../../azure-monitor/data-platform.md) Einblick in den Zustand Ihrer Ressourcen verschaffen. Azure Monitor umfasst:
 
-- [Protokolldateien zur Ressourcendiagnose](../../azure-monitor/platform/platform-logs-overview.md): Ihre VM-Ressourcen werden überwacht und potenzielle Probleme erkannt, die unter Umständen Leistung und Verfügbarkeit beeinträchtigen.
-- [Azure-Diagnoseerweiterung](../../azure-monitor/platform/diagnostics-extension-overview.md): Stellt Überwachungs- und Diagnosefunktionen auf virtuellen Windows-Computern bereit. Diese Funktionen können Sie aktivieren, indem Sie die Erweiterung in die [Azure Resource Manager-Vorlage](../../virtual-machines/extensions/diagnostics-template.md) einbeziehen.
+- [Protokolldateien zur Ressourcendiagnose](../../azure-monitor/essentials/platform-logs-overview.md): Ihre VM-Ressourcen werden überwacht und potenzielle Probleme erkannt, die unter Umständen Leistung und Verfügbarkeit beeinträchtigen.
+- [Azure-Diagnoseerweiterung](../../azure-monitor/agents/diagnostics-extension-overview.md): Stellt Überwachungs- und Diagnosefunktionen auf virtuellen Windows-Computern bereit. Diese Funktionen können Sie aktivieren, indem Sie die Erweiterung in die [Azure Resource Manager-Vorlage](../../virtual-machines/extensions/diagnostics-template.md) einbeziehen.
 
 Organisationen, die die Leistung virtueller Computer nicht überwachen, können nicht ermitteln, ob bestimmte Veränderungen bei Leistungsmustern normal sind. Wenn ein virtueller Computer mehr Ressourcen beansprucht als normal, kann dies auf einen Angriff über eine externe Ressource oder die Ausführung eines kompromittierten Prozesses auf diesem virtuellen Computer hindeuten.
 

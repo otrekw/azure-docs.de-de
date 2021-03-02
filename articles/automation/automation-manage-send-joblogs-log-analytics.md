@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2e7e798967541748b5572994d48cb5bdf7474cb1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4199c5576662eee1dd6cedc388440a71e21f8b74
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182868"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581218"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Weiterleiten von Azure Automation-Auftragsdaten an Azure Monitor-Protokolle
 
@@ -72,7 +72,7 @@ Automatisierungsdiagnoseeinstellungen unterstützen die Weiterleitung der folgen
 * DSCNodeStatus
 * Metriken: Aufträge gesamt, Updateausführungen von Bereitstellungscomputern gesamt, Updatebereitstellungsausführungen gesamt
 
-Um mit dem Senden Ihrer Automatisierungsprotokolle an Azure Monitor-Protokolle zu beginnen, lesen Sie [Erstellen von Diagnoseeinstellungen](../azure-monitor/platform/diagnostic-settings.md), um die Funktion und Methoden zu verstehen, die zur Konfiguration von Diagnoseeinstellungen zum Senden von Plattformprotokollen zur Verfügung stehen.
+Um mit dem Senden Ihrer Automatisierungsprotokolle an Azure Monitor-Protokolle zu beginnen, lesen Sie [Erstellen von Diagnoseeinstellungen](../azure-monitor/essentials/diagnostic-settings.md), um die Funktion und Methoden zu verstehen, die zur Konfiguration von Diagnoseeinstellungen zum Senden von Plattformprotokollen zur Verfügung stehen.
 
 ## <a name="azure-monitor-log-records"></a>Protokolldatensätze in Azure Monitor
 
@@ -140,7 +140,7 @@ Zum Erstellen einer Warnungsregel erstellen Sie zunächst eine Protokollsuche f�
 
    Wenn Sie Protokolle von mehreren Automation-Konten oder Abonnements in Ihrem Arbeitsbereich eingerichtet haben, können Sie Ihre Warnungen nach Abonnement und Automation-Konto gruppieren. Der Name des Automation-Kontos kann dem `Resource`-Feld in der `JobLogs`-Suche entnommen werden.
 
-3. Klicken Sie oben auf der Seite auf **Neue Warnungsregel**, um den Bildschirm **Regel erstellen** zu öffnen. Weitere Informationen zu den Konfigurationsoptionen für Warnungen finden Sie unter [Protokollwarnungen in Azure Monitor – Warnungen](../azure-monitor/platform/alerts-unified-log.md).
+3. Klicken Sie oben auf der Seite auf **Neue Warnungsregel**, um den Bildschirm **Regel erstellen** zu öffnen. Weitere Informationen zu den Konfigurationsoptionen für Warnungen finden Sie unter [Protokollwarnungen in Azure Monitor – Warnungen](../azure-monitor/alerts/alerts-unified-log.md).
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>Durchführen einer Suche nach allen Aufträgen, die mit Fehlern abgeschlossen wurden
 
@@ -192,8 +192,8 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Erstellen von Suchabfragen und zur Überprüfung der Automation-Auftragsprotokolle mit Azure Monitor-Protokolle finden Sie unter [Protokollsuchen in Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md).
+* Weitere Informationen zum Erstellen von Suchabfragen und zur Überprüfung der Automation-Auftragsprotokolle mit Azure Monitor-Protokolle finden Sie unter [Protokollsuchen in Azure Monitor-Protokolle](../azure-monitor/logs/log-query-overview.md).
 * Unter [Runbookausgabe und -meldungen in Azure Automation](automation-runbook-output-and-messages.md) erfahren Sie, wie Sie die Ausgabe und Fehlermeldungen von Runbooks erstellen und abrufen.
 * Weitere Informationen zum Ausführen von Runbooks und zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Ausführen von Runbooks in Azure Automation](automation-runbook-execution.md).
-* Weitere Informationen zu Azure Monitor-Protokolle und Datensammlungsquellen finden Sie unter [Sammeln von Azure Storage-Daten in Azure Monitor-Protokolle – Übersicht](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
-* Informationen zur Problembehandlung in Log Analytics finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).
+* Weitere Informationen zu Azure Monitor-Protokolle und Datensammlungsquellen finden Sie unter [Sammeln von Azure Storage-Daten in Azure Monitor-Protokolle – Übersicht](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace).
+* Informationen zur Problembehandlung in Log Analytics finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../azure-monitor/logs/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).

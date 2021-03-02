@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 98caca31e172f54c3e37f33c5a463790d9d27032
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0a7a5b9e19436deaed45382fe23063fa61edadf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325983"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587245"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimieren der SQL-Umgebung mit der SQL Server-Integritätsüberprüfung-Lösung in Azure Monitor
 
@@ -44,9 +44,9 @@ Nachdem Sie die Lösung hinzugefügt haben und eine Bewertung durchgeführt wurd
 
 Um die Integritätsüberprüfung für Ihre SQL Server auszuführen, sind ein Agent und Konnektivität mit Azure Monitor mithilfe einer der folgenden unterstützten Methoden erforderlich:
 
-1. Installieren Sie den [Microsoft Monitoring Agent (MMA)](../platform/agent-windows.md), wenn der Server nicht bereits durch System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird.
+1. Installieren Sie den [Microsoft Monitoring Agent (MMA)](../agents/agent-windows.md), wenn der Server nicht bereits durch System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird.
 2. Wenn er mit System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird, und die Verwaltungsgruppe nicht in Azure Monitor integriert ist, kann der Server mit Log Analytics mehrfach vernetzt werden, um Daten zu sammeln und an den Dienst weiterzuleiten, wobei er weiterhin von Operations Manager überwacht wird.  
-3. Wenn Ihre Operations Manager-Verwaltungsgruppe andernfalls in den Dienst integriert ist, müssen Sie die Domänencontroller für die Datensammlung durch den Dienst hinzufügen, indem Sie die Schritte unter [Herstellen einer Verbindung zwischen Operations Manager und OMS](../platform/om-agents.md#connecting-operations-manager-to-azure-monitor) nach der Aktivierung der Lösung in Ihrem Arbeitsbereich ausführen.  
+3. Wenn Ihre Operations Manager-Verwaltungsgruppe andernfalls in den Dienst integriert ist, müssen Sie die Domänencontroller für die Datensammlung durch den Dienst hinzufügen, indem Sie die Schritte unter [Herstellen einer Verbindung zwischen Operations Manager und OMS](../agents/om-agents.md#connecting-operations-manager-to-azure-monitor) nach der Aktivierung der Lösung in Ihrem Arbeitsbereich ausführen.  
 
 Der Agent auf Ihrem SQL Server, der Berichte an die Operations Manager-Verwaltungsgruppe sendet, sammelt Daten, leitet sie an seinen zugewiesenen Verwaltungsserver weiter, und dann werden sie direkt von einem Verwaltungsserver an Azure Monitor gesendet.  Die Daten werden nicht in die Operations Manager-Datenbanken geschrieben.  
 
@@ -161,7 +161,7 @@ Sehen Sie sich die zusammengefassten Compliancebewertungen für Ihre Infrastrukt
 4. Klicken Sie auf der Seite **Übersicht** auf die Kachel **SQL-Integritätsüberprüfung**.
 5. Überprüfen Sie auf der Seite **Integritätsüberprüfung** die Zusammenfassungsinformationen in einem der Schwerpunktbereiche, und klicken Sie dann auf einen Schwerpunktbereich, um Empfehlungen für diesen Bereich anzuzeigen.
 6. Auf jeder der Schwerpunktbereichsseiten können Sie mit Prioritäten versehene Empfehlungen für Ihre Umgebung anzeigen. Klicken Sie unter **Betroffene Objekte** auf eine Empfehlung, um Details zu den Gründen für diese Empfehlung anzuzeigen.<br><br> ![Abbildung der Empfehlungen der SQL-Integritätsüberprüfung](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
-7. Sie können die unter **Vorgeschlagene Aktionen**vorgeschlagenen Korrekturmaßnahmen durchführen. Nachdem das Element behandelt wurde, geben spätere Bewertungen an, dass empfohlene Aktionen ausgeführt wurden, und Ihre Bewertung der Einhaltung erhöht sich. Korrigierte Elemente werden als **Passed Objects**angezeigt.
+7. Sie können die unter **Vorgeschlagene Aktionen** vorgeschlagenen Korrekturmaßnahmen durchführen. Nachdem das Element behandelt wurde, geben spätere Bewertungen an, dass empfohlene Aktionen ausgeführt wurden, und Ihre Bewertung der Einhaltung erhöht sich. Korrigierte Elemente werden als **Passed Objects** angezeigt.
 
 ## <a name="ignore-recommendations"></a>Ignorieren von Empfehlungen
 Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen, mit der Azure Monitor verhindert, dass diese Empfehlungen in Ihren Bewertungsergebnissen angezeigt werden.
@@ -257,5 +257,5 @@ Die Ergebnisse können dann zur weiteren Prüfung in Excel exportiert werden.
 * Ja, siehe oben stehenden Abschnitt [Ignorieren von Empfehlungen](#ignore-recommendations) .
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Lesen Sie den Artikel zu [Protokollabfragen](../log-query/log-query-overview.md), um zu erfahren, wie Sie detaillierte Daten und Empfehlungen der SQL-Integritätsüberprüfung analysieren.
+* Lesen Sie den Artikel zu [Protokollabfragen](../logs/log-query-overview.md), um zu erfahren, wie Sie detaillierte Daten und Empfehlungen der SQL-Integritätsüberprüfung analysieren.
 

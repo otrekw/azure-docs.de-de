@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: c13821544ff9725a387534370fc716c70072bb85
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: ba021d280f71504ad5c1e1aea0dc1c8c6b507b1e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831772"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581078"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Konfigurieren von Azure Cache for Redis
 In diesem Thema sind die für Ihre Azure Cache for Redis-Instanzen verfügbaren Konfigurationen beschrieben. Darüber hinaus wird in diesem Thema die standardmäßige Redis-Serverkonfiguration für Azure Cache for Redis-Instanzen behandelt.
@@ -341,10 +341,10 @@ Klicken Sie auf **Warnregeln**, um Warnungen basierend auf Azure Cache for Redis
 
 ### <a name="diagnostics"></a>Diagnose
 
-Cachemetriken werden in Azure Monitor standardmäßig [30 Tage lang gespeichert](../azure-monitor/platform/data-platform-metrics.md) und anschließend gelöscht. Um Cachemetriken länger als 30 Tage beizubehalten, klicken Sie zum **Konfigurieren des Speicherkontos** für Cachediagnosedaten auf [Diagnose](cache-how-to-monitor.md#export-cache-metrics).
+Cachemetriken werden in Azure Monitor standardmäßig [30 Tage lang gespeichert](../azure-monitor/essentials/data-platform-metrics.md) und anschließend gelöscht. Um Cachemetriken länger als 30 Tage beizubehalten, klicken Sie zum **Konfigurieren des Speicherkontos** für Cachediagnosedaten auf [Diagnose](cache-how-to-monitor.md#export-cache-metrics).
 
 >[!NOTE]
->Neben dem Archivieren der Cachemetriken im Speicher können Sie sie auch [an einen Event Hub streamen oder an Azure Monitor-Protokolle senden](../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+>Neben dem Archivieren der Cachemetriken im Speicher können Sie sie auch [an einen Event Hub streamen oder an Azure Monitor-Protokolle senden](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md).
 >
 >
 

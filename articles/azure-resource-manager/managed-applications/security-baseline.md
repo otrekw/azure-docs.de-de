@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c1bcde3f2b1f61fd241143e308a508d5f19e7b0c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 2a5c31270f18c2e6149d93fa522818704b9747d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090569"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588614"
 ---
 # <a name="azure-security-baseline-for-azure-managed-applications"></a>Azure-Sicherheitsbaseline für Azure Managed Applications
 
@@ -415,9 +415,9 @@ Auch Azure Security Center kann bestimmte verdächtige Aktivitäten melden, wie
 
 **Leitfaden**: Aktivitätsprotokolle, die automatisch verfügbar sind, enthalten alle Schreibvorgänge (PUT, POST, DELETE) für Ihre Managed Applications-Ressourcen (mit Ausnahme von Lesevorgängen (GET)). Mit Aktivitätsprotokollen können Fehler ermittelt werden, und es kann nachverfolgt werden, welche Änderungen an einer Ressource ein Benutzer in Ihrer Organisation vorgenommen hat.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md) 
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../../azure-monitor/platform/platform-logs-overview.md)
+- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -432,7 +432,7 @@ Zusätzlich können Sie auch Daten in Azure Sentinel oder der SIEM-Lösung eines
 
 Viele Unternehmen verwenden Azure Sentinel für „heiße“ Daten, die häufig verwendet werden, und Azure Storage für seltener verwendete „kalte“ Daten.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Durchführen des Onboardings für Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
@@ -445,7 +445,7 @@ Viele Unternehmen verwenden Azure Sentinel für „heiße“ Daten, die häufig 
 **Leitfaden**: Stellen Sie sicher, dass für die Speicherkonten oder Log Analytics-Arbeitsbereiche zum Speichern der Protokolle, die von Ihren Managed Applications-Ressourcen erstellt wurden, der Protokollaufbewahrungszeitraum gemäß den Konformitätsbestimmungen Ihrer Organisation festgelegt ist.
 In Azure Monitor können Sie den Aufbewahrungszeitraum des Log Analytics-Arbeitsbereichs gemäß den Compliancevorschriften Ihres Unternehmens festlegen. Verwenden Sie für langfristige Speicherungen und Archivierungen Konten von Azure Storage, Data Lake oder des Log Analytics-Arbeitsbereichs.
 
-- [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../../azure-monitor/platform/manage-cost-storage.md)
+- [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../../azure-monitor/logs/manage-cost-storage.md)
 
 - [Azure-Ressourcenprotokolle](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 

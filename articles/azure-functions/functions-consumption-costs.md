@@ -3,12 +3,12 @@ title: Abschätzen der Kosten des Verbrauchstarifs in Azure Functions
 description: Erfahren Sie, wie Sie die Kosten besser abschätzen, die Sie eventuell verursachen, wenn Sie Ihre Funkions-App in einem Verbrauchstarif in Azure ausführen.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 430804d478df718f51ae1da9adb6693f597157a9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4967e0ff79a638891da4f784cf2f5f1ca4ddfe51
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934882"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578553"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Abschätzen der Kosten des Verbrauchstarifs
 
@@ -67,11 +67,11 @@ In [Ihrer Rechnung](../cost-management-billing/understand/download-azure-invoice
 
 ### <a name="function-app-level-metrics"></a>Metriken auf Ebene der Funktions-App
 
-Um die Kostenauswirkungen Ihrer Funktionen besser zu verstehen, können Sie Azure Monitor verwenden, um kostenbezogene Metriken anzuzeigen, die von Ihren Funktions-Apps generiert werden. Sie können entweder den [Azure Monitor-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md) im [Azure portal] oder REST-APIs verwenden, um diese Daten zu erhalten.
+Um die Kostenauswirkungen Ihrer Funktionen besser zu verstehen, können Sie Azure Monitor verwenden, um kostenbezogene Metriken anzuzeigen, die von Ihren Funktions-Apps generiert werden. Sie können entweder den [Azure Monitor-Metrik-Explorer](../azure-monitor/essentials/metrics-getting-started.md) im [Azure portal] oder REST-APIs verwenden, um diese Daten zu erhalten.
 
 #### <a name="monitor-metrics-explorer"></a>Monitor-Metrik-Explorer
 
-Verwenden Sie den [Azure Monitor-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md), um kostenbezogene Daten für Ihre Funktions-Apps im Verbrauchstarif in einem grafischen Format anzuzeigen. 
+Verwenden Sie den [Azure Monitor-Metrik-Explorer](../azure-monitor/essentials/metrics-getting-started.md), um kostenbezogene Daten für Ihre Funktions-Apps im Verbrauchstarif in einem grafischen Format anzuzeigen. 
 
 1. Suchen Sie im oberen Bereich des [Azure portal] in **Dienste, Ressourcen und Dokumente durchsuchen** nach `monitor`, und wählen Sie unter **Monitor** die Option **Dienste** aus.
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 837d1f78a9fde72137383e6c22adb8870997dc9b
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 907c03bd15463368def316e72f55ce214cb3e617
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986038"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571051"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute
 
@@ -54,7 +54,7 @@ Erstellen Sie einen Arbeitsbereich im Abonnement mit den VNETs, die mit den Expr
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) das Abonnement, in dem Peering der VNETs mit Ihrer ExpressRoute-Leitung eingerichtet ist. Suchen Sie anschließend über den **Marketplace** in der Liste der Dienste nach „Netzwerkleistungsmonitor“. Klicken Sie in die Ausgabe, um die Seite **Netzwerkleistungsmonitor** zu öffnen.
 
    >[!NOTE]
-   >Sie können einen neuen Arbeitsbereich erstellen oder einen vorhandenen Arbeitsbereich verwenden. Wenn Sie einen vorhandenen Arbeitsbereich verwenden möchten, müssen Sie sicherstellen, dass der Arbeitsbereich zur neuen Abfragesprache migriert wurde. [Weitere Informationen](../azure-monitor/log-query/log-query-overview.md)
+   >Sie können einen neuen Arbeitsbereich erstellen oder einen vorhandenen Arbeitsbereich verwenden. Wenn Sie einen vorhandenen Arbeitsbereich verwenden möchten, müssen Sie sicherstellen, dass der Arbeitsbereich zur neuen Abfragesprache migriert wurde. [Weitere Informationen](../azure-monitor/logs/log-query-overview.md)
    >
 
    ![Portal](./media/how-to-npm/3.png)<br><br>
@@ -118,7 +118,7 @@ Es wird empfohlen, dass Sie zur Bereitstellung von Redundanz mindestens zwei Age
 
 ### <a name="23-configure-proxy-settings-optional"></a><a name="proxy"></a>2.3: Konfigurieren von Proxyeinstellungen (optional)
 
-Wenn Sie einen Webproxy verwenden, um auf das Internet zuzugreifen, verwenden Sie folgende Schritte, um die Proxyeinstellungen für den Microsoft Monitoring Agent zu konfigurieren. Führen Sie diese Schritte für jeden Server aus. Wenn Sie viele Server konfigurieren müssen, ist es möglicherweise einfacher, diesen Prozess mithilfe eines Skripts zu automatisieren. Wenn dies der Fall ist, finden Sie weitere Informationen unter [So konfigurieren Sie Proxyeinstellungen für den Microsoft Monitoring Agent mithilfe eines Skripts](../azure-monitor/platform/agent-windows.md).
+Wenn Sie einen Webproxy verwenden, um auf das Internet zuzugreifen, verwenden Sie folgende Schritte, um die Proxyeinstellungen für den Microsoft Monitoring Agent zu konfigurieren. Führen Sie diese Schritte für jeden Server aus. Wenn Sie viele Server konfigurieren müssen, ist es möglicherweise einfacher, diesen Prozess mithilfe eines Skripts zu automatisieren. Wenn dies der Fall ist, finden Sie weitere Informationen unter [So konfigurieren Sie Proxyeinstellungen für den Microsoft Monitoring Agent mithilfe eines Skripts](../azure-monitor/agents/agent-windows.md).
 
 So konfigurieren Sie Proxyeinstellungen für den Microsoft Monitoring Agent über die Systemsteuerung:
 

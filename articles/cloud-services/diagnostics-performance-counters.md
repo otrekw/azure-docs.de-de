@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 16b54e8a59eb42c6e2351d37ec0a29d775161493
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: fa5dd61c0764be45cdba68b73a4f55745ee5e55a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98739835"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585507"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service-classic"></a>Erfassen von Leistungsindikatoren für Ihre Azure Cloud Services-Instanz (klassisch)
 
@@ -124,7 +124,7 @@ Mit der Azure-Diagnoseerweiterung für Clouddienste können Sie angeben, welche 
 
 Die zu erfassenden Leistungsindikatoren werden in der Datei **diagnostics.wadcfgx** definiert. Öffnen Sie diese Datei (sie ist basierend auf der Rolle definiert) in Visual Studio, und suchen Sie nach dem Element **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **PerformanceCounters**. Fügen Sie ein neues untergeordnetes Element **PerformanceCounterConfiguration** hinzu. Dieses Element umfasst zwei Attribute: `counterSpecifier` und `sampleRate`. Das Attribut `counterSpecifier` definiert, welcher Satz an Systemleistungsindikatoren (siehe vorheriger Abschnitt) erfasst werden soll. Der Wert `sampleRate` gibt an, wie oft dieser Wert abgerufen wird. Alle Leistungsindikatoren werden gemäß Attributwert `scheduledTransferPeriod` des übergeordneten Elements `PerformanceCounters` an Azure übertragen.
 
-Weitere Informationen zum Schemaelement `PerformanceCounters` finden Sie unter [Schema der Azure-Diagnose](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element).
+Weitere Informationen zum Schemaelement `PerformanceCounters` finden Sie unter [Schema der Azure-Diagnose](../azure-monitor/agents/diagnostics-extension-schema-windows.md#performancecounters-element).
 
 Der durch das Attribut `sampleRate` definierte Zeitraum verwendet den XML-Zeitraumdatentyp, um anzugeben, wie häufig der Leistungsindikator abgerufen wird. Im nachstehenden Beispiel ist die Rate auf `PT3M` festgelegt, dies bedeutet `[P]eriod[T]ime[3][M]inutes`: alle drei Minuten.
 
@@ -294,4 +294,4 @@ Wie zuvor erwähnt, werden die zu erfassenden Leistungsindikatoren in der Datei 
 - [Application Insights für Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters)
 - [Systemleistungsindikatoren in Application Insights](../azure-monitor/app/performance-counters.md)
 - [Angeben eines Indikatorpfads](/windows/win32/perfctrs/specifying-a-counter-path)
-- [Schema der Azure-Diagnose – Leistungsindikatoren](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)
+- [Schema der Azure-Diagnose – Leistungsindikatoren](../azure-monitor/agents/diagnostics-extension-schema-windows.md#performancecounters-element)

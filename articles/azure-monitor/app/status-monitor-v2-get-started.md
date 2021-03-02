@@ -6,12 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 01/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f340b4fdf7fef6daecf8801d16d19aee9b89e4d5
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 21184e1623fd47e8367d4c5dfbc2c85debe93124
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746457"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587381"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Erste Schritte mit dem Azure Monitor Application Insights-Agent für lokale Server
 
@@ -79,9 +79,9 @@ Enable-ApplicationInsightsMonitoring -ConnectionString xxxxxxxx-xxxx-xxxx-xxxx-x
 
  Anzeigen der Telemetrie:
 
-- [Untersuchen Sie Metriken](../platform/metrics-charts.md) zum Überwachen der Leistung und Nutzung.
+- [Untersuchen Sie Metriken](../essentials/metrics-charts.md) zum Überwachen der Leistung und Nutzung.
 - [Durchsuchen Sie Ereignisse und Protokolle](./diagnostic-search.md), um Probleme zu diagnostizieren.
-- Verwenden Sie [Analytics](../log-query/log-query-overview.md) für erweiterte Abfragen.
+- Verwenden Sie [Analytics](../logs/log-query-overview.md) für erweiterte Abfragen.
 - [Erstellen Sie Dashboards](./overview-dashboard.md).
 
  Hinzufügen weiterer Telemetrieelemente:

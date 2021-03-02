@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2773a76ed1166a26ebc12b97550876eaa66bad14
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 12e942e40b7fe4df6bbe8e5b4d683111a2de2a61
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197318"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575326"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azure-Sicherheitsbaseline für Azure Data Box
 
@@ -467,7 +467,7 @@ Azure Data Box implementiert AES-256-Bit-Verschlüsselung für ruhende Daten. Au
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an Azure Data Box und anderen kritischen bzw. zugehörigen Ressourcen vorgenommen werden.
 
-* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 

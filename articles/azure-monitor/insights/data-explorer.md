@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 11e21f376ea3b5cf580d54780509529b4536718b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 6276527230cf889b471887fdb3da70e06a2fc8d6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734173"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582339"
 ---
 # <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure Monitor für Azure Data Explorer (Vorschau)
 
@@ -162,4 +162,4 @@ Diagnoseprotokolle werden derzeit nicht rückwirkend angezeigt. Daten werden als
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.
+Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../visualize/workbooks-overview.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.

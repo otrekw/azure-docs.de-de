@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 6502d4259aa383c1466967d01282cecfbb8d1ded
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 5335882c11ee6a1a7352ef3dc9822cfa88eda196
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832962"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573510"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Netzwerkleistungsmonitor-Lösung: Leistungsüberwachung
 
@@ -131,4 +131,5 @@ In der folgenden Abbildung werden die Grundursachen für die Problembereiche des
 ![Topologiekarte mit ausgewählten Knoteneigenschaften](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Mit [Protokollsuchen](../log-query/log-query-overview.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.
+Mit [Protokollsuchen](../logs/log-query-overview.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.
+

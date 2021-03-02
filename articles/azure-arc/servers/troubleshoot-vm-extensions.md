@@ -3,12 +3,12 @@ title: Behandeln von Problemen mit VM-Erweiterungen für Server mit Azure Arc-U
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit Azure-VM-Erweiterungen beheben, die bei Servern mit Azure Arc-Unterstützung auftreten.
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: ffd7db5ff7da3d7f60762117f80d7b9b5af6f646
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 799e5c8ec00a894c6a54c64494edd8f259faf2dc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91340503"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584675"
 ---
 # <a name="troubleshoot-arc-enabled-servers-vm-extension-issues"></a>Behandeln von Problemen mit VM-Erweiterungen für Server mit Azure Arc-Unterstützung
 
@@ -38,7 +38,7 @@ Die folgenden Schritte zur Problembehandlung gelten für alle VM-Erweiterungen.
 
 - In der Log Analytics-Agent-Version 1.13.9 (die entsprechende Version der Erweiterung lautet 1.13.15) werden hochgeladene Daten nicht ordnungsgemäß mit der Ressourcen-ID des Servers mit Azure Arc-Unterstützung markiert. Protokolle werden zwar an den Dienst gesendet, beim Versuch, die Daten vom ausgewählten aktivierten Server nach Auswählen von **Protokolle** oder **Erkenntnisse** anzuzeigen, werden aber keine Daten zurückgegeben. Sie können die Daten anzeigen, indem Sie Abfragen aus Azure Monitor-Protokollen oder über Azure Monitor für VMs ausführen, die auf den Arbeitsbereich begrenzt sind.
 
-- Einige Distributionen werden zurzeit vom Log Analytics-Agent für Linux nicht unterstützt. Für den Agent müssen zusätzliche Abhängigkeiten installiert werden, u. a. Python 2. Informationen zur Supportmatrix zu den Voraussetzungen finden Sie [hier](../../azure-monitor/platform/agents-overview.md#supported-operating-systems).
+- Einige Distributionen werden zurzeit vom Log Analytics-Agent für Linux nicht unterstützt. Für den Agent müssen zusätzliche Abhängigkeiten installiert werden, u. a. Python 2. Informationen zur Supportmatrix zu den Voraussetzungen finden Sie [hier](../../azure-monitor/agents/agents-overview.md#supported-operating-systems).
 
 - Fehlercode 52 in der Statusmeldung weist auf eine fehlende Abhängigkeit hin. Überprüfen Sie die Ausgabe und die Protokolle, um weitere Informationen zur fehlenden Abhängigkeit zu erhalten.
 

@@ -3,12 +3,12 @@ title: Installieren des Connected Machine-Agent mithilfe von Windows PowerShell
 description: In diesem Artikel erfahren Sie, wie Sie Computer mithilfe von Azure Arc-fähigen Servern und Windows PowerShell DSC mit Azure verbinden.
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: b351aa8e989bd36c135271d3adafca6eb64ccf39
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: c0ae9c97afe14559aa36c1b8387f07897aa4c43b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107554"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587640"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Installieren des Connected Machine-Agent mithilfe von Windows PowerShell DSC
 
@@ -88,6 +88,6 @@ Das [CompositeResource](https://www.powershellgallery.com/packages/compositereso
 
 * Informationen zur Problembehandlung finden Sie im [Handbuch zur Problembehandlung des Connected Machine-Agents](troubleshoot-agent-onboard.md).
 
-* Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/insights/vminsights-enable-policy.md) und vieles mehr.
+* Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/vm/vminsights-enable-policy.md) und vieles mehr.
 
-* Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie das Betriebssystem und die Workloads auf dem Computer proaktiv überwachen, den Computer mithilfe von Automation-Runbooks oder Lösungen wie der Updateverwaltung verwalten oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-introduction.md) verwenden möchten.
+* Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/agents/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie das Betriebssystem und die Workloads auf dem Computer proaktiv überwachen, den Computer mithilfe von Automation-Runbooks oder Lösungen wie der Updateverwaltung verwalten oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-introduction.md) verwenden möchten.

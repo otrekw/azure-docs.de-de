@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: c8427e92f89804f64741ab86aa9903b0de23b3ec
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9e75b159f994a869a2bbd4498332a1e160bf5462
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966852"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580317"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Azure Monitor Dependency-VM-Erweiterung für Linux
 
@@ -30,7 +30,7 @@ Das Zuordnungsfeature in Azure Monitor für VMs erhält seine Daten vom Microsof
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Die Azure VM Dependency-Agent-Erweiterung für Linux kann für die unterstützten Betriebssysteme ausgeführt werden, die im Abschnitt [Unterstützte Betriebssysteme](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) des Bereitstellungsartikels zu Azure Monitor für VMs aufgelistet sind.
+Die Azure VM Dependency-Agent-Erweiterung für Linux kann für die unterstützten Betriebssysteme ausgeführt werden, die im Abschnitt [Unterstützte Betriebssysteme](../../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) des Bereitstellungsartikels zu Azure Monitor für VMs aufgelistet sind.
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
@@ -78,7 +78,7 @@ Das folgende JSON zeigt das Schema für die Azure VM Dependency-Agent-Erweiterun
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |
-| type | DependencyAgentLinux |
+| Type | DependencyAgentLinux |
 | typeHandlerVersion | 9.5 |
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen

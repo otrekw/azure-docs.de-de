@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 094ecd88c8b493d44b756d03d700b43cbcba1ee9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 683367251c220abe36660d61463bce9e5a0c52f9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362398"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577765"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Planen einer Azure Active Directory-Bereitstellung für Berichterstellung und Überwachung
 
@@ -47,7 +47,7 @@ Mit Azure AD-Überwachung können Sie Protokolle folgendermaßen weiterleiten:
 * einen Azure Event Hub, in dem die Protokolle mit vorhandenen SIEM-Tools wie Splunk, Sumologic oder QRadar integriert werden können
 
 > [!NOTE]
-Seit Kurzem wird der Begriff „Azure Monitor-Protokolle“ anstelle von „Log Analytics“ verwendet. Protokolldaten werden immer noch in einem Log Analytics-Arbeitsbereich gespeichert und weiterhin mit dem gleichen Log Analytics-Dienst erfasst und analysiert. Die Terminologie hat sich geändert, um der Rolle von [Protokollen in Azure Monitor](../../azure-monitor/platform/data-platform.md) besser Rechnung zu tragen. Weitere Informationen finden Sie unter [Terminologieänderungen bei Azure Monitor](../../azure-monitor/terminology.md).
+Seit Kurzem wird der Begriff „Azure Monitor-Protokolle“ anstelle von „Log Analytics“ verwendet. Protokolldaten werden immer noch in einem Log Analytics-Arbeitsbereich gespeichert und weiterhin mit dem gleichen Log Analytics-Dienst erfasst und analysiert. Die Terminologie hat sich geändert, um der Rolle von [Protokollen in Azure Monitor](../../azure-monitor/data-platform.md) besser Rechnung zu tragen. Weitere Informationen finden Sie unter [Terminologieänderungen bei Azure Monitor](../../azure-monitor/terminology.md).
 
 [Weitere Informationen zu Aufbewahrungsrichtlinien für Berichte](./reference-reports-data-retention.md)
 
@@ -121,7 +121,7 @@ Informationen zum Weiterleiten von Daten an Ihr Speicherkonto finden Sie [hier](
 
 #### <a name="send-logs-to-azure-monitor-logs"></a>Senden von Protokollen an Azure Monitor-Protokolle
 
-[Azure Monitor-Protokolle](../../azure-monitor/log-query/log-query-overview.md) konsolidiert Überwachungsdaten aus verschiedenen Quellen. Zudem sind eine Abfragesprache und eine Analyse-Engine vorhanden, die Ihnen Einblicke in den Betrieb Ihrer Anwendungen und die Nutzung Ihrer Ressourcen geben. Sie können gesammelte Daten schnell abrufen, überwachen und für Warnungen heranziehen, indem Sie Ihre Azure AD-Aktivitätsprotokolle an Azure Monitor-Protokolle senden. Verwenden Sie diese Methode, wenn Sie nicht über eine vorhandene SIEM-Lösung verfügen, an die Sie Ihre Daten direkt senden möchten, aber Abfragen und Analysen ausführen möchten. Sobald Ihre Daten sich in Azure Monitor-Protokollen befinden, können Sie diese an den Event Hub und von dort aus bei Bedarf an SIEM senden.
+[Azure Monitor-Protokolle](../../azure-monitor/logs/log-query-overview.md) konsolidiert Überwachungsdaten aus verschiedenen Quellen. Zudem sind eine Abfragesprache und eine Analyse-Engine vorhanden, die Ihnen Einblicke in den Betrieb Ihrer Anwendungen und die Nutzung Ihrer Ressourcen geben. Sie können gesammelte Daten schnell abrufen, überwachen und für Warnungen heranziehen, indem Sie Ihre Azure AD-Aktivitätsprotokolle an Azure Monitor-Protokolle senden. Verwenden Sie diese Methode, wenn Sie nicht über eine vorhandene SIEM-Lösung verfügen, an die Sie Ihre Daten direkt senden möchten, aber Abfragen und Analysen ausführen möchten. Sobald Ihre Daten sich in Azure Monitor-Protokollen befinden, können Sie diese an den Event Hub und von dort aus bei Bedarf an SIEM senden.
 
 Lesen Sie, wie Sie [Daten an Azure Monitor-Protokolle senden](./howto-integrate-activity-logs-with-log-analytics.md).
 
@@ -153,7 +153,7 @@ Folgende Rollen können Azure AD-Berichte lesen:
 
 Im verlinkten Artikel finden Sie weitere Informationen zu [Azure AD-Administratorrollen](../roles/permissions-reference.md).
 
-*Wenden Sie immer das Konzept der geringsten Rechte an, um das Risiko einer Kontogefährdung zu verringern* . Sie sollten [Privileged Identity Management](../privileged-identity-management/pim-configure.md) implementieren, um Ihre Organisation noch besser zu schützen.
+*Wenden Sie immer das Konzept der geringsten Rechte an, um das Risiko einer Kontogefährdung zu verringern*. Sie sollten [Privileged Identity Management](../privileged-identity-management/pim-configure.md) implementieren, um Ihre Organisation noch besser zu schützen.
 
 ##  
 

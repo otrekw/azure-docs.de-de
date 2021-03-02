@@ -3,12 +3,12 @@ title: Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore
 description: In diesem Artikel wird beschrieben, wie die alten und neuen Diagnoseereignisse für Azure Backup verwendet werden.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 3d10053bae5148f33dba6d1207a81bdb16c37577
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2130f06e17dd2b5cf8461d4e58342ee41c14f96
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002884"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575414"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore
 
@@ -37,7 +37,7 @@ Daten für diese Ereignisse können an ein Speicherkonto, einen Log Analytics-Ar
 
 ## <a name="use-diagnostics-settings-with-log-analytics"></a>Verwenden von Diagnoseeinstellungen mit Log Analytics
 
-Azure Backup ermöglicht nun für die Sicherung das Übertragen von Tresordiagnosedaten in dedizierte Log Analytics-Tabellen. Diese Tabellen werden als [ressourcenspezifische Tabellen](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) bezeichnet.
+Azure Backup ermöglicht nun für die Sicherung das Übertragen von Tresordiagnosedaten in dedizierte Log Analytics-Tabellen. Diese Tabellen werden als [ressourcenspezifische Tabellen](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) bezeichnet.
 
 So senden Sie Tresordiagnosedaten an Log Analytics
 

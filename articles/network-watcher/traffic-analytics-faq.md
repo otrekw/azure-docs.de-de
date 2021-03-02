@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: a5fdde954d2826f34c671552a88365f9276b89a0
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: f4d97b81bf8f11b8380f04dcbfdb72bd658805ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895222"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579243"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Traffic Analytics
 
@@ -126,7 +126,7 @@ Ja.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Kann ich einen bestehenden Arbeitsbereich verwenden?
 
-Ja. Wenn Sie einen bestehenden Arbeitsbereich auswählen, vergewissern Sie sich, dass dieser in die neue Abfragesprache geändert wurde. Wenn Sie kein Upgrade des Arbeitsbereichs ausführen möchten, müssen Sie einen neuen Arbeitsbereich anlegen. Weitere Informationen über die neue Abfragesprache finden Sie unter [Upgrade von Azure Monitor-Protokollen auf die neue Protokollsuche](../azure-monitor/log-query/log-query-overview.md).
+Ja. Wenn Sie einen bestehenden Arbeitsbereich auswählen, vergewissern Sie sich, dass dieser in die neue Abfragesprache geändert wurde. Wenn Sie kein Upgrade des Arbeitsbereichs ausführen möchten, müssen Sie einen neuen Arbeitsbereich anlegen. Weitere Informationen über die neue Abfragesprache finden Sie unter [Upgrade von Azure Monitor-Protokollen auf die neue Protokollsuche](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Kann mein Azure Storage-Konto zu einem Abonnement und mein Log Analytics-Arbeitsbereich zu einem anderen Abonnement gehören?
 
@@ -262,7 +262,7 @@ Traffic Analytics bietet keine integrierte Unterstützung für Benachrichtigung
 - Sie können den Kurzlink für Log Analytics in Traffic Analytics verwenden. 
 - Verwenden Sie das [hier dokumentierte Schema](traffic-analytics-schema.md) zum Schreiben Ihrer Abfragen. 
 - Klicken Sie auf „Neue Warnungsregel“, um die Benachrichtigung zu erstellen.
-- Informationen zum Erstellen der Benachrichtigung finden Sie in der [Dokumentation zu Protokollwarnungen ](../azure-monitor/platform/alerts-log.md).
+- Informationen zum Erstellen der Benachrichtigung finden Sie in der [Dokumentation zu Protokollwarnungen ](../azure-monitor/alerts/alerts-log.md).
 
 ## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>Wie kann ich überprüfen, von welchen virtuellen Computern der meiste lokale Datenverkehr empfangen wird?
 
@@ -403,4 +403,4 @@ Die Seite mit der Topologie der Subnetze hat zwei Hauptabschnitte:
 - Wenn Sie einen solchen Knoten auswählen, können Sie alle seine Verbindungen nacheinander aufrufen, indem Sie `Shift+Left arrow` drücken. Der Fokus wird zur **Infotoolbox** dieser Verbindung verschoben. Jederzeit kann der Fokus durch erneutes Drücken von `Shift+Right arrow` zurück zum Knoten verschoben werden.
 
 ## <a name="are-classic-nsgs-supported"></a>Werden klassische Netzwerksicherheitsgruppen unterstützt?
-Nein, Traffic Analytics unterstützt keine klassischen Netzwerksicherheitsgruppen (NSGs). Es wird empfohlen, IaaS-Ressourcen vom klassischen Schema zu Azure Resource Manager zu migrieren, da klassische Ressourcen als [veraltet](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation) markiert werden. [Lesen Sie diesen Artikel](https://docs.microsoft.com/azure/virtual-machines/migration-classic-resource-manager-overview), um zu erfahren, wie Sie die Migration ausführen.
+Nein, Traffic Analytics unterstützt keine klassischen Netzwerksicherheitsgruppen (NSGs). Es wird empfohlen, IaaS-Ressourcen vom klassischen Schema zu Azure Resource Manager zu migrieren, da klassische Ressourcen als [veraltet](../virtual-machines/classic-vm-deprecation.md) markiert werden. [Lesen Sie diesen Artikel](../virtual-machines/migration-classic-resource-manager-overview.md), um zu erfahren, wie Sie die Migration ausführen.

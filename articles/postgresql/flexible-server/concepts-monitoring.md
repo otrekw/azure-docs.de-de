@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 1519e0b5cef6055cf8d8b0aded0d8ad323d548a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e7063cd1ae560fa077bd0b1b1279e4515e70464
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707845"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579018"
 ---
 # <a name="monitor-metrics-on-azure-database-for-postgresql---flexible-server"></a>Überwachen von Metriken in Azure Database for PostgreSQL Flexible Server
 
@@ -21,7 +21,7 @@ ms.locfileid: "91707845"
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for PostgreSQL bietet verschiedene Überwachungsoptionen, um Einblicke in das Verhalten Ihres Servers zu gewähren.
 
 ## <a name="metrics"></a>Metriken
-Azure Database for PostgreSQL bietet verschiedene Metriken, die Einblicke in das Verhalten der Ressourcen gewähren, die dem PostgreSQL-Server zugrunde liegen. Jede Metrik wird mit einer Frequenz von einer Minute ausgegeben und verfügt über einen [Verlauf von bis zu 93 Tagen](../../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics). Sie können Warnungen für die Metriken konfigurieren. Darüber hinaus können weitere Optionen wie das Einrichten automatisierter Aktionen, das Durchführen erweiterter Analysen und das Archivieren des Verlaufs ausgeführt werden. Weitere Informationen finden Sie unter [Überblick über Metriken in Microsoft Azure](../../azure-monitor/platform/data-platform-metrics.md).
+Azure Database for PostgreSQL bietet verschiedene Metriken, die Einblicke in das Verhalten der Ressourcen gewähren, die dem PostgreSQL-Server zugrunde liegen. Jede Metrik wird mit einer Frequenz von einer Minute ausgegeben und verfügt über einen [Verlauf von bis zu 93 Tagen](../../azure-monitor/essentials/data-platform-metrics.md#retention-of-metrics). Sie können Warnungen für die Metriken konfigurieren. Darüber hinaus können weitere Optionen wie das Einrichten automatisierter Aktionen, das Durchführen erweiterter Analysen und das Archivieren des Verlaufs ausgeführt werden. Weitere Informationen finden Sie unter [Überblick über Metriken in Microsoft Azure](../../azure-monitor/essentials/data-platform-metrics.md).
 
 ### <a name="list-of-metrics"></a>Liste der Metriken
 Für PostgreSQL Flexible Server sind folgende Metriken verfügbar:

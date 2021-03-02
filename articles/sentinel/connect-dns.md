@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 7701fc6d90fd9ebc7ec29f0ffdd7d050c58c036c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: abecddb6f5469cb4ef463e65d6c74149bf34dca9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655662"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590220"
 ---
 # <a name="connect-your-domain-name-server"></a>Verbinden eines Domänennamenservers
 
@@ -43,10 +43,10 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 
 | **Verbundene Quelle** | **Unterstützung** | **Beschreibung** |
 | --- | --- | --- |
-| [Windows-Agents](../azure-monitor/platform/agent-windows.md) | Ja | Die Lösung erfasst DNS-Informationen von Windows-Agents. |
-| [Linux-Agents](../azure-monitor/learn/quick-collect-linux-computer.md) | Nein | Die Lösung erfasst keine DNS-Informationen von direkten Linux-Agents. |
-| [System Center Operations Manager-Verwaltungsgruppe](../azure-monitor/platform/om-agents.md) | Ja | Die Lösung erfasst DNS-Informationen von Agents in einer verbundenen Operations Manager-Verwaltungsgruppe. Es ist keine direkte Verbindung zwischen dem Operations Manager-Agent und Azure Monitor erforderlich. Daten werden von der Verwaltungsgruppe an den Log Analytics-Arbeitsbereich weitergeleitet. |
-| [Azure-Speicherkonto](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) | Nein | Azure-Speicher wird von der Lösung nicht verwendet. |
+| [Windows-Agents](../azure-monitor/agents/agent-windows.md) | Ja | Die Lösung erfasst DNS-Informationen von Windows-Agents. |
+| [Linux-Agents](../azure-monitor/vm/quick-collect-linux-computer.md) | Nein | Die Lösung erfasst keine DNS-Informationen von direkten Linux-Agents. |
+| [System Center Operations Manager-Verwaltungsgruppe](../azure-monitor/agents/om-agents.md) | Ja | Die Lösung erfasst DNS-Informationen von Agents in einer verbundenen Operations Manager-Verwaltungsgruppe. Es ist keine direkte Verbindung zwischen dem Operations Manager-Agent und Azure Monitor erforderlich. Daten werden von der Verwaltungsgruppe an den Log Analytics-Arbeitsbereich weitergeleitet. |
+| [Azure-Speicherkonto](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) | Nein | Azure-Speicher wird von der Lösung nicht verwendet. |
 
 ### <a name="data-collection-details"></a>Details zur Datensammlung
 

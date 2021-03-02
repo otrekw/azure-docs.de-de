@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 17d48b6093d88a926569d5cfe84475fc0c306a0d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 4fb4981925593a22ed65df9d3ed0da5f45062f23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874382"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578940"
 ---
 # <a name="azure-network-security-overview"></a>Übersicht über die Netzwerksicherheit in Azure
 
@@ -395,7 +395,7 @@ Weitere Informationen:
 
 Protokollierung auf Netzwerkebene ist eine entscheidende Funktion für jedes Netzwerksicherheitsszenario. In Azure können Sie Informationen für Netzwerksicherheitsgruppen protokollieren, um Protokollierungsinformationen auf Netzwerkebene zu erhalten. Mit der NSG-Protokollierung erhalten Sie Informationen aus:
 
-* [Aktivitätsprotokolle:](../../azure-monitor/platform/platform-logs-overview.md) In diesen Protokollen können Sie alle Vorgänge anzeigen, die an Ihre Azure-Abonnements übermittelt werden. Diese Protokolle sind standardmäßig aktiviert und können im Azure-Portal verwendet werden. Sie wurden zuvor als „Überwachungsprotokolle“ oder „Betriebsprotokolle“ bezeichnet.
+* [Aktivitätsprotokolle:](../../azure-monitor/essentials/platform-logs-overview.md) In diesen Protokollen können Sie alle Vorgänge anzeigen, die an Ihre Azure-Abonnements übermittelt werden. Diese Protokolle sind standardmäßig aktiviert und können im Azure-Portal verwendet werden. Sie wurden zuvor als „Überwachungsprotokolle“ oder „Betriebsprotokolle“ bezeichnet.
 * Ereignisprotokolle: Diese Protokolle enthalten Informationen zu den angewendeten NSG-Regeln.
 * Leistungsindikatorenprotokolle: In diesen Protokollen ist aufgezeichnet, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
 

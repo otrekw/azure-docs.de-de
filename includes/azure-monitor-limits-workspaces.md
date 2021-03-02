@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 1f461c4870b398a49387472c49d45b90929405c7
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 56afc81794bb18bfb7c9146eeb4ed61a0a75ea0f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100529744"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587007"
 ---
 **Umfang und Aufbewahrung der Datensammlung** 
 
@@ -72,7 +72,7 @@ ms.locfileid: "100529744"
 
 **<a name="data-ingestion-volume-rate">Rate für Datenerfassungsvolumen</a>**
 
-Azure Monitor ist ein Hochleistungs-Datendienst, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Mit der Volumenratenbegrenzung sollen Azure Monitor-Kunden vor plötzlichen Erfassungsspitzen in einer mehrinstanzenfähigen Umgebung isoliert werden. Ein Standardschwellenwert für die Erfassungsvolumenrate von 500 MB (komprimiert) ist in Arbeitsbereichen definiert. Dies entspricht ungefähr **6 GB/Minute** für nicht komprimierte Daten. Die tatsächliche Größe kann je nach Protokolllänge und Komprimierungsverhältnis zwischen Datentypen variieren. Das Ratenlimit für Volumen gilt für Daten, die über [Diagnoseeinstellungen](../articles/azure-monitor/platform/diagnostic-settings.md) aus Azure-Ressourcen erfasst werden. Wenn das Ratenlimit für Volumen erreicht ist, versucht ein Wiederholungsmechanismus, die Daten viermal in einem Zeitraum von 30 Minuten zu erfassen und wird beendet, wenn der Vorgang fehlschlägt. Dies gilt nicht für Daten, die von [Agents](../articles/azure-monitor/platform/agents-overview.md) oder der [Datensammler-API](../articles/azure-monitor/platform/data-collector-api.md) erfasst wurden.
+Azure Monitor ist ein Hochleistungs-Datendienst, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Mit der Volumenratenbegrenzung sollen Azure Monitor-Kunden vor plötzlichen Erfassungsspitzen in einer mehrinstanzenfähigen Umgebung isoliert werden. Ein Standardschwellenwert für die Erfassungsvolumenrate von 500 MB (komprimiert) ist in Arbeitsbereichen definiert. Dies entspricht ungefähr **6 GB/Minute** für nicht komprimierte Daten. Die tatsächliche Größe kann je nach Protokolllänge und Komprimierungsverhältnis zwischen Datentypen variieren. Das Ratenlimit für Volumen gilt für Daten, die über [Diagnoseeinstellungen](../articles/azure-monitor/platform/diagnostic-settings.md) aus Azure-Ressourcen erfasst werden. Wenn das Ratenlimit für Volumen erreicht ist, versucht ein Wiederholungsmechanismus, die Daten viermal in einem Zeitraum von 30 Minuten zu erfassen und wird beendet, wenn der Vorgang fehlschlägt. Dies gilt nicht für Daten, die von [Agents](../articles/azure-monitor/agents/agents-overview.md) oder der [Datensammler-API](../articles/azure-monitor/platform/data-collector-api.md) erfasst wurden.
 
 Wenn Daten an einen Arbeitsbereich mit einer Volumenrate gesendet werden, die mehr als 80 Prozent des im Arbeitsbereich konfigurierten Schwellenwerts beträgt, wird alle sechs Stunden ein Ereignis an die Tabelle *Vorgang* im Arbeitsbereich gesendet, während der Schwellenwert weiterhin überschritten wird. Wenn die erfasste Volumenrate höher ist als der Schwellenwert, werden einige Daten gelöscht, und es wird alle sechs Stunden ein Ereignis an die Tabelle *Vorgang* im Arbeitsbereich gesendet, während der Schwellenwert weiterhin überschritten wird. Wenn die Erfassungsvolumenrate weiterhin den Schwellenwert überschreitet oder Sie ihn wahrscheinlich in Kürze erreichen werden, können Sie eine Erhöhung anfordern, indem Sie eine Supportanfrage öffnen. 
 

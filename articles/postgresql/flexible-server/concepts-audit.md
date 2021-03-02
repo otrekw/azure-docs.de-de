@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: cf749f3aef10a0c67814722577f79906f447ffdb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b344e2a845a9da8333860599bd4ff9041108202f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532780"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588254"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---flexible-server"></a>Überwachungsprotokollierung in Azure Database for PostgreSQL – Flexible Server
 
@@ -20,7 +20,7 @@ Die Überwachungsprotokollierung von Datenbankaktivitäten in Azure Database for
 > [!IMPORTANT]
 > Azure Database for PostgreSQL – Flexible Server befindet sich in der Vorschau.
 
-Wenn Sie Azure-Protokolle auf Ressourcenebene für Vorgänge wie Compute- und Speicherskalierung erfassen möchten, lesen Sie den Artikel zum [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/platform-logs-overview.md).
+Wenn Sie Azure-Protokolle auf Ressourcenebene für Vorgänge wie Compute- und Speicherskalierung erfassen möchten, lesen Sie den Artikel zum [Azure-Aktivitätsprotokoll](../../azure-monitor/essentials/platform-logs-overview.md).
 
 ## <a name="usage-considerations"></a>Überlegungen zur Verwendung
 Standardmäßig werden pgAudit-Protokollanweisungen zusammen mit ihren regulären Protokollanweisungen mithilfe der Standardprotokollierungsfunktion von Postgres ausgegeben. In Azure Database for PostgreSQL – Flexible Server können Sie konfigurieren, dass alle Protokolle für spätere Analysen in Log Analytics an den Azure Monitor-Protokollspeicher gesendet werden. Wenn Sie die Azure Monitor-Ressourcenprotokollierung aktivieren, werden Ihre Protokolle abhängig von Ihrer Wahl automatisch (im JSON-Format) an Azure Storage, Event Hubs und/oder Azure Monitor-Protokolle gesendet.
@@ -57,9 +57,9 @@ Jeder Überwachungseintrag wird durch `AUDIT:` am Anfang der Protokollzeile geke
 Legen Sie für einen schnellen Einstieg `pgaudit.log` auf `WRITE` fest, und öffnen Sie Ihre Serverprotokolle, um die Ausgabe zu überprüfen. 
 
 ## <a name="viewing-audit-logs"></a>Anzeigen von Überwachungsprotokollen
-Die Art und Weise, wie Sie auf die Protokolle zugreifen, hängt vom gewählten Endpunkt ab. Informationen zu Azure Storage finden Sie im Artikel [Protokollspeicherkonto](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage). Informationen zu Event Hubs finden Sie im Artikel zum [Streamen von Azure-Protokollen](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
+Die Art und Weise, wie Sie auf die Protokolle zugreifen, hängt vom gewählten Endpunkt ab. Informationen zu Azure Storage finden Sie im Artikel [Protokollspeicherkonto](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage). Informationen zu Event Hubs finden Sie im Artikel zum [Streamen von Azure-Protokollen](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs).
 
-Bei Azure Monitor-Protokollen werden die Protokolle an den von Ihnen ausgewählten Arbeitsbereich gesendet. Für die Postgres-Protokolle wird der Sammlungsmodus **AzureDiagnostics** verwendet, damit sie über die Tabelle „AzureDiagnostics“ abgefragt werden können. Die Felder der Tabelle sind unten beschrieben. Weitere Informationen zu Abfragen und Warnungen finden Sie in der Übersicht über [Abfragen für Azure Monitor-Protokolle](../../azure-monitor/log-query/log-query-overview.md).
+Bei Azure Monitor-Protokollen werden die Protokolle an den von Ihnen ausgewählten Arbeitsbereich gesendet. Für die Postgres-Protokolle wird der Sammlungsmodus **AzureDiagnostics** verwendet, damit sie über die Tabelle „AzureDiagnostics“ abgefragt werden können. Die Felder der Tabelle sind unten beschrieben. Weitere Informationen zu Abfragen und Warnungen finden Sie in der Übersicht über [Abfragen für Azure Monitor-Protokolle](../../azure-monitor/logs/log-query-overview.md).
 
 Sie können diese Abfrage für den Einstieg verwenden. Sie können Warnungen basierend auf Abfragen konfigurieren.
 

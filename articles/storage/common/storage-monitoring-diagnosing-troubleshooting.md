@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 50d78e83bbbeb4b0252c83f9f52e94599ea6946c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 2f68452bed69e4e174f126d259e8df6d2283e6cf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787959"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585213"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -94,7 +94,7 @@ Die [Anhänge] enthalten Informationen zur Verwendung anderer Tools wie Wireshar
 ## <a name="monitoring-your-storage-service"></a><a name="monitoring-your-storage-service"></a>Überwachung Ihres Speicherdiensts
 Wenn Sie mit der Windows-Leistungsüberwachung vertraut sind, können Sie von Speichermetriken als einem Azure-Speicher-Pendant zu Windows-Leistungsüberwachungsindikatoren ausgehen. In Speichermetriken finden Sie einen umfassenden Metriksatz (Indikatoren in der Windows Performance Monitor-Terminologie) wie Dienstverfügbarkeit, Gesamtzahl der Dienstanfragen oder Prozentsatz der erfolgreichen Dienstanfragen. Eine vollständige Liste der verfügbaren Kennzahlen finden Sie im Thema zu den [Kennzahlen zur Speicheranalyse – Tabellenschema](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema). Sie können spezifizieren, ob der Speicherdienst die Metriken jede Stunde oder jede Minute sammeln und aggregieren soll. Weitere Informationen zur Metrik-Aktivierung und Überwachung Ihrer Speicherkonten finden Sie unter [Aktivieren der Speichermetriken und Anzeigen von Metrikdaten](../blobs/monitor-blob-storage.md).
 
-Sie können auswählen, welche Stundenmetriken Sie im [Azure-Portal](https://portal.azure.com) anzeigen möchten, und Regeln konfigurieren, die den Administrator per E-Mail benachrichtigen, wenn eine Stundenmetrik einen bestimmten Schwellenwert überschreitet. Weitere Informationen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](../../azure-monitor/platform/alerts-overview.md).
+Sie können auswählen, welche Stundenmetriken Sie im [Azure-Portal](https://portal.azure.com) anzeigen möchten, und Regeln konfigurieren, die den Administrator per E-Mail benachrichtigen, wenn eine Stundenmetrik einen bestimmten Schwellenwert überschreitet. Weitere Informationen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](../../azure-monitor/alerts/alerts-overview.md).
 
 Es wird empfohlen, [Azure Monitor für Storage](../../azure-monitor/insights/storage-insights-overview.md) (Vorschau) zu überprüfen. Dieses Feature von Azure Monitor ermöglicht eine umfassende Überwachung ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. Sie müssen nichts aktivieren oder konfigurieren und können diese Metriken aus den vordefinierten interaktiven Diagrammen und anderen darin enthaltenen Visualisierungen sofort anzeigen.
 

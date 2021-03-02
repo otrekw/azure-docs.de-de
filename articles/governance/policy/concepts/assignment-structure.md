@@ -3,12 +3,12 @@ title: Details zur Richtlinienzuweisungsstruktur
 description: Beschreibt die Definition der Richtlinienzuweisung, die von Azure Policy verwendet wird, um Richtliniendefinitionen und -parameter zur Bewertung mit Ressourcen in Beziehung zu setzen.
 ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1151c931863e1139b76c34ced12c4e2842f83cc6
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 625314a8b83a4d0cc76eae51eae8d357e39d2a6a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558445"
+ms.locfileid: "100581961"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-Zuweisungsstruktur
 
@@ -63,7 +63,7 @@ Sie verwenden **displayName** und **description**, um die Richtlinienzuweisung z
 
 ## <a name="enforcement-mode"></a>Erzwingungsmodus
 
-Mit der **enforcementMode**-Eigenschaft können Kunden das Ergebnis einer Richtlinie für vorhandene Ressourcen testen, ohne dass die Richtlinienauswirkung initiiert oder Einträge im [Azure-Aktivitätsprotokoll](../../../azure-monitor/platform/platform-logs-overview.md) ausgelöst werden. Dieses Szenario wird allgemein als „Was-wäre-wenn“ bezeichnet und richtet sich nach sicheren Bereitstellungsverfahren. **enforcementMode** unterscheidet sich vom Effekt [Disabled](./effects.md#disabled), da dieser Effekt die Ressourcenauswertung gänzlich verhindert.
+Mit der **enforcementMode**-Eigenschaft können Kunden das Ergebnis einer Richtlinie für vorhandene Ressourcen testen, ohne dass die Richtlinienauswirkung initiiert oder Einträge im [Azure-Aktivitätsprotokoll](../../../azure-monitor/essentials/platform-logs-overview.md) ausgelöst werden. Dieses Szenario wird allgemein als „Was-wäre-wenn“ bezeichnet und richtet sich nach sicheren Bereitstellungsverfahren. **enforcementMode** unterscheidet sich vom Effekt [Disabled](./effects.md#disabled), da dieser Effekt die Ressourcenauswertung gänzlich verhindert.
 
 Diese Eigenschaft weist die folgenden Werte auf:
 

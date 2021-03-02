@@ -3,12 +3,12 @@ title: Entfernen von VM-Erweiterungen über das Azure-Portal
 description: In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal VM-Erweiterungen auf Azure Arc-fähigen Servern bereitstellen, die in Hybrid Cloud-Umgebungen ausgeführt werden.
 ms.date: 01/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 43bbcef28b77e7c7112880fdac1bbd4809791cef
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b0e114b314179d42ccd47b7d7bd534d3a824a411
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728947"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587662"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Aktivieren von Azure-VM-Erweiterungen über das Azure-Portal
 
@@ -33,7 +33,7 @@ VM-Erweiterungen können über das Azure-Portal auf Ihren mit Arc für Server ve
 
     ![Installieren der Log Analytics VM-Erweiterung](./media/manage-vm-extensions/mma-extension-config.png)
 
-    Um die Installation abzuschließen, müssen Sie die Arbeitsbereichs-ID und den Primärschlüssel angeben. Wenn Sie mit dem Ermitteln dieser Informationen nicht vertraut sind, lesen Sie [Abrufen von Arbeitsbereichs-ID und Schlüssel](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
+    Um die Installation abzuschließen, müssen Sie die Arbeitsbereichs-ID und den Primärschlüssel angeben. Wenn Sie mit dem Ermitteln dieser Informationen nicht vertraut sind, lesen Sie [Abrufen von Arbeitsbereichs-ID und Schlüssel](../../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key).
 
 4. Nach dem Bestätigen der bereitgestellten erforderlichen Informationen wählen Sie **Erstellen** aus. Es wird eine Zusammenfassung der Bereitstellung angezeigt, und Sie können den Status der Bereitstellung überprüfen.
 

@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: bb0765a1d7934d60f787ed277dd3bd1f9bc1359b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58ddf60a842a9583eae25a875f55227cee772a8a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962943"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582541"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Verwalten eines App Service-Plans in Azure
 
@@ -82,7 +82,7 @@ Sie finden **App klonen** im Abschnitt **Entwicklungstools** des Menüs.
 
 Informationen zum Hochskalieren des Tarifs eines App Service-Plans finden Sie unter [Hochskalieren einer App in Azure](manage-scale-up.md).
 
-Informationen zum Aufskalieren einer App-Instanz finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../azure-monitor/platform/autoscale-get-started.md).
+Informationen zum Aufskalieren einer App-Instanz finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../azure-monitor/autoscale/autoscale-get-started.md).
 
 <a name="delete"></a>
 

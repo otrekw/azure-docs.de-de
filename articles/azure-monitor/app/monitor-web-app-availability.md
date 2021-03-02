@@ -4,12 +4,12 @@ description: Richten Sie Webtests in Application Insights ein. Erhalten Sie Bena
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: b0f66608c6e0f23b861e207d0dea07a546b41c2a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 41338760034918dce30ffb45c738588a2aa29786
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937414"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585944"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Überwachen der Verfügbarkeit von Websites
 
@@ -151,7 +151,7 @@ Klicken Sie auf die Ausnahmezeile, um die Details der serverseitigen Ausnahme an
 
 ![Serverseitige Diagnose](./media/monitor-web-app-availability/open-instance-4.png)
 
-Zusätzlich zu den reinen Ergebnissen können Sie im [Metrik-Explorer](../platform/metrics-getting-started.md) zwei wichtige Verfügbarkeitsmetriken abrufen:
+Zusätzlich zu den reinen Ergebnissen können Sie im [Metrik-Explorer](../essentials/metrics-getting-started.md) zwei wichtige Verfügbarkeitsmetriken abrufen:
 
 1. Verfügbarkeit: Prozentsatz der erfolgreichen Tests für alle Testausführungen.
 2. Testdauer: Durchschnittliche Testdauer für alle Testausführungen.
@@ -159,7 +159,7 @@ Zusätzlich zu den reinen Ergebnissen können Sie im [Metrik-Explorer](../platfo
 ## <a name="automation"></a>Automation
 
 * [Verwenden Sie PowerShell-Skripts zum automatischen Einrichten eines Verfügbarkeitstests](./powershell.md#add-an-availability-test).
-* Richten Sie einen [Webhook](../platform/alerts-webhooks.md) ein, der bei einer Warnung aufgerufen wird.
+* Richten Sie einen [Webhook](../alerts/alerts-webhooks.md) ein, der bei einer Warnung aufgerufen wird.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

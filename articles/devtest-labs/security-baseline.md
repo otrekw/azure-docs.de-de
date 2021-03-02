@@ -3,12 +3,12 @@ title: Azure-Sicherheitsbaseline für Azure DevTest Labs
 description: Azure-Sicherheitsbaseline für Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 09b4e28437c79961d53cf07b068e3169d20fe0c4
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c192f881dd4a8544b9c833eece56fb3765cd07f8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789903"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582029"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure-Sicherheitsbaseline für Azure DevTest Labs
 
@@ -34,7 +34,7 @@ Weitere Informationen zum Konfigurieren der Zeitsynchronisierung für Azure-Comp
 ### <a name="22-configure-central-security-log-management"></a>2.2: Konfigurieren der zentralen Sicherheitsprotokollverwaltung
 **Leitfaden**: Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, und senden Sie die Protokolle zwecks Archivierung an einen Log Analytics-Arbeitsbereich, eine Azure Event Hub-Instanz oder ein Azure-Speicherkonto. Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure DevTest Labs-Instanzen auf Verwaltungsebene erfolgen. Mit den Daten aus Azure-Aktivitätsprotokollen können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für Schreibvorgänge (PUT, POST, DELETE) ermitteln, die auf Verwaltungsebene für Ihre Azure DevTest Labs-Instanzen durchgeführt werden.
 
-Weitere Informationen finden Sie unter [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../azure-monitor/platform/diagnostic-settings.md).
+Weitere Informationen finden Sie unter [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../azure-monitor/essentials/diagnostic-settings.md).
 
 **Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
@@ -43,7 +43,7 @@ Weitere Informationen finden Sie unter [Erstellen von Diagnoseeinstellungen zum 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Aktivieren der Überwachungsprotokollierung für Azure-Ressourcen
 **Leitfaden**: Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, und senden Sie die Protokolle zwecks Archivierung an einen Log Analytics-Arbeitsbereich, eine Azure Event Hub-Instanz oder ein Azure-Speicherkonto. Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure DevTest Labs-Instanzen auf Verwaltungsebene erfolgen. Mit den Daten aus Azure-Aktivitätsprotokollen können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die auf Verwaltungsebene für Ihre Azure DevTest Labs-Instanzen durchgeführt werden.
 
-Weitere Informationen finden Sie unter [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../azure-monitor/platform/diagnostic-settings.md).
+Weitere Informationen finden Sie unter [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../azure-monitor/essentials/diagnostic-settings.md).
 
 **Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
@@ -54,7 +54,7 @@ Weitere Informationen finden Sie unter [Erstellen von Diagnoseeinstellungen zum 
 
 Weitere Informationen finden Sie in den folgenden Artikeln: 
 
-- [Sammeln von internen Azure Virtual Machine-Hostprotokollen mit Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Sammeln von internen Azure Virtual Machine-Hostprotokollen mit Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 - [Grundlegendes zur Datensammlung in Azure Security Center](../security-center/security-center-enable-data-collection.md)
 
 **Azure Security Center-Überwachung:** Ja
@@ -62,9 +62,9 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 **Verantwortlichkeit:** Kunde
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5: Konfigurieren der Sicherheitsprotokoll-Aufbewahrungsdauer im Speicher
-**_Leitfaden:_* Legen Sie in Azure Monitor die Protokollaufbewahrungsdauer für Log Analytics-Arbeitsbereiche, die Ihrer Azure DevTest Labs-Instanz zugeordnet sind, gemäß den Compliancevorschriften Ihres Unternehmens fest.
+***Leitfaden:** Legen Sie in Azure Monitor die Protokollaufbewahrungsdauer für Log Analytics-Arbeitsbereiche, die Ihrer Azure DevTest Labs-Instanz zugeordnet sind, gemäß den Compliancevorschriften Ihres Unternehmens fest.
 
-Weitere Informationen finden Sie im folgenden Artikel: [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+Weitere Informationen finden Sie im folgenden Artikel: [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung:** Nicht verfügbar
 
@@ -75,8 +75,8 @@ Weitere Informationen finden Sie im folgenden Artikel: [Ändern des Datenaufbewa
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center-Überwachung:** Nicht verfügbar
 
@@ -85,7 +85,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Aktivieren von Warnungen für anormale Aktivitäten
 **Leitfaden**: Verwenden Sie den Azure Log Analytics-Arbeitsbereich zum Überwachen von und Warnen vor anomalen Aktivitäten in Sicherheitsprotokollen und -ereignissen für Azure DevTest Labs.
 
-Weitere Informationen finden Sie im folgenden Artikel: [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/learn/tutorial-response.md)
+Weitere Informationen finden Sie im folgenden Artikel: [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
@@ -109,8 +109,8 @@ Weitere Informationen finden Sie im folgenden Artikel: [Warnungen bei Log Analyt
 **Leitfaden**: Azure DevTest Labs erstellt Azure Compute-Computer, die sich im Besitz des Kunden befinden und von diesem verwaltet werden. Verwenden Sie Microsoft Monitoring Agent auf allen unterstützten Azure Windows-VMs, um das Prozesserstellungsereignis und das Feld `CommandLine` zu protokollieren. Bei unterstützten virtuellen Azure Linux-VMs können Sie die Konsolenprotokollierung pro Knoten manuell konfigurieren und die Daten mithilfe von Syslog speichern. Verwenden Sie außerdem den Log Analytics-Arbeitsbereich von Azure Monitor, um Protokolle zu überprüfen und Abfragen für protokollierte Daten von Azure-VMs auszuführen.
 
 - [Datensammlung in Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
-- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
-- [Syslog-Datenquellen in Azure Monitor](../azure-monitor/platform/data-sources-syslog.md)
+- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
+- [Syslog-Datenquellen in Azure Monitor](../azure-monitor/agents/data-sources-syslog.md)
 
 **Azure Security Center-Überwachung:** Ja
 
@@ -175,9 +175,9 @@ Zusätzlich können Sie, um den Überblick über dedizierte Verwaltungskonten zu
 - [Aktivieren von MFA in Azure](../active-directory/authentication/howto-mfa-getstarted.md)  
 - [Überwachen von Identität und Zugriff in Azure Security Center](../security-center/security-center-identity-access.md)
 
-**Azure Security Center-Überwachung:** _ Ja
+**Azure Security Center-Überwachung**:* Ja
 
-_ *Verantwortlichkeit:* * Kunde
+**Verantwortlichkeit:** Kunde
 
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Verwenden dedizierter Computer (Arbeitsstationen mit privilegiertem Zugriff) für alle administrativen Aufgaben
@@ -353,7 +353,7 @@ Standardmäßig werden alle Labdatenträger für Betriebssystem und Daten mit ei
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Protokollieren und Warnen bei Änderungen an wichtigen Azure-Ressourcen
 **Leitfaden:** Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an DevTest Labs-Instanzen und anderen kritischen bzw. zugehörigen Ressourcen vorgenommen werden.
 
-- [Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse](../azure-monitor/alerts/alerts-activity-log.md)
 - [Erstellen von Warnungen für DevTest Labs-Aktivitätsprotokollereignisse](create-alerts.md)
 
 **Azure Security Center-Überwachung:** Nicht verfügbar
@@ -387,7 +387,7 @@ Microsoft führt die Verwaltung der Sicherheitsrisiken für die zugrunde liegend
 **Verantwortlichkeit:** Kunde
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Bereitstellen der automatisierten Lösung für die Patchverwaltung von Drittanbietersoftware
-**_Leitfaden:_* _ Als Lab-Administrator können Sie [DevTest Labs-Artefakte](add-artifact-vm.md) verwenden, um Updates für benutzerdefinierte Lab-Images (einschließlich Sicherheitspatches und anderer Updates) zu automatisieren. 
+***Leitfaden:*** Als Lab-Administrator können Sie [DevTest Labs-Artefakte](add-artifact-vm.md) verwenden, um Updates für benutzerdefinierte Lab-Images (einschließlich Sicherheitspatches und anderer Updates) zu automatisieren. 
 
 Erfahren Sie mehr über [DevTest Labs Image Factory](image-factory-create.md), eine Konfiguration-als-Code-Lösung, die Images automatisch in regelmäßigen Abständen mit allen gewünschten Konfigurationen erstellt und verteilt. 
 
@@ -396,7 +396,7 @@ Als Abonnementadministrator können Sie die Azure-Updateverwaltung verwenden, um
 - [Updateverwaltung in Azure](../automation/update-management/overview.md)
 - [Verwalten von Updates und Patches für Ihre VMs](../automation/update-management/overview.md)
 
-_ *Azure Security Center Überwachung:* * Nicht zutreffend
+**Azure Security Center-Überwachung:** Nicht verfügbar
 
 **Verantwortlichkeit:** Kunde
 

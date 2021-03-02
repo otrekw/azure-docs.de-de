@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 63d1a0bf437df6bc0b68474e092ca23985493b24
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 0bf3a95814aadf687efcc27294b760e14f7d45d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559583"
+ms.locfileid: "100585633"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>Änderung an E-Mail-Benachrichtigungen der intelligenten Erkennung
 
@@ -27,7 +27,7 @@ Diese Änderung wirkt sich mit folgenden Ausnahmen auf alle Regeln der intellige
 
 * Regeln der intelligenten Erkennung, die als Vorschauversion gekennzeichnet sind. Diese Regeln der intelligenten Erkennung unterstützen gegenwärtig keine E-Mail-Benachrichtigungen.
 
-* Regel für Fehleranomalien. Diese Regel gilt für die neuen Standardrollen, sobald sie von einer klassischen Warnung zur einheitlichen Warnungsplattform migriert wurde. (Weitere Informationen finden Sie [hier](../platform/monitoring-classic-retirement.md).)
+* Regel für Fehleranomalien. Diese Regel gilt für die neuen Standardrollen, sobald sie von einer klassischen Warnung zur einheitlichen Warnungsplattform migriert wurde. (Weitere Informationen finden Sie [hier](../alerts/monitoring-classic-retirement.md).)
 
 ## <a name="how-to-prepare-for-this-change"></a>Vorbereitung auf diese Änderung
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2f814c54aeca8a337f786beb8da1b98accbeef7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2278b9d70e888fa546dc64da4743b2bf5b6c45e8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318996"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587524"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>API-Referenz für den Azure Monitor Application Insights-.NET-Agent
 
@@ -637,9 +637,9 @@ Timeout Reached. Stopping...
 ## <a name="next-steps"></a>Nächste Schritte
 
   Anzeigen der Telemetrie:
- - [Untersuchen Sie Metriken](../platform/metrics-charts.md) zum Überwachen der Leistung und Nutzung.
+ - [Untersuchen Sie Metriken](../essentials/metrics-charts.md) zum Überwachen der Leistung und Nutzung.
 - [Durchsuchen Sie Ereignisse und Protokolle](./diagnostic-search.md), um Probleme zu diagnostizieren.
-- Verwenden Sie [Analytics](../log-query/log-query-overview.md) für erweiterte Abfragen.
+- Verwenden Sie [Analytics](../logs/log-query-overview.md) für erweiterte Abfragen.
 - [Erstellen Sie Dashboards](./overview-dashboard.md).
  
  Hinzufügen weiterer Telemetrieelemente:

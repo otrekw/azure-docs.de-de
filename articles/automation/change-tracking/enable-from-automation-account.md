@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 64eace72b6ea203d4052c39404bcbd7ce4c4bfa0
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 32fb95c88d632cc2c51cd2390f0244e9c1927051
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055160"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585893"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>Aktivieren von Änderungsnachverfolgung und Bestand über ein Automation-Konto
 
@@ -53,7 +53,7 @@ Computer, die nicht in Azure enthalten sind, müssen manuell hinzugefügt werden
 
 1. Wählen Sie in Ihrem Automation-Konto unter **Konfigurationsverwaltung** die Option **Bestand** oder **Änderungsnachverfolgung** aus.
 
-2. Klicken Sie auf **Nicht-Azure-Computer hinzufügen**. Daraufhin wird ein neues Browserfenster mit [Anweisungen zum Installieren und Konfigurieren des Log Analytics-Agents für Windows](../../azure-monitor/platform/log-analytics-agent.md) geöffnet, sodass der Computer damit beginnen kann, Vorgänge für „Änderungsnachverfolgung und Bestand“ zu melden. Wenn Sie einen Computer aktivieren, der aktuell von Operations Manager verwaltet wird, ist kein neuer Agent erforderlich. Die Arbeitsbereichsinformationen werden in den vorhandenen Agent eingegeben.
+2. Klicken Sie auf **Nicht-Azure-Computer hinzufügen**. Daraufhin wird ein neues Browserfenster mit [Anweisungen zum Installieren und Konfigurieren des Log Analytics-Agents für Windows](../../azure-monitor/agents/log-analytics-agent.md) geöffnet, sodass der Computer damit beginnen kann, Vorgänge für „Änderungsnachverfolgung und Bestand“ zu melden. Wenn Sie einen Computer aktivieren, der aktuell von Operations Manager verwaltet wird, ist kein neuer Agent erforderlich. Die Arbeitsbereichsinformationen werden in den vorhandenen Agent eingegeben.
 
 ## <a name="enable-machines-in-the-workspace"></a>Aktivieren von Computern im Arbeitsbereich
 

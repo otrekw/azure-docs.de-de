@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: f0ce969a4ab016d6a036d33a0e9bf027bb580a20
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 69f80856150e461c6edfafdf0aa89de77c4ab0fd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186217"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583806"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Bereitstellen des Azure Monitor Application Insights-Agents für lokale Server
 
@@ -67,7 +67,7 @@ Jede dieser Optionen wird in den [ausführlichen Anweisungen](status-monitor-v2-
   - Mit dem Cmdlet [Get-ApplicationInsightsMonitoringStatus](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringstatus) können Sie überprüfen, ob die Aktivierung erfolgreich war.
   - Es wird empfohlen, anhand von [Livemetriken](./live-stream.md) schnell zu ermitteln, ob Ihre App Telemetriedaten sendet.
 
-  - Sie können auch [Log Analytics](../log-query/log-analytics-tutorial.md) verwenden, um alle Cloudrollen aufzulisten, die derzeit Telemetriedaten senden.
+  - Sie können auch [Log Analytics](../logs/log-analytics-tutorial.md) verwenden, um alle Cloudrollen aufzulisten, die derzeit Telemetriedaten senden.
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
@@ -76,9 +76,9 @@ Jede dieser Optionen wird in den [ausführlichen Anweisungen](status-monitor-v2-
 
 Anzeigen der Telemetrie:
 
-* [Untersuchen Sie Metriken](../platform/metrics-charts.md) zum Überwachen der Leistung und Nutzung.
+* [Untersuchen Sie Metriken](../essentials/metrics-charts.md) zum Überwachen der Leistung und Nutzung.
 * [Durchsuchen Sie Ereignisse und Protokolle](./diagnostic-search.md), um Probleme zu diagnostizieren.
-* Verwenden Sie [Analytics](../log-query/log-query-overview.md) für erweiterte Abfragen.
+* Verwenden Sie [Analytics](../logs/log-query-overview.md) für erweiterte Abfragen.
 * [Erstellen Sie Dashboards](./overview-dashboard.md).
 
 Hinzufügen weiterer Telemetrieelemente:

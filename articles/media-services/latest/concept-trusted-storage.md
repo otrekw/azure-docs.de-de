@@ -9,16 +9,19 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: 96031642efb1248fb3b1acabeb9d7381177a2c70
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: fd92eed127ec50a3d3a86f667d9aa764b79c190a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098077"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585392"
 ---
 # <a name="trusted-storage-for-media-services"></a>Vertrauenswürdiger Speicher für Media Services
 
 Wenn Sie ein Media Services-Konto erstellen, müssen Sie es einem Speicherkonto zuordnen. Von Media Services kann per Systemauthentifizierung oder Authentifizierung verwalteter Identitäten auf dieses Speicherkonto zugegriffen werden. Media Services überprüft, ob sich das Media Services-Konto und das Speicherkonto im gleichen Abonnement befinden und ob der Benutzer, der die Zuordnung hinzufügt, Zugriff auf das Speicherkonto hat (mittels rollenbasierter Zugriffssteuerung für Azure Resource Manager).
+
+>[!NOTE]
+>Der vertrauenswürdige Speicher ist nur in der API verfügbar und derzeit nicht im Azure-Portal aktiviert.
 
 ## <a name="trusted-storage-with-a-firewall"></a>Vertrauenswürdiger Speicher mit einer Firewall
 

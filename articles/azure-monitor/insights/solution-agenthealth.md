@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
-ms.openlocfilehash: 4f14f006283b7430458d67d2bd3bee787c08411d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a498c229acce9359acfb4593ec5f833000ca2c39
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326017"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573373"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Lösung für die Agent-Integritätsdiagnose in Azure Monitor
 Die Agent-Integritätsdiagnose-Lösung in Azure bietet Ihnen für alle direkt an den Log Analytics-Arbeitsbereich in Azure Monitor oder eine mit Azure Monitor verbundene System Center Operations Manager-Verwaltungsgruppe berichtende Agents, die nicht reagieren und Betriebsdaten übermitteln, Einblicke in die Ursachen.  Außerdem können Sie nachverfolgen, wie viele Agents bereitgestellt werden und wie sie geografisch verteilt sind, und andere Abfragen durchführen, um zu ermitteln, wie Agents, die in Azure, anderen Cloudumgebungen oder lokal bereitgestellt wurden, verteilt sind.    
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Vergewissern Sie sich vor dem Bereitstellen dieser Lösung, dass Sie über derzeit unterstützte [Windows-Agents](../platform/agent-windows.md) verfügen, die Daten an den Log Analytics-Arbeitsbereich oder an eine [Operations Manager-Verwaltungsgruppe](../platform/om-agents.md), die in Ihren Arbeitsbereich integriert ist, melden.
+Vergewissern Sie sich vor dem Bereitstellen dieser Lösung, dass Sie über derzeit unterstützte [Windows-Agents](../agents/agent-windows.md) verfügen, die Daten an den Log Analytics-Arbeitsbereich oder an eine [Operations Manager-Verwaltungsgruppe](../agents/om-agents.md), die in Ihren Arbeitsbereich integriert ist, melden.
 
 ## <a name="solution-components"></a>Lösungskomponenten
 Diese Lösung besteht aus den folgenden Ressourcen, die Ihrem Arbeitsbereich hinzugefügt werden, und direkt verbundenen Agents oder mit Operations Manager verbundenen Verwaltungsgruppen.
@@ -28,7 +28,7 @@ Wenn Ihre System Center Operations Manager-Verwaltungsgruppe mit einem Log Analy
 * Microsoft System Center Advisor HealthAssessment Direct Channel Intelligence Pack (Microsoft.IntelligencePacks.HealthAssessmentDirect)
 * Microsoft System Center Advisor HealthAssessment Server Channel Intelligence Pack (Microsoft.IntelligencePacks.HealthAssessmentViaServer).  
 
-Weitere Informationen zur Aktualisierung von Management Packs finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../platform/om-agents.md).
+Weitere Informationen zur Aktualisierung von Management Packs finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../agents/om-agents.md).
 
 ## <a name="configuration"></a>Konfiguration
 Fügen Sie die Lösung für die Agent-Integritätsdiagnose dem Log Analytics-Arbeitsbereich hinzu, indem Sie den unter [Hinzufügen von Lösungen](solutions.md) beschriebenen Prozess verwenden. Es ist keine weitere Konfiguration erforderlich.
@@ -110,5 +110,5 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Datensätze, d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Lesen Sie sich die Details zum Generieren von Warnungen aus Protokollabfragen unter [Warnungen in Azure Monitor](../platform/alerts-overview.md) durch. 
+* Lesen Sie sich die Details zum Generieren von Warnungen aus Protokollabfragen unter [Warnungen in Azure Monitor](../alerts/alerts-overview.md) durch. 
 

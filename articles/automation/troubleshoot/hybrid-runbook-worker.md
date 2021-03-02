@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: af432d9c6323bd2328eb8dd84d8572a8a5ae05a7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 15a18cbfc3a80bbfea0b92e5b616104dc0f593af
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388004"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580984"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Beheben von Hybrid Runbook Worker-Problemen
 
@@ -128,7 +128,7 @@ Folgende Probleme kommen als Ursache in Betracht:
 #### <a name="resolution"></a>Lösung
 
 ##### <a name="mistyped-workspace-id-or-key"></a>Fehlerhaft eingegebene Arbeitsbereichs-ID oder fehlerhaft eingegebener Arbeitsbereichsschlüssel
-Sehen Sie sich im Artikel „Verwalten und Warten des Log Analytics-Agents für Windows und Linux“ die Informationen im Abschnitt zum Hinzufügen oder Entfernen von Arbeitsbereichen für den [Windows-Agent](../../azure-monitor/platform/agent-manage.md#windows-agent) bzw. [Linux-Agent](../../azure-monitor/platform/agent-manage.md#linux-agent) an, um zu überprüfen, ob die Arbeitsbereichs-ID oder der Arbeitsbereichsschlüssel des Agents fehlerhaft eingegeben wurde. Stellen Sie sicher, dass Sie die Zeichenfolge im Azure-Portal vollständig markieren, und gehen Sie beim Kopieren und Einfügen sorgfältig vor.
+Sehen Sie sich im Artikel „Verwalten und Warten des Log Analytics-Agents für Windows und Linux“ die Informationen im Abschnitt zum Hinzufügen oder Entfernen von Arbeitsbereichen für den [Windows-Agent](../../azure-monitor/agents/agent-manage.md#windows-agent) bzw. [Linux-Agent](../../azure-monitor/agents/agent-manage.md#linux-agent) an, um zu überprüfen, ob die Arbeitsbereichs-ID oder der Arbeitsbereichsschlüssel des Agents fehlerhaft eingegeben wurde. Stellen Sie sicher, dass Sie die Zeichenfolge im Azure-Portal vollständig markieren, und gehen Sie beim Kopieren und Einfügen sorgfältig vor.
 
 ##### <a name="configuration-not-downloaded"></a>Konfiguration nicht heruntergeladen
 
@@ -169,7 +169,7 @@ Legen Sie diese Datei im selben Ordner wie die ausführbare Datei `OrchestratorS
 
 ## <a name="linux"></a>Linux
 
-Der Linux Hybrid Runbook Worker ist abhängig vom [Log Analytics-Agent für Linux](../../azure-monitor/platform/log-analytics-agent.md), um mit Ihrem Automation-Konto für die Registrierung des Workers zu kommunizieren, Runbook-Aufträge zu erhalten und den Status zu melden. Wenn bei der Registrierung des Workers ein Fehler auftritt, kommen hierfür mehrere Gründe infrage.
+Der Linux Hybrid Runbook Worker ist abhängig vom [Log Analytics-Agent für Linux](../../azure-monitor/agents/log-analytics-agent.md), um mit Ihrem Automation-Konto für die Registrierung des Workers zu kommunizieren, Runbook-Aufträge zu erhalten und den Status zu melden. Wenn bei der Registrierung des Workers ein Fehler auftritt, kommen hierfür mehrere Gründe infrage.
 
 ### <a name="scenario-linux-hybrid-runbook-worker-receives-prompt-for-a-password-when-signing-a-runbook"></a><a name="prompt-for-password"></a>Szenario: Beim Signieren eines Runbooks erhält der Linux-Hybrid Runbook Worker eine Aufforderung zum Eingeben eines Kennworts
 
@@ -225,7 +225,7 @@ wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/inst
 
 ## <a name="windows"></a>Windows
 
-Der Windows Hybrid Runbook Worker ist abhängig vom [Log Analytics-Agent für Windows](../../azure-monitor/platform/log-analytics-agent.md), um mit Ihrem Automation-Konto für die Registrierung des Workers zu kommunizieren, Runbook-Aufträge zu erhalten und den Status zu melden. Für den Fall, dass bei der Registrierung des Workers ein Fehler auftritt, werden in diesem Abschnitt einige mögliche Gründe hierfür erläutert.
+Der Windows Hybrid Runbook Worker ist abhängig vom [Log Analytics-Agent für Windows](../../azure-monitor/agents/log-analytics-agent.md), um mit Ihrem Automation-Konto für die Registrierung des Workers zu kommunizieren, Runbook-Aufträge zu erhalten und den Status zu melden. Für den Fall, dass bei der Registrierung des Workers ein Fehler auftritt, werden in diesem Abschnitt einige mögliche Gründe hierfür erläutert.
 
 ### <a name="scenario-the-log-analytics-agent-for-windows-isnt-running"></a><a name="mma-not-running"></a>Szenario: Der Log Analytics-Agent für Windows wird nicht ausgeführt.
 
@@ -253,7 +253,7 @@ Dieses Problem kann auftreten, wenn Ihr Proxy oder Ihre Netzwerkfirewall die Kom
 
 #### <a name="resolution"></a>Lösung
 
-Protokolle werden lokal auf jedem Hybridworker unter "C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes" gespeichert. Sie können überprüfen, ob in den Ereignisprotokollen unter **Anwendungs- und Dienstprotokolle\Microsoft-SMA\Operations** und **Anwendungs- und Dienstprotokolle\Operations Manager** Warnungs- oder Fehlerereignisse vorhanden sind. Diese Protokolle zeigen Verbindungsprobleme oder andere Probleme an, die Auswirkungen auf das Aktivieren der Rolle in Azure Automation haben, oder Probleme, die im normalen Betrieb auftreten. Weitere Hilfe bei der Behandlung von Problemen mit dem Log Analytics-Agent finden Sie unter [Behandeln von Problemen mit dem Log Analytics Windows-Agent](../../azure-monitor/platform/agent-windows-troubleshoot.md).
+Protokolle werden lokal auf jedem Hybridworker unter "C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes" gespeichert. Sie können überprüfen, ob in den Ereignisprotokollen unter **Anwendungs- und Dienstprotokolle\Microsoft-SMA\Operations** und **Anwendungs- und Dienstprotokolle\Operations Manager** Warnungs- oder Fehlerereignisse vorhanden sind. Diese Protokolle zeigen Verbindungsprobleme oder andere Probleme an, die Auswirkungen auf das Aktivieren der Rolle in Azure Automation haben, oder Probleme, die im normalen Betrieb auftreten. Weitere Hilfe bei der Behandlung von Problemen mit dem Log Analytics-Agent finden Sie unter [Behandeln von Problemen mit dem Log Analytics Windows-Agent](../../azure-monitor/agents/agent-windows-troubleshoot.md).
 
 Hybrid Worker senden [Runbookausgabe und -meldungen](../automation-runbook-output-and-messages.md) an Azure Automation auf dieselbe Art, auf die in der Cloud ausgeführte Runbookaufträge Ausgabe und Meldungen versenden. Wie bei Runbooks können Sie den ausführlichen Datenstrom und den Fortschrittsdatenstrom aktivieren.
 

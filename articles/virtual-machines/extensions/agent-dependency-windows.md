@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 82edc70befb7fce95869b238d26c9154ec999c7b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0151e7b3a30cd4b00dba75b7490563923cd5b8ff
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966835"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580297"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Azure Monitor Dependency-VM-Erweiterung für Windows
 
@@ -28,7 +28,7 @@ Das Zuordnungsfeature in Azure Monitor für VMs erhält seine Daten vom Microsof
 
 ## <a name="operating-system"></a>Betriebssystem
 
-Die Azure VM Dependency-Agent-Erweiterung für Windows kann für die unterstützten Betriebssysteme ausgeführt werden, die im Abschnitt [Unterstützte Betriebssysteme](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) des Bereitstellungsartikels zu Azure Monitor für VMs aufgelistet sind.
+Die Azure VM Dependency-Agent-Erweiterung für Windows kann für die unterstützten Betriebssysteme ausgeführt werden, die im Abschnitt [Unterstützte Betriebssysteme](../../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) des Bereitstellungsartikels zu Azure Monitor für VMs aufgelistet sind.
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
@@ -76,7 +76,7 @@ Das folgende JSON zeigt das Schema für die Azure VM Dependency-Agent-Erweiterun
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |
-| type | DependencyAgentWindows |
+| Type | DependencyAgentWindows |
 | typeHandlerVersion | 9.5 |
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen

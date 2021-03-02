@@ -4,16 +4,16 @@ description: Analysieren Sie die Nutzung und Leistung Ihrer Windows-Desktop-App 
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1aa1e8a9e7ccbbc90a961ebf47224f59f8a9e9fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15331494b40021f10c162fba75abf6fe88d2d419
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827875"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583322"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Überwachen der Nutzung und Leistung von klassischen Windows-Desktop-Apps
 
-Lokal, in Azure oder in anderen Clouds gehostete Anwendungen können Application Insights nutzen. Die einzige Einschränkung besteht darin, dass die [Kommunikation](./ip-addresses.md) mit dem Application Insights-Dienst zugelassen werden muss. Für die Überwachung von UWP-Anwendungen (universelle Windows-Plattform) wird [Visual Studio App Center](../learn/mobile-center-quickstart.md) empfohlen.
+Lokal, in Azure oder in anderen Clouds gehostete Anwendungen können Application Insights nutzen. Die einzige Einschränkung besteht darin, dass die [Kommunikation](./ip-addresses.md) mit dem Application Insights-Dienst zugelassen werden muss. Für die Überwachung von UWP-Anwendungen (universelle Windows-Plattform) wird [Visual Studio App Center](../app/mobile-center-quickstart.md) empfohlen.
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>So senden Sie Telemetriedaten aus einer klassischen Windows-Anwendung an Application Insights
 1. Erstellen Sie im [Azure-Portal](https://portal.azure.com)[eine Application Insights-Ressource](./create-new-resource.md). 
@@ -27,7 +27,7 @@ Lokal, in Azure oder in anderen Clouds gehostete Anwendungen können Application
    
     `<InstrumentationKey>`*Ihr Schlüssel*`</InstrumentationKey>` 
    
-    Wenn Sie die Datei „ApplicationInsights.config“ verwenden, stellen Sie sicher, dass ihre Eigenschaften im Projektmappen-Explorer auf **Buildvorgang = Inhalt, In Ausgabeverzeichnis kopieren = Kopieren**festgelegt sind.
+    Wenn Sie die Datei „ApplicationInsights.config“ verwenden, stellen Sie sicher, dass ihre Eigenschaften im Projektmappen-Explorer auf **Buildvorgang = Inhalt, In Ausgabeverzeichnis kopieren = Kopieren** festgelegt sind.
 5. [Verwenden Sie die API](./api-custom-events-metrics.md) , um Telemetriedaten zu senden.
 6. Führen Sie die App aus, und sehen Sie sich die Telemetriedaten in der Ressource an, die Sie im Azure-Portal erstellt haben.
 
@@ -177,6 +177,6 @@ namespace WindowsFormsApp2
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erstellen eines Dashboards](./overview-dashboard.md)
 * [Diagnosesuche](./diagnostic-search.md)
-* [Untersuchen von Metriken](../platform/metrics-charts.md)
-* [Schreiben von Analytics-Abfragen](../log-query/log-query-overview.md)
+* [Untersuchen von Metriken](../essentials/metrics-charts.md)
+* [Schreiben von Analytics-Abfragen](../logs/log-query-overview.md)
 

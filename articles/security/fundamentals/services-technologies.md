@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 8a33e9d462f3105bfee295ac82384a38325f7c7c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 27443eb9c04c69567b3a1374f11e8b53837040f2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498794"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585421"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Bei Azure verfügbare Sicherheitsdienste und -technologien
 
@@ -35,7 +35,7 @@ Im Laufe der Zeit wird sich diese Liste – ebenso wie Azure – ändern und wac
 |--------|--------|
 |[Azure&nbsp;Security&nbsp;Center](../../security-center/security-center-introduction.md)| Eine Cloudlösung für Workloadschutz, die einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads bietet|
 |[Azure Key Vault](../../key-vault/general/overview.md)| Ein sicherer Kennwortspeicher für Kennwörter, Verbindungszeichenfolgen und andere Informationen, die Sie benötigen, damit Ihre Apps weiterhin funktionieren |
-|[Azure Monitor-Protokolle](../../azure-monitor/log-query/log-query-overview.md)|Ein Überwachungsdienst, der Telemetrie- und andere Daten erfasst und eine Abfragesprache sowie ein Analysemodul bietet, mit denen Sie Einblicke in die Abläufe Ihrer Apps und Ressourcen erhalten. Er kann alleine oder in Verbindung mit anderen Diensten wie Security Center verwendet werden. |
+|[Azure Monitor-Protokolle](../../azure-monitor/logs/log-query-overview.md)|Ein Überwachungsdienst, der Telemetrie- und andere Daten erfasst und eine Abfragesprache sowie ein Analysemodul bietet, mit denen Sie Einblicke in die Abläufe Ihrer Apps und Ressourcen erhalten. Er kann alleine oder in Verbindung mit anderen Diensten wie Security Center verwendet werden. |
 |[Dokumentation zu Azure Dev/Test Lab](../../devtest-labs/devtest-lab-overview.md)|Ein Dienst, der Entwicklern und Testern dabei hilft, Umgebungen in Azure schnell zu erstellen und dabei unnötigen Aufwand zu minimieren und die Kosten unter Kontrolle zu halten  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
@@ -71,7 +71,7 @@ Im Laufe der Zeit wird sich diese Liste – ebenso wie Azure – ändern und wac
 | [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)|Ein cloudbasiertes Authentifizierungsrepository, das ein cloudbasiertes Verzeichnis mit mehreren Mandanten sowie Verwaltungsdienste für mehrere Identitäten in Azure unterstützt  |
 | [Azure Active Directory B2C](../../active-directory-b2c/overview.md)|Ein Identitätsverwaltungsdienst, mit dem Sie die Registrierung und Anmeldung von Kunden und deren Verwaltung ihrer Profile bei der Verwendung von Azure-Anwendungen steuern können   |
 | [Azure Active Directory-Domänendienste](../../active-directory-domain-services/overview.md)| Eine cloudbasierte und verwaltete Version von Active Directory Domain Services |
-| [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)| Ein Sicherheitsmechanismus, der verschiedene Formen der Authentifizierung und Überprüfung anwendet, bevor der Zugriff auf abgesicherte Informationen zugelassen wird |
+| [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)| Ein Sicherheitsmechanismus, der verschiedene Formen der Authentifizierung und Überprüfung anwendet, bevor der Zugriff auf abgesicherte Informationen zugelassen wird |
 
 ## <a name="backup-and-disaster-recovery"></a>Backup und Notfallwiederherstellung
 |Dienst|BESCHREIBUNG|

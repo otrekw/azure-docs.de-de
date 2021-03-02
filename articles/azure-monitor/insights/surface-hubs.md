@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 7e3b0f92770b48ef5163846e67940efe80fb669a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e38214174fd4e3aa6859f05fd24737d9e9d1f963
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90085347"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587226"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Überwachen von Surface Hubs mit Azure Monitor zum Verfolgen ihrer Integrität
 
@@ -26,7 +26,7 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 
 * Eine [Log Analytics-Abonnementebene](https://azure.microsoft.com/pricing/details/log-analytics/), die die Anzahl der Geräte unterstützt, die Sie überwachen möchten. Log Analytics-Preise hängen davon ab, wie viele Geräte registriert sind und wie viele Daten verarbeitet werden. Sie sollten dies bei der Planung Ihrer Surface Hub-Implementierung berücksichtigen.
 
-Wählen Sie als Nächstes einen vorhandenen Log Analytics-Arbeitsbereich aus, oder erstellen Sie einen neuen Arbeitsbereich. Detaillierte Anweisungen für die Verwendung beider Methoden finden Sie in [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../learn/quick-create-workspace.md). Wenn der Log Analytics-Arbeitsbereich konfiguriert wurde, haben Sie zwei Möglichkeiten zum Registrieren Ihrer Surface Hub-Geräte:
+Wählen Sie als Nächstes einen vorhandenen Log Analytics-Arbeitsbereich aus, oder erstellen Sie einen neuen Arbeitsbereich. Detaillierte Anweisungen für die Verwendung beider Methoden finden Sie in [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../logs/quick-create-workspace.md). Wenn der Log Analytics-Arbeitsbereich konfiguriert wurde, haben Sie zwei Möglichkeiten zum Registrieren Ihrer Surface Hub-Geräte:
 
 * Automatisch über Intune
 * Manuell über **Einstellungen** auf Ihrem Surface Hub-Gerät
@@ -74,8 +74,8 @@ Wenn Sie auf der Surface Hub-Kachel klicken, wird die Integrität des Geräts an
 
    ![Surface Hub-Dashboard](./media/surface-hubs/surface-hub-dashboard.png)
 
-Sie können [Warnungen](../platform/alerts-overview.md) auf der Grundlage von vorhandenen oder benutzerdefinierten Protokollsuchvorgängen erstellen. Mit den Daten, die Azure Monitor auf Surface Hubs sammelt, können Sie nach Problemen suchen und Warnungen für die Bedingungen ausgegeben, die Sie für Ihre Geräte definieren.
+Sie können [Warnungen](../alerts/alerts-overview.md) auf der Grundlage von vorhandenen oder benutzerdefinierten Protokollsuchvorgängen erstellen. Mit den Daten, die Azure Monitor auf Surface Hubs sammelt, können Sie nach Problemen suchen und Warnungen für die Bedingungen ausgegeben, die Sie für Ihre Geräte definieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie [Protokollabfragen in Azure Monitor](../log-query/log-query-overview.md), um ausführliche Surface Hub-Daten anzuzeigen.
-* Erstellen Sie [Warnungen](../platform/alerts-overview.md), um benachrichtigt zu werden, wenn Probleme mit Surface Hubs auftreten.
+* Verwenden Sie [Protokollabfragen in Azure Monitor](../logs/log-query-overview.md), um ausführliche Surface Hub-Daten anzuzeigen.
+* Erstellen Sie [Warnungen](../alerts/alerts-overview.md), um benachrichtigt zu werden, wenn Probleme mit Surface Hubs auftreten.

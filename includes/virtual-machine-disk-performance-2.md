@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 3c4ab8362b2a717a348a59c0baf829b61e1a8006
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 82b4c127f983f3133326bf7fb538e40713ef9655
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808477"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580376"
 ---
 ![Diagramm mit den Dsv3-Spezifikationen.](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -117,57 +117,3 @@ In diesem Fall stellt die auf dem virtuellen Computer vom Typ „Standard_D8s_v3
 - Da die drei Datenträger, die die Hostzwischenspeicherung verwenden, innerhalb der zwischengespeicherten Grenzwerte von 16.000 liegen, werden diese Anforderungen erfolgreich abgeschlossen. Es erfolgt keine Leistungsbegrenzung für den Speicher.
 - Da die zwei Datenträger, die die Hostzwischenspeicherung nicht verwenden, innerhalb der nicht zwischengespeicherten Grenzwerte von 12.800 liegen, werden diese Anforderungen ebenfalls erfolgreich abgeschlossen. Es erfolgt keine Begrenzung.
 
-## <a name="disk-performance-metrics"></a>Leistungsmetriken für Datenträger
-
-Wir verfügen über Metriken in Azure, die Aufschluss über die Leistung Ihrer virtuellen Computer und Datenträger geben. Diese Metriken können über das Azure-Portal angezeigt werden. Sie können auch über einen API-Aufruf abgerufen werden. Metriken werden in Intervallen von einer Minute berechnet. Die folgenden Metriken sind verfügbar, um einen Einblick in die VM- und Datenträger-E/A sowie in die Durchsatzleistung zu erhalten:
-
-- **Warteschlangentiefe für Betriebssystemdatenträger**: Die Anzahl der aktuell ausstehenden E/A-Anforderungen, die darauf warten, vom Betriebssystemdatenträger gelesen oder auf diesen geschrieben zu werden.
-- **Vom Betriebssystemdatenträger gelesene Bytes/Sek.** : Die Anzahl der Bytes, die in einer Sekunde vom Betriebssystemdatenträger gelesen werden.
-- **Lesevorgänge auf Betriebssystemdatenträger/Sek.** : Die Anzahl der Eingabevorgänge, die in einer Sekunde vom Betriebssystemdatenträger gelesen werden.
-- **Auf den Betriebssystemdatenträger geschriebene Bytes/Sek.** : Die Anzahl der Bytes, die in einer Sekunde auf den Betriebssystemdatenträger geschrieben werden.
-- **Schreibvorgänge auf Betriebssystemdatenträger/Sek.** : Die Anzahl der Ausgabevorgänge, die in einer Sekunde auf den Betriebssystemdatenträger geschrieben werden.
-- **Warteschlangentiefe für Datenträger**: Die Anzahl der aktuell ausstehenden E/A-Anforderungen, die darauf warten, von Datenträgern gelesen oder auf diese geschrieben zu werden.
-- **Vom Datenträger gelesene Bytes/Sek.** : Die Anzahl der Bytes, die in einer Sekunde von Datenträgern für Daten gelesen werden.
-- **Datenträgerlesevorgänge/Sek.** : Die Anzahl der Eingabevorgänge, die in einer Sekunde von Datenträgern gelesen werden.
-- **Auf den Datenträger geschriebene Bytes/Sek.** : Die Anzahl der Bytes, die in einer Sekunde auf Datenträger für Daten geschrieben werden.
-- **Datenträgerschreibvorgänge/Sek.** : Die Anzahl der Ausgabevorgänge, die in einer Sekunde auf Datenträger für Daten geschrieben werden.
-- **Vom Datenträger gelesene Bytes/Sek.** : Die Anzahl der gesamten Bytes, die in einer Sekunde von allen an einen virtuellen Computer angeschlossenen Datenträgern gelesen werden.
-- **Datenträgerlesevorgänge/Sek.** : Die Anzahl der Eingabevorgänge, die in einer Sekunde von allen an einen virtuellen Computer angeschlossenen Datenträgern gelesen werden.
-- **Byte geschrieben/Sek.** : Die Anzahl der Bytes, die in einer Sekunde von allen an einen virtuellen Computer angeschlossenen Datenträgern geschrieben werden.
-- **Datenträgerschreibvorgänge/Sek.** : Die Anzahl der Ausgabevorgänge, die in einer Sekunde von allen an einen virtuellen Computer angeschlossenen Datenträgern geschrieben werden.
-
-## <a name="storage-io-utilization-metrics"></a>Auslastungsmetriken für Speicher-E/A
-Die folgenden Metriken helfen bei der Diagnose von Engpässen Ihrer Kombination aus VM und Datenträger. Diese Metriken sind nur verfügbar, wenn Sie eine Premium-VM verwenden. Sie stehen für alle Datenträgertypen mit Ausnahme von Ultra zur Verfügung. 
-
-Metriken, die bei der Diagnose der E/A-Begrenzung von Datenträgern helfen:
-
-- **Beanspruchte Datenträger-IOPS in Prozent**: Der Prozentsatz, der über die abgeschlossenen Datenträger-IOPS im Vergleich zu den bereitgestellten Datenträger-IOPs berechnet wird. Wenn dieser Betrag bei 100 % liegt, wird Ihre aktive Anwendung vom IOPS-Grenzwert Ihres Datenträgers begrenzt.
-- **Beanspruchte Datenträgerbandbreite in Prozent**: Der Prozentsatz, der über den abgeschlossenen Datenträgerdurchsatz im Vergleich zum bereitgestellten Datenträgerdurchsatz berechnet wird. Wenn dieser Betrag bei 100 % liegt, wird Ihre aktive Anwendung vom Bandbreitengrenzwert Ihres Datenträgers begrenzt.
-- **Beanspruchte Betriebssystemdatenträger-IOPS in Prozent**: Der Prozentsatz, der über die abgeschlossenen Betriebssystemdatenträger-IOPS im Vergleich zu den bereitgestellten Betriebssystemdatenträger-IOPs berechnet wird. Wenn dieser Betrag bei 100 % liegt, wird Ihre aktive Anwendung vom IOPS-Grenzwert Ihres Betriebssystemdatenträgers begrenzt.
-- **Beanspruchte Betriebssystem-Datenträgerbandbreite in Prozent**: Der Prozentsatz, der über den abgeschlossenen Betriebssystemdatenträgerdurchsatz im Vergleich zum bereitgestellten Betriebssystemdatenträgerdurchsatz berechnet wird. Wenn dieser Betrag bei 100 % liegt, wird Ihre aktive Anwendung vom Bandbreitengrenzwert Ihres Betriebssystemdatenträgers begrenzt.
-
-Metriken, die bei der Diagnose der E/A-Begrenzung von virtuellen Computern helfen:
-
-- **Verbrauchte von der VM zwischengespeicherte IOPS in Prozent**: Der Prozentsatz der gesamten abgeschlossenen IOPS gemessen am oberen Grenzwert für zwischengespeicherte IOPS auf dem virtuellen Computer. Wenn dieser Betrag bei 100 % liegt, wird Ihre aktive Anwendung vom Grenzwert für zwischengespeicherte IOPS Ihrer VM begrenzt.
-- **Prozentsatz der von der VM beanspruchten zwischengespeicherten Bandbreite**: Der Prozentsatz des gesamten abgeschlossenen Durchsatzes gemessen am oberen Grenzwert für zwischengespeicherten Durchsatz auf dem virtuellen Computer. Wenn dieser Betrag bei 100 % liegt, wird Ihre aktive Anwendung vom Grenzwert der Bandbreite Ihrer VM für die Zwischenspeicherung begrenzt.
-- **Verbrauchte von der VM nicht zwischengespeicherte IOPS in Prozent**: Der Prozentsatz der gesamten abgeschlossenen IOPS auf einem virtuellen Computer gemessen am oberen Grenzwert für nicht zwischengespeicherte IOPS auf dem virtuellen Computer. Wenn dieser Betrag bei 100 % liegt, wird Ihre aktive Anwendung vom Grenzwert für nicht zwischengespeicherte IOPS Ihrer VM begrenzt.
-- **Prozentsatz der von der VM beanspruchten nicht zwischengespeicherten Bandbreite**: Der Prozentsatz des gesamten abgeschlossenen Durchsatzes auf einem virtuellen Computer gemessen am oberen Grenzwert für bereitgestellten Durchsatz auf dem virtuellen Computer. Wenn dieser Betrag bei 100 % liegt, wird Ihre aktive Anwendung vom Grenzwert der Bandbreite Ihrer VM für nicht zwischengespeicherte Daten begrenzt.
-
-## <a name="storage-io-utilization-metrics-example"></a>Beispiel zu den Auslastungsmetriken für Speicher-E/A
-
-Sehen wir uns ein Beispiel zur Verwendung dieser neuen Metriken für die Speicher-E/A-Auslastung an, die uns beim Debuggen von Engpässen im System unterstützen können. Das Systemsetup ist dasselbe wie im vorherigen Beispiel, außer dass diesmal der angefügte Datenträger des Betriebssystems *nicht* zwischengespeichert wird.
-
-**Setup:**
-
-- Standard_D8s_v3
-  - Zwischengespeicherte IOPS: 16.000
-  - Nicht zwischengespeicherte IOPS: 12.800
-- P30-Betriebssystemdatenträger
-  - IOPS: 5.000
-  - Hostzwischenspeicherung: **Deaktiviert**
-- Zwei P30-Betriebssystemdatenträger × 2
-  - IOPS: 5.000
-  - Hostzwischenspeicherung: **Lesen/Schreiben**
-- Zwei P30-Betriebssystemdatenträger × 2
-  - IOPS: 5.000
-  - Hostzwischenspeicherung: **Deaktiviert**
