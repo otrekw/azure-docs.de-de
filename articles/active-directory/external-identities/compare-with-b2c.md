@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 10/23/2020
+ms.date: 03/02/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6be0720b7eafb251b262d5cd182bdf06e201402d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 78fd91e2ba7badb1936b8603c8ed089130b29ffb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173072"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644064"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Worum handelt es sich bei „Externe Identitäten“ in Azure Active Directory?
 
@@ -27,7 +27,7 @@ Mit „Externe Identitäten“ in Azure AD können Sie Personen außerhalb Ihre
 
 Bei externen Azure AD-Identitäten steht weniger die Beziehung eines Benutzers zu Ihrer Organisation im Mittelpunkt, sondern eher, wie sich der Benutzer bei Ihren Apps und Ressourcen anmelden möchte. Innerhalb dieses Frameworks unterstützt Azure AD eine Vielzahl von Szenarien – von der B2B-Zusammenarbeit (Business-to-Business) bis hin zur Zugriffsverwaltung für consumer-, kunden- oder bürgerorientierte Anwendungen (Business-to-Consumer oder B2C).
 
-- **Freigeben Ihrer Apps und Ressourcen für externe Benutzer (B2B-Zusammenarbeit):** Laden Sie externe Benutzer in Ihren eigenen Mandanten ein. Diesen Gastbenutzern können Sie dann Berechtigungen zuweisen (zur Autorisierung) und ihnen die Verwendung ihrer bereits vorhandenen Anmeldeinformationen ermöglichen (zur Authentifizierung). Benutzer melden sich bei den freigegebenen Ressourcen über einen einfachen Einladungs- und Einlösungsprozess mit ihrem Geschäfts-, Schul- oder Unikonto oder mit einem anderen E-Mail-Konto an. Über die [Azure AD-Berechtigungsverwaltung](../governance/entitlement-management-overview.md) können Sie auch Richtlinien zum [Verwalten des Zugriffs für externer Benutzer](../governance/entitlement-management-external-users.md#how-access-works-for-external-users) konfigurieren. Und dank der verfügbaren [Benutzerflows für die Self-Service-Registrierung (Vorschau)](self-service-sign-up-overview.md) können sich externe Benutzer nun selbst für Anwendungen registrieren. Die Umgebung kann angepasst werden, um die Registrierung mit einer Geschäfts-, Schul- oder Uni-Identität oder mit einer Social Media-Identität (wie Google oder Facebook) zu ermöglichen. Im Rahmen des Registrierungsprozesses können auch zusätzliche Benutzerinformationen erfasst werden. Weitere Informationen finden Sie in der [Azure AD B2B-Dokumentation](index.yml).
+- **Freigeben Ihrer Apps und Ressourcen für externe Benutzer (B2B-Zusammenarbeit):** Laden Sie externe Benutzer in Ihren eigenen Mandanten ein. Diesen Gastbenutzern können Sie dann Berechtigungen zuweisen (zur Autorisierung) und ihnen die Verwendung ihrer bereits vorhandenen Anmeldeinformationen ermöglichen (zur Authentifizierung). Benutzer melden sich bei den freigegebenen Ressourcen über einen einfachen Einladungs- und Einlösungsprozess mit ihrem Geschäfts-, Schul- oder Unikonto oder mit einem anderen E-Mail-Konto an. Über die [Azure AD-Berechtigungsverwaltung](../governance/entitlement-management-overview.md) können Sie auch Richtlinien zum [Verwalten des Zugriffs für externer Benutzer](../governance/entitlement-management-external-users.md#how-access-works-for-external-users) konfigurieren. Und dank der verfügbaren [Benutzerflows für die Self-Service-Registrierung](self-service-sign-up-overview.md) können sich externe Benutzer nun selbst für Anwendungen registrieren. Die Umgebung kann angepasst werden, um die Registrierung mit einer Geschäfts-, Schul- oder Uni-Identität oder mit einer Social Media-Identität (wie Google oder Facebook) zu ermöglichen. Im Rahmen des Registrierungsprozesses können auch zusätzliche Benutzerinformationen erfasst werden. Weitere Informationen finden Sie in der [Azure AD B2B-Dokumentation](index.yml).
 
 - **Erstellen von User Journeys mit einer White-Label-Identitätsverwaltungslösung für consumer- und kundenorientierte Apps (Azure AD B2C):** Unternehmen oder Entwickler, die kundenorientierte Apps erstellen, können diese mithilfe von Azure AD B2C für Millionen von Consumern, Kunden oder Bürgern skalieren. Entwickler können Azure AD als umfassendes CIAM-System (Customer Identity and Access Management, Kundenidentitäts- und Zugriffsverwaltung) für ihre Anwendungen verwenden. Kunden können sich mit einer bereits eingerichteten Identität wie Facebook oder Gmail anmelden. Mit Azure AD B2C können Sie vollständig anpassen und steuern, wie sich Kunden bei Nutzung Ihrer Anwendungen registrieren, anmelden und ihre Profile verwalten. Weitere Informationen finden Sie in der [Azure AD B2C-Dokumentation](../../active-directory-b2c/index.yml).
 

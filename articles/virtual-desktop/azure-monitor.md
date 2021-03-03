@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e0be6decf28fcbb2edacd5019f567d26403b1f31
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e9da1071686dafa003a5a49d0864b77644493344
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465712"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594453"
 ---
 # <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment-preview"></a>Verwenden von Azure Monitor für Windows Virtual Desktop zum Überwachen der Bereitstellung (Vorschau)
 
@@ -98,7 +98,7 @@ Weitere Informationen zum Aktivieren der Diagnose für alle Objekte in der Windo
 
 ## <a name="configure-log-analytics"></a>Konfigurieren von Log Analytics
 
-Um mit der Verwendung von Azure Monitor für Windows Virtual Desktop zu beginnen, benötigen Sie außerdem mindestens einen Log Analytics-Arbeitsbereich, um Daten aus der zu überwachenden Umgebung zu sammeln und für die Arbeitsmappe bereitzustellen. Wenn bereits ein Arbeitsbereich eingerichtet ist, fahren Sie mit [Einrichten von Leistungsindikatoren](#set-up-performance-counters) fort. Informationen zum Einrichten eines neuen Log Analytics-Arbeitsbereichs für das Azure-Abonnement, das Ihre Windows Virtual Desktop-Umgebung enthält, finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/learn/quick-create-workspace.md).
+Um mit der Verwendung von Azure Monitor für Windows Virtual Desktop zu beginnen, benötigen Sie außerdem mindestens einen Log Analytics-Arbeitsbereich, um Daten aus der zu überwachenden Umgebung zu sammeln und für die Arbeitsmappe bereitzustellen. Wenn bereits ein Arbeitsbereich eingerichtet ist, fahren Sie mit [Einrichten von Leistungsindikatoren](#set-up-performance-counters) fort. Informationen zum Einrichten eines neuen Log Analytics-Arbeitsbereichs für das Azure-Abonnement, das Ihre Windows Virtual Desktop-Umgebung enthält, finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/logs/quick-create-workspace.md).
 
 >[!NOTE]
 >Es gelten die Standardgebühren für Datenspeicher für Log Analytics. Für den Einstieg empfiehlt es sich, das Modell mit nutzungsbasierter Bezahlung auszuwählen und dann beim Skalieren der Bereitstellung und der Aufnahme von mehr Daten anzupassen. Weitere Informationen finden Sie unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/).
@@ -107,7 +107,7 @@ Um mit der Verwendung von Azure Monitor für Windows Virtual Desktop zu beginnen
 
 Sie müssen bestimmte Leistungsindikatoren für die Sammlung im entsprechenden Stichprobenintervall im Log Analytics-Arbeitsbereich aktivieren. Diese Leistungsindikatoren sind die einzigen Indikatoren, die Sie zum Überwachen von Windows Virtual Desktop benötigen. Sie können alle anderen deaktivieren, um Kosten zu sparen.
 
-Wenn bereits Leistungsindikatoren aktiviert sind und Sie diese entfernen möchten, folgen Sie den Anweisungen unter [Konfigurieren von Leistungsindikatoren](../azure-monitor/platform/data-sources-performance-counters.md), um die Leistungsindikatoren neu zu konfigurieren. Im Artikel wird zwar beschrieben, wie Leistungsindikatoren hinzugefügt werden, doch können Sie diese am gleichen Ort auch entfernen.
+Wenn bereits Leistungsindikatoren aktiviert sind und Sie diese entfernen möchten, folgen Sie den Anweisungen unter [Konfigurieren von Leistungsindikatoren](../azure-monitor/agents/data-sources-performance-counters.md), um die Leistungsindikatoren neu zu konfigurieren. Im Artikel wird zwar beschrieben, wie Leistungsindikatoren hinzugefügt werden, doch können Sie diese am gleichen Ort auch entfernen.
 
 Wenn Sie noch keine Leistungsindikatoren eingerichtet haben, ist nachfolgend angegeben, wie Sie diese für Azure Monitor für Windows Virtual Desktop konfigurieren:
 
@@ -128,7 +128,7 @@ Sie können nach der Erstkonfiguration auch neue Leistungsindikatoren hinzufüge
 >[!NOTE]
 >Leistungsindikatoren für die Eingabeverzögerung sind nur mit Windows 10 RS5 und höher oder Windows Server 2019 und höher kompatibel.
 
-Weitere Informationen zum manuellen Hinzufügen von Leistungsindikatoren, die noch nicht für die Sammlung aktiviert sind, finden Sie unter [Konfigurieren von Leistungsindikatoren](../azure-monitor/platform/data-sources-performance-counters.md).
+Weitere Informationen zum manuellen Hinzufügen von Leistungsindikatoren, die noch nicht für die Sammlung aktiviert sind, finden Sie unter [Konfigurieren von Leistungsindikatoren](../azure-monitor/agents/data-sources-performance-counters.md).
 
 ### <a name="set-up-windows-events"></a>Einrichten von Windows-Ereignissen
 
@@ -171,7 +171,7 @@ So installieren Sie den Log Analytics-Agent:
 
 ## <a name="optional-configure-alerts"></a>Optional: Konfigurieren von Warnungen
 
-Sie können Azure Monitor für Windows Virtual Desktop so konfigurieren, dass Sie benachrichtigt werden, wenn in Ihrem ausgewählten Abonnement schwerwiegende Azure Monitor-Warnungen auftreten. Befolgen Sie hierzu die Anweisungen unter [Reagieren auf Ereignisse mit Azure Monitor-Warnungen](../azure-monitor/learn/tutorial-response.md).
+Sie können Azure Monitor für Windows Virtual Desktop so konfigurieren, dass Sie benachrichtigt werden, wenn in Ihrem ausgewählten Abonnement schwerwiegende Azure Monitor-Warnungen auftreten. Befolgen Sie hierzu die Anweisungen unter [Reagieren auf Ereignisse mit Azure Monitor-Warnungen](../azure-monitor/alerts/tutorial-response.md).
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnose- und Nutzungsdaten
 

@@ -9,19 +9,19 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: d6b23a831426a3308a0b47946d5a82679e937bbe
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: cba8b97adb40ca2c277268188ff6ad541c7e9676
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683129"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596459"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>Behandeln von Problemen bei der Verwendung des Azure Cosmos DB Java SDK v4 mit SQL-API-Konten
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
-> * [Asynchrones Java SDK v2](troubleshoot-java-async-sdk.md)
+> * [Async Java SDK v2](troubleshoot-java-async-sdk.md)
 > * [.NET](troubleshoot-dot-net-sdk.md)
 > 
 
@@ -54,7 +54,7 @@ Das Cosmos DB SDK versucht bei jedem E/A-Fehler, den fehlgeschlagenen Vorgang z
 Für eine optimale Leistung:
 * Vergewissern Sie sich, dass die App in der gleichen Region ausgeführt wird, in der sich auch Ihr Azure Cosmos DB-Konto befindet. 
 * Überprüfen Sie die CPU-Auslastung auf dem Host, auf dem die App ausgeführt wird. Wenn die CPU-Auslastung 50 Prozent oder mehr beträgt, führen Sie Ihre App auf einem Host mit einer höheren Konfiguration aus. Alternativ können Sie die Last auf mehrere Computer verteilen.
-    * Wenn Sie Ihre Anwendung in Azure Kubernetes Service ausführen, können Sie [Azure Monitor zum Überwachen der CPU-Auslastung verwenden](../azure-monitor/insights/container-insights-analyze.md).
+    * Wenn Sie Ihre Anwendung in Azure Kubernetes Service ausführen, können Sie [Azure Monitor zum Überwachen der CPU-Auslastung verwenden](../azure-monitor/containers/container-insights-analyze.md).
 
 #### <a name="connection-throttling"></a>Verbindungsdrosselung
 Eine Verbindungsdrosselung kann entweder aufgrund eines [Verbindungslimit auf einem Hostcomputer] oder aufgrund von [Azure SNAT-Portauslastung (PAT)] auftreten.

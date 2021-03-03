@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/13/2020
 tags: connectors
-ms.openlocfilehash: 790879894c3b268fcd55aafc96507319b29fe1e5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 87a9c8a38ede7008d658068329c8c72e7e3c4117
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055075"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095470"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Verwalten von E-Mails, Kontakten und Kalendern in Office 365 Outlook mithilfe von Azure Logic Apps
 
@@ -98,7 +98,7 @@ Wenn Sie versuchen, eine Verbindung mit Outlook herzustellen, indem Sie ein ande
 
   1. Wählen Sie im Ressourcengruppenmenü Ihrer Logik-App **Zugriffssteuerung (IAM)** aus. Richten Sie das andere Konto mit der Rolle **Mitwirkender** ein. 
   
-     Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe des Azure-Portals](../role-based-access-control/role-assignments-portal.md).
+     Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 
   1. Nachdem Sie diese Rolle eingerichtet haben, melden Sie sich beim Azure-Portal mit dem Konto an, das nun über Berechtigungen für Mitwirkende verfügt. Sie können jetzt mit diesem Konto die Verbindung mit Outlook herstellen.
 

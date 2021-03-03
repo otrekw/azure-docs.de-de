@@ -6,23 +6,23 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 5baa4d4d968adb25b5520ca91149970f5c5578e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 765c15897bd5d435503d3bef07e76a93b148971c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86536266"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596858"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Einrichten von Azure Monitor-Protokollen und Sammeln von Diagnosedaten für B2B-Nachrichten in Azure Logic Apps
 
-Nachdem Sie die B2B-Kommunikation zwischen Handelspartnern in Ihrem Integrationskonto eingerichtet haben, können diese Partner untereinander Nachrichten mit Protokollen wie AS2, X12 und EDIFACT austauschen. Um zu überprüfen, ob diese Kommunikation erwartungsgemäß funktioniert, können Sie [Azure Monitor-Protokolle](../azure-monitor/platform/data-platform-logs.md) für Ihr Integrationskonto einrichten. [Azure Monitor](../azure-monitor/overview.md) hilft Ihnen bei der Überwachung Ihrer Cloud- und lokalen Umgebungen, sodass Sie deren Verfügbarkeit und Leistung leichter sicherstellen können. Unter Verwendung von Azure Monitor-Protokollen können Sie Informationen zu Laufzeitdaten und -ereignissen aufzeichnen und speichern, z. B. Triggerereignisse, Ausführungsereignisse und Aktionsereignisse in einem [Log Analytics-Arbeitsbereich](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace). Bei Nachrichten sammelt die Protokollierung außerdem Informationen wie:
+Nachdem Sie die B2B-Kommunikation zwischen Handelspartnern in Ihrem Integrationskonto eingerichtet haben, können diese Partner untereinander Nachrichten mit Protokollen wie AS2, X12 und EDIFACT austauschen. Um zu überprüfen, ob diese Kommunikation erwartungsgemäß funktioniert, können Sie [Azure Monitor-Protokolle](../azure-monitor/logs/data-platform-logs.md) für Ihr Integrationskonto einrichten. [Azure Monitor](../azure-monitor/overview.md) hilft Ihnen bei der Überwachung Ihrer Cloud- und lokalen Umgebungen, sodass Sie deren Verfügbarkeit und Leistung leichter sicherstellen können. Unter Verwendung von Azure Monitor-Protokollen können Sie Informationen zu Laufzeitdaten und -ereignissen aufzeichnen und speichern, z. B. Triggerereignisse, Ausführungsereignisse und Aktionsereignisse in einem [Log Analytics-Arbeitsbereich](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace). Bei Nachrichten sammelt die Protokollierung außerdem Informationen wie:
 
 * Anzahl und Status von Nachrichten
 * Bestätigungsstatus
 * Korrelationen zwischen Nachrichten und Bestätigungen
 * Ausführliche Fehlerbeschreibung für Fehler
 
-Mit Azure Monitor-Protokollen können Sie [Protokollabfragen](../azure-monitor/log-query/log-query-overview.md) erstellen, die Ihnen helfen, diese Informationen zu finden und zu überprüfen. Sie können [diese Diagnosedaten auch mit anderen Azure-Diensten verwenden](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data), z. B. Azure Storage und Azure Event Hubs.
+Mit Azure Monitor-Protokollen können Sie [Protokollabfragen](../azure-monitor/logs/log-query-overview.md) erstellen, die Ihnen helfen, diese Informationen zu finden und zu überprüfen. Sie können [diese Diagnosedaten auch mit anderen Azure-Diensten verwenden](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data), z. B. Azure Storage und Azure Event Hubs.
 
 Um die Protokollierung für Ihr Integrationskonto einzurichten, [installieren Sie die B2B-Logik-App-Verwaltungslösung](#install-b2b-solution) im Azure-Portal. Diese Lösung stellt aggregierte Informationen für B2B-Nachrichtenereignisse bereit. Um dann die Protokollierung zu aktivieren und Abfragen für diese Informationen zu erstellen, [richten Sie Azure Monitor-Protokolle ein](#set-up-resource-logs).
 
@@ -32,7 +32,7 @@ In diesem Artikel wird gezeigt, wie Sie die Azure Monitor-Protokollierung für I
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Einen Log Analytics-Arbeitsbereich Falls Sie keinen Log Analytics-Arbeitsbereich besitzen, lesen Sie die Informationen zum [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md).
+* Einen Log Analytics-Arbeitsbereich Falls Sie keinen Log Analytics-Arbeitsbereich besitzen, lesen Sie die Informationen zum [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/logs/quick-create-workspace.md).
 
 * Eine Logik-App, die mit Azure Monitor-Protokollierung eingerichtet ist und diese Informationen an einen Log Analytics-Arbeitsbereich sendet. Erfahren Sie, [wie Sie Azure Monitor-Protokolle für Ihre Logik-App einrichten](../logic-apps/monitor-logic-apps.md).
 
@@ -163,7 +163,7 @@ Im Anschluss an die Ausführung Ihrer Logik-App können Sie den Status und die D
 
    * To search results with prebuilt queries, select **Favorites**.
 
-   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../azure-monitor/log-query/log-query-overview.md).
+   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../azure-monitor/logs/log-query-overview.md).
 
    * To change query in the search box, update the query with the columns and values that you want to use as filters.
 -->

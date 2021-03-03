@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5506a54193efc813927663533ddfd89be3ddf40a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7790bc2895449e8ab21cbd30d7da0e5529eb0562
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461303"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670680"
 ---
 # <a name="azure-synapse-workspace-managed-identity"></a>Azure Synapse-Arbeitsbereich – verwaltete Identität
 
@@ -23,7 +23,7 @@ In diesem Artikel lernen Sie das Konzept der verwalteten Identität im Azure Syn
 
 Eine verwaltete Identität für Azure-Ressourcen ist ein Feature von Azure Active Directory. Dieses Feature stellt für Azure-Dienste eine automatisch verwaltete Identität in Azure AD bereit. Sie können die Funktion „Verwaltete Identität“ verwenden, um sich bei jedem Dienst zu authentifizieren, der die Azure AD-Authentifizierung unterstützt.
 
-„Verwaltete Identitäten für Azure-Ressourcen“ ist der neue Name für den Dienst, der früher als „Verwaltete Dienstidentität“ (Managed Service Identity, MSI) bezeichnet wurde. Weitere Informationen finden Sie unter [Verwaltete Identitäten](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+„Verwaltete Identitäten für Azure-Ressourcen“ ist der neue Name für den Dienst, der früher als „Verwaltete Dienstidentität“ (Managed Service Identity, MSI) bezeichnet wurde. Weitere Informationen finden Sie unter [Verwaltete Identitäten](../../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="azure-synapse-workspace-managed-identity"></a>Azure Synapse-Arbeitsbereich – verwaltete Identität
 

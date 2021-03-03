@@ -8,12 +8,12 @@ ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c24fd42f866cd15f84688318050bc07d5ad235e9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 53d1504b03e3dbe99cbdeac23df2623a5390b3d9
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384655"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635420"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Gewähren des Zugriff auf den lokalen Speicher eines Geräts für Module
 
@@ -85,7 +85,7 @@ Weitere Details zu Erstellungsoptionen finden Sie in der [Docker-Dokumentation](
 
 ## <a name="encrypted-data-in-module-storage"></a>Verschlüsselte Daten im Modulspeicher
 
-Wenn Module die Workload-API des IoT Edge-Dämons aufrufen, um Daten zu verschlüsseln, wird der Verschlüsselungsschlüssel unter Verwendung der Modul-ID und der Generations-ID des Moduls abgeleitet. Eine Generations-ID wird verwendet, um Geheimnisse zu schützen, wenn ein Modul aus der Bereitstellung entfernt wird und dann später ein anderes Modul mit derselben Modul-ID auf demselben Gerät bereitgestellt wird. Sie können die Generations-ID eines Moduls mit dem Azure CLI-Befehl [az iot hub module-identity show](/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-identity#ext-azure-cli-iot-ext-az-iot-hub-module-identity-show) anzeigen.
+Wenn Module die Workload-API des IoT Edge-Dämons aufrufen, um Daten zu verschlüsseln, wird der Verschlüsselungsschlüssel unter Verwendung der Modul-ID und der Generations-ID des Moduls abgeleitet. Eine Generations-ID wird verwendet, um Geheimnisse zu schützen, wenn ein Modul aus der Bereitstellung entfernt wird und dann später ein anderes Modul mit derselben Modul-ID auf demselben Gerät bereitgestellt wird. Sie können die Generations-ID eines Moduls mit dem Azure CLI-Befehl [az iot hub module-identity show](/cli/azure/ext/azure-iot/iot/hub/module-identity) anzeigen.
 
 Wenn Sie Dateien zwischen Modulen über Generationen hinweg austauschen möchten, dürfen sie keine Geheimnisse enthalten, da sie sonst nicht entschlüsselt werden können.
 

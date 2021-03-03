@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 59359cdd3e3c035d4cb6789295d41bb3908019bb
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 7a456057bc088264cefb91be9f3e5069b29474a1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785819"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596805"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure Monitor-Protokolle für Azure Load Balancer Standard
 
@@ -63,7 +63,7 @@ Die Aktivitätsprotokollierung ist automatisch für alle Resource Manager-Ressou
      5. Wählen Sie in der Dropdownliste **Event Hub-Richtliniennamen auswählen** den Namen aus.
      6. Klicken Sie auf **OK**.
 
-   * **An Log Analytics senden**. Für diesen Prozess benötigen Sie einen bereits erstellten und konfigurierten Log Analytics-Arbeitsbereich. Eine Anleitung zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/learn/quick-create-workspace.md).
+   * **An Log Analytics senden**. Für diesen Prozess benötigen Sie einen bereits erstellten und konfigurierten Log Analytics-Arbeitsbereich. Eine Anleitung zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/logs/quick-create-workspace.md).
      1. Aktivieren Sie das Kontrollkästchen **An Log Analytics senden**.
      2. Wählen Sie in der Dropdownliste **Abonnement** das Abonnement aus, in dem sich Ihr Log Analytics-Arbeitsbereich befindet.
      3. Wählen Sie in der Dropdownliste **Log Analytics-Arbeitsbereich** den Arbeitsbereich aus.
@@ -100,10 +100,10 @@ Zum Exportieren in den Speicher müssen Sie eine Verbindung mit Ihrem Speicherko
 > Wenn Sie mit Visual Studio und den grundlegenden Konzepten zum Ändern der Werte für Konstanten und Variablen in C# vertraut sind, können Sie die [Protokollkonvertierungstools](https://github.com/Azure-Samples/networking-dotnet-log-converter) von GitHub verwenden.
 
 ## <a name="stream-to-an-event-hub"></a>An einen Event Hub streamen
-Wenn Diagnoseinformationen an einen Event Hub gestreamt werden, kann er für die zentrale Protokollanalyse in einem SIEM-Tool eines Drittanbieters mit Azure Monitor-Integration verwendet werden. Weitere Informationen finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
+Wenn Diagnoseinformationen an einen Event Hub gestreamt werden, kann er für die zentrale Protokollanalyse in einem SIEM-Tool eines Drittanbieters mit Azure Monitor-Integration verwendet werden. Weitere Informationen finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
 
 ## <a name="send-to-log-analytics"></a>An Log Analytics senden
-Sie können Diagnoseinformationen für Ressourcen in Azure direkt an einen Log Analytics-Arbeitsbereich senden. In diesem Arbeitsbereich können Sie komplexe Abfragen für die Informationen zur Problembehandlung und Analyse ausführen. Weitere Informationen finden Sie unter [Erfassen von Azure-Ressourcenprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
+Sie können Diagnoseinformationen für Ressourcen in Azure direkt an einen Log Analytics-Arbeitsbereich senden. In diesem Arbeitsbereich können Sie komplexe Abfragen für die Informationen zur Problembehandlung und Analyse ausführen. Weitere Informationen finden Sie unter [Erfassen von Azure-Ressourcenprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace).
 
 ## <a name="limitations"></a>Einschränkungen
 Bei der Verwendung der Funktion zum Exportieren von Metriken in Protokolle für Azure Load Balancer gelten folgende Einschränkungen:

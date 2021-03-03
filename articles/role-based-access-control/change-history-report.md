@@ -15,16 +15,16 @@ ms.date: 07/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 3e4d75c59d0e3c97b0900dd72a27d4afbf4015c9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 53b72ac22df845f88dc82b14aa5dfaa57973b0d1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492317"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595844"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Anzeigen von Aktivitätsprotokollen für Azure RBAC-Änderungen
 
-In einigen Fällen benötigen Sie Informationen zu Änderungen bei der auf Azure-Rollen basierten Zugriffssteuerung (Role-Based Access Control, Azure RBAC), beispielsweise für die Überwachung oder Problembehandlung. Jedes Mal, wenn ein Benutzer Änderungen an den Rollenzuweisungen oder Rollendefinitionen innerhalb Ihrer Abonnements vornimmt, werden die Änderungen im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md) aufgezeichnet. Sie können die Aktivitätsprotokolle öffnen, um alle Azure RBAC-Änderungen für die letzten 90 Tage anzuzeigen.
+In einigen Fällen benötigen Sie Informationen zu Änderungen bei der auf Azure-Rollen basierten Zugriffssteuerung (Role-Based Access Control, Azure RBAC), beispielsweise für die Überwachung oder Problembehandlung. Jedes Mal, wenn ein Benutzer Änderungen an den Rollenzuweisungen oder Rollendefinitionen innerhalb Ihrer Abonnements vornimmt, werden die Änderungen im [Azure-Aktivitätsprotokoll](../azure-monitor/essentials/platform-logs-overview.md) aufgezeichnet. Sie können die Aktivitätsprotokolle öffnen, um alle Azure RBAC-Änderungen für die letzten 90 Tage anzuzeigen.
 
 ## <a name="operations-that-are-logged"></a>Protokollierte Vorgänge
 
@@ -122,7 +122,7 @@ az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-Protokolle
 
-[Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md) ist ein weiteres Tool, das Sie verwenden können, um Azure RBAC-Änderungen für alle Azure-Ressourcen zu erfassen und zu analysieren. Azure Monitor-Protokolle bietet die folgenden Vorteile:
+[Azure Monitor-Protokolle](../azure-monitor/logs/log-query-overview.md) ist ein weiteres Tool, das Sie verwenden können, um Azure RBAC-Änderungen für alle Azure-Ressourcen zu erfassen und zu analysieren. Azure Monitor-Protokolle bietet die folgenden Vorteile:
 
 - Schreiben komplexer Abfragen und Logiken
 - Integration in Warnungen, Power BI und andere Tools
@@ -131,15 +131,15 @@ az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 
 
 Folgende Schritte sind für den Einstieg grundlegend:
 
-1. [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md)
+1. [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/logs/quick-create-workspace.md)
 
-1. [Konfigurieren der Lösung für die Aktivitätsprotokollanalyse](../azure-monitor/platform/activity-log.md#activity-log-analytics-monitoring-solution) für Ihren Arbeitsbereich.
+1. [Konfigurieren der Lösung für die Aktivitätsprotokollanalyse](../azure-monitor/essentials/activity-log.md#activity-log-analytics-monitoring-solution) für Ihren Arbeitsbereich.
 
-1. [Anzeigen der Aktivitätsprotokolle](../azure-monitor/platform/activity-log.md#activity-log-analytics-monitoring-solution) Sie können schnell zur Übersichtsseite für die Lösung zur Aktivitätsprotokollanalyse navigieren, indem Sie auf die Option **Protokolle** klicken.
+1. [Anzeigen der Aktivitätsprotokolle](../azure-monitor/essentials/activity-log.md#activity-log-analytics-monitoring-solution) Sie können schnell zur Übersichtsseite für die Lösung zur Aktivitätsprotokollanalyse navigieren, indem Sie auf die Option **Protokolle** klicken.
 
    ![Option „Azure Monitor-Protokolle“ im Portal](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Verwenden Sie optional [Azure Monitor Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md), um die Protokolle abzufragen und anzuzeigen. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Monitor-Protokollabfragen](../azure-monitor/log-query/get-started-queries.md).
+1. Verwenden Sie optional [Azure Monitor Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md), um die Protokolle abzufragen und anzuzeigen. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Monitor-Protokollabfragen](../azure-monitor/logs/get-started-queries.md).
 
 Im Folgenden finden Sie eine Abfrage, die neue Rollenzuweisungen zurückgibt, die vom Anbieter der Zielressource geordnet wurden:
 
@@ -163,4 +163,4 @@ AzureActivity
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Anzeigen von Ereignissen im Aktivitätsprotokoll](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
-* [Monitor Subscription Activity with the Azure Activity Log (Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll)](../azure-monitor/platform/platform-logs-overview.md)
+* [Monitor Subscription Activity with the Azure Activity Log (Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll)](../azure-monitor/essentials/platform-logs-overview.md)

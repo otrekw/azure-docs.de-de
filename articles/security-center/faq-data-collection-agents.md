@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 64fa6c72e3bc37276dd108e3981bbefb5a2021a7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 30744ab97549d585cb6893dc2e2e12009e8cd3fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444513"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595775"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Häufig gestellte Fragen: Datensammlung, Agents und Arbeitsbereiche
 
@@ -43,7 +43,7 @@ Weitere Informationen zu Preisen finden Sie unter [Security Center – Preise](h
 
 ## <a name="what-is-the-log-analytics-agent"></a>Was ist der Log Analytics-Agent?
 
-Zur Überwachung auf Sicherheitsrisiken und Bedrohungen ist Azure Security Center vom [Log Analytics-Agent](../azure-monitor/platform/log-analytics-agent.md) abhängig. Dieser Agent wird auch vom Azure Monitor-Dienst verwendet. 
+Zur Überwachung auf Sicherheitsrisiken und Bedrohungen ist Azure Security Center vom [Log Analytics-Agent](../azure-monitor/agents/log-analytics-agent.md) abhängig. Dieser Agent wird auch vom Azure Monitor-Dienst verwendet. 
 
 Der Agent wird manchmal als Microsoft Monitoring Agent (oder „MMA“ bezeichnet) bezeichnet. 
 
@@ -51,9 +51,9 @@ Der Agent sammelt verschiedene sicherheitsrelevante Konfigurationsdetails und Er
 
 Stellen Sie sicher, dass auf ihren Computern eines der unterstützten Betriebssysteme für den Agent ausgeführt wird, wie auf den folgenden Seiten beschrieben:
 
-* [Log Analytics-Agent für von Windows unterstützte Betriebssysteme](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Log Analytics-Agent für von Windows unterstützte Betriebssysteme](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
-* [Log Analytics-Agent für von Linux unterstützte Betriebssysteme](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Log Analytics-Agent für von Linux unterstützte Betriebssysteme](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
 Weitere Informationen zu den[vom Log Analytics-Agent gesammelten Daten](security-center-enable-data-collection.md).
 
@@ -255,7 +255,7 @@ Sie können die Datensammlung für Ihr Azure-Abonnement in der Sicherheitsrichtl
 
 ## <a name="what-happens-when-data-collection-is-enabled"></a>Was passiert, wenn die Datensammlung aktiviert wird?
 
-Bei aktivierter automatischer Bereitstellung wird der Log Analytics-Agent von Security Center auf allen unterstützten und neu erstellten virtuellen Azure-Computern bereitgestellt. Die automatische Bereitstellung wird empfohlen, die manuelle Agent-Installation ist jedoch ebenfalls verfügbar. [Erfahren Sie, wie Sie die Log Analytics-Agent-Erweiterung installieren](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
+Bei aktivierter automatischer Bereitstellung wird der Log Analytics-Agent von Security Center auf allen unterstützten und neu erstellten virtuellen Azure-Computern bereitgestellt. Die automatische Bereitstellung wird empfohlen, die manuelle Agent-Installation ist jedoch ebenfalls verfügbar. [Erfahren Sie, wie Sie die Log Analytics-Agent-Erweiterung installieren](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
 
 Der Agent aktiviert das Prozesserstellungsereignis 4688 und das Feld *CommandLine* im Ereignis 4688. Auf der VM erstellte neue Prozesse werden von EventLog aufgezeichnet und von den Erkennungsdiensten in Security Center überwacht. Weitere Informationen zu den für jeden neuen Prozess aufgezeichneten Details finden Sie unter [Description Fields in 4688](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields) (Beschreibungsfelder in 4688). Außerdem sammelt der Agent die auf dem virtuellen Computer erstellten 4688-Ereignisse und speichert sie in der Suche.
 
@@ -267,7 +267,7 @@ Wenn Security Center verdächtige Aktivitäten auf dem virtuellen Computer erken
 ## <a name="will-security-center-work-using-an-oms-gateway"></a>Wird Security Center mit einem OMS-Gateway funktionieren?
 
 Ja. Azure Security Center nutzt Azure Monitor zum Erfassen von Daten von Azure-VMs und -Servern mithilfe des Log Analytics-Agents.
-Um die Daten zu sammeln, muss jede VM und jeder Server über HTTPS mit dem Internet verbunden sein. Die Verbindung kann direkt, über einen Proxy oder über das [OMS-Gateway](../azure-monitor/platform/gateway.md) hergestellt werden.
+Um die Daten zu sammeln, muss jede VM und jeder Server über HTTPS mit dem Internet verbunden sein. Die Verbindung kann direkt, über einen Proxy oder über das [OMS-Gateway](../azure-monitor/agents/gateway.md) hergestellt werden.
 
 
 ## <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Wirkt sich der Monitoring Agent auf die Leistung der Server aus?

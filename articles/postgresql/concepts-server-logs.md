@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 2ae3c538c78be8af0fa4569592ac60547e7f5912
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 621d5a6a91a8c22c52e6febc7c2638571f5bf113
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481294"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595799"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Protokolle in Azure Database for PostgreSQL – Einzelserver
 
@@ -57,24 +57,24 @@ Azure Database for PostgreSQL ist in die Azure Monitor-Diagnoseeinstellungen int
 
 ### <a name="configure-diagnostic-settings"></a>Konfigurieren von Diagnoseeinstellungen
 
-Sie können die Diagnoseeinstellungen für Ihren Postgres-Server aktivieren, indem Sie das Azure-Portal, die CLI, die REST-API und PowerShell verwenden. Die auszuwählende Protokollkategorie ist **PostgreSQLLogs** . (Sie können auch andere Protokolle konfigurieren, wenn Sie den [Abfragespeicher](concepts-query-store.md) nutzen.)
+Sie können die Diagnoseeinstellungen für Ihren Postgres-Server aktivieren, indem Sie das Azure-Portal, die CLI, die REST-API und PowerShell verwenden. Die auszuwählende Protokollkategorie ist **PostgreSQLLogs**. (Sie können auch andere Protokolle konfigurieren, wenn Sie den [Abfragespeicher](concepts-query-store.md) nutzen.)
 
 So aktivieren Sie Ressourcenprotokolle über das Azure-Portal:
 
-   1. Wechseln Sie im Portal im Navigationsmenü Ihres Postgres-Servers zu *Diagnoseeinstellungen* .
+   1. Wechseln Sie im Portal im Navigationsmenü Ihres Postgres-Servers zu *Diagnoseeinstellungen*.
    2. Wählen Sie *Diagnoseeinstellung hinzufügen*  aus.
    3. Benennen Sie die Einstellung. 
    4. Wählen Sie Ihren bevorzugten Endpunkt aus (Speicherkonto, Event Hub, Log Analytics). 
    5. Wählen Sie den Protokolltyp **PostgreSQLLogs** aus.
    7. Speichern Sie die Einstellungen.
 
-Informationen zum Aktivieren von Ressourcenprotokollen über PowerShell, die CLI oder die REST-API finden Sie im Artikel zu den [Diagnoseeinstellungen](../azure-monitor/platform/diagnostic-settings.md).
+Informationen zum Aktivieren von Ressourcenprotokollen über PowerShell, die CLI oder die REST-API finden Sie im Artikel zu den [Diagnoseeinstellungen](../azure-monitor/essentials/diagnostic-settings.md).
 
 ### <a name="access-resource-logs"></a>Zugreifen auf Ressourcenprotokolle
 
-Die Art und Weise, wie Sie auf die Protokolle zugreifen, hängt vom gewählten Endpunkt ab. Informationen zu Azure Storage finden Sie im Artikel [Protokollspeicherkonto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). Informationen zu Event Hubs finden Sie im Artikel zum [Streamen von Azure-Protokollen](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
+Die Art und Weise, wie Sie auf die Protokolle zugreifen, hängt vom gewählten Endpunkt ab. Informationen zu Azure Storage finden Sie im Artikel [Protokollspeicherkonto](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage). Informationen zu Event Hubs finden Sie im Artikel zum [Streamen von Azure-Protokollen](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs).
 
-Bei Azure Monitor-Protokollen werden die Protokolle an den von Ihnen ausgewählten Arbeitsbereich gesendet. Für die Postgres-Protokolle wird der Sammlungsmodus **AzureDiagnostics** verwendet, damit sie über die Tabelle „AzureDiagnostics“ abgefragt werden können. Die Felder der Tabelle sind unten beschrieben. Weitere Informationen zu Abfragen und Warnungen finden Sie in der Übersicht über [Abfragen für Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md).
+Bei Azure Monitor-Protokollen werden die Protokolle an den von Ihnen ausgewählten Arbeitsbereich gesendet. Für die Postgres-Protokolle wird der Sammlungsmodus **AzureDiagnostics** verwendet, damit sie über die Tabelle „AzureDiagnostics“ abgefragt werden können. Die Felder der Tabelle sind unten beschrieben. Weitere Informationen zu Abfragen und Warnungen finden Sie in der Übersicht über [Abfragen für Azure Monitor-Protokolle](../azure-monitor/logs/log-query-overview.md).
 
 Hier sind Abfragen angegeben, die Sie als Einstieg ausprobieren können. Sie können Warnungen basierend auf Abfragen konfigurieren.
 

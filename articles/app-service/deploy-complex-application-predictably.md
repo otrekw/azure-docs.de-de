@@ -5,12 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 6c45d2da8658740b5e5e7e3dceb7478ea28d712c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8742b590af89954cb8480e5282827bcd5228673b
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962025"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095834"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Vorhersagbares Bereitstellen von Microservices in Azure
 Dieses Tutorial zeigt, wie eine aus [Microservices](https://en.wikipedia.org/wiki/Microservices) bestehende Anwendung in [Azure App Service](https://azure.microsoft.com/services/app-service/) als eine Einheit und in vorhersagbarer Weise mithilfe von JSON-Ressourcengruppenvorlagen und PowerShell-Skripts bereitgestellt wird. 
@@ -45,14 +45,14 @@ Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit dem
 Mit diesem [Vorschautool](https://resources.azure.com) können Sie die JSON-Definitionen aller Ressourcengruppen in Ihrem Abonnement und der einzelnen Ressourcen untersuchen. Im Tool können Sie die JSON-Definitionen einer Ressource bearbeiten, eine vollständige Hierarchie von Ressourcen löschen und neue Ressourcen erstellen.  Die in diesem Tool verfügbaren Informationen sind sehr hilfreich für die Vorlagenerstellung, da sie zeigen, welche Eigenschaften Sie für einen bestimmten Typ von Ressource festlegen müssen, die richtigen Werte vorgeben usw. Sie können sogar die Ressourcengruppe im [Azure-Portal](https://portal.azure.com/) erstellen und dann ihre JSON-Definitionen im Explorer-Tool untersuchen, um aus der Ressourcengruppe eine Vorlage zu machen.
 
 ### <a name="deploy-to-azure-button"></a>Schaltfläche zum Bereitstellen in Azure
-Wenn Sie GitHub für die Quellcodeverwaltung verwenden, können Sie eine [Schaltfläche zum Bereitstellen in Azure (Deploy to Azure)](https://azure.microsoft.com/blog/2014/11/13/deploy-to-azure-button-for-azure-websites-2/) in README.MD aufnehmen, wodurch eine sofort einsetzbare Bereitstellungsoberfläche in Azure aktiviert wird. Sie können dies für jede einfache App durchführen. Es ist aber auch eine Erweiterung möglich, um die Bereitstellung einer vollständigen Ressourcengruppe zu ermöglichen, indem Sie eine azuredeploy.json-Datei in den Repositorystamm einfügen. Diese JSON-Datei, die die Ressourcengruppenvorlage enthält, wird von der Schaltfläche zum Bereitstellen in Azure für die Erstellung der Ressourcengruppe verwendet. Ein Beispiel ist [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp), das in diesem Tutorial verwendet wird.
+Wenn Sie GitHub für die Quellcodeverwaltung verwenden, können Sie eine [Schaltfläche zum Bereitstellen in Azure (Deploy to Azure)](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-to-azure-button) in README.MD aufnehmen, wodurch eine sofort einsetzbare Bereitstellungsoberfläche in Azure aktiviert wird. Sie können dies für jede einfache App durchführen. Es ist aber auch eine Erweiterung möglich, um die Bereitstellung einer vollständigen Ressourcengruppe zu ermöglichen, indem Sie eine azuredeploy.json-Datei in den Repositorystamm einfügen. Diese JSON-Datei, die die Ressourcengruppenvorlage enthält, wird von der Schaltfläche zum Bereitstellen in Azure für die Erstellung der Ressourcengruppe verwendet. Ein Beispiel ist [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp), das in diesem Tutorial verwendet wird.
 
 ## <a name="get-the-sample-resource-group-template"></a>Abrufen des Beispiels einer Ressourcengruppenvorlage
 Lassen Sie uns jetzt beginnen.
 
 1. Navigieren Sie zum App Service-Beispiel [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) .
 2. Klicken Sie in "readme.md" auf **Deploy to Azure**.
-3. Die Website [deploy-to-azure](https://deploy.azure.com) wird aufgerufen, und Sie werden zur Eingabe von Bereitstellungsparametern aufgefordert. Beachten Sie, dass die meisten Felder mit dem Namen des Repositorys und einigen zufälligen Zeichenfolgen gefüllt sind. Sie können bei Bedarf alle Felder ändern, aber Sie müssen nur den SQL Server-Administratoranmeldenamen und das Kennwort eingeben. Klicken Sie dann auf **Next**.
+3. Die Website [deploy-to-azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure-appservice-samples%2FToDoApp%2Fmaster%2Fazuredeploy.json) wird aufgerufen, und Sie werden zur Eingabe von Bereitstellungsparametern aufgefordert. Beachten Sie, dass die meisten Felder mit dem Namen des Repositorys und einigen zufälligen Zeichenfolgen gefüllt sind. Sie können bei Bedarf alle Felder ändern, aber Sie müssen nur den SQL Server-Administratoranmeldenamen und das Kennwort eingeben. Klicken Sie dann auf **Next**.
    
    ![Eingabebereitstellungsparameter auf der deploy-to-azure-Website](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
 4. Klicken Sie als Nächstes auf **Deploy** , um den Bereitstellungsprozess zu starten. Sobald der Prozess abgeschlossen wurde, klicken Sie auf den Link „http://todoapp*XXXX*.azurewebsites.net“, um die bereitgestellte Anwendung anzuzeigen. 
@@ -61,7 +61,7 @@ Lassen Sie uns jetzt beginnen.
    
    Beim ersten Aufruf ist die Benutzeroberfläche etwas langsam, da die Apps gerade gestartet werden, aber Sie können sich überzeugen, dass es eine voll funktionsfähige Anwendung ist.
 5. Klicken Sie auf der Bereitstellungsseite auf den Link **Manage** , um die neue Anwendung im Azure-Vorschauportal anzuzeigen.
-6. Klicken Sie in der Dropdownliste **Essentials** auf den Link der Ressourcengruppe. Beachten Sie, dass die App bereits unter **External Project**mit dem GitHub-Repository verbunden ist. 
+6. Klicken Sie in der Dropdownliste **Essentials** auf den Link der Ressourcengruppe. Beachten Sie, dass die App bereits unter **External Project** mit dem GitHub-Repository verbunden ist. 
    
    ![Link „Ressourcengruppe“ im Abschnitt mit der Dropdownliste „Essentials“](./media/app-service-deploy-complex-application-predictably/gettemplate-3-portalresourcegroup.png)
 7. Beachten Sie auf dem Blatt der Ressourcengruppe, dass bereits zwei Apps und eine SQL-Datenbank in der Ressourcengruppe vorhanden sind.
@@ -191,7 +191,7 @@ Die Schaltfläche **Deploy to Azure** ist großartig, aber sie können damit die
    
    ![Ergebnis, das sich aus dem Ziehen der Datei „azuredeploy.json“ in den Ordner „Vorlage“ Ihres Projekts ergibt](./media/app-service-deploy-complex-application-predictably/deploy-2-copyjson.png)
 5. Öffnen Sie im Projektmappen-Explorer die kopierte Datei "azuredeploy.json".
-6. Nur zur Veranschaulichung fügen wir einige Application Insight-Standardressourcen in der JSON-Datei hinzu, indem wir auf **Ressource hinzufügen**klicken. Wenn Sie nur an der Bereitstellung der JSON-Datei interessiert sind, fahren Sie mit den Schritten zur Bereitstellung fort.
+6. Nur zur Veranschaulichung fügen wir einige Application Insight-Standardressourcen in der JSON-Datei hinzu, indem wir auf **Ressource hinzufügen** klicken. Wenn Sie nur an der Bereitstellung der JSON-Datei interessiert sind, fahren Sie mit den Schritten zur Bereitstellung fort.
    
    ![Schaltfläche „Ressource hinzufügen“, über die Sie Ihrer JSON-Datei Application Insights-Standardressourcen hinzufügen können](./media/app-service-deploy-complex-application-predictably/deploy-3-newresource.png)
 7. Wählen Sie **Application Insights für Web-Apps** aus, stellen Sie dann sicher, dass ein vorhandener App Service-Plan und eine App ausgewählt sind, und klicken Sie anschließend auf **Hinzufügen**.
