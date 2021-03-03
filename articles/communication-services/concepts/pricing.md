@@ -9,17 +9,14 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 883be25716d94130984baef5e7a1eab80888a2b9
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: bf255837a08a4810321f2f03cb97838e31a7cddc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558465"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657756"
 ---
 # <a name="pricing-scenarios"></a>Preisszenarien
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
 
 Die Preise für Azure Communication Services basieren im Allgemeinen auf einem Modell mit nutzungsbasierter Bezahlung. Die Preise in den folgenden Beispielen dienen lediglich zu Veranschaulichung und entsprechen nicht unbedingt den aktuellen Azure-Preisen.
 
@@ -50,7 +47,7 @@ Alice hat einen Gruppenanruf mit ihren Kollegen Bob und Charlie durchgeführt. A
 
 ### <a name="pricing-example-a-user-of-the-communication-services-js-client-library-joins-a-scheduled-microsoft-teams-meeting"></a>Preisbeispiel: Benutzer der Communication Services-JS-Clientbibliothek tritt einer geplanten Microsoft Teams-Besprechung bei
 
-Die Ärztin Alice hat eine Besprechung mit dem Patienten Bob. Alice tritt über die Teams-Desktopanwendung bei. Bob erhält einen Link, mit dem er der Besprechung über die Website des Gesundheitsdienstleisters beitreten kann. Die Verbindung wird dabei unter Verwendung der Communication Services-JS-Clientbibliothek hergestellt. Bob verwendet sein Mobiltelefon (iPhone mit Safari), um über einen Webbrowser an der Besprechung teilzunehmen. Während des virtuellen Besuchs ist Chat verfügbar. 
+Die Ärztin Alice hat eine Besprechung mit dem Patienten Bob. Alice tritt über die Teams-Desktopanwendung bei. Bob erhält einen Link, mit dem er der Besprechung über die Website des Gesundheitsdienstleisters beitreten kann. Die Verbindung wird dabei unter Verwendung der Communication Services-JS-Clientbibliothek hergestellt. Bob verwendet sein Mobiltelefon (iPhone mit Safari), um über einen Webbrowser an der Besprechung teilzunehmen. Während des virtuellen Besuchs ist Chat verfügbar.
 
 - Der Anruf dauert insgesamt 30 Minuten.
 - Alice und Bob nehmen am gesamten Anruf teil. Fünf Minuten nach Beginn des Anrufs schaltet Alice ihre Videoübertragung ein und teilt 13 Minuten lang ihren Bildschirm. Bob hat seine Videoübertragung während des gesamten Anrufs aktiviert.
@@ -60,15 +57,15 @@ Die Ärztin Alice hat eine Besprechung mit dem Patienten Bob. Alice tritt über 
 **Berechnung der Kosten**
 
 - 1 Teilnehmer (Bob) · 30 Minuten · 0,004 USD pro Teilnehmer und Minute = 0,12 USD [gleicher Preis für Video und Audio]
-- 1 Teilnehmer (Alice) · 30 Minuten · 0,000 USD pro Teilnehmer und Minute = 0,0 USD*. 
+- 1 Teilnehmer (Alice) · 30 Minuten · 0,000 USD pro Teilnehmer und Minute = 0,0 USD*.
 - 1 Teilnehmer (Bob) · 3 Chatnachrichten · 0,0008 USD = 0,0024 USD.
-- 1 Teilnehmer (Alice) · 5 Chatnachrichten · 0,000 USD = 0,0 USD. 
+- 1 Teilnehmer (Alice) · 5 Chatnachrichten · 0,000 USD = 0,0 USD.
 
 *Die Teilnahme von Alice ist durch ihre Teams-Lizenz abgedeckt. Der Einfachheit halber enthält Ihre Azure-Rechnung die Minuten und Chatnachrichten zwischen Teams- und Communication Services-Benutzern, die Minuten und Nachrichten des Teams-Clients sind jedoch kostenlos.
 
-**Gesamtkosten für den Besuch:** 
+**Gesamtkosten für den Besuch:**
 - Benutzer, der über die Communication Services-JS-Clientbibliothek teilnimmt: 0,12 USD + 0,0024 = 0,1224 USD
-- Benutzer, der über die Teams-Desktopanwendung teilnimmt: 0 USD (abgedeckt durch die Teams-Lizenz) 
+- Benutzer, der über die Teams-Desktopanwendung teilnimmt: 0 USD (abgedeckt durch die Teams-Lizenz)
 
 
 ## <a name="chat"></a>Chat
@@ -79,27 +76,27 @@ Mit Communication Services können Sie Ihre Anwendung um eine Funktion zum Sende
 
 Ihnen werden für jede gesendete Chatnachricht 0,0008 US-Dollar berechnet.
 
-### <a name="pricing-example-chat-between-two-users"></a>Preisbeispiel: Chat zwischen zwei Benutzern 
+### <a name="pricing-example-chat-between-two-users"></a>Preisbeispiel: Chat zwischen zwei Benutzern
 
 Geeta beginnt einen Chatthread mit Emily, um neue Informationen zu übermitteln, und sendet fünf Nachrichten. Der Chat dauert zehn Minuten. Geeta und Emily senden sich gegenseitig jeweils 15 Nachrichten.
 
-**Berechnung der Kosten** 
+**Berechnung der Kosten**
 - Anzahl gesendeter Nachrichten (5 + 15 + 15) · 0,0008 USD = 0,028 USD
 
-### <a name="pricing-example-group-chat-with-multiple-users"></a>Preisbeispiel: Gruppenchat mit mehreren Benutzern 
+### <a name="pricing-example-group-chat-with-multiple-users"></a>Preisbeispiel: Gruppenchat mit mehreren Benutzern
 
-Charlie beginnt einen Chatthread mit seinen Freunden Casey und Jasmine, um eine Urlaubsreise zu planen. Sie chatten eine Weile, und Charlie, Casey und Jasmine senden 20, 30 bzw. 18 Nachrichten. Ihnen fällt ein, dass ihre Freundin Rose ggf. auch Interesse an der Urlaubsreise haben könnte. Daher fügen Sie sie dem Chatthread hinzu und geben den gesamten Nachrichtenverlauf für sie frei. 
+Charlie beginnt einen Chatthread mit seinen Freunden Casey und Jasmine, um eine Urlaubsreise zu planen. Sie chatten eine Weile, und Charlie, Casey und Jasmine senden 20, 30 bzw. 18 Nachrichten. Ihnen fällt ein, dass ihre Freundin Rose ggf. auch Interesse an der Urlaubsreise haben könnte. Daher fügen Sie sie dem Chatthread hinzu und geben den gesamten Nachrichtenverlauf für sie frei.
 
 Rose sieht die Nachrichten und beteiligt sich am Chat. In der Zwischenzeit erhält Casey einen Anruf und trifft die Entscheidung, die Unterhaltung später zu lesen. Charlie, Jasmine und Rose einigen sich auf die Reisetermine und senden 30, 25 bzw. 35 Nachrichten.
 
-**Berechnung der Kosten** 
+**Berechnung der Kosten**
 
 - Anzahl gesendeter Nachrichten (20 + 30 + 18 + 30 + 25 + 35) · 0,0008 USD = 0,1264 USD
 
 
 ## <a name="telephony-and-sms"></a>Telefonie und SMS
 
-## <a name="price"></a>Preis 
+## <a name="price"></a>Preis
 
 Telefoniedienste werden auf Minutenbasis abgerechnet, während SMS auf Nachrichtenbasis abgerechnet werden. Die Preise richten sich nach der Art und dem Standort der von Ihnen verwendeten Nummer sowie nach dem Ziel Ihrer Anrufe und SMS-Nachrichten.
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: d9c8f5dd8b2647756087ce6f36ff3a25b2aaaadc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2005b24e9a5692adda8c8e3a5100a6450c67663c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387970"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653846"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Hochverfügbarkeit für Azure Cache for Redis
 
@@ -23,7 +23,7 @@ Azure Cache for Redis implementiert Hochverfügbarkeit durch Verwendung mehrerer
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
 | [Standardreplikation](#standard-replication)| Replizierte Konfiguration mit zwei Knoten in einem Rechenzentrum mit automatischem Failover | 99,9 % |✔|✔|-|
 | [Zonenredundanz](#zone-redundancy) | Replizierte Konfiguration mit mehreren Knoten in allen Verfügbarkeitszonen mit automatischem Failover | 99,95 % (Premium-Tarif), 99,99 % (Enterprise-Tarife) |-|Vorschau|Vorschau|
-| [Georeplikation](#geo-replication) | Verknüpfte Cacheinstanzen in zwei Regionen mit benutzergesteuertem Failover | 99,9 % (Premium-Tarif, einzelne Region) |-|✔|-|
+| [Georeplikation](#geo-replication) | Verknüpfte Cacheinstanzen in zwei Regionen mit benutzergesteuertem Failover | 99,999 % (Enterprise-Tarif) |-|✔|-|
 
 ## <a name="standard-replication"></a>Standardreplikation
 
@@ -45,7 +45,7 @@ Ein primärer Knoten kann als Teil einer geplanten Wartungsaktivität (z. B. Re
 >
 >
 
-Darüber hinaus ermöglicht Azure Cache for Redis die Verwendung zusätzlicher Replikatknoten im Tarif „Premium“. Ein [Cache mit mehreren Replikaten](cache-how-to-multi-replicas.md) kann mit bis zu drei Replikatknoten konfiguriert werden. Durch mehrere Replikate verbessert sich im Allgemeinen die Resilienz, da der primäre Knoten durch zusätzliche Knoten abgesichert wird. Auch bei mehreren Replikaten kann eine Azure Cache for Redis-Instanz dennoch durch einen Ausfall eines Rechenzentrums oder einen Ausfall in der gesamten Verfügbarkeitszone beeinträchtigt werden. Sie können die Cacheverfügbarkeit erhöhen, indem Sie mehrere Replikate in Verbindung mit [Zonenredundanz](#zone-redundancy) verwenden.
+Darüber hinaus ermöglicht Azure Cache for Redis die Verwendung zusätzlicher Replikatknoten im Tarif „Premium“. Ein [Cache mit mehreren Replikaten](cache-how-to-multi-replicas.md) kann mit bis zu drei Replikatknoten konfiguriert werden. Durch mehrere Replikate verbessert sich im Allgemeinen die Resilienz, da der primäre Knoten durch zusätzliche Knoten abgesichert wird. Auch bei mehreren Replikaten kann eine Azure Cache for Redis-Instanz dennoch durch einen Ausfall eines Rechenzentrums oder einen Ausfall auf Verfügbarkeitszonenebene beeinträchtigt werden. Sie können die Cacheverfügbarkeit erhöhen, indem Sie mehrere Replikate in Verbindung mit [Zonenredundanz](#zone-redundancy) verwenden.
 
 ## <a name="zone-redundancy"></a>Zonenredundanz
 
@@ -66,7 +66,7 @@ Azure Cache for Redis verteilt Knoten in einem zonenredundanten Cache im Roundro
 
 Ein zonenredundanter Cache ermöglicht ein automatisches Failover. Wenn der aktuelle primäre Knoten nicht verfügbar ist, wird er durch einen der Replikatknoten ersetzt. Wenn sich der neue primäre Knoten in einer anderen Verfügbarkeitszone befindet, bedeutet dies für die Anwendung möglicherweise eine längere Cacheantwortzeit. Verfügbarkeitszonen sind geografisch getrennt. Durch den Wechsel zwischen Verfügbarkeitszonen ändert sich die physische Entfernung zwischen den Orten, an denen die Anwendung und der Cache gehostet werden. Diese Änderung wirkt sich auf Roundtrip-Netzwerklatenzen zwischen Anwendung und Cache aus. Bei den meisten Anwendungen wird davon ausgegangen, dass die zusätzliche Latenz innerhalb eines akzeptablen Bereichs liegt. Es wird empfohlen, Ihre Anwendung zu testen, um sicherzustellen, dass sie mit einem zonenredundanten Cache ordnungsgemäß ausgeführt wird.
 
-### <a name="enterprise-and-enterprise-flash-tiers"></a>Enterprise- und Enterprise Flash-Tarife
+### <a name="enterprise-tiers"></a>Enterprise-Tarife
 
 Ein Cache in einem der Enterprise-Tarife basiert auf einem Redis Enterprise-Cluster. Zur Bildung eines Quorums muss immer eine ungerade Anzahl von Serverknoten vorhanden sein. Standardmäßig werden drei Knoten verwendet, die jeweils auf einem dedizierten virtuellen Computer gehostet werden. Ein Enterprise-Cache verfügt über zwei gleich große *Datenknoten* und über einen kleineren *Quorumknoten*. Ein Enterprise Flash-Cache verfügt über drei gleich große Datenknoten. Redis-Daten werden vom Enterprise-Cluster intern in Partitionen unterteilt. Jede Partition verfügt über ein *primäres Element* und über mindestens ein *Replikat*. Jeder Datenknoten enthält mindestens eine Partition. Der Enterprise-Cluster stellt sicher, dass sich das primäre Element und die Replikate einer Partition nie auf dem gleichen Datenknoten befinden. Partitionsdaten von primären Elementen werden asynchron in zugehörigen Replikaten repliziert.
 
@@ -74,9 +74,27 @@ Wenn ein Datenknoten ausfällt oder ein Netzwerk aufgeteilt wird, kommt es zu ei
 
 ## <a name="geo-replication"></a>Georeplikation
 
-[Georeplikation](cache-how-to-geo-replication.md) ist ein Mechanismus zum Verknüpfen zweier Azure Cache for Redis-Instanzen, die in der Regel zwei Azure-Regionen umfassen. Ein Cache wird als primärer verknüpfter Cache und der andere als sekundärer verknüpfter Cache ausgewählt. Nur der primäre verknüpfte Cache akzeptiert Lese- und Schreibanforderungen. In den primären Cache geschriebene Daten werden in den sekundären verknüpften Cache repliziert. Der sekundäre verknüpfte Cache kann verwendet werden, um Leseanforderungen zu verarbeiten. Die Datenübertragung zwischen primärer und sekundärer Cache-Instanz wird durch TLS geschützt.
+[Georeplikation](cache-how-to-geo-replication.md) ist ein Mechanismus zum Verknüpfen von zwei oder mehr Azure Cache for Redis-Instanzen, die in der Regel zwei Azure-Regionen umfassen. 
 
-Die Georeplikation ist im Wesentlichen für die Notfallwiederherstellung konzipiert. Dadurch können Sie Ihre Cachedaten in einer anderen Region sichern. Standardmäßig schreibt und liest Ihre Anwendung in die bzw. aus der primären Region. Die Anwendung kann optional so konfiguriert werden, dass sie aus der sekundären Region liest. Die Georeplikation bietet kein automatisches Failover. Der Grund sind Bedenken hinsichtlich zusätzlicher Netzwerkwartezeit zwischen Regionen, wenn der Rest Ihrer Anwendung in der primären Region verbleibt. Zur Verwaltung und Initiierung des Failovers muss die Verknüpfung mit dem sekundären Cache aufgehoben werden. Dadurch wird er zur neuen primären Instanz hochgestuft.
+### <a name="premium-tier"></a>Premium-Tarif
+
+>[!NOTE]
+>Georeplikation im Premium-Tarif ist hauptsächlich für die Notfallwiederherstellung vorgesehen.
+>
+>
+
+Zwei Cache-Instanzen im Premium-Tarif können über [Georeplikation](cache-how-to-geo-replication.md) miteinander verbunden werden, sodass Sie Ihre Cachedaten in einer anderen Region sichern können. Sobald sie miteinander verknüpft sind, wird ein Cache als primärer verknüpfter Cache festgelegt und der andere als sekundärer verknüpfter Cache. Nur der primäre Cache akzeptiert Lese- und Schreibanforderungen. In den primären Cache geschriebene Daten werden in den sekundären Cache repliziert. Eine Anwendung greift über separate Endpunkte für die primären und sekundären Caches auf den jeweiligen Cache zu. Die Anwendung muss alle Schreibanforderungen an den primären Cache senden, wenn sie in mehreren Azure-Regionen bereitgestellt ist. Lesen kann sie sowohl aus dem primären als auch aus dem sekundären Cache. Im Allgemeinen möchten Sie, dass die Compute-Instanzen Ihrer Anwendung aus den nächstgelegenen Caches lesen, um Wartezeiten zu verringern. Die Datenübertragung zwischen den beiden Cache-Instanzen ist mittels TLS gesichert.
+
+Die Georeplikation bietet kein automatisches Failover. Der Grund sind Bedenken hinsichtlich zusätzlicher Netzwerkroundtripzeiten zwischen Regionen, wenn der Rest Ihrer Anwendung in der primären Region verbleibt. Zur Verwaltung und Initiierung des Failovers muss die Verknüpfung mit dem sekundären Cache aufgehoben werden. Dadurch wird er zur neuen primären Instanz hochgestuft.
+
+### <a name="enterprise-tiers"></a>Enterprise-Tarife
+
+>[!NOTE]
+>Dies ist als Vorschauversion verfügbar.
+>
+>
+
+Die Enterprise-Tarife unterstützen eine komplexere Form der Georeplikation namens [aktive Georeplikation](cache-how-to-active-geo-replication.md). Durch die Verwendung konfliktfreier replizierter Datentypen unterstützt die Redis Enterprise-Software Schreibvorgänge in mehrere Cache-Instanzen und übernimmt ggf. die Zusammenführung von Änderungen und die Auflösung von Konflikten. Zwei oder mehr Cache-Instanzen im Enterprise-Tarif in unterschiedlichen Azure-Regionen können verknüpft werden, um einen aktiven georeplizierten Cache zu bilden. Eine Anwendung, die einen solchen Cache verwendet, kann über entsprechende Endpunkte aus den geografisch verteilten Cache-Instanzen lesen bzw. darin schreiben. Sie sollte dabei immer den zur jeweiligen Compute-Instanz nächstgelegenen Cache verwenden, was die niedrigsten Wartezeiten mit sich bringt. Die Anwendung muss außerdem die Cache-Instanzen überwachen und zu einer anderen Region wechseln, wenn eine der Instanzen nicht mehr verfügbar ist. Weitere Informationen zur Funktionsweise der aktiven Georeplikation finden Sie unter [Aktive/Aktive geografische Verteilung (CRDTs-basiert)](https://redislabs.com/redis-enterprise/technology/active-active-geo-distribution/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,20 +8,19 @@ manager: patfilot
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ac74bb4b37535d0c0b095ea300afc15aa0978ed8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a440344a93f9dd610774a33b3960ab1a71f57c65
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950124"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671586"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Hochverfügbarkeit von SAP HANA für virtuelle Azure-Computer
 
@@ -40,7 +39,7 @@ Die folgenden Artikel bieten einen guten Überblick über die Verwendung von SAP
 
 - [Manuelle Installation von SAP HANA (Einzelinstanz) auf Azure-VMs](./hana-get-started.md)
 - [Hochverfügbarkeit von SAP HANA auf virtuellen Azure-Computern (VMs)](sap-hana-high-availability.md)
-- [Sicherungsanleitung für SAP HANA in Azure Virtual Machines](./sap-hana-backup-guide.md)
+- [Sichern von SAP HANA auf virtuellen Azure-Computern](./sap-hana-backup-guide.md)
 
 Auch die folgenden Artikel zu SAP HANA sind zu empfehlen:
 

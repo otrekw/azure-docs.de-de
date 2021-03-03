@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: c7b6586f02d14d4e49ce9a5024b19ea15c8d2267
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f194f0bc7ec8d0bf2265c0863f93bfd11337b5f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364686"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703387"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Neuerungen in der Formularerkennung
 
@@ -91,7 +91,7 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 * **Währungsunterstützung** – Erkennung und Extraktion von globalen Währungssymbolen.
 * **Azure Gov** – Die Formularerkennung steht jetzt auch in Azure Gov zur Verfügung.
 * **Erweiterte Sicherheitsfeatures**: 
-   * **Bring Your Own Key (BYOK)**  – Die Formularerkennung verschlüsselt Ihre Daten automatisch, wenn sie in der Cloud persistent gespeichert werden, um sie zu schützen und Sie bei der Einhaltung der Sicherheits- und Complianceverpflichtungen Ihrer Organisation zu unterstützen. Standardmäßig verwendet Ihr Abonnement von Microsoft verwaltete Verschlüsselungsschlüssel. Sie können Ihr Abonnement jetzt auch mit eigenen Verschlüsselungsschlüsseln verwalten. [Kundenseitig verwaltete Schlüssel, auch bezeichnet als „Bring Your Own Key“ (BYOK),](./form-recognizer-encryption-of-data-at-rest.md) bieten eine größere Flexibilität beim Erstellen, Rotieren, Deaktivieren und Widerrufen von Zugriffssteuerungen. Außerdem können Sie die zum Schutz Ihrer Daten verwendeten Verschlüsselungsschlüssel überwachen.  
+   * **Bring Your Own Key (BYOK)**  – Die Formularerkennung verschlüsselt Ihre Daten automatisch, wenn sie in der Cloud persistent gespeichert werden, um sie zu schützen und Sie bei der Einhaltung der Sicherheits- und Complianceverpflichtungen Ihrer Organisation zu unterstützen. Standardmäßig verwendet Ihr Abonnement von Microsoft verwaltete Verschlüsselungsschlüssel. Sie können Ihr Abonnement jetzt auch mit eigenen Verschlüsselungsschlüsseln verwalten. [Kundenseitig verwaltete Schlüssel, auch bezeichnet als „Bring Your Own Key“ (BYOK),](./encrypt-data-at-rest.md) bieten eine größere Flexibilität beim Erstellen, Rotieren, Deaktivieren und Widerrufen von Zugriffssteuerungen. Außerdem können Sie die zum Schutz Ihrer Daten verwendeten Verschlüsselungsschlüssel überwachen.  
    * **Private Endpunkte**: ermöglichen Ihnen in einem virtuellen Netzwerk (VNet) den [sicheren Zugriff auf Daten über einen privaten Link.](../../private-link/private-link-overview.md)
 
 
@@ -123,7 +123,7 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 
 ### <a name="security-improvements"></a>Verbesserungen der Sicherheit
 
-* Kundenseitig verwaltete Schlüssel stehen jetzt für die Formularerkennung zur Verfügung. Weitere Informationen finden Sie unter [Verschlüsselung für ruhende Daten der Formularerkennung](./form-recognizer-encryption-of-data-at-rest.md).
+* Kundenseitig verwaltete Schlüssel stehen jetzt für die Formularerkennung zur Verfügung. Weitere Informationen finden Sie unter [Verschlüsselung für ruhende Daten der Formularerkennung](./encrypt-data-at-rest.md).
 * Verwenden Sie verwaltete Identitäten für den Zugriff auf Azure-Ressourcen mit Azure Active Directory. Weitere Informationen finden Sie unter [Autorisieren des Zugriffs auf verwaltete Identitäten](../authentication.md#authorize-access-to-managed-identities).
 
 ## <a name="march-2020"></a>März 2020 

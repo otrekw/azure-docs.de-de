@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: bc6632b55ba8fd90317a8b5046a3e84d863bf0ef
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 0c182e1093c29206d27a0e55a46dd9a5607fa6ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221472"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701704"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-logs-classic"></a>Aktivieren und Verwalten von Azure Storage Analytics-Protokollen (klassisch)
 
-[Azure Storage Analytics](storage-analytics.md) bietet Protokolle für Blobs, Warteschlangen und Tabellen. Sie können über das [Azure-Portal](https://portal.azure.com) konfigurieren, welche Protokolle für Ihr Konto aufgezeichnet werden sollen. In diesem Artikel wird gezeigt, wie Sie Protokolle aktivieren und verwalten können. Wenn Sie erfahren möchten, wie Metriken aktiviert werden, lesen Sie [Aktivieren und Verwalten von Azure Storage Analytics-Metriken (klassisch)](storage-monitor-storage-account.md).  Für die Untersuchung und Speicherung von Überwachungsdaten im Azure-Portal fallen Kosten an. Weitere Informationen finden Sie unter [Storage Analytics](storage-analytics.md).
+[Azure Storage Analytics](storage-analytics.md) bietet Protokolle für Blobs, Warteschlangen und Tabellen. Sie können über das [Azure-Portal](https://portal.azure.com) konfigurieren, welche Protokolle für Ihr Konto aufgezeichnet werden sollen. In diesem Artikel wird gezeigt, wie Sie Protokolle aktivieren und verwalten können. Wenn Sie erfahren möchten, wie Metriken aktiviert werden, lesen Sie [Aktivieren und Verwalten von Azure Storage Analytics-Metriken (klassisch)]().  Für die Untersuchung und Speicherung von Überwachungsdaten im Azure-Portal fallen Kosten an. Weitere Informationen finden Sie unter [Storage Analytics](storage-analytics.md).
 
 > [!NOTE]
 > Wir empfehlen, Azure Storage-Protokolle in Azure Monitor (statt Storage Analytics-Protokollen) zu verwenden. Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen für die öffentliche Cloud für Vorschautests zur Verfügung. Diese Vorschau unterstützt Protokolle für Blobdateien (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen und Tabellen. Weitere Informationen finden Sie in einem der folgenden Artikel:
@@ -191,7 +191,7 @@ Protokolldaten können sich im Laufe der Zeit in Ihrem Konto ansammeln und so di
 
    * Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos. 
 
-6. Verwenden Sie die Eigenschaft [Get-AzStorageServiceLoggingProperty](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageserviceloggingproperty) zum Anzeigen der aktuellen Protokollaufbewahrungsrichtlinie. Im folgenden Beispiel wird der Aufbewahrungszeitraum für Blob- und Warteschlangenspeicherdienste in der Konsole ausgegeben.
+6. Verwenden Sie die Eigenschaft [Get-AzStorageServiceLoggingProperty](/powershell/module/az.storage/get-azstorageserviceloggingproperty) zum Anzeigen der aktuellen Protokollaufbewahrungsrichtlinie. Im folgenden Beispiel wird der Aufbewahrungszeitraum für Blob- und Warteschlangenspeicherdienste in der Konsole ausgegeben.
 
    ```powershell
    Get-AzStorageServiceLoggingProperty -ServiceType Blob, Queue -Context $ctx
@@ -202,7 +202,7 @@ Protokolldaten können sich im Laufe der Zeit in Ihrem Konto ansammeln und so di
    > [!div class="mx-imgBorder"]
    > ![Aufbewahrungsrichtlinie in der PowerShell-Ausgabe](./media/manage-storage-analytics-logs/retention-period-powershell.png)
 
-7. Verwenden Sie die Eigenschaft [Set-AzStorageServiceLoggingProperty](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageserviceloggingproperty) zum Ändern des Aufbewahrungszeitraums. Im folgenden Beispiel wird der Aufbewahrungszeitraum in „4 Tage“ geändert.  
+7. Verwenden Sie die Eigenschaft [Set-AzStorageServiceLoggingProperty](/powershell/module/az.storage/set-azstorageserviceloggingproperty) zum Ändern des Aufbewahrungszeitraums. Im folgenden Beispiel wird der Aufbewahrungszeitraum in „4 Tage“ geändert.  
 
    ```powershell
    Set-AzStorageServiceLoggingProperty -ServiceType Blob, Queue -RetentionDays 4 -Context $ctx
@@ -290,7 +290,6 @@ Nach dem Herunterladen der Protokolldaten können Sie die Protokolleinträge in 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu Storage Analytics finden Sie unter [Storage Analytics](storage-analytics.md) für Storage Analytics.
-* [Konfigurieren Sie Storage Analytics-Metriken](storage-monitor-storage-account.md).
 * Weitere Informationen zum Verwenden einer .NET-Programmiersprache zum Konfigurieren der Speicherprotokollierung finden Sie in der [Referenz zur Speicherclientbibliothek](/previous-versions/azure/dn261237(v=azure.100)). 
 * Allgemeine Informationen zum Konfigurieren der Speicherprotokollierung mithilfe der REST-API finden Sie unter [Aktivieren und Konfigurieren von Storage Analytics](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics).
 * Informieren Sie sich über das Format von Storage Analytics-Protokollen. Lesen Sie dazu [Storage Analytics-Protokollformat](/rest/api/storageservices/storage-analytics-log-format).

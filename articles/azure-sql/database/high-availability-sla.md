@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 53b6b4f5d783029cb53de71fe3c47b8cb2d26968
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 5e84831798ec1c5f42facb04a25da9d8631b9d04
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593417"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690582"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hochverfügbarkeit für Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -52,7 +52,7 @@ Die zonenredundante Konfiguration für die Dienstebene „Universell“ verwende
 
 Die zonenredundante Konfiguration für die Dienstebene „Universell“ besitzt zwei Ebenen:  
 
-- Eine zustandsbehaftete Datenebene mit den Datenbankdateien (.mdf/.ldf), die in ZRS PFS (zonenredundante [Premium-Dateifreigabe](../../storage/files/storage-how-to-create-premium-fileshare.md)) gespeichert sind. Mithilfe des [zonenredundanten Speichers](../../storage/common/storage-redundancy.md) werden die Daten und Protokolldateien synchron über drei physisch isolierte Azure-Verfügbarkeitszonen kopiert.
+- Eine zustandsbehaftete Datenebene mit den Datenbankdateien (.mdf/.ldf), die in ZRS PFS (zonenredundante [Premium-Dateifreigabe](../../storage/files/storage-how-to-create-file-share.md)) gespeichert sind. Mithilfe des [zonenredundanten Speichers](../../storage/common/storage-redundancy.md) werden die Daten und Protokolldateien synchron über drei physisch isolierte Azure-Verfügbarkeitszonen kopiert.
 - Eine zustandslose Compute-Ebene, auf der der Prozess „sqlservr.exe“ ausgeführt wird und die nur vorübergehende und zwischengespeicherte Daten enthält, z. B. TempDB, Modelldatenbanken auf der angefügten SSD, Plancache, Puffer- und Columnstore-Pool im Arbeitsspeicher. Dieser zustandslose Knoten wird von Azure Service Fabric gesteuert, die „sqlservr.exe“ initialisiert, die Integrität des Knotens steuert und bei Bedarf ein Failover zu einem anderen Knoten durchführt. Für zonenredundante Datenbanken vom Typ „Universell“ stehen Knoten mit freier Kapazität in anderen Verfügbarkeitszonen für den Failover bereit.
 
 Die zonenredundante Version der Hochverfügbarkeitsarchitektur für die Dienstebene vom Typ „Universell“ wird im folgenden Diagramm veranschaulicht:
