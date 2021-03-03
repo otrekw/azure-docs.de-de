@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 61ca4dc8cd7048df69c827e7ca657b9882900819
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: cc0028a8c7d6d15277c3789118b13b80ed4306ea
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218908"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596637"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Erstellen, Ändern oder Löschen eines virtuellen Netzwerks
 
@@ -87,7 +87,7 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
    - **Properties:** Zeigt Einstellungen des virtuellen Netzwerks an, wie z.B. seine Ressourcen-ID und das zugehörige Azure-Abonnement.
    - **Diagramm**: Das Diagramm bietet eine visuelle Darstellung aller Geräte, die mit dem virtuellen Netzwerk verbunden sind. Das Diagramm enthält einige wichtige Informationen zu den Geräten. Zum Verwalten eines Geräts in dieser Ansicht wählen Sie es im Diagramm aus.
    - **Allgemeine Azure-Einstellungen**: Weitere Informationen zu allgemeinen Azure-Einstellungen finden Sie in den folgenden Artikeln:
-     - [Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md)
+     - [Aktivitätsprotokoll](../azure-monitor/essentials/platform-logs-overview.md)
      - [Zugriffssteuerung (IAM)](../role-based-access-control/overview.md)
      - [Tags](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Locks](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

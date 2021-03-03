@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/14/2020
 ms.author: jeedes
-ms.openlocfilehash: ed136d06f18190124abe4598d580f40e41bf8592
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 20f49c174dde90bc7f1a9b34f3dea3132e9b177e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704219"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644694"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-splan-visitor"></a>Tutorial: Integrieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Splan Visitor
 
@@ -120,8 +120,8 @@ Erstellen Sie in Splan Visitor einen Testbenutzer namens **Britta Simon**. Wend
 Testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit einer der folgenden Optionen:
 
 * **Azure-Portal**: Wählen Sie **Diese Anwendung testen** aus, um sich automatisch bei der Splan Visitor-Instanz anzumelden, für die Sie einmaliges Anmelden eingerichtet haben.
-* **Portal „Meine Apps“ von Microsoft:** Wählen Sie die Kachel **Splan Visitor** aus, um sich automatisch bei der Splan Visitor-Instanz anzumelden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* **Portal „Meine Apps“ von Microsoft:** Wählen Sie die Kachel **Splan Visitor** aus, um sich automatisch bei der Splan Visitor-Instanz anzumelden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Plan Visitor können Sie sich [hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) darüber informieren, wie Sie Sitzungssteuerungen in Microsoft Cloud App Security erzwingen. Sitzungssteuerungen schützen in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten. Sitzungssteuerungen basieren auf bedingtem Zugriff.
+Nach dem Konfigurieren von Plan Visitor können Sie sich [hier](/cloud-app-security/proxy-deployment-any-app) darüber informieren, wie Sie Sitzungssteuerungen in Microsoft Cloud App Security erzwingen. Sitzungssteuerungen schützen in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten. Sitzungssteuerungen basieren auf bedingtem Zugriff.

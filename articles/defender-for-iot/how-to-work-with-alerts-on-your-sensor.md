@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 11/30/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 00207ffb8480ae99c2f1aad74183fca9ea45ee17
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 3ae17ebce564de465a91739a210ae7f18f86a3b9
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836247"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523548"
 ---
 # <a name="work-with-alerts-on-your-sensor"></a>Arbeiten mit Sensorwarnungen
 
@@ -68,9 +68,9 @@ Beispiel:
 
   - Auf Netzwerkgeräten erkannte Malwareereignisse werden in Risikobewertungsberichten gemeldet. Wenn Warnungen zu Malwareereignissen *stummgeschaltet* werden, können betroffene Geräte nicht im Risikobewertungsbericht berechnet werden.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Lernmodus und Smart IT-Lernmodus](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes)
-- [Anzeigen der in Warnungen angegebenen Informationen](how-to-view-information-provided-in-alerts.md)
-- [Verwalten des Warnungsereignisses](how-to-manage-the-alert-event.md)
-- [Beschleunigen des Warnungsworkflows](how-to-accelerate-alert-incident-response.md)
+[Lernmodi und Smart IT-Lernmodi](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes)
+[Anzeigen der in Warnungen angegebenen Informationen](how-to-view-information-provided-in-alerts.md)
+[Verwalten des Warnungsereignisses](how-to-manage-the-alert-event.md)
+[Beschleunigen von Warnungsworkflows](how-to-accelerate-alert-incident-response.md)

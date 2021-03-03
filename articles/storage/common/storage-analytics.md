@@ -9,18 +9,18 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 5465fa63a3dff71de2e370281df9351e2bac76c7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a5ccaa95c8f29395770395076f75f36019a4355c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790524"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737680"
 ---
 # <a name="storage-analytics"></a>Speicheranalyse
 
 Die Azure-Speicheranalyse führt die Protokollierung aus und stellt Metrikdaten für ein Speicherkonto bereit. Mit diesen Daten können Sie Anforderungen verfolgen, Verwendungstrends analysieren und Probleme mit dem Speicherkonto diagnostizieren.
 
-Zum Verwenden der Speicheranalyse müssen Sie sie einzeln für jeden zu überwachenden Dienst aktivieren. Sie können sie über das [Azure-Portal](https://portal.azure.com)aktivieren. Details finden Sie unter [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md). Sie können die Speicheranalyse auch programmgesteuert über die REST-API oder die Clientbibliothek aktivieren. Über die Vorgänge [Blobdiensteigenschaften festlegen](/rest/api/storageservices/set-blob-service-properties), [Eigenschaften des Warteschlangendiensts festlegen](/rest/api/storageservices/set-queue-service-properties), [Tabellendiensteigenschaften festlegen](/rest/api/storageservices/set-table-service-properties) und [Dateidiensteigenschaften festlegen](/rest/api/storageservices/Get-File-Service-Properties) können Sie Storage Analytics für jeden Dienst aktivieren.
+Zum Verwenden der Speicheranalyse müssen Sie sie einzeln für jeden zu überwachenden Dienst aktivieren. Sie können sie über das [Azure-Portal](https://portal.azure.com)aktivieren. Details finden Sie unter [Überwachen eines Speicherkontos im Azure-Portal](./manage-storage-analytics-logs.md). Sie können die Speicheranalyse auch programmgesteuert über die REST-API oder die Clientbibliothek aktivieren. Über die Vorgänge [Blobdiensteigenschaften festlegen](/rest/api/storageservices/set-blob-service-properties), [Eigenschaften des Warteschlangendiensts festlegen](/rest/api/storageservices/set-queue-service-properties), [Tabellendiensteigenschaften festlegen](/rest/api/storageservices/set-table-service-properties) und [Dateidiensteigenschaften festlegen](/rest/api/storageservices/Get-File-Service-Properties) können Sie Storage Analytics für jeden Dienst aktivieren.
 
 Die aggregierten Daten werden in einem bekannten BLOB (zur Protokollierung) und in bekannten Tabellen (als Metrik) gespeichert. Der Zugriff erfolgt über APIs für den BLOB-Dienst und Tabellendienst.
 
@@ -46,6 +46,6 @@ Jede Anforderung, die an den Speicherdienst eines Kontos erfolgt, ist entweder g
 Wenn Sie Speicheranalysedaten überprüfen, können Sie anhand der Tabellen im Thema [Protokollierte Speicheranalysevorgänge und Statusmeldungen](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) bestimmen, welche Anforderungen gebührenpflichtig sind. Anschließend können Sie die Protokolle und Metrikdaten mit den Statusmeldungen vergleichen, um zu ermitteln, ob Ihnen eine bestimmte Anforderung in Rechnung gestellt wurde. Sie können auch die Tabellen im vorherigen Thema verwenden, um die Verfügbarkeit für einen Speicherdienst oder einen einzelnen API-Vorgang zu bestimmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md)
+* [Überwachen eines Speicherkontos im Azure-Portal](./manage-storage-analytics-logs.md)
 * [Metriken der Speicheranalyse](storage-analytics-metrics.md)
 * [Protokollierung durch die Speicheranalyse](storage-analytics-logging.md)

@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: a2226f55c829afa4316a92888d16f6dc68e1f931
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2e94191e80d39e28d7ff0ffc9aa22b522fda68c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183599"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576032"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Migrieren der Updatebereitstellungen für Azure Monitor-Protokolle zum Azure-Portal
 
-Das Portal der Operations Management Suite (OMS) wird gerade [eingestellt](../azure-monitor/platform/oms-portal-transition.md). Alle Funktionen des OMS-Portals für die Updateverwaltung sind ab jetzt im Azure-Portal über Azure Monitor-Protokolle verfügbar. Dieser Artikel enthält alles Wissenswerte zur Migration zum Azure-Portal.
+Das Portal der Operations Management Suite (OMS) wird gerade [eingestellt](../azure-monitor/logs/oms-portal-transition.md). Alle Funktionen des OMS-Portals für die Updateverwaltung sind ab jetzt im Azure-Portal über Azure Monitor-Protokolle verfügbar. Dieser Artikel enthält alles Wissenswerte zur Migration zum Azure-Portal.
 
 ## <a name="key-information"></a>Wichtige Informationen
 
@@ -41,7 +41,7 @@ Das Portal der Operations Management Suite (OMS) wird gerade [eingestellt](../az
 
 ## <a name="recreate-existing-deployments"></a>Neuerstellen vorhandener Bereitstellungen
 
-Alle im OMS-Portal erstellten Updatebereitstellungen verfügen über eine [gespeicherte Suche](../azure-monitor/platform/computer-groups.md), auch Computergruppe genannt. Diese weist denselben Namen wie die vorhandene Updatebereitstellung auf. Die gespeicherte Suche enthält die Liste der Computer, für die die Updatebereitstellung geplant wurde.
+Alle im OMS-Portal erstellten Updatebereitstellungen verfügen über eine [gespeicherte Suche](../azure-monitor/logs/computer-groups.md), auch Computergruppe genannt. Diese weist denselben Namen wie die vorhandene Updatebereitstellung auf. Die gespeicherte Suche enthält die Liste der Computer, für die die Updatebereitstellung geplant wurde.
 
 :::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="Screenshot der Seite „Updatebereitstellungen“ mit hervorgehobenen Feldern „Name“ und „Server“.":::
 
@@ -59,7 +59,7 @@ Wenn Sie diese vorhandene gespeicherte Suche verwenden möchten, gehen Sie folge
     | --- | --- |
     |Name |Eindeutiger Name zum Identifizieren der Updatebereitstellung |
     |Betriebssystem| Wählen Sie zwischen **Linux** und **Windows** aus.|
-    |Zu aktualisierende Computer |Wählen Sie eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü „Computer“ und dann einzelne Computer aus. Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt.</br> Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../azure-monitor/platform/computer-groups.md). |
+    |Zu aktualisierende Computer |Wählen Sie eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü „Computer“ und dann einzelne Computer aus. Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt.</br> Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../azure-monitor/logs/computer-groups.md). |
     |Updateklassifizierungen|Wählen Sie alle benötigten Updateklassifizierungen aus. CentOS unterstützt dies nicht standardmäßig.|
     |Auszuschließende Updates|Geben Sie die auszuschließenden Updates ein. Geben Sie für Windows den KB-Artikel ohne das Präfix **KB** ein. Geben Sie für Linux den Paketnamen ein, oder verwenden Sie ein Platzhalterzeichen.  |
     |Zeitplaneinstellungen|Wählen Sie den Startzeitpunkt aus, und wählen Sie dann unter „Wiederholung“ **Einmal** oder **Serie** aus. | 

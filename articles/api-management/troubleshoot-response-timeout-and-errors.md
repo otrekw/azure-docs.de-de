@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/04/2020
 ms.author: apimpm
 ms.service: api-management
-ms.openlocfilehash: 770a8191b1b07a7ebc779b84f443ae96d66d1c97
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 6cace4a02c8d45cacbbc34e9778b5c4a78ada27f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96839679"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576526"
 ---
 # <a name="troubleshooting-client-response-timeouts-and-errors-with-api-management"></a>Problembehandlung bei Timeouts und Fehlern bei Clientantworten in API Management
 
@@ -24,7 +24,7 @@ Clientanwendungen, die APIs über Ihren API Management-Dienst (APIM) aufrufen, w
 * Zeitweilige HTTP 500-Fehler
 * Timeoutfehlermeldungen
 
-Diese Symptome werden als Instanzen von `BackendConnectionFailure` in [Azure Monitor-Ressourcenprotokollen](../azure-monitor/platform/resource-logs.md) angegeben.
+Diese Symptome werden als Instanzen von `BackendConnectionFailure` in [Azure Monitor-Ressourcenprotokollen](../azure-monitor/essentials/resource-logs.md) angegeben.
 
 ## <a name="cause"></a>Ursache
 

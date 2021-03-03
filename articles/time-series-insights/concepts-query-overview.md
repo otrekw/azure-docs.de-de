@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: bf743bf1997a339664a6da2e5c02f1bcc1deea26
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b1b055fa7f083bd8bccda16498e2894d5d67eace
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736750"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374132"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Abfragen von Daten in Azure Time Series Insights Gen2
 
@@ -54,13 +54,12 @@ Die meisten dieser APIs unterstützen die Batchausführung, um Batch-CRUD-Vorgä
 
 ## <a name="time-series-query-tsq-apis"></a>Zeitreihenabfrage (TSQ)-APIs
 
-Diese APIs sind in beiden Speichern (warm und kalt) unserer mehrschichtigen Speicherlösung verfügbar. Parameter zum Abfragen der URL werden verwendet, um den [Speichertyp](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters) anzugeben, für den die Abfrage ausgeführt werden soll:
+Diese APIs sind in beiden Speichern (warm und kalt) unserer mehrschichtigen Speicherlösung verfügbar. 
 
 * [„Ereignisse abrufen“-API](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents): Ermöglicht das Abfragen und Abrufen von unformatierten Ereignissen und den zugehörigen Zeitstempeln, wie sie in Azure Time Series Insights Gen2 vom Quellanbieter aufgezeichnet werden. Diese API ermöglicht das Abrufen von Rohereignissen für eine bestimmte Zeitreihen-ID und Suchzeitspanne. Diese API unterstützt die Paginierung, um das vollständige Antwortdataset für die ausgewählte Eingabe abzurufen.
 
   > [!IMPORTANT]
-
-  > * Im Rahmen der [bevorstehenden Änderungen für JSON-Vereinfachungs- und -Escaperegeln](./ingestion-rules-update.md) werden Arrays mit dem Typ **Dynamic** gespeichert. Nutzlasteigenschaften, die mit diesem Typ gespeichert werden, sind **NUR über die Ereignisabruf-API zugänglich**.
+  > Im Rahmen der [bevorstehenden Änderungen für JSON-Vereinfachungs- und -Escaperegeln](./ingestion-rules-update.md) werden Arrays mit dem Typ **Dynamic** gespeichert. Nutzlasteigenschaften, die mit diesem Typ gespeichert werden, sind **NUR über die Ereignisabruf-API zugänglich**.
 
 * [„Reihe abrufen“-API](/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries): Ermöglicht das Abfragen und Abrufen berechneter Werte und der zugehörigen Ereigniszeitstempel durch Anwenden von Berechnungen, die durch Variablen in unformatierten Ereignissen definiert werden. Diese Variablen können im Zeitreihenmodell definiert oder in der Abfrage bereitgestellt werden. Diese API unterstützt die Paginierung, um das vollständige Antwortdataset für die ausgewählte Eingabe abzurufen.
 
@@ -69,6 +68,16 @@ Diese APIs sind in beiden Speichern (warm und kalt) unserer mehrschichtigen Spei
   Diese API gibt für eine angegebene Suchzeitspanne und ein angegebenes Intervall eine aggregierte Antwort pro Intervall pro Variable für eine Zeitreihen-ID zurück. Die Anzahl der Intervalle im Antwortdataset wird durch Zählen der Epochenticks (Anzahl der Millisekunden seit Beginn der Unix-Epoche am 1. Januar 1970) und die Division der Ticks durch die in der Abfrage angegebene Intervallzeitspanne berechnet.
 
   Die im Antwortdataset zurückgegebenen Zeitstempel stellen die linken Intervallgrenzen dar, nicht die Stichprobenereignisse im Intervall.
+
+
+### <a name="selecting-store-type"></a>Auswählen des Speichertyps
+
+Die obigen APIs können nur für einen der beiden Speichertypen („kalt“ oder „warm“) in einem einzelnen Aufruf ausgeführt werden. Parameter zum Abfragen der URL werden verwendet, um den [Speichertyp](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters) anzugeben, für den die Abfrage ausgeführt werden soll. 
+
+Wenn kein Parameter angegeben wird, wird die Abfrage standardmäßig im kalten Speicher ausgeführt. Wenn eine Abfrage einen Zeitraum beansprucht, in dem sowohl kalter als auch warmer Speicher genutzt wird, empfiehlt es sich, für eine optimale Erfahrung die Abfrage an den kalten Speicher weiterzuleiten, weil der warme Speicher nur teilweise Daten enthalten wird. 
+
+[Azure Time Series Insights-Explorer](./concepts-ux-panels.md) und der [Power BI- Connector](./how-to-connect-power-bi.md) führen Aufrufe an die obigen APIs aus und wählen automatisch den richtigen „storeType“-Parameter aus, wenn dies relevant ist. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

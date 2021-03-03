@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: 691f3b7987c2591b0f6cea3f7b520c03c0ba9a9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba62ac80b2f8d318d0d13e81e88cc63a8d893a2b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258658"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570349"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Einrichten von Azure Monitor-Protokollen für einen Cluster
 
@@ -119,9 +119,9 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -Wor
 
 Führen Sie anschließend die Schritte im vorherigen Abschnitt aus, um Azure Monitor-Protokolle mit dem entsprechenden Speicherkonto zu verknüpfen.
 
-Mithilfe von PowerShell können Sie zudem weitere Lösungen hinzufügen oder andere Änderungen am Log Analytics-Arbeitsbereich vornehmen. Weitere Informationen finden Sie unter [Verwalten von Azure Monitor-Protokollen mit PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md).
+Mithilfe von PowerShell können Sie zudem weitere Lösungen hinzufügen oder andere Änderungen am Log Analytics-Arbeitsbereich vornehmen. Weitere Informationen finden Sie unter [Verwalten von Azure Monitor-Protokollen mit PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Stellen Sie den Log Analytics-Agent auf Ihren Knoten bereit](service-fabric-diagnostics-oms-agent.md), um Leistungsindikatoren zu erfassen und Docker-Statistiken und -Protokolle für Ihre Container zu sammeln.
-* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../azure-monitor/log-query/log-query-overview.md) in Azure Monitor-Protokolle vertraut.
-* [Erstellen benutzerdefinierter Ansichten in Azure Monitor-Protokollen mithilfe des Ansicht-Designers](../azure-monitor/platform/view-designer.md)
+* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../azure-monitor/logs/log-query-overview.md) in Azure Monitor-Protokolle vertraut.
+* [Erstellen benutzerdefinierter Ansichten in Azure Monitor-Protokollen mithilfe des Ansicht-Designers](../azure-monitor/visualize/view-designer.md)

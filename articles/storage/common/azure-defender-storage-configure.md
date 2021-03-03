@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: 0bda32aaab301fe9ed685f0bfd6d4596fab4e5db
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cdfc54b1eca3b07202148b7099884a04f35939ef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789011"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698143"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Konfigurieren von Azure Defender für Storage
 
@@ -23,7 +23,7 @@ Azure Defender für Storage ermöglicht die Nutzung intelligenter Sicherheitsfun
 
 Bei Anomalien im Rahmen von Aktivitäten werden Sicherheitswarnungen ausgelöst. Diese Sicherheitswarnungen sind in [Azure Security Center](https://azure.microsoft.com/services/security-center/) integriert und werden mit Informationen zu verdächtigen Aktivitäten und Empfehlungen zur Untersuchung und Beseitigung von Bedrohungen auch per E-Mail an Abonnementadministratoren gesendet.
 
-Der Dienst erfasst Ressourcenprotokolle von an Blob Storage und Azure Files gesendete Lese-, Schreib- und Löschanforderungen, um Bedrohungen zu erkennen. Wenn Sie Warnungen von Azure Defender untersuchen möchten, können Sie mithilfe von Storage Analytics Logging entsprechende Speicheraktivitäten anzeigen. Weitere Informationen finden Sie unter **Konfigurieren der Protokollierung** in [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md#configure-logging).
+Der Dienst erfasst Ressourcenprotokolle von an Blob Storage und Azure Files gesendete Lese-, Schreib- und Löschanforderungen, um Bedrohungen zu erkennen. Wenn Sie Warnungen von Azure Defender untersuchen möchten, können Sie mithilfe von Storage Analytics Logging entsprechende Speicheraktivitäten anzeigen. Weitere Informationen finden Sie unter **Konfigurieren der Protokollierung** in [Überwachen eines Speicherkontos im Azure-Portal](./manage-storage-analytics-logs.md#configure-logging).
 
 ## <a name="availability"></a>Verfügbarkeit
 
@@ -56,7 +56,7 @@ Wenn Sie den Standard-Tarif in Azure Security Center abonnieren, wird Azure Defe
 1. Wählen Sie im Hauptmenü unter **Verwaltung** die Option **Preise und Einstellungen** aus.
 1. Wählen Sie das Abonnement aus, für das Sie Azure Defender aktivieren bzw. deaktivieren möchten.
 1. Wählen Sie **Azure Defender ein** aus, um Azure Defender für das Abonnement zu aktivieren.
-1. Suchen Sie unter **Azure Defender-Plan nach Ressourcentyp auswählen** nach der Zeile **Storage** , und wählen Sie in der Spalte **Plan** die Option **Aktiviert** aus.
+1. Suchen Sie unter **Azure Defender-Plan nach Ressourcentyp auswählen** nach der Zeile **Storage**, und wählen Sie in der Spalte **Plan** die Option **Aktiviert** aus.
 1. Speichern Sie die Änderungen.
 
     :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-security-center.png" alt-text="Screenshot: Aktivieren von Azure Defender für Storage in Security Center":::
@@ -69,7 +69,7 @@ Azure Defender ist nun für alle Speicherkonten in diesem Abonnement aktiviert.
 1. Navigieren Sie zum Speicherkonto. Wählen Sie unter **Einstellungen** die Option **Erweiterte Sicherheit** aus.
 1. Wählen Sie **Azure Defender für Storage aktivieren** aus.
 
-    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Screenshot: Aktivieren von Azure Defender für Storage in Security Center":::
+    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Screenshot: Aktivieren von Azure Defender für ein Azure Storage-Konto":::
 
 Azure Defender ist nun für dieses Speicherkonto aktiviert.
 
@@ -81,18 +81,18 @@ Verwenden Sie zur Bereitstellung eines Azure Storage-Kontos, bei dem Azure Defen
 
 Verwenden Sie eine Azure Policy-Instanz zum Aktivieren von Azure Defender für Speicherkonten unter einem bestimmten Abonnement oder einer bestimmten Ressourcengruppe.
 
-1. Starten Sie die Azure-Seite **Richtlinie – Definitionen** .
-1. Suchen Sie nach der Richtlinie **Azure Defender für Speicherkonten bereitstellen** .
+1. Starten Sie die Azure-Seite **Richtlinie – Definitionen**.
+1. Suchen Sie nach der Richtlinie **Azure Defender für Speicherkonten bereitstellen**.
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="Screenshot: Aktivieren von Azure Defender für Storage in Security Center":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="Anwenden einer Richtlinie zum Aktivieren von Azure Defender für Speicherkonten":::
 
 1. Wählen Sie ein Azure-Abonnement oder eine Ressourcengruppe aus.
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="Screenshot: Aktivieren von Azure Defender für Storage in Security Center":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="Auswählen eines Abonnements oder einer Ressourcengruppe für den Umfang der Richtlinie":::
 
 1. Weisen Sie die Richtlinie zu.
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Screenshot: Aktivieren von Azure Defender für Storage in Security Center":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Zuweisen der Richtlinie zum Aktivieren von Azure Defender für Storage":::
 
 ### <a name="rest-api"></a>[REST-API](#tab/rest-api)
 
@@ -125,11 +125,11 @@ Wenn für die Speicheraktivität Anomalien auftreten, erhalten Sie eine E-Mail-B
 
 Die E-Mail enthält auch Details zu möglichen Ursachen und empfohlenen Aktionen zur Untersuchung und Eindämmung der potenziellen Bedrohung.
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="Screenshot: Aktivieren von Azure Defender für Storage in Security Center":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="E-Mail mit Warnung zu Azure Defender für Storage":::
 
 Sie können Ihre aktuellen Sicherheitswarnungen in Azure Security Center über die [Kachel Sicherheitswarnungen](../../security-center/security-center-managing-and-responding-alerts.md) anzeigen und verwalten. Durch Klicken auf eine bestimmte Warnung werden Details und Aktionen zum Untersuchen der aktuellen Bedrohung und zum Begegnen zukünftiger Bedrohungen bereitgestellt.
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="Screenshot: Aktivieren von Azure Defender für Storage in Security Center":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="Warnung zu Azure Defender für Storage":::
 
 ## <a name="security-alerts"></a>Sicherheitswarnungen
 

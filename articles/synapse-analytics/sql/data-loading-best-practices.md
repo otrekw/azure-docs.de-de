@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 31014d336b5122251cf8be4a166520064776fce3
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 3c8c34cc3e23306f1d024cfa36b40c7975caa8c6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118165"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674276"
 ---
 # <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>Bewährte Methoden für das Laden von Daten in einen dedizierten SQL-Pool in Azure Synapse Analytics
 
@@ -64,7 +64,7 @@ Führen Sie Ladevorgänge nicht unter dynamischen Ressourcenklassen, sondern unt
 
 ## <a name="allow-multiple-users-to-load"></a>Ermöglichen von Ladevorgängen für mehrere Benutzer
 
-Oftmals müssen mehrere Benutzer in der Lage sein, Daten in ein Data Warehouse zu laden. Das Laden mit [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) setzt CONTROL-Berechtigungen der Datenbank voraus.  Die CONTROL-Berechtigung erteilt Steuerungszugriff auf alle Schemas. Unter Umständen sollen aber nicht alle Benutzer, die Daten laden, über Steuerungszugriff auf alle Schemas verfügen. Berechtigungen können mithilfe der DENY CONTROL-Anweisung eingeschränkt werden.
+Oftmals müssen mehrere Benutzer in der Lage sein, Daten in ein Data Warehouse zu laden. Das Laden mit [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) setzt CONTROL-Berechtigungen der Datenbank voraus.  Die CONTROL-Berechtigung erteilt Steuerungszugriff auf alle Schemas. Unter Umständen sollen aber nicht alle Benutzer, die Daten laden, über Steuerungszugriff auf alle Schemas verfügen. Berechtigungen können mithilfe der DENY CONTROL-Anweisung eingeschränkt werden.
 
 Beispiel: Wenn Sie über die Datenbankschemas Schema_A für Abteilung A und Schema_B für Abteilung B verfügen, sollten Sie beachten, dass die Datenbankbenutzer Benutzer_A und Benutzer_B Benutzer von PolyBase sind und in Abteilung A bzw. B geladen werden. Beiden wurden CONTROL-Datenbankberechtigungen erteilt. Die Ersteller von Schema A und B sperren ihre Schemas jetzt mit der DENY-Anweisung:
 
@@ -100,7 +100,7 @@ Vergewissern Sie sich zur Behebung dieses Problems, dass die Formatdefinitionen 
 
 ## <a name="insert-data-into-a-production-table"></a>Einfügen von Daten in eine Produktionstabelle
 
-Bei einem einmaligen Ladevorgang für eine kleine Tabelle mit einer [INSERT-Anweisung](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) oder beim periodischen erneuten Laden eines Suchvorgangs wird unter Umständen eine ausreichende Leistung für Ihre Zwecke erzielt, wenn Sie eine Anweisung wie `INSERT INTO MyLookup VALUES (1, 'Type 1')` verwenden.  Singleton-Einfügungen sind jedoch nicht so effizient wie ein Massenladevorgang.
+Bei einem einmaligen Ladevorgang für eine kleine Tabelle mit einer [INSERT-Anweisung](/sql/t-sql/statements/insert-transact-sql?view=azure-sqldw-latest&preserve-view=true) oder beim periodischen erneuten Laden eines Suchvorgangs wird unter Umständen eine ausreichende Leistung für Ihre Zwecke erzielt, wenn Sie eine Anweisung wie `INSERT INTO MyLookup VALUES (1, 'Type 1')` verwenden.  Singleton-Einfügungen sind jedoch nicht so effizient wie ein Massenladevorgang.
 
 Wenn Sie im Laufe eines Tages über Tausende oder mehr einzelne Einfügungen verfügen, sollten Sie sie zu einem Batch zusammenfassen, um das Massenladen zu ermöglichen.  Entwickeln Sie Ihre Prozesse so, dass die einzelnen Einfügungen an eine Datei angefügt werden, und erstellen Sie dann einen weiteren Prozess, mit dem die Datei regelmäßig geladen wird.
 
@@ -124,7 +124,7 @@ Eine bewährte Sicherheitsmethode besteht darin, den Zugriffsschlüssel für Ihr
 
 Gehen Sie wie folgt vor, um Schlüssel für Azure Storage-Konten zu rotieren:
 
-Führen Sie für jedes Speicherkonto, dessen Schlüssel sich geändert hat, [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) aus.
+Führen Sie für jedes Speicherkonto, dessen Schlüssel sich geändert hat, [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?view=azure-sqldw-latest&preserve-view=true) aus.
 
 Beispiel:
 

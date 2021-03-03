@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 08/03/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: a002254995e42fc586b707e3cb373dac66e678ee
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1062c8dfe416af2d39063bf71f39d52e151e28d3
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834148"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096071"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>Anzeigen und Suchen Ihrer letzten Anmeldeaktivität auf der Seite „Meine Anmeldungen“
 
@@ -25,6 +25,12 @@ Sie können die letzten Anmeldeaktivitäten für Ihr Geschäfts-, Schul- oder Un
 - Ob jemand versucht, Ihr Kennwort zu erraten.
 - Ob sich ein Angreifer erfolgreich bei ihrem Konto angemeldet hat und an welchem Standort die Anmeldung erfolgt ist.
 - Auf welche Apps der Angreifer versucht hat, zuzugreifen.
+
+>[!Note]
+> Wenn bei der Anmeldung mit einem persönlichen Microsoft-Konto ein Fehler auftritt, können Sie sich trotzdem mit dem Domänennamen für Ihre Organisation (z. B. „contoso.com“) oder der **Mandanten-ID** Ihrer Organisation, die Sie von Ihrem Administrator erhalten, über eine der folgenden URLs anmelden:
+>
+>   - https://myaccount.microsoft.com?tenantId=*Ihr_Domänenname*
+>   - https://myaccount.microsoft.com?tenant=*Ihre_Mandanten_ID*
 
 ## <a name="view-your-recent-sign-in-activity"></a>Anzeigen Ihrer letzten Anmeldeaktivität
 

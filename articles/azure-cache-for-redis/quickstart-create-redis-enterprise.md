@@ -1,20 +1,20 @@
 ---
-title: 'Schnellstart: Erstellen eines Caches mit Enterprise-Tarif'
-description: In dieser Schnellstartanleitung wird beschrieben, wie Sie eine Azure Cache for Redis-Instanz mit Enterprise-Tarif erstellen.
+title: 'Schnellstart: Erstellen einer Redis Cache-Instanz im Enterprise-Tarif'
+description: In dieser Schnellstartanleitung wird beschrieben, wie Sie eine Azure Cache for Redis-Instanz mit Enterprise-Tarifen erstellen.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 10/28/2020
-ms.openlocfilehash: 95f6e2cf7803ff0b152f33c08f170725b5a0e94e
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 02/08/2021
+ms.openlocfilehash: 50535ab9ac2a3541ade7b9abd8f355bbeaf6d4b3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95795665"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365003"
 ---
-# <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>Schnellstart: Erstellen eines Caches mit Enterprise-Tarif (Vorschau)
+# <a name="quickstart-create-a-redis-enterprise-cache-preview"></a>Schnellstart: Erstellen einer Redis Cache-Instanz im Enterprise-Tarif (Vorschau)
 
 Enterprise-Tarife für Azure Cache for Redis bieten vollständig integrierte und verwaltete Instanzen von [Redis Enterprise](https://redislabs.com/redis-enterprise/) in Azure. Sie sind derzeit als Vorschau verfügbar. In dieser Vorschau stehen zwei neue Tarife zur Verfügung:
 * Enterprise: Bei diesem Tarif wird flüchtiger Speicher (DRAM) auf einem virtuellen Computer als Datenspeicher verwendet.
@@ -22,7 +22,7 @@ Enterprise-Tarife für Azure Cache for Redis bieten vollständig integrierte und
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen ein Azure-Abonnement. Erstellen Sie ein [Konto](https://azure.microsoft.com/), falls Sie noch keines haben. Weitere Informationen finden Sie unter [Anforderungen für den Enterprise-Tarif](cache-overview.md#enterprise-tier-requirements).
+Sie benötigen ein Azure-Abonnement. Erstellen Sie ein [Konto](https://azure.microsoft.com/), falls Sie noch keines haben. Weitere Informationen finden Sie unter [Anforderungen für den Enterprise-Tarif](cache-overview.md#enterprise-and-enterprise-flash-tier-requirements).
 
 ## <a name="create-a-cache"></a>Erstellen eines Caches
 1. Melden Sie sich zum Erstellen eines Caches über den Link in Ihrer Vorschaueinladung beim Azure-Portal an, und wählen Sie **Ressource erstellen** aus.
@@ -33,7 +33,7 @@ Sie benötigen ein Azure-Abonnement. Erstellen Sie ein [Konto](https://azure.mic
    
 1. Konfigurieren Sie auf der Seite **Neuer Redis Cache** die Einstellungen für den neuen Cache.
    
-   | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
+   | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
    | ------------ |  ------- | -------------------------------------------------- |
    | **Abonnement** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Abonnement aus. | Das Abonnement, unter dem diese neue Azure Cache for Redis-Instanz erstellt wird. | 
    | **Ressourcengruppe** | Öffnen Sie die Dropdownliste, und wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Der Name der Ressourcengruppe, in der Ihr Cache und weitere Ressourcen erstellt werden. Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. | 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 33be57832d9364b859042cd38349c2437bcfcb18
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a7735de9763f3924cd6baae6af1258f6448c874e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358145"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690922"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Failoverclusterinstanzen mit SQL Server in Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,7 +47,7 @@ In herkömmlichen lokalen Clusterumgebungen verwendet ein Windows-Failovercluste
 
 SQL Server auf Azure-VMs bietet verschiedene Optionen als freigegebene Speicherlösung für eine Bereitstellung von SQL Server-Failoverclusterinstanzen: 
 
-||[Freigegebene Azure-Datenträger](../../../virtual-machines/disks-shared.md)|[Premium-Dateifreigaben](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[Direkte Speicherplätze (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
+||[Freigegebene Azure-Datenträger](../../../virtual-machines/disks-shared.md)|[Premium-Dateifreigaben](../../../storage/files/storage-how-to-create-file-share.md) |[Direkte Speicherplätze (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
 |**Betriebssystemversion (Min.)**| All |Windows Server 2012|Windows Server 2016|
 |**Mindestversion von SQL Server**|All|SQL Server 2012|SQL Server 2016|
@@ -107,7 +107,7 @@ Informationen zu den ersten Schritten finden Sie unter [SQL Server-Failoverclus
 
 ### <a name="premium-file-share"></a>Premium-Dateifreigabe
 
-[Premium-Dateifreigaben](../../../storage/files/storage-how-to-create-premium-fileshare.md) sind eine Funktion von [Azure Files](../../../storage/files/index.yml). Premium-Dateifreigaben sind SSD-gestützt und weisen konsistent niedrige Latenz auf. Sie werden für die Verwendung mit Failoverclusterinstanzen für SQL Server 2012 oder höher unter Windows Server 2012 oder höher vollständig unterstützt. Premium-Dateifreigaben bieten Ihnen mehr Flexibilität, weil Sie ohne Ausfallzeiten die Größe der Dateifreigabe ändern und diese skalieren können.
+[Premium-Dateifreigaben](../../../storage/files/storage-how-to-create-file-share.md) sind eine Funktion von [Azure Files](../../../storage/files/index.yml). Premium-Dateifreigaben sind SSD-gestützt und weisen konsistent niedrige Latenz auf. Sie werden für die Verwendung mit Failoverclusterinstanzen für SQL Server 2012 oder höher unter Windows Server 2012 oder höher vollständig unterstützt. Premium-Dateifreigaben bieten Ihnen mehr Flexibilität, weil Sie ohne Ausfallzeiten die Größe der Dateifreigabe ändern und diese skalieren können.
 
 **Unterstütztes Betriebssystem**: Windows Server 2012 und höher   
 **Unterstützte SQL-Version**: SQL Server 2012 und höher   

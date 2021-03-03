@@ -6,14 +6,17 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 02cf175fc0a29795428ce1b3651469532ff3867c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a387261b392ea6718941f5eabe889e0c1a41fd5a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92438451"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750162"
 ---
 In diesem Schnellstart erfahren Sie, wie Sie einen Anruf mithilfe der Clientbibliothek für Telefonie von Azure Communication Services für Android beginnen.
+
+> [!NOTE]
+> Dieses Dokument verwendet Version 1.0.0-beta.8 der aufrufenden Clientbibliothek.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,11 +35,11 @@ Wählen Sie in Android Studio „Start a new Android Studio project“ (Neues An
 
 Wählen Sie unter „Phone and Tablet“ (Telefon und Tablet) die Projektvorlage „Empty Activity“ (Leere Aktivität) aus.
 
-:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Ein Screenshot, der die Schaltfläche „Start a new Android Studio project“ (Neues Android Studio-Projekt starten) zeigt, die in Android Studio ausgewählt ist":::
+:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Screenshot, der die Option „Empty Activity“ (Leere Aktivität) zeigt, die auf dem Bildschirm für die Projektvorlage ausgewählt ist":::
 
 Wählen Sie die Clientbibliothek „API 26: Android 8.0 (Oreo)“ oder höher aus.
 
-:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Ein Screenshot, der die Schaltfläche „Start a new Android Studio project“ (Neues Android Studio-Projekt starten) zeigt, die in Android Studio ausgewählt ist":::
+:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Screenshot, der die Option „Empty Activity“ (Leere Aktivität) zeigt, die auf dem Bildschirm für die Projektvorlage 2 ausgewählt ist":::
 
 
 ### <a name="install-the-package"></a>Installieren des Pakets
@@ -78,7 +81,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.8'
     ...
 }
 ```
@@ -165,7 +168,7 @@ Zwei Eingaben sind erforderlich: eine Texteingabe für die Angerufenen-ID und ei
 
 Nachdem das Layout erstellt wurde, können die Bindungen und das Grundgerüst der Aktivität hinzugefügt werden. Die Aktivität verarbeitet das Anfordern von Runtimeberechtigungen, erstellt den Anruf-Agent und platziert den Anruf, wenn die Schaltfläche gedrückt wird. Jede dieser Optionen wird in einem eigenen Abschnitt behandelt. Die Methode `onCreate` wird überschrieben, um `getAllPermissions` und `createAgent` aufzurufen und die Bindungen für die Anrufschaltfläche hinzuzufügen. Dies ist nur einmal der Fall, wenn die Aktivität erstellt wird. Weitere Informationen zu `onCreate` finden Sie im Handbuch mit [grundlegenden Informationen zum Aktivitätslebenszyklus](https://developer.android.com/guide/components/activities/activity-lifecycle).
 
-Navigieren Sie zu **MainActivity.java** , und ersetzen Sie den Inhalt durch den folgenden Code:
+Navigieren Sie zu **MainActivity.java**, und ersetzen Sie den Inhalt durch den folgenden Code:
 
 ```java
 package com.contoso.acsquickstart;
@@ -180,11 +183,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.azure.android.communication.common.CommunicationUser;
-import com.azure.android.communication.common.CommunicationUserCredential;
-import com.azure.communication.calling.CallAgent;
-import com.azure.communication.calling.CallClient;
-import com.azure.communication.calling.StartCallOptions;
+import com.azure.android.communication.common.CommunicationUserIdentifier;
+import com.azure.android.communication.common.CommunicationTokenCredential;
+import com.azure.android.communication.calling.CallAgent;
+import com.azure.android.communication.calling.CallClient;
+import com.azure.android.communication.calling.StartCallOptions;
 
 
 import java.util.ArrayList;
@@ -257,13 +260,14 @@ private void getAllPermissions() {
 
 ## <a name="object-model"></a>Objektmodell
 
-Die folgenden Klassen und Schnittstellen verarbeiten einige der wichtigsten Features der Clientbibliothek für Telefonie von Azure Communication Services:
+Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigsten Features der Azure Communication Services-Clientbibliothek „Calling“:
 
 | Name                                  | Beschreibung                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| „CallClient“ ist der Haupteinstiegspunkt der Clientbibliothek für Telefonie.|
-| CallAgent | „CallAgent“ dient zum Starten und Verwalten von Anrufen. |
+| CallClient| CallClient ist der Haupteinstiegspunkt in die Clientbibliothek „Calling“.|
+| CallAgent | CallAgent dient zum Starten und Verwalten von Anrufen. |
 | CommunicationUserCredential | „CommunicationUserCredential“ dient als tokengestützte Anmeldeinformation zum Instanziieren von „CallAgent“.|
+| CommunicationIdentifier | „CommunicationIdentifier“ wird als anderer Typ von Teilnehmer verwendet, der Teil eines Anrufs sein könnte.|
 
 ## <a name="create-an-agent-from-the-user-access-token"></a>Erstellen eines Agents aus dem Benutzerzugriffstoken
 
@@ -278,7 +282,7 @@ private void createAgent() {
     String userToken = "<User_Access_Token>";
 
     try {
-        CommunicationUserCredential credential = new CommunicationUserCredential(userToken);
+        CommunicationTokenCredential credential = new CommunicationTokenCredential(userToken);
         callAgent = new CallClient().createCallAgent(getApplicationContext(), credential).get();
     } catch (Exception ex) {
         Toast.makeText(getApplicationContext(), "Failed to create call agent.", Toast.LENGTH_SHORT).show();
@@ -303,7 +307,7 @@ private void startCall() {
 
     callAgent.call(
         getApplicationContext(),
-        new CommunicationUser[] {new CommunicationUser(calleeId)},
+        new CommunicationUserIdentifier[] {new CommunicationUserIdentifier(calleeId)},
         options);
 }
 ```
@@ -313,7 +317,7 @@ private void startCall() {
 
 Die App kann jetzt mithilfe der Schaltfläche „Run app“ (App ausführen) auf der Symbolleiste gestartet werden (UMSCHALT + F10). Überprüfen Sie, ob Sie Anrufe tätigen können, indem Sie `8:echo123` anrufen. Eine vorab aufgezeichnete Nachricht wird wiederholt und gibt anschließend Ihre Nachricht an Sie selbst wieder.
 
-:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Ein Screenshot, der die Schaltfläche „Start a new Android Studio project“ (Neues Android Studio-Projekt starten) zeigt, die in Android Studio ausgewählt ist":::
+:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Screenshot, der die fertige Anwendung zeigt":::
 
 ## <a name="sample-code"></a>Beispielcode
 

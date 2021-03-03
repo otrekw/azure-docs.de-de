@@ -4,12 +4,12 @@ description: "\"Besitzer\", \"Mitwirkende\" und \"Leser\" für die gewonnenen Un
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cd1e69ecd121380353ad6400d473d572b7b7bb3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4254170ad100b634439cc846dc381e305ae71d1f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89076683"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589604"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Ressourcen, Rollen und Zugriffssteuerung in Application Insights
 
@@ -76,7 +76,7 @@ Wir haben Links zur zugehörigen offiziellen Referenzdokumentation angegeben (so
 | [Leser](../../role-based-access-control/built-in-roles.md#reader) |Kann Inhalte anzeigen, aber nicht ändern. |
 | [Application Insights-Momentaufnahmedebugger](../../role-based-access-control/built-in-roles.md#application-insights-snapshot-debugger) | Erteilt dem Benutzer die Berechtigung zum Verwenden von Features des Application Insights-Momentaufnahmedebuggers. Beachten Sie, dass diese Rolle weder in der Rolle „Besitzer“ noch in der Rolle „Mitwirkender“ enthalten ist. |
 | Mitwirkender der Releaseverwaltung für Azure App Service-Bereitstellung | Rolle „Mitwirkender“ für Dienste, die über Azure App Service-Bereitstellung bereitgestellt werden. |
-| [Datenpurger](../../role-based-access-control/built-in-roles.md#data-purger) | Besondere Rolle für das Löschen von personenbezogenen Daten. Weitere Informationen finden Sie in unserem [Leitfaden für personenbezogene Daten](../platform/personal-data-mgmt.md).   |
+| [Datenpurger](../../role-based-access-control/built-in-roles.md#data-purger) | Besondere Rolle für das Löschen von personenbezogenen Daten. Weitere Informationen finden Sie in unserem [Leitfaden für personenbezogene Daten](../logs/personal-data-mgmt.md).   |
 | ExpressRoute-Administrator | Kann Expressrouten erstellen, löschen und verwalten.|
 | [Log Analytics-Mitwirkender](../../role-based-access-control/built-in-roles.md#log-analytics-contributor) | Ein Log Analytics-Mitwirkender kann alle Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Das Bearbeiten von Überwachungseinstellungen schließt folgende Aufgaben ein: Hinzufügen der VM-Erweiterung zu VMs, Lesen von Speicherkontoschlüsseln zum Konfigurieren von Protokollsammlungen aus Azure Storage, Erstellen und Konfigurieren von Automation-Konten, Hinzufügen von Lösungen, Konfigurieren der Azure-Diagnose für alle Azure-Ressourcen.  |
 | [Log Analytics-Leser](../../role-based-access-control/built-in-roles.md#log-analytics-reader) | Ein Log Analytics-Leser kann alle Überwachungsdaten anzeigen und durchsuchen sowie Überwachungseinstellungen anzeigen. Hierzu zählt auch die Anzeige der Konfiguration von Azure-Diagnosen für alle Azure-Ressourcen. |

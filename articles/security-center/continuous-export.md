@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 845ff6f0905b232b9ec68dbe127ef7f47a6ad898
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 9b8dc635781c96dcbd7aa423c77f60ff0556bd71
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916782"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634061"
 ---
 # <a name="continuously-export-security-center-data"></a>Fortlaufendes Exportieren von Security Center-Daten
 
@@ -185,7 +185,7 @@ Die Ereignisschemas der exportierten Datentypen finden Sie bei den [Log Analytic
 
 ##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>Anzeigen exportierter Warnungen und Empfehlungen in Azure Monitor
 
-Sie können die exportierten Sicherheitswarnungen und Empfehlungen auch in [Azure Monitor](../azure-monitor/platform/alerts-overview.md) anzeigen. 
+Sie können die exportierten Sicherheitswarnungen und Empfehlungen auch in [Azure Monitor](../azure-monitor/alerts/alerts-overview.md) anzeigen. 
 
 Azure Monitor bietet eine einheitliche Warnungsbenutzeroberfläche für eine Vielzahl von Azure-Warnungen, einschließlich Diagnoseprotokoll, Metrikwarnungen und benutzerdefinierte Warnungen, die auf Log Analytics-Arbeitsbereichsabfragen basieren.
 
@@ -195,13 +195,13 @@ Konfigurieren Sie eine Warnungsregel, die auf Log Analytics-Abfragen (Protokollw
 
     ![Seite „Warnungen“ von Azure Monitor](./media/continuous-export/azure-monitor-alerts.png)
 
-1. Konfigurieren Sie auf der Seite „Regel erstellen“ Ihre neue Regel (auf die gleiche Weise, wie Sie eine [Protokollwarnungsregel in Azure Monitor](../azure-monitor/platform/alerts-unified-log.md) konfigurieren würden):
+1. Konfigurieren Sie auf der Seite „Regel erstellen“ Ihre neue Regel (auf die gleiche Weise, wie Sie eine [Protokollwarnungsregel in Azure Monitor](../azure-monitor/alerts/alerts-unified-log.md) konfigurieren würden):
 
     * Wählen Sie als **Ressource** den Log Analytics-Arbeitsbereich aus, in den Sie Sicherheitswarnungen und Empfehlungen exportiert haben.
 
     * Wählen Sie als **Bedingung** die Option **Benutzerdefinierte Protokollsuche** aus. Konfigurieren Sie auf der Seite, die angezeigt wird, die Abfrage, den Rückblickzeitraum und den Häufigkeitszeitraum. In der Suchabfrage können Sie *SecurityAlert* oder *SecurityRecommendation* eingeben, um die Datentypen abzufragen, in die Security Center kontinuierlich exportiert, wenn Sie die Funktion „Fortlaufender Export in Log Analytics“ aktivieren. 
     
-    * Konfigurieren Sie optional die [Aktionsgruppe](../azure-monitor/platform/action-groups.md), die Sie auslösen möchten. Aktionsgruppen können das Senden von E-Mails-, ITSM-Tickets, WebHooks und vieles mehr auslösen.
+    * Konfigurieren Sie optional die [Aktionsgruppe](../azure-monitor/alerts/action-groups.md), die Sie auslösen möchten. Aktionsgruppen können das Senden von E-Mails-, ITSM-Tickets, WebHooks und vieles mehr auslösen.
     ![Azure Monitor-Warnungsregel](./media/continuous-export/azure-monitor-alert-rule.png)
 
 Ihnen werden nun neue Azure Security Center-Warnungen oder -Empfehlungen (abhängig von Ihren konfigurierten Regeln für den fortlaufenden Export und den in Ihrer Azure Monitor-Warnungsregel definierten Bedingungen) in den Azure Monitor-Warnungen angezeigt, und eine Aktionsgruppe (sofern vorhanden) wird automatisch ausgelöst.
@@ -210,7 +210,7 @@ Ihnen werden nun neue Azure Security Center-Warnungen oder -Empfehlungen (abhän
 
 Wenn Sie einen CSV-Bericht für Warnungen oder Empfehlungen herunterladen möchten, öffnen Sie die Seite **Sicherheitswarnungen** oder **Empfehlungen**, und wählen Sie **CSV-Bericht herunterladen** aus.
 
-[![Herunterladen von Warnungsdaten als CSV-Datei](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
+:::image type="content" source="./media/continuous-export/download-alerts-csv.png" alt-text="Herunterladen von Warnungsdaten als CSV-Datei" lightbox="./media/continuous-export/download-alerts-csv.png":::
 
 > [!NOTE]
 > Diese Berichte enthalten Warnungen und Empfehlungen für Ressourcen in den aktuell ausgewählten Abonnements.

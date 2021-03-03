@@ -2,17 +2,17 @@
 title: Einrichten von GitHub Enterprise Server in Ihrer privaten Azure VMware Solution-Cloud
 description: Erfahren Sie, wie Sie GitHub Enterprise Server in Ihrer privaten Azure VMware Solution-Cloud einrichten.
 ms.topic: how-to
-ms.date: 02/03/2021
-ms.openlocfilehash: 2b05e352fd8a81d6d180d4c60e67ab48465b284f
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.date: 02/11/2021
+ms.openlocfilehash: 59a76c3976f6fcda88423b7b78344f2abed1ea84
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549101"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382020"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>Einrichten von GitHub Enterprise Server in Ihrer privaten Azure VMware Solution-Cloud
 
-In diesem Artikel werden die Schritte zum Einrichten von GitHub Enterprise Server, der „lokalen“ Version von [GitHub.com](https://github.com/), in Ihrer privaten Azure VMware Solution-Cloud erläutert. Das in dieser exemplarischen Vorgehensweise beschriebene Szenario gilt für eine GitHub Enterprise Server-Instanz, die bis zu 3.000 Entwickler unterstützt, die bis zu 25 Einzelvorgänge pro Minute in GitHub Actions ausführen können. Dazu gehört die Einrichtung von Features wie GitHub Actions (bei der Erstellung dieses Dokuments lediglich als *Vorschau* verfügbar). Informationen zum Anpassen der Einrichtung an Ihre speziellen Anforderungen finden Sie in den Anforderungen zum [Installieren von GitHub Enterprise Server unter VMware](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations).
+In diesem Artikel werden die Schritte zum Einrichten von GitHub Enterprise Server, der „lokalen“ Version von [GitHub.com](https://github.com/), in Ihrer privaten Azure VMware Solution-Cloud erläutert. Das beschriebene Szenario gilt für eine GitHub Enterprise Server-Instanz mit Unterstützung von bis zu 3.000 Entwicklern, die bis zu 25 Aufträge pro Minute in GitHub Actions ausführen. Dazu gehört die Einrichtung von Features wie GitHub Actions (bei der Erstellung dieses Dokuments lediglich als *Vorschau* verfügbar). Informationen zum Anpassen der Einrichtung an Ihre speziellen Anforderungen finden Sie in den Anforderungen zum [Installieren von GitHub Enterprise Server unter VMware](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations).
 
 ## <a name="before-you-begin"></a>Vorbereitung
 
@@ -30,7 +30,7 @@ Geben Sie einen erkennbaren Namen für den neuen virtuellen Computer an, z. B. 
 
 [Passen Sie die Hardwarekonfiguration](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#creating-the-github-enterprise-server-instance) nach dem Import Ihren Anforderungen entsprechend an. In unserem Beispielszenario wird die folgende Konfiguration benötigt.
 
-| Resource | Standardeinrichtung | Standardeinrichtung + "Beta-Features" (GitHub Actions) |
+| Resource | Standardeinrichtung | Standardeinrichtung + „Beta-Features“ (Actions) |
 | --- | --- | --- |
 | vCPUs | 4 | 8 |
 | Arbeitsspeicher | 32 GB | 61 GB |
@@ -59,7 +59,7 @@ Wenden Sie Ihre Einstellungen an.  Wenn die Instanz neu gestartet wird, können 
 
 :::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="Erstellen des Administratorkontos.":::
 
-Erstellen Sie ein neues Administratorkonto für die Instanz, nachdem die Instanz neu gestartet wurde. Sie sollten das Kennwort dieses Benutzers ebenfalls unbedingt notieren und sicher aufbewahren.
+Nachdem die Instanz neu gestartet wurde, können Sie ein neues Administratorkonto für die Instanz erstellen. Sie sollten das Kennwort dieses Benutzers ebenfalls unbedingt notieren und sicher aufbewahren.
 
 ### <a name="other-configuration-steps"></a>Weitere Konfigurationsschritte
 
@@ -178,7 +178,7 @@ Um diesen Runner für Organisationen in Ihrem Unternehmen verfügbar zu machen, 
 
 :::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="Bearbeiten des Runner-Zugriffs.":::
 
-Hier machen wir den Runner für alle Organisationen verfügbar. Sie können den Zugriff aber auch auf eine Teilmenge von Organisationen und sogar auf bestimmte Repositorys beschränken.
+Hier machen Sie den Runner für alle Organisationen verfügbar. Sie können den Zugriff aber auch auf eine Teilmenge von Organisationen und sogar auf bestimmte Repositorys beschränken.
 
 ## <a name="optional-configuring-github-connect"></a>(Optional) Konfigurieren von GitHub Connect
 
@@ -223,7 +223,7 @@ Wenn alles erfolgreich ausgeführt wurde, sollte in Ihrem Repository ein neues I
 
 Herzlichen Glückwunsch! Sie haben soeben ihren ersten Actions-Workflow in GitHub Enterprise Server ausgeführt, der in Ihrer privaten Azure VMware Solution-Cloud ausgeführt wird.
 
-In diesem Artikel haben wir eine neue GitHub Enterprise Server-Instanz, das selbstgehostete Äquivalent von GitHub.com, in ihrer privaten Azure VMware Solution-Cloud eingerichtet. Diese Instanz bietet Unterstützung für GitHub Actions und verwendet Azure Blob Storage zum Speichern von Protokollen und Artefakten. Wir haben aber nur einen geringen Teil der Möglichkeiten aufgezeigt, die GitHub Actions bietet. Sehen Sie sich die Liste der Aktionen im [Marketplace von GitHub](https://github.com/marketplace) an, oder [erstellen Sie eigene Aktionen](https://docs.github.com/en/actions/creating-actions).
+In diesem Artikel haben wir eine neue GitHub Enterprise Server-Instanz, das selbstgehostete Äquivalent von GitHub.com, in ihrer privaten Azure VMware Solution-Cloud eingerichtet. Diese Instanz bietet Unterstützung für GitHub Actions und verwendet Azure Blob Storage zum Speichern von Protokollen und Artefakten. Hier wurde aber nur ein geringer Teil der Möglichkeiten aufgezeigt, die GitHub Actions bietet. Sehen Sie sich die Liste der Aktionen im [Marketplace von GitHub](https://github.com/marketplace) an, oder [erstellen Sie eigene Aktionen](https://docs.github.com/en/actions/creating-actions).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

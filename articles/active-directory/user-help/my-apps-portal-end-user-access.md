@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 10/19/2020
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 61dd185d00cef2382763e7435c081e1d412cdb92
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6dd9d65ee56bcbf8ca1da72f7d99d4545c5d7fbb
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127875"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095000"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses
 
@@ -31,6 +31,11 @@ Wenn Sie keinen Zugriff auf das Portal **Meine Apps** haben, wenden Sie sich fü
 
 > [!IMPORTANT]
 > Dieser Inhalt richtet sich an Benutzer von **Meine Apps**. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](../manage-apps/index.yml) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
+>
+> Wenn bei der Anmeldung mit einem persönlichen Microsoft-Konto ein Fehler auftritt, können Sie sich trotzdem mit dem Domänennamen für Ihre Organisation (z. B. „contoso.com“) oder der **Mandanten-ID** Ihrer Organisation, die Sie von Ihrem Administrator erhalten, über eine der folgenden URLs anmelden:
+>
+>   - https://myapplications.microsoft.com?tenantId=*Ihr_Domänenname*
+>   - https://myapplications.microsoft.com?tenant=*Ihre_Mandanten_ID*
 
 ## <a name="supported-browsers"></a>Unterstützte Browser
 
@@ -75,11 +80,11 @@ Mit der **Erweiterung zur sicheren Anmeldung bei „Meine Apps“** haben Sie fo
 
 Laden Sie die Erweiterung in Ihrem Browser herunter, und installieren Sie sie.
 
-- **Microsoft Edge** : Wechseln Sie im Microsoft Store zum Feature [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](https://microsoftedge.microsoft.com/addons/detail/my-apps-secure-signin-ex/gaaceiggkkiffbfdpmfapegoiohkiipl). Klicken Sie auf **Herunterladen** , um die Erweiterung für den Microsoft Edge-Legacybrowser abzurufen.
+- **Microsoft Edge**: Wechseln Sie im Microsoft Store zum Feature [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](https://microsoftedge.microsoft.com/addons/detail/my-apps-secure-signin-ex/gaaceiggkkiffbfdpmfapegoiohkiipl). Klicken Sie auf **Herunterladen**, um die Erweiterung für den Microsoft Edge-Legacybrowser abzurufen.
 
-- **Google Chrome** : Wechseln Sie im Chrome Web Store zum Feature [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl), und klicken Sie dann auf **Zu Chrome hinzufügen**.
+- **Google Chrome**: Wechseln Sie im Chrome Web Store zum Feature [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl), und klicken Sie dann auf **Zu Chrome hinzufügen**.
 
-- **Mozilla Firefox** : Wechseln Sie auf der Seite **Firefox-Add-Ons** zum Feature [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](https://addons.mozilla.org/firefox/addon/access-panel-extension/), und klicken Sie dann auf **Zu Firefox hinzufügen**.
+- **Mozilla Firefox**: Wechseln Sie auf der Seite **Firefox-Add-Ons** zum Feature [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](https://addons.mozilla.org/firefox/addon/access-panel-extension/), und klicken Sie dann auf **Zu Firefox hinzufügen**.
 
 Rechts neben der **Adressleiste** wird ein Symbol hinzugefügt, über das Sie sich anmelden und die Erweiterung anpassen können.
 

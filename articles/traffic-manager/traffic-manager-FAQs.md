@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: duau
-ms.openlocfilehash: 17ccfeb709c530a868a75ecd87052618aaea4846
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: fa8dba12a050e42e258e4224f29e379ff53f09d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184576"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576672"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -347,7 +347,7 @@ Für Azure Resource Manager ist es erforderlich, dass für alle Ressourcengruppe
 
 Der aktuelle Überwachungsstatus jedes Endpunkts sowie das Gesamtprofil werden im Azure-Portal angezeigt. Diese Informationen sind auch über die [REST-API](/rest/api/trafficmanager/) von Traffic Manager, [PowerShell-Cmdlets](/powershell/module/az.trafficmanager) und die [plattformübergreifende Azure-Befehlszeilenschnittstelle](/cli/azure/install-classic-cli) verfügbar.
 
-Sie können auch mit Azure Monitor die Integrität Ihrer Endpunkte nachverfolgen und eine visuelle Darstellung anzeigen. Weitere Informationen zum Verwenden von Azure Monitor finden Sie in der [Dokumentation zur Azure-Überwachung](../azure-monitor/platform/data-platform.md).
+Sie können auch mit Azure Monitor die Integrität Ihrer Endpunkte nachverfolgen und eine visuelle Darstellung anzeigen. Weitere Informationen zum Verwenden von Azure Monitor finden Sie in der [Dokumentation zur Azure-Überwachung](../azure-monitor/data-platform.md).
 
 ### <a name="can-i-monitor-https-endpoints"></a>Kann ich HTTPS-Endpunkte überwachen?
 
@@ -458,7 +458,7 @@ Die Anzahl der Traffic Manager-Integritätsprüfungen Ihres Endpunkts hängt von
 
 ### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Wie kann ich benachrichtigt werden, wenn einer meiner Endpunkte ausfällt?
 
-Eine der vom Traffic Manager bereitgestellten Metriken ist der Integritätsstatus von Endpunkten in einem Profil. Dies wird als Aggregat aller Endpunkte in einem Profil angezeigt (z.B. sind 75% Ihrer Endpunkte fehlerfrei) oder auf Pro-Endpunkt-Ebene. Azure Monitor stellt Traffic Manager-Metriken bereit, und Sie können dessen [Warnfunktionen](../azure-monitor/platform/alerts-metric.md) verwenden, um bei einer Änderung des Integritätsstatus Ihres Endpunkts Benachrichtigungen zu erhalten. Weitere Informationen finden Sie unter [Traffic Manager-Metriken und -Warnungen](traffic-manager-metrics-alerts.md).  
+Eine der vom Traffic Manager bereitgestellten Metriken ist der Integritätsstatus von Endpunkten in einem Profil. Dies wird als Aggregat aller Endpunkte in einem Profil angezeigt (z.B. sind 75% Ihrer Endpunkte fehlerfrei) oder auf Pro-Endpunkt-Ebene. Azure Monitor stellt Traffic Manager-Metriken bereit, und Sie können dessen [Warnfunktionen](../azure-monitor/alerts/alerts-metric.md) verwenden, um bei einer Änderung des Integritätsstatus Ihres Endpunkts Benachrichtigungen zu erhalten. Weitere Informationen finden Sie unter [Traffic Manager-Metriken und -Warnungen](traffic-manager-metrics-alerts.md).  
 
 ## <a name="traffic-manager-nested-profiles"></a>Geschachtelte Profile in Traffic Manager
 

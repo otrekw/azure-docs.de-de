@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie allgemeine Probleme bei der Verwendung von Az
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 7dfb9e34daeb92d57a61c570055695867c4a8107
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 5a0e907ef27f125a9903b3d9e6079e3c8a288a97
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071866"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714526"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -89,7 +89,7 @@ Eine Aktivierung der rollenbasierten Zugriffssteuerung in Kubernetes (Kubernetes
 
 Stellen Sie sicher, dass die Ports 22, 9000 und 1194 für die Verbindung mit dem API-Server offen sind. Überprüfen Sie mit dem `kubectl get pods --namespace kube-system`-Befehl, ob der `tunnelfront`- oder `aks-link`-Pod im *kube-system*-Namespace ausgeführt wird. Falls nicht, erzwingen Sie das Löschen des Pods. Er wird anschließend neu gestartet.
 
-## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>Beim Herstellen einer Verbindung mit der AKS-API erhalte ich von meinem Client die Meldung `"tls: client offered only unsupported versions"`.   Wie sollte ich vorgehen?
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>Beim Herstellen einer Verbindung mit der AKS-API erhalte ich von meinem Client die Meldung `"tls: client offered only unsupported versions"`. Wie sollte ich vorgehen?
 
 Die unterstützte TLS-Mindestversion in AKS ist TLS 1.2.
 
@@ -452,5 +452,5 @@ AKS untersucht derzeit, ob aktive Bezeichnungen in einem Knotenpool mutiert werd
 
 
 <!-- LINKS - internal -->
-[view-master-logs]: view-master-logs.md
+[view-master-logs]: ./view-control-plane-logs.md
 [cluster-autoscaler]: cluster-autoscaler.md

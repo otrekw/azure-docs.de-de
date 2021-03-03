@@ -19,8 +19,18 @@
       href: tutorial-end-to-end.md
 - name: Konzepte
   items:
-    - name: Benutzerdefinierte Modelle
+    - name: DTDL-Modelle
       href: concepts-models.md
+    - name: Ontologien
+      items:
+        - name: Was ist eine Ontologie?
+          href: concepts-ontologies.md
+        - name: Einführung in Branchenstandard-Ontologien
+          href: concepts-ontologies-adopt.md
+        - name: Konvertieren von Ontologien
+          href: concepts-ontologies-convert.md
+        - name: Erweitern von Ontologien
+          href: concepts-ontologies-extend.md
     - name: Digitale Zwillinge und der Zwillingsgraph
       href: concepts-twins-graph.md
     - name: Abfragesprache
@@ -65,10 +75,8 @@
           href: how-to-move-regions.md
     - name: Entwerfen von Modellen
       items:
-        - name: Verwalten benutzerdefinierter Modelle
+        - name: Verwalten von DTDL-Modellen
           href: how-to-manage-model.md
-        - name: Integrieren von Branchenstandardmodellen
-          href: how-to-integrate-models.md
         - name: Analysieren und Validieren von Modellen
           href: how-to-parse-models.md
         - name: Hinzufügen von Tags
@@ -148,7 +156,7 @@
             - name: .NET (C#) SDK
               href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet
             - name: Java-SDK
-              href: /azure/developer/java/sdk/
+              href: /java/api/overview/azure/digitaltwins/resourcemanagement?view=azure-java-stable
         - name: Datenebene
           items:
             - name: .NET (C#) SDK
@@ -249,6 +257,12 @@
           href: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer/
         - name: DTDL-Validierungssteuerelement (Beispiel)
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
+        - name: Modelluploader (Beispiel)
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader'
+        - name: Modellvisualisierer (Beispiel)
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer'
+        - name: OWL2DTDL-Konverter
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/OWL2DTDL'
         - name: "Beispiel für die DPS- und IoT\_Hub-Integration"
           href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
         - name: SignalR-Integrationsbeispiel

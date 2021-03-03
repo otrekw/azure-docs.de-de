@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Bereitstellen einer verknüpften Vorlage'
 description: Anleitung zum Bereitstellen einer verknüpften Vorlage
-ms.date: 01/12/2021
+ms.date: 02/12/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 4ec49fad35e958f010461abf2ee0e3dab8077d55
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 8f2bbd327adca6eef62d5e79f422f61d460ea7a5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134193"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589272"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Tutorial: Bereitstellen einer verknüpften Vorlage
 
-In den [vorherigen Tutorials](./deployment-tutorial-local-template.md) haben Sie erfahren, wie Sie eine Vorlage bereitstellen, die auf dem lokalen Computer gespeichert ist. Zum Bereitstellen komplexer Lösungen können Sie eine Vorlage in mehrere Vorlagen unterteilen und diese über eine Hauptvorlage gemeinsam bereitstellen. In diesem Tutorial erfahren Sie, wie Sie eine Hauptvorlage bereitstellen, die den Verweis auf eine verknüpfte Vorlage enthält. Beim Bereitstellen der Hauptvorlage wird die Bereitstellung der verknüpften Vorlage ausgelöst. Außerdem erfahren Sie, wie Sie die verknüpfte Vorlage mit einem SAS-Token speichern und sichern. Dieser Schritt dauert ungefähr **12 Minuten**.
+In den [vorherigen Tutorials](./deployment-tutorial-local-template.md) haben Sie erfahren, wie Sie eine Vorlage bereitstellen, die auf dem lokalen Computer gespeichert ist. Zum Bereitstellen komplexer Lösungen können Sie eine Vorlage in mehrere Vorlagen unterteilen und diese über eine Hauptvorlage gemeinsam bereitstellen. In diesem Tutorial erfahren Sie, wie Sie eine Hauptvorlage bereitstellen, die den Verweis auf eine verknüpfte Vorlage enthält. Beim Bereitstellen der Hauptvorlage wird die Bereitstellung der verknüpften Vorlage ausgelöst. Außerdem erfahren Sie, wie Sie die Vorlagen mithilfe eines SAS-Tokens speichern und sichern. Dieser Schritt dauert ungefähr **12 Minuten**.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,15 +32,18 @@ Sie können die Speicherkontoressource in einer verknüpften Vorlage aufteilen:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/linkedStorageAccount.json":::
 
-Die folgende Vorlage ist die Hauptvorlage. Das hervorgehobene Objekt `Microsoft.Resources/deployments` zeigt, wie eine verknüpfte Vorlage aufgerufen wird. Die verknüpfte Vorlage kann nicht als lokale Datei oder Datei gespeichert werden, die nur in Ihrem lokalen Netzwerk verfügbar ist. Sie können nur einen URI-Wert bereitstellen, der HTTP oder HTTPS enthält. Resource Manager muss auf die Vorlage zugreifen können. Eine Option besteht darin, die verknüpfte Vorlage in einem Speicherkonto zu platzieren und den URI für dieses Element zu verwenden. Der URI wird mithilfe eines Parameters an die Vorlage übergeben. Beachten Sie die hervorgehobene Parameterdefinition.
+Die folgende Vorlage ist die Hauptvorlage. Das hervorgehobene Objekt `Microsoft.Resources/deployments` zeigt, wie eine verknüpfte Vorlage aufgerufen wird. Die verknüpfte Vorlage kann nicht als lokale Datei oder Datei gespeichert werden, die nur in Ihrem lokalen Netzwerk verfügbar ist. Sie können entweder einen URI-Wert der verknüpften Vorlage angeben, der HTTP oder HTTPS enthält, oder die Eigenschaft _relativePath_ verwenden, um eine remote verknüpfte Vorlage an einem Speicherort relativ zur übergeordneten Vorlage bereitzustellen. Eine Möglichkeit besteht darin, die Hauptvorlage und die verknüpfte Vorlage in einem Speicherkonto zu platzieren.
 
-:::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="27-32,40-58":::
-
-Speichern Sie eine Kopie der Hauptvorlage auf dem lokalen Computer mit der Erweiterung _JSON_, z. B. _azuredeploy.json_. Sie müssen keine Kopie der verknüpften Vorlage speichern. Die verknüpfte Vorlage wird aus einem GitHub-Repository in ein Speicherkonto kopiert.
+:::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="34-52":::
 
 ## <a name="store-the-linked-template"></a>Speichern der verknüpften Vorlage
 
-Mit dem folgenden PowerShell-Skript werden ein Speicherkonto und ein Container erstellt und die verknüpfte Vorlage aus einem GitHub-Repository in den Container kopiert. Eine Kopie der verknüpften Vorlage wird in [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json) gespeichert.
+Sowohl die Hauptvorlage als auch die verknüpfte Vorlage werden in GitHub gespeichert:
+
+Mit dem folgenden PowerShell-Skript werden ein Speicherkonto und ein Container erstellt und die beiden verknüpften Vorlagen aus einem GitHub-Repository in den Container kopiert. Dies sind die beiden Vorlagen:
+
+- Die Hauptvorlage: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
+- Die verknüpfte Vorlage: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
 
 Wählen Sie **Try-it** aus, um die Cloud Shell zu öffnen, wählen Sie **Kopieren** aus, um das PowerShell-Skript zu kopieren, und klicken Sie mit der rechten Maustaste auf den Shellbereich, um das Skript einzufügen:
 
@@ -55,11 +58,15 @@ $resourceGroupName = $projectName + "rg"
 $storageAccountName = $projectName + "store"
 $containerName = "templates" # The name of the Blob container to be created.
 
-$linkedTemplateURL = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json" # A completed linked template used in this tutorial.
-$fileName = "linkedStorageAccount.json" # A file name used for downloading and uploading the linked template.
+$mainTemplateURL = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json"
+$linkedTemplateURL = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json"
 
-# Download the template
-Invoke-WebRequest -Uri $linkedTemplateURL -OutFile "$home/$fileName"
+$mainFileName = "azuredeploy.json" # A file name used for downloading and uploading the main template.Add-PSSnapin
+$linkedFileName = "linkedStorageAccount.json" # A file name used for downloading and uploading the linked template.
+
+# Download the templates
+Invoke-WebRequest -Uri $mainTemplateURL -OutFile "$home/$mainFileName"
+Invoke-WebRequest -Uri $linkedTemplateURL -OutFile "$home/$linkedFileName"
 
 # Create a resource group
 New-AzResourceGroup -Name $resourceGroupName -Location $location
@@ -76,11 +83,17 @@ $context = $storageAccount.Context
 # Create a container
 New-AzStorageContainer -Name $containerName -Context $context -Permission Container
 
-# Upload the template
+# Upload the templates
 Set-AzStorageBlobContent `
     -Container $containerName `
-    -File "$home/$fileName" `
-    -Blob $fileName `
+    -File "$home/$mainFileName" `
+    -Blob $mainFileName `
+    -Context $context
+
+Set-AzStorageBlobContent `
+    -Container $containerName `
+    -File "$home/$linkedFileName" `
+    -Blob $linkedFileName `
     -Context $context
 
 Write-Host "Press [ENTER] to continue ..."
@@ -88,7 +101,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="deploy-template"></a>Bereitstellen der Vorlage
 
-Generieren Sie zum Bereitstellen einer privaten Vorlage in einem Speicherkonto ein SAS-Token, und fügen Sie es dem URI für die Vorlage hinzu. Legen Sie die Ablaufzeit so fest, dass ausreichend Zeit für die Bereitstellung bleibt. Auf den Blob, der die Vorlage enthält, hat nur der Kontobesitzer Zugriff. Wenn Sie jedoch ein SAS-Token für das Blob erstellen, können andere Benutzer über diesen URI auf das Blob zugreifen. Wenn ein anderer Benutzer den URI abfängt, hat dieser Benutzer Zugriff auf die Vorlage. Ein SAS-Token ist eine gute Möglichkeit zum Einschränken des Zugriffs auf Ihre Vorlagen. Sie sollten allerdings Kennwörter auf keinen Fall direkt in die Vorlage einschließen.
+Generieren Sie zum Bereitstellen von Vorlagen in einem Speicherkonto ein SAS-Token, und geben Sie es im Parameter _-QueryString_ an. Legen Sie die Ablaufzeit so fest, dass ausreichend Zeit für die Bereitstellung bleibt. Auf die Blobs, die die Vorlagen enthalten, hat nur der Kontobesitzer Zugriff. Wenn Sie jedoch ein SAS-Token für ein Blob erstellen, kann jeder Benutzer mit einem SAS-Token auf das Blob zugreifen. Wenn ein anderer Benutzer den URI und das SAS-Token abfängt, hat dieser Benutzer Zugriff auf die Vorlage. Ein SAS-Token ist eine gute Möglichkeit zum Einschränken des Zugriffs auf Ihre Vorlagen. Sie sollten allerdings Kennwörter auf keinen Fall direkt in die Vorlage einschließen.
 
 Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](./deployment-tutorial-local-template.md#create-resource-group).
 
@@ -97,69 +110,66 @@ Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisu
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-```azurepowershell
+```azurepowershell-interactive
 
-$projectName = Read-Host -Prompt "Enter a project name:"   # This name is used to generate names for Azure resources, such as storage account name.
-$templateFile = Read-Host -Prompt "Enter the main template file and path"
+$projectName = Read-Host -Prompt "Enter the same project name:"   # This name is used to generate names for Azure resources, such as storage account name.
 
 $resourceGroupName="${projectName}rg"
 $storageAccountName="${projectName}store"
 $containerName = "templates"
-$fileName = "linkedStorageAccount.json" # A file name used for downloading and uploading the linked template.
 
 $key = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName).Value[0]
 $context = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $key
 
-# Generate a SAS token
-$linkedTemplateUri = New-AzStorageBlobSASToken `
+$mainTemplateUri = $context.BlobEndPoint + "$containerName/azuredeploy.json"
+$sasToken = New-AzStorageContainerSASToken `
     -Context $context `
     -Container $containerName `
-    -Blob $fileName `
     -Permission r `
-    -ExpiryTime (Get-Date).AddHours(2.0) `
-    -FullUri
+    -ExpiryTime (Get-Date).AddHours(2.0)
+$newSas = $sasToken.substring(1)
 
-# Deploy the template
+
 New-AzResourceGroupDeployment `
   -Name DeployLinkedTemplate `
   -ResourceGroupName $resourceGroupName `
-  -TemplateFile $templateFile `
+  -TemplateUri $mainTemplateUri `
+  -QueryString $newSas `
   -projectName $projectName `
-  -linkedTemplateUri $linkedTemplateUri `
   -verbose
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-```azurecli
+```azurecli-interactive
+echo "Enter a project name that is used to generate resource names:" &&
+read projectName &&
 
-echo "Enter a project name that is used to generate resource names:"
-read projectName
-echo "Enter the main template file:"
-read templateFile
+resourceGroupName="${projectName}rg" &&
+storageAccountName="${projectName}store" &&
+containerName="templates" &&
 
-resourceGroupName="${projectName}rg"
-storageAccountName="${projectName}store"
-containerName="templates"
-fileName="linkedStorageAccount.json"
+key=$(az storage account keys list -g $resourceGroupName -n $storageAccountName --query [0].value -o tsv) &&
 
-key=$(az storage account keys list -g $resourceGroupName -n $storageAccountName --query [0].value -o tsv)
-
-linkedTemplateUri=$(az storage blob generate-sas \
+sasToken=$(az storage container generate-sas \
   --account-name $storageAccountName \
   --account-key $key \
-  --container-name $containerName \
-  --name $fileName \
+  --name $containerName \
   --permissions r \
-  --expiry `date -u -d "120 minutes" '+%Y-%m-%dT%H:%MZ'` \
-  --full-uri)
+  --expiry `date -u -d "120 minutes" '+%Y-%m-%dT%H:%MZ'`) &&
+sasToken=$(echo $sasToken | sed 's/"//g')&&
 
-linkedTemplateUri=$(echo $linkedTemplateUri | sed 's/"//g')
+blobUri=$(az storage account show -n $storageAccountName -g $resourceGroupName -o tsv --query primaryEndpoints.blob) &&
+templateUri="${blobUri}${containerName}/azuredeploy.json" &&
+
 az deployment group create \
   --name DeployLinkedTemplate \
   --resource-group $resourceGroupName \
-  --template-file $templateFile \
-  --parameters projectName=$projectName linkedTemplateUri=$linkedTemplateUri \
+  --template-uri $templateUri \
+  --parameters projectName=$projectName \
+  --query-string $sasToken \
   --verbose
 ```
 

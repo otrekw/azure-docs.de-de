@@ -4,38 +4,38 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: df6f7311613057c445ae714b8b11240d0d5be14b
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 6b16dea3c4f9241133b91b092c90c9056da57de0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99569519"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515063"
 ---
 ### <a name="standard-and-neural-voices"></a>Standard- und neuronale Stimmen
 
 Verwenden Sie diese Tabelle, um die Verfügbarkeit von Standardstimmen und neuronalen Stimmen nach Region/Endpunkt zu ermitteln:
 
-| Region | Endpunkt | Standardstimmen | Neuronale Stimmen |
+| Region | Endpunkt | Neuronale Stimmen | Standardstimmen |
 |--------|----------|-----------------|---------------|
 | Australien (Osten) | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
-| Brasilien Süd | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
+| Brasilien Süd | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` | Nein | Ja |
 | Kanada, Mitte | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
-| USA (Mitte) | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
-| Asien, Osten | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
+| USA (Mitte) | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | Nein | Ja |
+| Asien, Osten | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | Nein | Ja |
 | East US | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
-| USA (Ost) 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
-| Frankreich, Mitte | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
+| USA (Ost) 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | Nein | Ja |
+| Frankreich, Mitte | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1` | Nein | Ja |
 | Indien, Mitte | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
-| Japan, Osten | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
-| Japan, Westen | `https://japanwest.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
-| Korea, Mitte | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
-| USA Nord Mitte | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
-| Nordeuropa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
+| Japan, Osten | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1` | Nein | Ja |
+| Japan, Westen | `https://japanwest.tts.speech.microsoft.com/cognitiveservices/v1` | Nein | Ja |
+| Korea, Mitte | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1` | Nein | Ja |
+| USA Nord Mitte | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | Nein | Ja |
+| Nordeuropa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1` | Nein | Ja |
 | USA Süd Mitte | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
 | Asien, Südosten | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
 | UK, Süden | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
 | Europa, Westen | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
-| USA (Westen) | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
+| USA (Westen) | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` | Nein | Ja |
 | USA, Westen 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
 
 > [!TIP]
@@ -78,3 +78,15 @@ In der folgenden Tabelle wird die regionale Unterstützung für die Features der
 | Echtzeitzeichen | „USA, Osten“, „USA, Westen 2“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Europa, Westen“, „Australien, Osten“ |
 | Zeichenanzahl für langes Audio | „USA, Osten“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Asien, Südosten“, „Indien, Mitte“ |
 | Benutzerdefiniertes neuronales Training | „USA, Osten“, „Vereinigtes Königreich, Süden“ |
+
+### <a name="long-audio-api"></a>API für lange Audioinhalte
+
+Die API für lange Audioinhalte ist in mehreren Regionen mit eindeutigen Endpunkten verfügbar:
+
+| Region | Endpunkt |
+|--------|----------|
+| East US | `https://eastus.customvoice.api.speech.microsoft.com` |
+| Indien, Mitte | `https://centralindia.customvoice.api.speech.microsoft.com` |
+| Asien, Südosten | `https://southeastasia.customvoice.api.speech.microsoft.com` |
+| UK, Süden | `https://uksouth.customvoice.api.speech.microsoft.com` |
+| Europa, Westen | `https://westeurope.customvoice.api.speech.microsoft.com` |

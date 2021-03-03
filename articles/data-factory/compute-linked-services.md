@@ -1,21 +1,17 @@
 ---
 title: Von Azure Data Factory unterstützte Compute-Umgebungen
 description: Compute-Umgebungen, die in Azure Data Factory-Pipelines (wie z. B. Azure HDInsight) für die Transformation oder Verarbeitung von Daten verwendet werden können.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 ms.date: 05/08/2019
-ms.openlocfilehash: f2a0784b2795b82131880d73a6d9217acc1d72d3
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 7dae067b5d8648f1441047c26f8792e55591b64d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606214"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368522"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 
@@ -547,12 +543,12 @@ Sie können einen **mit Azure Databricks verknüpften Dienst** erstellen, um den
 | name                 | Name des verknüpften Diensts               | Ja   |
 | type                 | Legen Sie die type-Eigenschaft auf **Azure Databricks**: | Ja                                      |
 | Domäne               | Geben Sie die Azure-Region entsprechend der Region des Databricks-Arbeitsbereichs an. Beispiel: https://eastus.azuredatabricks.net | Ja                                 |
-| accessToken          | Für die Authentifizierung bei Azure Databricks ist ein Zugriffstoken erforderlich. Das Zugriffstoken muss im Databricks-Arbeitsbereich generiert werden. Ausführlichere Informationen zum Auffinden des Zugriffstokens finden Sie [hier](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token).  | Nein                                       |
+| accessToken          | Für die Authentifizierung bei Azure Databricks ist ein Zugriffstoken erforderlich. Das Zugriffstoken muss im Databricks-Arbeitsbereich generiert werden. Ausführlichere Informationen zum Auffinden des Zugriffstokens finden Sie [hier](/azure/databricks/dev-tools/api/latest/authentication#generate-token).  | Nein                                       |
 | MSI          | Verwenden Sie die verwaltete Identität von Data Factory (systemseitig zugewiesen) zur Authentifizierung bei Azure Databricks. Wenn Sie die MSI-Authentifizierung verwenden, benötigen Sie kein Zugriffstoken.  | Nein                                       |
 | existingClusterId    | Cluster-ID eines vorhandenen Clusters, in dem alle Aufträge ausgeführt werden. Dabei sollte es sich um einen bereits erstellten interaktiven Cluster handeln. Möglicherweise müssen Sie den Cluster manuell neu starten, falls er nicht mehr reagiert. Databricks empfiehlt, Aufträge in neuen Clustern auszuführen, um die Zuverlässigkeit zu erhöhen. Sie finden die Cluster-ID eines interaktiven Clusters unter: Databricks-Arbeitsbereich -> Cluster -> Name des interaktiven Clusters -> Konfiguration -> Tags. [Weitere Informationen](https://docs.databricks.com/user-guide/clusters/tags.html) | Nein 
 | instancePoolId    | Instanzenpool-ID eines vorhandenen Pools im Databricks-Arbeitsbereich.  | Nein  |
 | newClusterVersion    | Die Spark-Version des Clusters. Damit wird ein Auftragscluster in Databricks erstellt. | Nein  |
-| newClusterNumOfWorker| Die Anzahl der Workerknoten, die dieser Cluster haben sollte. Ein Cluster hat einen Spark Driver und Executors entsprechend der Workeranzahl, also insgesamt Workeranzahl + 1 Spark-Knoten. Eine als Int32 formatierte Zeichenfolge wie „1“ bedeutet, dass numOfWorker den Wert 1 hat. „1:10“ steht für eine Autoskalierung von 1 als Minimum und 10 als Maximum.  | Nein                |
+| newClusterNumOfWorker| Die Anzahl der Workerknoten, die dieser Cluster haben sollte. Ein Cluster hat einen Spark Driver und Executors entsprechend der Workeranzahl, also insgesamt Workeranzahl + 1 Spark-Knoten. Eine als Int32 formatierte Zeichenfolge wie „1“ bedeutet, dass numOfWorker den Wert 1 hat. „1:10“ steht für eine Autoskalierung von 1 als Minimum und 10 als Maximum.  | Nein                |
 | newClusterNodeType   | Dieses Feld codiert mithilfe eines einzigen Werts die Ressourcen, die jedem der Spark-Knoten in diesem Cluster zur Verfügung stehen. Beispielsweise können die Spark-Knoten für arbeitsspeicher- oder rechenintensive Workloads bereitgestellt und optimiert werden. Dieses Feld wird für neue Cluster benötigt.                | Nein               |
 | newClusterSparkConf  | Eine Gruppe optionaler, benutzerdefinierter Spark-Konfigurationsschlüssel-Wert-Paare. Benutzer können auch über „spark.driver.extraJavaOptions“ bzw. „spark.executor.extraJavaOptions“ eine Zeichenfolge mit zusätzlichen JVM-Optionen an den Driver und die Executors übergeben. | Nein  |
 | newClusterInitScripts| Eine Gruppe optionaler, benutzerdefinierter Initialisierungsskripts für den neuen Cluster. Diese geben den DBFS-Pfad zu den Initialisierungsskripts an. | Nein  |

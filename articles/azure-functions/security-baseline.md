@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5b38da5539cb80110b2a769a219213a5c74e1506
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b57de23bf59f1b9c84674fe95495f980c4594e2a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198554"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587602"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure-Sicherheitsbaseline für Azure Functions
 
@@ -207,9 +207,9 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen der Konfigurationen bzw. Erkennen von Änderungen für Netzwerkeinstellungen und -ressourcen, die sich auf Ihre Azure Functions-Bereitstellungen beziehen. Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzwerkeinstellungen oder -ressourcen ausgelöst werden. 
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -237,7 +237,7 @@ Wenn Ihre Funktions-App über eine integrierte benutzerdefinierte Sicherheits- b
 
 Optional können Sie auch Azure Sentinel oder die SIEM-Lösung eines Drittanbieters aktivieren und dafür Daten integrieren. 
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 - [Überwachen von Azure Functions](./functions-monitoring.md)
 
@@ -255,7 +255,7 @@ Optional können Sie auch Azure Sentinel oder die SIEM-Lösung eines Drittanbiet
 
 Wenn Ihre Funktions-App über eine integrierte benutzerdefinierte Sicherheits- bzw. Überwachungsprotokollierung verfügt, aktivieren Sie die Diagnoseeinstellung „FunctionAppLogs“, und senden Sie die Protokolle an einen Log Analytics-Arbeitsbereich, einen Azure Event Hub oder ein Azure-Speicherkonto zur Archivierung. 
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 - [Überwachen von Azure Functions mit Azure Monitor-Protokollen](./functions-monitor-log-analytics.md)
 
@@ -275,7 +275,7 @@ Wenn Ihre Funktions-App über eine integrierte benutzerdefinierte Sicherheits- b
 
 **Leitfaden**: Legen Sie in Azure Monitor den Aufbewahrungszeitraum für Protokolle für Log Analytics-Arbeitsbereiche, die Ihren Funktions-Apps zugeordnet sind, gemäß den Compliancevorschriften Ihrer Organisation fest.
 
-- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -291,7 +291,7 @@ Wenn Ihre Funktions-App über eine integrierte benutzerdefinierte Sicherheits- b
 
 Optional können Sie auch Azure Sentinel oder die SIEM-Lösung eines Drittanbieters aktivieren und dafür Daten integrieren. 
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 - [Überwachen von Azure Functions mit Azure Monitor-Protokollen](./functions-monitor-log-analytics.md)
 
@@ -311,13 +311,13 @@ Aktivieren Sie Application Insights für Ihre Funktions-Apps, um Protokoll-, Lei
 
 Optional können Sie auch Azure Sentinel oder die SIEM-Lösung eines Drittanbieters aktivieren und dafür Daten integrieren. 
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 - [Überwachen von Azure Functions mit Azure Monitor-Protokollen](./functions-monitor-log-analytics.md)
 
 - [Aktivieren der Application Insights-Integration](./configure-monitoring.md#enable-application-insights-integration)
 
-- [Reagieren auf Ereignisse mit Azure Monitor-Warnungen](../azure-monitor/learn/tutorial-response.md)
+- [Reagieren auf Ereignisse mit Azure Monitor-Warnungen](../azure-monitor/alerts/tutorial-response.md)
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -631,7 +631,7 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure Functions und
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an Funktions-Apps für die Produktion und anderen kritischen bzw. zugehörigen Ressourcen vorgenommen werden.
 
-- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

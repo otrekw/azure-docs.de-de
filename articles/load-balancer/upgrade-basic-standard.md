@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 3bf910d3309285c8b700c39af68fb90715f8863a
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 0f8476a8759dd445500c2eb6c029cd618a7ff8ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987712"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718980"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Upgraden einer öffentlichen Azure Load Balancer-Instanz
 [Azure Load Balancer Standard](load-balancer-overview.md) bietet umfangreiche Funktionen sowie Hochverfügbarkeit durch Zonenredundanz. Weitere Informationen zu Load Balancer-SKUs finden Sie in der [Vergleichstabelle](./skus.md#skus).
@@ -23,7 +23,7 @@ Ein Upgrade umfasst zwei Phasen:
 2. Führen Sie das PowerShell-Skript aus, um das Upgrade und die Migration von Datenverkehr abzuschließen.
 
 > [!IMPORTANT]
-> Das Skript wird zurzeit gewartet. Informationen zum Upgraden von öffentlichen IP-Adressen von der Basic-SKU zur Standard-SKU finden Sie in [diesen Anweisungen](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address-upgrade?tabs=option-upgrade-cli%2Coption-migrate-powershell#tabpanel_CeZOj-G++Q_option-upgrade-cli).
+> Das Skript wird zurzeit gewartet. Informationen zum Upgraden von öffentlichen IP-Adressen von der Basic-SKU zur Standard-SKU finden Sie in [diesen Anweisungen](../virtual-network/virtual-network-public-ip-address-upgrade.md?tabs=option-upgrade-cli%2coption-migrate-powershell#tabpanel_CeZOj-G++Q_option-upgrade-cli).
 
 ## <a name="upgrade-overview"></a>Upgradeübersicht
 

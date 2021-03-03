@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f13909d3835bdbd2931277a88244abfae3f80759
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 29c49ceb3647964030f53c94276e831dc0f648c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465713"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576624"
 ---
 # <a name="azure-monitor-for-windows-virtual-desktop-preview-glossary"></a>Glossar für Azure Monitor für Windows Virtual Desktop (Vorschau)
 
@@ -24,7 +24,7 @@ In diesem Artikel werden Schlüsselbegriffe und Konzepte im Zusammenhang mit Azu
 
 ## <a name="alerts"></a>Warnungen
 
-Alle aktiven Azure Monitor-Warnungen, die Sie für das Abonnement konfiguriert und mit [Schweregrad 1](#severity-1-alerts) klassifiziert haben, werden auf der Seite "Übersicht" gezeigt. Weitere Informationen zum Einrichten von Warnungen finden Sie unter [Reagieren auf Ereignisse mit Azure Monitor-Warnungen](../azure-monitor/learn/tutorial-response.md).
+Alle aktiven Azure Monitor-Warnungen, die Sie für das Abonnement konfiguriert und mit [Schweregrad 1](#severity-1-alerts) klassifiziert haben, werden auf der Seite "Übersicht" gezeigt. Weitere Informationen zum Einrichten von Warnungen finden Sie unter [Reagieren auf Ereignisse mit Azure Monitor-Warnungen](../azure-monitor/alerts/tutorial-response.md).
 
 ## <a name="available-sessions"></a>Verfügbare Sitzungen
 
@@ -128,7 +128,7 @@ In der folgenden Tabelle sind die empfohlenen Leistungsindikatoren und Zeitinter
 |RemoteFX-Netzwerk (\*)\\Aktuelle TCP-RTT|30 Sekunden|
 |RemoteFX-Netzwerk (\*)\\Aktuelle UDP-Bandbreite|30 Sekunden|
 
-Informationen zum Lesen von Leistungsindikatoren finden Sie unter [Konfigurieren von Leistungsindikatoren](../azure-monitor/platform/data-sources-performance-counters.md).
+Informationen zum Lesen von Leistungsindikatoren finden Sie unter [Konfigurieren von Leistungsindikatoren](../azure-monitor/agents/data-sources-performance-counters.md).
 
 Informationen zu Leistungsindikatoren zur Eingabeverzögerung finden Sie unter [Leistungsindikatoren für Eingabeverzögerung](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/).
 
@@ -186,7 +186,7 @@ In der folgenden Tabelle sind die erforderlichen Windows-Ereignisse für Azure M
 | Microsoft-FSLogix-Apps/Operational|Fehler, Warnung und Information|
 |Microsoft-FSLogix-Apps/Admin|Fehler, Warnung und Information|
 
-Weitere Informationen zu Windows-Ereignissen finden Sie unter [Eigenschaften von Windows-Ereignisdatensätzen](../azure-monitor/platform/data-sources-windows-events.md).
+Weitere Informationen zu Windows-Ereignissen finden Sie unter [Eigenschaften von Windows-Ereignisdatensätzen](../azure-monitor/agents/data-sources-windows-events.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

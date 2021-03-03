@@ -1,17 +1,16 @@
 ---
 title: Zielgruppenadressierung für Überwachungslösungen in Azure Monitor | Microsoft-Dokumentation
 description: Die Zielgruppenadressierung für Überwachungslösungen bietet Ihnen die Möglichkeit, Überwachungslösungen auf einen bestimmten Satz von Agents zu beschränken.  Dieser Artikel beschreibt, wie Sie eine Bereichskonfiguration erstellen und auf eine Lösung anwenden.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 5cecf24f4ba086feba5ab87b5752fd665c540dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb030456eb3b9e3c81fadd8451b5b0526920ba33
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498677"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728568"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Zielgruppenadressierung für Überwachungslösungen in Azure Monitor (Vorschau)
 Wenn Sie eine Überwachungslösung zu Ihrem Abonnement hinzufügen, wird sie automatisch standardmäßig für alle mit Ihrem Log Analytics-Arbeitsbereich verbundenen Windows- und Linux-Agents bereitgestellt.  Möglicherweise möchten Sie Ihre Kosten verwalten und den Umfang der für eine Lösung gesammelten Daten begrenzen, indem Sie sie auf einen bestimmten Satz von Agents beschränken.  Dieser Artikel beschreibt, wie Sie das Feature der **Zielgruppenadressierung für eine Lösung** verwenden, um einen Geltungsbereich auf Ihre Lösungen anzuwenden.
@@ -23,7 +22,7 @@ Die Zielgruppenadressierung für eine Lösung erfolgt in drei Schritten, wie in 
 
 
 ### <a name="1-create-a-computer-group"></a>1. Erstellen einer Computergruppe
-Sie geben durch das Erstellen einer [Computergruppe](../platform/computer-groups.md) in Azure Monitor die Computer an, die Sie in einen Bereich einbeziehen möchten.  Die Computergruppe kann auf einer Protokollabfrage basieren oder aus anderen Quellen importiert werden, wie z.B. Active Directory oder WSUS-Gruppen. Wie [unten beschrieben](#solutions-and-agents-that-cant-be-targeted) werden nur Computer in den Bereich einbezogen, die direkt mit Azure Monitor verbunden sind.
+Sie geben durch das Erstellen einer [Computergruppe](../logs/computer-groups.md) in Azure Monitor die Computer an, die Sie in einen Bereich einbeziehen möchten.  Die Computergruppe kann auf einer Protokollabfrage basieren oder aus anderen Quellen importiert werden, wie z.B. Active Directory oder WSUS-Gruppen. Wie [unten beschrieben](#solutions-and-agents-that-cant-be-targeted) werden nur Computer in den Bereich einbezogen, die direkt mit Azure Monitor verbunden sind.
 
 Sobald Sie die Computergruppe in Ihrem Arbeitsbereich erstellt haben, beziehen Sie sie in eine Bereichskonfiguration ein, die auf eine oder mehrere Lösungen angewendet werden kann.
  
@@ -69,4 +68,4 @@ Zielgruppenadressierung für Lösung kann auch dann nicht mit den folgenden Lös
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu Überwachungslösungen, einschließlich der Lösungen, die zur Installation in Ihrer Umgebung verfügbar sind, finden Sie unter [Hinzufügen von Azure Log Analytics-Überwachungslösungen zu Ihrem Arbeitsbereich](solutions.md).
-- Weitere Informationen zu Computergruppen finden Sie unter [Computergruppen in Azure Monitor-Protokollabfragen](../platform/computer-groups.md).
+- Weitere Informationen zu Computergruppen finden Sie unter [Computergruppen in Azure Monitor-Protokollabfragen](../logs/computer-groups.md).

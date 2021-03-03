@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 389c0b1fd5a2fde33c2bf19ac2807cca45691523
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5e2ecf8dff432f2a0ce6b3356ce3eca7a8127932
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373146"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586861"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Durchführen der Überwachung und Verwenden von Warnungen für Data Factory mit Azure Monitor
 
@@ -76,7 +76,7 @@ Erstellen Sie Diagnoseeinstellungen für Ihre Data Factory, oder fügen Sie dies
    ![Benennen Ihrer Einstellungen und Auswählen eines Log Analytics-Arbeitsbereichs](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > Da eine Azure-Protokolltabelle nicht mehr als 500 Spalten enthalten darf, **empfehlen wir Ihnen dringend**, den _Modus „Ressourcenspezifisch“_ auszuwählen. Weitere Informationen finden Sie unter [Bekannte Einschränkung: Spaltenlimit in Azure-Diagnose](../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics).
+    > Da eine Azure-Protokolltabelle nicht mehr als 500 Spalten enthalten darf, **empfehlen wir Ihnen dringend**, den _Modus „Ressourcenspezifisch“_ auszuwählen. Weitere Informationen finden Sie unter [Bekannte Einschränkung: Spaltenlimit in Azure-Diagnose](../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics).
 
 1. Wählen Sie **Speichern** aus.
 
@@ -151,7 +151,7 @@ Hier sind einige Metriken aufgeführt, die von Azure Data Factory Version 2 aus
 | SSISPackageExecutionFailed           | Metriken zu fehlgeschlagenen SSIS-Paketausführungen    | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS-Paketausführungen, die innerhalb eines Minutenfensters fehlgeschlagen sind. |
 | SSISPackageExecutionSucceeded        | Metriken zu erfolgreichen SSIS-Paketausführungen | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS-Paketausführungen, die innerhalb eines Minutenfensters erfolgreich waren. |
 
-Folgen Sie den Anweisungen unter [Azure Monitor-Datenplattform](../azure-monitor/platform/data-platform.md), um auf die Metriken zuzugreifen.
+Folgen Sie den Anweisungen unter [Azure Monitor-Datenplattform](../azure-monitor/data-platform.md), um auf die Metriken zuzugreifen.
 
 > [!NOTE]
 > Es werden nur Ereignisse für abgeschlossene ausgelöste Aktivitäts- und Pipelineausführungen ausgegeben. Aktive Ausführungen und Debugausführungen werden **nicht** ausgegeben. Andererseits werden unabhängig von den Aufrufmethoden Ereignisse für **alle** SSIS-Paketausführungen ausgegeben, einschließlich abgeschlossener und in Bearbeitung befindlicher. Beispielsweise können Sie Paketausführungen in den für Azure aktivierten SQL Server Data Tools (SSDT), über T-SQL für SSMS, SQL Server-Agent oder andere festgelegte Tools und als ausgelöste oder Debugausführungen von SSIS-Paketausführungsaktivitäten in ADF-Pipelines aufrufen.
@@ -265,7 +265,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **storageAccountId** |String | Die Ressourcen-ID des Speicherkontos, an das Diagnoseprotokolle gesendet werden sollen. |
 | **serviceBusRuleId** |String | Die Service Bus-Regel-ID des Service Bus-Namespace, in dem Event Hubs für das Streaming von Diagnoseprotokollen erstellt werden sollen. Die Regel-ID weist das Format `{service bus resource ID}/authorizationrules/{key name}` auf.|
@@ -438,7 +438,7 @@ Weitere Informationen finden Sie unter [Diagnoseeinstellungen](/rest/api/monitor
 }
 ```
 
-| Eigenschaft | Typ | Beschreibung | Beispiel |
+| Eigenschaft | type | BESCHREIBUNG | Beispiel |
 | --- | --- | --- | --- |
 | **Level** |String | Die Ebene der Diagnoseprotokolle. Legen Sie für Aktivitätsausführungsprotokolle den Eigenschaftswert auf „4“ fest. | `4` |
 | **correlationId** |String | Die eindeutige ID für die Nachverfolgung einer bestimmten Anforderung. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -484,7 +484,7 @@ Weitere Informationen finden Sie unter [Diagnoseeinstellungen](/rest/api/monitor
 }
 ```
 
-| Eigenschaft | Typ | BESCHREIBUNG | Beispiel |
+| Eigenschaft | type | BESCHREIBUNG | Beispiel |
 | --- | --- | --- | --- |
 | **Level** |String | Die Ebene der Diagnoseprotokolle. Legen Sie für Aktivitätsausführungsprotokolle den Eigenschaftswert auf „4“ fest. | `4` |
 | **correlationId** |String | Die eindeutige ID für die Nachverfolgung einer bestimmten Anforderung. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -527,7 +527,7 @@ Weitere Informationen finden Sie unter [Diagnoseeinstellungen](/rest/api/monitor
 }
 ```
 
-| Eigenschaft | Typ | BESCHREIBUNG | Beispiel |
+| Eigenschaft | type | BESCHREIBUNG | Beispiel |
 | --- | --- | --- | --- |
 | **Level** |String | Die Ebene der Diagnoseprotokolle. Legen Sie für Aktivitätsausführungsprotokolle den Eigenschaftswert auf „4“ fest. | `4` |
 | **correlationId** |String | Die eindeutige ID für die Nachverfolgung einer bestimmten Anforderung. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -564,7 +564,7 @@ Nachstehend finden Sie die Protokollattribute der Start-/Beendigungs-/Wartungsvo
 }
 ```
 
-| Eigenschaft                   | Typ   | BESCHREIBUNG                                                   | Beispiel                        |
+| Eigenschaft                   | type   | BESCHREIBUNG                                                   | Beispiel                        |
 | -------------------------- | ------ | ------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Name Ihres SSIS IR-Vorgangs                            | `Start/Stop/Maintenance` |
@@ -604,7 +604,7 @@ Nachstehend finden Sie die Protokollattribute von Bedingungen der Ereignismeldun
 }
 ```
 
-| Eigenschaft                   | Typ   | BESCHREIBUNG                                                          | Beispiel                        |
+| Eigenschaft                   | type   | BESCHREIBUNG                                                          | Beispiel                        |
 | -------------------------- | ------ | -------------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Ist auf `YourSSISIRName-SSISPackageEventMessageContext` festgelegt.       | `mysqlmissisir-SSISPackageEventMessageContext` |
@@ -654,7 +654,7 @@ Nachstehend finden Sie die Protokollattribute von Ereignismeldungen, die von SSI
 }
 ```
 
-| Eigenschaft                   | Typ   | BESCHREIBUNG                                                        | Beispiel                        |
+| Eigenschaft                   | type   | BESCHREIBUNG                                                        | Beispiel                        |
 | -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Ist auf `YourSSISIRName-SSISPackageEventMessages` festgelegt.           | `mysqlmissisir-SSISPackageEventMessages` |
@@ -703,7 +703,7 @@ Nachstehend finden Sie die Protokollattribute der Statistiken von ausführbaren 
 }
 ```
 
-| Eigenschaft                   | Typ   | BESCHREIBUNG                                                      | Beispiel                        |
+| Eigenschaft                   | type   | BESCHREIBUNG                                                      | Beispiel                        |
 | -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Ist auf `YourSSISIRName-SSISPackageExecutableStatistics` festgelegt.  | `mysqlmissisir-SSISPackageExecutableStatistics` |
@@ -748,7 +748,7 @@ Nachstehend finden Sie die Protokollattribute von Runtimestatistiken für Datenf
 }
 ```
 
-| Eigenschaft                   | Typ   | BESCHREIBUNG                                                         | Beispiel                        |
+| Eigenschaft                   | type   | BESCHREIBUNG                                                         | Beispiel                        |
 | -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Ist auf `YourSSISIRName-SSISPackageExecutionComponentPhases` festgelegt. | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
@@ -796,7 +796,7 @@ Nachstehend finden Sie die Protokollattribute von Datenverschiebungen durch die 
 }
 ```
 
-| Eigenschaft                     | Typ   | BESCHREIBUNG                                                        | Beispiel                        |
+| Eigenschaft                     | type   | BESCHREIBUNG                                                        | Beispiel                        |
 | ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                     | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**            | String | Ist auf `YourSSISIRName-SSISPackageExecutionDataStatistics` festgelegt. | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
@@ -848,7 +848,7 @@ Um Ihre SSIS-Workloads per Lift & Shift zu verschieben, können Sie [die SSIS�
 
 Nach der Bereitstellung können Sie den [SSIS IR-Betriebsstatus mit Azure PowerShell oder im **Monitor**-Hub des ADF-Portals überprüfen](./monitor-integration-runtime.md#azure-ssis-integration-runtime). Beim Projektbereitstellungsmodell werden Protokolle für SSIS-Paketausführungen in internen SSISDB-Tabellen oder -Sichten gespeichert, damit sie mit geeigneten Tools wie SSMS abgefragt, analysiert und visuell dargestellt werden können. Beim Paketbereitstellungsmodell können Protokolle für SSIS-Paketausführungen im Dateisystem oder in Azure Files als CSV-Dateien gespeichert werden, die noch mit anderen geeigneten Tools analysiert und verarbeitet werden müssen, bevor sie abgefragt, analysiert und visuell dargestellt werden können.
 
-Mit der [Azure Monitor](../azure-monitor/platform/data-platform.md)-Integration können nun alle Metriken und Protokolle, die bei SSIS IR-Vorgängen und SSIS-Paketausführungen generiert werden, über das Azure-Portal abgefragt, analysiert und visuell dargestellt werden. Darüber hinaus können Sie auch Warnungen für sie ausgeben.
+Mit der [Azure Monitor](../azure-monitor/data-platform.md)-Integration können nun alle Metriken und Protokolle, die bei SSIS IR-Vorgängen und SSIS-Paketausführungen generiert werden, über das Azure-Portal abgefragt, analysiert und visuell dargestellt werden. Darüber hinaus können Sie auch Warnungen für sie ausgeben.
 
 ### <a name="configure-diagnostic-settings-and-workspace-for-ssis-operations"></a>Konfigurieren von Diagnoseeinstellungen und des Arbeitsbereichs für SSIS-Vorgänge
 
@@ -856,9 +856,9 @@ Um alle Metriken und Protokolle an Azure Monitor zu senden, die bei SSIS IR-Vor
 
 ### <a name="ssis-operational-metrics"></a>Metriken zum SSIS-Betrieb
 
-[Metriken](../azure-monitor/platform/data-platform-metrics.md) zum SSIS-Betrieb sind Leistungsindikatoren oder numerische Werte, die den Status von SSIS IR-Start- und -Beendigungsvorgängen sowie SSIS-Paketausführungen zu einem bestimmten Zeitpunkt beschreiben. Sie sind Teil der [ADF-Metriken in Azure Monitor](#data-factory-metrics).
+[Metriken](../azure-monitor/essentials/data-platform-metrics.md) zum SSIS-Betrieb sind Leistungsindikatoren oder numerische Werte, die den Status von SSIS IR-Start- und -Beendigungsvorgängen sowie SSIS-Paketausführungen zu einem bestimmten Zeitpunkt beschreiben. Sie sind Teil der [ADF-Metriken in Azure Monitor](#data-factory-metrics).
 
-Beim Konfigurieren der Diagnoseeinstellungen und des Arbeitsbereichs für Ihre ADF-Instanz unter Azure Monitor können Sie das Kontrollkästchen _AllMetrics_ aktivieren, um die Metriken zum SSIS-Betrieb für die [interaktive Analyse per Azure-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md), die [Darstellung in Azure-Dashboards](../azure-monitor/learn/tutorial-app-dashboards.md) und [Benachrichtigungen nahezu in Echtzeit](../azure-monitor/platform/alerts-metric.md) verfügbar zu machen.
+Beim Konfigurieren der Diagnoseeinstellungen und des Arbeitsbereichs für Ihre ADF-Instanz unter Azure Monitor können Sie das Kontrollkästchen _AllMetrics_ aktivieren, um die Metriken zum SSIS-Betrieb für die [interaktive Analyse per Azure-Metrik-Explorer](../azure-monitor/essentials/metrics-getting-started.md), die [Darstellung in Azure-Dashboards](../azure-monitor/app/tutorial-app-dashboards.md) und [Benachrichtigungen nahezu in Echtzeit](../azure-monitor/alerts/alerts-metric.md) verfügbar zu machen.
 
 ![Benennen Ihrer Einstellungen und Auswählen eines Log Analytics-Arbeitsbereichs](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
@@ -874,9 +874,9 @@ Beim Konfigurieren der Diagnoseeinstellungen und des Arbeitsbereichs für Ihre A
 
 ### <a name="ssis-operational-logs"></a>Protokolle zum SSIS-Betrieb
 
-[Protokolle](../azure-monitor/platform/data-platform-logs.md) zum SSIS-Betrieb sind Ereignisse, die bei SSIS IR-Vorgängen und SSIS-Paketausführungen generiert werden. Sie enthalten genügend Kontext zu den identifizierten Problemen und sind für die Grundursachenanalyse nützlich. 
+[Protokolle](../azure-monitor/logs/data-platform-logs.md) zum SSIS-Betrieb sind Ereignisse, die bei SSIS IR-Vorgängen und SSIS-Paketausführungen generiert werden. Sie enthalten genügend Kontext zu den identifizierten Problemen und sind für die Grundursachenanalyse nützlich. 
 
-Beim Konfigurieren der Diagnoseeinstellungen und des Arbeitsbereichs für Ihre ADF-Instanz in Azure Monitor können Sie die relevanten Protokolle zum SSIS-Betrieb auswählen und an die Log Analytics-Instanz senden, die auf Azure Data Explorer basiert. Dort werden diese Daten für die [Analyse mit einer leistungsstarken Abfragesprache](../azure-monitor/log-query/log-query-overview.md), die [Darstellung in Azure-Dashboards](../azure-monitor/learn/tutorial-app-dashboards.md) und [Benachrichtigungen nahezu in Echtzeit](../azure-monitor/platform/alerts-log.md) verfügbar gemacht.
+Beim Konfigurieren der Diagnoseeinstellungen und des Arbeitsbereichs für Ihre ADF-Instanz in Azure Monitor können Sie die relevanten Protokolle zum SSIS-Betrieb auswählen und an die Log Analytics-Instanz senden, die auf Azure Data Explorer basiert. Dort werden diese Daten für die [Analyse mit einer leistungsstarken Abfragesprache](../azure-monitor/logs/log-query-overview.md), die [Darstellung in Azure-Dashboards](../azure-monitor/app/tutorial-app-dashboards.md) und [Benachrichtigungen nahezu in Echtzeit](../azure-monitor/alerts/alerts-log.md) verfügbar gemacht.
 
 ![Benennen Ihrer Einstellungen und Auswählen eines Log Analytics-Arbeitsbereichs](media/data-factory-monitor-oms/monitor-oms-image2.png)
 

@@ -1,22 +1,21 @@
 ---
 title: Systemmonitor in Netzwerkleistungsmonitor
 description: Die Systemmonitorfunktion im Netzwerkleistungsmonitor unterstützt Sie bei der Überwachung der Netzwerkkonnektivität an verschiedenen Punkten in Ihrem Netzwerk. Sie können Cloudbereitstellungen und lokale Standorte, mehrere Rechenzentren und Zweigstellen sowie unternehmenswichtige Microservices/Anwendungen mit mehreren Ebenen überwachen.
-ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 6502d4259aa383c1466967d01282cecfbb8d1ded
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 505584abbe573c94056888b07406437650b09611
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832962"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728619"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Netzwerkleistungsmonitor-Lösung: Leistungsüberwachung
 
 > [!IMPORTANT]
-> Ab dem 1. Juli 2021 ist es nicht mehr möglich, neue Tests in einem vorhandenen Arbeitsbereich hinzufügen oder einen neuen Arbeitsbereich im Netzwerkleistungsmonitor zu aktivieren. Sie können weiterhin die Tests verwenden, die vor dem 1. Juli 2021 erstellt wurden. [Migrieren Sie Ihre Tests vor dem 29. Februar 2024 aus dem Netzwerkleistungsmonitor zum neuen Verbindungsmonitor](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) in Azure Network Watcher, um die Dienstunterbrechungen im Zusammenhang mit Ihren aktuellen Workloads zu minimieren.
+> Ab dem 1. Juli 2021 ist es nicht mehr möglich, neue Tests in einem vorhandenen Arbeitsbereich hinzufügen oder einen neuen Arbeitsbereich im Netzwerkleistungsmonitor zu aktivieren. Sie können weiterhin die Tests verwenden, die vor dem 1. Juli 2021 erstellt wurden. [Migrieren Sie Ihre Tests vor dem 29. Februar 2024 aus dem Netzwerkleistungsmonitor zum neuen Verbindungsmonitor](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) in Azure Network Watcher, um die Dienstunterbrechungen im Zusammenhang mit Ihren aktuellen Workloads zu minimieren.
 
 Die Systemmonitorfunktion im [Netzwerkleistungsmonitor](network-performance-monitor.md) unterstützt Sie bei der Überwachung der Netzwerkkonnektivität an verschiedenen Punkten in Ihrem Netzwerk. Sie können Cloudbereitstellungen und lokale Standorte, mehrere Rechenzentren und Zweigstellen sowie unternehmenswichtige Microservices/Anwendungen mit mehreren Ebenen überwachen. Mithilfe des Systemmonitors können Sie Netzwerkprobleme erkennen, bevor sie Ihre Benutzer beinträchtigen. Wichtige Vorteile ergeben sich daraus, dass Sie die folgenden Aufgaben ausführen können: 
 
@@ -131,4 +130,4 @@ In der folgenden Abbildung werden die Grundursachen für die Problembereiche des
 ![Topologiekarte mit ausgewählten Knoteneigenschaften](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Mit [Protokollsuchen](../log-query/log-query-overview.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.
+Mit [Protokollsuchen](../logs/log-query-overview.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af2c848fe06d9ebc44443bdcce61af0c8de08b2d
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 2270ff360c7bb923555c9b4ffb0c35ccd4382d0e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537000"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647488"
 ---
 # <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Authentifizierungsmethoden in Azure Active Directory – OATH-Token
 
@@ -29,15 +29,13 @@ Die Authentizierungs-App generiert automatisch Codes, wenn sie für Push-Benachr
 
 Einige OATH TOTP-Hardwaretoken sind programmierbar, d. h., sie sind nicht mit einem geheimen Schlüssel oder Ausgangswert vorprogrammiert. Diese programmierbaren Hardwaretoken können mithilfe des geheimen Schlüssels oder Ausgangswerts, der aus dem Softwaretoken-Setupflow abgerufen wird, eingerichtet werden. Kunden können diese Token bei dem Anbieter ihrer Wahl erwerben und den geheimen Schlüssel bzw. den Ausgangswert beim Setupvorgang ihres Anbieters verwenden.
 
-## <a name="oath-hardware-tokens-preview"></a>OATH-Hardwaretoken (Vorschau)
+## <a name="oath-hardware-tokens"></a>OATH-Hardwaretoken
 
 Azure AD unterstützt die Verwendung von OATH TOTP SHA-1-Token, die den Code alle 30 oder 60 Sekunden aktualisieren. Kunden können diese Token beim Anbieter ihrer Wahl erwerben.
 
 OATH TOTP-Hardwaretoken sind in der Regel mit einem geheimen, im Token vorprogrammierten Schlüssel oder Anfangswert versehen. Diese Schlüssel müssen entsprechend der Beschreibung in den folgenden Schritten in Azure AD eingegeben werden. Geheime Schlüssel sind auf 128 Zeichen beschränkt, was möglicherweise nicht mit allen Token kompatibel ist. Der geheime Schlüssel darf nur die Zeichen *a-z* oder *A-Z* und die Ziffern *2-7* enthalten und muss in *Base32* codiert sein.
 
 Programmierbare OATH TOTP-Hardwaretoken, die mit einem neuen Ausgangswert versehen werden können, können ebenfalls im Softwaretoken-Setupflow mit Azure AD eingerichtet werden.
-
-OATH-Hardwaretoken werden in der öffentlichen Vorschau unterstützt. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![Hochladen von OATH-Token auf das Blatt „MFA > OATH-Token“](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 

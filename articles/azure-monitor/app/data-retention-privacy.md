@@ -4,12 +4,12 @@ description: Hinweis zur Datenaufbewahrung und Datenschutzrichtlinie
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2205ab1115a66092ae6dd6d75ee7004ab281eec7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54d3e53b71b5f63da84e41a752bbbb6fce65c045
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263911"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579582"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Datensammlung, -aufbewahrung und -speicherung in Application Insights
 
@@ -120,7 +120,7 @@ Ja, bestimmte Telemetriekanäle speichern Daten dauerhaft lokal, wenn ein Endpun
 
 Telemetriekanäle, die lokalen Speicher nutzen, erstellen temporäre Dateien in den Verzeichnissen TEMP oder APPDATA, die auf das Konto beschränkt sind, in dem Ihre Anwendung ausgeführt wird. Dies kann passieren, wenn ein Endpunkt vorübergehend nicht verfügbar war oder das Drosselungslimit erreicht wurde. Sobald das Problem gelöst wurde, setzt der Telemetriekanal das Senden aller neuen und dauerhaft gespeicherten Daten fort.
 
-Diese dauerhaft gespeicherten Daten werden nicht lokal verschlüsselt. Falls dies ein Problem darstellt, überprüfen Sie die Daten, und schränken Sie die Sammlung von privaten Daten ein. (Weitere Informationen finden Sie unter [Exportieren und Löschen personenbezogener Daten](../platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).)
+Diese dauerhaft gespeicherten Daten werden nicht lokal verschlüsselt. Falls dies ein Problem darstellt, überprüfen Sie die Daten, und schränken Sie die Sammlung von privaten Daten ein. (Weitere Informationen finden Sie unter [Exportieren und Löschen personenbezogener Daten](../logs/personal-data-mgmt.md#how-to-export-and-delete-private-data).)
 
 Wenn ein Kunde dieses Verzeichnis mit bestimmten Sicherheitsanforderungen konfigurieren muss, kann diese Konfiguration pro Framework erfolgen. Stellen Sie sicher, dass der Prozess, der Ihre Anwendung ausführt, über Schreibzugriff auf dieses Verzeichnis verfügt. Stellen Sie aber außerdem sicher, dass dieses Verzeichnis geschützt ist, um zu verhindern, dass Telemetriedaten von Benutzern gelesen werden, die dafür nicht zugelassen sind.
 
@@ -240,7 +240,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Personenbezogene Daten, die in Application Insights gespeichert sind
 
-In unserem [Artikel über personenbezogene Daten in Application Insights](../platform/personal-data-mgmt.md) wird dieses Thema ausführlich besprochen.
+In unserem [Artikel über personenbezogene Daten in Application Insights](../logs/personal-data-mgmt.md) wird dieses Thema ausführlich besprochen.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Können meine Benutzer Application Insights abschalten?
 Nicht direkt. Wir bieten keinen Schalter, mit dem Ihre Benutzer Application Insights abschalten können.
@@ -293,7 +293,7 @@ Weitere Informationen zu [SDKs für andere Plattformen][platforms] finden Sie in
 Sie können [einige der Daten durch Bearbeiten von „ApplicationInsights.config“ abschalten][config].
 
 > [!NOTE]
-> Die Client-IP-Adresse wird zum Ableiten des geografischen Standorts verwendet. Die IP-Daten werden jedoch standardmäßig nicht mehr gespeichert, und es werden ausschließlich Nullen in das entsprechende Feld geschrieben. Wenn Sie mehr über den Umgang mit personenbezogenen Daten wissen möchten, empfehlen wir diesen [Artikel](../platform/personal-data-mgmt.md#application-data). Wenn Sie IP-Adressdaten speichern müssen, werden Sie im [Artikel zur IP-Adressensammlung](./ip-collection.md) durch die jeweiligen Optionen geführt.
+> Die Client-IP-Adresse wird zum Ableiten des geografischen Standorts verwendet. Die IP-Daten werden jedoch standardmäßig nicht mehr gespeichert, und es werden ausschließlich Nullen in das entsprechende Feld geschrieben. Wenn Sie mehr über den Umgang mit personenbezogenen Daten wissen möchten, empfehlen wir diesen [Artikel](../logs/personal-data-mgmt.md#application-data). Wenn Sie IP-Adressdaten speichern müssen, werden Sie im [Artikel zur IP-Adressensammlung](./ip-collection.md) durch die jeweiligen Optionen geführt.
 
 ## <a name="credits"></a>Guthaben
 Dieses Produkt enthält GeoLite2-Daten, die von MaxMind erstellt wurden und unter [https://www.maxmind.com](https://www.maxmind.com) verfügbar sind.

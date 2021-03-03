@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/30/2020
-ms.openlocfilehash: 7ed1d9db09357b0702188c01a802600ff6350aff
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.date: 02/19/2021
+ms.openlocfilehash: b8754742c572a8dbc1f55c64e47bec640d757d65
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147265"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739367"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Suchtransformation in einem Zuordnungsdatenfluss
 
@@ -39,8 +39,6 @@ Eine Suchtransformation ist mit einer linken äußeren Verknüpfung vergleichbar
 
 **Suchbedingungen:** Wählen Sie aus, für welche Spalten eine Übereinstimmung ermittelt werden soll. Wenn die Gleichheitsbedingung erfüllt ist, werden die Zeilen als Übereinstimmung betrachtet. Zeigen Sie mit dem Mauszeiger auf „Berechnete Spalte“, und wählen Sie diese Option aus, um mithilfe der [Ausdruckssprache für Datenflüsse](data-flow-expression-functions.md) einen Wert zu extrahieren.
 
-Die Suchtransformation unterstützt ausschließlich Gleichheitsübereinstimmungen. Um den Suchausdruck so anzupassen, dass er andere Operatoren (z. B. „größer als“) umfasst, sollten Sie einen [Cross Join in der Join-Transformation](data-flow-join.md#custom-cross-join) verwenden. Durch einen Cross Join werden mögliche kartesische Produktfehler bei der Ausführung vermieden.
-
 In den Ausgabedaten sind alle Spalten beider Datenströme enthalten. Um doppelte oder unerwünschte Spalten zu löschen, fügen Sie nach Ihrer Suchtransformation eine [Auswahltransformation](data-flow-select.md) hinzu. Spalten können auch in einer Senkentransformation gelöscht oder umbenannt werden.
 
 ### <a name="non-equi-joins"></a>Nicht-Gleichheitsverknüpfungen
@@ -65,7 +63,7 @@ Verwenden Sie einen kleinen Satz bekannter Daten, wenn Sie die Suchtransformatio
 
 ![Broadcastjoin](media/data-flow/broadcast.png "Broadcastjoin")
 
-Wenn bei Join, Lookup- und Exists-Transformationen der Arbeitsspeicher des Workerknotens groß genug für einen oder beide Datenströme ist, können Sie die Leistung optimieren, indem Sie die **Übertragung** aktivieren. Standardmäßig entscheidet die Spark-Engine automatisch, ob eine Seite übertragen werden soll oder nicht. Klicken Sie auf **Fest** , um die zu übertragende Seite manuell auszuwählen.
+Wenn bei Join, Lookup- und Exists-Transformationen der Arbeitsspeicher des Workerknotens groß genug für einen oder beide Datenströme ist, können Sie die Leistung optimieren, indem Sie die **Übertragung** aktivieren. Standardmäßig entscheidet die Spark-Engine automatisch, ob eine Seite übertragen werden soll oder nicht. Klicken Sie auf **Fest**, um die zu übertragende Seite manuell auszuwählen.
 
 Es wird nicht empfohlen, die Übertragung über die Option **Aus** zu deaktivieren, es sei denn, für Ihre Joins treten Timeoutfehler auf.
 

@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Recovery Services-Tresore z
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 4022838575ca53608a802a6be95e150778db6ac7
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 1a20cd2b1245febea5fd18a9f6fe6e7a7bb6f04b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525973"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716753"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Erstellen und Konfigurieren von Recovery Services-Tresoren
 
@@ -71,7 +71,7 @@ Da dieser Prozess auf Speicherebene erfolgt, hat er [Auswirkungen auf den Preis]
 >- Nach der Aktivierung kann es bis zu 48 Stunden dauern, bis die Sicherungselemente in sekundären Regionen verfügbar sind.
 >- CRR für Azure-VMs wird zurzeit nur für Azure Resource Manager-VMs in Azure unterstützt. Klassische Azure-VMs werden nicht unterstützt.  Wenn CRR von weiteren Verwaltungstypen unterstützt wird, werden diese **automatisch** registriert.
 >- Die regionsübergreifende Wiederherstellung **kann zurzeit nicht auf GRS oder LRS zurückgesetzt werden**, nachdem der Schutz zum ersten Mal initiiert wurde.
->- Aktuell beträgt die [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) der sekundären Region selbst dann bis zu zwölf Stunden, wenn die Replikationszeit des [georedundanten Speichers mit Lesezugriff (RA-GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#redundancy-in-a-secondary-region) 15 Minuten beträgt.
+>- Aktuell beträgt die [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) der sekundären Region selbst dann bis zu zwölf Stunden, wenn die Replikationszeit des [georedundanten Speichers mit Lesezugriff (RA-GRS)](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) 15 Minuten beträgt.
 
 ### <a name="configure-cross-region-restore"></a>Konfigurieren der bereichsübergreifenden Wiederherstellung
 

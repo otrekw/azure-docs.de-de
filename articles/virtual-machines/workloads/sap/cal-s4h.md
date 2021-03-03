@@ -2,18 +2,17 @@
 title: Bereitstellen von SAP S/4HANA oder BW/4HANA auf einem virtuellen Azure-Computer | Microsoft-Dokumentation
 description: Bereitstellen von SAP S/4HANA oder BW/4HANA auf einem virtuellen Azure-Computer
 author: hermanndms
-ms.service: virtual-machines
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: hermannd
 ms.reviewer: cynthn
-ms.openlocfilehash: 6492e770479042a5a1b4da6f61917832adad4873
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4b739efcf2695a5385351f531efb6201bbea1cd5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021417"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671936"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Bereitstellen von SAP S/4HANA oder BW/4HANA in Azure
 In diesem Artikel wird beschrieben, wie Sie S/4HANA über die SAP Cloud Appliance Library (SAP CAL) 3.0 in Azure bereitstellen. Zum Bereitstellen anderer SAP HANA-basierter Lösungen, z.B. BW/4HANA, befolgen Sie dieselben Schritte.

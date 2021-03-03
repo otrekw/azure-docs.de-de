@@ -4,12 +4,12 @@ description: Überwachung der Anwendungsleistung für Azure App Services. Ladeze
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: c0ee68659f4729ed8f63b9ea990343adf51513bd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 74b39219b3b18c8de0214367d141085f6dc5f674
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186370"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573997"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Überwachen der Leistung von Azure App Service
 
@@ -75,7 +75,8 @@ Es gibt zwei Methoden, um die Überwachung für in Azure App Services gehostete 
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
-Unterstützte ASP.NET Core-Versionen: ASP.NET Core 2.1, ASP.NET Core 2.2, ASP.NET Core 3.0, ASP.NET Core 3.1
+> [!IMPORTANT]
+> Unterstützte ASP.NET Core-Versionen: ASP.NET Core 2.1 und 3.1. Die Versionen 2.0, 2.2 und 3.0 wurden eingestellt und werden nicht mehr unterstützt. Führen Sie ein Upgrade auf eine [unterstützte Version](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) von .NET Core aus, damit die automatische Instrumentierung funktioniert.
 
 Die Agent-/Erweiterung-basierte Überwachung für das vollständige Framework aus ASP.NET Core, eigenständiger Bereitstellung und Linux-basierten Anwendungen wird derzeit **nicht unterstützt**. (Die [manuelle Instrumentierung](./asp-net-core.md) über Code kann in allen zuvor genannten Szenarien verwendet werden.)
 
@@ -90,7 +91,7 @@ Die Agent-/Erweiterung-basierte Überwachung für das vollständige Framework au
 
      ![Instrumentieren Ihrer Web-App](./media/azure-web-apps/create-resource-01.png)
 
-2. Nach Angabe der zu verwendenden Ressource können Sie plattformspezifisch auswählen, wie Application Insights Daten für Ihre Anwendung erfassen soll. ASP.NET Core bietet die Optionen **Empfohlene Sammlung**  oder **Deaktiviert** für ASP.NET Core 2.1, 2.2, 3.0 und 3.1.
+2. Nach Angabe der zu verwendenden Ressource können Sie plattformspezifisch auswählen, wie Application Insights Daten für Ihre Anwendung erfassen soll. ASP.NET Core bietet die Optionen **Empfohlene Sammlung** oder **Deaktiviert** für ASP.NET Core 2.1 und 3.1.
 
     ![Auswählen plattformspezifischer Optionen](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -420,6 +421,12 @@ Wenn Sie die server- und clientseitige Überwachung ohne Code für ASP.NET oder 
 
 Bei Verwendung von Überwachung ohne Code ist nur die Verbindungszeichenfolge erforderlich. Es wird jedoch weiterhin empfohlen, den Instrumentierungsschlüssel festzulegen, um die Abwärtskompatibilität mit älteren Versionen des SDKs aufrechtzuerhalten, wenn eine manuelle Instrumentierung ausgeführt wird.
 
+### <a name="difference-between-standard-metrics-from-application-insights-vs-azure-app-service-metrics"></a>Unterschied zwischen Standardmetriken von Application Insights und Azure App Service-Metriken
+
+Application Insights sammelt Telemetriedaten für die Anforderungen, die bis zur Anwendung gelangt sind. Wenn der Fehler in WebApps/IIS aufgetreten ist und die Anforderung die Benutzeranwendung nicht erreicht hat, weist Application Insights keine Telemetriedaten dazu auf.
+
+Die von Application Insights berechnete Dauer für `serverresponsetime` stimmt nicht unbedingt mit der von Web-Apps beobachteten Serverantwortzeit überein. Dies liegt daran, dass Application Insights nur die Dauer zählt, wenn die Anforderung tatsächlich die Benutzeranwendung erreicht. Wenn die Anforderung in IIS hängenbleibt oder in die Warteschlange gestellt wird, ist diese Wartezeit in den Web-App-Metriken enthalten, in den Application Insights-Metriken jedoch nicht.
+
 ## <a name="release-notes"></a>Versionshinweise
 
 Informationen zu den neuesten Updates und Fehlerbehebungen [finden Sie in den Versionshinweisen](./web-app-extension-release-notes.md).
@@ -427,8 +434,8 @@ Informationen zu den neuesten Updates und Fehlerbehebungen [finden Sie in den Ve
 ## <a name="next-steps"></a>Nächste Schritte
 * [Ausführen des Profilers in Ihrer Live-App](./profiler.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample): Überwachen Sie Azure Functions mit Application Insights
-* [Ermöglichen des Sendens von Azure-Diagnosedaten an Application Insights](../platform/diagnostics-extension-to-application-insights.md)
-* [Überwachen von Dienstintegritätsmetriken](../platform/data-platform.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist
-* [Empfangen von Warnbenachrichtigungen](../platform/alerts-overview.md) , wenn ein Vorgangsereignis auftritt oder Metriken einen Schwellenwert überschreiten.
+* [Ermöglichen des Sendens von Azure-Diagnosedaten an Application Insights](../agents/diagnostics-extension-to-application-insights.md)
+* [Überwachen von Dienstintegritätsmetriken](../data-platform.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist
+* [Empfangen von Warnbenachrichtigungen](../alerts/alerts-overview.md) , wenn ein Vorgangsereignis auftritt oder Metriken einen Schwellenwert überschreiten.
 * Verwenden von [Application Insights für JavaScript-Apps und Webseiten](javascript.md), um Clienttelemetriedaten von den Browsern zu erhalten, mit denen auf eine Webseite zugegriffen wird
 * [Einrichten von Verfügbarkeitswebtests](monitor-web-app-availability.md), um benachrichtigt zu werden, wenn Ihre Website nicht verfügbar ist

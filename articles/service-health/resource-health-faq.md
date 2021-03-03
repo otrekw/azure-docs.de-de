@@ -3,12 +3,12 @@ title: Azure Resource Health – FAQ
 description: Übersicht über Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: a5ad8867b110039e4dcc34b20c8a61fccfd39eaf
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: dc24688d8393b7a13e8c93d3f4d0171cce4c213c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032863"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570054"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health – FAQ
 Erfahren Sie die Antworten auf häufig gestellte Fragen zu Azure Resource Health.
@@ -46,7 +46,7 @@ Ja, wenn eine Ressource nicht verfügbar ist, identifiziert Resource Health die 
 Im Portal werden benutzerinitiierte Aktionen mit einem blauen Benachrichtigungssymbol angezeigt, geplante und ungeplante Ereignisse mit einem roten Warnsymbol. Weitere Informationen finden Sie in der [Übersicht über Azure Resource Health](Resource-health-overview.md).  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Kann ich Resource Health in meine Überwachungstools integrieren?
-Resource Health [unterstützt](resource-health-alert-arm-template-guide.md) auf dem Aktivitätsprotokoll basierende Warnungen. Aktivitätsprotokollwarnungen verwenden [Aktionsgruppen](../azure-monitor/platform/action-groups.md), um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Aktionsgruppen unterstützen eine Vielzahl von Benachrichtigungskanälen wie E-Mail, SMS, Webhook und ITSM-Aktionen.
+Resource Health [unterstützt](resource-health-alert-arm-template-guide.md) auf dem Aktivitätsprotokoll basierende Warnungen. Aktivitätsprotokollwarnungen verwenden [Aktionsgruppen](../azure-monitor/alerts/action-groups.md), um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Aktionsgruppen unterstützen eine Vielzahl von Benachrichtigungskanälen wie E-Mail, SMS, Webhook und ITSM-Aktionen.
 
 ## <a name="where-do-i-find-resource-health"></a>Wo finde ich Resource Health?
 Nachdem Sie sich beim Azure-Portal angemeldet haben, stehen Ihnen mehrere Möglichkeiten zur Verfügung, auf Resource Health zuzugreifen:

@@ -5,21 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 02/11/2021
 tags: connectors
-ms.openlocfilehash: b17c3d54b7065a18e015363a0362766f844e4e10
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: bec3416195358121b85eb61679ab39647e664a9e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355119"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382349"
 ---
 # <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>Erstellen und Verwalten von Datensätzen in Common Data Service (Microsoft Dataverse) mithilfe von Azure Logic Apps
 
 > [!NOTE]
 > Im November 2020 wurde Common Data Service in Microsoft Dataverse umbenannt.
 
-Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem [Common Data Service-Connector](/connectors/commondataservice/) können Sie automatisierte Workflows erstellen, die Datensätze in Ihrer Datenbank in [Common Data Service (nun Microsoft Dataverse)](/powerapps/maker/common-data-service/data-platform-intro) verwalten. Diese Workflows können Datensätze erstellen und aktualisieren sowie andere Vorgänge ausführen. Sie können auch Informationen aus Ihrer Common Data Service-Datenbank abrufen und die Ausgabe für andere Aktionen zur Verwendung in Ihrer Logik-App bereitstellen. Wenn ein Datensatz z. B. in der Common Data Service-Datenbank aktualisiert wird, können Sie mithilfe des Outlook-Connectors von Office 365 eine E-Mail senden.
+Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem [Common Data Service-Connector](/connectors/commondataservice/) können Sie automatisierte Workflows erstellen, die Datensätze in Ihrer Datenbank in [Common Data Service (nun Microsoft Dataverse)](/powerapps/maker/common-data-service/data-platform-intro) verwalten. Diese Workflows können Datensätze erstellen und aktualisieren sowie andere Vorgänge ausführen. Sie können auch Informationen aus Ihrer Dataverse-Datenbank abrufen und die Ausgabe für andere Aktionen zur Verwendung in Ihrer Logik-App bereitstellen. Wenn ein Datensatz z. B. in der Dataverse-Datenbank aktualisiert wird, können Sie mithilfe des Outlook-Connectors von Office 365 eine E-Mail senden.
 
 In diesem Artikel erfahren Sie, wie Sie eine Logik-App erstellen, die einen Aufgabendatensatz erstellt, sobald ein neuer Leaddatensatz erstellt wird.
 
@@ -32,7 +32,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Logik-App erstellen, die einen Aufg
   * [Learn: Erste Schritte mit Common Data Service](/learn/modules/get-started-with-powerapps-common-data-service/)
   * [Übersicht über Power Platform-Umgebungen](/power-platform/admin/environments-overview)
 
-* Grundlegende Informationen zum [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md) und zu der Logik-App, von der aus Sie auf die Datensätze in der Common Data Service-Datenbank zugreifen möchten. Um Ihre Logik-App mit einem Common Data Service-Trigger starten zu können, benötigen Sie eine leere Logik-App. Falls Sie mit Azure Logic Apps noch nicht vertraut sind, lesen Sie zunächst das Dokument [Schnellstart: Erstellen Ihres ersten Workflows mithilfe von Azure Logic Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Grundlegende Informationen zum [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md) und zu der Logik-App, von der aus Sie auf die Datensätze in der Dataverse-Datenbank zugreifen möchten. Um Ihre Logik-App mit einem Common Data Service-Trigger starten zu können, benötigen Sie eine leere Logik-App. Falls Sie mit Azure Logic Apps noch nicht vertraut sind, lesen Sie zunächst das Dokument [Schnellstart: Erstellen Ihres ersten Workflows mithilfe von Azure Logic Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="add-common-data-service-trigger"></a>Hinzufügen eines Common Data Service-Triggers
 
@@ -170,6 +170,62 @@ Dieses Beispiel zeigt, wie die Aktion **Create a new record** (Neuen Datensatz e
 ## <a name="connector-reference"></a>Connector-Referenz
 
 Technische Informationen, die auf der Swagger-Beschreibung des Connectors basieren (z. B. Trigger, Aktionen und Grenzwerte sowie andere Details), finden Sie auf der [Referenzseite des Connectors](/connectors/commondataservice/).
+
+## <a name="troubleshooting-problems"></a>Problembehandlung
+
+### <a name="calls-from-multiple-environments"></a>Aufrufe aus mehreren Umgebungen
+
+Beide Connectors, Common Data Service und Common Data Service (aktuelle Umgebung), speichern Informationen zu den Logik-App-Workflows, die Benachrichtigungen zu Entitätsänderungen benötigen und erhalten, mithilfe der `callbackregistrations`-Entität in Ihrer Microsoft Dataverse-Instanz. Wenn Sie eine Dataverse-Organisation kopieren, werden auch alle Webhooks kopiert. Wenn Sie Ihre Organisation kopieren, bevor Sie Workflows deaktivieren, die Ihrer Organisation zugeordnet sind, verweisen alle kopierten Webhooks ebenfalls auf dieselben Logik-Apps, die dann Benachrichtigungen von mehreren Organisationen erhalten.
+
+Um unerwünschte Benachrichtigungen zu verhindern, löschen Sie die Rückrufregistrierung aus der Organisation, die diese Benachrichtigungen sendet. Befolgen Sie dazu die folgenden Schritte:
+
+1. Ermitteln Sie die Dataverse-Organisation, aus der Sie Benachrichtigungen entfernen möchten, und melden Sie sich bei dieser Organisation an.
+
+1. Suchen Sie im Chrome-Browser nach der Rückrufregistrierung, die Sie löschen möchten, indem Sie die folgenden Schritte ausführen:
+
+   1. Überprüfen Sie die generische Liste für alle Rückrufregistrierungen unter folgendem OData-URI, damit Sie die Daten in der `callbackregistrations`-Entität anzeigen können:
+
+      `https://{organization-name}.crm{instance-number}.dynamics.com/api/data/v9.0/callbackregistrations`:
+
+      > [!NOTE]
+      > Wenn keine Werte zurückgegeben werden, verfügen Sie möglicherweise nicht über die Berechtigungen zum Anzeigen dieses Entitätstyps, oder Sie sind nicht bei der richtigen Organisation angemeldet.
+
+   1. Filtern Sie nach dem logischen Namen der auslösenden Entität (`entityname`) und dem Benachrichtigungsereignis, das Ihrem Logik-App-Workflow entspricht (Nachricht). Jeder Ereignistyp ist dem Nachrichteninteger wie folgt zugeordnet:
+
+      | Ereignistyp | Nachrichteninteger |
+      |------------|-----------------|
+      | Erstellen | 1 |
+      | Löschen | 2 |
+      | Aktualisieren | 3 |
+      | CreateOrUpdate | 4 |
+      | CreateOrDelete | 5 |
+      | UpdateOrDelete | 6 |
+      | CreateOrUpdateOrDelete | 7 |
+      |||
+
+      Dieses Beispiel zeigt, wie Sie nach `Create`-Benachrichtigungen für eine Entität mit dem Namen `nov_validation` filtern können, indem Sie den folgenden OData-URI einer Beispielorganisation verwenden:
+
+      `https://fabrikam-preprod.crm1.dynamics.com/api/data/v9.0/callbackregistrations?$filter=entityname eq 'nov_validation' and message eq 1`
+
+      ![Screenshot des Browserfensters mit dem OData-URI auf der Adressleiste](./media/connect-common-data-service/find-callback-registrations.png)
+
+      > [!TIP]
+      > Wenn für dieselbe Entität oder dasselbe Ereignis mehrere Trigger vorhanden sind, können Sie die Liste filtern, indem Sie zusätzliche Filter wie die Attribute `createdon` und `_owninguser_value` verwenden. Der Benutzername des Besitzers wird unter `/api/data/v9.0/systemusers({id})` angezeigt.
+
+   1. Nachdem Sie die ID der zu löschenden Rückrufregistrierung gefunden haben, führen Sie die folgenden Schritte aus:
+   
+      1. Öffnen Sie in Ihrem Chrome-Browser die Chrome-Entwicklertools (Tastatur: F12).
+
+      1. Wählen Sie im Fenster oben die Registerkarte **Konsole** aus.
+
+      1. Geben Sie in der Eingabeaufforderung den folgenden Befehl ein. Dieser sendet eine Anforderung zum Löschen der angegebenen Rückrufregistrierung:
+
+         `fetch('http://{organization-name}.crm{instance-number}.dynamics.com/api/data/v9.0/callbackregistrations({ID-to-delete})', { method: 'DELETE'})`
+
+         > [!IMPORTANT]
+         > Stellen Sie sicher, dass Sie die Anforderung von einer Nicht-UCI-Seite (Unified Client Interface) ausgeht, z. B. von der OData- oder API-Antwortseite selbst. Andernfalls führt die Logik in der Datei „app.js“ möglicherweise zu einem Konflikt mit diesem Vorgang.
+
+   1. Überprüfen Sie die Liste der Rückrufregistrierungen, um sicherzustellen, dass die Rückrufregistrierung nicht mehr vorhanden ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: zhchia
-ms.openlocfilehash: 7afcf6c5814917b3356d86e7288fd2920a04cad7
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 6b1894d832c3a74916418aa06885c2917267f4b1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695991"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652588"
 ---
 # <a name="tutorial-configure-templafy-openid-connect-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Templafy OpenID Connect für die automatische Benutzerbereitstellung
 
@@ -37,9 +37,9 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 * Ein Benutzerkonto in Templafy mit Administratorberechtigungen
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Schritt 1: Planen der Bereitstellung
-1. Erfahren Sie, [wie der Bereitstellungsdienst funktioniert](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-2. Bestimmen Sie, wer [in den Bereitstellungsbereich](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) einbezogen werden soll.
-3. Legen Sie fest, welche Daten [zwischen Azure AD und Templafy OpenID Connect zugeordnet werden sollen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
+1. Erfahren Sie, [wie der Bereitstellungsdienst funktioniert](../app-provisioning/user-provisioning.md).
+2. Bestimmen Sie, wer [in den Bereitstellungsbereich](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) einbezogen werden soll.
+3. Legen Sie fest, welche Daten [zwischen Azure AD und Templafy OpenID Connect zugeordnet werden sollen](../app-provisioning/customize-application-attributes.md). 
 
 ## <a name="assigning-users-to-templafy-openid-connect"></a>Zuweisen von Benutzern zu Templafy OpenID Connect
 
@@ -185,9 +185,9 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 ## <a name="step-5-monitor-your-deployment"></a>Schritt 5: Überwachen der Bereitstellung
 Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden Ressourcen die Bereitstellung überwachen:
 
-* Mithilfe der [Bereitstellungsprotokolle](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
-* Anhand der [Fortschrittsleiste](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
-* Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+* Mithilfe der [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
+* Anhand der [Fortschrittsleiste](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
+* Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](../app-provisioning/application-provisioning-quarantine-status.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

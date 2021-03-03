@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 52bf42434640dc965999895549b4fa12a139dcce
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 306298e4338665ef52add7f46d6da8675c97c3e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999602"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716549"
 ---
 # <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Suchen von Ergebnissen in der Bing-Suche mithilfe von Azure Logic Apps
 
@@ -20,7 +20,7 @@ In diesem Artikel wird gezeigt, wie Sie mit dem Bing-Suche-Connector innerhalb e
 
 Sie können z.B. Nachrichtenelemente basierend auf Suchkriterien finden und diese Elemente in Twitter in Ihrem Twitter-Feed als Tweets bereitstellen.
 
-Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). Wenn Sie noch nicht mit Logik-Apps vertraut sind, lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten Logik-App-Workflows](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 Connectorspezifische technische Informationen finden Sie in der [Referenz zum Bing-Suche-Connector](/connectors/bingsearch/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -50,7 +50,7 @@ Falls die Verbindung bereits besteht, können Sie die erforderlichen Information
 
    Geben Sie für dieses Beispiel Kriterien für die Rückgabe übereinstimmender Nachrichtenartikel aus der Bing-Suche an.
 
-   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | Search Query | Ja | <*search-words*> | Geben Sie Suchbegriffe ein, die Sie verwenden möchten. |
    | Market | Ja | <*locale*> | Das Gebietsschema für die Suche. Die Standardeinstellung ist „en-US“, aber Sie können einen anderen Wert auswählen. |
@@ -101,7 +101,7 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
    In diesem Beispiel geben Sie die Kriterien für die Rückgabe einer Teilmenge der Triggerergebnisse an.
 
-   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | Search Query | Ja | <*Suchausdruck*> | Geben Sie einen Ausdruck für die Abfrage der Triggerergebnisse ein. Sie können aus den Feldern der Liste mit dynamischen Inhalten wählen oder mit dem Ausdrucks-Generator einen Ausdruck erstellen. |
    | Market | Ja | <*locale*> | Das Gebietsschema für die Suche. Die Standardeinstellung ist „en-US“, aber Sie können einen anderen Wert auswählen. |
@@ -119,7 +119,7 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
       Jetzt können Sie mit dem Erstellen des Ausdrucks beginnen.
 
-   2. Wählen Sie in der Liste der Funktionen die Funktion **contains()** . Diese wird im Ausdrucksfeld angezeigt. Klicken Sie auf **Dynamische Inhalte**, um die Feldliste erneut anzuzeigen. Stellen Sie jedoch sicher, dass der Cursor innerhalb der Klammern bleibt.
+   2. Wählen Sie in der Liste der Funktionen die Funktion **contains()**. Diese wird im Ausdrucksfeld angezeigt. Klicken Sie auf **Dynamische Inhalte**, um die Feldliste erneut anzuzeigen. Stellen Sie jedoch sicher, dass der Cursor innerhalb der Klammern bleibt.
 
       ![Auswählen einer Funktion](./media/connectors-create-api-bing-search/expression-select-function.png)
 
@@ -148,7 +148,7 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
 1. Wenn Sie zur Eingabe von Verbindungsinformationen aufgefordert werden, geben Sie diese Details an:
 
-   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | Verbindungsname | Ja | <*connection-name*> | Der Name, der für Ihre Verbindung erstellt werden soll |
    | API-Version | Ja | <*API-Version*> | Standardmäßig wird die Version der Bing-Suche-API auf die aktuelle Version festgelegt. Sie können nach Bedarf eine frühere Version auswählen. |

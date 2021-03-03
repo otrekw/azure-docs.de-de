@@ -5,18 +5,18 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 01/15/2021
+ms.date: 02/18/2021
 ms.author: jingwang
-ms.openlocfilehash: 002ceba60853908e381f084e95ec1ee58e8580cb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a3cc3686d4b256fc7b8702f34cdf393dc1b0e25f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375815"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740391"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Sicheres Kopieren von Daten aus Azure Blob Storage in eine SQL-Datenbank mithilfe von privaten Endpunkten
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Tutorial erstellen Sie eine Data Factory über die Azure Data Factory-Benutzeroberfläche (User Interface, UI). *Die Pipeline in dieser Data Factory kopiert Daten sicher aus Azure Blob Storage in eine Azure SQL-Datenbank (beide lassen nur den Zugriff auf ausgewählte Netzwerke zu). Dazu werden private Endpunkte in einem [verwalteten virtuellen Azure Data Factory-Netzwerk](managed-virtual-network-private-endpoint.md) verwendet.* Das Konfigurationsmuster in diesem Tutorial gilt für Kopiervorgänge aus einem dateibasierten Datenspeicher in einen relationalen Datenspeicher. Eine Liste der Datenspeicher, die als Quellen und Senken unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher und Formate](./copy-activity-overview.md).
 

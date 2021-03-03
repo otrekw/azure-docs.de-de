@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 47c982bff45838617b9a55f9129d4dc55d58b0d2
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 95ef52acedc9171ba86110a665d08ea97c59bfbb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050330"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575828"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Aktivieren der Updateverwaltung mithilfe einer Azure Resource Manager-Vorlage
 
@@ -64,11 +64,11 @@ Die JSON-Vorlage gibt einen Standardwerte für die anderen Parameter an, die wah
 
 Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollten Sie unbedingt die folgenden Konfigurationsdetails kennen. Sie können Ihnen helfen, Fehler zu vermeiden, wenn Sie versuchen, einen mit Ihrem neuen Automation-Konto verknüpften Log Analytics-Arbeitsbereich zu erstellen, zu konfigurieren und zu verwenden.
 
-* Lesen Sie die [zusätzlichen Details](../../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace), um die Optionen für die Arbeitsbereichskonfiguration vollständig zu verstehen, z. B. Zugriffssteuerungsmodus, Tarif, Datenaufbewahrung und Kapazitätsreservierungsstufe.
+* Lesen Sie die [zusätzlichen Details](../../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace), um die Optionen für die Arbeitsbereichskonfiguration vollständig zu verstehen, z. B. Zugriffssteuerungsmodus, Tarif, Datenaufbewahrung und Kapazitätsreservierungsstufe.
 
 * Überprüfen Sie die [Arbeitsbereichszuordnungen](../how-to/region-mappings.md), um die unterstützten Regionen inline oder in einer Parameterdatei anzugeben. Es werden nur bestimmte Regionen zum Verknüpfen mit einem Log Analytics-Arbeitsbereich und einem Automation-Konto in Ihrem Abonnement unterstützt.
 
-* Wenn Sie noch nicht mit Azure Monitor-Protokollen vertraut sind und noch keinen Arbeitsbereich bereitgestellt haben, sollten Sie die [Entwurfsanleitungen für Arbeitsbereiche](../../azure-monitor/platform/design-logs-deployment.md) lesen. Sie helfen Ihnen, etwas über die Zugriffssteuerung zu erfahren und die Implementierungsstrategien für den Entwurf zu verstehen, die für Ihre Organisation empfohlen werden.
+* Wenn Sie noch nicht mit Azure Monitor-Protokollen vertraut sind und noch keinen Arbeitsbereich bereitgestellt haben, sollten Sie die [Entwurfsanleitungen für Arbeitsbereiche](../../azure-monitor/logs/design-logs-deployment.md) lesen. Sie helfen Ihnen, etwas über die Zugriffssteuerung zu erfahren und die Implementierungsstrategien für den Entwurf zu verstehen, die für Ihre Organisation empfohlen werden.
 
 ## <a name="deploy-template"></a>Bereitstellen der Vorlage
 

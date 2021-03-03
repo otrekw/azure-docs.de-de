@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 14d7a0de1cd29b8c07f90c759a4d423d7186fdb9
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 0a445abe0f448c28742282aedd1a886fae0f5a43
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836023"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526288"
 ---
 # <a name="accelerate-alert-workflows"></a>Beschleunigen von Warnungsworkflows
 
@@ -70,11 +70,11 @@ Die entsprechende Warnungsgruppe wird in der Ausgabe der Partnerlösungen angeze
 
 Die Warnungsgruppe wird in unterstützten Partnerlösungen mit den folgenden Präfixen angezeigt:
 
-  - **cat** für QRadar, ArcSight, Syslog CEF, Syslog LEEF
+- **cat** für QRadar, ArcSight, Syslog CEF, Syslog LEEF
 
-  - **Alert Group** für Syslog-Textnachrichten
+- **Alert Group** für Syslog-Textnachrichten
 
-  - **alert_group** für Syslog-Objekte
+- **alert_group** für Syslog-Objekte
 
 Diese Felder sollten in der Partnerlösung so konfiguriert werden, dass der Name der Warnungsgruppe angezeigt wird. Wenn mit einer Warnungsgruppe keine Warnung verknüpft ist, wird das Feld in der Partnerlösung mit dem Wert **N/A** angezeigt.
 
@@ -92,11 +92,29 @@ Die folgenden Warnungsgruppen werden automatisch definiert:
 | Befehlsfehler | Betriebsprobleme |  |
 | Konfigurationsänderungen | Programmieren |  |
 
-Warnungsgruppen sind vordefiniert. Weitere Informationen zu Warnungen, die mit Warnungsgruppen verknüpft sind, und zum Erstellen benutzerdefinierter Warnungsgruppen erhalten Sie beim [Microsoft-Support](https://support.microsoft.com/supportforbusiness/productselection?sapId=82c88f35-1b8e-f274-ec11-c6efdd6dd099).
+Warnungsgruppen sind vordefiniert. Weitere Informationen zu Warnungen, die mit Warnungsgruppen verknüpft sind, und zum Erstellen benutzerdefinierter Warnungsgruppen erhalten Sie beim [Microsoft-Support](https://support.microsoft.com/supportforbusiness/productselection?sapId=82c8f35-1b8e-f274-ec11-c6efdd6dd099).
 
 ## <a name="customize-alert-rules"></a>Anpassen von Warnungsregeln
 
-Sie können auf der Grundlage von Informationen, die von einzelnen Sensoren erkannt werden, benutzerdefinierte Warnungsregeln hinzufügen. Definieren Sie beispielsweise eine Regel, die einen Sensor anweist, auf Grundlage einer Quell-IP-Adresse, Ziel-IP-Adresse oder eines Befehls (innerhalb eines Protokolls) eine Warnung auszulösen. Wenn der Sensor den in der Regel definierten Datenverkehr erkennt, wird eine Warnung oder ein Ereignis generiert.
+Verwenden Sie benutzerdefinierte Warnungsregeln, um die für Sie interessanten Aktivitäten genauer einzukreisen. 
+
+Sie können benutzerdefinierte Warnungsregeln basierend auf Folgendem hinzufügen:
+
+- einer Kategorie, z. B. einem Protokoll, einem Port oder einer Datei
+- Quell- und Zieladressen
+- einer Bedingung, die auf der ausgewählten Kategorie basiert, z. B. einer Funktion, die einem Protokoll zugeordnet ist, einem Dateinamen, einem Port oder einer Transportnummer
+- einer Bedingung, die auf einem Datums- und Uhrzeitverweis basiert, wenn eine Erkennung z. B. an einem bestimmten Tag oder zu einer bestimmten Tageszeit durchgeführt wurde
+
+Wenn der Sensor die in der Regel beschriebene Aktivität erkennt, wird die Warnung gesendet.
+Sie enthält die Informationen, die von einzelnen Sensoren erkannt wurden. Definieren Sie beispielsweise eine Regel, die einen Sensor anweist, auf Grundlage einer Quell-IP-Adresse, Ziel-IP-Adresse oder eines Befehls (innerhalb eines Protokolls) eine Warnung auszulösen. Wenn der Sensor den in der Regel definierten Datenverkehr erkennt, wird eine Warnung oder ein Ereignis generiert.
+
+Sie können auch Aktionen für Warnungsregeln verwenden, um Defender für IoT anzuweisen, folgende Aufgaben zu erledigen:
+
+- Zulassen des Benutzerzugriffs auf die PCAP-Dateien aus der Warnung
+- Zuweisen eines Warnungsschweregrads
+- Generieren eines Ereignisses anstelle einer Warnung. Die erkannten Informationen werden auf der Ereigniszeitachse angezeigt.
+
+:::image type="content" source="media/how-to-work-with-alerts-sensor/user-defined-rule.png" alt-text="Screenshot: Benutzerdefinierte Regel":::
 
 Die Warnmeldung gibt an, dass eine benutzerdefinierte Regel die Warnung ausgelöst hat.
 
@@ -106,16 +124,16 @@ So erstellen Sie eine benutzerdefinierte Warnungsregel:
 
 1. Wählen Sie im Seitenmenü eines Sensors **Benutzerdefinierte Warnungen** aus.
 1. Wählen Sie das Pluszeichen ( **+** ) aus, um eine Regel zu erstellen.
-
-   :::image type="content" source="media/how-to-work-with-alerts-sensor/user-defined-rule.png" alt-text="Screenshot: Benutzerdefinierte Regel":::
-
 1. Definieren Sie einen Regelnamen.
 1. Wählen Sie im Bereich **Kategorien** eine Kategorie oder ein Protokoll aus.
 1. Definieren Sie eine bestimmte Quelle und eine IP- oder MAC-Zieladresse, oder wählen Sie eine beliebige Adresse aus.
-1. Fügen Sie eine Bedingung hinzu. Die Liste mit Bedingungen und deren Eigenschaften ist für jede Kategorie eindeutig. Sie können für jede Warnung mehr als eine Bedingung auswählen.
-1. Geben Sie an, ob die Regel einen **Alarm** oder ein **Ereignis** auslöst.
-1. Weisen Sie der Warnung einen Schweregrad zu.
-1. Geben Sie an, ob die Warnung eine PCAP-Datei enthält.
+1. Definieren Sie Regelbedingungen. Es können zwei Kategorien von Bedingungen erstellt werden:
+    - Bedingungen auf der Grundlage eindeutiger Werte, die der ausgewählten Kategorie zugeordnet sind. Wählen Sie „Hinzufügen“ aus, und definieren Sie die Werte.
+    - Bedingungen auf der Grundlage des Zeitpunkts, zu dem die Aktivität erkannt wurde. Wählen Sie im Abschnitt „Erkennungen“ einen Zeitraum und einen Tag aus, an dem die Erkennung erfolgen muss, damit die Warnung gesendet wird. Sie können auswählen, ob die Warnung zu jeder Zeit gesendet werden soll, zu der die Aktivität erkannt wird, oder nur während bzw. außerhalb der Arbeitszeiten. Verwenden Sie die Option zum Definieren der Arbeitszeiten, um diese in Defender für IoT für Ihre Organisation festzulegen.
+1. Definieren Sie Regelaktionen: 
+    - Geben Sie an, ob die Regel einen **Alarm** oder ein **Ereignis** auslöst.
+    - Weisen Sie der Warnung einen Schweregrad zu.
+    - Geben Sie an, ob die Warnung eine PCAP-Datei enthält.
 1. Wählen Sie **Speichern** aus.
 
 Die Regel wird der Liste **Angepasste Warnungsregeln** hinzugefügt, in der Sie grundlegende Regelparameter, den Zeitpunkt der letzten Auslösung der Regel und mehr überprüfen können. Sie können die Regel in der Liste auch aktivieren und deaktivieren.

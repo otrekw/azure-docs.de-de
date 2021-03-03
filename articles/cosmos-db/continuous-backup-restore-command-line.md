@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 2e09542cbe56df7c8d6984a98fe77142f543ec03
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 9ea71dae746ac423e7b17b6235b4d5cd3e143cd7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539191"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377328"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-cli"></a>Konfigurieren und Verwalten von fortlaufender Sicherung und Zeitpunktwiederherstellung (Vorschau) – Azure-Befehlszeilenschnittstelle
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -46,7 +46,7 @@ In diesem Artikel wird beschrieben, wie Sie ein Konto mit fortlaufenden Sicherun
 
 ## <a name="provision-a-sql-api-account-with-continuous-backup"></a><a id="provision-sql-api"></a>Bereitstellen eines SQL-API-Kontos mit fortlaufender Sicherung
 
-Zum Bereitstellen eines SQL-API-Kontos mit fortlaufender Sicherung sollte zusammen mit dem regulären Bereitstellungsbefehl das zusätzliche Argument `--backup-policy-type Continuous` übergeben werden. Der folgende Befehl ist ein Beispiel für ein Konto namens `pitracct2` mit einer einzelnen Schreibregion und einer Richtlinie für die fortlaufende Sicherung, das in der Region „USA, Westen“ unter der Ressourcengruppe „myrg“ erstellt wurde:
+Zum Bereitstellen eines SQL-API-Kontos mit fortlaufender Sicherung sollte zusammen mit dem regulären Bereitstellungsbefehl das zusätzliche Argument `--backup-policy-type Continuous` übergeben werden. Der folgende Befehl ist ein Beispiel für ein Konto namens `pitracct2` mit einer einzelnen Schreibregion und einer Richtlinie für die fortlaufende Sicherung, das in der Region *USA, Westen* unter der Ressourcengruppe *myrg* erstellt wurde:
 
 ```azurecli-interactive
 
@@ -61,7 +61,7 @@ az cosmosdb create \
 
 ## <a name="provision-an-azure-cosmos-db-api-for-mongodb-account-with-continuous-backup"></a><a id="provision-mongo-api"></a>Bereitstellen einer Azure Cosmos DB-API für ein MongoDB-Konto mit fortlaufender Sicherung
 
-Der folgende Befehl ist ein Beispiel für ein Konto namens `pitracct3` mit einer einzelnen Schreibregion und einer Richtlinie für die fortlaufende Sicherung, das in der Region „USA, Westen“ unter der Ressourcengruppe „myrg“ erstellt wurde:
+Der folgende Befehl ist ein Beispiel für ein Konto namens `pitracct3` mit einer einzelnen Schreibregion und einer Richtlinie für die fortlaufende Sicherung, das in der Region *USA, Westen* unter der Ressourcengruppe *myrg* erstellt wurde:
 
 ```azurecli-interactive
 
@@ -145,13 +145,13 @@ Die Antwort enthält alle Datenbankkonten (sowohl Live- als auch gelöschte Date
   }
 ```
 
-So wie für das Konto gibt es auch für die Region Werte für „CreationTime“ und „DeletionTime“. Diese Zeiten ermöglichen Ihnen, die richtige Region und einen gültigen Zeitbereich für die Wiederherstellung in dieser Region auszuwählen.
+Genauso wie bei `CreationTime` oder `DeletionTime` für das Konto gibt es auch für die Region Werte für `CreationTime` und `DeletionTime`. Diese Zeiten ermöglichen Ihnen, die richtige Region und einen gültigen Zeitbereich für die Wiederherstellung in dieser Region auszuwählen.
 
 **Auflisten aller Versionen von Datenbanken in einem aktiven Datenbankkonto**
 
 Durch das Auflisten aller Versionen von Datenbanken können Sie die richtige Datenbank auswählen, wenn in Ihrem Szenario die tatsächliche Zeit, in der die Datenbank vorhanden war, unbekannt ist.
 
-Führen Sie den folgenden CLI-Befehl aus, um alle Versionen von Datenbanken aufzulisten. Dieser Befehl funktioniert nur bei aktiven Konten. Die Parameter „instanceId“ und „location“ werden aus der Antwort des Befehls `az cosmosdb restorable-database-account list` von den Eigenschaften „name“ und „location“ abgeleitet. Das instanceId-Attribut ist auch eine Eigenschaft des Quelldatenbankkontos, das wiederhergestellt wird:
+Führen Sie den folgenden CLI-Befehl aus, um alle Versionen von Datenbanken aufzulisten. Dieser Befehl funktioniert nur bei aktiven Konten. Die Parameter `instanceId` und `location` werden aus der Antwort des Befehls `az cosmosdb restorable-database-account list` von den Eigenschaften `name` und `location` abgeleitet. Das instanceId-Attribut ist auch eine Eigenschaft des Quelldatenbankkontos, das wiederhergestellt wird:
 
 ```azurecli-interactive
 az cosmosdb sql restorable-database list \
@@ -198,7 +198,7 @@ Die Befehlsausgabe zeigt nun an, wann eine Datenbank erstellt und gelöscht wurd
 
 **Auflisten aller Versionen von SQL-Containern einer Datenbank in einem aktiven Datenbankkonto**
 
-Führen Sie den folgenden Befehl aus, um alle Versionen von SQL-Containern aufzulisten. Dieser Befehl funktioniert nur bei aktiven Konten. Der databaseRid-Parameter ist die „ResourceId“ der Datenbank, die Sie wiederherstellen möchten. Dies ist der Wert des ownerResourceid-Attributs aus der Antwort des Befehls `az cosmosdb sql restorable-database list`.
+Führen Sie den folgenden Befehl aus, um alle Versionen von SQL-Containern aufzulisten. Dieser Befehl funktioniert nur bei aktiven Konten. Der Parameter `databaseRid` ist die `ResourceId` der Datenbank, die Sie wiederherstellen möchten. Dies ist der Wert des Attributs `ownerResourceid` aus der Antwort des Befehls `az cosmosdb sql restorable-database list`.
 
 ```azurecli-interactive
 az cosmosdb sql restorable-container list \
@@ -265,7 +265,7 @@ az cosmosdb sql restorable-resource list \
 
 ## <a name="enumerate-restorable-resources-for-mongodb-api-account"></a><a id="enumerate-mongodb-api"></a>Auflisten von wiederherstellbaren Ressourcen für ein MongoDB-API-Konto
 
-Mithilfe der unten beschriebenen Enumerationsbefehle können Sie die Ressourcen ermitteln, die für verschiedene Zeitstempel wiederhergestellt werden können. Außerdem bieten sie einen Feed von Schlüsselereignissen für die wiederherstellbaren Konto-, Datenbank- und Containerressourcen. Wie bei der SQL-API können Sie den Befehl `az cosmosdb` verwenden, jedoch mit „mongodb“ anstelle von „sql“ als Parameter. Diese Befehle funktionieren nur für aktive Konten.
+Mithilfe der unten beschriebenen Enumerationsbefehle können Sie die Ressourcen ermitteln, die für verschiedene Zeitstempel wiederhergestellt werden können. Außerdem bieten sie einen Feed von Schlüsselereignissen für die wiederherstellbaren Konto-, Datenbank- und Containerressourcen. Wie bei der SQL-API können Sie den Befehl `az cosmosdb` verwenden, jedoch mit `mongodb` anstelle von `sql` als Parameter. Diese Befehle funktionieren nur für aktive Konten.
 
 **Auflisten aller Versionen von MongoDB-Datenbanken in einem aktiven Datenbankkonto**
 

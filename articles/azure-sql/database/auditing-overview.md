@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/03/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: e96aa32c6b67290fc4b4ee62ae98c4e72399fd4b
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 0e85019c8f02b8a4a97426d50a30d047b95378a1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509586"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572286"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Überwachen von Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -139,7 +139,7 @@ Um das Schreiben von Überwachungsprotokollen in einen Log Analytics-Arbeitsbere
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
-Weitere Informationen zum Azure Monitor Log Analytics-Arbeitsbereich finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](../../azure-monitor/platform/design-logs-deployment.md).
+Weitere Informationen zum Azure Monitor Log Analytics-Arbeitsbereich finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](../../azure-monitor/logs/design-logs-deployment.md).
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Überwachen in Event Hub-Ziel
 
@@ -170,7 +170,7 @@ Führen Sie die folgenden Schritte aus, wenn Sie Überwachungsprotokolle in Azur
     ![Log Analytics Security Insights](media/auditing-overview/auditing-log-analytics-dashboard-data.png)
 
 - Alternativ können Sie auch vom Blatt „Log Analytics“ auf die Überwachungsprotokolle zugreifen. Öffnen Sie Ihren Log Analytics-Arbeitsbereich und klicken Sie im Abschnitt **Allgemein** auf **Protokolle**. Beginnen Sie mit einer einfachen Abfrage, wie z. B. *"SQLSecurityAuditEvents" suchen*, um die Überwachungsprotokolle anzuzeigen.
-    Hier können Sie auch [Azure Monitor-Protokolle](../../azure-monitor/log-query/log-query-overview.md) nutzen, um erweiterte Suchen für Ihre Überwachungsprotokolldaten durchzuführen. Mithilfe integrierter Suchfunktionen und benutzerdefinierter Dashboards bieten Azure Monitor-Protokolle Ihnen in Echtzeit Erkenntnisse zu Betriebsabläufen, sodass Sie Millionen von Datensätzen für alle Ihre Workloads und Server analysieren können. Weitere nützliche Informationen zur Suchsprache und den Befehlen in Azure Monitor-Protokolle finden Sie unter [Referenz zur Suche in Azure Monitor-Protokolle](../../azure-monitor/log-query/log-query-overview.md).
+    Hier können Sie auch [Azure Monitor-Protokolle](../../azure-monitor/logs/log-query-overview.md) nutzen, um erweiterte Suchen für Ihre Überwachungsprotokolldaten durchzuführen. Mithilfe integrierter Suchfunktionen und benutzerdefinierter Dashboards bieten Azure Monitor-Protokolle Ihnen in Echtzeit Erkenntnisse zu Betriebsabläufen, sodass Sie Millionen von Datensätzen für alle Ihre Workloads und Server analysieren können. Weitere nützliche Informationen zur Suchsprache und den Befehlen in Azure Monitor-Protokolle finden Sie unter [Referenz zur Suche in Azure Monitor-Protokolle](../../azure-monitor/logs/log-query-overview.md).
 
 Wenn Sie Überwachungsprotokolle in Event Hub schreiben möchten:
 

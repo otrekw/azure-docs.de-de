@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 01/14/2021
-ms.openlocfilehash: 89cd9f46474e8e311f003f317b90bdb21eae55fe
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 2433e62fd1dbf35748483b40958fc3367532102a
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247545"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099233"
 ---
 # <a name="introduction-to-listing-options"></a>Einführung in Auflistungsoptionen
 
@@ -38,7 +38,11 @@ In dieser Tabelle ist aufgeführt, welche Auflistungsoptionen für die einzelnen
 
 &#42; Die Auflistungsoption „Jetzt abrufen“ umfasst die Optionen „Jetzt abrufen (kostenlos)“, „BYOL“ (Bring Your Own License), „Abonnement“ und „Nutzungsbasierte Preise“. Ausführliche Informationen finden Sie unter [Jetzt abrufen](#get-it-now).
 
-### <a name="free-trial"></a>Kostenlose Testversion
+## <a name="changing-offer-type"></a>Ändern des Angebotstyps
+
+[!INCLUDE [change-offer-type](./includes/change-offer-type.md)]
+
+## <a name="free-trial"></a>Kostenlose Testversion
 
 Verwenden Sie den kommerziellen Marketplace, um die Auffindbarkeit zu verbessern und die Bereitstellung einer Testversion Ihrer Lösung zu automatisieren. Dies ermöglicht es potenziellen Kunden, Ihre Software je nach Angebotstyp kostenlos als Software-as-a-Service- (SaaS), IaaS- oder Microsoft-in-App-Lösung für einen Zeitraum von 30 Tagen bis zu sechs Monaten zu nutzen.
 
@@ -46,18 +50,18 @@ Kunden verwenden die Schaltfläche _Kostenlos testen_ auf der Auflistungsseite I
 
 Bei Angeboten für virtuelle Computer werden dem Kunden die Azure-Infrastrukturkosten für die Nutzung des Angebots während eines Testzeitraums in Rechnung gestellt. Nach Ablauf des Testzeitraums wird dem Kunden automatisch der Standardtarif für den Plan in Rechnung gestellt, für den er zuletzt die Testversion verwendet hat, sofern er nicht vor dem Ende des Testzeitraums gekündigt hat.
 
-### <a name="test-drive"></a>Testversion
+## <a name="test-drive"></a>Testversion
 
 Kunden verwenden die Schaltfläche _Testversion_ auf der Auflistungsseite Ihres Angebots, um für eine vorgegebene Anzahl von Stunden Zugriff auf eine vorkonfigurierte Umgebung zu erhalten. Weitere Informationen zu Testversionen finden Sie unter [Was ist eine Testversion?](what-is-test-drive.md)
 
 > [!TIP]
 > Eine Testversion unterscheidet sich von einer kostenlosen Testversion. Sie können entweder eine Testversion, eine kostenlose Testversion oder beides anbieten. Mit beiden Optionen können Kunden Ihre Lösung für einen festen Zeitraum nutzen. Eine Testversion umfasst jedoch auch eine praxisnahe interaktive Tour durch die wichtigsten Features und Vorteile Ihres Produkts, die anhand eines realistischen Implementierungsszenarios veranschaulicht werden.
 
-### <a name="contact-me"></a>Kontaktformular
+## <a name="contact-me"></a>Kontaktformular
 
 Eine einfache Auflistung Ihrer Anwendung oder Ihres Diensts. Kunden verwenden die Schaltfläche _Kontakt mit mir aufnehmen_ auf der Angebotsseite Ihres Angebots, um Sie um eine Kontaktaufnahme bezüglich Ihres Angebots zu bitten.
 
-### <a name="get-it-now"></a>Jetzt abrufen
+## <a name="get-it-now"></a>Jetzt abrufen
 
 Diese Auflistungsoption umfasst Transaktionsangebote (Abonnements und benutzerbasierte Preise), BYOL-Angebote (Bring Your Own License) und „Jetzt abrufen (kostenlos)“. Transaktionsfähige Angebote werden über den kommerziellen Marketplace verkauft. Microsoft ist für die Abrechnung und für Sammlungen verantwortlich. Kunden verwenden die Schaltfläche _Jetzt abrufen_, um das Angebot zu nutzen.
 
@@ -92,28 +96,28 @@ Diese Tabelle zeigt, welche Angebotstypen die zusätzlichen Preisoptionen unters
 
 <sup>2</sup> Preis pro Stunde mit monatlicher Abrechnung.
 
-#### <a name="get-it-now-free"></a>Jetzt abrufen (kostenlos)
+### <a name="get-it-now-free"></a>Jetzt abrufen (kostenlos)
 
 Verwenden Sie diese Auflistungsoption, um Ihre Anwendung kostenlos anzubieten. Kunden verwenden die Schaltfläche _Jetzt abrufen_, um das kostenlose Angebot zu nutzen.
 
 > [!NOTE]
 > Für Angebote vom Typ „Jetzt abrufen (kostenlos)“ können keine Marketplace-Prämienvorteile für transaktionsfähige Angebote genutzt werden. Da keine Transaktion über die Storefront erfolgt, werden diese als „Testversion“ kategorisiert. Siehe [Marketplace-Prämien](#marketplace-rewards) weiter unten.
 
-#### <a name="bring-your-own-license-byol"></a>Bring Your Own License (BYOL)
+### <a name="bring-your-own-license-byol"></a>Bring Your Own License (BYOL)
 
 Verwenden Sie diese Auflistungsoption, damit Kunden Ihr Angebot mithilfe einer Lizenz bereitstellen können, die außerhalb des kommerziellen Marketplace erworben wurde. Diese Option ist ideal für Migrationen von der lokalen Umgebung zur Cloud geeignet. Kunden verwenden die Schaltfläche _Jetzt abrufen_, um Ihr Angebot mit einer zuvor von Ihnen erworbenen Lizenz zu kaufen.
 
 > [!NOTE]
 > Für Angebote vom Typ „BYOL“ können keine Marketplace-Prämienvorteile für transaktionsfähige Angebote genutzt werden. Da diese erfordern, dass ein Kunde die Lizenz vom Partner erwirbt, und keine Transaktion über die Storefront des kommerziellen Marketplace erfolgt, werden sie als Auflistungsangebote kategorisiert. Siehe [Marketplace-Prämien](#marketplace-rewards) weiter unten.
 
-#### <a name="subscription"></a>Subscription
+### <a name="subscription"></a>Subscription
 
 Sie können für diese Angebotstypen eine Pauschale berechnen:
 
 - Der Angebotstyp „Azure-Anwendung (verwaltete App)“ bietet Unterstützung für monatliche Abonnements.
 - Saas-Angebote bieten Unterstützung für Monats- und Jahresabonnements.
 
-#### <a name="usage-based-pricing"></a>Nutzungsbasierte Preise
+### <a name="usage-based-pricing"></a>Nutzungsbasierte Preise
 
 Die folgenden Angebotstypen unterstützen nutzungsbasierte Preise:
 

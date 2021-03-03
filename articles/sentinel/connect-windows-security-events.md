@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 226d5a46482d6611fdecf214d040fc27af9ac586
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: bc75ee64174957ad6486146b4da6f8a66a2120e5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632045"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570557"
 ---
 # <a name="connect-windows-security-events"></a>Herstellen einer Verbindung mit Windows-Sicherheitsereignissen 
 
@@ -56,7 +56,7 @@ Gehen Sie wie folgt vor, um sicherheitsrelevante Windows-Ereignisse in Azure Sen
 
 1. Vergewissern Sie sich, dass Sie über die entsprechenden Berechtigungen verfügen, wie im Abschnitt **Voraussetzungen** auf der Seite „Connector“ beschrieben.
 
-1. Laden Sie auf den Computern, für die Sie sicherheitsrelevante Ereignisse an Azure Sentinel streamen wollen, den [Log Analytics-Agent](../azure-monitor/platform/log-analytics-agent.md) (auch als Microsoft Monitoring Agent oder MMA bezeichnet) herunter, und installieren Sie ihn dort.
+1. Laden Sie auf den Computern, für die Sie sicherheitsrelevante Ereignisse an Azure Sentinel streamen wollen, den [Log Analytics-Agent](../azure-monitor/agents/log-analytics-agent.md) (auch als Microsoft Monitoring Agent oder MMA bezeichnet) herunter, und installieren Sie ihn dort.
 
     Gehen Sie bei virtuellen Azure-Computern wie folgt vor:
     
@@ -73,9 +73,9 @@ Gehen Sie wie folgt vor, um sicherheitsrelevante Windows-Ereignisse in Azure Sen
     >
     > Laden Sie über den Link unten rechts das **OMS-Gateway** herunter, und installieren Sie es auf einem separaten Computer, sodass dieser als Proxy fungiert, um es Windows-Systemen zu ermöglichen, auch ohne die erforderliche Internetverbindung weiterhin Ereignisse an Azure Sentinel zu streamen.  Sie müssen dennoch den Log Analytics-Agent auf allen Windows-Systemen installieren, deren Ereignisse Sie erfassen möchten.
     >
-    > Weitere Informationen zu diesem Szenario finden Sie in der [**Log Analytics-Gateway**-Dokumentation](../azure-monitor/platform/gateway.md).
+    > Weitere Informationen zu diesem Szenario finden Sie in der [**Log Analytics-Gateway**-Dokumentation](../azure-monitor/agents/gateway.md).
 
-    Weitere Installationsmöglichkeiten und Informationen finden Sie in der [**Log Analytics-Agent**-Dokumentation](../azure-monitor/platform/agent-windows.md).
+    Weitere Installationsmöglichkeiten und Informationen finden Sie in der [**Log Analytics-Agent**-Dokumentation](../azure-monitor/agents/agent-windows.md).
 
 1. Wählen Sie die Gruppe von Ereignissen ([Alle, Häufige oder Minimal](#event-sets)) aus, die Sie streamen wollen.
 

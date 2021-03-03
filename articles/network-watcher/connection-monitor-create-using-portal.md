@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: bd13712d137ec5a1fdfa6dec8e6f6d1e0a7432cb
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: edf671c8005fa67f6161f383c503ca278dba3105
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833166"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702163"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Erstellen eines Monitors in Verbindungsmonitor mit dem Azure-Portal
 
@@ -121,7 +121,7 @@ Wenn Sie eine Testgruppe in einem Verbindungsmonitor erstellen möchten, geben S
 
    * Zum Auswählen lokaler Agents wählen Sie die Registerkarte **Nicht-Azure-Endpunkte** aus. Standardmäßig sind Agents in Arbeitsbereichen nach Region gruppiert. Für alle diese Arbeitsbereiche ist der Netzwerkleistungsmonitor konfiguriert. 
    
-       Wenn Sie dem Arbeitsbereich den Netzwerkleistungsmonitor hinzufügen müssen, rufen Sie ihn aus dem [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) ab. Informationen zum Hinzufügen des Netzwerkleistungsmonitors finden Sie unter [Überwachungslösungen in Azure Monitor](../azure-monitor/insights/solutions.md). 
+       Wenn Sie dem Arbeitsbereich den Netzwerkleistungsmonitor hinzufügen müssen, rufen Sie ihn aus dem [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview) ab. Informationen zum Hinzufügen des Netzwerkleistungsmonitors finden Sie unter [Überwachungslösungen in Azure Monitor](../azure-monitor/insights/solutions.md). 
    
        Unter **Verbindungsmonitor erstellen** ist auf der Registerkarte **Grundlagen** die Standardregion ausgewählt. Wenn Sie die Region ändern, können Sie Agents aus Arbeitsbereichen in der neuen Region auswählen. Sie können ein/en oder mehrere Agents oder Subnetze auswählen. In der Ansicht **Subnetz** können Sie bestimmte IP-Adressen für die Überwachung auswählen. Wenn Sie mehrere Subnetze hinzufügen, wird ein benutzerdefiniertes lokales Netzwerk mit dem Namen **OnPremises_Network_1** erstellt. Sie können den Selektor **Gruppieren nach** ändern, um nach Agents zu gruppieren.
 
@@ -186,7 +186,7 @@ Wenn Sie Warnungen für einen Verbindungsmonitor erstellen möchten, geben Sie i
 
 - **Bedingungsname**: Die Warnung wir für die `Test Result(preview)`-Metrik erstellt. Wenn das Ergebnis des Verbindungsmonitortests fehlerhaft ist, wird die Warnungsregel ausgelöst. 
 
-- **Aktionsgruppenname**: Sie können Ihre E-Mail-Adresse direkt eingeben, oder Sie können Warnungen über Aktionsgruppen erstellen. Wenn Sie Ihre E-Mail-Adresse direkt eingeben, wird eine Aktionsgruppe namens **NPM Email ActionGroup** erstellt. Die E-Mail-ID wird dieser Aktionsgruppe hinzugefügt. Wenn Sie sich für die Verwendung von Aktionsgruppen entscheiden, müssen Sie eine zuvor erstellte Aktionsgruppe auswählen. Wie Sie eine Aktionsgruppe erstellen, erfahren Sie unter [Aktionsgruppen im Azure-Portal erstellen](../azure-monitor/platform/action-groups.md). Nachdem die Warnung erstellt wurde, können Sie [Ihre Warnungen verwalten](../azure-monitor/platform/alerts-metric.md#view-and-manage-with-azure-portal). 
+- **Aktionsgruppenname**: Sie können Ihre E-Mail-Adresse direkt eingeben, oder Sie können Warnungen über Aktionsgruppen erstellen. Wenn Sie Ihre E-Mail-Adresse direkt eingeben, wird eine Aktionsgruppe namens **NPM Email ActionGroup** erstellt. Die E-Mail-ID wird dieser Aktionsgruppe hinzugefügt. Wenn Sie sich für die Verwendung von Aktionsgruppen entscheiden, müssen Sie eine zuvor erstellte Aktionsgruppe auswählen. Wie Sie eine Aktionsgruppe erstellen, erfahren Sie unter [Aktionsgruppen im Azure-Portal erstellen](../azure-monitor/alerts/action-groups.md). Nachdem die Warnung erstellt wurde, können Sie [Ihre Warnungen verwalten](../azure-monitor/alerts/alerts-metric.md#view-and-manage-with-azure-portal). 
 
 - **Name der Warnungsregel**: Der Name des Verbindungsmonitors.
 

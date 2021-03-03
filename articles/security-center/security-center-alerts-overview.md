@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: b26d42ca32f0048bb2bedcb5fef337c3ac1d7d65
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a8cb997337d26a166b4c73d33965820da5ae2a86
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807223"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596307"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Sicherheitswarnungen in Azure Security Center
 
@@ -98,4 +98,4 @@ Sie haben mehrere Optionen zum Anzeigen der Warnungen außerhalb von Security Ce
 
 In diesem Artikel wurden die unterschiedlichen Arten von Sicherheitswarnungen in Security Center beschrieben. Weitere Informationen finden Sie unter
 
-- **Sicherheitswarnungen im Azure-Aktivitätsprotokoll:** Sicherheitswarnungen und -incidents sind nicht nur im Azure-Portal oder programmgesteuert verfügbar, sondern werden auch im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/activity-log.md#view-the-activity-log) als Ereignisse überwacht. Weitere Informationen zum Ereignisschema finden Sie unter [Sicherheitswarnungen im Azure-Aktivitätsprotokoll](https://go.microsoft.com/fwlink/?linkid=2114113).
+- **Sicherheitswarnungen im Azure-Aktivitätsprotokoll:** Sicherheitswarnungen und -incidents sind nicht nur im Azure-Portal oder programmgesteuert verfügbar, sondern werden auch im [Azure-Aktivitätsprotokoll](../azure-monitor/essentials/activity-log.md#view-the-activity-log) als Ereignisse überwacht. Weitere Informationen zum Ereignisschema finden Sie unter [Sicherheitswarnungen im Azure-Aktivitätsprotokoll](https://go.microsoft.com/fwlink/?linkid=2114113).

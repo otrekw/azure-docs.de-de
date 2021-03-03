@@ -3,12 +3,12 @@ title: Einrichten Ihrer Umgebung für einen Blaupausenoperator
 description: Erfahren Sie, wie Sie Ihre Azure-Umgebung für die Verwendung der integrierten Azure-Rolle „Blaupausenoperator“ konfigurieren.
 ms.date: 02/05/2021
 ms.topic: how-to
-ms.openlocfilehash: 0e0f6680ab39481a480919af10fadc0f7103a1fb
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: b43a33f4bac92903bd07454041d11850f217d480
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591600"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558716"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>Konfigurieren Ihrer Umgebung für einen Blaupausenoperator
 
@@ -22,7 +22,7 @@ Der erste Schritt besteht darin, der Konten- oder Sicherheitsgruppe, die Blaupau
 
 1. (Empfohlen) [Erstellen einer Sicherheitsgruppe und Hinzufügen von Mitgliedern](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
-1. [Hinzufügen einer Rollenzuweisung](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) des Typs **Blaupausenoperator** zur Konten- oder Sicherheitsgruppe
+1. [Zuweisen einer Azure-Rolle](../../../role-based-access-control/role-assignments-portal.md) vom Typ **Blaupausenoperator** zur Konten- oder Sicherheitsgruppe
 
 ## <a name="user-assign-managed-identity"></a>Vom Benutzer zugewiesene verwaltete Identität
 
@@ -32,7 +32,7 @@ Für eine Blaupausendefinition können entweder vom System oder vom Benutzer zug
 
 1. Erteilen Sie der vom Benutzer zugewiesenen verwalteten Identität alle Rollen oder Berechtigungen, die die Blaupausendefinition für den vorgesehenen Bereich benötigt.
 
-1. Fügen Sie der Konten- oder Sicherheitsgruppe eine [Rollenzuweisung](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) des Typs **Operator für verwaltete Identität** hinzu. Begrenzen Sie die Rollenzuweisung auf die neue vom Benutzer zugewiesene verwaltete Identität.
+1. Weisen Sie der Konten- oder Sicherheitsgruppe eine [Azure-Rolle](../../../role-based-access-control/role-assignments-portal.md) vom Typ **Operator für verwaltete Identität** zu. Begrenzen Sie die Rollenzuweisung auf die neue vom Benutzer zugewiesene verwaltete Identität.
 
 1. Weisen Sie als **Blaupausenoperator** eine [Blaupause](../create-blueprint-portal.md#assign-a-blueprint) zu, die die neue vom Benutzer zugewiesene verwaltete Identität verwendet.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73946eea846b06b28d0a0f017ea1317c8cc7326d
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 550481b9153d8fe8745d2a745fe6b6f00d09cdb1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165143"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365819"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -299,6 +299,11 @@ UPN-Änderungen werden mit dem Windows 10-Update 2004 unterstützt. Bei Benutz
 - Bei Azure AD registrierte Windows 10-Geräte: Wechseln Sie zu **Einstellungen** > **Konten** > **Auf Geschäfts-, Schul- oder Unikonto zugreifen**. Wählen Sie Ihr Konto aus, und klicken Sie auf **Trennen**. Unter Windows 10 erfolgt die Geräteregistrierung pro Benutzerprofil.
 - Unter iOS und Android können Sie die Microsoft Authenticator-App verwenden und **Einstellungen** > **Geräteregistrierung** und **Geräteregistrierung aufheben** auswählen.
 - Unter macOS können Sie die Microsoft Intune-Unternehmensportalanwendung verwenden, um die Registrierung des Geräts in der Verwaltung aufzuheben und Registrierungen zu entfernen. 
+
+Bei Windows 10-Geräten kann dieser Prozess mit dem [Tool zum Entfernen von Workplace Join (WPJ)](https://download.microsoft.com/download/8/e/f/8ef13ae0-6aa8-48a2-8697-5b1711134730/WPJCleanUp.zip) automatisiert werden.
+
+> [!NOTE]
+> Mit diesem Tool werden alle SSO-Konten auf dem Gerät entfernt. Nach diesem Vorgang verlieren alle Anwendungen den SSO-Status, und die Registrierung des Geräts bei den Verwaltungstools (MDM) und in der Cloud wird aufgehoben. Wenn eine Anwendung das nächste Mal versucht, sich anzumelden, werden Benutzer aufgefordert, das Konto erneut hinzuzufügen.
 
 ---
 ### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>F: Wie kann ich verhindern, dass Benutzer zusätzliche Geschäftskonten (mit Azure AD-Registrierung) auf meinen Windows 10-Unternehmensgeräten hinzufügen?

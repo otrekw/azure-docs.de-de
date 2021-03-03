@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 4c6d8fabbd236a2653fff8168ad73c0b45f09d64
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 4970cacb0995678bdad87f14ba971b8fb88ffa09
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98027841"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593640"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>React-Plug-In für das Application Insights-JavaScript-SDK
 
@@ -226,4 +226,4 @@ Sehen Sie sich die [Application Insights-React-Demo](https://github.com/Azure-Sa
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum JavaScript SDK finden Sie in der [Dokumentation zum Application Insights JavaScript SDK](javascript.md).
-- Informationen zur Kusto-Abfragesprache und zum Abfragen von Daten in Log Analytics finden Sie in der [Übersicht über Protokollabfragen](../../azure-monitor/log-query/log-query-overview.md).
+- Informationen zur Kusto-Abfragesprache und zum Abfragen von Daten in Log Analytics finden Sie in der [Übersicht über Protokollabfragen](../../azure-monitor/logs/log-query-overview.md).

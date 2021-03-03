@@ -3,12 +3,12 @@ title: Anzeigen von Azure Event Grid-Metriken und Festlegen von Warnungen
 description: In diesem Artikel wird beschrieben, wie Sie im Azure-Portal Metriken für Azure Event Grid-Themen und Abonnements anzeigen und Warnungen hierfür erstellen.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8f8d7e15475ce74dc1af55dc7f6116d5d8b79cc8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008955"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577400"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Überwachen der Event Grid-Nachrichtenübermittlung 
 In diesem Artikel wird beschrieben, wie Sie über das Portal Metriken für Event Grid-Themen und Abonnements anzeigen und Warnungen hierfür erstellen. 
@@ -52,7 +52,7 @@ Auf der Registerkarte **Metriken** auf der Seite **Event Grid-Thema** können Si
 
 :::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="Seite „Themen“ – „Metriken“":::
 
-Weitere Informationen zu Metriken finden Sie unter [Metriken in Azure Monitor](../azure-monitor/platform/data-platform-metrics.md).
+Weitere Informationen zu Metriken finden Sie unter [Metriken in Azure Monitor](../azure-monitor/essentials/data-platform-metrics.md).
 
 Beispiel: Metrikendiagramm für die Metrik **Veröffentlichte Ereignisse**.
 
@@ -91,7 +91,7 @@ Auf der Registerkarte **Metriken** auf der Seite **Event Grid-Thema** können Si
 
 :::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="Seite „Systemthema“ – „Metriken“":::
 
-Weitere Informationen zu Metriken finden Sie unter [Metriken in Azure Monitor](../azure-monitor/platform/data-platform-metrics.md).
+Weitere Informationen zu Metriken finden Sie unter [Metriken in Azure Monitor](../azure-monitor/essentials/data-platform-metrics.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

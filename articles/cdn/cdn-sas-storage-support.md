@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: ff205069c31d50813a4fad71a3c9e2f8e2462844
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ccf55e0e3986de8afe23cb646d4df743b576900c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778138"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725321"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Verwenden von Azure CDN mit SAS
 
@@ -69,7 +69,7 @@ Diese Option ist die einfachste und verwendet nur ein einziges SAS-Token, das vo
 
 ### <a name="option-2-hidden-cdn-sas-token-using-a-rewrite-rule"></a>Option 2: Ausgeblendetes CDN-SAS-Token mit Regel für das erneute Generieren
  
-Diese Option ist nur für **Azure CDN Premium von Verizon** -Profile verfügbar. Mit dieser Option können Sie den Blobspeicher auf dem Ursprungsserver schützen. Diese Option kann nützlich sein, wenn Sie keine besonderen Zugriffsbeschränkungen für die Datei benötigen, aber Benutzer am direkten Zugriff auf den Speicherursprung hindern möchten, um die Azure CDN-Auslagerungszeiten zu verbessern. Das SAS-Token ist dem Benutzer nicht bekannt und für jeden erforderlich, der auf Dateien im angegebenen Container des Ursprungsservers zugreift. Aufgrund der URL-Rewriteregel wird das SAS-Token am CDN-Endpunkt jedoch nicht benötigt.
+Diese Option ist nur für **Azure CDN Premium von Verizon**-Profile verfügbar. Mit dieser Option können Sie den Blobspeicher auf dem Ursprungsserver schützen. Diese Option kann nützlich sein, wenn Sie keine besonderen Zugriffsbeschränkungen für die Datei benötigen, aber Benutzer am direkten Zugriff auf den Speicherursprung hindern möchten, um die Azure CDN-Auslagerungszeiten zu verbessern. Das SAS-Token ist dem Benutzer nicht bekannt und für jeden erforderlich, der auf Dateien im angegebenen Container des Ursprungsservers zugreift. Aufgrund der URL-Rewriteregel wird das SAS-Token am CDN-Endpunkt jedoch nicht benötigt.
  
 1. Verwenden Sie die [Regel-Engine](./cdn-verizon-premium-rules-engine.md), um eine URL-Rewriteregel zu erstellen. Das Verteilen von neuen Regeln kann bis zu 4 Stunden dauern.
 
@@ -80,7 +80,7 @@ Diese Option ist nur für **Azure CDN Premium von Verizon** -Profile verfügbar.
    Im folgenden Beispiel für eine URL-Rewriteregel wird ein Muster für einen regulären Ausdruck mit einer Erfassungsgruppe und einem Endpunkt namens *sasstoragedemo* verwendet:
    
    Quelle:   
-   `(container1\/.*)`
+   `(container1/.*)`
 
 
    Ziel:   
@@ -119,7 +119,7 @@ Um die Azure CDN-Sicherheitstokenauthentifizierung zu verwenden, müssen Sie üb
    Im folgenden Beispiel für eine URL-Rewriteregel wird ein Muster für einen regulären Ausdruck mit einer Erfassungsgruppe und einem Endpunkt namens *sasstoragedemo* verwendet:
    
    Quelle:   
-   `(container1\/.*)`
+   `(container1/.*)`
    
    Ziel:   
    ```

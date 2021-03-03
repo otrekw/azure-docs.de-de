@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: f9791fa8932792398efdea39fe0d39a967420596
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: a30980ba61a1dfec918dce1a55e78f1be2a36dd7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491722"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677870"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Registrieren und Überprüfen einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -77,7 +77,7 @@ Zur Nutzung eines Dienstprinzipals können Sie einen vorhandenen Dienstprinzipal
 > 1. Wählen Sie im Menü auf der linken Seite die Option **Azure Active Directory** aus.
 > 1. Wählen Sie **App-Registrierungen** aus.
 > 1. Wählen Sie **+ Registrierung einer neuen Anwendung** aus.
-> 1. Geben Sie einen Namen für die **Anwendung** (Dienstprinzipalname) ein.
+> 1. Geben Sie einen Namen für die **Anwendung** ein (Dienstprinzipalname).
 > 1. Wählen Sie **Nur Konten in diesem Organisationsverzeichnis** aus.
 > 1. Wählen Sie als Umleitungs-URI die Option **Web** aus, und geben Sie die gewünschte URL ein. Hierbei muss es sich nicht um eine reale oder geschäftliche URL handeln.
 > 1. Klicken Sie anschließend auf **Registrieren**.
@@ -97,10 +97,10 @@ Der Dienstprinzipal oder die verwaltete Identität muss über die Berechtigung z
 Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals abzurufen:
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Dienstprinzipal.
-1. Kopieren Sie die Werte von **Anwendungs-ID (Client)** unter **Übersicht** und **Geheimer Clientschlüssel** unter **Zertifikate und Geheimnisse**.
+1. Kopieren Sie die Werte von **Anwendungs-ID (Client)** unter **Übersicht** und von **Geheimer Clientschlüssel** unter **Zertifikate und Geheimnisse**.
 1. Navigieren zum Schlüsseltresor
 1. Wählen Sie **Einstellungen > Geheimnisse** aus.
-1. Wählen Sie **+ Generieren/Importieren** aus, und geben Sie unter **Name** einen gewünschten Namen und unter **Geheimer Clientschlüssel** Ihres Dienstprinzipals den **Wert** ein.
+1. Wählen Sie **+ Generieren/Importieren** aus, und geben Sie unter **Name** einen gewünschten Namen und den **Wert** als **Geheimen Clientschlüssel** Ihres Dienstprinzipals ein.
 1. Wählen Sie **Erstellen** aus, um den Vorgang abzuschließen.
 1. Falls für Ihren Schlüsseltresor noch keine Verbindung mit Purview hergestellt wurde, müssen Sie eine [neue Schlüsseltresorverbindung erstellen](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
 1. [Erstellen Sie abschließend neue Anmeldeinformationen](manage-credentials.md#create-a-new-credential), indem Sie den Dienstprinzipal zum Einrichten Ihrer Überprüfung verwenden.
@@ -117,7 +117,7 @@ Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals ab
 
     :::image type="content" source="media/register-scan-azure-sql-database-managed-instance/set-up-the-sql-data-source.png" alt-text="Einrichten der SQL-Datenquelle":::
 
-1. Wählen Sie **Manuell eingeben** aus.
+1. Wählen Sie die Option **Aus Azure-Abonnement** und dann im Dropdownfeld **Azure-Abonnement** das entsprechende Abonnement und im Dropdownfeld **Servername** den entsprechenden Server aus.
 
 1. Geben Sie den **vollqualifizierten Domänennamen des öffentlichen Endpunkts** und die **Portnummer** ein. Wählen Sie dann **Fertig stellen** aus, um die Datenquelle zu registrieren.
 

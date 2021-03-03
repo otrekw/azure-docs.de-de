@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 605bae706bbc1db2e008b8d050cbba9eacd16933
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 8546201d21e68fbcf1e519c8fe9ba0de1dc38a96
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702201"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367978"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Vorbereiten von Daten für Custom Speech
 
@@ -57,9 +57,17 @@ Dateien sollten nach Typ in einem Dataset gruppiert und als ZIP-Datei hochgelade
 > [!TIP]
 > Zum schnellen Einstieg sollten Sie Beispieldaten verwenden. In diesem GitHub-Repository finden Sie <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">Custom Speech-Beispieldaten<span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
+> [!NOTE]
+> Nicht alle Basismodelle unterstützen das Training mit Audiodaten. Wenn es von einem Basismodell nicht unterstützt wird, verwendet der Speech-Dienst nur den Text aus den Transkriptionen und ignoriert die Audiodaten. Eine Liste mit Basismodellen, die das Training mit Audiodaten unterstützen, finden Sie unter [Sprachunterstützung](language-support.md#speech-to-text).
+
+> [!NOTE]
+> Wenn Sie das für das Training verwendete Basismodell ändern und das Trainingsdataset Audiodaten enthält, überprüfen Sie *immer*, ob das neue ausgewählte Basismodell [das Training mit Audiodaten unterstützt](language-support.md#speech-to-text). Wenn das zuvor verwendete Basismodell kein Training mit Audiodaten unterstützt hat und das Trainingsdataset Audiodaten enthält, verlängert sich die Trainingsdauer mit dem neuen Basismodell **deutlich** und kann schnell einige Stunden oder sogar mehrere Tage und mehr betragen. Dies ist insbesondere dann der Fall, wenn es sich bei der Region Ihres Abonnements für den Speech-Dienst **nicht** um eine [Region mit dedizierter Hardware](custom-speech-overview.md#set-up-your-azure-account) für Training handelt.
+>
+> Wenn das im obigen Abschnitt beschriebene Problem auftritt, können Sie die Trainingsdauer schnell verkürzen, indem Sie die Menge der Audiodaten im Dataset verringern oder die Audiodaten ganz daraus entfernen, sodass das Dataset nur noch Text enthält. Letzteres ist sehr empfehlenswert, wenn es sich bei der Region Ihres Abonnements für den Speech-Dienst **nicht** um eine [Region mit dedizierter Hardware](custom-speech-overview.md#set-up-your-azure-account) für Training handelt.
+
 ## <a name="upload-data"></a>Hochladen von Daten
 
-Navigieren Sie zum Hochladen der Daten zum <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a>. Klicken Sie im Portal auf **Daten hochladen**, um den Assistenten zu starten und Ihr erstes Dataset zu erstellen. Sie werden aufgefordert, einen Sprachdatentyp für das Dataset auszuwählen, bevor Sie die Daten hochladen können.
+Navigieren Sie zum Hochladen Ihrer Daten zu <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a>. Klicken Sie im Portal auf **Daten hochladen**, um den Assistenten zu starten und Ihr erstes Dataset zu erstellen. Sie werden aufgefordert, einen Sprachdatentyp für das Dataset auszuwählen, bevor Sie die Daten hochladen können.
 
 ![Screenshot: Hervorgehobene Option zum Hochladen von Audio im Speech-Portal](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -136,14 +144,14 @@ speech03.wav    the lazy dog was not amused
 
 Der Text der Transkriptionen wird normalisiert, damit diese vom System verarbeitet werden können. Einige wichtige Normalisierungen müssen jedoch noch vor dem Hochladen der Daten in Speech Studio vorgenommen werden. Informationen dazu, welche Sprache bei der Vorbereitung Ihrer Transkriptionen verwendet werden muss, finden Sie unter [Erstellen einer menschenmarkierten Transkription](how-to-custom-speech-human-labeled-transcriptions.md).
 
-Nachdem Sie die Audiodateien und entsprechenden Transkriptionen zusammengetragen haben, packen Sie diese in eine einzige ZIP-Datei, bevor Sie sie im <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> hochladen. Im Folgenden sehen Sie ein Beispieldataset mit drei Audiodateien und einer von einer Person markierten Transkriptionsdatei:
+Wenn Sie die Audiodateien und die entsprechenden Transkriptionen zusammengetragen haben, packen Sie sie in eine gemeinsame ZIP-Datei, bevor Sie sie in <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a> hochladen. Im Folgenden sehen Sie ein Beispieldataset mit drei Audiodateien und einer von einer Person markierten Transkriptionsdatei:
 
 > [!div class="mx-imgBorder"]
 > ![Auswählen von Audio im Speech-Portal](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
 Unter [Einrichten Ihres Azure-Kontos](custom-speech-overview.md#set-up-your-azure-account) finden Sie eine Liste der empfohlenen Regionen für Ihre Speech-Dienstabonnements. Durch das Einrichten des Speech-Abonnements in einer dieser Regionen verringert sich die für das Trainieren des Modells erforderliche Zeit. In diesen Regionen können beim Training zehn Stunden an Audiodaten pro Tag im Vergleich zu gerade einmal einer Stunde pro Tag in anderen Regionen verarbeitet werden. Wenn das Modelltraining nicht innerhalb einer Woche abgeschlossen werden kann, wird für das Modell ein Fehler angezeigt.
 
-Nicht alle Basismodelle unterstützen das Training mit Audiodaten. Wenn das Basismodell das Training mit Audiodaten nicht unterstützt, ignoriert der Dienst die Audiodaten und nutzt nur den Text der Transkriptionen für das Training. In diesem Fall ist das Training identisch mit dem Training mit zugehörigem Text.
+Nicht alle Basismodelle unterstützen das Training mit Audiodaten. Wenn das Basismodell das Training mit Audiodaten nicht unterstützt, ignoriert der Dienst die Audiodaten und nutzt nur den Text der Transkriptionen für das Training. In diesem Fall ist das Training identisch mit dem Training mit zugehörigem Text. Eine Liste mit Basismodellen, die das Training mit Audiodaten unterstützen, finden Sie unter [Sprachunterstützung](language-support.md#speech-to-text).
 
 ## <a name="related-text-data-for-training"></a>Zugehörige Textdaten für das Training
 
@@ -154,7 +162,7 @@ Produktnamen oder Features, die eindeutig sind, sollten verwandte Textdaten für
 | Sätze (Äußerungen) | Diese können die Genauigkeit beim Erkennen von Produktnamen oder branchenspezifischem Vokabular innerhalb des Kontexts eines Satzes verbessern. |
 | Aussprache | Diese können die Aussprache von selten vorkommenden Begriffen, Abkürzungen oder anderen Wörtern mit nicht definierter Aussprache verbessern. |
 
-Sätze können als eine einzelne oder mehrere Textdateien bereitgestellt werden. Um die Genauigkeit zu erhöhen, verwenden Sie Textdaten, die näher an den erwarteten gesprochenen Äußerungen liegen. Aussprache sollte als eine einzige Textdatei bereitgestellt werden. Alles kann als eine einzige ZIP-Datei gepackt und im <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> hochgeladen werden.
+Sätze können als eine einzelne oder mehrere Textdateien bereitgestellt werden. Um die Genauigkeit zu erhöhen, verwenden Sie Textdaten, die näher an den erwarteten gesprochenen Äußerungen liegen. Aussprache sollte als eine einzige Textdatei bereitgestellt werden. Alles kann in eine gemeinsame ZIP-Datei gepackt und in <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a> hochgeladen werden.
 
 Das Training mit zugehörigem Text kann in der Regel innerhalb weniger Minuten abgeschlossen werden.
 

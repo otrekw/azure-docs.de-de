@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 0f3dce3ca79b12b05325a1d8284dd3304653d5fa
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 61033e3eb8264c1e462faac3e4553a855a1d06c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488866"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592086"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights mit KI für die Überwachung und Problembehandlung der Datenbankleistung (Vorschau)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -107,7 +107,7 @@ Im folgenden Beispiel wird ein Intelligent Insights-Bericht in der Azure SQL-Ana
 
 ### <a name="set-up-with-event-hubs"></a>Einrichten mit Event Hubs
 
-Um Intelligent Insights mit Event Hubs zu verwenden, konfigurieren Sie Intelligent Insights-Protokolldaten für das Streaming an Event Hubs. Informationen dazu finden Sie unter [Protokollierung von Metriken und Diagnosen](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) und [Streamen von Azure-Diagnoseprotokollen an Event Hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
+Um Intelligent Insights mit Event Hubs zu verwenden, konfigurieren Sie Intelligent Insights-Protokolldaten für das Streaming an Event Hubs. Informationen dazu finden Sie unter [Protokollierung von Metriken und Diagnosen](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) und [Streamen von Azure-Diagnoseprotokollen an Event Hubs](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs).
 
 Wenn Sie Event Hubs zum Einrichten von benutzerdefinierten Überwachungen und Warnungen verwenden möchten, lesen Sie [Welche Vorgänge können mit Metrik- und Diagnoseprotokollen in Event Hubs ausgeführt werden?](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs)
 

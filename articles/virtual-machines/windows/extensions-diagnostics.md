@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c981214c69653b3a4a687a861cb348f3587def7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06c614d57002c7944d88df123d06ac63d04b288f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078757"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591148"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Azure-Diagnoseerweiterung für virtuelle Windows-Computer
 
@@ -34,7 +34,7 @@ Um die Azure-Diagnoseerweiterung verwenden zu können, muss der virtuelle Zielco
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
-[Die Schema- und Eigenschaftswerte der Azure-Diagnoseerweiterung werden in diesem Dokument beschrieben.](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
+[Die Schema- und Eigenschaftswerte der Azure-Diagnoseerweiterung werden in diesem Dokument beschrieben.](../../azure-monitor/agents/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 
@@ -81,12 +81,12 @@ Daten zum Status von Erweiterungsbereitstellungen können über das Azure-Portal
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-In [diesem Artikel](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md) finden Sie einen umfassenderen Leitfaden zur Problembehandlung für die Azure-Diagnoseerweiterung.
+In [diesem Artikel](../../azure-monitor/agents/diagnostics-extension-troubleshooting.md) finden Sie einen umfassenderen Leitfaden zur Problembehandlung für die Azure-Diagnoseerweiterung.
 
 ### <a name="support"></a>Support
 
 Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie sich über das [MSDN Azure-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) mit Azure-Experten in Verbindung setzen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie „Support erhalten“ aus. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Weitere Informationen zur Azure-Diagnoseerweiterung](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [Informationen zum Schema und zu den Versionen der Erweiterung](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
+* [Weitere Informationen zur Azure-Diagnoseerweiterung](../../azure-monitor/agents/diagnostics-extension-overview.md)
+* [Informationen zum Schema und zu den Versionen der Erweiterung](../../azure-monitor/agents/diagnostics-extension-schema-windows.md)

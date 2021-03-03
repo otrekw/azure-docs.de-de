@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/11/2020
+ms.date: 02/05/2021
 ms.author: juliako
-ms.openlocfilehash: 06f5e19718445f44dd2302faf280f083cce0774f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 12d23ec471329bd4e0ecb502750198e946e58872
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98783800"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530228"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Was ist Azure Media Services Video Indexer?
 
@@ -84,7 +84,7 @@ In der folgenden Liste sind die Erkenntnisse aufgeführt, die Sie aus Ihren Vide
 * **Sprecheraufzählung:** kann erkennen und zuordnen, welcher Sprecher wann was gesagt hat. In einer einzelnen Audiodatei können sechzehn Sprecher erkannt werden.
 * **Sprecherstatistiken:** bietet Statistiken zum Verhältnis zwischen Sprechern und ihrem Anteil an der Konversation.
 * **Moderation von Textinhalten:** erkennt im Transkript des Audios anstößigen Text.
-* **Audioeffekte:** erkennt Audioeffekte wie Händeklatschen, Sprache und Stille.
+* **Audioeffekte** (öffentliche Vorschau): Die folgenden Audioeffekte werden in den Inhaltsabschnitten ohne Sprache erkannt: Schüsse, Glasbruch, Alarme, Sirenen, Explosionen, Hundegebell, Schreie, Gelächter, Reaktionen einer Menschenmenge (Begeisterung, Applaudieren und Buhrufe) sowie Stille. Hinweis: Die gesamten Ereignisse sind nur verfügbar, wenn in den Uploadvoreinstellungen die erweiterte Audioanalyse ausgewählt wird. Andernfalls sind nur Stille und Reaktionen einer Menschenmenge verfügbar.
 * **Emotionserkennung:** erkennt Emotionen basierend auf Sprache (was gesagt wird) und Tonalität der Stimme (wie etwas gesagt wird). Bei den Emotionen kann es sich um Freude, Trauer, Wut oder Angst handeln.
 * **Übersetzung:** erstellt Übersetzungen des Audiotranskripts in 54 Sprachen.
 

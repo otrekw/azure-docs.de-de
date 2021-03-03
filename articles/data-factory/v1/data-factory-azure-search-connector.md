@@ -1,23 +1,18 @@
 ---
 title: Push-Übertragung von Daten in einen Search-Index mithilfe von Data Factory
 description: Erfahren Sie mehr über die Push-Übertragung von Daten in einen Azure Cognitive Search-Index mithilfe von Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: f8d46e1e-5c37-4408-80fb-c54be532a4ab
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f6521efe024ba0ea29ae427aeaf06ca0e5fa8dd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0226ab75d53733b94a9ae5734b42b7340998759c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84194919"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379266"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Push-Übertragung von Daten in einen Azure Cognitive Search-Index mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -154,7 +149,7 @@ Als Erstes richten Sie das Datenverwaltungsgateway auf Ihrem lokalen Computer ei
 
 **SQL Server-Eingabedataset**
 
-Im Beispiel wird vorausgesetzt, dass Sie die Tabelle "MyTable" in SQL Server erstellt haben, die für Zeitreihendaten eine Spalte namens "timestampcolumn" enthält. Sie können mehrere Tabellen in derselben Datenbank mithilfe eines einzigen Datasets abfragen, aber für die typeProperty-Eigenschaft tableName des Datasets muss eine einzelne Tabelle verwendet werden.
+Im Beispiel wird davon ausgegangen, dass Sie eine Tabelle namens „MyTable“ in SQL Server erstellt haben und dass sie eine Spalte namens „timestampcolumn“ für Zeitreihendaten enthält. Sie können mehrere Tabellen in derselben Datenbank mithilfe eines einzigen Datasets abfragen, aber für die typeProperty-Eigenschaft tableName des Datasets muss eine einzelne Tabelle verwendet werden.
 
 Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst mitgeteilt, dass das Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
 

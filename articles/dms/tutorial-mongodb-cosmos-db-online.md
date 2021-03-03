@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-nov-2020
 ms.topic: tutorial
 ms.date: 02/03/2021
-ms.openlocfilehash: 359f268f69918ccfd9fe34a28c3f8d1c79988393
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 84eed7d48dfe0230ea023d171e2b640bdf50dbe3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575613"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715665"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Tutorial: Onlinemigration von MongoDB zur Azure Cosmos DB-API für MongoDB mit DMS
 
@@ -36,7 +36,7 @@ Dieses Tutorial veranschaulicht die Schritte, die mit der Verwendung von Azure D
 > * Überprüfen der Daten in Azure Cosmos DB 
 > * Fertigstellen der Migration, wenn Sie dazu bereit sind 
 
-In diesem Tutorial migrieren Sie ein Dataset in MongoDB, das auf einem virtuellen Azure-Computer gehostet wird, mit Azure Database Migration Service zur Azure Cosmos DB-API für MongoDB. Hierbei kommt es nur zu minimaler Ausfallzeit. Wenn Sie noch keine MongoDB-Quelle eingerichtet haben, lesen Sie den Artikel [Installieren und Konfigurieren von MongoDB auf einem virtuellen Windows-Computer in Azure](../virtual-machines/windows/install-mongodb.md).
+In diesem Tutorial migrieren Sie ein Dataset in MongoDB, das auf einem virtuellen Azure-Computer gehostet wird, mit Azure Database Migration Service zur Azure Cosmos DB-API für MongoDB. Hierbei kommt es nur zu minimaler Ausfallzeit. Wenn Sie noch keine MongoDB-Quelle eingerichtet haben, lesen Sie den Artikel [Installieren und Konfigurieren von MongoDB auf einem virtuellen Windows-Computer in Azure](/previous-versions/azure/virtual-machines/windows/install-mongodb).
 
 > [!NOTE]
 > Die Verwendung von Azure Database Migration Service zum Ausführen einer Onlinemigration erfordert das Erstellen einer Instanz auf der Grundlage des Premium-Tarifs.

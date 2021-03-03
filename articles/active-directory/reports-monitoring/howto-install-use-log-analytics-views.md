@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fc1592681429998f5082fbadcd45fa068f130e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 86ad698793d562f93f9972903ca21e50c209c79c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180471"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579998"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Installieren und Verwenden der Log Analytics-Ansichten für Azure Active Directory
 
@@ -35,7 +35,7 @@ Mithilfe der Log Analytics-Ansichten für Azure Active Directory können Sie di
 
 Um die Log Analytics-Ansichten verwenden zu können, benötigen Sie Folgendes:
 
-* Einen Log Analytics-Arbeitsbereich in Ihrem Azure-Abonnement. Informationen zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie [hier](../../azure-monitor/learn/quick-create-workspace.md).
+* Einen Log Analytics-Arbeitsbereich in Ihrem Azure-Abonnement. Informationen zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie [hier](../../azure-monitor/logs/quick-create-workspace.md).
 * Führen Sie zuerst die Schritte aus, um [die Azure AD-Aktivitätsprotokolle in Ihren Log Analytics-Arbeitsbereich umzuleiten](howto-integrate-activity-logs-with-log-analytics.md).
 * Laden Sie die Ansichten aus dem [GitHub-Repository](https://aka.ms/AADLogAnalyticsviews) auf Ihren lokalen Computer herunter.
 
@@ -67,11 +67,11 @@ Um die Log Analytics-Ansichten verwenden zu können, benötigen Sie Folgendes:
 
     ![Erstellen einer Regel](./media/howto-install-use-log-analytics-views/create-rule.png)
 
-6. Wählen Sie die zu benachrichtigende Aktionsgruppe aus. Dies kann im Allgemeinen entweder ein Team sein, das Sie per E-Mail oder SMS benachrichtigen möchten, oder es kann eine automatisierte Aufgabe sein, die Webhooks, Runbooks, Funktionen, Logik-Apps oder externe ITSM-Lösungen verwendet. Erfahren Sie, wie Sie [Aktionsgruppen im Azure-Portal erstellen und verwalten](../../azure-monitor/platform/action-groups.md).
+6. Wählen Sie die zu benachrichtigende Aktionsgruppe aus. Dies kann im Allgemeinen entweder ein Team sein, das Sie per E-Mail oder SMS benachrichtigen möchten, oder es kann eine automatisierte Aufgabe sein, die Webhooks, Runbooks, Funktionen, Logik-Apps oder externe ITSM-Lösungen verwendet. Erfahren Sie, wie Sie [Aktionsgruppen im Azure-Portal erstellen und verwalten](../../azure-monitor/alerts/action-groups.md).
 
 7. Wählen Sie **Benachrichtigungsregel erstellen** aus, um die Benachrichtigung zu erstellen. Jetzt werden Sie jedes Mal benachrichtigt, wenn ein Anmeldefehler auftritt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Analysieren von Aktivitätsprotokollen mit Azure Monitor-Protokollen](howto-analyze-activity-logs-log-analytics.md)
-* [Erste Schritte mit Azure Monitor-Protokollen im Azure-Portal](../../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Erste Schritte mit Azure Monitor-Protokollen im Azure-Portal](../../azure-monitor/logs/log-analytics-tutorial.md)

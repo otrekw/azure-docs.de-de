@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6412036e3f16e2efb3bbf6669f6a31e9dc6e3584
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a18899ffc6b19be6226d9e0a3efd9a9519434601
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434638"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666223"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>Problembehandlung bei VM-Bereitstellung mit cloud-init
 
@@ -58,7 +58,7 @@ Während die VM ausgeführt wird, benötigen Sie die Protokolle der VM, um erken
 
 - [Serielle Konsole](../troubleshooting/serial-console-grub-single-user-mode.md)
 
-- [Aktivieren Sie die Startdiagnose](./tutorial-monitor.md#enable-boot-diagnostics), bevor Sie die VM erstellen, und [zeigen Sie die Startdiagnose an](./tutorial-monitor.md#view-boot-diagnostics), während die VM gestartet wird.
+- [Aktivieren Sie die Startdiagnose](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics), bevor Sie die VM erstellen, und [zeigen Sie die Startdiagnose an](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics), während die VM gestartet wird.
 
 - [Führen Sie AZ VM Repair aus](../troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands.md), um den Betriebssystemdatenträger anzufügen und einzubinden, wonach Sie diese Protokolle erfassen können:
 ```bash
@@ -133,4 +133,4 @@ Nicht jeder Fehler in cloud-init führt zu einem schwerwiegenden Bereitstellungs
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie immer noch nicht ermitteln können, warum cloud-init die Konfiguration nicht ausgeführt hat, müssen Sie sich genauer ansehen, was in den einzelnen cloud-init-Phasen geschieht und wann die Module ausgeführt werden. Weitere Informationen finden Sie unter [Tiefere Einblicke in cloud-init](./cloud-init-deep-dive.md). 
+Wenn Sie immer noch nicht ermitteln können, warum cloud-init die Konfiguration nicht ausgeführt hat, müssen Sie sich genauer ansehen, was in den einzelnen cloud-init-Phasen geschieht und wann die Module ausgeführt werden. Weitere Informationen finden Sie unter [Tiefere Einblicke in cloud-init](./cloud-init-deep-dive.md).

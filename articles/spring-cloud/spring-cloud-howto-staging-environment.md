@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 82a8da9d2663b03d89ad0819ec6d918bebaf5f5e
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: d610e79773dabb9942352747f1f032b17730ffca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574728"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738751"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Einrichten einer Stagingumgebung in Azure Spring Cloud
 
@@ -23,7 +23,7 @@ In diesem Artikel wird erläutert, wie Sie unter Verwendung des Blau-Grün-Berei
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure Spring Cloud-Instanz im *Standard*-**Tarif**
-* Azure-Befehlszeilenschnittstelle mit [Azure Spring Cloud-Erweiterung](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview)
+* Azure-Befehlszeilenschnittstelle mit [Azure Spring Cloud-Erweiterung](/cli/azure/azure-cli-extensions-overview)
 
 In diesem Artikel wird eine Anwendung verwendet, die mit dem Spring Initializr erstellt wurde. Wenn Sie für dieses Beispiel eine andere Anwendung verwenden möchten, müssen Sie am öffentlichen Teil der Anwendung eine kleine Änderung vornehmen, um die Stagingbereitstellung von der Produktion zu unterscheiden.
 

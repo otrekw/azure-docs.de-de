@@ -3,12 +3,12 @@ title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: dbe19dae4509e1dd6aa95763e4d034c339bb0531
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 40e17e518baec40d31918d24ab5b61da741f540a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220852"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700472"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
@@ -397,6 +397,9 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | --- | --- | --- | --- |
 > | actionGroups | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`/&%\?` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
 > | components | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`%&\?/` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
+> | scheduledQueryRules | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`*<>%{}&:\\?/#` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
+> | metricAlerts | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`*#&+:<>?@%{}\/` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
+> | activityLogAlerts | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`<>*%{}&:\\?+/#` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 

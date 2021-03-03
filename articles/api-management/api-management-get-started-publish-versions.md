@@ -5,14 +5,14 @@ author: vladvino
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 10/30/2020
+ms.date: 02/10/2021
 ms.author: apimpm
-ms.openlocfilehash: 4a107b4cc0dbf0b0845211ca64691fb0e792a47c
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: f6ea02c32ec7fcb694d63f29c63c3880a7cfff9e
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679095"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546651"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>Tutorial: Veröffentlichen mehrerer Versionen Ihrer API 
 
@@ -60,7 +60,7 @@ Geben Sie die Werte aus der folgenden Tabelle ein. Wählen Sie anschließend **E
 
 
 
-|Einstellung   |Wert  |BESCHREIBUNG  |
+|Einstellung   |Wert  |Beschreibung  |
 |---------|---------|---------|
 |**Name**     |  *demo-conference-api-v1*       |  Eindeutiger Name in Ihrer API Management-Instanz<br/><br/>Da eine Version eigentlich eine neue API ist, die auf der [Revision](api-management-get-started-revise-api.md) einer API basiert, wird mit dieser Einstellung der Name der neuen API angegeben.   |
 |**Versionsverwaltungsschema**     |  **Pfad**       |  Die Art und Weise, wie Aufrufer die API-Version angeben     |
@@ -87,6 +87,32 @@ So fügen Sie beispielsweise dem Produkt **Unlimited** die Version hinzu:
 1. Klicken Sie auf **Auswählen**.
 
 :::image type="content" source="media/api-management-getstarted-publish-versions/08-add-multiple-versions-03-add-version-product.png" alt-text="Hinzufügen einer Version zum Produkt":::
+
+## <a name="use-version-sets"></a>Verwenden von Versionsgruppen
+
+Beim Erstellen mehrerer Versionen wird vom Azure-Portal eine *Versionsgruppe* erstellt. Diese stellt eine Gruppe von Versionen für eine einzelne logische API dar. Wählen Sie den Namen einer API mit mehreren Versionen aus. Im Azure-Portal wird die zugehörige **Versionsgruppe** angezeigt. Sie können den **Namen** und die **Beschreibung** einer virtuellen Gruppe anpassen.
+
+Mithilfe der Azure CLI können Sie direkt mit Versionsgruppen interagieren:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Führen Sie zum Anzeigen aller Versionsgruppen den Befehl [az apim api versionset list](/cli/azure/apim/api/versionset#az_apim_api_versionset_list) aus:
+
+```azurecli
+az apim api versionset list --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --output table
+```
+
+Wird vom Azure-Portal eine Versionsgruppe für Sie erstellt, wird dabei ein alphanumerischer Name zugewiesen. Dieser wird in der Spalte **Name** der Liste angezeigt. Verwenden Sie diesen Namen in anderen Azure CLI-Befehlen.
+
+Führen Sie den Befehl [az apim api versionset show](/api/versionset#az_apim_api_versionset_show) aus, um Details zu einer Versionsgruppe anzuzeigen:
+
+```azurecli
+az apim api versionset show --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --version-set-id 00000000000000000000000
+```
+
+Weitere Informationen zu Versionsgruppen finden Sie unter [Versionen in Azure API Management](api-management-versions.md#how-versions-are-represented).
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Anzeigen der Version im Entwicklerportal
 

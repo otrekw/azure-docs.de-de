@@ -3,12 +3,12 @@ title: Erstellen einer Inhaltsbibliothek zum Bereitstellen von VMs in Azure VMwa
 description: Erstellen Sie eine Inhaltsbibliothek zum Bereitstellen einer VM in einer privaten Azure VMware Solution-Cloud.
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: 9e27529ee355ece62f12cc2e6de491dddb5d3f28
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: a50b12ef8e139bf7de171398fd28f74fc3f310c9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550537"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382003"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Erstellen einer Inhaltsbibliothek zum Bereitstellen von VMs in Azure VMware Solution
 
@@ -18,7 +18,7 @@ In diesem Artikel werden die Schritte zum Erstellen einer Inhaltsbibliothek erl�
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial sind ein logisches NSX-T-Switchsegment und ein verwalteter DHCP-Dienst erforderlich.  Weitere Informationen dazu finden Sie im Artikel [Verwalten von DHCP in Azure VMware Solution](manage-dhcp.md).
+Für dieses Tutorial sind ein logisches NSX-T-Segment (logischer Switch) und ein verwalteter DHCP-Dienst erforderlich.  Weitere Informationen dazu finden Sie im Artikel [Verwalten von DHCP in Azure VMware Solution](manage-dhcp.md).
 
 ## <a name="create-a-content-library"></a>Erstellen einer Inhaltsbibliothek
 

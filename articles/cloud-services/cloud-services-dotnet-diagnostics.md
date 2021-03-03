@@ -8,19 +8,19 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 89ba50b91e8ff2e2d7a05d59f2b738a1f87a5fd2
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 97e68d338580132b6927c4cc8b206db60fe93ba2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742147"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703506"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Aktivieren der Azure-Diagnose in Azure Cloud Services (klassisch)
 
 > [!IMPORTANT]
 > [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues Azure Resource Manager-basiertes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
 
-Hintergrundinformationen über Azure-Diagnose finden Sie unter [Übersicht über Azure-Diagnose](../azure-diagnostics.md) .
+Hintergrundinformationen über Azure-Diagnose finden Sie unter [Übersicht über Azure-Diagnose](../azure-monitor/agents/diagnostics-extension-overview.md) .
 
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Aktivieren der Diagnose in einer Workerrolle
 In dieser Anleitung wird beschrieben, wie Sie eine Azure-Workerrolle implementieren, die mithilfe der .NET-EventSource-Klasse Telemetriedaten ausgibt. Die Telemetriedaten werden mit der Azure-Diagnose erfasst und in einem Azure-Speicherkonto gespeichert. Wenn Sie eine Workerrolle erstellen, aktiviert Visual Studio automatisch Diagnose 1.0 als Teil der Projektmappe in Azure SDKs für .NET 2.4 und früher. In den folgenden Anweisungen wird beschrieben, wie Sie die Workerrolle erstellen, die Diagnose 1.0 in der Projektmappe deaktivieren und die Diagnose 1.2 oder 1.3 in Ihrer Workerrolle bereitstellen.
@@ -189,13 +189,13 @@ Navigieren Sie in Visual Studio im **Server-Explorer** zum Speicherkonto „wade
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>Konfigurationsdateischema
-Die Diagnosekonfigurationsdatei definiert Werte, die verwendet werden, um beim Start des Diagnoseagenten die Diagnosekonfigurationseinstellungen zu initialisieren. Gültige Werte und Beispiele finden Sie unter [Azure-Diagnose-Konfigurationsschemas](../azure-monitor/platform/diagnostics-extension-versions.md) .
+Die Diagnosekonfigurationsdatei definiert Werte, die verwendet werden, um beim Start des Diagnoseagenten die Diagnosekonfigurationseinstellungen zu initialisieren. Gültige Werte und Beispiele finden Sie unter [Azure-Diagnose-Konfigurationsschemas](../azure-monitor/agents/diagnostics-extension-versions.md) .
 
 ## <a name="troubleshooting"></a>Problembehandlung
-Unter [Problembehandlung bei Azure-Diagnose](../azure-monitor/platform/diagnostics-extension-troubleshooting.md) finden Sie Informationen zur Behebung von häufig auftretenden Problemen.
+Unter [Problembehandlung bei Azure-Diagnose](../azure-monitor/agents/diagnostics-extension-troubleshooting.md) finden Sie Informationen zur Behebung von häufig auftretenden Problemen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[In der Liste der Artikel zur Azure-Diagnose im Zusammenhang mit virtuellen Computern](../azure-monitor/platform/diagnostics-extension-overview.md) finden Sie eine Anleitung zum Ändern erfasster Daten und zur Fehlerbehebung und erfahren mehr über Diagnose im Allgemeinen.
+[In der Liste der Artikel zur Azure-Diagnose im Zusammenhang mit virtuellen Computern](../azure-monitor/agents/diagnostics-extension-overview.md) finden Sie eine Anleitung zum Ändern erfasster Daten und zur Fehlerbehebung und erfahren mehr über Diagnose im Allgemeinen.
 
 [EventSource Class]: /dotnet/api/system.diagnostics.tracing.eventsource
 

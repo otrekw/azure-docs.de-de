@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/28/2020
 ms.author: egeaney
-ms.openlocfilehash: fca3fc80411432f2e82a68faa3b6f297b8ca5f9c
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 88a723abc606a527232b7c1949f35c1fedfdba50
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522001"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706842"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault für Cognitive Services
 
@@ -21,8 +21,8 @@ Der Prozess zum Aktivieren von kundenseitig verwalteten Schlüsseln mit Azure Ke
 
 ## <a name="vision"></a>Bildanalyse
 
-* [Custom Vision-Verschlüsselung für ruhende Daten](../Custom-Vision-Service/encrypt-data-at-rest.md)
-* [Verschlüsselung für ruhende Daten der Gesichtserkennungsdienste](../Face/encrypt-data-at-rest.md)
+* [Custom Vision-Verschlüsselung für ruhende Daten](../custom-vision-service/encrypt-data-at-rest.md)
+* [Verschlüsselung für ruhende Daten der Gesichtserkennungsdienste](../face/encrypt-data-at-rest.md)
 * [Verschlüsselung für ruhende Daten der Formularerkennung](../form-recognizer/encrypt-data-at-rest.md)
 
 ## <a name="language"></a>Sprache

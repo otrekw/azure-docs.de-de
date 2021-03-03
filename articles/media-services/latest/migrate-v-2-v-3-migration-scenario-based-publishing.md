@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 90dfc2fd6f6258ec5bfdea38423489c72ee06e03
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f28a95ce6ef5e87eed6e5efcd013cc40b102fcba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928200"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721088"
 ---
 # <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>Szenariobasierter Migrationsleitfaden für Paketerstellung und Übertragung
 
@@ -55,7 +55,7 @@ Die zugehörigen Schritte finden Sie in den nachstehenden Konzepten, Tutorials u
 - [Erstellen eines Streaminglocators und von URLs](create-streaming-locator-build-url.md)
 - [Herunterladen der Ergebnisse eines Auftrags](download-results-howto.md)
 - [Signalisieren beschreibender Audiospuren](signal-descriptive-audio-howto.md)
-- [Vollständiges Setup von Azure Media Player](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup)
+- [Vollständiges Setup von Azure Media Player](../azure-media-player/azure-media-player-full-setup.md)
 - [Verwenden des Video.js-Players mit Azure Media Services](how-to-video-js-player.md)
 - [Verwenden von Shaka Player mit Azure Media Services](how-to-shaka-player.md)
 

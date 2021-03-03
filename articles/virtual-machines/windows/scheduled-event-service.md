@@ -3,16 +3,16 @@ title: Überwachen geplanter Ereignisse für Ihre virtuellen Computer in Azure
 description: Erfahren Sie, wie Sie Ihre virtuellen Azure-Computer für geplante Ereignisse überwachen.
 author: mysarn
 ms.service: virtual-machines
-ms.subservice: monitoring
+ms.subservice: scheduled-events
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: e3e44019d09927ff700e74b713a1b02136fedbc1
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 866522da162d22621bd37bf9d2f2fa6838206e17
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702269"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674689"
 ---
 # <a name="monitor-scheduled-events-for-your-azure-vms"></a>Überwachen geplanter Ereignisse für Ihre virtuellen Azure-Computer
 
@@ -25,7 +25,7 @@ In diesem Artikel erfahren Sie, wie Sie geplante Ereignisse verwenden können, u
 
 Scheduled Events ist als Teil des [Azure Instance Metadata Service](instance-metadata-service.md) verfügbar, der auf jedem virtuellen Azure-Computer verfügbar ist. Kunden können eine Automatisierung schreiben, um den Endpunkt ihrer virtuellen Computer abzufragen, nach Benachrichtigungen über geplante Wartung zu suchen sowie Risikominderungen durchzuführen, etwa Speichern des Zustands und Außerbetriebnahme des virtuellen Computers. Es empfiehlt sich, Automatisierung zu erstellen, um geplante Ereignisse aufzuzeichnen, damit Sie ein Überwachungsprotokoll zu Azure-Wartungsereignissen erhalten. 
 
-In diesem Artikel sind die Schritte erläutert, mit denen Sie das Erfassen von geplanten Wartungsereignissen in Log Analytics einrichten. Anschließend werden einige einfache Benachrichtigungsaktionen ausgelöst, z. B. Senden einer E-Mail an Ihr Team und Abrufen einer Verlaufsansicht aller Ereignisse, die sich auf Ihre virtuellen Computer ausgewirkt haben. Für die Ereignisaggregation und -automatisierung wird [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) verwendet, Sie können jedoch jede beliebige Überwachungslösung verwenden, um diese Protokolle zu erfassen und Automatisierung auszulösen.
+In diesem Artikel sind die Schritte erläutert, mit denen Sie das Erfassen von geplanten Wartungsereignissen in Log Analytics einrichten. Anschließend werden einige einfache Benachrichtigungsaktionen ausgelöst, z. B. Senden einer E-Mail an Ihr Team und Abrufen einer Verlaufsansicht aller Ereignisse, die sich auf Ihre virtuellen Computer ausgewirkt haben. Für die Ereignisaggregation und -automatisierung wird [Log Analytics](../../azure-monitor/logs/quick-create-workspace.md) verwendet, Sie können jedoch jede beliebige Überwachungslösung verwenden, um diese Protokolle zu erfassen und Automatisierung auszulösen.
 
 ![Diagramm, in dem der Ereignislebenszyklus dargestellt ist](./media/notifications/events.png)
 
@@ -35,7 +35,7 @@ Für dieses Beispiel müssen Sie einen [virtuellen Windows-Computer in einer Ver
 
 Löschen Sie die Ressourcengruppe nicht am Ende des Tutorials.
 
-Außerdem müssen Sie einen [Log Analytics-Arbeitsbereich](../../azure-monitor/learn/quick-create-workspace.md) erstellen, der dazu verwendet wird, die Informationen von den virtuellen Computern der Verfügbarkeitsgruppe zu aggregieren.
+Außerdem müssen Sie einen [Log Analytics-Arbeitsbereich](../../azure-monitor/logs/quick-create-workspace.md) erstellen, der dazu verwendet wird, die Informationen von den virtuellen Computern der Verfügbarkeitsgruppe zu aggregieren.
 
 ## <a name="set-up-the-environment"></a>Einrichten der Umgebung
 
@@ -132,7 +132,7 @@ Hiermit wird der [Microsoft Monitoring Agent](../extensions/oms-windows.md) auf 
 ## <a name="creating-an-alert-rule-with-azure-monitor"></a>Erstellen einer Warnungsregel mit Azure Monitor 
 
 
-Sobald die Ereignisse an Log Analytics übermittelt wurden, können Sie die folgende [Abfrage](../../azure-monitor/log-query/log-analytics-tutorial.md) ausführen, um nach den geplanten Ereignissen zu suchen.
+Sobald die Ereignisse an Log Analytics übermittelt wurden, können Sie die folgende [Abfrage](../../azure-monitor/logs/log-analytics-tutorial.md) ausführen, um nach den geplanten Ereignissen zu suchen.
 
 1. Wählen Sie oben auf der Seite die Option **Protokolle** aus, und fügen Sie Folgendes in das Textfeld ein:
 

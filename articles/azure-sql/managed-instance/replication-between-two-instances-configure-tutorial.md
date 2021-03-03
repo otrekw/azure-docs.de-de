@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 67902073b1484835d23566c91cbfae6f1d80d249
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 47ea5ea73c581313f90791ca6d7892ebad3f666b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900454"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690684"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Tutorial: Konfigurieren der Replikation zwischen zwei verwalteten Instanzen
 
@@ -51,7 +51,7 @@ Zum Konfigurieren einer SQL Managed Instance, die als Verleger und/oder Verteile
 - Die verwaltete Verlegerinstanz befindet sich im selben virtuellen Netzwerk wie der Verteiler und der Abonnent, oder [VPN-Gateways](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) wurden zwischen den virtuellen Netzwerken aller drei Entitäten konfiguriert. 
 - Für die Verbindung zwischen den Teilnehmern der Replikation wird SQL-Authentifizierung verwendet.
 - Ein Azure-Speicherkonto für das Arbeitsverzeichnis für die Replikation.
-- Port 445 (TCP ausgehend) ist in den Sicherheitsregeln von NSG (Netzwerksicherheitsgruppe) für die verwalteten Instanzen geöffnet, um auf die Azure-Dateifreigabe zugreifen zu können.  Wenn Sie den Fehler `failed to connect to azure storage \<storage account name> with os error 53` erhalten, müssen Sie der NSG des Subnetzes der entsprechenden SQL Managed Instance eine Ausgangsregel hinzufügen.
+- Port 445 (TCP ausgehend) ist in den Sicherheitsregeln von NSG (Netzwerksicherheitsgruppe) für die verwalteten Instanzen geöffnet, um auf die Azure-Dateifreigabe zugreifen zu können.  Wenn Sie den Fehler `failed to connect to azure storage <storage account name> with os error 53` erhalten, müssen Sie der NSG des Subnetzes der entsprechenden SQL Managed Instance eine Ausgangsregel hinzufügen.
 
 ## <a name="1---create-a-resource-group"></a>1 – Erstellen einer Ressourcengruppe
 

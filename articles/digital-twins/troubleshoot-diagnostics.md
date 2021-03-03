@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/9/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d988617fcaf7479c7bb3356e6ef6f87824ed23a7
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: c600ced8896a3847b80d854c9e230310cca4c98d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616653"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588593"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Problembehandlung von Azure Digital Twins: Diagnoseprotokollierung
 
@@ -57,7 +57,7 @@ Aktivieren Sie Diagnoseeinstellungen, um mit dem Erfassen von Protokollen in Ihr
 
 Neue Einstellungen werden in etwa zehn Minuten wirksam. Anschließend werden die Protokolle im konfigurierten Ziel auf der Seite **Diagnoseeinstellungen** für Ihre Instanz angezeigt. 
 
-Ausführlichere Informationen zu Diagnoseeinstellungen und deren Einrichtungsoptionen finden Sie unter [*Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele*](../azure-monitor/platform/diagnostic-settings.md).
+Ausführlichere Informationen zu Diagnoseeinstellungen und deren Einrichtungsoptionen finden Sie unter [*Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele*](../azure-monitor/essentials/diagnostic-settings.md).
 
 ## <a name="log-categories"></a>Protokollkategorien
 
@@ -255,10 +255,10 @@ Nachfolgend wird beschrieben, wie Sie die Protokolle für Ihre Instanz abfragen.
     - Die Registerkarte *Abfragen* enthält die Beispielabfragen, die Sie in den Editor laden können.
     - Mithilfe der Registerkarte *Filter* können Sie eine gefilterte Ansicht der Daten festlegen, die von der Abfrage zurückgegeben werden.
 
-Ausführlichere Informationen zu Protokollabfragen und deren Erstellung finden Sie in der [*Übersicht über Protokollabfragen in Azure Monitor*](../azure-monitor/log-query/log-query-overview.md).
+Ausführlichere Informationen zu Protokollabfragen und deren Erstellung finden Sie in der [*Übersicht über Protokollabfragen in Azure Monitor*](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Konfigurieren von Diagnosen finden Sie unter [*Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen*](../azure-monitor/platform/platform-logs-overview.md).
+* Weitere Informationen zum Konfigurieren von Diagnosen finden Sie unter [*Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen*](../azure-monitor/essentials/platform-logs-overview.md).
 * Informationen zu den Azure Digital Twins-Metriken finden Sie unter [*Problembehandlung: Anzeigen von Metriken mit Azure Monitor*](troubleshoot-metrics.md).
 * Informationen zur Aktivierung von Warnungen für Ihre Metriken finden Sie unter [*Problembehandlung: Einrichten von Warnungen*](troubleshoot-alerts.md).

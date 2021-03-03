@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 4e270185550fac5a06d800d74d5fcd751aceb25d
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 5b5c78ffec736f29a481aa95426ff663199613b3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342228"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595643"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Verwalten von Benutzerdaten in Azure Security Center
 Dieser Artikel enthält Informationen zur Verwaltung der Benutzerdaten in Azure Security Center. Bei der Verwaltung der Benutzerdaten haben Sie auch die Möglichkeit, auf Daten zuzugreifen, Daten zu löschen oder zu exportieren.
@@ -27,7 +27,7 @@ Dieser Artikel enthält Informationen zur Verwaltung der Benutzerdaten in Azure 
 
 Ein Security Center-Benutzer, dem die Rolle „Leser“, „Besitzer“, „Mitwirkender“ oder „Kontoadministrator“ zugewiesen wird, kann mit dem Tool auf die Kundendaten zugreifen. Weitere Informationen zu den Rollen „Kontoadministrator“, „Leser“, „Besitzer“ und „Mitwirkender“ finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md). Siehe [Azure-Abonnementadministratoren](../cost-management-billing/manage/add-change-subscription-administrator.md).
 
-## <a name="searching-for-and-identifying-personal-data"></a>Suchen nach und Identifizieren von personenbezogenen Daten
+## <a name="searching-for-and-identifying-personal-data"></a>Suchen und Ermitteln von personenbezogenen Daten
 Ein Security Center-Benutzer kann seine personenbezogenen Daten über das Azure-Portal anzeigen. In Security Center werden nur Details für einen Sicherheitskontakt gespeichert, wie z.B. E-Mail-Adressen und Telefonnummern. Weitere Informationen finden Sie unter [Bereitstellen von Details für einen Sicherheitskontakt in Azure Security Center](security-center-provide-security-contact-details.md).
 
 Im Azure-Portal kann ein Benutzer mithilfe des Features „Just-In-Time“ von Security Center für den Zugriff auf VMs zulässige IP-Konfigurationen anzeigen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features](security-center-just-in-time.md).
@@ -48,7 +48,7 @@ Ein Security Center-Benutzer, dem die Rolle „Leser“, „Besitzer“, „Mitw
 
 Ein Security Center-Benutzer, dem die Rolle „Leser“, „Besitzer“, „Mitwirkender“ oder „Kontoadministrator“ zugewiesen ist, kann auf seine [Warnungen](security-center-managing-and-responding-alerts.md) zugreifen.
 
-## <a name="updating-personal-data"></a>Aktualisieren personenbezogener Daten
+## <a name="updating-personal-data"></a>Aktualisieren von personenbezogenen Daten
 Ein Security Center-Benutzer, dem die Rolle „Besitzer“, „Mitwirkender“ oder „Kontoadministrator“ zugewiesen ist, kann [Sicherheitskontaktdaten](security-center-provide-security-contact-details.md) über das Azure-Portal aktualisieren.
 
 Ein Security Center-Benutzer, dem die Rolle „Besitzer“, „Mitwirkender“ oder „Kontoadministrator“ zugewiesen ist, kann auf die [Just-In-Time-Richtlinien](security-center-just-in-time.md) zugreifen.
@@ -97,4 +97,4 @@ Ein Security Center-Benutzer kann das Abonnement kündigen, indem er seine [Sich
 [Warnungsdaten](security-center-managing-and-responding-alerts.md) gelten als Sicherheitsdaten und werden für einen Zeitraum von zwei Jahren beibehalten.
 
 ## <a name="auditing-and-reporting"></a>Überwachung und Berichterstellung
-Überwachungsprotokolle von Sicherheitskontakt-, Just-In-Time- und Warnungsaktualisierungen werden in [Azure-Aktivitätsprotokollen](../azure-monitor/platform/platform-logs-overview.md) beibehalten.
+Überwachungsprotokolle von Sicherheitskontakt-, Just-In-Time- und Warnungsaktualisierungen werden in [Azure-Aktivitätsprotokollen](../azure-monitor/essentials/platform-logs-overview.md) beibehalten.

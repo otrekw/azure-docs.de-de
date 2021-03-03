@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 3bbfd167e89ae1b5f9b7de1df5fd1cb72c720cb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c420c62e6f8f09a2b29398590cdb4ad410e5d296
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254526"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574056"
 ---
 # <a name="configure-cloud-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Konfigurieren von Cloudmetriken und Protokollen für selbstgehostete Gateways für Azure API Management
 
@@ -32,10 +32,10 @@ Das Feature kann über den Schlüssel `telemetry.metrics.cloud` in der ConfigMap
 
 | Feld  | Standard | BESCHREIBUNG |
 | ------------- | ------------- | ------------- |
-| telemetry.metrics.cloud  | `true` | Aktivieren der Protokollierung über Azure Monitor. Mögliche Werte sind `true` und `false`. |
+| telemetry.metrics.cloud  | `true` | Aktivieren der Protokollierung über Azure Monitor. Mögliche Werte: `true` oder `false`. |
 
 
-Nachfolgend ist eine Beispielkonfiguration gezeigt:
+Es folgt eine Beispielkonfiguration:
 
 ```yaml
     apiVersion: v1
@@ -51,7 +51,7 @@ Das selbstgehostete Gateway gibt derzeit die folgenden Metriken über Azure Moni
 
 | Metrik  | BESCHREIBUNG |
 | ------------- | ------------- |
-| Requests  | Anzahl von API-Anforderungen innerhalb des Zeitraums |
+| Requests  | Anzahl der API-Anforderungen innerhalb des Zeitraums |
 | Dauer der Gatewayanforderungen | Anzahl von Millisekunden zwischen dem Zeitpunkt, zu dem das Gateway die Anforderung empfangen hat, und dem Zeitpunkt, zu dem die Antwort vollständig gesendet wurde |
 | Dauer der Back-End-Anforderungen | Anzahl von Millisekunden für alle Back-End-E/A-Vorgänge (Verbindungsherstellung, Senden und Empfangen von Bytes)  |
 
@@ -59,7 +59,7 @@ Das selbstgehostete Gateway gibt derzeit die folgenden Metriken über Azure Moni
 
 Das selbstgehostete Gateway sendet aktuell keine [Diagnoseprotokolle](./api-management-howto-use-azure-monitor.md#activity-logs) an die Cloud. Sie können jedoch [Protokolle auf dem lokalen Datenträger konfigurieren und persistent speichern](how-to-configure-local-metrics-logs.md), auf dem das selbstgehostete Gateway bereitgestellt wird. 
 
-Wenn ein Gateway in [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) bereitgestellt ist, können Sie [Azure Monitor für Container](../azure-monitor/insights/container-insights-overview.md) aktivieren, um Protokolle aus Ihren Containern zu sammeln und in Log Analytics anzuzeigen. 
+Wenn ein Gateway in [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) bereitgestellt ist, können Sie [Azure Monitor für Container](../azure-monitor/containers/container-insights-overview.md) aktivieren, um Protokolle aus Ihren Containern zu sammeln und in Log Analytics anzuzeigen. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

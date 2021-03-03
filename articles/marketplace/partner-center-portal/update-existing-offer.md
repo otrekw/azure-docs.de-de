@@ -8,12 +8,12 @@ author: trkeya
 ms.author: trkeya
 ms.date: 10/27/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 26ceee828bae7ea3fe2d78ec1393f308556b8401
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c28ab557f6aac94fa9acde78c7433b850ecba0be
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033356"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097251"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>Aktualisieren bestehender Angebote im kommerziellen Marketplace
 
@@ -31,6 +31,10 @@ Gehen Sie wie folgt vor, um ein Angebot zu aktualisieren, das erfolgreich im Zus
     - **Nicht veröffentlichte Änderungen**: Der Abschnitt wurde aktualisiert und ist fertig. Alle erforderlichen Daten wurden bereitgestellt, und es sind keine Fehler in den Aktualisierungen zu verzeichnen.
     - **Unvollständige Informationen**: Die im Abschnitt erfolgten Aktualisierungen haben zu Fehlern geführt, die behoben werden müssen, oder erfordern eine Ergänzung der Informationen.
 2. Wählen Sie **Veröffentlichen** aus, um das aktualisierte Angebot zur Veröffentlichung zu übermitteln. Das Angebot durchläuft dann die üblichen [Schritte für die Validierung und Veröffentlichung](../review-publish-offer.md#validation-and-publishing-steps).
+
+## <a name="changing-offer-type"></a>Ändern des Angebotstyps
+
+[!INCLUDE [change-offer-type](../includes/change-offer-type.md)]
 
 > [!IMPORTANT]
 > Sie müssen die Vorschau Ihres Angebots überprüfen, sobald diese verfügbar ist, und **Live schalten** auswählen, um Ihr aktualisiertes Angebot für Ihre Zielgruppe (öffentlich oder privat) zu veröffentlichen.

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: a3f6c14b7ed2686a262f28510efb37068cfb9cb3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0be184921ff0bd6b98dd2975acb4e0d5c8b26ba0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787297"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716192"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>Anzeigen und Konfigurieren der DDoS Protection-Telemetrie
 
@@ -34,12 +34,11 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!NOTE]
 > Im Azure-Portal werden mehrere Optionen für die **Aggregation** angezeigt, aber nur die in der folgenden Tabelle aufgeführten Aggregationstypen werden für jede Metrik unterstützt. Wir entschuldigen uns für diese Unübersichtlichkeit und arbeiten bereits an ihrer Behebung.
 
-Die folgenden [Metriken](../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses) sind für Azure DDoS Protection verfügbar. Diese Metriken können auch über Diagnoseeinstellungen exportiert werden. (Weitere Informationen finden Sie unter [Anzeigen und Konfigurieren der DDoS-Diagnoseprotokollierung](diagnostic-logging.md).)
+Die folgenden [Metriken](../azure-monitor/essentials/metrics-supported.md#microsoftnetworkpublicipaddresses) sind für Azure DDoS Protection verfügbar. Diese Metriken können auch über Diagnoseeinstellungen exportiert werden. (Weitere Informationen finden Sie unter [Anzeigen und Konfigurieren der DDoS-Diagnoseprotokollierung](diagnostic-logging.md).)
 
 
 | Metrik | Metrikanzeigename | Einheit | Aggregationstyp | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
-| ByteCount | Byteanzahl | Anzahl | Gesamt | Gesamtanzahl von Bytes, die im Zeitraum übertragen wurden |
 | BytesDroppedDDoS | Als DDoS eingehende gelöschte Bytes | Bytes pro Sekunde | Maximum | Als DDoS eingehende gelöschte Bytes| 
 | BytesForwardedDDoS | Weitergeleitete als DDoS eingehende Bytes | Bytes pro Sekunde | Maximum | Weitergeleitete als DDoS eingehende Bytes |
 | BytesInDDoS | Als DDoS eingehende Bytes | Bytes pro Sekunde | Maximum | Als DDoS eingehende Bytes |
@@ -47,11 +46,9 @@ Die folgenden [Metriken](../azure-monitor/platform/metrics-supported.md#microsof
 | DDoSTriggerTCPPackets | Eingehende TCP-Pakete, um die DDoS-Entschärfung auszulösen | Anzahl pro Sekunde | Maximum | Eingehende TCP-Pakete, um die DDoS-Entschärfung auszulösen |
 | DDoSTriggerUDPPackets | Eingehende UDP-Pakete, um die DDoS-Entschärfung auszulösen | Anzahl pro Sekunde | Maximum | Eingehende UDP-Pakete, um die DDoS-Entschärfung auszulösen |
 | IfUnderDDoSAttack | Unter DDoS-Angriff oder nicht | Anzahl | Maximum | Unter DDoS-Angriff oder nicht |
-| PacketCount | Paketzahl | Anzahl | Gesamt | Gesamtanzahl von Paketen, die im Zeitraum übertragen wurden |
 | PacketsDroppedDDoS | Als DDoS eingehende gelöschte Pakete | Anzahl pro Sekunde | Maximum | Als DDoS eingehende gelöschte Pakete |
 | PacketsForwardedDDoS | Weitergeleitete als DDoS eingehende Pakete | Anzahl pro Sekunde | Maximum | Weitergeleitete als DDoS eingehende Pakete |
 | PacketsInDDoS | Als DDoS eingehende Pakete | Anzahl pro Sekunde | Maximum | Als DDoS eingehende Pakete |
-| SynCount | SYN-Anzahl | Anzahl | Gesamt | Gesamtanzahl von SYN-Paketen, die im Zeitraum übertragen wurden |
 | TCPBytesDroppedDDoS | Als DDoS eingehende gelöschte TCP-Bytes | Bytes pro Sekunde | Maximum | Als DDoS eingehende gelöschte TCP-Bytes |
 | TCPBytesForwardedDDoS | Weitergeleitete als DDoS eingehende TCP-Bytes | Bytes pro Sekunde | Maximum | Weitergeleitete als DDoS eingehende TCP-Bytes |
 | TCPBytesInDDoS | Als DDoS eingehende TCP-Bytes | Bytes pro Sekunde | Maximum | Als DDoS eingehende TCP-Bytes |
@@ -64,7 +61,6 @@ Die folgenden [Metriken](../azure-monitor/platform/metrics-supported.md#microsof
 | UDPPacketsDroppedDDoS | Als DDoS eingehende gelöschte UDP-Pakete | Anzahl pro Sekunde | Maximum | Als DDoS eingehende gelöschte UDP-Pakete |
 | UDPPacketsForwardedDDoS | Weitergeleitete als DDoS eingehende UDP-Pakete | Anzahl pro Sekunde | Maximum | Weitergeleitete als DDoS eingehende UDP-Pakete |
 | UDPPacketsInDDoS | Als DDoS eingehende UDP-Pakete | Anzahl pro Sekunde | Maximum | Als DDoS eingehende UDP-Pakete |
-| VipAvailability | Datenpfadverfügbarkeit | Anzahl | Average | Durchschnittliche Verfügbarkeit der IP-Adresse pro Zeitdauer |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -74,9 +70,9 @@ Die folgenden [Metriken](../azure-monitor/platform/metrics-supported.md#microsof
 
 ## <a name="view-ddos-protection-telemetry"></a>Anzeigen von DDoS Protection-Telemetriedaten
 
-Die Telemetrie für einen Angriff wird in Echtzeit durch Azure Monitor bereitgestellt. Die Telemetrie ist nur so lange verfügbar, wie eine öffentliche IP-Adresse der Entschärfung unterliegt. Vor oder nach der Entschärfung eines Angriffs werden Ihnen keine Telemetriedaten angezeigt.
+Die Telemetrie für einen Angriff wird in Echtzeit durch Azure Monitor bereitgestellt. Telemetrie ist nur verfügbar, wenn eine öffentliche IP-Adresse gerade entschärft wird. 
 
-1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) an, und navigieren Sie zu Ihrem DDoS Protection-Plan.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und navigieren Sie zu Ihrem DDoS Protection-Plan.
 2. Wählen Sie unter **Überwachung** die Option **Metriken** aus.
 3. Wählen Sie **Bereich** aus. Wählen Sie das **Abonnement** aus, das die öffentliche IP-Adresse enthält, die Sie protokollieren möchten, und wählen Sie **Öffentliche IP-Adresse** als **Ressourcentyp** aus. Wählen Sie anschließend die öffentliche IP-Adresse aus, für die Sie Metriken protokollieren möchten, und wählen Sie dann **Anwenden** aus.
 4. Wählen Sie als Typ der **Aggregation** die Option **Max** aus.

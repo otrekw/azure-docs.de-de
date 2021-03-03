@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: c8d52609043f173e896668eadeb8c59493739859
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c58b267874f013a4660428e23abd41810a0fbf34
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95521137"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093164"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Unterstützungsrichtlinien in Azure Red Hat OpenShift
 
@@ -26,6 +26,7 @@ Bestimmte Konfigurationen Ihrer Cluster in Azure Red Hat OpenShift 4 können si
 * Der Cluster muss mindestens zwei Workerknoten enthalten. Skalieren Sie die Clusterworker nicht auf null (0), oder versuchen Sie, den Cluster ordnungsgemäß herunterzufahren.
 * Entfernen oder ändern Sie die Prometheus- und Alertmanager-Clusterdienste nicht.
 * Entfernen Sie die Alertmanager-Dienstregeln nicht.
+* Entfernen Sie keine Netzwerksicherheitsgruppen, und ändern Sie sie nicht.
 * Entfernen oder ändern Sie die Protokollierung im Azure Red Hat OpenShift-Dienst nicht (MDSD-Pods).
 * Entfernen oder ändern Sie das Clusterpullgeheimnis „arosvc.azurecr.io“ nicht.
 * Alle Cluster-VMs benötigen direkten ausgehenden Internetzugriff, und zwar mindestens auf die Endpunkte für Azure Resource Manager (ARM) und die Dienstprotokollierung (Geneva).  Es wird keine Form von HTTPS-Proxys unterstützt.

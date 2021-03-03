@@ -13,20 +13,30 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/18/2019
+ms.date: 02/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 870caffe2bd286c2eec3390915bc5e64e0103a07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac83e5a9366a12c5adce0e08f04f2bb28a7d788d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483464"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374880"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Beheben von Fehlern mit Azure NetApp Files-Ressourcenanbietern 
 
 In diesem Artikel werden häufige Fehler von Azure NetApp Files-Ressourcenanbietern sowie die zugehörigen Ursachen, Lösungen und Problemumgehungen beschrieben (sofern vorhanden).
 
 ## <a name="common-azure-netapp-files-resource-provider-errors"></a>Häufige Fehler mit Azure NetApp Files-Ressourcenanbietern
+
+***Die Erstellung von `netAppAccounts` wurde in dieser Region eingeschränkt.***
+
+Diese Situation tritt auf, wenn das Abonnement für Azure NetApp Files auf der Warteliste steht und der Benutzer versucht, ein NetApp-Konto zu erstellen.
+
+* Ursache:   
+Der Azure-Ressourcenanbieter für Azure NetApp Files wurde nicht erfolgreich registriert. 
+ 
+* Lösung:   
+Führen Sie alle Schritte aus, die unter [Registrierung des Azure NetApp-Ressourcenanbieters](azure-netapp-files-register.md#resource-provider) beschrieben sind, nachdem Ihr Abonnement auf die Warteliste gesetzt wurde.
 
 ***„BaremetalTenantId“ kann nicht geändert werden.***  
 

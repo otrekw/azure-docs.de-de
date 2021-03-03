@@ -3,20 +3,20 @@ title: Diagnoseprotokolle für Hybrid Connections
 description: Dieser Artikel enthält eine Übersicht über alle verfügbaren Aktivitäts- und Diagnoseprotokolle für Azure Relay.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 980f2f7a737d3f2460c17a84c472cbf56f5eb90f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b459750ad1445da89a8e89a10a35b878bfb64e1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533001"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590881"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Aktivieren von Diagnoseprotokollen für Azure Relay Hybrid Connections
 Wenn Sie Azure Relay Hybrid Connections verwenden, möchten Sie möglicherweise überwachen, wie und wann Ihre Listener und Absender geöffnet und geschlossen werden und wie Hybrid Connections erstellt und Nachrichten gesendet werden. Dieser Artikel enthält eine Übersicht über die verfügbaren Aktivitäts- und Diagnoseprotokolle, die vom Azure Relay-Dienst bereitgestellt werden. 
 
 Sie können zwei Typen von Protokollen für Azure Relay anzeigen:
 
-- [Aktivitätsprotokolle](../azure-monitor/platform/platform-logs-overview.md): Diese Protokolle enthalten Informationen zu Vorgängen, die für Ihren Namespace im Azure-Portal oder über die Azure Resource Manager-Vorlage ausgeführt werden. Diese Protokolle sind immer aktiviert. Beispiel: „Namespace erstellen oder aktualisieren“, „Hybridverbindung erstellen oder aktualisieren“. 
-- [Diagnoseprotokolle](../azure-monitor/platform/platform-logs-overview.md): Sie können Diagnoseprotokolle konfigurieren, um einen umfassenderen Überblick über alle Vorgänge zu erhalten, die bei Vorgängen und Aktionen auftreten, die für Ihren Namespace mithilfe der-API oder über das Sprach-SDK durchgeführt werden.
+- [Aktivitätsprotokolle](../azure-monitor/essentials/platform-logs-overview.md): Diese Protokolle enthalten Informationen zu Vorgängen, die für Ihren Namespace im Azure-Portal oder über die Azure Resource Manager-Vorlage ausgeführt werden. Diese Protokolle sind immer aktiviert. Beispiel: „Namespace erstellen oder aktualisieren“, „Hybridverbindung erstellen oder aktualisieren“. 
+- [Diagnoseprotokolle](../azure-monitor/essentials/platform-logs-overview.md): Sie können Diagnoseprotokolle konfigurieren, um einen umfassenderen Überblick über alle Vorgänge zu erhalten, die bei Vorgängen und Aktionen auftreten, die für Ihren Namespace mithilfe der-API oder über das Sprach-SDK durchgeführt werden.
 
 ## <a name="view-activity-logs"></a>Anzeigen von Aktivitätsprotokollen
 Navigieren Sie zum Anzeigen von Aktivitätsprotokollen für Ihren Azure Relay-Namespace zur Seite **Aktivitätsprotokoll** im Azure-Portal.
@@ -46,7 +46,7 @@ Führen Sie folgende Schritte aus, um Diagnoseprotokolle zu aktivieren:
         ![Beispiel für Diagnoseeinstellungen](./media/diagnostic-logs/sample-diagnostic-settings.png)
 1. Wählen Sie auf der Symbolleiste **Speichern** aus, um die Einstellungen zu speichern.
 
-Die neuen Einstellungen werden in etwa zehn Minuten wirksam. Danach werden die Protokolle im gewünschten Archivierungsziel im Bereich **Diagnoseprotokolle** angezeigt. Weitere Informationen zum Konfigurieren der Diagnoseeinstellungen finden Sie in der [Übersicht über Protokolle der Azure-Plattform](../azure-monitor/platform/platform-logs-overview.md).
+Die neuen Einstellungen werden in etwa zehn Minuten wirksam. Danach werden die Protokolle im gewünschten Archivierungsziel im Bereich **Diagnoseprotokolle** angezeigt. Weitere Informationen zum Konfigurieren der Diagnoseeinstellungen finden Sie in der [Übersicht über Protokolle der Azure-Plattform](../azure-monitor/essentials/platform-logs-overview.md).
 
 
 ## <a name="schema-for-hybrid-connections-events"></a>Schema für Hybridverbindungsereignisse
@@ -54,12 +54,12 @@ JSON-Zeichenfolgen im Hybridverbindungs-Ereignisprotokoll enthalten Elemente, di
 
 | Name | BESCHREIBUNG |
 | ------- | ------- |
-| resourceId | Azure Resource Manager-Ressourcen-ID |
-| ActivityId | Interne ID, die zum Identifizieren des angegebenen Vorgangs verwendet wird. Kann auch als „TrackingId“ bezeichnet werden. |
-| Endpunkt | Die Adresse der Relay-Ressource. |
-| Vorgangsname | Der Typ des Hybrid Connections-Vorgangs, der protokolliert wird. |
-| EventTimeString | Der UTC-Zeitstempel des Protokollsatzes. |
-| `Message` | Die ausführliche Meldung des Ereignisses. |
+| resourceId | Azure Resource Manager-Ressourcen-ID |
+| ActivityId | Interne ID, die zum Identifizieren des angegebenen Vorgangs verwendet wird. Kann auch als „TrackingId“ bezeichnet werden. |
+| Endpunkt | Die Adresse der Relay-Ressource. |
+| Vorgangsname | Der Typ des Hybrid Connections-Vorgangs, der protokolliert wird. |
+| EventTimeString | Der UTC-Zeitstempel des Protokollsatzes. |
+| `Message` | Die ausführliche Meldung des Ereignisses. |
 | Category | Kategorie des Ereignisses. Aktuell ist nur `HybridConnectionsEvents` verfügbar. 
 
 
@@ -86,13 +86,13 @@ Im Folgenden finden Sie ein Beispiel für ein Hybridverbindungsereignis im JSON-
 | InvalidSasToken | Ungültiges SAS-Token. | 
 | ListenerAcceptingConnection | Der Listener akzeptiert die Verbindung. |
 | ListenerAcceptingConnectionTimeout | Timeout des Listeners, der die Verbindung annimmt. |
-| ListenerAcceptingHttpRequestFailed | Fehler beim Listener, der die HTTP-Anforderung akzeptiert, aufgrund einer Ausnahme. |
-| ListenerAcceptingRequestTimeout | Timeout des Listeners, der die Anforderung annimmt. |  
-| ListenerClosingFromExpiredToken | Der Listener wird geschlossen, da das Sicherheitstoken abgelaufen ist. | 
+| ListenerAcceptingHttpRequestFailed | Fehler beim Listener, der die HTTP-Anforderung akzeptiert, aufgrund einer Ausnahme. |
+| ListenerAcceptingRequestTimeout | Timeout des Listeners, der die Anforderung annimmt. |  
+| ListenerClosingFromExpiredToken | Der Listener wird geschlossen, da das Sicherheitstoken abgelaufen ist. | 
 | ListenerRejectedConnection | Der Listener hat die Verbindung abgelehnt. |
-| ListenerReturningHttpResponse | Der Listener gibt eine HTTP-Antwort zurück. |  
+| ListenerReturningHttpResponse | Der Listener gibt eine HTTP-Antwort zurück. |  
 | ListenerReturningHttpResponseFailed | Der Listener gibt eine HTTP-Antwort mit einem Fehlercode zurück. | 
- ListenerSentHttpResponse | Der Relaydienst hat eine HTTP-Antwort vom Listener empfangen. | 
+ ListenerSentHttpResponse | Der Relaydienst hat eine HTTP-Antwort vom Listener empfangen. | 
 | ListenerUnregistered | Die Registrierung des Listeners wird aufgehoben. | 
 | ListenerUnresponsive | Der Listener reagiert beim Zurückgeben einer Antwort nicht. | 
 | MessageSendingToListener | Nachricht wird aktuell an den Listener gesendet. |

@@ -3,17 +3,17 @@ title: Verwenden von Azure Image Builder für Linux-VMs mit Zugriff auf ein vorh
 description: Erstellen Sie Linux-VM-Images mit Azure Image Builder, um den Zugriff auf ein vorhandenes Azure-VNET zu ermöglichen.
 author: danielsollondon
 ms.author: danis
-ms.date: 08/10/2020
+ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: cbff2358dcf8685298e31f18c430c35ec7de4948
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b523168429aa05a148a6e814881d1338a1bb39cf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437336"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695616"
 ---
 # <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>Verwenden von Azure Image Builder für Linux-VMs mit Zugriff auf ein vorhandenes Azure-VNET
 
@@ -139,9 +139,9 @@ Weitere Informationen zu Azure VM Image Builder-Netzwerken finden Sie unter den 
 ```bash
 # download the example and configure it with your vars
 
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1a_Creating_a_Custom_Linux_Image_on_Existing_VNET/existingVNETLinux.json -o existingVNETLinux.json
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleNetworking.json -o aibRoleNetworking.json
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/1a_Creating_a_Custom_Linux_Image_on_Existing_VNET/existingVNETLinux.json -o existingVNETLinux.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleNetworking.json -o aibRoleNetworking.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
 
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" existingVNETLinux.json
 sed -i -e "s/<rgName>/$imageResourceGroup/g" existingVNETLinux.json
@@ -316,4 +316,4 @@ Wenn Sie für diese Schnellstartanleitung ein VNET erstellt haben, können Sie e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über [Azure-Kataloge mit freigegebenen Images](shared-image-galleries.md).
+Erfahren Sie mehr über [Azure-Kataloge mit freigegebenen Images](../shared-image-galleries.md).

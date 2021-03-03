@@ -4,17 +4,20 @@ description: Informationen zum Konfigurieren von kundenseitig verwalteten Schlü
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/05/2020
+ms.date: 02/19/2021
 ms.author: thweiss
-ms.openlocfilehash: e87f6f158265fd8ac210a0a071e35b0bb77df4d9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3ee566a598ea7fdf060712c934305ef63467e548
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338269"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656515"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Cosmos-Konto mit Azure Key Vault
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
+
+> [!NOTE]
+> Die Verwendung von kundenseitig verwalteten Schlüsseln mit dem Azure Cosmos DB-[Analysespeicher](analytical-store-introduction.md) erfordert derzeit eine zusätzliche Konfiguration für Ihr Konto. Wenden Sie sich an [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com), um ausführliche Informationen zu erhalten.
 
 Die in Ihrem Azure Cosmos-Konto gespeicherten Daten werden automatisch und nahtlos mit von Microsoft verwalteten Schlüsseln (**vom Dienst verwaltete Schlüssel**) verschlüsselt. Sie können optional eine zweite Verschlüsselungsschicht mit von Ihnen verwalteten Schlüsseln (**vom Kunden verwaltete Schlüssel**) hinzufügen.
 
@@ -291,6 +294,10 @@ Mit Ausnahme der nachfolgend aufgeführten Metadaten werden alle in Ihrem Azure 
 ### <a name="are-customer-managed-keys-supported-for-existing-azure-cosmos-accounts"></a>Werden vom Kunden verwaltete Schlüssel für vorhandene Azure Cosmos-Konten unterstützt?
 
 Dieses Feature ist derzeit nur für neue Konten verfügbar.
+
+### <a name="is-it-possible-to-use-customer-managed-keys-in-conjunction-with-the-azure-cosmos-db-analytical-store"></a>Können kundenseitig verwaltete Schlüssel in Verbindung mit dem Azure Cosmos DB-[Analysespeicher](analytical-store-introduction.md) verwendet werden?
+
+Ja, aber dies erfordert derzeit eine zusätzliche Konfiguration für Ihr Konto. Wenden Sie sich an [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com), um ausführliche Informationen zu erhalten.
 
 ### <a name="is-there-a-plan-to-support-finer-granularity-than-account-level-keys"></a>Ist die Unterstützung einer feineren Granularität als bei Schlüsseln auf Kontoebene geplant?
 

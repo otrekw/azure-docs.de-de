@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: d0754ea2d7e8f8f59ec475be8e27fcffd058c11f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4d3781c7a3894429cb5daccb334655543e3eea01
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376543"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552142"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
@@ -23,7 +23,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 - Erstellen Sie ein Azure-Konto mit einem aktiven Abonnement. Details finden Sie auf der [Seite zum Erstellen eines kostenloses Azure-Kontos](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Installieren Sie die Versionen Active LTS und Maintenance LTS (8.11.1 und 10.14.1 empfohlen) von [Node.js](https://nodejs.org/en/download/).
 - Erstellen Sie eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure Communication Services-Ressource](../../create-communication-resource.md). Für diese Schnellstartanleitung müssen Sie den **Endpunkt** Ihrer Ressource aufzeichnen.
-- Ein [Benutzerzugriffstoken](../../access-tokens.md). Achten Sie darauf, dass Sie den Bereich auf „Chat“ festlegen, und notieren Sie sich die Tokenzeichenfolge und die userId-Zeichenfolge.
+- Erstellen Sie *drei* ACS-Benutzer, und stellen Sie ein [Benutzerzugriffstoken](../../access-tokens.md) für sie aus. Legen Sie den Bereich auf **Chat** fest, und **notieren Sie sich die Tokenzeichenfolge und die userId-Zeichenfolge**. In der vollständigen Demo wird ein Thread mit zwei Teilnehmern erstellt und dann ein dritter Teilnehmer hinzugefügt.
 
 ## <a name="setting-up"></a>Einrichten
 
@@ -40,8 +40,6 @@ Führen Sie `npm init -y` aus, um die Datei **package.json** mit den Standardein
 ```console
 npm init -y
 ```
-
-Verwenden Sie einen Text-Editor, um im Stammverzeichnis des Projekts die Datei **start-chat.js** zu erstellen. In den folgenden Abschnitten fügen Sie der Datei den gesamten Quellcode für diese Schnellstartanleitung hinzu.
 
 ### <a name="install-the-packages"></a>Installieren der Pakete
 
@@ -70,8 +68,6 @@ npm install webpack webpack-cli webpack-dev-server --save-dev
 
 Erstellen Sie im Stammverzeichnis Ihres Projekts die Datei **index.html**. Wir verwenden diese Datei als Vorlage zum Hinzufügen der Chatfunktion mit der JavaScript-Clientbibliothek für Chats von Azure Communication Services.
 
-Hier folgt der Code:
-
 ```html
 <!DOCTYPE html>
 <html>
@@ -85,32 +81,53 @@ Hier folgt der Code:
   </body>
 </html>
 ```
-Erstellen Sie im Stammverzeichnis Ihres Projekts eine Datei mit dem Namen **client.js**, die die Anwendungslogik für diese Schnellstartanleitung enthalten soll. 
+
+Erstellen Sie im Stammverzeichnis Ihres Projekts eine Datei mit dem Namen **client.js**, die die Anwendungslogik für diese Schnellstartanleitung enthalten soll.
 
 ### <a name="create-a-chat-client"></a>Erstellen eines Chatclients
 
-Zum Erstellen eines Chatclients in Ihrer Web-App verwenden Sie den Communication Services-Endpunkt und das Zugriffstoken, das im Rahmen der Schritte zur Erfüllung der Voraussetzungen generiert wurde. Mit Benutzerzugriffstoken können Sie Clientanwendungen erstellen, die gegenüber Azure Communication Services direkt authentifiziert werden. Nachdem Sie diese Token auf Ihrem Server generiert haben, übergeben Sie sie zurück an ein Clientgerät. Sie müssen die `AzureCommunicationUserCredential`-Klasse aus `Common client library` verwenden, um das Token an Ihren Chatclient zu übergeben.
+Zum Erstellen eines Chatclients in Ihrer Web-App benötigen Sie den Communication Services-**Endpunkt** und das **Zugriffstoken**, das im Rahmen der Vorbereitung generiert wurde. 
 
-Erstellen Sie eine **client.js**-Datei im Stammverzeichnis Ihres Projekts. Wir verwenden diese Datei zum Hinzufügen der Chatfunktion mithilfe der JavaScript-Clientbibliothek für Chats von Azure Communication Services.
+Mit Benutzerzugriffstoken können Sie Clientanwendungen erstellen, die gegenüber Azure Communication Services direkt authentifiziert werden.
+
+##### <a name="server-vs-client-side"></a>Gegenüberstellung von Server- und Clientseite
+
+Wir empfehlen, Zugriffstoken unter Verwendung einer serverseitigen Komponente zu erstellen, von der sie an die Clientanwendung übergeben werden. In diesem Szenario ist die Serverseite für die Erstellung und Verwaltung von Benutzern sowie für die Ausstellung ihrer Token zuständig. Auf der Clientseite können dann Zugriffstoken vom Dienst empfangen und zum Authentifizieren der Azure Communication Services-Clientbibliotheken verwendet werden.
+
+Mithilfe der Azure-Kommunikationsverwaltungsbibliothek für JavaScript können Token auch auf der Clientseite ausgestellt werden. In diesem Szenario muss die Clientseite über Benutzer informiert sein, um ihre Token ausstellen zu können.
+
+Ausführlichere Informationen finden Sie in der Dokumentation [Client- und Serverarchitektur](../../../concepts/client-and-server-architecture.md).
+
+Im folgenden Diagramm empfängt die clientseitige Anwendung ein Zugriffstoken von einer vertrauenswürdigen Dienstebene. Das Token wird dann von der Anwendung für die Authentifizierung von Communication Services-Bibliotheken verwendet. Nach der Authentifizierung kann die Anwendung die clientseitigen Communication Services-Bibliotheken verwenden, um beispielsweise Chats mit anderen Benutzern durchzuführen.
+
+:::image type="content" source="../../../media/scenarios/archdiagram-access.png" alt-text="Diagramm der Architektur von Benutzerzugriffstoken":::
+
+##### <a name="instructions"></a>Instructions
+Das Erstellen einer Dienstebene für Ihre Chatanwendung wird in dieser Demo nicht behandelt. 
+
+Falls Sie noch keine Benutzer und zugehörigen Token generiert haben, führen Sie die unter dem folgenden Link beschriebenen Schritte aus: [Schnellstart: Erstellen und Verwalten von Zugriffstoken](../../access-tokens.md). Denken Sie daran, den Bereich nicht auf „VoIP“, sondern auf „Chat“ festzulegen.
+
+Verwenden Sie in **client.js** den Endpunkt und das Zugriffstoken im folgenden Code, um Chatfunktionen über die JavaScript-Clientbibliothek für Chats von Azure Communication Services hinzuzufügen.
 
 ```JavaScript
 
 import { ChatClient } from '@azure/communication-chat';
-import { AzureCommunicationUserCredential } from '@azure/communication-common';
+import { AzureCommunicationTokenCredential } from '@azure/communication-common';
 
 // Your unique Azure Communication service endpoint
 let endpointUrl = 'https://<RESOURCE_NAME>.communication.azure.com';
+// The user access token generated as part of the pre-requisites
 let userAccessToken = '<USER_ACCESS_TOKEN>';
 
-let chatClient = new ChatClient(endpointUrl, new AzureCommunicationUserCredential(userAccessToken));
+let chatClient = new ChatClient(endpointUrl, new AzureCommunicationTokenCredential(userAccessToken));
 console.log('Azure Communication Chat client created!');
 ```
-Ersetzen Sie **ENDPOINT** durch den Endpunkt, den Sie weiter oben gemäß der Anleitung in [Erstellen einer Azure Communication Services-Ressource](../../create-communication-resource.md) erstellt haben.
-Ersetzen Sie **USER_ACCESS_TOKEN** durch ein Token, das basierend auf der Anleitung unter [Benutzerzugriffstoken](../../access-tokens.md) ausgestellt wurde.
-Fügen Sie diesen Code der Datei **client.js** hinzu.
+- Ersetzen Sie **endpointUrl** durch den Communication Services-Ressourcenendpunkt. Informationen zum Erstellen einer Azure Communication Services-Ressource finden Sie bei Bedarf [hier](../../create-communication-resource.md).
+- Ersetzen Sie **userAccessToken** durch das von Ihnen ausgestellte Token.
 
 
 ### <a name="run-the-code"></a>Ausführen des Codes
+
 Verwenden Sie `webpack-dev-server`, um Ihre App zu erstellen und auszuführen. Führen Sie den folgenden Befehl aus, um den Anwendungshost auf einem lokalen Webserver zu bündeln:
 ```console
 npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
@@ -138,55 +155,54 @@ Verwenden Sie die `createThread`-Methode, um einen Chatthread zu erstellen.
 `createThreadRequest` wird zum Beschreiben der Threadanforderung verwendet:
 
 - Verwenden Sie `topic`, um für diesen Chat ein Thema anzugeben. Nach der Erstellung des Chatthreads kann das Thema mit der Funktion `UpdateThread` aktualisiert werden. 
-- Verwenden Sie `members`, um die Mitglieder aufzulisten, die dem Chatthread hinzugefügt werden sollen.
+- Verwenden Sie `participants`, um die Teilnehmer aufzulisten, die dem Chatthread hinzugefügt werden sollen.
 
-Nach Abschluss des Vorgangs gibt die `createChatThread`-Methode `threadId` zurück. Diese ID wird zum Durchführen von Vorgängen im neu erstellten Chatthread verwendet, z. B. zum Hinzufügen von Mitgliedern zum Chatthread, Senden von Nachrichten, Löschen von Nachrichten usw.
+Nach der Auflösung wird von der Methode `createChatThread` eine Antwort vom Typ `CreateChatThreadResponse` zurückgegeben. Dieses Modell enthält eine Eigenschaft vom Typ `chatThread`. Dort können Sie auf die ID (`id`) des neu erstellten Threads zugreifen. Mithilfe der ID (`id`) können Sie anschließend eine Instanz eines Chatthreadclients (`ChatThreadClient`) abrufen. Mit dem Chatthreadclient (`ChatThreadClient`) können dann innerhalb des Threads Vorgänge wie das Senden von Nachrichten oder das Auflisten von Teilnehmer ausgeführt werden.
 
-```Javascript
+```JavaScript
 async function createChatThread() {
-   let createThreadRequest = {
-       topic: 'Preparation for London conference',
-       members: [{
-                   user: { communicationUserId: '<USER_ID_FOR_JACK>' },
-                   displayName: 'Jack'
-               }, {
-                   user: { communicationUserId: '<USER_ID_FOR_GEETA>' },
-                   displayName: 'Geeta'
-               }]
-   };
-   let chatThreadClient= await chatClient.createChatThread(createThreadRequest);
-   let threadId = chatThreadClient.threadId;
-   return threadId;
-}
+    let createThreadRequest = {
+        topic: 'Preparation for London conference',
+        participants: [{
+                    user: { communicationUserId: '<USER_ID_FOR_JACK>' },
+                    displayName: 'Jack'
+                }, {
+                    user: { communicationUserId: '<USER_ID_FOR_GEETA>' },
+                    displayName: 'Geeta'
+                }]
+    };
+    let createThreadResponse = await chatClient.createChatThread(createThreadRequest);
+    let threadId = createThreadResponse.chatThread.id;
+    return threadId;
+    }
 
 createChatThread().then(async threadId => {
-   console.log(`Thread created:${threadId}`);
-   // PLACEHOLDERS
-   // <CREATE CHAT THREAD CLIENT>
-   // <RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>
-   // <SEND MESSAGE TO A CHAT THREAD>
-   // <LIST MESSAGES IN A CHAT THREAD>
-   // <ADD NEW MEMBER TO THREAD>
-   // <LIST MEMBERS IN A THREAD>
-   // <REMOVE MEMBER FROM THREAD>
-});
+    console.log(`Thread created:${threadId}`);
+    // PLACEHOLDERS
+    // <CREATE CHAT THREAD CLIENT>
+    // <RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>
+    // <SEND MESSAGE TO A CHAT THREAD>
+    // <LIST MESSAGES IN A CHAT THREAD>
+    // <ADD NEW PARTICIPANT TO THREAD>
+    // <LIST PARTICIPANTS IN A THREAD>
+    // <REMOVE PARTICIPANT FROM THREAD>
+    });
 ```
 
-Ersetzen Sie **USER_ID_FOR_JACK** und **USER_ID_FOR_GEETA** durch die Benutzer-IDs aus dem vorherigen Schritt (Erstellen von Benutzern und Ausstellen von [Benutzerzugriffstoken](../../access-tokens.md)).
+Ersetzen Sie **USER_ID_FOR_JACK** und **USER_ID_FOR_GEETA** durch die Benutzer-IDs aus der Benutzer- und Tokenerstellung ([Schnellstart: Erstellen und Verwalten von Zugriffstoken](../../access-tokens.md)).
 
-Wenn Sie Ihre Registerkarte im Browser aktualisieren, sollte in der Konsole Folgendes angezeigt werden:
+Wenn Sie Ihren Browsertab aktualisieren, sollte in der Konsole Folgendes angezeigt werden:
 ```console
-Thread created: <threadId>
+Thread created: <thread_id>
 ```
 
 ## <a name="get-a-chat-thread-client"></a>Abrufen eines Clients für den Chatthread
 
-Die `getChatThreadClient`-Methode gibt einen `chatThreadClient` für einen bereits vorhandenen Thread zurück. Sie kann zum Durchführen von Vorgängen im erstellten Thread verwendet werden: Hinzufügen von Mitgliedern, Senden einer Nachricht usw. „threadId“ ist die eindeutige ID des vorhandenen Chatthreads.
+Die `getChatThreadClient`-Methode gibt einen `chatThreadClient` für einen bereits vorhandenen Thread zurück. Er kann verwendet werden, um Vorgänge wie das Hinzufügen von Teilnehmern oder das Senden einer Nachricht im erstellten Thread auszuführen. „threadId“ ist die eindeutige ID des vorhandenen Chatthreads.
 
 ```JavaScript
-
 let chatThreadClient = await chatClient.getChatThreadClient(threadId);
-console.log(`Chat Thread client for threadId:${chatThreadClient.threadId}`);
+console.log(`Chat Thread client for threadId:${threadId}`);
 
 ```
 Fügen Sie diesen Code anstelle des Kommentars `<CREATE CHAT THREAD CLIENT>` in **client.js** hinzu, aktualisieren Sie Ihre Browserregisterkarte, und sehen Sie in Ihrer Konsole nach. Folgendes sollte angezeigt werden:
@@ -207,7 +223,7 @@ Mit `sendMessageOptions` werden die optionalen Felder der Anforderung für die C
 - Verwenden Sie `priority`, um die Prioritätsstufe für die Chatnachricht anzugeben, z. B. „Normal“ oder „High“ (Hoch). Diese Eigenschaft kann verwendet werden, um für den empfangenden Benutzer in Ihrer App einen Hinweis in der Benutzeroberfläche anzuzeigen, auf die Nachricht aufmerksam zu machen oder benutzerdefinierte Geschäftslogik auszuführen.   
 - Verwenden Sie `senderDisplayName`, um den Anzeigenamen des Absenders anzugeben.
 
-Die Antwort `sendChatMessageResult` enthält eine „ID“, bei der es sich um die eindeutige ID der Nachricht handelt.
+Die Antwort `sendChatMessageResult` enthält eine ID, bei der es sich um die eindeutige ID der Nachricht handelt.
 
 ```JavaScript
 
@@ -253,16 +269,16 @@ Alternativ können Sie Chatnachrichten auch abrufen, indem Sie die `listMessages
 
 let pagedAsyncIterableIterator = await chatThreadClient.listMessages();
 let nextMessage = await pagedAsyncIterableIterator.next();
- while (!nextMessage.done) {
-     let chatMessage = nextMessage.value;
-     console.log(`Message :${chatMessage.content}`);
-     // your code here
-     nextMessage = await pagedAsyncIterableIterator.next();
- }
+    while (!nextMessage.done) {
+        let chatMessage = nextMessage.value;
+        console.log(`Message :${chatMessage.content}`);
+        // your code here
+        nextMessage = await pagedAsyncIterableIterator.next();
+    }
 
 ```
 Fügen Sie diesen Code anstelle des Kommentars `<LIST MESSAGES IN A CHAT THREAD>` in **client.js** hinzu.
-Aktualisieren Sie Ihre Registerkarte. In der Konsole sollte eine Liste mit den Nachrichten angezeigt werden, die in diesem Chatthread gesendet wurden.
+Aktualisieren Sie Ihren Tab. Daraufhin sollte in der Konsole die Liste mit den Nachrichten angezeigt werden, die in diesem Chatthread gesendet wurden.
 
 
 `listMessages` gibt die aktuelle Version der Nachricht zurück, einschließlich aller Bearbeitungen oder Löschungen, die für die Nachricht mit `updateMessage` und `deleteMessage` durchgeführt wurden.
@@ -270,46 +286,48 @@ Für gelöschte Nachrichten wird von `chatMessage.deletedOn` ein datetime-Wert z
 
 Mit `listMessages` werden unterschiedliche Nachrichtentypen zurückgegeben, die mit `chatMessage.type` identifiziert werden können. Diese Typen lauten:
 
-- `Text`: Reguläre Chatnachricht, die von einem Threadmitglied gesendet wurde.
+- `Text`: Reguläre Chatnachricht, die von einem Threadteilnehmer gesendet wurde
 
-- `ThreadActivity/TopicUpdate`: Systemnachricht mit dem Hinweis, dass das Thema aktualisiert wurde.
+- `ThreadActivity/TopicUpdate`: Systemnachricht, die angibt, dass das Thema aktualisiert wurde
 
-- `ThreadActivity/AddMember`: Systemnachricht mit dem Hinweis, dass dem Chatthread mindestens ein Mitglied hinzugefügt wurde.
+- `ThreadActivity/AddParticipant`: Systemnachricht mit dem Hinweis, dass dem Chatthread mindestens ein Teilnehmer hinzugefügt wurde
 
-- `ThreadActivity/RemoveMember`: Systemnachricht mit dem Hinweis, dass ein Mitglied aus dem Chatthread entfernt wurde.
+- `ThreadActivity/RemoveParticipant`: Systemnachricht mit dem Hinweis, dass ein Teilnehmer aus dem Chatthread entfernt wurde
 
 Weitere Details finden Sie unter [Nachrichtentypen](../../../concepts/chat/concepts.md#message-types).
 
-## <a name="add-a-user-as-member-to-the-chat-thread"></a>Hinzufügen eines Benutzers als Mitglied des Chatthreads
+## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Hinzufügen eines Benutzers als Teilnehmer des Chatthreads
 
-Nach der Erstellung eines Chatthreads können Sie dafür Benutzer hinzufügen und entfernen. Indem Sie Benutzer hinzufügen, gewähren Sie ihnen Zugriff zum Senden von Nachrichten an den Chatthread und zum Hinzufügen/Entfernen anderer Mitglieder. Stellen Sie vor dem Aufrufen der `addMembers`-Methode sicher, dass Sie ein neues Zugriffstoken und eine Identität für den Benutzer beschafft haben. Der Benutzer benötigt dieses Zugriffstoken, um den Chatclient initialisieren zu können.
+Nach der Erstellung eines Chatthreads können Sie dafür Benutzer hinzufügen und entfernen. Indem Sie Benutzer hinzufügen, gewähren Sie ihnen Zugriff zum Senden von Nachrichten an den Chatthread und zum Hinzufügen/Entfernen anderer Teilnehmer.
 
-Mit `addMembersRequest` wird das Anforderungsobjekt beschrieben, und darin wird `members` verwendet, um die hinzuzufügenden Mitglieder für den Chatthread aufzulisten.
+Vergewissern Sie sich vor dem Aufrufen der Methode `addParticipants`, dass Sie über ein neues Zugriffstoken und über eine Identität für den Benutzer verfügen. Der Benutzer benötigt dieses Zugriffstoken, um den Chatclient initialisieren zu können.
+
+`addParticipantsRequest` dient zum Beschreiben des Anforderungsobjekts, und darin wird `participants` verwendet, um die hinzuzufügenden Teilnehmer für den Chatthread aufzulisten.
 - `user` (erforderlich) ist der Kommunikationsbenutzer, der dem Chatthread hinzugefügt werden soll.
-- `displayName` (optional) ist der Anzeigename für das Threadmitglied.
-- `shareHistoryTime` (optional) ist der Zeitpunkt, ab dem der Chatverlauf für das Mitglied freigegeben wird. Sie können den Verlauf seit dem Beginn des Chatthreads freigeben, indem Sie diese Eigenschaft auf das Datum der Threaderstellung (oder früher) festlegen. Geben Sie das aktuelle Datum an, um den Verlauf vor dem Hinzufügezeitpunkt des Mitglieds nicht freizugeben. Geben Sie ein Datum Ihrer Wahl an, um einen Teil des Verlaufs freizugeben.
+- `displayName` (optional) ist der Anzeigename für den Threadteilnehmer.
+- `shareHistoryTime` (optional) ist der Zeitpunkt, ab dem der Chatverlauf für den Teilnehmer freigegeben wird. Sie können den Verlauf seit dem Beginn des Chatthreads freigeben, indem Sie diese Eigenschaft auf das Datum der Threaderstellung (oder früher) festlegen. Soll der Verlauf vor dem Hinzufügezeitpunkt des Teilnehmers nicht freigegeben werden, geben Sie das aktuelle Datum an. Geben Sie ein Datum Ihrer Wahl an, um einen Teil des Verlaufs freizugeben.
 
 ```JavaScript
 
-let addMembersRequest =
+let addParticipantsRequest =
 {
-    members: [
+    participants: [
         {
-            user: { communicationUserId: '<NEW_MEMBER_USER_ID>' },
+            user: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
             displayName: 'Jane'
         }
     ]
 };
 
-await chatThreadClient.addMembers(addMembersRequest);
+await chatThreadClient.addParticipants(addParticipantsRequest);
 
 ```
-Ersetzen Sie **NEW_MEMBER_USER_ID** durch eine [neue Benutzer-ID](../../access-tokens.md). Fügen Sie diesen Code anstelle des Kommentars `<ADD NEW MEMBER TO THREAD>` in der Datei **client.js** hinzu.
+Ersetzen Sie **NEW_PARTICIPANT_USER_ID** durch eine [neue Benutzer-ID](../../access-tokens.md). Fügen Sie diesen Code anstelle des Kommentars `<ADD NEW PARTICIPANT TO THREAD>` in der Datei **client.js** hinzu.
 
 ## <a name="list-users-in-a-chat-thread"></a>Auflisten von Benutzern in einem Chatthread
 ```JavaScript
-async function listThreadMembers() {
-   let pagedAsyncIterableIterator = await chatThreadClient.listMembers();
+async function listParticipants() {
+   let pagedAsyncIterableIterator = await chatThreadClient.listParticipants();
    let next = await pagedAsyncIterableIterator.next();
    while (!next.done) {
       let user = next.value;
@@ -317,20 +335,20 @@ async function listThreadMembers() {
       next = await pagedAsyncIterableIterator.next();
    }
 }
-await listThreadMembers();
+await listParticipants();
 ```
-Fügen Sie diesen Code anstelle des Kommentars `<LIST MEMBERS IN A THREAD>` in **client.js** hinzu, aktualisieren Sie Ihre Browserregisterkarte, und sehen Sie in Ihrer Konsole nach. Es sollten Informationen zu den Benutzern eines Threads angezeigt werden.
+Fügen Sie diesen Code anstelle des Kommentars `<LIST PARTICIPANTS IN A THREAD>` in **client.js** hinzu, aktualisieren Sie Ihre Browserregisterkarte, und sehen Sie in Ihrer Konsole nach. Es sollten Informationen zu den Benutzern eines Threads angezeigt werden.
 
 ## <a name="remove-user-from-a-chat-thread"></a>Entfernen eines Benutzers aus einem Chatthread
 
-Sie können Mitglieder einem Chatthread nicht nur hinzufügen, sondern diese auch daraus entfernen. Zum Entfernen müssen Sie die IDs der von Ihnen hinzugefügten Mitglieder nachverfolgen.
+Teilnehmer können auch aus einem Chatthread entfernt werden. Die Vorgehensweise ist dabei ähnlich wie beim Hinzufügen. Zum Entfernen benötigen Sie die IDs der von Ihnen hinzugefügten Teilnehmer.
 
-Verwenden Sie die `removeMember`-Methode. Hierbei ist `member` der Kommunikationsbenutzer, der aus dem Thread entfernt werden soll.
+Verwenden Sie die `removeParticipant`-Methode. Hierbei ist `participant` der Kommunikationsbenutzer, der aus dem Thread entfernt werden soll.
 
 ```JavaScript
 
-await chatThreadClient.removeMember({ communicationUserId: <MEMBER_ID> });
-await listThreadMembers();
+await chatThreadClient.removeParticipant({ communicationUserId: <PARTICIPANT_ID> });
+await listParticipants();
 ```
-Ersetzen Sie **MEMBER_ID** durch eine Benutzer-ID aus dem vorherigen Schritt (<NEW_MEMBER_USER_ID>).
-Fügen Sie diesen Code anstelle des Kommentars `<REMOVE MEMBER FROM THREAD>` in **client.js** hinzu.
+Ersetzen Sie **PARTICIPANT_ID** durch eine Benutzer-ID aus dem vorherigen Schritt (<NEW_PARTICIPANT_USER_ID>).
+Fügen Sie diesen Code anstelle des Kommentars `<REMOVE PARTICIPANT FROM THREAD>` in **client.js** hinzu.

@@ -1,21 +1,17 @@
 ---
 title: 'Transformieren von Daten mit Spark in Azure Data Factory '
 description: Dieses Tutorial bietet Schrittanleitungen zum Transformieren von Daten mithilfe einer Spark-Aktivität in Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.openlocfilehash: bef80cdeab32d14aeaae350adda869a8ea7b05c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf425ecb1a8aebf594828bfba50e9aba8ca9dd7e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81409085"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377617"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Transformieren von Daten in der Cloud mithilfe einer Spark-Aktivität in Azure Data Factory
 

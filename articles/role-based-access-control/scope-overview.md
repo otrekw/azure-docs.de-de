@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/08/2020
 ms.author: rolyon
-ms.openlocfilehash: ad906e3665c6ffc354cf6292c2559d1184037594
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: deee42c46c9b08bb265c972695b9319413d4fcb1
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856148"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555918"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>Grundlegendes zum Bereich von Azure RBAC
 
@@ -32,7 +32,7 @@ Verwaltungsgruppen sind eine Ebene des Bereichs oberhalb von Abonnements, aber V
 
 ## <a name="scope-format"></a>Bereichsformat
 
-Wenn Sie Rollenzuweisungen mithilfe der Befehlszeile hinzufügen, müssen Sie den Bereich angeben. Für Befehlszeilentools ist der Bereich eine potenziell lange Zeichenfolge, die den genauen Bereich der Zuweisung identifiziert. Im Azure-Portal wird dieser Bereich in der Regel als *Ressourcen-ID* aufgeführt.
+Wenn Sie Rollen mithilfe der Befehlszeile zuweisen, müssen Sie den Bereich angeben. Für Befehlszeilentools ist der Bereich eine potenziell lange Zeichenfolge, die den genauen Bereich der Zuweisung identifiziert. Im Azure-Portal wird dieser Bereich in der Regel als *Ressourcen-ID* aufgeführt.
 
 Der Bereich besteht aus einer Reihe von Bezeichnern, die durch den Schrägstrich (/) getrennt werden. Sie können sich diese Zeichenfolge als Ausdruck für die folgende Hierarchie vorstellen, wobei Text ohne Platzhalter (`{}`) feste Bezeichner sind:
 
@@ -122,6 +122,6 @@ Es ist recht einfach, den Bereich für eine Verwaltungsgruppe, ein Abonnement od
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Schritte zum Hinzufügen einer Rollenzuweisung](role-assignments-steps.md)
+- [Schritte zum Zuweisen einer Azure-Rolle](role-assignments-steps.md)
 - [Ressourcenanbieter für Azure-Dienste](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Was sind Azure-Verwaltungsgruppen?](../governance/management-groups/overview.md)

@@ -2,17 +2,19 @@
 title: Azure-Hybridvorteil für Windows Server
 description: Erfahren Sie, wie Sie die Vorteile von Windows Software Assurance optimal nutzen, um lokale Lizenzen in Azure zu verwenden.
 author: xujing-ms
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: azure-hybrid-benefit
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: c13203c076378e1ff8f213971466eb5f63dfc4f4
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: c5a9386540f418c8f490ca146e250e780737e478
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539164"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668061"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure-Hybridvorteil für Windows Server
 Für Kunden mit Software Assurance ermöglicht der Azure-Hybridvorteil für Windows Server die Verwendung der lokalen Windows Server-Lizenzen und die Ausführung von virtuellen Windows-Computern in Azure zu geringeren Kosten. Sie können den Azure-Hybridvorteil für Windows Server dazu nutzen, neue virtuelle Computer mit dem Windows-Betriebssystem bereitzustellen. In diesem Artikel werden die Schritte zum Bereitstellen der neuen VMs mit dem Azure-Hybridvorteil für Windows Server und das Aktualisieren von vorhandenen, ausgeführten VMs beschrieben. Weitere Informationen zum Azure-Hybridvorteil für die Windows Server-Lizenzierung und den Kosteneinsparungen finden Sie auf der Seite zum [Azure-Hybridvorteil für die Windows Server-Lizenzierung](https://azure.microsoft.com/pricing/hybrid-use-benefit/).

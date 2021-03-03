@@ -3,16 +3,16 @@ title: Abrufen von Erkenntnissen mithilfe von Backup Center
 description: Erfahren Sie, wie Sie mit Backup Center historische Trends analysieren und tiefere Erkenntnisse aus Ihren Sicherungen gewinnen.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: c5f707ce3bc8d1172805ac14958a50bf59d1412d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 3086224e4dbb1be2ccfadbfcfcb7441b68a5ff6b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893692"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592015"
 ---
 # <a name="obtain-insights-using-backup-center-preview"></a>Abrufen von Erkenntnissen mithilfe von Backup Center (Vorschau)
 
-Zum Analysieren von historischen Trends und Gewinnen von tieferen Erkenntnissen aus Ihren Sicherungen bietet Backup Center (Vorschau) eine Schnittstelle zu [Sicherungsberichten](configure-reports.md), die [Azure Monitor-Protokolle](../azure-monitor/platform/data-platform-logs.md) und [Azure-Arbeitsmappen](../azure-monitor/platform/workbooks-overview.md) verwendet. Sicherungsberichte bieten die folgenden Funktionen:
+Zum Analysieren von historischen Trends und Gewinnen von tieferen Erkenntnissen aus Ihren Sicherungen bietet Backup Center (Vorschau) eine Schnittstelle zu [Sicherungsberichten](configure-reports.md), die [Azure Monitor-Protokolle](../azure-monitor/logs/data-platform-logs.md) und [Azure-Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md) verwendet. Sicherungsberichte bieten die folgenden Funktionen:
 
 - Zuordnung und Vorhersagen des verbrauchten Cloudspeichers.
 

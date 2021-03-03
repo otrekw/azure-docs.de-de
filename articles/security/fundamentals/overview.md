@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 749c32091ed10d5bb39d7b67c8b737e002fc9909
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: f1e56c38353b43faf600fdd8e6405eced7f1b8a0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693731"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720561"
 ---
 # <a name="introduction-to-azure-security"></a>Einführung in die Azure-Sicherheit
 ## <a name="overview"></a>Übersicht
@@ -53,7 +53,7 @@ Die folgenden Features gewährleisten eine sichere Verwaltung der Azure-Plattfor
 | [Obligatorische Sicherheitsschulung, Hintergrundüberprüfungen](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Kontrolle des Datenspeicherorts](https://www.microsoft.com/trustcenter/Privacy/Where-your-data-is-located) |  [Hub für allgemeine Kontrollen](https://www.microsoft.com/trustcenter/Common-Controls-Hub) |[Wie Microsoft den Datenspeicherort in Azure-Diensten verwaltet](https://azuredatacentermap.azurewebsites.net/)|
 | [Penetrationstests](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx), [Angriffserkennung, DDoS](https://www.microsoft.com/trustcenter/Security/ThreatManagement), [Überwachungen und Protokollierung](https://www.microsoft.com/trustcenter/Security/AuditingAndLogging) | [Bereitstellen des Datenzugriff zu Ihren Bedingungen](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [Checkliste zur Kaufprüfung von Clouddiensten](https://www.microsoft.com/trustcenter/Compliance/Due-Diligence-Checklist) |[Wer kann bei Microsoft unter welchen Bedingungen auf Ihre Daten zugreifen?](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [Hochmodernes Rechenzentrum](https://www.microsoft.com/cloud-platform/global-datacenters), physische Sicherheit, [Sicheres Netzwerk](network-overview.md) | [Antworten für Justizbehörden](https://www.microsoft.com/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Compliance nach Dienst, Speicherort und Branche](https://www.microsoft.com/trustcenter/Compliance/default.aspx) |[Wie Microsoft Kundendaten in Azure-Diensten schützt](https://www.microsoft.com/trustcenter/Transparency/default.aspx)|
-|  [Reaktion auf Sicherheitsvorfälle](https://aka.ms/SecurityResponsepaper), [Geteilte Verantwortung](./shared-responsibility.md) |[Strenge Datenschutzstandards](https://www.microsoft.com/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Überprüfen der Zertifizierung für Azure-Dienste, Transparenzhub](https://www.microsoft.com/trustcenter/Compliance/default.aspx)|
+|  [Reaktion auf Sicherheitsvorfälle](/samples/browse/?redirectedfrom=TechNet-Gallery), [Geteilte Verantwortung](./shared-responsibility.md) |[Strenge Datenschutzstandards](https://www.microsoft.com/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Überprüfen der Zertifizierung für Azure-Dienste, Transparenzhub](https://www.microsoft.com/trustcenter/Compliance/default.aspx)|
 
 ### <a name="features-to-secure-data-and-application"></a>Features zum Schutz von Daten und Anwendungen
 In Abhängigkeit vom Clouddienstmodell besteht dahingehend eine variable Verantwortlichkeit, wer für die Verwaltung der Sicherheit der Anwendungen oder Dienste zuständig ist. Azure Platform verfügt über Funktionen, die Sie beim Erfüllen dieser Aufgaben durch integrierte Features sowie durch Partnerlösungen unterstützen, die in ein Azure-Abonnement implementiert werden können.
@@ -81,12 +81,12 @@ Application Insights erstellt Diagramme und Tabellen, die beispielsweise Aufschl
 Im Falle von Abstürzen, Fehlern oder Leistungsproblemen können Sie die Telemetriedaten im Detail durchsuchen, um die Fehlerursache zu ermitteln. Darüber hinaus informiert Sie der Dienst per E-Mail, falls sich die Verfügbarkeit oder Leistung Ihrer App ändert. Application Insights wird daher zu einem wertvollen Sicherheitstool, da es bei der Verfügbarkeit hilft, die zu den drei Sicherheitsbereichen zählt: Vertraulichkeit, Integrität und Verfügbarkeit.
 
 ### <a name="azure-monitor"></a>Azure Monitor
-[Azure Monitor](/azure/monitoring-and-diagnostics/) bietet Visualisierung, Abfrage, Weiterleitung, Warnung, automatische Skalierung und Automatisierung für Daten sowohl aus der Azure-Infrastruktur ([Aktivitätsprotokoll](../../azure-monitor/platform/platform-logs-overview.md)) als auch aus jeder einzelnen Azure-Ressource ([Diagnoseprotokolle](../../azure-monitor/platform/platform-logs-overview.md)). Mit Azure Monitor können Sie sich bei sicherheitsrelevanten Ereignissen warnen lassen, die in Azure-Protokollen generiert werden.
+[Azure Monitor](/azure/monitoring-and-diagnostics/) bietet Visualisierung, Abfrage, Weiterleitung, Warnung, automatische Skalierung und Automatisierung für Daten sowohl aus der Azure-Infrastruktur ([Aktivitätsprotokoll](../../azure-monitor/essentials/platform-logs-overview.md)) als auch aus jeder einzelnen Azure-Ressource ([Diagnoseprotokolle](../../azure-monitor/essentials/platform-logs-overview.md)). Mit Azure Monitor können Sie sich bei sicherheitsrelevanten Ereignissen warnen lassen, die in Azure-Protokollen generiert werden.
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor-Protokolle
 [Azure Monitor-Protokolle](https://azure.microsoft.com/documentation/services/log-analytics/) bietet eine IT-Verwaltungslösung für lokale Infrastrukturen und cloudbasierte Drittanbieterinfrastrukturen (z.B. AWS) zusätzlich zu Azure-Ressourcen. Daten von Azure Monitor können direkt an Azure Monitor-Protokolle weitergeleitet werden, sodass Sie die Metriken und Protokolle für Ihre gesamte Umgebung an einem Ort finden.
 
-Azure Monitor-Protokolle kann ein hilfreiches Tool bei forensischen und anderen Sicherheitsanalysen sein, da Sie mit dem Tool schnell große Mengen von sicherheitsbezogenen Einträgen mit einem flexiblen Abfrageansatz durchsuchen können. Darüber hinaus können lokale [Firewall- und Proxyprotokolle in Azure exportiert und für die Analyse mit Azure Monitor-Protokolle zur Verfügung gestellt werden.](../../azure-monitor/platform/agent-windows.md)
+Azure Monitor-Protokolle kann ein hilfreiches Tool bei forensischen und anderen Sicherheitsanalysen sein, da Sie mit dem Tool schnell große Mengen von sicherheitsbezogenen Einträgen mit einem flexiblen Abfrageansatz durchsuchen können. Darüber hinaus können lokale [Firewall- und Proxyprotokolle in Azure exportiert und für die Analyse mit Azure Monitor-Protokolle zur Verfügung gestellt werden.](../../azure-monitor/agents/agent-windows.md)
 
 ### <a name="azure-advisor"></a>Azure Advisor
 Beim [Azure Advisor](../../advisor/index.yml) handelt es sich um einen personalisierten Cloudberater, der Sie beim Optimieren von Azure-Bereitstellungen unterstützt. Er analysiert Ihre Ressourcenkonfiguration und Nutzungstelemetrie. Anschließend schlägt er Lösungen vor, um die [Leistung](../../advisor/advisor-performance-recommendations.md), [Sicherheit](../../advisor/advisor-security-recommendations.md) und [Hochverfügbarkeit](../../advisor/advisor-high-availability-recommendations.md) Ihrer Ressourcen zu verbessern, und sucht gleichzeitig nach Möglichkeiten, Ihre [Azure-Gesamtausgaben zu reduzieren](../../advisor/advisor-cost-recommendations.md). Der Azure Advisor bietet Sicherheitsempfehlungen, die den Gesamtsicherheitsstatus für Lösungen erheblich verbessern können, die Sie in Azure bereitstellen. Diese Empfehlungen stammen aus der Sicherheitsanalyse, die vom [Azure Security Center](../../security-center/security-center-introduction.md) durchgeführt wurde.

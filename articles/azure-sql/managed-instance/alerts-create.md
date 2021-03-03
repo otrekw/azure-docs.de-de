@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: a85bf6510163c47fa39bdb28debff806e1812f58
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d37465223000399aa42895626c48426ddadc0c72
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499270"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592711"
 ---
 # <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Erstellen von Warnungen für eine verwaltete Azure SQL-Datenbank-Instanz im Azure-Portal
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -41,7 +41,7 @@ Sie können konfigurieren, dass bei einer Warnung Folgendes erfolgt, wenn sie au
 * Aufrufen eines Azure-Runbooks
 * Aufrufen eines externem ITSM-kompatiblen Ticketsystems
 
-Sie können Informationen zu Warnungsregeln mithilfe des [Azure-Portals, PowerShell oder der Azure CLI](../../azure-monitor/platform/alerts-classic-portal.md) oder der [Azure Monitor REST-API](/rest/api/monitor/alertrules) konfigurieren und abrufen. 
+Sie können Informationen zu Warnungsregeln mithilfe des [Azure-Portals, PowerShell oder der Azure CLI](../../azure-monitor/alerts/alerts-classic-portal.md) oder der [Azure Monitor REST-API](/rest/api/monitor/alertrules) konfigurieren und abrufen. 
 
 ## <a name="alerting-metrics-available-for-managed-instance"></a>Für verwaltete Instanz verfügbare Warnungsmetriken
 
@@ -113,7 +113,7 @@ Die neue Warnungsregeln werden innerhalb weniger Minuten aktiv und basierend auf
 ## <a name="verifying-alerts"></a>Überprüfen von Warnungen
 
 > [!NOTE]
-> Informationen zum Unterdrücken von störenden Warnungen finden Sie unter [Unterdrücken von Warnungen mit Aktionsregeln](../../azure-monitor/platform/alerts-action-rules.md#suppression-of-alerts).
+> Informationen zum Unterdrücken von störenden Warnungen finden Sie unter [Unterdrücken von Warnungen mit Aktionsregeln](../../azure-monitor/alerts/alerts-action-rules.md#suppression-of-alerts).
 
 Vergewissern Sie sich beim Einrichten einer Warnungsregel, dass Sie mit dem Warnungsauslöser und der -häufigkeit zufrieden sind. Für das auf dieser Seite gezeigte Beispiel zum Einrichten einer Warnung zum verwendeten Speicherplatz können Sie eine E-Mail wie die unten gezeigte erhalten, wenn die Warnungsoption E-Mail lautet.
 
@@ -142,8 +142,8 @@ Anzeigen, Anhalten, Aktivieren, Ändern und Löschen vorhandener Warnungen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Azure Monitor-Warnungssystem finden Sie unter [Übersicht über Warnungen in Microsoft Azure](../../azure-monitor/platform/alerts-overview.md).
-* Weitere Informationen zu Metrikwarnungen finden Sie unter [Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor](../../azure-monitor/platform/alerts-metric-overview.md).
-* Weitere Informationen zum Konfigurieren eines Webhooks in Warnungen finden Sie unter [Aufrufen eines Webhooks mit einer klassischen Metrikwarnung](../../azure-monitor/platform/alerts-webhooks.md).
+* Weitere Informationen zum Azure Monitor-Warnungssystem finden Sie unter [Übersicht über Warnungen in Microsoft Azure](../../azure-monitor/alerts/alerts-overview.md).
+* Weitere Informationen zu Metrikwarnungen finden Sie unter [Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor](../../azure-monitor/alerts/alerts-metric-overview.md).
+* Weitere Informationen zum Konfigurieren eines Webhooks in Warnungen finden Sie unter [Aufrufen eines Webhooks mit einer klassischen Metrikwarnung](../../azure-monitor/alerts/alerts-webhooks.md).
 * Weitere Informationen zum Konfigurieren und Verwalten von Warnungen mithilfe von PowerShell finden Sie unter [Aktionsregeln](/powershell/module/az.monitor/add-azmetricalertrulev2).
 * Weitere Informationen zum Konfigurieren und Verwalten von Warnungen mithilfe der API finden Sie unter [Azure Monitor-REST-API-Referenz](/rest/api/monitor/).

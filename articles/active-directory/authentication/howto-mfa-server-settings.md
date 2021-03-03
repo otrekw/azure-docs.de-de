@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53763e62e8d7aa5b77ae451ef6427c1e09bff9f0
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bb28f415b7d08b4c4430ed90a7ccbfe3a333416d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742696"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689044"
 ---
 # <a name="configure-mfa-server-settings"></a>Konfigurieren der MFA-Server-Einstellungen
 
@@ -44,7 +44,7 @@ Gehen Sie wie folgt vor, um eine Einmalumgehung zu erstellen:
 1. Suchen Sie nach **Azure Active Directory**, und klicken Sie darauf. Navigieren Sie dann zu **Sicherheit** > **MFA** > **Einmalumgehung**.
 1. Wählen Sie **Hinzufügen**.
 1. Wählen Sie bei Bedarf die Replikationsgruppe für die Umgehung aus.
-1. Geben Sie den Benutzernamen im Format `username\@domain.com` ein. Geben Sie die gewünschte Dauer der Umgehung in Sekunden sowie den Grund für die Umgehung an.
+1. Geben Sie den Benutzernamen im Format `username@domain.com` ein. Geben Sie die gewünschte Dauer der Umgehung in Sekunden sowie den Grund für die Umgehung an.
 1. Wählen Sie **Hinzufügen**. Das Zeitlimit gilt sofort. Der Benutzer muss sich anmelden, bevor die Einmalumgehung abläuft.
 
 Sie können in diesem Fenster auch den Bericht für die Einmalumgehung anzeigen.

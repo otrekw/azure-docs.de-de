@@ -6,19 +6,18 @@ documentationcenter: ''
 author: rdeltcheva
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: b90d703a44cf89961eb0dca02abb1b8ea9cff166
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2939e00d704f5c2799a1f16822cccdcc963fb73e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259201"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671566"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Hochverfügbarkeit bei hochskalierten SAP HANA-Lösungen mit Azure NetApp Files unter Red Hat Enterprise Linux
 
@@ -91,7 +90,7 @@ Lesen Sie zuerst die folgenden SAP-Hinweise und -Dokumente:
     - [Installieren von SAP HANA unter Red Hat Enterprise Linux für die Verwendung in Microsoft Azure](https://access.redhat.com/solutions/3193782)
     - [Konfigurieren der SAP HANA-Systemreplikation in hochskalierten Umgebungen in einem Pacemaker-Cluster, wenn sich die HANA-Dateisysteme auf NFS-Freigaben befinden](https://access.redhat.com/solutions/5156571)
 - [NetApp-SAP-Anwendungen in Microsoft Azure mithilfe von Azure NetApp Files](https://www.netapp.com/us/media/tr-4746.pdf)
-- [NFS v4.1-Volumes unter Azure NetApp Files für SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
+- [NFS v4.1-Volumes unter Azure NetApp Files für SAP HANA](./hana-vm-operations-netapp.md)
 
 ## <a name="overview"></a>Übersicht
 
@@ -701,4 +700,4 @@ In diesem Abschnitt wird beschrieben, wie Sie Ihre Einrichtung testen können.
 * [Azure Virtual Machines – Planung und Implementierung für SAP][planning-guide]
 * [Azure Virtual Machines – Bereitstellung für SAP][deployment-guide]
 * [Azure Virtual Machines – DBMS-Bereitstellung für SAP][dbms-guide]
-* [NFS v4.1-Volumes unter Azure NetApp Files für SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
+* [NFS v4.1-Volumes unter Azure NetApp Files für SAP HANA](./hana-vm-operations-netapp.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 13282962886d8682b6056d10f8f0cc5a7f626d60
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 84124f33f6aa02f63c0c47a24bd7d2a71ced2d11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946026"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699299"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Häufig gestellte Fragen
 
@@ -61,7 +61,7 @@ Ja. Zum Installieren zusätzlicher Komponenten oder Anpassen der Clusterkonfigur
 
 - [HDInsight-Anwendungsplattform](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) zur Installation von Anwendungen.
 
-Eine Liste der unterstützten Komponenten finden Sie unter [Verfügbare Apache Hadoop-Komponenten in verschiedenen Versionen von HDInsight](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).
+Eine Liste der unterstützten Komponenten finden Sie unter [Verfügbare Apache Hadoop-Komponenten in verschiedenen Versionen von HDInsight](./hdinsight-component-versioning.md).
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>Kann ich die einzelnen Komponenten aktualisieren, die im Cluster vorinstalliert sind?
 
@@ -234,7 +234,7 @@ Führen Sie eine der folgenden Aktionen aus:
 
 ### <a name="how-can-i-set-up-auditing-for-my-blob-storage-account"></a>Wie richte ich die Überwachung für mein BLOB-Speicherkonto ein?
 
-Um Blobspeicherkonten zu überwachen, konfigurieren Sie die Überwachung entsprechend den unter [Überwachen eines Speicherkontos im Azure-Portal](../storage/common/storage-monitor-storage-account.md) beschriebenen Schritten. Ein HDFS-Überwachungsprotokoll enthält nur Überwachungsinformationen für das lokale HDFS-Dateisystem (hdfs://mycluster).  Im Remotespeicher ausgeführte Vorgänge werden nicht einbezogen.
+Um Blobspeicherkonten zu überwachen, konfigurieren Sie die Überwachung entsprechend den unter [Überwachen eines Speicherkontos im Azure-Portal](../storage/common/manage-storage-analytics-logs.md) beschriebenen Schritten. Ein HDFS-Überwachungsprotokoll enthält nur Überwachungsinformationen für das lokale HDFS-Dateisystem (hdfs://mycluster).  Im Remotespeicher ausgeführte Vorgänge werden nicht einbezogen.
 
 ### <a name="how-can-i-transfer-files-between-a-blob-container-and-an-hdinsight-head-node"></a>Wie übertrage ich Dateien zwischen einem BLOB-Container und einem HDInsight-Hauptknoten?
 

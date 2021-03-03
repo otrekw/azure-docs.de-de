@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 587ad53fa3a4875f7019a8c094db1b9a5f096519
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: bf230032afe80680dc392c2a74da2a5aef381983
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509552"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586091"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Überwachen von Apps in Azure App Service
 [Azure App Service](./overview.md) bietet integrierte Überwachungsfunktionen für Web-Apps, mobile und API-Apps im [Azure-Portal](https://portal.azure.com).
@@ -136,7 +136,7 @@ Es gibt zwei Metriken, die die CPU-Auslastung widerspiegeln:
 **CPU percentage** (CPU-Prozentsatz): Hilfreich für Apps, die in den Plänen „Basic“, „Standard“ und „Premium“ gehostet werden, da sie horizontal hochskaliert werden können. Der CPU-Prozentsatz ist ein guter Indikator für die allgemeine Nutzung über alle Instanzen hinweg.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Granularität und Aufbewahrungsrichtlinien für Metriken
-Metriken für eine App und einen App Service-Plan werden vom Dienst protokolliert und aggregiert sowie [gemäß diesen Regeln aufbewahrt](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics).
+Metriken für eine App und einen App Service-Plan werden vom Dienst protokolliert und aggregiert sowie [gemäß diesen Regeln aufbewahrt](../azure-monitor/essentials/data-platform-metrics.md#retention-of-metrics).
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Überwachen von Kontingenten und Metriken im Azure-Portal
 Im [Azure-Portal](https://portal.azure.com) können Sie den Status der verschiedenen Kontingente und Metriken einsehen, die für eine App gelten.
@@ -153,14 +153,14 @@ Wählen Sie **Einstellungen** > **Kontingente** aus, um nach Kontingenten zu suc
 
 Wenn Sie auf eins der Diagramme klicken, wechseln Sie zur Metrikansicht, in der Sie benutzerdefinierte Diagramme erstellen, verschiedene Metriken abfragen und vieles mehr können. 
 
-Weitere Informationen zu Metriken finden Sie unter [Von Azure Monitor gesammelte Überwachungsdaten](../azure-monitor/platform/data-platform.md).
+Weitere Informationen zu Metriken finden Sie unter [Von Azure Monitor gesammelte Überwachungsdaten](../azure-monitor/data-platform.md).
 
 ## <a name="alerts-and-autoscale"></a>Warnungen und automatische Skalierung
-Metriken für eine App oder einen App Service-Plan können mit Warnungen verknüpft werden. Weitere Informationen finden Sie unter [Verwenden des Azure-Portals zum Erstellen von Warnungen für Azure-Dienste](../azure-monitor/platform/alerts-classic-portal.md).
+Metriken für eine App oder einen App Service-Plan können mit Warnungen verknüpft werden. Weitere Informationen finden Sie unter [Verwenden des Azure-Portals zum Erstellen von Warnungen für Azure-Dienste](../azure-monitor/alerts/alerts-classic-portal.md).
 
 App Service-Apps, die unter App Service-Plänen vom Typ „Basic“ oder höher gehostet werden, unterstützen die automatische Skalierung. Mithilfe der automatischen Skalierung können Sie Regeln zur Überwachung der Metriken des App Service-Plans konfigurieren. Über Regeln kann die Anzahl der Instanzen erhöht oder verringert werden, wodurch bei Bedarf zusätzliche Ressourcen bereitgestellt werden können. Außerdem helfen Regeln auch dabei, Geld zu sparen, wenn die App zu oft bereitgestellt wird.
 
-Weitere Informationen zur automatischen Skalierung finden Sie unter [Erste Schritte mit der automatischen Skalierung in Azure](../azure-monitor/platform/autoscale-get-started.md) und [Bewährte Methoden für die automatische Skalierung](../azure-monitor/platform/autoscale-best-practices.md).
+Weitere Informationen zur automatischen Skalierung finden Sie unter [Erste Schritte mit der automatischen Skalierung in Azure](../azure-monitor/autoscale/autoscale-get-started.md) und [Bewährte Methoden für die automatische Skalierung](../azure-monitor/autoscale/autoscale-best-practices.md).
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169

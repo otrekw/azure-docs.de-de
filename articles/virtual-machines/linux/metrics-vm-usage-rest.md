@@ -8,12 +8,12 @@ ms.custom: REST
 ms.topic: how-to
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 9430eaeb3ba22bd0d9fc0675ab97c84944a0cf7c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a7237bfc82a932b774b4b6ef293c242a84fd75af
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737845"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591209"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Abrufen von VM-Nutzungsmetriken mithilfe der REST-API
 
@@ -23,7 +23,7 @@ Eine vollständige Dokumentation und weitere Beispiele für die REST-API sind in
 
 ## <a name="build-the-request"></a>Erstellen der Anforderung
 
-Verwenden Sie die folgende GET-Anforderung zum Sammeln der [prozentualen CPU-Metrik](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) von einem virtuellen Computer.
+Verwenden Sie die folgende GET-Anforderung zum Sammeln der [prozentualen CPU-Metrik](../../azure-monitor/essentials/metrics-supported.md#microsoftcomputevirtualmachines) von einem virtuellen Computer.
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmname}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=Percentage%20CPU&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z

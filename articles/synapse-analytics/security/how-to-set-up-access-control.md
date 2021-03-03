@@ -2,19 +2,19 @@
 title: Einrichten der Zugriffssteuerung für Ihren Synapse-Arbeitsbereich
 description: In diesem Artikel erfahren Sie, wie Sie den Zugriff auf einen Synapse-Arbeitsbereich mithilfe von Azure-Rollen, Synapse-Rollen, SQL-Berechtigungen und Git-Berechtigungen steuern.
 services: synapse-analytics
-author: billgib
+author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 12/03/2020
-ms.author: billgib
+ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7dbbe3afb2a5eb19b5c4893bd73eddbf11e788d4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 513d23de3d7f823ec934af32e5f3776e876f02d8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218075"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368998"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Einrichten der Zugriffssteuerung für Ihren Synapse-Arbeitsbereich 
 
@@ -132,7 +132,7 @@ Für das Erstellen von SQL-Pools, Apache Spark-Pools und Integration Runtimes be
 
 ## <a name="step-6-assign-sql-active-directory-admin-role"></a>SCHRITT 6: Zuweisen der Rolle „SQL-Active Directory-Administrator“
 
-Der Ersteller der Arbeitsstation wird automatisch als SQL Active Directory-Administrator für den Arbeitsbereich eingerichtet.  Diese Rolle kann nur einem einzigen Benutzer oder einer einzigen Gruppe gewährt werden. In diesem Schritt weisen Sie der Sicherheitsgruppe `workspace1_SQLAdmins` die Rolle „SQL Active Directory-Administrator“ für den Arbeitsbereich zu.  Durch das Zuweisen dieser Rolle erhält diese Gruppe Administratorzugriff auf alle SQL-Pools und -Datenbanken im Arbeitsbereich.   
+Der Ersteller der Arbeitsstation wird automatisch als SQL Active Directory-Administrator für den Arbeitsbereich eingerichtet.  Diese Rolle kann nur einem einzigen Benutzer oder einer einzigen Gruppe gewährt werden. In diesem Schritt weisen Sie der Sicherheitsgruppe `workspace1_SQLAdmins` die Rolle „SQL Active Directory-Administrator“ für den Arbeitsbereich zu.  Durch das Zuweisen dieser Rolle erhält diese Gruppe Administratorzugriff auf alle SQL-Pools und -Datenbanken im Arbeitsbereich.   
 
 - Öffnen Sie das Azure-Portal.
 - Navigieren Sie zu `workspace1`.

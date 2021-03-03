@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: bd8c079e91a6765dff8ad347085c44d0aa2f8d82
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 9c928040aa2ff5a6ebfb7102c03450d3d7297b59
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737302"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686477"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>Erstellen eines Azure Arc-Datencontrollers im Azure-Portal
 
@@ -48,6 +48,10 @@ Führen Sie die folgenden Schritte aus, um mithilfe des Azure-Portals und Azure 
 1. Wählen Sie ein Profil für die Bereitstellungskonfiguration aus.
 1. Klicken Sie auf die Schaltfläche **Open in Azure Studio** (In Azure Studio öffnen).
 1. Im nächsten Bildschirm werden eine Zusammenfassung Ihrer Auswahl und ein Notebook angezeigt, das generiert wird.  Sie können auf die Schaltfläche **Download provisioning notebook** (Bereitstellungsnotebook herunterladen) klicken, um das Notebook herunterzuladen.
+
+   > [!IMPORTANT]
+   > Auf der Azure Red Hat OpenShift- oder Red Hat OpenShift-Containerplattform müssen Sie die Einschränkung beim Sicherheitskontext anwenden, bevor Sie den Datencontroller erstellen. Befolgen Sie die Anweisungen unter [Anwenden einer Einschränkung beim Sicherheitskontext auf Azure Arc-fähige Datendienste in OpenShift](how-to-apply-security-context-constraint.md).
+
 1. Öffnen Sie das Notebook in Azure Data Studio, und klicken Sie oben auf die Schaltfläche **Alle ausführen**.
 1. Befolgen Sie die Aufforderungen und Anweisungen im Notebook, um die Erstellung des Datencontrollers abzuschließen.
 

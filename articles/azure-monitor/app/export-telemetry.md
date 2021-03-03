@@ -3,12 +3,12 @@ title: Fortlaufender Export von Telemetriedaten aus Application Insights | Micro
 description: Exportieren Sie Diagnose- und Nutzungsdaten in Microsoft Azure-Speicher, die Sie anschließendes daraus herunterladen.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: a6f636ce9fe30c666f08935d5830eb0c12e6cb5e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 23405faeb7d2151ce0f6492c0d522e0a7f9b84a8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674136"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584236"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Exportieren von Telemetriedaten aus Application Insights
 Möchten Sie Ihre Telemetriedaten länger aufbewahren als von der standardmäßigen Beibehaltungsdauer vorgesehen? Oder möchten Sie sie in einer speziellen Art und Weise verarbeiten? Der fortlaufende Export eignet sich hierfür ideal. Die Ereignisse, die Sie im Application Insights-Portal sehen, können im JSON-Format in Microsoft Azure-Speicher exportiert werden. Sie können Ihre Daten anschließend herunterladen und den Code schreiben, den Sie zu ihrer Verarbeitung benötigen.  
@@ -21,7 +21,7 @@ Bevor Sie den fortlaufenden Export einrichten, sollten Sie folgende Alternativen
 
 * Mithilfe der Schaltfläche „Exportieren“ oben auf den Registerkarten „Metriken“ oder „Suche“ können Sie Tabellen und Diagramme in ein Excel-Arbeitsblatt übertragen.
 
-* [Analytics](../log-query/log-query-overview.md) bietet eine leistungsstarke Abfragesprache für Telemetriedaten. Das Exportieren von Ergebnissen ist auch möglich.
+* [Analytics](../logs/log-query-overview.md) bietet eine leistungsstarke Abfragesprache für Telemetriedaten. Das Exportieren von Ergebnissen ist auch möglich.
 * Wenn Sie [Ihre Daten in Power BI untersuchen](./export-power-bi.md)möchten, benötigen Sie dazu keinen fortlaufenden Export.
 * Mit dem [REST-API für Datenzugriff](https://dev.applicationinsights.io/) können Sie programmgesteuert auf Ihre Telemetriedaten zugreifen.
 * Sie können auch auf das Setup für den [fortlaufenden Export über PowerShell](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport) zugreifen.

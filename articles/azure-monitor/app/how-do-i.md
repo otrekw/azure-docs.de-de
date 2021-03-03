@@ -3,12 +3,12 @@ title: Gewusst wie ... in Azure Application Insights | Microsoft-Dokumentation
 description: Häufig gestellte Fragen in Application Insights
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 134089f4df8f80147182835ca8746322c1de7e50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74a4d7ee65dccead132cfcebd9bf8c0de9b761a5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319251"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584153"
 ---
 # <a name="how-do-i--in-application-insights"></a>Gewusst wie – in Application Insights
 ## <a name="get-an-email-when-"></a>Wie erhalte ich eine E-Mail-Nachricht, wenn...
@@ -16,20 +16,20 @@ ms.locfileid: "87319251"
 Richten Sie einen [Webtest zur Verfügbarkeit](./monitor-web-app-availability.md)ein.
 
 ### <a name="email-if-my-site-is-overloaded"></a>E-Mail, wenn meine Website überlastet ist
-Richten Sie eine [Warnung](../platform/alerts-log.md) zur **Serverantwortzeit**ein. Geeignet ist in der Regel ein Schwellenwert zwischen 1 und 2 Sekunden.
+Richten Sie eine [Warnung](../alerts/alerts-log.md) zur **Serverantwortzeit** ein. Geeignet ist in der Regel ein Schwellenwert zwischen 1 und 2 Sekunden.
 
 ![Screenshot, der zeigt, wie eine Warnung für die Serverantwortzeit festgelegt wird](./media/how-do-i/030-server.png)
 
-Auch die Rückgabe von Fehlercodes kann ein Hinweis auf die Belastung Ihrer App sein. Richten Sie eine Warnung über **Anforderungsfehler**ein.
+Auch die Rückgabe von Fehlercodes kann ein Hinweis auf die Belastung Ihrer App sein. Richten Sie eine Warnung über **Anforderungsfehler** ein.
 
-Wenn Sie eine Warnung für **Serverausnahmen**einrichten möchten, müssen Sie möglicherweise [einige zusätzliche Konfigurationsschritte](./asp-net-exceptions.md) vornehmen, damit die Daten einsehbar sind.
+Wenn Sie eine Warnung für **Serverausnahmen** einrichten möchten, müssen Sie möglicherweise [einige zusätzliche Konfigurationsschritte](./asp-net-exceptions.md) vornehmen, damit die Daten einsehbar sind.
 
 ### <a name="email-on-exceptions"></a>E-Mail für Ausnahmen
 1. [Einrichten der Ausnahmeüberwachung](./asp-net-exceptions.md)
-2. [Einrichten einer Warnung](../platform/alerts-log.md) für die Metrik der Anzahl von Ausnahmen
+2. [Einrichten einer Warnung](../alerts/alerts-log.md) für die Metrik der Anzahl von Ausnahmen
 
 ### <a name="email-on-an-event-in-my-app"></a>E-Mail über ein Ereignis in meiner App
-Angenommen, Sie möchten eine E-Mail erhalten, wenn ein bestimmtes Ereignis eintritt. Diese Funktion ist in Application Insights nicht in dieser Form verfügbar, aber es kann [eine Warnung gesendet werden, wenn eine Metrik einen Schwellenwert überschreitet](../platform/alerts-log.md).
+Angenommen, Sie möchten eine E-Mail erhalten, wenn ein bestimmtes Ereignis eintritt. Diese Funktion ist in Application Insights nicht in dieser Form verfügbar, aber es kann [eine Warnung gesendet werden, wenn eine Metrik einen Schwellenwert überschreitet](../alerts/alerts-log.md).
 
 Warnungen können für [benutzerdefinierte Metriken](./api-custom-events-metrics.md#trackmetric), jedoch nicht für benutzerdefinierte Ereignisse eingerichtet werden. Mithilfe von Code können Sie eine Metrik erhöhen, wenn das Ereignis eintritt:
 
@@ -51,7 +51,7 @@ Da Warnungen zwei Zustände aufweisen, müssen Sie einen niedrigen Wert senden, 
 telemetry.TrackMetric("Alarm", 0.5);
 ```
 
-Erstellen Sie ein Diagramm im [Metrik-Explorer](../platform/metrics-charts.md) , um Ihre Warnung anzuzeigen:
+Erstellen Sie ein Diagramm im [Metrik-Explorer](../essentials/metrics-charts.md) , um Ihre Warnung anzuzeigen:
 
 ![Screenshot, der zeigt, wie Sie im Metrik-Explorer ein Diagramm zum Anzeigen Ihrer Warnung erstellen](./media/how-do-i/010-alarm.png)
 
@@ -71,11 +71,11 @@ Zu berücksichtigende Punkte:
 * Da sowohl für den Zustand "Warnung" als auch für den Zustand "Fehlerfrei" E-Mails gesendet werden, sollten Sie das einmalige Ereignis als Vorfall mit zwei Zuständen betrachten. Beispiel: Statt eines Ereignisses mit dem Status "Abgeschlossen" verwenden Sie den Zustand "In Bearbeitung" und erhalten E-Mails am Anfang und Ende des betreffenden Auftrags.
 
 ### <a name="set-up-alerts-automatically"></a>Automatisches Einrichten von Warnungen
-[Erstellen neuer Warnungen mithilfe von PowerShell](../platform/alerts-log.md)
+[Erstellen neuer Warnungen mithilfe von PowerShell](../alerts/alerts-log.md)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Verwalten von Application Insights mithilfe von PowerShell
 * [Erstellen neuer Ressourcen](./create-new-resource.md#creating-a-resource-automatically)
-* [Erstellen neuer Warnungen](../platform/alerts-log.md)
+* [Erstellen neuer Warnungen](../alerts/alerts-log.md)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Trennen der Telemetriedaten von verschiedenen Versionen
 
@@ -88,7 +88,7 @@ Zu berücksichtigende Punkte:
 
 ## <a name="visualize-data"></a>Visualisieren von Daten
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>Dashboard mit Metriken aus mehreren Apps
-* Passen Sie Ihr Diagramm im [Metrik-Explorer](../platform/metrics-charts.md) an, und speichern Sie es als Favorit. Heften Sie es an das Azure-Dashboard an.
+* Passen Sie Ihr Diagramm im [Metrik-Explorer](../essentials/metrics-charts.md) an, und speichern Sie es als Favorit. Heften Sie es an das Azure-Dashboard an.
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Dashboard mit Daten aus anderen Quellen und Application Insights
 * [Exportieren Sie die Telemetrie in Power BI](./export-power-bi.md).
@@ -165,6 +165,6 @@ Zu den Metriken, die Sie im Metrik-Explorer anzeigen können, zählt u. a. eine
 * **Unix-Server** - [Installieren Sie collectd](./java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>Anzeigen weiterer Leistungsindikatoren
-* Fügen Sie zunächst [ein neues Diagramm hinzu](../platform/metrics-charts.md) , und prüfen Sie dann, ob der gewünschte Leistungsindikator im angebotenen grundlegenden Satz enthalten ist.
+* Fügen Sie zunächst [ein neues Diagramm hinzu](../essentials/metrics-charts.md) , und prüfen Sie dann, ob der gewünschte Leistungsindikator im angebotenen grundlegenden Satz enthalten ist.
 * Wenn dies nicht der Fall ist, [fügen Sie den Leistungsindikator dem über das Leistungsindikatormodul erfassten Satz hinzu](./performance-counters.md).
 

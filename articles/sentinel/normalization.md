@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 66c315132ef0ef4d320e9edd8e9bcc28b2240924
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 5d847ac7ed805ad88bc24ed63896edc6f7596f9b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805089"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729775"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Normalisierung in Azure Sentinel
 
@@ -70,6 +70,9 @@ Die Schemareferenz enthält außerdem die Wert- und Formatstandardisierung. Die 
 
 ## <a name="parsers"></a>Parser
 
+- [Die Funktion von Analyse](#what-is-parsing)
+- [Verwenden von Abfragezeitparsern](#using-query-time-parsers)
+
 ### <a name="what-is-parsing"></a>Die Funktion von Analyse
 
 Bei einer verfügbaren Grundmenge von normalisierten Tabellen müssen Sie Ihre Daten in diese Tabellen transformieren (analysieren/zuordnen). Das heißt, sie extrahieren spezifische Daten aus ihrer Rohform in wohl definierte Spalten im normalisierten Schema. Die Analyse erfolgt in Azure Sentinel zur **Abfragezeit**: Parser werden als Log Analytics-Benutzerfunktionen erstellt (mithilfe der Kusto Query Language – KQL), die Daten in vorhandene Tabellen (wie etwa CommonSecurityLog, benutzerdefinierte Protokolltabellen, Syslog) im normalisierten Tabellenschema transformieren.
@@ -77,6 +80,10 @@ Bei einer verfügbaren Grundmenge von normalisierten Tabellen müssen Sie Ihre D
 Die andere Art der Analyse, die von Azure Sentinel noch nicht unterstützt wird, erfolgt zur **Erfassungszeit** und ermöglicht es, Daten bei der Erfassung aus den Datenquellen direkt in den normalisierten Tabellen zu sammeln. Die Analyse zur Erfassungszeit bietet verbesserte Leistung, da das Datenmodell direkt abgefragt wird, ohne die Notwendigkeit der Verwendung von Funktionen.
 
 ### <a name="using-query-time-parsers"></a>Verwenden von Abfragezeitparsern
+
+- [Installieren eines Parsers](#installing-a-parser)
+- [Verwenden der Parser](#using-the-parsers)
+- [Anpassen von Parsern](#customizing-parsers)
 
 #### <a name="installing-a-parser"></a>Installieren eines Parsers
 
@@ -119,6 +126,12 @@ Erweitern Sie in der rechten Seitenleiste den Bereich „Gespeicherte Abfragen�
 
 Sie können auf jeden einzelnen Parser klicken, die verwendete zugrundeliegende Funktion anzeigen und ihn ausführen (oder direkt über seinen Alias auf ihn zugreifen, wie oben beschrieben). Beachten Sie, dass einige Parser aus Komfortgründen die ursprünglichen Felder parallel zu den normalisierten Feldern beibehalten können. Dieses Verhalten kann leicht in der Abfrage des Parsers bearbeitet werden.
 
+> [!TIP]
+> Sie können Ihre gespeicherten Funktionen in allen Abfragen anstelle von Azure Sentinel-Tabellen verwenden, einschließlich Hunting- und Erkennungsabfragen. Weitere Informationen finden Sie unter
+>
+> - [Datennormalisierung in Azure Sentinel](normalization.md#parsers)
+> - [Analysieren von Text in Azure Monitor-Protokollen](../azure-monitor/logs/parse-text.md)
+>
 #### <a name="customizing-parsers"></a>Anpassen von Parsern
 
 Sie können die Schritte oben wiederholen (den Parser im Abfrage-Explorer suchen), auf den relevanten Parser klicken und seine Funktionsimplementierung anzeigen.
@@ -132,7 +145,9 @@ Sobald die Funktion geändert wurde, klicken Sie erneut auf „Speichern“, und
 
 #### <a name="additional-information"></a>Zusätzliche Informationen
 
-Erfahren Sie mehr über [gespeicherte Abfragen](../azure-monitor/log-query/example-queries.md) (die Implementierung der Abfragezeitparser) in Log Analytics.
+JSON-, XML- und CSV-Daten sind besonders gut für die Datenverarbeitung zur Abfragezeit geeignet. Azure Sentinel verfügt über integrierte Analysefunktionen für JSON-, XML- und CSV-Daten und über ein Tool für die JSON-Analyse.  Weitere Informationen finden Sie im Blogbeitrag zum [Verwenden von JSON-Feldern in Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/tip-easily-use-json-fields-in-sentinel/ba-p/768747). 
+
+Erfahren Sie mehr über [gespeicherte Abfragen](../azure-monitor/logs/example-queries.md) (die Implementierung der Abfragezeitparser) in Log Analytics.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

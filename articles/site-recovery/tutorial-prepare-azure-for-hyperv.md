@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f4f040288574a9ddfc5f7c56878c7f1e795b09a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ca03336fc60abbb458615e922a2556dd21a79a5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653850"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739677"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Vorbereiten von Azure-Ressourcen für die Hyper-V-Notfallwiederherstellung
 
@@ -56,7 +56,7 @@ Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs we
 2. Geben Sie unter **Speicherkonto erstellen** einen Namen für das Konto ein.  Der gewählte Name muss innerhalb von Azure eindeutig und 3 bis 24 Zeichen lang sein und darf nur aus Kleinbuchstaben und Zahlen bestehen. Verwenden Sie für dieses Tutorial **contosovmsacct1910171607**.
 3. Wählen Sie unter **Bereitstellungsmodell** die Option **Resource Manager**.
 4. Wählen Sie unter **Kontoart** die Option **Speicher (universell v1)** aus. Wählen Sie keinen Blobspeicher aus.
-5. Wählen Sie unter **Replikation** für die Speicherredundanz die Standardoption **Georedundanter Speicher mit Lesezugriff**. Übernehmen Sie für die Einstellung „Sichere Übertragung erforderlich“ die Einstellung „Deaktiviert“.
+5. Wählen Sie unter **Replikation** für die Speicherredundanz die Standardoption **Georedundanter Speicher mit Lesezugriff**.
 6. Wählen Sie unter **Leistung** die Option **Standard**. Wählen Sie als Nächstes unter **Zugriffsebene** die Standardoption **Heiße Ebene** aus.
 7. Wählen Sie unter **Abonnement** das Abonnement aus, in dem Sie das neue Speicherkonto erstellen möchten.
 8. Geben Sie unter **Ressourcengruppe** eine neue Ressourcengruppe ein. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Verwenden Sie für dieses Tutorial **ContosoRG**.

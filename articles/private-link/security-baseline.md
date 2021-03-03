@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b38d86402f418e5c2b484bb9101e2b4cc3575d6e
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 7dacec1521787e55ee4c7fd5f08b9e56d9dd4842
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196621"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735997"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Azure-Sicherheitsbaseline für Azure Private Link
 
@@ -28,9 +28,9 @@ Diese Sicherheitsbaseline wendet Empfehlungen des [Vergleichstests für die Azur
 
 Erstellen Sie in Azure Monitor Warnungen, die bei Änderungen an wichtigen Ressourcen ausgelöst werden.
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -50,7 +50,7 @@ Außerdem sollten Sie Daten für Azure Sentinel oder eine SIEM-Lösung eines Dri
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Protokollierung und Überwachung für Private Link](private-link-overview.md#logging-and-monitoring)
 
@@ -66,9 +66,9 @@ Außerdem sollten Sie Daten für Azure Sentinel oder eine SIEM-Lösung eines Dri
 
 **Leitfaden**: Aktivieren Sie Azure Monitor-Aktivitätsprotokolle, die die für Private Link-Ressourcen ausgeführten Vorgänge protokollieren, z. B. wer den Vorgang gestartet hat, wann der Vorgang durchgeführt wurde, wie der Status des Vorgangs lautet sowie andere nützliche Überwachungsinformationen. 
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 - [Protokollierung und Überwachung für Private Link](private-link-overview.md#logging-and-monitoring)
 
@@ -80,9 +80,9 @@ Außerdem sollten Sie Daten für Azure Sentinel oder eine SIEM-Lösung eines Dri
 
 **Leitfaden**: Legen Sie für Protokolle im Zusammenhang mit Private Link den Aufbewahrungszeitraum Ihres Log Analytics-Arbeitsbereichs entsprechend der Compliancevorschriften Ihrer Organisation in Azure Monitor fest. Verwenden Sie Azure Storage-Konten für die langfristige Speicherung oder Archivierung der Protokolle.
 
-- [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -96,9 +96,9 @@ Eine weitere Option besteht darin, die Daten für Azure Sentinel oder eine SIEM-
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -114,7 +114,7 @@ Sie sollten die Daten für Azure Sentinel oder eine SIEM-Lösung eines Drittanbi
 
 - [Verwalten von Warnungen in Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/learn/tutorial-response.md)
+- [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -156,7 +156,7 @@ Aktivieren Sie außerdem den Just-In-Time-/Just-Enough-Zugriff mithilfe von priv
 
 - [Überwachen von Identität und Zugriff in Azure Security Center](../security-center/security-center-identity-access.md)
 
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -192,7 +192,7 @@ Aktivieren Sie außerdem den Just-In-Time-/Just-Enough-Zugriff mithilfe von priv
 
 - [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Konfigurieren von Aktionsgruppen für benutzerdefinierte Warnungen und Benachrichtigungen](../azure-monitor/platform/action-groups.md)
+- [Konfigurieren von Aktionsgruppen für benutzerdefinierte Warnungen und Benachrichtigungen](../azure-monitor/alerts/action-groups.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -318,7 +318,7 @@ Konfigurieren Sie Ihren Dienst als privat, um die Nutzung nur über Ihre anderen
 
 - [Diagnoseprotokollierung für eine Netzwerksicherheitsgruppe](private-link-overview.md#logging-and-monitoring)
 
-- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 

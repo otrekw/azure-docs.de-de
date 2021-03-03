@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 2b8577af2c8a6296ae6f4f090e8ff233e51ee6fb
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 64107c3f667dd7e59fcf6d191e83457029b3a277
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583924"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546345"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrieren von Anwendungen zu MSAL.NET
 
@@ -170,7 +170,7 @@ Wenn Sie Token für eine Anwendung abrufen möchten, die v1.0-Token akzeptiert (
 Beispiel: Um im Namen des Benutzers auf eine v1.0-Web-API zuzugreifen, deren App-ID-URI `ResourceId` lautet, verwenden Sie folgenden Code:
 
 ```csharp
-var scopes = new [] {  ResourceId+"/user_impersonation"};
+var scopes = new [] { ResourceId+"/user_impersonation" };
 ```
 
 Wenn Sie mit Azure Active Directory MSAL.NET Lese- und Schreibvorgänge über die Microsoft Graph-API (https://graph.microsoft.com/) ) ausführen möchten, erstellen Sie eine Liste von Geltungsbereichen wie im folgenden Codeausschnitt:
@@ -205,7 +205,7 @@ Zum Abrufen eines Tokens für alle statischen Geltungsbereiche einer v1.0-Anwend
 
 ```csharp
 ResourceId = "someAppIDURI";
-var scopes = new [] {  ResourceId+"/.default"};
+var scopes = new [] { ResourceId+"/.default" };
 ```
 
 ### <a name="scopes-to-request-in-the-case-of-client-credential-flow--daemon-app"></a>Geltungsbereiche, die im Fall eines Clientanmeldeinformations-Flows/einer Daemon-App angefordert werden

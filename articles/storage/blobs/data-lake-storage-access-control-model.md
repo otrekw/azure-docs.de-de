@@ -5,14 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 02/17/2021
 ms.author: normesta
-ms.openlocfilehash: 65d1ef76ffae113a4b526eec75301abbfea751e7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e5f62456b85791bad5bb66f3abf67e523558d76e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017711"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650387"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerungsmodell in Azure Data Lake Storage Gen2
 
@@ -35,7 +35,7 @@ Der Schwerpunkt dieses Artikels liegt auf Azure RBAC und ACLs und es wird erläu
 
 Für Azure RBAC werden Rollenzuweisungen verwendet, um [Sicherheitsprinzipalen](../../role-based-access-control/overview.md#security-principal) Berechtigungen zuzuweisen. Ein Sicherheitsprinzipal ist ein Objekt, das einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität darstellt, der bzw. die in Azure Active Directory (AD) definiert ist. Mit einem Berechtigungssatz kann einem Sicherheitsprinzipal eine „grobkörnige“ Zugriffsebene zugewiesen werden, z. B. Lese- oder Schreibzugriff auf **alle** Daten in einem Speicherkonto oder **alle** Daten in einem Container. 
 
-Die folgenden Rollen ermöglichen einem Sicherheitsprinzipal den Zugriff auf Daten in einem Speicherkonto. 
+Die folgenden Rollen ermöglichen einem Sicherheitsprinzipal den Zugriff auf Daten in einem Speicherkonto.
 
 |Role|BESCHREIBUNG|
 |--|--|

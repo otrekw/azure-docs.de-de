@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 78e9c50cb0601f6be69ae61f3a8e02621c7dd808
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 55814dff5cba572e2e22b5a0f9971bc920e32372
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786038"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526635"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Informationen zu Azure Key Vault-Geheimnissen
 
@@ -74,7 +74,7 @@ Schrittanleitungen zum Steuern des Zugriffs in Key Vault:
 - [Zuweisen einer Key Vault-Zugriffsrichtlinie mithilfe der Befehlszeilenschnittstelle](../general/assign-access-policy-cli.md)
 - [Zuweisen einer Key Vault-Zugriffsrichtlinie mithilfe von PowerShell](../general/assign-access-policy-powershell.md)
 - [Zuweisen einer Key Vault-Zugriffsrichtlinie über das Azure-Portal](../general/assign-access-policy-portal.md)
-- [Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure (Vorschauversion)](../general/rbac-guide.md)
+- [Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure](../general/rbac-guide.md)
 
 ## <a name="secret-tags"></a>Geheimnistags  
 Sie können zusätzliche anwendungsspezifische Metadaten in Form von Tags angeben. Key Vault unterstützt bis zu 15 Tags, von denen jedes einen 256 Zeichen langen Namen und einen Wert von 256 Zeichen aufweisen kann.  
@@ -124,7 +124,7 @@ Schrittanleitungen zum Steuern des Zugriffs in Key Vault:
 - [Zuweisen einer Key Vault-Zugriffsrichtlinie mithilfe der Befehlszeilenschnittstelle](../general/assign-access-policy-cli.md)
 - [Zuweisen einer Key Vault-Zugriffsrichtlinie mithilfe von PowerShell](../general/assign-access-policy-powershell.md)
 - [Zuweisen einer Key Vault-Zugriffsrichtlinie über das Azure-Portal](../general/assign-access-policy-portal.md)
-- [Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure (Vorschauversion)](../general/rbac-guide.md)
+- [Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure](../general/rbac-guide.md)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

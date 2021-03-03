@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6140f5fd431a0b089b45892130e075bde02a2eb2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6185c5408f74b914ce5ad47634999786ba1d7ab6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299764"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367995"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure AD Connect Health
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen (FAQs) zu Azure Active Directory (Azure AD) Connect Health. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.
@@ -29,7 +29,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen (FAQs) zu Azure A
 ## <a name="general-questions"></a>Allgemeine Fragen
 **F: Ich verwalte mehrere Azure AD-Verzeichnisse. Wie kann ich zu dem Mandanten mit Azure Active Directory Premium wechseln?**
 
-Sie können zwischen verschiedenen Azure AD-Mandanten wechseln, indem Sie in der rechten oberen Ecke den derzeit angemeldeten **Benutzernamen** und dann das entsprechende Konto auswählen. Wenn das Konto hier nicht aufgeführt ist, wählen Sie **Abmelden** aus, und melden Sie sich dann mit den globalen Administratoranmeldeinformationen des Verzeichnisses an, für das Azure Active Directory Premium aktiviert ist.
+Sie können zwischen verschiedenen Azure AD-Mandanten wechseln, indem Sie in der rechten oberen Ecke den derzeit angemeldeten **Benutzernamen** und dann das entsprechende Konto auswählen. Wenn das Konto hier nicht aufgeführt ist, wählen Sie **Abmelden** aus, und melden Sie sich dann mit den globalen Administratoranmeldeinformationen des Verzeichnisses an, in dem Azure Active Directory Premium (P1 oder P2) für die Anmeldung aktiviert ist.
 
 **F: Welche Version der Identitätsrollen wird von Azure AD Connect Health unterstützt?**
 
@@ -47,8 +47,8 @@ Beachten Sie, dass die vom Dienst bereitgestellten Features sich möglicherweise
 
 **F: Wie viele Lizenzen benötige ich, um meine Infrastruktur zu überwachen?**
 
-* Der erste Connect Health-Agent benötigt mindestens eine Azure AD Premium-Lizenz.
-* Jeder weitere registrierte Agent benötigt 25 weitere Azure AD Premium-Lizenzen.
+* Der erste Connect Health-Agent benötigt mindestens eine Azure AD Premium-Lizenz (P1 oder P2).
+* Jeder weitere registrierte Agent benötigt 25 zusätzliche Azure AD Premium-Lizenzen (P1 oder P2).
 * Die Anzahl der Agents entspricht der Gesamtanzahl der für alle überwachten Rollen registrierten Agents (AD FS, Azure AD Connect und/oder AD DS).
 * Die AAD Connect Health-Lizenzierung erfordert keine Zuweisung der Lizenz zu bestimmten Benutzern. Sie müssen lediglich über die erforderliche Anzahl gültiger Lizenzen verfügen.
 

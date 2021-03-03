@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: c3674b6877438a0dd4fe53569cf6852e872334a7
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 4bc30fbf342a9bc85b52c9f88ce7ca1df3c36e23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693611"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595505"
 ---
 # <a name="azure-operational-security-overview"></a>Azure Operational Security – Übersicht
 
@@ -94,7 +94,7 @@ Security Center bewertet die Konfiguration Ihrer Ressourcen, um die Sicherheitsp
 >[!Note]
 >Informationen zu Rollen und zulässigen Aktionen in Security Center finden Sie unter [Berechtigungen in Azure Security Center](../../security-center/security-center-permissions.md).
 
-Security Center verwendet den Microsoft Monitoring Agent. Dies ist der gleiche Agent, den auch der Azure Monitor-Dienst nutzt. Die von diesem Agent gesammelten Daten werden entweder in einem vorhandenen Log Analytics-[Arbeitsbereich](../../azure-monitor/platform/manage-access.md), der mit Ihrem Azure-Abonnement verknüpft ist, oder unter Berücksichtigung des geografischen Standorts des virtuellen Computers in einem neuen Arbeitsbereich gespeichert.
+Security Center verwendet den Microsoft Monitoring Agent. Dies ist der gleiche Agent, den auch der Azure Monitor-Dienst nutzt. Die von diesem Agent gesammelten Daten werden entweder in einem vorhandenen Log Analytics-[Arbeitsbereich](../../azure-monitor/logs/manage-access.md), der mit Ihrem Azure-Abonnement verknüpft ist, oder unter Berücksichtigung des geografischen Standorts des virtuellen Computers in einem neuen Arbeitsbereich gespeichert.
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
@@ -108,23 +108,23 @@ Azure Monitor enthält die folgenden Komponenten.
 
 ### <a name="azure-activity-log"></a>Azure-Aktivitätsprotokoll
 
-Das [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/platform-logs-overview.md) bietet Einblicke in die Vorgänge, die für Ressourcen in Ihrem Abonnement durchgeführt wurden. Das Aktivitätsprotokoll wurde bisher als „Überwachungsprotokoll“ oder „Vorgangsprotokoll“ bezeichnet, da es Ereignisse der Steuerungsebene für Ihre Abonnements enthält.
+Das [Azure-Aktivitätsprotokoll](../../azure-monitor/essentials/platform-logs-overview.md) bietet Einblicke in die Vorgänge, die für Ressourcen in Ihrem Abonnement durchgeführt wurden. Das Aktivitätsprotokoll wurde bisher als „Überwachungsprotokoll“ oder „Vorgangsprotokoll“ bezeichnet, da es Ereignisse der Steuerungsebene für Ihre Abonnements enthält.
 
 ### <a name="azure-diagnostic-logs"></a>Azure-Diagnoseprotokolle
 
-[Azure-Diagnoseprotokolle](../../azure-monitor/platform/platform-logs-overview.md) werden von einer Ressource ausgegeben und stellen umfangreiche und in kurzen Abständen erfasste Betriebsdaten der Ressource bereit. Der Inhalt dieser Protokolle variiert je nach Ressourcentyp.
+[Azure-Diagnoseprotokolle](../../azure-monitor/essentials/platform-logs-overview.md) werden von einer Ressource ausgegeben und stellen umfangreiche und in kurzen Abständen erfasste Betriebsdaten der Ressource bereit. Der Inhalt dieser Protokolle variiert je nach Ressourcentyp.
 
 Windows-Ereignissystemprotokolle sind eine Kategorie von Diagnoseprotokollen für virtuelle Computer. Blob-, Tabellen- und Warteschlangenprotokolle sind Kategorien von Diagnoseprotokollen für Speicherkonten.
 
-Diagnoseprotokolle unterscheiden sich vom [Aktivitätsprotokoll](../../azure-monitor/platform/platform-logs-overview.md). Das Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden. Diagnoseprotokolle bieten Einblicke in Vorgänge, die Ihre Ressource selbst ausgeführt hat.
+Diagnoseprotokolle unterscheiden sich vom [Aktivitätsprotokoll](../../azure-monitor/essentials/platform-logs-overview.md). Das Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden. Diagnoseprotokolle bieten Einblicke in Vorgänge, die Ihre Ressource selbst ausgeführt hat.
 
 ### <a name="metrics"></a>Metriken
 
-Azure Monitor stellt Telemetriedaten bereit, mit denen Sie sich einen Überblick über die Leistung und Integrität Ihrer Workloads in Azure verschaffen können. Die wichtigsten Arten von Azure-Telemetriedaten sind [Metriken](../../azure-monitor/platform/data-platform.md) (auch Leistungsindikatoren genannt), die von den meisten Azure-Ressourcen gesendet werden. Azure Monitor bietet Ihnen verschiedene Möglichkeiten, diese Metriken für die Überwachung und Problembehandlung zu konfigurieren und zu nutzen.
+Azure Monitor stellt Telemetriedaten bereit, mit denen Sie sich einen Überblick über die Leistung und Integrität Ihrer Workloads in Azure verschaffen können. Die wichtigsten Arten von Azure-Telemetriedaten sind [Metriken](../../azure-monitor/data-platform.md) (auch Leistungsindikatoren genannt), die von den meisten Azure-Ressourcen gesendet werden. Azure Monitor bietet Ihnen verschiedene Möglichkeiten, diese Metriken für die Überwachung und Problembehandlung zu konfigurieren und zu nutzen.
 
 ### <a name="azure-diagnostics"></a>Azure-Diagnose
 
-Die Azure-Diagnose ermöglicht die Sammlung von Diagnosedaten für eine bereitgestellte Anwendung. Sie können die Diagnoseerweiterung von einer Reihe von Quellen aus verwenden. Derzeit werden [Rollen für den Azure-Clouddienst](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), [virtuelle Azure-Computer](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service) unter Microsoft Windows und [Azure Service Fabric](../../azure-monitor/platform/diagnostics-extension-overview.md) unterstützt.
+Die Azure-Diagnose ermöglicht die Sammlung von Diagnosedaten für eine bereitgestellte Anwendung. Sie können die Diagnoseerweiterung von einer Reihe von Quellen aus verwenden. Derzeit werden [Rollen für den Azure-Clouddienst](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), [virtuelle Azure-Computer](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service) unter Microsoft Windows und [Azure Service Fabric](../../azure-monitor/agents/diagnostics-extension-overview.md) unterstützt.
 
 ## <a name="azure-network-watcher"></a>Azure Network Watcher
 

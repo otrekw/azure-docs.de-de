@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 833e2f7808b4b8efa210bc6a903ed30fe9ac53e0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5eb0c7d72896cc9a27907743b1b9c3d5a40614dd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221627"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592859"
 ---
 # <a name="query-update-management-logs"></a>Abfragen von Protokollen der Updateverwaltung
 
@@ -195,7 +195,7 @@ Auf einem Windows-Computer können Sie die folgenden Informationen überprüfen,
 
 1. Öffnen Sie das Windows-Ereignisprotokoll. Navigieren Sie zu **Anwendungs- und Dienstprotokolle\Operations Manager**, und suchen Sie nach der Ereignis-ID 3000 und der Ereignis-ID 5002 aus der Quelle **Service Connector**. Mit diesen Ereignissen wird angegeben, dass für den Computer die Registrierung beim Log Analytics-Arbeitsbereich und die Konfiguration ausgeführt wurden.
 
-Falls der Agent nicht mit Azure Monitor-Protokollen kommunizieren kann und für die Kommunikation mit dem Internet über eine Firewall oder einen Proxyserver konfiguriert ist, vergewissern Sie sich, dass die Firewall bzw. der Proxyserver ordnungsgemäß konfiguriert sind. Weitere Informationen zur Überprüfung der Firewall- oder Proxyserverkonfiguration finden Sie unter [Netzwerkkonfiguration für den Windows-Agent](../../azure-monitor/platform/agent-windows.md) bzw. unter [Netzwerkkonfiguration für den Linux-Agent](../../azure-monitor/learn/quick-collect-linux-computer.md).
+Falls der Agent nicht mit Azure Monitor-Protokollen kommunizieren kann und für die Kommunikation mit dem Internet über eine Firewall oder einen Proxyserver konfiguriert ist, vergewissern Sie sich, dass die Firewall bzw. der Proxyserver ordnungsgemäß konfiguriert sind. Weitere Informationen zur Überprüfung der Firewall- oder Proxyserverkonfiguration finden Sie unter [Netzwerkkonfiguration für den Windows-Agent](../../azure-monitor/agents/agent-windows.md) bzw. unter [Netzwerkkonfiguration für den Linux-Agent](../../azure-monitor/vm/quick-collect-linux-computer.md).
 
 > [!NOTE]
 > Wenn Ihre Linux-Systeme für die Kommunikation mit einem Proxy oder Log Analytics-Gateway konfiguriert sind und Sie die Updateverwaltung aktivieren, aktualisieren Sie die Berechtigungen für `proxy.conf`, um der Gruppe „omiuser“ Leseberechtigungen für die Datei zu erteilen. Führen Sie dazu die folgenden Befehle aus:
@@ -205,7 +205,7 @@ Falls der Agent nicht mit Azure Monitor-Protokollen kommunizieren kann und für 
 
 Für neu hinzugefügte Linux-Agents wird der Status **Aktualisiert** angezeigt, nachdem eine Bewertung ausgeführt wurde. Dieser Vorgang kann bis zu sechs Stunden dauern.
 
-Wenn Sie bestätigen möchten, dass eine Operations Manager-Verwaltungsgruppe mit Azure Monitor-Protokollen kommuniziert, helfen Ihnen die Informationen unter [Überprüfen der Integration von Operations Manager mit Log Analytics](../../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor) weiter.
+Wenn Sie bestätigen möchten, dass eine Operations Manager-Verwaltungsgruppe mit Azure Monitor-Protokollen kommuniziert, helfen Ihnen die Informationen unter [Überprüfen der Integration von Operations Manager mit Log Analytics](../../azure-monitor/agents/om-agents.md#validate-operations-manager-integration-with-azure-monitor) weiter.
 
 ### <a name="single-azure-vm-assessment-queries-windows"></a>Bewertungsabfragen für einzelne virtuelle Azure-Computer (Windows)
 
@@ -410,5 +410,5 @@ Update
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ausführliche Informationen zu Azure Monitor-Protokollen finden Sie unter [Azure Monitor-Protokolle](../../azure-monitor/log-query/log-query-overview.md).
+* Ausführliche Informationen zu Azure Monitor-Protokollen finden Sie unter [Azure Monitor-Protokolle](../../azure-monitor/logs/log-query-overview.md).
 * Hilfe zu Warnungen finden Sie unter [Konfigurieren von Warnungen](configure-alerts.md).

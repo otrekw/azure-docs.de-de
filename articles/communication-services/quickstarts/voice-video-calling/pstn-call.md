@@ -8,17 +8,16 @@ ms.date: 09/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 692e3a2e64c42702d46c38175a814819c8f539cf
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: d26c089376f5de1ad669ff95a0bf4e96cc8f4682
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762571"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660003"
 ---
 # <a name="quickstart-call-to-phone"></a>Schnellstart: Auf Telefon anrufen
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-Steigen Sie in Azure Communication Services ein, indem Sie die Communication Services-Clientbibliothek für Telefonie nutzen, um Ihrer App PSTN-Anrufe hinzuzufügen. 
+Steigen Sie in Azure Communication Services ein, indem Sie die Communication Services-Clientbibliothek für Telefonie nutzen, um Ihrer App PSTN-Anrufe hinzuzufügen.
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/pstn-call-js.md)]
@@ -34,7 +33,7 @@ Steigen Sie in Azure Communication Services ein, indem Sie die Communication Ser
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind. Erfahren Sie mehr über das [Bereinigen von Ressourcen](../create-communication-resource.md#clean-up-resources).
+Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind. Weitere Informationen zum Bereinigen von Ressourcen finden Sie [hier](../create-communication-resource.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

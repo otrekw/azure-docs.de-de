@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – Bereitstellung
 description: Informationen zu den Funktionen, die in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Abrufen von Informationen zur Bereitstellung verwendet werden können.
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 438afc947b07ac7425de365a2d63c427cf53e2ff
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 03/02/2021
+ms.openlocfilehash: a9a073284c62efac4e77f8f9b35e8730c350e5f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943477"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722720"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Bereitstellungsfunktionen für ARM-Vorlagen
 
@@ -508,7 +508,7 @@ In der Regel verwenden Sie Variablen, um Ihre Vorlage zu vereinfachen, indem Sie
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
 ```bicep
-var storageName = concat('storage', uniqueString(resourceGroup().id))
+var storageName = 'storage${uniqueString(resourceGroup().id)}'
 
 resource myStorage 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   name: storageName

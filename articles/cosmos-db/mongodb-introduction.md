@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie Azure Cosmos DB verwenden können, um große 
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 11/25/2020
+ms.date: 03/02/2021
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: ab335c8cc682f6b33dcb30509d682186a178c676
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 5820592bf06cc9427e12aa0cd79c54dc1f0156e6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861074"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657994"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -24,9 +24,9 @@ ms.locfileid: "97861074"
 
 ## <a name="wire-protocol-compatibility"></a>Wire Protocol-Kompatibilität
 
-Azure Cosmos DB implementiert das Wire Protocol für MongoDB. Diese Implementierung ermöglicht eine transparente Kompatibilität mit nativen MongoDB-Client-SDKs, -Treibern und -Tools. Azure Cosmos DB hostet nicht die MongoDB-Datenbank-Engine. Die Details zu den von MongoDB unterstützten Features finden Sie hier: 
-- [API von Azure Cosmos DB für Version 3.6 der Mongo DB-Engine](mongodb-feature-support-36.md)
-- [API von Azure Cosmos DB für Version 3.2 der Mongo DB-Engine](mongodb-feature-support.md)
+Azure Cosmos DB implementiert das Wire Protocol für MongoDB. Diese Implementierung ermöglicht eine transparente Kompatibilität mit nativen MongoDB-Client-SDKs, -Treibern und -Tools. Azure Cosmos DB hostet die MongoDB-Datenbank-Engine. Die Details zu den von MongoDB unterstützten Features finden Sie hier: 
+- [Azure Cosmos DB-API für die Mongo DB-Version 4.0](mongodb-feature-support-40.md)
+- [Azure Cosmos DB-API für die Mongo DB-Version 3.6](mongodb-feature-support-36.md)
 
 Die mithilfe der Azure Cosmos DB-API für MongoDB erstellten neuen Konten sind standardmäßig mit MongoDB Wire Protocol Version 3.6 kompatibel. Alle MongoDB-Clienttreiber, die diese Protokollversionen unterstützen, sollten nativ eine Verbindung mit Cosmos DB herstellen können.
 

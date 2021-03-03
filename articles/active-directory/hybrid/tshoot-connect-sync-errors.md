@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88fda4ec810d0b410dcd75ac9c6be69bd54b16d9
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d976cd924644828f5861e4c54460a8b4e4f81444
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092648"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643863"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Beheben von Fehlern während der Synchronisierung
 Fehler können auftreten, wenn Identitätsdaten aus Windows Server Active Directory (AD DS) mit Azure Active Directory (Azure AD) synchronisiert werden. Dieser Artikel bietet einen Überblick über verschiedene Fehlertypen, die während der Synchronisierung auftreten können, einige der möglichen Szenarios, die solche Fehler verursachen, und Möglichkeiten, diese Fehler zu beheben. In diesem Artikel werden die häufigsten Fehlertypen behandelt, daher sind eventuell nicht alle möglichen Fehler enthalten.
@@ -201,7 +201,7 @@ Wenn das UserPrincipalName-Suffix eines Benutzers von bob@**contoso.com** in bob
 2. Lassen Sie im nächsten Synchronisierungszyklus die Synchronisierung zu. Diesmal ist die Synchronisierung erfolgreich, und aktualisiert wie erwartet Bobs „UserPrincipalName“ in bob@fabrikam.com.
 
 #### <a name="related-articles"></a>Verwandte Artikel
-* [Änderungen werden nicht mehr vom Azure Active Directory-Synchronisierungstool synchronisiert, wenn der UPN eines Benutzerkontos für die Verbindung mit einer anderen Verbunddomäne geändert wird.](/azure/active-directory/hybrid/howto-troubleshoot-upn-changes)
+* [Änderungen werden nicht mehr vom Azure Active Directory-Synchronisierungstool synchronisiert, wenn der UPN eines Benutzerkontos für die Verbindung mit einer anderen Verbunddomäne geändert wird.](./howto-troubleshoot-upn-changes.md)
 
 ## <a name="largeobject"></a>LargeObject (Großes Objekt)
 ### <a name="description"></a>BESCHREIBUNG

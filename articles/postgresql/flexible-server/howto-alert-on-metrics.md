@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: ac252c3898eb014885bf9a6bf6bdedb7db74fb62
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3c6f1dd581f7b07bb7892cbfe23dd76348124f9a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545836"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579056"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---flexible-server"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for PostgreSQL: Flexible Server
 
@@ -30,8 +30,8 @@ Sie können konfigurieren, dass bei einer Warnung die folgenden Aktionen ausgef�
 
 Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abrufen zugehöriger Informationen:
 
-* [Azure portal](../../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure-Befehlszeilenschnittstelle](../../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure portal](../../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure-Befehlszeilenschnittstelle](../../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Azure Monitor-REST-API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Erstellen einer Warnungsregel anhand einer Metrik aus dem Azure-Portal
@@ -46,25 +46,25 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
 
 4. Die Seite **Regel erstellen** wird geöffnet, wie unten gezeigt. Füllen Sie die erforderlichen Informationen aus:
 
-   :::image type="content" source="./media/howto-alert-on-metrics/4-add-rule-form.png" alt-text="„Warnungsregeln“ auswählen":::
+   :::image type="content" source="./media/howto-alert-on-metrics/4-add-rule-form.png" alt-text="Formular „Metrikwarnung hinzufügen“":::
 
-5. Wählen Sie im Abschnitt **Bedingung** **Bedingung hinzufügen** .
+5. Wählen Sie im Abschnitt **Bedingung** **Bedingung hinzufügen**.
 
 6. Wählen Sie eine Metrik aus der Liste der Signale aus, bei denen eine Warnung erfolgen soll. Wählen Sie in diesem Beispiel „Speicher in Prozent“ aus.
 
-   :::image type="content" source="./media/howto-alert-on-metrics/6-configure-signal-logic.png" alt-text="„Warnungsregeln“ auswählen":::
+   :::image type="content" source="./media/howto-alert-on-metrics/6-configure-signal-logic.png" alt-text="Metrik auswählen":::
 
-7. Konfigurieren Sie die Warnungslogik, einschließlich der **Bedingung** (z.B. „Größer als“), **Schwellenwert** (z.B. 85 Prozent), **Zeitaggregation** , **Zeitraum** , die die Metrikregel erfüllen muss, ehe die Warnung ausgelöst wird (z.B. „Innerhalb der letzten 30 Minuten“) und **Häufigkeit** .
+7. Konfigurieren Sie die Warnungslogik, einschließlich der **Bedingung** (z.B. „Größer als“), **Schwellenwert** (z.B. 85 Prozent), **Zeitaggregation**, **Zeitraum**, die die Metrikregel erfüllen muss, ehe die Warnung ausgelöst wird (z.B. „Innerhalb der letzten 30 Minuten“) und **Häufigkeit**.
 
    Wählen Sie anschließend **Fertig** aus.
 
-   :::image type="content" source="./media/howto-alert-on-metrics/7-set-threshold-time.png" alt-text="„Warnungsregeln“ auswählen":::
+   :::image type="content" source="./media/howto-alert-on-metrics/7-set-threshold-time.png" alt-text="Festlegen des Schwellenwerts":::
 
 8. Wählen Sie im Abschnitt **Aktionsgruppen** die Option **Neu erstellen** aus, um eine neue Gruppe zum Empfangen von Benachrichtigungen zu Warnungen zu erhalten.
 
 9. Tragen Sie in das Formular „Aktionsgruppe hinzufügen“ einen Namen, Kurznamen, ein Abonnement und eine Ressourcengruppe ein.
 
-10. Konfigurieren Sie den Aktionstyp **E-Mail/SMS/Push/Sprachanruf** .
+10. Konfigurieren Sie den Aktionstyp **E-Mail/SMS/Push/Sprachanruf**.
 
     1. Wählen Sie „E-Mail an Azure Resource Manager-Rolle“ aus, um Besitzer, Mitwirkende und Leser des Abonnements auszuwählen, die Benachrichtigungen erhalten sollen.
 
@@ -72,11 +72,11 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
 
     3. Wählen Sie **OK** aus, wenn Sie fertig sind.
 
-    :::image type="content" source="./media/howto-alert-on-metrics/10-action-group-type.png" alt-text="„Warnungsregeln“ auswählen":::
+    :::image type="content" source="./media/howto-alert-on-metrics/10-action-group-type.png" alt-text="Aktionsgruppe":::
 
 11. Geben Sie einen Namen, einen Beschreibung und den Schweregrad für die Warnungsregel an.
 
-    :::image type="content" source="./media/howto-alert-on-metrics/11-name-description-severity.png" alt-text="„Warnungsregeln“ auswählen"::: 
+    :::image type="content" source="./media/howto-alert-on-metrics/11-name-description-severity.png" alt-text="Namen, Beschreibung und Schweregrad eingeben"::: 
 
 12. Wählen Sie **Benachrichtigungsregel erstellen** aus, um die Benachrichtigung zu erstellen.
 
@@ -87,10 +87,10 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
 Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und folgende Aktionen ausführen:
 
 * Ein Diagramm anzeigen, das den Schwellenwert der Metrik und die tatsächlichen Werte vom Vortag zeigt, die für diese Warnung relevant sind.
-* Die Warnungsregel **bearbeiten** oder **löschen** .
-* Die Warnung **deaktivieren** oder **aktivieren** , wenn Sie den Empfang von Benachrichtigungen vorübergehend beenden oder fortsetzen möchten.
+* Die Warnungsregel **bearbeiten** oder **löschen**.
+* Die Warnung **deaktivieren** oder **aktivieren**, wenn Sie den Empfang von Benachrichtigungen vorübergehend beenden oder fortsetzen möchten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](../../azure-monitor/platform/alerts-webhooks.md).
-* Verschaffen Sie sich einen Überblick über das [Sammeln von Dienstmetriken](../../azure-monitor/platform/data-platform.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
+* Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](../../azure-monitor/alerts/alerts-webhooks.md).
+* Verschaffen Sie sich einen Überblick über das [Sammeln von Dienstmetriken](../../azure-monitor/data-platform.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.

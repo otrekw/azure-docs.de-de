@@ -3,12 +3,12 @@ title: Arbeitsmappe für Downtime, SLA und Ausfälle – Application Insights
 description: Berechnen und melden Sie die Vereinbarung zum Servicelevel für Webtests über eine einzelne zentralisierte Benutzeroberfläche in Ihren Application Insights-Ressourcen und Azure-Abonnements.
 ms.topic: conceptual
 ms.date: 02/8/2021
-ms.openlocfilehash: 884d65d10ab0360957360efa8bf9dc4cac59949b
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d225627a27bffd9088956e5aee37ca543e528d4a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989186"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714050"
 ---
 # <a name="downtime-sla-and-outages-workbook"></a>Arbeitsmappe für Downtime, SLA und Ausfälle
 
@@ -51,13 +51,13 @@ Auf der Registerkarte **Outages & Downtime** (Ausfälle und Downtime) finden Sie
 
 ## <a name="edit-the-report"></a>Bearbeiten des Berichts
 
-Sie können den Bericht wie alle anderen [Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md) bearbeiten. Sie können die Abfragen oder Visualisierungen basierend auf den Anforderungen Ihres Teams anpassen.
+Sie können den Bericht wie alle anderen [Azure Monitor-Arbeitsmappen](../visualize/workbooks-overview.md) bearbeiten. Sie können die Abfragen oder Visualisierungen basierend auf den Anforderungen Ihres Teams anpassen.
 
 :::image type="content" source="./media/sla-report/edit.gif" alt-text="GIF zum Klicken auf die Schaltfläche „Bearbeiten“ zum Ändern der Visualisierung in ein Kreisdiagramm" lightbox="./media/sla-report/edit.gif":::
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Die Abfragen können alle in [Log Analytics](../log-query/log-analytics-overview.md) ausgeführt und in anderen Berichten oder auf anderen Dashboards verwendet werden. Entfernen Sie die Parametereinschränkung, und verwenden Sie die Core-Abfrage.
+Die Abfragen können alle in [Log Analytics](../logs/log-analytics-overview.md) ausgeführt und in anderen Berichten oder auf anderen Dashboards verwendet werden. Entfernen Sie die Parametereinschränkung, und verwenden Sie die Core-Abfrage.
 
 :::image type="content" source="./media/sla-report/logs.gif" alt-text="GIF der Protokollabfrage" lightbox="./media/sla-report/logs.gif":::
 
@@ -69,6 +69,6 @@ Sie können den Bericht für Ihre Teams und Führungskräfte freigeben oder an e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie sich die Tipps zum [Optimieren von Protokollabfragen in Azure Monitor](../log-query/query-optimization.md) durch.
-- Informieren Sie sich, wie Sie ein [Diagramm in Arbeitsmappen](../platform/workbooks-chart-visualizations.md) erstellen.
+- Lesen Sie sich die Tipps zum [Optimieren von Protokollabfragen in Azure Monitor](../logs/query-optimization.md) durch.
+- Informieren Sie sich, wie Sie ein [Diagramm in Arbeitsmappen](../visualize/workbooks-chart-visualizations.md) erstellen.
 - Lesen Sie nach, wie Sie Ihre Website mit [Verfügbarkeitstests](monitor-web-app-availability.md) überwachen.

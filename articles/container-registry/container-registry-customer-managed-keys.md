@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Verschlüsselung ruhender Daten Ihrer A
 ms.topic: article
 ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: fb30610457e539250c33d7d9726fe10f9c0f8c5a
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: bc692dc8df133aa5fae352a7667062f81ceed350
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062727"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526441"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Verschlüsseln der Registrierung mithilfe eines kundenseitig verwalteten Schlüssels
 
@@ -127,11 +127,11 @@ az keyvault set-policy \
   --key-permissions get unwrapKey wrapKey
 ```
 
-Alternativ können Sie [Azure RBAC für Key Vault](../key-vault/general/rbac-guide.md) (Vorschau) verwenden, um der Identität Zugriffsberechtigungen für den Schlüsseltresor zuzuweisen. Weisen Sie der Identität über den Befehl [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) z. B.die Rolle „Key Vault Crypto Service Encryption“ (Key Vault-Kryptografiedienstverschlüsselung) zu:
+Alternativ können Sie [Azure RBAC für Key Vault](../key-vault/general/rbac-guide.md) verwenden, um der Identität Berechtigungen für den Schlüsseltresor zuzuweisen. Weisen Sie der Identität über den Befehl [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) z. B.die Rolle „Key Vault Crypto Service Encryption“ (Key Vault-Kryptografiedienstverschlüsselung) zu:
 
 ```azurecli 
 az role assignment create --assignee $identityPrincipalID \
-  --role "Key Vault Crypto Service Encryption (preview)" \
+  --role "Key Vault Crypto Service Encryption User" \
   --scope $keyvaultID
 ```
 
@@ -267,12 +267,12 @@ Konfigurieren Sie eine Richtlinie für den Schlüsseltresor, damit die Identitä
 
 :::image type="content" source="media/container-registry-customer-managed-keys/add-key-vault-access-policy.png" alt-text="Erstellen einer Schlüsseltresor-Zugriffsrichtlinie":::
 
-Alternativ können Sie [Azure RBAC für Key Vault](../key-vault/general/rbac-guide.md) (Vorschau) verwenden, um der Identität Zugriffsberechtigungen für den Schlüsseltresor zuzuweisen. Weisen Sie der Identität z. B.die Rolle „Key Vault Crypto Service Encryption“ (Key Vault-Kryptografiedienstverschlüsselung) zu.
+Alternativ können Sie [Azure RBAC für Key Vault](../key-vault/general/rbac-guide.md) verwenden, um der Identität Berechtigungen für den Schlüsseltresor zuzuweisen. Weisen Sie der Identität z. B.die Rolle „Key Vault Crypto Service Encryption“ (Key Vault-Kryptografiedienstverschlüsselung) zu.
 
 1. Navigieren Sie zu Ihrem Schlüsseltresor.
 1. Klicken Sie auf **Zugriffssteuerung (IAM)**  >  **+ Hinzufügen** > **Rollenzuweisung hinzufügen**.
 1. Führen Sie im Fenster **Rollenzuweisung hinzufügen** die folgenden Aktionen aus:
-    1. Wählen Sie die Rolle **Key Vault Crypto Service Encryption (Preview)** (Key Vault-Kryptografiedienstverschlüsselung (Vorschau)) aus. 
+    1. Wählen Sie die Rolle **Key Vault Crypto Service Encryption-Benutzer** aus. 
     1. Weisen Sie der **benutzerseitig zugewiesenen verwalteten Identität** Zugriff zu.
     1. Wählen Sie den Ressourcennamen Ihrer benutzerseitig zugewiesenen verwalteten Identität aus, und klicken Sie auf **Speichern**.
 

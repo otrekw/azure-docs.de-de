@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ab21c6dc95ef39e6273dac405ba58e748890fc1a
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 547d96a9591b99318a74977106e99511c9c80507
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968431"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687106"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SAP Fiori
 
@@ -146,7 +146,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Metadatendatei auswählen](common/browse-upload-metadata.png)
 
-    c. Nach dem erfolgreichen Upload der Metadatendatei werden die Werte unter **Bezeichner** und **Antwort-URL** im Bereich **Grundlegende SAML-Konfiguration** automatisch eingefügt. Geben Sie im Feld **Anmelde-URL** eine URL im folgenden Format ein: `https:\//\<your company instance of SAP Fiori\>`.
+    c. Nach dem erfolgreichen Upload der Metadatendatei werden die Werte unter **Bezeichner** und **Antwort-URL** im Bereich **Grundlegende SAML-Konfiguration** automatisch eingefügt. Geben Sie im Feld **Anmelde-URL** eine URL im folgenden Format ein: `https://<your company instance of SAP Fiori>`.
 
     > [!NOTE]
     > Einige Kunden berichten von Fehlern aufgrund falsch konfigurierter Werte unter **Antwort-URL**. Wenn Sie diesen Fehler erhalten, können Sie das folgende PowerShell-Skript verwenden, um die richtige Antwort-URL für Ihre Instanz festzulegen:

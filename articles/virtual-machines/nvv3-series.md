@@ -2,18 +2,18 @@
 title: 'NVv3-Serie: Azure Virtual Machines'
 description: Spezifikationen für die VMs der NVv3-Serie
 services: virtual-machines
-ms.subservice: sizes
+ms.subservice: hpc
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: c1238a45a7175101253f43e6bbd199ff1c913650
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 62c096938049d44a4a2e5e61cb3d9f94e1b1801a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095655"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672298"
 ---
 # <a name="nvv3-series"></a>NVv3-Serie
 
@@ -27,7 +27,7 @@ Alle GPUs in NVv3-Instanzen beinhalten eine GRID-Lizenz. Diese Lizenz bietet Ihn
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
-[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Nicht unterstützt <br>
+[Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | GPU | GPU-Arbeitsspeicher: GiB | Max. Anzahl Datenträger | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) | Virtuelle Arbeitsstationen | Virtuelle Anwendungen |

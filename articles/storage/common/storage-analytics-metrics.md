@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 8f698aadc24d0dc0691743f1d8dd54c5d5fd287e
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: d900ffa4481ba2b6deb21a8325f3f8def8084f84
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220955"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714730"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Metriken von Azure Storage Analytics (klassisch)
 
@@ -25,7 +25,7 @@ Azure Storage verwendet die Storage Analytics-Lösung, um Metriken zu speichern,
 - Diagnose von Problemen mit Anforderungen, die an den Speicherdienste gerichtet wurden.
 - Verbessern der Leistung von Anwendungen, die einen Dienst verwenden.
 
- Metriken der Speicheranalyse sind standardmäßig für neue Speicherkonten aktiviert. Sie können Metriken über das [Azure-Portal](https://portal.azure.com/), mithilfe von PowerShell oder über die Azure-Befehlszeilenschnittstelle konfigurieren. Eine ausführliche Anleitung finden Sie unter [Aktivieren und Verwalten von Azure Storage-Analysemetriken (klassisch)](./storage-monitor-storage-account.md). Sie können die Speicheranalyse auch programmgesteuert über die REST-API oder die Clientbibliothek aktivieren. Verwenden Sie den Vorgang „Diensteigenschaften festlegen“, um Storage Analytics für alle Dienste zu aktivieren.  
+ Metriken der Speicheranalyse sind standardmäßig für neue Speicherkonten aktiviert. Sie können Metriken über das [Azure-Portal](https://portal.azure.com/), mithilfe von PowerShell oder über die Azure-Befehlszeilenschnittstelle konfigurieren. Eine ausführliche Anleitung finden Sie unter [Aktivieren und Verwalten von Azure Storage-Analysemetriken (klassisch)](./manage-storage-analytics-logs.md). Sie können die Speicheranalyse auch programmgesteuert über die REST-API oder die Clientbibliothek aktivieren. Verwenden Sie den Vorgang „Diensteigenschaften festlegen“, um Storage Analytics für alle Dienste zu aktivieren.  
 
 > [!NOTE]
 > Storage Analytics-Metriken sind für Azure Blob Storage, Azure Queue Storage, Azure-Tabellenspeicher und Azure Files verfügbar.
@@ -69,7 +69,7 @@ Azure Storage verwendet die Storage Analytics-Lösung, um Metriken zu speichern,
  Diese Tabellen werden automatisch erstellt, wenn Storage Analytics für einen Speicherdienstendpunkt aktiviert wird. Der Zugriff auf diese Tabellen erfolgt über den Namespace des Speicherkontos. Beispiel: `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`. Die Metriktabellen werden bei einem Auflistungsvorgang nicht angezeigt und müssen über den Tabellennamen direkt aufgerufen werden.
 
 ## <a name="metrics-alerts"></a>Metrikwarnungen
-Ziehen Sie die Einrichtung von Warnungen im [Azure-Portal](https://portal.azure.com) in Betracht, damit Sie automatisch über wichtige Änderungen im Verhalten der Speicherdienste informiert werden. Eine ausführliche Anleitung finden Sie unter [Erstellen von Metrikwarnungen](storage-monitor-storage-account.md#create-metric-alerts).
+Ziehen Sie die Einrichtung von Warnungen im [Azure-Portal](https://portal.azure.com) in Betracht, damit Sie automatisch über wichtige Änderungen im Verhalten der Speicherdienste informiert werden. Eine ausführliche Anleitung finden Sie unter [Erstellen von Metrikwarnungen](./manage-storage-analytics-logs.md).
 
 Wenn Sie ein Storage-Explorer-Tool zum Herunterladen dieser Metrikdaten in einem Trennzeichen-getrennten Format verwenden, können Sie die Daten mithilfe von Microsoft Excel analysieren. Eine Liste der verfügbaren Tools für Storage-Explorer finden Sie unter [Azure Storage-Clienttools](./storage-explorers.md).
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2887b12e7ce24e9c5a881a2b3edeebb258532a49
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: aae76d50811db87bdf4753ed456a6d8e6d95d6ab
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736489"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094629"
 ---
 # <a name="azure-security-baseline-for-azure-advisor"></a>Azure-Sicherheitsbaseline für Azure Advisor
 
@@ -175,7 +175,7 @@ Verwenden Sie integrierte Rollen, um Berechtigungen zuzuweisen und benutzerdefin
 
 Informationen zur rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) ( ../role-based-access-control/overview.md) 
 
-- [Konfigurieren von RBAC in Azure](../role-based-access-control/role-assignments-portal.md) 
+- [Konfigurieren von Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
 - [Was sind Azure AD-Zugriffsüberprüfungen?](../active-directory/governance/access-reviews-overview.md)
 
@@ -227,9 +227,9 @@ Verwenden Sie den bedingten Azure-Zugriff, um die Möglichkeiten von Benutzern z
 
 Mit Aktivitätsprotokollen können Fehler ermittelt werden, und es kann nachverfolgt werden, welche Änderungen an einer Ressource ein Benutzer in Ihrer Organisation vorgenommen hat.
 
-- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -243,7 +243,7 @@ Stellen Sie sicher, dass die Azure-Aktivitätsprotokolle in die zentrale Protoko
 
 Zusätzlich können Sie auch Daten in Azure Sentinel oder der SIEM-Lösung eines Drittanbieters aktivieren und integrieren. Viele Unternehmen verwenden Azure Sentinel für „heiße“ Daten, die häufig verwendet werden, und Azure Storage für seltener verwendete „kalte“ Daten.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -256,9 +256,9 @@ Zusätzlich können Sie auch Daten in Azure Sentinel oder der SIEM-Lösung eines
 **Leitfaden**: Stellen Sie sicher, dass für die Speicherkonten oder Log Analytics-Arbeitsbereiche zum Speichern der Azure Advisor-Protokolle der Protokollaufbewahrungszeitraum gemäß den Konformitätsbestimmungen Ihrer Organisation festgelegt ist.
 In Azure Monitor können Sie den Aufbewahrungszeitraum des Log Analytics-Arbeitsbereichs gemäß den Compliancevorschriften Ihres Unternehmens festlegen. Verwenden Sie für langfristige Speicherungen und Archivierungen Konten von Azure Storage, Data Lake oder des Log Analytics-Arbeitsbereichs.
 
-- [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../azure-monitor/platform/manage-cost-storage.md) 
+- [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../azure-monitor/logs/manage-cost-storage.md) 
 
-- [Azure-Ressourcenprotokolle](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [Azure-Ressourcenprotokolle](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

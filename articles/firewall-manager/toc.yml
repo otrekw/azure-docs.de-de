@@ -10,6 +10,9 @@
     - name: 'Geschützter virtueller Hub: ARM-Vorlage'
       displayName: Resource Manager
       href: quick-secure-virtual-hub.md
+    - name: 'Bereitstellen einer Firewall mit Richtlinie: ARM-Vorlage'
+      displayName: Resource Manager
+      href: quick-firewall-policy.md
 - name: Tutorials
   items:
     - name: 'Schützen Ihres virtuellen Hubs: Portal'

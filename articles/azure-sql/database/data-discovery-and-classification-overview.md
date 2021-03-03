@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 12/01/2020
+ms.date: 02/11/2021
 tags: azure-synapse
-ms.openlocfilehash: 41ad711de81f075727e4c177c318054677cb0ece
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 254d69c723a97d9007a1f6c0f0eb7b34bcfe3c4e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185354"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392764"
 ---
 # <a name="data-discovery--classification"></a>Datenermittlung und -klassifizierung
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -183,6 +183,13 @@ Sie können die REST-API verwenden, um Klassifizierungen und Empfehlungen progra
 - [Get](/rest/api/sql/sensitivitylabels/get) (Abrufen): Ruft die Vertraulichkeitsbezeichnung der angegebenen Spalte ab.
 - [Aktuelle nach Datenbank auflisten:](/rest/api/sql/sensitivitylabels/listcurrentbydatabase) Ruft die aktuellen Vertraulichkeitsbezeichnungen der angegebenen Datenbank ab.
 - [Empfohlene nach Datenbank auflisten:](/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) Ruft die empfohlenen Vertraulichkeitsbezeichnungen für die angegebene Datenbank ab.
+
+
+## <a name="faq---advanced-classification-capabilities"></a>FAQ: Erweiterte Klassifizierungsfunktionen
+
+**Frage:** Ersetzt [Azure Purview](https://docs.microsoft.com/azure/purview/overview) SQL-Datenermittlung und -klassifizierung, oder wird SQL-Datenermittlung und -klassifizierung bald eingestellt?
+**Antwort:** Wir unterstützen weiterhin SQL-Datenerkennung und -klassifizierung und empfehlen, [Azure Purview](https://docs.microsoft.com/azure/purview/overview) zu verwenden, damit Sie über umfangreichere Funktionen für erweiterte Klassifizierungsmöglichkeiten und Data Governance verfügen. Wenn wir uns entscheiden, einen Service, eine Funktion, eine API oder eine SKU einzustellen, erhalten Sie eine Vorankündigung, die einen Migrations- oder Übergangspfad enthält. Weitere Informationen zu Microsoft-Lebenszyklusrichtlinien finden Sie hier.
+
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Nächste Schritte
 

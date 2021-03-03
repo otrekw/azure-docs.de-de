@@ -9,12 +9,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: f1f2ea8bd51b7eeda9afdd6a94d5de1d58acef57
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: b73e79c2f7bbd37b640d3e83d98be68d85ed3b5e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520645"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735368"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Verwenden der HDFS-CLI mit Data Lake Storage Gen2
 
@@ -118,6 +118,6 @@ Sie können die vollständige Liste mit Befehlen auf der Website [Apache Hadoop 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verwenden eines Azure Data Lake Storage Gen2-Kontos in Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md)
+* [Verwenden eines Azure Data Lake Storage Gen2-Kontos in Azure Databricks](./data-lake-storage-use-databricks-spark.md)
 
 * [Zugriffssteuerung in Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md)

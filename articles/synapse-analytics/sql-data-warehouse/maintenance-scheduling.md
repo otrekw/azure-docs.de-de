@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: e1565d4f7792dca5242965d11c58faa90e2222d3
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 886e99d6f56a008c694b3bcb366cfb4049f3528e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920374"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590215"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Verwenden von Wartungszeitplänen zum Verwalten der Updates und Wartung von Diensten
 
@@ -96,7 +96,7 @@ Während der Vorschauphase unterstützen einige Regionen ggf. noch nicht alle ve
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Weitere Informationen](../../azure-monitor/platform/alerts-metric.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) zum Erstellen, Anzeigen und Verwalten von Warnungen mit Azure Monitor
-- [Weitere Informationen](../..//azure-monitor/platform/alerts-log-webhook.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) zu Webhookaktionen für Protokollwarnungsregeln
-- [Weitere Informationen ](../..//azure-monitor/platform/action-groups.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) zum Erstellen und Verwalten von Aktionsgruppen.
+- [Weitere Informationen](../../azure-monitor/alerts/alerts-metric.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) zum Erstellen, Anzeigen und Verwalten von Warnungen mit Azure Monitor
+- [Weitere Informationen](../..//azure-monitor/alerts/alerts-log-webhook.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) zu Webhookaktionen für Protokollwarnungsregeln
+- [Weitere Informationen ](../..//azure-monitor/alerts/action-groups.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) zum Erstellen und Verwalten von Aktionsgruppen.
 - [Weitere Informationen](../../service-health/service-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) zu Azure Service Health

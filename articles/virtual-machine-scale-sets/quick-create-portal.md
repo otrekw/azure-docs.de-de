@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 8243619bc7a32c5fa86b6e108d954674b54394e5
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 0408341eff483de71d76a24a933ece4cbdc2b947
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913724"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535279"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Schnellstart: Erstellen einer VM-Skalierungsgruppe im Azure-Portal
 
@@ -57,7 +57,7 @@ Erstellen Sie zunächst eine Load Balancer Standard-Instanz über das Portal. 
 Sie können eine Skalierungsgruppe mit einem Windows Server-Image oder Linux-Image wie RHEL, CentOS, Ubuntu oder SLES bereitstellen.
 
 1. Geben Sie **Skalierungsgruppe** in das Suchfeld ein. Wählen Sie in den Ergebnissen unter **Marketplace** den Eintrag **VM-Skalierungsgruppen** aus. Wählen Sie auf der Seite **VM-Skalierungsgruppen** die Option **Erstellen** aus. Dadurch wird die Seite **VM-Skalierungsgruppe erstellen** geöffnet. 
-1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann **Neu erstellen** für „Ressourcengruppe“ aus. Geben Sie *myVMSSResourceGroup* als Name ein, und wählen Sie dann **OK** aus. 
+1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie in der Liste der Ressourcengruppen den Eintrag *myVMSSResourceGroup* aus. 
 1. Geben Sie *myScaleSet* als Name für die Skalierungsgruppe ein.
 1. Wählen Sie unter **Region** eine Region in Ihrer Nähe aus.
 1. Wählen Sie unter **Image** ein Marketplace-Image aus. In diesem Beispiel wurde *Ubuntu Server 18.04 LTS* ausgewählt.

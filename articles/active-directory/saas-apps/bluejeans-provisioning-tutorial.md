@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: d029f033a3c452587dbeeadf69c46cc99f604031
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 58cd69ebe97d9d0965d7e648b0ded012ac71cd0d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053818"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646123"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von BlueJeans für die automatische Benutzerbereitstellung
 
@@ -27,7 +27,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in BlueJeans 
 > * Erstellen von Benutzern in BlueJeans
 > * Entfernen von Benutzern aus BlueJeans, wenn diese keinen Zugriff mehr benötigen
 > * Synchronisieren von Benutzerattributen zwischen Azure AD und BlueJeans
-> * [Einmaliges Anmelden](https://docs.microsoft.com/azure/active-directory/saas-apps/bluejeans-tutorial) bei BlueJeans (empfohlen)
+> * [Einmaliges Anmelden](./bluejeans-tutorial.md) bei BlueJeans (empfohlen)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -110,7 +110,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit BlueJeans synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in BlueJeans für Updatevorgänge verwendet. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die BlueJeans-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-|Attribut|type|Unterstützung für das Filtern|
+|attribute|type|Unterstützung für das Filtern|
 |---|---|---|
 |userName|String|&check;|
 |aktiv|Boolean|
@@ -141,7 +141,7 @@ Dadurch wird die Erstsynchronisierung aller Benutzer gestartet, die im Abschnitt
 Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden Ressourcen die Bereitstellung überwachen:
 
 1. Mithilfe der [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
-2. Anhand der [Fortschrittsleiste](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
+2. Anhand der [Fortschrittsleiste](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
 3. Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](../app-provisioning/application-provisioning-quarantine-status.md).  
 
 ## <a name="connector-limitations"></a>Connector-Einschränkungen

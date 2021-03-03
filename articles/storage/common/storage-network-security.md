@@ -9,12 +9,12 @@ ms.date: 01/27/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 8172abb5e220f28061c7826af24a5d9a2043f4ad
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 4aa4e0566093f01e5f14691158f37c630c753b00
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219908"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714747"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -371,10 +371,12 @@ Manchmal ist eine Anwendung unter Umständen auf Azure-Ressourcen angewiesen, di
 
 Die Arten von Vorgängen, die von einer Ressourceninstanz für Speicherkontodaten ausgeführt werden können, werden durch die [Azure-Rollenzuweisungen](storage-auth-aad.md#assign-azure-roles-for-access-rights) der Ressourceninstanz bestimmt. Ressourceninstanzen müssen aus dem gleichen Mandanten stammen wie Ihr Speicherkonto, können aber zu einem beliebigen Abonnement im Mandanten gehören.
 
-Die Liste mit den unterstützten Azure-Diensten finden Sie im Abschnitt [Vertrauenswürdiger Zugriff auf der Grundlage einer systemseitig zugewiesenen verwalteten Identität](#trusted-access-system-assigned-managed-identity) dieses Artikels.
+> [!NOTE]
+> Dieses Feature befindet sich in der Public Preview-Phase und ist in allen öffentlichen Cloudregionen verfügbar.
 
 > [!NOTE]
-> Dieses Feature befindet sich in der Public Preview-Phase und ist in allen öffentlichen Cloudregionen verfügbar. 
+> Ressourceninstanzregeln werden zurzeit nur für Azure Synapse unterstützt. Die Unterstützung für andere Azure-Dienste, die im Abschnitt [Vertrauenswürdiger Zugriff auf der Grundlage einer systemseitig zugewiesenen verwalteten Identität](#trusted-access-system-assigned-managed-identity) dieses Artikels aufgeführt sind, wird in den nächsten Wochen verfügbar sein.
+
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -415,7 +417,7 @@ Installieren Sie **Az. Storage** (Vorschaumodul).
 Install-Module Az.Storage -Repository PsGallery -RequiredVersion 3.0.1-preview -AllowClobber -AllowPrerelease -Force 
 ```
 
-Weitere Informationen zum Installieren von PowerShell-Modulen finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Weitere Informationen zum Installieren von PowerShell-Modulen finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps).
 
 #### <a name="grant-access"></a>Gewähren von Zugriff
 
@@ -565,7 +567,7 @@ Ressourcen einiger Dienste können, **sofern sie in Ihrem Abonnement registriert
 | Azure-Dateisynchronisierung          | Microsoft.StorageSync      | Ermöglicht das Transformieren eines lokalen Dateiservers in einen Cache für Azure-Dateifreigaben. Ermöglicht die Synchronisierung mit mehreren Standorten, eine schnelle Notfallwiederherstellung und die cloudbasierte Sicherung. [Weitere Informationen](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft.HDInsight        | Stellen Sie die anfänglichen Inhalte des Standarddateisystems für einen neuen HDInsight-Cluster bereit. [Weitere Informationen](../../hdinsight/hdinsight-hadoop-use-blob-storage.md) |
 | Azure Import/Export      | Microsoft.ImportExport     | Ermöglicht das Importieren von Daten in Azure Storage oder das Exportieren von Daten aus Azure Storage mit dem Dienst „Azure Storage Import/Export“. [Weitere Informationen](../../import-export/storage-import-export-service.md)  |
-| Azure Monitor            | Microsoft.Insights         | Dieser Dienst ermöglicht das Schreiben von Überwachungsdaten in ein sicheres Speicherkonto, einschließlich Ressourcenprotokollen, Azure Active Directory-Anmelde- und -Überwachungsprotokollen sowie Microsoft Intune-Protokollen. [Weitere Informationen](../../azure-monitor/platform/roles-permissions-security.md) |
+| Azure Monitor            | Microsoft.Insights         | Dieser Dienst ermöglicht das Schreiben von Überwachungsdaten in ein sicheres Speicherkonto, einschließlich Ressourcenprotokollen, Azure Active Directory-Anmelde- und -Überwachungsprotokollen sowie Microsoft Intune-Protokollen. [Weitere Informationen](../../azure-monitor/roles-permissions-security.md) |
 | Azure-Netzwerke         | Microsoft.Network          | Speichern und analysieren Sie Netzwerk-Datenverkehrsprotokolle, beispielsweise mit Network Watcher und Traffic Analytics-Diensten. [Weitere Informationen](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | Aktivieren Sie die Replikation für die Notfallwiederherstellung von virtuellen Azure-IaaS-Computern bei Verwendung von firewallfähigen Cache-, Quell- oder Zielspeicherkonten.  [Weitere Informationen](../../site-recovery/azure-to-azure-tutorial-enable-replication.md) |
 

@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4a35bafd2c5dc78f0d9d1debbf21babb6279545
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: a204db8453ec8126e1aa9033e10f739a6f8a0d43
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740090"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095136"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen in Azure Active Directory (Vorschau)
 
@@ -28,7 +28,7 @@ Betrachten Sie dieses Beispiel: Contoso hat Personal in verschiedenen geografisc
 
 ## <a name="how-this-feature-works"></a>Funktionsweise dieses Features
 
-Erstellen Sie eine neue Microsoft 365- oder Sicherheitsgruppe, deren Eigenschaft „isAssignableToRole“ auf „true“ festgelegt ist. Sie können diese Eigenschaft auch aktivieren, wenn Sie eine Gruppe im Azure-Portal erstellen. Dazu aktivieren Sie die Option **Azure AD-Rollen können der Gruppe zugewiesen werden**. In beiden Fällen können Sie die Gruppe anschließend einer oder mehreren Azure AD-Rollen auf gleiche Weise zuweisen, wie Sie auch Benutzern Rollen zuweisen. In einer einzigen Azure AD-Organisation (Mandant) können maximal 200 Gruppen erstellt werden, denen Rollen zugewiesen werden können.
+Erstellen Sie eine neue Microsoft 365- oder Sicherheitsgruppe, deren Eigenschaft „isAssignableToRole“ auf „true“ festgelegt ist. Sie können diese Eigenschaft auch aktivieren, wenn Sie eine Gruppe im Azure-Portal erstellen. Dazu aktivieren Sie die Option **Azure AD-Rollen können der Gruppe zugewiesen werden**. In beiden Fällen können Sie die Gruppe anschließend einer oder mehreren Azure AD-Rollen auf gleiche Weise zuweisen, wie Sie auch Benutzern Rollen zuweisen. In einer einzigen Azure AD-Organisation (Mandant) können maximal 250 Gruppen erstellt werden, denen Rollen zugewiesen werden können.
 
 Wenn Sie nicht möchten, dass Mitglieder der Gruppe dauerhaften Zugriff auf die Rolle haben, können Sie Azure AD Privileged Identity Management verwenden. Weisen Sie eine Gruppe als berechtigtes Mitglied einer Azure AD-Rolle zu. Jedes Mitglied der Gruppe ist dann berechtigt, seine Zuweisung für die Rolle, der die Gruppe zugewiesen ist, aktivieren zu lassen. Anschließend kann das Gruppenmitglied seine Rollenzuweisung für eine festgelegte Zeitspanne aktivieren.
 

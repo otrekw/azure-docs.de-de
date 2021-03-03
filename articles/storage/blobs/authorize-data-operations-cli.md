@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/13/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 060bfb6c88bbed8ba12c5b5ebfd2e9617f5abfb2
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 06b37e8b25d932115384124a45156c801fb9708f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637237"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361671"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-with-azure-cli"></a>Auswählen der Autorisierung des Zugriffs auf Blobdaten mit der Azure CLI
 
@@ -33,6 +33,9 @@ Azure CLI-Befehle zum Lesen und Schreiben von Blobdaten enthalten den optionalen
 - Legen Sie den Parameter `--auth-mode` auf den Legacywert `key` fest, damit versucht wird, den Kontozugriffsschlüssel für die Autorisierung abzurufen. Wenn Sie den Parameter `--auth-mode` weglassen, versucht die Azure CLI ebenfalls, den Zugriffsschlüssel abzurufen.
 
 Damit Sie den Parameter `--auth-mode` verwenden können, vergewissern Sie sich, dass mindestens Version 2.0.46 der Azure CLI installiert ist. Führen Sie `az --version` aus, um Ihre installierte Version zu überprüfen.
+
+> [!NOTE]
+> Wenn ein Speicherkonto mit **ReadOnly** in Azure Resource Manager gesperrt ist, ist der Vorgang [Schlüssel auflisten](/rest/api/storagerp/storageaccounts/listkeys) für dieses Speicherkonto nicht zulässig. **Schlüssel auflisten** ist ein POST-Vorgang, und alle POST-Vorgänge werden verhindert, wenn die Sperre **ReadOnly** für das Konto festgelegt wurde. Aus diesem Grund müssen Benutzer, die nicht bereits über die Kontoschlüssel verfügen, Azure AD-Anmeldeinformationen für den Zugriff auf Blobdaten verwenden, wenn das Konto mit **ReadOnly** gesperrt ist.
 
 > [!IMPORTANT]
 > Wenn Sie den Parameter `--auth-mode` weglassen oder auf `key`festlegen, versucht die Azure CLI, den Kontozugriffsschlüssel für die Autorisierung zu verwenden. In diesem Fall empfiehlt Microsoft, den Zugriffsschlüssel entweder im Befehl oder in der Umgebungsvariablen **AZURE_STORAGE_KEY** bereitzustellen. Weitere Informationen zu Umgebungsvariablen finden Sie im Abschnitt [Festlegen von Umgebungsvariablen für Autorisierungsparameter](#set-environment-variables-for-authorization-parameters).
@@ -82,6 +85,9 @@ az storage container create \
     --account-key <key>
     --auth-mode key
 ```
+
+> [!IMPORTANT]
+> Wenn ein Speicherkonto mit **ReadOnly** in Azure Resource Manager gesperrt ist, ist der Vorgang [Schlüssel auflisten](/rest/api/storagerp/storageaccounts/listkeys) für dieses Speicherkonto nicht zulässig. **Schlüssel auflisten** ist ein POST-Vorgang, und alle POST-Vorgänge werden verhindert, wenn die Sperre **ReadOnly** für das Konto festgelegt wurde. Aus diesem Grund müssen Benutzer, wenn das Konto mit einer **ReadOnly**-Sperre gesperrt ist, mit Azure AD-Anmeldeinformationen auf Daten zugreifen.
 
 ## <a name="authorize-with-a-sas-token"></a>Autorisieren mit einem SAS-Token
 

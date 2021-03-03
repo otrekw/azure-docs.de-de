@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/06/2019
+ms.date: 02/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 16c9d64cc4dd49898245d74108cd6a4f2f0e4660
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 781d1509b69ecb09189772f4a31d4872201d0b2e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455169"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652928"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>Tutorial: Integrieren von Costpoint in Azure Active Directory
 
@@ -26,71 +26,56 @@ In diesem Tutorial erfahren Sie, wie Sie Costpoint in Azure Active Directory (Az
 * Ermöglichen Sie Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Costpoint anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Ein Costpoint-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+* Ein Costpoint-Abonnement, für das das einmalige Anmelden (SSO) aktiviert ist.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung. Costpoint unterstützt **SP- und IDP** -initiiertes einmaliges Anmelden.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung. 
+
+* Costpoint unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
 
 ## <a name="generate-costpoint-metadata"></a>Generieren von Costpoint-Metadaten
 
 Die SAML-SSO-Konfiguration für Costpoint wird im Leitfaden **DeltekCostpoint711Security.pdf** erläutert. Laden Sie diesen Leitfaden von der Deltek Costpoint-Supportwebsite herunter, und sehen Sie sich die Abschnitte **SAML Single Sign-on Setup** (SAML-SSO-Einrichtung) > **Configure SAML Single Sign-on between Costpoint and Microsoft Azure** (Konfigurieren von SSO für SAML zwischen Costpoint und Azure AD) an. Befolgen Sie die Anweisungen, und generieren Sie die Datei **Costpoint SP Federation Metadata XML** (Costpoint-SP-Verbundmetadaten-XML). 
 
-![Screenshot des Fensters „Product Configuration Utility“, in dem die Registerkarte „WebLogic – Security“ ausgewählt ist](./media/costpoint-tutorial/config-utility.png)
+![Screenshot des Fensters „Product Configuration Utility“, in dem die Registerkarte „WebLogic – Security“ ausgewählt ist](./media/costpoint-tutorial/configuration-utility.png)
 
 ## <a name="add-costpoint-from-the-gallery"></a>Hinzufügen von Costpoint aus dem Katalog
 
-Fügen Sie zum Integrieren von Costpoint in Azure AD Costpoint zunächst aus dem Katalog im Azure-Portal der Liste der verwalteten SaaS-Apps hinzu:
+Zum Konfigurieren der Integration von Costpoint in Azure AD müssen Sie Costpoint aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
-
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-
-   ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
-
-1. Wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen** aus.
-
-   ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
-
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
-
-   ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
-
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Costpoint** in das Suchfeld ein.
+1. Wählen Sie **Costpoint** im Ergebnisbereich aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-   ![Costpoint in der Ergebnisliste](common/search-new-app.png)
+## <a name="configure-and-test-azure-ad-sso-for-costpoint"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Costpoint
 
-1. Wählen Sie in der Ergebnisliste **Costpoint** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Costpoint mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Costpoint eingerichtet werden.
 
-## <a name="configure-and-test-azure-ad-single-sgn-on"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Costpoint die folgenden Schritte aus:
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Costpoint mithilfe eines Testbenutzers mit dem Namen **B. Simon** . Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Costpoint eingerichtet werden.
-
-Sie müssen die folgenden Aufgaben ausführen, um das einmalige Anmelden von Azure AD bei Costpoint zu konfigurieren und zu testen:
-
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen
-1. **[Konfigurieren von Costpoint](#configure-costpoint)** , um die SAML-Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Erstellen eines Costpoint-Testbenutzers](#create-a-costpoint-test-user)** , um ein Pendant von B. Simon in Costpoint zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für Costpoint](#configure-costpoint-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines Costpoint-Testbenutzers](#create-costpoint-test-user)** , um ein Pendant von B. Simon in Costpoint zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren:
 
 1. Wählen Sie auf der Anwendungsintegrationsseite für **Costpoint** die Option **Einmaliges Anmelden** aus.
 
-   ![Link zum Konfigurieren des einmaligen Anmeldens](common/select-sso.png)
-
-1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie über eine *Dienstanbieter-Metadatendatei* verfügen:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie über eine **Dienstanbieter-Metadatendatei** verfügen:
 
    > [!NOTE]
    > Die Dienstanbieter-Metadatendatei können Sie unter [Generieren von Costpoint-Metadaten](#generate-costpoint-metadata) abrufen. Die Verwendung der Datei wird weiter unten im Tutorial erläutert.
@@ -104,82 +89,68 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal
       > [!NOTE]
       > Falls die Werte **Bezeichner** und **Antwort-URL** nicht automatisch aufgefüllt werden, geben Sie die erforderlichen Werte manuell ein. Vergewissern Sie sich, dass **Bezeichner (Entitäts-ID)** und **Antwort-URL (Assertionsverbraucherdienst-URL)** richtig festgelegt sind und es sich beim Wert unter **ACS-URL** um eine gültige Costpoint-URL handelt, die auf **/LoginServlet.cps** endet.
 
-   1. Wählen Sie **Zusätzliche URLs festlegen** aus. Geben Sie für **Relayzustand** einen Wert im folgenden Format ein: `system=[your system]` (Beispiel: **system=DELTEKCP** ).
+   1. Wählen Sie **Zusätzliche URLs festlegen** aus. Geben Sie für **Relayzustand** einen Wert im folgenden Format ein: `system=[your system]` (Beispiel: **system=DELTEKCP**).
 
 1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** das **Kopiersymbol** aus, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie im Editor.
 
    ![SAML-Signaturzertifikat](common/copy-metadataurl.png)
 
-### <a name="configure-costpoint"></a>Konfigurieren von Costpoint
-
-1. Wechseln Sie zurück zum Costpoint-Konfigurationshilfsprogramm. Fügen Sie in das Textfeld **IdP Federation Metadata XML** (IdP-Verbundmetadaten-XML) den Inhalt der Datei *App-Verbundmetadaten-URL* ein. 
-
-   ![Costpoint-Konfigurationshilfsprogramm](./media/costpoint-tutorial/config-utility-idp.png)
-
-1. Befolgen Sie die übrigen Anweisungen im Leitfaden **DeltekCostpoint711Security.pdf** , um die Costpoint-SAML-Einrichtung abzuschließen.
-
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens B. Simon im Azure-Portal.
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-1. Wählen Sie im linken Bereich des Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
-
-   ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
-
-1. Wählen Sie **Neuer Benutzer** aus.
-
-   ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
-
-1. Führen Sie in den **Benutzereigenschaften** die folgenden Schritte aus:
-
-   ![Dialogfeld „Benutzer“](common/user-properties.png)
-
-   1. Geben Sie **B.Simon** in das Feld **Name** ein.
-   
-   1. Geben Sie im Feld **Benutzername** die Zeichenfolge `b.simon\@yourcompanydomain.extension` ein (z. B. B.Simon@contoso.com).
-   
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert aus dem Feld **Kennwort** .
-   
-   1. Klicken Sie auf **Erstellen** .
+1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Costpoint gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
-
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Costpoint** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus.
+## <a name="configure-costpoint-sso"></a>Konfigurieren des einmaligen Anmeldens für Costpoint
 
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
+1. Wechseln Sie zurück zum Costpoint-Konfigurationshilfsprogramm. Fügen Sie in das Textfeld **IdP Federation Metadata XML** (IdP-Verbundmetadaten-XML) den Inhalt der Datei *App-Verbundmetadaten-URL* ein. 
 
-1. Klicken Sie auf **Benutzer hinzufügen** . Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+   ![Costpoint-Konfigurationshilfsprogramm](./media/costpoint-tutorial/configuration-utility-metadata.png)
 
-   ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
+1. Befolgen Sie die übrigen Anweisungen im Leitfaden **DeltekCostpoint711Security.pdf**, um die Costpoint-SAML-Einrichtung abzuschließen.
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** die Option **B.Simon** aus. Wählen Sie anschließend **Auswählen** aus.
+### <a name="create-costpoint-test-user"></a>Erstellen eines Costpoint-Testbenutzers
 
-1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Wählen Sie anschließend **Auswählen** aus.
-
-1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
-
-### <a name="create-a-costpoint-test-user"></a>Erstellen eines Costpoint-Testbenutzers
-
-In diesem Abschnitt erstellen Sie einen Benutzer in Costpoint. Angenommen, die Benutzer-ID lautet **B.SIMON** und der Benutzername **B.Simon** . Arbeiten Sie mit dem [Supportteam für den Costpoint-Client](https://www.deltek.com/about/contact-us) zusammen, um die Benutzer zur Costpoint-Plattform hinzuzufügen. Der Benutzer muss erstellt und aktiviert werden, damit er einmaliges Anmelden verwenden kann.
+In diesem Abschnitt erstellen Sie einen Benutzer in Costpoint. Angenommen, die Benutzer-ID lautet **B.SIMON** und der Benutzername **B.Simon**. Arbeiten Sie mit dem [Supportteam für den Costpoint-Client](https://www.deltek.com/about/contact-us) zusammen, um die Benutzer zur Costpoint-Plattform hinzuzufügen. Der Benutzer muss erstellt und aktiviert werden, damit er einmaliges Anmelden verwenden kann.
 
 Nach der Erstellung des Benutzers muss für **Authentication Method** (Authentifizierungsmethode) die Option **Active Directory** ausgewählt werden, das Kontrollkästchen **SAML Single Sign-on** (Einmaliges Anmelden für SAML) muss aktiviert werden, und für **Active Directory or Certificate ID** (Active Directory- oder Zertifikat-ID) muss der Benutzername von Azure Active Directory angegeben werden, wie im folgenden Screenshot gezeigt:
 
 ![Costpoint-Benutzer](./media/costpoint-tutorial/costpoint-user.png)
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-Wenn Sie im Zugriffsbereich die Kachel „Costpoint“ auswählen, sollten Sie automatisch bei der Costpoint-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+#### <a name="sp-initiated"></a>SP-initiiert:
 
-- [Liste mit den Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](./tutorial-list.md)
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Costpoint weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* Rufen Sie direkt die Costpoint-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
+#### <a name="idp-initiated"></a>IDP-initiiert:
+
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Costpoint-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
+
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Costpoint“ in „Meine Apps“ geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Costpoint-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Nach dem Konfigurieren von Costpoint können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

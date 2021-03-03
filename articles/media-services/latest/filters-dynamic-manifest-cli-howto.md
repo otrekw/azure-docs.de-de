@@ -14,33 +14,31 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 75df01ff65a0910dab140942b520978cd7728775
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f75b8055757557eadeb98a45196a116e56c5aa35
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897576"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093444"
 ---
 # <a name="creating-filters-with-cli"></a>Erstellen von Filtern mit der CLI
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Bei der Inhaltsbereitstellung für Ihre Kunden (Streaming von Liveereignissen oder Video on Demand) benötigen Ihre Kunden möglicherweise mehr Flexibilität als in der Manifestdatei für die Standardmediendatei beschrieben. Azure Media Services ermöglicht es Ihnen, Kontofilter und Medienobjektfilter für Ihre Inhalte zu definieren. 
+Bei der Inhaltsbereitstellung für Ihre Kunden (Streaming von Liveereignissen oder Video on Demand) benötigen Ihre Kunden möglicherweise mehr Flexibilität als in der Manifestdatei für die Standardmediendatei beschrieben. Azure Media Services ermöglicht es Ihnen, Kontofilter und Medienobjektfilter für Ihre Inhalte zu definieren.
 
 Eine ausführliche Beschreibung dieses Features und der Szenarien, in denen es verwendet wird, finden Sie unter [Dynamische Manifeste](filters-dynamic-manifest-overview.md) und [Filter](filters-concept.md).
 
-In diesem Thema werden das Konfigurieren eines Filters für ein Video on Demand-Medienobjekt und die Verwendung der Befehlszeilenschnittstelle für Media Services v3 zum Erstellen von [Kontofiltern](/cli/azure/ams/account-filter?view=azure-cli-latest) und [Filtern für Medienobjekte](/cli/azure/ams/asset-filter?view=azure-cli-latest) gezeigt. 
+In diesem Thema werden das Konfigurieren eines Filters für ein Video on Demand-Medienobjekt und die Verwendung der Befehlszeilenschnittstelle für Media Services v3 zum Erstellen von [Kontofiltern](/cli/azure/ams/account-filter?view=azure-cli-latest) und [Filtern für Medienobjekte](/cli/azure/ams/asset-filter?view=azure-cli-latest) gezeigt.
 
 > [!NOTE]
 > Lesen Sie die Informationen zu [presentationTimeRange](filters-concept.md#presentationtimerange).
 
-## <a name="prerequisites"></a>Voraussetzungen 
+## <a name="prerequisites"></a>Voraussetzungen
 
-- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md) Merken Sie sich den Namen der Ressourcengruppe und den Namen des Media Services-Kontos. 
+- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md) Merken Sie sich den Namen der Ressourcengruppe und den Namen des Media Services-Kontos.
 
-[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
-
-## <a name="define-a-filter"></a>Definieren eines Filters 
+## <a name="define-a-filter"></a>Definieren eines Filters
 
 Das folgende Beispiel definiert die Titelauswahlbedingungen, die dem endgültigen Manifest hinzugefügt werden. Dieser Filter bezieht alle EC-3-Audiotitel und alle Videotitel mit Bitraten im Bereich von 0–1000000 ein.
 
@@ -82,7 +80,7 @@ Das folgende Beispiel definiert die Titelauswahlbedingungen, die dem endgültige
 
 ## <a name="create-account-filters"></a>Erstellen von Kontofiltern
 
-Der folgende [az ams account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest)-Befehl erstellt einen Kontofilter mit [zuvor definierten](#define-a-filter) Titelfilter-Auswahloptionen. 
+Der folgende [az ams account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest)-Befehl erstellt einen Kontofilter mit [zuvor definierten](#define-a-filter) Titelfilter-Auswahloptionen.
 
 Mit diesem Befehl können Sie einen optionalen `--tracks`-Parameter übergeben, der JSON-Code für die ausgewählten Spuren enthält.  Verwenden Sie „@{file}“, um den JSON-Code aus einer Datei zu laden. Wenn Sie die Azure CLI lokal verwenden, geben Sie den gesamten Dateipfad an:
 
@@ -130,7 +128,7 @@ Die folgende Tabelle zeigt einige Beispiele für URLs mit Filtern:
 
 ## <a name="next-step"></a>Nächster Schritt
 
-[Streamen von Videos](stream-files-tutorial-with-api.md) 
+[Streamen von Videos](stream-files-tutorial-with-api.md)
 
 ## <a name="see-also"></a>Weitere Informationen
 

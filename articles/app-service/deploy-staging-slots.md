@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ef90603e8c8cdd66d43b9f88f6d128d8a472fd8a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1c4cff264b63506432daf350be3557bae7234584
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150325"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594232"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -99,7 +99,7 @@ In jeder Phase des Austauschvorgangs finden sämtliche Vorgänge zur Initialisie
 
 [!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
 
-Wenn Sie eine App-Einstellung oder eine Verbindungszeichenfolge fest einem bestimmten Slot zuordnen möchten, sodass sie nicht ausgetauscht wird, navigieren Sie zur**Konfigurationsseite** für den entsprechenden Slot. Aktivieren Sie nach dem Hinzufügen oder Bearbeiten einer Einstellung das Kontrollkästchen **Bereitstellungssloteinstellung**. Ist dieses Kontrollkästchen aktiviert, wird die Einstellung nicht ausgetauscht. 
+Wenn Sie eine App-Einstellung oder eine Verbindungszeichenfolge fest einem bestimmten Slot zuordnen möchten, sodass sie nicht ausgetauscht wird, navigieren Sie zur **Konfigurationsseite** für den entsprechenden Slot. Aktivieren Sie nach dem Hinzufügen oder Bearbeiten einer Einstellung das Kontrollkästchen **Bereitstellungssloteinstellung**. Ist dieses Kontrollkästchen aktiviert, wird die Einstellung nicht ausgetauscht. 
 
 ![Sloteinstellung](./media/web-sites-staged-publishing/SlotSetting.png)
 
@@ -222,7 +222,7 @@ Informationen zur Problembehandlung finden Sie bei Bedarf unter [Behandeln von P
 
 ## <a name="monitor-a-swap"></a>Überwachen eines Austauschs
 
-Bei länger dauernden [Austauschvorgängen](#AboutConfiguration) können Sie sich anhand des [Aktivitätsprotokolls](../azure-monitor/platform/platform-logs-overview.md) über den Austauschvorgang informieren.
+Bei länger dauernden [Austauschvorgängen](#AboutConfiguration) können Sie sich anhand des [Aktivitätsprotokolls](../azure-monitor/essentials/platform-logs-overview.md) über den Austauschvorgang informieren.
 
 Wählen Sie im Portal auf der Ressourcenseite Ihrer App im linken Bereich die Option **Aktivitätsprotokoll** aus.
 

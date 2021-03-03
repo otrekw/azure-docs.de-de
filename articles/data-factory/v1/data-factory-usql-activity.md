@@ -1,24 +1,19 @@
 ---
 title: 'Transformieren von Daten mit dem U-SQL-Skript: Azure'
 description: Hier wird die Datenverarbeitung oder -transformation durch Ausführen von U-SQL-Skripts für einen Azure Data Lake Analytics-Computedienst (Version 1) erläutert.
-services: data-factory
-documentationcenter: ''
-ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/01/2017
 author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-csharp
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: a5e53cab30f1adca05652a3b3b7541e12ebebbdb
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 5931cb28721e8658a771ceea1cd94624a0c09f7c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631460"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392917"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformieren von Daten durch Ausführen von U-SQL-Skripts für Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -28,7 +23,7 @@ ms.locfileid: "92631460"
 > [!NOTE]
 > Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [U-SQL-Aktivität in V2](../transform-data-using-data-lake-analytics.md).
 
-Eine Pipeline in einer Azure Data Factory verarbeitet Daten in verknüpften Speicherdiensten mithilfe verknüpfter Compute Services. Sie enthält eine Abfolge von Aktivitäten, wobei jede Aktivität einen bestimmten Verarbeitungsvorgang ausführt. In diesem Kapitel wird die **U-SQL-Aktivität von Data Lake Analytics** beschrieben, die ein **U-SQL** -Skript auf einem mit **Azure Data Lake Analytics** verknüpften Computedienst ausführt. 
+Eine Pipeline in einer Azure Data Factory verarbeitet Daten in verknüpften Speicherdiensten mithilfe verknüpfter Compute Services. Sie enthält eine Abfolge von Aktivitäten, wobei jede Aktivität einen bestimmten Verarbeitungsvorgang ausführt. In diesem Kapitel wird die **U-SQL-Aktivität von Data Lake Analytics** beschrieben, die ein **U-SQL**-Skript auf einem mit **Azure Data Lake Analytics** verknüpften Computedienst ausführt. 
 
 Erstellen Sie ein Azure Data Lake Analytics-Konto, bevor Sie mit einer U-SQL-Aktivität von Data Lake Analytics eine Pipeline erstellen. Weitere Informationen zu Azure Data Lake Analytics finden Sie unter [Erste Schritte mit Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 
@@ -92,7 +87,7 @@ Alternativ können Sie die Authentifizierung mit Benutzeranmeldeinformationen f�
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| **Autorisierung** | Klicken Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren** , und geben Sie Ihre Anmeldeinformationen ein. Hierdurch wird die automatisch generierte Autorisierungs-URL dieser Eigenschaft zugewiesen. | Ja |
+| **Autorisierung** | Klicken Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren**, und geben Sie Ihre Anmeldeinformationen ein. Hierdurch wird die automatisch generierte Autorisierungs-URL dieser Eigenschaft zugewiesen. | Ja |
 | **sessionId** | OAuth-Sitzungs-ID aus der OAuth-Autorisierungssitzung. Jede Sitzungs-ID ist eindeutig und darf nur einmal verwendet werden. Diese Einstellung wird automatisch generiert, wenn Sie den Data Factory-Editor verwenden. | Ja |
 
 **Beispiel: Authentifizierung mit Benutzeranmeldeinformationen**
@@ -121,7 +116,7 @@ Der von Ihnen mithilfe der Schaltfläche **Autorisieren** generierte Autorisieru
 | Benutzerkonten, die NICHT von Azure Active Directory verwaltet werden (@hotmail.com, @live.com usw.) |12 Stunden |
 | Benutzerkonten, die von Azure Active Directory (AAD) verwaltet werden |14 Tage nach der letzten Sliceausführung. <br/><br/>90 Tage, wenn ein Slice, das auf einem verknüpften OAuth-Dienst basiert, mindestens einmal alle 14 Tage ausgeführt wird. |
 
-Um diesen Fehler zu vermeiden oder zu beheben, autorisieren Sie sich durch Klicken auf die Schaltfläche **Autorisieren** erneut, wenn das **Token abläuft** , und stellen den verknüpften Dienst anschließend erneut bereit. Sie können auch Werte für die Eigenschaften **sessionId** und **authorization** programmgesteuert mit folgendem Code generieren:
+Um diesen Fehler zu vermeiden oder zu beheben, autorisieren Sie sich durch Klicken auf die Schaltfläche **Autorisieren** erneut, wenn das **Token abläuft**, und stellen den verknüpften Dienst anschließend erneut bereit. Sie können auch Werte für die Eigenschaften **sessionId** und **authorization** programmgesteuert mit folgendem Code generieren:
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||

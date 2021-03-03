@@ -6,18 +6,18 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 4d4287b877f5327b7fd485358b26148686b9515b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7ccd01f8c351ac2a7326a3b893bd78d14599db50
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487924"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588304"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Überwachung und Optimierung in Azure Database for PostgreSQL – Einzelserver
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for PostgreSQL bietet verschiedene Überwachungsoptionen, um Einblicke in das Verhalten Ihres Servers zu gewähren.
 
 ## <a name="metrics"></a>Metriken
-Azure Database for PostgreSQL bietet verschiedene Metriken, die Einblicke in das Verhalten der Ressourcen gewähren, die dem PostgreSQL-Server zugrunde liegen. Jede Metrik wird mit einer Frequenz von einer Minute ausgegeben und verfügt über einen [Verlauf von bis zu 93 Tagen](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics). Sie können Warnungen für die Metriken konfigurieren. Eine Schritt-für-Schritt-Anleitung finden Sie unter [Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL](howto-alert-on-metric.md) (Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for PostgreSQL). Darüber hinaus können weitere Aufgaben wie das Einrichten automatisierter Aktionen, das Durchführen erweiterter Analysen und das Archivieren des Verlaufs ausgeführt werden. Weitere Informationen finden Sie unter [Überblick über Metriken in Microsoft Azure](../azure-monitor/platform/data-platform.md).
+Azure Database for PostgreSQL bietet verschiedene Metriken, die Einblicke in das Verhalten der Ressourcen gewähren, die dem PostgreSQL-Server zugrunde liegen. Jede Metrik wird mit einer Frequenz von einer Minute ausgegeben und verfügt über einen [Verlauf von bis zu 93 Tagen](../azure-monitor/essentials/data-platform-metrics.md#retention-of-metrics). Sie können Warnungen für die Metriken konfigurieren. Eine Schritt-für-Schritt-Anleitung finden Sie unter [Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL](howto-alert-on-metric.md) (Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for PostgreSQL). Darüber hinaus können weitere Aufgaben wie das Einrichten automatisierter Aktionen, das Durchführen erweiterter Analysen und das Archivieren des Verlaufs ausgeführt werden. Weitere Informationen finden Sie unter [Überblick über Metriken in Microsoft Azure](../azure-monitor/data-platform.md).
 
 ### <a name="list-of-metrics"></a>Liste der Metriken
 Die folgenden Metriken sind für Azure Database for PostgreSQL verfügbar:
@@ -42,7 +42,7 @@ Die folgenden Metriken sind für Azure Database for PostgreSQL verfügbar:
 |pg_replica_log_delay_in_seconds|Replikatverzögerung|Sekunden|Die Zeit seit der letzten wiedergegebenen Transaktion. Diese Metrik steht nur für Replikatserver zur Verfügung.|
 
 ## <a name="server-logs"></a>Serverprotokolle
-Sie können die Protokollierung auf Ihrem Server aktivieren. Diese Ressourcenprotokolle können an [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md), Event Hubs und ein Speicherkonto gesendet werden. Weitere Informationen zur Protokollierung finden Sie auf der Seite [Serverprotokolle](concepts-server-logs.md).
+Sie können die Protokollierung auf Ihrem Server aktivieren. Diese Ressourcenprotokolle können an [Azure Monitor-Protokolle](../azure-monitor/logs/log-query-overview.md), Event Hubs und ein Speicherkonto gesendet werden. Weitere Informationen zur Protokollierung finden Sie auf der Seite [Serverprotokolle](concepts-server-logs.md).
 
 ## <a name="query-store"></a>Abfragespeicher
 Der [Abfragespeicher](concepts-query-store.md) dient dazu, die Abfrageleistung im Zeitablauf zu verfolgen, einschließlich Statistiken zur Abfrageausführungszeit und Warteereignissen. Das Feature speichert Informationen zur Leistung der Abfrageausführungszeit in einer Systemdatenbank namens **azure_sys** unter dem Schema „query_store“ persistent. Sie können die Sammlung und Speicherung von Daten über verschiedene Konfigurationsoptionen steuern.
@@ -61,6 +61,6 @@ Im Dokument [Benachrichtigungen zu geplanten Wartungen](./concepts-planned-maint
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Anleitungen zum Erstellen einer Warnung zu einer Metrik finden Sie unter [Einrichten von Warnungen](howto-alert-on-metric.md).
-- Weitere Informationen dazu, wie Sie mit dem Azure-Portal, der REST-API oder der CLI auf Metriken zugreifen bzw. diese exportieren, finden Sie unter [Überblick über Metriken in Microsoft Azure](../azure-monitor/platform/data-platform.md).
+- Weitere Informationen dazu, wie Sie mit dem Azure-Portal, der REST-API oder der CLI auf Metriken zugreifen bzw. diese exportieren, finden Sie unter [Überblick über Metriken in Microsoft Azure](../azure-monitor/data-platform.md).
 - Lesen Sie unseren Blog zu [Best Practices für die Überwachung Ihres Servers](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/) (in englischer Sprache).
 - Informieren Sie sich über [Benachrichtigungen bei geplanten Wartungen](./concepts-planned-maintenance-notification.md) in Azure Database for PostgreSQL (Einzelserver).

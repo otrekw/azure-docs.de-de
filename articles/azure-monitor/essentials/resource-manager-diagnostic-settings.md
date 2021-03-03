@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/11/2020
-ms.openlocfilehash: 87951c0366090c1ea4eba490d114771e47bf452c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 304c359296c4fbff79dd367facd8bbb98c8903b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597575"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731441"
 ---
 # <a name="resource-manager-template-samples-for-diagnostic-settings-in-azure-monitor"></a>Beispiele für Resource Manager-Vorlagen für Diagnoseeinstellungen in Azure Monitor
 Dieser Artikel enthält Beispiele für [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) zum Erstellen von Diagnoseeinstellungen für eine Azure-Ressource. Jedes Beispiel umfasst eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
@@ -349,7 +349,7 @@ Im folgenden Beispiel wird eine Diagnoseeinstellung für eine Azure SQL-Datenban
 ```
 
 ## <a name="diagnostic-setting-for-recovery-services-vault"></a>Diagnoseeinstellung für den Recovery Services-Tresor
-Im folgenden Beispiel wird eine Diagnoseeinstellung für einen Azure Recovery Services-Tresor erstellt, indem der Vorlage eine Ressource vom Typ `microsoft.recoveryservices/vaults/providers/diagnosticSettings` hinzugefügt wird. In diesem Beispiel wird der Sammlungsmodus wie unter [Azure-Ressourcenprotokolle](../platform/resource-logs.md#send-to-log-analytics-workspace) beschrieben angegeben. Geben Sie `Dedicated` oder `AzureDiagnostics` für die Eigenschaft `logAnalyticsDestinationType` an.
+Im folgenden Beispiel wird eine Diagnoseeinstellung für einen Azure Recovery Services-Tresor erstellt, indem der Vorlage eine Ressource vom Typ `microsoft.recoveryservices/vaults/providers/diagnosticSettings` hinzugefügt wird. In diesem Beispiel wird der Sammlungsmodus wie unter [Azure-Ressourcenprotokolle](./resource-logs.md#send-to-log-analytics-workspace) beschrieben angegeben. Geben Sie `Dedicated` oder `AzureDiagnostics` für die Eigenschaft `logAnalyticsDestinationType` an.
 
 ### <a name="template-file"></a>Vorlagendatei
 
@@ -812,5 +812,5 @@ Im folgenden Beispiel wird eine Diagnoseeinstellung für jeden Speicherdienstend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Rufen Sie weitere Beispielvorlagen für Azure Monitor ab](../samples/resource-manager-samples.md).
+* [Rufen Sie weitere Beispielvorlagen für Azure Monitor ab](../resource-manager-samples.md).
 * [Erfahren Sie mehr über Diagnoseeinstellungen](../essentials/diagnostic-settings.md).

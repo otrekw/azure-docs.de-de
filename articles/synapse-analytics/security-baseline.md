@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5e2f6d8ca1f3911959f396eb1ed77ce8377c0e3c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 9831f70a88aba497eb7d6a759233c3d7d7be62c6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807834"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585120"
 ---
 # <a name="azure-security-baseline-for-azure-synapse-analytics"></a>Azure-Sicherheitsbaseline für Azure Synapse Analytics
 
@@ -167,9 +167,9 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen der Konfigurationen von Netzwerkressourcen und zum Erkennen von Änderungen bei Netzwerkressourcen, die sich auf Ihren dedizierten SQL-Pool beziehen. Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzwerkressourcen ausgelöst werden.
 
-* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -237,7 +237,7 @@ Die Überwachung kann sowohl auf der Datenbank- als auch auf der Serverebene akt
 
 * [Verwalten des Azure Blob Storage-Lebenszyklus](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)
 
-* [Festlegen der Protokollaufbewahrungsparameter in einem Log Analytics-Arbeitsbereich](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Festlegen der Protokollaufbewahrungsparameter in einem Log Analytics-Arbeitsbereich](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 * [Erfassen von Streamingereignissen in Event Hubs](../event-hubs/event-hubs-capture-overview.md)
 
@@ -629,7 +629,7 @@ Die Autorisierung wird durch die Rollenmitgliedschaften und Berechtigungen auf O
 
 Darüber hinaus können Sie Warnungen für Datenbanken in Ihrem SQL Synapse-Pool mithilfe des Azure-Portals einrichten. Warnungen können Ihnen eine E-Mail senden oder einen Webhook aufrufen, wenn bei einer bestimmten Metrik (beispielsweise bei der Datenbankgröße oder bei der CPU-Auslastung) der Schwellenwert erreicht wird.
 
-* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Erstellen von Warnungen für Azure SQL Synapse](../azure-sql/database/alerts-insights-configure-portal.md)
 

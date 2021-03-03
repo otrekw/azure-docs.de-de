@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: eb8332bda2105c3f83c0c1cc28fb7db4b1ca0102
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 79262b85e9591ae4b41e8467abdcbccb3804d4ec
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549928"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590341"
 ---
 # <a name="azure-threat-protection"></a>Azure-Bedrohungsschutz
 
@@ -89,7 +89,7 @@ Zusätzlich zur Bereitstellung wertvoller Dienste kann Azure Monitor in System C
 Azure Monitor-Protokolle helfen Ihnen dabei, den Gesamtsicherheitsstatus einer beliebigen Umgebung schnell und einfach im Kontext von IT-Vorgängen zu erfassen. Hierzu zählen unter anderem die Bewertung von Softwareupdates, Antischadsoftwarebewertungen und Konfigurationsgrundwerte. Die Sicherheitsprotokolldaten sind leicht zugänglich, um die Überwachungsprozesse für Sicherheit und Konformität zu optimieren.
 
 ### <a name="insight-and-analytics"></a>Insight und Analytics
-Im Mittelpunkt von [Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) steht das Repository, das von Azure gehostet wird.
+Im Mittelpunkt von [Azure Monitor](../../azure-monitor/logs/log-query-overview.md) steht das Repository, das von Azure gehostet wird.
 
 ![Diagramm zu Insight und Analytics](./media/threat-detection/azure-threat-detection-fig4.png)
 
@@ -98,8 +98,8 @@ Sie sammeln Daten von verbundenen Quellen im Repository, indem Sie Datenquellen 
 Für Datenquellen und Lösungen werden jeweils separate Datensatztypen mit eigenen Eigenschaften erstellt, aber Sie können sie mit Abfragen für das Repository trotzdem zusammen analysieren. Sie können die gleichen Tools und Methoden verwenden, um mit den unterschiedlichsten Daten zu arbeiten, die über verschiedene Quellen erfasst werden.
 
 Der größte Teil der Interaktion mit Azure Monitor-Protokollen erfolgt über das Azure-Portal, das in jedem Browser verwendet werden kann und Ihnen Zugriff auf Konfigurationseinstellungen und verschiedene Tools bietet, mit denen Sie die gesammelten Daten analysieren und entsprechend reagieren können. Im Portal können Sie Folgendes nutzen:
-* [Protokollsuchen](../../azure-monitor/log-query/log-query-overview.md), mit denen Sie Abfragen zum Analysieren von gesammelten Daten erstellen.
-* [Dashboards](../../azure-monitor/learn/tutorial-logs-dashboards.md), die Sie mit grafischen Ansichten Ihrer wertvollsten Suchen anpassen können.
+* [Protokollsuchen](../../azure-monitor/logs/log-query-overview.md), mit denen Sie Abfragen zum Analysieren von gesammelten Daten erstellen.
+* [Dashboards](../../azure-monitor/visualize/tutorial-logs-dashboards.md), die Sie mit grafischen Ansichten Ihrer wertvollsten Suchen anpassen können.
 * [Lösungen](../../azure-monitor/insights/solutions.md), mit denen zusätzliche Funktionen und Analysetools bereitgestellt werden.
 
 Lösungen fügen Azure Monitor-Protokolle weitere Funktionalität hinzu. Sie werden primär in der Cloud ausgeführt und ermöglichen die Analyse von Daten, die im Log Analytics-Repository gesammelt wurden. Lösungen definieren ggf. auch neue Datensatztypen, die gesammelt und mit Protokollsuchvorgängen oder über eine zusätzliche Benutzeroberfläche analysiert werden können, die von der Lösung auf dem Log Analytics-Dashboard bereitgestellt wird.

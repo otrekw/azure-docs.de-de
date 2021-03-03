@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b50ab8cae91aab56be287f517fa6e6a0b25db8e1
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: f29e6f0de3286b04321207b4c469f34aeaee8ef5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807868"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737408"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure-Sicherheitsbaseline für Azure Web Application Firewall
 
@@ -111,9 +111,9 @@ Wählen Sie Azure PowerShell oder die Azure CLI, um basierend auf ihren Tags nac
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen der Konfigurationen bzw. Erkennen von Änderungen für Netzwerkeinstellungen und -ressourcen, die mit Ihren Azure Web Application Firewall (WAF)-Bereitstellungen in Zusammenhang stehen. Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzwerkeinstellungen oder -ressourcen ausgelöst werden.
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -153,9 +153,9 @@ Azure Sentinel verfügt über eine integrierte Azure WAF-Arbeitsmappe, die einen
 
 - [Übersicht über die Protokollierung](ag/ag-overview.md#logging)
 
-- [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
+- [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/logs/log-query-overview.md)
 
-- [Übersicht über Protokolle der Azure-Plattform](../azure-monitor/platform/platform-logs-overview.md)
+- [Übersicht über Protokolle der Azure-Plattform](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -164,7 +164,7 @@ Azure Sentinel verfügt über eine integrierte Azure WAF-Arbeitsmappe, die einen
 ### <a name="25-configure-security-log-storage-retention"></a>2.5: Konfigurieren der Sicherheitsprotokoll-Aufbewahrungsdauer im Speicher
 
 **Leitfaden**: Senden Sie Azure Web Application Firewall (WAF)-Protokolle an ein benutzerdefiniertes Speicherkonto, und definieren Sie die Aufbewahrungsrichtlinie. Verwenden Sie Azure Monitor, um den Aufbewahrungszeitraum Ihres Log Analytics-Arbeitsbereichs auf Grundlage der Complianceanforderungen Ihrer Organisation festzulegen.
-- [Konfigurieren der Überwachung für ein Speicherkonto](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Konfigurieren der Überwachung für ein Speicherkonto](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -192,9 +192,9 @@ Azure Sentinel verfügt über eine integrierte Arbeitsmappe „WAF – Firewalle
 
 **Leitfaden**: Aktivieren Sie die Diagnoseeinstellungen für Azure-Aktivitätsprotokolle sowie die Diagnoseeinstellungen für Ihre Azure WAF, und senden Sie die Protokolle an einen Log Analytics-Arbeitsbereich. Führen Sie Abfragen in Log Analytics durch, um nach Begriffen zu suchen, Trends zu identifizieren, Muster zu analysieren und viele andere Erkenntnisse zu gewinnen, die auf den erfassten Daten basieren. Erstellen Sie Warnungen für anormale Aktivitäten auf Grundlage von WAF-Metriken. Beispiel: wenn die blockierte Anzahl von Anforderungen den Wert „X“ überschreitet, mache „Y“.
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
-- [Reagieren auf Ereignisse mit Azure Monitor-Warnungen](../azure-monitor/learn/tutorial-response.md)
+- [Reagieren auf Ereignisse mit Azure Monitor-Warnungen](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

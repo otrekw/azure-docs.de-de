@@ -5,14 +5,14 @@ author: vladvino
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 231ce9d946a2fb6650f25d90aaa423d1c95fb106
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 75727d139242e1b537505d2ed907ae20fc5479f8
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930712"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547243"
 ---
 # <a name="tutorial-mock-api-responses"></a>Tutorial: Simulieren von API-Antworten
 
@@ -53,17 +53,19 @@ In diesem Abschnitt erfahren Sie, wie Sie eine leere API ohne Back-End erstellen
 1. Stellen Sie sicher, dass **Verwaltet** in **Gateways** ausgewählt ist.
 1. Klicken Sie auf **Erstellen**.
 
-    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-01-create-test-api.png" alt-text="Simulierte API-Antwort":::
+    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-01-create-test-api.png" alt-text="Erstellen einer leeren API":::
 
 ## <a name="add-an-operation-to-the-test-api"></a>Hinzufügen eines Vorgangs zur Test-API
 
 Eine API macht mindestens einen Vorgang verfügbar. In diesem Abschnitt fügen Sie der von Ihnen erstellten leeren API einen Vorgang hinzu. Das Aufrufen des Vorgangs nach Abschluss der Schritte in diesem Abschnitt führt zu einem Fehler. Sie erhalten keine Fehler mehr, sobald Sie später die Schritte im Abschnitt [Aktivieren der Antwortsimulation](#enable-response-mocking) ausführen.
 
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 1. Wählen Sie die API aus, die Sie im vorherigen Schritt erstellt haben.
 1. Klicken Sie auf **+ Vorgang hinzufügen**.
 1. Geben Sie im Fenster **Front-End** die folgenden Werte ein.
 
-     | Einstellung             | value                             | BESCHREIBUNG                                                                                                                                                                                   |
+     | Einstellung             | Wert                             | BESCHREIBUNG                                                                                                                                                                                   |
     |---------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | **Anzeigename**    | *Test call*                       | Der im [Entwicklerportal](api-management-howto-developer-portal.md) angezeigte Name.                                                                                                                                       |
     | **URL** (HTTP-Verb) | GET                               | Wählen Sie eines der vordefinierten HTTP-Verben aus.                                                                                                                                         |
@@ -77,7 +79,7 @@ Eine API macht mindestens einen Vorgang verfügbar. In diesem Abschnitt fügen S
 1. Geben Sie im Testfeld **Beispiel**`{ "sampleField" : "test" }` ein.
 1. Wählen Sie **Speichern** aus.
 
-:::image type="content" source="media/mock-api-responses/03-mock-api-responses-02-add-operation.png" alt-text="Simulierte API-Antwort" border="false":::
+:::image type="content" source="media/mock-api-responses/03-mock-api-responses-02-add-operation.png" alt-text="API-Vorgang hinzufügen" border="false":::
 
 Auch wenn es für dieses Beispiel nicht erforderlich ist, können Sie weitere Einstellungen für einen API-Vorgang auf anderen Registerkarten wie den folgenden konfigurieren:
 
@@ -87,6 +89,39 @@ Auch wenn es für dieses Beispiel nicht erforderlich ist, können Sie weitere Ei
 |**Abfrage**     |  Fügen Sie Abfrageparameter hinzu. Neben einem Namen und einer Beschreibung können Sie Werte angeben, die einem Abfrageparameter zugewiesen werden. Einer der Werte kann als Standard markiert werden (optional).        |
 |**Anforderung**     |  Definieren Sie Inhaltstypen, Beispiele und Schemas für die Anforderung.       |
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+So beginnen Sie mit der Verwendung der Azure CLI:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Führen Sie den Befehl [az apim api operation create](/cli/azure/apim/api/operation#az_apim_api_operation_create) aus, um der Test-API einen Vorgang hinzuzufügen.
+
+```azurecli
+az apim api operation create --resource-group apim-hello-word-resource-group \
+    --display-name "Test call" --api-id test-api --method GET \
+    --url-template /test --service-name apim-hello-world 
+```
+
+Führen Sie den Befehl [az apim api operation list](/cli/azure/apim/api/operation#az_apim_api_operation_list) aus, um alle Vorgänge für eine API anzuzeigen:
+
+```azurecli
+az apim api operation list --resource-group apim-hello-word-resource-group \
+    --api-id test-api --service-name apim-hello-world --output table
+```
+
+Führen Sie zum Entfernen eines Vorgangs den Befehl [az apim api operation delete](/cli/azure/apim/api/operation#az_apim_api_operation_delete) aus. Rufen Sie die Vorgangs-ID über den vorherigen Befehl ab.
+
+```azurecli
+az apim api operation delete --resource-group apim-hello-word-resource-group \
+    --api-id test-api --operation-id 00000000000000000000000000000000 \
+    --service-name apim-hello-world
+```
+
+Verwenden Sie diesen Vorgang auch im restlichen Artikel.
+
+---
+
 ## <a name="enable-response-mocking"></a>Aktivieren der Antwortsimulation
 
 1. Wählen Sie die API aus, die Sie im Schritt [Erstellen einer Test-API](#create-a-test-api) erstellt haben.
@@ -94,15 +129,15 @@ Auch wenn es für dieses Beispiel nicht erforderlich ist, können Sie weitere Ei
 1. Vergewissern Sie sich im Fenster rechts, dass die Registerkarte **Entwurf** ausgewählt ist.
 1. Wählen Sie im Fenster **Eingehende Verarbeitung** die Option **+ Richtlinie hinzufügen** aus.
 
-    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-03-enable-mocking.png" alt-text="Simulierte API-Antwort" border="false":::
+    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-03-enable-mocking.png" alt-text="Verarbeitungsrichtlinie hinzufügen" border="false":::
 
 1. Wählen Sie im Katalog **Mock responses** (Modellantworten) aus.
 
-    :::image type="content" source="media/mock-api-responses/mock-responses-policy-tile.png" alt-text="Simulierte API-Antwort" border="false":::
+    :::image type="content" source="media/mock-api-responses/mock-responses-policy-tile.png" alt-text="Kachel mit der Richtlinie für Modellantworten" border="false":::
 
 1. Geben Sie im Textfeld **API Management response** (API Management-Antwort) die Zeichenfolge **200 OK, application/json** ein. Diese Auswahl gibt an, dass Ihre API das Antwortbeispiel zurückgeben soll, das Sie im vorherigen Abschnitt definiert haben.
 
-    :::image type="content" source="media/mock-api-responses/mock-api-responses-set-mocking.png" alt-text="Simulierte API-Antwort":::
+    :::image type="content" source="media/mock-api-responses/mock-api-responses-set-mocking.png" alt-text="Modellantwort festlegen":::
 
 1. Wählen Sie **Speichern** aus.
 
@@ -115,11 +150,11 @@ Auch wenn es für dieses Beispiel nicht erforderlich ist, können Sie weitere Ei
 1. Wählen Sie die Registerkarte **Testen** aus.
 1. Vergewissern Sie sich, dass die **Testaufruf**-API ausgewählt ist. Wählen Sie **Senden** aus, um einen Testaufruf durchzuführen.
 
-   :::image type="content" source="media/mock-api-responses/03-mock-api-responses-04-test-mocking.png" alt-text="Simulierte API-Antwort":::
+   :::image type="content" source="media/mock-api-responses/03-mock-api-responses-04-test-mocking.png" alt-text="Testen der simulierten API":::
 
 1. In **HTTP-Antwort** wird der JSON-Code angezeigt, der als Beispiel im ersten Abschnitt des Tutorials angegeben wurde.
 
-    :::image type="content" source="media/mock-api-responses/mock-api-responses-test-response.png" alt-text="Simulierte API-Antwort":::
+    :::image type="content" source="media/mock-api-responses/mock-api-responses-test-response.png" alt-text="HTTP-Modellantwort":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

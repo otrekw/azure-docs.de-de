@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: cf3c07f32f15ff176974219bd8143a1ea315c945
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: f8d8547c2d4900e6258f7360c50d8dfc17157832
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423044"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517243"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL – Einzelserver
 
@@ -32,7 +32,7 @@ In der folgenden Tabelle werden RTO und RPO in einem Szenario mit einer **typisc
 
 | **Funktion** | **Grundlegend** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
 | :------------: | :-------: | :-----------------: | :------------------: |
-| Point-in-Time-Wiederherstellung von Sicherung | Beliebiger Wiederherstellungspunkt innerhalb der Aufbewahrungsdauer | Beliebiger Wiederherstellungspunkt innerhalb der Aufbewahrungsdauer | Beliebiger Wiederherstellungspunkt innerhalb der Aufbewahrungsdauer |
+| Point-in-Time-Wiederherstellung von Sicherung | Beliebiger Wiederherstellungspunkt innerhalb der Aufbewahrungsdauer <br/> RTO: variiert <br/>RPO < 15 Min.| Beliebiger Wiederherstellungspunkt innerhalb der Aufbewahrungsdauer <br/> RTO: variiert <br/>RPO < 15 Min. | Beliebiger Wiederherstellungspunkt innerhalb der Aufbewahrungsdauer <br/> RTO: variiert <br/>RPO < 15 Min. |
 | Geowiederherstellung von georeplizierten Sicherungen | Nicht unterstützt | RTO: variiert <br/>RPO < 1 Stunde | RTO: variiert <br/>RPO < 1 Stunde |
 | Lesereplikate | RTO – Minuten* <br/>RPO < 5 Min.* | RTO – Minuten* <br/>RPO < 5 Min.*| RTO – Minuten* <br/>RPO < 5 Min.*|
 

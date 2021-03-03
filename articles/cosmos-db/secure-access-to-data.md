@@ -6,34 +6,33 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 02/11/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6dd95fc8fd0ab0099ac7404d4ca4e4b1851f650f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 8a16ecd2ee6ed939b2afd0e51e9cf531e419c8af
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359607"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656396"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Sicherer Zugriff auf Daten in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Dieser Artikel bietet eine Übersicht über den sicheren Zugriff auf in [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) gespeicherte Daten.
+Dieser Artikel bietet eine Übersicht über die Datenzugriffssteuerung in Azure Cosmos DB.
 
-Azure Cosmos DB verwendet zwei Arten von Schlüsseln, um Benutzer zu authentifizieren und den Zugriff auf Daten und Ressourcen zu ermöglichen. 
+Azure Cosmos DB bietet drei Möglichkeiten, den Zugriff auf Ihre Daten zu steuern.
 
-|Schlüsseltyp|Ressourcen|
+| Zugriffssteuerungstyp | Merkmale |
 |---|---|
-|[Primärschlüssel](#primary-keys) |Wird für Verwaltungsressourcen verwendet: Datenbankkonten, Datenbanken, Benutzer und Berechtigungen|
-|[Ressourcentoken](#resource-tokens)|Wird für Anwendungsressourcen verwendet: Container, Dokumente, Anlagen, gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen|
+| [Primärschlüssel](#primary-keys) | Gemeinsamer geheimer Schlüssel, der jeden Verwaltungs- oder Datenvorgang zulässt. Dieser ist sowohl als Variante für Lese-/Schreibvorgänge als auch schreibgeschützte Variante verfügbar. |
+| [Rollenbasierte Zugriffssteuerung](#rbac) (Vorschau) | Differenziertes, rollenbasiertes Berechtigungsmodell, bei dem AAD-Identitäten (Azure Active Directory) für die Authentifizierung verwendet werden. |
+| [Ressourcentoken](#resource-tokens)| Differenziertes Berechtigungsmodell, das auf nativen Azure Cosmos DB-Benutzern und -Berechtigungen basiert. |
 
-<a id="primary-keys"></a>
-
-## <a name="primary-keys"></a>Primärschlüssel
+## <a name="primary-keys"></a><a id="primary-keys"></a> Primärschlüssel
 
 Primärschlüssel ermöglichen den Zugriff auf alle Verwaltungsressourcen für das Datenbankkonto. Jedes Konto umfasst zwei Primärschlüssel: einen primären und einen sekundären Schlüssel. Dank der Verwendung von zwei Schlüsseln können Sie Schlüssel neu generieren oder ersetzen und trotzdem ohne Unterbrechung auf Ihr Konto und Ihre Daten zugreifen. Weitere Informationen zu Primärschlüsseln finden Sie im Artikel zur [Datenbanksicherheit](database-security.md#primary-keys).
 
-### <a name="key-rotation"></a>Schlüsselrotation<a id="key-rotation"></a>
+### <a name="key-rotation"></a><a id="key-rotation"></a> Schlüsselrotation
 
 Der Primärschlüssel kann ganz einfach gewechselt werden. 
 
@@ -64,7 +63,23 @@ Das folgende Codebeispiel veranschaulicht, wie mit dem Azure Cosmos DB-Kontoend
 
 :::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
-## <a name="resource-tokens"></a>Ressourcentoken <a id="resource-tokens"></a>
+## <a name="role-based-access-control-preview"></a><a id="rbac"></a> Rollenbasierte Zugriffssteuerung (Vorschau)
+
+Azure Cosmos DB bietet ein integriertes System für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC), das folgende Möglichkeiten umfasst:
+
+- Authentifizieren Ihrer Datenanforderungen mit einer AAD-Identität (Azure Active Directory)
+- Autorisieren Ihrer Datenanforderungen mit einem differenzierten, rollenbasierten Berechtigungsmodell
+
+Azure Cosmos DB-RBAC ist die ideale Zugriffssteuerungsmethode in folgenden Situationen:
+
+- Sie möchten keinen gemeinsamen geheimen Schlüssel wie den Primärschlüssel verwenden und bevorzugen einen tokenbasierten Authentifizierungsmechanismus.
+- Sie möchten Azure AD-Identitäten zum Authentifizieren Ihrer Anforderungen verwenden.
+- Sie benötigen ein differenziertes Berechtigungsmodell, um strikt einzuschränken, welche Datenbankvorgänge Ihre Identitäten ausführen dürfen.
+- Sie möchten Ihre Zugriffssteuerungsrichtlinien in Form von „Rollen“ umsetzen, die Sie mehreren Identitäten zuweisen können.
+
+Weitere Informationen zur Azure Cosmos DB-RBAC finden Sie unter [Konfigurieren der rollenbasierten Zugriffssteuerung für Ihr Azure Cosmos DB-Konto](how-to-setup-rbac.md).
+
+## <a name="resource-tokens"></a><a id="resource-tokens"></a> Ressourcentoken
 
 Ressourcentoken ermöglichen den Zugriff auf die Anwendungsressourcen in einer Datenbank. Ressourcentoken:
 
@@ -97,7 +112,7 @@ Die Generierung und Verwaltung von Ressourcentoken wird von den nativen Cosmos 
 
 Ein Beispiel für einen Dienst der mittleren Ebene, der zum Generieren oder Vermitteln von Ressourcentoken dient, finden Sie unter der [ResourceTokenBroker-App](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 
-## <a name="users"></a>Benutzer<a id="users"></a>
+### <a name="users"></a>Benutzer<a id="users"></a>
 
 Azure Cosmos DB-Benutzer werden einer Cosmos-Datenbank zugeordnet.  Jede Datenbank kann null oder mehr Cosmos DB-Benutzer enthalten. Das folgende Codebeispiel veranschaulicht das Erstellen eines Cosmos DB-Benutzers mit dem [Azure Cosmos DB .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement).
 
@@ -111,7 +126,7 @@ User user = await database.CreateUserAsync("User 1");
 > [!NOTE]
 > Jeder Cosmos DB-Benutzer verfügt über eine ReadAsync()-Methode, mit deren Hilfe die Liste mit den [Berechtigungen](#permissions) abgerufen werden kann, die dem Benutzer zugeordnet sind.
 
-## <a name="permissions"></a>Berechtigungen<a id="permissions"></a>
+### <a name="permissions"></a>Berechtigungen<a id="permissions"></a>
 
 Eine Berechtigungsressource ist einem Benutzer zugeordnet und sowohl auf der Container- als auch auf der Partitionsschlüsselebene zugewiesen. Jeder Benutzer kann null oder mehr Berechtigungen enthalten. Eine Berechtigungsressource ermöglicht den Zugriff auf ein Sicherheitstoken, das der Benutzer beim Zugriff auf einen bestimmten Container oder bestimmte Daten in einem speziellen Partitionsschlüssel benötigt. Von einer Berechtigungsressource können zwei Zugriffsebenen bereitgestellt werden:
 
@@ -127,7 +142,7 @@ Wenn Sie die [Diagnoseprotokolle für Anforderungen auf Datenebene](cosmosdb-mon
 
 * **resourceTokenPermissionMode**: Diese Eigenschaft gibt den Berechtigungsmodus an, den Sie beim Erstellen des Ressourcentokens festgelegt haben. Der Berechtigungsmodus kann Werte wie „Alle“ oder „Lesen“ aufweisen.
 
-### <a name="code-sample-to-create-permission"></a>Codebeispiel für die Berechtigungserstellung
+#### <a name="code-sample-to-create-permission"></a>Codebeispiel für die Berechtigungserstellung
 
 Das folgende Codebeispiel veranschaulicht das Erstellen einer Berechtigungsressource, das Lesen des Ressourcentokens der Berechtigungsressource sowie das Zuordnen der Berechtigungen zum oben erstellten [Benutzer](#users).
 
@@ -142,7 +157,7 @@ user.CreatePermissionAsync(
         resourcePartitionKey: new PartitionKey("012345")));
 ```
 
-### <a name="code-sample-to-read-permission-for-user"></a>Codebeispiel für das Lesen von Berechtigungen für einen Benutzer
+#### <a name="code-sample-to-read-permission-for-user"></a>Codebeispiel für das Lesen von Berechtigungen für einen Benutzer
 
 Der folgende Codeausschnitt zeigt, wie die dem oben erstellten Benutzer zugeordnete Berechtigung abgerufen und ein neues CosmosClient-Element für den Benutzer instanziiert werden kann, das auf einen einzelnen Partitionsschlüssel festgelegt ist.
 
@@ -152,6 +167,15 @@ PermissionProperties permissionProperties = await user.GetPermission("permission
 
 CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrResourceToken: permissionProperties.Token);
 ```
+
+## <a name="differences-between-rbac-and-resource-tokens"></a>Unterschiede zwischen RBAC und Ressourcentoken
+
+| Subject | RBAC | Ressourcentoken |
+|--|--|--|
+| Authentifizierung  | Mit Azure Active Directory (Azure AD). | Basierend auf nativen Azure Cosmos DB-Benutzern.<br>Die Integration von Ressourcentoken in Azure AD erfordert zusätzliche Arbeit, um Azure AD-Identitäten und Azure Cosmos DB-Benutzer zu verbinden. |
+| Autorisierung | Rollenbasiert: Rollendefinitionen ordnen zulässige Aktionen zu und können mehreren Identitäten zugewiesen werden. | Berechtigungsbasiert: Für jeden Azure Cosmos DB-Benutzer müssen Datenzugriffsberechtigungen zugewiesen werden. |
+| Tokenbereich | Ein AAD-Token trägt die Identität des Anforderers. Diese Identität wird mit allen zugewiesenen Rollendefinitionen abgeglichen, um die Autorisierung durchzuführen. | Ein Ressourcentoken trägt die Berechtigung, die einem bestimmten Azure Cosmos DB-Benutzer für eine bestimmte Azure Cosmos DB-Ressource erteilt wurde. Autorisierungsanforderungen für unterschiedliche Ressourcen können unterschiedliche Token erfordern. |
+| Tokenaktualisierung | Das AAD-Token wird bei Ablauf automatisch von den Azure Cosmos DB-SDKs aktualisiert. | Das Aktualisieren von Ressourcentoken wird nicht unterstützt. Wenn ein Ressourcentoken abläuft, muss ein neues ausgegeben werden. |
 
 ## <a name="add-users-and-assign-roles"></a>Hinzufügen von Benutzern und Zuweisen von Rollen
 

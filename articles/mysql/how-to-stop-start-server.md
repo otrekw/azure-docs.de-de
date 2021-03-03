@@ -6,17 +6,17 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: 047a24133dfdf68e2176b20cf31a871d11f0d4f9
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: d297d215d4b0edfdd67b603ba4707bf02057ad78
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241156"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516871"
 ---
 # <a name="stopstart-an-azure-database-for-mysql"></a>Beenden/Starten einer Azure Database for MySQL-Instanz
 
 > [!IMPORTANT]
-> Die Funktion zum Beenden/Starten für Azure Database for MySQL befindet sich derzeit in der öffentlichen Vorschau.
+>  Wenn Sie den Server **anhalten**, bleibt er für die nächsten sieben Tage in diesem Zustand. Wenn Sie ihn während dieser Zeit nicht manuell **starten**, wird der Server nach Ablauf von sieben Tagen automatisch gestartet. Wenn Sie den Server nicht verwenden, können Sie ihn wieder **anhalten**.
 
 Dieser Artikel enthält Schrittanleitungen zum Beenden und Starten des Einzelservers.
 

@@ -4,12 +4,12 @@ description: Empfehlungen zum Schutz von Images und Secrets für Azure Container
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: 898bdf77bf4b6636e78f5d735fc8650da4fde2b8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cbceeea24501bc9815cb07e1b0a054914ba8e964
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148670"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579275"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Sicherheitsüberlegungen für Azure Container Instances
 
@@ -115,9 +115,9 @@ So bietet beispielsweise das Partnertool [Aqua](https://azuremarketplace.microso
 
 Wie in jeder IT-Umgebung sollten Sie die Aktivitäten und den Benutzerzugriff auf Ihr Containerökosystem konsequent überwachen, um verdächtige oder böswillige Aktivitäten schnell zu identifizieren. Azure bietet Containerüberwachungslösungen:
 
-* [Azure Monitor für Container](../azure-monitor/insights/container-insights-overview.md) überwacht die Leistung Ihrer Workloads in Kubernetes-Umgebungen, die in Azure Kubernetes Service (AKS) gehostet sind. Azure Monitor für Container visualisiert die Leistung, indem anhand der Metrik-API die in Kubernetes verfügbaren Speicher- und Prozessormetriken von Controllern, Knoten und Containern erfasst werden. 
+* [Azure Monitor für Container](../azure-monitor/containers/container-insights-overview.md) überwacht die Leistung Ihrer Workloads in Kubernetes-Umgebungen, die in Azure Kubernetes Service (AKS) gehostet sind. Azure Monitor für Container visualisiert die Leistung, indem anhand der Metrik-API die in Kubernetes verfügbaren Speicher- und Prozessormetriken von Controllern, Knoten und Containern erfasst werden. 
 
-* Mit der [Azure-Containerüberwachungslösung](../azure-monitor/insights/containers.md) können Sie andere Docker- und Windows-Containerhosts an einem zentralen Ort anzeigen und verwalten. Beispiel:
+* Mit der [Azure-Containerüberwachungslösung](../azure-monitor/containers/containers.md) können Sie andere Docker- und Windows-Containerhosts an einem zentralen Ort anzeigen und verwalten. Beispiel:
 
   * Zeigen Sie ausführliche Überwachungsinformationen an, die auch die mit Containern verwendeten Befehle enthalten. 
   * Beheben Sie die Probleme mit Containern, indem Sie zentralisierte Protokolle anzeigen und durchsuchen, ohne eine Remoteanzeige der Docker- und Windows-Hosts zu benötigen.  
@@ -139,7 +139,7 @@ Wie in jeder IT-Umgebung sollten Sie die Aktivitäten und den Benutzerzugriff au
 Führen Sie ein genaues Überwachungsprotokoll für den administrativen Zugriff auf Ihr Containerökosystem, einschließlich Ihres Kubernetes-Clusters, der Containerregistrierung und der Containerimages. Diese Protokolle können für Überprüfungszwecke erforderlich sein und sind als forensische Beweise nach einem Sicherheitsvorfall nützlich. Zu Azure-Lösungen zählen z. B. folgende:
 
 * [Integration von Azure Kubernetes Service in Azure Security Center](../security-center/defender-for-kubernetes-introduction.md) zum Überwachen der Sicherheitskonfiguration der Clusterumgebung und zum Generieren von Sicherheitsempfehlungen
-* [Azure-Containerüberwachungslösung](../azure-monitor/insights/containers.md)
+* [Azure-Containerüberwachungslösung](../azure-monitor/containers/containers.md)
 * Ressourcenprotokolle für [Azure Container Instances](container-instances-log-analytics.md) und [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md)
 
 ## <a name="next-steps"></a>Nächste Schritte

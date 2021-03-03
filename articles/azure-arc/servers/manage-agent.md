@@ -1,14 +1,14 @@
 ---
 title: Verwalten des Agents für Azure Arc-fähige Server
 description: In diesem Artikel werden die verschiedenen Verwaltungsaufgaben beschrieben, die Sie typischerweise während des Lebenszyklus des Connected Machine-Agents für Azure Arc-fähige Server ausführen.
-ms.date: 01/21/2021
+ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 27712dcd30857ca8c677de4f99dc4ed7e2e7b292
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 36ae081f939cbf865db7755a2f766a7ccd87d619
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662125"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587619"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Verwalten des Connected Machine-Agent
 
@@ -48,60 +48,17 @@ Bei Azure Arc-fähigen Servern müssen vor dem Umbenennen des Computers die VM-E
 > [!WARNING]
 > Sie sollten den Computer nicht umbenennen und dieses Verfahren nur ausführen, wenn es unbedingt erforderlich ist.
 
-In den folgenden Schritten wird der Vorgang der Computerumbenennung zusammengefasst.
-
 1. Überwachen Sie die auf dem Computer installierten VM-Erweiterungen, und notieren Sie ihre Konfiguration. Verwenden Sie dazu [Azure CLI](manage-vm-extensions-cli.md#list-extensions-installed) oder [Azure PowerShell](manage-vm-extensions-powershell.md#list-extensions-installed).
 
-2. Entfernen Sie die VM-Erweiterungen mithilfe von PowerShell, Azure CLI oder Azure-Portal.
+2. Entfernen Sie mithilfe von [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) oder [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) installierte VM-Erweiterungen aus dem [Azure-Portal](manage-vm-extensions-portal.md#uninstall-extension).
 
-    > [!NOTE]
-    > Wenn Sie den „Azure Monitor für VMs (Insights)“-Agent oder den Log Analytics-Agent mithilfe einer Azure Policy-Gastkonfigurationsrichtlinie bereitgestellt haben, werden die Agents nach dem nächsten [Auswertungszyklus](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers), und nachdem der umbenannte Computer bei Azure Arc-fähigen Servern registriert ist, erneut bereitgestellt.
-
-3. Trennen Sie den Computer mithilfe von PowerShell, Azure CLI oder über das Portal von Azure Arc-fähigen Servern.
+3. Verwenden Sie das **azcmagent**-Tool mit dem Parameter [Disconnect](manage-agent.md#disconnect), um den Computer von Azure Arc zu trennen und die Computerressource aus Azure zu löschen. Wenn Sie den Computer von Azure Arc-fähigen Servern trennen, wird der Connected Machine-Agent nicht entfernt, und Sie müssen den Agent nicht als Teil dieses Prozesses entfernen. Sie können dies manuell ausführen, während Sie interaktiv angemeldet sind, oder Sie können mithilfe desselben Dienstprinzipals automatisieren, den Sie für das Onboarding mehrerer Agents verwendet haben, oder mithilfe eines [Zugriffstokens](../../active-directory/develop/access-tokens.md) der Microsoft Identity-Plattform. Wenn Sie keinen Dienstprinzipal zum Registrieren des Computers bei Azure Arc-fähigen Servern verwendet haben, finden Sie im folgenden [Artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) Informationen zum Erstellen eines Dienstprinzipals.
 
 4. Benennen Sie den Computer um.
 
-5. Stellen Sie eine Verbindung des Computers mit Azure Arc-fähigen Servern her, indem Sie mit dem `Azcmagent`-Tool eine neue Ressource in Azure erstellen und registrieren.
+5. Registrieren Sie den Connected Machine-Agent bei Arc-fähigen Servern erneut. Führen Sie das `azcmagent`-Tool mit dem Parameter [Connect](manage-agent.md#connect) aus, um diesen Schritt abzuschließen.
 
-6. Stellen Sie zuvor auf dem Zielcomputer installierte VM-Erweiterungen bereit.
-
-Führen Sie die folgenden Schritte aus, um diese Aufgabe abzuschließen.
-
-1. Entfernen Sie mithilfe von [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) oder [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) installierte VM-Erweiterungen aus dem [Azure-Portal](manage-vm-extensions-portal.md#uninstall-extension).
-
-2. Trennen Sie die Verbindung zwischen dem Computer und Azure Arc mit einer der folgenden Methoden. Wenn Sie den Computer von Azure Arc-fähigen Servern trennen, wird der Connected Machine-Agent nicht entfernt, und Sie müssen den Agent nicht als Teil dieses Prozesses entfernen. Alle VM-Erweiterungen, die dem Computer bereitgestellt sind, funktionieren während dieses Vorgangs weiterhin.
-
-    # <a name="azure-portal"></a>[Azure portal](#tab/azure-portal)
-
-    1. Navigieren Sie in Ihrem Browser zum [Azure-Portal](https://portal.azure.com).
-    1. Navigieren Sie im Portal zu **Server - Azure Arc**, und wählen Sie in der Liste Ihren Hybridcomputer aus.
-    1. Wählen Sie auf dem ausgewählten registrierten Arc-fähigen Server in der oberen Leiste **Löschen** aus, um die Ressource in Azure zu löschen.
-
-    # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-    
-    ```azurecli
-    az resource delete \
-      --resource-group ExampleResourceGroup \
-      --name ExampleArcMachine \
-      --resource-type "Microsoft.HybridCompute/machines"
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-
-    ```powershell
-    Remove-AzResource `
-     -ResourceGroupName ExampleResourceGroup `
-     -ResourceName ExampleArcMachine `
-     -ResourceType Microsoft.HybridCompute/machines
-    ```
-
-3. Benennen Sie den Computer um.
-
-### <a name="after-renaming-operation"></a>Nach der Umbenennung
-
-Nachdem ein Computer umbenannt wurde, muss der Connected Machine-Agent bei Azure Arc-fähigen Servern erneut registriert werden. Führen Sie das `azcmagent`-Tool mit dem Parameter [Connect](#connect) aus, um diesen Schritt abzuschließen.
-
-Stellen Sie die VM-Erweiterungen, die dem Computer ursprünglich bereitgestellt wurden, von Arc-fähigen Servern aus erneut bereit. Wenn Sie den „Azure Monitor für VMs (Insights)“-Agent oder den Log Analytics-Agent mithilfe einer Azure Policy-Gastkonfigurationsrichtlinie bereitgestellt haben, werden die Agents nach dem nächsten [Auswertungszyklus](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) erneut bereitgestellt.
+6. Stellen Sie die VM-Erweiterungen, die dem Computer ursprünglich bereitgestellt wurden, von Arc-fähigen Servern aus erneut bereit. Wenn Sie den „Azure Monitor für VMs (Insights)“-Agent oder den Log Analytics-Agent mithilfe einer Azure-Richtlinie bereitgestellt haben, werden die Agents nach dem nächsten [Auswertungszyklus](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) erneut bereitgestellt.
 
 ## <a name="upgrading-agent"></a>Aktualisierung des Agent
 
@@ -355,7 +312,7 @@ Wenn Sie beabsichtigen, die Verwaltung des Computers mit unterstützenden Dienst
 Um den Agent für die Kommunikation mit dem Dienst über einen Proxyserver zu konfigurieren, entfernen Sie diese Konfiguration nach der Bereitstellung, oder führen Sie eine der folgenden Methoden aus, um diese Aufgabe durchzuführen.
 
 > [!NOTE]
-> Azure Arc-fähige Server unterstützen die Verwendung eines [Log Analytics-Gateways](../../azure-monitor/platform/gateway.md) als Proxy für den Connected Machine-Agent nicht.
+> Azure Arc-fähige Server unterstützen die Verwendung eines [Log Analytics-Gateways](../../azure-monitor/agents/gateway.md) als Proxy für den Connected Machine-Agent nicht.
 >
 
 ### <a name="windows"></a>Windows
@@ -398,6 +355,6 @@ sudo azcmagent_proxy remove
 
 * Informationen zur Problembehandlung finden Sie im [Handbuch zur Problembehandlung des Connected Machine-Agents](troubleshoot-agent-onboard.md).
 
-* Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/insights/vminsights-enable-policy.md) und vieles mehr.
+* Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/vm/vminsights-enable-policy.md) und vieles mehr.
 
-* Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie Daten zur Betriebssystem- und Workloadüberwachung erfassen, diese mithilfe von Automation Runbooks oder Funktionen wie Updateverwaltung oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-introduction.md) nutzen möchten.
+* Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/agents/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie Daten zur Betriebssystem- und Workloadüberwachung erfassen, diese mithilfe von Automation Runbooks oder Funktionen wie Updateverwaltung oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-introduction.md) nutzen möchten.

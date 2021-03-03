@@ -1,18 +1,17 @@
 ---
 title: Problembehandlung bei der selbstgehosteten Integration Runtime in Azure Data Factory
 description: Hier erfahren Sie, wie Sie eine Problembehandlung im Fall von Problemen bei der selbstgehosteten Integration Runtime in Azure Data Factory durchführen können.
-services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: 3735d7b21faf62905ed4c06dbef80c9737e7329e
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2cb0e0870b32270340e37d54dc54a43b22ee014a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551075"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376461"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Problembehandlung bei der selbstgehosteten Integration Runtime
 
@@ -83,8 +82,8 @@ Beispielszenario: Der Höchstwert für gleichzeitige Aufträge ist aktuell auf �
 Der Grenzwert für die Anzahl gleichzeitiger Aufträge hängt vom logischen Kern des Computers und vom Arbeitsspeicher ab. Versuchen Sie, den Wert in einen niedrigeren Wert (z. B. 24) zu ändern, und zeigen Sie dann das Ergebnis an.
 
 > [!TIP] 
-> - Weitere Informationen zur Anzahl der logischen Kerne und zum Ermitteln der Anzahl der logischen Kerne Ihres Computers finden Sie unter [Vier Möglichkeiten zum Ermitteln der Anzahl der CPU-Kerne unter Windows 10](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/).
-> - Informationen zum Berechnen der Math.log-Funktion finden Sie im [Logarithmusrechner](https://www.rapidtables.com/calc/math/Log_Calculator.html).
+> -    Weitere Informationen zur Anzahl der logischen Kerne und zum Ermitteln der Anzahl der logischen Kerne Ihres Computers finden Sie unter [Vier Möglichkeiten zum Ermitteln der Anzahl der CPU-Kerne unter Windows 10](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/).
+> -    Informationen zum Berechnen der Math.log-Funktion finden Sie im [Logarithmusrechner](https://www.rapidtables.com/calc/math/Log_Calculator.html).
 
 
 ### <a name="self-hosted-ir-high-availability-ha-ssl-certificate-issue"></a>Problem beim SSL-Zertifikat für die Hochverfügbarkeit der selbstgehosteten IR

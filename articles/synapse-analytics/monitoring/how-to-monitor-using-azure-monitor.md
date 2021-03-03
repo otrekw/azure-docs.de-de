@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: eb74137e515bff7a432367e75b4208490b1243c0
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f801d25a0d0f70daaaac1ade3e8966cf5f53affc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681386"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672756"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Verwenden von Azure Monitor mit Ihrem Azure Synapse Analytics-Arbeitsbereich
 
@@ -28,7 +28,7 @@ Weitere Informationen finden Sie unter [Übersicht über Azure Monitor](../../az
 
 Mit Monitor erhalten Sie Einblicke in die Leistung und Integrität ihrer Azure-Workloads. Metriken sind die wichtigsten Monitor-Datentypen. Sie werden auch als Leistungsindikatoren bezeichnet. Metriken werden von den meisten Azure-Ressourcen ausgegeben. Azure Monitor bietet Ihnen verschiedene Möglichkeiten, diese Metriken für die Überwachung und Problembehandlung zu konfigurieren und zu nutzen.
 
-Folgen Sie den Anweisungen unter [Azure Monitor-Datenplattform](../../azure-monitor/platform/data-platform.md), um auf diese Metriken zuzugreifen.
+Folgen Sie den Anweisungen unter [Azure Monitor-Datenplattform](../../azure-monitor/data-platform.md), um auf diese Metriken zuzugreifen.
 
 ### <a name="workspace-level-metrics"></a>Metriken auf Arbeitsbereichsebene
 
@@ -121,11 +121,11 @@ Nachfolgend finden Sie die von dedizierten SQL-Pools ausgegebenen Protokolle:
 | SynapseSqlPoolWaits         | Wartevorgänge        | Informationen zu den Wartezuständen, die während der Ausführung einer SQL-Anforderung/-Abfrage in einem dedizierten Azure Synapse-SQL-Pool aufgetreten sind, einschließlich Sperren und Wartevorgänge für Übertragungswarteschlangen.
 
 Weitere Informationen zu diesen Protokollen finden Sie unter den folgenden Links:
-- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 
 ### <a name="apache-spark-pool-log"></a>Protokoll von Apache Spark-Pools
 
@@ -171,7 +171,7 @@ Sie können Diagnoseeinstellungen für Ihren Arbeitsbereich, Ihren dedizierten S
 1. Legen Sie einen Namen für Ihre Einstellung fest, wählen Sie **An Log Analytics senden** aus, und wählen Sie dann unter **Log Analytics-Arbeitsbereich** einen Arbeitsbereich aus.
 
     > [!NOTE]
-    > Da eine Azure-Protokolltabelle nicht mehr als 500 Spalten enthalten darf, **empfehlen wir Ihnen dringend**, den _Modus „Ressourcenspezifisch“_ auszuwählen. Weitere Informationen finden Sie unter [Bekannte Einschränkung: Spaltenlimit in Azure-Diagnose](../../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics).
+    > Da eine Azure-Protokolltabelle nicht mehr als 500 Spalten enthalten darf, **empfehlen wir Ihnen dringend**, den _Modus „Ressourcenspezifisch“_ auszuwählen. Weitere Informationen finden Sie unter [Bekannte Einschränkung: Spaltenlimit in Azure-Diagnose](../../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics).
 
 1. Wählen Sie **Speichern** aus.
 

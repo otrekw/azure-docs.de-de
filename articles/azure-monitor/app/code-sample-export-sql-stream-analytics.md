@@ -3,12 +3,12 @@ title: Exportieren aus Application Insights nach SQL | Microsoft-Dokumentation
 description: Exportiere Sie Application Insights-Daten kontinuierlich in SQL mit Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 5fb7093dd9945893b17f1b8f5e596cfe5181c3b6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 25d28bb0fc35ef76231c085dc1d9d8a1234a264c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942413"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587754"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Exemplarische Vorgehensweise: Exportieren aus Application Insights in SQL mit Stream Analytics
 In diesem Artikel wird veranschaulicht, wie Sie Telemetriedaten aus [Azure Application Insights][start] mithilfe von [fortlaufendem Export][export] und [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) in Azure SQL-Datenbank verschieben. 
@@ -61,7 +61,7 @@ Durch fortlaufende Exportaktivitäten werden Daten an ein Azure-Speicherkonto ü
     ![Wählen Sie Ereignistypen aus.](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. Warten Sie, bis sich einige Daten angesammelt haben. Lehnen Sie sich zurück, und lassen Sie Ihre Benutzer die Anwendung eine Weile lang verwenden. Telemetriedaten gehen ein, und Sie sehen statistische Diagramme im [Metrik-Explorer](../platform/metrics-charts.md) sowie einzelne Ereignisse in der [Diagnosesuche](./diagnostic-search.md). 
+1. Warten Sie, bis sich einige Daten angesammelt haben. Lehnen Sie sich zurück, und lassen Sie Ihre Benutzer die Anwendung eine Weile lang verwenden. Telemetriedaten gehen ein, und Sie sehen statistische Diagramme im [Metrik-Explorer](../essentials/metrics-charts.md) sowie einzelne Ereignisse in der [Diagnosesuche](./diagnostic-search.md). 
    
     Darüber hinaus werden die Daten in Ihren Speicher exportiert. 
 2. Überprüfen Sie die exportierten Daten, entweder im Portal (wählen Sie **Durchsuchen**, anschließend Ihr Speicherkonto und dann **Container** aus) oder in Visual Studio. Wählen Sie in Visual Studio **Anzeigen/Cloud Explorer**, und öffnen Sie „Azure/Storage“. (Wenn diese Menüoption nicht verfügbar ist, müssen Sie das Azure SDK installieren: Öffnen Sie das Dialogfeld „Neues Projekt“ und anschließend „Visual C#/Cloud/Microsoft Azure SDK für .NET abrufen“.)
@@ -252,7 +252,7 @@ FROM [dbo].[PageViewsTable]
 
 [diagnostic]: ./diagnostic-search.md
 [export]: ./export-telemetry.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 [portal]: https://portal.azure.com/
 [start]: ./app-insights-overview.md
 

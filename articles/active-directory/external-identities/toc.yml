@@ -41,7 +41,7 @@
           href: b2b-fundamentals.md
         - name: B2B und externe Office 365-Freigaben
           href: o365-external-user.md
-        - name: Einlösen der Einladung
+        - name: Einlösen von Einladungen und Anmelden
           href: redemption-experience.md
         - name: Einladungs-E-Mail
           href: invitation-email-elements.md
@@ -57,9 +57,9 @@
           href: hybrid-organizations.md
         - name: Identitätsanbieter für externe Identitäten
           href: identity-providers.md
-        - name: Benutzerflows für die Self-Service-Registrierung (Vorschau)
+        - name: Benutzerflows für die Self-Service-Registrierung
           href: self-service-sign-up-overview.md
-        - name: API-Connectors für die Self-Service-Registrierung (Vorschauversion)
+        - name: API-Connectors für die Self-Service-Registrierung
           href: api-connectors-overview.md
         - name: Azure AD-Berechtigungsverwaltung
           href: self-service-portal.md
@@ -68,23 +68,25 @@
     - name: Anleitungen
       expanded: true
       items:
-        - name: Konfigurieren der Einstellungen für externe Zusammenarbeit
-          href: delegate-invitations.md
+        - name: Einrichten der B2B-Zusammenarbeit
+          items:
+            - name: Konfigurieren der Einstellungen für externe Zusammenarbeit
+              href: delegate-invitations.md
+            - name: Zulassen oder Sperren von Domänen
+              href: allow-deny-list.md
         - name: Einladen von Gastbenutzern
           items:
-            - name: 'Administratoren, die B2B-Benutzer hinzufügen'
+            - name: Hinzufügen und Einladen von Gastbenutzern (für Administratoren)
               href: add-users-administrator.md
-            - name: 'Information-Worker, die B2B-Benutzer hinzufügen'
+            - name: Einladen von Gastbenutzern zu einer App (für App-Besitzer)
               href: add-users-information-worker.md
             - name: Einladen interner Benutzer zu B2B
               href: invite-internal-users.md
-            - name: Zulassen oder Blockieren von Einladungen
-              href: allow-deny-list.md
             - name: Hinzufügen von B2B-Benutzern ohne Einladung
               href: add-user-without-invite.md
-            - name: Einladungs-API und Anpassung
+            - name: Anpassen von Einladungen mithilfe der API
               href: customize-invitation-api.md
-        - name: Einrichten eines Verbunds mit Identitätsanbietern
+        - name: Verbund mit externen Identitätsanbietern
           items:
             - name: Verbund mit Google
               href: google-federation.md
@@ -94,9 +96,9 @@
               href: direct-federation.md
             - name: Beispiel eines direkten Verbunds mit AD FS
               href: direct-federation-adfs.md
-        - name: Authentifizierung mit Einmalkennung
+        - name: Aktivieren von Einmalkennungen
           href: one-time-passcode.md
-        - name: Self-Service-Registrierung für Gastbenutzer (Vorschau)
+        - name: Hinzufügen der Self-Service-Registrierung für Gastbenutzer
           items:
             - name: Hinzufügen eines Benutzerflows für die Self-Service-Registrierung
               href: self-service-sign-up-user-flow.md

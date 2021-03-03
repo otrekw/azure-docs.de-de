@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3f4e855c52488652b88a3b14e9817f1755167b67
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 107380dabc9c163aab6d0347f6e6cc2c1a718c0b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806120"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576372"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Azure-Sicherheitsbaseline für Container Instances
 
@@ -192,9 +192,9 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen der Konfigurationen von Netzwerkressourcen und zum Erkennen von Änderungen bei Netzwerkressourcen, die sich auf Ihre Containerinstanzen beziehen. Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzwerkressourcen ausgelöst werden.
 
-* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -251,7 +251,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Legen Sie in Azure Monitor den Aufbewahrungszeitraum Ihres Log Analytics-Arbeitsbereichs gemäß den Compliancevorschriften Ihrer Organisation fest. Verwenden Sie Azure Storage-Konten für die langfristige/Archivierungsspeicherung.
 
-* [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -263,9 +263,9 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 * [Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen](./container-instances-log-analytics.md)
 
-* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -277,7 +277,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 * [Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen](./container-instances-log-analytics.md)
 
-* [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/learn/tutorial-response.md)
+* [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -596,7 +596,7 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen zu erstellen, die bei Änderungen an Ihren Containergruppen und -instanzen ausgelöst werden. 
 
-* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -750,9 +750,9 @@ Implementieren Sie Lösungen zum Überprüfen von Containerimages in einer priva
 
 * [Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen](./container-instances-log-analytics.md)
 
-* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 * [Sicherheitsüberlegungen für Azure Container Instances](./container-instances-image-security.md)
 * [Integration von Security Center in Azure Container Registry](../security-center/defender-for-container-registries-introduction.md)

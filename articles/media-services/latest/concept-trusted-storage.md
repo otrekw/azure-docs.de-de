@@ -9,20 +9,27 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: e8d21e57f9a844b3cc0538f4805780829a1350f4
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: fd92eed127ec50a3d3a86f667d9aa764b79c190a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428587"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585392"
 ---
 # <a name="trusted-storage-for-media-services"></a>Vertrauenswürdiger Speicher für Media Services
 
 Wenn Sie ein Media Services-Konto erstellen, müssen Sie es einem Speicherkonto zuordnen. Von Media Services kann per Systemauthentifizierung oder Authentifizierung verwalteter Identitäten auf dieses Speicherkonto zugegriffen werden. Media Services überprüft, ob sich das Media Services-Konto und das Speicherkonto im gleichen Abonnement befinden und ob der Benutzer, der die Zuordnung hinzufügt, Zugriff auf das Speicherkonto hat (mittels rollenbasierter Zugriffssteuerung für Azure Resource Manager).
 
+>[!NOTE]
+>Der vertrauenswürdige Speicher ist nur in der API verfügbar und derzeit nicht im Azure-Portal aktiviert.
+
 ## <a name="trusted-storage-with-a-firewall"></a>Vertrauenswürdiger Speicher mit einer Firewall
 
-Wenn Sie jedoch eine Firewall einsetzen möchten, um Ihr Speicherkonto zu schützen und vertrauenswürdigen Speicher zu ermöglichen, ist die Authentifizierung mit [verwalteten Identitäten](concept-managed-identities.md) die bevorzugte Option. Dadurch kann von Media Services per vertrauenswürdigem Speicherzugriff auf das Speicherkonto zugegriffen werden, das mit einer Firewall oder mit einer VNET-Einschränkung konfiguriert wurde. Dadurch kann von Media Services per vertrauenswürdigem Speicherzugriff auf das Speicherkonto zugegriffen werden, das mit einer Firewall oder mit einer VNET-Einschränkung konfiguriert wurde.
+Wenn Sie jedoch eine Firewall einsetzen möchten, um Ihr Speicherkonto zu schützen und vertrauenswürdigen Speicher zu ermöglichen, ist die Authentifizierung mit [verwalteten Identitäten](concept-managed-identities.md) die bevorzugte Option. Dadurch kann von Media Services per vertrauenswürdigem Speicherzugriff auf das Speicherkonto zugegriffen werden, das mit einer Firewall oder mit einer VNET-Einschränkung konfiguriert wurde.
+
+## <a name="tutorial"></a>Lernprogramm
+
+Weitere Informationen zum Aktivieren von vertrauenswürdigem Speicher finden Sie im Tutorial [Media Services: Vertrauenswürdiger Speicher](tutorial-trusted-storage-rest.md).
 
 > [!NOTE]
 > Sie müssen den Zugriff „Mitwirkender an Storage-Blobdaten“ der Funktion „Verwaltete Identität“ von Azure Media Services gewähren, damit Media Services Speicherkontodaten lesen und schreiben kann.  Das Gewähren der allgemeinen Rolle „Mitwirkender“ funktioniert nicht, da dadurch nicht die ordnungsgemäßen Berechtigungen auf Datenebene aktiviert werden.

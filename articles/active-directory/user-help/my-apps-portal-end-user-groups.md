@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 10/19/2020
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: cff1298f12d26b1260213d75701c282e0a82511d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fc8d211160e757c78a8e2adafad703118628e6dc
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004149"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095043"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Aktualisieren Ihrer Gruppeninformationen im Portal „Meine Apps“
 
@@ -27,6 +27,11 @@ Sie können über Ihr Geschäfts-, Schul- oder Unikonto beim webbasierten Portal
 
 >[!Important]
 >Dieser Inhalt richtet sich an Benutzer. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](../manage-apps/index.yml) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
+>
+> Wenn bei der Anmeldung mit einem persönlichen Microsoft-Konto ein Fehler auftritt, können Sie sich trotzdem mit dem Domänennamen für Ihre Organisation (z. B. „contoso.com“) oder der **Mandanten-ID** Ihrer Organisation, die Sie von Ihrem Administrator erhalten, über eine der folgenden URLs anmelden:
+>
+>   - https://myapplications.microsoft.com?tenantId=*Ihr_Domänenname*
+>   - https://myapplications.microsoft.com?tenant=*Ihre_Mandanten_ID*
 
 ## <a name="view-your-groups-information"></a>Anzeigen von Informationen zu Ihren Gruppen
 
@@ -40,7 +45,11 @@ Wenn Ihr Administrator Ihnen die Berechtigung zum Anzeigen der Kachel **Gruppen*
 
 1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an.
 
-2. Öffnen Sie Ihren Webbrowser, und navigieren Sie zu https://myapps.microsoft.com, oder verwenden Sie den von Ihrer Organisation bereitgestellten Link. So können Sie beispielsweise zu einer benutzerdefinierten Seite Ihrer Organisation wie https://myapps.microsoft.com/contoso.com geleitet werden.
+2. Öffnen Sie Ihren Webbrowser, und navigieren Sie zu https://myapps.microsoft.com, oder verwenden Sie den von Ihrer Organisation bereitgestellten Link. So können Sie beispielsweise zu einer benutzerdefinierten Seite Ihrer Organisation wie https://myapps.microsoft.com/contoso.com geleitet werden. Wenn Sie sich mit einem persönlichen Microsoft-Konto anmelden, können Sie sich trotzdem mit dem Domänennamen für Ihre Organisation (z. B. „contoso.com“) oder der **Mandanten-ID** Ihrer Organisation, die Sie von Ihrem Administrator erhalten, über eine der folgenden URLs anmelden:
+
+   - https://myapplications.microsoft.com?tenantId=*Ihr_Domänenname*
+   - https://myapplications.microsoft.com?tenant=*Ihre_Mandanten_ID*
+
 
     Die Seite **Apps** wird mit allen im Besitz Ihrer Organisation befindlichen Cloud-Apps angezeigt, die Ihnen zur Verfügung stehen.
 

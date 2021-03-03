@@ -5,16 +5,19 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 08ae189253c6141a6b84035b71016ff5099ec162
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 4a69b2ff15fc4857e9fb292d2f753aa68ed875d4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689756"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370098"
 ---
 ### <a name="functional-limits"></a>Funktionale Grenzwerte
 
-In der folgenden Tabelle werden die funktionalen Grenzwerte von Azure Digital Twins aufgeführt.
+In der folgenden Tabelle werden die funktionalen Einschränkungen von Azure Digital Twins aufgeführt. 
+
+> [!TIP]
+> Empfehlungen zur Modellierung, die diese funktionalen Einschränkungen einhalten, finden Sie unter [Bewährte Methoden zum Entwerfen von Modellen](../articles/digital-twins/concepts-models.md#best-practices-for-designing-models).
 
 | Bereich | Funktion | Standardlimit | Anpassbar? |
 | --- | --- | --- | --- |
@@ -28,6 +31,7 @@ In der folgenden Tabelle werden die funktionalen Grenzwerte von Azure Digital Tw
 | Routing | Anzahl von Routen für eine einzelne Azure Digital Twins-Instanz | 6 | Ja |
 | Modelle | Anzahl von Modellen innerhalb einer einzelnen Azure Digital Twins-Instanz | 10.000 | Ja |
 | Modelle | Anzahl der Modelle, die in einem einzigen API-Aufruf hochgeladen werden können | 250 | Nein |
+| Modelle | Maximale Größe (des JSON-Texts in einer PUT- oder PATCH-Anforderung) eines einzelnen Modells | 1 MB | Nein |
 | Modelle | Anzahl der auf einer einzelnen Seite zurückgegebenen Elemente | 100 | Nein |
 | Abfrage | Anzahl der auf einer einzelnen Seite zurückgegebenen Elemente | 100 | Ja |
 | Abfrage | Anzahl von `AND` / `OR`-Ausdrücken in einer Abfrage | 50 | Ja |

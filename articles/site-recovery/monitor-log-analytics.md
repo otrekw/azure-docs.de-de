@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: e3d3ce8218030bc8ba6c59b26b7360bf2299e02a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 308e1bcf042feb15179d32844d8c569af6166619
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499814"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571671"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Überwachen von Site Recovery mit Azure Monitor-Protokollen
 
-In diesem Artikel wird beschrieben, wie Sie die von [Azure Site Recovery](site-recovery-overview.md) replizierten Computer mithilfe von [Azure Monitor-Protokollen](../azure-monitor/platform/data-platform-logs.md) und [Log Analytics](../azure-monitor/log-query/log-query-overview.md) überwachen.
+In diesem Artikel wird beschrieben, wie Sie die von [Azure Site Recovery](site-recovery-overview.md) replizierten Computer mithilfe von [Azure Monitor-Protokollen](../azure-monitor/logs/data-platform-logs.md) und [Log Analytics](../azure-monitor/logs/log-query-overview.md) überwachen.
 
 Azure Monitor-Protokolle bieten eine Protokolldatenplattform, die Aktivitäts- und Ressourcenprotokolle zusammen mit anderen Überwachungsdaten sammelt. Sie können in Azure Monitor-Protokollen Protokollabfragen mit Log Analytics schreiben und testen und Protokolldaten interaktiv analysieren. Sie können die Protokollergebnisse visualisieren und abfragen, und Sie können Warnungen konfigurieren, damit Aktionen basierend auf überwachten Daten durchgeführt werden.
 
@@ -35,8 +35,8 @@ Die Verwendung von Azure Monitor-Protokollen mit Site Recovery wird für die **
 Sie benötigen Folgendes:
 
 - Mindestens einen Computer, der in einem Recovery Services-Tresor geschützt ist
-- Einen Log Analytics-Arbeitsbereich zum Speichern von Site Recovery-Protokollen. Erfahren Sie mehr über das [Einrichten eines Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md).
-- Grundlegende Kenntnisse zum Schreiben, Ausführen und Analysieren von Protokollabfragen in Log Analytics. [Weitere Informationen](../azure-monitor/log-query/log-analytics-tutorial.md)
+- Einen Log Analytics-Arbeitsbereich zum Speichern von Site Recovery-Protokollen. Erfahren Sie mehr über das [Einrichten eines Arbeitsbereichs](../azure-monitor/logs/quick-create-workspace.md).
+- Grundlegende Kenntnisse zum Schreiben, Ausführen und Analysieren von Protokollabfragen in Log Analytics. [Weitere Informationen](../azure-monitor/logs/log-analytics-tutorial.md)
 
 Es wird empfohlen, vor dem Start die [allgemeinen Fragen zur Überwachung](monitoring-common-questions.md) zu lesen.
 
@@ -62,9 +62,9 @@ Sie können die Änderungsdateninformationen und die Quelldaten-Uploadrateninfor
 1. Wechseln Sie zum Log Analytics-Arbeitsbereich, und klicken Sie auf **Erweiterte Einstellungen**.
 2. Klicken Sie auf die Seite **Verbundene Quellen**, und wählen Sie dann **Windows-Server** aus.
 3. Laden Sie den Windows-Agent (64 Bit) auf den Prozessserver herunter. 
-4. [Abrufen von Arbeitsbereichs-ID und Schlüssel](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)
-5. [Konfigurieren des Agents für die Verwendung von TLS 1.2](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. [Schließen Sie die Installation des Agents ab](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard), indem Sie die erhaltene Arbeitsbereichs-ID und den Schlüssel angeben.
+4. [Abrufen von Arbeitsbereichs-ID und Schlüssel](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)
+5. [Konfigurieren des Agents für die Verwendung von TLS 1.2](../azure-monitor/agents/agent-windows.md#configure-agent-to-use-tls-12)
+6. [Schließen Sie die Installation des Agents ab](../azure-monitor/agents/agent-windows.md#install-agent-using-setup-wizard), indem Sie die erhaltene Arbeitsbereichs-ID und den Schlüssel angeben.
 7. Nachdem die Installation abgeschlossen ist, wechseln Sie in den Log Analytics-Arbeitsbereich, und klicken Sie auf **Erweiterte Einstellungen**. Wechseln Sie zur Seite **Daten**, und klicken Sie dann auf **Windows-Leistungsindikatoren**. 
 8. Klicken Sie auf **„+“** , um die folgenden beiden Indikatoren mit dem Stichprobenintervall von 300 Sekunden hinzuzufügen:
 
@@ -76,7 +76,7 @@ Die Änderungs- und Uploadratendaten werden in den Arbeitsbereich eingegeben.
 
 ## <a name="query-the-logs---examples"></a>Abfragen der Protokolle – Beispiele
 
-Daten aus Protokollen werden mithilfe von Protokollabfragen abgerufen, die mit der [Abfragesprache Kusto](../azure-monitor/log-query/get-started-queries.md) geschrieben werden. Dieser Abschnitt enthält mehrere Beispiele für allgemeine Abfragen, die Sie für die Site Recovery-Überwachung verwenden können.
+Daten aus Protokollen werden mithilfe von Protokollabfragen abgerufen, die mit der [Abfragesprache Kusto](../azure-monitor/logs/get-started-queries.md) geschrieben werden. Dieser Abschnitt enthält mehrere Beispiele für allgemeine Abfragen, die Sie für die Site Recovery-Überwachung verwenden können.
 
 > [!NOTE]
 > In einigen Beispielen wird **replicationProviderName_s** auf **A2A** festgelegt. Hierdurch werden Azure-VMs abgerufen, die mithilfe von Site Recovery in eine sekundäre Azure-Region repliziert werden. In diesen Beispielen können Sie **A2A** durch **InMageAzureV2** ersetzen, wenn Sie lokale virtuelle VMware-Computer oder physische Server abrufen möchten, die mithilfe von Site Recovery nach Azure repliziert werden.
@@ -252,7 +252,7 @@ AzureDiagnostics 
 
 ## <a name="set-up-alerts---examples"></a>Einrichten von Warnungen – Beispiele
 
-Sie können Site Recovery Warnungen basierend auf Azure Monitor-Daten einrichten. Informieren Sie sich über das [Einrichten von Protokollwarnungen](../azure-monitor/platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal). 
+Sie können Site Recovery Warnungen basierend auf Azure Monitor-Daten einrichten. Informieren Sie sich über das [Einrichten von Protokollwarnungen](../azure-monitor/alerts/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal). 
 
 > [!NOTE]
 > In einigen Beispielen wird **replicationProviderName_s** auf **A2A** festgelegt. Hierdurch werden Warnungen für Azure-VMs eingerichtet, die in eine sekundäre Azure-Region repliziert werden. In diesen Beispielen können Sie **A2A** durch **InMageAzureV2** ersetzen, wenn Sie Warnungen für lokale VMware-VMs oder physische Server einrichten möchten, die nach Azure repliziert werden.

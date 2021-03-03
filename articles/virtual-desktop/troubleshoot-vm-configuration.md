@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 84a49ea2f6ce4a5119af024ab3de67fa2b89c02e
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: f1f2caa194972bb870dc58cfa0bd6ccb2f8db053
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539743"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099913"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfiguration des virtuellen Sitzungshostcomputers
 
@@ -193,7 +193,7 @@ Die Ausgabe von **qwinsta** listet **rdp-sxs** in der Ausgabe auf, wenn der para
 > [!div class="mx-imgBorder"]
 > ![Paralleler Stapel installiert oder aktiviert, qwinsta-Ausgabe mit rdp-sxs.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-Untersuchen Sie die unten aufgeführten Registrierungseinträge und bestätigen Sie, dass ihre Werte übereinstimmen. Wenn Registrierungsschlüssel fehlen oder Werte nicht übereinstimmen, befolgen Sie die Anweisungen unter [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md) zum erneuten Installieren des parallelen Stapels.
+Untersuchen Sie die unten aufgeführten Registrierungseinträge und bestätigen Sie, dass ihre Werte übereinstimmen. Wenn Registrierungsschlüssel fehlen oder die Werte nicht übereinstimmen, stellen Sie sicher, dass Sie [ein unterstütztes Betriebssystem](troubleshoot-agent.md#error-operating-a-pro-vm-or-other-unsupported-os) verwenden. Wenn dies der Fall ist, befolgen Sie die Anweisungen unter [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md) zum erneuten Installieren des parallelen Stapels.
 
 ```registry
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal

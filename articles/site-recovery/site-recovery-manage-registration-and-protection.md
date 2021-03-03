@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: sharrai
-ms.openlocfilehash: a4f6c318a7521e1fbc03ff3a47e34e992cce44df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1356deabd13db1dd2f29ac1b1f088db2120353fe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89424785"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738853"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Entfernen von Servern und Deaktivieren des Schutzes
 
@@ -34,7 +34,7 @@ Wenn Sie VMware-VMs oder physische Windows-/Linux-Server in Azure replizieren, k
 3. Notieren Sie die ID des VMM-Servers.
 4. Heben Sie die Zuordnung zwischen Replikationsrichtlinien und Clouds auf dem VMM-Server auf, den Sie entfernen möchten.  Doppelklicken Sie unter **Site Recovery-Infrastruktur** > **Für System Center VMM** >  **Replikationsrichtlinien** auf die zugehörige Richtlinie. Klicken Sie mit der rechten Maustaste auf die Cloud, und klicken Sie dann auf **Zuordnung aufheben**.
 5. Löschen Sie den VMM-Server oder den aktiven Knoten. Klicken Sie unter **Site Recovery-Infrastruktur** > **Für System Center VMM** > **VMM-Server** mit der rechten Maustaste auf den Server, und klicken Sie dann auf **Löschen**.
-6. Wenn Ihr VMM-Server nicht verbunden war, laden Sie das [Bereinigungsskript](https://aka.ms/asr-cleanup-script-vmm) auf den VMM-Server herunter und führen es aus. Öffnen Sie PowerShell mit der Option **Als Administrator ausführen**, um die Ausführungsrichtlinie für den Standardbereich (LocalMachine) zu ändern. Geben Sie im Skript die ID des VMM-Servers an, den Sie entfernen möchten. Das Skript entfernt die Informationen zu Registrierung und Cloudkopplung vom Server.
+6. Wenn Ihr VMM-Server nicht verbunden war, laden Sie das [Bereinigungsskript](/samples/browse/?redirectedfrom=TechNet-Gallery) auf den VMM-Server herunter und führen es aus. Öffnen Sie PowerShell mit der Option **Als Administrator ausführen**, um die Ausführungsrichtlinie für den Standardbereich (LocalMachine) zu ändern. Geben Sie im Skript die ID des VMM-Servers an, den Sie entfernen möchten. Das Skript entfernt die Informationen zu Registrierung und Cloudkopplung vom Server.
 5. Führen Sie das Bereinigungsskript auf einem beliebigen sekundären VMM-Server aus.
 6. Führen Sie das Bereinigungsskript auf allen anderen passiven VMM-Clusterknoten aus, auf denen der Anbieter installiert ist.
 7. Deinstallieren Sie manuell den Anbieter auf dem VMM-Server. Wenn Sie einen Cluster verwenden, entfernen Sie ihn von allen Knoten.
@@ -162,7 +162,7 @@ Hyper-V-Hosts, die nicht von VMM verwaltet werden, werden an einem Hyper-V-Stand
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>Deaktivieren des Schutzes für einen virtuellen Hyper-V-Computer (Hyper-V nach Azure)
 
 > [!NOTE]
-> Gehen Sie folgendermaßen vor, wenn Sie Hyper-V-VMs ohne einen VMM-Server nach Azure replizieren. Wenn Sie Ihre virtuellen Computer von **System Center VMM nach Azure** replizieren, befolgen Sie die Anweisungen unter „Deaktivieren des Schutzes für einen virtuellen Hyper-V-Computer mit Replikation mithilfe von System Center VMM nach Azure“.
+> Gehen Sie folgendermaßen vor, wenn Sie Hyper-V-VMs ohne einen VMM-Server nach Azure replizieren. Wenn Sie Ihre virtuellen Computer von **System Center VMM nach Azure** replizieren, befolgen Sie die Anweisungen unter Deaktivieren des Schutzes für einen virtuellen Hyper-V-Computer mit Replikation mithilfe von System Center VMM nach Azure
 
 1. Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Replikation deaktivieren**.
 2. Unter **Replikation deaktivieren** können Sie folgende Optionen auswählen:

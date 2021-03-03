@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: ec07d36ad544f293064e877520bb4a7a4c9b269d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1f404d3613f9de8daadc4bb2ceb39282cf3b619e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457608"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688942"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Tutorial: Azure Active Directory-Integration mit Attendance Management Services
 
@@ -41,7 +41,7 @@ Um die Azure AD-Integration mit Attendance Management Services konfigurieren zu 
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Attendance Management Services unterstützt **SP** -initiiertes einmaliges Anmelden
+* Attendance Management Services unterstützt **SP**-initiiertes einmaliges Anmelden
 
 ## <a name="adding-attendance-management-services-from-the-gallery"></a>Hinzufügen von Attendance Management Services aus dem Katalog
 
@@ -49,25 +49,25 @@ Zum Konfigurieren der Integration von Attendance Management Services in Azure AD
 
 **Um Attendance Management Services aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory** .
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **Attendance Management Services** ein, wählen Sie im Ergebnisbereich **Attendance Management Services** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Attendance Management Services** ein, wählen Sie im Ergebnisbereich **Attendance Management Services** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Attendance Management Services in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Attendance Management Services mithilfe einer Testbenutzerin namens **Britta Simon** .
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Attendance Management Services mithilfe einer Testbenutzerin namens **Britta Simon**.
 Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Attendance Management Services eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Attendance Management Services müssen Sie die folgenden Bausteine ausführen:
@@ -93,7 +93,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD b
 
     ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten** , um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD b
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam von Attendance Management Services](https://www.obcnet.jp/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen** , um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
@@ -126,7 +126,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD b
 
 1. Melden Sie sich in einem anderen Browserfenster bei der Unternehmenswebsite von Attendance Management Services als Administrator an.
 
-1. Klicken Sie auf **SAML-Authentifizierung** unter dem Abschnitt **Sicherheitsverwaltung** .
+1. Klicken Sie auf **SAML-Authentifizierung** unter dem Abschnitt **Sicherheitsverwaltung**.
 
     ![Screenshot: ausgewählte SAML-Authentifizierung auf einer Seite mit nicht lateinischen Zeichen](./media/attendancemanagementservices-tutorial/user1.png)
 
@@ -144,13 +144,13 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD b
 
     e. Wählen Sie **Disable password authentication** (Kennwortauthentifizierung deaktivieren) aus.
 
-    f. Klicken Sie auf **Registrierung** .
+    f. Klicken Sie auf **Registrierung**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** , **Benutzer** und dann **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
@@ -166,15 +166,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
   
     b. Geben Sie im Feld **Benutzername** den Namen `brittasimon@yourcompanydomain.extension` ein. Zum Beispiel, BrittaSimon@contoso.com
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen** .
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Attendance Management Services gewähren.
 
-1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen** , **Alle Anwendungen** und **Attendance Management Services** aus.
+1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Attendance Management Services** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -186,15 +186,15 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen** , und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen** .
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen** .
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ### <a name="create-attendance-management-services-test-user"></a>Erstellen eines Attendance Management Services-Testbenutzers
 
@@ -204,7 +204,7 @@ Um Azure AD-Benutzern die Anmeldung bei Attendance Management Services zu ermög
 
 1. Melden Sie sich bei der Unternehmenswebsite von Attendance Management Services als Administrator an.
 
-1. Klicken Sie auf **Benutzerverwaltung** unter dem Abschnitt **Sicherheitsverwaltung** .
+1. Klicken Sie auf **Benutzerverwaltung** unter dem Abschnitt **Sicherheitsverwaltung**.
 
     ![Screenshot: ausgewählte Option „Benutzerverwaltung“ auf einer Seite mit nicht lateinischen Zeichen](./media/attendancemanagementservices-tutorial/user5.png)
 
@@ -216,11 +216,11 @@ Um Azure AD-Benutzern die Anmeldung bei Attendance Management Services zu ermög
 
     ![Screenshot des Fensters, in dem Sie die beschriebenen Aufgaben ausführen können](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. Geben Sie im Textfeld **OBCiD** die E-Mail-Adresse des Benutzers ein, z. B. `BrittaSimon\@contoso.com`.
+    a. Geben Sie im Textfeld **OBCiD** die E-Mail-Adresse des Benutzers ein, z. B. `BrittaSimon@contoso.com`.
 
     b. Geben Sie im Textfeld **Kennwort** das Kennwort des Benutzers ein.
 
-    c. Klicken Sie auf **Registrierung** .
+    c. Klicken Sie auf **Registrierung**.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

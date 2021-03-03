@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 06/12/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: add0d392f39ab476c6d75f704d5b2e2e0faaa77c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: aed23bf5008f850b19a1e5a8c7b0ff21f329eb3a
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004343"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560494"
 ---
 ## <a name="prepare-your-repository"></a>Vorbereiten Ihres Repositorys
 
-Um automatische Builds vom Azure App Service-Kudu-Buildserver zu erhalten, muss das Stammverzeichnis Ihres Repositorys die richtigen Dateien enthalten.
+Um automatische Builds vom Azure App Service-Buildserver zu erhalten, muss das Stammverzeichnis Ihres Repositorys die richtigen Dateien enthalten.
 
 | Typ | Stammverzeichnisdateien |
 |-|-|
@@ -34,6 +34,6 @@ Um automatische Builds vom Azure App Service-Kudu-Buildserver zu erhalten, muss 
 Zum Anpassen Ihrer Bereitstellung schließen Sie eine Datei vom Typ *.deployment* im Repositorystamm ein. Weitere Informationen finden Sie unter [Anpassen von Bereitstellungen](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) und [Benutzerdefiniertes Bereitstellungsskript](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script).
 
 > [!NOTE]
-> Wenn Sie in Visual Studio entwickeln, kann [Visual Studio ein Repository für Sie erstellen](/azure/devops/repos/git/creatingrepo?view=vsts&tabs=visual-studio). Das Projekt kann sofort über Git bereitgestellt werden.
+> Wenn Sie in Visual Studio entwickeln, kann [Visual Studio ein Repository für Sie erstellen](/azure/devops/repos/git/creatingrepo?view=vsts&tabs=visual-studio&preserve-view=true). Das Projekt kann sofort über Git bereitgestellt werden.
 >
 

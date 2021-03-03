@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9608dfd7ac4076e6cd74846c3f52ed2e3645777a
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: e01083b8618e4751770ed69aa4b1c20f8a072d88
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956003"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092315"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Erstellen und Überwachen von Media Services-Ereignissen mit Event Grid über die Azure CLI
 
@@ -30,7 +30,7 @@ In diesem Artikel verwenden Sie die Azure CLI, um Ereignisse für Ihr Azure Medi
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein aktives Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
-- Installieren und verwenden Sie die CLI lokal. Dieser Artikel erfordert mindestens Version 2.0 der Azure CLI. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
+- Installieren und verwenden Sie die CLI lokal. Dieser Artikel erfordert mindestens Version 2.0 der Azure CLI. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
     Derzeit funktionieren nicht alle Befehle der [CLI von Media Services v3](/cli/azure/ams) in Azure Cloud Shell. Es wird empfohlen, die CLI lokal zu verwenden.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a106455ea9d7b7a64fecd7c4255c294d0bd62db8
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cfc980fdabdb9c6e7085088db12754243f133d89
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562615"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581392"
 ---
 # <a name="security-best-practices"></a>Bewährte Sicherheitsmethoden
 
@@ -80,10 +80,10 @@ Durch die Aktivierung des [bedingten Zugriffs](../active-directory/conditional-a
 
 Wenn Sie das Sammeln von Überwachungsprotokollen aktivieren, können Sie Benutzer- und Verwaltungsaktivitäten im Zusammenhang mit Windows Virtual Desktop anzeigen. Einige Beispiele für wichtige Überwachungsprotokolle sind:
 
--   [Azure-Aktivitätsprotokoll](../azure-monitor/platform/activity-log.md)
+-   [Azure-Aktivitätsprotokoll](../azure-monitor/essentials/activity-log.md)
 -   [Azure Active Directory-Aktivitätsprotokoll](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
--   [Sitzungshosts](../azure-monitor/platform/agent-windows.md)
+-   [Sitzungshosts](../azure-monitor/agents/agent-windows.md)
 -   [Windows Virtual Desktop-Diagnoseprotokoll](../virtual-desktop/diagnostics-log-analytics.md)
 -   [Key Vault-Protokolle](../key-vault/general/logging.md)
 

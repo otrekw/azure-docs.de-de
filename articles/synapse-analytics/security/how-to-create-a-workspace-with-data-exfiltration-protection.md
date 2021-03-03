@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: f8ebbdf70836f3f2613183268f03dc43da1f0671
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 12d858488c4530e4b0d949cd36ed9ad2f7df4c59
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590559"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384485"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>Erstellen eines Arbeitsbereichs mit aktiviertem Schutz vor Datenexfiltration
 In diesem Artikel wird beschrieben, wie Sie einen Arbeitsbereich mit aktiviertem Schutz vor Datenexfiltration und die genehmigten Azure AD-Mandanten für diesen Arbeitsbereich verwalten.
@@ -49,6 +49,9 @@ Sie können verwaltete private Endpunkte erstellen, um eine Verbindung mit Azure
 >[!IMPORTANT]
 >Für Ressourcen auf anderen Mandanten als dem Mandanten des Arbeitsbereichs dürfen keine blockierenden Firewallregeln vorhanden sein, weil die SQL-Pools ansonsten keine Verbindung damit herstellen können. Ressourcen im verwalteten virtuellen Netzwerk des Arbeitsbereichs, z. B. Spark-Cluster, können über verwaltete private Links eine Verbindung mit per Firewall geschützten Ressourcen herstellen.
 
+## <a name="known-limitations"></a>Bekannte Einschränkungen
+Benutzer können eine Umgebungskonfigurationsdatei bereitstellen, um Python-Pakete aus öffentlichen Repositorys wie PyPI zu installieren. In vor Datenexfiltration geschützten Arbeitsbereichen werden Verbindungen mit ausgehenden Respositorys blockiert. Folglich werden aus öffentlichen Repositorys wie PyPI installierte Python-Bibliotheken nicht unterstützt. 
+  
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich über den [Schutz vor Datenexfiltration in Synapse-Arbeitsbereichen](./workspace-data-exfiltration-protection.md).

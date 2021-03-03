@@ -5,25 +5,25 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 01/08/2020
+ms.date: 03/02/2021
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 34caca47746814046a894494ec43d9b5c977389a
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 8d19a5dadffdfa26ccb2d84e6dab278ad272c7b0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060087"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658045"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Verwalten der Indizierung in der Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Die Azure Cosmos DB-API für MongoDB nutzt die Kernfunktionen für automatische Indexverwaltung von Azure Cosmos DB. Dieser Artikel konzentriert sich auf das Hinzufügen von Indizes mithilfe der Azure Cosmos DB-API für MongoDB. Sie können auch den Artikel [Indizierung in Azure Cosmos DB: Übersicht](index-overview.md) lesen, der für alle APIs relevant ist.
 
-## <a name="indexing-for-mongodb-server-version-36"></a>Indizierung für MongoDB-Serverversion 3.6
+## <a name="indexing-for-mongodb-server-version-36-and-higher"></a>Indizierung für MongoDB-Serverversion 3.6 und höher
 
-Die Azure Cosmos DB-API für die MongoDB-Serverversion 3.6 indiziert automatisch das Feld `_id`, das nicht gelöscht werden kann. Sie erzwingt automatisch die Eindeutigkeit des Felds `_id` durch einen Shardschlüssel. In der Azure Cosmos DB-API für MongoDB sind horizontale Partitionierung und Indizierung separate Konzepte. Sie müssen Ihren Shardschlüssel nicht indizieren. Wie bei jeder anderen Eigenschaft in Ihrem Dokument gilt jedoch: Wenn diese Eigenschaft ein allgemeiner Filter in Ihren Abfragen ist, empfiehlt es sich, den Shardschlüssel zu indizieren.
+Die Azure Cosmos DB-API für die MongoDB-Serverversion 3.6 und höher indiziert automatisch das Feld `_id`, das nicht gelöscht werden kann. Sie erzwingt automatisch die Eindeutigkeit des Felds `_id` durch einen Shardschlüssel. In der Azure Cosmos DB-API für MongoDB sind horizontale Partitionierung und Indizierung separate Konzepte. Sie müssen Ihren Shardschlüssel nicht indizieren. Wie bei jeder anderen Eigenschaft in Ihrem Dokument gilt jedoch: Wenn diese Eigenschaft ein allgemeiner Filter in Ihren Abfragen ist, empfiehlt es sich, den Shardschlüssel zu indizieren.
 
 Um zusätzliche Felder zu indizieren, verwenden Sie die MongoDB-Indexverwaltungsbefehle. Wie bei MongoDB indiziert die Azure Cosmos DB-API für MongoDB automatisch auch nur das Feld `_id`. Diese Standardindizierungsrichtlinie unterscheidet sich von der Azure Cosmos DB-SQL-API, die standardmäßig alle Felder indiziert.
 
@@ -53,9 +53,9 @@ Sie können denselben Einzelfeldindex für `name` im Azure-Portal erstellen:
 
 Bei einer Abfrage werden mehrere Einzelfeldindizes verwendet, soweit verfügbar. Sie können pro Container bis zu 500 Einzelfeldindizes erstellen.
 
-### <a name="compound-indexes-mongodb-server-version-36"></a>Zusammengesetzte Indizes (MongoDB-Serverversion 3.6)
+### <a name="compound-indexes-mongodb-server-version-36"></a>Zusammengesetzte Indizes (MongoDB-Serverversion 3.6 und höher)
 
-Die Azure Cosmos DB-API für MongoDB unterstützt zusammengesetzte Indizes für Konten, die Version 3.6 des Wire-Protokolls verwenden. Sie können bis zu acht Felder in einen zusammengesetzten Index einschließen. Anders als in MongoDB sollten Sie nur dann einen zusammengesetzten Index erstellen, wenn die Abfrage über mehrere Felder gleichzeitig effizient sortiert werden muss. Für Abfragen mit mehreren Filtern, die nicht sortiert werden müssen, sollten Sie anstelle eines einzelnen zusammengesetzten Indexes mehrere Einzelfeldindizes erstellen. 
+Die Azure Cosmos DB-API für MongoDB unterstützt zusammengesetzte Indizes für Konten, die das Wire-Protokoll der Version 3.6 und 4.0 verwenden. Sie können bis zu acht Felder in einen zusammengesetzten Index einschließen. Anders als in MongoDB sollten Sie nur dann einen zusammengesetzten Index erstellen, wenn die Abfrage über mehrere Felder gleichzeitig effizient sortiert werden muss. Für Abfragen mit mehreren Filtern, die nicht sortiert werden müssen, sollten Sie anstelle eines einzelnen zusammengesetzten Indexes mehrere Einzelfeldindizes erstellen. 
 
 > [!NOTE]
 > Für geschachtelte Eigenschaften oder Arrays können Sie keine zusammengesetzten Indizes erstellen.
@@ -102,30 +102,31 @@ Sie können Platzhalterindizes verwenden, um Abfragen für unbekannte Felder zu 
 Hier sehen Sie einen Auszug eines Beispieldokuments in dieser Sammlung:
 
 ```json
-  "children": [
-     {
-         "firstName": "Henriette Thaulow",
-         "grade": "5"
-     }
-  ]
+"children": [
+   {
+     "firstName": "Henriette Thaulow",
+     "grade": "5"
+   }
+]
 ```
 
 Hier sehen Sie ein weiteres Beispiel, diesmal mit etwas anderen Eigenschaften in `children`:
 
 ```json
-  "children": [
-      {
-        "familyName": "Merriam",
-        "givenName": "Jesse",
-        "pets": [
-            { "givenName": "Goofy" },
-            { "givenName": "Shadow" }
-      },
-      {
-        "familyName": "Merriam",
-        "givenName": "John",
-      }
-  ]
+"children": [
+    {
+     "familyName": "Merriam",
+     "givenName": "Jesse",
+     "pets": [
+         { "givenName": "Goofy" },
+         { "givenName": "Shadow" }
+         ]
+   },
+   {
+     "familyName": "Merriam",
+     "givenName": "John",
+   }
+]
 ```
 
 In dieser Sammlung können Dokumente viele verschiedene Eigenschaften haben. Wenn Sie alle Daten im Array `children` indizieren möchten, haben Sie zwei Möglichkeiten: Sie können separate Indizes für jede einzelne Eigenschaft erstellen oder einen einzelnen Platzhalterindex für das gesamte Array `children`.
@@ -140,8 +141,8 @@ Mit dem folgenden Befehl wird ein Platzhalterindex für alle Eigenschaften in `c
 
 Folgende Indextypen lassen sich mit Platzhaltersyntax erstellen:
 
-- Einzelfeld
-- Geodaten
+* Einzelfeld
+* Geodaten
 
 ### <a name="indexing-all-properties"></a>Indizieren aller Eigenschaften
 
@@ -162,41 +163,45 @@ Dokumente mit vielen Feldern können eine hohe Gebühr für Anforderungseinheite
 
 Folgende Indextypen oder Eigenschaften werden von Platzhalterindizes nicht unterstützt:
 
-- Verbund
-- TTL
-- Eindeutig
+* Verbund
+* TTL
+* Eindeutig
 
 **Anders als in MongoDB** können Platzhalterindizes in der Azure Cosmos DB-API für MongoDB **nicht** für Folgendes verwendet werden:
 
-- Erstellen eines Platzhalterindex, der mehrere spezifische Felder einschließt
+* Erstellen eines Platzhalterindex, der mehrere spezifische Felder einschließt
 
-`db.coll.createIndex(
-    { "$**" : 1 },
-    { "wildcardProjection " :
-        {
-           "children.givenName" : 1,
-           "children.grade" : 1
-        }
-    }
-)`
+  ```json
+  db.coll.createIndex(
+      { "$**" : 1 },
+      { "wildcardProjection " :
+          {
+             "children.givenName" : 1,
+             "children.grade" : 1
+          }
+      }
+  )
+  ```
 
-- Erstellen eines Platzhalterindex, der mehrere spezifische Felder ausschließt
+* Erstellen eines Platzhalterindex, der mehrere spezifische Felder ausschließt
 
-`db.coll.createIndex(
-    { "$**" : 1 },
-    { "wildcardProjection" :
-        {
-           "children.givenName" : 0,
-           "children.grade" : 0
-        }
-    }
-)`
+  ```json
+  db.coll.createIndex(
+      { "$**" : 1 },
+      { "wildcardProjection" :
+          {
+             "children.givenName" : 0,
+             "children.grade" : 0
+          }
+      }
+  )
+  ```
 
 Alternativ können Sie mehrere Platzhalterindizes erstellen.
 
 ## <a name="index-properties"></a>Indexeigenschaften
 
-Die folgenden Vorgänge können für Konten mit der Wire-Protokollversion 3.6 und Konten mit früheren Versionen verwendet werden. Sie können noch mehr über [unterstützte Indizes und indizierte Eigenschaften](mongodb-feature-support-36.md#indexes-and-index-properties) erfahren.
+Die folgenden Vorgänge können für Konten mit der Wire-Protokollversion 4.0 und Konten mit früheren Versionen verwendet werden. Sie können noch mehr über [unterstützte Indizes und indizierte Eigenschaften](mongodb-feature-support-40.md#indexes-and-index-properties) erfahren.
 
 ### <a name="unique-indexes"></a>Eindeutige Indizes
 
@@ -210,11 +215,11 @@ Mit dem folgenden Befehl wird ein eindeutiger Index mit dem Feld `student_id` er
 ```shell
 globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )
 {
-        "_t" : "CreateIndexesResponse",
-        "ok" : 1,
-        "createdCollectionAutomatically" : false,
-        "numIndexesBefore" : 1,
-        "numIndexesAfter" : 4
+    "_t" : "CreateIndexesResponse",
+    "ok" : 1,
+    "createdCollectionAutomatically" : false,
+    "numIndexesBefore" : 1,
+    "numIndexesAfter" : 4
 }
 ```
 
@@ -225,23 +230,23 @@ Mit den folgenden Befehlen erstellen Sie die partitionierte Sammlung ```coll``` 
 ```shell
 globaldb:PRIMARY> db.runCommand({shardCollection: db.coll._fullName, key: { university: "hashed"}});
 {
-        "_t" : "ShardCollectionResponse",
-        "ok" : 1,
-        "collectionsharded" : "test.coll"
+    "_t" : "ShardCollectionResponse",
+    "ok" : 1,
+    "collectionsharded" : "test.coll"
 }
 globaldb:PRIMARY> db.coll.createIndex( { "university" : 1, "student_id" : 1 }, {unique:true});
 {
-        "_t" : "CreateIndexesResponse",
-        "ok" : 1,
-        "createdCollectionAutomatically" : false,
-        "numIndexesBefore" : 3,
-        "numIndexesAfter" : 4
+    "_t" : "CreateIndexesResponse",
+    "ok" : 1,
+    "createdCollectionAutomatically" : false,
+    "numIndexesBefore" : 3,
+    "numIndexesAfter" : 4
 }
 ```
 
 Im vorherigen Beispiel wird beim Weglassen der ```"university":1```-Klausel folgende Fehlermeldung zurückgegeben:
 
-```"cannot create unique index over {student_id : 1.0} with shard key pattern { university : 1.0 }"```
+*cannot create unique index over {student_id : 1.0} with shard key pattern { university : 1.0 }*
 
 ### <a name="ttl-indexes"></a>TTL-Indizes
 
@@ -260,7 +265,7 @@ Der obige Befehl löscht alle Dokumente in der Sammlung ```db.coll```, die nicht
 
 ## <a name="track-index-progress"></a>Nachverfolgen des Indizierungsfortschritts
 
-Version 3.6 der Azure Cosmos DB-API für MongoDB unterstützt den Befehl `currentOp()` zum Nachverfolgen des Indizierungsfortschritts für eine Datenbankinstanz. Dieser Befehl gibt ein Dokument zurück, das Informationen zu den aktuell in Bearbeitung befindlichen Vorgängen in einer Datenbankinstanz enthält. Verwenden Sie den Befehl `currentOp`, um alle laufenden Vorgänge in der nativen MongoDB-Datenbank zu verfolgen. In der Azure Cosmos DB-API für MongoDB unterstützt dieser Befehl nur die Nachverfolgung des Indizierungsvorgangs.
+Version 3.6 und höher der Azure Cosmos DB-API für MongoDB unterstützt den Befehl `currentOp()` zum Nachverfolgen des Indizierungsfortschritts für eine Datenbankinstanz. Dieser Befehl gibt ein Dokument zurück, das Informationen zu den aktuell in Bearbeitung befindlichen Vorgängen in einer Datenbankinstanz enthält. Verwenden Sie den Befehl `currentOp`, um alle laufenden Vorgänge in der nativen MongoDB-Datenbank zu verfolgen. In der Azure Cosmos DB-API für MongoDB unterstützt dieser Befehl nur die Nachverfolgung des Indizierungsvorgangs.
 
 Im Folgenden werden einige Beispiele zur Verwendung des Befehls `currentOp` zur Nachverfolgung des Indizierungsfortschritts gezeigt:
 
@@ -286,7 +291,7 @@ Im Folgenden werden einige Beispiele zur Verwendung des Befehls `currentOp` zur 
 
 Die Details zum Indizierungsfortschritt zeigen den Fortschritt des aktuellen Indizierungsvorgangs in Prozent an. Im folgenden Beispiel wird das Format des ausgegebenen Dokuments für verschiedene Phasen des Indizierungsfortschritts veranschaulicht:
 
-- Wenn ein Indizierungsvorgang für die Sammlung „foo“ und die Datenbank „bar“ einen Fortschritt von 60 % aufweist, wird das folgende Dokument ausgegeben. Im Feld `Inprog[0].progress.total` wird 100 als Zielprozentsatz für den Abschluss angezeigt.
+* Wenn ein Indizierungsvorgang für die Sammlung „foo“ und die Datenbank „bar“ einen Fortschritt von 60 % aufweist, wird das folgende Dokument ausgegeben. Im Feld `Inprog[0].progress.total` wird 100 als Zielprozentsatz für den Abschluss angezeigt.
 
    ```json
    {
@@ -310,7 +315,7 @@ Die Details zum Indizierungsfortschritt zeigen den Fortschritt des aktuellen Ind
    }
    ```
 
-- Bei einem Indizierungsvorgang, der erst für die Sammlung „foo“ und die Datenbank „bar“ gestartet wurde, zeigt das Ausgabedokument einen Fortschritt von 0 % an, bis ein messbarer Wert erreicht wurde.
+* Bei einem Indizierungsvorgang, der erst für die Sammlung „foo“ und die Datenbank „bar“ gestartet wurde, zeigt das Ausgabedokument einen Fortschritt von 0 % an, bis ein messbarer Wert erreicht wurde.
 
    ```json
    {
@@ -334,7 +339,7 @@ Die Details zum Indizierungsfortschritt zeigen den Fortschritt des aktuellen Ind
    }
    ```
 
-- Wenn der aktive Indizierungsvorgang abgeschlossen wird, zeigt das Ausgabedokument leere `inprog`-Vorgänge an.
+* Wenn der aktive Indizierungsvorgang abgeschlossen wird, zeigt das Ausgabedokument leere `inprog`-Vorgänge an.
 
    ```json
    {
@@ -407,26 +412,26 @@ Derzeit ist die Erstellung von eindeutigen Indizes nur möglich, wenn die Sammlu
 
 Bei Azure Cosmos-Konten, die mit Version 3.2 des MongoDB-Wire-Protokolls kompatibel sind, weichen die verfügbaren Indizierungsfeatures und Standardwerte ab. Sie können [die Version Ihres Kontos überprüfen](mongodb-feature-support-36.md#protocol-support) und [eine Upgrade auf Version 3.6 durchführen](mongodb-version-upgrade.md).
 
-Wenn Sie Version 3.2 verwenden, beachten Sie die in diesem Abschnitt erläuterten wichtigen Unterschiede zu Version 3.6.
+Wenn Sie Version 3.2 verwenden, beachten Sie die in diesem Abschnitt erläuterten wichtigen Unterschiede zu den Versionen 3.6 und höher.
 
 ### <a name="dropping-default-indexes-version-32"></a>Löschen der Standardindizes (Version 3.2)
 
-Anders als bei der Version 3.6 der Azure Cosmos DB-API für MongoDB werden in der Version 3.2 standardmäßig alle Eigenschaften indiziert. Mit dem folgenden Befehl können Sie diese Standardindizes für eine Sammlung (```coll```) löschen:
+Anders als bei den Versionen 3.6 und höher der Azure Cosmos DB-API für MongoDB werden in der Version 3.2 standardmäßig alle Eigenschaften indiziert. Mit dem folgenden Befehl können Sie diese Standardindizes für eine Sammlung (```coll```) löschen:
 
 ```JavaScript
 > db.coll.dropIndexes()
 { "_t" : "DropIndexesResponse", "ok" : 1, "nIndexesWas" : 3 }
 ```
 
-Nachdem Sie die Standardindizes gelöscht haben, können Sie zusätzliche Indizes wie in Version 3.6 hinzufügen.
+Nachdem Sie die Standardindizes gelöscht haben, können Sie zusätzliche Indizes wie in Version 3.6 und höher hinzufügen.
 
 ### <a name="compound-indexes-version-32"></a>Zusammengesetzte Indizes (Version 3.2)
 
-Zusammengesetzte Indizes enthalten Verweise auf mehrere Felder eines Dokuments. Wenn Sie einen zusammengesetzten Index erstellen möchten, [führen Sie ein Upgrade auf Version 3.6 durch](mongodb-version-upgrade.md).
+Zusammengesetzte Indizes enthalten Verweise auf mehrere Felder eines Dokuments. Wenn Sie einen zusammengesetzten Index erstellen möchten, [führen Sie ein Upgrade auf Version 3.6 oder 4.0 durch](mongodb-version-upgrade.md).
 
 ### <a name="wildcard-indexes-version-32"></a>Platzhalterindizes (Version 3.2)
 
-Wenn Sie einen Platzhalterindex erstellen möchten, [führen Sie ein Upgrade auf Version 3.6 durch](mongodb-version-upgrade.md).
+Wenn Sie einen Platzhalterindex erstellen möchten, [führen Sie ein Upgrade auf Version 4.0 oder 3.6 durch](mongodb-version-upgrade.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -2,21 +2,21 @@
 title: Benutzerdefinierte Skripterweiterung von Azure für Windows
 description: Automatisieren von Konfigurationsaufgaben für virtuelle Windows-Computer mithilfe der benutzerdefinierten Skripterweiterung
 services: virtual-machines-windows
-manager: carmonm
-author: bobbytreed
+manager: gwallace
+author: amjads1
 ms.service: virtual-machines-windows
 ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
-ms.author: robreed
-ms.openlocfilehash: d4cfb8d6a48ac41b4deb8913d4277f07cbb43208
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.author: amjads
+ms.openlocfilehash: d06be4efae895cfe6903be4451f892660ce689f3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258703"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390129"
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -32,6 +32,7 @@ In diesem Dokument erfahren Sie, wie Sie die benutzerdefinierte Skripterweiterun
 ### <a name="operating-system"></a>Betriebssystem
 
 Die Erweiterung für benutzerdefinierte Skripts für Windows kann auf den von Erweiterungen unterstützten Betriebssystemen ausgeführt werden.
+
 ### <a name="windows"></a>Windows
 
 * Windows Server 2008 R2
@@ -67,7 +68,7 @@ Befindet sich Ihr Skript auf einem lokalen Server, müssen eventuell dennoch wei
 * Die Erweiterung führt jedes Skript nur einmal aus. Soll ein Skript bei jedem Neustart des Systems ausgeführt werden, müssen Sie die Erweiterung zum Erstellen eines geplanten Windows-Tasks verwenden.
 * Wenn Sie den Ausführungszeitpunkt eines Skripts planen möchten, erstellen Sie mithilfe der Erweiterung einen geplanten Windows-Task.
 * Während der Skriptausführung wird im Azure-Portal sowie in der CLI nur ein Übergangsstatus für die Erweiterung angezeigt. Sollten Sie häufigere Statusaktualisierungen für ein ausgeführtes Skript benötigen, müssen Sie eine eigene Lösung erstellen.
-* Die Erweiterung für benutzerdefinierte Skripts verfügt über keine native Proxyserverunterstützung. Sie können innerhalb Ihres Skripts jedoch ein Dateiübertragungstool mit Proxyserverunterstützung verwenden (beispielsweise *cURL*).
+* Die Erweiterung für benutzerdefinierte Skripts verfügt über keine native Proxyserverunterstützung. Sie können innerhalb Ihres Skripts jedoch ein Dateiübertragungstool mit Proxyserverunterstützung verwenden (beispielsweise *Invoke-WebRequest*).
 * Achten Sie auf nicht standardmäßige Verzeichnispfade, von denen Ihre Skripts oder Befehle gegebenenfalls abhängen, und verwenden Sie eine entsprechende Logik, um diese Situation zu behandeln.
 * Die benutzerdefinierte Skripterweiterung wird unter dem Konto „LocalSystem“ ausgeführt.
 * Wenn Sie die Eigenschaften *storageAccountName* und *storageAccountKey* verwenden möchten, müssen diese Eigenschaften in *protectedSettings* angeordnet sein.

@@ -8,12 +8,12 @@ author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 13fe83710c94c1ca37f05d59cb91f31aa8ca1bae
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 2650da2579f13ec1588af7a25e5b28908209bc82
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744025"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700183"
 ---
 # <a name="azure-cloud-services-extended-support-config-networkconfiguration-schema"></a>Azure Cloud Services (erweiterter Support):Konfigurieren des networkConfiguration-Schemas
 
@@ -23,7 +23,7 @@ Sie können die folgenden Ressourcen verwenden, um mehr über virtuelle Netzwerk
 
 - [Cloud Services (erweiterter Support): Definition des Schemas](schema-cscfg-file.md).
 - [Cloud Service (erweiterter Support): Definition des Schemas](schema-csdef-file.md).
-- [Erstellen eines virtuellen Netzwerks](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network).
+- [Erstellen eines virtuellen Netzwerks](../virtual-network/manage-virtual-network.md).
 
 ## <a name="networkconfiguration-element"></a>NetworkConfiguration-Element
 Das folgende Beispiel zeigt das `NetworkConfiguration`-Element und seine untergeordneten Elemente.
@@ -73,4 +73,4 @@ Die folgende Tabelle beschreibt die untergeordneten Elemente des `NetworkConfigu
 | ReservedIP | Optional. Gibt die reservierte IP-Adresse an, die der Bereitstellung zugeordnet werden soll. Sie müssen mit „Reservierte IP-Adresse erstellen“ die reservierte IP-Adresse erstellen. Jede Bereitstellung in einem Clouddienst kann einer reservierten IP-Adresse zugeordnet werden. Der Name der reservierten IP-Adresse wird durch eine Zeichenfolge für das `name`-Attribut definiert.|
 
 ## <a name="see-also"></a>Siehe auch
-[Cloud Services (erweiterter Support): Definition des Schemas](schema-cscfg-file.md).
+[Azure Cloud Services (erweiterter Support): Konfigurationsschema (CSCFG-Datei)](schema-cscfg-file.md)

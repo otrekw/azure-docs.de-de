@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: 81224b5e16f3bca5da641bbb2e9c82dd59000e79
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 5a4be6052e72c27ad83b5af64f1acb3ad8d4e3be
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185885"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555900"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis
 
@@ -307,9 +307,9 @@ In diesem Schritt übertragen Sie das Abonnement aus dem Quellverzeichnis in das
     az role definition create --role-definition <role_definition>
     ```
 
-### <a name="create-role-assignments"></a>Erstellen von Rollenzuweisung
+### <a name="assign-roles"></a>Zuweisen von Rollen
 
-- Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create), um die Rollenzuweisungen für Benutzer, Gruppen und Dienstprinzipale zu erstellen. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und der Azure CLI](role-assignments-cli.md).
+- Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create), um Benutzern, Gruppen und Dienstprinzipalen Rollen zuzuweisen. Weitere Informationen finden Sie unter [Zuweisen von Azure-Rollen mit der Azure-Befehlszeilenschnittstelle](role-assignments-cli.md).
 
     ```azurecli
     az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
@@ -325,7 +325,7 @@ In diesem Schritt übertragen Sie das Abonnement aus dem Quellverzeichnis in das
     | VM-Skalierungsgruppen | [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe mit der Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
     | Sonstige Dienste | [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) |
 
-1. Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create), um die Rollenzuweisungen für systemseitig zugewiesene verwaltete Identitäten zu erstellen. Weitere Informationen finden Sie unter [Zuweisen des Zugriffs einer verwalteten Identität auf eine Ressource mit der Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create), um den vom System zugewiesenen verwalteten Identitäten Rollen zuzuweisen. Weitere Informationen finden Sie unter [Zuweisen des Zugriffs einer verwalteten Identität auf eine Ressource mit der Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -341,7 +341,7 @@ In diesem Schritt übertragen Sie das Abonnement aus dem Quellverzeichnis in das
     | VM-Skalierungsgruppen | [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe mit der Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
     | Sonstige Dienste | [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen verwalteten Identität mithilfe der Azure-Befehlszeilenschnittstelle](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
-1. Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create), um die Rollenzuweisungen für benutzerseitig zugewiesene verwaltete Identitäten zu erstellen. Weitere Informationen finden Sie unter [Zuweisen des Zugriffs einer verwalteten Identität auf eine Ressource mit der Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create), um den vom Benutzer zugewiesenen verwalteten Identitäten Rollen zuzuweisen. Weitere Informationen finden Sie unter [Zuweisen des Zugriffs einer verwalteten Identität auf eine Ressource mit der Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>

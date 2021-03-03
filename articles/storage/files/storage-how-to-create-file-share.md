@@ -5,30 +5,30 @@ description: Hier erfahren Sie, wie Sie über das Azure-Portal, mithilfe von Pow
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 2/22/2020
+ms.date: 1/20/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 3ff7b3cd29740461a4f94f3c1d433086db119a09
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 5a27f38e92955c0aa240f6be394aacd187c3a8b8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673805"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370902"
 ---
 # <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
 Um eine Azure-Dateifreigabe zu erstellen, müssen Sie drei Fragen zur Verwendung beantworten:
 
 - **Welche Leistungsanforderungen gelten für Ihre Azure-Dateifreigabe?**  
-    Azure Files verfügt über Standard-Dateifreigaben (einschließlich transaktionsoptimierter, heißer und kalter Dateifreigaben), die auf festplattenbasierter Hardware (HDD-basiert) gehostet werden, und über Premium-Dateifreigaben, die auf SSD-Datenträgerhardware (SSD-basiert) gehostet werden.
-
-- **Welche Größe benötigen Sie für Dateifreigaben?**  
-    Standard-Dateifreigaben können bis zu 100 TiB groß sein, aber dieses Feature ist standardmäßig nicht aktiviert. Falls Sie eine Dateifreigabe benötigen, die größer als 5 TiB ist, müssen Sie das Feature für große Dateifreigaben für Ihr Speicherkonto aktivieren. Premium-Dateifreigaben können ohne spezielle Einstellung bis zu 100 TiB groß sein, aber sie werden gesondert bereitgestellt. Es wird keine nutzungsbasierte Bezahlung wie bei Standard-Dateifreigaben verwendet. Dies bedeutet, dass sich die Gesamtkosten für den Speicher erhöhen, wenn eine Dateifreigabe bereitgestellt wird, die Ihren Bedarf deutlich überschreitet.
+    Azure Files verfügt über Standard-Dateifreigaben, die auf festplattenbasierter Hardware (HDD) gehostet werden, und über Premium-Dateifreigaben, die auf SSD-Datenträgerhardware (Solid State Drive) gehostet werden.
 
 - **Welche Redundanzanforderungen gelten für Ihre Azure-Dateifreigabe?**  
     Standard-Dateifreigaben ermöglichen die lokal redundante (LRS), zonenredundante (ZRS), georedundante (GRS) und geozonenredundante (GZRS) Speicherung. Das Feature für große Dateifreigaben wird aber nur für lokal redundante und zonenredundante Dateifreigaben unterstützt. Für Premium-Dateifreigaben wird keine Form von Georedundanz unterstützt.
 
-    Premium-Dateifreigaben sind mit lokaler Redundanz in den meisten Regionen verfügbar, in denen Speicherkonten angeboten werden. Mit Zonenredundanz sind sie in einer kleineren Teilmenge der Regionen verfügbar. Um herauszufinden, ob Premium-Dateifreigaben derzeit in Ihrer Region verfügbar sind, lesen Sie die Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) für Azure. Informationen zu Regionen, die ZRS unterstützen, finden Sie unter [Azure Storage-Redundanz](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+    Premium-Dateifreigaben sind in einigen Regionen mit lokaler Redundanz und Zonenredundanz verfügbar. Um herauszufinden, ob Premium-Dateifreigaben derzeit in Ihrer Region verfügbar sind, lesen Sie die Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) für Azure. Informationen zu Regionen, die ZRS unterstützen, finden Sie unter [Azure Storage-Redundanz](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+
+- **Welche Größe benötigen Sie für Dateifreigaben?**  
+    Bei lokal redundanten und zonenredundanten Speicherkonten können Azure-Dateifreigaben bis zu 100 TiB umfassen, bei geo- und geozonenredundanten Speicherkonten können Azure-Dateifreigaben hingegen nur maximal 5 TiB enthalten. 
 
 Weitere Informationen zu diesen drei Optionen finden Sie unter [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md).
 
@@ -51,7 +51,7 @@ Wählen Sie zum Erstellen eines Speicherkontos über das Azure-Portal im Dashboa
 
 ![Screenshot: Option zur schnellen Erstellung eines Speicherkontos in einem Browser](media/storage-how-to-create-file-share/create-storage-account-0.png)
 
-#### <a name="the-basics-section"></a>Abschnitt „Grundlagen“
+#### <a name="basics"></a>Grundlagen
 Der erste Abschnitt bei der Erstellung eines Speicherkontos hat die Bezeichnung **Grundlagen**. Er enthält alle erforderlichen Felder für die Erstellung eines Speicherkontos. Stellen Sie bei der Erstellung eines GPv2-Speicherkontos sicher, dass das Optionsfeld **Leistung** auf *Standard* festgelegt und in der Dropdownliste **Kontoart** die Option *StorageV2 (universell v2)* ausgewählt ist.
 
 ![Screenshot: Optionsfeld „Leistung“ mit Auswahl von „Standard“ und Auswahl von „StorageV2 (universell v2)“ für „Kontoart“](media/storage-how-to-create-file-share/create-storage-account-1.png)
@@ -61,28 +61,28 @@ Stellen Sie zum Erstellen eines FileStorage-Speicherkontos sicher, dass das Opti
 ![Screenshot: Optionsfeld „Leistung“ mit Auswahl von „Premium“ und Auswahl von „FileStorage“ für „Kontoart“](media/storage-how-to-create-file-share/create-storage-account-2.png)
 
 Die anderen Felder für die Grundlagen sind unabhängig von der Auswahl des Speicherkontos:
-- **Abonnement**: Das Abonnement, unter dem das Speicherkonto bereitgestellt werden soll. 
-- **Ressourcengruppe**: Die Ressourcengruppe, in der das Speicherkonto bereitgestellt werden soll. Sie können entweder eine neue Ressourcengruppe erstellen oder eine vorhandene verwenden. Eine Ressourcengruppe ist ein logischer Container zur Gruppierung Ihrer Azure-Dienste. Beim Erstellen eines Speicherkontos haben Sie die Wahlmöglichkeit, entweder eine neue Ressourcengruppe zu erstellen oder eine vorhandene Ressourcengruppe zu verwenden.
 - **Speicherkontoname**: Der Name der Speicherkontoressource, die erstellt werden soll. Dieser Name muss global eindeutig sein, aber ansonsten gelten keine weiteren Einschränkungen. Der Name des Speicherkontos wird als Servername verwendet, wenn Sie eine Azure-Dateifreigabe per SMB einbinden.
 - **Standort**: Die Region, in der das Speicherkonto bereitgestellt werden soll. Dies kann die Region sein, die der Ressourcengruppe zugeordnet ist, oder eine andere verfügbare Region.
-- **Replikation**: Die Bezeichnung dieser Option lautet zwar „Replikation“, aber es geht eigentlich um **Redundanz**. Hier wird die gewünschte Redundanzebene angegeben: lokale Redundanz (LRS), Zonenredundanz (ZRS), Georedundanz (GRS) und Geozonenredundanz. Diese Dropdownliste enthält auch Optionen für Georedundanz mit Lesezugriff (RA-GRS) und Geozonenredundanz mit Lesezugriff (RA-GZRS), die nicht für Azure-Dateifreigaben gelten. Alle Dateifreigaben, die mit diesen Optionen in einem Speicherkonto erstellt werden, sind entweder georedundant oder geozonenredundant. Je nach Region oder ausgewähltem Speicherkontotyp sind einige Redundanzoptionen ggf. nicht zulässig.
-- **Blobzugriffsebene**: Dieses Feld gilt nicht für Azure Files. Sie können also eines der beiden Optionsfelder auswählen. 
+- **Replikation**: Die Bezeichnung dieser Option lautet zwar „Replikation“, aber es geht eigentlich um **Redundanz**. Hier wird die gewünschte Redundanzebene angegeben: lokale Redundanz (LRS), Zonenredundanz (ZRS), Georedundanz (GRS) und Geozonenredundanz (GZRS). Diese Dropdownliste enthält auch Optionen für Georedundanz mit Lesezugriff (RA-GRS) und Geozonenredundanz mit Lesezugriff (RA-GZRS), die nicht für Azure-Dateifreigaben gelten. Alle Dateifreigaben, die mit diesen Optionen in einem Speicherkonto erstellt werden, sind entweder georedundant oder geozonenredundant. 
 
-> [!Important]  
-> Die Auswahl der Blobzugriffsebene hat keinen Einfluss auf die Ebene der Dateifreigabe.
-
-#### <a name="the-networking-blade"></a>Blatt „Netzwerk“
+#### <a name="networking"></a>Netzwerk
 Im Abschnitt „Netzwerk“ können Sie die Netzwerkoptionen konfigurieren. Diese Einstellungen sind für die Erstellung des Speicherkontos optional und können bei Bedarf zu einem späteren Zeitpunkt konfiguriert werden. Weitere Informationen zu diesen Optionen finden Sie unter [Azure Files – Überlegungen zum Netzwerkbetrieb](storage-files-networking-overview.md).
 
-#### <a name="the-advanced-blade"></a>Blatt „Erweitert“
+#### <a name="data-protection"></a>Schutz von Daten
+Im Abschnitt „Datenschutz“ können Sie die Richtlinie für vorläufiges Löschen für Azure-Dateifreigaben in Ihrem Speicherkonto konfigurieren. Andere Einstellungen im Zusammenhang mit dem vorläufigen Löschen für Blobs und Container, der Zeitpunktwiederherstellung für Container, der Versionsverwaltung und dem Änderungsfeed gelten nur für Azure Blob Storage.
+
+#### <a name="advanced"></a>Erweitert
 Der Abschnitt „Erweitert“ enthält mehrere wichtige Einstellungen für Azure-Dateifreigaben:
 
-- **Sichere Übertragung erforderlich**: Dieses Feld gibt an, ob für die Kommunikation mit dem Speicherkonto in eingehender Richtung eine Verschlüsselung während der Übertragung erforderlich ist. Wir empfehlen Ihnen, diese Option aktiviert zu lassen. Falls Sie SMB 2.1-Unterstützung benötigen, müssen Sie sie aber deaktivieren. Bei einer Deaktivierung der Verschlüsselung empfehlen wir Ihnen, den Speicherkontozugriff auf ein virtuelles Netzwerk mit Dienstendpunkten bzw. privaten Endpunkten einzuschränken.
+- **Sichere Übertragung erforderlich**: Dieses Feld gibt an, ob für die Kommunikation mit dem Speicherkonto in eingehender Richtung eine Verschlüsselung während der Übertragung erforderlich ist. Wenn Sie Unterstützung für SMB 2.1 benötigen, müssen Sie diese Option deaktivieren.
 - **Große Dateifreigaben**: Mit diesem Feld wird für das Speicherkonto die Nutzung von Dateifreigaben mit einer Größe von bis zu 100 TiB ermöglicht. Wenn Sie dieses Feature aktivieren, wird Ihr Speicherkonto auf die Nutzung von lokal redundantem und zonenredundantem Speicher beschränkt. Nachdem für ein GPv2-Speicherkonto große Dateifreigaben aktiviert wurden, können Sie diese Funktion nicht mehr deaktivieren. Für Speicherkonten vom Typ „FileStorage“ (Speicherkonten für Premium-Dateifreigaben) ist diese Option nicht vorhanden, da alle Premium-Dateifreigaben auf bis zu 100 TiB hochskaliert werden können. 
 
 ![Screenshot: Wichtige erweiterte Einstellungen für Azure Files](media/storage-how-to-create-file-share/create-storage-account-3.png)
 
-Die anderen Einstellungen, die auf der Registerkarte „Erweitert“ verfügbar sind (vorläufiges Löschen von Blobs, hierarchischer Namespace für Azure Data Lake Storage Gen2 und NFSv3 für Blobspeicher) gelten nicht für Azure Files.
+Die anderen Einstellungen, die auf der Registerkarte „Erweitert“ verfügbar sind (hierarchischer Namespace für Azure Data Lake Store Gen2, Standardblobebene, NFSv3 für Blob Storage usw.) gelten nicht für Azure Files.
+
+> [!Important]  
+> Die Auswahl der Blobzugriffsebene hat keinen Einfluss auf die Ebene der Dateifreigabe.
 
 #### <a name="tags"></a>`Tags`
 Tags sind Name/Wert-Paare, die Ihnen das Kategorisieren von Ressourcen und die Anzeige einer konsolidierten Abrechnung ermöglichen, indem Sie dasselbe Tag auf mehrere Ressourcen und Ressourcengruppen anwenden. Sie sind optional und können angewendet werden, nachdem das Speicherkonto erstellt wurde.
@@ -163,19 +163,19 @@ az storage account create \
 ## <a name="create-file-share"></a>Erstellen einer Dateifreigabe
 Nachdem Sie Ihr Speicherkonto erstellt haben, fehlt nur noch die Erstellung der Dateifreigabe. Dieser Prozess ist unabhängig davon, ob eine Premium- oder Standard-Dateifreigabe verwendet wird, größtenteils identisch. Sie sollten die folgenden Unterschiede berücksichtigen.
 
-Standarddateifreigaben können in einer der Standardebenen bereitgestellt werden: transaktionsoptimierte (Standard), heiße oder kalte Ebene. Hierbei handelt es sich um eine Ebene pro Dateifreigabe, die nicht von der **Blobzugriffsebene** des Speicherkontos betroffen ist (diese Eigenschaft bezieht sich nur auf Azure-Blobspeicher – sie bezieht sich überhaupt nicht auf Azure Files). Sie können die Ebene der Freigabe jederzeit nach der Bereitstellung ändern. Premium-Dateifreigaben können nicht direkt in Standarddateifreigaben auf einer beliebigen Standardebene umgewandelt werden.
+Standarddateifreigaben können in einer der Standardebenen bereitgestellt werden: transaktionsoptimierte (Standard), heiße oder kalte Ebene. Hierbei handelt es sich um eine Ebene pro Dateifreigabe, die nicht von der **Blobzugriffsebene** des Speicherkontos betroffen ist (diese Eigenschaft bezieht sich nur auf Azure-Blobspeicher – sie bezieht sich überhaupt nicht auf Azure Files). Sie können die Ebene der Freigabe jederzeit nach der Bereitstellung ändern. Premium-Dateifreigaben können nicht direkt in eine Standardebene umgewandelt werden.
 
 > [!Important]  
 > Sie können Dateifreigaben zwischen Ebenen innerhalb von GPv2-Speicherkontotypen verschieben (transaktionsoptimiert, heiß und kalt). Freigabeverschiebungen zwischen Ebenen verursachen Transaktionen: Beim Verschieben von einer heißeren Ebene in eine kältere Ebene fällt für jede Datei in der Freigabe die Gebühr für Schreibtransaktionen der kälteren Ebene an. Beim Verschieben von einer kälteren Ebene in eine heißere Ebene hingegen fällt für jede Datei in der Freigabe die Gebühr für Lesetransaktionen der kalten Ebene an.
 
 Die **quota**-Eigenschaft unterscheidet sich leicht zwischen Premium- und Standarddateifreigaben:
 
-- Bei Standard-Dateifreigaben ist dies eine Obergrenze für die Azure-Dateifreigabe, die von Endbenutzern nicht überschritten werden darf. Der Hauptgrund bei der Verwendung eines Kontingents für eine Standard-Dateifreigabe ist das Budget: „Ich möchte nicht, dass die Größe dieser Dateifreigabe diese Grenze überschreitet.“ Wenn kein Kontingent angegeben wird, kann eine Standard-Dateifreigabe eine Größe von bis zu 100 TiB haben (bzw. 5 TiB, wenn die Eigenschaft für große Dateifreigaben für ein Speicherkonto nicht festgelegt wurde).
+- Bei Standard-Dateifreigaben ist dies eine Obergrenze für die Azure-Dateifreigabe, die von Endbenutzern nicht überschritten werden darf. Wenn kein Kontingent angegeben wird, kann eine Standard-Dateifreigabe eine Größe von bis zu 100 TiB haben (bzw. 5 TiB, wenn die Eigenschaft für große Dateifreigaben für ein Speicherkonto nicht festgelegt wurde).
 
-- Für Premium-Dateifreigaben ist mit dem Kontingent die **bereitgestellte Größe** gemeint. Die bereitgestellte Größe ist die Menge, die Ihnen unabhängig von der tatsächlichen Nutzung berechnet wird. Es ist ratsam, beim Bereitstellen einer Premium-Dateifreigabe zwei Faktoren zu berücksichtigen: 1) zukünftiges Wachstum der Freigabe aus Sicht der Speicherplatzauslastung und 2) erforderlicher IOPS-Wert für Ihre Workload. Für jedes bereitgestellte GiB haben Sie Anspruch auf zusätzliche reservierte bzw. Burst-IOPS-Kapazität. Weitere Informationen zur Planung einer Premium-Dateifreigabe finden Sie im Abschnitt zum [Bereitstellen von Premium-Dateifreigaben](understanding-billing.md#provisioned-model).
+- Für Premium-Dateifreigaben ist mit dem Kontingent die **bereitgestellte Größe** gemeint. Die bereitgestellte Größe ist die Menge, die Ihnen unabhängig von der tatsächlichen Nutzung berechnet wird. Weitere Informationen zur Planung einer Premium-Dateifreigabe finden Sie im Abschnitt zum [Bereitstellen von Premium-Dateifreigaben](understanding-billing.md#provisioned-model).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Wenn Sie Ihr Speicherkonto gerade erstellt haben, können Sie vom Bereitstellungsbildschirm dorthin navigieren, indem Sie **Zu Ressource wechseln** auswählen. Falls Sie das Speicherkonto schon vorher erstellt haben, können Sie darauf über die Ressourcengruppe zugreifen, in der es enthalten ist. Wählen Sie im Speicherkonto die Kachel **Dateifreigaben** aus. (Sie können auch über das Inhaltsverzeichnis des Speicherkontos zu **Dateifreigaben** navigieren.)
+Wenn Sie Ihr Speicherkonto gerade erstellt haben, können Sie vom Bereitstellungsbildschirm dorthin navigieren, indem Sie **Zu Ressource wechseln** auswählen. Wählen Sie im Speicherkonto die Kachel **Dateifreigaben** aus. (Sie können auch über das Inhaltsverzeichnis des Speicherkontos zu **Dateifreigaben** navigieren.)
 
 ![Screenshot: Kachel „Dateifreigaben“](media/storage-how-to-create-file-share/create-file-share-1.png)
 
@@ -185,9 +185,9 @@ Das Blatt „Neue Dateifreigabe“ wird angezeigt. Füllen Sie die Felder des Bl
 
 - **Name**: Der Name der Dateifreigabe, die erstellt werden soll.
 - **Kontingent**: Das Kontingent der Dateifreigabe für Standard-Dateifreigaben. Dies ist die bereitgestellte Dateifreigabegröße für Premium-Dateifreigaben.
-- **Ebenen**: Die ausgewählte Ebene für eine Dateifreigabe. Dieses Feld ist nur in einem **GPv2-Speicherkonto (Universell)** verfügbar. Sie können „transaktionsoptimiert“, „heiß“ oder „kalt“ auswählen. Die Ebene der Freigabe kann jederzeit geändert werden. Es wird empfohlen, während einer Migration die höchstmögliche Ebene zu wählen, um die Transaktionskosten zu minimieren, und nach Abschluss der Migration bei Bedarf auf eine niedrigere Ebene zu wechseln.
+- **Ebenen**: Die ausgewählte Ebene für eine Dateifreigabe. Dieses Feld ist nur in einem **GPv2-Speicherkonto (Universell)** verfügbar. Sie können „transaktionsoptimiert“, „heiß“ oder „kalt“ auswählen. Die Ebene der Freigabe kann jederzeit geändert werden. Es wird empfohlen, während einer Migration die heißeste mögliche Ebene auszuwählen, um die Transaktionskosten zu minimieren, und nach Abschluss der Migration bei Bedarf auf eine niedrigere Ebene zu wechseln.
 
-Wählen Sie **Erstellen** aus, um die Erstellung der neuen Freigabe abzuschließen. Beachten Sie Folgendes: Wenn sich Ihr Speicherkonto in einem virtuellen Netzwerk befindet, ist die Erstellung einer Azure-Dateifreigabe nur erfolgreich, wenn Ihr Client in demselben virtuellen Netzwerk angeordnet ist. Sie können diese Point-in-Time-Einschränkung umgehen, indem Sie das Azure PowerShell-Cmdlet `New-AzRmStorageShare` verwenden.
+Wählen Sie **Erstellen** aus, um die Erstellung der neuen Freigabe abzuschließen.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Sie können eine Azure-Dateifreigabe mit dem Cmdlet [`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) erstellen. Bei den folgenden PowerShell-Befehlen wird davon ausgegangen, dass Sie die Variablen `$resourceGroupName` und `$storageAccountName` gemäß der obigen Definition im Abschnitt zum „Erstellen eines Speicherkontos mit Azure PowerShell“ festgelegt haben. 
@@ -198,16 +198,6 @@ Das folgende Beispiel zeigt das Erstellen einer Dateifreigabe mit einer explizit
 > Bei Premium-Dateifreigaben verweist der Parameter `-QuotaGiB` auf die bereitgestellte Größe der Dateifreigabe. Die bereitgestellte Größe der Dateifreigabe ist die Menge, die Ihnen unabhängig von der Nutzung berechnet wird. Standard-Dateifreigaben werden nicht basierend auf der Nutzung, sondern auf der bereitgestellten Größe berechnet.
 
 ```powershell
-# Update the Azure storage module to use the preview version. You may need to close and 
-# reopen PowerShell before running this command. If you are running PowerShell 5.1, ensure 
-# the following:
-# - Run the below cmdlets as an administrator.
-# - Have PowerShellGet 2.2.3 or later. Uncomment the following line to check.
-# Get-Module -ListAvailable -Name PowerShellGet
-Remove-Module -Name Az.Storage -ErrorAction SilentlyContinue
-Uninstall-Module -Name Az.Storage
-Install-Module -Name Az.Storage -RequiredVersion "2.1.1-preview" -AllowClobber -AllowPrerelease 
-
 # Assuming $resourceGroupName and $storageAccountName from earlier in this document have already
 # been populated. The access tier parameter may be TransactionOptimized, Hot, or Cool for GPv2 
 # storage accounts. Standard tiers are only available in standard storage accounts. 
@@ -222,13 +212,8 @@ New-AzRmStorageShare `
     Out-Null
 ```
 
-> [!Note]  
-> Die Funktionalität zum Einrichten und Ändern von Tarifen über PowerShell wird im PowerShell-Vorschaumodul „Az.Storage“ bereitgestellt. Denken Sie beim Erstellen der Skripts daran, dass diese Cmdlets bzw. deren Ausgabe sich vor Veröffentlichung der allgemein verfügbaren Version des Moduls ändern können.
-
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 Sie können eine Azure-Dateifreigabe mit dem Befehl [`az storage share-rm create`](/cli/azure/storage/share-rm?preserve-view=true&view=azure-cli-latest#az_storage_share_rm_create) erstellen. Bei den folgenden Azure CLI-Befehlen wird davon ausgegangen, dass Sie die Variablen `$resourceGroupName` und `$storageAccountName` gemäß der obigen Definition im Abschnitt zum „Erstellen eines Speicherkontos mit Azure CLI“ festgelegt haben.
-
-Die Funktionalität zum Erstellen oder Verschieben einer Dateifreigabe in eine bestimmte Dienstebene ist im letzten Azure CLI-Update verfügbar. Das Aktualisieren von Azure CLI ist für die von Ihnen verwendete Betriebssystem-/Linux-Distribution spezifisch. Anweisungen zum Aktualisieren der Azure CLI auf Ihrem System finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 
 > [!Important]  
 > Bei Premium-Dateifreigaben verweist der Parameter `--quota` auf die bereitgestellte Größe der Dateifreigabe. Die bereitgestellte Größe der Dateifreigabe ist die Menge, die Ihnen unabhängig von der Nutzung berechnet wird. Standard-Dateifreigaben werden nicht basierend auf der Nutzung, sondern auf der bereitgestellten Größe berechnet.
@@ -244,9 +229,6 @@ az storage share-rm create \
     --quota 1024 \
     --output none
 ```
-
-> [!Note]  
-> Die Funktion zum Festlegen eines Tarifs mit dem Parameter `--access-tier` ist als Vorschau im neuesten Azure CLI-Paket enthalten. Denken Sie beim Erstellen der Skripts daran, dass dieser Befehl bzw. dessen Ausgabe sich ändern kann, bevor er als allgemein verfügbar gekennzeichnet wird.
 
 ---
 
@@ -273,8 +255,6 @@ Wählen Sie im darauf folgenden Dialogfeld die gewünschte Ebene aus: transaktio
 Das folgende PowerShell-Cmdlet setzt voraus, dass Sie die Variablen `$resourceGroupName`, `$storageAccountName`, `$shareName` wie in den früheren Abschnitten dieses Dokuments beschrieben festgelegt haben.
 
 ```PowerShell
-# This cmdlet requires Az.Storage version 2.1.1-preview, which is installed
-# in the earlier example.
 Update-AzRmStorageShare `
     -ResourceGroupName $resourceGroupName `
     -StorageAccountName $storageAccountName `

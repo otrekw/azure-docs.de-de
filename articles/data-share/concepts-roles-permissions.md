@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: ed4b4d9c1de1e9024e8ea86d4661b42d6c68b0ae
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f5c5d6da239d302b57bdb37e9d49116a29c1ccb4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460989"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558133"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Rollen und Anforderungen für Azure Data Share 
 
@@ -63,7 +63,7 @@ Wenn Sie eine Rollenzuweisung für die verwaltete Identität der Data Share-Res
 1. Geben Sie unter *Auswählen* den Namen Ihrer Azure Data Share-Ressource ein.
 1. Klicken Sie auf *Speichern*.
 
-Weitere Informationen zur Rollenzuweisung finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment). Wenn Sie Daten mithilfe von REST-APIs freigeben, können Sie die Rollenzuweisung mithilfe der API erstellen. Informationen dazu finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der REST-API](../role-based-access-control/role-assignments-rest.md). 
+Weitere Informationen zur Rollenzuweisung finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md). Wenn Sie Daten mithilfe von REST-APIs freigeben, können Sie die Rollenzuweisung mithilfe der API erstellen. Informationen dazu finden Sie unter [Zuweisen von Azure-Rollen mithilfe der REST-API](../role-based-access-control/role-assignments-rest.md). 
 
 Bei SQL-basierten Quellen muss ein SQL-Benutzer über einen externen Anbieter in SQL-Datenbank erstellt werden, und zwar mit demselben Namen wie die Azure Data Share-Ressource, wenn mithilfe von Azure Active Directory-Authentifizierung eine Verbindung mit SQL-Datenbank hergestellt wird. Diesem Benutzer muss die Berechtigung *db_datareader* erteilt werden. Ein Beispielskript sowie weitere Voraussetzungen für die SQL-basierte Freigabe finden Sie im Tutorial [Freigeben und Empfangen von Daten aus Azure SQL-Datenbank und Azure Synapse Analytics](how-to-share-from-sql.md). 
 
@@ -83,7 +83,7 @@ Wenn Sie eine Rollenzuweisung für die verwaltete Identität der Data Share-Res
 1. Geben Sie unter *Auswählen* den Namen Ihrer Azure Data Share-Ressource ein.
 1. Klicken Sie auf *Speichern*.
 
-Weitere Informationen zur Rollenzuweisung finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment). Wenn Sie Daten mithilfe von REST-APIs erhalten, können Sie die Rollenzuweisung mithilfe der API erstellen. Informationen dazu finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der REST-API](../role-based-access-control/role-assignments-rest.md). 
+Weitere Informationen zur Rollenzuweisung finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md). Wenn Sie Daten mithilfe von REST-APIs erhalten, können Sie die Rollenzuweisung mithilfe der API erstellen. Informationen dazu finden Sie unter [Zuweisen von Azure-Rollen mithilfe der REST-API](../role-based-access-control/role-assignments-rest.md). 
 
 Bei SQL-basierten Zielen muss ein SQL-Benutzer über einen externen Anbieter in SQL-Datenbank erstellt werden, und zwar mit demselben Namen wie die Azure Data Share-Ressource, wenn mithilfe von Azure Active Directory-Authentifizierung eine Verbindung mit SQL-Datenbank hergestellt wird. Diesem Benutzer muss die Berechtigung *db_datareader, db_datawriter, db_ddladmin* erteilt werden. Ein Beispielskript sowie weitere Voraussetzungen für die SQL-basierte Freigabe finden Sie im Tutorial [Freigeben und Empfangen von Daten aus Azure SQL-Datenbank und Azure Synapse Analytics](how-to-share-from-sql.md). 
 
@@ -107,4 +107,4 @@ Weitere Informationen zu Ressourcenanbietern finden Sie unter [Azure-Ressourcena
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Rollen in Azure: [Grundlegendes zu Rollendefinitionen](../role-based-access-control/role-definitions.md)
+- Weitere Informationen zu Rollen in Azure finden Sie unter [Grundlegendes zu Azure-Rollendefinitionen](../role-based-access-control/role-definitions.md).

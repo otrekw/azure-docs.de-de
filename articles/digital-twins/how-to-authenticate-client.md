@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: eba3958ae5dd307b80b04371d3659a129d5acf89
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 5a7cfec6acb4cd8735c039f5eab30bac4ccf55b0
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797867"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556147"
 ---
 # <a name="write-client-app-authentication-code"></a>Schreiben von Authentifizierungscode für die Client-App
 
@@ -117,5 +117,5 @@ Wenn die oben genannten Authentifizierungsszenarien nicht die Anforderungen Ihre
 Erfahren Sie mehr zum Thema Sicherheit in Azure Digital Twins:
 * [*Konzepte: Sicherheit für Azure Digital Twins-Lösungen*](concepts-security.md)
 
-Oder informieren Sie sich über die Erstellung von Modellen in einer Instanz, wenn Sie die Authentifizierung eingerichtet haben:
-* [*Verwenden Verwalten von Azure Digital Twins-Modellen*](how-to-manage-model.md)
+Nachdem Sie die Authentifizierung eingerichtet haben, können Sie alternativ damit fortfahren, Modelle in Ihrer Instanz zu erstellen und zu verwalten:
+* [*Vorgehensweise: Verwalten von DTDL-Modellen*](how-to-manage-model.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Erstellen eines Zugriffspakets – Azure AD-Berechtigungsverwaltung'
-description: Schritt-für-Schritt-Tutorial zum Erstellen Ihres ersten Zugriffspakets in der Azure Active Directory-Berechtigungsverwaltung
+title: 'Tutorial: Verwalten des Zugriffs auf Ressourcen in der Azure AD-Berechtigungsverwaltung'
+description: Schritt-für-Schritt-Tutorial zum Erstellen Ihres ersten Zugriffspakets mithilfe des Azure-Portals in der Azure Active Directory-Berechtigungsverwaltung
 services: active-directory
 documentationCenter: ''
 author: ajburnle
@@ -16,14 +16,14 @@ ms.date: 09/30/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2625b1e0ccc4c3129f412eff144f47d9dc97b961
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1adbc653c8b698cb7b439b54b0a77d2b8cd4042a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937889"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547399"
 ---
-# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Tutorial: Erstellen Ihres ersten Zugriffspakets in der Azure AD-Berechtigungsverwaltung
+# <a name="tutorial-manage-access-to-resources-in-azure-ad-entitlement-management"></a>Tutorial: Verwalten des Zugriffs auf Ressourcen in der Azure AD-Berechtigungsverwaltung
 
 Das Verwalten des Zugriffs auf alle Ressourcen, die von Mitarbeitern benötigt werden, etwa Gruppen, Anwendungen und Websites, ist eine wichtige Aufgabe für Organisationen. Sie möchten Mitarbeitern den richtigen Umfang an Zugriff gewähren, den sie benötigen, um produktiv zu sein, und Sie möchten deren Zugriff entfernen, wenn er nicht mehr benötigt wird.
 
@@ -41,8 +41,6 @@ In diesem Tutorial lernen Sie Folgendes:
 Eine detaillierte Demonstration der Bereitstellung der Azure Active Directory-Berechtigungsverwaltung, einschließlich der Erstellung Ihres ersten Zugriffspakets, finden Sie in folgendem Video:
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
-
-Sie können ein Zugriffspaket mithilfe von Microsoft Graph auch programmgesteuert erstellen. Ein Tutorial, das zeigt, wie Sie ein Zugriffspaket programmgesteuert erstellen, finden Sie unter [Berechtigungsverwaltungs-API](/graph/tutorial-access-package-api?view=graph-rest-beta).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

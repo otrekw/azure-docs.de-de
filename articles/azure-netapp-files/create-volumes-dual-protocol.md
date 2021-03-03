@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 725f15d72694534da1fd924b3b6ffe223722fd3d
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 0079c123f908a38cc1e4923790439f18352bf3ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104466"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574641"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Erstellen eines Volumes mit dualem Protokoll (NFSv3 und SMB) für Azure NetApp Files
 
@@ -35,7 +35,7 @@ Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv
 
 ## <a name="considerations"></a>Überlegungen
 
-* Achten Sie darauf, die [Anforderungen für Active Directory-Verbindungen](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections) zu erfüllen. 
+* Achten Sie darauf, die [Anforderungen für Active Directory-Verbindungen](create-active-directory-connections.md#requirements-for-active-directory-connections) zu erfüllen. 
 * Erstellen Sie eine Reverse-Lookup-Zone auf dem DNS-Server, und fügen Sie dann einen Zeigereintrag (PTR) des AD-Hostcomputers in dieser Reverse-Lookup-Zone hinzu. Andernfalls kann das Volume mit dualem Protokoll nicht erstellt werden.
 * Stellen Sie sicher, dass der NFS-Client auf dem neuesten Stand ist, und führen Sie die neuesten Updates für das Betriebssystem aus.
 * Stellen Sie sicher, dass der Active Directory (AD) LDAP-Server auf dem AD ausgeführt wird. Hierzu können Sie die Rolle [Active Directory Lightweight Directory Services (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) auf dem AD-Computer installieren und konfigurieren.

@@ -1,22 +1,18 @@
 ---
 title: Quellcodeverwaltung
 description: Erfahren Sie, wie Sie die Quellcodeverwaltung in Azure Data Factory konfigurieren
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 author: dcstwh
 ms.author: weetok
-manager: anandsub
-ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 27f14834e45dd32bdf3a26d22d38ab250aa1bcbe
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 5bf1877edaa6c13cb0c645eb2d1c7ec2dc53ad00
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127735"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392441"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -30,7 +26,7 @@ Standardmäßig erfolgt die Erstellung mit der Azure Data Factory-Benutzeroberfl
 Um eine bessere Erstellung zu ermöglichen, können Sie mit Azure Data Factory ein Git-Repository mit Azure Repos oder GitHub konfigurieren. Git ist ein Versionskontrollsystem, das eine einfachere Änderungsnachverfolgung und Kollaboration ermöglicht. In diesem Artikel wird erläutert, wie Sie ein Git-Repository konfigurieren und in diesem arbeiten. Außerdem finden Sie hier Best Practices und eine Anleitung zur Problembehandlung.
 
 > [!NOTE]
-> Die Git-Integration von Azure Data Factory ist in der Azure Government-Cloud nur für GitHub Enterprise verfügbar.
+> Für Azure Government Cloud steht nur GitHub Enterprise zur Verfügung.
 
 Um zu erfahren, wie die Integration von Azure Data Factory in Git funktioniert, sehen Sie sich das folgende 15-minütige Videotutorial an:
 

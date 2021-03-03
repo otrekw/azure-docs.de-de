@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 77d4a1cad4843578419be54465a06e87834dd186
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 90d526a58f4223fc70be5414ce5722238ce2c735
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104517"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733430"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Best Practices für eine QnA Maker-Wissensdatenbank
 
@@ -18,7 +18,7 @@ Die Anleitungen zum [Entwicklungszyklus einer Wissensdatenbank](../Concepts/deve
 
 ## <a name="extraction"></a>Extraktion
 
-Der QnA Maker-Dienst optimiert kontinuierlich die Algorithmen zum Extrahieren von Fragen und Antworten (QnA) aus Inhalten und erweitert die Liste der unterstützten Datei- und HTML-Formate. Befolgen Sie die [Richtlinien](../index.yml) für die Datenextraktion basierend auf Ihrem Dokumenttyp.
+Der QnA Maker-Dienst optimiert kontinuierlich die Algorithmen zum Extrahieren von Fragen und Antworten (QnA) aus Inhalten und erweitert die Liste der unterstützten Datei- und HTML-Formate. Befolgen Sie die [Richtlinien](../Concepts/data-sources-and-content.md) für die Datenextraktion basierend auf Ihrem Dokumenttyp.
 
 Ganz allgemein sollten die Seiten mit häufig gestellten Fragen eigenständig bereitgestellt und nicht mit anderen Informationen kombiniert werden. Produkthandbücher sollten klare Überschriften und vorzugsweise eine Indexseite aufweisen.
 

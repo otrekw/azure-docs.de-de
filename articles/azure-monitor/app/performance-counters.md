@@ -4,12 +4,12 @@ description: Überwachen Sie systemeigene und benutzerdefinierte .NET-Leistungsi
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f772b129e20fbaaade7305d84064a713dd734199
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5f1bd3ac4542dcce0d41f69a9c1664b747214554
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937390"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583886"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Systemleistungsindikatoren in Application Insights
 
@@ -110,7 +110,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ```
 
 ## <a name="performance-counters-in-analytics"></a>Leistungsindikatoren in Analytics
-In [Analytics](../log-query/log-query-overview.md) können Sie nach Leistungsindikatorberichten suchen und diese anzeigen.
+In [Analytics](../logs/log-query-overview.md) können Sie nach Leistungsindikatorberichten suchen und diese anzeigen.
 
 Das Schema **performanceCounters** zeigt die `category`, den `counter`-Namen und `instance`-Namen der einzelnen Leistungsindikatoren.  In den Telemetriedaten jeder Anwendung werden nur die Indikatoren für diese Anwendung angezeigt. Beispielsweise, um verfügbare Leistungsindikatoren anzuzeigen: 
 
@@ -148,7 +148,7 @@ Für die Unterstützung von Leistungsindikatoren in ASP.NET Core gelten die folg
 * Die SDK-Versionen 2.8.0 und höher unterstützen Leistungsindikatoren für CPU und Arbeitsspeicher unter Linux. Es werden kein weiteren Leistungsindikatoren unter Linux unterstützt. Die empfohlene Vorgehensweise für Systemleistungsindikatoren unter Linux (und in anderen Nicht-Windows-Umgebungen) ist die Verwendung von [EventCounters](eventcounters.md).
 
 ## <a name="alerts"></a>Alerts
-Wie bei anderen Metriken können Sie [eine Warnung festlegen](../platform/alerts-log.md), damit Sie gewarnt werden, wenn ein Leistungsindikator einen von Ihnen festgelegten Grenzwert überschreitet. Öffnen Sie den Bereich „Warnungen“, und klicken Sie auf „Warnung hinzufügen“.
+Wie bei anderen Metriken können Sie [eine Warnung festlegen](../alerts/alerts-log.md), damit Sie gewarnt werden, wenn ein Leistungsindikator einen von Ihnen festgelegten Grenzwert überschreitet. Öffnen Sie den Bereich „Warnungen“, und klicken Sie auf „Warnung hinzufügen“.
 
 ## <a name="next-steps"></a><a name="next"></a>Nächste Schritte
 

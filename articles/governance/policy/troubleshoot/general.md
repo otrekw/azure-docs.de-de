@@ -3,12 +3,12 @@ title: Problembehandlung für häufige Fehler
 description: Erfahren Sie, wie Sie Probleme beim Erstellen von Richtliniendefinitionen, mit dem jeweiligen SDK und dem Add-On für Kubernetes beheben.
 ms.date: 01/26/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 0a64346188696cc7cc16d832474ec4ee6befdae2
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 6e0e4067f07266bae9c87fd4443d27314cc28c0b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917742"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592602"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Problembehandlung mit Azure Policy
 
@@ -87,7 +87,7 @@ Wenn Sie immer noch ein Problem mit Ihrer duplizierten und angepassten integrier
 
 #### <a name="issue"></a>Problem
 
-Für eine Ressource, für die eine Aktion von Azure Policy erwartet wird, gibt es keinen Eintrag im [Azure-Aktivitätsprotokoll](../../../azure-monitor/platform/platform-logs-overview.md).
+Für eine Ressource, für die eine Aktion von Azure Policy erwartet wird, gibt es keinen Eintrag im [Azure-Aktivitätsprotokoll](../../../azure-monitor/essentials/platform-logs-overview.md).
 
 #### <a name="cause"></a>Ursache
 
@@ -123,7 +123,7 @@ Eine Richtlinienzuweisung für den Bereich, in dem sich die neue oder aktualisie
 
 #### <a name="resolution"></a>Lösung
 
-Die Fehlermeldung bei einer Richtlinienzuweisung vom Typ „deny“ umfasst die Richtliniendefinition und die Richtlinienzuweisungs-IDs. Wenn die Fehlerinformationen in der Nachricht fehlen, stehen diese auch im [Aktivitätsprotokoll](../../../azure-monitor/platform/activity-log.md#view-the-activity-log) zur Verfügung. Diese Informationen geben Ihnen weitere Details, um die Ressourceneinschränkungen zu verstehen und die Ressourceneigenschaften in der Anforderung so anzupassen, dass sie zulässigen Werten entsprechen.
+Die Fehlermeldung bei einer Richtlinienzuweisung vom Typ „deny“ umfasst die Richtliniendefinition und die Richtlinienzuweisungs-IDs. Wenn die Fehlerinformationen in der Nachricht fehlen, stehen diese auch im [Aktivitätsprotokoll](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log) zur Verfügung. Diese Informationen geben Ihnen weitere Details, um die Ressourceneinschränkungen zu verstehen und die Ressourceneigenschaften in der Anforderung so anzupassen, dass sie zulässigen Werten entsprechen.
 
 ## <a name="template-errors"></a>Vorlagenfehler
 

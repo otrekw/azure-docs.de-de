@@ -8,20 +8,20 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 482c11395ff5dbbf2dd5bb8100451c3442f2f333
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: cfa5be01a0d36764086c6c9adf97e6cb166d2bb6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743996"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728160"
 ---
 # <a name="configure-scaling-options-with-azure-cloud-services-extended-support"></a>Konfigurieren der Skalierungsoptionen für Azure Cloud Services (erweiterter Support) 
 
 Bedingungen können so konfiguriert werden, dass Bereitstellungen von Cloud Services (erweiterter Support) abskaliert und aufskaliert werden können. Diese Bedingungen können auf der Auslastung von CPU, Datenträger und Netzwerk basieren. 
 
 Beachten Sie beim Konfigurieren der Skalierung Ihrer Cloud Service-Bereitstellungen die folgenden Informationen:
-- Die Skalierung wirkt sich auf die Kernauslastung aus. Größere Rolleninstanzen verbrauchen mehr Kerne, und Sie können nur innerhalb des Kerngrenzwerts Ihres Abonnements skalieren. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
-- Auf dem Schwellenwert für Warteschlangennachrichten basierende Skalierung wird unterstützt. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Queue Storage](https://docs.microsoft.com/azure/storage/queues/storage-dotnet-how-to-use-queues).
+- Die Skalierung wirkt sich auf die Kernauslastung aus. Größere Rolleninstanzen verbrauchen mehr Kerne, und Sie können nur innerhalb des Kerngrenzwerts Ihres Abonnements skalieren. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
+- Auf dem Schwellenwert für Warteschlangennachrichten basierende Skalierung wird unterstützt. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Queue Storage](../storage/queues/storage-dotnet-how-to-use-queues.md).
 - Um die Hochverfügbarkeit Ihrer Anwendungen unter Cloud Services (erweiterter Support) sicherzustellen, ist unbedingt eine Bereitstellung mit mindestens zwei Rolleninstanzen erforderlich.
 - Die benutzerdefinierte automatische Skalierung ist nur möglich, wenn sich alle Rollen im Status **Bereit** befinden.
 

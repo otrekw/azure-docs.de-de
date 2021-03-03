@@ -1,19 +1,17 @@
 ---
 title: Problembehandlung für Azure Data Factory | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie in Azure Data Factory Fehler bei externen Steuerungsaktivitäten beheben können.
-services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/30/2020
 ms.author: abnarain
-ms.reviewer: craigg
-ms.openlocfilehash: 922ec6c4b579a657e7ee5e872148f8126ce175e2
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 101e55188b8021040e2fd6bd573c1c6330241e72
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822283"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382802"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Problembehandlung für Azure Data Factory
 
@@ -1019,7 +1017,7 @@ Weitere Informationen finden Sie unter [Erste Schritte mit Fiddler](https://docs
 
 ### <a name="activity-stuck-issue"></a>Problem mit hängen gebliebener Aktivität
 
-Wenn Sie beobachten, dass die Aktivität viel länger läuft als gewöhnlich und kaum vorankommt, ist sie möglicherweise hängen geblieben. Sie können versuchen, die Aktivität abzubrechen und zu wiederholen, um zu sehen, ob das hilft. Wenn es sich um eine Kopieraktivität handelt, können Sie sich unter [Problembehandlung für die Leistung der Kopieraktivität](copy-activity-performance-troubleshooting.md) über die Leistungsüberwachung und Problembehandlung informieren. Wenn es sich um einen Datenfluss handelt, informieren Sie sich unter [Leistung von Zuordnungsdatenflüssen](concepts-data-flow-performance.md) und im Leitfaden für die Optimierung.
+Wenn Sie beobachten, dass die Aktivität viel länger läuft als gewöhnlich und kaum vorankommt, ist sie möglicherweise hängen geblieben. Sie können versuchen, die Aktivität abzubrechen und zu wiederholen, um zu sehen, ob das hilft. Wenn es sich dabei um eine Kopieraktivität handelt, können Sie sich unter [Problembehandlung für die Leistung der Kopieraktivität](copy-activity-performance-troubleshooting.md) über die Leistungsüberwachung und Problembehandlung informieren. Wenn es sich um einen Datenfluss handelt, informieren Sie sich unter [Leistung von Zuordnungsdatenflüssen](concepts-data-flow-performance.md) und im Leitfaden für die Optimierung.
 
 ### <a name="payload-is-too-large"></a>Nutzdaten sind zu umfangreich
 

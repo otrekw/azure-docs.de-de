@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4e8ba291f32456bf2b8432620d1f9ea313629c9d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 46c41a4868c80bf9ba1c2c6d4a8286c3a8f47c3d
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600510"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530432"
 ---
 # <a name="manage-digital-twins"></a>Verwalten digitaler Zwillinge
 
@@ -86,7 +86,7 @@ Sie können auf die Details jedes digitalen Zwillings zugreifen, indem Sie die M
 
 Dieser Aufruf gibt Zwillingsdaten als einen stark typisierten Objekttyp (z. B. `BasicDigitalTwin`) zurück. `BasicDigitalTwin` ist eine Serialisierungshilfsklasse, die im SDK enthalten ist und die die zentralen Zwillingsmetadaten und -eigenschaften in einem vorab analysierten Format zurückgibt. Hier folgt ein Beispiel zur Vorgehensweise beim Anzeigen der Zwillingsdetails:
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin" highlight="2":::
 
 Beim Abrufen eines Zwillings mit der Methode `GetDigitalTwin()` werden nur Eigenschaften zurückgegeben, die mindestens einmal festgelegt wurden.
 
@@ -208,9 +208,9 @@ Die beiden Aufrufe, die *Zwilling1* ändern, werden nacheinander ausgeführt, un
 
 Sie können Zwillinge mithilfe der `DeleteDigitalTwin()`-Methode löschen. Sie können einen Zwilling jedoch nur löschen, wenn er keine weiteren Beziehungen aufweist. Daher löschen Sie zuerst die ein- und ausgehenden Beziehungen des Zwillings.
 
-Hier folgt ein Beispiel für den Code zum Löschen von Zwillingen und ihren Beziehungen:
+Hier folgt ein Beispiel für den Code zum Löschen von Zwillingen und ihren Beziehungen. Der `DeleteDigitalTwin`-SDK-Aufruf ist hervorgehoben, um zu verdeutlichen, inwiefern er Teil des breiteren Beispielkontexts ist.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="DeleteTwin":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="DeleteTwin" highlight="7":::
 
 ### <a name="delete-all-digital-twins"></a>Löschen aller digitalen Zwillinge
 
@@ -227,7 +227,7 @@ Der Codeausschnitt verwendet die [Room.json](https://github.com/Azure-Samples/di
 Bevor Sie das Beispiel ausführen, gehen Sie wie folgt vor:
 1. Laden Sie die Modelldatei herunter, platzieren Sie sie in Ihrem Projekt, und ersetzen Sie den Platzhalter `<path-to>` im Code unten, um Ihrem Programm mitzuteilen, wo sie zu finden ist.
 2. Ersetzen Sie den Platzhalter `<your-instance-hostname>` durch den Hostnamen Ihrer Azure Digital Twins-Instanz.
-3. Als Nächstes fügen Sie Ihrem Projekt zwei Abhängigkeiten hinzu, die erforderlich sind, um Azure Digital Twins verwenden zu können. Bei der ersten Abhängigkeit handelt es sich um das Paket für das [Azure Digital Twins-SDK für .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true), die zweite stellt Tools bereit, die die Authentifizierung bei Azure unterstützen.
+3. Als Nächstes fügen Sie Ihrem Projekt zwei Abhängigkeiten hinzu, die erforderlich sind, um Azure Digital Twins verwenden zu können. Bei der ersten handelt es sich um das Paket für das [Azure Digital Twins-SDK für .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true), die zweite stellt Tools bereit, die die Authentifizierung bei Azure unterstützen.
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core

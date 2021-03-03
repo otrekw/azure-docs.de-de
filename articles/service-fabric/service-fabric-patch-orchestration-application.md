@@ -14,24 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: d64c6383b9a83b759dd8368a4e3e0f1847b5ee16
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 7d52d49ab5d3a47dd69fdc1708f9e52f4f796a92
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791222"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390639"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
-> 
 > [!IMPORTANT]
-> Patch Orchestration Application Version 1.2.* wird seit dem 30. April 2019 nicht mehr unterstützt. Führen Sie daher ein Upgrade auf die aktuelle Version durch.
+> Patch Orchestration Application Version 1.2.* wird seit dem 30. April 2019 nicht mehr unterstützt. Führen Sie daher ein Upgrade auf die aktuelle Version durch. Upgrades auf einem virtuellen Computer, bei denen „Windows Update“ Betriebssystempatches anwendet, ohne den Betriebssystemdatenträger zu ersetzen, werden nicht unterstützt. 
 
 > [!NOTE]
-> Das Durchführen [automatischer Upgrades von Betriebssystemimages in der VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) ist die bewährte Methode, um das Betriebssystem in Azure gepatcht zu halten. Für automatische Betriebssystemupgrades, die auf VM-Skalierungsgruppen basieren, ist für eine Skalierungsgruppe mindestens die Dauerhaftigkeitsstufe „Silver“ (Silber) erforderlich.
->
+> Das Durchführen [automatischer Upgrades von Betriebssystemimages in der VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) ist die bewährte Methode, um das Betriebssystem in Azure gepatcht zu halten. Für automatische Betriebssystemupgrades, die auf VM-Skalierungsgruppen basieren, ist für eine Skalierungsgruppe mindestens die Dauerhaftigkeitsstufe „Silver“ (Silber) erforderlich. Bei Knotentypen mit Dauerhaftigkeitsstufe „Bronze“ wird dies nicht unterstützt. Verwenden Sie in diesem Fall die Patch Orchestration Application.
 
- Patch Orchestration Application (POA) ist ein Wrapper für den Repair Manager-Dienst von Azure Service Fabric, der die konfigurationsbasierte Planung von Betriebssystempatches für nicht in Azure gehostete Cluster ermöglicht. POA ist für nicht in Azure gehostete Cluster nicht erforderlich, aber die Planung von Patchinstallationen durch Updatedomänen ist erforderlich, um die Service Fabric-Clusterhosts ohne Ausfallzeiten zu patchen.
+Patch Orchestration Application (POA) ist ein Wrapper für den Repair Manager-Dienst von Azure Service Fabric, der die konfigurationsbasierte Planung von Betriebssystempatches für nicht in Azure gehostete Cluster ermöglicht. POA ist für nicht in Azure gehostete Cluster nicht erforderlich, aber die Planung von Patchinstallationen durch Updatedomänen ist erforderlich, um die Service Fabric-Clusterhosts ohne Ausfallzeiten zu patchen.
 
 POA ist eine Service Fabric-Anwendung, mit der das Patchen von Betriebssystemen in einem Service Fabric-Cluster ohne Ausfallzeiten automatisiert werden kann.
 

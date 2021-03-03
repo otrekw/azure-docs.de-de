@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f325a43895e1e9d73b11c06662851d7654d31ddb
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 62fe1b3391eb4cb2d409a92b936fd3f1ae56d992
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331820"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518418"
 ---
 # <a name="azure-database-for-postgresql-versioning-policy"></a>Versionsrichtlinie zu Azure Database for PostgreSQL
 
@@ -28,7 +28,7 @@ Azure Database for PostgreSQL unterstützt die folgenden Datenbankversionen:
 | PostgreSQL 11 | X | X |
 | PostgreSQL 10 | X |  |
 | PostgreSQL 9.6 | X |  |
-| PostgreSQL 9.5 | X |  |
+| *PostgreSQL 9.5 (eingestellt)* | X |  |
 
 ## <a name="major-version-support"></a>Support für die Hauptversion
 Jede Hauptversion von PostgreSQL wird durch Azure Database for PostgreSQL ab dem Datum, an dem Azure mit dem Support für die Version beginnt, bis zu dem Datum unterstützt, an dem die Version durch die PostgreSQL-Community entsprechend der [Versionsrichtlinie für die PostgreSQL-Community](https://www.postgresql.org/support/versioning/) eingestellt wird.
@@ -41,7 +41,7 @@ Die folgende Tabelle enthält die Details zur Einstellung von PostgreSQL-Hauptve
 
 | Version | Neues | Startdatum des Azure-Supports | Deaktivierungstermin|
 | ----- | ----- | ------ | ----- |
-| PostgreSQL 9.5| [Funktionen](https://www.postgresql.org/docs/9.5/release-9-5.html)  | 18. April 2018    | 11. Februar 2021
+| [PostgreSQL 9.5 (eingestellt)](https://www.postgresql.org/about/news/postgresql-132-126-1111-1016-9621-and-9525-released-2165/)| [Funktionen](https://www.postgresql.org/docs/9.5/release-9-5.html)  | 18. April 2018   | 11. Februar 2021
 | [PostgreSQL 9.6](https://www.postgresql.org/about/news/postgresql-96-released-1703/) | [Funktionen](https://wiki.postgresql.org/wiki/NewIn96) | 18. April 2018  | 11. November 2021
 | [PostgreSQL 10](https://www.postgresql.org/about/news/postgresql-10-released-1786/) | [Funktionen](https://wiki.postgresql.org/wiki/New_in_postgres_10) | 4. Juni 2018  | 10. November 2022
 | [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/) | [Funktionen](https://www.postgresql.org/docs/11/release-11.html) | 24. Juli 2019  | 9\. November 2023
@@ -49,7 +49,7 @@ Die folgende Tabelle enthält die Details zur Einstellung von PostgreSQL-Hauptve
 
 ## <a name="retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql"></a>Eingestellte Versionen der PostgreSQL-Engine werden in Azure Database for PostgreSQL nicht unterstützt
 
-Wenn Sie nach dem Einstellungsdatum für die einzelnen PostgreSQL-Datenbankversionen die eingestellte Version weiterhin ausführen, beachten Sie die folgenden Einschränkungen:
+Sie können die eingestellte Version in Azure Database for PostgreSQL weiterhin ausführen. Beachten Sie jedoch die folgenden Einschränkungen nach dem Einstellungsdatum für jede PostgreSQL-Datenbankversion:
 - Da die Community keine weiteren Fehlerbehebungen oder Sicherheitskorrekturen mehr veröffentlicht, patcht Azure Database for PostgreSQL die eingestellte Datenbank-Engine nicht bei Fehlern oder Sicherheitsproblemen und ergreift keinerlei Sicherheitsmaßnahmen im Hinblick auf die eingestellte Datenbank-Engine. Dies führt möglicherweise zu Sicherheitsrisiken oder anderen Problemen. Azure führt jedoch weiterhin regelmäßige Wartung und Patchen für den Host, das Betriebssystem, die Container sowie alle anderen dienstbezogenen Komponenten durch.
 - Im Fall eines Unterstützungsproblems im Zusammenhang mit der PostgreSQL-Datenbank können wir Ihnen möglicherweise keinen Support bieten. In solchen Fällen müssen Sie Ihre Datenbank aktualisieren, damit wir Ihnen Support dafür bieten können.
 - Sie können für die eingestellte Version keine neuen Datenbankserver erstellen. Sie können jedoch Zeitpunktwiederherstellungen durchführen und Lesereplikate für Ihre vorhandenen Server erstellen.

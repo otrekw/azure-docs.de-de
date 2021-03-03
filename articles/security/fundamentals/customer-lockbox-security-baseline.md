@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dd54459cef3d6f20180b4c7c41eefbdd42c6980c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b58d96adba690084580fe11b42253a1e77370379
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807919"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595592"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>Azure-Sicherheitsbaseline für die Kunden-Lockbox für Microsoft Azure
 
@@ -46,7 +46,7 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Webanwendungen gedacht, die in Azure App Service oder auf Computeressourcen ausgeführt werden.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -78,7 +78,7 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Webanwendungen gedacht, die in Azure App Service oder auf Computeressourcen ausgeführt werden.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -164,7 +164,7 @@ Das Onboarding der Aktivitätsprotokolle wird von der Kunden-Lockbox in Azure Se
 
 **Leitfaden**: Legen Sie in Azure Monitor den Aufbewahrungszeitraum für Protokolle für Log Analytics-Arbeitsbereiche, die Ihrer Kunden-Lockbox zugeordnet sind, gemäß den Compliancevorschriften Ihrer Organisation fest.
 
-* [Ändern des Datenaufbewahrungszeitraums](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Ändern des Datenaufbewahrungszeitraums](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -186,7 +186,7 @@ Das Onboarding der Aktivitätsprotokolle wird von der Kunden-Lockbox in Azure Se
 
 * [Überwachungsprotokolle in der Kunden-Lockbox](./customer-lockbox-overview.md#auditing-logs)
 
-* [Warnungen bei Log Analytics-Protokolldaten](../../azure-monitor/learn/tutorial-response.md)
+* [Warnungen bei Log Analytics-Protokolldaten](../../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -461,9 +461,9 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 * [Aktivieren der Überwachung in der Kunden-Lockbox](./customer-lockbox-overview.md)
 
-* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Erstellen von Warnungen in Azure Monitor](../../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen in Azure Monitor](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -491,7 +491,7 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Bereitstellen der automatisierten Lösung für die Patchverwaltung von Drittanbietersoftware
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -621,7 +621,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ### <a name="610-implement-approved-application-list"></a>6.10: Implementieren einer Liste genehmigter Anwendungen
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -649,7 +649,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Webanwendungen gedacht, die in Azure App Service oder auf Computeressourcen ausgeführt werden.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -699,7 +699,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Sicheres Speichern von benutzerdefinierten Betriebssystemimages
 
-**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -731,7 +731,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementieren der automatisierten Konfigurationsüberwachung für Betriebssysteme
 
-**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

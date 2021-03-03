@@ -1,18 +1,18 @@
 ---
-title: 'Tutorial: Bereitstellen eines vSphere-Clusters in Azure'
-description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure VMware Solution einen vSphere-Cluster in Azure bereitstellen.
+title: 'Tutorial: Erstellen und Bereitstellen einer privaten Azure VMware Solution-Cloud'
+description: Hier erfahren Sie, wie Sie eine private Azure VMware Solution-Cloud erstellen und bereitstellen.
 ms.topic: tutorial
-ms.date: 11/19/2020
-ms.openlocfilehash: 3c8ae3673ad049153c2b9700bd7efae6c4c286ed
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.date: 02/22/2021
+ms.openlocfilehash: 2afd88bca05a9bcab309faff373bedf6a22e9f4b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093946"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725403"
 ---
-# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Tutorial: Bereitstellen einer privaten Azure VMware Solution-Cloud in Azure
+# <a name="tutorial-create-an-azure-vmware-solution-private-cloud"></a>Tutorial: Erstellen einer privaten Cloud von Azure VMware Solution
 
-Azure VMware Solution ermöglicht das Bereitstellen eines vSphere-Clusters in Azure. Die Bereitstellung muss mindestens drei Hosts umfassen. Später können nacheinander weitere Host hinzugefügt werden. Pro Cluster sind bis zu 16 Hosts möglich. 
+In diesem Tutorial erfahren Sie, wie Sie eine private Azure VMware Solution-Cloud erstellen und bereitstellen. Die Erstbereitstellung muss mindestens drei Hosts umfassen. Später können nacheinander weitere Host hinzugefügt werden. Pro Cluster sind bis zu 16 Hosts möglich. 
 
 Da Sie Ihre private Cloud zunächst nicht mit Ihrer lokalen vCenter-Instanz verwalten können, sind zusätzliche Konfigurationsschritte erforderlich. Diese Verfahren und die damit zusammenhängenden Voraussetzungen werden in diesem Tutorial behandelt.
 
@@ -25,13 +25,10 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Geeignete Administratorrechte und Berechtigung zum Erstellen einer privaten Cloud.
+- Geeignete Administratorrechte und Berechtigung zum Erstellen einer privaten Cloud. Sie müssen mindestens die Rolle „Mitwirkender“ im Abonnement haben.
+- Verwenden Sie die Informationen, die Sie im Artikel [Planen der Azure VMware Solution-Bereitstellung](production-ready-deployment-steps.md) gesammelt haben:
 - Vergewissern Sie sich, dass das Netzwerk ordnungsgemäß konfiguriert ist, wie unter [Netzwerkprüfliste für die Azure-VMware-Lösung (Azure VMware Solution, AVS)](tutorial-network-checklist.md) beschrieben.
-
-## <a name="register-the-resource-provider"></a>Registrieren des Ressourcenanbieters
-
-[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
-
+- Hosts wurden bereitgestellt, und der Ressourcenanbieter „Microsoft.AVS“ wurde registriert wie unter [Aktivieren einer Azure VMware Solution-Ressource](enable-azure-vmware-solution.md) beschrieben.
 
 ## <a name="create-a-private-cloud"></a>Erstellen einer privaten Cloud
 

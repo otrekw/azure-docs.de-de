@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: e0fb337defc69354aa625fe63bef9768dbc4cf1f
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: ee6eedbc078e1b9c07ed00922ce1c37b38410128
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538844"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381867"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-portal"></a>Konfigurieren und Verwalten von fortlaufender Sicherung und Zeitpunktwiederherstellung (Vorschau) – Verwenden des Azure-Portals
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -74,7 +74,7 @@ Wenn Sie beispielsweise auf den Zeitpunkt wiederherstellen möchten, bevor ein b
 Über das Azure-Portal können Sie ein gelöschtes Konto innerhalb von 30 Tagen nach dem Löschvorgang vollständig wiederherstellen. Führen Sie die folgenden Schritte zum Wiederherstellen eines gelöschten Kontos aus:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Suchen Sie in der globalen Suchleiste nach „Azure Cosmos DB“-Ressourcen. Dort werden alle Ihre vorhandenen Konten aufgelistet.
+1. Suchen Sie in der globalen Suchleiste nach *Azure Cosmos DB*-Ressourcen. Dort werden alle Ihre vorhandenen Konten aufgelistet.
 1. Wählen Sie als Nächstes die Schaltfläche **Wiederherstellen** aus. Im Bereich „Wiederherstellen“ wird eine Liste der gelöschten Konten angezeigt, die innerhalb des Aufbewahrungszeitraums wiederhergestellt werden können. Er umfasst 30 Tage ab dem Löschzeitpunkt.
 1. Wählen Sie das Konto aus, das Sie wiederherstellen möchten.
 
@@ -95,7 +95,7 @@ Wenn Sie beispielsweise auf den Zeitpunkt wiederherstellen möchten, bevor ein b
 
 ## <a name="track-the-status-of-restore-operation"></a><a id="track-restore-status"></a>Nachverfolgen des Status eines Wiederherstellungsvorgangs
 
-Wählen Sie nach dem Einleiten eines Wiederherstellungsvorgangs das Glockensymbol für **Benachrichtigung** in der oberen rechten Ecke des Portals aus. Daraufhin wird ein Link eingeblendet, über den der Status des gerade wiederhergestellten Kontos angezeigt wird. Während die Wiederherstellung ausgeführt wird, lautet der Status des Kontos „Wird erstellt“. Nach Abschluss des Wiederherstellungsvorgangs wird er in „Online“ geändert.
+Wählen Sie nach dem Einleiten eines Wiederherstellungsvorgangs das Glockensymbol für **Benachrichtigung** in der oberen rechten Ecke des Portals aus. Daraufhin wird ein Link eingeblendet, über den der Status des gerade wiederhergestellten Kontos angezeigt wird. Während die Wiederherstellung ausgeführt wird, lautet der Status des Kontos *Wird erstellt*. Nach Abschluss des Wiederherstellungsvorgangs wird der Kontostatus in *Online* geändert.
 
 :::image type="content" source="./media/continuous-backup-restore-portal/track-restore-operation-status.png" alt-text="Der Status des wiederhergestellten Kontos wird nach Abschluss des Vorgangs von „Wird erstellt“ in „Online“ geändert." border="true":::
 

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: e4be3d4508d342c77507cf824fb036e32084b617
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b4bda5a439b1e0b35dc6d3af99e0273e4987568
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329736"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091348"
 ---
 # <a name="how-to-use-the-shaka-player-with-azure-media-services"></a>Verwenden von Shaka Player mit Azure Media Services
 
@@ -33,6 +33,7 @@ Es empfiehlt sich die Verwendung von [Mux.js](https://github.com/videojs/mux.js/
 Lesen Sie auch die offizielle [Dokumentation zu Shaka Player](https://shaka-player-demo.appspot.com/docs/api/tutorial-welcome.html).
 
 ## <a name="sample-code"></a>Beispielcode
+
 Beispielcode für diesen Artikel steht unter [Azure-Samples/media-services-3rdparty-player-samples](https://github.com/Azure-Samples/media-services-3rdparty-player-samples) zur Verfügung.
 
 ## <a name="implementing-the-player"></a>Implementieren des Players
@@ -150,5 +151,5 @@ Weitere Informationen finden Sie in der [Dokumentation des DRM-Schutzes für Sha
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verwenden des Azure Media Players](../azure-media-player/azure-media-player-overview.md)
+* [Übersicht über Azure Media Player](../azure-media-player/azure-media-player-overview.md)
 * [Schnellstart: Verschlüsseln von Inhalten mithilfe des Portals](encrypt-content-quickstart.md)

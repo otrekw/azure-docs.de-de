@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: a0e8540d9488e9cc3756eb09c69349ac90d20b83
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: cbafa7997d203cf06a3e91965355258f0088d77e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043389"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589889"
 ---
 # <a name="availability-alerts"></a>Verfügbarkeitswarnungen
 
@@ -24,7 +24,7 @@ Warnungen werden jetzt zwar standardmäßig automatisch aktiviert, aber Sie müs
 ![Erstellen einer Erfahrung](./media/availability-alerts/create-test.png)
 
 > [!NOTE]
->  Bei den [neuen einheitlichen Warnungen](../platform/alerts-overview.md) **müssen** der Schweregrad der Warnungsregel sowie die Benachrichtigungseinstellungen mit [Aktionsgruppen](../platform/action-groups.md) in der Warnungsumgebung konfiguriert werden. Ohne die folgenden Schritten erhalten Sie nur portalinterne Benachrichtigungen.
+>  Bei den [neuen einheitlichen Warnungen](../alerts/alerts-overview.md) **müssen** der Schweregrad der Warnungsregel sowie die Benachrichtigungseinstellungen mit [Aktionsgruppen](../alerts/action-groups.md) in der Warnungsumgebung konfiguriert werden. Ohne die folgenden Schritten erhalten Sie nur portalinterne Benachrichtigungen.
 
 1. Nach dem Speichern des Verfügbarkeitstests, klicken Sie auf der Registerkarte „Details“ auf die Auslassungspunkte neben dem Test, den Sie gerade erstellt haben. Klicken Sie auf „Warnung bearbeiten“.
 
@@ -39,7 +39,7 @@ Warnungen werden jetzt zwar standardmäßig automatisch aktiviert, aber Sie müs
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Warnung bei X von Y Standorten, die Fehler melden
 
-Die Warnungsregel „X von Y Standorten“ ist in der [neuen einheitlichen Warnungserfahrung](../platform/alerts-overview.md) standardmäßig aktiviert, wenn Sie einen neuen Verfügbarkeitstest erstellen. Sie können sich dagegen entscheiden, indem Sie die „klassische“ Option auswählen oder die Warnungsregel deaktivieren.
+Die Warnungsregel „X von Y Standorten“ ist in der [neuen einheitlichen Warnungserfahrung](../alerts/alerts-overview.md) standardmäßig aktiviert, wenn Sie einen neuen Verfügbarkeitstest erstellen. Sie können sich dagegen entscheiden, indem Sie die „klassische“ Option auswählen oder die Warnungsregel deaktivieren.
 
 > [!NOTE]
 > Konfigurieren Sie die Aktionsgruppen so, dass sie Benachrichtigungen empfangen, wenn die Warnung ausgelöst wird, indem Sie die oben beschriebenen Schritte ausführen. Ohne diese Schritte erhalten Sie nur portalinterne Benachrichtigungen, wenn die Regel ausgelöst wird.
@@ -47,7 +47,7 @@ Die Warnungsregel „X von Y Standorten“ ist in der [neuen einheitlichen Warnu
 
 ### <a name="alert-on-availability-metrics"></a>Warnung bei Verfügbarkeitsmetriken
 
-Mithilfe der [neuen einheitlichen Warnungen](../platform/alerts-overview.md) können Sie sowohl bei segmentierter aggregierter Verfügbarkeit als auch bei Testdauermetriken warnen:
+Mithilfe der [neuen einheitlichen Warnungen](../alerts/alerts-overview.md) können Sie sowohl bei segmentierter aggregierter Verfügbarkeit als auch bei Testdauermetriken warnen:
 
 1. Wählen Sie eine Application Insights-Ressource in der Metrikenerfahrung aus, und wählen Sie eine Verfügbarkeitsmetrik aus:
 
@@ -57,7 +57,7 @@ Mithilfe der [neuen einheitlichen Warnungen](../platform/alerts-overview.md) kö
 
 ### <a name="alert-on-custom-analytics-queries"></a>Warnung bei benutzerdefinierten Analyseabfragen
 
-Mithilfe der [neuen einheitlichen Warnungen](../platform/alerts-overview.md) können Sie bei [benutzerdefinierten Protokollabfragen](../platform/alerts-unified-log.md) warnen. Mit benutzerdefinierten Abfragen können Sie bei jeder beliebigen Bedingung warnen, die Ihnen hilft, das zuverlässigste Signal für Verfügbarkeitsprobleme abzurufen. Dies ist auch anwendbar, wenn Sie benutzerdefinierte Verfügbarkeitsergebnisse mithilfe des TrackAvailability SDK senden.
+Mithilfe der [neuen einheitlichen Warnungen](../alerts/alerts-overview.md) können Sie bei [benutzerdefinierten Protokollabfragen](../alerts/alerts-unified-log.md) warnen. Mit benutzerdefinierten Abfragen können Sie bei jeder beliebigen Bedingung warnen, die Ihnen hilft, das zuverlässigste Signal für Verfügbarkeitsprobleme abzurufen. Dies ist auch anwendbar, wenn Sie benutzerdefinierte Verfügbarkeitsergebnisse mithilfe des TrackAvailability SDK senden.
 
 > [!Tip]
 > Die Metriken zu Verfügbarkeitsdaten umfassen alle benutzerdefinierten Verfügbarkeitsergebnisse, die Sie möglicherweise durch Aufrufen unseres TrackAvailability SDKs übermitteln. Sie können die Unterstützung für Warnungen bei Metriken verwenden, um bei benutzerdefinierten Verfügbarkeitsergebnissen zu warnen.
@@ -65,7 +65,7 @@ Mithilfe der [neuen einheitlichen Warnungen](../platform/alerts-overview.md) kö
 
 ## <a name="automate-alerts"></a>Automatisieren von Warnungen
 
-Informationen zur Automatisierung dieses Prozesses mit Azure Resource Manager-Vorlagen finden Sie in der Dokumentation zum [Erstellen einer Metrikwarnung mit Resource Manager-Vorlagen](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert).
+Informationen zur Automatisierung dieses Prozesses mit Azure Resource Manager-Vorlagen finden Sie in der Dokumentation zum [Erstellen einer Metrikwarnung mit Resource Manager-Vorlagen](../alerts/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

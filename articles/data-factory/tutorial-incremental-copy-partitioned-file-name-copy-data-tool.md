@@ -6,17 +6,17 @@ ms.author: yexu
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/09/2020
-ms.openlocfilehash: 8e68852434a4a8bea43b575523a60c9346b2a569
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: aa6c0d9035f172cc7fb520ff58f233a82fca228a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384774"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741071"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Inkrementelles Kopieren neuer Dateien basierend auf dem zeitpartitionierten Dateinamen und mithilfe des Tools „Daten kopieren“
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Tutorial verwenden Sie das Azure-Portal, um eine Data Factory zu erstellen. Anschließend verwenden Sie das Tool „Daten kopieren“, um eine Pipeline zu erstellen, die neue Dateien basierend auf dem zeitpartitionierten Dateinamen aus einem Azure-Blobspeicher in einen anderen kopiert.
 
@@ -60,7 +60,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
    ![Fehlermeldung zu neuer Data Factory](./media/doc-common-process/name-not-available-error.png)
 
-   Wenn eine Fehlermeldung zum Namenswert angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Verwenden Sie beispielsweise den Namen _**IhrName**_ **ADFTutorialDataFactory**. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
+   Wenn eine Fehlermeldung zum Namenswert angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Verwenden Sie beispielsweise den Namen _**IhrName**_**ADFTutorialDataFactory**. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
 3. Wählen Sie das **Azure-Abonnement** aus, in dem die neue Data Factory erstellt werden soll.
 4. Führen Sie unter **Ressourcengruppe** einen der folgenden Schritte aus:
 
@@ -87,9 +87,9 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
 2. Gehen Sie auf der Seite **Properties** (Eigenschaften) wie folgt vor:
 
-    a. Geben Sie unter **Task name** (Aufgabenname) **DeltaCopyFromBlobPipeline** ein.
+    a. Geben Sie unter **Aufgabenname** den Wert **DeltaCopyFromBlobPipeline** ein.
 
-    b. Wählen Sie unter **Task cadence or Task schedule** (Aufgabenhäufigkeit oder Aufgabenzeitplan) die Option **Run regularly on schedule** (Nach Zeitplan regelmäßig ausführen) aus.
+    b. Wählen Sie unter **Aufgabenhäufigkeit oder Aufgabenzeitplan** die Option **Nach Zeitplan regelmäßig ausführen** aus.
 
     c. Wählen Sie unter **Trigger type** (Triggertyp) die Option **Tumbling Window** (Rollierendes Fenster) aus.
 

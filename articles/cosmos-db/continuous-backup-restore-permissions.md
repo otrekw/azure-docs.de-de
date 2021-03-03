@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 9d30f5325162b9ea447d54aadc092dbd9aa29132
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 8b3ce2c195dc2fa3dd703306e731aa5b807b78b1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538692"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100648602"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>Verwalten von Berechtigungen zum Wiederherstellen eines Azure Cosmos DB-Kontos
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -30,7 +30,7 @@ Bei einem Bereich handelt es sich um einen Satz von Ressourcen, die Zugriff habe
 
 ## <a name="assign-roles-for-restore-using-the-azure-portal"></a>Zuweisen von Rollen für die Wiederherstellung im Azure-Portal
 
-Um eine Wiederherstellung ausführen zu können, benötigt ein Benutzer oder ein Prinzipal die Berechtigung zum Wiederherstellen (d. h. die Berechtigung „restore/action“) und die Berechtigung zum Bereitstellen eines neuen Kontos (die Berechtigung „write“).  Um diese Berechtigungen zu erteilen, kann der Besitzer einem Prinzipal die integrierten Rollen „CosmosRestoreOperator“ und „Cosmos DB-Operator“ zuweisen.
+Um eine Wiederherstellung ausführen zu können, benötigt ein Benutzer oder ein Prinzipal die Berechtigung zum Wiederherstellen (d. h. die Berechtigung *restore/action*) und die Berechtigung zum Bereitstellen eines neuen Kontos (die Berechtigung *write*).  Um diese Berechtigungen zu erteilen, kann der Besitzer einem Prinzipal die integrierten Rollen `CosmosRestoreOperator` und `Cosmos DB Operator` zuweisen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -40,7 +40,7 @@ Um eine Wiederherstellung ausführen zu können, benötigt ein Benutzer oder ein
 
    :::image type="content" source="./media/continuous-backup-restore-permissions/assign-restore-operator-roles.png" alt-text="Weisen Sie die Rollen „CosmosRestoreOperator“ und „Cosmos DB-Operator“ zu." border="true":::
 
-1. Wählen Sie **Speichern** aus, um die Berechtigung „restore/action“ zu erteilen.
+1. Wählen Sie **Speichern** aus, um die Berechtigung *restore/action* zu erteilen.
 
 1. Wiederholen Sie Schritt 3 zum Zuweisen der Rolle **Cosmos DB-Operator**, um die Schreibberechtigung („write“) zu erteilen. Wenn Sie diese Rolle im Azure-Portal zuweisen, wird die Berechtigung zum Wiederherstellen für das gesamte Abonnement erteilt.
 
@@ -52,7 +52,7 @@ Um eine Wiederherstellung ausführen zu können, benötigt ein Benutzer oder ein
 |Resource group | /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-cosmosdb-rg |
 |Wiederherstellbare CosmosDB-Kontoressource | /subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/23e99a35-cd36-4df4-9614-f767a03b9995|
 
-Die wiederherstellbare Kontoressource kann aus der Ausgabe des Befehls `az cosmosdb restorable-database-account list --name <accountname>` (in der Befehlszeilenschnittstelle) oder des Cmdlets `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` (in PowerShell) extrahiert werden. Das name-Attribut in der Ausgabe stellt die Instanz-ID („instanceID“) des wiederherstellbaren Kontos dar. Weitere Informationen finden Sie im Artikel zu [PowerShell](continuous-backup-restore-powershell.md) oder zur [Befehlszeilenschnittstelle](continuous-backup-restore-command-line.md).
+Die wiederherstellbare Kontoressource kann aus der Ausgabe des Befehls `az cosmosdb restorable-database-account list --name <accountname>` (in der Befehlszeilenschnittstelle) oder des Cmdlets `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` (in PowerShell) extrahiert werden. Das name-Attribut in der Ausgabe stellt die Instanz-ID (`instanceID`) des wiederherstellbaren Kontos dar. Weitere Informationen finden Sie im Artikel zu [PowerShell](continuous-backup-restore-powershell.md) oder zur [Befehlszeilenschnittstelle](continuous-backup-restore-command-line.md).
 
 ## <a name="permissions"></a>Berechtigungen
 
@@ -60,11 +60,11 @@ Die folgenden Berechtigungen sind zum Ausführen der verschiedenen Aktivitäten 
 
 |Berechtigung  |Auswirkung  |Mindestumfang  |Maximaler Bereich  |
 |---------|---------|---------|---------|
-|Microsoft.Resources/deployments/validate/action, Microsoft.Resources/deployments/write | Diese Berechtigungen sind für die ARM-Vorlagenbereitstellung zum Erstellen des wiederhergestellten Kontos erforderlich. Informationen zum Festlegen dieser Rolle finden Sie unten in der Beispielberechtigung [RestorableAction](). | Nicht zutreffend | Nicht zutreffend  |
-|Microsoft.DocumentDB/databaseAccounts/write | Diese Berechtigung ist erforderlich, um ein Konto in einer Ressourcengruppe wiederherstellen zu können. | Die Ressourcengruppe, unter der das wiederhergestellte Konto erstellt wird. | Das Abonnement, unter dem das wiederhergestellte Konto erstellt wird. |
-|Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action |Diese Berechtigung ist für den Bereich des wiederherstellbaren Datenbankquellkontos erforderlich, damit Wiederherstellungsaktionen dafür ausgeführt werden können.  | Die „RestorableDatabaseAccount“-Ressource, die zum wiederherzustellenden Quellkonto gehört. Dieser Wert wird auch durch die Eigenschaft „ID“ der wiederherstellbaren Datenbankkontoressource angegeben. Ein Beispiel für ein wiederherstellbares Konto ist `/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>`. | Das Abonnement, das das wiederherstellbare Datenbankkonto enthält. Die Ressourcengruppe kann nicht als Bereich ausgewählt werden.  |
-|Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read |Diese Berechtigung ist für den Bereich des wiederherstellbaren Datenbankquellkontos erforderlich, um die wiederherstellbaren Datenbankkonten auflisten zu können.  | Die „RestorableDatabaseAccount“-Ressource, die zum wiederherzustellenden Quellkonto gehört. Dieser Wert wird auch durch die Eigenschaft „ID“ der wiederherstellbaren Datenbankkontoressource angegeben. Ein Beispiel für ein wiederherstellbares Konto ist `/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>`.| Das Abonnement, das das wiederherstellbare Datenbankkonto enthält. Die Ressourcengruppe kann nicht als Bereich ausgewählt werden.  |
-|Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read | Diese Berechtigung ist für den Bereich des wiederherstellbaren Quellkontos erforderlich, um das Lesen von wiederherstellbaren Ressourcen wie der Liste der Datenbanken und Container für ein wiederherstellbares Konto zuzulassen.  | Die „RestorableDatabaseAccount“-Ressource, die zum wiederherzustellenden Quellkonto gehört. Dieser Wert wird auch durch die Eigenschaft „ID“ der wiederherstellbaren Datenbankkontoressource angegeben. Ein Beispiel für ein wiederherstellbares Konto ist `/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>`.| Das Abonnement, das das wiederherstellbare Datenbankkonto enthält. Die Ressourcengruppe kann nicht als Bereich ausgewählt werden. |
+|`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | Diese Berechtigungen sind für die ARM-Vorlagenbereitstellung zum Erstellen des wiederhergestellten Kontos erforderlich. Informationen zum Festlegen dieser Rolle finden Sie unten in der Beispielberechtigung [RestorableAction](#custom-restorable-action). | Nicht zutreffend | Nicht verfügbar  |
+|`Microsoft.DocumentDB/databaseAccounts/write` | Diese Berechtigung ist erforderlich, um ein Konto in einer Ressourcengruppe wiederherstellen zu können. | Die Ressourcengruppe, unter der das wiederhergestellte Konto erstellt wird. | Das Abonnement, unter dem das wiederhergestellte Konto erstellt wird. |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` |Diese Berechtigung ist für den Bereich des wiederherstellbaren Datenbankquellkontos erforderlich, damit Wiederherstellungsaktionen dafür ausgeführt werden können.  | Die *RestorableDatabaseAccount*-Ressource, die zum wiederherzustellenden Quellkonto gehört. Dieser Wert wird auch durch die Eigenschaft `ID` der wiederherstellbaren Datenbankkontoressource angegeben. Ein Beispiel für ein wiederherstellbares Konto ist */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>* . | Das Abonnement, das das wiederherstellbare Datenbankkonto enthält. Die Ressourcengruppe kann nicht als Bereich ausgewählt werden.  |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` |Diese Berechtigung ist für den Bereich des wiederherstellbaren Datenbankquellkontos erforderlich, um die wiederherstellbaren Datenbankkonten auflisten zu können.  | Die *RestorableDatabaseAccount*-Ressource, die zum wiederherzustellenden Quellkonto gehört. Dieser Wert wird auch durch die Eigenschaft `ID` der wiederherstellbaren Datenbankkontoressource angegeben. Ein Beispiel für ein wiederherstellbares Konto ist */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>* .| Das Abonnement, das das wiederherstellbare Datenbankkonto enthält. Die Ressourcengruppe kann nicht als Bereich ausgewählt werden.  |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` | Diese Berechtigung ist für den Bereich des wiederherstellbaren Quellkontos erforderlich, um das Lesen von wiederherstellbaren Ressourcen wie der Liste der Datenbanken und Container für ein wiederherstellbares Konto zuzulassen.  | Die *RestorableDatabaseAccount*-Ressource, die zum wiederherzustellenden Quellkonto gehört. Dieser Wert wird auch durch die Eigenschaft `ID` der wiederherstellbaren Datenbankkontoressource angegeben. Ein Beispiel für ein wiederherstellbares Konto ist */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>* .| Das Abonnement, das das wiederherstellbare Datenbankkonto enthält. Die Ressourcengruppe kann nicht als Bereich ausgewählt werden. |
 
 ## <a name="azure-cli-role-assignment-scenarios-to-restore-at-different-scopes"></a>Azure CLI-Rollenzuweisungsszenarien für die Wiederherstellung in unterschiedlichen Bereichen
 
@@ -82,7 +82,7 @@ az role assignment create --role "CosmosRestoreOperator" --assignee <email> –s
 
 * Weisen Sie einem Benutzer eine Schreibaktion für die entsprechende Ressourcengruppe zu. Diese Aktion ist erforderlich, um ein neues Konto in der Ressourcengruppe erstellen zu können.
 
-* Weisen Sie dem entsprechenden wiederherstellbaren Datenbankkonto, das wiederhergestellt werden muss, die integrierte Rolle „CosmosRestoreOperator“ zu. Im folgenden Befehl wird der Bereich für das „RestorableDatabaseAccount“ aus der Eigenschaft „ID“ in der Ausgabe von `az cosmosdb restorable-database-account` (bei Verwendung der Befehlszeilenschnittstelle) oder `Get-AzCosmosDBRestorableDatabaseAccount` (bei Verwendung von PowerShell) abgerufen.
+* Weisen Sie dem entsprechenden wiederherstellbaren Datenbankkonto, das wiederhergestellt werden muss, die integrierte Rolle *CosmosRestoreOperator* zu. Im folgenden Befehl wird der Bereich für das *RestorableDatabaseAccount* aus der Eigenschaft `ID` in der Ausgabe von `az cosmosdb restorable-database-account` (bei Verwendung der CLI) oder `Get-AzCosmosDBRestorableDatabaseAccount` (bei Verwendung von PowerShell) abgerufen.
 
   ```azurecli-interactive
    az role assignment create --role "CosmosRestoreOperator" --assignee <email> –scope <RestorableDatabaseAccount>
@@ -91,11 +91,11 @@ az role assignment create --role "CosmosRestoreOperator" --assignee <email> –s
 ### <a name="assign-capability-to-restore-from-any-source-account-in-a-resource-group"></a>Zuweisen der Fähigkeit zur Wiederherstellung von einem beliebigen Quellkonto in einer Ressourcengruppe
 Dieser Vorgang wird derzeit nicht unterstützt.
 
-## <a name="custom-role-creation-for-restore-action-with-cli"></a>Erstellen von benutzerdefinierten Rollen für Wiederherstellungsaktionen mit der CLI
+## <a name="custom-role-creation-for-restore-action-with-cli"></a><a id="custom-restorable-action"></a>Erstellen von benutzerdefinierten Rollen für Wiederherstellungsaktionen mit der CLI
 
-Der Abonnementbesitzer kann die Berechtigung zum Wiederherstellen für jede andere Azure AD-Identität bereitstellen. Die Berechtigung zum Wiederherstellen basiert auf der Aktion „Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action“. Und sie sollte in die entsprechende „restore“-Berechtigung eingeschlossen werden. Es gibt eine integrierte Rolle namens „CosmosRestoreOperator“, die diese Rolle enthält. Sie können die Berechtigung entweder mithilfe dieser integrierten Rolle zuweisen oder eine benutzerdefinierte Rolle erstellen.
+Der Abonnementbesitzer kann die Berechtigung zum Wiederherstellen für jede andere Azure AD-Identität bereitstellen. Die Berechtigung zum Wiederherstellen basiert auf der Aktion `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action`, und sie sollte in die entsprechende „restore“-Berechtigung eingeschlossen werden. Es gibt eine integrierte Rolle namens *CosmosRestoreOperator*, die diese Rolle enthält. Sie können die Berechtigung entweder mithilfe dieser integrierten Rolle zuweisen oder eine benutzerdefinierte Rolle erstellen.
 
-Die folgende Rolle „RestorableAction“ stellt eine benutzerdefinierte Rolle dar. Sie müssen diese Rolle explizit erstellen. Mit der folgenden JSON-Vorlage wird eine benutzerdefinierte Rolle „RestorableAction“ mit der Berechtigung zum Wiederherstellen erstellt:
+Die folgende Rolle „RestorableAction“ stellt eine benutzerdefinierte Rolle dar. Sie müssen diese Rolle explizit erstellen. Mit der folgenden JSON-Vorlage wird eine benutzerdefinierte Rolle *RestorableAction* mit der Berechtigung zum Wiederherstellen erstellt:
 
 ```json
 {

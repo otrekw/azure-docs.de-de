@@ -13,12 +13,12 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: f87f2e79bd9439fddb52fad82c7ab4712fc68fb9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 902159153bccbea851481e1f81d03e8e70495020
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680364"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644271"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Verwendung von MSAL für Android mit B2C
 
@@ -39,21 +39,23 @@ Die Konfigurationsdatei für die App würde zwei `authorities` deklarieren. Jewe
 >Hinweis: Der `account_mode` muss für B2C-Anwendungen auf **MULTIPLE** festgelegt werden. Weitere Informationen zu [öffentlichen Clientanwendungen für mehrere Konten](./single-multi-account.md#multiple-account-public-client-application) finden Sie in der Dokumentation.
 
 ### `app/src/main/res/raw/msal_config.json`
+
 ```json
 {
-    "client_id": "<your_client_id_here>",
-    "redirect_uri": "<your_redirect_uri_here>",
-    "account_mode" : "MULTIPLE",
-    "authorities": [{
-            "type": "B2C",
-            "authority_url": "https://contoso.b2clogin.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/",
-            "default": true
-        },
-        {
-            "type": "B2C",
-            "authority_url": "https://contoso.b2clogin.com/tfp/contoso.onmicrosoft.com/B2C_1_EditProfile/"
-        }
-    ]
+  "client_id": "<your_client_id_here>",
+  "redirect_uri": "<your_redirect_uri_here>",
+  "account_mode" : "MULTIPLE",
+  "authorities": [
+    {
+      "type": "B2C",
+      "authority_url": "https://contoso.b2clogin.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/",
+      "default": true
+    },
+    {
+      "type": "B2C",
+      "authority_url": "https://contoso.b2clogin.com/tfp/contoso.onmicrosoft.com/B2C_1_EditProfile/"
+    }
+  ]
 }
 ```
 
@@ -118,7 +120,7 @@ pca.acquireToken(parameters);
 Wenn Sie ein Token automatisch mit MSAL abrufen möchten, erstellen Sie eine `AcquireTokenSilentParameters`-Instanz, und stellen Sie diese für die `acquireTokenSilentAsync`-Methode bereit. Anders als bei der `acquireToken`-Methode muss die `authority` angegeben werden, um ein Token automatisch abzurufen.
 
 ```java
-IMultilpeAccountPublicClientApplication pca = ...; // Initialization not shown
+IMultipleAccountPublicClientApplication pca = ...; // Initialization not shown
 AcquireTokenSilentParameters parameters = new AcquireTokenSilentParameters.Builder()
     .withScopes(Arrays.asList("https://contoso.onmicrosoft.com/contosob2c/read")) // Provide your registered scope here
     .forAccount(account)

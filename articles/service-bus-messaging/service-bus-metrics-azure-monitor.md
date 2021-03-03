@@ -2,13 +2,13 @@
 title: Azure Service Bus-Metriken in Azure Monitor | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie Sie mit Azure Monitor Service Bus-Entitäten (Warteschlangen, Themen und Abonnements) überwachen können.
 ms.topic: article
-ms.date: 11/18/2020
-ms.openlocfilehash: 1f8bd9484bf2a2106818da1d6e4ef21e937d2ac3
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.date: 02/12/2021
+ms.openlocfilehash: 1e57def2ee7409ae62cdbe065c36e8a53a140e18
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916881"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570571"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus-Metriken in Azure Monitor
 
@@ -21,9 +21,9 @@ Azure Monitor bietet einheitliche Benutzeroberflächen für die übergreifende �
 
 ## <a name="access-metrics"></a>Zugreifen auf Metriken
 
-Azure Monitor bietet mehrere Möglichkeiten für den Metrikzugriff. Sie können über das [Azure-Portal](https://portal.azure.com), über die Azure Monitor-APIs (REST und .NET) sowie über Analyselösungen wie Azure Monitor-Protokolle und Event Hubs auf Metriken zugreifen. Weitere Informationen finden Sie unter [Azure Monitor-Metriken](../azure-monitor/platform/data-platform-metrics.md).
+Azure Monitor bietet mehrere Möglichkeiten für den Metrikzugriff. Sie können über das [Azure-Portal](https://portal.azure.com), über die Azure Monitor-APIs (REST und .NET) sowie über Analyselösungen wie Azure Monitor-Protokolle und Event Hubs auf Metriken zugreifen. Weitere Informationen finden Sie unter [Azure Monitor-Metriken](../azure-monitor/essentials/data-platform-metrics.md).
 
-Metriken sind standardmäßig aktiviert, und es stehen Daten für die letzten 30 Tage zur Verfügung. Zur längeren Aufbewahrung können Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Dieser Wert wird in den [Diagnoseeinstellungen](../azure-monitor/platform/diagnostic-settings.md) in Azure Monitor konfiguriert.
+Metriken sind standardmäßig aktiviert, und es stehen Daten für die letzten 30 Tage zur Verfügung. Zur längeren Aufbewahrung können Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Dieser Wert wird in den [Diagnoseeinstellungen](../azure-monitor/essentials/diagnostic-settings.md) in Azure Monitor konfiguriert.
 
 ## <a name="access-metrics-in-the-portal"></a>Zugreifen auf Metriken über das Portal
 
@@ -74,7 +74,7 @@ Die beiden folgenden Arten von Fehlern werden als Benutzerfehler klassifiziert:
 
 | Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
-|Eingehende Nachrichten|Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum an Service Bus gesendet wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: Name der Entität|
+|Eingehende Nachrichten|Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum an Service Bus gesendet wurden Diese Metrik enthält keine Nachrichten, die automatisch weitergeleitet werden.<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: Name der Entität|
 |Ausgehende Nachrichten|Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum von Service Bus empfangen wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: Name der Entität|
 | Meldungen| Anzahl von Nachrichten in einer Warteschlange/einem Thema <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Dimension: Name der Entität |
 | Aktive Nachrichten| Anzahl von aktiven Nachrichten in einer Warteschlange/einem Thema <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Dimension: Name der Entität |
@@ -100,7 +100,7 @@ Die beiden folgenden Arten von Fehlern werden als Benutzerfehler klassifiziert:
 > [!NOTE] 
 > Die folgenden Metriken sind nur mit dem **Premium**-Tarif verfügbar. 
 > 
-> Wichtige Metriken, die bei Ausfällen für einen Namespace im Premium-Tarif überwacht werden müssen: **CPU-Auslastung pro Namespace** und **Arbeitsspeichergröße pro Namespace**. [Richten Sie mit Azure Monitor Warnungen](../azure-monitor/platform/alerts-metric.md) für diese Metriken ein.
+> Wichtige Metriken, die bei Ausfällen für einen Namespace im Premium-Tarif überwacht werden müssen: **CPU-Auslastung pro Namespace** und **Arbeitsspeichergröße pro Namespace**. [Richten Sie mit Azure Monitor Warnungen](../azure-monitor/alerts/alerts-metric.md) für diese Metriken ein.
 > 
 > Die andere Metrik, die Sie überwachen können, ist **Gedrosselt Anforderungen**. Es sollte jedoch kein Problem vorliegen, solange der Namespace innerhalb der Grenzwerte für Arbeitsspeicher, CPU und vermittelte Verbindungen bleibt. Weitere Informationen finden Sie unter [Drosselung im Tarif „Premium“ von Azure Service Bus](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier)
 

@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 7812d0f2e42dfed6cdd661244b77969297093a5d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3ed349616ae6456913c19bb073f6e9ea28e7d549
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879172"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575125"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Verwenden der Azure Firewall zum Überprüfen des Datenverkehrs für einen privaten Endpunkt
 
@@ -106,7 +106,7 @@ Es gelten dieselben Überlegungen wie oben in Szenario 2. In diesem Szenario fal
 * Ein Azure-Abonnement.
 * Einen Log Analytics-Arbeitsbereich  
 
-Weitere Informationen zum Erstellen eines Arbeitsbereichs, wenn Sie keinen Arbeitsbereich in Ihrem Abonnement besitzen, finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/learn/quick-create-workspace.md).
+Weitere Informationen zum Erstellen eines Arbeitsbereichs, wenn Sie keinen Arbeitsbereich in Ihrem Abonnement besitzen, finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/logs/quick-create-workspace.md).
 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure

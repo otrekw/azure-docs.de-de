@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d9db845bfa4a7c0c117220b8932b370eb230f6dc
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 60a29efc4d2daa9d1bc90f00e71094da382a83b9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102987"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686885"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Tutorial: Aufrufen der Microsoft Graph-API aus einer Windows Desktop-App
 
@@ -31,7 +31,7 @@ Dieses Tutorial umfasst folgende Punkte:
 > * Erstellen eines *Windows Presentation Foundation (WPF)* -Projekts in Visual Studio
 > * Installieren der Microsoft Authentication Library (MSAL) für .NET
 > * Registrieren der Anwendung im Azure-Portal
-> * Hinzufügen von Code zur Unterstützung der Benutzeranmeldung und -abmeldung
+> * Hinzufügen von Code zum Unterstützen der Benutzeranmeldung und -abmeldung
 > * Hinzufügen von Code zum Aufrufen der Microsoft Graph-API
 > * Testen der App
 
@@ -57,7 +57,7 @@ MSAL nimmt Ihrer Anwendung die Verwaltung der Zwischenspeicherung und Aktualisie
 
 In dieser Anleitung werden die folgenden NuGet-Pakete verwendet:
 
-|Bibliothek|Beschreibung|
+|Bibliothek|BESCHREIBUNG|
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library (MSAL.NET)|
 
@@ -141,6 +141,7 @@ In diesem Schritt erstellen Sie eine Klasse zur Handhabung der Interaktion mit M
         {
             _clientApp = PublicClientApplicationBuilder.Create(ClientId)
                 .WithAuthority(AzureCloudInstance.AzurePublic, Tenant)
+                .WithDefaultRedirectUri()
                 .Build();
         }
 

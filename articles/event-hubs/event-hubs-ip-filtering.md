@@ -2,13 +2,13 @@
 title: Firewallregeln für Azure Event Hubs | Microsoft-Dokumentation
 description: Verwenden von Firewallregeln zum Zulassen von Verbindungen von bestimmten IP-Adressen mit Azure Event Hubs.
 ms.topic: article
-ms.date: 07/16/2020
-ms.openlocfilehash: e07f863bf8b7d5f64ec0ba04bf16fba12f4a785d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.date: 02/12/2021
+ms.openlocfilehash: ca5995c3e1b9923d925ddc4deae299c28261d18a
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427444"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560850"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Zulassen des Zugriffs auf Azure Event Hubs-Namespaces von bestimmten IP-Adressen oder -Adressbereichen
 Standardmäßig kann über das Internet auf Event Hubs-Namespaces zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in der [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken.
@@ -18,6 +18,10 @@ Diese Funktion ist in Szenarien hilfreich, in denen Azure Event Hubs nur von bes
 >[!WARNING]
 > Durch das Aktivieren von Firewallregeln für Ihren Event Hubs-Namespace werden eingehende Anforderungen automatisch blockiert, es sei denn, die Anforderungen stammen von einem Dienst, der von zulässigen öffentlichen IP-Adressen aus operiert. Unter anderem werden Anforderungen von anderen Azure-Diensten, aus dem Azure-Portal und von Protokollierungs-/Metrikdiensten blockiert. Als Ausnahme können Sie bestimmten vertrauenswürdigen Diensten selbst dann den Zugriff auf Event Hubs-Ressourcen erlauben, wenn IP-Filter aktiviert sind. Eine Liste der vertrauenswürdigen Dienste finden Sie unter [Vertrauenswürdige Microsoft-Dienste](#trusted-microsoft-services).
 
+> [!IMPORTANT]
+> Geben Sie mindestens eine IP-Regel oder VNET-Regel für den Namespace an, um nur Datenverkehr von den angegebenen IP-Adressen oder dem Subnetz eines virtuellen Netzwerks zuzulassen. Wenn keine IP- und VNET-Regeln vorhanden sind, kann (mithilfe des Zugriffsschlüssels) über das öffentliche Internet auf den Namespace zugegriffen werden.  
+
+
 ## <a name="ip-firewall-rules"></a>IP-Firewallregeln
 Die IP-Firewallregeln werden auf der Event Hubs-Namespaceebene angewendet. Daher gelten die Regeln für alle Clientverbindungen mit einem beliebigen unterstützten Protokoll. Jeder Verbindungsversuch von einer IP-Adresse, die nicht mit einer zulässigen IP-Regel im Event Hubs-Namespace übereinstimmt, wird als nicht autorisiert abgelehnt. In der Antwort wird die IP-Regel nicht erwähnt. IP-Filterregeln werden der Reihe nach angewendet, und die erste Regel, die eine Übereinstimmung mit der IP-Adresse ergibt, bestimmt die Aktion (Zulassen oder Ablehnen).
 
@@ -26,8 +30,9 @@ In diesem Abschnitt erfahren Sie, wie Sie im Azure-Portal IP-Firewallregeln für
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem **Event Hubs-Namespace**.
 4. Wählen Sie im linken Menü unter **Einstellungen** die Option **Netzwerk** aus. Die Registerkarte **Netzwerk** wird nur für Namespaces vom Typ **Standard** oder **Dediziert** angezeigt. 
-    > [!NOTE]
-    > Die Option **Ausgewählte Netzwerke** wird wie in der folgenden Abbildung gezeigt ausgewählt. Wenn Sie auf dieser Seite keine IP-Firewallregel angeben oder kein virtuelles Netzwerk hinzufügen, kann über das **öffentliche Internet** (mit dem Zugriffsschlüssel) auf den Namespace zugegriffen werden.  
+    
+    > [!WARNING]
+    > Wenn Sie die Option **Ausgewählte Netzwerke** auswählen und auf dieser Seite nicht mindestens eine IP-Firewallregel oder ein virtuelles Netzwerk hinzufügen, kann (mit dem Zugriffsschlüssel) über das **öffentliche Internet** auf den Namespace zugegriffen werden.  
 
     :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="Registerkarte „Netzwerk“ mit ausgewählter Option „Netzwerk“" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
 
@@ -37,7 +42,10 @@ In diesem Abschnitt erfahren Sie, wie Sie im Azure-Portal IP-Firewallregeln für
 1. Um den Zugriff auf bestimmte IP-Adressen zu beschränken, vergewissern Sie sich, dass die Option **Ausgewählte Netzwerke** ausgewählt ist. Gehen Sie im Abschnitt **Firewall** wie folgt vor:
     1. Wählen Sie die Option **Client-IP-Adresse hinzufügen** aus, um Ihrer aktuellen Client-IP Zugriff auf den Namespace zu gewähren. 
     2. Geben Sie für **Adressbereich** eine bestimmte IPv4-Adresse oder einen Bereich von IPv4-Adressen in der CIDR-Notation ein. 
-3. Wählen Sie unter **Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben?** die Option „Ja“ oder „Nein“ aus. Weitere Informationen finden Sie unter [Vertrauenswürdige Microsoft-Dienste](#trusted-microsoft-services). 
+
+    >[!WARNING]
+    > Wenn Sie die Option **Ausgewählte Netzwerke** auswählen und auf dieser Seite nicht mindestens eine IP-Firewallregel oder ein virtuelles Netzwerk hinzufügen, kann (mit dem Zugriffsschlüssel) über das öffentliche Internet auf den Namespace zugegriffen werden.
+1. Wählen Sie unter **Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben?** die Option „Ja“ oder „Nein“ aus. Weitere Informationen finden Sie unter [Vertrauenswürdige Microsoft-Dienste](#trusted-microsoft-services). 
 
       ![Firewall: Option „Alle Netzwerke“ ausgewählt](./media/event-hubs-firewall/firewall-selected-networks-trusted-access-disabled.png)
 3. Klicken Sie auf der Symbolleiste auf **Speichern**, um die Einstellungen zu speichern. Warten Sie einige Minuten, bis die Bestätigung in den Portalbenachrichtigungen angezeigt wird.
@@ -55,23 +63,9 @@ In diesem Abschnitt erfahren Sie, wie Sie im Azure-Portal IP-Firewallregeln für
 
 Mithilfe der folgenden Resource Manager-Vorlage können Sie einem vorhandenen Event Hubs-Namespace eine IP-Filterregel hinzufügen.
 
-Vorlagenparameter:
+**ipMask** in der Vorlage ist eine einzelne IPv4-Adresse oder ein Block von IP-Adressen in CIDR-Notation. In CIDR-Notation steht beispielsweise 70.37.104.0/24 für die 256 IPv4-Adressen von 70.37.104.0 bis 70.37.104.255. „24“ gibt dabei die Anzahl signifikanter Präfixbits für den Bereich an.
 
-- **ipMask** ist eine einzelne IPv4-Adresse oder ein Block von IP-Adressen in CIDR-Notation. In CIDR-Notation steht beispielsweise 70.37.104.0/24 für die 256 IPv4-Adressen von 70.37.104.0 bis 70.37.104.255. „24“ gibt dabei die Anzahl signifikanter Präfixbits für den Bereich an.
-
-> [!NOTE]
-> Obwohl keine Verweigerungsregeln möglich sind, ist in der Azure Resource Manager-Vorlage die Standardaktion auf **„Zulassen“** festgelegt. Dies schränkt die Verbindungen nicht ein.
-> Bei der Erstellung von Regeln für Virtual Network oder Firewalls muss **_"defaultAction"_** wie folgt geändert werden:
-> 
-> from
-> ```json
-> "defaultAction": "Allow"
-> ```
-> zu
-> ```json
-> "defaultAction": "Deny"
-> ```
->
+Legen Sie beim Hinzufügen von VNET- oder Firewallregeln den Wert von `defaultAction` auf `Deny` fest.
 
 ```json
 {
@@ -136,6 +130,9 @@ Vorlagenparameter:
 ```
 
 Gehen Sie zum Bereitstellen der Vorlage gemäß den Anweisungen für [Azure Resource Manager][lnk-deploy] vor.
+
+> [!IMPORTANT]
+> Wenn keine IP- und VNET-Regeln vorhanden sind, fließt der gesamte Datenverkehr auch dann in den Namespace, wenn Sie `defaultAction` auf `deny` festlegen.  Der Zugriff auf den Namespace erfolgt (mithilfe des Zugriffsschlüssels) über das öffentliche Internet. Geben Sie mindestens eine IP-Regel oder VNET-Regel für den Namespace an, um nur Datenverkehr von den angegebenen IP-Adressen oder dem Subnetz eines virtuellen Netzwerks zuzulassen.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

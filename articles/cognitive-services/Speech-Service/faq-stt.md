@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: 61768991fc4e72b44568bd92278427e6af398d52
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 21924ad5da8833ca5cf8373270ed1bfd3facfdc9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226555"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388616"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
 
@@ -140,7 +140,7 @@ Weitere Informationen finden Sie unter [Kontingente und Grenzwerte für Speech S
 
 Verwenden Sie eine der [Regionen](custom-speech-overview.md#set-up-your-azure-account), in der dedizierte Hardware für das Training verfügbar ist. Allgemein verarbeitet der Dienst ungefähr zehn Stunden an Audiodaten pro Tag in Regionen mit solcher Hardware. In anderen Regionen kann täglich nur eine Stunde an Audiodaten verarbeitet werden. Sie können das vollständig trainierte Modell mithilfe der [REST-API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) in eine andere Region kopieren. Training, bei dem ausschließlich Text verwendet wird, ist deutlich schneller und dauert in der Regel nur Minuten.
 
-Einige Basismodelle können nicht mit Audiodaten angepasst werden. Für diese verwendet der Dienst nur den Text der Transkription für das Training. Die Audiodaten werden ignoriert. Das Training wird dann schneller abgeschlossen, und die Ergebnisse sind mit den Ergebnissen des Trainings identisch, für das nur Text verwendet wird.
+Einige Basismodelle können nicht mit Audiodaten angepasst werden. Für diese verwendet der Dienst nur den Text der Transkription für das Training. Die Audiodaten werden ignoriert. Das Training wird dann schneller abgeschlossen, und die Ergebnisse sind mit den Ergebnissen des Trainings identisch, für das nur Text verwendet wird. Eine Liste mit Basismodellen, die das Training mit Audiodaten unterstützen, finden Sie unter [Sprachunterstützung](language-support.md#speech-to-text).
 
 ## <a name="accuracy-testing"></a>Genauigkeitstests
 

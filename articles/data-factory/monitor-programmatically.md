@@ -1,22 +1,18 @@
 ---
 title: Programmgesteuertes Überwachen einer Azure Data Factory
 description: Erfahren Sie, wie Sie mithilfe verschiedener Software Development Kits (SDKs) eine Pipeline in einer Data Factory überwachen können.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
 author: dcstwh
 ms.author: weetok
-manager: anandsub
 ms.custom: devx-track-python
-ms.openlocfilehash: b5d1f0c0d6aa848e590e68e1f18abf7861674483
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 6c913c7c623c77baea0c575d06d2c44709af43fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556561"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740437"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programmgesteuertes Überwachen einer Azure Data Factory
 
@@ -28,9 +24,20 @@ In diesem Artikel wird beschrieben, wie Sie mithilfe verschiedener Software Deve
 
 ## <a name="data-range"></a>Datenbereich
 
-Data Factory speichert nur Pipelineausführungsdaten 45 Tage lang. Wenn Sie Daten zu Data Factory-Pipelineausführungen programmgesteuert abfragen (z.B. mit dem PowerShell-Befehl `Get-AzDataFactoryV2PipelineRun`), gibt es keine maximalen Datumsangaben für die optionalen Parameter `LastUpdatedAfter` und `LastUpdatedBefore`. Wenn Sie jedoch beispielsweise Daten zum vergangenen Jahr abfragen, gibt die Abfrage keinen Fehler zurück, sondern nur die Pipelineausführungsdaten der letzten 45 Tage.
+Data Factory speichert nur Pipelineausführungsdaten 45 Tage lang. Wenn Sie Daten zu Data Factory-Pipelineausführungen programmgesteuert abfragen (z.B. mit dem PowerShell-Befehl `Get-AzDataFactoryV2PipelineRun`), gibt es keine maximalen Datumsangaben für die optionalen Parameter `LastUpdatedAfter` und `LastUpdatedBefore`. Wenn Sie aber beispielsweise Daten zum vergangenen Jahr abfragen, wird kein Fehler ausgegeben, sondern es werden nur die Pipelineausführungsdaten der letzten 45 Tage angezeigt.
 
-Wenn Sie Pipelineausführungsdaten länger als 45 Tage beibehalten möchten, richten Sie mit [Azure Monitor](monitor-using-azure-monitor.md) eine eigene Diagnoseprotokollierung ein.
+Wenn Sie Pipelineausführungsdaten länger als 45 Tage beibehalten möchten, richten Sie mit [Azure Monitor](monitor-using-azure-monitor.md) Ihre eigene Diagnoseprotokollierung ein.
+
+## <a name="pipeline-run-information"></a>Informationen zur Pipelineausführung
+
+Informationen zu den Eigenschaften der Pipelineausführung finden Sie in der [PipelineRun-API-Referenz](/rest/api/datafactory/pipelineruns/get#pipelinerun). Während des Lebenszyklus einer Pipelineausführung wird dafür ein anderer Status angezeigt. Die möglichen Werte für den Ausführungsstatus sind unten aufgeführt:
+
+* In Warteschlange
+* InProgress
+* Erfolgreich
+* Fehler
+* Cancelling
+* Canceled
 
 ## <a name="net"></a>.NET
 Eine vollständige exemplarische Vorgehensweise zum Erstellen und Überwachen einer Pipeline mit dem .NET SDK finden Sie unter [Erstellen einer Data Factory und Pipeline mit dem .NET SDK](quickstart-create-data-factory-dot-net.md).
@@ -45,7 +52,7 @@ Eine vollständige exemplarische Vorgehensweise zum Erstellen und Überwachen ei
     {
         pipelineRun = client.PipelineRuns.Get(resourceGroup, dataFactoryName, runResponse.RunId);
         Console.WriteLine("Status: " + pipelineRun.Status);
-        if (pipelineRun.Status == "InProgress")
+        if (pipelineRun.Status == "InProgress" || pipelineRun.Status == "Queued")
             System.Threading.Thread.Sleep(15000);
         else
             break;
@@ -89,7 +96,7 @@ print_activity_run_details(activity_runs_paged[0])
 Eine vollständige Dokumentation zum Python-SDK finden Sie in der [Python-SDK-Referenz für Data Factory](/python/api/overview/azure/datafactory).
 
 ## <a name="rest-api"></a>REST-API
-Eine vollständige exemplarische Vorgehensweise zum Erstellen und Überwachen einer Pipeline mit der REST-API finden Sie unter [Erstellen einer Azure Data Factory und einer Pipeline mithilfe der REST-API](quickstart-create-data-factory-rest-api.md).
+Eine vollständige exemplarische Vorgehensweise zum Erstellen und Überwachen einer Pipeline mit der REST-API finden Sie unter [Erstellen einer Azure Data Factory und Pipeline mithilfe der REST-API](quickstart-create-data-factory-rest-api.md).
  
 1. Führen Sie das folgende Skript aus, um den Status der Pipelineausführung kontinuierlich zu überwachen, bis das Kopieren der Daten beendet ist.
 
@@ -99,7 +106,7 @@ Eine vollständige exemplarische Vorgehensweise zum Erstellen und Überwachen ei
         $response = Invoke-RestMethod -Method GET -Uri $request -Header $authHeader
         Write-Host  "Pipeline run status: " $response.Status -foregroundcolor "Yellow"
 
-        if ($response.Status -eq "InProgress") {
+        if ( ($response.Status -eq "InProgress") -or ($response.Status -eq "Queued") ) {
             Start-Sleep -Seconds 15
         }
         else {
@@ -128,12 +135,12 @@ Eine vollständige exemplarische Vorgehensweise zum Erstellen und Überwachen ei
         $run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
 
         if ($run) {
-            if ($run.Status -ne 'InProgress') {
-                Write-Host "Pipeline run finished. The status is: " $run.Status -foregroundcolor "Yellow"
+            if ( ($run.Status -ne "InProgress") -and ($run.Status -ne "Queued") ) {
+                Write-Output ("Pipeline run finished. The status is: " +  $run.Status)
                 $run
                 break
             }
-            Write-Host  "Pipeline is running...status: InProgress" -foregroundcolor "Yellow"
+            Write-Output ("Pipeline is running...status: " + $run.Status)
         }
 
         Start-Sleep -Seconds 30
@@ -156,5 +163,4 @@ Eine vollständige exemplarische Vorgehensweise zum Erstellen und Überwachen ei
 Die vollständige Dokumentation zu PowerShell-Cmdlets finden Sie in der [PowerShell-Cmdlet-Referenz für Data Factory](/powershell/module/az.datafactory).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Im Artikel [Überwachen von Pipelines mit Azure Monitor](monitor-using-azure-monitor.md) finden Sie Informationen zum Überwachen von Data Factory-Pipelines mit Azure Monitor. 
-
+Im Artikel [Überwachen von Pipelines mit Azure Monitor](monitor-using-azure-monitor.md) finden Sie Informationen zum Überwachen von Data Factory-Pipelines mit Azure Monitor.

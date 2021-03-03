@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
-ms.openlocfilehash: c8f0bb6e0e58d672faa0929d6266e5e2c5a4f1f1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cac17bbac96d44d8d9bfce2e168de4ea6d4c5c08
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781055"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364952"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Übersicht über elastische Abfragen in Azure SQL-Datenbank (Vorschau)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -120,7 +120,7 @@ Weitere Informationen zu den Schritten, die für das Szenario der horizontalen P
 Lesen Sie zum Einstieg in die Programmierung [Erste Schritte mit elastischen Abfragen für horizontale Partitionierung (Sharding)](elastic-query-getting-started.md).
 
 > [!IMPORTANT]
-> Die erfolgreiche Ausführung elastischer Abfragen für eine große Anzahl von Datenbanken hängt stark von der Verfügbarkeit der einzelnen Datenbanken während der Abfrageausführung ab. Wenn eine der Datenbanken nicht verfügbar ist, kann die gesamte Abfrage nicht ausgeführt werden. Wenn Sie mehrere Hundert oder Tausend Datenbanken gleichzeitig abfragen möchten, stellen Sie sicher, dass in die Clientanwendung Wiederholungslogik eingebettet ist, oder nutzen Sie [Aufträge für die elastische Datenbanken](./job-automation-overview.md#elastic-database-jobs-preview) (Vorschauversion), um kleinere Teilmengen der Datenbanken abzufragen, und führen Sie die Ergebnisse der einzelnen Abfragen in einem einzigen Ziel zusammen.
+> Die erfolgreiche Ausführung elastischer Abfragen für eine große Anzahl von Datenbanken hängt stark von der Verfügbarkeit der einzelnen Datenbanken während der Abfrageausführung ab. Wenn eine der Datenbanken nicht verfügbar ist, kann die gesamte Abfrage nicht ausgeführt werden. Wenn Sie mehrere Hundert oder Tausend Datenbanken gleichzeitig abfragen möchten, stellen Sie sicher, dass in die Clientanwendung Wiederholungslogik eingebettet ist, oder nutzen Sie [Aufträge für die elastische Datenbanken](./job-automation-overview.md) (Vorschauversion), um kleinere Teilmengen der Datenbanken abzufragen, und führen Sie die Ergebnisse der einzelnen Abfragen in einem einzigen Ziel zusammen.
 
 ## <a name="t-sql-querying"></a>T-SQL-Abfragen
 

@@ -1,7 +1,7 @@
 ---
-title: 'Speech-Dienst: Audioinhaltserstellung'
+title: 'Speech-Dienst: Audio Content Creation'
 titleSuffix: Azure Cognitive Services
-description: Audioinhaltserstellung ist ein Onlinetool, mit dem Sie die Sprachsynthese von Microsoft an Ihre Apps und Produkte anpassen und optimieren können.
+description: Audio Content Creation ist ein Onlinetool, mit dem Sie die Sprachsynthese von Microsoft an Ihre Apps und Produkte anpassen und optimieren können.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 7d4d1acac591bfe6ce40efcf6166357d43718363
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: eb8d2d956eac23c02201f7fd855dcae71e960e8d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024958"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388582"
 ---
-# <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Verbessern der Synthese mit dem Audioinhaltserstellungs-Tool
+# <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Verbessern der Synthese mit dem Audio Content Creation-Tool
 
 [Audioinhaltserstellung](https://aka.ms/audiocontentcreation) ist ein benutzerfreundliches und leistungsfähiges Tool, mit dem Sie sehr natürliche Audioinhalte für eine Vielzahl von Szenarien erstellen können, wie etwa Hörbücher, Nachrichtensendungen, Videoerzählungen und Chatbots. Mit Audioinhaltserstellung können Sie Stimmen der Sprachsynthese optimieren und benutzerdefinierte Audioerlebnisse auf effiziente und preiswerte Weise gestalten.
 
@@ -125,7 +125,7 @@ Nachdem Sie Ihre Audioausgabe überprüft haben und mit der Optimierung und den 
 
 ## <a name="how-to-addremove-audio-content-creation-users"></a>Wie werden der Audioinhaltserstellung Benutzer hinzugefügt bzw. aus ihr entfernt?
 
-Wenn mehrere Benutzer die Audioinhaltserstellung verwenden möchten, können Sie entweder Ihr Azure-Konto und -Kennwort für den Benutzer freigeben oder ihm Benutzerzugriff auf das Azure-Abonnement und die Sprachressource erteilen. Wenn Sie einem Azure-Abonnement einen Benutzer hinzufügen, kann der Benutzer auf alle Ressourcen unter dem Azure-Abonnement zugreifen. Wenn Sie einen Benutzer jedoch nur zu einer Sprachressource hinzufügen, hat der Benutzer nur Zugriff auf die Sprachressource und kann nicht auf weitere Ressourcen unter diesem Azure-Abonnement zugreifen. Ein Benutzer mit Zugriff auf die Sprachressource kann die Audioinhaltserstellung verwenden.
+Wenn mehrere Benutzer die Audioinhaltserstellung verwenden möchten, können Sie Benutzerzugriff auf das Azure-Abonnement und die Sprachressource erteilen. Wenn Sie einem Azure-Abonnement einen Benutzer hinzufügen, kann der Benutzer auf alle Ressourcen unter dem Azure-Abonnement zugreifen. Wenn Sie einen Benutzer jedoch nur zu einer Sprachressource hinzufügen, hat der Benutzer nur Zugriff auf die Sprachressource und kann nicht auf weitere Ressourcen unter diesem Azure-Abonnement zugreifen. Ein Benutzer mit Zugriff auf die Sprachressource kann die Audioinhaltserstellung verwenden.
 
 ### <a name="add-users-to-a-speech-resource"></a>Hinzufügen von Benutzern zu einer Sprachressource
 

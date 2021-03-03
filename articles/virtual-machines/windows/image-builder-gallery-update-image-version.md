@@ -3,21 +3,23 @@ title: Erstellen einer neuen Imageversion aus einer vorhandenen Imageversion mit
 description: Erstellen einer neuen VM-Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder unter Windows.
 author: cynthn
 ms.author: cynthn
-ms.date: 05/05/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.service: virtual-machines-windows
-ms.openlocfilehash: 4779abfa92876c0d5a9b045963778a9d2440bf3f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.service: virtual-machines
+ms.subervice: image-builder
+ms.colletion: windows
+ms.openlocfilehash: 0a53e8de8dd832e793ae12034c96ce9fe634ed7a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878747"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694103"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-windows"></a>Vorschau: Erstellen einer neuen VM-Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder unter Windows
 
 In diesem Artikel erfahren Sie, wie Sie eine vorhandene Imageversion in einem [Katalog mit freigegebenen Images](../shared-image-galleries.md) aktualisieren und als neue Imageversion im Katalog veröffentlichen.
 
-Wir verwenden zum Konfigurieren des Images eine JSON-Beispielvorlage. Wir verwenden die JSON-Datei [helloImageTemplateforSIGfromWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json). 
+Wir verwenden zum Konfigurieren des Images eine JSON-Beispielvorlage. Wir verwenden die JSON-Datei [helloImageTemplateforSIGfromWinSIG.json](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json). 
 
 > [!IMPORTANT]
 > Azure Image Builder ist derzeit als öffentliche Vorschauversion verfügbar.
@@ -43,6 +45,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.KeyVault | grep registrationState
 az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
+az provider show -n Microsoft.Network | grep registrationState
 ```
 
 Wenn nicht „registered“ ausgegeben wird, führen Sie den folgenden Befehl aus:
@@ -52,6 +55,7 @@ az provider register -n Microsoft.VirtualMachineImages
 az provider register -n Microsoft.Compute
 az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
+az provider register -n Microsoft.Network
 ```
 
 
@@ -107,13 +111,13 @@ Wenn Sie bereits über einen eigenen Katalog mit freigegebenen Images verfügen 
 
 
 ## <a name="modify-helloimage-example"></a>Ändern des Beispiels helloImage
-Sie können das verwendete Beispiel überprüfen, indem Sie die JSON-Datei [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) zusammen mit der [Image Builder-Vorlagenreferenz](../linux/image-builder-json.md) öffnen. 
+Sie können das verwendete Beispiel überprüfen, indem Sie die JSON-Datei [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) zusammen mit der [Image Builder-Vorlagenreferenz](../linux/image-builder-json.md) öffnen. 
 
 
 Laden Sie das JSON-Beispiel herunter, und konfigurieren Sie es mit Ihren Variablen. 
 
 ```azurecli-interactive
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json -o helloImageTemplateforSIGfromWinSIG.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json -o helloImageTemplateforSIGfromWinSIG.json
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateforSIGfromWinSIG.json
 sed -i -e "s/<rgName>/$sigResourceGroup/g" helloImageTemplateforSIGfromWinSIG.json
 sed -i -e "s/<imageDefName>/$imageDefName/g" helloImageTemplateforSIGfromWinSIG.json

@@ -4,12 +4,12 @@ description: Aktivieren Sie das automatische Skalieren in einem Cloudpool, um di
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 033272f22b98b27c67e9a551bce952368d35a043
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 06f717e7c3ab8285b494f89c39838af6b0d96c8f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95737291"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381425"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Erstellen einer Formel für die automatische Skalierung von Computeknoten in einem Batch-Pool
 
@@ -128,6 +128,7 @@ Sie können den Wert dieser vom Dienst definierten Variablen abrufen, um Anpassu
 | $PendingTasks |Die Summe aus $ActiveTasks und $RunningTasks. |
 | $SucceededTasks |Die Anzahl der Aufgaben, die erfolgreich abgeschlossen wurden |
 | $FailedTasks |Die Anzahl der Aufgaben, bei denen Fehler aufgetreten sind |
+| $TaskSlotsPerNode |Die Anzahl von Taskslots, die verwendet werden können, um gleichzeitige Tasks auf einem einzelnen Computeknoten im Pool auszuführen. |
 | $CurrentDedicatedNodes |Die aktuelle Anzahl der zugewiesenen Computeknoten |
 | $CurrentLowPriorityNodes |Die aktuelle Anzahl der Computeknoten mit niedriger Priorität einschließlich aller Knoten, die vorzeitig entfernt wurden. |
 | $PreemptedNodeCount | Die Anzahl der Knoten im Pool, die sich im Zustand „Vorzeitig entfernt“ befinden. |

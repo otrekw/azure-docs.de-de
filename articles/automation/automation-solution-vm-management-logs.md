@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: de013b6ccd924f50ffe12fcba1285b121eece5f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e9e924d6626d9f0dcd2db8a5e8b8f90a0aa01ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83827555"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593849"
 ---
 # <a name="query-logs-from-startstop-vms-during-off-hours"></a>Abfragen von Protokollen über „VMs außerhalb der Geschäftszeiten starten/beenden“
 
-Azure Automation leitet zwei Arten von Datensätzen an den verknüpften Log Analytics-Arbeitsbereich weiter: Auftragsprotokolle und Auftragsdatenströme. In diesem Artikel werden die für die [Abfrage](../azure-monitor/log-query/log-query-overview.md) in Azure Monitor verfügbaren Daten überprüft.
+Azure Automation leitet zwei Arten von Datensätzen an den verknüpften Log Analytics-Arbeitsbereich weiter: Auftragsprotokolle und Auftragsdatenströme. In diesem Artikel werden die für die [Abfrage](../azure-monitor/logs/log-query-overview.md) in Azure Monitor verfügbaren Daten überprüft.
 
 ## <a name="job-logs"></a>Auftragsprotokolle
 
@@ -72,5 +72,5 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Auftragsdatens
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zum Einrichten des Features finden Sie unter [Konfigurieren der Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“](automation-solution-vm-management-config.md).
-* Informationen zu Protokollwarnungen während der Featurebereitstellung finden Sie unter [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../azure-monitor/platform/alerts-log.md).
+* Informationen zu Protokollwarnungen während der Featurebereitstellung finden Sie unter [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../azure-monitor/alerts/alerts-log.md).
 * Informationen zum Beheben von Problemen mit dem Feature finden Sie unter [Troubleshooting für „VMs außerhalb der Geschäftszeiten starten/beenden“](troubleshoot/start-stop-vm.md).

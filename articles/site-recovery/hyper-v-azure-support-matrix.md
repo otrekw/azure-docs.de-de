@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 79558bd2c8e9bfec0aff47d254944977d271a762
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8d748f93337a770e0d565bab79fdfb3625bda70d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587813"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735521"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -96,7 +96,7 @@ Beschleunigter Netzwerkbetrieb | Nein | Nein
 
 **Storage** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | --- 
-NFS | N/V | N/V
+NFS | Nicht verfügbar | Nicht verfügbar
 SMB 3.0 | Ja | Ja
 SAN (ISCSI) | Ja | Ja
 Multipfad (MPIO). Getestet mit:<br></br> Microsoft DSM, EMC PowerPath 5.7 SP4, EMC PowerPath DSM für CLARiiON | Ja | Ja
@@ -105,13 +105,13 @@ Multipfad (MPIO). Getestet mit:<br></br> Microsoft DSM, EMC PowerPath 5.7 SP4, E
 
 **Storage** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | ---
-VMDK | N/V | N/V
+VMDK | Nicht verfügbar | Nicht verfügbar
 VHD/VHDX | Ja | Ja
 VM der 2. Generation | Ja | Ja
 EFI/UEFI<br></br>Der migrierte virtuelle Computer in Azure wird automatisch in einen virtuellen Computer mit BIOS-Start konvertiert. Auf dem virtuellen Computer sollte nur Windows Server 2012 oder höher ausgeführt werden. Der Betriebssystemdatenträger sollte maximal fünf Partitionen aufweisen, und die Größe des Betriebssystemdatenträgers sollte weniger als 300 GB betragen.| Ja | Ja
 Freigegebener Clusterdatenträger | Nein | Nein
 Verschlüsselter Datenträger | Nein | Nein
-NFS | N/V | N/V
+NFS | Nicht verfügbar | Nicht verfügbar
 SMB 3.0 | Nein | Nein
 RDM | Nicht verfügbar | Nicht verfügbar
 Datenträger > 1 TB | Ja, bis zu 4.095 GB | Ja, bis zu 4.095 GB
@@ -143,7 +143,7 @@ Standardspeicher | Ja | Ja
 Import/Export-Dienst | Nein | Nein
 Azure-Speicherkonten mit aktivierter Firewall | Ja. Für Zielspeicher und Cache | Ja. Für Zielspeicher und Cache
 Speicherkonto ändern | Nein. Das betreffende Azure-Zielspeicherkonto kann nach Aktivieren der Replikation nicht geändert werden. Zum Ändern muss die Notfallwiederherstellung deaktiviert und anschließend erneut aktiviert werden. | Nein
-Option für die sichere Übertragung | Ja
+Option für die sichere Übertragung | Ja | Ja
 
 
 ## <a name="azure-compute-features"></a>Azure-Computefeatures

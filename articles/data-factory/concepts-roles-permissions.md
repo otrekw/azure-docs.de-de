@@ -4,18 +4,14 @@ description: Dieser Artikel beschreibt die Rollen und Berechtigungen, die erford
 ms.date: 11/5/2018
 ms.topic: conceptual
 ms.service: data-factory
-services: data-factory
-documentationcenter: ''
-ms.workload: data-services
 author: dcstwh
 ms.author: weetok
-manager: anandsub
-ms.openlocfilehash: 30e07b645701cf560534b152ae42559213daf838
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: cec5df9a5046e912ab8542c91bde4344affa0925
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053770"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364476"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Rollen und Berechtigungen für Azure Data Factory
 
@@ -54,14 +50,13 @@ Die Rolle **Data Factory-Mitwirkender** auf Ressourcengruppenebene oder höher e
 
 Berechtigungen für Azure Repos und GitHub sind unabhängig von Data Factory-Berechtigungen. Daher kann ein Benutzer mit Berechtigungen für ein Repository, der nur Mitglied der Rolle „Leser“ ist, untergeordnete Data Factory-Ressourcen bearbeiten und Änderungen an das Repository committen, diese Änderungen aber nicht veröffentlichen.
 
+
 > [!IMPORTANT]
 > Die Resource Manager-Vorlagenbereitstellung mit der Rolle **Data Factory-Mitwirkender** erhöht Ihre Berechtigungen nicht. Ein Beispiel: Wenn Sie eine Vorlage bereitstellen, die einen virtuellen Azure-Computer erstellt, und nicht über die Berechtigung zum Erstellen virtueller Computer verfügen, tritt bei der Bereitstellung ein Autorisierungsfehler auf.
 
-> [!IMPORTANT]
-> Die Berechtigung **Microsoft.DataFactory/factories/write** ist in beiden Modi im Veröffentlichungskontext erforderlich.
-
+   Im Veröffentlichungskontext gilt die Berechtigung **Microsoft.DataFactory/factories/write** für die folgenden Modi.
 - Im Livemodus ist diese Berechtigung nur erforderlich, wenn der Kunde globale Parameter ändert.
-- Im Git-Modus ist diese Berechtigung immer erforderlich, da nach jeder Veröffentlichung durch den Kunden das Factoryobjekt mit der letzten Commit-ID aktualisiert wird.
+- Im Git-Modus ist diese Berechtigung immer erforderlich, da nach jeder Veröffentlichung durch den Kunden das Factoryobjekt mit der letzten Commit-ID aktualisiert werden muss.
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Benutzerdefinierte Szenarien und benutzerdefinierte Rollen
 
@@ -95,6 +90,7 @@ Hier finden Sie einige Beispiele, die zeigen, was sich mit benutzerdefinierten R
 - Sie können es einem Benutzer ermöglichen, eine Data Factory über PowerShell oder das SDK zu aktualisieren, nicht aber über das Azure-Portal.
 
   Sie können einem Benutzer die integrierte Rolle **Mitwirkender** in der Data Factory-Ressource zuweisen. Mit dieser Rolle kann der Benutzer die Ressourcen im Azure-Portal anzeigen, er kann aber nicht auf die Schaltflächen **Veröffentlichen** und **Alle veröffentlichen** zugreifen.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

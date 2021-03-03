@@ -3,12 +3,12 @@ title: Löschen eines Microsoft Azure Recovery Services-Tresors
 description: In diesem Artikel erfahren Sie, wie Sie die Abhängigkeiten eines Azure Backup-Recovery Services-Tresors aufheben und ihn dann löschen.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: fd941db933d243b83c1c19c7ae0fdfc2d7869b8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28a0c4d5f643b980d93df2592da38f5da12dd01a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293066"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520458"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Löschen eines Azure Backup-Recovery Services-Tresors
 
@@ -59,11 +59,11 @@ Lesen Sie zuerst den Abschnitt **[Vorbereitung](#before-you-start)** , um sich m
 
 Führen Sie die folgenden Schritte aus, um den Schutz zu beenden und die Sicherungsdaten zu löschen:
 
-1. Navigieren Sie im Portal zu **Recovery Services-Tresor** und dann zu **Sicherungselemente**. Wählen Sie anschließend die geschützten Elemente in der Cloud aus (z.B. Azure Virtual Machines, Azure Storage [den Azure Files-Dienst] oder SQL Server auf Azure Virtual Machines).
+1. Navigieren Sie im Portal zu **Recovery Services-Tresor** und dann zu **Sicherungselemente**. Wählen Sie anschließend in der Liste **Sicherungsverwaltungstyp** die geschützten Elemente in der Cloud aus (beispielsweise Azure Virtual Machines, Azure Storage [den Azure Files-Dienst] oder SQL Server auf Azure-VMs).
 
     ![Auswählen des Sicherungstyps](./media/backup-azure-delete-vault/azure-storage-selected.png)
 
-2. Klicken Sie mit der rechten Maustaste, um das Sicherungselement auszuwählen. Je nachdem, ob das Sicherungselement geschützt ist oder nicht, wird im Menü entweder der Bereich **Sicherung beenden** oder der Bereich **Sicherungsdaten löschen** angezeigt.
+2. Es wird eine Liste mit allen Elementen für die Kategorie angezeigt. Klicken Sie mit der rechten Maustaste, um das Sicherungselement auszuwählen. Je nachdem, ob das Sicherungselement geschützt ist oder nicht, wird im Menü entweder der Bereich **Sicherung beenden** oder der Bereich **Sicherungsdaten löschen** angezeigt.
 
     - Wenn der Bereich **Sicherung beenden** angezeigt wird, wählen Sie im Dropdownmenü die Option **Sicherungsdaten löschen** aus. Geben Sie den Namen des Sicherungselements ein (bei diesem Feld muss die Groß-/Kleinschreibung beachtet werden), und wählen Sie dann im Dropdownmenü einen Grund aus. Geben Sie ggf. Ihre Kommentare ein. Wählen Sie dann **Sicherung beenden** aus.
 

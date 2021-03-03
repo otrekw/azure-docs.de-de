@@ -3,13 +3,13 @@ title: Verwenden von Azure Service Bus-Themen und -Abonnements mit Java (azure-m
 description: In dieser Schnellstartanleitung schreiben Sie Java-Code mit dem Paket „azure-messaging-servicebus“, um Nachrichten an ein Azure Service Bus-Thema zu senden und dann Nachrichten von Abonnements für dieses Thema zu empfangen.
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 11/09/2020
-ms.openlocfilehash: 46dc6bed7e51a5157d7eb42dac75c0240d440780
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 02/13/2021
+ms.openlocfilehash: c5b930fb2c87a09a1f4801365936c62a7cf79f1d
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881617"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516174"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-java"></a>Senden von Nachrichten an ein Azure Service Bus-Thema und Empfangen von Nachrichten von Abonnements für das Thema (Java)
 In dieser Schnellstartanleitung schreiben Sie Java-Code mit dem Paket „azure-messaging-servicebus“, um Nachrichten an ein Azure Service Bus-Thema zu senden und dann Nachrichten von Abonnements für dieses Thema zu empfangen.
@@ -31,14 +31,41 @@ In diesem Abschnitt erstellen Sie ein Java-Konsolenprojekt und fügen Code zum S
 Erstellen Sie ein Java-Projekt mit Eclipse oder einem Tool Ihrer Wahl. 
 
 ### <a name="configure-your-application-to-use-service-bus"></a>Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
-Fügen Sie einen Verweis auf die Azure Service Bus-Bibliothek hinzu. Die Java-Clientbibliothek für Service Bus steht über das [zentrale Maven-Repository](https://search.maven.org/search?q=a:azure-messaging-servicebus) zur Verfügung. Sie können über die folgende Abhängigkeitsdeklaration in Ihrer Maven-Projektdatei auf diese Bibliothek verweisen:
+Fügen Sie Verweise auf Azure Core- und Azure Service Bus-Bibliotheken hinzu. 
+
+Wenn Sie Eclipse verwenden und eine Java-Konsolenanwendung erstellt haben, konvertieren Sie Ihr Java-Projekt in ein Maven-Projekt: Klicken Sie im Fenster **Paket-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Konfigurieren** -> **In Maven-Projekt konvertieren** aus. Fügen Sie den beiden Bibliotheken anschließend Abhängigkeiten hinzu, wie im folgenden Beispiel gezeigt.
 
 ```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-messaging-servicebus</artifactId>
-    <version>7.0.0</version>
-</dependency>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.myorg.sbusquickstarts</groupId>
+    <artifactId>sbustopicqs</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>15</release>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-core</artifactId>
+            <version>1.13.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-messaging-servicebus</artifactId>
+            <version>7.0.2</version>
+        </dependency>
+    </dependencies>
+</project>
 ```
 
 ### <a name="add-code-to-send-messages-to-the-topic"></a>Hinzufügen von Code zum Senden von Nachrichten an das Thema
@@ -46,9 +73,9 @@ Fügen Sie einen Verweis auf die Azure Service Bus-Bibliothek hinzu. Die Java-Cl
 
     ```java
     import com.azure.messaging.servicebus.*;
-    import com.azure.messaging.servicebus.models.*;
+    
+    import java.util.concurrent.CountDownLatch;
     import java.util.concurrent.TimeUnit;
-    import java.util.function.Consumer;
     import java.util.Arrays;
     import java.util.List;
     ```    
@@ -64,7 +91,7 @@ Fügen Sie einen Verweis auf die Azure Service Bus-Bibliothek hinzu. Die Java-Cl
 3. Fügen Sie in der Klasse eine Methode mit dem Namen `sendMessage` zum Senden einer Nachricht an das Thema hinzu. 
 
     ```java
-        static void sendMessage()
+    static void sendMessage()
     {
         // create a Service Bus Sender client for the queue 
         ServiceBusSenderClient senderClient = new ServiceBusClientBuilder()
@@ -94,7 +121,7 @@ Fügen Sie einen Verweis auf die Azure Service Bus-Bibliothek hinzu. Die Java-Cl
     ```
 1. Fügen Sie eine Methode mit dem Namen `sendMessageBatch` zum Senden von Nachrichten an das von Ihnen erstellte Thema hinzu. Mit dieser Methode wird ein `ServiceBusSenderClient` für das Thema erstellt, die `createMessages`-Methode zum Abrufen der Liste mit den Nachrichten aufgerufen und mindestens ein Batch vorbereitet. Anschließend werden die Batches an das Thema gesendet. 
 
-```java
+    ```java
     static void sendMessageBatch()
     {
         // create a Service Bus Sender client for the topic 
@@ -139,31 +166,21 @@ Fügen Sie einen Verweis auf die Azure Service Bus-Bibliothek hinzu. Die Java-Cl
         //close the client
         senderClient.close();
     }
-```
+    ```
 
 ## <a name="receive-messages-from-a-subscription"></a>Empfangen von Nachrichten aus einem Abonnement
 In diesem Abschnitt fügen Sie Code zum Abrufen von Nachrichten aus einem Abonnement für das Thema hinzu. 
 
 1. Fügen Sie eine Methode mit dem Namen `receiveMessages` hinzu, um Nachrichten vom Abonnement zu empfangen. Mit dieser Methode wird ein `ServiceBusProcessorClient`-Element für das Abonnement erstellt, indem ein Handler für die Verarbeitung von Nachrichten und ein anderer für die Verarbeitung von Fehlern angegeben wird. Anschließend wird der Prozessor gestartet, und es wird einige Sekunden lang abgewartet. Die empfangenen Nachrichten werden ausgegeben, und dann wird der Prozessor angehalten und geschlossen.
 
+    > [!IMPORTANT]
+    > Ersetzen Sie `ServiceBusTopicTest` in `ServiceBusTopicTest::processMessage` im Code durch den Namen Ihrer Klasse. 
+
     ```java
     // handles received messages
     static void receiveMessages() throws InterruptedException
     {
-        // Consumer that processes a single message received from Service Bus
-        Consumer<ServiceBusReceivedMessageContext> messageProcessor = context -> {
-            ServiceBusReceivedMessage message = context.getMessage();
-            System.out.println("Received message: " + message.getBody().toString() + " from the subscription: " + subName);
-        };
-
-        // Consumer that handles any errors that occur when receiving messages
-        Consumer<Throwable> errorHandler = throwable -> {
-            System.out.println("Error when receiving messages: " + throwable.getMessage());
-            if (throwable instanceof ServiceBusReceiverException) {
-                ServiceBusReceiverException serviceBusReceiverException = (ServiceBusReceiverException) throwable;
-                System.out.println("Error source: " + serviceBusReceiverException.getErrorSource());
-            }
-        };
+        CountDownLatch countdownLatch = new CountDownLatch(1);
 
         // Create an instance of the processor through the ServiceBusClientBuilder
         ServiceBusProcessorClient processorClient = new ServiceBusClientBuilder()
@@ -171,8 +188,8 @@ In diesem Abschnitt fügen Sie Code zum Abrufen von Nachrichten aus einem Abonne
             .processor()
             .topicName(topicName)
             .subscriptionName(subName)
-            .processMessage(messageProcessor)
-            .processError(errorHandler)
+            .processMessage(ServiceBusTopicTest::processMessage)
+            .processError(context -> processError(context, countdownLatch))
             .buildProcessorClient();
 
         System.out.println("Starting the processor");
@@ -181,9 +198,55 @@ In diesem Abschnitt fügen Sie Code zum Abrufen von Nachrichten aus einem Abonne
         TimeUnit.SECONDS.sleep(10);
         System.out.println("Stopping and closing the processor");
         processorClient.close();        
-    }
+    }  
     ```
-2. Aktualisieren Sie die `main`-Methode, um die Methoden `sendMessage`, `sendMessageBatch` und `receiveMessages` aufzurufen und `InterruptedException` auszulösen.     
+2. Fügen Sie die Methode `processMessage` hinzu, um eine Nachricht zu verarbeiten, die aus dem Service Bus-Abonnement empfangen wurde. 
+
+    ```java
+    private static void processMessage(ServiceBusReceivedMessageContext context) {
+        ServiceBusReceivedMessage message = context.getMessage();
+        System.out.printf("Processing message. Session: %s, Sequence #: %s. Contents: %s%n", message.getMessageId(),
+            message.getSequenceNumber(), message.getBody());
+    }    
+    ```
+3. Fügen Sie die Methode `processError` zum Behandeln von Fehlermeldungen hinzu.
+
+    ```java
+    private static void processError(ServiceBusErrorContext context, CountDownLatch countdownLatch) {
+        System.out.printf("Error when receiving messages from namespace: '%s'. Entity: '%s'%n",
+            context.getFullyQualifiedNamespace(), context.getEntityPath());
+
+        if (!(context.getException() instanceof ServiceBusException)) {
+            System.out.printf("Non-ServiceBusException occurred: %s%n", context.getException());
+            return;
+        }
+
+        ServiceBusException exception = (ServiceBusException) context.getException();
+        ServiceBusFailureReason reason = exception.getReason();
+
+        if (reason == ServiceBusFailureReason.MESSAGING_ENTITY_DISABLED
+            || reason == ServiceBusFailureReason.MESSAGING_ENTITY_NOT_FOUND
+            || reason == ServiceBusFailureReason.UNAUTHORIZED) {
+            System.out.printf("An unrecoverable error occurred. Stopping processing with reason %s: %s%n",
+                reason, exception.getMessage());
+
+            countdownLatch.countDown();
+        } else if (reason == ServiceBusFailureReason.MESSAGE_LOCK_LOST) {
+            System.out.printf("Message lock lost for message: %s%n", context.getException());
+        } else if (reason == ServiceBusFailureReason.SERVICE_BUSY) {
+            try {
+                // Choosing an arbitrary amount of time to wait until trying again.
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                System.err.println("Unable to sleep for period of time");
+            }
+        } else {
+            System.out.printf("Error source %s, reason %s, message: %s%n", context.getErrorSource(),
+                reason, context.getException());
+        }
+    }  
+    ```
+1. Aktualisieren Sie die `main`-Methode, um die Methoden `sendMessage`, `sendMessageBatch` und `receiveMessages` aufzurufen und `InterruptedException` auszulösen.     
 
     ```java
     public static void main(String[] args) throws InterruptedException {        
@@ -197,15 +260,16 @@ In diesem Abschnitt fügen Sie Code zum Abrufen von Nachrichten aus einem Abonne
 Führen Sie das Programm aus. Die Ausgabe sollte in etwa wie folgt aussehen:
 
 ```console
+Sent a single message to the topic: mytopic
 Sent a batch of messages to the topic: mytopic
 Starting the processor
-Received message: First message from the subscription: mysub
-Received message: Second message from the subscription: mysub
-Received message: Third message from the subscription: mysub
-Stopping and closing the processor
+Processing message. Session: e0102f5fbaf646988a2f4b65f7d32385, Sequence #: 1. Contents: Hello, World!
+Processing message. Session: 3e991e232ca248f2bc332caa8034bed9, Sequence #: 2. Contents: First message
+Processing message. Session: 56d3a9ea7df446f8a2944ee72cca4ea0, Sequence #: 3. Contents: Second message
+Processing message. Session: 7bd3bd3e966a40ebbc9b29b082da14bb, Sequence #: 4. Contents: Third message
 ```
 
-Auf der Seite **Übersicht** für den Service Bus-Namespace im Azure-Portal wird die Anzahl **eingehender** und **ausgehender** Nachrichten angezeigt. Unter Umständen müssen Sie ca. eine Minute lang warten und die Seite dann aktualisieren, damit die neuesten Werte angezeigt werden. 
+Auf der Seite **Übersicht** für den Service Bus-Namespace im Azure-Portal wird die Anzahl **eingehender** und **ausgehender** Nachrichten angezeigt. Unter Umständen müssen Sie ca. eine Minute warten und die Seite dann aktualisieren, damit die neuesten Werte angezeigt werden. 
 
 :::image type="content" source="./media/service-bus-java-how-to-use-queues/overview-incoming-outgoing-messages.png" alt-text="Anzahl ein- und ausgehender Nachrichten" lightbox="./media/service-bus-java-how-to-use-queues/overview-incoming-outgoing-messages.png":::
 

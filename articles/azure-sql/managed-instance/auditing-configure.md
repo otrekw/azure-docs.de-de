@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 31a1169ca6c2194b8d5564e5d0df50116dd25084
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: ae0d9696d869b2a260de643482a9f86c34bcc824
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505664"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575466"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Erste Schritte bei der Azure SQL Managed Instance-Überwachung
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -223,7 +223,7 @@ Um die Überwachungsprotokolldaten aus Event Hubs zu nutzen, müssen Sie einen S
 
 Wenn die Überwachungsprotokolle in Azure Monitor-Protokolle geschrieben werden, stehen sie im Log Analytics-Arbeitsbereich bereit. Sie können dort erweiterte Suchvorgänge über die Überwachungsdaten ausführen. Navigieren Sie zunächst zum Log Analytics-Arbeitsbereich. Klicken Sie im Abschnitt **Allgemein** auf **Protokolle**, und geben Sie eine einfache Abfrage wie z. B. `search "SQLSecurityAuditEvents"` ein, um die Überwachungsprotokolle anzuzeigen.  
 
-Mithilfe integrierter Suchfunktionen und benutzerdefinierter Dashboards bieten Azure Monitor-Protokolle Ihnen in Echtzeit Erkenntnisse zu Betriebsabläufen, sodass Sie Millionen von Datensätzen für alle Ihre Workloads und Server analysieren können. Weitere nützliche Informationen zur Suchsprache und den Befehlen in Azure Monitor-Protokolle finden Sie unter [Referenz zur Suche in Azure Monitor-Protokolle](../../azure-monitor/log-query/log-query-overview.md).
+Mithilfe integrierter Suchfunktionen und benutzerdefinierter Dashboards bieten Azure Monitor-Protokolle Ihnen in Echtzeit Erkenntnisse zu Betriebsabläufen, sodass Sie Millionen von Datensätzen für alle Ihre Workloads und Server analysieren können. Weitere nützliche Informationen zur Suchsprache und den Befehlen in Azure Monitor-Protokolle finden Sie unter [Referenz zur Suche in Azure Monitor-Protokolle](../../azure-monitor/logs/log-query-overview.md).
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 

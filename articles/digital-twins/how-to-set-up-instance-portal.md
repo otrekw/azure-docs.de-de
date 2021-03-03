@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5e0c2541c398f2e135b8763cc753ec8c20c3967d
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: a6355a08a936c74ae6a05f163a93a991ba82ab4d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953749"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702911"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (Portal)
 
@@ -56,8 +56,8 @@ Wenn Sie weitere Details für Ihre Instanz konfigurieren möchten, finden Sie In
 
 Im Folgenden finden Sie die zusätzlichen Optionen, die Sie während der Einrichtung mithilfe der anderen Registerkarten im Prozess **Ressource erstellen** verwenden können.
 
-* **Netzwerk**: Auf dieser Registerkarte können Sie private Endpunkte mithilfe von [Azure Private Link](../private-link/private-link-overview.md) aktivieren, um zu verhindern, dass über ein öffentliches Netzwerk auf Ihre Instanz zugegriffen werden kann. Anweisungen dazu finden Sie unter [*Gewusst wie: Aktivieren des privaten Zugriffs mit Private Link (Vorschau)* ](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation).
-* **Erweitert**: Auf dieser Registerkarte können Sie eine [vom System verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) für Ihre Instanz aktivieren, die beim Weiterleiten von Ereignissen an [Endpunkte](concepts-route-events.md) verwendet werden kann. Anweisungen dazu finden Sie unter [*Gewusst wie: Aktivieren verwalteter Identitäten für das Weiterleiten von Ereignissen (Vorschau)* ](how-to-enable-managed-identities.md#add-a-system-managed-identity-during-instance-creation).
+* **Netzwerk**: Auf dieser Registerkarte können Sie private Endpunkte mithilfe von [Azure Private Link](../private-link/private-link-overview.md) aktivieren, um zu verhindern, dass über ein öffentliches Netzwerk auf Ihre Instanz zugegriffen werden kann. Anweisungen dazu finden Sie unter [*Gewusst wie: Aktivieren des privaten Zugriffs mit Private Link (Vorschau)*](./how-to-enable-private-link-portal.md#add-a-private-endpoint-during-instance-creation).
+* **Erweitert**: Auf dieser Registerkarte können Sie eine [vom System verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) für Ihre Instanz aktivieren, die beim Weiterleiten von Ereignissen an [Endpunkte](concepts-route-events.md) verwendet werden kann. Anweisungen dazu finden Sie unter [*Gewusst wie: Aktivieren verwalteter Identitäten für das Weiterleiten von Ereignissen (Vorschau)*](./how-to-enable-managed-identities-portal.md#add-a-system-managed-identity-during-instance-creation).
 * **Tags**: Auf dieser Registerkarte können Sie Ihrer Instanz Tags hinzufügen, die Ihnen dabei helfen, die Instanz und andere Azure-Ressourcen zu verwalten. Weitere Informationen zu den Azure-Ressourcentags finden Sie unter [*Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie*](../azure-resource-manager/management/tag-resources.md).
 
 ### <a name="verify-success-and-collect-important-values"></a>Überprüfen des Erfolgs und Erfassen wichtiger Werte

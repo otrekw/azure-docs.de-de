@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: f9b9681b08f5864dc34bbf1c35dc6919129c24cb
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 4c8f4b490c46ed8061201ba6362999f0e426ecb7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518803"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596331"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL-Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel
 
@@ -118,7 +118,7 @@ Konfigurieren Sie die folgenden Azure-Features, um den Datenbankzustand zu über
 * [Azure Resource Health](../service-health/resource-health-overview.md): Eine Datenbank, auf die nicht zugegriffen werden kann und die den Zugriff auf den Kundenschlüssel verloren hat, wird als „Zugriff nicht möglich“ angezeigt, nachdem die erste Verbindung mit der Datenbank verweigert wurde.
 * [Aktivitätsprotokoll:](../service-health/alerts-activity-log-service-notifications-portal.md) Ist der Zugriff auf den Kundenschlüssel im vom Kunden verwalteten Key Vault nicht möglich, werden dem Aktivitätsprotokoll entsprechende Einträge hinzugefügt. Sie können den Zugriff so bald wie möglich wiederherstellen, wenn Sie Warnungen für diese Ereignisse erstellen.
 
-* [Aktionsgruppen](../azure-monitor/platform/action-groups.md): Definieren Sie diese Gruppen, um Benachrichtigungen und Warnungen Ihren Einstellungen entsprechend gesendet werden.
+* [Aktionsgruppen](../azure-monitor/alerts/action-groups.md): Definieren Sie diese Gruppen, um Benachrichtigungen und Warnungen Ihren Einstellungen entsprechend gesendet werden.
 
 ## <a name="restore-and-replicate-with-a-customers-managed-key-in-key-vault"></a>Wiederherstellen und Replizieren mit einem vom Kunden verwalteten Schlüssel in Key Vault
 

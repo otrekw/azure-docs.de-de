@@ -1,5 +1,5 @@
 ---
-title: Interagieren mit Azure Cosmos DB mithilfe von Apache Spark in Azure Synapse Link (Vorschau)
+title: Interagieren mit Azure Cosmos DB mithilfe von Apache Spark in Azure Synapse Link
 description: Interagieren mit Azure Cosmos DB mithilfe von Apache Spark in Azure Synapse Link
 services: synapse-analytics
 author: ArnoMicrosoft
@@ -9,19 +9,19 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 28af603c0969419cd2e7b8683373faf3838e2242
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 32e8ad5028920cefd717cdaa5429786c83367f6d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458940"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671267"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>Interagieren mit Azure Cosmos DB mithilfe von Apache Spark in Azure Synapse Link
 
-In diesem Artikel erfahren Sie, wie Sie mit Azure Cosmos DB mithilfe von Synapse Apache Spark interagieren. Synapse Apache Spark bietet vollständige Unterstützung für Scala, Python, SparkSQL und C# und ist essentiell für Analyse-, Datentechnik-, Data-Science-, und Datenerkundungsszenarios in [Azure Synapse Link für Azure Cosmos DB](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+In diesem Artikel erfahren Sie, wie Sie mit Azure Cosmos DB mithilfe von Synapse Apache Spark interagieren. Synapse Apache Spark bietet vollständige Unterstützung für Scala, Python, SparkSQL und C# und ist essentiell für Analyse-, Datentechnik-, Data-Science-, und Datenerkundungsszenarios in [Azure Synapse Link für Azure Cosmos DB](../../cosmos-db/synapse-link.md).
 
 Die folgenden Funktionen werden für die Interaktion mit Azure Cosmos DB unterstützt:
-* Mit Synapse Apache Spark können Sie Daten in Ihren Azure Cosmos DB-Containern mit Azure Synapse Link-Aktivierung in Quasi-Echtzeit analysieren, ohne dass sich dies auf die Leistung Ihrer Transaktionsarbeitsauslastungen auswirkt. Die folgenden beiden Optionen stehen zur Verfügung, um den [Analysespeicher](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) von Azure Cosmos DB in Spark abzufragen:
+* Mit Synapse Apache Spark können Sie Daten in Ihren Azure Cosmos DB-Containern mit Azure Synapse Link-Aktivierung in Quasi-Echtzeit analysieren, ohne dass sich dies auf die Leistung Ihrer Transaktionsarbeitsauslastungen auswirkt. Die folgenden beiden Optionen stehen zur Verfügung, um den [Analysespeicher](../../cosmos-db/analytical-store-introduction.md) von Azure Cosmos DB in Spark abzufragen:
     + Laden in Datenrahmen in Spark
     + Spark-Tabelle erstellen
 * Synapse Apache Spark ermöglicht es Ihnen außerdem, Daten in Azure Cosmos DB zu erfassen. Es ist wichtig, im Hinterkopf zu behalten, dass Daten immer über den Transaktionsspeicher in Azure Cosmos DB-Container erfasst werden. Wenn Synapse Link aktiviert ist, dann werden alle neuen Einfüge-, Aktualisierungs- und Löschvorgänge automatisch mit dem Analysespeicher synchronisiert.
@@ -164,8 +164,11 @@ val dfStream = spark.readStream.
 In diesem Beispiel schreiben Sie einen Streamingdatenrahmen in einen Azure Cosmos DB-Container. Dieser Vorgang wirkt sich auf die Leistung transaktionaler Arbeitsauslastungen aus und benötigt Anforderungseinheiten, die im Azure Cosmos DB-Container oder in der freigegebenen Datenbank bereitgestellt werden. Wurde der Ordner */localWriteCheckpointFolder* nicht erstellt (siehe Beispiel unten), wird er automatisch erstellt. 
 
 Die Syntax in **Python** sieht folgendermaßen aus:
+
 ```python
 # To select a preferred list of regions in a multi-region Azure Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
+
+# If you are using managed private endpoints for Azure Cosmos DB analytical store and using batch writes/reads and/or streaming writes/reads to transactional store you should set connectionMode to Gateway. 
 
 streamQuery = dfStream\
         .writeStream\
@@ -183,6 +186,8 @@ streamQuery.awaitTermination()
 Die entsprechende Syntax in **Scala** entspräche dem folgenden Code:
 ```java
 // To select a preferred list of regions in a multi-region Azure Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
+
+// If you are using managed private endpoints for Azure Cosmos DB analytical store and using batch writes/reads and/or streaming writes/reads to transactional store you should set connectionMode to Gateway. 
 
 val query = dfStream.
             writeStream.

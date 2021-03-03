@@ -3,19 +3,19 @@ title: Einladen von Benutzern zu Video Indexer – Azure
 titleSuffix: Azure Media Services
 description: In diesem Artikel wird gezeigt, wie Sie Benutzer zu Video Indexer einladen.
 services: media-services
-author: ReutAmior
+author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 02/03/2021
 ms.author: juliako
-ms.openlocfilehash: 4023f8584e7b901a19906235d98982abbbfbaaf8
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7d3415ffad4820d8651841398ec6d47352869ce2
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364138"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534738"
 ---
 # <a name="quickstart-invite-users-to-video-indexer"></a>Schnellstart: Einladen von Benutzern zu Video Indexer
 
@@ -29,26 +29,33 @@ Um mit Ihren Kollegen zusammenzuarbeiten, können Sie sie zu Ihrem Video Indexer
 1. Melden Sie sich bei der [Video Indexer](https://www.videoindexer.ai/)-Website an. Achten Sie darauf, dass Sie mit einem Administratorkonto verbunden sind.
 1. Wenn Sie Administrator sind, sehen Sie oben rechts in der Ecke die Schaltfläche **Konto freigeben**. Klicken Sie auf die Schaltfläche. Anschließend können Sie Benutzer einladen. 
 
-   ![Einladen neuer Benutzer](./media/invite-users/share-account.png)
-1. Fügen Sie die E-Mail-Adressen von Personen hinzu, die Sie zu Ihrem Video Indexer-Konto einladen möchten:
+    :::image type="content" source="./media/invite-users/share-account.png" alt-text="Freigeben Ihres Kontos":::
+1. Geben Sie im Dialogfeld **Dieses Konto für andere freigeben** eine E-Mail-Adresse einer Person ein, die Sie zu Ihrem Video Indexer-Konto einladen möchten:
 
-    ![Benutzer zu diesem Konto einladen](./media/invite-users/invite-to-account.png)
-        
-    >[!NOTE]
-    > Alle Benutzer, die Sie einladen, verfügen über Lese- und Schreibberechtigungen für alle Videos in Ihrem Konto.
-1. Die von Ihnen eingeladenen Benutzer erhalten eine E-Mail mit einem Link und sind in der Lage, auf das Konto zuzugreifen, sobald sie auf den Link **An Video Indexer teilnehmen** klicken:
+    :::image type="content" source="./media/invite-users/share-account-others.png" alt-text="Benutzer zu diesem Konto einladen":::  
+1. Nach dem Klicken auf **Einladen** wird die Person der Liste mit den ausstehenden Einladungen hinzugefügt. <br/>Für Eingeladene, die dem Konto noch nicht beigetreten sind, stehen jeweils zwei Optionen zur Verfügung: **Entfernen** und **Einladungs-URL kopieren**.
 
-    ![Bestätigung](./media/invite-users/invite-msg.png)
+    :::image type="content" source="./media/invite-users/invites-pending.png" alt-text="Ausstehende Einladungen":::  
+1. Nachdem der Eingeladene dem Konto beigetreten ist, stehen drei Optionen zur Verfügung: die beiden Rollenoptionen **Mitwirkender** (Standardeinstellung) und **Besitzer** sowie die Option **Entfernen**, um den Eingeladenen zu entfernen.
 
-    Der Benutzer muss auf den Link klicken, um teilzunehmen und Zugriff auf das Konto zu erhalten. 
+    :::image type="content" source="./media/invite-users/joined-invitee-options.png" alt-text="Beigetretener Eingeladener":::  
 
-## <a name="removing-existing-users"></a>Entfernen vorhandener Benutzer
+    Benutzer erhalten bei der Entfernung keine Benachrichtigung. Nach dem Entfernen sind die Benutzer nicht mehr zur Anmeldung autorisiert.
 
-Wenn Sie Benutzer entfernen möchten, die Zugriff auf Ihr Konto haben, können Sie auf das **X** -Zeichen neben ihrem Namen klicken:
+## <a name="manage-roles-invite-more-users"></a>Verwalten von Rollen und Einladen weiterer Benutzer
 
-![Benutzer entfernen](./media/invite-users/remove-users.png)
+Das Dialogfeld **Dieses Konto für andere freigeben** kann nicht nur wie oben beschrieben durch Klicken auf **Konto freigeben** geöffnet werden, sondern auch unter **Einstellungen**.
 
-Benutzer erhalten bei der Entfernung keine Benachrichtigung. Nach dem Entfernen sind die Benutzer nicht mehr zur Anmeldung autorisiert.
+1. Klicken Sie im geöffneten Konto auf die Schaltfläche **Einstellungen**. 
+
+    :::image type="content" source="./media/invite-users/settings.png" alt-text="Konteneinstellungen":::  
+1. Klicken Sie auf die Schaltfläche **Rollen verwalten**.
+1. Klicken Sie zum Einladen eines weiteren Benutzers auf **Weitere Personen zu diesem Konto einladen**.
+
+    :::image type="content" source="./media/invite-users/invite-more-people.png" alt-text="INVITE MORE USERS":::  
+1. Nach dem Klicken auf **Weitere Personen zu diesem Konto einladen** wird das Einladungsdialogfeld angezeigt.
+ 
+    :::image type="content" source="./media/invite-users/share-account-others.png" alt-text="Benutzer zu diesem Konto einladen":::  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

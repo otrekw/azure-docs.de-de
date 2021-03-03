@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: efb91c7b26c67a3672abb3f9cc8992fd45971a25
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 3ddd84f2f73546b42a3925802b3357df16485488
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932454"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521440"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -41,7 +41,7 @@ Sie können auf einem Computer immer nur jeweils eine Version der Core Tools ins
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Azure Functions Core Tools verwendet zurzeit die Azure CLI, um sich mit Ihrem Azure-Konto zu authentifizieren. Dies bedeutet, dass Sie [die Azure-CLI lokal installieren](/cli/azure/install-azure-cli) müssen, um von Azure Functions Core Tools aus [in Azure veröffentlichen](#publish) zu können. 
+Azure Functions Core Tools verwendet zurzeit entweder die [Azure CLI](/cli/azure/install-azure-cli) oder [Azure PowerShell](/powershell/azure/install-az-ps), um sich mit Ihrem Azure-Konto zu authentifizieren. Dies bedeutet, dass Sie eines dieser Tools installieren müssen, um von Azure Functions Core Tools aus [in Azure veröffentlichen](#publish) zu können. 
 
 ## <a name="install-the-azure-functions-core-tools"></a>Installieren von Azure Functions Core Tools
 
@@ -505,7 +505,7 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 Azure Functions Core Tools unterstützt zwei Arten von Bereitstellungen: die Bereitstellung der Funktionsprojektdateien direkt in Ihrer Funktions-App über [ZIP-Bereitstellung](functions-deployment-technologies.md#zip-deploy) und die [Bereitstellung eines benutzerdefinierten Docker-Containers](functions-deployment-technologies.md#docker-container). Sie müssen bereits [eine Funktions-App im Azure-Abonnement erstellt haben](functions-cli-samples.md#create), für die Sie den Code bereitstellen. Projekte, für die eine Kompilierung erforderlich ist, müssen so erstellt werden, dass die Binärdateien bereitgestellt werden können.
 
 >[!IMPORTANT]
->Die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) muss lokal installiert sein, um von Core Tools aus Veröffentlichungsvorgänge für Azure durchführen zu können.  
+>Die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) oder [Azure PowerShell](/powershell/azure/install-az-ps) muss lokal installiert sein, um von Core Tools aus Veröffentlichungsvorgänge in Azure durchführen zu können.  
 
 Ein Projektordner kann sprachspezifische Dateien und Verzeichnisse enthalten, die nicht veröffentlicht werden sollen. Ausgeschlossene Elemente werden in einer .funcignore-Datei im Stammprojektordner aufgelistet.     
 
@@ -520,7 +520,7 @@ func azure functionapp publish <FunctionAppName>
 >[!IMPORTANT]
 > Java verwendet Maven, um das lokale Projekt in Azure zu veröffentlichen. Verwenden Sie den folgenden Befehl zum Veröffentlichen in Azure: `mvn azure-functions:deploy`. Azure-Ressourcen werden während der ersten Bereitstellung erstellt.
 
-Mit diesem Befehl wird in eine vorhandene Funktionen-App in Azure veröffentlicht. Sie erhalten eine Fehlermeldung, wenn Sie versuchen, an einen `<FunctionAppName>` zu veröffentlichen, der in Ihrem Abonnement nicht vorhanden ist. Informationen zum Erstellen einer Funktions-App über die Eingabeaufforderung oder ein Terminalfenster mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Erstellen einer Funktions-App für die serverlose Ausführung](./scripts/functions-cli-create-serverless.md). Dieser Befehl verwendet standardmäßig die [Remotebuildfunktion](functions-deployment-technologies.md#remote-build) und stellt Ihre App für die [Ausführung über das Bereitstellungspaket](run-functions-from-deployment-package.md) bereit. Dieser empfohlene Bereitstellungsmodus kann auf Wunsch mithilfe der Option `--nozip` deaktiviert werden.
+Mit diesem Befehl wird in eine vorhandene Funktionen-App in Azure veröffentlicht. Sie erhalten eine Fehlermeldung, wenn Sie versuchen, an einen `<FunctionAppName>` zu veröffentlichen, der in Ihrem Abonnement nicht vorhanden ist. Informationen zum Erstellen einer Funktions-App über die Eingabeaufforderung oder ein Terminalfenster mithilfe der Azure-Befehlszeilenschnittstelle oder Azure PowerShell finden Sie unter [Erstellen einer Funktions-App für die serverlose Ausführung](./scripts/functions-cli-create-serverless.md). Dieser Befehl verwendet standardmäßig die [Remotebuildfunktion](functions-deployment-technologies.md#remote-build) und stellt Ihre App für die [Ausführung über das Bereitstellungspaket](run-functions-from-deployment-package.md) bereit. Dieser empfohlene Bereitstellungsmodus kann auf Wunsch mithilfe der Option `--nozip` deaktiviert werden.
 
 >[!IMPORTANT]
 > Wenn Sie eine Funktions-App im Azure-Portal erstellen, verwendet sie automatisch Version 3.x der Functions-Runtime. Damit die Funktions-App Version 1.x der Laufzeit verwendet, befolgen Sie die Anweisungen unter [Run on version 1.x](functions-versions.md#creating-1x-apps) (Ausführen unter Version 1.x).

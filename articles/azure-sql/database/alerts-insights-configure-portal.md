@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: wiassaf, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: 86ac0f64a6a797b1bc702597ed30e6417f2efe14
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c7f72a9b140c68320e221a4cfb20cbf107a5f531
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500970"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572267"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Erstellen von Warnungen für Azure SQL-Datenbank und Azure Synapse Analytics über das Azure-Portal
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -42,9 +42,9 @@ Sie können konfigurieren, dass bei einer Warnung Folgendes erfolgt, wenn sie au
 
 Sie haben folgende Möglichkeiten zum Konfigurieren von Warnregeln und Abrufen zugehöriger Informationen:
 
-* [Azure-Portal](../../azure-monitor/platform/alerts-classic-portal.md)
-* [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
-* [Befehlszeilenschnittstelle (CLI)](../../azure-monitor/platform/alerts-classic-portal.md)
+* [Azure-Portal](../../azure-monitor/alerts/alerts-classic-portal.md)
+* [PowerShell](../../azure-monitor/alerts/alerts-classic-portal.md)
+* [Befehlszeilenschnittstelle (CLI)](../../azure-monitor/alerts/alerts-classic-portal.md)
 * [Azure Monitor-REST-API](/rest/api/monitor/alertrules)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Erstellen einer Warnungsregel anhand einer Metrik mit dem Azure-Portal
@@ -73,4 +73,4 @@ Innerhalb von 10 Minuten wird die Warnung aktiv und wie oben beschrieben ausgel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](../../azure-monitor/platform/alerts-webhooks.md).
+* Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](../../azure-monitor/alerts/alerts-webhooks.md).

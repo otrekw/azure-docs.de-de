@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 784ee418c3713cce53d7e99e30fd445e75d144da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d82b59e887eb35a972812dd82dbca5ca6bc5179b
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798209"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096207"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>Verwalten von verbundenen Geräten auf der Seite „Geräte“
 
@@ -27,7 +27,12 @@ Auf der Seite **Geräte** im Portal **Mein Konto** können Sie die mit Ihrem Ges
 - Deaktivieren aller Geräte, die Sie nicht mehr besitzen, verloren haben oder die gestohlen wurden.
 
 >[!Important]
->Dieser Artikel richtet sich an Benutzer, die versuchen, die Geräteinformationen von mit einem Geschäfts-, Schul- oder Unikonto verbundenen Geräten zu aktualisieren. Wenn Sie ein Administrator sind und Informationen zur Geräteverwaltung für Ihre Mitarbeiter und andere Verwendungszwecke suchen, finden Sie in der [Dokumentation zu Geräteidentitäten](../devices/index.yml) weitere Informationen.
+>Dieser Artikel richtet sich an Benutzer, die versuchen, die Geräteinformationen von mit einem Geschäfts-, Schul- oder Unikonto verbundenen Geräten zu aktualisieren. Wenn bei der Anmeldung mit einem persönlichen Microsoft-Konto ein Fehler auftritt, können Sie sich trotzdem mit dem Domänennamen für Ihre Organisation (z. B. „contoso.com“) oder der **Mandanten-ID** Ihrer Organisation, die Sie von Ihrem Administrator erhalten, über eine der folgenden URLs anmelden:
+>
+>   - https://myaccount.microsoft.com?tenantId=*Ihr_Domänenname*
+>   - https://myaccount.microsoft.com?tenant=*Ihre_Mandanten_ID*
+>
+>Wenn Sie ein Administrator sind und Informationen zur Geräteverwaltung für Ihre Mitarbeiter und andere Verwendungszwecke suchen, finden Sie in der [Dokumentation zu Geräteidentitäten](../devices/index.yml) weitere Informationen.
 
 ## <a name="view-your-connected-devices"></a>Anzeigen Ihrer verbundenen Geräte
 

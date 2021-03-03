@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 8f3fb0be08bb806d74c689a7656c1c55019eb105
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 5fa729ae68d091d9810430bdc0ea55ce1c876b25
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980608"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586269"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -200,7 +200,7 @@ In der folgenden Tabelle werden die unterstützten Protokolltypen und Beschreibu
 <sup>1</sup> Fügen Sie für Java SE-Apps den App-Einstellungen „$WEBSITE_AZMON_PREVIEW_ENABLED“ hinzu, und legen Sie sie auf „1“ oder „true“ fest.
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Nächste Schritte
-* [Abfrageprotokolle mit Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
+* [Abfrageprotokolle mit Azure Monitor](../azure-monitor/logs/log-query-overview.md)
 * [How to Monitor Azure App Service (Vorgehensweise: Überwachen von Azure App Service)](web-sites-monitor.md)
 * [Troubleshooting Azure App Service in Visual Studio (Problembehandlung für Azure App Service in Visual Studio)](troubleshoot-dotnet-visual-studio.md)
 * [Analyze app Logs in HDInsight (Analyse von App-Protokollen in HDInsight)](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

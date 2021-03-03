@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 81003be986524b94e9c4487cd0d8606540445d16
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 5b9e7938f404a37672fe8d13725b1e64d665bf18
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542081"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576272"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for MySQL 
 
@@ -25,8 +25,8 @@ Sie können konfigurieren, dass bei einer Warnung die folgenden Aktionen ausgef�
 * Aufrufen eines Webhooks
 
 Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abrufen zugehöriger Informationen:
-* [Azure portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure-Befehlszeilenschnittstelle](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure portal](../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure-Befehlszeilenschnittstelle](../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Azure Monitor-REST-API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Erstellen einer Warnungsregel anhand einer Metrik aus dem Azure-Portal
@@ -85,5 +85,5 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und folgende
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](../azure-monitor/platform/alerts-webhooks.md).
-* Verschaffen Sie sich einen Überblick über das [Sammeln von Dienstmetriken](../azure-monitor/platform/data-platform.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
+* Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](../azure-monitor/alerts/alerts-webhooks.md).
+* Verschaffen Sie sich einen Überblick über das [Sammeln von Dienstmetriken](../azure-monitor/data-platform.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.

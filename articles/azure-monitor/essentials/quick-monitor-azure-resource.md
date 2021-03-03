@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: cab41c025f9f3e5b03f042a2bf5686cb08dbd0a9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 62afc0ab4e65da53adb35510503051d39e0edc4e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100626440"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734229"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Schnellstart: Überwachen einer Azure-Ressource mit Azure Monitor
 [Azure Monitor](../overview.md) beginnt in dem Moment, in dem Azure-Ressourcen erstellt werden, mit dem Sammeln von Daten aus diesen Ressourcen. Diese Schnellstartanleitung bietet eine kurze Übersicht darüber, welche Daten für eine Ressource automatisch gesammelt werden, und erläutert, wie Sie die Daten für eine bestimmte Ressource im Azure-Portal anzeigen können. Später können Sie Einstellungen für die Sammlung weiterer Daten konfigurieren und zum Azure Monitor-Menü wechseln, um mit denselben Tools auf Daten zuzugreifen, die für alle Ressourcen in Ihrem Abonnement gesammelt wurden.
@@ -67,7 +67,7 @@ Metriken sind numerische Werte, die einen Aspekt Ihrer Ressource zu einem bestim
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In dieser Schnellstartanleitung haben Sie das Aktivitätsprotokoll und die Metriken für eine Azure-Ressource angezeigt, die von Azure Monitor automatisch erfasst werden. Fahren Sie mit dem nächsten Schnellstart fort, der Ihnen zeigt, wie Sie das Aktivitätsprotokoll in einem Log Analytics-Arbeitsbereich erfassen, wo es mit [Protokollabfragen](../log-query/log-query-overview.md) analysiert werden kann.
+In dieser Schnellstartanleitung haben Sie das Aktivitätsprotokoll und die Metriken für eine Azure-Ressource angezeigt, die von Azure Monitor automatisch erfasst werden. Fahren Sie mit dem nächsten Schnellstart fort, der Ihnen zeigt, wie Sie das Aktivitätsprotokoll in einem Log Analytics-Arbeitsbereich erfassen, wo es mit [Protokollabfragen](../logs/log-query-overview.md) analysiert werden kann.
 
 > [!div class="nextstepaction"]
-> [Senden eines Azure-Aktivitätsprotokolls an einen Log Analytics-Arbeitsbereich](../learn/quick-collect-activity-log-portal.md)
+> [Senden eines Azure-Aktivitätsprotokolls an einen Log Analytics-Arbeitsbereich](./quick-collect-activity-log-portal.md)

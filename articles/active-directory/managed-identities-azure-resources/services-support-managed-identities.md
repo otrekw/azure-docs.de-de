@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 31ca126c75d5c2e3fa7fd91f3398202fad418183
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 3021e9155e229fcaf52166fd0e9dc908f9b7cfb6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555602"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650072"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -176,7 +176,7 @@ Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen 
 
 Konfigurieren Sie anhand der folgenden Liste die verwaltete Identität für Azure Digital Twins (in Regionen mit Verfügbarkeit):
 
-- [Azure-Portal](~/articles/digital-twins/how-to-enable-managed-identities.md)
+- [Azure-Portal](../../digital-twins/how-to-enable-managed-identities-portal.md)
 
 ### <a name="azure-event-grid"></a>Azure Event Grid
 
@@ -213,7 +213,7 @@ Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen 
 | Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
 | Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 
-Konfigurieren Sie die verwaltete Identität für Azure Data Factory V2 anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
+Konfigurieren Sie die verwaltete Identität für Azure IoT Hub anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
 - [Azure portal](../../iot-hub/virtual-network-support.md#turn-on-managed-identity-for-iot-hub)
 
@@ -355,6 +355,17 @@ Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen 
 Konfigurieren Sie die verwaltete Identität für Azure SignalR Service anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
 - [Azure Resource Manager-Vorlage](../../azure-signalr/howto-use-managed-identity.md)
+
+### <a name="azure-resource-mover"></a>Azure Resource Mover
+
+Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | Verfügbar in den Regionen, in denen auch der Azure Resource Mover-Dienst verfügbar ist | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+| Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+
+Informationen zur Verwendung von Azure Resource Mover finden Sie im folgenden Dokument:
+
+- [Azure Resource Mover](../../resource-mover/overview.md)
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure-Dienste, die die Azure AD-Authentifizierung unterstützen
 

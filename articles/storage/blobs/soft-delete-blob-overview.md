@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d380b9d6a20cbe28a8fc4b64179437cd31fd2937
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: a370a7f04e0e43b96e4a574313c4f24c4990ab6f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979289"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390356"
 ---
 # <a name="soft-delete-for-blobs"></a>Vorläufiges Löschen für Blobs
 
@@ -83,7 +83,7 @@ Wenn **Delete Blob** für ein Basisblob (alle Blobs, die nicht selbst eine Momen
 > [!NOTE]  
 > Wenn ein vorläufig gelöschtes Blob überschrieben wird, wird automatisch eine vorläufig gelöschte Momentaufnahme des Blobzustands vor dem Schreibvorgang generiert. Das neue Blob erbt die Ebene des überschriebenen Blobs.
 
-Vorläufiges Löschen speichert Ihre Daten nicht, wenn Container oder Konten gelöscht oder aber Blobmetadaten und Blobeigenschaften überschrieben werden. Wenn Sie ein Speicherkonto vor dem Löschen schützen möchten, können Sie mit Azure Resource Manager eine Sperre konfigurieren. Weitere Informationen dazu finden Sie im Azure Resource Manager-Artikel [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).
+Vorläufiges Löschen speichert Ihre Daten nicht, wenn Container oder Konten gelöscht oder aber Blobmetadaten und Blobeigenschaften überschrieben werden. Wenn Sie ein Speicherkonto vor dem Löschen schützen möchten, können Sie mit Azure Resource Manager eine Sperre konfigurieren. Weitere Informationen dazu finden Sie im Azure Resource Manager-Artikel [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).  Um Container vor versehentlichem Löschen zu schützen, konfigurieren Sie das vorläufige Löschen von Containern für das Speicherkonto. Weitere Informationen finden Sie unter [Vorläufiges Löschen für Container (Vorschau)](soft-delete-container-overview.md).
 
 Die folgende Tabelle beschreibt das erwartete Verhalten, wenn vorläufiges Löschen aktiviert ist:
 

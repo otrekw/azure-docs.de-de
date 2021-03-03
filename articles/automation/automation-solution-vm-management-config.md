@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 552cac01cd492229a19bdbc297665eb7d3ccb401
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: b52b51133f059f028baf470515e886d17077af6a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751290"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593927"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Konfigurieren von „VMs außerhalb der Geschäftszeiten starten/beenden“
 
@@ -145,7 +145,7 @@ Um E-Mail-Benachrichtigungen nach dem Bereitstellen von „VMs außerhalb der Ge
 
     :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Screenshot der Seite „E-Mail/SMS/Push/Sprache“ mit aktualisierter Beispiel-E-Mail-Adresse":::
 
-    Alternativ können Sie der Aktionsgruppe weitere Aktionen hinzufügen. Weitere Informationen über Aktionsgruppen finden Sie unter [Aktionsgruppen](../azure-monitor/platform/action-groups.md)
+    Alternativ können Sie der Aktionsgruppe weitere Aktionen hinzufügen. Weitere Informationen über Aktionsgruppen finden Sie unter [Aktionsgruppen](../azure-monitor/alerts/action-groups.md)
 
 Die folgende Beispiel-E-Mail wird gesendet, wenn das Feature virtuelle Computer herunterfährt.
 

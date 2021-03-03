@@ -9,18 +9,41 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: f416fe8ef4f6e89d07e6065d4c9435642d9bacb9
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 509d1dc0b94bdfa9be5185df0bad793f7702eb26
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179638"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731033"
 ---
-# <a name="correct-misspelled-words-with-bing-search-resource"></a>Korrigieren falsch geschriebener Wörter mit einer Bing-Suche-Ressource
+# <a name="correct-misspelled-words-with-bing-resource"></a>Korrigieren falsch geschriebener Wörter mit einer Bing-Ressource
 
-Sie können Ihre LUIS-App mit der [Bing-Suche](https://ms.portal.azure.com/#create/Microsoft.BingSearch) integrieren, um falsch geschriebene Wörter in Äußerungen zu korrigieren, bevor der LUIS den Score und die Entitäten dieser Äußerung vorhersagt.
+Von der V3-Vorhersage-API wird jetzt die [Bing-Rechtschreibprüfungs-API](/bing/search-apis/bing-spell-check/overview) unterstützt. Fügen Sie Ihrer Anwendung eine Rechtschreibprüfung hinzu, indem Sie den Schlüssel für Ihre Bing-Suche-Ressource in den Header Ihrer Anforderungen aufnehmen. Sie können eine vorhandene Bing-Ressource verwenden, wenn Sie bereits über eine verfügen, oder [eine neue erstellen](https://portal.azure.com/#create/Microsoft.BingSearch), um dieses Feature zu verwenden. 
 
-## <a name="create-endpoint-key"></a>Erstellen eines Endpunktschlüssels
+Beispiel für eine Vorhersageausgabe für eine falsch geschriebene Abfrage:
+
+```json
+{
+  "query": "bouk me a fliht to kayro",
+  "prediction": {
+    "alteredQuery": "book me a flight to cairo",
+    "topIntent": "book a flight",
+    "intents": {
+      "book a flight": {
+        "score": 0.9480589
+      }
+      "None": {
+        "score": 0.0332136229
+      }
+    },
+    "entities": {}
+  }
+}
+```
+
+Korrekturen an der Rechtschreibung werden vor der LUIS-Äußerungsvorhersage für den Benutzer vorgenommen. In der Antwort können Sie alle Änderungen an der ursprünglichen Äußerung, einschließlich Rechtschreibung, sehen.
+
+## <a name="create-bing-search-resource"></a>Erstellen einer Bing-Suche-Ressource
 
 Gehen Sie wie folgt vor, um im Azure-Portal eine Bing-Suche-Ressource zu erstellen:
 
@@ -32,7 +55,8 @@ Gehen Sie wie folgt vor, um im Azure-Portal eine Bing-Suche-Ressource zu erstell
 
 4. Auf der rechten Seite wird ein Informationsbereich angezeigt, der Informationen sowie die rechtlichen Hinweise enthält. Wählen Sie **Erstellen** aus, um mit der Abonnementerstellung zu beginnen.
 
-    :::image type="content" source="./media/luis-tutorial-bing-spellcheck/bing-search-resource-portal.png" alt-text="Ressource Bing-Rechtschreibprüfungs-API, Version 7":::
+> [!div class="mx-imgBorder"]
+> ![Ressource Bing-Rechtschreibprüfungs-API, Version 7](./media/luis-tutorial-bing-spellcheck/bing-search-resource-portal.png)
 
 5. Geben Sie im nächsten Bereich Ihre Diensteinstellungen an. Warten Sie, bis die Diensterstellung abgeschlossen wurde.
 
@@ -40,15 +64,23 @@ Gehen Sie wie folgt vor, um im Azure-Portal eine Bing-Suche-Ressource zu erstell
 
 7. Kopieren Sie einen der Schlüssel, die dem Header Ihrer Vorhersageanforderung hinzugefügt werden sollen. Sie benötigen nur einen der beiden Schlüssel.
 
-8. Fügen Sie den Schlüssel im Vorhersageanforderungsheader zu `mkt-bing-spell-check-key` hinzu.
-
 <!--
 ## Using the key in LUIS test panel
 There are two places in LUIS to use the key. The first is in the [test panel](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key isn't saved into LUIS but instead is a session variable. You need to set the key every time you want the test panel to apply the Bing Spell Check API v7 service to the utterance. See [instructions](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) in the test panel for setting the key.
 -->
+## <a name="enable-spell-check-from-ui"></a>Aktivieren der Rechtschreibprüfung über die Benutzeroberfläche 
+Sie können die Rechtschreibprüfung für Ihre Beispielabfrage über das [LUIS-Portal](https://www.luis.ai) aktivieren. Klicken Sie oben im Bild auf **Verwalten** und im linken Navigationsbereich auf **Azure-Ressourcen**. Wenn Sie Ihrer Anwendung eine Vorhersageressource zugeordnet haben, können Sie unten auf der Seite auf **Change query parameters** (Abfrageparameter ändern) klicken und den Ressourcenschlüssel in das Feld **Rechtschreibprüfung aktivieren** kopieren.
+    
+   > [!div class="mx-imgBorder"]
+   > ![Rechtschreibprüfung aktivieren](./media/luis-tutorial-bing-spellcheck/spellcheck-query-params.png)
+
+
 ## <a name="adding-the-key-to-the-endpoint-url"></a>Hinzufügen des Schlüssels zur Endpunkt-URL
 Für jede Abfrage, auf die Sie die Rechtschreibprüfung anwenden möchten, muss der Endpunktabfrage der Schlüssel für die Bing-Rechtschreibprüfungs-Ressource im Abfrageheaderparameter übergeben werden. Ihr Chatbot könnte beispielsweise LUIS aufrufen, oder Sie rufen die LUIS-Endpunkt-API direkt auf. Unabhängig davon, wie der Endpunkt aufgerufen wird, muss jeder Aufruf die erforderlichen Informationen im Anforderungsheader enthalten, damit die Rechtschreibprüfung ordnungsgemäß funktioniert. Sie müssen den Wert mit **mkt-bing-spell-check-key** auf den Schlüsselwert festlegen.
 
+|Headerschlüssel|Headerwert|
+|--|--|
+|`mkt-bing-spell-check-key`|Auf dem Blatt **Keys and Endpoint** (Schlüssel und Endpunkte) der Ressource gefundene Schlüssel|
 
 ## <a name="send-misspelled-utterance-to-luis"></a>Übermitteln falsch geschriebener Äußerungen an LUIS
 1. Fügen Sie in der Vorhersageabfrage, die Sie senden, eine falsch geschriebene Äußerung hinzu, z. B. „How far is the mountainn?“. Im Englischen ist `mountain` mit einem `n` die richtige Schreibweise.

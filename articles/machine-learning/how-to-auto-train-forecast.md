@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 2b24b6480e4331f3a9470dcbb49e7ad221809187
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 6e686c7b22eb834a096cdd7a67beb6d8d291ef20
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132081"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392322"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
 
@@ -194,6 +194,14 @@ automl_config = AutoMLConfig(task='forecasting',
                              **forecasting_parameters)
 ```
 
+Die Menge der Daten, die für ein erfolgreiches Training eines Vorhersagemodells mit automatisiertem maschinellen Lernen erforderlich ist, wird durch die `forecast_horizon`-, `n_cross_validations`- und `target_lags`- oder `target_rolling_window_size`-Werte beeinflusst, die bei der Konfiguration Ihrer `AutoMLConfig` angegeben werden. 
+
+Die folgende Formel berechnet die Menge der Verlaufsdaten, die für die Konstruktion von Zeitreihenfeatures benötigt werden.
+
+Mindestens erforderliche Verlaufsdaten: (2x `forecast_horizon`) + #`n_cross_validations` + max(max(`target_lags`), `target_rolling_window_size`)
+
+Es wird für jede Reihe im Dataset eine Fehlerausnahme ausgelöst, die nicht die erforderliche Menge an Verlaufsdaten für die angegebenen relevanten Einstellungen erfüllt. 
+
 ### <a name="featurization-steps"></a>Featurisierungsschritte
 
 Standardmäßig werden in jedem Experiment mit automatisiertem maschinellem Lernen automatische Skalierungs- und Normalisierungstechniken auf Ihre Daten angewandt. Bei diesen Techniken handelt es sich um Formen der **Featurisierung**, die für *bestimmte* Algorithmen hilfreich sind, die auf Features unterschiedlicher Größenordnungen reagieren. Weitere Informationen zu den Standardfeaturisierungsschritten finden Sie unter [Featurisierung in AutoML](how-to-configure-auto-features.md#automatic-featurization).
@@ -368,7 +376,7 @@ day_datetime,store,week_of_year
 Wiederholen Sie die erforderlichen Schritte, um diese zukünftigen Daten in einen Datenrahmen zu laden, und führen Sie anschließend `best_run.predict(test_data)` aus, um zukünftige Werte vorherzusagen.
 
 > [!NOTE]
-> Werte können nur für eine Anzahl von Zeiträumen vorhergesagt werden, die maximal dem Wert von `forecast_horizon` entspricht. Das Modell muss mit einem weiter in der Zukunft liegenden Vorhersagehorizont neu trainiert werden, um zukünftige Werte vorhersagen können, die über den aktuellen Vorhersagehorizont hinausgehen.
+> In-Sample-Vorhersagen werden für die Vorhersage mit automatisiertem maschinellen Lernen nicht unterstützt, wenn `target_lags` und/oder `target_rolling_window_size` aktiviert sind.
 
 
 ## <a name="example-notebooks"></a>Beispielnotebooks

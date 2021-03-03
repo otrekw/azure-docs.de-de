@@ -8,16 +8,16 @@ ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 153ffd699b22a6379758bf66b896a2b37a19fdf3
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d75b60c715a758684e6f3a4b331c0b12d17eaf21
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883281"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705108"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Aktivieren der Azure Active Directory Domain Services-Authentifizierung über Azure Files
 
-[Azure Files](storage-files-introduction.md) unterstützt die identitätsbasierte Authentifizierung über SMB (Server Message Block) über zwei Arten von Domänendiensten: lokale Active Directory Domain Services (AD DS) und Azure Active Directory Domain Services (Azure AD DS). Es wird dringend empfohlen, den Abschnitt [Funktionsweise](./storage-files-active-directory-overview.md#how-it-works) zu überprüfen, um den richtigen Domänendienst für die Authentifizierung auszuwählen. Die Einrichtung unterscheidet sich abhängig von dem von Ihnen gewählten Domänendienst. In diesem Artikel wird das Aktivieren und Konfigurieren von Azure AD DS für die Authentifizierung mit Azure-Dateifreigaben erläutert.
+[Azure Files](storage-files-introduction.md) unterstützt die identitätsbasierte Authentifizierung über SMB (Server Message Block) über zwei Arten von Domänendiensten: lokale Active Directory Domain Services (AD DS) und Azure Active Directory Domain Services (Azure AD DS). Es wird dringend empfohlen, den Abschnitt [Funktionsweise](./storage-files-active-directory-overview.md#how-it-works) zu überprüfen, um den richtigen Domänendienst für die Authentifizierung auszuwählen. Die Einrichtung unterscheidet sich je nach gewähltem Domänendienst. In diesem Artikel wird das Aktivieren und Konfigurieren von Azure AD DS für die Authentifizierung mit Azure-Dateifreigaben erläutert.
 
 Wenn Sie noch nicht mit Azure-Dateifreigaben vertraut sind, empfiehlt es sich, unsere [Planhinweisliste](storage-files-planning.md) zu lesen, bevor Sie die folgende Artikelreihe lesen.
 

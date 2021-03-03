@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: 205f92d4282f0cad00c1dd136636da319e107f3f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 96af34b5b68fca5ab8061c8c99f03bee094dc175
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391070"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590380"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender für SQL-Server auf Computern 
 
@@ -55,7 +55,7 @@ Diese beiden Schritte werden nachfolgend beschrieben.
     
     - **Bereitstellen von Azure Arc**: Sie können jeden Windows-Computer mit Security Center verbinden. Azure Arc bietet jedoch eine tiefere Integration über Ihre *gesamte* Azure-Umgebung. Wenn Sie Azure Arc einrichten, wird die Seite **SQL Server – Azure Arc** im Portal angezeigt, und Ihre Sicherheitswarnungen werden auf dieser Seite auf einer dedizierten Registerkarte **Sicherheit** angezeigt. Die erste und empfohlene Option ist also, [Azure Arc auf dem Host einzurichten](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) und den Anweisungen für **SQL-Server unter Azure Arc** (siehe oben) zu folgen.
         
-    - **Verbinden des Windows-Computers ohne Azure Arc**: Wenn Sie sich dafür entscheiden, eine auf einem Windows-Computer ausgeführte SQL Server-Instanz ohne Azure Arc zu verbinden, folgen Sie den Anweisungen unter [Verbinden von Windows-Computern mit Azure Monitor](../azure-monitor/platform/agent-windows.md).
+    - **Verbinden des Windows-Computers ohne Azure Arc**: Wenn Sie sich dafür entscheiden, eine auf einem Windows-Computer ausgeführte SQL Server-Instanz ohne Azure Arc zu verbinden, folgen Sie den Anweisungen unter [Verbinden von Windows-Computern mit Azure Monitor](../azure-monitor/agents/agent-windows.md).
 
 
 ### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>Schritt 2: Aktivieren des optionalen Plans auf der Security Center-Seite „Preise und Einstellungen“:
@@ -75,7 +75,7 @@ Diese beiden Schritte werden nachfolgend beschrieben.
     Der Plan wird auf allen SQL-Servern aktiviert, die mit dem ausgewählten Arbeitsbereich verbunden sind. Der Schutz ist nach dem ersten Neustart der SQL Server-Instanz vollständig aktiv.
 
     >[!TIP] 
-    > Um einen neuen Arbeitsbereich zu erstellen, befolgen Sie die Anweisungen unter [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md).
+    > Um einen neuen Arbeitsbereich zu erstellen, befolgen Sie die Anweisungen unter [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/logs/quick-create-workspace.md).
 
 
 1. Konfigurieren Sie optional eine E-Mail-Benachrichtigung für Sicherheitswarnungen. 

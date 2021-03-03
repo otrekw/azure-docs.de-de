@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
-ms.openlocfilehash: 902bd46fcf6efc20c81992e29fd463781fecc15e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 817b6b373f521543234cf02818cde8c4b4ba40c1
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731405"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526424"
 ---
 # <a name="tutorial-configure-parsable-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Parsable für die automatische Benutzerbereitstellung
 
@@ -32,6 +32,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in Parsable a
 > * Erstellen von Benutzern in Parsable
 > * Entfernen von Benutzern aus Parsable, wenn diese keinen Zugriff mehr benötigen
 > * Synchronisieren von Benutzerattributen zwischen Azure AD und Parsable
+> * Bereitstellen von Gruppen und Gruppenmitgliedschaften in Parsable
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -107,17 +108,25 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
    |userName|String|&check;|
    |displayName|String|
 
-10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit Parsable synchronisieren** aus.
 
-11. Um den Azure AD-Bereitstellungsdienst für Parsable zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
+11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit Parsable synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Gruppen in Parsable für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+
+      |attribute|type|Unterstützung für das Filtern|
+      |---|---|---|
+      |displayName|String|&check;|
+      |members|Verweis|
+12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+
+13. Um den Azure AD-Bereitstellungsdienst für Parsable zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
-12. Legen Sie die Benutzer und/oder Gruppen fest, die in Parsable bereitgestellt werden sollen, indem Sie im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte auswählen.
+14. Legen Sie die Benutzer und/oder Gruppen fest, die in Parsable bereitgestellt werden sollen, indem Sie im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte auswählen.
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-13. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
@@ -129,6 +138,10 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 1. Mithilfe der [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
 2. Anhand der [Fortschrittsleiste](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
 3. Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](../app-provisioning/application-provisioning-quarantine-status.md).  
+
+## <a name="change-log"></a>Änderungsprotokoll
+
+* 15.2.2021: Die Gruppenbereitstellung wurde aktiviert.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

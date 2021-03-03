@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: cefcd4ce287eecfe2c764d88d5d2233cc8ac0a5c
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 4eeda2e4e418920522f7a65bef68928963c43ad4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753444"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581790"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Behandeln von Problemen bei der Bewertung- und Abhängigkeitsvisualisierung
 
@@ -160,12 +160,12 @@ Für virtuelle Windows-Computer:
 
     ![MMA-Status](./media/troubleshoot-assessment/mma-properties.png)
 
-Stellen Sie bei virtuellen Linux-Computern sicher, dass die Installationsbefehle für MMA und den Abhängigkeits-Agent erfolgreich ausgeführt wurden. Weitere Informationen zur Problembehandlung finden Sie [hier](../azure-monitor/insights/service-map.md#post-installation-issues).
+Stellen Sie bei virtuellen Linux-Computern sicher, dass die Installationsbefehle für MMA und den Abhängigkeits-Agent erfolgreich ausgeführt wurden. Weitere Informationen zur Problembehandlung finden Sie [hier](../azure-monitor/vm/service-map.md#post-installation-issues).
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
-- **MMS-Agent**: Überprüfen Sie die unterstützten [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)- und [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems)-Betriebssysteme.
-- **Dependency-Agent**: die unterstützten [Windows- und Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)-Betriebssysteme.
+- **MMS-Agent**: Überprüfen Sie die unterstützten [Windows](../azure-monitor/agents/agents-overview.md#supported-operating-systems)- und [Linux](../azure-monitor/agents/agents-overview.md#supported-operating-systems)-Betriebssysteme.
+- **Dependency-Agent**: die unterstützten [Windows- und Linux](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems)-Betriebssysteme.
 
 ## <a name="visualize-dependencies-for--hour"></a>Visualisieren von Abhängigkeiten für > Stunde
 

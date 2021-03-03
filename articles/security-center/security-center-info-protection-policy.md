@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2020
 ms.author: memildin
-ms.openlocfilehash: 34d2e8116b7b914803d1bb68b350c9aadd78439f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: ca3a1083b512709ad5ef070b6f5bd0e363baf80b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792064"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720748"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>SQL Information Protection-Richtlinie in Azure Security Center
  
@@ -58,7 +58,7 @@ Jede dieser Möglichkeiten wird in der folgenden Abbildung auf der entsprechende
 Wählen Sie auf der Security Center-Seite **Preise und Einstellungen** die Einstellung **SQL Information Protection** aus.
 
 > [!NOTE]
-> Diese Option wird nur Benutzern mit Berechtigungen auf Mandantenebene angezeigt. [Erteilen von mandantenweiten Berechtigungen an sich selbst](https://docs.microsoft.com/azure/security-center/security-center-management-groups#grant-tenant-wide-permissions-to-yourself).
+> Diese Option wird nur Benutzern mit Berechtigungen auf Mandantenebene angezeigt. [Erteilen von mandantenweiten Berechtigungen an sich selbst](./security-center-management-groups.md#grant-tenant-wide-permissions-to-yourself).
 
 :::image type="content" source="./media/security-center-info-protection-policy/pricing-settings-link-to-information-protection.png" alt-text="Zugreifen auf die SQL Information Protection-Richtlinie über die Azure Security Center-Seite mit Preisen und Einstellungen":::
 

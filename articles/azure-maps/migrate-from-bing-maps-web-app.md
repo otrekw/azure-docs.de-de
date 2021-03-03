@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: db53e4407674abc1e6c81090dc4a50afa784940d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2b072107275fba1ff83ab3ddac63ed8bf7766356
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684824"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389109"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>Tutorial: Migrieren einer Web-App aus Bing Karten
 
@@ -33,9 +33,9 @@ Web-Apps, die Bing Karten verwenden, nutzen oftmals das Bing Karten V8 JavaScrip
 
 Wenn Sie eine vorhandene Webanwendung migrieren, überprüfen Sie, ob sie eine Open Source-Kartensteuerelement-Bibliothek wie Cesium, Leaflet oder OpenLayers verwendet. Wenn dies der Fall ist und Sie diese Bibliothek weiterhin verwenden möchten, können Sie sie mit den Kacheldiensten von Azure Maps ([Straßenkacheln](/rest/api/maps/render/getmaptile) \| [Satellitenkacheln](/rest/api/maps/render/getmapimagerytile)) verbinden. Über die Links unten erhalten Sie ausführliche Informationen zur Verwendung von Azure Maps in einigen häufig verwendeten Open Source-Kartensteuerelement-Bibliotheken.
 
-* Cesium: ein 3D-Kartensteuerelement für das Web. [Codebeispiel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Dokumentation](https://cesiumjs.org/)
-* Leaflet: schlankes 2D-Kartensteuerelement für das Web. [Codebeispiel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Dokumentation](https://leafletjs.com/)
-* OpenLayers: ein 2D-Kartensteuerelement für das Web, das Projektionen unterstützt. [Codebeispiel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [Dokumentation](https://openlayers.org/)
+* [Cesium:](https://cesiumjs.org/) ein 3D-Kartensteuerelement für das Web. [Codebeispiele](https://azuremapscodesamples.azurewebsites.net/?search=Cesium) \| [Plug-In-Repository]()
+* [Leaflet:](https://leafletjs.com/) schlankes 2D-Kartensteuerelement für das Web. [Codebeispiele](https://azuremapscodesamples.azurewebsites.net/?search=leaflet) \| [Plug-In-Repository]()
+* [OpenLayers:](https://openlayers.org/) ein 2D-Kartensteuerelement für das Web, das Projektionen unterstützt. [Codebeispiele](https://azuremapscodesamples.azurewebsites.net/?search=openlayers) \| [Plug-In-Repository]()
 
 Bei Entwicklungen mit einem JavaScript-Framework kann eins der folgenden Open-Source-Projekte nützlich sein:
 
@@ -64,7 +64,7 @@ In der folgenden Tabelle sind die wichtigsten API-Funktionen im Bing Karten V8 J
 | Kachelebenen              | ✓                                                                                      |
 | KML-Ebene                | ✓                                                                                      |
 | Konturebene            | [Beispiele](https://azuremapscodesamples.azurewebsites.net/?search=contour)              |
-| Datenquantisierungsebene       | [Beispiele](https://azuremapscodesamples.azurewebsites.net/?search=data%20binning)       |
+| Datenquantisierungsebene       | Enthalten im Open-Source-Azure Maps-Modul für [Datenquellen von Rasterdaten](https://github.com/Azure-Samples/azure-maps-gridded-data-source)       |
 | Animierte Kachelebene      | Im Azure Maps [Animationsmodul](https://github.com/Azure-Samples/azure-maps-animations) enthalten (Open Source) |
 | Zeichentools            | ✓                                                                                      |
 | Geocoder-Dienst         | ✓                                                                                      |
@@ -72,10 +72,10 @@ In der folgenden Tabelle sind die wichtigsten API-Funktionen im Bing Karten V8 J
 | Entfernungsmatrixdienst  | ✓                                                                                      |
 | Spatial Data-Dienst     | –                                                                                    |
 | Satelliten-/Luftbilder | ✓                                                                                      |
-| Vogelperspektivbilder         | Geplant                                                                                |
-| Straßenansichten       | Geplant                                                                                |
+| Vogelperspektivbilder         | Nicht zutreffend                                                                                |
+| Straßenansichten       | Nicht zutreffend                                                                                |
 | GeoJSON-Unterstützung          | ✓                                                                                      |
-| GeoXML-Unterstützung           | ✓                                                                                      |
+| GeoXML-Unterstützung           | ✓ [Räumliches IO-Modul](how-to-use-spatial-io-module.md)                                                                                     |
 | Well-Known-Text-Unterstützung  | ✓                                                                                      |
 | Benutzerdefinierte Kartenstile        | Partial                                                                                |
 

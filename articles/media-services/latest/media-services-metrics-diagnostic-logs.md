@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: inhenkel
-ms.openlocfilehash: 35b0d9c2937024341be6183ac1438b7c4500d6ef
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: cd8c6ca67a1e475279cba8ccc3f4cb8cc7412d66
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954985"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590778"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Überwachen von Media Services-Metriken und -Diagnoseprotokollen mit Azure Monitor
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Mit [Azure Monitor](../../azure-monitor/overview.md) können Sie Metriken und Diagnoseprotokolle überwachen, die Ihnen helfen zu verstehen, wie sich Ihre Anwendungen verhalten. Alle von Azure Monitor gesammelten Daten gehören einem von zwei Grundtypen an: Metriken und Protokollen. Sie können Media Services-Diagnoseprotokolle überwachen sowie Warnungen und Benachrichtigungen für die gesammelten Metriken und Protokolle erstellen. Sie können die Metrikdaten mit dem [Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md) visualisieren und analysieren. Sie können Protokolle an [Azure Storage](https://azure.microsoft.com/services/storage/) senden, sie an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) streamen, in [Log Analytics](https://azure.microsoft.com/services/log-analytics/) exportieren oder Dienste von Drittanbietern nutzen.
+Mit [Azure Monitor](../../azure-monitor/overview.md) können Sie Metriken und Diagnoseprotokolle überwachen, die Ihnen helfen zu verstehen, wie sich Ihre Anwendungen verhalten. Alle von Azure Monitor gesammelten Daten gehören einem von zwei Grundtypen an: Metriken und Protokollen. Sie können Media Services-Diagnoseprotokolle überwachen sowie Warnungen und Benachrichtigungen für die gesammelten Metriken und Protokolle erstellen. Sie können die Metrikdaten mit dem [Metrik-Explorer](../../azure-monitor/essentials/metrics-getting-started.md) visualisieren und analysieren. Sie können Protokolle an [Azure Storage](https://azure.microsoft.com/services/storage/) senden, sie an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) streamen, in [Log Analytics](https://azure.microsoft.com/services/log-analytics/) exportieren oder Dienste von Drittanbietern nutzen.
 
-Eine ausführliche Übersicht finden Sie unter [Azure Monitor-Metrik](../../azure-monitor/platform/data-platform.md) und [Azure Monitor-Diagnoseprotokolle](../../azure-monitor/platform/platform-logs-overview.md).
+Eine ausführliche Übersicht finden Sie unter [Azure Monitor-Metrik](../../azure-monitor/data-platform.md) und [Azure Monitor-Diagnoseprotokolle](../../azure-monitor/essentials/platform-logs-overview.md).
 
 In diesem Thema werden die unterstützten [Media Services-Metriken](#media-services-metrics) und [Media Services-Diagnoseprotokolle](#media-services-diagnostic-logs) behandelt.
 
 ## <a name="media-services-metrics"></a>Media Services-Metriken
 
-Metriken werden in regelmäßigen Abständen gesammelt, unabhängig davon, ob sich der Wert ändert oder nicht. Sie sind für Warnmeldungen gut geeignet, da sie häufig abgetastet werden können und eine Warnung mit relativ einfacher Logik schnell ausgelöst werden kann. Informationen zum Erstellen von Metrikwarnungen finden Sie unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../../azure-monitor/platform/alerts-metric.md).
+Metriken werden in regelmäßigen Abständen gesammelt, unabhängig davon, ob sich der Wert ändert oder nicht. Sie sind für Warnmeldungen gut geeignet, da sie häufig abgetastet werden können und eine Warnung mit relativ einfacher Logik schnell ausgelöst werden kann. Informationen zum Erstellen von Metrikwarnungen finden Sie unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../../azure-monitor/alerts/alerts-metric.md).
 
 Media Services unterstützt das Überwachen von Metriken für die folgenden Ressourcen:
 
@@ -89,7 +89,7 @@ Siehe [Überwachen von Media Services-Metriken](media-services-metrics-howto.md)
 
 ## <a name="media-services-diagnostic-logs"></a>Media Services-Diagnoseprotokolle
 
-Diagnoseprotokolle liefern regelmäßig umfassende Daten zum Betrieb einer Azure-Ressource. Weitere Informationen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../../azure-monitor/platform/platform-logs-overview.md).
+Diagnoseprotokolle liefern regelmäßig umfassende Daten zum Betrieb einer Azure-Ressource. Weitere Informationen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../../azure-monitor/essentials/platform-logs-overview.md).
 
 Media Services unterstützt die folgenden Diagnoseprotokolle:
 
@@ -116,7 +116,7 @@ Siehe [Überwachen von Media Services-Diagnoseprotokollen](media-services-diagno
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../../azure-monitor/platform/platform-logs-overview.md)
-* [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../../azure-monitor/platform/alerts-metric.md)
+* [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../../azure-monitor/essentials/platform-logs-overview.md)
+* [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../../azure-monitor/alerts/alerts-metric.md)
 * [Überwachen von Media Services-Metriken](media-services-metrics-howto.md)
 * [Überwachen von Media Services-Diagnoseprotokollen](media-services-diagnostic-logs-howto.md)

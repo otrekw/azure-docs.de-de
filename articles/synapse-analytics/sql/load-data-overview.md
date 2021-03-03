@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a89fa72db3deaec12a9073233f861aa6835288a5
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 18a2cf0de94641c955ed72a48f28352d13115ef0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678354"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667561"
 ---
 # <a name="design-a-polybase-data-loading-strategy-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Entwerfen einer Strategie zum Laden von PolyBase-Daten für einen dedizierten SQL-Pool in Azure Synapse Analytics
 
@@ -50,7 +50,7 @@ Das Abrufen von Daten aus dem Quellsystem hängt vom Speicherort ab.  Ziel ist e
 
 PolyBase lädt Daten aus UTF-8- und UTF-16-codierten, durch Trennzeichen getrennten Textdateien. Zusätzlich zu den durch Trennzeichen getrennten Textdateien lädt es aus den Hadoop-Dateiformaten „RC File“, „ORC“ und „Parquet“. PolyBase kann auch Daten aus Dateien laden, die mit Gzip und Snappy komprimiert wurden. PolyBase unterstützt derzeit kein erweitertes ASCII, keine Formate mit fester Breite und keine geschachtelten Formate wie WinZip, JSON und XML.
 
-Wenn Sie aus SQL Server exportieren, können Sie die Daten mit dem [Befehlszeilentool bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) in durch Trennzeichen getrennte Textdateien exportieren. Die Datentypzuordnung „Parquet zu Azure Synapse Analytics“ lautet wie folgt:
+Wenn Sie aus SQL Server exportieren, können Sie die Daten mit dem [Befehlszeilentool bcp](/sql/tools/bcp-utility?view=azure-sqldw-latest&preserve-view=true) in durch Trennzeichen getrennte Textdateien exportieren. Die Datentypzuordnung „Parquet zu Azure Synapse Analytics“ lautet wie folgt:
 
 | **Parquet-Datentyp** |                      **SQL-Datentyp**                       |
 | :-------------------: | :----------------------------------------------------------: |
@@ -79,12 +79,12 @@ Wenn Sie aus SQL Server exportieren, können Sie die Daten mit dem [Befehlszeile
 
 ## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. Laden der Daten in Azure Blob Storage oder Azure Data Lake Storage
 
-Um die Daten in Azure Storage zu verschieben, können Sie sie in [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) oder [Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) verschieben. In beiden Fällen sollten die Daten in Textdateien gespeichert werden. PolyBase kann die Daten von beiden Speicherorten laden.
+Um die Daten in Azure Storage zu verschieben, können Sie sie in [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) oder [Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md) verschieben. In beiden Fällen sollten die Daten in Textdateien gespeichert werden. PolyBase kann die Daten von beiden Speicherorten laden.
 
 Tools und Dienste, mit denen Sie Daten in Azure Storage verschieben können:
 
 - Der [Azure ExpressRoute](../../expressroute/expressroute-introduction.md)-Dienst verbessert Netzwerkdurchsatz, Leistung und Vorhersagbarkeit. ExpressRoute ist ein Dienst, der Ihre Daten über eine dedizierte private Verbindung zu Azure weiterleitet. Bei ExpressRoute-Verbindungen werden Daten nicht über das öffentliche Internet weitergeleitet. Die Verbindungen bieten mehr Zuverlässigkeit, eine höhere Geschwindigkeit, niedrigere Latenzzeiten und mehr Sicherheit als herkömmliche Verbindungen über das öffentliche Internet.
-- Das Hilfsprogramm [AZCopy](../../storage/common/storage-use-azcopy-v10.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) verschiebt Daten über das öffentliche Internet in Azure Storage. Dies funktioniert, wenn Ihre Datenmengen weniger als 10 TB umfassen. Wenn Sie Ladevorgänge in regelmäßigen Abständen mit AZCopy ausführen möchten, testen Sie die Netzwerkgeschwindigkeit, um festzustellen, ob sie geeignet ist.
+- Das Hilfsprogramm [AZCopy](../../storage/common/storage-use-azcopy-v10.md) verschiebt Daten über das öffentliche Internet in Azure Storage. Dies funktioniert, wenn Ihre Datenmengen weniger als 10 TB umfassen. Wenn Sie Ladevorgänge in regelmäßigen Abständen mit AZCopy ausführen möchten, testen Sie die Netzwerkgeschwindigkeit, um festzustellen, ob sie geeignet ist.
 - [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) verfügt über ein Gateway, das Sie auf dem lokalen Server installieren können. Anschließend können Sie eine Pipeline erstellen, um Daten vom lokalen Server in Azure Storage zu verschieben. Weitere Informationen zum Verwenden der Data Factory mit dem dedizierten SQL-Pool finden Sie unter [Laden von Daten in Azure Synapse Analytics mithilfe von Azure Data Factory](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ## <a name="3-prepare-the-data-for-loading"></a>3. Vorbereiten der Daten für das Laden
@@ -97,9 +97,9 @@ Bevor Sie Daten laden können, müssen Sie externe Tabellen im Data Warehouse de
 
 Die Definition externer Tabellen umfasst die Angabe der Datenquelle, des Formats der Textdateien und der Tabellendefinitionen. Im Folgenden finden Sie die Themen zur T-SQL-Syntax, die Sie benötigen:
 
-- [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 
 ### <a name="format-text-files"></a>Formatieren von Textdateien
 
@@ -108,7 +108,7 @@ So formatieren Sie die Textdateien
 
 - Wenn Ihre Daten aus einer nicht relationalen Quelle stammen, müssen Sie sie in Zeilen und Spalten transformieren. Unabhängig davon, ob die Daten aus einer relationalen oder nicht relationalen Quelle stammen, müssen die Daten so transformiert werden, dass sie mit den Spaltendefinitionen der Tabelle übereinstimmen, in die die Daten geladen werden sollen.
 - Formatieren Sie die Daten in der Textdatei so, dass sie mit den Spalten und Datentypen in der Zieltabelle des SQL-Pools übereinstimmen. Eine Nichtübereinstimmung zwischen den Datentypen in den externen Textdateien und der Data Warehouse-Tabelle führt dazu, dass Zeilen beim Laden zurückgewiesen werden.
-- Trennen Sie Felder in der Textdatei mit einem Abschlusszeichen.  Stellen Sie sicher, dass Sie ein Zeichen oder eine Zeichenfolge verwenden, die nicht in Ihren Quelldaten enthalten ist. Verwenden Sie das durch [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) angegebene Abschlusszeichen.
+- Trennen Sie Felder in der Textdatei mit einem Abschlusszeichen.  Stellen Sie sicher, dass Sie ein Zeichen oder eine Zeichenfolge verwenden, die nicht in Ihren Quelldaten enthalten ist. Verwenden Sie das durch [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true) angegebene Abschlusszeichen.
 
 ## <a name="4-load-the-data-into-dedicated-sql-pool-staging-tables-using-polybase"></a>4. Laden der Daten in die Stagingtabellen des dedizierten SQL-Pools mithilfe von PolyBase
 
@@ -119,13 +119,13 @@ Es hat sich bewährt, die Daten in eine Stagingtabelle zu laden. Stagingtabellen
 Um Daten mit PolyBase zu laden, können Sie eine der folgenden Ladeoptionen nutzen:
 
 - [PolyBase mit T-SQL](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) funktioniert gut, wenn sich Ihre Daten in Azure Blob Storage oder Azure Data Lake Store befinden. Es bietet Ihnen die größtmögliche Kontrolle über den Ladevorgang, erfordert aber auch die Definition externer Datenobjekte. Die anderen Methoden definieren diese Objekte im Hintergrund, wenn Sie Quelltabellen zu Zieltabellen zuordnen.  Zum Orchestrieren von T-SQL-Ladevorgängen können Sie Azure Data Factory-, SSIS- oder Azure-Funktionen verwenden.
-- [PolyBase mit SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) funktioniert gut, wenn sich die Quelldaten in SQL Server befinden. SSIS definiert die Zuordnung von Quell- zu Zieltabellen und orchestriert zudem die Workload. Wenn Sie bereits über SSIS-Pakete verfügen, können Sie die Pakete so ändern, dass sie mit dem neuen Data Warehouse-Ziel funktionieren.
+- [PolyBase mit SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) funktioniert gut, wenn sich die Quelldaten in SQL Server befinden. SSIS definiert die Zuordnung von Quell- zu Zieltabellen und orchestriert zudem die Workload. Wenn Sie bereits über SSIS-Pakete verfügen, können Sie die Pakete so ändern, dass sie mit dem neuen Data Warehouse-Ziel funktionieren.
 - [PolyBase mit Azure Data Factory (ADF)](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ist ein weiteres Orchestrierungstool.  Es definiert eine Pipeline und plant Aufträge.
 - [PolyBase mit Azure Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) überträgt Daten aus einer Azure Synapse Analytics-Tabelle in einen Databricks-Datenrahmen und/oder schreibt Daten aus einem Databricks-Datenrahmen in eine Azure Synapse Analytics-Tabelle, die PolyBase verwendet.
 
 ### <a name="non-polybase-loading-options"></a>Nicht von PolyBase stammende Ladeoptionen
 
-Wenn Ihre Daten nicht mit PolyBase kompatibel sind, können Sie [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) oder die [SQLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) verwenden. Mit „bcp“ werden Daten direkt in den dedizierten SQL-Pool geladen, ohne Azure Blob Storage zu durchlaufen. Daher ist es nur für kleine Lasten konzipiert. Beachten Sie, dass die Leistung dieser Optionen beim Laden wesentlich langsamer ist als bei PolyBase.
+Wenn Ihre Daten nicht mit PolyBase kompatibel sind, können Sie [bcp](/sql/tools/bcp-utility?view=azure-sqldw-latest&preserve-view=true) oder die [SQLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy) verwenden. Mit „bcp“ werden Daten direkt in den dedizierten SQL-Pool geladen, ohne Azure Blob Storage zu durchlaufen. Daher ist es nur für kleine Lasten konzipiert. Beachten Sie, dass die Leistung dieser Optionen beim Laden wesentlich langsamer ist als bei PolyBase.
 
 ## <a name="5-transform-the-data"></a>5. Transformieren der Daten
 

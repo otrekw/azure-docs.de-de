@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 852375cc7948fc7f6bd106380b3194f2dc84b8ca
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 9e4fea52f56da9f2e84746daf0121df0b4355411
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778919"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375951"
 ---
 # <a name="use-powershell-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten mithilfe von PowerShell
 
@@ -60,8 +60,10 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 
 Verwenden Sie den Befehl [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment), um einem Sicherheitsprinzipal eine Azure-Rolle zuzuweisen. Das Format des Befehls kann je nach Bereich der Zuweisung unterschiedlich sein. Für das Ausführen des Befehls benötigen Sie eine der Rollen „Besitzer“ oder „Mitwirkender“ für den entsprechenden Bereich. Die folgenden Beispiele zeigen, wie Sie einem Benutzer eine Rolle in verschiedenen Bereichen zuweisen können. Sie können jedoch den gleichen Befehl verwenden, um eine Rolle einem beliebigen Sicherheitsprinzipal zuzuordnen.
 
-> [!NOTE]
-> Wenn Sie ein Azure Storage-Konto erstellen, erhalten Sie nicht automatisch Berechtigungen für den Zugriff auf Daten über Azure AD. Sie müssen sich selbst explizit eine Azure-Rolle für Azure Storage zuweisen. Sie können sie auf Ebene Ihres Abonnements, einer Ressourcengruppe, eines Speicherkontos oder eines Containers oder einer Warteschlange zuordnen.
+> [!IMPORTANT]
+> Wenn Sie ein Azure Storage-Konto erstellen, erhalten Sie nicht automatisch Berechtigungen für den Zugriff auf Daten über Azure AD. Sie müssen sich selbst explizit eine Azure RBAC-Rolle für den Datenzugriff zuweisen. Sie können sie auf Ebene Ihres Abonnements, einer Ressourcengruppe, eines Speicherkontos oder eines Containers oder einer Warteschlange zuordnen.
+>
+> Wenn das Speicherkonto mit einem Schreibschutz von Azure Resource Manager gesperrt ist, verhindert diese Sperre die Zuweisung von Azure RBAC-Rollen, die für das Speicherkonto oder einen Datencontainer (Blobcontainer oder Warteschlange) gelten.
 
 ### <a name="container-scope"></a>Containerbereich
 

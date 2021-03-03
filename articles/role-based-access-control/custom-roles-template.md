@@ -6,16 +6,15 @@ author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
-ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: beea0c5cecd7bb99973a4692a4cce17e7a69d708
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 0626a9e36d05ac9cb51f62652dbe6f3133bbc6d7
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631311"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095912"
 ---
 # <a name="create-or-update-azure-custom-roles-using-an-arm-template"></a>Erstellen oder Aktualisieren benutzerdefinierter Rollen in Azure mithilfe einer ARM-Vorlage
 
@@ -207,5 +206,5 @@ Um die benutzerdefinierte Rolle zu entfernen, führen Sie die folgenden Schritte
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Grundlegendes zu Azure-Rollendefinitionen](role-definitions.md)
-- [Schnellstart: Hinzufügen einer Azure-Rollenzuweisung mithilfe einer Azure Resource Manager-Vorlage](quickstart-role-assignments-template.md)
+- [Schnellstart: Zuweisen einer Azure-Rolle mithilfe einer Azure Resource Manager-Vorlage](quickstart-role-assignments-template.md)
 - [Dokumentation zu ARM-Vorlagen](../azure-resource-manager/templates/index.yml)

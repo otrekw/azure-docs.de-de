@@ -5,22 +5,20 @@ description: Ordnen Sie einem Blob Storage- oder Webendpunkt in einem Azure-Spei
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/23/2020
+ms.date: 02/12/2021
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: dcc6f3bca80cb5860679327226d3e034c3e9b14a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 52fc7b9c1229421fd46b8110857a0a7a8a4f916a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95996864"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520424"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt
 
 Sie können einem Blob-Dienstendpunkt oder einem Endpunkt einer [statischen Website](storage-blob-static-website.md) eine benutzerdefinierte Domäne zuordnen. 
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
 > Diese Zuordnung funktioniert nur für Unterdomänen (z. B. `www.contoso.com`). Wenn Ihr Webendpunkt für die Stammdomäne (z. B. `contoso.com`) verfügbar sein soll, müssen Sie Azure CDN verwenden. Eine entsprechende Anleitung finden Sie im Abschnitt [Zuordnen einer benutzerdefinierten Domäne mit aktiviertem HTTPS](#enable-https) in diesem Artikel. Weil Sie in diesem Abschnitt dieses Artikels die Stammdomäne Ihrer benutzerdefinierten Domäne aktivieren, ist der Schritt innerhalb dieses Abschnitts zum Aktivieren von HTTPS optional. 
@@ -61,8 +59,11 @@ Der Hostname entspricht der Speicherendpunkt-URL ohne die Protokoll-ID und den n
 2. Wählen Sie im Menübereich unter **Einstellungen** die Option **Eigenschaften** aus.  
 
 3. Kopieren Sie den Wert von **Primärer Blob-Dienstendpunkt** oder **Primärer statischer Websiteendpunkt** in eine Textdatei. 
+  
+   > [!NOTE]
+   > Der Data Lake Storage-Endpunkt wird nicht unterstützt (z. B. `https://mystorageaccount.dfs.core.windows.net/`).
 
-4. Entfernen Sie die Protokoll-ID (*z. B.* HTTPS) und den nachgestellten Schrägstrich aus dieser Zeichenfolge. Die folgende Tabelle enthält einige Beispiele.
+4. Entfernen Sie die Protokoll-ID (z. B. `HTTPS`) und den nachgestellten Schrägstrich aus dieser Zeichenfolge. Die folgende Tabelle enthält einige Beispiele.
 
    | Endpunkttyp |  endpoint | Hostname |
    |------------|-----------------|-------------------|
@@ -75,7 +76,7 @@ Der Hostname entspricht der Speicherendpunkt-URL ohne die Protokoll-ID und den n
 
 #### <a name="step-2-create-a-canonical-name-cname-record-with-your-domain-provider"></a>Schritt 2: Erstellen eines kanonischen Namenseintrags (CNAME-Eintrags) bei Ihrem Domänenanbieter
 
-Erstellen Sie einen CNAME-Eintrag, der auf Ihren Hostnamen verweist. Ein CNAME-Eintrag ist eine Art von DNS-Eintrag, mit dem ein Quelldomänenname einem Zieldomänennamen zugeordnet wird.
+Erstellen Sie einen CNAME-Eintrag, der auf Ihren Hostnamen verweist. Ein CNAME-Eintrag ist eine Art von DNS-Eintrag (Domain Name System), mit dem ein Quelldomänenname einem Zieldomänennamen zugeordnet wird.
 
 1. Melden Sie sich bei der Website Ihrer Domänenregistrierungsstelle an, und navigieren Sie dann zur Seite zum Verwalten von DNS-Einstellungen.
 
@@ -95,9 +96,14 @@ Erstellen Sie einen CNAME-Eintrag, der auf Ihren Hostnamen verweist. Ein CNAME-E
 
 #### <a name="step-3-register-your-custom-domain-with-azure"></a>Schritt 3: Registrieren Ihrer benutzerdefinierten Domäne bei Azure
 
+##### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
 
-2. Wählen Sie im Menübereich unter **Blob-Dienst** die Option **Benutzerdefinierte Domäne** aus.  
+2. Wählen Sie im Menübereich unter **Blob-Dienst** die Option **Benutzerdefinierte Domäne** aus.
+
+   > [!NOTE]
+   > Diese Option wird nicht in Konten angezeigt, für die das Feature für hierarchische Namespaces aktiviert ist. Verwenden Sie zum Ausführen dieses Schritts für diese Konten entweder PowerShell oder die Azure CLI.
 
    ![Option „Benutzerdefinierte Domäne“](./media/storage-custom-domain-name/custom-domain-button.png "Benutzerdefinierte Domäne")
 
@@ -111,18 +117,60 @@ Erstellen Sie einen CNAME-Eintrag, der auf Ihren Hostnamen verweist. Ein CNAME-E
 
    Nachdem der CNAME-Eintrag über die Domänennamenserver (DNS) weitergegeben wurde, können Ihre Benutzer Blobdaten mithilfe der benutzerdefinierten Domäne anzeigen, sofern sie über die entsprechenden Berechtigungen verfügen.
 
+##### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Führen Sie den folgenden PowerShell-Befehl aus:
+
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource-group-name> -Name <storage-account-name> -CustomDomainName <custom-domain-name> -UseSubDomain $false
+```
+
+- Ersetzen Sie den Platzhalter `<resource-group-name>` durch den Namen der Ressourcengruppe.
+
+- Ersetzen Sie den Platzhalter `<storage-account-name>` durch den Namen des Speicherkontos.
+
+- Ersetzen Sie den Platzhalter `<custom-domain-name>` durch den Namen Ihrer benutzerdefinierten Domäne (einschließlich Unterdomäne).
+
+  Wenn Ihre Domäne beispielsweise *contoso.com* und Ihr Unterdomänenalias *www* lautet, geben Sie `www.contoso.com` ein. Lautet Ihre Unterdomäne *photos*, geben Sie `photos.contoso.com` ein.
+
+Nachdem der CNAME-Eintrag über die Domänennamenserver (DNS) weitergegeben wurde, können Ihre Benutzer Blobdaten mithilfe der benutzerdefinierten Domäne anzeigen, sofern sie über die entsprechenden Berechtigungen verfügen.
+
+##### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Führen Sie den folgenden PowerShell-Befehl aus:
+
+```azurecli
+az storage account update \
+   --resource-group <resource-group-name> \ 
+   --name <storage-account-name> \
+   --custom-domain <custom-domain-name> \
+   --use-subdomain false
+  ```
+
+- Ersetzen Sie den Platzhalter `<resource-group-name>` durch den Namen der Ressourcengruppe.
+
+- Ersetzen Sie den Platzhalter `<storage-account-name>` durch den Namen des Speicherkontos.
+
+- Ersetzen Sie den Platzhalter `<custom-domain-name>` durch den Namen Ihrer benutzerdefinierten Domäne (einschließlich Unterdomäne).
+
+  Wenn Ihre Domäne beispielsweise *contoso.com* und Ihr Unterdomänenalias *www* lautet, geben Sie `www.contoso.com` ein. Lautet Ihre Unterdomäne *photos*, geben Sie `photos.contoso.com` ein.
+
+Nachdem der CNAME-Eintrag über die Domänennamenserver (DNS) weitergegeben wurde, können Ihre Benutzer Blobdaten mithilfe der benutzerdefinierten Domäne anzeigen, sofern sie über die entsprechenden Berechtigungen verfügen.
+
+---
+
 #### <a name="step-4-test-your-custom-domain"></a>Schritt 4: Testen Ihrer benutzerdefinierten Domäne
 
 Um zu bestätigen, dass Ihre benutzerdefinierte Domäne dem Endpunkt Ihres Blobdiensts zugeordnet ist, erstellen Sie einen Blob in einem öffentlichen Container in Ihrem Speicherkonto. Greifen Sie anschließend in einem Webbrowser mit einem URI im folgenden Format auf den Blob zu: `http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-Sie können beispielsweise den folgenden URI verwenden, um auf ein Webformular im Container *myforms* in der benutzerdefinierten Unterdomäne *photos.contoso.com* zuzugreifen: `http://photos.contoso.com/myforms/applicationform.htm`
+Sie können beispielsweise den folgenden URI verwenden, um auf ein Webformular im Container `myforms` in der benutzerdefinierten Unterdomäne *photos.contoso.com* zuzugreifen: `http://photos.contoso.com/myforms/applicationform.htm`
 
 <a id="zero-down-time"></a>
 
 ### <a name="map-a-custom-domain-with-zero-downtime"></a>Zuordnen einer benutzerdefinierten Domäne ohne Ausfallzeit
 
 > [!NOTE]
-> Wenn es keine Rolle spielt, dass die Domäne für Ihre Benutzer kurzzeitig nicht verfügbar ist, können Sie die in diesem Artikel im Abschnitt [Zuordnen einer benutzerdefinierten Domäne](#map-a-domain) aufgeführten Schritte ausführen. Dies ist ein einfacherer Ansatz mit weniger Schritten.  
+> Wenn es keine Rolle spielt, dass die Domäne für Ihre Benutzer kurzzeitig nicht verfügbar ist, können Sie die in diesem Artikel im Abschnitt [Zuordnen einer benutzerdefinierten Domäne](#map-a-domain) angegebenen Schritte ausführen. Dies ist ein einfacherer Ansatz mit weniger Schritten.  
 
 Wenn Ihre Domäne aktuell eine Anwendung mit einer Vereinbarung zum Service Level (Service-Level Agreement, SLA) unterstützt, für die keine Ausfallzeiten anfallen dürfen, führen Sie die folgenden Schritte aus, um sicherzustellen, dass Benutzer auf Ihre Domäne zugreifen können, während die DNS-Zuordnung erfolgt. 
 
@@ -148,7 +196,10 @@ Der Hostname entspricht der Speicherendpunkt-URL ohne die Protokoll-ID und den n
 
 3. Kopieren Sie den Wert von **Primärer Blob-Dienstendpunkt** oder **Primärer statischer Websiteendpunkt** in eine Textdatei. 
 
-4. Entfernen Sie die Protokoll-ID (*z. B.* HTTPS) und den nachgestellten Schrägstrich aus dieser Zeichenfolge. Die folgende Tabelle enthält einige Beispiele.
+   > [!NOTE]
+   > Der Data Lake Storage-Endpunkt wird nicht unterstützt (z. B. `https://mystorageaccount.dfs.core.windows.net/`).
+
+4. Entfernen Sie die Protokoll-ID (z. B. `HTTPS`) und den nachgestellten Schrägstrich aus dieser Zeichenfolge. Die folgende Tabelle enthält einige Beispiele.
 
    | Endpunkttyp |  endpoint | Hostname |
    |------------|-----------------|-------------------|
@@ -157,7 +208,7 @@ Der Hostname entspricht der Speicherendpunkt-URL ohne die Protokoll-ID und den n
   
    Sie können diesen Wert später festlegen.
 
-#### <a name="step-2-create-a-intermediary-canonical-name-cname-record-with-your-domain-provider"></a>Schritt 2: Erstellen eines temporären kanonischen Namenseintrags (CNAME-Eintrags) bei Ihrem Domänenanbieter
+#### <a name="step-2-create-an-intermediary-canonical-name-cname-record-with-your-domain-provider"></a>Schritt 2: Erstellen eines temporären kanonischen Namenseintrags (CNAME-Eintrag) bei Ihrem Domänenanbieter
 
 Erstellen Sie einen temporären CNAME-Eintrag, der auf Ihren Hostnamen verweist. Ein CNAME-Eintrag ist eine Art von DNS-Eintrag, mit dem ein Quelldomänenname einem Zieldomänennamen zugeordnet wird.
 
@@ -179,17 +230,18 @@ Erstellen Sie einen temporären CNAME-Eintrag, der auf Ihren Hostnamen verweist.
 
      Fügen Sie dem Hostnamen die Unterdomäne `asverify` hinzu. Beispiel: `asverify.mystorageaccount.blob.core.windows.net`.
 
-4. Wählen Sie zum Registrieren der benutzerdefinierten Domäne die Schaltfläche **Speichern** aus.
-
-   Wenn die Registrierung erfolgreich ist, werden Sie im Portal benachrichtigt, dass Ihr Speicherkonto erfolgreich aktualisiert wurde. Ihre benutzerdefinierte Domäne wurde von Azure überprüft, allerdings wird der Datenverkehr zu Ihrer Domäne noch nicht zu Ihrem Speicherkonto geleitet.
-
 #### <a name="step-3-pre-register-your-custom-domain-with-azure"></a>Schritt 3: Vorabregistrieren Ihrer benutzerdefinierten Domäne bei Azure
 
 Wenn Sie Ihre benutzerdefinierte Domäne vorab bei Azure registrieren, kann Azure Ihre benutzerdefinierte Domäne erkennen, ohne dass der DNS-Eintrag für die Domäne geändert werden muss. Auf diese Weise wird die Domäne dem Blob-Endpunkt ohne Ausfallzeit zugeordnet, wenn Sie den DNS-Eintrag für die Domäne ändern.
 
+##### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
 
-2. Wählen Sie im Menübereich unter **Blob-Dienst** die Option **Benutzerdefinierte Domäne** aus.  
+2. Wählen Sie im Menübereich unter **Blob-Dienst** die Option **Benutzerdefinierte Domäne** aus.
+
+   > [!NOTE]
+   > Diese Option wird nicht in Konten angezeigt, für die das Feature für hierarchische Namespaces aktiviert ist. Verwenden Sie zum Ausführen dieses Schritts für diese Konten entweder PowerShell oder die Azure CLI.
 
    ![Option „Benutzerdefinierte Domäne“](./media/storage-custom-domain-name/custom-domain-button.png "Benutzerdefinierte Domäne")
 
@@ -203,7 +255,49 @@ Wenn Sie Ihre benutzerdefinierte Domäne vorab bei Azure registrieren, kann Azur
 
 5. Wählen Sie zum Registrieren der benutzerdefinierten Domäne die Schaltfläche **Speichern** aus.
   
-   Nachdem der CNAME-Eintrag über die Domänennamenserver (DNS) weitergegeben wurde, können Ihre Benutzer Blobdaten mithilfe der benutzerdefinierten Domäne anzeigen, sofern sie über die entsprechenden Berechtigungen verfügen.
+   Wenn die Registrierung erfolgreich ist, werden Sie im Portal benachrichtigt, dass Ihr Speicherkonto erfolgreich aktualisiert wurde. Ihre benutzerdefinierte Domäne wurde von Azure überprüft, aber der Datenverkehr an Ihre Domäne wird erst dann an Ihr Speicherkonto geleitet, nachdem Sie einen CNAME-Eintrag bei Ihrem Domänenanbieter erstellt haben. Dies erledigen Sie im nächsten Abschnitt.
+
+##### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Führen Sie den folgenden PowerShell-Befehl aus:
+
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource-group-name> -Name <storage-account-name> -CustomDomainName <custom-domain-name> -UseSubDomain $true
+```
+
+- Ersetzen Sie den Platzhalter `<resource-group-name>` durch den Namen der Ressourcengruppe.
+
+- Ersetzen Sie den Platzhalter `<storage-account-name>` durch den Namen des Speicherkontos.
+
+- Ersetzen Sie den Platzhalter `<custom-domain-name>` durch den Namen Ihrer benutzerdefinierten Domäne (einschließlich Unterdomäne).
+
+  Wenn Ihre Domäne beispielsweise *contoso.com* und Ihr Unterdomänenalias *www* lautet, geben Sie `www.contoso.com` ein. Lautet Ihre Unterdomäne *photos*, geben Sie `photos.contoso.com` ein.
+
+Der Datenverkehr an Ihre Domäne wird erst dann an Ihr Speicherkonto geleitet, nachdem Sie einen CNAME-Eintrag bei Ihrem Domänenanbieter erstellt haben. Dies erledigen Sie im nächsten Abschnitt.
+
+##### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Führen Sie den folgenden PowerShell-Befehl aus:
+
+```azurecli
+az storage account update \
+   --resource-group <resource-group-name> \ 
+   --name <storage-account-name> \
+   --custom-domain <custom-domain-name> \
+   --use-subdomain true
+  ```
+
+- Ersetzen Sie den Platzhalter `<resource-group-name>` durch den Namen der Ressourcengruppe.
+
+- Ersetzen Sie den Platzhalter `<storage-account-name>` durch den Namen des Speicherkontos.
+
+- Ersetzen Sie den Platzhalter `<custom-domain-name>` durch den Namen Ihrer benutzerdefinierten Domäne (einschließlich Unterdomäne).
+
+  Wenn Ihre Domäne beispielsweise *contoso.com* und Ihr Unterdomänenalias *www* lautet, geben Sie `www.contoso.com` ein. Lautet Ihre Unterdomäne *photos*, geben Sie `photos.contoso.com` ein.
+
+Der Datenverkehr an Ihre Domäne wird erst dann an Ihr Speicherkonto geleitet, nachdem Sie einen CNAME-Eintrag bei Ihrem Domänenanbieter erstellt haben. Dies erledigen Sie im nächsten Abschnitt.
+
+---
 
 #### <a name="step-4-create-a-cname-record-with-your-domain-provider"></a>Schritt 4: Erstellen eines CNAME-Eintrags bei Ihrem Domänenanbieter
 
@@ -227,15 +321,13 @@ Erstellen Sie einen temporären CNAME-Eintrag, der auf Ihren Hostnamen verweist.
 
 Um zu bestätigen, dass Ihre benutzerdefinierte Domäne dem Endpunkt Ihres Blobdiensts zugeordnet ist, erstellen Sie einen Blob in einem öffentlichen Container in Ihrem Speicherkonto. Greifen Sie anschließend in einem Webbrowser mit einem URI im folgenden Format auf den Blob zu: `http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-Sie können beispielsweise den folgenden URI verwenden, um auf ein Webformular im Container *myforms* in der benutzerdefinierten Unterdomäne *photos.contoso.com* zuzugreifen: `http://photos.contoso.com/myforms/applicationform.htm`
+Sie können beispielsweise den folgenden URI verwenden, um auf ein Webformular im Container `myforms` in der benutzerdefinierten Unterdomäne *photos.contoso.com* zuzugreifen: `http://photos.contoso.com/myforms/applicationform.htm`
 
 ### <a name="remove-a-custom-domain-mapping"></a>Entfernen der Zuordnung einer benutzerdefinierten Domäne
 
 Wenn Sie die Zuordnung einer benutzerdefinierten Domäne entfernen möchten, müssen Sie die Registrierung der benutzerdefinierten Domäne aufheben. Wenden Sie eines der folgenden Verfahren an.
 
 #### <a name="portal"></a>[Portal](#tab/azure-portal)
-
-Führen Sie zum Entfernen der Einstellung für die benutzerdefinierte Domäne die folgenden Schritte aus:
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
 
@@ -246,29 +338,7 @@ Führen Sie zum Entfernen der Einstellung für die benutzerdefinierte Domäne di
 
 4. Wählen Sie die Schaltfläche **Speichern** aus.
 
-Nachdem die benutzerdefinierte Domäne erfolgreich entfernt wurde, wird in einer Portalbenachrichtigung angezeigt, dass Ihr Speicherkonto erfolgreich aktualisiert wurde.
-
-#### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-Verwenden Sie den CLI-Befehl [az storage account update](/cli/azure/storage/account), und geben Sie eine leere Zeichenfolge (`""`) als Wert für das `--custom-domain`-Argument an, um die Registrierung einer benutzerdefinierten Domäne zu entfernen.
-
-* Befehlsformat:
-
-  ```azurecli
-  az storage account update \
-      --name <storage-account-name> \
-      --resource-group <resource-group-name> \
-      --custom-domain ""
-  ```
-
-* Befehlsbeispiel:
-
-  ```azurecli
-  az storage account update \
-      --name mystorageaccount \
-      --resource-group myresourcegroup \
-      --custom-domain ""
-  ```
+Wenn die benutzerdefinierte Domäne erfolgreich entfernt wurde, wird in einer Portalbenachrichtigung angezeigt, dass Ihr Speicherkonto erfolgreich aktualisiert wurde.
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -293,6 +363,28 @@ Verwenden Sie das PowerShell-Cmdlet [Set-AzStorageAccount](/powershell/module/az
       -AccountName "mystorageaccount" `
       -CustomDomainName ""
   ```
+
+#### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Verwenden Sie den CLI-Befehl [az storage account update](/cli/azure/storage/account), und geben Sie eine leere Zeichenfolge (`""`) als Wert für das `--custom-domain`-Argument an, um die Registrierung einer benutzerdefinierten Domäne zu entfernen.
+
+* Befehlsformat:
+
+  ```azurecli
+  az storage account update \
+      --name <storage-account-name> \
+      --resource-group <resource-group-name> \
+      --custom-domain ""
+  ```
+
+* Befehlsbeispiel:
+
+  ```azurecli
+  az storage account update \
+      --name mystorageaccount \
+      --resource-group myresourcegroup \
+      --custom-domain ""
+  ```
 ---
 
 <a id="enable-https"></a>
@@ -302,8 +394,6 @@ Verwenden Sie das PowerShell-Cmdlet [Set-AzStorageAccount](/powershell/module/az
 Bei diesem Ansatz müssen mehr Schritte ausgeführt werden, aber dabei wird HTTPS-Zugriff aktiviert. 
 
 Wenn die Benutzer nicht über HTTPS auf Ihren Blob- oder Webinhalt zugreifen müssen, lesen Sie den Abschnitt [Zuordnen einer benutzerdefinierten Domäne nur mit aktiviertem HTTP](#enable-http) in diesem Artikel. 
-
-Führen Sie die folgenden Schritte aus, um eine benutzerdefinierte Domäne zuzuordnen und HTTPS-Zugriff zu aktivieren:
 
 1. Aktivieren Sie [Azure CDN](../../cdn/cdn-overview.md) für Ihren Blob- oder Webendpunkt. 
 

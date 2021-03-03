@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 6735b3377650c900a7b7d18933180991a6a2c9fd
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 1ee4e19a3e76a001a66f6498530fab4f4703fa85
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97930887"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381601"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-Trigger für Azure Functions
 
@@ -323,7 +323,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction** | – | Muss auf `in` festgelegt sein. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. Ausnahmen sind im Abschnitt [Verwendung](#usage) angegeben. |
 |**name** | – | Der Name der Variablen, die das Blob im Funktionscode darstellt. |
 |**path** | **BlobPath** |Der zu überwachende [Container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).  Kann ein [Blobnamensmuster](#blob-name-patterns) sein. |
-|**connection** | **Connection** | Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Bei der Verbindungszeichenfolge muss es sich um eine Verbindungszeichenfolge für ein allgemeines Speicherkonto (nicht für ein [Blobspeicherkonto](../storage/common/storage-account-overview.md#types-of-storage-accounts)) handeln.|
+|**connection** | **Connection** | Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Bei der Verbindungszeichenfolge muss es sich um eine Verbindungszeichenfolge für ein allgemeines Speicherkonto (nicht für ein [Blobspeicherkonto](../storage/common/storage-account-overview.md#types-of-storage-accounts)) handeln.<br><br>Wenn Sie [Version 5.x oder höher der Erweiterung](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher) verwenden, können Sie anstelle einer Verbindungszeichenfolge einen Verweis auf einen Konfigurationsabschnitt angeben, der die Verbindung definiert. Siehe [Verbindungen](./functions-reference.md#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -463,9 +463,16 @@ Wenn bei allen fünf Versuchen Fehler auftreten, fügt Azure Functions der Stora
 
 Der Blobtrigger verwendet intern eine Warteschlange, sodass die maximal zulässige Anzahl gleichzeitiger Funktionsaufrufe durch die [Warteschlangenkonfiguration in „host.json“](functions-host-json.md#queues) gesteuert wird. Durch die Standardeinstellungen wird die Anzahl gleichzeitiger Aufrufe auf 24 beschränkt. Dieser Grenzwert gilt separat für jede Funktion, die einen Blobtrigger verwendet.
 
+> [!NOTE]
+> Für Apps, die die [Version 5.0.0 oder höher der Storage-Erweiterung](functions-bindings-storage-blob.md#storage-extension-5x-and-higher) verwenden, gilt die Warteschlangenkonfiguration in „host.json“ nur für Warteschlangentrigger. Die Parallelität des Blobtriggers wird stattdessen durch die [Blobkonfiguration in „host.json“](functions-host-json.md#blobs) gesteuert.
+
 [Der Verbrauchstarif](event-driven-scaling.md) beschränkt den Arbeitsspeicher einer Funktions-App auf einer VM auf 1,5 GB. Der Arbeitsspeicher wird von jeder parallel ausgeführten Funktionsinstanz und durch die Functions-Runtime selbst verwendet. Wenn eine durch einen Blob ausgelöste Funktion das gesamte Blob in den Arbeitsspeicher lädt, entspricht der maximal von dieser Funktion verwendete Arbeitsspeicher nur für Blobs dem 24 * der maximalen Blobgröße. Beispiel: Eine Funktions-App, die drei Funktionen mit Blobtrigger umfasst und die Standardeinstellungen verwendet, weist pro VM eine maximale Nebenläufigkeit von 3 * 24 = 72 Funktionsaufrufen auf.
 
 JavaScript- und Java-Funktionen laden das gesamte Blob in den Arbeitsspeicher, C#-Funktionen zeigen dieses Verhalten bei einer Bindung an `string` oder `Byte[]`.
+
+## <a name="hostjson-properties"></a>Eigenschaften von „host.json“
+
+Die Datei [host.json](functions-host-json.md#blobs) enthält Einstellungen, mit denen das Verhalten des Blobtriggers gesteuert werden kann. Informationen zu verfügbaren Einstellungen finden Sie im Abschnitt [Einstellungen für „host.json“](functions-bindings-storage-blob.md#hostjson-settings).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

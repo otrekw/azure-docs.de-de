@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 025a94cf7d163d41486ef218e70d9eb48e93d31c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 08aa69db90901447297e06cd111b6b0174e6637a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881315"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575093"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure-Sicherheitsbaseline für Azure Machine Learning
 
@@ -155,9 +155,9 @@ Für eine Ressource in Ihrem virtuellen Azure Machine Learning-Netzwerk, die das
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen der Konfigurationen von Netzwerkressourcen und zum Erkennen von Änderungen bei Netzwerkressourcen, die sich auf Azure Machine Learning beziehen. Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzwerkressourcen ausgelöst werden.
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht zutreffend
 
@@ -193,9 +193,9 @@ Für eine Ressource in Ihrem virtuellen Azure Machine Learning-Netzwerk, die das
 
 Sie können Vorgangsprotokolle von Machine Learning Service auch zu Sicherheits- und Compliancezwecken korrelieren.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Aktivieren der Protokollierung in Azure Machine Learning](./how-to-track-experiments.md)
 
@@ -211,7 +211,7 @@ Sie können Vorgangsprotokolle von Machine Learning Service auch zu Sicherheits-
 
 Azure Machine Learning bietet unterschiedliche Unterstützung für verschiedene Computeressourcen und sogar Ihre eigenen Computeressourcen. Für Computeressourcen, die sich im Besitzt Ihrer Organisation befinden, verwenden Sie Azure Security Center, um das Betriebssystem zu überwachen. 
 
-- [Sammeln von internen Azure Virtual Machine-Hostprotokollen mit Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Sammeln von internen Azure Virtual Machine-Hostprotokollen mit Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Grundlegendes zur Datensammlung in Azure Security Center](../security-center/security-center-enable-data-collection.md)
 
@@ -223,7 +223,7 @@ Azure Machine Learning bietet unterschiedliche Unterstützung für verschiedene 
 
 **Leitfaden**: Legen Sie in Azure Monitor die Protokollaufbewahrungsdauer für Log Analytics-Arbeitsbereiche, die Ihrer Azure Machine Learning-Instanz zugeordnet sind, gemäß den Compliancevorschriften Ihres Unternehmens fest.
 
-- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung**: Nicht zutreffend
 
@@ -241,9 +241,9 @@ Alternativ können Sie auch Daten in Azure Sentinel oder einer SIEM-Drittanbiete
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Erste Schritte mit Log Analytics-Abfragen](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Erste Schritte mit Log Analytics-Abfragen](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center-Überwachung**: Nicht zutreffend
 
@@ -257,7 +257,7 @@ Alternativ dazu können Sie auch Daten in Azure Sentinel aktivieren und integrie
 
 - [Weitere Informationen zu Azure Machine Learning-Warnungen](monitor-azure-machine-learning.md#alerts)
 
-- [Erstellen von Warnungen für Protokolldaten eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/tutorial-response.md)
+- [Erstellen von Warnungen für Protokolldaten eines Log Analytics-Arbeitsbereichs](../azure-monitor/alerts/tutorial-response.md)
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -565,7 +565,7 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Machine Learning un
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an Produktionsinstanzen von Azure Machine Learning und anderen kritischen bzw. verwandten Ressourcen vorgenommen werden.
 
-- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht zutreffend
 

@@ -11,17 +11,17 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 10/21/2020
-ms.openlocfilehash: 1fc5653f08f8fc7916257dfdba570f451c0afa75
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 95e9ef340328bb4c1835e966cc9c3019bca88c09
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131932"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368828"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>Erstellen eines Agents für elastische Aufträge über PowerShell (Vorschau)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Mit [elastischen Aufträgen (Vorschau)](job-automation-overview.md#elastic-database-jobs-preview) können einzelne oder mehrere T-SQL-Skripts (Transact-SQL) für zahlreiche Datenbanken gleichzeitig ausgeführt werden.
+Mit [elastischen Aufträgen (Vorschau)](job-automation-overview.md) können einzelne oder mehrere T-SQL-Skripts (Transact-SQL) für zahlreiche Datenbanken gleichzeitig ausgeführt werden.
 
 In diesem Tutorial erfahren Sie, wie Sie eine datenbankübergreifende Abfrage ausführen:
 
@@ -63,7 +63,7 @@ Neben dem Modul **Az.Sql** wird für dieses Tutorial auch das PowerShell-Modul *
 
 ## <a name="create-required-resources"></a>Erstellen der erforderlichen Ressourcen
 
-Um einen Agent für elastische Aufträge erstellen zu können, benötigen Sie eine [Auftragsdatenbank](job-automation-overview.md#job-database) (S0 oder höher).
+Um einen Agent für elastische Aufträge erstellen zu können, benötigen Sie eine [Auftragsdatenbank](job-automation-overview.md#elastic-job-database) (S0 oder höher).
 
 Das folgende Skript erstellt eine neue Ressourcengruppe, einen neuen Server und eine neue Datenbank, die Sie als Auftragsdatenbank verwenden können. Das zweite Skript erstellt einen zweiten Server mit zwei leeren Datenbanken, für die Aufträge ausgeführt werden können.
 

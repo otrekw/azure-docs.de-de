@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: bff846b4b64778d5e40ea7f08f88faf3dde81d9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55263d3c742d18cf03303f96f08fb9aa370c7af8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371608"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592066"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Ansichtsdefinitionsartefakt in Azure Managed Applications
 
@@ -137,7 +137,7 @@ Wenn Sie diese Ansicht in **viewDefinition.json** bereitstellen, überschreibt s
 
 `"kind": "Metrics"`
 
-Die Metrikenansicht ermöglicht Ihnen, Daten von Ihren verwalteten Anwendungsressourcen in [Azure Monitor-Metriken](../../azure-monitor/platform/data-platform-metrics.md) zu sammeln und zu aggregieren.
+Die Metrikenansicht ermöglicht Ihnen, Daten von Ihren verwalteten Anwendungsressourcen in [Azure Monitor-Metriken](../../azure-monitor/essentials/data-platform-metrics.md) zu sammeln und zu aggregieren.
 
 ```json
 {
@@ -176,7 +176,7 @@ Die Metrikenansicht ermöglicht Ihnen, Daten von Ihren verwalteten Anwendungsres
 |---------|---------|---------|
 |displayName|Ja|Der angezeigte Titel des Diagramms.|
 |chartType|Nein|Die Visualisierung, die für dieses Diagramm verwendet werden soll. Standardmäßig wird ein Liniendiagramm dargestellt. Unterstützte Diagrammtypen: `Bar, Line, Area, Scatter`.|
-|metrics|Ja|Das Array von Metriken, die in diesem Diagramm dargestellt werden sollen. Weitere Informationen zu unterstützten Metriken im Azure-Portal finden Sie unter [Unterstützte Metriken von Azure Monitor](../../azure-monitor/platform/metrics-supported.md).|
+|metrics|Ja|Das Array von Metriken, die in diesem Diagramm dargestellt werden sollen. Weitere Informationen zu unterstützten Metriken im Azure-Portal finden Sie unter [Unterstützte Metriken von Azure Monitor](../../azure-monitor/essentials/metrics-supported.md).|
 
 ### <a name="metric"></a>Metrik
 

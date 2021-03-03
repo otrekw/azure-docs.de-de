@@ -1,24 +1,23 @@
 ---
 title: 'Netzwerkleistungsmonitor-Lösung in Azure: häufig gestellte Fragen | Microsoft-Dokumentation'
 description: Dieser Artikel umfasst die häufig gestellten Fragen zum Netzwerkleistungsmonitor in Azure. Mit dem Netzwerkleistungsmonitor (NPM) können Sie die Leistung Ihrer Netzwerke nahezu in Echtzeit überwachen und Leistungsengpässe im Netzwerk erkennen und lokalisieren.
-ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 1faeb047783b9db24348425e5a6453754e550d4d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 909cbd6174fe7eceaa8b53b5ba44fe72990b56d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833013"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708049"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Netzwerkleistungsmonitor-Lösung: häufig gestellte Fragen
 
 ![Symbol des Netzwerkleistungsmonitors](media/network-performance-monitor-faq/npm-symbol.png)
 
 > [!IMPORTANT]
-> Ab dem 1. Juli 2021 ist es nicht mehr möglich, neue Tests in einem vorhandenen Arbeitsbereich hinzufügen oder einen neuen Arbeitsbereich im Netzwerkleistungsmonitor zu aktivieren. Sie können weiterhin die Tests verwenden, die vor dem 1. Juli 2021 erstellt wurden. [Migrieren Sie Ihre Tests vor dem 29. Februar 2024 aus dem Netzwerkleistungsmonitor zum neuen Verbindungsmonitor](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) in Azure Network Watcher, um die Dienstunterbrechungen im Zusammenhang mit Ihren aktuellen Workloads zu minimieren.
+> Ab dem 1. Juli 2021 ist es nicht mehr möglich, neue Tests in einem vorhandenen Arbeitsbereich hinzufügen oder einen neuen Arbeitsbereich im Netzwerkleistungsmonitor zu aktivieren. Sie können weiterhin die Tests verwenden, die vor dem 1. Juli 2021 erstellt wurden. [Migrieren Sie Ihre Tests vor dem 29. Februar 2024 aus dem Netzwerkleistungsmonitor zum neuen Verbindungsmonitor](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) in Azure Network Watcher, um die Dienstunterbrechungen im Zusammenhang mit Ihren aktuellen Workloads zu minimieren.
 
 Dieser Artikel umfasst die häufig gestellten Fragen (FAQs) zum Netzwerkleistungsmonitor (NPM) in Azure.
 
@@ -43,7 +42,7 @@ Die Funktion zum Überwachen von Netzwerken mithilfe von Linux-basierten Knoten 
 Zur Ausführung der Netzwerkleistungsmonitor-Lösung auf virtuellen Knotencomputern zum Überwachen von Netzwerken müssen die Knoten mindestens einen Speicher von 500 MB und einen Kern aufweisen. Zum Ausführen des Netzwerkleistungsmonitors müssen Sie keine separaten Knoten verwenden. Die Lösung kann auf Knoten ausgeführt werden, auf denen andere Workloads ausgeführt werden. Die Lösung bietet die Möglichkeit, den Überwachungsprozess zu beenden, falls er mehr als 5% der CPU-Ressourcen nutzt.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Soll ich zur Verwendung des Netzwerkleistungsmonitors die Knoten als Direkt-Agent oder über System Center Operations Manager verbinden?
-Die beiden Funktionen „Systemmonitor“ und „Dienstkonnektivitätsmonitor“ unterstützen Knoten, die [als Direkt-Agent](../platform/agent-windows.md) sowie [über Operations Manager](../platform/om-agents.md) verbunden werden.
+Die beiden Funktionen „Systemmonitor“ und „Dienstkonnektivitätsmonitor“ unterstützen Knoten, die [als Direkt-Agent](../agents/agent-windows.md) sowie [über Operations Manager](../agents/om-agents.md) verbunden werden.
 
 Für die Funktion „ExpressRoute-Monitor“ sollten die Azure-Knoten nur als Direkt-Agents verbunden werden. Azure-Knoten, die über Operations Manager verbunden werden, werden nicht unterstützt. Lokale Knoten werden zur Überwachung einer ExpressRoute-Leitung unterstützt, wenn sie als Direkt-Agents und über Operations Manager verbunden sind.
 
@@ -98,7 +97,7 @@ Wenn ein Hop rot gekennzeichnet ist, heißt das, dass er Teil mindestens eines f
 Der Netzwerkleistungsmonitor verwendet eine Wahrscheinlichkeitsmethode, um den einzelnen Netzwerkpfaden, Netzwerksegmenten und den zugehörigen Netzwerkhops basierend auf der Anzahl der fehlerhaften Pfade, zu denen sie gehören, Fehlerwahrscheinlichkeiten zuzuweisen. Wenn die Netzwerksegmente und Netzwerkhops zu einer höheren Anzahl von fehlerhaften Pfaden gehören, steigt auch die zugewiesene Fehlerwahrscheinlichkeit. Dieser Algorithmus lässt sich am besten bei vielen Knoten anwenden, die über einen NPM-Agent miteinander verbunden sind, da sich dadurch die Datenpunkte zur Berechnung der Fehlerwahrscheinlichkeiten erhöhen.
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>Wie kann ich Warnungen im Netzwerkleistungsmonitor erstellen?
-Derzeit treten beim Erstellen von Warnungen über die Benutzeroberfläche des Netzwerkleistungsmonitors Fehler aufgrund eines bekannten Problems auf. [Erstellen Sie Warnungen manuell](../platform/alerts-log.md).
+Derzeit treten beim Erstellen von Warnungen über die Benutzeroberfläche des Netzwerkleistungsmonitors Fehler aufgrund eines bekannten Problems auf. [Erstellen Sie Warnungen manuell](../alerts/alerts-log.md).
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Welche Log Analytics-Standardabfragen für Warnungen gibt es?
 Abfrage des Systemmonitors

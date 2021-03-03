@@ -11,16 +11,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 11/13/2019
+ms.date: 02/12/2021
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 9d476b1db645ed1f91b62fcf11464f7077a8fb3c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 0f79402956148c566bc34faa88e10895657883c2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491425"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591745"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Pushbenachrichtigungen mit Azure Notification Hubs: Häufig gestellte Fragen
 
@@ -102,6 +102,10 @@ Die Zustellung von Benachrichtigungen durch den PNS wird nicht per SLA garantier
 ### <a name="is-there-any-latency-guarantee"></a>Gibt es garantierte Latenzzeiten?
 
 Da Pushbenachrichtigungen von einem externen, plattformspezifischen PNS übermittelt werden, können keine Latenzzeiten garantiert werden. Die Mehrzahl der Pushbenachrichtigungen wird jedoch innerhalb weniger Minuten zugestellt.
+
+### <a name="where-does-azure-notification-hubs-store-data"></a>Wo werden die Daten von Azure Notification Hubs gespeichert?
+
+In Azure Notification Hubs werden Kundenregistrierungsdaten in der Region gespeichert, die vom Kunden ausgewählt wurde. Notification Hubs bietet eine Notfallwiederherstellung der Metadaten (Notification Hubs-Name, Verbindungszeichenfolge und andere wichtige Informationen). Für alle Regionen mit Ausnahme von „Brasilien, Süden“ und „Asien, Südosten“ wird die Metadatensicherung in einer anderen Region gehostet (normalerweise in der anderen Region des Azure-Regionspaars). Für die Regionen „Brasilien, Süden“ und „Asien, Südosten“ werden Datenbanksicherungen in derselben Region gespeichert, um die Anforderungen an die Datenresidenz für diese Regionen zu erfüllen.
 
 ### <a name="what-do-i-need-to-consider-when-designing-a-solution-with-namespaces-and-notification-hubs"></a>Welche Aspekte müssen beim Entwerfen einer Lösung mit Namespaces und Notification Hubs berücksichtigt werden?
 
@@ -192,7 +196,7 @@ Sie können auch programmgesteuert auf Metriken zugreifen. Weitere Informationen
 
 - [Retrieve Azure Monitor metrics with .NET (Abrufen von Azure Monitor-Metriken mit .NET)](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/). In diesem Beispiel werden Benutzername und Kennwort verwendet. Um ein Zertifikat zu verwenden, überladen Sie die FromServicePrincipal-Methode, um ein Zertifikat wie [in diesem Beispiel](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs) gezeigt anzugeben. 
 - [Getting metrics and activity logs for a resource](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/) (Abrufen von Metriken und Aktivitätsprotokollen für eine Ressource)
-- [Exemplarische Vorgehensweise für die Azure Monitoring-REST-API](../azure-monitor/platform/rest-api-walkthrough.md)
+- [Exemplarische Vorgehensweise für die Azure Monitoring-REST-API](../azure-monitor/essentials/rest-api-walkthrough.md)
 
 > [!NOTE]
 > Wenn Benachrichtigungen erfolgreich waren, bedeutet das einfach, dass Pushbenachrichtigungen an den externen PNS (beispielsweise APNs für iOS-Geräte und macOS oder FCM für Android-Geräte) übermittelt wurden. Der PNS hat die Aufgabe, die Benachrichtigungen an Zielgeräte zu übermitteln. In der Regel macht der PNS Übermittlungsmetriken nicht für Dritte verfügbar.  
@@ -207,7 +211,7 @@ Sie können auch programmgesteuert auf Metriken zugreifen. Weitere Informationen
 [Sicherheitsmodell von Notification Hubs]: /previous-versions/azure/azure-services/dn495373(v=azure.100)
 [Tutorial zu sicheren Pushbenachrichtigungen mit Notification Hubs]: ./notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md
 [Problembehandlung für Notification Hubs]: ./notification-hubs-push-notification-fixer.md
-[Notification Hubs-Metriken]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
+[Notification Hubs-Metriken]: ../azure-monitor/essentials/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Vorgehensweise: Massenhaftes Exportieren und Ändern von Registrierungen]: ./export-modify-registrations-bulk.md
 [Azure portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples

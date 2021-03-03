@@ -1,14 +1,14 @@
 ---
-title: Bereitstellen von Azure VMware Solution
-description: Hier werden die Schritte zum Bereitstellen von Azure VMware Solution über das Azure-Portal erläutert.
+title: Erstellen einer privaten Cloud von Azure VMware Solution
+description: Hier erfahren Sie mehr über die Schritte zum Erstellen einer privaten Azure VMware Solution-Cloud über das Azure-Portal.
 ms.topic: include
-ms.date: 09/28/2020
-ms.openlocfilehash: 4d0881721cd8c13d1b6c9fb3a29e4cdb6d6a753f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/17/2021
+ms.openlocfilehash: da79881e609f982960468a8f26c98178f972ad43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578313"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725401"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
@@ -26,8 +26,6 @@ ms.locfileid: "91578313"
    | **Ressourcenname** | Der Name Ihrer privaten Azure VMware Solution-Cloud |
    | **SKU** | Wählen Sie den folgenden SKU-Wert aus: AV36 |
    | **Hosts** | Die Anzahl von Hosts, die dem privaten Cloudcluster hinzugefügt werden sollen. Der Standardwert ist 3, er kann jedoch nach der Bereitstellung erhöht oder verringert werden.  |
-   | **vCenter admin password** (vCenter-Administratorkennwort) | Geben Sie ein Cloudadministratorkennwort ein. |
-   | **NSX-T manager password** (NSX-T-Manager-Kennwort) | Geben Sie ein NSX-T-Administratorkennwort ein. |
    | **Adressblock** | Geben Sie einen IP-Adressblock für das CIDR-Netzwerk für die private Cloud ein, etwa 10.175.0.0/22. |
    | **Virtual Network** | Wählen Sie für die private Azure VMware Solution-Cloud ein virtuelles Netzwerk aus, oder erstellen Sie ein neues.  |
 
@@ -40,4 +38,4 @@ ms.locfileid: "91578313"
 
 1. Vergewissern Sie sich, dass die Bereitstellung erfolgreich war. Navigieren Sie zu der von Ihnen erstellten Ressourcengruppe, und wählen Sie Ihre private Cloud aus.  Wenn die Bereitstellung abgeschlossen ist, wird der Status **Erfolgreich** angezeigt. 
 
-   :::image type="content" source="../media/tutorial-create-private-cloud/validate-deployment.png" alt-text="Geben Sie auf der Registerkarte „Grundlagen“ Werte für die Felder ein." border="true":::
+   :::image type="content" source="../media/tutorial-create-private-cloud/validate-deployment.png" alt-text="Vergewissern Sie sich, dass die Bereitstellung erfolgreich war." border="true":::

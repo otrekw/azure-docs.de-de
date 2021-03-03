@@ -6,14 +6,18 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: f3d6023ffd3043bc57727fc39f077dd0ce7eccb8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d27a79e180a0219773a3094fb85f842773d75183
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024365"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656615"
 ---
 In diesem Schnellstart erfahren Sie, wie Sie einen Anruf mithilfe der Clientbibliothek für Telefonie von Azure Communication Services für JavaScript beginnen.
+Dieses Dokument verweist auf Typen in Version 1.0.0-beta.5 der aufrufenden Bibliothek.
+
+> [!NOTE]
+> Dieses Dokument verwendet Version 1.0.0-beta.6 der aufrufenden Clientbibliothek.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -60,7 +64,7 @@ Erstellen Sie im Stammverzeichnis Ihres Projekts eine Datei mit dem Namen **clie
 
 ```javascript
 import { CallClient, CallAgent } from "@azure/communication-calling";
-import { AzureCommunicationUserCredential } from '@azure/communication-common';
+import { AzureCommunicationTokenCredential } from '@azure/communication-common';
 
 let call;
 let callAgent;
@@ -77,17 +81,17 @@ Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigst
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
 | CallClient                       | CallClient ist der Haupteinstiegspunkt in die Clientbibliothek „Calling“.                                                                       |
 | CallAgent                        | CallAgent dient zum Starten und Verwalten von Anrufen.                                                                                            |
-| AzureCommunicationUserCredential | Die AzureCommunicationUserCredential-Klasse implementiert die CommunicationUserCredential-Schnittstelle, die zum Instanziieren von „CallAgent“ verwendet wird. |
+| AzureCommunicationTokenCredential | Die AzureCommunicationTokenCredential-Klasse implementiert die CommunicationTokenCredential-Schnittstelle, die zum Instanziieren von CallAgent verwendet wird. |
 
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
-Sie müssen `<USER_ACCESS_TOKEN>` durch ein gültiges Benutzerzugriffstoken für Ihre Ressource ersetzen. Wenn Sie noch über kein Token verfügen, finden Sie in der Dokumentation zu [Benutzerzugriffstoken](../../access-tokens.md) weitere Informationen. Initialisieren Sie mithilfe von `CallClient` eine `CallAgent`-Instanz mit einem `CommunicationUserCredential`-Objekt, das es uns ermöglicht, Anrufe zu tätigen und zu empfangen. Fügen Sie den folgenden Code zu **client.js** hinzu.
+Sie müssen `<USER_ACCESS_TOKEN>` durch ein gültiges Benutzerzugriffstoken für Ihre Ressource ersetzen. Wenn Sie noch über kein Token verfügen, finden Sie in der Dokumentation zu [Benutzerzugriffstoken](../../access-tokens.md) weitere Informationen. Initialisieren Sie mithilfe von `CallClient` eine `CallAgent`-Instanz mit einem `CommunicationTokenCredential`-Objekt, das es uns ermöglicht, Anrufe zu tätigen und zu empfangen. Fügen Sie den folgenden Code zu **client.js** hinzu.
 
 ```javascript
 async function init() {
     const callClient = new CallClient();
-    const tokenCredential = new AzureCommunicationUserCredential("<USER ACCESS TOKEN>");
+    const tokenCredential = new AzureCommunicationTokenCredential("<USER ACCESS TOKEN>");
     callAgent = await callClient.createCallAgent(tokenCredential);
     callButton.disabled = false;
 }
@@ -102,7 +106,7 @@ Fügen Sie einen Ereignishandler hinzu, um einen Anruf zu initiieren, wenn auf `
 callButton.addEventListener("click", () => {
     // start a call
     const userToCall = calleeInput.value;
-    call = callAgent.call(
+    call = callAgent.startCall(
         [{ communicationUserId: userToCall }],
         {}
     );

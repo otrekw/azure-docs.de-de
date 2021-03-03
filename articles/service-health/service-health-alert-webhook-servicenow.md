@@ -4,12 +4,12 @@ description: Erhalten Sie personalisierte Benachrichtigungen zu Service Health-E
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: f120e9d950cc349d0331a476dbfbfe9d7e599f0c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df6596dd9853a792b5bfdb333361a2b9cd02a347
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000639"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588187"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Senden von Azure Service-Integritätswarnungen mit ServiceNow mit Webhooks
 
@@ -29,7 +29,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 
 1.  Fügen Sie einen **Namen** für Ihre REST-API hinzu und legen Sie die **API-ID** auf `azureservicehealth` fest.
 
-1.  Klicken Sie auf **Submit** (Senden).
+1.  Klicken Sie auf **Senden**.
 
     ![„REST API Settings“ in ServiceNow](./media/webhook-alerts/servicenow-restapi-settings.png)
 
@@ -178,7 +178,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 1. Wählen Sie **Save** (Speichern) aus, wenn Sie mit dem Aktualisieren der Aktionsgruppe fertig sind.
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testen der Webhookintegration über eine HTTP POST-Anforderung
-1. Erstellen Sie die Service Health-Nutzlast, die Sie senden möchten. Eine Service Health-Beispielwebhook-Nutzlast finden Sie unter [Webhooks für Azure-Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts-webhook.md).
+1. Erstellen Sie die Service Health-Nutzlast, die Sie senden möchten. Eine Service Health-Beispielwebhook-Nutzlast finden Sie unter [Webhooks für Azure-Aktivitätsprotokollwarnungen](../azure-monitor/alerts/activity-log-alerts-webhook.md).
 
 1. Erstellen Sie eine HTTP POST-Anforderung, indem Sie wie folgt vorgehen:
 
@@ -195,6 +195,6 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie, wie Sie [Webhookbenachrichtigungen für vorhandene Problemverwaltungssysteme konfigurieren](service-health-alert-webhook-guide.md).
-- Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts-webhook.md). 
+- Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](../azure-monitor/alerts/activity-log-alerts-webhook.md). 
 - Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](./service-notifications.md).
-- Weitere Informationen zu [Aktionsgruppen](../azure-monitor/platform/action-groups.md).
+- Weitere Informationen zu [Aktionsgruppen](../azure-monitor/alerts/action-groups.md).

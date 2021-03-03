@@ -9,22 +9,31 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 7dcaae80842f06714759cb5c933a62ccd85aac63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 249b013a35df8978a7296086b4e5ada3b78b2c52
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798090"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093827"
 ---
 # <a name="view-or-change-your-settings-in-the-my-account-portal"></a>Anzeigen oder Ändern Ihrer Einstellungen im Portal „Mein Konto“
 
 Sie können Ihre Kontoeinstellungen wie Sprache oder Zeitzone auf der Seite **Einstellungen und Datenschutz** im Portal **Mein Konto** anzeigen oder ändern.
 
+>[!Note]
+> Wenn bei der Anmeldung mit einem persönlichen Microsoft-Konto ein Fehler auftritt, können Sie sich trotzdem mit dem Domänennamen für Ihre Organisation (z. B. „contoso.com“) oder der **Mandanten-ID** Ihrer Organisation, die Sie von Ihrem Administrator erhalten, über eine der folgenden URLs anmelden:
+>
+>   - https://myaccount.microsoft.com?tenantId=*Ihr_Domänenname*
+>   - https://myaccount.microsoft.com?tenant=*Ihre_Mandanten_ID*
+
 ## <a name="view-and-manage-your-language-and-regional-settings"></a>Anzeigen und Verwalten Ihrer Sprach- und Regionseinstellungen
 
-1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myaccount.microsoft.com/ auf.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myaccount.microsoft.com/ auf. Wenn Sie sich mit einem persönlichen Microsoft-Konto anmelden, können Sie sich trotzdem mit dem Domänennamen für Ihre Organisation (z. B. „contoso.com“) oder der **Mandanten-ID** Ihrer Organisation, die Sie von Ihrem Administrator erhalten, über eine der folgenden URLs anmelden:
+
+   - https://myaccount.microsoft.com?tenantId=*Ihr_Domänenname*
+   - https://myaccount.microsoft.com?tenant=*Ihre_Mandanten_ID*
 
 1. Wählen Sie im linken Navigationsbereich **Einstellungen und Datenschutz** oder im Block **Einstellungen und Datenschutz** den Link **Einstellungen und Datenschutz anzeigen** aus.
 

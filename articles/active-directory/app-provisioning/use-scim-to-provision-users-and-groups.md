@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 35efcd4059ab654178fb87c133a6f64721caf7d2
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1445e7959906966c58730521123ae03590bef1b3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989060"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652095"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Tutorial: Entwickeln eines SCIM-Endpunkts und Planen seiner Bereitstellung
 
@@ -882,7 +882,7 @@ Im Beispielcode werden Anforderungen mit dem Microsoft.AspNetCore.Authentication
 
 Ein Bearertoken ist auch zur Verwendung der bereitgestellten [Postman-Tests](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) und zum lokalen Debuggen mithilfe von „localhost“ erforderlich. Für den Beispielcode werden ASP.NET Core-Umgebungen verwendet, damit im Entwicklungsstadium die Authentifizierungsoptionen geändert und selbstsignierte Token verwendet werden können.
 
-Weitere Informationen zu mehreren Umgebungen in ASP.NET Core finden Sie unter [Verwenden von mehreren Umgebungen in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/environments).
+Weitere Informationen zu mehreren Umgebungen in ASP.NET Core finden Sie unter [Verwenden von mehreren Umgebungen in ASP.NET Core](/aspnet/core/fundamentals/environments).
 
 Mit dem folgenden Code wird erzwungen, dass Anforderungen an Endpunkte des Diensts mit einem Bearertoken, das mit einem benutzerdefinierten Schlüssel signiert wurde, authentifiziert werden:
 

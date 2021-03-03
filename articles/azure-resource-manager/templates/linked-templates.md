@@ -3,12 +3,12 @@ title: Verknüpfen von Vorlagen für die Bereitstellung
 description: Beschreibt, wie verknüpfte Vorlagen in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Erstellen einer modularen Vorlagenlösung verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden.
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: aae3947656e475d15bc4f0da770d0398fafa13c5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: ac987b1390e939ad2b081745396245b432bb836b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880429"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741003"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -668,10 +668,10 @@ In der folgenden Beispielvorlage wird die Verwendung von `copy` mit einer gescha
             "kind": "StorageV2"
             // Copy works here when scope is inner
             // But, when scope is default or outer, you get an error
-            //"copy":{
-            //  "name": "storagecopy",
-            //  "count": 2
-            //}
+            // "copy": {
+            //   "name": "storagecopy",
+            //   "count": 2
+            // }
           }
         ]
       }

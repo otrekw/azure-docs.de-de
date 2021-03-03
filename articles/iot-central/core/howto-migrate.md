@@ -7,12 +7,12 @@ ms.date: 01/18/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 3f81ae72af48ec934d1c2c2567ebdd212d8e0499
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 735ad7ad9ded6baded59ab3f08e239d1c8376b74
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763250"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702724"
 ---
 # <a name="migrate-your-v2-iot-central-application-to-v3"></a>Migrieren Ihrer V2-IoT Central-Anwendung zu V3
 
@@ -104,7 +104,7 @@ Starten Sie nach Abschluss des Verschiebevorgangs alle Ihre Geräte neu, um sich
 Nachdem Sie überprüft haben, ob in Ihrer neuen V3-Anwendung alles erwartungsgemäß funktioniert, löschen Sie die alte V2-Anwendung. Mit diesem Schritt wird sichergestellt, dass Ihnen eine nicht mehr genutzte Anwendung nicht in Rechnung gestellt wird.
 
 > [!Note]
-> Zum Löschen einer Anwendung benötigen Sie Berechtigungen zum Löschen von Ressourcen in dem Azure-Abonnement, das Sie beim Erstellen der Anwendung gewählt haben. Weitere Informationen finden Sie unter [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](../../active-directory/role-based-access-control-configure.md).
+> Zum Löschen einer Anwendung benötigen Sie Berechtigungen zum Löschen von Ressourcen in dem Azure-Abonnement, das Sie beim Erstellen der Anwendung gewählt haben. Weitere Informationen finden Sie unter [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
 
 1. Wählen Sie in Ihrer V2-Anwendung im Menü die Registerkarte **Verwaltung** aus.
 2. Wählen Sie **Löschen** aus, um Ihre IoT Central-Anwendung dauerhaft zu löschen. Bei dieser Option werden alle dieser Anwendung zugeordneten Daten endgültig gelöscht.

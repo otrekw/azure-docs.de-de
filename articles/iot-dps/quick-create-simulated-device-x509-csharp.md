@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 06f1d34e7d8da9a3ece206fc1ff804accf9454ff
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 7d2a21a30cefbc6e83e48c29d81191323387b8f2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493853"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705542"
 ---
 # <a name="quickstart-create-and-provision-an-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Schnellstart: Erstellen und Bereitstellen eines X.509-Geräts mithilfe des C#-Geräte-SDK für IoT Hub Device Provisioning Service
 
@@ -22,11 +22,13 @@ ms.locfileid: "99493853"
 
 In den folgenden Schritten wird gezeigt, wie Sie Gerätecode aus den [Azure IoT-Beispielen für C#](https://github.com/Azure-Samples/azure-iot-samples-csharp) für die Bereitstellung eines X.509-Geräts verwenden. In diesem Artikel führen Sie den Gerätebeispielcode auf Ihrem Entwicklungscomputer aus, um mithilfe von Device Provisioning Service eine Verbindung mit einer IoT Hub-Instanz herzustellen.
 
-Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Übersicht zur [Bereitstellung](about-iot-dps.md#provisioning-process). Vergewissern Sie sich außerdem, dass Sie die Schritte unter [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md) ausgeführt haben, bevor Sie fortfahren. 
+## <a name="prerequisites"></a>Voraussetzungen
+
+Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Übersicht zur [Bereitstellung](about-iot-dps.md#provisioning-process). Vergewissern Sie sich außerdem, dass Sie die Schritte unter [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md) ausgeführt haben, bevor Sie fortfahren.
 
 In Azure IoT Device Provisioning Service werden zwei Registrierungsarten unterstützt:
-- [Registrierungsgruppen:](concepts-service.md#enrollment-group) Werden zum Registrieren mehrerer verwandter Geräte verwendet.
-- [Individuelle Registrierungen](concepts-service.md#individual-enrollment): Werden zum Registrieren eines einzelnen Geräts verwendet.
+- [Registrierungsgruppen:](concepts-service.md#enrollment-group) Für die Registrierung mehrerer verbundener Geräte
+- [Individuelle Registrierung:](concepts-service.md#individual-enrollment) Für die Registrierung eines einzelnen Geräts
 
 In diesem Artikel werden individuelle Registrierungen veranschaulicht.
 
@@ -48,8 +50,6 @@ In diesem Artikel werden individuelle Registrierungen veranschaulicht.
     ```bash
     dotnet --info
     ```
-
-
 
 ## <a name="create-a-self-signed-x509-device-certificate"></a>Erstellen eines selbstsignierten X.509-Gerätezertifikats
 

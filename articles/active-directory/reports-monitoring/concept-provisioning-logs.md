@@ -17,12 +17,12 @@ ms.date: 1/29/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad69df37d2635156873dc59d6fbf700a67ade548
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 284b554581534a8493225fba0b70b074fb7dd982
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091931"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651936"
 ---
 # <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>Übersicht über Bereitstellungsprotokolle im Azure-Portal (Vorschau)
 
@@ -60,8 +60,8 @@ Ihrem Mandanten muss eine Azure AD Premium-Lizenz zugeordnet sein, damit Sie d
 Kunden können auf vier Arten mit Bereitstellungsprotokollen interagieren:
 
 - Zugreifen auf die Protokolle über das Azure-Portal (wie im nächsten Abschnitt beschrieben)
-- Streamen der Bereitstellungsprotokolle an [Azure Monitor](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics). Diese Methode ermöglicht eine längere Datenaufbewahrung sowie die Erstellung benutzerdefinierter Dashboards, Warnungen und Abfragen.
-- Abfragen der [Microsoft Graph-API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) für die Bereitstellungsprotokolle
+- Streamen der Bereitstellungsprotokolle an [Azure Monitor](../app-provisioning/application-provisioning-log-analytics.md). Diese Methode ermöglicht eine längere Datenaufbewahrung sowie die Erstellung benutzerdefinierter Dashboards, Warnungen und Abfragen.
+- Abfragen der [Microsoft Graph-API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) für die Bereitstellungsprotokolle
 - Herunterladen der Bereitstellungsprotokolle als CSV- oder JSON-Datei
 
 ## <a name="access-the-logs-from-the-azure-portal"></a>Zugreifen auf die Protokolle über das Azure-Portal
@@ -207,7 +207,7 @@ Die JSON-Datei wird in einem sehr minimalistischen Format heruntergeladen, um di
 
 Im Anschluss finden Sie einige Beispielbefehle für die Verwendung der JSON-Datei mit PowerShell. Sie können Ihre bevorzugte Programmiersprache verwenden.  
 
-Führen Sie zum [Lesen der JSON-Datei](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) zunächst den folgenden Befehl aus:
+Führen Sie zum [Lesen der JSON-Datei](/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) zunächst den folgenden Befehl aus:
 
 ` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
 

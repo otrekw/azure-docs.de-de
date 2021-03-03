@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c2364eae0d04da8f8e6fe38ae80db7adb8666ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae802038626a1fbf8d533800a0b8eb43c4565e8c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049416"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574180"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Erkenntnisse und Berichterstellung zum bedingten Zugriff
 
@@ -43,7 +43,7 @@ Außerdem benötigen Sie eine der folgenden Log Analytics-Arbeitsbereichsrollen
 
 Wenn in Azure Monitor-Protokolle keine Azure AD-Protokolle integriert sind, müssen Sie die folgenden Schritte ausführen, bevor die Arbeitsmappe geladen werden kann:  
 
-1. [Erstellen Sie einen Log Analytics-Arbeitsbereich in Azure Monitor.](../../azure-monitor/learn/quick-create-workspace.md)
+1. [Erstellen Sie einen Log Analytics-Arbeitsbereich in Azure Monitor.](../../azure-monitor/logs/quick-create-workspace.md)
 1. [Integrieren Sie Azure AD-Protokolle in Azure Monitor-Protokolle.](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 ## <a name="how-it-works"></a>Funktionsweise 

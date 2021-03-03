@@ -1,20 +1,20 @@
 ---
-title: Von Azure Synapse Link (Vorschau) unterstützte Features für Azure Cosmos DB
+title: Von Azure Synapse Link unterstützte Features für Azure Cosmos DB
 description: Aktuelle Liste der Aktionen, die von Azure Synapse Link für Azure Cosmos DB unterstützt werden
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: synapse-link
-ms.date: 09/15/2020
+ms.date: 03/02/2021
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: b58474758ac4d26b347dc72d84be401d15a3846b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: cb2cadadacd914bfa5473b512255c1ab0f856150
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119814"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666303"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Von Azure Synapse Link unterstützte Features für Azure Cosmos DB
 
@@ -33,7 +33,7 @@ Sie können keine Verbindung mit einem Azure Cosmos DB-Container herstellen, ohn
 
 | Kategorie              | BESCHREIBUNG |[Apache Spark-Pool](../sql/on-demand-workspace-overview.md) | [Serverloser SQL-Pool](../sql/on-demand-workspace-overview.md) |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
-| **Laufzeitunterstützung** |Unterstützte Azure Synapse-Runtime für den Zugriff auf Azure Cosmos DB| ✓ | Vorschau |
+| **Laufzeitunterstützung** |Unterstützte Azure Synapse-Runtime für den Zugriff auf Azure Cosmos DB| ✓ | ✓ |
 | **Azure Cosmos DB-API-Unterstützung** | Unterstützte Azure Cosmos DB-API-Art | SQL/MongoDB | SQL/MongoDB |
 | **Object**  |Objekte wie eine Tabelle, die erstellt werden können und direkt auf den Azure Cosmos DB-Container verweisen| Datenrahmen, Ansicht, Tabelle | Sicht |
 | **Lesen**    | Typ des Azure Cosmos DB-Containers, der gelesen werden kann | OLTP/HTAP | HTAP  |
@@ -51,7 +51,6 @@ Sie können keine Verbindung mit einem Azure Cosmos DB-Container herstellen, ohn
 | **Datenrahmen in Container schreiben** |Schreiben von Dateien in einen Container|✓| ✓ |
 | **Streamingdatenrahmen aus Container laden** |Streamen von Daten mithilfe des Azure Cosmos DB-Änderungsfeeds|✓| ✓ |
 | **Streamingdatenrahmen in Container schreiben** |Streamen von Daten mithilfe des Azure Cosmos DB-Änderungsfeeds|✓| ✓ |
-
 
 ## <a name="supported-code-generated-actions-for-serverless-sql-pool"></a>Unterstützte durch Code generierte Aktionen für serverlosen SQL-Pool
 

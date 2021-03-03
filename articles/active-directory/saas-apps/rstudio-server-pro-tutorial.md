@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit RStudio Server Pro SAML Authentication | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und RStudio Server Pro SAML Authentication konfigurieren.
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit RStudio Server Pro | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und RStudio Server Pro konfigurieren.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ecefc7c585f2f556e76efe6a3a272e38de98e297
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 490ecb201b91cdbdcdddceecdd2d145d2f9bb815
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181559"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390044"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rstudio-server-pro-saml-authentication"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit RStudio Server Pro SAML Authentication
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rstudio-server-pro"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit RStudio Server Pro
 
-In diesem Tutorial erfahren Sie, wie Sie RStudio Server Pro SAML Authentication in Azure Active Directory (Azure AD) integrieren. Wenn Sie RStudio Server Pro SAML Authentication in Azure AD integrieren, haben Sie folgende Möglichkeiten:
+In diesem Tutorial erfahren Sie, wie Sie RStudio Server Pro (RSP) in Azure Active Directory (Azure AD) integrieren. Die Integration von RSP in Azure AD ermöglicht Folgendes:
 
-* Steuern Sie in Azure AD, wer Zugriff auf RStudio Server Pro SAML Authentication hat.
-* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei RStudio Server Pro SAML Authentication anzumelden.
+* Steuern Sie in Azure AD, wer Zugriff auf RSP hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei RSP anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -31,17 +31,17 @@ In diesem Tutorial erfahren Sie, wie Sie RStudio Server Pro SAML Authentication 
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* RStudio Server Pro SAML Authentication-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+* Installation von RSP (mindestens Version 1.4)
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* RStudio Server Pro SAML Authentication unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
+* RSP unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
 
-## <a name="adding-rstudio-server-pro-saml-authentication-from-the-gallery"></a>Hinzufügen von RStudio Server Pro SAML Authentication aus dem Katalog
+## <a name="adding-rstudio-server-pro-from-the-gallery"></a>Hinzufügen von RStudio Server Pro über den Katalog
 
-Um die Integration von RStudio Server Pro SAML Authentication in Azure AD zu konfigurieren, müssen Sie RStudio Server Pro SAML Authentication über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von RSP in Azure AD müssen Sie RStudio Server Pro SAML Authentication über den Katalog Ihrer Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
@@ -51,17 +51,17 @@ Um die Integration von RStudio Server Pro SAML Authentication in Azure AD zu ko
 1. Wählen Sie im Ergebnisbereich **RStudio Server Pro SAML Authentication** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 
-## <a name="configure-and-test-azure-ad-sso-for-rstudio-server-pro-saml-authentication"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für RStudio Server Pro SAML Authentication
+## <a name="configure-and-test-azure-ad-sso-for-rstudio-server-pro"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für RStudio Server Pro
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit RStudio Server Pro SAML Authentication mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in RStudio Server Pro SAML Authentication eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit RSP mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in RSP eingerichtet werden.
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit RStudio Server Pro SAML Authentication zu konfigurieren und zu testen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für RStudio Server Pro SAML Authentication](#configure-rstudio-server-pro-saml-authentication-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines RStudio Server Pro SAML Authentication-Testbenutzers](#create-rstudio-server-pro-saml-authentication-test-user)** , um in RStudio Server Pro SAML Authentication eine Entsprechung von B. Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Konfigurieren des einmaligen Anmeldens für RStudio Server Pro](#configure-rstudio-server-pro-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines RStudio Server Pro-Testbenutzers](#create-rstudio-server-pro-test-user)** , um in RStudio Server Pro eine Entsprechung von B. Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -76,16 +76,16 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.rstudioservices.com/<PATH>/saml/metadata`
+    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<RSP-SERVER>/<PATH>/saml/metadata`
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.rstudioservices.com/<PATH>/saml/acs`
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<RSP-SERVER>/<PATH>/saml/acs`
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.rstudioservices.com`
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<RSP-SERVER>/<PATH>/`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Diese Werte erhalten Sie vom [Supportteam für den RStudio Server Pro SAML Authentication-Client](mailto:support@rstudio.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen URI Ihrer RSP-Installation. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
@@ -115,13 +115,27 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name="configure-rstudio-server-pro-saml-authentication-sso"></a>Konfigurieren des einmaligen Anmeldens für RStudio Server Pro SAML Authentication
+## <a name="configure-rstudio-server-pro-sso"></a>Konfigurieren des einmaligen Anmeldens für RStudio Server Pro
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **RStudio Server Pro SAML Authentication** müssen Sie die **App-Verbundmetadaten-URL** an das [Supportteam von RStudio Server Pro SAML Authentication](mailto:support@rstudio.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+1. Ersetzen Sie die RSP-Konfigurationsdatei `/etc/rstudio/rserver.conf` durch Folgendes:
 
-### <a name="create-rstudio-server-pro-saml-authentication-test-user"></a>Erstellen eines RStudio Server Pro SAML Authentication-Testbenutzers
+    ```
+    auth-saml=1
+    auth-saml-metadata-url=<federation-metadata-URI>
+    auth-saml-sp-name-id-format=emailaddress
+    auth-saml-sp-attribute-username=NameID
+    auth-saml-sp-base-uri=<RSP-Server-URI>
+    ```
 
-In diesem Abschnitt wird in RStudio Server Pro SAML Authentication ein Benutzer namens B. Simon erstellt. Wenden Sie sich an das [Supportteam von RStudio Server Pro SAML Authentication](mailto:support@rstudio.com), um die Benutzer auf der RStudio Server Pro SAML Authentication-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+2. Starten Sie RSP neu, indem Sie den folgenden Befehl ausführen:
+
+    ```
+    sudo rstudio-server restart
+    ```
+
+### <a name="create-rstudio-server-pro-test-user"></a>Erstellen eines RStudio Server Pro-Testbenutzers
+
+Alle Benutzer, die RSP verwenden sollen, müssen auf dem Server bereitgestellt werden. Sie können den Benutzer mit dem Befehl `useradd` oder dem Befehl `adduser` erstellen.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

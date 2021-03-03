@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: addb90ed3929847612fd423e3af01c1b3982c2d6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86144695"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369644"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Technischer Einblick
 
@@ -67,6 +67,10 @@ Anmeldungsablauf in einem Webbrowser:
 6. Active Directory sucht das Computerkonto und gibt ein Kerberos-Ticket an den Browser zurück, das mit dem Geheimnis des Computerkontos verschlüsselt ist.
 7. Der Browser leitet das von Active Directory abgerufene Kerberos-Ticket an Azure AD weiter.
 8. Azure AD entschlüsselt das Kerberos-Ticket, das die Identität des auf dem unternehmenseigenen Gerät angemeldeten Benutzers enthält, mithilfe des zuvor freigegebenen Schlüssels.
+
+   >[!NOTE]
+   >Azure AD wird versuchen, den UPN des Benutzers aus dem Kerberos-Ticket mit einem Azure AD-Benutzerobjekt abzugleichen, dessen userPrincipalName-Attribut einen entsprechenden Wert aufweist. Wenn dies nicht erfolgreich ist, wird Azure AD darauf zurückkommen, den samAccountName aus dem Kerberos-Ticket wieder mit einem Azure AD-Benutzerobjekt abzugleichen, dessen onPremisesSamAccountName-Attribut einen entsprechenden Wert aufweist.
+   
 9. Nach der Auswertung gibt Azure AD entweder ein Token an die Anwendung zurück oder fordert den Benutzer auf, zusätzliche Nachweise z.B. per Multi-Factor Authentication bereitzustellen.
 10. Wenn die Anmeldung erfolgreich ist, kann der Benutzer auf die Anwendung zugreifen.
 
@@ -99,6 +103,6 @@ Das folgende Diagramm veranschaulicht die dafür notwendigen Schritte und Kompon
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [**Schnellstart**](how-to-connect-sso-quick-start.md): Einrichten und Ausführen der nahtlosen SSO mit Azure AD
-- [**Häufig gestellte Fragen:** ](how-to-connect-sso-faq.md) Antworten auf häufig gestellte Fragen
+- [**Häufig gestellte Fragen:**](how-to-connect-sso-faq.md) Antworten auf häufig gestellte Fragen
 - [**Problembehandlung**](tshoot-connect-sso.md) – Beheben von häufig auftretenden Problemen mit diesem Feature
-- [**UserVoice:** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Verfassen neuer Feature-Anforderungen
+- [**UserVoice:**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Verfassen neuer Feature-Anforderungen

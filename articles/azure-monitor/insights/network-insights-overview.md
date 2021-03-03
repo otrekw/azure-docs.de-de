@@ -1,21 +1,20 @@
 ---
 title: Azure Monitor für Netzwerke
 description: Eine Übersicht über Azure Monitor für Netzwerke, das eine umfassende Ansicht der Integrität und Metriken für alle bereitgestellten Netzwerkressourcen ohne jegliche Konfiguration bietet.
-ms.subservice: ''
 ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 4a273170a1f3842a9a11a61d41d4150eb98eace4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 20f61ad92307a16515156151b816494e9aa289f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734147"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717467"
 ---
 # <a name="azure-monitor-for-networks"></a>Azure Monitor für Netzwerke
 
-Azure Monitor für Netzwerke bietet eine umfassende Ansicht der [Integrität](../../service-health/resource-health-checks-resource-types.md) und [Metriken](../platform/metrics-supported.md) für alle bereitgestellten Netzwerkressourcen ohne jegliche Konfiguration. Außerdem erhalten Sie Zugriff auf Netzwerküberwachungsfunktionen wie [Verbindungsmonitor](../../network-watcher/connection-monitor-overview.md), [Datenflussprotokollierung für Netzwerksicherheitsgruppen (NSGs)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) und [Traffic Analytics](../../network-watcher/traffic-analytics.md). Zudem werden weitere Features für die [Netzwerkdiagnose](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) bereitgestellt.
+Azure Monitor für Netzwerke bietet eine umfassende Ansicht der [Integrität](../../service-health/resource-health-checks-resource-types.md) und [Metriken](../essentials/metrics-supported.md) für alle bereitgestellten Netzwerkressourcen ohne jegliche Konfiguration. Außerdem erhalten Sie Zugriff auf Netzwerküberwachungsfunktionen wie [Verbindungsmonitor](../../network-watcher/connection-monitor-overview.md), [Datenflussprotokollierung für Netzwerksicherheitsgruppen (NSGs)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) und [Traffic Analytics](../../network-watcher/traffic-analytics.md). Zudem werden weitere Features für die [Netzwerkdiagnose](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) bereitgestellt.
 
 Azure Monitor für Netzwerke umfasst die folgenden Hauptkomponenten der Überwachung:
 - [Netzwerkintegrität und Metriken](#networkhealth)
@@ -149,4 +148,4 @@ Sie können die Arbeitsmappe, die in einem Seitenbereich und der Ansicht mit det
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über die Netzwerküberwachung: [Was ist Azure Network Watcher?](../../network-watcher/network-watcher-monitoring-overview.md)
-- Informieren Sie sich über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie Berichte erstellen und vorhandene Berichte anpassen können und vieles mehr: [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md)
+- Informieren Sie sich über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie Berichte erstellen und vorhandene Berichte anpassen können und vieles mehr: [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../visualize/workbooks-overview.md)

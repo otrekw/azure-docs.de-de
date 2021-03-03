@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: 5f849248021de3c17b69517d214f6f3fd6e4ee3a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b81a2021cabefd9587d448aa236e7e87bc254741
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945624"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590821"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Verwenden von Azure Monitor-Protokollen zum Überwachen von HDInsight-Clustern
 
 In diesem Artikel erfahren Sie, wie Sie Azure Monitor-Protokolle zum Überwachen von Hadoop-Clustervorgängen in HDInsight verwenden. Außerdem erfahren Sie, wie Sie eine HDInsight-Überwachungslösung hinzufügen.
 
-Bei [Azure Monitor-Protokollen](../azure-monitor/log-query/log-query-overview.md) handelt es sich um einen Azure Monitor-Dienst, der Ihre Cloud- und lokalen Umgebungen überwacht. Die Überwachung dient der Aufrechterhaltung der Verfügbarkeit und Leistung Ihrer Umgebungen. Der Dienst sammelt Daten, die von Ressourcen in Ihrer Cloud- und in Ihrer lokalen Umgebung generiert werden, sowie von anderen Überwachungstools. Die Daten werden verwendet, um Analysen für mehrere Quellen bereitstellen zu können.
+Bei [Azure Monitor-Protokollen](../azure-monitor/logs/log-query-overview.md) handelt es sich um einen Azure Monitor-Dienst, der Ihre Cloud- und lokalen Umgebungen überwacht. Die Überwachung dient der Aufrechterhaltung der Verfügbarkeit und Leistung Ihrer Umgebungen. Der Dienst sammelt Daten, die von Ressourcen in Ihrer Cloud- und in Ihrer lokalen Umgebung generiert werden, sowie von anderen Überwachungstools. Die Daten werden verwendet, um Analysen für mehrere Quellen bereitstellen zu können.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -24,7 +24,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Einen Log Analytics-Arbeitsbereich Sie können sich diesen Arbeitsbereich als einzigartige Azure Monitor-Protokollumgebung mit eigenem Datenrepository, eigenen Datenquellen und eigenen Lösungen vorstellen. Eine Anleitung hierzu finden Sie unter [Erste Schritte mit einem Log Analytics-Arbeitsbereich](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace).
+* Einen Log Analytics-Arbeitsbereich Sie können sich diesen Arbeitsbereich als einzigartige Azure Monitor-Protokollumgebung mit eigenem Datenrepository, eigenen Datenquellen und eigenen Lösungen vorstellen. Eine Anleitung hierzu finden Sie unter [Erste Schritte mit einem Log Analytics-Arbeitsbereich](../azure-monitor/vm/quick-collect-azurevm.md#create-a-workspace).
 
 * Ein Azure HDInsight-Cluster. Derzeit können Sie Azure Monitor-Protokolle mit den folgenden HDInsight-Clustertypen verwenden:
 
@@ -144,7 +144,7 @@ Im Bericht werden keine Aktivitäten angezeigt, da es sich um einen brandneuen C
 
 ## <a name="configuring-performance-counters"></a>Konfigurieren von Leistungsindikatoren
 
-Azure Monitor unterstützt das Sammeln und Analysieren von Leistungsmetriken für die Knoten in Ihrem Cluster. Weitere Informationen finden Sie unter [Leistungsindikatoren von Linux](../azure-monitor/platform/data-sources-performance-counters.md#linux-performance-counters).
+Azure Monitor unterstützt das Sammeln und Analysieren von Leistungsmetriken für die Knoten in Ihrem Cluster. Weitere Informationen finden Sie unter [Leistungsindikatoren von Linux](../azure-monitor/agents/data-sources-performance-counters.md#linux-performance-counters).
 
 ## <a name="cluster-auditing"></a>Clusterüberwachung
 

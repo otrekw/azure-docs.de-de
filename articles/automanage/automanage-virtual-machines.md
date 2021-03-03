@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 7772d57937393da1c48fa2658818d8a1a2b28a1f
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 1d3b2174df5dd83852ce120ec6693ae187a3e795
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550783"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643519"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Automatische Azure-Verwaltung für virtuelle Computer
 
@@ -28,27 +28,47 @@ Dieser Artikel enthält Informationen zur automatischen Azure-Verwaltung für vi
 
 ## <a name="overview"></a>Übersicht
 
-Die automatische Azure-Verwaltung für virtuelle Computer ist ein Dienst, der die Anforderung beseitigt, bestimmte Dienste in Azure zu entdecken, zu integrieren und zu konfigurieren, die Ihrem virtuellen Computer zugute kommen würden. Diese Dienste tragen zur Verbesserung der Zuverlässigkeit, Sicherheit und Verwaltung virtueller Computer bei und gelten als bewährte Azure-Dienste, z. B. [Azure-Updateverwaltung](../automation/update-management/overview.md) und [Azure Backup](../backup/backup-overview.md), um nur einige zu nennen.
+Die automatische Azure-Verwaltung für virtuelle Computer ist ein Dienst, der die Anforderung beseitigt, bestimmte Dienste in Azure zu entdecken, zu integrieren und zu konfigurieren, die Ihrem virtuellen Computer zugute kommen würden. Diese Dienste gelten als bewährte Azure-Dienste und tragen zur Verbesserung der Zuverlässigkeit, Sicherheit und Verwaltung virtueller Computer bei. Beispieldienste hierfür sind unter anderem [Azure-Updateverwaltung](../automation/update-management/overview.md) und [Azure Backup](../backup/backup-overview.md).
 
-Nachdem Sie das Onboarding Ihrer virtuellen Computer für die automatische Azure-Verwaltung durchgeführt haben, konfiguriert diese automatisch jeden bewährten Dienst mit den empfohlenen Einstellungen. Die bewährten Methoden sind für jeden Dienst unterschiedlich. Ein Beispiel hierfür könnte Azure Backup sein, bei dem die bewährte Methode darin bestehen könnte, den virtuellen Computer einmal täglich zu sichern und einen Aufbewahrungszeitraum von sechs Monaten einzuhalten.
+Nachdem Sie das Onboarding Ihrer virtuellen Computer für Azure Automanage durchgeführt haben, wird jeder bewährte Azure-Dienst mit den empfohlenen Einstellungen konfiguriert. Die bewährten Methoden sind für jeden Dienst unterschiedlich. Ein Beispiel hierfür könnte Azure Backup sein, bei dem die bewährte Methode darin bestehen könnte, den virtuellen Computer einmal täglich zu sichern und einen Aufbewahrungszeitraum von sechs Monaten einzuhalten.
 
-Die automatische Azure-Verwaltung überwacht auch automatisch den Datendrift und korrigiert ihn, wenn er erkannt wird. Das bedeutet, wenn für Ihren virtuellen Computer das Onboarding in die automatische Azure-Verwaltung durchgeführt wird, konfigurieren wir ihn nicht nur nach den bewährten Azure-Methoden, sondern wir überwachen Ihren Computer, um sicherzustellen, dass er diese bewährten Methoden während seines gesamten Lebenszyklus einhält. Wenn Ihr virtueller Computer von diesen Methoden abweicht oder ein Datendrift auftritt, korrigieren wir dies und bringen Ihren Computer wieder in den gewünschten Zustand.
-
-Und schließlich ist die Benutzererfahrung unglaublich einfach.
-
+Die automatische Azure-Verwaltung überwacht auch automatisch den Datendrift und korrigiert ihn, wenn er erkannt wird. Das bedeutet, wenn für Ihren virtuellen Computer das Onboarding in die automatische Azure-Verwaltung durchgeführt wird, konfigurieren wir ihn nicht nur nach den bewährten Azure-Methoden, sondern wir überwachen Ihren Computer, um sicherzustellen, dass er diese bewährten Methoden während seines gesamten Lebenszyklus einhält. Wenn Ihr virtueller Computer von diesen Methoden abweicht (z. B. Offboarding eines Diensts) oder ein Datendrift auftritt, korrigieren wir dies und bringen Ihren Computer wieder in den gewünschten Zustand.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Es gibt mehrere Voraussetzungen zu beachten, bevor Sie versuchen, die automatische Azure-Verwaltung auf Ihren virtuellen Computern zu aktivieren.
 
-- Nur Windows Server-VMs
-- VMs müssen sich in einer unterstützten Region befinden (siehe folgender Absatz)
-- Benutzer muss über die richtigen (im folgenden Absatz beschriebenen) Berechtigungen verfügen.
+- Unterstützte [Windows Server-Versionen](automanage-windows-server.md#supported-windows-server-versions) und [Linux-Distributionen](automanage-linux.md#supported-linux-distributions-and-versions)
+- VMs müssen sich in einer unterstützten Region befinden (siehe unten).
+- Benutzer muss über die richtigen Berechtigungen verfügen (siehe unten).
 - Automatische Verwaltung unterstützt zurzeit keine Sandboxabonnements.
 
-Es ist auch wichtig zu beachten, dass die automatische Verwaltung nur Windows-VMs unterstützt, die sich in den folgenden Regionen befinden: „Europa, Westen“, „USA, Osten“, „USA, Westen 2“, „Kanada, Mitte“, „USA, Westen-Mitte“, „Japan, Osten“.
+### <a name="supported-regions"></a>Unterstützte Regionen
+Automanage unterstützt nur VMs in den folgenden Regionen:
+* Europa, Westen
+* Nordeuropa
+* USA (Mitte)
+* East US
+* USA (Ost) 2
+* USA (Westen)
+* USA, Westen 2
+* Kanada, Mitte
+* USA, Westen-Mitte
+* USA Süd Mitte
+* Japan, Osten
+* UK, Süden
+* Australien, Osten
+* Australien, Südosten
 
-Sie müssen über die Rolle **Mitwirkender** für die Ressourcengruppe verfügen, die Ihre VMs enthält, um Automanage auf virtuellen Computern mit einem vorhandenen Automanage-Konto zu aktivieren. Wenn Sie Automanage mit einem neuen Automanage-Konto aktivieren, benötigen Sie die folgenden Berechtigungen in Ihrem Abonnement: Rolle **Besitzer** oder **Mitwirkender** sowie Rollen vom Typ **Benutzerzugriffsadministrator**
+### <a name="required-rbac-permissions"></a>Erforderliche RBAC-Berechtigungen
+Ihr Konto erfordert etwas andere RBAC-Rollen, je nachdem, ob Sie Automanage mit einem neuen Automanage-Konto aktivieren.
+
+Wenn Sie Automanage mit einem neuen Automanage-Konto aktivieren:
+* Rolle **Besitzer** für die Abonnements, die Ihre VMs enthalten, _**oder**_
+* Rollen **Mitwirkender** und **Benutzerzugriffsadministrator** in den Abonnements, die Ihre VMs enthalten.
+
+Wenn Sie Automanage mit einem vorhandenen Automanage-Konto aktivieren:
+* Rolle **Mitwirkender** für die Ressourcengruppe, die Ihre VMs enthält.
 
 > [!NOTE]
 > Wenn Sie Automanage auf einem virtuellen Computer verwenden möchten, der mit einem Arbeitsbereich in einem anderen Abonnement verbunden ist, müssen Sie in jedem Abonnement über die oben beschriebenen Berechtigungen verfügen.
@@ -57,7 +77,9 @@ Sie müssen über die Rolle **Mitwirkender** für die Ressourcengruppe verfügen
 
 :::image type="content" source="media\automanage-virtual-machines\intelligently-onboard-services.png" alt-text="Intelligentes Durchführen des Onboardings von Diensten.":::
 
-Die vollständige Liste der teilnehmenden Azure-Dienste sowie die unterstützten Konfigurationsprofile finden Sie unter [Bewährte Methoden für die Automatische Azure-Verwaltung von virtuellen Computern](virtual-machines-best-practices.md).
+Die vollständige Liste der teilnehmenden Azure-Dienste sowie deren unterstützte Umgebung finden Sie unter:
+- [Automanage für Linux](automanage-linux.md)
+- [Automanage für Windows Server](automanage-windows-server.md)
 
  Wir werden mit Ihnen automatisch das Onboarding für diese teilnehmenden Dienste durchführen. Sie sind für unser Whitepaper über bewährte Methoden unerlässlich, das Sie in unserem [Cloud Adoption Framework](/azure/cloud-adoption-framework/manage/azure-server-management) finden.
 
@@ -70,33 +92,37 @@ Im Azure-Portal können Sie die automatische Verwaltung auf einem vorhandenen vi
 
 Wenn Sie zum ersten Mal die automatische Verwaltung für Ihre VM aktivieren, können Sie im Azure-Portal nach **Automatische Verwaltung – Bewährte Methoden für Azure-VMs** suchen. Klicken Sie auf **Für vorhandene VM aktivieren**, wählen Sie die VMs aus, für die Sie das Onboarding durchführen möchten, klicken Sie auf **Auswählen** und dann auf **Aktivieren**, dann sind Sie fertig.
 
-Die einzige Zeit, in der Sie möglicherweise mit dieser VM interagieren müssen, um diese Dienste zu verwalten, ist für den Fall, dass wir versucht haben, Ihre VM zu reparieren, dies jedoch nicht gelungen ist. Wenn wir Ihre VM erfolgreich korrigieren, stellen wir die Compliance wieder her, ohne Sie überhaupt zu warnen.
+Die einzige Zeit, in der Sie möglicherweise mit dieser VM interagieren müssen, um diese Dienste zu verwalten, ist für den Fall, dass wir versucht haben, Ihre VM zu reparieren, dies jedoch nicht gelungen ist. Wenn wir Ihre VM erfolgreich korrigieren, stellen wir die Compliance wieder her, ohne Sie überhaupt zu warnen. Weitere Details finden Sie unter [Status von VMs](#status-of-vms).
 
 
-## <a name="configuration-profiles"></a>Konfigurationsprofile
+## <a name="environment-configuration"></a>Umgebungskonfiguration
 
-Wenn Sie die automatische Verwaltung für Ihren virtuellen Computer aktivieren, ist ein Konfigurationsprofil erforderlich. Konfigurationsprofile sind die Grundlage dieses Diensts. Sie legen genau fest, für welche Dienste wir das Onboarding für Ihre Computer durchführen. Sie legen zu einem gewissen Grad ebenfalls fest, wie diese Dienste konfiguriert werden sollen.
+Wenn Sie Automanage für Ihren virtuellen Computer aktivieren, ist eine Umgebung erforderlich. Umgebungen sind die Grundlage dieses Diensts. Sie legen fest, für welche Dienste wir das Onboarding für Ihre Computer durchführen. Sie legen zu einem gewissen Grad ebenfalls fest, wie diese Dienste konfiguriert werden sollen.
 
-### <a name="default-configuration-profiles"></a>Standardkonfigurationsprofile
+### <a name="default-environments"></a>Standardumgebungen
 
-Es sind derzeit zwei Konfigurationsprofile verfügbar.
+Zurzeit sind zwei Umgebungen verfügbar.
 
-- **Bewährte Methoden für virtuelle Azure-Computer – Dev/Test**: Das Konfigurationsprofil ist für Dev/Test-Computer konzipiert.
-- **Bewährte Methoden für virtuelle Azure-Computer – Produktion**: Das Konfigurationsprofil ist für die Produktion konzipiert.
+- Die **Dev/Test**-Umgebung ist für Entwicklungs-/Testcomputer (Dev/Test) konzipiert.
+- Die **Produktions** umgebung ist für die Produktion vorgesehen.
 
 Der Grund für diese Differenzierung liegt darin, dass bestimmte Dienste auf der Grundlage der aktiven Workload empfohlen werden. Auf einem Computer in der Produktion werden wir für Sie z. B. automatisch das Onboarding für Azure Backup durchführen. Für einen Dev/Test-Computer wäre ein Sicherungsdienst jedoch ein unnötiger Kostenfaktor, da Dev/Test-Computer in der Regel geringere geschäftliche Auswirkungen haben.
 
-### <a name="customizing-a-configuration-profile-using-preferences"></a>Anpassen eines Konfigurationsprofils mithilfe von Voreinstellungen
+### <a name="customizing-an-environment-using-preferences"></a>Anpassen einer Umgebung mithilfe von Voreinstellungen
 
-Zusätzlich zu den Standarddiensten, für die wir das Onboarding für Sie durchführen, ermöglichen wir Ihnen die Konfiguration einer bestimmten Teilmenge von Voreinstellungen. Diese Voreinstellungen sind innerhalb einer Reihe von Konfigurationsoptionen zulässig, die nicht gegen unsere bewährten Methoden verstoßen. Im Falle von Azure Backup gestatten wir Ihnen z. B., die Häufigkeit der Sicherung zu definieren und festzulegen, an welchem Wochentag sie erfolgt. Wir werden Ihnen jedoch *nicht* gestatten, Azure Backup vollständig zu deaktivieren
-
-> [!NOTE]
-> Im Dev/Test-Konfigurationsprofil werden wir die VM überhaupt nicht sichern.
-
-Sie können die Einstellungen eines Standardkonfigurationsprofils über Voreinstellungen anpassen. Erfahren Sie [hier](virtual-machines-custom-preferences.md), wie Sie eine Voreinstellung erstellen.
+Zusätzlich zu den Standarddiensten, für die wir das Onboarding für Sie durchführen, ermöglichen wir Ihnen die Konfiguration einer bestimmten Teilmenge von Voreinstellungen. Diese Voreinstellungen sind innerhalb einer Reihe von Konfigurationsoptionen zulässig. Im Falle von Azure Backup gestatten wir Ihnen z. B., die Häufigkeit der Sicherung zu definieren und festzulegen, an welchem Wochentag sie erfolgt.
 
 > [!NOTE]
-> Sie können das Konfigurationsprofil auf Ihrer VM nicht ändern, solange die automatische Verwaltung aktiviert ist. Sie müssen die automatische Verwaltung für diese VM deaktivieren und dann die automatische Verwaltung mit dem gewünschten Konfigurationsprofil und den gewünschten Voreinstellungen erneut aktivieren.
+> In der Dev/Test-Umgebung werden wir die VM überhaupt nicht sichern.
+
+Sie können die Einstellungen eine Standardumgebung über Voreinstellungen anpassen. Erfahren Sie [hier](virtual-machines-custom-preferences.md), wie Sie eine Voreinstellung erstellen.
+
+> [!NOTE]
+> Sie können die Umgebungskonfiguration auf Ihrer VM nicht ändern, solange Automanage aktiviert ist. Sie müssen Automanage für diese VM deaktivieren und dann Automanage mit der gewünschten Umgebung und den gewünschten Voreinstellungen erneut aktivieren.
+
+Die vollständige Liste der teilnehmenden Azure-Dienste, und ob sie Voreinstellungen unterstützen, finden Sie hier:
+- [Automanage für Linux](automanage-windows-server.md)
+- [Automanage für Windows Server](automanage-windows-server.md)
 
 
 ## <a name="automanage-account"></a>Konto für die automatische Verwaltung
@@ -123,7 +149,7 @@ Navigieren Sie im Azure-Portal zur Seite **Automatische Verwaltung – Bewährte
 
 :::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="Liste der konfigurierten virtuellen Computer":::
 
-Für jede aufgelistete VM werden die folgenden Details angezeigt: Name, Konfigurationsprofil, Konfigurationsvoreinstellung, Status, Konto, Abonnement und Ressourcengruppe.
+Für jede aufgelistete VM werden die folgenden Details angezeigt: Name, Umgebung, Konfigurationsvoreinstellung, Status, Betriebssystem, Konto, Abonnement und Ressourcengruppe.
 
 Die Spalte **Status** kann die folgenden Zustände anzeigen:
 - *In Bearbeitung* – Die VM wurde gerade aktiviert und wird konfiguriert
@@ -156,7 +182,7 @@ In erster Linie werden wir den virtuellen Computer nicht von einem der Dienste t
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, dass die automatische Verwaltung für virtuelle Computer ein Mittel darstellt, mit dem Sie die Kenntnis, das Onboarding und die Konfiguration bewährter Methoden von Azure-Diensten beseitigen können. Wenn ein Computer, für den Sie bei der automatischen Verwaltung für virtuelle Computer Onboarding durchgeführt haben, von den eingerichteten Konfigurationsprofilen abweicht, sorgen wir automatisch wieder für seine Compliance.
+In diesem Artikel haben Sie erfahren, dass die automatische Verwaltung für virtuelle Computer ein Mittel darstellt, mit dem Sie die Kenntnis, das Onboarding und die Konfiguration bewährter Methoden von Azure-Diensten beseitigen können. Wenn ein Computer, für den Sie bei Automanage für virtuelle Computer das Onboarding durchgeführt haben, von der Umgebungseinrichtung abweicht, sorgen wir automatisch wieder für seine Compliance.
 
 Versuchen Sie, die automatische Verwaltung für virtuelle Computer im Azure-Portal zu aktivieren.
 

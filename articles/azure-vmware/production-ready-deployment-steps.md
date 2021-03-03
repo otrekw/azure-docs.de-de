@@ -2,13 +2,13 @@
 title: Planen der Azure VMware Solution-Bereitstellung
 description: In diesem Artikel wird der Workflow für die Bereitstellung einer Azure VMware Solution-Instanz beschrieben.  Das Endergebnis ist eine Umgebung, die für die Erstellung und Migration von virtuellen Computern (VMs) vorbereitet ist.
 ms.topic: tutorial
-ms.date: 10/16/2020
-ms.openlocfilehash: 8b1d69f3f953b43177a3b1d0611b51ca2cfb1a75
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.date: 02/22/2021
+ms.openlocfilehash: f9d49d7ff8109364c9fc1eee4388b30ccc1a61b6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762867"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733658"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Planen der Azure VMware Solution-Bereitstellung
 
@@ -51,12 +51,6 @@ Identifizieren Sie die Größenhosts, die Sie beim Bereitstellen von Azure VMwar
 Definieren Sie die Anzahl von Hosts, die Sie in der privaten Azure VMware Solution-Cloud bereitstellen möchten.  Die Mindestanzahl von Hosts beträgt 3, und der Höchstwert beträgt  16 pro Cluster.  Weitere Informationen finden Sie unter [Azure VMware Solution (Vorschau): Konzepte – Private Clouds und Cluster](concepts-private-clouds-clusters.md#clusters).
 
 Sie können den Cluster später jederzeit erweitern, wenn Sie die anfängliche Bereitstellungsanzahl erhöhen möchten.
-
-## <a name="vcenter-admin-password"></a>vCenter admin password (vCenter-Administratorkennwort)
-Definieren Sie das vCenter-Administratorkennwort.  Während der Bereitstellung erstellen Sie ein vCenter-Administratorkennwort. Das Kennwort gilt für das Administratorkonto cloudadmin@vsphere.local während des vCenter-Buildvorgangs. Sie verwenden es für die Anmeldung bei vCenter.
-
-## <a name="nsx-t-admin-password"></a>NSX-T-Administratorkennwort
-Definieren Sie das NSX-T-Administratorkennwort.  Während der Bereitstellung erstellen Sie ein NSX-T-Administratorkennwort. Das Kennwort wird dem Administratorbenutzer im NSX-Konto während des NSX-Buildvorgangs zugewiesen. Sie verwenden es für die Anmeldung bei NSX-T Manager.
 
 ## <a name="ip-address-segment"></a>IP-Adressensegment
 

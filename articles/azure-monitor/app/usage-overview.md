@@ -3,12 +3,12 @@ title: Verwendungsanalyse mit Azure Application Insights | Microsoft Docs
 description: Verstehen Sie Ihre Benutzer und wie sie Ihre App verwenden.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 633d35ec16f5eb9de664421c38cd4c824dc240cf
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 0888b6743a10c9934ab85a6f2b3b637b857f643a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233847"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583406"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Verwendungsanalyse mit Application Insights
 
@@ -38,7 +38,7 @@ Sie erzielen optimale Ergebnisse, wenn Sie Application Insights im Servercode de
 
     Informationen zu komplexeren Konfigurationen für die Websiteüberwachung finden Sie im [Referenzartikel zum JavaScript SDK](./javascript.md).
 
-3. **Code der mobilen App:** Verwenden Sie das App Center SDK, um Ereignisse aus Ihrer App zu erfassen, und senden Sie Kopien dieser Ereignisse zur Analyse an Application Insights. Eine entsprechende Anleitung finden Sie [hier](../learn/mobile-center-quickstart.md).
+3. **Code der mobilen App:** Verwenden Sie das App Center SDK, um Ereignisse aus Ihrer App zu erfassen, und senden Sie Kopien dieser Ereignisse zur Analyse an Application Insights. Eine entsprechende Anleitung finden Sie [hier](../app/mobile-center-quickstart.md).
 
 4. **Abrufen von Telemetriedaten:** Führen Sie das Projekt einige Minuten lang im Debugmodus aus, und suchen Sie dann im Blatt „Übersicht“ von Application Insights nach Ergebnissen.
 
@@ -179,6 +179,6 @@ Alle neuen TelemetryClients-Elemente fügen automatisch den von Ihnen angegebene
    - [Trichter](usage-funnels.md)
    - [Vermerkdauer](usage-retention.md)
    - [Benutzerabläufe](usage-flows.md)
-   - [Arbeitsmappen](../platform/workbooks-overview.md)
+   - [Arbeitsmappen](../visualize/workbooks-overview.md)
    - [Hinzufügen von Benutzerkontext](usage-send-user-context.md)
 

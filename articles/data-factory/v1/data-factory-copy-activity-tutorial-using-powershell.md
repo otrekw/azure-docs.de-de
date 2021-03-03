@@ -1,24 +1,18 @@
 ---
 title: 'Tutorial: Erstellen einer Pipeline zum Verschieben von Daten mithilfe von Azure PowerShell '
 description: In diesem Tutorial erstellen Sie mithilfe von Azure PowerShell eine Azure Data Factory-Pipeline mit Kopieraktivität.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: ''
-editor: ''
-ms.assetid: 71087349-9365-4e95-9847-170658216ed8
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aa97fd2ac12ca73d1a317fb09e03e49d0056ceb1
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 54c296ed8013b9962de9487cfec3e2568c03e738
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608628"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377039"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Tutorial: Erstellen einer Data Factory-Pipeline zum Verschieben von Daten mithilfe von Azure PowerShell
 > [!div class="op_single_selector"]
@@ -114,7 +108,7 @@ Beachten Sie folgende Punkte:
 * Der Name der Azure Data Factory muss global eindeutig sein. Sollte der folgende Fehler auftreten, ändern Sie den Namen (beispielsweise in „<IhrName>ADFTutorialDataFactoryPSH“). Verwenden Sie diesen Namen beim Ausführen der Schritte in diesem Lernprogramm anstelle von "ADFTutorialDataFactoryPSH". Informationen zu Data Factory-Artefakten finden Sie unter [Data Factory – Benennungsregeln](data-factory-naming-rules.md).
 
     ```
-    Data factory name “ADFTutorialDataFactoryPSH” is not available
+    Data factory name "ADFTutorialDataFactoryPSH" is not available
     ```
 * Data Factory-Instanzen können nur von Mitwirkenden oder Administratoren des Azure-Abonnements erstellt werden.
 * Der Name der Data Factory kann später möglicherweise als DNS-Name registriert und so öffentlich sichtbar werden.

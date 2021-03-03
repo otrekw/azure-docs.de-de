@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: f9b3be69ab57c0abf7523169303def899f325229
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7778607b533a836eb5a47a12b73374c2a8299621
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789215"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590571"
 ---
 # <a name="security-alerts-schemas"></a>Schemas für Sicherheitswarnungen
 
@@ -24,7 +24,7 @@ Wenn für Ihr Abonnement Azure Defender aktiviert ist, erhalten Sie Sicherheitsw
 
 Sie können diese Sicherheitswarnungen auf der Seite **Bedrohungsschutz** von Azure Security Center oder mithilfe externer Tools anzeigen, wie z. B.:
 
-- [Azure Sentinel](../sentinel/index.yml): die cloudnative SIEM-Lösung von Microsoft. Der Sentinel-Connector erhält Warnungen von Azure Security Center und sendet diese an den [Log Analytics-Arbeitsbereich](../azure-monitor/learn/quick-create-workspace.md) für Azure Sentinel.
+- [Azure Sentinel](../sentinel/index.yml): die cloudnative SIEM-Lösung von Microsoft. Der Sentinel-Connector erhält Warnungen von Azure Security Center und sendet diese an den [Log Analytics-Arbeitsbereich](../azure-monitor/logs/quick-create-workspace.md) für Azure Sentinel.
 - SIEMs von Drittanbietern: Senden von Daten an [Azure Event Hubs](../event-hubs/index.yml). Integrieren Sie anschließend Ihre Event Hub-Daten in eine SIEM-Lösung eines Drittanbieters. Weitere Informationen finden Sie unter [Streamen von Warnungen in eine SIEM-, SOAR- oder IT-Service-Management-Lösung](export-to-siem.md).
 - [Die REST-API](/rest/api/securitycenter/): Wenn Sie die REST-API für den Zugriff auf Warnungen verwenden, finden Sie weitere Informationen in der [Online-API-Dokumentation zu Warnungen](/rest/api/securitycenter/alerts).
 
@@ -187,4 +187,4 @@ Weitere Informationen zu den Möglichkeiten, wie Sie auf Sicherheitswarnungen au
 - [Azure Sentinel](../sentinel/index.yml): die cloudnative SIEM-Lösung von Microsoft
 - [Azure Event Hubs](../event-hubs/index.yml): der vollständig verwaltete Microsoft-Dienst für die Datenerfassung in Echtzeit
 - [Fortlaufendes Exportieren von Security Center-Daten](continuous-export.md)
-- [Log Analytics-Arbeitsbereiche](../azure-monitor/learn/quick-create-workspace.md): Azure Monitor speichert die Protokolldaten in einem Log Analytics-Arbeitsbereich, einem Container, der Daten und Konfigurationsinformationen enthält.
+- [Log Analytics-Arbeitsbereiche](../azure-monitor/logs/quick-create-workspace.md): Azure Monitor speichert die Protokolldaten in einem Log Analytics-Arbeitsbereich, einem Container, der Daten und Konfigurationsinformationen enthält.

@@ -3,18 +3,18 @@ title: Verwenden von Podsicherheitsrichtlinien in Azure Kubernetes Service (AKS)
 description: Hier erfahren Sie, wie Sie den Podzugang mittels Podsicherheitsrichtlinie in Azure Kubernetes Service (AKS) steuern.
 services: container-service
 ms.topic: article
-ms.date: 07/21/2020
-ms.openlocfilehash: 77c618429503caf9aa7bb6abda109504bbf68d71
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 02/12/2021
+ms.openlocfilehash: 23c436cb3ddf970939ab9d7b936a4e03e1fbb7ff
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695995"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371225"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Vorschauversion: Schützen Ihres Clusters mithilfe von Podsicherheitsrichtlinien in Azure Kubernetes Service (AKS)
 
 > [!WARNING]
-> **Das in diesem Dokument beschriebene Feature „Podsicherheitsrichtlinie (Vorschauversion)“ wurde als veraltet markiert und steht nach dem 31. Mai 2021 nicht mehr zur Verfügung.** Es wird durch [Azure Policy für AKS](use-pod-security-on-azure-policy.md) ersetzt. Das Ablaufdatum wurde gegenüber dem vorherigen Datum, dem 15. Oktober 2020, verlängert.
+> **Das in diesem Dokument beschriebene Feature „Podsicherheitsrichtlinie (Vorschau)“ wurde als veraltet markiert und steht nach dem 30. Juni 2021 nicht mehr zur Verfügung.** Es wird durch [Azure Policy für AKS](use-pod-security-on-azure-policy.md) ersetzt. Das Ablaufdatum wurde gegenüber dem vorherigen Datum, dem 15. Oktober 2020, verlängert.
 >
 > Wenn die Podsicherheitsrichtlinie (Vorschauversion) veraltet ist, müssen Sie das Feature für alle vorhandenen Cluster deaktivieren, die das veraltete Feature verwenden, um zukünftige Clusterupgrades ausführen und weiterhin Azure-Support erhalten zu können.
 >

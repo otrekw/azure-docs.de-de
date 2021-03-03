@@ -1,14 +1,14 @@
 ---
 title: Übersicht über den Connected Machine-Agent für Windows
 description: Dieser Artikel bietet eine ausführliche Übersicht über den Agent für Azure Arc-fähige Server, der die Überwachung von VMs unterstützt, die in Hybridumgebungen gehostet werden.
-ms.date: 02/03/2021
+ms.date: 02/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: ed77ee00510fedaf42226081fcf11c4753b8a63a
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 82562bf3b1f8392e56a53ba0f968a76b050e7b13
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626307"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558509"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Übersicht über den Agent für Azure Arc-fähige Server
 
@@ -32,6 +32,30 @@ Das Azure Connected Machine-Agent-Paket enthält mehrere logische Komponenten, d
     * Zuweisungen werden nach 14 Tagen gelöscht und nach Ablauf dieses Zeitraums für den betreffenden Computer nicht erneut durchgeführt.
 
 * Der Erweiterungs-Agent verwaltet VM-Erweiterungen, einschließlich Installation, Deinstallation und Upgrade. Erweiterungen werden von Azure heruntergeladen und unter Windows in den Ordner `%SystemDrive%\%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads` kopiert und unter Linux in den Ordner `/opt/GC_Ext/downloads`. Unter Windows wird die Erweiterung unter dem Pfad `%SystemDrive%\Packages\Plugins\<extension>` installiert, unter Linux unter `/var/lib/waagent/<extension>`.
+
+## <a name="instance-metadata"></a>Instanzmetadaten
+
+Metadateninformationen zum verbundenen Computer werden gesammelt, nachdem der Connected Machine-Agent bei Arc-fähigen Servern registriert wurde. Dies gilt insbesondere in folgenden Fällen:
+
+* Betriebssystemname, -typ und -version
+* Computername
+* Vollqualifizierter Domänenname (FQDN) des Computers
+* Version des Connected Machine-Agents
+* Vollqualifizierter Domänenname (FQDN) für Active Directory und DNS
+* UUID (BIOS-ID)
+* Connected Machine-Agent-Takt
+* Version des Connected Machine-Agents
+* Öffentlicher Schlüssel für verwaltete Identität
+* Richtlinienkonformitätsstatus und Details (bei Verwendung von Azure Policy-Richtlinien für Gastkonfigurationen)
+
+Die folgenden Metadateninformationen werden vom Agent von Azure angefordert:
+
+* Ressourcenstandort (Region)
+* Virtual machine ID (ID des virtuellen Computers)
+* `Tags`
+* Azure Active Directory-Zertifikat für verwaltete Identitäten
+* Richtlinienzuweisungen für Gastkonfigurationen
+* Erweiterungsanforderungen: installieren, aktualisieren und löschen
 
 ## <a name="download-agents"></a>Herunterladen von Agents
 

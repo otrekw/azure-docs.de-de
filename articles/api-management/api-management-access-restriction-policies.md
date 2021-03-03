@@ -7,14 +7,14 @@ author: vladvino
 ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
 ms.topic: article
-ms.date: 11/23/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: e38dcf1e12629405ae5f28a987ba20557037ee67
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 0b18a73d0357b5dd90b329ba55c6601e60df5bbc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683441"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367570"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management-Richtlinien für die Zugriffsbeschränkung
 
@@ -80,7 +80,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-poli
 
 ## <a name="limit-call-rate-by-subscription"></a><a name="LimitCallRate"></a> Aufrufrate nach Abonnement begrenzen
 
-Die `rate-limit`-Richtlinie verhindert API-Nutzungsspitzen auf Abonnementbasis, indem sie die Aufrufrate auf eine angegebene Anzahl pro angegebenem Zeitraum begrenzt. Wenn diese Richtlinie ausgelöst wird, empfängt der Aufrufer einen `429 Too Many Requests`-Antwortstatuscode.
+Die `rate-limit`-Richtlinie verhindert API-Nutzungsspitzen auf Abonnementbasis, indem sie die Aufrufrate auf eine angegebene Anzahl pro angegebenem Zeitraum begrenzt. Wenn die Aufrufrate überschritten wird, empfängt der Aufrufer einen `429 Too Many Requests`-Antwortstatuscode.
 
 > [!IMPORTANT]
 > Diese Richtlinie kann pro Richtliniendokument nur einmal verwendet werden.
@@ -98,18 +98,25 @@ Die `rate-limit`-Richtlinie verhindert API-Nutzungsspitzen auf Abonnementbasis, 
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
     <api name="API name" id="API id" calls="number" renewal-period="seconds" />
-        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" />
+        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" 
+        retry-after-header-name="header name" 
+        retry-after-variable-name="policy expression variable name"
+        remaining-calls-header-name="header name"  
+        remaining-calls-variable-name="policy expression variable name"
+        total-calls-header-name="header name"/>
     </api>
 </rate-limit>
 ```
 
 ### <a name="example"></a>Beispiel
 
+Im folgenden Beispiel beträgt das Ratenlimit pro Abonnement 20 Aufrufe pro 90 Sekunden. Nach jeder Richtlinienausführung werden die verbleibenden Aufrufe, die im Zeitraum zulässig sind, in der Variablen `remainingCallsPerSubscription` gespeichert.
+
 ```xml
 <policies>
     <inbound>
         <base />
-        <rate-limit calls="20" renewal-period="90" />
+        <rate-limit calls="20" renewal-period="90" remaining-calls-variable-name="remainingCallsPerSubscription"/>
     </inbound>
     <outbound>
         <base />
@@ -119,7 +126,7 @@ Die `rate-limit`-Richtlinie verhindert API-Nutzungsspitzen auf Abonnementbasis, 
 
 ### <a name="elements"></a>Elemente
 
-| Name       | Beschreibung                                                                                                                                                                                                                                                                                              | Erforderlich |
+| Name       | BESCHREIBUNG                                                                                                                                                                                                                                                                                              | Erforderlich |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | rate-limit | Stammelement                                                                                                                                                                                                                                                                                            | Ja      |
 | api        | Fügen Sie mindestens eins dieser Elemente hinzu, um eine Aufrufratenbegrenzung für APIs innerhalb des Produkts zu erzwingen. Produkt- und API-Aufrufratenbegrenzungen werden unabhängig voneinander angewendet. Auf „api“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert.                    | Nein       |
@@ -127,11 +134,16 @@ Die `rate-limit`-Richtlinie verhindert API-Nutzungsspitzen auf Abonnementbasis, 
 
 ### <a name="attributes"></a>Attributes
 
-| Name           | Beschreibung                                                                                           | Erforderlich | Standard |
+| Name           | BESCHREIBUNG                                                                                           | Erforderlich | Standard |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| name           | Der Name der API, auf die die Ratenbegrenzung angewendet werden soll.                                                | Ja      | N/V     |
-| calls          | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Ja      | N/V     |
-| renewal-period | Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.                                              | Ja      | –     |
+| name           | Der Name der API, auf die die Ratenbegrenzung angewendet werden soll.                                                | Ja      | –     |
+| calls          | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Ja      | –     |
+| renewal-period | Der Zeitraum in Sekunden, nach dem die Rate zurückgesetzt wird.                                              | Ja      | –     |
+| retry-after-header-name    | Der Name eines Antwortheaders, dessen Wert das empfohlene Wiederholungsintervall in Sekunden ist, nach dem die angegebene Aufrufrate überschritten wird. |  Nein | –  |
+| retry-after-variable-name    | Der Name einer Richtlinienausdrucksvariablen, die das empfohlene Wiederholungsintervall in Sekunden speichert, nach dem die angegebene Aufrufrate überschritten wird. |  Nein | –  |
+| remaining-calls-header-name    | Der Name einer Antwortheaders, dessen Wert nach jeder Richtlinienausführung die Anzahl der verbleibenden Aufrufe ist, die für den Zeitraum zulässig sind, der in `renewal-period` angegeben ist. |  Nein | –  |
+| remaining-calls-variable-name    | Der Name einer Richtlinienausdrucksvariablen, in der nach jeder Richtlinienausführung die Anzahl der verbleibenden Aufrufe gespeichert wird, die für den Zeitraum zulässig sind, der in `renewal-period` angegeben ist. |  Nein | –  |
+| total-calls-header-name    | Der Name eines Antwortheaders, dessen Wert der in `calls` angegebene Wert ist. |  Nein | –  |
 
 ### <a name="usage"></a>Verwendung
 
@@ -146,7 +158,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-poli
 > [!IMPORTANT]
 > Diese Funktion ist auf der Ebene **Verbrauch** von API Management nicht verfügbar.
 
-Die `rate-limit-by-key`-Richtlinie verhindert API-Nutzungsspitzen auf Schlüsselbasis, indem sie die Aufrufrate auf eine angegebene Anzahl pro angegebenem Zeitraum beschränkt. Der Schlüssel kann einen beliebigen Zeichenfolgenwert aufweisen und wird in der Regel über einen Richtlinienausdruck angegeben. Optional kann eine inkrementelle Bedingung hinzugefügt werden, um anzugeben, welche Anforderungen für den Grenzwert gezählt werden sollen. Wenn diese Richtlinie ausgelöst wird, empfängt der Aufrufer einen `429 Too Many Requests`-Antwortstatuscode.
+Die `rate-limit-by-key`-Richtlinie verhindert API-Nutzungsspitzen auf Schlüsselbasis, indem sie die Aufrufrate auf eine angegebene Anzahl pro angegebenem Zeitraum beschränkt. Der Schlüssel kann einen beliebigen Zeichenfolgenwert aufweisen und wird in der Regel über einen Richtlinienausdruck angegeben. Optional kann eine inkrementelle Bedingung hinzugefügt werden, um anzugeben, welche Anforderungen für den Grenzwert gezählt werden sollen. Wenn diese Aufrufrate überschritten wird, empfängt der Aufrufer einen `429 Too Many Requests`-Antwortstatuscode.
 
 Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Erweiterte Anforderungsbegrenzung mit Azure API Management](./api-management-sample-flexible-throttling.md).
 
@@ -162,13 +174,16 @@ Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Erwei
 <rate-limit-by-key calls="number"
                    renewal-period="seconds"
                    increment-condition="condition"
-                   counter-key="key value" />
+                   counter-key="key value" 
+                   retry-after-header-name="header name" retry-after-variable-name="policy expression variable name"
+                   remaining-calls-header-name="header name"  remaining-calls-variable-name="policy expression variable name"
+                   total-calls-header-name="header name"/> 
 
 ```
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird die Ratenbegrenzung anhand der IP-Adresse des Aufrufers bestimmt.
+Im folgenden Beispiel wird die Ratenbegrenzung von 10 Aufrufen pro 60 Sekunden anhand der IP-Adresse des Aufrufers bestimmt. Nach jeder Richtlinienausführung werden die verbleibenden Aufrufe, die im Zeitraum zulässig sind, in der Variablen `remainingCallsPerIP` gespeichert.
 
 ```xml
 <policies>
@@ -177,7 +192,8 @@ Im folgenden Beispiel wird die Ratenbegrenzung anhand der IP-Adresse des Aufrufe
         <rate-limit-by-key  calls="10"
               renewal-period="60"
               increment-condition="@(context.Response.StatusCode == 200)"
-              counter-key="@(context.Request.IpAddress)"/>
+              counter-key="@(context.Request.IpAddress)"
+              remaining-calls-variable-name="remainingCallsPerIP"/>
     </inbound>
     <outbound>
         <base />
@@ -187,18 +203,23 @@ Im folgenden Beispiel wird die Ratenbegrenzung anhand der IP-Adresse des Aufrufe
 
 ### <a name="elements"></a>Elemente
 
-| Name              | Beschreibung   | Erforderlich |
+| Name              | BESCHREIBUNG   | Erforderlich |
 | ----------------- | ------------- | -------- |
 | rate-limit-by-key | Stammelement | Ja      |
 
 ### <a name="attributes"></a>Attributes
 
-| Name                | Beschreibung                                                                                           | Erforderlich | Standard |
+| Name                | BESCHREIBUNG                                                                                           | Erforderlich | Standard |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| calls               | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Ja      | N/V     |
-| counter-key         | Der Schlüssel, der für die Ratenbegrenzungsrichtlinie verwendet werden soll.                                                             | Ja      | N/V     |
-| increment-condition | Der boolesche Ausdruck, der angibt, ob die Anforderung für das Kontingent gezählt werden soll (`true`).        | Nein       | N/V     |
-| renewal-period      | Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.                                              | Ja      | –     |
+| calls               | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Ja      | –     |
+| counter-key         | Der Schlüssel, der für die Ratenbegrenzungsrichtlinie verwendet werden soll.                                                             | Ja      | –     |
+| increment-condition | Der boolesche Ausdruck, der angibt, ob die Anforderung für die Rate gezählt werden soll (`true`).        | Nein       | –     |
+| renewal-period      | Der Zeitraum in Sekunden, nach dem die Rate zurückgesetzt wird.                                              | Ja      | –     |
+| retry-after-header-name    | Der Name eines Antwortheaders, dessen Wert das empfohlene Wiederholungsintervall in Sekunden ist, nach dem die angegebene Aufrufrate überschritten wird. |  Nein | –  |
+| retry-after-variable-name    | Der Name einer Richtlinienausdrucksvariablen, die das empfohlene Wiederholungsintervall in Sekunden speichert, nach dem die angegebene Aufrufrate überschritten wird. |  Nein | N/V  |
+| remaining-calls-header-name    | Der Name einer Antwortheaders, dessen Wert nach jeder Richtlinienausführung die Anzahl der verbleibenden Aufrufe ist, die für den Zeitraum zulässig sind, der in `renewal-period` angegeben ist. |  Nein | –  |
+| remaining-calls-variable-name    | Der Name einer Richtlinienausdrucksvariablen, in der nach jeder Richtlinienausführung die Anzahl der verbleibenden Aufrufe gespeichert wird, die für den Zeitraum zulässig sind, der in `renewal-period` angegeben ist. |  Nein | –  |
+| total-calls-header-name    | Der Name eines Antwortheaders, dessen Wert der in `calls` angegebene Wert ist. |  Nein | –  |
 
 ### <a name="usage"></a>Verwendung
 
@@ -234,7 +255,7 @@ Im folgenden Beispiel lässt die Richtlinie nur Anfragen zu, die entweder von de
 
 ### <a name="elements"></a>Elemente
 
-| Name                                      | Beschreibung                                         | Erforderlich                                                       |
+| Name                                      | BESCHREIBUNG                                         | Erforderlich                                                       |
 | ----------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------- |
 | ip-filter                                 | Stammelement                                       | Ja                                                            |
 | address                                   | Gibt eine einzelne IP-Adresse an, nach der gefiltert werden soll.   | Mindestens ein `address`- oder `address-range`-Element ist erforderlich. |
@@ -245,7 +266,7 @@ Im folgenden Beispiel lässt die Richtlinie nur Anfragen zu, die entweder von de
 | Name                                      | Beschreibung                                                                                 | Erforderlich                                           | Standard |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
 | address-range from="Adresse" to="Adresse" | Ein IP-Adressbereich, für den diese Richtlinie gelten soll.                                        | Erforderlich, wenn das `address-range`-Element verwendet wird. | N/V     |
-| ip-filter action="allow &#124; forbid"    | Gibt an, ob Aufrufe für die angegebenen IP-Adressen oder -Adressbereiche erlaubt oder blockiert werden sollen. | Ja                                                | –     |
+| ip-filter action="allow &#124; forbid"    | Gibt an, ob Aufrufe für die angegebenen IP-Adressen oder -Adressbereiche erlaubt oder blockiert werden sollen. | Ja                                                | N/V     |
 
 ### <a name="usage"></a>Verwendung
 
@@ -292,7 +313,7 @@ Die `quota`-Richtlinie erzwingt ein erneuerbares oder für die Lebensdauer gült
 
 ### <a name="elements"></a>Elemente
 
-| Name      | Beschreibung                                                                                                                                                                                                                                                                                  | Erforderlich |
+| Name      | BESCHREIBUNG                                                                                                                                                                                                                                                                                  | Erforderlich |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | quota     | Stammelement                                                                                                                                                                                                                                                                                | Ja      |
 | api       | Fügen Sie mindestens eines dieser Elemente hinzu, um ein Aufrufkontingent für APIs innerhalb des Produkts zu erzwingen. Produkt- und API-Aufrufkontingente werden unabhängig voneinander angewendet. Auf „api“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert.                    | Nein       |
@@ -300,11 +321,11 @@ Die `quota`-Richtlinie erzwingt ein erneuerbares oder für die Lebensdauer gült
 
 ### <a name="attributes"></a>Attributes
 
-| Name           | Beschreibung                                                                                               | Erforderlich                                                         | Standard |
+| Name           | BESCHREIBUNG                                                                                               | Erforderlich                                                         | Standard |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | name           | Der Name der API oder des Vorgangs, für die bzw. den das Kontingent gilt.                                             | Ja                                                              | N/V     |
-| bandwidth      | Die maximale Gesamtanzahl von Kilobytes, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | N/V     |
-| calls          | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind.     | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | N/V     |
+| bandwidth      | Die maximale Gesamtanzahl von Kilobytes, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | –     |
+| calls          | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind.     | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | –     |
 | renewal-period | Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.                                                  | Ja                                                              | –     |
 
 ### <a name="usage"></a>Verwendung
@@ -319,7 +340,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-poli
 > [!IMPORTANT]
 > Diese Funktion ist auf der Ebene **Verbrauch** von API Management nicht verfügbar.
 
-Die `quota-by-key`-Richtlinie erzwingt ein erneuerbares oder für die Lebensdauer gültiges Aufruf- und/oder Bandbreitenkontingent pro Schlüssel. Der Schlüssel kann einen beliebigen Zeichenfolgenwert aufweisen und wird in der Regel über einen Richtlinienausdruck angegeben. Optional kann eine inkrementelle Bedingung hinzugefügt werden, um anzugeben, welche Anforderungen für das Kontingent gezählt werden sollen. Wenn der gleiche Schlüsselwert durch mehrere Richtlinien erhöht würde, erfolgt nur eine Erhöhung pro Anforderung. Wenn der Aufrufgrenzwert erreicht wird, empfängt der Aufrufer einen `403 Forbidden`-Antwortstatuscode.
+Die `quota-by-key`-Richtlinie erzwingt ein erneuerbares oder für die Lebensdauer gültiges Aufruf- und/oder Bandbreitenkontingent pro Schlüssel. Der Schlüssel kann einen beliebigen Zeichenfolgenwert aufweisen und wird in der Regel über einen Richtlinienausdruck angegeben. Optional kann eine inkrementelle Bedingung hinzugefügt werden, um anzugeben, welche Anforderungen für das Kontingent gezählt werden sollen. Wenn der gleiche Schlüsselwert durch mehrere Richtlinien erhöht würde, erfolgt nur eine Erhöhung pro Anforderung. Wenn die Aufrufrate überschritten wird, empfängt der Aufrufer einen `403 Forbidden`-Antwortstatuscode.
 
 Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Erweiterte Anforderungsbegrenzung mit Azure API Management](./api-management-sample-flexible-throttling.md).
 
@@ -357,13 +378,13 @@ Im folgenden Beispiel wird das Kontingent anhand der IP-Adresse des Aufrufers be
 
 ### <a name="elements"></a>Elemente
 
-| Name  | Beschreibung   | Erforderlich |
+| Name  | BESCHREIBUNG   | Erforderlich |
 | ----- | ------------- | -------- |
 | quota | Stammelement | Ja      |
 
 ### <a name="attributes"></a>Attributes
 
-| Name                | Beschreibung                                                                                               | Erforderlich                                                         | Standard |
+| Name                | BESCHREIBUNG                                                                                               | Erforderlich                                                         | Standard |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | bandwidth           | Die maximale Gesamtanzahl von Kilobytes, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | –     |
 | calls               | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind.     | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | –     |

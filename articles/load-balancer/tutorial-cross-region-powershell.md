@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/10/2021
-ms.openlocfilehash: b1a249bac4a1a46e52bf52eccd56649153eefe8e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 88e400cea764be84521c003a681aa74885dc29ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100360923"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721343"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-powershell"></a>Tutorial: Erstellen einer regionsübergreifenden Azure Load Balancer-Instanz mit Azure PowerShell
 
@@ -195,7 +195,7 @@ Set-AzLoadBalancerBackendAddressPool @bepoolcr
 
 In diesem Abschnitt testen Sie den regionsübergreifenden Lastenausgleich. Sie stellen in einem Webbrowser eine Verbindung mit der öffentlichen IP-Adresse her.  Sie halten die virtuellen Computer in den Back-End-Pools eines der regionalen Lastenausgleiche an und beobachten das Failover.
 
-1. Rufen Sie mit [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) die öffentliche IP-Adresse des Lastenausgleichs ab:
+1. Rufen Sie mit [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) die öffentliche IP-Adresse des Lastenausgleichs ab:
 
 ```azurepowershell-interactive
 $ip = @{

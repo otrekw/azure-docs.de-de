@@ -8,19 +8,20 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: c6a3385b4347f76d83963ca33fa8485974d3c62a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 07c5be6339048517169f14032e8c37b1dc5fbf01
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881281"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546617"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Vorbereiten eines auf Red Hat basierenden virtuellen Computers für Azure
+
 In diesem Artikel erfahren Sie, wie Sie einen auf Red Hat Enterprise Linux (RHEL) basierenden virtuellen Computer für die Verwendung in Azure vorbereiten. In diesem Artikel werden die RHEL-Versionen 6.7+ und 7.1+ behandelt. Darüber hinaus werden in diesem Artikel die Hypervisoren Hyper-V, KVM und VMware für die Vorbereitung vorgestellt. Weitere Informationen zu den Berechtigungsvoraussetzungen für die Teilnahme am Cloud Access-Programm von Red Hat finden Sie auf der [Red Hat Cloud Access-Website](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) und unter [Running RHEL on Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure) (Ausführen von RHEL in Azure). Weitere Informationen zu den Möglichkeiten zum Automatisieren der Erstellung von RHEL-Images finden Sie unter [Azure Image Builder](../image-builder-overview.md).
 
 ## <a name="hyper-v-manager"></a>Hyper-V-Manager
 
-In diesem Abschnitt erfahren Sie, wie Sie mit dem Hyper-V-Manager eine [RHEL 6](#rhel-6-using-hyper-v-manager)- oder [RHEL 7](#rhel-7-using-hyper-v-manager)-VM vorbereiten.
+In diesem Abschnitt erfahren Sie, wie Sie mit dem Hyper-V-Manager eine [RHEL 6](#rhel-6-using-hyper-v-manager)-, [RHEL 7](#rhel-7-using-hyper-v-manager)- oder [RHEL 8](#rhel-8-using-hyper-v-manager)-VM vorbereiten.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 In diesem Abschnitt wird davon ausgegangen, dass Sie bereits eine ISO-Datei von der Red Hat-Website beschafft und das RHEL-Image auf einer virtuellen Festplatte (VHD) installiert haben. Weitere Informationen zum Installieren eines Betriebssystemimage mit dem Hyper-V-Manager finden Sie unter [Installieren der Hyper-V-Rolle und Konfigurieren eines virtuellen Computers](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
@@ -273,8 +274,8 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits eine ISO-Datei von 
     cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
     datasource_list: [ Azure ]
     datasource:
-    Azure:
-        apply_network_config: False
+        Azure:
+            apply_network_config: False
     EOF
     ```
 
@@ -460,8 +461,8 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits eine ISO-Datei von 
     cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
     datasource_list: [ Azure ]
     datasource:
-    Azure:
-        apply_network_config: False
+        Azure:
+            apply_network_config: False
     EOF
     ```
 

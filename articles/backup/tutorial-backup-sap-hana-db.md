@@ -3,12 +3,12 @@ title: 'Tutorial: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Compute
 description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken, die auf einem virtuellen Azure-Computer ausgeführt werden, in einem Azure Backup Recovery Services-Tresor sichern.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: ede8ebab205e814de3988a2b5c432a21f965eb55
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 5548717b25ea3ec027ba5f588e5e28faafbb5d6f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987782"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703680"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Tutorial: Sichern von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer
 
@@ -105,7 +105,7 @@ Bei den über Backint bereitgestellten Sicherungen (Protokoll und protokollfremd
 
 Die Backint-Komponente von HANA stellt die Pipes (eine Pipe für Lese- und eine für Schreibvorgänge) bereit. Diese sind mit zugrunde liegenden Datenträgern verbunden, auf denen sich Datenbankdateien befinden, die dann durch den Azure Backup-Dienst gelesen und an einen Azure Recovery Services-Tresor übertragen werden. Vom Azure Backup-Dienst wird neben den nativen Validierungsüberprüfungen von Backint auch eine Prüfsumme erstellt. Durch diese Überprüfungen wird sichergestellt, dass die im Azure Recovery Services-Tresor enthaltenen Daten zuverlässig und wiederherstellbar sind.
 
-Da es bei den Streams in erster Linie um Datenträger geht, müssen Sie mit der Datenträgerleistung vertraut sein, um die Sicherungs- und Wiederherstellungsleistung beurteilen zu können. Ausführliche Informationen zu Datenträgerdurchsatz und -leistung bei virtuellen Azure-Computern finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/virtual-machines/disks-performance). Diese Informationen sind auf die Sicherungs- und Wiederherstellungsleistung übertragbar.
+Da es bei den Streams in erster Linie um Datenträger geht, müssen Sie mit der Datenträgerleistung vertraut sein, um die Sicherungs- und Wiederherstellungsleistung beurteilen zu können. Ausführliche Informationen zu Datenträgerdurchsatz und -leistung bei virtuellen Azure-Computern finden Sie in [diesem Artikel](../virtual-machines/disks-performance.md). Diese Informationen sind auf die Sicherungs- und Wiederherstellungsleistung übertragbar.
 
 **Der Azure Backup-Dienst versucht, bei protokollfremden Sicherungen für HANA (beispielsweise vollständig, differenziell oder inkrementell) eine Geschwindigkeit von bis zu ~420 MBit/s und bei Protokollsicherungen für HANA eine Geschwindigkeit von bis zu 100 MBit/s zu erreichen.** Wie bereits erwähnt, können diese Geschwindigkeiten nicht garantiert werden und hängen von folgenden Faktoren ab:
 
@@ -267,8 +267,8 @@ Legen Sie die Richtlinieneinstellungen wie folgt fest:
    ![Richtlinie für differenzielle Sicherung](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
    >[!NOTE]
-   >Inkrementelle Sicherungen sind nun als öffentliche Vorschau verfügbar. Sie können entweder „differenziell“ oder „inkrementell“ für die tägliche Sicherung auswählen, aber nicht beide Optionen.
-   >
+   >Sie können entweder „differenziell“ oder „inkrementell“ für die tägliche Sicherung auswählen, aber nicht beide Optionen.
+
 7. Wählen Sie unter **Richtlinie zur inkrementellen Sicherung** die Option **Aktivieren** aus, um die Einstellungen für Häufigkeit und Beibehaltung vorzunehmen.
     * Pro Tag kann höchstens eine inkrementelle Sicherung ausgelöst werden.
     * Inkrementelle Sicherungen können maximal 180 Tage aufbewahrt werden. Wenn Sie eine längere Aufbewahrung wünschen, müssen Sie vollständige Sicherungen verwenden.

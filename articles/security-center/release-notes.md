@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/04/2021
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: fe031fa6de86b8059ba175fc4e1df6385ca7e796
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 837ba5a0fd5ff94cc4f55cd4b01b8cb8a27425fd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551024"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634259"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Neuerungen in Azure Security Center
 
@@ -35,10 +35,29 @@ Weitere Informationen zu den *geplanten* Änderungen, die demnächst im Security
 
 Updates im Februar:
 
+- [Neue Seite „Sicherheitswarnungen“ im Azure-Portal nun allgemein verfügbar](#new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga)
 - [Empfehlungen zum Schutz von Kubernetes-Workloads veröffentlicht (allgemeine Verfügbarkeit)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
 - [Direkter Link zur Richtlinie auf der Seite mit den Empfehlungsdetails](#direct-link-to-policy-from-recommendation-details-page)
 - [Empfehlung zur SQL-Datenklassifizierung hat keine Auswirkung auf Ihre Sicherheitsbewertung mehr](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
 - [Workflowautomatisierungen können durch Änderungen an Bewertungen der Einhaltung gesetzlicher Bestimmungen ausgelöst werden (Vorschau)](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
+- [Erweiterungen für die Seite „Ressourcenbestand“](#asset-inventory-page-enhancements)
+
+
+### <a name="new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga"></a>Neue Seite „Sicherheitswarnungen“ im Azure-Portal nun allgemein verfügbar
+
+Die Seite „Sicherheitswarnungen“ von Azure Security Center wurde neu gestaltet. Sie bietet jetzt Folgendes:
+
+- **Eine verbesserte Selektierungsoberfläche für Warnungen**: Die Liste enthält anpassbare Filter und Gruppierungsoptionen und trägt dadurch zur Reduzierung der „Warnungsmüdigkeit“ bei, sodass Sie sich einfacher auf die relevantesten Bedrohungen konzentrieren können.
+- **Weitere Informationen in der Warnungsliste**, beispielsweise MITRE ATT&CK-Taktiken
+- **Schaltfläche zum Erstellen von Beispielwarnungen**: Zum Evaluieren von Azure Defender-Funktionen und Testen Ihrer Warnungen. Sie können Beispielwarnungen aus allen Azure Defender-Plänen erstellen (Konfiguration für SIEM-Integration, E-Mail-Benachrichtigungen und Workflowautomatisierungen).
+- **Angleichung an die Azure Sentinel-Incidentoberfläche**: Für Kunden, die beide Produkte verwenden, ist der Wechsel zwischen den Produkten jetzt unkomplizierter, und es ist einfach, das eine vom anderen zu übernehmen.
+- **Bessere Leistung** für große Warnungslisten
+- **Tastaturnavigation** durch die Warnungsliste
+- **Warnungen aus Azure Resource Graph**: Sie können Warnungen in Azure Resource Graph abfragen, der Kusto-ähnlichen API für alle Ihre Ressourcen. Dies ist auch nützlich, wenn Sie eigene Warnungsdashboards erstellen. [Erfahren Sie mehr über Azure Resource Graph](../governance/resource-graph/index.yml).
+- **Feature zum Erstellen von Beispielwarnungen**: Informationen zum Erstellen von Beispielwarnungen über die neue Oberfläche für Warnungen finden Sie unter [Generieren von Azure Defender-Beispielwarnungen](security-center-alert-validation.md#generate-sample-azure-defender-alerts).
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Liste der Sicherheitswarnungen von Azure Security Center":::
+
 
 ### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Empfehlungen zum Schutz von Kubernetes-Workloads veröffentlicht (Allgemeine Verfügbarkeit)
 
@@ -70,16 +89,32 @@ In der Liste mit den Empfehlungen in unserem [Referenzhandbuch für Sicherheitse
 
 
 ### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>Empfehlung zur SQL-Datenklassifizierung hat keine Auswirkung auf Ihre Sicherheitsbewertung mehr
-
 Die Empfehlung **Sensible Daten in Ihren SQL-Datenbanken müssen klassifiziert werden** hat keine Auswirkung auf Ihre Sicherheitsbewertung mehr. Da dies die einzige Empfehlung unter der Sicherheitskontrolle **Datenklassifizierung anwenden** ist, gilt für diese Kontrolle in Bezug auf die Sicherheitsbewertung jetzt der Wert „0“.
 
 
 ### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview"></a>Workflowautomatisierungen können durch Änderungen an Bewertungen der Einhaltung gesetzlicher Bestimmungen ausgelöst werden (Vorschau)
-
 Wir haben den Triggeroptionen für Ihre Workflowautomatisierungen jetzt einen dritten Datentyp hinzugefügt: Änderungen an Bewertungen zur Einhaltung gesetzlicher Bestimmungen.
 
 :::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="Verwenden von Änderungen bei Bewertungen der Einhaltung gesetzlicher Bestimmungen zum Auslösen der Workflowautomatisierung" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
+
+### <a name="asset-inventory-page-enhancements"></a>Erweiterungen für die Seite „Ressourcenbestand“
+Die Security Center-Seite „Ressourcenbestand“ wurde wie folgt verbessert:
+
+- Zusammenfassungen am oberen Rand der Seite enthalten jetzt **Nicht registrierte Abonnements** und geben Aufschluss über die Anzahl von Abonnements ohne Security Center-Aktivierung.
+
+    :::image type="content" source="media/release-notes/unregistered-subscriptions.png" alt-text="Anzahl nicht registrierter Abonnements in den Zusammenfassungen am oberen Rand der Seite „Ressourcenbestand“":::
+
+- Filter wurden erweitert und verbessert, um Folgendes einzuschließen:
+    - **Anzahl**: Für die Filter wird jeweils die Anzahl von Ressourcen angezeigt, die die Kriterien der jeweiligen Kategorie erfüllen.
+
+        :::image type="content" source="media/release-notes/counts-in-inventory-filters.png" alt-text="Anzahlangabe in den Filtern der Seite „Ressourcenbestand“ von Azure Security Center":::
+
+    - **Ausnahmenfilter** (optional): Ermöglicht das Eingrenzen der Ergebnisse auf Ressourcen mit bzw. ohne Ausnahmen. Dieser Filter wird standardmäßig nicht angezeigt, ist aber über die Schaltfläche **Filter hinzufügen** verfügbar.
+
+        :::image type="content" source="media/release-notes/adding-contains-exemption-filter.gif" alt-text="Hinzufügen des Ausnahmenfilters auf der Seite „Ressourcenbestand“ von Azure Security Center":::
+
+Weitere Informationen zum Erkunden und Verwalten Ihrer Ressourcen mithilfe des Ressourcenbestands und finden Sie [hier](asset-inventory.md).
 
 ## <a name="january-2021"></a>Januar 2021
 
@@ -630,7 +665,7 @@ Das Security Center-Dashboard für die Einhaltung gesetzlicher Bestimmungen biet
 
 Das Dashboard enthält einen Standardsatz gesetzlicher Standards. Falls einer der angegebenen Standards für Ihre Organisation nicht relevant ist, ist es nun problemlos möglich, diesen aus der Benutzeroberfläche für ein Abonnement zu entfernen. Standards können nur auf der Ebene des *Abonnements* entfernt werden, nicht der für den Verwaltungsgruppenbereich.
 
-Weitere Informationen finden Sie unter [Entfernen eines Standards aus Ihrem Dashboard](update-regulatory-compliance-packages.md#removing-a-standard-from-your-dashboard).
+Weitere Informationen finden Sie unter [Entfernen eines Standards aus Ihrem Dashboard](update-regulatory-compliance-packages.md#remove-a-standard-from-your-dashboard).
 
 
 ### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>Microsoft.Security/securityStatuses-Tabelle aus Azure Resource Graph (ARG) entfernt

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 11f5fcd74b228fa2d57658f5c268e3bebc3c7e93
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 52413f36a9ba5c7b7a3c68567a65a20bc3ce4090
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499525"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585204"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen
 
@@ -40,7 +40,7 @@ Wählen Sie die Protokollkategorie und die Metrikkategorie aus, die Sie überwac
 
 Eine vollständige Liste der Metriken finden Sie unter [Spring Cloud-Metriken](./spring-cloud-concept-metrics.md#user-metrics-options).
 
-Zum Einstieg aktivieren Sie einen dieser Dienste, um die Daten empfangen zu können. Weitere Informationen zum Konfigurieren von Log Analytics finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/log-query/log-analytics-tutorial.md).
+Zum Einstieg aktivieren Sie einen dieser Dienste, um die Daten empfangen zu können. Weitere Informationen zum Konfigurieren von Log Analytics finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md).
 
 ## <a name="configure-diagnostics-settings"></a>Konfigurieren von Diagnoseeinstellungen
 
@@ -131,11 +131,11 @@ Weitere Informationen zum Senden von Diagnoseinformationen an ein Speicherkonto 
 1. Um Anwendungsprotokolle zu überprüfen, suchen Sie nach einem Event Hub mit dem Namen **insights-logs-applicationconsole**.
 1. Um Anwendungsmetriken zu überprüfen, suchen Sie nach einem Event Hub mit dem Namen **insights-metrics-pt1m**.
 
-Weitere Informationen zum Senden von Diagnoseinformationen an einen Event Hub finden Sie unter [Streamen von Azure-Diagnosedaten im langsamsten Pfad mithilfe von Event Hubs](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md).
+Weitere Informationen zum Senden von Diagnoseinformationen an einen Event Hub finden Sie unter [Streamen von Azure-Diagnosedaten im langsamsten Pfad mithilfe von Event Hubs](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md).
 
 ## <a name="analyze-the-logs"></a>Analysieren der Protokolle
 
-Azure Log Analytics wird mit einer Kusto-Engine ausgeführt, damit Sie Ihre Protokolle zu Analysezwecken abfragen können. Eine kurze Einführung in das Abfragen mithilfe von Kusto finden Sie im [Log Analytics-Tutorial ](../azure-monitor/log-query/log-analytics-tutorial.md).
+Azure Log Analytics wird mit einer Kusto-Engine ausgeführt, damit Sie Ihre Protokolle zu Analysezwecken abfragen können. Eine kurze Einführung in das Abfragen mithilfe von Kusto finden Sie im [Log Analytics-Tutorial ](../azure-monitor/logs/log-analytics-tutorial.md).
 
 Anwendungsprotokolle bieten wichtige Informationen und ausführliche Protokolle zur Integrität und Leistung Ihrer Anwendung und zu vielem mehr. In den nächsten Abschnitten finden Sie einige einfache Abfragen, die Ihnen helfen, die aktuellen und früheren Zustände Ihrer Anwendung besser zu verstehen.
 
@@ -176,7 +176,7 @@ AppPlatformLogsforSpring
 
 ### <a name="learn-more-about-querying-application-logs"></a>Weitere Informationen zum Abfragen von Anwendungsprotokollen
 
-Azure Monitor bietet umfassende Unterstützung für das Abfragen von Anwendungsprotokollen mithilfe von Log Analytics. Weitere Informationen zu diesem Dienst finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md). Weitere Informationen zum Erstellen von Abfragen zur Analyse Ihrer Anwendungsprotokolle finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
+Azure Monitor bietet umfassende Unterstützung für das Abfragen von Anwendungsprotokollen mithilfe von Log Analytics. Weitere Informationen zu diesem Dienst finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md). Weitere Informationen zum Erstellen von Abfragen zur Analyse Ihrer Anwendungsprotokolle finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
 

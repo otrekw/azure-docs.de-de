@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Ihren Cluster mithilfe der 
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 5f0754638be1aa29672b6a59218a6c9d695261a5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 9caf56545efc6aefae525e28614d39705c00c21e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223141"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742567"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)
 
@@ -274,6 +274,9 @@ az aks nodepool update \
 
 Wenn Sie die automatische Clusterskalierung für einen vorhandenen Cluster wieder aktivieren möchten, können Sie sie mit dem Befehl [az aks nodepool update][az-aks-nodepool-update] unter Angabe der Parameter `--enable-cluster-autoscaler`, `--min-count` und `--max-count` wieder aktivieren.
 
+> [!NOTE]
+> Wenn Sie planen, die automatische Clusterskalierung mit Knotenpools zu verwenden, die sich über mehrere Zonen erstrecken, und zonenbezogene Planungsfunktionen wie die topologische Volumenplanung zu nutzen, wird empfohlen, einen Knotenpool pro Zone zu verwenden und `--balance-similar-node-groups` über das Profil für automatische Skalierung zu aktivieren. Dadurch wird sichergestellt, dass die automatische Skalierung erfolgreich hochskaliert und versucht wird, die Größe der Knotenpools auszugleichen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel wurde gezeigt, wie Sie die Anzahl von AKS-Knoten automatisch skalieren können. Außerdem können Sie mit der horizontalen automatischen Podskalierung automatisch die Anzahl von Pods anpassen, auf denen Ihre Anwendung ausgeführt wird. Die Schritte zum Verwenden der horizontalen automatischen Podskalierung finden Sie unter [Skalieren von Anwendungen in Azure Kubernetes Service (AKS)][aks-scale-apps].
@@ -285,7 +288,7 @@ In diesem Artikel wurde gezeigt, wie Sie die Anzahl von AKS-Knoten automatisch s
 [aks-scale-apps]: tutorial-kubernetes-scale.md
 [aks-support-policies]: support-policies.md
 [aks-upgrade]: upgrade-cluster.md
-[aks-view-master-logs]: ./view-master-logs.md#enable-resource-logs
+[aks-view-master-logs]: ./view-control-plane-logs.md#enable-resource-logs
 [autoscaler-profile-properties]: #using-the-autoscaler-profile
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az-aks-show

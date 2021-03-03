@@ -3,12 +3,12 @@ title: Verbessern der Leistung von Azure-Anwendungen mit Advisor
 description: Anhand der Empfehlungen zur Leistung in Azure Advisor können Sie die Geschwindigkeit und Reaktionszeit Ihrer unternehmenskritischen Anwendungen verbessern.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: f546527011402b9ea33321d56356d8aabe2412c1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 69fd86226375073c71903af5704ef3a635eeaffb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735527"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579922"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 
@@ -88,7 +88,7 @@ Migrieren Sie Ihr Speicherkonto-Bereitstellungsmodell zu Azure Resource Manager,
 Advisor identifiziert eigenständige Speicherkonten, die das klassische Bereitstellungsmodell verwenden, und empfiehlt eine Migration zum Resource Manager-Bereitstellungsmodell.
 
 > [!NOTE]
-> Klassische Warnungen in Azure Monitor wurden im August 2019 eingestellt. Es wird empfohlen, ein Upgrade Ihres klassischen Speicherkontos durchzuführen, damit Resource Manager verwendet werden kann, um die Warnungsfunktion auf der neuen Plattform beizubehalten. Weitere Informationen finden Sie unter [Einstellung klassischer Warnungen](../azure-monitor/platform/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform).
+> Klassische Warnungen in Azure Monitor wurden im August 2019 eingestellt. Es wird empfohlen, ein Upgrade Ihres klassischen Speicherkontos durchzuführen, damit Resource Manager verwendet werden kann, um die Warnungsfunktion auf der neuen Plattform beizubehalten. Weitere Informationen finden Sie unter [Einstellung klassischer Warnungen](../azure-monitor/alerts/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform).
 
 ## <a name="design-your-storage-accounts-to-prevent-reaching-the-maximum-subscription-limit"></a>Speicherkontenentwurf zum Vermeiden der maximalen Abonnementgrenze
 

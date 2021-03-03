@@ -1,22 +1,17 @@
 ---
 title: Sitzungsprotokoll in der Kopieraktivität
 description: Hier erfahren Sie, wie Sie ein Sitzungsprotokoll in der Kopieraktivität in Azure Data Factory aktivieren.
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: ''
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: yexu
-ms.openlocfilehash: e56a840da07a2f6e966867699506f0122a0e7956
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 7cb00d62556babbd8e43e2fac2faa815a63943ed
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593642"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385267"
 ---
 #  <a name="session-log-in-copy-activity"></a>Sitzungsprotokoll in der Kopieraktivität
 
@@ -102,6 +97,9 @@ Nach Abschluss aller Kopieraktivitätsausführungen wird der Pfad der Protokolld
 
 ```
 
+> [!NOTE]
+> Wenn die Eigenschaft `enableCopyActivityLog` auf `Enabled` festgelegt ist, werden die Protokolldateinamen vom System generiert.
+
 ### <a name="the-schema-of-the-log-file"></a>Schema der Protokolldatei
 
 Nachfolgend ist das Schema einer Protokolldatei aufgeführt.
@@ -109,8 +107,8 @@ Nachfolgend ist das Schema einer Protokolldatei aufgeführt.
 Column | BESCHREIBUNG 
 -------- | -----------  
 Timestamp | Der Zeitstempel, wenn ADF das Objekt liest, schreibt oder überspringt.
-Ebene | Die Protokollstufe dieses Elements. Der Wert kann „Warning“ oder „Info“ lauten.
-Vorgangsname | Das Vorgangsverhalten der ADF-Kopieraktivität für jedes Objekt. Dies kann „FileRead“, „FileWrite“, „FileSkip“ oder „TabularRowSkip“ lauten.
+Ebene | Die Protokollstufe dieses Elements. Mögliche Optionen sind „Warnung“ und „Info“.
+Vorgangsname | Das Vorgangsverhalten der ADF-Kopieraktivität für jedes Objekt. Mögliche Optionen sind „FileRead“, „FileWrite“, „FileSkip“ und „TabularRowSkip“.
 OperationItem | Die Dateinamen oder übersprungenen Zeilen.
 `Message` | Weitere Informationen zur Angabe, ob die Datei aus dem Quellspeicher gelesen oder in den Zielspeicher geschrieben wurde. Es kann auch der Grund angegeben sein, warum die Datei oder die Zeilen übersprungen wurden.
 

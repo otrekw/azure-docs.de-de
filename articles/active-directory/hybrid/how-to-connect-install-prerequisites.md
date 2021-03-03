@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73376994e01ed89891726a8f6e1b727f89dab2fb
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 1957adc0effd5b37d7aff3f813267da6ca065e0a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201721"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368964"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Voraussetzungen für Azure AD Connect
 In diesem Artikel werden die Voraussetzungen und die Hardwareanforderungen für Azure Active Directory (Azure AD) Connect beschrieben.
@@ -73,6 +73,7 @@ Weitere Informationen zum Schützen Ihrer Active Directory-Umgebung finden Sie u
     - Sie müssen TLS-/SSL-Zertifikate konfigurieren. Weitere Informationen finden Sie unter [Verwalten von SSL-/TLS-Protokollen und Verschlüsselungssammlungen für AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) und [Verwalten von SSL-Zertifikaten in AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap).
     - Sie müssen die Namensauflösung konfigurieren. 
 - Wenn Ihre globalen Administratoren MFA aktiviert haben, *muss* die URL https://secure.aadcdn.microsoftonline-p.com in der Liste vertrauenswürdiger Websites enthalten sein. Sie werden aufgefordert, diese Website zur Liste vertrauenswürdiger Websites hinzuzufügen, wenn Sie zu einer MFA-Abfrage aufgefordert werden und diese zuvor noch nicht hinzugefügt wurde. Sie können dafür den Internet Explorer verwenden.
+- Wenn Sie planen, Azure AD Connect Health für die Synchronisierung zu verwenden, stellen Sie sicher, dass auch die Voraussetzungen für Azure AD Connect Health erfüllt sind. Weitere Informationen finden Sie unter [Installieren des Azure AD Connect Health-Agents](how-to-connect-health-agent-install.md).
 
 #### <a name="harden-your-azure-ad-connect-server"></a>Schützen des Azure AD Connect-Servers 
 Es wird empfohlen, den Azure AD Connect-Server zuverlässig zu schützen, um die Angriffsfläche für Sicherheitsangriffe für diese wichtige Komponente Ihrer IT-Umgebung zu verringern. Wenn Sie die folgenden Empfehlungen befolgen, können Sie einige Sicherheitsrisiken für Ihre Organisation minimieren.

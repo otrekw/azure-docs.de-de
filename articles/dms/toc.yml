@@ -37,10 +37,8 @@
   items:
     - name: Migrieren von SQL Server
       items:
-        - name: zu Azure SQL-Datenbank (offline)
+        - name: zu Azure SQL-Datenbank
           href: tutorial-sql-server-to-azure-sql.md
-        - name: zu Azure SQL-Datenbank (online)
-          href: tutorial-sql-server-azure-sql-online.md
         - name: zu Azure SQL Managed Instance (offline)
           href: tutorial-sql-server-to-managed-instance.md
         - name: zu Azure SQL Managed Instance (online)

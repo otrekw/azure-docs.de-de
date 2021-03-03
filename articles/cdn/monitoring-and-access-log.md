@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: 43f53d1098e08a0f913e3baec2c6aaf3d65054d0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8a4b48586c564ee5d14a0768156b0477e2935ccf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501321"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575454"
 ---
 # <a name="real-time-monitoring-metrics-and-access-logs-for-azure-cdn"></a>Echtzeitüberwachung, Metriken und Zugriffsprotokolle für Azure CDN
 Mit Azure CDN von Microsoft können Sie Ressourcen auf folgende Weise überwachen, um Probleme zu behandeln, nachzuverfolgen und zu debuggen. 
@@ -215,7 +215,7 @@ Die Metriken werden in Diagrammen angezeigt und können über PowerShell, die Be
 
 Die Metriken von Azure CDN von Microsoft werden in Intervallen von 60 Sekunden gemessen und gesendet. Es kann bis zu 3 Minuten dauern, bis die Metriken im Portal angezeigt werden. 
 
-Weitere Informationen finden Sie unter [Azure Monitor-Metriken](../azure-monitor/platform/data-platform-metrics.md).
+Weitere Informationen finden Sie unter [Azure Monitor-Metriken](../azure-monitor/essentials/data-platform-metrics.md).
 
 **In Azure CDN von Microsoft unterstützte Metriken**
 
@@ -226,7 +226,7 @@ Weitere Informationen finden Sie unter [Azure Monitor-Metriken](../azure-monitor
 | ResponseSize | Die Anzahl der vom CDN-Edge als Antworten an Clients gesendeten Bytes |Endpunkt </br> Land/Region des Clients </br> Region des Clients </br> HTTP-Status </br> HTTP-Statusgruppe |
 | TotalLatency | Die Gesamtzeit zwischen dem Empfang der Clientanforderung in CDN **und dem letzten von CDN an den Client gesendeten Antwortbyte** |Endpunkt </br> Land/Region des Clients </br> Region des Clients </br> HTTP-Status </br> HTTP-Statusgruppe |
 
-**_Bytetrefferquote = (vom Edge ausgehende Daten – vom Ursprung ausgehende Daten) : vom Edge ausgehende Daten_*
+***Bytetrefferquote = (ausgehende Daten vom Edge - ausgehende Daten vom Ursprung) / ausgehende Daten vom Edge**
 
 Von der Berechnung der Bytetrefferquote ausgeschlossene Szenarien:
 
@@ -265,7 +265,7 @@ Wählen Sie **Neue Warnungsregel** für die im Abschnitt „Metriken“ aufgefü
 
 :::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="Konfigurieren von Warnungen für CDN-Endpunkt" border="true":::
 
-Die Warnung wird basierend auf Azure Monitor abgerechnet. Weitere Informationen zu Warnungen finden Sie unter [Azure Monitor-Warnungen](../azure-monitor/platform/alerts-overview.md).
+Die Warnung wird basierend auf Azure Monitor abgerechnet. Weitere Informationen zu Warnungen finden Sie unter [Azure Monitor-Warnungen](../azure-monitor/alerts/alerts-overview.md).
 
 ### <a name="additional-metrics"></a>Zusätzliche Metriken
 Sie können zusätzliche Metriken über Azure Log Analytics und gegen einen Aufpreis unformatierte Protokolle aktivieren.
@@ -299,4 +299,4 @@ Weitere Informationen zu Azure CDN und den anderen in diesem Artikel erwähnten 
 
 * Weitere Informationen zu Azure Monitor finden Sie [hier](../azure-monitor/overview.md).
 
-* Konfigurieren Sie [Log Analytics in Azure Monitor](../azure-monitor/log-query/log-analytics-tutorial.md).
+* Konfigurieren Sie [Log Analytics in Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md).

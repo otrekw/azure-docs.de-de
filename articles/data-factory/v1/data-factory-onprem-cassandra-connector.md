@@ -1,23 +1,18 @@
 ---
 title: Verschieben von Daten aus Cassandra mit Data Factory
 description: Enthält Informationen zum Verschieben von Daten aus einer lokalen Cassandra-Datenbank mit Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 085cc312-42ca-4f43-aa35-535b35a102d5
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0f96680f1ea91434c84d6606e3637c68c1cb5a84
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 005fd85a152ee2765facda0d961bd9119d1598e8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019632"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387409"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Verschieben von Daten aus einer lokalen Cassandra-Datenbank mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -306,7 +301,7 @@ Die folgende Beispieltabelle „ExampleTable“ ist beispielsweise eine Cassandr
 
 Der Treiber erzeugt mehrere virtuelle Tabellen, um diese einzelne Tabelle zu repräsentieren. Die Fremdschlüsselspalten in den virtuellen Tabellen verweisen auf die Primärschlüsselspalten in der echten Tabelle und geben an, welcher Zeile der echten Tabelle die Zeile der virtuellen Tabelle entspricht.
 
-Die erste virtuelle Tabelle ist die unten dargestellte Basistabelle mit dem Namen „ExampleTable“. Die Basistabelle enthält die gleichen Daten wie die ursprüngliche Datenbanktabelle, mit Ausnahme der Sammlungen, die in dieser Tabelle fehlen und in anderen virtuellen Tabellen enthalten sind.
+Die erste virtuelle Tabelle ist die unten gezeigte Basistabelle „ExampleTable“. Die Basistabelle enthält die gleichen Daten wie die ursprüngliche Datenbanktabelle, mit Ausnahme der Sammlungen, die in dieser Tabelle fehlen und in anderen virtuellen Tabellen enthalten sind.
 
 | pk_int | Wert |
 | --- | --- |

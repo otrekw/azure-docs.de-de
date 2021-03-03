@@ -3,12 +3,12 @@ title: Erstellen und Ausführen von benutzerdefinierten Verfügbarkeitstests mit
 description: In diesem Dokument wird beschrieben, wie Sie eine Azure-Funktion mit „TrackAvailability()“ erstellen, die gemäß der Konfiguration der Funktion „TimerTrigger“ regelmäßig ausgeführt wird. Die Ergebnisse dieses Tests werden an Ihre Application Insights-Ressource gesendet. Dort können Sie für die Ergebnisdaten zur Verfügbarkeit Abfragen durchführen und Warnungen einrichten. Mit angepassten Tests können Sie komplexere Verfügbarkeitstests als bei Verwendung der Portalbenutzeroberfläche schreiben, eine App in Ihrem virtuellen Azure-Netzwerk (VNET) überwachen, die Endpunktadresse ändern oder einen Verfügbarkeitstest erstellen, falls er in Ihrer Region nicht verfügbar ist.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 3553b212d1b63d4bd239893ba90aa3465d98df60
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 98d9eaadb31ffdeabe85752f7c76bdd4f7c0d4f3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945650"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589935"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Erstellen und Ausführen von benutzerdefinierten Verfügbarkeitstests mit Azure Functions
 
@@ -175,7 +175,7 @@ Wenn Sie alles unverändert ausgeführt haben (ohne Geschäftslogik hinzuzufüge
 
 ## <a name="query-in-logs-analytics"></a>Abfragen in „Protokolle (Analytics)“
 
-Sie können „Protokolle (Analytics)“ verwenden, um Ihre Verfügbarkeitsergebnisse, Abhängigkeiten und mehr anzuzeigen. Weitere Informationen zu Protokollen finden Sie unter [Übersicht über Protokollabfragen](../log-query/log-query-overview.md).
+Sie können „Protokolle (Analytics)“ verwenden, um Ihre Verfügbarkeitsergebnisse, Abhängigkeiten und mehr anzuzeigen. Weitere Informationen zu Protokollen finden Sie unter [Übersicht über Protokollabfragen](../logs/log-query-overview.md).
 
 >[!div class="mx-imgBorder"]
 >![Verfügbarkeitsergebnisse](media/availability-azure-functions/availabilityresults.png)

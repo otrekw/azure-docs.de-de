@@ -3,12 +3,12 @@ title: Onboarding von Servern mit Azure Arc-Unterstützung auf Azure Sentinel
 description: Hier erfahren Sie, wie Sie Ihre Server mit Azure Arc-Unterstützung zu Azure Sentinel hinzufügen und deren Sicherheitsstatus proaktiv überwachen.
 ms.date: 11/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60018e710613a27bcb5c00f38ee90be6ff46c61d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2364ba72ac5b10ec4e1f433cc6d591c3ca389ecd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94810906"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584737"
 ---
 # <a name="onboard-azure-arc-enabled-servers-to-azure-sentinel"></a>Onboarding von Servern mit Azure Arc-Unterstützung auf Azure Sentinel
 
@@ -18,7 +18,7 @@ Dieser Artikel soll Ihnen helfen, das Onboarding Ihrer Server mit Azure Arc-Unte
 
 Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Anforderungen erfüllt werden:
 
-- Einen [Log Analytics-Arbeitsbereich](../../azure-monitor/platform/data-platform-logs.md). Weitere Informationen zu Log Analytics-Arbeitsbereichen finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](../../azure-monitor/platform/design-logs-deployment.md).
+- Einen [Log Analytics-Arbeitsbereich](../../azure-monitor/logs/data-platform-logs.md). Weitere Informationen zu Log Analytics-Arbeitsbereichen finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](../../azure-monitor/logs/design-logs-deployment.md).
 
 - Azure Sentinel ist [in Ihrem Abonnement aktiviert](../../sentinel/quickstart-onboard.md).
 

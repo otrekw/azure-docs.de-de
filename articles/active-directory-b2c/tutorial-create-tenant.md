@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4b8292d99bd16f9b6f98f4ae8ca82edbfc02ff76
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: cb680221447594b4784f61112655d507397b1c00
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725753"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648848"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten
 
@@ -68,7 +68,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     ![Formular „Mandanten erstellen“ mit Beispielwerten im Azure-Portal](media/tutorial-create-tenant/review-and-create-tenant.png)
 
 1. Klicken Sie auf **Überprüfen + erstellen**.
-1. Überprüfen Sie Ihre Verzeichniseinstellungen. Klicken Sie anschließend auf **Erstellen**. [Hier](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors) finden Sie Informationen zum Beheben von Bereitstellungsfehlern.
+1. Überprüfen Sie Ihre Verzeichniseinstellungen. Klicken Sie anschließend auf **Erstellen**. [Hier](../azure-resource-manager/templates/common-deployment-errors.md) finden Sie Informationen zum Beheben von Bereitstellungsfehlern.
 
 Sie können mehrere Azure AD B2C-Mandanten zu Abrechnungszwecken mit einem einzelnen Azure-Abonnement verknüpfen. Zum Verknüpfen eines Mandanten müssen Sie auf dem Azure AD B2C-Mandanten ein Administrator sein, und Ihnen muss unter dem Azure-Abonnement mindestens die Rolle „Mitwirkender“ zugewiesen sein. Weitere Informationen finden Sie unter [Verknüpfen eines Azure AD B2C-Mandanten mit einem Abonnement](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription).
 

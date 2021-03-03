@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: daberry
-ms.openlocfilehash: 537a301ef2c3ba1bb5ed34d92c8784655c79d97f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 9d2c245cdc8b1aba644171089ed95bad2ab730a4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097471"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558609"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3- und Esv3-Serie
 
@@ -32,7 +32,7 @@ Virtuelle Computer der Ev3-Serie verfügen über Hyperthreading-Technologie von 
 [Livemigration](maintenance-and-updates.md): Unterstützt<br>
 [Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
 [Unterstützung von VM-Generationen](generation-2.md): Generation 1<br>
-[Beschleunigter Netzwerkbetrieb:](../virtual-network/create-vm-accelerated-networking-cli.md) Unterstützt<br>
+[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt (*erfordert mindestens 4 vCPU*)<br>
 [Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
 <br>
 
@@ -64,7 +64,7 @@ Virtuelle Computer der Esv3-Serie verfügen über Hyperthreading-Technologie von
 [Livemigration](maintenance-and-updates.md): Unterstützt<br>
 [Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
-[Beschleunigter Netzwerkbetrieb:](../virtual-network/create-vm-accelerated-networking-cli.md) Unterstützt<br>
+[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt (*erfordert mindestens 4 vCPU*)<br>
 [Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Unterstützt <br>
 <br>
 

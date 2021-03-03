@@ -1,22 +1,23 @@
 ---
 title: Planen der Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager
-description: In diesem Artikel erfahren Sie mehr zum Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager unter Linux.
-services: virtual-machines-linux
+description: In diesem Artikel erfahren Sie mehr zum Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager.
+services: virtual-machines
 author: tanmaygore
 manager: vashan
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: classic-to-arm-migration
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 271a20c5c9b6e157343246afb79f40894fe8a097
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 30a02a79e5e6e063c3d21e6626ed1a75c0f61133
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94904627"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676103"
 ---
-# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager unter Linux
+# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 
 > [!IMPORTANT]
 > Derzeit nutzen etwa 90 % der IaaS-VMs [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). Seit dem 28. Februar 2020 gelten klassische VMs als veraltet. Sie werden am 1. März 2023 vollständig eingestellt. [Erfahren Sie mehr]( https://aka.ms/classicvmretirement) zu dieser Einstellung und den [Auswirkungen auf Sie](classic-vm-deprecation.md#how-does-this-affect-me).

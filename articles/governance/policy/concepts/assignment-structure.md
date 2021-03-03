@@ -3,12 +3,12 @@ title: Details zur Richtlinienzuweisungsstruktur
 description: Beschreibt die Definition der Richtlinienzuweisung, die von Azure Policy verwendet wird, um Richtliniendefinitionen und -parameter zur Bewertung mit Ressourcen in Beziehung zu setzen.
 ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 12acbe368c9ccd6fa5654d3394e0fecb286984bf
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 625314a8b83a4d0cc76eae51eae8d357e39d2a6a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219565"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581961"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-Zuweisungsstruktur
 
@@ -63,7 +63,7 @@ Sie verwenden **displayName** und **description**, um die Richtlinienzuweisung z
 
 ## <a name="enforcement-mode"></a>Erzwingungsmodus
 
-Mit der **enforcementMode**-Eigenschaft können Kunden das Ergebnis einer Richtlinie für vorhandene Ressourcen testen, ohne dass die Richtlinienauswirkung initiiert oder Einträge im [Azure-Aktivitätsprotokoll](../../../azure-monitor/platform/platform-logs-overview.md) ausgelöst werden. Dieses Szenario wird allgemein als „Was-wäre-wenn“ bezeichnet und richtet sich nach sicheren Bereitstellungsverfahren. **enforcementMode** unterscheidet sich vom Effekt [Disabled](./effects.md#disabled), da dieser Effekt die Ressourcenauswertung gänzlich verhindert.
+Mit der **enforcementMode**-Eigenschaft können Kunden das Ergebnis einer Richtlinie für vorhandene Ressourcen testen, ohne dass die Richtlinienauswirkung initiiert oder Einträge im [Azure-Aktivitätsprotokoll](../../../azure-monitor/essentials/platform-logs-overview.md) ausgelöst werden. Dieses Szenario wird allgemein als „Was-wäre-wenn“ bezeichnet und richtet sich nach sicheren Bereitstellungsverfahren. **enforcementMode** unterscheidet sich vom Effekt [Disabled](./effects.md#disabled), da dieser Effekt die Ressourcenauswertung gänzlich verhindert.
 
 Diese Eigenschaft weist die folgenden Werte auf:
 
@@ -98,7 +98,7 @@ Legen Sie `nonComplianceMessages` in der Zuweisungsdefinition fest, um eine benu
 ]
 ```
 
-Wenn die Zuweisung für eine Initiative erfolgt, können für jede Richtliniendefinition in der Initiative verschiedene Meldungen konfiguriert werden. Für die Meldungen wird der `policyDefinitionReferenceId`-Wert verwendet, der in der Initiativendefinition konfiguriert wurde. Einzelheiten finden Sie in den [Definitionseigenschaften](./initiative-definition-structure.md#policy-definition-properties).
+Wenn die Zuweisung für eine Initiative erfolgt, können für jede Richtliniendefinition in der Initiative verschiedene Meldungen konfiguriert werden. Für die Meldungen wird der `policyDefinitionReferenceId`-Wert verwendet, der in der Initiativendefinition konfiguriert wurde. Einzelheiten finden Sie in den [Definitionseigenschaften der Richtlinie](./initiative-definition-structure.md#policy-definition-properties).
 
 ```json
 "nonComplianceMessages": [

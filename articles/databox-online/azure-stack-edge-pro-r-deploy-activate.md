@@ -6,21 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/19/2020
+ms.date: 02/23/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: c1408c25ea7e5d805d17e084899b0ffeb6cfec28
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bae12b5ad7ce6c079161f42e1d6fe3e6c08e3f4b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463903"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727531"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-r-device"></a>Tutorial: Aktivieren eines Azure Stack Edge Pro R-Geräts
 
 In diesem Tutorial erfahren Sie, wie Sie Ihr Azure Stack Edge Pro R-Gerät über die lokale Webbenutzeroberfläche aktivieren.
 
-Der Aktivierungsvorgang dauert ungefähr 5 Minuten.
+Der Aktivierungsvorgang dauert ungefähr 5 Minuten.  
 
 In diesem Tutorial haben Sie Folgendes gelernt:
 
@@ -49,9 +49,9 @@ Vergewissern Sie sich, dass folgende Voraussetzungen erfüllt sind, bevor Sie ei
     ![Seite „Clouddetails“ auf der lokalen Webbenutzeroberfläche 1](./media/azure-stack-edge-pro-r-deploy-activate/activate-1.png)
     
 3. Im Bereich **Aktivieren**:
-    1. Geben Sie den **Aktivierungsschlüssel** ein, den Sie unter [Abrufen des Aktivierungsschlüssels](azure-stack-edge-pro-r-deploy-prep.md#get-the-activation-key) abgerufen haben.
+    1. Geben Sie den **Aktivierungsschlüssel** ein, den Sie unter [Aktivierungsschlüssel für Azure Stack Edge Pro R abrufen](azure-stack-edge-pro-r-deploy-prep.md#get-the-activation-key) abgerufen haben.
 
-    1. Sie können die proaktive Protokollsammlung aktivieren, damit Microsoft Protokolle basierend auf dem Integritätsstatus des Geräts sammeln kann. Die auf diese Weise gesammelten Protokolle werden in ein Azure Storage-Konto hochgeladen.
+    1. Sie können die proaktive Protokollsammlung aktivieren, damit Microsoft Protokolle basierend auf dem Integritätsstatus des Geräts sammeln kann. Die auf diese Weise gesammelten Protokolle werden in ein Azure Storage-Konto hochgeladen.
     
     1. Wählen Sie **Übernehmen**.
 

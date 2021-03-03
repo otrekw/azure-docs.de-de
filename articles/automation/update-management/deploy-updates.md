@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b5ced7038f692046d1ce4ba2f4599cae3962510
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: fb81d38b066e1abb54664225daa6840d895e9ace
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632460"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575889"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Bereitstellen von Updates und Überprüfen von Ergebnissen
 
@@ -59,7 +59,7 @@ Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schr
     > [!NOTE]
     > Diese Option ist nicht verfügbar, wenn Sie einen virtuellen Azure-Computer oder einen Arc-fähigen Server ausgewählt haben. Der Computer wird automatisch als Ziel für die geplante Bereitstellung festgelegt.
 
-6. Wählen Sie im Bereich **Zu aktualisierende Computer** eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü die Option **Computer** und anschließend einzelne Computer aus. Mit dieser Option können Sie die Bereitschaft des Log Analytics-Agents für jeden Computer erkennen. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../../azure-monitor/platform/computer-groups.md). Sie können maximal 1.000 Computer in eine geplante Updatebereitstellung miteinbeziehen.
+6. Wählen Sie im Bereich **Zu aktualisierende Computer** eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü die Option **Computer** und anschließend einzelne Computer aus. Mit dieser Option können Sie die Bereitschaft des Log Analytics-Agents für jeden Computer erkennen. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../../azure-monitor/logs/computer-groups.md). Sie können maximal 1.000 Computer in eine geplante Updatebereitstellung miteinbeziehen.
 
     > [!NOTE]
     > Diese Option ist nicht verfügbar, wenn Sie einen virtuellen Azure-Computer oder einen Arc-fähigen Server ausgewählt haben. Der Computer wird automatisch als Ziel für die geplante Bereitstellung festgelegt.

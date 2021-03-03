@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/02/2020
+ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: beb670106690645a80aa12b930e3a005efb4282a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 0559d02ec603d12578fa46d9790d0711fde5e38b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221645"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670893"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>Konfigurieren der Routingpräferenz für einen virtuellen Computer mithilfe des Azure-Portals
 
@@ -25,13 +25,9 @@ In diesem Artikel erfahren Sie, wie Sie die Routingpräferenz für einen virtuel
 
 In diesem Artikel wird gezeigt, wie Sie einen virtuellen Computer mit einer öffentlichen IP-Adresse erstellen, die zum Weiterleiten von Datenverkehr über das öffentliche Internet unter Verwendung des Azure-Portals festgelegt ist.
 
-> [!IMPORTANT]
-> „Routingpräferenz“ ist zurzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich beim [Azure-Portal](https://preview.portal.azure.com/) an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 

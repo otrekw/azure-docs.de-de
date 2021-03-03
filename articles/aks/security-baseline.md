@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4cf623ed960fd2efe6fdf506751858796008cef4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8e86679e7531bb70d6d4f1a27718c2fc8f0e8a9c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202027"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578540"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azure-Sicherheitsbaseline für Azure Kubernetes Service
 
@@ -196,9 +196,9 @@ Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzw
 
 Verwenden Sie Azure Monitor-Protokolle, um die Protokolle von AKS zu aktivieren und die Masterkomponenten abzufragen: kube-apiserver und kube-controller-manager. Erstellen und verwalten Sie die Knoten, die kubelet mit der Containerruntime ausführen, und stellen Sie deren Anwendungen über den verwalteten Kubernetes-API-Server bereit. 
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Aktivieren und Überprüfen der Kubernetes-Masterknotenprotokolle in Azure Kubernetes Service (AKS)](view-master-logs.md)
 
@@ -240,9 +240,9 @@ Sie sollten die Daten für Azure Sentinel oder eine SIEM-Lösung eines Drittanbi
 
 - [Überprüfen Sie das Protokollschema (einschließlich der Protokollrollen) hier](view-master-logs.md)
 
-- [Informationen zu Azure Monitor für Container](../azure-monitor/insights/container-insights-overview.md)
+- [Informationen zu Azure Monitor für Container](../azure-monitor/containers/container-insights-overview.md)
 
-- [Aktivieren von Azure Monitor für Container](../azure-monitor/insights/container-insights-onboard.md)
+- [Aktivieren von Azure Monitor für Container](../azure-monitor/containers/container-insights-onboard.md)
 
 - [Aktivieren und Überprüfen der Kubernetes-Masterknotenprotokolle in Azure Kubernetes Service (AKS)](view-master-logs.md)
 
@@ -294,7 +294,7 @@ Die Datensammlung ist erforderlich, um einen Einblick in fehlende Updates, falsc
 
 **Leitfaden**: Onboarding von AKS-Instanzen (Azure Kubernetes Service) in Azure Monitor und Festlegen des entsprechenden Aufbewahrungszeitraums des Azure Log Analytics-Arbeitsbereichs gemäß den Complianceanforderungen Ihrer Organisation. 
 
-- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -312,7 +312,7 @@ Zeigen Sie die von AKS-Masterkomponenten (kube-apiserver und kube-controllermana
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -422,7 +422,7 @@ Erstellen Sie Richtlinien und Vorgänge für die Verwendung dedizierter Administ
 
 **Leitfaden**: Verwenden Sie einmaliges Anmelden (SSO) mit integrierter Azure Active Directory-Authentifizierung (Azure AD) für einen AKS-Cluster.
 
-- [Anzeigen von Kubernetes-Protokollen, -Ereignissen und -Podmetriken in Echtzeit](../azure-monitor/insights/container-insights-livedata-overview.md)
+- [Anzeigen von Kubernetes-Protokollen, -Ereignissen und -Podmetriken in Echtzeit](../azure-monitor/containers/container-insights-livedata-overview.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -518,7 +518,7 @@ Beachten Sie die Rollen, die zu Support- oder Problembehandlungszwecken verwende
 **Leitfaden**: Integrieren Sie Benutzerauthentifizierung für Azure Kubernetes Service (AKS) mit Azure Active Directory (Azure AD). Erstellen Sie Diagnoseeinstellungen für Azure AD, und senden Sie die Überwachungs- und Anmeldeprotokolle an einen Azure Log Analytics-Arbeitsbereich. Konfigurieren Sie gewünschte Warnungen (z. B. wenn ein deaktiviertes Konto versucht, sich anzumelden) innerhalb eines Azure Log Analytics-Arbeitsbereichs.
 - [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../azure-monitor/platform/alerts-log.md)
+- [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../azure-monitor/alerts/alerts-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -673,11 +673,11 @@ Konfigurieren Sie Warnungen so, dass proaktiv Benachrichtigungen oder Protokolle
 
 Verwenden Sie das Azure-Aktivitätsprotokoll, um Ihre AKS-Cluster und zugehörige Ressourcen auf hoher Ebene zu überwachen. Über die Integration mit Prometheus können Sie Anwendungs- und Workloadmetriken anzeigen, die von Knoten und Kubernetes mithilfe von Abfragen gesammelt werden, um benutzerdefinierte Warnungen und Dashboards zu erstellen und ausführliche Analysen durchzuführen.
 
-- [Informationen zu Azure Monitor für Container](../azure-monitor/insights/container-insights-overview.md)
+- [Informationen zu Azure Monitor für Container](../azure-monitor/containers/container-insights-overview.md)
 
-- [Aktivieren von Azure Monitor für Container](../azure-monitor/insights/container-insights-onboard.md)
+- [Aktivieren von Azure Monitor für Container](../azure-monitor/containers/container-insights-onboard.md)
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Azure Security Center-Überwachung**: Ja
 

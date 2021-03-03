@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: ab27de9274043439f790a8fecd443223e5f26b08
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c3e5ca30b7f0f00b6d647f5fdaeb772900996adc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736203"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720238"
 ---
 # <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>Zugreifen auf Azure Storage (Vorschau) als Netzwerkfreigabe von einem Container in App Service
 
 ::: zone pivot="container-windows"
 
-In diesem Leitfaden erfahren Sie, wie Sie Azure Storage-Dateien als Netzwerkfreigabe an einen Windows-Container in App Service anfügen. Nur [Azure Files-Dateifreigaben](../storage/files/storage-how-to-use-files-cli.md) und [Premium-Dateifreigaben](../storage/files/storage-how-to-create-premium-fileshare.md) werden unterstützt. Zu den Vorteilen gehören sicherer Inhalt, die Portabilität des Inhalts, Zugriff auf mehrere Apps und mehrere Übertragungsmethoden.
+In diesem Leitfaden erfahren Sie, wie Sie Azure Storage-Dateien als Netzwerkfreigabe an einen Windows-Container in App Service anfügen. Nur [Azure Files-Dateifreigaben](../storage/files/storage-how-to-use-files-cli.md) und [Premium-Dateifreigaben](../storage/files/storage-how-to-create-file-share.md) werden unterstützt. Zu den Vorteilen gehören sicherer Inhalt, die Portabilität des Inhalts, Zugriff auf mehrere Apps und mehrere Übertragungsmethoden.
 
 > [!NOTE]
 >Azure Storage in App Service befindet sich **in der Vorschau** und wird für **Produktionsszenarien** noch **nicht unterstützt**.

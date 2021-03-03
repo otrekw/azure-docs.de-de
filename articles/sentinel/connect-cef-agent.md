@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 8261856598a155e97f90ea350cedcd4c10e6893c
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: a4303f43dffa98f842bd3daf9e3a0cd5214932b1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747305"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585361"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Schritt 1: Bereitstellen der Protokollweiterleitung
 
@@ -70,7 +70,7 @@ In diesem Schritt bestimmen und konfigurieren Sie den Linux-Computer, der die Pr
 >
 > Wenn Sie beabsichtigen, den Computer mit der Protokollweiterleitung zu verwenden, um [Syslog-Nachrichten](connect-syslog.md) und CEF-Nachrichten weiterzuleiten, gehen Sie folgendermaßen vor, um das Duplizieren von Ereignissen in den Syslog- und CommonSecurityLog-Tabellen zu vermeiden:
 >
-> 1. Sie müssen auf jedem Quellcomputer, der Protokolle im CEF-Format an die Weiterleitung sendet, die Syslog-Konfigurationsdatei bearbeiten, um die Einrichtungen zu entfernen, die zum Senden von CEF-Nachrichten verwendet werden. Auf diese Weise werden die in CEF gesendeten Einrichtungen nicht auch in Syslog gesendet. Detaillierte Anweisungen hierzu finden Sie unter [Konfigurieren von Syslog auf dem Linux-Agent](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent).
+> 1. Sie müssen auf jedem Quellcomputer, der Protokolle im CEF-Format an die Weiterleitung sendet, die Syslog-Konfigurationsdatei bearbeiten, um die Einrichtungen zu entfernen, die zum Senden von CEF-Nachrichten verwendet werden. Auf diese Weise werden die in CEF gesendeten Einrichtungen nicht auch in Syslog gesendet. Detaillierte Anweisungen hierzu finden Sie unter [Konfigurieren von Syslog auf dem Linux-Agent](../azure-monitor/agents/data-sources-syslog.md#configure-syslog-on-linux-agent).
 >
 > 1. Sie müssen auf diesen Computern den folgenden Befehl ausführen, um die Synchronisierung des Agents mit der Syslog-Konfiguration in Azure Sentinel zu deaktivieren. Dadurch wird sichergestellt, dass die von Ihnen im vorherigen Schritt vorgenommene Konfigurationsänderung nicht überschrieben wird.<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`

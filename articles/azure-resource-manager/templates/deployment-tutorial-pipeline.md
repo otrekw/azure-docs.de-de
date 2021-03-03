@@ -1,15 +1,15 @@
 ---
 title: Continuous Integration mit Azure Pipelines
 description: Hier finden Sie Informationen zum kontinuierlichen Erstellen, Testen und Bereitstellen von Azure Resource Manager-Vorlagen (ARM-Vorlagen).
-ms.date: 08/24/2020
+ms.date: 02/16/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e7e2cda0524e4d754fbf879c046fee2d43c44cb3
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: d367da33d6b9997d77606e9a77a961808d66ff99
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701711"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560894"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Tutorial: Continuous Integration von ARM-Vorlagen mit Azure Pipelines
 
@@ -83,8 +83,8 @@ Der Ordner _CreateWebApp_ ist der Speicherort für die Vorlage. Der Befehl `pwd`
 
 Anstatt die Vorlagen zu erstellen, können Sie sie herunterladen und im Ordner _CreateWebApp_ speichern.
 
-* Die Hauptvorlage: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
-* Die verknüpfte Vorlage: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
+* Die Hauptvorlage: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/azuredeploy.json
+* Die verknüpfte Vorlage: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/linkedStorageAccount.json
 
 Sowohl der Ordnername als auch der Dateiname werden genau so in der Pipeline verwendet. Wenn Sie diese Namen ändern, müssen auch die in der Pipeline verwendeten Namen aktualisiert werden.
 
@@ -105,7 +105,7 @@ Die Datei _azuredeploy.json_ wurde dem lokalen Repository hinzugefügt. Als Näc
 
     Daraufhin wird unter Umständen eine LF-Warnung angezeigt. Diese Warnung kann ignoriert werden. **main** ist der Mainbranch.  Üblicherweise wird für jedes Update ein eigener Branch erstellt. Zur Vereinfachung des Tutorials verwenden wir den Mainbranch direkt.
 
-1. Navigieren Sie in einem Browser zu Ihrem GitHub-Repository. Die URL ist `https://github.com/[YourAccountName]/[YourGitHubRepository]`. Der Ordner _CreateWebApp_ und die drei Dateien im Ordner werden angezeigt.
+1. Navigieren Sie in einem Browser zu Ihrem GitHub-Repository. Die URL ist `https://github.com/[YourAccountName]/[YourGitHubRepository]`. Der Ordner _CreateWebApp_ und die zwei Dateien im Ordner werden angezeigt.
 1. Wählen Sie _linkedStorageAccount.json_ aus, um die Vorlage zu öffnen.
 1. Wählen Sie die Schaltfläche **raw** (unformatiert) aus. Die URL beginnt mit `https://raw.githubusercontent.com`.
 1. Kopieren Sie die URL. Sie müssen diesen Wert angeben, wenn Sie die Pipeline später in diesem Tutorial konfigurieren.
@@ -134,7 +134,7 @@ Erstellen Sie eine Dienstverbindung für die Projektbereitstellung in Azure.
 
 1. Wählen Sie im unteren Bereich des linken Menüs die Option **Projekteinstellungen** aus.
 1. Wählen Sie unter **Pipelines** die Option **Dienstverbindungen** aus.
-1. Wählen Sie **Neue Dienstverbindung**, **Azure Resource Manager** und anschließend **Weiter** aus.
+1. Wählen Sie **Dienstverbindung erstellen** > **Azure Resource Manager** > **Weiter** aus.
 1. Wählen Sie **Dienstprinzipal** und dann **Weiter** aus.
 1. Geben Sie die folgenden Werte ein:
 
@@ -155,7 +155,7 @@ In den vorangegangenen Abschnitten wurden die folgenden Aufgaben ausgeführt.  S
 So erstellen Sie eine Pipeline mit einem Vorlagenbereitstellungsschritt:
 
 1. Wählen Sie im linken Menü die Option **Pipelines** aus.
-1. Wählen Sie **Neue Pipeline** aus.
+1. Wählen Sie **Pipeline erstellen** aus.
 1. Wählen Sie auf der Registerkarte **Verbinden** die Option **GitHub** aus. Geben Sie Ihre GitHub-Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden, und folgen Sie dann den Anweisungen. Wählen Sie im folgenden Bildschirm die Option **Only select repositories** (Nur ausgewählte Repositorys) aus, und vergewissern Sie sich, dass Ihr Repository in der Liste enthalten ist, bevor Sie **Approve & Install** (Genehmigen und installieren) auswählen.
 
     ![Azure Resource Manager/Azure DevOps/Azure Pipelines: „Only select repositories“ (Nur ausgewählte Repositorys)](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-only-select-repositories.png)

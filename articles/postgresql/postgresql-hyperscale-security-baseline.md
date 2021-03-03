@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ead666cecbc3208fe103aa740578ca36339c3e30
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 19935037e98bbc7ce9c4152b034b664d802a8f3a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804970"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588286"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure-Sicherheitsbaseline für Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -46,7 +46,7 @@ Weitere Informationen finden Sie unter [Übersicht über Azure-Sicherheitsbaseli
 
 - [Erstellen einer Azure-Blaupause](../governance/blueprints/create-blueprint-portal.md)
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -60,7 +60,7 @@ Weitere Informationen finden Sie unter [Übersicht über Azure-Sicherheitsbaseli
 
 Außerdem können Sie Protokolle über Azure Monitor erfassen, um die von Hyperscale (Citus) generierten Sicherheitsdaten zu aggregieren. Verwenden Sie Log Analytics-Arbeitsbereiche in Azure Monitor, um Analysen abzufragen und auszuführen, und verwenden Sie Speicherkonten für die langfristige Speicherung/Archivierung. Alternativ dazu können Sie auch Daten in Azure Sentinel oder einer Drittanbieter-Security Incident and Event Management-Lösung (SIEM) aktivieren und integrieren. 
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 - [Überwachung und Optimierung von Azure Database for PostgreSQL – Hyperscale (Citus)](./concepts-hyperscale-monitoring.md)
 
@@ -80,7 +80,7 @@ Außerdem können Sie Protokolle über Azure Monitor erfassen, um die von Hypers
 
 - [Überwachung und Optimierung von Azure Database for PostgreSQL – Hyperscale (Citus)](./concepts-hyperscale-monitoring.md)
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -92,9 +92,9 @@ Außerdem können Sie Protokolle über Azure Monitor erfassen, um die von Hypers
 
 **Leitfaden**: Legen Sie in Azure Monitor den Aufbewahrungszeitraum des Log Analytics-Arbeitsbereichs, der für die Hyperscale (Citus)-Protokolle verwendet wird, gemäß den Compliancevorschriften Ihrer Organisation fest. Verwenden Sie Azure Storage-Konten für die langfristige/Archivierungsspeicherung.
 
-- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Azure-Ressourcenprotokolle](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [Azure-Ressourcenprotokolle](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -106,9 +106,9 @@ Außerdem können Sie Protokolle über Azure Monitor erfassen, um die von Hypers
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Tutorial: Erste Schritte mit Log Analytics-Abfragen](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Tutorial: Erste Schritte mit Log Analytics-Abfragen](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -122,7 +122,7 @@ Integrieren Sie Ihren Log Analytics-Arbeitsbereich in Azure Sentinel, da er eine
 
 - [Überwachung und Optimierung von Azure Database for PostgreSQL – Hyperscale (Citus)](./howto-hyperscale-alert-on-metric.md)
 
-- [Azure-Aktivitätsprotokoll](../azure-monitor/platform/activity-log.md)
+- [Azure-Aktivitätsprotokoll](../azure-monitor/essentials/activity-log.md)
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -379,7 +379,7 @@ Mindestens einmal pro Tag erstellt Azure Database for PostgreSQL – Hyperscale
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an Produktionsinstanzen von Hyperscale (Citus) und anderen entscheidenden oder verknüpften Ressourcen vorgenommen werden.
 
-- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 

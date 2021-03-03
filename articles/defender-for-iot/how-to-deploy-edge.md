@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 9ac283721526488f587fcabc68348dafac1835db
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: cd79c928afdb3563b47374869cff577f9221d360
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033352"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705771"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Bereitstellen eines Sicherheitsmoduls auf Ihrem IoT Edge-Gerät
 
@@ -34,7 +34,7 @@ Gehen Sie wie folgt vor, um ein Defender für IoT-Sicherheitsmodul für IoT Ed
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-1. Vergewissern Sie sich in Ihrem IoT-Hub, dass Ihr Gerät [als IoT Edge-Gerät registriert](../iot-edge/how-to-manual-provision-symmetric-key.md#register-a-new-device) ist.
+1. Vergewissern Sie sich in Ihrem IoT-Hub, dass Ihr Gerät [als IoT Edge-Gerät registriert](../iot-edge/how-to-register-device.md#register-a-new-device) ist.
 
 1. Das Defender für IoT Edge-Modul erfordert, dass das [AuditD-Framework](https://linux.die.net/man/8/auditd) auf dem IoT Edge-Gerät installiert ist.
 

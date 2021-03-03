@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: dfd819d82f5e35183802e33e5d423cad4de36c38
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 48b646881b12047b28490999a96326f6076af2c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461584"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591841"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-azure-monitor-resource-logs"></a>Migrieren Ihrer IoT Hub-Instanz von der Betriebsüberwachung zu Azure Monitor-Ressourcenprotokollen
 
-Kunden, die mit der [Betriebsüberwachung](iot-hub-operations-monitoring.md) den Status von Vorgängen in IoT Hub nachverfolgen, können diesen Workflow zu [Azure Monitor-Ressourcenprotokollen](../azure-monitor/platform/platform-logs-overview.md) migrieren, einem Feature von Azure Monitor. Ressourcenprotokolle bieten vielen Azure-Diensten Diagnoseinformationen auf Ressourcenebene.
+Kunden, die mit der [Betriebsüberwachung](iot-hub-operations-monitoring.md) den Status von Vorgängen in IoT Hub nachverfolgen, können diesen Workflow zu [Azure Monitor-Ressourcenprotokollen](../azure-monitor/essentials/platform-logs-overview.md) migrieren, einem Feature von Azure Monitor. Ressourcenprotokolle bieten vielen Azure-Diensten Diagnoseinformationen auf Ressourcenebene.
 
 **Die Funktionalität zur Vorgangsüberwachung von IoT Hub ist veraltet** und wurde aus dem Portal entfernt. Dieser Artikel enthält die Schritte zum Verlagern Ihrer Workloads von der Betriebsüberwachung zu Azure Monitor-Ressourcenprotokollen. Weitere Informationen zur Veraltungszeitachse finden Sie unter [Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/) (Überwachen Ihrer Azure IoT-Lösungen mit Azure Monitor und Azure Resource Health).
 
@@ -49,9 +49,9 @@ Um Ihre IoT Hub-Instanz im Azure-Portal zu aktualisieren, erstellen Sie zuerst e
 
 1. Klicken Sie auf **Speichern**, um die Einstellungen zu speichern.
 
-Neue Einstellungen werden in etwa zehn Minuten wirksam. Danach werden im konfigurierten Ziel Protokolle angezeigt. Weitere Informationen zur Konfiguration von Diagnosen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/platform/platform-logs-overview.md).
+Neue Einstellungen werden in etwa zehn Minuten wirksam. Danach werden im konfigurierten Ziel Protokolle angezeigt. Weitere Informationen zur Konfiguration von Diagnosen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/essentials/platform-logs-overview.md).
 
-Weitere Information zum Erstellen von Diagnoseeinstellungen, z. B. mit PowerShell und der Azure CLI, finden Sie in der Dokumentation zu Azure Monitor unter [Diagnoseeinstellungen](../azure-monitor/platform/diagnostic-settings.md).
+Weitere Information zum Erstellen von Diagnoseeinstellungen, z. B. mit PowerShell und der Azure CLI, finden Sie in der Dokumentation zu Azure Monitor unter [Diagnoseeinstellungen](../azure-monitor/essentials/diagnostic-settings.md).
 
 ### <a name="turn-off-operations-monitoring"></a>Deaktivieren der Vorgangsüberwachung
 

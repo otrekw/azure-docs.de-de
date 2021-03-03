@@ -2,14 +2,14 @@
 title: Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites | Microsoft Docs
 description: Richten Sie Webtests in Application Insights ein. Erhalten Sie Benachrichtigungen, wenn eine Website nicht mehr zur Verfügung steht oder langsam reagiert.
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 02/14/2021
 ms.reviewer: sdash
-ms.openlocfilehash: b0f66608c6e0f23b861e207d0dea07a546b41c2a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0ea44aad43a3dd6f11656a45dc7d0e619187fc22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937414"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729027"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Überwachen der Verfügbarkeit von Websites
 
@@ -72,7 +72,6 @@ Der Begriff „URL-Pingtest“ ist irreführend. Der Test setzt nämlich kein IC
 |Einstellung| Erklärung
 |----|----|----|
 |**Near-realtime (Preview)** (Nahezu in Echtzeit (Vorschauversion)) | Es wird empfohlen, Warnungen zu verwenden, die nahezu in Echtzeit angezeigt werden. Diese Art von Warnung ist bereits vollständig konfiguriert, sobald Sie einen Verfügbarkeitstest erstellt haben.  |
-|**Klassisch** | Die Verwendung von klassischen Warnungen wird für neue Verfügbarkeitstests nicht mehr empfohlen.|
 |**Schwellenwert für den Warnungsspeicherort**|Es wird ein Mindestwert von 3/5 Standorten empfohlen. Das optimale Verhältnis zwischen dem Schwellenwert für den Warnungsspeicherort und der Anzahl von Teststandorten lautet **Warnungsschwellenwert für Standort** = **Anzahl von Teststandorten -2, bei einer Mindestanzahl von fünf Teststandorten.**|
 
 ### <a name="location-population-tags"></a>Auffüllungstags für den Standort
@@ -151,7 +150,7 @@ Klicken Sie auf die Ausnahmezeile, um die Details der serverseitigen Ausnahme an
 
 ![Serverseitige Diagnose](./media/monitor-web-app-availability/open-instance-4.png)
 
-Zusätzlich zu den reinen Ergebnissen können Sie im [Metrik-Explorer](../platform/metrics-getting-started.md) zwei wichtige Verfügbarkeitsmetriken abrufen:
+Zusätzlich zu den reinen Ergebnissen können Sie im [Metrik-Explorer](../essentials/metrics-getting-started.md) zwei wichtige Verfügbarkeitsmetriken abrufen:
 
 1. Verfügbarkeit: Prozentsatz der erfolgreichen Tests für alle Testausführungen.
 2. Testdauer: Durchschnittliche Testdauer für alle Testausführungen.
@@ -159,7 +158,7 @@ Zusätzlich zu den reinen Ergebnissen können Sie im [Metrik-Explorer](../platfo
 ## <a name="automation"></a>Automation
 
 * [Verwenden Sie PowerShell-Skripts zum automatischen Einrichten eines Verfügbarkeitstests](./powershell.md#add-an-availability-test).
-* Richten Sie einen [Webhook](../platform/alerts-webhooks.md) ein, der bei einer Warnung aufgerufen wird.
+* Richten Sie einen [Webhook](../alerts/alerts-webhooks.md) ein, der bei einer Warnung aufgerufen wird.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

@@ -5,12 +5,12 @@ description: Hier finden Sie häufig gestellte Fragen zum Ausführen von Windows
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: 00e749a8b066f72518b38685dd7a7779e406cf74
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b20ebe82556bb4db6844511ec0953f4d4e75f383
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013966"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574732"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Häufig gestellte Fragen zu Windows Server-Knotenpools in AKS
 
@@ -28,7 +28,7 @@ Die Unterstützung für Windows Server-Knotenpools umfasst einige Einschränkung
 
 Kubernetes ist von jeher auf Linux ausgerichtet. Viele auf der Upstreamwebsite [Kubernetes.io][kubernetes] verwendete Beispiele sind zur Verwendung auf Linux-Knoten vorgesehen. Wenn Sie Bereitstellungen erstellen, bei denen Windows Server-Container verwendet werden, müssen Sie folgende Punkte auf Betriebssystemebene beachten:
 
-- **Identität** : Linux erkennt einen Benutzer anhand einer ganzzahligen Benutzer-ID (UID). Ein Benutzer hat auch einen alphanumerischen Benutzernamen für die Anmeldung, der von Linux in die UID des Benutzers übersetzt wird. Auf ähnliche Weise erkennt Linux eine Benutzergruppe anhand einer ganzzahligen Gruppen-ID (GID) und übersetzt einen Gruppennamen in die entsprechende GID.
+- **Identität**: Linux erkennt einen Benutzer anhand einer ganzzahligen Benutzer-ID (UID). Ein Benutzer hat auch einen alphanumerischen Benutzernamen für die Anmeldung, der von Linux in die UID des Benutzers übersetzt wird. Auf ähnliche Weise erkennt Linux eine Benutzergruppe anhand einer ganzzahligen Gruppen-ID (GID) und übersetzt einen Gruppennamen in die entsprechende GID.
     - Unter Windows Server wird eine umfangreichere binäre Sicherheits-ID (SID) verwendet, die in der Windows Security Access Manager-Datenbank (SAM) gespeichert wird. Diese Datenbank wird weder zwischen dem Host und den Containern noch zwischen den einzelnen Containern freigegeben.
 - **Dateiberechtigungen:** Unter Windows-Server wird eine Zugriffssteuerungsliste basierend auf SIDs anstelle einer Bitmaske von Berechtigungen sowie UID und GID verwendet.
 - **Dateipfade:** Als Konvention wird unter Windows Server „\“ anstelle von „/“ verwendet.
@@ -189,7 +189,7 @@ Erstellen Sie zum Einstieg in Windows Server-Container in AKS [einen Knotenpool,
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node
-[azure-monitor]: ../azure-monitor/insights/container-insights-overview.md#what-does-azure-monitor-for-containers-provide
+[azure-monitor]: ../azure-monitor/containers/container-insights-overview.md#what-does-azure-monitor-for-containers-provide
 [client-source-ip]: concepts-network.md#ingress-controllers
 [kubernetes-dashboard]: kubernetes-dashboard.md
 [windows-rdp]: rdp.md

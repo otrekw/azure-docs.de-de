@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: 43d83d994c9a4ee3cf89b584f6c3835a62fa2cfe
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: fbde2b95b7aca205f164dc45c1f0170cc4da74fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805995"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581890"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Load Balancer Standard-Diagnose mit Metriken, Warnungen und Ressourcenintegrität
 
@@ -72,7 +72,7 @@ So zeigen Sie die Metriken für Ihre Standard Load Balancer-Ressourcen an
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Programmgesteuertes Abrufen von mehrdimensionalen Metriken über APIs
 
-Eine API-Anleitung zum Abrufen von Definitionen und Werten für multidimensionale Metriken finden Sie unter [Exemplarische Vorgehensweise für die Azure Monitor-REST-API](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Diese Metriken können in ein Speicherkonto geschrieben werden, indem Sie eine [Diagnoseeinstellung](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) für die Kategorie „Alle Metriken“ hinzufügen. 
+Eine API-Anleitung zum Abrufen von Definitionen und Werten für multidimensionale Metriken finden Sie unter [Exemplarische Vorgehensweise für die Azure Monitor-REST-API](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Diese Metriken können in ein Speicherkonto geschrieben werden, indem Sie eine [Diagnoseeinstellung](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) für die Kategorie „Alle Metriken“ hinzufügen. 
 
 ### <a name="configure-alerts-for-multi-dimensional-metrics"></a>Konfigurieren von Warnungen für mehrdimensionale Metriken ###
 

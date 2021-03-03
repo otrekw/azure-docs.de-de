@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7d6de863a45bcadd73e847cbf407c13363952151
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 922bd532275cdd6b09df83b0e9d36fdec1da0b47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806103"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707216"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Supportmatrix für Azure Disk Backup (Vorschau)
 
@@ -58,7 +58,7 @@ Weitere Regionen werden angekündigt, sobald sie verfügbar werden.
 
 - Aktuell (also während der Vorschauphase) können PowerShell und die Azure CLI nicht zum Konfigurieren der Sicherung und Wiederherstellung von Datenträgern verwendet werden.
 
-- Beim Konfigurieren der Sicherung müssen der für die Sicherung ausgewählte Datenträger und die Ressourcengruppe für Momentaufnahmen, in der die Momentaufnahmen gespeichert werden sollen, demselben Abonnement angehören. Sie können keine inkrementelle Momentaufnahme für einen bestimmten Datenträger außerhalb des Abonnements dieses Datenträgers erstellen. Weitere Informationen finden Sie unter [Inkrementelle Momentaufnahmen](../virtual-machines/windows/disks-incremental-snapshots-portal.md#restrictions) für verwaltete Datenträger. Weitere Informationen zum Auswählen einer Ressourcengruppe für Momentaufnahmen finden Sie unter [Konfigurieren der Sicherung](backup-managed-disks.md#configure-backup).
+- Beim Konfigurieren der Sicherung müssen der für die Sicherung ausgewählte Datenträger und die Ressourcengruppe für Momentaufnahmen, in der die Momentaufnahmen gespeichert werden sollen, demselben Abonnement angehören. Sie können keine inkrementelle Momentaufnahme für einen bestimmten Datenträger außerhalb des Abonnements dieses Datenträgers erstellen. Weitere Informationen finden Sie unter [Inkrementelle Momentaufnahmen](../virtual-machines/disks-incremental-snapshots.md#restrictions) für verwaltete Datenträger. Weitere Informationen zum Auswählen einer Ressourcengruppe für Momentaufnahmen finden Sie unter [Konfigurieren der Sicherung](backup-managed-disks.md#configure-backup).
 
 - Für erfolgreiche Sicherungs- und Wiederherstellungsvorgänge sind für die verwaltete Identität des Sicherungstresors Rollenzuweisungen erforderlich. Verwenden Sie nur die in der Dokumentation angegebenen Rollendefinitionen. Die Verwendung anderer Rollen wie z. B. „Besitzer“ oder „Mitwirkender“ wird nicht unterstützt. Wenn Sie kurz nach der Rollenzuweisung mit dem Konfigurieren von Sicherungs- oder Wiederherstellungsvorgängen beginnen, treten möglicherweise Probleme mit Berechtigungen auf. Dies liegt daran, dass die Rollenzuweisungen erst nach einigen Minuten in Kraft treten.
 

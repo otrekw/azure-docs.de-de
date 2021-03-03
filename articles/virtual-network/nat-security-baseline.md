@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9276ce07c68afa6f229dbc32198bc624d8887ace
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 887648526c8da5fc829abe48911fd6785c3d856f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217820"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576598"
 ---
 # <a name="azure-security-baseline-for-virtual-network-nat"></a>Azure-Sicherheitsbaseline für Virtual Network NAT
 
@@ -74,9 +74,9 @@ Verwenden Sie Azure Security Center, und befolgen Sie die Empfehlungen für den 
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen von Ressourcenkonfigurationen und zum Erkennen von Änderungen an den NAT-Gatewayressourcen und VNET-Ressourcen. Erstellen Sie in Azure Monitor Warnungen, mit denen Sie benachrichtigt werden, wenn sich wichtige Ressourcen ändern.
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -94,7 +94,7 @@ Alternativ können Sie diese Daten in Azure Sentinel oder einer SIEM-Drittanbiet
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Erste Schritte mit Azure Monitor und der Integration einer SIEM-Drittanbieterlösung](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -106,9 +106,9 @@ Alternativ können Sie diese Daten in Azure Sentinel oder einer SIEM-Drittanbiet
 
 **Leitfaden**: Aktivitätsprotokolle, die automatisch verfügbar sind, enthalten alle Schreibvorgänge (PUT, POST, DELETE) für Ihre NAT-Gatewayressourcen mit Ausnahme von Lesevorgängen (GET). Mit Aktivitätsprotokollen können Fehler ermittelt werden, und es kann nachverfolgt werden, welche Änderungen an einer Ressource ein Benutzer in Ihrer Organisation vorgenommen hat.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../azure-monitor/platform/platform-logs-overview.md) 
+- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../azure-monitor/essentials/platform-logs-overview.md) 
 
 Virtual Network NAT erzeugt derzeit keine zusätzlichen Diagnoseprotokolle, die von den Kunden konfiguriert werden können.
 
@@ -124,7 +124,7 @@ Virtual Network NAT erzeugt derzeit keine zusätzlichen Diagnoseprotokolle, die 
 
 - [Verwalten von Warnungen in Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/learn/tutorial-response.md)
+- [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-Überwachung**: Ja
 

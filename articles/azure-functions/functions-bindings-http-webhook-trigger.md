@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: e64f8cded851427636a19e16cccd78932dd6baac
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: a9bb87206ccb0dca56c1744d5578eac7a17418c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054956"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726392"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-Trigger in Azure Functions
 
@@ -751,7 +751,7 @@ Die folgende Konfiguration zeigt, wie der Parameter `{id}` an das `rowKey`-Eleme
 
 Wenn Sie Routenparameter verwenden, wird automatisch eine `invoke_URL_template` für Ihre Funktion erstellt. Die Clients können die URL-Vorlage verwenden, um zu wissen, welche Parameter sie beim Aufrufen Ihrer Funktion an die URL übergeben müssen. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu einer der durch HTTP ausgelösten Funktionen, und wählen Sie **Funktions-URL abrufen** aus.
 
-Sie können programmgesteuert auf die `invoke_URL_template` zugreifen, indem Sie die Azure Resource Manager-APIs [Funktionen auflisten](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctions) oder [Funktionen abrufen](https://docs.microsoft.com/rest/api/appservice/webapps/getfunction) verwenden.
+Sie können programmgesteuert auf die `invoke_URL_template` zugreifen, indem Sie die Azure Resource Manager-APIs [Funktionen auflisten](/rest/api/appservice/webapps/listfunctions) oder [Funktionen abrufen](/rest/api/appservice/webapps/getfunction) verwenden.
 
 ## <a name="working-with-client-identities"></a>Arbeiten mit Clientidentitäten
 

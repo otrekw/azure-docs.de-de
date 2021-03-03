@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 30cb023b8ca78f252dbf087a604a61b8aa5c6659
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 88948f757c41550124acf20ac1cf0e33cdb3e5ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577380"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660156"
 ---
 # <a name="communication-services-notifications"></a>Communication Services-Benachrichtigungen
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Der Chat von Azure Communication Services und die Bibliotheken für Telefonie-Clients erstellen einen Kanal für Echtzeitnachrichten, der es ermöglicht, Signalisierungsnachrichten per Push effizient und zuverlässig an verbundene Clients zu übermitteln. Dadurch können Sie umfangreiche Echtzeit-Kommunikationsfunktionen in Ihre Anwendungen integrieren, ohne dass Sie eine komplizierte HTTP-Abruflogik implementieren müssen. Bei mobilen Anwendungen bleibt die Verbindung dieses Signalisierungskanals jedoch nur dann bestehen, wenn die Anwendung im Vordergrund aktiv ist. Wenn Sie möchten, dass Ihre Benutzer eingehende Anrufe oder Chatnachrichten empfangen, während sich die Anwendung im Hintergrund befindet, sollten Sie Pushbenachrichtigungen verwenden.
 
@@ -34,7 +32,7 @@ Erfahren Sie mehr über die [Ereignisbehandlung in Azure Communication Services]
 
 ## <a name="deliver-push-notifications-via-azure-notification-hubs"></a>Bereitstellen von Pushbenachrichtigungen über Azure Notification Hubs
 
-Sie können einen Azure Notification Hub mit Ihrer Communication Services-Ressource verbinden, um automatisch Pushbenachrichtigungen an das mobile Gerät eines Benutzers zu senden, wenn er einen eingehenden Anruf erhält. Verwenden Sie diese Pushbenachrichtigungen, um Ihre Anwendung im Hintergrund zu reaktivieren und die Benutzeroberfläche anzuzeigen, über die Benutzer den Anruf annehmen oder ablehnen können. 
+Sie können einen Azure Notification Hub mit Ihrer Communication Services-Ressource verbinden, um automatisch Pushbenachrichtigungen an das mobile Gerät eines Benutzers zu senden, wenn er einen eingehenden Anruf erhält. Verwenden Sie diese Pushbenachrichtigungen, um Ihre Anwendung im Hintergrund zu reaktivieren und die Benutzeroberfläche anzuzeigen, über die Benutzer den Anruf annehmen oder ablehnen können.
 
 :::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Diagramm: Integration von Communication Services in Azure Notification Hubs":::
 
@@ -43,13 +41,13 @@ Communication Services verwendet Azure Notification Hub als Passthroughdienst, u
 > [!NOTE]
 > Derzeit wird nur das Aufrufen von Pushbenachrichtigungen unterstützt.
 
-### <a name="notification-hub-provisioning"></a>Bereitstellen von Notification Hub 
+### <a name="notification-hub-provisioning"></a>Bereitstellen von Notification Hub
 
 Zum Übermitteln von Pushbenachrichtigungen an Clientgeräte mithilfe von Notification Hubs [erstellen Sie einen Notification Hub](../../notification-hubs/create-notification-hub-portal.md) innerhalb desselben Abonnements wie Ihre Communication Services-Ressource. Sie müssen den Azure Notification Hub für das Plattformbenachrichtigungssystem konfigurieren, das Sie verwenden möchten. Informationen zum Empfang von Pushbenachrichtigungen von Notification Hubs in Ihrer Client-App finden Sie unter [Erste Schritte mit Notification Hubs](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md). Wählen Sie dort in der Dropdownliste oben auf der Seite die Zielplattform für den Client aus.
 
 > [!NOTE]
-> Derzeit werden die APNs- und FCM-Plattformen unterstützt.  
-Die APNs-Plattform muss mit dem Tokenauthentifizierungsmodus konfiguriert sein. Der Zertifikatauthentifizierungsmodus wird derzeit nicht unterstützt. 
+> Derzeit werden die APNs- und FCM-Plattformen unterstützt.
+Die APNs-Plattform muss mit dem Tokenauthentifizierungsmodus konfiguriert sein. Der Zertifikatauthentifizierungsmodus wird derzeit nicht unterstützt.
 
 Nachdem Ihr Notification Hub konfiguriert wurde, können Sie ihn Ihrer Communication Services-Ressource zuweisen, indem Sie für den Hub mithilfe des Azure Resource Manager-Clients oder des Azure-Portals eine Verbindungszeichenfolge bereitstellen. Die Verbindungszeichenfolge muss Berechtigungen vom Typ `Send` enthalten. Wir empfehlen Ihnen, eine andere Zugriffsrichtlinie nur mit Berechtigungen vom Typ `Send` zu erstellen, die speziell für Ihren Hub gilt. Erfahren Sie mehr über die [Sicherheit von Notification Hubs und Zugriffsrichtlinien](../../notification-hubs/notification-hubs-push-notification-security.md).
 
@@ -74,10 +72,10 @@ Navigieren Sie im Azure-Portal zu Ihrer Azure Communication Services-Ressource. 
 :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Screenshot: Einstellungen für Pushbenachrichtigungen im Azure-Portal":::
 
 > [!NOTE]
-> Wenn die Azure Notification Hub-Verbindungszeichenfolge aktualisiert wird, muss auch die Communication Services-Ressource aktualisiert werden.  
+> Wenn die Azure Notification Hub-Verbindungszeichenfolge aktualisiert wird, muss auch die Communication Services-Ressource aktualisiert werden.
 Jede Änderung im Zusammenhang mit der Art der Hubverknüpfung wird auf der Datenebene (also beim Senden einer Benachrichtigung) innerhalb von maximal ``10`` Minuten widergespiegelt. Das gilt auch, wenn der Hub zum ersten Mal verknüpft wird – **vorausgesetzt**, es wurden zuvor bereits Benachrichtigungen gesendet.
 
-### <a name="device-registration"></a>Geräteregistrierung 
+### <a name="device-registration"></a>Geräteregistrierung
 
 Informationen zum Registrieren Ihres Gerätehandles bei Communication Services finden Sie im [Schnellstart zu Sprachanrufen](../quickstarts/voice-video-calling/getting-started-with-calling.md).
 

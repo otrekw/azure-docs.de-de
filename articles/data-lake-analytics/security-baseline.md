@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 56a04a7f689846fc8688d9a3144882fff3a809ad
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 48df40d6f1e3030435a7ac1236d3dcda298920ba
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201313"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596910"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>Azure-Sicherheitsbaseline für Data Lake Analytics
 
@@ -144,9 +144,9 @@ Alternativ können Sie auch Daten in Azure Sentinel oder einer SIEM-Drittanbiete
 
 * [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+* [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Sammeln von internen Azure Virtual Machine-Hostprotokollen mit Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+* [Sammeln von internen Azure Virtual Machine-Hostprotokollen mit Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 * [Erste Schritte mit Azure Monitor und der Integration einer SIEM-Drittanbieterlösung](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -158,9 +158,9 @@ Alternativ können Sie auch Daten in Azure Sentinel oder einer SIEM-Drittanbiete
 
 **Leitfaden**: Aktivieren Sie die Diagnoseeinstellungen für Data Lake Analytics, um auf Überwachungs- und Anforderungsprotokolle zuzugreifen. Hierzu gehören Daten wie Ereignisquelle, Datum, Benutzer, Zeitstempel und andere nützliche Elemente.
 
-* [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+* [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../azure-monitor/platform/platform-logs-overview.md)
+* [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -178,7 +178,7 @@ Alternativ können Sie auch Daten in Azure Sentinel oder einer SIEM-Drittanbiete
 
 **Leitfaden**: Legen Sie in Azure Monitor den Aufbewahrungszeitraum Ihres Log Analytics-Arbeitsbereichs gemäß den Compliancevorschriften Ihrer Organisation fest. Verwenden Sie Azure Storage-Konten für die langfristige Speicherung und Archivierung.
 
-* [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 * [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -192,9 +192,9 @@ Alternativ können Sie auch Daten in Azure Sentinel oder einer SIEM-Drittanbiete
 
 * [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [Weitere Informationen zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Weitere Informationen zum Log Analytics-Arbeitsbereich](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -206,7 +206,7 @@ Alternativ können Sie auch Daten in Azure Sentinel oder einer SIEM-Drittanbiete
 
 * [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/learn/tutorial-response.md)
+* [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/alerts/tutorial-response.md)
 
 * [Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics](./data-lake-analytics-diagnostic-logs.md)
 
@@ -488,7 +488,7 @@ Bei der zugrundeliegenden Plattform, die von Microsoft verwaltet wird, behandelt
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen zu erstellen, die bei Änderungen an Produktionsinstanzen von Azure Data Lake Analytics-Ressourcen ausgegeben werden.
 
-* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 

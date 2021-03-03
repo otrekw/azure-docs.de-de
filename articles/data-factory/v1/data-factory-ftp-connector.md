@@ -1,23 +1,18 @@
 ---
 title: Verschieben von Daten von einem FTP-Server mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Sie Daten mithilfe von Azure Data Factory von einem FTP-Server verschieben.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: eea3bab0-a6e4-4045-ad44-9ce06229c718
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: eeeb122d240d8c3eae4ebe1650f67cf0e4b9dac6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8a8ca44fbdb7610f85bc53c23d502d2efb01c8b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001642"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363949"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Verschieben von Daten von einem FTP-Server mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -76,7 +71,7 @@ In der folgenden Tabelle werden die JSON-Elemente beschrieben, die für den verk
 | enableServerCertificateValidation |Gibt an, ob die Überprüfung des TLS/SSL-Serverzertifikats aktiviert werden soll, wenn Sie FTP über den SSL/TLS-Kanal verwenden. |Nein |true |
 
 >[!NOTE]
->Der FTP-Connector unterstützt den Zugriff auf FTP-Server ohne Verschlüsselung oder mit expliziter SSL/TLS-Verschlüsselung. Er unterstützt keine implizite SSL/TLS-Verschlüsselung.
+>Der FTP-Connector unterstützt den Zugriff auf FTP-Server entweder ohne Verschlüsselung oder mit expliziter SSL/TLS-Verschlüsselung. Er unterstützt keine implizite SSL/TLS-Verschlüsselung.
 
 ### <a name="use-anonymous-authentication"></a>Verwenden von anonymer Authentifizierung
 
@@ -154,7 +149,7 @@ Der Abschnitt **typeProperties** ist bei jeder Art von Dataset unterschiedlich. 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| folderPath |Unterpfad zum Ordner. Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen „\“. Beispiele finden Sie unter „Beispieldefinitionen für verknüpfte Dienste und Datasets“.<br/><br/>Sie können diese Eigenschaft mit **partitionBy** kombinieren, um Ordnerpfade auf der Grundlage von Datum und Uhrzeit für Start und Ende des Slices zu erhalten. |Ja |
+| folderPath |Unterpfad zum Ordner. Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen „ \ “. Beispiele finden Sie unter „Beispieldefinitionen für verknüpfte Dienste und Datasets“.<br/><br/>Sie können diese Eigenschaft mit **partitionBy** kombinieren, um Ordnerpfade auf der Grundlage von Datum und Uhrzeit für Start und Ende des Slices zu erhalten. |Ja |
 | fileName |Geben Sie den Namen der Datei in **folderPath** an, wenn die Tabelle auf eine bestimmte Datei im Ordner verweisen soll. Wenn Sie keine Werte für diese Eigenschaft angeben, verweist die Tabelle auf alle Dateien im Ordner.<br/><br/>Wenn **fileName** für ein Ausgabedataset nicht angegeben ist, weist der Name der generierten Datei das folgende Format auf: <br/><br/>`Data.<Guid>.txt` (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt). |Nein |
 | fileFilter |Geben Sie einen Filter zur Auswahl einer Teilmenge der Dateien in **folderPath** statt alle Dateien an.<br/><br/>Zulässige Werte sind: `*` (mehrere Zeichen) und `?` (einzelnes Zeichen).<br/><br/>Beispiel 1: `"fileFilter": "*.log"`<br/>Beispiel 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** eignet sich für das Eingabedataset „FileShare“. Diese Eigenschaft wird für HDFS (Hadoop Distributed Datei System) nicht unterstützt. |Nein |
 | partitionedBy |Wird verwendet, um einen dynamischen Wert von **folderPath** und **fileName** für Zeitreihendaten anzugeben. Sie können z.B. einen **folderPath** angeben, der für jede Stunde von Daten parametrisiert wird. |Nein |

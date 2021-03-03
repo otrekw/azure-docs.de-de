@@ -1,23 +1,18 @@
 ---
 title: Verschieben von Daten in und aus Azure-Tabellen
 description: Erfahren Sie, wie Daten mithilfe von Azure Data Factory in einen und aus einem Azure-Tabellenspeicher verschoben werden.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 07b046b1-7884-4e57-a613-337292416319
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1d7802a3fe4fb904aad7fd9257edbf8b10efe127
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: cc8e0272dc690ed541883ae943c118cbbe2f1854
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637427"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392118"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Verschieben von Daten in eine und aus einer Azure-Tabelle mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -36,9 +31,9 @@ Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher in Azur
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs in und aus Azure Table Storage verschiebt.
 
-Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten** . Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
-Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager-Vorlage** , **.NET-API** und **REST-API** . Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. 
+Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. 
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt: 
 
@@ -51,7 +46,7 @@ Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für di
 Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für Azure Table Storage verwendet werden: 
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
-Es gibt zwei Arten von verknüpften Diensten, die Sie verwenden können, um Azure Blob Storage mit Azure Data Factory zu verknüpfen: Sie lauten wie folgt: verknüpfter Dienst **AzureStorage** und verknüpfter Dienst **AzureStorageSas** . Dagegen bietet der mit Azure Storage SAS (Shared Access Signature) verknüpfte Dienst der Data Factory einen eingeschränkten bzw. zeitgebundenen Zugriff auf Azure-Speicher. Es gibt keine weitere Unterschiede zwischen diesen beiden verknüpften Diensten. Wählen Sie den verknüpften Dienst, der Ihren Anforderungen entspricht. Die folgenden Abschnitte bieten weitere Informationen zu diesen beiden verknüpften Diensten.
+Es gibt zwei Arten von verknüpften Diensten, die Sie verwenden können, um Azure Blob Storage mit Azure Data Factory zu verknüpfen: Sie lauten wie folgt: verknüpfter Dienst **AzureStorage** und verknüpfter Dienst **AzureStorageSas**. Dagegen bietet der mit Azure Storage SAS (Shared Access Signature) verknüpfte Dienst der Data Factory einen eingeschränkten bzw. zeitgebundenen Zugriff auf Azure-Speicher. Es gibt keine weitere Unterschiede zwischen diesen beiden verknüpften Diensten. Wählen Sie den verknüpften Dienst, der Ihren Anforderungen entspricht. Die folgenden Abschnitte bieten weitere Informationen zu diesen beiden verknüpften Diensten.
 
 [!INCLUDE [data-factory-azure-storage-linked-services](../../../includes/data-factory-azure-storage-linked-services.md)]
 
@@ -106,7 +101,7 @@ Wenn die Spalte für die Azure-Tabelle vom Typ „datetime“ ist:
 | azureTableRowKeyName |Geben Sie den Namen der Spalte an, deren Werte als Zeilenschlüssel verwendet werden. Wenn nicht angegeben, verwenden Sie für jede Zeile eine GUID. |Ein Spaltenname. |Nein |
 | azureTableInsertType |Der Modus zum Einfügen von Daten in eine Azure-Tabelle.<br/><br/>Diese Eigenschaft steuert, ob die Werte von vorhandenen Zeilen in der Ausgabetabelle, deren Partitions- und Zeilenschlüssel übereinstimmen, ersetzt oder zusammengeführt werden. <br/><br/>Informationen zur Funktionsweise dieser Einstellungen (Zusammenführen und Ersetzen) finden Sie in den Themen [Insert or Merge Entity](/rest/api/storageservices/Insert-Or-Merge-Entity) (Entität einfügen oder zusammenführen) und [Insert or Replace Entity](/rest/api/storageservices/Insert-Or-Replace-Entity) (Entität einfügen oder ersetzen). <br/><br> Diese Einstellung gilt auf Zeilenebene, nicht auf Tabellenebene, und keine der beiden Optionen löscht Zeilen in der Ausgabetabelle, die in der Eingabe nicht vorhanden sind. |merge (default)<br/>replace |Nein |
 | writeBatchSize |Fügt Daten in die Azure-Tabelle ein, wenn "writeBatchSize" oder "writeBatchTimeout" erreicht wird. |Integer (Gesamtanzahl von Zeilen) |Nein (Standardwert: 10.000) |
-| writeBatchTimeout |Fügt Daten in die Azure-Tabelle ein, wenn "writeBatchSize" oder "writeBatchTimeout" erreicht wird. |Zeitraum<br/><br/>Beispiel: „00:20:00“ (20 Minuten) |Nein (Standardmäßiger Timeoutwert von 90 Sekunden für Speicherclient) |
+| writeBatchTimeout |Fügt Daten in die Azure-Tabelle ein, wenn "writeBatchSize" oder "writeBatchTimeout" erreicht wird. |Zeitraum<br/><br/>Beispiel: „00:20:00“ (20 Minuten). |Nein (Standardmäßiger Timeoutwert von 90 Sekunden für Speicherclient) |
 
 ### <a name="azuretablepartitionkeyname"></a>azureTablePartitionKeyName
 Ordnen Sie einer Zielspalte mithilfe der JSON-Eigenschaft „translator“ eine Quellspalte zu, bevor Sie die Zielspalte als azureTablePartitionKeyName verwenden können.
@@ -155,11 +150,11 @@ Im Beispiel werden Daten, die zur Standardpartition in einer Azure-Tabelle gehö
   }
 }
 ```
-Azure Data Factory unterstützt zwei Arten von verknüpften Azure Storage-Diensten: **AzureStorage** und **AzureStorageSas** . Für den ersten geben Sie die Verbindungszeichenfolge an, die den Kontoschlüssel enthält. Für den zweiten geben Sie den SAS-URI (Shared Access Signature) an. Weitere Informationen finden Sie unter [Verknüpfte Dienste](#linked-service-properties).  
+Azure Data Factory unterstützt zwei Arten von verknüpften Azure Storage-Diensten: **AzureStorage** und **AzureStorageSas**. Für den ersten geben Sie die Verbindungszeichenfolge an, die den Kontoschlüssel enthält. Für den zweiten geben Sie den SAS-URI (Shared Access Signature) an. Weitere Informationen finden Sie unter [Verknüpfte Dienste](#linked-service-properties).  
 
 **Azure-Tabellen-Eingabedataset:**
 
-Im Beispiel wird davon ausgegangen, dass Sie eine Tabelle "MyTable" in einer Azure-Tabelle erstellt haben.
+In dem Beispiel wird davon ausgegangen, dass Sie eine Tabelle namens „MyTable“ in einer Azure-Tabelle erstellt haben.
 
 Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst mitgeteilt, dass das Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
 
@@ -323,11 +318,11 @@ Im Beispiel werden Zeitreihendaten aus einem Azure-Blob stündlich in eine Azure
 }
 ```
 
-Azure Data Factory unterstützt zwei Arten von verknüpften Azure Storage-Diensten: **AzureStorage** und **AzureStorageSas** . Für den ersten geben Sie die Verbindungszeichenfolge an, die den Kontoschlüssel enthält. Für den zweiten geben Sie den SAS-URI (Shared Access Signature) an. Weitere Informationen finden Sie unter [Verknüpfte Dienste](#linked-service-properties).
+Azure Data Factory unterstützt zwei Arten von verknüpften Azure Storage-Diensten: **AzureStorage** und **AzureStorageSas**. Für den ersten geben Sie die Verbindungszeichenfolge an, die den Kontoschlüssel enthält. Für den zweiten geben Sie den SAS-URI (Shared Access Signature) an. Weitere Informationen finden Sie unter [Verknüpfte Dienste](#linked-service-properties).
 
 **Azure-Blob-Eingabedataset:**
 
-Daten werden stündlich aus einem neuen Blob übernommen (frequency: hour, interval: 1). Ordnerpfad und Dateiname des Blobs werden basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Der Ordnerpfad verwendet die Bestandteile Jahr, Monat und Tag der Startzeit, und der Dateiname verwendet die Stunde der Startzeit. Die Festlegung von „external“ auf „true“ teilt dem Data Factory-Dienst mit, dass dieses Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
+Daten werden stündlich aus einem neuen Blob übernommen (frequency: hour, interval: 1). Ordnerpfad und Dateiname des Blobs werden basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Der Ordnerpfad verwendet die Bestandteile Jahr, Monat und Tag der Startzeit, und der Dateiname verwendet die Stunde der Startzeit. Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst mitgeteilt, dass dieses Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
 
 ```JSON
 {
@@ -396,7 +391,7 @@ Daten werden stündlich aus einem neuen Blob übernommen (frequency: hour, inter
 
 **Azure-Tabellen-Ausgabedataset:**
 
-Das Beispiel kopiert Daten in eine Tabelle namens "MyTable" in einer Azure-Tabelle. Erstellen Sie eine Azure-Tabelle mit der gleichen Anzahl von Spalten, die Sie in der Blob-CSV-Datei erwarten. Neue Zeilen werden der Tabelle stündlich hinzugefügt.
+In diesem Beispiel werden Daten in eine Tabelle namens „MyTable“ in einer Azure-Tabelle kopiert. Erstellen Sie eine Azure-Tabelle mit der gleichen Anzahl von Spalten, die Sie in der Blob-CSV-Datei erwarten. Neue Zeilen werden der Tabelle stündlich hinzugefügt.
 
 ```JSON
 {
@@ -540,7 +535,7 @@ Zur Zuordnung des Azure-Tabellen-OData-Typs zum obigen .NET-Typ würden Sie die 
 | name |Edm.String |
 | lastlogindate |Edm.DateTime |
 
-Als Nächstes definieren Sie das Azure-Tabellendataset wie folgt. Sie müssen keinen Abschnitt "structure" mit den Typinformationen angeben, da die Typinformationen bereits im zugrunde liegenden Datenspeicher angegeben werden.
+Als Nächstes definieren Sie das Azure-Tabellendataset wie folgt. Es muss kein Strukturabschnitt mit den Typinformationen angegeben werden, da die Typinformationen bereits im zugrunde liegenden Datenspeicher angegeben sind.
 
 ```JSON
 {

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 7b9ed5dda925793eff4f85408c5eb494f5ac0925
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: cd3c615a296934d8e06a062125a72c322d05dd7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99569588"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750231"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Untersuchen und Bearbeiten der Beispieldateien
 
@@ -69,10 +69,10 @@ Als Teil der Voraussetzungen haben Sie den Beispielcode in einen Ordner herunter
         > In den obigen Schritten wird vorausgesetzt, dass Sie den mit dem Setupskript erstellten virtuellen Computer verwenden. Gehen Sie wie folgt vor, falls Sie stattdessen Ihr eigenes Edgegerät verwenden: Navigieren Sie zum Gerät, und führen Sie die folgenden Befehle mit **Administratorrechten** aus, um die für diese Schnellstartanleitung verwendete Beispielvideodatei zu pullen und zu speichern:  
         
         ```
-        mkdir /home/lvaadmin/samples
-        mkdir /home/lvaadmin/samples/input    
-        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
-        chown -R lvaadmin /home/lvaadmin/samples/  
+        mkdir /home/lvaedgeuser/samples
+        mkdir /home/lvaedgeuser/samples/input    
+        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaedgeuser/samples/input/camera-300s.mkv  
+        chown -R lvalvaedgeuser:localusergroup /home/lvaedgeuser/samples/  
         ```
     * Das Modul **yolov3**, bei dem es sich um das YOLOv3-Objekterkennungsmodell handelt, das maschinelles Sehen auf die Bilder anwendet und mehrere Klassen von Objekttypen zurückgibt.
  

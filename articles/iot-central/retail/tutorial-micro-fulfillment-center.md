@@ -7,16 +7,22 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 938d5e96667db6de4a45134cbec2396d45bac9d6
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: ab4d609b1638b47ad73b6f1143adee2870577305
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832129"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390469"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Tutorial: Bereitstellen und Durchlaufen einer Anwendungsvorlage für Micro-Fulfillment-Center
 
-In diesem Tutorial wird mithilfe der Micro-Fulfillment-Center-Anwendungsvorlage für Azure IoT Central eine Einzelhandelslösung erstellt. Dabei erfahren Sie, wie Sie die Vorlage bereitstellen, was in der Vorlage enthalten ist und welche nächsten Schritte sinnvoll sind.
+In diesem Tutorial wird mithilfe der Micro-Fulfillment-Center-Anwendungsvorlage für Azure IoT Central eine Einzelhandelslösung erstellt.
+
+In diesem Tutorial lernen Sie Folgendes:
+
+> [!div class="checklist"]
+> * Bereitstellen der Anwendungsvorlage
+> * Verwenden der Anwendungsvorlage
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Für diese Tutorialreihe benötigen Sie ein Azure-Abonnement. Optional können Sie eine kostenlose 7-Tage-Testversion verwenden. Wenn Sie kein Azure-Abonnement besitzen, können Sie auf der Seite [Azure-Anmeldeseite](https://aka.ms/createazuresubscription) eines erstellen.

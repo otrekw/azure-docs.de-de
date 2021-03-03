@@ -2,17 +2,20 @@
 title: Erstellen einer neuen Azure Application Insights-Ressource | Microsoft Docs
 description: Richten Sie manuell die Application Insights-Überwachung für eine neue Liveanwendung ein.
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: e69611d650f61630c8b36f7387b79cffbb61f227
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/10/2021
+ms.openlocfilehash: 1ec5e929f591c0b7ada36f345d86c6de591892c8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062912"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575626"
 ---
 # <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
 
 Azure Application Insights zeigt Daten über Ihre Anwendung in einer Microsoft Azure-*Ressource* an. Die Erstellung einer neuen Ressource gehört daher zur [Einrichtung von Application Insights zur Überwachung einer neuen Anwendung][start]. Nach dem Erstellen der neuen Ressource erhalten Sie den Instrumentierungsschlüssel, den Sie zum Konfigurieren des Application Insights SDK verwenden. Der Instrumentierungsschlüssel verknüpft Ihre Telemetriedaten mit der Ressource.
+
+> [!IMPORTANT]
+> Klassisches Application Insights ist veraltet. Befolgen Sie diese [Anweisungen zur Vorgehensweise beim Upgrade auf arbeitsbereichsbasierte Application Insights-Ressourcen](convert-classic-resource.md).
 
 ## <a name="sign-in-to-microsoft-azure"></a>Anmelden bei Microsoft Azure
 
@@ -32,7 +35,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und erstellen 
    | **Ressourcenmodus** | `Classic` oder `Workspace-based` | Arbeitsbereichsbasierte Ressourcen befinden sich derzeit in der Public Preview-Phase und ermöglichen Ihnen das Senden Ihrer Application Insights-Telemetrie an einen gemeinsamen Log Analytics-Arbeitsbereich. Weitere Informationen finden Sie im [Artikel zu arbeitsbereichsbasierten Ressourcen](create-workspace-resource.md).
 
 > [!NOTE]
-> Obwohl Sie denselben Ressourcennamen für verschiedene Ressourcengruppen verwenden können, kann es vorteilhaft sein, einen global eindeutigen Namen zu verwenden. Dies kann hilfreich sein, wenn Sie planen, [ressourcenübergreifende Abfragen auszuführen](../log-query/cross-workspace-query.md#identifying-an-application), da dadurch die erforderliche Syntax vereinfacht wird.
+> Obwohl Sie denselben Ressourcennamen für verschiedene Ressourcengruppen verwenden können, kann es vorteilhaft sein, einen global eindeutigen Namen zu verwenden. Dies kann hilfreich sein, wenn Sie planen, [ressourcenübergreifende Abfragen auszuführen](../logs/cross-workspace-query.md#identifying-an-application), da dadurch die erforderliche Syntax vereinfacht wird.
 
 Geben Sie die entsprechenden Werte in die erforderlichen Felder ein, und wählen Sie dann **Überprüfen + erstellen** aus.
 
@@ -156,13 +159,13 @@ Die vollständige Azure CLI-Dokumentation zu diesem Befehl und Informationen zum
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Diagnosesuche](./diagnostic-search.md)
-* [Untersuchen von Metriken](../platform/metrics-charts.md)
-* [Schreiben von Analytics-Abfragen](../log-query/log-query-overview.md)
+* [Untersuchen von Metriken](../essentials/metrics-charts.md)
+* [Schreiben von Analytics-Abfragen](../logs/log-query-overview.md)
 
 <!--Link references-->
 
 [api]: ./api-custom-events-metrics.md
 [diagnostic]: ./diagnostic-search.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 [start]: ./app-insights-overview.md
 

@@ -5,18 +5,16 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 10/09/2020
-ms.openlocfilehash: 9545dd1480b9d16285d936787cf37fc087e882e1
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.date: 02/08/2021
+ms.openlocfilehash: f1e84c838d310721cba604274388ae2767eb1502
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000055"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389670"
 ---
-# <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Konfigurieren des Redis-Clusterings für Azure Cache for Redis-Instanzen im Premium-Tarif
-Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten. Dazu zählen auch Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. In diesem Artikel erfahren Sie, wie Sie das Clustering in einer Azure Cache for Redis-Instanz im Premium-Tarif konfigurieren.
+# <a name="configure-redis-clustering-for-a-premium-azure-cache-for-redis-instance"></a>Konfigurieren des Redis-Clusterings für eine Azure Cache for Redis-Instanz im Premium-Tarif
 
-## <a name="what-is-redis-cluster"></a>Was ist Redis Cluster?
 Azure Cache for Redis bietet Redis-Cluster gemäß der [Implementierung in Redis](https://redis.io/topics/cluster-tutorial). Redis Cluster bringt Ihnen die folgenden Vorteile: 
 
 * Die Möglichkeit, das DataSet automatisch zwischen mehreren Knoten aufzuteilen. 
@@ -28,7 +26,8 @@ Clustering erhöht nicht die Anzahl von Verbindungen, die für einen gruppierten
 
 In Azure wird Redis Cluster als Modell mit primärem Cache und Replikatcache angeboten, in dem jeder Shard über ein Paar aus primärem Cache und Replikatcache mit Replikation verfügt und die Replikation durch den Azure Cache for Redis-Dienst verwaltet wird. 
 
-## <a name="clustering"></a>Clustering
+## <a name="set-up-clustering"></a>Einrichten des Clusterings
+
 Clustering wird im Rahmen der Cacheerstellung auf dem Blatt **New Azure Cache for Redis** (Azure Cache for Redis – Neu) aktiviert. 
 
 1. Melden Sie sich zum Erstellen eines Premium-Caches beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Ressource erstellen** aus. Sie können Caches nicht nur über das Azure-Portal, sondern auch mithilfe von Resource Manager-Vorlagen, PowerShell oder der Azure-Befehlszeilenschnittstelle erstellen. Weitere Informationen zum Erstellen einer Azure Cache for Redis-Instanz finden Sie unter [Erstellen eines Caches](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
@@ -37,7 +36,7 @@ Clustering wird im Rahmen der Cacheerstellung auf dem Blatt **New Azure Cache fo
    
 2. Wählen Sie auf der Seite **Neu** die Option **Datenbanken** und dann **Azure Cache for Redis** aus.
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Ressource erstellen.":::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Auswählen von „Azure Cache for Redis“.":::
 
 3. Konfigurieren Sie auf der Seite **Neuer Redis Cache** die Einstellungen für den neuen Premium-Cache.
    
@@ -57,13 +56,13 @@ Clustering wird im Rahmen der Cacheerstellung auf dem Blatt **New Azure Cache fo
 
 7. Konfigurieren Sie auf der Registerkarte **Erweitert** für eine Premium-Cache-Instanz die Einstellungen für einen Nicht-TLS-Port sowie für Clustering und Datenpersistenz. Zum Aktivieren des Clusterings klicken Sie auf **Aktivieren**.
 
-    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering.png" alt-text="Ressource erstellen.":::
+    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering.png" alt-text="Umschaltfunktion für das Clustering.":::
 
     Sie können bis zu 10 Shards im Cluster festlegen. Nachdem Sie auf **Aktiviert** geklickt haben, verschieben Sie den Schieberegler, oder geben Sie eine Zahl zwischen 1 und 10 für die **Shardanzahl** ein. Klicken Sie anschließend auf **OK**.
 
     Jeder Shard ist ein Paar aus primärem Cache und Replikatcache, das in Azure verwaltet wird. Die Gesamtgröße des Caches wird durch Multiplikation der Anzahl der Shards mit der im Tarif ausgewählten Cachegröße berechnet.
 
-    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png" alt-text="Ressource erstellen.":::
+    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png" alt-text="Umschalter für Clustering ausgewählt.":::
 
     Nach der Erstellung des Caches können Sie eine Verbindung mit dem Cache herstellen und ihn genauso wie einen nicht gruppierten Cache verwenden. Redis verteilt die Daten auf alle Cache-Shards. Wenn die Diagnosefunktion [aktiviert](cache-how-to-monitor.md#enable-cache-diagnostics) ist, werden Metriken für jeden Shard separat erfasst und können auf dem Azure Cache for Redis-Blatt [angezeigt](cache-how-to-monitor.md) werden. 
 
@@ -71,11 +70,11 @@ Clustering wird im Rahmen der Cacheerstellung auf dem Blatt **New Azure Cache fo
 
 9. Geben Sie optional auf der Registerkarte **Tags** den Namen und den Wert ein, wenn Sie die Ressource kategorisieren möchten. 
 
-10. Wählen Sie **Überprüfen und erstellen** aus. Sie werden zur Registerkarte „Überprüfen und erstellen“ weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
+10. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Registerkarte „Überprüfen und erstellen“ weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
 
 11. Wenn die grüne Meldung „Validierung erfolgreich“ angezeigt wird, wählen Sie **Erstellen** aus.
 
-Es dauert eine Weile, bis der Cache erstellt wird. Sie können den Fortschritt auf der Seite  **Übersicht**  von Azure Cache for Redis überwachen. Wenn  **Wird ausgeführt** als  **Status**  angezeigt wird, ist der Cache einsatzbereit. 
+Es dauert eine Weile, bis der Cache erstellt wird. Sie können den Fortschritt auf der Seite **Übersicht** von Azure Cache for Redis überwachen. Wenn **Wird ausgeführt** als **Status** angezeigt wird, ist der Cache einsatzbereit. 
 
 > [!NOTE]
 > 
@@ -102,6 +101,7 @@ Wenn Sie den Cluster vergrößern, erhöht sich der maximale Durchsatz, und der 
 > 
 
 ## <a name="clustering-faq"></a>Clustering – häufig gestellte Fragen
+
 Die folgende Liste enthält Antworten auf häufig gestellte Fragen zum Clustering von Azure Cache for Redis-Instanzen.
 
 * [Muss ich Änderungen an meiner Clientanwendung vornehmen, um das Clustering verwenden zu können?](#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
@@ -186,6 +186,7 @@ Clustering ist nur für Premium-Caches verfügbar.
 Wenn Sie StackExchange.Redis und Clustering verwenden und dabei `MOVE` -Ausnahmen erhalten, vergewissern Sie sich, dass Sie mindestens [StackExchange.Redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) verwenden. Anweisungen zum Konfigurieren Ihrer .NET-Anwendungen für die Verwendung von StackExchange.Redis finden Sie unter [Konfigurieren der Cacheclients](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Erfahren Sie mehr über Azure Cache for Redis-Features.
 
 * [Premium-Dienstebenen für Azure Cache for Redis](cache-overview.md#service-tiers)

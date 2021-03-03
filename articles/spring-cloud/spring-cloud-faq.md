@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 307afc8f1caafac1a511f0f9895cc73dd9b47eb4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 50c8a36b943abb24f2c31bfc2bc33e646a74524a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196043"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596628"
 ---
 # <a name="azure-spring-cloud-faq"></a>Häufig gestellte Fragen zu Azure Spring Cloud
 
@@ -90,9 +90,9 @@ Wir haben ein Problem mit Spring Boot 2.4 identifiziert und arbeiten zurzeit ge
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Wo kann ich meine Spring Cloud-Anwendungsprotokolle und -metriken einsehen?
 
-Metriken finden Sie auf der Registerkarte „App Overview“ (App-Übersicht) sowie der Registerkarte [Azure Monitor](../azure-monitor/platform/data-platform-metrics.md#metrics-explorer).
+Metriken finden Sie auf der Registerkarte „App Overview“ (App-Übersicht) sowie der Registerkarte [Azure Monitor](../azure-monitor/essentials/data-platform-metrics.md#metrics-explorer).
 
-Azure Spring Cloud unterstützt das Exportieren von Spring Cloud-Anwendungsprotokollen und -metriken in Azure Storage, EventHub und [Log Analytics](../azure-monitor/platform/data-platform-logs.md). Der Tabellenname im Log Analytics lautet *AppPlatformLogsforSpring*. Informationen zum Aktivieren dieser Protokollierung finden Sie unter [Diagnosedienste](diagnostic-services.md).
+Azure Spring Cloud unterstützt das Exportieren von Spring Cloud-Anwendungsprotokollen und -metriken in Azure Storage, EventHub und [Log Analytics](../azure-monitor/logs/data-platform-logs.md). Der Tabellenname im Log Analytics lautet *AppPlatformLogsforSpring*. Informationen zum Aktivieren dieser Protokollierung finden Sie unter [Diagnosedienste](diagnostic-services.md).
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Unterstützt Azure Spring Cloud die verteilte Ablaufverfolgung?
 

@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
-ms.openlocfilehash: 72e91715398b4920c62afae5f36aa09954a577f9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: e2842f3e428abb4f0eb628dbb8e446f2714d5d89
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092141"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652384"
 ---
 # <a name="api-management-soft-delete-preview"></a>Azure API Management – Vorläufiges Löschen (Vorschau)
 
 Über das vorläufige Löschen (Vorschau) einer API Management-Instanz können Sie kürzlich gelöschte API Management-Instanzen (APIM) wiederherstellen.
 
 > [!IMPORTANT]
-> Nur API Management-Instanzen, die mithilfe von `2020-01-01-preview` und späteren API-Versionen gelöscht wurden, werden vorläufig gelöscht und können mithilfe der in diesem Artikel beschriebenen Schritte wiederhergestellt werden. APIM-Instanzen, die mit früheren API-Versionen gelöscht wurden, werden weiterhin endgültig gelöscht. Azure PowerShell und Azure CLI verwenden derzeit nicht die `2020-06-01-preview`-Version und führen ebenfalls zum endgültigen Löschen.
+> Nur API Management-Instanzen, die mithilfe von `2020-06-01-preview` und späteren API-Versionen gelöscht wurden, werden vorläufig gelöscht und können mithilfe der in diesem Artikel beschriebenen Schritte wiederhergestellt werden. APIM-Instanzen, die mit früheren API-Versionen gelöscht wurden, werden weiterhin endgültig gelöscht. Azure PowerShell und Azure CLI verwenden derzeit nicht die `2020-06-01-preview`-Version und führen ebenfalls zum endgültigen Löschen.
 
 ## <a name="supporting-interfaces"></a>Unterstützende Schnittstellen
 
@@ -31,14 +31,14 @@ Das Feature zum vorläufigen Löschen ist über die [REST-API](/rest/api/apimana
 |--|--|--|--|
 | [Erstellen oder Aktualisieren](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | Erstellt oder aktualisiert einen API Management-Dienst.  | API Management-Dienst | Any |
 | [Erstellen oder Aktualisieren](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate), wobei die `restore`-Eigenschaft auf **true** festgelegt ist. | Hebt das Löschen des API Management-Diensts auf, wenn er zuvor vorläufig gelöscht wurde. Wenn `restore` angegeben und auf `true` festgelegt wird, werden alle anderen Eigenschaften ignoriert.  | API Management-Dienst |  2020-06-01-preview |
-| [Löschen](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | Löscht einen vorhandenen API Management-Dienst. | API Management-Dienst | 2020-01-01-preview|
+| [Löschen](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | Löscht einen vorhandenen API Management-Dienst. | API Management-Dienst | 2020-06-01-preview|
 | [Get By Name](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) (Nach Name abrufen): | Einen vorläufig gelöschten API Management-Dienst über den Namen abrufen. | Gelöschte Dienste | 2020-06-01-preview |
 | [List By Subscription](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) (Nach Abonnement auflisten): | Listet alle vorläufig gelöschten Dienste auf, die für das Aufheben der Löschung für das angegebene Abonnement verfügbar sind. | Gelöschte Dienste | 2020-06-01-preview
 | [Bereinigen](/rest/api/apimanagement/2020-06-01-preview/deletedservices/purge) | Bereinigt den API Management-Dienst (löscht ihn ohne die Möglichkeit, ihn wiederherzustellen). | Gelöschte Dienste | 2020-06-01-preview
 
 ## <a name="soft-delete-behavior"></a>Verhalten des vorläufigen Löschens
 
-Sie können jede beliebige API-Version zum Erstellen Ihrer API Management-Instanz verwenden. Sie müssen jedoch `2020-01-01-preview` oder spätere Versionen verwenden, um Ihre APIM-Instanz vorläufig zu löschen (und haben die Möglichkeit, sie wiederherzustellen).
+Sie können jede beliebige API-Version zum Erstellen Ihrer API Management-Instanz verwenden. Sie müssen jedoch `2020-06-01-preview` oder spätere Versionen verwenden, um Ihre APIM-Instanz vorläufig zu löschen (und haben die Möglichkeit, sie wiederherzustellen).
 
 Nach dem Löschen einer API Management-Instanz befindet sich der Dienst in einem gelöschten Zustand, sodass er für APIM-Vorgänge nicht zugänglich ist. In diesem Zustand kann die APIM-Instanz nur aufgelistet, wiederhergestellt oder bereinigt (endgültig gelöscht) werden.
 

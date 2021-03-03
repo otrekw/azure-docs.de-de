@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 730d12558e413d96909914d06187d0d5f89ec661
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: d9624fd899649f4e54c5bd509ed5961b862632dd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567531"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581572"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Datenverschlüsselung auf Azure Database for PostgreSQL-Einzelservern mit einem kundenseitig verwalteten Schlüssel
 
@@ -117,7 +117,7 @@ Konfigurieren Sie die folgenden Azure-Features, um den Datenbankzustand zu über
 * [Azure Resource Health](../service-health/resource-health-overview.md): Eine Datenbank, auf die nicht zugegriffen werden kann und die den Zugriff auf den Kundenschlüssel verloren hat, wird als „Zugriff nicht möglich“ angezeigt, nachdem die erste Verbindung mit der Datenbank verweigert wurde.
 * [Aktivitätsprotokoll:](../service-health/alerts-activity-log-service-notifications-portal.md) Ist der Zugriff auf den Kundenschlüssel im vom Kunden verwalteten Key Vault nicht möglich, werden dem Aktivitätsprotokoll entsprechende Einträge hinzugefügt. Sie können den Zugriff so bald wie möglich wiederherstellen, wenn Sie Warnungen für diese Ereignisse erstellen.
 
-* [Aktionsgruppen](../azure-monitor/platform/action-groups.md): Definieren Sie diese Gruppen, um Benachrichtigungen und Warnungen Ihren Einstellungen entsprechend gesendet werden.
+* [Aktionsgruppen](../azure-monitor/alerts/action-groups.md): Definieren Sie diese Gruppen, um Benachrichtigungen und Warnungen Ihren Einstellungen entsprechend gesendet werden.
 
 ## <a name="restore-and-replicate-with-a-customers-managed-key-in-key-vault"></a>Wiederherstellen und Replizieren mit einem vom Kunden verwalteten Schlüssel in Key Vault
 

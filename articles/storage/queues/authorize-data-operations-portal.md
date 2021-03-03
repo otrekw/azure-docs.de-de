@@ -6,17 +6,17 @@ author: tamram
 services: storage
 ms.author: tamram
 ms.reviewer: ozguns
-ms.date: 09/08/2020
+ms.date: 02/10/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 504d2eb939758e6045a2af095c66093c8754cb94
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: fbb96fc1d2cb12e1aede07295357abfaa6d6b67f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590748"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385012"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>Auswählen der Autorisierung des Zugriffs auf Warteschlangendaten im Azure-Portal
 
@@ -28,16 +28,19 @@ Je nachdem, wie Sie den Zugriff Warteschlangendaten im Azure-Portal autorisieren
 
 ### <a name="use-the-account-access-key"></a>Verwenden des Kontozugriffsschlüssels
 
-Für den Zugriff auf Warteschlangendaten mit dem Kontozugriffsschlüssel muss Ihnen eine Azure-Rolle zugewiesen sein, die die Azure RBAC-Aktion `Microsoft.Storage/storageAccounts/listkeys/action` umfasst. Bei dieser Azure-Rolle kann es sich um eine integrierte oder benutzerdefinierte Rolle handeln. Es folgen integrierte Rollen mit Unterstützung für `Microsoft.Storage/storageAccounts/listkeys/action`:
+Für den Zugriff auf Warteschlangendaten mit dem Kontozugriffsschlüssel muss Ihnen eine Azure-Rolle zugewiesen sein, die die Azure RBAC-Aktion **Microsoft.Storage/storageAccounts/listkeys/action** umfasst. Bei dieser Azure-Rolle kann es sich um eine integrierte oder benutzerdefinierte Rolle handeln. Es folgen integrierte Rollen mit Unterstützung für **Microsoft.Storage/storageAccounts/listkeys/action**:
 
 - Die Azure Resource Manager-Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner)
 - Die Azure Resource Manager-Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor)
 - Die Rolle [Speicherkontomitwirkender](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Wenn Sie versuchen, im Azure-Portal auf Warteschlangendaten zuzugreifen, wird vom Portal zunächst überprüft, ob Ihnen eine Rolle mit `Microsoft.Storage/storageAccounts/listkeys/action` zugewiesen ist. Wenn Ihnen eine Rolle mit dieser Aktion zugewiesen wurde, wird im Portal der Kontoschlüssel für den Zugriff auf Warteschlangendaten verwendet. Wenn Ihnen keine Rolle mit dieser Aktion zugewiesen wurde, versucht das Portal, über Ihr Azure AD-Konto auf Daten zuzugreifen.
+Wenn Sie versuchen, im Azure-Portal auf Warteschlangendaten zuzugreifen, wird vom Portal zunächst überprüft, ob Ihnen eine Rolle mit **Microsoft.Storage/storageAccounts/listkeys/action** zugewiesen ist. Wenn Ihnen eine Rolle mit dieser Aktion zugewiesen wurde, wird im Portal der Kontoschlüssel für den Zugriff auf Warteschlangendaten verwendet. Wenn Ihnen keine Rolle mit dieser Aktion zugewiesen wurde, versucht das Portal, über Ihr Azure AD-Konto auf Daten zuzugreifen.
+
+> [!IMPORTANT]
+> Wenn ein Speicherkonto mit **ReadOnly** in Azure Resource Manager gesperrt ist, ist der Vorgang [Schlüssel auflisten](/rest/api/storagerp/storageaccounts/listkeys) für dieses Speicherkonto nicht zulässig. **Schlüssel auflisten** ist ein POST-Vorgang, und alle POST-Vorgänge werden verhindert, wenn die Sperre **ReadOnly** für das Konto festgelegt wurde. Wenn das Konto mit einer **ReadOnly**-Sperre gesperrt ist, müssen die Benutzer aus diesem Grund Anmeldeinformationen von Azure AD verwenden, um auf Warteschlangendaten im Portal zuzugreifen. Informationen zum Zugreifen auf Warteschlangendaten im Portal mit Azure AD finden Sie unter [Verwenden des Azure AD-Kontos](#use-your-azure-ad-account).
 
 > [!NOTE]
-> Die klassischen Abonnement-Administratorrollen **Dienstadministrator** und **Co-Administrator** schließen die Entsprechung der Azure Resource Manager-Rolle [`Owner`](../../role-based-access-control/built-in-roles.md#owner) ein. Die Rolle **Besitzer** schließt alle Aktionen einschließlich `Microsoft.Storage/storageAccounts/listkeys/action` ein, sodass ein Benutzer mit einer dieser Administratorrollen auch mit dem Kontoschlüssel auf Warteschlangendaten zugreifen kann. Weitere Informationen finden Sie unter [Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+> Die klassischen Abonnement-Administratorrollen **Dienstadministrator** und **Co-Administrator** schließen die Entsprechung der Azure Resource Manager-Rolle [`Owner`](../../role-based-access-control/built-in-roles.md#owner) ein. Die Rolle **Besitzer** schließt alle Aktionen einschließlich **Microsoft.Storage/storageAccounts/listkeys/action** ein, sodass ein Benutzer mit einer dieser Administratorrollen auch mit dem Kontoschlüssel auf Warteschlangendaten zugreifen kann. Weitere Informationen finden Sie unter [Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ### <a name="use-your-azure-ad-account"></a>Verwenden des Azure AD-Kontos
 
@@ -58,7 +61,7 @@ Benutzerdefinierte Rollen können verschiedene Kombinationen der von den integri
 Das Auflisten von Warteschlangen wird von der Rolle „Administrator für klassisches Abonnement“ nicht unterstützt. Um Warteschlangen auflisten zu können, muss einem Benutzer die Azure Resource Manager-Rolle **Leser**, die Rolle **Storage-Warteschlangendatenleser** oder die Rolle **Mitwirkender an Storage-Warteschlangendaten** zugewiesen sein.
 
 > [!IMPORTANT]
-> Die Vorschauversion des Storage-Explorers im Azure-Portal unterstützt nicht die Verwendung von Azure AD-Anmeldeinformationen zum Anzeigen und Ändern von Warteschlangendaten. Storage-Explorer im Azure-Portal verwendet immer die Kontoschlüssel für den Zugriff auf Daten. Um Storage-Explorer im Azure-Portal verwenden zu können, muss Ihnen eine Rolle zugewiesen werden, in der `Microsoft.Storage/storageAccounts/listkeys/action` enthalten ist.
+> Die Vorschauversion des Storage-Explorers im Azure-Portal unterstützt nicht die Verwendung von Azure AD-Anmeldeinformationen zum Anzeigen und Ändern von Warteschlangendaten. Storage-Explorer im Azure-Portal verwendet immer die Kontoschlüssel für den Zugriff auf Daten. Um Storage-Explorer im Azure-Portal verwenden zu können, muss Ihnen eine Rolle zugewiesen werden, in der **Microsoft.Storage/storageAccounts/listkeys/action** enthalten ist.
 
 ## <a name="navigate-to-queues-in-the-azure-portal"></a>Navigieren zu Warteschlangen im Azure-Portal
 

@@ -7,17 +7,38 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: d16eefc8dd3f693e108e457782dc9d076180ba8e
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 03/02/2021
+ms.openlocfilehash: 72243f896b2cf7dbab61a42514bee634da28d4c6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520594"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676325"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Ähnlichkeit und Bewertung in Azure Cognitive Search
 
-Der Begriff „Bewertung“ bezieht sich auf die Berechnung einer Suchbewertung für jedes in Suchergebnissen für Volltext-Suchabfragen zurückgegebene Element. Die Bewertung ist ein Indikator für die Relevanz eines Elements im Kontext des aktuellen Suchvorgangs. Je höher die Bewertung, desto relevanter das Element. In den Suchergebnissen ist den Elementen eine absteigende Reihenfolge zugeordnet, die auf den für die einzelnen Elemente berechneten Suchbewertungen basiert. 
+In diesem Artikel werden die beiden Ähnlichkeitsrangfolge-Algorithmen in Azure Cognitive Search beschrieben. Außerdem werden zwei verwandte Features eingeführt: *Bewertungsprofile* (Kriterien zur Anpassung einer Suchbewertung) und der Parameter *featuresMode* (entpackt eine Suchbewertung, um mehr Details anzuzeigen). 
+
+Ein dritter Algorithmus zur Neuerstellung der semantischen Rangfolge ist zurzeit als öffentliche Vorschauversion verfügbar. Wenn Sie weitere Informationen benötigen, lesen Sie zunächst [Übersicht über die semantische Suche](semantic-search-overview.md).
+
+## <a name="similarity-ranking-algorithms"></a>Ähnlichkeitsalgorithmus für die Rangfolge
+
+Azure Cognitive Search unterstützt zwei Ähnlichkeitsalgorithmen für die Rangfolge.
+
+| Algorithmus | Score | Verfügbarkeit |
+|-----------|-------|--------------|
+| ClassicSimilarity | @search.score | Wurde von allen Suchdiensten bis zum 15. Juli 2020 verwendet. |
+| BM25Similarity | @search.score | Wird von allen nach dem 15. Juli erstellten Suchdiensten verwendet. Ältere Dienste, die standardmäßig „klassisch“ verwenden, können [„BM25“ abonnieren](index-ranking-similarity.md). |
+
+Sowohl der klassische als auch der BM25-Algorithmus bieten TF-IDF-ähnliche Abfragefunktionen, die die Vorkommenshäufigkeit (Term Frequency, TF) und die inverse Dokumenthäufigkeit (Inverse Document Frequency, IDF) als Variablen verwenden, um Relevanzbewertungen für jedes Dokument-Abfrage-Paar zu berechnen, die dann für die Rangfolge verwendet werden. Zwar ist „klassisch“ konzeptionell ähnlich, „BM25“ hat seine Wurzeln aber in der wahrscheinlichkeitstheoretischen Informationsabfrage, um das Ergebnis zu verbessern. BM25 bietet auch erweiterte Anpassungsoptionen, z. B. kann der Benutzer entscheiden, wie weit die Relevanzbewertung von der Häufigkeit übereinstimmender Begriffe abhängt.
+
+Das folgende Videosegment bietet eine schnelle Übersicht über die in Azure Cognitive Search verwendeten allgemein verfügbaren Ähnlichkeitsalgorithmen. Sie können sich das vollständige Video ansehen, um weitere Hintergrundinformationen zu erhalten.
+
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=322&end=643]
+
+## <a name="relevance-scoring"></a>Relevanzbewertung
+
+Der Begriff „Bewertung“ bezieht sich auf die Berechnung einer Suchbewertung für jedes in Suchergebnissen für Volltext-Suchabfragen zurückgegebene Element. Die Bewertung ist ein Indikator für die Relevanz eines Elements im Kontext der aktuellen Abfrage. Je höher die Bewertung, desto relevanter das Element. In den Suchergebnissen ist den Elementen eine absteigende Reihenfolge zugeordnet, die auf den für die einzelnen Elemente berechneten Suchbewertungen basiert. Die Bewertung wird in der Antwort als „@search.score“ für jedes Dokument zurückgegeben.
 
 Standardmäßig werden in der Antwort die ersten 50 Elemente zurückgegeben, Sie können jedoch den **$top**-Parameter verwenden, um eine kleinere oder größere Anzahl von Elementen (bis zu 1000 in einer einzelnen Antwort) zurückzugeben, sowie den Parameter **$skip**, um zu den nächsten Ergebnissen zu gelangen.
 
@@ -25,16 +46,10 @@ Eine Suchbewertung wird auf Basis der statistischen Eigenschaften der Daten und 
 
 Suchbewertungswerte können in einem Resultset wiederholt vorkommen. Wenn mehrere Treffer die gleiche Suchbewertung aufweisen, ist die Sortierung von Elementen mit gleicher Bewertung nicht definiert und somit auch nicht stabil. Wenn Sie die Abfrage noch mal ausführen, sehen Sie möglicherweise, dass sich die Position von Elementen ändert. Dies ist insbesondere dann der Fall, wenn Sie den kostenlosen Dienst oder einen abrechenbaren Dienst mit vielen Replikaten verwenden. Wenn zwei Elemente mit identischer Bewertung vorliegen, kann nicht garantiert werden, welches Element zuerst angezeigt wird.
 
-Wenn Sie eine Reihenfolge für Elemente mit der gleichen Bewertung festlegen möchten, können Sie eine **$orderby**-Klausel hinzufügen, um erst nach Bewertung und dann nach einem anderen sortierbaren Feld zu sortieren (z. B. `$orderby=search.score() desc,Rating desc`). Weitere Informationen finden Sie unter [$orderby](./search-query-odata-orderby.md).
+Wenn Sie eine Reihenfolge für Elemente mit der gleichen Bewertung festlegen möchten, können Sie eine **$orderby**-Klausel hinzufügen, um erst nach Bewertung und dann nach einem anderen sortierbaren Feld zu sortieren (z. B. `$orderby=search.score() desc,Rating desc`). Weitere Informationen finden Sie unter [$orderby](search-query-odata-orderby.md).
 
 > [!NOTE]
-> `@search.score = 1.00` bedeutet, dass es sich um ein nicht bewertetes oder unsortiertes Resultset handelt. Die Bewertung wird für alle Ergebnisse gleich durchgeführt. Nicht bewertete Ergebnisse treten auf, wenn das Abfrageformular eine Fuzzysuche, Platzhalterabfrage oder Abfrage mit regulären Ausdrücken ausführt oder es sich um einen **$filter**-Ausdruck handelt. 
-
-## <a name="scoring-profiles"></a>Bewertungsprofile
-
-Sie können die Sortierung der verschiedenen Felder anpassen, indem Sie ein benutzerdefiniertes *Bewertungsprofil* definieren. Bewertungsprofile bieten Ihnen mehr Kontrolle über die Rangfolge der Elemente in Suchergebnissen. Sie können beispielsweise Elemente auf Basis ihres Umsatzpotentials optimieren, neuere Elemente hochstufen oder auch Elemente fördern, die sich bereits zu lange im Lager befinden. 
-
-Ein Bewertungsprofil ist Teil der Indexdefinition und besteht aus gewichteten Feldern, Funktionen und Parametern. Weitere Informationen zum Definieren von Bewertungsprofilen finden Sie unter [Hinzufügen von Bewertungsprofilen zu einem Index für Azure Cognitive Search](index-add-scoring-profiles.md).
+> `@search.score = 1.00` bedeutet, dass es sich um ein nicht bewertetes oder unsortiertes Resultset handelt. Die Bewertung wird für alle Ergebnisse gleich durchgeführt. Nicht bewertete Ergebnisse treten auf, wenn das Abfrageformular eine Fuzzysuche, Platzhalterabfrage oder Abfrage mit regulären Ausdrücken ausführt oder es sich um einen **$filter**-Ausdruck handelt.
 
 <a name="scoring-statistics"></a>
 
@@ -51,6 +66,7 @@ GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringS
   Content-Type: application/json
   api-key: [admin or query key]  
 ```
+
 Durch die Verwendung von „scoringStatistics“ wird sichergestellt, dass alle Shards in demselben Replikat die gleichen Ergebnisse liefern. Dennoch können sich unterschiedliche Replikate geringfügig voneinander unterscheiden, da sie immer mit den neuesten Änderungen am Index aktualisiert werden. In einigen Szenarien möchten Sie möglicherweise, dass die Benutzer während einer Abfragesitzung konsistentere Ergebnisse erhalten. In solchen Szenarien können Sie eine `sessionId` in den Abfragen bereitstellen. Die `sessionId` ist eine eindeutige Zeichenfolge, die Sie erstellen, um auf eine eindeutige Benutzersitzung zu verweisen.
 
 ```http
@@ -58,20 +74,17 @@ GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionI
   Content-Type: application/json
   api-key: [admin or query key]  
 ```
+
 Solange dieselbe `sessionId` verwendet wird, wird ein bestmöglicher Versuch unternommen, das gleiche Replikat als Ziel zu verwenden und die Konsistenz der Ergebnisse zu erhöhen, die den Benutzern angezeigt werden. 
 
 > [!NOTE]
 > Wenn Sie wiederholt die gleichen `sessionId`-Werte verwenden, können der Lastenausgleich der Anforderungen über Replikate hinweg und die Leistung des Suchdiensts beeinträchtigt werden. Der als „sessionId“ verwendete Wert darf nicht mit dem Zeichen „_“ beginnen.
 
-## <a name="similarity-ranking-algorithms"></a>Ähnlichkeitsalgorithmus für die Rangfolge
+## <a name="scoring-profiles"></a>Bewertungsprofile
 
-Azure Cognitive Search unterstützt zwei verschiedene Ähnlichkeitsalgorithmen für die Rangfolge: einen *klassischen Ähnlichkeitsalgorithmus* und die offizielle Implementierung des *Okapi BM25*-Algorithmus (derzeit in der Vorschauphase). Der klassische Ähnlichkeitsalgorithmus ist der Standardalgorithmus. Allerdings werden alle nach dem 15. Juli neu erstellten Dienste den neuen BM25-Algorithmus verwenden. Dieser wird als einziger Algorithmus für neue Dienste zur Verfügung stehen.
+Sie können die Sortierung der verschiedenen Felder anpassen, indem Sie ein *Bewertungsprofil* definieren. Bewertungsprofile bieten Ihnen mehr Kontrolle über die Rangfolge der Elemente in Suchergebnissen. Sie können beispielsweise Elemente auf Basis ihres Umsatzpotentials optimieren, neuere Elemente hochstufen oder auch Elemente fördern, die sich bereits zu lange im Lager befinden. 
 
-Aktuell können Sie angeben, welchen Ähnlichkeitsalgorithmus für die Rangfolge Sie verwenden möchten. Weitere Informationen finden Sie unter [Ähnlichkeitsalgorithmus für die Rangfolge in Azure Cognitive Search](index-ranking-similarity.md).
-
-Das folgende Videosegment bietet eine schnelle Übersicht über die in Azure Cognitive Search verwendeten Ähnlichkeitsalgorithmen. Sie können sich das vollständige Video ansehen, um weitere Hintergrundinformationen zu erhalten.
-
-> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=322&end=643]
+Ein Bewertungsprofil ist Teil der Indexdefinition und besteht aus gewichteten Feldern, Funktionen und Parametern. Weitere Informationen zum Definieren von Bewertungsprofilen finden Sie unter [Hinzufügen von Bewertungsprofilen zu einem Index für Azure Cognitive Search](index-add-scoring-profiles.md).
 
 <a name="featuresMode-param"></a>
 
@@ -104,7 +117,9 @@ Für eine Abfrage, die auf die Felder „Beschreibung“ und „Titel“ abzielt
 
 Sie können diese Datenpunkte in [benutzerdefinierten Bewertungslösungen](https://github.com/Azure-Samples/search-ranking-tutorial) verbrauchen oder die Informationen zum Debuggen von Problemen bei der Suchrelevanz verwenden.
 
-
 ## <a name="see-also"></a>Weitere Informationen
 
- [Bewertungsprofile](index-add-scoring-profiles.md) [REST-API-Referenz](/rest/api/searchservice/) [API zum Durchsuchen von Dokumenten](/rest/api/searchservice/search-documents) [Azure Cognitive Search .NET SDK](/dotnet/api/overview/azure/search)
++ [Bewertungsprofile](index-add-scoring-profiles.md)
++ [REST-API-Referenz](/rest/api/searchservice/)
++ [Dokumente durchsuchen (Azure Cognitive Search-REST-API)](/rest/api/searchservice/search-documents)
++ [.NET SDK für die kognitive Azure-Suche](/dotnet/api/overview/azure/search)

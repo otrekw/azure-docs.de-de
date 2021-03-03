@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e783e5dd3b0f1952928d1c36c682c5be1cba2599
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 924397c9c81d2a38ae74b95a8f7133ced8bde0d4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044389"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736541"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Automatisches Verwalten von Geräten in Azure Digital Twins mithilfe des Device Provisioning Service (DPS)
 
@@ -223,7 +223,7 @@ Um die Außerbetriebnahme auszulösen, müssen Sie das Gerät manuell aus IoT Hu
 
 In der [ersten Hälfte dieses Artikels](#auto-provision-device-using-device-provisioning-service) haben Sie ein Gerät in IoT Hub und einen entsprechenden digitalen Zwilling erstellt. 
 
-Wechseln Sie nun zu IoT Hub, und löschen Sie dieses Gerät (Sie können dies mit einem [Azure CLI-Befehl](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest&preserve-view=true#ext-azure-cli-iot-ext-az-iot-hub-device-identity-delete) oder über das [Azure-Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs) tun). 
+Wechseln Sie nun zu IoT Hub, und löschen Sie dieses Gerät (Sie können dies mit einem [Azure CLI-Befehl](/cli/azure/ext/azure-iot/iot/hub/module-identity?view=azure-cli-latest#ext_azure_iot_az_iot_hub_module_identity_delete) oder über das [Azure-Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs) tun). 
 
 Das Gerät wird automatisch aus Azure Digital Twins entfernt. 
 

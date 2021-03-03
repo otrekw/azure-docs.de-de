@@ -6,13 +6,13 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 05/14/2020
-ms.openlocfilehash: 9b022f83ed2a4e3a23165cc6bda298a53c008c7c
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 02/11/2021
+ms.openlocfilehash: fb9f12b3b31f1049cd4d9306294783e514331229
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331640"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382190"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Schnellstart: Verwenden einer ARM-Vorlage zum Erstellen eines Azure Database for PostgreSQL-Einzelservers
 
@@ -74,26 +74,26 @@ Führen Sie auf der Seite **Deploy Azure Database for PostgreSQL with VNet** (Az
 
 2. Wenn Sie eine neue Ressourcengruppe erstellt haben, wählen Sie für die Ressourcengruppe und den neuen Server eine Angabe unter **Standort** aus.
 
-3. Geben Sie Werte für **Servername** , **Administratoranmeldung** und **Kennwort für die Administratoranmeldung** ein.
+3. Geben Sie Werte für **Servername**, **Administratoranmeldung** und **Kennwort für die Administratoranmeldung** ein.
 
     :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="Fenster „Deploy Azure Database for PostgreSQL with VNet“ (Azure Database for PostgreSQL mit VNET bereitstellen) unter „Azure-Schnellstartvorlage“ im Azure-Portal":::
 
 4. Ändern Sie ggf. die anderen Standardeinstellungen:
 
-    * **Abonnement** : das für den Server zu verwendende Azure-Abonnement
-    * **SKU-Kapazität** : die Kapazität des virtuellen Kerns. Mögliche Werte: *2* (Standardeinstellung), *4* , *8* , *16* , *32* oder *64*
-    * **SKU-Name** : Präfix des SKU-Tarifs, SKU-Familie und SKU-Kapazität, verbunden durch Unterstriche. Beispiele: *B_Gen5_1* , *GP_Gen5_2* (Standardeinstellung) oder *MO_Gen5_32*
-    * **Sku Size MB** (SKU-Größe (MB)): die Speichergröße des Azure Database for PostgreSQL-Servers in Megabyte (Standardeinstellung: *51200* )
-    * **SKU-Tarif** : der Bereitstellungstarif, etwa *Basic* , *GeneralPurpose* (Standardeinstellung) oder *MemoryOptimized*
-    * **SKU-Familie** : *Gen4* oder *Gen5* (Standardeinstellung). Mit dieser Option wird die Hardwaregeneration für die Serverbereitstellung angegeben.
-    * **PostgreSQL-Version** : die Version des bereitzustellenden PostgreSQL-Servers, z. B. *9.5* , *9.6* , *10* oder *11* (Standardeinstellung)
-    * **Backup Retention Days** (Sicherungsaufbewahrung in Tagen): der gewünschte Zeitraum für die Aufbewahrung georedundanter Sicherungen in Tagen (Standardeinstellung: *7* )
-    * **Georedundante Sicherung** : *Aktiviert* oder *Deaktiviert* (Standardeinstellung), abhängig von den Anforderungen an die georedundante Notfallwiederherstellung (Geo-Disaster Recovery, Geo-DR)
-    * **Name des virtuellen Netzwerks** : der Name des virtuellen Netzwerks (Standardeinstellung: *azure_postgresql_vnet* )
-    * **Subnetzname** : der Name des Subnetzes (Standardeinstellung: *azure_postgresql_subnet* )
-    * **Virtual Network Rule Name** (Name der VNET-Regel): der Name der VNET-Regel, die das Subnetz zulässt (Standardeinstellung: *AllowSubnet* )
-    * **Vnet Address Prefix** (VNET-Adresspräfix): das Adresspräfix für das virtuelle Netzwerk (Standardeinstellung: *10.0.0.0/16* )
-    * **Subnetzpräfix** : das Adresspräfix für das Subnetz (Standardeinstellung: *10.0.0.0/16* )
+    * **Abonnement**: das für den Server zu verwendende Azure-Abonnement
+    * **SKU-Kapazität**: die Kapazität des virtuellen Kerns. Mögliche Werte: *2* (Standardeinstellung), *4*, *8*, *16*, *32* oder *64*
+    * **SKU-Name**: Präfix des SKU-Tarifs, SKU-Familie und SKU-Kapazität, verbunden durch Unterstriche. Beispiele: *B_Gen5_1*, *GP_Gen5_2* (Standardeinstellung) oder *MO_Gen5_32*
+    * **Sku Size MB** (SKU-Größe (MB)): die Speichergröße des Azure Database for PostgreSQL-Servers in Megabyte (Standardeinstellung: *51200*)
+    * **SKU-Tarif**: der Bereitstellungstarif, etwa *Basic*, *GeneralPurpose* (Standardeinstellung) oder *MemoryOptimized*
+    * **SKU-Familie**: *Gen4* oder *Gen5* (Standardeinstellung). Mit dieser Option wird die Hardwaregeneration für die Serverbereitstellung angegeben.
+    * **PostgreSQL-Version**: die Version des bereitzustellenden PostgreSQL-Servers, z. B. *9.5*, *9.6*, *10* oder *11* (Standardeinstellung)
+    * **Backup Retention Days** (Sicherungsaufbewahrung in Tagen): der gewünschte Zeitraum für die Aufbewahrung georedundanter Sicherungen in Tagen (Standardeinstellung: *7*)
+    * **Georedundante Sicherung**: *Aktiviert* oder *Deaktiviert* (Standardeinstellung), abhängig von den Anforderungen an die georedundante Notfallwiederherstellung (Geo-Disaster Recovery, Geo-DR)
+    * **Name des virtuellen Netzwerks**: der Name des virtuellen Netzwerks (Standardeinstellung: *azure_postgresql_vnet*)
+    * **Subnetzname**: der Name des Subnetzes (Standardeinstellung: *azure_postgresql_subnet*)
+    * **Virtual Network Rule Name** (Name der VNET-Regel): der Name der VNET-Regel, die das Subnetz zulässt (Standardeinstellung: *AllowSubnet*)
+    * **Vnet Address Prefix** (VNET-Adresspräfix): das Adresspräfix für das virtuelle Netzwerk (Standardeinstellung: *10.0.0.0/16*)
+    * **Subnetzpräfix**: das Adresspräfix für das Subnetz (Standardeinstellung: *10.0.0.0/16*)
 
 5. Lesen Sie die Geschäftsbedingungen, und wählen Sie anschließend die Option **Ich stimme den oben genannten Geschäftsbedingungen zu** aus.
 
@@ -148,7 +148,7 @@ read -p "Press [ENTER] to continue: "
 
 Führen Sie die folgenden Schritte aus, um eine Übersicht über Ihren neuen Azure Database for PostgreSQL-Server anzuzeigen:
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Azure Database for PostgreSQL-Server** , und wählen Sie die Option aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Azure Database for PostgreSQL-Server**, und wählen Sie die Option aus.
 
 2. Wählen Sie in der Datenbankliste den neuen Server aus. Die Seite **Übersicht** für Ihren neuen Azure Database for PostgreSQL-Server wird angezeigt.
 
@@ -175,13 +175,41 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
+## <a name="exporting-arm-template-from-the-portal"></a>Exportieren einer ARM-Vorlage über das Portal
+Sie können über das Azure-Portal [eine ARM-Vorlage exportieren](../azure-resource-manager/templates/export-template-portal.md). Eine Vorlage kann auf zwei Arten exportiert werden:
+
+- [Export aus Ressourcengruppe oder Ressource](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource). Diese Option generiert eine neue Vorlage aus vorhandenen Ressourcen. Die exportierte Vorlage ist eine „Momentaufnahme“ des aktuellen Zustands der Ressourcengruppe. Sie können eine gesamte Ressourcengruppe oder bestimmte Ressourcen innerhalb dieser Ressourcengruppe exportieren.
+- [Export vor der Bereitstellung oder über den Verlauf](../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment). Diese Option ruft eine exakte Kopie einer für die Bereitstellung verwendeten Vorlage ab.
+
+Beim Exportieren der Vorlage sehen Sie im Abschnitt ```"properties":{ }``` der PostgreSQL-Serverressource, dass ```administratorLogin``` und ```administratorLoginPassword``` aus Sicherheitsgründen nicht enthalten sind. Diese Parameter **MÜSSEN** Ihrer Vorlage vor der Bereitstellung hinzugefügt werden. Andernfalls tritt bei der Vorlage ein Fehler auf.
+
+```
+"resources": [
+    {
+      "type": "Microsoft.DBforPostgreSQL/servers",
+      "apiVersion": "2017-12-01",
+      "name": "[parameters('servers_name')]",
+      "location": "southcentralus",
+      "sku": {
+                "name": "B_Gen5_1",
+                "tier": "Basic",
+                "family": "Gen5",
+                "capacity": 1
+            },
+      "properties": {
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+```
+
+
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe. Dadurch werden die Ressourcen in der Ressourcengruppe gelöscht.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Ressourcengruppen** , und wählen Sie die entsprechende Option aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Ressourcengruppen**, und wählen Sie die entsprechende Option aus.
 
 2. Wählen Sie in der Liste der Ressourcengruppen den Namen Ihrer Ressourcengruppe aus.
 

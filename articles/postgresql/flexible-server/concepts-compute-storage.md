@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: ca60c44d1e167367e2c138af1e7bfd4ba1a69417
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3c8c8b2316a206ba837c0b32fd699dc0ed1eeea
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710072"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519387"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Compute- und Speicheroptionen in Azure Database for PostgreSQL: Flexible Server
 
@@ -151,7 +151,10 @@ Wenn sie mit einem \* markiert sind, wird die E/A-Bandbreite durch den von Ihnen
 
 Wird die Speichergrenze erreicht, beginnt der Server, Fehler zurückzugeben und weitere Änderungen zu verhindern. Dies kann auch Probleme bei anderen betrieblichen Aktivitäten wie Sicherungen und der WAL-Archivierung verursachen.
 
+Um diese Situation zu vermeiden, wird der Server automatisch in den **schreibgeschützten Modus** versetzt, wenn die Speicherauslastung 95 % erreicht oder die verfügbare Kapazität unter 5 GiB sinkt.
+
 Es wird empfohlen, den belegten Speicherplatz aktiv zu überwachen und den Speicherplatz auf dem Datenträger zu erhöhen, bevor dieser aufgebraucht ist. Sie können eine Benachrichtigung einrichten, mit der Sie informiert werden, wenn sich der Speicherplatz auf Ihrem Server dem Ende der Festplatte nähert, sodass Sie Probleme durch fehlenden Speicherplatz vermeiden können. Weitere Informationen finden Sie in der Dokumentation zum [Einrichten einer Benachrichtigung](howto-alert-on-metrics.md).
+
 
 ### <a name="storage-auto-grow"></a>Automatische Speichervergrößerung
 

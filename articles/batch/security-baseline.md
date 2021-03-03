@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3678ead9f3e1ba2556fde3c2fbe30df4e7dc2225
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d8ef3efcda55868abec188c10ef904ae40a56722
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737234"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728143"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azure-Sicherheitsbaseline für Batch
 
@@ -140,9 +140,9 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen der Konfigurationen von Netzwerkressourcen und zum Erkennen von Änderungen bei Netzwerkressourcen, die sich auf Ihre Azure Batch-Pools beziehen. Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzwerkressourcen ausgelöst werden.
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log) 
 
-- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -200,7 +200,7 @@ Falls erforderlich, stellen Sie möglicherweise eine Verbindung mit Ihren einzel
 
 - [Konfigurieren von Azure Batch-Überwachung und -Protokollierung](monitoring-overview.md)
 
-- [Konfigurieren des Aufbewahrungszeitraums des Azure Log Analytics-Arbeitsbereichs](../azure-monitor/platform/manage-cost-storage.md)
+- [Konfigurieren des Aufbewahrungszeitraums des Azure Log Analytics-Arbeitsbereichs](../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -514,9 +514,9 @@ Die Azure-Datenträgerverschlüsselung unterstützt Sie beim Schutz Ihrer Daten 
 
 Konfigurieren Sie Diagnoseeinstellungen für Speicherkonten, die dem Azure Batch-Pool zugeordnet sind, um alle CRUD-Vorgänge für Pooldaten zu überwachen und zu protokollieren.
 
-- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
-- [Aktivieren zusätzlicher Protokollierung/Überwachung für ein Azure Storage-Konto](../storage/common/storage-monitor-storage-account.md)
+- [Aktivieren zusätzlicher Protokollierung/Überwachung für ein Azure Storage-Konto](../storage/common/manage-storage-analytics-logs.md)
 
 **Azure Security Center-Überwachung**: Ja
 

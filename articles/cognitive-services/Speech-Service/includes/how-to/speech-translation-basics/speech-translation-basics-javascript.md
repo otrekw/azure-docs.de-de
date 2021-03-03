@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: v-demjoh
 ms.custom: devx-track-js
-ms.openlocfilehash: 25a3613f2aa45d31f47a8a4f288abbb1e9ee78fa
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 305536b8af9888e5fe3965cabd05f48ad4e93086
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948421"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101749909"
 ---
 Eines der zentralen Features des Speech-Diensts ist die Fähigkeit, menschliche Sprache zu erkennen und in andere Sprachen zu übersetzen. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Sprachübersetzungen durchzuführen. In diesem Schnellstart werden folgende Themen behandelt:
 
@@ -20,7 +20,7 @@ Eines der zentralen Features des Speech-Diensts ist die Fähigkeit, menschliche 
 
 ## <a name="skip-to-samples-on-github"></a>Mit den Beispielen auf GitHub fortfahren
 
-Greifen Sie auf GitHub auf die [JavaScript-Schnellstartbeispiele](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node) zu, falls Sie direkt zum Beispielcode springen möchten.
+Greifen Sie auf GitHub auf die [JavaScript-Schnellstartbeispiele](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser/translate-speech-to-text) zu, falls Sie direkt zum Beispielcode springen möchten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

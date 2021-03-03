@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 01/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: f82432c1dd8c66e8ce845831ff35d534a34e3e04
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 9c3ff91cbfb6423099040a6ea46eeb66f5461f48
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202537"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589659"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Konfigurieren von BYOS (Bring Your Own Storage) für Application Insights Profiler und Momentaufnahmedebugger
 
@@ -21,9 +21,9 @@ Wenn Sie Application Insights Profiler oder Momentaufnahmedebugger verwenden, we
 Mit Bring Your Own Storage werden diese Artefakte in ein Speicherkonto hochgeladen, das Ihrer Kontrolle unterliegt. Das bedeutet, dass Sie die Richtlinie zur Verschlüsselung ruhender Daten, die Richtlinie zur Verwaltung der Lebensdauer und den Netzwerkzugriff festlegen. Sie sind jedoch auch für die mit diesem Speicherkonto verbundenen Kosten verantwortlich.
 
 > [!NOTE]
-> Wenn Sie Private Link aktivieren, ist Bring Your Own Storage eine Voraussetzung. Weitere Informationen zu Private Link für Application Insights finden Sie in der entsprechenden [Dokumentation](../platform/private-link-security.md).
+> Wenn Sie Private Link aktivieren, ist Bring Your Own Storage eine Voraussetzung. Weitere Informationen zu Private Link für Application Insights finden Sie in der entsprechenden [Dokumentation](../logs/private-link-security.md).
 >
-> Wenn Sie kundenseitig verwaltete Schlüssel aktivieren, ist Bring Your Own Storage eine Voraussetzung. Weitere Informationen zu kundenseitig verwalteten Schlüsseln für Application Insights finden Sie in der entsprechenden [Dokumentation](../platform/customer-managed-keys.md).
+> Wenn Sie kundenseitig verwaltete Schlüssel aktivieren, ist Bring Your Own Storage eine Voraussetzung. Weitere Informationen zu kundenseitig verwalteten Schlüsseln für Application Insights finden Sie in der entsprechenden [Dokumentation](../logs/customer-managed-keys.md).
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>Wie erfolgt der Zugriff auf mein Speicherkonto?
 1. Agents, die in Virtual Machines oder App Service ausgeführt werden, laden Artefakte (Profile, Momentaufnahmen und Symbole) in Blobcontainer in Ihrem Konto hoch. Dabei wird vom Application Insights Profiler- oder Momentaufnahmedebuggerdienst ein SAS-Token (Shared Access Signature) für ein neues Blob in Ihrem Speicherkonto abgerufen.

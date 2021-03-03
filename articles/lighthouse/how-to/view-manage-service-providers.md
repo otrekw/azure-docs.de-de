@@ -1,51 +1,45 @@
 ---
 title: Dienstanbieter anzeigen und verwalten
 description: Kunden können die Seite „Dienstanbieter“ im Azure-Portal verwenden, um Informationen zu Dienstanbietern, Angeboten von Dienstanbietern und delegierten Ressourcen anzuzeigen.
-ms.date: 12/16/2020
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 5ee897503c997ab10fdb489f7921c9d2d001e472
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: f6ee5fb154d75ff715acf99c5184cd1652ccdb80
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617203"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555576"
 ---
 # <a name="view-and-manage-service-providers"></a>Dienstanbieter anzeigen und verwalten
 
-Die Seite **Dienstanbieter** im [Azure-Portal](https://portal.azure.com) bietet Kunden Steuerungsmöglichkeiten und Transparenz im Zusammenhang mit ihren Dienstanbietern, die [Azure Lighthouse](../overview.md) nutzen. Kunden können Details zu Dienstanbietern anzeigen, bestimmte Ressourcen delegieren, neue Dienstanbieterangebote kaufen, den Dienstanbieterzugriff entfernen und vieles mehr.
+Die Seite **Dienstanbieter** im [Azure-Portal](https://portal.azure.com) bietet Kunden Steuerungsmöglichkeiten und Transparenz im Zusammenhang mit ihren Dienstanbietern, die [Azure Lighthouse](../overview.md) nutzen. Kunden können Details zu Dienstanbietern anzeigen, bestimmte Ressourcen delegieren, neue Angebote suchen, den Dienstanbieterzugriff entfernen und vieles mehr.
 
-> [!TIP]
-> Zwar beziehen wir uns hier auf Dienstanbieter und Kunden, doch können [Unternehmen, die mehrere Mandanten verwalten](../concepts/enterprise.md), denselben Prozess verwenden, um ihre Verwaltungserfahrung zu konsolidieren.
-
-Um auf die Seite **Dienstanbieter** im Azure-Portal zuzugreifen, können die Kunden **Alle Dienste** auswählen, dann nach **Dienstanbieter** suchen und es auswählen. Sie können die Seite auch finden, indem Sie im Suchfeld am oberen Rand des Azure-Portals „Dienstanbieter“ oder „Azure Lighthouse“ eingeben.
+Um die Seite **Dienstanbieter** im Azure-Portal anzuzeigen, wählen Sie **Alle Dienste** aus. Suchen Sie dann nach **Dienstanbieter**, und wählen Sie die Option aus. Diese Seite können Sie auch suchen, indem Sie im Suchfeld am oberen Rand des Azure-Portals „Dienstanbieter“ oder „Azure Lighthouse“ eingeben.
 
 > [!NOTE]
 > Um die Seite **Dienstanbieter** anzuzeigen, muss ein Benutzer im Mandanten des Kunden über die integrierte Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) (oder eine andere integrierte Rolle, die Leserzugriff umfasst) verfügen.
 >
-> Der Benutzer über die integrierte Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner) für das Abonnement verfügen, um Angebote hinzuzufügen oder zu aktualisieren, Ressourcen zu delegieren und Angebote zu entfernen.
+> Zum Hinzufügen oder Aktualisieren von Angeboten, Delegieren von Ressourcen und Entfernen von Angeboten muss dem Benutzer eine Rolle mit der Berechtigung `Microsoft.Authorization/roleAssignments/write` zugewiesen sein, z. B. [Besitzer](../../role-based-access-control/built-in-roles.md#owner).
 
-Beachten Sie, dass auf der Seite **Dienstanbieter** nur Informationen zu den Dienstanbietern angezeigt werden, die über Azure Lighthouse auf die Abonnements oder Ressourcengruppen des Kunden zugreifen können. Wenn ein Kunde mit zusätzlichen Dienstanbietern arbeitet, die nicht über Azure Lighthouse auf die Ressourcen des Kunden zugreifen, werden Informationen zu diesen Dienstanbietern hier nicht angezeigt.
-
-> [!TIP]
-> Dienstanbieter können Informationen zu ihren Kunden anzeigen, indem sie im Azure-Portal zu **Meine Kunden** navigieren. Weitere Informationen finden Sie unter [Anzeigen und Verwalten von Kunden und delegierten Ressourcen](view-manage-customers.md).
+Beachten Sie, dass auf der Seite **Dienstanbieter** nur Informationen zu den Dienstanbietern angezeigt werden, die über Azure Lighthouse auf die Abonnements oder Ressourcengruppen des Kunden zugreifen können. Wenn ein Kunde mit zusätzlichen Dienstanbietern arbeitet, die Azure Lighthouse nicht verwenden, werden Informationen zu diesen Dienstanbietern hier nicht angezeigt.
 
 ## <a name="view-service-provider-details"></a>Anzeigen von Dienstanbieterdetails
 
-Um Informationen zu Dienstanbietern anzuzeigen, kann der Kunde links auf der Seite **Dienstanbieter** die Option **Dienstanbieterangebote** auswählen.
+Um Details zu aktuellen Dienstanbietern anzuzeigen, die Azure Lighthouse im Mandanten des Kunden verwenden, wählen Sie links auf der Seite **Dienstanbieter** die Option **Dienstanbieterangebote** aus.
 
-Zu jedem Angebot eines Dienstanbieters werden dem Kunden der Name des Dienstanbieters und das dazugehörige Angebot angezeigt sowie der Name, den der Kunde während des Onboardingvorgangs eingegeben hat.
+Für jedes Angebot werden der Name des Dienstanbieters und das zugehörige Angebot angezeigt. Sie können ein Angebot auswählen, um eine Beschreibung und andere Details anzuzeigen, einschließlich der Rollenzuweisungen, die dem Dienstanbieter gewährt wurden.
 
-In der Spalte **Delegierungen** sieht der Kunde, wie viele Abonnements und/oder Ressourcengruppen an den Dienstanbieter für dieses Angebot delegiert wurden. Der Dienstanbieter ist in der Lage, auf diese Abonnements und/oder Ressourcengruppen entsprechend den im Angebot angegebenen Zugriffsebenen zuzugreifen und diese dementsprechend zu verwalten.
+In der Spalte **Delegierungen** können Sie sehen, wie viele Abonnements und/oder Ressourcengruppen an den Dienstanbieter für dieses Angebot delegiert wurden. Der Dienstanbieter ist in der Lage, auf diese Abonnements und/oder Ressourcengruppen entsprechend den im Angebot angegebenen Zugriffsebenen zuzugreifen und diese dementsprechend zu verwalten.
 
 ## <a name="add-or-remove-service-provider-offers"></a>Hinzufügen oder Entfernen von Dienstanbieterangeboten
 
-Ein Kunde kann ein neues Angebot eines Dienstanbieters über die Seite **Dienstanbieterangebote** hinzufügen, indem er **Angebot** hinzufügen auswählt. Der Dienstanbieter muss ein Angebot für diesen Kunden veröffentlicht haben. Der Kunde kann das Angebot dann im Bildschirm **Private Angebote** auswählen und dann **Erstellen** auswählen.
+Zum Hinzufügen eines neuen Dienstanbieterangebots wählen Sie auf der Seite **Dienstanbieterangebote** die Option **Angebot hinzufügen** aus. Wählen Sie **Private Angebote** aus, um Angebote anzuzeigen, die ein Dienstanbieter für diesen Kunden veröffentlicht hat. Sie können das Angebot dann auf dem Bildschirm **Private Angebote** auswählen und dann **Einrichten und abonnieren** auswählen.
 
-Wenn der Kunde ein Angebot eines Dienstanbieters entfernen möchte, kann er dazu jederzeit das Papierkorbsymbol in der Zeile für dieses Angebot auswählen. Nach dem Bestätigen des Löschvorgangs hat dieser Dienstanbieter keinen Zugriff mehr auf die Kundenressourcen, die zuvor für dieses Angebot delegiert wurden.
+Sie können ein Dienstanbieterangebot jederzeit entfernen. Wählen Sie dazu das Papierkorbsymbol in der Zeile des entsprechenden Angebots aus. Nach dem Bestätigen des Löschvorgangs hat der Dienstanbieter keinen Zugriff mehr auf die Ressourcen, die zuvor für dieses Angebot delegiert wurden.
 
 ## <a name="delegate-resources"></a>Delegieren von Ressourcen
 
-Bevor ein Dienstanbieter auf die Ressourcen eines Kunden zugreifen und diese verwalten kann, müssen diese delegiert werden. Wenn ein Kunde ein Angebot angenommen hat, aber noch keine Ressourcen delegiert hat, wird am oberen Rand des Abschnitts **Dienstanbieterangebote** ein Hinweis angezeigt. In diesem wird dem Kunden mitgeteilt, dass er Maßnahmen ergreifen muss, bevor der Dienstanbieter auf eine der Ressourcen des Kunden zugreifen kann.
+Damit ein Dienstanbieter auf die Ressourcen eines Kunden zugreifen und diese verwalten kann, muss mindestens ein spezifischeres Abonnement und/oder eine spezifischere Ressourcengruppe delegiert werden. Wenn ein Kunde ein Angebot angenommen hat, aber noch keine Ressourcen delegiert hat, wird am oberen Rand des Abschnitts **Dienstanbieterangebote** ein Hinweis angezeigt. In diesem wird dem Kunden mitgeteilt, dass er Maßnahmen ergreifen muss, bevor der Dienstanbieter auf eine der Ressourcen des Kunden zugreifen kann.
 
 So delegieren Sie Abonnements oder Ressourcengruppen
 
@@ -57,11 +51,11 @@ So delegieren Sie Abonnements oder Ressourcengruppen
 
 ## <a name="update-service-provider-offers"></a>Aktualisieren von Dienstanbieterangeboten
 
-Nachdem ein Kunde ein Angebot hinzugefügt hat, kann ein Dienstanbieter eine aktualisierte Version desselben Angebots für Azure Marketplace veröffentlichen. Dabei kann es sich beispielsweise um das Hinzufügen einer neuen Rollendefinition handeln. Wenn eine neue Version des Angebots veröffentlicht wurde, wird auf der Seite **Dienstanbieterangebote** ein „Aktualisierungssymbol“ in der Zeile für das Angebot angezeigt. Der Kunde kann dieses Symbol auswählen, um die Unterschiede zwischen der aktuellen Version des Angebots und der neuen Version anzuzeigen.
+Nachdem ein Kunde ein Angebot hinzugefügt hat, kann ein Dienstanbieter eine aktualisierte Version desselben Angebots für Azure Marketplace veröffentlichen. Dabei kann es sich beispielsweise um das Hinzufügen einer neuen Rollendefinition handeln. Wenn eine neue Version des Angebots veröffentlicht wurde, wird auf der Seite **Dienstanbieterangebote** ein „Aktualisierungssymbol“ in der Zeile für das Angebot angezeigt. Wählen Sie dieses Symbol aus, um die Unterschiede zwischen der aktuellen Version und der neuen Version des Angebots anzuzeigen.
 
  ![Symbol für Aktualisierungsangebot](../media/update-offer.jpg)
 
-Nachdem er die Änderungen überprüft hat, kann der Kunde auf die neue Version aktualisieren. Anschließend gelten die in der neuen Version angegebenen Autorisierungen und anderen Einstellungen für alle Abonnements und/oder Ressourcengruppen, die für dieses Angebot delegiert wurden.
+Nachdem er die Änderungen überprüft hat, kann der Kunde auf die neue Version aktualisieren. Anschließend gelten die in der neuen Version angegebenen Autorisierungen und anderen Einstellungen für alle Abonnements und/oder Ressourcengruppen, die für das Angebot delegiert wurden.
 
 ## <a name="view-delegations"></a>Anzeigen von Delegierungen
 
@@ -87,3 +81,5 @@ Weitere Informationen zum Zuweisen einer Richtlinie und zum Anzeigen der Ergebni
 - Erfahren Sie mehr über [Azure Lighthouse](../overview.md).
 - Informieren Sie sich über das [Überwachen der Dienstanbieteraktivität](view-service-provider-activity.md).
 - Erfahren Sie, wie Dienstanbieter auf der Seite **Meine Kunden** im Azure-Portal [Kunden anzeigen und verwalten](view-manage-customers.md) können.
+- Erfahren Sie, wie [Unternehmen, die mehrere Mandanten verwalten](../concepts/enterprise.md), die Verwaltung mithilfe von Azure Lighthouse konsolidieren können.
+

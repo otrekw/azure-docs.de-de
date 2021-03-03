@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 51431bf0da9145e1b61da708942b675e4c3eea78
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 664733f3d4c4e4bf17440db0323580c5d2c8c2ce
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733815"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555659"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Konfigurieren von Azure Attestation für Ihren logischen Azure SQL-Server
 
@@ -114,7 +114,7 @@ Während des Nachweisworkflows ruft der logische Azure SQL-Server, der Ihre Date
 
 ### <a name="use-azure-portal-to-assign-permission"></a>Zuweisen der Berechtigung über das Azure-Portal
 
-Um die Identität eines Azure SQL-Servers der Rolle „Nachweisleser“ für einen Nachweisanbieter zuzuweisen, befolgen Sie die allgemeinen Anweisungen unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md). Gehen Sie im Bereich **Rollenzuweisung hinzufügen** wie folgt vor:
+Um die Identität eines Azure SQL-Servers der Rolle „Attestation-Leser“ für einen Nachweisanbieter zuzuweisen, befolgen Sie die allgemeinen Anweisungen unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md). Gehen Sie im Bereich **Rollenzuweisung hinzufügen** wie folgt vor:
 
 1. Wählen Sie in der Dropdownliste **Rolle** die Rolle **Nachweisleser** aus.
 1. Geben Sie im Feld **Auswählen** den Namen Ihres Azure SQL-Servers ein, um ihn zu suchen.
@@ -143,7 +143,7 @@ $attestationResourceGroupName = "<attestation provider resource group name>"
 New-AzRoleAssignment -ObjectId $server.Identity.PrincipalId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName
 ```
 
-Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md#add-role-assignment-examples).
+Weitere Informationen finden Sie unter [Zuweisen von Azure-Rollen mithilfe von Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md#assign-role-examples).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

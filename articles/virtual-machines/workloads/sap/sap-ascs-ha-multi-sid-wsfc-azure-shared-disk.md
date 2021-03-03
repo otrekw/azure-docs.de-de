@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4dfbffcaedb6c544a34e347633d5adc173fab33e
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 8b216fafad5cd2f7406320dce3ec28b8830015d7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655984"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673762"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>Multi-SID-Hochverfügbarkeit für SAP ASCS/SCS-Instanzen mit Windows Server-Failoverclustering und freigegebenem Azure-Datenträger
 
@@ -277,13 +276,13 @@ Wählen Sie den neu erstellten freigegebenen Datenträger aus.
 
 Wenn Sie Enqueue Replication Server 1 ausführen, fügen Sie den SAP-Profilparameter `enque/encni/set_so_keepalive` wie nachfolgend beschrieben hinzu. Dieser Profilparameter verhindert das Schließen von Verbindungen zwischen SAP-Workprozessen und dem Enqueue-Server, wenn diese sich zu lange im Leerlauf befinden. Der SAP-Parameter ist für ERS2 nicht erforderlich. 
 
-1. Fügen Sie diesen Profilparameter dem Profil der SAP ASCS/SCS-Instanz hinzu, wenn ERS1 verwendet wird.
+1. Wenn Sie ERS1 verwenden, fügen Sie diesen Profilparameter dem Profil der SAP ASCS/SCS-Instanz hinzu.
 
    ```
    enque/encni/set_so_keepalive = true
    ```
    
-   Stellen Sie sowohl für ERS1 als auch für ERS2 sicher, dass die `keepalive`-Parameter des Betriebssystems wie im SAP-Hinweis [1410736](https://launchpad.support.sap.com/#/notes/1410736) beschrieben festgelegt sind.   
+   Stellen Sie sowohl für ERS1 als auch für ERS2 sicher, dass die `keepalive`-Parameter für das Betriebssystem wie im SAP-Hinweis [1410736](https://launchpad.support.sap.com/#/notes/1410736) beschrieben festgelegt sind.   
 
 2. Starten Sie die SAP ASCS/SCS-Instanz neu, um die Änderungen der SAP-Profilparameter zu übernehmen.
 

@@ -1,5 +1,5 @@
 ---
-title: Ähnlichkeitsalgorithmus für die Rangfolge
+title: Konfigurieren des Ähnlichkeitsalgorithmus für die Rangfolge
 titleSuffix: Azure Cognitive Search
 description: Festlegen des Ähnlichkeitsalgorithmus zum Testen eines neuen Ähnlichkeitsalgorithmus für die Rangfolge
 manager: nitinme
@@ -7,36 +7,47 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/13/2020
-ms.openlocfilehash: e2caa09d41abb1842100ed8259e82ec411390ccb
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 03/02/2021
+ms.openlocfilehash: 9f806b512ae8e118fca8f32115c8be3b493fd681
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520628"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677783"
 ---
-# <a name="ranking-algorithm-in-azure-cognitive-search"></a>Ähnlichkeitsalgorithmus für die Rangfolge in Azure Cognitive Search
+# <a name="configure-ranking-algorithms-in-azure-cognitive-search"></a>Konfigurieren der Rangfolgealgorithmen in Azure Cognitive Search
 
-> [!IMPORTANT]
-> Ab dem 15. Juli 2020 verwenden neu erstellte Suchdienste die BM25-Rangfolgefunktion automatisch, die sich in den meisten Fällen bewährt hat, um Suchrangfolgen bereitzustellen, die mit den Benutzererwartungen besser übereinstimmen als die aktuelle Standardrangfolge. Neben der höheren Rangfolge ermöglicht BM25 auch Konfigurationsoptionen, mit denen Ergebnisse auf der Basis von Faktoren wie der Dokumentgröße optimiert werden können.  
->
-> Mit dieser Änderung wird die Reihenfolge Ihrer Suchergebnisse wahrscheinlich geringfügige Änderungen aufweisen. Für diejenigen, die die Auswirkung dieser Änderung testen möchten, ist der BM25-Algorithmus in der API-Version 2019-05-06-Preview und in 2020-06-30 verfügbar.  
+Azure Cognitive Search unterstützt zwei Ähnlichkeitsalgorithmen für die Rangfolge:
 
-Dieser Artikel beschreibt, wie Sie den neuen BM25- Rangfolgealgorithmus bei vorhandenen Suchdiensten für neue Indizes verwenden können, die mit der Vorschau-API erstellt und abgefragt werden.
++ Einen *klassischen* Ähnlichkeitsalgorithmus, der von allen Suchdiensten bis zum 15. Juli 2020 verwendet wurde.
++ Eine Implementierung des *Okapi BM25*-Algorithmus, der in allen Suchdiensten verwendet wird, die nach dem 15. Juli erstellt wurden.
 
-Azure Cognitive Search übernimmt zurzeit die offizielle Lucene-Implementierung des Okapi BM25-Algorithmus, *BM25Similarity*, die die zuvor verwendete *ClassicSimilarity*-Implementierung ersetzt. Wie der ältere ClassicSimilarity-Algorithmus ist BM25Similarity eine TF-IDF-ähnliche Abruffunktion, bei der die Begriffshäufigkeit (Term Frequency, TF) und die inverse Dokumenthäufigkeit (Inverse Document Frequency, IDF) als Variablen verwendet werden, um die Relevanzbewertungen für jedes Dokument/Abfrage-Paar zu berechnen, die dann für die Rangfolge verwendet werden. 
+Die BM25-Rangfolge ist die neue Standardeinstellung, da sie tendenziell Suchrangfolgen erzeugt, die den Erwartungen von Benutzern besser entsprechen. BM25 ermöglicht zudem Konfigurationsoptionen, mit denen Ergebnisse auf der Basis von Faktoren wie der Dokumentgröße optimiert werden können. Für neue Dienste, die nach dem 15. Juli 2020 erstellt werden, wird BM25 automatisch verwendet und ist der einzige Ähnlichkeitsalgorithmus. Wenn Sie versuchen, Ähnlichkeit für einen neuen Dienst auf „ClassicSimilarity“ festzulegen, wird ein HTTP 400-Fehler zurückgegeben, da dieser Algorithmus durch den Dienst nicht unterstützt wird.
 
-BM25 ist konzeptionell dem älteren klassischen Ähnlichkeitsalgorithmus ähnlich und verwendet seinen Kern zum Abruf probabilistischer Informationen, um ihn zu verbessern. BM25 bietet auch erweiterte Anpassungsoptionen, z. B. kann der Benutzer entscheiden, wie weit die Relevanzbewertung von der Häufigkeit übereinstimmender Begriffe abhängt.
+Für ältere Dienste, die vor dem 15. Juli 2020 erstellt wurden, bleibt die klassische Ähnlichkeit der Standardalgorithmus. Ältere Dienste können Eigenschaften für einen Suchindex festlegen, um BM25 aufzurufen, wie unten erläutert. Wenn Sie von „klassisch“ zu „BM25“ wechseln, sind einige Unterschiede in der Anordnung der Suchergebnisse zu erwarten.
 
-## <a name="how-to-test-bm25-today"></a>Wie BM25 heute getestet werden kann
+> [!NOTE]
+> Die semantische Suche ist ein zusätzlicher Semantikalgorithmus zur Neuerstellung der Rangfolge, der die Kluft zwischen Erwartungen und Ergebnissen noch weiter verkleinert. Im Gegensatz zu den anderen Algorithmen handelt es sich um ein zusätzliches Feature, das eine bestehende Ergebnismenge durchläuft. Um den in der Vorschau befindlichen Algorithmus für die semantische Suche zu verwenden, müssen Sie einen neuen Dienst erstellen und eine [Abfrage vom Typ „semantic“ (semantisch)](semantic-how-to-query-request.md) angeben. Weitere Informationen finden Sie unter [Übersicht über die semantische Suche](semantic-search-overview.md).
 
-Wenn Sie einen neuen Index erstellen, können Sie eine **Ähnlichkeitseigenschaft** festlegen, um den Algorithmus anzugeben. Sie können die `api-version=2019-05-06-Preview` verwenden, wie unten dargestellt, oder `api-version=2020-06-30`.
+## <a name="create-a-search-index-for-bm25-scoring"></a>Erstellen eines Suchindex für die BM25-Bewertung
+
+Wenn Sie einen Suchdienst ausführen, der vor dem 15. Juli 2020 erstellt wurde, können Sie die Ähnlichkeitseigenschaft in der Indexdefinition entweder auf „BM25Similarity“ oder „ClassicSimilarity“ festlegen. Wenn die Eigenschaft Ähnlichkeit ausgelassen oder auf NULL festgelegt wird, verwendet der Index den klassischen Algorithmus.
+
+Der Ähnlichkeitsalgorithmus kann nur zum Zeitpunkt der Indexerstellung festgelegt werden. Nachdem ein Index jedoch mit BM25 erstellt wurde, können Sie den vorhandenen Index aktualisieren, um die BM25-Parameter festzulegen oder zu ändern.
+
+| Clientbibliothek | Ähnlichkeitseigenschaft |
+|----------------|---------------------|
+| .NET  | [SearchIndex.Similarity](/dotnet/api/azure.search.documents.indexes.models.searchindex.similarity) |
+| Java | [SearchIndex.setSimilarity](/java/api/com.azure.search.documents.indexes.models.searchindex.setsimilarity) |
+| JavaScript | [SearchIndex.Similarity](/javascript/api/@azure/search-documents/searchindex#similarity) |
+| Python | [Ähnlichkeitseigenschaft für SearchIndex](/python/api/azure-search-documents/azure.search.documents.indexes.models.searchindex) |
+
+### <a name="rest-example"></a>Beispiel für REST
+
+Sie können auch die [Rest-API](/rest/api/searchservice/create-index)verwenden, wie im folgenden Beispiel veranschaulicht:
 
 ```http
-PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview
-```
-
-```json  
+PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2020-06-30
 {
     "name": "indexName",
     "fields": [
@@ -59,48 +70,28 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 }
 ```
 
-Die **Ähnlichkeitseigenschaft** ist während dieser Übergangszeit, in der beide Algorithmen verfügbar sind, nur für vorhandene Dienste nützlich. 
-
-| Eigenschaft | BESCHREIBUNG |
-|----------|-------------|
-| Ähnlichkeit | Optional. Gültige Werte sind *„#Microsoft.Azure.Search.ClassicSimilarity“* und *„#Microsoft.Azure.Search.BM25Similarity“* . <br/> Erfordert `api-version=2019-05-06-Preview` oder höher für einen Suchdienst, der vor dem 15. Juli 2020 erstellt wurde. |
-
-Für neue Dienste, die nach dem 15. Juli 2020 erstellt werden, wird BM25 automatisch verwendet und ist der einzige Ähnlichkeitsalgorithmus. Wenn Sie versuchen, **Ähnlichkeit** für einen neuen Dienst auf `ClassicSimilarity` festzulegen, wird ein Fehler „400“ zurückgegeben, da dieser Algorithmus für einen neuen Dienst nicht unterstützt wird.
-
-Für vorhandene Dienste, die vor dem 15. Juli 2020 erstellt wurden, bleibt die klassische Ähnlichkeit der Standardalgorithmus. Wenn die Eigenschaft **Ähnlichkeit** ausgelassen oder auf NULL festgelegt wird, verwendet der Index den klassischen Algorithmus. Wenn Sie den neuen Algorithmus verwenden möchten, müssen Sie **Ähnlichkeit** wie oben beschrieben festlegen.
-
 ## <a name="bm25-similarity-parameters"></a>BM25-Ähnlichkeitsparameter
 
-BM25-Ähnlichkeit fügt zwei durch Benutzer anpassbare Parameter hinzu, um die berechnete Relevanzbewertung zu steuern.
+BM25-Ähnlichkeit fügt zwei durch Benutzer anpassbare Parameter hinzu, um die berechnete Relevanzbewertung zu steuern. Sie können BM25-Parameter während der Indexerstellung oder als Indexupdate festlegen, wenn der BM25-Algorithmus während der Indexerstellung angegeben wurde.
 
-### <a name="k1"></a>k1
-
-Der *k1*-Parameter steuert die Skalierungsfunktion, die bestimmt, wie weit die endgültige Relevanzbewertung eines Dokument/Abfrage-Paars von der Häufigkeit der einzelnen übereinstimmenden Begriffe abhängt.
-
-Der Wert 0 (null) stellt ein „binäres Modell“ dar, bei dem der Anteil eines einzelnen übereinstimmenden Begriffs für alle übereinstimmenden Dokumente identisch ist, unabhängig davon, wie oft dieser Begriff im Text vorkommt, während ein größerer k1-Wert bestimmt, dass die Bewertung höher ausfällt, je mehr Instanzen desselben Begriffs im Dokument gefunden werden. Standardmäßig verwendet Azure Cognitive Search den Wert 1,2 für den k1-Parameter. Die Verwendung eines höheren k1-Werts kann wichtig sein, wenn wir erwarten, dass mehrere Begriffe Teil einer Suchabfrage sind. In diesen Fällen bevorzugen wir möglicherweise Dokumente, in denen viele der unterschiedlichen gesuchten Abfragebegriffe vorkommen, gegenüber Dokumenten, in denen nur ein einzelner Begriff häufig vorkommt. Wenn Sie z. B. den Index nach Dokumenten abfragen, die die Begriffe „Apollo Spaceflight“ enthalten, möchten wir die Bewertung eines Artikels über griechische Mythologie, der den Begriff „Apollo“ ein paar Dutzend Mal enthält, ohne dass „Spaceflight“ vorkommt, gegenüber einem Artikel reduzieren, in dem „Apollo“ als auch „Spaceflight“ nur einige wenige Male explizit erwähnt werden. 
- 
-### <a name="b"></a>b
-
-Der *b*-Parameter steuert, wie sich die Länge eines Dokuments auf die Relevanzbewertung auswirkt.
-
-Der Wert 0,0 bedeutet, dass die Länge des Dokuments das Ergebnis nicht beeinflusst, während der Wert 1,0 bedeutet, dass die Auswirkung der Begriffshäufigkeit auf die Relevanzbewertung durch die Länge des Dokuments normalisiert wird. In Azure Cognitive Search wird für den b-Parameter der Standardwert 0,75 verwendet. Das Normalisieren der Begriffshäufigkeit durch die Länge des Dokuments ist nützlich, wenn Sie längere Dokumente zurückstellen möchten. In einigen Fällen enthalten längere Dokumente (z. B. komplette Roman) im Vergleich zu deutlich kürzeren Dokumenten eher viele irrelevante Begriffe.
+| Eigenschaft | type | BESCHREIBUNG |
+|----------|------|-------------|
+| k1 | number | Steuert die Skalierungsfunktion, die bestimmt, wie weit die endgültige Relevanzbewertung eines Dokument/Abfrage-Paars von der Häufigkeit der einzelnen übereinstimmenden Begriffe abhängt. Die Werte liegen in der Regel zwischen 0,0 und 3,0. Der Standardwert ist 1,2. </br></br>Der Wert 0,0 stellt ein „binäres Modell“ dar, bei dem der Anteil eines einzelnen übereinstimmenden Begriffs für alle übereinstimmenden Dokumente identisch ist, unabhängig davon, wie oft dieser Begriff im Text vorkommt, während ein größerer k1-Wert bestimmt, dass die Bewertung höher ausfällt, je mehr Instanzen desselben Begriffs im Dokument gefunden werden. </br></br>Die Verwendung eines höheren k1-Werts kann wichtig sein, wenn wir erwarten, dass mehrere Begriffe Teil einer Suchabfrage sind. In diesen Fällen bevorzugen wir möglicherweise Dokumente, in denen viele der unterschiedlichen gesuchten Abfragebegriffe vorkommen, gegenüber Dokumenten, in denen nur ein einzelner Begriff häufig vorkommt. Wenn Sie z. B. den Index nach Dokumenten abfragen, die die Begriffe „Apollo Spaceflight“ enthalten, möchten wir die Bewertung eines Artikels über griechische Mythologie, der den Begriff „Apollo“ ein paar Dutzend Mal enthält, ohne dass „Spaceflight“ vorkommt, gegenüber einem Artikel reduzieren, in dem „Apollo“ als auch „Spaceflight“ nur einige wenige Male explizit erwähnt werden. |
+| b | number | Steuert, wie sich die Länge eines Dokuments auf die Relevanzbewertung auswirkt. Die Werte liegen zwischen 0 und 1. Der Standardwert ist 0,75. </br></br>Der Wert 0,0 bedeutet, dass die Länge des Dokuments das Ergebnis nicht beeinflusst, während der Wert 1,0 bedeutet, dass die Auswirkung der Begriffshäufigkeit auf die Relevanzbewertung durch die Länge des Dokuments normalisiert wird. </br></br>Das Normalisieren der Begriffshäufigkeit durch die Länge des Dokuments ist nützlich, wenn Sie längere Dokumente zurückstellen möchten. In einigen Fällen enthalten längere Dokumente (z. B. komplette Roman) im Vergleich zu deutlich kürzeren Dokumenten eher viele irrelevante Begriffe. |
 
 ### <a name="setting-k1-and-b-parameters"></a>Festlegen des „k1“- und „b“-Parameters
 
-Wenn Sie den Wert „b“ oder „k1“ anpassen möchten, fügen Sie ihn einfach beim Verwenden von BM25 dem Ähnlichkeitsobjekt als Eigenschaften hinzu:
+Um b- oder k1-Werte festzulegen oder zu ändern, fügen Sie sie dem BM25-Ähnlichkeitsobjekt hinzu. Das Festlegen oder Ändern dieser Werte bei einem vorhandenen Index schaltet den Index für mindestens ein paar Sekunden offline, sodass aktive Indizierungs- und Abfrageanforderungen fehlschlagen. Folglich sollten Sie den Parameter „allowIndexDowntime=true“ in der Aktualisierungsanforderung festlegen:
 
-```json
+```http
+PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2020-06-30&allowIndexDowntime=true
+{
     "similarity": {
         "@odata.type": "#Microsoft.Azure.Search.BM25Similarity",
         "b" : 0.5,
         "k1" : 1.3
     }
-```
-
-Der Ähnlichkeitsalgorithmus kann nur zum Zeitpunkt der Indexerstellung festgelegt werden. Dies bedeutet, dass der verwendete Ähnlichkeitsalgorithmus für vorhandene Indizes nicht geändert werden kann. Die Parameter *„b“* und *„K1“* können geändert werden, wenn eine vorhandene Indexdefinition, die BM25 verwendet, aktualisiert wird. Die Änderung dieser Werte bei einem vorhandenen Index schaltet den Index für mindestens ein paar Sekunden offline, sodass Indizierungs- und Abfrageanforderungen nicht gelingen. Aus diesem Grund müssen Sie den Parameter „allowIndexDowntime=true“ in der Abfragezeichenfolge Ihrer Aktualisierungsanforderung festlegen:
-
-```http
-PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
+}
 ```
 
 ## <a name="see-also"></a>Weitere Informationen  

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: bf48f873127a12c3cabb28da33d34cedcda2793b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2ac7c3c2149ce43c860c7726381733ef377de8d3
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831565"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530738"
 ---
 # <a name="examine-the-video-indexer-output"></a>Überprüfen der Video Indexer-Ausgabe
 
@@ -104,7 +104,7 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 |faces/animatedCharacters|Kann null oder mehr Gesichter enthalten. Ausführlichere Informationen finden Sie unter [faces/animatedCharacters](#facesanimatedcharacters).|
 |keywords|Kann null oder mehr Schlüsselwörter enthalten. Ausführlichere Informationen finden Sie unter [keywords](#keywords).|
 |sentiments|Kann null oder mehr Stimmungen enthalten. Ausführlichere Informationen finden Sie unter [sentiments](#sentiments).|
-|audioEffects| Kann null oder mehr Audioeffekte (audioEffects) enthalten. Ausführlichere Informationen finden Sie unter [audioEffects](#audioeffects).|
+|audioEffects| Kann null oder mehr Audioeffekte (audioEffects) enthalten. Ausführlichere Informationen finden Sie unter [audioEffects](#audioeffects-public-preview).|
 |Bezeichnungen| Kann null oder mehr Bezeichnungen enthalten. Weitere Informationen finden Sie unter [labels](#labels).|
 |brands| Kann null oder mehr Marken enthalten. Ausführlichere Informationen finden Sie unter [brands](#brands).|
 |statistics | Ausführlichere Informationen finden Sie unter [statistics](#statistics).|
@@ -181,7 +181,7 @@ Ein Gesicht kann eine ID, einen Namen, eine Miniaturansicht, andere Metadaten un
 |Bezeichnungen|Die Erkenntnis [labels](#labels).|
 |shots|Die Erkenntnis [shots](#shots).|
 |brands|Die Erkenntnis [brands](#brands).|
-|audioEffects|Die Erkenntnis [audioEffects](#audioeffects).|
+|audioEffects|Die Erkenntnis [audioEffects](#audioeffects-public-preview).|
 |sentiments|Die Erkenntnis [sentiments](#sentiments).|
 |visualContentModeration|Die Erkenntnis [visualContentModeration](#visualcontentmoderation).|
 |textualContentModeration|Die Erkenntnis [textualContentModeration](#textualcontentmoderation).|
@@ -590,26 +590,28 @@ Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennun
 |SpeakerLongestMonolog|Der längste Monolog des Sprechers. Falls der Sprecher bei seinem Monolog Sprechpausen einlegt, ist diese Zeit mit enthalten. Die Ruhephasen am Anfang und Ende des Monologs werden entfernt.| 
 |SpeakerTalkToListenRatio|Die Berechnung basiert auf der Zeit für den Monolog des Sprechers (ohne Sprechpausen) geteilt durch die Gesamtzeit des Videos. Der Zeitwert wird auf die dritte Dezimalstelle gerundet.|
 
-#### <a name="audioeffects"></a>audioEffects
+#### <a name="audioeffects-public-preview"></a>audioEffects (öffentliche Vorschau)
 
-|Name|BESCHREIBUNG|
+|Name|BESCHREIBUNG
 |---|---|
 |id|Die ID des Audioeffekts.|
-|type|Der Typ des Audioeffekts (z. B. Geklatsche, Sprache, Stille).|
-|instances|Eine Liste der Zeitbereiche, in denen dieser Audioeffekt vorkam.|
+|type|Der Typ des Audioeffekts.|
+|instances|Eine Liste der Zeitbereiche, in denen dieser Audioeffekt vorkam. Jedes Vorkommen weist ein Zuverlässigkeitsfeld auf.|
 
 ```json
 "audioEffects": [
 {
     "id": 0,
-    "type": "Clapping",
+    "type": "Siren",
     "instances": [
     {
+       "confidence": 0.87,
         "start": "00:00:00",
         "end": "00:00:03"
     },
     {
-        "start": "00:01:13",
+       "confidence": 0.87,
+       "start": "00:01:13",
         "end": "00:01:21"
     }
     ]

@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: d4bff4ee7980002d911426ed46ffef6fc28c43e9
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a0c8286b2fb36642723ae28b8bc88e9e49f8a8fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920745"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577953"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Behandeln von Fehlern und Ausnahmen in Azure Logic Apps
 
@@ -155,7 +155,7 @@ Diese Tabelle veranschaulicht, wie Logic Apps eine einheitliche zufällige Varia
 | 2 | max(interval, <*minimum-interval*>) | min(2 * interval, <*maximum-interval*>) |
 | 3 | max(2 * interval, <*minimum-interval*>) | min(4 * interval, <*maximum-interval*>) |
 | 4 | max(4 * interval, <*minimum-interval*>) | min(8 * interval, <*maximum-interval*>) |
-| ... | ... | ... |
+| .... | .... | .... |
 ||||
 
 <a name="control-run-after-behavior"></a>
@@ -362,7 +362,7 @@ Sie können die oben in diesem Artikel beschriebenen Ausdrücke verwenden, um un
 
 ## <a name="set-up-azure-monitor-logs"></a>Einrichten von Azure Monitor-Protokollen
 
-Die oben beschriebenen Muster eignen sich gut zum Behandeln von Fehlern und Ausnahmen in einer Ausführung, aber Sie können auch unabhängig von der eigentlichen Ausführung Fehler identifizieren und darauf reagieren. [Azure Monitor](../azure-monitor/overview.md) bietet eine einfache Möglichkeit zum Senden aller Workflowereignisse (einschließlich aller Ausführungs- und Aktionsstatus) an einen [Log Analytics-Arbeitsbereich](../azure-monitor/platform/data-platform-logs.md), ein [Azure-Speicherkonto](../storage/blobs/storage-blobs-overview.md) oder an [Azure Event Hubs](../event-hubs/event-hubs-about.md).
+Die oben beschriebenen Muster eignen sich gut zum Behandeln von Fehlern und Ausnahmen in einer Ausführung, aber Sie können auch unabhängig von der eigentlichen Ausführung Fehler identifizieren und darauf reagieren. [Azure Monitor](../azure-monitor/overview.md) bietet eine einfache Möglichkeit zum Senden aller Workflowereignisse (einschließlich aller Ausführungs- und Aktionsstatus) an einen [Log Analytics-Arbeitsbereich](../azure-monitor/logs/data-platform-logs.md), ein [Azure-Speicherkonto](../storage/blobs/storage-blobs-overview.md) oder an [Azure Event Hubs](../event-hubs/event-hubs-about.md).
 
 Sie können die Protokolle und Metriken überwachen oder mit einem von Ihnen bevorzugten Überwachungstool veröffentlichen, um jeweils den Ausführungsstatus auszuwerten. Eine mögliche Option ist das Streamen aller Ereignisse durch Event Hubs nach [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). In Stream Analytics können Sie Liveabfragen auf der Grundlage von Anomalien, Mittelwerten oder Fehlern aus den Diagnoseprotokollen schreiben. Sie können Stream Analytics zum Senden von Informationen an andere Datenquellen verwenden, etwa an Warteschlangen, Themen, SQL, Azure Cosmos DB oder Power BI.
 

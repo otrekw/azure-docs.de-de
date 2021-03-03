@@ -2,24 +2,21 @@
 title: Azure Cache for Redis als Event Grid-Quelle
 description: Hier werden die Eigenschaften beschrieben, die für Azure Cache for Redis-Ereignisse mit Azure Event Grid bereitgestellt werden.
 ms.topic: conceptual
-ms.date: 12/21/2020
+ms.date: 02/11/2021
 author: curib
 ms.author: cauribeg
-ms.openlocfilehash: f446f3f469a7404e6e74ba67ee24bf32578fe9d8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 1a2995bc9ef40cd4eab320ce1bb4c5faf61e0e6e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99056856"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371276"
 ---
 # <a name="azure-cache-for-redis-as-an-event-grid-source"></a>Azure Cache for Redis als Event Grid-Quelle
 
 In diesem Artikel werden die Eigenschaften und das Schema für Azure Cache for Redis-Ereignisse beschrieben.  Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md). 
 
-## <a name="event-grid-event-schema"></a>Event Grid-Ereignisschema
-
-### <a name="list-of-events-for-azure-cache-for-redis-rest-apis"></a>Liste der Ereignisse für Azure Cache for Redis-REST-APIs
-
+## <a name="available-event-types"></a>Verfügbare Ereignistypen
 Diese Ereignisse werden ausgelöst, wenn ein Client durch Aufrufen von Azure Cache for Redis-REST-APIs einen Export-, Import- oder Skalierungsvorgang ausführt. Das Patchingereignis wird durch ein Redis-Update ausgelöst.
 
  |Ereignisname |BESCHREIBUNG|
@@ -29,12 +26,10 @@ Diese Ereignisse werden ausgelöst, wenn ein Client durch Aufrufen von Azure Cac
  |**Microsoft.Cache.PatchingCompleted** |Wird ausgelöst, wenn das Patchen abgeschlossen ist. |
  |**Microsoft.Cache.ScalingCompleted** |Wird ausgelöst, wenn das Skalieren abgeschlossen ist. |
 
-<a name="example-event"></a>
-### <a name="the-contents-of-an-event-response"></a>Der Inhalt einer Ereignisantwort
+## <a name="example-event"></a>Beispielereignis
+Wenn ein Ereignis ausgelöst wird, sendet der Event Grid-Dienst Daten zum Ereignis an den Endpunkt, der über ein entsprechendes Abonnement verfügt. In diesem Abschnitt wird jeweils anhand eines Beispiels gezeigt, wie diese Daten für die Azure Cache for Redis-Ereignisse aussehen:
 
-Wenn ein Ereignis ausgelöst wird, sendet der Event Grid-Dienst Daten zum Ereignis an den Endpunkt, der über ein entsprechendes Abonnement verfügt.
-
-In diesem Abschnitt wird jeweils anhand eines Beispiels gezeigt, wie diese Daten für die Azure Cache for Redis-Ereignisse aussehen:
+# <a name="event-grid-event-schema"></a>[Event Grid-Ereignisschema](#tab/event-grid-event-schema)
 
 ### <a name="microsoftcachepatchingcompleted-event"></a>Ereignis „Microsoft.Cache.PatchingCompleted“
 
@@ -104,29 +99,126 @@ In diesem Abschnitt wird jeweils anhand eines Beispiels gezeigt, wie diese Daten
 "eventTime":"2020-12-09T21:50:19.9995668+00:00"}]
 ```
 
-### <a name="event-properties"></a>Ereigniseigenschaften
+# <a name="cloud-event-schema"></a>[Cloudereignisschema](#tab/cloud-event-schema)
+
+
+### <a name="microsoftcachepatchingcompleted-event"></a>Ereignis „Microsoft.Cache.PatchingCompleted“
+
+```json
+[{
+    "id": "9b87886d-21a5-4af5-8e3e-10c4b8dac73b",
+    "type": "Microsoft.Cache.PatchingCompleted",
+    "source": "/subscriptions/{subscription_id}/resourceGroups/{resource_group_name}/providers/Microsoft.Cache/Redis/{cache_name}",
+    "data": {
+        "name": "PatchingCompleted",
+        "timestamp": "2020-12-09T21:50:19.9995668+00:00",
+        "status": "Succeeded"
+    },
+    "subject": "PatchingCompleted",
+    "time": "2020-12-09T21:50:19.9995668+00:00",
+    "specversion": "1.0"
+}]
+```
+
+### <a name="microsoftcacheimportrdbcompleted-event"></a>Ereignis „Microsoft.Cache.ImportRDBCompleted“
+
+```json
+[{
+    "id": "9b87886d-21a5-4af5-8e3e-10c4b8dac73b",
+    "type": "Microsoft.Cache.ImportRDBCompleted",
+    "source": "/subscriptions/{subscription_id}/resourceGroups/{resource_group_name}/providers/Microsoft.Cache/Redis/{cache_name}",
+    "data": {
+        "name": "ImportRDBCompleted",
+        "timestamp": "2020-12-09T21:50:19.9995668+00:00",
+        "status": "Succeeded"
+    },
+    "subject": "ImportRDBCompleted",
+    "eventTime": "2020-12-09T21:50:19.9995668+00:00",
+    "specversion": "1.0"
+}]
+```
+
+### <a name="microsoftcacheexportrdbcompleted-event"></a>Ereignis „Microsoft.Cache.ExportRDBCompleted“
+
+```json
+[{
+    "id": "9b87886d-21a5-4af5-8e3e-10c4b8dac73b",
+    "type": "Microsoft.Cache.ExportRDBCompleted",
+    "source": "/subscriptions/{subscription_id}/resourceGroups/{resource_group_name}/providers/Microsoft.Cache/Redis/{cache_name}",
+    "data": {
+        "name": "ExportRDBCompleted",
+        "timestamp": "2020-12-09T21:50:19.9995668+00:00",
+        "status": "Succeeded"
+    },
+    "subject": "ExportRDBCompleted",
+    "time": "2020-12-09T21:50:19.9995668+00:00",
+    "specversion": "1.0"
+}]
+```
+
+### <a name="microsoftcachescalingcompleted"></a>Microsoft.Cache.ScalingCompleted
+
+```json
+[{
+    "id": "9b87886d-21a5-4af5-8e3e-10c4b8dac73b",
+    "type": "Microsoft.Cache.ScalingCompleted",
+    "source": "/subscriptions/{subscription_id}/resourceGroups/{resource_group_name}/providers/Microsoft.Cache/Redis/{cache_name}",
+    "data": {
+        "name": "ScalingCompleted",
+        "timestamp": "2020-12-09T21:50:19.9995668+00:00",
+        "status": "Succeeded"
+    },
+    "subject": "ScalingCompleted",
+    "time": "2020-12-09T21:50:19.9995668+00:00",
+    "specversion": "1.0"
+}]
+```
+
+---
+
+## <a name="event-properties"></a>Ereigniseigenschaften
+
+# <a name="event-grid-event-schema"></a>[Event Grid-Ereignisschema](#tab/event-grid-event-schema)
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| topic | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
-| data | Objekt (object) | Azure Cache for Redis-Ereignisdaten. |
-| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| `topic` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| `eventType` | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| `eventTime` | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| `id` | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| `data` | Objekt (object) | Azure Cache for Redis-Ereignisdaten. |
+| `dataVersion` | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| `metadataVersion` | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+
+
+# <a name="cloud-event-schema"></a>[Cloudereignisschema](#tab/cloud-event-schema)
+
+
+Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
+
+| Eigenschaft | type | BESCHREIBUNG |
+| -------- | ---- | ----------- |
+| `source` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| `type` | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| `time` | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| `id` | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| `data` | Objekt (object) | Azure Cache for Redis-Ereignisdaten. |
+| `specversion` | Zeichenfolge | Version der CloudEvents-Schemaspezifikation. |
+
+---
+
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| timestamp | Zeichenfolge | Der Zeitpunkt, an dem das Ereignis aufgetreten ist. |
-| name | Zeichenfolge | Der Name des Ereignisses. |
-| status | Zeichenfolge | Der Status des Ereignisses. Erfolgreich oder nicht erfolgreich. |
-
+| `timestamp` | Zeichenfolge | Der Zeitpunkt, an dem das Ereignis aufgetreten ist. |
+| `name` | Zeichenfolge | Der Name des Ereignisses. |
+| `status` | Zeichenfolge | Der Status des Ereignisses. Erfolgreich oder nicht erfolgreich. |
 
 ## <a name="quickstarts"></a>Schnellstarts
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c1e61e9434d96148fbce840f4bad7f6a3b2ecb6b
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 6e6ad96da5f5c7901fda1f041c55075552edecde
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202724"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720340"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Azure-Sicherheitsbaseline für Azure Stream Analytics
 
@@ -114,9 +114,9 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen von Ressourcenkonfigurationen und zum Erkennen von Änderungen an Ihren Stream Analytics-Ressourcen. Erstellen Sie in Azure Monitor Warnungen, die bei Änderungen an wichtigen Ressourcen ausgelöst werden.
 
-* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -138,7 +138,7 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Leitfaden**: Erfassen Sie Protokolle über Azure Monitor, um Sicherheitsdaten wie Überwachungsereignisse und Anforderungen zu aggregieren. Verwenden Sie Log Analytics-Arbeitsbereiche in Azure Monitor, um Analysen abzufragen und durchzuführen, und Azure Storage-Konten für die langfristige Speicherung bzw. Archivierung. Optional können Sie Sicherheitsfeatures wie den unveränderlichen Speicher und die erzwungene Aufbewahrung nutzen.
 
-* [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+* [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -168,9 +168,9 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 * [Azure Stream Analytics stellt Diagnoseprotokolle und Aktivitätsdaten zur Überprüfung bereit](./stream-analytics-job-diagnostic-logs.md)
 
-* [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../storage/common/storage-monitor-storage-account.md#configure-logging)
+* [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
-* [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -182,9 +182,9 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 * [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [Weitere Informationen zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Weitere Informationen zum Log Analytics-Arbeitsbereich](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -196,7 +196,7 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 * [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/learn/tutorial-response.md)
+* [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/alerts/tutorial-response.md)
 
 * [Azure Stream Analytics stellt Diagnoseprotokolle und Aktivitätsdaten zur Überprüfung bereit](./stream-analytics-job-diagnostic-logs.md)
 
@@ -474,7 +474,7 @@ Bei der zugrundeliegenden Plattform, die von Microsoft verwaltet wird, behandelt
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen zu erstellen, die bei Änderungen an Produktionsinstanzen von Azure Stream Analytics-Ressourcen ausgegeben werden.
 
-* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 

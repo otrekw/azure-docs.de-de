@@ -1,23 +1,23 @@
 ---
 title: Überwachen von delegierten Ressourcen in beliebigem Umfang
 description: Erfahren Sie, wie Sie Azure Monitor-Protokolle für alle von Ihnen verwalteten Mandanten auf skalierbare Weise verwenden.
-ms.date: 02/02/2021
+ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 8847c2e5ee4986d35ad676440720b150794003e8
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 98fd984492276dbdfbc2f8001bca19560764a2a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575905"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742584"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Überwachen von delegierten Ressourcen in beliebigem Umfang
 
 Als Dienstanbieter haben Sie möglicherweise mehrere Kundenmandanten in [Azure Lighthouse](../overview.md) integriert. Azure Lighthouse ermöglicht Dienstanbietern das gleichzeitige Ausführen von skalierbaren Vorgängen für mehrere Mandanten, wodurch Verwaltungsaufgaben effizienter werden.
 
-In diesem Thema erfahren Sie, wie Sie [Azure Monitor-Protokolle](../../azure-monitor/platform/data-platform-logs.md) für alle von Ihnen verwalteten Mandanten auf skalierbare Weise verwenden. Zwar beziehen wir uns in diesem Thema auf Dienstanbieter und Kunden, doch gelten diese Anweisungen auch für [Unternehmen, die Azure Lighthouse zum Verwalten mehrerer Mandanten verwenden](../concepts/enterprise.md).
+In diesem Thema erfahren Sie, wie Sie [Azure Monitor-Protokolle](../../azure-monitor/logs/data-platform-logs.md) für alle von Ihnen verwalteten Mandanten auf skalierbare Weise verwenden. Zwar beziehen wir uns in diesem Thema auf Dienstanbieter und Kunden, doch gelten diese Anweisungen auch für [Unternehmen, die Azure Lighthouse zum Verwalten mehrerer Mandanten verwenden](../concepts/enterprise.md).
 
 > [!NOTE]
-> Sorgen Sie dafür, dass Benutzern in Ihren Verwaltungsmandanten die [erforderlichen Rollen für die Verwaltung von Log Analytics-Arbeitsbereichen](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions) für Ihre delegierten Kundenabonnements zugeteilt wurden.
+> Sorgen Sie dafür, dass Benutzern in Ihren Verwaltungsmandanten die [erforderlichen Rollen für die Verwaltung von Log Analytics-Arbeitsbereichen](../../azure-monitor/logs/manage-access.md#manage-access-using-azure-permissions) für Ihre delegierten Kundenabonnements zugeteilt wurden.
 
 ## <a name="create-log-analytics-workspaces"></a>Erstellen von Log Analytics-Arbeitsbereichen
 
@@ -28,7 +28,7 @@ Es wird empfohlen, diese Arbeitsbereiche direkt in den Kundenmandanten zu erstel
 > [!TIP]
 > Alle Automation-Konten, die für den Zugriff auf Daten aus einem Log Analytics-Arbeitsbereich verwendet werden, müssen im gleichen Mandanten wie der Arbeitsbereich erstellt werden.
 
-Sie können einen Log Analytics-Arbeitsbereich im [Azure-Portal](../../azure-monitor/learn/quick-create-workspace.md), über die [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md) oder mit [Azure PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) erstellen.
+Sie können einen Log Analytics-Arbeitsbereich im [Azure-Portal](../../azure-monitor/logs/quick-create-workspace.md), über die [Azure CLI](../../azure-monitor/logs/quick-create-workspace-cli.md) oder mit [Azure PowerShell](../../azure-monitor/logs/powershell-workspace-configuration.md) erstellen.
 
 > [!IMPORTANT]
 > Selbst wenn alle Arbeitsbereiche im Mandanten des Kunden erstellt werden, muss der Microsoft.Insights-Ressourcenanbieter auch für ein Abonnement im Verwaltungsmandanten registriert werden.
@@ -43,13 +43,13 @@ Wenn Sie festgelegt haben, welche Richtlinien Sie bereitstellen möchten, könne
 
 ## <a name="analyze-the-gathered-data"></a>Analysieren der gesammelten Daten
 
-Nachdem Sie Ihre Richtlinien bereitgestellt haben, werden Daten in die Log Analytics-Arbeitsbereiche protokolliert, die Sie in den jeweiligen Kundenmandanten erstellt haben. Um Einblicke in alle verwalteten Kunden zu erhalten, können Sie mithilfe von Tools wie [Azure Monitor-Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md) Informationen aus mehreren Datenquellen erfassen und analysieren.
+Nachdem Sie Ihre Richtlinien bereitgestellt haben, werden Daten in die Log Analytics-Arbeitsbereiche protokolliert, die Sie in den jeweiligen Kundenmandanten erstellt haben. Um Einblicke in alle verwalteten Kunden zu erhalten, können Sie mithilfe von Tools wie [Azure Monitor-Arbeitsmappen](../../azure-monitor/visualize/workbooks-overview.md) Informationen aus mehreren Datenquellen erfassen und analysieren.
 
 ## <a name="view-alerts-across-customers"></a>Anzeigen von Warnungen für mehrere Kunden
 
-Sie können [Warnungen](../../azure-monitor/platform/alerts-overview.md) für die delegierten Abonnements in den von Ihnen verwalteten Kundenmandanten anzeigen.
+Sie können [Warnungen](../../azure-monitor/alerts/alerts-overview.md) für die delegierten Abonnements in den von Ihnen verwalteten Kundenmandanten anzeigen.
 
-Von Ihrem verwaltenden Mandanten aus können Sie [Aktivitätsprotokollwarnungen im Azure-Portal oder über APIs und Verwaltungstools erstellen, anzeigen und verwalten](../../azure-monitor/platform/alerts-activity-log.md).
+Von Ihrem verwaltenden Mandanten aus können Sie [Aktivitätsprotokollwarnungen im Azure-Portal oder über APIs und Verwaltungstools erstellen, anzeigen und verwalten](../../azure-monitor/alerts/alerts-activity-log.md).
 
 Filtern Sie die Warnungen mit einer [Azure Resource Graph](../../governance/resource-graph/overview.md)-Abfrage, um die Warnungen für mehrere Kunden zu aktualisieren. Sie können die Abfrage an Ihr Dashboard anheften und alle zugehörigen Kunden und Abonnements auswählen. Mit der folgenden Abfrage werden z. B. Warnungen mit den Schweregraden 0 und 1 angezeigt, die alle 60 Minuten aktualisiert werden.
 
@@ -65,7 +65,6 @@ alertsmanagementresources
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Testen Sie die [Arbeitsmappe mit Aktivitätsprotokollen nach Domäne](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) auf GitHub.
 - Erkunden Sie diese [von MVP erstellte Beispielarbeitsmappe](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks), die die Berichterstellung für die Patchkompatibilität nachverfolgt, indem über mehrere Log Analytics-Arbeitsbereiche hinweg [Updateverwaltungsprotokolle abgefragt werden](../../automation/update-management/query-logs.md). 
-- Weitere Informationen finden Sie unter [Azure Monitor](../../azure-monitor/index.yml).
-- Erfahren Sie mehr über [Azure Monitor-Protokolle](../../azure-monitor/platform/data-platform-logs.md).
-- Erfahren Sie über [Mandantenübergreifende Verwaltungsmöglichkeiten](../concepts/cross-tenant-management-experience.md).
+- Machen Sie sich mit weiteren [mandantenübergreifenden Verwaltungsmöglichkeiten](../concepts/cross-tenant-management-experience.md) vertraut.

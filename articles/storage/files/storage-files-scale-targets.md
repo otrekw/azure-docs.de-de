@@ -4,67 +4,101 @@ description: Informationen zu den Skalierbarkeits- und Leistungszielen für Azur
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e10f45af89e19f6fe62ff729f96d870e008c96ec
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 6ef255d78d3dd3ff6fcc5eba7aad522018185299
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611099"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518894"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
+[Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über die SMB- und NFS-Dateisystemprotokolle zugegriffen werden kann. Dieser Artikel behandelt die Skalierbarkeits- und Leistungsziele für Azure Files und Azure-Dateisynchronisierung.
 
-[Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll SMB zugegriffen werden kann. Dieser Artikel behandelt die Skalierbarkeits- und Leistungsziele für Azure Files und Azure-Dateisynchronisierung.
-
-Die hier aufgelisteten Ziele für Skalierbarkeit und Leistung sind hochgesteckt, können jedoch von anderen Variablen in Ihrer Bereitstellung beeinflusst werden. Beispielsweise kann der Durchsatz für eine Datei auch durch die verfügbare Netzwerkbandbreite und nicht nur durch die Server begrenzt sein, die den Azure Files-Dienst hosten. Wir empfehlen Ihnen ausdrücklich, Ihr Nutzungsverhalten zu testen, um festzustellen, ob Skalierbarkeit und Leistung von Azure Files Ihren Anforderungen entspricht. Wir verpflichten uns auch, diese Grenzwerte mit der Zeit zu erhöhen. Zögern Sie nicht, uns entweder in den Kommentaren unten oder über [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) Feedback dazu zu geben, welche Grenzwerte wir für Sie erhöhen sollen.
-
-## <a name="azure-storage-account-scale-targets"></a>Skalierbarkeitsziele für das Azure-Speicherkonto
-
-Die übergeordnete Ressource einer Azure-Dateifreigabe ist ein Azure-Speicherkonto. Ein Speicherkonto stellt einen Speicherpool in Azure dar, der von mehreren Speicherdiensten, einschließlich Azure Files, zum Speichern von Daten verwendet werden kann. Andere Dienste, die Daten in Speicherkonten speichern, sind Azure Blob Storage, Azure Queue Storage und Azure Table Storage. Die folgenden Ziele gelten für alle Speicherdienste, die Daten in einem Speicherkonto speichern:
-
-[!INCLUDE [azure-storage-account-limits-standard](../../../includes/azure-storage-account-limits-standard.md)]
-
-[!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
-
-> [!Important]  
-> Die Belegung von allgemeinen Speicherkonten durch andere Speicherdienste wirkt sich auf die Azure-Dateifreigaben in Ihrem Speicherkonto aus. Wenn Sie z.B. mit Azure Blob Storage die maximale Speicherkapazität erreichen, können Sie in Ihrer Azure-Dateifreigabe keine neuen Dateien erstellen, auch wenn Ihre Azure-Dateifreigabe kleiner als die maximale Freigabegröße ist.
+Die hier aufgelisteten Ziele für Skalierbarkeit und Leistung sind hochgesteckt, können jedoch von anderen Variablen in Ihrer Bereitstellung beeinflusst werden. Beispielsweise kann der Durchsatz für eine Datei auch durch die verfügbare Netzwerkbandbreite und nicht nur durch die Server begrenzt sein, die Ihre Azure-Dateifreigaben hosten. Wir empfehlen Ihnen ausdrücklich, Ihr Nutzungsverhalten zu testen, um festzustellen, ob Skalierbarkeit und Leistung von Azure Files Ihren Anforderungen entspricht. Wir verpflichten uns auch, diese Grenzwerte mit der Zeit zu erhöhen. 
 
 ## <a name="azure-files-scale-targets"></a>Skalierbarkeitsziele für Azure Files
+Azure-Dateifreigaben werden in Speicherkonten bereitgestellt, bei denen es sich um Objekte der obersten Ebene handelt, die einen freigegebenen Speicherpool darstellen. Dieser Speicherpool kann verwendet werden, um mehrere Dateifreigaben bereitzustellen. Es gibt also drei Kategorien zu beachten: Speicherkonten, Azure-Dateifreigaben und Dateien.
 
-Es gibt drei Kategorien von Einschränkungen, die für Azure Files zu berücksichtigen sind: Speicherkonten, Freigaben und Dateien.
+### <a name="storage-account-scale-targets"></a>Skalierbarkeitsziele für Speicherkonten
+Azure unterstützt mehrere Arten von Speicherkonten für unterschiedliche Kundenszenarien, aber es gibt zwei Hauptarten von Speicherkonten für Azure Files. Welche Art von Speicherkonto Sie erstellen müssen, hängt davon ab, ob Sie eine Standard- oder Premium-Dateifreigabe erstellen möchten: 
 
-Beispiel: Bei Premium-Dateifreigaben kann eine einzige Freigabe einen IOPS-Wert von 100.000 erreichen, und eine einzelne Datei kann bis zu 5.000 IOPS hochskaliert werden. Wenn Sie drei Dateien in einer Freigabe haben, entspricht der maximale IOPS-Wert aus dieser Freigabe 15.000.
+- **Speicherkonten vom Typ „Universell Version 2 (GPv2)“** : GPv2-Speicherkonten ermöglichen Ihnen die Bereitstellung von Azure-Dateifreigaben auf Standard- bzw. festplattenbasierter Hardware (HDD-basiert). Neben Azure-Dateifreigaben können in GPv2-Speicherkonten auch andere Speicherressourcen wie Blobcontainer, Warteschlangen oder Tabellen gespeichert werden. Dateifreigaben können auf den transaktionsoptimierten (Standardeinstellung), heißen und kalten Ebenen bereitgestellt werden.
 
-### <a name="standard-storage-account-limits"></a>Begrenzungen beim Standard-Speicherkonto
+- **FileStorage-Speicherkonten**: FileStorage-Speicherkonten ermöglichen Ihnen die Bereitstellung von Azure-Dateifreigaben auf SSD-basierter Hardware (Premium/Solid State Drive). FileStorage-Konten können nur zum Speichern von Azure-Dateifreigaben verwendet werden. In einem FileStorage-Konto können keine anderen Speicherressourcen (Blobcontainer, Warteschlangen, Tabellen usw.) bereitgestellt werden.
 
-Diese Grenzwerte finden Sie im Abschnitt [Skalierbarkeitsziele für das Azure-Speicherkonto](#azure-storage-account-scale-targets).
+| attribute | GPv2-Speicherkonten (Standard) | FileStorage-Speicherkonten (Premium) |
+|-|-|-|
+| Anzahl von Speicherkonten pro Region und Abonnement | 250 | 250 |
+| Maximale Speicherkontokapazität | 5 PiB<sup>1</sup> | 100 TiB (bereitgestellt) |
+| Maximale Anzahl der Dateifreigaben | Unbegrenzt | Unbegrenzt, die gesamte bereitgestellte Größe aller Freigaben muss kleiner sein als die maximale Speicherkontokapazität. |
+| Rate für maximale Anzahl von gleichzeitigen Anforderungen | 20.000 IOPS<sup>1</sup> | 100.000 IOPS |
+| Maximaler Eingang | <ul><li>USA/Europa: 10 GBP/s<sup>1</sup></li><li>Andere Regionen (LRS/ZRS): 10 GBP/s<sup>1</sup></li><li>Andere Regionen (GRS): 5 GBP/s<sup>1</sup></li></ul> | 4\.136 MiB/s |
+| Maximaler Ausgang | 50 GBP/s<sup>1</sup> | 6\.204 MiB/s |
+| Maximale Anzahl von Regeln für virtuelle Netzwerke | 200 | 200 |
+| Maximale Anzahl von IP-Adressregeln | 200 | 200 |
+| Lesevorgänge für die Verwaltung | 800 pro 5 Minuten | 800 pro 5 Minuten |
+| Schreibvorgänge für die Verwaltung | 10 pro Sekunde/1200 pro Stunde | 10 pro Sekunde/1200 pro Stunde |
+| Listenvorgänge für die Verwaltung | 100 pro 5 Minuten | 100 pro 5 Minuten |
 
-### <a name="premium-filestorage-account-limits"></a>Grenzwerte für FileStorage Premium-Konten
+<sup>1</sup> Speicherkonten vom Typ „Universell, Version 2“ unterstützen höhere Grenzwerte für Kapazität und Eingang auf Anforderung. Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/faq/), um eine Erhöhung der Kontogrenzwerte anzufordern.
 
-[!INCLUDE [azure-storage-limits-filestorage](../../../includes/azure-storage-limits-filestorage.md)]
+### <a name="azure-file-share-scale-targets"></a>Skalierbarkeitsziele für Azure-Dateifreigaben
+| attribute | Standard-Dateifreigaben <sup>1</sup> | Premium-Dateifreigaben |
+|-|-|-|
+| Mindestgröße einer Dateifreigabe | Keine Mindestanforderungen | 100 GiB (bereitgestellt) |
+| Einheit für Erhöhung/Verringerung der bereitgestellten Größe | Nicht zutreffend | 1 GiB |
+| Maximale Größe einer Dateifreigabe | <ul><li>100 TiB, mit aktiviertem Feature für große Dateifreigaben<sup>2</sup></li><li>5 TiB, Standard</li></ul> | ca. 100 TiB |
+| Maximale Anzahl an Dateien in einer Dateifreigabe | Keine Begrenzung | Keine Begrenzung |
+| Maximale Anforderungsrate (max. IOPS) | <ul><li>10.000 TiB, mit aktiviertem Feature für große Dateifreigaben<sup>2</sup></li><li>1\.000 oder 100 Anforderungen pro 100 ms, Standard</li></ul> | <ul><li>IOPS-Grundwert 400 + 1 IOPS pro GiB, bis zu 100.000</li><li>IOPS-Bursting: Max. (4.000, 3 × IOPS pro GiB), bis zu 100.000</li></ul> |
+| Maximaler Eingang für eine einzelne Dateifreigabe | <ul><li>Bis zu 300 MiB/s, mit aktiviertem Feature für große Dateifreigaben<sup>2</sup></li><li>Bis zu 60 MiB/s, Standard</li></ul> | 40 MiB/s + 0,04 * bereitgestelltes GiB |
+| Maximaler Ausgang für eine einzelne Dateifreigabe | <ul><li>Bis zu 300 MiB/s, mit aktiviertem Feature für große Dateifreigaben<sup>2</sup></li><li>Bis zu 60 MiB/s, Standard</li></ul> | 60 MiB/s + 0,06 * bereitgestelltes GiB |
+| Maximale Anzahl von Freigabemomentaufnahmen | 200 Momentaufnahmen | 200 Momentaufnahmen |
+| Maximale Objektnamenlänge (Verzeichnisse und Dateien) | 2\.048 Zeichen | 2\.048 Zeichen |
+| Maximale Pfadnamenkomponente (im Pfad \A\B\C\D ist jeder Buchstabe eine Komponente) | 255 Zeichen | 255 Zeichen |
+| Grenzwert für feste Links (nur NFS) | – | 178 |
+| Maximale Anzahl von SMB Multichannel-Kanälen | N/V | 4 |
+| Maximale Anzahl gespeicherter Zugriffsrichtlinien pro Dateifreigabe | 5 | 5 |
 
-> [!IMPORTANT]
-> Die Einschränkungen für Speicherkonten gelten für alle Freigaben. Zentrales Hochskalieren bis zum Maximalwert für FileStorage-Konten ist nur möglich, wenn es nur eine Freigabe pro FileStorage-Konto gibt.
+<sup>1</sup> Die Grenzwerte für Standarddateifreigaben gelten für alle drei Dienstebenen, die für Standarddateifreigaben verfügbar sind: transaktionsoptimiert, heiß und kalt.
 
-### <a name="file-share-and-file-scale-targets"></a>Skalierungsziele für Dateifreigaben und Dateien
+<sup>2</sup> Der Standardwert für Standarddateifreigaben beträgt 5 TiB. Ausführliche Informationen zum Hochskalieren von Standarddateifreigaben auf bis zu 100 TiB finden Sie unter [Aktivieren und Erstellen großer Dateifreigaben](./storage-files-how-to-create-large-file-share.md).
 
-> [!NOTE]
-> Für Standarddateifreigaben über 5 TiB gelten bestimmte Einschränkungen. Eine Liste der Einschränkungen und Anweisungen dazu, wie Sie Dateifreigaben vergrößern, finden Sie im Abschnitt [Aktivieren größerer Dateifreigaben für Standarddateifreigaben](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) des Planungshandbuchs.
+### <a name="file-scale-targets"></a>Dateiskalierbarkeitsziele
+| attribute | Dateien in Standard-Dateifreigaben  | Dateien in Premium-Dateifreigaben  |
+|-|-|-|
+| Maximale Dateigröße | 4 TiB | 4 TiB |
+| Rate für maximale Anzahl von gleichzeitigen Anforderungen | 1.000IOPS | Bis zu 8.000<sup>1</sup> |
+| Maximaler Eingang für eine Datei | 60 MiB/s | 200 MiB/s (bis zu 1 GiB/s bei SMB Multichannel Vorschau)<sup>2</sup>|
+| Maximaler Ausgang für eine Datei | 60 MiB/s | 300 MiB/s (bis zu 1 GiB/s bei SMB Multichannel Vorschau)<sup>2</sup> |
+| Maximale Anzahl gleichzeitiger Handles | 2\.000 Handles | 2\.000 Handles  |
 
-[!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
-
-[!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
+<sup>1 Gilt für E/A-Vorgänge zum Lesen und Schreiben (typischerweise kleinere E/A-Größen, die kleiner oder gleich 64 KiB sind). Metadatenvorgänge (außer Lese-und Schreibvorgängen) können niedriger sein.</sup>
+<sup>2 Unterliegen Netzwerkgrenzwerten für Computer, verfügbarer Bandbreite, E/A-Größen, Warteschlangenlänge und anderen Faktoren. Weitere Informationen finden Sie unter [SMB Multichannel-Leistung](./storage-files-smb-multichannel-performance.md).</sup>
 
 ## <a name="azure-file-sync-scale-targets"></a>Skalierbarkeitsziele für die Azure-Dateisynchronisierung
+Die folgende Tabelle gibt an, welche Grenzen für Tests von Microsoft gelten und welche Ziele feste Grenzwerte sind:
 
-Azure-Dateisynchronisierung wurde mit dem Ziel der unbegrenzten Nutzung entwickelt, aber unbegrenzte Nutzung ist nicht immer möglich. Die folgende Tabelle gibt an, welche Grenzen für Tests von Microsoft gelten und welche Ziele feste Grenzwerte sind:
+| Resource | Ziel | Harte Grenze |
+|----------|--------------|------------|
+| Speichersynchronisierungsdienste pro Region | 100 Speichersynchronisierungsdienste | Ja |
+| Synchronisierungsgruppen pro Speichersynchronisierungsdienst | 200 Synchronisierungsgruppen | Ja |
+| Registrierte Server pro Speichersynchronisierungsdienst | 99 Server | Ja |
+| Cloudendpunkte pro Synchronisierungsgruppe | 1 Cloudendpunkt | Ja |
+| Serverendpunkte pro Synchronisierungsgruppe | 100 Serverendpunkte | Ja |
+| Serverendpunkte pro Server | 30 Serverendpunkte | Ja |
+| Dateisystemobjekte (Verzeichnisse und Dateien) pro Synchronisierungsgruppe | 100 Millionen Objekte | Nein |
+| Maximale Anzahl von Dateisystemobjekten (Verzeichnisse und Dateien) in einem Verzeichnis | 5 Millionen Objekte | Ja |
+| Maximale Sicherheitsbeschreibung des Objekts (Verzeichnisse und Dateien) | 64 KiB | Ja |
+| Dateigröße | 100 GB | Nein |
+| Minimale Dateigröße für die Unterteilung einer Datei | V9 und höher: Basiert auf der Größe des Dateisystemclusters (doppelte Größe des Dateisystemclusters). Wenn die Größe des Dateisystemclusters z. B. 4 KiB beträgt, ist die minimale Dateigröße 8 KiB.<br> V8 und älter: 64 KiB  | Ja |
 
-[!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
+> [!Note]  
+> Ein Endpunkt für Azure-Dateisynchronisierung kann auf die Größe einer Azure-Dateifreigabe hochskaliert werden. Wenn die maximale Größe der Azure-Dateifreigabe erreicht ist, kann keine Synchronisierung durchgeführt werden.
 
 ### <a name="azure-file-sync-performance-metrics"></a>Leistungsmetriken der Azure-Dateisynchronisierung
-
 Da der Azure-Dateisynchronisierungs-Agent auf einem Windows Server-Computer ausgeführt wird, der mit den Azure-Dateifreigaben verbunden wird, hängt die effektive Synchronisierungsleistung von einer Reihe von Faktoren in Ihrer Infrastruktur ab: von Windows Server und der zugrunde liegenden Datenträgerkonfiguration, der Netzwerkbandbreite zwischen dem Server und Azure Storage, der Dateigröße, der gesamten Datasetgröße und der Aktivität im Dataset. Da die Azure-Dateisynchronisierung auf Dateiebene ausgeführt wird, werden die Leistungsmerkmale einer auf der Azure-Dateisynchronisierung basierenden Lösung besser in der Anzahl von Objekten (Dateien und Verzeichnisse) gemessen, die pro Sekunde verarbeitet werden.
 
 Bei der Azure-Dateisynchronisierung ist die Leistung in zwei Phasen entscheidend:
@@ -92,14 +126,12 @@ Wenn Sie die Bereitstellung für jede der Phasen planen, sehen Sie sich im Folge
 | Durchsatz beim Download von Namespaces | 400 Objekte pro Sekunde |
 
 ### <a name="initial-one-time-provisioning"></a>Erste einmalige Bereitstellung
-
 **Anfängliche Enumeration von Cloudänderungen**: Wenn eine neue Synchronisierungsgruppe erstellt wird, ist die anfängliche Enumeration von Cloudänderungen der erste durchgeführte Schritt. In diesem Prozess listet das System alle Elemente in der Azure-Dateifreigabe auf. Während dieses Prozesses findet keine Synchronisierungsaktivität statt. Es werden also keine Elemente vom Cloudendpunkt auf den Serverendpunkt heruntergeladen und keine Elemente vom Serverendpunkt auf den Cloudendpunkt hochgeladen. Die Synchronisierungsaktivität beginnt erst, wenn die anfängliche Enumeration von Cloudänderungen abgeschlossen ist.
 Der Durchsatz liegt bei 20 Objekten pro Sekunde. Kunden können die Dauer der anfänglichen Enumeration von Cloudänderungen schätzen, indem sie die Anzahl von Elementen in der Cloudfreigabe bestimmen und den Zeitraum (in Tagen) anhand der folgenden Formel berechnen. 
 
    **Zeitraum (in Tagen) für die anfängliche Cloudenumeration = (Anzahl von Objekten am Cloudendpunkt) / (20 × 60 × 60 × 24)**
 
 **Durchsatz beim Download von Namespaces**: Wenn einer vorhandenen Synchronisierungsgruppe ein neuer Serverendpunkt hinzugefügt wird, lädt der Azure-Dateisynchronisierungs-Agent keine Dateiinhalte vom Cloudendpunkt herunter. Zuerst synchronisiert er den vollständigen Namespace und löst dann im Hintergrund einen Rückruf aus, um die Dateien herunterzuladen, entweder in ihrer Gesamtheit oder bei aktiviertem Cloudtiering in der Cloudtieringrichtliniengruppe für den Serverendpunkt.
-
 
 | Laufende Synchronisierung  | Details  |
 |-|--|
@@ -120,6 +152,5 @@ Als allgemeine Richtlinie für Ihre Bereitstellung sollten Sie einige Dinge ber�
 - Der Objektdurchsatz ist umgekehrt proportional zum Durchsatz in MiB pro Sekunde. Bei kleineren Dateien tritt ein höherer Durchsatz im Hinblick auf die Anzahl der verarbeiteten Objekte pro Sekunde auf, jedoch einen niedrigeren Durchsatz in MiB pro Sekunde aufweist. Im Gegensatz dazu werden bei größeren Dateien weniger Objekte pro Sekunde verarbeitet, dafür jedoch ein höherer Durchsatz in MiB pro Sekunde erzielt. Der Durchsatz in MiB pro Sekunde wird durch die Azure Files-Skalierungsziele beschränkt.
 
 ## <a name="see-also"></a>Weitere Informationen
-
 - [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md)
 - [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)

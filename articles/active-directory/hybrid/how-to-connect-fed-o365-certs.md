@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78dcd9d020923251439a05316569b559c19057d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: effdd156858caf5717aac92433e8bc5f4f6147ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89661458"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686868"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Erneuern von Verbundzertifikaten für Microsoft 365 und Azure Active Directory
 ## <a name="overview"></a>Übersicht
@@ -157,7 +157,7 @@ Wenn **AutoCertificateRollover** auf **True** festgelegt ist, aber Ihre Verbundm
    >
 3. Sehen Sie sich in der Ausgabe des Befehls die aufgeführten Zertifikate an. Wenn AD FS ein neues Zertifikat generiert hat, sollten Sie zwei Zertifikate in der Ausgabe sehen: Bei einem ist der **IsPrimary**-Wert **True** und das **NotAfter**-Datum liegt innerhalb von 5 Tagen, und beim anderen ist der **IsPrimary**-Wert **False** und das **NotAfter**-Datum liegt etwa ein Jahr in der Zukunft.
 4. Wenn nur ein Zertifikat angezeigt wird und das **NotAfter** -Datum innerhalb von 5 Tagen liegt, müssen Sie ein neues Zertifikat generieren.
-5. Um ein neues Zertifikat zu generieren, führen Sie an einer PowerShell-Eingabeaufforderung den folgenden Befehl aus: `PS C:\>Update-ADFSCertificate –CertificateType token-signing`.
+5. Um ein neues Zertifikat zu generieren, führen Sie an einer PowerShell-Eingabeaufforderung den folgenden Befehl aus: `PS C:\Update-ADFSCertificate –CertificateType token-signing`.
 6. Überprüfen Sie das Update, indem Sie den folgenden Befehl erneut ausführen: PS C:\>Get-ADFSCertificate –CertificateType token-signing
 
 Nun sollten zwei Zertifikate aufgeführt werden, bei denen das **NotAfter**-Datum in etwa ein Jahr in der Zukunft liegt und bei dem der **IsPrimary**-Wert **False** lautet.

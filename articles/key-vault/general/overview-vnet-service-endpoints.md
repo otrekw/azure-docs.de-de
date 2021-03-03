@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 4a817f386d68c144968540dd05f3fa6859bb0acc
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 42d388aed618a5a92212152166573719c9e973c6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704168"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371021"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>VNET-Dienstendpunkte für Azure Key Vault
 
@@ -52,6 +52,7 @@ Es folgt eine Liste der vertrauenswürdigen Dienste, denen Zugriff auf einen Sch
 |Azure SQL-Datenbank|[Transparent Data Encryption mit BYOK-Unterstützung (Bring Your Own Key) für Azure SQL-Datenbank und Azure Synapse Analytics](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&preserve-view=true&viewFallbackFrom=azuresqldb-current).|
 |Azure Storage|[Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault](../../storage/common/customer-managed-keys-configure-key-vault.md).|
 |Azure Data Lake Store|[Datenverschlüsselung in Azure Data Lake Store](../../data-lake-store/data-lake-store-encryption.md) mit von Kunden verwalteten Schlüsseln.|
+|Azure Synapse Analytics|[Verschlüsselung mit kundenseitig verwalteten Schlüsseln in Azure Key Vault](../../synapse-analytics/security/workspaces-encryption.md)|
 |Azure Databricks|[Ein schneller, einfacher und kollaborativer Analysedienst auf Basis von Apache Spark](/azure/databricks/scenarios/what-is-azure-databricks)|
 |Azure API Management|[Verwenden der verwalteten Dienstidentität für den Zugriff auf andere Ressourcen](../../api-management/api-management-howto-use-managed-service-identity.md#use-ssl-tls-certificate-from-azure-key-vault)|
 |Azure Data Factory|[Abrufen von Anmeldeinformationen für den Datenspeicher in Key Vault aus Data Factory](https://go.microsoft.com/fwlink/?linkid=2109491)|

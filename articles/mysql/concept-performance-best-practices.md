@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 46c7952247babd528b230dfa0e70b0eb47878912
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 7b5223bc08c470a0e8722b76b80473aaa235b51a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99217753"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727157"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>Best Practices für eine optimale Leistung von Azure Database for MySQL: Einzelserver
 
@@ -65,7 +65,7 @@ Es wird empfohlen, die Neustartzeit zu testen und zu überwachen, um sicherzuste
 Wenn Sie den Zustand des Pufferpools beim Herunterfahren des Servers speichern möchten, legen Sie den Serverparameter `innodb_buffer_pool_dump_at_shutdown` auf `ON` fest. Legen Sie analog dazu den Serverparameter `innodb_buffer_pool_load_at_startup` auf `ON` fest, um den Pufferpoolzustand beim Serverstart wiederherzustellen. Sie können die Auswirkung auf die Start-/Neustartdauer steuern, indem Sie den Wert des Serverparameters `innodb_buffer_pool_dump_pct` verringern und optimieren. Dieser Parameter ist standardmäßig auf `25` festgelegt.
 
 > [!Note]
-> Die Parameter zum Aufwärmen des InnoDB-Pufferpools werden nur auf universellen Speicherservern mit maximal 16 TB Speicher unterstützt. Weitere Informationen zu Speicheroptionen für Azure Database for MySQL finden Sie [hier](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage).
+> Die Parameter zum Aufwärmen des InnoDB-Pufferpools werden nur auf universellen Speicherservern mit maximal 16 TB Speicher unterstützt. Weitere Informationen zu Speicheroptionen für Azure Database for MySQL finden Sie [hier](./concepts-pricing-tiers.md#storage).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

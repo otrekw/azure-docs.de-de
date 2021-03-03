@@ -12,21 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/22/2020
 ms.author: apimpm
-ms.openlocfilehash: a8ed834c9ab093ae063e386978bca4d73fa46543
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 2e45d1274cf7332dbca70eaa8fc51f0ac98e5359
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400725"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648015"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>Debuggen von Azure API Management-Richtlinien in Visual Studio Code
 
 [Richtlinien](api-management-policies.md) in Azure API Management bieten leistungsstarke Funktionen, die API-Verlegern dabei helfen, übergreifende Aspekte wie Authentifizierung, Autorisierung, Drosselung, Zwischenspeicherung und Transformation zu behandeln. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. 
 
 In diesem Artikel wird beschrieben, wie Sie API Management-Richtlinien mithilfe der [Azure API Management-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement) debuggen. 
-
-> [!NOTE]
-> Dieses Feature befindet sich in der Phase der öffentlichen Vorschau.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

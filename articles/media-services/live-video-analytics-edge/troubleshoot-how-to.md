@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: ee5ae7ca8b52d44f21c35df23ef92f61d38fc3c3
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d766843f58bc2cdd0dcdddfad337b23fefb28768
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051294"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698738"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Troubleshooting Live Video Analytics in IoT Edge
 
@@ -105,7 +105,7 @@ Möglicherweise treten auch Probleme auf, wenn Sie das **[Skript zur Einrichtung
 * **Bei der Vorlagenbereitstellung ist aufgrund einer Richtlinienverletzung ein Fehler aufgetreten.**
     * Um dieses Problem zu umgehen, arbeiten Sie mit Ihrem IT-Administrator zusammen, um sicherzustellen, dass die Aufrufe zum Erstellen des virtuellen Computers die Blockierung der Authentifizierung per SSH umgehen. Dies ist nicht erforderlich, da wir ein sicheres Bastion-Netzwerk verwenden, das einen Benutzernamen und ein Kennwort für die Kommunikation mit den Azure-Ressourcen verlangt. Diese Anmeldeinformationen werden in der Datei **~/clouddrive/lva-sample/vm-edge-device-credentials.txt** in Cloud Shell gespeichert, sobald der virtuelle Computer erfolgreich erstellt, bereitgestellt und an IoT Hub angefügt wurde.
 * Das Skript zum Setup kann keine Dienstprinzipale und/oder Azure-Ressourcen erstellen.
-    * Um dieses Problem zu umgehen, vergewissern Sie sich, dass Ihr Abonnement und der Azure-Mandant nicht ihre maximalen Dienstgrenzwerte erreicht haben. Erfahren Sie mehr zu den [Dienstgrenzwerten und Einschränkungen von Azure AD](https://docs.microsoft.com/azure/active-directory/enterprise-users/directory-service-limits-restrictions) und [Dienstgrenzwerten, Kontingenten und Einschränkungen von Azure-Abonnements](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
+    * Um dieses Problem zu umgehen, vergewissern Sie sich, dass Ihr Abonnement und der Azure-Mandant nicht ihre maximalen Dienstgrenzwerte erreicht haben. Erfahren Sie mehr zu den [Dienstgrenzwerten und Einschränkungen von Azure AD](../../active-directory/enterprise-users/directory-service-limits-restrictions.md) und [Dienstgrenzwerten, Kontingenten und Einschränkungen von Azure-Abonnements](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 > [!TIP]
 > Wenn es weitere Probleme gibt, bei denen Sie Hilfe benötigen, **[erfassen Sie Protokolle, und übermitteln Sie ein Supportticket](#collect-logs-for-submitting-a-support-ticket)** . Sie können uns auch erreichen, indem Sie eine E-Mail an **[amshelp@microsoft.com](mailto:amshelp@microsoft.com)** senden.

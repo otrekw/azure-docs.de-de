@@ -6,15 +6,15 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 2e6dc55b54bc3abaea22544d457f98307596c5dd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1316512badd69b545e39a47ea5da3ca6a0902482
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100626443"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734280"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-portal"></a>Senden eines Azure-Aktivitätsprotokolls an einen Log Analytics-Arbeitsbereich unter Verwendung des Azure-Portals
-Das Aktivitätsprotokoll ist ein Plattformprotokoll in Azure, das einen Einblick in Ereignisse auf Abonnementebene ermöglicht. Dies sind beispielsweise Informationen wie das Ändern einer Ressource oder das Starten eines virtuellen Computers. Sie können das Aktivitätsprotokoll im Azure-Portal anzeigen oder Einträge mit PowerShell und der CLI abrufen. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie das Azure-Portal zum Erstellen eines Log Analytics-Arbeitsbereichs und eine Diagnoseeinstellung zum Senden des Aktivitätsprotokolls an Azure Monitor-Protokolle verwenden, um es mit [Protokollabfragen](../log-query/log-query-overview.md) zu analysieren und andere Features wie [Protokollwarnungen](../alerts/alerts-log-query.md) und [Arbeitsmappen](../visualize/workbooks-overview.md) zu aktivieren. 
+Das Aktivitätsprotokoll ist ein Plattformprotokoll in Azure, das einen Einblick in Ereignisse auf Abonnementebene ermöglicht. Dies sind beispielsweise Informationen wie das Ändern einer Ressource oder das Starten eines virtuellen Computers. Sie können das Aktivitätsprotokoll im Azure-Portal anzeigen oder Einträge mit PowerShell und der CLI abrufen. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie das Azure-Portal zum Erstellen eines Log Analytics-Arbeitsbereichs und eine Diagnoseeinstellung zum Senden des Aktivitätsprotokolls an Azure Monitor-Protokolle verwenden, um es mit [Protokollabfragen](../logs/log-query-overview.md) zu analysieren und andere Features wie [Protokollwarnungen](../alerts/alerts-log-query.md) und [Arbeitsmappen](../visualize/workbooks-overview.md) zu aktivieren. 
 
 ## <a name="sign-in-to-azure-portal"></a>Anmelden beim Azure-Portal
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an. 
@@ -73,7 +73,7 @@ Probieren Sie eine komplexere Abfrage aus, z. B. `AzureActivity | summarize cou
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In dieser Schnellstartanleitung haben Sie das Aktivitätsprotokoll so konfiguriert, dass es an einen Log Analytics-Arbeitsbereich gesendet wird. Sie können nun andere Daten konfigurieren, die im Arbeitsbereich gesammelt werden sollen, um sie mit [Protokollabfragen](../log-query/log-query-overview.md) in Azure Monitor gemeinsam zu analysieren und Features wie [Protokollwarnungen](../alerts/alerts-log-query.md) und [Arbeitsmappen](../visualize/workbooks-overview.md) zu nutzen. Als Nächstes sollten Sie [Ressourcenprotokolle](../essentials/resource-logs.md) aus Ihren Azure-Ressourcen erfassen, die die Daten im Aktivitätsprotokoll erweitern und Einblick in die Vorgänge ermöglichen, die auf den einzelnen Ressourcen durchgeführt wurden.
+In dieser Schnellstartanleitung haben Sie das Aktivitätsprotokoll so konfiguriert, dass es an einen Log Analytics-Arbeitsbereich gesendet wird. Sie können nun andere Daten konfigurieren, die im Arbeitsbereich gesammelt werden sollen, um sie mit [Protokollabfragen](../logs/log-query-overview.md) in Azure Monitor gemeinsam zu analysieren und Features wie [Protokollwarnungen](../alerts/alerts-log-query.md) und [Arbeitsmappen](../visualize/workbooks-overview.md) zu nutzen. Als Nächstes sollten Sie [Ressourcenprotokolle](../essentials/resource-logs.md) aus Ihren Azure-Ressourcen erfassen, die die Daten im Aktivitätsprotokoll erweitern und Einblick in die Vorgänge ermöglichen, die auf den einzelnen Ressourcen durchgeführt wurden.
 
 
 > [!div class="nextstepaction"]

@@ -3,12 +3,12 @@ title: Sichern einer SAP HANA-Datenbank mit Azure Backup in Azure
 description: In diesem Artikel erfahren Sie, wie Sie eine SAP HANA-Datenbanken mit dem Azure Backup-Dienst auf virtuellen Azure-Computern sichern können.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 87111660983e2626d8f61ddc65fdc13394509a4f
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: e7735c4240529cc6fc9bb6470934dd335d22aa77
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831634"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719609"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -172,7 +172,7 @@ Legen Sie die Richtlinieneinstellungen wie folgt fest:
     ![Richtlinie für differenzielle Sicherung](./media/backup-azure-sap-hana-database/differential-backup-policy.png)
 
     > [!NOTE]
-    > Inkrementelle Sicherungen werden nun in der öffentlichen Vorschau unterstützt. Sie können entweder „differenziell“ oder „inkrementell“ für die tägliche Sicherung auswählen, aber nicht beide Optionen.
+    > Sie können entweder „differenziell“ oder „inkrementell“ für die tägliche Sicherung auswählen, aber nicht beide Optionen.
 1. Wählen Sie unter **Richtlinie zur inkrementellen Sicherung** die Option **Aktivieren** aus, um die Einstellungen für Häufigkeit und Beibehaltung vorzunehmen.
     * Pro Tag kann höchstens eine inkrementelle Sicherung ausgelöst werden.
     * Inkrementelle Sicherungen können maximal 180 Tage aufbewahrt werden. Wenn Sie eine längere Aufbewahrung wünschen, müssen Sie vollständige Sicherungen verwenden.

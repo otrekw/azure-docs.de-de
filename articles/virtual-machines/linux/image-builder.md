@@ -3,17 +3,18 @@ title: Verwenden von Azure Image Builder mit einem Imagekatalog für Linux-VMs (
 description: Erstellen Sie Linux-VM-Images mit Azure Image Builder und einem Katalog für freigegebene Images.
 author: cynthn
 ms.author: cynthn
-ms.date: 05/05/2019
+ms.date: 03/02/2020
 ms.topic: how-to
-ms.service: virtual-machines-linux
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subservice: image-builder
+ms.collection: linux
 ms.reviewer: danis
-ms.openlocfilehash: 4714d9e089094e8990ac71d94107a20e0b7be776
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 6ae7e384aa5d70b688b7fe4c6d4140e886b789f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876308"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694290"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery-by-using-azure-cli"></a>Vorschau: Erstellen eines Linux-Images und Verteilen des Images über eine Shared Image Gallery mithilfe der Azure CLI
 
@@ -48,6 +49,7 @@ az provider show -n Microsoft.VirtualMachineImages -o json | grep registrationSt
 az provider show -n Microsoft.KeyVault -o json | grep registrationState
 az provider show -n Microsoft.Compute -o json | grep registrationState
 az provider show -n Microsoft.Storage -o json | grep registrationState
+az provider show -n Microsoft.Network -o json | grep registrationState
 ```
 
 Wenn nicht „registered“ ausgegeben wird, führen Sie den folgenden Befehl aus:
@@ -57,6 +59,7 @@ az provider register -n Microsoft.VirtualMachineImages
 az provider register -n Microsoft.Compute
 az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
+az provider register -n Microsoft.Network
 ```
 
 ## <a name="set-variables-and-permissions"></a>Festlegen von Variablen und Berechtigungen 
@@ -107,7 +110,7 @@ imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $identityName -o json
 imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$sigResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName
 
 # this command will download an Azure role definition template, and update the template with the parameters specified earlier.
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+curl https://raw.githubusercontent.com/Azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
 
 imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
 
@@ -158,7 +161,7 @@ az sig image-definition create \
 Laden Sie die JSON-Vorlage herunter, und konfigurieren Sie diese mit Ihren Variablen.
 
 ```azurecli-interactive
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json -o helloImageTemplateforSIG.json
+curl https://raw.githubusercontent.com/Azure/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json -o helloImageTemplateforSIG.json
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateforSIG.json
 sed -i -e "s/<rgName>/$sigResourceGroup/g" helloImageTemplateforSIG.json
 sed -i -e "s/<imageDefName>/$imageDefName/g" helloImageTemplateforSIG.json

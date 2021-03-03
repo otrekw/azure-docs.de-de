@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: f527b387afc01eb60bd582adc13a4ad3d516055b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: dd112c74ea9f013a0e14bddd735060ddbf73c14e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936990"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578524"
 ---
 # <a name="azure-functions-custom-handlers"></a>Benutzerdefinierte Azure Functions-Handler
 
@@ -121,9 +121,6 @@ Legen Sie `FUNCTIONS_WORKER_RUNTIME` in *local.settings.json* für benutzerdefin
   }
 }
 ```
-
-> [!NOTE]
-> `Custom` wird in Linux Premium- oder App Service-Plänen möglicherweise nicht als gültige Runtime erkannt. Sollte dies Ihr Bereitstellungsziel sein, legen Sie `FUNCTIONS_WORKER_RUNTIME` auf eine leere Zeichenfolge fest.
 
 ### <a name="function-metadata"></a>Funktionsmetadaten
 

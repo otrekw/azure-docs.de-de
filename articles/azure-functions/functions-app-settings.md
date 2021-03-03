@@ -3,12 +3,12 @@ title: Referenz zu App-Einstellungen für Azure Functions
 description: Referenzdokumentation für die App-Einstellungen für Azure Functions oder Umgebungsvariablen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: a28530fd4e4731065c4ddcc2f39e9a4660529921
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8cb3e12c48adf1273c58f4914e34590e21b9d3cc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881922"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378297"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
@@ -19,7 +19,7 @@ App-Einstellungen in einer Funktionen-App enthalten globale Konfigurationsoption
 Es gibt andere globale Konfigurationsoptionen in der Datei [host.json](functions-host-json.md) und in der Datei [local.settings.json](functions-run-local.md#local-settings-file).
 
 > [!NOTE]  
-> Sie können Anwendungseinstellungen verwenden, um host.json-Einstellungswerte zu überschreiben, ohne die Datei „host.json“ ändern zu müssen. Dies ist hilfreich für Szenarien, in denen bestimmte host.json-Einstellungen für eine bestimmte Umgebung konfiguriert oder geändert werden müssen. So können Sie auch host.json-Einstellungen ändern, ohne das Projekt erneut veröffentlichen zu müssen. Weitere Informationen finden Sie im [Referenzartikel zu „host.json“](functions-host-json.md#override-hostjson-values).  
+> Sie können Anwendungseinstellungen verwenden, um host.json-Einstellungswerte zu überschreiben, ohne die Datei „host.json“ ändern zu müssen. Dies ist hilfreich für Szenarien, in denen bestimmte host.json-Einstellungen für eine bestimmte Umgebung konfiguriert oder geändert werden müssen. So können Sie auch host.json-Einstellungen ändern, ohne das Projekt erneut veröffentlichen zu müssen. Weitere Informationen finden Sie im [Referenzartikel zu „host.json“](functions-host-json.md#override-hostjson-values). Zur Durchführung von Änderungen an den Funktions-App-Einstellungen muss Ihre Funktions-App neu gestartet werden.
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
@@ -213,7 +213,7 @@ Durch den Wert für diese Einstellung wird eine benutzerdefinierte Paketindex-UR
 
 Weitere Informationen finden Sie in der Python-Entwicklerreferenz unter [Benutzerdefinierte Abhängigkeiten](functions-reference-python.md#remote-build-with-extra-index-url).
 
-## <a name="scale_controller_logging_enable"></a>SCALE\_CONTROLLER\_LOGGING\_ENABLE
+## <a name="scale_controller_logging_enabled"></a>SCALE\_CONTROLLER\_LOGGING\_ENABLED
 
 _Diese Einstellung befindet sich derzeit in der Vorschauphase._  
 
@@ -221,7 +221,7 @@ Diese Einstellung dient zum Steuern der Protokollierung über den Azure Functio
 
 |Schlüssel|Beispielwert|
 |-|-|
-|SCALE_CONTROLLER_LOGGING_ENABLE|AppInsights:Verbose|
+|SCALE_CONTROLLER_LOGGING_ENABLED|AppInsights:Verbose|
 
 Der Wert für diesen Schlüssel wird im Format `<DESTINATION>:<VERBOSITY>` bereitgestellt, das wie folgt definiert ist:
 
@@ -235,7 +235,7 @@ Die Verbindungszeichenfolge für das Speicherkonto, in dem der Code der Funktion
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[Name];AccountKey=[Schlüssel]|
 
-Wird nur bei der Bereitstellung für einen Verbrauchs- oder Premium-Plan verwendet, der unter Windows ausgeführt wird. Wird nicht für Linux unterstützt. Das Ändern oder Entfernen dieser Einstellung kann dazu führen, dass Ihre Funktions-App nicht gestartet wird. Weitere Informationen finden Sie in [diesem Artikel zur Problembehandlung](functions-recover-storage-account.md#storage-account-application-settings-were-deleted). 
+Wird nur bei der Bereitstellung für einen Premium-Plan oder Verbrauchsplan verwendet, der unter Windows ausgeführt wird. Wird nicht für Verbrauchspläne unter Linux unterstützt. Das Ändern oder Entfernen dieser Einstellung kann dazu führen, dass Ihre Funktions-App nicht gestartet wird. Weitere Informationen finden Sie in [diesem Artikel zur Problembehandlung](functions-recover-storage-account.md#storage-account-application-settings-were-deleted). 
 
 ## <a name="website_contentovervnet"></a>WEBSITE\_CONTENTOVERVNET
 
@@ -253,7 +253,7 @@ Der Dateipfad für den Funktions-App-Code und die Konfiguration in einem ereigni
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
-Wird nur von Funktions-Apps in einem Verbrauchs- oder Premium-Plan verwendet, der unter Windows ausgeführt wird. Wird nicht für Linux unterstützt. Das Ändern oder Entfernen dieser Einstellung kann dazu führen, dass Ihre Funktions-App nicht gestartet wird. Weitere Informationen finden Sie in [diesem Artikel zur Problembehandlung](functions-recover-storage-account.md#storage-account-application-settings-were-deleted).
+Wird nur bei der Bereitstellung für einen Premium-Plan oder Verbrauchsplan verwendet, der unter Windows ausgeführt wird. Wird nicht für Verbrauchspläne unter Linux unterstützt. Das Ändern oder Entfernen dieser Einstellung kann dazu führen, dass Ihre Funktions-App nicht gestartet wird. Weitere Informationen finden Sie in [diesem Artikel zur Problembehandlung](functions-recover-storage-account.md#storage-account-application-settings-were-deleted).
 
 Wenn Sie während der Bereitstellung Azure Resource Manager zum Erstellen einer Funktions-App verwenden, schließen Sie WEBSITE_CONTENTSHARE nicht in die Vorlage ein. Diese Anwendungseinstellung wird während der Bereitstellung generiert. Weitere Informationen finden Sie unter [Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions](functions-infrastructure-as-code.md#windows).   
 

@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 9d7c4d2afa8eaf197ec05bcb0aed654153fb8f0d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 40b0d7eeb77f165c50c5470e1b5869e240d36534
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831296"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702690"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Tutorial: Bereitstellen und Durchlaufen einer Anwendungsvorlage für digitale Verteilzentren
 
@@ -21,7 +21,8 @@ In diesem Tutorial wird der Einstieg durch das Bereitstellen einer IoT Central-A
 In diesem Tutorial lernen Sie Folgendes: 
 
 > [!div class="checklist"]
-> Erstellen einer Anwendung für digitale Verteilzentren und Durchlaufen der Anwendung 
+> * Erstellen einer Anwendung für digitale Verteilzentren 
+> * Einführung in die Anwendung 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Zum Bereitstellen dieser App sind keine besonderen Voraussetzungen erforderlich.

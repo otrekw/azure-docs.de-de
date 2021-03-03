@@ -3,12 +3,12 @@ title: Erstellen von Ressourcenintegritätswarnungen über das Azure-Portal
 description: Erstellen Sie über das Azure-Portal Warnungen, die Sie informieren, wenn Ihre Azure-Ressourcen nicht mehr verfügbar sind.
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: 127aad1691f7bb6b6c64332eefde734a809ab75f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e48c400e5be3516b08496db7a4cb6a19e45d6c97
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540675"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594634"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Konfigurieren von Ressourcenintegritätswarnungen mithilfe des Azure-Portals
 
@@ -16,7 +16,7 @@ Dieser Artikel zeigt, wie Sie Aktivitätsprotokollwarnungen für Ressourceninteg
 
 Azure Resource Health informiert Sie über den aktuellen und den vergangenen Integritätsstatus Ihrer Azure-Ressourcen. Azure Resource Health-Warnungen können Sie nahezu in Echtzeit informieren, wenn sich der Integritätsstatus dieser Ressourcen ändert. Die programmgesteuerte Erstellung von Resource Health-Warnungen ermöglicht Benutzern das Massenerstellen und -anpassen von Warnungen.
 
-Ressourcenintegritätsbenachrichtigungen werden im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md) gespeichert. Angesichts der möglicherweise großen Menge von Informationen, die im Aktivitätsprotokoll gespeichert werden, ist eine separate Benutzeroberfläche vorhanden, um die Anzeige und Einrichtung von Benachrichtigungen zur Ressourcenintegrität zu vereinfachen.
+Ressourcenintegritätsbenachrichtigungen werden im [Azure-Aktivitätsprotokoll](../azure-monitor/essentials/platform-logs-overview.md) gespeichert. Angesichts der möglicherweise großen Menge von Informationen, die im Aktivitätsprotokoll gespeichert werden, ist eine separate Benutzeroberfläche vorhanden, um die Anzeige und Einrichtung von Benachrichtigungen zur Ressourcenintegrität zu vereinfachen.
 Sie können eine Warnung erhalten, wenn eine Azure-Ressource Benachrichtigungen zur Ressourcenintegrität an Ihr Azure-Abonnement sendet. Sie können die Warnung konfigurieren auf der Grundlage von:
 
 * Dem betroffenen Abonnement.
@@ -32,7 +32,7 @@ Sie können auch konfigurieren, an wen die Warnung gesendet werden soll:
 * Wählen Sie eine vorhandene Aktionsgruppe aus.
 * Erstellen Sie eine neue Aktionsgruppe (die für zukünftige Warnungen verwendet werden kann).
 
-Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/platform/action-groups.md).
+Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/alerts/action-groups.md).
 
 Informationen zum Konfigurieren von Ressourcenintegritätsbenachrichtigungs-Warnungen mithilfe von Azure Resource Manager-Vorlagen finden Sie unter [Resource Manager-Vorlagen](./resource-health-alert-arm-template-guide.md).
 Ressourcenintegritätswarnung über das Azure-Portal
@@ -56,12 +56,12 @@ Ressourcenintegritätswarnung über das Azure-Portal
     1. **Name der Warnungsregel**: Der Name für die neue Warnungsregel.
     2. **Beschreibung**: Die Beschreibung für die Warnungsregel.
     3. **Warnung in Ressourcengruppe speichern**: Wählen Sie die Ressourcengruppe aus, in der Sie die neue Regel speichern möchten.
-7. Geben Sie unter **Aktionsgruppe** im Dropdownmenü die Aktionsgruppe an, der Sie die neue Warnungsregel zuweisen möchten. Alternativ hierzu können Sie auch [eine neue Aktionsgruppe erstellen](../azure-monitor/platform/action-groups.md) und der neuen Regel zuweisen. Wählen Sie zum Erstellen einer neuen Gruppe **+ Neue Gruppe** aus.
+7. Geben Sie unter **Aktionsgruppe** im Dropdownmenü die Aktionsgruppe an, der Sie die neue Warnungsregel zuweisen möchten. Alternativ hierzu können Sie auch [eine neue Aktionsgruppe erstellen](../azure-monitor/alerts/action-groups.md) und der neuen Regel zuweisen. Wählen Sie zum Erstellen einer neuen Gruppe **+ Neue Gruppe** aus.
 8. Klicken Sie zum Aktivieren der Regeln nach der Erstellung für **Regel beim Erstellen aktivieren** auf **Ja**.
 9. Wählen Sie **Warnungsregel erstellen** aus.
 
 Die neue Warnungsregel für das Aktivitätsprotokoll wird erstellt, und oben rechts im Fenster wird eine Bestätigungsmeldung angezeigt.
-Sie können eine Regel aktivieren, deaktivieren, bearbeiten oder löschen. Erfahren Sie mehr über das [Verwalten von Aktivitätsprotokollregeln](../azure-monitor/platform/alerts-activity-log.md#view-and-manage-in-the-azure-portal).
+Sie können eine Regel aktivieren, deaktivieren, bearbeiten oder löschen. Erfahren Sie mehr über das [Verwalten von Aktivitätsprotokollregeln](../azure-monitor/alerts/alerts-activity-log.md#view-and-manage-in-the-azure-portal).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -73,5 +73,5 @@ Erfahren Sie mehr über Resource Health:
 Erstellen von Service Health-Warnungen:
 
 * [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](./alerts-activity-log-service-notifications-portal.md) 
-* [Ereignisschema des Azure-Aktivitätsprotokolls](../azure-monitor/platform/activity-log-schema.md)
+* [Ereignisschema des Azure-Aktivitätsprotokolls](../azure-monitor/essentials/activity-log-schema.md)
 * [Konfigurieren von Ressourcenintegritätswarnungen mithilfe von Resource Manager-Vorlagen](./resource-health-alert-arm-template-guide.md)

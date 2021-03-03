@@ -3,12 +3,12 @@ title: Speicheraspekte für Azure Functions
 description: Erfahren Sie über die Speicheranforderungen von Azure Functions und über das Verschlüsseln gespeicherter Daten.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: 66bfded384be47224e86ee8e0a2999fe3d4ed5d9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c4ffb622482585e35337caf8e43b69e0f3b0385c
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936157"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517262"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Speicheraspekte für Azure Functions
 
@@ -27,7 +27,7 @@ Azure Functions erfordert ein Azure Storage-Konto, wenn Sie eine Funktions-App-I
 
 ## <a name="storage-account-requirements"></a>Anforderungen an das Speicherkonto
 
-Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Warteschlangen- und Tabellenspeicher unterstützt. Der Grund hierfür ist, dass Functions für Vorgänge wie das Verwalten von Triggern und das Ausführen von Protokollierfunktionen auf Azure Storage basiert. Einige Speicherkonten unterstützen keine Warteschlangen und Tabellen. Diese Konten umfassen reine Blobspeicherkonten, Azure Storage Premium und allgemeine Speicherkonten mit Replikation von ZRS.
+Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Warteschlangen- und Tabellenspeicher unterstützt. Der Grund hierfür ist, dass Functions für Vorgänge wie das Verwalten von Triggern und das Ausführen von Protokollierfunktionen auf Azure Storage basiert. Einige Speicherkonten unterstützen keine Warteschlangen und Tabellen. Zu diesen Konten zählen reine Blobspeicherkonten und Azure Storage Premium.
 
 Weitere Informationen zu Speicherkontotypen finden Sie unter [Einführung in die Azure Storage-Dienste](../storage/common/storage-introduction.md#core-storage-services). 
 

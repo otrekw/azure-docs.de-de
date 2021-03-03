@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad48141c69d78096981b89758afd56089093021
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 8d096bcd15254df4081a005b268934659e43037d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742929"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380303"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratorrollen nach Administratoraufgabe in Azure Active Directory
 
@@ -109,7 +109,7 @@ Anzeigen von Metriken und Warnungen zum Synchronisierungsdienst | Leser (siehe [
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
-Verwalten von Domänen | Globaler Administrator | 
+Verwalten von Domänen | Domänennamenadministrator | 
 Lesen aller Konfigurationen | Rolle „Verzeichnis lesen“ | Standardbenutzerrolle (siehe [Dokumentation](../fundamentals/users-default-permissions.md))
 
 ## <a name="domain-services"></a>Domänendienste
@@ -216,9 +216,9 @@ Lesen von Anmeldeprotokollen | Berichtsleser | Sicherheitsleseberechtigter, Sich
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
 Löschen aller vorhandenen App-Kennwörter, die von den ausgewählten Benutzern erstellt wurden | Globaler Administrator | 
-Deaktivieren der MFA | Globaler Administrator | 
-MFA aktivieren | Globaler Administrator | 
-Verwalten von MFA-Diensteinstellungen | Globaler Administrator | 
+Deaktivieren der MFA | Authentifizierungsadministrator (über PowerShell) | Privilegierter Authentifizierungsadministrator (über PowerShell)
+MFA aktivieren | Authentifizierungsadministrator (über PowerShell) | Privilegierter Authentifizierungsadministrator (über PowerShell) 
+Verwalten von MFA-Diensteinstellungen | Authentifizierungsrichtlinienadministrator | 
 Ausgewählte Benutzer müssen Kontaktmethoden erneut bereitstellen. | Authentifizierungsadministrator | 
 Wiederherstellen der mehrstufigen Authentifizierung für alle gespeicherten Geräte  | Authentifizierungsadministrator | 
 
@@ -226,15 +226,15 @@ Wiederherstellen der mehrstufigen Authentifizierung für alle gespeicherten Ger�
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
-Benutzer sperren/zulassen | Globaler Administrator | 
-Konfigurieren der Kontosperrung | Globaler Administrator | 
-Konfigurieren von Cacheregeln | Globaler Administrator | 
-Konfigurieren der Betrugswarnung | Globaler Administrator
-Konfigurieren von Benachrichtigungen | Globaler Administrator | 
-Konfigurieren einer Einmalumgehung | Globaler Administrator | 
-Konfigurieren von Einstellungen für Telefonanrufe | Globaler Administrator | 
-Konfigurieren von Anbietern | Globaler Administrator | 
-Konfigurieren der Servereinstellungen | Globaler Administrator | 
+Benutzer sperren/zulassen | Authentifizierungsrichtlinienadministrator | 
+Konfigurieren der Kontosperrung | Authentifizierungsrichtlinienadministrator | 
+Konfigurieren von Cacheregeln | Authentifizierungsrichtlinienadministrator | 
+Konfigurieren der Betrugswarnung | Authentifizierungsrichtlinienadministrator
+Konfigurieren von Benachrichtigungen | Authentifizierungsrichtlinienadministrator | 
+Konfigurieren einer Einmalumgehung | Authentifizierungsrichtlinienadministrator | 
+Konfigurieren von Einstellungen für Telefonanrufe | Authentifizierungsrichtlinienadministrator | 
+Konfigurieren von Anbietern | Authentifizierungsrichtlinienadministrator | 
+Konfigurieren der Servereinstellungen | Authentifizierungsrichtlinienadministrator | 
 Lesen eines Aktivitätsberichts | Globaler Leser | 
 Lesen aller Konfigurationen | Globaler Leser | 
 Lesen eines Serverstatus | Globaler Leser |  

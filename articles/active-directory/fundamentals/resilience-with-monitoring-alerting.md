@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90b2cd4521613a7b449598f0d097a7ec1c2958c6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a834d4d30c40b618b1601a7f8901c68143ef4912
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724541"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648516"
 ---
 # <a name="resilience-through-monitoring-and-analytics"></a>Resilienz durch Überwachung und Analyse
 
@@ -49,7 +49,7 @@ Verfolgen Sie beispielsweise die folgenden Metriken, da ein plötzlicher Abfall 
 
    - **Vorheriger Zeitraum**: Erstellen Sie zu Referenzzwecken temporale Diagramme mit Änderungen an der Gesamtzahl der Anforderungen und der Erfolgsrate (%) in einem vergangenen Zeitraum (z. B. letzte Woche).
 
-- **Warnungen**: Mithilfe von Log Analytics können Sie [Warnungen](../../azure-monitor/platform/alerts-log.md) definieren, die ausgelöst werden, wenn bei den Schlüsselindikatoren plötzliche Änderungen auftreten. Diese Änderungen wirken sich u. U. negativ auf die SLOs aus. Für Warnungen werden verschiedene Benachrichtigungsmethoden (z. B. E-Mail, SMS und Webhooks) verwendet. Definieren Sie zunächst ein Kriterium, das als Schwellenwert zum Auslösen der Warnung fungiert. Beispiel:
+- **Warnungen**: Mithilfe von Log Analytics können Sie [Warnungen](../../azure-monitor/alerts/alerts-log.md) definieren, die ausgelöst werden, wenn bei den Schlüsselindikatoren plötzliche Änderungen auftreten. Diese Änderungen wirken sich u. U. negativ auf die SLOs aus. Für Warnungen werden verschiedene Benachrichtigungsmethoden (z. B. E-Mail, SMS und Webhooks) verwendet. Definieren Sie zunächst ein Kriterium, das als Schwellenwert zum Auslösen der Warnung fungiert. Beispiel:
   - Warnung bei abruptem Abfall der Gesamtzahl der Anforderungen: Löst eine Warnung aus, wenn die Anzahl der gesamten Anforderungen abrupt abnimmt. Wenn beispielsweise die Gesamtzahl der Anforderungen im Vergleich zum vorherigen Zeitraum um 25 % sinkt, wird eine Warnung ausgelöst.  
   - Warnung bei signifikantem Abfall der Erfolgsrate (%): Löst eine Warnung aus, wenn die Erfolgsrate der ausgewählten Richtlinie deutlich sinkt.
   - Wenn Sie eine Warnung erhalten, beheben Sie das Problem mithilfe von [Log Analytics](../reports-monitoring/howto-install-use-log-analytics-views.md), [Application Insights](../../active-directory-b2c/troubleshoot-with-application-insights.md) und der [VS Code-Erweiterung](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) für Azure AD B2C. Nachdem Sie das Problem behoben und eine aktualisierte Anwendung oder Richtlinie bereitgestellt haben, werden weiterhin die wichtigsten Indikatoren überwacht, bis sie sich wieder im normalen Bereich befinden.
@@ -57,7 +57,7 @@ Verfolgen Sie beispielsweise die folgenden Metriken, da ein plötzlicher Abfall 
 - **Service-Warnungen**: Verwenden Sie die [Warnungen zum Servicelevel von Azure AD B2C](../../service-health/service-health-overview.md), um bei Dienstproblemen, geplanten Wartungen sowie Integritäts- und Sicherheitsempfehlungen benachrichtigt zu werden.
 
 - **Berichte**: [Mithilfe von Log Analytics](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) können Sie Berichte erstellen, die Ihnen helfen, sich mit Benutzererkenntnissen, technischen Herausforderungen und Wachstumschancen vertraut zu machen.
-  - **Integritätsdashboard**: Erstellen Sie mit der Funktion [Azure Dashboard](../../azure-monitor/learn/tutorial-app-dashboards.md) benutzerdefinierte Dashboards, die das Hinzufügen von Diagrammen mithilfe von Log Analytics-Abfragen unterstützen. Identifizieren Sie beispielsweise ein Muster erfolgreicher und fehlgeschlagener Anmeldungen, Fehlerursachen und Telemetriedaten zu Geräten, die für die Anforderung verwendet wurden.
+  - **Integritätsdashboard**: Erstellen Sie mit der Funktion [Azure Dashboard](../../azure-monitor/app/tutorial-app-dashboards.md) benutzerdefinierte Dashboards, die das Hinzufügen von Diagrammen mithilfe von Log Analytics-Abfragen unterstützen. Identifizieren Sie beispielsweise ein Muster erfolgreicher und fehlgeschlagener Anmeldungen, Fehlerursachen und Telemetriedaten zu Geräten, die für die Anforderung verwendet wurden.
   - **Abgebrochene Azure AD B2C-Journeys**: Verwenden Sie die [Arbeitsmappe](https://github.com/azure-ad-b2c/siem#list-of-abandon-journeys), um die Liste der abgebrochenen Azure AD B2C-Journeys zu verfolgen, bei denen der Benutzer den Anmelde- oder Registrierungsvorgang gestartet, aber nie beendet hat. Sie enthält Details zur Richtlinien-ID und eine Aufschlüsselung der Schritte, die der Benutzer vor dem Abbrechen des Vorgangs ausgeführt hat.
   - **Azure AD B2C-Überwachungsarbeitsmappen**: Verwenden Sie die [Überwachungsarbeitsmappen](https://github.com/azure-ad-b2c/siem), die Azure AD B2C-Dashboard, MFA-Vorgänge (Multi-Factor Authentication), den Bericht über bedingte Zugriffe und Suchprotokolle nach Korrelations-ID enthalten, um sich einen besseren Einblick in die Integrität Ihrer Azure AD B2C-Umgebung zu verschaffen.
   
@@ -68,4 +68,4 @@ Verfolgen Sie beispielsweise die folgenden Metriken, da ein plötzlicher Abfall 
   - [Resiliente Schnittstellen mit externen Prozessen](resilient-external-processes.md)
   - [Resilienz durch bewährte Entwicklermethoden](resilience-b2c-developer-best-practices.md)
 - [Erzielen von Resilienz in der Authentifizierungsinfrastruktur](resilience-in-infrastructure.md)
-- [Mehr Resilienz bei Authentifizierung und Autorisierung in Ihren Anwendungen](resilience-app-development-overview.md)
+- [Steigern der Resilienz für Authentifizierung und Autorisierung in Ihren Anwendungen](resilience-app-development-overview.md)

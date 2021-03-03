@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: b3503dead21eeca32d82e896f889b99d11435642
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 62f4b6c76cafab5c6cc46a73851abce1e38551a1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879730"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677752"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrieren und Überprüfen von Azure SQL-Datenbank
 
@@ -79,7 +79,7 @@ Zur Nutzung eines Dienstprinzipals können Sie einen vorhandenen Dienstprinzipal
 > 1. Wählen Sie im Menü auf der linken Seite die Option **Azure Active Directory** aus.
 > 1. Wählen Sie **App-Registrierungen** aus.
 > 1. Wählen Sie **+ Registrierung einer neuen Anwendung** aus.
-> 1. Geben Sie einen Namen für die **Anwendung** (Dienstprinzipalname) ein.
+> 1. Geben Sie einen Namen für die **Anwendung** ein (Dienstprinzipalname).
 > 1. Wählen Sie **Nur Konten in diesem Organisationsverzeichnis** aus.
 > 1. Wählen Sie als Umleitungs-URI die Option **Web** aus, und geben Sie die gewünschte URL ein. Hierbei muss es sich nicht um eine reale oder geschäftliche URL handeln.
 > 1. Klicken Sie anschließend auf **Registrieren**.
@@ -149,9 +149,7 @@ Gehen Sie wie folgt vor, um in Ihrem Datenkatalog eine neue Azure SQL-Datenbank-
 Gehen Sie auf dem Bildschirm **Register sources (Azure SQL Database)** (Quellen registrieren (Azure SQL-Datenbank)) wie folgt vor:
 
 1. Geben Sie unter **Name** einen Namen ein, unter dem die Datenquelle im Katalog aufgeführt werden soll.
-1. Wählen Sie aus, wie auf Ihr gewünschtes Speicherkonto verwiesen werden soll:
-   1. Wählen Sie die Option **Aus Azure-Abonnement** und dann im Dropdownfeld **Azure-Abonnement** das entsprechende Abonnement und im Dropdownfeld **Servername** den entsprechenden Server aus.
-   1. Alternativ können Sie auch die Option **Manuell eingeben** auswählen und einen **Servernamen** eingeben.
+1. Wählen Sie die Option **Aus Azure-Abonnement** und dann im Dropdownfeld **Azure-Abonnement** das entsprechende Abonnement und im Dropdownfeld **Servername** den entsprechenden Server aus.
 1. Wählen Sie **Fertig stellen** aus, um die Datenquelle zu registrieren.
 
 :::image type="content" source="media/register-scan-azure-sql-database/add-azure-sql-database.png" alt-text="Optionen für die Quellenregistrierung" border="true":::

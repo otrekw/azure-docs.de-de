@@ -7,13 +7,13 @@ author: Vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/18/2020
-ms.openlocfilehash: 9fb76c5c96795b8092c86e22acbab4ea5963b42e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/09/2021
+ms.openlocfilehash: 2448609b1184c8e91947bffbd13cfea8e3fe5d52
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90971628"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390860"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Inkrementelle Anreicherung und Zwischenspeicherung in Azure Cognitive Search
 
@@ -23,7 +23,7 @@ ms.locfileid: "90971628"
 
 *Inkrementelle Anreicherung* ist ein Features, das sich auf [Skillsets](cognitive-search-working-with-skillsets.md) richtet. Es nutzt Azure Storage, um die von einer Anreicherungspipeline ausgegebene Prozessausgabe für die Wiederverwendung in künftigen Indexerläufen zu speichern. Nach Möglichkeit verwendet der Indexer jede zwischengespeicherte Ausgabe, die noch gültig ist. 
 
-Die inkrementelle Anreicherung sorgt nicht nur dafür, dass ihre monetären Investitionen in die Verarbeitung (insbesondere OCR und Bildverarbeitung) geschützt werden, sondern schafft auch ein effizienteres System. Wenn Strukturen und Inhalt zwischengespeichert werden, kann ein Indexer nun ermitteln, welche Qualifikationen sich geändert haben, und nur die geänderten Qualifikationen und alle abhängigen Downstreamqualifikationen ausführen. 
+Die inkrementelle Anreicherung sorgt nicht nur dafür, dass ihre monetären Investitionen in die Verarbeitung (insbesondere OCR und Bildverarbeitung) geschützt werden, sondern schafft auch ein effizienteres System. 
 
 Ein Workflow, der inkrementelle Anreicherung verwendet, besteht aus den folgenden Schritten:
 
@@ -95,7 +95,7 @@ Indem Sie diesen Parameter festlegen, wird sichergestellt, dass nur Aktualisieru
 Das folgende Beispiel zeigt eine Update Skillset-Anforderung mit dem Parameter:
 
 ```http
-PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?api-version=2020-06-30-Preview&disableCacheReprocessingChangeDetection=true
+PUT https://[search service].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30-Preview&disableCacheReprocessingChangeDetection=true
 ```
 
 ### <a name="bypass-data-source-validation-checks"></a>Umgehen von Datenquellen-Validierungsüberprüfungen
@@ -103,7 +103,7 @@ PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?
 Die meisten Änderungen an einer Datenquellendefinition führen dazu, dass der Cache ungültig wird. In Szenarien, bei denen eine Änderung den Cache nicht ungültig machen sollte (wie z. B. das Ändern einer Verbindungszeichenfolge oder das Rotieren des Schlüssels im Speicherkonto) fügen Sie jedoch den Parameter`ignoreResetRequirement` an die Datenquellenaktualisierung an. Wird dieser Parameter auf `true` festgelegt, kann der Commit durchlaufen werden, ohne eine Bedingung „Zurücksetzen“ auszulösen, die dazu führen würde, dass alle Objekte von Grund auf neu erstellt und gefüllt werden.
 
 ```http
-PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-version=2020-06-30-Preview&ignoreResetRequirement=true
+PUT https://[search service].search.windows.net/datasources/[data source name]?api-version=2020-06-30-Preview&ignoreResetRequirement=true
 ```
 
 ### <a name="force-skillset-evaluation"></a>Erzwingen der Skillsetauswertung
@@ -111,6 +111,10 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 Der Zweck des Caches ist es, unnötige Verarbeitung zu vermeiden, aber angenommen, Sie nehmen eine Änderung an einer Qualifikation vor, die der Indexer nicht erkennt (etwa eine Änderung an Elementen in externem Code, wie z. B. einer benutzerdefinierten Qualifikation).
 
 In diesem Fall können Sie [Reset Skills](/rest/api/searchservice/preview-api/reset-skills) verwenden, um die erneute Verarbeitung einer bestimmten Qualifikation zu erzwingen, einschließlich aller Downstreamqualifikationen, die von der Ausgabe dieser Qualifikation abhängig sind. Diese API akzeptiert eine POST-Anforderung mit einer Liste von Qualifikationen, die ungültig gemacht und zur erneuten Verarbeitung markiert werden sollten. Führen Sie nach „Reset Skills“ den Indexer aus, um die Pipeline aufzurufen.
+
+### <a name="reset-documents"></a>Zurücksetzen von Dokumenten
+
+Das [Zurücksetzen eines Indexers](/rest/api/searchservice/reset-indexer) führt dazu, dass alle Dokumente im Suchkorpus erneut verarbeitet werden. In Szenarien, in denen nur wenige Dokumente erneut verarbeitet werden müssen und die Datenquelle nicht aktualisiert werden kann, nutzen Sie das [Zurücksetzen von Dokumenten (Vorschau)](/rest/api/searchservice/preview-api/reset-documents), um die erneute Verarbeitung bestimmter Dokumente zu erzwingen. Wenn ein Dokument zurückgesetzt wird, macht der Indexer den Cache für dieses Dokument ungültig, und das Dokument wird erneut verarbeitet, indem es aus der Datenquelle gelesen wird. Weitere Informationen finden Sie unter [Ausführen oder Zurücksetzen von Indexern, Skills und Dokumenten](search-howto-run-reset-indexers.md).
 
 ## <a name="change-detection"></a>Änderungserkennung
 

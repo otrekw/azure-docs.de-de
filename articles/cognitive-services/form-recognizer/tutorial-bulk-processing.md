@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/04/2021
 ms.author: pafarley
-ms.openlocfilehash: 1780aebc113fa68a9a89cfce9fd67c9b5911fc58
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6faa612f55b4114b4242c48d43aae9aac8c56582
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98606673"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699996"
 ---
 # <a name="tutorial-extract-form-data-in-bulk-using-azure-data-factory"></a>Tutorial: Extrahieren von Formulardaten per Massenvorgang mithilfe von Azure Data Factory
 
@@ -65,7 +65,7 @@ Das Azure Databricks-Notebook verwendet nun die trainierten Modelle, um Formula
 
 Ihr Backlog an Formularen kann sich beispielsweise in Ihrer lokalen Umgebung oder auf einem (s)FTP-Server befinden. In diesem Tutorial werden Formulare in einem Azure Data Lake Gen2-Speicherkonto verwendet. Dorthin können Sie Ihre Dateien mithilfe von Azure Data Factory, Azure Storage-Explorer oder AzCopy übertragen. Die Trainings- und Bewertungsdatasets können sich in unterschiedlichen Containern befinden. Die Trainingsdatasets für alle Formulartypen müssen jedoch im gleichen Container enthalten sein. Dort können sie sich allerdings in verschiedenen Ordnern befinden.
 
-Gehen Sie zum Erstellen eines neuen Data Lake wie unter [Erstellen eines Speicherkontos für die Verwendung mit Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/create-data-lake-storage-account) beschrieben vor.
+Gehen Sie zum Erstellen eines neuen Data Lake wie unter [Erstellen eines Speicherkontos für die Verwendung mit Azure Data Lake Storage Gen2](../../storage/blobs/create-data-lake-storage-account.md) beschrieben vor.
 
 ## <a name="create-a-parameterization-table"></a>Erstellen einer Parametrisierungstabelle
 
@@ -89,7 +89,7 @@ In der Tabelle werden folgende Felder verwendet:
 
 ### <a name="create-the-table"></a>Erstellen der Tabelle
 
-[Erstellen Sie eine Azure SQL-Datenbank-Instanz](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase), und führen Sie anschließend im [Abfrage-Editor](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal) das folgende SQL-Skript aus, um die benötigte Tabelle zu erstellen.
+[Erstellen Sie eine Azure SQL-Datenbank-Instanz](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase), und führen Sie anschließend im [Abfrage-Editor](../../azure-sql/database/connect-query-portal.md) das folgende SQL-Skript aus, um die benötigte Tabelle zu erstellen.
 
 ```sql
 CREATE TABLE dbo.ParamFormRecogniser(
@@ -142,7 +142,7 @@ Zum Speichern und Ausführen des Python-Codes, der mit dem Formularerkennungsdie
 
 ### <a name="create-a-secret-scope-backed-by-azure-key-vault"></a>Erstellen eines von Azure Key Vault unterstützten Geheimnisbereichs
 
-Um auf die Geheimnisse in der oben erstellten Azure Key Vault-Instanz verweisen zu können, muss in Databricks ein Geheimnisbereich erstellt werden. Gehen Sie dazu wie unter [Erstellen eines von Azure Key Vault unterstützten Geheimnisbereichs](https://docs.microsoft.com/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope) beschrieben vor.
+Um auf die Geheimnisse in der oben erstellten Azure Key Vault-Instanz verweisen zu können, muss in Databricks ein Geheimnisbereich erstellt werden. Gehen Sie dazu wie unter [Erstellen eines von Azure Key Vault unterstützten Geheimnisbereichs](/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope) beschrieben vor.
 
 ### <a name="create-a-databricks-cluster"></a>Erstellen eines Databricks-Clusters
 
@@ -461,7 +461,7 @@ Nun können wir ein Bewertungsnotebook erstellen. Ähnlich wie beim Trainingsnot
 
 ## <a name="automate-training-and-scoring-with-azure-data-factory"></a>Automatisieren des Trainierens und Bewertens mit Azure Data Factory
 
-Der letzte Schritt besteht darin, den ADF-Dienst (Azure Data Factory) einzurichten, um die Trainings- und Bewertungsprozesse zu automatisieren. Führen Sie zuerst die Schritte unter [Erstellen einer Data Factory](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory) aus. Nach der Erstellung der ADF-Ressource müssen drei Pipelines erstellt werden: eine für das Training und zwei für die Bewertung. (Weitere Informationen finden Sie im Anschluss.)
+Der letzte Schritt besteht darin, den ADF-Dienst (Azure Data Factory) einzurichten, um die Trainings- und Bewertungsprozesse zu automatisieren. Führen Sie zuerst die Schritte unter [Erstellen einer Data Factory](../../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory) aus. Nach der Erstellung der ADF-Ressource müssen drei Pipelines erstellt werden: eine für das Training und zwei für die Bewertung. (Weitere Informationen finden Sie im Anschluss.)
 
 ### <a name="training-pipeline"></a>Trainingspipeline
 

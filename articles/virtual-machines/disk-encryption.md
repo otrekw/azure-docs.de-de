@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 9ed811f96e08e8ebab2e6fd090a4322d9f7827fb
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f9152e341ac04209754bbf5f008cd56373967b9f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681319"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677438"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Serverseitige Verschlüsselung von Azure Disk Storage
 
@@ -51,6 +51,17 @@ Vorerst gelten für vom Kunden verwaltete Schlüssel die folgenden Einschränkun
 #### <a name="supported-regions"></a>Unterstützte Regionen
 
 Von Kunden verwaltete Schlüssel sind in allen Regionen verfügbar, in denen verwaltete Datenträger verfügbar sind.
+
+Die automatische Schlüsselrotation ist in der Vorschau und nur in den folgenden Regionen verfügbar:
+
+- East US
+- USA (Ost) 2
+- USA Süd Mitte
+- USA (Westen)
+- USA, Westen 2
+- Nordeuropa
+- Europa, Westen
+- Frankreich, Mitte
 
 > [!IMPORTANT]
 > Von Kunden verwaltete Schlüssel basieren auf verwalteten Identitäten für Azure-Ressourcen, einem Feature von Azure Active Directory (Azure AD). Wenn Sie vom Kunden verwaltete Schlüssel konfigurieren, wird Ihren Ressourcen im Hintergrund automatisch eine verwaltete Identität zugewiesen. Wenn Sie anschließend das Abonnement, die Ressourcengruppe oder den verwalteten Datenträger in ein anderes Azure AD-Verzeichnis verschieben, wird die den verwalteten Datenträgern zugeordnete verwaltete Identität nicht an den neuen Mandanten übertragen, sodass kundenseitig verwaltete Schlüssel möglicherweise nicht mehr funktionieren. Weitere Informationen finden Sie unter [Übertragen eines Abonnements zwischen Azure AD-Verzeichnissen](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).

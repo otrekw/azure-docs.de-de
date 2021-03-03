@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 4afffb558b9cbf53a762b1b2bb1ce544e554feaf
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: a0543905f41abc9c21327159d63f7adaa5b025dc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103888"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645890"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Entfernen einer Anwendung, die bei der Microsoft Identity Platform registriert ist
 
@@ -36,6 +36,9 @@ In diesen Abschnitten wird Folgendes vermittelt:
 ## <a name="remove-an-application-authored-by-you-or-your-organization"></a>Entfernen einer Anwendung, die von Ihnen oder Ihrer Organisation erstellt wurde
 
 Anwendungen, die von Ihnen oder Ihrer Organisation registriert wurden, werden in Ihrem Mandanten durch ein Anwendungsobjekt und ein Dienstprinzipalobjekt dargestellt. Weitere Informationen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](./app-objects-and-service-principals.md).
+
+> [!NOTE]
+> Beim Löschen einer Anwendung wird auch das zugehörige Dienstprinzipalobjekt im Basisverzeichnis der Anwendung gelöscht. Bei mehrinstanzenfähigen Anwendungen werden Dienstprinzipalobjekte in anderen Verzeichnissen nicht gelöscht.
 
 Zum Löschen einer Anwendung müssen Sie als Besitzer der Anwendung angegeben sein oder über Administratorberechtigungen verfügen.
 

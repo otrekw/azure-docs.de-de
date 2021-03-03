@@ -33,6 +33,16 @@
           href: database/features-comparison.md
         - name: Funktionen mit mehreren Modellen
           href: multi-model-features.md
+        - name: Geplante Wartung
+          items:
+            - name: Wartungsfenster
+              href: database/maintenance-window.md
+            - name: Konfigurieren von Wartungsfenstern
+              href: database/maintenance-window-configure.md
+            - name: Wartungsfenster – Häufig gestellte Fragen
+              href: database/maintenance-window-faq.yml
+            - name: Vorabbenachrichtigungen
+              href: database/advance-notifications.md
         - name: In-Memory-OLTP
           href: in-memory-oltp-overview.md
         - name: Temporale Tabellen
@@ -143,8 +153,10 @@
       items:
         - name: Anfordern der Kontingenterhöhung
           href: database/quota-increase-request.md
-        - name: Auftragsautomatisierung
+        - name: Auftragsautomatisierung mit elastischen Aufträgen
           href: database/job-automation-overview.md
+        - name: Auftragsautomatisierung mit SQL-Agent
+          href: database/job-automation-managed-instances.md
         - name: Geschäftskontinuität
           items:
             - name: Konfigurieren einer Failovergruppe
@@ -989,6 +1001,8 @@
           href: managed-instance/alerts-create.md
         - name: Manuelles Initiieren eines Failovers für eine verwaltete Instanz
           href: managed-instance/user-initiated-failover.md
+        - name: Migrieren einer Datenbank mithilfe des Protokollwiedergabediensts
+          href: managed-instance/log-replay-service-migrate.md
     - name: Beispiele
       items:
         - name: Azure CLI

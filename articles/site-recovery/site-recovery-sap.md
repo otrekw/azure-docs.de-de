@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 69f0a20bdcba23d947e3d1b573c1a359da245161
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e639762cd1adb7bbbc3fb2ec31f4ce52710e46f9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369419"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711942"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Einrichten der Notfallwiederherstellung für die Bereitstellung einer SAP NetWeaver-App mit mehreren Ebenen
 
@@ -45,7 +45,7 @@ Mit Azure Site Recovery können Sie eine Notfallwiederherstellungslösung in fol
 * Sie verfügen über SAP-Systeme, die auf Hyper-V lokal ausgeführt werden. Außerdem replizieren Sie die SAP-Systeme an einen Notfallwiederherstellungsstandort in einem Azure-Rechenzentrum (Hyper-V-zu-Azure-Notfallwiederherstellung).
    Dieses Szenario erfordert einige zusätzliche Komponenten. Weitere Informationen finden Sie unter [Architektur der Replikation von Hyper-V in Azure](./hyper-v-azure-architecture.md).
 
-In diesem Artikel verwenden wir ein **Azure-zu-Azure** -Notfallwiederherstellungsszenario. Das Szenario zeigt Ihnen die SAP-Notfallwiederherstellungsfunktionen von Site Recovery. Da die Replikation mit Site Recovery nicht anwendungsspezifisch ist, gilt der beschriebene Prozess vermutlich auch für andere Szenarien.
+In diesem Artikel verwenden wir ein **Azure-zu-Azure**-Notfallwiederherstellungsszenario. Das Szenario zeigt Ihnen die SAP-Notfallwiederherstellungsfunktionen von Site Recovery. Da die Replikation mit Site Recovery nicht anwendungsspezifisch ist, gilt der beschriebene Prozess vermutlich auch für andere Szenarien.
 
 ### <a name="required-foundation-services"></a>Erforderliche Grunddienste
 In dem in diesem Artikel besprochenen Szenario werden die folgenden Foundation-Dienste bereitgestellt:
@@ -119,7 +119,7 @@ Zu Beginn des Replizieren aller virtuellen Computer für SAP-Anwendungen in ein 
 
 ## <a name="networking-configuration"></a>Netzwerkkonfiguration
 
-Wenn Sie eine statische IP-Adresse verwenden, können Sie die IP-Adresse angeben, die Sie dem virtuellen Computer zuordnen möchten. Um die IP-Adresse festzulegen, wechseln Sie zu **Einstellungen für Compute und Netzwerk** > **Netzwerkschnittstellenkarte** .
+Wenn Sie eine statische IP-Adresse verwenden, können Sie die IP-Adresse angeben, die Sie dem virtuellen Computer zuordnen möchten. Um die IP-Adresse festzulegen, wechseln Sie zu **Einstellungen für Compute und Netzwerk** > **Netzwerkschnittstellenkarte**.
 
 ![Screenshot, der zeigt, wie eine private IP-Adresse im Bereich „Site Recovery-Netzwerkschnittstellenkarte“ festgelegt wird](./media/site-recovery-sap/sap-static-ip.png)
 
@@ -167,5 +167,5 @@ Weitere Informationen finden Sie unter [Testfailover nach Azure in Site Recovery
 Weitere Informationen finden Sie unter [Failover in Site Recovery](site-recovery-failover.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum Erstellen einer Notfallwiederherstellungslösung für SAP NetWeaver-Bereitstellungen mithilfe von Site Recovery finden Sie im herunterladbaren Whitepaper [SAP NetWeaver: Erstellen einer Notfallwiederherstellungslösung mit Site Recovery](https://aka.ms/asr_sap). Im Whitepaper werden Empfehlungen für verschiedene SAP-Architekturen besprochen. Sie lernen unterstützte Anwendungen und VM-Typen für SAP in Azure kennen. Es gibt auch Planoptionen für das Testen Ihrer Notfallwiederherstellungslösung.
+* Weitere Informationen zum Erstellen einer Notfallwiederherstellungslösung für SAP NetWeaver-Bereitstellungen mithilfe von Site Recovery finden Sie im herunterladbaren Whitepaper [SAP NetWeaver: Erstellen einer Notfallwiederherstellungslösung mit Site Recovery](/samples/browse/?redirectedfrom=TechNet-Gallery). Im Whitepaper werden Empfehlungen für verschiedene SAP-Architekturen besprochen. Sie lernen unterstützte Anwendungen und VM-Typen für SAP in Azure kennen. Es gibt auch Planoptionen für das Testen Ihrer Notfallwiederherstellungslösung.
 * Erfahren Sie mehr über das [Replizieren anderer Workloads](site-recovery-workload.md) mit Site Recovery.

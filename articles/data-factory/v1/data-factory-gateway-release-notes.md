@@ -1,22 +1,18 @@
 ---
 title: Versionshinweise für Datenverwaltungsgateway
 description: Versionshinweise für Datenverwaltungsgateway
-services: data-factory
 author: nabhishek
-manager: anandsub
-ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0538777cadf7935a6684932a17fadc10849518d8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b5bf0c6d6996a67e8b0fec3ec51e31fef8eedf26
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001625"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363915"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Versionshinweise für Datenverwaltungsgateway
 > [!NOTE]
@@ -46,12 +42,12 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>Verbesserungen
--   Sie können DNS-Einträge hinzufügen, um Service Bus zuzulassen, anstatt alle Azure-IP-Adressen durch Ihre Firewall zuzulassen (falls erforderlich). Ausführlichere Informationen finden Sie hier.
--   Sie können jetzt Daten in einen bzw. aus einem einzelnen Blockblob von bis zu 4,75 TB kopieren. Dies ist die unterstützte maximale Größe eines Blockblobs. (Der frühere Grenzwert betrug 195 GB.)
--   Behoben: Fehler „Nicht genügend Arbeitsspeicher“ beim Entzippen mehrerer kleiner Dateien während der Kopieraktivität.
--   Behoben: Fehler „Index außerhalb des gültigen Bereichs“ beim Kopieren aus DocumentDB in SQL Server mit der Idempotenz-Funktion.
--   Behoben: SQL-Bereinigungsskript funktioniert nicht bei SQL Server mit dem Assistenten zum Kopieren.
--   Behoben: Spaltenname mit Leerzeichen am Ende funktioniert nicht in Kopieraktivität.
+-    Sie können DNS-Einträge hinzufügen, um Service Bus zuzulassen, anstatt alle Azure-IP-Adressen durch Ihre Firewall zuzulassen (falls erforderlich). Ausführlichere Informationen finden Sie hier.
+-    Sie können jetzt Daten in einen bzw. aus einem einzelnen Blockblob von bis zu 4,75 TB kopieren. Dies ist die unterstützte maximale Größe eines Blockblobs. (Der frühere Grenzwert betrug 195 GB.)
+-    Behoben: Fehler „Nicht genügend Arbeitsspeicher“ beim Entzippen mehrerer kleiner Dateien während der Kopieraktivität.
+-    Behoben: Fehler „Index außerhalb des gültigen Bereichs“ beim Kopieren aus DocumentDB in SQL Server mit der Idempotenz-Funktion.
+-    Behoben: SQL-Bereinigungsskript funktioniert nicht bei SQL Server mit dem Assistenten zum Kopieren.
+-    Behoben: Spaltenname mit Leerzeichen am Ende funktioniert nicht in Kopieraktivität.
 
 ## <a name="28662833"></a>2.8.66283.3
 ### <a name="enhancements-"></a>Verbesserungen
@@ -64,7 +60,7 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 - Behoben: Fehler beim Lesen eines NULL-Dezimalwerts von Oracle als Quelle.
 
 ## <a name="2661922"></a>2.6.6192.2
-### <a name="whats-new"></a>Neuigkeiten
+### <a name="whats-new"></a>Neues
 - Kunden können Feedback zur Gatewayregistrierung bereitstellen.
 - Ein neues Komprimierungsformat wird unterstützt: ZIP (Deflate)
 
@@ -81,7 +77,7 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 
 ## <a name="2461511"></a>2.4.6151.1
 
-### <a name="whats-new"></a>Neuigkeiten
+### <a name="whats-new"></a>Neues
 
 - Sie können jetzt die Anmeldeinformationen für Datenquellen lokal speichern. Die Anmeldeinformationen werden verschlüsselt. Die Anmeldeinformationen für Datenquellen können mit einer Sicherungsdatei, die über das vorhandene Gateway exportiert werden kann, wiederhergestellt werden (alles lokal).
 

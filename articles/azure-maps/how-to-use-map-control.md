@@ -9,16 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: db7006c01f59e8a11872d99b3a16f24f65ef7588
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 27d9d5d30dc4c96516d23acba6a11b411827071e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413376"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378705"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Verwenden des Azure Maps-Kartensteuerelements
 
 Mit der clientseitigen JavaScript-Bibliothek des Kartensteuerelements können Sie Karten und eingebettete Azure Maps-Funktionen in Ihrer Web- oder Mobilanwendung rendern.
+
+In dieser Dokumentation wird das Azure Maps Web SDK verwendet, aber die Azure Maps-Dienste können mit jedem Kartensteuerelement verwendet werden. [Hier](open-source-projects.md#third-part-map-control-plugins) finden Sie einige beliebte Open-Source-Kartensteuerelemente, für die das Azure Maps-Team Plug-Ins erstellt hat.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

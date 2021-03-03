@@ -3,12 +3,12 @@ title: Verfügbarkeitszonenübergreifendes Erstellen eines Pools
 description: Hier erfahren Sie, wie Sie zum Schutz vor Ausfällen einen Batch-Pool mit zonaler Richtlinie erstellen.
 ms.topic: how-to
 ms.date: 01/28/2021
-ms.openlocfilehash: 98109e1b74106bc636eaa715575e4b30ab29f9e2
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 56e718bedf504b8e69598c2d99ab8b889a470b89
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99056886"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725287"
 ---
 # <a name="create-an-azure-batch-pool-across-availability-zones"></a>Verfügbarkeitszonenübergreifendes Erstellen eines Azure Batch-Pools
 
@@ -22,7 +22,7 @@ Batch bietet die gleiche Unterstützung von Verfügbarkeitszonen wie Azure. Um d
 
 Damit Ihr Batch-Pool verfügbarkeitszonenübergreifend zugeordnet wird, muss die Azure-Region, in der der Pool erstellt wird, die angeforderte VM-SKU in mehreren Zonen unterstützen. Zur Überprüfung dieser Anforderung können Sie die [API zum Auflisten von Ressourcen-SKUs](/rest/api/compute/resourceskus/list) aufrufen und sich das Feld **locationInfo** von [resourceSku](/rest/api/compute/resourceskus/list#resourcesku) ansehen. Achten Sie darauf, dass für die angeforderte VM-SKU mehrere Zonen unterstützt werden.
 
-Vergewissern Sie sich bei [Batch-Konten im Modus „Benutzerabonnement“](accounts.md#batch-accounts), dass für das Abonnement, in dem Sie Ihren Pool erstellen, keine Zonenangebotseinschränkung für die angeforderte VM-SKU gilt. Rufen Sie zur Überprüfung dieser Anforderung die [API zum Auflisten von Ressourcen-SKUs](/rest/api/compute/resourceskus/list) auf, und sehen Sie sich [ResourceSkuRestrictions](/rest/api/compute/resourceskus/list#resourceskurestrictions) an. Ist eine Zoneneinschränkung vorhanden, können Sie ein [Supportticket](../azure-portal/supportability/sku-series-unavailable.md) erstellen, um die Zoneneinschränkung zu entfernen.
+Vergewissern Sie sich bei [Batch-Konten im Modus „Benutzerabonnement“](accounts.md#batch-accounts), dass für das Abonnement, in dem Sie Ihren Pool erstellen, keine Zonenangebotseinschränkung für die angeforderte VM-SKU gilt. Rufen Sie zur Überprüfung dieser Anforderung die [API zum Auflisten von Ressourcen-SKUs](/rest/api/compute/resourceskus/list) auf, und sehen Sie sich [ResourceSkuRestrictions](/rest/api/compute/resourceskus/list#resourceskurestrictions) an. Ist eine Zoneneinschränkung vorhanden, können Sie ein [Supportticket](/troubleshoot/azure/general/region-access-request-process) erstellen, um die Zoneneinschränkung zu entfernen.
 
 Beachten Sie außerdem, dass Sie keinen Pool mit einer zonalen Richtlinie erstellen können, wenn die Kommunikation zwischen Knoten aktiviert ist und eine [VM-SKU mit InfiniBand-Unterstützung](../virtual-machines/workloads/hpc/enable-infiniband.md) verwendet wird.
 
@@ -83,4 +83,3 @@ Anforderungstext
 - Erfahren Sie mehr über den [Workflow des Batch-Diensts und primäre Ressourcen](batch-service-workflow-features.md) wie Pools, Knoten, Aufträge und Aufgaben.
 - Erfahren Sie mehr über das [Erstellen eines Pools in einem Subnetz eines virtuellen Azure-Netzwerks](batch-virtual-network.md).
 - Erfahren Sie mehr über das [Erstellen eines Azure Batch-Pools ohne öffentliche IP-Adressen](./batch-pool-no-public-ip-address.md).
-

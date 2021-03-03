@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: c017ae8044c14a579190f5f1e76cfb1a73e3ce66
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 24a834c87fe34d90dec5961bb3f8d376c6e5e62d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896190"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373214"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>Schnellstart: Erstellen einer interaktiven Kartensuche mit Azure Maps
 
@@ -23,6 +23,8 @@ In diesem Artikel wird gezeigt, wie Sie Azure Maps verwenden, um eine Karte mit 
 * Erstellen eines eigenen Azure Maps-Kontos
 * Abrufen Ihres Primärschlüssels zur Verwendung in der Demowebanwendung
 * Herunterladen und Öffnen der Karten-Demoanwendung.
+
+In dieser Schnellstartanleitung wird das Azure Maps Web SDK verwendet, aber die Azure Maps-Dienste können mit jedem Kartensteuerelement verwendet werden. [Hier](open-source-projects.md#third-part-map-control-plugins) finden Sie einige beliebte Open-Source-Kartensteuerelemente, für die das Azure Maps-Team Plug-Ins erstellt hat.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -36,15 +38,15 @@ In diesem Artikel wird gezeigt, wie Sie Azure Maps verwenden, um eine Karte mit 
 
 Erstellen Sie mithilfe der folgenden Schritte ein neues Azure Maps-Konto:
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) links oben auf **Ressource erstellen** .
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) links oben auf **Ressource erstellen**.
 2. Geben Sie im Feld *Marketplace durchsuchen* die Begriffe **Azure Maps** ein.
-3. Wählen Sie in den *Ergebnissen* die Option **Azure Maps** aus. Klicken Sie auf die unterhalb der Karte angezeigte Schaltfläche **Erstellen** .
+3. Wählen Sie in den *Ergebnissen* die Option **Azure Maps** aus. Klicken Sie auf die unterhalb der Karte angezeigte Schaltfläche **Erstellen**.
 4. Geben Sie auf der Seite **Azure Maps-Konto erstellen** die folgenden Werte ein:
-    * *Abonnement* , das Sie für dieses Konto verwenden möchten
+    * *Abonnement*, das Sie für dieses Konto verwenden möchten
     * Name der *Ressourcengruppe* für dieses Konto. Sie können für die Ressourcengruppe die Option *Neu erstellen* oder die Option *Vorhandene verwenden* auswählen.
     * *Name* des neuen Kontos
     * Der *Tarif* für dieses Konto.
-    * Lesen Sie die *Lizenzbedingungen* und die *Datenschutzerklärung* , und aktivieren Sie zum Akzeptieren der Bestimmungen das Kontrollkästchen.
+    * Lesen Sie die *Lizenzbedingungen* und die *Datenschutzerklärung*, und aktivieren Sie zum Akzeptieren der Bestimmungen das Kontrollkästchen.
     * Klicken Sie auf die Schaltfläche **Erstellen** .
 
     :::image type="content" source="./media/quick-demo-map-app/create-account.png" alt-text="Erstellen eines Maps-Kontos im Portal":::
@@ -62,23 +64,23 @@ Rufen Sie nach der Erstellung des Maps-Kontos den Primärschlüssel ab, mit dem 
 >[!NOTE]
 > Wenn Sie den Abonnementschlüssel anstelle des Primärschlüssels verwenden, wird Ihre Karte nicht ordnungsgemäß gerendert. Außerdem wird aus Sicherheitsgründen empfohlen, dass Sie zwischen Ihrem Primär- und Sekundärschlüssel wechseln. Aktualisieren Sie zur Schlüsselrotation Ihre App, um den Sekundärschlüssel zu verwenden. Stellen Sie dann die App bereit, und drücken Sie die Taste für die Aktualisierung neben dem Primärschlüssel, um einen neuen Primärschlüssel zu generieren. Der alte Primärschlüssel wird deaktiviert. Weitere Informationen zur Schlüsselrotation finden Sie unter [Einrichten von Azure Key Vault mit Schlüsselrotation und Überwachung](../key-vault/secrets/tutorial-rotation-dual.md)
 
-:::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="Erstellen eines Maps-Kontos im Portal":::
+:::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="Abrufen des Azure Maps-Primärschlüssels im Azure-Portal":::
 
 ## <a name="download-the-demo-application"></a>Herunterladen der Demoanwendung
 
 1. Wechseln Sie zu [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html). Kopieren Sie den Inhalt der Datei.
-2. Speichern Sie den Inhalt dieser Datei lokal unter **AzureMapDemo.html** . Öffnen Sie die Datei in einem Text-Editor.
-3. Suchen Sie nach der Zeichenfolge `<Your Azure Maps Key>`. Ersetzen Sie sie durch den **Primärschlüssel** , den Sie im vorherigen Abschnitt kopiert haben.
+2. Speichern Sie den Inhalt dieser Datei lokal unter **AzureMapDemo.html**. Öffnen Sie die Datei in einem Text-Editor.
+3. Suchen Sie nach der Zeichenfolge `<Your Azure Maps Key>`. Ersetzen Sie sie durch den **Primärschlüssel**, den Sie im vorherigen Abschnitt kopiert haben.
 
 ## <a name="open-the-demo-application"></a>Öffnen der Demoanwendung
 
 1. Öffnen Sie die Datei **AzureMapDemo.html** in einem Browser Ihrer Wahl.
 2. Die Karte der Stadt Los Angeles wird angezeigt. Vergrößern und verkleinern Sie sie, um zu sehen, wie die Karte abhängig vom Zoomfaktor automatisch mit mehr oder weniger Informationen gerendert wird.
-3. Ändern Sie den Standardmittelpunkt der Karte. Suchen Sie in der Datei **AzureMapDemo.html** nach der Variable **center** . Ersetzen Sie den Wert des Längengrad/Breitengrad-Paars für diese Variable durch die neuen Werte **[-74,0060, 40,7128]** . Speichern Sie die Datei, und aktualisieren Sie Ihren Browser.
+3. Ändern Sie den Standardmittelpunkt der Karte. Suchen Sie in der Datei **AzureMapDemo.html** nach der Variable **center**. Ersetzen Sie den Wert des Längengrad/Breitengrad-Paars für diese Variable durch die neuen Werte **[-74,0060, 40,7128]** . Speichern Sie die Datei, und aktualisieren Sie Ihren Browser.
 4. Probieren Sie die interaktiven Suchfunktionen aus. Geben Sie **Restaurants** in das Suchfeld in der oberen linken Ecke der Demowebanwendung ein.
 5. Bewegen Sie den Mauszeiger über die Liste der Adressen und Standorte, die unterhalb des Suchfelds angezeigt wird. Beachten Sie dabei, wie über dem entsprechenden Pin auf der Karte Informationen zum jeweiligen Standort angezeigt werden. Zum Schutz von Privatunternehmen werden fiktive Namen und Adressen angezeigt.
 
-    :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="Erstellen eines Maps-Kontos im Portal":::
+    :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="Webanwendung für die interaktive Kartensuche":::
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
@@ -89,8 +91,8 @@ Rufen Sie nach der Erstellung des Maps-Kontos den Primärschlüssel ab, mit dem 
 Falls Sie nicht mit den Tutorials fortfahren möchten, führen Sie die folgenden Schritte aus, um die Ressourcen zu bereinigen:
 
 1. Schließen Sie den Browser, in dem die Webanwendung **AzureMapDemo.html** ausgeführt wird.
-2. Navigieren Sie zur Seite mit dem Azure-Portal. Wählen Sie auf der Hauptseite des Portals **Alle Ressourcen** aus. Oder klicken Sie oben links auf das Menüsymbol. Wählen Sie **Alle Ressourcen** .
-3. Klicken Sie auf Ihr Azure Maps-Konto. Klicken Sie oben auf der Seite auf **Löschen** .
+2. Navigieren Sie zur Seite mit dem Azure-Portal. Wählen Sie auf der Hauptseite des Portals **Alle Ressourcen** aus. Oder klicken Sie oben links auf das Menüsymbol. Wählen Sie **Alle Ressourcen**.
+3. Klicken Sie auf Ihr Azure Maps-Konto. Klicken Sie oben auf der Seite auf **Löschen**.
 
 Weitere Codebeispiele und eine interaktive Codierumgebung finden Sie in den folgenden Anleitungen:
 

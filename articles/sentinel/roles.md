@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 9c100ca82b751a050e74cce85e1794701a789288
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f9b50c831b435a6189a9b9e4d79a934a2661b033
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95498468"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570409"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Berechtigungen in Azure Sentinel
 
@@ -91,7 +91,7 @@ In der folgenden Tabelle sind die Rollen und zulässigen Aktionen in Azure Senti
 
 - Zusätzlich zu integrierten Azure-Rollen oder anstelle von diesen können Sie benutzerdefinierte Azure-Rollen für Azure Sentinel erstellen. Benutzerdefinierte Azure-Rollen für Azure Sentinel werden genauso wie andere [benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) basierend auf [bestimmten Berechtigungen für Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) und für [Azure Log Analytics-Ressourcen](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights) erstellt.
 
-- Sie können die erweiterte rollenbasierte Zugriffssteuerung in Azure von Log Analytics für die Daten in Ihrem Azure Sentinel-Arbeitsbereich verwenden. Dies umfasst sowohl auf dem Datentyp basierendes Azure RBAC als auch ressourcenzentriertes Azure RBAC. Weitere Informationen zu den Log Analytics-Rollen finden Sie unter [Verwalten von Protokolldaten und Arbeitsbereichen in Azure Monitor](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
+- Sie können die erweiterte rollenbasierte Zugriffssteuerung in Azure von Log Analytics für die Daten in Ihrem Azure Sentinel-Arbeitsbereich verwenden. Dies umfasst sowohl auf dem Datentyp basierendes Azure RBAC als auch ressourcenzentriertes Azure RBAC. Weitere Informationen zu den Log Analytics-Rollen finden Sie unter [Verwalten von Protokolldaten und Arbeitsbereichen in Azure Monitor](../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

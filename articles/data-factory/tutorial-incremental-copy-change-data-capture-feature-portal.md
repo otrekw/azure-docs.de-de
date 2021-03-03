@@ -1,24 +1,21 @@
 ---
 title: Inkrementelles Kopieren von Daten mithilfe von Change Data Capture
 description: In diesem Tutorial wird eine Azure Data Factory-Pipeline erstellt, um Deltadaten aus einer Tabelle einer Azure SQL Managed Instance-Datenbank inkrementell in Azure Storage zu kopieren.
-services: data-factory
 ms.author: nihurt
 author: hurtn
-manager: ''
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
-ms.custom: ''
-ms.date: 05/04/2020
-ms.openlocfilehash: 754f58fe7ee9bc8d10ba1fa973615781ce4d6dce
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.date: 02/18/2021
+ms.openlocfilehash: a00ec8698b188b8fa87935e498e8cfab3aeab5aa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555915"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724981"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Inkrementelles Laden von Daten aus Azure SQL Managed Instance in Azure Storage mithilfe von Change Data Capture (CDC)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Tutorial wird eine Azure Data Factory-Instanz mit einer Pipeline erstellt, die Deltadaten basierend auf Informationen von **Change Data Capture (CDC)** aus der Azure SQL Managed Instance-Quelldatenbank in Azure Blob Storage lädt.  
 
@@ -90,10 +87,10 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
     ```sql
      insert into customers 
-        (customer_id, first_name, last_name, email, city) 
+         (customer_id, first_name, last_name, email, city) 
      values 
-        (1, 'Chevy', 'Leward', 'cleward0@mapy.cz', 'Reading'),
-        (2, 'Sayre', 'Ateggart', 'sateggart1@nih.gov', 'Portsmouth'),
+         (1, 'Chevy', 'Leward', 'cleward0@mapy.cz', 'Reading'),
+         (2, 'Sayre', 'Ateggart', 'sateggart1@nih.gov', 'Portsmouth'),
         (3, 'Nathalia', 'Seckom', 'nseckom2@blogger.com', 'Portsmouth');
     ```
 

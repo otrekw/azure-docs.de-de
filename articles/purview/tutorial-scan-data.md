@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: a88c837c986db346bcb4fbb1b15ceab6a304347d
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 16692ac75f0ab6df0c8ee1bebef393848ca066b8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806222"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676542"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Tutorial: Überprüfen von Daten mit Azure Purview (Vorschau)
 
@@ -55,7 +55,7 @@ In diesem Abschnitt führen Sie die Starter Kit-Skripts aus, um einen simuliert
 
 Führen Sie die folgenden Schritte aus, um die Starter Kit-Clientsoftware auf Ihrem Windows-Computer einzurichten:
 
-1. [Laden Sie das Starter Kit](https://download.microsoft.com/download/9/7/9/979db3b1-0916-4997-a7fb-24e3d8f83174/PurviewStarterKitV4.zip) herunter, und extrahieren Sie seinen Inhalt am Speicherort Ihrer Wahl.
+1. [Laden Sie das Starter Kit](https://github.com/Azure/Purview-Samples/blob/master/PurviewStarterKitV4.zip) herunter, und extrahieren Sie seinen Inhalt am Speicherort Ihrer Wahl.
 
 
 1. Geben Sie auf Ihrem Computer **PowerShell** in das Suchfeld auf der Windows-Taskleiste ein. Klicken Sie in der Suchliste mit der rechten Maustaste auf **Windows PowerShell**, und wählen Sie **Als Administrator ausführen** aus.

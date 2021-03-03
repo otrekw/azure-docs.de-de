@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/28/2021
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 34223298dbf0dad9d9214676a5190bef063a8228
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 34168a02b5a2d2dfe74e2a5839e0bfddcf684222
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577024"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712180"
 ---
 # <a name="what-is-azure-private-link"></a>Was ist Azure Private Link? 
 Mit Azure Private Link können Sie über einen [privaten Endpunkt](private-endpoint-overview.md) in Ihrem virtuellen Netzwerk auf Azure-PaaS-Dienste (beispielsweise Azure Storage und SQL Database) sowie auf in Azure gehostete kundeneigene Dienste/Partnerdienste zugreifen.
@@ -54,7 +54,7 @@ Azure Private Link bietet folgende Vorteile:
 |  Azure Database for PostgreSQL (Einzelserver)         | Alle öffentlichen Regionen <br/> Alle Government-Regionen<br/>Alle China-Regionen     | Unterstützt für universelle und arbeitsspeicheroptimierte Tarife | Allgemein verfügbar <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Database for PostgreSQL erstellen.](../postgresql/concepts-data-access-and-security-private-link.md)      |
 |  Azure Database for MySQL         | Alle öffentlichen Regionen<br/> Alle Government-Regionen<br/>Alle China-Regionen      |  | Allgemein verfügbar <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Database for MySQL erstellen.](../mysql/concepts-data-access-security-private-link.md)     |
 |  Azure Database for MariaDB         | Alle öffentlichen Regionen<br/> Alle Government-Regionen<br/>Alle China-Regionen     |  | Allgemein verfügbar <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Database for MariaDB erstellen.](../mariadb/concepts-data-access-security-private-link.md)      |
-|  Azure Digital Twins         | Alle von Azure Digital Twins unterstützten öffentlichen Regionen     |  | Vorschau <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Digital Twins erstellen.](../digital-twins/how-to-enable-private-link.md)      |
+|  Azure Digital Twins         | Alle von Azure Digital Twins unterstützten öffentlichen Regionen     |  | Vorschau <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Digital Twins erstellen.](../digital-twins/how-to-enable-private-link-portal.md)      |
 |  Azure-Schlüsseltresor         | Alle öffentlichen Regionen<br/> Alle Government-Regionen      |  | Allgemein verfügbar   <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Key Vault erstellen.](../key-vault/general/private-link-service.md)   |
 |Azure Kubernetes Service: Kubernetes-API | Alle öffentlichen Regionen      |  | Allgemein verfügbar   <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Kubernetes Service erstellen.](../aks/private-clusters.md)   |
 |Azure Search | Alle öffentlichen Regionen <br/> Alle Government-Regionen | Unterstützt mit Dienst im privaten Modus | Allgemein verfügbar   <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Search erstellen.](../search/service-create-private-endpoint.md)    |

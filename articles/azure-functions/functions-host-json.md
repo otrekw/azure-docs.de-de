@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 735c92720f4a3f871499ad3a0565446a02b438eb
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7ab60fb364eb3268a03c04bb4950251ae030f015
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654811"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374047"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
@@ -39,6 +39,7 @@ In der folgenden Beispieldatei *host.json* für Version 2.x und höher sind all
         "flushTimeout": "00:00:30"
     },
     "extensions": {
+        "blobs": {},
         "cosmosDb": {},
         "durableTask": {},
         "eventHubs": {},
@@ -216,6 +217,10 @@ Weitere Informationen zu Momentaufnahmen finden Sie unter [Debugmomentaufnahmen 
 | thresholdForSnapshotting | 1 | Diese Eigenschaft gibt an, wie viele Ausnahmen Application Insights ermitteln muss, bevor Momentaufnahmen angefordert werden. |
 | uploaderProxy | NULL | Diese Eigenschaft überschreibt den Proxyserver, der vom SnapshotUploader-Prozess verwendet wird. Sie müssen diese Einstellung möglicherweise verwenden, wenn Ihre Anwendung eine Internetverbindung über einen Proxyserver herstellt. Snapshot Collector wird im Prozess Ihrer Anwendung ausgeführt und verwendet die gleichen Proxyeinstellungen. Der SnapshotUploader-Prozess wird jedoch separat ausgeführt, und Sie müssen den Proxyserver möglicherweise manuell konfigurieren. Wenn diese Eigenschaft den Wert NULL aufweist, versucht Snapshot Collector die Proxyadresse automatisch zu ermitteln, indem System.Net.WebRequest.DefaultWebProxy untersucht und der Wert an den SnapshotUploader-Prozess übergeben wird. Wenn nicht der Wert NULL vorliegt, wird die automatische Ermittlung nicht verwendet und der hier angegebene Proxyserver wird im SnapshotUploader-Prozess verwendet. |
 
+## <a name="blobs"></a>Blobs
+
+Die Konfigurationseinstellungen finden Sie in [Storage-Blobtrigger und Bindungen](functions-bindings-storage-blob.md#hostjson-settings).  
+
 ## <a name="cosmosdb"></a>cosmosDb
 
 Die Konfigurationseinstellung finden Sie in [Cosmos DB-Trigger und -Bindungen](functions-bindings-cosmosdb-v2-output.md#host-json).
@@ -378,7 +383,7 @@ Verwaltete Abhängigkeit ist ein Vorschaufeature, das derzeit nur mit PowerShell
 
 ## <a name="queues"></a>queues
 
-Die Konfigurationseinstellungen finden Sie in [Trigger und Bindungen der Speicherwarteschlange](functions-bindings-storage-queue-output.md#host-json).  
+Die Konfigurationseinstellungen finden Sie in [Trigger und Bindungen der Speicherwarteschlange](functions-bindings-storage-queue.md#host-json).  
 
 ## <a name="retry"></a>retry
 

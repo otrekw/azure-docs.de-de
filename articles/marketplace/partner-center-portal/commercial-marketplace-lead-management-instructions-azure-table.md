@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 08/25/2020
-ms.openlocfilehash: 71b9c96c1855180106f7dfa9a31f0ee8b06ceb67
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 3c8b9444344e5bae414145e2b3367c265114a423
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347862"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586841"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Verwenden von Azure-Tabellenspeicher zum Verwalten von Leads im kommerziellen Marketplace
 
@@ -203,3 +203,7 @@ Wählen Sie die Schaltfläche **Überprüfen** aus, um sich zu vergewissern, das
 >Sie müssen die Konfiguration der übrigen Einstellungen des Angebots abschließen und veröffentlichen, damit Sie Leads für das Angebot erhalten.
 
 Wenn Leads generiert werden, werden sie von Microsoft an die Azure-Tabelle gesendet. Wenn Sie einen Flow konfiguriert haben, wird auch eine E-Mail an die von Ihnen konfigurierte E-Mail-Adresse gesendet.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Häufig gestellte Fragen und Problembehandlung bei der Leadverwaltung](../lead-management-faq.md)

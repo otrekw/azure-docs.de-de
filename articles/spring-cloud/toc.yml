@@ -59,7 +59,7 @@
   items:
     - name: Entwickeln
       items:
-        - name: Vorbereiten einer Java Spring-App für die Bereitstellung
+        - name: Vorbereiten einer App für die Bereitstellung
           href: spring-cloud-tutorial-prepare-app-deployment.md
         - name: Einrichten eines Konfigurationsservers
           href: spring-cloud-tutorial-config-server.md
@@ -157,7 +157,11 @@
           href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
           href: /azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud
-- name: DevOps-Bereitstellung
+- name: Architektur
+  items:
+    - name: Referenzarchitektur
+      href: spring-cloud-reference-architecture.md
+- name: Bereitstellung von DevOps
   items:
     - name: CI/CD mit Azure DevOps
       href: spring-cloud-howto-cicd.md
@@ -171,7 +175,7 @@
       href: spring-cloud-troubleshoot.md
 - name: Verweis
   items:
-    - name: Azure CLI-Plug-In
+    - name: "Azure\_CLI-Plug-In"
       href: /cli/azure/ext/spring-cloud/spring-cloud
     - name: Azure PowerShell
       href: /powershell/module/az.springcloud
@@ -184,3 +188,6 @@
     - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
+    - name: Neuerungen
+      displayName: What's New
+      href: 'https://azure.microsoft.com/updates/?query=spring'

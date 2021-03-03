@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 618efc8d2c3784a487c302661f35d5a284c68178
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 7d39decaa6376c614e48b65ad2fc1b3043aa0a3c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475644"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101682442"
 ---
 [!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
 
@@ -74,8 +74,8 @@ Zu Demonstrationszwecken wird in diesem Beispiel standardmäßig ein öffentlich
 Wenn weitere Konfigurationsschritte ausgeführt werden, wird für dieses Beispiel auch die Verbindungsherstellung mit einem per **Azure Active Directory** (Azure AD) geschützten Endpunkt unterstützt. So kann erreicht werden, dass die Benutzeranmeldung für die App erzwungen wird, um ein Azure Communication Services-Token abzurufen. Sehen Sie sich die folgenden Schritte an:
 
 1. Aktivieren Sie die Azure Active Directory-Authentifizierung in Ihrer App.  
-   - [Registrieren Ihrer App unter Azure Active Directory (über die Einstellungen der iOS-/macOS-Plattform)](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-ios) 
-    - [Konfigurieren Ihrer App Service- oder Azure Functions-App zur Verwendung der Azure AD-Anmeldung](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
+   - [Registrieren Ihrer App unter Azure Active Directory (über die Einstellungen der iOS-/macOS-Plattform)](../../../active-directory/develop/tutorial-v2-ios.md) 
+    - [Konfigurieren Ihrer App Service- oder Azure Functions-App zur Verwendung der Azure AD-Anmeldung](../../../app-service/configure-authentication-provider-aad.md)
 2. Navigieren Sie in Azure Active Directory unter „App-Registrierungen“ zur Übersichtsseite Ihrer registrierten App. Notieren Sie sich die Werte für `Application (client) ID`, `Directory (tenant) ID` und `Application ID URI`.
 
 :::image type="content" source="../media/calling/aad-overview.png" alt-text="Azure Active Directory-Konfiguration im Azure-Portal":::

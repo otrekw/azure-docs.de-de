@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: a2348e0578b60c59fd7205037bd42d7bb1e84fae
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 6f677c8753f09e146d300186e19217568952b417
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953698"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705397"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Änderungen bei der Terminologie und bei Entitäten zwischen Media Services V2 und V3
 
@@ -73,7 +73,7 @@ Sehen Sie sich die Namenskonventionen an, die auf Media Services V3-Ressourcen 
 | **Codieren** <!--new row --> |||
 | Bitraten für die Codierung <!--new row --> | Bitraten, gemessen in KBit/s, z. B.: 128 (KBit/s)| Bits pro Sekunde (Bit/s), z. B.: 128.000 (Bit/s)|
 | Codieren von DRM mit FairPlay <!--new row --> | In Media Services V2 konnte der Initialisierungsvektor (IV) angegeben werden. | In Media Services V3 kann FairPlay IV nicht angegeben werden.|
-| Premium-Encoder <!--new row --> | Premium-Encoder und ältere Indexer| Der Zugriff auf den [Premium-Encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset) und die älteren [Media Analytics-Prozessoren](https://docs.microsoft.com/azure/media-services/previous/legacy-components) (Azure Media Services Indexer 2 Preview, Face Redactor usw.) ist über V3 nicht möglich. Im Media Encoder Standard wurde Unterstützung für die Audiokanalzuordnung hinzugefügt.  Weitere Informationen finden Sie in der Dokumentation zu [Audiodaten bei der Media Services-Codierung mit Swagger](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json).  | Weitere Informationen finden Sie unter den Codierungsthemen in [Szenariobasierte Codierung](migrate-v-2-v-3-migration-scenario-based-encoding.md). |
+| Premium-Encoder <!--new row --> | Premium-Encoder und ältere Indexer| Der Zugriff auf den [Premium-Encoder](../previous/media-services-encode-asset.md) und die älteren [Media Analytics-Prozessoren](../previous/legacy-components.md) (Azure Media Services Indexer 2 Preview, Face Redactor usw.) ist über V3 nicht möglich. Im Media Encoder Standard wurde Unterstützung für die Audiokanalzuordnung hinzugefügt.  Weitere Informationen finden Sie in der Dokumentation zu [Audiodaten bei der Media Services-Codierung mit Swagger](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json).  | Weitere Informationen finden Sie unter den Codierungsthemen in [Szenariobasierte Codierung](migrate-v-2-v-3-migration-scenario-based-encoding.md). |
 | **Transformationen und Aufträge** <!--new row -->|||
 | Auftragsbasierte Verarbeitung von HTTPS <!--new row --> |<!-- empty -->| Für dateibasierte Auftragsverarbeitung können Sie als Eingabe eine HTTPS-URL verwenden. Sie müssen noch keine Inhalte in Azure gespeichert haben und müssen auch keine Medienobjekte erstellen. |
 | ARM-Vorlagen für Aufträge <!--new row --> | ARM-Vorlagen waren in V2 noch nicht vorhanden. | Eine Transformation kann verwendet werden, um wiederverwendbare Konfigurationen und Azure Resource Manager-Vorlagen zu erstellen, und um Verarbeitungseinstellungen zwischen mehreren Kunden oder Mandanten zu isolieren. |

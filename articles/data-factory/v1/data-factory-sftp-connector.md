@@ -1,22 +1,18 @@
 ---
 title: Verschieben von Daten von einem SFTP-Server mithilfe von Azure Data Factory
 description: Informationen zum Verschieben von Daten von einem lokalen oder in der Cloud gehosteten SFTP-Server mithilfe von Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/12/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3f78934fb11dd4f9e34bf27d565d471d47f250b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b40e9dc83629362da899d2b5ff29ad42e21c4e32
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847689"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382649"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Verschieben von Daten von einem SFTP-Server mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]

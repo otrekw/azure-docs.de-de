@@ -5,15 +5,15 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 12/22/2020
+ms.date: 02/10/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 5b8d167992e57cd0fae35c57212ea700cd677afa
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 873fdba1d24db55b3269cc2c13f0140da4a9b4e3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920425"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393349"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>Untersuchen und Verwalten Ihrer Ressourcen mit dem Ressourcenbestand und Verwaltungstools
 
@@ -37,7 +37,6 @@ Die Ressourcenverwaltungsfunktionen dieses Tools sind umfassend und wachsen weit
 
 
 ## <a name="availability"></a>Verfügbarkeit
-
 |Aspekt|Details|
 |----|:----|
 |Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
@@ -48,33 +47,36 @@ Die Ressourcenverwaltungsfunktionen dieses Tools sind umfassend und wachsen weit
 
 
 ## <a name="what-are-the-key-features-of-asset-inventory"></a>Welche sind die wichtigsten Features des Ressourcenbestands?
-
 Auf der Bestandsseite werden die folgenden Tools angezeigt:
 
-- **Zusammenfassungen** – Bevor Sie Filter definieren, wird oben in der Bestandsansicht ein auffälliger Streifen mit Werten angezeigt:
+:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Hauptfunktionen auf der Ressourcenbestandsseite in Azure Security Center" lightbox="media/asset-inventory/highlights-of-inventory.png":::
 
-    - **Ressourcen gesamt**: Die Gesamtanzahl der mit Azure Security Center verbundenen Ressourcen.
-    - **Fehlerhafte Ressourcen:** Ressourcen mit aktiven Sicherheitsempfehlungen. [Weitere Informationen zu Sicherheitsempfehlungen](security-center-recommendations.md).
-    - **Nicht überwachte Ressourcen**: Ressourcen mit Agent-Überwachungsproblemen – Der Log Analytics-Agent wurde bereitgestellt, aber der Agent sendet keine Daten oder hat andere Integritätsprobleme.
 
-- **Filter** – Die zahlreichen Filter am oberen Rand der Seite bieten eine Möglichkeit, die Liste der Ressourcen schnell entsprechend der Frage zu verfeinern, die Sie zu beantworten versuchen. Wenn Sie beispielsweise die Frage *Auf welchen meiner Computer mit dem Tag „Produktion“ fehlt der Log Analytics-Agent?* beantworten möchten, könnten Sie den Filter **Agent-Überwachung** mit dem Filter **Tags** kombinieren, wie im folgenden Clip gezeigt:
+### <a name="1---summaries"></a>1: Zusammenfassungen
+Bevor Sie Filter definieren, wird oben in der Bestandsansicht ein auffälliger Streifen mit Werten angezeigt:
 
-    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="Filtern nach Produktionsressourcen, die nicht überwacht werden":::
+- **Ressourcen gesamt**: Die Gesamtanzahl der mit Azure Security Center verbundenen Ressourcen.
+- **Fehlerhafte Ressourcen:** Ressourcen mit aktiven Sicherheitsempfehlungen. [Weitere Informationen zu Sicherheitsempfehlungen](security-center-recommendations.md).
+- **Nicht überwachte Ressourcen**: Ressourcen mit Agent-Überwachungsproblemen – Der Log Analytics-Agent wurde bereitgestellt, aber der Agent sendet keine Daten oder hat andere Integritätsprobleme.
+- **Nicht registrierte Abonnements:** Alle Abonnements im ausgewählten Bereich, die noch nicht mit Azure Security Center verbunden wurden
 
-    Sobald Sie Filter angewendet haben, werden die Zusammenfassungswerte aktualisiert und an die Abfrageergebnisse angepasst. 
+### <a name="2---filters"></a>2: Filter
+Die zahlreichen Filter am oberen Rand der Seite bieten eine Möglichkeit, die Liste der Ressourcen schnell entsprechend der Frage zu verfeinern, die Sie zu beantworten versuchen. Wenn Sie beispielsweise die Frage *Auf welchen meiner Computer mit dem Tag „Produktion“ fehlt der Log Analytics-Agent?* beantworten möchten, könnten Sie den Filter **Agent-Überwachung** mit dem Filter **Tags** kombinieren.
 
-- **Exportoptionen** – Der Ressourcenbestand bietet die Möglichkeit, die Ergebnisse der ausgewählten Filteroptionen in eine CSV-Datei zu exportieren. Darüber hinaus können Sie die Abfrage selbst in den Azure Resource Graph-Explorer exportieren, um die KQL-Abfrage (Kusto Query Language KQL) weiter zu verfeinern, zu speichern oder zu modifizieren.
+Sobald Sie Filter angewendet haben, werden die Zusammenfassungswerte aktualisiert und an die Abfrageergebnisse angepasst. 
 
-    :::image type="content" source="./media/asset-inventory/inventory-export-options.png" alt-text="Exportoptionen für Ressourcenbestand":::
+### <a name="3---export-and-asset-management-tools"></a>3: Export- und Ressourcenverwaltungstools
 
-    > [!TIP]
-    > Die KQL-Dokumentation bietet eine Datenbank mit einigen Beispieldaten zusammen mit einigen einfachen Abfragen, um ein „Gefühl“ für die Sprache zu bekommen. [Weitere Informationen finden Sie in diesem KQL-Tutorial](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
+**Exportoptionen:** Der Bestand bietet die Möglichkeit, die Ergebnisse der ausgewählten Filteroptionen in eine CSV-Datei zu exportieren. Darüber hinaus können Sie die Abfrage selbst in den Azure Resource Graph-Tester exportieren, um die KQL-Abfrage (Kusto Query Language KQL) weiter zu verfeinern, zu speichern oder zu bearbeiten.
 
-- **Ressourcenverwaltungsoptionen** Mit dem Ressourcenbestand können Sie komplexe Suchabfragen durchführen. Wenn Sie die Ressourcen gefunden haben, die Ihren Abfragen entsprechen, bietet der Ressourcenbestand Verknüpfungen für Vorgänge wie z. B.:
+> [!TIP]
+> Die KQL-Dokumentation bietet eine Datenbank mit einigen Beispieldaten zusammen mit einigen einfachen Abfragen, um ein „Gefühl“ für die Sprache zu bekommen. [Weitere Informationen finden Sie in diesem KQL-Tutorial](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
 
-    - Zuweisen von Tags zu den gefilterten Ressourcen: Aktivieren Sie die Kontrollkästchen neben den Ressourcen, die Sie mit einem Tag versehen möchten.
-    - Onboarding neuer Server in Security Center: Verwenden Sie die Symbolleistenschaltfläche **Nicht-Azure-Server hinzufügen**.
-    - Automatisieren von Workloads mit Azure Logic Apps: Verwenden Sie die Schaltfläche **Logik-App auslösen**, um eine Logik-App für eine oder mehrere Ressourcen auszuführen. Ihre Logik-Apps müssen zuvor vorbereitet werden und den entsprechenden Triggertyp (HTTP-Anforderung) akzeptieren. [Erfahren Sie mehr über Logik-Apps](../logic-apps/logic-apps-overview.md).
+**Ressourcenverwaltungsoptionen** Mit dem Ressourcenbestand können Sie komplexe Suchabfragen durchführen. Wenn Sie die Ressourcen gefunden haben, die Ihren Abfragen entsprechen, bietet der Ressourcenbestand Verknüpfungen für Vorgänge wie z. B.:
+
+- Zuweisen von Tags zu den gefilterten Ressourcen: Aktivieren Sie die Kontrollkästchen neben den Ressourcen, die Sie mit einem Tag versehen möchten.
+- Onboarding neuer Server in Security Center: Verwenden Sie die Symbolleistenschaltfläche **Nicht-Azure-Server hinzufügen**.
+- Automatisieren von Workloads mit Azure Logic Apps: Verwenden Sie die Schaltfläche **Logik-App auslösen**, um eine Logik-App für eine oder mehrere Ressourcen auszuführen. Ihre Logik-Apps müssen zuvor vorbereitet werden und den entsprechenden Triggertyp (HTTP-Anforderung) akzeptieren. [Erfahren Sie mehr über Logik-Apps](../logic-apps/logic-apps-overview.md).
 
 
 ## <a name="how-does-asset-inventory-work"></a>Wie funktioniert der Ressourcenbestand?
@@ -94,14 +96,14 @@ Mit Hilfe der [Kusto Query Language (KQL)](/azure/data-explorer/kusto/query/) ka
 
 1. Wählen Sie die entsprechenden Optionen in den Filtern aus, um die spezifische Abfrage zu erstellen, die Sie ausführen möchten.
 
-    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="Filteroptionen für den Bestand" lightbox="./media/asset-inventory/inventory-filters.png":::
-
     Standardmäßig werden die Ressourcen nach der Anzahl aktiver Sicherheitsempfehlungen sortiert.
 
     > [!IMPORTANT]
     > Die Optionen in jedem Filter sind spezifisch für die Ressourcen in den aktuell ausgewählten Abonnements **und** Ihre Auswahl in den anderen Filtern.
     >
     > Wenn Sie z. B. nur ein Abonnement ausgewählt haben und das Abonnement keine Ressourcen mit ausstehenden Sicherheitsempfehlungen aufweist, die zu beheben sind (0 fehlerhafte Ressourcen), enthält der Filter **Empfehlungen** keine Optionen. 
+
+    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="Verwenden der Filteroptionen im Ressourcenbestand in Azure Security Center zum Filtern von Ressourcen nach Produktionsressourcen, die nicht überwacht werden":::
 
 1. Um den Filter **Sicherheitsergebnisse enthalten** zu verwenden, geben Sie freien Text aus der ID, der Sicherheitsprüfung oder dem CVE-Namen eines Sicherheitsergebnisses ein, um nach den betroffenen Ressourcen zu filtern:
 

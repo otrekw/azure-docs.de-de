@@ -6,20 +6,19 @@ documentationcenter: ''
 author: msjuergent
 manager: bburns
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e560fc996393969eecb45a3fdda24bc940436dc0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 83743a6985bef8ce6c03e01ed8d10aa740852106
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967719"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668807"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>Überwachung und Problembehandlung auf HANA-Seite
 
@@ -94,10 +93,10 @@ Auf der Website [SAP HANA Troubleshooting: Memory Problems](https://help.sap.com
 Führen Sie die Schritte zur Behandlung von Netzwerkproblemen aus, die in [SAP Note #2081065 – Troubleshooting SAP HANA Network](https://launchpad.support.sap.com/#/notes/2081065) beschrieben werden.
 
 1. Analysieren Sie die Roundtripzeit zwischen Server und Client.
-  A. Führen Sie das SQL-Skript [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700) _aus._
+  A. Führen Sie das SQL-Skript [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700)_aus._
   
 2. Analysieren Sie die Kommunikation zwischen Knoten.
-  A. Führen Sie das SQL-Skript [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700) _aus._
+  A. Führen Sie das SQL-Skript [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700)_aus._
 
 3. Führen Sie den Linux-Befehl **ifconfig** aus (die Ausgabe zeigt, ob Paketverluste auftreten).
 4. Führen Sie den Linux-Befehl **tcpdump** aus.

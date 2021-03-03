@@ -4,12 +4,12 @@ description: Application Insights führt eine intelligente Analyse Ihrer App-Tel
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: ead71a5ac6e2cfa0df6654c7ba9aa7b5b9238d04
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: a055a323001e0291d3cb5c1716e640b3c8b21dbf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763773"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573725"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligente Erkennung – Leistungsabweichungen
 
@@ -70,12 +70,12 @@ Pro Tag und Application Insights-Ressource wird nur eine E-Mail zu Leistungsanom
 * *Kann ich meine eigenen Erkennungsregeln für Anomalien erstellen oder vorhandene Regeln anpassen?*
 
   * Das ist leider noch nicht möglich. Jedoch ist Folgendes möglich:
-    * [Einrichten von Warnungen](../platform/alerts-log.md), die Sie informieren, wenn eine Metrik einen Schwellenwert überschreitet
+    * [Einrichten von Warnungen](../alerts/alerts-log.md), die Sie informieren, wenn eine Metrik einen Schwellenwert überschreitet
     * [Exportieren von Telemetriedaten](./export-telemetry.md) in eine [Datenbank](./code-sample-export-sql-stream-analytics.md) oder [in Power BI](./export-power-bi.md), mit denen Sie selbst eine Analyse durchführen können.
 * *Wie oft wird die Analyse ausgeführt?*
 
   * Die Analyse der Telemetriedaten vom Vortag wird täglich ausgeführt (ganzer Tag in Zeitzone UTC).
-* *Ersetzt dies also die [Metrikwarnungen](../platform/alerts-log.md)?*
+* *Ersetzt dies also die [Metrikwarnungen](../alerts/alerts-log.md)?*
   * Nein.  Wir können nicht gewährleisten, dass jedes Verhalten erkannt wird, das Sie möglicherweise als ungewöhnlich erachten.
 
 
@@ -175,10 +175,10 @@ Mit den folgenden Diagnosetools können Sie die Telemetrie Ihrer App untersuchen
 
 * [Profiler](profiler.md) 
 * [Momentaufnahmedebugger](./snapshot-debugger.md)
-* [Analyse](../log-query/log-analytics-tutorial.md)
-* [Intelligente Analysediagnose](../log-query/log-query-overview.md)
+* [Analyse](../logs/log-analytics-tutorial.md)
+* [Intelligente Analysediagnose](../logs/log-query-overview.md)
 
 Intelligente Erkennungen sind vollkommen automatisch. Vielleicht möchten Sie aber weitere Warnungen einrichten?
 
-* [Einrichten von Warnungen in Application Insights](../platform/alerts-log.md)
+* [Einrichten von Warnungen in Application Insights](../alerts/alerts-log.md)
 * [Verfügbarkeitswebtests](./monitor-web-app-availability.md)

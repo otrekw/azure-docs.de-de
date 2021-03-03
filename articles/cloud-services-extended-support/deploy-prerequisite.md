@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 42416b1fc06ff59a68a6f5044b8bcca5dc7f035f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1473305d7da57d1216ef05c0b88a0f69d586784b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880185"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728109"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Voraussetzungen für die Bereitstellung von Azure Cloud Services (erweiterter Support)
 
@@ -42,7 +42,7 @@ CloudServices           Microsoft.Compute    Registered
 ## <a name="required-service-configuration-cscfg-file-updates"></a>Erforderliche Aktualisierungen der Dienstkonfigurationsdatei (CSCFG-Datei)
 
 ### <a name="1-virtual-network"></a>1) Virtuelles Netzwerk
-Bereitstellungen von Cloud Services (erweiterter Support) müssen sich in einem virtuellen Netzwerk befinden. Das virtuelle Netzwerk kann über das [Azure-Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal), mit [PowerShell](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell), der [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) oder einer [ARM-Vorlage](https://docs.microsoft.com/azure/virtual-network/quick-create-template) erstellt werden. Auf das virtuelle Netzwerk und die Subnetze muss außerdem in der Dienstkonfiguration (CSCFG-Datei) im Abschnitt [NetworkConfiguration](schema-cscfg-networkconfiguration.md) verwiesen werden. 
+Bereitstellungen von Cloud Services (erweiterter Support) müssen sich in einem virtuellen Netzwerk befinden. Das virtuelle Netzwerk kann über das [Azure-Portal](../virtual-network/quick-create-portal.md), mit [PowerShell](../virtual-network/quick-create-powershell.md), der [Azure CLI](../virtual-network/quick-create-cli.md) oder einer [ARM-Vorlage](../virtual-network/quick-create-template.md) erstellt werden. Auf das virtuelle Netzwerk und die Subnetze muss außerdem in der Dienstkonfiguration (CSCFG-Datei) im Abschnitt [NetworkConfiguration](schema-cscfg-networkconfiguration.md) verwiesen werden. 
 
 Bei virtuellen Netzwerken, die derselben Ressourcengruppe wie der Clouddienst angehören, genügt das Verweisen auf den Namen des virtuellen Netzwerks in der Dienstkonfigurationsdatei (CSCFG-Datei). Wenn sich das virtuelle Netzwerk und der Clouddienst in zwei unterschiedlichen Ressourcengruppen befinden, muss die vollständige Azure Resource Manager-ID des virtuellen Netzwerks in der Dienstkonfigurationsdatei (CSCFG-Datei) angegeben werden.
  
@@ -103,7 +103,7 @@ Die folgenden Größen sind in Azure Resource Manager veraltet. Wenn Sie diese j
  Beispielsweise wird `<WorkerRole name="WorkerRole1" vmsize="Medium"` zu `<WorkerRole name="WorkerRole1" vmsize="Standard_A2"`.
  
 > [!NOTE]
-> Informationen zum Abrufen einer Liste der verfügbaren Größen finden Sie unter [Ressourcen-SKUs: Liste](https://docs.microsoft.com/rest/api/compute/resourceskus/list). Wenden Sie die folgenden Filter an: <br>
+> Informationen zum Abrufen einer Liste der verfügbaren Größen finden Sie unter [Ressourcen-SKUs: Liste](/rest/api/compute/resourceskus/list). Wenden Sie die folgenden Filter an: <br>
 `ResourceType = virtualMachines ` <br>
 `VMDeploymentTypes = PaaS `
 
@@ -120,7 +120,7 @@ In Bereitstellungen, die die alten Remotedesktop-Plug-Ins genutzt haben, müssen
 
 ## <a name="key-vault-creation"></a>Erstellen einer Key Vault-Instanz 
 
-Key Vault wird zum Speichern von Zertifikaten verwendet, die Cloud Services (erweiterter Support) zugeordnet sind. Fügen Sie Key Vault die Zertifikate hinzu, und verweisen Sie dann in der Dienstkonfigurationsdatei auf die Zertifikatfingerabdrücke. Außerdem müssen Sie Key Vault für entsprechende Berechtigungen aktivieren, damit Cloud Services (erweiterter Support) als Geheimnisse gespeicherte Zertifikate aus Key Vault abrufen kann. Key Vault kann über das [Azure-Portal](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal) und mit [PowerShell](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell) erstellt werden. Key Vault muss in derselben Region und im selben Abonnement wie der Clouddienst erstellt werden. Weitere Informationen finden Sie unter [Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)](certificates-and-key-vault.md).
+Key Vault wird zum Speichern von Zertifikaten verwendet, die Cloud Services (erweiterter Support) zugeordnet sind. Fügen Sie Key Vault die Zertifikate hinzu, und verweisen Sie dann in der Dienstkonfigurationsdatei auf die Zertifikatfingerabdrücke. Außerdem müssen Sie Key Vault für entsprechende Berechtigungen aktivieren, damit Cloud Services (erweiterter Support) als Geheimnisse gespeicherte Zertifikate aus Key Vault abrufen kann. Key Vault kann über das [Azure-Portal](../key-vault/general/quick-create-portal.md) und mit [PowerShell](../key-vault/general/quick-create-powershell.md) erstellt werden. Key Vault muss in derselben Region und im selben Abonnement wie der Clouddienst erstellt werden. Weitere Informationen finden Sie unter [Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)](certificates-and-key-vault.md).
 
 ## <a name="next-steps"></a>Nächste Schritte 
 - Überprüfen Sie die [Bereitstellungsvoraussetzungen](deploy-prerequisite.md) für Cloud Services (erweiterter Support).

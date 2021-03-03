@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: fc410ef903ac7eca2457516df2c71260a4b19b89
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 656b2e44ec4a4e9de0d594301cb3e4c1b9a33b13
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097488"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558617"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4- und Edsv4-Serie
 
@@ -30,7 +30,7 @@ Die Edv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Platin
 [Livemigration:](maintenance-and-updates.md) Unterstützt<br>
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
-[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
+[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt (*erfordert mindestens 4 vCPU*)<br>
 [Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Nicht unterstützt <br>
 <br>
 
@@ -58,7 +58,7 @@ Die Edsv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Plati
 [Livemigration](maintenance-and-updates.md): Unterstützt<br>
 [Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
-[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
+[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt (*erfordert mindestens 4 vCPU*)<br>
 [Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt <br>
 <br>
 

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: e5ce9597802f88bacbe03cffac77fdfbee3a9357
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: c78bcfe316f543cd6408c24a9ed140b60daad22d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097605"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558078"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4- und Dasv4-Serie
 
@@ -26,8 +26,8 @@ Die Dav4-Serie und die Dasv4-Serie sind neue Größen, bei denen der AMD-Prozess
 [Livemigration](maintenance-and-updates.md): Unterstützt<br>
 [Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
 [Unterstützung von VM-Generationen](generation-2.md): Generation 1<br>
-[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
-[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Nicht unterstützt <br>
+[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt (*erfordert mindestens 4 vCPU*)<br>
+[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt <br>
 <br>
 
 Die Größen der Dav4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen kann. Die Größen der Dav4-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher, die für die meisten Produktionsworkloads geeignet ist. Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Um SSD Premium zu verwenden, verwenden Sie die Größen der Dasv4-Serie. Für Dasv4-Größen gelten die gleichen Preise und Verbrauchseinheiten für die Abrechnung wie bei der Dav4-Serie.
@@ -51,8 +51,8 @@ Die Größen der Dav4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 745
 [Livemigration](maintenance-and-updates.md): Unterstützt<br>
 [Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
-[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
-[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Nicht unterstützt <br>
+[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt (*erfordert mindestens 4 vCPU*)<br>
+[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt <br>
 <br>
 
 Die Größen der Dasv4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen und SSD Premium verwenden kann. Die Größen der Dasv4-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher, die für die meisten Produktionsworkloads geeignet ist.

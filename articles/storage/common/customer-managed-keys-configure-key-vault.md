@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 02/16/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 02661c9c2a581ab21a2ae9dc31e5da95426c0edd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 24fbe843986b732a04c9e356c54f3d768d6739be
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843382"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558188"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault gespeichert sind
 
@@ -175,10 +175,11 @@ Azure Storage kann den kundenseitig verwalteten Schlüssel, der für die Verschl
 Führen Sie die folgenden Schritte aus, um kundenseitig verwaltete Schlüssel mit der automatischen Aktualisierung der Schlüsselversion im Azure-Portal zu konfigurieren:
 
 1. Navigieren Sie zum Speicherkonto.
-1. Klicken Sie auf dem Blatt **Einstellungen** Blatt für das Speicherkonto auf **Verschlüsselung**. Wählen Sie die Option **Von Kunden verwaltete Schlüssel** wie in der folgenden Abbildung gezeigt aus.
+1. Klicken Sie auf dem Blatt **Einstellungen** Blatt für das Speicherkonto auf **Verschlüsselung**. Standardmäßig ist die Schlüsselverwaltung auf **Von Microsoft verwaltete Schlüssel** festgelegt, wie in der folgenden Abbildung dargestellt.
 
     ![Portal-Screenshot mit der Verschlüsselungsoption](./media/customer-managed-keys-configure-key-vault/portal-configure-encryption-keys.png)
 
+1. Wählen Sie die Option **Kundenseitig verwaltete Schlüssel** aus.
 1. Wählen Sie die Option **Select from Key Vault** (Aus Schlüsseltresor wählen).
 1. Wählen Sie **Schlüsseltresor und Schlüssel auswählen** aus.
 1. Wählen Sie den Schlüsseltresor mit dem Schlüssel aus, den Sie verwenden möchten.

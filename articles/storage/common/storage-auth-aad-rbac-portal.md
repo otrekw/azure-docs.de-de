@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 40003db9c3bd2c736f9cedd73b8b7a31a77f625f
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: d63a31eae57d09f1658f5f19c1518cb0648fa4e8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854579"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373747"
 ---
 # <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal
 
@@ -43,10 +43,12 @@ Nachdem Sie den gewünschten Umfang für eine Rollenzuweisung festgelegt haben, 
 
 In den folgenden Abschnitten werden diese Schritte ausführlicher beschrieben.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Wenn Sie ein Azure Storage-Konto erstellen, erhalten Sie nicht automatisch Berechtigungen für den Zugriff auf Daten über Azure AD. Sie müssen sich selbst explizit eine Azure-Rolle für Azure Storage zuweisen. Sie können sie auf Ebene Ihres Abonnements, einer Ressourcengruppe, eines Speicherkontos oder eines Containers oder einer Warteschlange zuordnen.
 >
 > Bevor Sie sich eine Rolle für den Datenzugriff zuweisen, können Sie bereits über das Azure-Portal auf Daten in Ihrem Speicherkonto zugreifen, da das Azure-Portal auch den Kontoschlüssel für den Datenzugriff nutzen kann. Weitere Informationen finden Sie unter [Auswählen der Autorisierung des Zugriffs auf Blobdaten im Azure-Portal](../blobs/authorize-data-operations-portal.md).
+>
+> Wenn das Speicherkonto mit einem Schreibschutz von Azure Resource Manager gesperrt ist, verhindert diese Sperre die Zuweisung von Azure RBAC-Rollen, die für das Speicherkonto oder einen Datencontainer (Blobcontainer oder Warteschlange) gelten.
 
 ### <a name="assign-an-azure-built-in-role"></a>Zuweisen einer in Azure integrierten Rolle
 

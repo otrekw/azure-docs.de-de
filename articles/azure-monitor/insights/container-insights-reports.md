@@ -3,15 +3,15 @@ title: Berichte in Azure Monitor für Container
 description: Hier werden die Berichte beschrieben, die zum Analysieren der von Azure Monitor für Container gesammelten Daten bereitstehen.
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 3cc2f8fb9bfaa278ce06b4a8cd6d379397b7129a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 94709cf4a8b579447c11f91f9bc6863ab4b4fe08
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907402"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582305"
 ---
 # <a name="reports-in-azure-monitor-for-containers"></a>Berichte in Azure Monitor für Container
-Als Berichte in Azure Monitor für Container werden standardmäßige [Azure-Arbeitsmappen](../platform/workbooks-overview.md) empfohlen. In diesem Artikel werden die verschiedenen verfügbaren Berichte und der Zugriff darauf beschrieben.
+Als Berichte in Azure Monitor für Container werden standardmäßige [Azure-Arbeitsmappen](../visualize/workbooks-overview.md) empfohlen. In diesem Artikel werden die verschiedenen verfügbaren Berichte und der Zugriff darauf beschrieben.
 
 ## <a name="viewing-reports"></a>Anzeigen von Berichten
 Wählen Sie im Azure-Portal im **Azure Monitor**-Menü die Option **Container** aus. Wählen Sie im Abschnitt **Überwachung** die Option **Einblicke** aus. Wählen Sie dann einen bestimmten Cluster und anschließend die Seite **Berichte (Vorschau)** aus. 
@@ -19,7 +19,7 @@ Wählen Sie im Azure-Portal im **Azure Monitor**-Menü die Option **Container** 
 [![Seite „Berichte“](media/container-insights-reports/reports-page.png)](media/container-insights-reports/reports-page.png#lightbox)
 
 ## <a name="create-a-custom-workbook"></a>Benutzerdefinierte Arbeitsmappe erstellen
-Wenn Sie eine benutzerdefinierte Arbeitsmappe auf Grundlage einer dieser Arbeitsmappen erstellen möchten, wählen Sie die Dropdownliste **Arbeitsmappen anzeigen** und dann am Ende dieser Liste den Eintrag **Zum AKS-Katalog wechseln** aus. Weitere Informationen zu Arbeitsmappen und zur Verwendung von Arbeitsmappenvorlagen finden Sie unter [Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md).
+Wenn Sie eine benutzerdefinierte Arbeitsmappe auf Grundlage einer dieser Arbeitsmappen erstellen möchten, wählen Sie die Dropdownliste **Arbeitsmappen anzeigen** und dann am Ende dieser Liste den Eintrag **Zum AKS-Katalog wechseln** aus. Weitere Informationen zu Arbeitsmappen und zur Verwendung von Arbeitsmappenvorlagen finden Sie unter [Azure Monitor-Arbeitsmappen](../visualize/workbooks-overview.md).
 
 [![AKS-Katalog](media/container-insights-reports/aks-gallery.png)](media/container-insights-reports/aks-gallery.png#lightbox)
 
@@ -78,4 +78,4 @@ Wenn Sie eine benutzerdefinierte Arbeitsmappe auf Grundlage einer dieser Arbeits
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Ausführliche Informationen zu Arbeitsmappen in Azure Monitor finden Sie unter [Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md).
+- Ausführliche Informationen zu Arbeitsmappen in Azure Monitor finden Sie unter [Azure Monitor-Arbeitsmappen](../visualize/workbooks-overview.md).

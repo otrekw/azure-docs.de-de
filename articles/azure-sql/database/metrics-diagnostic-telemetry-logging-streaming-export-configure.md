@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 04/06/2020
-ms.openlocfilehash: 999bb83af6937d4a7b3d7ee8207e2fd689a23d35
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1de2c1ff02c799d04f2ab2c81e83dda5001a531f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490805"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592720"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Konfigurieren des Streamingexports von Diagnosetelemetrie aus Azure SQL Database und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -58,17 +58,17 @@ Die Diagnosetelemetriedaten können für die Analyse an eine der folgenden Azure
 
 - **[Log Analytics-Arbeitsbereich](#stream-into-sql-analytics)** :
 
-  An einen [Log Analytics-Arbeitsbereich](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) gestreamte Daten können von [SQL Analytics](../../azure-monitor/insights/azure-sql.md) verwendet werden. SQL Analytics ist eine auf die Cloud beschränkte Überwachungslösung. Sie ermöglicht die intelligente Überwachung Ihrer Datenbanken mit Leistungsberichten, Warnungen und Empfehlungen zur Risikominderung. Die an einen Log Analytics-Arbeitsbereich gestreamten Daten können zusammen mit anderen gesammelten Überwachungsdaten analysiert werden. Sie ermöglichen Ihnen außerdem die Nutzung anderer Azure Monitor-Features wie Warnungen und Visualisierungen.
+  An einen [Log Analytics-Arbeitsbereich](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) gestreamte Daten können von [SQL Analytics](../../azure-monitor/insights/azure-sql.md) verwendet werden. SQL Analytics ist eine auf die Cloud beschränkte Überwachungslösung. Sie ermöglicht die intelligente Überwachung Ihrer Datenbanken mit Leistungsberichten, Warnungen und Empfehlungen zur Risikominderung. Die an einen Log Analytics-Arbeitsbereich gestreamten Daten können zusammen mit anderen gesammelten Überwachungsdaten analysiert werden. Sie ermöglichen Ihnen außerdem die Nutzung anderer Azure Monitor-Features wie Warnungen und Visualisierungen.
 - **[Azure Event Hubs](#stream-into-event-hubs)** :
 
-  Daten, die an einen [Azure Event Hub](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) gestreamt werden, bieten die folgenden Funktionen:
+  Daten, die an einen [Azure Event Hub](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs) gestreamt werden, bieten die folgenden Funktionen:
 
   - **Streamen von Protokollen an Protokollierungs- und Telemetriedatensysteme von Drittanbietern**: Streamen Sie alle Ihre Metriken und Ressourcenprotokolle an einen einzelnen Event Hub, um Protokolldaten an ein SIEM- oder Protokollanalysetool eines Drittanbieters weiterzureichen.
   - **Erstellen einer benutzerdefinierten Telemetrie- und Protokollierungsplattform:** Event Hubs ermöglichen dank des hochgradig skalierbaren Veröffentlichen-Abonnieren-Musters eine flexible Erfassung der Metriken und Ressourcenprotokolle auf einer benutzerdefinierten Telemetrieplattform. Ausführliche Informationen finden Sie unter [Designing and Sizing a Global Scale Telemetry Platform on Azure Event Hubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) (Entwerfen und Dimensionieren einer globalen Telemetrieplattform in Azure Event Hubs).
   - **Anzeigen der Dienstintegrität durch Streamen von Daten an Power BI**: Verwenden Sie Event Hubs, Stream Analytics und Power BI, um sich anhand Ihrer Diagnosedaten nahezu in Echtzeit einen Einblick in Ihre Azure-Dienste verschaffen. Details zu dieser Lösung finden Sie unter [Stream Analytics und Power BI: Ein Dashboard zur Echtzeitanalyse von Streamingdaten](../../stream-analytics/stream-analytics-power-bi-dashboard.md).
 - **[Azure Storage](#stream-into-azure-storage)** :
 
-  Durch das Streamen von Daten an [Azure Storage](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) können Sie immense Mengen von Diagnosetelemetriedaten archivieren, und zwar zu einem Bruchteil der Kosten der beiden vorherigen Streamingoptionen.
+  Durch das Streamen von Daten an [Azure Storage](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) können Sie immense Mengen von Diagnosetelemetriedaten archivieren, und zwar zu einem Bruchteil der Kosten der beiden vorherigen Streamingoptionen.
 
 Die an eines dieser Ziele gestreamten Diagnosetelemetriedaten können für die Messung der Ressourcenverwendung und der Abfrageausführungsstatistiken verwendet werden, um die Leistungsüberwachung zu vereinfachen.
 
@@ -89,7 +89,7 @@ Sie können die Protokollierung von Metriken und Diagnosetelemetriedaten mit ein
 
 ## <a name="configure-the-streaming-export-of-diagnostic-telemetry"></a>Konfigurieren des Streamingexports von Diagnosetelemetriedaten
 
-Das Menü **Diagnoseeinstellungen** im Azure-Portal kann für das Aktivieren und Konfigurieren des Streamings von Diagnosetelemetriedaten verwendet werden. Darüber hinaus können Sie PowerShell, die Azure-Befehlszeilenschnittstelle, die [REST-API](/rest/api/monitor/diagnosticsettings) und [Resource Manager-Vorlagen](../../azure-monitor/samples/resource-manager-diagnostic-settings.md) verwenden, um das Streaming von Diagnosetelemetriedaten zu konfigurieren. Für das Streaming der Diagnosetelemetriedaten können folgende Ziele festgelegt werden: Azure Storage, Azure Event Hubs und Azure Monitor-Protokolle.
+Das Menü **Diagnoseeinstellungen** im Azure-Portal kann für das Aktivieren und Konfigurieren des Streamings von Diagnosetelemetriedaten verwendet werden. Darüber hinaus können Sie PowerShell, die Azure-Befehlszeilenschnittstelle, die [REST-API](/rest/api/monitor/diagnosticsettings) und [Resource Manager-Vorlagen](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md) verwenden, um das Streaming von Diagnosetelemetriedaten zu konfigurieren. Für das Streaming der Diagnosetelemetriedaten können folgende Ziele festgelegt werden: Azure Storage, Azure Event Hubs und Azure Monitor-Protokolle.
 
 > [!IMPORTANT]
 > Der Streamingexport von Diagnosetelemetriedaten ist standardmäßig nicht aktiviert.
@@ -335,7 +335,7 @@ Sie können eine Sammlung von Datenbanken mit Azure SQL-Analyse überwachen, ind
 2. Erstellen Sie in der Lösung einen Log Analytics-Arbeitsbereich.
 3. Konfigurieren Sie Datenbanken zum Streamen von Diagnosetelemetriedaten in den Arbeitsbereich.
 
-Sie können den Streamingexport der Diagnosetelemetriedaten mithilfe der integrierten Option **An Log Analytics senden** auf der Registerkarte „Diagnoseeinstellungen“ im Azure-Portal konfigurieren. Sie können das Streaming in den Log Analytics-Arbeitsbereich anhand von Diagnoseeinstellungen auch mit [PowerShell-Cmdlets](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-powershell#configure-the-streaming-export-of-diagnostic-telemetry), der [Azure CLI](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-cli#configure-the-streaming-export-of-diagnostic-telemetry), der [Azure Monitor-REST-API](/rest/api/monitor/diagnosticsettings) oder [Resource Manager-Vorlagen](../../azure-monitor/samples/resource-manager-diagnostic-settings.md) aktivieren.
+Sie können den Streamingexport der Diagnosetelemetriedaten mithilfe der integrierten Option **An Log Analytics senden** auf der Registerkarte „Diagnoseeinstellungen“ im Azure-Portal konfigurieren. Sie können das Streaming in den Log Analytics-Arbeitsbereich anhand von Diagnoseeinstellungen auch mit [PowerShell-Cmdlets](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-powershell#configure-the-streaming-export-of-diagnostic-telemetry), der [Azure CLI](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-cli#configure-the-streaming-export-of-diagnostic-telemetry), der [Azure Monitor-REST-API](/rest/api/monitor/diagnosticsettings) oder [Resource Manager-Vorlagen](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md) aktivieren.
 
 ### <a name="create-an-azure-sql-analytics-resource"></a>Erstellen einer Azure SQL-Analyse-Ressource
 
@@ -428,7 +428,7 @@ Wenn Sie die Azure SQL-Analyse verwenden, können Sie Ihre Datenerfassungsnutzun
 
 ## <a name="metrics-and-logs-available"></a>Verfügbare Metriken und Protokolle
 
-Informationen zum Überwachen von Telemetriedaten, die für Singletons, Pooldatenbanken, Pools für elastische Datenbanken, verwaltete Instanzen und Instanzdatenbanken verfügbar sind, finden Sie in diesem Abschnitt dieses Artikels. Mit der [Protokollabfragesprache von Azure Monitor](../../azure-monitor/log-query/get-started-queries.md) können Sie die in SQL Analytics gesammelten Überwachungstelemetriedaten für Ihre eigene benutzerdefinierte Analyse und Anwendungsentwicklung verwenden.
+Informationen zum Überwachen von Telemetriedaten, die für Singletons, Pooldatenbanken, Pools für elastische Datenbanken, verwaltete Instanzen und Instanzdatenbanken verfügbar sind, finden Sie in diesem Abschnitt dieses Artikels. Mit der [Protokollabfragesprache von Azure Monitor](../../azure-monitor/logs/get-started-queries.md) können Sie die in SQL Analytics gesammelten Überwachungstelemetriedaten für Ihre eigene benutzerdefinierte Analyse und Anwendungsentwicklung verwenden.
 
 ### <a name="basic-metrics"></a>Grundlegende Metriken
 
@@ -747,8 +747,8 @@ Weitere Informationen zum [Protokollformat von Intelligent Insights](intelligent
 
 Weitere Informationen zum Aktivieren der Protokollierung und zu den Metriken und Protokollkategorien, die von den verschiedenen Azure-Diensten unterstützt werden, finden Sie in den folgenden Themen:
 
-- [Überblick über Metriken in Microsoft Azure](../../azure-monitor/platform/data-platform.md)
-- [Übersicht über Protokolle der Azure-Plattform](../../azure-monitor/platform/platform-logs-overview.md)
+- [Überblick über Metriken in Microsoft Azure](../../azure-monitor/data-platform.md)
+- [Übersicht über Protokolle der Azure-Plattform](../../azure-monitor/essentials/platform-logs-overview.md)
 
 Weitere Informationen zu Event Hubs finden Sie hier:
 

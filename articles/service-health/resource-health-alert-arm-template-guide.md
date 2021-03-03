@@ -3,12 +3,12 @@ title: Vorlage zum Erstellen von Resource Health-Warnungen
 description: Erstellen Sie programmgesteuert Warnungen, die Sie informieren, wenn Ihre Azure-Ressourcen nicht mehr verfügbar sind.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 3859bb0ce2497b1c1f547c3750e53745ef6d6f28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f1cbe1e2d2c185906feb4ccba380cb31df864f5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537428"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588205"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurieren von Ressourcenintegritätswarnungen mithilfe von Resource Manager-Vorlagen
 
@@ -23,7 +23,7 @@ Azure Resource Health informiert Sie über den aktuellen und den vergangenen Int
 Damit Sie die Anweisungen auf dieser Seite ausführen können, müssen Sie vorab einige Komponenten einrichten:
 
 1. Sie müssen das [Azure PowerShell-Modul](/powershell/azure/install-az-ps) installieren.
-2. Sie können [eine Aktionsgruppe erstellen oder wiederverwenden](../azure-monitor/platform/action-groups.md), die so konfiguriert ist, dass Sie benachrichtigt werden.
+2. Sie können [eine Aktionsgruppe erstellen oder wiederverwenden](../azure-monitor/alerts/action-groups.md), die so konfiguriert ist, dass Sie benachrichtigt werden.
 
 ## <a name="instructions"></a>Instructions
 1. Melden Sie sich unter Verwendung von PowerShell und Ihres Kontos bei Azure an, und wählen Sie das gewünschte Abonnement aus.
@@ -452,4 +452,4 @@ Erfahren Sie mehr über Resource Health:
 
 Erstellen von Service Health-Warnungen:
 -  [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](./alerts-activity-log-service-notifications-portal.md) 
--  [Ereignisschema des Azure-Aktivitätsprotokolls](../azure-monitor/platform/activity-log-schema.md)
+-  [Ereignisschema des Azure-Aktivitätsprotokolls](../azure-monitor/essentials/activity-log-schema.md)

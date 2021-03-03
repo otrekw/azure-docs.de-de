@@ -2,18 +2,16 @@
 title: 'Azure Monitor für SAP-Lösungen: Übersicht und Architektur | Microsoft-Dokumentation'
 description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Monitor für SAP-Lösungen.
 author: rdeltcheva
-ms.service: virtual-machines
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.reviewer: cynthn
-ms.openlocfilehash: 1c33011d947d6dc9dd9ee4dd6331c24c06d99b38
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: a88ad3930e114bdf9f3c3c340f92f164215d59c1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693823"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671994"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>Azure Monitor für SAP-Lösungen (Vorschauversion)
 
@@ -35,7 +33,7 @@ Unterstützte Datenbanken:
 - SAP HANA-Datenbank
 - Microsoft SQL Server
 
-Azure Monitor für SAP-Lösungen nutzt die Leistungsfähigkeit bestehender [Azure Monitor](../../../azure-monitor/overview.md)-Funktionen wie Log Analytics und [Arbeitsmappen](../../../azure-monitor/platform/workbooks-overview.md), um weitere Überwachungsfunktionen anzubieten. Kunden können [benutzerdefinierte Visualisierungen](../../../azure-monitor/platform/workbooks-overview.md#getting-started) erstellen, indem sie die von Azure Monitor für SAP-Lösungen bereitgestellten Standardarbeitsmappen bearbeiten, [benutzerdefinierte Abfragen](../../../azure-monitor/log-query/log-analytics-tutorial.md) und [benutzerdefinierte Warnungen](../../../azure-monitor/learn/tutorial-response.md) erstellen, indem sie den Azure Log Analytics-Arbeitsbereich verwenden, die Vorteile der [flexiblen Beibehaltungsdauer](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) nutzen und Überwachungsdaten mit ihrem Ticketsystem verbinden.
+Azure Monitor für SAP-Lösungen nutzt die Leistungsfähigkeit bestehender [Azure Monitor](../../../azure-monitor/overview.md)-Funktionen wie Log Analytics und [Arbeitsmappen](../../../azure-monitor/visualize/workbooks-overview.md), um weitere Überwachungsfunktionen anzubieten. Kunden können [benutzerdefinierte Visualisierungen](../../../azure-monitor/visualize/workbooks-overview.md#getting-started) erstellen, indem sie die von Azure Monitor für SAP-Lösungen bereitgestellten Standardarbeitsmappen bearbeiten, [benutzerdefinierte Abfragen](../../../azure-monitor/logs/log-analytics-tutorial.md) und [benutzerdefinierte Warnungen](../../../azure-monitor/alerts/tutorial-response.md) erstellen, indem sie den Azure Log Analytics-Arbeitsbereich verwenden, die Vorteile der [flexiblen Beibehaltungsdauer](../../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) nutzen und Überwachungsdaten mit ihrem Ticketsystem verbinden.
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>Welche Daten sammelt Azure Monitor für SAP-Lösungen?
 
@@ -91,9 +89,9 @@ Die Hauptkomponenten der Architektur sind:
    - Azure Virtual Machine: Auch bekannt als *Collector-VM*. Dies ist ein virtueller Standard_B2ms-Computer. Der Hauptzweck dieses virtuellen Computers ist das Hosten der *Überwachungsnutzlast*. Die Überwachungsnutzlast bezieht sich auf die Logik der Erfassung der Telemetrie von den Quellsystemen und die Übertragung der gesammelten Daten an das Überwachungsframework. Im obigen Diagramm enthält die Überwachungsnutzlast die Logik für die Verbindung mit der SAP HANA-Datenbank über den SQL-Port.
    - [Azure Key Vault](../../../key-vault/general/basic-concepts.md): Diese Ressource wird bereitgestellt, um die Anmeldeinformationen der SAP HANA-Datenbank sicher zu verwahren und Informationen über [Anbieter](./azure-monitor-providers.md) zu speichern.
    - Log Analytics-Arbeitsbereich: Das Ziel, an dem sich die Telemetriedaten befinden.
-      - Die Visualisierung baut auf der Telemetrie in Log Analytics auf und verwendet [Azure-Arbeitsmappen](../../../azure-monitor/platform/workbooks-overview.md). Kunden können die Visualisierung anpassen. Kunden können ihre Arbeitsmappen oder bestimmte Visualisierungen innerhalb von Arbeitsmappen auch an das Azure-Dashboard anheften, um die Möglichkeit zur automatischen Aktualisierung mit der niedrigsten Granularität von 30 Minuten zu erhalten.
+      - Die Visualisierung baut auf der Telemetrie in Log Analytics auf und verwendet [Azure-Arbeitsmappen](../../../azure-monitor/visualize/workbooks-overview.md). Kunden können die Visualisierung anpassen. Kunden können ihre Arbeitsmappen oder bestimmte Visualisierungen innerhalb von Arbeitsmappen auch an das Azure-Dashboard anheften, um die Möglichkeit zur automatischen Aktualisierung mit der niedrigsten Granularität von 30 Minuten zu erhalten.
       - Kunden können ihren vorhandenen Arbeitsbereich innerhalb desselben Abonnements als SAP-Monitorressource verwenden, indem sie diese Option zum Zeitpunkt der Bereitstellung auswählen.
-      - Kunden können die Kusto-Abfragesprache (KQL) verwenden, um [Abfragen](../../../azure-monitor/log-query/log-query-overview.md) für die unformatierten Tabellen im Log Analytics-Arbeitsbereich auszuführen. Betrachten Sie die *benutzerdefinierten Protokolle*.
+      - Kunden können die Kusto-Abfragesprache (KQL) verwenden, um [Abfragen](../../../azure-monitor/logs/log-query-overview.md) für die unformatierten Tabellen im Log Analytics-Arbeitsbereich auszuführen. Betrachten Sie die *benutzerdefinierten Protokolle*.
 
 > [!Note]
 > Kunden sind für das Patchen und Warten der VM verantwortlich, die in der verwalteten Ressourcengruppe bereitgestellt wird.

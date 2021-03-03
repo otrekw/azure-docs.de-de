@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 3df08705859678525526f8fef198826f58249d8b
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: ada4c1991a57c8252247c9617e097dc82cb3b4a9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573363"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593983"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Planen und Verwalten von Kosten für Azure App Service
 
@@ -38,7 +38,7 @@ Abhängig davon, welches Feature Sie in App Service verwenden, werden möglicher
 - **App Service-Plan**: Erforderlich zum Hosten einer App Service-App.
 - **Dienstebene „Isoliert“** : Für eine App Service-Umgebung ist ein [virtuelles Netzwerk](../virtual-network/index.yml) erforderlich.
 - **Sicherung**: Zum Erstellen von Sicherungen ist ein [Speicherkonto](../storage/index.yml) erforderlich.
-- **Diagnoseprotokolle**: Sie können [Speicherkonto](../storage/index.yml) als Protokollierungsoption auswählen oder in [Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) integrieren.
+- **Diagnoseprotokolle**: Sie können [Speicherkonto](../storage/index.yml) als Protokollierungsoption auswählen oder in [Azure Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) integrieren.
 - **App Service-Zertifikate**: Zertifikate, die Sie in Azure erwerben, müssen in [Azure Key Vault](../key-vault/index.yml) verwaltet werden.
 
 Weitere mit Kosten verbundene Ressourcen für App Service sind (Details finden Sie unter [App ServicePreise](https://azure.microsoft.com/pricing/details/app-service/)):
@@ -114,7 +114,7 @@ Für Produktionsworkloads wird der dedizierte Tarif **Standard** oder höher emp
 > [!NOTE]
 > **Premium V3** unterstützt sowohl Windows- als auch Linux-Container. 
 
-Nachdem Sie den gewünschten Tarif ausgewählt haben, sollten Sie die im Leerlauf befindlichen Instanzen minimieren. In einer Bereitstellung für horizontales Skalieren können Sie durch unausgelastete Compute-Instanzen Geld verschwenden. Sie sollten die [automatische Skalierung konfigurieren](../azure-monitor/platform/autoscale-get-started.md), die im Tarif **Standard** und höher verfügbar ist. Indem Sie Zeitpläne für horizontales Skalieren sowie metrikbasierte Regeln für horizontales Skalieren erstellen, bezahlen Sie jederzeit nur für die tatsächlich benötigten Instanzen.
+Nachdem Sie den gewünschten Tarif ausgewählt haben, sollten Sie die im Leerlauf befindlichen Instanzen minimieren. In einer Bereitstellung für horizontales Skalieren können Sie durch unausgelastete Compute-Instanzen Geld verschwenden. Sie sollten die [automatische Skalierung konfigurieren](../azure-monitor/autoscale/autoscale-get-started.md), die im Tarif **Standard** und höher verfügbar ist. Indem Sie Zeitpläne für horizontales Skalieren sowie metrikbasierte Regeln für horizontales Skalieren erstellen, bezahlen Sie jederzeit nur für die tatsächlich benötigten Instanzen.
 
 ### <a name="azure-reservations"></a>Azure-Reservierungen
 

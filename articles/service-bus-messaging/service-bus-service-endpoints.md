@@ -2,14 +2,14 @@
 title: Konfigurieren von Dienstendpunkten virtueller Netzwerke für Azure Service Bus
 description: In diesem Artikel werden Informationen zum Hinzufügen eines Microsoft.ServiceBus-Dienstendpunkts zu einem virtuellen Netzwerk beschrieben.
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 02/12/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8005a2c43d42908a9ad6ebea10b6a13ef381084c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 2e00c9429ab3e39f95bc5ce6df072a99e4f02b86
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427648"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559577"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Zulassen des Zugriffs auf den Azure Service Bus-Namespace aus bestimmten virtuellen Netzwerken
 Die Integration von Service Bus mit [VNET-Dienstendpunkten][vnet-sep] ermöglicht den sicheren Zugriff auf Messagingfunktionen für Workloads, z. B. an virtuelle Netzwerke (VNETs) gebundene virtuelle Computer. Der Pfad für den Netzwerkdatenverkehr ist dabei an beiden Enden geschützt.
@@ -18,15 +18,16 @@ Nachdem die Konfiguration der Bindung an mindestens einen Dienstendpunkt des VNE
 
 Das Ergebnis ist eine private und isolierte Beziehung zwischen den Workloads, die an das Subnetz gebunden sind, und dem entsprechenden Service Bus-Namespace, obwohl sich die beobachtbare Netzwerkadresse des Messaging-Dienstendpunkts in einem öffentlichen IP-Bereich befindet.
 
->[!WARNING]
-> Die Implementierung der VNET-Integration kann verhindern, dass andere Azure-Dienste mit Service Bus interagieren. Als Ausnahme können Sie bestimmten vertrauenswürdigen Diensten den Zugriff auf Service Bus-Ressourcen erlauben, auch wenn Netzwerkdienst-Endpunkte aktiviert sind. Eine Liste der vertrauenswürdigen Dienste finden Sie unter [Vertrauenswürdige Dienste](#trusted-microsoft-services).
->
-> Die folgenden Microsoft-Dienste müssen sich in einem virtuellen Netzwerk befinden:
-> - Azure App Service
-> - Azure-Funktionen
+Die Implementierung der VNET-Integration kann verhindern, dass andere Azure-Dienste mit Service Bus interagieren. Als Ausnahme können Sie bestimmten vertrauenswürdigen Diensten den Zugriff auf Service Bus-Ressourcen erlauben, auch wenn Netzwerkdienst-Endpunkte aktiviert sind. Eine Liste der vertrauenswürdigen Dienste finden Sie unter [Vertrauenswürdige Dienste](#trusted-microsoft-services).
+
+Die folgenden Microsoft-Dienste müssen sich in einem virtuellen Netzwerk befinden:
+- Azure App Service
+- Azure-Funktionen
+
+Virtuelle Netzwerke werden nur in Service Bus-Namespaces im [Tarif Premium](service-bus-premium-messaging.md) unterstützt. Bei der Verwendung von VNET-Dienstendpunkten mit Service Bus sollten Sie diese Endpunkte nicht in Anwendungen aktivieren, in denen Service Bus-Namespaces der Tarife Standard und Premium gemischt werden. Der Standard-Tarif unterstützt nämlich keine VNETs. Der Endpunkt ist nur auf Namespaces im Premium-Tarif beschränkt.
 
 > [!IMPORTANT]
-> Virtuelle Netzwerke werden nur in Service Bus-Namespaces im [Tarif Premium](service-bus-premium-messaging.md) unterstützt. Bei der Verwendung von VNET-Dienstendpunkten mit Service Bus sollten Sie diese Endpunkte nicht in Anwendungen aktivieren, in denen Service Bus-Namespaces der Tarife Standard und Premium gemischt werden. Der Standard-Tarif unterstützt nämlich keine VNETs. Der Endpunkt ist nur auf Namespaces im Premium-Tarif beschränkt.
+> Geben Sie mindestens eine IP-Regel oder eine VNET-Regel für den Namespace an, um nur Datenverkehr von den angegebenen IP-Adressen oder dem Subnetz eines virtuellen Netzwerks zuzulassen. Wenn keine IP- und VNET-Regeln vorliegen, kann (mithilfe des Zugriffsschlüssels) über das öffentliche Internet auf den Namespace zugegriffen werden.  
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Erweiterte Sicherheitsszenarien basierend auf der VNET-Integration 
 
@@ -57,8 +58,6 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem Azure-Portal einen VNET-Dienst
     > [!NOTE]
     > Die Registerkarte **Netzwerk** wird nur für Namespaces vom Typ **Premium** angezeigt.  
     
-    Standardmäßig ist die Option **Ausgewählte Netzwerke** ausgewählt. Wenn Sie auf dieser Seite nicht mindestens eine IP-Firewallregel oder ein virtuelles Netzwerk hinzufügen, kann über das öffentliche Internet (mit dem Zugriffsschlüssel) auf den Namespace zugegriffen werden.
-
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Seite „Netzwerk“ – Standard" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     
     Wenn Sie die Option **Alle Netzwerke** auswählen, akzeptiert der Service Bus-Namespace Verbindungen von beliebigen IP-Adressen. Die Standardeinstellung entspricht einer Regel, bei der der IP-Adressbereich 0.0.0.0/0 zulässig ist. 
@@ -68,6 +67,9 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem Azure-Portal einen VNET-Dienst
 1. Wählen Sie im Abschnitt **Virtuelles Netzwerk** der Seite die Option **+ Vorhandenes virtuelles Netzwerk hinzufügen** aus. 
 
     ![Hinzufügen eines vorhandenen virtuellen Netzwerks](./media/service-endpoints/add-vnet-menu.png)
+
+    >[!WARNING]
+    > Wenn Sie die Option **Ausgewählte Netzwerke** auswählen und auf dieser Seite nicht mindestens eine IP-Firewallregel oder ein virtuelles Netzwerk hinzufügen, kann (mit dem Zugriffsschlüssel) über das öffentliche Internet auf den Namespace zugegriffen werden.
 3. Wählen Sie in der Liste mit den virtuellen Netzwerken das virtuelle Netzwerk und anschließend das **Subnetz** aus. Sie müssen den Dienstendpunkt aktivieren, bevor Sie das virtuelle Netzwerk der Liste hinzufügen. Wenn der Dienstendpunkt nicht aktiviert ist, erhalten Sie im Portal eine entsprechende Aufforderung.
    
    ![Auswählen des Subnetzes](./media/service-endpoints/select-subnet.png)
@@ -88,26 +90,11 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem Azure-Portal einen VNET-Dienst
 [!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Verwenden von Resource Manager-Vorlagen
-Mithilfe der folgenden Resource Manager-Vorlage können Sie einem vorhandenen Service Bus-Namespace eine VNET-Regel hinzufügen.
+Die folgende Resource Manager-Beispielvorlage fügt einem vorhandenen Service Bus-Namespace eine VNET-Regel hinzu. Die Netzwerkregel gibt die ID eines Subnetzes in einem virtuellen Netzwerk an. 
 
-Vorlagenparameter:
+Die ID ist ein voll qualifizierter Resource Manager-Pfad für das Subnetz des virtuellen Netzwerks. Beispielsweise `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` für das Standardsubnetz eines virtuellen Netzwerks.
 
-* **namespaceName**: Der Service Bus-Namespace.
-* **virtualNetworkingSubnetId**: Vollqualifizierter Resource Manager-Pfad für das Subnetz des virtuellen Netzwerks, z. B. `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` für das Standardsubnetz eines virtuellen Netzwerks.
-
-> [!NOTE]
-> Obwohl keine Verweigerungsregeln möglich sind, ist in der Azure Resource Manager-Vorlage die Standardaktion auf **„Zulassen“** festgelegt. Dies schränkt die Verbindungen nicht ein.
-> Bei der Erstellung von Regeln für Virtual Network oder Firewalls muss **_"defaultAction"_** wie folgt geändert werden:
-> 
-> from
-> ```json
-> "defaultAction": "Allow"
-> ```
-> zu
-> ```json
-> "defaultAction": "Deny"
-> ```
->
+Legen Sie beim Hinzufügen von VNET- oder Firewallregeln für`defaultAction` den Wert `Deny` fest.
 
 Vorlage:
 
@@ -211,6 +198,9 @@ Vorlage:
 ```
 
 Gehen Sie zum Bereitstellen der Vorlage gemäß den Anweisungen für [Azure Resource Manager][lnk-deploy] vor.
+
+> [!IMPORTANT]
+> Wenn keine IP- und VNET-Regeln vorliegen, fließt der gesamte Datenverkehr auch dann in den Namespace, wenn Sie für `defaultAction` den Wert `deny` festlegen.  Der Zugriff auf den Namespace erfolgt (mithilfe des Zugriffsschlüssels) über das öffentliche Internet. Geben Sie mindestens eine IP-Regel oder eine VNET-Regel für den Namespace an, um nur Datenverkehr von den angegebenen IP-Adressen oder dem Subnetz eines virtuellen Netzwerks zuzulassen.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

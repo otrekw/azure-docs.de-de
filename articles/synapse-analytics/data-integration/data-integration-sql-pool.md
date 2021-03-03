@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6156bd72e3f4965a74798a3f91496eb8a321444e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: a02abff712fc26f653307108fcc3bb284444d0c7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219521"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676639"
 ---
 # <a name="ingest-data-into-a-dedicated-sql-pool"></a>Erfassen von Daten in einem dedizierten SQL-Pool
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Daten aus einem Azure Data Lake Gen 2-Speic
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Azure-Abonnement**: Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-* **Azure-Speicherkonto**: Sie verwenden Azure Data Lake Storage Gen 2 als *Quelldatenspeicher*. Wenn Sie kein Speicherkonto haben, finden Sie unter [Erstellen eines Azure Storage-Kontos](../../storage/common/storage-account-create.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) die erforderlichen Schritte zum Erstellen eines solchen Kontos.
+* **Azure-Speicherkonto**: Sie verwenden Azure Data Lake Storage Gen 2 als *Quelldatenspeicher*. Wenn Sie kein Speicherkonto haben, finden Sie unter [Erstellen eines Azure Storage-Kontos](../../storage/common/storage-account-create.md) die erforderlichen Schritte zum Erstellen eines solchen Kontos.
 * **Azure Synapse Analytics**: Sie verwenden einen dedizierten SQL-Pool als *Senkendatenspeicher*. Wenn Sie keine Azure Synapse Analytics-Instanz haben, finden Sie unter [Erstellen eines dedizierten SQL-Pools](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) die erforderlichen Schritte zum Erstellen einer solchen Instanz.
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten

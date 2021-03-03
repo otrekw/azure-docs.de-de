@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: de42854f512a69b7b70a15a10fe8499ca1d0bf8b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 45fa5cf4c76577cb5e8ba9bf482f4aab7301e3c6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017728"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391489"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-data"></a>Ausführen von PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blobdaten
 
@@ -28,6 +28,9 @@ Sie können einem Azure AD-Sicherheitsprinzipal über die rollenbasierte Zugrif
 Die Azure Storage-Erweiterungen werden für Vorgänge mit Blobdaten unterstützt. Welche Vorgänge Sie aufrufen können, hängt von den Berechtigungen des Azure AD-Sicherheitsprinzipals ab, mit dem Sie sich bei PowerShell anmelden. Die Berechtigungen für Azure Storage-Container werden über Azure RBAC zugewiesen. Wenn Ihnen beispielsweise die Rolle **Blobdatenleser** zugewiesen wurde, können Sie Skriptbefehle ausführen, die Daten aus einem Container lesen. Wurde Ihnen die Rolle **Mitwirkender an Blobdaten** zugewiesen, können Sie Skriptbefehle ausführen, die einen Container bzw. die darin enthaltenen Daten lesen, schreiben oder löschen.
 
 Einzelheiten zu den Berechtigungen, die für die einzelnen Azure Storage-Vorgänge in einem Container erforderlich sind, finden Sie unter [Aufrufen von Speichervorgängen mit OAuth-Token](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
+
+> [!IMPORTANT]
+> Wenn ein Speicherkonto mit **ReadOnly** in Azure Resource Manager gesperrt ist, ist der Vorgang [Schlüssel auflisten](/rest/api/storagerp/storageaccounts/listkeys) für dieses Speicherkonto nicht zulässig. **Schlüssel auflisten** ist ein POST-Vorgang, und alle POST-Vorgänge werden verhindert, wenn die Sperre **ReadOnly** für das Konto festgelegt wurde. Aus diesem Grund müssen Benutzer, die nicht bereits über die Kontoschlüssel verfügen, Azure AD-Anmeldeinformationen für den Zugriff auf Blobdaten verwenden, wenn das Konto mit **ReadOnly** gesperrt ist. Fügen Sie in PowerShell den Parameter `-UseConnectedAccount` ein, um ein Objekt vom Typ **AzureStorageContext** mit Ihren Azure AD-Anmeldeinformationen zu erstellen.
 
 ## <a name="call-powershell-commands-using-azure-ad-credentials"></a>Aufrufen von PowerShell-Befehlen mithilfe von Azure AD-Anmeldeinformationen
 

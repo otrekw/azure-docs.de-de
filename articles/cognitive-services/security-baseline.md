@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 97bcf0bedb3ed175f8fdb5d4dc361c069ae0327d
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: c0b773a728fed456a34d0db3a00b353147432012
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805208"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589261"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Azure-Sicherheitsbaseline für Cognitive Services
 
@@ -175,9 +175,9 @@ Sie können auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellu
 
 **Leitfaden**: Nutzen Sie das Azure-Aktivitätsprotokoll zum Überwachen der Konfigurationen von Netzwerkressourcen und zum Erkennen von Änderungen bei Netzwerkressourcen im Zusammenhang mit Ihrem Azure Cognitive Services-Container. Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzwerkressourcen ausgelöst werden.
 
-* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -199,7 +199,7 @@ Sie können auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellu
 
 **Leitfaden**: Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, und senden Sie die Protokolle zwecks Archivierung an einen Log Analytics-Arbeitsbereich, eine Azure Event Hub-Instanz oder ein Azure-Speicherkonto. Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihren Azure Cognitive Services-Container auf Steuerungsebene erfolgen. Mit Aktivitätsprotokollen können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) auf Steuerungsebene ermitteln, die für Ihre Azure Cache for Redis-Instanzen stattfinden.
 
-* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -211,7 +211,7 @@ Sie können auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellu
 
 Außerdem sendet Azure Cognitive Services Diagnoseereignisse, die gesammelt und dann für die Analyse, Warnung und Berichterstellung verwendet werden können. Diagnoseereignisse für einen Cognitive Services-Container lassen sich im Azure-Portal konfigurieren. Sie können ein oder mehrere Diagnoseereignisse an ein Speicherkonto, eine Event Hubs-Instanz oder einen Log Analytics-Arbeitsbereich senden.
 
-* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 * [Verwenden von Diagnoseeinstellungen für Azure Cognitive Services](./diagnostic-logging.md)
 
@@ -231,7 +231,7 @@ Außerdem sendet Azure Cognitive Services Diagnoseereignisse, die gesammelt und 
 
 **Leitfaden**: Legen Sie in Azure Monitor den Aufbewahrungszeitraum Ihres Log Analytics-Arbeitsbereichs gemäß den Compliancevorschriften Ihrer Organisation fest. Verwenden Sie Azure Storage-Konten für die langfristige Speicherung oder Archivierung.
 
-* [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -241,9 +241,9 @@ Außerdem sendet Azure Cognitive Services Diagnoseereignisse, die gesammelt und 
 
 **Leitfaden**: Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, und senden Sie die Protokolle an einen Log Analytics-Arbeitsbereich. Diese Protokolle stellen umfassende, häufig verwendete Daten zu den Vorgängen einer Ressource bereit, die für die Ermittlung von Problemen und das Debuggen verwendet werden. Führen Sie Abfragen in Log Analytics durch, um Suchbegriffe zu ermitteln, Trends auszumachen, Muster zu analysieren und viele weitere Erkenntnisse auf Grundlage der Aktivitätsprotokolldaten zu gewinnen, die möglicherweise für Azure Cognitive Services gesammelt wurden.
 
-* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
-* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -257,7 +257,7 @@ Konfigurieren Sie die Diagnoseeinstellungen für Ihren Cognitive Services-Contai
 
 * [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../azure-monitor/platform/alerts-log.md)
+* [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../azure-monitor/alerts/alerts-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -570,7 +570,7 @@ Sie können außerdem Azure Key Vault zum Speichern Ihrer vom Kunden verwalteten
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an Produktionsinstanzen von Azure Cognitive Services und anderen kritischen bzw. verbundenen Ressourcen vorgenommen werden.
 
-* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 

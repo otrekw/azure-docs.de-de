@@ -3,19 +3,19 @@ title: Automatisieren von Azure Application Insights-Prozessen mithilfe von Logi
 description: In diesem Artikel erfahren Sie, wie Sie wiederholbare Prozesse schnell automatisieren können, indem Sie Ihrer Logik-App den Application Insights-Connector hinzufügen.
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: f6406c2e6fb933c561a8ae54009499768c81a204
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7ff75be3cb847235405a740df4a20803cdc87b3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970866"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589921"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatisieren von Application Insights-Prozessen mithilfe von Logic Apps
 
 Ertappen Sie sich dabei, wie Sie wiederholt dieselben Abfragen von Ihren Telemetriedaten ausführen, um zu überprüfen, ob Ihr Dienst ordnungsgemäß funktioniert? Möchten Sie diese Abfragen für die Suche nach Trends und Anomalien automatisieren und eigene Workflows dafür erstellen? Dann benötigen Sie den Azure Application Insights-Connector für Logic Apps.
 
 > [!NOTE]
-> Der Azure Application Insights-Connector wurde durch den [Azure Monitor-Connector](../platform/logicapp-flow-connector.md) ersetzt, der in Azure Active Directory integriert ist, statt einen API-Schlüssel zu erfordern, und Ihnen außerdem das Abrufen von Daten aus einem Log Analytics-Arbeitsbereich ermöglicht.
+> Der Azure Application Insights-Connector wurde durch den [Azure Monitor-Connector](../logs/logicapp-flow-connector.md) ersetzt, der in Azure Active Directory integriert ist, statt einen API-Schlüssel zu erfordern, und Ihnen außerdem das Abrufen von Daten aus einem Log Analytics-Arbeitsbereich ermöglicht.
 
 Mit dieser Integration können Sie zahlreiche Prozesse automatisieren, ohne eine einzige Codezeile zu schreiben. Mit dem Application Insights-Connector können Sie Logik-Apps erstellen und schnell beliebige Application Insights-Prozesse automatisieren. 
 
@@ -130,7 +130,7 @@ Wenn Ihre Logik-App ausgeführt wird, erhalten die Empfänger, die Sie in der E-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die Erstellung von [Analytics-Abfragen](../log-query/get-started-queries.md).
+- Erfahren Sie mehr über die Erstellung von [Analytics-Abfragen](../logs/get-started-queries.md).
 - Informieren Sie sich ausführlicher über [Logic Apps](../../logic-apps/logic-apps-overview.md).
 
 

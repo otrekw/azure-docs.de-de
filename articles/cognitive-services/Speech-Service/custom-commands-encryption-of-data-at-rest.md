@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2020
 ms.author: sausin
-ms.openlocfilehash: 0f932eed2f1d58e8470a24ea595e21712deb7f03
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 89d7a6f8beb004f57a00dfe75e4cc387c8591b1e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021897"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716583"
 ---
 # <a name="custom-commands-encryption-of-data-at-rest"></a>Verschlüsselung ruhender Daten mithilfe benutzerdefinierter Befehle
 
 Mit benutzerdefinierten Befehlen werden Ihre Daten beim Speichern in der Cloud automatisch verschlüsselt. Durch die Verschlüsselung mithilfe des Diensts für benutzerdefinierte Befehle werden Ihre Daten ausreichend geschützt, um den Sicherheits- und Complianceanforderungen Ihrer Organisation gerecht zu werden.
 
 > [!NOTE]
-> Die Verschlüsselung von LUIS-Ressourcen, die Ihrer Anwendung zugeordnet sind, wird vom Dienst für benutzerdefinierte Befehle nicht automatisch aktiviert. Bei Bedarf müssen Sie die Verschlüsselung Ihrer LUIS-Ressourcen mithilfe der Informationen in [diesem Artikels](./../LUIS/luis-encryption-of-data-at-rest.md) aktivieren.
+> Die Verschlüsselung von LUIS-Ressourcen, die Ihrer Anwendung zugeordnet sind, wird vom Dienst für benutzerdefinierte Befehle nicht automatisch aktiviert. Bei Bedarf müssen Sie die Verschlüsselung Ihrer LUIS-Ressourcen mithilfe der Informationen in [diesem Artikels](../luis/encrypt-data-at-rest.md) aktivieren.
 
 ## <a name="about-cognitive-services-encryption"></a>Informationen zur Cognitive Services-Verschlüsselung
 Daten werden mittels [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2)-konformer [256-Bit-AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)-Verschlüsselung ver- und entschlüsselt. Verschlüsselung und Entschlüsselung sind transparent, was bedeutet, dass die Verschlüsselung und der Zugriff für Sie verwaltet werden. Ihre Daten werden standardmäßig geschützt, und Sie müssen weder Code noch Anwendungen ändern, um die Verschlüsselung nutzen zu können.

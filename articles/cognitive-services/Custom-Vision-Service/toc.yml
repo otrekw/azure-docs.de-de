@@ -87,15 +87,11 @@
       href: /samples/browse/?products=azure&term=vision
     - name: Grenzen und Kontingente
       href: limits-and-quotas.md
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/598141-custom-vision-service'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: encrypt-data-at-rest.md

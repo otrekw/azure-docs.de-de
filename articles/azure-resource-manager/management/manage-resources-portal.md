@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: e2274a551542b06996941b49e7d047baf3e8b3ca
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 12d704b0a3d92aa0585fb120f969000def282396
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92894031"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092198"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Verwalten von Azure-Ressourcen über das Azure-Portal
 
@@ -114,7 +114,7 @@ Sie können das Stecknadelsymbol in der oberen rechten Ecke der Diagramme auswä
 
 ## <a name="manage-access-to-resources"></a>Zugriff auf Ressourcen verwalten
 
-Der Zugriff auf Ressourcen in Azure wird mithilfe der [rollenbasierten Zugriffssteuerung in Azure (Azure RBAC)](../../role-based-access-control/overview.md) verwaltet. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
+Der Zugriff auf Ressourcen in Azure wird mithilfe der [rollenbasierten Zugriffssteuerung in Azure (Azure RBAC)](../../role-based-access-control/overview.md) verwaltet. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,12 +3,12 @@ title: Informationen zu Azure Policy für Kubernetes
 description: Hier erfahren Sie, wie Rego und Open Policy Agent von Azure Policy genutzt werden, um Cluster mit Kubernetes in Azure oder lokal zu verwalten.
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: f25b64bc28535d125c7883f16c9e747d6250ca96
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0aaf610cd5712ee195ed2a4108cf9e5ca9c65183
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789737"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577095"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Grundlegendes zu Azure Policy für Kubernetes-Cluster
 
@@ -447,7 +447,7 @@ Einige weitere Überlegungen:
 ## <a name="logging"></a>Protokollierung
 
 Als Kubernetes-Controller/-Container werden sowohl vom Pod _azure-policy_ als auch vom Pod _gatekeeper_ Protokolle im Kubernetes-Cluster gespeichert. Die Protokolle können auf der Seite **Insights** des Kubernetes-Clusters verfügbar gemacht werden.
-Weitere Informationen finden Sie unter [Überwachen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container](../../../azure-monitor/insights/container-insights-analyze.md).
+Weitere Informationen finden Sie unter [Überwachen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container](../../../azure-monitor/containers/container-insights-analyze.md).
 
 Verwenden Sie `kubectl`, um die Add-On-Protokolle anzuzeigen:
 

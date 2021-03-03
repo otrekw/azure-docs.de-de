@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: a5f7569fc46d4678ca0c12299e33caa3c78df849
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d8940d791920daca6ef0af186a4bb5e17009637b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182919"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586116"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Unterstützung von hohem Datenverkehr für Application Gateway
 
@@ -23,7 +23,7 @@ Sie können Application Gateway mit der Web Application Firewall (WAF) für eine
 
 Es ist wichtig, dass Sie Ihr Application Gateway entsprechend dem Datenverkehr und mit etwas Puffer skalieren, damit Sie auf Datenverkehrsspitzen vorbereitet sind und die Auswirkungen minimieren, die sie auf Ihre QoS haben könnten. Mithilfe der folgenden Vorschläge können Sie Application Gateway mit WAF einrichten, um zusätzlichen Datenverkehr zu verarbeiten.
 
-Eine umfassende Liste der von Application Gateway angebotenen Metriken finden Sie in der Dokumentation zu [Metriken](./application-gateway-metrics.md). Wie Sie Warnungen für Metriken festlegen, erfahren Sie unter [Metrikvisualisierung](./application-gateway-metrics.md#metrics-visualization) im Azure-Portal und unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../azure-monitor/platform/alerts-metric.md).
+Eine umfassende Liste der von Application Gateway angebotenen Metriken finden Sie in der Dokumentation zu [Metriken](./application-gateway-metrics.md). Wie Sie Warnungen für Metriken festlegen, erfahren Sie unter [Metrikvisualisierung](./application-gateway-metrics.md#metrics-visualization) im Azure-Portal und unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../azure-monitor/alerts/alerts-metric.md).
 
 ## <a name="scaling-for-application-gateway-v1-sku-standardwaf-sku"></a>Skalierung für Application Gateway v1-SKU (Standard/WAF SKU)
 
@@ -65,7 +65,7 @@ Anders als bei der automatischen Skalierung müssen Sie bei manueller Skalierung
 
 ## <a name="monitoring-and-alerting"></a>Überwachung und Warnung
 
-Um ggf. Benachrichtigungen zu Datenverkehrs- oder Auslastungsanomalien zu erhalten, können Sie Warnungen für bestimmte Metriken einrichten. Eine umfassende Liste der von Application Gateway angebotenen Metriken finden Sie in der [Dokumentation zu Metriken](./application-gateway-metrics.md). Wie Sie Warnungen für Metriken festlegen, erfahren Sie unter [Metrikvisualisierung](./application-gateway-metrics.md#metrics-visualization) im Azure-Portal und unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../azure-monitor/platform/alerts-metric.md).
+Um ggf. Benachrichtigungen zu Datenverkehrs- oder Auslastungsanomalien zu erhalten, können Sie Warnungen für bestimmte Metriken einrichten. Eine umfassende Liste der von Application Gateway angebotenen Metriken finden Sie in der [Dokumentation zu Metriken](./application-gateway-metrics.md). Wie Sie Warnungen für Metriken festlegen, erfahren Sie unter [Metrikvisualisierung](./application-gateway-metrics.md#metrics-visualization) im Azure-Portal und unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../azure-monitor/alerts/alerts-metric.md).
 
 ## <a name="alerts-for-application-gateway-v1-sku-standardwaf"></a>Warnungen für Application Gateway v1-SKU (Standard/WAF)
 

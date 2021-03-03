@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 09/24/2020
-ms.openlocfilehash: 5df596560e97ea9dba38dca4d4ca58e38caabd37
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d1c095be1d0525cc843c04a3b83e14bb4211b175
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333952"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721258"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Einrichten von Azure Monitor-Protokollen und Sammeln von Diagnosedaten für Azure Logic Apps
 
-Um während der Laufzeit umfangreichere Debuginformationen zu ihren Logik-Apps zu erhalten, können Sie [Azure Monitor-Protokolle](../azure-monitor/platform/data-platform-logs.md) einrichten und verwenden, um Informationen zu Laufzeitdaten und -ereignissen aufzuzeichnen und zu speichern, z. B. Triggerereignisse, Ausführungsereignisse und Aktionsereignisse in einem [Log Analytics-Arbeitsbereich](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace). [Azure Monitor](../azure-monitor/overview.md) hilft Ihnen bei der Überwachung Ihrer Cloud- und lokalen Umgebungen, sodass Sie deren Verfügbarkeit und Leistung leichter sicherstellen können. Durch die Verwendung von Azure Monitor-Protokollen können Sie [Protokollabfragen](../azure-monitor/log-query/log-query-overview.md) erstellen, die Ihnen helfen, diese Informationen zu sammeln und zu überprüfen. Sie können [diese Diagnosedaten auch mit anderen Azure-Diensten verwenden](#extend-data), z. B. Azure Storage und Azure Event Hubs.
+Um während der Laufzeit umfangreichere Debuginformationen zu ihren Logik-Apps zu erhalten, können Sie [Azure Monitor-Protokolle](../azure-monitor/logs/data-platform-logs.md) einrichten und verwenden, um Informationen zu Laufzeitdaten und -ereignissen aufzuzeichnen und zu speichern, z. B. Triggerereignisse, Ausführungsereignisse und Aktionsereignisse in einem [Log Analytics-Arbeitsbereich](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace). [Azure Monitor](../azure-monitor/overview.md) hilft Ihnen bei der Überwachung Ihrer Cloud- und lokalen Umgebungen, sodass Sie deren Verfügbarkeit und Leistung leichter sicherstellen können. Durch die Verwendung von Azure Monitor-Protokollen können Sie [Protokollabfragen](../azure-monitor/logs/log-query-overview.md) erstellen, die Ihnen helfen, diese Informationen zu sammeln und zu überprüfen. Sie können [diese Diagnosedaten auch mit anderen Azure-Diensten verwenden](#extend-data), z. B. Azure Storage und Azure Event Hubs.
 
 Zum Einrichten der Protokollierung für Ihre Logik-App können Sie [beim Erstellen Ihrer Logik-App Log Analytics aktivieren](#logging-for-new-logic-apps), oder Sie können die [Logic Apps-Verwaltungslösung](#install-management-solution) in Ihrem Log Analytics-Arbeitsbereich für vorhandene Logik-Apps installieren. Diese Lösung bietet aggregierte Informationen für Ihre Logik-App-Ausführungen und umfasst spezifische Details wie Status, Ausführungszeit, Status der erneuten Übermittlung und Korrelations-IDs. Um dann die Protokollierung zu aktivieren und Abfragen für diese Informationen zu erstellen, [richten Sie Azure Monitor-Protokolle ein](#set-up-resource-logs).
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie Log Analytics für neue und bereits vorh
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie beginnen, benötigen Sie einen [Log Analytics-Arbeitsbereich](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace). Falls Sie keinen Arbeitsbereich besitzen, lesen Sie die Informationen zum [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md).
+Bevor Sie beginnen, benötigen Sie einen [Log Analytics-Arbeitsbereich](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace). Falls Sie keinen Arbeitsbereich besitzen, lesen Sie die Informationen zum [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/logs/quick-create-workspace.md).
 
 <a name="logging-for-new-logic-apps"></a>
 
@@ -87,7 +87,7 @@ Sie können Log Analytics aktivieren, wenn Sie Ihre Logik-App erstellen.
 
 ## <a name="set-up-azure-monitor-logs"></a>Einrichten von Azure Monitor-Protokollen
 
-Wenn Sie Informationen zu Laufzeitereignissen und -daten in [Azure Monitor-Protokollen](../azure-monitor/platform/data-platform-logs.md) speichern, können Sie [Protokollabfragen](../azure-monitor/log-query/log-query-overview.md) erstellen, die Ihnen helfen, diese Informationen zu finden und zu überprüfen.
+Wenn Sie Informationen zu Laufzeitereignissen und -daten in [Azure Monitor-Protokollen](../azure-monitor/logs/data-platform-logs.md) speichern, können Sie [Protokollabfragen](../azure-monitor/logs/log-query-overview.md) erstellen, die Ihnen helfen, diese Informationen zu finden und zu überprüfen.
 
 > [!NOTE]
 > Nach Aktivierung der Diagnoseeinstellungen kann es bis zu 30 Minuten dauern, bis Diagnosedaten an die Protokolle am angegebenen Ziel (beispielsweise Log Analytics, Event Hub oder Speicherkonto) übermittelt werden. Diese Verzögerung bedeutet, dass Diagnosedaten aus diesem Zeitraum möglicherweise nicht überprüft werden können. Abgeschlossene Ereignisse und [nachverfolgte Eigenschaften](#extend-data) werden unter Umständen erst nach zehn bis 15 Minuten in Ihrem Log Analytics-Arbeitsbereich angezeigt.
@@ -143,9 +143,6 @@ Im Anschluss an die Ausführung Ihrer Logik-App können Sie die Daten zu diesen 
 
    ![Anzeigen von Logik-App-Ausführungen und des Status](./media/monitor-logic-apps-log-analytics/logic-app-run-details.png)
 
-   > [!NOTE]
-   > Die Funktion **Erneut übermitteln** auf dieser Seite ist aktuell nicht verfügbar.
-
    Für Aktionen, bei denen Sie [nachverfolgte Eigenschaften einrichten](#extend-data), können Sie diese Eigenschaften auch anzeigen, indem Sie in der Spalte **Nachverfolgte Eigenschaften** den Befehl **Anzeigen** auswählen. Sie können die nachverfolgten Eigenschaften mit dem Spaltenfilter durchsuchen.
 
    ![Anzeigen der überwachten Eigenschaften für eine Logik-App](./media/monitor-logic-apps-log-analytics/logic-app-tracked-properties.png)
@@ -178,10 +175,10 @@ Im Anschluss an die Ausführung Ihrer Logik-App können Sie die Daten zu diesen 
 
 In Verbindung mit Azure Monitor-Protokollen können Sie die Nutzung der Diagnosedaten Ihrer Logik-App um andere Azure-Dienste erweitern, z.B.:
 
-* [Archivieren von Azure-Ressourcenprotokollen in einem Speicherkonto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
-* [Streamen von Protokollen der Azure-Plattform an Azure Event Hubs](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)
+* [Archivieren von Azure-Ressourcenprotokollen in einem Speicherkonto](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
+* [Streamen von Protokollen der Azure-Plattform an Azure Event Hubs](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)
 
-Durch die Verwendung von Telemetriedaten und Analysen anderer Dienste (beispielsweise [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) und [Power BI](../azure-monitor/platform/powerbi.md)) können Sie dann eine Überwachung in Echtzeit implementieren. Beispiel:
+Durch die Verwendung von Telemetriedaten und Analysen anderer Dienste (beispielsweise [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) und [Power BI](../azure-monitor/visualize/powerbi.md)) können Sie dann eine Überwachung in Echtzeit implementieren. Beispiel:
 
 * [Streamen von Daten von Event Hubs zu Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analysieren von Streamingdaten mit Stream Analytics und Erstellen eines Dashboards für die Echtzeitanalyse in Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)
@@ -194,7 +191,7 @@ Stellen Sie auf Grundlage der Orte, an die Sie Diagnosedaten senden möchten, si
 
 ## <a name="azure-monitor-diagnostics-events"></a>Azure Monitor-Diagnoseereignisse
 
-Jedes Diagnoseereignis enthält Details zu Ihrer Logik-App und zum Ereignis, z.B. Status, Startzeit, Endzeit usw. Für die programmgesteuerte Einrichtung der Überwachung, Nachverfolgung und Protokollierung können Sie diese Informationen mit der [REST-API für Azure Logic Apps](/rest/api/logic) und der [REST-API für Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) verwenden. Sie können außerdem die Eigenschaften `clientTrackingId` und `trackedProperties` verwenden, die angezeigt werden in 
+Jedes Diagnoseereignis enthält Details zu Ihrer Logik-App und zum Ereignis, z.B. Status, Startzeit, Endzeit usw. Für die programmgesteuerte Einrichtung der Überwachung, Nachverfolgung und Protokollierung können Sie diese Informationen mit der [REST-API für Azure Logic Apps](/rest/api/logic) und der [REST-API für Azure Monitor](../azure-monitor/essentials/metrics-supported.md#microsoftlogicworkflows) verwenden. Sie können außerdem die Eigenschaften `clientTrackingId` und `trackedProperties` verwenden, die angezeigt werden in 
 
 * `clientTrackingId`: Wenn sie nicht angegeben ist, wird diese ID von Azure automatisch generiert, und Ereignisse werden für eine Ausführung der Logik-App korreliert. Dies gilt auch für geschachtelte Workflows, die über die Logik-App aufgerufen werden. Sie können diese ID manuell in einem Trigger angeben, indem Sie einen `x-ms-client-tracking-id`-Header mit Ihrem benutzerdefinierten ID-Wert in der Triggeranforderung übergeben. Sie können einen Anforderungstrigger, HTTP-Trigger oder Webhooktrigger verwenden.
 

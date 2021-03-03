@@ -1,17 +1,16 @@
 ---
 title: Azure Networking Analytics-Lösung in Azure Monitor | Microsoft-Dokumentation
 description: Mit der Azure Networking Analytics-Lösung in Azure Monitor können Sie Protokolle für Azure-Netzwerksicherheitsgruppen und Azure Application Gateway-Protokolle überprüfen.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 19370eee9d9fa524de9beeaa85a15521580bd8e6
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: b8b03378e82810bc2b9680805bacf8360f322a94
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97707689"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708134"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure-Netzwerküberwachungslösungen in Azure Monitor
 
@@ -113,11 +112,11 @@ Mithilfe der Arbeitsmappe mit Netzwerkerkenntnissen können Sie die neuesten Fun
 
 * Zentrale Konsole für die Überwachung und Problembehandlung mit [Metriken](../insights/network-insights-overview.md#resource-health-and-metrics) und Protokolldaten
 
-* Flexible Canvas zur Unterstützung der Erstellung von aussagekräftigen benutzerdefinierten [Visualisierungen](../platform/workbooks-overview.md#visualizations)
+* Flexible Canvas zur Unterstützung der Erstellung von aussagekräftigen benutzerdefinierten [Visualisierungen](../visualize/workbooks-overview.md#visualizations)
 
-* Verwenden und [Freigeben von Arbeitsmappenvorlagen](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) in einer größeren Community
+* Verwenden und [Freigeben von Arbeitsmappenvorlagen](../visualize/workbooks-overview.md#workbooks-versus-workbook-templates) in einer größeren Community
 
-Weitere Informationen zu den Funktionen der neuen Arbeitsmappenlösung finden Sie unter der [Übersicht über Arbeitsmappen](../platform/workbooks-overview.md).
+Weitere Informationen zu den Funktionen der neuen Arbeitsmappenlösung finden Sie unter der [Übersicht über Arbeitsmappen](../visualize/workbooks-overview.md).
 
 ## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>Migrieren von der Azure Gateway-Analyselösung zu Azure Monitor-Arbeitsmappen
 
@@ -129,7 +128,7 @@ Weitere Informationen zu den Funktionen der neuen Arbeitsmappenlösung finden Si
 > [!NOTE]
 > Alle bisherigen Daten sind bereits ab dem Zeitpunkt der ersten Aktivierung der Diagnoseeinstellungen in der Arbeitsmappe verfügbar. Es ist keine Datenübertragung erforderlich.
 
-2. Öffnen Sie die [Standardarbeitsmappe mit Erkenntnissen](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights) für Ihre Application Gateway-Ressource. Alle vorhandenen Erkenntnisse, die von der Application Gateway-Analyselösung unterstützt werden, sind bereits in der Arbeitsmappe enthalten. Sie können sie erweitern, indem Sie benutzerdefinierte [Visualisierungen](../platform/workbooks-overview.md#visualizations) hinzufügen, die auf Metriken und Protokolldaten basieren.
+2. Öffnen Sie die [Standardarbeitsmappe mit Erkenntnissen](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights) für Ihre Application Gateway-Ressource. Alle vorhandenen Erkenntnisse, die von der Application Gateway-Analyselösung unterstützt werden, sind bereits in der Arbeitsmappe enthalten. Sie können sie erweitern, indem Sie benutzerdefinierte [Visualisierungen](../visualize/workbooks-overview.md#visualizations) hinzufügen, die auf Metriken und Protokolldaten basieren.
 
 3. Wenn alle Metriken und Protokollerkenntnisse angezeigt werden und Sie die Azure Gateway-Analyselösung aus Ihrem Arbeitsbereich entfernen möchten, können Sie sie auf der zugehörigen Ressourcenseite löschen.
 
@@ -232,5 +231,5 @@ Daten, die vor der Änderung gesammelt wurden, werden in der neuen Lösung nicht
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie [Protokollabfragen in Azure Monitor](../log-query/log-query-overview.md), um detaillierte Azure-Diagnosedaten anzuzeigen.
+* Verwenden Sie [Protokollabfragen in Azure Monitor](../logs/log-query-overview.md), um detaillierte Azure-Diagnosedaten anzuzeigen.
 

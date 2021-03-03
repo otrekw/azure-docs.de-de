@@ -5,22 +5,18 @@ services: active-directory
 documentationcenter: na
 author: rolyon
 manager: mtillman
-editor: ''
-ms.assetid: 1f90228a-7aac-4ea7-ad82-b57d222ab128
 ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
-ms.devlang: na
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 02/27/2021
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 7d00c40a021bbe087d906fd6d9b767188a7b169a
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 9780902a1c5f4a711e1abffa6b508c28efe269ac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964326"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735879"
 ---
 # <a name="list-azure-role-assignments-using-the-rest-api"></a>Auflisten von Azure-Rollenzuweisungen mithilfe der REST-API
 
@@ -28,6 +24,8 @@ ms.locfileid: "97964326"
 
 > [!NOTE]
 > Wenn Ihre Organisation Verwaltungsfunktionen an einen Dienstanbieter ausgelagert hat, der die [delegierte Azure-Ressourcenverwaltung](../lighthouse/concepts/azure-delegated-resource-management.md) verwendet, werden die von diesem Dienstanbieter autorisierten Rollenzuweisungen hier nicht angezeigt.
+
+[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="list-role-assignments"></a>Auflisten der Rollenzuweisungen
 
@@ -92,5 +90,5 @@ Nachfolgend sehen Sie ein Beispiel für die Ausgabe:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der REST-API](role-assignments-rest.md)
+- [Zuweisen von Azure-Rollen mithilfe der REST-API](role-assignments-rest.md)
 - [Azure REST-API-Referenz](/rest/api/azure/)

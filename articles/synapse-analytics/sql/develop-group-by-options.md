@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: d160040620fcaa60a8adc955efcc54ac3ca2609e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c2e1ddbfb87df40a0e3683e7bca7539c26191a7b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321440"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671316"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>GROUP BY-Optionen in Synapse SQL
 
@@ -24,7 +24,7 @@ Synapse SQL ermöglicht die Entwicklung von Lösungen durch Implementierung vers
 
 ## <a name="what-group-by-does"></a>Funktionsweise von GROUP BY
 
-Die T-SQL-Klausel [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) fasst Daten zu einer Gruppe von Zeilen zusammen.
+Die T-SQL-Klausel [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest&preserve-view=true) fasst Daten zu einer Gruppe von Zeilen zusammen.
 
 Der serverlose SQL-Pool unterstützt die gesamte Palette von GROUP BY-Optionen. Der dedizierte SQL-Pool unterstützt eine begrenzte Anzahl von GROUP BY-Optionen.
 
@@ -125,7 +125,7 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-Die folgende Abbildung zeigt die Ergebnisse von [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true):
+Die folgende Abbildung zeigt die Ergebnisse von [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true):
 
 ![GROUP BY mit CUBE](./media/develop-group-by-options/develop-group-by-cube.png)
 

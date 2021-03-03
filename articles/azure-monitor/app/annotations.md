@@ -3,12 +3,12 @@ title: Versionsanmerkungen für Application Insights | Microsoft Docs
 description: Fügen Sie den Diagrammen im Metrik-Explorer in Application Insights Bereitstellungs- oder Buildmarker hinzu.
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.openlocfilehash: 58f6603687838713fafbf4cd5cc3f100e22b7401
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c23c973bc02482e7000cfd1d066a322fff93542a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993719"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386032"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Anmerkungen zu Metrik-Diagrammen in Application Insights
 
@@ -81,7 +81,7 @@ Erstellen Sie für Ihre Azure Pipelines-Versionsvorlagen jeweils einen separate
 
 Wenn Sie nun diese Versionsvorlage zum Bereitstellen einer neuen Version verwenden, wird jedes Mal eine Anmerkung an Application Insights gesendet. Die Anmerkungen können an den folgenden Orten angezeigt werden:
 
-Bereich „Nutzung“, in dem Sie auch manuell Versionsanmerkungen erstellen können:
+Bereich **Nutzung**, in dem Sie auch manuell Versionsanmerkungen erstellen können:
 
 ![Screenshot: Balkendiagramm mit der Anzahl von Benutzerbesuchen für eine bestimmte Anzahl von Stunden Versionsanmerkungen werden als grüne Häkchen oberhalb des Diagramms angezeigt und geben den Zeitpunkt einer Versionsveröffentlichung an.](./media/annotations/usage-pane.png)
 

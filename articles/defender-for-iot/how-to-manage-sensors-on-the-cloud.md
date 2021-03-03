@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/27/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 427ea3884a3db6ba33405014435cf1f962670064
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 7cc4fe4e2b675fb1b46bb4404d892c02a1f00553
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562708"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526858"
 ---
 # <a name="onboard-and-manage-sensors-in-the-defender-for-iot-portal"></a>Durchführen des Onboardings für und Verwalten von Sensoren im Defender für IoT-Portal
 
@@ -52,12 +52,10 @@ Gehen Sie wie folgt vor, um eine Aktivierungsdatei herunterzuladen:
 
 ## <a name="view-onboarded-sensors"></a>Anzeigen integrierter Sensoren
 
-Im [Defender für IoT-Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) können Sie grundlegende Informationen zu integrierten Sensoren anzeigen. 
+Im [Defender für IoT-Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) können Sie grundlegende Informationen zu integrierten Sensoren anzeigen.
 
 1. Wählen Sie **Standorte und Sensoren** aus.
-1. Verwenden Sie auf der Seite **Standorte und Sensoren** die Filter- und Suchtools, um nach den gewünschten Sensorinformationen zu suchen.
-
-Die verfügbaren Informationen umfassen Folgendes:
+1. Verwenden Sie die Filter- und Suchtools, um nach den gewünschten Sensoren- und Threat Intelligence-Informationen zu suchen.
 
 - Die Anzahl der integrierten Sensoren
 - Die Anzahl der mit der Cloud verbundenen und der lokal verwalteten Sensoren
@@ -68,32 +66,40 @@ Die verfügbaren Informationen umfassen Folgendes:
 
 Sie verwenden das [Defender für IoT-Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) zum Ausführen von Verwaltungsaufgaben für Sensoren.
 
-### <a name="export"></a>Exportieren
+Integrierte Sensoren können auf der Seite **Standorte und Sensoren** angezeigt werden. Sie können auf dieser Seite auch Sensorinformationen bearbeiten.
+
+### <a name="export-sensor-details"></a>Exportieren von Sensordetails
 
 Wählen Sie zum Exportieren von Informationen zum integrierten Sensor oben auf der Seite **Standorte und Sensoren** das Symbol **Exportieren** aus.
 
-### <a name="edit"></a>Bearbeiten
+### <a name="edit-sensor-zone-details"></a>Bearbeiten von Sensorzonendetails
 
-Verwenden Sie die Bearbeitungstools **Standorte und Sensoren**, um den Standortnamen, die Zone und Tags hinzuzufügen und zu bearbeiten.
+Verwenden Sie die Bearbeitungsoptionen auf der Seite **Standorte und Sensoren**, um den Sensornamen und die Zone zu bearbeiten.
 
-### <a name="delete"></a>Löschen
+So bearbeiten Sie die Informationen
+
+1. Wählen Sie die Auslassungspunkte ( **...** ) für den zu bearbeitenden Sensor aus.
+1. Wählen Sie Bearbeiten aus.
+1. Aktualisieren Sie die Sensorzone, oder erstellen Sie eine neue Zone.
+
+### <a name="delete-a-sensor"></a>Löschen eines Sensors
 
 Wenn Sie einen mit der Cloud verbundenen Sensor löschen, werden keine Informationen an den IoT-Hub gesendet. Löschen Sie lokal verbundene/verwaltete Sensoren, wenn Sie nicht mehr damit arbeiten.
 
 Gehen Sie wie folgt vor, um einen Sensor zu löschen:
 
-1. Wählen Sie die Auslassungspunkte ( **...** ) für den zu löschenden Sensor aus. 
+1. Wählen Sie die Auslassungspunkte ( **...** ) für den zu löschenden Sensor aus.
 1. Bestätigen Sie den Löschvorgang.
 
-### <a name="reactivate"></a>Erneut aktivieren
+### <a name="reactivate-a-sensor"></a>Reaktivieren eines Sensors 
 
-Möglicherweise möchten Sie den Modus aktualisieren, in dem Ihr Sensor verwaltet wird. Beispiel:
+Möglicherweise müssen Sie den Sensor reaktivieren, wenn Sie folgende Schritte ausführen möchten:
 
-- **Arbeiten im mit der Cloud verbundenen Modus statt im lokal verwalteten Modus**: Aktualisieren Sie hierzu die Aktivierungsdatei für Ihren lokal verbundenen/verwalteten Sensor mit einer Aktivierungsdatei für einen mit der Cloud verbundenen Sensor. Nach der Reaktivierung werden Sensorerkennungen sowohl im Sensor als auch im [Defender für IoT-Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) angezeigt. Nachdem die Reaktivierungsdatei erfolgreich hochgeladen wurde, werden neu erkannte Warnungsinformationen an Azure gesendet.
+- **Arbeiten im mit der Cloud verbundenen Modus statt im lokal verwalteten Modus**: Nach dem erneuten Aktivieren werden die Erkennungen des Sensors im Sensor angezeigt. Neu erkannte Warnungsinformationen werden über den IoT-Hub gesendet. Diese Informationen können über andere Azure-Dienste wie Azure Sentinel freigegeben werden.
 
-- **Arbeiten im lokal verwalteten Modus statt im mit der Cloud verbundenen Modus**: Aktualisieren Sie hierzu die Aktivierungsdatei für einen mit der Cloud verbundenen Sensor mit einer Aktivierungsdatei für einen lokal verwalteten Sensor. Nach der Reaktivierung werden Informationen zur Sensorerkennung nur im Sensor angezeigt.
+- **Arbeiten im lokal verwalteten Modus statt im mit der Cloud verbundenen Modus:** Nach der Reaktivierung werden Informationen zur Sensorerkennung nur im Sensor angezeigt.
 
-- **Zuordnen des Sensors zu einem neuen IoT-Hub**:  Registrieren Sie dazu den Sensor erneut, und laden Sie eine neue Aktivierungsdatei hoch.
+- **Zuordnen des Sensors zu einem neuen IoT-Hub**:  Registrieren Sie den Sensor dafür erneut bei einem neuen Hub, und laden Sie dann eine neue Aktivierungsdatei herunter.
 
 Gehen Sie wie folgt vor, um einen Sensor erneut zu aktivieren:
 
@@ -103,19 +109,19 @@ Gehen Sie wie folgt vor, um einen Sensor erneut zu aktivieren:
 
 3. Löschen Sie den Sensor.
 
-4. Integrieren Sie den Sensor über die Seite **Onboarding** im neuen Modus oder in einen neuen IoT-Hub.
+4. Wiederholen Sie das Onboarding des Sensors erneut im neuen Modus oder bei einem neuen IoT-Hub, indem Sie auf der Seite „Erste Schritte“ die Option **Sensor integrieren** auswählen.
 
-5. Laden Sie die Aktivierungsdatei von der Seite **Aktivierungsdatei herunterladen** herunter.
+5. Laden Sie die Aktivierungsdatei herunter.
 
-6. Melden Sie sich bei der Sensorkonsole von Defender für IoT an.
+1. Melden Sie sich bei der Sensorkonsole von Defender für IoT an.
 
 7. Wählen Sie in der Sensorkonsole **Systemeinstellungen** und dann **Reaktivierung** aus.
 
    :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/reactivate.png" alt-text="Hochladen Ihrer Aktivierungsdatei zum erneuten Aktivieren des Sensors":::
 
-8. Wählen Sie **Hochladen** und dann die gespeicherte Datei aus.
+8. Wählen Sie **Hochladen** und dann die Datei aus, die Sie auf der Seite „Sensor integrieren“ gespeichert haben.
 
-9. Wählen Sie **Aktivieren** aus. 
+9. Wählen Sie **Aktivieren** aus.
 
 ## <a name="see-also"></a>Weitere Informationen
 

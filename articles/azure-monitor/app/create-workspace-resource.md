@@ -3,12 +3,12 @@ title: Erstellen einer neuen arbeitsbereichsbasierten Application Insights-Resso
 description: Erfahren Sie mehr über die erforderlichen Schritte zum Aktivieren der neuen arbeitsbereichsbasierte Application Insights-Ressourcen in Azure Monitor.
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: 23994190df89b47d9c7e90ed62a724545389b1fe
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 3ec0b25a24af13b29a3568165009f8a6d66e0218
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063365"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578339"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Arbeitsbereichsbasierte Application Insights-Ressourcen
 
@@ -23,10 +23,10 @@ Damit ist auch eine gemeinsame rollenbasierte Zugriffssteuerung in Azure (Azure 
 
 Mithilfe des arbeitsbereichsbasierten Application Insights können Sie die neuesten Funktionen von Azure Monitor und Log Analytics nutzen, einschließlich:
 
-* [CMK (Customer-Managed Keys, kundenseitig verwaltete Schlüssel)](../platform/customer-managed-keys.md) bietet Verschlüsselung im Ruhezustand für Ihre Daten mit Verschlüsselungsschlüsseln, auf die nur Sie Zugriff haben.
-* Mit [Azure Private Link](../platform/private-link-security.md) können Sie Azure-PaaS-Dienste über private Endpunkte sicher mit Ihrem virtuellen Netzwerk verknüpfen.
+* [CMK (Customer-Managed Keys, kundenseitig verwaltete Schlüssel)](../logs/customer-managed-keys.md) bietet Verschlüsselung im Ruhezustand für Ihre Daten mit Verschlüsselungsschlüsseln, auf die nur Sie Zugriff haben.
+* Mit [Azure Private Link](../logs/private-link-security.md) können Sie Azure-PaaS-Dienste über private Endpunkte sicher mit Ihrem virtuellen Netzwerk verknüpfen.
 * [Bring your own Storage (BYOS) für Profiler und Momentaufnahmedebugger](./profiler-bring-your-own-storage.md) verleiht Ihnen vollständige Kontrolle über die Richtlinie zur Verschlüsselung ruhender Daten, die Richtlinie zur Lebensdauerverwaltung und den Netzwerkzugriff auf alle Daten, die Application Insights Profiler und dem Momentaufnahmedebugger zugeordnet sind. 
-* Mit [Kapazitätsreservierungsstufen](../platform/manage-cost-storage.md#pricing-model) können Sie im Vergleich zur nutzungsbasierten Zahlung bis zu 25 % sparen. 
+* Mit [Kapazitätsreservierungsstufen](../logs/manage-cost-storage.md#pricing-model) können Sie im Vergleich zur nutzungsbasierten Zahlung bis zu 25 % sparen. 
 * Schnellere Datenerfassung über Log Analytics-Streamingerfassung.
 
 ## <a name="create-workspace-based-resource"></a>Erstellen einer arbeitsbereichsbasierten Ressource
@@ -36,7 +36,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und erstellen 
 > [!div class="mx-imgBorder"]
 > ![Arbeitsbereichsbasierte Application Insights-Ressource](./media/create-workspace-resource/create-workspace-based.png)
 
-Wenn Sie noch nicht über einen Log Analytics-Arbeitsbereich verfügen, [sehen Sie sich die Dokumentation zur Erstellung von Log Analytics-Arbeitsbereichen an](../learn/quick-create-workspace.md).
+Wenn Sie noch nicht über einen Log Analytics-Arbeitsbereich verfügen, [sehen Sie sich die Dokumentation zur Erstellung von Log Analytics-Arbeitsbereichen an](../logs/quick-create-workspace.md).
 
 **Arbeitsbereichsbasierte Ressourcen sind zurzeit in allen kommerziellen Regionen und für Azure Government verfügbar.**
 
@@ -212,5 +212,5 @@ Die Legacyfunktion für den fortlaufenden Export wird für arbeitsbereichsbasier
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Untersuchen von Metriken](../platform/metrics-charts.md)
-* [Schreiben von Analytics-Abfragen](../log-query/log-query-overview.md)
+* [Untersuchen von Metriken](../essentials/metrics-charts.md)
+* [Schreiben von Analytics-Abfragen](../logs/log-query-overview.md)

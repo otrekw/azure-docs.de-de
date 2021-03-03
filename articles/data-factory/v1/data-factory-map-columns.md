@@ -1,28 +1,24 @@
 ---
 title: Zuordnen von Datasetspalten in Azure Data Factory
 description: Erfahren Sie, wie Sie Quellspalten Zielspalten zuordnen.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: af7a1e40f21b6c9af490abe6f58edcaf798818b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fef2c6f120ae25e6aa1846d4971ff707da9bab92
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85318874"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371123"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>Zuordnen von Spalten im Quelldataset zu Spalten im Zieldataset
 > [!NOTE]
 > Dieser Artikel gilt für Version 1 von Data Factory. 
 
-Die Spaltenzuordnung kann verwendet werden, um anzugeben, wie die in "structure" der Quelltabelle angegebenen Spalten den in "structure" der Senkentabelle angegebenen Spalten zugeordnet werden. Die **columnMapping**-Eigenschaft ist im Abschnitt **typeProperties** der Kopieraktivität verfügbar.
+Die Spaltenzuordnung kann verwendet werden, um anzugeben, wie die in „structure“ der Quelltabelle angegebenen Spalten den in „structure“ der Senkentabelle angegebenen Spalten zugeordnet werden. Die **columnMapping**-Eigenschaft ist im Abschnitt **typeProperties** der Kopieraktivität verfügbar.
 
 Spaltenzuordnungen unterstützen die folgenden Szenarien:
 
@@ -31,7 +27,7 @@ Spaltenzuordnungen unterstützen die folgenden Szenarien:
 
 Im Folgenden sind Fehlerbedingungen angegeben, die zu einer Ausnahme führen:
 
-* Weniger Spalten oder mehr Spalten in "structure" der Senkentabelle als in der Zuordnung angegeben sind.
+* Weniger Spalten oder mehr Spalten in „structure“ der Senkentabelle als in der Zuordnung angegeben sind.
 * Doppelte Zuordnung.
 * Das Ergebnis der SQL-Abfrage enthält keinen Spaltennamen, der in der Zuordnung angegeben ist.
 
@@ -140,7 +136,7 @@ Der folgende JSON-Code definiert eine Kopieraktivität in einer Pipeline. Die Sp
 ![Ablauf der Spaltenzuordnung](./media/data-factory-map-columns/column-mapping-flow.png)
 
 ## <a name="sample-2--column-mapping-with-sql-query-from-azure-sql-to-azure-blob"></a>Beispiel 2 – Spaltenzuordnung mit SQL-Abfrage von Azure SQL zu Azure-Blob
-In diesem Beispiel wird eine SQL-Abfrage zum Extrahieren von Daten aus SQL Azure verwendet, statt einfach den Tabellennamen und die Spaltennamen im Abschnitt "structure" anzugeben. 
+In diesem Beispiel wird eine SQL-Abfrage zum Extrahieren von Daten aus Azure SQL verwendet, statt einfach den Tabellennamen und die Spaltennamen im Abschnitt „structure“ anzugeben. 
 
 ```json
 {
@@ -172,7 +168,7 @@ In diesem Beispiel wird eine SQL-Abfrage zum Extrahieren von Daten aus SQL Azure
         }
 }
 ```
-In diesem Fall werden die Abfrageergebnisse zuerst den in "structure" der Quelle angegebenen Spalten zugeordnet. Anschließend werden die Spalten aus "structure" der Quelle mit Regeln, die in "columnMappings" angegeben sind, Spalten in "structure" der Senke zugeordnet.  Wenn die Abfrage fünf Spalten zurückgibt, sind dies zwei Spalten mehr, als in der „structure“ der Quelle angegeben sind.
+In diesem Fall werden die Abfrageergebnisse zuerst den in „structure“ der Quelle angegebenen Spalten zugeordnet. Anschließend werden die Spalten aus „structure“ der Quelle mit Regeln, die in „columnMappings“ angegeben sind, Spalten in „structure“ der Senke zugeordnet.  Wenn die Abfrage fünf Spalten zurückgibt, sind dies zwei Spalten mehr, als in der „structure“ der Quelle angegeben sind.
 
 **Ablauf der Spaltenzuordnung**
 

@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.openlocfilehash: 38b0f23a44a16125726e7810b2045d244a2e6b06
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 060c78621b82f4698d4596383cd155d85d483d8e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454645"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669497"
 ---
 # <a name="quickstart-create-a-serverless-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Schnellstart: Erstellen eines serverlosen Apache Spark-Pools in Azure Synapse Analytics mithilfe von Webtools
 
@@ -148,7 +148,7 @@ Beenden Sie alle verbundenen Sitzungen (Notebooks), um sicherzustellen, dass die
 In dieser Schnellstartanleitung haben Sie erfahren, wie Sie einen serverlosen Apache Spark-Pool erstellen und eine einfache Spark SQL-Abfrage ausführen.
 
 - [Azure Synapse Analytics](overview-what-is.md)
-- [Dokumentation zu .NET für Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Dokumentation zu .NET für Apache Spark](/dotnet/spark)
 
 
 

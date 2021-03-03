@@ -6,20 +6,20 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: d1f575d9d588ccd99523c6b6d5d2ceba6369dc3d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 5de795811923c965a1473f8d91e3fd654aeef266
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309909"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574550"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>Anzeigen und Erstellen von Abfragen zur Überwachung und Nachverfolgung in Azure Monitor-Protokolle für Azure Logic Apps
 
-Sie können die zugrunde liegenden Abfragen anzeigen, die die Ergebnisse aus [Azure Monitor Protokollen](../azure-monitor/log-query/log-query-overview.md) erzeugen, und Abfragen erstellen, die die Ergebnisse auf Grundlage Ihrer spezifischen Kriterien filtern. So können Sie beispielsweise anhand einer bestimmten Austauschkontrollnummer nach Nachrichten suchen. Abfragen verwenden die [Kusto-Abfragesprache](/azure/data-explorer/kusto/query/), die Sie bearbeiten können, wenn Sie andere Ergebnisse anzeigen möchten. Weitere Informationen finden Sie unter [Azure Monitor-Protokolle für Abfragen](/azure/data-explorer/kusto/query/).
+Sie können die zugrunde liegenden Abfragen anzeigen, die die Ergebnisse aus [Azure Monitor Protokollen](../azure-monitor/logs/log-query-overview.md) erzeugen, und Abfragen erstellen, die die Ergebnisse auf Grundlage Ihrer spezifischen Kriterien filtern. So können Sie beispielsweise anhand einer bestimmten Austauschkontrollnummer nach Nachrichten suchen. Abfragen verwenden die [Kusto-Abfragesprache](/azure/data-explorer/kusto/query/), die Sie bearbeiten können, wenn Sie andere Ergebnisse anzeigen möchten. Weitere Informationen finden Sie unter [Azure Monitor-Protokolle für Abfragen](/azure/data-explorer/kusto/query/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Einen Log Analytics-Arbeitsbereich Falls Sie keinen Log Analytics-Arbeitsbereich besitzen, lesen Sie die Informationen zum [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md).
+* Einen Log Analytics-Arbeitsbereich Falls Sie keinen Log Analytics-Arbeitsbereich besitzen, lesen Sie die Informationen zum [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/logs/quick-create-workspace.md).
 
 * Eine Logik-App, die mit Azure Monitor-Protokollierung eingerichtet ist und diese Informationen an einen Log Analytics-Arbeitsbereich sendet. Erfahren Sie, [wie Sie Azure Monitor-Protokolle für Ihre Logik-App einrichten](../logic-apps/monitor-logic-apps.md).
 
@@ -45,7 +45,7 @@ Gehen Sie folgendermaßen vor, um die Abfrage anzuzeigen oder zu bearbeiten, die
 
 ## <a name="create-your-own-query"></a>Erstellen Ihrer eigenen Abfrage
 
-Um Ergebnisse auf Grundlage bestimmter Eigenschaften oder Werte zu suchen oder zu filtern, können Sie eine eigene Abfrage erstellen, indem Sie mit einer leeren Abfrage anfangen oder eine vorhandene Abfrage verwenden. Weitere Informationen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md).
+Um Ergebnisse auf Grundlage bestimmter Eigenschaften oder Werte zu suchen oder zu filtern, können Sie eine eigene Abfrage erstellen, indem Sie mit einer leeren Abfrage anfangen oder eine vorhandene Abfrage verwenden. Weitere Informationen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md).
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) Ihren Log Analytics-Arbeitsbereich, und wählen Sie ihn aus.
 

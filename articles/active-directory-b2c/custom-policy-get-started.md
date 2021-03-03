@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ae3865c1ee5e656fc4feda48de9ab67995619593
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9612a26d7ac2e7a059655636fc1a2a7a43e3b8d7
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936368"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526237"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
@@ -111,7 +111,7 @@ Stellen Sie nun die API bereit, indem Sie einen Bereich hinzufügen:
 Geben Sie nun an, dass die Anwendung als öffentlicher Client behandelt werden soll:
 
 1. Wählen Sie im linken Menü unter **Verwalten** die Option **Authentifizierung** aus.
-1. Aktivieren Sie unter **Erweiterte Einstellungen** die Option **Anwendung als öffentlichen Client behandeln** aus (wählen Sie **Ja** aus). Stellen Sie sicher, dass **„allowPublicClient“: true** im Anwendungsmanifest festgelegt ist. 
+1. Legen Sie unter **Erweiterte Einstellungen** im Abschnitt **Öffentliche Clientflows zulassen** die Option **Folgende Flows für Mobilgerät und Desktop aktivieren** auf **Ja** fest. Stellen Sie sicher, dass **„allowPublicClient“: true** im Anwendungsmanifest festgelegt ist. 
 1. Wählen Sie **Speichern** aus.
 
 Erteilen Sie nun Berechtigungen für den API-Bereich, den Sie zuvor in der Registrierung *IdentityExperienceFramework* verfügbar gemacht haben:

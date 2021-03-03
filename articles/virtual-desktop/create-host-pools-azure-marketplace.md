@@ -3,15 +3,16 @@ title: 'Windows Virtual Desktop-Hostpool im Azure-Portal: Azure'
 description: Hier erfahren Sie, wie Sie einen Windows Virtual Desktop-Hostpool im Azure-Portal erstellen.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.custom: references_regions
+ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 268f1c4bff84a2c9ef67c3f6b5749bc8d0b90e85
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 46a029a3b803428d6250b74059190f66183be452
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735180"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651458"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Tutorial: Erstellen eines Hostpools mit dem Azure-Portal
 
@@ -67,6 +68,9 @@ Zum Erstellen des neuen Hostpools führen Sie zunächst die folgenden Schritte a
 
      > [!div class="mx-imgBorder"]
      > ![Screenshot des Azure-Portals, der das Feld „Standort“ mit ausgewählter Region „USA, Osten“ zeigt. Neben dem Feld wird „Metadaten werden in ‚USA, Osten‘ gespeichert“ angezeigt.](media/portal-location-field.png)
+  
+   >[!NOTE]
+   > Wenn Sie Ihren Hostpool in [einer unterstützten Region](data-locations.md) außerhalb der USA erstellen möchten, müssen Sie den Ressourcenanbieter erneut registrieren. Nach der erneuten Registrierung sollten die anderen Regionen in der Dropdownliste zum Auswählen des Standorts angezeigt werden. Informationen zum erneuten Registrieren finden Sie im Problembehandlungsartikel zur [Hostpoolerstellung](troubleshoot-set-up-issues.md#i-only-see-us-when-setting-the-location-for-my-service-objects).
 
 8. Wählen Sie unter „Host pool type“ (Hostpooltyp) die Option **Persönlich** oder **In Pool** für Ihren Hostpool aus.
 

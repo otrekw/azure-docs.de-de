@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.openlocfilehash: 10e548eb87b7ac4254fa916f804a6710252be7fc
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: f63a8fd05e1a6ed5e41eeb64aa852ff01db295af
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99830718"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645466"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Planen der Konfiguration von „Meine Apps“ in Azure Active Directory
 
@@ -143,7 +143,7 @@ Wenn Sie diese Anwendungen integrieren müssen, sollten Sie einen Mechanismus de
 
 * [Benutzergesteuerter Download und Konfiguration für Chrome, Firefox, Microsoft Edge oder Internet Explorer](../user-help/my-apps-portal-end-user-access.md)
 
-* [Configuration Manager für Internet Explorer](https://docs.microsoft.com/mem/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
+* [Configuration Manager für Internet Explorer](/mem/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 
 Die Erweiterung ermöglicht den Benutzern, jede App über die Suchleiste zu starten, kürzlich verwendete Anwendungen zu finden und darauf zuzugreifen und einen Link zur Seite „Meine Apps“ zu verwenden.
 
@@ -271,4 +271,3 @@ Sie können Ihre Rollen mithilfe von [Privileged Identity Management](../privile
 
 [Planen der Bereitstellung eines Anwendungsproxys](application-proxy-deployment-plan.md)
 
- 

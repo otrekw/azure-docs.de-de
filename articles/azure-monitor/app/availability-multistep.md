@@ -2,13 +2,13 @@
 title: Überwachen mit mehrstufigen Webtests – Azure Application Insights
 description: Einrichten von mehrstufigen Webtests zur Überwachung Ihrer Webanwendungen mit Azure Application Insights
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: 0031971dc2ccd2a9e681220dd835f46d33e36dbb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/14/2021
+ms.openlocfilehash: 1d3597eaf54c40fb1f986d822af0dd6b8c8a7b2e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934852"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719847"
 ---
 # <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
 
@@ -65,7 +65,6 @@ Anleitungen zum Erstellen von Visual Studio-Webtests finden Sie in der [offiziel
 |Einstellung| Erklärung
 |----|----|----|
 |**Near-realtime (Preview)** (Nahezu in Echtzeit (Vorschauversion)) | Es wird empfohlen, Warnungen zu verwenden, die nahezu in Echtzeit angezeigt werden. Diese Art von Warnung ist bereits vollständig konfiguriert, sobald Sie einen Verfügbarkeitstest erstellt haben.  |
-|**Klassisch** | Die Verwendung von klassischen Warnungen wird für neue Verfügbarkeitstests nicht mehr empfohlen.|
 |**Schwellenwert für den Warnungsspeicherort**|Es wird ein Mindestwert von 3/5 Standorten empfohlen. Das optimale Verhältnis zwischen dem Schwellenwert für den Warnungsspeicherort und der Anzahl von Teststandorten lautet **Warnungsschwellenwert für Standort** = **Anzahl von Teststandorten -2, bei einer Mindestanzahl von fünf Teststandorten.**|
 
 ## <a name="configuration"></a>Konfiguration

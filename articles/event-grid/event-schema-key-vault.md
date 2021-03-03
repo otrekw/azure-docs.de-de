@@ -2,21 +2,20 @@
 title: Azure Key Vault als Event Grid-Quelle
 description: Beschreibt die Eigenschaften und das Schema, die für Azure Key Vault-Ereignisse im Azure Event Grid verfügbar sind
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 605502794f2f3aa4f4edd14b49efda5003b91146
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 02/11/2021
+ms.openlocfilehash: ea8821b15000b74a10f28730ccf82b538e7819e5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460407"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363405"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault als Event Grid-Quelle
 
 Dieser Artikel enthält Informationen zu den Eigenschaften und zum Schema für Ereignisse in [Azure Key Vault](../key-vault/index.yml). Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
-## <a name="event-grid-event-schema"></a>Event Grid-Ereignisschema
 
-### <a name="available-event-types"></a>Verfügbare Ereignistypen
+## <a name="available-event-types"></a>Verfügbare Ereignistypen
 
 Ein Azure Key Vault Konto generiert die folgenden Ereignistypen:
 
@@ -31,9 +30,11 @@ Ein Azure Key Vault Konto generiert die folgenden Ereignistypen:
 | Microsoft.KeyVault.SecretNewVersionCreated | Secret New Version Created (Neue Version des Geheimnisses erstellt) | Wird ausgelöst, wenn ein neues Geheimnis oder eine neue Geheimnisversion erstellt wird. |
 | Microsoft.KeyVault.SecretNearExpiry | Secret Near Expiry (Geheimnis läuft demnächst ab) | Wird ausgelöst, wenn die aktuelle Version eines Geheimnisses demnächst abläuft. (Das Ereignis wird 30 Tage vor dem Ablaufdatum ausgelöst.) |
 | Microsoft.KeyVault.SecretExpired | Secret Expired (Geheimnis abgelaufen) | Wird ausgelöst, wenn ein Geheimnis abgelaufen ist. |
-| Microsoft.KeyVault.VaultAccessPolicyChanged | Geänderte Tresorzugriffsrichtlinie | Wird ausgelöst, wenn eine Zugriffsrichtlinie für Key Vault geändert wird. Enthält ein Szenario, in dem das Key Vault-Berechtigungsmodell in/von Azure RBAC geändert wird.  |
+| Microsoft.KeyVault.VaultAccessPolicyChanged | Geänderte Tresorzugriffsrichtlinie | Wird ausgelöst, wenn eine Zugriffsrichtlinie für Key Vault geändert wird. Enthält ein Szenario, in dem das Key Vault-Berechtigungsmodell in/aus rollenbasierter Azure-Zugriffssteuerung geändert wird.   |
 
-### <a name="event-examples"></a>Ereignisbeispiele
+## <a name="event-examples"></a>Ereignisbeispiele
+
+# <a name="event-grid-event-schema"></a>[Event Grid-Ereignisschema](#tab/event-grid-event-schema)
 
 Das folgende Beispiel zeigt das Schema für **Microsoft.KeyVault.SecretNewVersionCreated**:
 
@@ -60,19 +61,79 @@ Das folgende Beispiel zeigt das Schema für **Microsoft.KeyVault.SecretNewVersio
 ]
 ```
 
+# <a name="cloud-event-schema"></a>[Cloudereignisschema](#tab/cloud-event-schema)
+
+Das folgende Beispiel zeigt das Schema für **Microsoft.KeyVault.SecretNewVersionCreated**:
+
+```JSON
+[
+   {
+      "id":"00eccf70-95a7-4e7c-8299-2eb17ee9ad64",
+      "source":"/subscriptions/{subscription-id}/resourceGroups/sample-rg/providers/Microsoft.KeyVault/vaults/sample-kv",
+      "subject":"newsecret",
+      "type":"Microsoft.KeyVault.SecretNewVersionCreated",
+      "time":"2019-07-25T01:08:33.1036736Z",
+      "data":{
+         "Id":"https://sample-kv.vault.azure.net/secrets/newsecret/ee059b2bb5bc48398a53b168c6cdcb10",
+         "vaultName":"sample-kv",
+         "objectType":"Secret",
+         "objectName ":"newsecret",
+         "version":" ee059b2bb5bc48398a53b168c6cdcb10",
+         "nbf":"1559081980",
+         "exp":"1559082102"
+      },
+      "specversion":"1.0"
+   }
+]
+```
+
+---
+
 ### <a name="event-properties"></a>Ereigniseigenschaften
+
+# <a name="event-grid-event-schema"></a>[Event Grid-Ereignisschema](#tab/event-grid-event-schema)
+Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
+
+| Eigenschaft | type | BESCHREIBUNG |
+| -------- | ---- | ----------- |
+| `topic` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| `eventType` | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| `eventTime` | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| `id` | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| `data` | Objekt (object) | App Configuration-Ereignisdaten. |
+| `dataVersion` | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| `metadataVersion` | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+
+
+# <a name="cloud-event-schema"></a>[Cloudereignisschema](#tab/cloud-event-schema)
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
+| -------- | ---- | ----------- |
+| `source` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| `type` | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| `time` | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| `id` | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| `data` | Objekt (object) | App Configuration-Ereignisdaten. |
+| `specversion` | Zeichenfolge | Version der CloudEvents-Schemaspezifikation. |
+
+---
+ 
+
+Das Datenobjekt weist die folgenden Eigenschaften auf:
+
+| Eigenschaft | type | BESCHREIBUNG |
 | ---------- | ----------- |---|
-| id | Zeichenfolge | Die ID des Objekts, das dieses Ereignis ausgelöst hat. |
-| vaultName | Zeichenfolge | Der Schlüsseltresorname des Objekts, das dieses Ereignis ausgelöst hat. |
-| objectType | Zeichenfolge | Der Typ des Objekts, das dieses Ereignis ausgelöst hat. |
-| objectName | Zeichenfolge | Der Name des Objekts, das dieses Ereignis ausgelöst hat. |
-| version | Zeichenfolge | Die Version des Objekts, das dieses Ereignis ausgelöst hat. |
-| nbf | number | Das Anfangsdatum in Sekunden seit 1970-01-01t00:00:00Z für das Objekt, das dieses Ereignis ausgelöst hat. |
-| exp | number | Das Ablaufdatum in Sekunden seit 1970-01-01t00:00:00Z des Objekts, das dieses Ereignis ausgelöst hat. |
+| `id` | Zeichenfolge | Die ID des Objekts, das dieses Ereignis ausgelöst hat. |
+| `vaultName` | Zeichenfolge | Der Schlüsseltresorname des Objekts, das dieses Ereignis ausgelöst hat. |
+| `objectType` | Zeichenfolge | Der Typ des Objekts, das dieses Ereignis ausgelöst hat. |
+| `objectName` | Zeichenfolge | Der Name des Objekts, das dieses Ereignis ausgelöst hat. |
+| `version` | Zeichenfolge | Die Version des Objekts, das dieses Ereignis ausgelöst hat. |
+| `nbf` | number | Das Anfangsdatum in Sekunden seit 1970-01-01t00:00:00Z für das Objekt, das dieses Ereignis ausgelöst hat. |
+| `exp` | number | Das Ablaufdatum in Sekunden seit 1970-01-01t00:00:00Z des Objekts, das dieses Ereignis ausgelöst hat. |
 
 ## <a name="tutorials-and-how-tos"></a>Tutorials und Anleitungen
 |Titel  |BESCHREIBUNG  |

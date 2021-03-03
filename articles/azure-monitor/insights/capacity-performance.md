@@ -1,17 +1,16 @@
 ---
 title: Lösung „Kapazität und Leistung“ in Azure Monitor | Microsoft-Dokumentation
 description: Die Lösung „Kapazität und Leistung“ in Monitor hilft Ihnen, die Kapazität Ihrer Hyper-V-Server zu verstehen.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: ee5aec2e483f41c73d57fc1d91427e5657bda3e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa08b9f5db5e6371bcd20b473a0c755db3199e7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87317993"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704292"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Planen der Kapazität des virtuellen Hyper-V-Computers mit der Lösung „Kapazität und Leistung“ (veraltet)
 
@@ -41,10 +40,10 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 
 | Verbundene Quelle | Support | BESCHREIBUNG |
 |---|---|---|
-| [Windows-Agents](../platform/agent-windows.md) | Ja | Mit der Lösung werden Informationen zu den Kapazitäts- und Leistungsdaten von Windows-Agents gesammelt. |
-| [Linux-Agents](../learn/quick-collect-linux-computer.md) | Nein | Die Lösung sammelt keine Informationen zu den Kapazitäts- und Leistungsdaten von direkten Linux-Agents.|
-| [SCOM-Verwaltungsgruppe](../platform/om-agents.md) | Ja |Die Lösung sammelt Informationen zu den Kapazitäts- und Leistungsdaten von Agents in einer verbundenen SCOM-Verwaltungsgruppe. Es ist keine direkte Verbindung vom SCOM-Agent mit Log Analytics erforderlich.|
-| [Azure-Speicherkonto](../platform/resource-logs.md#send-to-log-analytics-workspace) | Nein | Der Azure-Speicher enthält keine Daten zur Kapazität und Leistung.|
+| [Windows-Agents](../agents/agent-windows.md) | Ja | Mit der Lösung werden Informationen zu den Kapazitäts- und Leistungsdaten von Windows-Agents gesammelt. |
+| [Linux-Agents](../vm/quick-collect-linux-computer.md) | Nein    | Die Lösung sammelt keine Informationen zu den Kapazitäts- und Leistungsdaten von direkten Linux-Agents.|
+| [SCOM-Verwaltungsgruppe](../agents/om-agents.md) | Ja |Die Lösung sammelt Informationen zu den Kapazitäts- und Leistungsdaten von Agents in einer verbundenen SCOM-Verwaltungsgruppe. Es ist keine direkte Verbindung vom SCOM-Agent mit Log Analytics erforderlich.|
+| [Azure-Speicherkonto](../essentials/resource-logs.md#send-to-log-analytics-workspace) | Nein | Der Azure-Speicher enthält keine Daten zur Kapazität und Leistung.|
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -72,7 +71,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 Wenn die Lösung „Kapazität und Leistung“ aktualisiert wird, ändert sich die Versionsnummer.
 
-Weitere Informationen zur Aktualisierung von Management Packs finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../platform/om-agents.md).
+Weitere Informationen zur Aktualisierung von Management Packs finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../agents/om-agents.md).
 
 ## <a name="using-the-solution"></a>Verwenden der Lösung
 
@@ -129,5 +128,5 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Daten zur Kapa
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie die [Protokollsuche in Log Analytics](../log-query/log-query-overview.md), um ausführliche Daten zur Kapazität und Leistung anzuzeigen.
+* Verwenden Sie die [Protokollsuche in Log Analytics](../logs/log-query-overview.md), um ausführliche Daten zur Kapazität und Leistung anzuzeigen.
 

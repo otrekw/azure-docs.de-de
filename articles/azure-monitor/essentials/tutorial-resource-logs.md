@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 88138cc1366dcef68aeccf652af05704e72c8e15
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d3c3eff32120438fd891cb32fe98d73424f82b7f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597545"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734144"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Tutorial: Sammeln und Analysieren von Ressourcenprotokollen von einer Azure-Ressource
 
@@ -93,7 +93,7 @@ Die Daten werden mithilfe einer in Kusto Query Language (KQL) geschriebenen Prot
 
 
 5. Geben Sie eine Abfrage ein, und klicken Sie auf **Ausführen**, um die Ergebnisse anzuzeigen. 
-6. Ein Tutorial zum Schreiben von Protokollabfragen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../log-query/get-started-queries.md).
+6. Ein Tutorial zum Schreiben von Protokollabfragen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../logs/get-started-queries.md).
 
     ![Protokollabfrage](media/tutorial-resource-logs/log-query-1.png)
 
@@ -104,4 +104,4 @@ Die Daten werden mithilfe einer in Kusto Query Language (KQL) geschriebenen Prot
 Hier haben Sie gelernt, wie Sie Ressourcenprotokolle in einem Log Analytics-Arbeitsbereich sammeln. In einem weiteren Tutorial können Sie erfahren, wie Sie Protokollabfragen schreiben, um diese Daten zu analysieren.
 
 > [!div class="nextstepaction"]
-> [Erste Schritte mit Protokollabfragen in Azure Monitor](../log-query/get-started-queries.md)
+> [Erste Schritte mit Protokollabfragen in Azure Monitor](../logs/get-started-queries.md)

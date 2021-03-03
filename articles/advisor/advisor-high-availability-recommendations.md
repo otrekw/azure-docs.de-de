@@ -3,12 +3,12 @@ title: Verbessern der Zuverlässigkeit Ihrer Anwendung mit Advisor
 description: Verwenden Sie Azure Advisor, um die Zuverlässigkeit Ihrer geschäftskritischen Azure-Bereitstellungen sicherzustellen und zu verbessern.
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 0ced690ae735a281fdf8b1c3a020ff8c63ce469b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c96b47f1ee145129f4c14c6646f93abeb8a5aac9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078033"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579975"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Verbessern der Zuverlässigkeit Ihrer Anwendung mit Azure Advisor
 
@@ -68,7 +68,7 @@ Um Redundanz für Ihre Anwendung zu gewährleisten, empfehlen wir die Gruppierun
 
 ## <a name="ensure-availability-set-fault-tolerance-temporarily-disabled"></a>Sicherstellen von Fehlertoleranz für Verfügbarkeitsgruppen (vorübergehend deaktiviert)
 
-Um Redundanz für Ihre Anwendung zu gewährleisten, empfehlen wir die Gruppierung von zwei oder mehr virtuellen Computern in einer Verfügbarkeitsgruppe. Der Advisor ermittelt Verfügbarkeitsgruppen mit nur einem virtuellen Computer und empfiehlt, dieser weitere hinzuzufügen. Durch diese Konfiguration wird sichergestellt, dass während einer geplanten oder ungeplanten Wartung mindestens ein virtueller Computer verfügbar ist und die Azure-SLA für virtuelle Computer eingehalten wird. Sie können einen virtuellen Computer erstellen oder der Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzufügen.  
+Um Redundanz für Ihre Anwendung zu gewährleisten, empfehlen wir die Gruppierung von zwei oder mehr virtuellen Computern in einer Verfügbarkeitsgruppe. Der Advisor ermittelt Verfügbarkeitsgruppen mit nur einem virtuellen Computer und empfiehlt, dieser weitere hinzuzufügen.  Durch diese Konfiguration wird sichergestellt, dass während einer geplanten oder ungeplanten Wartung mindestens ein virtueller Computer verfügbar ist und die Azure-SLA für virtuelle Computer eingehalten wird.  Sie können einen virtuellen Computer erstellen oder der Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzufügen.  
 
 ## <a name="use-managed-disks-to-improve-data-reliability-temporarily-disabled"></a>Verwenden von verwalteten Datenträgern zur Erhöhung der Datenzuverlässigkeit (vorübergehend deaktiviert)
 
@@ -76,7 +76,7 @@ Virtuelle Computer, die sich in einer Verfügbarkeitsgruppe mit Datenträgern be
 
 ## <a name="repair-invalid-log-alert-rules"></a>Reparieren ungültiger Protokollwarnungsregeln
 
-Azure Advisor erkennt Protokollwarnungsregeln mit ungültigen Abfragen im Bedingungsabschnitt. Azure Monitor-Protokollwarnungsregeln führen Abfragen mit der angegebenen Häufigkeit aus und lösen auf Grundlage der Ergebnisse Warnungen aus. Es kann vorkommen, dass Abfragen aufgrund von Änderungen an referenzierten Ressourcen, Tabellen oder Befehlen im Laufe der Zeit ungültig werden. Advisor empfiehlt Korrekturen für Warnungsabfragen, um eine automatische Deaktivierung der Regeln zu verhindern und die Überwachungsabdeckung zu gewährleisten. Weitere Informationen finden Sie unter [Problembehandlung von Warnungsregeln](../azure-monitor/platform/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid).
+Azure Advisor erkennt Protokollwarnungsregeln mit ungültigen Abfragen im Bedingungsabschnitt. Azure Monitor-Protokollwarnungsregeln führen Abfragen mit der angegebenen Häufigkeit aus und lösen auf Grundlage der Ergebnisse Warnungen aus. Es kann vorkommen, dass Abfragen aufgrund von Änderungen an referenzierten Ressourcen, Tabellen oder Befehlen im Laufe der Zeit ungültig werden. Advisor empfiehlt Korrekturen für Warnungsabfragen, um eine automatische Deaktivierung der Regeln zu verhindern und die Überwachungsabdeckung zu gewährleisten. Weitere Informationen finden Sie unter [Problembehandlung von Warnungsregeln](../azure-monitor/alerts/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid).
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>Konfigurieren eines konsistenten Indizierungsmodus für Ihre Azure Cosmos DB-Sammlung
 

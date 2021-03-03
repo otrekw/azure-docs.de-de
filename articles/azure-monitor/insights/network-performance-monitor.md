@@ -1,24 +1,23 @@
 ---
 title: Netzwerkleistungsmonitor-Lösung in Azure | Microsoft-Dokumentation
 description: Mit dem Netzwerkleistungsmonitor in Azure können Sie die Leistung Ihrer Netzwerke nahezu in Echtzeit überwachen, um Leistungsengpässe im Netzwerk zu erkennen und zu lokalisieren.
-ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 4ae0a85c8608ff96777bc6b952554f1ccd917306
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: dd9f35a0b7c3bb5c2c5888765e4ebac436b4cde1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530603"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711126"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netzwerkleistungsmonitor-Lösung in Azure
 
 ![Symbol des Netzwerkleistungsmonitors](./media/network-performance-monitor/npm-symbol.png)
 
 > [!IMPORTANT]
-> Ab dem 1. Juli 2021 ist es nicht mehr möglich, neue Tests in einem vorhandenen Arbeitsbereich hinzuzufügen oder einen neuen Arbeitsbereich im Netzwerkleistungsmonitor zu aktivieren. Sie können weiterhin die Tests verwenden, die vor dem 1. Juli 2021 erstellt wurden. [Migrieren Sie Ihre Tests vor dem 29. Februar 2024 aus dem Netzwerkleistungsmonitor zum neuen Verbindungsmonitor](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) in Azure Network Watcher, um die Dienstunterbrechungen im Zusammenhang mit Ihren aktuellen Workloads zu minimieren.
+> Ab dem 1. Juli 2021 ist es nicht mehr möglich, neue Tests in einem vorhandenen Arbeitsbereich hinzufügen oder einen neuen Arbeitsbereich im Netzwerkleistungsmonitor zu aktivieren. Sie können weiterhin die Tests verwenden, die vor dem 1. Juli 2021 erstellt wurden. [Migrieren Sie Ihre Tests vor dem 29. Februar 2024 aus dem Netzwerkleistungsmonitor zum neuen Verbindungsmonitor](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) in Azure Network Watcher, um die Dienstunterbrechungen im Zusammenhang mit Ihren aktuellen Workloads zu minimieren.
 
 Der Netzwerkleistungsmonitor ist eine cloudbasierte hybride Netzwerküberwachungslösung, mit der Sie die Netzwerkleistung zwischen verschiedenen Punkten in Ihrer Netzwerkinfrastruktur überwachen können. Er hilft Ihnen auch, die Netzwerkkonnektivität mit Dienst- und Anwendungsendpunkten zu überwachen und die Leistung von Azure ExpressRoute zu überwachen. 
 
@@ -76,7 +75,7 @@ Die Liste der unterstützten Regionen für ExpressRoute-Monitor ist in der [Doku
 
 ### <a name="install-and-configure-agents"></a>Installieren und Konfigurieren von Agents 
 
-Verwenden Sie zum Installieren von Agents die grundlegenden Prozesse, die unter [Verbinden von Windows-Computern mit Azure Monitor](../platform/agent-windows.md), [Verbinden von Linux-Computern mit Azure Monitor](../../virtual-machines/extensions/oms-linux.md) und [Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor](../platform/om-agents.md) beschrieben werden.
+Verwenden Sie zum Installieren von Agents die grundlegenden Prozesse, die unter [Verbinden von Windows-Computern mit Azure Monitor](../agents/agent-windows.md), [Verbinden von Linux-Computern mit Azure Monitor](../../virtual-machines/extensions/oms-linux.md) und [Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor](../agents/om-agents.md) beschrieben werden.
 
 ### <a name="where-to-install-the-agents"></a>Bestimmen des Installationsorts für die Agents 
 
@@ -266,13 +265,13 @@ Bei der in der Karte gezeigten Topologie handelt es sich um eine Layer 3-Topolog
 
 ## <a name="log-queries-in-azure-monitor"></a>Protokollabfragen in Azure Monitor
 
-Alle im Dashboard des Netzwerkleistungsmonitors und auf den Drilldownseiten grafisch dargestellten Daten sind auch nativ über [Protokollabfragen](../log-query/log-query-overview.md) verfügbar. Sie können eine interaktive Analyse von Daten im Repository ausführen und Daten aus verschiedenen Quellen korrelieren. Sie können auch benutzerdefinierte Warnungen und Ansichten erstellen und die Daten nach Excel, Power BI oder in einen freigegebenen Link exportieren. Der Bereich **Allgemeine Abfragen** im Dashboard enthält einige praktische Abfragen, die Sie als Ausgangspunkt für die Erstellung eigener Abfragen und Berichte verwenden können. 
+Alle im Dashboard des Netzwerkleistungsmonitors und auf den Drilldownseiten grafisch dargestellten Daten sind auch nativ über [Protokollabfragen](../logs/log-query-overview.md) verfügbar. Sie können eine interaktive Analyse von Daten im Repository ausführen und Daten aus verschiedenen Quellen korrelieren. Sie können auch benutzerdefinierte Warnungen und Ansichten erstellen und die Daten nach Excel, Power BI oder in einen freigegebenen Link exportieren. Der Bereich **Allgemeine Abfragen** im Dashboard enthält einige praktische Abfragen, die Sie als Ausgangspunkt für die Erstellung eigener Abfragen und Berichte verwenden können. 
 
 ## <a name="alerts"></a>Alerts
 
-Der Netzwerkleistungsmonitor verwendet die Warnfunktionen von [Azure Monitor](../platform/alerts-overview.md).
+Der Netzwerkleistungsmonitor verwendet die Warnfunktionen von [Azure Monitor](../alerts/alerts-overview.md).
 
-Das bedeutet, dass alle Benachrichtigungen mithilfe von [Aktionsgruppen](../platform/action-groups.md) verwaltet werden.  
+Das bedeutet, dass alle Benachrichtigungen mithilfe von [Aktionsgruppen](../alerts/action-groups.md) verwaltet werden.  
 
 Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über Log Analytics zu erstellen: 
 1. Es wird ein Link angezeigt, der Sie zum Azure-Portal umleitet. Klicken Sie darauf, um das Portal aufzurufen.
@@ -282,8 +281,8 @@ Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über Log Analytics zu
 
 Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über das Azure-Portal zu erstellen:  
 1. Sie können wahlweise Ihre E-Mail-Adresse direkt eingeben oder Warnungen über Aktionsgruppen erstellen.
-2. Wenn Sie Ihre E-Mail-Adresse direkt eingeben möchten, wird eine Aktionsgruppe namens **NPM Email ActionGroup** erstellt, und die E-Mail-ID wird dieser Aktionsgruppe hinzugefügt.
-3. Wenn Sie sich für Aktionsgruppen entscheiden, müssen Sie eine zuvor erstellte Aktionsgruppe auswählen. [Hier](../platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) erfahren Sie, wie Sie eine Aktionsgruppe erstellen. 
+2. Wenn Sie Ihre E-Mail-Adresse direkt eingeben möchten, wird eine Aktionsgruppe namens **NPM Email ActionGroup** erstellt und die E-Mail-ID wird dieser Aktionsgruppe hinzugefügt.
+3. Wenn Sie sich für Aktionsgruppen entscheiden, müssen Sie eine zuvor erstellte Aktionsgruppe auswählen. [Hier](../alerts/action-groups.md#create-an-action-group-by-using-the-azure-portal) erfahren Sie, wie Sie eine Aktionsgruppe erstellen. 
 4. Nachdem die Warnung erfolgreich erstellt wurde, können Sie über den Link „Warnungen verwalten“ Ihre Warnungen verwalten. 
 
 Wenn Sie eine Warnung erstellen, erstellt NPM eine abfragebasierte Warnungsregel in Azure Monitor. Diese Abfrage wird standardmäßig alle 5 Minuten ausgelöst. Die ersten 250 Protokollwarnungsregeln von Azure Monitor sind kostenlos. Jede weitere Protokollwarnungsregel wird gemäß den [Warnungspreisen auf der Seite mit den Azure Monitor-Preisen](https://azure.microsoft.com/pricing/details/monitor/) abgerechnet.
@@ -301,4 +300,4 @@ Informationen zu Preisen sind [online](network-performance-monitor-pricing-faq.m
 * **Treten Sie unserer Gruppe bei:** Wir freuen uns über neue Kunden, die unserer Gruppe beitreten möchten. Als Teil der Gruppe erhalten Sie vorab Zugriff auf neue Funktionen und können uns dabei helfen, den Netzwerkleistungsmonitor zu verbessern. Wenn Sie beitreten möchten, füllen Sie diesen [kurzen Fragebogen](https://aka.ms/npmcohort) aus. 
 
 ## <a name="next-steps"></a>Nächste Schritte 
-Informieren Sie sich ausführlicher über [Systemmonitor](network-performance-monitor-performance-monitor.md), [Dienstkonnektivitätsmonitor](network-performance-monitor-performance-monitor.md) und [ExpressRoute-Monitor](network-performance-monitor-expressroute.md). 
+Informieren Sie sich ausführlicher über [Systemmonitor](network-performance-monitor-performance-monitor.md), [Dienstkonnektivitätsmonitor](network-performance-monitor-performance-monitor.md) und [ExpressRoute-Monitor](network-performance-monitor-expressroute.md).

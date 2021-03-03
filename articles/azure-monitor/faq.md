@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: a8d3ded1d11a350ff53ffda71348b2cc707760b8
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 212828493a381ca118d3bdc54428bddba9bd842a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008416"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577573"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor
 
@@ -31,7 +31,7 @@ Im September 2018 hat Microsoft Azure Monitor, Log Analytics und Application In
 Funktionen von Azure Monitor, die automatisch aktiviert werden, wie z. B. das Sammeln von Metriken und Aktivitätsprotokollen, werden kostenlos bereitgestellt. Mit anderen Funktionen, z. B. Protokollabfragen und Warnungen, sind Kosten verbunden. Ausführliche Preisinformationen finden Sie in der [Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
 ### <a name="how-do-i-enable-azure-monitor"></a>Wie aktiviere ich Azure Monitor?
-Azure Monitor wird in dem Moment aktiviert, in dem Sie ein neues Azure-Abonnement erstellen, und das [Aktivitätsprotokoll](./platform/platform-logs-overview.md) sowie [Metriken](platform/data-platform-metrics.md) der Plattform werden automatisch gesammelt. Erstellen Sie [Diagnoseeinstellungen](platform/diagnostic-settings.md), um ausführlichere Informationen zum Betrieb Ihrer Azure-Ressourcen zu sammeln, und fügen Sie [Überwachungslösungen](insights/solutions.md) und [Erkenntnisse](./monitor-reference.md) hinzu, um zusätzliche Analysen gesammelter Daten für bestimmte Dienste bereitzustellen. 
+Azure Monitor wird in dem Moment aktiviert, in dem Sie ein neues Azure-Abonnement erstellen, und das [Aktivitätsprotokoll](./essentials/platform-logs-overview.md) sowie [Metriken](essentials/data-platform-metrics.md) der Plattform werden automatisch gesammelt. Erstellen Sie [Diagnoseeinstellungen](essentials/diagnostic-settings.md), um ausführlichere Informationen zum Betrieb Ihrer Azure-Ressourcen zu sammeln, und fügen Sie [Überwachungslösungen](insights/solutions.md) und [Erkenntnisse](./monitor-reference.md) hinzu, um zusätzliche Analysen gesammelter Daten für bestimmte Dienste bereitzustellen. 
 
 ### <a name="how-do-i-access-azure-monitor"></a>Wie greife ich auf Azure Monitor zu?
 Sie greifen auf alle Azure Monitor-Funktionen und -Daten über das Menü **Monitor** im Azure-Portal zu. Über den Abschnitt **Überwachung** des Menüs für verschiedene Azure-Dienste kann auf dieselben Tools mit gefilterten Daten für eine bestimmte Ressource zugegriffen werden. Auf Azure Monitor-Daten kann auch für eine Vielzahl von Szenarien über die CLI, PowerShell und eine REST-API zugegriffen werden.
@@ -40,10 +40,10 @@ Sie greifen auf alle Azure Monitor-Funktionen und -Daten über das Menü **Monit
 Nein. Azure Monitor ist ein skalierbarer Clouddienst, der große Datenmengen verarbeitet und speichert, obwohl Azure Monitor auch lokale Ressourcen und Ressourcen in anderen Clouds überwachen kann.
 
 ### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Kann Azure Monitor lokale Ressourcen überwachen?
-Ja. Zusätzlich zum Sammeln der Überwachungsdaten von Azure-Ressourcen kann Azure Monitor auch Daten von virtuellen Computern und Anwendungen in anderen Clouds und lokal sammeln. Weitere Informationen finden Sie unter [Quellen für Überwachungsdaten für Azure Monitor](platform/data-sources.md).
+Ja. Zusätzlich zum Sammeln der Überwachungsdaten von Azure-Ressourcen kann Azure Monitor auch Daten von virtuellen Computern und Anwendungen in anderen Clouds und lokal sammeln. Weitere Informationen finden Sie unter [Quellen für Überwachungsdaten für Azure Monitor](agents/data-sources.md).
 
 ### <a name="does-azure-monitor-integrate-with-system-center-operations-manager"></a>Kann Azure Monitor in System Center Operations Manager integriert werden?
-Sie können Ihre vorhandene System Center Operations Manager-Verwaltungsgruppe mit Azure Monitor verbinden, um Daten von Agents in Azure Monitor-Protokollen zu erfassen. Dadurch können Sie Protokollabfragen und die Lösung zum Analysieren von Daten verwenden, die von Agents gesammelt werden. Sie können auch vorhandene System Center Operations Manager-Agents so konfigurieren, dass Daten direkt an Azure Monitor gesendet werden. Weitere Informationen finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor](platform/om-agents.md).
+Sie können Ihre vorhandene System Center Operations Manager-Verwaltungsgruppe mit Azure Monitor verbinden, um Daten von Agents in Azure Monitor-Protokollen zu erfassen. Dadurch können Sie Protokollabfragen und die Lösung zum Analysieren von Daten verwenden, die von Agents gesammelt werden. Sie können auch vorhandene System Center Operations Manager-Agents so konfigurieren, dass Daten direkt an Azure Monitor gesendet werden. Weitere Informationen finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor](agents/om-agents.md).
 
 ### <a name="what-ip-addresses-does-azure-monitor-use"></a>Welche IP-Adressen verwendet Azure Monitor?
 Eine Liste der IP-Adressen und Ports, die für Agents und andere externe Ressourcen für den Zugriff auf Azure Monitor erforderlich sind, finden Sie unter [Von Application Insights und Log Analytics verwendete IP-Adressen](app/ip-addresses.md). 
@@ -51,16 +51,16 @@ Eine Liste der IP-Adressen und Ports, die für Agents und andere externe Ressour
 ## <a name="monitoring-data"></a>Überwachungsdaten
 
 ### <a name="where-does-azure-monitor-get-its-data"></a>Woher erhält Azure Monitor seine Daten?
-Azure Monitor sammelt Daten aus einer Vielzahl von Quellen. Dazu gehören Protokolle und Metriken von Azure-Plattform und -Ressourcen, benutzerdefinierte Anwendungen und Agents, die auf virtuellen Computern ausgeführt werden. Andere Dienste, z. B. Azure Security Center und Network Watcher, sammeln Daten in einem Log Analytics-Arbeitsbereich, damit diese mit Azure Monitor-Daten analysiert werden können. Sie können auch benutzerdefinierte Daten mit der REST-API für Protokolle oder Metriken an Azure Monitor senden. Weitere Informationen finden Sie unter [Quellen für Überwachungsdaten für Azure Monitor](platform/data-sources.md).
+Azure Monitor sammelt Daten aus einer Vielzahl von Quellen. Dazu gehören Protokolle und Metriken von Azure-Plattform und -Ressourcen, benutzerdefinierte Anwendungen und Agents, die auf virtuellen Computern ausgeführt werden. Andere Dienste, z. B. Azure Security Center und Network Watcher, sammeln Daten in einem Log Analytics-Arbeitsbereich, damit diese mit Azure Monitor-Daten analysiert werden können. Sie können auch benutzerdefinierte Daten mit der REST-API für Protokolle oder Metriken an Azure Monitor senden. Weitere Informationen finden Sie unter [Quellen für Überwachungsdaten für Azure Monitor](agents/data-sources.md).
 
 ### <a name="what-data-is-collected-by-azure-monitor"></a>Welche Daten werden von Azure Monitor gesammelt? 
-Azure Monitor sammelt Daten aus einer Vielzahl von Quellen in [Protokollen](platform/data-platform-logs.md) oder [Metriken](platform/data-platform-metrics.md). Jeder Datentyp hat seine eigenen relativen Vorteile und unterstützt jeweils einen bestimmte Gruppe von Funktionen in Azure Monitor. Es gibt eine einzelne Metrikdatenbank für jedes Azure-Abonnement, und Sie können mehrere Log Analytics-Arbeitsbereiche erstellen, um Protokolle entsprechend Ihren Anforderungen zu erfassen. Weitere Informationen finden Sie unter [Azure Monitor-Datenplattform](platform/data-platform.md).
+Azure Monitor sammelt Daten aus einer Vielzahl von Quellen in [Protokollen](logs/data-platform-logs.md) oder [Metriken](essentials/data-platform-metrics.md). Jeder Datentyp hat seine eigenen relativen Vorteile und unterstützt jeweils einen bestimmte Gruppe von Funktionen in Azure Monitor. Es gibt eine einzelne Metrikdatenbank für jedes Azure-Abonnement, und Sie können mehrere Log Analytics-Arbeitsbereiche erstellen, um Protokolle entsprechend Ihren Anforderungen zu erfassen. Weitere Informationen finden Sie unter [Azure Monitor-Datenplattform](/data-platform.md).
 
 ### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>Gibt es eine maximale Datenmenge, die in Azure Monitor gesammelt werden kann?
-Es gibt keine Beschränkung hinsichtlich der Menge gesammelter Metrikdaten, doch werden diese Daten maximal 93 Tage lang gespeichert. Weitere Informationen finden Sie unter [Aufbewahrung von Metriken](platform/data-platform-metrics.md#retention-of-metrics). Es gibt keine Beschränkung hinsichtlich der Menge gesammelter Protokolldaten, doch kann diese durch den Tarif beeinflusst werden, den Sie für den Log Analytics-Arbeitsbereich auswählen. Preisdetails finden Sie [hier](https://azure.microsoft.com/pricing/details/monitor/).
+Es gibt keine Beschränkung hinsichtlich der Menge gesammelter Metrikdaten, doch werden diese Daten maximal 93 Tage lang gespeichert. Weitere Informationen finden Sie unter [Aufbewahrung von Metriken](essentials/data-platform-metrics.md#retention-of-metrics). Es gibt keine Beschränkung hinsichtlich der Menge gesammelter Protokolldaten, doch kann diese durch den Tarif beeinflusst werden, den Sie für den Log Analytics-Arbeitsbereich auswählen. Preisdetails finden Sie [hier](https://azure.microsoft.com/pricing/details/monitor/).
 
 ### <a name="how-do-i-access-data-collected-by-azure-monitor"></a>Wie greife ich auf die von Azure Monitor gesammelten Daten zu?
-Erkenntnisse und Lösungen bieten eine benutzerdefinierte Oberfläche zum Arbeiten mit Daten, die in Azure Monitor gespeichert wurden. Sie können direkt mit Protokolldaten arbeiten, indem Sie eine in der Kusto-Abfragesprache (KQL) geschriebene Protokollabfrage verwenden. Im Azure-Portal können Sie Abfragen schreiben und ausführen sowie Daten interaktiv mit Log Analytics analysieren. Analysieren Sie Metriken im Azure-Portal mit dem Metrik-Explorer. Weitere Informationen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](log-query/log-query-overview.md) und [Erste Schritte mit dem Azure-Metrik-Explorer](platform/metrics-getting-started.md).
+Erkenntnisse und Lösungen bieten eine benutzerdefinierte Oberfläche zum Arbeiten mit Daten, die in Azure Monitor gespeichert wurden. Sie können direkt mit Protokolldaten arbeiten, indem Sie eine in der Kusto-Abfragesprache (KQL) geschriebene Protokollabfrage verwenden. Im Azure-Portal können Sie Abfragen schreiben und ausführen sowie Daten interaktiv mit Log Analytics analysieren. Analysieren Sie Metriken im Azure-Portal mit dem Metrik-Explorer. Weitere Informationen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](logs/log-query-overview.md) und [Erste Schritte mit dem Azure-Metrik-Explorer](essentials/metrics-getting-started.md).
 
 ## <a name="solutions-and-insights"></a>Lösungen und Erkenntnisse
 
@@ -80,23 +80,23 @@ Zum Anzeigen von Lösungen im Azure-Portal klicken Sie im Menü **Monitor** im A
 Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Azure Monitor-Protokolle basieren auf Azure Data Explorer und verwenden die gleiche Kusto-Abfragesprache (KQL) mit einigen geringfügigen Unterschieden. Weitere Informationen finden Sie unter [Azure Monitor – Unterschiede in der Protokollabfragesprache](/azure/data-explorer/kusto/query/).
 
 ### <a name="how-do-i-retrieve-log-data"></a>Wie rufe ich Protokolldaten ab?
-Alle Daten werden mithilfe einer in der Kusto-Abfragesprache (KQL) geschriebenen Protokollabfrage aus einem Log Analytics-Arbeitsbereich abgerufen. Sie können eigene Abfragen schreiben oder Lösungen und Erkenntnisse verwenden, die Protokollabfragen für eine bestimmte Anwendung oder einen bestimmten Dienst enthalten. Weitere Informationen finden Sie in der [Übersicht über Protokollabfragen in Azure Monitor](log-query/log-query-overview.md).
-
+Alle Daten werden mithilfe einer in der Kusto-Abfragesprache (KQL) geschriebenen Protokollabfrage aus einem Log Analytics-Arbeitsbereich abgerufen. Sie können eigene Abfragen schreiben oder Lösungen und Erkenntnisse verwenden, die Protokollabfragen für eine bestimmte Anwendung oder einen bestimmten Dienst enthalten. Weitere Informationen finden Sie in der [Übersicht über Protokollabfragen in Azure Monitor](logs/log-query-overview.md).
+p
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Kann ich Daten aus einem Log Analytics-Arbeitsbereich löschen?
-Daten werden gemäß ihrer [Beibehaltungsdauer](platform/manage-cost-storage.md#change-the-data-retention-period) aus einem Arbeitsbereich entfernt. Sie können bestimmte Daten aus Datenschutz- oder Compliancegründen löschen. Weitere Informationen finden Sie unter [Exportieren und Löschen personenbezogener Daten](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).
+Daten werden gemäß ihrer [Beibehaltungsdauer](logs/manage-cost-storage.md#change-the-data-retention-period) aus einem Arbeitsbereich entfernt. Sie können bestimmte Daten aus Datenschutz- oder Compliancegründen löschen. Weitere Informationen finden Sie unter [Exportieren und Löschen personenbezogener Daten](logs/personal-data-mgmt.md#how-to-export-and-delete-private-data).
 
 ### <a name="is-log-analytics-storage-immutable"></a>Ist Log Analytics-Speicher unveränderlich?
 Daten im Datenbankspeicher können nach der Erfassung nicht mehr geändert werden, aber sie können mithilfe der [*Purge*-API zum Löschen privater Daten](platform/personal-data-mgmt.md#delete) endgültig gelöscht werden. Obwohl Daten nicht verändert werden können, verlangen einige Zertifizierungen, dass Daten unveränderlich aufbewahrt werden und im Speicher nicht geändert oder gelöscht werden können. Die Unveränderlichkeit von Daten kann durch [Datenexport](platform/logs-data-export.md) in ein Speicherkonto erreicht werden, das als [unveränderlicher Speicher](../storage/blobs/storage-blob-immutability-policies-manage.md) konfiguriert ist.
 
 ### <a name="what-is-a-log-analytics-workspace"></a>Was ist ein Log Analytics-Arbeitsbereich?
-Alle von Azure Monitor erfassten Protokolldaten werden in einem Log Analytics-Arbeitsbereich gespeichert. Ein Arbeitsbereich ist im Wesentlichen ein Container, in dem Protokolldaten aus einer Vielzahl von Quellen gesammelt werden. Möglicherweise verfügen Sie über einen einzigen Log Analytics-Arbeitsbereich für alle Überwachungsdaten oder es sind mehrere Arbeitsbereiche erforderlich. Weitere Informationen finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](platform/design-logs-deployment.md).
+Alle von Azure Monitor erfassten Protokolldaten werden in einem Log Analytics-Arbeitsbereich gespeichert. Ein Arbeitsbereich ist im Wesentlichen ein Container, in dem Protokolldaten aus einer Vielzahl von Quellen gesammelt werden. Möglicherweise verfügen Sie über einen einzigen Log Analytics-Arbeitsbereich für alle Überwachungsdaten oder es sind mehrere Arbeitsbereiche erforderlich. Weitere Informationen finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](logs/design-logs-deployment.md).
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Kann ein vorhandener Log Analytics-Arbeitsbereich in ein anderes Azure-Abonnement verschoben werden?
-Sie können einen Arbeitsbereich zwischen Ressourcengruppen oder Abonnements verschieben, jedoch nicht in eine andere Region. Weitere Informationen finden Sie unter [Verschieben von Log Analytics-Arbeitsbereichen in ein anderes Abonnement oder eine andere Ressourcengruppe](platform/move-workspace.md).
+Sie können einen Arbeitsbereich zwischen Ressourcengruppen oder Abonnements verschieben, jedoch nicht in eine andere Region. Weitere Informationen finden Sie unter [Verschieben von Log Analytics-Arbeitsbereichen in ein anderes Abonnement oder eine andere Ressourcengruppe](logs/move-workspace.md).
 
 ### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>Warum werden die Schaltflächen „Abfrage-Explorer“ und „Speichern“ in Log Analytics nicht angezeigt?
 
-Die Schaltflächen **Abfrage-Explorer**, **Speichern** und **Neue Warnungsregel** sind nicht verfügbar, wenn der [Abfragebereich](log-query/scope.md) auf eine bestimmte Ressource festgelegt ist. Zum Erstellen von Benachrichtigungen sowie zum Speichern oder Laden von Abfragen muss Log Analytics auf einen Arbeitsbereich festgelegt sein. Wenn Sie Log Analytics im Arbeitsbereichskontext öffnen möchten, wählen Sie im Menü **Azure Monitor** die Option **Protokolle** aus. Der zuletzt verwendete Arbeitsbereich ist ausgewählt, Sie können aber jeden anderen Arbeitsbereich auswählen. Weitere Informationen finden Sie unter [Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics](log-query/scope.md).
+Die Schaltflächen **Abfrage-Explorer**, **Speichern** und **Neue Warnungsregel** sind nicht verfügbar, wenn der [Abfragebereich](logs/scope.md) auf eine bestimmte Ressource festgelegt ist. Zum Erstellen von Benachrichtigungen sowie zum Speichern oder Laden von Abfragen muss Log Analytics auf einen Arbeitsbereich festgelegt sein. Wenn Sie Log Analytics im Arbeitsbereichskontext öffnen möchten, wählen Sie im Menü **Azure Monitor** die Option **Protokolle** aus. Der zuletzt verwendete Arbeitsbereich ist ausgewählt, Sie können aber jeden anderen Arbeitsbereich auswählen. Weitere Informationen finden Sie unter [Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics](logs/scope.md).
 
 ### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Warum erhalte ich in der Protokollumgebung nach einem Drilldown für einen virtuellen Computer eine Fehlermeldung mit dem Hinweis, dass ich den Ressourcenanbieter „Microsoft.Insights“ für dieses Abonnement registrieren muss, um diese Abfrage zu ermöglichen, wenn ich Log Analytics von einem virtuellen Computer aus öffne? 
 Viele Ressourcenanbieter werden automatisch registriert. Einige Ressourcenanbieter müssen jedoch unter Umständen manuell registriert werden. Der Gültigkeitsbereich der Registrierung ist immer das Abonnement. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
@@ -107,7 +107,7 @@ Zum Anzeigen von VM-Protokollen benötigen Sie eine Leseberechtigung für die Ar
 ## <a name="metrics"></a>Metriken
 
 ### <a name="why-are-metrics-from-the-guest-os-of-my-azure-virtual-machine-not-showing-up-in-metrics-explorer"></a>Warum werden Metriken des Gastbetriebssystems meines virtuellen Azure-Computers nicht im Metrik-Explorer angezeigt?
-[Plattformmetriken](insights/monitor-azure-resource.md#monitoring-data) werden für Azure-Ressourcen automatisch erfasst. Wenn Sie allerdings Metriken des Gastbetriebssystems eines virtuellen Computers erfassen möchten, sind ein paar Konfigurationsschritte erforderlich. Installieren Sie für einen virtuellen Windows-Computer die Diagnoseerweiterung, und konfigurieren Sie die Azure Monitor-Senke, wie unter [Installieren und Konfigurieren der Microsoft Azure-Diagnoseerweiterung (WAD)](platform/diagnostics-extension-windows-install.md) beschrieben. Installieren Sie für Linux den Telegraf-Agent, wie unter [Erfassen von benutzerdefinierten Metriken für einen virtuellen Linux-Computer mit dem InfluxData Telegraf-Agent](platform/collect-custom-metrics-linux-telegraf.md) beschrieben.
+[Plattformmetriken](essentials/monitor-azure-resource.md#monitoring-data) werden für Azure-Ressourcen automatisch erfasst. Wenn Sie allerdings Metriken des Gastbetriebssystems eines virtuellen Computers erfassen möchten, sind ein paar Konfigurationsschritte erforderlich. Installieren Sie für einen virtuellen Windows-Computer die Diagnoseerweiterung, und konfigurieren Sie die Azure Monitor-Senke, wie unter [Installieren und Konfigurieren der Microsoft Azure-Diagnoseerweiterung (WAD)](agents/diagnostics-extension-windows-install.md) beschrieben. Installieren Sie für Linux den Telegraf-Agent, wie unter [Erfassen von benutzerdefinierten Metriken für einen virtuellen Linux-Computer mit dem InfluxData Telegraf-Agent](essentials/collect-custom-metrics-linux-telegraf.md) beschrieben.
 
 ## <a name="alerts"></a>Alerts
 
@@ -120,24 +120,24 @@ Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwach
 - Webtest: Die Ergebnisse eines Verfügbarkeitstests entsprechen definierten Kriterien.
 
 
-Weitere Informationen finden Sie in der [Übersicht über Warnungen in Microsoft Azure](platform/alerts-overview.md).
+Weitere Informationen finden Sie in der [Übersicht über Warnungen in Microsoft Azure](alerts/alerts-overview.md).
 
 
 ### <a name="what-is-an-action-group"></a>Was ist eine Aktionsgruppe?
-Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungen und Aktionen, die über eine Warnung ausgelöst werden können. Mehrere Warnungen können eine einzelne Aktionsgruppe verwenden, sodass gemeinsame Sätze von Benachrichtigungen und Aktionen genutzt werden können. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](platform/action-groups.md).
+Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungen und Aktionen, die über eine Warnung ausgelöst werden können. Mehrere Warnungen können eine einzelne Aktionsgruppe verwenden, sodass gemeinsame Sätze von Benachrichtigungen und Aktionen genutzt werden können. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](alerts/action-groups.md).
 
 
 ### <a name="what-is-an-action-rule"></a>Was ist eine Aktionsregel?
-Mithilfe einer Aktionsregel können Sie das Verhalten einer Gruppe von Warnungen ändern, die einem bestimmten Kriterium entsprechen. Dadurch können Sie Anforderungen wie das Deaktivieren von Warnungsaktionen während eines Wartungsfensters erfüllen. Sie können eine Aktionsgruppe auch auf eine Gruppe von Warnungen anwenden, anstatt sie direkt auf die Warnungsregeln anzuwenden. Weitere Informationen finden Sie unter [Aktionsregeln](platform/alerts-action-rules.md).
+Mithilfe einer Aktionsregel können Sie das Verhalten einer Gruppe von Warnungen ändern, die einem bestimmten Kriterium entsprechen. Dadurch können Sie Anforderungen wie das Deaktivieren von Warnungsaktionen während eines Wartungsfensters erfüllen. Sie können eine Aktionsgruppe auch auf eine Gruppe von Warnungen anwenden, anstatt sie direkt auf die Warnungsregeln anzuwenden. Weitere Informationen finden Sie unter [Aktionsregeln](alerts/alerts-action-rules.md).
 
 ## <a name="agents"></a>Agents
 
 ### <a name="does-azure-monitor-require-an-agent"></a>Erfordert Azure Monitor einen Agent?
-Ein Agent ist nur erforderlich, um Daten aus dem Betriebssystem und Workloads auf virtuellen Computern zu erfassen. Die virtuellen Computer können in Azure, einer anderen Cloudumgebung oder lokal vorhanden sein. Weitere Informationen finden Sie in der [Übersicht über die Azure Monitor-Agents](platform/agents-overview.md).
+Ein Agent ist nur erforderlich, um Daten aus dem Betriebssystem und Workloads auf virtuellen Computern zu erfassen. Die virtuellen Computer können in Azure, einer anderen Cloudumgebung oder lokal vorhanden sein. Weitere Informationen finden Sie in der [Übersicht über die Azure Monitor-Agents](agents/agents-overview.md).
 
 
 ### <a name="whats-the-difference-between-the-azure-monitor-agents"></a>Worin unterscheiden sich die Azure Monitor-Agents?
-Die Azure-Diagnoseerweiterung wird für virtuelle Azure-Computer verwendet und sammelt Daten in Azure Monitor-Metriken, Azure Storage und Azure Event Hubs. Der Log Analytics-Agent wird für virtuelle Computer in Azure, einer anderen Cloudumgebung oder lokal verwendet und sammelt Daten in Azure Monitor-Protokollen. Der Dependency-Agent erfordert den Log Analytics-Agent sowie gesammelte Prozessdetails und Abhängigkeiten. Weitere Informationen finden Sie in der [Übersicht über die Azure Monitor-Agents](platform/agents-overview.md).
+Die Azure-Diagnoseerweiterung wird für virtuelle Azure-Computer verwendet und sammelt Daten in Azure Monitor-Metriken, Azure Storage und Azure Event Hubs. Der Log Analytics-Agent wird für virtuelle Computer in Azure, einer anderen Cloudumgebung oder lokal verwendet und sammelt Daten in Azure Monitor-Protokollen. Der Dependency-Agent erfordert den Log Analytics-Agent sowie gesammelte Prozessdetails und Abhängigkeiten. Weitere Informationen finden Sie in der [Übersicht über die Azure Monitor-Agents](agents/agents-overview.md).
 
 
 ### <a name="does-my-agent-traffic-use-my-expressroute-connection"></a>Wird für den Agent-Datenverkehr meine ExpressRoute-Verbindung verwendet?
@@ -156,7 +156,7 @@ Die pro Agent gesendete Datenmenge hängt von Folgendem ab:
 * Der Anzahl der Protokolle und Leistungsindikatoren, die gesammelt werden
 * Der Menge der Daten in den Protokollen
 
-Ausführliche Informationen finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](platform/manage-cost-storage.md).
+Ausführliche Informationen finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](logs/manage-cost-storage.md).
 
 Für Computer, die den WireData-Agent ausführen können, zeigen Sie mithilfe der folgenden Abfrage an, wie viele Daten gesendet werden:
 
@@ -173,7 +173,7 @@ Die Bandbreite hängt von der gesendeten Datenmenge ab. Daten werden komprimiert
 
 ### <a name="how-can-i-be-notified-when-data-collection-from-the-log-analytics-agent-stops"></a>Wie kann ich benachrichtigt werden, wenn die Datensammlung vom Log Analytics-Agent beendet wird?
 
-Führen Sie die Schritte unter [Erstellen einer Warnungsregel mit dem Azure-Portal](platform/alerts-metric.md) aus, um eine Benachrichtigung zu erhalten, wenn die Datensammlung beendet wird. Verwenden Sie die folgenden Einstellungen für die Warnungsregel:
+Führen Sie die Schritte unter [Erstellen einer Warnungsregel mit dem Azure-Portal](alerts/alerts-metric.md) aus, um eine Benachrichtigung zu erhalten, wenn die Datensammlung beendet wird. Verwenden Sie die folgenden Einstellungen für die Warnungsregel:
 
 - **Warnungsbedingung definieren**: Geben Sie Ihren Log Analytics-Arbeitsbereich als Ressourcenziel an.
 - **Benachrichtigungskriterien** 
@@ -185,11 +185,11 @@ Führen Sie die Schritte unter [Erstellen einer Warnungsregel mit dem Azure-Port
    - **Name**: *Datensammlung beendet*
    - **Schweregrad**: *Warning*
 
-Geben Sie eine vorhandene oder neue [Aktionsgruppe](platform/action-groups.md) an, damit Sie benachrichtigt werden, wenn die Protokollwarnung Kriterien erfüllt, und ein Heartbeat für mehr als 15 Minuten ausbleibt.
+Geben Sie eine vorhandene oder neue [Aktionsgruppe](alerts/action-groups.md) an, damit Sie benachrichtigt werden, wenn die Protokollwarnung Kriterien erfüllt, und ein Heartbeat für mehr als 15 Minuten ausbleibt.
 
 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Welche Firewallanforderungen bestehen für Azure Monitor-Agents?
-Ausführliche Informationen zu den Firewallanforderungen finden Sie unter [Netzwerkfirewallanforderungen](platform/log-analytics-agent.md#network-requirements).
+Ausführliche Informationen zu den Firewallanforderungen finden Sie unter [Netzwerkfirewallanforderungen](agents/log-analytics-agent.md#network-requirements).
 
 
 ## <a name="visualizations"></a>Visualisierungen
@@ -205,7 +205,7 @@ Der Ansicht-Designer steht im Log Analytics-Arbeitsbereich nur für Benutzer zu
 
 * [.NET-App](app/asp-net-troubleshoot-no-data.md)
 * [Überwachen einer bereits ausgeführten App](app/monitor-performance-live-website-now.md#troubleshoot)
-* [Azure-Diagnose](platform/diagnostics-extension-to-application-insights.md)
+* [Azure-Diagnose](agents/diagnostics-extension-to-application-insights.md)
 * [Java-Web-App](app/java-troubleshoot.md)
 
 *Ich erhalte keine Daten von meinem Server:*
@@ -306,10 +306,10 @@ Von Server-Web-Apps:
 
 Aus anderen Quellen, sofern Sie sie konfigurieren:
 
-* [Azure-Diagnose](platform/diagnostics-extension-to-application-insights.md)
-* [Import in Analytics](platform/data-collector-api.md)
-* [Log Analytics](platform/data-collector-api.md)
-* [Logstash](platform/data-collector-api.md)
+* [Azure-Diagnose](agents/diagnostics-extension-to-application-insights.md)
+* [Import in Analytics](logs/data-collector-api.md)
+* [Log Analytics](logs/data-collector-api.md)
+* [Logstash](logs/data-collector-api.md)
 
 ### <a name="can-i-filter-out-or-modify-some-telemetry"></a>Kann ich Telemetriedaten filtern oder ändern?
 
@@ -451,7 +451,7 @@ Sie können keinen Metrik-Explorer-Bericht oder fortlaufende Exporte einrichten.
 
 #### <a name="querying-the-telemetry"></a>Abfragen der Telemetriedaten
 
-Verwenden Sie die [REST-API](https://dev.applicationinsights.io/) zum Ausführen von [Analytics](./log-query/log-query-overview.md)-Abfragen.
+Verwenden Sie die [REST-API](https://dev.applicationinsights.io/) zum Ausführen von [Analytics](./logs/log-query-overview.md)-Abfragen.
 
 ### <a name="how-can-i-set-an-alert-on-an-event"></a>Wie kann ich eine Warnung für ein Ereignis festlegen?
 
@@ -669,7 +669,7 @@ ContainerLog
 
 Aktivieren Sie erneut die Erfassung dieser Eigenschaften für jede Containerprotokollzeile.
 
-Eignet sich die erste Option nicht, weil die Abfrage geändert werden muss, können Sie die Erfassung dieser Felder erneut aktivieren. Aktivieren Sie dazu die Einstellung ```log_collection_settings.enrich_container_logs``` in der Agent-Konfigurationszuordnung, wie unter [Konfigurieren der Datensammlung von Azure Monitor für Container-Agent](insights/container-insights-agent-config.md) beschrieben.
+Eignet sich die erste Option nicht, weil die Abfrage geändert werden muss, können Sie die Erfassung dieser Felder erneut aktivieren. Aktivieren Sie dazu die Einstellung ```log_collection_settings.enrich_container_logs``` in der Agent-Konfigurationszuordnung, wie unter [Konfigurieren der Datensammlung von Azure Monitor für Container-Agent](containers/container-insights-agent-config.md) beschrieben.
 
 > [!NOTE]
 > Die zweite Option wird für große Cluster mit mehr als 50 Knoten nicht empfohlen, da dabei API-Serveraufrufe von jedem Knoten im Cluster für die Ausführung dieser Anreicherung generiert werden. Diese Option erhöht darüber hinaus die Datenmenge für jede erfasste Protokollzeile.
@@ -684,7 +684,7 @@ Azure Monitor für Container unterstützt die Überwachung von Containerworkload
 
 ### <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>Warum werden in meinem Log Analytics-Arbeitsbereich keine Daten angezeigt?
 
-Wenn in Ihrem Log Analytics-Arbeitsbereich nicht täglich zu einer bestimmten Zeit Daten angezeigt werden, haben Sie vielleicht den Standardgrenzwert von 500MB oder die tägliche Obergrenze erreicht, die angegeben wird, um die Menge der täglich zu sammelnden Daten zu steuern. Wenn der Grenzwert für den Tag erreicht ist, wird die Datensammlung beendet und erst am nächsten Tag fortgesetzt. Um Ihre Datennutzung zu überprüfen und eine Aktualisierung auf einen anderen Tarif basierend auf Ihren erwarteten Nutzungsmustern vorzunehmen, lesen Sie [Protokollieren von Datennutzung und Kosten](platform/manage-cost-storage.md). 
+Wenn in Ihrem Log Analytics-Arbeitsbereich nicht täglich zu einer bestimmten Zeit Daten angezeigt werden, haben Sie vielleicht den Standardgrenzwert von 500MB oder die tägliche Obergrenze erreicht, die angegeben wird, um die Menge der täglich zu sammelnden Daten zu steuern. Wenn der Grenzwert für den Tag erreicht ist, wird die Datensammlung beendet und erst am nächsten Tag fortgesetzt. Um Ihre Datennutzung zu überprüfen und eine Aktualisierung auf einen anderen Tarif basierend auf Ihren erwarteten Nutzungsmustern vorzunehmen, lesen Sie [Protokollieren von Datennutzung und Kosten](logs/manage-cost-storage.md). 
 
 ### <a name="what-are-the-container-states-specified-in-the-containerinventory-table"></a>Welche Zustände von Containern sind in der Tabelle ContainerInventory angegeben?
 
@@ -704,7 +704,7 @@ Die Protokollsammlung von Containern im Kube-System-Namespace ist standardmäßi
 
 ### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>Wie aktualisiere ich den Omsagent auf die neueste Version?
 
-Informationen zum Upgrade des Agent, finden Sie unter [Agentverwaltung](insights/container-insights-manage-agent.md).
+Informationen zum Upgrade des Agent, finden Sie unter [Agentverwaltung](containers/container-insights-manage-agent.md).
 
 ### <a name="how-do-i-enable-multi-line-logging"></a>Wie aktiviere ich die mehrzeilige Protokollierung?
 
@@ -732,7 +732,7 @@ Eine ausführliche Betrachtung des Problems finden Sie unter folgendem [GitHub-L
 
 ### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Wie behebe ich Azure AD-Fehler, wenn ich Liveprotokolle aktiviere? 
 
-Es wird möglicherweise der folgende Fehler angezeigt: **The reply url specified in the request does not match the reply urls configured for the application: '<application ID\>'** . (Die in der Anforderung angegebene Antwort-URL entspricht nicht den für die Anwendung konfigurierten Antwort-URLs: <Anwendungs-ID>.) Die Lösung für dieses Problem finden Sie im Artikel [Anzeigen von Containerdaten in Echtzeit mit Azure Monitor für Container](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication). 
+Es wird möglicherweise der folgende Fehler angezeigt: **The reply url specified in the request does not match the reply urls configured for the application: '<application ID\>'** . (Die in der Anforderung angegebene Antwort-URL entspricht nicht den für die Anwendung konfigurierten Antwort-URLs: <Anwendungs-ID>.) Die Lösung für dieses Problem finden Sie im Artikel [Anzeigen von Containerdaten in Echtzeit mit Azure Monitor für Container](containers/container-insights-livedata-setup.md#configure-ad-integrated-authentication). 
 
 ### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Warum kann ich Cluster nach dem Onboarding nicht aktualisieren?
 
@@ -740,19 +740,19 @@ Wenn Sie nach der Aktivierung von Azure Monitor für Container für einen AKS-Cl
 
 ### <a name="which-ports-and-domains-do-i-need-to-openallow-for-the-agent"></a>Welche Ports und Domänen muss ich für den Agent öffnen bzw. zulassen?
 
-Die Proxy- und Firewall-Konfigurationsinformationen, die für den Container-Agent mit den Clouds „Azure“, „Azure US Government“ und „Azure China 21Vianet“ erforderlich sind, finden Sie unter den [Netzwerkfirewallanforderungen](insights/container-insights-onboard.md#network-firewall-requirements).
+Die Proxy- und Firewall-Konfigurationsinformationen, die für den Container-Agent mit den Clouds „Azure“, „Azure US Government“ und „Azure China 21Vianet“ erforderlich sind, finden Sie unter den [Netzwerkfirewallanforderungen](containers/container-insights-onboard.md#network-firewall-requirements).
 
 
 ## <a name="azure-monitor-for-vms"></a>Azure Monitor für VMs
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>Kann ich ein Onboarding zu einem vorhandenen Arbeitsbereich ausführen?
-Wenn Ihre virtuellen Computer bereits mit einem Log Analytics-Arbeitsbereich verbunden sind, können Sie diesen Arbeitsbereich nach dem Onboarding von Azure Monitor für VMs weiterhin verwenden, vorausgesetzt, er befindet sich in einer der [unterstützten Regionen](insights/vminsights-configure-workspace.md#supported-regions).
+Wenn Ihre virtuellen Computer bereits mit einem Log Analytics-Arbeitsbereich verbunden sind, können Sie diesen Arbeitsbereich nach dem Onboarding von Azure Monitor für VMs weiterhin verwenden, vorausgesetzt, er befindet sich in einer der [unterstützten Regionen](vm/vminsights-configure-workspace.md#supported-regions).
 
 
 ### <a name="can-i-onboard-to-a-new-workspace"></a>Kann ich ein Onboarding zu einem neuen Arbeitsbereich ausführen? 
 Wenn Ihre VMs derzeit nicht mit einem vorhandenen Log Analytics-Arbeitsbereich verbunden sind, müssen Sie einen neuen Arbeitsbereich zum Speichern Ihrer Daten erstellen. Die Erstellung eines neuen Standardarbeitsbereichs erfolgt automatisch, wenn Sie eine einzelne Azure-VM im Azure-Portal für Azure Monitor for VMs konfigurieren.
 
-Wenn Sie die skriptbasierte Methode verwenden möchten, finden Sie die entsprechenden Schritte im Artikel [Aktivieren von Azure Monitor für VMs mit Azure PowerShell oder einer Resource Manager-Vorlage](./insights/vminsights-enable-powershell.md). 
+Wenn Sie die skriptbasierte Methode verwenden möchten, finden Sie die entsprechenden Schritte im Artikel [Aktivieren von Azure Monitor für VMs mit Azure PowerShell oder einer Resource Manager-Vorlage](./vm/vminsights-enable-powershell.md). 
 
 ### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Wie gehe ich vor, wenn meine VM bereits an einen vorhandenen Arbeitsbereich berichtet?
 Wenn Sie bereits Daten von Ihren VMs sammeln, haben Sie sie möglicherweise schon für das Melden von Daten an einen vorhandenen Log Analytics-Arbeitsbereich konfiguriert.  Sofern sich dieser Arbeitsbereich in einer der von uns unterstützten Regionen befindet, können Sie Azure Monitor for VMs für diesen bereits vorhandenen Arbeitsbereich aktivieren.  Wenn sich der von Ihnen bereits verwendete Arbeitsbereich nicht in einer der von uns unterstützten Regionen befindet, können Sie derzeit kein Onboarding von Azure Monitor für VMs ausführen.  Wir arbeiten aktiv daran, weitere Regionen zu unterstützen.
@@ -771,9 +771,9 @@ Wenn Sie das Onboarding eingeleitet haben und Meldungen angezeigt werden, die be
 
 
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>In den Leistungsdiagrammen für meine VM werden einige oder alle Daten nicht angezeigt
-Unsere Leistungsdiagramme wurden so aktualisiert, dass sie in der Tabelle *InsightsMetrics* gespeicherten Daten verwenden.  Um Daten in diesen Diagrammen anzuzeigen, müssen Sie ein Upgrade durchführen, um die neue VM Insights-Lösung zu verwenden.  Weitere Informationen finden Sie in unseren [häufig gestellten Fragen zur allgemeinen Verfügbarkeit](insights/vminsights-ga-release-faq.md).
+Unsere Leistungsdiagramme wurden so aktualisiert, dass sie in der Tabelle *InsightsMetrics* gespeicherten Daten verwenden.  Um Daten in diesen Diagrammen anzuzeigen, müssen Sie ein Upgrade durchführen, um die neue VM Insights-Lösung zu verwenden.  Weitere Informationen finden Sie in unseren [häufig gestellten Fragen zur allgemeinen Verfügbarkeit](vm/vminsights-ga-release-faq.md).
 
-Wenn Sie in der Datenträgertabelle oder in einigen der Leistungsdiagramme keine Leistungsdaten sehen, wurden Ihre Leistungsindikatoren im Arbeitsbereich möglicherweise nicht konfiguriert. Führen Sie das folgende [PowerShell-Skript](./insights/vminsights-enable-powershell.md) aus, um das Problem zu beheben.
+Wenn Sie in der Datenträgertabelle oder in einigen der Leistungsdiagramme keine Leistungsdaten sehen, wurden Ihre Leistungsindikatoren im Arbeitsbereich möglicherweise nicht konfiguriert. Führen Sie das folgende [PowerShell-Skript](./vm/vminsights-enable-powershell.md) aus, um das Problem zu beheben.
 
 
 ### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Wie unterscheidet sich das Zuordnungsfeature von Azure Monitor for VMs von der Dienstzuordnung?

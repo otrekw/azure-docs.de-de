@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 12/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 636dbf95567f761aee19bd567b0835173ce36ccc
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: dff314f3c9fb72c565a7c2d522694d533c487895
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093620"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572648"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Verwalten der Änderungsnachverfolgung und des Bestands
 
@@ -49,7 +49,7 @@ Führen Sie zum Konfigurieren der Dateinachverfolgung auf Windows-Computern die 
 
 7. Geben Sie im Bereich „Windows-Datei für Änderungsnachverfolgung hinzufügen“ die Informationen zu der nachzuverfolgenden Datei bzw. dem Ordner ein, und klicken Sie auf **Speichern**. Die folgende Tabelle definiert die Eigenschaften, die Sie für die Informationen verwenden können.
 
-    |Eigenschaft  |Beschreibung  |
+    |Eigenschaft  |BESCHREIBUNG  |
     |---------|---------|
     |Aktiviert     | TRUE, wenn die Einstellung angewendet wird, andernfalls FALSE.        |
     |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
@@ -78,7 +78,7 @@ Führen Sie zum Konfigurieren der Dateinachverfolgung auf Linux-Computern die fo
 
 3. Geben Sie auf der Seite **Linux-Datei für Änderungsnachverfolgung hinzufügen** die Informationen zu der Datei oder dem Verzeichnis ein, die bzw. das nachverfolgt werden soll, und wählen Sie dann **Speichern** aus. Die folgende Tabelle definiert die Eigenschaften, die Sie für die Informationen verwenden können.
 
-    |Eigenschaft  |Beschreibung  |
+    |Eigenschaft  |BESCHREIBUNG  |
     |---------|---------|
     |Aktiviert     | TRUE, wenn die Einstellung angewendet wird, andernfalls FALSE.        |
     |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
@@ -148,7 +148,7 @@ Führen Sie zum Konfigurieren der Nachverfolgung von Registrierungsschlüsseln a
 
 4. Geben Sie auf der Seite **Windows-Registrierung für Änderungsnachverfolgung hinzufügen** die Informationen zu dem Schlüssel ein, der nachverfolgt werden soll, und wählen Sie dann **Speichern** aus. Die folgende Tabelle definiert die Eigenschaften, die Sie für die Informationen verwenden können. Wenn Sie einen Registrierungspfad angeben, muss es sich um den Schlüssel und nicht um einen Wert handeln.
 
-    |Eigenschaft  |Beschreibung  |
+    |Eigenschaft  |BESCHREIBUNG  |
     |---------|---------|
     |Aktiviert     | „True“, wenn eine Einstellung angewendet wird, andernfalls „False“.        |
     |Item Name     | Anzeigename des nachzuverfolgenden Registrierungsschlüssels.        |
@@ -167,7 +167,7 @@ Sie können verschiedene Suchvorgänge in den Azure Monitor-Protokollen für Än
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu Bereichskonfigurationen finden Sie unter [Arbeiten mit Bereichskonfigurationen für „Änderungsnachverfolgung und Bestand“](manage-scope-configurations.md).
-* Wenn Sie Protokolle durchsuchen müssen, die in Azure Monitor-Protokollen gespeichert sind, finden Sie unter [Protokollsuchvorgänge in Azure Monitor-Protokollen](../../azure-monitor/log-query/log-query-overview.md) weitere Informationen.
+* Wenn Sie Protokolle durchsuchen müssen, die in Azure Monitor-Protokollen gespeichert sind, finden Sie unter [Protokollsuchvorgänge in Azure Monitor-Protokollen](../../azure-monitor/logs/log-query-overview.md) weitere Informationen.
 * Wenn Sie mit den Bereitstellungen fertig sind, lesen Sie unter [„Änderungsnachverfolgung und Bestand“ entfernen](remove-feature.md) weiter.
 * Informationen zum Löschen Ihrer VMs aus „Änderungsnachverfolgung und Bestand“ finden Sie unter [Entfernen von VMs aus Änderungsnachverfolgung und Bestand](remove-vms-from-change-tracking.md).
 * Informationen zum Behandeln von Problemen bei diesem Feature finden Sie unter [Problembehandlung bei Änderungsnachverfolgung und Bestand](../troubleshoot/change-tracking.md).

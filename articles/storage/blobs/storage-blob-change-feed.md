@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 9a439541880cc8e20457edc8d24c5600ba2747c8
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 43aa86504d265927cb94e4333f86bb9cc9d2e2ea
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979220"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095567"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Änderungsfeed in Azure Blob Storage
 
@@ -268,7 +268,7 @@ Eine ausführliche Beschreibung der einzelnen Eigenschaften finden Sie unter [Az
 
 - Änderungsereignis-Datensätze, bei denen der `eventType` den Wert `Control` aufweist, sind interne Systemdatensätze und spiegeln keine Änderung an Objekten in Ihrem Konto wider. Sie können diese Datensätze unbesorgt ignorieren.
 
-- Werte im Eigenschaftenbehälter `storageDiagnonstics` dienen nur zur internen Verwendung und sind nicht für die Verwendung durch Ihre Anwendung konzipiert. Ihre Anwendungen sollten keine vertragliche Abhängigkeit von diesen Daten aufweisen. Sie können diese Eigenschaften unbesorgt ignorieren.
+- Werte im Eigenschaftenbehälter `storageDiagnostics` dienen nur zur internen Verwendung und sind nicht für die Verwendung durch Ihre Anwendung konzipiert. Ihre Anwendungen sollten keine vertragliche Abhängigkeit von diesen Daten aufweisen. Sie können diese Eigenschaften unbesorgt ignorieren.
 
 - Die vom Segment dargestellte Uhrzeit ist ein **ungefährer** Wert mit einem Spielraum von 15 Minuten vorher und nachher. Um also sicherzustellen, dass alle Datensätze einer angegebenen Uhrzeit genutzt werden, schließen Sie auch das vorherige und das nachfolgende Stundensegment ein.
 

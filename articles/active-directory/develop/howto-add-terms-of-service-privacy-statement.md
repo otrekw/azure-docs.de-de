@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 46919a97364aeff29e2b458c619315571dba7710
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 311dfd976610c392909a0ec3d91fecaa4d733539
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013667"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104194"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Gewusst wie: Konfigurieren von Nutzungsbedingungen und Datenschutzbestimmungen für eine App
 
@@ -58,11 +58,11 @@ Nachdem die Nutzungsbedingungen und Datenschutzbestimmungen fertig konfiguriert 
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Verwenden des Azure-Portals
 Führen Sie im Azure-Portal die folgenden Schritte aus.
 
-1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an, wählen Sie den richtigen AzureAD-Mandanten aus (nicht B2C).
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> an, und wählen Sie den richtigen Azure AD-Mandanten (nicht B2C) aus.
 2. Navigieren Sie zum Abschnitt **App-Registrierungen**, und wählen Sie Ihre App aus.
-3. Öffnen Sie den Bereich **Branding**.
+3. Wählen Sie unter **Verwalten** die Option **Branding** aus.
 4. Füllen Sie die Felder **URL zu den Vertragsbedingungen** und **URL zur Datenschutzerklärung** aus.
-5. Speichern Sie die Änderungen.
+5. Wählen Sie **Speichern** aus.
 
     ![Eigenschaften der App mit URLs zu den Nutzungsbedingungen und zur Datenschutzerklärung](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 

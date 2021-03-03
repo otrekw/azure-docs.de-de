@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0ef821634669739ff5aed58e4404d7c21b8d8222
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: e2371f3de8ed73250bca6639e6c749811c5559ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896628"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572607"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Übersicht über Änderungsnachverfolgung und Bestand
 
@@ -34,9 +34,9 @@ Beim Feature „Änderungsnachverfolgung und Bestand“ werden die [Dateiintegri
 
 Die Aktivierung aller Funktionen von Änderungsnachverfolgung und Bestand kann dazu führen, dass weitere Kosten anfallen. Lesen Sie [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/) und [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/), bevor Sie fortfahren.
 
-Änderungsnachverfolgung und Bestand leitet Daten an Azure Monitor-Protokolle weiter, und diese gesammelten Daten werden in einem Log Analytics-Arbeitsbereich gespeichert. Das Feature zur Dateiintegritätsüberwachung (FIM) ist nur verfügbar, wenn **Azure Defender für Server** aktiviert ist. Weitere Informationen finden Sie unter [Azure Security Center – Preise](../../security-center/security-center-pricing.md). Bei der Dateiintegritätsüberwachung werden Daten in denselben Log Analytics-Arbeitsbereich hochgeladen, der zum Speichern von Daten für Änderungsnachverfolgung und Bestand erstellt wurde. Wir empfehlen Ihnen, Ihren verknüpften Log Analytics-Arbeitsbereich zu überwachen, um die exakte Nutzung nachzuverfolgen. Weitere Informationen zum Analysieren des Datenverbrauchs mit Azure Monitor-Protokollen finden Sie unter [Verwalten von Verbrauch und Kosten](../../azure-monitor/platform/manage-cost-storage.md).
+Änderungsnachverfolgung und Bestand leitet Daten an Azure Monitor-Protokolle weiter, und diese gesammelten Daten werden in einem Log Analytics-Arbeitsbereich gespeichert. Das Feature zur Dateiintegritätsüberwachung (FIM) ist nur verfügbar, wenn **Azure Defender für Server** aktiviert ist. Weitere Informationen finden Sie unter [Azure Security Center – Preise](../../security-center/security-center-pricing.md). Bei der Dateiintegritätsüberwachung werden Daten in denselben Log Analytics-Arbeitsbereich hochgeladen, der zum Speichern von Daten für Änderungsnachverfolgung und Bestand erstellt wurde. Wir empfehlen Ihnen, Ihren verknüpften Log Analytics-Arbeitsbereich zu überwachen, um die exakte Nutzung nachzuverfolgen. Weitere Informationen zum Analysieren des Datenverbrauchs mit Azure Monitor-Protokollen finden Sie unter [Verwalten von Verbrauch und Kosten](../../azure-monitor/logs/manage-cost-storage.md).
 
-Computer, die mit dem Log Analytics-Arbeitsbereich verbunden sind, verwenden den [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md), um Daten zu Änderungen an installierter Software, Microsoft-Diensten, Windows-Registrierung und -Dateien sowie Linux-Daemons auf überwachten Servern zu sammeln. Wenn Daten verfügbar sind, sendet der Agent diese zur Verarbeitung an Azure Monitor-Protokolle. Von Azure Monitor-Protokollen wird Logik auf die empfangenen Daten angewendet, und die Daten werden aufgezeichnet und zu Analysezwecken verfügbar gemacht.
+Computer, die mit dem Log Analytics-Arbeitsbereich verbunden sind, verwenden den [Log Analytics-Agent](../../azure-monitor/agents/log-analytics-agent.md), um Daten zu Änderungen an installierter Software, Microsoft-Diensten, Windows-Registrierung und -Dateien sowie Linux-Daemons auf überwachten Servern zu sammeln. Wenn Daten verfügbar sind, sendet der Agent diese zur Verarbeitung an Azure Monitor-Protokolle. Von Azure Monitor-Protokollen wird Logik auf die empfangenen Daten angewendet, und die Daten werden aufgezeichnet und zu Analysezwecken verfügbar gemacht.
 
 > [!NOTE]
 > Die Funktion „Änderungsnachverfolgung und Bestand“ setzt voraus, dass ein Log Analytics-Arbeitsbereich mit Ihrem Automation-Konto verknüpft wird. Eine aktuelle Liste der unterstützten Regionen finden Sie unter [Arbeitsbereichzuordnungen in Azure](../how-to/region-mappings.md). Die Regionszuordnungen haben keine Auswirkung auf die Möglichkeit, virtuelle Computer in einer anderen Region als der Ihres Automation-Kontos zu verwalten.
@@ -48,7 +48,7 @@ Für Änderungsnachverfolgung und Bestand werden die folgenden Einschränkungen 
 - Rekursion für die Nachverfolgung der Windows-Registrierung
 - Netzwerkdateisysteme
 - Verschiedene Installationsmethoden
-- Unter Windows gespeicherte **_.exe_*-Dateien
+- Unter Windows gespeicherte ***EXE**-Dateien
 - Die Spalte **Maximale Dateigröße** und ihre Werte werden in der aktuellen Implementierung nicht genutzt.
 - Wenn Sie versuchen, anhand eines 30-minütigen Sammlungszyklus mehr als 2.500 Dateien zu erfassen, wird das Feature „Änderungsnachverfolgung und Bestand“ unter Umständen beeinträchtigt.
 - Bei einem hohen Netzwerkdatenverkehr-Aufkommen kann es bis zu sechs Stunden dauern, bis Änderungsdatensätze angezeigt werden.
@@ -58,7 +58,7 @@ Für Änderungsnachverfolgung und Bestand werden die folgenden Einschränkungen 
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
-Änderungsnachverfolgung und Bestand werden unter allen Betriebssystemen unterstützt, die die Anforderungen des Log Analytics-Agent erfüllen. Eine Liste der Windows- und Linux-Betriebssystemversionen, die derzeit vom Log Analytics-Agent unterstützt werden, finden Sie unter [Unterstützte Betriebssysteme](../../azure-monitor/platform/agents-overview.md#supported-operating-systems).
+Änderungsnachverfolgung und Bestand werden unter allen Betriebssystemen unterstützt, die die Anforderungen des Log Analytics-Agent erfüllen. Eine Liste der Windows- und Linux-Betriebssystemversionen, die derzeit vom Log Analytics-Agent unterstützt werden, finden Sie unter [Unterstützte Betriebssysteme](../../azure-monitor/agents/agents-overview.md#supported-operating-systems).
 
 Informationen zu den Clientanforderungen für TLS 1.2 finden Sie unter [Erzwingen von TLS 1.2 für Azure Automation](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
@@ -159,7 +159,7 @@ Die folgende Tabelle zeigt die Grenzwerte der nachverfolgten Elemente pro Comput
 |Dienste|250|
 |Daemons|250|
 
-Die durchschnittliche Nutzung von Log Analytics-Daten für einen Computer mit Änderungsnachverfolgung und Bestand beträgt je nach Umgebung ungefähr 40 MB pro Monat. Mithilfe der Funktion „Nutzung und geschätzte Kosten“ im Log Analytics-Arbeitsbereich können Sie die von „Änderungsnachverfolgung und Bestand“ erfassten Daten in einem Nutzungsdiagramm anzeigen. Verwenden Sie diese Datenansicht, um die Datennutzung und die damit verbundenen Kosten zu analysieren. Weitere Informationen finden Sie unter [Verstehen Ihrer Nutzung und Schätzen von Kosten](../../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
+Die durchschnittliche Nutzung von Log Analytics-Daten für einen Computer mit Änderungsnachverfolgung und Bestand beträgt je nach Umgebung ungefähr 40 MB pro Monat. Mithilfe der Funktion „Nutzung und geschätzte Kosten“ im Log Analytics-Arbeitsbereich können Sie die von „Änderungsnachverfolgung und Bestand“ erfassten Daten in einem Nutzungsdiagramm anzeigen. Verwenden Sie diese Datenansicht, um die Datennutzung und die damit verbundenen Kosten zu analysieren. Weitere Informationen finden Sie unter [Verstehen Ihrer Nutzung und Schätzen von Kosten](../../azure-monitor/logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Daten zu Microsoft-Diensten
 

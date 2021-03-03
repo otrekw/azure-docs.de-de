@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: eff51c8568ce82c9d8d21bff7a2ba079c291679c
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 45f4ca6349c14f21ce48a1fcf34b7fc8998dd278
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007294"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733515"
 ---
 # <a name="get-started-with-custom-voice"></a>Erste Schritte mit Custom Voice
 
@@ -39,10 +39,10 @@ Im folgenden Diagramm sind die Schritte zum Erstellen eines benutzerdefinierten 
 
 ## <a name="custom-neural-voices"></a>Benutzerdefinierte neuronale Stimmen
 
-Custom Voice unterstützt aktuell sowohl neuronale Ebenen als auch Standardebenen. Das Feature „Benutzerdefinierte neuronale Stimme“ ermöglicht es Benutzern, leistungsfähigere Sprachmodelle zu erstellen, für die weniger Daten erforderlich sind. Außerdem werden über das Feature Methoden bereitgestellt, die Sie dabei unterstützen, KI verantwortungsbewusst zu nutzen. Sie sollten das Feature „Benutzerdefinierte neuronale Stimme“ verwenden, um realistischere Stimmen für natürlichere Konversationsschnittstellen zu entwickeln. So können Sie es Ihren Kunden und Endbenutzern ermöglichen, die Vorteile der aktuellen Text-zu-Sprache-Technologie verantwortungsvoll zu nutzen. [Hier](https://aka.ms/CNV-Transparency-Note) erhalten Sie weitere Informationen zum Feature „Benutzerdefinierte neuronale Stimme“. 
+Custom Voice unterstützt aktuell sowohl neuronale Ebenen als auch Standardebenen. Das Feature „Benutzerdefinierte neuronale Stimme“ ermöglicht es Benutzern, leistungsfähigere Sprachmodelle zu erstellen, für die weniger Daten erforderlich sind. Außerdem werden über das Feature Methoden bereitgestellt, die Sie dabei unterstützen, KI verantwortungsbewusst zu nutzen. Sie sollten das Feature „Benutzerdefinierte neuronale Stimme“ verwenden, um realistischere Stimmen für natürlichere Konversationsschnittstellen zu entwickeln. So können Sie es Ihren Kunden und Endbenutzern ermöglichen, die Vorteile der aktuellen Text-zu-Sprache-Technologie verantwortungsvoll zu nutzen. [Hier](/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) erhalten Sie weitere Informationen zum Feature „Benutzerdefinierte neuronale Stimme“. 
 
 > [!NOTE]
-> Im Rahmen der Zusage von Microsoft zu einem verantwortungsbewussten Umgang mit KI haben wir die Verwendung des Features „Benutzerdefinierte neuronale Stimme“ beschränkt. Sie erhalten erst Zugriff auf die Technologie, nachdem Ihre Anwendungen überprüft wurden und Sie sich zur Einhaltung der Prinzipien eines verantwortungsbewussten Umgangs mit KI verpflichtet haben. [Hier](https://aka.ms/gating-overview) erhalten Sie weitere Informationen zu unserer Richtlinie zur Zugriffsbeschränkung. [Hier](https://aka.ms/customneural) können Sie den Zugriff anfordern. Die für die Standardversion und die neuronale Version von Custom Voice unterstützten [Sprachen](language-support.md#customization) und [Regionen](regions.md#custom-voices) unterscheiden sich. Überprüfen Sie die Details, bevor Sie loslegen.  
+> Im Rahmen der Zusage von Microsoft zu einem verantwortungsbewussten Umgang mit KI haben wir die Verwendung des Features „Benutzerdefinierte neuronale Stimme“ beschränkt. Sie erhalten erst Zugriff auf die Technologie, nachdem Ihre Anwendungen überprüft wurden und Sie sich zur Einhaltung der Prinzipien eines verantwortungsbewussten Umgangs mit KI verpflichtet haben. [Hier](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) erhalten Sie weitere Informationen zu unserer Richtlinie zur Zugriffsbeschränkung. [Hier](https://aka.ms/customneural) können Sie den Zugriff anfordern. Die für die Standardversion und die neuronale Version von Custom Voice unterstützten [Sprachen](language-support.md#customization) und [Regionen](regions.md#custom-voices) unterscheiden sich. Überprüfen Sie die Details, bevor Sie loslegen.  
 
 ## <a name="set-up-your-azure-account"></a>Einrichten Ihres Azure-Kontos
 
@@ -71,7 +71,7 @@ Wählen Sie zum Erstellen Ihres ersten Projekts die Registerkarte **Text-to-Spee
 
 Wenn Sie die nicht neuronale (oder standardmäßige) benutzerdefinierte Stimme verwenden, sollten Sie eine Migration zur benutzerdefinierten neuronalen Stimme in Erwägung ziehen, indem Sie die folgenden Schritte ausführen. Der Wechsel zur benutzerdefinierten neuronalen Stimme hilft Ihnen dabei, realistischere Stimmen für noch natürlichere Konversationsschnittstellen zu entwickeln. So können Sie es Ihren Kunden und Endbenutzern ermöglichen, die Vorteile der aktuellen Text-zu-Sprache-Technologie verantwortungsvoll zu nutzen. 
 
-1. [Hier](https://aka.ms/gating-overview) erhalten Sie weitere Informationen zu unserer Richtlinie zur Zugriffsbeschränkung. [Hier](https://aka.ms/customneural) können Sie den Zugriff anfordern. Beachten Sie, dass der Zugriff auf den Dienst für die benutzerdefinierte neuronale Stimme im alleinigen Ermessen von Microsoft auf der Grundlage unserer Qualifizierungskriterien liegt. Kunden erhalten erst dann Zugriff auf die Technologie, wenn ihre Anwendung geprüft wurde und sie sich verpflichtet haben, sie in Übereinstimmung mit unseren [Prinzipien für verantwortungsbewusste KI](https://microsoft.com/ai/responsible-ai) und den [Verhaltensregeln](https://aka.ms/custom-neural-code-of-conduct) zu verwenden. 
+1. [Hier](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) erhalten Sie weitere Informationen zu unserer Richtlinie zur Zugriffsbeschränkung. [Hier](https://aka.ms/customneural) können Sie den Zugriff anfordern. Beachten Sie, dass der Zugriff auf den Dienst für die benutzerdefinierte neuronale Stimme im alleinigen Ermessen von Microsoft auf der Grundlage unserer Qualifizierungskriterien liegt. Kunden erhalten erst dann Zugriff auf die Technologie, wenn ihre Anwendung geprüft wurde und sie sich verpflichtet haben, sie in Übereinstimmung mit unseren [Prinzipien für verantwortungsbewusste KI](https://microsoft.com/ai/responsible-ai) und den [Verhaltensregeln](/legal/cognitive-services/speech-service/tts-code-of-conduct?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) zu verwenden. 
 2. Sobald Ihre Anwendung genehmigt ist, erhalten Sie Zugriff auf das „neuronale“ Trainingsfeature. Stellen Sie sicher, dass Sie sich mithilfe desselben Azure-Abonnements, das Sie in Ihrer Anwendung bereitstellen, beim [Custom Voice-Portal](https://speech.microsoft.com/customvoice) anmelden. 
     > [!IMPORTANT]
     > Um Sprecher zu schützen und das Training von Stimmmodellen mit nicht autorisierten Aufzeichnungen oder ohne die Zustimmung des Sprechers zu verhindern, erfordern wir vom Kunden das Hochladen einer aufgezeichneten Erklärung des Sprechers, in der er seine Zustimmung gibt. Stellen Sie beim Vorbereiten des Aufzeichnungsskripts sicher, dass Sie den folgenden Satz einschließen. „Ich [Vor- und Nachname nennen] akzeptiere, dass die Aufzeichnungen meiner Stimme von [Name des Unternehmens nennen] verwendet werden, um eine synthetische Version meiner Stimme zu erstellen und diese zu verwenden.“

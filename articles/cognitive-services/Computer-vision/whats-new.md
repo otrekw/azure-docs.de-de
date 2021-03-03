@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 31ca65099d645b7fdfee70275515f0a864cd905f
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 4f5ea68102e98a9abc3e5a0a31d3153bc1bd1663
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007396"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738224"
 ---
 # <a name="whats-new-in-computer-vision"></a>Neuerungen beim maschinellen Sehen
 
@@ -26,7 +26,7 @@ Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versi
 ### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>Lese-API v3.2 (Public Preview) mit OCR-Unterstützung für 73 Sprachen
 Die Lese-API v3.2 (Public Preview) für maschinelles Sehen ist als Clouddienst und Docker-Container verfügbar und beinhaltet diese Updates:
 * [OCR für 73 Sprachen](./language-support.md#optical-character-recognition-ocr), einschließlich vereinfachtes und traditionelles Chinesisch, Japanisch, Koreanisch und lateinische Sprachen
-* Natürliche Leserichtung für die Textzeilenausgabe
+* Natürliche Leserichtung für die Textzeilenausgabe (nur lateinische Sprachen)
 * Klassifizierung der Handschrift für Textzeilen zusammen mit einer Konfidenzbewertung (nur lateinische Sprachen)
 * Extrahieren von Text nur für ausgewählte Seiten bei mehrseitigen Dokumenten
 * Verfügbar als [Container ohne Distribution](./computer-vision-how-to-install-containers.md?tabs=version-3-2) für die lokale Bereitstellung
@@ -50,8 +50,8 @@ Für den [Container für die räumliche Analyse](spatial-analysis-container.md) 
 * **Breaking Change:** Das Ereignis *personZoneEvent* wurde in *personZoneEnterExitEvent* umbenannt. Dieses Ereignis wird durch den Vorgang *personcrossingpolygon* ausgelöst, wenn eine Person die Zone betritt oder verlässt. Außerdem werden Richtungsinformationen in Form der nummerierten Seite der durchquerten Zone bereitgestellt.
 * Die Video-URL kann in allen Vorgängen als „Private Parameter/obfuscated“ (Privater Parameter/verschleiert) bereitgestellt werden. Die Verschleierung ist jetzt optional und funktioniert nur, wenn `KEY` und `IV` als Umgebungsvariablen bereitgestellt werden.
 * Die Kalibrierung ist für alle Vorgänge standardmäßig aktiviert. Legen Sie `do_calibration: false` fest, um sie zu deaktivieren.
-* Unterstützung der automatischen Neukalibrierung über den Parameter `enable_recalibration` wurde hinzugefügt (standardmäßig deaktiviert). Ausführliche Informationen finden Sie unter [Vorgänge der räumlichen Analyse](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations).
-* Kamerakalibrierungsparameter für `DETECTOR_NODE_CONFIG`. Ausführliche Informationen finden Sie unter [Vorgänge der räumlichen Analyse](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations).
+* Unterstützung der automatischen Neukalibrierung über den Parameter `enable_recalibration` wurde hinzugefügt (standardmäßig deaktiviert). Ausführliche Informationen finden Sie unter [Vorgänge der räumlichen Analyse](./spatial-analysis-operations.md).
+* Kamerakalibrierungsparameter für `DETECTOR_NODE_CONFIG`. Ausführliche Informationen finden Sie unter [Vorgänge der räumlichen Analyse](./spatial-analysis-operations.md).
 
 
 ## <a name="october-2020"></a>Oktober 2020

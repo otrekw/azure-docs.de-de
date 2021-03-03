@@ -1,18 +1,18 @@
 ---
 title: Aktualisieren eines Azure Red Hat OpenShift-Clusters
 description: Erfahren Sie, wie Sie einen privaten Azure Red Hat OpenShift-Cluster mit OpenShift 4 erstellen.
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: article
 ms.date: 1/10/2021
 author: sakthi-vetrivel
 ms.author: suvetriv
 keywords: aro, openshift, az aro, red hat, cli
-ms.openlocfilehash: 98ab8ff1e321929a9007c28f487d5861f6ac9930
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 742da12bd3a10cd1f541e9c43f654cfe7df04340
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064346"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720884"
 ---
 # <a name="upgrade-an-azure-red-hat-openshift-aro-cluster"></a>Aktualisieren eines Azure Red Hat OpenShift-Clusters (ARO)
 
@@ -20,7 +20,7 @@ Im Rahmen des ARO-Clusterlebenszyklus müssen regelmäßige Upgrades auf die akt
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Der Artikel setzt voraus, dass Sie mindestens Version 2.0.65 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um Ihre aktuelle Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Der Artikel setzt voraus, dass Sie mindestens Version 2.0.65 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um Ihre aktuelle Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
 In diesem Artikel wird davon ausgegangen, dass Sie Zugriff auf einen Azure Red Hat OpenShift-Cluster mit `admin`-Berechtigungen haben.
 
@@ -39,4 +39,3 @@ Auswählen einer Version für das Update und Auswählen von **Update** Der Updat
 ## <a name="next-steps"></a>Nächste Schritte
 - [Weitere Informationen zum Aktualisieren eines ARO-Clusters mithilfe der OC-Befehlszeilenschnittstelle](https://docs.openshift.com/container-platform/4.6/updating/updating-cluster-between-minor.html)
 - Informationen zu den verfügbaren Empfehlungen und Updates für OpenShift Container Platform finden Sie im Abschnitt [Errata](https://access.redhat.com/downloads/content/290/ver=4.6/rhel---8/4.6.0/x86_64/product-errata) des Kundenportals.
-  

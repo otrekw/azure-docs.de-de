@@ -4,12 +4,12 @@ description: Überwachen Sie die Leistung einer Website, ohne sie erneut bereitz
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 53dbcc341fdd4bc194d34d40cdd2a975df496376
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 79e14c171adde89c43c5ea82a60db39133157293
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186302"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576432"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentieren von Web-Apps zur Laufzeit mit Anfügen ohne Code in Application Insights
 
@@ -93,7 +93,7 @@ Dies sind einige Schritte, die Sie ausführen können, um zu bestätigen, dass d
 
 - Vergewissern Sie sich, dass sich die Datei „applicationInsights.config“ im Verzeichnis der Ziel-App befindet und den ikey enthält.
 
-- Wenn Sie vermuten, dass Daten fehlen, können Sie eine Abfrage in [Analytics](../log-query/log-analytics-tutorial.md) ausführen, um alle Cloudrollen aufzulisten, die derzeit Telemetriedaten senden.
+- Wenn Sie vermuten, dass Daten fehlen, können Sie eine Abfrage in [Analytics](../logs/log-analytics-tutorial.md) ausführen, um alle Cloudrollen aufzulisten, die derzeit Telemetriedaten senden.
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
@@ -320,9 +320,9 @@ Für Anwendungen, die beim Kompilieren bereits instrumentiert sind:
 
 Anzeigen der Telemetrie:
 
-* [Untersuchen Sie Metriken](../platform/metrics-charts.md) für die Überwachung von Leistung und Auslastung.
+* [Untersuchen Sie Metriken](../essentials/metrics-charts.md) für die Überwachung von Leistung und Auslastung.
 * [Durchsuchen Sie Ereignisse und Protokolle][diagnostic], um Probleme zu diagnostizieren.
-* [Verwenden Sie Analytics](../log-query/log-query-overview.md) für erweiterte Abfragen.
+* [Verwenden Sie Analytics](../logs/log-query-overview.md) für erweiterte Abfragen.
 
 Hinzufügen weiterer Telemetrieelemente:
 

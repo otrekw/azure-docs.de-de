@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie eine statische öffentliche IP-Adresse für a
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 81b99478358ec3d670e8d783fba27603483614ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2eefeecfa550683dafcf66d936837e2a891c4c84
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563244"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726545"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Verwenden einer statischen öffentlichen IP-Adresse für ausgehenden Datenverkehr mit einem Lastenausgleich der SKU *Basic* in Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie Azure Load Balancer Basic ver
 
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
-Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
 > [!IMPORTANT]
 > In diesem Artikel wird der Lastenausgleich der SKU *Basic* mit einem einzelnen Knotenpool verwendet. Diese Konfiguration ist für mehrere Knotenpools nicht verfügbar, da der Lastenausgleich der SKU *Basic* mit mehreren Knotenpools nicht unterstützt wird. Unter [Verwenden einer öffentlichen Instanz von Load Balancer Standard in Azure Kubernetes Service (AKS)][slb] finden Sie ausführlichere Informationen zur Verwendung des Lastenausgleichs der SKU *Standard*.
@@ -33,7 +33,7 @@ Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfi
 
 Der ausgehende Datenverkehr aus einem AKS-Cluster unterliegt den [Azure Load Balancer-Konventionen][outbound-connections]. Bevor der erste Kubernetes-Dienst des Typs `LoadBalancer` erstellt wird, gehören die Agent-Knoten in einem AKS-Cluster nicht zum Azure Load Balancer-Pool. In dieser Konfiguration verfügen die Knoten über keine öffentliche IP-Adresse auf Instanzebene. Azure verschiebt den ausgehenden Datenfluss zu einer öffentlichen Quell-IP-Adresse, die nicht konfigurierbar oder deterministisch ist.
 
-Wenn ein Kubernetes-Dienst des Typs `LoadBalancer` erstellt wurde, werden Knoten des Agent einem Azure Load Balancer-Pool hinzugefügt. Azure verschiebt den ausgehenden Datenfluss zu der ersten öffentlichen IP-Adresse, die vom Load Balancer konfiguriert wurde. Diese öffentliche IP-Adresse gilt nur für die Lebensdauer dieser Ressource. Wenn Sie den Kubernetes-Lastenausgleichsdienst löschen, werden auch der zugehörige Lastenausgleich und die zugehörige IP-Adresse gelöscht. Wenn Sie eine bestimmte IP-Adresse für einen Kubernetes-Dienst zuweisen oder beibehalten möchten, können Sie eine statische öffentliche IP-Adresse erstellen und verwenden.
+Wenn ein Kubernetes-Dienst des Typs `LoadBalancer` erstellt wurde, werden Knoten des Agent einem Azure Load Balancer-Pool hinzugefügt. Load Balancer Basic wählt ein einzelnes Front-End für ausgehende Datenflüsse aus, wenn mehrere (öffentliche) Front-End-IP-Adressen Kandidaten für ausgehende Datenflüsse sind. Diese Auswahl ist nicht konfigurierbar; Sie sollten den Auswahlalgorithmus als zufällig betrachten. Diese öffentliche IP-Adresse gilt nur für die Lebensdauer dieser Ressource. Wenn Sie den Kubernetes-Lastenausgleichsdienst löschen, werden auch der zugehörige Lastenausgleich und die zugehörige IP-Adresse gelöscht. Wenn Sie eine bestimmte IP-Adresse für einen Kubernetes-Dienst zuweisen oder beibehalten möchten, können Sie eine statische öffentliche IP-Adresse erstellen und verwenden.
 
 ## <a name="create-a-static-public-ip"></a>Erstellen einer statischen öffentlichen IP-Adresse
 

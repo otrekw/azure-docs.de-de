@@ -3,16 +3,16 @@ title: Erfassen und Analysieren von Ressourcenprotokollen
 description: Aufzeichnen und Analysieren von Ressourcenprotokollereignissen für Azure Container Registry wie Authentifizierung, Imagepush und Imagepull.
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: 8b05d34e6c50fea3760e30d28f59e55d8c5f211a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 952f239e94df6b3b21317985f56d3d7a999813fe
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348584"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571991"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry-Protokolle für die Diagnoseauswertung und -überwachung
 
-In diesem Artikel wird erläutert, wie Sie Protokolldaten für eine Azure-Containerregistrierung mithilfe der Funktionen von [Azure Monitor](../azure-monitor/overview.md) sammeln. Azure Monitor sammelt [Ressourcenprotokolle](../azure-monitor/platform/platform-logs-overview.md) (ehemals *Diagnoseprotokolle*) für benutzergesteuerte Ereignisse in Ihrer Registrierung. Erfassen und nutzen Sie diese Daten, um Anforderungen zu erfüllen wie:
+In diesem Artikel wird erläutert, wie Sie Protokolldaten für eine Azure-Containerregistrierung mithilfe der Funktionen von [Azure Monitor](../azure-monitor/overview.md) sammeln. Azure Monitor sammelt [Ressourcenprotokolle](../azure-monitor/essentials/platform-logs-overview.md) (ehemals *Diagnoseprotokolle*) für benutzergesteuerte Ereignisse in Ihrer Registrierung. Erfassen und nutzen Sie diese Daten, um Anforderungen zu erfüllen wie:
 
 * Überwachen von Registrierungsauthentifizierungsereignissen, um Sicherheit und Compliance sicherzustellen 
 
@@ -39,21 +39,21 @@ Ressourcenprotokolle enthalten Informationen, die von Azure-Ressourcen ausgegebe
 
 * **ContainerRegistryLoginEvents**: Registrierungauthentifizierungsereignisse und -status, einschließlich der eingehenden Identität und IP-Adresse.
 * **ContainerRegistryRepositoryEvents**: Vorgänge wie Push und Pull von Images und anderen Artefakten in Registrierungsrepositorys.
-* **AzureMetrics** - [Containerregistrierungsmetriken](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries): wie aggregierte Push- und Pullanzahlen.
+* **AzureMetrics** - [Containerregistrierungsmetriken](../azure-monitor/essentials/metrics-supported.md#microsoftcontainerregistryregistries): wie aggregierte Push- und Pullanzahlen.
 
 Für Vorgänge umfassen Protokolldaten:
   * Erfolg- oder Fehlerstatus
   * Zeitstempel für Start und Beendigung
 
-Zusätzlich zu den Ressourcenprotokollen bietet Azure ein [Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md), eine einzelne Aufzeichnung von Azure-Verwaltungsereignissen auf Abonnementebene wie das Erstellen oder Löschen einer Containerregistrierung.
+Zusätzlich zu den Ressourcenprotokollen bietet Azure ein [Aktivitätsprotokoll](../azure-monitor/essentials/platform-logs-overview.md), eine einzelne Aufzeichnung von Azure-Verwaltungsereignissen auf Abonnementebene wie das Erstellen oder Löschen einer Containerregistrierung.
 
 ## <a name="enable-collection-of-resource-logs"></a>Aktivieren der Sammlung von Ressourcenprotokollen
 
-Die Sammlung von Ressourcenprotokollen für eine Containerregistrierung ist nicht standardmäßig aktiviert. Aktivieren Sie Diagnoseeinstellungen für jede Registrierung explizit, die Sie überwachen möchten. Informationen zu Optionen zum Aktivieren von Diagnoseeinstellung finden Sie unter [Erstellen einer Diagnoseeinstellung zum Erfassen von Plattformprotokollen und Metriken in Azure](../azure-monitor/platform/diagnostic-settings.md).
+Die Sammlung von Ressourcenprotokollen für eine Containerregistrierung ist nicht standardmäßig aktiviert. Aktivieren Sie Diagnoseeinstellungen für jede Registrierung explizit, die Sie überwachen möchten. Informationen zu Optionen zum Aktivieren von Diagnoseeinstellung finden Sie unter [Erstellen einer Diagnoseeinstellung zum Erfassen von Plattformprotokollen und Metriken in Azure](../azure-monitor/essentials/diagnostic-settings.md).
 
 Um beispielsweise Protokolle und Metriken für eine Containerregistrierung in Azure Monitor nahezu in Echtzeit anzuzeigen, erfassen Sie die Ressourcenprotokolle in einem Log Analytics-Arbeitsbereich. So aktivieren Sie diese Diagnoseeinstellung über das Azure-Portal
 
-1. Wenn Sie nicht bereits einen Arbeitsbereich besitzen, erstellen Sie einen über das [Azure-Portal](../azure-monitor/learn/quick-create-workspace.md). Um die Wartezeit bei der Datensammlung zu minimieren, stellen Sie sicher, dass sich der Arbeitsbereich in **derselben Region befindet** wie Ihre Containerregistrierung befindet.
+1. Wenn Sie nicht bereits einen Arbeitsbereich besitzen, erstellen Sie einen über das [Azure-Portal](../azure-monitor/logs/quick-create-workspace.md). Um die Wartezeit bei der Datensammlung zu minimieren, stellen Sie sicher, dass sich der Arbeitsbereich in **derselben Region befindet** wie Ihre Containerregistrierung befindet.
 1. Wählen Sie im Portal die Registrierung und dann **Überwachung > Diagnoseeinstellungen > Diagnoseeinstellung hinzufügen** aus.
 1. Geben Sie einen Namen für die Einstellung ein, und wählen Sie **An Log Analytics senden** aus.
 1. Wählen Sie den Arbeitsbereich für die Registrierungsdiagnoseprotokolle aus.
@@ -81,9 +81,9 @@ In der folgenden Abbildung ist eine Beispielausgabe dargestellt:
 
 ![Abfragen von Protokolldaten](media/container-registry-diagnostics-audit-logs/azure-monitor-query.png)
 
-Ein Tutorial zur Verwendung von Log Analytics im Azure-Portal finden Sie unter [Erste Schritte mit Azure Monitor Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md), oder probieren Sie die [Demoumgebung](https://portal.loganalytics.io/demo) von Log Analytics aus. 
+Ein Tutorial zur Verwendung von Log Analytics im Azure-Portal finden Sie unter [Erste Schritte mit Azure Monitor Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md), oder probieren Sie die [Demoumgebung](https://portal.loganalytics.io/demo) von Log Analytics aus. 
 
-Weitere Informationen zu Protokollabfragen finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
+Weitere Informationen zu Protokollabfragen finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="query-examples"></a>Beispiele für Abfragen
 
@@ -146,5 +146,5 @@ Sie können-Diagnoseprotokollereignisse auch an einen [Azure Event Hub](../event
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über das Verwenden von [Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) und das Erstellen von [Protokollabfragen](../azure-monitor/log-query/get-started-queries.md).
-* Informationen zu Plattformprotokollen, die auf unterschiedlichen Ebenen von Azure verfügbar sind, finden Sie unter [Übersicht über Protokolle der Azure-Plattform](../azure-monitor/platform/platform-logs-overview.md).
+* Erfahren Sie mehr über das Verwenden von [Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) und das Erstellen von [Protokollabfragen](../azure-monitor/logs/get-started-queries.md).
+* Informationen zu Plattformprotokollen, die auf unterschiedlichen Ebenen von Azure verfügbar sind, finden Sie unter [Übersicht über Protokolle der Azure-Plattform](../azure-monitor/essentials/platform-logs-overview.md).

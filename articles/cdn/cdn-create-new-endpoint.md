@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 7a3c4bc2a0445a2821e212986b495993695652a6
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 45edf57ed41f8cf7be839edade5038a0787424a4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165925"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367287"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts
 

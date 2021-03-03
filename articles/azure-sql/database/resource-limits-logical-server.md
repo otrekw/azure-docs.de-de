@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 02/02/2021
-ms.openlocfilehash: e8f18f56c746f0d12f43cc2fb6ce9088a9b82b45
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 34613633b6b27fc3387e6a9fa63caf4a194ba963
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492381"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691228"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Ressourcenlimits für Azure SQL-Datenbank und Azure Synapse Analytics-Server.
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -30,7 +30,7 @@ Dieser Artikel bietet eine Übersicht über die Ressourcenlimits für den logisc
 
 | Resource | Begrenzung |
 | :--- | :--- |
-| Datenbanken pro Server | 5\.000 |
+| Datenbanken pro Server | 5.000 |
 | Standardanzahl von Servern pro Abonnement in beliebiger Region | 20 |
 | Maximale Anzahl von Servern pro Abonnement in beliebiger Region | 200 |  
 | DTU/eDTU-Kontingent pro Server | 54.000 |  
@@ -70,7 +70,7 @@ Wenn eine hohe Speicherplatznutzung festgestellt wird, stehen folgende Optionen 
 - Erhöhen der maximalen Größe der Datenbank oder des Pools für elastische Datenbanken oder Hinzufügen von zusätzlichem Speicher. Siehe [Skalieren der Ressourcen für einzelne Datenbanken](single-database-scale.md) und [Skalieren der Ressourcen für elastische Pools in Azure SQL-Datenbank](elastic-pool-scale.md).
 - Wenn sich die Datenbank in einem Pool für elastische Datenbanken befindet, kann sie auch aus dem Pool heraus verschoben werden, damit ihr Speicherplatz nicht mit anderen Datenbanken geteilt wird.
 - Verkleinern Sie eine Datenbank, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](file-space-manage.md).
-- Überprüfen Sie, ob der Grund für die hohe Speicherplatznutzung eine Spitze bei der Größe des permanenten Versionsspeichers (PVS) ist. PVS ist ein Teil jeder Datenbank und wird zum Implementieren der [beschleunigten Datenbankwiederherstellung](../accelerated-database-recovery.md) verwendet. Informationen zum Ermitteln der aktuellen PVS-Größe finden Sie unter [PVS-Problembehandlung](https://docs.microsoft.com/sql/relational-databases/accelerated-database-recovery-management#troubleshooting). Ein häufiger Grund für eine große PVS-Größe ist eine Transaktion, die während eines langen Zeitraums (Stunden) geöffnet ist und so die Bereinigung älterer Versionen in PVS verhindert.
+- Überprüfen Sie, ob der Grund für die hohe Speicherplatznutzung eine Spitze bei der Größe des permanenten Versionsspeichers (PVS) ist. PVS ist ein Teil jeder Datenbank und wird zum Implementieren der [beschleunigten Datenbankwiederherstellung](../accelerated-database-recovery.md) verwendet. Informationen zum Ermitteln der aktuellen PVS-Größe finden Sie unter [PVS-Problembehandlung](/sql/relational-databases/accelerated-database-recovery-management#troubleshooting). Ein häufiger Grund für eine große PVS-Größe ist eine Transaktion, die während eines langen Zeitraums (Stunden) geöffnet ist und so die Bereinigung älterer Versionen in PVS verhindert.
 
 ### <a name="sessions-and-workers-requests"></a>Sitzungen und Worker (Anforderungen)
 
@@ -106,11 +106,11 @@ Im Falle von Fehlern aufgrund von unzureichendem Arbeitsspeicher haben Sie unter
 
 ## <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>Ressourcenauslastung durch Benutzerarbeitsauslastungen und interne Prozesse
 
-Die CPU- und Arbeitsspeicherauslastung durch Benutzerarbeitsauslastungen in den einzelnen Datenbanken wird in den Spalten `avg_cpu_percent` und `avg_memory_usage_percent` der Sichten [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) und [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) gemeldet. Bei Pools für elastische Datenbanken wird die Ressourcenauslastung auf Poolebene in der Sicht [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) gemeldet. Die CPU-Auslastung durch Benutzerarbeitsauslastungen wird auch über die Azure Monitor-Metrik `cpu_percent` gemeldet, und zwar für [Einzeldatenbanken](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserversdatabases) und für [Pools für elastische Datenbanken](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserverselasticpools) auf Poolebene.
+Die CPU- und Arbeitsspeicherauslastung durch Benutzerarbeitsauslastungen in den einzelnen Datenbanken wird in den Spalten `avg_cpu_percent` und `avg_memory_usage_percent` der Sichten [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) und [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) gemeldet. Bei Pools für elastische Datenbanken wird die Ressourcenauslastung auf Poolebene in der Sicht [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) gemeldet. Die CPU-Auslastung durch Benutzerarbeitsauslastungen wird auch über die Azure Monitor-Metrik `cpu_percent` gemeldet, und zwar für [Einzeldatenbanken](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserversdatabases) und für [Pools für elastische Datenbanken](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserverselasticpools) auf Poolebene.
 
 Azure SQL-Datenbank benötigt Computeressourcen zur Implementierung zentraler Dienstfeatures wie Hochverfügbarkeit und Notfallwiederherstellung, Datenbanksicherung und -wiederherstellung, Überwachung, Abfragespeicher, automatische Optimierung und Ähnliches. Ein gewisser Teil der Gesamtressourcen wird mithilfe von Mechanismen der [Ressourcengovernance](#resource-governance) für diese internen Prozesse reserviert. Die übrigen Ressourcen stehen für Benutzerarbeitsauslastungen zur Verfügung. Wenn von internen Prozessen keine Computeressourcen beansprucht werden, werden die Ressourcen für Benutzerworkloads bereitgestellt.
 
-Die Gesamtauslastung für CPU und Arbeitsspeicher durch Benutzerarbeitsauslastungen und interne Prozesse wird in den Spalten `avg_instance_cpu_percent` und `avg_instance_memory_percent` der Sichten [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) und [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) gemeldet. Diese Daten werden auch über die Azure Monitor-Metriken `sqlserver_process_core_percent` und `sqlserver_process_memory_percent` gemeldet, und zwar für [Einzeldatenbanken](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserversdatabases) und für [Pools für elastische Datenbanken](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserverselasticpools) auf Poolebene.
+Die Gesamtauslastung für CPU und Arbeitsspeicher durch Benutzerarbeitsauslastungen und interne Prozesse wird in den Spalten `avg_instance_cpu_percent` und `avg_instance_memory_percent` der Sichten [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) und [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) gemeldet. Diese Daten werden auch über die Azure Monitor-Metriken `sqlserver_process_core_percent` und `sqlserver_process_memory_percent` gemeldet, und zwar für [Einzeldatenbanken](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserversdatabases) und für [Pools für elastische Datenbanken](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserverselasticpools) auf Poolebene.
 
 Eine detailliertere Aufschlüsselung der aktuellen Ressourcenauslastung durch Benutzerarbeitsauslastungen und interne Prozesse finden Sie in den Sichten [sys.dm_resource_governor_resource_pools_history_ex](/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database) und [sys.dm_resource_governor_workload_groups_history_ex](/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database). Ausführliche Informationen zu Ressourcenpools und Arbeitsauslastungsgruppen, auf die in diesen Sichten verwiesen wird, finden Sie unter [Ressourcengovernance](#resource-governance). In diesen Sichten wird die Ressourcenverwendung durch Benutzerarbeitsauslastungen und bestimmte interne Prozesse in den zugeordneten Ressourcenpools und Arbeitsauslastungsgruppen gemeldet.
 

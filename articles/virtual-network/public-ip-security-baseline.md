@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: cba362004e764ffbbc734fb06c8898f380ffdf88
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b26a020b9b4b1641d67a4f5ca55908b8d37f31e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806917"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596505"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azure-Sicherheitsbaseline für Azure Public IP
 
@@ -52,7 +52,7 @@ Public IP bietet Tools für die Überwachung, Diagnose, Metrikanzeige und Aktiv
 
 Stattdessen können Sie Daten in Azure Sentinel oder in einer SIEM-Drittanbieterlösung aktivieren und integrieren.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -64,7 +64,7 @@ Stattdessen können Sie Daten in Azure Sentinel oder in einer SIEM-Drittanbieter
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll, um Konfigurationen zu überwachen und Änderungen für Ihre Public IP-Instanzen zu erkennen. Von Public IP selbst werden nur auf der Steuerungsebene (z. B. im Azure-Portal) Überwachungsprotokolle generiert. Public IP bietet Tools für die Überwachung, Diagnose, Metrikanzeige und Aktivierung/Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk.
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -74,7 +74,7 @@ Stattdessen können Sie Daten in Azure Sentinel oder in einer SIEM-Drittanbieter
 
 **Leitfaden**: Legen Sie mithilfe von Azure Monitor den Protokollaufbewahrungszeitraum für die Log Analytics-Arbeitsbereiche, die Public IP-Instanzen zugeordnet sind, gemäß den Complianceanforderungen Ihrer Organisation fest.
 
-- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -88,7 +88,7 @@ Verwenden Sie das Azure-Aktivitätsprotokoll, um Konfigurationen zu überwachen 
 
 Von Public IP selbst werden nur auf der Steuerungsebene (z. B. im Azure-Portal) Protokolle im Zusammenhang mit Netzwerkdatenverkehr generiert.
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

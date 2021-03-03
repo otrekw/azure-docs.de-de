@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 5aab78ad99b80ff1d7be92bd36847b01dbc0e33b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 1232a0753c988f5a28ebba28f9819aa67ce28603
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542217"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718742"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>Überwachen der Datenbankaktivität mit Überwachungsprotokolle in Azure Database for MySQL – Flexible Server
 
@@ -46,11 +46,11 @@ Sie können die folgenden anderen Parameter verwenden, um das Verhalten der Übe
 | `DCL` | Abfragen wie GRANT PERMISSION |
 | `ADMIN` | Abfragen wie SHOW STATUS |
 | `GENERAL` | Alle in DML_SELECT, DML_NONSELECT, DML, DDL, DCL und ADMIN |
-| `TABLE_ACCESS` | - Nur für MySQL 5.7 verfügbar <br> - Leseanweisungen für Tabelle, z. B. SELECT oder INSERT INTO... SELECT <br> - Löschanweisungen für Tabelle, z. B. DELETE oder TRUNCATE TABLE <br> - Einfügeanweisungen für Tabelle, z. B. INSERT oder REPLACE <br> - Aktualisierungsanweisungen für Tabelle, z. B. UPDATE |
+| `TABLE_ACCESS` | - Leseanweisungen für Tabelle, z. B. SELECT oder INSERT INTO... SELECT <br> - Löschanweisungen für Tabelle, z. B. DELETE oder TRUNCATE TABLE <br> - Einfügeanweisungen für Tabelle, z. B. INSERT oder REPLACE <br> - Aktualisierungsanweisungen für Tabelle, z. B. UPDATE |
 
 ## <a name="access-audit-logs"></a>Zugreifen auf Überwachungsprotokolle
 
-Überwachungsprotokolle sind mit den Diagnoseeinstellungen von Azure Monitor integriert. Nachdem Sie Überwachungsprotokolle auf Ihrem flexiblen MySQL-Server aktiviert haben, können Sie sie an Azure Monitor-Protokolle, Event Hubs oder Azure Storage senden. Weitere Informationen über Diagnoseeinstellungen finden Sie in der [Dokumentation zu Diagnoseprotokollen](../../azure-monitor/platform/platform-logs-overview.md). Weitere Informationen zum Aktivieren von Diagnoseeinstellungen im Azure-Portal finden Sie im Artikel zum [Portal für Überwachungsprotokolle](how-to-configure-audit-logs-portal.md#set-up-diagnostics).
+Überwachungsprotokolle sind mit den Diagnoseeinstellungen von Azure Monitor integriert. Nachdem Sie Überwachungsprotokolle auf Ihrem flexiblen MySQL-Server aktiviert haben, können Sie sie an Azure Monitor-Protokolle, Event Hubs oder Azure Storage senden. Weitere Informationen über Diagnoseeinstellungen finden Sie in der [Dokumentation zu Diagnoseprotokollen](../../azure-monitor/essentials/platform-logs-overview.md). Weitere Informationen zum Aktivieren von Diagnoseeinstellungen im Azure-Portal finden Sie im Artikel zum [Portal für Überwachungsprotokolle](how-to-configure-audit-logs-portal.md#set-up-diagnostics).
 
 In den folgenden Abschnitten wird beschrieben, was von MySQL-Überwachungsprotokollen basierend auf dem Ereignistyp ausgegeben wird. Je nach Ausgabemethode können die enthaltenen Felder und ihre Reihenfolge variieren.
 
@@ -72,7 +72,7 @@ In den folgenden Abschnitten wird beschrieben, was von MySQL-Überwachungsprotok
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Name des Servers |
 | `event_class_s` | `connection_log` |
-| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` (nur für MySQL 5.7 verfügbar) |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` |
 | `connection_id_d` | Von MySQL generierte eindeutige Verbindungs-ID |
 | `host_s` | Leer |
 | `ip_s` | IP-Adresse des Clients, der die Verbindung mit MySQL herstellt |
@@ -116,7 +116,7 @@ Das unten angegebene Schema gilt für die Ereignistypen GENERAL, DML_SELECT, DML
 ### <a name="table-access"></a>Tabellenzugriff
 
 > [!NOTE]
-> Tabellenzugriffsprotokolle werden nur für MySQL 5.7 ausgegeben.<br>Bei `sql_text_s` wird das Protokoll abgeschnitten, wenn es länger als 2.048 Zeichen ist.
+> Bei `sql_text_s` wird das Protokoll abgeschnitten, wenn es länger als 2.048 Zeichen ist.
 
 | **Eigenschaft** | **Beschreibung** |
 |---|---|

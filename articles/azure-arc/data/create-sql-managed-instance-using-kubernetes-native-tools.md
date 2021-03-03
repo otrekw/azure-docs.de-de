@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: vin-yu
 ms.author: vinsonyu
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: dde2794e459e9375a231b7792bc1bd5ab21561bf
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: d23df80a3f80ed96779297bac12ef0ed8d2927d5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955228"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687922"
 ---
 # <a name="create-azure-sql-managed-instance-using-kubernetes-tools"></a>Erstellen einer verwalteten Azure SQL-Instanz mithilfe von Kubernetes-Tools
 
@@ -45,13 +45,13 @@ data:
   username: <your base64 encoded user name. 'sa' is not allowed>
 kind: Secret
 metadata:
-  name: example-login-secret
+  name: sql1-login-secret
 type: Opaque
 ---
 apiVersion: sql.arcdata.microsoft.com/v1alpha1
 kind: sqlmanagedinstance
 metadata:
-  name: example
+  name: sql1
 spec:
   limits:
     memory: 4Gi
@@ -62,13 +62,7 @@ spec:
   service:
     type: LoadBalancer
   storage:
-    backups:
-      className: default
-      size: 5Gi
     data:
-      className: default
-      size: 5Gi
-    datalogs:
       className: default
       size: 5Gi
     logs:
@@ -99,15 +93,15 @@ PowerShell
 Linux/macOS
 
 ```console
-echo '<your string to encode here>' | base64
+echo -n '<your string to encode here>' | base64
 
 #Example
-# echo 'example' | base64
+# echo -n 'example' | base64
 ```
 
 ### <a name="customizing-the-name"></a>Anpassen des Namens
 
-Die Vorlage hat für das Attribut „Name“ den Wert „example“ (Beispiel).  Sie können diesen ändern, hierbei muss es sich aber um Zeichen handeln, die die DNS-Benennungsstandards einhalten.  Sie müssen außerdem den Namen des Geheimnisses entsprechend ändern.  Wenn Sie z. B. den Namen der verwalteten SQL-Instanz in „sql1“ ändern, müssen Sie den Namen des Geheimnisses von „example-login-secret“ in „sql1-login-secret“ ändern.
+Die Vorlage hat für das Attribut „name“ den Wert „sql1“.  Sie können diesen ändern, hierbei muss es sich aber um Zeichen handeln, die die DNS-Benennungsstandards einhalten.  Sie müssen außerdem den Namen des Geheimnisses entsprechend ändern.  Wenn Sie z. B. den Namen der verwalteten SQL-Instanz in „sql2“ ändern, müssen Sie den Namen des Geheimnisses von „sql1-login-secret“ in „sql2-login-secret“ ändern.
 
 ### <a name="customizing-the-resource-requirements"></a>Anpassen der Ressourcenanforderungen
 

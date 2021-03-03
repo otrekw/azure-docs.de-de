@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: c65f086fb0b7db9eb65606da73552facd8e470b0
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 5ca8c41dc1e6a05975227555abd91f5d6725285a
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103480"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092185"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer Node-Web-App mithilfe des Autorisierungscodeflows
 
@@ -26,9 +26,6 @@ In diesem Schnellstart laden Sie ein Codebeispiel herunter und führen es aus, d
 Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).
 
 In dieser Schnellstartanleitung wird die Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) für Node.js (MSAL Node) beim Autorisierungscodeflow verwendet.
-
-> [!IMPORTANT]
-> MSAL Node [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

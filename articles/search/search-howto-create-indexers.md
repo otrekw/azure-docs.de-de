@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 5fc47599d09e5be60311dbda15868d87de4d91d2
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 596eca0d73ffc4a590fae9b346658a2c31a1d68c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509383"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676472"
 ---
 # <a name="creating-indexers-in-azure-cognitive-search"></a>Erstellen von Indexern in Azure Cognitive Search
 
@@ -143,6 +143,20 @@ Bei der geplanten Verarbeitung ist in der Regel auch eine inkrementelle Indizier
 + [Azure Table Storage](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 
+## <a name="change-detection-and-indexer-state"></a>Änderungserkennung und Indexerstatus
+
+Indexer können Änderungen in den zugrunde liegenden Daten erkennen, sodass sie bei jeder Indexerausführung nur neue oder aktualisierte Dokumente verarbeiten. Wenn der Indexerstatus z. B. besagt, dass eine Ausführung mit `0/0` verarbeiteten Dokumenten erfolgreich war, bedeutet dies, dass der Indexer in der zugrunde liegenden Datenquelle keine neuen oder geänderten Zeilen oder Blobs gefunden hat.
+
+Die Unterstützung der Änderungserkennung durch einen Indexer hängt von der Datenquelle ab:
+
++ Azure Blob Storage, Azure Table Storage und Azure Data Lake Storage Gen2 versehen jedes Blob- oder Zeilenupdate mit einem Datums- und Uhrzeitstempel. Die verschiedenen Indexer verwenden diese Informationen, um zu bestimmen, welche Dokumente im Index aktualisiert werden müssen. Integrierte Änderungserkennung bedeutet, dass ein Indexer neue und aktualisierte Dokumente erkennen kann, ohne dass Sie dafür eine zusätzliche Konfiguration durchführen müssen.
+
++ Azure SQL und Cosmos DB stellen Funktionen zur Änderungserkennung auf ihren Plattformen bereit. Sie können die Richtlinie für die Änderungserkennung in der Datenquellendefinition angeben.
+
+Bei großen Indizierungslasten verfolgt ein Indexer auch das letzte Dokument, das er verarbeitet hat, anhand einer internen oberen Grenze. Der Marker wird nie in der API verfügbar gemacht, aber intern verfolgt der Indexer die Position nach, an der er angehalten wurde. Wenn die Indizierung entweder über eine geplante Ausführung oder einen bedarfsgesteuerten Aufruf fortgesetzt wird, orientiert sich der Indexer an der oberen Grenze, sodass er an der Stelle fortgesetzt werden kann, an der er aufgehört hat.
+
+Wenn Sie die obere Grenze löschen müssen, um vollständig neu indizieren zu können, können Sie [Indexer zurücksetzen](/rest/api/searchservice/reset-indexer) verwenden. Verwenden Sie zur selektiveren Neuindizierung [Qualifikationen zurücksetzen](/rest/api/searchservice/preview-api/reset-skills) oder [Dokumente zurücksetzen](/rest/api/searchservice/preview-api/reset-documents). Durch die Zurücksetzungs-APIs können Sie den internen Status löschen und auch den Cache leeren, wenn Sie [Inkrementelle Anreicherung](search-howto-incremental-index.md) aktiviert haben. Weitere Hintergrundinformationen und Vergleiche der einzelnen Rücksetzungsoptionen finden Sie unter [Ausführen oder Zurücksetzen von Indexern, Qualifikationen und Dokumenten](search-howto-run-reset-indexers.md).
+
 ## <a name="know-your-data"></a>Verstehen Ihrer Daten
 
 Von Indexern wird ein tabellarisches Rowset erwartet. Die einzelnen Zeilen werden dann jeweils zu einem vollständigen oder partiellen Suchdokument im Index. Häufig besteht eine 1:1-Entsprechung zwischen einer Zeile und dem resultierenden Suchdokument, sodass alle Felder im Rowset das jeweilige Dokument vollständig auffüllen. Sie können jedoch auch Indexer verwenden, um nur einen Teil eines Dokuments zu generieren – etwa bei Verwendung mehrerer Indexer oder Ansätze zum Ausbau des Index. 
@@ -151,7 +165,7 @@ Wenn Sie relationale Daten zu einem Rowset vereinfachen möchten, sollten Sie ei
 
 Neben vereinfachten Daten ist es auch wichtig, nur durchsuchbare Daten zu pullen. Durchsuchbare Daten sind alphanumerisch. Cognitive Search kann unabhängig vom Format keine Binärdaten durchsuchen, aber Textbeschreibungen aus Bilddateien extrahieren und ableiten (siehe [KI-Erweiterung](cognitive-search-concept-intro.md)), um durchsuchbare Inhalte zu erstellen. Außerdem können mithilfe der KI-Anreicherung umfangreiche Texte durch Modelle für natürliche Sprache analysiert werden, um die Struktur oder relevante Informationen zu ermitteln und neue Inhalte zu erstellen, die Sie einem Suchdokument hinzufügen können.
 
-Da durch Indexer keine Datenprobleme behoben werden, sind ggf. andere Arten der Datenbereinigung oder -bearbeitung erforderlich. Weitere Informationen finden Sie in der Produktdokumentation Ihres [Azure-Datenbankprodukts](/azure/?product=databases).
+Da durch Indexer keine Datenprobleme behoben werden, sind ggf. andere Arten der Datenbereinigung oder -bearbeitung erforderlich. Weitere Informationen finden Sie in der Produktdokumentation Ihres [Azure-Datenbankprodukts](../index.yml?product=databases).
 
 ## <a name="know-your-index"></a>Verstehen Ihres Index
 

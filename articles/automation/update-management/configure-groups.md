@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: a2df2489e4b216b4b33524e35691bf93468edda0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 318b5498c826b1e29baa35850594cebca72c4f3f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221601"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575918"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Verwenden dynamischer Gruppen mit der Updateverwaltung
 
@@ -43,7 +43,7 @@ Klicken Sie auf **Vorschau**, um die Ergebnisse Ihrer Abfrage für die dynamisch
 
 ## <a name="define-dynamic-groups-for-non-azure-machines"></a>Definieren dynamischer Gruppen für Nicht-Azure-Computer
 
-Bei Verwendung einer dynamischen Gruppe für nicht zu Azure gehörende Computer werden gespeicherte Suchen genutzt, die auch als Computergruppen bezeichnet werden. Informationen zum Erstellen einer gespeicherten Suche finden Sie unter [Erstellen einer Computergruppe](../../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Nachdem Ihre gespeicherte Suche erstellt wurde, können Sie sie im Azure-Portal unter **Updateverwaltung** in der Liste mit den gespeicherten Suchen auswählen. Klicken Sie auf **Vorschau**, um die Vorschau für die Computer in der gespeicherten Suche anzuzeigen.
+Bei Verwendung einer dynamischen Gruppe für nicht zu Azure gehörende Computer werden gespeicherte Suchen genutzt, die auch als Computergruppen bezeichnet werden. Informationen zum Erstellen einer gespeicherten Suche finden Sie unter [Erstellen einer Computergruppe](../../azure-monitor/logs/computer-groups.md#creating-a-computer-group). Nachdem Ihre gespeicherte Suche erstellt wurde, können Sie sie im Azure-Portal unter **Updateverwaltung** in der Liste mit den gespeicherten Suchen auswählen. Klicken Sie auf **Vorschau**, um die Vorschau für die Computer in der gespeicherten Suche anzuzeigen.
 
 ![Der Screenshot zeigt die Seite „Gruppen auswählen“ für Nicht-Azure (Vorschau) und den Vorschaubereich auf der rechten Seite.](./media/configure-groups/select-groups-2.png)
 

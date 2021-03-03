@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: c42eb8cac283ce096c42c9e5d4b7eac9a3e12625
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 44f093f96d0f4653a6fcca94aaa97264c93e3c7d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364374"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727939"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Herstellen einer Verbindung zwischen einer Data Factory und Azure Purview (Vorschau)
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -40,10 +40,10 @@ Wenn im Azure Data Factory-Portal eine Warnung angezeigt wird, nachdem Sie das A
 
 :::image type="content" source="./media/data-factory-purview/register-purview-account-tag.png" alt-text="Screenshot der Tags für die Registrierung eines Purview-Kontos":::
 
-2. Überprüfen Sie, ob die Berechtigung zum Registrieren eines Azure Purview-Kontos bei Data Factory erteilt wurde. Weitere Informationen finden Sie unter [Herstellen einer Verbindung zwischen Azure Data Factory und Azure Purview](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory#create-new-data-factory-connection).
+2. Überprüfen Sie, ob die Berechtigung zum Registrieren eines Azure Purview-Kontos bei Data Factory erteilt wurde. Weitere Informationen finden Sie unter [Herstellen einer Verbindung zwischen Azure Data Factory und Azure Purview](../purview/how-to-link-azure-data-factory.md#create-new-data-factory-connection).
 
 ### <a name="register-data-factory-in-azure-purview"></a>Registrieren von Data Factory bei Azure Purview
-Informationen zum Registrieren von Data Factory in Azure Purview finden Sie unter [Herstellen einer Verbindung zwischen Azure Data Factory und Azure Purview](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory). 
+Informationen zum Registrieren von Data Factory in Azure Purview finden Sie unter [Herstellen einer Verbindung zwischen Azure Data Factory und Azure Purview](../purview/how-to-link-azure-data-factory.md). 
 
 ## <a name="report-lineage-data-to-azure-purview"></a>Übermitteln von Herkunftsdaten an Azure Purview
 Beim Ausführen der Aktivitäten für Kopiervorgänge, Datenflüsse oder das Ausführen eines SSIS-Pakets in Azure Data Factory können Kunden die Abhängigkeitsbeziehung abrufen und sich eine allgemeine Übersicht über den gesamten Workflowprozess zwischen den Datenquellen und dem Ziel verschaffen.

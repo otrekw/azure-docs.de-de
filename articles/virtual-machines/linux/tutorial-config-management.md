@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: c4dc7e4d3c19a341daaf8e75844e175451a91f03
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: de038fe087e479ef1e9212c21197fbe1844d5e3b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592978"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670377"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Tutorial: Überwachen von Änderungen und Aktualisieren eines virtuellen Linux-Computers in Azure
 
@@ -107,7 +107,7 @@ Um eine neue Updatebereitstellung für den virtuellen Computer zu planen, klicke
 
 Wählen Sie zum Erstellen einer neuen Updatebereitstellung **Updatebereitstellung planen** aus. Die Seite **Neue Updatebereitstellung** wird geöffnet. Geben Sie Werte für die Eigenschaften ein, die in der folgenden Tabelle beschrieben werden, und klicken Sie auf **Erstellen**:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Name |Eindeutiger Name zum Identifizieren der Updatebereitstellung |
 |Betriebssystem| Linux oder Windows|
@@ -201,4 +201,4 @@ In diesem Tutorial haben Sie die Änderungsnachverfolgung und Updateverwaltung f
 Im nächsten Tutorial erhalten Sie Informationen zur Überwachung virtueller Computer.
 
 > [!div class="nextstepaction"]
-> [Überwachen virtueller Computer](tutorial-monitor.md)
+> [Überwachen virtueller Computer](/previous-versions/azure/virtual-machines/linux/tutorial-monitor)

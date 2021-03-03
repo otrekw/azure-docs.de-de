@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 3684b5a8069a6b683ae562c527af89814362a7f9
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a60a0291d6669b2a9115dffa8e0d4d63fae4a440
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806985"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724437"
 ---
 # <a name="connect-your-agari-phishing-defense-and-brand-protection-solutions-to-azure-sentinel"></a>Verbinden von Agari Phishing Defense and Brand Protection-Lösungen mit Azure Sentinel
 
@@ -39,7 +39,7 @@ Zum Verbinden von Agari Phishing Defense and Brand Protection-Lösungen mit Azur
 
 - Lese- und Schreibberechtigungen für den Azure Sentinel-Arbeitsbereich.
 
-- Leseberechtigungen für freigegebene Schlüssel für den Arbeitsbereich. [Weitere Informationen zu Arbeitsbereichsschlüsseln](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)
+- Leseberechtigungen für freigegebene Schlüssel für den Arbeitsbereich. [Weitere Informationen zu Arbeitsbereichsschlüsseln](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)
 
 - Lese- und Schreibberechtigungen für Azure Functions, um eine Funktions-App erstellen zu können. [Informieren Sie sich ausführlicher über Azure Functions](../azure-functions/index.yml).
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 05fdf681b7cdc3b8145a30041e261eece420e560
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5653b59ed29495334079e932fb305fd4ba10475c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878086"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592347"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Sicherheitsempfehlungen für Blob Storage
 
@@ -71,7 +71,7 @@ Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitssta
 | Empfehlung | Kommentare | Security Center |
 |-|----|--|
 | Nachverfolgen der Autorisierung von Anforderungen | Aktivieren Sie die Azure Storage-Protokollierung, um zu verfolgen, wie jede für Azure Storage durchgeführte Anforderung autorisiert wurde. Die Protokolle geben an, ob eine Anforderung anonym, mithilfe eines OAuth 2.0-Tokens, mit einem gemeinsam verwendeten Schlüssel oder mithilfe einer SAS (Shared Access Signature) durchgeführt wurde. Weitere Informationen finden Sie unter [Überwachen von Azure Blob Storage mit Azure Monitor](monitor-blob-storage.md) oder [Azure Storage Analytics-Protokollierung mit klassischer Überwachung](../common/storage-analytics-logging.md). | - |
-| Einrichten von Warnungen in Azure Monitor | Durch das Konfigurieren von Protokollwarnungen können Sie Ressourcenprotokolle mit einer bestimmten Häufigkeit auswerten und basierend auf den Ergebnissen eine Warnung auslösen. Weitere Informationen finden Sie unter [Protokollwarnungen in Azure Monitor](../../azure-monitor/platform/alerts-unified-log.md). | - |
+| Einrichten von Warnungen in Azure Monitor | Durch das Konfigurieren von Protokollwarnungen können Sie Ressourcenprotokolle mit einer bestimmten Häufigkeit auswerten und basierend auf den Ergebnissen eine Warnung auslösen. Weitere Informationen finden Sie unter [Protokollwarnungen in Azure Monitor](../../azure-monitor/alerts/alerts-unified-log.md). | - |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

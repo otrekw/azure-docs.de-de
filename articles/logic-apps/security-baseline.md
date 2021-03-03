@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e47dfeab7466faf9a60b161b05d8b3bf39ebdb6a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: cf4e02f925e0c8c4024137589c0c9c4074c0aa11
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203302"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596760"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Azure-Sicherheitsbaseline für Logic Apps
 
@@ -216,9 +216,9 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Nutzen Sie das Azure-Aktivitätsprotokoll zum Überwachen der Konfigurationen von Netzwerkressourcen und zum Erkennen von Änderungen bei Netzwerkressourcen im Zusammenhang mit Ihren Azure Logic Apps-Instanzen. Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzwerkressourcen ausgelöst werden.
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -242,7 +242,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 Alternativ dazu können Sie auch Daten in Azure Sentinel oder einer Drittanbieter-SIEM-Lösung aktivieren und integrieren. 
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 - [Einrichten von Azure Monitor-Protokollen und Sammeln von Diagnosedaten für Azure Logic Apps](monitor-logic-apps-log-analytics.md)
 
@@ -258,7 +258,7 @@ Alternativ dazu können Sie auch Daten in Azure Sentinel oder einer Drittanbiete
 
 Alternativ dazu können Sie auch Daten in Azure Sentinel oder einer Drittanbieter-SIEM-Lösung aktivieren und integrieren. 
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 - [Einrichten von Azure Monitor-Protokollen und Sammeln von Diagnosedaten für Azure Logic Apps](monitor-logic-apps-log-analytics.md)
 
@@ -284,7 +284,7 @@ Legen Sie in Azure Monitor die Protokollaufbewahrungsdauer für Azure Logic Apps
 
 - [Überwachen des Ausführungsstatus, Überprüfen des Auslöserverlaufs und Einrichten von Benachrichtigungen für Azure Logic Apps](monitor-logic-apps.md)
 
-- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -300,9 +300,9 @@ Alternativ dazu können Sie auch Daten in Azure Sentinel oder einer Drittanbiete
 
 - [Einrichten von Azure Monitor-Protokollen und Sammeln von Diagnosedaten für Azure Logic Apps](monitor-logic-apps-log-analytics.md)
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
-- [Erfassen und Analysieren von Azure-Aktivitätsprotokollen in Log Analytics in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren von Azure-Aktivitätsprotokollen in Log Analytics in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
@@ -320,7 +320,7 @@ Alternativ dazu können Sie auch Daten in Azure Sentinel aktivieren und integrie
 
 - [Verwalten von Warnungen in Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/learn/tutorial-response.md)
+- [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -685,7 +685,7 @@ Wenn Sie eine Integrationsdienstumgebung (Integration Service Environment, ISE) 
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen in Azure Logic Apps und anderen kritischen bzw. zugehörigen Ressourcen vorgenommen werden.
 
-- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 

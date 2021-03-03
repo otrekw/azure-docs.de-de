@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5d8b696b175c4ef841eef1a51f1d357d1781cba7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 37990cc4322717f090c7a35c62512ba0e1a04293
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018289"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576142"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Verwenden von Log Analytics für die Diagnosefunktion
 
@@ -39,23 +39,23 @@ Verbindungen, die Windows Virtual Desktop nicht erreichen, werden nicht in den D
 Mit Azure Monitor können Sie Windows Virtual Desktop-Daten analysieren und Leistungsindikatoren für virtuelle Computer (VM) überprüfen – und zwar im selben Tool. In diesem Artikel erfahren Sie mehr darüber, wie Sie die Diagnose für Ihre Windows Virtual Desktop-Umgebung aktivieren.
 
 >[!NOTE]
->Informationen zum Überwachen Ihrer VMs in Azure finden Sie unter [Überwachen von virtuellen Azure-Computern mit Azure Monitor](../azure-monitor/insights/monitor-vm-azure.md). Achten Sie außerdem darauf, die [Schwellenwerte für Leistungsindikatoren zu überprüfen](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds), um bessere Einblicke in die Benutzererfahrung und den Sitzungshost zu erhalten.
+>Informationen zum Überwachen Ihrer VMs in Azure finden Sie unter [Überwachen von virtuellen Azure-Computern mit Azure Monitor](../azure-monitor/vm/monitor-vm-azure.md). Achten Sie außerdem darauf, die [Schwellenwerte für Leistungsindikatoren zu überprüfen](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds), um bessere Einblicke in die Benutzererfahrung und den Sitzungshost zu erhalten.
 
 ## <a name="before-you-get-started"></a>Bevor Sie beginnen
 
 Bevor Sie Log Analytics verwenden können, müssen Sie einen Arbeitsbereich erstellen. Befolgen Sie hierzu die Anweisungen in einem der beiden folgenden Artikel:
 
-- Wenn Sie das Azure-Portal bevorzugen, informieren Sie sich unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/learn/quick-create-workspace.md).
-- Wenn Sie PowerShell bevorzugen, informieren Sie sich unter [Erstellen eines Log Analytics-Arbeitsbereichs mit PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md).
+- Wenn Sie das Azure-Portal bevorzugen, informieren Sie sich unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/logs/quick-create-workspace.md).
+- Wenn Sie PowerShell bevorzugen, informieren Sie sich unter [Erstellen eines Log Analytics-Arbeitsbereichs mit PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md).
 
-Gehen Sie anschließend wie unter [Verbinden von Windows-Computern mit Azure Monitor](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key) beschrieben vor, um die folgenden Informationen zu erhalten:
+Gehen Sie anschließend wie unter [Verbinden von Windows-Computern mit Azure Monitor](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key) beschrieben vor, um die folgenden Informationen zu erhalten:
 
 - Arbeitsbereich-ID
 - Primärschlüssel Ihres Arbeitsbereichs
 
 Diese Informationen werden später bei der Einrichtung benötigt.
 
-Überprüfen Sie die Berechtigungsverwaltung für Azure Monitor, um Benutzern, die Ihre Windows Virtual Desktop-Umgebung überwachen und verwalten, den Datenzugriff zu ermöglichen. Weitere Informationen finden Sie unter [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/platform/roles-permissions-security.md).
+Überprüfen Sie die Berechtigungsverwaltung für Azure Monitor, um Benutzern, die Ihre Windows Virtual Desktop-Umgebung überwachen und verwalten, den Datenzugriff zu ermöglichen. Weitere Informationen finden Sie unter [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/roles-permissions-security.md).
 
 ## <a name="push-diagnostics-data-to-your-workspace"></a>Pushen von Diagnosedaten an Ihren Arbeitsbereich
 
@@ -73,7 +73,7 @@ So richten Sie Log Analytics für ein neues Objekt ein:
 
     Welche Optionen auf der Seite „Diagnoseeinstellungen“ angezeigt werden, hängt von der Art des Objekts ab, das Sie gerade bearbeiten.
 
-    Wenn Sie z. B. die Diagnose für eine App-Gruppe aktivieren, werden Optionen zum Konfigurieren von Prüfpunkten, Fehlern und Verwaltungseinstellungen angezeigt. Bei Arbeitsbereichen wird mithilfe dieser Kategorien ein Feed konfiguriert, mit dem Benutzer nachverfolgt werden sollen, die die App-Liste abonnieren. Weitere Informationen zu Diagnoseeinstellungen finden Sie unter [Erstellen einer Diagnoseeinstellung zum Sammeln von Ressourcenprotokollen und -metriken in Azure](../azure-monitor/platform/diagnostic-settings.md).
+    Wenn Sie z. B. die Diagnose für eine App-Gruppe aktivieren, werden Optionen zum Konfigurieren von Prüfpunkten, Fehlern und Verwaltungseinstellungen angezeigt. Bei Arbeitsbereichen wird mithilfe dieser Kategorien ein Feed konfiguriert, mit dem Benutzer nachverfolgt werden sollen, die die App-Liste abonnieren. Weitere Informationen zu Diagnoseeinstellungen finden Sie unter [Erstellen einer Diagnoseeinstellung zum Sammeln von Ressourcenprotokollen und -metriken in Azure](../azure-monitor/essentials/diagnostic-settings.md).
 
      >[!IMPORTANT]
      >Denken Sie daran, die Diagnose für jedes Azure Resource Manager-Objekt zu aktivieren, das Sie überwachen möchten. Nachdem die Diagnose aktiviert wurde, sind die Daten für Aktivitäten verfügbar. Nach der ersten Einrichtung kann dies einige Stunden dauern.
@@ -83,7 +83,7 @@ So richten Sie Log Analytics für ein neues Objekt ein:
 6. Wählen Sie **Speichern** aus.
 
 >[!NOTE]
->Log Analytics bietet Ihnen die Möglichkeit, Daten an [Event Hubs](../event-hubs/event-hubs-about.md) zu streamen oder in einem Speicherkonto zu archivieren. Weitere Informationen zu dieser Funktion finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) und [Archivieren von Azure-Ressourcenprotokollen in einem Speicherkonto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
+>Log Analytics bietet Ihnen die Möglichkeit, Daten an [Event Hubs](../event-hubs/event-hubs-about.md) zu streamen oder in einem Speicherkonto zu archivieren. Weitere Informationen zu dieser Funktion finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md) und [Archivieren von Azure-Ressourcenprotokollen in einem Speicherkonto](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage).
 
 ## <a name="how-to-access-log-analytics"></a>So greifen Sie auf Log Analytics zu
 
@@ -134,9 +134,9 @@ Greifen Sie über die Azure Monitor Log Analytics-Benutzeroberfläche auf Beispi
 1. Wählen Sie **Windows Virtual Desktop** aus, um verfügbare Abfragen zu überprüfen.
 1. Wählen Sie **Ausführen** aus, um die ausgewählte Abfrage auszuführen.
 
-Erfahren Sie mehr über die Benutzeroberfläche der Beispielabfrage in [Gespeicherte Abfragen in Azure Monitor Log Analytics](../azure-monitor/log-query/example-queries.md).
+Erfahren Sie mehr über die Benutzeroberfläche der Beispielabfrage in [Gespeicherte Abfragen in Azure Monitor Log Analytics](../azure-monitor/logs/example-queries.md).
 
-Mit der folgenden Abfrageliste können Sie Verbindungsinformationen oder Probleme für einen einzelnen Benutzer überprüfen. Sie können diese Abfragen im [Log Analytics-Abfrage-Editor](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query) ausführen. Ersetzen Sie für jede Abfrage `userupn` durch den UPN des Benutzers, den Sie suchen möchten.
+Mit der folgenden Abfrageliste können Sie Verbindungsinformationen oder Probleme für einen einzelnen Benutzer überprüfen. Sie können diese Abfragen im [Log Analytics-Abfrage-Editor](../azure-monitor/logs/log-analytics-tutorial.md#write-a-query) ausführen. Ersetzen Sie für jede Abfrage `userupn` durch den UPN des Benutzers, den Sie suchen möchten.
 
 
 So suchen Sie alle Verbindungen für einen einzelnen Benutzer:

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: d987797c2c25f685a3c9250afeb17cec3ad3cb2e
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 8444ae08aa2c25c20723b2f8c571422af3b24bc8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369544"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736677"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Tutorial: Integrieren von Power BI in die Textanalyse von Cognitive Services
 
@@ -47,7 +47,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!NOTE]
 > Power BI kann Daten aus einer Vielzahl von Quellen verarbeiten, z.B. Facebook oder einer SQL-Datenbank. Weitere Informationen dazu finden Sie unter [Facebook-Integration](https://powerbi.microsoft.com/integrations/facebook/) und [SQL Server-Integration](https://powerbi.microsoft.com/integrations/sql-server/).
 
-Klicken Sie im Hauptfenster von Power BI Desktop auf das Menüband **Start**. Öffnen Sie in der Gruppe **Externe Daten** des Menübands das Dropdownmenü **Daten abrufen** , und klicken Sie auf **Text/CSV**.
+Klicken Sie im Hauptfenster von Power BI Desktop auf das Menüband **Start**. Öffnen Sie in der Gruppe **Externe Daten** des Menübands das Dropdownmenü **Daten abrufen**, und klicken Sie auf **Text/CSV**.
 
 ![[Die Schaltfläche „Daten abrufen“]](../media/tutorials/power-bi/get-data-button.png)
 
@@ -89,7 +89,7 @@ Sie können auch den Filter „Leere entfernen“ verwenden, um leere Nachrichte
 ## <a name="understand-the-api"></a>Grundlegendes zur API
 <a name="UnderstandingAPI"></a>
 
-Die [Schlüsselbegriffs-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) des Textanalysediensts kann bis zu tausend Textdokumente pro HTTP-Anforderung verarbeiten. Power BI bevorzugt die Verarbeitung einzelner Datensätze. Deshalb enthalten Ihre Aufrufe an die API in diesem Tutorial jeweils nur ein Dokument. Die Schlüsselbegriffs-API erfordert die folgenden Felder für jedes verarbeitete Dokument.
+Die [Schlüsselbegriffs-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/operations/KeyPhrases) des Textanalysediensts kann bis zu tausend Textdokumente pro HTTP-Anforderung verarbeiten. Power BI bevorzugt die Verarbeitung einzelner Datensätze. Deshalb enthalten Ihre Aufrufe an die API in diesem Tutorial jeweils nur ein Dokument. Die Schlüsselbegriffs-API erfordert die folgenden Felder für jedes verarbeitete Dokument.
 
 | Feld | BESCHREIBUNG |
 | - | - |
@@ -107,11 +107,11 @@ Nun sind Sie bereit zum Erstellen der benutzerdefinierte Funktion, die Power BI 
 
 Stellen Sie sicher, dass in Power BI Desktop nach wie vor das Fenster des Abfrage-Editors geöffnet ist. Klicken Sie anderenfalls auf das Menüband **Start** und in der Gruppe **Externe Daten** auf **Abfragen bearbeiten**.
 
-Öffnen Sie nun im Menüband **Start** in der Gruppe **Neue Abfrage** das Dropdownmenü **Neue Quelle** , und wählen Sie **Leere Abfrage** aus. 
+Öffnen Sie nun im Menüband **Start** in der Gruppe **Neue Abfrage** das Dropdownmenü **Neue Quelle**, und wählen Sie **Leere Abfrage** aus. 
 
 Der Abfrageliste wird eine neue Abfrage mit dem Standardnamen `Query1` hinzugefügt. Doppelklicken Sie auf diesen Eintrag, und nennen Sie ihn `KeyPhrases`.
 
-Öffnen Sie jetzt das Fenster **Erweiterter Editor** , indem Sie in der Gruppe **Abfrage** des Menübands **Start** auf „Erweiterter Editor“ klicken. Löschen Sie den Code, der sich bereits in diesem Fenster befindet, und fügen Sie den folgenden Code ein. 
+Öffnen Sie jetzt das Fenster **Erweiterter Editor**, indem Sie in der Gruppe **Abfrage** des Menübands **Start** auf „Erweiterter Editor“ klicken. Löschen Sie den Code, der sich bereits in diesem Fenster befindet, und fügen Sie den folgenden Code ein. 
 
 > [!NOTE]
 > Ersetzen Sie den unten angegebenen Beispielendpunkt (der `<your-custom-subdomain>` enthält) durch den für Ihre Textanalyseressource generierten Endpunkt. Sie finden diesen Endpunkt durch Anmeldung beim [Azure-Portal](https://azure.microsoft.com/features/azure-portal/), Auswählen Ihres Textanalyseabonnements und Auswählen von `Quick start`.
@@ -160,7 +160,7 @@ Nachdem Sie das Dialogfeld „Benutzerdefinierte Funktion aufrufen“ geschlosse
 
 ![[Banner zu Anmeldeinformationen]](../media/tutorials/power-bi/credentials-banner.png)
 
-Klicken Sie auf **Anmeldeinformationen bearbeiten** , stellen Sie sicher, dass `Anonymous` im Dialogfeld ausgewählt ist, und klicken Sie dann auf **Verbinden**. 
+Klicken Sie auf **Anmeldeinformationen bearbeiten**, stellen Sie sicher, dass `Anonymous` im Dialogfeld ausgewählt ist, und klicken Sie dann auf **Verbinden**. 
 
 > [!NOTE]
 > Sie wählen `Anonymous` aus, da der Textanalysedienst Sie über Ihren Zugriffsschlüssel authentifiziert, sodass Power BI für die HTTP-Anforderung selbst keine Anmeldeinformationen angeben muss.
@@ -174,14 +174,14 @@ Als Nächstes kann ein Banner angezeigt werden, der Sie auffordert, Informatione
 
 ![[Datenschutz-Banner]](../media/tutorials/power-bi/privacy-banner.png)
 
-Klicken Sie auf **Weiter** , und wählen Sie für jede Datenquelle im Dialogfeld `Public` aus. Klicken Sie anschließend auf **Speichern**.
+Klicken Sie auf **Weiter**, und wählen Sie für jede Datenquelle im Dialogfeld `Public` aus. Klicken Sie anschließend auf **Speichern**.
 
 ![[Festlegen des Datenschutzes der Datenquelle]](../media/tutorials/power-bi/privacy-dialog.png)
 
 ## <a name="create-the-word-cloud"></a>Erstellen der Wortwolke
 <a name="WordCloud"></a>
 
-Wenn Sie mit allen angezeigten Bannern fertig sind, klicken Sie auf dem Menüband „Start“ auf **Schließen und übernehmen** , um den Abfrage-Editor zu schließen.
+Wenn Sie mit allen angezeigten Bannern fertig sind, klicken Sie auf dem Menüband „Start“ auf **Schließen und übernehmen**, um den Abfrage-Editor zu schließen.
 
 Power BI Desktop braucht einen Moment, um die erforderlichen HTTP-Anforderungen zu stellen. Für jede Zeile in der Tabelle enthält die neue Spalte `keyphrases` die von der Schlüsselbegriffs-API im Text erkannten Schlüsselbegriffe. 
 
@@ -200,7 +200,7 @@ Klicken Sie zunächst im Visualisierungsbereich auf das Wortwolkensymbol.
 
 Im Arbeitsbereich wird ein neuer Bericht angezeigt. Ziehen Sie das Feld `keyphrases` aus den Bereich „Felder“ in das Feld „Kategorie“ im Visualisierungsbereich. Die Wortwolke wird innerhalb des Berichts angezeigt.
 
-Wechseln Sie nun zur Seite „Format“ des Visualisierungsbereichs. Aktivieren Sie in der Kategorie „Stoppwörter“ die Option **Standardstoppwörter** , um kurze häufige Wörter wie „von“ aus der Wolke auszuschließen. 
+Wechseln Sie nun zur Seite „Format“ des Visualisierungsbereichs. Aktivieren Sie in der Kategorie „Stoppwörter“ die Option **Standardstoppwörter**, um kurze häufige Wörter wie „von“ aus der Wolke auszuschließen. 
 
 ![[Aktivieren von Standardstoppwörtern]](../media/tutorials/power-bi/default-stop-words.png)
 

@@ -10,16 +10,14 @@ ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 1e5b0e88c4a84e27d662b2f2c4b39b14538af92a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e99af324e02e81e4b6888ee0e054ef466df899c1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126796"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661545"
 ---
 # <a name="quickstart-use-the-communication-services-calling-client-library"></a>Schnellstart: Verwenden der Communication Services-Clientbibliothek „Calling“
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Steigen Sie in Azure Communication Services ein, indem Sie die Communication Services-Clientbibliothek „Calling“ nutzen, um Ihrer App Sprach- und Videoanrufe hinzuzufügen.
 
@@ -37,7 +35,7 @@ Steigen Sie in Azure Communication Services ein, indem Sie die Communication Ser
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind. Erfahren Sie mehr über das [Bereinigen von Ressourcen](../create-communication-resource.md#clean-up-resources).
+Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind. Weitere Informationen zum Bereinigen von Ressourcen finden Sie [hier](../create-communication-resource.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

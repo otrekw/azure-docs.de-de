@@ -7,15 +7,15 @@ author: bwren
 ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
-ms.openlocfilehash: e790486758d6a5e3181df01f85e1213cca3fa12d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 67d03636b118db71502a6245e60f71c94afdddf6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597814"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701007"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Reagieren auf Ereignisse mit Azure Monitor-Warnungen
-Mit Warnungen in Azure Monitor können wichtige Informationen in Ihrem Log Analytics-Repository identifiziert werden. Sie werden durch Warnungsregeln erstellt, die automatisch in regelmäßigen Abständen Protokollsuchen ausführen. Wenn Ergebnisse der Protokollsuche mit bestimmten Kriterien übereinstimmen, wird ein Warnungsdatensatz erstellt, der zur Ausführung einer automatischen Antwort konfiguriert werden kann.  Dieses Tutorial ist eine Fortsetzung des Tutorials [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](../learn/tutorial-logs-dashboards.md).   
+Mit Warnungen in Azure Monitor können wichtige Informationen in Ihrem Log Analytics-Repository identifiziert werden. Sie werden durch Warnungsregeln erstellt, die automatisch in regelmäßigen Abständen Protokollsuchen ausführen. Wenn Ergebnisse der Protokollsuche mit bestimmten Kriterien übereinstimmen, wird ein Warnungsdatensatz erstellt, der zur Ausführung einer automatischen Antwort konfiguriert werden kann.  Dieses Tutorial ist eine Fortsetzung des Tutorials [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](../visualize/tutorial-logs-dashboards.md).   
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -31,7 +31,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 ## <a name="create-alerts"></a>Erstellen von Warnungen
 Warnungen werden von Warnungsregeln in Azure Monitor erstellt und können in regelmäßigen Abständen automatisch gespeicherte Abfragen oder benutzerdefinierte Protokollsuchen ausführen.  Sie können Warnungen auf der Grundlage bestimmter Leistungsmetriken oder des Entstehens bestimmter Ereignisse, der Abwesenheit eines Ereignisses oder des Entstehens einer Anzahl von Ereignissen innerhalb eines bestimmten Zeitfensters erstellen.  Warnungen können Sie beispielsweise benachrichtigen, wenn die durchschnittliche CPU-Auslastung einen bestimmten Schwellenwert überschreitet, ein fehlendes Update ermittelt wird oder ein Ereignis generiert wird, wenn ein bestimmter Windows-Dienst oder Linux-Daemon nicht ausgeführt wird.  Wenn die Ergebnisse der Protokollsuche bestimmte Kriterien erfüllen, wird eine Warnung erstellt. Die Regel kann dann automatisch eine oder mehrere Aktionen ausführen, um Sie über die Warnung zu informieren oder einen anderen Prozess aufzurufen. 
 
-Im folgenden Beispiel erstellen Sie eine Warnungsregel vom Typ „Metrische Maßeinheit“, die auf der Abfrage *Azure-VMs – Prozessorauslastung* basiert, die unter [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](../learn/tutorial-logs-dashboards.md) gespeichert wurde.  Eine Warnung wird für jeden virtuellen Computer erstellt, der einen Schwellenwert von 90 Prozent überschreitet.  
+Im folgenden Beispiel erstellen Sie eine Warnungsregel vom Typ „Metrische Maßeinheit“, die auf der Abfrage *Azure-VMs – Prozessorauslastung* basiert, die unter [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](../visualize/tutorial-logs-dashboards.md) gespeichert wurde.  Eine Warnung wird für jeden virtuellen Computer erstellt, der einen Schwellenwert von 90 Prozent überschreitet.  
 
 1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
 2. Klicken Sie im linken Bereich auf **Warnungen** und dann oben auf der Seite auf **Neue Warnungsregel**, um eine neue Warnung zu erstellen.<br><br> ![Erstellen einer neuen Warnungsregel](./media/tutorial-response/alert-rule-02.png)<br>
@@ -69,4 +69,4 @@ In diesem Tutorial haben Sie gelernt, wie Warnungsregeln ein Problem proaktiv er
 Unter diesem Link finden Sie vordefinierte Log Analytics-Skriptbeispiele.  
 
 > [!div class="nextstepaction"]
-> [Log Analytics-Skriptbeispiele](../samples/powershell-samples.md)
+> [Log Analytics-Skriptbeispiele](../powershell-samples.md)

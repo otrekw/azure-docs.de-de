@@ -4,14 +4,14 @@ description: Automatisieren der Verwaltung und Konfiguration der intelligenten E
 ms.topic: conceptual
 author: harelbr
 ms.author: harelbr
-ms.date: 06/26/2019
+ms.date: 02/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 169ad40e32f688ae20a9d02f61db161844b1254a
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e3a7b71cd8975957754ba014ecc700484c27a6d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890512"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726120"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Verwalten von intelligenten Erkennungsregeln von Azure Application Insights mit Azure Resource Manager-Vorlagen
 
@@ -21,8 +21,8 @@ Diese Methode kann bei der Bereitstellung neuer Application Insights-Ressourcen 
 ## <a name="smart-detection-rule-configuration"></a>Konfiguration der intelligenten Erkennungsregel
 
 Sie können die folgenden Einstellungen für intelligente Erkennungsregel konfigurieren:
-- Wenn die Regel aktiviert ist (der Standardwert ist **true** .)
-- Ob bei einer Erkennung E-Mails an Benutzer gesendet werden sollen, denen die Rollen [Überwachungsleser](../../role-based-access-control/built-in-roles.md#monitoring-reader) und [Überwachungsmitwirkender](../../role-based-access-control/built-in-roles.md#monitoring-contributor) zugewiesen sind (Standardwert ist **true** ).
+- Wenn die Regel aktiviert ist (der Standardwert ist **true**.)
+- Ob bei einer Erkennung E-Mails an Benutzer gesendet werden sollen, denen die Rollen [Überwachungsleser](../../role-based-access-control/built-in-roles.md#monitoring-reader) und [Überwachungsmitwirkender](../../role-based-access-control/built-in-roles.md#monitoring-contributor) zugewiesen sind (Standardwert ist **true**).
 - Alle weiteren E-Mail-Empfänger, die eine Benachrichtigung erhalten sollen, wenn eine Erkennung gefunden wird.
     -  Die E-Mail-Konfiguration ist für Regeln für die intelligente Erkennung, die als _Vorschauversion_ markiert sind, nicht verfügbar.
 
@@ -135,7 +135,7 @@ Stellen Sie sicher, dass Sie den Application Insights-Ressourcennamen ersetzen u
 Im Folgenden finden Sie eine Tabelle mit den Namen der intelligenten Erkennungsregeln, wie sie im Portal angezeigt werden, zusammen mit ihren internen Namen, die in der Azure Resource Manager-Vorlage verwendet werden sollten.
 
 > [!NOTE]
-> Intelligente Erkennungsregeln, die als _Vorschauversion_ markiert sind, unterstützen keine E-Mail-Benachrichtigungen. Aus diesem Grund können Sie nur die _enabled_ -Eigenschaft für diese Regeln festlegen. 
+> Intelligente Erkennungsregeln, die als _Vorschauversion_ markiert sind, unterstützen keine E-Mail-Benachrichtigungen. Aus diesem Grund können Sie nur die _enabled_-Eigenschaft für diese Regeln festlegen. 
 
 | Name der Regel im Azure-Portal | Interner Name
 |:---|:---|
@@ -152,7 +152,7 @@ Im Folgenden finden Sie eine Tabelle mit den Namen der intelligenten Erkennungsr
 
 ### <a name="failure-anomalies-alert-rule"></a>Warnungsregel für Fehleranomalien
 
-Diese Azure Resource Manager-Vorlage zeigt, wie eine Warnungsregel für Fehleranomalien mit dem Schweregrad 2 konfiguriert wird. Diese neue Version der Warnungsregel für Fehleranomalien ist Teil der neuen Azure-Warnungsplattform und ersetzt die klassische Version, die im Rahmen der [Einstellung klassischer Warnungen](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/) eingestellt wird.
+Diese Azure Resource Manager-Vorlage zeigt, wie eine Warnungsregel für Fehleranomalien mit dem Schweregrad 2 konfiguriert wird.
 
 > [!NOTE]
 > Fehleranomalien werden in einem globalen Dienst verarbeitet, daher wird die Regel für den globalen Speicherort erstellt.

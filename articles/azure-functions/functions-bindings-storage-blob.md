@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: e56d1add36d4296526348d12d7c0b6eb03108f27
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 4ec21086ee94610be1d9cf5da7b64c837b5311a9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104358"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381527"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Übersicht zu Azure Blob Storage-Bindungen für Azure Functions
 
@@ -34,6 +34,13 @@ Das Arbeiten mit Triggern und Bindungen erfordert, dass Sie auf das entsprechend
 | C#-Skript, Java, JavaScript, Python, PowerShell | Registrieren des [Erweiterungspaket]          | Die [Erweiterung für Azure-Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) wird zur Verwendung mit Visual Studio Code empfohlen. |
 | C#-Skript (nur online im Azure-Portal)         | Hinzufügen einer Bindung                            | Informationen zum Aktualisieren vorhandener Bindungserweiterungen, ohne Ihre Funktions-App erneut veröffentlichen zu müssen, finden Sie unter [Aktualisieren Ihrer Erweiterungen]. |
 
+#### <a name="storage-extension-5x-and-higher"></a>Storage-Erweiterung 5.x und höher
+
+Eine neue Version der Storage-Bindungserweiterung ist als [NuGet-Vorschaupaket](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.2) verfügbar. Diese Vorschau bietet die Möglichkeit, eine [Verbindung mit einer Identität anstelle eines Geheimnisses](./functions-reference.md#configure-an-identity-based-connection) herzustellen. Für .NET-Anwendungen werden auch die Typen geändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus `WindowsAzure.Storage` und `Microsoft.Azure.Storage` durch neuere Typen aus [Azure.Storage.Blobs](/dotnet/api/azure.storage.blobs) ersetzt.
+
+> [!NOTE]
+> Das Vorschaupaket ist nicht in einem Erweiterungspaket enthalten und muss manuell installiert werden. Fügen Sie für .NET-Apps einen Verweis auf das Paket hinzu. Informationen zu allen anderen App-Typen finden Sie unter [Aktualisieren Ihrer Erweiterungen].
+
 [core tools]: ./functions-run-local.md
 [Erweiterungspaket]: ./functions-bindings-register.md#extension-bundles
 [NuGet-Paket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage
@@ -45,6 +52,28 @@ Das Arbeiten mit Triggern und Bindungen erfordert, dass Sie auf das entsprechend
 Functions 1.x-Apps enthalten automatisch einen Verweis auf das NuGet-Paket, Version 2.x, [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs).
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
+
+## <a name="hostjson-settings"></a>Einstellungen für „host.json“
+
+> [!NOTE]
+> Dieser Abschnitt gilt nicht für Erweiterungsversionen vor 5.0.0. Für diese Versionen gibt es keine globalen Konfigurationseinstellungen für Blobs.
+
+In diesem Abschnitt werden die globalen Konfigurationseinstellungen beschrieben, die für diese Bindung verfügbar sind, wenn [Erweiterungsversion 5.0.0 und höher](#storage-extension-5x-and-higher) verwendet wird. Die unten gezeigte Beispieldatei *host.json* enthält nur die Einstellungen für Version 2.x oder höher Versionen für diese Bindung. Weitere Informationen zu globalen Konfigurationseinstellungen in Functions-Version 2.x oder höher finden Sie unter [host.json-Referenz für Azure Functions](functions-host-json.md).
+
+```json
+{
+    "version": "2.0",
+    "extensions": {
+        "blobs": {
+            "maxDegreeOfParallelism": "4"
+        }
+    }
+}
+```
+
+|Eigenschaft  |Standard | BESCHREIBUNG |
+|---------|---------|---------|
+|maxDegreeOfParallelism|8 * (Anzahl verfügbarer Kerne)|Die ganzzahlige Anzahl gleichzeitiger Aufrufe, die für jede durch ein Blob ausgelöste Funktion zulässig sind. Der minimal zulässige Wert ist 1.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

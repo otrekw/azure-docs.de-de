@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: 747cc88cdea59017483245b59e4b2c56c4b06a40
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c95a75ef48aa9e3db070c6c237f913fabbe893fa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032931"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388208"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Auswerten der Ergebnisse von Experimenten des automatisierten maschinellen Lernens
 
@@ -192,7 +192,7 @@ explained_variance|Die erläuterte Varianz misst das Ausmaß, in dem ein Modell 
 mean_absolute_error|Der mittlere absolute Fehler ist der erwartete Wert des absoluten Differenzwerts zwischen dem Ziel und der Vorhersage.<br><br> **Ziel**: Je näher an 0, desto besser <br> **Bereich:** [0, inf) <br><br> Typen: <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`, mean_absolute_error geteilt durch den Bereich der Daten. | [Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|
 mean_absolute_percentage_error|Der mittlere absolute prozentuale Fehler (Mean Absolute Percentage Error, MAPE) ist ein Maß für die durchschnittliche Differenz zwischen einem vorhergesagten Wert und dem tatsächlichen Wert.<br><br> **Ziel**: Je näher an 0, desto besser <br> **Bereich:** [0, inf) ||
 median_absolute_error|Der mittlere absolute Fehler ist der Median aller absoluten Differenzen zwischen dem Ziel und der Vorhersage. Dieser Verlust ist stabil in Bezug auf Ausreißer.<br><br> **Ziel**: Je näher an 0, desto besser <br> **Bereich:** [0, inf)<br><br>Typen: <br> `median_absolute_error`<br> `normalized_median_absolute_error`: median_absolute_error geteilt durch den Bereich der Daten. |[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|
-r2_score|R^2 ist der Ermittlungskoeffizient bzw. die prozentuale Reduzierung der quadratischen Fehler im Vergleich zu einem Baselinemodell, das den Mittelwert ausgibt. <br> <br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** (-inf, 1]|[Berechnung](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
+r2_score|R^2 ist der Ermittlungskoeffizient bzw. die prozentuale Reduzierung der quadratischen Fehler im Vergleich zu einem Baselinemodell, das den Mittelwert ausgibt. <br> <br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [-1, 1] <br><br> Hinweis: R^2 umfasst häufig den Bereich (-inf, 1], negative Werte werden beim automatisierten maschinellen Lernen aber für sehr schlechte Modelle auf „-1“ beschnitten.|[Berechnung](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
 root_mean_squared_error |Die Wurzel aus dem mittleren quadratischen Fehler (Root Mean Squared Error, RMSE) ist die Quadratwurzel der erwarteten quadratischen Differenz zwischen dem Ziel und der Vorhersage. Für einen ausgewogenen Schätzer ist der RMSE gleich der Standardabweichung.<br> <br> **Ziel**: Je näher an 0, desto besser <br> **Bereich:** [0, inf)<br><br>Typen:<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`: root_mean_squared_error geteilt durch den Bereich der Daten. |[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|
 root_mean_squared_log_error|Die Wurzel aus dem mittleren quadratischen logarithmischen Fehler ist die Quadratwurzel des erwarteten quadratischen logarithmischen Fehlers.<br><br>**Ziel**: Je näher an 0, desto besser <br> **Bereich:** [0, inf) <br> <br>Typen: <br>`root_mean_squared_log_error` <br> `normalized_root_mean_squared_log_error`: root_mean_squared_log_error geteilt durch den Bereich der Daten.  |[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|
 spearman_correlation| Die Spearman-Korrelation ist ein nicht parametrisches Maß für die Monotonie der Beziehung zwischen zwei Datasets. Im Gegensatz zur Pearson-Korrelation geht die Spearman-Korrelation nicht davon aus, dass beide Datasets normal verteilt sind. Wie bei anderen Korrelationskoeffizienten variiert Spearman zwischen -1 und 1, wobei 0 für keine Korrelation steht. Korrelationen von -1 oder 1 implizieren eine exakt monotone Beziehung. <br><br> Bei Spearman handelt es sich um eine Korrelationsmetrik der Rangfolge, was bedeutet, dass Änderungen an vorhergesagten oder tatsächlichen Werten das Spearman-Ergebnis nicht verändern, wenn sie die Rangfolge der vorhergesagten oder tatsächlichen Werte nicht verändern.<br> <br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [-1, 1]|[Berechnung](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|
@@ -234,10 +234,7 @@ In diesem Beispiel ist zu beachten, dass das bessere Modell eine Linie für „V
 
 Während Metriken und Diagramme zur Modellauswertung gut geeignet sind, um die allgemeine Qualität eines Modells zu messen, ist die Überprüfung, welche Datasetfunktionen ein Modell für seine Vorhersagen verwendet hat, für eine verantwortungsvolle KI unerlässlich. Deshalb bietet das automatisierte maschinelle Lernen ein Dashboard zur Modellinterpretation, um die relativen Beiträge von Datasetfunktionen zu messen und zu melden.
 
-![Featurerelevanz](./media/how-to-understand-automated-ml/how-to-feature-importance.gif)
-
 So zeigen Sie das Dashboard für die Interpretierbarkeit im Studio an
-
 1. [Melden Sie sich beim Studio an](https://ml.azure.com/), und navigieren Sie zu Ihrem Arbeitsbereich.
 2. Wählen Sie im linken Menü die Option **Experimente** aus.
 3. Wählen Sie Ihr Experiment aus der Liste der Experimente aus.
@@ -246,10 +243,11 @@ So zeigen Sie das Dashboard für die Interpretierbarkeit im Studio an
 6. Auf der Registerkarte **Erläuterungen** sehen Sie möglicherweise, dass bereits eine Erläuterung erstellt wurde, wenn das Modell das beste war.
 7. Um eine neue Erläuterung zu erstellen, wählen Sie **Modell erklären** und wählen dann die Remotecompute-Instanz aus, mit der die Erläuterungen berechnet werden sollen.
 
+[Weitere Informationen zu Modellerklärungen beim automatisierten maschinellen Lernen](how-to-machine-learning-interpretability-automl.md)
+
 > [!NOTE]
 > Das ForecastTCN-Modell wird derzeit nicht durch Erläuterungen zum automatisierten maschinellen Lernen unterstützt und andere Vorhersagemodelle haben möglicherweise nur begrenzten Zugriff auf Interpretationstools.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Probieren Sie die Beispielnotebooks für die [Modellerklärung zum automatisierten Machine Learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) aus.
-* Erfahren Sie mehr über [Verantwortungsvolle KI-Angebote für automatisiertes maschinelles Lernen](how-to-machine-learning-interpretability-automl.md).
 * Bei Fragen zum automatisierten maschinellen Lernen wenden Sie sich an askautomatedml@microsoft.com.

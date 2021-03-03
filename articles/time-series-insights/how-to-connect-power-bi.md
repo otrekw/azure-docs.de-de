@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: b4ed5a419df97f98b883a07825184122945e092e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 38403eed56dc718afdfce13375dd2662beb13eb6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879560"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374166"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Visualisieren der Daten von Azure Time Series Insights in Power BI
 
@@ -37,9 +37,7 @@ Lesen Sie den Artikel [Gewähren von Datenzugriff für eine Umgebung](./concepts
 > [!IMPORTANT]
 > * Führen Sie den Download und die Installation der aktuellen Version von [Power BI Desktop](https://powerbi.microsoft.com/downloads/) durch. Vergewissern Sie sich, dass Sie mindestens die Version vom Dezember 2020 (2.88.321.0) von Power BI Desktop installiert haben, damit Sie die Schritte in diesem Artikel ausführen können. 
 
-## <a name="connect-data-from-azure-time-series-insights-to-power-bi"></a>Verbinden der Daten von Azure Time Series Insights mit Power BI
-
-### <a name="1-export-data-into-power-bi-desktop"></a>1. Exportieren Sie Daten in Power BI Desktop.
+## <a name="export-data-from-azure-time-series-insights-into-power-bi-desktop"></a>Exportieren der Daten von Azure Time Series Insights in Power BI-Desktop
 
 Erste Schritte:
 
@@ -53,37 +51,36 @@ Erste Schritte:
    * **Datenformat:** Wählen Sie aus, ob Sie **aggregierte Daten** oder **Rohereignisse** nach Power BI exportieren möchten. 
 
        > [!NOTE]
-       > * Wenn Sie Rohereignisse exportieren, können Sie diese Daten später in Power BI aggregieren. Nach dem Export von aggregierten Daten ist die Umstellung auf Rohdaten in Power BI nicht mehr möglich. 
-       > * Für Daten der Ebene „Rohereignisse“ gilt ein Grenzwert von 250.000 für die Ereignisanzahl.
+       > Wenn Sie Rohereignisse exportieren, können Sie diese Daten später in Power BI aggregieren. Nach dem Export von aggregierten Daten ist die Umstellung auf Rohdaten in Power BI nicht mehr möglich. Für Daten der Ebene „Rohereignisse“ gilt ein Grenzwert von 250.000 für die Ereignisanzahl.
 
    * **Zeitbereich**: Geben Sie an, ob in Power BI ein **fester** Zeitbereich oder die **aktuellen** Daten angezeigt werden sollen. Bei Auswahl eines festen Zeitraums werden die Daten nach Power BI exportiert, die im von Ihnen angegebenen Suchzeitraum enthalten sind. Die Auswahl des aktuellen Zeitbereichs bedeutet, dass für Power BI die aktuellen Daten für den von Ihnen gewählten Suchzeitraum exportiert werden. (Wenn Sie beispielsweise eine beliebige Stunde mit Daten und die Einstellung „Aktuell“ auswählen, werden vom Power BI-Connector immer Abfragen für die Daten der aktuellen Stunde durchgeführt.)
   
-   * **Speichertyp**: Wählen Sie aus, ob Ihre ausgewählte Abfrage für **Warm Storage** oder **Cold Storage** durchgeführt werden soll. 
+   * **Speichertyp**: Wählen Sie aus, ob Ihre ausgewählte Abfrage für **Warm Storage** oder **Cold Storage** durchgeführt werden soll. Wenn Sie einen Bereich ausgewählt haben, der sich sowohl über den Cold Storage als auch den Warm Storage erstreckt, wird die Abfrage standardmäßig an den Cold Storage weitergeleitet, da der Warm Storage nur die neuesten Daten enthält. Das manuelle Ändern des storeType-Parameters ist zulässig, wird jedoch nicht empfohlen. 
 
-    > [!TIP]
-    > * Vom Azure Time Series Insights-Explorer werden die empfohlenen Parameter anhand der Daten, die Sie für den Export festgelegt haben, automatisch ausgewählt. 
+    > [!TIP] 
+    > Vom Azure Time Series Insights-Explorer werden die empfohlenen Parameter anhand der Suchspanne und der Datenansicht, die Sie für den Export festgelegt haben, automatisch ausgewählt. 
 
 1. Wählen Sie die Option **Abfrage in Zwischenablage kopieren** aus, nachdem Sie Ihre Einstellungen konfiguriert haben.
 
     [![Azure Time Series Insights-Explorer: Modales Dialogfeld](media/how-to-connect-power-bi/choose-explorer-parameters.jpg)](media/how-to-connect-power-bi/choose-explorer-parameters.jpg#lightbox)
 
-2. Starten Sie Power BI Desktop.
+1. Starten Sie Power BI Desktop.
    
-3. Wählen Sie in Power BI Desktop auf der Registerkarte **Start** die Option **Daten abrufen** in der oberen linken Ecke und anschließend **Mehr** aus.
+1. Wählen Sie in Power BI Desktop auf der Registerkarte **Start** die Option **Daten abrufen** in der oberen linken Ecke und anschließend **Mehr** aus.
 
     [![Abrufen von Daten in Power BI](media/how-to-connect-power-bi/get-data-power-bi.jpg)](media/how-to-connect-power-bi/get-data-power-bi.jpg#lightbox)
 
-4. Suchen Sie nach **Azure Time Series Insights**, und wählen Sie **Azure Time Series Insights (Beta)** und dann **Verbinden** aus.
+1. Suchen Sie nach **Azure Time Series Insights**, und wählen Sie **Azure Time Series Insights (Beta)** und dann **Verbinden** aus.
 
     [![Verbinden von Power BI mit Azure Time Series Insights](media/how-to-connect-power-bi/select-tsi-connector.jpg)](media/how-to-connect-power-bi/select-tsi-connector.jpg#lightbox)
 
     Alternativ können Sie auch zur Registerkarte **Azure** navigieren, **Azure Time Series Insights (Beta)** und dann **Verbinden** auswählen.
 
-5. Fügen Sie die Abfrage, die Sie aus dem Azure Time Series Insights-Explorer kopiert haben, in das Feld **Benutzerdefinierte Abfrage** ein, und wählen Sie dann **OK** aus.
+1. Fügen Sie die Abfrage, die Sie aus dem Azure Time Series Insights-Explorer kopiert haben, in das Feld **Benutzerdefinierte Abfrage** ein, und wählen Sie dann **OK** aus.
 
     [![Einfügen der benutzerdefinierten Abfrage und Auswählen von „OK“](media/how-to-connect-power-bi/custom-query-load.png)](media/how-to-connect-power-bi/custom-query-load.png#lightbox)  
 
-6.  Die Datentabelle wird jetzt geladen. Drücken Sie **Laden**, um sie in Power BI zu laden. Falls Sie Transformationen für die Daten durchführen möchten, haben Sie jetzt die Möglichkeit dazu, indem Sie auf **Daten transformieren** klicken. Sie können Ihre Daten auch transformieren, nachdem sie geladen wurden.
+1.  Die Datentabelle wird jetzt geladen. Drücken Sie **Laden**, um sie in Power BI zu laden. Falls Sie Transformationen für die Daten durchführen möchten, haben Sie jetzt die Möglichkeit dazu, indem Sie auf **Daten transformieren** klicken. Sie können Ihre Daten auch transformieren, nachdem sie geladen wurden.
 
     [![Überprüfen der Daten in der Tabelle und Auswählen von „Laden“](media/how-to-connect-power-bi/review-the-loaded-data-table.png)](media/how-to-connect-power-bi/review-the-loaded-data-table.png#lightbox)  
 

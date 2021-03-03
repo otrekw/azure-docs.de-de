@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5bfa4bf8a9d20cc1a7baf1b5432e68501d65a509
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: a848c7c15bf786ba26b8a1fdb1dab41b9aa20b8d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221779"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575777"
 ---
 # <a name="integrate-update-management-with-microsoft-endpoint-configuration-manager"></a>Integrieren der Updateverwaltung mit Microsoft Endpoint Configuration Manager
 
@@ -25,7 +25,7 @@ Sie können Berichte für verwaltete Windows-Server erstellen und die Server akt
 
 * Sie müssen Ihrem Automation-Konto die [Azure Automation-Updateverwaltung](overview.md) hinzugefügt haben.
 * Windows-Server, die zurzeit von der Microsoft Endpoint Configuration Manager-Umgebung verwaltet werden, müssen auch Berichte an den Log Analytics-Arbeitsbereich übermitteln, in dem auch die Updateverwaltung aktiviert ist.
-* Dieses Feature ist in der aktuellen Branchversion 1606 (und höher) von Microsoft Endpoint Configuration Manager aktiviert. Informationen zum Integrieren der zentralen Microsoft Endpoint Configuration Manager-Verwaltungswebsite oder einer eigenständigen primären Website mit Azure Monitor-Protokollen und zum Importieren von Sammlungen finden Sie unter [Herstellen einer Verbindung zwischen Configuration Manager und Azure Monitor-Protokollen](../../azure-monitor/platform/collect-sccm.md).  
+* Dieses Feature ist in der aktuellen Branchversion 1606 (und höher) von Microsoft Endpoint Configuration Manager aktiviert. Informationen zum Integrieren der zentralen Microsoft Endpoint Configuration Manager-Verwaltungswebsite oder einer eigenständigen primären Website mit Azure Monitor-Protokollen und zum Importieren von Sammlungen finden Sie unter [Herstellen einer Verbindung zwischen Configuration Manager und Azure Monitor-Protokollen](../../azure-monitor/logs/collect-sccm.md).  
 * Windows-Agents müssen entweder für die Kommunikation mit einem WSUS-Server (Windows Server Update Services) konfiguriert sein oder über Zugriff auf Microsoft-Update verfügen, wenn sie keine Sicherheitsupdates von Microsoft Endpoint Configuration Manager erhalten.
 
 Wie Sie die in Azure IaaS gehosteten Clients mit Ihrer vorhandenen Microsoft Endpoint Configuration Manager-Umgebung verwalten, richtet sich hauptsächlich nach der Verbindung zwischen Azure-Rechenzentren und Ihrer Infrastruktur. Diese Verbindung wirkt sich auf alle Designänderungen aus, die Sie an Ihrer Microsoft Endpoint Configuration Manager-Infrastruktur vornehmen müssen, und auf die Kosten, die aufgrund dieser Änderungen anfallen. Informationen zu den Planungsüberlegungen, die Sie berücksichtigen müssen, finden Sie unter [Configuration Manager in Azure – häufig gestellte Fragen](/configmgr/core/understand/configuration-manager-on-azure#networking).

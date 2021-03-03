@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 52e3ea3e07a81495f64f70f72686154a02a654af
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 218803d0b7e1f5add2f033a7ce01e0a8f6ffc956
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451792"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674091"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistiken in Synapse SQL
 
@@ -72,9 +72,9 @@ Die automatische Erstellung von Statistiken erfolgt synchron. Daher kann möglic
 Um messbare Leistungseinbußen zu verhindern, sollten Sie zuerst durch Ausführen der Benchmarkworkload sicherstellen, dass Statistiken erstellt wurden, bevor Sie Profile für das System erstellen.
 
 > [!NOTE]
-> Die Erstellung von Statistiken wird in [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) in einem anderen Benutzerkontext protokolliert.
+> Die Erstellung von Statistiken wird in [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest&preserve-view=true) in einem anderen Benutzerkontext protokolliert.
 
-Wenn automatische Statistiken erstellt werden, sehen Sie wie folgt aus: _WA_Sys_<8 digit column id in Hex>_<8 digit table id in Hex>. Sie können bereits erstellte Statistiken anzeigen, indem Sie den Befehl [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ausführen:
+Wenn automatische Statistiken erstellt werden, sehen Sie wie folgt aus: _WA_Sys_<8 digit column id in Hex>_<8 digit table id in Hex>. Sie können bereits erstellte Statistiken anzeigen, indem Sie den Befehl [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true) ausführen:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -236,7 +236,7 @@ CREATE STATISTICS stats_col1
     WITH SAMPLE = 50 PERCENT;
 ```
 
-Die gesamte Referenz finden Sie unter [CREATE STATISTICS (Transact-SQL)](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+Die gesamte Referenz finden Sie unter [CREATE STATISTICS (Transact-SQL)](/sql/t-sql/statements/create-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
 #### <a name="create-multi-column-statistics"></a>Erstellen von Mehrspaltenstatistiken
 
@@ -433,7 +433,7 @@ Wenn die Leistung kein Problem darstellt, ist diese Methode die einfachste und u
 > Beim Aktualisieren aller Statistiken einer Tabelle führt der dedizierte SQL-Pool einen Scan durch, um für jedes Statistikobjekt Stichproben der Tabelle zu nehmen. Wenn die Tabelle groß ist und viele Spalten und Statistiken enthält, kann es effizienter sein, je nach Bedarf einzelne Spalten zu aktualisieren.
 
 Informationen zur Implementierung einer `UPDATE STATISTICS`-Prozedur finden Sie unter [Temporäre Tabellen](develop-tables-temporary.md). Die Implementierungsmethode unterscheidet sich etwas von der obigen `CREATE STATISTICS`-Prozedur, aber das Ergebnis ist identisch.
-Die vollständige Syntax finden Sie unter [Aktualisieren der Statistik](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+Die vollständige Syntax finden Sie unter [Aktualisieren der Statistik](/sql/t-sql/statements/update-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
 ### <a name="statistics-metadata"></a>Statistikmetadaten
 
@@ -445,13 +445,13 @@ Diese Systemsichten enthalten Informationen zu Statistiken:
 
 | Katalogsicht | BESCHREIBUNG |
 |:--- |:--- |
-| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Eine Zeile für jede Spalte. |
-| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Eine Zeile für jedes Objekt in der Datenbank. |
-| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Eine Zeile für jedes Schema in der Datenbank. |
-| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Eine Zeile für jedes Statistikobjekt. |
-| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Eine Zeile für jede Spalte im Statistikobjekt. Eine Verknüpfung zurück zu sys.columns. |
-| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Eine Zeile für jede Tabelle (enthält externe Tabellen). |
-| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Eine Zeile für jeden Datentyp. |
+| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Eine Zeile für jede Spalte. |
+| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Eine Zeile für jedes Objekt in der Datenbank. |
+| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Eine Zeile für jedes Schema in der Datenbank. |
+| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Eine Zeile für jedes Statistikobjekt. |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Eine Zeile für jede Spalte im Statistikobjekt. Eine Verknüpfung zurück zu sys.columns. |
+| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Eine Zeile für jede Tabelle (enthält externe Tabellen). |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Eine Zeile für jeden Datentyp. |
 
 #### <a name="system-functions-for-statistics"></a>Systemfunktionen für Statistiken
 
@@ -459,8 +459,8 @@ Diese Systemfunktionen sind nützlich für die Arbeit mit Statistiken:
 
 | Systemfunktion | BESCHREIBUNG |
 |:--- |:--- |
-| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Datum, an dem das Statistikobjekt zuletzt aktualisiert wurde. |
-| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Zusammenfassungsebene und ausführliche Informationen zur Verteilung der Werte gemäß Statistikobjekt. |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Datum, an dem das Statistikobjekt zuletzt aktualisiert wurde. |
+| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Zusammenfassungsebene und ausführliche Informationen zur Verteilung der Werte gemäß Statistikobjekt. |
 
 #### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Kombinieren von Statistikspalten und -funktionen zu einer Sicht
 
@@ -827,13 +827,13 @@ Diese Systemsichten enthalten Informationen zu Statistiken:
 
 | Katalogsicht                                                 | BESCHREIBUNG                                                  |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jede Spalte.                                     |
-| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jedes Objekt in der Datenbank.                     |
-| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jedes Schema in der Datenbank.                     |
-| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jedes Statistikobjekt.                          |
-| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jede Spalte im Statistikobjekt. Eine Verknüpfung zurück zu sys.columns. |
-| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jede Tabelle (enthält externe Tabellen).           |
-| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jeden Datentyp.                                  |
+| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jede Spalte.                                     |
+| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jedes Objekt in der Datenbank.                     |
+| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jedes Schema in der Datenbank.                     |
+| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jedes Statistikobjekt.                          |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jede Spalte im Statistikobjekt. Eine Verknüpfung zurück zu sys.columns. |
+| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jede Tabelle (enthält externe Tabellen).           |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Eine Zeile für jeden Datentyp.                                  |
 
 #### <a name="system-functions-for-statistics"></a>Systemfunktionen für Statistiken
 
@@ -841,7 +841,7 @@ Diese Systemfunktionen sind nützlich für die Arbeit mit Statistiken:
 
 | Systemfunktion                                              | BESCHREIBUNG                                  |
 | :----------------------------------------------------------- | :------------------------------------------- |
-| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Datum, an dem das Statistikobjekt zuletzt aktualisiert wurde. |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Datum, an dem das Statistikobjekt zuletzt aktualisiert wurde. |
 
 #### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Kombinieren von Statistikspalten und -funktionen zu einer Sicht
 

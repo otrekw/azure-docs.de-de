@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 0ab7cdfb3d699a8415739565aae5d4326002bc43
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c621584fa1dbed06873ac0867e20201e94c4a757
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389143"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699680"
 ---
 # <a name="manage-device-event-alert-notifications-on-azure-stack-edge-pro-resources"></a>Verwalten von Warnbenachrichtigungen zu Geräteereignissen für Azure Stack Edge Pro-Ressourcen
 
@@ -23,7 +23,7 @@ In diesem Artikel wird beschrieben, wie Sie im Azure-Portal Aktionsregeln erstel
 
 Mit einer Aktionsregel können Warnbenachrichtigungen ausgelöst oder unterdrückt werden. Die Aktionsregel wird einer *Aktionsgruppe* hinzugefügt. Dabei handelt es sich um eine Gruppe von Benachrichtigungseinstellungen, mit der Benutzer benachrichtigt werden, die auf Warnungen reagieren müssen, die in verschiedenen Kontexten für eine Ressource oder eine Gruppe von Ressourcen ausgelöst werden.
 
-Weitere Informationen zu Aktionsregeln finden Sie unter [Konfigurieren einer Aktionsregel](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule). Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](/azure/azure-monitor/platform/action-groups).
+Weitere Informationen zu Aktionsregeln finden Sie unter [Konfigurieren einer Aktionsregel](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule). Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/alerts/action-groups.md).
 
 > [!NOTE]
 > Die Funktion für Aktionsregeln befindet sich in der Vorschauphase. Einige Bildschirme und Schritte können sich bei der Optimierung der Prozesse ändern.
@@ -34,7 +34,7 @@ Weitere Informationen zu Aktionsregeln finden Sie unter [Konfigurieren einer Akt
 Führen Sie die folgenden Schritte im Azure-Portal aus, um eine Aktionsregel für Ihr Azure Stack Edge-Gerät zu erstellen.
 
 > [!NOTE]
-> Mit diesen Schritten wird eine Aktionsregel erstellt, mit der Benachrichtigungen an eine Aktionsgruppe gesendet werden. Ausführliche Informationen zum Erstellen einer Aktionsregel zum Unterdrücken von Benachrichtigungen finden Sie unter [Konfigurieren einer Aktionsregel](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule).
+> Mit diesen Schritten wird eine Aktionsregel erstellt, mit der Benachrichtigungen an eine Aktionsgruppe gesendet werden. Ausführliche Informationen zum Erstellen einer Aktionsregel zum Unterdrücken von Benachrichtigungen finden Sie unter [Konfigurieren einer Aktionsregel](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule).
 
 1. Navigieren Sie im Azure-Portal zu dem Azure Stack Edge-Gerät und dann zu **Überwachung > Warnungen**. Wählen Sie **Aktionen verwalten** aus.
 
@@ -72,7 +72,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um eine Aktionsregel fü
 
    2. Fügen Sie unter **Filter** alle anzuwendenden Filter hinzu. Wählen Sie für jeden Filter den Filtertyp, den **Operator** und den **Wert** aus.
    
-      Eine Liste der Filteroptionen finden Sie unter [Filterkriterien](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#filter-criteria).
+      Eine Liste der Filteroptionen finden Sie unter [Filterkriterien](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#filter-criteria).
 
       Die folgenden Beispielfilter gelten für alle Warnungen mit dem Schweregrad 2, 3 und 4, die mit dem Monitor-Dienst für Azure Stack Edge-Ressourcen ausgelöst werden.
 
@@ -85,11 +85,11 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um eine Aktionsregel fü
    ![Option „Aktionsgruppe“ zum Erstellen einer Aktionsregel zum Senden von Benachrichtigungen](media/azure-stack-edge-gpu-manage-device-event-alert-notifications/new-action-rule-action-group-01.png)
 
    > [!NOTE]
-   > Zum Erstellen einer Regel zum Unterdrücken von Benachrichtigungen wählen Sie **Unterdrückung** aus. Weitere Informationen finden Sie unter [Konfigurieren einer Aktionsregel](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule).
+   > Zum Erstellen einer Regel zum Unterdrücken von Benachrichtigungen wählen Sie **Unterdrückung** aus. Weitere Informationen finden Sie unter [Konfigurieren einer Aktionsregel](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule).
 
 6. Wählen Sie die Aktionsgruppe aus, die mit der Aktionsregel verwendet werden soll. Wählen Sie anschließend **Auswählen** aus. Die neue Aktionsregel wird den Benachrichtigungseinstellungen der ausgewählten Aktionsgruppe hinzugefügt.
 
-   Wenn Sie eine neue Aktionsgruppe erstellen möchten, wählen Sie **+ Aktionsgruppe erstellen** aus, und führen Sie dann die unter [Erstellen einer Aktionsgruppe mit dem Azure-Portal](/azure/azure-monitor/platform/action-groups#create-an-action-group-by-using-the-azure-portal) beschriebenen Schritte aus.
+   Wenn Sie eine neue Aktionsgruppe erstellen möchten, wählen Sie **+ Aktionsgruppe erstellen** aus, und führen Sie dann die unter [Erstellen einer Aktionsgruppe mit dem Azure-Portal](../azure-monitor/alerts/action-groups.md#create-an-action-group-by-using-the-azure-portal) beschriebenen Schritte aus.
 
    ![Wählen Sie eine Aktionsgruppe, die mit der Regel verwendet werden soll, und dann „Auswählen“ aus.](media/azure-stack-edge-gpu-manage-device-event-alert-notifications/new-action-rule-action-group-02.png)
 
@@ -123,8 +123,8 @@ Die E-Mail-Benachrichtigung sieht in etwa wie folgt aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-<!-- - See [Create and manage action groups in the Azure portal](/azure/azure-monitor/platform/action-groups) for guidance on creating a new action group.
-- See [Configure an action rule](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule) for more info about creating action rules that send or suppress alert notifications. -2 bullets referenced above. Making room for local tasks in "Next Steps." --> 
+<!-- - See [Create and manage action groups in the Azure portal](../azure-monitor/alerts/action-groups.md) for guidance on creating a new action group.
+- See [Configure an action rule](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule) for more info about creating action rules that send or suppress alert notifications. -2 bullets referenced above. Making room for local tasks in "Next Steps." --> 
 - Informationen zum Überprüfen von Geräteereignissen, Hardwarestatus und Metrikdiagrammen finden Sie unter [Überwachen Ihres Azure Stack Edge Pro-Geräts](azure-stack-edge-monitor.md). 
 - Informationen zum Optimieren von Azure Monitor für Azure Stack Edge Pro-GPU-Geräte finden Sie unter [Verwenden von Azure Monitor](azure-stack-edge-gpu-enable-azure-monitor.md).
-- Informationen zum Verwalten von einzelnen Warnungen finden Sie unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](/azure/azure-monitor/platform/alerts-metric).
+- Informationen zum Verwalten von einzelnen Warnungen finden Sie unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../azure-monitor/alerts/alerts-metric.md).

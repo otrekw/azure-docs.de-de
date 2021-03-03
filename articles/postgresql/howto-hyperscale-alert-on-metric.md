@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 73705434aef3ee438c02fbfd6502d30e7620b695
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f5557140d77865a6d4c44316cecd512f877736e0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026453"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577080"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -26,8 +26,8 @@ Sie können konfigurieren, dass bei einer Warnung die folgenden Aktionen ausgef�
 * Aufrufen eines Webhooks
 
 Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abrufen zugehöriger Informationen:
-* [Azure portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure-Befehlszeilenschnittstelle](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure portal](../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure-Befehlszeilenschnittstelle](../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Azure Monitor-REST-API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Erstellen einer Warnungsregel anhand einer Metrik aus dem Azure-Portal
@@ -109,5 +109,5 @@ Wenn auf dem Datenträger nur noch wenig Speicherplatz zur Verfügung steht, ver
 Die Überwachung der CPU-Auslastung ist hilfreich, um eine Baseline für die Leistung zu etablieren. Nehmen wir beispielsweise an, die CPU-Auslastung liegt in der Regel zwischen 40 und 60 Prozent. Wenn sich die CPU-Auslastung nun plötzlich im Bereich von 95 Prozent bewegt, können Sie eine Anomalie erkennen. Die CPU-Auslastung kann mit natürlichem Wachstum zusammenhängen, aber auch auf eine verirrte Abfrage hindeuten. Legen Sie beim Erstellen einer CPU-Warnung eine hohe Aggregationsgranularität fest, um längerfristige Zunahmen zu erfassen und kurzfristige Spitzen zu ignorieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](../azure-monitor/platform/alerts-webhooks.md).
-* Verschaffen Sie sich einen Überblick über das [Sammeln von Dienstmetriken](../azure-monitor/platform/data-platform.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
+* Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](../azure-monitor/alerts/alerts-webhooks.md).
+* Verschaffen Sie sich einen Überblick über das [Sammeln von Dienstmetriken](../azure-monitor/data-platform.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.

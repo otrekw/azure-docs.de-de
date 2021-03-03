@@ -1,18 +1,18 @@
 ---
 title: Verwenden von Azure Service Bus-Warteschlangen in JavaScript
-description: Hier erfahren Sie, wie Sie ein JavaScript-Programm schreiben, in dem die aktuelle Vorschauversion des Pakets @azure/service-bus verwendet wird, um Nachrichten an eine Service Bus-Warteschlange zu senden und daraus zu empfangen.
+description: Hier erfahren Sie, wie Sie ein JavaScript-Programm schreiben, in dem die aktuelle Version des Pakets @azure/service-bus verwendet wird, um Nachrichten an eine Service Bus-Warteschlange zu senden und daraus zu empfangen.
 author: spelluru
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: ac24d84176f27170648545bc8044c5dcbc77781a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 3c499dcb5233cbf5cd4048c641d1b38e289cc35f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180012"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739711"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>Senden und Empfangen von Nachrichten für Azure Service Bus-Warteschlangen (JavaScript)
 In diesem Tutorial erfahren Sie, wie Sie das Paket [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) in einem JavaScript-Programm verwenden, um Nachrichten an eine Service Bus-Warteschlange zu senden und daraus zu empfangen.
@@ -205,6 +205,7 @@ Wählen Sie auf der Seite **Übersicht** die Warteschlange aus, um zur Seite **S
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in der folgenden Dokumentation bzw. unter den folgenden Beispielen: 
 
-- [Azure Service Bus-Clientbibliothek für JS](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
-- [Beispiele:](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples) Der Ordner **javascript** enthält JavaScript-Beispiele, und im Ordner **typescript** finden Sie TypeScript-Beispiele. 
-- [azure-servicebus: Referenzdokumentation](/javascript/api/overview/azure/service-bus)
+- [Azure Service Bus-Clientbibliothek für JavaScript](https://www.npmjs.com/package/@azure/service-bus)
+- [JavaScript samples](/samples/azure/azure-sdk-for-js/service-bus-javascript/) (JavaScript-Beispiele)
+- [TypeScript-Beispiele](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [API-Referenzdokumentation](/javascript/api/overview/azure/service-bus)

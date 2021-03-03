@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.openlocfilehash: b41575208d0793a33864556ec4313ae1a71f2db5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f73091552a78760024189b173897913edca724bb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184466"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593410"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Testempfehlungen von Leistungsbenchmarks für Azure NetApp Files
 
@@ -113,7 +113,7 @@ Sie können auch in Azure Monitor ein Dashboard für Azure NetApp Files erstelle
 
 ### <a name="azure-monitor-api-access"></a>API-Zugriff in Azure Monitor
 
-Sie können mit REST-API-Aufrufen auf die Leistungsindikatoren für Azure NetApp Files zugreifen. Unter [Unterstützte Metriken von Azure Monitor: Microsoft.NetApp/netAppAccounts/capacityPools/Volumes](../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) finden Sie Leistungsindikatoren für Kapazitätspools und Volumes.
+Sie können mit REST-API-Aufrufen auf die Leistungsindikatoren für Azure NetApp Files zugreifen. Unter [Unterstützte Metriken von Azure Monitor: Microsoft.NetApp/netAppAccounts/capacityPools/Volumes](../azure-monitor/essentials/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) finden Sie Leistungsindikatoren für Kapazitätspools und Volumes.
 
 Das folgende Beispiel zeigt eine GET-URL zur Anzeige der Größe logischer Volumes:
 

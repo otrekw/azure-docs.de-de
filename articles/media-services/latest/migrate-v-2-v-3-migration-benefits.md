@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 70f64813546c66c0f9e3533e09de192315f75600
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: fb3e09cefa7f87fe2eb1e5013854c7965ea9330e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955070"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698840"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>Schritt 1: Informieren Sie sich über die Vorteile der Migration zur Media Services-API V3
 
@@ -38,7 +38,7 @@ Mit V3 wurde Media Services erheblich verbessert.
 | Azure-Portalupdates | Das Azure-Portal wurde aktualisiert, um die Verwaltung von V3-API-Entitäten einzubeziehen. Kunden können über das Portal das Livestreaming starten, V3-Transformationsaufträge übermitteln, Richtlinien zum Schutz von Inhalten und Streamingendpunkte verwalten, API-Zugriff erhalten, verknüpfte Speicherkonten verwalten und Überwachungsaufgaben durchführen. |
 | **Konten und Speicher** | |
 | Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen? | Kunden können jetzt ihre eigenen Rollen definieren und den Zugriff auf die einzelnen Entitäten in der Media Services ARM-API steuern. Dies hilft, den Zugriff auf Ressourcen durch AAD-Konten zu steuern. |
-| Verwaltete Identitäten | Mit verwalteten Identitäten müssen Entwickler keine Anmeldeinformationen mehr verwalten, da eine Identität für die Azure-Ressource in Azure AD bereitgestellt wird. Weitere Informationen zu verwalteten Identitäten finden Sie [hier](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). |
+| Verwaltete Identitäten | Mit verwalteten Identitäten müssen Entwickler keine Anmeldeinformationen mehr verwalten, da eine Identität für die Azure-Ressource in Azure AD bereitgestellt wird. Weitere Informationen zu verwalteten Identitäten finden Sie [hier](../../active-directory/managed-identities-azure-resources/overview.md). |
 | Unterstützung für private Verbindungen | Kunden greifen über einen PrivateEndpoint in ihrem VNet auf Media Services-Endpunkte für Schlüsselübermittlung, LiveEvents und StreamingEndpoints zu. |
 | [Kundenseitig verwaltete Schlüssel](concept-use-customer-managed-keys-byok.md) oder BYOK-Unterstützung (Bring Your Own Key) | Kunden können die Daten in ihrem Media Services-Konto mithilfe eines Schlüssels in ihrem Azure Key Vault verschlüsseln. |
 | **Medienobjekte** | |

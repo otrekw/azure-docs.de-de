@@ -8,17 +8,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 5aaf31d8c629e0770b913485de175c38f708390c
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 0a83dd143ae626108fdf8d2645b8cc368a3f3e05
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359624"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516565"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Zugriff auf die Azure Cosmos DB-Cassandra-API-Daten von Azure Databricks aus
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
-Dieser Artikel behandelt die Arbeit mit der Azure Cosmos DB-Cassandra-API von Spark aus mit [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks).
+Dieser Artikel behandelt die Arbeit mit der Azure Cosmos DB-Cassandra-API von Spark aus mit [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -62,7 +62,7 @@ Als automatisierte Prozesse in Azure Databricks auszuführende Spark-Programme w
 
 Die folgenden Links sollen Ihnen Hilfe zum Einstieg in das Erstellen von Spark Scala-Programmen für die Interaktion mit der Azure Cosmos DB-Cassandra-API bieten.
 * [Herstellen einer Verbindung mit der Azure Cosmos DB-Cassandra-API von Spark Scala-Programmen aus](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/main/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
-* [Ausführen eines Spark Scala-Programms als automatisierter Auftrag in Azure Databricks](https://docs.azuredatabricks.net/user-guide/jobs.html)
+* [Ausführen eines Spark Scala-Programms als automatisierter Auftrag in Azure Databricks](/azure/databricks/jobs)
 * [Vollständige Liste der Codebeispiele für die Arbeit mit der Cassandra-API](cassandra-spark-generic.md#next-steps)
 
 ## <a name="next-steps"></a>Nächste Schritte

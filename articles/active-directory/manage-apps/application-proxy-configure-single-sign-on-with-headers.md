@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: d4cd69a90c4af2f996bd965ffaa145dce761018f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 512316b78a0d6422daf5e268ef30db72ccbcfaeb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259535"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688313"
 ---
-# <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy-preview"></a>Headerbasiertes einmaliges Anmelden für lokale Apps mit dem Azure AD-Anwendungsproxy (Vorschau)
+# <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy"></a>Headerbasiertes einmaliges Anmelden für lokale Apps mit dem Azure AD-Anwendungsproxy
 
 Vom Azure AD-Anwendungsproxy (Azure Active Directory) wird der Zugriff auf Anwendungen, die Header für die Authentifizierung nutzen, per einmaligem Anmelden nativ unterstützt. Sie können Headerwerte konfigurieren, die für Ihre Anwendung in Azure AD benötigt werden. Die Headerwerte werden über den Anwendungsproxy an die Anwendung gesendet. Hier sind einige Beispiele für die Vorteile aufgeführt, die sich bei der Nutzung der nativen Unterstützung für die headerbasierte Authentifizierung mit dem Anwendungsproxy ergeben:  
 

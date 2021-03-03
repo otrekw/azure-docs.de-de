@@ -3,16 +3,17 @@ title: Erstellen einer Näherungsplatzierungsgruppe über das Portal
 description: Erfahren Sie, wie Sie eine Näherungsplatzierungsgruppe über das Azure-Portal erstellen.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: proximity-placement-groups
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: cynthn
-ms.openlocfilehash: 45d7977dda4870be9a087b3277dd1db828c91178
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 201f2f585c907ff82f28b96562efe3622dae6422
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871433"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666040"
 ---
 # <a name="create-a-proximity-placement-group-using-the-portal"></a>Erstellen einer Näherungsplatzierungsgruppe über das Portal
 
@@ -58,7 +59,7 @@ Wenn die VM Teil der Verfügbarkeitsgruppe ist, müssen Sie die Verfügbarkeitsg
 1. Suchen Sie im [Portal](https://portal.azure.com) nach *Verfügbarkeitsgruppen*, und wählen Sie Ihre Verfügbarkeitsgruppe in den Ergebnissen aus.
 1. Beenden Sie jede VM in der Verfügbarkeitsgruppe, bzw. heben Sie ihre Zuordnung auf, indem Sie die VM auswählen und dann auf der Seite für die VM **Beenden** auswählen. Wählen Sie dann **OK** aus, um die VM zu beenden.
 1. Stellen Sie auf der Seite für Ihre Verfügbarkeitsgruppe sicher, dass als **Status** für alle VMs **Beendet (Zuordnung aufgehoben)** aufgeführt ist.
-1. Wählen Sie im linken Menü die Option **Konfiguration** aus.
+1. Klicken Sie im linken Menü auf **Konfiguration**.
 1. Wählen Sie unter **Näherungsplatzierungsgruppe** in der Dropdownliste eine Platzierungsgruppe und dann **Speichern** aus.
 1. Wählen Sie im linken Menü **Übersicht** aus, um wieder die Liste der VMs anzuzeigen. 
 1. Wählen Sie jeden virtuellen Computer in der Verfügbarkeitsgruppe aus, und wählen Sie dann auf der Seite für die einzelnen VMs **Start** aus. 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/19/2020
 ms.author: jlian
-ms.openlocfilehash: c6544e8ac00744602476207a89567aea5afe5b1d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 6f83421d4ee56d56875e13ffbdd8ac9dbbf4b6bb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632364"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656362"
 ---
 # <a name="use-ip-filters"></a>Verwenden von IP-Filtern
 
@@ -20,7 +20,7 @@ Die Sicherheit ist bei jeder IoT-Lösung, die auf Azure IoT Hub basiert, ein wic
 
 ## <a name="when-to-use"></a>Verwendung
 
-Mithilfe von „IP-Filter“ können Sie Datenverkehr nur aus einem bestimmten IP-Adressbereich empfangen und jeglichen anderen Datenverkehr ablehnen. Ein Beispiel hierfür: Sie verwenden Ihren IoT-Hub mit [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services), um private Verbindungen zwischen einem IoT-Hub und Ihrer lokalen Infrastruktur zu erstellen.
+Mithilfe von „IP-Filter“ können Sie Datenverkehr nur aus einem bestimmten IP-Adressbereich empfangen und jeglichen anderen Datenverkehr ablehnen. Ein Beispiel hierfür: Sie verwenden Ihren IoT-Hub mit [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services), um private Verbindungen zwischen einem IoT-Hub und Ihrer lokalen Infrastruktur zu erstellen.
 
 ## <a name="default-setting"></a>Standardeinstellung
 
@@ -164,7 +164,7 @@ $iothubResource | Set-AzResource -Force
 ## <a name="update-ip-filter-rules-using-rest"></a>Aktualisieren von IP-Filterregeln mit REST
 
 
-Möglicherweise müssen Sie den IP-Filter für Ihren IoT Hub auch über den REST-Endpunkt des Azure-Ressourcenanbieters abrufen und ändern. Lesen Sie dazu `properties.networkRuleSets` unter [createorupdate-Methode](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate).
+Möglicherweise müssen Sie den IP-Filter für Ihren IoT Hub auch über den REST-Endpunkt des Azure-Ressourcenanbieters abrufen und ändern. Lesen Sie dazu `properties.networkRuleSets` unter [createorupdate-Methode](/rest/api/iothub/iothubresource/createorupdate).
 
 ## <a name="ip-filter-classic-retirement"></a>Außerbetriebnahme des IP-Filters (klassisch)
 
@@ -174,7 +174,7 @@ Der klassische IP-Filter wurde außer Betrieb genommen. Weitere Informationen fi
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [IoT Hub-Metriken](iot-hub-metrics.md)
+* [IoT Hub-Metriken](./monitor-iot-hub.md)
 * [IoT Hub-Unterstützung für virtuelle Netzwerke mit Private Link und verwalteter Identität](virtual-network-support.md)
 * [Verwalten des Zugriffs über öffentliche Netzwerke für Ihren IoT-Hub](iot-hub-public-network-access.md)
 * [Überwachen von IoT Hub](monitor-iot-hub.md)

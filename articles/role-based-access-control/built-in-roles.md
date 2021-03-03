@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 02/01/2021
+ms.date: 02/15/2021
 ms.custom: generated
-ms.openlocfilehash: 384d00ee41f2b6bfc2e91815bfcf54819c7d9ab2
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 1cd86ac2b9500c15bc32445e1866a40ca1c6b409
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809374"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577000"
 ---
 # <a name="azure-built-in-roles"></a>Integrierte Azure-Rollen
 
@@ -176,15 +176,15 @@ Die folgende Tabelle enthält eine kurze Beschreibung und die eindeutige ID alle
 > | [Azure Sentinel-Mitwirkender](#azure-sentinel-contributor) | Azure Sentinel-Mitwirkender | ab8e14d6-4a74-4a29-9ba8-549422addade |
 > | [Azure Sentinel-Leser](#azure-sentinel-reader) | Azure Sentinel-Leser | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Azure Sentinel-Antwortender](#azure-sentinel-responder) | Azure Sentinel-Antwortender | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
-> | [Key Vault-Administrator (Vorschau)](#key-vault-administrator-preview) | Ausführen beliebiger Vorgänge auf Datenebene für einen Schlüsseltresor und alle darin enthaltenen Objekte (einschließlich Zertifikate, Schlüssel und Geheimnisse). Kann keine Key Vault-Ressourcen oder Rollenzuweisungen verwalten. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
-> | [Key Vault Certificates Officer (Vorschau)](#key-vault-certificates-officer-preview) | Ausführen beliebiger Aktionen für die Zertifikate eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | a4417e6f-fecd-4de8-b567-7b0420556985 |
+> | [Key Vault-Administrator](#key-vault-administrator) | Ausführen beliebiger Vorgänge auf Datenebene für einen Schlüsseltresor und alle darin enthaltenen Objekte (einschließlich Zertifikate, Schlüssel und Geheimnisse). Kann keine Key Vault-Ressourcen oder Rollenzuweisungen verwalten. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
+> | [Key Vault-Zertifikatbeauftragter](#key-vault-certificates-officer) | Ausführen beliebiger Aktionen für die Zertifikate eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | a4417e6f-fecd-4de8-b567-7b0420556985 |
 > | [Key Vault-Mitwirkender](#key-vault-contributor) | Verwalten von Schlüsseltresoren, gestattet Ihnen jedoch nicht, Rollen in Azure RBAC zuzuweisen, und ermöglicht keinen Zugriff auf Geheimnisse, Schlüssel oder Zertifikate. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
-> | [Key Vault Crypto Officer (Vorschau)](#key-vault-crypto-officer-preview) | Ausführen beliebiger Aktionen für die Schlüssel eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
-> | [Key Vault Crypto Service Encryption-Benutzer (Vorschau)](#key-vault-crypto-service-encryption-user-preview) | Lesen von Metadaten von Schlüsseln und Ausführen von Vorgängen zum Packen/Entpacken. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
-> | [Key Vault Crypto-Benutzer (Vorschau)](#key-vault-crypto-user-preview) | Ausführen kryptografischer Vorgänge mithilfe von Schlüsseln. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 12338af0-0e69-4776-bea7-57ae8d297424 |
-> | [Key Vault Reader (Vorschau)](#key-vault-reader-preview) | Lesen von Metadaten von Schlüsseltresoren und deren Zertifikaten, Schlüsseln und Geheimnissen. Sensible Werte, z. B. der Inhalt von Geheimnissen oder Schlüsselmaterial, können nicht gelesen werden. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 21090545-7ca7-4776-b22c-e363652d74d2 |
-> | [Key Vault Secrets Officer (Vorschau)](#key-vault-secrets-officer-preview) | Ausführen beliebiger Aktionen für die Geheimnisse eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
-> | [Key Vault Secrets-Benutzer (Vorschau)](#key-vault-secrets-user-preview) | Lesen der Inhalte von Geheimnissen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 4633458b-17de-408a-b874-0445c86b69e6 |
+> | [Key Vault-Kryptografiebeauftragter](#key-vault-crypto-officer) | Ausführen beliebiger Aktionen für die Schlüssel eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
+> | [Key Vault Crypto Service Encryption-Benutzer](#key-vault-crypto-service-encryption-user) | Lesen von Metadaten von Schlüsseln und Ausführen von Vorgängen zum Packen/Entpacken. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+> | [Key Vault-Kryptografiebenutzer](#key-vault-crypto-user) | Ausführen kryptografischer Vorgänge mithilfe von Schlüsseln. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 12338af0-0e69-4776-bea7-57ae8d297424 |
+> | [Key Vault-Leser](#key-vault-reader) | Lesen von Metadaten von Schlüsseltresoren und deren Zertifikaten, Schlüsseln und Geheimnissen. Sensible Werte, z. B. der Inhalt von Geheimnissen oder Schlüsselmaterial, können nicht gelesen werden. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 21090545-7ca7-4776-b22c-e363652d74d2 |
+> | [Key Vault-Geheimnisbeauftragter](#key-vault-secrets-officer) | Ausführen beliebiger Aktionen für die Geheimnisse eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
+> | [Key Vault-Geheimnisbenutzer](#key-vault-secrets-user) | Lesen der Inhalte von Geheimnissen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 4633458b-17de-408a-b874-0445c86b69e6 |
 > | [Mitwirkender für verwaltete HSMs](#managed-hsm-contributor) | Ermöglicht Ihnen das Verwalten von verwalteten HSM-Pools, aber nicht den Zugriff auf diese. | 18500a29-7fe2-46b2-a342-b16a415e101d |
 > | [Sicherheitsadministrator](#security-admin) | Anzeigen und Aktualisieren von Berechtigungen für Security Center. Gleiche Rechte wie der Sicherheitsleseberechtigte und kann darüber hinaus die Sicherheitsrichtlinie aktualisieren sowie Warnungen und Empfehlungen verwerfen. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Mitwirkender für Sicherheitsbewertungen](#security-assessment-contributor) | Ermöglicht das Pushen von Bewertungen an Security Center | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
@@ -196,9 +196,9 @@ Die folgende Tabelle enthält eine kurze Beschreibung und die eindeutige ID alle
 > | **Überwachen** |  |  |
 > | [Mitwirkender der Application Insights-Komponente](#application-insights-component-contributor) | Kann Application Insights-Komponenten verwalten | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights-Momentaufnahmedebugger](#application-insights-snapshot-debugger) | Gibt dem Benutzer die Berechtigung zum Anzeigen und Herunterladen von Debugmomentaufnahmen, die mit dem Application Insights-Momentaufnahmedebugger erfasst wurden. Beachten Sie, dass diese Berechtigungen in der Rolle [Besitzer](#owner) oder [Mitwirkender](#contributor) nicht enthalten sind. Die Application Insights-Rolle „Momentaufnahmedebugger“ muss Benutzern direkt zugewiesen werden. Die Rolle wird nicht erkannt, wenn sie einer benutzerdefinierten Rolle hinzugefügt wird. | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
-> | [Überwachungsmitwirkender](#monitoring-contributor) | Kann sämtliche Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
+> | [Überwachungsmitwirkender](#monitoring-contributor) | Kann sämtliche Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles). | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | [Herausgeber von Überwachungsmetriken](#monitoring-metrics-publisher) | Ermöglicht die Veröffentlichung von Metriken für Azure-Ressourcen. | 3913510d-42f4-4e42-8a64-420c390055eb |
-> | [Überwachungsleser](#monitoring-reader) | Kann alle Überwachungsdaten (Metriken, Protokolle usw.) lesen. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
+> | [Überwachungsleser](#monitoring-reader) | Kann alle Überwachungsdaten (Metriken, Protokolle usw.) lesen. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles). | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | [Arbeitsmappenmitwirkender](#workbook-contributor) | Kann freigegebene Arbeitsmappen speichern. | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
 > | [Arbeitsmappenleser](#workbook-reader) | Kann Arbeitsmappen lesen. | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 > | **Verwaltung und Governance** |  |  |
@@ -2175,8 +2175,9 @@ Lesen, Schreiben und Löschen von Azure Storage-Containern und -Blobs. Um zu erf
 > | **DataActions** |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/delete | Löschen eines Blobs |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/read | Zurückgeben eines Blob oder einer Liste von Blobs. |
-> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/move/action | Verschiebt das Blob aus einem Pfad in einen anderen. |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/write | Schreiben in ein Blob. |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/move/action | Verschiebt das Blob aus einem Pfad in einen anderen. |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/add/action | Gibt das Ergebnis beim Hinzufügen von Blobinhalten zurück. |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -2200,8 +2201,9 @@ Lesen, Schreiben und Löschen von Azure Storage-Containern und -Blobs. Um zu erf
       "dataActions": [
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action",
-        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action"
       ],
       "notDataActions": []
     }
@@ -2469,7 +2471,7 @@ Ermöglicht den Lesezugriff auf Dateien/Verzeichnisse in Azure-Dateifreigaben. D
 Lesen, Schreiben und Löschen von Azure Storage-Warteschlangen und -Warteschlangennachrichten. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Weitere Informationen](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> | Aktionen | Beschreibung |
+> | Aktionen | BESCHREIBUNG |
 > | --- | --- |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/delete | Löschen einer Warteschlange. |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/read | Zurückgeben einer Warteschlange oder Liste mit Warteschlangen. |
@@ -4399,6 +4401,8 @@ Ermöglicht Ihnen das Verwalten von sicherheitsbezogenen Richtlinien von SQL-Ser
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/read | Gibt die Liste der verwalteten Instanzen zurück oder ruft die Eigenschaften für die angegebene verwaltete Instanz ab. |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/* |  |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/sqlVulnerabilityAssessments/* |  |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/administrators/read | Ruft eine Liste der Administratoren für verwaltete Instanzen ab. |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/administrators/read | Ruft ein bestimmtes Azure Active Directory-Administratorobjekt ab. |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
@@ -4461,7 +4465,9 @@ Ermöglicht Ihnen das Verwalten von sicherheitsbezogenen Richtlinien von SQL-Ser
         "Microsoft.Sql/servers/azureADOnlyAuthentications/*",
         "Microsoft.Sql/managedInstances/read",
         "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*",
-        "Microsoft.Security/sqlVulnerabilityAssessments/*"
+        "Microsoft.Security/sqlVulnerabilityAssessments/*",
+        "Microsoft.Sql/managedInstances/administrators/read",
+        "Microsoft.Sql/servers/administrators/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -4768,7 +4774,7 @@ Erstellen und verwalten Sie Data Factorys sowie die darin enthaltenen untergeord
 
 ### <a name="data-purger"></a>Datenpurger
 
-Kann Analysedaten endgültig löschen. [Weitere Informationen](../azure-monitor/platform/personal-data-mgmt.md)
+Kann Analysedaten endgültig löschen. [Weitere Informationen](../azure-monitor/logs/personal-data-mgmt.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -4911,7 +4917,7 @@ Ermöglicht Ihnen, Vorgänge im Zusammenhang mit Domänendiensten, die für das 
 
 ### <a name="log-analytics-contributor"></a>Log Analytics-Mitwirkender
 
-Ein Log Analytics-Mitwirkender kann alle Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Das Bearbeiten von Überwachungseinstellungen schließt folgende Aufgaben ein: Hinzufügen der VM-Erweiterung zu VMs, Lesen von Speicherkontoschlüsseln zum Konfigurieren von Protokollsammlungen aus Azure Storage, Erstellen und Konfigurieren von Automation-Konten, Hinzufügen von Lösungen, Konfigurieren der Azure-Diagnose für alle Azure-Ressourcen. [Weitere Informationen](../azure-monitor/platform/manage-access.md)
+Ein Log Analytics-Mitwirkender kann alle Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Das Bearbeiten von Überwachungseinstellungen schließt folgende Aufgaben ein: Hinzufügen der VM-Erweiterung zu VMs, Lesen von Speicherkontoschlüsseln zum Konfigurieren von Protokollsammlungen aus Azure Storage, Erstellen und Konfigurieren von Automation-Konten, Hinzufügen von Lösungen, Konfigurieren der Azure-Diagnose für alle Azure-Ressourcen. [Weitere Informationen](../azure-monitor/logs/manage-access.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -4976,7 +4982,7 @@ Ein Log Analytics-Mitwirkender kann alle Überwachungsdaten lesen und Überwachu
 
 ### <a name="log-analytics-reader"></a>Log Analytics-Leser
 
-Ein Log Analytics-Leser kann alle Überwachungsdaten anzeigen und durchsuchen sowie Überwachungseinstellungen anzeigen. Hierzu zählt auch die Anzeige der Konfiguration von Azure-Diagnosen für alle Azure-Ressourcen. [Weitere Informationen](../azure-monitor/platform/manage-access.md)
+Ein Log Analytics-Leser kann alle Überwachungsdaten anzeigen und durchsuchen sowie Überwachungseinstellungen anzeigen. Hierzu zählt auch die Anzeige der Konfiguration von Azure-Diagnosen für alle Azure-Ressourcen. [Weitere Informationen](../azure-monitor/logs/manage-access.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -7562,7 +7568,7 @@ Azure Sentinel-Antwortender [Weitere Informationen](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-administrator-preview"></a>Key Vault-Administrator (Vorschau)
+### <a name="key-vault-administrator"></a>Key Vault-Administrator
 
 Ausführen beliebiger Vorgänge auf Datenebene für einen Schlüsseltresor und alle darin enthaltenen Objekte (einschließlich Zertifikate, Schlüssel und Geheimnisse). Kann keine Key Vault-Ressourcen oder Rollenzuweisungen verwalten. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden.
 
@@ -7615,13 +7621,13 @@ Ausführen beliebiger Vorgänge auf Datenebene für einen Schlüsseltresor und a
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Administrator (preview)",
+  "roleName": "Key Vault Administrator",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-certificates-officer-preview"></a>Key Vault Certificates Officer (Vorschau)
+### <a name="key-vault-certificates-officer"></a>Key Vault-Zertifikatbeauftragter
 
 Ausführen beliebiger Aktionen für die Zertifikate eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden.
 
@@ -7676,7 +7682,7 @@ Ausführen beliebiger Aktionen für die Zertifikate eines Schlüsseltresors mit 
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Certificates Officer (preview)",
+  "roleName": "Key Vault Certificates Officer",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -7737,7 +7743,7 @@ Verwalten von Schlüsseltresoren, gestattet Ihnen jedoch nicht, Rollen in Azure 
 }
 ```
 
-### <a name="key-vault-crypto-officer-preview"></a>Key Vault Crypto Officer (Vorschau)
+### <a name="key-vault-crypto-officer"></a>Key Vault-Kryptografiebeauftragter
 
 Ausführen beliebiger Aktionen für die Schlüssel eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden.
 
@@ -7790,13 +7796,13 @@ Ausführen beliebiger Aktionen für die Schlüssel eines Schlüsseltresors mit A
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto Officer (preview)",
+  "roleName": "Key Vault Crypto Officer",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-crypto-service-encryption-user-preview"></a>Key Vault Crypto Service Encryption-Benutzer (Vorschau)
+### <a name="key-vault-crypto-service-encryption-user"></a>Key Vault Crypto Service Encryption-Benutzer
 
 Lesen von Metadaten von Schlüsseln und Ausführen von Vorgängen zum Packen/Entpacken. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden.
 
@@ -7839,13 +7845,13 @@ Lesen von Metadaten von Schlüsseln und Ausführen von Vorgängen zum Packen/Ent
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto Service Encryption User (preview)",
+  "roleName": "Key Vault Crypto Service Encryption User",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-crypto-user-preview"></a>Key Vault Crypto-Benutzer (Vorschau)
+### <a name="key-vault-crypto-user"></a>Key Vault-Kryptografiebenutzer
 
 Ausführen kryptografischer Vorgänge mithilfe von Schlüsseln. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden.
 
@@ -7894,13 +7900,13 @@ Ausführen kryptografischer Vorgänge mithilfe von Schlüsseln. Funktioniert nur
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto User (preview)",
+  "roleName": "Key Vault Crypto User",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-reader-preview"></a>Key Vault Reader (Vorschau)
+### <a name="key-vault-reader"></a>Key Vault-Leser
 
 Lesen von Metadaten von Schlüsseltresoren und deren Zertifikaten, Schlüsseln und Geheimnissen. Sensible Werte, z. B. der Inhalt von Geheimnissen oder Schlüsselmaterial, können nicht gelesen werden. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden.
 
@@ -7955,13 +7961,13 @@ Lesen von Metadaten von Schlüsseltresoren und deren Zertifikaten, Schlüsseln u
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Reader (preview)",
+  "roleName": "Key Vault Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-secrets-officer-preview"></a>Key Vault Secrets Officer (Vorschau)
+### <a name="key-vault-secrets-officer"></a>Key Vault-Geheimnisbeauftragter
 
 Ausführen beliebiger Aktionen für die Geheimnisse eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden.
 
@@ -8014,13 +8020,13 @@ Ausführen beliebiger Aktionen für die Geheimnisse eines Schlüsseltresors mit 
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Secrets Officer (preview)",
+  "roleName": "Key Vault Secrets Officer",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-secrets-user-preview"></a>Key Vault Secrets-Benutzer (Vorschau)
+### <a name="key-vault-secrets-user"></a>Key Vault-Geheimnisbenutzer
 
 Lesen der Inhalte von Geheimnissen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden.
 
@@ -8055,7 +8061,7 @@ Lesen der Inhalte von Geheimnissen. Funktioniert nur für Schlüsseltresore, die
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Secrets User (preview)",
+  "roleName": "Key Vault Secrets User",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -8590,7 +8596,7 @@ Gibt dem Benutzer die Berechtigung zum Anzeigen und Herunterladen von Debugmomen
 
 ### <a name="monitoring-contributor"></a>Überwachungsmitwirkender
 
-Kann sämtliche Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). [Weitere Informationen](../azure-monitor/platform/roles-permissions-security.md)
+Kann sämtliche Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles). [Weitere Informationen](../azure-monitor/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -8736,7 +8742,7 @@ Ermöglicht die Veröffentlichung von Metriken für Azure-Ressourcen. [Weitere I
 
 ### <a name="monitoring-reader"></a>Überwachungsleser
 
-Kann alle Überwachungsdaten (Metriken, Protokolle usw.) lesen. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). [Weitere Informationen](../azure-monitor/platform/roles-permissions-security.md)
+Kann alle Überwachungsdaten (Metriken, Protokolle usw.) lesen. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles). [Weitere Informationen](../azure-monitor/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |

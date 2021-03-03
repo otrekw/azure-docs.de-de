@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 10/06/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ed9af178c10d033806b05f73372a0642bb28cab4
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 24926640de3b50823dfeaf195500f33b49aebc18
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801647"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652716"
 ---
 # <a name="quickstart-send-sms-messages-in-azure-logic-apps-with-azure-communication-services"></a>Schnellstart: Senden von SMS-Nachrichten in Azure Logic Apps mithilfe von Azure Communication Services
 
@@ -39,6 +39,8 @@ Obwohl sich dieser Schnellstart darauf konzentriert, den Connector als Antwort a
 
 - Eine SMS-aktivierte Telefonnummer oder [eine Telefonnummer erhalten](./get-phone-number.md).
 
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
+
 ## <a name="add-an-sms-action"></a>Hinzufügen einer SMS-Aktion
 
 Um die Aktion **SMS senden** als neuen Schritt in Ihrem Workflow mithilfe des SMS-Connectors von Azure Communication Services hinzuzufügen, führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com) aus, wenn der Workflow Ihrer Logik-App im Logic App Designer geöffnet ist:
@@ -47,7 +49,7 @@ Um die Aktion **SMS senden** als neuen Schritt in Ihrem Workflow mithilfe des SM
 
 1. Geben Sie in das Suchfeld **Vorgang auswählen** die Zeichenfolge `Azure Communication Services` ein. Wählen Sie in der Aktionsliste **SMS senden** aus.
 
-   :::image type="content" source="./media/logic-app/select-send-sms-action.png" alt-text="Der Screenshot zeigt das Azure-Portal, das für den Logic App Designer geöffnet ist, und zeigt ein Logik-App-Beispiel, das die Aktion „SMS senden“ für den Azure Communication Services-Connector verwendet.":::
+   :::image type="content" source="./media/logic-app/select-send-sms-action.png" alt-text="Der Screenshot zeigt den Logic App Designer und den Azure Communication Services-Connector mit der ausgewählten Aktion „SMS senden“.":::
 
 1. Erstellen Sie jetzt eine Verbindung mit Ihrer Communication Services-Ressource.
 
@@ -57,7 +59,7 @@ Um die Aktion **SMS senden** als neuen Schritt in Ihrem Workflow mithilfe des SM
 
    1. Klicken Sie auf **Erstellen**.
 
-   :::image type="content" source="./media/logic-app/send-sms-configuration.png" alt-text="Der Screenshot zeigt das Azure-Portal, das für den Logic App Designer geöffnet ist, und zeigt ein Logik-App-Beispiel, das die Aktion „SMS senden“ für den Azure Communication Services-Connector verwendet.":::
+   :::image type="content" source="./media/logic-app/send-sms-configuration.png" alt-text="Der Screenshot zeigt die Konfiguration der Aktion „SMS senden“ mit Beispielinformationen.":::
 
 1. Geben Sie in der Aktion **SMS senden** die folgenden Informationen an: 
 
@@ -67,7 +69,7 @@ Um die Aktion **SMS senden** als neuen Schritt in Ihrem Workflow mithilfe des SM
 
    Hier ist eine **SMS senden**-Aktion mit Beispielinformationen:
 
-   :::image type="content" source="./media/logic-app/send-sms-action.png" alt-text="Der Screenshot zeigt das Azure-Portal, das für den Logic App Designer geöffnet ist, und zeigt ein Logik-App-Beispiel, das die Aktion „SMS senden“ für den Azure Communication Services-Connector verwendet.":::
+   :::image type="content" source="./media/logic-app/send-sms-action.png" alt-text="Der Screenshot zeigt die Aktion „SMS senden“ mit Beispielinformationen.":::
 
 1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus.
 
@@ -93,5 +95,5 @@ In dieser Schnellstartanleitung haben Sie erfahren, wie Sie Azure Logic Apps und
 Weitere Informationen zu SMS in Azure Communication Services finden Sie in den folgenden Artikeln:
 
 - [SMS-Konzepte](../../concepts/telephony-sms/concepts.md)
-- [Planen Ihrer Telefonie- und SMS-Lösung](../../concepts/telephony-sms/plan-solution.md)
+- [Telefonnummerntypen](../../concepts/telephony-sms/plan-solution.md)
 - [SMS SDK](../../concepts/telephony-sms/sdk-features.md)

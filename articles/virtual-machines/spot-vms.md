@@ -1,30 +1,31 @@
 ---
 title: Verwenden von Azure-Spot-VMs
 description: Erfahren Sie, wie Sie mithilfe von Azure Spot-VMs Kosten sparen.
-author: cynthn
+author: JagVeerappan
+ms.author: jagaveer
 ms.service: virtual-machines
+ms.subservice: spot
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/05/2020
-ms.author: cynthn
-ms.reviewer: jagaveer
-ms.openlocfilehash: 1e3934a8ff91d764a5148b3d490b44f30983a284
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.reviewer: cynthn
+ms.openlocfilehash: 0ed079dbfef50ae74914998c6b2e558b7e41aeae
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202129"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673937"
 ---
-# <a name="use-spot-vms-in-azure"></a>Verwenden von Spot-VMs in Azure
+# <a name="use-azure-spot-virtual-machines"></a>Verwenden von Azure-Spot-VMs 
 
-Mithilfe von Spot-VMs können Sie unsere ungenutzte Kapazität mit signifikanten Kosteneinsparungen nutzen. Wenn die Kapazität von Azure wieder benötigt wird, werden die Spot-VMs durch die Azure-Infrastruktur entfernt. Aus diesem Grund eignen sich Spot-VMs hervorragend für Workloads, die Unterbrechungen tolerieren, z. B. Batchverarbeitungsaufträge, Dev/Test-Umgebungen, umfangreiche Computeworkloads und mehr.
+Wenn Sie Azure Spot-VMs verwenden, profitieren Sie von unserer ungenutzten Kapazität und erzielen erhebliche Kosteneinsparungen. Wenn die Kapazität von Azure wieder benötigt wird, werden die Azure-Spot-VMs durch die Azure-Infrastruktur entfernt. Aus diesem Grund eignen sich Azure-Spot-VMs hervorragend für Workloads, die Unterbrechungen tolerieren, z. B. Batchverarbeitungsaufträge, Dev/Test-Umgebungen, umfangreiche Computeworkloads und mehr.
 
-Die verfügbare Kapazität kann abhängig von der Größe, Region, Tageszeit usw. variieren. Beim Bereitstellen von Spot-VMs in Skalierungsgruppen weist Azure die virtuellen Computer zu, wenn Kapazität verfügbar ist, aber es gibt keine SLA für diese VMs. Eine Spot-VM bietet keine Garantien für Hochverfügbarkeit. Wenn die Kapazität von Azure wieder benötigt wird, werden die Spot-VMs mit einer Vorlaufzeit von 30 Sekunden durch die Azure-Infrastruktur entfernt. 
+Die verfügbare Kapazität kann abhängig von der Größe, Region, Tageszeit usw. variieren. Beim Bereitstellen von Azure-Spot-VMs weist Azure die VMs zu, wenn Kapazität verfügbar ist, aber es gibt keine SLA für diese VMs. Eine Azure-Spot-VM bietet keine Garantien für Hochverfügbarkeit. Wenn die Kapazität von Azure wieder benötigt wird, werden die Azure-Spot-VMs nach einer Benachrichtigung innerhalb von 30 Sekunden durch die Azure-Infrastruktur entfernt. 
 
 
 ## <a name="eviction-policy"></a>Entfernungsrichtlinie
 
-VMs können basierend auf der Kapazität oder dem von Ihnen festgelegten maximalen Preis entfernt werden. Wenn Sie eine Spot-VM erstellen, können Sie die Entfernungsrichtlinie auf *Zuordnung aufheben* (Standardeinstellung) oder *Löschen* festlegen. 
+VMs können basierend auf der Kapazität oder dem von Ihnen festgelegten maximalen Preis entfernt werden. Wenn Sie eine Azure-Spot-VM erstellen, können Sie die Entfernungsrichtlinie auf *Zuordnung aufheben* (Standardeinstellung) oder *Löschen* festlegen. 
 
 Die Richtlinie *Zuordnung aufheben* versetzt Ihre VM in den Zustand „beendet/Zuordnung aufgehoben“, sodass Sie sie später erneut bereitstellen können. Es gibt jedoch keine Garantie dafür, dass die Zuordnung erfolgreich ist. Die virtuellen Computer, deren Zuordnung aufgehoben wurde, werden auf Ihr Kontingent angerechnet, und die Speicherkosten für die zugrunde liegenden Datenträger werden Ihnen in Rechnung gestellt. 
 
@@ -47,25 +48,25 @@ Sie können sich für den Empfang von Benachrichtigungen in der VM über [Azure 
 
 ## <a name="limitations"></a>Einschränkungen
 
-Die folgenden VM-Größen werden für Spot-VMs nicht unterstützt:
+Die folgenden VM-Größen werden für Azure-Spot-VMs nicht unterstützt:
  - B-Serie
  - Promoversionen beliebiger Größe (z. B. Promogrößen Dv2, NV, NC, H)
 
-Mit Ausnahme von Microsoft Azure China 21ViaNet können Spot-VMs in jeder beliebigen Region bereitgestellt werden.
+Mit Ausnahme von Microsoft Azure China 21ViaNet können Azure-Spot-VMs in jeder beliebigen Region bereitgestellt werden.
 
 <a name="channel"></a>
 
 Folgende [Angebotstypen](https://azure.microsoft.com/support/legal/offer-details/) werden derzeit unterstützt:
 
 -   Enterprise Agreement
--   Nutzungsbasierte Bezahlung
+-   Angebotscode für nutzungsbasierte Bezahlung: 003P
 -   Sponsoren
 - Wenden Sie sich hinsichtlich des Cloud-Dienstanbieters (CSP) an Ihren Partner.
 
 
 ## <a name="pricing"></a>Preise
 
-Die Preise für Spot-VMs variieren je nach Region und SKU. Weitere Informationen finden Sie unter den VM-Preisen für [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) und [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
+Die Preise für Azure-Spot-VMs variieren je nach Region und SKU. Weitere Informationen finden Sie unter den VM-Preisen für [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) und [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
 
 Sie können auch Preisinformationen abfragen, indem Sie die [Azure-Einzelhandelspreis-API](/rest/api/cost-management/retail-prices/azure-retail-prices) verwenden, um Informationen zu Preisen von Spot-VMs abzufragen. `meterName` und `skuName` enthalten beide `Spot`.
 
@@ -87,24 +88,24 @@ Sie können den Preisverlauf und Entfernungsraten pro Größe in einer Region im
 
 ##  <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-**F:** Ist eine Spot-VM nach der Erstellung identisch mit einer herkömmlichen Standard-VM?
+**F:** Ist eine Azure-Spot-VM nach der Erstellung identisch mit einer Standard-VM?
 
-**A:** Ja, mit der Ausnahme, dass für Spot-VMs keine SLA besteht und dass sie jederzeit entfernt werden können.
+**A:** Ja, mit der Ausnahme, dass für Azure-Spot-VMs keine SLA besteht und dass sie jederzeit entfernt werden können.
 
 
 **F:** Was kann ich tun, wenn ich nach dem Entfernen immer noch Kapazität benötige?
 
-**A:** Es wird empfohlen, anstelle von Spot-VMs Standard-VMs zu verwenden, wenn Sie sofort Kapazität benötigen.
+**A:** Es wird empfohlen, anstelle von Azure-Spot-VMs Standard-VMs zu verwenden, wenn Sie die Kapazität sofort benötigen.
 
 
-**F:** Wie werden Kontingente für Spot-VMs verwaltet?
+**F:** Wie wird das Kontingent für Azure-Spot-VMs verwaltet?
 
-**A:** Spot-VMs verfügen über einen separaten Kontingentpool. Das Spotkontingent wird von virtuellen Computern und Skalierungsgruppeninstanzen gemeinsam genutzt. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
+**A:** Azure-Spot-VMs verfügen über einen separaten Kontingentpool. Das Spotkontingent wird von virtuellen Computern und Skalierungsgruppeninstanzen gemeinsam genutzt. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 
-**F:** Kann ich ein zusätzliches Kontingent für Spot anfordern?
+**F:** Kann ich für Azure-Spot-VMs zusätzliches Kontingent anfordern?
 
-**A:** Ja, Sie können eine Anforderung zur Erhöhung Ihres Kontingents für Spot-VMs über den [Standard-Kontingentanforderungsprozess](../azure-portal/supportability/per-vm-quota-requests.md) übermitteln.
+**A:** Ja, Sie können eine Anforderung zur Erhöhung Ihres Kontingents für Azure-Spot-VMs über den [Standardprozess zur Kontingentanforderung](../azure-portal/supportability/per-vm-quota-requests.md) übermitteln.
 
 
 **F:** Wo kann ich Fragen stellen?
@@ -117,8 +118,8 @@ Sie können den Preisverlauf und Entfernungsraten pro Größe in einer Region im
 **A:** Bevor Sie den maximalen Preis ändern können, müssen Sie die Zuordnung der VM aufheben. Dann können Sie den Preis im Portal im Abschnitt **Konfiguration** für die VM ändern. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Verwenden Sie die [Befehlszeilenschnittstelle](./linux/spot-cli.md), das [Portal](spot-portal.md), [ARM-Vorlagen](./linux/spot-template.md) oder [PowerShell](./windows/spot-powershell.md), um Spot-VMs bereitzustellen.
+Verwenden Sie die [Befehlszeilenschnittstelle](./linux/spot-cli.md), das [Portal](spot-portal.md), [ARM-Vorlagen](./linux/spot-template.md) oder [PowerShell](./windows/spot-powershell.md), um Azure-Spot-VMs bereitzustellen.
 
-Sie können auch eine [Skalierungsgruppe mit Spot-VM-Instanzen](../virtual-machine-scale-sets/use-spot.md) bereitstellen.
+Sie können auch eine [Skalierungsgruppe mit Azure-Spot-VM-Instanzen](../virtual-machine-scale-sets/use-spot.md) bereitstellen.
 
 Informationen zu eventuell auftretenden Fehlern finden Sie unter [Fehlercodes](./error-codes-spot.md).

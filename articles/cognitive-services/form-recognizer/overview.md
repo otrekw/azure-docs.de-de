@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatisierte Datenverarbeitung, Dokumentverarbeitung, automatisierte Dateneingabe, Formularverarbeitung
-ms.openlocfilehash: 2d3a37165994a8c7ff9d46ac24e63b7f58404ce3
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 95bbc33035ca99a64242274570be5c9263029aef
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584565"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094374"
 ---
 # <a name="what-is-form-recognizer"></a>Was ist die Formularerkennung?
 
@@ -27,26 +27,27 @@ Die Azure-Formularerkennung ist ein kognitiver Dienst, mit dem Sie unter Verwend
 Die Formularerkennung setzt sich aus benutzerdefinierten Dokumentverarbeitungsmodellen, vordefinierten Modellen für Rechnungen, Belege und Visitenkarten und dem Layoutmodell zusammen. Sie können Formularerkennungsmodelle mithilfe einer REST-API oder über Clientbibliothek-SDKs aufrufen, um die Komplexität zu reduzieren und sie in Ihren Workflow oder Ihre Anwendung zu integrieren.
 
 Die Formularerkennung umfasst folgende Dienste:
+
 * **[Layout-API:](#layout-api)** Dient zum Extrahieren von Text, Auswahlmarkierungen und Tabellenstrukturen sowie der zugehörigen Begrenzungsrahmenkoordinaten aus Dokumenten.
 * **[Benutzerdefinierte Modelle:](#custom-models)** Dienen zum Extrahieren von Text, Schlüssel-Wert-Paaren, Auswahlmarkierungen und Tabellendaten aus Formularen. Diese Modelle werden mit Ihren eigenen Daten trainiert, sodass Sie auf Ihre Formulare zugeschnitten sind.
 * **[Vordefinierte Modelle:](#prebuilt-models)** Dienen zum Extrahieren eindeutiger Formulartypen mithilfe vordefinierter Modelle. Aktuell sind folgende vordefinierte Modelle verfügbar:
-    * [Invoices](./concept-invoices.md)
-    * [Verkaufsbelege](./concept-receipts.md)
-    * [Visitenkarten](./concept-business-cards.md)
-
+  * [Invoices](./concept-invoices.md)
+  * [Verkaufsbelege](./concept-receipts.md)
+  * [Visitenkarten](./concept-business-cards.md)
 
 ## <a name="try-it-out"></a>Ausprobieren
 
 Wenn Sie den Formularerkennungsdienst ausprobieren möchten, wechseln Sie zum Benutzeroberflächentool für Onlinebeispiele:
-
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)
-> [!div class="nextstepaction"]
-> [Formularerkennung ausprobieren](https://fott.azurewebsites.net/)
-
+<!-- markdownlint-disable MD025 -->
 # <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+
 > [!div class="nextstepaction"]
 > [Formularerkennung ausprobieren](https://fott-preview.azurewebsites.net/)
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)
+
+> [!div class="nextstepaction"]
+> [Formularerkennung ausprobieren](https://fott.azurewebsites.net/)
 
 ---
 
@@ -137,12 +138,11 @@ Verwenden Sie die folgenden APIs zum Trainieren von Modellen und Extrahieren str
 | **Analysieren des Belegs** | Analysieren Sie ein Belegdokument, um zentrale Informationen und anderen Belegtext zu extrahieren.|
 | **Analysieren von Visitenkarten** | Analysieren Sie eine Visitenkarte, um wichtige Informationen und Text zu extrahieren.|
 
+# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+Sehen Sie sich die [Referenzdokumentation zur REST-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeWithCustomForm) an, um mehr zu erfahren. Wenn Sie mit einer früheren Version der API vertraut sind, finden Sie im Artikel [Neuerungen](./whats-new.md) weitere Informationen zu den aktuellen Änderungen.
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 Sehen Sie sich die [Referenzdokumentation zur REST-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) an, um mehr zu erfahren. Wenn Sie mit einer früheren Version der API vertraut sind, finden Sie im Artikel [Neuerungen](./whats-new.md) weitere Informationen zu den aktuellen Änderungen.
-
-# <a name="v21"></a>[v2.1](#tab/v2-1)
-Sehen Sie sich die [Referenzdokumentation zur REST-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeWithCustomForm) an, um mehr zu erfahren. Wenn Sie mit einer früheren Version der API vertraut sind, finden Sie im Artikel [Neuerungen](./whats-new.md) weitere Informationen zu den aktuellen Änderungen.
 
 ---
 

@@ -3,12 +3,12 @@ title: 'Häufig gestellte Fragen zu Live Video Analytics in IoT Edge: Azure'
 description: Dieser Artikel bietet Antworten auf häufig gestellte Fragen zu Live Video Analytics in IoT Edge.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 0cb378bf614582070dd1bdd0a11706b26437af53
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 72a07a1a509aebcd7ba4048d0c84e913481c978e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880049"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702248"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>Häufig gestellte Fragen zu Live Video Analytics in IoT Edge
 
@@ -76,7 +76,7 @@ Empfohlene Player für Tests:
 * [Shaka Player](https://github.com/google/shaka-player)
 * [ExoPlayer](https://github.com/google/ExoPlayer)
 * [Natives HTTP Live Streaming (HLS) von Apple](https://developer.apple.com/streaming/)
-* Edge, Chrome oder Safari mit integriertem HTML5-Videoplayer
+* Microsoft Edge, Chrome oder Safari mit integriertem HTML5-Videoplayer
 * Kommerzielle Player, die die HLS- oder DASH-Wiedergabe unterstützen
 
 **Welche Einschränkungen gelten für das Streaming eines Medienobjekts aus einem Mediendiagramm?**
@@ -230,7 +230,7 @@ Ja. Sie können die Prometheus-Metriken nutzen und in Event Grid veröffentliche
 
 **Kann ich Azure Monitor verwenden, um Integrität, Metriken und Leistung meiner Mediendiagramme in der Cloud oder am Edge anzuzeigen?**
 
-Ja, diese Vorgehensweise wird unterstützt. Weitere Informationen finden Sie in der [Übersicht über Azure Monitor-Metriken](../../azure-monitor/platform/data-platform-metrics.md).
+Ja, diese Vorgehensweise wird unterstützt. Weitere Informationen finden Sie in der [Übersicht über Azure Monitor-Metriken](../../azure-monitor/essentials/data-platform-metrics.md).
 
 **Gibt es Tools, die das Überwachen des IoT Edge-Moduls für Media Services vereinfachen?**
 

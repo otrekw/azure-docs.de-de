@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 00aa24f0ff8c918c645239ca36888c6a214062c8
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 515921c4e69b7c2cff8e1055182503b5ce89971c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028759"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657144"
 ---
 # <a name="voice-and-video-concepts"></a>Sprach- und Videokonzepte
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Mit Azure Communication Services können Sie Sprach- und Videoanrufe (1:1 oder in der Gruppe) tätigen und empfangen. Es können sowohl andere Geräte mit Internetverbindung als auch herkömmliche Telefone angerufen werden. Mit den JavaScript-, Android- oder iOS-Clientbibliotheken von Communication Services können Sie Anwendungen erstellen, die es Benutzern ermöglichen, sich privat oder in Gruppendiskussionen miteinander zu unterhalten. Von Azure Communication Services werden aus- und eingehende Anrufe mit Diensten oder Bots unterstützt.
 
@@ -26,7 +24,7 @@ Mit Azure Communication Services können Sie Sprach- und Videoanrufe (1:1 oder i
 
 In Azure Communication Services können verschiedene Arten von Anrufen verwendet werden. Die Art der verwendeten Anrufe hat Auswirkungen auf das Signalschema, auf die Datenverkehrsflüsse für Medien sowie auf das Preismodell.
 
-### <a name="voice-over-ip-voip"></a>Sprachtelefonie über IP (Voice over IP, VoIP) 
+### <a name="voice-over-ip-voip"></a>Sprachtelefonie über IP (Voice over IP, VoIP)
 
 Wenn ein Benutzer Ihrer Anwendung einen anderen Benutzer Ihrer Anwendung über eine Internet- oder Datenverbindung anruft, wird der Anruf über Voice over IP (VoIP) getätigt. In diesem Fall werden sowohl Signale als auch Medien über das Internet übertragen.
 
@@ -43,14 +41,14 @@ Ein 1:1-Anruf in Azure Communication Services erfolgt, wenn einer Ihrer Benutzer
 Ein Gruppenanruf in Azure Communication Services erfolgt, wenn mindestens drei Teilnehmer eine Verbindung miteinander herstellen. An einem Gruppenanruf kann eine beliebige Kombination aus Benutzern mit VoIP- oder PSTN-Verbindung teilnehmen. Ein 1:1-Anruf kann durch Hinzufügen weiterer Teilnehmer in einen Gruppenanruf konvertiert werden. Einer dieser Teilnehmer kann ein Bot sein.
 
 ### <a name="supported-video-standards"></a>Unterstützte Videostandards
-Wir unterstützen H.264 (MPEG-4). 
+Wir unterstützen H.264 (MPEG-4).
 
 ### <a name="video-quality"></a>Videoqualität
-In den nativen SDKs (iOS, Android) wird maximal Full HD mit 1080p unterstützt. Für das Web SDK (JS) wird Standard HD mit 720p unterstützt. Die Qualität hängt von der verfügbaren Bandbreite ab.  
+In den nativen SDKs (iOS, Android) wird maximal Full HD mit 1080p unterstützt. Für das Web SDK (JS) wird Standard HD mit 720p unterstützt. Die Qualität hängt von der verfügbaren Bandbreite ab.
 
 ### <a name="rooms-concept"></a>Raumkonzept
 Bei Räumen handelt es sich um eine Gruppe von APIs und SDKs, mit denen Sie Ihrer Website oder nativen Anwendung mühelos Audio-, Video-, Bildschirmfreigabe- und PSTN-Funktionen sowie SMS-Interaktionen hinzufügen können.
-Während der Vorschauphase können Sie die Gruppen-ID verwenden, um an der gleichen Konversation teilzunehmen. Sie können beliebig viele Gruppen-IDs erstellen und die Benutzer durch die Verwendung von „Räumen“ voneinander trennen. Die Steuerungsmöglichkeiten im Zusammenhang mit Räumen werden von uns noch erweitert. 
+Während der Vorschauphase können Sie die Gruppen-ID verwenden, um an der gleichen Konversation teilzunehmen. Sie können beliebig viele Gruppen-IDs erstellen und die Benutzer durch die Verwendung von „Räumen“ voneinander trennen. Die Steuerungsmöglichkeiten im Zusammenhang mit Räumen werden von uns noch erweitert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -59,5 +57,5 @@ Während der Vorschauphase können Sie die Gruppen-ID verwenden, um an der gleic
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 - Machen Sie sich mit allgemeinen [Anrufflows](../call-flows.md) vertraut.
-- [Planen Sie Ihre PSTN-Lösung.](../telephony-sms/plan-solution.md)
+- [Telefonnummerntypen](../telephony-sms/plan-solution.md)
 - Informieren Sie sich über die [Funktionen der Clientbibliothek für Telefonie](../voice-video-calling/calling-sdk-features.md).

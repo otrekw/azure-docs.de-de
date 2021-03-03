@@ -5,12 +5,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 878ae21cfbe55565c4a20064d937d1447f96ce7a
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: fdf482f5afc444aff77c2ab528a4e333a0282c3d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209898"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582368"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Informationen zu Azure Monitor für Azure Cosmos DB
 
@@ -125,6 +125,6 @@ Anleitungen zur Problembehandlung finden Sie im Artikel zur [Problembehandlung f
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Konfigurieren Sie [Metrikwarnungen](../platform/alerts-metric.md) und [Dienstintegritätsbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications-portal.md), um automatisierte Warnungen einzurichten, die beim Erkennen von Problemen hilfreich sein können.
+* Konfigurieren Sie [Metrikwarnungen](../alerts/alerts-metric.md) und [Dienstintegritätsbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications-portal.md), um automatisierte Warnungen einzurichten, die beim Erkennen von Problemen hilfreich sein können.
 
-* Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.
+* Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../visualize/workbooks-overview.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.

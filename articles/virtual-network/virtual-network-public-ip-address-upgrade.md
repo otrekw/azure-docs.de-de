@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: 93d5d422709fad3d4f732b3b232f67d60d79b507
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 33c767d847d9e70e95b3ee1648be7852aa5cec98
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493718"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522885"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Ausführen eines Upgrades für öffentliche IP-Adressen
 
@@ -36,7 +36,7 @@ Folgende Szenarien werden in diesem Artikel behandelt:
 Damit für eine öffentliche IP-Adresse ein Upgrade durchgeführt werden kann, darf sie keiner Ressource zugeordnet sein. (Weitere Informationen zum Aufheben der Zuordnung öffentlicher IP-Adressen finden Sie auf [dieser Seite](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address).)
 
 >[!IMPORTANT]
->Auch nach dem Upgrade von der Basic-SKU auf die Standard-SKU haben die öffentlichen IP-Adressen keine [Verfügbarkeitszonen](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).  Dies bedeutet, dass sie keiner Azure-Ressource zugeordnet werden können, die zonenredundant oder in Regionen, in denen dies angeboten wird, an eine vordefinierte Zone gebunden ist.
+>Auch nach dem Upgrade von der Basic-SKU auf die Standard-SKU haben die öffentlichen IP-Adressen keine garantierten [Verfügbarkeitszonen](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).  Stellen Sie sicher, dass dies bei der Auswahl der Ressourcen, mit denen die IP-Adresse verknüpft werden soll, berücksichtigt wird.
 
 ---
 # <a name="basic-to-standard---powershell"></a>[**Basic zu Standard: PowerShell**](#tab/option-upgrade-powershell)

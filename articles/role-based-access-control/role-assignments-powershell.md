@@ -1,22 +1,22 @@
 ---
-title: Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe von Azure PowerShell – Azure RBAC
+title: 'Zuweisen von Azure-Rollen mithilfe von Azure PowerShell: Azure RBAC'
 description: Erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten mit Azure PowerShell und der rollenbasierten Zugriffssteuerung (Azure RBAC) erteilen.
 services: active-directory
 author: rolyon
-manager: mtillman
+manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/25/2020
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: 3bb09133ba6991554072b4bf68b5306c78f868a7
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 00f663b90f34f3b557329692f844bbbc1bf3207d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964285"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556800"
 ---
-# <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe von Azure PowerShell
+# <a name="assign-azure-roles-using-azure-powershell"></a>Zuweisen von Azure-Rollen mithilfe von Azure PowerShell
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] In diesem Artikel wird das Zuweisen von Rollen mit Azure PowerShell beschrieben.
 
@@ -24,19 +24,19 @@ ms.locfileid: "97964285"
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen Folgendes, um Rollenzuweisungen hinzufügen oder entfernen zu können:
+Zum Zuweisen von Rollen müssen Sie über Folgendes verfügen:
 
-- `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, wie z.B. [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) oder [Besitzer](built-in-roles.md#owner)
+- `Microsoft.Authorization/roleAssignments/write`-Berechtigungen, z. B. [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) oder [Besitzer](built-in-roles.md#owner)
 - [PowerShell in Azure Cloud Shell](../cloud-shell/overview.md) oder [Azure PowerShell](/powershell/azure/install-az-ps)
 - Das Konto, das Sie zum Ausführen des PowerShell-Befehls verwenden, muss über die Microsoft Graph-Berechtigung `Directory.Read.All` verfügen.
 
-## <a name="steps-to-add-a-role-assignment"></a>Schritte zum Hinzufügen einer Rollenzuweisung
+## <a name="steps-to-assign-an-azure-role"></a>Schritte zum Zuweisen einer Azure-Rolle
 
-In Azure RBAC fügen Sie zum Gewähren des Zugriffs eine Rollenzuweisung hinzu. Eine Rollenzuweisung besteht aus drei Elementen: Sicherheitsprinzipal, Rollendefinition und Bereich. Führen Sie die folgenden Schritte aus, um eine Rollenzuweisung hinzuzufügen.
+Das Zuweisen einer Rolle besteht aus drei Elementen: Sicherheitsprinzipal, Rollendefinition und Bereich.
 
 ### <a name="step-1-determine-who-needs-access"></a>Schritt 1: Ermitteln, wer Zugriff benötigt
 
-Sie können eine Rolle einem Benutzer, einer Gruppe, einem Dienstprinzipal oder einer verwalteten Identität zuweisen. Sie müssen eventuell die eindeutige ID des Objekts angeben, um Rollenzuweisungen hinzufügen zu können. Die ID weist dieses Format auf: `11111111-1111-1111-1111-111111111111`. Sie können die ID über das Azure-Portal oder Azure PowerShell abrufen.
+Sie können eine Rolle einem Benutzer, einer Gruppe, einem Dienstprinzipal oder einer verwalteten Identität zuweisen. Sie müssen ggf. die eindeutige ID des Objekts angeben, um eine Rolle zuzuweisen. Die ID weist dieses Format auf: `11111111-1111-1111-1111-111111111111`. Sie können die ID über das Azure-Portal oder Azure PowerShell abrufen.
 
 **Benutzer**
 
@@ -74,7 +74,7 @@ Get-AzADServicePrincipal -SearchString <principalName>
 (Get-AzADServicePrincipal -DisplayName <principalName>).id
 ```
     
-### <a name="step-2-find-the-appropriate-role"></a>Schritt 2: Suchen der gewünschten Rolle
+### <a name="step-2-select-the-appropriate-role"></a>Schritt 2: Auswählen der geeigneten Rolle
 
 Berechtigungen sind in Rollen zusammengefasst. Sie können aus einer Liste von verschiedenen [in Azure integrierten Rollen](built-in-roles.md) auswählen oder eigene benutzerdefinierte Rollen verwenden. Es hat sich bewährt, den Zugriff mit den minimal erforderlichen Berechtigungen zu gewähren. Daher sollten Sie keine allgemeine Rolle zuweisen.
 
@@ -128,9 +128,9 @@ Für den Verwaltungsgruppenbereich benötigen Sie den Namen der Verwaltungsgrupp
 Get-AzManagementGroup
 ```
     
-### <a name="step-4-add-role-assignment"></a>Schritt 4: Rollenzuweisung hinzufügen
+### <a name="step-4-assign-role"></a>Schritt 4: Zuweisen einer Rolle
 
-Zum Hinzufügen einer Rollenzuweisung verwenden Sie den Befehl [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment). Abhängig vom Bereich weist der Befehl in der Regel eines der folgenden Formate auf.
+Zum Zuweisen einer Rolle verwenden Sie den Befehl [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment). Abhängig vom Bereich weist der Befehl in der Regel eines der folgenden Formate auf.
 
 **Ressourcenumfang**
 
@@ -190,9 +190,9 @@ New-AzRoleAssignment -ObjectId <objectId> `
 -Scope /providers/Microsoft.Management/managementGroups/<groupName>
 ``` 
     
-## <a name="add-role-assignment-examples"></a>Beispiele für das Hinzufügen von Rollenzuweisungen
+## <a name="assign-role-examples"></a>Beispiele für das Zuweisen einer Rolle
 
-#### <a name="add-role-assignment-for-all-blob-containers-in-a-storage-account-resource-scope"></a>Hinzufügen einer Rollenzuweisung für alle Blobcontainer in einem Speicherkonto-Ressourcenbereich
+#### <a name="assign-a-role-for-all-blob-containers-in-a-storage-account-resource-scope"></a>Zuweisen einer Rolle für alle Blobcontainer in einem Speicherkonto-Ressourcenbereich
 
 Weist einem Dienstprinzipal mit der Objekt-ID *55555555-5555-5555-5555-555555555555* die Rolle [Mitwirkender an Speicherblobdaten](built-in-roles.md#storage-blob-data-contributor) im Ressourcenbereich für das Speicherkonto *storage12345* zu.
 
@@ -212,7 +212,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-specific-blob-container-resource-scope"></a>Hinzufügen einer Rollenzuweisung für einen bestimmten Blobcontainer-Ressourcenbereich
+#### <a name="assign-a-role-for-a-specific-blob-container-resource-scope"></a>Zuweisen einer Rolle für einen bestimmten Blobcontainer-Ressourcenbereich
 
 Weist einem Dienstprinzipal mit der Objekt-ID *55555555-5555-5555-5555-555555555555* die Rolle [Mitwirkender an Speicherblobdaten](built-in-roles.md#storage-blob-data-contributor) im Ressourcenbereich für den Blobcontainer *blob-container-01* zu.
 
@@ -233,7 +233,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-group-in-a-specific-virtual-network-resource-scope"></a>Hinzufügen einer Rollenzuweisung für eine Gruppe im Ressourcenbereich eines bestimmten virtuellen Netzwerks
+#### <a name="assign-a-role-for-a-group-in-a-specific-virtual-network-resource-scope"></a>Zuweisen einer Rolle für eine Gruppe im Ressourcenbereich eines bestimmten virtuellen Netzwerks
 
 Weist die Rolle [Mitwirkender von virtuellen Computern](built-in-roles.md#virtual-machine-contributor) der Gruppe *Pharma Sales Admins* mit der ID „aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa“ an einem Ressourcenbereich für ein virtuelles Netzwerk namens *pharma-sales-project-network* zu.
 
@@ -258,7 +258,7 @@ ObjectType         : Group
 CanDelegate        : False
 ```
 
-#### <a name="add-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Hinzufügen einer Rollenzuweisung für einen Benutzer in einem Ressourcengruppenbereich
+#### <a name="assign-a-role-for-a-user-at-a-resource-group-scope"></a>Zuweisen einer Rolle für einen Benutzer im Ressourcengruppenbereich
 
 Weist dem Benutzer *patlong\@contoso.com* die Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) im Ressourcengruppenbereich *pharma-sales* zu.
 
@@ -297,7 +297,7 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>Hinzufügen einer Rollenzuweisung für einen Benutzer mithilfe der eindeutigen Rollen-ID in einem Ressourcengruppenbereich
+#### <a name="assign-a-role-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>Zuweisen einer Rolle für einen Benutzer mithilfe der eindeutigen Rollen-ID in einem Ressourcengruppenbereich
 
 In bestimmten Fällen kann sich ein Rollenname ändern, z. B.:
 
@@ -324,7 +324,7 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-an-application-at-a-resource-group-scope"></a>Hinzufügen einer Rollenzuweisung für eine Anwendung in einem Ressourcengruppenbereich
+#### <a name="assign-a-role-for-an-application-at-a-resource-group-scope"></a>Zuweisen einer Rolle für eine Anwendung in einem Ressourcengruppenbereich
 
 Weist einer Anwendung mit der Objekt-ID „77777777-7777-7777-7777-777777777777“ des Dienstprinzipals die Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) im Ressourcengruppenbereich *pharma-sales* zu.
 
@@ -344,7 +344,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-subscription-scope"></a>Hinzufügen einer Rollenzuweisung für einen Benutzer im Abonnementbereich
+#### <a name="assign-a-role-for-a-user-at-a-subscription-scope"></a>Zuweisen einer Rolle für einen Benutzer in einem Abonnementbereich
 
 Weist dem Benutzer *annm\@example.com* die Rolle [Leser](built-in-roles.md#reader) im Abonnementbereich zu.
 
@@ -364,7 +364,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-management-group-scope"></a>Hinzufügen einer Rollenzuweisung für einen Benutzer in einem Verwaltungsgruppenbereich
+#### <a name="assign-a-role-for-a-user-at-a-management-group-scope"></a>Zuweisen einer Rolle für einen Benutzer in einem Verwaltungsgruppenbereich
 
 Weist dem Benutzer *alain\@example.com* die Rolle [Abrechnungsleser](built-in-roles.md#billing-reader) im Verwaltungsgruppenbereich zu.
 
@@ -383,36 +383,6 @@ ObjectId           : 44444444-4444-4444-4444-444444444444
 ObjectType         : User
 CanDelegate        : False
 ```
-
-## <a name="remove-a-role-assignment"></a>Entfernen einer Rollenzuweisung
-
-In Azure RBAC entfernen Sie mit [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) eine Rollenzuweisung und somit den Zugriff.
-
-Im folgenden Beispiel wird die Zuweisung der Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) von Benutzer *patlong\@contoso.com* für die Ressourcengruppe *pharma-sales* entfernt:
-
-```azurepowershell
-PS C:\> Remove-AzRoleAssignment -SignInName patlong@contoso.com `
--RoleDefinitionName "Virtual Machine Contributor" `
--ResourceGroupName pharma-sales
-```
-
-Entfernt die Rolle [Leser](built-in-roles.md#reader) von der Gruppe *Ann Mack Team* mit der ID „22222222-2222-2222-2222-222222222222“ im Abonnementbereich.
-
-```azurepowershell
-PS C:\> Remove-AzRoleAssignment -ObjectId 22222222-2222-2222-2222-222222222222 `
--RoleDefinitionName "Reader" `
--Scope "/subscriptions/00000000-0000-0000-0000-000000000000"
-```
-
-Entfernt die Rolle [Abrechnungsleser](built-in-roles.md#billing-reader) vom Benutzer *alain\@example.com* im Verwaltungsgruppenbereich.
-
-```azurepowershell
-PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com `
--RoleDefinitionName "Billing Reader" `
--Scope "/providers/Microsoft.Management/managementGroups/marketing-group"
-```
-
-Wenn Sie die folgende Fehlermeldung erhalten: „The provided information does not map to a role assignment“ (Die angegebenen Informationen stimmen mit keiner Rollenzuweisung überein), sollten Sie sicherstellen, dass auch die Parameter `-Scope` oder `-ResourceGroupName` angegeben werden. Weitere Informationen finden Sie unter [Behandeln von Problemen bei Azure RBAC](troubleshooting.md#role-assignments-with-identity-not-found).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,12 +3,12 @@ title: Informationen zum Überwachen der Inhalte virtueller Computer
 description: Hier erfahren Sie, wie Azure Policy mithilfe des Gastkonfigurationsclients Einstellungen in VMs überwacht.
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: c141169545379f1ac0dd18a97e85652f97b90e6f
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 5d1503680ea2ca7d0ff7c8adae19c05abfe441c0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210119"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104806"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
@@ -142,11 +142,15 @@ Beim Zuweisen von Definitionen, die mit _Konfigurieren_ beginnen, müssen Sie au
 
 Die für die Gastkonfiguration verfügbaren Überwachungsrichtliniendefinitionen umfassen den Ressourcentyp **Microsoft.HybridCompute/machines**. Alle Computer, die in [Azure Arc für Server](../../../azure-arc/servers/overview.md) integriert sind und sich im Geltungsbereich der Richtlinienzuweisung befinden, werden automatisch eingeschlossen.
 
+## <a name="troubleshooting-guest-configuration"></a>Problembehandlung bei der Gastkonfiguration
+
+Weitere Informationen zur Problembehandlung bei der Gastkonfiguration finden Sie unter [Problembehandlung mit Azure Policy](../troubleshoot/general.md).
+
 ### <a name="multiple-assignments"></a>Mehrere Zuweisungen
 
 Aufgrund der Richtliniendefinitionen für die Gastkonfiguration kann die gleiche Gastzuweisung derzeit lediglich einmal pro Computer zugewiesen werden, auch wenn bei der Richtlinienzuweisung andere Parameter verwendet werden.
 
-## <a name="client-log-files"></a>Protokolldateien des Clients
+### <a name="client-log-files"></a>Protokolldateien des Clients
 
 Die Guest Configuration-Erweiterung schreibt Protokolldateien an die folgenden Speicherorte:
 
@@ -180,6 +184,15 @@ linesToIncludeAfterMatch=10
 logPath=/var/lib/GuestConfig/gc_agent_logs/gc_agent.log
 egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' $logPath | tail
 ```
+
+### <a name="client-files"></a>Clientdateien
+
+Der Gastkonfigurationsclient lädt Inhaltspakete auf einen Computer herunter und extrahiert den Inhalt.
+Um zu überprüfen, welche Inhalte heruntergeladen und gespeichert wurden, sehen Sie sich die unten angegebenen Ordnerspeicherorte an.
+
+Windows: `c:\programdata\guestconfig\configurations`
+
+Linux: `/var/lib/guestconfig/configurations`
 
 ## <a name="guest-configuration-samples"></a>Beispiele für Guest Configuration
 

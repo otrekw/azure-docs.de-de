@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 119b00e67cf8337123028840ec6a7ecd29e97a05
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 8c375c3dc9f4c5fdb20270797eb55b3a20a6e214
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051599"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698279"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Grundlegendes zu Metriken für Azure Spring Cloud
 
@@ -99,7 +99,7 @@ Die verfügbaren Metriken und ihre Details sind in den nachfolgenden Tabellen au
 >|----|----|----|------------|
 >| system.cpu.usage | system.cpu.usage | Percent | Aktuelle CPU-Auslastung für das gesamte System (veraltet und sollte nicht verwendet werden). Dieser Wert ist im [0.0,1.0]-Intervall ein Double. Ein Wert von 0.0 bedeutet, dass sich alle CPUs während des aktuell beobachteten Zeitraums im Leerlauf befanden. Ein Wert von 1.0 bedeutet, dass alle CPUs während 100 Prozent der Zeit des aktuell beobachteten Zeitraums aktiv ausgeführt wurden.|
 >| process.cpu.usage | Prozentualer Anteil der App-CPU-Auslastung | Percent | Aktuelle CPU-Auslastung für den Java Virtual Machine-Prozess (veraltet und sollte nicht verwendet werden). Dieser Wert ist im [0.0,1.0]-Intervall ein Double. Ein Wert von 0.0 bedeutet, dass keine der CPUs während des aktuell beobachteten Zeitraums Threads des JVM-Prozesses ausgeführt hat. Ein Wert von 1.0 bedeutet, dass alle CPUs während 100 Prozent der Zeit des aktuell beobachteten Zeitraums aktiv JVM-Threads ausgeführt haben. Zu den JVM-Threads gehören Anwendungsthreads sowie interne JVM-Threads.|
->| AppCpuUsage | App-CPU-Auslastung (Vorschau) | Percent | Aktuelle CPU-Auslastung des JVM-Prozesses für die CPU, die dieser App zugeordnet ist, Wert vom Typ Double zwischen [0.0,1.0]. Ein Wert von 0.0 bedeutet, dass keine der CPUs während des aktuell beobachteten Zeitraums Threads des JVM-Prozesses ausgeführt hat. Ein Wert von 1.0 bedeutet, dass alle CPUs während 100 Prozent der Zeit des aktuell beobachteten Zeitraums aktiv JVM-Threads ausgeführt haben. Zu den JVM-Threads gehören Anwendungsthreads sowie interne JVM-Threads.|
+>| AppCpuUsage | App-CPU-Auslastung | Percent | Aktuelle CPU-Auslastung des JVM-Prozesses für die CPU, die dieser App zugeordnet ist, Wert vom Typ Double zwischen [0.0,1.0]. Ein Wert von 0.0 bedeutet, dass keine der CPUs während des aktuell beobachteten Zeitraums Threads des JVM-Prozesses ausgeführt hat. Ein Wert von 1.0 bedeutet, dass alle CPUs während 100 Prozent der Zeit des aktuell beobachteten Zeitraums aktiv JVM-Threads ausgeführt haben. Zu den JVM-Threads gehören Anwendungsthreads sowie interne JVM-Threads.|
 >| jvm.memory.committed | jvm.memory.committed | Byte | Die Menge des Arbeitsspeichers, die garantiert für die Verwendung durch die JVM zur Verfügung steht. Die JVM gibt möglicherweise Arbeitsspeicher für das System frei, und „Zugesichert“ könnte niedriger als „Init“ sein. „Zugesichert“ ist immer größer oder gleich „Verwendet“. |
 >| jvm.memory.used | jvm.memory.used | Byte | Die derzeit verwendete Arbeitsspeichermenge in Byte. |
 >| jvm.memory.max | jvm.memory.max | Byte | Die maximale Speichermenge, die für die Arbeitsspeicherverwaltung verwendet werden kann. Die Menge des verwendeten und zugesicherten Arbeitsspeichers ist immer kleiner oder gleich dem maximalen Wert, wenn er definiert ist. Eine Speicherzuordnung kann jedoch fehlschlagen, wenn sie versucht, den verwendeten Arbeitsspeicher so zu vergrößern, dass „Verwendet“ > „Zugesichert“ ist, selbst wenn „Verwendet <= „Max“ weiterhin zutrifft, z. B. wenn dem System der virtuelle Arbeitsspeicher ausgeht. |
@@ -173,7 +173,7 @@ Weitere Informationen finden Sie unter [dotnet-Leistungsindikatoren](/dotnet/cor
 
 * [Schnellstart: Überwachen von Azure Spring Cloud-Apps mit Protokollen, Metriken und Ablaufverfolgung](spring-cloud-quickstart-logs-metrics-tracing.md)
 
-* [Erste Schritte mit dem Azure-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md)
+* [Erste Schritte mit dem Azure-Metrik-Explorer](../azure-monitor/essentials/metrics-getting-started.md)
 
 * [Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen](./diagnostic-services.md)
 

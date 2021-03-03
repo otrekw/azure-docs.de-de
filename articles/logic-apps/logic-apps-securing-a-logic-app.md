@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: a74868beea6e5903b6b17a7bc0c82cc822fcd36f
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.date: 02/12/2021
+ms.openlocfilehash: d7ed3fb268920d6f4d015886c560b2d9fcbdc632
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055177"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104500"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -70,7 +70,7 @@ Jede URL enthält die Abfrageparameter `sp`, `sv` und `sig`, wie in dieser Tabel
 
 | Query parameter (Abfrageparameter) | BESCHREIBUNG |
 |-----------------|-------------|
-| `sp` | Gibt die Berechtigungen für die zulässigen HTTP-Methoden an. |
+| `sp` | Gibt Berechtigungen für die zulässigen HTTP-Methoden an. |
 | `sv` | Gibt die SAS-Version an, die zum Generieren der Signatur verwendet werden soll. |
 | `sig` | Gibt die Signatur an, die für die Authentifizierung des Zugriffs auf den Trigger verwendet werden soll. Diese Signatur wird mit dem SHA256-Algorithmus mit einem geheimen Zugriffsschlüssel für alle URL-Pfade und -Eigenschaften generiert. Dieser Schlüssel wird nie verfügbar gemacht oder veröffentlicht. Er bleibt verschlüsselt und wird mit der Logik-App gespeichert. Die Logik-App autorisiert nur Trigger, die eine gültige, mit dem geheimen Schlüssel erstellte Signatur enthalten. |
 |||
@@ -123,11 +123,11 @@ Schließen Sie in den Textkörper die `KeyType`-Eigenschaft als `Primary` oder a
 
 ### <a name="enable-azure-active-directory-open-authentication-azure-ad-oauth"></a>Aktivieren der Azure Active Directory Open Authentication (Azure AD OAuth)
 
-Für eingehende Aufrufe an einen Endpunkt, der von einem anforderungsbasierten Trigger erstellt wurde, können Sie [Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml) aktivieren, indem Sie eine Autorisierungsrichtlinie für Ihre Logik-App definieren oder dieser hinzufügen. Auf diese Weise verwenden eingehende Aufrufe OAuth-[Zugriffstoken](../active-directory/develop/access-tokens.md) für die Autorisierung.
+Für eingehende Aufrufe an einen Endpunkt, der von einem anforderungsbasierten Trigger erstellt wurde, können Sie [Azure AD OAuth](../active-directory/develop/index.yml) aktivieren, indem Sie eine Autorisierungsrichtlinie für Ihre Logik-App definieren oder dieser hinzufügen. Auf diese Weise verwenden eingehende Aufrufe OAuth-[Zugriffstoken](../active-directory/develop/access-tokens.md) für die Autorisierung.
 
 Wenn Ihre Logik-App eine eingehende Anforderung mit einem OAuth-Zugriffstoken empfängt, vergleicht der Azure Logic Apps-Dienst die Ansprüche des Tokens mit den in den einzelnen Autorisierungsrichtlinien angegebenen Ansprüchen. Wenn eine Übereinstimmung zwischen den Ansprüchen des Tokens und allen Ansprüchen in mindestens einer Richtlinie vorliegt, ist die Autorisierung für die eingehende Anforderung erfolgreich. Das Token kann mehr Ansprüche als von der Autorisierungsrichtlinie angegeben aufweisen.
 
-Bevor Sie Azure AD OAuth aktivieren, berücksichtigen Sie die folgenden Überlegungen:
+#### <a name="considerations-before-you-enable-azure-ad-oauth"></a>Überlegungen vor dem Aktivieren von Azure AD OAuth
 
 * Bei einem eingehenden Aufruf an den Anforderungsendpunkt kann nur ein Autorisierungsschema verwendet werden, entweder Azure AD OAuth oder [Shared Access Signature (SAS)](#sas). Durch die Verwendung eines Schemas wird das andere Schema nicht deaktiviert, die gleichzeitige Verwendung beider Schemas führt jedoch zu einem Fehler, da der Logic Apps-Dienst nicht weiß, welches Schema ausgewählt werden soll.
 
@@ -180,11 +180,15 @@ Bevor Sie Azure AD OAuth aktivieren, berücksichtigen Sie die folgenden Überleg
    }
    ```
 
+#### <a name="enable-azure-ad-oauth-for-your-logic-app"></a>Aktivieren von Azure AD OAuth für Ihre Logik-App
+
+Führen Sie die folgenden Schritte für das Azure-Portal oder für Ihre Azure Resource Manager-Vorlage aus:
+
 <a name="define-authorization-policy-portal"></a>
 
-#### <a name="define-authorization-policy-in-azure-portal"></a>Definieren einer Autorisierungsrichtlinie im Azure-Portal
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Um Azure AD OAuth für Ihre Logik-App im Azure-Portal zu aktivieren, führen Sie die folgenden Schritte aus, um Ihrer Logik-App mindestens eine Autorisierungsrichtlinie hinzuzufügen:
+Fügen Sie im [Azure-Portal](https://portal.azure.com) mindestens eine Autorisierungsrichtlinie zu Ihrer Logik-App hinzu:
 
 1. Suchen oder öffnen Sie Ihre Logik-App im [Azure-Portal](https://portal.microsoft.com) im Logik-App-Designer.
 
@@ -216,9 +220,9 @@ Um Azure AD OAuth für Ihre Logik-App im Azure-Portal zu aktivieren, führen Sie
 
 <a name="define-authorization-policy-template"></a>
 
-#### <a name="define-authorization-policy-in-azure-resource-manager-template"></a>Definieren einer Autorisierungsrichtlinie in einer Azure Resource Manager-Vorlage
+#### <a name="resource-manager-template"></a>[Resource Manager-Vorlage](#tab/azure-resource-manager)
 
-Um Azure AD OAuth in der ARM-Vorlage für die Bereitstellung Ihrer Logik-App zu aktivieren, führen Sie die folgenden Schritte und die folgende Syntax aus:
+Definieren Sie in ihrer ARM-Vorlage eine Autorisierungsrichtlinie mithilfe der folgenden Schritte und Syntax:
 
 1. Fügen Sie im Abschnitt `properties` für die [Ressourcendefinition Ihrer Logik-App](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition) ein `accessControl`-Objekt hinzu, falls keines vorhanden ist, das ein `triggers`-Objekt enthält.
 
@@ -271,6 +275,8 @@ Dies ist die einzuhaltende Syntax:
 ],
 ```
 
+---
+
 <a name="include-auth-header"></a>
 
 #### <a name="include-authorization-header-in-request-trigger-outputs"></a>Einschließen des „Authorization“-Headers in Anforderungstriggerausgaben
@@ -310,11 +316,13 @@ Zusätzlich zur Shared Access Signature (SAS) empfiehlt es sich, spezifisch die 
 
 Unabhängig von den von Ihnen angegebenen IP-Adressen können Sie eine Logik-App, die einen anforderungsbasierten Trigger hat, mithilfe der Anforderung [Logic Apps-REST-API: Workflowtrigger – Ausführen](/rest/api/logic/workflowtriggers/run) oder über API Management weiterhin ausführen. In diesem Szenario ist jedoch weiterhin eine [Authentifizierung](../active-directory/develop/authentication-vs-authorization.md) über die Azure-REST-API erforderlich. Alle Ereignisse werden im Azure-Überwachungsprotokoll angezeigt. Achten Sie darauf, die Richtlinien für die Zugriffssteuerung entsprechend festzulegen.
 
+Um die eingehenden IP-Adressen für Ihre Logik-App einzuschränken, führen Sie die folgenden Schritte für das Azure-Portal oder für Ihre Azure Resource Manager-Vorlage aus:
+
 <a name="restrict-inbound-ip-portal"></a>
 
-#### <a name="restrict-inbound-ip-ranges-in-azure-portal"></a>Einschränken eingehender IP-Adressbereiche im Azure-Portal
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Wenn Sie eingehende IP-Adressen für Ihre Logik-App über das Portal einschränken, wirken sich diese Einschränkungen auf Trigger *und* auf Aktionen aus, ungeachtet der Beschreibung im Portal unter **zulässige eingehende IP-Adressen**. Um Einschränkungen für Trigger getrennt von Aktionen einzurichten, verwenden Sie das [`accessControl`-Objekt in der Azure Resource Manager-Vorlage Ihrer Logik-App](#restrict-inbound-ip-template) oder die [Logic Apps-REST-API: Workflow – Vorgang erstellen oder aktualisieren](/rest/api/logic/workflows/createorupdate).
+Im [Azure-Portal](https://portal.azure.com) wirkt sich dieser Filter sowohl auf Trigger *als auch* auf Aktionen aus, im Gegensatz zur Beschreibung im Portal unter **Zulässige eingehende IP-Adressen**. Um diesen Filter jeweils gesondert für Trigger und Aktionen einzurichten, verwenden Sie das `accessControl`-Objekt in einer Azure Resource Manager-Vorlage für Ihre Logik-App oder die [Logic Apps-REST-API: Workflow – Vorgang erstellen oder aktualisieren](/rest/api/logic/workflows/createorupdate).
 
 1. Öffnen Sie Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Logik-App-Designer.
 
@@ -323,23 +331,23 @@ Wenn Sie eingehende IP-Adressen für Ihre Logik-App über das Portal einschränk
 1. Wählen Sie im Abschnitt **Konfiguration der Zugriffssteuerung** unter **Zulässige eingehende IP-Adressen** den Pfad für Ihr Szenario aus:
 
    * Damit Ihre Logik-App nur über die integrierte [Azure Logic Apps-Aktion](../logic-apps/logic-apps-http-endpoint.md) als geschachtelte Logik-App aufgerufen werden kann, wählen Sie **Nur andere Logik-Apps** aus. Dies funktioniert *nur*, wenn Sie die **Azure Logic Apps**-Aktion für den Aufruf der geschachtelten Logik-App verwenden.
-   
+
      Diese Option schreibt ein leeres Array in Ihre Logik-App-Ressource und legt fest, dass nur Aufrufe von übergeordneten Logik-Apps, die die **Azure Logic Apps**-Aktion verwenden, die geschachtelte Logik-App auslösen können.
 
    * Damit Ihre Logik-App nur über die HTTP-Aktion als geschachtelte App aufgerufen werden kann, wählen Sie **Spezifische IP-Bereiche** aus, *nicht* **Nur andere Logik-Apps**. Wenn das Feld **IP-Bereiche für Trigger** angezeigt wird, geben Sie die [ausgehenden IP-Adressen](../logic-apps/logic-apps-limits-and-config.md#outbound) der übergeordneten Logik-App ein. Ein gültiger IP-Adressbereich verwenden die Formate *x.x.x.x/x* oder *x.x.x.x-x.x.x.x*.
-   
+
      > [!NOTE]
      > Wenn Sie die Option **Nur andere Logik-Apps** und die HTTP-Aktion zum Aufrufen Ihrer geschachtelten Logik-App verwenden, wird der Aufruf blockiert, und Sie erhalten einen „401 – nicht autorisiert“-Fehler.
-        
+
    * In Szenarien, in denen Sie eingehende Aufrufe von anderen IP-Adressen beschränken möchten, geben Sie im Feld **IP-Bereiche für Trigger** die IP-Adressbereiche ein, die vom Trigger akzeptiert werden. Ein gültiger IP-Adressbereich verwenden die Formate *x.x.x.x/x* oder *x.x.x.x-x.x.x.x*.
 
 1. Optional können Sie unter **Aufrufe auf den Empfang von Eingabe- und Ausgabemeldungen vom Ausführungsverlauf an die angegebenen IP-Adressen beschränken** die IP-Adressbereiche für eingehende Aufrufe angeben, die auf Eingabe- und Ausgabemeldungen im Ausführungsverlauf zugreifen können.
 
 <a name="restrict-inbound-ip-template"></a>
 
-#### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>Einschränken eingehender IP-Adressbereich in der Azure Resource Manager-Vorlage
+#### <a name="resource-manager-template"></a>[Resource Manager-Vorlage](#tab/azure-resource-manager)
 
-Wenn Sie die [Bereitstellung von Logik-Apps durch Verwenden von Resource Manager-Vorlagen automatisieren](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), können Sie die zulässigen eingehenden IP-Adressbereiche im Abschnitt `accessControl` der Ressourcendefinition Ihrer Logik-App angeben. Verwenden Sie dort die Abschnitte für `triggers`, `actions` und optional `contents`, indem Sie den Abschnitt `allowedCallerIpAddresses` mit der Eigenschaft `addressRange` einschließen und den Eigenschaftswert auf den zulässigen IP-Adressbereich im Format *x.x.x.x/x* oder *x.x.x.x-x.x.x.x* festlegen.
+Geben Sie in Ihrer ARM-Vorlage die zulässigen eingehenden IP-Adressbereiche in der Ressourcendefinition ihrer Logik-App an, indem Sie den Abschnitt `accessControl` verwenden. Verwenden Sie dort die Abschnitte für `triggers`, `actions` und optional `contents`, indem Sie den Abschnitt `allowedCallerIpAddresses` mit der Eigenschaft `addressRange` einschließen und den Eigenschaftswert auf den zulässigen IP-Adressbereich im Format *x.x.x.x/x* oder *x.x.x.x-x.x.x.x* festlegen.
 
 * Wenn Ihre geschachtelte Logik-App die Option **Nur andere Logik-Apps** verwendet, die eingehende Aufrufe nur von anderen Logik-Apps mit der Azure Logic Apps-Aktion zulässt, legen Sie die Eigenschaft `addressRange` auf ein leeres Array fest ( **[]** ).
 
@@ -439,6 +447,8 @@ Dieses Beispiel zeigt die Ressourcendefinition für eine geschachtelte Logik-App
 }
 ```
 
+---
+
 <a name="secure-operations"></a>
 
 ## <a name="access-to-logic-app-operations"></a>Zugriff auf Logik-App-Vorgänge
@@ -473,11 +483,15 @@ Um den Zugriff auf die Ein- und Ausgaben im Ausführungsverlauf Ihrer Logik-App 
 
 ### <a name="restrict-access-by-ip-address-range"></a>Beschränken des Zugriffs nach IP-Adressbereich
 
-Sie können den Zugriff auf die Ein- und Ausgaben im Ausführungsverlauf Ihrer Logik-App so einschränken, dass diese Daten nur für Anforderungen aus bestimmten IP-Adressbereichen einsehbar sind. Um beispielsweise den Zugriff auf Ein- und Ausgaben zu verhindern, geben Sie einen IP-Adressbereich wie z. B. `0.0.0.0-0.0.0.0` an. Nur Personen mit Administratorberechtigungen können diese Einschränkung entfernen und erhalten damit die Möglichkeit für einen Just-In-Time-Zugriff auf die Daten Ihrer Logik-App. Sie können die einzuschränkenden IP-Bereiche entweder über das Azure-Portal oder in einer Azure Resource Manager-Vorlage angeben, die Sie für die Bereitstellung von Logik-Apps verwenden.
+Sie können den Zugriff auf die Ein- und Ausgaben im Ausführungsverlauf Ihrer Logik-App so einschränken, dass diese Daten nur für Anforderungen aus bestimmten IP-Adressbereichen einsehbar sind.
 
-#### <a name="restrict-ip-ranges-in-azure-portal"></a>Einschränken von IP-Adressbereichen im Azure-Portal
+Um beispielsweise den Zugriff auf Ein- und Ausgaben zu verhindern, geben Sie einen IP-Adressbereich wie z. B. `0.0.0.0-0.0.0.0` an. Nur Personen mit Administratorberechtigungen können diese Einschränkung entfernen und erhalten damit die Möglichkeit für einen Just-In-Time-Zugriff auf die Daten Ihrer Logik-App.
 
-1. Öffnen Sie die Logik-App im Azure-Portal im Logik-App-Designer.
+Um die zulässigen IP-Adressbereiche anzugeben, führen Sie die folgenden Schritte für das Azure-Portal oder für Ihre Azure Resource Manager-Vorlage aus:
+
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. Öffnen Sie Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Logik-App-Designer.
 
 1. Wählen Sie im Menü Ihrer Logik-App unter **Einstellungen** die Option **Workfloweinstellungen** aus.
 
@@ -487,9 +501,9 @@ Sie können den Zugriff auf die Ein- und Ausgaben im Ausführungsverlauf Ihrer L
 
    Gültige IP-Adressbereiche verwenden die Formate *x.x.x.x/x* oder *x.x.x.x-x.x.x.x*.
 
-#### <a name="restrict-ip-ranges-in-azure-resource-manager-template"></a>Einschränken von IP-Adressbereichen in einer Azure Resource Manager-Vorlage
+#### <a name="resource-manager-template"></a>[Resource Manager-Vorlage](#tab/azure-resource-manager)
 
-Wenn Sie die [Bereitstellung von Logik-Apps mithilfe einer Resource Manager-Vorlage automatisieren](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), können Sie die IP-Adressbereiche angeben, indem Sie den Abschnitt `accessControl` mit dem Abschnitt `contents` in der Ressourcendefinition Ihrer Logik-App verwenden. Beispiel:
+Geben Sie in Ihrer ARM-Vorlage die IP-Adressbereiche an, indem Sie den Abschnitt `accessControl` zusammen mit dem Abschnitt `contents` in der Ressourcendefinition ihrer Logik-App verwenden, z. B.:
 
 ``` json
 {
@@ -528,11 +542,41 @@ Wenn Sie die [Bereitstellung von Logik-Apps mithilfe einer Resource Manager-Vorl
 }
 ```
 
+---
+
 <a name="obfuscate"></a>
 
 ### <a name="secure-data-in-run-history-by-using-obfuscation"></a>Schützen von Daten im Ausführungsverlauf mittels Obfuskation
 
-Bei vielen Triggern und Aktionen stehen Einstellungen zur Verfügung, um Eingaben, Ausgaben oder beides im Ausführungsverlauf einer Logik-App zu schützen. Bevor Sie diese Einstellungen verwenden, um entsprechende Daten zu schützen, [berücksichtigen Sie diese Aspekte](#obfuscation-considerations).
+Bei vielen Triggern und Aktionen stehen Einstellungen zur Verfügung, um Eingaben, Ausgaben oder beides im Ausführungsverlauf einer Logik-App zu schützen. Bevor Sie diese Einstellungen verwenden, um entsprechende Daten zu schützen, berücksichtigen Sie diese Aspekte.
+
+* Wenn Sie die Ein- oder Ausgaben für einen Trigger oder eine Aktion verbergen, sendet Logic Apps die geschützten Daten nicht an Azure Log Analytics. Außerdem können Sie diesem Auslöser oder dieser Aktion keine [nachverfolgten Eigenschaften](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) zur Überwachung hinzufügen.
+
+* Die [Logic Apps-API zur Verarbeitung des Workflowverlaufs](/rest/api/logic/) gibt keine sicheren Ausgaben zurück.
+
+* Um Ausgaben einer Aktion zu schützen, die Eingaben verbirgt oder explizit Ausgaben verbirgt, aktivieren Sie in dieser Aktion **Sichere Ausgaben** manuell.
+
+* Stellen Sie sicher, dass Sie **Sichere Eingaben** oder **Sichere Ausgaben** in nachfolgenden Aktionen aktivieren, bei denen Sie erwarten, dass die Daten im Ausführungsverlauf verborgen werden.
+
+  **Einstellung „Sichere Ausgaben“**
+
+  Wenn Sie **Sichere Ausgaben** in einem Trigger oder einer Aktion manuell aktivieren, blendet Logic Apps diese Ausgaben im Ausführungsverlauf aus. Wenn eine nachfolgende Aktion diese sicheren Ausgaben explizit als Eingaben verwendet, blendet Logic Apps die Eingaben dieser Aktion im Ausführungsverlauf aus, *aktiviert aber nicht* die Einstellung **Sichere Eingaben** der Aktion.
+
+  ![Sichere Ausgaben als Eingaben und nachgeschaltete Auswirkungen auf die meisten Aktionen](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
+
+  Die Aktionen „Erstellen“, „JSON analysieren“ und „Antwort“ weisen nur die Einstellung **Sichere Eingaben** auf. Wenn diese aktiviert wird, blendet diese Einstellung auch die Ausgaben dieser Aktionen aus. Wenn diese Aktionen explizit die sicheren Upstreamausgaben als Eingaben verwenden, blendet Logic Apps die Ein- und Ausgaben dieser Aktionen aus, *aktiviert aber nicht* die Einstellung **Sichere Eingaben** dieser Aktionen. Wenn eine nachfolgende Aktion explizit die ausgeblendeten Ausgaben der Aktionen „Erstellen“, „JSON analysieren“ oder „Antwort“ als Eingaben verwendet, *blendet Logic Apps die Ein- oder Ausgaben dieser nachfolgenden Aktion nicht aus*.
+
+  ![Sichere Ausgaben als Eingaben mit nachgeschalteten Auswirkungen auf bestimmte Aktionen](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
+
+  **Einstellung „Sichere Eingaben“**
+
+  Wenn Sie **Sichere Eingaben** in einem Trigger oder einer Aktion manuell aktivieren, blendet Logic Apps diese Eingaben im Ausführungsverlauf aus. Wenn eine nachfolgende Aktion explizit die sichtbaren Ausgaben dieses Triggers oder dieser Aktion als Eingaben verwendet, blendet Logic Apps die Eingaben dieser nachfolgenden Aktion im Ausführungsverlauf aus, *aktiviert aber nicht* die Option **Sichere Eingaben** in dieser Aktion und blendet die Ausgaben dieser Aktion nicht aus.
+
+  ![Sichere Eingaben und nachgeschaltete Auswirkungen auf die meisten Aktionen](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
+
+  Wenn die Aktionen „Erstellen“, „JSON analysieren“ und „Antwort“ explizit die sichtbaren Ausgaben des Triggers oder der Aktion mit den sicheren Eingaben verwenden, blendet Logic Apps die Ein- und Ausgaben dieser Aktionen, *aktiviert aber nicht* die Einstellung **Sichere Eingaben** der jeweiligen Aktion. Wenn eine nachfolgende Aktion explizit die ausgeblendeten Ausgaben der Aktionen „Erstellen“, „JSON analysieren“ oder „Antwort“ als Eingaben verwendet, *blendet Logic Apps die Ein- oder Ausgaben dieser nachfolgenden Aktion nicht aus*.
+
+  ![Sichere Eingaben und nachgeschaltete Auswirkungen auf bestimmte Aktionen](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
 #### <a name="secure-inputs-and-outputs-in-the-designer"></a>Schützen von Ein- und Ausgaben im Designer
 
@@ -575,8 +619,6 @@ Fügen Sie in der zugrunde liegenden Trigger- oder Aktionsdefinition das Array `
 * `"inputs"`: Schützt Eingaben im Ausführungsverlauf.
 * `"outputs"`: Schützt Ausgaben im Ausführungsverlauf.
 
-Wenn Sie diese Einstellungen verwenden, um entsprechende Daten zu schützen, müssen [einige Aspekte](#obfuscation-considerations) berücksichtigt werden.
-
 ```json
 "<trigger-or-action-name>": {
    "type": "<trigger-or-action-type>",
@@ -594,38 +636,6 @@ Wenn Sie diese Einstellungen verwenden, um entsprechende Daten zu schützen, mü
    <other-attributes>
 }
 ```
-
-<a name="obfuscation-considerations"></a>
-
-#### <a name="considerations-when-securing-inputs-and-outputs"></a>Überlegungen im Zusammenhang mit dem Schützen von Ein- und Ausgaben
-
-* Wenn Sie die Ein- oder Ausgaben für einen Trigger oder eine Aktion verbergen, sendet Logic Apps die geschützten Daten nicht an Azure Log Analytics. Außerdem können Sie diesem Auslöser oder dieser Aktion keine [nachverfolgten Eigenschaften](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) zur Überwachung hinzufügen.
-
-* Die [Logic Apps-API zur Verarbeitung des Workflowverlaufs](/rest/api/logic/) gibt keine sicheren Ausgaben zurück.
-
-* Um Ausgaben einer Aktion zu schützen, die Eingaben verbirgt oder explizit Ausgaben verbirgt, aktivieren Sie in dieser Aktion **Sichere Ausgaben** manuell.
-
-* Stellen Sie sicher, dass Sie **Sichere Eingaben** oder **Sichere Ausgaben** in nachfolgenden Aktionen aktivieren, bei denen Sie erwarten, dass die Daten im Ausführungsverlauf verborgen werden.
-
-  **Einstellung „Sichere Ausgaben“**
-
-  Wenn Sie **Sichere Ausgaben** in einem Trigger oder einer Aktion manuell aktivieren, blendet Logic Apps diese Ausgaben im Ausführungsverlauf aus. Wenn eine nachfolgende Aktion diese sicheren Ausgaben explizit als Eingaben verwendet, blendet Logic Apps die Eingaben dieser Aktion im Ausführungsverlauf aus, *aktiviert aber nicht* die Einstellung **Sichere Eingaben** der Aktion.
-
-  ![Sichere Ausgaben als Eingaben und nachgeschaltete Auswirkungen auf die meisten Aktionen](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
-
-  Die Aktionen „Erstellen“, „JSON analysieren“ und „Antwort“ weisen nur die Einstellung **Sichere Eingaben** auf. Wenn diese aktiviert wird, blendet diese Einstellung auch die Ausgaben dieser Aktionen aus. Wenn diese Aktionen explizit die sicheren Upstreamausgaben als Eingaben verwenden, blendet Logic Apps die Ein- und Ausgaben dieser Aktionen aus, *aktiviert aber nicht* die Einstellung **Sichere Eingaben** dieser Aktionen. Wenn eine nachfolgende Aktion explizit die ausgeblendeten Ausgaben der Aktionen „Erstellen“, „JSON analysieren“ oder „Antwort“ als Eingaben verwendet, *blendet Logic Apps die Ein- oder Ausgaben dieser nachfolgenden Aktion nicht aus*.
-
-  ![Sichere Ausgaben als Eingaben mit nachgeschalteten Auswirkungen auf bestimmte Aktionen](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
-
-  **Einstellung „Sichere Eingaben“**
-
-  Wenn Sie **Sichere Eingaben** in einem Trigger oder einer Aktion manuell aktivieren, blendet Logic Apps diese Eingaben im Ausführungsverlauf aus. Wenn eine nachfolgende Aktion explizit die sichtbaren Ausgaben dieses Triggers oder dieser Aktion als Eingaben verwendet, blendet Logic Apps die Eingaben dieser nachfolgenden Aktion im Ausführungsverlauf aus, *aktiviert aber nicht* die Option **Sichere Eingaben** in dieser Aktion und blendet die Ausgaben dieser Aktion nicht aus.
-
-  ![Sichere Eingaben und nachgeschaltete Auswirkungen auf die meisten Aktionen](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
-
-  Wenn die Aktionen „Erstellen“, „JSON analysieren“ und „Antwort“ explizit die sichtbaren Ausgaben des Triggers oder der Aktion mit den sicheren Eingaben verwenden, blendet Logic Apps die Ein- und Ausgaben dieser Aktionen, *aktiviert aber nicht* die Einstellung **Sichere Eingaben** der jeweiligen Aktion. Wenn eine nachfolgende Aktion explizit die ausgeblendeten Ausgaben der Aktionen „Erstellen“, „JSON analysieren“ oder „Antwort“ als Eingaben verwendet, *blendet Logic Apps die Ein- oder Ausgaben dieser nachfolgenden Aktion nicht aus*.
-
-  ![Sichere Eingaben und nachgeschaltete Auswirkungen auf bestimmte Aktionen](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
 <a name="secure-action-parameters"></a>
 
@@ -1122,7 +1132,7 @@ Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-a
 
    | Eigenschaft (Designer) | Erforderlich | Wert | BESCHREIBUNG |
    |---------------------|----------|-------|-------------|
-   | **Verbindungsname** | Yes | <*connection-name*> ||
+   | **Verbindungsname** | Ja | <*connection-name*> ||
    | **Verwaltete Identität** | Yes | **Systemseitig zugewiesene verwaltete Identität** <br>oder <br> <*user-assigned-managed-identity-name*> | Der zu verwendende Authentifizierungstyp |
    |||||
 

@@ -3,17 +3,17 @@ title: Diagnostizieren und Beheben von Problemen bei der Verfügbarkeit von Azur
 description: Informationen über das Verfügbarkeitsverhalten von Azure Cosmos DB-SDKs in Umgebungen mit mehreren Regionen
 author: ealsur
 ms.service: cosmos-db
-ms.date: 10/20/2020
+ms.date: 02/16/2021
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b1c2377ba26b4ca64f5028fb1a51ca4e64f6a67c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 34c6e7ad8473f02f2772c84ea63aee2a41b97306
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097888"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559685"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Diagnostizieren und Beheben von Problemen bei der Verfügbarkeit von Azure Cosmos DB-SDKs in Umgebungen mit mehreren Regionen
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,7 +35,7 @@ Wenn Sie eine bevorzugte Region festlegen, stellt der Client Verbindungen mit Re
 | Eine Schreibregion | Bevorzugte Region | Primäre Region  |
 | Mehrere Schreibregionen | Bevorzugte Region | Bevorzugte Region  |
 
-Wenn Sie **keine bevorzugte Region festlegen** , wird der SDK-Client standardmäßig auf die primäre Region festgelegt:
+Wenn Sie **keine bevorzugte Region festlegen**, wird der SDK-Client standardmäßig auf die primäre Region festgelegt:
 
 |Kontotyp |Lesevorgänge |Schreibvorgänge |
 |------------------------|--|--|
@@ -83,9 +83,9 @@ Wenn Sie [Sitzungskonsistenz](consistency-levels.md#guarantees-associated-with-c
 
 ## <a name="transient-connectivity-issues-on-tcp-protocol"></a>Vorübergehende Konnektivitätsprobleme beim TCP-Protokoll
 
-In Szenarien, in denen der Azure Cosmos DB-SDK-Client für die Verwendung des TCP-Protokolls konfiguriert ist, kann es für eine bestimmte Anforderung vorkommen, dass die Netzwerkbedingungen die Kommunikation mit einem bestimmten Endpunkt vorübergehend beeinträchtigen. Bei diesen temporären Netzwerkbedingungen kann es sich um TCP-Timeouts handeln. Der Client versucht einige Sekunden lang, die Anforderung lokal auf demselben Endpunkt zu wiederholen.
+In Szenarien, in denen der Azure Cosmos DB-SDK-Client für die Verwendung des TCP-Protokolls konfiguriert ist, kann es für eine bestimmte Anforderung vorkommen, dass die Netzwerkbedingungen die Kommunikation mit einem bestimmten Endpunkt vorübergehend beeinträchtigen. Diese temporären Netzwerkbedingungen können als Fehler vom Typ TCP-Timeout und „Dienst nicht verfügbar“ (HTTP 503) auftreten. Der Client versucht einige Sekunden lang, die Anforderung lokal auf demselben Endpunkt zu wiederholen, bevor der Fehler ausgegeben wird.
 
-Wenn der Benutzer eine Liste bevorzugter Regionen mit mehreren Regionen konfiguriert hat, das Azure Cosmos DB-Konto mehrere Schreibregionen oder eine einzelne Schreibregion aufweist und der Vorgang eine Leseanforderung ist, wiederholt der Client den einzelnen Vorgang in der nächsten Region aus der Liste bevorzugter Regionen.
+Wenn der Benutzer eine Liste bevorzugter Regionen mit mehreren Regionen konfiguriert hat, das Azure Cosmos DB-Konto mehrere Schreibregionen oder eine einzelne Schreibregion aufweist und der Vorgang eine Leseanforderung ist, erkennt der Client den lokalen Ausfall und wiederholt den einzelnen Vorgang in der nächsten Region in der Liste bevorzugter Regionen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

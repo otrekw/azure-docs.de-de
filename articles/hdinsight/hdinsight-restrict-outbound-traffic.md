@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 79e3349f009f71c5cd387a7c7265ad4904f2a40d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4761c1fb6d245071a02fc69677fc9cd50a972fdd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932134"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574592"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Konfigurieren des ausgehenden Netzwerkdatenverkehrs für Azure HDInsight-Cluster mittels Firewall
 
@@ -165,7 +165,7 @@ Nachdem Sie die Protokollierung eingerichtet haben, können Sie bei Verwendung v
 AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
-Die Integration von Azure Firewall und Azure Monitor-Protokollen ist nützlich, wenn Sie eine Anwendung erstmalig einrichten. Dies gilt insbesondere dann, wenn Sie nicht alle Anwendungsabhängigkeiten kennen. Weitere Informationen zu Azure Monitor-Protokollen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
+Die Integration von Azure Firewall und Azure Monitor-Protokollen ist nützlich, wenn Sie eine Anwendung erstmalig einrichten. Dies gilt insbesondere dann, wenn Sie nicht alle Anwendungsabhängigkeiten kennen. Weitere Informationen zu Azure Monitor-Protokollen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](../azure-monitor/logs/log-query-overview.md).
 
 Weitere Informationen zu den Skalierungsgrenzwerten von Azure Firewall und zu Anforderungssteigerungen finden Sie in [diesem](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) Dokument sowie in den [Häufig gestellten Fragen](../firewall/firewall-faq.yml).
 

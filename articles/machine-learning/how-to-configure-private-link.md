@@ -10,13 +10,13 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 09/30/2020
-ms.openlocfilehash: 5ba1b9d53255406a73b1b74dbc59fe39e3f9a0d7
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.date: 02/09/2021
+ms.openlocfilehash: 75ea473c8669e9d50d2e9971a20a5fc1c3070779
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979180"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368012"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurieren von Azure Private Link für einen Azure Machine Learning-Arbeitsbereich
 
@@ -31,8 +31,9 @@ Azure Private Link ermöglicht Ihnen das Herstellen einer Verbindung mit Ihrem A
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie vorhaben, einen durch Private Link aktivierten Arbeitsbereich mit einem kundenseitig verwalteten Schlüssel zu verwenden, müssen Sie dieses Feature mithilfe eines Supporttickets anfordern. Weitere Informationen finden Sie unter [Verwalten und Erhöhen von Kontingenten](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+* Wenn Sie vorhaben, einen durch Private Link aktivierten Arbeitsbereich mit einem kundenseitig verwalteten Schlüssel zu verwenden, müssen Sie dieses Feature mithilfe eines Supporttickets anfordern. Weitere Informationen finden Sie unter [Verwalten und Erhöhen von Kontingenten](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
+* Sie benötigen ein vorhandenes virtuelles Netzwerk, in dem der private Endpunkt erstellt werden soll. Außerdem müssen Sie vor dem Hinzufügen des privaten Endpunkts [Netzwerkrichtlinien für private Endpunkte deaktivieren](../private-link/disable-private-endpoint-network-policy.md).
 ## <a name="limitations"></a>Einschränkungen
 
 * Die Verwendung eines Azure Machine Learning-Arbeitsbereichs mit Private Link ist in den Azure Government- und Azure China 21Vianet-Regionen nicht verfügbar.
@@ -73,6 +74,19 @@ Die [Azure CLI-Erweiterung für maschinelles Lernen](reference-azure-machine-lea
 * `--pe-vnet-name`: Das vorhandene virtuelle Netzwerk, in dem der private Endpunkt erstellt werden soll.
 * `--pe-subnet-name`: Der Name des Subnetzes, in dem der private Endpunkt erstellt werden soll. Der Standardwert ist `default`.
 
+Diese Parameter gelten zusätzlich zu anderen erforderlichen Parametern für den create-Befehl. Der folgende Befehl erstellt z. B. einen neuen Arbeitsbereich in der Region „USA, Westen“ und verwendet dabei eine vorhandene Ressourcengruppe und ein VNet:
+
+```azurecli
+az ml workspace create -r myresourcegroup \
+    -l westus \
+    -n myworkspace \
+    --pe-name myprivateendpoint \
+    --pe-auto-approval \
+    --pe-resource-group myresourcegroup \
+    --pe-vnet-name myvnet \
+    --pe-subnet-name mysubnet
+```
+
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Die Registerkarte __Netzwerk__ im Azure Machine Learning Studio ermöglicht Ihnen die Konfiguration eines privaten Endpunkts. Es erfordert jedoch ein vorhandenes virtuelles Netzwerk. Weitere Informationen finden Sie unter [Erstellen von Arbeitsbereichen im Portal](how-to-manage-workspace.md).
@@ -82,10 +96,6 @@ Die Registerkarte __Netzwerk__ im Azure Machine Learning Studio ermöglicht Ihne
 ## <a name="add-a-private-endpoint-to-a-workspace"></a>Hinzufügen eines privaten Endpunkts zu einem Arbeitsbereich
 
 Verwenden Sie eine der folgenden Methoden, um einem vorhandenen Arbeitsbereich einen privaten Endpunkt hinzuzufügen:
-
-> [!IMPORTANT]
->
-> Sie benötigen ein vorhandenes virtuelles Netzwerk, in dem der private Endpunkt erstellt werden soll. Außerdem müssen Sie vor dem Hinzufügen des privaten Endpunkts [Netzwerkrichtlinien für private Endpunkte deaktivieren](../private-link/disable-private-endpoint-network-policy.md).
 
 > [!WARNING]
 >
@@ -162,7 +172,7 @@ Weitere Informationen zu Azure Virtual Machines finden Sie in der [Dokumentation
 
 ## <a name="enable-public-access"></a>Aktivieren des öffentlichen Zugriffs
 
-Nachdem Sie einen Arbeitsbereich mit einem privaten Endpunkt konfiguriert haben, können Sie optional den öffentlichen Zugriff auf den Arbeitsbereich aktivieren. Dadurch wird der private Endpunkt nicht entfernt, sondern der öffentliche Zugriff zusätzlich zum privaten Zugriff ermöglicht. It enables public access in addition to the private access. Führen Sie die folgenden Schritte aus, um den öffentlichen Zugriff auf einen Arbeitsbereich mit aktivierter privater Verbindung zu ermöglichen:
+Nachdem Sie einen Arbeitsbereich mit einem privaten Endpunkt konfiguriert haben, können Sie optional den öffentlichen Zugriff auf den Arbeitsbereich aktivieren. Dadurch wird der private Endpunkt nicht entfernt. Es ermöglicht zusätzlich zum privaten Zugriff auch den öffentlichen Zugriff. Führen Sie die folgenden Schritte aus, um den öffentlichen Zugriff auf einen Arbeitsbereich mit aktivierter privater Verbindung zu ermöglichen:
 
 # <a name="python"></a>[Python](#tab/python)
 

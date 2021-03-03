@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3876b44bc6bb1ddbc5398126421fb9651003838f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 13ac18abd0a557d02435c3805e1ab86bcbf1ff84
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678822"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391982"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub
 
@@ -68,6 +68,11 @@ Geben Sie beim Erstellen der neuen Geräteidentität die folgenden Informationen
 * Wählen Sie **Übergeordnetes Gerät festlegen** und dann das IoT Edge-Gatewaygerät aus, über das dieses nachgeschaltete Gerät verbunden werden soll. Sie können das übergeordnete Gerät später jederzeit ändern.
 
    ![Erstellen der Geräte-ID bei der Authentifizierung mit symmetrischem Schlüssel im Portal](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
+
+   >[!NOTE]
+   >Das Festlegen des übergeordneten Geräts galt als optionaler Schritt für nachgeschaltete Geräte mit symmetrischer Schlüsselauthentifizierung. Ab IoT Edge, Version 1.1.0, muss jedoch jedes nachgeschaltete Gerät einem übergeordneten Gerät zugewiesen werden.
+   >
+   >Sie können den IoT Edge-Hub so konfigurieren, dass er zum vorherigen Verhalten zurück wechselt, indem Sie die Umgebungsvariable **AuthenticationMode** auf den Wert **CloudAndScope** festlegen.
 
 Sie können auch die [IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-iot-cli-extension) verwenden, um diesen Vorgang abzuschließen. Im folgenden Beispiel wird mithilfe des Befehls [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) ein neues IoT-Gerät mit Authentifizierung mit symmetrischem Schlüssel erstellt und ein übergeordnetes Gerät zugewiesen:
 

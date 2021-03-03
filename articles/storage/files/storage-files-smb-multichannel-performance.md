@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: cbded0a9c905bb488e1bae0f92d777e2e7ed7441
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: a9edd93aa265622732be4a7582cce9900959bf6d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630852"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374982"
 ---
 # <a name="smb-multichannel-performance"></a>SMB Multichannel-Leistung
 
@@ -110,7 +110,7 @@ Die Auslastung wurde für eine einzelne 128 GiB-Datei generiert. Bei aktivierte
 
 - Bei einer einzelnen NIC mit größerer durchschnittlicher E/A-Größe (> ~16K) gab es bedeutende Verbesserungen bei Lese- und Schreibvorgängen.
 - Bei geringeren E/A-Größen wurde die Leistung bei Aktivierung von SMB Multichannel um ungefähr 10 % geringfügig beeinträchtigt. Dies kann behoben werden, indem Sie die Last auf mehrere Dateien verteilen oder die Funktion deaktivieren.
-- Die Leistung wird weiterhin durch [Grenzwerte für eine einzelne Datei](storage-files-scale-targets.md#file-level-limits) beschränkt.
+- Die Leistung wird weiterhin durch [Grenzwerte für eine einzelne Datei](storage-files-scale-targets.md#file-scale-targets) beschränkt.
 
 ## <a name="optimizing-performance"></a>Optimieren der Leistung
 

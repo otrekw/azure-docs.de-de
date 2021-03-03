@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 651e7156faf8305edb0a1541e957dd2abf3a71b8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f346b997b5e0c785d066ce3a1edaab8cbea10212
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365751"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644118"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Tutorial: Manuelles Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -75,7 +75,7 @@ Wenn Ihre Organisation für Windows 10-Geräte mit Version 1703 oder einer älte
 
 Ab Version 1803 von Windows 10 versucht das Gerät, die Azure AD-Hybrideinbindung unter Verwendung des synchronisierten Computers/Geräts durchzuführen, auch wenn eine Azure AD-Hybrideinbindung durch ein Gerät in einer Verbunddomäne mit AD FS nicht erfolgreich war (sofern Azure AD Connect für die Synchronisierung des Computer-/Geräteobjekts mit Azure AD konfiguriert ist).
 
-Sie können das Skript zum [Testen der Geräteregistrierungskonnektivität](https://docs.microsoft.com/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) verwenden, um zu überprüfen, ob das Gerät unter dem Systemkonto auf die oben genannten Microsoft-Ressourcen zugreifen kann.
+Sie können das Skript zum [Testen der Geräteregistrierungskonnektivität](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) verwenden, um zu überprüfen, ob das Gerät unter dem Systemkonto auf die oben genannten Microsoft-Ressourcen zugreifen kann.
 
 ## <a name="verify-configuration-steps"></a>Überprüfen der Konfigurationsschritte
 

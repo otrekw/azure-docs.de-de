@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 087073437fe9d6159422799c04ce095c0aae5eca
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 778424cbb81f8fe51a57dd41d94aa9015ffad94e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96001251"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381510"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Queue Storage-Ausgabebindungen für Azure Functions
 
@@ -398,13 +398,15 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction** | – | Muss auf `out` festgelegt sein. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
 |**name** | – | Der Name der Variablen, die die Warteschlange im Funktionscode darstellt. Legen Sie diesen Wert auf `$return` fest, um auf den Rückgabewert der Funktion zu verweisen.|
 |**queueName** |**QueueName** | Der Name der Warteschlange. |
-|**connection** | **Connection** |Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Runtime nach einer App-Einstellung namens „MyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.|
+|**connection** | **Connection** |Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben.<br><br>Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Runtime nach einer App-Einstellung namens „MyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Wenn Sie [Version 5.x oder höher der Erweiterung](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) verwenden, können Sie anstelle einer Verbindungszeichenfolge einen Verweis auf einen Konfigurationsabschnitt angeben, der die Verbindung definiert. Weitere Informationen finden Sie unter [Verbindungen](./functions-reference.md#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Verwendung
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="default"></a>Standard
 
 Schreiben einer einzelnen Warteschlangennachricht mittels eines Methodenparameters wie `out T paramName`. Anstelle eines Parameters vom Typ `out` können Sie den Rückgabetyp der Methode verwenden, und `T` kann einer der folgenden Typen sein:
 
@@ -420,7 +422,18 @@ Verwenden Sie einen der folgenden Typen, um in C# und C#-Skripts mehrere Wartesc
 * `ICollector<T>` oder `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
+### <a name="additional-types"></a>Zusätzliche Typen
+
+Apps, die die [Version 5.0.0 oder höher der Storage-Erweiterung](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) verwenden, können auch Typen aus dem [Azure SDK für .NET](/dotnet/api/overview/azure/storage.queues-readme) verwenden. In dieser Version wird die Unterstützung der Legacytypen `CloudQueue` und `CloudQueueMessage` zugunsten der folgenden Typen aufgegeben:
+
+- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
+- [QueueClient](/dotnet/api/azure.storage.queues.queueclient) zum Schreiben mehrerer Warteschlangennachrichten
+
+Beispiele für die Verwendung dieser Typen finden Sie im [GitHub-Repository für die jeweilige Erweiterung](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples).
+
 # <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
+
+### <a name="default"></a>Standard
 
 Schreiben einer einzelnen Warteschlangennachricht mittels eines Methodenparameters wie `out T paramName`. `paramName` ist der Wert, der in der Eigenschaft `name` von *function.json* angegeben wird. Anstelle eines Parameters vom Typ `out` können Sie den Rückgabetyp der Methode verwenden, und `T` kann einer der folgenden Typen sein:
 
@@ -435,6 +448,15 @@ Verwenden Sie einen der folgenden Typen, um in C# und C#-Skripts mehrere Wartesc
 
 * `ICollector<T>` oder `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
+
+### <a name="additional-types"></a>Zusätzliche Typen
+
+Apps, die die [Version 5.0.0 oder höher der Storage-Erweiterung](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) verwenden, können auch Typen aus dem [Azure SDK für .NET](/dotnet/api/overview/azure/storage.queues-readme) verwenden. In dieser Version wird die Unterstützung der Legacytypen `CloudQueue` und `CloudQueueMessage` zugunsten der folgenden Typen aufgegeben:
+
+- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
+- [QueueClient](/dotnet/api/azure.storage.queues.queueclient) zum Schreiben mehrerer Warteschlangennachrichten
+
+Beispiele für die Verwendung dieser Typen finden Sie im [GitHub-Repository für die jeweilige Erweiterung](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -469,38 +491,6 @@ Es gibt zwei Optionen für das Ausgeben einer Warteschlangennachricht aus einer 
 | Warteschlange | [Warteschlangen-Fehlercodes](/rest/api/storageservices/queue-service-error-codes) |
 | Blob, Tabelle, Warteschlange | [Speicherfehlercodes](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | Blob, Tabelle, Warteschlange |  [Problembehandlung](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
-
-<a name="host-json"></a>  
-
-## <a name="hostjson-settings"></a>Einstellungen für „host.json“
-
-In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen für diese Bindung in Version 2.x und höheren Versionen beschrieben. Die nachfolgende Beispieldatei „host.json“ enthält nur die Einstellungen für Version 2.x und höhere Versionen für diese Bindung. Weitere Informationen zu globalen Konfigurationseinstellungen in Version 2.x und höheren Versionen finden Sie unter [host.json-Referenz für Azure Functions 2.x](functions-host-json.md).
-
-> [!NOTE]
-> Eine Referenz für „host.json“ in Functions 1.x finden Sie unter [host.json-Referenz für Azure Functions 1.x](functions-host-json-v1.md).
-
-```json
-{
-    "version": "2.0",
-    "extensions": {
-        "queues": {
-            "maxPollingInterval": "00:00:02",
-            "visibilityTimeout" : "00:00:30",
-            "batchSize": 16,
-            "maxDequeueCount": 5,
-            "newBatchThreshold": 8
-        }
-    }
-}
-```
-
-|Eigenschaft  |Standard | BESCHREIBUNG |
-|---------|---------|---------|
-|maxPollingInterval|00:00:01|Das maximale Intervall zwischen Warteschlangenabfragen. Der Mindestwert lautet 00:00:00.100 (100 ms), er wird bis auf 00:01:00 (1 Min.) erhöht.  In 1.x ist der Datentyp Millisekunden, und in 2.x und höheren Versionen ist es ein TimeSpan-Wert.|
-|visibilityTimeout|00:00:00|Das Zeitintervall zwischen Wiederholungsversuchen, wenn bei der Verarbeitung einer Nachricht ein Fehler auftritt. |
-|batchSize|16|Die Anzahl der Warteschlangennachrichten, die die Functions-Runtime gleichzeitig abruft und parallel verarbeitet. Wenn die zu verarbeitende Anzahl `newBatchThreshold` erreicht, ruft die Runtime einen weiteren Batch ab und beginnt mit der Verarbeitung dieser Nachrichten. Aus diesem Grund beträgt die maximale Anzahl der pro Funktion verarbeiteten Nachrichten `batchSize` plus `newBatchThreshold`. Dieser Grenzwert gilt separat für jede Funktion, die durch die Warteschlange ausgelöst wird. <br><br>Wenn Sie eine parallele Ausführung für in einer Warteschlange empfangene Nachrichten vermeiden möchten, können Sie `batchSize` auf „1“ festlegen. Diese Einstellung verhindert Parallelität jedoch nur so lange, wie Ihre Funktions-App auf einem einzelnen virtuellen Computer (VM) ausgeführt wird. Wenn die Funktions-App horizontal auf mehrere virtuelle Computer hochskaliert wird, kann jeder virtuelle Computer eine Instanz jeder durch die Warteschlange ausgelösten Funktion ausführen.<br><br>Die maximale `batchSize` beträgt 32. |
-|maxDequeueCount|5|Die Anzahl der Versuche zum Verarbeiten einer Nachricht, bevor diese in die Warteschlange für nicht verarbeitete Nachrichten verschoben wird.|
-|newBatchThreshold|batchSize/2|Wenn die Anzahl der gleichzeitig verarbeiteten Nachrichten auf diesen Wert sinkt, ruft die Runtime einen weiteren Batch ab.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

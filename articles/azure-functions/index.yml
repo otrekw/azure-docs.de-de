@@ -9,12 +9,12 @@ metadata:
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: 10c606ab86a577f22167197138e56a14d176b88a
-  ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+  ms.openlocfilehash: 65b2c25bde616f8a2bbc9abf6439871d288306b9
+  ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 01/19/2021
-  ms.locfileid: "98570132"
+  ms.lasthandoff: 02/14/2021
+  ms.locfileid: "100363031"
 landingContent:
 - title: Informationen zu Azure Functions
   linkLists:
@@ -128,14 +128,22 @@ landingContent:
       url: functions-how-to-azure-devops.md
     - text: Bereitstellen des Jenkins-Plug-Ins
       url: /azure/developer/jenkins/deploy-to-azure-functions
-- title: Leistung und Überwachung
+- title: Bewährte Methoden für Leistung und Überwachung
   linkLists:
   - linkListType: concept
     links:
+    - text: Leistung und Zuverlässigkeit
+      url: functions-best-practices.md
+    - text: Verwalten von Verbindungen
+      url: manage-connections.md
+    - text: Speicheraspekt
+      url: storage-considerations.md
+    - text: Fehlerbehandlung und Funktionswiederholungen
+      url: functions-bindings-error-pages.md
+    - text: Sicherheit
+      url: security-concepts.md
     - text: Überwachungsfunktionen
       url: functions-monitoring.md
-    - text: Optimieren der Leistung
-      url: functions-best-practices.md
     - text: Überlegungen zum Netzwerkbetrieb
       url: functions-networking-options.md
   - linkListType: how-to-guide

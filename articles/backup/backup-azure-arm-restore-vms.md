@@ -4,12 +4,12 @@ description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wi
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 256998f2e687152bb63c9368af1a56f05bba7672
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: c15b2dc39202c6f8386031bcf055688aa2d279df
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820567"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722686"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Wiederherstellen von Azure-VM-Daten im Azure-Portal
 
@@ -160,7 +160,7 @@ Wenn CRR aktiviert ist, können Sie die Sicherungselemente in der sekundären Re
 
 Die Benutzeroberfläche zur Wiederherstellung in der sekundären Region ähnelt der Benutzerumgebung für die Wiederherstellung in der primären Region. Wenn Sie Details im Bereich „Wiederherstellungskonfiguration“ festlegen, um Ihre Wiederherstellung zu konfigurieren, werden Sie aufgefordert, nur die Parameter der sekundären Region anzugeben.
 
-Aktuell beträgt die [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) der sekundären Region selbst dann bis zu zwölf Stunden, wenn die Replikationszeit des [georedundanten Speichers mit Lesezugriff (RA-GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#redundancy-in-a-secondary-region) 15 Minuten beträgt.
+Aktuell beträgt die [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) der sekundären Region selbst dann bis zu zwölf Stunden, wenn die Replikationszeit des [georedundanten Speichers mit Lesezugriff (RA-GRS)](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) 15 Minuten beträgt.
 
 ![Auswählen der wiederherzustellenden VM](./media/backup-azure-arm-restore-vms/sec-restore.png)
 
@@ -179,7 +179,7 @@ Aktuell beträgt die [RPO](azure-backup-glossary.md#rpo-recovery-point-objective
 >- Das Feature zur regionsübergreifenden Wiederherstellung stellt Azure VMs mit aktivierten CMKs (customer-managed keys, kundenseitig verwaltete Schlüssel), die nicht in einem Recovery Services-Tresor mit aktivierten CMKs gesichert sind, als VMs ohne aktivierte CMKs in der sekundären Region wieder her.
 >- Die für die Wiederherstellung in der Sekundärregion erforderlichen Azure-Rollen sind die gleichen wie in der Primärregion.
 
-[An Azure-Zonen angeheftete VMs](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) können in beliebigen [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) in derselben Region wiederhergestellt werden.
+[An Azure-Zonen angeheftete VMs](../virtual-machines/windows/create-portal-availability-zone.md) können in beliebigen [Verfügbarkeitszonen](../availability-zones/az-overview.md) in derselben Region wiederhergestellt werden.
 
 Bei der Wiederherstellung wird die Option **Verfügbarkeitszone** angezeigt. Als erster Eintrag erscheint Ihre Standardzone. Um eine andere Zone auszuwählen, wählen Sie die Nummer der gewünschten Zone aus. Wenn die angeheftete Zone nicht verfügbar ist, können Sie die Daten nicht in einer anderen Zone wiederherstellen, da die gesicherten Daten nicht zonenbezogen repliziert werden.
 

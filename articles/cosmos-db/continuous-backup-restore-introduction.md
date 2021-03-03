@@ -8,12 +8,12 @@ ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
-ms.openlocfilehash: 036f086c88267f6a20da51746ca875c48a248712
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: d1dc108ecec93dddeb768eb61af425ba67f23002
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538845"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393138"
 ---
 # <a name="continuous-backup-with-point-in-time-restore-preview-feature-in-azure-cosmos-db"></a>Fortlaufende Sicherung mit dem Feature „Zeitpunktwiederherstellung“ (Vorschau) von Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -33,7 +33,7 @@ Azure Cosmos DB erstellt die Datensicherung im Hintergrund, ohne zusätzlichen 
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/continuous-backup-restore-blob-storage.png" alt-text="Azure Cosmos DB-Datensicherung in Azure Blob Storage" lightbox="./media/continuous-backup-restore-introduction/continuous-backup-restore-blob-storage.png" border="false":::
 
-Das verfügbare Zeitfenster für die Wiederherstellung (auch Aufbewahrungszeitraum genannt) ist der niedrigere der beiden folgenden Werte: „30 Tage zurück in der Vergangenheit“ oder „bis zum Zeitpunkt der Ressourcenerstellung“. Der Zeitpunkt für die Wiederherstellung kann ein beliebiger Zeitstempel innerhalb des Aufbewahrungszeitraums sein.
+Das verfügbare Zeitfenster für die Wiederherstellung (auch Aufbewahrungszeitraum genannt) ist der niedrigere der beiden folgenden Werte: *30 Tage zurück in der Vergangenheit* oder *bis zum Zeitpunkt der Ressourcenerstellung*. Der Zeitpunkt für die Wiederherstellung kann ein beliebiger Zeitstempel innerhalb des Aufbewahrungszeitraums sein.
 
 In der öffentlichen Vorschau können Sie das Azure Cosmos DB-Konto für einen Zeitpunkt der SQL-API oder MongoDB-Inhalte in einem anderen Konto mithilfe des [Azure-Portals](continuous-backup-restore-portal.md), der [Azure-Befehlszeilenschnittstelle](continuous-backup-restore-command-line.md) (Azure CLI), [Azure PowerShell](continuous-backup-restore-powershell.md) oder [Azure Resource Manager](continuous-backup-restore-template.md) wiederherstellen.
 
@@ -59,17 +59,18 @@ Sie können diese Konfigurationen dem wiederhergestellten Konto hinzufügen, nac
 
 ## <a name="restore-scenarios"></a>Wiederherstellungsszenarien
 
-Nachfolgend sind einige der wichtigsten Szenarien für das Feature „Zeitpunktwiederherstellung“ aufgeführt. Die Szenarien [a] bis [c] veranschaulichen, wie eine Wiederherstellung ausgelöst wird, wenn der Zeitstempel für die Wiederherstellung im Voraus bekannt ist. Es kann jedoch Szenarien geben, in denen der genaue Zeitpunkt der versehentlichen Löschung oder Beschädigung nicht bekannt ist. In den Szenarien [d] und [e] wird gezeigt, wie Sie den Zeitstempel für die Wiederherstellung mithilfe der neuen Ereignisfeed-APIs für die wiederherstellbare Datenbank oder den Container _ermitteln_.
+Nachfolgend sind einige der wichtigsten Szenarien für das Feature „Zeitpunktwiederherstellung“ aufgeführt. Die Szenarien [a] bis [c] veranschaulichen, wie eine Wiederherstellung ausgelöst wird, wenn der Zeitstempel für die Wiederherstellung im Voraus bekannt ist.
+Es kann jedoch Szenarien geben, in denen der genaue Zeitpunkt der versehentlichen Löschung oder Beschädigung nicht bekannt ist. In den Szenarien [d] und [e] wird gezeigt, wie Sie den Zeitstempel für die Wiederherstellung mithilfe der neuen Ereignisfeed-APIs für die wiederherstellbare Datenbank oder den Container _ermitteln_.
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" alt-text="Lebenszyklusereignisse mit Zeitstempeln für ein wiederherstellbares Konto" lightbox="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" border="false":::
 
-a. **Wiederherstellen eines gelöschten Kontos**: Alle gelöschten Konten, die wiederhergestellt werden können, werden im Bereich **Wiederherstellen** angezeigt. Angenommen, „Konto A“ wird bei Zeitstempel T3 gelöscht. In diesem Fall reichen der Zeitstempel direkt vor T3, Speicherort, Ressourcengruppe und Zielkontoname für die Wiederherstellung über das [Azure-Portal](continuous-backup-restore-portal.md#restore-deleted-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore) oder die [CLI](continuous-backup-restore-command-line.md#trigger-restore) aus.  
+a. **Wiederherstellen eines gelöschten Kontos**: Alle gelöschten Konten, die wiederhergestellt werden können, werden im Bereich **Wiederherstellen** angezeigt. Angenommen, *Konto A* wird bei Zeitstempel T3 gelöscht. In diesem Fall reichen der Zeitstempel direkt vor T3, Speicherort, Ressourcengruppe und Zielkontoname für die Wiederherstellung über das [Azure-Portal](continuous-backup-restore-portal.md#restore-deleted-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore) oder die [CLI](continuous-backup-restore-command-line.md#trigger-restore) aus.  
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" alt-text="Lebenszyklusereignisse mit Zeitstempeln für eine wiederherstellbare Datenbank und einen wiederherstellbaren Container" lightbox="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" border="false":::
 
-b. **Wiederherstellen von Daten eines Kontos in einer bestimmten Region**: Angenommen, „Konto A“ ist bei Zeitstempel T3 in den beiden Regionen „USA, Osten“ und „USA, Westen“ vorhanden. Falls Sie eine Kopie von Konto A in „USA, Westen“ benötigen, können Sie über das [Azure-Portal](continuous-backup-restore-portal.md), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore) oder die [CLI](continuous-backup-restore-command-line.md#trigger-restore) eine Zeitpunktwiederherstellung mit der Region „USA, Westen“ als Zielspeicherort durchführen.
+b. **Wiederherstellen von Daten eines Kontos in einer bestimmten Region**: Angenommen, *Konto A* ist bei Zeitstempel T3 in den beiden Regionen *USA, Osten* und *USA, Westen* vorhanden. Falls Sie eine Kopie von Konto A in *USA, Westen* benötigen, können Sie über das [Azure-Portal](continuous-backup-restore-portal.md), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore) oder die [CLI](continuous-backup-restore-command-line.md#trigger-restore) eine Zeitpunktwiederherstellung mit der Region „USA, Westen“ als Zielspeicherort durchführen.
 
-c. **Wiederherstellen nach einem versehentlichen Schreib- oder Löschvorgang in einem Container mit einem bekannten Zeitstempel für die Wiederherstellung**: Angenommen, Sie **wissen**, dass der Inhalt von „Container 1“ in „Datenbank 1“ bei Zeitstempel T3 versehentlich geändert wurde. In diesem Fall können Sie eine Zeitpunktwiederherstellung über das [Azure-Portal](continuous-backup-restore-portal.md#restore-live-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore) oder die [CLI](continuous-backup-restore-command-line.md#trigger-restore) in ein anderes Konto bei Zeitstempel T3 durchführen, um den gewünschten Containerzustand wiederherzustellen.
+c. **Wiederherstellen nach einem versehentlichen Schreib- oder Löschvorgang in einem Container mit einem bekannten Zeitstempel für die Wiederherstellung**: Angenommen, Sie **wissen**, dass der Inhalt von *Container 1* in *Datenbank 1* bei Zeitstempel T3 versehentlich geändert wurde. In diesem Fall können Sie eine Zeitpunktwiederherstellung über das [Azure-Portal](continuous-backup-restore-portal.md#restore-live-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore) oder die [CLI](continuous-backup-restore-command-line.md#trigger-restore) in ein anderes Konto bei Zeitstempel T3 durchführen, um den gewünschten Containerzustand wiederherzustellen.
 
 d. **Wiederherstellen eines Kontos zu einem früheren Zeitpunkt vor dem versehentlichen Löschen der Datenbank**: Im [Azure-Portal](continuous-backup-restore-portal.md#restore-live-account) können Sie mithilfe des Bereichs für Ereignisfeeds feststellen, wann eine Datenbank gelöscht wurde, und den Zeitpunkt für die Wiederherstellung ermitteln. Ebenso können Sie mithilfe der [Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) und [PowerShell](continuous-backup-restore-powershell.md#trigger-restore) das Datenbanklöschungsereignis ermitteln, indem Sie den Ereignisfeed der Datenbank auflisten und dann den Wiederherstellungsbefehl mit den erforderlichen Parametern auslösen.
 
@@ -81,7 +82,7 @@ Mit Azure Cosmos DB können Sie die Wiederherstellungsberechtigungen für ein 
 
 ## <a name="pricing"></a><a id="continuous-backup-pricing"></a>Preise
 
-Für Azure Cosmos DB-Konten mit aktivierter fortlaufender Sicherung fallen zusätzliche monatliche Gebühren für das „Speichern der Sicherung“ und das „Wiederherstellen der Daten" an. Die Wiederherstellungskosten werden bei jedem Initiieren des Wiederherstellungsvorgangs hinzugefügt. Wenn Sie ein Konto mit fortlaufender Sicherung konfigurieren, die Daten aber nicht wiederherstellen, sind in Ihrer Rechnung nur Kosten für den Sicherungsspeicher enthalten.
+Für Azure Cosmos DB-Konten mit aktivierter fortlaufender Sicherung fallen zusätzliche monatliche Gebühren für das *Speichern der Sicherung* und das *Wiederherstellen der Daten* an. Die Wiederherstellungskosten werden bei jedem Initiieren des Wiederherstellungsvorgangs hinzugefügt. Wenn Sie ein Konto mit fortlaufender Sicherung konfigurieren, die Daten aber nicht wiederherstellen, sind in Ihrer Rechnung nur Kosten für den Sicherungsspeicher enthalten.
 
 Das folgende Beispiel basiert auf dem Preis für ein Azure Cosmos-Konto, das in einer Region in den USA bereitgestellt wird, die keine Government-Region ist. Die Preise und die Berechnung können je nach verwendeter Region variieren. Aktuelle Preisinformationen finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/).
 

@@ -3,13 +3,13 @@ title: Konzepte – Grundlagen zu Kubernetes für Azure Kubernetes Service (AKS)
 description: Lernen Sie die grundlegenden Cluster- und Workloadkomponenten von Kubernetes kennen, und erfahren Sie, wie diese mit den Features in Azure Kubernetes Service (AKS) in Zusammenhang stehen.
 services: container-service
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 54d6f4529c236c7ff9f6258122b5b49d6d3723e8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.date: 12/07/2020
+ms.openlocfilehash: 7485631660395e03c558167c321e6091c6fac755
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674925"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373231"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -31,8 +31,8 @@ Azure Kubernetes Service (AKS) ist ein Managed Kubernetes-Dienst, der die Komple
 
 Ein Kubernetes-Cluster ist in zwei Komponenten unterteilt:
 
-- Knoten auf *Steuerungsebene* stellen die grundlegenden Kubernetes-Dienste und Orchestrierungsfunktionen für Anwendungsworkloads bereit.
-- *Knoten* führen Ihre Anwendungsworkloads aus.
+- Die *Steuerungsebene* stellt die grundlegenden Kubernetes-Dienste und Orchestrierungsfunktionen für Anwendungsworkloads bereit.
+- *Knoten*, die Ihre Anwendungsworkloads ausführen.
 
 ![Kubernetes-Steuerungsebene und Knoten – Komponenten](media/concepts-clusters-workloads/control-plane-and-nodes.png)
 

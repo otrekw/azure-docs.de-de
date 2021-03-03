@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 83e8089073f7e7e7634ddf00f7276e12aaf645b0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f95068b66fdd7907bf06086f855473b156738847
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536437"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371096"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Verwendung eines IoT Edge-Geräts als Gateway
 
@@ -37,7 +37,7 @@ Alle Gatewaymuster bieten folgende Vorteile:
 
 * **Edgeanalysen**: Verwenden Sie lokal KI-Dienste zum Verarbeiten von Daten, die von nachgeschalteten Geräten stammen, ohne vollständige Telemetriedaten in die Cloud zu senden. Suchen und reagieren Sie lokal auf Informationen, senden Sie nur eine Teilmenge von Daten an IoT Hub.
 * **Isolierung von nachgeschalteten Geräten**: Das Gatewaygerät kann alle nachgeschalteten Geräte vor dem Zugriff über das Internet schützen. Es kann sich zwischen einem OT-Netzwerk (Operational Technology) ohne Konnektivität und einem IT-Netzwerk (Information Technology) mit Internetzugriff befinden. Auf ähnliche Weise können Geräte, die keine eigene Verbindung mit IoT Hub herstellen können, stattdessen eine Verbindung mit einem Gatewaygerät herstellen.
-* **Multiplexing der Verbindung**: Alle Geräte, die über ein IoT Edge-Gateway mit IoT Hub verbunden sind, verwenden dieselbe zugrunde liegende Verbindung.
+* **Multiplexing der Verbindung**: Alle Geräte, die über ein IoT Edge-Gateway mit IoT Hub verbunden sind, können dieselbe zugrunde liegende Verbindung verwenden. Diese Multiplexingfunktion erfordert, dass das IoT Edge-Gateway AMQP als Upstreamprotokoll verwendet.
 * **Glättung des Datenverkehrs**: Das IoT Edge-Gerät implementiert automatisch exponentielles Backoff, wenn IoT Hub den Datenverkehr drosselt, wobei die Nachrichten lokal beibehalten werden. Durch diesen Vorteil wird Ihre Lösung unempfindlich gegenüber Spitzen im Datenverkehr.
 * **Offlineunterstützung**: Das Gatewaygerät speichert Nachrichten und Zwillingsupdates, die nicht an IoT Hub übermittelt werden können.
 
@@ -45,7 +45,9 @@ Alle Gatewaymuster bieten folgende Vorteile:
 
 Beim Gatewaymuster „transparent“ können Geräte, die theoretisch eine Verbindung mit IoT Hub herstellen könnten, stattdessen eine Verbindung mit einem Gatewaygerät herstellen. Die nachgeschalteten Geräte verfügen über ihre eigenen IoT Hub-Identitäten und stellen die Verbindung mithilfe von MQTT- oder AMQP-Protokollen her. Das Gateway übergibt einfach die Kommunikation zwischen den Geräten und IoT Hub. Weder die Geräte noch die Benutzer, die damit über IoT Hub interagieren, wissen, dass ein Gateway ihre Kommunikation vermittelt. Dieses fehlende Wissen bedeutet, dass das Gateway als *transparent* betrachtet wird.
 
-<!-- 1.0.10 -->
+Weitere Informationen zum Verwalten der Kommunikation zwischen nachgeschalteten Geräten und der Cloud durch die IoT Edge-Hub-Instanz finden Sie unter [Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur](iot-edge-runtime.md).
+
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 IoT Edge-Geräte können keinem IoT Edge-Gateway nachgeschaltet werden.
@@ -72,6 +74,11 @@ Die Beziehung zwischen über- und untergeordneten Geräten wird in der Gatewayko
 #### <a name="cloud-identities"></a>Cloudidentitäten
 
 In einem Szenario mit transparentem Gateway benötigen alle Geräte Cloudidentitäten, damit sie sich bei IoT Hub authentifizieren können. Wenn Sie eine Geräteidentität erstellen oder aktualisieren, können Sie die über- oder untergeordneten Geräte des Geräts festlegen. Diese Konfiguration autorisiert das übergeordnete Gatewaygerät, die Authentifizierung für seine untergeordneten Geräte zu übernehmen.
+
+>[!NOTE]
+>Das übergeordnete Gerät in IoT Hub festzulegen, galt als optionaler Schritt für nachgeschaltete Geräte mit symmetrischer Schlüsselauthentifizierung. Ab Version 1.1.0 muss jedes nachgeschaltete Gerät jedoch einem übergeordneten Gerät zugewiesen werden.
+>
+>Sie können die IoT Edge-Hub-Instanz so konfigurieren, dass sie zum vorherigen Verhalten zurück wechselt, indem Sie die Umgebungsvariable **AuthenticationMode** auf den Wert **CloudAndScope** festlegen.
 
 Untergeordnete Geräte können nur über ein übergeordnetes Gerät verfügen. Jedes übergeordnete Gerät kann bis zu 100 untergeordnete Geräte aufweisen.
 
@@ -106,7 +113,7 @@ Alle IoT Hub-Primitiven, die mit der Messagingpipeline von IoT Edge arbeiten, 
 
 Der folgenden Tabelle können Sie entnehmen, wie die verschiedenen IoT Hub-Funktionen für Geräte und für Geräte hinter Gateways unterstützt werden.
 
-<!-- 1.0.10 -->
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 | Funktion | IoT-Gerät | IoT hinter einem Gateway |

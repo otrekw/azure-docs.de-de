@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 22c69288479e0247e499a33c2e818c19f7edb2ae
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 4cb3965d359980856c238cd563ed8b761754660b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879947"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667741"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Azure Purview-Metriken in Azure Monitor
 
@@ -24,7 +24,7 @@ Azure Purview-Administratoren können mithilfe von Azure Monitor den Betriebssta
 
 ## <a name="aggregated-metrics"></a>Aggregierte Metriken
 
-Auf die Metriken kann über das Azure-Portal für ein Purview-Konto zugegriffen werden. Der Zugriff auf die Metriken wird durch die Rollenzuweisung des Purview-Kontos gesteuert. Benutzer müssen der Rolle „Überwachungsleser“ in Azure Purview zugewiesen sein, um Metriken anzeigen zu können. Weitere Informationen zu den Zugriffsebenen der einzelnen Rollen finden Sie unter den [Berechtigungen für die Rolle „Überwachungsleser“](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles).
+Auf die Metriken kann über das Azure-Portal für ein Purview-Konto zugegriffen werden. Der Zugriff auf die Metriken wird durch die Rollenzuweisung des Purview-Kontos gesteuert. Benutzer müssen der Rolle „Überwachungsleser“ in Azure Purview zugewiesen sein, um Metriken anzeigen zu können. Weitere Informationen zu den Zugriffsebenen der einzelnen Rollen finden Sie unter den [Berechtigungen für die Rolle „Überwachungsleser“](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles).
 
 Die Person, die das Purview-Konto erstellt hat, erhält automatisch die Berechtigungen zum Anzeigen von Metriken. Wenn Benutzer andere Metriken anzeigen möchten, fügen Sie sie mithilfe der folgenden Schritte der Rolle **Überwachungsleser** hinzu:
 
@@ -58,7 +58,7 @@ Azure Purview-Benutzer können auch direkt vom Verwaltungscenter des Azure Purvi
 
 ### <a name="available-metrics"></a>Verfügbare Metriken
 
-Informationen zur Verwendung des Abschnitts „Metriken“ im Azure-Portal finden Sie in den folgenden beiden Dokumenten: [Erste Schritte mit dem Azure-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md) und [Erweiterte Funktionen von Azure Metrik-Explorer](../azure-monitor/platform/metrics-charts.md).
+Informationen zur Verwendung des Abschnitts „Metriken“ im Azure-Portal finden Sie in den folgenden beiden Dokumenten: [Erste Schritte mit dem Azure-Metrik-Explorer](../azure-monitor/essentials/metrics-getting-started.md) und [Erweiterte Funktionen von Azure Metrik-Explorer](../azure-monitor/essentials/metrics-charts.md).
 
 In der folgenden Tabelle finden Sie eine Liste der verfügbaren Metriken, die im Azure-Portal untersucht werden können:
 
@@ -75,7 +75,7 @@ Die Rohdaten der Telemetrieereignisse werden an Azure Monitor ausgegeben. Die Er
 
 Führen Sie die Schritte zum Erstellen einer Diagnoseeinstellung für Ihr Azure Purview-Konto aus.
 
-1. Erstellen Sie eine neue Diagnoseeinstellung zum Sammeln von Plattformprotokollen und -metriken. Nutzen Sie dazu folgenden Artikel: [Erstellen Sie Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../azure-monitor/platform/diagnostic-settings.md). Wählen Sie als Ziel nur das Azure Storage-Konto aus.
+1. Erstellen Sie eine neue Diagnoseeinstellung zum Sammeln von Plattformprotokollen und -metriken. Nutzen Sie dazu folgenden Artikel: [Erstellen Sie Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../azure-monitor/essentials/diagnostic-settings.md). Wählen Sie als Ziel nur das Azure Storage-Konto aus.
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png" alt-text="Screenshot der Erstellung eines Diagnoseprotokolls" lightbox="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png":::
 
@@ -83,7 +83,7 @@ Führen Sie die Schritte zum Erstellen einer Diagnoseeinstellung für Ihr Azure 
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png" alt-text="Screenshot des Zuweisens eines Speicherkontos für das Diagnoseprotokoll" lightbox="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png":::
 
-Es kann bis zu 15 Minuten dauern, bis die ersten Protokolle im neu erstellten Speicherkonto empfangen werden. [Informieren Sie sich über die Datenaufbewahrung und das Schema von Ressourcenprotokollen in Azure Storage-Konten.](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) Nachdem die Diagnoseprotokolle konfiguriert wurden, werden die Ereignisse an das Speicherkonto übertragen.
+Es kann bis zu 15 Minuten dauern, bis die ersten Protokolle im neu erstellten Speicherkonto empfangen werden. [Informieren Sie sich über die Datenaufbewahrung und das Schema von Ressourcenprotokollen in Azure Storage-Konten.](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) Nachdem die Diagnoseprotokolle konfiguriert wurden, werden die Ereignisse an das Speicherkonto übertragen.
 
 ### <a name="scanstatuslogevent"></a>ScanStatusLogEvent
 

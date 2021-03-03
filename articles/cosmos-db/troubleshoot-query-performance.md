@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Probleme mit SQL-Abfragen in Azure Cosmos DB 
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 02/02/2021
+ms.date: 02/16/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 6875fc53a651b89fcfe88d3217ff86bd21204f6c
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 6701a580cbe7790dcce2cbbcc46889f9dff00107
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524304"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559974"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Behandeln von Problemen bei Verwendung von Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -213,6 +213,12 @@ Nachstehend sind einige allgemeine Systemfunktionen aufgeführt, die den Index n
 | Upper/Lower                         | Normalisieren Sie die Groß-/Kleinschreibung beim Einfügen, statt die Systemfunktion zum Normalisieren der Daten für Vergleiche zu verwenden. Eine Abfrage wie ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` wird zu ```SELECT * FROM c WHERE c.name = 'BOB'```. |
 | GetCurrentDateTime/GetCurrentTimestamp/GetCurrentTicks | Berechnen Sie die aktuelle Zeit vor der Abfrageausführung, und verwenden Sie diesen Zeichenfolgenwert in der `WHERE`-Klausel. |
 | Mathematische Funktionen (Nicht-Aggregate) | Wenn Sie in der Abfrage einen Wert häufig berechnen müssen, sollten Sie diesen Wert als Eigenschaft in Ihrem JSON-Dokument speichern. |
+
+Die folgenden Systemfunktionen können Indizes verwenden, außer wenn sie in Abfragen mit Aggregaten verwendet werden:
+
+| **Systemfunktion**                     | **Vorschläge für Optimierungen**             |
+| --------------------------------------- |------------------------------------------------------------ |
+| Räumliche Systemfunktionen                        | Speichern des Abfrageergebnisses in einer materialisierten Echtzeitsicht |
 
 Wenn er in der `SELECT`-Klausel verwendet wird, wirken sich ineffiziente Systemfunktionen nicht auf die Verwendung von Indizes durch Abfragen aus.
 

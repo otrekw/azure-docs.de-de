@@ -3,24 +3,79 @@ title: Liste der Updates für das Azure-Gastbetriebssystem | Microsoft-Dokumenta
 description: In diesem Artikel werden die Microsoft Security Response Center-Updates aufgelistet, die auf verschiedene Azure-Gastbetriebssysteme angewendet wurden. Überprüfen Sie, ob ein Update für das Gastbetriebssystem gültig ist, das Sie verwenden.
 services: cloud-services
 documentationcenter: na
-author: yohaddad
+author: gunnarcms
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/5/2021
-ms.author: yohaddad
-ms.openlocfilehash: d5892d0b2ae2004f8604333294411e849dc8394b
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.date: 2/17/2021
+ms.author: gunnarcms
+ms.openlocfilehash: 1a77ab15bc4d1095f47d9d411b5a0fd64bb568de
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805883"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650795"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+## <a name="february-2021-guest-os"></a>Gastbetriebssystem für Februar 2021
+
+>[!NOTE] 
+
+>Das Gastbetriebssystem für Februar wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für Februar enthalten. Änderungen der Liste vorbehalten. 
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 21-02 |  [4601345]  |  Letztes kumulatives Update | 6,28 | 9\. Februar 2021 |
+|  Rel 21-02 |  [4580325]  |  Flash-Update | 3.94, 4.87, 5.52, 6.28 | 13. Oktober 2020 |
+|  Rel 21-02 |  [4586768]  |  Kumulative IE-Updates | 2.107, 3.94, 4.87 | 10. November 2020 |
+|  Rel 21-02 |  [4601318]  |  Letztes kumulatives Update | 5,52 | 9\. Februar 2021 |
+|  Rel 21-02 |  [4578952]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | 2.107 | 12. Januar 2021 |
+|  Rel 21-02 |  [4578955]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | 2.107 | 12. Januar 2021 |
+|  Rel 21-02 |  [4578953]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | 4.87 | 12. Januar 2021 |
+|  Rel 21-02 |  [4578956]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | 4.87 | 12. Januar 2021 |
+|  Rel 21-02 |  [4578950]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | 3,94 | 12. Januar 2021 |
+|  Rel 21-02 |  [4578954]  |  . .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | 3,94 | 12. Januar 2021 |
+|  Rel 21-02 |  [4578966]  |  . Kumulatives Update für .NET Framework 3.5 und 4.7.2 | 6,28 | 13. Oktober 2020 |
+|  Rel 21-02 |  [4601347]  |  Monatlicher Rollup | 2.107 | 9\. Februar 2021 |
+|  Rel 21-02 |  [4601348]  |  Monatlicher Rollup | 3,94 | 9\. Februar 2021 |
+|  Rel 21-02 |  [4601384]  |  Monatlicher Rollup | 4.87 | 9\. Februar 2021 |
+|  Rel 21-02 |  [4566426]  |  Wartungsstapelaktualisierung | 3,94 | 14. Juli 2020 |
+|  Rel 21-02 |  [4566425]  |  Wartungsstapelaktualisierung | 4.87 | 14. Juli 2020 |
+|  Rel 21-02 OOB |  [4578013]  |  Eigenständiges Sicherheitsupdate | 4.87 | 19. August 2020 |
+|  Rel 21-02 |  [4601392]  |  Wartungsstapelaktualisierung | 5,52 | 9\. Februar 2021 |
+|  Rel 21-02 |  [4592510]  |  Wartungsstapelaktualisierung | 2.107 | 8\. Dezember 2020 |
+|  Rel 21-02 |  [4601393]  |  Wartungsstapelaktualisierung | 6,28 | 9\. Februar 2021 |
+|  Rel 21-02 |  [4494175]  |  Microcode | 5,52 | 1\. September 2020 |
+|  Rel 21-02 |  [4494174]  |  Microcode | 6,28 | 1\. September 2020 |
+
+[4601345]: https://support.microsoft.com/kb/4601345
+[4580325]: https://support.microsoft.com/kb/4580325
+[4586768]: https://support.microsoft.com/kb/4586768
+[4601318]: https://support.microsoft.com/kb/4601318
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4578966]: https://support.microsoft.com/kb/4578966
+[4601347]: https://support.microsoft.com/kb/4601347
+[4601348]: https://support.microsoft.com/kb/4601348
+[4601384]: https://support.microsoft.com/kb/4601384
+[4566426]: https://support.microsoft.com/kb/4566426
+[4566425]: https://support.microsoft.com/kb/4566425
+[4578013]: https://support.microsoft.com/kb/4578013
+[4601392]: https://support.microsoft.com/kb/4601392
+[4592510]: https://support.microsoft.com/kb/4592510
+[4601393]: https://support.microsoft.com/kb/4601393
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+
 
 ## <a name="january-2021-guest-os"></a>Gastbetriebssystem für Januar 2021
 

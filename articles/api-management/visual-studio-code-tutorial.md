@@ -6,16 +6,16 @@ author: dlepow
 ms.author: apimpm
 ms.topic: tutorial
 ms.date: 12/10/2020
-ms.openlocfilehash: 6cf5c6f716912689b39264ed71f6a7c55f944ad2
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0dea8e43d5f09b84c5795bc257cf3331ad919fcb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97410041"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649545"
 ---
 # <a name="tutorial-use-the-api-management-extension-for-visual-studio-code-to-import-and-manage-apis"></a>Tutorial: Verwenden der API Management-Erweiterung für Visual Studio Code zum Importieren und Verwalten von APIs
 
-In diesem Tutorial erfahren Sie, wie Sie die Vorschau der API Management-Erweiterung für Visual Studio Code für gängige Vorgänge in API Management verwenden. Verwenden Sie die vertraute Visual Studio Code-Umgebung, um APIs zu importieren, zu aktualisieren, zu testen und zu verwalten.
+In diesem Tutorial erfahren Sie, wie Sie die API Management-Erweiterung für Visual Studio Code für gängige Vorgänge in API Management verwenden. Verwenden Sie die vertraute Visual Studio Code-Umgebung, um APIs zu importieren, zu aktualisieren, zu testen und zu verwalten.
 
 Folgendes wird vermittelt:
 

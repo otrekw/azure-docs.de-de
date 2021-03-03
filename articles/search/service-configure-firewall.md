@@ -3,24 +3,23 @@ title: Konfigurieren einer IP-Firewall für Ihren Azure Cognitive Search-Dienst
 titleSuffix: Azure Cognitive Search
 description: Konfigurieren Sie IP-Steuerungsrichtlinien, um den Zugriff auf Ihren Azure Cognitive Search-Dienst einzuschränken.
 manager: nitinme
-author: mrcarter8
-ms.author: mcarter
+author: markheff
+ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 67fa53e565de70d3da0b90e36a968b68d54d667f
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.date: 02/16/2021
+ms.openlocfilehash: de34c2921c7829cb6d7e7354a1ebcff44271efd3
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573244"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545546"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Konfigurieren einer IP-Firewall für Azure Cognitive Search
 
 Azure Cognitive Search unterstützt IP-Regeln zur Unterstützung eingehender Firewalls. Dieses Modell bietet eine zusätzliche Sicherheitsebene für Ihren Suchdienst, ähnlich den IP-Regeln, die Sie in einer Azure Virtual Network-Sicherheitsgruppe finden. Mit diesen IP-Regeln können Sie nun Ihren Suchdienst so konfigurieren, dass nur von einer genehmigten Gruppe von Computern und/oder Clouddiensten darauf zugegriffen werden kann. Für den Zugriff auf gespeicherte Daten in Ihrem Suchdienst über diese genehmigten Gruppen von Computern und Diensten muss der Aufrufer weiterhin ein gültiges Autorisierungstoken vorlegen.
 
-> [!Important]
-> IP-Regeln für Ihren Azure Cognitive Search-Dienst können mithilfe des Azure-Portals oder der [Verwaltungs-REST-API, Version 2020-03-13,](/rest/api/searchmanagement/) konfiguriert werden.
+Sie können IP-Regeln im Azure-Portal festlegen, wie in diesem Artikel beschrieben. Alternativ können Sie die [Verwaltungs-REST-API Version 2020-03-13](/rest/api/searchmanagement/), [Azure PowerShell](/powershell/module/az.search) oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/search) verwenden.
 
 ## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Konfigurieren einer IP-Firewall über das Azure-Portal
 

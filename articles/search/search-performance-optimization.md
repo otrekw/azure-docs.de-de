@@ -5,16 +5,16 @@ description: Lernen Sie Techniken und bewährte Methoden zum Optimieren der Leis
 manager: nitinme
 author: LiamCavanagh
 ms.author: liamca
-ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 6ca489dc0c5c7ba8ba67f3456d04be953544a8fb
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.date: 02/01/2021
+ms.custom: references_regions
+ms.openlocfilehash: bbd3e5774c6effa45888f6e59874d29f3b55b45f
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987811"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545580"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Skalieren zur Verbesserung der Leistung in Azure Cognitive Search
 
@@ -87,13 +87,16 @@ Weitere Informationen hierzu finden Sie unter [SLA für Dienste der kognitiven A
 
 Bei Replikaten handelt es sich, wie bereits gesagt, um Kopien Ihrer Daten. Wenn Sie also mehrere Replikate einrichten, können in Azure Cognitive Search Computerneustarts und Wartungsaktivitäten für ein Replikat durchgeführt werden, während gleichzeitig in den anderen Replikaten weiterhin Abfragen ausgeführt werden. Wenn Sie im Gegensatz dazu Replikate entfernen, tritt eine Verschlechterung der Abfrageleistung auf, vorausgesetzt, dass diese Replikate eine nicht ausgelastete Ressource waren.
 
+<a name="availability-zones"></a>
+
 ### <a name="availability-zones"></a>Verfügbarkeitszonen
 
-[Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) dienen dazu, die Rechenzentren einer Region in verschiedene physische Standortgruppen zu unterteilen, um eine hohe Verfügbarkeit innerhalb der Region zu gewährleisten. Der Suchdienst wird innerhalb einer Region ausgeführt, die Replikate werden in verschiedenen Zonen ausgeführt.
+[Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) dienen dazu, die Rechenzentren einer Region in verschiedene physische Standortgruppen zu unterteilen, um Hochverfügbarkeit innerhalb der Region zu gewährleisten. Bei Cognitive Search sind einzelne Replikate die Einheiten für die Zonenzuweisung. Der Suchdienst wird innerhalb einer Region ausgeführt, die Replikate werden in verschiedenen Zonen ausgeführt.
 
 Sie können Verfügbarkeitszonen mit Azure Cognitive Search nutzen, indem Sie Ihrem Suchdienst zwei oder mehr Replikate hinzufügen. Jedes Replikat wird in einer anderen Verfügbarkeitszone innerhalb der Region platziert. Wenn Sie mehr Replikate als Verfügbarkeitszonen haben, werden die Replikate so gleichmäßig wie möglich auf die Verfügbarkeitszonen verteilt.
 
 Azure Cognitive Search unterstützt derzeit Verfügbarkeitszonen für Suchdienste ab dem Standard-Tarif, die in einer der folgenden Regionen erstellt wurden:
+
 + Australien, Osten (Datum der Erstellung: ab dem 30. Januar 2021)
 + Kanada, Mitte (Datum der Erstellung: ab dem 30. Januar 2021)
 + USA, Mitte (Datum der Erstellung: ab dem 4. Dezember 2020)
@@ -106,7 +109,7 @@ Azure Cognitive Search unterstützt derzeit Verfügbarkeitszonen für Suchdienst
 + Europa, Westen (Datum der Erstellung: ab dem 29. Januar 2021)
 + USA, Westen 2 (Datum der Erstellung: ab dem 30. Januar 2021)
 
-Verfügbarkeitszonen wirken sich nicht auf die [Vereinbarung zum Servicelevel (SLA) für Azure Cognitive Search](https://azure.microsoft.com/support/legal/sla/search/v1_0/) aus.
+Verfügbarkeitszonen wirken sich nicht auf die [Vereinbarung zum Servicelevel (SLA) für Azure Cognitive Search](https://azure.microsoft.com/support/legal/sla/search/v1_0/) aus. Sie benötigen für Hochverfügbarkeit immer noch mindestens drei Replikate.
 
 ## <a name="scale-for-geo-distributed-workloads-and-geo-redundancy"></a>Skalieren für geografisch verteilte Workloads und Georedundanz
 

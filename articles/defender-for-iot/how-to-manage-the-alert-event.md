@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: c0670f37da0cead5e3bd05a1d69e17191e8c0ccf
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 866ff4cad74b7092dda11a20f8f7bcadf91233ae
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508742"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526900"
 ---
 # <a name="manage-alert-events"></a>Verwalten von Warnungsereignissen
 
@@ -23,7 +23,8 @@ Die folgenden Optionen sind für die Verwaltung von Warnungsereignissen verfügb
  | **Learn** | Autorisieren Sie das erkannte Ereignis. Weitere Informationen finden Sie im Artikel zum [Erlernen und Verlernen von Ereignissen](#about-learning-and-unlearning-events). |
  | **Bestätigen** | Blenden Sie die Warnung einmal für das erkannte Ereignis aus. Die Warnung wird wieder ausgelöst, wenn das Ereignis wieder erkannt wird. Weitere Informationen finden Sie im Artikel zum [Bestätigen und Aufgeben der Bestätigung von Ereignissen](#about-acknowledging-and-unacknowledging-events). |
  | **Mute** | Ignorieren Sie Aktivitäten mit identischen Geräten und vergleichbarem Datenverkehr fortlaufend. Weitere Informationen finden Sie im Artikel zum [Stummschalten und Aufheben der Stummschaltung von Ereignissen](#about-muting-and-unmuting-events). |
-
+ 
+Sie können auch Warnungsinformationen exportieren.
 ## <a name="about-learning-and-unlearning-events"></a>Informationen zum Erlernen und Verlernen von Ereignissen
 
 Ereignisse, die auf Abweichungen des gelernten Netzwerks hindeuten, spiegeln möglicherweise zulässige Netzwerkänderungen wider. Beispiele hierfür sind ein neues autorisiertes Gerät, das dem Netzwerk hinzugefügt wurde, oder ein autorisiertes Firmwareupdate.
@@ -68,9 +69,9 @@ In diesen Fällen ist das Erlernen nicht verfügbar. Wenn Erlernen nicht möglic
 > [!NOTE] 
 > Ereignisse, bei denen ein Internetgerät als Quelle oder Ziel definiert ist, können nicht stummgeschaltet werden.
 
-### <a name="what-traffic-is-muted"></a>Welcher Datenverkehr wird stummgeschaltet?
+### <a name="what-alert-activity-is-muted"></a>Welche Warnungsaktivitäten werden stummgeschaltet?
 
-Die Stummschaltung bezieht sich auf die Netzwerkgeräte und den Datenverkehr, der für ein Ereignis erkannt wird. Der Titel der Warnung beschreibt den Datenverkehr, der stummgeschaltet wird.
+Die Stummschaltung bezieht sich auf Netzwerkgeräte und Datenverkehr, die für ein Ereignis erkannt werden. Der Titel der Warnung beschreibt den Datenverkehr, der stummgeschaltet wird.
 
 Das Gerät oder die Geräte, die stummgeschaltet werden, werden als Bild in der Warnung angezeigt. Wenn zwei Geräte angezeigt werden, wird der Datenverkehr, für den spezifisch gewarnt wurde, zwischen ihnen stummgeschaltet.
 
@@ -88,7 +89,7 @@ Wenn ein Ereignis stummgeschaltet wird, wird es immer dann ignoriert, wenn die Q
 
 **Folgendes gilt, nachdem ein Ereignis stummgeschaltet wurde:**
 
-- Die Warnung wird in der Warnungsansicht **Acknowledged** (Bestätigt) angezeigt, bis die Stummschaltung aufgehoben wird.
+- Die Warnung wird in der Warnungsansicht **Bestätigt** angezeigt, bis die Stummschaltung aufgehoben wird.
 
 - Die Aktion „Mute“ (Stummschalten) wird in der **Ereigniszeitachse** angezeigt.
 
@@ -105,6 +106,25 @@ Wenn ein Ereignis stummgeschaltet wird, wird es immer dann ignoriert, wenn die Q
 1. Wählen Sie die Option **Acknowledged** (Bestätigt) in der Hauptansicht zu den **Warnungen** aus.
 
 2. Zeigen Sie mit dem Mauszeiger auf eine Warnung, um festzustellen, ob Sie stummgeschaltet wurde.  
+
+## <a name="export-alert-information"></a>Exportieren von Warnungsinformationen
+
+Exportieren Sie Warnungsinformationen in eine CSV-Datei. Sie können Informationen zu allen erkannten Warnungen oder Informationen basierend auf der gefilterten Ansicht exportieren. Die folgenden Informationen werden exportiert:
+
+- Quelladresse
+- Zieladresse
+- Warnungstitel
+- Schweregrad der Warnung
+- Warnmeldung
+- Zusätzliche Informationen
+- Status „Bestätigt“
+- PCAP-Verfügbarkeit
+
+So erfolgt das Exportieren
+
+1. Wählen Sie im Seitenmenü die Option Warnungen aus.
+1. Wählen Sie Exportieren aus.
+1. Wählen Sie „Export Extended Alerts“ (Erweiterte Warnungen exportieren) aus, um für jede Warnung, die mehrere Geräte abdeckt, Warnungsinformationen in separaten Zeilen zu exportieren. Wenn „Export Extended Alerts“ (Erweiterte Warnungen exportieren) ausgewählt ist, wird in der CSV-Datei eine duplizierte Zeile des Warnungsereignisses mit den eindeutigen Elementen in jeder Zeile erstellt. Die Verwendung dieser Option vereinfacht die Untersuchung exportierter Warnungsereignisse.
 
 ## <a name="see-also"></a>Weitere Informationen
 

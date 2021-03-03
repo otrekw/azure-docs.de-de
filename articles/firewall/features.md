@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 10/08/2020
+ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: 69eaf3ca60378afd810d712d85ea7ef732e41e3e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 9f89d84fc7033645b2b094e9f40a1d85b076623b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788229"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100544832"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall-Features
 
@@ -22,20 +22,21 @@ ms.locfileid: "98788229"
 
 Azure Firewall bietet die folgenden Features:
 
-- [Integrierte Hochverfügbarkeit](#built-in-high-availability)
-- [Verfügbarkeitszonen](#availability-zones)
-- [Uneingeschränkte Cloudskalierbarkeit](#unrestricted-cloud-scalability)
-- [FQDN-Filterregeln für Anwendungen](#application-fqdn-filtering-rules)
-- [Filterregeln für Netzwerkdatenverkehr](#network-traffic-filtering-rules)
-- [FQDN-Tags](#fqdn-tags)
-- [Diensttags](#service-tags)
-- [Threat Intelligence](#threat-intelligence)
-- [SNAT-Unterstützung für ausgehenden Datenverkehr](#outbound-snat-support)
-- [DNAT-Unterstützung für eingehenden Datenverkehr](#inbound-dnat-support)
-- [Mehrere öffentliche IP-Adressen](#multiple-public-ip-addresses)
-- [Azure Monitor-Protokollierung](#azure-monitor-logging)
-- [Tunnelerzwingung](#forced-tunneling)
-- [Zertifizierungen](#certifications)
+- Integrierte Hochverfügbarkeit
+- Verfügbarkeitszonen
+- Uneingeschränkte Cloudskalierbarkeit
+- FQDN-Anwendungsfilterregeln
+- Filterregeln für den Netzwerkdatenverkehr
+- FQDN-Tags
+- Diensttags
+- Bedrohungsanalyse
+- SNAT-Unterstützung für ausgehenden Datenverkehr
+- DNAT-Unterstützung für eingehenden Datenverkehr
+- Mehrere öffentliche IP-Adressen
+- Azure Monitor-Protokollierung
+- Tunnelerzwingung
+- Webkategorien (Vorschau)
+- Zertifizierungen
 
 ## <a name="built-in-high-availability"></a>Integrierte Hochverfügbarkeit
 
@@ -47,7 +48,7 @@ Zur Erhöhung der Verfügbarkeit kann Azure Firewall während der Bereitstellung
 
 Unter Verwendung der Standard-SLA des Diensts von 99,95 % können Sie Azure Firewall außerdem aus Gründen der Nähe einer bestimmten Zone zuordnen.
 
-Für eine Firewall, die in einer Verfügbarkeitszone bereitgestellt wird, fallen keine zusätzlichen Kosten an. Es fallen jedoch zusätzliche Kosten an für eingehende und ausgehende Datenübertragungen, die mit Verfügbarkeitszonen verbunden sind. Weitere Informationen finden Sie unter [Preisübersicht Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/).
+Für eine Firewall, die in einer Verfügbarkeitszone bereitgestellt wird, fallen keine zusätzlichen Kosten an. Es fallen jedoch zusätzliche Kosten für die ein- und ausgehenden Datenübertragungen an, die mit Verfügbarkeitszonen verbunden sind. Weitere Informationen finden Sie unter [Preisübersicht Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 Verfügbarkeitszonen für Azure Firewall sind in Regionen verfügbar, die Verfügbarkeitszonen unterstützen. Weitere Informationen siehe [Regionen, die Verfügbarkeitszonen in Azure unterstützen](../availability-zones/az-region.md)
 
@@ -97,7 +98,7 @@ Sie können Ihrer Firewall [mehrere öffentliche IP-Adressen](deploy-multi-publi
 Dies ermöglicht die folgenden Szenarien:
 
 - **DNAT:** Sie können mehrere Standardportinstanzen auf Ihre Back-End-Server übersetzen. Wenn Sie beispielsweise über zwei öffentliche IP-Adressen verfügen, können Sie den TCP-Port 3389 (RDP) für beide IP-Adressen übersetzen.
-- **SNAT:** Für ausgehende SNAT-Verbindungen stehen zusätzliche Ports zur Verfügung, was die Gefahr einer Überlastung des SNAT-Ports verringert. Aktuell wählt Azure Firewall die öffentliche IP-Quelladresse für eine Verbindung nach dem Zufallsprinzip aus. Wenn Sie in Ihrem Netzwerk über eine nachgeschaltete Filterung verfügen, müssen Sie alle öffentlichen IP-Adressen zulassen, die mit Ihrer Firewall verbunden sind. Verwenden Sie ggf. ein [Präfix für öffentliche IP-Adressen](../virtual-network/public-ip-address-prefix.md), um diese Konfiguration zu vereinfachen.
+- **SNAT:** Für ausgehende SNAT-Verbindungen stehen mehr Ports zur Verfügung, sodass die Gefahr einer Überlastung des SNAT-Ports verringert wird. Aktuell wählt Azure Firewall die öffentliche IP-Quelladresse für eine Verbindung nach dem Zufallsprinzip aus. Wenn Sie in Ihrem Netzwerk über eine nachgeschaltete Filterung verfügen, müssen Sie alle öffentlichen IP-Adressen zulassen, die mit Ihrer Firewall verbunden sind. Verwenden Sie ggf. ein [Präfix für öffentliche IP-Adressen](../virtual-network/public-ip-address-prefix.md), um diese Konfiguration zu vereinfachen.
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor-Protokollierung
 
@@ -110,6 +111,24 @@ Azure Firewall Workbook bietet einen flexiblen Bereich für die Azure Firewall-
 ## <a name="forced-tunneling"></a>Tunnelerzwingung
 
 Sie können Azure Firewall so konfigurieren, dass der gesamte Internetdatenverkehr an den festgelegten nächsten Hop weitergeleitet wird, statt dass er direkt ins Internet verläuft. So verfügen Sie vielleicht beispielsweise über eine lokale Edgefirewall oder ein anderes virtuelles Netzwerkgerät (Network Virtual Appliance, NVA), die bzw. das den Netzwerkverkehr erst verarbeitet, bevor er ans Internet übergeben wird. Weitere Informationen finden Sie unter [Azure Firewall-Tunnelerzwingung](forced-tunneling.md).
+
+## <a name="web-categories-preview"></a>Webkategorien (Vorschau)
+
+Mithilfe von Webkategorien können Administratoren den Benutzerzugriff auf Websitekategorien, z. B. Glücksspiel- oder Social Media-Websites, zulassen oder verweigern. Webkategorien sind in Azure Firewall Standard enthalten. Die Vorschauversion von Azure Firewall Premium bietet jedoch feinere Anpassungsmöglichkeiten. Im Gegensatz zu den Funktionen für Webkategorien in der Standard-SKU, bei denen der Abgleich der Kategorie anhand des FQDN erfolgt, werden die Kategorien bei der Premium-SKU anhand der gesamten URL abgeglichen (sowohl HTTP- als auch HTTPS-Datenverkehr). Weitere Informationen zur Azure Firewall Premium-Vorschau finden Sie unter [Features der Azure Firewall Premium-Vorschau](premium-features.md).
+
+Wenn Azure Firewall z. B. eine HTTPS-Anforderung für `www.google.com/news` abfängt, wird die folgende Kategorisierung erwartet: 
+
+- Firewall Standard: Nur der Teil mit dem vollqualifizierten Domänennamen (FQDN) wird untersucht, und `www.google.com` wird als *Suchmaschine* kategorisiert. 
+
+- Firewall Premium: Die gesamte URL wird untersucht, sodass `www.google.com/news` als *News* kategorisiert wird.
+
+Die Kategorien werden basierend auf dem Schweregrad in **Haftung**, **Hohe Bandbreite**, **Geschäftliche Nutzung**, **Produktivitätsverlust**, **Allgemeines Surfen** und **Nicht kategorisiert** unterteilt.
+
+### <a name="category-exceptions"></a>Kategorieausnahmen
+
+Sie können Ausnahmen für Ihre Webkategorisierungsregeln erstellen. Erstellen Sie innerhalb der Regelsammlungsgruppe eine separate Sammlung mit Zulassungs- oder Verweigerungsregeln mit einer höheren Priorität. Sie können beispielsweise eine Regelsammlung konfigurieren, die `www.linkedin.com` mit Priorität 100 zulässt, und eine Regelsammlung, die **Soziale Netzwerke** mit der Priorität 200 verweigert. Dadurch wird eine Ausnahme für die vordefinierte Webkategorie **Soziale Netzwerke** erstellt.
+
+
 
 ## <a name="certifications"></a>Zertifizierungen
 

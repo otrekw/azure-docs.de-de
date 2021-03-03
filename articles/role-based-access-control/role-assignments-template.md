@@ -1,25 +1,29 @@
 ---
-title: Hinzufügen von Azure-Rollenzuweisungen mithilfe von Azure Resource Manager-Vorlagen – Azure RBAC
+title: Zuweisen von Azure-Rollen mithilfe von Azure Resource Manager-Vorlagen – Azure RBAC
 description: Hier erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten mit Azure Resource Manager-Vorlagen und der rollenbasierten Zugriffssteuerung in Azure (Azure RBAC) gewähren.
 services: active-directory
 documentationcenter: ''
 author: rolyon
-manager: mtillman
+manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
 ms.date: 01/21/2021
 ms.author: rolyon
-ms.openlocfilehash: 023aa086cdafc3ab1459c2f748b2181575c14191
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 65b4ec369085e44cdffb0550e9eeaef0196cd35a
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675335"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556029"
 ---
-# <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Hinzufügen von Azure-Rollenzuweisungen mithilfe von Azure Resource Manager-Vorlagen
+# <a name="assign-azure-roles-using-azure-resource-manager-templates"></a>Zuweisen von Azure-Rollen mithilfe von Azure Resource Manager-Vorlagen
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Neben der Verwendung von Azure PowerShell oder der Azure-Befehlszeilenschnittstelle können Sie Rollen auch mit [Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md) zuweisen. Vorlagen können hilfreich sein, wenn Sie Ressourcen konsistent und wiederholt bereitstellen müssen. In diesem Artikel wird das Zuweisen von Rollen mithilfe von Vorlagen beschrieben.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+[!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
 ## <a name="get-object-ids"></a>Abrufen von Objekt-IDs
 
@@ -73,13 +77,13 @@ $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
 objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
 ```
 
-## <a name="add-a-role-assignment"></a>Hinzufügen einer Rollenzuweisung
+## <a name="assign-an-azure-role"></a>Zuweisen einer Azure-Rolle
 
-In Azure RBAC fügen Sie zum Gewähren des Zugriffs eine Rollenzuweisung hinzu.
+In Azure RBAC weisen Sie zum Gewähren des Zugriffs eine Rolle zu.
 
 ### <a name="resource-group-scope-without-parameters"></a>Ressourcengruppenbereich (ohne Parameter)
 
-Die folgende Vorlage zeigt eine einfache Möglichkeit zum Hinzufügen einer Rollenzuweisung. Einige Werte werden in der Vorlage angegeben. Die folgende Vorlage veranschaulicht Folgendes:
+Die folgende Vorlage zeigt eine einfache Möglichkeit zum Zuweisen einer Rolle. Einige Werte werden in der Vorlage angegeben. Die folgende Vorlage veranschaulicht Folgendes:
 
 -  Zuweisen der Rolle [Leser](built-in-roles.md#reader) zu einem Benutzer, einer Gruppe oder einer Anwendung in einem Ressourcengruppenbereich
 
@@ -206,7 +210,7 @@ az deployment sub create --location centralus --template-file rbac-test.json --p
 
 ### <a name="resource-scope"></a>Ressourcenumfang
 
-Wenn Sie auf der Ebene einer Ressource eine Rollenzuweisung hinzufügen müssen, legen Sie für die `scope`-Eigenschaft der Rollenzuweisung den Namen der Ressource fest.
+Wenn Sie auf der Ebene einer Ressource eine Rolle zuweisen möchten, legen Sie für die `scope`-Eigenschaft der Rollenzuweisung den Namen der Ressource fest.
 
 Die folgende Vorlage veranschaulicht Folgendes:
 
@@ -369,15 +373,6 @@ az deployment group create --resource-group ExampleGroup2 --template-file rbac-t
 Das folgende Beispiel veranschaulicht die Zuweisung der Rolle „Mitwirkender“ zu einem neuen Dienstprinzipal für verwaltete Identitäten nach dem Bereitstellen der Vorlage.
 
 ![Rollenzuweisung für einen neuen Dienstprinzipal für verwaltete Identitäten](./media/role-assignments-template/role-assignment-template-msi.png)
-
-## <a name="remove-a-role-assignment"></a>Entfernen einer Rollenzuweisung
-
-Wenn Sie in Azure RBAC Zugriff auf eine Azure-Ressource entfernen möchten, entfernen Sie die Rollenzuweisung. Es gibt keine Möglichkeit, eine Rollenzuweisung mithilfe einer Vorlage zu entfernen. Zum Entfernen einer Rollenzuweisung müssen Sie andere Tools verwenden, z. B.:
-
-- [Azure portal](role-assignments-portal.md#remove-a-role-assignment)
-- [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
-- [Azure-Befehlszeilenschnittstelle](role-assignments-cli.md#remove-a-role-assignment)
-- [REST-API](role-assignments-rest.md#remove-a-role-assignment)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

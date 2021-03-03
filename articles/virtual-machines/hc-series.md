@@ -3,17 +3,17 @@ title: 'HC-Serie: Azure Virtual Machines'
 description: Spezifikationen für die VMs der HC-Serie
 author: ju-shim
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: hpc
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 38020376f9d86fb074bd6d9c09e3d16e899c4a6f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: b9f25627f0969d4dbcb2b639bd6f21ffbf14f3fe
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096897"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671258"
 ---
 # <a name="hc-series"></a>HC-Serie
 
@@ -27,7 +27,7 @@ VMs der HC-Serie unterstützen Mellanox EDR InfiniBand mit 100 Gbit/s. Diese VMs
 [Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
-[Beschleunigter Netzwerkbetrieb:](../virtual-network/create-vm-accelerated-networking-cli.md) Unterstützt<br>
+[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
 [Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
 <br>
 

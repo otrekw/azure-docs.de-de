@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 152fee2e4e72cee6a7bc1c768c0a8ca7b031ec39
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1efd91d92bac1bc1f39d82aaa0cc71daa0275f8e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878917"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570536"
 ---
 # <a name="connect-your-salesforce-service-cloud-to-azure-sentinel"></a>Verbinden Ihrer Salesforce Service Cloud mit Azure Sentinel
 
@@ -35,7 +35,7 @@ In diesem Artikel wird erläutert, wie Sie Ihre Salesforce Service Cloud-Lösung
 
 - Sie benötigen Lese- und Schreibberechtigungen für den Azure Sentinel-Arbeitsbereich.
 
-- Sie müssen über Leseberechtigungen für freigegebene Schlüssel für den Arbeitsbereich verfügen. [Weitere Informationen zu Arbeitsbereichsschlüsseln](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)
+- Sie müssen über Leseberechtigungen für freigegebene Schlüssel für den Arbeitsbereich verfügen. [Weitere Informationen zu Arbeitsbereichsschlüsseln](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)
 
 - Sie müssen über Lese- und Schreibberechtigungen für Azure Functions verfügen, um eine Funktions-App erstellen zu können. [Informieren Sie sich ausführlicher über Azure Functions](../azure-functions/index.yml).
 

@@ -9,12 +9,12 @@ ms.subservice: faq
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3bc259f9ee6cb1e6fd927af82a1740403d3ae7d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016708"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587957"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -71,15 +71,15 @@ Ja. Weitere Informationen hierzu finden Sie in der [Dokumentation zu Skalierungs
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Was sind die bewährten Methoden für die automatische Skalierung in Azure?
 
-Bewährte Methoden für die automatische Skalierung finden Sie unter [Empfohlene Methoden für die automatische Skalierung von VMs, VM-Skalierungsgruppen und Clouddiensten](../azure-monitor/platform/autoscale-best-practices.md).
+Bewährte Methoden für die automatische Skalierung finden Sie unter [Empfohlene Methoden für die automatische Skalierung von VMs, VM-Skalierungsgruppen und Clouddiensten](../azure-monitor/autoscale/autoscale-best-practices.md).
 
 ### <a name="where-do-i-find-metric-names-for-autoscaling-that-uses-host-based-metrics"></a>Wo finde ich Metriknamen für die automatische Skalierung mit hostbasierten Metriken?
 
-Metriknamen für die automatische Skalierung mit hostbasierten Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](../azure-monitor/platform/metrics-supported.md).
+Metriknamen für die automatische Skalierung mit hostbasierten Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](../azure-monitor/essentials/metrics-supported.md).
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>Gibt es Beispiele für die automatische Skalierung auf der Grundlage eines Azure Service Bus-Themas und der Warteschlangenlänge?
 
-Ja. Beispiele für die automatische Skalierung auf der Grundlage eines Azure Service Bus-Themas und der Warteschlangenlänge finden Sie unter [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](../azure-monitor/platform/autoscale-common-metrics.md).
+Ja. Beispiele für die automatische Skalierung auf der Grundlage eines Azure Service Bus-Themas und der Warteschlangenlänge finden Sie unter [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](../azure-monitor/autoscale/autoscale-common-metrics.md).
 
 Verwenden Sie für eine Service Bus-Warteschlange den folgenden JSON-Code:
 
@@ -104,9 +104,9 @@ Ersetzen Sie die Beispielwerte durch die URIs (Uniform Resource Identifiers) Ihr
 
 Sie können eine Einstellung zur automatischen Skalierung auf einem virtuellen Computer erstellen, um Metriken zu verwenden, die auf der Hostebene oder auf dem Gastbetriebssystem basieren.
 
-Eine Liste mit unterstützten Metriken finden Sie unter [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](../azure-monitor/platform/autoscale-common-metrics.md).
+Eine Liste mit unterstützten Metriken finden Sie unter [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](../azure-monitor/autoscale/autoscale-common-metrics.md).
 
-Ein vollständiges Beispiel für VM-Skalierungsgruppen finden Sie unter [Konfiguration der erweiterten automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM-Skalierungsgruppen](../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md).
+Ein vollständiges Beispiel für VM-Skalierungsgruppen finden Sie unter [Konfiguration der erweiterten automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM-Skalierungsgruppen](../azure-monitor/autoscale/autoscale-virtual-machine-scale-sets.md).
 
 In dem Beispiel werden die CPU-Metrik auf der Hostebene und die Metrik für die Nachrichtenanzahl verwendet.
 
@@ -114,13 +114,13 @@ In dem Beispiel werden die CPU-Metrik auf der Hostebene und die Metrik für die 
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>Wie lege ich Warnungsregeln für eine VM-Skalierungsgruppe fest?
 
-Metrikwarnungen für VM-Skalierungsgruppen können über PowerShell oder über die Azure-Befehlszeilenschnittstelle erstellt werden. Weitere Informationen finden Sie unter [Azure Monitor – PowerShell-Schnellstartbeispiele](../azure-monitor/samples/powershell-samples.md#create-metric-alerts) und unter [Azure Monitor – Schnellstartbeispiele für die plattformübergreifende CLI](../azure-monitor/samples/cli-samples.md#work-with-alerts).
+Metrikwarnungen für VM-Skalierungsgruppen können über PowerShell oder über die Azure-Befehlszeilenschnittstelle erstellt werden. Weitere Informationen finden Sie unter [Azure Monitor – PowerShell-Schnellstartbeispiele](../azure-monitor/powershell-samples.md#create-metric-alerts) und unter [Azure Monitor – Schnellstartbeispiele für die plattformübergreifende CLI](../azure-monitor/cli-samples.md#work-with-alerts).
 
 Die Zielressourcen-ID (TargetResourceId) der VM-Skalierungsgruppe sieht wie folgt aus:
 
 /subscriptions/IhreAbonnementID/resourceGroups/<Ihre Ressourcengruppe>/providers/Microsoft.Compute/virtualMachineScaleSets/<Name Ihrer VM-Skalierungsgruppe>
 
-Als Metrik, für die eine Warnung festgelegt werden soll, können Sie einen beliebigen VM-Leistungsindikator auswählen. Weitere Informationen finden Sie im Artikel [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](../azure-monitor/platform/autoscale-common-metrics.md) unter [Gastbetriebssystem-Metriken für Resource Manager-basierte virtuelle Windows-Computer](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms) und [Gastbetriebssystem-Metriken für virtuelle Linux-Computer](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-linux-vms).
+Als Metrik, für die eine Warnung festgelegt werden soll, können Sie einen beliebigen VM-Leistungsindikator auswählen. Weitere Informationen finden Sie im Artikel [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](../azure-monitor/autoscale/autoscale-common-metrics.md) unter [Gastbetriebssystem-Metriken für Resource Manager-basierte virtuelle Windows-Computer](../azure-monitor/autoscale/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms) und [Gastbetriebssystem-Metriken für virtuelle Linux-Computer](../azure-monitor/autoscale/autoscale-common-metrics.md#guest-os-metrics-linux-vms).
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>Wie richte ich die automatische Skalierung für eine VM-Skalierungsgruppe mithilfe von PowerShell ein?
 

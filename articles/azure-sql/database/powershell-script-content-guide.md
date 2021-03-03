@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 77220fabc78dd10b4299219ef84c1f6eb32ba82e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d732f0e42bc5eef8f72a2b9ce2adee28deb9a67
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85987308"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690968"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure PowerShell-Beispiele für Azure SQL-Datenbank und verwaltete Azure SQL-Instanzen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -68,7 +68,7 @@ Die folgende Tabelle enthält Links zu Azure PowerShell-Beispielskripts für ver
 |---|---|
 |**Erstellen und Konfigurieren von verwalteten Instanzen**||
 | [Erstellen und Verwalten einer verwalteten Instanz](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | Dieses PowerShell-Skript zeigt Ihnen, wie Sie mithilfe von Azure PowerShell eine verwaltete Instanz erstellen und verwalten. |
-| [Erstellen und Verwalten einer verwalteten Instanz mithilfe der Azure Resource Manager-Vorlage](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Dieses PowerShell-Skript zeigt Ihnen, wie Sie mithilfe von Azure PowerShell und der Azure Resource Manager-Vorlage eine verwaltete Instanz erstellen und verwalten.|
+| [Erstellen und Verwalten einer verwalteten Instanz mithilfe der Azure Resource Manager-Vorlage](../managed-instance/create-template-quickstart.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Dieses PowerShell-Skript zeigt Ihnen, wie Sie mithilfe von Azure PowerShell und der Azure Resource Manager-Vorlage eine verwaltete Instanz erstellen und verwalten.|
 | [Wiederherstellen einer Datenbank in einer verwalteten Instanz in einer anderen geografischen Region](../managed-instance/scripts/restore-geo-backup.md) | Dieses PowerShell-Skript stellt eine Datenbanksicherung in einer anderen Region wieder her. Dies wird als „Notfallwiederherstellungsszenario mit Geowiederherstellung“ bezeichnet. |
 | **Konfigurieren von Transparent Data Encryption (TDE)**||
 | [Verwalten von Transparent Data Encryption in einer verwalteten Instanz mithilfe Ihres eigenen Azure Key Vault-Schlüssels](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Dieses PowerShell-Skript konfiguriert Transparent Data Encryption in einem Bring Your Own Key-Szenario (BYOK) für eine verwaltete Azure SQL-Datenbank-Instanz unter Verwendung eines Schlüssels aus Azure Key Vault.|

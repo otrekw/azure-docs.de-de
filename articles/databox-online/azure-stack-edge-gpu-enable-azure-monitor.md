@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 171b4dbfb2a5852e270c483a28cad31f97dcb42b
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 199ec8e2f1e8eb74d971286a4fc6180eb8b72f2a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493911"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595982"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Aktivieren von Azure Monitor auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
@@ -49,7 +49,7 @@ Führen Sie zum Erstellen eines Log Analytics-Arbeitsbereichs die folgenden Schr
 
         ![„Überprüfen + erstellen“ für den Log Analytics-Arbeitsbereich](media/azure-stack-edge-gpu-enable-azure-monitor/create-log-analytics-workspace-review-create-1.png)
 
-Weitere Informationen finden Sie in den ausführlichen Schritten unter [Erstellen eines Log Analytics-Arbeitsbereichs über das Azure-Portal](../azure-monitor/learn/quick-create-workspace.md).
+Weitere Informationen finden Sie in den ausführlichen Schritten unter [Erstellen eines Log Analytics-Arbeitsbereichs über das Azure-Portal](../azure-monitor/logs/quick-create-workspace.md).
 
 
 
@@ -57,7 +57,7 @@ Weitere Informationen finden Sie in den ausführlichen Schritten unter [Erstelle
 
 Führen Sie die folgenden Schritte aus, um Container Insights für Ihren Arbeitsbereich zu aktivieren. 
 
-1. Führen Sie die ausführlichen Schritte unter [Hinzufügen von Azure Monitor für Container](../azure-monitor/insights/container-insights-hybrid-setup.md#how-to-add-the-azure-monitor-containers-solution) aus. Verwenden Sie die Vorlagendatei `containerSolution.json`:
+1. Führen Sie die ausführlichen Schritte unter [Hinzufügen von Azure Monitor für Container](../azure-monitor/containers/container-insights-hybrid-setup.md#how-to-add-the-azure-monitor-containers-solution) aus. Verwenden Sie die Vorlagendatei `containerSolution.json`:
 
     ```yml
     {

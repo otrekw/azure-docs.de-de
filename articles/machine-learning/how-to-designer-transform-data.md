@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 70f5e17c4cc42201e9aa3d36c9937f6ceb9527d0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 10904275d382c7f9dbf223ded78cab0adf14992a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880202"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661051"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Transformieren von Daten in Azure Machine Learning-Designer
 
@@ -76,7 +76,7 @@ In diesem Abschnitt verwenden Sie das Modul [Split Data](algorithm-module-refere
 
 Ihre Pipeline sollte wie folgt aussehen:
 
-:::image type="content" source="./media/how-to-designer-transform-data/split-data.png"alt-text="Screenshot: Konfigurieren der Pipeline und des Moduls „Split Data“ (Daten aufteilen)":::
+:::image type="content" source="./media/how-to-designer-transform-data/split-data.png" alt-text="Screenshot: Konfigurieren der Pipeline und des Moduls „Split Data“ (Daten aufteilen)":::
 
 
 ## <a name="save-the-datasets"></a>Speichern der Datasets

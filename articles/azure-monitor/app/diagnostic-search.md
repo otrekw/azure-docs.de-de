@@ -3,18 +3,18 @@ title: Verwenden von Search in Azure Application Insights | Microsoft-Dokumentat
 description: Durchsuchen und filtern Sie unformatierte Telemetriedaten, die von Ihrer Web-App gesendet werden.
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: f87a972b417bf6074de1c10b7a54bd2416f88daa
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f7c2229a2e497fb052db79d61fcfeff140897798
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187016"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579539"
 ---
 # <a name="using-search-in-application-insights"></a>Verwenden von Search in Application Insights
 
 Search ist eine Funktion in [Application Insights](./app-insights-overview.md), mit der Sie einzelne Telemetrieelemente wie Seitenaufrufe, Ausnahmen und Webanforderungen suchen und untersuchen können. Außerdem können Sie Protokollablaufverfolgungen und Ereignisse anzeigen, die Sie programmiert haben.
 
-(Verwenden Sie [Analytics](../log-query/log-analytics-tutorial.md) zum Anwenden komplexerer Abfragen auf Ihre Daten.)
+(Verwenden Sie [Analytics](../logs/log-analytics-tutorial.md) zum Anwenden komplexerer Abfragen auf Ihre Daten.)
 
 ## <a name="where-do-you-see-search"></a>Wo steht Search zur Verfügung?
 
@@ -81,7 +81,7 @@ Wenn Sie alle Elemente mit dem gleichen Eigenschaftswert ermitteln möchten, geb
 ## <a name="search-the-data"></a>Durchsuchen der Daten
 
 > [!NOTE]
-> Um komplexere Abfragen zu stellen, öffnen Sie oben auf dem Blatt „Suche“ das Feld [**Protokolle (Analytics)**](../log-query/log-analytics-tutorial.md).
+> Um komplexere Abfragen zu stellen, öffnen Sie oben auf dem Blatt „Suche“ das Feld [**Protokolle (Analytics)**](../logs/log-analytics-tutorial.md).
 >
 
 Sie können alle Eigenschaftswerte nach Ausdrücken durchsuchen. Dies ist nützlich, wenn Sie [benutzerdefinierte Ereignisse](./api-custom-events-metrics.md) mit Eigenschaftswerten geschrieben haben.
@@ -145,7 +145,7 @@ POST-Daten werden nicht automatisch protokolliert. Sie können jedoch [TrackTrac
 
 ## <a name="next-steps"></a><a name="add"></a>Nächste Schritte
 
-* [Stellen von komplexeren Abfragen mit Analytics](../log-query/log-analytics-tutorial.md)
+* [Stellen von komplexeren Abfragen mit Analytics](../logs/log-analytics-tutorial.md)
 * [Senden von Protokollen und benutzerdefinierter Telemetrie an Application Insights](./asp-net-trace-logs.md)
 * [Einrichten von Tests der Verfügbarkeit und Reaktionsfähigkeit](./monitor-web-app-availability.md)
 * [Problembehandlung](../faq.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 07dd369ceeefee85f4d9180a0b9b33a0d4c8bbdb
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 1e20ed632ee5b100098f7f35bcca16d157668cad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698205"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721360"
 ---
 # <a name="azure-security-baseline-for-azure-load-balancer"></a>Azure-Sicherheitsbaseline für Azure Load Balancer
 
@@ -212,9 +212,9 @@ Verwenden Sie Azure PowerShell oder die Azure CLI, um nach Ressourcen basierend 
 
 Erstellen Sie in Azure Monitor Warnungen, mit denen Sie benachrichtigt werden, wenn sich wichtige Ressourcen ändern.
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -236,13 +236,13 @@ Sie sollten die Daten für Azure Sentinel oder eine SIEM-Lösung eines Drittanbi
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Sammeln von internen Azure Virtual Machine-Hostprotokollen mit Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Sammeln von internen Azure Virtual Machine-Hostprotokollen mit Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Erste Schritte mit Azure Monitor und der Integration einer SIEM-Drittanbieterlösung](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-- [Plattformaktivitätsprotokolle](../azure-monitor/platform/activity-log.md)
+- [Plattformaktivitätsprotokolle](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -294,9 +294,9 @@ Sie sollten die Daten für Azure Sentinel oder eine SIEM-Lösung eines Drittanbi
 
 - [Artikel „Anzeigen von Aktivitätsprotokollen zur Überwachung von Aktionen in Ressourcen“](../azure-resource-manager/management/view-activity-logs.md)
 
-- [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -346,7 +346,7 @@ Aktivieren Sie Daten in Azure Sentinel oder in einer SIEM-Drittanbieterlösung, 
 
 - [Verwalten von Warnungen in Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/learn/tutorial-response.md)
+- [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -426,7 +426,7 @@ Um die Sicherheit von Kundendaten innerhalb von Azure zu gewährleisten, hat Mic
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen zu erstellen, die bei Änderungen an wichtigen Azure-Ressourcen ausgegeben werden, z. B. an Load Balancern, die für wichtige Produktionsworkloads verwendet werden.
 
-- [Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 

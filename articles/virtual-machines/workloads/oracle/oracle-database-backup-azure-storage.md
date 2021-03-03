@@ -2,18 +2,19 @@
 title: Sichern einer Oracle Database 19c-Datenbank auf einer Azure-Linux-VM mithilfe von RMAN und Azure Storage
 description: Erfahren Sie, wie Sie eine Oracle Database 19c-Datenbank im Azure-Cloudspeicher sichern.
 author: cro27
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: fce947c43e8559f4ea2a65645805e987a9015d3f
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a6ce5446bd6470ef7a829925646d486801b28ebc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806272"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670021"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-storage"></a>Sichern und Wiederherstellen einer Oracle Database 19c-Datenbank auf einer Azure-Linux-VM mithilfe von Azure Storage
 
@@ -51,7 +52,7 @@ In diesem Artikel wird die Verwendung von Azure Storage als Medium zum Sichern u
    sudo su - oracle
    ```
     
-5. Bevor Sie eine Verbindung herstellen, müssen Sie die Umgebungsvariable ORACLE_SID festlegen:
+5. Bevor Sie eine Verbindung herstellen, müssen Sie die Umgebungsvariablen ORACLE_SID festlegen:
     
     ```bash
     export ORACLE_SID=test;
@@ -405,4 +406,4 @@ az group delete --name rg-oracle
 
 [Tutorial: Erstellen von hoch verfügbaren virtuellen Computern](../../linux/create-cli-complete.md)
 
-[Erkunden der Azure CLI-Beispiele für die Bereitstellung virtueller Computer](../../linux/cli-samples.md)
+[Erkunden der Azure CLI-Beispiele für die Bereitstellung virtueller Computer](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

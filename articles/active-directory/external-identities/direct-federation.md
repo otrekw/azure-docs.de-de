@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9afb5a078d5359ed236b44c0a6712985bf8c305
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 598cbf303c8a87675833b8d87f05055771e46f55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257184"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687242"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Direkter Verbund mit AD FS und Drittanbietern für Gastbenutzer (Preview)
 
@@ -26,9 +26,7 @@ ms.locfileid: "99257184"
 
 In diesem Artikel wird beschrieben, wie Sie einen direkten Verbund mit einer anderen Organisation für die B2B-Zusammenarbeit einrichten. Sie können einen direkten Verbund mit jeder Organisation einrichten, deren Identitätsanbieter das SAML 2.0- oder WS-Verbund-Protokoll unterstützt.
 Wenn Sie einen direkten Verbund mit dem Identitätsanbieter eines Partners einrichten, können neue Gastbenutzer aus dieser Domäne ihr eigenes, vom Identitätsanbieter verwaltetes Organisationskonto verwenden, um sich bei Ihrem Azure AD-Mandanten anzumelden und mit Ihnen zusammenzuarbeiten. Es ist nicht erforderlich, dass der Gastbenutzer ein separates Azure AD-Konto erstellt.
-> [!NOTE]
-> Direkte Verbundgastbenutzer müssen sich über einen Link anmelden, der den Mandantenkontext enthält (z. B. `https://myapps.microsoft.com/?tenantid=<tenant id>` oder `https://portal.azure.com/<tenant id>` bzw. `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` bei einer überprüften Domäne). Direkte Links zu Anwendungen und Ressourcen funktionieren ebenfalls, sofern sie den Mandantenkontext enthalten. Direkte Verbundgastbenutzer können sich derzeit nicht über allgemeine Endpunkte, die keinen Mandantenkontext aufweisen, anmelden. Beispielsweise führt die Verwendung von `https://myapps.microsoft.com`, `https://portal.azure.com` oder `https://teams.microsoft.com` zu einem Fehler.
- 
+
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Wann wird ein Gastbenutzer mit direktem Verbund authentifiziert?
 Nachdem Sie den direkten Verbund mit einer Organisation eingerichtet haben, werden alle neuen Gastbenutzer, die Sie einladen, mithilfe des direkten Verbunds authentifiziert. Es ist wichtig zu beachten, dass durch das Einrichten des direkten Verbunds nicht die Authentifizierungsmethode für Gastbenutzer geändert wird, die bereits eine Einladung von Ihnen eingelöst haben. Im Folgenden finden Sie einige Beispiele:
  - Wenn Gastbenutzer bereits Einladungen von Ihnen eingelöst haben und Sie anschließend direkten Verbund mit deren Organisation einrichten, verwenden diese Gastbenutzer weiterhin dieselbe Authentifizierungsmethode, die sie vor dem Einrichten des direkten Verbunds verwendet haben.
@@ -42,10 +40,22 @@ Der direkte Verbund ist an Domänennamespaces gebunden, z. B. „contoso.com“ 
 ## <a name="end-user-experience"></a>Endbenutzererfahrung 
 Bei direktem Verbund melden sich Gastbenutzer mit ihren eigenen Organisationskonten bei Ihrem Azure AD-Mandanten an. Wenn sie auf freigegebene Ressourcen zugreifen und zur Anmeldung aufgefordert werden, werden direkte Verbundbenutzer zu ihrem Identitätsanbieter umgeleitet. Nach erfolgreicher Anmeldung werden sie an Azure AD zurückgeleitet, um auf Ressourcen zuzugreifen. Die Aktualisierungstoken von direkten Verbundbenutzern sind 12 Stunden lang gültig, wobei es sich um die [Standarddauer für Pass-Through-Aktualisierungstoken](../develop/active-directory-configurable-token-lifetimes.md#exceptions) in Azure AD handelt. Wenn der Verbundidentitätsanbieter einmaliges Anmelden (SSO) aktiviert hat, erfährt der Benutzer auch SSO, und es wird nach der ersten Authentifizierung keine Anmeldeaufforderung mehr angezeigt.
 
+## <a name="sign-in-endpoints"></a>Endpunkte für die Anmeldung
+
+Beim direkten Verbund können sich Gastbenutzer nun mithilfe eines [gemeinsamen Endpunkts](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) (d. h. mit einer allgemeinen App-URL, die Ihren Mandantenkontext nicht enthält) bei Ihren mehrmandantenfähigen Anwendungen oder bei Microsoft-Erstanbieter-Apps anmelden. Beim Anmeldevorgang wählt der Gastbenutzer zuerst **Anmeldeoptionen** und dann **Bei einer Organisation anmelden** aus. Der Benutzer gibt dann den Namen Ihres Unternehmens ein und setzt den Vorgang mit seinen eigenen Anmeldeinformationen fort.
+
+Beim direkten Verbund können Gastbenutzer auch Anwendungsendpunkte verwenden, die Ihre Mandanteninformationen enthalten, z. B.:
+
+  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+  * `https://portal.azure.com/<your tenant ID>`
+
+Beim direkten Verbund können Sie Gastbenutzern auch einen direkten Link zu einer Anwendung oder Ressource zur Verfügung stellen und Ihre Mandanteninformationen einfügen, z. B. `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`.
+
 ## <a name="limitations"></a>Einschränkungen
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>DNS-verifizierte Domänen in Azure AD
-Die Domäne, mit der Sie einen Verbund einrichten möchten, darf in Azure AD ***nicht** _ DNS-verifiziert werden. Es ist zulässig, einen direkten Verbund mit nicht verwalteten (E-Mail-verifizierten oder „viralen“) Azure AD-Mandanten einzurichten, da sie nicht DNS-verifiziert sind.
+Die Domäne, mit der Sie einen Verbund einrichten möchten, darf in Azure AD ***nicht*** DNS-verifiziert werden. Es ist zulässig, einen direkten Verbund mit nicht verwalteten (E-Mail-verifizierten oder „viralen“) Azure AD-Mandanten einzurichten, da sie nicht DNS-verifiziert sind.
 
 ### <a name="authentication-url"></a>Authentifizierungs-URL
 Der direkte Verbund ist nur für Richtlinien zulässig, bei denen die Domäne der Authentifizierungs-URL mit der Zieldomäne übereinstimmt, oder wenn es sich bei der Authentifizierungs-URL um einen dieser zulässigen Identitätsanbieter handelt (diese Liste kann geändert werden):
@@ -60,7 +70,7 @@ Der direkte Verbund ist nur für Richtlinien zulässig, bei denen die Domäne de
 -   federation.exostar.com
 -   federation.exostartest.com
 
-Wenn Sie beispielsweise den direkten Verbund für _*fabrikam.com** einrichten, besteht die Authentifizierungs-URL `https://fabrikam.com/adfs` die Überprüfung. Ein Host in derselben Domäne wird ebenfalls bestehen, z. B. `https://sts.fabrikam.com/adfs`. Die Authentifizierungs-URL `https://fabrikamconglomerate.com/adfs` oder `https://fabrikam.com.uk/adfs` für dieselbe Domäne wird jedoch nicht bestehen.
+Wenn Sie z. B. den direkten Verbund für **fabrikam.com** einrichten, besteht die Authentifizierungs-URL `https://fabrikam.com/adfs` die Überprüfung. Ein Host in derselben Domäne wird ebenfalls bestehen, z. B. `https://sts.fabrikam.com/adfs`. Die Authentifizierungs-URL `https://fabrikamconglomerate.com/adfs` oder `https://fabrikam.com.uk/adfs` für dieselbe Domäne wird jedoch nicht bestehen.
 
 ### <a name="signing-certificate-renewal"></a>Signaturzertifikatverlängerung
 Wenn Sie die Metadaten-URL in den Identitätsanbietereinstellungen angeben, verlängert Azure AD das Signaturzertifikat automatisch, wenn es abläuft. Wenn das Zertifikat jedoch aus irgendeinem Grund vor der Ablaufzeit rotiert wird, oder wenn Sie keine Metadaten-URL bereitstellen, kann Azure AD es nicht verlängern. In diesem Fall müssen Sie das Signaturzertifikat manuell aktualisieren.
@@ -147,7 +157,7 @@ Als Nächstes konfigurieren Sie den direkten Verbund mit dem in Schritt 1 in Azu
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/). Wählen Sie im linken Bereich **Azure Active Directory** aus. 
 2. Wählen Sie **Externe Identitäten** > **Alle Identitätsanbieter** aus.
-3. Wählen Sie dann **Neuer SAML-/WS-Fed-IdP** aus.
+3. Wählen Sie **Neuer SAML-/WS-Fed-IdP** aus.
 
     ![Screenshot der Schaltfläche zum Hinzufügen eines neuen SAML- oder WS-Verbund-Identitätsanbieters](media/direct-federation/new-saml-wsfed-idp.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 35c8c2aa31887feb294b04b8a88bbe5478659e5e
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d35a97b0008a7ce3069185dd557a60221776b0ba
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807902"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595466"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Sammeln von Daten aus Linux-basierten Quellen mithilfe von Syslog
 
@@ -34,7 +34,7 @@ Sie können Ereignisse von Linux-basierten Computern oder Appliances, die Syslog
 
 **Syslog** ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux. Wenn der **Log Analytics-Agent für Linux** auf Ihrem virtuellen Computer oder Ihrer Appliance installiert ist, konfiguriert die Installationsroutine den lokalen Syslog-Daemon für die Weiterleitung von Meldungen an den Agent an TCP-Port 25224. Der Agent sendet dann die Meldung über HTTPS an Ihren Log Analytics-Arbeitsbereich, wo sie in einen Ereignisprotokolleintrag in der Syslog-Tabelle in **Azure Sentinel > Protokolle** analysiert wird.
 
-Weitere Informationen finden Sie unter [Syslog-Datenquellen in Azure Monitor](../azure-monitor/platform/data-sources-syslog.md).
+Weitere Informationen finden Sie unter [Syslog-Datenquellen in Azure Monitor](../azure-monitor/agents/data-sources-syslog.md).
 
 ## <a name="configure-syslog-collection"></a>Konfigurieren der Syslog-Sammlung
 
@@ -67,37 +67,35 @@ Weitere Informationen finden Sie unter [Syslog-Datenquellen in Azure Monitor](..
 
 ### <a name="configure-the-log-analytics-agent"></a>Konfigurieren des Log Analytics-Agent
 
-1. Klicken Sie unten auf dem Blatt des Syslog-Connectors auf den Link **Konfiguration der erweiterten Einstellungen für den Arbeitsbereich öffnen >** .
+1. Klicken Sie unten auf dem Blatt des Syslog-Connectors auf den Link **Konfiguration der Arbeitsbereichs-Agents öffnen >** .
 
-1. Wählen Sie auf dem Blatt **Erweiterte Einstellungen** die Option **Daten** > **Syslog** aus. Fügen Sie dann die Einrichtungen hinzu, die der Connector erfassen soll.
+1. Wählen Sie auf dem Blatt **Agents-Konfiguration** die Registerkarte **Syslog** aus. Fügen Sie dann die Einrichtungen hinzu, die der Connector erfassen soll. Wählen Sie **Einrichtung hinzufügen** und dann in der Dropdownliste die Einrichtungen aus.
     
     - Fügen Sie die Einrichtungen hinzu, die Ihre Syslog-Appliance in ihren Protokollheadern enthält. 
     
     - Wenn Sie für die zu sammelnden Daten die Erkennung ungewöhnlicher SSH-Anmeldungen verwenden möchten, fügen Sie **auth** und **authpriv** hinzu. Im [folgenden Abschnitt](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) finden Sie weitere Details.
 
-1. Wenn Sie alle zu überwachenden Einrichtungen hinzugefügt und alle Schweregradoptionen für jede Einrichtung angepasst haben, aktivieren Sie das Kontrollkästchen **Nachstehende Konfiguration auf meine Computer anwenden**.
+1. Wenn Sie alle Einrichtungen hinzugefügt haben, die Sie überwachen möchten, überprüfen Sie, ob die Kontrollkästchen für alle gewünschten Schweregrade aktiviert sind.
 
-1. Wählen Sie **Speichern** aus. 
+1. Klicken Sie auf **Übernehmen**. 
 
 1. Stellen Sie auf Ihrem virtuellen Computer oder der Appliance sicher, dass die von Ihnen angegebenen Einrichtungen gesendet werden.
 
 1. Um die Syslog-Protokolldaten in **Protokolle** abzufragen, geben Sie `Syslog` in das Abfragefenster ein.
 
-1. Sie können mit den in [Verwenden von Funktionen in Azure Monitor-Protokollabfragen](../azure-monitor/log-query/functions.md) beschriebenen Abfrageparametern Ihre Syslog-Meldungen analysieren. Sie können die Abfrage dann als neue Log Analytics-Funktion speichern und als neuen Datentyp verwenden.
+1. Sie können mit den in [Verwenden von Funktionen in Azure Monitor-Protokollabfragen](../azure-monitor/logs/functions.md) beschriebenen Abfrageparametern Ihre Syslog-Meldungen analysieren. Sie können die Abfrage dann als neue Log Analytics-Funktion speichern und als neuen Datentyp verwenden.
 
 > [!NOTE]
 > **Verwenden desselben Computers zum Weiterleiten von unformatierten Syslog-Nachrichten *und* CEF-Nachrichten**
->
 >
 > Sie können Ihren vorhandenen [Computer für die CEF-Protokollweiterleitung](connect-cef-agent.md) verwenden, um Protokolle auch aus einfachen Syslog-Quellen zu erfassen und weiterzuleiten. Sie müssen jedoch die folgenden Schritte ausführen, um zu vermeiden, dass Ereignisse in beiden Formaten an Azure Sentinel gesendet werden, da dies zu einer Duplizierung von Ereignissen führt.
 >
 >    Wenn Sie die [Datensammlung von Ihren CEF-Quellen](connect-common-event-format.md) bereits eingerichtet und den Log Analytics-Agent wie oben konfiguriert haben:
 >
-> 1. Sie müssen auf jedem Computer, der Protokolle im CEF-Format sendet, die Syslog-Konfigurationsdatei bearbeiten, um die Einrichtungen zu entfernen, die zum Senden von CEF-Meldungen verwendet werden. Auf diese Weise werden die in CEF gesendeten Einrichtungen nicht auch in Syslog gesendet. Detaillierte Anweisungen hierzu finden Sie unter [Konfigurieren von Syslog auf dem Linux-Agent](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent).
+> 1. Sie müssen auf jedem Computer, der Protokolle im CEF-Format sendet, die Syslog-Konfigurationsdatei bearbeiten, um die Einrichtungen zu entfernen, die zum Senden von CEF-Meldungen verwendet werden. Auf diese Weise werden die in CEF gesendeten Einrichtungen nicht auch in Syslog gesendet. Detaillierte Anweisungen hierzu finden Sie unter [Konfigurieren von Syslog auf dem Linux-Agent](../azure-monitor/agents/data-sources-syslog.md#configure-syslog-on-linux-agent).
 >
 > 1. Sie müssen auf diesen Computern den folgenden Befehl ausführen, um die Synchronisierung des Agents mit der Syslog-Konfiguration in Azure Sentinel zu deaktivieren. Dadurch wird sichergestellt, dass die von Ihnen im vorherigen Schritt vorgenommene Konfigurationsänderung nicht überschrieben wird.<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
-
 
 ### <a name="configure-the-syslog-connector-for-anomalous-ssh-login-detection"></a>Konfigurieren des Syslog-Connectors für die Erkennung ungewöhnlicher SSH-Anmeldungen
 
@@ -113,10 +111,7 @@ Azure Sentinel kann Machine Learning (ML) auf die Syslog-Daten anwenden, um unge
  
 Diese Erkennung erfordert eine bestimmte Konfiguration des Syslog-Datenconnectors: 
 
-1. Stellen Sie in Schritt 5 des vorherigen Verfahrens sicher, dass sowohl **auth** als auch **authpriv** als zu überwachende Einrichtungen ausgewählt sind. Übernehmen Sie die Standardeinstellungen für die Schweregradoptionen, sodass sie alle ausgewählt sind. Beispiel:
-    
-    > [!div class="mx-imgBorder"]
-    > ![Einrichtungen, die für die Erkennung ungewöhnlicher SSH-Anmeldungen erforderlich sind](./media/connect-syslog/facilities-ssh-detection.png)
+1. Vergewissern Sie sich in Schritt 2 unter [Konfigurieren des Log Analytics-Agents](#configure-the-log-analytics-agent), dass **auth** und **authpriv** als zu überwachende Einrichtungen und dazu alle Schweregrade ausgewählt sind. 
 
 2. Lassen Sie ausreichend Zeit zum Sammeln der Syslog-Informationen. Navigieren Sie dann zu **Azure Sentinel – Protokolle**, kopieren Sie die folgende Abfrage, und fügen Sie sie ein:
     

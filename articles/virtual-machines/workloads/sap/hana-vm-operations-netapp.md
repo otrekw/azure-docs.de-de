@@ -8,20 +8,19 @@ manager: bburns
 editor: ''
 tags: azure-resource-manager
 keywords: SAP, Azure, ANF, HANA, Azure NetApp Files, Momentaufnahme
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 906879c44a2d7a3248f3d3ac0c9fec7ced7f2a4f
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: de8af71928ad6a83d4930e4e6e0b8dd257148111
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746542"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666620"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>NFS v4.1-Volumes unter Azure NetApp Files für SAP HANA
 
@@ -66,7 +65,7 @@ Der maximale Durchsatz für eine LIF und eine einzelne Linux-Sitzung liegt zwisc
 
 - [HANA-Administratorhandbuch](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
 - [Blog zu SAP HANA-Datenvolumepartitionierung](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
-- [SAP-Hinweis 2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- [SAP Note 2400005](https://launchpad.support.sap.com/#/notes/2400005)
 - [SAP-Hinweis 2700123](https://launchpad.support.sap.com/#/notes/2700123)
 
 

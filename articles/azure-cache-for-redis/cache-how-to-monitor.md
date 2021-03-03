@@ -5,15 +5,15 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 07/13/2017
-ms.openlocfilehash: 3d19d8f1b6a44f32e92f82e861471ca9b5c8fa41
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 02/08/2021
+ms.openlocfilehash: 0ff11c9601fb55e27d8780185d77c177e9d9201b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327337"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584642"
 ---
-# <a name="how-to-monitor-azure-cache-for-redis"></a>Überwachen von Azure Cache for Redis
+# <a name="monitor-azure-cache-for-redis"></a>Überwachen von Azure Cache for Redis
 
 Azure Cache for Redis bietet über [Azure Monitor](../azure-monitor/index.yml) verschiedene Optionen zum Überwachen Ihrer Cache-Instanzen. Sie können Metriken anzeigen, Metrikdiagramme an das Startmenü anheften, Daten- und Zeitbereiche für Überwachungsdiagramme anpassen, Metriken aus Diagrammen hinzufügen und entfernen sowie Warnungen festlegen, die ausgelöst werden, wenn bestimmte Bedingungen erfüllt sind. Diese Tools ermöglichen es Ihnen, die Integrität Ihrer Azure Cache for Redis-Instanzen zu überwachen, und unterstützen Sie beim Verwalten Ihrer Cachinganwendungen.
 
@@ -52,13 +52,13 @@ Um Redis-Metriken anzuzeigen und benutzerdefinierte Diagramme mit Azure Monitor 
 
 ![Im linken Navigationsbereich von contoso55 ist „Metriken“ eine Option unter „Überwachung“, die hervorgehoben ist. Unter „Metriken“ gibt es eine Liste von Metriken. Cachetreffer und Cachefehler sind ausgewählt.](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
-Weitere Informationen zum Verwenden von Metriken mit Azure Monitor finden Sie unter [Übersicht über Metriken in Microsoft Azure](../azure-monitor/platform/data-platform.md).
+Weitere Informationen zum Verwenden von Metriken mit Azure Monitor finden Sie unter [Übersicht über Metriken in Microsoft Azure](../azure-monitor/data-platform.md).
 
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>Exportieren von Cachemetriken
 
-Cachemetriken werden in Azure Monitor standardmäßig [30 Tage lang gespeichert](../azure-monitor/platform/data-platform-metrics.md) und anschließend gelöscht. Um Cachemetriken länger als 30 Tage beizubehalten, können Sie [ein Speicherkonto festlegen](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) und eine Richtlinie **Aufbewahrung (Tage)** für die Cachemetriken angeben. 
+Cachemetriken werden in Azure Monitor standardmäßig [30 Tage lang gespeichert](../azure-monitor/essentials/data-platform-metrics.md) und anschließend gelöscht. Um Cachemetriken länger als 30 Tage beizubehalten, können Sie [ein Speicherkonto festlegen](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) und eine Richtlinie **Aufbewahrung (Tage)** für die Cachemetriken angeben. 
 
 So konfigurieren Sie ein Speicherkonto für die Cachemetriken
 
@@ -74,10 +74,10 @@ So konfigurieren Sie ein Speicherkonto für die Cachemetriken
 ![Redis-Diagnose](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
 >[!NOTE]
->Neben dem Archivieren der Cachemetriken im Speicher können Sie sie auch [an einen Event Hub streamen oder an Azure Monitor-Protokolle senden](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-values).
+>Neben dem Archivieren der Cachemetriken im Speicher können Sie sie auch [an einen Event Hub streamen oder an Azure Monitor-Protokolle senden](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-values).
 >
 
-Um auf die Metriken zuzugreifen, können Sie sie im Azure-Portal anzeigen (wie weiter oben in diesem Artikel beschrieben) oder dazu die [Azure Monitor-REST-API für Metriken](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) verwenden.
+Um auf die Metriken zuzugreifen, können Sie sie im Azure-Portal anzeigen (wie weiter oben in diesem Artikel beschrieben) oder dazu die [Azure Monitor-REST-API für Metriken](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md) verwenden.
 
 > [!NOTE]
 > Wenn Sie das Speicherkonto ändern, sind die Daten im zuvor konfigurierten Speicherkonto weiterhin zum Download verfügbar, werden im Azure-Portal jedoch nicht angezeigt.  
@@ -129,7 +129,7 @@ Klicken Sie zum Konfigurieren von Warnungsregeln für den Cache im **Ressourcenm
 
 ![Überwachung](./media/cache-how-to-monitor/redis-cache-monitoring.png)
 
-Weitere Informationen zum Konfigurieren und Verwenden von Warnungen finden Sie unter [Übersicht über Warnungen](../azure-monitor/platform/alerts-classic-portal.md).
+Weitere Informationen zum Konfigurieren und Verwenden von Warnungen finden Sie unter [Übersicht über Warnungen](../azure-monitor/alerts/alerts-classic-portal.md).
 
 ## <a name="activity-logs"></a>Aktivitätsprotokolle
 Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure Cache for Redis-Instanzen ausgeführt wurden. Sie wurden zuvor als „Überwachungsprotokolle“ oder „Betriebsprotokolle“ bezeichnet. Mit Aktivitätsprotokollen können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für die Azure Cache for Redis-Instanzen durchgeführt wurden. 
@@ -140,4 +140,4 @@ Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure Cache
 
 Klicken Sie zum Anzeigen von Aktivitätsprotokollen für Ihren Cache im **Ressourcenmenü** auf **Aktivitätsprotokolle**.
 
-Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Übersicht über das Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md).
+Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Übersicht über das Azure-Aktivitätsprotokoll](../azure-monitor/essentials/platform-logs-overview.md).

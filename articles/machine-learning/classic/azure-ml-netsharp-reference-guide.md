@@ -3,18 +3,18 @@ title: 'ML Studio (Classic): Benutzerdefinierte neuronale Net#-Netzwerke – Az
 description: Syntaxhandbuch zur Spezifikationssprache Net# für neuronale Netze. Erfahren Sie, wie Sie benutzerdefinierte Modelle für neuronale Netze in Azure Machine Learning Studio (klassisch) erstellen.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: a36eb21f681aec1cfc52a000b60bdbc30cab0633
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 5137b633f66088efbee41b96ba715eb3b18961dc
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302798"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519251"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Leitfaden zur Net#-Spezifikationssprache für neuronale Netzwerke für Machine Learning Studio (Classic)
 
@@ -266,9 +266,9 @@ Die Antwortnormalisierung unterstützt die Generalisierung in neuronalen Netzwer
 
 Antwortnormalisierungsbündel unterstützen alle Konvolutionsattribute mit Ausnahme von **Sharing**, **MapCount** und **Weights**.
 
-+ Wenn der Kernel Neuronen in derselben Zuordnung wie **_x_ *_ enthält, wird das Normalisierungsschema als _* zuordnungsinterne Normalisierung** bezeichnet. Um diese Art von Normalisierung zu definieren, muss die erste Koordinate in **InputShape** den Wert 1 haben.
++ Wenn der Kernel Neuronen in derselben Zuordnung wie ***x** _ enthält, wird das Normalisierungsschema als _*zuordnungsinterne Normalisierung** bezeichnet. Um diese Art von Normalisierung zu definieren, muss die erste Koordinate in **InputShape** den Wert 1 haben.
 
-+ Wenn der Kernel Neuronen an derselben räumlichen Position wie **_x_ *_ enthält, die Neuronen sich aber in anderen Zuordnungen befinden, wird das Normalisierungsschema als _* zuordnungsübergreifende Normalisierung** bezeichnet. Diese Art der Antwortnormalisierung implementiert eine Form von lateraler Hemmung, inspiriert durch den in echten Neuronen gefundenen Typ; dies sorgt für einen Wettbewerb um hohe Aktivierungsniveaus zwischen den in unterschiedlichen Zuordnungen berechneten Neuronenausgaben. Um eine zuordnungsübergreifende Normalisierung zu definieren, muss die erste Koordinate eine ganze Zahl größer als eins und nicht größer als die Anzahl der Zuordnungen sein; der Rest der Koordinaten muss den Wert 1 haben.
++ Wenn der Kernel Neuronen an derselben räumlichen Position wie ***x** _ enthält, die Neuronen sich aber in anderen Zuordnungen befinden, wird das Normalisierungsschema als _*zuordnungsübergreifende Normalisierung** bezeichnet. Diese Art der Antwortnormalisierung implementiert eine Form von lateraler Hemmung, inspiriert durch den in echten Neuronen gefundenen Typ; dies sorgt für einen Wettbewerb um hohe Aktivierungsniveaus zwischen den in unterschiedlichen Zuordnungen berechneten Neuronenausgaben. Um eine zuordnungsübergreifende Normalisierung zu definieren, muss die erste Koordinate eine ganze Zahl größer als eins und nicht größer als die Anzahl der Zuordnungen sein; der Rest der Koordinaten muss den Wert 1 haben.
 
 Da Antwortnormalisierungsbündel zur Bestimmung des Zielknotenwerts eine vordefinierte Funktion auf Quellknotenwerte anwenden, haben sie keinen trainierbaren Zustand (Gewichtungen oder Biase).
 

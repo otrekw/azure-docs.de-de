@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d5a90909345599b2389d1752e00a7bc917d06822
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 97ce1fe43bc831661a8590921d8121a8a82ba7e7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430410"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687174"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Probleme beim Anmelden bei für SAML-basiertes einmaliges Anmelden konfigurierten Apps
 Zur Behandlung der unten aufgeführten Anmeldeprobleme werden folgende Vorgehensweisen empfohlen, um bessere Diagnosen zu erzielen und Lösungsschritte zu automatisieren:
@@ -41,7 +41,8 @@ So öffnen Sie die Seite für die Konfiguration des SAML-basierten einmaligen An
 1. Wählen Sie die Option für SAML-basiertes einmaliges Anmelden aus.
 
 ## <a name="application-not-found-in-directory"></a>Die Anwendung wurde im Verzeichnis nicht gefunden.
-`Error AADSTS70001: Application with Identifier 'https:\//contoso.com' was not found in the directory.`
+
+`Error AADSTS70001: Application with Identifier 'https://contoso.com' was not found in the directory.`
 
 **Mögliche Ursache**
 
@@ -69,7 +70,7 @@ Vergewissern Sie sich, dass der Wert im Textfeld für die Antwort-URL dem `Asser
 Nachdem Sie den Wert der Antwort-URL in Azure AD aktualisiert haben und er mit dem Wert übereinstimmt, der in der SAML-Anforderung von der Anwendung gesendet wurde, sollten Sie sich bei der Anwendung anmelden können.
 
 ## <a name="user-not-assigned-a-role"></a>Benutzer wurde keine Rolle zugewiesen
-`Error AADSTS50105: The signed in user 'brian\@contoso.com' is not assigned to a role for the application.`
+`Error AADSTS50105: The signed in user 'brian@contoso.com' is not assigned to a role for the application.`
 
 **Mögliche Ursache**
 

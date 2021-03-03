@@ -6,44 +6,46 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
+dev_langs:
+- TSQL
 ms.topic: how-to
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
-ms.date: 02/07/2020
-ms.openlocfilehash: 76f9fb4ed5c3b88b3a1f69e352f50079586ec336
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.date: 02/01/2021
+ms.openlocfilehash: 11b94ba5bcedf56f0115b8730dc58f808aff5c58
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663331"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371599"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>Verwenden von Transact-SQL (T-SQL) zum Erstellen und Verwalten von Aufträgen für die elastische Datenbank (Vorschau)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Dieser Artikel enthält eine Vielzahl von Beispielszenarien für die ersten Schritte bei der Arbeit mit Aufträgen für die elastische Datenbank mit T-SQL.
 
-In den Beispielen werden die [gespeicherten Prozeduren](#job-stored-procedures) und [Ansichten](#job-views) verwendet, die in der [*Auftragsdatenbank*](job-automation-overview.md#job-database) verfügbar sind.
+In den Beispielen werden die [gespeicherten Prozeduren](#job-stored-procedures) und [Ansichten](#job-views) verwendet, die in der [*Auftragsdatenbank*](job-automation-overview.md#elastic-job-database) verfügbar sind.
 
 Transact-SQL (T-SQL) dient zum Erstellen, Konfigurieren, Ausführen und Verwalten von Aufträgen. Die Erstellung des Agents für Aufträge für die elastische Datenbank wird nicht in T-SQL unterstützt. Daher müssen Sie mithilfe des Portals oder mit [PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent) zuerst einen *Agent für Aufträge für die elastische Datenbank* erstellen.
 
 ## <a name="create-a-credential-for-job-execution"></a>Erstellen von Anmeldeinformationen für die Auftragsausführung
 
-Die Anmeldeinformationen werden verwendet, um eine Verbindung mit Ihren Zieldatenbanken für die Skriptausführung herzustellen. Für die Anmeldeinformationen müssen entsprechende Berechtigungen für die von der Zielgruppe angegebenen Datenbanken vorliegen, damit das Skript erfolgreich ausgeführt werden kann. Wenn Sie einen [logischen SQL-Server](logical-servers.md) bzw. ein Zielgruppenmitglied eines Pools einsetzen, sollten Sie auf jeden Fall Master-Anmeldeinformationen erstellen, die zum Aktualisieren der Anmeldeinformationen verwendet werden, bevor Sie den Server oder den Pool bei der Auftragsausführung erweitern. Die datenbankweit gültigen Anmeldeinformationen werden für die Agent-Datenbank für Aufträge erstellt. Es müssen die gleichen Anmeldeinformationen zum *Erstellen eines Anmeldenamens* und zum *Erstellen eines Benutzers bei der Anmeldung für die Erteilung der Datenbankanmeldeberechtigungen* für die Zieldatenbanken verwendet werden.
+Die Anmeldeinformationen werden verwendet, um eine Verbindung mit Ihren Zieldatenbanken für die Skriptausführung herzustellen. Für die Anmeldeinformationen müssen entsprechende Berechtigungen für die von der Zielgruppe angegebenen Datenbanken vorliegen, damit das Skript erfolgreich ausgeführt werden kann. Wenn Sie einen [logischen SQL-Server](logical-servers.md) bzw. ein Zielgruppenmitglied eines Pools einsetzen, sollten Sie auf jeden Fall Anmeldeinformationen erstellen, die zum Aktualisieren der Anmeldeinformationen verwendet werden, bevor Sie den Server oder den Pool bei der Auftragsausführung erweitern. Die datenbankweit gültigen Anmeldeinformationen werden für die Agent-Datenbank für Aufträge erstellt. Es müssen die gleichen Anmeldeinformationen zum *Erstellen eines Anmeldenamens* und zum *Erstellen eines Benutzers bei der Anmeldung für die Erteilung der Datenbankanmeldeberechtigungen* für die Zieldatenbanken verwendet werden.
 
 ```sql
---Connect to the job database specified when creating the job agent
+--Connect to the new job database specified when creating the Elastic Job agent
 
--- Create a db master key if one does not already exist, using your own password.  
+-- Create a database master key if one does not already exist, using your own password.  
 CREATE MASTER KEY ENCRYPTION BY PASSWORD='<EnterStrongPasswordHere>';  
   
--- Create a database scoped credential.  
-CREATE DATABASE SCOPED CREDENTIAL myjobcred WITH IDENTITY = 'jobcred',
+-- Create two database scoped credentials.  
+-- The credential to connect to the Azure SQL logical server, to execute jobs
+CREATE DATABASE SCOPED CREDENTIAL job_credential WITH IDENTITY = 'job_credential',
     SECRET = '<EnterStrongPasswordHere>';
 GO
-
--- Create a database scoped credential for the master database of server1.
-CREATE DATABASE SCOPED CREDENTIAL mymastercred WITH IDENTITY = 'mastercred',
+-- The credential to connect to the Azure SQL logical server, to refresh the database metadata in server
+CREATE DATABASE SCOPED CREDENTIAL refresh_credential WITH IDENTITY = 'refresh_credential',
     SECRET = '<EnterStrongPasswordHere>';
 GO
 ```
@@ -51,20 +53,20 @@ GO
 ## <a name="create-a-target-group-servers"></a>Erstellen einer Zielgruppe (Server)
 
 Im folgenden Beispiel wird gezeigt, wie ein Auftrag für alle Datenbanken auf einem Server ausgeführt wird.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#elastic-job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 -- Connect to the job database specified when creating the job agent
 
 -- Add a target group containing server(s)
-EXEC jobs.sp_add_target_group 'ServerGroup1'
+EXEC jobs.sp_add_target_group 'ServerGroup1';
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
-'ServerGroup1',
+@target_group_name = 'ServerGroup1',
 @target_type = 'SqlServer',
-@refresh_credential_name = 'mymastercred', --credential required to refresh the databases in a server
-@server_name = 'server1.database.windows.net'
+@refresh_credential_name = 'refresh_credential', --credential required to refresh the databases in a server
+@server_name = 'server1.database.windows.net';
 
 --View the recently created target group and target group members
 SELECT * FROM jobs.target_groups WHERE target_group_name='ServerGroup1';
@@ -74,29 +76,29 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ## <a name="exclude-an-individual-database"></a>Ausschließen einer einzelnen Datenbank
 
 Im folgenden Beispiel wird veranschaulicht, wie ein Auftrag für alle Datenbanken auf einem Server ausgeführt wird, mit Ausnahme der Datenbank mit dem Namen *MappingDB*.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#elastic-job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 -- Add a target group containing server(s)
-EXEC [jobs].sp_add_target_group N'ServerGroup'
+EXEC [jobs].sp_add_target_group N'ServerGroup';
 GO
 
 -- Add a server target member
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @target_type = N'SqlServer',
-@refresh_credential_name = N'mymastercred', --credential required to refresh the databases in a server
-@server_name = N'London.database.windows.net'
+@refresh_credential_name = N'refresh_credential', --credential required to refresh the databases in a server
+@server_name = N'London.database.windows.net';
 GO
 
 -- Add a server target member
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @target_type = N'SqlServer',
-@refresh_credential_name = N'mymastercred', --credential required to refresh the databases in a server
-@server_name = 'server2.database.windows.net'
+@refresh_credential_name = N'refresh_credential', --credential required to refresh the databases in a server
+@server_name = 'server2.database.windows.net';
 GO
 
 --Exclude a database target member from the server target group
@@ -105,7 +107,7 @@ EXEC [jobs].sp_add_target_group_member
 @membership_type = N'Exclude',
 @target_type = N'SqlDatabase',
 @server_name = N'server1.database.windows.net',
-@database_name = N'MappingDB'
+@database_name = N'MappingDB';
 GO
 
 --View the recently created target group and target group members
@@ -116,21 +118,21 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name = N'ServerGrou
 ## <a name="create-a-target-group-pools"></a>Erstellen einer Zielgruppe (Pools)
 
 Das folgende Beispiel zeigt, wie Zielgruppen für alle Datenbanken in einem oder in mehreren Pools für elastische Datenbanken erstellt werden.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#elastic-job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 -- Add a target group containing pool(s)
-EXEC jobs.sp_add_target_group 'PoolGroup'
+EXEC jobs.sp_add_target_group 'PoolGroup';
 
 -- Add an elastic pool(s) target member
 EXEC jobs.sp_add_target_group_member
-'PoolGroup',
+@target_group_name = 'PoolGroup',
 @target_type = 'SqlElasticPool',
-@refresh_credential_name = 'mymastercred', --credential required to refresh the databases in a server
+@refresh_credential_name = 'refresh_credential', --credential required to refresh the databases in a server
 @server_name = 'server1.database.windows.net',
-@elastic_pool_name = 'ElasticPool-1'
+@elastic_pool_name = 'ElasticPool-1';
 
 -- View the recently created target group and target group members
 SELECT * FROM jobs.target_groups WHERE target_group_name = N'PoolGroup';
@@ -140,20 +142,20 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name = N'PoolGroup';
 ## <a name="deploy-new-schema-to-many-databases"></a>Bereitstellen eines neuen Schemas für eine Vielzahl von Datenbanken
 
 Das folgende Beispiel zeigt, wie ein neues Schema für alle Datenbanken bereitgestellt wird.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#elastic-job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 --Add job for create table
-EXEC jobs.sp_add_job @job_name = 'CreateTableTest', @description = 'Create Table Test'
+EXEC jobs.sp_add_job @job_name = 'CreateTableTest', @description = 'Create Table Test';
 
 -- Add job step for create table
 EXEC jobs.sp_add_jobstep @job_name = 'CreateTableTest',
 @command = N'IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = object_id(''Test''))
 CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
-@credential_name = 'myjobcred',
-@target_group_name = 'PoolGroup'
+@credential_name = 'job_credential',
+@target_group_name = 'PoolGroup';
 ```
 
 ## <a name="data-collection-using-built-in-parameters"></a>Datensammlung mithilfe von integrierten Parametern
@@ -188,7 +190,7 @@ Wenn Sie die Tabelle vorher manuell erstellen möchten, muss sie die folgenden E
 3. Ein nicht gruppierter Index mit dem Namen „`IX_<TableName>_Internal_Execution_ID`“ für die Spalte „internal_execution_id“.
 4. Alle oben aufgeführten Berechtigungen mit Ausnahme von `CREATE TABLE` für die Datenbank.
 
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#job-database) her, und führen Sie die folgenden Befehle aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#elastic-job-database) her, und führen Sie die folgenden Befehle aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -200,32 +202,34 @@ EXEC jobs.sp_add_job @job_name ='ResultsJob', @description='Collection Performan
 EXEC jobs.sp_add_jobstep
 @job_name = 'ResultsJob',
 @command = N' SELECT DB_NAME() DatabaseName, $(job_execution_id) AS job_execution_id, * FROM sys.dm_db_resource_stats WHERE end_time > DATEADD(mi, -20, GETDATE());',
-@credential_name = 'myjobcred',
+@credential_name = 'job_credential',
 @target_group_name = 'PoolGroup',
 @output_type = 'SqlDatabase',
-@output_credential_name = 'myjobcred',
+@output_credential_name = 'job_credential',
 @output_server_name = 'server1.database.windows.net',
 @output_database_name = '<resultsdb>',
-@output_table_name = '<resutlstable>'
-Create a job to monitor pool performance
+@output_table_name = '<resutlstable>';
+
+--Create a job to monitor pool performance
+
 --Connect to the job database specified when creating the job agent
 
--- Add a target group containing master database
-EXEC jobs.sp_add_target_group 'MasterGroup'
+-- Add a target group containing Elastic Job database
+EXEC jobs.sp_add_target_group 'ElasticJobGroup';
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
-@target_group_name = 'MasterGroup',
+@target_group_name = 'ElasticJobGroup',
 @target_type = 'SqlDatabase',
 @server_name = 'server1.database.windows.net',
-@database_name = 'master'
+@database_name = 'master';
 
 -- Add a job to collect perf results
 EXEC jobs.sp_add_job
 @job_name = 'ResultsPoolsJob',
 @description = 'Demo: Collection Performance data from all pools',
 @schedule_interval_type = 'Minutes',
-@schedule_interval_count = 15
+@schedule_interval_count = 15;
 
 -- Add a job step w/ schedule to collect results
 EXEC jobs.sp_add_jobstep
@@ -246,61 +250,61 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
         avg_storage_percent, elastic_pool_storage_limit_mb FROM sys.elastic_pool_resource_stats
         WHERE end_time > @poolStartTime and end_time <= @poolEndTime;
 '),
-@credential_name = 'myjobcred',
-@target_group_name = 'MasterGroup',
+@credential_name = 'job_credential',
+@target_group_name = 'ElasticJobGroup',
 @output_type = 'SqlDatabase',
-@output_credential_name = 'myjobcred',
+@output_credential_name = 'job_credential',
 @output_server_name = 'server1.database.windows.net',
 @output_database_name = 'resultsdb',
-@output_table_name = 'resutlstable'
+@output_table_name = 'resutlstable';
 ```
 
 ## <a name="view-job-definitions"></a>Anzeigen von Auftragsdefinitionen
 
 Das folgende Beispiel zeigt, wie aktuelle Auftragsdefinitionen angezeigt werden.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#elastic-job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 -- View all jobs
-SELECT * FROM jobs.jobs
+SELECT * FROM jobs.jobs;
 
 -- View the steps of the current version of all jobs
 SELECT js.* FROM jobs.jobsteps js
 JOIN jobs.jobs j
-  ON j.job_id = js.job_id AND j.job_version = js.job_version
+  ON j.job_id = js.job_id AND j.job_version = js.job_version;
 
 -- View the steps of all versions of all jobs
-select * from jobs.jobsteps
+SELECT * FROM jobs.jobsteps;
 ```
 
 ## <a name="begin-unplanned-execution-of-a-job"></a>Starten der nicht geplanten Ausführung eines Auftrags
 
 Im folgenden Beispiel wird gezeigt, wie sofort ein Auftrag gestartet wird.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#elastic-job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 -- Execute the latest version of a job
-EXEC jobs.sp_start_job 'CreateTableTest'
+EXEC jobs.sp_start_job 'CreateTableTest';
 
 -- Execute the latest version of a job and receive the execution id
-declare @je uniqueidentifier
-exec jobs.sp_start_job 'CreateTableTest', @job_execution_id = @je output
-select @je
+declare @je uniqueidentifier;
+exec jobs.sp_start_job 'CreateTableTest', @job_execution_id = @je output;
+select @je;
 
-select * from jobs.job_executions where job_execution_id = @je
+select * from jobs.job_executions where job_execution_id = @je;
 
 -- Execute a specific version of a job (e.g. version 1)
-exec jobs.sp_start_job 'CreateTableTest', 1
+exec jobs.sp_start_job 'CreateTableTest', 1;
 ```
 
 ## <a name="schedule-execution-of-a-job"></a>Planen der Auftragsausführung
 
 Im folgenden Beispiel wird gezeigt, wie Sie einen Auftrag für eine zukünftige Ausführung planen.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#elastic-job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -309,13 +313,13 @@ EXEC jobs.sp_update_job
 @job_name = 'ResultsJob',
 @enabled=1,
 @schedule_interval_type = 'Minutes',
-@schedule_interval_count = 15
+@schedule_interval_count = 15;
 ```
 
 ## <a name="monitor-job-execution-status"></a>Überwachen des Status einer Auftragsausführung
 
 Das folgende Beispiel veranschaulicht, wie Ausführungsstatusdetails für alle Aufträge angezeigt werden.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#elastic-job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -323,27 +327,27 @@ Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overvie
 --View top-level execution status for the job named 'ResultsPoolJob'
 SELECT * FROM jobs.job_executions
 WHERE job_name = 'ResultsPoolsJob' and step_id IS NULL
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 
 --View all top-level execution status for all jobs
 SELECT * FROM jobs.job_executions WHERE step_id IS NULL
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 
 --View all execution statuses for job named 'ResultsPoolsJob'
 SELECT * FROM jobs.job_executions
 WHERE job_name = 'ResultsPoolsJob'
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 
 -- View all active executions
 SELECT * FROM jobs.job_executions
 WHERE is_active = 1
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 ```
 
 ## <a name="cancel-a-job"></a>Abbrechen eines Auftrags
 
 Das folgende Beispiel zeigt den Vorgang zum Abbrechen eines Auftrags.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#elastic-job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -351,23 +355,23 @@ Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overvie
 -- View all active executions to determine job execution id
 SELECT * FROM jobs.job_executions
 WHERE is_active = 1 AND job_name = 'ResultPoolsJob'
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 GO
 
 -- Cancel job execution with the specified job execution id
-EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef'
+EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef';
 ```
 
 ## <a name="delete-old-job-history"></a>Löschen eines alten Auftragsverlaufs
 
 Das folgende Beispiel zeigt, wie der Auftragsverlauf bis zu einem bestimmten Datum gelöscht wird.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#elastic-job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
--- Delete history of a specific job’s executions older than the specified date
-EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-01 00:00:00'
+-- Delete history of a specific job's executions older than the specified date
+EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-01 00:00:00';
 
 --Note: job history is automatically deleted if it is >45 days old
 ```
@@ -375,19 +379,19 @@ EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-
 ## <a name="delete-a-job-and-all-its-job-history"></a>Löschen eines Auftrags sowie des zugehörigen Auftragsverlaufs
 
 Das folgende Beispiel zeigt, wie ein Auftrag und alle zugehörigen Auftragsverläufe gelöscht werden.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](job-automation-overview.md#elastic-job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
-EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
+EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob';
 
 --Note: job history is automatically deleted if it is >45 days old
 ```
 
 ## <a name="job-stored-procedures"></a>In der Auftragsdatenbank gespeicherte Prozeduren
 
-Die folgenden gespeicherten Prozeduren sind in der [Auftragsdatenbank](job-automation-overview.md#job-database) enthalten.
+Die folgenden gespeicherten Prozeduren sind in der [Auftragsdatenbank](job-automation-overview.md#elastic-job-database) enthalten.
 
 |Gespeicherte Prozedur  |BESCHREIBUNG  |
 |---------|---------|
@@ -462,7 +466,7 @@ Die Auftrags-ID, die dem Auftrag zugewiesen wird, wenn er erfolgreich erstellt w
 #### <a name="remarks"></a>Bemerkungen
 
 „sp_add_job“ muss über die Agent-Datenbank für Aufträge ausgeführt werden, die beim Erstellen des Agent-Auftrags angegeben wurde.
-Nachdem „sp_add_job“ zum Hinzufügen eines Auftrags ausgeführt wurde, können mit „sp_add_jobstep“ Schritte hinzugefügt werden, die die Aktionen für den Auftrag ausführen. Die Nummer der ersten Version des Auftrags ist „0“, die sich schrittweise um 1 erhöht, wenn der erste Schritt hinzugefügt wird.
+Nachdem „sp_add_job“ zum Hinzufügen eines Auftrags ausgeführt wurde, können mit „sp_add_jobstep“ Schritte hinzugefügt werden, die die Aktionen für den Auftrag ausführen. Die Nummer der ersten Version des Auftrags ist 0 und wird auf 1 erhöht, wenn der erste Schritt hinzugefügt wird.
 
 #### <a name="permissions"></a>Berechtigungen
 
@@ -528,7 +532,7 @@ Das Datum, an dem die Ausführung des Auftrags beendet werden kann. „schedule_
 
 #### <a name="remarks"></a>Bemerkungen
 
-Nachdem „sp_add_job“ zum Hinzufügen eines Auftrags ausgeführt wurde, können mit „sp_add_jobstep“ Schritte hinzugefügt werden, die die Aktionen für den Auftrag ausführen. Die Nummer der ersten Version des Auftrags ist „0“, die sich schrittweise um 1 erhöht, wenn der erste Schritt hinzugefügt wird.
+Nachdem „sp_add_job“ zum Hinzufügen eines Auftrags ausgeführt wurde, können mit „sp_add_jobstep“ Schritte hinzugefügt werden, die die Aktionen für den Auftrag ausführen. Die Nummer der ersten Version des Auftrags ist 0 und wird auf 1 erhöht, wenn der erste Schritt hinzugefügt wird.
 
 #### <a name="permissions"></a>Berechtigungen
 
@@ -688,7 +692,7 @@ Der maximale Grad an Parallelität pro Pool für elastische Datenbanken. Wenn di
 
 #### <a name="remarks"></a>Bemerkungen
 
-Wenn „sp_add_jobstep“ erfolgreich aufgeführt wird, erhöht sich schrittweise die aktuelle Versionsnummer des Auftrags. Bei der nächsten Ausführung des Auftrags wird die neue Version verwendet. Wenn der Auftrag gerade ausgeführt wird, enthält die Ausführung nicht den neuen Schritt.
+Wenn „sp_add_jobstep“ erfolgreich aufgeführt wird, wird die aktuelle Versionsnummer des Auftrags um 1 erhöht. Bei der nächsten Ausführung des Auftrags wird die neue Version verwendet. Wenn der Auftrag gerade ausgeführt wird, enthält die Ausführung nicht den neuen Schritt.
 
 #### <a name="permissions"></a>Berechtigungen
 
@@ -813,7 +817,7 @@ Der maximale Grad an Parallelität pro Pool für elastische Datenbanken. Wenn di
 
 #### <a name="remarks"></a>Bemerkungen
 
-Keine der laufenden Ausführungen des Auftrags sind davon betroffen. Wenn „sp_update_jobstep“ erfolgreich aufgeführt wird, erhöht sich die aktuelle Versionsnummer des Auftrags schrittweise. Bei der nächsten Ausführung des Auftrags wird die neue Version verwendet.
+Keine der laufenden Ausführungen des Auftrags sind davon betroffen. Wenn „sp_update_jobstep“ erfolgreich aufgeführt wird, wird die aktuelle Versionsnummer des Auftrags um 1 erhöht. Bei der nächsten Ausführung des Auftrags wird die neue Version verwendet.
 
 #### <a name="permissions"></a>Berechtigungen
 
@@ -856,7 +860,7 @@ Der Output-Parameter, der die Versionsnummer des neuen Auftrags zugewiesen wird.
 
 #### <a name="remarks"></a>Bemerkungen
 
-Keine der laufenden Ausführungen des Auftrags sind davon betroffen. Wenn „sp_update_jobstep“ erfolgreich aufgeführt wird, erhöht sich die aktuelle Versionsnummer des Auftrags schrittweise. Bei der nächsten Ausführung des Auftrags wird die neue Version verwendet.
+Keine der laufenden Ausführungen des Auftrags sind davon betroffen. Wenn „sp_update_jobstep“ erfolgreich aufgeführt wird, wird die aktuelle Versionsnummer des Auftrags um 1 erhöht. Bei der nächsten Ausführung des Auftrags wird die neue Version verwendet.
 
 Die anderen Auftragsschritte werden automatisch neu nummeriert, um die Lücke zu schließen, die der gelöschte Auftragsschritt hinterlassen hat.
 
@@ -1065,27 +1069,27 @@ Im folgenden Beispiel werden alle Datenbanken auf den Servern „London“ und �
 
 ```sql
 --Connect to the jobs database specified when creating the job agent
-USE ElasticJobs ;
+USE ElasticJobs;
 GO
 
 -- Add a target group containing server(s)
-EXEC jobs.sp_add_target_group @target_group_name =  N'Servers Maintaining Customer Information'
+EXEC jobs.sp_add_target_group @target_group_name =  N'Servers Maintaining Customer Information';
 GO
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
 @target_group_name = N'Servers Maintaining Customer Information',
 @target_type = N'SqlServer',
-@refresh_credential_name=N'mymastercred', --credential required to refresh the databases in server
-@server_name=N'London.database.windows.net' ;
+@refresh_credential_name=N'refresh_credential', --credential required to refresh the databases in server
+@server_name=N'London.database.windows.net';
 GO
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
 @target_group_name = N'Servers Maintaining Customer Information',
 @target_type = N'SqlServer',
-@refresh_credential_name=N'mymastercred', --credential required to refresh the databases in server
-@server_name=N'NewYork.database.windows.net' ;
+@refresh_credential_name=N'refresh_credential', --credential required to refresh the databases in server
+@server_name=N'NewYork.database.windows.net';
 GO
 
 --View the recently added members to the target group
@@ -1139,12 +1143,12 @@ GO
 
 -- Retrieve the target_id for a target_group_members
 declare @tid uniqueidentifier
-SELECT @tid = target_id FROM [jobs].target_group_members WHERE target_group_name = 'Servers Maintaining Customer Information' and server_name = 'London.database.windows.net'
+SELECT @tid = target_id FROM [jobs].target_group_members WHERE target_group_name = 'Servers Maintaining Customer Information' and server_name = 'London.database.windows.net';
 
 -- Remove a target group member of type server
 EXEC jobs.sp_delete_target_group_member
 @target_group_name = N'Servers Maintaining Customer Information',
-@target_id = @tid
+@target_id = @tid;
 GO
 ```
 
@@ -1202,7 +1206,7 @@ GO
 
 ## <a name="job-views"></a>Auftragsansichten
 
-Die folgenden Ansichten sind in der [Auftragsdatenbank](job-automation-overview.md#job-database) verfügbar.
+Die folgenden Ansichten sind in der [Auftragsdatenbank](job-automation-overview.md#elastic-job-database) verfügbar.
 
 |Sicht  |BESCHREIBUNG  |
 |---------|---------|
@@ -1239,7 +1243,7 @@ Zeigt den Auftragsausführungsverlauf an.
 |**target_id** | UNIQUEIDENTIFIER | Eindeutige ID des Zielgruppenmitglieds.  NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
 |**target_group_name** | nvarchar(128) | Der Name der Zielgruppe. NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
 |**target_server_name** | nvarchar(256)  | Der Name des in der Zielgruppe enthaltenen Servers. Nur angegeben, wenn „target_type“ den Wert „SqlServer“ aufweist. NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
-|**target_database_name** | nvarchar(128) | Der Name der in der Zielgruppe enthaltenen Datenbank. Wird nur angegeben, wenn „target_type“ den Wert „SqlDatabase“ aufweist. NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
+|**target_database_name** | nvarchar(128) | Der Name der in der Zielgruppe enthaltenen Datenbank. Nur angegeben, wenn „target_type“ den Wert „SqlDatabase“ aufweist. NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
 
 ### <a name="jobs-view"></a>Ansicht „jobs“
 
@@ -1301,7 +1305,7 @@ Zeigt alle Schritte in der aktuellen Version des jeweiligen Auftrags an.
 |**output_server_name**|nvarchar(256)|Der Name des Zielservers für das Resultset.|
 |**output_database_name**|nvarchar(128)|Der Name der Zieldatenbank für das Resultset.|
 |**output_schema_name**|nvarchar(max)|Der Name des Zielschemas. Wird auf den Standardwert „dbo“ festgelegt, wenn kein Name angegeben wird.|
-|**output_table_name**|nvarchar(max)|Der Name der Tabelle, in dem das Resultset von den Abfrageergebnissen gespeichert werden soll. Die Tabelle wird automatisch basierend auf dem Schema des Resultsets erstellt, sofern diese noch nicht vorhanden ist. Das Schema muss mit dem Schema des Resultsets übereinstimmen.|
+|**output_table_name**|nvarchar(max)|Der Name der Tabelle, in dem das Resultset von den Abfrageergebnissen gespeichert werden soll. Die Tabelle wird automatisch basierend auf dem Schema des Resultsets erstellt, sofern sie noch nicht vorhanden ist. Das Schema muss mit dem Schema des Resultsets übereinstimmen.|
 |**max_parallelism**|INT|Die maximale Anzahl von Datenbanken pro Pool für elastische Datenbanken, in der der Auftragsschritt jeweils ausgeführt wird. Der Standardwert ist NULL, d.h., es liegt keine Begrenzung vor. |
 
 ### <a name="jobstep_versions-view"></a><a name="jobstep_versions-view"></a>Ansicht „jobstep_versions“
@@ -1338,9 +1342,9 @@ Zeigt alle Mitglieder sämtlicher Zielgruppen an.
 |**subscription_id**|UNIQUEIDENTIFIER|Eindeutige ID des Abonnements.|
 |**resource_group_name**|nvarchar(128)|Der Name der Ressourcengruppe, in der sich das Zielgruppenelement befindet.|
 |**server_name**|nvarchar(128)|Der Name des in der Zielgruppe enthaltenen Servers. Nur angegeben, wenn „target_type“ den Wert „SqlServer“ aufweist. |
-|**database_name**|nvarchar(128)|Der Name der in der Zielgruppe enthaltenen Datenbank. Wird nur angegeben, wenn „target_type“ den Wert „SqlDatabase“ aufweist.|
-|**elastic_pool_name**|nvarchar(128)|Der Name des in der Zielgruppe enthaltenen Pools für elastische Datenbanken. Wird nur angegeben, wenn „target_type“ den Wert „SqlElasticPool“ enthält.|
-|**shard_map_name**|nvarchar(128)|Der Name der in der Zielgruppe enthaltenen Shardzuordnungen. Wird nur angegeben, wenn „target_type“ den Wert „SqlShardMap“ aufweist.|
+|**database_name**|nvarchar(128)|Der Name der in der Zielgruppe enthaltenen Datenbank. Nur angegeben, wenn „target_type“ den Wert „SqlDatabase“ aufweist.|
+|**elastic_pool_name**|nvarchar(128)|Der Name des in der Zielgruppe enthaltenen Pools für elastische Datenbanken. Nur angegeben, wenn „target_type“ den Wert „SqlElasticPool“ aufweist.|
+|**shard_map_name**|nvarchar(128)|Der Name der in der Zielgruppe enthaltenen Shardzuordnungen. Nur angegeben, wenn „target_type“ den Wert „SqlShardMap“ aufweist.|
 
 ## <a name="resources"></a>Ressourcen
 

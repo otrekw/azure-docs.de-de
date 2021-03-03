@@ -6,14 +6,14 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 02/11/2021
 ms.author: banders
-ms.openlocfilehash: 4cc213db19a567f18c5ff483b64a75e3bbeef892
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 63fbf76b2211e530707f3598d176b646c317cc53
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962109"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363048"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Übertragen von Azure-Abonnements zwischen Abonnenten und CSPs
 
@@ -36,6 +36,7 @@ Wenn die Anforderung genehmigt wird, kann der CSP seinen Kunden eine kombinierte
 
 Um andere Azure-Abonnements an einen CSP-Partner zu übertragen, muss der Abonnent Ressourcen aus Quellabonnements in CSP-Abonnements verschieben. Verwenden Sie die folgenden Anleitungen, um Ressourcen zwischen Abonnements zu verschieben.
 
+1. Etablieren Sie eine [Handelspartnerbeziehung](/partner-center/request-a-relationship-with-a-customer) mit dem Kunden. Vergewissern Sie sich anhand der [regionalen CSP-Autorisierungsübersicht](/partner-center/regional-authorization-overview), dass sich Kunden- und Partnermandant in den gleichen autorisierten Regionen befinden.
 1. Arbeiten Sie mit Ihrem CSP-Partner zusammen, um Azure CSP-Zielabonnements zu erstellen.
 1. Stellen Sie sicher, dass sich Quell- und Zielabonnement des CSP in demselben Azure AD-Mandanten (Azure Active Directory) befinden.  
     Der Azure AD-Mandant für ein Azure CSP-Abonnement kann nicht geändert werden. Stattdessen müssen Sie das Quellabonnement dem Azure AD-Mandanten des CSP hinzufügen oder zuordnen. Weitere Informationen finden Sie unter [Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).

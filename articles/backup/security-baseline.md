@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 77af95f2decbfb81ed930591b03f71fb71780def
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: e71beb4e4b5d23dcd1cffa1f60462d782d37db2e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805247"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572186"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure-Sicherheitsbaseline für Backup
 
@@ -116,9 +116,9 @@ Weitere Informationen finden Sie unter [Übersicht über Azure-Sicherheitsbaseli
 
 **Leitfaden**: Wenn Sie den MARS-Agent auf einem virtuellen Azure-Computer verwenden, der durch eine Netzwerksicherheitsgruppe oder eine Azure-Firewall geschützt wird, überwachen Sie die Konfiguration der NSG oder Firewall mit dem Azure-Aktivitätsprotokoll. Sie haben die Möglichkeit, in Azure Monitor Warnungen zu erstellen, die bei Änderungen an diesen Ressourcen ausgelöst werden.
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -142,7 +142,7 @@ Weitere Informationen finden Sie unter [Übersicht über Azure-Sicherheitsbaseli
 
 Außerdem können Sie Protokolle über Azure Monitor erfassen, um die von Azure Backup generierten Sicherheitsdaten zu aggregieren. Verwenden Sie Log Analytics-Arbeitsbereiche in Azure Monitor, um Analysen abzufragen und auszuführen, und verwenden Sie Speicherkonten für die langfristige Speicherung/Archivierung. Alternativ dazu können Sie auch Daten in Azure Sentinel oder einer Drittanbieter-Security Incident and Event Management-Lösung (SIEM) aktivieren und integrieren.
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 - [Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore](./backup-azure-diagnostic-events.md)
 
@@ -158,7 +158,7 @@ Außerdem können Sie Protokolle über Azure Monitor erfassen, um die von Azure 
 
 Außerdem sendet Azure Backup Diagnoseereignisse, die gesammelt und dann für die Analyse, Warnung und Berichterstellung verwendet werden können. Diagnoseereignisse für Recovery Services-Tresore lassen sich im Azure-Portal konfigurieren. Sie können ein oder mehrere Diagnoseereignisse an ein Speicherkonto, eine Event Hubs-Instanz oder einen Log Analytics-Arbeitsbereich senden.
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 - [Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore](./backup-azure-diagnostic-events.md)
 
@@ -178,7 +178,7 @@ Außerdem sendet Azure Backup Diagnoseereignisse, die gesammelt und dann für di
 
 **Leitfaden**: Legen Sie in Azure Monitor den Aufbewahrungszeitraum für Protokolle für Log Analytics-Arbeitsbereiche, die Ihren Azure Recovery Services-Tresoren zugeordnet sind, gemäß den Compliancevorschriften Ihrer Organisation fest.
 
-- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -192,9 +192,9 @@ Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, un
 
 - [Überwachen von Azure Backup-Workloads](./backup-azure-monitoring-built-in-monitor.md)
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -212,7 +212,7 @@ Integrieren Sie einen Log Analytics-Arbeitsbereich in Azure Sentinel, eine Lösu
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../azure-monitor/platform/alerts-log.md)
+- [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../azure-monitor/alerts/alerts-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -518,7 +518,7 @@ Wenn Sie mithilfe des MARS-Agents oder eines Recovery Services-Tresors, der mit 
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an Azure Recovery Services-Produktionstresoren und anderen kritischen bzw. zugehörigen Ressourcen vorgenommen werden.
 
-- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

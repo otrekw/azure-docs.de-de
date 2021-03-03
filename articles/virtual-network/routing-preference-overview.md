@@ -11,22 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/02/2020
+ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: 7fdd23aea5e435c94493a0cbe86b6ffcdb0d2e10
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.custom: references_regions
+ms.openlocfilehash: b0235286260910a45523e3236e7ed3a114eaf57f
+ms.sourcegitcommit: 8c93b05c27c7e8a5ba62a4d6fc6fc4d0c3980a21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539069"
+ms.lasthandoff: 02/26/2021
+ms.locfileid: "101593254"
 ---
-# <a name="what-is-routing-preference-preview"></a>Was ist Routingpräferenz (Vorschau)?
+# <a name="what-is-routing-preference"></a>Was ist Routingpräferenz?
 
 Die Azure-Routingpräferenz ermöglicht es Ihnen zu wählen, wie Ihr Datenverkehr zwischen Azure und dem Internet geleitet wird. Sie können auswählen, ob der Datenverkehr entweder über das Microsoft-Netzwerk oder über das ISP-Netzwerk (öffentliches Internet) geleitet werden soll. Diese Optionen werden auch als *Cold Potato-Routing* bzw. *Hot Potato-Routing* bezeichnet. Der Preis für die Übertragung von ausgehenden Daten variiert je nach Routingauswahl. Sie können die Routingoption beim Erstellen einer öffentlichen IP-Adresse auswählen. Die öffentliche IP-Adresse kann Ressourcen zugeordnet werden, z. B. einem virtuellen Computer, einer VM-Skalierungsgruppe, einem Lastenausgleich mit Internetzugriff usw. Sie können auch die Routingpräferenz für Azure-Speicherressourcen wie Blobs, Dateien, Web und Azure DataLake festlegen. Standardmäßig wird der Datenverkehr für alle Azure-Dienste über das globale Microsoft-Netzwerk geleitet.
-
-> [!IMPORTANT]
-> „Routingpräferenz“ ist zurzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="routing-via-microsoft-global-network"></a>Routing über das globale Microsoft-Netzwerk
 
@@ -70,13 +67,13 @@ Für die Speicherung verwenden primäre Endpunkte immer das **globale Microsoft-
 * Azure DataLake
 
 ## <a name="pricing"></a>Preise
-Der Preisunterschied zwischen beiden Optionen spiegelt sich in den Preisen für die Übertragung ausgehender Daten über das Internet wider. Das Routing über **das globale Microsoft-Netzwerk** mit entsprechendem Preis für die Datenübertragung entspricht dem aktuellen Internetausgangspreis. Aktuelle Preisinformationen finden Sie auf der [Seite mit Preisinformationen zur Azure-Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/). 
+Der Preisunterschied zwischen beiden Optionen spiegelt sich in den Preisen für die Übertragung ausgehender Daten über das Internet wider. Das Routing über **das globale Microsoft-Netzwerk** mit entsprechendem Preis für die Datenübertragung entspricht dem aktuellen Internetausgangspreis. Aktuelle Preisinformationen finden Sie auf der [Seite mit Preisinformationen zur Azure-Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 ## <a name="limitations"></a>Einschränkungen
 
+* Die Routingpräferenz wird zurzeit nicht unterstützt in „Australien, Mitte“, „Australien, Mitte2“, „Kanada, Osten“, „Brasilien, Süden“, „Südkorea, Mitte“ und „Südkorea, Süden“.
 * Die Routingpräferenz ist nur mit der zonenredundanten Standard-SKU der öffentlichen IP-Adresse kompatibel. Die Basic-SKU der öffentlichen IP-Adresse wird nicht unterstützt.
 * Die Routingpräferenz unterstützt derzeit nur öffentliche IPv4-IP-Adressen. Öffentliche IPv6 IP-Adressen werden nicht unterstützt.
-* Virtuelle Computer mit mehreren Netzwerkschnittstellen (NICs) können nur eine Art von Routingpräferenz aufweisen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

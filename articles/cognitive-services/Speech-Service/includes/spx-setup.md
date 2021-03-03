@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: d94b83dd658193069f24202b978d32389eb82ac1
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1eae40437e06bfb150e202db1f3bb4125baeaa97
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580386"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100514938"
 ---
 ## <a name="download-and-install"></a>Herunterladen und Installieren
 
@@ -39,6 +39,16 @@ Bei der Ausgabe einer Datei können in einem Text-Editor wie Notepad oder einem 
 
 #### <a name="linux-install"></a>[Linux-Installation](#tab/linuxinstall)
 
+Die folgenden Linux-Distributionen werden für x64-Architekturen mit der Speech-CLI unterstützt:
+
+* CentOS 7/8
+* Debian 9/10 
+* Red Hat Enterprise Linux (RHEL) 7/8
+* Ubuntu 16.04/18.04/20.04
+
+> [!NOTE]
+> Weitere Architekturen werden vom Speech SDK (nicht die Speech-CLI) unterstützt. Weitere Informationen finden Sie unter [Informationen zum Speech SDK](../speech-sdk.md).
+
 Führen Sie diese Schritte aus, um die Speech-Befehlszeilenschnittstelle unter Linux auf einer x64-CPU zu installieren:
 
 1. Installieren Sie [.NET Core 3.1](/dotnet/core/install/linux).
@@ -49,7 +59,7 @@ Führen Sie diese Schritte aus, um die Speech-Befehlszeilenschnittstelle unter L
 Geben Sie `spx` ein, um die Hilfe für die Speech-Befehlszeilenschnittstelle anzuzeigen.
 
 > [!NOTE]
-> Sie können auch die Binärdateien aus dem [ZIP-Archiv](https://aka.ms/speech/spx-zips.zip) herunterladen, `spx-netcore-30-linux-x64` in ein neues Verzeichnis (`~/spx`) extrahieren, `sudo chmod +r+x spx` für die Binärdatei eingeben und den Pfad `~/spx` Ihrer PATH-Systemvariablen hinzufügen, anstatt NuGet zu verwenden.
+> Sie können auch die Binärdateien aus dem [ZIP-Archiv](https://aka.ms/speech/spx-zips.zip) herunterladen, `spx-netcore-30-linux-x64.zip` in ein neues Verzeichnis (`~/spx`) extrahieren, `sudo chmod +r+x spx` für die Binärdatei eingeben und den Pfad `~/spx` Ihrer PATH-Systemvariablen hinzufügen, anstatt NuGet zu verwenden.
 
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker-Installation (Windows, Linux, macOS)](#tab/dockerinstall)
@@ -107,7 +117,7 @@ Geben Sie zum Verwenden des in einem Container installierten Befehls `spx` immer
 Unter Windows wird Ihr Schlüssel mit diesem Befehl beispielsweise wie folgt festgelegt:
 
 ```console
-docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx config --set @key SUBSCRIPTION-KEY
 ```
 
 Wenn Sie eine ausführlichere Befehlszeile nutzen möchten, können Sie einen Container mit einer interaktiven Bash-Shell starten, indem Sie einen entrypoint-Parameter hinzufügen.
@@ -160,8 +170,8 @@ Um mit der Verwendung der Speech-Befehlszeilenschnittstelle zu beginnen, müssen
 Nachdem Sie Ihren Abonnementschlüssel und den Regionsbezeichner (z. B. `eastus`, `westus`) erhalten haben, führen Sie die folgenden Befehle aus.
 
 ```console
-spx config @key --set SUBSCRIPTION-KEY
-spx config @region --set REGION
+spx config --set @key SUBSCRIPTION-KEY
+spx config --set @region REGION
 ```
 
 Ihre Abonnementauthentifizierung wird jetzt für zukünftige SPX-Anforderungen gespeichert. Wenn Sie einen dieser gespeicherten Werte entfernen müssen, führen Sie `spx config @region --clear` oder `spx config @key --clear` aus.

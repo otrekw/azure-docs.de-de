@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: ee589aed2b8f3c53d21c1f762a5d2027f3762649
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 322b036fee840db58ed610795155af6c9e1320cc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222767"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366959"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Verwenden von Azure Machine Learning mit dem Open-Source-Paket Fairlearn zur Bewertung der Fairness von ML-Modellen (Vorschau)
 
@@ -214,10 +214,15 @@ Das folgende Beispiel zeigt die Verwendung des Fairnesspakets. Wir laden die Erk
     1. Klicken Sie im linken Bereich auf **Experimente**, damit Ihnen eine Liste mit Experimenten angezeigt wird, die Sie in Azure Machine Learning ausgeführt haben.
     1. Wählen Sie ein bestimmtes Experiment aus, um alle Ausführungen in diesem Experiment anzuzeigen.
     1. Klicken Sie auf eine Ausführung und dann auf die Registerkarte **Fairness**, um das Dashboard zur Erklärungsvisualisierung anzuzeigen.
+    1. Wenn Sie auf der Registerkarte **Fairness** gelandet sind, klicken Sie im Menü auf der rechten Seite auf eine **Fairness-ID**.
+    1. Konfigurieren Sie das Dashboard, indem Sie das sensible Attribut, die Leistungsmetrik und die gewünschte Fairnessmetrik auswählen, um auf der Seite zur Fairnessbewertung zu landen.
+    1. Wechseln Sie von einem Diagrammtyp zum anderen, um sowohl Schäden bei der **Speicherbelegung** als auch bei der **Servicequalität** zu beobachten.
 
 
-    [![Fairnessdashboard](./media/how-to-machine-learning-fairness-aml/dashboard.png)](./media/how-to-machine-learning-fairness-aml/dashboard.png#lightbox)
+
+    [![Fairnessdashboard: Speicherbelegung](./media/how-to-machine-learning-fairness-aml/dashboard-1.png)](./media/how-to-machine-learning-fairness-aml/dashboard-1.png#lightbox)
     
+    [![Fairnessdashboard: Servicequalität](./media/how-to-machine-learning-fairness-aml/dashboard-2.png)](./media/how-to-machine-learning-fairness-aml/dashboard-2.png#lightbox)
     * **Bereich „Modelle“**
     1. Wenn Sie Ihr ursprüngliches Modell mit den obigen Schritten registriert haben, können Sie im linken Bereich auf **Modelle** klicken, um es anzuzeigen.
     1. Klicken Sie auf ein Modell und dann auf die Registerkarte **Fairness**, um das Dashboard zur Erklärungsvisualisierung anzuzeigen.

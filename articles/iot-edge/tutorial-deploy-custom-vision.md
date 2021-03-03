@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 564f19a1be5b3ce8a5267a07bd4f1f6de80fecf1
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 8e64233ce1d59512e38ce6c366eba889392c4623
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621279"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736490"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Tutorial: Durchführen von Bildklassifizierungen im Edge-Bereich mit dem Custom Vision Service
 
@@ -40,7 +40,7 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 >[!TIP]
->Bei diesem Tutorial handelt es sich um eine vereinfachte Version des Beispielprojekts [Custom Vision + Azure IoT Edge on a Raspberry Pi 3](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) (Custom Vision und Azure IoT Edge auf einem Raspberry Pi 3). Das Tutorial wurde für die Ausführung auf einem virtuellen Cloudcomputer konzipiert und verwendet statische Bilder zum Trainieren und Testen der Bildklassifizierung. Dies ist hilfreich für Benutzer, die ihre ersten Erfahrungen mit Custom Vision in IoT Edge sammeln. Das Beispielprojekt verwendet physische Hardware und richtet einen Livekamerafeed zum Trainieren und Testen der Bildklassifizierung ein. Dies ist hilfreich für Benutzer, die sich an einem detaillierteren, praxisnahen Szenario versuchen möchten.
+>Bei diesem Tutorial handelt es sich um eine vereinfachte Version des Beispielprojekts [Custom Vision + Azure IoT Edge on a Raspberry Pi 3](https://github.com/Azure-Samples/custom-vision-service-iot-edge-raspberry-pi) (Custom Vision und Azure IoT Edge auf einem Raspberry Pi 3). Das Tutorial wurde für die Ausführung auf einem virtuellen Cloudcomputer konzipiert und verwendet statische Bilder zum Trainieren und Testen der Bildklassifizierung. Dies ist hilfreich für Benutzer, die ihre ersten Erfahrungen mit Custom Vision in IoT Edge sammeln. Das Beispielprojekt verwendet physische Hardware und richtet einen Livekamerafeed zum Trainieren und Testen der Bildklassifizierung ein. Dies ist hilfreich für Benutzer, die sich an einem detaillierteren, praxisnahen Szenario versuchen möchten.
 
 Bevor Sie mit diesem Tutorial beginnen, sollten Sie das vorherige Tutorial absolviert haben, um Ihre Umgebung für die Entwicklung von Linux-Containern einzurichten: [Entwickeln von IoT Edge-Modulen für Linux-Geräte](tutorial-develop-for-linux.md). Nach Abschluss dieses Tutorials sollten Sie die folgenden Voraussetzungen eingerichtet haben:
 

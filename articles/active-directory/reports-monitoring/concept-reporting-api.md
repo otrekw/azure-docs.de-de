@@ -17,12 +17,12 @@ ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2027f713baf2b8039187e933ffc7bb0b68b5cc5f
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: b6ef122cd36c3d4e9135876647075f22158df0d1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631960"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653234"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Erste Schritte mit der Berichterstellungs-API von Azure Active Directory
 
@@ -51,7 +51,7 @@ Der Microsoft Graph-API-Endpunkt für Überwachungsprotokolle ist `https://graph
 
 Sie können die [API für Identity Protection-Risikoerkennungen](/graph/api/resources/identityriskevent?view=graph-rest-beta) verwenden, um programmgesteuerten Zugriff auf Sicherheitserkennungen über Microsoft Graph zu erhalten. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph](../identity-protection/howto-identity-protection-graph-api.md). 
   
-Sie können auch die [Bereitstellungsprotokolle-API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) verwenden, um programmgesteuerten Zugriff auf Bereitstellungsereignisse in Ihrem Mandanten zu erhalten. 
+Sie können auch die [Bereitstellungsprotokolle-API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) verwenden, um programmgesteuerten Zugriff auf Bereitstellungsereignisse in Ihrem Mandanten zu erhalten. 
 
 ## <a name="apis-with-microsoft-graph-explorer"></a>APIs mit Microsoft Graph-Tester
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: f2b9f6dfe60aa50eb4ec6da76fe8781ecd8a1f13
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 531917d9c48915f71354b4cd35747ecd9d33a6f8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98951326"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385029"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>Verwenden des Ausbildungsmodus zum Trainieren der Personalisierung, ohne Ihre bestehende Anwendung zu beeinträchtigen
 
@@ -63,7 +63,7 @@ Das Lernen im Ausbildungsmodus unterscheidet sich in den folgenden Punkten vom O
 |--|--|--|
 |Auswirkungen auf die Benutzerfreundlichkeit|Sie können vorhandenes Benutzerverhalten verwenden, um die Personalisierung zu trainieren, indem Sie sie beobachten (nicht beeinflussen) lassen, was Ihre **Standardaktion** gewesen wäre und welche Relevanz sie erhalten hätte. Dies bedeutet, dass die Erfahrungen Ihrer Benutzer und die Geschäftsergebnisse von ihnen nicht beeinträchtigt werden.|Zeigen Sie die Top-Aktion an, die vom Rangfolgeaufruf zurückgegeben wird, um das Benutzerverhalten zu beeinflussen.|
 |Lerngeschwindigkeit|Die Personalisierung lernt im Ausbildungsmodus langsamer als im Onlinemodus. Der Ausbildungsmodus kann nur durch Beobachtung der durch Ihre **Standardaktion** erzielten Relevanzen lernen, was die Lerngeschwindigkeit einschränkt, da keine Auswertung durchgeführt werden kann.|Lernt schneller, da es sowohl das aktuelle Modell nutzen als auch nach neuen Trends suchen kann.|
-|Lerneffektivität: Obergrenze|Die Personalisierung kann die Leistung Ihrer grundlegenden Geschäftslogik (die Relevanzsumme, die durch die **Standardaktion** jedes Rangfolgeaufrufs erreicht wird) annähern, sehr selten erreichen und niemals überschreiten.|Die Personalisierung sollte über die Baseline der Anwendungen hinausgehen, und im Laufe der Zeit sollten Sie dort, wo sie ins Stocken gerät, eine Offline- und Featureauswertung durchführen, um das Modell weiter zu verbessern. |
+|Lerneffektivität: Obergrenze|Die Personalisierung kann die Leistung Ihrer grundlegenden Geschäftslogik (die Relevanzsumme, die durch die **Standardaktion** jedes Rangfolgeaufrufs erreicht wird) annähern, sehr selten erreichen und niemals überschreiten. Diese Näherungsgrenze wird durch Untersuchung reduziert. Bei einer Untersuchung von 20 % ist es beispielsweise sehr unwahrscheinlich, dass die Leistung des Ausbildungsmodus 80 % überschreitet. 60 % stellt ein sinnvolles Ziel dar, um zum Onlinemodus aufzusteigen.|Die Personalisierung sollte über die Baseline der Anwendungen hinausgehen, und im Laufe der Zeit sollten Sie dort, wo sie ins Stocken gerät, eine Offline- und Featureauswertung durchführen, um das Modell weiter zu verbessern. |
 |Rangfolge-API-Wert für „rewardActionId“|Die Erfahrung der Benutzer wird nicht beeinflusst, da _rewardActionId_ immer die erste Aktion ist, die Sie in der Rangfolgenanforderung senden. Mit anderen Worten, die Rangfolge-API führt im Ausbildungsmodus keine sichtbaren Aktionen für Ihre Anwendung durch. Die Relevanz-APIs in Ihrer Anwendung sollten die Art und Weise, wie die Relevanz-API beim Moduswechsel verwendet wird, nicht ändern.|Die Erfahrung der Benutzer wird durch die _rewardActionId_ verändert, die die Personalisierung für Ihre Anwendung auswählt. |
 |Auswertungen|Die Personalisierung führt einen Vergleich der Relevanzsummen, die Ihre Standardgeschäftslogik erhält, mit den Relevanzsummen, die die Personalisierung erhalten würde, wenn sie sich zu diesem Zeitpunkt im OnlinemModus befände. Ein Vergleich ist im Azure-Portal für diese Ressource verfügbar|Werten Sie die Effektivität der Personalisierung aus, indem Sie [Offlineauswertungen](concepts-offline-evaluation.md) durchführen, die es Ihnen ermöglichen, die von der Personalisierung insgesamt erzielten Relevanzen mit den potenziellen Relevanzen der Baseline der Anwendung zu vergleichen.|
 

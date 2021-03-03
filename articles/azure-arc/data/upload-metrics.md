@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: f319f912520a69a0c68f89a3d4178f63cc45ca1f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: d7c611f1cdb5e3294e38f87c0534003813e50388
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356547"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575686"
 ---
 # <a name="upload-metrics-to-azure-monitor"></a>Hochladen von Metriken in Azure Monitor
 
@@ -126,7 +126,7 @@ Zum Hochladen von Metriken für Ihre Azure Arc-fähigen verwalteten SQL-Instanze
    >[!NOTE]
    >Warten Sie mindestens 30 Minuten, nachdem die Azure Arc-fähigen Dateninstanzen für den ersten Upload erstellt wurden.
    >
-   >Führen Sie direkt nach dem `export` unbedingt den `upload` durch, da Azure Monitor nur Metriken für die letzten 30 Minuten akzeptiert. [Weitere Informationen](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)
+   >Führen Sie direkt nach dem `export` unbedingt den `upload` durch, da Azure Monitor nur Metriken für die letzten 30 Minuten akzeptiert. [Weitere Informationen](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)
 
 
 Wenn beim Exportieren Fehler vom Typ „Failure to get metrics“ (Fehler beim Abrufen der Metriken) angezeigt werden, überprüfen Sie, ob die Datensammlung auf `true` festgelegt ist, indem Sie den folgenden Befehl ausführen:
@@ -199,7 +199,7 @@ Erstellungs-, Lese-, Aktualisierungs- und Löschvorgänge – sogenannte CRUD-Vo
 
 Während der Vorschauphase erfolgt dieser Vorgang in der Nacht. Allgemein wird empfohlen, die Nutzungsdaten nur einmal täglich hochzuladen. Wenn Nutzungsinformationen innerhalb desselben 24-Stunden-Zeitraums mehrmals exportiert und hochgeladen werden, wird nur der Ressourcenbestand im Azure-Portal aktualisiert, jedoch nicht der Ressourcenverbrauch.
 
-Beim Hochladen von Metriken können in Azure Monitor nur die Daten der letzten 30 Minuten hochgeladen werden ([weitere Informationen](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)). Beim Hochladen von Metriken wird empfohlen, die Metriken unmittelbar nach dem Erstellen der Exportdatei hochzuladen, damit Sie das gesamte Dataset im Azure-Portal anzeigen können. Beispiel: Sie haben die Metriken um 14:00 Uhr exportiert und den Befehl für den Upload um 14:50 Uhr ausgeführt. Da in Azure Monitor nur die Daten der letzten 30 Minuten akzeptiert werden, werden im Portal möglicherweise keine Daten angezeigt. 
+Beim Hochladen von Metriken können in Azure Monitor nur die Daten der letzten 30 Minuten hochgeladen werden ([weitere Informationen](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)). Beim Hochladen von Metriken wird empfohlen, die Metriken unmittelbar nach dem Erstellen der Exportdatei hochzuladen, damit Sie das gesamte Dataset im Azure-Portal anzeigen können. Beispiel: Sie haben die Metriken um 14:00 Uhr exportiert und den Befehl für den Upload um 14:50 Uhr ausgeführt. Da in Azure Monitor nur die Daten der letzten 30 Minuten akzeptiert werden, werden im Portal möglicherweise keine Daten angezeigt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

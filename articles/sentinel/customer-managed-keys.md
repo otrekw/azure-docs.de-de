@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: b346a23ccde6abd0f76982a4d19e00e28e8511a7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: a1c2754fcae5768c6b87d6280fc882acd46d9a0a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97930870"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585333"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Einrichten kundenseitig verwalteter Schlüssel in Azure Sentinel
 
@@ -30,13 +30,13 @@ Dieser Artikel enthält Hintergrundinformationen und Schritte zum Konfigurieren 
 >
 > - Der Zugriff auf diese Funktion wird über die Azure-Featureregistrierung gesteuert.  Wenden Sie sich an azuresentinelCMK@microsoft.com, um Zugriff zu erhalten. Ausstehende Anfragen werden entsprechend verfügbaren Kapazitäten genehmigt.
 >
-> - Die CMK-Funktion ist nur für Kunden mit einem täglichen Sendevolumen von mindestens 1 TB verfügbar. Informationen zu zusätzlichen Preisen erhalten Sie, wenn Sie bei Microsoft die Bereitstellung von CMK in Ihrem Azure-Abonnement beantragen. Weitere Informationen zu den Preisen für Log Analytics finden Sie [hier](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters).
+> - Die CMK-Funktion ist nur für Kunden mit einem täglichen Sendevolumen von mindestens 1 TB verfügbar. Informationen zu zusätzlichen Preisen erhalten Sie, wenn Sie bei Microsoft die Bereitstellung von CMK in Ihrem Azure-Abonnement beantragen. Weitere Informationen zu den Preisen für Log Analytics finden Sie [hier](../azure-monitor/logs/manage-cost-storage.md#log-analytics-dedicated-clusters).
 
 ## <a name="how-cmk-works"></a>Funktionsweise von CMK 
 
 Die Azure Sentinel-Lösung nutzt eine Reihe von Speicherressourcen für die Protokollerfassung und Features, einschließlich Log Analytics und anderer Ressourcen. Im Rahmen der Azure Sentinel-CMK-Konfiguration müssen auch die CMK-Einstellungen für die zugehörigen Speicherressourcen konfiguriert werden. In Log Analytics-fremden Speicherressourcen gespeicherte Daten werden ebenfalls verschlüsselt.
 
-Weitere Informationen über [CMK](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-overview).
+Weitere Informationen über [CMK](../azure-monitor/logs/customer-managed-keys.md#customer-managed-key-overview).
 
 > [!NOTE]
 > Wenn Sie CMK in Azure Sentinel aktivieren, werden Public Preview-Features ohne CMK-Unterstützung nicht aktiviert.
@@ -71,7 +71,7 @@ Gehen Sie zum Bereitstellen von CMK wie folgt vor:
 
 ### <a name="step-2-enable-cmk-on-your-log-analytics-workspace"></a>SCHRITT 2: Aktivieren von CMK in Ihrem Log Analytics-Arbeitsbereich
 
-Gehen Sie wie unter [Konfiguration kundenseitig verwalteter Schlüssel in Azure Monitor](../azure-monitor/platform/customer-managed-keys.md) beschrieben vor, um einen CMK-Arbeitsbereich zu erstellen, der in den folgenden Schritten als Azure Sentinel-Arbeitsbereich verwendet wird.
+Gehen Sie wie unter [Konfiguration kundenseitig verwalteter Schlüssel in Azure Monitor](../azure-monitor/logs/customer-managed-keys.md) beschrieben vor, um einen CMK-Arbeitsbereich zu erstellen, der in den folgenden Schritten als Azure Sentinel-Arbeitsbereich verwendet wird.
 
 ### <a name="step-3-register-for-cosmos-db"></a>SCHRITT 3: Registrieren für Cosmos DB
 
@@ -114,7 +114,7 @@ Die Kontolöschung ist der einzige Vorgang, der nach dem Widerruf des Verschlüs
 
 Wird der Zugriff nach dem Widerruf wiederhergestellt, stellt Azure Sentinel den Zugriff auf die Daten binnen einer Stunde wieder her.
 
-Weitere Informationen zur Funktionsweise in Azure Monitor finden Sie unter [CMK-Widerruf (KEK)](../azure-monitor/platform/customer-managed-keys.md#key-revocation).
+Weitere Informationen zur Funktionsweise in Azure Monitor finden Sie unter [CMK-Widerruf (KEK)](../azure-monitor/logs/customer-managed-keys.md#key-revocation).
 
 ## <a name="key-encryption-key-rotation"></a>Rotation des Schlüsselverschlüsselungsschlüssels
 
@@ -127,7 +127,7 @@ In Key Vault können Sie zur Schlüsselrotation eine neue Version des Schlüssel
 
 Sie können die vorherige Version des Schlüssels nach 24 Stunden deaktivieren oder nachdem in den Azure Key Vault-Überwachungsprotokollen keine Aktivität mit der alten Version mehr vorkommen.
 
-Wenn Sie in Azure Sentinel und Log Analytics den gleichen Schlüssel verwenden, muss die Clusterressource in Log Analytics für die Schlüsselrotation explizit mit der neuen Azure Key Vault-Schlüsselversion aktualisiert werden. Weitere Informationen finden Sie unter [CMK-Rotation (KEK)](../azure-monitor/platform/customer-managed-keys.md#key-rotation).
+Wenn Sie in Azure Sentinel und Log Analytics den gleichen Schlüssel verwenden, muss die Clusterressource in Log Analytics für die Schlüsselrotation explizit mit der neuen Azure Key Vault-Schlüsselversion aktualisiert werden. Weitere Informationen finden Sie unter [CMK-Rotation (KEK)](../azure-monitor/logs/customer-managed-keys.md#key-rotation).
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie gelernt, wie Sie einen kundenseitig verwalteten Schlüssel in Azure Sentinel einrichten. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:

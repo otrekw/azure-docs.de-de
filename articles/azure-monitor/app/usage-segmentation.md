@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d11b12ba37d543ec21985c52c4ffb3399bfc56d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d1076239938988119d8a9838d0e060d70a22082
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323518"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583373"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights
 
@@ -41,10 +41,10 @@ Untersuchen Sie verschiedene Benutzergruppen, indem Sie die Abfrageoptionen oben
 * die Folgendes verwendet haben: Wählen Sie benutzerdefinierte Ereignisse und Seitenansichten aus.
 * Während: Wählen Sie einen Zeitbereich aus.
 * Von: Wählen Sie aus, wie Datenbuckets erstellt werden, entweder anhand einer Zeitspanne oder einer anderen Eigenschaft, z.B. Browser oder Ort.
-* Aufteilen nach: Wählen Sie eine Eigenschaft aus, anhand derer die Daten aufgeteilt oder segmentiert werden. 
-* Filter hinzufügen: Beschränken Sie die Abfrage auf bestimmte Benutzer, Sitzungen oder Ereignisse basierend auf deren Eigenschaften, z.B. Browser oder Ort. 
- 
-## <a name="saving-and-sharing-reports"></a>Speichern und Freigeben von Berichten 
+* Aufteilen nach: Wählen Sie eine Eigenschaft aus, anhand derer die Daten aufgeteilt oder segmentiert werden. 
+* Filter hinzufügen: Beschränken Sie die Abfrage auf bestimmte Benutzer, Sitzungen oder Ereignisse basierend auf deren Eigenschaften, z.B. Browser oder Ort. 
+ 
+## <a name="saving-and-sharing-reports"></a>Speichern und Freigeben von Berichten 
 Sie können Benutzerberichte entweder privat nur für Sie selbst im Abschnitt „Meine Berichte“ oder im Abschnitt „Freigegebene Berichte“ für alle Benutzer speichern, die Zugriff auf diese Application Insights-Ressource haben.
 
 Wenn Sie einen Link zu einem Benutzer-, Sitzungs oder Ereignisbericht teilen möchten, klicken Sie auf der Symbolleiste auf **Teilen**, und kopieren Sie den Link.
@@ -62,6 +62,6 @@ Der Abschnitt **Meet your users** (Informationen zu Benutzern) enthält Informat
     - [Trichter](usage-funnels.md)
     - [Vermerkdauer](usage-retention.md)
     - [Benutzerabläufe](usage-flows.md)
-    - [Arbeitsmappen](../platform/workbooks-overview.md)
+    - [Arbeitsmappen](../visualize/workbooks-overview.md)
     - [Hinzufügen von Benutzerkontext](usage-send-user-context.md)
 

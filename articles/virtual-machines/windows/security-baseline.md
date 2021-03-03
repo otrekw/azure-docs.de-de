@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ef5cddc131e25a1966ca86c3c8650452f73be69e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5a9bc576541c5991bb5f9352dc41fb0cce99c601
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879679"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594268"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Azure-Sicherheitsbaseline für virtuelle Windows-Computer
 
@@ -174,9 +174,9 @@ Sie können mit dem Just-in-Time-Netzwerkzugriff in Azure Security Center die Ve
 
 Verwenden Sie Azure Policy, um die Konfiguration für Netzwerkressourcen im Zusammenhang mit virtuellen Windows-Computern zu überprüfen (und zu korrigieren).
 
-* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Erstellen von Warnungen in Azure Monitor](../../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen in Azure Monitor](../../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Konfigurieren und Verwalten von Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -220,13 +220,13 @@ Für erweiterte Einblicke in die von Ihren virtuellen Computern unterstützten A
 
 Aktivieren Sie zusätzlich Azure Monitor für den Zugriff auf Ihre Überwachungs- und Aktivitätsprotokolle, einschließlich Ereignisquelle, Datum, Benutzer, Zeitstempel, Quell- und Zieladressen sowie anderer nützlicher Elemente.
 
-* [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+* [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Übersicht über den Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md)
+* [Übersicht über den Log Analytics-Agent](../../azure-monitor/agents/log-analytics-agent.md)
 
 * [Log Analytics-VM-Erweiterung für Windows](../extensions/oms-windows.md)
 
-* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Übersicht über Application Insights](../../azure-monitor/app/app-insights-overview.md)
 
@@ -242,7 +242,7 @@ Wenn Ihre Organisation die Daten im Sicherheitsereignisprotokoll des virtuellen 
 
 * [Datensammlung in Azure Security Center](../../security-center/security-center-enable-data-collection.md)
 
-* [Um die Syslog-Daten für die Überwachung zu erfassen, müssen Sie die Log Analytics-Erweiterung aktivieren.](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+* [Um die Syslog-Daten für die Überwachung zu erfassen, müssen Sie die Log Analytics-Erweiterung aktivieren.](../../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -252,9 +252,9 @@ Wenn Ihre Organisation die Daten im Sicherheitsereignisprotokoll des virtuellen 
 
 **Leitfaden**: Stellen Sie sicher, dass für die Speicherkonten oder Log Analytics-Arbeitsbereiche zum Speichern der Protokolle virtueller Computer der Protokollaufbewahrungszeitraum gemäß den Konformitätsbestimmungen Ihrer Organisation festgelegt ist.
 
-* [Informationen zum Überwachen von virtuellen Computern in Azure](../../azure-monitor/insights/monitor-vm-azure.md)
+* [Informationen zum Überwachen von virtuellen Computern in Azure](../../azure-monitor/vm/monitor-vm-azure.md)
 
-* [Konfigurieren des Aufbewahrungszeitraums des Log Analytics-Arbeitsbereichs](../../azure-monitor/platform/manage-cost-storage.md)
+* [Konfigurieren des Aufbewahrungszeitraums des Log Analytics-Arbeitsbereichs](../../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar.
 
@@ -268,15 +268,15 @@ Analysieren und überwachen Sie Protokolle auf anormales Verhalten, und prüfen 
 
 Alternativ dazu können Sie zum Überwachen und Überprüfen Ihrer Protokolle auch Daten in Azure Sentinel oder einer Drittanbieter-SIEM-Lösung aktivieren und integrieren.
 
-* [Übersicht über den Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md)
+* [Übersicht über den Log Analytics-Agent](../../azure-monitor/agents/log-analytics-agent.md)
 
 * [Log Analytics-VM-Erweiterung für Windows](../extensions/oms-windows.md)
 
 * [Durchführen des Onboardings für Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-* [Grundlegendes zum Log Analytics-Arbeitsbereich](../../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Grundlegendes zum Log Analytics-Arbeitsbereich](../../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
+* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar.
 
@@ -292,7 +292,7 @@ Alternativ dazu können Sie zum Einrichten von Warnungen für anomale Aktivität
 
 * [Verwalten von Warnungen in Azure Security Center](../../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Warnungen bei Log Analytics-Protokolldaten](../../azure-monitor/learn/tutorial-response.md)
+* [Warnungen bei Log Analytics-Protokolldaten](../../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar.
 
@@ -410,7 +410,7 @@ Alternativ dazu können Sie zum Einrichten von Warnungen für anomale Aktivität
 
 * [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Konfigurieren von Aktionsgruppen für benutzerdefinierte Warnungen und Benachrichtigungen](../../azure-monitor/platform/action-groups.md)
+* [Konfigurieren von Aktionsgruppen für benutzerdefinierte Warnungen und Benachrichtigungen](../../azure-monitor/alerts/action-groups.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -452,13 +452,13 @@ Alternativ dazu können Sie zum Einrichten von Warnungen für anomale Aktivität
 
 **Leitfaden**: Konfigurieren Sie Diagnoseeinstellungen für Azure Active Directory, um die Überwachungs- und Anmeldeprotokolle an einen Log Analytics-Arbeitsbereich zu senden. Verwenden Sie außerdem Azure Monitor, um Protokolle zu überprüfen und Abfragen für Daten von Azure-VMs auszuführen.
 
-* [Grundlegendes zum Log Analytics-Arbeitsbereich](../../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Grundlegendes zum Log Analytics-Arbeitsbereich](../../azure-monitor/logs/log-analytics-tutorial.md)
 
 * [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
+* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../../azure-monitor/logs/get-started-queries.md)
 
-* [Informationen zum Überwachen von virtuellen Computern in Azure](../../azure-monitor/insights/monitor-vm-azure.md)
+* [Informationen zum Überwachen von virtuellen Computern in Azure](../../azure-monitor/vm/monitor-vm-azure.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar.
 
@@ -592,9 +592,9 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen zu erstellen, die bei Änderungen an virtuellen Computern und zugehörigen Ressourcen ausgegeben werden.
 
-* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../../azure-monitor/alerts/alerts-activity-log.md)
 
-* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Azure Storage Analytics-Protokollierung](../../storage/common/storage-analytics-logging.md)
 

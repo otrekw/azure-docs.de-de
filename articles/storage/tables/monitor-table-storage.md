@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 6c4d2698cef45d1776ededf0e5281b015ac6725e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 4b27adbbfa68fc3a9b0c017d07580f416674e432
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587621"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591493"
 ---
 # <a name="monitoring-azure-table-storage"></a>Überwachen von Azure-Tabellenspeicher
 
@@ -30,7 +30,7 @@ Im Azure-Portal enthält die Seite **Übersicht** für jede Tabellenspeicherress
 ## <a name="what-is-azure-monitor"></a>Was ist Azure Monitor?
 Azure-Tabellenspeicher protokolliert Überwachungsdaten mit [Azure Monitor](../../azure-monitor/overview.md), einem Azure-Dienst zur vollständigen Stapelüberwachung. Azure Monitor bietet einen vollständigen Satz von Funktionen zum Überwachen Ihrer Azure-Ressourcen, von Ressourcen in anderen Clouds sowie von lokalen Ressourcen. 
 
-Beginnen Sie mit dem Artikel [Überwachen von Azure-Ressourcen mit Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md), in dem die folgenden Punkte beschrieben werden:
+Beginnen Sie mit dem Artikel [Überwachen von Azure-Ressourcen mit Azure Monitor](../../azure-monitor/essentials/monitor-azure-resource.md), in dem die folgenden Punkte beschrieben werden:
 
 - Was ist Azure Monitor?
 - Kosten für die Überwachung
@@ -42,7 +42,7 @@ Die folgenden Abschnitte basieren auf diesem Artikel. Darin werden die spezifisc
 
 ## <a name="monitoring-data"></a>Überwachungsdaten
 
-Azure-Tabellenspeicher erfasst dieselben Arten von Überwachungsdaten wie andere Azure-Ressourcen, die unter [Überwachungsdaten von Azure-Ressourcen](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data) beschrieben werden. 
+Azure-Tabellenspeicher erfasst dieselben Arten von Überwachungsdaten wie andere Azure-Ressourcen, die unter [Überwachungsdaten von Azure-Ressourcen](../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data) beschrieben werden. 
 
 Ausführliche Informationen zu den Metriken und Protokollen, die von Azure-Tabellenspeicher erstellt werden, finden Sie in der [Überwachungsdatenreferenz zu Azure-Tabellenspeicher](monitor-table-storage-reference.md).
 
@@ -66,7 +66,7 @@ Damit Sie Ressourcenprotokolle erfassen können, müssen Sie eine Diagnoseeinste
 
 Sie können eine Diagnoseeinstellung über das Azure-Portal, PowerShell, die Azure-Befehlszeilenschnittstelle oder eine Azure Resource Manager-Vorlage erstellen. 
 
-Eine allgemeine Anleitung finden Sie unter [Erstellen einer Diagnoseeinstellung zum Erfassen von Plattformprotokollen und Metriken in Azure](../../azure-monitor/platform/diagnostic-settings.md).
+Eine allgemeine Anleitung finden Sie unter [Erstellen einer Diagnoseeinstellung zum Erfassen von Plattformprotokollen und Metriken in Azure](../../azure-monitor/essentials/diagnostic-settings.md).
 
 > [!NOTE]
 > Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen für die öffentliche Cloud für Vorschautests zur Verfügung. Diese Vorschau unterstützt Protokolle für Blobdateien (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen und Tabellen. Dieses Feature ist für alle Speicherkonten verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Weitere Informationen finden Sie in der [Speicherkontoübersicht](../common/storage-account-overview.md).
@@ -108,7 +108,7 @@ Wenn Sie auswählen, dass Ihre Protokolle in einem Speicherkonto archiviert werd
 2. Wählen Sie in der Dropdownliste **Speicherkonto** das Speicherkonto aus, in dem Sie Ihre Protokolle archivieren möchten. Klicken Sie auf die Schaltfläche **OK** und dann auf die Schaltfläche **Speichern**.
 
    > [!NOTE]
-   > Bevor Sie ein Speicherkonto als Exportziel auswählen, informieren Sie sich unter [Archivieren von Azure-Ressourcenprotokollen](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) über die Voraussetzungen für das Speicherkonto.
+   > Bevor Sie ein Speicherkonto als Exportziel auswählen, informieren Sie sich unter [Archivieren von Azure-Ressourcenprotokollen](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) über die Voraussetzungen für das Speicherkonto.
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>Streamen von Protokollen an Azure Event Hubs
 
@@ -162,7 +162,7 @@ Hier sehen Sie ein Beispiel:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/tableServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
 
-Weitere Informationen zum Archivieren von Ressourcenprotokollen in Azure Storage finden Sie unter [Azure-Ressourcenprotokolle](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
+Weitere Informationen zum Archivieren von Ressourcenprotokollen in Azure Storage finden Sie unter [Azure-Ressourcenprotokolle](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage).
 
 #### <a name="stream-logs-to-an-event-hub"></a>Streamen von Protokollen an einen Event Hub
 
@@ -178,7 +178,7 @@ Hier sehen Sie ein Beispiel:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/tableServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
 
-Weitere Informationen zum Senden von Ressourcenprotokollen an Event Hubs finden Sie unter [Azure-Ressourcenprotokolle](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
+Weitere Informationen zum Senden von Ressourcenprotokollen an Event Hubs finden Sie unter [Azure-Ressourcenprotokolle](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs).
 
 #### <a name="send-logs-to-log-analytics"></a>Senden von Protokollen an Log Analytics
 
@@ -192,7 +192,7 @@ Hier sehen Sie ein Beispiel:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/tableServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
 
-Weitere Informationen finden Sie unter [Streamen von Azure-Ressourcenprotokollen an einen Log Analytics-Arbeitsbereich in Azure Monitor](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
+Weitere Informationen finden Sie unter [Streamen von Azure-Ressourcenprotokollen an einen Log Analytics-Arbeitsbereich in Azure Monitor](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace).
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -250,18 +250,18 @@ Hier sehen Sie ein Beispiel:
 
 `az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/tableServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
 
- Weitere Informationen finden Sie unter [Streamen von Azure-Ressourcenprotokollen an einen Log Analytics-Arbeitsbereich in Azure Monitor](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
+ Weitere Informationen finden Sie unter [Streamen von Azure-Ressourcenprotokollen an einen Log Analytics-Arbeitsbereich in Azure Monitor](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace).
 
 ### <a name="template"></a>[Vorlage](#tab/template)
 
-Eine Azure Resource Manager-Vorlage zum Erstellen einer Diagnoseeinstellung finden Sie unter [Diagnoseeinstellung für Azure Storage](../../azure-monitor/samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage).
+Eine Azure Resource Manager-Vorlage zum Erstellen einer Diagnoseeinstellung finden Sie unter [Diagnoseeinstellung für Azure Storage](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage).
 
 ---
 
 
 ## <a name="analyzing-metrics"></a>Analysieren von Metriken
 
-Mit dem Metrik-Explorer können Sie Metriken für Azure Storage mit Metriken aus anderen Azure-Diensten analysieren. Öffnen Sie den Metrik-Explorer, indem Sie im Menü **Azure Monitor** die Option **Metriken** auswählen. Ausführliche Informationen zur Verwendung dieses Tools finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md). 
+Mit dem Metrik-Explorer können Sie Metriken für Azure Storage mit Metriken aus anderen Azure-Diensten analysieren. Öffnen Sie den Metrik-Explorer, indem Sie im Menü **Azure Monitor** die Option **Metriken** auswählen. Ausführliche Informationen zur Verwendung dieses Tools finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../../azure-monitor/essentials/metrics-getting-started.md). 
 
 Dieses Beispiel zeigt, wie Sie **Transaktionen** auf der Kontoebene anzeigen.
 
@@ -278,7 +278,7 @@ Metriken für Azure-Tabellenspeicher befinden sich in diesen Namespaces:
 - Microsoft.Storage/storageAccounts
 - Microsoft.Storage/storageAccounts/tableServices
 
-Eine Liste aller von Azure Monitor unterstützten Metriken (einschließlich Azure-Tabellenspeicher) finden Sie unter [Unterstützte Metriken von Azure Monitor](../../azure-monitor/platform/metrics-supported.md).
+Eine Liste aller von Azure Monitor unterstützten Metriken (einschließlich Azure-Tabellenspeicher) finden Sie unter [Unterstützte Metriken von Azure Monitor](../../azure-monitor/essentials/metrics-supported.md).
 
 
 ### <a name="accessing-metrics"></a>Zugreifen auf Metriken
@@ -523,22 +523,22 @@ An einen Event Hub gesendete Protokolle werden nicht als Datei gespeichert. Sie 
 
 ![Überwachungsprotokolle](media/monitor-table-storage/event-hub-log.png)
 
-Mithilfe von SIEM- (Security Information & Event Management) und Überwachungstools können Sie auf die an Ihren Event Hub gesendeten Protokolldaten zugreifen und diese lesen. Weitere Informationen finden Sie unter [Azure-Ressourcenprotokolle](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
+Mithilfe von SIEM- (Security Information & Event Management) und Überwachungstools können Sie auf die an Ihren Event Hub gesendeten Protokolldaten zugreifen und diese lesen. Weitere Informationen finden Sie unter [Azure-Ressourcenprotokolle](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs).
 
 ### <a name="accessing-logs-in-a-log-analytics-workspace"></a>Zugreifen auf Protokolle in einem Log Analytics-Arbeitsbereich
 
 Mithilfe von Azure Monitor-Protokollabfragen können Sie auf Protokolle zugreifen, die an einen Log Analytics-Arbeitsbereich gesendet wurden.
 
-Weitere Informationen finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub und externe Partner](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+Weitere Informationen finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub und externe Partner](../../azure-monitor/essentials/stream-monitoring-data-event-hubs.md).
 
 Die Daten werden in der **StorageTableLogs**-Tabelle gespeichert. 
 
 #### <a name="sample-kusto-queries"></a>Kusto-Beispielabfragen
 
-Im Folgenden finden Sie einige Abfragen, die Sie in die **Protokollsuchleiste** eingeben können, um die Überwachung Ihres Tabellenspeichers zu vereinfachen. Diese Abfragen arbeiten mit der [neuen Sprache](../../azure-monitor/log-query/log-query-overview.md).
+Im Folgenden finden Sie einige Abfragen, die Sie in die **Protokollsuchleiste** eingeben können, um die Überwachung Ihres Tabellenspeichers zu vereinfachen. Diese Abfragen arbeiten mit der [neuen Sprache](../../azure-monitor/logs/log-query-overview.md).
 
 > [!IMPORTANT]
-> Wenn Sie **Protokolle** im Speicherkonto-Ressourcengruppenmenü auswählen, wird Log Analytics geöffnet, wobei der Abfragebereich auf die aktuelle Ressourcengruppe festgelegt ist. Dies bedeutet, dass Protokollabfragen nur Daten aus dieser Ressourcengruppe umfassen. Wenn Sie eine Abfrage ausführen möchten, die Daten aus anderen Ressourcen oder Daten aus anderen Azure-Diensten enthält, wählen Sie im Menü **Azure Monitor** die Option **Protokolle** aus. Ausführliche Informationen finden Sie unter [Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics](../../azure-monitor/log-query/scope.md).
+> Wenn Sie **Protokolle** im Speicherkonto-Ressourcengruppenmenü auswählen, wird Log Analytics geöffnet, wobei der Abfragebereich auf die aktuelle Ressourcengruppe festgelegt ist. Dies bedeutet, dass Protokollabfragen nur Daten aus dieser Ressourcengruppe umfassen. Wenn Sie eine Abfrage ausführen möchten, die Daten aus anderen Ressourcen oder Daten aus anderen Azure-Diensten enthält, wählen Sie im Menü **Azure Monitor** die Option **Protokolle** aus. Ausführliche Informationen finden Sie unter [Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics](../../azure-monitor/logs/scope.md).
 
 Verwenden Sie diese Abfragen, um Ihre Azure Storage-Konten zu überwachen:
 
@@ -597,5 +597,5 @@ Nein. Die Metriken für Datenträger werden von Azure Compute unterstützt. Weit
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Eine Referenz zu den von Azure-Tabellenspeicher erstellten Protokollen und Metriken finden Sie unter [Überwachungsdatenreferenz zu Azure-Tabellenspeicher](monitor-table-storage-reference.md).
-- Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md).
+- Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../../azure-monitor/essentials/monitor-azure-resource.md).
 - Weitere Informationen zur Migration von Metriken finden Sie unter [Migration von Azure Storage-Metriken](../common/storage-metrics-migration.md).

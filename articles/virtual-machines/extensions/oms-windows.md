@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 22cc9bf1bdfdb8a3026bb09f44e007ab3438325a
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 1b394a6daf7ba680d193a13dd4cb25dbebc576e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046820"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580066"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics-VM-Erweiterung für Windows
 
@@ -30,7 +30,7 @@ Azure Monitor-Protokolle bieten Überwachungsfunktionen für cloudbasierte und l
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Ausführliche Informationen zu den unterstützten Windows-Betriebssystemen finden Sie im Artikel [Übersicht über Azure Monitor-Agents](../../azure-monitor/platform/agents-overview.md#supported-operating-systems).
+Ausführliche Informationen zu den unterstützten Windows-Betriebssystemen finden Sie im Artikel [Übersicht über Azure Monitor-Agents](../../azure-monitor/agents/agents-overview.md#supported-operating-systems).
 
 ### <a name="agent-and-vm-extension-version"></a>Version des Agents und der VM-Erweiterung
 Die folgende Tabelle enthält eine Zuordnung der Version der Log Analytics-VM-Erweiterung für Windows und des Log Analytics-Agent-Pakets für jedes Release. 
@@ -101,14 +101,14 @@ Der folgende JSON-Code zeigt das Schema für die Log Analytics-Agent-Erweiterung
 \* In der Log Analytics-API heißt die „workspaceId“ „consumerId“.
 
 > [!NOTE]
-> Informationen zu weiteren Eigenschaften finden Sie unter [Verbinden von Windows-Computern mit Azure Monitor](../../azure-monitor/platform/agent-windows.md).
+> Informationen zu weiteren Eigenschaften finden Sie unter [Verbinden von Windows-Computern mit Azure Monitor](../../azure-monitor/agents/agent-windows.md).
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 
 Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Das im vorherigen Abschnitt erläuterte JSON-Schema kann in einer Azure Resource Manager-Vorlage zum Ausführen der Log Analytics-Agent-Erweiterung im Rahmen einer Azure Resource Manager-Bereitstellung verwendet werden. Eine Beispielvorlage mit der Log Analytics-Agent-VM-Erweiterung finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
 
 >[!NOTE]
->Die Vorlage unterstützt nicht die Angabe mehrerer Arbeitsbereichs-IDs und Arbeitsbereichsschlüssel, wenn Sie den Agent zum Berichten an mehrere Arbeitsbereiche konfigurieren möchten. Informationen zum Konfigurieren des Agents zum Berichten an mehrere Arbeitsbereiche finden Sie unter [Hinzufügen oder Entfernen von Arbeitsbereichen](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace).  
+>Die Vorlage unterstützt nicht die Angabe mehrerer Arbeitsbereichs-IDs und Arbeitsbereichsschlüssel, wenn Sie den Agent zum Berichten an mehrere Arbeitsbereiche konfigurieren möchten. Informationen zum Konfigurieren des Agents zum Berichten an mehrere Arbeitsbereiche finden Sie unter [Hinzufügen oder Entfernen von Arbeitsbereichen](../../azure-monitor/agents/agent-manage.md#adding-or-removing-a-workspace).  
 
 Der JSON-Code für eine Erweiterung des virtuellen Computers kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung des JSON-Codes wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/templates/child-resource-name-type.md) (Festlegen von Name und Typ für untergeordnete Ressourcen). 
 

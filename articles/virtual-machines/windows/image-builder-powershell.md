@@ -3,17 +3,18 @@ title: Erstellen einer Windows-VM mit Azure Image Builder unter Verwendung von P
 description: Erstellen Sie eine Windows-VM mit dem PowerShell-Modul von Azure Image Builder.
 author: cynthn
 ms.author: cynthn
-ms.date: 06/17/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.service: virtual-machines-windows
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subervice: image-builder
+ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7e902798284240b55a3b08ea55ab6ee55add2431
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 90d09763f2c9e167d6a0a34adbbc444ebad14c46
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575837"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693457"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Vorschau: Erstellen einer Windows-VM mit Azure Image Builder unter Verwendung von PowerShell
 
@@ -65,10 +66,11 @@ Registrieren Sie die folgenden Ressourcenanbieter für die Verwendung mit dem Az
 - Microsoft.Compute
 - Microsoft.KeyVault
 - Microsoft.Storage
+- Microsoft.Network
 - Microsoft.VirtualMachineImages
 
 ```azurepowershell-interactive
-Get-AzResourceProvider -ProviderNamespace Microsoft.Compute, Microsoft.KeyVault, Microsoft.Storage, Microsoft.VirtualMachineImages |
+Get-AzResourceProvider -ProviderNamespace Microsoft.Compute, Microsoft.KeyVault, Microsoft.Storage, Microsoft.VirtualMachineImages, Microsoft.Network |
   Where-Object RegistrationState -ne Registered |
     Register-AzResourceProvider
 ```
@@ -139,7 +141,7 @@ $identityNamePrincipalId = (Get-AzUserAssignedIdentity -ResourceGroupName $image
 Laden Sie die JSON-Konfigurationsdatei herunter, und ändern Sie die Datei basierend auf den in diesem Artikel definierten Einstellungen.
 
 ```azurepowershell-interactive
-$myRoleImageCreationUrl = 'https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json'
+$myRoleImageCreationUrl = 'https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json'
 $myRoleImageCreationPath = "$env:TEMP\myRoleImageCreation.json"
 
 Invoke-WebRequest -Uri $myRoleImageCreationUrl -OutFile $myRoleImageCreationPath -UseBasicParsing
@@ -247,7 +249,7 @@ $ImgCustomParams02 = @{
   FileCustomizer = $true
   CustomizerName = 'downloadBuildArtifacts'
   Destination = 'c:\\buildArtifacts\\index.html'
-  SourceUri = 'https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html'
+  SourceUri = 'https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html'
 }
 $Customizer02 = New-AzImageBuilderCustomizerObject @ImgCustomParams02
 ```

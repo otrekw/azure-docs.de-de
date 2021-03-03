@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 40d89cad595673a535ebcd526d747d81ce6ad08f
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 51d7c1e433e72a393178cf429759b5e9a6479e88
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051922"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648678"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>Erkennen der Unterschiede zwischen delegierten Berechtigungen und Anwendungsberechtigungen
 
@@ -28,4 +28,4 @@ ms.locfileid: "99051922"
 - Weiterführend können Sie sich damit vertraut machen, wie Ressourcenanwendungen [Bereiche](developer-glossary.md#scopes) und [Anwendungsrollen](developer-glossary.md#roles) für Clientanwendungen verfügbar machen, die im Azure-Portal als delegierte Berechtigungen bzw. als Anwendungsberechtigungen ausgewiesen werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[AzureAD Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+[Azure AD bei Microsoft Q&A](/answers/topics/azure-active-directory.html)

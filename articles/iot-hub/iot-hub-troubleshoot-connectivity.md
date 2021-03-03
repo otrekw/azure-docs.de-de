@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Technical Support'
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 81558526500f3c01e975d9a963b4a6a98ec6d753
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8bd20e3c7207c75e87a2132fca89906885de2676
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446408"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579256"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Überwachen, Diagnostizieren und Behandeln von Problemen bei der Trennung von Geräteverbindungen mit Azure IoT Hub
 
@@ -82,7 +82,7 @@ Die Metrik [*Verbundene Geräte (Vorschau)*](monitor-iot-hub-reference.md#device
 
 Sie können Anomalien bei der Trennung von Geräteverbindungen mithilfe von Metrikwarnungsregeln im großen Stil überwachen. Das heißt, wenn eine große Anzahl von Geräten unerwartet getrennt wird. Wird ein solches Vorkommen erkannt, können Sie Protokolle als Hilfe bei der Behebung dieses Problems anzeigen. Zum Überwachen von Trennungen pro Gerät und Trennungen bei kritischen Geräten müssen Sie jedoch Event Grid verwenden. Event Grid bietet auch eine bessere Echtzeitdarstellung als Azure-Metriken.
 
-Weitere Informationen zu Warnungen bei IoT Hub finden Sie unter [Warnungen in Monitor IoT Hub](monitor-iot-hub.md#alerts). Eine exemplarische Vorgehensweise zum Erstellen von Warnungen in IoT Hub finden Sie im [Tutorial „Verwenden von Metriken und Protokollen“](tutorial-use-metrics-and-diags.md). Eine ausführlichere Übersicht über Warnungen finden Sie in der Azure Monitor-Dokumentation unter [Überblick über Warnungen in Microsoft Azure](../azure-monitor/platform/alerts-overview.md).
+Weitere Informationen zu Warnungen bei IoT Hub finden Sie unter [Warnungen in Monitor IoT Hub](monitor-iot-hub.md#alerts). Eine exemplarische Vorgehensweise zum Erstellen von Warnungen in IoT Hub finden Sie im [Tutorial „Verwenden von Metriken und Protokollen“](tutorial-use-metrics-and-diags.md). Eine ausführlichere Übersicht über Warnungen finden Sie in der Azure Monitor-Dokumentation unter [Überblick über Warnungen in Microsoft Azure](../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="azure-monitor-use-logs-to-resolve-connectivity-errors"></a>Azure Monitor: Verwenden von Protokollen zum Beheben von Verbindungsfehlern
 

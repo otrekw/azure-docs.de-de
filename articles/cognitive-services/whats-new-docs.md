@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 02/08/2021
-ms.openlocfilehash: 92d75289fd4459db8c469a4cb562fe28e8aab779
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1cea159e6939463352102d7d3ff3dafbdea71b5a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989012"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710317"
 ---
 # <a name="cognitive-services-docs-whats-new-for-january-1-2021---january-31-2021"></a>Cognitive Services-Dokumentation: Neuerungen vom 1. Januar 2021 bis zum 31. Januar 2021
 
@@ -29,31 +29,31 @@ In diesem Artikel erfahren Sie mehr über die Neuerungen in der Dokumentation zu
 
 **Neue Artikel**
 
-- [Tutorial: Extrahieren von Formulardaten per Massenvorgang mithilfe von Azure Data Factory](/azure/cognitive-services/form-recognizer/tutorial-bulk-processing.md)
+- [Tutorial: Extrahieren von Formulardaten per Massenvorgang mithilfe von Azure Data Factory](./form-recognizer/tutorial-bulk-processing.md)
 
 **Aktualisierte Artikel**
 
-- [Was ist die Formularerkennung?](/azure/cognitive-services/form-recognizer/overview.md)
+- [Was ist die Formularerkennung?](./form-recognizer/overview.md)
 
 ## <a name="immersive-reader"></a>Plastischer Reader
 
 **Aktualisierte Artikel**
 
-- [Erstellen einer Plastischer Reader-Ressource und Konfigurieren der Azure Active Directory-Authentifizierung](/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader.md)
+- [Erstellen einer Plastischer Reader-Ressource und Konfigurieren der Azure Active Directory-Authentifizierung](./immersive-reader/how-to-create-immersive-reader.md)
 
 ## <a name="personalizer"></a>Personalisierung
 
 **Aktualisierte Artikel**
 
-- [Merkmale sind Informationen über Aktionen und Kontext.](/azure/cognitive-services/personalizer/concepts-features.md)
+- [Merkmale sind Informationen über Aktionen und Kontext.](./personalizer/concepts-features.md)
 
 ## <a name="text-analytics"></a>Textanalyse
 
 **Aktualisierte Artikel**
 
-- [Textanalyse-API v3: Sprachunterstützung](/azure/cognitive-services/text-analytics/language-support.md)
-- [Migration zu Version 3 der Textanalyse-API](/azure/cognitive-services/text-analytics/migration-guide.md)
-- [Neuigkeiten bei der Textanalyse-API](/azure/cognitive-services/text-analytics/whats-new.md)
+- [Textanalyse-API v3: Sprachunterstützung](./text-analytics/language-support.md)
+- [Migration zu Version 3 der Textanalyse-API](./text-analytics/migration-guide.md)
+- [Neuigkeiten bei der Textanalyse-API](./text-analytics/whats-new.md)
 
 ## <a name="community-contributors"></a>Mitwirkende an der Community
 

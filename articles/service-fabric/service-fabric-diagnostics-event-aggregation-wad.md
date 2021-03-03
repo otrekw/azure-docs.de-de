@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: bcb9ca9e73c0898dc778202eca036a5ae92bebf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87fc8e30274f0a11b7ddfc5eeb184f1a45a5351d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87076130"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588367"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Ereignisaggregation und -sammlung mit der Windows Azure-Diagnose
 > [!div class="op_single_selector"]
@@ -346,7 +346,7 @@ Fügen Sie in „WadCfg“ der Resource Manager-Vorlage durch Einfügen der folg
 
 In den beiden obigen Codeausschnitten wurde für die Senke der Name „applicationInsights“ verwendet. Dieser Name muss nicht verwendet werden. Solange der Name der Senke in „sinks“ eingefügt wird, können Sie eine beliebige Zeichenfolge als Name festlegen.
 
-Protokolle aus dem Cluster werden derzeit als **Ablaufverfolgungen** in der Application Insights-Protokollanzeige angezeigt. Da die meisten Ablaufverfolgungen, die von der Plattform stammen, als „Information“ eingestuft sind, haben Sie auch die Möglichkeit, die Senkenkonfiguration so zu ändern, dass nur Protokolle vom Typ „Warnung“ und „Fehler“ gesendet werden. Dies kann durch Hinzufügen von „Kanälen“ zur Senke erfolgen, wie in [diesem Artikel](../azure-monitor/platform/diagnostics-extension-to-application-insights.md) erläutert.
+Protokolle aus dem Cluster werden derzeit als **Ablaufverfolgungen** in der Application Insights-Protokollanzeige angezeigt. Da die meisten Ablaufverfolgungen, die von der Plattform stammen, als „Information“ eingestuft sind, haben Sie auch die Möglichkeit, die Senkenkonfiguration so zu ändern, dass nur Protokolle vom Typ „Warnung“ und „Fehler“ gesendet werden. Dies kann durch Hinzufügen von „Kanälen“ zur Senke erfolgen, wie in [diesem Artikel](../azure-monitor/agents/diagnostics-extension-to-application-insights.md) erläutert.
 
 >[!NOTE]
 >Wenn Sie im Portal oder in der Resource Manager-Vorlage einen falschen Application Insights-Schlüssel verwenden, müssen Sie ihn manuell ändern und den Cluster aktualisieren und erneut bereitstellen.

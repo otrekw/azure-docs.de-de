@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
-ms.openlocfilehash: cb9a035217734028df325555cb0954dedd29ac30
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: d234227de98beeed6898697fb6ed8e0865546e16
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372288"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555851"
 ---
 # <a name="transfer-subscriptions-under-an-azure-plan-from-one-partner-to-another-preview"></a>Übertragen von Abonnements unter einem Azure-Plan von einem Partner auf einen anderen (Vorschau)
 
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, was Sie wissen sollten, bevor und nachdem Sie de
 
 Der Zugriff auf vorhandene Benutzer, Gruppen oder Dienstprinzipale, die per rollenbasierter Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) zugewiesen wurden, ist von der Übertragung nicht betroffen. Mit [Azure RBAC](../../role-based-access-control/overview.md) können Sie verwalten, welche Benutzer Zugriff auf Azure-Ressourcen haben, welche Aktionen Benutzer für diese Ressourcen ausführen können und auf welche Bereiche sie zugreifen können. Der neue Partner erhält durch die Abonnementübertragung keinen Azure RBAC-Zugriff auf Ihre Ressourcen. Ihr vorheriger Partner behält seinen Azure RBAC-Zugriff.
 
-Daher ist es wichtig, dass Sie den Azure RBAC-Zugriff des alten Partners entfernen und dem neuen Partner Zugriff gewähren. Weitere Informationen dazu, wie Sie Ihrem neuen Partner Zugriff gewähren, finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md) Weitere Informationen dazu, wie Sie den Azure RBAC-Zugriff Ihres vorherigen Partners entfernen, finden Sie unter [Entfernen einer Rollenzuweisung](../../role-based-access-control/role-assignments-portal.md#remove-a-role-assignment).
+Daher ist es wichtig, dass Sie den Azure RBAC-Zugriff des alten Partners entfernen und dem neuen Partner Zugriff gewähren. Weitere Informationen dazu, wie Sie Ihrem neuen Partner Zugriff gewähren, finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md) Weitere Informationen dazu, wie Sie den Azure RBAC-Zugriff Ihres vorherigen Partners entfernen, finden Sie unter [Entfernen von Azure-Rollenzuweisungen](../../role-based-access-control/role-assignments-remove.md).
 
 Außerdem erhält der neue Partner nicht automatisch Zugriff vom Typ [Administrator im Namen von](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) (Admin on Behalf Of, AOBO) auf Ihre Abonnements. AOBO ist für Ihren Partner erforderlich, um die Azure-Abonnements in Ihrem Namen zu verwalten. Weitere Informationen zu Azure-Berechtigungen finden Sie unter [Abrufen von Berechtigungen zum Verwalten des Diensts oder Abonnements eines Kunden](/partner-center/customers-revoke-admin-privileges).
 

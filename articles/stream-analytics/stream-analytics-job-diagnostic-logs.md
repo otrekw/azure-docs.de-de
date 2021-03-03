@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.custom: contperf-fy21q1
 ms.date: 06/18/2020
-ms.openlocfilehash: 56c7ad49fc9af3ca4f30aa5309623c31e9db7385
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 93d881419c4854b8e46608e150b55072267e0347
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011117"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574407"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Problembehandlung von Azure Stream Analytics mit Ressourcenprotokollen
 
@@ -24,9 +24,9 @@ Ressourcenprotokolle sollten unbedingt für alle Aufträge aktiviert werden, da 
 
 Stream Analytics bietet zwei Typen von Protokollen:
 
-* [Aktivitätsprotokolle](../azure-monitor/platform/platform-logs-overview.md) (immer aktiviert) bieten Einblicke in die Vorgänge, die bei Aufträgen durchgeführt werden.
+* [Aktivitätsprotokolle](../azure-monitor/essentials/platform-logs-overview.md) (immer aktiviert) bieten Einblicke in die Vorgänge, die bei Aufträgen durchgeführt werden.
 
-* [Ressourcenprotokolle](../azure-monitor/platform/platform-logs-overview.md) (konfigurierbar), die umfangreichere Einblicke in sämtliche Vorgänge eines Auftrags bieten. Ressourcenprotokolle starten, wenn der Auftrag erstellt wurde, und enden, wenn der Auftrag gelöscht wird. Sie behandeln Ereignisse bei der Aktualisierung des Auftrags und während der Ausführung.
+* [Ressourcenprotokolle](../azure-monitor/essentials/platform-logs-overview.md) (konfigurierbar), die umfangreichere Einblicke in sämtliche Vorgänge eines Auftrags bieten. Ressourcenprotokolle starten, wenn der Auftrag erstellt wurde, und enden, wenn der Auftrag gelöscht wird. Sie behandeln Ereignisse bei der Aktualisierung des Auftrags und während der Ausführung.
 
 > [!NOTE]
 > Sie können Dienste wie Azure Storage, Azure Event Hubs und Azure Monitor-Protokolle verwenden, um nicht konforme Daten zu analysieren. Gebühren werden basierend auf dem Preismodell für diese Dienste in Rechnung gestellt.

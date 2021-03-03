@@ -3,16 +3,16 @@ title: Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal
 description: Sehen Sie sich Ihre Dienstintegritätsbenachrichtigungen im Azure-Portal an. Benachrichtigungen zur Dienstintegrität werden von der Azure-Infrastruktur im Azure-Aktivitätsprotokoll veröffentlicht.
 ms.topic: conceptual
 ms.date: 6/27/2019
-ms.openlocfilehash: 615d08b6a04aef9e8ef2033154da8ff8caeebe04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f9f3e7b10d9aa0014e4e00e7bfa72c9dc66e142
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90967772"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587993"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal
 
-Benachrichtigungen zur Dienstintegrität werden von der Azure-Infrastruktur im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md) veröffentlicht.  Die Benachrichtigungen enthalten Informationen über die Ressourcen in Ihrem Abonnement. Angesichts der möglicherweise großen Menge an Informationen, die im Aktivitätsprotokoll gespeichert werden, ist eine separate Benutzeroberfläche vorhanden, um die Anzeige und Einrichtung von Benachrichtigungen zur Dienstintegrität zu erleichtern. 
+Benachrichtigungen zur Dienstintegrität werden von der Azure-Infrastruktur im [Azure-Aktivitätsprotokoll](../azure-monitor/essentials/platform-logs-overview.md) veröffentlicht.  Die Benachrichtigungen enthalten Informationen über die Ressourcen in Ihrem Abonnement. Angesichts der möglicherweise großen Menge an Informationen, die im Aktivitätsprotokoll gespeichert werden, ist eine separate Benutzeroberfläche vorhanden, um die Anzeige und Einrichtung von Benachrichtigungen zur Dienstintegrität zu erleichtern. 
 
 Dienstintegritätsbenachrichtigungen können je nach Klasse informativ oder handlungsrelevant sein.
 
@@ -34,4 +34,4 @@ Weitere Informationen zu den verschiedenen Klassen von Dienstintegritätsbenachr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über [Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts.md).
+* Erfahren Sie mehr über [Aktivitätsprotokollwarnungen](../azure-monitor/alerts/activity-log-alerts.md).

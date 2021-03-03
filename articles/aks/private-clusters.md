@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen privaten Azure Kubernetes Service-Clust
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 2749e66375fbd808a9e87f252a813f1054ceff21
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: d3b53c860c150b5b67d38cf5d11db9f070ffb81d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525567"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392798"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Erstellen eines privaten Azure Kubernetes Service-Clusters
 
@@ -66,7 +66,7 @@ Dabei gilt: `--enable-private-cluster` ist ein obligatorisches Flag für einen p
 > [!NOTE]
 > Wenn CIDR der Docker-Bridge-Adresse (172.17.0.1/16) mit der Subnetz-CIDR in Konflikt steht, ändern Sie die Docker-Bridge-Adresse entsprechend.
 
-## <a name="configure-private-dns-zone"></a>Konfigurieren einer privaten DNS-Zone
+## <a name="configure-private-dns-zone"></a>Konfigurieren einer privaten DNS-Zone 
 
 Zum Konfigurieren einer privaten DNS-Zone können die folgenden Parameter verwendet werden.
 
@@ -79,7 +79,7 @@ Zum Konfigurieren einer privaten DNS-Zone können die folgenden Parameter verwen
 * AKS-Vorschauversion 0.4.71 oder höher
 * API-Version 2020-11-01 oder höher
 
-### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Erstellen eines privaten AKS-Clusters mit privater DNS-Zone
+### <a name="create-a-private-aks-cluster-with-private-dns-zone-preview"></a>Erstellen eines privaten AKS-Clusters mit privater DNS-Zone (Vorschau)
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [none|system|custom private dns zone ResourceId]

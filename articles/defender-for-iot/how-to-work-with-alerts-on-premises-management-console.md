@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: f52e308199ddb8bc21809009ad71918d077ac5b2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 878b1b2d5ba13b68b5122e4b9cffc3c408e211e2
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836248"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526322"
 ---
 # <a name="work-with-alerts-on-the-on-premises-management-console"></a>Arbeiten mit Warnungen auf der lokalen Verwaltungskonsole 
 
@@ -119,13 +119,34 @@ So zeigen Sie die Geräte in einer Zonenzuordnung an
 
 ## <a name="manage-alert-events"></a>Verwalten von Warnungsereignissen
 
-Sie können Warnungsereignisse, die von den Sensoren in Ihrer Organisation erkannt werden, wie folgt verwalten:
+Zum Verwalten von Warnungsereignissen über die lokale Verwaltungskonsole stehen mehrere Optionen zur Verfügung.
 
 - Ermitteln oder bestätigen Sie Warnungsereignisse. Wählen Sie **LEARN & ACKNOWLEDGE ALL** (Alle ermitteln und bestätigen) aus, um alle Warnungsereignisse zu ermitteln, die autorisiert werden können, und um alle Warnungsereignisse zu bestätigen, die derzeit nicht bestätigt sind.
 
   :::image type="content" source="media/how-to-work-with-alerts-on-premises-management-console/learn-and-acknowledge.png" alt-text="Auswählen von „LEARN & ACKNOWLEDGE ALL“ (Alle ermitteln und bestätigen)":::
 
 - Schalten Sie Warnungsereignisse stumm, oder heben Sie die Stummschaltung auf.
+
+Weitere Informationen zum Erlernen, Bestätigen und Stummschalten von Warnungsereignissen finden Sie im Artikel [Verwalten von Warnungsereignissen](how-to-manage-the-alert-event.md).
+
+## <a name="export-alert-information"></a>Exportieren von Warnungsinformationen
+
+Exportieren Sie Warnungsinformationen in eine CSV-Datei. Sie können Informationen zu allen erkannten Warnungen oder Informationen basierend auf der gefilterten Ansicht exportieren. Die folgenden Informationen werden exportiert:
+
+- Adresse (Quelle)
+- Destination Address (Zieladresse)
+- Warnungstitel
+- Schweregrad der Warnung
+- Warnmeldung
+- Zusätzliche Informationen
+- Status „Bestätigt“
+- PCAP-Verfügbarkeit
+
+So erfolgt das Exportieren
+
+1. Wählen Sie im Seitenmenü die Option Warnungen aus.
+1. Wählen Sie Exportieren aus.
+1. Wählen Sie „Export Extended Alerts“ (Erweiterte Warnungen exportieren) aus, um für jede Warnung, die mehrere Geräte abdeckt, Warnungsinformationen in separaten Zeilen zu exportieren. Wenn „Export Extended Alerts“ (Erweiterte Warnungen exportieren) ausgewählt ist, wird in der CSV-Datei eine duplizierte Zeile der Warnung mit den eindeutigen Elementen in jeder Zeile erstellt. Die Verwendung dieser Option vereinfacht die Untersuchung exportierter Warnungsereignisse.  
 
 ## <a name="create-alert-exclusion-rules"></a>Erstellen von Warnungsausschlussregeln
 
@@ -227,4 +248,4 @@ Regeln, die Sie mithilfe der API erstellen, sind im Fenster **Ausschlussregel** 
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Arbeiten mit Warnungen auf dem Sensor](how-to-work-with-alerts-on-your-sensor.md)
+[Arbeiten mit Sensorwarnungen](how-to-work-with-alerts-on-your-sensor.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ba15deed98af16b9b501439082ee6c9237fe20b7
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d95a2318d94f52352c9546aedc24d0111c5ba0a4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807206"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571661"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>Azure-Sicherheitsbaseline für Azure Sentinel
 
@@ -37,9 +37,9 @@ Diese Sicherheitsbaseline wendet Empfehlungen des [Azure-Sicherheitsvergleichste
 
 - [Aktivieren des Auditings in Azure Sentinel](resources.md)
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -73,7 +73,7 @@ Diese Sicherheitsbaseline wendet Empfehlungen des [Azure-Sicherheitsvergleichste
 
 **Leitfaden**: Legen Sie in Azure Monitor den Aufbewahrungszeitraum für Protokolle für Log Analytics-Arbeitsbereiche, die Ihren Azure Sentinel-Arbeitsbereichen zugeordnet sind, gemäß der Compliancevorschriften Ihrer Organisation fest.
 
-- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -341,7 +341,7 @@ Außerdem ist jede Sentinel-Arbeitsmappe eine Azure-Ressource, und Sie können B
 
 **Leitfaden**: Log Analytics-Arbeitsbereiche in Azure Sentinel und Azure Monitor verwenden derzeit von Microsoft verwaltete Schlüssel zum Verschlüsseln ruhender Daten. Die Möglichkeit, Ihren eigenen Schlüssel bereitzustellen, wird für Sentinel jetzt noch nicht, aber in naher Zukunft vollständig unterstützt.
 
-- [Übersicht zu kundenseitig verwalteten Schlüsseln in Azure Monitor](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-overview)
+- [Übersicht zu kundenseitig verwalteten Schlüsseln in Azure Monitor](../azure-monitor/logs/customer-managed-keys.md#customer-managed-key-overview)
 
 - [Grundlegendes zu kundenseitig verwalteten Schlüsseln in Azure Sentinel (Vorschau)](customer-managed-keys.md)
 

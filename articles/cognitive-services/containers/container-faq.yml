@@ -1,0 +1,175 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen (FAQ) zu Cognitive Services-Containern
+  titleSuffix: Azure Cognitive Services
+  description: Häufig gestellte Fragen und Antworten.
+  services: cognitive-services
+  author: aahill
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.topic: conceptual
+  ms.date: 02/04/2021
+  ms.author: aahi
+  ms.openlocfilehash: 3f51bc00d4df0723a40ff97847a14cba3e939e9d
+  ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 02/14/2021
+  ms.locfileid: "100473472"
+title: Häufig gestellte Fragen (FAQ) zu Azure Cognitive Services-Containern
+summary: ''
+sections:
+- name: Allgemeine Fragen
+  questions:
+  - question: Was ist verfügbar?
+    answer: >
+      Mithilfe von Azure Cognitive Services-Containern können Entwickler dieselben intelligenten APIs wie in Azure verwenden, die dabei aber über die [Vorteile](../cognitive-services-container-support.md#features-and-benefits) der Containerisierung verfügen. Einige Container sind als geschlossene Vorschau verfügbar, für die möglicherweise eine Bewerbung für den Zugriff erforderlich ist. Andere Container sind als nicht geschlossene Vorschauversion öffentlich oder allgemein verfügbar. Eine vollständige Liste der Container und ihrer Verfügbarkeit finden Sie im Artikel [Containerunterstützung in Azure Cognitive Services](../cognitive-services-container-support.md). Sie können die Container auch im [Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services) anzeigen.
+  - question: Gibt es einen Unterschied zwischen der Cognitive Services-Cloud und den Containern?
+    answer: >
+      Cognitive Services-Container sind eine Alternative zur Cognitive Services-Cloud. Container bieten dieselben Funktionen wie die entsprechenden Clouddienste. Kunden können die Container lokal oder in Azure bereitstellen. Die KI-Kerntechnologie, die Tarife, die API-Schlüssel und die API-Signatur sind zwischen dem Container und den entsprechenden Clouddiensten identisch. Hier sind die [Features und Vorteile](../cognitive-services-container-support.md#features-and-benefits) für die Auswahl von Containern gegenüber ihrer Entsprechung für Clouddienste aufgeführt.
+  - question: Wie kann ich auf einen Container der beschränkten Vorschauversion zugreifen und diesen verwenden?
+    answer: >
+      Bisher wurden Container der beschränkten Vorschau im Repository `containerpreview.azurecr.io` gehostet. Ab dem 22. September 2020 werden diese Container in Microsoft Container Registry gehostet. Für den Download muss nicht der Docker-Anmeldebefehl verwendet werden. Sie können einen Container der beschränkten Vorschau ausführen, wenn Ihre Azure-Ressource mit einer genehmigten Azure-Abonnement-ID erstellt wurde. Sie können den Container nicht ausführen, wenn Ihr Azure-Abonnement nach dem Ausfüllen des [Anforderungsformulars](https://aka.ms/csgate) nicht genehmigt wurde.
+  - question: Werden Container für alle Cognitive Services zur Verfügung gestellt und welchen Containersatz können wir als nächstes erwarten?
+    answer: >
+      Wir möchten weitere Cognitive Services als Containerangebote zur Verfügung stellen. Wenden Sie sich an Ihren örtlichen Microsoft Account Manager, um Updates zu neuen Containerversionen und andere Ankündigungen zu Cognitive Services zu erhalten.
+  - question: Wie sieht die Vereinbarung zum Servicelevel (SLA) für Cognitive Services-Container aus?
+    answer: >
+      Cognitive Services-Container besitzen keine Vereinbarung zum Servicelevel (SLA).
+
+
+      Cognitive Services-Containerkonfigurationen von Ressourcen werden von Kunden kontrolliert, sodass Microsoft keine SLAs für die allgemeine Verfügbarkeit (General Availability, GA) anbieten wird. Kunden können Container lokal bereitstellen und definieren somit die Hostumgebungen.
+
+
+      > [!IMPORTANT]
+
+      > Weitere Informationen zu Vereinbarungen zum Servicelevel (SLA) für Cognitive Services finden Sie auf unserer [Seite zur Vereinbarung zum Servicelevel](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/).
+  - question: Sind diese Container in Sovereign Clouds verfügbar?
+    answer: >
+      Nicht jeder ist mit dem Begriff „Sovereign Cloud“ vertraut, daher beginnen wir mit der Definition:
+
+
+      > Die „Sovereign Cloud“ besteht aus den Clouds [Azure Government](../../azure-government/documentation-government-welcome.md), [Azure Deutschland](../../germany/germany-welcome.md) und [Azure China 21Vianet](/azure/china/overview-operations).
+
+
+      Leider werden die Cognitive Services-Container *nicht* nativ in den Sovereign Clouds unterstützt. Die Container können in diesen Clouds ausgeführt werden, aber sie werden aus der Public Cloud abgerufen und müssen Nutzungsdaten an den öffentlichen Endpunkt senden.
+- name: Versionsverwaltung
+  questions:
+  - question: Wie werden Container auf die neueste Version aktualisiert?
+    answer: >
+      Kunden können wählen, wann sie die von ihnen bereitgestellten Container aktualisieren möchten. Container werden mit standardmäßigen [Docker-Tags](https://docs.docker.com/engine/reference/commandline/tag/) wie `latest` gekennzeichnet, um die neueste Version anzuzeigen. Wir empfehlen unseren Kunden, die neueste Version der Container zu installieren, sobald sie freigegeben werden. Weitere Informationen zur Benachrichtigung bei aktualisierten Images finden Sie unter [Azure Container Registry-Webhooks](../../container-registry/container-registry-webhook.md).
+  - question: Welche Versionen werden unterstützt?
+    answer: >
+      Die aktuelle und letzte Hauptversion des Containers wird unterstützt. Wir empfehlen unseren Kunden jedoch, auf dem Laufenden zu bleiben, um die neueste Technologie zu erhalten.
+  - question: Wie werden Updates versioniert?
+    answer: >
+      Änderungen an der Hauptversion deuten darauf hin, dass es ein Breaking Change an der API-Signatur gibt. Wir gehen davon aus, dass dies in der Regel mit wesentlichen Versionsänderungen des entsprechenden Cognitive Service-Cloudangebots einhergehen wird. Geringfügige Versionsänderungen deuten auf Fehlerbehebungen, Modellupdates oder neue Features hin, die kein Breaking Change für die API-Signatur bewirken.
+- name: Technische Fragen
+  questions:
+  - question: Wie kann ich die Cognitive Services-Container auf IoT-Geräten ausführen?
+    answer: >
+      Unabhängig davon, ob Sie keine zuverlässige Internetverbindung besitzen oder bei den Bandbreitenkosten sparen möchten. Oder wenn Sie Anforderungen mit niedriger Latenz haben oder es sich um vertrauliche Daten handelt, die lokal analysiert werden müssen, bietet Ihnen [Azure IoT Edge mit den Cognitive Services-Containern](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/) Konsistenz mit der Cloud.
+  - question: Sind diese Container mit OpenShift kompatibel?
+    answer: >
+      Wir testen keine Container mit OpenShift, aber im Allgemeinen sollten Cognitive Services-Container auf jeder Plattform ausgeführt werden können, die Docker-Images unterstützt. Wenn Sie OpenShift verwenden, empfehlen wir, die Container als `root-user` auszuführen.
+  - question: Wie stelle ich Produktfeedback und Featureempfehlungen bereit?
+    answer: >
+      Kunden werden aufgefordert, [ihre Bedenken öffentlich zu äußern](https://cognitive.uservoice.com/) und andere, die ebenso vorgegangen sind, an den Stellen, an denen sich potenzielle Probleme überschneiden, zu unterstützen. Das User Voice Tool kann sowohl für Produktfeedback als auch für Featureempfehlungen verwendet werden.
+  - question: Welche Statusmeldungen und Fehler werden von Cognitive Services-Containern zurückgegeben?
+    answer: >
+      In der folgenden Tabelle finden Sie eine Liste von Statusmeldungen und Fehlern.
+
+
+      |Status  | Beschreibung  |
+
+      |---------|---------|
+
+      | `Valid` | Ihr API-Schlüssel ist gültig, es ist keine Aktion erforderlich. |
+
+      | `Invalid` |   Ihr API-Schlüssel ist ungültig. Sie müssen einen gültigen API-Schlüssel angeben, um den Container auszuführen. Sie finden den API-Schlüssel und die Dienstregion im Azure-Portal im Abschnitt **Schlüssel und Endpunkt** Ihrer Azure Cognitive Services-Ressource. |
+
+      | `Mismatch` | Sie haben einen API-Schlüssel oder -Endpunkt für einen anderen Typ von Cognitive Services-Ressource angegeben. Sie finden den API-Schlüssel und die Dienstregion im Abschnitt **Schlüssel und Endpunkt** Ihrer Azure Cognitive Services-Ressource. |
+
+      | `CouldNotConnect` | Der Container konnte keine Verbindung mit dem Abrechnungsendpunkt herstellen. Überprüfen Sie den Wert von `Retry-After`, und warten Sie, bis dieser Zeitraum abgelaufen ist, bevor Sie zusätzliche Anforderungen übermitteln. |
+
+      | `OutOfQuota` | Der API-Schlüssel hat das Kontingent überschritten. Sie können entweder ein Upgrade Ihres Tarifs durchführen oder warten, bis zusätzliches Kontingent verfügbar gemacht wird. Sie finden Ihren Tarif im Azure-Portal im Abschnitt **Tarif** Ihrer Azure Cognitive Service-Ressource. |
+
+      | `BillingEndpointBusy` | Der Abrechnungsendpunkt ist zurzeit ausgelastet. Überprüfen Sie den Wert von `Retry-After`, und warten Sie, bis dieser Zeitraum abgelaufen ist, bevor Sie zusätzliche Anforderungen übermitteln. |
+
+      | `ContainerUseUnauthorized` | Der angegebene API-Schlüssel ist nicht für die Verwendung mit diesem Container autorisiert. Sie verwenden wahrscheinlich einen Container der eingeschränkten Vorschauversion. Stellen Sie daher sicher, dass Ihre Azure-Abonnement-ID genehmigt wurde, indem Sie eine [Onlineanforderung](https://aka.ms/csgate) übermitteln. |
+
+      | `Unknown` | Der Server kann derzeit keine Abrechnungsanforderungen verarbeiten. |
+  - question: An wen kann ich mich wenden, um Support zu erhalten?
+    answer: >
+      Die Kundensupportkanäle sind dieselben wie bei den cloudbasierten Cognitive Services-APIs. Alle Cognitive Services-Container enthalten Protokollierungsfeatures, die uns und den Kunden des Communitysupports helfen. Weitere Unterstützung finden Sie unter den folgenden Optionen.
+
+      * Kunden sollten sich auf ihren [Azure-Supportplan](https://azure.microsoft.com/support/plans/) beziehen, um zu prüfen, an wen sie sich hinsichtlich des Supports wenden können.
+
+      * Kunden können das [Azure Knowledge Center](https://azure.microsoft.com/resources/knowledge-center/) erkunden, um Fragen und Supportthemen zu beantworten.
+
+      * [Stack Overflow](https://en.wikipedia.org/wiki/Stack_Overflow) ist eine Frage- und Antwortseite für professionelle und begeisterte Programmierer.
+        * [Azure Cognitive Services](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
+        * [Microsoft Cognitive](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+  - question: Wie funktioniert die Abrechnung?
+    answer: >
+      Die Abrechnung erfolgt verbrauchsorientiert, ähnlich wie in der Cognitive Services-Cloud. Die Container müssen konfiguriert werden, um Messdaten an Azure zu senden, damit die Transaktionen entsprechend abgerechnet werden können. Die Ressourcen, die für die gehosteten und lokalen Dienste verwendet werden, werden zu einem einzelnen Kontingent mit gestaffelten Preisen hinzugefügt, wobei beide Verwendungen gegeneinander abgewogen werden. Weitere Informationen finden Sie auf der Seite mit der Preisübersicht des entsprechenden Angebots.
+
+
+      * [Anomalieerkennung](../anomaly-Detector/anomaly-detector-container-howto.md#billing)
+
+      * [Maschinelles Sehen](../computer-vision/computer-vision-how-to-install-containers.md#billing)
+
+      * [Gesichtserkennung](../face/face-how-to-install-containers.md#billing)
+
+      * [Formularerkennung](../form-recognizer/form-recognizer-container-howto.md#billing)
+
+      * [Language Understanding (LUIS)](../luis/luis-container-howto.md#billing)
+
+      * [Spracherkennungsdienst-API](../speech-service/speech-container-howto.md#billing)
+
+      * [Textanalyse](../text-analytics/how-tos/text-analytics-how-to-install-containers.md#billing)
+
+
+      > [!IMPORTANT]
+
+      > Für die Ausführung von Cognitive Services-Containern besteht keine Lizenz, wenn sie nicht zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit Abrechnungsinformationen an den Messungsdienst übermitteln können. Cognitive Services-Container senden keine Kundendaten an Microsoft.
+  - question: Wie lautet die aktuelle Supportgarantie für Container?
+    answer: >
+      Es gibt keine Garantie für Vorschauversionen. Die Standardgarantie von Microsoft für Unternehmenssoftware gilt, wenn Container offiziell als allgemeine Verfügbarkeit (GA) angekündigt werden.
+  - question: Was geschieht mit Cognitive Services-Containern, wenn die Internetverbindung unterbrochen wird?
+    answer: >
+      Für die Ausführung von Cognitive Services-Containern besteht *keine Lizenz*, wenn sie nicht zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit mit dem Messungsdienst kommunizieren können.
+  - question: Wie lange kann der Container ohne Verbindung mit Azure betrieben werden?
+    answer: >
+      Für die Ausführung von Cognitive Services-Containern besteht *keine Lizenz*, wenn sie nicht zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit mit dem Messungsdienst kommunizieren können.
+  - question: Welche Hardware wird für den Betrieb dieser Container benötigt?
+    answer: >
+      Cognitive Services-Container sind x64-basierte Container, die alle kompatiblen Linux-Knoten, VMs und Edge-Geräte ausführen können, die x64-Linux-Docker-Container unterstützen. Sie alle erfordern CPU-Prozessoren. Die minimalen und empfohlenen Konfigurationen für die einzelnen Containerangebote sind unten aufgeführt:
+
+
+      * [Anomalieerkennung](../anomaly-Detector/anomaly-detector-container-howto.md#container-requirements-and-recommendations)
+
+      * [Maschinelles Sehen](../computer-vision/computer-vision-how-to-install-containers.md#container-requirements-and-recommendations)
+
+      * [Gesichtserkennung](../face/face-how-to-install-containers.md#container-requirements-and-recommendations)
+
+      * [Formularerkennung](../form-recognizer/form-recognizer-container-howto.md#container-requirements-and-recommendations)
+
+      * [Language Understanding (LUIS)](../luis/luis-container-howto.md#container-requirements-and-recommendations)
+
+      * [Spracherkennungsdienst-API](../speech-service/speech-container-howto.md#container-requirements-and-recommendations)
+
+      * [Textanalyse](../text-analytics/how-tos/text-analytics-how-to-install-containers.md#container-requirements-and-recommendations)
+  - question: Werden diese Container derzeit unter Windows unterstützt?
+    answer: >
+      Die Cognitive Services-Container sind Linux-Container, es gibt jedoch eine gewisse Unterstützung für Linux-Container unter Windows. Weitere Informationen zu Linux-Containern unter Windows finden Sie in der [Docker-Dokumentation](https://blog.docker.com/2017/09/preview-linux-containers-on-windows/).
+  - question: Wie schneiden Cognitive -Container im Vergleich zu AWS- und Google-Angeboten ab?
+    answer: >
+      Microsoft ist der erste Cloudanbieter, der seine vorab trainierten KI-Modelle in Container mit einfacher Abrechnung pro Transaktion verschiebt, als ob Kunden einen Clouddienst nutzen würden. Microsoft ist überzeugt, dass eine Hybrid Cloud den Kunden mehr Auswahl bietet.
+  - question: Welche Compliancezertifizierungen gibt es für Container?
+    answer: >
+      Cognitive Services-Container verfügen über keine Compliancezertifizierungen.
+  - question: In welchen Regionen sind Cognitive Services-Container verfügbar?
+    answer: >
+      Container können in jeder Region betrieben werden, benötigen aber einen Schlüssel und müssen zur Messung auf Azure zurückgreifen. Alle unterstützten Regionen für den Clouddienst werden für den Messaufruf des Containers unterstützt.
+additionalContent: '[!INCLUDE [Containers next steps](includes/containers-next-steps.md)]'

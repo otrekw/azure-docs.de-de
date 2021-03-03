@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 3fc880e238c1c9f45c663975470a6ab57267a648
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a46ddeddfcefcd4d6e7f87747fe36cfc6ec82e35
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879543"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737561"
 ---
 # <a name="monitoring-time-series-insights"></a>Überwachung mithilfe von Time Series Insights
 
@@ -29,7 +29,7 @@ Die Seite **Übersicht** im Azure-Portal für jede Time Series Insights-Umgebung
 
 Time Series Insights erstellt Überwachungsdaten mithilfe von [Azure Monitor](../azure-monitor/overview.md), einem Dienst zur Überwachung des gesamten Azure-Stapels, der eine vollständige Palette von Features zum Überwachen Ihrer Azure-Ressourcen sowie von Ressourcen in anderen Clouds und lokalen Umgebungen bietet.
 
-Beginnen Sie mit dem Artikel [Überwachen von Azure-Ressourcen mit Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md), in dem die folgenden Konzepte beschrieben werden:
+Beginnen Sie mit dem Artikel [Überwachen von Azure-Ressourcen mit Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md), in dem die folgenden Konzepte beschrieben werden:
 
 - Was ist Azure Monitor?
 - Kosten für die Überwachung
@@ -40,11 +40,11 @@ Beginnen Sie mit dem Artikel [Überwachen von Azure-Ressourcen mit Azure Monitor
 Die folgenden Abschnitte bauen dahingehend auf diesem Artikel auf, dass die für Azure Time Series Insights spezifischen Daten beschrieben werden. In diesen Abschnitten finden Sie außerdem Beispiele für die Konfiguration der Datensammlung und die Analyse der Daten mit Azure-Tools.
 
 > [!TIP]
-> Informationen zu den mit Azure Monitor verbundenen Kosten finden Sie unter [Überwachen der Nutzung und geschätzten Kosten in Azure Monitor](../azure-monitor/platform/usage-estimated-costs.md). Informationen hinsichtlich der Zeit, die benötigt wird, bis Ihre Daten in Azure Monitor angezeigt werden, finden Sie unter [Protokolldatenerfassungszeit in Azure Monitor](../azure-monitor/platform/data-ingestion-time.md).
+> Informationen zu den mit Azure Monitor verbundenen Kosten finden Sie unter [Überwachen der Nutzung und geschätzten Kosten in Azure Monitor](../azure-monitor//usage-estimated-costs.md). Informationen hinsichtlich der Zeit, die benötigt wird, bis Ihre Daten in Azure Monitor angezeigt werden, finden Sie unter [Protokolldatenerfassungszeit in Azure Monitor](../azure-monitor/logs/data-ingestion-time.md).
 
 ## <a name="monitoring-data-from-azure-time-series-insights"></a>Überwachen von aus Azure Time Series Insights stammenden Daten
 
-Azure Time Series Insights sammelt dieselben Arten von Überwachungsdaten wie andere Azure-Ressourcen, die in [Überwachungsdaten von Azure-Ressourcen](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data) beschrieben werden. 
+Azure Time Series Insights sammelt dieselben Arten von Überwachungsdaten wie andere Azure-Ressourcen, die in [Überwachungsdaten von Azure-Ressourcen](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data) beschrieben werden. 
 
 Eine ausführliche Referenz zu den Protokollen und Metriken finden Sie unter [Referenz zu Time Series Insights-Überwachungsdaten](how-to-monitor-tsi-reference.md).
 
@@ -53,7 +53,7 @@ Eine ausführliche Referenz zu den Protokollen und Metriken finden Sie unter [Re
 Plattformmetriken werden automatisch gesammelt und gespeichert, können aber mithilfe einer Diagnoseeinstellung an andere Speicherorte umgeleitet werden.
 
 Ressourcenprotokolle werden erst erfasst und gespeichert, sobald Sie eine Diagnoseeinstellung erstellt und an einen oder mehrere Standorte weitergeleitet haben.
-Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung über das Azure-Portal, die Befehlszeilenschnittstelle oder PowerShell finden Sie unter [Erstellen einer Diagnoseeinstellung zum Sammeln von Plattformprotokollen und Metriken in Azure](../azure-monitor/platform/diagnostic-settings.md). Wenn Sie eine Diagnoseeinstellung erstellen, legen Sie fest, welche Kategorien von Protokollen gesammelt werden sollen.
+Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung über das Azure-Portal, die Befehlszeilenschnittstelle oder PowerShell finden Sie unter [Erstellen einer Diagnoseeinstellung zum Sammeln von Plattformprotokollen und Metriken in Azure](../azure-monitor/essentials/diagnostic-settings.md). Wenn Sie eine Diagnoseeinstellung erstellen, legen Sie fest, welche Kategorien von Protokollen gesammelt werden sollen.
 
 Sie können für Azure Time Series Insights Protokolle der folgenden Kategorien erfassen:
 
@@ -63,7 +63,7 @@ Sie können für Azure Time Series Insights Protokolle der folgenden Kategorien 
 
 ## <a name="analyzing-metrics"></a>Analysieren von Metriken
 
-Sie können Metriken für Azure Time Series Insights zusammen mit Metriken anderer Azure-Dienste analysieren, indem Sie im Menü „Azure Monitor“ die Option „Metriken“ öffnen. Ausführliche Informationen zur Verwendung dieses Tools finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md).
+Sie können Metriken für Azure Time Series Insights zusammen mit Metriken anderer Azure-Dienste analysieren, indem Sie im Menü „Azure Monitor“ die Option „Metriken“ öffnen. Ausführliche Informationen zur Verwendung dieses Tools finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../azure-monitor/essentials/metrics-getting-started.md).
 
 Eine Liste der erfassten Plattformmetriken finden Sie in der [Referenz zur Überwachung von Azure Time Series Insights-Daten](how-to-monitor-tsi-reference.md#metrics).
 
@@ -80,7 +80,7 @@ Sie können auf Ressourcenprotokolle entweder als Blob in einem Speicherkonto, a
 
 Daten in Azure Monitor-Protokollen werden in Tabellen gespeichert, wobei jede Tabelle ihren eigenen Satz eindeutiger Eigenschaften hat.
 
-Alle Ressourcenprotokolle in Azure Monitor enthalten dieselben Felder, gefolgt von dienstspezifischen Feldern. Das allgemeine Schema wird in [Azure Monitor-Ressourcenprotokollschema](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema) beschrieben. Eine Liste der Arten von Ressourcenprotokollen, die für Azure Time Series Insights gesammelt werden, finden Sie in der [Referenz zur Überwachung von Azure Time Series Insights-Daten](how-to-monitor-tsi-reference.md#resource-logs).
+Alle Ressourcenprotokolle in Azure Monitor enthalten dieselben Felder, gefolgt von dienstspezifischen Feldern. Das allgemeine Schema wird in [Azure Monitor-Ressourcenprotokollschema](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema) beschrieben. Eine Liste der Arten von Ressourcenprotokollen, die für Azure Time Series Insights gesammelt werden, finden Sie in der [Referenz zur Überwachung von Azure Time Series Insights-Daten](how-to-monitor-tsi-reference.md#resource-logs).
 
 Azure Time Series Insights speichert Daten in den folgenden Tabellen.
 
@@ -115,11 +115,11 @@ Es folgen Abfragen zur Überwachung Ihrer Azure Time Series Insights-Umgebung:
 
 ## <a name="alerts"></a>Alerts
 
-Azure Monitor-Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen Ihnen, Probleme in Ihrem System zu identifizieren und zu beheben, bevor Ihre Kunden sie bemerken. Sie können Warnungen für [Metriken](../azure-monitor/platform/alerts-metric-overview.md), [Protokolle](../azure-monitor/platform/alerts-unified-log.md) und das [Aktivitätsprotokoll](../azure-monitor/platform/activity-log-alerts.md) festlegen. Verschiedene Arten von Warnungen haben Vor- und Nachteile.
+Azure Monitor-Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen Ihnen, Probleme in Ihrem System zu identifizieren und zu beheben, bevor Ihre Kunden sie bemerken. Sie können Warnungen für [Metriken](../azure-monitor/alerts/alerts-metric-overview.md), [Protokolle](../azure-monitor/alerts/alerts-unified-log.md) und das [Aktivitätsprotokoll](../azure-monitor/alerts/activity-log-alerts.md) festlegen. Verschiedene Arten von Warnungen haben Vor- und Nachteile.
 
 Beachten Sie Folgendes beim Erstellen einer Warnungsregel, die auf Plattformmetriken basiert: Bei Time Series Insights-Plattformmetriken, die als Anzahl von Einheiten gesammelt werden, sind einige Aggregationen möglicherweise nicht verfügbar oder nutzbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Eine Referenz zu den von Azure Time Series Insights erstellten Protokollen und Metriken finden Sie in der [Referenz zur Überwachung von Azure Time Series Insights-Daten](how-to-monitor-tsi-reference.md).
-* Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md).
+* Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md).

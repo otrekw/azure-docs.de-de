@@ -3,18 +3,18 @@ title: Überwachen von Delegierungsänderungen in Ihrem Verwaltungsmandanten
 description: Erfahren Sie, wie Sie Delegierungsaktivitäten von Kundenmandanten für Ihren Verwaltungsmandanten überwachen.
 ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 9fdf47df4ac37fec44cf53b565b7fe1411540793
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 3bf6cc044d807d0c830b15c6d9c9a6d507f1a54f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089415"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593138"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Überwachen von Delegierungsänderungen in Ihrem Verwaltungsmandanten
 
 Als Dienstanbieter möchten Sie möglicherweise wissen, wenn Kundenabonnements oder Ressourcengruppen über [Azure Lighthouse](../overview.md) an Ihren Mandanten delegiert oder zuvor delegierte Ressourcen entfernt werden.
 
-Im Verwaltungsmandanten werden Delegierungsaktivitäten auf Mandantenebene im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/platform-logs-overview.md) erfasst. Diese protokollierten Aktivitäten umfassen alle hinzugefügten oder entfernten Delegierungen von allen Kundenmandanten.
+Im Verwaltungsmandanten werden Delegierungsaktivitäten auf Mandantenebene im [Azure-Aktivitätsprotokoll](../../azure-monitor/essentials/platform-logs-overview.md) erfasst. Diese protokollierten Aktivitäten umfassen alle hinzugefügten oder entfernten Delegierungen von allen Kundenmandanten.
 
 In diesem Thema werden die erforderlichen Berechtigungen zum Überwachen von Delegierungsaktivitäten für Ihren Mandanten (übergreifend für alle Ihre Kunden) erläutert. Es enthält auch ein Beispielskript, das eine Methode zum Abfragen und zur Berichterstellung für diese Daten zeigt.
 
@@ -104,7 +104,7 @@ Beim Abfragen dieser Daten ist Folgendes zu beachten:
 - Wenn mehrere Ressourcengruppen in einer einzelnen Bereitstellung delegiert werden, werden für jede Ressourcengruppe separate Einträge zurückgegeben.
 - An einer vorherigen Delegierung vorgenommene Änderungen (z. B. Aktualisierung der Berechtigungsstruktur) werden als hinzugefügte Delegierung protokolliert.
 - Wie bereits erwähnt, muss ein Konto über die integrierte Azure-Rolle „Überwachungsleser“ im Stammbereich (/) verfügen, um auf diese Daten auf Mandantenebene zuzugreifen.
-- Sie können diese Daten in Ihren eigenen Workflows und der eigenen Berichterstellung verwenden. Beispielsweise können Sie mit der [HTTP-Datensammler-API (Public Preview)](../../azure-monitor/platform/data-collector-api.md) Daten von einem REST-API-Client in Azure Monitor protokollieren und anschließend [Aktionsgruppen](../../azure-monitor/platform/action-groups.md) verwenden, um Benachrichtigungen oder Warnungen zu erstellen.
+- Sie können diese Daten in Ihren eigenen Workflows und der eigenen Berichterstellung verwenden. Beispielsweise können Sie mit der [HTTP-Datensammler-API (Public Preview)](../../azure-monitor/logs/data-collector-api.md) Daten von einem REST-API-Client in Azure Monitor protokollieren und anschließend [Aktionsgruppen](../../azure-monitor/alerts/action-groups.md) verwenden, um Benachrichtigungen oder Warnungen zu erstellen.
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -181,5 +181,5 @@ else {
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über das Onboarding von Kunden in [Azure Lighthouse](../concepts/azure-delegated-resource-management.md).
-- Erfahren Sie mehr über [Azure Monitor](../../azure-monitor/index.yml) und das [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/platform-logs-overview.md).
+- Erfahren Sie mehr über [Azure Monitor](../../azure-monitor/index.yml) und das [Azure-Aktivitätsprotokoll](../../azure-monitor/essentials/platform-logs-overview.md).
 - Mithilfe der Beispielarbeitsmappe [Aktivitätsprotokolle nach Domäne](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) können Sie lernen, wie Sie Azure-Aktivitätsprotokolle über mehrere Abonnements hinweg anzeigen und nach Domänenname filtern können.

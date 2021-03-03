@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 0f76d2079b7ed5aacbf835540ea92febd034e2d0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6cdd3137798e221974dadda78dd55b6ae944bc78
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782449"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589347"
 ---
 # <a name="monitoring-azure-sql-managed-instance-management-operations"></a>Überwachen der Verwaltungsvorgänge für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -37,7 +37,7 @@ Die meisten Verwaltungsvorgänge sind [zeitintensive Vorgänge](management-opera
 Es gibt mehrere Möglichkeiten, Verwaltungsvorgänge für verwaltete Instanzen zu überwachen:
 
 - [Bereitstellungen von Ressourcengruppen](../../azure-resource-manager/templates/deployment-history.md)
-- [Aktivitätsprotokoll](../../azure-monitor/platform/activity-log.md)
+- [Aktivitätsprotokoll](../../azure-monitor/essentials/activity-log.md)
 - [API für Vorgänge verwalteter Instanzen](#managed-instance-operations-api)
 
 
@@ -73,7 +73,7 @@ Die APIs lauten wie folgt:
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Verwenden Sie im Azure-Portal die Managed Instance-Seite **Übersicht** , um Vorgänge für verwaltete Instanzen zu überwachen. 
+Verwenden Sie im Azure-Portal die Managed Instance-Seite **Übersicht**, um Vorgänge für verwaltete Instanzen zu überwachen. 
 
 Beispielsweise wird auf der Seite **Übersicht** zu Beginn des Erstellungsprozesses der **Erstellungsvorgang** angezeigt: 
 

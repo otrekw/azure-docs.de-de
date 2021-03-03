@@ -4,12 +4,12 @@ description: Erfahren Sie mehr zum Verwalten von Zertifikaten in einem Service F
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: 722c84c25cb5188e45dd96363bab9af6ff93f6dc
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: a8a7e8954f3c9d5b54c2e1ed9caa330ef92d4512
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901265"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099505"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Zertifikatverwaltung in Service Fabric-Clustern
 
@@ -427,6 +427,7 @@ Die Key Vault-VM-Erweiterung wird als Bereitstellungs-Agent mit einer vorgegeben
 Möglicherweise ist Ihnen das Flag linkOnRenewal der Key Vault-VM-Erweiterung und die Tatsache aufgefallen, dass es auf FALSE festgelegt ist. Wir befassen uns hier eingehend mit dem von diesem Flag gesteuerten Verhalten und seinen Auswirkungen auf den Betrieb eines Clusters. Beachten Sie, dass dieses Verhalten für Windows spezifisch ist.
 
 Laut zugehöriger [Definition](../virtual-machines/extensions/key-vault-windows.md#extension-schema) gilt Folgendes:
+
 ```json
 "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
 ```

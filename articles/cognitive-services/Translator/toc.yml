@@ -101,7 +101,7 @@
     - name: Verweis
       items:
         - name: Referenz zur Dokumentübersetzungs-API
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/translator/translation'
+          href: /rest/api/cognitiveservices/translator/documenttranslation
 - name: Benutzerdefinierter Translator
   items:
     - name: Übersicht

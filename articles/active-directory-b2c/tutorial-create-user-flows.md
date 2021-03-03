@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ca023af0666899ae94d5bf82fc6f0736d5a8efa5
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 6b0bdc5a5b58c205d888c8892a4333225a9b316f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614267"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557144"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Tutorial: Erstellen von Benutzerflows in Azure Active Directory B2C
 
@@ -133,7 +133,7 @@ In diesem Artikel haben Sie Folgendes gelernt:
 > * Erstellen eines Benutzerflows für die Profilbearbeitung
 > * Erstellen eines Benutzerflows zur Kennwortrücksetzung
 
-Als Nächstes lernen Sie, wie Sie Ihren Anwendungen Identitätsanbieter hinzufügen, damit sich Benutzer bei Anbietern wie Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft oder Twitter anmelden können.
+Erfahren Sie im Anschluss, wie Sie Azure AD B2C für die Anmeldung und Registrierung von Benutzern in einer Anwendung verwenden. Orientieren Sie sich an der ASP.NET-Webanwendung unter dem folgenden Link, oder navigieren Sie im Inhaltsverzeichnis unter **Authentifizieren von Benutzern** zu einer anderen Anwendung.
 
 > [!div class="nextstepaction"]
-> [Hinzufügen von Identitätsanbietern zu Ihren Anwendungen >](tutorial-add-identity-providers.md)
+> [Tutorial: Aktivieren der Authentifizierung in einer Webanwendung mithilfe von Azure AD B2C >](tutorial-web-app-dotnet.md)

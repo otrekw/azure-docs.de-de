@@ -1,5 +1,5 @@
 ---
-title: Schritte zum Hinzufügen einer Rollenzuweisung – Azure RBAC
+title: Schritte zum Zuweisen einer Azure-Rolle – Azure RBAC
 description: Erfahren Sie, mit welchen Schritten Sie Benutzern, Gruppen, Dienstprinzipalen oder verwalteten Identitäten mit der rollenbasierten Zugriffssteuerung in Azure (Azure RBAC) Azure-Rollen zuweisen.
 services: active-directory
 author: rolyon
@@ -7,18 +7,18 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: e746c7d09bb568d457ab1037b56c7c2973b29ad7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 081335779ffc4b3a6ddf09e56b773c6d34b210be
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117247"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556030"
 ---
-# <a name="steps-to-add-a-role-assignment"></a>Schritte zum Hinzufügen einer Rollenzuweisung
+# <a name="steps-to-assign-an-azure-role"></a>Schritte zum Zuweisen einer Azure-Rolle
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] In diesem Artikel werden die allgemeinen Schritte zum Hinzufügen einer Rollenzuweisung mit [Azure-Portal](role-assignments-portal.md), [Azure PowerShell](role-assignments-powershell.md), [Azure CLI](role-assignments-cli.md) oder [REST-API](role-assignments-rest.md) beschrieben.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] In diesem Artikel werden die allgemeinen Schritte zum Zuweisen von Azure-Rollen über das [Azure-Portal](role-assignments-portal.md), mit [Azure PowerShell](role-assignments-powershell.md), der [Azure-Befehlszeilenschnittstelle](role-assignments-cli.md) oder der [REST-API](role-assignments-rest.md) beschrieben.
 
 ## <a name="step-1-determine-who-needs-access"></a>Schritt 1: Ermitteln, wer Zugriff benötigt
 
@@ -79,16 +79,16 @@ Zum Zuweisen von Rollen müssen Sie als Benutzer angemeldet sein, dem eine Rolle
 
 Wenn Ihr Benutzerkonto nicht über Berechtigungen zum Zuweisen einer Rolle in Ihrem Abonnement verfügt, wird eine Fehlermeldung mit dem Hinweis angezeigt, dass Ihr Konto keine Berechtigung zum Ausführen der Aktion „Microsoft.Authorization/roleAssignments/write“ besitzt. Wenden Sie sich in diesem Fall an die Administratoren Ihres Abonnements, da sie die Berechtigungen in Ihrem Namen zuweisen können.
 
-## <a name="step-5-add-role-assignment"></a>Schritt 5: Rollenzuweisung hinzufügen
+## <a name="step-5-assign-role"></a>Schritt 5: Zuweisen einer Rolle
 
-Sobald Sie den Sicherheitsprinzipal, die Rolle und den Bereich kennen, können Sie die Rolle zuweisen. Sie können über das Azure-Portal, Azure PowerShell, die Azure-Befehlszeilenschnittstelle, Azure SDKs oder REST-APIs Rollenzuweisungen erstellen. Sie können in jedem Abonnement bis zu **2000** Rollenzuweisungen haben. Dieser Grenzwert schließt Rollenzuweisungen im Abonnement, in der Ressourcengruppe und im Ressourcenbereich ein. Jede Verwaltungsgruppe kann bis zu **500** Rollenzuweisungen enthalten.
+Sobald Sie den Sicherheitsprinzipal, die Rolle und den Bereich kennen, können Sie die Rolle zuweisen. Sie können über das Azure-Portal, Azure PowerShell, die Azure-Befehlszeilenschnittstelle, Azure SDKs oder REST-APIs Rollen zuweisen. Sie können in jedem Abonnement bis zu **2000** Rollenzuweisungen haben. Dieser Grenzwert schließt Rollenzuweisungen im Abonnement, in der Ressourcengruppe und im Ressourcenbereich ein. Jede Verwaltungsgruppe kann bis zu **500** Rollenzuweisungen enthalten.
 
-In den folgenden Artikeln finden Sie ausführliche Schritte zum Hinzufügen von Rollenzuweisungen.
+In den folgenden Artikeln finden Sie ausführliche Anleitungen zum Zuweisen von Rollen.
 
-- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](role-assignments-portal.md)
-- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe von Azure PowerShell](role-assignments-powershell.md)
-- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle](role-assignments-cli.md)
-- [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und der REST-API](role-assignments-rest.md)
+- [Zuweisen von Azure-Rollen über das Azure-Portal](role-assignments-portal.md)
+- [Zuweisen von Azure-Rollen mithilfe von Azure PowerShell](role-assignments-powershell.md)
+- [Zuweisen von Azure-Rollen mithilfe der Azure-Befehlszeilenschnittstelle](role-assignments-cli.md)
+- [Zuweisen von Azure-Rollen mithilfe der REST-API](role-assignments-rest.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

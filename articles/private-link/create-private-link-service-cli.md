@@ -4,15 +4,15 @@ description: Informationen zum Erstellen eines Azure Private Link-Diensts mithil
 services: private-link
 author: asudbring
 ms.service: private-link
-ms.topic: how-to
+ms.topic: quickstart
 ms.date: 01/22/2021
 ms.author: allensu
-ms.openlocfilehash: 567ed736c52e8b3cbb03edeb19b3c0e2364e4112
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 27ce0b2646b6c380e86b377d3dba287f7791794e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757338"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653685"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Erstellen eines Private Link-Diensts mithilfe der Azure CLI
 
@@ -186,12 +186,12 @@ az network private-link-service create \
     --location eastus2
 ```
 
-Ihr Private Link-Dienst wird erstellt und kann Datenverkehr empfangen. Konfigurieren Sie Ihre Anwendung hinter Ihrem Load Balancer Standard, falls Sie den Datenverkehrsfluss anzeigen möchten.
+Ihr Private Link-Dienst wird erstellt und kann Datenverkehr empfangen. Konfigurieren Sie Ihre Anwendung hinter Ihrer Instanz von Load Balancer Standard, falls Sie den Datenverkehrsfluss anzeigen möchten.
 
 
 ## <a name="create-private-endpoint"></a>Erstellen eines privaten Endpunkts
 
-In diesem Abschnitt ordnen Sie den Private Link-Dienst einem privaten Endpunkt zu. Ein virtuelles Netzwerk enthält den privaten Endpunkt für den Private Link-Dienst. In diesem virtuellen Netzwerk sind die Ressourcen enthalten, die auf Ihren Private Link-Dienst zugreifen.
+In diesem Abschnitt ordnen Sie den Private Link-Dienst einem privaten Endpunkt zu. Ein virtuelles Netzwerk enthält den privaten Endpunkt für den Private Link-Dienst. In diesem virtuellen Netzwerk sind die Ressourcen enthalten, die auf Ihren Private Link-Dienst zugreifen.
 
 ### <a name="create-private-endpoint-virtual-network"></a>Erstellen eines virtuellen Netzwerks des privaten Endpunkts
 

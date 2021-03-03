@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2d83b114487f882b7ee38d3d71c84b6abec04a2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96f0c4d4ea7c32e2b58807204ef45b75feae7132
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266917"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727327"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filter und dynamische Manifeste
 
@@ -88,11 +88,11 @@ Um diese Flexibilität zu erreichen, umfasst Media Services **dynamische Manifes
 
 MPEG-DASH-URL mit Filter
 
-`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=MyLocalFilter)`
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=MyLocalFilter)`
 
 Smooth Streaming-URL mit Filter
 
-`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)`
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)`
 
 
 Weitere Informationen zum Übermitteln Ihrer Inhalte und zum Erstellen von Streaming-URLs finden Sie unter [Übersicht zum Übermitteln von Inhalten](media-services-deliver-content-overview.md).

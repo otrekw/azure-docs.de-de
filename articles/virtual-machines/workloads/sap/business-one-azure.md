@@ -2,18 +2,16 @@
 title: SAP Business One in Azure Virtual Machines | Microsoft-Dokumentation
 description: SAP Business One in Azure.
 author: msjuergent
-ms.service: virtual-machines
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: juergent
-ms.reviewer: cynthn
-ms.openlocfilehash: 1201ff91634a1f63c8fe0e545ca6d6dee33abe35
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c9c2b0c3f55cf5fb6dfd32774baac2a49ec3609f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957383"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677157"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One in Azure Virtual Machines
 Dieses Dokument enthält Anleitungen zum Bereitstellen von SAP Business One in Azure Virtual Machines. Diese Dokumentation ist kein Ersatz für die Installationsdokumentation für Business One für SAP. Die Dokumentation enthält grundlegende Planungs- und Bereitstellungsrichtlinien für die Azure-Infrastruktur zur Ausführung von Business One-Anwendungen.

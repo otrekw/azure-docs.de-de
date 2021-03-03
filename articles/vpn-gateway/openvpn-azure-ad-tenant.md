@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3055c9dd1294af81c6c52603dd60bb5aa6075abd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: bff1eec0152ab0f57edd212adf6b14f7b588fb51
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92777854"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390163"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Erstellen eines Azure Active Directory-Mandanten für Verbindungen mit dem P2S OpenVPN-Protokoll
 
@@ -117,4 +117,4 @@ Führen Sie die Schritte unter [Hinzufügen oder Löschen von Benutzern: Azure A
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Um eine Verbindung mit Ihrem virtuellen Netzwerk herzustellen, müssen Sie ein VPN-Clientprofil erstellen und konfigurieren. Entsprechende Informationen finden Sie unter [Konfigurieren eines VPN-Clients für P2S-VPN-Verbindungen](openvpn-azure-ad-client.md).
+Erstellen und konfigurieren Sie ein VPN-Clientprofil. Entsprechende Informationen finden Sie unter [Konfigurieren eines VPN-Clients für P2S-VPN-Verbindungen](openvpn-azure-ad-client.md).

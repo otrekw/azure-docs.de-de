@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie ein Azure Batch-Konto im Azure-Portal erstell
 ms.topic: how-to
 ms.date: 01/26/2021
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 943fd145dbd4964e0d43d91f726ea5a79fda59de
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: bd9dd9b6d6d3a8d6938427b83528746ae5d09318
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895997"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368505"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Erstellen eines Batch-Kontos mit dem Azure-Portal
 
@@ -67,6 +67,9 @@ Um die [Ressourcenkontingente](batch-quota-limit.md) anzuzeigen, die für das Az
 ## <a name="additional-configuration-for-user-subscription-mode"></a>Zusätzliche Konfiguration für den Benutzerabonnementmodus
 
 Wenn Sie ein Batch-Konto im Benutzerabonnementmodus erstellen möchten, führen Sie vor der Erstellung des Kontos die folgenden zusätzlichen Schritte aus.
+
+> [!IMPORTANT]
+> Der Benutzer, der das Batch-Konto im Benutzerabonnementmodus erstellt, muss über die Rollenzuweisung „Mitwirkender“ oder „Besitzer“ für das Abonnement verfügen, in dem das Batch-Konto erstellt wird.
 
 ### <a name="allow-azure-batch-to-access-the-subscription-one-time-operation"></a>Gewähren des Zugriffs auf Ihr Abonnement für Azure Batch (einmaliger Vorgang)
 

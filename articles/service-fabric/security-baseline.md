@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 175c00440fe9723bbd389db39616f525c2b7f436
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b2d86083077b95312415099f64a13509ed60091b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805477"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582632"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Azure-Sicherheitsbaseline für Service Fabric
 
@@ -178,9 +178,9 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle (CLI) ver
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen der Konfigurationen von Netzwerkressourcen und zum Erkennen von Änderungen bei Netzwerkressourcen, die sich auf Ihre Azure Service Fabric-Bereitstellungen beziehen. Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzwerkressourcen ausgelöst werden.
 
-* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -224,7 +224,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle (CLI) ver
 
 * [Leistungsüberwachung mit Azure Monitor-Protokollen](./service-fabric-diagnostics-oms-agent.md)
 
-* [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
+* [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/logs/log-query-overview.md)
 
 **Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
@@ -240,7 +240,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle (CLI) ver
 
 * [Leistungsüberwachung mit Azure Monitor-Protokollen](./service-fabric-diagnostics-oms-agent.md)
 
-* [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../azure-monitor/platform/manage-cost-storage.md)
+* [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -256,7 +256,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle (CLI) ver
 
 * [Leistungsüberwachung mit Azure Monitor-Protokollen](./service-fabric-diagnostics-oms-agent.md)
 
-* [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../azure-monitor/platform/manage-cost-storage.md)
+* [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -266,7 +266,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle (CLI) ver
 
 **Leitfaden**: Verwenden Sie Abfragen für den Azure Log Analytics-Arbeitsbereich, um Azure Service Fabric-Protokolle abzufragen.
 
-* [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
+* [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/logs/log-query-overview.md)
 
 **Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
@@ -278,7 +278,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle (CLI) ver
 
 * [Verwalten von Warnungen in Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/learn/tutorial-response.md)
+* [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -586,7 +586,7 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen zu erstellen, die bei Änderungen an wichtigen Azure-Ressourcen ausgegeben werden.
 
-* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 

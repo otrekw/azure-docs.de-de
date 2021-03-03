@@ -9,14 +9,14 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f7a0190d664e3330d2a6205014c00c61c1183dd3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 886b87adeabdc0aadde04c189b78739435aabede
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936242"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100527022"
 ---
-# <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure (Vorschauversion)
+# <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure
 
 > [!NOTE]
 > Der Key Vault-Ressourcenanbieter unterstützt zwei Ressourcentypen: **Tresore** und **verwaltete HSMs**. Die in diesem Artikel beschriebene Zugriffssteuerung gilt nur für **Tresore**. Weitere Informationen zur Zugriffssteuerung für verwaltetes HSM finden Sie unter [Zugriffssteuerung für verwaltetes HSM](../managed-hsm/access-control.md).
@@ -44,20 +44,20 @@ Weitere Informationen zu Azure Key Vault-Verwaltungsrichtlinien finden Sie unter
 - [Azure Key Vault-Sicherheitsübersicht](security-overview.md)
 - [Grenzwerte des Azure Key Vault-Diensts](service-limits.md)
 
-## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>In Azure integrierte Rollen für Key Vault-Vorgänge auf Datenebene (Vorschau)
+## <a name="azure-built-in-roles-for-key-vault-data-plane-operations"></a>In Azure integrierte Rollen für Key Vault-Vorgänge auf Datenebene
 > [!NOTE]
 > Die Rolle `Key Vault Contributor` ist für Vorgänge auf Verwaltungsebene zur Verwaltung von Schlüsseltresoren gedacht. Sie lässt nicht den Zugriff auf Schlüssel, Geheimnisse und Zertifikate zu.
 
 | Integrierte Rolle | BESCHREIBUNG | id |
 | --- | --- | --- |
-| Key Vault-Administrator (Vorschau) | Ausführen beliebiger Vorgänge auf Datenebene für einen Schlüsseltresor und alle darin enthaltenen Objekte aus (einschließlich Zertifikate, Schlüssel und Geheimnisse). Kann keine Key Vault-Ressourcen oder Rollenzuweisungen verwalten. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
-| Key Vault Certificates Officer (Vorschau) | Ausführen beliebiger Aktionen für die Zertifikate eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | a4417e6f-fecd-4de8-b567-7b0420556985 |
-| Key Vault Crypto Officer (Vorschau)| Ausführen beliebiger Aktionen für die Schlüssel eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
-| Key Vault Crypto Service Encryption (Vorschau) | Lesen von Metadaten von Schlüsseln und Ausführen von Vorgängen zum Packen/Entpacken. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
-| Key Vault Crypto-Benutzer (Vorschau) | Ausführen kryptografischer Vorgänge mithilfe von Schlüsseln. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 12338af0-0e69-4776-bea7-57ae8d297424 |
-| Key Vault Reader (Vorschau)| Lesen von Metadaten von Schlüsseltresoren und deren Zertifikaten, Schlüsseln und Geheimnissen. Sensible Werte, z. B. der Inhalt von Geheimnissen oder Schlüsselmaterial, können nicht gelesen werden. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 21090545-7ca7-4776-b22c-e363652d74d2 |
-| Key Vault Secrets Officer (Vorschau)| Ausführen beliebiger Aktionen für die Geheimnisse eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
-| Key Vault Secrets-Benutzer (Vorschau)| Lesen der Inhalte von Geheimnissen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 4633458b-17de-408a-b874-0445c86b69e6 |
+| Key Vault-Administrator| Ausführen beliebiger Vorgänge auf Datenebene für einen Schlüsseltresor und alle darin enthaltenen Objekte aus (einschließlich Zertifikate, Schlüssel und Geheimnisse). Kann keine Key Vault-Ressourcen oder Rollenzuweisungen verwalten. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
+| Key Vault-Zertifikatbeauftragter | Ausführen beliebiger Aktionen für die Zertifikate eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | a4417e6f-fecd-4de8-b567-7b0420556985 |
+| Key Vault-Kryptografiebeauftragter | Ausführen beliebiger Aktionen für die Schlüssel eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
+| Key Vault Crypto Service Encryption-Benutzer | Lesen von Metadaten von Schlüsseln und Ausführen von Vorgängen zum Packen/Entpacken. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+| Key Vault-Kryptografiebenutzer  | Ausführen kryptografischer Vorgänge mithilfe von Schlüsseln. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 12338af0-0e69-4776-bea7-57ae8d297424 |
+| Key Vault-Leser | Lesen von Metadaten von Schlüsseltresoren und deren Zertifikaten, Schlüsseln und Geheimnissen. Sensible Werte, z. B. der Inhalt von Geheimnissen oder Schlüsselmaterial, können nicht gelesen werden. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 21090545-7ca7-4776-b22c-e363652d74d2 |
+| Key Vault-Geheimnisbeauftragter| Ausführen beliebiger Aktionen für die Geheimnisse eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
+| Key Vault-Geheimnisbenutzer | Lesen der Inhalte von Geheimnissen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 4633458b-17de-408a-b874-0445c86b69e6 |
 
 Weitere Informationen zu den Definitionen von in Azure integrierten Rollen finden Sie unter [In Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md).
 
@@ -74,8 +74,8 @@ Sie benötigen Folgendes, um Rollenzuweisungen hinzufügen zu können:
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Aktivieren von Azure RBAC-Berechtigungen für einen Schlüsseltresor
 
-> [!IMPORTANT]
-> Wenn Sie das Azure RBAC-Berechtigungsmodell festlegen, werden alle Berechtigungen aus Zugriffsrichtlinien ungültig. Dies kann zu Ausfällen führen, wenn keine äquivalenten Azure-Rollen zugewiesen sind.
+> [!NOTE]
+> Das Ändern des Berechtigungsmodells erfordert die Berechtigung „Microsoft.Authorization/roleAssignments/write“, die in den Rollen [Besitzer](../../role-based-access-control/built-in-roles.md#owner) und [Benutzerzugriffsadministrator](../../role-based-access-control/built-in-roles.md#user-access-administrator) enthalten ist. Klassische Administratorrollen für ein Abonnement wie „Dienstadministrator“ und „Co-Admin“ werden nicht unterstützt.
 
 1.  Aktivieren von Azure RBAC-Berechtigungen für einen neuen Schlüsseltresor:
 
@@ -85,10 +85,13 @@ Sie benötigen Folgendes, um Rollenzuweisungen hinzufügen zu können:
 
     ![Aktivieren von Azure RBAC-Berechtigungen – vorhandener Tresor](../media/rbac/image-2.png)
 
+> [!IMPORTANT]
+> Wenn Sie das Azure RBAC-Berechtigungsmodell festlegen, werden alle Berechtigungen aus Zugriffsrichtlinien ungültig. Dies kann zu Ausfällen führen, wenn keine äquivalenten Azure-Rollen zugewiesen sind.
+
 ### <a name="assign-role"></a>Zuweisen einer Rolle
 
 > [!Note]
-> Es wird empfohlen, in Skripts die eindeutige Rollen-ID anstelle des Rollennamens zu verwenden. Wird eine Rolle umbenannt, funktionieren somit Ihre Skripts weiterhin. Während der Vorschauphase weist jede Rolle das Suffix „(Vorschau)“ auf, das später entfernt wird. In diesem Dokument wird der Rollenname nur zur besseren Lesbarkeit verwendet.
+> Es wird empfohlen, in Skripts die eindeutige Rollen-ID anstelle des Rollennamens zu verwenden. Wird eine Rolle umbenannt, funktionieren somit Ihre Skripts weiterhin. In diesem Dokument wird der Rollenname nur zur besseren Lesbarkeit verwendet.
 
 Azure CLI-Befehl zum Erstellen einer Rollenzuweisung:
 
@@ -107,13 +110,13 @@ Im Azure-Portal ist der Bildschirm „Azure-Rollenzuweisungen“ für alle Resso
 
 2.  Klicken Sie auf „Zugriffssteuerung (IAM)“ \> „Rollenzuweisung hinzufügen“ \> „Hinzufügen“.
 
-3.  Erstellen Sie die Rolle des Key Vault-Lesers („Key Vault Reader (Vorschau)“) für den aktuellen Benutzer.
+3.  Erstellen Sie die Rolle „Key Vault Reader“ des Key Vault-Lesers für den aktuellen Benutzer.
 
     ![Hinzufügen einer Rolle – Ressourcengruppe](../media/rbac/image-5.png)
 
 Azure CLI:
 ```azurecli
-az role assignment create --role "Key Vault Reader (preview)" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
+az role assignment create --role "Key Vault Reader" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
 ```
 
 Die obige Rollenzuweisung bietet die Möglichkeit, Key Vault-Objekte in einem Schlüsseltresor aufzulisten.
@@ -124,14 +127,14 @@ Die obige Rollenzuweisung bietet die Möglichkeit, Key Vault-Objekte in einem Sc
 
 2. Klicken Sie auf „Rollenzuweisung hinzufügen“ \> „Hinzufügen“.
 
-3. Erstellen Sie die Rolle des Schlüsselgeheimnisbeauftragten („Key Vault Secrets Officer (Vorschau)“) für den aktuellen Benutzer.
+3. Erstellen Sie die Rolle „Key Vault Secrets Officer“ des Schlüsselgeheimnisbeauftragten für den aktuellen Benutzer.
 
     ![Rollenzuweisung – Key Vault](../media/rbac/image-6.png)
 
  Azure CLI:
 
 ```azurecli
-az role assignment create --role "Key Vault Secrets Officer (preview)" --assignee {i.e jalichwa@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
+az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e jalichwa@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
 ```
 
 Nachdem Sie die oben genannte Rollenzuweisung erstellt haben, können Sie Geheimnisse erstellen, aktualisieren und löschen.
@@ -142,18 +145,18 @@ Nachdem Sie die oben genannte Rollenzuweisung erstellt haben, können Sie Geheim
 
 ### <a name="secret-scope-role-assignment"></a>Rollenzuweisung im Geheimnisbereich
 
-1. Öffnen Sie eines der zuvor erstellten Geheimnisse, und suchen Sie nach „Übersicht“ und „Zugriffssteuerung (IAM) (Vorschau)“.
+1. Öffnen Sie eines der zuvor erstellten Geheimnisse, und suchen Sie nach „Übersicht“ und „Zugriffssteuerung (IAM)“. 
 
-2. Klicken Sie auf die Registerkarte „Zugriffssteuerung (IAM) (Vorschau)“.
+2. Klicken Sie auf die Registerkarte „Zugriffssteuerung (IAM)“.
 
     ![Rollenzuweisung – Geheimnis](../media/rbac/image-8.png)
 
-3. Erstellen Sie die Rolle des Schlüsselgeheimnisbeauftragten („Key Vault Secrets Officer (Vorschau)“) für den aktuellen Benutzer wie oben für den Schlüsseltresor.
+3. Erstellen Sie die Rolle „Key Vault Secrets Officer“ des Schlüsselgeheimnisbeauftragten für den aktuellen Benutzer wie oben für den Schlüsseltresor.
 
 Azure CLI:
 
 ```azurecli
-az role assignment create --role "Key Vault Secrets Officer (preview)" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
+az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
 ```
 
 ### <a name="test-and-verify"></a>Testen und Überprüfen
@@ -164,7 +167,7 @@ az role assignment create --role "Key Vault Secrets Officer (preview)" --assigne
 
 1. Überprüfen Sie das Hinzufügen eines neuen Geheimnisses ohne die Rolle „Key Vault Secrets Officer“ auf der Ebene des Schlüsseltresors.
 
-Wechseln Sie zur Registerkarte „Zugriffssteuerung (IAM)“ für den Schlüsseltresor, und entfernen Sie die Rollenzuweisung „Key Vault Secrets Officer (Vorschau)“ für diese Ressource.
+Wechseln Sie zur Registerkarte „Zugriffssteuerung (IAM)“ für den Schlüsseltresor, und entfernen Sie die Rollenzuweisung „Key Vault Secrets Officer“ für diese Ressource.
 
 ![Entfernen der Rollenzuweisung – Key Vault](../media/rbac/image-9.png)
 
@@ -178,7 +181,7 @@ Erstellen Sie ein neues Geheimnis („Geheimnisse“ \> „+ Generieren/Importi
 
 2.  Überprüfen Sie die Geheimnisbearbeitung ohne die Rolle „Key Vault Secret Officer“ auf Geheimnisebene.
 
--   Wechseln Sie zur Registerkarte „Zugriffssteuerung (IAM) (Vorschau)“ für das zuvor erstellte Geheimnis, und entfernen Sie die Rollenzuweisung „Key Vault Secrets Officer (Vorschau)“ für diese Ressource.
+-   Wechseln Sie zur Registerkarte „Zugriffssteuerung (IAM)“ für das zuvor erstellte Geheimnis, und entfernen Sie die Rollenzuweisung „Key Vault Secrets Officer“ für diese Ressource.
 
 -   Navigieren Sie zum zuvor erstellten Geheimnis. Die Eigenschaften des Geheimnisses werden angezeigt.
 
@@ -186,7 +189,7 @@ Erstellen Sie ein neues Geheimnis („Geheimnisse“ \> „+ Generieren/Importi
 
 3. Überprüfen Sie das Lesen von Geheimnissen ohne die Leser-Rolle auf Schlüsseltresorebene.
 
--   Wechseln Sie zur Registerkarte „Zugriffssteuerung (IAM)“ für die Schlüsseltresor-Ressourcengruppe, und entfernen Sie die Rollenzuweisung „Key Vault Reader (Vorschau)“.
+-   Wechseln Sie zur Registerkarte „Zugriffssteuerung (IAM)“ für die Schlüsseltresor-Ressourcengruppe, und entfernen Sie die Rollenzuweisung „Key Vault Reader“.
 
 -   Nach dem Navigieren zur Registerkarte „Geheimnisse“ für den Schlüsseltresor sollte der nachstehende Fehler angezeigt werden:
 

@@ -2,13 +2,13 @@
 title: Azure NetApp Files mit Azure VMware Solution
 description: Verwenden Sie Azure NetApp Files mit Azure VMware Solution-VMs, um Daten zwischen lokalen Servern, Azure VMware Solution-VMs und Cloudinfrastrukturen zu migrieren und zu synchronisieren.
 ms.topic: how-to
-ms.date: 02/08/2021
-ms.openlocfilehash: 69d4e3a99de28d55b2fd95b1fc05c04c2ae0a37b
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.date: 02/10/2021
+ms.openlocfilehash: 2f2e8fdeb777e7e4b2b4e89c1bb36b51c3083257
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988644"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575432"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp Files mit Azure VMware Solution
 
@@ -16,12 +16,12 @@ In diesem Artikel werden die Schritte erläutert, mit denen Azure NetApp Files i
 
 ## <a name="azure-netapp-files-overview"></a>Übersicht über Azure NetApp Files
 
-[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md) ist ein Azure-Dienst zum Migrieren und Ausführen der anspruchsvollsten Dateiworkloads von Unternehmen in der Cloud. Dies schließt Datenbanken, SAP und High Performance Computing-Anwendungen ohne Codeänderungen ein.
+[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md) ist ein Azure-Dienst für die Migration und die Ausführung anspruchsvoller Unternehmensdateiworkloads in der Cloud: Datenbanken, SAP und High Performance Computing-Anwendungen, ohne dass Codeänderungen erforderlich sind.
 
 ### <a name="features"></a>Features
 (Dienste, für die Azure NetApp Files verwendet wird.)
 
-- **Active Directory-Verbindungen**: Azure NetApp Files unterstützt [Active Directory Domain Services und Azure Active Directory Domain Services](../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#decide-which-domain-services-to-use).
+- **Active Directory-Verbindungen**: Azure NetApp Files unterstützt [Active Directory Domain Services und Azure Active Directory Domain Services](../azure-netapp-files/create-active-directory-connections.md#decide-which-domain-services-to-use).
 
 - **Freigabeprotokoll**: Azure NetApp Files unterstützt SMB- (Server Message Block) und NFS-Protokolle (Network File System). Diese Unterstützung bedeutet, dass die Volumes auf dem Linux-Client bereitgestellt und auf dem Windows-Client zugeordnet werden können.
 
@@ -83,11 +83,13 @@ In den folgenden Schritten geht es um die Überprüfung der vorkonfigurierten Az
 
     :::image type="content" source="media/net-app-files/configuration-of-volume.png" alt-text="Screenshot: Konfigurationsdetails eines Volumes":::
 
-    Sie können erkennen, dass das Volume ANFVOLUME eine Größe von 200 GiB hat und sich im Kapazitätspool ANFPOOL1 befindet.  Es wird als NFS-Dateifreigabe über 10.22.3.4:/ANFVOLUME exportiert. Eine private IP-Adresse aus dem virtuellen Azure-Netzwerk (VNET) wurde für Azure NetApp Files und den NFS-Pfad für die Bereitstellung der VM erstellt. Informationen zur Leistung des Azure NetApp Files-Volumes relativ zur Größe (bzw. zum Kontingent) finden Sie unter [Überlegungen zur Leistung für Azure NetApp Files](../azure-netapp-files/azure-netapp-files-performance-considerations.md). 
+    Sie können erkennen, dass das Volume ANFVOLUME eine Größe von 200 GiB hat und sich im Kapazitätspool ANFPOOL1 befindet. Es wird als NFS-Dateifreigabe über 10.22.3.4:/ANFVOLUME exportiert. Eine private IP-Adresse aus dem virtuellen Azure-Netzwerk (VNET) wurde für Azure NetApp Files und den NFS-Pfad für die Bereitstellung der VM erstellt.
+
+    Informationen zur Leistung des Azure NetApp Files-Volumes relativ zur Größe (bzw. zum Kontingent) finden Sie unter [Überlegungen zur Leistung für Azure NetApp Files](../azure-netapp-files/azure-netapp-files-performance-considerations.md). 
 
 ## <a name="verify-pre-configured-azure-vmware-solution-vm-share-mapping"></a>Überprüfen der Freigabezuordnung für die vorkonfigurierte Azure VMware Solution-VM
 
-Damit eine Azure NetApp Files-Freigabe auf eine Azure VMware Solution-VM zugreifen kann, ist es wichtig, die Zuordnung zwischen SMB- und NFS-Freigaben zu verstehen. Die SMB- oder NFS-Volumes können erst dann wie hier beschrieben bereitgestellt werden, nachdem sie konfiguriert wurden.
+Damit Ihre Azure NetApp Files-Freigabe auf die Azure VMware Solution-VM zugreifen kann, müssen Sie die Zuordnung zwischen SMB- und NFS-Freigaben verstehen. Die SMB- oder NFS-Volumes können erst dann wie hier beschrieben eingebunden werden, nachdem sie konfiguriert wurden.
 
 - SMB-Freigabe: Erstellen Sie eine Active Directory-Verbindung, bevor Sie ein SMB-Volume bereitstellen. Damit erfolgreich eine Verbindung hergestellt werden kann, muss das delegierte Subnetz von Azure NetApp Files auf die angegebenen Domänencontroller zugreifen können. Nachdem die Active Directory-Instanz im Azure NetApp Files-Konto konfiguriert wurde, wird sie beim Erstellen eines SMB-Volumes als auswählbares Element angezeigt.
 

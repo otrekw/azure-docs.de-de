@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 5dde3da693d87d537fd2177a6f12b55297b5776e
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6c597e8fd48eb157b69c918ae5fd5f699611ad75
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582195"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703404"
 ---
 # <a name="precise-answering"></a>Präzise Antworten
 
@@ -32,7 +32,7 @@ Der Dienst gibt auch die Zuverlässigkeitsbewertung der genauen Antwort als **Be
 
 ## <a name="publishing-a-qna-maker-bot"></a>Veröffentlichen eines QnA Maker-Bots
 
-Wenn Sie einen Bot veröffentlichen, erhalten Sie in Ihrer Anwendung standardmäßig die Umgebung mit aktivierten präzisen Antworten, wobei eine Kurzantwort zusammen mit der Antwortpassage angezeigt wird. Informationen zur Verwendung der präzisen Antwort (AnswerSpan) in der Antwort finden Sie in der API-Referenz für [Antwort generieren](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerv5.0-preview.1/knowledgebase/generateanswer#answerspan). Benutzer haben die Flexibilität, andere Umgebungen auszuwählen, indem sie die Vorlage über den Bot-App-Dienst aktualisieren. 
+Wenn Sie einen Bot veröffentlichen, erhalten Sie in Ihrer Anwendung standardmäßig die Umgebung mit aktivierten präzisen Antworten, wobei eine Kurzantwort zusammen mit der Antwortpassage angezeigt wird. Informationen zur Verwendung der präzisen Antwort (AnswerSpan) in der Antwort finden Sie in der API-Referenz für [Antwort generieren](/rest/api/cognitiveservices/qnamakerv5.0-preview.1/knowledgebase/generateanswer#answerspan). Benutzer haben die Flexibilität, andere Umgebungen auszuwählen, indem sie die Vorlage über den Bot-App-Dienst aktualisieren. 
 
 ## <a name="language-support"></a>Sprachunterstützung
 

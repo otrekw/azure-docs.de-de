@@ -3,12 +3,12 @@ title: 'Bereitstellen von Live Video Analytics auf einem IoT Edge-Gerät: Azure'
 description: In diesem Artikel werden Schritte aufgelistet, die Sie bei der Bereitstellung von Live Video Analytics auf Ihrem IoT Edge-Gerät unterstützen. Dies können Sie beispielsweise tun, wenn Sie Zugriff auf einen lokalen Linux-Computer besitzen und/oder zuvor ein Azure Media Services-Konto erstellt haben.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: ff5dbc8e643137008aa7819b455adcf97c05bfc9
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 01b98c7a1f4073adcd8dea7cbfbfc57abc3787c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491789"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718929"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Bereitstellen von Live Video Analytics auf einem IoT Edge-Gerät
 
@@ -23,7 +23,7 @@ In diesem Artikel werden Schritte aufgelistet, die Sie bei der Bereitstellung vo
 * Ein x86-64- oder ARM64-Gerät, auf dem eines der [unterstützten Linux-Betriebssysteme ausgeführt wird](../../iot-edge/support.md#operating-systems)
 * Ein Azure-Abonnement, für das Sie über [Besitzerrechte](../../role-based-access-control/built-in-roles.md#owner) verfügen
 * [Ein erstellter und eingerichteter IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
-* [Registrierung bei einem IoT Edge-Gerät](../../iot-edge/how-to-manual-provision-symmetric-key.md)
+* [Registrierung bei einem IoT Edge-Gerät](../../iot-edge/how-to-register-device.md)
 * [Installieren der Azure IoT Edge-Runtime auf Debian-basierten Linux-Systemen](../../iot-edge/how-to-install-iot-edge.md)
 * [Erstellen eines Azure Media Services-Kontos](../latest/create-account-howto.md)
 
@@ -61,8 +61,8 @@ Führen Sie die Schritte in diesem Artikel aus, um Anmeldeinformationen für den
 Erstellen Sie ein lokales Benutzerkonto mit möglichst geringen Berechtigungen, um Live Video Analytics im IoT Edge-Modul auszuführen. Führen Sie beispielsweise die folgenden Befehle auf Ihrem Linux-Computer aus:
 
 ```
-sudo groupadd -g 1010 localuser
-sudo adduser --home /home/edgeuser --uid 1010 -gid 1010 edgeuser
+sudo groupadd -g 1010 localusergroup
+sudo useradd --home-dir /home/edgeuser --uid 1010 --gid 1010 lvaedgeuser
 ```
 
 ## <a name="granting-permissions-to-device-storage"></a>Zuweisen von Berechtigungen für den Gerätespeicher
@@ -72,15 +72,15 @@ Nachdem Sie nun ein lokales Benutzerkonto erstellt haben, geht es wie folgt weit
 * Sie benötigen einen lokalen Ordner, in dem die Konfigurationsdaten der Anwendung gespeichert werden. Erstellen Sie einen Ordner, und erteilen Sie dem LocalUser-Konto mit den folgenden Befehlen Schreibberechtigungen für diesen Ordner:
 
 ```
-sudo mkdir /var/lib/azuremediaservices
-sudo chown -R edgeuser /var/lib/azuremediaservices
+sudo mkdir -p /var/lib/azuremediaservices
+sudo chown -R lvaedgeuser /var/lib/azuremediaservices
 ```
 
 * Sie benötigen außerdem einen Ordner zum [Aufzeichnen von Video in eine lokale Datei](event-based-video-recording-concept.md#video-recording-based-on-events-from-other-sources). Verwenden Sie die folgenden Befehle, um einen lokalen Ordner für diesen Zweck zu erstellen:
 
 ```
-sudo mkdir /var/media
-sudo chown -R edgeuser /var/media
+sudo mkdir -p /var/media
+sudo chown -R lvaedgeuser /var/media
 ```
 
 ## <a name="deploy-live-video-analytics-edge-module"></a>Bereitstellen des Live Video Analytics-Edge-Moduls

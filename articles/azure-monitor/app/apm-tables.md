@@ -3,16 +3,16 @@ title: Schema für arbeitsbereichsbasierte Application Insights-Ressourcen in Az
 description: Erfahren Sie mehr über die neue Tabellenstruktur und das neue Tabellenschema für arbeitsbereichsbasierte Application Insights-Ressourcen in Azure Monitor.
 ms.topic: conceptual
 ms.date: 05/09/2020
-ms.openlocfilehash: 8f0bee64d74cfd5b6abef5c918c023974fda3fcf
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: ef9d22cd2b45679928ee54778b2a521ea9ecab03
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931052"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575607"
 ---
-# <a name="workspace-based-resource-changes-preview"></a>Änderungen bei arbeitsbereichsbasierten Ressourcen (Vorschau)
+# <a name="workspace-based-resource-changes"></a>Änderungen bei arbeitsbereichsbasierten Ressourcen
 
-Vor der Einführung von [arbeitsbereichsbasierten Application Insights-Ressourcen](create-workspace-resource.md) wurden Application Insights-Daten getrennt von anderen Protokolldaten in Azure Monitor gespeichert. Beide basieren auf Azure Data Explorer und verwenden dieselbe Kusto-Abfragesprache (KQL). Dies ist unter [Protokolle in Azure Monitor](../platform/data-platform-logs.md) beschrieben.
+Vor der Einführung von [arbeitsbereichsbasierten Application Insights-Ressourcen](create-workspace-resource.md) wurden Application Insights-Daten getrennt von anderen Protokolldaten in Azure Monitor gespeichert. Beide basieren auf Azure Data Explorer und verwenden dieselbe Kusto-Abfragesprache (KQL). Dies ist unter [Protokolle in Azure Monitor](../logs/data-platform-logs.md) beschrieben.
 
 Bei arbeitsbereichsbasierten Application Insights-Ressourcen werden Daten in einem Log Analytics-Arbeitsbereich mit anderen Überwachungs- und Anwendungsdaten gespeichert. Dies vereinfacht die Konfiguration, da es Ihnen möglich ist, Daten in mehreren Lösungen einfacher zu analysieren und die Funktionen von Arbeitsbereichen zu nutzen.
 
@@ -464,6 +464,6 @@ Alte Tabelle: traces
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Untersuchen von Metriken](../platform/metrics-charts.md)
-* [Schreiben von Analytics-Abfragen](../log-query/log-query-overview.md)
+* [Untersuchen von Metriken](../essentials/metrics-charts.md)
+* [Schreiben von Analytics-Abfragen](../logs/log-query-overview.md)
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 54a54dccd82e4f6cfd72a1cc8a71b51f9fd4ed95
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 078118ec793530720a49a19046854e5ea4b7f5c4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857357"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388939"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>Bewerten und Verbessern der Custom Speech-Genauigkeit
 
@@ -115,10 +115,15 @@ Berücksichtigen Sie Folgendes:
 * Wenn die Qualität von Transkripts variiert, können Sie besonders gute Sätze (z. B. hervorragende Transkriptionen mit wichtigen Ausdrücken) duplizieren, um ihre Gewichtung zu erhöhen.
 * Der Speech-Dienst verwendet die Transkriptionen automatisch, um die Erkennung von themenspezifischen Wörtern und Ausdrücken zu verbessern, als wären sie als verwandter Text hinzugefügt worden.
 * Das Training mit Audiodaten bietet den größten Nutzen, wenn das Audiomaterial auch für Menschen schwer zu verstehen ist. In den meisten Fällen sollten Sie mit dem Training beginnen, indem Sie nur verwandten Text verwenden.
-* Der Abschluss eines Trainingsvorgangs kann mehrere Tage in Anspruch nehmen. Zum Verbessern der Trainingsgeschwindigkeit achten Sie darauf, Ihr Speech-Dienstabonnement in einer [Region mit dedizierter Hardware](custom-speech-overview.md#set-up-your-azure-account) für das Training zu erstellen.
+* Der Abschluss eines Trainingsvorgangs kann mehrere Tage in Anspruch nehmen. Stellen Sie zum Verbessern der Trainingsgeschwindigkeit sicher, dass Sie Ihr Abonnement für den Speech-Dienst in einer [Region mit dedizierter Hardware](custom-speech-overview.md#set-up-your-azure-account) für Training erstellen.
 
 > [!NOTE]
-> Nicht alle Basismodelle unterstützen das Training mit Audiodaten. Wenn es von einem Basismodell nicht unterstützt wird, verwendet der Speech-Dienst nur den Text aus den Transkriptionen und ignoriert die Audiodaten.
+> Nicht alle Basismodelle unterstützen das Training mit Audiodaten. Wenn es von einem Basismodell nicht unterstützt wird, verwendet der Speech-Dienst nur den Text aus den Transkriptionen und ignoriert die Audiodaten. Eine Liste mit Basismodellen, die das Training mit Audiodaten unterstützen, finden Sie unter [Sprachunterstützung](language-support.md#speech-to-text).
+
+> [!NOTE]
+> Wenn Sie das für das Training verwendete Basismodell ändern und das Trainingsdataset Audiodaten enthält, überprüfen Sie *immer*, ob das neue ausgewählte Basismodell [das Training mit Audiodaten unterstützt](language-support.md#speech-to-text). Wenn das zuvor verwendete Basismodell kein Training mit Audiodaten unterstützt hat und das Trainingsdataset Audiodaten enthält, verlängert sich die Trainingsdauer mit dem neuen Basismodell **deutlich** und kann schnell einige Stunden oder sogar mehrere Tage und mehr betragen. Dies ist insbesondere dann der Fall, wenn es sich bei der Region Ihres Abonnements für den Speech-Dienst **nicht** um eine [Region mit dedizierter Hardware](custom-speech-overview.md#set-up-your-azure-account) für Training handelt.
+>
+> Wenn das im obigen Abschnitt beschriebene Problem auftritt, können Sie die Trainingsdauer schnell verkürzen, indem Sie die Menge der Audiodaten im Dataset verringern oder die Audiodaten ganz daraus entfernen, sodass das Dataset nur noch Text enthält. Letzteres ist sehr empfehlenswert, wenn es sich bei der Region Ihres Abonnements für den Speech-Dienst **nicht** um eine [Region mit dedizierter Hardware](custom-speech-overview.md#set-up-your-azure-account) für Training handelt.
 
 ### <a name="add-new-words-with-pronunciation"></a>Hinzufügen von neuen Wörtern mit besonderer Aussprache
 

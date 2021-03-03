@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: nicolela
-ms.openlocfilehash: 8d5356f7fd2661d9743d1058a147a0b20f62850e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 530597a72b19afa1e80b5c7640b105d86479b1c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373707"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740102"
 ---
 # <a name="set-up-a-lab-for-arcmaparcgis-desktop"></a>Einrichten eines Labs für ArcMap\ArcGIS Desktop
 
@@ -24,7 +24,7 @@ Sobald Sie ein Azure-Abonnement haben, können Sie ein neues Lab-Konto in Azure 
 
 ### <a name="lab-account-settings"></a>Lab-Kontoeinstellungen
 
-Aktivieren Sie die Einstellungen Ihres Lab-Kontos wie in der folgenden Tabelle beschrieben.  Weitere Informationen zum Aktivieren von Azure Marketplace-Images finden Sie unter [Angeben der für Lab-Ersteller verfügbaren Azure Marketplace-Images](https://docs.microsoft.com/azure/lab-services/specify-marketplace-images).
+Aktivieren Sie die Einstellungen Ihres Lab-Kontos wie in der folgenden Tabelle beschrieben.  Weitere Informationen zum Aktivieren von Azure Marketplace-Images finden Sie unter [Angeben der für Lab-Ersteller verfügbaren Azure Marketplace-Images](./specify-marketplace-images.md).
 
 | Lab-Kontoeinstellungen | Instructions |
 | ------------------- | ------------ |
@@ -34,7 +34,7 @@ Aktivieren Sie die Einstellungen Ihres Lab-Kontos wie in der folgenden Tabelle b
 
 Eine Art der Lizenzierung, die ArcGIS Desktop bietet, sind [Lizenzen zur gleichzeitigen Verwendung](https://desktop.arcgis.com/en/license-manager/latest/license-manager-basics.htm).  Dies setzt voraus, dass Sie ArcGIS License Manager auf Ihrem Lizenzserver installieren.  License Manager überwacht die Anzahl der Kopien der Software, die gleichzeitig ausgeführt werden können.  Weitere Informationen zum Einrichten von License Manager auf Ihrem Server finden Sie im [Leitfaden zu License Manager](https://desktop.arcgis.com/en/license-manager/latest/welcome.htm).
 
-Der Lizenzserver wird in der Regel in Ihrem lokalen Netzwerk platziert oder auf einem virtuellen Azure-Computer in einem virtuellen Azure-Netzwerk gehostet.  Nach dem Einrichten des Lizenzservers müssen Sie ein [Peering des virtuellen Netzwerks](https://docs.microsoft.com/azure/lab-services/how-to-connect-peer-virtual-network) mit Ihrem [Lab-Konto](https://docs.microsoft.com/azure/lab-services/tutorial-setup-lab-account) erstellen.  Das Netzwerkpeering muss vor dem Erstellen des Labs durchgeführt werden, damit Ihre Lab-VMs auf den Lizenzserver zugreifen können und umgekehrt.
+Der Lizenzserver wird in der Regel in Ihrem lokalen Netzwerk platziert oder auf einem virtuellen Azure-Computer in einem virtuellen Azure-Netzwerk gehostet.  Nach dem Einrichten des Lizenzservers müssen Sie ein [Peering des virtuellen Netzwerks](./how-to-connect-peer-virtual-network.md) mit Ihrem [Lab-Konto](./tutorial-setup-lab-account.md) erstellen.  Das Netzwerkpeering muss vor dem Erstellen des Labs durchgeführt werden, damit Ihre Lab-VMs auf den Lizenzserver zugreifen können und umgekehrt.
 
 Weitere Informationen finden Sie unter [Einrichten eines Lizenzservers als freigegebene Ressource](how-to-create-a-lab-with-shared-resource.md).
 

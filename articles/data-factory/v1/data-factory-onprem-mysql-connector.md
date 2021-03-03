@@ -1,23 +1,18 @@
 ---
 title: Verschieben von Daten aus MySQL mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Sie Daten aus der MySQL-Datenbank mithilfe von Azure Data Factory verschieben.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 452f4fce-9eb5-40a0-92f8-1e98691bea4c
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83c39435d2249981a45798ffe0717054fa7b0717
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91872101"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387324"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Verschieben von Daten aus MySQL mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -151,7 +146,7 @@ Als Erstes richten Sie das Datenverwaltungsgateway ein. Anweisungen dazu finden 
 
 **MySQL-Eingabedataset:**
 
-Im Beispiel wird vorausgesetzt, dass Sie die Tabelle "MyTable" in MySQL erstellt haben, die für Zeitreihendaten eine Spalte namens "timestampcolumn" enthält.
+Im Beispiel wird vorausgesetzt, dass Sie in MySQL die Tabelle „MyTable“ erstellt haben, die für Zeitreihendaten die Spalte „timestampcolumn“ enthält.
 
 Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst mitgeteilt, dass die Tabelle für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
 

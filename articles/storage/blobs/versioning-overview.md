@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 267fd57b2fd359a73d5c1e01568aba14594e9290
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 692a820bea69071485a973a988ae91bd70b74f35
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980200"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380813"
 ---
 # <a name="blob-versioning"></a>Blobversionsverwaltung
 
@@ -28,7 +28,7 @@ Microsoft empfiehlt die Verwendung von Blobversionsverwaltung, um frühere Versi
 Informationen zum Aktivieren der Blobversionsverwaltung finden Sie unter [Aktivieren und Verwalten der Blobversionsverwaltung](versioning-enable.md).
 
 > [!IMPORTANT]
-> Blobversionsverwaltung kann Ihnen nicht bei der Wiederherstellung nach dem versehentlichen Löschen eines Speicherkontos oder Containers helfen. Um das versehentliche Löschen des Speicherkontos zu verhindern, konfigurieren Sie eine **CannotDelete**-Sperre für die Speicherkontoressource. Weitere Informationen zum Sperren von Azure-Ressourcen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).
+> Blobversionsverwaltung kann Ihnen nicht bei der Wiederherstellung nach dem versehentlichen Löschen eines Speicherkontos oder Containers helfen. Um das versehentliche Löschen des Speicherkontos zu verhindern, konfigurieren Sie eine Sperre für die Speicherkontoressource. Weitere Informationen zum Sperren von Azure-Ressourcen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md). Um Container vor versehentlichem Löschen zu schützen, konfigurieren Sie das vorläufige Löschen von Containern für das Speicherkonto. Weitere Informationen finden Sie unter [Vorläufiges Löschen für Container (Vorschau)](soft-delete-container-overview.md).
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 

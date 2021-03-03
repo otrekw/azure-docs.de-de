@@ -4,12 +4,12 @@ description: Überwachen Sie Abhängigkeitsaufrufe von Ihrer lokalen oder Micros
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df13042656aa077b30bf144aab0a47d9fc0a0662
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 05b6c29b121cbf42cf0ebe12b2879e50735db7ea
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263928"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652002"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Abhängigkeitsnachverfolgung in Azure Application Insights 
 
@@ -109,9 +109,10 @@ Für ASP.NET-Anwendungen wird der vollständige SQL-Abfragetext mithilfe der Byt
 Zusätzlich zu den oben genannten plattformspezifischen Schritten ist eine **explizite Aktivierung erforderlich, um die SQL-Befehlssammlung zu aktivieren**, indem Sie die Datei „applicationInsights.config“ wie folgt ändern:
 
 ```xml
-<Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
-<EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
-</Add>
+<TelemetryModules>
+  <Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
+    <EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
+  </Add>
 ```
 
 In den oben genannten Fällen können Sie die ordnungsgemäße Installation der Instrumentierungs-Engine überprüfen, indem Sie sicherstellen, dass die SDK-Version der erfassten `DependencyTelemetry` „rddp“ lautet. „rdddsd“ oder „rddf“ weisen darauf hin, dass Abhängigkeiten über DiagnosticSource- oder EventSource-Rückrufe gesammelt werden und die vollständige SQL-Abfrage daher nicht erfasst wird.

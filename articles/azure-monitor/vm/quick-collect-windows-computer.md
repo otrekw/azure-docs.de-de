@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 5d34893c522bd3cc3b862284cb84b44bab40856a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 65d60c77280b569d1bff5e4d3acbdf97ead96270
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100626183"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733787"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Sammeln von Daten auf einem Windows-Computer in einer Hybridumgebung mit Azure Monitor
 
@@ -122,7 +122,7 @@ Azure Monitor kann angegebene Ereignisse aus dem Windows-Ereignisprotokoll und L
 
 8. Wenn Sie die Windows-Leistungsindikatoren zum ersten Mal für einen neuen Log Analytics-Arbeitsbereich konfigurieren, haben Sie die Möglichkeit, schnell mehrere allgemeine Indikatoren zu erstellen. Jede Option wird mit einem Kontrollkästchen aufgeführt:
 
-    ![Windows-Leistungsindikatoren](media/quick-collect-windows-computer/windows-perfcounters-default.png)erforderlich.
+    ![Windows-Leistungsindikatoren](media/quick-collect-windows-computer/windows-perfcounters-default.png).
     
     Wählen Sie **Ausgewählte Leistungsindikatoren hinzufügen** aus. Die Leistungsindikatoren werden hinzugefügt und mit einem Stichprobenintervall von zehn Sekunden voreingestellt.
 
@@ -165,4 +165,4 @@ Jetzt sammeln Sie Betriebs- und Leistungsdaten von Ihrem Windows-Computer und k�
 Um zu erfahren, wie Sie die Daten anzeigen und analysieren, fahren Sie mit dem Tutorial fort:
 
 > [!div class="nextstepaction"]
-> [Anzeigen oder Analysieren der Daten in Log Analytics](../log-query/log-analytics-tutorial.md)
+> [Anzeigen oder Analysieren der Daten in Log Analytics](../logs/log-analytics-tutorial.md)

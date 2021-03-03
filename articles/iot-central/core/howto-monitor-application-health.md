@@ -3,27 +3,27 @@ title: Überwachen der Integrität einer Azure IoT Central-Anwendung | Microsoft
 description: Überwachen Sie als Bediener oder Administrator die Gesamtintegrität der mit Ihrer IoT Central-Anwendung verbundenen Geräte.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/14/2020
+ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 12485e07bc3cad9d420141ecc6ee66763ac010b7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: d0e59f73dd9b62b528c3d86d315b613312df7773
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760770"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577040"
 ---
-# <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>Überwachen der Gesamtintegrität der mit einer IoT Central-Anwendung verbundenen Geräte
+# <a name="monitor-the-overall-health-of-an-iot-central-application"></a>Überwachen der Gesamtintegrität einer IoT Central-Anwendung
 
 > [!NOTE]
 > Metriken sind nur für IoT Central-Anwendungen der Version 3 verfügbar. Informationen zum Überprüfen Ihrer Anwendungsversion finden Sie unter [Über Ihre Anwendung](./howto-get-app-info.md).
 
 *Dieser Artikel gilt für Bediener und Administratoren.*
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe der von IoT Central bereitgestellten Metriken die Gesamtintegrität der mit Ihrer IoT Central-Anwendung verbundenen Geräte bewerten.
+In diesem Artikel erfahren Sie, wie Sie mithilfe der von IoT Central bereitgestellten Metriken die Integrität von mit Ihrer IoT Central-Anwendung verbundenen Geräten sowie die Integrität Ihrer aktiven Datenexporte bewerten.
 
-Metriken sind für Ihre IoT Central-Anwendung standardmäßig aktiviert, und Sie greifen über das [Azure-Portal](https://portal.azure.com/) darauf zu. Die [Azure Monitor-Datenplattform macht diese Metriken verfügbar](../../azure-monitor/platform/data-platform-metrics.md) und bietet Ihnen mehrere Möglichkeiten zur Interaktion damit. So können Sie beispielsweise Diagramme im Azure-Portal, eine REST-API oder aber Abfragen in PowerShell oder in der Azure CLI verwenden.
+Metriken sind für Ihre IoT Central-Anwendung standardmäßig aktiviert, und Sie greifen über das [Azure-Portal](https://portal.azure.com/) darauf zu. Die [Azure Monitor-Datenplattform macht diese Metriken verfügbar](../../azure-monitor/essentials/data-platform-metrics.md) und bietet Ihnen mehrere Möglichkeiten zur Interaktion damit. So können Sie beispielsweise Diagramme im Azure-Portal, eine REST-API oder aber Abfragen in PowerShell oder in der Azure CLI verwenden.
 
 ### <a name="trial-applications"></a>Testanwendungen
 
@@ -31,7 +31,7 @@ Weil Anwendungen, die den kostenlosen Testplan verwenden, kein Azure-Abonnement 
 
 ## <a name="view-metrics-in-the-azure-portal"></a>Anzeigen von Metriken im Azure-Portal
 
-Bei den folgenden Schritten wird davon ausgegangen, dass Sie über eine [IoT Central-Anwendung](./quick-deploy-iot-central.md) mit einigen [verbundenen Geräten](./tutorial-connect-device.md) verfügen.
+Bei den folgenden Schritten wird davon ausgegangen, dass Sie über eine [IoT Central-Anwendung](./quick-deploy-iot-central.md) mit einigen [verbundenen Geräten](./tutorial-connect-device.md) oder über einen aktiven [Datenexport](howto-export-data.md) verfügen.
 
 So zeigen Sie IoT Central-Metriken im Portal an:
 
@@ -46,7 +46,7 @@ Der Zugriff auf Metriken im Azure-Portal wird von der [rollenbasierten Zugriffss
 
 ## <a name="iot-central-metrics"></a>IoT Central-Metriken
 
-Eine Liste der aktuell für IoT Central verfügbaren Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](../../azure-monitor/platform/metrics-supported.md#microsoftiotcentraliotapps).
+Eine Liste der aktuell für IoT Central verfügbaren Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](../../azure-monitor/essentials/metrics-supported.md#microsoftiotcentraliotapps).
 
 ### <a name="metrics-and-invoices"></a>Metriken und Rechnungen
 

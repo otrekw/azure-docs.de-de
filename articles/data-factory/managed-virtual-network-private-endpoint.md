@@ -1,24 +1,20 @@
 ---
 title: Verwaltetes virtuelles Netzwerk und verwaltete private Endpunkte
 description: Erfahren Sie mehr über das verwaltete virtuelle Netzwerk und verwaltete private Endpunkte in Azure Data Factory.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 81d82bccd6b6bd97b84df5269dd59ffac4903370
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: d950b05dd34788c2c5ef0b34b8ec8ac0b20ad4b6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980359"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379572"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Verwaltetes virtuelles Netzwerk in Azure Data Factory (Vorschauversion)
 
@@ -51,7 +47,7 @@ Verwaltete private Endpunkte sind private Endpunkte, die im verwalteten virtuell
 
 ![Neuer verwalteter privater Endpunkt](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
-Azure Data Factory unterstützt private Links. Der private Link ermöglicht Ihnen den Zugriff auf Azure-Dienste (PaaS, z. B. Azure Storage, Azure Cosmos DB, Azure Synapse Analytics (ehemals SQL Data Warehouse)).
+Azure Data Factory unterstützt private Links. Der private Link ermöglicht Ihnen den Zugriff auf Azure-Dienste (PaaS, z. B. Azure Storage, Azure Cosmos DB, Azure Synapse Analytics).
 
 Bei der Verwendung eines privaten Links wird der Datenverkehr zwischen Ihrem Datenspeicher und dem verwalteten virtuellen Netzwerk vollständig über das Microsoft-Backbone-Netzwerk übertragen. Private Link schützt vor einer möglichen Datenexfiltration. Ein privater Link zu einer Ressource wird durch die Erstellung eines privaten Endpunkts eingerichtet.
 
@@ -86,7 +82,7 @@ Die nachstehenden Datenquellen werden für eine Verbindung über einen privaten 
 - Azure Files
 - Azure Data Lake Gen2
 - Azure SQL-Datenbank (ohne Azure SQL Managed Instance)
-- Azure Synapse Analytics (ehemals SQL Data Warehouse)
+- Azure Synapse Analytics
 - Azure Cosmos DB SQL
 - Azure-Schlüsseltresor
 - Azure Private Link-Dienst

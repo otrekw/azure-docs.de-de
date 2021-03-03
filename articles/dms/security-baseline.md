@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3d1386ea3d7096e0926825c9b53cf62466c09cc3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 79743ba2c733855a377ae8e2522ce54eca9e8c04
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789835"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091091"
 ---
 # <a name="azure-security-baseline-for-azure-database-migration-service"></a>Azure-Sicherheitsbaseline für Azure Database Migration Service
 
@@ -269,7 +269,7 @@ Verwenden Sie integrierte Rollen, um Berechtigungen zuzuweisen und benutzerdefin
 
 - [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../role-based-access-control/overview.md)
 
-- [Konfigurieren von RBAC in Azure](../role-based-access-control/role-assignments-portal.md) 
+- [Konfigurieren von Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
 - [Was sind Azure AD-Zugriffsüberprüfungen?](../active-directory/governance/access-reviews-overview.md)
 
@@ -422,7 +422,7 @@ Zusätzlich können Sie auch Daten in Azure Sentinel oder der SIEM-Lösung eines
 
 Viele Unternehmen verwenden Azure Sentinel für „heiße“ Daten, die häufig verwendet werden, und Azure Storage für seltener verwendete „kalte“ Daten.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 

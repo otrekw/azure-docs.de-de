@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a0acbe84a98bc63e5806d25241811c0a7591b897
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: e4bbc1565cec2c356e916f813a6a334648d82754
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98872620"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726732"
 ---
 # <a name="azure-security-baseline-for-virtual-wan"></a>Azure-Sicherheitsbaseline für Virtual WAN
 
@@ -349,9 +349,9 @@ Es stehen auch viele Diagnoseprotokolle für Virtual WAN bereit, die im Azure-Po
 
 Aktivieren Sie Azure-Ressourcenprotokolle für Virtual WAN. Sie können Azure Security Center und Azure Policy verwenden, um Ressourcenprotokolle zu aktivieren und Datenerfassung zu protokollieren. Diese Protokolle können für die spätere Untersuchung von Sicherheitsvorfällen und die Durchführung forensischer Übungen von entscheidender Bedeutung sein.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../azure-monitor/platform/platform-logs-overview.md) 
+- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../azure-monitor/essentials/platform-logs-overview.md) 
 
 - [Grundlegendes zur Datensammlung in Azure Security Center](../security-center/security-center-enable-data-collection.md)
 
@@ -382,9 +382,9 @@ Die Sicherheit für Azure Virtual WAN wird über Azure Firewall bereitgestellt.
 
 **Leitfaden**: Konfigurieren Sie die Aufbewahrungsdauer der Protokolle entsprechend Ihrer Compliance, Vorschriften und geschäftlichen Anforderungen. In Azure Monitor können Sie den Aufbewahrungszeitraum des Log Analytics-Arbeitsbereichs gemäß den Compliancevorschriften Ihres Unternehmens festlegen. Verwenden Sie für langfristige Speicherungen und Archivierungen Konten von Azure Storage, Data Lake oder des Log Analytics-Arbeitsbereichs.
 
-- [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 - [Exportieren von Azure Security Center-Warnungen und -Empfehlungen](../security-center/continuous-export.md)
 

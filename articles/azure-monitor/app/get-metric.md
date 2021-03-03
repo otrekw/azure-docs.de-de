@@ -5,12 +5,12 @@ ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 345d0d31528f7bdc40be4400e783ad5be45df72f
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: b4a255235b2c6d772ab9a05dffacd4574ddd3280
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930559"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584187"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Benutzerdefinierte Sammlung von Metriken in .NET und .NET Core
 
@@ -109,7 +109,7 @@ Wenn wir unsere Application Insights-Ressource auf der Oberfläche „Protokolle
 > [!NOTE]
 > Da das rohe Telemetrieelement nach der Erfassung weder eine explizite Summeneigenschaft noch ein Summenfeld enthielt, erstellen wir eine(s) für Sie. In diesem Fall stellen die Eigenschaften `value` und `valueSum` dasselbe dar.
 
-Sie können auf Ihre benutzerdefinierte Metriktelemetrie auch im Abschnitt [_Metriken_](../platform/metrics-charts.md) im Portal zugreifen: sowohl als [protokollbasierte als auch als benutzerdefinierte Metrik](pre-aggregated-metrics-log-metrics.md). (Der nachfolgende Screenshot ist ein Beispiel für protokollbasiert.) ![Ansicht im Metrik-Explorer](./media/get-metric/metrics-explorer.png)
+Sie können auf Ihre benutzerdefinierte Metriktelemetrie auch im Abschnitt [_Metriken_](../essentials/metrics-charts.md) im Portal zugreifen: sowohl als [protokollbasierte als auch als benutzerdefinierte Metrik](pre-aggregated-metrics-log-metrics.md). (Der nachfolgende Screenshot ist ein Beispiel für protokollbasiert.) ![Ansicht im Metrik-Explorer](./media/get-metric/metrics-explorer.png)
 
 ### <a name="caching-metric-reference-for-high-throughput-usage"></a>Referenz zur Zwischenspeicherung von Metriken für Nutzung mit hohem Durchsatz
 
@@ -302,6 +302,6 @@ SeverityLevel.Error);
 
 * [Erfahren Sie mehr](./worker-service.md) zum Überwachen von Workerdienstanwendungen.
 * Weitere Informationen finden Sie unter [Protokollbasierte und vorab aggregierte Metriken](./pre-aggregated-metrics-log-metrics.md).
-* [Metrik-Explorer](../platform/metrics-getting-started.md)
+* [Metrik-Explorer](../essentials/metrics-getting-started.md)
 * Aktivieren von Application Insights für [ASP.NET Core-Anwendungen](asp-net-core.md)
 * Aktivieren von Application Insights für [ASP.NET-Anwendungen](asp-net.md)

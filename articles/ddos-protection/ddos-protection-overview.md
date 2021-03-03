@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 71eada0dcd7f7684e6c6be935bcb44405eb95322
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 2b0f8a73a6852883f87ba9fc4333cb6fa8101a39
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626205"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703115"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Übersicht über Azure DDoS Protection Standard
 
@@ -54,7 +54,7 @@ Informationen zu den Preisen für Azure DDoS Protection Standard finden Sie unte
 
 ## <a name="reference-architectures"></a>Referenzarchitekturen
 
-DDoS Protection Standard ist für [Dienste konzipiert, die in einem virtuellen Netzwerk bereitgestellt werden](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services). Für andere Dienste gilt der Standarddienst DDoS Protection Basic. Weitere Informationen zu den unterstützten Architekturen finden Sie unter [DDoS Protection – Referenzarchitekturen](https://docs.microsoft.com/azure/ddos-protection/ddos-protection-reference-architectures). 
+DDoS Protection Standard ist für [Dienste konzipiert, die in einem virtuellen Netzwerk bereitgestellt werden](../virtual-network/virtual-network-for-azure-services.md). Für andere Dienste gilt der Standarddienst DDoS Protection Basic. Weitere Informationen zu den unterstützten Architekturen finden Sie unter [DDoS Protection – Referenzarchitekturen](./ddos-protection-reference-architectures.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

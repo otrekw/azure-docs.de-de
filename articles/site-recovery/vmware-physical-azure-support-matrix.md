@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für VMware- oder physische Notfallwiederherstellun
 description: Fasst die Unterstützung der Notfallwiederherstellung von VMware-VMs und physische Server in Azure mit Azure Site Recovery zusammen.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 0b829955d931bd26b7d38c8cb282f55a6043562e
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: aecc7ccb6e633fc9c27b254f98931d682fa3d21b
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550843"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534674"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure
 
@@ -180,7 +180,7 @@ Größe des Datenträgers auf einer replizierten VM ändern | Wird vor einem Fai
 Datenträger auf einer replizierten VM hinzufügen | Wird nicht unterstützt.<br/> Deaktivieren Sie die Replikation für die VM, fügen Sie den Datenträger hinzu, und aktivieren Sie dann erneut die Replikation.
 
 > [!NOTE]
-> Jede Änderung der Datenträgeridentität wird nicht unterstützt. Wenn z. B. die Datenträgerpartitionierung von GPT in MBR oder umgekehrt geändert wurde, wird die Datenträgeridentität dadurch nicht geändert. In einem solchen Szenario wird die Replikation unterbrochen und ein neues Setup ist erforderlich. 
+> Jede Änderung der Datenträgeridentität wird nicht unterstützt. Wenn z. B. die Datenträgerpartitionierung von GPT in MBR oder umgekehrt geändert wurde, wird die Datenträgeridentität dadurch nicht geändert. In einem solchen Szenario wird die Replikation unterbrochen und ein neues Setup ist erforderlich. Bei Linux-Computern wird die Änderung des Gerätenamens nicht unterstützt, da dies Auswirkungen auf die Datenträgeridentität hat.
 
 ## <a name="network"></a>Netzwerk
 
@@ -328,6 +328,17 @@ Maximale Datenänderung pro Tag, die von einem Prozessserver unterstützt wird |
 - Dies sind Durchschnittswerte, bei denen eine E/A-Überlappung von 30% angenommen wird.
 - Site Recovery kann einen höheren Durchsatz basierend auf dem Überlappungsverhältnis, höheren Schreibgrößen und dem tatsächlichen Workload-E/A-Verhalten verarbeiten.
 - Für diese Zahlen wurde ein typischer Backlog von ca. fünf Minuten vorausgesetzt. Dies bedeutet, dass die Daten nach dem Hochladen verarbeitet werden und innerhalb von fünf Minuten ein Wiederherstellungspunkt erstellt wird.
+
+## <a name="storage-account-limits"></a>Speicherkontobegrenzungen
+
+Wenn der durchschnittliche Churn auf den Datenträgern zunimmt, verringert sich die Anzahl von Datenträgern, die von einem Speicherkonto unterstützt werden können. Die Tabelle unten kann als Leitfaden für Entscheidungen über die Anzahl von Speicherkonten verwendet werden, die bereitgestellt werden müssen.
+ 
+**Speicherkontotyp**    |    **Churn = 4 MBit/s pro Datenträger**    |    **Churn = 8 MBit/s pro Datenträger**
+---    |    ---    |    ---
+V1-Speicherkonto    |    600 Datenträger    |    300 Datenträger
+V2-Speicherkonto    |    1\.500 Datenträger    |    750 Datenträger
+
+Beachten Sie, dass die oben genannten Grenzwerte nur für Hybrid-Notfallwiederherstellungsszenarien gelten.
 
 ## <a name="vault-tasks"></a>Tresortasks
 

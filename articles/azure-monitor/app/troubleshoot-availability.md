@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/19/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 368c45433247c441631bdf79bfc9caa28a41f1b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 849701caf73a4fb289773c67bccaab2e0f39dbd1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546748"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583730"
 ---
 # <a name="troubleshooting"></a>Problembehandlung
 
@@ -62,7 +62,7 @@ Der Problembehandlungsbericht ermöglicht Ihnen eine einfache Diagnose häufig a
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Ich habe die Webhookbenachrichtigung nicht empfangen.
 
-Überprüfen Sie, ob die Anwendung, die die Webhookbenachrichtigung empfängt, verfügbar ist und die Webhookanforderungen erfolgreich verarbeitet. Weitere Informationen finden Sie [hier](../platform/alerts-log-webhook.md).
+Überprüfen Sie, ob die Anwendung, die die Webhookbenachrichtigung empfängt, verfügbar ist und die Webhookanforderungen erfolgreich verarbeitet. Weitere Informationen finden Sie [hier](../alerts/alerts-log-webhook.md).
 
 ### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>Ich erhalte die Fehler „Unzulässig – 403“, was bedeutet das?
 
@@ -113,7 +113,7 @@ Dies wird derzeit nicht unterstützt.
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>Wer erhält die (klassischen) Warnungsbenachrichtigungen?
 
-Dieser Abschnitt gilt nur für klassische Benachrichtigungen und hilft Ihnen, Ihre Warnungsbenachrichtigungen zu optimieren, um sicherzustellen, dass nur die gewünschten Empfänger Benachrichtigungen erhalten. Um mehr über den Unterschied zwischen [klassischen Benachrichtigungen](../platform/alerts-classic.overview.md) und der neuen Benutzeroberfläche für Warnungen zu erfahren, lesen Sie den Artikel [Überblick über Warnungen in Microsoft Azure](../platform/alerts-overview.md). Um die Warnungsbenachrichtigung in der neuen Benutzeroberfläche für Warnungen zu steuern, verwenden Sie [Aktionsgruppen](../platform/action-groups.md).
+Dieser Abschnitt gilt nur für klassische Benachrichtigungen und hilft Ihnen, Ihre Warnungsbenachrichtigungen zu optimieren, um sicherzustellen, dass nur die gewünschten Empfänger Benachrichtigungen erhalten. Um mehr über den Unterschied zwischen [klassischen Benachrichtigungen](../alerts/alerts-classic.overview.md) und der neuen Benutzeroberfläche für Warnungen zu erfahren, lesen Sie den Artikel [Überblick über Warnungen in Microsoft Azure](../alerts/alerts-overview.md). Um die Warnungsbenachrichtigung in der neuen Benutzeroberfläche für Warnungen zu steuern, verwenden Sie [Aktionsgruppen](../alerts/action-groups.md).
 
 * Wir empfehlen die Verwendung bestimmter Empfänger für klassische Warnungsbenachrichtigungen.
 
@@ -124,7 +124,7 @@ Dieser Abschnitt gilt nur für klassische Benachrichtigungen und hilft Ihnen, Ih
 > [!NOTE]
 > Wenn Sie aktuell die Option **Massenversand/Gruppe** verwenden und diese deaktivieren, können Sie die Änderung nicht rückgängig machen.
 
-Verwenden Sie die neue Benutzeroberfläche für Warnungen/Warnungen nahezu in Echtzeit, wenn Sie Benutzer basierend auf ihren Rollen benachrichtigen müssen. Mit [Aktionsgruppen](../platform/action-groups.md) können Sie E-Mail-Benachrichtigungen für Benutzer mit den Rollen „Mitwirkender“, „Besitzer“, „Leser“ konfigurieren (nicht kombiniert als eine einzige Option).
+Verwenden Sie die neue Benutzeroberfläche für Warnungen/Warnungen nahezu in Echtzeit, wenn Sie Benutzer basierend auf ihren Rollen benachrichtigen müssen. Mit [Aktionsgruppen](../alerts/action-groups.md) können Sie E-Mail-Benachrichtigungen für Benutzer mit den Rollen „Mitwirkender“, „Besitzer“, „Leser“ konfigurieren (nicht kombiniert als eine einzige Option).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

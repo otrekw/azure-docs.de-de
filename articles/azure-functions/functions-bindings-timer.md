@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 11/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 0d9852659801040d64fe4143f024fd52ffec16ee
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: c6b3bd61386cbde0e8de63055eee9218e372dfcd
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874082"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547841"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions
 
@@ -347,7 +347,7 @@ Dieser Wert wird als Zeichenfolge ausgedrückt, und das `TimeSpan`-Format ist `h
 
 ## <a name="scale-out"></a>Horizontales Skalieren
 
-Wenn eine Funktionen-App auf mehrere Instanzen horizontal hochskaliert wird, wird nur eine einzige Instanz einer per Timer ausgelösten Funktion für alle Instanzen ausgeführt.
+Wenn eine Funktionen-App auf mehrere Instanzen horizontal hochskaliert wird, wird nur eine einzige Instanz einer per Timer ausgelösten Funktion für alle Instanzen ausgeführt. Es erfolgt keine erneute Auslösung, wenn ein ausstehender Aufruf noch ausgeführt wird.
 
 ## <a name="function-apps-sharing-storage"></a>Funktionen-Apps mit gemeinsamer Nutzung von Speicher
 

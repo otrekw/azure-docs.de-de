@@ -3,12 +3,12 @@ title: Beheben von Netzwerkproblemen mit der Registrierung
 description: Enthält eine Beschreibung der Symptome, Ursachen und Lösungen häufiger Probleme, die beim Zugreifen auf eine Azure-Containerregistrierung in einem virtuellen Netzwerk oder hinter einer Firewall auftreten.
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: cf2f308f782ac7d6011c98afd181b194f2b3e09f
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 75c94d40663a7058dab7ed691183dd578964edcc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525075"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699605"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Beheben von Netzwerkproblemen mit der Registrierung
 
@@ -140,5 +140,5 @@ Wenn Sie Ihr Problem hier nicht lösen können, sehen Sie sich die folgenden Opt
   * [Beheben von Problemen mit der Registrierungsanmeldung](container-registry-troubleshoot-login.md) 
   * [Beheben von Problemen mit der Registrierungsleistung](container-registry-troubleshoot-performance.md)
 * [Optionen für Support durch die Community](https://azure.microsoft.com/support/community/)
-* [Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/products/)
+* [Microsoft Q&A (Fragen und Antworten)](/answers/products/)
 * [Öffnen eines Supporttickets](https://azure.microsoft.com/support/create-ticket/)

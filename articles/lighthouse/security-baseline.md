@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: cd43b6c7b11cde17bc9f9923374baf3416e5b370
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 69234d7c22f1725f6f21fe52a455e64d743f052e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791861"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709851"
 ---
 # <a name="azure-security-baseline-for-azure-lighthouse"></a>Azure-Sicherheitsbaseline für Azure Lighthouse
 
@@ -360,9 +360,9 @@ Mit Azure Lighthouse können Sie Azure Monitor-Protokolle für alle von Ihnen ve
 
 Kunden, die delegierte Abonnements für Azure Lighthouse haben, können Daten des Azure-Aktivitätsprotokolls anzeigen, um sich alle ausgeführten Aktionen anzusehen. So erhalten Kunden umfassende Einblicke in Vorgänge, die von Dienstanbietern ausgeführt werden, sowie in Vorgänge, die von Benutzern innerhalb des eigenen Azure AD-Mandanten des Kunden ausgeführt werden.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Überwachen von delegierten Ressourcen in beliebigem Umfang](how-to/monitor-at-scale.md)
 
@@ -386,7 +386,7 @@ Kunden, die delegierte Abonnements für Azure Lighthouse haben, können Daten de
 
 Viele Unternehmen verwenden Azure Sentinel für „heiße“ Daten, die häufig verwendet werden, und Azure Storage für seltener verwendete „kalte“ Daten.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Überwachen von delegierten Ressourcen in beliebigem Umfang](how-to/monitor-at-scale.md)
 
@@ -404,9 +404,9 @@ Viele Unternehmen verwenden Azure Sentinel für „heiße“ Daten, die häufig 
 
 In Azure Monitor können Sie den Aufbewahrungszeitraum des Log Analytics-Arbeitsbereichs gemäß den Compliancevorschriften Ihres Unternehmens festlegen. Verwenden Sie für langfristige Speicherungen und Archivierungen Konten von Azure Storage, Data Lake oder des Log Analytics-Arbeitsbereichs.
 
-- [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 - [Exportieren von Azure Security Center-Warnungen und -Empfehlungen](../security-center/continuous-export.md): Konfigurieren Sie diese Einstellungen, und der Kunde kann keine Protokollaufbewahrung festlegen.
 

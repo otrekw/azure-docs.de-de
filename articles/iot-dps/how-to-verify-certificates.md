@@ -7,12 +7,12 @@ ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 2020205357c68e007a1a375c4853e8c04afd2019
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0326eef86b42fa8b06c336bbf2b1c6f2f9df0bcf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789059"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730353"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Nachweis des Besitzes für X.509-Zertifizierungsstellenzertifikate mit Ihrem Device Provisioning-Dienst
 
@@ -72,14 +72,4 @@ Die in der Dokumentation und den SDKs bereitgestellten PowerShell- und Bash-Skri
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum Erstellen einer Registrierungsgruppe mit dem Portal finden Sie unter [Verwalten von Geräteregistrierungen mit dem Azure-Portal](how-to-manage-enrollments.md).
-- Weitere Informationen zum Erstellen einer Registrierungsgruppe mit den Dienst-SDKs finden Sie unter [Verwalten von Geräteregistrierungen mit Dienst-SDKs](how-to-manage-enrollments-sdks.md).
-
-
-
-
-
-
-
-
-
-
+- Weitere Informationen zum Erstellen einer Registrierungsgruppe mit den Dienst-SDKs finden Sie unter [Verwalten von Geräteregistrierungen mit Dienst-SDKs](./quick-enroll-device-x509-java.md).

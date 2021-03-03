@@ -2,17 +2,17 @@
 title: Azure-Ressourcengruppe als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Ressourcengruppenereignisse bereitgestellt werden.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: ed01bfdb67d9b8a3dd5875ec3fd8c6edf8922520
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/12/2021
+ms.openlocfilehash: 4c1990909dc555e9e2a6d09538b807ba7e07ce83
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86105913"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363218"
 ---
 # <a name="azure-resource-group-as-an-event-grid-source"></a>Azure-Ressourcengruppe als Event Grid-Quelle
 
-In diesem Artikel werden die Eigenschaften und das Schema für Ressourcengruppenereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
+In diesem Artikel werden die Eigenschaften und das Schema für Ressourcengruppenereignisse beschrieben.  Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
 Azure-Abonnements und Ressourcengruppen geben die gleichen Ereignistypen aus. Die Ereignistypen beziehen sich auf Ressourcenänderungen oder -aktionen. Der Hauptunterschied besteht darin, dass Ressourcengruppen Ereignisse für Ressourcen innerhalb der Ressourcengruppe und Azure-Abonnements Ereignisse für Ressourcen im gesamten Abonnement ausgeben.
 
@@ -25,9 +25,7 @@ Zur programmgesteuerten Verarbeitung von Ereignissen können Sie Ereignisse sort
 Der Betreff des Ereignisses ist die Ressourcen-ID der Ressource, die das Ziel des Vorgangs ist. Geben Sie zum Filtern von Ereignissen für eine Ressource beim Erstellen des Ereignisabonnements die Ressourcen-ID an.  Verwenden Sie zum Filtern nach einem Ressourcentyp einen Wert im folgenden Format: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
 
-## <a name="event-grid-event-schema"></a>Event Grid-Ereignisschema
-
-### <a name="available-event-types"></a>Verfügbare Ereignistypen
+## <a name="available-event-types"></a>Verfügbare Ereignistypen
 
 Ressourcengruppen können Verwaltungsereignisse von Azure Resource Manager ausgeben, beispielsweise wenn eine VM erstellt oder ein Speicherkonto gelöscht wird.
 
@@ -43,8 +41,9 @@ Ressourcengruppen können Verwaltungsereignisse von Azure Resource Manager ausge
 | Microsoft.Resources.ResourceWriteFailure | Wird ausgelöst, wenn ein Erstellungs- oder Aktualisierungsvorgang fehlschlägt. |
 | Microsoft.Resources.ResourceWriteSuccess | Wird ausgelöst, wenn ein Erstellungs- oder Aktualisierungsvorgang erfolgreich ausgeführt wurde. |
 
-### <a name="example-event"></a>Beispielereignis
+## <a name="example-event"></a>Beispielereignis
 
+# <a name="event-grid-event-schema"></a>[Event Grid-Ereignisschema](#tab/event-grid-event-schema)
 Im folgenden Beispiel wird das Schema für das Ereignis **ResourceWriteSuccess** veranschaulicht. Das gleiche Schema wird für die Ereignisse **ResourceWriteFailure** und **ResourceWriteCancel** verwendet, nur mit anderen Werten für `eventType`.
 
 ```json
@@ -227,35 +226,238 @@ Im folgenden Beispiel wird das Schema für ein **ResourceActionSuccess**-Ereigni
 }]
 ```
 
+# <a name="cloud-event-schema"></a>[Cloudereignisschema](#tab/cloud-event-schema)
+
+Im folgenden Beispiel wird das Schema für das Ereignis **ResourceWriteSuccess** veranschaulicht. Das gleiche Schema wird für die Ereignisse **ResourceWriteFailure** und **ResourceWriteCancel** verwendet, nur mit anderen Werten für `eventType`.
+
+```json
+[{
+  "subject": "/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+  "source": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}",
+  "type": "Microsoft.Resources.ResourceWriteSuccess",
+  "time": "2018-07-19T18:38:04.6117357Z",
+  "id": "4db48cba-50a2-455a-93b4-de41a3b5b7f6",
+  "data": {
+    "authorization": {
+      "scope": "/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+      "action": "Microsoft.Storage/storageAccounts/write",
+      "evidence": {
+        "role": "Subscription Admin"
+      }
+    },
+    "claims": {
+      "aud": "{audience-claim}",
+      "iss": "{issuer-claim}",
+      "iat": "{issued-at-claim}",
+      "nbf": "{not-before-claim}",
+      "exp": "{expiration-claim}",
+      "_claim_names": "{\"groups\":\"src1\"}",
+      "_claim_sources": "{\"src1\":{\"endpoint\":\"{URI}\"}}",
+      "http://schemas.microsoft.com/claims/authnclassreference": "1",
+      "aio": "{token}",
+      "http://schemas.microsoft.com/claims/authnmethodsreferences": "rsa,mfa",
+      "appid": "{ID}",
+      "appidacr": "2",
+      "http://schemas.microsoft.com/2012/01/devicecontext/claims/identifier": "{ID}",
+      "e_exp": "{expiration}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "{last-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "{first-name}",
+      "ipaddr": "{IP-address}",
+      "name": "{full-name}",
+      "http://schemas.microsoft.com/identity/claims/objectidentifier": "{ID}",
+      "onprem_sid": "{ID}",
+      "puid": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/tenantid": "{ID}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": "{user-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "{user-name}",
+      "uti": "{ID}",
+      "ver": "1.0"
+    },
+    "correlationId": "{ID}",
+    "resourceProvider": "Microsoft.Storage",
+    "resourceUri": "/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+    "operationName": "Microsoft.Storage/storageAccounts/write",
+    "status": "Succeeded",
+    "subscriptionId": "{subscription-id}",
+    "tenantId": "{tenant-id}"
+  },
+
+  "specversion": "1.0"
+}]
+```
+
+Im folgenden Beispiel wird das Schema für das Ereignis **ResourceDeleteSuccess** veranschaulicht. Das gleiche Schema wird für die Ereignisse **ResourceDeleteFailure** und **ResourceDeleteCancel** verwendet, nur mit anderen Werten für `eventType`.
+
+```json
+[{
+  "subject": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+  "source": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}",
+  "type": "Microsoft.Resources.ResourceDeleteSuccess",
+  "time": "2018-07-19T19:24:12.763881Z",
+  "id": "19a69642-1aad-4a96-a5ab-8d05494513ce",
+  "data": {
+    "authorization": {
+      "scope": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+      "action": "Microsoft.Storage/storageAccounts/delete",
+      "evidence": {
+        "role": "Subscription Admin"
+      }
+    },
+    "claims": {
+      "aud": "{audience-claim}",
+      "iss": "{issuer-claim}",
+      "iat": "{issued-at-claim}",
+      "nbf": "{not-before-claim}",
+      "exp": "{expiration-claim}",
+      "_claim_names": "{\"groups\":\"src1\"}",
+      "_claim_sources": "{\"src1\":{\"endpoint\":\"{URI}\"}}",
+      "http://schemas.microsoft.com/claims/authnclassreference": "1",
+      "aio": "{token}",
+      "http://schemas.microsoft.com/claims/authnmethodsreferences": "rsa,mfa",
+      "appid": "{ID}",
+      "appidacr": "2",
+      "http://schemas.microsoft.com/2012/01/devicecontext/claims/identifier": "{ID}",
+      "e_exp": "262800",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "{last-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "{first-name}",
+      "ipaddr": "{IP-address}",
+      "name": "{full-name}",
+      "http://schemas.microsoft.com/identity/claims/objectidentifier": "{ID}",
+      "onprem_sid": "{ID}",
+      "puid": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/tenantid": "{ID}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": "{user-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "{user-name}",
+      "uti": "{ID}",
+      "ver": "1.0"
+    },
+    "correlationId": "{ID}",
+    "httpRequest": {
+      "clientRequestId": "{ID}",
+      "clientIpAddress": "{IP-address}",
+      "method": "DELETE",
+      "url": "https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}?api-version=2018-02-01"
+    },
+    "resourceProvider": "Microsoft.Storage",
+    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+    "operationName": "Microsoft.Storage/storageAccounts/delete",
+    "status": "Succeeded",
+    "subscriptionId": "{subscription-id}",
+    "tenantId": "{tenant-id}"
+  },
+  "specversion": "1.0"
+}]
+```
+
+Im folgenden Beispiel wird das Schema für ein **ResourceActionSuccess**-Ereignis veranschaulicht. Das gleiche Schema wird für **ResourceActionFailure**- und **ResourceActionCancel**-Ereignisse verwendet, nur mit anderen Werten für `eventType`.
+
+```json
+[{   
+  "subject": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+  "source": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}" 
+  "type": "Microsoft.Resources.ResourceActionSuccess",
+  "time": "2018-10-08T22:46:22.6022559Z",
+  "id": "{ID}",
+  "data": {
+    "authorization": {
+      "scope": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+      "action": "Microsoft.EventHub/namespaces/AuthorizationRules/listKeys/action",
+      "evidence": {
+        "role": "Contributor",
+        "roleAssignmentScope": "/subscriptions/{subscription-id}",
+        "roleAssignmentId": "{ID}",
+        "roleDefinitionId": "{ID}",
+        "principalId": "{ID}",
+        "principalType": "ServicePrincipal"
+      }     
+    },
+    "claims": {
+      "aud": "{audience-claim}",
+      "iss": "{issuer-claim}",
+      "iat": "{issued-at-claim}",
+      "nbf": "{not-before-claim}",
+      "exp": "{expiration-claim}",
+      "aio": "{token}",
+      "appid": "{ID}",
+      "appidacr": "2",
+      "http://schemas.microsoft.com/identity/claims/identityprovider": "{URL}",
+      "http://schemas.microsoft.com/identity/claims/objectidentifier": "{ID}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "{ID}",       "http://schemas.microsoft.com/identity/claims/tenantid": "{ID}",
+      "uti": "{ID}",
+      "ver": "1.0"
+    },
+    "correlationId": "{ID}",
+    "httpRequest": {
+      "clientRequestId": "{ID}",
+      "clientIpAddress": "{IP-address}",
+      "method": "POST",
+      "url": "https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey/listKeys?api-version=2017-04-01"
+    },
+    "resourceProvider": "Microsoft.EventHub",
+    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+    "operationName": "Microsoft.EventHub/namespaces/AuthorizationRules/listKeys/action",
+    "status": "Succeeded",
+    "subscriptionId": "{subscription-id}",
+    "tenantId": "{tenant-id}"
+  },
+  "specversion": "1.0"
+}]
+```
+
+---
+
+
+
 ### <a name="event-properties"></a>Ereigniseigenschaften
+
+# <a name="event-grid-event-schema"></a>[Event Grid-Ereignisschema](#tab/event-grid-event-schema)
+Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
+
+| Eigenschaft | type | BESCHREIBUNG |
+| -------- | ---- | ----------- |
+| `topic` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| `eventType` | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| `eventTime` | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| `id` | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| `data` | Objekt (object) | Ereignisdaten der Ressourcengruppe. |
+| `dataVersion` | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| `metadataVersion` | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+
+# <a name="cloud-event-schema"></a>[Cloudereignisschema](#tab/cloud-event-schema)
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| topic | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
-| data | Objekt (object) | Ereignisdaten der Ressourcengruppe. |
-| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| `source` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| `type` | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| `time` | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| `id` | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| `data` | Objekt (object) | Ereignisdaten der Ressourcengruppe. |
+| `specversion` | Zeichenfolge | Version der CloudEvents-Schemaspezifikation. |
+
+---
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| authorization | Objekt (object) | Die angeforderte Autorisierung für den Vorgang. |
-| claims | Objekt (object) | Die Eigenschaften der Ansprüche. Weitere Informationen finden Sie auf der Seite zur [JWT-Spezifikation](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
-| correlationId | Zeichenfolge | Eine Vorgangs-ID für die Problembehandlung. |
-| httpRequest | Objekt (object) | Die Details des Vorgangs. Dieses Objekt ist nur enthalten, wenn eine vorhandene Ressource aktualisiert oder eine Ressource gelöscht wird. |
-| resourceProvider | Zeichenfolge | Der Ressourcenanbieter für den Vorgang. |
-| resourceUri | Zeichenfolge | Der URI der Ressource im Vorgang. |
-| operationName | Zeichenfolge | Der Vorgang, der übernommen wurde. |
-| status | Zeichenfolge | Der Status des Vorgangs. |
-| subscriptionId | Zeichenfolge | Die Abonnement-ID der Ressource. |
-| tenantId | Zeichenfolge | Die Mandanten-ID der Ressource. |
+| `authorization` | Objekt (object) | Die angeforderte Autorisierung für den Vorgang. |
+| `claims` | Objekt (object) | Die Eigenschaften der Ansprüche. Weitere Informationen finden Sie auf der Seite zur [JWT-Spezifikation](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| `correlationId` | Zeichenfolge | Eine Vorgangs-ID für die Problembehandlung. |
+| `httpRequest` | Objekt (object) | Die Details des Vorgangs. Dieses Objekt ist nur enthalten, wenn eine vorhandene Ressource aktualisiert oder eine Ressource gelöscht wird. |
+| `resourceProvider` | Zeichenfolge | Der Ressourcenanbieter für den Vorgang. |
+| `resourceUri` | Zeichenfolge | Der URI der Ressource im Vorgang. |
+| `operationName` | Zeichenfolge | Der Vorgang, der übernommen wurde. |
+| `status` | Zeichenfolge | Der Status des Vorgangs. |
+| `subscriptionId` | Zeichenfolge | Die Abonnement-ID der Ressource. |
+| `tenantId` | Zeichenfolge | Die Mandanten-ID der Ressource. |
 
 ## <a name="tutorials-and-how-tos"></a>Tutorials und Anleitungen
 |Titel  |BESCHREIBUNG  |

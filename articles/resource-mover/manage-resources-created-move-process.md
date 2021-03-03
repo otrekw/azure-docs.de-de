@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 7ad0e73a90e733af0dd752100ebc71908f68181a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d3c4c4e86e2461ea1d05af284e724a5a2991f040
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388480"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727038"
 ---
 # <a name="manage-resources-created-for-the-vm-move"></a>Verwalten von für die VM-Verschiebung erstellten Ressourcen
 
@@ -24,7 +24,7 @@ Nach dem Verschieben von VMs zwischen verschiedenen Regionen gibt es eine Reihe 
 
 Löschen Sie die Sammlung für die VM-Verschiebung und die erstellten Site Recovery-Ressourcen manuell.
 
-1. Überprüfen Sie die Ressourcen in der Ressourcengruppe ```ResourceMoverRG-<sourceregion>-<target-region>```.
+1. Überprüfen Sie die Ressourcen in der Ressourcengruppe ```ResourceMoverRG-<sourceregion>-<target-region>-<metadataRegionShortName>```.
 2. Überprüfen Sie, ob die VMs und alle anderen Quellressourcen in der Verschiebungssammlung verschoben/gelöscht wurden. Dadurch wird sichergestellt, dass sie nicht von ausstehenden Ressourcen verwendet werden.
 2. Löschen Sie diese Ressourcen.
 

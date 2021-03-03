@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b160f6641cced1e4ea6af1eac225d92abe26a631
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8b68e22e69bf2d4a1655883b249f883f98f565a7
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380269"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091238"
 ---
 # <a name="azure-security-baseline-for-azure-app-configuration"></a>Azure-Sicherheitsbaseline für Azure App Configuration
 
@@ -385,7 +385,7 @@ App Configuration unterstützt das Speichern der Konfiguration mehrerer Anwendun
 
 - [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../role-based-access-control/overview.md)
 
-- [Konfigurieren von RBAC in Azure](../role-based-access-control/role-assignments-portal.md)
+- [Konfigurieren von Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 - [Was sind Azure AD-Zugriffsüberprüfungen?](../active-directory/governance/access-reviews-overview.md)
 
@@ -602,9 +602,9 @@ Weitere Informationen finden Sie in den folgenden Referenzen:
 
 **Leitfaden**: Aktivitätsprotokolle, die automatisch verfügbar sind, enthalten alle Schreibvorgänge (PUT, POST, DELETE) für Ihre App Configuration-Ressourcen mit Ausnahme von Lesevorgängen (GET). Mit Aktivitätsprotokollen können Fehler ermittelt werden, und es kann nachverfolgt werden, welche Änderungen an einer Ressource ein Benutzer in Ihrer Organisation vorgenommen hat. Bei App Configuration sind Aktivitätsprotokolle nur auf Steuerungsebene verfügbar und werden durch den Azure Resource Manager (ARM) zur Verfügung gestellt. Die Protokollierung der kundenseitigen Datenebene für App Configuration wird zurzeit nicht unterstützt. Azure-Ressourcenprotokolle können ebenfalls nicht konfiguriert werden.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -618,7 +618,7 @@ Stellen Sie sicher, dass die Azure-Aktivitätsprotokolle in die zentrale Protoko
 
 Zusätzlich können Sie auch Daten in Azure Sentinel oder der SIEM-Lösung eines Drittanbieters aktivieren und integrieren. Viele Unternehmen verwenden Azure Sentinel für „heiße“ Daten, die häufig verwendet werden, und Azure Storage für seltener verwendete „kalte“ Daten.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -632,9 +632,9 @@ Zusätzlich können Sie auch Daten in Azure Sentinel oder der SIEM-Lösung eines
 
 In Azure Monitor können Sie den Aufbewahrungszeitraum des Log Analytics-Arbeitsbereichs gemäß den Compliancevorschriften Ihres Unternehmens festlegen.
 
-- [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../azure-monitor/platform/manage-cost-storage.md)
+- [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../azure-monitor/logs/manage-cost-storage.md)
 
-- [Azure-Ressourcenprotokolle](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [Azure-Ressourcenprotokolle](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

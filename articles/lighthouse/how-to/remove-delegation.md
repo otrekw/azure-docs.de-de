@@ -1,14 +1,14 @@
 ---
 title: Entfernen des Zugriffs auf eine Delegierung
 description: Erfahren Sie, wie Sie Zugriff auf Ressourcen entfernen können, die an einen Dienstanbieter für Azure Lighthouse delegiert worden waren.
-ms.date: 12/03/2020
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 7218c8829c9b2500e8311fbb3d5e9ff4eb986529
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c53b678ba6e37ece1bcaf2860abceb9eea980532
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791355"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555787"
 ---
 # <a name="remove-access-to-a-delegation"></a>Entfernen des Zugriffs auf eine Delegierung
 
@@ -21,7 +21,7 @@ Das Entfernen einer Delegierung kann durch einem Benutzer entweder im Kundenmand
 
 ## <a name="customers"></a>Kunden
 
-Benutzer im Mandanten des Kunden, die über die [integrierte Rolle „Besitzer“](../../role-based-access-control/built-in-roles.md#owner) für ein Abonnement verfügen, können Dienstanbieterzugriff auf dieses Abonnement (oder auf Ressourcengruppen in diesem Abonnement) entfernen. Zu diesem Zweck kann ein Benutzer im Mandanten des Kunden zur Seite [Dienstanbieter](view-manage-service-providers.md#add-or-remove-service-provider-offers) im Azure-Portal navigieren, nach dem Angebot auf dem Bildschirm **Dienstanbieterangebote** suchen und das Papierkorbsymbol in der Zeile für dieses Angebot auswählen.
+Benutzer im Mandanten des Kunden, denen eine Rolle mit der Berechtigung `Microsoft.Authorization/roleAssignments/write` (z. B. [Besitzer](../../role-based-access-control/built-in-roles.md#owner)) zugewiesen ist, können den Dienstanbieterzugriff auf das Abonnement (oder auf Ressourcengruppen in diesem Abonnement) entfernen. Zu diesem Zweck kann ein Benutzer zur Seite [Dienstanbieter](view-manage-service-providers.md#add-or-remove-service-provider-offers) des Azure-Portals navigieren, auf dem Bildschirm **Dienstanbieterangebote** nach dem Angebot suchen und das Papierkorbsymbol in der Zeile für das Angebot auswählen.
 
 Nach dem Bestätigten des Löschvorgangs können keine Benutzer im Mandanten des Dienstanbieters auf die zuvor delegierten Ressourcen zugreifen.
 

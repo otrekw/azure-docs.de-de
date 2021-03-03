@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d47f6c20246e3210b58dbc9c802a11c866ae305e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f348a5005f28fdd1d02be706ca2742d77368288
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935006"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592363"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Überwachen von Vorgängen und Aktivitäten von Azure Cognitive Search
 
@@ -59,7 +59,7 @@ Mithilfe der folgenden APIs können Sie dieselben Informationen abrufen, die auf
 
 ### <a name="activity-logs-and-service-health"></a>Aktivitätsprotokolle und Dienstintegrität
 
-Auf der Seite [**Aktivitätsprotokoll**](../azure-monitor/platform/activity-log.md#view-the-activity-log) im Portal werden Informationen aus Azure Resource Manager und zu Änderungen an der Dienstintegrität erfasst. Sie können das Aktivitätsprotokoll auf kritische, Fehler- und Warnungsbedingungen im Zusammenhang mit der Dienstintegrität überwachen.
+Auf der Seite [**Aktivitätsprotokoll**](../azure-monitor/essentials/activity-log.md#view-the-activity-log) im Portal werden Informationen aus Azure Resource Manager und zu Änderungen an der Dienstintegrität erfasst. Sie können das Aktivitätsprotokoll auf kritische, Fehler- und Warnungsbedingungen im Zusammenhang mit der Dienstintegrität überwachen.
 
 Zu den üblichen Einträgen zählen Verweise auf API-Schlüssel, d. h. generische informative Benachrichtigungen wie *Get Admin Key* (Administratorschlüssel abrufen) und *Get Query Keys* (Abfrageschlüssel abrufen). Diese Aktivitäten weisen auf Anforderungen hin, die mithilfe des Administratorschlüssels (Objekte erstellen oder löschen) oder des Abfrageschlüssels durchgeführt wurden, jedoch nicht die Anforderung selbst anzeigen. Um weitere Informationen auf dieser Ebene zu erhalten, müssen Sie die Diagnoseprotokollierung konfigurieren.
 
@@ -90,7 +90,7 @@ Azure Monitor bietet mehrere Speicheroptionen. Ihre Auswahl bestimmt, wie Sie di
 * Wählen Sie Azure Blob Storage, wenn Sie [Protokolldaten in einem Power BI-Bericht visualisieren möchten](search-monitor-logs-powerbi.md).
 * Wählen Sie Log Analytics, wenn Sie Daten mithilfe von Kusto-Abfragen durchsuchen möchten.
 
-Azure Monitor verfügt über eine eigene Abrechnungsstruktur, und für die in diesem Abschnitt angesprochenen Diagnoseprotokolle fallen Kosten an. Weitere Informationen finden Sie unter [Nutzung und geschätzte Kosten in Azure Monitor](../azure-monitor/platform/usage-estimated-costs.md).
+Azure Monitor verfügt über eine eigene Abrechnungsstruktur, und für die in diesem Abschnitt angesprochenen Diagnoseprotokolle fallen Kosten an. Weitere Informationen finden Sie unter [Nutzung und geschätzte Kosten in Azure Monitor](../azure-monitor//usage-estimated-costs.md).
 
 ## <a name="monitor-user-access"></a>Überwachen des Benutzerzugriffs
 
@@ -107,4 +107,4 @@ Diese Informationen können nicht getrennt von der Abfragezeichenfolge protokoll
 Kenntnisse von Azure Monitor sind für die Überwachung aller Azure-Dienste, einschließlich Ressourcen wie Azure Cognitive Search, von entscheidender Bedeutung. Wenn Sie mit Azure Monitor nicht vertraut sind, nehmen Sie sich die Zeit, die Artikel zu den Ressourcen zu lesen. Zusätzlich zu den Tutorials stellt der folgende Artikel einen guten Ausgangspunkt dar.
 
 > [!div class="nextstepaction"]
-> [Überwachen von Azure-Ressourcen mit Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md)
+> [Überwachen von Azure-Ressourcen mit Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md)

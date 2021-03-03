@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: a44ff15300d05713e812f5c60ad3bf00d9f13104
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 6d2ad87f6a8c79f61d62140a1549968cd88d83aa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526855"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722312"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Aufzeichnen von Sprachbeispielen zum Erstellen einer benutzerdefinierten Stimme
 
@@ -29,9 +29,9 @@ Das Erstellen einer professionellen Sprachaufzeichnung setzt sich aus vielen kle
 > Wenn Sie eine neuronale Stimme trainieren möchten, müssen Sie ein Sprecherprofil mit der Audiozustimmungsdatei des Sprechers angeben, in der dieser bestätigt, die Sprachdaten zum Trainieren eines benutzerdefinierten Sprachmodells zu verwenden. Stellen Sie beim Vorbereiten des Aufzeichnungsskripts sicher, dass Sie den folgenden Satz einschließen. 
 
 > „Ich [Vor- und Nachname nennen] akzeptiere, dass die Aufzeichnungen meiner Stimme von [Name des Unternehmens nennen] verwendet werden, um eine synthetische Version meiner Stimme zu erstellen und diese zu verwenden.“
-Dieser Satz wird verwendet, um zu überprüfen, ob die Trainingsdaten von derselben Person gesprochen werden, die die Zustimmung erteilt. Weitere Informationen zur [Überprüfung des Sprechers](https://aka.ms/CNV-data-privacy)
+Dieser Satz wird verwendet, um zu überprüfen, ob die Trainingsdaten von derselben Person gesprochen werden, die die Zustimmung erteilt. Weitere Informationen zur [Überprüfung des Sprechers](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)
 
-> Die benutzerdefinierte neuronale Stimme ist mit eingeschränktem Zugriff verfügbar. Stellen Sie sicher, dass Sie die [Anforderungen für verantwortungsvolle KI](https://aka.ms/gating-overview) kennen, und fordern Sie [hier](https://aka.ms/customneural) den Zugriff an. 
+> Die benutzerdefinierte neuronale Stimme ist mit eingeschränktem Zugriff verfügbar. Stellen Sie sicher, dass Sie die [Anforderungen für verantwortungsvolle KI](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) kennen, und fordern Sie [hier](https://aka.ms/customneural) den Zugriff an. 
 
 > [!TIP]
 > Für Ergebnisse höchster Qualität könnten Sie Microsoft damit beauftragen, Ihre benutzerdefinierte Stimme zu entwickeln. Microsoft hat umfangreiche Erfahrungen beim Produzieren qualitativ hochwertiger Stimmen für die eigenen Produkte, einschließlich Cortana und Office.

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f949747649e351947ba65666fdb57c0beac3aa23
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 666474b7c7b823114b6dee2925ed5f81973e212d
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492109"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650931"
 ---
 # <a name="calling-client-library-overview"></a>Übersicht über die Clientbibliothek für Telefonie
 
@@ -64,7 +64,7 @@ Die folgende Tabelle enthält die unterstützten Browser und Versionen, die derz
 
 |                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | iPad-Betriebssystem|
 | -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ | -------|
-| **Clientbibliothek für Telefonie** | Chrome*, Edge (neu) | Chrome *, Safari** | Chrome*  | Chrome* | Chrome* | Safari** | Safari** |
+| **Clientbibliothek für Telefonie** | Chrome*, Microsoft Edge (neu) | Chrome *, Safari** | Chrome*  | Chrome* | Chrome* | Safari** | Safari** |
 
 
 \* Hinweis: Neben den beiden vorherigen Releases wird auch die neueste Version von Chrome unterstützt.<br/>
@@ -96,9 +96,10 @@ Die Clientbibliothek für Telefonie von Communication Services unterstützt die 
 
 |           |Web | Android/iOS|
 |-----------|----|------------|
-|**Anzahl der ausgehenden Datenströme, die gleichzeitig gesendet werden können.** |1 Video- und 1 Bildschirmfreigabe | 1 Video |
-|**Anzahl der eingehenden Datenströme, die gleichzeitig gerendert werden können.** |1 Video- und 1 Bildschirmfreigabe| 6 Video- und 1 Bildschirmfreigabe |
+|**Anzahl der ausgehenden Datenströme, die gleichzeitig gesendet werden können.** |1 Audio-/Videostream oder 1 Audio-/Bildschirmfreigabe | 1 Audio-/Videostream | 
+|**Anzahl der eingehenden Datenströme, die gleichzeitig gerendert werden können.** |1 Audio-/Videostream oder 1 Audio-/Bildschirmfreigabe| 6 Audio-/Videostreams oder 1 Bildschirmfreigabe |
 
+Beachten Sie, dass in Gruppenszenarien ein gemischter Audiostream zur Unterstützung aller Audioteilnehmer verwendet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -106,6 +107,6 @@ Die Clientbibliothek für Telefonie von Communication Services unterstützt die 
 > [Erste Schritte mit Anrufen](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
-- Machen Sie sich mit allgemeinen [Anrufflows](../call-flows.md) vertraut.
+- Machen Sie sich mit allgemeinen [Anrufflows](../call-flows.md) vertraut. 
 - Informieren Sie sich über [Anruftypen](../voice-video-calling/about-call-types.md).
-- [Planen Sie Ihre PSTN-Lösung.](../telephony-sms/plan-solution.md)
+- Weitere Informationen zu Telefonnummerntypen finden Sie [hier](../telephony-sms/plan-solution.md).

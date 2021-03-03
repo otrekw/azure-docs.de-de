@@ -6,26 +6,28 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/23/2020
-ms.openlocfilehash: 4c964f3661e120026189a75d331e6db975b41c70
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.date: 02/11/2021
+ms.openlocfilehash: 1857eab485e8651c05959f82cf11e69b6353c575
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756074"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673526"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Anmeldeinformationen für die Quellenauthentifizierung in Azure Purview
 
-In diesem Artikel wird beschrieben, wie Sie Anmeldeinformationen in Azure Purview erstellen können, um gespeicherte Authentifizierungsinformationen schnell wiederverwenden und auf Ihre Datenquellenüberprüfungen anwenden zu können.
+In diesem Artikel wird beschrieben, wie Sie in Azure Purview Anmeldeinformationen erstellen. Mithilfe dieser gespeicherten Anmeldeinformationen können Sie gespeicherte Authentifizierungsinformationen schnell wiederverwenden und auf Ihre Datenquellenüberprüfungen anwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Schlüsseltresor. Informationen zur Erstellung finden Sie unter [Schnellstart: Erstellen eines Schlüsseltresors über das Azure-Portal](../key-vault/general/quick-create-portal.md).
+- Ein Azure-Schlüsseltresor. Informationen zur Erstellung finden Sie unter [Schnellstart: Erstellen eines Schlüsseltresors über das Azure-Portal](../key-vault/general/quick-create-portal.md).
 
 ## <a name="introduction"></a>Einführung
-Bei Anmeldeinformationen handelt es sich um Informationen für die Authentifizierung, die von Azure Purview für die Authentifizierung bei Ihren registrierten Datenquellen genutzt werden können. Ein Objekt für Anmeldeinformationen kann für verschiedene Arten von Authentifizierungsszenarien (z. B. Standardauthentifizierung mit Benutzername/Kennwort) erstellt werden. Hierfür werden basierend auf der ausgewählten Authentifizierungsmethode die erforderlichen spezifischen Informationen erfasst. Für die Anmeldeinformationen werden Ihre vorhandenen Azure Key Vault-Geheimnisse verwendet, um bei der Erstellung der Anmeldeinformationen vertrauliche Authentifizierungsinformationen abzurufen.
 
-## <a name="using-purview-managed-identity-to-set-up-scans"></a>Verwenden einer verwalteten Purview-Identität zum Einrichten von Überprüfungen
+Bei Anmeldeinformationen handelt es sich um Informationen für die Authentifizierung, die von Azure Purview für die Authentifizierung bei Ihren registrierten Datenquellen genutzt werden können. Ein Objekt mit Anmeldeinformationen kann für verschiedene Arten von Authentifizierungsszenarien erstellt werden, z. B. die Standardauthentifizierung mit Benutzername und Kennwort. In den Anmeldeinformationen werden spezifische Informationen erfasst, die je nach der ausgewählten Authentifizierungsmethode für die Authentifizierung erforderlich sind. Für die Anmeldeinformationen werden Ihre vorhandenen Azure Key Vault-Geheimnisse verwendet, um bei der Erstellung der Anmeldeinformationen vertrauliche Authentifizierungsinformationen abzurufen.
+
+## <a name="use-purview-managed-identity-to-set-up-scans"></a>Verwenden einer verwalteten Purview-Identität zum Einrichten von Überprüfungen
+
 Wenn Sie die verwaltete Purview-Identität zum Einrichten von Überprüfungen verwenden, müssen Sie nicht explizit Anmeldeinformationen erstellen und Ihren Schlüsseltresor für die Speicherung nicht mit Purview verknüpfen. Eine ausführliche Anleitung zum Hinzufügen der verwalteten Purview-Identität, um den Zugriff auf die Überprüfung Ihrer Datenquellen zu ermöglichen, finden Sie unten in den Abschnitten zur Authentifizierung von Datenquellen:
 
 - [Azure Blob Storage](register-scan-azure-blob-storage-source.md#setting-up-authentication-for-a-scan)
@@ -39,64 +41,88 @@ Wenn Sie die verwaltete Purview-Identität zum Einrichten von Überprüfungen ve
 
 Bevor Sie Anmeldeinformationen erstellen können, müssen Sie Ihrem Azure Purview-Konto mindestens eine Ihrer vorhandenen Azure Key Vault-Instanzen zuordnen.
 
-1. Navigieren Sie über das Azure Purview-Navigationsmenü zum Verwaltungscenter und dann zu den Anmeldeinformationen.
+1. Wählen Sie Ihr Azure Purview-Konto im [Azure-Portal](https://portal.azure.com) aus. Navigieren Sie zum **Verwaltungscenter** und dann zu den **Anmeldeinformationen**.
 
-2. Wählen Sie in der Befehlsleiste unter „Anmeldeinformationen“ die Option „Manage Key Vault Connections“ (Key Vault-Verbindungen verwalten) aus.
+2. Wählen Sie auf der Seite **Anmeldeinformationen** die Option **Manage Key Vault Connections** (Key Vault-Verbindungen verwalten) aus.
 
-    :::image type="content" source="media/manage-credentials/manage-kv-connections.png" alt-text="Verwalten von AKV-Verbindungen":::
+   :::image type="content" source="media/manage-credentials/manage-kv-connections.png" alt-text="Verwalten von Azure Key Vault-Verbindungen":::
 
-3. Wählen Sie im Bereich „Manage Key Vault Connections“ (Key Vault-Verbindungen verwalten) die Option „+ Neu“ aus. 
+3. Wählen Sie auf der Seite zum Verwalten Ihrer Key Vault-Verbindungen die Option **+ Neu** aus.
 
-4. Geben Sie die erforderlichen Informationen ein, und wählen Sie anschließend „Erstellen“ aus.
+4. Geben Sie die erforderlichen Informationen ein, und wählen Sie anschließend **Erstellen** aus.
 
-5. Vergewissern Sie sich, dass die Zuordnung Ihrer Key Vault-Instanz zu Ihrem Azure Purview-Konto erfolgreich war.
+5. Vergewissern Sie sich, dass die Zuordnung Ihrer Key Vault-Instanz zu Ihrem Azure Purview-Konto wie im folgenden Beispiel erfolgreich war:
 
-    :::image type="content" source="media/manage-credentials/view-kv-connections.png" alt-text="Anzeigen von AKV-Verbindungen":::
+   :::image type="content" source="media/manage-credentials/view-kv-connections.png" alt-text="Anzeigen der Azure Key Vault-Verbindungen zur Bestätigung":::
 
 ## <a name="grant-the-purview-managed-identity-access-to-your-azure-key-vault"></a>Gewähren des Zugriffs auf Ihre Azure Key Vault-Instanz für die verwaltete Purview-Identität
 
-Navigieren Sie zu Ihrem Schlüsseltresor, und wählen Sie „Zugriffsrichtlinien“ > „Zugriffsrichtlinie hinzufügen“ aus. Gewähren Sie in der Dropdownliste für die Geheimnisberechtigungen die Berechtigung zum Abrufen (Get), und wählen Sie „Prinzipal“ als MSI für Purview aus. 
+1. Navigieren Sie zu Ihrer Azure Key Vault-Instanz.
 
-:::image type="content" source="media/manage-credentials/add-msi-to-akv.png" alt-text="Hinzufügen des MSI für Purview zu AKV":::
+2. Wählen Sie die Seite **Zugriffsrichtlinien** aus.
 
+3. Wählen Sie **Zugriffsrichtlinie hinzufügen** aus.
 
-:::image type="content" source="media/manage-credentials/add-access-policy.png" alt-text="Zugriffsrichtlinie hinzufügen":::
+   :::image type="content" source="media/manage-credentials/add-msi-to-akv.png" alt-text="Hinzufügen des MSI für Purview zu AKV":::
 
+4. Wählen Sie in der Dropdownliste **Secrets permissions** (Geheimnisberechtigungen) die Berechtigungen **Get** und **List** aus.
 
-:::image type="content" source="media/manage-credentials/save-access-policy.png" alt-text="Speichern der Zugriffsrichtlinie":::
+5. Wählen Sie für **Prinzipal auswählen** die verwaltete Purview-Identität aus. Sie können die Purview-MSI entweder mithilfe des Purview-Instanznamens **oder** der Anwendungs-ID der verwalteten Identität suchen. Verbundidentitäten (Name der verwalteten Identität + Anwendungs-ID) werden zurzeit nicht unterstützt.
+
+   :::image type="content" source="media/manage-credentials/add-access-policy.png" alt-text="Zugriffsrichtlinie hinzufügen":::
+
+6. Wählen Sie **Hinzufügen**.
+
+7. Wählen Sie **Speichern** aus, um die Zugriffsrichtlinie zu speichern.
+
+   :::image type="content" source="media/manage-credentials/save-access-policy.png" alt-text="Speichern der Zugriffsrichtlinie":::
 
 ## <a name="create-a-new-credential"></a>Erstellen von neuen Anmeldeinformationen
 
-Derzeit werden für Purview die folgenden Arten von Anmeldeinformationen unterstützt:
-* Standardauthentifizierung: Sie fügen das **Kennwort** dem Schlüsseltresor als Geheimnis hinzu.
-* Dienstprinzipal: Sie fügen den **Dienstprinzipalschlüssel** dem Schlüsseltresor als Geheimnis hinzu. 
-* SQL-Authentifizierung: Sie fügen das **Kennwort** dem Schlüsseltresor als Geheimnis hinzu.
-* Kontoschlüssel: Sie fügen den **Kontoschlüssel** dem Schlüsseltresor als Geheimnis hinzu.
+Die folgenden Typen von Anmeldeinformationen werden in Purview unterstützt:
 
-Weitere Informationen finden Sie unter [Hinzufügen eines Geheimnisses in Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
+- Standardauthentifizierung: Sie fügen das **Kennwort** dem Schlüsseltresor als Geheimnis hinzu.
+- Dienstprinzipal: Sie fügen den **Dienstprinzipalschlüssel** dem Schlüsseltresor als Geheimnis hinzu.
+- SQL-Authentifizierung: Sie fügen das **Kennwort** dem Schlüsseltresor als Geheimnis hinzu.
+- Kontoschlüssel: Sie fügen den **Kontoschlüssel** dem Schlüsseltresor als Geheimnis hinzu.
+- Rollen-ARN: Fügen Sie für eine Amazon S3-Datenquelle Ihren **Rollen-ARN** in AWS hinzu. 
 
-Nachdem Sie Ihre Geheimnisse in Ihrem Schlüsseltresor gespeichert haben, erstellen Sie Ihre neuen Anmeldeinformationen, indem Sie in der Befehlsleiste für die Anmeldeinformationen die Option „+ Neu“ auswählen. Geben Sie die erforderlichen Informationen an, z. B. die Authentifizierungsmethode und eine Key Vault-Instanz für die Auswahl eines Geheimnisses. Klicken Sie auf „Erstellen“, nachdem Sie alle Details eingegeben haben.
+Weitere Informationen finden Sie unter [Hinzufügen eines Geheimnisses zu Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) und [Erstellen einer neuen AWS-Rolle für Purview](register-scan-amazon-s3.md#create-a-new-aws-role-for-purview).
 
-:::image type="content" source="media/manage-credentials/new-credential.png" alt-text="Neue Anmeldeinformationen":::
+Nach dem Speichern Ihrer Geheimnisse in Key Vault:
 
-Vergewissern Sie sich, dass Ihre neuen Anmeldeinformationen in der entsprechenden Liste angezeigt werden und einsatzbereit sind.
+1. Wechseln Sie in Azure Purview zur Seite „Anmeldeinformationen“.
 
-:::image type="content" source="media/manage-credentials/view-credentials.png" alt-text="Anzeigen von Anmeldeinformationen":::
+2. Erstellen Sie Ihre neuen Anmeldeinformationen, indem Sie **+ Neu** auswählen.
+
+3. Geben Sie die erforderlichen Informationen an. Wählen Sie die **Authentifizierungsmethode** und eine **Key Vault-Verbindung** aus, von der Sie ein Geheimnis auswählen möchten.
+
+4. Wählen Sie **Erstellen** aus, nachdem Sie alle Details eingegeben haben.
+
+   :::image type="content" source="media/manage-credentials/new-credential.png" alt-text="Neue Anmeldeinformationen":::
+
+5. Vergewissern Sie sich, dass Ihre neuen Anmeldeinformationen in der Liste angezeigt werden und einsatzbereit sind.
+
+   :::image type="content" source="media/manage-credentials/view-credentials.png" alt-text="Anzeigen von Anmeldeinformationen":::
 
 ## <a name="manage-your-key-vault-connections"></a>Verwalten Ihrer Key Vault-Verbindungen
 
 1. Suchen/Finden von Key Vault-Verbindungen anhand des Namens
 
-    :::image type="content" source="media/manage-credentials/search-kv.png" alt-text="Schlüsseltresor suchen":::
+   :::image type="content" source="media/manage-credentials/search-kv.png" alt-text="Schlüsseltresor suchen":::
 
-1. Löschen von Key Vault-Verbindungen
- 
-    :::image type="content" source="media/manage-credentials/delete-kv.png" alt-text="Löschen von Schlüsseltresoren":::
+2. Löschen von Key Vault-Verbindungen
+
+   :::image type="content" source="media/manage-credentials/delete-kv.png" alt-text="Löschen von Schlüsseltresoren":::
 
 ## <a name="manage-your-credentials"></a>Verwalten Ihrer Anmeldeinformationen
 
 1. Suchen/Finden von Anmeldeinformationen anhand des Namens
   
-2. Auswählen und Durchführen von Updates für vorhandene Anmeldeinformationen
+2. Auswählen und Aktualisieren vorhandener Anmeldeinformationen
 
 3. Löschen von Anmeldeinformationen
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[Erstellen eines Überprüfungsregelsatzes](create-a-scan-rule-set.md)

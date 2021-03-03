@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f9ea8b1c1346deee9fed591493607270f18ad5b
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 94fd488ceb7ddb3724dd576c97c9070481e95147
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547762"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365632"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Best Practices für B2B-Funktionen in Azure Active Directory
 Dieser Artikel enthält Empfehlungen und Best Practices für die B2B-Zusammenarbeit (Business-to-Business) in Azure Active Directory (Azure AD).
 
    > [!IMPORTANT]
-   > **Ab März 2021** wird das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten („viral“ oder „just in time“) für B2B-Zusammenarbeitsszenarien von Microsoft nicht mehr unterstützt. Zu diesem Zeitpunkt wird das Feature für die Einmalkennung per E-Mail für alle vorhandenen Mandanten aktiviert und für neue Mandanten standardmäßig aktiviert. Wir aktivieren das Feature für die Einmalkennung per E-Mail, da es eine nahtlose Fallbackauthentifizierungsmethode für Ihre Gastbenutzer bietet. Sie können dieses Feature jedoch deaktivieren, wenn Sie es nicht verwenden möchten. Weitere Informationen finden Sie unter [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md).
+   > **Ab Oktober 2021** wird das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten („viral“ oder „just in time“) für B2B Collaboration-Szenarien von Microsoft nicht mehr unterstützt. Zu diesem Zeitpunkt wird das Feature für die Einmalkennung per E-Mail für alle vorhandenen Mandanten aktiviert und für neue Mandanten standardmäßig aktiviert. Wir aktivieren das Feature für die Einmalkennung per E-Mail, da es eine nahtlose Fallbackauthentifizierungsmethode für Ihre Gastbenutzer bietet. Sie können dieses Feature jedoch deaktivieren, wenn Sie es nicht verwenden möchten. Weitere Informationen finden Sie unter [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md).
 
 
 ## <a name="b2b-recommendations"></a>B2B-Empfehlungen

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a249102de6a5bff7354e339e604b7d2efebd4fb
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 747fa3005930414832878757664f4787157302d5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546170"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645822"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Aktivieren der externen B2B-Zusammenarbeit und Steuern, wer Gäste einladen kann
 
@@ -45,8 +45,6 @@ Per Standardeinstellung können alle Benutzer, einschließlich Gäste, Gastbenut
 
 4. Wählen Sie unter **Zugriffseinschränkungen für Gastbenutzer (Vorschau)** die Zugriffsebene aus, die Gastbenutzern zugewiesen werden soll:
   
-    ![Einstellungen für Zugriffseinschränkungen für Gastbenutzer](./media/delegate-invitations/guest-user-access.png)
-
    - **Gastbenutzer haben denselben Zugriff wie Mitglieder (umfassendste Einstellung)** : Diese Option gibt Gästen den gleichen Zugriff auf die Ressourcen und Verzeichnisdaten von Azure AD wie Mitgliedsbenutzern.
 
    - **Gastbenutzer haben eingeschränkten Zugriff auf Eigenschaften und Mitgliedschaften von Verzeichnisobjekten**: (Standard) Diese Einstellung verhindert, dass Gäste bestimmte Verzeichnisaufgaben ausführen können, z. B. Benutzer, Gruppen oder andere Verzeichnisressourcen aufzulisten. Gäste können die Mitgliedschaft in allen nicht ausgeblendeten Gruppen anzeigen.
@@ -69,24 +67,22 @@ Per Standardeinstellung können alle Benutzer, einschließlich Gäste, Gastbenut
 
 6. Wählen Sie unter **E-Mail-Einmalkennung für Gäste** die entsprechenden Einstellungen aus (weitere Informationen finden Sie unter [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md)):
 
-   ![Einstellungen für die Einmalkennung per E-Mail](./media/delegate-invitations/email-otp-settings.png)
+   - **Einmalkennung per E-Mail für Gastbenutzer im Oktober 2021 automatisch aktivieren**. (Standardeinstellung) Wenn die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten noch nicht aktiviert ist, wird sie im Oktober 2021 automatisch aktiviert. Wenn die Funktion zu diesem Zeitpunkt aktiviert werden soll, ist keine weitere Aktion erforderlich. Wenn Sie die Funktion bereits aktiviert oder deaktiviert haben, ist diese Option nicht verfügbar.
 
-   - **Automatisches Aktivieren der E-Mail-Einmalkennung für Gäste im März 2021**. (Standard) Wenn die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten noch nicht aktiviert ist, wird sie im März 2021 automatisch aktiviert. Wenn die Funktion zu diesem Zeitpunkt aktiviert werden soll, ist keine weitere Aktion erforderlich. Wenn Sie die Funktion bereits aktiviert oder deaktiviert haben, ist diese Option nicht verfügbar.
+   - **Einmalkennung per E-Mail für Gastbenutzer sofort aktivieren**. Aktiviert die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten.
 
-   - **E-Mail-Einmalkennung für Gäste sofort aktivieren**. Aktiviert die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten.
-
-   - **E-Mail-Einmalkennung für Gäste deaktivieren**. Deaktiviert die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten und verhindert, dass die Funktion im März 2021 aktiviert wird.
+   - **Einmalkennung per E-Mail für Gastbenutzer deaktivieren**. Deaktiviert die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten und verhindert, dass die Funktion im Oktober 2021 aktiviert wird.
 
    > [!NOTE]
    > Anstelle der oben aufgeführten Optionen wird die folgende Umschaltfläche angezeigt, wenn Sie diese Funktion aktiviert bzw. deaktiviert oder zuvor die Vorschauversion genutzt haben:
    >
    >![Aktivieren der Einmalkennung per E-Mail für Nutzer der Vorschauversion](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-7. Wählen Sie unter **Self-Service-Registrierung von Gästen über Benutzerflows aktivieren (Vorschau)** die Option **Ja** aus, wenn Sie Benutzerflows erstellen möchten, über die sich Benutzer für Apps registrieren können. Weitere Informationen zu dieser Einstellung finden Sie unter [Hinzufügen eines Benutzerflows für die Self-Service-Registrierung zu einer App (Vorschau)](self-service-sign-up-user-flow.md).
+7. Wählen Sie unter **Self-Service-Registrierung von Gästen über Benutzerflows aktivieren** die Option **Ja** aus, wenn Sie Benutzerflows erstellen möchten, über die sich Benutzer für Apps registrieren können. Weitere Informationen zu dieser Einstellung finden Sie unter [Hinzufügen eines Benutzerflows für die Self-Service-Registrierung zu einer App](self-service-sign-up-user-flow.md).
 
     ![Einstellung „Self-Service-Registrierung über Benutzerflow“](./media/delegate-invitations/self-service-sign-up-setting.png)
 
-7. Wählen Sie unter **Einschränkungen für die Zusammenarbeit** aus, ob Sie Einladungen zu bestimmten Domänen zulassen oder verweigern möchten. Weitere Informationen finden Sie unter [Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen](allow-deny-list.md).
+7. Unter **Einschränkungen für die Zusammenarbeit** können Sie auswählen, ob Sie Einladungen für die von Ihnen angegebenen Domänen zulassen oder verweigern möchten. Sie können außerdem in den Textfeldern bestimmte Domänennamen eingeben. Geben Sie für mehrere Domänen jede Domäne in einer neuen Zeile ein. Weitere Informationen finden Sie unter [Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen](allow-deny-list.md).
 
     ![Einstellungen für die Einschränkung der Zusammenarbeit](./media/delegate-invitations/collaboration-restrictions.png)
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>Zuweisen der Rolle „Gasteinladender“ an einen Benutzer

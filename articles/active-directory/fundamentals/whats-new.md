@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c835ddcee332499ef7853d0d2fa4fcdbcf8a1cf
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: c767d114ad6a1b5cb8b9c6bf4c0fe4f2ccd1dae6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988864"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650123"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Neuerungen in Azure Active Directory
 
@@ -181,7 +181,7 @@ Weitere Informationen finden Sie unter [Was versteht man unter der automatischen
 
 Im Januar 2021 haben wir die folgenden 29 neuen Anwendungen mit Verbundunterstützung in unseren Anwendungskatalog aufgenommen:
 
-[mySCView](https://dev.myscview.com/), [Talentech](https://talentech.com/contact/), [Bipsync](https://www.bipsync.com/), [OroTimesheet](https://app.orotimesheet.com/login.php), [Mio](https://app.m.io/auth/install/microsoft?scopetype=hub), [Sovelto Easy](https://login.soveltoeasy.fi/), [Supportbench](https://account.supportbench.net/agent/login/),[Bienvenue Formation](https://formation.bienvenue.pro/login), [AIDA Healthcare SSO](https://aidaforparents.com/login/organizations), [International SOS Assistance Products](../saas-apps/international-sos-assistance-products-tutorial.md), [NAVEX One](../saas-apps/navex-one-tutorial.md), [LabLog](../saas-apps/lablog-tutorial.md), [Oktopost SAML](../saas-apps/oktopost-saml-tutorial.md), [EPHOTO DAM](../saas-apps/ephoto-dam-tutorial.md), [Notion](../saas-apps/notion-tutorial.md), [Syndio](../saas-apps/syndio-tutorial.md), [Yello Enterprise](../saas-apps/yello-enterprise-tutorial.md), [Timeclock 365 SAML](../saas-apps/timeclock-365-saml-tutorial.md), [Nalco E-data](https://www.ecolab.com/), [Vacancy Filler](https://app.vacancy-filler.co.uk/VFMVC/Account/Login), [Synerise AI Growth Ecosystem](../saas-apps/synerise-ai-growth-ecosystem-tutorial.md), [Imperva Data Security](../saas-apps/imperva-data-security-tutorial.md), [Illusive Networks](../saas-apps/illusive-networks-tutorial.md), [Proware](../saas-apps/proware-tutorial.md), [Splan Visitor](../saas-apps/splan-visitor-tutorial.md), [Aruba User Experience Insight](../saas-apps/aruba-user-experience-insight-tutorial.md), [Contentsquare SSO](../saas-apps/contentsquare-sso-tutorial.md), [Perimeter 81](../saas-apps/perimeter-81-tutorial.md), [Burp Suite Enterprise Edition](https://docs.microsoft.com/azure/active-directory/saas-apps/burp-suite-enterprise-edition-tutorial)
+[mySCView](https://dev.myscview.com/), [Talentech](https://talentech.com/contact/), [Bipsync](https://www.bipsync.com/), [OroTimesheet](https://app.orotimesheet.com/login.php), [Mio](https://app.m.io/auth/install/microsoft?scopetype=hub), [Sovelto Easy](https://login.soveltoeasy.fi/), [Supportbench](https://account.supportbench.net/agent/login/),[Bienvenue Formation](https://formation.bienvenue.pro/login), [AIDA Healthcare SSO](https://aidaforparents.com/login/organizations), [International SOS Assistance Products](../saas-apps/international-sos-assistance-products-tutorial.md), [NAVEX One](../saas-apps/navex-one-tutorial.md), [LabLog](../saas-apps/lablog-tutorial.md), [Oktopost SAML](../saas-apps/oktopost-saml-tutorial.md), [EPHOTO DAM](../saas-apps/ephoto-dam-tutorial.md), [Notion](../saas-apps/notion-tutorial.md), [Syndio](../saas-apps/syndio-tutorial.md), [Yello Enterprise](../saas-apps/yello-enterprise-tutorial.md), [Timeclock 365 SAML](../saas-apps/timeclock-365-saml-tutorial.md), [Nalco E-data](https://www.ecolab.com/), [Vacancy Filler](https://app.vacancy-filler.co.uk/VFMVC/Account/Login), [Synerise AI Growth Ecosystem](../saas-apps/synerise-ai-growth-ecosystem-tutorial.md), [Imperva Data Security](../saas-apps/imperva-data-security-tutorial.md), [Illusive Networks](../saas-apps/illusive-networks-tutorial.md), [Proware](../saas-apps/proware-tutorial.md), [Splan Visitor](../saas-apps/splan-visitor-tutorial.md), [Aruba User Experience Insight](../saas-apps/aruba-user-experience-insight-tutorial.md), [Contentsquare SSO](../saas-apps/contentsquare-sso-tutorial.md), [Perimeter 81](../saas-apps/perimeter-81-tutorial.md), [Burp Suite Enterprise Edition](../saas-apps/burp-suite-enterprise-edition-tutorial.md)
 
 Die Dokumentation zu allen Anwendungen finden Sie auch hier: https://aka.ms/AppsTutorial.
 
@@ -806,11 +806,11 @@ Die Azure AD Connect-Cloudbereitstellungsaktualisierung (Public Preview) bietet
 
 - Attributzuordnung über das Azure-Portal
 
-    Mit diesem Feature können IT-Administratoren Benutzer-, Gruppen- oder Kontaktattribute aus AD in Azure AD mithilfe verschiedener Zuordnungstypen zuordnen, die heute vorhanden sind. Die Attributzuordnung ist eine Funktion zum Standardisieren von Werten der Attribute, die von Active Directory an Azure Active Directory übertragen werden. Sie können bestimmen, ob der Attributwert von AD direkt Azure AD zugeordnet werden soll oder ob Ausdrücke verwendet werden sollen, um die Attributwerte beim Bereitstellen von Benutzern zu transformieren. [Weitere Informationen](../cloud-provisioning/how-to-attribute-mapping.md)
+    Mit diesem Feature können IT-Administratoren Benutzer-, Gruppen- oder Kontaktattribute aus AD in Azure AD mithilfe verschiedener Zuordnungstypen zuordnen, die heute vorhanden sind. Die Attributzuordnung ist eine Funktion zum Standardisieren von Werten der Attribute, die von Active Directory an Azure Active Directory übertragen werden. Sie können bestimmen, ob der Attributwert von AD direkt Azure AD zugeordnet werden soll oder ob Ausdrücke verwendet werden sollen, um die Attributwerte beim Bereitstellen von Benutzern zu transformieren. [Weitere Informationen](../cloud-sync/how-to-attribute-mapping.md)
 
 - Bedarfsgesteuerte Bereitstellung oder Testen der Benutzertransformation
 
-    Nachdem Sie Ihre Konfiguration eingerichtet haben, möchten Sie vermutlich testen, ob die Benutzertransformation wie erwartet funktioniert, bevor Sie diese auf alle Ihre Benutzer im Bereich anwenden. Bei der bedarfsgesteuerten Bereitstellung können IT-Administratoren den Distinguished Name (DN) eines AD-Benutzers eingeben und überprüfen, ob er wie erwartet synchronisiert wird. Die bedarfsgesteuerte Bereitstellung bietet eine gute Möglichkeit, um sicherzustellen, dass die Attributzuordnungen, die Sie zuvor vorgenommen haben, erwartungsgemäß funktionieren. [Weitere Informationen](../cloud-provisioning/how-to-on-demand-provision.md)
+    Nachdem Sie Ihre Konfiguration eingerichtet haben, möchten Sie vermutlich testen, ob die Benutzertransformation wie erwartet funktioniert, bevor Sie diese auf alle Ihre Benutzer im Bereich anwenden. Bei der bedarfsgesteuerten Bereitstellung können IT-Administratoren den Distinguished Name (DN) eines AD-Benutzers eingeben und überprüfen, ob er wie erwartet synchronisiert wird. Die bedarfsgesteuerte Bereitstellung bietet eine gute Möglichkeit, um sicherzustellen, dass die Attributzuordnungen, die Sie zuvor vorgenommen haben, erwartungsgemäß funktionieren. [Weitere Informationen](../cloud-sync/how-to-on-demand-provision.md)
  
 ---
 
@@ -1139,6 +1139,3 @@ Zuvor konnte nur der globale Administrator die [Erweiterungseigenschaft](/graph/
 Ein [Hotfixrollup-Paket (Build 4.6.263.0)](https://support.microsoft.com/help/4576473/hotfix-rollup-package-build-4-6-263-0-is-available-for-microsoft-ident) ist für Microsoft Identity Manager (MIM) 2016 Service Pack 2 (SP2) verfügbar. Dieses Rollup-Paket enthält Updates für die Microsoft Identity Manager-Zertifikatverwaltung (Microsoft Identity Manager Certificate Management, MIM CM), den MIM-Synchronisierungs-Manager und die PAM-Komponenten (Privileged Access Management). Außerdem enthält der Build der MIM-generischen Connectors 1.1.1301.0 Updates für den Graph-Connector.
 
 ---
- 
-
-

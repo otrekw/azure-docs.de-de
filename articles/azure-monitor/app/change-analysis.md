@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 133a7d9b3fa04797648fa253825505d29e37ca98
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 0f541df091733c081c77e41ebff4d0d0d93dca96
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576392"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573919"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Verwenden der Anwendungsänderungsanalyse (Vorschau) in Azure Monitor
 
@@ -37,8 +37,8 @@ Der Dienst für die Anwendungsänderungsanalyse unterstützt Änderungen auf der
 - App Service
 - Azure Kubernetes Service
 - Azure Function
-- Netzwerkressourcen (z. B. Netzwerksicherheitsgruppe, Virtual Network und Application Gateway)
-- Datendienste (z. B. Azure Storage, SQL, Redis Cache, Cosmos DB)
+- Netzwerkressourcen: Netzwerksicherheitsgruppe, Virtual Network, Application Gateway usw.
+- Datendienste: Azure Storage, SQL, Redis Cache, Cosmos DB usw.
 
 ## <a name="data-sources"></a>Datenquellen
 
@@ -60,24 +60,29 @@ Die Änderungsanalyse erfasst alle vier Stunden den Bereitstellungs- und Konfigu
 
 ### <a name="dependency-changes"></a>Abhängigkeitsänderungen
 
-Änderungen an Ressourcenabhängigkeiten können ebenfalls zu Problemen in einer Ressource führen. Wenn eine Web-App beispielsweise Aufrufe an einen Redis Cache richtet, kann die Web-App-Leistung durch die Redis Cache-SKU beeinträchtigt werden. Weitere Beispiel: Wenn Port 22 in der Netzwerksicherheitsgruppe eines virtuellen Computers geschlossen wurde, führt dies zu Verbindungsfehlern. 
+Änderungen an Ressourcenabhängigkeiten können ebenfalls zu Problemen in einer Ressource führen. Wenn eine Web-App beispielsweise Aufrufe an einen Redis Cache richtet, kann die Web-App-Leistung durch die Redis Cache-SKU beeinträchtigt werden. Weitere Beispiel: Wenn Port 22 in der Netzwerksicherheitsgruppe eines virtuellen Computers geschlossen wurde, führt dies zu Verbindungsfehlern.
 
 #### <a name="web-app-diagnose-and-solve-problems-navigator-preview"></a>Web-App-Navigator für die Diagnose und Problembehandlung (Vorschauversion)
+
 Zum Erkennen von Änderungen bei Abhängigkeiten überprüft die Änderungsanalyse dem DNS-Eintrag der Web-App. Auf diese Weise identifiziert sie Änderungen in allen App-Komponenten, die Probleme verursachen könnten.
 Derzeit werden die folgenden Abhängigkeiten im **Web-App-Navigator für die Diagnose und Problembehandlung (Vorschauversion)** unterstützt:
+
 - Web-Apps
 - Azure Storage
 - Azure SQL
 
 #### <a name="related-resources"></a>Zugehörige Ressourcen
-Die Anwendungsänderungsanalyse erkennt zugehörige Ressourcen. Gängige Beispiele sind Netzwerksicherheitsgruppen, das Virtual Network, Application Gateway und Load Balancer im Zusammenhang mit einem virtuellen Computer. Die Netzwerkressourcen werden in der Regel automatisch in derselben Ressourcengruppe wie die Ressourcen bereitgestellt, die sie verwenden. Wenn Sie die Änderungen also nach Ressourcengruppe filtern, werden alle Änderungen für den virtuellen Computer und die zugehörigen Netzwerkressourcen angezeigt.
+
+Die Anwendungsänderungsanalyse erkennt zugehörige Ressourcen. Gängige Beispiele sind Netzwerksicherheitsgruppen, das Virtual Network, Application Gateway und Load Balancer im Zusammenhang mit einem virtuellen Computer.
+Die Netzwerkressourcen werden in der Regel automatisch in derselben Ressourcengruppe wie die Ressourcen bereitgestellt, die sie verwenden. Wenn Sie die Änderungen also nach Ressourcengruppe filtern, werden alle Änderungen für den virtuellen Computer und die zugehörigen Netzwerkressourcen angezeigt.
 
 ![Screenshot: Netzwerkänderungen](./media/change-analysis/network-changes.png)
 
 ## <a name="application-change-analysis-service-enablement"></a>Aktivieren des Anwendungsänderungsanalyse-Diensts
 
 Der Anwendungsänderungsanalyse-Dienst berechnet und aggregiert Änderungsdaten aus den oben erwähnten Datenquellen. Er bietet eine Reihe von Analysen für Benutzer, um bequem durch alle Ressourcenänderungen zu navigieren und zu ermitteln, welche Änderung im Kontext der Problembehandlung oder Überwachung relevant ist.
-Der Ressourcenanbieter „Microsoft.ChangeAnalysis“ muss bei einem Abonnement registriert werden, damit die Daten zu nachverfolgten Änderungen und per Proxy übermittelten Einstellungsänderungen von Azure Resource Manager verfügbar sind. Wenn Sie das Diagnose- und Problembehandlungstool in der Web-App öffnen oder die eigenständige Registerkarte „Änderungsanalyse“ aufrufen, wird dieser Ressourcenanbieter automatisch registriert. Bei Web-App-Änderungen, die das Gastbetriebssystem betreffen, ist eine separate Aktivierung erforderlich, um Codedateien in einer Web-App zu überprüfen. Weitere Informationen finden Sie unter [Änderungsanalyse im Tool „Diagnose und Problembehandlung“](#application-change-analysis-in-the-diagnose-and-solve-problems-tool) weiter unten in diesem Artikel.
+Der Ressourcenanbieter „Microsoft.ChangeAnalysis“ muss bei einem Abonnement registriert werden, damit die Daten zu nachverfolgten Änderungen und per Proxy übermittelten Einstellungsänderungen von Azure Resource Manager verfügbar sind. Wenn Sie das Diagnose- und Problembehandlungstool in der Web-App öffnen oder die eigenständige Registerkarte „Änderungsanalyse“ aufrufen, wird dieser Ressourcenanbieter automatisch registriert.
+Bei Web-App-Änderungen, die das Gastbetriebssystem betreffen, ist eine separate Aktivierung erforderlich, um Codedateien in einer Web-App zu überprüfen. Weitere Informationen finden Sie unter [Änderungsanalyse im Tool „Diagnose und Problembehandlung“](change-analysis-visualizations.md#application-change-analysis-in-the-diagnose-and-solve-problems-tool) weiter unten in diesem Artikel.
 
 ## <a name="cost"></a>Cost
 Bei der Anwendungsänderungsanalyse handelt es sich um einen kostenlosen Dienst, der keine Kosten für Abonnements verursacht, in denen er aktiviert ist. Der Dienst hat auch keine Auswirkungen auf die Leistung beim Scannen von Änderungen der Azure-Ressourceneigenschaften. Wenn Sie die Änderungsanalyse für Gastdateiänderungen in Web-Apps aktivieren (oder die Aktivierung im Tool für die Diagnose und Problembehandlung vornehmen), hat dies nur geringfügige Auswirkungen auf die Leistung der Web-App und verursacht keinerlei Abrechnungskosten.
@@ -150,15 +155,14 @@ Wechseln Sie zum Diagnose- und Problembehandlungstool für einen virtuellen Comp
 ![Änderungsanalyse in Problembehandlungstools](./media/change-analysis/analyze-recent-changes.png)
 
 ### <a name="activity-log-change-history"></a>Änderungsverlauf im Aktivitätsprotokoll
-Die Funktion zum [Anzeigen des Änderungsverlaufs](../platform/activity-log.md#view-change-history) im Aktivitätsprotokoll ruft das Back-End des Anwendungsänderungsanalyse-Diensts auf, um Änderungen im Zusammenhang mit einem Vorgang abzurufen. Mit dem **Änderungsverlauf** wurde sonst [Azure Resource Graph](../../governance/resource-graph/overview.md) direkt aufgerufen, doch wurde das Back-End gegen einen Aufruf der Anwendungsänderungsanalyse getauscht, sodass in den zurückgegebenen Änderungen auch Änderungen auf Ressourcenebene aus [Azure Resource Graph](../../governance/resource-graph/overview.md), Ressourceneigenschaften aus [Azure Resource Manager](../../azure-resource-manager/management/overview.md) und Änderungen auf Gastsystemen aus PaaS-Diensten wie der App Services-Web-App enthalten sind. Damit der Anwendungsänderungsanalyse-Dienst nach Änderungen in den Abonnements der Benutzer suchen kann, muss ein Ressourcenanbieter registriert sein. Wenn Sie die Registerkarte **Änderungsverlauf** zum ersten Mal öffnen, beginnt das Tool automatisch mit der Registrierung des **Microsoft.ChangeAnalysis**-Ressourcenanbieters. Nach der Registrierung sind Änderungen aus **Azure Resource Graph** sofort verfügbar und decken die letzten 14 Tage ab. Änderungen aus anderen Quellen stehen ca. vier Stunden nach dem Onboarding des Abonnements zur Verfügung.
+Die Funktion zum [Anzeigen des Änderungsverlaufs](../essentials/activity-log.md#view-change-history) im Aktivitätsprotokoll ruft das Back-End des Anwendungsänderungsanalyse-Diensts auf, um Änderungen im Zusammenhang mit einem Vorgang abzurufen. Mit dem **Änderungsverlauf** wurde sonst [Azure Resource Graph](../../governance/resource-graph/overview.md) direkt aufgerufen, doch wurde das Back-End gegen einen Aufruf der Anwendungsänderungsanalyse getauscht, sodass in den zurückgegebenen Änderungen auch Änderungen auf Ressourcenebene aus [Azure Resource Graph](../../governance/resource-graph/overview.md), Ressourceneigenschaften aus [Azure Resource Manager](../../azure-resource-manager/management/overview.md) und Änderungen auf Gastsystemen aus PaaS-Diensten wie der App Services-Web-App enthalten sind. Damit der Anwendungsänderungsanalyse-Dienst nach Änderungen in den Abonnements der Benutzer suchen kann, muss ein Ressourcenanbieter registriert sein. Wenn Sie die Registerkarte **Änderungsverlauf** zum ersten Mal öffnen, beginnt das Tool automatisch mit der Registrierung des **Microsoft.ChangeAnalysis**-Ressourcenanbieters. Nach der Registrierung sind Änderungen aus **Azure Resource Graph** sofort verfügbar und decken die letzten 14 Tage ab. Änderungen aus anderen Quellen stehen ca. vier Stunden nach dem Onboarding des Abonnements zur Verfügung.
 
 ![Integration des Änderungsverlaufs im Aktivitätsprotokoll](./media/change-analysis/activity-log-change-history.png)
 
 ### <a name="vm-insights-integration"></a>VM Insights-Integration
-Benutzer, die [VM Insights](../insights/vminsights-overview.md) aktiviert haben, können Änderungen bei ihren virtuellen Computern anzeigen, die möglicherweise zu Spitzen in einem Metrikdiagramm, z. B. CPU oder Arbeitsspeicher, geführt haben. Änderungsdaten werden in die Seitennavigationsleiste von VM Insights eingefügt. Der Benutzer kann sehen, ob Änderungen bei der VM aufgetreten sind, und auf **Änderungen untersuchen** klicken, um Änderungsdetails auf der eigenständigen Benutzeroberfläche der Anwendungsänderungsanalyse anzuzeigen.
+Benutzer, die [VM Insights](../vm/vminsights-overview.md) aktiviert haben, können Änderungen bei ihren virtuellen Computern anzeigen, die möglicherweise zu Spitzen in einem Metrikdiagramm, z. B. CPU oder Arbeitsspeicher, geführt haben. Änderungsdaten werden in die Seitennavigationsleiste von VM Insights eingefügt. Der Benutzer kann sehen, ob Änderungen bei der VM aufgetreten sind, und auf **Änderungen untersuchen** klicken, um Änderungsdetails auf der eigenständigen Benutzeroberfläche der Anwendungsänderungsanalyse anzuzeigen.
 
 [![VM Insights-Integration](./media/change-analysis/vm-insights.png)](./media/change-analysis/vm-insights.png#lightbox)
-
 
 
 ## <a name="enable-change-analysis-at-scale"></a>Aktivieren der Änderungsanalyse in größerem Umfang
@@ -195,57 +199,9 @@ foreach ($webapp in $webapp_list)
 
 ```
 
-## <a name="troubleshoot"></a>Problembehandlung
-
-### <a name="having-trouble-registering-microsoftchange-analysis-resource-provider-from-change-history-tab"></a>Probleme beim Registrieren des Microsoft.ChangeAnalysis-Ressourcenanbieters auf der Registerkarte „Änderungsverlauf“
-Wenn Sie den Änderungsverlauf nach der Integration in die Anwendungsänderungsanalyse zum ersten Mal anzeigen, werden Sie feststellen, dass automatisch ein **Microsoft.ChangeAnalysis**-Ressourcenanbieter registriert wird. In seltenen Fällen kann dabei aus folgenden Gründen ein Fehler auftreten:
-
-- **Sie verfügen nicht über ausreichende Berechtigungen zum Registrieren des Microsoft.ChangeAnalysis-Ressourcenanbieters**. Diese Fehlermeldung bedeutet, dass Ihrer Rolle im aktuellen Abonnement der Bereich **Microsoft.Support/register/action** nicht zugeordnet ist. Dies kann vorkommen, wenn Sie nicht der Besitzer eines Abonnements sind und über einen Kollegen Berechtigungen für den gemeinsamen Zugriff erhalten haben, d. h. Anzeigezugriff für eine Ressourcengruppe. Um dieses Problem zu beheben, können Sie sich an den Besitzer Ihres Abonnements wenden, um den **Microsoft.ChangeAnalysis**-Ressourcenanbieter registrieren zu lassen. Dies kann im Azure-Portal erfolgen, indem **Abonnements | Ressourcenanbieter** aufgerufen, nach ```Microsoft.ChangeAnalysis``` gesucht und der Ressourcenanbieter auf der Benutzeroberfläche registriert wird. Dies ist auch über Azure PowerShell oder die Azure CLI möglich.
-
-    Registrieren des Ressourcenanbieters über PowerShell: 
-    ```PowerShell
-    # Register resource provider
-    Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
-    ```
-
-- **Fehler beim Registrieren des Microsoft.ChangeAnalysis-Ressourcenanbieters**. Diese Meldung bedeutet, dass beim Senden der Registrierungsanforderung durch die Benutzeroberfläche sofort ein Fehler aufgetreten ist und dieser nicht mit einem Berechtigungsproblem im Zusammenhang steht. Wahrscheinlich handelt es sich um ein vorübergehendes Problem mit der Internetverbindung. Aktualisieren Sie die Seite, und überprüfen Sie Ihre Internetverbindung. Wenn der Fehler weiterhin auftritt, wenden Sie sich an changeanalysishelp@microsoft.com.
-
-- **Der Vorgang dauert länger als erwartet**. Diese Meldung bedeutet, dass die Registrierung länger als zwei Minuten dauert. Dies ist ungewöhnlich, bedeutet aber nicht unbedingt, dass ein Fehler aufgetreten ist. Sie können zu **Abonnements | Ressourcenanbieter** navigieren, um den Registrierungsstatus für den **Microsoft.ChangeAnalysis**-Ressourcenanbieter zu prüfen. Sie können über die Benutzeroberfläche eine Aufhebung der Registrierung, Neuregistrierung oder Aktualisierung durchführen, um zu sehen, ob dadurch Abhilfe geschaffen wird. Wenn das Problem weiterhin besteht, wenden Sie sich an changeanalysishelp@microsoft.com, um Unterstützung zu erhalten.
-    ![Problembehandlung bei zu lange dauernder Registrierung des Ressourcenanbieters](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
-
-![Screenshot des Diagnose- und Problembehandlungstools für einen virtuellen Computer mit ausgewählten Problembehandlungstools](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
-
-![Screenshot der Kachel für das Problembehandlungstool zum Analysieren von aktuellen Änderungen für einen virtuellen Computer](./media/change-analysis/analyze-recent-changes.png)
-
-### <a name="azure-lighthouse-subscription-is-not-supported"></a>Azure Lighthouse-Abonnements werden nicht unterstützt.
-
-- **Fehler beim Abfragen des Microsoft.ChangeAnalysis-Ressourcenanbieters** mit der Meldung, dass das *Azure Lighthouse-Abonnement nicht unterstützt wird und die Änderungen nur im Basismandanten des Abonnements verfügbar sind*. Derzeit besteht eine Einschränkung für die Registrierung des Änderungsanalyse-Ressourcenanbieters über das Azure Lighthouse-Abonnement für Benutzer, die nicht dem Basismandanten angehören. Wir erwarten, dass diese Einschränkung in naher Zukunft behoben wird. Wenn Sie durch dieses Problem blockiert werden, gibt es eine Problemumgehung, die das Erstellen eines Dienstprinzipals und das explizite Zuweisen der Rolle zum Zulassen des Zugriffs umfasst.  Wenden Sie sich an changeanalysishelp@microsoft.com, um mehr darüber zu erfahren.
-
-### <a name="an-error-occurred-while-getting-changes-please-refresh-this-page-or-come-back-later-to-view-changes"></a>Fehler beim Abrufen von Änderungen. Aktualisieren Sie diese Seite, oder kehren Sie später zurück, um Änderungen anzuzeigen.
-
-Dies ist die allgemeine Fehlermeldung, die vom Anwendungsänderungsanalyse-Dienst angezeigt wird, wenn Änderungen nicht geladen werden konnten. Einige bekannte Ursachen sind:
-- Internetverbindungsfehler vom Clientgerät
-- Anwendungsänderungsanalyse-Dienst ist vorübergehend nicht verfügbar. Durch Aktualisieren der Seite nach einigen Minuten wird dieses Problem normalerweise behoben. Wenn der Fehler weiterhin auftritt, wenden Sie sich an changeanalysishelp@micorosoft.com.
-
-### <a name="you-dont-have-enough-permissions-to-view-some-changes-contact-your-azure-subscription-administrator"></a>Sie verfügen nicht über ausreichende Berechtigungen zum Anzeigen einiger Änderungen. Wenden Sie sich an Ihren Azure-Abonnementadministrator.
-
-Dies ist die allgemeine Fehlermeldung für fehlende Autorisierung, in der erläutert wird, dass der aktuelle Benutzer nicht über ausreichende Berechtigungen zum Anzeigen der Änderung verfügt. Es ist mindestens Lesezugriff für die Ressource erforderlich, um Infrastrukturänderungen anzuzeigen, die von Azure Resource Graph und Azure Resource Manager zurückgegeben werden. Bei Web-App-Dateiänderungen des Gastsystems und Konfigurationsänderungen ist mindestens die Rolle „Mitwirkender“ erforderlich.
-
-### <a name="failed-to-register-microsoftchangeanalysis-resource-provider"></a>Fehler beim Registrieren des Microsoft.ChangeAnalysis-Ressourcenanbieters
-Diese Meldung bedeutet, dass beim Senden der Registrierungsanforderung durch die Benutzeroberfläche sofort ein Fehler aufgetreten ist und dieser nicht mit einem Berechtigungsproblem im Zusammenhang steht. Wahrscheinlich handelt es sich um ein vorübergehendes Problem mit der Internetverbindung. Aktualisieren Sie die Seite, und überprüfen Sie Ihre Internetverbindung. Wenn der Fehler weiterhin auftritt, wenden Sie sich an changeanalysishelp@microsoft.com.
- 
-### <a name="you-dont-have-enough-permissions-to-register-microsoftchangeanalysis-resource-provider-contact-your-azure-subscription-administrator"></a>Sie verfügen nicht über ausreichende Berechtigungen zum Registrieren des Microsoft.ChangeAnalysis-Ressourcenanbieters. Wenden Sie sich an Ihren Azure-Abonnementadministrator.
-Diese Fehlermeldung bedeutet, dass Ihrer Rolle im aktuellen Abonnement der Bereich **Microsoft.Support/register/action** nicht zugeordnet ist. Dies kann vorkommen, wenn Sie nicht der Besitzer eines Abonnements sind und über einen Kollegen Berechtigungen für den gemeinsamen Zugriff erhalten haben, d. h. Anzeigezugriff für eine Ressourcengruppe. Um dieses Problem zu beheben, können Sie sich an den Besitzer Ihres Abonnements wenden, um den **Microsoft.ChangeAnalysis**-Ressourcenanbieter registrieren zu lassen. Dies kann im Azure-Portal erfolgen, indem **Abonnements | Ressourcenanbieter** aufgerufen, nach ```Microsoft.ChangeAnalysis``` gesucht und der Ressourcenanbieter auf der Benutzeroberfläche registriert wird. Dies ist auch über Azure PowerShell oder die Azure CLI möglich.
-
-Registrieren des Ressourcenanbieters über PowerShell: 
-
-```PowerShell
-# Register resource provider
-Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
-```
-
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Informationen zu [Visualisierungen in der Änderungsanalyse](change-analysis-visualizations.md)
+- Informationen zum [Behandeln von Problemen bei der Änderungsanalyse](change-analysis-troubleshoot.md)
 - Aktivieren von Application Insights für [Azure App Services-Apps](azure-web-apps.md)
 - Aktivieren von Application Insights für [in IIS gehostete virtuelle Azure-Computer und Azure-VM-Skalierungsgruppen](azure-vm-vmss-apps.md)
-- Erfahren Sie mehr über [Azure Resource Graph](../../governance/resource-graph/overview.md), der die Änderungsanalyse unterstützt.

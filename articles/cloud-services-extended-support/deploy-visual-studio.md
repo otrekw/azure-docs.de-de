@@ -9,12 +9,12 @@ ms.workload: azure-vs
 ms.topic: tutorial
 ms.date: 10/5/2020
 ms.author: ghogen
-ms.openlocfilehash: b12f8beeee054e547a6b58750d8482d32ee14453
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 80aa160c53b278137467dba2afa41384c7c4f378
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747256"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722669"
 ---
 # <a name="create-and-deploy-a-azure-cloud-service-extended-support-using-visual-studio"></a>Erstellen und Bereitstellen eines Azure-Clouddiensts (erweiterter Support) mithilfe von Visual Studio
 
@@ -63,7 +63,7 @@ Das Visual Studio-Azure-Projekt weist Zuordnungen zu den Rollenprojekten in der 
 - **Dienstdefinitionsdatei:** Definiert die Laufzeiteinstellungen für Ihre Anwendung wie etwa erforderliche Rollen, Endpunkte und Größe des virtuellen Computers.
 - **Dienstkonfigurationsdatei:** Konfiguriert, wie viele Instanzen einer Rolle ausgeführt werden, und die Werte der für eine Rolle definierten Einstellungen.
 
-Weitere Informationen zu diesen Dateien finden Sie unter [Konfigurieren der Rollen für einen Azure-Clouddienst mit Visual Studio](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service).
+Weitere Informationen zu diesen Dateien finden Sie unter [Konfigurieren der Rollen für einen Azure-Clouddienst mit Visual Studio](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service).
 
 ## <a name="publish-a-cloud-service"></a>Veröffentlichen eines Clouddiensts
 
@@ -75,7 +75,7 @@ Weitere Informationen zu diesen Dateien finden Sie unter [Konfigurieren der Roll
 
 1. **Konto**: Wählen Sie ein Konto aus, oder wählen Sie in der Konto-Dropdownliste **Konto hinzufügen** aus.
 
-1. **Abonnement wählen**: Wählen Sie das Abonnement aus, das Sie für Ihre Bereitstellung verwenden möchten. Dem Abonnement, das für die Bereitstellung von Cloud Services (erweiterter Support) verwendet wird, müssen über die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) Rollen vom Typ „Besitzer“ oder „Mitwirkender“ zugewiesen werden. Sollte Ihr Abonnement über keine dieser Rollen verfügen, erfahren Sie unter [Schritte zum Hinzufügen einer Rollenzuweisung](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-steps), wie Sie sie hinzufügen. Anschließend können Sie mit diesem Artikel fortfahren.
+1. **Abonnement wählen**: Wählen Sie das Abonnement aus, das Sie für Ihre Bereitstellung verwenden möchten. Dem Abonnement, das für die Bereitstellung von Cloud Services (erweiterter Support) verwendet wird, müssen über die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) Rollen vom Typ „Besitzer“ oder „Mitwirkender“ zugewiesen werden. Sollte Ihr Abonnement über keine dieser Rollen verfügen, erfahren Sie unter [Schritte zum Hinzufügen einer Rollenzuweisung](../role-based-access-control/role-assignments-steps.md), wie Sie sie hinzufügen. Anschließend können Sie mit diesem Artikel fortfahren.
 
 1. Wählen Sie **Weiter** aus, um zur Seite **Einstellungen** zu gelangen.
 
@@ -105,7 +105,7 @@ Weitere Informationen zu diesen Dateien finden Sie unter [Konfigurieren der Roll
 
    ![Diagnoseeinstellungen](./media/diagnostics-settings.png)
 
-   Die Diagnose ermöglicht die Behandlung von Problemen im Zusammenhang mit einem Azure-Clouddienst (oder virtuellen Azure-Computer). Informationen zur Diagnose finden Sie unter [Konfigurieren der Diagnose für Azure Cloud Services und Virtual Machines](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) . Weitere Informationen zu Application Insights finden Sie unter [Was ist Application Insights?](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview).
+   Die Diagnose ermöglicht die Behandlung von Problemen im Zusammenhang mit einem Azure-Clouddienst (oder virtuellen Azure-Computer). Informationen zur Diagnose finden Sie unter [Konfigurieren der Diagnose für Azure Cloud Services und Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) . Weitere Informationen zu Application Insights finden Sie unter [Was ist Application Insights?](../azure-monitor/app/app-insights-overview.md).
 
 1. Wählen Sie **Weiter** aus, um zur Seite **Zusammenfassung** zu gelangen.
 
@@ -126,4 +126,4 @@ Wechseln Sie zum Bereinigen der Azure-Ressourcen, die Sie in diesem Tutorial ers
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Richten Sie mithilfe der Schaltfläche **Konfigurieren** auf dem Bildschirm **Veröffentlichen** Continuous Integration (CI) ein. Weitere Informationen finden Sie in der [Dokumentation zu Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines).
+Richten Sie mithilfe der Schaltfläche **Konfigurieren** auf dem Bildschirm **Veröffentlichen** Continuous Integration (CI) ein. Weitere Informationen finden Sie in der [Dokumentation zu Azure Pipelines](/azure/devops/pipelines).

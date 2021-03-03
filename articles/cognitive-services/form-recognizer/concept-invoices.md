@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 875fa2ad5a3a18c0e2582425a6528730234ac8ed
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: adcfef19de5987b9b4c54f6765589f2ae9868c11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585074"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736745"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Vordefiniertes Rechnungsmodell für die Formularerkennung
 
@@ -41,7 +41,7 @@ Zum Ausprobieren des Rechnungsdiensts „Formularerkennung“ benötigen Sie ein
 
 ### <a name="input-requirements"></a>Eingabeanforderungen 
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
+[!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-invoice-operation"></a>Der Vorgang „Analysieren der Rechnung“
 
@@ -80,8 +80,8 @@ Der Rechnungsdienst extrahiert den Text, die Tabellen und 26 Rechnungsfelder. N
 | CustomerId | Zeichenfolge | Referenz-ID für den Kunden | CID-12345 |  |
 | PurchaseOrder | Zeichenfolge | Eine Referenznummer für die Bestellung | PO-3333 | |  |
 | InvoiceId | Zeichenfolge | ID für diese bestimmte Rechnung (oftmals „Rechnungsnummer“) | INV-100 | |  |
-| Rechnungsdatum | date | Datum, an dem die Rechnung ausgestellt wurde | 15.11.2019 | 
-| DueDate | date | Datum, an dem die Zahlung für diese Rechnung fällig ist | 15.12.2019 | 2019-12-15 | 15.11.2019 |
+| Rechnungsdatum | date | Datum, an dem die Rechnung ausgestellt wurde | 15.11.2019 | 15.11.2019 |
+| DueDate | date | Datum, an dem die Zahlung für diese Rechnung fällig ist | 15.12.2019 | 2019-12-15 |
 | VendorName | Zeichenfolge | Anbieter, der diese Rechnung erstellt hat | CONTOSO LTD. | |
 | VendorAddress | Zeichenfolge | Postanschrift für den Anbieter | 123 456th St New York, NY, 10001 | |
 | VendorAddressRecipient | Zeichenfolge | Der „VendorAddress“ (Anbieteranschrift) zugeordnete Name | Contoso Headquarters | |

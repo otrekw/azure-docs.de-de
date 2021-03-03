@@ -5,15 +5,15 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 02/10/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0bc70e14e341d9681c75933455eae6b0278724ca
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 014b4d09a991ae4d0bb31ec0b9adee0c9e3b3553
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981872"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361008"
 ---
 # <a name="tutorial-move-encrypted-azure-vms-across-regions"></a>Tutorial: Verschieben verschlüsselter virtueller Azure-Computer zwischen Regionen
 
@@ -54,26 +54,49 @@ Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](h
 **Gebühren für die Zielregion** | Überprüfen Sie die Preise und Gebühren für die Zielregion, in die Sie virtuelle Computer verschieben. Verwenden Sie hierfür den [Preisrechner](https://azure.microsoft.com/pricing/calculator/).
 
 
-## <a name="verify-key-vault-permissions-azure-disk-encryption"></a>Überprüfen der Schlüsseltresorberechtigungen (Azure Disk Encryption)
+## <a name="verify-user-permissions-on-key-vault-for-vms-using-azure-disk-encryption-ade"></a>Überprüfen von Benutzerberechtigungen im Schlüsseltresor für virtuelle Computer mit Azure Disk Encryption (ADE)
 
-Wenn Sie virtuelle Computer verschieben möchten, für die Azure Disk Encryption aktiviert ist, überprüfen Sie die Berechtigungen in den Schlüsseltresoren der Quell- und Zielregion, um sicherzustellen, dass verschlüsselte virtuelle Computer erwartungsgemäß verschoben werden können, und legen Sie bei Bedarf entsprechende Berechtigungen fest. 
+Wenn Sie virtuelle Computer verschieben, für die Azure Disk Encryption aktiviert ist, muss wie [weiter unten](#copy-the-keys-to-the-destination-key-vault) beschrieben ein Skript ausgeführt werden, für das der ausführende Benutzer über geeignete Berechtigungen verfügen muss. Informationen zu den erforderlichen Berechtigungen finden Sie in der Tabelle weiter unten. Die Optionen zum Ändern der Berechtigungen finden Sie, indem Sie im Azure-Portal zu dem Schlüsseltresor navigieren und unter **Einstellungen** die Option **Zugriffsrichtlinien** auswählen.
 
-1. Öffnen Sie im Azure-Portal den Schlüsseltresor in der Quellregion.
-2. Wählen Sie unter **Einstellungen** die Option **Zugriffsrichtlinien** aus.
+:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png" alt-text="Schaltfläche zum Öffnen der Zugriffsrichtlinien für den Schlüsseltresor" lightbox="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png":::
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png" alt-text="Schaltfläche zum Öffnen der Zugriffsrichtlinien für den Schlüsseltresor" lightbox="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png":::
+Sollten keine Benutzerberechtigungen vorhanden sein, wählen Sie **Zugriffsrichtlinie hinzufügen** aus, und geben Sie die Berechtigungen an. Ist für das Benutzerkonto bereits eine Richtlinie vorhanden, legen Sie unter **Benutzer** die Berechtigungen gemäß der im Anschluss bereitgestellten Tabelle fest.
 
-3. Sollten keine Benutzerberechtigungen vorhanden sein, wählen Sie **Zugriffsrichtlinie hinzufügen** aus, und geben Sie die Berechtigungen an. Ist für das Benutzerkonto bereits eine Richtlinie vorhanden, legen Sie unter **Benutzer** die Berechtigungen fest.
+Für virtuelle Azure-Computer mit ADE sind folgende Variationen möglich, und die Berechtigungen müssen entsprechend für die relevanten Komponenten festgelegt werden.
+- Standardoption, bei der der Datenträger nur unter Verwendung von Geheimnissen verschlüsselt wird
+- Zusätzliche Sicherheit durch [Schlüsselverschlüsselungsschlüssel](../virtual-machines/windows/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek)
 
-    - Wenn für virtuelle Computer, die Sie verschieben möchten, Azure Disk Encryption (ADE) aktiviert ist, wählen Sie unter **Schlüsselberechtigungen** > **Schlüsselverwaltungsvorgänge** die Berechtigungen **Abrufen** und **Auflisten** aus, sofern sie noch nicht ausgewählt sind.
-    - Wenn Sie kundenseitig verwaltete Schlüssel (Customer-Managed Keys, CMKs) verwenden, um Datenträgerverschlüsselungsschlüssel für die Verschlüsselung ruhender Daten (serverseitige Verschlüsselung) zu verschlüsseln, wählen Sie unter **Schlüsselberechtigungen** > **Schlüsselverwaltungsvorgänge** die Berechtigungen **Abrufen** und **Auflisten** aus. Wählen Sie außerdem unter **Kryptografische Vorgänge** die Berechtigungen **Entschlüsseln** und **Verschlüsseln** aus.
- 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/set-vault-permissions.png" alt-text="Dropdownliste zum Auswählen von Schlüsseltresorberechtigungen" lightbox="./media/tutorial-move-region-encrypted-virtual-machines/set-vault-permissions.png":::
+### <a name="source-region-keyvault"></a>Schlüsseltresor der Quellregion
 
-4. Wählen Sie unter **Geheimnisberechtigungen** > **Verwaltungsvorgänge für Geheimnisse** die Berechtigungen **Abrufen**, **Auflisten** und **Festlegen** aus. 
-5. Wenn Sie Berechtigungen für ein neues Benutzerkonto zuweisen, wählen Sie unter **Prinzipal auswählen** den Benutzer aus, dem Sie Berechtigungen zuweisen möchten.
-6. Vergewissern Sie sich unter **Zugriffsrichtlinien**, dass **Azure Disk Encryption für Volumeverschlüsselung** aktiviert ist.
-7. Wiederholen Sie die Schritte für den Schlüsseltresor in der Zielregion.
+Die folgenden Berechtigungen müssen für den Benutzer festgelegt werden, der das Skript ausführt: 
+
+**Komponente** | **Erforderliche Berechtigung**
+--- | ---
+Geheimnisse|  Berechtigung zum Abrufen <br> </br> Wählen Sie unter **Geheimnisberechtigungen**>  **Verwaltungsvorgänge für Geheimnisse** die Option **Abrufen** aus. 
+Schlüssel <br> </br> Bei Verwendung eines Schlüsselverschlüsselungsschlüssels (Key Encryption Key, KEK) ist diese Berechtigung zusätzlich zu Geheimnissen erforderlich.| Berechtigung zum Abrufen und Entschlüsseln <br> </br> Wählen Sie unter **Schlüsselberechtigungen** > **Schlüsselverwaltungsvorgänge** die Option **Abrufen** aus. Wählen Sie unter **Kryptografische Vorgänge** die Option **Entschlüsseln** aus.
+
+### <a name="destination-region-keyvault"></a>Schlüsseltresor der Zielregion
+
+Vergewissern Sie sich unter **Zugriffsrichtlinien**, dass **Azure Disk Encryption für Volumeverschlüsselung** aktiviert ist. 
+
+Die folgenden Berechtigungen müssen für den Benutzer festgelegt werden, der das Skript ausführt: 
+
+**Komponente** | **Erforderliche Berechtigung**
+--- | ---
+Geheimnisse|  Berechtigung zum Festlegen <br> </br> Wählen Sie unter **Geheimnisberechtigungen**>  **Verwaltungsvorgänge für Geheimnisse** die Option **Festlegen** aus. 
+Schlüssel <br> </br> Bei Verwendung eines Schlüsselverschlüsselungsschlüssels (Key Encryption Key, KEK) ist diese Berechtigung zusätzlich zu Geheimnissen erforderlich.| Berechtigung zum Abrufen, Erstellen und Verschlüsseln <br> </br> Wählen Sie unter **Schlüsselberechtigungen** > **Schlüsselverwaltungsvorgänge** die Optionen **Abrufen** und **Erstellen** aus. Wählen Sie unter **Kryptografische Vorgänge** die Option **Verschlüsseln** aus.
+
+Neben den oben genannten Berechtigungen müssen im Zielschlüsseltresor auch Berechtigungen für die [verwaltete Systemidentität](./common-questions.md#how-is-managed-identity-used-in-resource-mover) hinzugefügt werden, die von Resource Mover verwendet wird, um in Ihrem Namen auf die Azure-Ressourcen zuzugreifen. 
+
+1. Wählen Sie unter **Einstellungen** die Option **Zugriffsrichtlinien hinzufügen** aus. 
+2. Suchen Sie in unter **Prinzipal auswählen** nach der nach verwalteten Systemidentität (Managed System Identity, MSI). Der Name der MSI lautet ```movecollection-<sourceregion>-<target-region>-<metadata-region>```. 
+3. Fügen Sie für die MSI die folgenden Berechtigungen hinzu:
+
+**Komponente** | **Erforderliche Berechtigung**
+--- | ---
+Geheimnisse|  Berechtigung zum Abrufen und Auflisten <br> </br> Wählen Sie unter **Geheimnisberechtigungen**>  **Verwaltungsvorgänge für Geheimnisse** die Option **Abrufen** und **Auflisten** aus. 
+Schlüssel <br> </br> Bei Verwendung eines Schlüsselverschlüsselungsschlüssels (Key Encryption Key, KEK) ist diese Berechtigung zusätzlich zu Geheimnissen erforderlich.| Berechtigung zum Abrufen und Auflisten <br> </br> Wählen Sie unter **Schlüsselberechtigungen** > **Schlüsselverwaltungsvorgänge** die Optionen **Abrufen** und **Auflisten** aus.
+
 
 
 ### <a name="copy-the-keys-to-the-destination-key-vault"></a>Kopieren der Schlüssel in den Zielschlüsseltresor

@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: a29d81be9b750d89230a180b8a7c786466d99bb8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 6e5de3cdec7a9c503f4b7bf7056bd62f1ddf682d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936429"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594012"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service-Plan – Übersicht
 
@@ -57,7 +57,7 @@ Wenn Sie eine App in App Service erstellen, wird sie in einen App Service-Plan e
 
 Somit ist der App Service-Plan die Skalierungseinheit der App Service-Apps. Wenn der Plan für das Ausführen von fünf VM-Instanzen konfiguriert ist, werden alle Apps im Plan auf allen fünf Instanzen ausgeführt. Falls der Plan für die automatische Skalierung konfiguriert ist, werden alle Apps des Plans zusammen basierend auf den Einstellungen für die automatische Skalierung horizontal hochskaliert.
 
-Informationen zum Aufskalieren einer App finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../azure-monitor/platform/autoscale-get-started.md).
+Informationen zum Aufskalieren einer App finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../azure-monitor/autoscale/autoscale-get-started.md).
 
 <a name="cost"></a>
 

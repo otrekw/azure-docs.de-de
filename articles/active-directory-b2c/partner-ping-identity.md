@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 430629f94695f0689422434c8d80fe4e1876e5dd
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 94e7ae93d05ae8ee35028882e14d8da74814d833
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900033"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650225"
 ---
 # <a name="tutorial-configure-ping-identity-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>Tutorial: Konfigurieren von Ping Identity mit Azure Active Directory B2C für sicheren Hybridzugriff
 
@@ -80,7 +80,7 @@ Zunächst benötigen Sie Folgendes:
 
 - Ein Azure-Abonnement. Falls Sie noch kein Konto haben, können Sie eine [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
 
-- Einen [Azure AD B2C-Mandanten](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant), der mit Ihrem Azure-Abonnement verknüpft ist
+- Einen [Azure AD B2C-Mandanten](./tutorial-create-tenant.md), der mit Ihrem Azure-Abonnement verknüpft ist
 
 - In Docker-Containern oder direkt in Azure-VMs bereitgestelltes PingAccess und PingFederate
 
@@ -107,7 +107,7 @@ Aktualisieren Sie zum Befolgen dieser Konvention den Azure AD B2C-Aussteller mi
 
 ![Abbildung der Tokeneinstellungen](./media/partner-ping/token-setting.png)
 
-In den erweiterten Richtlinien kann dies im [technischen Profil des Ausstellers des JWT-Token](https://docs.microsoft.com/azure/active-directory-b2c/jwt-issuer-technical-profile) im Metadatenelement **IssuanceClaimPattern** auf den Wert **AuthorityWithTfp** festgelegt werden.
+In den erweiterten Richtlinien kann dies im [technischen Profil des Ausstellers des JWT-Token](./jwt-issuer-technical-profile.md) im Metadatenelement **IssuanceClaimPattern** auf den Wert **AuthorityWithTfp** festgelegt werden.
 
 ## <a name="configure-pingaccesspingfederate"></a>Konfigurieren von PingAccess und PingFederate
 
@@ -160,7 +160,7 @@ Führen Sie die folgenden Schritte zum Erstellen einer Websitzung aus:
 
 7. Geben Sie in das Feld **Client Secret** (Clientgeheimnis) den **Schlüssel** ein, den Sie in Azure AD für die Anwendung generiert haben.
 
-8. Optional: Sie können mithilfe der Microsoft Graph-API benutzerdefinierte Ansprüche erstellen und verwenden. Wenn Sie dies möchten, wählen Sie **Advanced** (Erweitert) aus, und deaktivieren Sie die Optionen **Request Profile** (Profil anfordern) und **Refresh User Attributes** (Benutzerattribute aktualisieren). Weitere Informationen zu benutzerdefinierten Ansprüchen finden Sie unter [Verwenden eines benutzerdefinierten Anspruchs](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#optional---use-a-custom-claim).
+8. Optional: Sie können mithilfe der Microsoft Graph-API benutzerdefinierte Ansprüche erstellen und verwenden. Wenn Sie dies möchten, wählen Sie **Advanced** (Erweitert) aus, und deaktivieren Sie die Optionen **Request Profile** (Profil anfordern) und **Refresh User Attributes** (Benutzerattribute aktualisieren). Weitere Informationen zu benutzerdefinierten Ansprüchen finden Sie unter [Verwenden eines benutzerdefinierten Anspruchs](../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers.md).
 
 9. Wählen Sie **Speichern** aus.
 
@@ -265,6 +265,6 @@ Konfigurieren Sie die PingFederate-Authentifizierungsrichtlinie für den Verbund
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Benutzerdefinierte Richtlinien in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Benutzerdefinierte Richtlinien in Azure AD B2C](./custom-policy-overview.md)
 
-- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

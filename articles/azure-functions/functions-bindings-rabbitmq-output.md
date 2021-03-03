@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: d9e575d68fe4fef607bdf443ece1ddd04f085533
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 1664656f82492e664b7574339893cd688f0a061d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746455"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097312"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>RabbitMQ-Ausgabebindung für Azure Functions – Übersicht
 
@@ -207,7 +207,7 @@ def main(req: func.HttpRequest, outputMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-Das folgende Beispiel zeigt eine Java-Funktion, die eine Nachricht an die RabbitMQ-Warteschlange sendet, wenn sie durch einen TimerTrigger alle 5 Minuten ausgelöst wird.
+Die folgende Java-Funktion verwendet die `@RabbitMQOutput`-Anmerkung aus den [Java-Typen für RabbitMQ](https://mvnrepository.com/artifact/com.microsoft.azure.functions/azure-functions-java-library-rabbitmq), um die Konfiguration für eine Ausgabebindung der RabbitMQ-Warteschlange zu beschreiben. Die Funktion sendet eine Nachricht an die RabbitMQ-Warteschlange, wenn sie durch einen TimerTrigger alle 5 Minuten ausgelöst wird.
 
 ```java
 @FunctionName("RabbitMQOutputExample")
@@ -272,11 +272,11 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction** | – | Muss auf „out“ festgelegt werden. |
 |**name** | – | Der Name der Variablen, die die Warteschlange im Funktionscode darstellt. |
 |**queueName**|**QueueName**| Name der Warteschlange, an die Nachrichten gesendet werden sollen. |
-|**hostName**|**HostName**|(bei Verwendung von ConnectionStringSetting ignoriert) <br>Hostname der Warteschlange (z. B.: 10.26.45.210)|
+|**hostName**|**HostName**|(bei Verwenden von ConnectionStringSetting ignoriert) <br>Hostname der Warteschlange (z. B.: 10.26.45.210)|
 |**userName**|**UserName**|(bei Verwendung von ConnectionStringSetting ignoriert) <br>Name der App-Einstellung mit dem Benutzernamen für den Zugriff auf die Warteschlange. Beispiel: UserNameSetting: "%<BenutzernameAusEinstellungen>%"|
 |**password**|**Kennwort**|(bei Verwendung von ConnectionStringSetting ignoriert) <br>Name der App-Einstellung mit dem Kennwort für den Zugriff auf die Warteschlange. Beispiel: UserNameSetting: "%<BenutzernameAusEinstellungen>%"|
 |**connectionStringSetting**|**ConnectionStringSetting**|Name der App-Einstellung, die die Verbindungszeichenfolge für die Warteschlange mit der RabbitMQ-Nachricht enthält. Beachten Sie, dass der Trigger nicht funktioniert, wenn Sie die Verbindungszeichenfolge direkt und nicht über eine App-Einstellung in „local.settings.json“ angeben. (Beispiel: In *function.json*: connectionStringSetting: "rabbitMQConnection" <br> In *local.settings.json*: "rabbitMQConnection" : "<TatsächlicheVerbindungszeichenfolge>")|
-|**port**|**Port**|(bei Verwendung von ConnectionStringSetting ignoriert) Dient zum Abrufen oder Festlegen des verwendeten Ports. Der Standardwert ist 0 und verweist auf die Standardporteinstellung des RabbitMQ-Clients: 5672.|
+|**port**|**Port**|(bei Verwenden von ConnectionStringSetting ignoriert) Dient zum Abrufen oder Festlegen des verwendeten Ports. Der Standardwert ist 0, was auf die Standardporteinstellung des RabbitMQ-Clients verweist: 5672.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -308,7 +308,7 @@ Beim Arbeiten mit C#-Skriptfunktionen:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Die Warteschlangenmeldung ist über context.bindings.<NAME> verfügbar. Dabei entspricht <NAME> dem in „function.json“ definierten Namen. Falls es sich um eine JSON-Nutzlast handelt, wird der Wert in ein Objekt deserialisiert.
+Die Warteschlangenmeldung ist über context.bindings<NAME> verfügbar. Dabei entspricht <NAME> dem in „function.json“ definierten Namen. Falls es sich um eine JSON-Nutzlast handelt, wird der Wert in ein Objekt deserialisiert.
 
 # <a name="python"></a>[Python](#tab/python)
 
