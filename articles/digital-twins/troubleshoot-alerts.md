@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 057a1b08095a71e2fca6119f5b63bfdc787eea88
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 461d7a82854ce62ee99eef1227c13c7a8f0371e2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616601"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594864"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Problembehandlung von Azure Digital Twins: Alerts
 
 Azure Digital Twins sammelt [Metriken](troubleshoot-metrics.md) für Ihre Dienstinstanz, die Informationen zum Zustand Ihrer Ressourcen bereitstellen. Mit diesen Metriken können Sie die allgemeine Integrität des Azure Digital Twins-Diensts und der damit verbundenen Ressourcen bewerten.
 
-**Warnungen** informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Metrikdaten gefunden werden. Sie ermöglichen es Ihnen, Probleme zu identifizieren und zu beheben, bevor die Benutzer Ihres Systems sie bemerken. Weitere Informationen zu Warnungen finden Sie unter [*Überblick über Warnungen in Microsoft Azure*](../azure-monitor/platform/alerts-overview.md).
+**Warnungen** informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Metrikdaten gefunden werden. Sie ermöglichen es Ihnen, Probleme zu identifizieren und zu beheben, bevor die Benutzer Ihres Systems sie bemerken. Weitere Informationen zu Warnungen finden Sie unter [*Überblick über Warnungen in Microsoft Azure*](../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="turn-on-alerts"></a>Aktivieren von Warnungen
 
@@ -38,7 +38,7 @@ Hier ist beschrieben, wie Sie Warnungen für Ihre Azure Digital Twins-Instanz ak
 
 :::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Screenshot: Seite „Warnungsregel erstellen“ mit Abschnitten für Bereich, Bedingung, Aktionsgruppe und Details zur Warnungsregel" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
 
-Eine Anleitung zum Ausfüllen dieser Felder finden Sie unter [*Überblick über Warnungen in Microsoft Azure*](../azure-monitor/platform/alerts-overview.md). Unten sind einige Beispiele dafür angegeben, welche Schritte für Azure Digital Twins ausgeführt werden müssen.
+Eine Anleitung zum Ausfüllen dieser Felder finden Sie unter [*Überblick über Warnungen in Microsoft Azure*](../azure-monitor/alerts/alerts-overview.md). Unten sind einige Beispiele dafür angegeben, welche Schritte für Azure Digital Twins ausgeführt werden müssen.
 
 ### <a name="select-conditions"></a>Auswählen von Bedingungen
 
@@ -58,6 +58,6 @@ Nach dem Einrichten von Warnungen werden diese auf der Seite *Warnungen* für Ih
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu Warnungen mit Azure Monitor finden Sie unter [*Überblick über Warnungen in Microsoft Azure*](../azure-monitor/platform/alerts-overview.md).
+* Weitere Informationen zu Warnungen mit Azure Monitor finden Sie unter [*Überblick über Warnungen in Microsoft Azure*](../azure-monitor/alerts/alerts-overview.md).
 * Informationen zu den Azure Digital Twins-Metriken finden Sie unter [*Problembehandlung: Anzeigen von Metriken mit Azure Monitor*](troubleshoot-metrics.md).
 * Informationen zur Aktivierung der Diagnoseprotokollierung für Ihre Metriken finden Sie unter [*Problembehandlung: Einrichten der Diagnose*](troubleshoot-diagnostics.md).

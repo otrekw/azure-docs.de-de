@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 09/30/2020
-ms.openlocfilehash: 3d28cf1a89ff455cfbed26aad234607ec8cd7e63
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6b56da68b10bc40304097fbe9eeaf200d422b663
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490566"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592693"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Überwachung und Leistungsoptimierung in Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -99,11 +99,11 @@ Konfigurieren Sie Diagnoseeinstellung zum Streamen von Kategorien von Metriken u
 
 ### <a name="log-analytics-workspace-in-azure-monitor"></a>Log Analytics-Arbeitsbereich in Azure Monitor
 
-Sie können Metriken und Ressourcenprotokolle an einen [Log Analytics-Arbeitsbereich in Azure Monitor](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) streamen. Hier gestreamte Daten können von [SQL Analytics](../../azure-monitor/insights/azure-sql.md) genutzt werden. Dabei handelt es sich um eine auf die Cloud beschränkte Überwachungslösung. Sie ermöglicht die intelligente Überwachung Ihrer Datenbanken mit Leistungsberichten, Warnungen und Empfehlungen zur Risikominderung. Die an einen Log Analytics-Arbeitsbereich gestreamten Daten können zusammen mit anderen erfassten Überwachungsdaten analysiert werden. Sie ermöglichen Ihnen außerdem die Nutzung anderer Azure Monitor-Features wie Warnungen und Visualisierungen.
+Sie können Metriken und Ressourcenprotokolle an einen [Log Analytics-Arbeitsbereich in Azure Monitor](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) streamen. Hier gestreamte Daten können von [SQL Analytics](../../azure-monitor/insights/azure-sql.md) genutzt werden. Dabei handelt es sich um eine auf die Cloud beschränkte Überwachungslösung. Sie ermöglicht die intelligente Überwachung Ihrer Datenbanken mit Leistungsberichten, Warnungen und Empfehlungen zur Risikominderung. Die an einen Log Analytics-Arbeitsbereich gestreamten Daten können zusammen mit anderen erfassten Überwachungsdaten analysiert werden. Sie ermöglichen Ihnen außerdem die Nutzung anderer Azure Monitor-Features wie Warnungen und Visualisierungen.
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-Sie können Metriken und Ressourcenprotokolle in [Azure Event Hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) streamen. Streamen Sie Diagnosetelemetrie an Event Hubs, um folgende Funktionalität bereitzustellen:
+Sie können Metriken und Ressourcenprotokolle in [Azure Event Hubs](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs) streamen. Streamen Sie Diagnosetelemetrie an Event Hubs, um folgende Funktionalität bereitzustellen:
 
 - **Streamen von Protokollen in Protokollierungs- und Telemetriesystemen von Drittanbietern**
 
@@ -117,7 +117,7 @@ Sie können Metriken und Ressourcenprotokolle in [Azure Event Hubs](../../azure-
 
 ### <a name="azure-storage"></a>Azure Storage
 
-Streamen Sie Metriken und Ressourcenprotokolle in [Azure Storage](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage). Verwenden Sie Azure Storage zum Archivieren großer Mengen von Diagnosetelemetriedaten zu einem Bruchteil der Kosten der beiden vorherigen Streamingoptionen.
+Streamen Sie Metriken und Ressourcenprotokolle in [Azure Storage](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage). Verwenden Sie Azure Storage zum Archivieren großer Mengen von Diagnosetelemetriedaten zu einem Bruchteil der Kosten der beiden vorherigen Streamingoptionen.
 
 ## <a name="use-extended-events"></a>Verwenden erweiterter Ereignisse 
 

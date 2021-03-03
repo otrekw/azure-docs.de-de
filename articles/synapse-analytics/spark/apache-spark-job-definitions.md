@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: b8c7792a09dd86e7d4ac043c572f69fc47ee6e63
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3f1e3fd360197310a89a67d43053649d904aeb18
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307176"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677614"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Tutorial: Erstellen einer Apache Spark-Auftragsdefinition in Synapse Studio
 
@@ -32,7 +32,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 Vergewissern Sie sich zunächst, dass die folgenden Anforderungen erfüllt sind bzw. dass Folgendes vorhanden ist:
 
-* Ein Azure Synapse Analytics-Arbeitsbereich. Entsprechende Anweisungen finden Sie unter [Erstellen eines Arbeitsbereichs](../../machine-learning/how-to-manage-workspace.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-a-workspace).
+* Ein Azure Synapse Analytics-Arbeitsbereich. Entsprechende Anweisungen finden Sie unter [Erstellen eines Arbeitsbereichs](../../machine-learning/how-to-manage-workspace.md).
 * Ein serverloser Apache Spark-Pool
 * Ein ADLS Gen2-Speicherkonto. Sie müssen der **Besitzer der Speicherblobdaten** des ADLS Gen2-Dateisystems sein, das Sie verwenden möchten. Andernfalls müssen Sie die Berechtigung manuell hinzufügen.
 * Wenn Sie nicht den Standardspeicher des Arbeitsbereichs verwenden möchten, verknüpfen Sie das erforderliche ADLS Gen2-Speicherkonto in Synapse Studio. 
@@ -61,7 +61,7 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für PySp
 
 6. Tragen Sie Informationen für die Apache Spark-Auftragsdefinition ein. 
 
-     |  Eigenschaft   | Beschreibung   |  
+     |  Eigenschaft   | BESCHREIBUNG   |  
      | ----- | ----- |  
      |Auftragsdefinitionsname| Geben Sie einen Namen für Ihre Apache Spark-Auftragsdefinition ein. Dieser Name kann bis zur Veröffentlichung jederzeit aktualisiert werden. <br> Beispiel: `job definition sample`|
      |„Main definition file“ (Hauptdefinitionsdatei)| Die für den Auftrag verwendete Hauptdatei. Wählen Sie eine PY-Datei aus Ihrem Speicher aus. Sie können **Datei hochladen** auswählen, um die Datei in ein Speicherkonto hochzuladen. <br> Beispiel: `abfss://…/path/to/wordcount.py`|
@@ -101,7 +101,7 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für Apac
 
  6. Tragen Sie Informationen für die Apache Spark-Auftragsdefinition ein. Sie können die Beispielinformationen kopieren.
 
-     |  Eigenschaft   | Beschreibung   |  
+     |  Eigenschaft   | BESCHREIBUNG   |  
      | ----- | ----- |  
      |Auftragsdefinitionsname| Geben Sie einen Namen für Ihre Apache Spark-Auftragsdefinition ein. Dieser Name kann bis zur Veröffentlichung jederzeit aktualisiert werden. <br> Beispiel: `scala`|
      |„Main definition file“ (Hauptdefinitionsdatei)| Die für den Auftrag verwendete Hauptdatei. Wählen Sie eine JAR-Datei aus Ihrem Speicher aus. Sie können **Datei hochladen** auswählen, um die Datei in ein Speicherkonto hochzuladen. <br> Beispiel: `abfss://…/path/to/wordcount.jar`|
@@ -141,7 +141,7 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für .NET
 
  6. Tragen Sie Informationen für die Apache Spark-Auftragsdefinition ein. Sie können die Beispielinformationen kopieren.
     
-     |  Eigenschaft   | Beschreibung   |  
+     |  Eigenschaft   | BESCHREIBUNG   |  
      | ----- | ----- |  
      |Auftragsdefinitionsname| Geben Sie einen Namen für Ihre Apache Spark-Auftragsdefinition ein. Dieser Name kann bis zur Veröffentlichung jederzeit aktualisiert werden. <br> Beispiel: `dotnet`|
      |„Main definition file“ (Hauptdefinitionsdatei)| Die für den Auftrag verwendete Hauptdatei. Wählen Sie in Ihrem Speicher eine ZIP-Datei aus, die Ihre Anwendung vom Typ „.NET für Apache Spark“ enthält (ausführbare Hauptdatei, DLLs mit benutzerdefinierten Funktionen und andere erforderliche Dateien). Sie können **Datei hochladen** auswählen, um die Datei in ein Speicherkonto hochzuladen. <br> Beispiel: `abfss://…/path/to/wordcount.zip`|

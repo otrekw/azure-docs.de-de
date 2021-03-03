@@ -3,12 +3,12 @@ title: Dediziertes Hosten von Azure Functions
 description: Lernen Sie die Vorteile kennen, von denen Sie profitieren, wenn Sie Azure Functions in einem dedizierten App Service-Hostingplan ausführen.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 0ebf83aa919d91f161b247539ae20873242a8ed8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0ee32d4c4a7d33664da88b133a1f7011fc09f298
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937483"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591065"
 ---
 # <a name="dedicated-hosting-plans-for-azure-functions"></a>Dedizierte Hostingpläne für Azure Functions
 
@@ -33,7 +33,7 @@ Auch bei aktiviertem Always On wird das Ausführungstimeout für einzelne Funkti
 
 ## <a name="scaling"></a>Skalierung
 
-Mit einem App Service-Plan können Sie manuell aufskalieren, indem Sie weitere VM-Instanzen hinzufügen. Sie können auch die Autoskalierung aktivieren, allerdings ist diese langsamer als die elastische Skalierung des Premium-Plans. Weitere Informationen finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Sie können auch hochskalieren, indem Sie einen anderen App Service-Plan auswählen. Weitere Informationen finden Sie unter [Hochskalieren einer App in Azure](../app-service/manage-scale-up.md). 
+Mit einem App Service-Plan können Sie manuell aufskalieren, indem Sie weitere VM-Instanzen hinzufügen. Sie können auch die Autoskalierung aktivieren, allerdings ist diese langsamer als die elastische Skalierung des Premium-Plans. Weitere Informationen finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../azure-monitor/autoscale/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Sie können auch hochskalieren, indem Sie einen anderen App Service-Plan auswählen. Weitere Informationen finden Sie unter [Hochskalieren einer App in Azure](../app-service/manage-scale-up.md). 
 
 > [!NOTE] 
 > Wenn Sie JavaScript-Funktionen (Node.js) in einem App Service-Plan ausführen möchten, sollten Sie einen Plan mit weniger vCPUs wählen. Weitere Informationen finden Sie unter [Auswählen von Einzelkern-App Service-Plänen](functions-reference-node.md#choose-single-vcpu-app-service-plans). 

@@ -3,23 +3,23 @@ title: Bereitstellen einer Prometheus-Instanz in einem Azure Red Hat OpenShift-C
 description: Erstellen einer Prometheus-Instanz auf einem Azure Red Hat OpenShift-Cluster, um die Metriken Ihrer Anwendung zu überwachen.
 author: makdaam
 ms.author: b-lejaku
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: prometheus, aro, openshift, metriken, red hat
-ms.openlocfilehash: 42ed8c90b35eba57fdc3db1f0ed93d44cf9a5e41
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 974096e515401ab5e292dbad4c9beba7f1611a8a
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996847"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633443"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Bereitstellen einer eigenständigen Prometheus-Instanz in einem Azure Red Hat OpenShift-Cluster
 
 > [!IMPORTANT]
-> Azure Red Hat OpenShift 3.11 wird zum 30. Juni 2022 eingestellt. Support für die Erstellung neuer Azure Red Hat OpenShift 3.11-Cluster wird bis zum 30. November 2020 bereitgestellt. Nach der Einstellung werden die verbleibenden Azure Red Hat OpenShift 3.11-Cluster abgeschaltet, um Sicherheitsrisiken zu vermeiden.
+> Azure Red Hat OpenShift 3.11 wird zum 30. Juni 2022 eingestellt. Unterstützung für die Erstellung neuer Azure Red Hat OpenShift 3.11-Cluster wird bis zum 30. November 2020 bereitgestellt. Nach der Einstellung werden die verbleibenden Azure Red Hat OpenShift 3.11-Cluster abgeschaltet, um Sicherheitsrisiken zu vermeiden.
 > 
-> Folgen Sie diesem Leitfaden, um [einen Azure Red Hat OpenShift 4-Cluster zu erstellen](tutorial-create-cluster.md).
+> Führen Sie die Schritte in diesem Leitfaden aus, um [einen Azure Red Hat OpenShift 4-Cluster zu erstellen](tutorial-create-cluster.md).
 > Wenn Sie spezielle Fragen haben, [kontaktieren Sie uns](mailto:arofeedback@microsoft.com).
 
 In diesem Artikel wird beschrieben, wie Sie eine eigenständige Prometheus-Instanz mit Dienstermittlung in einem Azure Red Hat OpenShift-Cluster konfigurieren.

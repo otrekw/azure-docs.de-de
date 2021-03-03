@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b4b2a3bf8c9a3a2e2ec7f1b22785a037f8dedc60
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 21ae8986761483658f5ac4254e4bb378e0bc4ba9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98873959"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575058"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure-Sicherheitsbaseline für Azure DDoS Protection Standard
 
@@ -26,7 +26,7 @@ Diese Sicherheitsbaseline wendet Empfehlungen des [Azure-Sicherheitsvergleichste
 
 **Leitfaden**: Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, und senden Sie die Protokolle zwecks Archivierung an einen Log Analytics-Arbeitsbereich, eine Azure Event Hub-Instanz oder ein Azure-Speicherkonto. Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure DDoS Protection-Pläne auf Steuerungsebene erfolgen. Mit Azure-Aktivitätsprotokollen können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) auf Steuerungsebene ermitteln, die für Ihre Azure DDoS Protection-Instanzen stattfinden.
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -40,7 +40,7 @@ Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, un
 
 - [Anzeigen und Konfigurieren der DDoS-Diagnoseprotokollierung](../../ddos-protection/diagnostic-logging.md)
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -50,7 +50,7 @@ Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, un
 
 **Leitfaden**: Legen Sie in Azure Monitor den Aufbewahrungszeitraum für Protokolle für Log Analytics-Arbeitsbereiche, die Ihren Azure DDoS Protection-Plänen zugeordnet sind, gemäß den Compliancevorschriften Ihrer Organisation fest.
 
-- [Ändern des Datenaufbewahrungszeitraums](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -62,9 +62,9 @@ Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, un
 
 - [ Informationen über den Zugriff auf Telemetrie, Protokolle und Angriffsanalysen für den DDoS Protection Standard-Dienst](../../ddos-protection/telemetry.md)
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../../azure-monitor/essentials/activity-log.md)
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -80,7 +80,7 @@ Integrieren Sie einen Log Analytics-Arbeitsbereich in Azure Sentinel, da er eine
 
 - [Durchführen des Onboardings für Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-- [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../../azure-monitor/platform/alerts-log.md)
+- [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../../azure-monitor/alerts/alerts-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -276,7 +276,7 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an Azure DDoS Protection-Plänen und anderen kritischen bzw. zugehörigen Ressourcen vorgenommen werden.
 
-- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 

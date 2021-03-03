@@ -5,13 +5,13 @@ author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 05/10/2019
-ms.openlocfilehash: a0ea9a0871dd57088473999b28553258ff210038
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 02/18/2021
+ms.openlocfilehash: 6601cd31cf6e332bf292cd887b498a92946d8af7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628763"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668298"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Verfügbarkeitsoptionen für virtuelle Computer in Azure
 
@@ -52,6 +52,10 @@ Mit Azure-VM-Skalierungsgruppen können Sie eine Gruppe VMs mit Lastenausgleich 
 **Fehler- und Updatedomänen**
 
 VM-Skalierungsgruppen vereinfachen durch das Ausrichten von Fehlerdomänen und Updatedomänen das Entwerfen für Hochverfügbarkeit. Sie müssen nur die Anzahl der Fehlerdomänen für die Skalierungsgruppe definieren. Die Anzahl der für die Skalierungsgruppe verfügbaren Fehlerdomänen kann je nach Region variieren. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](./manage-availability.md).
+
+**Orchestrierungsmodi für Skalierungsgruppen**
+
+Die Orchestrierungsmodi für VM-Skalierungsgruppen ermöglichen Ihnen eine bessere Kontrolle darüber, wie die Instanzen virtueller Computer von der Skalierungsgruppe verwaltet werden. Sie können einen einheitlichen oder flexiblen Orchestrierungsmodus für Ihre Skalierungsgruppe aktivieren. Eine einheitliche Orchestrierung ist für große zustandslose Workloads mit identischen Instanzen optimiert. Die flexible Orchestrierung (Vorschau) ist für Hochverfügbarkeit im großen Stil mit identischen oder mehreren virtuellen Computern vorgesehen. Erfahren Sie mehr über diese [Orchestrierungsmodi](./virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) und wie Sie sie aktivieren können.
 
 
 ## <a name="availability-sets"></a>Verfügbarkeitsgruppen

@@ -3,12 +3,12 @@ title: Senden von Azure Service Health-Warnungen mit OpsGenie mit Webhooks
 description: Erhalten Sie personalisierte Benachrichtigungen zu Service Health-Ereignissen an Ihre OpsGenie-Instanz.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 112774cb1f9e16b08225471e8dbc1bb79b1bd37d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8867d442d0c7fe563f6429fc1ff4edb212737c5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86529096"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594604"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Senden von Azure Service Health-Warnungen mit OpsGenie mit Webhooks
 
@@ -67,7 +67,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 1. Wählen Sie **Save** (Speichern) aus, wenn Sie mit dem Aktualisieren der Aktionsgruppe fertig sind.
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testen der Webhookintegration über eine HTTP POST-Anforderung
-1. Erstellen Sie die Service Health-Nutzlast, die Sie senden möchten. Eine Service Health-Beispielwebhook-Nutzlast finden Sie unter [Webhooks für Azure-Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts-webhook.md).
+1. Erstellen Sie die Service Health-Nutzlast, die Sie senden möchten. Eine Service Health-Beispielwebhook-Nutzlast finden Sie unter [Webhooks für Azure-Aktivitätsprotokollwarnungen](../azure-monitor/alerts/activity-log-alerts-webhook.md).
 
 1. Erstellen Sie eine HTTP POST-Anforderung, indem Sie wie folgt vorgehen:
 
@@ -84,6 +84,6 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie, wie Sie [Webhookbenachrichtigungen für vorhandene Problemverwaltungssysteme konfigurieren](service-health-alert-webhook-guide.md).
-- Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts-webhook.md). 
+- Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](../azure-monitor/alerts/activity-log-alerts-webhook.md). 
 - Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](./service-notifications.md).
-- Weitere Informationen zu [Aktionsgruppen](../azure-monitor/platform/action-groups.md).
+- Weitere Informationen zu [Aktionsgruppen](../azure-monitor/alerts/action-groups.md).

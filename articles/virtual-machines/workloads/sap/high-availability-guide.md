@@ -8,20 +8,19 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b506ada0bc072a4174de6f884d1814a63f1f93ca
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6aedaf829df941a225cd0684318f28bb06ba89d8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012509"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674614"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Hochverfügbarkeit von SAP NetWeaver auf virtuellen Azure-Computern
 
@@ -1484,9 +1483,9 @@ So fügen Sie einen Testport hinzu
 
 2. Definieren Sie einen Testport. Die Standardnummer für den Testport ist **0**. In unserem Beispiel verwenden wir als Testport **62000**.
 
-   ![Abbildung 58: Testport der Clusterkonfiguration ist standardmäßig 0][sap-ha-guide-figure-3048]
+   ![Abbildung 58: Der Testport der Clusterkonfiguration ist standardmäßig 0.][sap-ha-guide-figure-3048]
 
-   _**Abbildung 58:** Testport der Clusterkonfiguration ist standardmäßig 0_
+   _**Abbildung 58:** Der Standardtestport der Clusterkonfiguration ist 0._
 
    Die Portnummer ist in Azure Resource Manager-Vorlagen für SAP definiert. Sie können die Portnummer in PowerShell zuweisen.
 
@@ -1558,9 +1557,9 @@ So fügen Sie einen Testport hinzu
 
    ```
 
-   ![Abbildung 59: Überprüfen des Clusterports nach dem Festlegen des neuen Werts][sap-ha-guide-figure-3049]
+   ![Abbildung 59: Testen des Clusterports nach dem Festlegen des neuen Werts][sap-ha-guide-figure-3049]
 
-   _**Abbildung 59:** Überprüfen des Clusterports nach dem Festlegen des neuen Werts_
+   _**Abbildung 59:** Testen des Clusterports nach dem Festlegen des neuen Werts_
 
 #### <a name="open-the-windows-firewall-probe-port"></a><a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a> Öffnen des Windows-Firewall-Testports
 
@@ -1610,15 +1609,15 @@ Mit dem Failovercluster-Manager und dem SIOS DataKeeper-Tool für die Verwaltung
 
 Die Clustergruppe **SAP PR1** wird auf dem Clusterknoten A ausgeführt, z.B. auf **pr1-ascs-0**. Weisen Sie den freigegebenen Datenträger S, der Teil der Clustergruppe **SAP PR1** ist und von der ASCS/SCS-Instanz verwendet wird, dem Clusterknoten A zu.
 
-![Abbildung 61: Failovercluster-Manager: Die SAP-Clustergruppe <SID> wird auf Clusterknoten A ausgeführt][sap-ha-guide-figure-5000]
+![Abbildung 61: Failovercluster-Manager: Die SAP-Clustergruppe <SID> wird auf Clusterknoten A ausgeführt.][sap-ha-guide-figure-5000]
 
-_**Abbildung 61:** Failovercluster-Manager: Die SAP-Clustergruppe &lt;*SID*&gt; wird auf Clusterknoten A ausgeführt_
+_**Abbildung 61:** Failovercluster-Manager: Die SAP-Clustergruppe <*SID*> wird auf Clusterknoten A ausgeführt._
 
 Im SIOS DataKeeper-Tool für die Verwaltung und Konfiguration erkennen Sie, dass die Daten auf dem freigegebenen Datenträger synchron vom Quellvolume S auf Clusterknoten A auf das Zielvolume S auf Clusterknoten B repliziert werden, also z.B. von **pr1-ascs-0 [10.0.0.40]** nach **pr1-ascs-1 [10.0.0.41]** .
 
-![Abbildung 62: In SIOS DataKeeper wird das lokale Volume von Clusterknoten A auf Clusterknoten B repliziert][sap-ha-guide-figure-5001]
+![Abbildung 62: Replizieren des lokalen Volumes von Clusterknoten A auf Clusterknoten B in SIOS DataKeeper][sap-ha-guide-figure-5001]
 
-_**Abbildung 62:** In SIOS DataKeeper wird das lokale Volume von Clusterknoten A auf Clusterknoten B repliziert_
+_**Abbildung 62:** Replizieren des lokalen Volumes von Clusterknoten A auf Clusterknoten B in SIOS DataKeeper_
 
 ### <a name="failover-from-node-a-to-node-b"></a><a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a> Failover von Knoten A auf Knoten B
 
@@ -1639,12 +1638,12 @@ _**Abbildung 62:** In SIOS DataKeeper wird das lokale Volume von Clusterknoten A
 
    Nach dem Failover wird die SAP-Clustergruppe <*SID*> auf dem Clusterknoten B ausgeführt, z.B. auf **pr1-ascs-1**.
 
-   ![Abbildung 63: Failovercluster-Manager: Die SAP-Clustergruppe <SID> wird auf Clusterknoten B ausgeführt][sap-ha-guide-figure-5002]
+   ![Abbildung 63: Failovercluster-Manager: Die SAP-Clustergruppe <SID> wird auf Clusterknoten B ausgeführt.][sap-ha-guide-figure-5002]
 
-   _**Abbildung 63:** Failovercluster-Manager: Die SAP-Clustergruppe &lt;*SID*&gt; wird auf Clusterknoten B ausgeführt_
+   _**Abbildung 63**: Failovercluster-Manager: Die SAP-Clustergruppe <*SID*> wird auf Clusterknoten B ausgeführt._
 
    Der freigegebene Datenträger wird jetzt auf Clusterknoten B bereitgestellt. SIOS DataKeeper repliziert Daten vom Quellvolume S auf Clusterknoten B auf das Zielvolume S auf Clusterknoten A, also z.B. von **pr1-ascs-1 [10.0.0.41]** nach **pr1-ascs-0 [10.0.0.40]** .
 
-   ![Abbildung 64: SIOS DataKeeper repliziert das lokale Volume von Clusterknoten B auf Clusterknoten A][sap-ha-guide-figure-5003]
+   ![Abbildung 64: SIOS DataKeeper repliziert das lokale Volume von Clusterknoten B auf Clusterknoten A.][sap-ha-guide-figure-5003]
 
-   _**Abbildung 64:** SIOS DataKeeper repliziert das lokale Volume von Clusterknoten B auf Clusterknoten A_
+   _**Abbildung 64:** SIOS DataKeeper repliziert das lokale Volume von Clusterknoten B auf Clusterknoten A._

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: 6ffb6ced6fc828733dd627943a3d4b54e8293ad2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3ddc385b9d489e0c2ab4abf35a6ade011970342b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791901"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572956"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>Streamen von Warnungen in eine SIEM-, SOAR- oder IT Service Management-Lösung
 
@@ -59,26 +59,26 @@ Security Center bietet eine vorkonfigurierte Integration in die Microsoft Graph-
 
 Mithilfe dieser API können Sie Warnungen von Ihrem **gesamten Mandanten** (und Daten von vielen anderen Microsoft-Sicherheitsprodukten) in Drittanbieter-SIEMs und andere beliebte Plattformen streamen:
 
-- **Splunk Enterprise und Splunk Cloud** : [Verwenden des Microsoft Graph-Sicherheits-API-Add-Ons für Splunk](https://splunkbase.splunk.com/app/4564/) 
-- **Power BI** : [Herstellen einer Verbindung mit der Microsoft Graph-Sicherheits-API in Power BI Desktop](/power-bi/connect-data/desktop-connect-graph-security)
-- **ServiceNow** : [Installieren und Konfigurieren der Microsoft Graph-Sicherheits-API-Anwendung aus dem ServiceNow Store](https://docs.servicenow.com/bundle/orlando-security-management/page/product/secops-integration-sir/secops-integration-ms-graph/task/ms-graph-install.html)
-- **QRadar** : [Geräteunterstützungsmodul von IBM für Azure Security Center über die Microsoft Graph-API](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/c_dsm_guide_ms_azure_security_center_overview.html) 
-- **Palo Alto Networks** , **Anomali** , **Lookout** , **InSpark** und mehr: [Microsoft Graph-Sicherheits-API](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji)
+- **Splunk Enterprise und Splunk Cloud**: [Verwenden des Microsoft Graph-Sicherheits-API-Add-Ons für Splunk](https://splunkbase.splunk.com/app/4564/) 
+- **Power BI**: [Herstellen einer Verbindung mit der Microsoft Graph-Sicherheits-API in Power BI Desktop](/power-bi/connect-data/desktop-connect-graph-security)
+- **ServiceNow**: [Installieren und Konfigurieren der Microsoft Graph-Sicherheits-API-Anwendung aus dem ServiceNow Store](https://docs.servicenow.com/bundle/orlando-security-management/page/product/secops-integration-sir/secops-integration-ms-graph/task/ms-graph-install.html)
+- **QRadar**: [Geräteunterstützungsmodul von IBM für Azure Security Center über die Microsoft Graph-API](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/c_dsm_guide_ms_azure_security_center_overview.html) 
+- **Palo Alto Networks**, **Anomali**, **Lookout**, **InSpark** und mehr: [Microsoft Graph-Sicherheits-API](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji)
 
 [Erfahren Sie mehr über die Microsoft Graph-Sicherheits-API](https://www.microsoft.com/security/business/graph-security-api).
 
 
 ## <a name="stream-alerts-with-azure-monitor"></a>Streamen von Warnungen mit Azure Monitor 
 
-Zum Streamen von Warnungen in **ArcSight** , **Splunk** , **SumoLogic** , Syslog-Server, **LogRhythm** , **Logz.io Cloud Observability Platform** und andere Überwachungslösungen stellen Sie eine Verbindung zwischen Security Center und Azure Monitor über Azure Event Hubs her:
+Zum Streamen von Warnungen in **ArcSight**, **Splunk**, **SumoLogic**, Syslog-Server, **LogRhythm**, **Logz.io Cloud Observability Platform** und andere Überwachungslösungen stellen Sie eine Verbindung zwischen Security Center und Azure Monitor über Azure Event Hubs her:
 
 1. Aktivieren Sie das [fortlaufende Exportieren](continuous-export.md), um Security Center-Warnungen auf Abonnementebene in einen dedizierten Azure Event Hub zu streamen. 
     > [!TIP]
     > Informationen zur Durchführung auf Verwaltungsgruppenebene mithilfe von Azure Policy finden Sie unter [Erstellen von Konfigurationen zur Automatisierung des fortlaufenden Exports](continuous-export.md?tabs=azure-policy#configure-continuous-export-at-scale-using-the-supplied-policies).
 
-1. [Stellen Sie eine Verbindung zwischen dem Azure Event Hub und Ihrer bevorzugten Lösung mithilfe des integrierten Connectors von Azure Monitor her](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
+1. [Stellen Sie eine Verbindung zwischen dem Azure Event Hub und Ihrer bevorzugten Lösung mithilfe des integrierten Connectors von Azure Monitor her](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
 
-1. Optional können Sie die unformatierten Protokolle in den Azure Event Hub streamen und eine Verbindung mit Ihrer bevorzugten Lösung herstellen. Weitere Informationen finden Sie unter [Verfügbare Überwachungsdaten](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#monitoring-data-available).
+1. Optional können Sie die unformatierten Protokolle in den Azure Event Hub streamen und eine Verbindung mit Ihrer bevorzugten Lösung herstellen. Weitere Informationen finden Sie unter [Verfügbare Überwachungsdaten](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#monitoring-data-available).
 
 > [!TIP]
 > Die Ereignisschemas der exportierten Datentypen finden Sie bei den [Event Hub-Ereignisschemas](https://aka.ms/ASCAutomationSchemas).

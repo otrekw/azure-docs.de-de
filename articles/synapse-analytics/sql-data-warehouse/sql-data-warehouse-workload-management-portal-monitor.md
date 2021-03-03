@@ -11,17 +11,17 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 04a3fa79a6940a5b7a4bb98d08aa8be48a442903
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: eb7dcb9a384360d698c49a97f649bf75588d94f7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728599"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574219"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Azure Synapse Analytics – Überwachung des Arbeitsauslastungsverwaltungsportals
 
 In diesem Artikel wird erläutert, wie Sie die Ressourcenverwendung und Abfrageaktivität der [Arbeitsauslastungsgruppe](sql-data-warehouse-workload-isolation.md#workload-groups) überwachen.
-Ausführliche Informationen zum Konfigurieren des Azure-Metrik-Explorers finden Sie im Artikel [Erste Schritte mit dem Azure-Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).  Ausführliche Informationen zum Überwachen der Systemressourcenverwendung finden Sie in der Dokumentation zur Überwachung von Azure Synapse Analytics im Abschnitt [Ressourcenverwendung](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization).
+Ausführliche Informationen zum Konfigurieren des Azure-Metrik-Explorers finden Sie im Artikel [Erste Schritte mit dem Azure-Metrik-Explorer](../../azure-monitor/essentials/metrics-getting-started.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).  Ausführliche Informationen zum Überwachen der Systemressourcenverwendung finden Sie in der Dokumentation zur Überwachung von Azure Synapse Analytics im Abschnitt [Ressourcenverwendung](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization).
 Zum Überwachen der Arbeitsauslastungsverwaltung werden zwei verschiedene Kategorien von Arbeitsauslastungsgruppen-Metriken bereitgestellt: Ressourcenzuordnung und Abfrageaktivität.  Diese Metriken können nach Arbeitsauslastungsgruppen aufgeteilt und gefiltert werden.  Die Metriken können danach aufgeteilt und gefiltert werden, ob sie systemdefiniert sind (Ressourcenklassen-Arbeitsauslastungsgruppen) oder benutzerdefiniert (vom Benutzer mit [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)-Syntax erstellt).
 
 ## <a name="workload-management-metric-definitions"></a>Metrikdefinitionen der Arbeitsauslastungsverwaltung

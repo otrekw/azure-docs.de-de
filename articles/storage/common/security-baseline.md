@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f6825fee4cfb78ab54d782cd4d942bb994bedae9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b484873f6c118c49712cbcd66eeb6a63d8aa05f6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195720"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591546"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-Sicherheitsbaseline für Azure Storage
 
@@ -158,7 +158,7 @@ Sie können auch die integrierten Richtliniendefinitionen für Storage-Konten ve
 
 - [Konfigurieren und Verwalten von Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Erstellen von Warnungen in Azure Monitor](../../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen in Azure Monitor](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -180,7 +180,7 @@ Sie können auch die integrierten Richtliniendefinitionen für Storage-Konten ve
 
 **Leitfaden**: Erfassen Sie Protokolle über Azure Monitor, um Sicherheitsdaten zu aggregieren, die von Endpunktgeräten, Netzwerkressourcen und anderen Sicherheitssystemen generiert werden. Verwenden Sie Log Analytics-Arbeitsbereiche in Azure Monitor, um Analysen abzufragen und durchzuführen, und Azure Storage-Konten für die langfristige Speicherung bzw. Archivierung. Optional können Sie Sicherheitsfeatures wie den unveränderlichen Speicher und die erzwungene Aufbewahrung nutzen.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -210,7 +210,7 @@ Sie können auch die integrierten Richtliniendefinitionen für Storage-Konten ve
 
 - [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](./storage-monitor-storage-account.md#configure-logging)
 
-- [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -238,7 +238,7 @@ Aktivieren Sie zudem Advanced Threat Protection für Ihr Azure Storage-Konto. Ad
 
 - [Verwalten von Warnungen in Azure Security Center](../../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Warnungen bei Log Analytics-Protokolldaten](../../azure-monitor/learn/tutorial-response.md)
+- [Warnungen bei Log Analytics-Protokolldaten](../../azure-monitor/alerts/tutorial-response.md)
 
 - [Azure Storage Analytics-Protokollierung](./storage-analytics-logging.md)
 
@@ -362,7 +362,7 @@ Sie können außerdem einen Just-In-Time- oder Just-Enough-Zugriff aktivieren, i
 
 - [Grundlegendes zu Azure AD-Risikoerkennungen](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Konfigurieren von Aktionsgruppen für benutzerdefinierte Warnungen und Benachrichtigungen](../../azure-monitor/platform/action-groups.md)
+- [Konfigurieren von Aktionsgruppen für benutzerdefinierte Warnungen und Benachrichtigungen](../../azure-monitor/alerts/action-groups.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -572,7 +572,7 @@ Richtlinien für VNET-Dienstendpunkte ermöglichen es Ihnen zudem, ausgehenden v
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen zu erstellen, die bei Änderungen an Storage-Kontoressourcen ausgegeben werden. Aktivieren Sie auch die Azure Storage-Protokollierung, um nachzuverfolgen, wie jede für Azure Storage durchgeführte Anforderung autorisiert wurde. Die Protokolle geben an, ob eine Anforderung anonym, mithilfe eines OAuth 2.0-Tokens, mit einem gemeinsam verwendeten Schlüssel oder mithilfe einer SAS (Shared Access Signature) durchgeführt wurde. Mithilfe von Azure Monitor können Sie zudem Warnungen auslösen, wenn anonym auf Storage-Konten zugegriffen wird, indem Sie Bedingungen für die anonyme Authentifizierung einrichten.
 
-- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Azure Storage Analytics-Protokollierung](./storage-analytics-logging.md)
 

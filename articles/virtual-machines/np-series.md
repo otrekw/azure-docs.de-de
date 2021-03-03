@@ -3,16 +3,16 @@ title: NP-Serie – Azure Virtual Machines
 description: Spezifikationen für die VMs der NP-Serie.
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: hpc
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: 0b73697097e13f26a83eeaa72837fc00c31ef826
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 8d350e248d09f29496f4461b902eba96d8375732
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557201"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668281"
 ---
 # <a name="np-series-preview"></a>NP-Serie (Vorschau)
 
@@ -25,7 +25,7 @@ Die virtuellen Computer der NP-Serie basieren auf [Xilinx U250](https://www.xili
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
 Unterstützung von VM-Generationen: Generation 1<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
-[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Nicht unterstützt <br>
+[Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | FPGA | FPGA-Speicher: GiB | Max. Anzahl Datenträger | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s) | 

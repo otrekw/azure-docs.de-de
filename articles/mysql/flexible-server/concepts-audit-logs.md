@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 5aab78ad99b80ff1d7be92bd36847b01dbc0e33b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d38a0ea7307584c25ddec9389feaef7518bcf925
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542217"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591759"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>Überwachen der Datenbankaktivität mit Überwachungsprotokolle in Azure Database for MySQL – Flexible Server
 
@@ -50,7 +50,7 @@ Sie können die folgenden anderen Parameter verwenden, um das Verhalten der Übe
 
 ## <a name="access-audit-logs"></a>Zugreifen auf Überwachungsprotokolle
 
-Überwachungsprotokolle sind mit den Diagnoseeinstellungen von Azure Monitor integriert. Nachdem Sie Überwachungsprotokolle auf Ihrem flexiblen MySQL-Server aktiviert haben, können Sie sie an Azure Monitor-Protokolle, Event Hubs oder Azure Storage senden. Weitere Informationen über Diagnoseeinstellungen finden Sie in der [Dokumentation zu Diagnoseprotokollen](../../azure-monitor/platform/platform-logs-overview.md). Weitere Informationen zum Aktivieren von Diagnoseeinstellungen im Azure-Portal finden Sie im Artikel zum [Portal für Überwachungsprotokolle](how-to-configure-audit-logs-portal.md#set-up-diagnostics).
+Überwachungsprotokolle sind mit den Diagnoseeinstellungen von Azure Monitor integriert. Nachdem Sie Überwachungsprotokolle auf Ihrem flexiblen MySQL-Server aktiviert haben, können Sie sie an Azure Monitor-Protokolle, Event Hubs oder Azure Storage senden. Weitere Informationen über Diagnoseeinstellungen finden Sie in der [Dokumentation zu Diagnoseprotokollen](../../azure-monitor/essentials/platform-logs-overview.md). Weitere Informationen zum Aktivieren von Diagnoseeinstellungen im Azure-Portal finden Sie im Artikel zum [Portal für Überwachungsprotokolle](how-to-configure-audit-logs-portal.md#set-up-diagnostics).
 
 In den folgenden Abschnitten wird beschrieben, was von MySQL-Überwachungsprotokollen basierend auf dem Ereignistyp ausgegeben wird. Je nach Ausgabemethode können die enthaltenen Felder und ihre Reihenfolge variieren.
 

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 34bbf34d53c44dcef7b8e128a93ee64201423c3e
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 0afe349473bcddcbf1ac35136f2991ffe82670c6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897036"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576055"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>Integration in Azure Monitor-Protokolle
 
@@ -36,7 +36,7 @@ Zum Senden von Automation State Configuration-Berichten an Azure Monitor-Protoko
 
 - Die [Azure PowerShell](/powershell/azure/)-Version von November 2016 (v2.3.0) oder höher.
 - Ein Azure Automation-Konto. Weitere Informationen finden Sie unter [Einführung in Azure Automation](automation-intro.md).
-- Einen Log Analytics-Arbeitsbereich mit dem Dienstangebot „Automatisierung und Steuerung“. Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/log-query/log-analytics-tutorial.md).
+- Einen Log Analytics-Arbeitsbereich mit dem Dienstangebot „Automatisierung und Steuerung“. Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md).
 - Mindestens einen Azure Automation DSC-Knoten. Weitere Informationen finden Sie unter [Onboarding von Computern zur Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md).
 - Modul [xDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0), Version 2.7.0.0 oder höher. Installationsschritte finden Sie unter [Problembehandlung der Desired State Configuration in Azure Automation](./troubleshoot/desired-state-configuration.md).
 
@@ -91,7 +91,7 @@ Filterdetails:
 * Filtern Sie nach `DscResourceStatusData`, um für jede DSC-Ressource Vorgänge zurückzugeben, die in der auf diese Ressource angewandten Knotenkonfiguration aufgerufen wurden. 
 * Filtern Sie nach `DscResourceStatusData`, um Fehlerinformationen zu fehlerhaften DSC-Ressourcen zu erhalten.
 
-Weitere Informationen zum Erstellen von Protokollabfragen, um Daten zu finden, finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
+Weitere Informationen zum Erstellen von Protokollabfragen, um Daten zu finden, finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/logs/log-query-overview.md).
 
 ### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>Senden einer E-Mail bei einer fehlgeschlagenen DSC-Konformitätsprüfung
 
@@ -105,7 +105,7 @@ Um eine Warnungsregel zu erstellen, erstellen Sie zuerst eine Protokollsuche fü
    Wenn Sie Protokolle von mehreren Automation-Konten oder Abonnements in Ihrem Arbeitsbereich eingerichtet haben, können Sie Ihre Warnungen nach Abonnement oder Automation-Konto gruppieren. Leiten Sie den Namen des Automation-Kontos vom Feld `Resource` in der Suche nach `DscNodeStatusData`-Datensätzen ab.
 1. Klicken Sie oben auf der Seite auf **Neue Warnungsregel**, um den Bildschirm **Regel erstellen** zu öffnen. 
 
-Weitere Informationen zu den Konfigurationsoptionen für Warnungen finden Sie unter [Erstellen von Warnungsregeln](../azure-monitor/platform/alerts-metric.md).
+Weitere Informationen zu den Konfigurationsoptionen für Warnungen finden Sie unter [Erstellen von Warnungsregeln](../azure-monitor/alerts/alerts-metric.md).
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>Suchen von Fehlern bei DSC-Ressourcen in allen Knoten
 
@@ -199,5 +199,5 @@ Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in A
 - Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation).
 - Eine Preisübersicht finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
 - Ein Anwendungsbeispiel für Azure Automation State Configuration in einer Continuous Deployment-Pipeline finden Sie unter [Einrichten von Continuous Deployment mit Chocolatey](automation-dsc-cd-chocolatey.md).
-- Weitere Informationen zum Erstellen verschiedener Suchabfragen und zur Überprüfung der Automation State Configuration-Protokolle mit Azure Monitor-Protokolle finden Sie unter [Protokollsuchen in Azure Monitor-Protokollen](../azure-monitor/log-query/log-query-overview.md).
-- Weitere Informationen zu Azure Monitor-Protokolle und Datensammlungsquellen finden Sie unter [Sammeln von Azure Storage-Daten in Azure Monitor-Protokolle – Übersicht](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
+- Weitere Informationen zum Erstellen verschiedener Suchabfragen und zur Überprüfung der Automation State Configuration-Protokolle mit Azure Monitor-Protokolle finden Sie unter [Protokollsuchen in Azure Monitor-Protokollen](../azure-monitor/logs/log-query-overview.md).
+- Weitere Informationen zu Azure Monitor-Protokolle und Datensammlungsquellen finden Sie unter [Sammeln von Azure Storage-Daten in Azure Monitor-Protokolle – Übersicht](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace).

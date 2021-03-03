@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/13/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 9ccaddec73a9c74123471c34b1b973b78eacfff8
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: c16b032502401b633532ab0fcf9518aa85a1b8d6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890780"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579741"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Beheben von Problemen bei der Updateverwaltung
 
@@ -135,7 +135,7 @@ Dieses Problem kann durch lokale Konfigurationsprobleme oder eine falsch konfigu
 
 1. Führen Sie je nach Betriebssystem die Problembehandlung für [Windows](update-agent-issues.md#troubleshoot-offline) oder [Linux](update-agent-issues-linux.md#troubleshoot-offline) aus.
 
-2. Vergewissern Sie sich, dass Ihr Computer Meldungen an den richtigen Arbeitsbereich zurückgibt. Anweisungen zum Überprüfen dieses Punkts finden Sie unter [Überprüfen der Agent-Konnektivität mit Azure Monitor](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Stellen Sie außerdem sicher, dass dieser Arbeitsbereich mit Ihrem Azure Automation-Konto verknüpft ist. Rufen Sie dafür Ihr Automation-Konto auf, und wählen Sie unter **Zugehörige Ressourcen** die Option **Verknüpfter Arbeitsbereich** aus.
+2. Vergewissern Sie sich, dass Ihr Computer Meldungen an den richtigen Arbeitsbereich zurückgibt. Anweisungen zum Überprüfen dieses Punkts finden Sie unter [Überprüfen der Agent-Konnektivität mit Azure Monitor](../../azure-monitor/agents/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Stellen Sie außerdem sicher, dass dieser Arbeitsbereich mit Ihrem Azure Automation-Konto verknüpft ist. Rufen Sie dafür Ihr Automation-Konto auf, und wählen Sie unter **Zugehörige Ressourcen** die Option **Verknüpfter Arbeitsbereich** aus.
 
 3. Stellen Sie sicher, dass die Computer im Log Analytics-Arbeitsbereich aufgeführt werden, der mit Ihrem Automation-Konto verknüpft ist. Führen Sie im Log Analytics-Arbeitsbereich die folgende Abfrage aus.
 
@@ -144,7 +144,7 @@ Dieses Problem kann durch lokale Konfigurationsprobleme oder eine falsch konfigu
    | summarize by Computer, Solutions
    ```
 
-    Wenn Ihr Computer nicht in den Abfrageergebnissen aufgeführt ist, wurde er in letzter Zeit nicht eingecheckt. Es liegt wahrscheinlich ein Problem mit der lokalen Konfiguration vor, und Sie sollten [den Agent neu installieren](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
+    Wenn Ihr Computer nicht in den Abfrageergebnissen aufgeführt ist, wurde er in letzter Zeit nicht eingecheckt. Es liegt wahrscheinlich ein Problem mit der lokalen Konfiguration vor, und Sie sollten [den Agent neu installieren](../../azure-monitor/vm/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
     Wenn Ihr Computer in den Abfrageergebnissen aufgeführt ist, überprüfen Sie, ob unter der **Lösungen**-Eigenschaft **Updates** aufgeführt ist. Damit können Sie sich vergewissern, dass er bei der Updateverwaltung registriert ist. Wenn dies nicht zutrifft, suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../update-management/scope-configuration.md) bestimmt, welche Computer für die Updateverwaltung konfiguriert werden. Informationen zum Ändern der Bereichskonfiguration für den Zielcomputer finden Sie unter [Aktivieren von Computern im Arbeitsbereich](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace).
 

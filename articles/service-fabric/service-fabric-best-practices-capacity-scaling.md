@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d7d9ed8fa695c636e7aaf36fd034babb4de012d9
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 32a9c26bb9e89cf4057cc753b02ad3c006d0bae6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784679"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595078"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Kapazitätsplanung und Skalierung für Azure Service Fabric
 
@@ -26,7 +26,7 @@ Durch die Verwendung der automatischen Skalierung über VM-Skalierungsgruppen de
 
 * Die Bereitstellung Ihrer Resource Manager-Vorlagen mit der deklarierten geeigneten Kapazität unterstützt Ihren Anwendungsfall nicht.
      
-   Sie können zusätzlich zur manuellen Skalierung eine [Continuous Integration- und Continuous Delivery-Pipeline in Azure DevOps Services mithilfe von Bereitstellungsprojekten für Azure-Ressourcengruppen](../azure-resource-manager/templates/add-template-to-azure-pipelines.md) konfigurieren. Diese Pipeline wird meist durch eine Logik-App ausgelöst, die Leistungsmetriken von virtuellen Computern nutzt, die über die [Azure Monitor-REST-API](../azure-monitor/platform/rest-api-walkthrough.md) abgefragt wurden. Die Pipeline führt eine effektive automatische Skalierung basierend auf Ihren gewünschten Metriken durch und optimiert gleichzeitig die Resource Manager-Vorlagen.
+   Sie können zusätzlich zur manuellen Skalierung eine [Continuous Integration- und Continuous Delivery-Pipeline in Azure DevOps Services mithilfe von Bereitstellungsprojekten für Azure-Ressourcengruppen](../azure-resource-manager/templates/add-template-to-azure-pipelines.md) konfigurieren. Diese Pipeline wird meist durch eine Logik-App ausgelöst, die Leistungsmetriken von virtuellen Computern nutzt, die über die [Azure Monitor-REST-API](../azure-monitor/essentials/rest-api-walkthrough.md) abgefragt wurden. Die Pipeline führt eine effektive automatische Skalierung basierend auf Ihren gewünschten Metriken durch und optimiert gleichzeitig die Resource Manager-Vorlagen.
 * Sie müssen jeweils nur einen Knoten einer VM-Skalierungsgruppe horizontal skalieren.
    
    Zum Erweitern um drei oder mehr Knoten gleichzeitig sollten Sie [einen Service Fabric-Cluster durch das Hinzufügen einer VM-Skalierungsgruppe aufskalieren](virtual-machine-scale-set-scale-node-type-scale-out.md). Es ist am sichersten, das Auf- und Abskalieren von VM-Skalierungsgruppen mit jeweils einem Knoten durchzuführen.

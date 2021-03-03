@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c5a855ffe06a17d8ec1bfe249dbe7bc41d1166af
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 2a0ce52c094739ffbbce2f93a41b2533222066b8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369071"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576808"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>Sicherheitskontrolle V2: Protokollierung und Bedrohungserkennung
 
@@ -20,7 +20,7 @@ Die Protokollierung und Bedrohungserkennung umfasst alle Steuerelemente zum Erke
 
 ## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: Aktivieren der Bedrohungserkennung für Azure-Ressourcen
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | ID(s) von NIST SP 800-53 r4 |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | LT-1 | 6.7 | AU-3, AU-6, AU-12, SI-4 |
 
@@ -54,7 +54,7 @@ Zusätzlich können Sie mithilfe von Azure Sentinel Analyseregeln erstellen, anh
 
 ## <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2: Aktivieren der Bedrohungserkennung für die Identitäts- und Zugriffsverwaltung in Azure
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | ID(s) von NIST SP 800-53 r4 |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | LT-2 | 6,8 | AU-3, AU-6, AU-12, SI-4 |
 
@@ -91,7 +91,7 @@ Auch Azure Security Center kann bestimmte verdächtige Aktivitäten melden, wie 
 
 ## <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: Aktivieren der Protokollierung für Azure-Netzwerkaktivitäten
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | ID(s) von NIST SP 800-53 r4 |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | LT-3 | 9.3, 12.2, 12.5, 12.8 | AU-3, AU-6, AU-12, SI-4 |
 
@@ -125,7 +125,7 @@ Aktivieren und Sammeln Sie für die Sicherheitsanalyse NSG-Ressourcenprotokolle 
 
 ## <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4: Aktivieren der Protokollierung für Azure-Ressourcen
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | ID(s) von NIST SP 800-53 r4 |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | LT-4 | 6.2, 6.3, 8.8 | AU-3, AU-12 |
 
@@ -133,7 +133,7 @@ Aktivieren Sie die Protokollierung für Azure-Ressourcen, um die Anforderungen h
 
 Sie können mithilfe von Azure Security Center und Azure Policy Ressourcenprotokolle und die Erfassung von Protokolldaten für Azure-Ressourcen aktivieren, um Zugriff auf Überwachungs-, Sicherheits- und Ressourcenprotokolle zu erhalten. Aktivitätsprotokolle, die automatisch verfügbar sind, enthalten Ereignisquelle, Datum, Benutzer, Zeitstempel, Quelladressen, Zieladressen und andere nützliche Elemente. 
 
-- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../../azure-monitor/platform/platform-logs-overview.md)
+- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Grundlegendes zur Datensammlung in Azure Security Center](../../security-center/security-center-enable-data-collection.md)
 
@@ -163,7 +163,7 @@ Zusätzlich können Sie auch Daten in Azure Sentinel oder der SIEM-Lösung eines
 
 Viele Unternehmen verwenden Azure Sentinel für „heiße“ Daten, die häufig verwendet werden, und Azure Storage für seltener verwendete „kalte“ Daten. 
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Durchführen des Onboardings für Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
@@ -187,7 +187,7 @@ Konfigurieren Sie die Aufbewahrungsdauer der Protokolle entsprechend Ihrer Compl
 
 In Azure Monitor können Sie den Aufbewahrungszeitraum des Log Analytics-Arbeitsbereichs gemäß den Compliancevorschriften Ihres Unternehmens festlegen. Verwenden Sie für langfristige Speicherungen und Archivierungen Konten von Azure Storage, Data Lake oder des Log Analytics-Arbeitsbereichs.
 
-- [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 

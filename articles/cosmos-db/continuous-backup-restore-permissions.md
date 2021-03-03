@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 82af70547d20509c48f1e07bbc7610fc666a6da1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8b3ce2c195dc2fa3dd703306e731aa5b807b78b1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393053"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100648602"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>Verwalten von Berechtigungen zum Wiederherstellen eines Azure Cosmos DB-Kontos
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -60,8 +60,8 @@ Die folgenden Berechtigungen sind zum Ausführen der verschiedenen Aktivitäten 
 
 |Berechtigung  |Auswirkung  |Mindestumfang  |Maximaler Bereich  |
 |---------|---------|---------|---------|
-|`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | Diese Berechtigungen sind für die ARM-Vorlagenbereitstellung zum Erstellen des wiederhergestellten Kontos erforderlich. Informationen zum Festlegen dieser Rolle finden Sie unten in der Beispielberechtigung [RestorableAction](#custom-restorable-action). | Nicht zutreffend | Nicht zutreffend  |
-|Microsoft.DocumentDB/databaseAccounts/write | Diese Berechtigung ist erforderlich, um ein Konto in einer Ressourcengruppe wiederherstellen zu können. | Die Ressourcengruppe, unter der das wiederhergestellte Konto erstellt wird. | Das Abonnement, unter dem das wiederhergestellte Konto erstellt wird. |
+|`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | Diese Berechtigungen sind für die ARM-Vorlagenbereitstellung zum Erstellen des wiederhergestellten Kontos erforderlich. Informationen zum Festlegen dieser Rolle finden Sie unten in der Beispielberechtigung [RestorableAction](#custom-restorable-action). | Nicht zutreffend | Nicht verfügbar  |
+|`Microsoft.DocumentDB/databaseAccounts/write` | Diese Berechtigung ist erforderlich, um ein Konto in einer Ressourcengruppe wiederherstellen zu können. | Die Ressourcengruppe, unter der das wiederhergestellte Konto erstellt wird. | Das Abonnement, unter dem das wiederhergestellte Konto erstellt wird. |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` |Diese Berechtigung ist für den Bereich des wiederherstellbaren Datenbankquellkontos erforderlich, damit Wiederherstellungsaktionen dafür ausgeführt werden können.  | Die *RestorableDatabaseAccount*-Ressource, die zum wiederherzustellenden Quellkonto gehört. Dieser Wert wird auch durch die Eigenschaft `ID` der wiederherstellbaren Datenbankkontoressource angegeben. Ein Beispiel für ein wiederherstellbares Konto ist */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>* . | Das Abonnement, das das wiederherstellbare Datenbankkonto enthält. Die Ressourcengruppe kann nicht als Bereich ausgewählt werden.  |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` |Diese Berechtigung ist für den Bereich des wiederherstellbaren Datenbankquellkontos erforderlich, um die wiederherstellbaren Datenbankkonten auflisten zu können.  | Die *RestorableDatabaseAccount*-Ressource, die zum wiederherzustellenden Quellkonto gehört. Dieser Wert wird auch durch die Eigenschaft `ID` der wiederherstellbaren Datenbankkontoressource angegeben. Ein Beispiel für ein wiederherstellbares Konto ist */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>* .| Das Abonnement, das das wiederherstellbare Datenbankkonto enthält. Die Ressourcengruppe kann nicht als Bereich ausgewählt werden.  |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` | Diese Berechtigung ist für den Bereich des wiederherstellbaren Quellkontos erforderlich, um das Lesen von wiederherstellbaren Ressourcen wie der Liste der Datenbanken und Container für ein wiederherstellbares Konto zuzulassen.  | Die *RestorableDatabaseAccount*-Ressource, die zum wiederherzustellenden Quellkonto gehört. Dieser Wert wird auch durch die Eigenschaft `ID` der wiederherstellbaren Datenbankkontoressource angegeben. Ein Beispiel für ein wiederherstellbares Konto ist */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>* .| Das Abonnement, das das wiederherstellbare Datenbankkonto enthält. Die Ressourcengruppe kann nicht als Bereich ausgewählt werden. |

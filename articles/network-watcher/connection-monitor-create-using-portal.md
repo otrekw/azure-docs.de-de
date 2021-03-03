@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: bd13712d137ec5a1fdfa6dec8e6f6d1e0a7432cb
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 61cb37e727808566db1bc9b1161960926e03cb91
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833166"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570900"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Erstellen eines Monitors in Verbindungsmonitor mit dem Azure-Portal
 
@@ -186,7 +186,7 @@ Wenn Sie Warnungen für einen Verbindungsmonitor erstellen möchten, geben Sie i
 
 - **Bedingungsname**: Die Warnung wir für die `Test Result(preview)`-Metrik erstellt. Wenn das Ergebnis des Verbindungsmonitortests fehlerhaft ist, wird die Warnungsregel ausgelöst. 
 
-- **Aktionsgruppenname**: Sie können Ihre E-Mail-Adresse direkt eingeben, oder Sie können Warnungen über Aktionsgruppen erstellen. Wenn Sie Ihre E-Mail-Adresse direkt eingeben, wird eine Aktionsgruppe namens **NPM Email ActionGroup** erstellt. Die E-Mail-ID wird dieser Aktionsgruppe hinzugefügt. Wenn Sie sich für die Verwendung von Aktionsgruppen entscheiden, müssen Sie eine zuvor erstellte Aktionsgruppe auswählen. Wie Sie eine Aktionsgruppe erstellen, erfahren Sie unter [Aktionsgruppen im Azure-Portal erstellen](../azure-monitor/platform/action-groups.md). Nachdem die Warnung erstellt wurde, können Sie [Ihre Warnungen verwalten](../azure-monitor/platform/alerts-metric.md#view-and-manage-with-azure-portal). 
+- **Aktionsgruppenname**: Sie können Ihre E-Mail-Adresse direkt eingeben, oder Sie können Warnungen über Aktionsgruppen erstellen. Wenn Sie Ihre E-Mail-Adresse direkt eingeben, wird eine Aktionsgruppe namens **NPM Email ActionGroup** erstellt. Die E-Mail-ID wird dieser Aktionsgruppe hinzugefügt. Wenn Sie sich für die Verwendung von Aktionsgruppen entscheiden, müssen Sie eine zuvor erstellte Aktionsgruppe auswählen. Wie Sie eine Aktionsgruppe erstellen, erfahren Sie unter [Aktionsgruppen im Azure-Portal erstellen](../azure-monitor/alerts/action-groups.md). Nachdem die Warnung erstellt wurde, können Sie [Ihre Warnungen verwalten](../azure-monitor/alerts/alerts-metric.md#view-and-manage-with-azure-portal). 
 
 - **Name der Warnungsregel**: Der Name des Verbindungsmonitors.
 

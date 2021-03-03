@@ -33,6 +33,16 @@
           href: database/features-comparison.md
         - name: Funktionen mit mehreren Modellen
           href: multi-model-features.md
+        - name: Geplante Wartung
+          items:
+            - name: Wartungsfenster
+              href: database/maintenance-window.md
+            - name: Konfigurieren von Wartungsfenstern
+              href: database/maintenance-window-configure.md
+            - name: Wartungsfenster – Häufig gestellte Fragen
+              href: database/maintenance-window-faq.yml
+            - name: Vorabbenachrichtigungen
+              href: database/advance-notifications.md
         - name: In-Memory-OLTP
           href: in-memory-oltp-overview.md
         - name: Temporale Tabellen

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 833d96b8ca252cff5384cde114390aba8c2f51c3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: e3a24e4c947afdc1970f6e624335ecc84dd8eff2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097689"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594385"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Größen von virtuellen Burstable-Computern der B-Serie
 
@@ -109,7 +109,7 @@ Bei einer D16s_v3 mit 16 vCPUs und 64 GiB Arbeitsspeicher beträgt der Stundens
 
 **A:** Mit der Metrik **Credit** gibt Aufschluss darüber, wie viel Guthaben Ihr virtueller Computer verdient hat, und die Metrik **ConsumedCredit** zeigt an, wie viel CPU-Guthaben Ihr virtueller Computer aus dem Vorrat verbraucht hat.    Diese Metriken können Sie im Metrikbereich des Portals oder programmgesteuert über die Azure Monitor-APIs anzeigen.
 
-Weitere Informationen zum Zugreifen auf die Metrikdaten für Azure finden Sie in der [Übersicht über Metriken in Microsoft Azure](../azure-monitor/platform/data-platform.md).
+Weitere Informationen zum Zugreifen auf die Metrikdaten für Azure finden Sie in der [Übersicht über Metriken in Microsoft Azure](../azure-monitor/data-platform.md).
 
 ### <a name="q-how-are-credits-accumulated-and-consumed"></a>F: Wie wird Guthaben hinzugefügt und verbraucht?
 

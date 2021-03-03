@@ -8,16 +8,14 @@ ms.author: nmurav
 ms.date: 01/03/2012
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4655a20ddd419993f5a73ec54420abec96d32a62
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d682524ae3ff5b82233a69959a309a7495e30bed
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546175"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658062"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Tutorial: Vorbereiten einer Web-App für Azure Communication Services (Node.js)
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure Communication Services ermöglicht Ihnen das Hinzufügen von Echtzeitkommunikation zu Ihren Anwendungen. In diesem Tutorial wird beschrieben, wie Sie eine Webanwendung einrichten, die Azure Communication Services unterstützt. Dies ist ein Einführungstutorial für neue Entwickler, die in die Echtzeitkommunikation einsteigen möchten.
 
@@ -38,12 +36,12 @@ In diesem Tutorial lernen Sie Folgendes:
 - [Visual Studio Code](https://code.visualstudio.com/): Wird hier verwendet, um Code in Ihrer lokalen Entwicklungsumgebung zu bearbeiten.
 - [Webpack](https://webpack.js.org/): Wird verwendet, um Ihren Code zu bündeln und lokal zu hosten.
 - [Node.js](https://nodejs.org/en/): Wird zum Installieren und Verwalten von Abhängigkeiten verwendet, z. B. Azure Communication Services-Clientbibliotheken und Webpack.
-- [nvm und npm](https://docs.microsoft.com/windows/nodejs/setup-on-windows) zum Verarbeiten der Versionskontrolle.
-- [Azure Storage-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) für Visual Studio Code. Diese Erweiterung wird benötigt, um Ihre Anwendung in Azure Storage zu veröffentlichen. Informieren Sie sich über das [Hosten von statischen Websites in Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).
+- [nvm und npm](/windows/nodejs/setup-on-windows) zum Verarbeiten der Versionskontrolle.
+- [Azure Storage-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) für Visual Studio Code. Diese Erweiterung wird benötigt, um Ihre Anwendung in Azure Storage zu veröffentlichen. Informieren Sie sich über das [Hosten von statischen Websites in Azure Storage](../../storage/blobs/storage-blob-static-website.md).
 - Die [Azure App Service-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice). Die Erweiterung ermöglicht die Bereitstellung von Websites (ähnlich wie im vorherigen Fall), verfügt aber zusätzlich über die Option zum Konfigurieren von vollständig verwalteter Continuous Integration und Continuous Delivery (CI/CD).
 - Die [Azure Functions-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) zum Entwickeln Ihrer eigenen serverlosen Anwendungen. Beispielsweise können Sie Ihre Authentifizierungsanwendung in Azure Functions hosten.
 - Eine aktive Communication Services-Ressource und eine Verbindungszeichenfolge. [Erstellen Sie eine Communication Services-Ressource](../quickstarts/create-communication-resource.md).
-- Ein Benutzerzugriffstoken. Eine Anleitung finden Sie unter [Schnellstart: Erstellen und Verwalten von Zugriffstoken](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-javascript) oder im Tutorial zum Thema [Erstellen eines vertrauenswürdigen Authentifizierungsdiensts mithilfe von Azure Functions](https://docs.microsoft.com/azure/communication-services/tutorials/trusted-service-tutorial).
+- Ein Benutzerzugriffstoken. Eine Anleitung finden Sie unter [Schnellstart: Erstellen und Verwalten von Zugriffstoken](../quickstarts/access-tokens.md?pivots=programming-language-javascript) oder im Tutorial zum Thema [Erstellen eines vertrauenswürdigen Authentifizierungsdiensts mithilfe von Azure Functions](./trusted-service-tutorial.md).
 
 
 ## <a name="configure-your-development-environment"></a>Konfigurieren der Entwicklungsumgebung
@@ -57,7 +55,7 @@ Ihre lokale Entwicklungsumgebung wird wie folgt konfiguriert:
 
 Wir verwenden Node.js, um verschiedene Abhängigkeiten herunterzuladen und zu installieren, die wir für unsere clientseitige Anwendung benötigen. Hiermit werden statische Dateien generiert, die von uns dann in Azure gehostet werden, sodass Sie sich nicht um die entsprechende Konfiguration auf Ihrem Server kümmern müssen.
 
-Windows-Entwickler können [dieses Node.js-Tutorial](https://docs.microsoft.com/windows/nodejs/setup-on-windows) durcharbeiten, um Node, nvm und npm zu konfigurieren. 
+Windows-Entwickler können [dieses Node.js-Tutorial](/windows/nodejs/setup-on-windows) durcharbeiten, um Node, nvm und npm zu konfigurieren.
 
 Zum Testen dieses Tutorials haben wir Version 12.20.0 von LTS verwendet. Verwenden Sie nach der Installation von nvm den folgenden PowerShell-Befehl, um die Version bereitzustellen, die Sie nutzen möchten:
 
@@ -161,7 +159,7 @@ module.exports ={
     output: {
         filename:'app.js',
         path: path.resolve(__dirname, 'dist'),
-    }     
+    }
 }
 ```
 
@@ -218,7 +216,7 @@ Ihre Datei sollte nun wie folgt aussehen:
 }
 ```
 
-Sie haben den Befehl hinzugefügt, der über npm verwendet werden kann. 
+Sie haben den Befehl hinzugefügt, der über npm verwendet werden kann.
 
 :::image type="content" source="./media/step-one-pic-12.png" alt-text="Ändern von „package.json“":::
 
@@ -279,13 +277,13 @@ npm run build:dev
 In der Konsole wird angezeigt, wo der Server ausgeführt wird. Dieser lautet standardmäßig `http://localhost:8080`. Der Befehl „build:dev“ ist der Befehl, den wir weiter oben der Datei `package.json` hinzugefügt haben.
 
  :::image type="content" source="./media/step-one-pic-16.png" alt-text="Starten eines Entwicklungsservers":::
- 
+
  Navigieren Sie in Ihrem Browser zu der Adresse. Es sollte die Seite mit der Warnung angezeigt werden, die Sie in den obigen Schritten konfiguriert haben.
- 
+
   :::image type="content" source="./media/step-one-pic-17.png" alt-text="HTML-Seite":::
-  
- 
-Während der Server ausgeführt wird, können Sie den Code ändern. Der Server und die HTML-Seite werden automatisch neu geladen. 
+
+
+Während der Server ausgeführt wird, können Sie den Code ändern. Der Server und die HTML-Seite werden automatisch neu geladen.
 
 Navigieren Sie als Nächstes zur Datei `app.js` in Visual Studio Code, und löschen Sie `alert('Hello world alert!');`. Speichern Sie Ihre Datei, und vergewissern Sie sich, dass die Warnung nicht mehr in Ihrem Browser angezeigt wird.
 
@@ -323,11 +321,11 @@ const { merge } = require('webpack-merge');
  ```
 
 Beachten Sie, dass diese Konfiguration mit der Datei „webpack.common.js“ (mit der Angabe der Eingabedatei und zum Speichern der Ergebnisse) zusammengeführt und dass der Modus „production“ festgelegt wird.
- 
+
 Fügen Sie in `package.json` den folgenden Code hinzu:
 
 ```JavaScript
-"build:prod": "webpack --config webpack.prod.js" 
+"build:prod": "webpack --config webpack.prod.js"
 ```
 
 Ihre Datei sollte wie folgt aussehen:
@@ -341,14 +339,14 @@ Ihre Datei sollte wie folgt aussehen:
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack-dev-server --config webpack.dev.js",
-    "build:prod": "webpack --config webpack.prod.js" 
+    "build:prod": "webpack --config webpack.prod.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@azure/communication-calling": "^1.0.0-beta.3",
-    "@azure/communication-common": "^1.0.0-beta.3"
+    "@azure/communication-calling": "^1.0.0-beta.6",
+    "@azure/communication-common": "^1.0.0"
   },
   "devDependencies": {
     "webpack": "^4.42.0",
@@ -368,13 +366,13 @@ Führen Sie im Terminal Folgendes aus:
 npm run build:prod
 ```
 
-Mit dem Befehl wird der Ordner `dist` und darin dann die für die Produktion geeignete statische Datei `app.js` erstellt. 
+Mit dem Befehl wird der Ordner `dist` und darin dann die für die Produktion geeignete statische Datei `app.js` erstellt.
 
  :::image type="content" source="./media/step-one-pic-21.png" alt-text="Produktionsbuild":::
- 
- 
+
+
 ### <a name="deploy-your-app-to-azure-storage"></a>Bereitstellen Ihrer App in Azure Storage
- 
+
 Kopieren Sie `index.html` und `app.css` in den Ordner `dist`.
 
 Erstellen Sie im Ordner `dist` eine neue Datei, und geben Sie ihr den Namen `404.html`. Kopieren Sie den folgenden Markupcode in diese Datei:
@@ -399,45 +397,45 @@ Speichern Sie die Datei (STRG+S).
 Klicken Sie mit der rechten Maustaste, und wählen Sie die Option „Deploy to Static Website via Azure Storage“ (Über Azure Storage auf statischer Website bereitstellen) aus.
 
 :::image type="content" source="./media/step-one-pic-22.png" alt-text="Starten der Bereitstellung in Azure":::
- 
+
 Wählen Sie im Feld `Select subscription` die Option „Bei Azure anmelden“ aus (oder „Kostenloses Azure-Konto erstellen“, falls Sie noch kein Abonnement erstellt haben).
- 
+
 :::image type="content" source="./media/step-one-pic-23.png" alt-text="Anmelden bei Azure":::
- 
+
 Wählen Sie `Create new Storage Account` > `Advanced` aus:
 
  :::image type="content" source="./media/step-one-pic-24.png" alt-text="Erstellen der Speicherkontogruppe":::
- 
+
  Geben Sie den Namen der Speichergruppe an:
- 
+
  :::image type="content" source="./media/step-one-pic-25.png" alt-text="Hinzufügen eines Namens für das Konto":::
- 
+
 Erstellen Sie bei Bedarf eine neue Ressourcengruppe:
- 
+
   :::image type="content" source="./media/step-one-pic-26.png" alt-text="Erstellen einer neuen Gruppe":::
-  
+
   Beantworten Sie die Frage „Would you like to enable static website hosting?“ (Möchten Sie das Hosten von statischen Websites aktivieren?) mit „Ja“.
-  
+
   :::image type="content" source="./media/step-one-pic-27.png" alt-text="Auswählen der Option zum Aktivieren des Hostens von statischen Websites":::
-  
+
 Akzeptieren Sie den Standarddateinamen unter „Enter the index document name“ (Namen des Indexdokuments eingeben), da wir die Datei `index.html` erstellt haben.
 
-Geben Sie `404.html` unter „Enter the 404 error document path“ (Pfad für 404-Fehlerdokument eingeben) ein.  
-  
-Wählen Sie den Standort der Anwendung aus. Anhand des von Ihnen ausgewählten Speicherorts wird definiert, welcher Medienprozessor in Ihrer zukünftigen Anrufanwendung bei Gruppenanrufen verwendet wird. 
+Geben Sie `404.html` unter „Enter the 404 error document path“ (Pfad für 404-Fehlerdokument eingeben) ein.
+
+Wählen Sie den Standort der Anwendung aus. Anhand des von Ihnen ausgewählten Speicherorts wird definiert, welcher Medienprozessor in Ihrer zukünftigen Anrufanwendung bei Gruppenanrufen verwendet wird.
 
 Der Medienprozessor wird von Azure Communication Services basierend auf dem Standort der Anwendung ausgewählt.
 
 :::image type="content" source="./media/step-one-pic-28.png" alt-text="Auswählen des Standorts":::
-  
-Warten Sie ab, bis die Ressource und Ihre Website erstellt wurden. 
- 
+
+Warten Sie ab, bis die Ressource und Ihre Website erstellt wurden.
+
 Klicken Sie auf „Browse to website“ (Zur Website wechseln):
 
 :::image type="content" source="./media/step-one-pic-29.png" alt-text="Bereitstellung abgeschlossen":::
- 
+
 In den Entwicklungstools Ihres Browsers können Sie die Quelle untersuchen und unsere für die Produktion vorbereitete Datei anzeigen.
- 
+
 :::image type="content" source="./media/step-one-pic-30.png" alt-text="Website":::
 
 Wählen Sie im [Azure-Portal](https://portal.azure.com/#home) Ihre Ressourcengruppe und dann die von Ihnen erstellte Anwendung aus, und navigieren Sie zu `Settings` > `Static website` („Einstellungen“ > „Statische Website“). Sie sehen, dass die Verwendung von statischen Websites aktiviert ist und dass die Dateien für den primären Endpunkt, das Indexdokument und das Fehlerpfaddokument angezeigt werden.
@@ -448,7 +446,7 @@ Wenn Sie unter „Blob-Dienst“ die Option „Container“ auswählen, werden z
 
 :::image type="content" source="./media/step-one-pic-32.png" alt-text="Containerkonfiguration":::
 
-Wenn Sie zu `$web` navigieren, werden Ihre Dateien angezeigt, die Sie in Visual Studio erstellt und in Azure bereitgestellt haben. 
+Wenn Sie zu `$web` navigieren, werden Ihre Dateien angezeigt, die Sie in Visual Studio erstellt und in Azure bereitgestellt haben.
 
 :::image type="content" source="./media/step-one-pic-33.png" alt-text="Bereitstellung":::
 

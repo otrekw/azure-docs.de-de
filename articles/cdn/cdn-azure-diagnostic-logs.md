@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: fdb609a243656e2c75159cd2d4e70e2f965ae896
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 96e80de5b8b5ab0a046913ce40ca2d7254dd0133
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352115"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573223"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>Diagnoseprotokolle: Azure Content Delivery Network
 
@@ -78,7 +78,7 @@ Führen Sie die folgenden Schritte aus, um ein Speicherkonto zum Speichern der P
 Führen Sie die folgenden Schritte aus, um Log Analytics für die Protokolle zu verwenden:
 
 >[!NOTE] 
->Zum Ausführen dieser Schritte ist ein Log Analytics-Arbeitsbereich erforderlich. Weitere Informationen finden Sie unter: Weitere Informationen finden Sie unter **[Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/learn/quick-create-workspace.md)** .
+>Zum Ausführen dieser Schritte ist ein Log Analytics-Arbeitsbereich erforderlich. Weitere Informationen finden Sie unter: Weitere Informationen finden Sie unter **[Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/logs/quick-create-workspace.md)** .
     
 1. Geben Sie für **Name der Diagnoseeinstellung** einen Namen für Ihre Diagnoseprotokolleinstellungen ein.
 
@@ -369,7 +369,7 @@ Beispiele für Eigenschaften:
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Azure-Diagnoseprotokolle](../azure-monitor/platform/platform-logs-overview.md)
+* [Azure-Diagnoseprotokolle](../azure-monitor/essentials/platform-logs-overview.md)
 * [Analysieren von Azure CDN-Verwendungsmustern](./cdn-analyze-usage-patterns.md)
-* [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md)
+* [Azure Monitor-Protokolle](../azure-monitor/logs/log-query-overview.md)
 * [Azure Log Analytics-REST-API](/rest/api/loganalytics)

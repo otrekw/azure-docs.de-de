@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 02/11/2021
 ms.author: lajanuar
-ms.openlocfilehash: 9535c1aa044fdce529d83c2e46a1b585e8e5f056
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0f5f0714235ee23624b3a199eac744155d2bbdd1
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370025"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093380"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Bereitstellen des Samplebezeichnungstools
 
@@ -69,19 +69,8 @@ Führen Sie die folgenden Schritte aus, um eine neue Ressource im Azure-Portal z
    > ![Auswählen von „Docker“](./media/quickstarts/select-docker.png)
 
 6. Konfigurieren Sie nun Ihren Docker-Container. Alle Felder sind erforderlich, sofern nicht anders angegeben:
-
-    # <a name="v20"></a>[v2.0](#tab/v2-0)
-
-* Optionen: Wählen Sie **Einzelner Container** aus.
-* Imagequelle: Wählen Sie **Private Registrierung** aus. 
-* Server-URL: Legen Sie die URL auf `https://mcr.microsoft.com` fest.
-* Benutzername (optional): Erstellen Sie einen Benutzernamen. 
-* Kennwort (optional): Erstellen Sie ein sicheres Kennwort, das Sie sich gut merken können.
-* Image und Tag: Legen Sie diese Einstellung auf `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest` fest.
-* Continuous Deployment: Legen Sie diesen Wert auf **On** fest, wenn Sie automatische Aktualisierungen erhalten möchten, sobald das Entwicklungsteam Änderungen am Beschriftungstool für Stichproben vornimmt.
-* Startbefehl: Legen Sie diese Einstellung auf `./run.sh eula=accept` fest.
-
-    # <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1) 
+<!-- markdownlint-disable MD025 -->
+# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
 
 * Optionen: Wählen Sie **Einzelner Container** aus.
 * Imagequelle: Wählen Sie **Private Registrierung** aus. 
@@ -92,7 +81,18 @@ Führen Sie die folgenden Schritte aus, um eine neue Ressource im Azure-Portal z
 * Continuous Deployment: Legen Sie diesen Wert auf **On** fest, wenn Sie automatische Aktualisierungen erhalten möchten, sobald das Entwicklungsteam Änderungen am Beschriftungstool für Stichproben vornimmt.
 * Startbefehl: Legen Sie diese Einstellung auf `./run.sh eula=accept` fest.
 
-    ---
+# <a name="v20"></a>[v2.0](#tab/v2-0)  
+
+* Optionen: Wählen Sie **Einzelner Container** aus.
+* Imagequelle: Wählen Sie **Private Registrierung** aus. 
+* Server-URL: Legen Sie die URL auf `https://mcr.microsoft.com` fest.
+* Benutzername (optional): Erstellen Sie einen Benutzernamen. 
+* Kennwort (optional): Erstellen Sie ein sicheres Kennwort, das Sie sich gut merken können.
+* Image und Tag: Legen Sie diese Einstellung auf `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest` fest.
+* Continuous Deployment: Legen Sie diesen Wert auf **On** fest, wenn Sie automatische Aktualisierungen erhalten möchten, sobald das Entwicklungsteam Änderungen am Beschriftungstool für Stichproben vornimmt.
+* Startbefehl: Legen Sie diese Einstellung auf `./run.sh eula=accept` fest.
+
+ ---
 
    > [!div class="mx-imgBorder"]
    > ![Konfigurieren von Docker](./media/quickstarts/configure-docker.png)
@@ -104,7 +104,7 @@ Führen Sie die folgenden Schritte aus, um eine neue Ressource im Azure-Portal z
 
 > [!IMPORTANT]
 > Möglicherweise müssen Sie TLS für Ihre Web-App aktivieren, um sie unter ihrer `https`-Adresse anzuzeigen. Befolgen Sie die Anweisungen in [Aktivieren eines TLS-Endpunkts](../../container-instances/container-instances-container-group-ssl.md), um einen Sidecar-Container einzurichten, und aktivieren Sie dann TLS/SSL für Ihre Web-App.
-
+<!-- markdownlint-disable MD001 -->
 ### <a name="azure-cli"></a>Azure CLI
 
 Als Alternative zum Azure-Portal können Sie die Azure-Befehlszeilenschnittstelle (Azure CLI) zum Erstellen einer Ressource verwenden. Bevor Sie fortfahren, müssen Sie die [Azure CLI](/cli/azure/install-azure-cli) installieren. Sie können diesen Schritt überspringen, falls Sie sie bereits verwenden. 
@@ -113,12 +113,32 @@ Es gibt einige Dinge, die Sie über diesen Befehl wissen sollten:
 
 * `DNS_NAME_LABEL=aci-demo-$RANDOM` generiert einen zufälligen DNS-Namen. 
 * Dieses Beispiel setzt voraus, dass Sie über eine Ressourcengruppe verfügen, die Sie zum Erstellen einer Ressource verwenden können. Ersetzen Sie `<resource_group_name>` durch eine gültige Ressourcengruppe, die Ihrem Abonnement zugeordnet ist. 
-* Sie müssen angeben, wo die Ressource erstellt werden soll. Ersetzen Sie `<region name>` durch die gewünschte Region für die Web-App. 
+* Sie müssen angeben, wo die Ressource erstellt werden soll. Ersetzen Sie `<region name>` durch die gewünschte Region für die Web-App.
 * Dieser Befehl akzeptiert automatisch die Lizenzbedingungen.
 
 Führen Sie in der Azure CLI den folgenden Befehl aus, um eine Web-App-Ressource für das Tool für die Beschriftung von Beispielen zu erstellen:
 
+<!-- markdownlint-disable MD024 -->
+# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+
+```azurecli
+DNS_NAME_LABEL=aci-demo-$RANDOM
+
+az container create \
+  --resource-group <resource_group_name> \
+  --name <name> \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
+  --ports 3000 \
+  --dns-name-label $DNS_NAME_LABEL \
+  --location <region name> \
+  --cpu 2 \
+  --memory 8 \
+  --command-line "./run.sh eula=accept"
+
+```
+
 # <a name="v20"></a>[v2.0](#tab/v2-0)
+
 
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
@@ -133,24 +153,8 @@ az container create \
   --cpu 2 \
   --memory 8 \
   --command-line "./run.sh eula=accept"
-`
+``` 
 
-# [v2.1 preview](#tab/v2-1) 
-   
-```azurecli
-DNS_NAME_LABEL=aci-demo-$RANDOM
-
-az container create \
-  --resource-group <resource_group_name> \
-  --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
-  --ports 3000 \
-  --dns-name-label $DNS_NAME_LABEL \
-  --location <region name> \
-  --cpu 2 \
-  --memory 8 \
-  --command-line "./run.sh eula=accept"
-```
 
 ---
 

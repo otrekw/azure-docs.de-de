@@ -5,23 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 547b455dc776b7304e413b3b6f1330e7cedcf2a2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d68f83bd042af6612b91807f2adeed54d24bfe01
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441996"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648616"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>Hinzufügen von Facebook als Identitätsanbieter für externe Identitäten
 
-Sie können Facebook zu Ihren Benutzerflows für die Self-Service-Registrierung (Vorschau) hinzufügen, damit sich Benutzer mit ihren eigenen Facebook-Konten bei Ihren Anwendungen anmelden können. Damit sich Benutzer mit Facebook anmelden können, müssen Sie zunächst die [Self-Service-Registrierungs](self-service-sign-up-user-flow.md) für Ihren Mandanten aktivieren. Nachdem Sie Facebook als Identitätsanbieter hinzugefügt haben, richten Sie einen Benutzerflow für die Anwendung ein und wählen Facebook als eine der Anmeldeoptionen aus.
+Sie können Facebook zu Ihren Benutzerflows für die Self-Service-Registrierung hinzufügen, damit sich Benutzer mit ihren eigenen Facebook-Konten bei Ihren Anwendungen anmelden können. Damit sich Benutzer mit Facebook anmelden können, müssen Sie zunächst die [Self-Service-Registrierungs](self-service-sign-up-user-flow.md) für Ihren Mandanten aktivieren. Nachdem Sie Facebook als Identitätsanbieter hinzugefügt haben, richten Sie einen Benutzerflow für die Anwendung ein und wählen Facebook als eine der Anmeldeoptionen aus.
+
+Nachdem Sie Facebook als Anmeldeoption für Ihre Anwendung hinzugefügt haben, können Benutzer auf der **Anmeldeseite** einfach die E-Mail-Adresse eingeben, mit der sie sich bei Facebook anmelden. Alternativ können sie zuerst **Anmeldeoptionen** und dann **Mit Facebook anmelden** auswählen. In beiden Fällen werden sie zur Authentifizierung an die Facebook-Anmeldeseite umgeleitet.
+
+![Anmeldeoptionen für Facebook-Benutzer](media/facebook-federation/sign-in-with-facebook-overview.png)
 
 > [!NOTE]
 > Benutzer können nur ihre Facebook-Konten verwenden, um sich mithilfe von Self-Service-Registrierungs- und Benutzerflows über Apps anzumelden. Benutzer können nicht mit einem Facebook-Konto eingeladen werden und ihre Einladung einlösen.

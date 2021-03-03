@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e8915e1c15972341befd176b412925f4e87c94f6
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: fadbed5607c7ebdd61a42ae054f431840c529d69
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201449"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573068"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure Policy-Sicherheitsbaseline für den Vergleichstest für die Azure-Sicherheit
 
@@ -31,9 +31,9 @@ In Azure Policy wird der Begriff _Ownership_ anstelle von _Zuständigkeit_ verwe
 
 **Leitfaden**: Azure Policy verwendet automatisch aktivierte Aktivitätsprotokolle, um Elemente wie Ereignisquelle, Datum, Benutzer, Zeitstempel, Quelladressen, Zieladressen und andere nützliche Elemente einzuschließen.
 
-* [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../../azure-monitor/platform/diagnostic-settings.md)
+* [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../../../azure-monitor/platform/platform-logs-overview.md)
+* [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../../../azure-monitor/essentials/platform-logs-overview.md)
 
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
@@ -89,7 +89,7 @@ Sie können auch eine Lösung für Just-in-Time-/Just-Enough-Zugriff aktivieren,
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit Aktivitätsprotokollen, um Warnungen zu erstellen, die ausgegeben werden, wenn Änderungen in Azure Policy vorgenommen werden.
 
-* [Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse](../../../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse](../../../azure-monitor/alerts/alerts-activity-log.md)
 
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar

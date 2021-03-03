@@ -3,12 +3,12 @@ title: Exportieren nach Power BI aus Azure Application Insights | Microsoft-Doku
 description: Analytics-Abfragen können in Power BI angezeigt werden.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 1e88d60cd9a9d0e6267998237b33a361b12ffd84
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4bdae09d193d5ae9c59fe9352e07b8219a76841d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186999"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584309"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Datenimport nach Power BI aus Application Insights
 [Power BI](https://www.powerbi.com/) ist eine Suite aus Unternehmenstools, mit denen Sie Daten analysieren und Informationen teilen können. Auf jedem Gerät stehen leistungsfähige Dashboards zur Verfügung. Sie können Daten aus vielen Quellen kombinieren, z.B. Analytics-Abfragen aus [Azure Application Insights](./app-insights-overview.md).
@@ -31,7 +31,7 @@ Zum Importieren Ihrer Application Insights-Abfrage verwenden Sie die Desktopvers
 Installieren Sie [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Exportieren einer Analytics-Abfrage
-1. [Öffnen Sie Analytics, und schreiben Sie Ihre Abfrage](../log-query/log-analytics-tutorial.md).
+1. [Öffnen Sie Analytics, und schreiben Sie Ihre Abfrage](../logs/log-analytics-tutorial.md).
 2. Testen und optimieren Sie die Abfrage, bis Sie mit den Ergebnissen zufrieden sind. Stellen Sie sicher, dass die Abfrage ordnungsgemäß in Analytics ausgeführt wird, bevor Sie sie exportieren.
 3. Wählen Sie im Menü **Exportieren** die Option **Power BI (M)** . Speichern Sie die Textdatei.
    
@@ -146,4 +146,4 @@ Nach dem anfänglichen Import werden das Dashboard und die Berichte täglich akt
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Power BI – Informationen](https://www.powerbi.com/learning/)
-* [Analytics-Tutorial](../log-query/log-analytics-tutorial.md)
+* [Analytics-Tutorial](../logs/log-analytics-tutorial.md)

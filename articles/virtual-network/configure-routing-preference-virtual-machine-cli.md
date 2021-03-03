@@ -10,25 +10,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/01/2020
+ms.date: 02/01/2021
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7673a42afa3b85a2aaf3f11f5e9b74fd46d48488
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ad8f2d150c3cf17c4b24c6dc92188be9017dcfa9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945086"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666012"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-cli"></a>Konfigurieren der Routingpräferenz für einen virtuellen Computer mithilfe der Azure CLI
 
 In diesem Artikel erfahren Sie, wie Sie die Routingpräferenz für einen virtuellen Computer konfigurieren. Der Internetdatenverkehr vom virtuellen Computer wird über das ISP-Netzwerk geleitet, wenn Sie **Internet** als Option für die Routingpräferenz auswählen. Das Standardrouting erfolgt über das globale Netzwerk von Microsoft.
 
 In diesem Artikel wird gezeigt, wie Sie einen virtuellen Computer mit einer öffentlichen IP-Adresse erstellen, die zum Weiterleiten von Datenverkehr über das öffentliche Internet unter Verwendung der Azure CLI festgelegt ist.
-
-> [!IMPORTANT]
-> „Routingpräferenz“ ist zurzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 1. Wenn Sie Cloud Shell bereits verwenden, fahren Sie mit Schritt 2 fort. Öffnen Sie eine Befehlssitzung, und melden Sie sich mit `az login` in Azure an.

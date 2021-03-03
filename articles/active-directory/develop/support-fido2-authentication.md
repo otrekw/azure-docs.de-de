@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 1/29/2021
 ms.author: nichola
 ms.custom: aaddev
-ms.openlocfilehash: 5abece0e272d4b72ba6f787ad44b091df5d45226
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e7193ee5d076538689078ce634b8170926df20b6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416635"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653251"
 ---
 # <a name="support-passwordless-authentication-with-fido2-keys-in-apps-you-develop"></a>Unterstützen der kennwortlosen Authentifizierung mit FIDO2-Schlüsseln in von Ihnen entwickelten Apps
 
@@ -47,7 +47,7 @@ Die zuletzt von einem Benutzer verwendete Anmeldemethode wird dem Benutzer zuers
 Die empfohlenen Optionen zum Implementieren der Authentifizierung lauten (in der folgenden Reihenfolge) wie folgt:
 
 - .NET-Desktopanwendungen, die die Microsoft Authentication Library (MSAL) verwenden, sollten den Windows-Authentifizierungs-Manager (Windows Authentication Manager, WAM) verwenden. Diese Integration und ihre Vorteile sind [auf GitHub dokumentiert](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/wam).
-- Verwenden Sie [WebView2](https://docs.microsoft.com/microsoft-edge/webview2/), um FIDO2 in einem eingebetteten Browser zu unterstützen.
+- Verwenden Sie [WebView2](/microsoft-edge/webview2/), um FIDO2 in einem eingebetteten Browser zu unterstützen.
 - Verwenden Sie den Systembrowser. Die MSAL-Bibliotheken für Desktopplattformen verwenden diese Methode standardmäßig. Auf unserer Seite der FIDO2-Browserkompatibilität können Sie überprüfen, ob der von Ihnen verwendete Browser die FIDO2-Authentifizierung unterstützt.
 
 ### <a name="mobile"></a>Mobile

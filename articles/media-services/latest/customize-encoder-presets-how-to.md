@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: c8c9f1deb1b776a818269909b3feb19f00a2c356
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: ba17346d5f064b57f98e7ad8745d9f80bdde5116
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954275"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092308"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Codieren mit einer benutzerdefinierten Transformation – .NET
 
@@ -32,7 +32,7 @@ Beim Erstellen von benutzerdefinierten Voreinstellungen gelten die folgenden Üb
 * Alle Werte für Höhe und Breite in AVC-Inhalt müssen ein Vielfaches von 4 sein.
 * In Azure Media Services v3 werden alle Codierungsbitraten in Bits pro Sekunde angegeben. Dies unterscheidet sich von den Voreinstellungen bei unseren v2-APIs. Dort wurden Kilobits pro Sekunde (KBit/s) als Einheit verwendet. Wenn beispielsweise die Bitrate in v2 als 128 (Kilobits/Sekunde) angegeben wurde, würde sie in v3 auf 128.000 (Bits/Sekunde) festgelegt.
 
-## <a name="prerequisites"></a>Voraussetzungen 
+## <a name="prerequisites"></a>Voraussetzungen
 
 [Erstellen eines Media Services-Kontos](./create-account-howto.md)
 
@@ -46,7 +46,7 @@ Klonen Sie ein GitHub-Repository auf Ihren Computer, das das vollständige .NET 
  
 Das benutzerdefinierte voreingestellte Beispiel befindet sich im Ordner [EncodeCustomTransform](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/EncodeCustomTransform/).
 
-## <a name="create-a-transform-with-a-custom-preset"></a>Erstellen einer Transformation mit einer benutzerdefinierten Voreinstellung 
+## <a name="create-a-transform-with-a-custom-preset"></a>Erstellen einer Transformation mit einer benutzerdefinierten Voreinstellung
 
 Beim Erstellen einer neuen [Transformation](/rest/api/media/transforms) müssen Sie angeben, was als Ausgabe generiert werden soll. Der erforderliche Parameter ist ein [TransformOutput](/rest/api/media/transforms/createorupdate#transformoutput)-Objekt, wie im folgenden Code gezeigt. Jedes **TransformOutput**-Objekt enthält eine **Voreinstellung**. Die **Voreinstellung** beschreibt die schrittweisen Anweisungen von Video- und/oder Audioverarbeitungsvorgängen, die verwendet werden sollen, um das gewünschte **TransformOutput**-Objekt zu generieren. Das folgende **TransformOutput**-Objekt erstellt benutzerdefinierte Codec- und Layerausgabeeinstellungen.
 

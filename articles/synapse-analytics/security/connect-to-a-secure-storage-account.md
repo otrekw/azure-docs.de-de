@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 02/10/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 599cf17e1ab2b85aac77893e8b2d520d412e1cea
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5d43d6f56b48a34fa34baf727508ad8f1c151aa7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416716"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674315"
 ---
 # <a name="connect-to-a-secure-azure-storage-account-from-your-synapse-workspace"></a>Herstellen einer Verbindung mit einem sicheren Azure-Speicherkonto über Ihren Synapse-Arbeitsbereich
 
@@ -21,7 +21,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Verbindung mit einem sicheren Azure
 
 
 ## <a name="secured-azure-storage-accounts"></a>Geschützte Azure-Speicherkonten
-Azure-Speicher bietet ein mehrschichtiges Sicherheitsmodell, mit dem Sie den Zugriff auf Ihre Speicherkonten schützen und steuern können. Sie können IP-Firewallregeln konfigurieren, um Datenverkehr von ausgewählten öffentlichen IP-Adressbereichen Zugriff auf Ihr Speicherkonto zu gewähren. Sie können auch Netzwerkregeln konfigurieren, um Datenverkehr von ausgewählten virtuellen Netzwerken Zugriff auf Ihr Speicherkonto zu gewähren. Sie können IP-Firewallregeln, die den Zugriff von ausgewählten IP-Adressbereichen zulassen, und Netzwerkregeln, die Zugriff von ausgewählten virtuellen Netzwerken auf dasselbe Speicherkonto gewähren, kombinieren. Diese Regeln gelten für den öffentlichen Endpunkt eines Speicherkontos. Sie benötigen keine Zugriffsregeln, um den Datenverkehr von verwalteten privaten Endpunkten, die in Ihrem Arbeitsbereich erstellt wurden, zu einem Speicherkonto zuzulassen. Speicherfirewallregeln können auf vorhandene Speicherkonten angewendet werden, oder auf neue Speicherkonten, während Sie diese erstellen. Weitere Informationen zum Schützen Ihres Speicherkontos finden Sie [hier](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Azure-Speicher bietet ein mehrschichtiges Sicherheitsmodell, mit dem Sie den Zugriff auf Ihre Speicherkonten schützen und steuern können. Sie können IP-Firewallregeln konfigurieren, um Datenverkehr von ausgewählten öffentlichen IP-Adressbereichen Zugriff auf Ihr Speicherkonto zu gewähren. Sie können auch Netzwerkregeln konfigurieren, um Datenverkehr von ausgewählten virtuellen Netzwerken Zugriff auf Ihr Speicherkonto zu gewähren. Sie können IP-Firewallregeln, die den Zugriff von ausgewählten IP-Adressbereichen zulassen, und Netzwerkregeln, die Zugriff von ausgewählten virtuellen Netzwerken auf dasselbe Speicherkonto gewähren, kombinieren. Diese Regeln gelten für den öffentlichen Endpunkt eines Speicherkontos. Sie benötigen keine Zugriffsregeln, um den Datenverkehr von verwalteten privaten Endpunkten, die in Ihrem Arbeitsbereich erstellt wurden, zu einem Speicherkonto zuzulassen. Speicherfirewallregeln können auf vorhandene Speicherkonten angewendet werden, oder auf neue Speicherkonten, während Sie diese erstellen. Weitere Informationen zum Schützen Ihres Speicherkontos finden Sie [hier](../../storage/common/storage-network-security.md).
 
 ## <a name="synapse-workspaces-and-virtual-networks"></a>Synapse-Arbeitsbereiche und virtuelle Netzwerke
 Wenn Sie einen Synapse-Arbeitsbereich erstellen, können Sie auswählen, dass diesem ein verwaltetes virtuelles Netzwerk zugeordnet wird. Wenn Sie das verwaltete virtuelle Netzwerk nicht für Ihren Arbeitsbereich aktivieren, wenn Sie es erstellen, befindet sich der Arbeitsbereich zusammen mit anderen Synapse-Arbeitsbereichen, denen kein verwaltetes virtuelles Netzwerk zugeordnet ist, in einem freigegebenen virtuellen Netzwerk. Wenn Sie beim Erstellen des Arbeitsbereichs das verwaltete virtuelle Netzwerk aktiviert haben, wird Ihr Arbeitsbereich einem dedizierten, von Azure Synapse verwalteten virtuellen Netzwerk zugeordnet. Diese virtuellen Netzwerke werden nicht in Ihrem Kundenabonnement erstellt. Daher können Sie mithilfe der oben beschriebenen Netzwerkregeln Datenverkehr von diesen virtuellen Netzwerken keinen Zugriff auf Ihr geschütztes Speicherkonto gewähren.  

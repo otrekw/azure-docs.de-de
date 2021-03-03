@@ -10,25 +10,24 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 97ac8a63740bb3a0df74a2a698cacecf842760e9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b7d780ce6362e34c801b4da25332bff90f0b7515
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366465"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659272"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Telefonnummerntypen in Azure Communication Services
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Mit Azure Communication Services können Sie Telefonnummern verwenden, um Sprachanrufe zu tätigen und SMS-Nachrichten über das Telefonfestnetz (Public Switched Telephone Network, PSTN) zu versenden. In diesem Dokument werden die Telefonnummerntypen, Konfigurationsoptionen und die regionale Verfügbarkeit für die Planung Ihrer Telefonie- und SMS-Lösung mithilfe von Communication Services überprüft.
 
 ## <a name="number-types-and-features"></a>Typen und Features von Telefonnummern
-Communication Services bietet zwei Arten von Telefonnummern an: **lokale** und **gebührenfreie**. 
+Communication Services bietet zwei Arten von Telefonnummern an: **lokale** und **gebührenfreie**.
 
 ### <a name="local-numbers"></a>Lokale Nummern
-Lokale (geografische) Nummern sind 10-stellige Telefonnummern, die aus den Ortsvorwahlen in den USA bestehen. Beispiel: `+1 (206) XXX-XXXX` ist eine lokale Nummer mit einer Ortsvorwahl von `206`. Diese Vorwahl ist der Stadt Seattle zugeordnet. Diese Telefonnummern werden im Allgemeinen von Einzelpersonen und lokalen Unternehmen verwendet. Azure Communication Services bietet lokale Nummern in den USA an. Über diese Nummern können Sie telefonieren, aber keine SMS-Nachrichten versenden. 
+Lokale (geografische) Nummern sind 10-stellige Telefonnummern, die aus den Ortsvorwahlen in den USA bestehen. Beispiel: `+1 (206) XXX-XXXX` ist eine lokale Nummer mit einer Ortsvorwahl von `206`. Diese Vorwahl ist der Stadt Seattle zugeordnet. Diese Telefonnummern werden im Allgemeinen von Einzelpersonen und lokalen Unternehmen verwendet. Azure Communication Services bietet lokale Nummern in den USA an. Über diese Nummern können Sie telefonieren, aber keine SMS-Nachrichten versenden.
 
 ### <a name="toll-free-numbers"></a>Gebührenfreie Nummern
 Gebührenfreie Nummern sind 10-stellige Telefonnummern mit unterschiedlichen Vorwahlen, die von jeder Telefonnummer aus gebührenfrei angerufen werden können. Beispiel: `+1 (800) XXX-XXXX` ist eine gebührenfreie Nummer in der Region Nordamerika. Diese Telefonnummern werden im Allgemeinen für Kundendienstzwecke verwendet. Azure Communication Services bietet gebührenfreie Nummern in den USA an. Über diese Nummern können Sie telefonieren und SMS-Nachrichten senden. Gebührenfreie Nummern können nicht von Personen verwendet, sondern nur Anwendungen zugewiesen werden.
@@ -37,9 +36,9 @@ Gebührenfreie Nummern sind 10-stellige Telefonnummern mit unterschiedlichen Vor
 
 Wenn Ihre Telefonnummer von einer Anwendung verwendet wird (z. B. um Anrufe zu tätigen oder Nachrichten im Auftrag Ihres Diensts zu senden), können Sie eine gebührenfreie oder lokale (geografische) Nummer auswählen. Sie können eine gebührenfreie Nummer auswählen, wenn Ihre Anwendung SMS-Nachrichten versendet und/oder Anrufe tätigt.
 
-Wenn Ihre Telefonnummer von einer Person (z. B. einem Benutzer Ihrer anrufenden Anwendung) verwendet wird, muss die lokale (geografische) Telefonnummer verwendet werden. 
+Wenn Ihre Telefonnummer von einer Person (z. B. einem Benutzer Ihrer anrufenden Anwendung) verwendet wird, muss die lokale (geografische) Telefonnummer verwendet werden.
 
-In der folgenden Tabelle sind diese Telefonnummerntypen zusammengefasst: 
+In der folgenden Tabelle sind diese Telefonnummerntypen zusammengefasst:
 
 | Telefonnummerntyp | Beispiel                              | Länderverfügbarkeit    | Telefonnummernfähigkeit |Gängiger Anwendungsfall                                                                                                     |
 | ----------------- | ------------------------------------ | ----------------------- | ------------------------|------------------------------------------------------------------------------------------------------------------- |
@@ -47,7 +46,7 @@ In der folgenden Tabelle sind diese Telefonnummerntypen zusammengefasst:
 | Gebührenfrei         | +1 (gebührenfreie *Ortsvorwahl*) XXX XX XX | US                      | Anrufe (ausgehend), SMS (eingehend/ausgehend)| Zuweisen von Telefonnummern zu IVR-Systemen (Interactive Voice Response, Interaktive Sprachantwort) oder Bots, SMS-Anwendungen                                        |
 
 
-### <a name="phone-number-features-in-azure-communication-services"></a>Telefonnummernfeatures in Azure Communication Services 
+### <a name="phone-number-features-in-azure-communication-services"></a>Telefonnummernfeatures in Azure Communication Services
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -55,7 +54,7 @@ Für die meisten Telefonnummern können die Features beliebig zusammengestellt w
 
 Welche Features Ihnen zur Verfügung stehen, hängt von dem Land/der Region ab, in dem/der Sie tätig sind, von Ihrem Anwendungsfall und von der Art der Telefonnummer, die Sie gewählt haben. Diese Features variieren aufgrund der rechtlichen Anforderungen je nach Land/Region. Azure Communication Services bietet die folgenden Telefonnummernfeatures:
 
-- **Unidirektionale ausgehende SMS:** Diese Option ermöglicht es Ihnen, SMS-Nachrichten an Ihre Benutzer zu senden. Sie ist nützlich für die Benachrichtigung und Szenarien mit zweistufiger Authentifizierung. 
+- **Unidirektionale ausgehende SMS:** Diese Option ermöglicht es Ihnen, SMS-Nachrichten an Ihre Benutzer zu senden. Sie ist nützlich für die Benachrichtigung und Szenarien mit zweistufiger Authentifizierung.
 - **Bidirektionale ein- und ausgehende SMS:** Diese Option ermöglicht es Ihnen, Nachrichten von Ihren Benutzern mithilfe von Telefonnummern zu senden und zu empfangen. Diese Option ist in Kundendienstszenarien hilfreich.
 - **Unidirektionale ausgehende Telefonanrufe:** Diese Option ermöglicht es Ihnen, Ihre Benutzer anzurufen und die Anrufer-ID für ausgehende Anrufe, die von Ihrem Dienst getätigt werden, zu konfigurieren. Diese Option ist in Kundendienst- und Sprachbenachrichtigungsszenarien hilfreich.
 
@@ -72,7 +71,7 @@ In der folgenden Tabelle wird gezeigt, wo Sie verschiedene Telefonnummerntypen s
 
 ## <a name="azure-subscriptions-eligibility"></a>Berechtigung für Azure-Abonnements
 
-Für den Erhalt einer Telefonnummer müssen Sie ein kostenpflichtiges Azure-Abonnement abgeschlossen haben. Telefonnummern können mit Testkonten oder kostenlosem Azure-Guthaben nicht erworben werden. 
+Für den Erhalt einer Telefonnummer müssen Sie ein kostenpflichtiges Azure-Abonnement abgeschlossen haben. Telefonnummern können mit Testkonten oder kostenlosem Azure-Guthaben nicht erworben werden.
 
 Derzeit ist die Verfügbarkeit von Telefonnummern auf Azure-Abonnements beschränkt, die über eine Rechnungsadresse in den USA verfügen.
 

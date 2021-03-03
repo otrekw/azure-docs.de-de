@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 454d44eecd4eaa6d5c1f50edbd7edb1024ace041
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 0593d2b675da533035a70c66784812543909c9db
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256880"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574197"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>Grundlegendes zur Integration der Bereitstellung in Azure Monitor-Protokolle
 
@@ -24,7 +24,7 @@ Die Bereitstellung ist mit Azure Monitor-Protokollen und Log Analytics integrier
 
 ## <a name="enabling-provisioning-logs"></a>Aktivieren von Bereitstellungsprotokollen
 
-Sie sollten bereits mit Azure Monitor und Log Analytics vertraut sein. Wenn dies nicht der Fall ist, machen Sie sich zunächst mit diesen Features vertraut, bevor Sie sich über die Protokolle für die Anwendungsbereitstellung informieren. Weitere Informationen zur Azure-Überwachung finden Sie unter [Azure Monitor – Übersicht](../../azure-monitor/overview.md). Weitere Informationen zu Azure Monitor-Protokollen und Log Analytics finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../../azure-monitor/log-query/log-query-overview.md).
+Sie sollten bereits mit Azure Monitor und Log Analytics vertraut sein. Wenn dies nicht der Fall ist, machen Sie sich zunächst mit diesen Features vertraut, bevor Sie sich über die Protokolle für die Anwendungsbereitstellung informieren. Weitere Informationen zur Azure-Überwachung finden Sie unter [Azure Monitor – Übersicht](../../azure-monitor/overview.md). Weitere Informationen zu Azure Monitor-Protokollen und Log Analytics finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../../azure-monitor/logs/log-query-overview.md).
 
 Nachdem Sie die Azure-Überwachung (Azure Monitor) konfiguriert haben, können Sie Protokolle für die Anwendungsbereitstellung aktivieren. Die Option befindet sich auf der Seite **Diagnoseeinstellungen**.
 
@@ -47,7 +47,7 @@ Der zugrunde liegende Datenstrom, der über die Bereitstellung an Protokollanzei
 
 ## <a name="azure-monitor-workbooks"></a>Azure Monitor-Arbeitsmappen
 
-Azure Monitor-Arbeitsmappen bieten eine flexible Canvas für die Datenanalyse. Sie ermöglichen außerdem die Erstellung umfassender visueller Berichte im Azure-Portal. Weitere Informationen finden Sie unter [Übersicht über Azure Monitor-Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md).
+Azure Monitor-Arbeitsmappen bieten eine flexible Canvas für die Datenanalyse. Sie ermöglichen außerdem die Erstellung umfassender visueller Berichte im Azure-Portal. Weitere Informationen finden Sie unter [Übersicht über Azure Monitor-Arbeitsmappen](../../azure-monitor/visualize/workbooks-overview.md).
 
 Die Anwendungsbereitstellung umfasst eine Reihe vorkonfigurierter Arbeitsmappen. Diese finden Sie auf der Seite „Arbeitsmappen“. Zum Anzeigen der Daten müssen Sie sicherstellen, dass alle Filter (timeRange, jobID, appName) ausgefüllt sind. Sie müssen auch sicherstellen, dass Sie eine Anwendung bereitgestellt haben. Andernfalls enthalten die Protokolle keine Daten.
 
@@ -57,7 +57,7 @@ Die Anwendungsbereitstellung umfasst eine Reihe vorkonfigurierter Arbeitsmappen.
 
 ## <a name="custom-queries"></a>Benutzerdefinierte Abfragen
 
-Sie können benutzerdefinierte Abfragen erstellen und die Daten in Azure-Dashboards anzeigen. Informationen dazu finden Sie unter [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](../../azure-monitor/log-query/get-started-queries.md). Sehen Sie sich auch die [Übersicht über Protokollabfragen in Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) an.
+Sie können benutzerdefinierte Abfragen erstellen und die Daten in Azure-Dashboards anzeigen. Informationen dazu finden Sie unter [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](../../azure-monitor/logs/get-started-queries.md). Sehen Sie sich auch die [Übersicht über Protokollabfragen in Azure Monitor](../../azure-monitor/logs/log-query-overview.md) an.
 
 Nachfolgend finden Sie einige Beispiele für den Einstieg in die Anwendungsbereitstellung.
 
@@ -96,7 +96,7 @@ AADProvisioningLogs
 
 Mit Azure Monitor können Sie benutzerdefinierte Warnungen konfigurieren, damit Sie über wichtige Ereignisse in Verbindung mit der Bereitstellung benachrichtigt werden. So können Sie beispielsweise Warnungen über Spitzen bei Ausfällen oder über Spitzen bei Deaktivierungen oder Löschvorgängen erhalten. Ein weiteres Beispiel ist eine Warnung bei einer fehlenden Bereitstellung, die auf einen möglichen Fehler hinweist.
 
-Weitere Informationen zu Warnungen finden Sie unter [Reagieren auf Ereignisse mit Azure Monitor-Warnungen](../../azure-monitor/learn/tutorial-response.md).
+Weitere Informationen zu Warnungen finden Sie unter [Reagieren auf Ereignisse mit Azure Monitor-Warnungen](../../azure-monitor/alerts/tutorial-response.md).
 
 Warnung über Spitze bei Ausfällen Ersetzen Sie die jobID durch die Auftrags-ID Ihrer Anwendung.
 
@@ -118,7 +118,7 @@ Wir verfolgen bei Abfragen und Dashboards für die Anwendungsbereitstellung eine
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Log Analytics](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md)
-- [Erste Schritte mit Abfragen in Azure Monitor-Protokollen](../../azure-monitor/log-query/get-started-queries.md)
-- [Erstellen und Verwalten von Benachrichtigungsgruppen im Azure-Portal](../../azure-monitor/platform/action-groups.md)
+- [Erste Schritte mit Abfragen in Azure Monitor-Protokollen](../../azure-monitor/logs/get-started-queries.md)
+- [Erstellen und Verwalten von Benachrichtigungsgruppen im Azure-Portal](../../azure-monitor/alerts/action-groups.md)
 - [Installieren und Verwenden der Log Analytics-Ansichten für Azure Active Directory](../reports-monitoring/howto-install-use-log-analytics-views.md)
 - [API für Bereitstellungsprotokolle](/graph/api/resources/provisioningobjectsummary?preserve-view=true&view=graph-rest-beta.md)

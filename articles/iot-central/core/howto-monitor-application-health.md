@@ -7,12 +7,12 @@ ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1c16da10a8a7853b1392383855aba0ff24424f33
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: d0e59f73dd9b62b528c3d86d315b613312df7773
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515868"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577040"
 ---
 # <a name="monitor-the-overall-health-of-an-iot-central-application"></a>Überwachen der Gesamtintegrität einer IoT Central-Anwendung
 
@@ -23,7 +23,7 @@ ms.locfileid: "100515868"
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe der von IoT Central bereitgestellten Metriken die Integrität von mit Ihrer IoT Central-Anwendung verbundenen Geräten sowie die Integrität Ihrer aktiven Datenexporte bewerten.
 
-Metriken sind für Ihre IoT Central-Anwendung standardmäßig aktiviert, und Sie greifen über das [Azure-Portal](https://portal.azure.com/) darauf zu. Die [Azure Monitor-Datenplattform macht diese Metriken verfügbar](../../azure-monitor/platform/data-platform-metrics.md) und bietet Ihnen mehrere Möglichkeiten zur Interaktion damit. So können Sie beispielsweise Diagramme im Azure-Portal, eine REST-API oder aber Abfragen in PowerShell oder in der Azure CLI verwenden.
+Metriken sind für Ihre IoT Central-Anwendung standardmäßig aktiviert, und Sie greifen über das [Azure-Portal](https://portal.azure.com/) darauf zu. Die [Azure Monitor-Datenplattform macht diese Metriken verfügbar](../../azure-monitor/essentials/data-platform-metrics.md) und bietet Ihnen mehrere Möglichkeiten zur Interaktion damit. So können Sie beispielsweise Diagramme im Azure-Portal, eine REST-API oder aber Abfragen in PowerShell oder in der Azure CLI verwenden.
 
 ### <a name="trial-applications"></a>Testanwendungen
 
@@ -46,7 +46,7 @@ Der Zugriff auf Metriken im Azure-Portal wird von der [rollenbasierten Zugriffss
 
 ## <a name="iot-central-metrics"></a>IoT Central-Metriken
 
-Eine Liste der aktuell für IoT Central verfügbaren Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](../../azure-monitor/platform/metrics-supported.md#microsoftiotcentraliotapps).
+Eine Liste der aktuell für IoT Central verfügbaren Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](../../azure-monitor/essentials/metrics-supported.md#microsoftiotcentraliotapps).
 
 ### <a name="metrics-and-invoices"></a>Metriken und Rechnungen
 

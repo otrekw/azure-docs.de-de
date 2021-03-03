@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 88f363406ec40dfa439a52ad351501d1c64dce95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f0bac363e020826e34df3cb0b4e3d3582990302
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564495"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595450"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Verknüpfen von Daten aus dem Azure-Aktivitätsprotokoll
 
-Sie können Protokolle aus dem [Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md) mit einem einzigen Klick an Azure Sentinel streamen. Das Aktivitätsprotokoll ist ein Abonnementprotokoll, das Ereignisse auf Abonnentenebene in ganz Azure aufzeichnet und anzeigt, von operativen Daten von Azure Resource Manager bis hin zu Aktualisierungen von Service Health-Ereignissen. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für jeden Schreibvorgang (PUT, POST, DELETE) ermitteln, der für die Ressourcen Ihres Abonnements ausgeführt wurde. Sie können auch den Status des Vorgangs und andere relevante Eigenschaften erfahren. Das Aktivitätsprotokoll umfasst keine Lesevorgänge (GET) oder Vorgänge für Ressourcen, die das klassische Modell/RDFE-Modell verwenden. 
+Sie können Protokolle aus dem [Azure-Aktivitätsprotokoll](../azure-monitor/essentials/platform-logs-overview.md) mit einem einzigen Klick an Azure Sentinel streamen. Das Aktivitätsprotokoll ist ein Abonnementprotokoll, das Ereignisse auf Abonnentenebene in ganz Azure aufzeichnet und anzeigt, von operativen Daten von Azure Resource Manager bis hin zu Aktualisierungen von Service Health-Ereignissen. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für jeden Schreibvorgang (PUT, POST, DELETE) ermitteln, der für die Ressourcen Ihres Abonnements ausgeführt wurde. Sie können auch den Status des Vorgangs und andere relevante Eigenschaften erfahren. Das Aktivitätsprotokoll umfasst keine Lesevorgänge (GET) oder Vorgänge für Ressourcen, die das klassische Modell/RDFE-Modell verwenden. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

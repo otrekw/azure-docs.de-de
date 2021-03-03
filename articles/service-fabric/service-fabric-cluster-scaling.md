@@ -4,12 +4,12 @@ description: Hier wird beschrieben, wie Sie für Azure Service Fabric-Cluster da
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: 126be55c63c625995ad52b84a51a8983e220652d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 610c43f64f9073aefe8008473209039122cf36d7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85610199"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591784"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Skalieren von Azure Service Fabric-Clustern
 Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als Knoten bezeichnet. Cluster können Tausende von Knoten enthalten. Nach dem Erstellen eines Service Fabric-Clusters können Sie den Cluster horizontal (Änderung der Anzahl von Knoten) oder vertikal (Änderung der Ressourcen von Knoten) skalieren.  Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.  Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
@@ -40,7 +40,7 @@ In vielen Szenarien ist das [Skalieren eines Clusters mit einem manuellen Vorgan
 - Das manuelle Skalieren erfordert, dass Sie sich anmelden und Skalierungsvorgänge explizit anfordern. Wenn Skalierungsvorgänge häufig oder zu unvorhersehbaren Zeiten erforderlich sind, ist dieser Ansatz u.U. keine geeignete Lösung.
 - Wenn Regeln für automatische Skalierung eine Instanz aus einer VM-Skalierungsgruppe entfernen, entfernen sie nicht automatisch Informationen dieses Knotens aus dem zugeordneten Service Fabric-Cluster, es sei denn, der Knotentyp weist die Dauerhaftigkeitsstufe „Gold“ oder „Silber“ auf. Da Regeln für automatische Skalierung auf Skalierungsgruppenebene gelten (anstatt auf Service Fabric-Ebene), können sie Service Fabric-Knoten entfernen, ohne diese ordnungsgemäß heruntergefahren. Diese grobe Knotenentfernung hinterlässt Service Fabric-Knoten nach Vorgängen zum horizontalen Herunterskalieren in verwaistem Zustand. Eine Person (oder ein Dienst) müsste den Zustand entfernter Knoten im Service Fabric-Cluster in regelmäßigen Abständen bereinigen.
 - Ein Knotentyp mit der Dauerhaftigkeitsstufe „Gold“ oder „Silber“ bereinigt entfernte Knoten automatisch. Daher ist keine weitere Bereinigung erforderlich.
-- Zwar werden [viele Metriken](../azure-monitor/platform/autoscale-common-metrics.md) von Regeln für automatische Skalierung unterstützt, es handelt sich jedoch immer noch um einen begrenzten Satz. Wenn Ihr Szenario die Skalierung basierend auf einer Metrik erfordert, die in diesem Satz nicht enthalten ist, sind Regeln für automatische Skalierung möglicherweise keine gute Wahl.
+- Zwar werden [viele Metriken](../azure-monitor/autoscale/autoscale-common-metrics.md) von Regeln für automatische Skalierung unterstützt, es handelt sich jedoch immer noch um einen begrenzten Satz. Wenn Ihr Szenario die Skalierung basierend auf einer Metrik erfordert, die in diesem Satz nicht enthalten ist, sind Regeln für automatische Skalierung möglicherweise keine gute Wahl.
 
 Der geeignete Ansatz für die Service Fabric-Skalierung hängt von Ihrem Szenario ab. Wenn selten skaliert wird, ist die Möglichkeit zum manuellen Hinzufügen oder Entfernen von Knoten wahrscheinlich ausreichend. Bei komplexeren Szenarien stellen Regeln für automatische Skalierung und SDKs, die eine programmgesteuerte Skalierung ermöglichen, leistungsfähige Alternativen dar.
 

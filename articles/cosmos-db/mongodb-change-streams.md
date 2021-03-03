@@ -5,15 +5,15 @@ author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 06/04/2020
+ms.date: 03/02/2021
 ms.author: rosouz
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9a4e35a235fe6ee6950bd1b4c35cbf9e72ac2893
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 941fe8929b75fdebf187186ca7078b0ae1dd261c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359233"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658519"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Änderungsdatenströme in der API für MongoDB von Azure Cosmos-DB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -21,7 +21,7 @@ ms.locfileid: "97359233"
 Die Unterstützung von [Änderungsfeeds](change-feed.md) in der API für MongoDB von Azure Cosmos DB ist über die API für Änderungsdatenströme verfügbar. Mithilfe der API für Änderungsdatenströme können Ihre Anwendungen die Änderungen an der Sammlung oder an den Elementen in einem einzelnen Shard abrufen. Später können Sie auf der Grundlage der Ergebnisse weitere Maßnahmen ergreifen. Änderungen an den Elementen in der Sammlung werden in der Reihenfolge ihres Änderungszeitpunkts erfasst und die Sortierreihenfolge ist für die einzelnen Shardschlüssel sichergestellt.
 
 > [!NOTE]
-> Um Änderungsdatenströme zu verwenden, erstellen Sie das Konto mit Version 3.6 der API für MongoDB von Azure Cosmos DB oder einer höheren Version. Wenn Sie die Änderungsdatenstrom-Beispiele für eine frühere Version ausführen, wird möglicherweise die Fehlermeldung `Unrecognized pipeline stage name: $changeStream` angezeigt.
+> Um Änderungsdatenströme zu verwenden, erstellen Sie die Azure Cosmos DB-API für das MongoDB-Konto mit Serverversion 3.6 oder höher. Wenn Sie die Änderungsdatenstrom-Beispiele für eine frühere Version ausführen, wird möglicherweise die Fehlermeldung *Nicht erkannter Name einer Pipelinestage: $changeStream* angezeigt.
 
 ## <a name="examples"></a>Beispiele
 

@@ -1,16 +1,16 @@
 ---
 title: Erste Schritte mit Azure Service Bus-Themen und -Abonnements | Microsoft-Dokumentation
 description: Schreiben Sie eine .NET Core-Konsolenanwendung in C#, die Service Bus Messaging-Themen und -Abonnements verwendet.
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 09/02/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85eb8e6cdaa8636215c5df9d81dbecdca97a2501
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 28e94cdb0df0a18b41f4c8a0ded362b50df6dcac
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95819039"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652971"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Erste Schritte mit Service Bus-Themen
 Dieses Tutorial enthält die folgenden Schritte:

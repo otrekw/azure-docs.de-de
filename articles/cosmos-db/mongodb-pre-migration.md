@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 09/01/2020
+ms.date: 03/02/2021
 ms.author: chrande
-ms.openlocfilehash: 337341daf0e092def639a4e8f6fc8ee0a9b57c75
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ced795385fdf00e706ea897db80f558b513a9f9d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349417"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656957"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Vorbereitende Schritte für Datenmigrationen von MongoDB zur Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -71,7 +71,7 @@ Dieser Befehl gibt ein JSON-Dokument wie das folgende aus:
 
 ```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
 
-Sie können auch die [Diagnoseeinstellungen](cosmosdb-monitor-resource-logs.md) verwenden, um die Häufigkeit und die Muster der für Azure Cosmos DB ausgeführten Abfragen zu verstehen. Die Ergebnisse der Diagnoseprotokolle können an ein Speicherkonto, eine EventHub-Instanz oder an [Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) gesendet werden.  
+Sie können auch die [Diagnoseeinstellungen](cosmosdb-monitor-resource-logs.md) verwenden, um die Häufigkeit und die Muster der für Azure Cosmos DB ausgeführten Abfragen zu verstehen. Die Ergebnisse der Diagnoseprotokolle können an ein Speicherkonto, eine EventHub-Instanz oder an [Azure Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) gesendet werden.  
 
 ## <a name="choose-your-partition-key"></a><a id="partitioning"></a>Auswählen des Partitionsschlüssels
 Die Partitionierung (auch als Sharding bezeichnet) ist ein wichtiger Aspekt, den Sie vor dem Migrieren von Daten berücksichtigen müssen. Azure Cosmos DB verwendet die vollständig verwaltete Partitionierung, um die Kapazität in einer Datenbank zur Erfüllung der Speicher- und Durchsatzanforderungen zu erhöhen. Diese Funktion erfordert weder das Hosting noch die Konfiguration von Routingservern.   
@@ -80,7 +80,7 @@ Auf ähnliche Weise fügt die Partitionierungsfunktion automatisch Kapazität hi
 
 ## <a name="index-your-data"></a><a id="indexing"></a>Indizieren Ihrer Daten
 
-Die Azure Cosmos DB-API für die MongoDB-Serverversion 3.6 indiziert automatisch nur das Feld `_id`. Dieses Feld kann nicht gelöscht werden. Sie erzwingt automatisch die Eindeutigkeit des Felds `_id` durch einen Shardschlüssel. Um zusätzliche Felder zu indizieren, verwenden Sie die MongoDB-Indexverwaltungsbefehle. Diese Standardindizierungsrichtlinie unterscheidet sich von der Azure Cosmos DB-SQL-API, die standardmäßig alle Felder indiziert.
+Die Azure Cosmos DB-API für die MongoDB-Serverversion 3.6 und höhere Versionen indiziert automatisch nur das Feld `_id`. Dieses Feld kann nicht gelöscht werden. Sie erzwingt automatisch die Eindeutigkeit des Felds `_id` durch einen Shardschlüssel. Um zusätzliche Felder zu indizieren, verwenden Sie die [MongoDB-Indexverwaltungsbefehle](mongodb-indexing.md). Diese Standardindizierungsrichtlinie unterscheidet sich von der Azure Cosmos DB-SQL-API, die standardmäßig alle Felder indiziert.
 
 Die von Azure Cosmos DB bereitgestellten Indizierungsfunktionen umfassen das Hinzufügen von zusammengesetzten Indizes, eindeutigen Indizes und Time-to-Live-Indizes (TTL-Indizes). Die Indexverwaltungsschnittstelle wird dem Befehl `createIndex()` zugeordnet. Weitere Informationen finden Sie im Artikel [Indizieren in der API für MongoDB von Azure Cosmos DB](mongodb-indexing.md).
 

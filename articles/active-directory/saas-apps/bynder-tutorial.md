@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/03/2021
 ms.author: jeedes
-ms.openlocfilehash: dd4114f417fa266d8d638e28167d513fdf01aa97
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9e233e30521e5c1fa05509fa6dc42a567f6ac4e2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380843"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653098"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>Tutorial: Integrieren von Bynder in Azure Active Directory
 
@@ -163,4 +163,4 @@ Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Bynder können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Bynder können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

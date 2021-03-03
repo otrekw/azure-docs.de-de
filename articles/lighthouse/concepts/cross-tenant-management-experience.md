@@ -3,12 +3,12 @@ title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
 ms.date: 02/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: b76723c9ea94581561f5bdb04ea1fd8335da77b7
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 97b28409a7f180ffbf4f8766ee281710d6226019
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981084"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573085"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -100,7 +100,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 - [Protokollanalyse](../../azure-monitor/platform/service-providers.md): Abfragen von Daten aus Remotearbeitsbereichen in mehreren Mandanten. (Beachten Sie, dass Automation-Konten, die für den Zugriff auf Daten aus Arbeitsbereichen in Kundenmandanten verwendet werden, im selben Mandanten erstellt werden müssen.)
 - [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen](../../azure-monitor/platform/alerts-activity-log.md) in Kundenmandanten
 - Erstellen von Warnungen in Kundenmandanten, die eine Automatisierung auslösen, wie z. B. Azure Automation-Runbooks oder Azure Functions im verwaltenden Mandanten über Webhooks
-- Erstellen von [Diagnoseeinstellungen](../..//azure-monitor/platform/diagnostic-settings.md) in Kundenmandanten zum Senden von Ressourcenprotokollen an Arbeitsbereiche im verwaltenden Mandanten
+- Erstellen von [Diagnoseeinstellungen](../..//azure-monitor/essentials/diagnostic-settings.md) in Kundenmandanten zum Senden von Ressourcenprotokollen an Arbeitsbereiche im verwaltenden Mandanten
 - Für SAP-Workloads sollten Sie [die Metriken von SAP-Lösungen mit einer aggregierten Sicht über Kundenmandanten hinweg überwachen](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293).
 
 [Azure-Netzwerkoptionen](../../networking/networking-overview.md):

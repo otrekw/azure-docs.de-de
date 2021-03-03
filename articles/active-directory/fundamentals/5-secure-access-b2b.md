@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 654e1c163a16f427958320ea081c38338e0ab4e1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4206ba7617032e34310682d1468e6b1b661b8c8a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725391"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648586"
 ---
 # <a name="transition-to-governed-collaboration-with-azure-active-directory-b2b-collaboration"></a>Umstellung auf gesteuerte Zusammenarbeit mit Azure Active Directory B2B Collaboration 
 
@@ -100,7 +100,7 @@ Legen Sie fest, wer Gastbenutzer für den Zugriff auf Ressourcen einladen kann.
 
 Wenn Sie die Berechtigungsverwaltung in Azure AD verwenden, können Sie Fragen konfigurieren, die externe Benutzer beantworten müssen. Die Fragen werden dann den genehmigenden Personen angezeigt, um ihnen die Entscheidung zu erleichtern. Sie können verschiedene Fragesätze für die einzelnen [Zugriffspaketrichtlinien](../governance/entitlement-management-access-package-approval-policy.md) konfigurieren, damit die genehmigenden Personen relevante Informationen für den zu genehmigenden Zugriff erhalten. Wenn ein Zugriffspaket beispielsweise für den Zugriff von Anbietern vorgesehen ist, kann der Anforderer nach seiner Anbietervertragsnummer gefragt werden. In einem anderen Zugriffspaket für Lieferanten kann z. B. nach dem Ursprungsland gefragt werden.
 
-Bei Verwendung eines Self-Service-Portals können Sie [API-Connectors](../external-identities/api-connectors-overview.md) verwenden, um zusätzliche Attribute zu Benutzern zu erfassen, wenn diese sich registrieren. Sie können diese Attribute dann gegebenenfalls verwenden, um den Zugriff zuzuweisen. Wenn Sie z. B. während des Registrierungsvorgangs die Lieferanten-ID der Benutzer erfassen, können Sie dieses Attribut verwenden, um sie dynamisch einer Gruppe oder einem Zugriffspaket für den Lieferanten zuzuweisen. Im Azure-Portal können Sie benutzerdefinierte Attribute erstellen und in den Benutzerflows für die Self-Service-Registrierung verwenden. Außerdem können Sie diese Attribute mit der [Microsoft Graph-API](../../active-directory-b2c/manage-user-accounts-graph-api.md) lesen und schreiben. 
+Bei Verwendung eines Self-Service-Portals können Sie [API-Connectors](../external-identities/api-connectors-overview.md) verwenden, um zusätzliche Attribute zu Benutzern zu erfassen, wenn diese sich registrieren. Sie können diese Attribute dann gegebenenfalls verwenden, um den Zugriff zuzuweisen. Wenn Sie z. B. während des Registrierungsvorgangs die Lieferanten-ID der Benutzer erfassen, können Sie dieses Attribut verwenden, um sie dynamisch einer Gruppe oder einem Zugriffspaket für den Lieferanten zuzuweisen. Im Azure-Portal können Sie benutzerdefinierte Attribute erstellen und in den Benutzerflows für die Self-Service-Registrierung verwenden. Außerdem können Sie diese Attribute mit der [Microsoft Graph-API](../../active-directory-b2c/microsoft-graph-operations.md) lesen und schreiben. 
 
 ### <a name="troubleshoot-invitation-redemption-to-azure-ad-users"></a>Problembehandlung beim Einlösen der Einladung für Azure AD-Benutzer
 
@@ -204,7 +204,7 @@ Weitere Informationen zum Verwalten von nicht sanktionierten Anwendungen finden 
  
 ### <a name="next-steps"></a>Nächste Schritte
 
-In den folgenden Artikeln finden Sie Informationen zum Schützen des externen Zugriffs auf Ressourcen. Es wird empfohlen, die Aktionen in der angegebenen Reihenfolge auszuführen.
+In den folgenden Artikeln finden Sie Informationen zum Sichern des externen Zugriffs auf Ressourcen. Es wird empfohlen, die Aktionen in der angegebenen Reihenfolge auszuführen.
 
 1. [Ermitteln des Sicherheitsstatus für externen Zugriff](1-secure-access-posture.md)
 

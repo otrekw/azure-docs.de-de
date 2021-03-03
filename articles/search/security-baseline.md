@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f393c5df23b9552f598e05d25aaf09e529324abe
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 4f54eab9616aa014e6f3a59b5c79e268450ecfce
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201993"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668349"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>Azure-Sicherheitsbaseline für Azure Cognitive Search
 
@@ -140,7 +140,7 @@ Sie können Azure PowerShell oder die Azure CLI verwenden, um Ressourcen basiere
 
 - [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen-Regeln](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -171,7 +171,7 @@ Alternativ können Sie diese Daten in Azure Sentinel oder einer SIEM-Drittanbiet
 
 - [Erste Schritte mit Azure Monitor und der Integration einer SIEM-Drittanbieterlösung](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -185,7 +185,7 @@ Alternativ können Sie diese Daten in Azure Sentinel oder einer SIEM-Drittanbiet
 
 - [Sammeln und Analysieren von Protokolldaten für Azure Cognitive Search](./search-monitor-logs.md)
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -205,9 +205,9 @@ Alternativ können Sie diese Daten in Azure Sentinel oder einer SIEM-Drittanbiet
 
 Legen Sie in Azure Monitor den Aufbewahrungszeitraum Ihres Log Analytics-Arbeitsbereichs gemäß den Compliancevorschriften Ihrer Organisation fest. Verwenden Sie Azure Storage-Konten für die langfristige Speicherung und Archivierung. 
 
-- [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -223,9 +223,9 @@ Legen Sie in Azure Monitor den Aufbewahrungszeitraum Ihres Log Analytics-Arbeits
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Weitere Informationen zu Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Weitere Informationen zu Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -239,7 +239,7 @@ Legen Sie in Azure Monitor den Aufbewahrungszeitraum Ihres Log Analytics-Arbeits
 
 - [Verwalten von Warnungen in Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/learn/tutorial-response.md)
+- [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -495,7 +495,7 @@ Microsoft verwaltetet die zugrunde liegende Plattform, behandelt alle Kundeninha
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Verwalten des Zugriffs auf Ressourcen
 
 **Leitfaden**: Verwenden Sie für die Dienstverwaltung die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC), um den Zugriff auf Schlüssel und Konfiguration zu verwalten. Bei Inhaltsvorgängen wie Indizierung und Abfragen verwendet Cognitive Search Schlüssel anstelle eines identitätsbasierten Zugriffssteuerungsmodells. Verwenden Sie Azure RBAC, um den Zugriff auf Schlüssel zu steuern.
-- [Konfigurieren von RBAC in Azure](../role-based-access-control/role-assignments-portal.md) 
+- [Konfigurieren von Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
  
 - [Verwenden von Rollen für den Administratorzugriff auf Cognitive Search](./search-security-rbac.md)
@@ -532,7 +532,7 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Cognitive Search un
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an Produktionsinstanzen von Cognitive Search und anderen kritischen bzw. verbundenen Ressourcen vorgenommen werden.
 
-- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Erstellen von Warnungen für Cognitive Search-Aktivitäten](./search-monitor-logs.md)
 

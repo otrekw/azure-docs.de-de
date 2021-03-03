@@ -4,12 +4,12 @@ description: Grundlegendes zur Handhabung von IP-Adressen und der Geolocation mi
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 3a8969d5d0df2fdacf78815c6f47c7c6bfa73a37
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 91b3aa07720e39aa8aeeceb9c35e38205e7d7c76
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521916"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584083"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Geolocation und Verarbeitung von IP-Adressen
 
@@ -30,7 +30,7 @@ Dieses Verhalten ist beabsichtigt und soll die unnötige Erfassung persönlicher
 
 Laut Standardeinstellung werden IP-Adressen nicht erfasst. Es besteht jedoch weiterhin die Flexibilität, dieses Verhalten zu überschreiben. Sie sollten jedoch darauf achten, dass die Erfassung nicht gegen Complianceanforderungen oder lokale Regelungen verstößt. 
 
-Weitere Informationen zur Behandlung persönlicher Daten in Application Insights finden Sie im [Leitfaden zu persönlichen Daten](../platform/personal-data-mgmt.md).
+Weitere Informationen zur Behandlung persönlicher Daten in Application Insights finden Sie im [Leitfaden zu persönlichen Daten](../logs/personal-data-mgmt.md).
 
 ## <a name="storing-ip-address-data"></a>Speichern von IP-Adressdaten
 
@@ -245,6 +245,6 @@ Wenn Tests auf dem Localhost ausgeführt werden und der Wert für `customDimensi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur [Sammlung persönlicher Daten](../platform/personal-data-mgmt.md) finden Sie in Application Insights.
+* Weitere Informationen zur [Sammlung persönlicher Daten](../logs/personal-data-mgmt.md) finden Sie in Application Insights.
 
 * Erfahren Sie mehr über die Funktionsweise der [IP-Adressensammlung](https://apmtips.com/posts/2016-07-05-client-ip-address/) in Application Insights. (Dieser Artikel ist ein älterer externer Blogbeitrag von einem unserer Techniker. Zwar wurde der Beitrag vor der Implementierung des aktuellen Standardverhaltens verfasst, bei dem die IP-Adresse als `0.0.0.0` aufgezeichnet wird, allerdings wird die Funktionsweise des integrierten `ClientIpHeaderTelemetryInitializer` ausführlicher erklärt.)

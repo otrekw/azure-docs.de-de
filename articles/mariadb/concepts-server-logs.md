@@ -3,15 +3,15 @@ title: Protokolle für langsame Abfragen – Azure Database for MariaDB
 description: Beschreibt die Protokolle, die in Azure Database for MariaDB verfügbar sind, sowie die verfügbaren Parameter zum Aktivieren verschiedener Protokolliergrade.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/6/2020
-ms.openlocfilehash: 2d3c3c92cc4d0da38f18c7895f4f7f3f3385c653
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 2e7e56616300566839fadef762c2165c8d989e6e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664162"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570814"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Protokolle für langsame Abfragen in Azure Database for MariaDB
 In Azure Database for MariaDB ist das Protokoll für langsame Abfragen für Benutzer verfügbar. Der Zugriff auf das Transaktionsprotokoll wird jedoch nicht unterstützt. Das Protokoll für langsame Abfragen kann verwendet werden, um Leistungsengpässe für die Problembehandlung zu erkennen.
@@ -53,7 +53,7 @@ Die Protokolle werden alle 24 Stunden oder bei Erreichen einer Größe von 7 GB 
 > Die zuvor genannte Protokollaufbewahrung gilt nicht für Protokolle, die mithilfe von Azure Monitor-Diagnoseprotokolle gesendet werden. Sie können die Aufbewahrungsdauer für die Datensenken ändern, an die eine Ausgabe erfolgt (z. B. Azure Storage).
 
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
-Azure Database for MariaDB ist in Azure Monitor-Diagnoseprotokolle integriert. Nachdem Sie die Protokolle zu langsamen Abfragen auf Ihrem MariaDB-Server aktiviert haben, können Sie sie an Azure Monitor-Protokolle, Event Hubs oder Azure Storage ausgeben. Weitere Informationen zum Aktivieren von Diagnoseprotokollen finden Sie im Gewusst-wie-Abschnitt der [Dokumentation zu Diagnoseprotokollen](../azure-monitor/platform/platform-logs-overview.md).
+Azure Database for MariaDB ist in Azure Monitor-Diagnoseprotokolle integriert. Nachdem Sie die Protokolle zu langsamen Abfragen auf Ihrem MariaDB-Server aktiviert haben, können Sie sie an Azure Monitor-Protokolle, Event Hubs oder Azure Storage ausgeben. Weitere Informationen zum Aktivieren von Diagnoseprotokollen finden Sie im Gewusst-wie-Abschnitt der [Dokumentation zu Diagnoseprotokollen](../azure-monitor/essentials/platform-logs-overview.md).
 
 In der folgenden Tabelle wird der Inhalt der einzelnen Protokolle beschrieben. Je nach Ausgabemethode können die enthaltenen Felder und ihre Reihenfolge variieren.
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c8a5666d373852da5ff79490f435b2d66d5cc6e0
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: b817cfc347ee79ff7c9cbb4124e3f2b7e4d2b7ee
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090365"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644254"
 ---
 # <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>Tutorial: Konfigurieren von Keyless mit Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Zunächst benötigen Sie Folgendes:
 
 - Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 
-- Einen [Azure AD B2C-Mandanten](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant). Der Mandant muss mit Ihrem Azure-Abonnement verknüpft sein.
+- Einen [Azure AD B2C-Mandanten](./tutorial-create-tenant.md). Der Mandant muss mit Ihrem Azure-Abonnement verknüpft sein.
 
 - Einen Keyless-Cloudmandanten. Registrieren Sie sich für ein kostenloses [Testkonto](https://keyless.io/go).
 
@@ -50,7 +50,7 @@ Im folgenden Architekturdiagramm ist die Implementierung dargestellt.
 
 ![Abbildung des Keyless-Architekturdiagramms](./media/partner-keyless/keyless-architecture-diagram.png)
 
-|Schritt | Beschreibung |
+|Schritt | BESCHREIBUNG |
 |:-----| :-----------|
 | 1. | Der Benutzer gelangt auf eine Anmeldeseite. Der Benutzer wählt Anmeldung oder Registrierung aus und gibt den Benutzernamen ein.
 | 2. | Die Anwendung sendet die Benutzerattribute an Azure AD B2C zum Überprüfen der Identität.
@@ -157,6 +157,6 @@ Keyless sollte jetzt als neuer OIDC-Identitätsanbieter unter Ihren B2C-Identit�
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Benutzerdefinierte Richtlinien in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Benutzerdefinierte Richtlinien in Azure AD B2C](./custom-policy-overview.md)
 
-- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

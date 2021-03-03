@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: f9213f36ec33939c3df3b56d21822aa3b6a17c03
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 360a9730025dc24eda93868903fcd356c37d06ef
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945613"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576329"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Abfragen von Azure Monitor-Protokollen zum Überwachen von HDInsight-Clustern
 
@@ -30,7 +30,7 @@ Sie müssen einen HDInsight-Cluster konfiguriert haben, um Azure Monitor-Protoko
 Erfahren Sie, wie Sie nach bestimmten Metriken für Ihren HDInsight-Cluster suchen.
 
 1. Öffnen Sie den Log Analytics-Arbeitsbereich, der Ihrem HDInsight-Cluster zugeordnet ist, im Azure-Portal.
-1. Klicken Sie unter **Allgemein** auf **Protokolle**.
+1. Wählen Sie unter **Allgemein** die Option **Protokolle** aus.
 1. Geben Sie im Suchfeld die folgende Abfrage ein, um nach allen verfügbaren Metriken für alle HDInsight-Cluster zu suchen, die für die Verwendung von Azure Monitor-Protokollen konfiguriert sind, und klicken Sie dann auf **Ausführen**. Überprüfen Sie die Ergebnisse.
 
     ```kusto
@@ -60,7 +60,7 @@ Erfahren Sie, wie Sie nach bestimmten Metriken für Ihren HDInsight-Cluster such
 
     - So zeigen Sie Protokolle zu bestimmten Zeiten an:
 
-        ![Suchen nach bestimmten Fehlern (Ausgabe 2)](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-time.png "Nach bestimmten Fehlern suchen (Ausgabe 2)")
+        ![Nach bestimmten Fehlern suchen (Ausgabe 2)](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-time.png "Nach bestimmten Fehlern suchen (Ausgabe 2)")
 
 1. Klicken Sie auf **Apply & Run** (Anwenden und ausführen), und überprüfen Sie die Ergebnisse. Beachten Sie auch, dass die Abfrage folgendermaßen aktualisiert wurde:
 
@@ -91,7 +91,7 @@ search in (metrics_resourcemanager_queue_root_default_CL) *
 Damit eine Warnung erstellt werden kann, muss eine Abfrage vorhanden sein, auf deren Basis die Warnung ausgelöst wird. Sie können jede beliebige Abfrage verwenden, um eine Warnung zu erstellen.
 
 1. Öffnen Sie den Log Analytics-Arbeitsbereich, der Ihrem HDInsight-Cluster zugeordnet ist, im Azure-Portal.
-1. Klicken Sie unter **Allgemein** auf **Protokolle**.
+1. Wählen Sie unter **Allgemein** die Option **Protokolle** aus.
 1. Führen Sie die folgende Abfrage aus, zu der Sie eine Warnung erstellen möchten, und klicken Sie dann auf **Ausführen**.
 
     ```kusto
@@ -122,9 +122,9 @@ Damit eine Warnung erstellt werden kann, muss eine Abfrage vorhanden sein, auf d
 
     ![Lösch/Bearbeitungswarnung für HDInsight Azure Monitor-Protokolle](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
-Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../azure-monitor/platform/alerts-metric.md).
+Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../azure-monitor/alerts/alerts-metric.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
-* [Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Azure Monitor](../azure-monitor/platform/view-designer.md)
+* [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
+* [Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Azure Monitor](../azure-monitor/visualize/view-designer.md)

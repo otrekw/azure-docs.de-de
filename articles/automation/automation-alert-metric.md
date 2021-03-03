@@ -4,16 +4,16 @@ description: In diesem Artikel wird beschrieben, wie Sie eine Metrikwarnung auf 
 services: automation
 ms.date: 08/10/2020
 ms.topic: article
-ms.openlocfilehash: 8767687f0b72d3469bef570770ac81fa8300097f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a52824a7030d78647d8a664819f439d92d7296d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88055926"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593945"
 ---
 # <a name="monitor-runbooks-with-metric-alerts"></a>Überwachen von Runbooks mit Metrikwarnungen
 
-In diesem Artikel erfahren Sie, wie Sie eine [Metrikwarnung](../azure-monitor/platform/alerts-metric-overview.md) auf dem Abschlussstatus des Runbooks basierend erstellen.
+In diesem Artikel erfahren Sie, wie Sie eine [Metrikwarnung](../azure-monitor/alerts/alerts-metric-overview.md) auf dem Abschlussstatus des Runbooks basierend erstellen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -52,7 +52,7 @@ Mit Warnungen können Sie eine zu überwachende Bedingung und eine auszuführend
 
 ### <a name="define-the-action-to-take"></a>Definieren der auszuführenden Aktion
 
-1. Wählen Sie unter **Aktionsgruppe** die Option **Aktionsgruppe auswählen** aus. Eine Aktionsgruppe ist eine Gruppe von Aktionen, die Sie für mehrere Warnungen verwenden können. Dies können beispielsweise E-Mail-Benachrichtigungen, Runbooks und Webhooks sein. Weitere Informationen zu Aktionsgruppen und Schritte zum Erstellen einer Aktionsgruppe, die eine E-Mail-Benachrichtigung sendet, finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/platform/action-groups.md).
+1. Wählen Sie unter **Aktionsgruppe** die Option **Aktionsgruppe auswählen** aus. Eine Aktionsgruppe ist eine Gruppe von Aktionen, die Sie für mehrere Warnungen verwenden können. Dies können beispielsweise E-Mail-Benachrichtigungen, Runbooks und Webhooks sein. Weitere Informationen zu Aktionsgruppen und Schritte zum Erstellen einer Aktionsgruppe, die eine E-Mail-Benachrichtigung sendet, finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/alerts/action-groups.md).
 
 ### <a name="define-alert-details"></a>Definieren von Warnungsdetails
 

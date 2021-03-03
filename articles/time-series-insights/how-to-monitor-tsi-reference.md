@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 0b564ddfdea2cf24b7f9b1bc608d47fa4cfe541b
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: bfd0d04313f0b519b4013a43e29d88400c73ea31
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632120"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591379"
 ---
 # <a name="monitoring-azure-time-series-insights-data-reference"></a>Referenz zur Überwachung von Azure Time Series Insights-Daten
 
@@ -23,7 +23,7 @@ Erfahren Sie mehr über die Daten und Ressourcen, die von Azure Monitor aus Ihre
 
 ## <a name="metrics"></a>Metriken
 
-In diesem Abschnitt werden alle automatisch erfassten Plattformmetriken aufgeführt, die für Azure Time Series Insights gesammelt werden. Eine Liste aller von Azure Monitor unterstützten Metriken (einschließlich Azure Time Series Insights) finden Sie unter [Unterstützte Metriken von Azure Monitor](../azure-monitor/platform/metrics-supported.md). Die Ressourcenanbieter für diese Metriken sind [Microsoft.TimeSeriesInsights/environments/eventsources](../azure-monitor/platform/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) und [Microsoft.TimeSeriesInsights/environments](../azure-monitor/platform/metrics-supported.md#microsofttimeseriesinsightsenvironments).
+In diesem Abschnitt werden alle automatisch erfassten Plattformmetriken aufgeführt, die für Azure Time Series Insights gesammelt werden. Eine Liste aller von Azure Monitor unterstützten Metriken (einschließlich Azure Time Series Insights) finden Sie unter [Unterstützte Metriken von Azure Monitor](../azure-monitor/essentials/metrics-supported.md). Die Ressourcenanbieter für diese Metriken sind [Microsoft.TimeSeriesInsights/environments/eventsources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) und [Microsoft.TimeSeriesInsights/environments](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments).
 
 
 ### <a name="ingress"></a>Eingehende Daten

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: article
-ms.date: 06/16/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26403c20d7f3274e8f3f2dcae479f72e9a7e3354
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 5265b875769e6a1b8f1728c9c41c0bee00619956
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807019"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647386"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Hinzufügen eines API-Connectors zu einem Benutzerflow
 
@@ -30,7 +30,7 @@ Um einen [API-Connector](api-connectors-overview.md) zu verwenden, erstellen Sie
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Azure AD-Administrator an.
 2. Wählen Sie unter **Azure-Dienste** die Option **Azure Active Directory** aus.
 3. Wählen Sie im Menü auf der linken Seite **Externe Identitäten** aus.
-4. Wählen Sie **Alle API-Connectors (Vorschau)** und dann **Neuer API-Connector** aus.
+4. Wählen Sie **Alle API-Connectors** und dann **Neuer API-Connector** aus.
 
    ![Hinzufügen eines neuen API-Connectors](./media/self-service-sign-up-add-api-connector/api-connector-new.png)
 
@@ -97,7 +97,7 @@ Führen Sie die folgenden Schritte aus, um einem Benutzerflow für die Self-Serv
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Azure AD-Administrator an.
 2. Wählen Sie unter **Azure-Dienste** die Option **Azure Active Directory** aus.
 3. Wählen Sie im Menü auf der linken Seite **Externe Identitäten** aus.
-4. Wählen Sie **Benutzerflows (Vorschau)** und dann den Benutzerflow aus, dem Sie den API-Connector hinzufügen möchten.
+4. Wählen Sie **Benutzerflows** und dann den Benutzerflow aus, dem Sie den API-Connector hinzufügen möchten.
 5. Wählen Sie **API-Connectors** und dann die API-Endpunkte aus, die bei den folgenden Schritten im Benutzerflow aufgerufen werden sollen:
 
    - **Nach Anmeldung bei einem Identitätsanbieter**
@@ -247,7 +247,7 @@ Content-type: application/json
 }
 ```
 
-| Parameter                                          | Typ              | Erforderlich | BESCHREIBUNG                                                                                                                                                                                                                                                                            |
+| Parameter                                          | type              | Erforderlich | BESCHREIBUNG                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version                                            | String            | Ja      | Die Version der API.                                                                                                                                                                                                                                                                |
 | action                                             | String            | Ja      | Der Wert muss `Continue` sein.                                                                                                                                                                                                                                                              |
@@ -269,7 +269,7 @@ Content-type: application/json
 
 ```
 
-| Parameter   | Typ   | Erforderlich | BESCHREIBUNG                                                                |
+| Parameter   | type   | Erforderlich | BESCHREIBUNG                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | version     | String | Ja      | Die Version der API.                                                    |
 | action      | String | Ja      | Der Wert muss `ShowBlockPage` sein.                                              |
@@ -295,7 +295,7 @@ Content-type: application/json
 }
 ```
 
-| Parameter   | Typ    | Erforderlich | BESCHREIBUNG                                                                |
+| Parameter   | type    | Erforderlich | BESCHREIBUNG                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | version     | String  | Ja      | Die Version der API.                                                    |
 | action      | String  | Ja      | Der Wert muss `ValidationError` sein.                                           |

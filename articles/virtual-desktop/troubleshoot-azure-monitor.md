@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1818dc558ba45e318b71e1443556cc48feaede8b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1453d43707a3680380e553fe69d738b27fe5ae3a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367672"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571345"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Behandeln von Problemen mit Azure Monitor für Windows Virtual Desktop (Vorschau)
 
@@ -26,9 +26,9 @@ Wenn die Konfigurationsarbeitsmappe nicht richtig funktioniert, um das Setup zu 
 
 - Informationen zum manuellen Aktivieren der Diagnose oder zum Zugreifen auf den Log Analytics-Arbeitsbereich finden Sie unter [Senden der Windows Virtual Desktop-Diagnose an Log Analytics](diagnostics-log-analytics.md).
 - Informationen zum manuellen Installieren der Log Analytics-Erweiterung auf einem Host finden Sie unter [Log Analytics-VM-Erweiterung für Windows](../virtual-machines/extensions/oms-windows.md).
-- Eine Anleitung zum Einrichten eines neuen Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/learn/quick-create-workspace.md).
-- Informationen zum Hinzufügen oder Entfernen von Leistungsindikatoren finden Sie unter [Konfigurieren von Leistungsindikatoren](../azure-monitor/platform/data-sources-performance-counters.md).
-- Informationen zum Konfigurieren von Ereignissen für einen Log Analytics-Arbeitsbereich finden Sie unter [Datenquellen für das Sammeln von Windows-Ereignisprotokolldaten mit dem Log Analytics-Agent](../azure-monitor/platform/data-sources-windows-events.md).
+- Eine Anleitung zum Einrichten eines neuen Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/logs/quick-create-workspace.md).
+- Informationen zum Hinzufügen oder Entfernen von Leistungsindikatoren finden Sie unter [Konfigurieren von Leistungsindikatoren](../azure-monitor/agents/data-sources-performance-counters.md).
+- Informationen zum Konfigurieren von Ereignissen für einen Log Analytics-Arbeitsbereich finden Sie unter [Datenquellen für das Sammeln von Windows-Ereignisprotokolldaten mit dem Log Analytics-Agent](../azure-monitor/agents/data-sources-windows-events.md).
 
 ## <a name="my-data-isnt-displaying-properly"></a>Meine Daten werden nicht ordnungsgemäß angezeigt
 
@@ -44,7 +44,7 @@ Wenn Ihre Daten nicht ordnungsgemäß angezeigt werden, überprüfen Sie die Kon
 
 - Möglicherweise müssen Sie ausgehende Ports in der Firewall Ihres Servers öffnen, damit Azure Monitor Daten an das Portal senden kann, siehe [Ausgehende Ports](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses). 
 
-- Es werden keine Daten der letzten Aktivität angezeigt? Sie sollten vielleicht 15 Minuten warten und den Feed aktualisieren. Azure Monitor weist eine Wartezeit von 15 Minuten beim Auffüllen von Protokolldaten auf. Weitere Informationen finden Sie unter [Protokolldatenerfassungszeit in Azure Monitor](../azure-monitor/platform/data-ingestion-time.md).
+- Es werden keine Daten der letzten Aktivität angezeigt? Sie sollten vielleicht 15 Minuten warten und den Feed aktualisieren. Azure Monitor weist eine Wartezeit von 15 Minuten beim Auffüllen von Protokolldaten auf. Weitere Informationen finden Sie unter [Protokolldatenerfassungszeit in Azure Monitor](../azure-monitor/logs/data-ingestion-time.md).
 
 Wenn keine Informationen fehlen, die Daten aber dennoch nicht ordnungsgemäß angezeigt werden, liegt möglicherweise ein Problem in der Abfrage oder den Datenquellen vor. Sehen Sie sich unsere bekannten Probleme und Einschränkungen an. 
 
@@ -52,7 +52,7 @@ Wenn keine Informationen fehlen, die Daten aber dennoch nicht ordnungsgemäß an
 
 Azure Monitor für Windows Virtual Desktop verwendet Azure Monitor-Arbeitsmappen. Mit Arbeitsmappen können Sie eine Kopie der Windows Virtual Desktop-Arbeitsmappenvorlage speichern und eigene Anpassungen vornehmen.
 
-Entwurfsbedingt übernehmen benutzerdefinierte Arbeitsmappenvorlagen nicht automatisch Updates aus der Produktgruppe. Weitere Informationen finden Sie unter [Problembehandlung für arbeitsmappenbasierte Erkenntnisse](../azure-monitor/insights/troubleshoot-workbooks.md) und in der [Übersicht über Arbeitsmappen](../azure-monitor/platform/workbooks-overview.md).
+Entwurfsbedingt übernehmen benutzerdefinierte Arbeitsmappenvorlagen nicht automatisch Updates aus der Produktgruppe. Weitere Informationen finden Sie unter [Problembehandlung für arbeitsmappenbasierte Erkenntnisse](../azure-monitor/insights/troubleshoot-workbooks.md) und in der [Übersicht über Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md).
 
 ## <a name="i-cant-interpret-the-data"></a>Ich kann die Daten nicht interpretieren
 

@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 711c1ba49ad0f347d30f2c8c40352ed95c1fd057
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 29150f229f1bd6adbbe6a335fdb91a44f3a2345b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221479"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675670"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale in Azure
 
@@ -96,9 +96,9 @@ Ein großer DB2 pureScale-Cluster kann 200 Terabyte (TB) oder mehr freigegebenen
 
 IBM empfiehlt InfiniBand-Netzwerkfunktionen für alle Member in einem DB2 pureScale-Cluster. DB2 pureScale verwendet für die CFs außerdem Remotezugriff auf den direkten Speicher (Remote Direct Memory Access, RDMA), sofern dieser verfügbar ist.
 
-Während des Setups erstellen Sie eine Azure-[Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/management/overview), die dann alle virtuellen Computer enthält. Ressourcen werden allgemein auf der Grundlage ihrer Lebensdauer sowie auf der Grundlage der Benutzer gruppiert, die sie verwalten. Die virtuellen Computer in dieser Architektur erfordern [beschleunigten Netzwerkbetrieb](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Dies ist ein Azure-Feature, das konsistente, extrem geringe Netzwerklatenz über E/A-Virtualisierung mit Einzelstamm (Single Root I/O Virtualization, SR-IOV) für einen virtuellen Computer bietet.
+Während des Setups erstellen Sie eine Azure-[Ressourcengruppe](../../../../azure-resource-manager/management/overview.md), die dann alle virtuellen Computer enthält. Ressourcen werden allgemein auf der Grundlage ihrer Lebensdauer sowie auf der Grundlage der Benutzer gruppiert, die sie verwalten. Die virtuellen Computer in dieser Architektur erfordern [beschleunigten Netzwerkbetrieb](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Dies ist ein Azure-Feature, das konsistente, extrem geringe Netzwerklatenz über E/A-Virtualisierung mit Einzelstamm (Single Root I/O Virtualization, SR-IOV) für einen virtuellen Computer bietet.
 
-Jeder virtuelle Azure-Computer wird in einem virtuellen Netzwerk mit mehreren Subnetzen bereitgestellt: Hauptsubnetz, GlusterFS-Front-End (gfsfe), GlusterFS-Back-End (bfsbe), DB2 pureScale (db2be) und DB2 pureScale-Front-End (db2fe). Das Installationsskript erstellt auch die primären [NICs](https://docs.microsoft.com/azure/virtual-machines/windows/multiple-nics) auf den virtuellen Computern im Hauptsubnetz.
+Jeder virtuelle Azure-Computer wird in einem virtuellen Netzwerk mit mehreren Subnetzen bereitgestellt: Hauptsubnetz, GlusterFS-Front-End (gfsfe), GlusterFS-Back-End (bfsbe), DB2 pureScale (db2be) und DB2 pureScale-Front-End (db2fe). Das Installationsskript erstellt auch die primären [NICs](../../../windows/multiple-nics.md) auf den virtuellen Computern im Hauptsubnetz.
 
 Mithilfe von [Netzwerksicherheitsgruppen](../../../../virtual-network/virtual-network-vnet-plan-design-arm.md) werden der Netzwerkdatenverkehr innerhalb des virtuellen Netzwerks eingeschränkt und Subnetze isoliert.
 

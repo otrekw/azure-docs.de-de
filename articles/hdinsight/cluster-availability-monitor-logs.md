@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mit Azure Monitor-Protokollen die Integrität
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.openlocfilehash: d52cb1c5f3b1dd1b23adb39f2f65d0e66968e482
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 3bc5c659d9871cb8f1d49d2a3bfde2ce03faea86
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946955"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571902"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>Überwachen der Clusterverfügbarkeit mit Azure Monitor-Protokollen in HDInsight
 
@@ -19,7 +19,7 @@ HDInsight-Cluster bieten eine Integration mit Azure Monitor-Protokollen, die abf
 
 Mit Azure Monitor-Protokollen können Daten, die von mehreren Ressourcen wie z. B. HDInsight-Clustern generiert wurden, zentral gesammelt und zusammengefasst werden, um eine einheitliche Überwachungsumgebung zu schaffen.
 
-Als Voraussetzung benötigen Sie einen Log Analytics-Arbeitsbereich, um die gesammelten Daten zu speichern. Wenn Sie noch keinen eingerichtet haben, befolgen Sie die nachstehenden Anweisungen: [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md).
+Als Voraussetzung benötigen Sie einen Log Analytics-Arbeitsbereich, um die gesammelten Daten zu speichern. Wenn Sie noch keinen eingerichtet haben, befolgen Sie die nachstehenden Anweisungen: [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/logs/quick-create-workspace.md).
 
 ## <a name="enable-hdinsight-azure-monitor-logs-integration"></a>Aktivieren der Integration von Azure Monitor-Protokollen in HDInsight
 
@@ -81,7 +81,7 @@ Da diese Abfrage nur nicht verfügbare Knoten als Ergebnis zurückgibt, sollte d
 
 Legen Sie im Abschnitt **Auswertung basierend auf** den **Zeitraum** und die **Häufigkeit** basierend darauf fest, wie oft Sie die Prüfung auf nicht verfügbare Knoten erfolgen soll.
 
-Bei dieser Warnung möchten Sie sicherstellen, dass sich **Zeitraum und Häufigkeit** entsprechen. Weitere Informationen zu Zeitraum, Häufigkeit und anderen Warnungsparametern finden Sie [hier](../azure-monitor/platform/alerts-unified-log.md#alert-logic-definition).
+Bei dieser Warnung möchten Sie sicherstellen, dass sich **Zeitraum und Häufigkeit** entsprechen. Weitere Informationen zu Zeitraum, Häufigkeit und anderen Warnungsparametern finden Sie [hier](../azure-monitor/alerts/alerts-unified-log.md#alert-logic-definition).
 
 Wählen Sie **Fertig** aus, wenn die Konfiguration der Signallogik abgeschlossen ist.
 
@@ -94,7 +94,7 @@ Wenn Sie noch nicht über eine Aktionsgruppe verfügen, klicken Sie im Abschnitt
 Dadurch wird **Aktionsgruppe hinzufügen** geöffnet. Wählen Sie einen **Aktionsgruppennamen**, **Kurznamen**, ein **Abonnement** und eine **Ressourcengruppe**. Wählen Sie im Abschnitt **Aktionen** einen **Aktionsnamen** und **E-Mail/SMS/Push/Sprachanruf** als **Aktionstyp** aus.
 
 > [!NOTE]
-> Es gibt mehrere andere Aktionen, die neben „E-Mail/SMS/Push/Sprachanruf“ eine Warnung auslösen können, wie beispielsweise eine Azure-Funktion, LogicApp, Webhook, ITSM und Automation Runbook. [Weitere Informationen](../azure-monitor/platform/action-groups.md#action-specific-information).
+> Es gibt mehrere andere Aktionen, die neben „E-Mail/SMS/Push/Sprachanruf“ eine Warnung auslösen können, wie beispielsweise eine Azure-Funktion, LogicApp, Webhook, ITSM und Automation Runbook. [Weitere Informationen](../azure-monitor/alerts/action-groups.md#action-specific-information).
 
 Dadurch wird **E-Mail/SMS/Push/Sprachanruf** geöffnet. Wählen Sie einen **Namen** für den Empfänger, **aktivieren** Sie das Feld **E-Mail**, und geben Sie eine E-Mail-Adresse ein, an die die Warnung gesendet werden soll. Wählen Sie unter **E-Mail/SMS/Push/Sprachanruf** und unter **Aktionsgruppe hinzufügen** die Option **OK** aus, um die Konfiguration der Aktionsgruppe abzuschließen.
 

@@ -3,23 +3,24 @@ title: Verwenden einer Vorlage zum Bereitstellen von Azure Spot Virtual Machines
 description: Erfahren Sie, wie Sie mithilfe einer Vorlage Azure Spot Virtual Machines bereitstellen, um Kosten zu sparen.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: spot
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 44134e73f2e654d7bfdb9119942a5c3982859c7a
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 04319066c59dda5d240f527d86894674a505eaed
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557759"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669356"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-a-resource-manager-template"></a>Bereitstellen von Azure Spot Virtual Machines mithilfe einer Resource Manager-Vorlage
 
-Wenn Sie [Azure Spot Virtual Machines](../spot-vms.md) verwenden, profitieren Sie von unserer ungenutzten Kapazität und erzielen erhebliche Kosteneinsparungen. Wenn die Kapazität von Azure wieder benötigt wird, werden die Azure Spot Virtual Machines durch die Azure-Infrastruktur entfernt. Aus diesem Grund eignen sich Azure Spot Virtual Machines hervorragend für Workloads, die Unterbrechungen tolerieren, z. B. Batchverarbeitungsaufträge, Dev/Test-Umgebungen, umfangreiche Computeworkloads und mehr.
+Wenn Sie [Azure Spot Virtual Machines](../spot-vms.md) verwenden, profitieren Sie von unserer ungenutzten Kapazität und erzielen erhebliche Kosteneinsparungen. Wenn die Kapazität von Azure wieder benötigt wird, werden die Azure-Spot-VMs durch die Azure-Infrastruktur entfernt. Aus diesem Grund eignen sich Azure-Spot-VMs hervorragend für Workloads, die Unterbrechungen tolerieren, z. B. Batchverarbeitungsaufträge, Dev/Test-Umgebungen, umfangreiche Computeworkloads und mehr.
 
-Die Preise für Azure Spot Virtual Machines variieren je nach Region und SKU. Weitere Informationen finden Sie unter den VM-Preisen für [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) und [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
+Die Preise für Azure-Spot-VMs variieren je nach Region und SKU. Weitere Informationen finden Sie unter den VM-Preisen für [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) und [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
 
 Sie haben die Möglichkeit, einen maximalen Preis festzulegen, den Sie pro Stunde für die VM bezahlen möchten. Der maximale Preis für eine Azure Spot-VM kann in US-Dollar (USD) mit bis zu fünf Dezimalstellen festgelegt werden. Der Wert `0.98765` würde beispielsweise einem maximalen Preis von 0,98765 US-Dollar pro Stunde entsprechen. Wenn Sie den maximalen Preis auf `-1` festlegen, wird die VM nicht basierend auf dem Preis entfernt. Der Preis für die VM entspricht dem aktuellen Preis für Azure Spot Virtual Machines oder dem Preis für eine Standard-VM, je nachdem, welcher Preis niedriger ist, solange Kapazität und Kontingente verfügbar sind. Weitere Informationen zum Festlegen des maximalen Preises finden Sie unter [Azure Spot Virtual Machines: Preise](../spot-vms.md#pricing).
 

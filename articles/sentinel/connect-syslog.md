@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: f249a95551916311fab51ebef72b55d9a4343c0b
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: d35a97b0008a7ce3069185dd557a60221776b0ba
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530517"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595466"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Sammeln von Daten aus Linux-basierten Quellen mithilfe von Syslog
 
@@ -34,7 +34,7 @@ Sie können Ereignisse von Linux-basierten Computern oder Appliances, die Syslog
 
 **Syslog** ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux. Wenn der **Log Analytics-Agent für Linux** auf Ihrem virtuellen Computer oder Ihrer Appliance installiert ist, konfiguriert die Installationsroutine den lokalen Syslog-Daemon für die Weiterleitung von Meldungen an den Agent an TCP-Port 25224. Der Agent sendet dann die Meldung über HTTPS an Ihren Log Analytics-Arbeitsbereich, wo sie in einen Ereignisprotokolleintrag in der Syslog-Tabelle in **Azure Sentinel > Protokolle** analysiert wird.
 
-Weitere Informationen finden Sie unter [Syslog-Datenquellen in Azure Monitor](../azure-monitor/platform/data-sources-syslog.md).
+Weitere Informationen finden Sie unter [Syslog-Datenquellen in Azure Monitor](../azure-monitor/agents/data-sources-syslog.md).
 
 ## <a name="configure-syslog-collection"></a>Konfigurieren der Syslog-Sammlung
 
@@ -83,7 +83,7 @@ Weitere Informationen finden Sie unter [Syslog-Datenquellen in Azure Monitor](..
 
 1. Um die Syslog-Protokolldaten in **Protokolle** abzufragen, geben Sie `Syslog` in das Abfragefenster ein.
 
-1. Sie können mit den in [Verwenden von Funktionen in Azure Monitor-Protokollabfragen](../azure-monitor/log-query/functions.md) beschriebenen Abfrageparametern Ihre Syslog-Meldungen analysieren. Sie können die Abfrage dann als neue Log Analytics-Funktion speichern und als neuen Datentyp verwenden.
+1. Sie können mit den in [Verwenden von Funktionen in Azure Monitor-Protokollabfragen](../azure-monitor/logs/functions.md) beschriebenen Abfrageparametern Ihre Syslog-Meldungen analysieren. Sie können die Abfrage dann als neue Log Analytics-Funktion speichern und als neuen Datentyp verwenden.
 
 > [!NOTE]
 > **Verwenden desselben Computers zum Weiterleiten von unformatierten Syslog-Nachrichten *und* CEF-Nachrichten**
@@ -92,7 +92,7 @@ Weitere Informationen finden Sie unter [Syslog-Datenquellen in Azure Monitor](..
 >
 >    Wenn Sie die [Datensammlung von Ihren CEF-Quellen](connect-common-event-format.md) bereits eingerichtet und den Log Analytics-Agent wie oben konfiguriert haben:
 >
-> 1. Sie müssen auf jedem Computer, der Protokolle im CEF-Format sendet, die Syslog-Konfigurationsdatei bearbeiten, um die Einrichtungen zu entfernen, die zum Senden von CEF-Meldungen verwendet werden. Auf diese Weise werden die in CEF gesendeten Einrichtungen nicht auch in Syslog gesendet. Detaillierte Anweisungen hierzu finden Sie unter [Konfigurieren von Syslog auf dem Linux-Agent](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent).
+> 1. Sie müssen auf jedem Computer, der Protokolle im CEF-Format sendet, die Syslog-Konfigurationsdatei bearbeiten, um die Einrichtungen zu entfernen, die zum Senden von CEF-Meldungen verwendet werden. Auf diese Weise werden die in CEF gesendeten Einrichtungen nicht auch in Syslog gesendet. Detaillierte Anweisungen hierzu finden Sie unter [Konfigurieren von Syslog auf dem Linux-Agent](../azure-monitor/agents/data-sources-syslog.md#configure-syslog-on-linux-agent).
 >
 > 1. Sie müssen auf diesen Computern den folgenden Befehl ausführen, um die Synchronisierung des Agents mit der Syslog-Konfiguration in Azure Sentinel zu deaktivieren. Dadurch wird sichergestellt, dass die von Ihnen im vorherigen Schritt vorgenommene Konfigurationsänderung nicht überschrieben wird.<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`

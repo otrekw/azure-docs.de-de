@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc7a5e2e45cd3d76c0d8af612291ecaf9893b5b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4d32e0b939731d64f3ef2495ab606b5dc0780e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231094"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592292"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Interpretieren des Azure AD-Überwachungsprotokollschemas in Azure Monitor (Vorschauversion)
 
@@ -161,7 +161,7 @@ Dieser Artikel beschreibt das Azure Active Directory-Überwachungsprotokollschem
 | callerIpAddress | Die IP-Adresse des Clients, der die Anforderung gestellt hat. | 
 | correlationId | Eine optionale GUID, die vom Client übergeben wird. Sie kann dabei helfen, clientseitige Vorgänge mit serverseitigen Vorgängen zu korrelieren und Protokolle zu verfolgen, die sich über mehrere Dienste erstrecken. |
 | identity | Die Identität des Tokens, das beim Erstellen der Anforderung angegeben wurde. Die Identität kann ein Benutzerkonto, ein Systemkonto oder ein Dienstprinzipal sein. |
-| level | Der Nachrichtentyp. Bei Überwachungsprotokollen ist die Ebene immer *Information*. |
+| level | Der Meldungstyp. Bei Überwachungsprotokollen ist die Ebene immer *Information*. |
 | location | Der Standort des Rechenzentrums. |
 | properties | Listet die unterstützten Eigenschaften auf, die mit einem Überwachungsprotokoll verknüpft sind. Weitere Informationen finden Sie in der nächsten Tabelle. | 
 
@@ -179,5 +179,5 @@ Dieser Artikel beschreibt das Azure Active Directory-Überwachungsprotokollschem
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Interpret sign-in logs schema in Azure Monitor](reference-azure-monitor-sign-ins-log-schema.md) (Interpretieren des Anmeldeprotokollschemas in Azure Monitor)
-* [Azure-Diagnoseprotokolle](../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure-Diagnoseprotokolle](../../azure-monitor/essentials/platform-logs-overview.md)
 * [Häufig gestellte Fragen und bekannte Probleme](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8492e986b378ea19f8c3c4cb7f94fcb0f155b427
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cfa2548abb28fa6f84178a1fb5716d0c03b163f1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487846"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570724"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Sicherheitskontrolle: Protokollierung und Überwachung
 
@@ -42,9 +42,9 @@ Alternativ dazu können Sie auch Daten in Azure Sentinel oder einer Drittanbiete
 
 - [Durchführen des Onboardings für Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Sammeln von internen Azure Virtual Machine-Hostprotokollen mit Azure Monitor](../../azure-monitor/learn/quick-collect-azurevm.md)
+- [Sammeln von internen Azure Virtual Machine-Hostprotokollen mit Azure Monitor](../../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Erste Schritte mit Azure Monitor und der Integration einer SIEM-Drittanbieterlösung](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -56,9 +56,9 @@ Alternativ dazu können Sie auch Daten in Azure Sentinel oder einer Drittanbiete
 
 Aktivieren der Diagnoseeinstellungen auf Azure-Ressourcen für den Zugriff auf Überwachungs-, Sicherheits- und Diagnoseprotokolle. Aktivitätsprotokolle, die automatisch verfügbar sind, enthalten Ereignisquelle, Datum, Benutzer, Zeitstempel, Quelladressen, Zieladressen und andere nützliche Elemente.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../../azure-monitor/platform/platform-logs-overview.md)
+- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../../azure-monitor/essentials/platform-logs-overview.md)
 
 ## <a name="24-collect-security-logs-from-operating-systems"></a>2.4: Erfassen von Sicherheitsprotokollen von Betriebssystemen
 
@@ -68,7 +68,7 @@ Aktivieren der Diagnoseeinstellungen auf Azure-Ressourcen für den Zugriff auf �
 
 Wenn sich die Computeressource im Besitz von Microsoft befindet, ist Microsoft für die Überwachung verantwortlich. Wenn die Computeressource Ihrer Organisation gehört, liegt es in Ihrer Verantwortung, sie zu überwachen. Sie können Azure Security Center zum Überwachen des Betriebssystems verwenden. Von Azure Security Center vom Betriebssystem erfasste Daten sind z. B. Betriebssystemtyp und -version, Betriebssystem (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer. Darüber hinaus erfasst der Log Analytics Agent Absturzabbilddateien.
 
-- [Sammeln von internen Azure Virtual Machine-Hostprotokollen mit Azure Monitor](../../azure-monitor/learn/quick-collect-azurevm.md)
+- [Sammeln von internen Azure Virtual Machine-Hostprotokollen mit Azure Monitor](../../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Grundlegendes zur Datensammlung in Azure Security Center](../../security-center/security-center-enable-data-collection.md)
 
@@ -80,7 +80,7 @@ Wenn sich die Computeressource im Besitz von Microsoft befindet, ist Microsoft f
 
 Legen Sie in Azure Monitor den Aufbewahrungszeitraum Ihres Log Analytics-Arbeitsbereichs gemäß den Compliancevorschriften Ihrer Organisation fest. Verwenden Sie Azure Storage-Konten für die langfristige/Archivierungsspeicherung.
 
-- [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -96,9 +96,9 @@ Alternativ dazu können Sie auch Daten in Azure Sentinel oder einer Drittanbiete
 
 - [Durchführen des Onboardings für Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-- [Grundlegendes zum Log Analytics-Arbeitsbereich](../../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Grundlegendes zum Log Analytics-Arbeitsbereich](../../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
+- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../../azure-monitor/logs/get-started-queries.md)
 
 ## <a name="27-enable-alerts-for-anomalous-activities"></a>2.7: Aktivieren von Warnungen bei anomalen Aktivitäten
 
@@ -114,7 +114,7 @@ Alternativ dazu können Sie auch Daten in Azure Sentinel aktivieren und integrie
 
 - [Verwalten von Warnungen in Azure Security Center](../../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Warnungen bei Log Analytics-Protokolldaten](../../azure-monitor/learn/tutorial-response.md)
+- [Warnungen bei Log Analytics-Protokolldaten](../../azure-monitor/alerts/tutorial-response.md)
 
 ## <a name="28-centralize-anti-malware-logging"></a>2.8: Zentralisieren der Antischadsoftwareprotokollierung
 
@@ -148,9 +148,9 @@ Verwenden Sie Microsoft Monitoring Agent auf allen unterstützten Azure Windows 
 
 - [Datensammlung in Azure Security Center](../../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
+- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../../azure-monitor/logs/get-started-queries.md)
 
-- [Syslog-Datenquellen in Azure Monitor](../../azure-monitor/platform/data-sources-syslog.md)
+- [Syslog-Datenquellen in Azure Monitor](../../azure-monitor/agents/data-sources-syslog.md)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

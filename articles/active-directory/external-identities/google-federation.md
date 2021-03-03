@@ -5,23 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/11/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53d2369e93052ef28191dd1862034c1aaa488add
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a9e7ec5569dd0de3b0535c3b0e3b3304848a5207
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355595"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653317"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer
 
-Durch die Einrichtung eines Verbunds mit Google können Sie eingeladenen Benutzern ermöglichen, sich bei Ihren freigegebenen Apps und Ressourcen mit ihren eigenen Gmail-Konten anzumelden, ohne dass sie Microsoft-Konten erstellen müssen. 
+Durch die Einrichtung eines Verbunds mit Google können Sie eingeladenen Benutzern ermöglichen, sich bei Ihren freigegebenen Apps und Ressourcen mit ihren eigenen Gmail-Konten anzumelden, ohne dass sie Microsoft-Konten erstellen müssen.
+
+Nachdem Sie Google als Anmeldeoption für Ihre Anwendung hinzugefügt haben, können Benutzer auf der **Anmeldeseite** einfach die E-Mail-Adresse eingeben, mit der sie sich bei Google anmelden. Alternativ können sie zuerst **Anmeldeoptionen** und dann **Mit Google anmelden** auswählen. In beiden Fällen werden sie zur Authentifizierung an die Google-Anmeldeseite umgeleitet.
+
+![Anmeldeoptionen für Google-Benutzer](media/google-federation/sign-in-with-google-overview.png)
 
 > [!NOTE]
 > Der Google-Verbund wurde speziell für Gmail-Benutzer konzipiert. Um einen Verbund mit G Suite-Domänen einzurichten, verwenden Sie den [direkten Verbund](direct-federation.md).
@@ -30,13 +34,33 @@ Durch die Einrichtung eines Verbunds mit Google können Sie eingeladenen Benutze
 > **Am 4. Januar 2021** wird Google [die Unterstützung für die WebView-Anmeldung einstellen](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Wenn Sie einen Google-Verbund oder die Self-Service-Registrierung mit Gmail verwenden, sollten Sie [Ihre nativen Branchenanwendungen auf Kompatibilität testen](google-federation.md#deprecation-of-webview-sign-in-support).
 
 ## <a name="what-is-the-experience-for-the-google-user"></a>Wie läuft der Vorgang für Google-Benutzer ab?
-Wenn Sie eine Einladung an Google Gmail-Benutzer senden, sollten die Gastbenutzer auf Ihre freigegebenen Apps oder Ressourcen über einen Link zugreifen, der den Mandantenkontext enthält. Der Ablauf hängt davon ab, ob er bereits bei Google angemeldet ist:
-  - Gastbenutzer, die nicht bei Google angemeldet sind, werden aufgefordert, sich anzumelden.
-  - Gastbenutzer, die bereits bei Google angemeldet sind, werden aufgefordert, das zu verwendende Konto auszuwählen. Er muss das Konto auswählen, das Sie für die Einladung verwendet haben.
+
+Wenn ein Google-Benutzer Ihre Einladung einlöst, hängt das Benutzererlebnis davon ab, ob er schon bei Google angemeldet ist:
+
+- Gastbenutzer, die nicht bei Google angemeldet sind, werden aufgefordert, sich anzumelden.
+- Gastbenutzer, die bereits bei Google angemeldet sind, werden aufgefordert, das zu verwendende Konto auszuwählen. Er muss das Konto auswählen, das Sie für die Einladung verwendet haben.
 
 Gastbenutzer, bei denen ein Fehler aufgrund eines zu langen Headers angezeigt wird, können Cookies löschen oder ein privates oder Inkognito-Fenster öffnen und sich erneut anmelden.
 
 ![Screenshot der Google-Anmeldeseite](media/google-federation/google-sign-in.png)
+
+## <a name="sign-in-endpoints"></a>Endpunkte für die Anmeldung
+
+Google-Gastbenutzer können sich nun mithilfe eines [gemeinsamen Endpunkts](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) (d. h. mit einer allgemeinen App-URL, die Ihren Mandantenkontext nicht enthält) bei Ihren mehrmandantenfähigen Anwendungen oder bei Microsoft-Erstanbieter-Apps anmelden. Im Folgenden finden Sie Beispiele für gemeinsame Endpunkte:
+
+- `https://teams.microsoft.com`
+- `https://myapps.microsoft.com`
+- `https://portal.azure.com`
+
+Beim Anmeldevorgang wählt der Gastbenutzer zuerst **Anmeldeoptionen** und dann **Bei einer Organisation anmelden** aus. Der Benutzer gibt dann den Namen Ihres Unternehmens ein und setzt den Vorgang mit seinen Google-Anmeldeinformationen fort.
+
+Google-Gastbenutzer können auch Anwendungsendpunkte verwenden, die Ihre Mandanteninformationen enthalten, z. B.:
+
+  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+  * `https://portal.azure.com/<your tenant ID>`
+
+Sie können Google-Gastbenutzern auch einen direkten Link zu einer Anwendung oder Ressource zur Verfügung stellen und Ihre Mandanteninformationen einfügen, z. B. `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`.
 
 ## <a name="deprecation-of-webview-sign-in-support"></a>Einstellung der Unterstützung für die WebView-Anmeldung
 
@@ -66,23 +90,13 @@ Wir testen weiterhin verschiedene Plattformen und Szenarien und werden diesen Ar
    - Wenn Ihre Windows-App eingebettete WebView-Inhalte oder WebAccountManager (WAM) unter einer älteren Version von Windows verwendet, führen Sie ein Update auf die neueste Version von Windows durch.
    - Ändern Sie Ihre Apps so, dass diese den Systembrowser für die Anmeldung verwenden. Weitere Informationen finden Sie in der MSAL.NET-Dokumentation unter [Eingebettete Webbenutzeroberfläche im Vergleich zur System-Webbenutzeroberfläche](../develop/msal-net-web-browsers.md#embedded-vs-system-web-ui).  
 
-## <a name="sign-in-endpoints"></a>Endpunkte für die Anmeldung
 
-Teams unterstützt Google-Gastbenutzer vollständig auf allen Geräten. Google-Benutzer können sich über einen allgemeinen Endpunkt wie `https://teams.microsoft.com` bei Teams anmelden.
-
-Die allgemeinen Endpunkte anderer Anwendungen unterstützen Google-Benutzer möglicherweise nicht. Google-Gastbenutzer müssen sich über einen Link anmelden, der Mandanteninformationen enthält. Hier einige Beispiele:
-  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
-  * `https://portal.azure.com/<your tenant ID>`
-  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
-
-   Wenn Google-Gastbenutzer versuchen, einen Link wie `https://myapps.microsoft.com` oder `https://portal.azure.com` zu verwenden, erhalten sie eine Fehlermeldung.
-
-Sie können Google-Gastbenutzern auch einen direkten Link zu einer Anwendung oder Ressource zur Verfügung stellen, sofern dieser Link Ihre Mandanteninformationen enthält. Beispiel: `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`. 
 ## <a name="step-1-configure-a-google-developer-project"></a>Schritt 1: Konfigurieren eines Google-Entwicklerprojekts
 Erstellen Sie zunächst ein neues Projekt in der Google Developers Console, um eine Client-ID und einen geheimen Clientschlüssel abzurufen. Beide fügen Sie später in Azure Active Directory (Azure AD) hinzu. 
 1. Wechseln Sie zur Google-APIs unter https://console.developers.google.com, und melden Sie sich mit Ihrem Google-Konto an. Es wird empfohlen, ein freigegebenes Google-Teamkonto zu verwenden.
 2. Stimmen Sie den Vertragsbedingungen zu, wenn Sie dazu aufgefordert werden.
-3. Erstellen eines neuen Projekts: Wählen Sie im Dashboard die Option **Projekt erstellen** aus, geben Sie dem Projekt einen Namen (z. B. **Azure AD B2B**), und wählen Sie dann **Erstellen** aus: 
+3. Erstellen Sie ein neues Projekt: Wählen Sie in der oberen linken Ecke der Seite die Projektliste aus, und wählen Sie dann auf der Seite **Projekt auswählen** die Option **Neues Projekt** aus.
+4. Geben Sie auf der Seite **Neues Projekt** dem Projekt einen Namen (z. B. **Azure AD B2B**), und wählen Sie dann **Erstellen** aus: 
    
    ![Screenshot der Seite „Neues Projekt“](media/google-federation/google-new-project.png)
 

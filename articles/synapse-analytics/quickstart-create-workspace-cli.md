@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: d4beef9383b8e51e1295639c18e745fd0fdf8588
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 8a56b325dd5e1180b1229465965167241fab76a8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796953"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676461"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>Schnellstart: Erstellen eines Azure Synapse-Arbeitsbereichs über die Azure CLI
 
@@ -27,7 +27,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie über die Azure CLI einen 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Herunterladen und Installieren von [jq](https://stedolan.github.io/jq/download/), einem schlanken, flexiblen JSON-Befehlszeilenprozessor
-- [Azure Data Lake Storage Gen2-Speicherkonto](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Azure Data Lake Storage Gen2-Speicherkonto](../storage/common/storage-account-create.md)
 
     > [!IMPORTANT]
     > Der Azure Synapse-Arbeitsbereich muss Lese- und Schreibvorgänge im ausgewählten ADLS Gen2-Konto ausführen können. Darüber hinaus müssen Sie für jedes Speicherkonto, das Sie als primäres Speicherkonto verknüpfen, bei der Erstellung des Speicherkontos den **hierarchischen Namespace** aktiviert haben. Die Vorgehensweise ist auf der Seite [Erstellen eines Azure-Speicherkontos](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account) beschrieben. 

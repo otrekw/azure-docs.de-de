@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 46098b2b7ebbf219a3c17b4fa40e1fd52344f683
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 7f602f82063e2a8092eecf533a75449231c1e900
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879796"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660983"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>Tutorial: Prognostizieren von Automobilpreisen mit dem Designer
 
@@ -176,7 +176,7 @@ Auch nach dem Entfernen der Spalte **normalized-losses** weist Ihr Dataset noch 
 
     Ihre Pipeline sollte nun in etwa wie folgt aussehen:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png"alt-text="Select-column":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png" alt-text="Select-column":::
 
 ## <a name="train-a-machine-learning-model"></a>Trainieren eines Machine Learning-Modells
 
@@ -224,7 +224,7 @@ Trainieren Sie das Modell, indem Sie ein Dataset mit Preis bereitstellen. Durch 
     > [!IMPORTANT]
     > Achten Sie darauf, dass der linke Ausgabeport von **Split Data** (Daten aufteilen) mit **Train Model** (Modell trainieren) verbunden ist. Der linke Port enthält den Trainingssatz. Der rechte Port enthält den Testsatz.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Screenshot: Richtige Konfiguration des Moduls „Train Model“ (Modell trainieren). Das Modul „Linear Regression“ (Lineare Regression) ist mit dem linken Port des Moduls „Train Model“ verbunden, und das Modul „Split Data“ (Daten aufteilen) ist mit dem rechten Port von „Train Model“ verbunden.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png" alt-text="Screenshot: Richtige Konfiguration des Moduls „Train Model“ (Modell trainieren). Das Modul „Linear Regression“ (Lineare Regression) ist mit dem linken Port des Moduls „Train Model“ verbunden, und das Modul „Split Data“ (Daten aufteilen) ist mit dem rechten Port von „Train Model“ verbunden.":::
 
 1. Wählen Sie das Modul **Train Model** (Modell trainieren) aus.
 
@@ -239,7 +239,7 @@ Trainieren Sie das Modell, indem Sie ein Dataset mit Preis bereitstellen. Durch 
 
     Ihre Pipeline sollte wie folgt aussehen:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Screenshot: Richtige Pipelinekonfiguration nach dem Hinzufügen des Moduls „Train Model“ (Modell trainieren)":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png" alt-text="Screenshot: Richtige Pipelinekonfiguration nach dem Hinzufügen des Moduls „Train Model“ (Modell trainieren)":::
 
 ### <a name="add-the-score-model-module"></a>Hinzufügen des Moduls „Score Model“ (Modell bewerten)
 
@@ -259,7 +259,7 @@ Verwenden Sie das Modul **Evaluate Model** (Modell auswerten), um auszuwerten, w
 
     Die fertige Pipeline sollte in etwa wie folgt aussehen:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="Screenshot: Richtige Pipelinekonfiguration":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png" alt-text="Screenshot: Richtige Pipelinekonfiguration":::
 
 ## <a name="submit-the-pipeline"></a>Übermitteln der Pipeline
 
@@ -288,7 +288,7 @@ Nach Abschluss der Ausführung können Sie sich die Ergebnisse ansehen. Sehen Si
 
     Hier sehen Sie die vorhergesagten Preise und die tatsächlichen Preise aus den Testdaten.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Screenshot: Ausgabevisualisierung mit hervorgehobener Spalte „Scored Labels“ (Bewertete Bezeichnungen)":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png" alt-text="Screenshot: Ausgabevisualisierung mit hervorgehobener Spalte „Scored Labels“ (Bewertete Bezeichnungen)":::
 
 ### <a name="evaluate-models"></a>Auswerten von Modellen
 

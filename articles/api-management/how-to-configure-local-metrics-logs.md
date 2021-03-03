@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/01/2021
 ms.author: apimpm
-ms.openlocfilehash: e34c25b2e3bfa845e258dc5d9699497d7ffcb004
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 2b66663c9ee8033bcb12bfac57964ea0eafecdac
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526669"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594169"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Konfigurieren von lokalen Metriken und Protokollen für selbstgehostete Gateways für Azure API Management
 
@@ -189,7 +189,7 @@ Nachdem wir alles eingerichtet und konfiguriert haben, sollte das selbstgehostet
 
 Rufen Sie die API über das selbstgehostete Gateway auf. Wenn alles richtig konfiguriert ist, sollten Sie die folgenden Metriken anzeigen können:
 
-| Metrik  | Beschreibung |
+| Metrik  | BESCHREIBUNG |
 | ------------- | ------------- |
 | Requests  | Anzahl der API-Anforderungen innerhalb des Zeitraums |
 | DurationInMS | Anzahl von Millisekunden zwischen dem Zeitpunkt, zu dem das Gateway die Anforderung empfangen hat, und dem Zeitpunkt, zu dem die Antwort vollständig gesendet wurde |
@@ -204,7 +204,7 @@ Das selbstgehostete Gateway gibt Protokolle standardmäßig in `stdout` und `std
 kubectl logs <pod-name>
 ```
 
-Wenn Ihr selbstgehostetes Gateway in Azure Kubernetes Service bereitgestellt ist, können Sie [Azure Monitor für Container](../azure-monitor/insights/container-insights-overview.md) aktivieren, um `stdout` und `stderr` aus Ihren Workloads zu sammeln und die Protokolle in Log Analytics anzuzeigen. 
+Wenn Ihr selbstgehostetes Gateway in Azure Kubernetes Service bereitgestellt ist, können Sie [Azure Monitor für Container](../azure-monitor/containers/container-insights-overview.md) aktivieren, um `stdout` und `stderr` aus Ihren Workloads zu sammeln und die Protokolle in Log Analytics anzuzeigen. 
 
 Das selbstgehostete Gateway unterstützt auch eine Reihe von Protokollen, einschließlich `localsyslog`, `rfc5424` und `journal`. In der folgenden Tabelle sind alle unterstützten Optionen zusammengefasst. 
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: b4b8f48afc75c0a96937575bdad5bb884d0cb4d8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8630afa7410aad81a7a3c61540fc74702fc6481c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183718"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576001"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>DNS-Einträge für von Azure Automation genutzte Azure-Regionen
 
@@ -21,7 +21,7 @@ Der Dienst [Azure Automation](../automation-intro.md) verwendet eine Reihe von D
 * webhooks
 
 >[!NOTE]
->Die Registrierung von Linux Hybrid Runbook Worker schlägt mit den neuen Einträgen fehl, es sei denn, die Version ist mindestens 1.6.10.2. Sie müssen auf eine neuere Version des [Log Analytics-Agent für Linux](../../azure-monitor/platform/agent-linux.md) aktualisieren, damit der Computer eine aktualisierte Version der Workerrolle erhalten und diese neuen Einträge verwenden kann. Vorhandene VMs funktionieren ohne Probleme weiter.  
+>Die Registrierung von Linux Hybrid Runbook Worker schlägt mit den neuen Einträgen fehl, es sei denn, die Version ist mindestens 1.6.10.2. Sie müssen auf eine neuere Version des [Log Analytics-Agent für Linux](../../azure-monitor/agents/agent-linux.md) aktualisieren, damit der Computer eine aktualisierte Version der Workerrolle erhalten und diese neuen Einträge verwenden kann. Vorhandene VMs funktionieren ohne Probleme weiter.  
 
 ## <a name="dns-records-per-region"></a>DNS-Einträge pro Region
 

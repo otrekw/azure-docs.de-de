@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Azure Arc-fähigen Onboardingdienstprinzipals (Vorschauversion)
+title: Erstellen eines Onboardingdienstprinzipals für Kubernetes mit Azure Arc-Aktivierung
 services: azure-arc
 ms.service: azure-arc
 ms.date: 02/09/2021
@@ -8,20 +8,20 @@ author: mlearned
 ms.author: mlearned
 description: 'Erstellen eines Azure Arc-fähigen Onboardingdienstprinzipals '
 keywords: Kubernetes, Arc, Azure, Container
-ms.openlocfilehash: 8772cf7634d9a833af120784e3e7868b41d202c4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bda088bdae5c866493718db94c9a2da89cada8c9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390486"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650345"
 ---
-# <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Erstellen eines Azure Arc-fähigen Onboardingdienstprinzipals (Vorschauversion)
+# <a name="create-an-onboarding-service-principal-for-azure-arc-enabled-kubernetes"></a>Erstellen eines Onboardingdienstprinzipals für Kubernetes mit Azure Arc-Aktivierung
 
 ## <a name="overview"></a>Übersicht
 
-Sie können Kubernetes-Cluster mithilfe von Dienstprinzipalen mit Rollenzuweisungen mit eingeschränkten Berechtigungen in Azure Arc integrieren. Diese Funktion ist für CI/CD-Pipelines (Continuous Integration/Continuous Deployment) wie Azure Pipelines und GitHub Actions nützlich.
+Sie können Kubernetes-Cluster mithilfe von Dienstprinzipalen mit Rollenzuweisungen mit eingeschränkten Berechtigungen in Azure Arc verbinden. Diese Funktion ist für CI/CD-Pipelines (Continuous Integration/Continuous Deployment) wie Azure Pipelines und GitHub Actions nützlich.
 
-In den folgenden Schritten lernen Sie, Dienstprinzipale für das Onboarding von Kubernetes-Clustern in Azure Arc zu verwenden.
+In den folgenden Schritten lernen Sie, Dienstprinzipale für das Herstellen einer Verbindung von Kubernetes-Clustern mit Azure Arc zu verwenden.
 
 ## <a name="create-a-new-service-principal"></a>Erstellen eines neuen Dienstprinzipals
 
@@ -49,11 +49,11 @@ Weisen Sie dem neu erstellten Dienstprinzipal die Rolle „Kubernetes-Cluster �
 
 Aufgrund der begrenzten Möglichkeiten können Kunden diesen Prinzipal problemlos wiederverwenden, um mehrere Cluster zu integrieren.
 
-Sie können Berechtigungen weiter einschränken, indem Sie beim Zuweisen der Rolle das entsprechende `--scope`-Argument übergeben. Dies ermöglicht es Kunden, die Clusterregistrierung einzuschränken. Die folgenden Szenarien werden durch verschiedene `--scope`-Parameter unterstützt:
+Sie können Berechtigungen weiter einschränken, indem Sie beim Zuweisen der Rolle das entsprechende `--scope`-Argument übergeben. Dadurch können Administratoren die Clusterregistrierung auf den Bereich von Abonnements oder Ressourcengruppen beschränken. Die folgenden Szenarien werden durch verschiedene `--scope`-Parameter unterstützt:
 
 | Resource  | `scope`-Argument| Wirkung |
 | ------------- | ------------- | ------------- |
-| Subscription | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Der Dienstprinzipal kann jeden Cluster in einer vorhandenen Ressourcengruppe im angegebenen Abonnement registrieren. |
+| Subscription | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Das Dienstprinzipal kann Cluster in einer beliebigen Ressourcengruppe unter diesem Abonnement registrieren. |
 | Ressourcengruppe | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Der Dienstprinzipal kann __ausschließlich__ Cluster in der Ressourcengruppe `myGroup` registrieren. |
 
 ```console

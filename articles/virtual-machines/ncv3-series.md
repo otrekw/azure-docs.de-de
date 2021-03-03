@@ -1,18 +1,18 @@
 ---
 title: 'NCv3-Serie: Azure Virtual Machines'
 description: Spezifikationen für die VMs der NCv3-Serie
-ms.subservice: sizes
+ms.subservice: hpc
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: b8eeb06b75ba0e0bdaf19957699ad638c6937891
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d42b4eac09579dfa09cc07bfbbfffa1bbdaa65b5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094757"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670196"
 ---
 # <a name="ncv3-series"></a>NCv3-Serie
 
@@ -23,8 +23,8 @@ NCv3-Serien-VMs werden mit NVIDIA Tesla V100-GPUs betrieben. Diese GPUs können 
 [Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
-[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Nicht unterstützt<br>
-[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Nicht unterstützt <br>
+[Beschleunigter Netzwerkbetrieb:](../virtual-network/create-vm-accelerated-networking-cli.md) Nicht unterstützt<br>
+[Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
 Nvidia NVLink Interconnect: Nicht unterstützt<br>
 
 > [!IMPORTANT]

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 64fb37fb4a57b3ee397ffe8814c76c7dca2fb9b3
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 85c0a113f15a1ce94ca1cccc605085dcd003dce4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334608"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661391"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Migrieren von Daten zum Azure Cosmos DB-Cassandra-API-Konto mithilfe von Striim
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -32,11 +32,11 @@ In diesem Artikel wird gezeigt, wie Sie Daten mithilfe von Striim aus einer **Or
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Klicken Sie im Azure-Portal auf **Ressource erstellen** , und suchen Sie im Azure Marketplace nach **Striim**. Wählen Sie die erste Option und anschließend **Erstellen** aus.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen**, und suchen Sie im Azure Marketplace nach **Striim**. Wählen Sie die erste Option und anschließend **Erstellen** aus.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-azure-marketplace.png" alt-text="Suchen nach dem Marketplace-Element „Striim“":::
 
-1. Geben Sie als Nächstes die Konfigurationseigenschaften der Striim-Instanz ein. Die Striim-Umgebung wird auf einem virtuellen Computer bereitgestellt. Geben Sie im Bereich **Grundlagen** unter **Benutzername des virtuellen Computers** den VM-Benutzernamen und unter **Kennwort des virtuellen Computers** das VM-Kennwort ein. (Dieses Kennwort wird verwendet, um eine SSH-Verbindung mit dem virtuellen Computer herzustellen.) Wählen Sie Ihr **Abonnement** , Ihre **Ressourcengruppe** und den **Standort** aus, an dem Striim bereitgestellt werden soll. Wählen Sie anschließend **OK** aus.
+1. Geben Sie als Nächstes die Konfigurationseigenschaften der Striim-Instanz ein. Die Striim-Umgebung wird auf einem virtuellen Computer bereitgestellt. Geben Sie im Bereich **Grundlagen** unter **Benutzername des virtuellen Computers** den VM-Benutzernamen und unter **Kennwort des virtuellen Computers** das VM-Kennwort ein. (Dieses Kennwort wird verwendet, um eine SSH-Verbindung mit dem virtuellen Computer herzustellen.) Wählen Sie Ihr **Abonnement**, Ihre **Ressourcengruppe** und den **Standort** aus, an dem Striim bereitgestellt werden soll. Wählen Sie anschließend **OK** aus.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png" alt-text="Konfigurieren der Grundeinstellungen für Striim":::
 
@@ -131,7 +131,7 @@ In diesem Abschnitt konfigurieren Sie das Azure Cosmos DB-Cassandra-API-Konto a
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png" alt-text="Anmelden bei Striim":::
 
-1. Daraufhin wird die Startseite von Striim angezeigt. Dort stehen drei Bereiche zur Verfügung: **Dashboards** , **Apps** und **SourcePreview** (Quellvorschau). Im Bereich „Dashboards“ können Sie Daten in Echtzeit verschieben und visualisieren. Der Bereich „Apps“ enthält Ihre Streamingdatenpipelines (oder Datenflüsse). Rechts auf der Seite befindet sich „SourcePreview“ (Quellvorschau). In diesem Bereich können Sie vor dem Verschieben eine Vorschau Ihrer Daten anzeigen.
+1. Daraufhin wird die Startseite von Striim angezeigt. Dort stehen drei Bereiche zur Verfügung: **Dashboards**, **Apps** und **SourcePreview** (Quellvorschau). Im Bereich „Dashboards“ können Sie Daten in Echtzeit verschieben und visualisieren. Der Bereich „Apps“ enthält Ihre Streamingdatenpipelines (oder Datenflüsse). Rechts auf der Seite befindet sich „SourcePreview“ (Quellvorschau). In diesem Bereich können Sie vor dem Verschieben eine Vorschau Ihrer Daten anzeigen.
 
 1. Wir beschäftigen uns zunächst mit dem Bereich **Apps**. Wählen Sie daher diesen Bereich aus. Es gibt eine Reihe von Beispiel-Apps, die Sie verwenden können, um sich mit Striim vertraut zu machen. In diesem Artikel erstellen wir jedoch eine eigene App. Wählen Sie in der rechten oberen Ecke die Schaltfläche **Add App** (App hinzufügen) aus.
 
@@ -141,7 +141,7 @@ In diesem Abschnitt konfigurieren Sie das Azure Cosmos DB-Cassandra-API-Konto a
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/start-app-from-scratch.png" alt-text="Erstellen einer neuen App ohne Vorlage":::
 
-1. Geben Sie einen Anzeigenamen für Ihre Anwendung an (beispielsweise **oraToCosmosDB** ), und wählen Sie **Save** (Speichern) aus.
+1. Geben Sie einen Anzeigenamen für Ihre Anwendung an (beispielsweise **oraToCosmosDB**), und wählen Sie **Save** (Speichern) aus.
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/create-new-application.png" alt-text="Erstellen einer neuen Anwendung":::
 
@@ -157,7 +157,7 @@ In diesem Abschnitt konfigurieren Sie das Azure Cosmos DB-Cassandra-API-Konto a
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/connect-to-target.png" alt-text="Mit Ziel verbinden":::
 
-1. Stellen Sie vor dem Konfigurieren des Ziels sicher, dass Sie der [Java-Umgebung von Striim ein Baltimore-Stammzertifikat](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store#to-add-a-root-certificate-to-the-cacerts-store) hinzugefügt haben.
+1. Stellen Sie vor dem Konfigurieren des Ziels sicher, dass Sie der [Java-Umgebung von Striim ein Baltimore-Stammzertifikat](/bingmaps/articles/ssl-certificate-validation-for-java-applications#configuring-root-certificates) hinzugefügt haben.
 
 1. Geben Sie die Konfigurationseigenschaften Ihrer Azure Cosmos DB-Zielinstanz ein, und wählen Sie **Save** (Speichern) aus, um den Vorgang fortzusetzen. Dies sind die wichtigsten Parameter:
 

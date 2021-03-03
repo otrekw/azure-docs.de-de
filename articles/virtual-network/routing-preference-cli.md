@@ -11,15 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/02/2020
+ms.date: 02/22/2021
 ms.author: mnayak
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 82057fa689692643e3cf9733dd70795e1030fa06
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2291767c162953f8339fb8cc27e55b96290ef795
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934248"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101665960"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-cli"></a>Konfigurieren der Routingpräferenz für eine öffentliche IP-Adresse mithilfe der Azure CLI
 
@@ -33,10 +32,6 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure CLI die Routingpräfe
 * Azure Firewall
 
 Die Routingpräferenz für die öffentliche IP-Adresse ist für alle Azure-Dienste standardmäßig auf das globale Netzwerk von Microsoft festgelegt und kann jedem Azure-Dienst zugeordnet werden.
-
-> [!IMPORTANT]
-> „Routingpräferenz“ ist zurzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

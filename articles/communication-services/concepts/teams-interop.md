@@ -9,16 +9,17 @@ ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 34d2a18d2e556b7eb9916d058c4d80fe0956ba55
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: d369e976ab1ba4e33f5eb21edb92054678f9040f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100554746"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655733"
 ---
 # <a name="teams-interoperability"></a>Teams-Interoperabilität
 
-[!INCLUDE [Private Preview Notice](../includes/private-preview-include.md)]
+> [!IMPORTANT]
+> Um die [Interoperabilität von Teams-Mandanten](../concepts/teams-interop.md) zu aktivieren/deaktivieren, füllen Sie [dieses Formular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u) aus.
 
 Azure Communication Services kann dazu verwendet werden, benutzerdefinierte Besprechungsumgebungen zu erstellen, die mit Microsoft Teams interagieren. Benutzer Ihrer Communication Services-Lösung(en) können mit den Teams-Teilnehmern über Sprache, Video, Chat und Bildschirmfreigabe interagieren.
 
@@ -34,11 +35,11 @@ Die allgemeine Architektur für diesen Anwendungsfall sieht folgendermaßen aus:
 
 ![Architektur für die Teams-Interoperabilität](./media/call-flows/teams-interop.png)
 
-Obwohl bestimmte Features für Teams-Besprechungen, z. B. Heben der Hand, Together-Modus und Breakout Rooms nur für Benutzer von Teams verfügbar sind, hat Ihre benutzerdefinierte Anwendung Zugriff auf die wichtigsten Funktionen für Audio, Video, Chat und Bildschirmfreigabe der Besprechung.
+Obwohl bestimmte Features für Teams-Besprechungen, z. B. Heben der Hand, Together-Modus und Breakout Rooms nur für Benutzer von Teams verfügbar sind, hat Ihre benutzerdefinierte Anwendung Zugriff auf die wichtigsten Funktionen für Audio, Video, Chat und Bildschirmfreigabe der Besprechung. Der Besprechungschat ist für die Benutzer Ihrer benutzerdefinierten Anwendung zugänglich, während sich diese im Anruf befinden. Sie können weder vor dem Beitritt noch nach dem Verlassen des Anrufs Nachrichten senden oder empfangen. 
 
 Wenn ein Communication Services-Benutzer an der Teams-Besprechung teilnimmt, wird der Anzeigename, der über die Clientbibliothek für Telefonie bereitgestellt wird, den Teams-Benutzern angezeigt. Der Communication Services-Benutzer wird ansonsten wie ein anonymer Benutzer in Teams behandelt.  Ihre benutzerdefinierte Anwendung sollte die Benutzerauthentifizierung und andere Sicherheitsmaßnahmen zum Schutz von Teams-Besprechungen berücksichtigen. Seien Sie sich der Auswirkungen auf die Sicherheit bewusst, wenn Sie anonymen Benutzern die Teilnahme an Besprechungen ermöglichen, und verwenden Sie den [Teams-Sicherheitsleitfaden](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings), um die für anonyme Benutzer verfügbaren Funktionen zu konfigurieren.
 
-Die Communication Services-Interoperabilität mit Teams befindet sich derzeit in der privaten Vorschau. Wenn sie dann allgemein verfügbar ist, werden Communication Services-Benutzer wie Benutzer mit externem Zugriff behandelt. Weitere Informationen zum externen Zugriff finden Sie unter [Anrufen, Chatten und Zusammenarbeiten in Microsoft Teams mit Personen außerhalb Ihrer Organisation](https://docs.microsoft.com/microsoftteams/communicate-with-users-from-other-organizations).
+Die Communication Services-Interoperabilität mit Teams befindet sich derzeit in der privaten Vorschau. Wenn sie dann allgemein verfügbar ist, werden Communication Services-Benutzer wie Benutzer mit externem Zugriff behandelt. Weitere Informationen zum externen Zugriff finden Sie unter [Anrufen, Chatten und Zusammenarbeiten in Microsoft Teams mit Personen außerhalb Ihrer Organisation](/microsoftteams/communicate-with-users-from-other-organizations).
 
 Communication Services-Benutzer können an geplanten Teams-Besprechungen teilnehmen, solange in den [Besprechungseinstellungen](/microsoftteams/meeting-settings-in-teams) die anonyme Teilnahme aktiviert ist.
 

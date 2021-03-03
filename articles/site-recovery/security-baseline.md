@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c3e2245ae47504e058921c532ed40a220e95423d
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: bf91c0a6e533acb326fe815c3e3c1088c959a603
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197573"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576727"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Azure-Sicherheitsbaseline für Site Recovery
 
@@ -66,9 +66,9 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Überwachen Sie alle Änderungen an Netzwerkressourcenkonfigurationen bezüglich des Site Recovery-Diensts mithilfe von Azure-Aktivitätsprotokollen. Erstellen Sie Warnungen in Azure Monitor, die Sie benachrichtigen, wenn Änderungen an wichtigen Ressourcen vorgenommen werden.
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -86,7 +86,7 @@ Verwenden Sie die Daten aus Azure-Aktivitätsprotokollen, um Antworten auf die F
 
 Erfassen Sie Site Recovery-Protokolle in Azure Monitor, um generierte Sicherheitsdaten zu aggregieren. Verwenden Sie Log Analytics-Arbeitsbereiche in Azure Monitor zum Abfragen und Ausführen von Analysen, und verwenden Sie Azure Storage-Konten für die langfristige Speicherung oder Archivierung. Außerdem können Sie auch Daten in Azure Sentinel oder einer SIEM-Lösung (Security Information & Event Management) eines Drittanbieters aktivieren und integrieren.
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 - [Überwachen von Site Recovery mit Azure Monitor-Protokollen](monitor-log-analytics.md)
 
@@ -104,7 +104,7 @@ Verwenden Sie die Daten aus Azure-Aktivitätsprotokollen, um Antworten auf die F
 
 Erfassen Sie Site Recovery-Protokolle mit Azure Monitor, um generierte Sicherheitsdaten zu aggregieren. Verwenden Sie Log Analytics-Arbeitsbereiche in Azure Monitor zum Abfragen und Ausführen von Analysen, und verwenden Sie Azure Storage-Konten für die langfristige Speicherung oder Archivierung. Aktivieren und Integrieren Sie Daten in Azure Sentinel oder eine SIEM-Lösung eines Drittanbieters.
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 - [Überwachen von Site Recovery mit Azure Monitor-Protokollen](monitor-log-analytics.md)
 
@@ -118,7 +118,7 @@ Erfassen Sie Site Recovery-Protokolle mit Azure Monitor, um generierte Sicherhei
 
 **Leitfaden**: Legen Sie die Protokollaufbewahrungsdauer für Log Analytics-Arbeitsbereiche für Ihre Azure Recovery Services-Tresore mithilfe von Azure Monitor entsprechend der Compliancevorschriften Ihrer Organisation fest. 
 
-- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -132,9 +132,9 @@ Führen Sie Abfragen in Log Analytics aus, um nach Begriffen zu suchen, Trends z
 
 - [Überwachen von Site Recovery](site-recovery-monitor-and-troubleshoot.md)
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -150,7 +150,7 @@ Visualisieren Sie Protokollergebnisse, fragen Sie diese ab, und konfigurieren Si
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../azure-monitor/platform/alerts-log.md)
+- [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../azure-monitor/alerts/alerts-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -413,7 +413,7 @@ Bei der Verwendung eines mit einem kundenseitig verwalteten Schlüssel verschlü
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Protokollieren und Warnen bei Änderungen an wichtigen Azure-Ressourcen
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit Azure-Aktivitätsprotokollen zum Erstellen von Warnungen, wenn Änderungen an wichtigen Ressourcen vorgenommen werden. Zu diesen Ressourcen können Produktionsinstanzen von Recovery Services-Tresoren, Ressourcen des Site Recovery-Diensts sowie verwandte Ressourcen gehören.
-- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

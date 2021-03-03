@@ -3,12 +3,12 @@ title: Regionsübergreifendes Migrieren von Azure Arc-fähigen Servern
 description: Erfahren Sie, wie Sie einen Azure Arc-fähigen Server aus einer Region in eine andere migrieren.
 ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4e0f1e41e928ab489f7c2c167eea31785d9bc21
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 251a347205d93af715add52db293d8000438df44
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416712"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650174"
 ---
 # <a name="how-to-migrate-azure-arc-enabled-servers-across-regions"></a>Regionsübergreifendes Migrieren von Azure Arc-fähigen Servern
 
@@ -36,4 +36,4 @@ Um einen Azure Arc-fähigen Server aus einer Azure-Region in eine andere zu migr
 
 * Informationen zur Problembehandlung finden Sie im [Handbuch zur Problembehandlung des Connected Machine-Agents](troubleshoot-agent-onboard.md).
 
-* Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/insights/vminsights-enable-policy.md)-Richtlinien und vieles mehr.
+* Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/vm/vminsights-enable-policy.md)-Richtlinien und vieles mehr.

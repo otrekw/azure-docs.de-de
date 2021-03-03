@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: 5bf94d7c5889bb5a743655d65e48f021e91e01b7
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 0b2a6088effc735076d56ba83dd85135392147b8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807138"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574983"
 ---
 # <a name="import-threat-intelligence-into-azure-sentinel"></a>Importieren von Threat Intelligence in Azure Sentinel
 
@@ -419,7 +419,7 @@ Im Folgenden erfahren Sie, wie Sie die in Azure Sentinel bereitgestellte Threat 
 
     :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="Balkendiagramm":::
 
-Mit Arbeitsmappen verfügen Sie über leistungsstarke interaktive Dashboards, über die Sie Einblicke in alle Aspekte von Azure Sentinel erhalten. Es gibt zahlreiche Anwendungsmöglichkeiten für Arbeitsmappen, und die bereitgestellten Vorlagen sind ein guter Ausgangspunkt. Sie können diese Vorlagen aber natürlich genauer untersuchen und anpassen oder neue Dashboards erstellen, auf denen viele verschiedene Datenquellen kombiniert werden, um so Ihre Daten auf spezifische Weise zu visualisieren. Da Azure Sentinel-Arbeitsmappen auf Azure Monitor-Arbeitsmappen basieren, sind eine umfassende Dokumentation und viele weitere Vorlagen verfügbar. Einen hervorragenden Einstieg bietet der Artikel zum [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../azure-monitor/platform/workbooks-overview.md). 
+Mit Arbeitsmappen verfügen Sie über leistungsstarke interaktive Dashboards, über die Sie Einblicke in alle Aspekte von Azure Sentinel erhalten. Es gibt zahlreiche Anwendungsmöglichkeiten für Arbeitsmappen, und die bereitgestellten Vorlagen sind ein guter Ausgangspunkt. Sie können diese Vorlagen aber natürlich genauer untersuchen und anpassen oder neue Dashboards erstellen, auf denen viele verschiedene Datenquellen kombiniert werden, um so Ihre Daten auf spezifische Weise zu visualisieren. Da Azure Sentinel-Arbeitsmappen auf Azure Monitor-Arbeitsmappen basieren, sind eine umfassende Dokumentation und viele weitere Vorlagen verfügbar. Einen hervorragenden Einstieg bietet der Artikel zum [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md). 
 
 Es gibt auch eine riesige Community für [Azure Monitor-Arbeitsmappen auf GitHub](https://github.com/microsoft/Application-Insights-Workbooks), in der Sie weitere Vorlagen herunterladen und eigene Vorlagen veröffentlichen können.
 

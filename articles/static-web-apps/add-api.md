@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 53be2ee9b6b3ab46f081747aec58b9c99fc54f0d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 8a42ca4cf69515c99bb2e0bd28bb62dfed0e18f8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349955"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650682"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Hinzufügen einer API zu Azure Static Web Apps (Vorschau) mit Azure Functions
 
@@ -234,7 +234,7 @@ Fügen Sie als nächstes die App-spezifischen Einstellungen hinzu.
 1. Klicken Sie auf die Schaltfläche **Mit GitHub anmelden**, und führen Sie die Authentifizierung mit GitHub durch.
 1. Wählen Sie Ihre bevorzugte _Organisation_ aus.
 1. Wählen Sie in der Dropdownliste _Repository_ die Option **my-vanilla-api** aus.
-1. Wählen Sie in der Dropdownliste _Branch_ den Eintrag **master** aus.
+1. Wählen Sie in der Dropdownliste _Branch_ den Eintrag **Hauptbranch** aus.
 1. Wählen Sie das Framework für die Buildkonfiguration aus der Dropdownliste _Buildvoreinstellungen_ aus.
 
  > Diese Felder entsprechen der Standardprojektstruktur des App-Typs. Ändern Sie die Werte so, dass Sie Ihrer App entsprechen.

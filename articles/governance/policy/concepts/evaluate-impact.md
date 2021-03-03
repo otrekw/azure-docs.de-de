@@ -3,12 +3,12 @@ title: Auswerten der Auswirkung einer neuen Azure Policy-Definition
 description: Informieren Sie sich über den Prozess, der bei der Einführung einer neuen Richtliniendefinition in Ihre Azure-Umgebung zu befolgen ist.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9d73d703c38dce1335a471bfad9171d8b30a83c5
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: cf52d25aa846388bc387430913a733d5206df82e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873866"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590807"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>Auswerten der Auswirkung einer neuen Azure Policy-Definition
 
@@ -63,7 +63,7 @@ Alle Änderungen am Bereich (Ebene oder Ausschlüsse) sollten vollständig über
 
 ## <a name="monitor-your-policy-and-compliance"></a>Überwachen Ihrer Richtlinie und Compliance
 
-Die Implementierung und Zuweisung Ihrer Richtliniendefinition ist nicht der letzte Schritt. Überwachen Sie kontinuierlich die [Compliance](../how-to/get-compliance-data.md) der Ressourcen gemäß Ihrer neuen Richtliniendefinition, und richten Sie geeignete [Azure Monitor-Warnungen und -Benachrichtigungen](../../../azure-monitor/platform/alerts-overview.md) ein, wenn nicht konforme Geräte identifiziert werden. Es wird außerdem empfohlen, die Richtliniendefinition und die damit verbundenen Zuweisungen planmäßig auszuwerten, um zu überprüfen, ob die Richtliniendefinition den Anforderungen der Geschäftsrichtlinie und der Compliance entspricht. Richtlinien sollten entfernt werden, wenn sie nicht mehr benötigt werden. Richtlinien müssen auch von Zeit zu Zeit aktualisiert werden, wenn sich die zugrunde liegenden Azure-Ressourcen weiterentwickeln und neue Eigenschaften und Funktionen hinzufügen.
+Die Implementierung und Zuweisung Ihrer Richtliniendefinition ist nicht der letzte Schritt. Überwachen Sie kontinuierlich die [Compliance](../how-to/get-compliance-data.md) der Ressourcen gemäß Ihrer neuen Richtliniendefinition, und richten Sie geeignete [Azure Monitor-Warnungen und -Benachrichtigungen](../../../azure-monitor/alerts/alerts-overview.md) ein, wenn nicht konforme Geräte identifiziert werden. Es wird außerdem empfohlen, die Richtliniendefinition und die damit verbundenen Zuweisungen planmäßig auszuwerten, um zu überprüfen, ob die Richtliniendefinition den Anforderungen der Geschäftsrichtlinie und der Compliance entspricht. Richtlinien sollten entfernt werden, wenn sie nicht mehr benötigt werden. Richtlinien müssen auch von Zeit zu Zeit aktualisiert werden, wenn sich die zugrunde liegenden Azure-Ressourcen weiterentwickeln und neue Eigenschaften und Funktionen hinzufügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

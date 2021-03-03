@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df199afd85c788299334087321c3edac8482698d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4246bc4c62fd8e5e73ff18e383b8bf115d25ede8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168507"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643833"
 ---
 # <a name="what-is-inter-directory-provisioning"></a>Worum handelt es sich bei der Bereitstellung zwischen Verzeichnissen?
 
@@ -33,7 +33,7 @@ Von Azure AD werden aktuell drei Methoden für die Bereitstellung zwischen Verz
 
 - [Azure AD Connect:](../hybrid/whatis-azure-ad-connect.md) Dieses Microsoft-Tool wurde entwickelt, um Sie beim Erreichen Ihrer Hybrididentitätsziele zu unterstützen – einschließlich der Bereitstellung zwischen Verzeichnissen von Active Directory in Azure AD.
 
-- [Azure AD Connect-Cloudbereitstellung:](../cloud-provisioning/what-is-cloud-provisioning.md) Dieser neue Microsoft-Agent wurde entwickelt, um Sie beim Erreichen Ihrer Hybrididentitätsziele zu unterstützen.  Er bietet eine einfache Bereitstellung zwischen Verzeichnissen zwischen Active Directory und Azure AD.
+- [Azure AD Connect-Cloudbereitstellung:](../cloud-sync/what-is-cloud-sync.md) Dieser neue Microsoft-Agent wurde entwickelt, um Sie beim Erreichen Ihrer Hybrididentitätsziele zu unterstützen.  Er bietet eine einfache Bereitstellung zwischen Verzeichnissen zwischen Active Directory und Azure AD.
 
 - [Microsoft Identity Manager:](/microsoft-identity-manager/microsoft-identity-manager-2016) Die lokale Identitäts- und Zugriffsverwaltungslösung von Microsoft, die Sie bei der Verwaltung der Benutzer, Anmeldeinformationen und Richtlinien sowie des Zugriffs innerhalb Ihrer Organisation unterstützt. Darüber hinaus bietet MIM eine erweiterte Bereitstellung zwischen Verzeichnissen, um die Erstellung von Umgebungen mit Hybrididentität für Active Directory, Azure AD und andere Verzeichnisse zu ermöglichen.
 

@@ -3,12 +3,12 @@ title: Leistungsüberwachung für Web-Apps – Azure Application Insights
 description: Application Insights im DevOps-Zyklus
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: d2c3326c3f655d4bdfeaa42ac272658b251b7f82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc897cc0259894964e0b6164219b1e5459e824b6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324487"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579571"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Eingehende Diagnose für Web-Apps und Dienste mit Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Wofür benötigen Sie Application Insights?
@@ -110,7 +110,7 @@ Die Anwendungszuordnung ermittelt automatisch Ihre Anwendungstopologie und legt 
 ![Anwendungszuordnung](./media/devops/0050.png)
 
 ## <a name="application-insights-analytics"></a>Application Insights Analytics
-Mit [Analytics](../log-query/log-query-overview.md)können Sie beliebige Abfragen in einer leistungsfähigen SQL-ähnlichen Sprache schreiben.  Die Diagnose über den gesamten App-Stapel hinweg wird erheblich vereinfacht, da verschiedene Perspektiven miteinander verknüpft werden und Sie die richtigen Fragen stellen können, um die Leistung des Diensts mit Geschäftsmetriken und Kundenzufriedenheit zu korrelieren. 
+Mit [Analytics](../logs/log-query-overview.md)können Sie beliebige Abfragen in einer leistungsfähigen SQL-ähnlichen Sprache schreiben.  Die Diagnose über den gesamten App-Stapel hinweg wird erheblich vereinfacht, da verschiedene Perspektiven miteinander verknüpft werden und Sie die richtigen Fragen stellen können, um die Leistung des Diensts mit Geschäftsmetriken und Kundenzufriedenheit zu korrelieren. 
 
 Sie können alle im Portal gespeicherten Telemetrieinstanz- und Metrikrohdaten abfragen. Die Sprache enthält filter-, join- und aggregation-Operationen sowie weitere Vorgänge. Sie können Felder berechnen und statistische Analysen durchführen. Die Daten können in tabellarischer oder grafischer Form visualisiert werden.
 

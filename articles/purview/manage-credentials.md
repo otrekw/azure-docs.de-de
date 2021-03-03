@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 9ffc450294f186b77cc7a6c44c10eecf266161d3
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 1857eab485e8651c05959f82cf11e69b6353c575
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526692"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673526"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Anmeldeinformationen für die Quellenauthentifizierung in Azure Purview
 
@@ -85,8 +85,9 @@ Die folgenden Typen von Anmeldeinformationen werden in Purview unterstützt:
 - Dienstprinzipal: Sie fügen den **Dienstprinzipalschlüssel** dem Schlüsseltresor als Geheimnis hinzu.
 - SQL-Authentifizierung: Sie fügen das **Kennwort** dem Schlüsseltresor als Geheimnis hinzu.
 - Kontoschlüssel: Sie fügen den **Kontoschlüssel** dem Schlüsseltresor als Geheimnis hinzu.
+- Rollen-ARN: Fügen Sie für eine Amazon S3-Datenquelle Ihren **Rollen-ARN** in AWS hinzu. 
 
-Weitere Informationen finden Sie unter [Hinzufügen eines Geheimnisses in Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
+Weitere Informationen finden Sie unter [Hinzufügen eines Geheimnisses zu Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) und [Erstellen einer neuen AWS-Rolle für Purview](register-scan-amazon-s3.md#create-a-new-aws-role-for-purview).
 
 Nach dem Speichern Ihrer Geheimnisse in Key Vault:
 

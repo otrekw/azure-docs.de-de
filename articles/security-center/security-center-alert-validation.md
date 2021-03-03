@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 598c13b0434a364e73471b53c82663b94fb42f4e
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 3bdc0af2ea581954cb5edd2c7d00d286f814506c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560100"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633596"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Warnungsüberprüfung in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie überprüfen, ob Ihr System ordnungsgemäß für Azure Security Center-Warnungen konfiguriert ist.
@@ -36,11 +36,6 @@ Verwenden Sie Beispielwarnungen für Folgendes:
 
 - Evaluieren des Werts und der Möglichkeiten von Azure Defender
 - Überprüfen von Konfigurationen, die Sie für Ihre Sicherheitswarnungen vorgenommen haben (z. B. SIEM-Integrationen, Workflowautomatisierung und E-Mail-Benachrichtigungen)
-
-> [!NOTE]
-> Für dieses Verfahren sind die neuen Funktionen für Warnungen (Vorschauversion) erforderlich, die über das Banner oben auf der Seite **Sicherheitswarnungen** verfügbar sind.
->
-> :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Banner mit dem Link zu den neuen Funktionen für Warnungen (Vorschau)":::
 
 So erstellen Sie Beispielwarnungen:
 

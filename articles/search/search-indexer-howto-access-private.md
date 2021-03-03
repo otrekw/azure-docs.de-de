@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 762db9d165358f3347fc9b7f3aaaf39f0c762308
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 0b30cb1767e733861d8418ea29e564bc90a5bc70
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063195"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676504"
 ---
 # <a name="make-indexer-connections-through-a-private-endpoint"></a>Erstellen von Indexerverbindungen über einen privaten Endpunkt
 
@@ -47,7 +47,7 @@ In der folgenden Tabelle sind die Azure-Ressourcen aufgeführt, für die Sie aus
 
 Sie können die Azure-Ressourcen, bei denen ausgehende private Endpunktverbindungen unterstützt werden, auch anhand der [Liste unterstützter APIs](/rest/api/searchmanagement/privatelinkresources/listsupported) abfragen.
 
-Im weiteren Verlauf dieses Artikels wird zur Veranschaulichung der REST-API-Aufrufe eine Mischung aus [Azure CLI](https://docs.microsoft.com/cli/azure/) (oder [ARMClient](https://github.com/projectkudu/ARMClient), falls bevorzugt) und [Postman](https://www.postman.com/) (oder ein anderer HTTP-Client wie [cURL](https://curl.se/), falls bevorzugt) verwendet.
+Im weiteren Verlauf dieses Artikels wird zur Veranschaulichung der REST-API-Aufrufe eine Mischung aus [Azure CLI](/cli/azure/) (oder [ARMClient](https://github.com/projectkudu/ARMClient), falls bevorzugt) und [Postman](https://www.postman.com/) (oder ein anderer HTTP-Client wie [cURL](https://curl.se/), falls bevorzugt) verwendet.
 
 > [!NOTE]
 > Die Beispiele in diesem Artikel basieren auf den folgenden Annahmen:
@@ -69,7 +69,7 @@ Konfigurieren Sie das Speicherkonto so, dass der [Zugriff nur von bestimmten Sub
 
 ### <a name="step-1-create-a-shared-private-link-resource-to-the-storage-account"></a>Schritt 1: Erstellen einer freigegebenen Private Link-Ressource zum Speicherkonto
 
-Wenn Sie bei Azure Cognitive Search die Erstellung einer ausgehenden privaten Endpunktverbindung mit dem Speicherkonto anfordern möchten, führen Sie den folgenden API-Aufruf aus (beispielsweise mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/)): 
+Wenn Sie bei Azure Cognitive Search die Erstellung einer ausgehenden privaten Endpunktverbindung mit dem Speicherkonto anfordern möchten, führen Sie den folgenden API-Aufruf aus (beispielsweise mithilfe der [Azure CLI](/cli/azure/)): 
 
 `az rest --method put --uri https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01 --body @create-pe.json`
 

@@ -10,19 +10,19 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: akjosh
-ms.openlocfilehash: ebc4867f0ce16657c550b3d33d76fccdb41cef54
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 741db5ea10847e2fe6711e7ca01d65efb1f09dea
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980642"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667309"
 ---
 # <a name="use-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>Verwenden der Linux Diagnostic Extension 4.0 zum Überwachen von Metriken und Protokollen
 
 Dieses Dokument beschreibt Version 4.0 und höher der Linux Diagnostic Extension.
 
 > [!IMPORTANT]
-> Weitere Informationen zu Version 3.* finden Sie in [diesem Dokument](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux-v3). Weitere Informationen zu Version 2.3 und zu älteren Versionen finden Sie in [diesem Dokument](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2).
+> Weitere Informationen zu Version 3.* finden Sie in [diesem Dokument](./diagnostics-linux-v3.md). Weitere Informationen zu Version 2.3 und zu älteren Versionen finden Sie in [diesem Dokument](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2).
 
 ## <a name="introduction"></a>Einführung
 
@@ -108,7 +108,7 @@ Die ausführbare python2-Datei muss dem Alias *python* zugewiesen werden. Mit de
 Die in diesen Beispielen heruntergeladene Beispielkonfiguration sammelt eine Reihe von Standarddaten und sendet diese an den Tabellenspeicher. Die URL für die Beispielkonfiguration und ihr Inhalt können geändert werden. In den meisten Fällen sollten Sie eine Kopie der JSON-Datei der Portaleinstellungen herunterladen und an Ihre Anforderungen anpassen. Verwenden Sie dann selbst erstellte Vorlagen oder Automation für Ihre Version der Konfigurationsdatei, anstatt diese URL jedes Mal herunterzuladen.
 
 > [!NOTE]
-> Damit die neue Azure Monitor-Senke aktiviert werden kann, müssen für die VMs systemseitig zugewiesene Identitäten für die Generierung von MSI-Authentifizierungstoken aktiviert sein. Dies kann während der VM-Erstellung oder nach Erstellung der VM erfolgen. Die Schritte für das Aktivieren systemseitig zugewiesener Identitäten über das Portal, über die CLI, über PowerShell und über den Ressourcen-Manager  sind [hier](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm) im Detail aufgeführt. 
+> Damit die neue Azure Monitor-Senke aktiviert werden kann, müssen für die VMs systemseitig zugewiesene Identitäten für die Generierung von MSI-Authentifizierungstoken aktiviert sein. Dies kann während der VM-Erstellung oder nach Erstellung der VM erfolgen. Die Schritte für das Aktivieren systemseitig zugewiesener Identitäten über das Portal, über die CLI, über PowerShell und über den Ressourcen-Manager  sind [hier](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) im Detail aufgeführt. 
 
 #### <a name="azure-cli-sample"></a>Azure CLI-Beispiel
 
@@ -490,7 +490,7 @@ Beispiele sind `LinuxSyslog20170410` und `LinuxSyslog20170609`.
 Über diesen optionalen Abschnitt wird kontrolliert,ob das Senden von Metriken an die Azure Monitor-Senke zusätzlich zum Speicherkonto und dem Standardblatt für Gastmetriken aktiviert wird.
 
 > [!NOTE]
-> Dafür müssen systemseitig zugewiesene Identitäten für die VMs/VMSS aktiviert werden. Dies ist über das Portal, die CLI, PowerShell und den Ressourcen-Manager möglich. Die Schritte sind [hier](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm) im Detail aufgeführt. Die Schritte für die Aktivierung sind auch oben in den Installationsbeispielen für die Azure-CLI und PowerShell aufgeführt. 
+> Dafür müssen systemseitig zugewiesene Identitäten für die VMs/VMSS aktiviert werden. Dies ist über das Portal, die CLI, PowerShell und den Ressourcen-Manager möglich. Die Schritte sind [hier](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) im Detail aufgeführt. Die Schritte für die Aktivierung sind auch oben in den Installationsbeispielen für die Azure-CLI und PowerShell aufgeführt. 
 
 ```json
   "sinksConfig": {
@@ -827,6 +827,6 @@ In der entsprechenden [EventHubs-Dokumentation](../../event-hubs/event-hubs-abou
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erstellen Sie Metrikwarnungen in [Azure Monitor](../../azure-monitor/platform/alerts-classic-portal.md) für die von Ihnen erfassten Metriken.
-* Erstellen Sie [Überwachungsdiagramme](../../azure-monitor/platform/data-platform.md) für Ihre Metriken.
+* Erstellen Sie Metrikwarnungen in [Azure Monitor](../../azure-monitor/alerts/alerts-classic-portal.md) für die von Ihnen erfassten Metriken.
+* Erstellen Sie [Überwachungsdiagramme](../../azure-monitor/data-platform.md) für Ihre Metriken.
 * Erfahren Sie, wie Sie mithilfe Ihrer Metriken [eine VM-Skalierungsgruppe](../linux/tutorial-create-vmss.md) erstellen, um die automatische Skalierung zu steuern.

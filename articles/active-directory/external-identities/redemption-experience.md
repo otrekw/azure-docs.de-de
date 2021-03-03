@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08f560f076caf90c9c930cedfd6a7ba9c6c8b37d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 95c7ca826eaf7d72cb35985b154458f149ef4a0e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365445"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649313"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen
 
@@ -28,21 +28,19 @@ Wenn Sie Ihrem Verzeichnis einen Gastbenutzer hinzufügen, hat das Gastbenutzerk
    > - **Am 4. Januar 2021** wird Google [die Unterstützung für die WebView-Anmeldung einstellen](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Wenn Sie einen Google-Verbund oder die Self-Service-Registrierung mit Gmail verwenden, sollten Sie [Ihre nativen Branchenanwendungen auf Kompatibilität testen](google-federation.md#deprecation-of-webview-sign-in-support).
    > - **Ab Oktober 2021** wird das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten für B2B Collaboration-Szenarien von Microsoft nicht mehr unterstützt. Zur Vorbereitung hierauf raten wir Kunden, sich für die [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md) zu entscheiden. Wir freuen uns über Ihr Feedback zu diesem Feature, das sich derzeit in der öffentlichen Vorschauphase befindet, und möchten noch mehr Möglichkeiten zur Zusammenarbeit schaffen.
 
-## <a name="redemption-through-the-invitation-email"></a>Einlösung über die Einladungs-E-Mail
+## <a name="redemption-and-sign-in-through-a-common-endpoint"></a>Einlösen und Anmelden über einen gemeinsamen Endpunkt
 
-Wenn Sie Ihrem Verzeichnis [über das Azure-Portal](./b2b-quickstart-add-guest-users-portal.md) einen Gastbenutzer hinzufügen, wird dabei eine Einladungs-E-Mail an den Gast gesendet. Sie können auch Einladungs-E-Mails senden, wenn Sie Ihrem Verzeichnis [mit PowerShell](./b2b-quickstart-invite-powershell.md) Gastbenutzer hinzufügen. Hier ist eine Beschreibung der Erfahrungen des Gasts, wenn er den Link in der E-Mail einlöst.
+Gastbenutzer können sich jetzt über einen gemeinsamen Endpunkt (URL, z. B. `https://myapps.microsoft.com`) bei Ihren mehrinstanzenfähigen Anwendungen oder Microsoft-Erstanbieter-Apps anmelden. Bisher wäre ein Gastbenutzer über eine gemeinsame URL zur Authentifizierung an seinen Basismandanten und nicht an Ihren Ressourcenmandanten geleitet worden, sodass ein mandantenspezifischer Link erforderlich wurde (z. B. `https://myapps.microsoft.com/?tenantid=<tenant id>`). Jetzt kann ein Gastbenutzer zur gemeinsamen URL der Anwendung wechseln, dann **Anmeldeoptionen** und danach **Bei einer Organisation anmelden** auswählen. Der Benutzer gibt dann den Namen Ihrer Organisation ein.
 
-1. Der Gast erhält eine [Einladungs-E-Mail](./invitation-email-elements.md), die über **Microsoft-Einladungen** gesendet wird.
-2. Der Gast wählt **Einladung annehmen** in der E-Mail aus.
-3. Der Gast verwendet seine eigenen Anmeldeinformationen, um sich bei Ihrem Verzeichnis anzumelden. Wenn der Gast kein Konto hat, das über einen Verbund in Ihrem Verzeichnis verwendet werden kann, und die Funktion für die [E-Mail-Einmalkennung](./one-time-passcode.md) (One-Time Passcode, OTP) nicht aktiviert ist, wird der Gast aufgefordert, ein persönliches [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) oder ein [Azure AD-Self-Service-Konto](../enterprise-users/directory-self-service-signup.md) zu erstellen. Ausführliche Informationen finden Sie unter [Flow beim Einlösen der Einladung](#invitation-redemption-flow).
-4. Der Gast wird schrittweise durch die im Folgenden beschriebene [Zustimmungsbenutzeroberfläche](#consent-experience-for-the-guest) geführt.
+![Anmelden über gemeinsamen Endpunkt](media/redemption-experience/common-endpoint-flow-small.png)
 
+Der Benutzer wird dann an den Endpunkt Ihres Mandanten umgeleitet, wo er sich entweder mit seiner E-Mail-Adresse anmelden oder einen von Ihnen konfigurierten Identitätsanbieter auswählen kann.
 ## <a name="redemption-through-a-direct-link"></a>Einlösung über einen direkten Link
 
-Alternativ zur Einladungs-E-Mail können Sie einem Gast einen direkten Link zu Ihrer App oder Ihrem Portal zur Verfügung stellen. Zunächst müssen Sie den Gastbenutzer über das [Azure-Portal](./b2b-quickstart-add-guest-users-portal.md) oder [PowerShell](./b2b-quickstart-invite-powershell.md) zu Ihrem Verzeichnis hinzufügen. Dann können Sie eine der [anpassbaren Möglichkeiten zum Bereitstellen von Anwendungen für Benutzer](../manage-apps/end-user-experiences.md) verwenden, einschließlich direkter Anmeldelinks. Wenn ein Gast anstelle der Einladungs-E-Mail einen direkten Link verwendet, wird er dennoch schrittweise durch die Benutzeroberfläche für die erste Zustimmung geführt.
+Als Alternative zur Einladungs-E-Mail oder zur gemeinsamen URL einer Anwendung können Sie einem Gast einen direkten Link zu Ihrer App oder Ihrem Portal zur Verfügung stellen. Zunächst müssen Sie den Gastbenutzer über das [Azure-Portal](./b2b-quickstart-add-guest-users-portal.md) oder [PowerShell](./b2b-quickstart-invite-powershell.md) zu Ihrem Verzeichnis hinzufügen. Dann können Sie eine der [anpassbaren Möglichkeiten zum Bereitstellen von Anwendungen für Benutzer](../manage-apps/end-user-experiences.md) verwenden, einschließlich direkter Anmeldelinks. Wenn ein Gast anstelle der Einladungs-E-Mail einen direkten Link verwendet, wird er dennoch schrittweise durch die Benutzeroberfläche für die erste Zustimmung geführt.
 
-> [!IMPORTANT]
-> Der direkte Link muss mandantenspezifisch sein. Mit anderen Worten: Er muss eine Mandanten-ID oder eine überprüfte Domäne enthalten, damit der Gast in Ihrem Mandanten, in dem sich die freigegebene App befindet, authentifiziert werden kann. Eine allgemeine URL wie https://myapps.microsoft.com funktioniert für einen Gast nicht, da sie für die Authentifizierung an seinen Basismandanten weitergeleitet wird. Hier sind einige Beispiele für direkte Links mit Mandantenkontext:
+> [!NOTE]
+> Ein direkter Link ist mandantenspezifisch. Mit anderen Worten: Er enthält eine Mandanten-ID oder eine überprüfte Domäne, damit sich der Gast bei Ihrem Mandanten, in dem sich die freigegebene App befindet, authentifizieren kann. Hier sind einige Beispiele für direkte Links mit Mandantenkontext:
  > - App-Zugriffsbereich: `https://myapps.microsoft.com/?tenantid=<tenant id>`
  > - App-Zugriffsbereich für eine überprüfte Domäne: `https://myapps.microsoft.com/<;verified domain>`
  > - Azure-Portal: `https://portal.azure.com/<tenant id>`
@@ -53,6 +51,14 @@ Es gibt einige Fälle, in denen die Einladungs-E-Mail über einen direkten Link 
  - Manchmal verfügt das eingeladene Benutzerobjekt aufgrund eines Konflikts mit einem Kontaktobjekt (beispielsweise ein Outlook-Kontaktobjekt) möglicherweise über keine E-Mail-Adresse. In diesem Fall muss der Benutzer auf die Einlösungs-URL in der Einladungs-E-Mail klicken.
  - Der Benutzer meldet sich möglicherweise mit einem Alias für die eingeladene E-Mail-Adresse an. (Ein Alias ist eine zusätzliche E-Mail-Adresse, die einem E-Mail-Konto zugeordnet ist.) In diesem Fall muss der Benutzer auf die Einlösungs-URL in der Einladungs-E-Mail klicken.
 
+## <a name="redemption-through-the-invitation-email"></a>Einlösung über die Einladungs-E-Mail
+
+Wenn Sie Ihrem Verzeichnis [über das Azure-Portal](./b2b-quickstart-add-guest-users-portal.md) einen Gastbenutzer hinzufügen, wird dabei eine Einladungs-E-Mail an den Gast gesendet. Sie können auch Einladungs-E-Mails senden, wenn Sie Ihrem Verzeichnis [mit PowerShell](./b2b-quickstart-invite-powershell.md) Gastbenutzer hinzufügen. Hier ist eine Beschreibung der Erfahrungen des Gasts, wenn er den Link in der E-Mail einlöst.
+
+1. Der Gast erhält eine [Einladungs-E-Mail](./invitation-email-elements.md), die über **Microsoft-Einladungen** gesendet wird.
+2. Der Gast wählt **Einladung annehmen** in der E-Mail aus.
+3. Der Gast verwendet seine eigenen Anmeldeinformationen, um sich bei Ihrem Verzeichnis anzumelden. Wenn der Gast kein Konto hat, das über einen Verbund in Ihrem Verzeichnis verwendet werden kann, und die Funktion für die [E-Mail-Einmalkennung](./one-time-passcode.md) (One-Time Passcode, OTP) nicht aktiviert ist, wird der Gast aufgefordert, ein persönliches [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) oder ein [Azure AD-Self-Service-Konto](../enterprise-users/directory-self-service-signup.md) zu erstellen. Ausführliche Informationen finden Sie unter [Flow beim Einlösen der Einladung](#invitation-redemption-flow).
+4. Der Gast wird schrittweise durch die im Folgenden beschriebene [Zustimmungsbenutzeroberfläche](#consent-experience-for-the-guest) geführt.
 ## <a name="invitation-redemption-flow"></a>Flow beim Einlösen der Einladung
 
 Wenn ein Benutzer in einer [Einladungs-E-Mail](invitation-email-elements.md) auf den Link **Einladung annehmen** klickt, löst Azure AD die Einladung automatisch ein, und zwar auf Grundlage des nachstehend gezeigten Einlösungsflows:

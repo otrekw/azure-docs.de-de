@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: 15209bc9dae1f10e1158c805ba7903b9f946766f
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 57f504b15c0a9c72a2cb0f17b486846f44171a25
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593947"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101682402"
 ---
 In diesem Schritt werden ein [logischer SQL-Server](../database/logical-servers.md) und eine [Einzeldatenbank](../database/single-database-overview.md) mit AdventureWorksLT-Beispieldaten erstellt. Sie können die Datenbank über Menüs und Bildschirme des Azure-Portals erstellen oder die Azure-Befehlszeilenschnittstelle oder ein PowerShell-Skript in Azure Cloud Shell verwenden.
 
@@ -69,6 +69,8 @@ So erstellen Sie eine Ressourcengruppe, einen Server und eine Einzeldatenbank ü
    Weitere Informationen zu Firewalleinstellungen finden Sie unter [Netzwerkzugriffssteuerung für Azure SQL-Datenbank und Data Warehouse](../database/network-access-controls-overview.md) sowie unter [Was ist ein privater Endpunkt in Azure?](../database/private-endpoint-overview.md).
 
 1. Wählen Sie auf der Registerkarte **Zusätzliche Einstellungen** im Abschnitt **Datenquelle** unter **Vorhandene Daten verwenden** die Option **Beispiel** aus.
+1. Aktivieren Sie optional [Azure Defender für SQL](../database/azure-defender-for-sql.md).
+1. Legen Sie optional das [Wartungsfenster](../database/maintenance-window.md) fest, damit die geplante Wartung zum optimalen Zeitpunkt für die Datenbank ausgeführt wird.
 1. Wählen Sie am unteren Rand der Seite die Option **Bewerten + erstellen** aus.
 
    ![Registerkarte „Zusätzliche Einstellungen“](./media/sql-database-create-single-database/additional-settings.png)

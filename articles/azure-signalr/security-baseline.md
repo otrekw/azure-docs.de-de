@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3e123ab6d5b9d801908112239cf3e9cb72b4abbb
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 3a8c0139d5739fbb75e6f6a157e80287864aeac8
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093963"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094963"
 ---
 # <a name="azure-security-baseline-for-azure-signalr-service"></a>Azure-Sicherheitsbaseline für Azure SignalR Service
 
@@ -336,7 +336,7 @@ Verwenden Sie integrierte Rollen zur Zuweisung von Berechtigungen, und erstellen
 
 - [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../role-based-access-control/overview.md)
 
-- [Konfigurieren von RBAC in Azure](../role-based-access-control/role-assignments-portal.md)
+- [Konfigurieren von Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 - [Was sind Azure AD-Zugriffsüberprüfungen?](../active-directory/governance/access-reviews-overview.md)
 
@@ -481,9 +481,9 @@ Azure SignalR Service protokolliert jedoch den Netzwerkdatenverkehr, der für de
 
 Aktivieren Sie Azure-Ressourcenprotokolle für Azure SignalR Service. Sie können Azure Security Center und Azure Policy verwenden, um Ressourcenprotokolle zu aktivieren und Datenerfassung zu protokollieren. Diese Protokolle können für die spätere Untersuchung von Sicherheitsvorfällen und die Durchführung forensischer Übungen von entscheidender Bedeutung sein.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Ressourcenprotokolle für Azure SignalR Service](signalr-howto-diagnostic-logs.md)
 
@@ -503,7 +503,7 @@ Darüber hinaus können Sie Daten in Azure Sentinel oder ein SIEM-System (Securi
 
 Viele Unternehmen verwenden Azure Sentinel für „heiße“ Daten, die häufig verwendet werden, und Azure Storage für seltener verwendete „kalte“ Daten.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 

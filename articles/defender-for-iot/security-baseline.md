@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6fbd70c1de99818e2baf73d15ed365db3a54e43d
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: adb9cb234e76da5dab4503c59eb19ba6645e56c8
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246722"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092649"
 ---
 # <a name="azure-security-baseline-for-azure-defender-for-iot"></a>Azure-Sicherheitsbaseline für Azure Defender für IoT
 
@@ -167,7 +167,7 @@ Verwenden Sie integrierte Rollen, um Berechtigungen zuzuweisen und benutzerdefin
 
 - [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../role-based-access-control/overview.md) 
 
-- [Konfigurieren von RBAC in Azure](../role-based-access-control/role-assignments-portal.md) 
+- [Konfigurieren von Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
 - [Was sind Azure AD-Zugriffsüberprüfungen?](../active-directory/governance/access-reviews-overview.md)
 

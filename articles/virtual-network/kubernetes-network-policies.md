@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: b7c683edd15ab05e9efc239ffe07759078754607
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: a68e1a3f60930e290e97084ff2ec9350b18e2873
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222648"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594967"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Übersicht über Azure Kubernetes-Netzwerkrichtlinien
 
@@ -130,7 +130,7 @@ Es gibt auch eine Metrik „exec_time_count“ und „exec_time_sum“ für die 
 Die Metriken können mit Azure Monitor für Container oder Prometheus ausgelesen werden.
 
 ### <a name="setup-for-azure-monitor"></a>Einrichten von Azure Monitor
-Als Erstes müssen Sie Azure Monitor für Container für die Kubernetes-Cluster aktivieren. Die Schritte werden unter [Azure Monitor für Container – Übersicht](../azure-monitor/insights/container-insights-overview.md) beschrieben. Konfigurieren Sie nach der Aktivierung von Azure Monitor für Container [ConfigMap von Azure Monitor für Container](https://aka.ms/container-azm-ms-agentconfig), um die NPM-Integration und Sammlung von Prometheus-NPM-Metriken zu aktivieren. ConfigMap von Azure Monitor für Container verfügt über einen ```integrations```-Abschnitt mit Einstellungen zum Sammeln von NPM-Metriken. Diese Einstellungen sind in ConfigMap standardmäßig deaktiviert. Durch das Aktivieren der Grundeinstellung ```collect_basic_metrics = true``` werden grundlegende NPM-Metriken gesammelt. Wenn Sie die erweiterte Einstellung ```collect_advanced_metrics = true``` aktivieren, werden zusätzlich zu den grundlegenden Metriken erweiterte Metriken gesammelt. 
+Als Erstes müssen Sie Azure Monitor für Container für die Kubernetes-Cluster aktivieren. Die Schritte werden unter [Azure Monitor für Container – Übersicht](../azure-monitor/containers/container-insights-overview.md) beschrieben. Konfigurieren Sie nach der Aktivierung von Azure Monitor für Container [ConfigMap von Azure Monitor für Container](https://aka.ms/container-azm-ms-agentconfig), um die NPM-Integration und Sammlung von Prometheus-NPM-Metriken zu aktivieren. ConfigMap von Azure Monitor für Container verfügt über einen ```integrations```-Abschnitt mit Einstellungen zum Sammeln von NPM-Metriken. Diese Einstellungen sind in ConfigMap standardmäßig deaktiviert. Durch das Aktivieren der Grundeinstellung ```collect_basic_metrics = true``` werden grundlegende NPM-Metriken gesammelt. Wenn Sie die erweiterte Einstellung ```collect_advanced_metrics = true``` aktivieren, werden zusätzlich zu den grundlegenden Metriken erweiterte Metriken gesammelt. 
 
 Nachdem Sie ConfigMap bearbeitet haben, speichern Sie die Datei lokal, und wenden Sie ConfigMap wie folgt auf den Cluster an.
 
@@ -143,7 +143,7 @@ integrations: |-
 ```
 Erweiterte Metriken sind optional. Wenn Sie sie aktivieren, wird die grundlegende Sammlung von Metriken automatisch aktiviert. Erweiterte Metriken enthalten derzeit nur `npm_ipset_counts`.
 
-Weitere Informationen finden Sie unter [Sammlungseinstellungen in ConfigMap von Azure Monitor für Container](../azure-monitor/insights/container-insights-agent-config.md).
+Weitere Informationen finden Sie unter [Sammlungseinstellungen in ConfigMap von Azure Monitor für Container](../azure-monitor/containers/container-insights-agent-config.md).
 
 ### <a name="visualization-options-for-azure-monitor"></a>Visualisierungsoptionen für Azure Monitor
 Nach der Aktivierung der Sammlung der NPM-Metriken können Sie die Metriken im Azure-Portal mithilfe von Container Insights oder in Grafana anzeigen.
@@ -154,7 +154,7 @@ Nach der Aktivierung der Sammlung der NPM-Metriken können Sie die Metriken im A
 Neben dem Anzeigen der Arbeitsmappe (unten aufgeführte Abbildungen) können Sie die Prometheus-Metriken auch direkt in den Protokollen im Abschnitt „Insights“ abfragen. Diese Abfrage gibt z. B. alle gesammelten Metriken zurück.
 | where TimeGenerated > ago(5h) | where Name contains "npm_"
 
-Sie können die Metriken auch direkt in Log Analytics abfragen. Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics-Abfragen](../azure-monitor/insights/container-insights-log-search.md). 
+Sie können die Metriken auch direkt in Log Analytics abfragen. Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics-Abfragen](../azure-monitor/containers/container-insights-log-search.md). 
 
 #### <a name="viewing-in-grafana-dashboard"></a>Anzeigen im Grafana-Dashboard
 Richten Sie einen Grafana-Server ein und konfigurieren Sie wie unter [diesem Link](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource) beschrieben eine Log Analytics-Datenquelle. Importieren Sie dann das [Grafana-Dashboard mit einem Log Analytics-Back-End](https://grafana.com/grafana/dashboards/10956) in Grafana Labs.

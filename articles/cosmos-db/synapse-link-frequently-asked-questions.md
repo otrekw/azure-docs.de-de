@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: cef5f178ea879ba98df90da36ec9c4b639dd100a
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 885aab68c769c0705994bad34bee6aaa4fdc3f3d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627773"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658468"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Häufig gestellte Fragen zu Azure Synapse Link für Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -67,6 +67,12 @@ Ja, der Analysespeicher kann für Container mit per Autoskalierung bereitgestell
 ### <a name="is-there-any-effect-on-azure-cosmos-db-transactional-store-provisioned-rus"></a>Gibt es Auswirkungen auf vom Azure Cosmos DB-Transaktionsspeicher bereitgestellte RUs?
 
 Azure Cosmos DB garantiert eine Leistungsisolation zwischen Transaktions- und Analyseworkloads. Wenn Sie den Analysespeicher für einen Container aktivieren, hat dies keine Auswirkungen auf die RUs, die im Azure Cosmos DB-Transaktionsspeicher bereitgestellt wurden. Die Transaktionen (Lese- und Schreibvorgänge) und die Speicherkosten für den Analysespeicher werden separat abgerechnet. Weitere Informationen finden Sie in den [Preisen für den Azure Cosmos DB-Analysespeicher](analytical-store-introduction.md#analytical-store-pricing).
+
+### <a name="can-i-restrict-access-to-azure-cosmos-db-analytical-store"></a>Kann ich den Zugriff auf Azure Cosmos DB-Analysespeicher einschränken?
+
+Ja. Sie können einen [verwalteten privaten Endpunkt](analytical-store-private-endpoints.md) konfigurieren und den Netzwerkzugriff von Analysespeicher auf das von Azure Synapse verwaltete virtuelle Netzwerk beschränken. Mit verwalteten privaten Endpunkten wird eine private Verbindung mit Ihrem Analysespeicher hergestellt. Dieser private Endpunkt schränkt auch den Schreibzugriff auf den Transaktionsspeicher ein (neben anderen Azure-Datendiensten).
+
+Sie können private Endpunkte sowohl für den Transaktionsspeicher als auch den Analysespeicher dem gleichen Azure Cosmos DB-Konto in einem Azure Synapse Analytics-Arbeitsbereich hinzufügen. Wenn Sie nur analytische Abfragen ausführen möchten, können Sie auch nur den analytischen privaten Endpunkt zuordnen.
 
 ### <a name="are-delete-and-update-operations-on-the-transactional-store-reflected-in-the-analytical-store"></a>Spiegeln sich im Transaktionsspeicher vorgenommene Lösch- und Aktualisierungsvorgänge im Analysespeicher wider?
 

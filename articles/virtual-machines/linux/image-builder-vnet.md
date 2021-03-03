@@ -5,15 +5,16 @@ author: danielsollondon
 ms.author: danis
 ms.date: 08/10/2020
 ms.topic: how-to
-ms.service: virtual-machines-linux
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subservice: image-builder
+ms.collection: linux
 ms.reviewer: danis
-ms.openlocfilehash: cbff2358dcf8685298e31f18c430c35ec7de4948
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 0b2f5f7881ab9c07320eba323e690de109eab8c7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437336"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673398"
 ---
 # <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>Verwenden von Azure Image Builder für Linux-VMs mit Zugriff auf ein vorhandenes Azure-VNET
 
@@ -316,4 +317,4 @@ Wenn Sie für diese Schnellstartanleitung ein VNET erstellt haben, können Sie e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über [Azure-Kataloge mit freigegebenen Images](shared-image-galleries.md).
+Erfahren Sie mehr über [Azure-Kataloge mit freigegebenen Images](../shared-image-galleries.md).

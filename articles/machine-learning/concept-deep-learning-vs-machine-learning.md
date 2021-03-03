@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 01/14/2020
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: 61305e4f9ba45cb7c13a96bee9d1aab81108bb4d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 48de06d28442b4d05cd3a7ab287732c0999e434c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220693"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659697"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Vergleich von Deep Learning und Machine Learning in Azure Machine Learning
 
@@ -130,4 +130,4 @@ Die folgenden Artikel enthalten weitere Optionen zur Verwendung von Open-Source-
 
 - [Klassifizieren von handschriftlichen Ziffern mithilfe einer TensorFlow-Schätzung und Keras](./how-to-train-keras.md?WT.mc_id=docs-article-lazzeri)
 
-- [Klassifizieren handschriftlicher Ziffern mit einem Chainer-Modell](./how-to-set-up-training-targets.md)
+- [Klassifizieren handschriftlicher Ziffern mit einem Chainer-Modell](./how-to-set-up-training-targets.md?WT.mc_id=docs-article-lazzeri)

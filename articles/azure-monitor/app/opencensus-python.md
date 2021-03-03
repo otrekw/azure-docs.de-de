@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: 1e6376cd8389a4f1f0defebce0a2c7b6d0f9deed
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f50628395526783face11fcb1438e2716135b640
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323264"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584031"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Einrichten von Azure Monitor für Ihre Python-Anwendung
 
@@ -33,7 +33,7 @@ python -m pip install opencensus-ext-azure
 > [!NOTE]
 > Beim Befehl `python -m pip install opencensus-ext-azure` wird davon ausgegangen, dass Sie eine `PATH`-Umgebungsvariable für die Python-Installation festgelegt haben. Wenn Sie diese Variable nicht konfiguriert haben, müssen Sie den vollständigen Verzeichnispfad zum Speicherort Ihrer ausführbaren Python-Datei angeben. Das Ergebnis ist ein Befehl, der Folgendem ähnelt: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`
 
-Das SDK verwendet drei Azure Monitor-Exportprogramme, um unterschiedliche Arten von Telemetriedaten an Azure Monitor zu senden. Dies sind Ablaufverfolgung, Metriken und Protokolle. Weitere Informationen zu diesen Telemetrietypen finden Sie in der [Übersicht über die Datenplattform](../platform/data-platform.md). Befolgen Sie die nachstehenden Anweisungen, um diese Telemetrietypen über die drei Exportprogramme zu senden.
+Das SDK verwendet drei Azure Monitor-Exportprogramme, um unterschiedliche Arten von Telemetriedaten an Azure Monitor zu senden. Dies sind Ablaufverfolgung, Metriken und Protokolle. Weitere Informationen zu diesen Telemetrietypen finden Sie in der [Übersicht über die Datenplattform](../data-platform.md). Befolgen Sie die nachstehenden Anweisungen, um diese Telemetrietypen über die drei Exportprogramme zu senden.
 
 ## <a name="telemetry-type-mappings"></a>Zuordnungen von Telemetriedatentypen
 
@@ -261,7 +261,7 @@ Einzelheiten dazu, wie Sie nachverfolgte Telemetrie ändern können, bevor sie a
     if __name__ == "__main__":
         main()
     ```
-1. Bei wiederholter Ausführung des Codes werden Sie aufgefordert, die**EINGABETASTE** zu drücken. Es wird eine Metrik erstellt, um die Anzahl von Betätigungen der**EINGABETASTE** nachzuverfolgen. Bei jedem Eintrag wird der Wert erhöht, und die Metrikinformationen werden in der Konsole angezeigt. Die Informationen umfassen den aktuellen Wert und den aktuellen Zeitstempel für den Aktualisierungszeitpunkt der Metrik.
+1. Bei wiederholter Ausführung des Codes werden Sie aufgefordert, die **EINGABETASTE** zu drücken. Es wird eine Metrik erstellt, um die Anzahl von Betätigungen der **EINGABETASTE** nachzuverfolgen. Bei jedem Eintrag wird der Wert erhöht, und die Metrikinformationen werden in der Konsole angezeigt. Die Informationen umfassen den aktuellen Wert und den aktuellen Zeitstempel für den Aktualisierungszeitpunkt der Metrik.
 
     ```output
     Press enter.
@@ -438,7 +438,7 @@ Wie bereits gezeigt, gibt es drei unterschiedliche Azure Monitor-Exportprogramme
 Alle Exportprogramme akzeptieren dieselben Argumente für die Konfiguration, die über die Konstruktoren übergeben werden. Details zu den einzelnen Argumenten sind nachfolgend aufgeführt:
 
 - `connection_string`: Die Verbindungszeichenfolge, mit der eine Verbindung mit der Azure Monitor-Ressource hergestellt wird. Dies hat Vorrang vor `instrumentation_key`.
-- `enable_standard_metrics`: Wird für `AzureMetricsExporter` verwendet. Signalisiert dem Exportprogramm, dass [Leistungsindikatormetriken](../platform/app-insights-metrics.md#performance-counters) automatisch an Azure Monitor gesendet werden sollen. Der Standardwert lautet `True`.
+- `enable_standard_metrics`: Wird für `AzureMetricsExporter` verwendet. Signalisiert dem Exportprogramm, dass [Leistungsindikatormetriken](../essentials/app-insights-metrics.md#performance-counters) automatisch an Azure Monitor gesendet werden sollen. Der Standardwert lautet `True`.
 - `export_interval`: Wird verwendet, um die Häufigkeit in Sekunden für den Export anzugeben.
 - `instrumentation_key`: Der Instrumentierungsschlüssel, mit dem eine Verbindung mit der Azure Monitor-Ressource hergestellt wird.
 - `logging_sampling_rate`: Wird für `AzureLogHandler` verwendet. Stellt eine Stichprobenrate [0,1.0] für das Exportieren von Protokollen bereit. Der Standardwert ist 1.0.
@@ -458,7 +458,7 @@ In der Liste unter **Aktiv** ist Folgendes angegeben:
 - Für Telemetriedaten, die mit dem Exportprogramm für Azure Monitor-Metriken gesendet werden, werden die gesendeten Metriken unter `customMetrics` angezeigt.
 - Für Telemetriedaten, die mit dem Exportprogramm für Azure Monitor-Protokolle gesendet werden, werden die Protokolle unter `traces` angezeigt. Ausnahmen werden unter `exceptions` angezeigt.
 
-Ausführlichere Informationen zur Verwendung von Abfragen und Protokollen finden Sie unter [Protokolle in Azure Monitor](../platform/data-platform-logs.md).
+Ausführlichere Informationen zur Verwendung von Abfragen und Protokollen finden Sie unter [Protokolle in Azure Monitor](../logs/data-platform-logs.md).
 
 ## <a name="learn-more-about-opencensus-for-python"></a>Weitere Informationen zu OpenCensus für Python
 
@@ -473,11 +473,11 @@ Ausführlichere Informationen zur Verwendung von Abfragen und Protokollen finden
 * [Verfolgen eingehender Anforderungen](./opencensus-python-dependency.md)
 * [Verfolgen ausgehender Anforderungen](./opencensus-python-request.md)
 * [Anwendungszuordnung](./app-map.md)
-* [End-to-End-Leistungsüberwachung](../learn/tutorial-performance.md)
+* [End-to-End-Leistungsüberwachung](../app/tutorial-performance.md)
 
 ### <a name="alerts"></a>Alerts
 
 * [Verfügbarkeitstests](./monitor-web-app-availability.md): Erstellen Sie Tests, um sicherzustellen, dass Ihre Website im Web sichtbar ist.
 * [Intelligente Diagnose](./proactive-diagnostics.md): Diese Tests werden automatisch ausgeführt, sodass Sie keinerlei Einrichtungsschritte ausführen müssen. Sie werden darüber benachrichtigt, ob für Ihre App eine ungewöhnlich hohe Zahl von Anforderungen mit Fehlern vorliegt.
-* [Metrikwarnungen](../platform/alerts-log.md): Richten Sie Warnungen ein, damit Sie gewarnt werden, wenn für eine Metrik ein Schwellenwert überschritten wird. Sie können diese für benutzerdefinierte Metriken festlegen, die Sie in Ihrer App codieren.
+* [Metrikwarnungen](../alerts/alerts-log.md): Richten Sie Warnungen ein, damit Sie gewarnt werden, wenn für eine Metrik ein Schwellenwert überschritten wird. Sie können diese für benutzerdefinierte Metriken festlegen, die Sie in Ihrer App codieren.
 

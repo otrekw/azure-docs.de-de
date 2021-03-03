@@ -9,26 +9,24 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 79382dde5780827d7b0393858fe8896c5da1b56d
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 5b1d24dc6056de0b8dd19d0d0e52c85055596a1d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559433"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101664127"
 ---
 # <a name="call-flow-basics"></a>Grundlegendes zu Anrufabläufen
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Der folgende Abschnitt enthält eine Übersicht über die Anrufabläufe in Azure Communication Services. Signalisierungs- und Medienabläufe hängen von den Typen der Anrufe ab, die von Ihren Benutzern getätigt werden. Beispiele für Anruftypen sind 1:1 VoIP, 1:1 Festnetz und Gruppenanrufe mit einer Mischung aus VoIP- und Festnetzteilnehmern. Lesen Sie den Artikel zu den [Anruftypen](./voice-video-calling/about-call-types.md).
 
 ## <a name="about-signaling-and-media-protocols"></a>Informationen zu Signalisierungs- und Medienprotokollen
 
-Wenn Sie einen Peer-to-Peer- oder Gruppenanruf tätigen, werden im Hintergrund zwei Protokolle verwendet: HTTP (REST) für die Signalisierung und SRTP für Medien. 
+Wenn Sie einen Peer-to-Peer- oder Gruppenanruf tätigen, werden im Hintergrund zwei Protokolle verwendet: HTTP (REST) für die Signalisierung und SRTP für Medien.
 
-Die Signalisierung zwischen den Clientbibliotheken oder zwischen Clientbibliotheken und Communication Services-Signalisierungscontrollern wird per HTTP REST (TLS) durchgeführt. Für Echtzeit-Mediendatenverkehr (Real-Time Media Traffic, RTP) wird das User Datagram-Protokoll (UDP) bevorzugt. Falls die Nutzung von UDP durch Ihre Firewall verhindert wird, wird von der Clientbibliothek für Medien das Transmission Control-Protokoll (TCP) genutzt. 
+Die Signalisierung zwischen den Clientbibliotheken oder zwischen Clientbibliotheken und Communication Services-Signalisierungscontrollern wird per HTTP REST (TLS) durchgeführt. Für Echtzeit-Mediendatenverkehr (Real-Time Media Traffic, RTP) wird das User Datagram-Protokoll (UDP) bevorzugt. Falls die Nutzung von UDP durch Ihre Firewall verhindert wird, wird von der Clientbibliothek für Medien das Transmission Control-Protokoll (TCP) genutzt.
 
-Wir sehen uns nun die Signalisierungs- und Medienprotokolle in unterschiedlichen Szenarien an. 
+Wir sehen uns nun die Signalisierungs- und Medienprotokolle in unterschiedlichen Szenarien an.
 
 ## <a name="call-flow-cases"></a>Anwendungsfälle für Anrufabläufe
 
@@ -40,7 +38,7 @@ Bei VoIP- oder Videoanrufen vom Typ 1:1 wird für den Datenverkehr der direkte P
 
 ### <a name="case-2-voip-where-a-direct-connection-between-devices-is-not-possible-but-where-connection-between-nat-devices-is-possible"></a>Fall 2: VoIP, wobei keine direkte Verbindung zwischen Geräten möglich ist, dafür aber eine Verbindung zwischen NAT-Geräten
 
-Wenn zwei Geräte in Subnetzen angeordnet sind, die sich nicht erreichen können (z. B. wenn Alice in einem Coffee-Shop und Bob im Homeoffice arbeitet), aber die Verbindung zwischen den NAT-Geräten möglich ist, stellen die clientseitigen Clientbibliotheken die Konnektivität über die NAT-Geräte her. 
+Wenn zwei Geräte in Subnetzen angeordnet sind, die sich nicht erreichen können (z. B. wenn Alice in einem Coffee-Shop und Bob im Homeoffice arbeitet), aber die Verbindung zwischen den NAT-Geräten möglich ist, stellen die clientseitigen Clientbibliotheken die Konnektivität über die NAT-Geräte her.
 
 Für Alice ist dies die Netzwerkadressenübersetzung (NAT) des Coffee-Shops, und für Bob die NAT im Homeoffice. Das Gerät von Alice sendet die externe Adresse ihrer NAT, und Bob geht genauso vor. Die Clientbibliotheken erhalten die externen Adressen über einen STUN-Dienst (Session Traversal Utilities for NAT, Sitzungsdurchlauf-Hilfsprogramme für NAT), der von Azure Communication Services kostenlos bereitgestellt wird. Die Logik, mit der der Handshake zwischen Alice und Bob verarbeitet wird, ist in die von Azure Communication Services bereitgestellten Clientbibliotheken eingebettet. (Sie müssen keine zusätzliche Konfiguration durchführen.)
 
@@ -51,7 +49,7 @@ Für Alice ist dies die Netzwerkadressenübersetzung (NAT) des Coffee-Shops, und
 Falls sich mindestens eines der beiden Clientgeräte hinter einer symmetrischen NAT befindet, ist ein separater Clouddienst erforderlich, um die Medien zwischen den beiden Clientbibliotheken zu übertragen. Dieser Dienst wird als TURN (Traversal Using Relays around NAT, Durchlauf mit Signalisierung für NAT) bezeichnet und wird ebenfalls von Communication Services bereitgestellt. Für die Communication Services-Clientbibliothek für Anrufe werden TURN-Dienste basierend auf den erkannten Netzwerkbedingungen automatisch genutzt. Die Nutzung des TURN-Diensts von Microsoft wird separat berechnet.
 
 :::image type="content" source="./media/call-flows/about-voice-case-3.png" alt-text="Diagramm: VoIP-Anruf mit Nutzung einer TURN-Verbindung":::
- 
+
 ### <a name="case-4-group-calls-with-pstn"></a>Fall 4: Gruppenanrufe per Festnetz (PSTN)
 
 Bei der Signalisierung und den Medien für Festnetzanrufe (PSTN) wird die Telefonieressource von Azure Communication Services genutzt. Diese Ressource ist auch mit anderen Netzbetreibern verbunden.
@@ -78,7 +76,7 @@ Falls für die Clientbibliothek UDP für Medien aufgrund von Firewalleinschränk
 
 ### <a name="case-5-communication-services-client-library-and-microsoft-teams-in-a-scheduled-teams-meeting"></a>Fall 5: Communication Services-Clientbibliothek und Microsoft Teams in einer geplanten Teams-Besprechung
 
-Die Signalisierung wird über den Signalisierungscontroller abgewickelt. Medien durchlaufen den Medienprozessor. Signalisierungscontroller und Medienprozessor werden von Communication Services und Microsoft Teams gemeinsam genutzt. 
+Die Signalisierung wird über den Signalisierungscontroller abgewickelt. Medien durchlaufen den Medienprozessor. Signalisierungscontroller und Medienprozessor werden von Communication Services und Microsoft Teams gemeinsam genutzt.
 
 :::image type="content" source="./media/call-flows/teams-communication-services-meeting.png" alt-text="Diagramm: Communication Services-Clientbibliothek und Team-Client in einer geplanten Teams-Besprechung":::
 

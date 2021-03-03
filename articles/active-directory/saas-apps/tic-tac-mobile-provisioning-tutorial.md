@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: a09594d1bc6037f252ba71855ae302208b4980d4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 91ae51b9a2785dbc40c55fa58b26763916e8d16c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182217"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644577"
 ---
 # <a name="tutorial-configure-tic-tac-mobile-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Tic-Tac Mobile für die automatische Benutzerbereitstellung
 
@@ -107,7 +107,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
    |name.familyName|String|
    |externalId|String|
    |title|String|
-   |emails[type eq"work"].value|String|
+   |emails[type eq "work"].value|String|
    |preferredLanguage|String|
    |externalId|String|
    |userType|String|

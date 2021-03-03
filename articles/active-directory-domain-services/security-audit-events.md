@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: 13bdc8797af8facaa73d3e43ecfbe504a6bd1dc2
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: caf46850b3d8d6946225575b8a9a732a90847482
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618874"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574148"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Aktivieren von Sicherheitsüberwachungen für Azure AD Domain Services
 
@@ -40,7 +40,7 @@ In der folgenden Tabelle sind die Szenarien für die einzelnen Zielressourcentyp
 |:---|:---|
 |Azure Storage| Dieses Ziel sollte verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungsereignisse zu Archivierungszwecken speichern möchten. Andere Ziele können zwar ebenfalls zu Archivierungszwecken verwendet werden, doch bieten diese Ziele Funktionen, die über die reine Archivierung hinausgehen. <br /><br />Bevor Sie Azure AD DS-Sicherheitsüberwachungsereignisse aktivieren, müssen Sie zunächst ein [Azure Storage-Konto erstellen](../storage/common/storage-account-create.md).|
 |Azure Event Hubs| Dieses Ziel sollte verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungsereignisse an Zusatzsoftware (z.B. SIEM-Software (Security Information & Event Management) oder Datenanalysesoftware) weitergeben möchten.<br /><br />Bevor Sie Azure AD DS-Sicherheitsüberwachungsereignisse aktivieren, müssen Sie [im Azure Portal einen Event Hub erstellen](../event-hubs/event-hubs-create.md).|
-|Azure Log Analytics-Arbeitsbereich| Dieses Ziel sollte verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungen direkt über das Azure-Portal analysieren und überprüfen möchten.<br /><br />Bevor Sie Azure AD DS-Sicherheitsüberwachungsereignisse aktivieren, müssen Sie [im Azure-Portal einen Log Analytics-Arbeitsbereich erstellen](../azure-monitor/learn/quick-create-workspace.md).|
+|Azure Log Analytics-Arbeitsbereich| Dieses Ziel sollte verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungen direkt über das Azure-Portal analysieren und überprüfen möchten.<br /><br />Bevor Sie Azure AD DS-Sicherheitsüberwachungsereignisse aktivieren, müssen Sie [im Azure-Portal einen Log Analytics-Arbeitsbereich erstellen](../azure-monitor/logs/quick-create-workspace.md).|
 
 ## <a name="enable-security-audit-events-using-the-azure-portal"></a>Aktivieren von Sicherheitsüberwachungsereignissen über das Azure-Portal
 
@@ -100,7 +100,7 @@ Führen Sie die folgenden Schritte aus, um Azure AD DS-Sicherheitsüberwachungse
         > [!IMPORTANT]
         > Stellen Sie sicher, dass Sie die Autorisierungsregel für den Namespace des Event Hubs und nicht für den Event Hub selbst festlegen.
 
-    * **Azure Log Analytics-Arbeitsbereiche** - [Erstellen eines Log Analytics-Arbeitsbereichs mit Azure PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md).
+    * **Azure Log Analytics-Arbeitsbereiche** - [Erstellen eines Log Analytics-Arbeitsbereichs mit Azure PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md).
 
 1. Rufen Sie mit dem Cmdlet [Get-AzResource](/powershell/module/Az.Resources/Get-AzResource) die Ressourcen-ID für Ihre verwaltete Azure AD DS-Domäne ab. Erstellen Sie eine Variable mit dem Namen *$aadds.ResourceId* für den Wert:
 
@@ -141,9 +141,9 @@ Führen Sie die folgenden Schritte aus, um Azure AD DS-Sicherheitsüberwachungse
 Log Analytics-Arbeitsbereiche ermöglichen das Anzeigen und Analysieren der Sicherheitsüberwachungsereignisse mithilfe von Azure Monitor und der Kusto-Abfragesprache. Diese Abfragesprache ist für die schreibgeschützte Verwendung konzipiert und bietet leistungsstarke Analysefunktionen mit einer leicht verständlichen Syntax. Weitere Informationen zu den ersten Schritten mit Kusto-Abfragesprachen finden Sie in den folgenden Artikeln:
 
 * [Azure Monitor-Dokumentation](../azure-monitor/index.yml)
-* [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/log-query/log-analytics-tutorial.md)
-* [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
-* [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](../azure-monitor/learn/tutorial-logs-dashboards.md)
+* [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md)
+* [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
+* [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](../azure-monitor/visualize/tutorial-logs-dashboards.md)
 
 Die folgenden Beispielabfragen können zum Starten der Analyse von Sicherheitsüberwachungsereignissen von Azure AD DS verwendet werden.
 

@@ -11,12 +11,12 @@ ms.date: 10/26/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 937041bbb48f112e2c8ed7d222dc7c7ef7ea8d81
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e5168d5e5e3935da267fb26f38735a88bdfd7837
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631392"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654475"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Anfordern eines Zugriffstokens in Azure Active Directory B2C
 
@@ -34,9 +34,9 @@ In diesem Artikel wird erläutert, wie Sie ein Zugriffstoken für eine Webanwend
 
 ## <a name="scopes"></a>Bereiche
 
-Bereiche ermöglichen die Verwaltung von Berechtigungen für geschützte Ressourcen. Bei der Anforderung eines Zugriffstokens müssen in der Clientanwendung im **scope** -Parameter der Anforderung die gewünschten Berechtigungen angegeben werden. Um z. B. den **Bereichswert**`read` für die API mit dem **App-ID-URI**`https://contoso.onmicrosoft.com/api` anzugeben, lautet der Bereich `https://contoso.onmicrosoft.com/api/read`.
+Bereiche ermöglichen die Verwaltung von Berechtigungen für geschützte Ressourcen. Bei der Anforderung eines Zugriffstokens müssen in der Clientanwendung im **scope**-Parameter der Anforderung die gewünschten Berechtigungen angegeben werden. Um z. B. den **Bereichswert**`read` für die API mit dem **App-ID-URI**`https://contoso.onmicrosoft.com/api` anzugeben, lautet der Bereich `https://contoso.onmicrosoft.com/api/read`.
 
-Bereiche werden von der Web-API verwendet, um eine bereichsbasierte Zugriffssteuerung zu implementieren. Benutzer der Web-API können beispielsweise über Lese- und Schreibzugriff oder nur über Lesezugriff verfügen. Um mehrere Berechtigungen in derselben Anforderung zu beziehen, können Sie mehrere durch Leerzeichen getrennte Einträge in einem einzelnen **scope** -Parameter der Anforderung hinzufügen.
+Bereiche werden von der Web-API verwendet, um eine bereichsbasierte Zugriffssteuerung zu implementieren. Benutzer der Web-API können beispielsweise über Lese- und Schreibzugriff oder nur über Lesezugriff verfügen. Um mehrere Berechtigungen in derselben Anforderung zu beziehen, können Sie mehrere durch Leerzeichen getrennte Einträge in einem einzelnen **scope**-Parameter der Anforderung hinzufügen.
 
 Im folgenden Beispiel sind decodierte Bereiche in einer URL dargestellt:
 
@@ -50,7 +50,7 @@ Im folgenden Beispiel sind codierte Bereiche in einer URL dargestellt:
 scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_access
 ```
 
-Wenn Sie mehr Bereiche als die für die Clientanwendung erteilten Berechtigungen anfordern, wird der Aufruf erfolgreich ausgeführt, wenn mindestens eine Berechtigung erteilt wird. Der **scp** -Anspruch im resultierenden Zugriffstoken wird nur mit den Berechtigungen gefüllt, die erfolgreich erteilt wurden. 
+Wenn Sie mehr Bereiche als die für die Clientanwendung erteilten Berechtigungen anfordern, wird der Aufruf erfolgreich ausgeführt, wenn mindestens eine Berechtigung erteilt wird. Der **scp**-Anspruch im resultierenden Zugriffstoken wird nur mit den Berechtigungen gefüllt, die erfolgreich erteilt wurden. 
 
 ### <a name="openid-connect-scopes"></a>OpenID Connect-Bereiche
 
@@ -71,7 +71,7 @@ Ersetzen Sie im folgenden Beispiel diese Werte:
 - `<tenant-name>`: Name des Azure AD B2C-Mandanten.
 - `<policy-name>`: Name der benutzerdefinierten Richtlinie oder des Benutzerflows.
 - `<application-ID>`: Anwendungs-ID der Webanwendung, die Sie zur Unterstützung des Benutzerflows registriert haben.
-- `<redirect-uri>`: Der **Umleitungs-URI** , den Sie bei der Registrierung der Clientanwendung eingegeben haben.
+- `<redirect-uri>`: Der **Umleitungs-URI**, den Sie bei der Registrierung der Clientanwendung eingegeben haben.
 
 ```http
 GET https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
@@ -91,7 +91,7 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 Nach dem Empfang des Autorisierungscodes können Sie über diesen Code ein Zugriffstoken anfordern:
 
 ```http
-POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
+POST <tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 

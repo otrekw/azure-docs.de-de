@@ -8,22 +8,20 @@ ms.author: mikben
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d680df0ec5e18cca4d7a42edf45dbd6a50be1472
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 45ce295ceee9d5bd1c2393eaed854e8f2c5643ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888605"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659238"
 ---
 # <a name="what-is-azure-communication-services"></a>Was ist Azure Communication Services?
-
-[!INCLUDE [Public Preview Notice](./includes/public-preview-include.md)]
 
 Azure Communication Services ermöglicht es Ihnen, Echtzeit-Multimediafunktionen für die Sprach-, Video- und IP-Telefoniekommunikation zu Ihren Anwendungen hinzuzufügen. Mit den Communication Services-Clientbibliotheken können Sie auch Chat- und SMS-Funktionen zu ihren Kommunikationslösungen hinzufügen.
 
 <br>
 
-> [!VIDEO https://www.youtube.com/embed/49oshhgY6UQ]
+> [!VIDEO https://www.youtube.com/embed/apBX7ASurgM]
 
 <br>
 <br>
@@ -41,8 +39,9 @@ Gemischte Szenarien werden ebenfalls unterstützt. Eine Communication Services-A
 Die folgenden Ressourcen sind ein idealer Ausgangspunkt, wenn Sie mit Azure Communication Services noch nicht vertraut sind:
 <br>
 
-| Resource                               |Beschreibung                           |
+| Resource                               |BESCHREIBUNG                           |
 |---                                    |---                                   |
+|**[Beitreten mit einer Telefonie-App zu einer Teams-Besprechung](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Azure Communication Services kann dazu verwendet werden, benutzerdefinierte Besprechungsumgebungen zu erstellen, die mit Microsoft Teams interagieren. Benutzer Ihrer Communication Services-Lösung(en) können mit den Teams-Teilnehmern über Sprache, Video, Chat und Bildschirmfreigabe interagieren.|
 |**[Erstellen einer Communication Services-Ressource](./quickstarts/create-communication-resource.md)**|Beginnen Sie mit der Verwendung von Azure Communication Services, indem Sie das Azure-Portal oder die Communication Services-Clientbibliothek „Administration“ verwenden, um Ihre erste Communication Services-Ressource bereitzustellen. Sobald Sie über die Communication Services-Verbindungszeichenfolge verfügen, können Sie Ihre ersten Benutzerzugriffstoken bereitstellen.|
 |**[Erstellen Ihrer ersten Benutzerzugriffstoken](./quickstarts/access-tokens.md)**|Benutzerzugriffstoken werden verwendet, um ihre Dienste für Ihre Azure Communication Services-Ressource zu authentifizieren. Diese Token werden mithilfe der Communication Services-Clientbibliothek „Administration“ bereitgestellt und erneut ausgestellt.|
 |**[Beschaffen einer Telefonnummer](./quickstarts/telephony-sms/get-phone-number.md)**|Verwenden Sie Azure Communication Services zum Bereitstellen und Freigeben von Telefonnummern. Diese Telefonnummern können zum Initiieren ausgehender Anrufe und zum Erstellen von SMS-Kommunikationslösungen verwendet werden.|

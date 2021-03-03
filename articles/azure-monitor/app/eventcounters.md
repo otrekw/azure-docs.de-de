@@ -4,12 +4,12 @@ description: Überwachen Sie systemeigene und benutzerdefinierte .NET/.NET Core-
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9af36f3c81ee52b41a8eed875c1a286b95bf838
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: d1ae0937c25a68798acd87fe8b2a0a54aa765b35
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803642"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579530"
 ---
 # <a name="eventcounters-introduction"></a>Einführung in EventCounters
 
@@ -88,14 +88,14 @@ Ein ähnlicher Ansatz kann auch für das WorkerService SDK befolgt werden, wobei
 
 ## <a name="event-counters-in-metric-explorer"></a>EventCounters im Metrik-Explorer
 
-Zum Anzeigen von EventCounter-Metriken im [Metrik-Explorer](../platform/metrics-charts.md) wählen Sie die Application Insights-Ressource aus, und wählen Sie dann protokollbasierte Metriken als Metriknamespace aus. EventCounter-Metriken werden dann unter der Kategorie „Benutzerdefiniert“ angezeigt.
+Zum Anzeigen von EventCounter-Metriken im [Metrik-Explorer](../essentials/metrics-charts.md) wählen Sie die Application Insights-Ressource aus, und wählen Sie dann protokollbasierte Metriken als Metriknamespace aus. EventCounter-Metriken werden dann unter der Kategorie „Benutzerdefiniert“ angezeigt.
 
 > [!div class="mx-imgBorder"]
 > ![Im Metrik-Explorer von Application Insights gemeldete EventCounters](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>EventCounters in Analytics
 
-Sie können Berichte zu EventCounters auch in [Analytics](../log-query/log-query-overview.md) in der Tabelle **customMetrics** suchen und anzeigen.
+Sie können Berichte zu EventCounters auch in [Analytics](../logs/log-query-overview.md) in der Tabelle **customMetrics** suchen und anzeigen.
 
 Führen Sie z.B. die folgende Abfrage aus, um zu sehen, welche Indikatoren erfasst werden und für die Abfrage verfügbar sind:
 
@@ -121,7 +121,7 @@ customMetrics
 Wie für andere Telemetriedaten ist auch in der Tabelle **customMetrics** eine `cloud_RoleInstance`-Spalte enthalten, die die Identität der Hostserverinstanz angibt, auf dem Ihre Anwendung ausgeführt wird. Die obige Abfrage zeigt den Indikatorwert pro Instanz und kann zum Vergleichen der Leistung verschiedener Serverinstanzen verwendet werden.
 
 ## <a name="alerts"></a>Alerts
-Wie bei anderen Metriken können Sie [eine Warnung einrichten](../platform/alerts-log.md), damit Sie gewarnt werden, wenn ein EventCounter einen von Ihnen festgelegten Grenzwert überschreitet. Öffnen Sie den Bereich „Warnungen“, und klicken Sie auf „Warnung hinzufügen“.
+Wie bei anderen Metriken können Sie [eine Warnung einrichten](../alerts/alerts-log.md), damit Sie gewarnt werden, wenn ein EventCounter einen von Ihnen festgelegten Grenzwert überschreitet. Öffnen Sie den Bereich „Warnungen“, und klicken Sie auf „Warnung hinzufügen“.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

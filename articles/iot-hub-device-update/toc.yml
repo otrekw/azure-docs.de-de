@@ -1,0 +1,94 @@
+- name: Dokumentation zu Device Update for IoT Hub
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Was ist Device Update for IoT Hub?
+      href: understand-device-update.md
+- name: Tutorials
+  items:
+    - name: Imageupdate auf Raspberry Pi
+      href: device-update-raspberry-pi.md
+    - name: Verwenden des Geräteupdates in einem Simulator
+      href: device-update-simulator.md
+    - name: Paketaktupdate auf Ubuntu Server 18.04 x64
+      href: device-update-ubuntu-agent.md
+- name: Konzepte
+  items:
+    - name: Geräteupdatekonto und -instanz
+      href: device-update-resources.md
+    - name: Geräteupdate-Benutzerrollen und -zugriff
+      href: device-update-control-access.md
+    - name: apt-Manifest für Geräteupdate
+      href: device-update-apt-manifest.md
+    - name: Geräteupdatekonformität
+      href: device-update-compliance.md
+    - name: Geräteupdategruppen
+      href: device-update-groups.md
+    - name: "Verwendung von Plug\_&\_Play durch Geräteupdate"
+      href: device-update-plug-and-play.md
+    - name: Netzwerkanforderungen für Geräteupdate
+      href: device-update-networking.md
+    - name: Geräteupdate-Agent
+      href: device-update-agent-overview.md
+    - name: Konfigurationsdatei für Geräteupdate
+      href: device-update-configuration-file.md
+    - name: Geräteupdatemanifest
+      href: update-manifest.md
+    - name: Sichern des Geräteupdates
+      href: device-update-security.md
+    - name: Unterstützung für getrennte Geräte
+      href: connected-cache-disconnected-device-update.md
+    - name: Konfigurieren von Microsoft Connected Cache für Device Update for IoT Hub
+      href: connected-cache-configure.md
+- name: Anleitungen
+  items:
+    - name: Erstellen eines Geräteupdatekontos
+      href: create-device-update-account.md
+    - name: Bereitstellen des Geräteupdate-Agents
+      href: device-update-agent-provisioning.md
+    - name: Importieren eines Updates
+      href: import-update.md
+    - name: Erstellen einer Geräteupdategruppe
+      href: create-update-group.md
+    - name: Bereitstellen eines Geräteupdates
+      href: deploy-update.md
+    - name: Bereitstellen eines Geräteupdates
+      href: deploy-update.md
+    - name: Microsoft Connected Cache mit einer Ebene
+      href: connected-cache-single-level.md
+    - name: Microsoft Connected Cache mit einer geschachtelten Ebene
+      href: connected-cache-nested-level.md
+    - name: Microsoft Connected Cache for Industrial IoT (IIOT)
+      href: connected-cache-industrial-iot-nested.md
+    - name: Problembehandlung
+      items:
+        - name: Problembehandlung von Geräteproblemen
+          href: troubleshoot-device-update.md
+- name: Referenz
+  items:
+    - name: Clientfehlercodes für Geräteupdates
+      href: device-update-error-codes.md
+- name: Ressourcen
+  items:
+    - name: Support- und Hilfeoptionen
+      href: ../iot-fundamentals/iot-support-help.md
+    - name: Azure IoT-Dienste
+      items:
+        - name: IoT Hub
+          href: ./index.yml
+        - name: IoT Hub Device Provisioning Service
+          href: ../iot-dps/index.yml
+        - name: IoT Central
+          href: /microsoft-iot-central/
+        - name: IoT Edge
+          href: ../iot-edge/index.yml
+        - name: IoT Solution Accelerators
+          href: ../iot-accelerators/index.yml
+        - name: "IoT\_Plug\_&\_Play"
+          href: ../iot-pnp/index.yml
+        - name: Azure Maps
+          href: ../azure-maps/index.yml
+        - name: Time Series Insights
+          href: ../time-series-insights/index.yml
+    - name: Übermittlungsoptimierung
+      href: 'https://github.com/microsoft/do-client'

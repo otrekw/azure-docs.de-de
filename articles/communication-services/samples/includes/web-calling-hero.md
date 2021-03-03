@@ -10,15 +10,13 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 61b3b3abace5c7a1cd846c1e3c1e7ac166efd5c7
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: eb420a8d5242cb6a122e7f7062e457b64f1fb5db
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475648"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101682427"
 ---
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
 Das **Hero-Beispiel für Gruppenanrufe** von Azure Communication Services veranschaulicht, wie die Communication Services-Webclientbibliothek für Anrufe verwendet werden kann, um eine Benutzeroberfläche für Gruppenanrufe zu erstellen.
 
 In dieser Beispiel-Schnellstartanleitung wird beschrieben, wie das Beispiel funktioniert, bevor wir es auf Ihrem lokalen Computer ausführen. Anschließend stellen wir das Beispiel in Azure bereit, indem wir Ihre eigenen Azure Communication Services-Ressourcen verwenden.
@@ -29,7 +27,7 @@ Den fertigen Code für diese Schnellstartanleitung finden Sie auf [GitHub](https
 
 ## <a name="overview"></a>Übersicht
 
-Das Beispiel verfügt sowohl über eine clientseitige als auch eine serverseitige Anwendung. Die **clientseitige Anwendung** ist eine React/Redux-Webanwendung, für die das Fluent-UI-Framework von Microsoft verwendet wird. Diese Anwendung sendet Anforderungen an eine **serverseitige ASP.NET Core-Anwendung**, die für die clientseitige Anwendung die Verbindungsherstellung mit Azure ermöglicht. 
+Das Beispiel verfügt sowohl über eine clientseitige als auch eine serverseitige Anwendung. Die **clientseitige Anwendung** ist eine React/Redux-Webanwendung, für die das Fluent-UI-Framework von Microsoft verwendet wird. Diese Anwendung sendet Anforderungen an eine **serverseitige ASP.NET Core-Anwendung**, die für die clientseitige Anwendung die Verbindungsherstellung mit Azure ermöglicht.
 
 Das Beispiel sieht wie folgt aus:
 
@@ -91,7 +89,7 @@ Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten
 
 ## <a name="next-steps"></a>Nächste Schritte
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[Laden Sie das Beispiel von GitHub herunter](https://github.com/Azure-Samples/communication-services-web-calling-hero).
 
 Weitere Informationen finden Sie in den folgenden Artikeln:

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4f28665998dcac9f641d4142a0dea60707fb02e9
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 579baa611db47215c8ada554328d254ce99f17cf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805359"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579753"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>Azure-Sicherheitsbaseline für Azure Application Gateway
 
@@ -188,9 +188,9 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen der Konfigurationen bzw. Erkennen von Änderungen für Netzwerkeinstellungen und -ressourcen, die mit Ihren Azure Application Gateway-Bereitstellungen in Zusammenhang stehen. Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzwerkeinstellungen oder -ressourcen ausgelöst werden.
 
-* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -216,7 +216,7 @@ Zusätzlich zu den Aktivitätsprotokollen können Sie Diagnoseeinstellungen für
 
 Azure Application Gateway verfügt auch über eine native Integration mit Azure Application Insights. Mit Application Insights werden Protokoll-, Leistungs- und Fehlerdaten erfasst. Application Insights erkennt automatisch Leistungsanomalien und verfügt über leistungsstarke Analysetools, mit denen Sie Probleme untersuchen und nachvollziehen können, wie Ihre Web-Apps verwendet werden. Sie können den fortlaufenden Export aktivieren, um Telemetriedaten aus Application Insights an einen zentralen Ort zu exportieren. So können Daten auch über den Standardaufbewahrungszeitraum hinaus aufbewahrt werden.
 
-* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 * [Back-End-Integrität und Diagnoseprotokolle für Application Gateway](./application-gateway-diagnostics.md)
 
@@ -236,7 +236,7 @@ Zusätzlich zu den Aktivitätsprotokollen können Sie Diagnoseeinstellungen für
 
 Azure Application Gateway verfügt auch über eine native Integration mit Azure Application Insights. Mit Application Insights werden Protokoll-, Leistungs- und Fehlerdaten erfasst. Application Insights erkennt automatisch Leistungsanomalien und verfügt über leistungsstarke Analysetools, mit denen Sie Probleme untersuchen und nachvollziehen können, wie Ihre Web-Apps verwendet werden. Sie können den fortlaufenden Export aktivieren, um Telemetriedaten aus Application Insights an einen zentralen Ort zu exportieren. So können Daten auch über den Standardaufbewahrungszeitraum hinaus aufbewahrt werden.
 
-* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 * [Back-End-Integrität und Diagnoseprotokolle für Application Gateway](./application-gateway-diagnostics.md)
 
@@ -260,7 +260,7 @@ Azure Application Gateway verfügt auch über eine native Integration mit Azure 
 
 **Leitfaden**: Legen Sie in Azure Monitor den Aufbewahrungszeitraum Ihres Log Analytics-Arbeitsbereichs gemäß den Compliancevorschriften Ihrer Organisation fest. Verwenden Sie Azure Storage-Konten für die langfristige/Archivierungsspeicherung.
 
-* [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -274,7 +274,7 @@ Rufen Sie mit Azure Monitor für Netzwerke eine umfassende Ansicht der Integrit�
 
 Optional können Sie auch Azure Sentinel oder die SIEM-Lösung eines Drittanbieters aktivieren und dafür Daten integrieren.
 
-* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 * [Back-End-Integrität und Diagnoseprotokolle für Application Gateway](./application-gateway-diagnostics.md)
 
@@ -294,13 +294,13 @@ Rufen Sie mit Azure Monitor für Netzwerke eine umfassende Ansicht der Integrit�
 
 * [Bereitstellen von Azure WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
+* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 * [Back-End-Integrität und Diagnoseprotokolle für Application Gateway](./application-gateway-diagnostics.md)
 
 * [Azure Monitor für Netzwerke (Vorschau)](../azure-monitor/insights/network-insights-overview.md)
 
-* [Reagieren auf Ereignisse mit Azure Monitor-Warnungen](../azure-monitor/learn/tutorial-response.md)
+* [Reagieren auf Ereignisse mit Azure Monitor-Warnungen](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -591,7 +591,7 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure Application G
 
 **Leitfaden**: Erstellen Sie mithilfe von Azure Monitor und dem Azure-Aktivitätsprotokoll Warnungen für den Fall, dass Änderungen an den Produktionsinstanzen von Azure Application Gateway und anderen kritischen bzw. zugehörigen Ressourcen vorgenommen werden.
 
-* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 

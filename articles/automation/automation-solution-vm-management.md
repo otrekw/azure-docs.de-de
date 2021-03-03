@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 991ef6e7ffc26294f75ba5bd2f24c62ea6e0b421
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: a521ca80039b68f93bf7c9d98e51d9846e96e985
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007005"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593828"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VMs außerhalb der Geschäftszeiten starten/beenden – Übersicht
 
-Die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ startet bzw. beendet aktivierte virtuelle Azure-Computer. Damit können Sie Computer nach benutzerdefinierten Zeitplänen starten und beenden und außerdem über Azure Monitor-Protokolle Erkenntnisse aus Ihren Daten ziehen und durch die Nutzung von [Aktionsgruppen](../azure-monitor/platform/action-groups.md) optional E-Mails senden. Die Funktion kann in den meisten Szenarien sowohl auf Azure Resource Manager-VMs als auch auf klassischen VMs aktiviert werden.
+Die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ startet bzw. beendet aktivierte virtuelle Azure-Computer. Damit können Sie Computer nach benutzerdefinierten Zeitplänen starten und beenden und außerdem über Azure Monitor-Protokolle Erkenntnisse aus Ihren Daten ziehen und durch die Nutzung von [Aktionsgruppen](../azure-monitor/alerts/action-groups.md) optional E-Mails senden. Die Funktion kann in den meisten Szenarien sowohl auf Azure Resource Manager-VMs als auch auf klassischen VMs aktiviert werden. 
 
 Diese Funktion verwendet das Cmdlet [Start-AzVm](/powershell/module/az.compute/start-azvm) zum Starten von VMs. Zum Beenden von VMs wird [Stop-AzVM](/powershell/module/az.compute/stop-azvm) verwendet.
 
@@ -53,7 +53,7 @@ Wenn Sie Mitwirkender im Abonnement und globaler Administrator in Ihrem Azure Ac
 
 Um VMs für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ unter Verwendung eines vorhandenen Automation-Kontos und eines vorhandenen Log Analytics-Arbeitsbereichs zu aktivieren, benötigen Sie die folgenden Berechtigungen für den Gültigkeitsbereich der Ressourcengruppe. Weitere Informationen zu Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md).
 
-| Berechtigung | `Scope`|
+| Berechtigung | Bereich|
 | --- | --- |
 | Microsoft.Automation/automationAccounts/read | Ressourcengruppe |
 | Microsoft.Automation/automationAccounts/variables/write | Ressourcengruppe |

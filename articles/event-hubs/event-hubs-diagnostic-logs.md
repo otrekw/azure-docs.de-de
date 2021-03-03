@@ -3,21 +3,21 @@ title: Einrichten der Diagnoseprotokolle – Azure Event Hubs | Microsoft-Dokume
 description: Erfahren Sie, wie Sie Aktivitäts- und Diagnoseprotokolle für Event Hubs in Azure einrichten.
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: 015814b9a56ec963f5209f971f096ac6c173d7e1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: dc5cbea31583a4e8126897b2dcda63b216438e1b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131983"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573174"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Einrichten von Diagnoseprotokollen für Azure Event Hubs
 
 Sie können zwei Typen von Protokollen für Azure Event Hubs anzeigen:
 
-* **[Aktivitätsprotokolle](../azure-monitor/platform/platform-logs-overview.md)** : Diese Protokolle enthalten Informationen zu Vorgängen, die für einen Auftrag ausgeführt werden. Diese Protokolle sind immer aktiviert. Aktivitätsprotokolleinträge können angezeigt werden, indem Sie **Aktivitätsprotokoll** im linken Bereich für Ihren Event Hub-Namespace im Azure-Portal auswählen. Beispiel: „Namespace erstellen oder aktualisieren“, „Event Hub erstellen oder aktualisieren“.
+* **[Aktivitätsprotokolle](../azure-monitor/essentials/platform-logs-overview.md)** : Diese Protokolle enthalten Informationen zu Vorgängen, die für einen Auftrag ausgeführt werden. Diese Protokolle sind immer aktiviert. Aktivitätsprotokolleinträge können angezeigt werden, indem Sie **Aktivitätsprotokoll** im linken Bereich für Ihren Event Hub-Namespace im Azure-Portal auswählen. Beispiel: „Namespace erstellen oder aktualisieren“, „Event Hub erstellen oder aktualisieren“.
 
     ![Aktivitätsprotokoll für einen Event Hubs-Namespace](./media/event-hubs-diagnostic-logs/activity-log.png)
-* **[Diagnoseprotokolle](../azure-monitor/platform/platform-logs-overview.md)** : Diagnoseprotokolle bieten ausführlichere Informationen zu Vorgängen und Aktionen, die für Ihren Namespace mithilfe der API oder über Verwaltungsclients im Sprach-SDK ausgeführt werden. 
+* **[Diagnoseprotokolle](../azure-monitor/essentials/platform-logs-overview.md)** : Diagnoseprotokolle bieten ausführlichere Informationen zu Vorgängen und Aktionen, die für Ihren Namespace mithilfe der API oder über Verwaltungsclients im Sprach-SDK ausgeführt werden. 
     
     Im folgenden Abschnitt erfahren Sie, wie Sie Diagnoseprotokolle für einen Event Hubs-Namespace aktivieren.
 
@@ -36,7 +36,7 @@ Diagnoseprotokolle sind standardmäßig deaktiviert. Führen Sie folgende Schrit
 
     Neue Einstellungen werden in etwa zehn Minuten wirksam. Danach werden die Protokolle im gewünschten Archivierungsziel im Bereich **Diagnoseprotokolle** angezeigt.
 
-    Weitere Informationen zum Konfigurieren der Diagnose finden Sie in der [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/platform-logs-overview.md).
+    Weitere Informationen zum Konfigurieren der Diagnose finden Sie in der [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/essentials/platform-logs-overview.md).
 
 ## <a name="diagnostic-logs-categories"></a>Diagnoseprotokollkategorien
 

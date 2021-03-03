@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4fccb0b2e382e56e83fbbe54c0f0afa50a5c9590
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d63150fc1d929b899281cdd0ed7abae5e728b115
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202469"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595282"
 ---
 # <a name="azure-security-baseline-for-azure-firewall"></a>Azure-Sicherheitsbaseline für Azure Firewall
 
@@ -92,9 +92,9 @@ Sie können umfangreiche Azure-Bereitstellungen auch mithilfe von Azure Blueprin
 
 - [Überwachen von Azure Firewall-Protokollen und -Metriken](./firewall-diagnostics.md)
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md) 
+- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md) 
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -132,7 +132,7 @@ Hinweis: Beide Protokolle können nur dann in einem Speicherkonto gespeichert, a
 
 Liste mit Ressourcenaktionen in Aktivitätsprotokollen: Vorgänge für Azure Resource Manager-Ressourcenanbieter
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -174,7 +174,7 @@ Azure Monitor-Protokolle eignen sich am besten für eine allgemeine Echtzeitübe
 
 - [Azure Firewall-Protokolle und -Metriken](logs-and-metrics.md)
 
-- [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../azure-monitor/platform/manage-cost-storage.md)
+- [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../azure-monitor/logs/manage-cost-storage.md)
 
 - [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -216,7 +216,7 @@ Alternativ dazu können Sie auch Daten in Azure Sentinel aktivieren und integrie
 
 - [Verwalten von Warnungen in Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/learn/tutorial-response.md)
+- [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -442,7 +442,7 @@ Befolgen Sie ggf. die Empfehlungen von Azure Security Center zur Verschlüsselun
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen zu erstellen, die bei Änderungen in Azure Firewall ausgegeben werden.
 
-- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 

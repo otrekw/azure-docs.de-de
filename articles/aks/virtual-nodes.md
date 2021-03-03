@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: Übersicht über die Verwendung virtueller Knoten mit Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: conceptual
-ms.date: 09/21/2020
+ms.date: 02/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1e5a53c80aed90e44ba594dcff3c8ca23afc2c4f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3bba1155ec57db67968aec95d1d3386fc6cda006
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684773"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634446"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes"></a>Erstellen und Konfigurieren eines AKS-Clusters zur Verwendung von virtuellen Knoten
 
@@ -45,7 +45,6 @@ Die Funktionalität der virtuellen Knoten ist stark abhängig von den ACI-Featur
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) stellen keine Pods auf den virtuellen Knoten bereit.
 * Virtuelle Knoten unterstützen die Planung von Linux-Pods. Sie können den Open-Source-ACI-Anbieter [Virtual Kubelet](https://github.com/virtual-kubelet/azure-aci) manuell installieren, um Windows Server-Container für ACI zu planen.
 * Virtuelle Knoten erfordern AKS-Cluster mit einem Azure CNI-Netzwerk.
-* Virtuelle Knoten mit privaten Clustern
 * Verwenden von vom API-Server autorisierten IP-Adressbereichen für AKS
 * Bei der Volumeeinbindung von Azure Files-Freigaben wird [Universell V1](../storage/common/storage-account-overview.md#types-of-storage-accounts) unterstützt. Befolgen Sie die Anweisungen zum Einbinden [eines Volumes mit einer Azure Files-Freigabe](azure-files-volume.md).
 * Die Verwendung von IPv6 wird nicht unterstützt.

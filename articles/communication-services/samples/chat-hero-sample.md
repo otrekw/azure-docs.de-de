@@ -9,16 +9,14 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 80fdedb29f70c961431c987558a42d5fa46dfa7d
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 1a28ca967404bf6a5329f8d590a8f1f4f8715407
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760801"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657025"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Erste Schritte mit dem Hero-Beispiel für Gruppenchats
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 <!----
 > [!WARNING]
@@ -36,13 +34,13 @@ In dieser Beispiel-Schnellstartanleitung wird beschrieben, wie das Beispiel funk
 
 ## <a name="overview"></a>Übersicht
 
-Das Beispiel verfügt sowohl über eine clientseitige als auch eine serverseitige Anwendung. Die **clientseitige Anwendung** ist eine React/Redux-Webanwendung, für die das Fluent-UI-Framework von Microsoft verwendet wird. Diese Anwendung sendet Anforderungen an eine **serverseitige ASP.NET Core-Anwendung**, die für die clientseitige Anwendung die Verbindungsherstellung mit Azure ermöglicht. 
+Das Beispiel verfügt sowohl über eine clientseitige als auch eine serverseitige Anwendung. Die **clientseitige Anwendung** ist eine React/Redux-Webanwendung, für die das Fluent-UI-Framework von Microsoft verwendet wird. Diese Anwendung sendet Anforderungen an eine **serverseitige ASP.NET Core-Anwendung**, die für die clientseitige Anwendung die Verbindungsherstellung mit Azure ermöglicht.
 
 Das Beispiel sieht wie folgt aus:
 
 :::image type="content" source="./media/chat/landing-page.png" alt-text="Screenshot: Landing Page der Beispielanwendung":::
 
-Wenn Sie auf die Schaltfläche „Start a chat“ (Chat starten) klicken, ruft die Webanwendung ein Benutzerzugriffstoken aus der serverseitigen Anwendung ab. Dieses Token wird dann verwendet, um die Client-App mit Azure Communication Services zu verbinden. Nach dem Abrufen des Tokens werden Sie aufgefordert, Ihren Namen und Ihr Emoji für den Chat anzugeben. 
+Wenn Sie auf die Schaltfläche „Start a chat“ (Chat starten) klicken, ruft die Webanwendung ein Benutzerzugriffstoken aus der serverseitigen Anwendung ab. Dieses Token wird dann verwendet, um die Client-App mit Azure Communication Services zu verbinden. Nach dem Abrufen des Tokens werden Sie aufgefordert, Ihren Namen und Ihr Emoji für den Chat anzugeben.
 
 :::image type="content" source="./media/chat/pre-chat.png" alt-text="Screenshot: Bildschirm zur Vorbereitung des Chats in der Anwendung":::
 
@@ -54,7 +52,7 @@ Komponenten des Hauptbildschirms für Chats:
 
 - **Hauptbereich für Chats**: Dies ist der Hauptbereich für Chats, in dem Benutzer Nachrichten senden und empfangen können. Zum Senden von Nachrichten können Sie den Eingabebereich nutzen und dann die EINGABETASTE drücken (oder die Schaltfläche „Senden“ verwenden). Die empfangenen Chatnachrichten werden nach Absender mit dem zugehörigen Namen und Emoji kategorisiert. Im Chatbereich werden zwei Arten von Benachrichtigungen angezeigt: 1) Eingabebenachrichtigungen, wenn ein Benutzer Text eingibt, und 2) Sende- und Lesebenachrichtigungen für Nachrichten.
 - **Header**: Hier werden dem Benutzer der Titel des Chatthreads und die Steuerelemente zum Umschalten der Seitenleiste für die Teilnehmer und die Einstellungen angezeigt. Darüber hinaus ist eine Schaltfläche zum Beenden der Chatsitzung vorhanden.
-- **Seitenleiste**: Hier werden die Informationen zu den Teilnehmern und Einstellungen angezeigt, wenn der entsprechende Umschalter im Headerbereich verwendet wird. Die Seitenleiste für Teilnehmer enthält eine Liste mit den Teilnehmern des Chats und einen Link zum Einladen von Teilnehmern zur Chatsitzung. Mit der Seitenleiste für die Einstellungen können Sie den Titel des Chatthreads konfigurieren. 
+- **Seitenleiste**: Hier werden die Informationen zu den Teilnehmern und Einstellungen angezeigt, wenn der entsprechende Umschalter im Headerbereich verwendet wird. Die Seitenleiste für Teilnehmer enthält eine Liste mit den Teilnehmern des Chats und einen Link zum Einladen von Teilnehmern zur Chatsitzung. Mit der Seitenleiste für die Einstellungen können Sie den Titel des Chatthreads konfigurieren.
 
 Unten sind weitere Informationen zu den Voraussetzungen und Schritten zum Einrichten des Beispiels angegeben.
 
@@ -104,7 +102,7 @@ Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten
 
 ## <a name="next-steps"></a>Nächste Schritte
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[Laden Sie das Beispiel von GitHub herunter](https://github.com/Azure-Samples/communication-services-web-chat-hero).
 
 Weitere Informationen finden Sie in den folgenden Artikeln:

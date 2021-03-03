@@ -6,19 +6,19 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/24/2020
-ms.openlocfilehash: 246a9dcfa35498d99fd403f10e5c17d7707efe84
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/17/2021
+ms.openlocfilehash: 5cbfb41d50e055f745864e4d5f8bc15a55d925e7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202622"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668568"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>Dateierweiterungserkenntnisse zu Ihren Daten aus Azure Purview 
 
 In dieser Schrittanleitung wird beschrieben, wie Sie auf die in Ihren Daten gefundenen Dateierweiterungen bzw. Dateitypen zugreifen, sie anzeigen und filtern können.
 
-Unterstützte Datenquellen: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2
+Unterstützte Datenquellen sind unter anderem: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, Amazon S3 Buckets
 
 In dieser Schrittanleitung lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -32,7 +32,7 @@ Stellen Sie vor dem Beginn mit Purview-Erkenntnissen sicher, dass Sie die folgen
 
 - Einrichten Ihrer Azure-Ressourcen und Füllen der entsprechenden Konten mit Testdaten
 
-- Einrichten und Abschließen einer Überprüfung der Testdaten in den einzelnen Datenquellen
+- Einrichten und Abschließen einer Überprüfung der Testdaten in den einzelnen Datenquellen. Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview (Vorschau)](manage-data-sources.md) und [Erstellen eines Überprüfungsregelsatzes](create-a-scan-rule-set.md).
 
 - Anmeldung bei Purview mit einem Konto mit der Rolle [„Datenleser“ oder „Datenkurator“](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)
 

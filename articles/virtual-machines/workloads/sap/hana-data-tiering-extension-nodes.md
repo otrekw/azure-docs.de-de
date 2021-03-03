@@ -6,27 +6,26 @@ documentationcenter: ''
 author: msjuergent
 manager: bburns
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a1fc1c3b332d033e453db11ce4451cd626c4217
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: eb780d10996cb22f5e6fe5bc8889e897e8c3854d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967804"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666778"
 ---
 # <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>Verwenden von SAP HANA Data Tiering und Extension Nodes
 
 SAP unterstützt ein Data Tiering-Modell für SAP BW für verschiedene Releases von SAP NetWeaver und SAP BW/4HANA. Weitere Informationen zum Data Tiering-Modell finden Sie im SAP-Dokument [SAP BW/4HANA and SAP BW on HANA with SAP HANA extension nodes](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#) (SAP BW/4HANA und SAP BW unter HANA mit SAP HANA Extension Nodes).
 Mit HANA (große Instanz) können Sie die Option-1-Konfiguration von SAP HANA Extension Nodes wie in den häufig gestellten Fragen und Blogdokumenten von SAP beschrieben verwenden. Option-2-Konfigurationen können mit folgenden HANA-SKUs (große Instanzen) eingerichtet werden: S72m, S192, S192m, S384 und S384m. 
 
-In der Dokumentation ist der Vorteil möglicherweise nicht sofort offensichtlich. Wenn Sie jedoch einen Blick in die SAP-Dimensionierungsrichtlinien werfen, werden Sie sehen, welche Vorteile die Verwendung von Option-1- und Option-2-SAP HANA Extension Nodes bieten. Im Folgenden sind einige Beispiele aufgeführt:
+In der Dokumentation ist der Vorteil möglicherweise nicht sofort offensichtlich. Wenn Sie jedoch einen Blick in die SAP-Dimensionierungsrichtlinien werfen, werden Sie sehen, welche Vorteile die Verwendung von Option-1- und Option-2-SAP HANA Extension Nodes bieten. Hier finden Sie Beispiele:
 
 - SAP HANA-Dimensionierungsrichtlinien erfordern in der Regel das Doppelte des Datenvolumens als Arbeitsspeicher. Wenn Sie Ihre SAP HANA-Instanz mit den heißen Daten ausführen, sind höchstens 50 % des Arbeitsspeichers mit Daten gefüllt. Der restliche Arbeitsspeicher wird im Idealfall für die Arbeit von SAP HANA reserviert.
 - Das bedeutet, dass in einer HANA-S192-Einheit (große Instanz) mit 2 TB Arbeitsspeicher, in der eine SAP BW-Datenbank ausgeführt wird, nur 1 TB als Datenvolumen verfügbar ist.

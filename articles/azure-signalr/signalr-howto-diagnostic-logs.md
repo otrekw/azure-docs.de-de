@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: 5ad40ca051677ced0c6d8b5c35e8563272ff598f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5650ff0e039d1e9211b8d0013726e101efdfab78
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183973"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572247"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Ressourcenprotokolle für Azure SignalR Service
 
@@ -20,8 +20,8 @@ In diesem Tutorial wird besprochen, was Ressourcenprotokolle für den Azure Sign
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Aktivieren der Ressourcenprotokolle benötigen Sie einen Ort zum Speichern Ihrer Protokolldaten. In diesem Tutorial werden Azure Storage und Log Analytics verwendet.
 
-* [Azure Storage](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) speichert die Ressourcenprotokolle für die Richtlinienüberwachung, statische Analysen oder als Sicherung.
-* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) ist ein flexibles Tool für die Protokollsuche und -analyse, mit dem Sie die unformatierten Protokolle von einer Azure-Ressource analysieren können.
+* [Azure Storage](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) speichert die Ressourcenprotokolle für die Richtlinienüberwachung, statische Analysen oder als Sicherung.
+* [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) ist ein flexibles Tool für die Protokollsuche und -analyse, mit dem Sie die unformatierten Protokolle von einer Azure-Ressource analysieren können.
 
 ## <a name="set-up-resource-logs-for-an-azure-signalr-service"></a>Einrichten von Ressourcenprotokollen für einen Azure SignalR Service
 
@@ -50,7 +50,7 @@ Ressourcenprotokolle sind standardmäßig deaktiviert. Führen Sie folgende Schr
 
 Neue Einstellungen werden in etwa zehn Minuten wirksam. Danach werden die Protokolle im gewünschten Archivierungsziel im Bereich **Diagnoseprotokolle** angezeigt.
 
-Weitere Informationen zum Konfigurieren der Diagnose finden Sie in der [Übersicht über Azure-Ressourcenprotokolle](../azure-monitor/platform/platform-logs-overview.md).
+Weitere Informationen zum Konfigurieren der Diagnose finden Sie in der [Übersicht über Azure-Ressourcenprotokolle](../azure-monitor/essentials/platform-logs-overview.md).
 
 ### <a name="resource-logs-categories"></a>Ressourcenprotokollkategorien
 
@@ -122,7 +122,7 @@ Führen Sie folgende Schritte aus, um die Ressourcenprotokolle anzuzeigen:
 
     ![Log Analytics-Menüelement](./media/signalr-tutorial-diagnostic-logs/log-analytics-menu-item.png)
 
-2. Geben Sie `SignalRServiceDiagnosticLogs` ein, und wählen Sie den Zeitraum für die Abfrage der Ressourcenprotokolle aus. Informationen zu komplexeren Abfragen finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/log-query/log-analytics-tutorial.md).
+2. Geben Sie `SignalRServiceDiagnosticLogs` ein, und wählen Sie den Zeitraum für die Abfrage der Ressourcenprotokolle aus. Informationen zu komplexeren Abfragen finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md).
 
     ![Abfragen des Protokolls in Log Analytics](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
 

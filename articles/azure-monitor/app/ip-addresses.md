@@ -3,12 +3,12 @@ title: Von Azure Monitor verwendete IP-Adressen
 description: Für Application Insights erforderliche Serverfirewallausnahmen
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 0e7028c59b4588ac23424a63f4e3ce240391dfb8
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 72f825630ec94b5c32a949a4395c431318afa87f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220801"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584112"
 ---
 # <a name="ip-addresses-used-by-azure-monitor"></a>Von Azure Monitor verwendete IP-Adressen
 [Azure Monitor](../overview.md) verwendet eine Reihe von IP-Adressen. Azure Monitor umfasst zusätzlich zu Log Analytics und Application Insights auch Metriken und Protokolle der Kernplattform. Diese Adressen müssen Ihnen gegebenenfalls bekannt sein, wenn die überwachte App oder Infrastruktur hinter einer Firewall gehostet wird.
@@ -254,21 +254,21 @@ Das Verwalten von Änderungen der Quell-IP-Adressen kann recht zeitaufwändig se
    1. Fügen Sie den Ressourcengruppennamen hinzu, und geben Sie die *Instanzdetails* ein.
    1. Klicken Sie auf **Überprüfen + erstellen** und dann auf *Erstellen*.
    
-   :::image type="content" source="../platform/media/action-groups/action-group-create-security-group.png" alt-text="Beispiel für das Erstellen einer Netzwerksicherheitsgruppe"border="true":::
+   :::image type="content" source="../alerts/media/action-groups/action-group-create-security-group.png" alt-text="Beispiel für das Erstellen einer Netzwerksicherheitsgruppe"border="true":::
 
 3. Wechseln Sie zur Ressourcengruppe, und klicken Sie dann auf die erstellte *Netzwerksicherheitsgruppe*.
 
     1. Klicken Sie auf *Eingangssicherheitsregeln*.
     1. Klicken Sie auf **Hinzufügen**.
     
-    :::image type="content" source="../platform/media/action-groups/action-group-add-service-tag.png" alt-text="Beispiel für das Hinzufügen eines Diensttags"border="true":::
+    :::image type="content" source="../alerts/media/action-groups/action-group-add-service-tag.png" alt-text="Beispiel für das Hinzufügen eines Diensttags"border="true":::
 
 4. Im rechten Bereich wird ein neues Fenster geöffnet.
     1.  Auswählen der Quelle: **Diensttag**
     1.  Quelldiensttag: **ActionGroup**
     1.  Klicken Sie auf **Hinzufügen**.
     
-    :::image type="content" source="../platform/media/action-groups/action-group-service-tag.png" alt-text="Beispiel für das Hinzufügen eines Diensttags"border="true":::
+    :::image type="content" source="../alerts/media/action-groups/action-group-service-tag.png" alt-text="Beispiel für das Hinzufügen eines Diensttags"border="true":::
 
 
 ## <a name="profiler"></a>Profiler

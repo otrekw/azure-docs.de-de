@@ -3,12 +3,12 @@ title: Migrieren einer klassischen Application Insights-Ressource in Azure Monit
 description: Erfahren Sie mehr über die erforderlichen Schritte zum Aktualisieren einer klassischen Application Insights-Ressource in Azure Monitor auf das neue arbeitsbereichsbasierte Modell.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 5316bf5b919fe8b24ea1dd601214df62aa034f37
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5791abe33dee2e62aadb00ae1024338e1e44a900
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945110"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584261"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Migrieren zu arbeitsbereichsbasierten Application Insights-Ressourcen
 
@@ -22,21 +22,21 @@ Arbeitsbereichsbasierte Ressourcen ermöglichen eine gemeinsame rollenbasierte Z
 
 Mithilfe des arbeitsbereichsbasierten Application Insights können Sie die neuesten Funktionen von Azure Monitor und Log Analytics nutzen, einschließlich:
 
-* [CMK (Customer-Managed Keys, kundenseitig verwaltete Schlüssel)](../platform/customer-managed-keys.md) bietet Verschlüsselung im Ruhezustand für Ihre Daten mit Verschlüsselungsschlüsseln, auf die nur Sie Zugriff haben.
-* Mit [Azure Private Link](../platform/private-link-security.md) können Sie Azure-PaaS-Dienste über private Endpunkte sicher mit Ihrem virtuellen Netzwerk verknüpfen.
+* [CMK (Customer-Managed Keys, kundenseitig verwaltete Schlüssel)](../logs/customer-managed-keys.md) bietet Verschlüsselung im Ruhezustand für Ihre Daten mit Verschlüsselungsschlüsseln, auf die nur Sie Zugriff haben.
+* Mit [Azure Private Link](../logs/private-link-security.md) können Sie Azure-PaaS-Dienste über private Endpunkte sicher mit Ihrem virtuellen Netzwerk verknüpfen.
 * [Bring your own Storage (BYOS) für Profiler und Momentaufnahmedebugger](./profiler-bring-your-own-storage.md) verleiht Ihnen vollständige Kontrolle über die Richtlinie zur Verschlüsselung ruhender Daten, die Richtlinie zur Lebensdauerverwaltung und den Netzwerkzugriff auf alle Daten, die Application Insights Profiler und dem Momentaufnahmedebugger zugeordnet sind. 
-* [Mit Kapazitätsreservierungsstufen](../platform/manage-cost-storage.md#pricing-model) können Sie im Vergleich zur nutzungsbasierten Zahlung bis zu 25 % sparen. 
+* Mit [Kapazitätsreservierungsstufen](../logs/manage-cost-storage.md#pricing-model) können Sie im Vergleich zur nutzungsbasierten Zahlung bis zu 25 % sparen. 
 * Schnellere Datenerfassung über Log Analytics-Streamingerfassung.
 
 ## <a name="migration-process"></a>Migrationsprozess
 
 Wenn Sie zu einer arbeitsbereichsbasierten Ressource migrieren, werden keine Daten aus dem Speicher der klassischen Ressource in den neuen arbeitsbereichsbasierten Speicher übertragen. Wenn Sie sich für die Migration entscheiden, ändern Sie stattdessen den Speicherort, an den neue Daten geschrieben werden, in einen Log Analytics-Arbeitsbereich und behalten gleichzeitig den Zugriff auf die Daten in der klassischen Ressource. 
 
-Die Daten in der klassischen Ressource bleiben erhalten, und es gelten die Aufbewahrungseinstellungen in Ihrer klassischen Application Insight-Ressource. Alle neuen Daten, die nach der Migration erfasst werden, unterliegen den [Aufbewahrungseinstellungen](../platform/manage-cost-storage.md#change-the-data-retention-period) für den zugeordneten Log Analytics-Arbeitsbereich, der auch [unterschiedliche Aufbewahrungseinstellungen nach Datentyp](../platform/manage-cost-storage.md#retention-by-data-type) unterstützt.
+Die Daten in der klassischen Ressource bleiben erhalten, und es gelten die Aufbewahrungseinstellungen in Ihrer klassischen Application Insight-Ressource. Alle neuen Daten, die nach der Migration erfasst werden, unterliegen den [Aufbewahrungseinstellungen](../logs/manage-cost-storage.md#change-the-data-retention-period) für den zugeordneten Log Analytics-Arbeitsbereich, der auch [unterschiedliche Aufbewahrungseinstellungen nach Datentyp](../logs/manage-cost-storage.md#retention-by-data-type) unterstützt.
 Die Migration ist **dauerhaft und kann nicht rückgängig gemacht werden**. Nach der Migration einer Ressource zum arbeitsbereichsbasierten Application Insights ist sie immer eine arbeitsbereichsbasierte Ressource. Nach der Migration können Sie jedoch den Zielarbeitsbereich beliebig oft ändern. 
 
 > [!NOTE]
-> Datenerfassung und -aufbewahrung für arbeitsbereichsbasierte Application Insights-Ressourcen werden [über den Log Analytics-Arbeitsbereich abgerechnet](../platform/manage-cost-storage.md), in dem sich die Daten befinden. Wenn Sie vor der Migration eine Datenaufbewahrung von mehr als 90 Tagen für Daten ausgewählt haben, die in der klassischen Application Insights-Ressource erfasst werden, wird die Datenaufbewahrung weiterhin über diese Application Insights-Ressource abgerechnet. [Erfahren Sie mehr]( ./pricing.md#workspace-based-application-insights) über die Abrechnung für arbeitsbereichsbasierte Application Insights-Ressourcen.
+> Datenerfassung und -aufbewahrung für arbeitsbereichsbasierte Application Insights-Ressourcen werden [über den Log Analytics-Arbeitsbereich abgerechnet](../logs/manage-cost-storage.md), in dem sich die Daten befinden. Wenn Sie vor der Migration eine Datenaufbewahrung von mehr als 90 Tagen für Daten ausgewählt haben, die in der klassischen Application Insights-Ressource erfasst werden, wird die Datenaufbewahrung weiterhin über diese Application Insights-Ressource abgerechnet. [Erfahren Sie mehr]( ./pricing.md#workspace-based-application-insights) über die Abrechnung für arbeitsbereichsbasierte Application Insights-Ressourcen.
 
 Wenn Sie eine vorhandene Ressource nicht migrieren müssen und stattdessen eine neue arbeitsbereichsbasierte Application Insights-Ressource erstellen möchten, finden Sie weitere Informationen in der [Anleitung zum Erstellen arbeitsbereichsbasierter Ressourcen](create-workspace-resource.md).
 
@@ -44,12 +44,12 @@ Wenn Sie eine vorhandene Ressource nicht migrieren müssen und stattdessen eine 
 
 - Ein Log Analytics Arbeitsbereich, bei dem der Zugriffssteuerungsmodus auf die Einstellung **`use resource or workspace permissions`** festgelegt ist. 
 
-    - Arbeitsbereichsbasierte Application Insights-Ressourcen sind nicht kompatibel mit Arbeitsbereichen, die auf die dedizierte Einstellung **`workspace based permissions`** festgelegt sind. Weitere Informationen zur Zugriffssteuerung für Log Analytics-Arbeitsbereiche finden Sie in der [Anleitung zum Konfigurieren des Zugriffssteuerungsmodus für Log Analytics](../platform/manage-access.md#configure-access-control-mode).
+    - Arbeitsbereichsbasierte Application Insights-Ressourcen sind nicht kompatibel mit Arbeitsbereichen, die auf die dedizierte Einstellung **`workspace based permissions`** festgelegt sind. Weitere Informationen zur Zugriffssteuerung für Log Analytics-Arbeitsbereiche finden Sie in der [Anleitung zum Konfigurieren des Zugriffssteuerungsmodus für Log Analytics](../logs/manage-access.md#configure-access-control-mode).
 
-    - Wenn Sie noch nicht über einen Log Analytics-Arbeitsbereich verfügen, [sehen Sie sich die Dokumentation zur Erstellung von Log Analytics-Arbeitsbereichen an](../learn/quick-create-workspace.md).
+    - Wenn Sie noch nicht über einen Log Analytics-Arbeitsbereich verfügen, [sehen Sie sich die Dokumentation zur Erstellung von Log Analytics-Arbeitsbereichen an](../logs/quick-create-workspace.md).
     
 - Der fortlaufende Export wird für arbeitsbereichsbasierte Ressourcen nicht unterstützt und muss deaktiviert werden.
-Nachdem die Migration durchgeführt wurde, können Sie mit [Diagnoseeinstellungen](../platform/diagnostic-settings.md) die Datenarchivierung in einem Speicherkonto oder das Streaming an Azure Event Hub konfigurieren.  
+Nachdem die Migration durchgeführt wurde, können Sie mit [Diagnoseeinstellungen](../essentials/diagnostic-settings.md) die Datenarchivierung in einem Speicherkonto oder das Streaming an Azure Event Hub konfigurieren.  
 
 - Überprüfen Sie die aktuellen Aufbewahrungseinstellungen unter **Allgemein** > **Nutzung und geschätzte Kosten** > **Datenaufbewahrung** für den Log Analytics-Arbeitsbereich. Diese Einstellung wirkt sich darauf aus, wie lange neue erfasste Daten gespeichert werden, nachdem Sie Ihre Application Insights-Ressource migriert haben. Wenn Sie Application Insights-Daten zurzeit länger als die standardmäßigen 90 Tage speichern und diesen längeren Aufbewahrungszeitraum beibehalten möchten, müssen Sie möglicherweise die Aufbewahrungseinstellungen für den Arbeitsbereich anpassen.
 
@@ -209,7 +209,7 @@ Wählen Sie im Bereich der Application Insights-Ressource **Eigenschaften** > **
 
 **Fehlermeldung:** *Der ausgewählte Arbeitsbereich ist mit dem arbeitsbereichsbasierten Zugriffsmodus konfiguriert. Dies kann zu Beeinträchtigungen bei einigen APM-Funktionen führen. Wählen Sie einen anderen Arbeitsbereich aus, oder gewähren Sie den ressourcenbasierten Zugriff in den Arbeitsbereichseinstellungen. Sie können diesen Fehler mithilfe der CLI überschreiben.* 
 
-Damit die arbeitsbereichsbasierte Application Insights-Ressource ordnungsgemäß ausgeführt werden kann, müssen Sie den Zugriffssteuerungsmodus Ihres Log Analytics-Zielarbeitsbereichs auf die Einstellung **Ressourcen- oder Arbeitsbereichsberechtigungen verwenden** festlegen. Diese Einstellung befindet sich in der Benutzeroberfläche des Log Analytics-Arbeitsbereichs unter **Eigenschaften** > **Modus für Zugriffssteuerung**. Ausführliche Anweisungen finden Sie in der [Anleitung zum Konfigurieren des Log Analytics-Zugriffssteuerungsmodus](../platform/manage-access.md#configure-access-control-mode). Wenn der Zugriffssteuerungsmodus auf die exklusive Einstellung **Arbeitsbereichsberechtigungen erforderlich** festgelegt ist, bleibt die Migration über die Portal-Migrationsumgebung blockiert.
+Damit die arbeitsbereichsbasierte Application Insights-Ressource ordnungsgemäß ausgeführt werden kann, müssen Sie den Zugriffssteuerungsmodus Ihres Log Analytics-Zielarbeitsbereichs auf die Einstellung **Ressourcen- oder Arbeitsbereichsberechtigungen verwenden** festlegen. Diese Einstellung befindet sich in der Benutzeroberfläche des Log Analytics-Arbeitsbereichs unter **Eigenschaften** > **Modus für Zugriffssteuerung**. Ausführliche Anweisungen finden Sie in der [Anleitung zum Konfigurieren des Log Analytics-Zugriffssteuerungsmodus](../logs/manage-access.md#configure-access-control-mode). Wenn der Zugriffssteuerungsmodus auf die exklusive Einstellung **Arbeitsbereichsberechtigungen erforderlich** festgelegt ist, bleibt die Migration über die Portal-Migrationsumgebung blockiert.
 
 Wenn Sie aus Sicherheitsgründen den Zugriffssteuerungsmodus für den aktuellen Zielarbeitsbereich nicht ändern können, sollten Sie einen neuen Log Analytics-Arbeitsbereich für die Migration erstellen. 
 
@@ -229,7 +229,7 @@ Die Legacyfunktion für den fortlaufenden Export wird für arbeitsbereichsbasier
 
 - Nachdem Sie „Deaktivieren“ ausgewählt haben, können Sie zurück zur Benutzeroberfläche für die Migration navigieren. Wenn auf der Seite zum Bearbeiten des fortlaufenden Exports angezeigt wird, dass Ihre Einstellungen nicht gespeichert werden, können Sie „OK“ auswählen, da dies nicht das Deaktivieren oder Aktivieren des fortlaufenden Exports betrifft.
 
-- Nachdem Sie Ihre Application Insights-Ressource zu einer arbeitsbereichsbasierten Ressource migriert haben, können Sie mithilfe der Diagnoseeinstellungen die Funktionalität ersetzen, die vom fortlaufenden Export bereitgestellt wurde. Wählen Sie in der Application Insights-Ressource **Diagnoseeinstellungen** > **Diagnoseeinstellung hinzufügen** aus. Sie können alle Tabellen oder eine Teilmenge der Tabellen auswählen, die Sie in einem Speicherkonto archivieren oder an Azure Event Hub streamen möchten. Eine ausführliche Anleitung zu Diagnoseeinstellungen finden Sie in der [Anleitung zu Azure Monitor-Diagnoseeinstellungen](../platform/diagnostic-settings.md).
+- Nachdem Sie Ihre Application Insights-Ressource zu einer arbeitsbereichsbasierten Ressource migriert haben, können Sie mithilfe der Diagnoseeinstellungen die Funktionalität ersetzen, die vom fortlaufenden Export bereitgestellt wurde. Wählen Sie in der Application Insights-Ressource **Diagnoseeinstellungen** > **Diagnoseeinstellung hinzufügen** aus. Sie können alle Tabellen oder eine Teilmenge der Tabellen auswählen, die Sie in einem Speicherkonto archivieren oder an Azure Event Hub streamen möchten. Eine ausführliche Anleitung zu Diagnoseeinstellungen finden Sie in der [Anleitung zu Azure Monitor-Diagnoseeinstellungen](../essentials/diagnostic-settings.md).
 
 ### <a name="retention-settings"></a>Aufbewahrungseinstellungen
 
@@ -241,5 +241,5 @@ Sie können die aktuellen Aufbewahrungseinstellungen für Log Analytics in der L
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Untersuchen von Metriken](../platform/metrics-charts.md)
-* [Schreiben von Analytics-Abfragen](../log-query/log-query-overview.md)
+* [Untersuchen von Metriken](../essentials/metrics-charts.md)
+* [Schreiben von Analytics-Abfragen](../logs/log-query-overview.md)

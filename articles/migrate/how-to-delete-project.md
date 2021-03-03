@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 10/22/2019
-ms.openlocfilehash: face3d02ee72d1e05c6c08330dae4fffc2fd0e0b
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: bfb4db5d3ebf69f9c7f552c175d33a8b817d1562
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754248"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595139"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Löschen eines Azure Migrate-Projekts
 
@@ -27,7 +27,7 @@ Vor dem Löschen eines Projekts:
     - Der Arbeitsbereich wird nicht automatisch gelöscht. Er muss manuell gelöscht werden.
     - Überprüfen Sie, wofür ein Arbeitsbereich verwendet wird, bevor Sie ihn löschen. Derselbe Log Analytics-Arbeitsbereich kann für mehrere Szenarien verwendet werden.
     - Bevor Sie das Projekt löschen, finden Sie einen Link zum Arbeitsbereich in **Azure Migrate – Server** > **Azure Migrate – Serverbewertung** unter **OMS-Arbeitsbereich**.
-    - Zum Löschen eines Arbeitsbereichs, nachdem ein Projekt gelöscht wurde, suchen Sie den Arbeitsbereich in der relevanten Ressourcengruppe und befolgen Sie [diese Anweisungen](../azure-monitor/platform/delete-workspace.md).
+    - Zum Löschen eines Arbeitsbereichs, nachdem ein Projekt gelöscht wurde, suchen Sie den Arbeitsbereich in der relevanten Ressourcengruppe und befolgen Sie [diese Anweisungen](../azure-monitor/logs/delete-workspace.md).
 
 
 ## <a name="delete-a-project"></a>Löschen eines Projekts

@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9b93ac774dffb837d93853353e83b8da4ab4d8d4
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: c419411b0956cdc42055f0e97a47fc8e4ddb38c9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027158"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589739"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Protokollbasierte und vorab aggregierte Metriken in Azure Application Insights
 
@@ -30,12 +30,12 @@ Gleichzeitig kann das Sammeln eines kompletten Satzes an Ereignissen für Anwend
 
 ## <a name="pre-aggregated-metrics"></a>Vorab aggregierte Metriken
 
-Zusätzlich zu protokollbasierten Metriken lieferte das Application Insights-Team Ende 2018 eine öffentliche Vorschau von Metriken, die in einem speziellen, für Zeitreihen optimierten Repository gespeichert sind. Die neuen Metriken werden nicht mehr als einzelne Ereignisse mit vielen Eigenschaften, sondern als vorab aggregierte Zeitreihen und nur mit Schlüsseldimensionen gespeichert. Dadurch sind die neuen Metriken hinsichtlich der Abfragezeit überlegen: Der Datenabruf erfolgt viel schneller und erfordert weniger Rechenleistung. Dies ermöglicht neue Szenarien wie [Warnungen zu Metrikdimensionen nahezu in Echtzeit](../platform/alerts-metric-near-real-time.md), reaktionsschnellere [Dashboards](./overview-dashboard.md) und mehr.
+Zusätzlich zu protokollbasierten Metriken lieferte das Application Insights-Team Ende 2018 eine öffentliche Vorschau von Metriken, die in einem speziellen, für Zeitreihen optimierten Repository gespeichert sind. Die neuen Metriken werden nicht mehr als einzelne Ereignisse mit vielen Eigenschaften, sondern als vorab aggregierte Zeitreihen und nur mit Schlüsseldimensionen gespeichert. Dadurch sind die neuen Metriken hinsichtlich der Abfragezeit überlegen: Der Datenabruf erfolgt viel schneller und erfordert weniger Rechenleistung. Dies ermöglicht neue Szenarien wie [Warnungen zu Metrikdimensionen nahezu in Echtzeit](../alerts/alerts-metric-near-real-time.md), reaktionsschnellere [Dashboards](./overview-dashboard.md) und mehr.
 
 > [!IMPORTANT]
 > Protokollbasierte und vorab aggregierte Metriken können in Azure Application Insights parallel verwendet werden. Zur Unterscheidung werden auf der Application Insights-Benutzeroberfläche die vorab aggregierten Metriken jetzt als „Standardmetriken (Vorschau)“ bezeichnet, während die traditionellen Metriken aus den Ereignissen in „protokollbasierte Metriken“ umbenannt wurden.
 
-Die neueren SDKs (SDK [Application Insights 2.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) oder höher für .NET) aggregieren die Metriken während der Auflistung vorab. Dies gilt für [Standardmetriken, die standardmäßig gesendet werden](../platform/metrics-supported.md#microsoftinsightscomponents), sodass die Genauigkeit nicht durch die Stichprobenentnahme oder das Filtern beeinträchtigt wird. Dies gilt auch für benutzerdefinierte Metriken, die mit [GetMetric](./api-custom-events-metrics.md#getmetric) gesendet werden, was zu einer geringeren Datenerfassung und geringeren Kosten führt.
+Die neueren SDKs (SDK [Application Insights 2.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) oder höher für .NET) aggregieren die Metriken während der Auflistung vorab. Dies gilt für [Standardmetriken, die standardmäßig gesendet werden](../essentials/metrics-supported.md#microsoftinsightscomponents), sodass die Genauigkeit nicht durch die Stichprobenentnahme oder das Filtern beeinträchtigt wird. Dies gilt auch für benutzerdefinierte Metriken, die mit [GetMetric](./api-custom-events-metrics.md#getmetric) gesendet werden, was zu einer geringeren Datenerfassung und geringeren Kosten führt.
 
 Bei SDKs, die keine Vorabaggregation implementieren (d. h. ältere Versionen von Application Insights SDKs oder SDKs zur Browserinstrumentierung), füllt das Application Insights-Back-End weiterhin die neuen Metriken auf, indem es die Ereignisse aggregiert, die vom Application Insights-Endpunkt zur Ereignissammlung empfangen werden. So können Sie zwar nicht von dem reduzierten Datenvolumen profitieren, das über die Leitung übertragen wird, können die vorab aggregierten Metriken aber dennoch bei SDKs nutzen, die Metriken während der Erfassung nicht vorab aggregieren. Auf diese Weise erhalten Sie eine bessere Leistung und Unterstützung für Dimensionswarnungen nahezu in Echtzeit.
 
@@ -81,7 +81,7 @@ Die Sammlung von benutzerdefinierten Metrikdimensionen ist standardmäßig deakt
 
 ## <a name="creating-charts-and-exploring-log-based-and-standard-pre-aggregated-metrics"></a>Erstellen von Diagrammen und Erkunden von protokollbasierten und standardmäßig vorab aggregierten Metriken
 
-Verwenden Sie den [Metrik-Explorer von Azure Monitor](../platform/metrics-getting-started.md), um Diagramme aus vorab aggregierten und protokollbasierten Metriken darzustellen, und um Dashboards mit Diagrammen zu erstellen. Nachdem Sie die gewünschte Application Insights-Ressource ausgewählt haben, können Sie mit der Namespaceauswahl zwischen Standard- (Vorschau) und protokollbasierten Metriken wechseln oder einen benutzerdefinierten Metriknamespace auswählen:
+Verwenden Sie den [Metrik-Explorer von Azure Monitor](../essentials/metrics-getting-started.md), um Diagramme aus vorab aggregierten und protokollbasierten Metriken darzustellen, und um Dashboards mit Diagrammen zu erstellen. Nachdem Sie die gewünschte Application Insights-Ressource ausgewählt haben, können Sie mit der Namespaceauswahl zwischen Standard- (Vorschau) und protokollbasierten Metriken wechseln oder einen benutzerdefinierten Metriknamespace auswählen:
 
 ![Metriknamespace](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
@@ -93,5 +93,5 @@ Die Auswahl der Option [Dimensionswarnungen für benutzerdefinierte Metriken akt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Warnungen nahezu in Echtzeit](../platform/alerts-metric-near-real-time.md)
+* [Warnungen nahezu in Echtzeit](../alerts/alerts-metric-near-real-time.md)
 * [GetMetric und TrackValue](./api-custom-events-metrics.md#getmetric)

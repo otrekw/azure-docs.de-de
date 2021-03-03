@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 01cd79afe3e718a32663544a76a2a43353bc082e
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 42795e2dda6df24e656c9c06f6a9424bd9e4b5cb
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575380"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092988"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-desktop"></a>Azure-Sicherheitsbaseline für Windows Virtual Desktop
 
@@ -328,7 +328,7 @@ Verwenden Sie zudem integrierte Rollen, um Berechtigungen zuzuweisen, und erstel
 
 - [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../role-based-access-control/overview.md) 
 
-- [Konfigurieren von RBAC in Azure](../role-based-access-control/role-assignments-portal.md) 
+- [Konfigurieren von Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
 - [Was sind Azure AD-Zugriffsüberprüfungen?](../active-directory/governance/access-reviews-overview.md)
 

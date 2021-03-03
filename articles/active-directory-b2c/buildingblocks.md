@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0170877995573bdfcb13ebc1c0387bed0893deac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a42c1d06051c283f0e911c4cd166884ddd060f45
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201224"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633273"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
@@ -78,4 +78,4 @@ Das **BuildingBlocks**-Element enthält die folgenden Elemente, die in der angeg
 
 - [Localization:](localization.md) Ermöglicht die Unterstützung mehrerer Sprachen. Die Unterstützung von Lokalisierung in Richtlinien ermöglicht Ihnen das Einrichten der Liste unterstützter Sprachen sowie das Auswählen einer Standardsprache. Sprachspezifische Zeichenfolgen und Sammlungen werden ebenfalls unterstützt.
 
-- [DisplayControls](display-controls.md): Definiert die Steuerelemente, die auf einer Seite angezeigt werden sollen. Anzeigesteuerelemente haben besondere Funktionalität und interagieren mit technischen Profilen für die Back-End-Validierung. Anzeigesteuerelemente sind derzeit als **Vorschau** verfügbar.
+- [DisplayControls](display-controls.md): Definiert die Steuerelemente, die auf einer Seite angezeigt werden sollen. Anzeigesteuerelemente haben besondere Funktionalität und interagieren mit technischen Profilen für die Back-End-Validierung. 

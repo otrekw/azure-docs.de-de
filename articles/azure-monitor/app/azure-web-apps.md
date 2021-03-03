@@ -4,12 +4,12 @@ description: Überwachung der Anwendungsleistung für Azure App Services. Ladeze
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 55682215a990643111d5813db437b1f1e4612868
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 74b39219b3b18c8de0214367d141085f6dc5f674
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547230"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573997"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Überwachen der Leistung von Azure App Service
 
@@ -434,8 +434,8 @@ Informationen zu den neuesten Updates und Fehlerbehebungen [finden Sie in den Ve
 ## <a name="next-steps"></a>Nächste Schritte
 * [Ausführen des Profilers in Ihrer Live-App](./profiler.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample): Überwachen Sie Azure Functions mit Application Insights
-* [Ermöglichen des Sendens von Azure-Diagnosedaten an Application Insights](../platform/diagnostics-extension-to-application-insights.md)
-* [Überwachen von Dienstintegritätsmetriken](../platform/data-platform.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist
-* [Empfangen von Warnbenachrichtigungen](../platform/alerts-overview.md) , wenn ein Vorgangsereignis auftritt oder Metriken einen Schwellenwert überschreiten.
+* [Ermöglichen des Sendens von Azure-Diagnosedaten an Application Insights](../agents/diagnostics-extension-to-application-insights.md)
+* [Überwachen von Dienstintegritätsmetriken](../data-platform.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist
+* [Empfangen von Warnbenachrichtigungen](../alerts/alerts-overview.md) , wenn ein Vorgangsereignis auftritt oder Metriken einen Schwellenwert überschreiten.
 * Verwenden von [Application Insights für JavaScript-Apps und Webseiten](javascript.md), um Clienttelemetriedaten von den Browsern zu erhalten, mit denen auf eine Webseite zugegriffen wird
 * [Einrichten von Verfügbarkeitswebtests](monitor-web-app-availability.md), um benachrichtigt zu werden, wenn Ihre Website nicht verfügbar ist

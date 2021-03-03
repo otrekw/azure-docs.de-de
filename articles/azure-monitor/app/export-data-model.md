@@ -3,17 +3,17 @@ title: Azure Application Insights-Datenmodell | Microsoft-Dokumentation
 description: Beschreibt die Eigenschaften, die aus dem fortlaufenden Export in JSON exportiert und als Filter verwendet wurden.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 29ad999c307d1c11e7a584b61d85ed73b9448cb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4609d54c1c3c33a654dd58a3bceaca4974fda15
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324385"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584216"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights-Exportdatenmodell
 In dieser Tabelle sind die Eigenschaften der Telemetriedaten aufgelistet, die von [Application Insights](./app-insights-overview.md) SDKs an das Portal gesendet werden.
 Sie sehen diese Eigenschaften in der Datenausgabe von [Fortlaufender Export](export-telemetry.md).
-Sie werden darüber hinaus in den Eigenschaftsfiltern im [Metrik-Explorer](../platform/metrics-charts.md) und in der [Diagnosesuche](./diagnostic-search.md) angezeigt.
+Sie werden darüber hinaus in den Eigenschaftsfiltern im [Metrik-Explorer](../essentials/metrics-charts.md) und in der [Diagnosesuche](./diagnostic-search.md) angezeigt.
 
 Beachten Sie Folgendes:
 

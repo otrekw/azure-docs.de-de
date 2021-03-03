@@ -3,12 +3,12 @@ title: Abrufen von Ressourcenänderungen
 description: Erfahren Sie, wie Sie feststellen können, wann eine Ressource geändert wurde, und wie Sie eine Liste der geänderten Eigenschaften abrufen und die Unterschiede auswerten.
 ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 58dcb7256b0876d5e7fa9d7569db102538f92bab
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 5ad86ec2598cd7f24b8e0cd2208889bb7a088568
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917420"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594644"
 ---
 # <a name="get-resource-changes"></a>Abrufen von Ressourcenänderungen
 
@@ -25,7 +25,7 @@ Die Erkennung und die Details von Änderungen sind in folgenden Beispielszenarie
 - Wenn eine Datenbank für die Konfigurationsverwaltung (Configuration Management Database, CMDB) auf dem neuesten Stand gehalten werden soll. Anstatt alle Ressourcen und die zugehörigen vollständigen Eigenschaftensätze in einem festgelegten Intervall zu aktualisieren, können Sie nur die Änderungen abrufen.
 - Ermitteln, welche anderen Eigenschaften sich unter Umständen geändert haben, wenn der Konformitätszustand einer Ressource geändert wurde. Die Auswertung dieser zusätzlichen Eigenschaften kann Einblicke in andere Eigenschaften bieten, die möglicherweise über eine Azure Policy-Definition verwaltet werden müssen.
 
-In diesem Artikel wird erläutert, wie diese Informationen über das Resource Graph-SDK erfasst werden. Beachten Sie für das Anzeigen dieser Informationen im Azure-Portal die Beschreibung unter [Änderungsverlauf](../../policy/how-to/determine-non-compliance.md#change-history) von Azure Policy bzw. [Änderungsverlauf](../../../azure-monitor/platform/activity-log.md#view-the-activity-log) des Azure-Aktivitätsprotokolls. Ausführliche Informationen zu Änderungen an Ihren Anwendungen von der Infrastrukturebene bis hin zur Anwendungsbereitstellung finden Sie unter [Verwenden der Anwendungsänderungsanalyse (Vorschau) in Azure Monitor](../../../azure-monitor/app/change-analysis.md).
+In diesem Artikel wird erläutert, wie diese Informationen über das Resource Graph-SDK erfasst werden. Beachten Sie für das Anzeigen dieser Informationen im Azure-Portal die Beschreibung unter [Änderungsverlauf](../../policy/how-to/determine-non-compliance.md#change-history) von Azure Policy bzw. [Änderungsverlauf](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log) des Azure-Aktivitätsprotokolls. Ausführliche Informationen zu Änderungen an Ihren Anwendungen von der Infrastrukturebene bis hin zur Anwendungsbereitstellung finden Sie unter [Verwenden der Anwendungsänderungsanalyse (Vorschau) in Azure Monitor](../../../azure-monitor/app/change-analysis.md).
 
 > [!NOTE]
 > Die Änderungsdetails in Resource Graph beziehen sich auf Resource Manager-Eigenschaften. Informationen zur Nachverfolgung von Änderungen in einem virtuellen Computer finden Sie unter [Änderungsnachverfolgung](../../../automation/change-tracking/overview.md) für Azure Automation oder unter [Guest Configuration für virtuelle Computer](../../policy/concepts/guest-configuration.md) für Azure Policy.

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e2e87196f9d4d38743847ee68983216b8790e0b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 9913132ca6ff3ce2840b55aa771f7bd9be2404ea
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257269"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650973"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Schützen von Microsoft 365 vor lokalen Angriffen
 
@@ -141,7 +141,7 @@ Die folgenden Bereitstellungsmethoden werden empfohlen:
 
     *   Blockieren Sie den Zugriff auf das Azure-Portal. Seltene erforderliche Ausnahmen können jedoch festgelegt werden.  Erstellen Sie eine Richtlinie für bedingten Zugriff, die alle Gäste und externen Benutzer einschließt. [Implementieren Sie dann eine Richtlinie zum Blockieren des Zugriffs.](../../role-based-access-control/conditional-access-azure-management.md) 
 
-* **Getrennte Gesamtstrukturen:** Verwenden Sie die [Azure AD-Cloudbereitstellung](../cloud-provisioning/what-is-cloud-provisioning.md). Diese Methode ermöglicht Ihnen das Herstellen einer Verbindung mit nicht verbundenen Gesamtstrukturen. Dadurch entfällt die Notwendigkeit, gesamtstrukturübergreifende Verbindungen oder Vertrauensstellungen einzurichten, mit denen die Auswirkungen einer lokalen Sicherheitsverletzung ausgeweitet werden können. 
+* **Getrennte Gesamtstrukturen:** Verwenden Sie die [Azure AD-Cloudbereitstellung](../cloud-sync/what-is-cloud-sync.md). Diese Methode ermöglicht Ihnen das Herstellen einer Verbindung mit nicht verbundenen Gesamtstrukturen. Dadurch entfällt die Notwendigkeit, gesamtstrukturübergreifende Verbindungen oder Vertrauensstellungen einzurichten, mit denen die Auswirkungen einer lokalen Sicherheitsverletzung ausgeweitet werden können. 
  
 ### <a name="limitations-and-tradeoffs"></a>Einschränkungen und Kompromisse
 
@@ -172,7 +172,7 @@ Verwenden Sie Azure AD-Funktionen für die sichere Geräteverwaltung.
 
     -   Verwenden Sie [Microsoft Intune](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/microsoft-intune) als Autorisierungsquelle für alle Workloads zur Geräteverwaltung.
 
--   [**Bereitstellen von Geräten mit privilegiertem Zugriff:** ](/security/compass/privileged-access-devices#device-roles-and-profiles) Verwenden Sie den privilegierten Zugriff zum Verwalten von Microsoft 365 und Azure AD.
+-   [**Bereitstellen von Geräten mit privilegiertem Zugriff:**](/security/compass/privileged-access-devices#device-roles-and-profiles) Verwenden Sie den privilegierten Zugriff zum Verwalten von Microsoft 365 und Azure AD.
 
 ## <a name="workloads-applications-and-resources"></a>Workloads, Anwendungen und Ressourcen 
 

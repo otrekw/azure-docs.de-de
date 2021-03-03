@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: jlian
-ms.openlocfilehash: 70cea7a388c07bee9caa2e25e4061a3d3bb2b460
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 6f326bafb311acedc48c5a349c78f1cd6bcebc87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633610"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661153"
 ---
 # <a name="iot-hub-classic-ip-filter-and-how-to-upgrade"></a>Klassischer IP-Filter für IoT Hub und Vorgehensweise zum Aktualisieren 
 
@@ -88,7 +88,7 @@ Die Sicherheit ist bei jeder IoT-Lösung, die auf Azure IoT Hub basiert, ein wic
 
 Wenn es hilfreich ist, die IoT Hub-Endpunkte für bestimmte IP-Adressen zu blockieren, gibt es zwei spezifische Anwendungsfälle:
 
-* Der IoT Hub sollte nur Datenverkehr aus einem angegebenen Bereich von IP-Adressen empfangen und den anderen Datenverkehr ablehnen. Ein Beispiel hierfür ist, wenn Sie IoT Hub mit [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) verwenden, um private Verbindungen zwischen IoT Hub und Ihrer lokalen Infrastruktur zu erstellen.
+* Der IoT Hub sollte nur Datenverkehr aus einem angegebenen Bereich von IP-Adressen empfangen und den anderen Datenverkehr ablehnen. Ein Beispiel hierfür ist, wenn Sie IoT Hub mit [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) verwenden, um private Verbindungen zwischen IoT Hub und Ihrer lokalen Infrastruktur zu erstellen.
 
 * Sie müssen Datenverkehr von IP-Adressen ablehnen, die vom IoT Hub-Administrator als verdächtig eingestuft wurden.
 
@@ -141,7 +141,7 @@ Wählen Sie zum Löschen einer IP-Filterregel das Papierkorbsymbol in dieser Zei
 
 ### <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Abrufen und Aktualisieren von IP-Filtern über die Azure-Befehlszeilenschnittstelle
 
-Die IP-Filter für Ihren IoT Hub können über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/) abgerufen und aktualisiert werden.
+Die IP-Filter für Ihren IoT Hub können über die [Azure-Befehlszeilenschnittstelle](/cli/azure/) abgerufen und aktualisiert werden.
 
 Wenn Sie die aktuellen IP-Filter für Ihren IoT Hub abrufen möchten, führen Sie Folgendes aus:
 
@@ -215,7 +215,7 @@ $iothubResource | Set-AzResource -Force
 
 ### <a name="update-ip-filter-rules-using-rest"></a>Aktualisieren von IP-Filterregeln mit REST
 
-Möglicherweise müssen Sie den IP-Filter für Ihren IoT Hub auch über den REST-Endpunkt des Azure-Ressourcenanbieters abrufen und ändern. Lesen Sie dazu `properties.ipFilterRules` unter [createorupdate-Methode](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate).
+Möglicherweise müssen Sie den IP-Filter für Ihren IoT Hub auch über den REST-Endpunkt des Azure-Ressourcenanbieters abrufen und ändern. Lesen Sie dazu `properties.ipFilterRules` unter [createorupdate-Methode](/rest/api/iothub/iothubresource/createorupdate).
 
 ### <a name="ip-filter-rule-evaluation"></a>Auswertung von IP-Filterregeln
 

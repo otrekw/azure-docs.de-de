@@ -6,20 +6,20 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 582dafba40012e9ff9c59bc09adb1a0831e999f5
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: b6ce9e77421df0563810fd7f8255720c1fd2d0c0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491221"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591081"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Überwachen von Azure Functions mit Azure Monitor-Protokollen
 
-Azure Functions bietet eine Integration in [Azure Monitor-Protokolle](../azure-monitor/platform/data-platform-logs.md) zum Überwachen von Funktionen. In diesem Artikel wird veranschaulicht, wie Sie Azure Functions zum Senden von systemseitig generierten sowie von benutzergenerierten Protokollen an Azure Monitor-Protokolle konfigurieren.
+Azure Functions bietet eine Integration in [Azure Monitor-Protokolle](../azure-monitor/logs/data-platform-logs.md) zum Überwachen von Funktionen. In diesem Artikel wird veranschaulicht, wie Sie Azure Functions zum Senden von systemseitig generierten sowie von benutzergenerierten Protokollen an Azure Monitor-Protokolle konfigurieren.
 
-Azure Monitor-Protokolle bieten Ihnen die Möglichkeit, Protokolle aus unterschiedlichen Ressourcen im selben Arbeitsbereich zu konsolidieren, wo Sie mit [Abfragen](../azure-monitor/log-query/log-query-overview.md) analysiert werden können, um gesammelte Daten schnell abzurufen, zu konsolidieren und zu analysieren.  Sie können Abfragen mit [Log Analytics](../azure-monitor/log-query/log-query-overview.md) im Azure-Portal erstellen und testen und die Daten dann entweder mit diesen Tools direkt analysieren oder Abfragen zur Verwendung mit [Visualisierungen](../azure-monitor/visualizations.md) oder [Warnungsregeln](../azure-monitor/platform/alerts-overview.md) speichern.
+Azure Monitor-Protokolle bieten Ihnen die Möglichkeit, Protokolle aus unterschiedlichen Ressourcen im selben Arbeitsbereich zu konsolidieren, wo Sie mit [Abfragen](../azure-monitor/logs/log-query-overview.md) analysiert werden können, um gesammelte Daten schnell abzurufen, zu konsolidieren und zu analysieren.  Sie können Abfragen mit [Log Analytics](../azure-monitor/logs/log-query-overview.md) im Azure-Portal erstellen und testen und die Daten dann entweder mit diesen Tools direkt analysieren oder Abfragen zur Verwendung mit [Visualisierungen](../azure-monitor/visualizations.md) oder [Warnungsregeln](../azure-monitor/alerts/alerts-overview.md) speichern.
 
-Azure Monitor verwendet eine Version der von Azure Data Explorer verwendeten [Abfragesprache Kusto](/azure/kusto/query/), die für einfache Protokollabfragen geeignet ist, aber auch erweiterte Funktionen enthält, z.B. Aggregationen, Verknüpfungen und intelligente Analysen. Sie können die Abfragesprache schnell erlernen, indem Sie [mehrere Lektionen](../azure-monitor/log-query/get-started-queries.md) nutzen.
+Azure Monitor verwendet eine Version der von Azure Data Explorer verwendeten [Abfragesprache Kusto](/azure/kusto/query/), die für einfache Protokollabfragen geeignet ist, aber auch erweiterte Funktionen enthält, z.B. Aggregationen, Verknüpfungen und intelligente Analysen. Sie können die Abfragesprache schnell erlernen, indem Sie [mehrere Lektionen](../azure-monitor/logs/get-started-queries.md) nutzen.
 
 > [!NOTE]
 > Die Integration mit Azure Monitor-Protokollen befindet sich derzeit in der öffentlichen Vorschauphase für Funktions-Apps der Version 2 und Version 3, die unter den Windows-Hostingplänen „Nutzung“, „Premium“ und „Dedicated“ ausgeführt werden.
@@ -124,5 +124,5 @@ FunctionAppLogs
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Lesen Sie die [Übersicht zu Azure Functions](functions-overview.md).
-- Weitere Informationen zu [Azure Monitor-Protokollen](../azure-monitor/platform/data-platform-logs.md).
-- Erfahren Sie mehr über die [Abfragesprache](../azure-monitor/log-query/get-started-queries.md).
+- Weitere Informationen zu [Azure Monitor-Protokollen](../azure-monitor/logs/data-platform-logs.md).
+- Erfahren Sie mehr über die [Abfragesprache](../azure-monitor/logs/get-started-queries.md).

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 88c287c4aa87b4df41bfe6bbc1992262b21d07aa
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 190a9e431dedfb0f0fe6077e903174f253f5c773
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232759"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589110"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>Verwenden von Erkenntnissen zum Überwachen und Konfigurieren Ihrer Azure Load Balancer-Instanz
 
@@ -40,7 +40,7 @@ Für Load Balancer Standard werden Ihre Back-End-Pool-Ressourcen gemäß dem Int
 
 ## <a name="metrics-dashboard"></a>Metrikdashboard
 
-Sie können auf dem Blatt „Erkenntnisse“ Ihrer Load Balancer-Instanz ausführlichere Metriken auswählen, um eine vorkonfigurierte [Azure Monitor-Arbeitsmappe](../azure-monitor/platform/workbooks-overview.md) mit visuellen Elementen zu Metriken anzuzeigen, die für bestimmte Aspekte Ihrer Load Balancer-Instanz wichtig sind. Ganz oben auf diesem Dashboard werden der Load Balancer-Status und Links zu relevanter Dokumentation angezeigt.
+Sie können auf dem Blatt „Erkenntnisse“ Ihrer Load Balancer-Instanz ausführlichere Metriken auswählen, um eine vorkonfigurierte [Azure Monitor-Arbeitsmappe](../azure-monitor/visualize/workbooks-overview.md) mit visuellen Elementen zu Metriken anzuzeigen, die für bestimmte Aspekte Ihrer Load Balancer-Instanz wichtig sind. Ganz oben auf diesem Dashboard werden der Load Balancer-Status und Links zu relevanter Dokumentation angezeigt.
 
 Als Erstes wird die Registerkarte „Übersicht“ angezeigt. Sie können durch die verfügbaren Registerkarten navigieren, die jeweils visuelle Elemente zu einem bestimmten Aspekt Ihrer Load Balancer-Instanz enthalten. Unten auf jeder Registerkarte des Dashboards finden Sie passende Anleitungen.
 
@@ -80,4 +80,4 @@ Die Registerkarte „Metrikdefinitionen“ enthält alle im Artikel [Mehrdimensi
 * Sehen Sie sich das Dashboard an, und geben Sie über den unten stehenden Link Feedback, wenn Sie Verbesserungsvorschläge haben.
 * [Lesen Sie die Dokumentation zu Metriken, um zu verstehen, wie die einzelnen Metriken berechnet werden.](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)
 * [Erstellen Sie Verbindungsmonitore für Ihre Load Balancer-Instanzen.](../network-watcher/connection-monitor.md)
-* [Erstellen Sie Ihre eigenen Arbeitsmappen.](../azure-monitor/platform/workbooks-overview.md) Anregungen erhalten Sie durch Klicken auf die Schaltfläche „Bearbeiten“ auf Ihrem detaillierten Metrikdashboard.
+* [Erstellen Sie Ihre eigenen Arbeitsmappen.](../azure-monitor/visualize/workbooks-overview.md) Anregungen erhalten Sie durch Klicken auf die Schaltfläche „Bearbeiten“ auf Ihrem detaillierten Metrikdashboard.

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 2/2/2021
 ms.author: mimckitt
 ms.custom: rybaker, chmimckitt
-ms.openlocfilehash: 744f265251e9f58ce91085f0e5dd5d1ad13eec69
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 6e6f6ced1cdba429abd914354a5eba861ab127ec
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625110"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670043"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Informationen zum Bereitstellen von Windows 10 unter Azure mit mehrinstanzenfähigen Hostingrechten 
 Für Kunden mit Windows 10 Enterprise E3/E5 pro Benutzer oder Windows Virtual Desktop Access pro Benutzer (Benutzerabonnementlizenzen oder Add-On-Benutzerabonnementlizenzen) können Sie Ihre Windows 10-Lizenzen mittels mehrinstanzenfähiger Hostingrechte für Windows 10 in der Cloud verwenden und virtuelle Windows 10-Computer in Azure ausführen, ohne eine weitere Lizenz erwerben zu müssen. Rechte für das Hosten mehrerer Mandanten sind nur für Windows 10 (Version 1703 oder höher) verfügbar.
@@ -26,7 +26,7 @@ Weitere Informationen finden Sie unter [Mehrinstanzenfähiges Hosting für Windo
 
 ## <a name="subscription-licenses-that-qualify-for-multitenant-hosting-rights"></a>Abonnementlizenzen, die sich für das Hosten mehrerer Mandanten qualifizieren
 
-Mithilfe des [Microsoft Admin Centers](https://docs.microsoft.com/microsoft-365/admin/admin-overview/about-the-admin-center?view=o365-worldwide&preserve-view=true) können Sie überprüfen, ob einem Benutzer eine von Windows 10 unterstützte Lizenz zugewiesen wurde.
+Mithilfe des [Microsoft Admin Centers](/microsoft-365/admin/admin-overview/about-the-admin-center?preserve-view=true&view=o365-worldwide) können Sie überprüfen, ob einem Benutzer eine von Windows 10 unterstützte Lizenz zugewiesen wurde.
 
 > [!IMPORTANT]
 > Benutzer müssen über eine der unten aufgeführten Abonnementlizenzen verfügen, um Windows 10-Images in Azure verwenden zu können. Wenn Sie nicht über eine dieser Abonnementlizenzen verfügen, können Sie diese über Ihren [Cloud Service Partner](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/) oder direkt über [Microsoft](https://www.microsoft.com/microsoft-365?rtc=1) erwerben.

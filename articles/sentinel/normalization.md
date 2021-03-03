@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 3d9e436d636fbd5414367efb0e122748a8e9e2cb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 35b3f4fe5703e9ce902553f992dfa44cea7db78f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390809"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570446"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Normalisierung in Azure Sentinel
 
@@ -147,7 +147,7 @@ Sobald die Funktion geändert wurde, klicken Sie erneut auf „Speichern“, und
 
 JSON-, XML- und CSV-Daten sind besonders gut für die Datenverarbeitung zur Abfragezeit geeignet. Azure Sentinel verfügt über integrierte Analysefunktionen für JSON-, XML- und CSV-Daten und über ein Tool für die JSON-Analyse.  Weitere Informationen finden Sie im Blogbeitrag zum [Verwenden von JSON-Feldern in Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/tip-easily-use-json-fields-in-sentinel/ba-p/768747). 
 
-Erfahren Sie mehr über [gespeicherte Abfragen](../azure-monitor/log-query/example-queries.md) (die Implementierung der Abfragezeitparser) in Log Analytics.
+Erfahren Sie mehr über [gespeicherte Abfragen](../azure-monitor/logs/example-queries.md) (die Implementierung der Abfragezeitparser) in Log Analytics.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

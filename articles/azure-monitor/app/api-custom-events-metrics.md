@@ -4,12 +4,12 @@ description: Fügen Sie einige Codezeilen in Ihrer Geräte- oder Desktop-App, We
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 72e79ff90422a6f055d5b883ba208555244687b3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 881c657b25d04834d83221c738c578b8281752b7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927812"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593741"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API für benutzerdefinierte Ereignisse und Metriken
 
@@ -108,7 +108,7 @@ In Node.js-Projekten können Sie `new applicationInsights.TelemetryClient(instru
 
 ## <a name="trackevent"></a>TrackEvent
 
-In Application Insights handelt es sich bei einem *benutzerdefinierten Ereignis* um einen Datenpunkt, den Sie als aggregierte Anzahl im [Metrik-Explorer](../platform/metrics-charts.md) und als einzelne Vorkommen in der [Diagnosesuche](./diagnostic-search.md) anzeigen können. (Er gehört nicht zu MVC oder anderen Ereignissen des Frameworks.)
+In Application Insights handelt es sich bei einem *benutzerdefinierten Ereignis* um einen Datenpunkt, den Sie als aggregierte Anzahl im [Metrik-Explorer](../essentials/metrics-charts.md) und als einzelne Vorkommen in der [Diagnosesuche](./diagnostic-search.md) anzeigen können. (Er gehört nicht zu MVC oder anderen Ereignissen des Frameworks.)
 
 Fügen Sie `TrackEvent`-Aufrufe in Ihrem Code ein, um verschiedene Ereignisse zu zählen – beispielsweise, wie oft Benutzer ein bestimmtes Feature auswählen, bestimmte Ziele erreichen oder bestimmte Arten von Fehlern machen.
 
@@ -146,7 +146,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Benutzerdefinierte Ereignisse in Analytics
 
-Die Telemetrie ist in der Tabelle `customEvents` auf der [Registerkarte mit Application Insights-Protokollen](../log-query/log-query-overview.md) oder auf der [Oberfläche zur Verwendungsanalyse](usage-overview.md) verfügbar. Ereignisse können aus `trackEvent(..)` oder dem [Plug-In für die automatische Erfassung von Klickanalysen](javascript-click-analytics-plugin.md) stammen.
+Die Telemetrie ist in der Tabelle `customEvents` auf der [Registerkarte mit Application Insights-Protokollen](../logs/log-query-overview.md) oder auf der [Oberfläche zur Verwendungsanalyse](usage-overview.md) verfügbar. Ereignisse können aus `trackEvent(..)` oder dem [Plug-In für die automatische Erfassung von Klickanalysen](javascript-click-analytics-plugin.md) stammen.
 
  
 
@@ -204,7 +204,7 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 ### <a name="custom-metrics-in-analytics"></a>Benutzerdefinierte Metriken in der Analyse
 
-Die Telemetrie ist in der Tabelle `customMetrics` in [Application Insights Analytics](../log-query/log-query-overview.md) verfügbar. Jede Zeile stellt einen Aufruf von `trackMetric(..)` in der App dar.
+Die Telemetrie ist in der Tabelle `customMetrics` in [Application Insights Analytics](../logs/log-query-overview.md) verfügbar. Jede Zeile stellt einen Aufruf von `trackMetric(..)` in der App dar.
 
 * `valueSum`: Dies ist die Summe der Messwerte. Den Mittelwert erhalten Sie, indem Sie eine Division durch `valueCount` ausführen.
 * `valueCount`: Die Anzahl der Messwerte, die in diesem `trackMetric(..)`-Aufruf aggregiert wurden.
@@ -274,7 +274,7 @@ Die resultierenden Zeiten für das Laden der Seite, die im Metrik-Explorer angez
 
 ### <a name="page-telemetry-in-analytics"></a>Seitentelemetrie in Analytics
 
-In [Analytics](../log-query/log-query-overview.md) werden Daten aus Browservorgängen in zwei Tabellen angezeigt:
+In [Analytics](../logs/log-query-overview.md) werden Daten aus Browservorgängen in zwei Tabellen angezeigt:
 
 * Die Tabelle `pageViews` enthält Daten über die URL und den Seitentitel.
 * Die Tabelle `browserTimings` enthält Daten über die Leistung des Clients, z.B. die angefallene Zeit zum Verarbeiten der eingehenden Daten.
@@ -310,7 +310,7 @@ Es wird jedoch empfohlen, Telemetrieanforderungen zu senden, bei denen die Anfor
 
 ## <a name="operation-context"></a>Vorgangskontext
 
-Sie können Telemetrieelemente zusammen korrelieren, indem Sie sie dem Vorgangskontext zuordnen. Das standardmäßige Anforderungsnachverfolgungs-Modul führt dies für Ausnahmen und andere Ereignisse aus, die beim Verarbeiten einer HTTP-Anforderung gesendet werden. Unter [Suche](./diagnostic-search.md) und [Analyse](../log-query/log-query-overview.md) können Sie anhand der Vorgangs-ID leicht Ereignisse finden, die der Anforderung zugeordnet sind.
+Sie können Telemetrieelemente zusammen korrelieren, indem Sie sie dem Vorgangskontext zuordnen. Das standardmäßige Anforderungsnachverfolgungs-Modul führt dies für Ausnahmen und andere Ereignisse aus, die beim Verarbeiten einer HTTP-Anforderung gesendet werden. Unter [Suche](./diagnostic-search.md) und [Analyse](../logs/log-query-overview.md) können Sie anhand der Vorgangs-ID leicht Ereignisse finden, die der Anforderung zugeordnet sind.
 
 Ausführlichere Informationen zur Korrelation finden Sie unter [Telemetriekorrelation in Application Insights](./correlation.md).
 
@@ -348,7 +348,7 @@ Weitere Informationen zur Nachverfolgung benutzerdefinierter Vorgänge finden Si
 
 ### <a name="requests-in-analytics"></a>Anforderungen in Analytics
 
-In [Application Insights Analytics](../log-query/log-query-overview.md) werden Anforderungen in der Tabelle `requests` angezeigt.
+In [Application Insights Analytics](../logs/log-query-overview.md) werden Anforderungen in der Tabelle `requests` angezeigt.
 
 Wenn die [Stichprobenentnahme](./sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackRequest() nur einer übertragen wurde. Um die richtige Anzahl der Anforderungen und die durchschnittliche Dauer nach Anforderungsnamen segmentiert abzurufen, verwenden Sie beispielsweise folgenden Code:
 
@@ -361,7 +361,7 @@ requests
 
 Ziele beim Senden von Ausnahmen an Application Insights:
 
-* Durchführen einer [Zählung](../platform/metrics-charts.md) als Hinweis auf die Häufigkeit eines Problems
+* Durchführen einer [Zählung](../essentials/metrics-charts.md) als Hinweis auf die Häufigkeit eines Problems
 * [Untersuchen einzelner Vorkommen](./diagnostic-search.md)
 
 Die Berichte enthalten die Stapelüberwachung.
@@ -430,7 +430,7 @@ Die SDKs viele Ausnahmen automatisch abfangen, müssen Sie TrackException nicht 
 
 ### <a name="exceptions-in-analytics"></a>Ausnahmen in Analytics
 
-In [Application Insights Analytics](../log-query/log-query-overview.md) werden Ausnahmen in der Tabelle `exceptions` angezeigt.
+In [Application Insights Analytics](../logs/log-query-overview.md) werden Ausnahmen in der Tabelle `exceptions` angezeigt.
 
 Wenn die [Stichprobenentnahme](./sampling.md) aktiv ist, wird für die Eigenschaft `itemCount` ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackException() nur einer übertragen wurde. Um die richtige Anzahl der Ausnahmen segmentiert nach Ausnahmetyp abzurufen, geben Sie beispielsweise folgenden Code ein:
 
@@ -525,7 +525,7 @@ Unter [Search](./diagnostic-search.md) können Sie dann leicht alle Nachrichten 
 
 ### <a name="traces-in-analytics"></a>Ablaufverfolgungen in Analytics
 
-In [Application Insights Analytics](../log-query/log-query-overview.md) werden Aufrufe von TrackTrace in der Tabelle `traces` angezeigt.
+In [Application Insights Analytics](../logs/log-query-overview.md) werden Aufrufe von TrackTrace in der Tabelle `traces` angezeigt.
 
 Wenn die [Stichprobenentnahme](./sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. „itemCount==10“ bedeutet beispielsweise, dass bei der Stichprobenentnahme von zehn `trackTrace()`-Aufrufen nur einer übertragen wurde. Zum Abrufen der richtigen Anzahl von Ablaufverfolgungsaufrufen sollten Sie daher Code wie `traces | summarize sum(itemCount)` verwenden.
 
@@ -607,7 +607,7 @@ Wenn Sie das Standardmodul zum Nachverfolgen von Abhängigkeiten in C# deaktivie
 
 ### <a name="dependencies-in-analytics"></a>Abhängigkeiten in Analytics
 
-In [Application Insights Analytics](../log-query/log-query-overview.md) werden trackDependency-Aufrufe in der Tabelle `dependencies` angezeigt.
+In [Application Insights Analytics](../logs/log-query-overview.md) werden trackDependency-Aufrufe in der Tabelle `dependencies` angezeigt.
 
 Wenn die [Stichprobenentnahme](./sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackDependency() nur einer übertragen wurde. Um die richtige Anzahl der Abhängigkeiten segmentiert nach Zielkomponente abzurufen, verwenden Sie beispielsweise folgenden Code:
 
@@ -695,7 +695,7 @@ Wenn bei Ihrer App Benutzer in Konten gruppiert werden, können Sie auch einen B
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-Im [Metrik-Explorer](../platform/metrics-charts.md) können Sie ein Diagramm erstellen, das **authentifizierte Benutzer** und **Benutzerkonten** zählt.
+Im [Metrik-Explorer](../essentials/metrics-charts.md) können Sie ein Diagramm erstellen, das **authentifizierte Benutzer** und **Benutzerkonten** zählt.
 
 Sie können auch nach Clientdatenpunkten mit bestimmten Benutzernamen und Konten [suchen](./diagnostic-search.md).
 
@@ -816,7 +816,7 @@ telemetry.TrackEvent(event);
 
 ### <a name="custom-measurements-and-properties-in-analytics"></a>Benutzerdefinierte Messungen und Eigenschaften in Analytics
 
-In [Analytics](../log-query/log-query-overview.md) werden benutzerdefinierte Metriken und Eigenschaften in den Attributen `customMeasurements` und `customDimensions` jedes Telemetriedatensatzes angezeigt.
+In [Analytics](../logs/log-query-overview.md) werden benutzerdefinierte Metriken und Eigenschaften in den Attributen `customMeasurements` und `customDimensions` jedes Telemetriedatensatzes angezeigt.
 
 Wenn Sie der Anforderungstelemetrie beispielsweise die Eigenschaft „game“ hinzugefügt haben, werden bei dieser Abfrage die Vorkommen verschiedener Werte von „game“ gezählt, und der Durchschnitt der benutzerdefinierten Metrik „score“ wird angezeigt:
 

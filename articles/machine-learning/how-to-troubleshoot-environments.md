@@ -10,12 +10,12 @@ ms.author: sagopal
 ms.date: 12/3/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: 7ddd5dec87a122a0b36fee17b5434c8a49dcf434
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5b2f62e8e04bddadc7068eb75405bcf1568f5713
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881634"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657297"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>Problembehandlung für Buildvorgänge für Umgebungsimages
 
@@ -153,8 +153,8 @@ In den folgenden Szenarien finden Sie Informationen zur Problembehandlung bei di
 
 Mögliche Probleme:
 - Der Pfadname für die Containerregistrierung wird möglicherweise nicht richtig aufgelöst. Überprüfen Sie, ob für Imagenamen doppelte Schrägstriche verwendet werden und ob die Richtung der Schrägstriche auf den Linux- bzw. Windows-Hosts korrekt ist.
-- Wenn eine Containerregistrierung hinter einem virtuellen Netzwerk einen privaten Endpunkt in einer [nicht unterstützten Region](/azure/private-link/private-link-overview#availability) verwendet, sollten Sie die Containerregistrierung über das Portal mit dem Dienstendpunkt (öffentlicher Zugriff) konfigurieren und den Vorgang dann wiederholen.
-- Nachdem Sie die Containerregistrierung hinter einem virtuellen Netzwerk platziert haben, führen Sie die [Azure Resource Manager-Vorlage](/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry) aus, damit der Arbeitsbereich mit der Instanz der Containerregistrierung kommunizieren kann.
+- Wenn eine Containerregistrierung hinter einem virtuellen Netzwerk einen privaten Endpunkt in einer [nicht unterstützten Region](../private-link/private-link-overview.md#availability) verwendet, sollten Sie die Containerregistrierung über das Portal mit dem Dienstendpunkt (öffentlicher Zugriff) konfigurieren und den Vorgang dann wiederholen.
+- Nachdem Sie die Containerregistrierung hinter einem virtuellen Netzwerk platziert haben, führen Sie die [Azure Resource Manager-Vorlage](./how-to-network-security-overview.md) aus, damit der Arbeitsbereich mit der Instanz der Containerregistrierung kommunizieren kann.
 
 ### <a name="you-get-a-401-error-from-a-workspace-container-registry"></a>Sie erhalten einen 401-Fehler von der Containerregistrierung eines Arbeitsbereichs
 
@@ -166,7 +166,7 @@ Wenn gerade ein Buildvorgang für ein Image durchgeführt wird, wird Conda vom S
 
 ### <a name="your-custom-docker-image-isnt-in-the-registry"></a>Ihr benutzerdefiniertes Docker-Image befindet sich nicht in der Registrierung
 
-Überprüfen Sie, ob das [richtige Tag](/azure/machine-learning/how-to-use-environments#create-an-environment) verwendet wird und Folgendes gilt: `user_managed_dependencies = True`. Mit `Environment.python.user_managed_dependencies = True` wird Conda deaktiviert, und es werden die installierten Pakete des Benutzers verwendet.
+Überprüfen Sie, ob das [richtige Tag](./how-to-use-environments.md#create-an-environment) verwendet wird und Folgendes gilt: `user_managed_dependencies = True`. Mit `Environment.python.user_managed_dependencies = True` wird Conda deaktiviert, und es werden die installierten Pakete des Benutzers verwendet.
 
 ### <a name="you-get-one-of-the-following-common-virtual-network-issues"></a>Sie erhalten eines der folgenden allgemeinen Probleme mit dem virtuellen Netzwerk
 
@@ -184,9 +184,9 @@ Wenn gerade ein Buildvorgang für ein Image durchgeführt wird, wird Conda vom S
 
 ### <a name="you-cant-run-experiments-when-storage-has-network-security-enabled"></a>Ausführung von Experimenten nicht möglich, wenn für Speicher die Netzwerksicherheit aktiviert ist
 
-Wenn Sie Docker-Standardimages nutzen und vom Benutzer verwaltete Abhängigkeiten aktiviert haben, verwenden Sie die [Diensttags](/azure/machine-learning/how-to-enable-virtual-network) „MicrosoftContainerRegistry“ und „AzureFrontDoor.FirstParty“, um Azure Container Registry und die zugehörigen Abhängigkeiten auf die Positivliste zu setzen.
+Wenn Sie Docker-Standardimages nutzen und vom Benutzer verwaltete Abhängigkeiten aktiviert haben, verwenden Sie die [Diensttags](./how-to-network-security-overview.md) „MicrosoftContainerRegistry“ und „AzureFrontDoor.FirstParty“, um Azure Container Registry und die zugehörigen Abhängigkeiten auf die Positivliste zu setzen.
 
- Weitere Informationen finden Sie unter [Aktivieren virtueller Netzwerke](/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry).
+ Weitere Informationen finden Sie unter [Aktivieren virtueller Netzwerke](./how-to-network-security-overview.md).
 
 ### <a name="you-need-to-create-an-icm"></a>Erstellen eines ICM-Tickets erforderlich
 

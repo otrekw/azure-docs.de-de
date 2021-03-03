@@ -1,33 +1,33 @@
 ---
 title: Metadateneigenschaften von Inhalten
 titleSuffix: Azure Cognitive Search
-description: Metadateneigenschaften von Blobs können Inhalte für Felder in einem Suchindex oder Informationen liefern, die das Indizierungsverhalten zur Laufzeit bestimmen. In diesem Artikel sind die von Azure Cognitive Search unterstützten Metadateneigenschaften aufgeführt.
+description: Metadateneigenschaften von Dokumenten können Inhalte für Felder in einem Suchindex oder Informationen liefern, die das Indizierungsverhalten zur Laufzeit bestimmen. In diesem Artikel sind die von Azure Cognitive Search unterstützten Metadateneigenschaften aufgeführt.
 manager: nitinme
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: 79443785dbd8619e22358631c9c36a3da4ef2e84
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.date: 02/22/2021
+ms.openlocfilehash: cbb35f596a1d32816d1a73b462bf590d9dde0d52
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99477286"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668417"
 ---
-# <a name="content-metadata-properties-used-in-blob-indexing-in-azure-cognitive-search"></a>Metadateneigenschaften von Inhalten, die bei der Blobindizierung in Azure Cognitive Search verwendet werden
+# <a name="content-metadata-properties-used-in-azure-cognitive-search"></a>Metadateneigenschaften von Inhalten, die in Azure Cognitive Search verwendet werden
 
-Blobs können verschiedene Inhalte aufweisen, von denen viele über Metadateneigenschaften verfügen, die bei der Indizierung von Blobs nützlich sein können. So wie Sie Suchfelder für standardmäßige Blobeigenschaften wie **`metadata_storage_name`** erstellen können, lassen sich auch Felder für Metadateneigenschaften erstellen, die für ein Dokumentformat spezifisch sind.
+SharePoint Online und Azure Blob Storage können verschiedene Inhalte enthalten, und viele dieser Inhaltstypen weisen Metadateneigenschaften auf, die für die Indizierung nützlich sein können. So wie Sie Suchfelder für standardmäßige Blobeigenschaften wie **`metadata_storage_name`** erstellen können, lassen sich auch Felder für Metadateneigenschaften erstellen, die für ein Dokumentformat spezifisch sind.
 
 ## <a name="supported-document-formats"></a>Unterstützte Dokumentformate
 
-Azure Cognitive Search unterstützt die Blobindizierung für die folgenden Dokumentformate:
+Azure Cognitive Search unterstützt die Blobindizierung und die SharePoint Online-Dokumentindizierung für die folgenden Dokumentformate:
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
 ## <a name="properties-by-document-format"></a>Eigenschaften nach Dokumentformat
 
-In der folgenden Tabelle sind die Verarbeitungsschritte für jedes Dokumentformat zusammengefasst. Es werden die Metadateneigenschaften beschrieben, die von einem Blobindexer extrahiert werden.
+In der folgenden Tabelle sind die Verarbeitungsschritte für jedes Dokumentformat zusammengefasst. Es werden die Metadateneigenschaften beschrieben, die von einem Blobindexer und dem SharePoint Online-Indexer extrahiert werden.
 
 | Dokumentformat/Inhaltstyp | Extrahierte Metadaten | Verarbeitungsdetails |
 | --- | --- | --- |
@@ -62,3 +62,4 @@ In der folgenden Tabelle sind die Verarbeitungsschritte für jedes Dokumentforma
 * [Indexer in der kognitiven Azure-Suche](search-indexer-overview.md)
 * [Verstehen von Blob Storage-Daten mithilfe von KI](search-blob-ai-integration.md)
 * [Übersicht über Blobindizierung](search-blob-storage-integration.md)
+* [SharePoint Online-Indizierung](search-howto-index-sharepoint-online.md)

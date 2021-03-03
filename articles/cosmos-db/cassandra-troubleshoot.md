@@ -5,14 +5,14 @@ author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
-ms.date: 12/01/2020
+ms.date: 03/02/2021
 ms.author: thvankra
-ms.openlocfilehash: 6d9a74729768a326379b5efddb864a4fee02fa59
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: f9b6e586879b8697660ced7aa6f1e75083e3ee29
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493214"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658570"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>Behandeln häufiger Probleme in der Cassandra-API von Azure Cosmos DB
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -32,7 +32,7 @@ Im Anschluss folgen einige gängige Ursachen und Lösungen:
 Ihnen wird unter Umständen der folgende Fehler angezeigt: `Cannot connect to any host, scheduling retry in 600000 milliseconds` 
 
 ### <a name="solution"></a>Lösung
-Hierbei kann es sich um eine clientseitige SNAT-Auslastung handeln. Gehen Sie wie unter [Verwenden von SNAT für ausgehende Verbindungen](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) beschrieben vor, um dieses Problem auszuschließen. Es kann sich aber auch um ein Leerlauftimeoutproblem handeln. (Das Leerlauftimeout von Azure Load Balancer ist standardmäßig auf vier Minuten festgelegt.) Weitere Informationen finden Sie in der Dokumentation unter [Konfigurieren der TCP-Zurücksetzung und des Leerlauftimeouts für Azure Load Balancer](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal). Aktivieren Sie TCP-Keep-Alive über die Treibereinstellungen (wie [hier](#enable-keep-alive-for-java-driver) zu sehen), und legen Sie das Intervall `keepAlive` für das Betriebssystem auf weniger als vier Minuten fest.
+Hierbei kann es sich um eine clientseitige SNAT-Auslastung handeln. Gehen Sie wie unter [Verwenden von SNAT für ausgehende Verbindungen](../load-balancer/load-balancer-outbound-connections.md) beschrieben vor, um dieses Problem auszuschließen. Es kann sich aber auch um ein Leerlauftimeoutproblem handeln. (Das Leerlauftimeout von Azure Load Balancer ist standardmäßig auf vier Minuten festgelegt.) Weitere Informationen finden Sie in der Dokumentation unter [Konfigurieren der TCP-Zurücksetzung und des Leerlauftimeouts für Azure Load Balancer](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal). Aktivieren Sie TCP-Keep-Alive über die Treibereinstellungen (wie [hier](#enable-keep-alive-for-java-driver) zu sehen), und legen Sie das Intervall `keepAlive` für das Betriebssystem auf weniger als vier Minuten fest.
 
  
 

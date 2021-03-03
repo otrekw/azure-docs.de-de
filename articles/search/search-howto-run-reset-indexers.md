@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: 06f9d336bb04aa26cea4ebcdae1cfd045e1c2a1b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bf8a4e51e23f438265af706914a6bc73ec30f64d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361246"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667670"
 ---
 # <a name="how-to-run-or-reset-indexers-skills-or-documents"></a>Ausführen oder Zurücksetzen von Indexern, Kenntnissen oder Dokumenten
 
@@ -101,7 +101,7 @@ Wenn keine Fertigkeiten angegeben werden, wird das gesamte Skillset ausgeführt,
 > [!IMPORTANT] 
 > Das [Zurücksetzen von Dokumenten](/rest/api/searchservice/preview-api/reset-documents) ist nur über die Vorschau-REST-API in der öffentlichen Vorschau verfügbar. Vorschaufeatures werden wie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) beschrieben im Ist-Zustand angeboten.
 
-Die [API zum Zurücksetzen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-documents) akzeptiert eine Liste von Dokumentschlüsseln, damit Sie bestimmte Dokumente aktualisieren können. Wenn angegeben, sind die Rücksetzungsparameter unabhängig von anderen Änderungen in den zugrunde liegenden Daten allein dafür ausschlaggebend, was verarbeitet wird. Wenn z. B. seit der letzten Indexerausführung 20 Blobs hinzugefügt oder aktualisiert wurden, Sie aber nur ein Dokument zurücksetzen, wird nur dieses eine Dokument verarbeitet.
+Die [API zum Zurücksetzen von Dokumenten](/rest/api/searchservice/preview-api/reset-documents) akzeptiert eine Liste von Dokumentschlüsseln, damit Sie bestimmte Dokumente aktualisieren können. Wenn angegeben, sind die Rücksetzungsparameter unabhängig von anderen Änderungen in den zugrunde liegenden Daten allein dafür ausschlaggebend, was verarbeitet wird. Wenn z. B. seit der letzten Indexerausführung 20 Blobs hinzugefügt oder aktualisiert wurden, Sie aber nur ein Dokument zurücksetzen, wird nur dieses eine Dokument verarbeitet.
 
 Auf Dokumentbasis werden alle Felder in diesem Suchdokument mit Werten aus der Datenquelle aktualisiert. Sie können nicht auswählen, welche Felder aktualisiert werden sollen. 
 

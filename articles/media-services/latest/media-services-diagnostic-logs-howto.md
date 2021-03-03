@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1d9252a5fdf7b1c68c1bb64bd22ede8640184a0c
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 3093d20fbe0a1ded68e34e816b7fc865a237ad92
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953953"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576311"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Überwachen von Media Services-Diagnoseprotokollen
 
@@ -183,9 +183,9 @@ Unter Umständen müssen Sie bis zu fünf Minuten warten, bis das Ereignis im Sp
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Azure Monitor-Metriken](../../azure-monitor/platform/data-platform.md)
-* [Azure Monitor-Diagnoseprotokolle](../../azure-monitor/platform/platform-logs-overview.md)
-* [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure Monitor-Metriken](../../azure-monitor/data-platform.md)
+* [Azure Monitor-Diagnoseprotokolle](../../azure-monitor/essentials/platform-logs-overview.md)
+* [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../../azure-monitor/essentials/platform-logs-overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

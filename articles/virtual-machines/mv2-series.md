@@ -3,16 +3,16 @@ title: 'Mv2-Serie: Azure Virtual Machines'
 description: Hier finden Sie Spezifikationen für die virtuellen Computer der Mv2-Serie.
 author: ayshakeen
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: hpc
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 962fb8cbd4c64aa2ef625b478afa587099234617
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 52acf04b6f6cbc1acb1478c12d669465f08387a7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427633"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670303"
 ---
 # <a name="mv2-series"></a>Mv2-Serie
 
@@ -26,7 +26,7 @@ Virtuelle Computer der Mv2-Serie verfügen über Hyperthreading-Technologie von 
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 2<br>
 [Schreibbeschleunigung:](./how-to-enable-write-accelerator.md) Unterstützt<br>
-[Beschleunigter Netzwerkbetrieb:](../virtual-network/create-vm-accelerated-networking-cli.md) Unterstützt<br>
+[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
 [Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
 <br>
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: ca483d993290e4d66ba257d4cb5de7fc3c952405
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b88185a09e69b1c7bd6c6c58b8e22190b4a2e394
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660830"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576774"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Suchen nach Bedrohungen mit Azure Sentinel
 
@@ -66,7 +66,7 @@ Mit Azure Sentinel-Bedrohungssuche (Ermittlung) können Sie die folgenden Funkti
 
 ## <a name="query-language"></a>Abfragesprache 
 
-Hunting (Bedrohungssuche) in Azure Sentinel basiert auf der Kusto-Abfragesprache. Weitere Informationen zu der Abfragesprache und den unterstützten Operatoren finden Sie unter [Erste Schritte mit Azure Monitor-Protokollabfragen](../azure-monitor/log-query/get-started-queries.md).
+Hunting (Bedrohungssuche) in Azure Sentinel basiert auf der Kusto-Abfragesprache. Weitere Informationen zu der Abfragesprache und den unterstützten Operatoren finden Sie unter [Erste Schritte mit Azure Monitor-Protokollabfragen](../azure-monitor/logs/get-started-queries.md).
 
 ## <a name="public-hunting-query-github-repository"></a>Öffentliches GitHub-Repository für Bedrohungssuchabfragen (Hunting-Abfragen)
 

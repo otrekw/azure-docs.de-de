@@ -2,20 +2,24 @@
 title: 'Schnellstart: REST-API für die Formularerkennung'
 description: Verwenden Sie die REST-API der Formularerkennung, um eine Formularverarbeitungs-App zu erstellen, die Schlüssel-Wert-Paare und Tabellendaten aus Ihren benutzerdefinierten Dokumenten extrahiert.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
-ms.author: pafarley
-ms.openlocfilehash: 8ba24d5a59beade1429b9d86ed549f1dae3c2f1f
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.author: lajanuar
+ms.openlocfilehash: 08026ea04e7f997ae75f6bdb2cea09e1f41e26a3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100552905"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101102851"
 ---
+<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD034 -->
 > [!NOTE]
 > In diesem Leitfaden wird cURL genutzt, um REST-API-Aufrufe auszuführen. Im [Beispielcode auf GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest) wird veranschaulicht, wie die REST-APIs mit Python aufgerufen werden.
 
@@ -25,12 +29,11 @@ ms.locfileid: "100552905"
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services/)
 * Trainingsdaten in einem Azure Storage-Blob. Tipps und Optionen für das Zusammenstellen eines Trainingsdatasets finden Sie unter [Erstellen eines Trainingsdatasets für ein benutzerdefiniertes Modell](../../build-training-data-set.md). In dieser Schnellstartanleitung können Sie die Dateien im Ordner **Trainieren** des [Beispieldatasets](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden (*sample_data.zip* herunterladen und extrahieren).
 * Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Erstellen einer Formularerkennungsressource"  target="_blank"> im Azure-Portal eine Formularerkennungsressource <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
-    * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Formularerkennungs-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
-    * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
+  * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Formularerkennungs-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
+  * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
 * Eine URL für ein Bild eines Verkaufsbelegs. Für diesen Schnellstart können Sie ein [Beispielbild](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) verwenden.
 * Eine URL für ein Bild einer Visitenkarte. Für diesen Schnellstart können Sie ein [Beispielbild](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/business_cards/business-card-english.jpg) verwenden.
 * Eine URL für ein Bild einer Rechnung. Für diese Schnellstartanleitung können Sie ein [Beispieldokument](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf) verwenden.
-
 
 ## <a name="analyze-layout"></a>Analysieren des Layouts
 
@@ -40,18 +43,18 @@ Mit der Formularerkennung können Sie Tabellen, Auswahlmarkierungen, Text und St
 1. Ersetzen Sie `{subscription key}` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.
 1. Ersetzen Sie `\"{your-document-url}` durch eine der Beispiel-URLs.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
 
+```bash
+curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
 curl -v -i POST "https://{Endpoint}/formrecognizer/v2.0/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
 ```
 
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)    
-
-```bash
-curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
-```
 ---
 
 Sie erhalten die Antwort `202 (Success)` mit einem **Operation-Location**-Header. Der Wert dieses Headers enthält eine Vorgangs-ID, mit der Sie den Status des asynchronen Vorgangs abfragen und die Ergebnisse abrufen können. Im folgenden Beispiel ist die Zeichenfolge nach `analyzeResults/` die Vorgangs-ID.
@@ -67,18 +70,20 @@ Nachdem Sie die **[Analyze Layout](https://westcentralus.dev.cognitive.microsoft
 1. Ersetzen Sie `{Endpoint}` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `{subscription key}` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.
 1. Ersetzen Sie `{resultId}` durch die Vorgangs-ID aus dem vorherigen Schritt.
+<!-- markdownlint-disable MD024 -->
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+
+```bash
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
 curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
-
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)  
-```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
 ---
 
 ### <a name="examine-the-results"></a>Untersuchen der Ergebnisse
@@ -92,111 +97,10 @@ Vergleichen Sie das folgende Bild einer Rechnung mit der entsprechenden JSON-Aus
 
 :::image type="content" source="../../media/contoso-invoice.png" alt-text="Contoso-Projektangabedokument mit einer Tabelle":::
 
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+
 Die Ausgabe wurde zur Vereinfachung gekürzt. Auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout-output.json) finden Sie die vollständige Beispielausgabe.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-```json
-{
-    "status": "succeeded",
-    "createdDateTime": "2020-08-20T20:36:52Z",
-    "lastUpdatedDateTime": "2020-08-20T20:36:58Z",
-    "analyzeResult": {
-        "version": "2.0.0",
-        "readResults": [
-            {
-                "page": 1,
-                "language": "en",
-                "angle": 0,
-                "width": 8.5,
-                "height": 11,
-                "unit": "inch",
-                "lines": [
-                    {
-                        "boundingBox": [
-                            0.5826,
-                            0.4411,
-                            2.3387,
-                            0.4411,
-                            2.3387,
-                            0.7969,
-                            0.5826,
-                            0.7969
-                        ],
-                        "text": "Contoso, Ltd.",
-                        "words": [
-                            {
-                                "boundingBox": [
-                                    0.5826,
-                                    0.4411,
-                                    1.744,
-                                    0.4411,
-                                    1.744,
-                                    0.7969,
-                                    0.5826,
-                                    0.7969
-                                ],
-                                "text": "Contoso,",
-                                "confidence": 1
-                            },
-                            {
-                                "boundingBox": [
-                                    1.8448,
-                                    0.4446,
-                                    2.3387,
-                                    0.4446,
-                                    2.3387,
-                                    0.7631,
-                                    1.8448,
-                                    0.7631
-                                ],
-                                "text": "Ltd.",
-                                "confidence": 1
-                            }
-                        ]
-                    },
-                    ...
-                ]
-            }
-        ],
-        "pageResults": [
-            {
-                "page": 1,
-                "tables": [
-                    {
-                        "rows": 5,
-                        "columns": 5,
-                        "cells": [
-                            {
-                                "rowIndex": 0,
-                                "columnIndex": 0,
-                                "text": "Training Date",
-                                "boundingBox": [
-                                    0.5133,
-                                    4.2167,
-                                    1.7567,
-                                    4.2167,
-                                    1.7567,
-                                    4.4492,
-                                    0.5133,
-                                    4.4492
-                                ],
-                                "elements": [
-                                    "#/readResults/0/lines/14/words/0",
-                                    "#/readResults/0/lines/14/words/1"
-                                ]
-                            },
-                            ...
-                        ]
-                    },
-                    ...
-                ]
-            }
-        ]
-    }
-}
-```
-
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)   
 ```json
 {
     "status": "succeeded",
@@ -314,27 +218,124 @@ Die Ausgabe wurde zur Vereinfachung gekürzt. Auf [GitHub](https://github.com/Az
         ]
     }
 }
-``` 
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+Die Ausgabe wurde zur Vereinfachung gekürzt. Auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout-output.json) finden Sie die vollständige Beispielausgabe.
+
+```json
+{
+    "status": "succeeded",
+    "createdDateTime": "2020-08-20T20:36:52Z",
+    "lastUpdatedDateTime": "2020-08-20T20:36:58Z",
+    "analyzeResult": {
+        "version": "2.0.0",
+        "readResults": [
+            {
+                "page": 1,
+                "language": "en",
+                "angle": 0,
+                "width": 8.5,
+                "height": 11,
+                "unit": "inch",
+                "lines": [
+                    {
+                        "boundingBox": [
+                            0.5826,
+                            0.4411,
+                            2.3387,
+                            0.4411,
+                            2.3387,
+                            0.7969,
+                            0.5826,
+                            0.7969
+                        ],
+                        "text": "Contoso, Ltd.",
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.5826,
+                                    0.4411,
+                                    1.744,
+                                    0.4411,
+                                    1.744,
+                                    0.7969,
+                                    0.5826,
+                                    0.7969
+                                ],
+                                "text": "Contoso,",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.8448,
+                                    0.4446,
+                                    2.3387,
+                                    0.4446,
+                                    2.3387,
+                                    0.7631,
+                                    1.8448,
+                                    0.7631
+                                ],
+                                "text": "Ltd.",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    ...
+                ]
+            }
+        ],
+        "pageResults": [
+            {
+                "page": 1,
+                "tables": [
+                    {
+                        "rows": 5,
+                        "columns": 5,
+                        "cells": [
+                            {
+                                "rowIndex": 0,
+                                "columnIndex": 0,
+                                "text": "Training Date",
+                                "boundingBox": [
+                                    0.5133,
+                                    4.2167,
+                                    1.7567,
+                                    4.2167,
+                                    1.7567,
+                                    4.4492,
+                                    0.5133,
+                                    4.4492
+                                ],
+                                "elements": [
+                                    "#/readResults/0/lines/14/words/0",
+                                    "#/readResults/0/lines/14/words/1"
+                                ]
+                            },
+                            ...
+                        ]
+                    },
+                    ...
+                ]
+            }
+        ]
+    }
+}
+```
 
 ---
 
-
-
 ## <a name="analyze-invoices"></a>Analysieren von Rechnungen
 
-# <a name="version-20"></a>[Version 2.0](#tab/v2-0)
-
-> [!IMPORTANT]
-> Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
-
-# <a name="version-21-preview"></a>[Version 2.1 (Vorschau)](#tab/v2-1)
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
 
 Verwenden Sie den folgenden cURL-Befehl, um mit dem Analysieren einer Rechnung zu beginnen. Weitere Informationen zur Rechnungsanalyse finden Sie im [Konzeptleitfaden zu Rechnungen](../../concept-invoices.md). Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
 1. Ersetzen Sie `{Endpoint}` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `{your invoice URL}` durch die URL-Adresse eines Rechnungsdokuments.
 1. Ersetzen Sie `{subscription key}` durch Ihren Abonnementschlüssel.
-
 
 ```bash
 curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key:  {subscription key}" --data-ascii "{'source': '{your invoice URL}'}"
@@ -525,6 +526,11 @@ Dieser JSON-Inhalt wurde gekürzt, um die Lesbarkeit zu verbessern. Auf [GitHub]
 }
 ```
 
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+> [!IMPORTANT]
+> Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
+
 ---
 
 ## <a name="train-a-custom-model"></a>Trainieren eines benutzerdefinierten Modells
@@ -547,18 +553,19 @@ Um ein Formularerkennungsmodell mit den Dokumenten in Ihrem Azure-Blobcontainer 
 
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS-URL-Abruf":::
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)
-```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
-```
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
 
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)    
 ```bash
 curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
 ```
 
----
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
+```
+
+---
 
 Sie erhalten eine `201 (Success)`-Antwort mit einem **Location**-Header. Der Wert dieses Headers ist die ID des neuen Modells, das trainiert wird.
 
@@ -574,17 +581,19 @@ Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS-URL-Abruf":::
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)
-```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true }"
-```
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)    
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+
 ```bash
 curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true}"
 ```
 
----
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true }"
+```
+
+---
 
 Sie erhalten eine `201 (Success)`-Antwort mit einem **Location**-Header. Der Wert dieses Headers ist die ID des neuen Modells, das trainiert wird.
 
@@ -596,16 +605,18 @@ Nachdem Sie das Training gestartet haben, verwenden Sie einen neuen Vorgang, **[
 1. Ersetzen Sie `{subscription key}` durch Ihren Abonnementschlüssel.
 1. Ersetzen Sie `{model ID}` durch die Modell-ID, die Sie im vorherigen Schritt erhalten haben.
 
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)    
 ```bash
 curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
-    
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
 ---
 
 Sie erhalten eine `200 (Success)`-Antwort mit einem JSON-Text im folgenden Format. Beachten Sie das `"status"`-Feld. Dies hat nach Abschluss des Trainings den Wert `"ready"`. Wenn das Training des Modells noch nicht abgeschlossen ist, müssen Sie den Dienst erneut abfragen, indem Sie den Befehl erneut ausführen. Ein Intervall von mindestens einer Sekunde zwischen den Aufrufen wird empfohlen.
@@ -687,20 +698,19 @@ Als Nächstes verwenden Sie Ihr gerade trainiertes Modell, um ein Dokument zu an
 1. Ersetzen Sie `{SAS URL}` durch eine SAS-URL zu Ihrer Datei in Azure Storage. Befolgen Sie die Schritte im Abschnitt „Training“. Rufen Sie jedoch anstelle einer SAS-URL für den gesamten Blobcontainer eine URL für die zu analysierende Datei ab.
 1. Ersetzen Sie `{subscription key}` durch Ihren Abonnementschlüssel.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+
+```bash
+curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
 curl -v "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
 ```
 
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)    
-```bash
-curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
-```
-    
 ---
-
-
 
 Sie erhalten eine `202 (Success)`-Antwort mit einem **Operation-Location**-Header. Der Wert dieses Headers enthält eine Ergebnis-ID, mit der Sie die Ergebnisse des Analysevorgangs nachverfolgen können. Speichern Sie diese Ergebnis-ID für den nächsten Schritt.
 
@@ -712,14 +722,18 @@ Rufen Sie die **[Analyze Form Result](https://westcentralus.dev.cognitive.micros
 1. Ersetzen Sie `{result ID}` durch die ID, die Sie im vorherigen Abschnitt erhalten haben.
 1. Ersetzen Sie `{subscription key}` durch Ihren Abonnementschlüssel.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)    
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+
 ```bash
 curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
 ---
 
 Sie erhalten eine `200 (Success)`-Antwort mit einem JSON-Text im folgenden Format. Die Ausgabe wurde zur Vereinfachung gekürzt. Beachten Sie das `"status"`-Feld im unteren Bereich. Dies hat den Wert `"succeeded"`, wenn der Analysevorgang beendet ist. Wenn der Analysevorgang noch nicht abgeschlossen ist, müssen Sie den Dienst erneut abfragen, indem Sie den Befehl erneut ausführen. Ein Intervall von mindestens einer Sekunde zwischen den Aufrufen wird empfohlen.
@@ -728,134 +742,8 @@ In benutzerdefinierten Modellen, die ohne Bezeichnungen trainiert werden, befind
 
 Diese JSON-Beispielausgabe wurde zur Vereinfachung gekürzt. Auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/analyze-result-invoice-6.pdf.json) finden Sie die vollständige Beispielausgabe.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)
-```JSON
-{
-  "status": "succeeded",
-  "createdDateTime": "2020-08-21T00:46:25Z",
-  "lastUpdatedDateTime": "2020-08-21T00:46:32Z",
-  "analyzeResult": {
-    "version": "2.0.0",
-    "readResults": [
-      {
-        "page": 1,
-        "angle": 0,
-        "width": 8.5,
-        "height": 11,
-        "unit": "inch",
-        "lines": [
-          {
-            "text": "Project Statement",
-            "boundingBox": [
-              5.0153,
-              0.275,
-              8.0944,
-              0.275,
-              8.0944,
-              0.7125,
-              5.0153,
-              0.7125
-            ],
-            "words": [
-              {
-                "text": "Project",
-                "boundingBox": [
-                  5.0153,
-                  0.275,
-                  6.2278,
-                  0.275,
-                  6.2278,
-                  0.7125,
-                  5.0153,
-                  0.7125
-                ]
-              },
-              {
-                "text": "Statement",
-                "boundingBox": [
-                  6.3292,
-                  0.275,
-                  8.0944,
-                  0.275,
-                  8.0944,
-                  0.7125,
-                  6.3292,
-                  0.7125
-                ]
-              }
-            ]
-          }, 
-        ...
-        ]
-      }
-    ],
-    "pageResults": [
-      {
-        "page": 1,
-        "keyValuePairs": [
-          {
-            "key": {
-              "text": "Date:",
-              "boundingBox": [
-                6.9722,
-                1.0264,
-                7.3417,
-                1.0264,
-                7.3417,
-                1.1931,
-                6.9722,
-                1.1931
-              ],
-              "elements": [
-                "#/readResults/0/lines/2/words/0"
-              ]
-            },
-            "confidence": 1
-          },
-         ...
-        ],
-        "tables": [
-          {
-            "rows": 4,
-            "columns": 5,
-            "cells": [
-              {
-                "text": "Training Date",
-                "rowIndex": 0,
-                "columnIndex": 0,
-                "boundingBox": [
-                  0.6931,
-                  4.2444,
-                  1.5681,
-                  4.2444,
-                  1.5681,
-                  4.4125,
-                  0.6931,
-                  4.4125
-                ],
-                "confidence": 1,
-                "rowSpan": 1,
-                "columnSpan": 1,
-                "elements": [
-                  "#/readResults/0/lines/15/words/0",
-                  "#/readResults/0/lines/15/words/1"
-                ],
-                "isHeader": true,
-                "isFooter": false
-              },
-              ...
-            ]
-          }
-        ], 
-        "clusterId": 0
-      }
-    ],
-    "documentResults": [],
-    "errors": []
-  }
-}
-```    
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)    
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+
 ```JSON
 {
   "status": "succeeded",
@@ -997,7 +885,137 @@ Diese JSON-Beispielausgabe wurde zur Vereinfachung gekürzt. Auf [GitHub](https:
     "errors": []
   }
 }
-``` 
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+```JSON
+{
+  "status": "succeeded",
+  "createdDateTime": "2020-08-21T00:46:25Z",
+  "lastUpdatedDateTime": "2020-08-21T00:46:32Z",
+  "analyzeResult": {
+    "version": "2.0.0",
+    "readResults": [
+      {
+        "page": 1,
+        "angle": 0,
+        "width": 8.5,
+        "height": 11,
+        "unit": "inch",
+        "lines": [
+          {
+            "text": "Project Statement",
+            "boundingBox": [
+              5.0153,
+              0.275,
+              8.0944,
+              0.275,
+              8.0944,
+              0.7125,
+              5.0153,
+              0.7125
+            ],
+            "words": [
+              {
+                "text": "Project",
+                "boundingBox": [
+                  5.0153,
+                  0.275,
+                  6.2278,
+                  0.275,
+                  6.2278,
+                  0.7125,
+                  5.0153,
+                  0.7125
+                ]
+              },
+              {
+                "text": "Statement",
+                "boundingBox": [
+                  6.3292,
+                  0.275,
+                  8.0944,
+                  0.275,
+                  8.0944,
+                  0.7125,
+                  6.3292,
+                  0.7125
+                ]
+              }
+            ]
+          }, 
+        ...
+        ]
+      }
+    ],
+    "pageResults": [
+      {
+        "page": 1,
+        "keyValuePairs": [
+          {
+            "key": {
+              "text": "Date:",
+              "boundingBox": [
+                6.9722,
+                1.0264,
+                7.3417,
+                1.0264,
+                7.3417,
+                1.1931,
+                6.9722,
+                1.1931
+              ],
+              "elements": [
+                "#/readResults/0/lines/2/words/0"
+              ]
+            },
+            "confidence": 1
+          },
+         ...
+        ],
+        "tables": [
+          {
+            "rows": 4,
+            "columns": 5,
+            "cells": [
+              {
+                "text": "Training Date",
+                "rowIndex": 0,
+                "columnIndex": 0,
+                "boundingBox": [
+                  0.6931,
+                  4.2444,
+                  1.5681,
+                  4.2444,
+                  1.5681,
+                  4.4125,
+                  0.6931,
+                  4.4125
+                ],
+                "confidence": 1,
+                "rowSpan": 1,
+                "columnSpan": 1,
+                "elements": [
+                  "#/readResults/0/lines/15/words/0",
+                  "#/readResults/0/lines/15/words/1"
+                ],
+                "isHeader": true,
+                "isFooter": false
+              },
+              ...
+            ]
+          }
+        ], 
+        "clusterId": 0
+      }
+    ],
+    "documentResults": [],
+    "errors": []
+  }
+}
+```  
+
 ---
 
 ### <a name="improve-results"></a>Verbessern der Ergebnisse
@@ -1012,17 +1030,18 @@ In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainiert
 1. Ersetzen Sie `{your receipt URL}` mit der URL-Adresse eines Verkaufsbelegbilds.
 1. Ersetzen Sie `{subscription key>` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
 curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
 ```
 
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)    
-
-```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
-```
 ---
 
 Sie erhalten die Antwort `202 (Success)` mit einem **Operation-Location**-Header. Der Wert dieses Headers enthält eine Vorgangs-ID, mit der Sie den Status des asynchronen Vorgangs abfragen und die Ergebnisse abrufen können. Im folgenden Beispiel ist die Zeichenfolge nach `operations/` die Vorgangs-ID.
@@ -1039,14 +1058,18 @@ Nachdem Sie die **Analyze Receipt**-API aufgerufen haben, rufen Sie die **[Get A
 1. Ersetzen Sie `{operationId}` durch die Vorgangs-ID aus dem vorherigen Schritt.
 1. Ersetzen Sie `{subscription key}` durch Ihren Abonnementschlüssel.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)  
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyzeResults/{operationId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)  
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+
 ```bash
 curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyzeResults/{operationId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyzeResults/{operationId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
 ---
 
 ### <a name="examine-the-response"></a>Untersuchen der Antwort
@@ -1388,12 +1411,7 @@ Die Ausgabe wurde zur besseren Lesbarkeit gekürzt. Auf [GitHub](https://github.
 
 ## <a name="analyze-business-cards"></a>Analysieren von Visitenkarten
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)  
-
-> [!IMPORTANT]
-> Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
-
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)  
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)  
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Felder englischsprachiger Visitenkarten analysieren und extrahieren. Weitere Informationen zur Analyse von Visitenkarten finden Sie im [Konzeptleitfaden zu Visitenkarten](../../concept-business-cards.md). Rufen Sie die API **[Analyze Business Card](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)** mit dem unten angegebenen cURL-Befehl auf, um mit der Analyse einer Visitenkarte zu beginnen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
@@ -1548,6 +1566,11 @@ Diese JSON-Beispielausgabe wurde zur Vereinfachung gekürzt. Auf [GitHub](https:
 
 Das Skript gibt Antworten in der Konsole aus, bis der **Analyze Business Card**-Vorgang abgeschlossen ist.
 
+### <a name="v20"></a>[v2.0](#tab/v2-0)  
+
+> [!IMPORTANT]
+> Dieses Feature ist in der ausgewählten API-Version nicht verfügbar.
+
 ---
 
 ## <a name="manage-custom-models"></a>Verwalten benutzerdefinierter Modelle
@@ -1559,18 +1582,20 @@ Verwenden Sie die **[List Custom Models](https://westcentralus.dev.cognitive.mic
 1. Ersetzen Sie `{Endpoint}` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `{subscription key}` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models?op=full"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)    
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
 
 ```bash
 curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models?op=full"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+```bash
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models?op=full"
+-H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
 ---
 
 Sie erhalten eine Antwort mit dem Hinweis zur erfolgreichen Durchführung (`200`) und den folgenden JSON-Daten. Das `"modelList"`-Element enthält Ihre gesamten erstellten Modelle und die zugehörigen Informationen.
@@ -1602,17 +1627,18 @@ Verwenden Sie die **[Get Custom Model](https://westcentralus.dev.cognitive.micro
 1. Ersetzen Sie `{subscription key}` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.
 1. Ersetzen Sie `{modelId}` durch die ID des benutzerdefinierten Modells, nach dem Sie suchen möchten.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+
+```bash
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
 curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)    
-
-```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
 ---
 
 Sie erhalten eine Antwort mit dem Hinweis zur erfolgreichen Durchführung (`200`) und den folgenden JSON-Daten.
@@ -1663,21 +1689,21 @@ Sie können ein Modell auch aus Ihrem Konto löschen, indem Sie auf die ID des M
 1. Ersetzen Sie `{subscription key}` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.
 1. Ersetzen Sie `{modelId}` durch die ID des benutzerdefinierten Modells, nach dem Sie suchen möchten.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+
+```bash
+curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
 curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
-
-```bash
-curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
 ---
 
 Sie erhalten eine `204`-Erfolgsmeldung, in der angegeben ist, dass Ihr Modell zum Löschen markiert wurde. Modellartefakte werden innerhalb von 48 Stunden gelöscht.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

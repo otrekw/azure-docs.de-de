@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f98d00477b7dc8fbbbe7d17705e398a708ce2af
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 18350dc39fceaf6f4c50f8e1053a2972bbce7f44
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120936"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676635"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Maximieren der Zeilengruppenqualität für die Columnstore-Indexleistung
 
@@ -26,7 +26,7 @@ Die Zeilengruppenqualität hängt von der Anzahl von Zeilen in einer Zeilengrupp
 
 Da ein Columnstore-Index eine Tabelle durch die Überprüfung der einzelnen Spaltensegmente von einzelnen Zeilengruppen überprüft, verbessert das Maximieren der Zeilenanzahl in jeder Zeilengruppe die Abfrageleistung. Wenn Zeilengruppen über eine hohe Anzahl von Reihen verfügen, verbessert sich die Datenkomprimierung, d.h., es werden weniger Daten vom Datenträger gelesen.
 
-Weitere Informationen über Zeilengruppen, finden Sie unter [Beschreibung von Columnstore-Indizez](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+Weitere Informationen über Zeilengruppen, finden Sie unter [Beschreibung von Columnstore-Indizez](/sql/relational-databases/indexes/columnstore-indexes-overview?view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="target-size-for-rowgroups"></a>Zielgröße für Zeilengruppen
 
@@ -38,11 +38,11 @@ Während des Massenladens oder einer Neuerstellung des Columnstore-Indizes ist m
 
 Wenn der Arbeitsspeicher nicht ausreicht, um mindestens 10.000 Zeilen in jede Zeilengruppe zu komprimieren, wird ein Fehler generiert.
 
-Weitere Informationen zum Massenladen, finden Sie unter [Bulk load into a clustered columnstore index (Massenladen in einen gruppierten Columnstore-Index)](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#Bulk&preserve-view=true ).
+Weitere Informationen zum Massenladen, finden Sie unter [Bulk load into a clustered columnstore index (Massenladen in einen gruppierten Columnstore-Index)](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?view=azure-sqldw-latest#bulk&preserve-view=true).
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Überwachen der Zeilengruppenqualität
 
-Die DMV „sys.dm_pdw_nodes_db_column_store_row_group_physical_stats“ ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) enthält die Ansichtsdefinition, die SQL DB entspricht), die nützliche Informationen wie die Anzahl der Zeilen in Zeilengruppen und ggf. den Grund für eine Kürzung verfügbar macht. Sie können die folgende Sicht als eine praktische Möglichkeit zum Abfragen dieser DMV erstellen, um Informationen zur Kürzung von Zeilengruppen abzurufen.
+Die DMV „sys.dm_pdw_nodes_db_column_store_row_group_physical_stats“ ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) enthält die Ansichtsdefinition, die SQL DB entspricht), die nützliche Informationen wie die Anzahl der Zeilen in Zeilengruppen und ggf. den Grund für eine Kürzung verfügbar macht. Sie können die folgende Sicht als eine praktische Möglichkeit zum Abfragen dieser DMV erstellen, um Informationen zur Kürzung von Zeilengruppen abzurufen.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -142,5 +142,5 @@ Die DWU-Größe und die Benutzer-Ressourcenklasse bestimmen zusammen, wie viel A
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Möglichkeiten zum Verbessern der Leistung in Synapse SQL finden Sie unter der [Übersicht über die Leistung](../overview-terminology.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
+Weitere Möglichkeiten zum Verbessern der Leistung in Synapse SQL finden Sie unter der [Übersicht über die Leistung](../overview-terminology.md).
 

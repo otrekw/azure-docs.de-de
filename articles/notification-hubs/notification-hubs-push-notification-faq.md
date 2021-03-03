@@ -15,12 +15,12 @@ ms.date: 02/12/2021
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: e34fbdca51e7680a80c768e49bae891cb56dfa9d
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 0f79402956148c566bc34faa88e10895657883c2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546447"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591745"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Pushbenachrichtigungen mit Azure Notification Hubs: Häufig gestellte Fragen
 
@@ -196,7 +196,7 @@ Sie können auch programmgesteuert auf Metriken zugreifen. Weitere Informationen
 
 - [Retrieve Azure Monitor metrics with .NET (Abrufen von Azure Monitor-Metriken mit .NET)](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/). In diesem Beispiel werden Benutzername und Kennwort verwendet. Um ein Zertifikat zu verwenden, überladen Sie die FromServicePrincipal-Methode, um ein Zertifikat wie [in diesem Beispiel](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs) gezeigt anzugeben. 
 - [Getting metrics and activity logs for a resource](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/) (Abrufen von Metriken und Aktivitätsprotokollen für eine Ressource)
-- [Exemplarische Vorgehensweise für die Azure Monitoring-REST-API](../azure-monitor/platform/rest-api-walkthrough.md)
+- [Exemplarische Vorgehensweise für die Azure Monitoring-REST-API](../azure-monitor/essentials/rest-api-walkthrough.md)
 
 > [!NOTE]
 > Wenn Benachrichtigungen erfolgreich waren, bedeutet das einfach, dass Pushbenachrichtigungen an den externen PNS (beispielsweise APNs für iOS-Geräte und macOS oder FCM für Android-Geräte) übermittelt wurden. Der PNS hat die Aufgabe, die Benachrichtigungen an Zielgeräte zu übermitteln. In der Regel macht der PNS Übermittlungsmetriken nicht für Dritte verfügbar.  
@@ -211,7 +211,7 @@ Sie können auch programmgesteuert auf Metriken zugreifen. Weitere Informationen
 [Sicherheitsmodell von Notification Hubs]: /previous-versions/azure/azure-services/dn495373(v=azure.100)
 [Tutorial zu sicheren Pushbenachrichtigungen mit Notification Hubs]: ./notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md
 [Problembehandlung für Notification Hubs]: ./notification-hubs-push-notification-fixer.md
-[Notification Hubs-Metriken]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
+[Notification Hubs-Metriken]: ../azure-monitor/essentials/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Vorgehensweise: Massenhaftes Exportieren und Ändern von Registrierungen]: ./export-modify-registrations-bulk.md
 [Azure portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples

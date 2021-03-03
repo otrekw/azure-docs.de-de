@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: azure-monitor
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: ba8a82ed1113bfb3e71560ca9a6c713602df21f2
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 95f20737b044140fe12ea939e71cd2397cb4826d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590646"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576692"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Überwachen von Daten in Azure Queue Storage – Referenz
 
@@ -36,7 +36,7 @@ Azure Storage stellt in Azure Monitor folgende Kapazitätsmetriken bereit:
 
 #### <a name="queue-storage-metrics"></a>Queue Storage-Metriken
 
-Diese Tabelle enthält [Queue Storage-Metriken](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices).
+Diese Tabelle enthält [Queue Storage-Metriken](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsqueueservices).
 
 | Metrik | BESCHREIBUNG |
 | ------------------- | ----------------- |
@@ -80,4 +80,4 @@ In der nachstehenden Tabelle sind die Eigenschaften für Azure Storage-Ressource
 ## <a name="see-also"></a>Weitere Informationen
 
 - Eine Beschreibung der Überwachung von Azure Queue Storage finden Sie unter [Überwachen von Azure Queue Storage](monitor-queue-storage.md).
-- Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md).
+- Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../../azure-monitor/essentials/monitor-azure-resource.md).

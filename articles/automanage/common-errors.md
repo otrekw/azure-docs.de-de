@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: alsin
-ms.openlocfilehash: 13388bf289c1d10a2e7da04a4dd5d26be109535e
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: df5133ad4bb3155afdc9d43e595591d9cfda4ea0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98697753"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644441"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>Behandeln von häufigen Fehlern mit dem Onboarding von Automanage
 Die Integration eines Computers in den Dienst durch Automanage kann fehlschlagen. In diesem Dokument wird erläutert, wie Sie Bereitstellungsfehler behandeln können, Sie erfahren einige häufige Gründe für das Fehlschlagen von Bereitstellungen, und es werden mögliche nächste Schritte bei der Entschärfung beschrieben.
@@ -37,7 +37,7 @@ Wenn keine fehlerhaften Bereitstellungen in der Ressourcengruppe oder dem Abonne
 Fehler |  Minderung
 :-----|:-------------|
 Fehler wegen unzureichender Berechtigungen des Automanage-Kontos | Hierzu kann es kommen, wenn Sie vor Kurzem ein Abonnement, das ein neues Automanage-Konto enthält, in einen neuen Mandanten verschoben haben. Schritte zum Lösen des Problems finden Sie [hier](./repair-automanage-account.md).
-Die Region des Arbeitsbereichs entspricht nicht den Anforderungen an die Regionszuordnung | Automanage konnte kein Onboarding Ihres Computers durchführen, aber der Log Analytics-Arbeitsbereich, mit dem der Computer zurzeit verknüpft ist, ist keiner unterstützten Automation-Region zugeordnet. Stellen Sie sicher, dass sich Ihr vorhandener Log Analytics-Arbeitsbereich und das Automation-Konto in einer [unterstützten Zuordnungsregion](https://docs.microsoft.com/azure/automation/how-to/region-mappings) befinden.
+Die Region des Arbeitsbereichs entspricht nicht den Anforderungen an die Regionszuordnung | Automanage konnte kein Onboarding Ihres Computers durchführen, aber der Log Analytics-Arbeitsbereich, mit dem der Computer zurzeit verknüpft ist, ist keiner unterstützten Automation-Region zugeordnet. Stellen Sie sicher, dass sich Ihr vorhandener Log Analytics-Arbeitsbereich und das Automation-Konto in einer [unterstützten Zuordnungsregion](../automation/how-to/region-mappings.md) befinden.
 „Fehler bei der Zuweisung. Es gibt keine zusätzlichen Informationen.“ | Öffnen Sie einen Fall beim Microsoft Azure-Support.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -46,4 +46,3 @@ Die Region des Arbeitsbereichs entspricht nicht den Anforderungen an die Regions
 
 > [!div class="nextstepaction"]
 > [Aktivieren der automatischen Verwaltung für virtuelle Computer im Azure-Portal](quick-create-virtual-machines-portal.md)
-

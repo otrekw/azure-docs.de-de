@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c3e6c1d6bfa83ef238ef38b25b189510cf142a38
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c42b79cb8b92b5f96f31eb58f091ff0ce79b84f5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661084"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652129"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Übersicht über Benutzerkonten in Azure Active Directory B2C
 
@@ -80,7 +80,7 @@ Der Consumerbenutzer kann sich bei Anwendungen anmelden, die mit Azure AD B2C ge
 
 Sie können die Daten angeben, die beim Erstellen eines Consumerbenutzerkontos gesammelt werden. Weitere Informationen finden Sie unter [Hinzufügen von Benutzerattributen und Anpassen der Benutzereingabe](configure-user-input.md).
 
-Weitere Informationen zum Verwalten von Benutzerkonten finden Sie unter [Verwalten von Azure AD B2C-Benutzerkonten mit Microsoft Graph](manage-user-accounts-graph-api.md).
+Weitere Informationen zum Verwalten von Benutzerkonten finden Sie unter [Verwalten von Azure AD B2C-Benutzerkonten mit Microsoft Graph](./microsoft-graph-operations.md).
 
 ### <a name="migrate-consumer-user-accounts"></a>Migrieren von Benutzerkonten für Consumer
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: sstein
-ms.date: 08/25/2020
-ms.openlocfilehash: 3f87f47f652f71a57796d1cacd047b0448b49b7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 1/21/2021
+ms.openlocfilehash: d38ac9731959cf9a23052753b09c9e7819846705
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333034"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101664116"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Planen von Azure-Wartungsereignissen in Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ Für jede Datenbank halten Azure SQL-Datenbank und verwaltete Azure SQL-Instanze
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Was Sie bei einem geplanten Wartungsereignis erwarten können
 
-Das Wartungsereignis kann je nach der Konstellation der primären und sekundären Replikate zu Beginn des Wartungsereignisses einen einzelnen oder mehrere Failover erzeugen. Im Durchschnitt treten pro geplantem Wartungsereignis 1,7 Failover auf. Neukonfigurationen/Failover werden in der Regel innerhalb von 30 Sekunden abgeschlossen. Die durchschnittliche Dauer beträgt 8 Sekunden. Wenn sie bereits verbunden ist, muss Ihre Anwendung mit dem neuen primären Replikat Ihrer Datenbank erneut eine Verbindung herstellen. Wenn eine neue Verbindung versucht wird, während für die Datenbank eine Neukonfiguration durchgeführt wird, bevor das neue primäre Replikat online ist, erhalten Sie Fehler 40613 (Datenbank nicht verfügbar): *Die Datenbank "{Datenbankname}" auf Server "{Servername}" ist zurzeit nicht verfügbar. Wiederholen Sie den Verbindungsversuch später.“* Wenn Ihre Datenbank gerade eine zeitintensive Abfrage ausführt, wird diese bei einer Neukonfiguration unterbrochen und muss neu gestartet werden.
+Das Wartungsereignis kann je nach der Konstellation der primären und sekundären Replikate zu Beginn des Wartungsereignisses einen einzelnen oder mehrere Failover erzeugen. Im Durchschnitt treten pro geplantem Wartungsereignis 1,7 Failover auf. Neukonfigurationen/Failover werden in der Regel innerhalb von 30 Sekunden abgeschlossen. Der Mittelwert beträgt acht Sekunden. Wenn sie bereits verbunden ist, muss Ihre Anwendung mit dem neuen primären Replikat Ihrer Datenbank erneut eine Verbindung herstellen. Wenn eine neue Verbindung versucht wird, während für die Datenbank eine Neukonfiguration durchgeführt wird, bevor das neue primäre Replikat online ist, erhalten Sie Fehler 40613 (Datenbank nicht verfügbar): *Die Datenbank "{Datenbankname}" auf Server "{Servername}" ist zurzeit nicht verfügbar. Wiederholen Sie den Verbindungsversuch später.“* Wenn Ihre Datenbank gerade eine zeitintensive Abfrage ausführt, wird diese bei einer Neukonfiguration unterbrochen und muss neu gestartet werden.
 
 ## <a name="how-to-simulate-a-planned-maintenance-event"></a>Simulieren eines geplanten Wartungsereignisses
 
@@ -45,7 +45,12 @@ Jede Clientproduktionsanwendung, die eine Verbindung mit einem Clouddatenbankdie
 
 Wenn für Ihre Datenbank Anmeldefehler auftreten, sollten Sie im Fenster [Resource Health](../../service-health/resource-health-overview.md#get-started) im [Azure-Portal](https://portal.azure.com) den aktuellen Status überprüfen. Der Abschnitt „Integritätsverlauf“ enthält den Grund für die Ausfallzeit für jedes Ereignis (wenn verfügbar).
 
+## <a name="maintenance-window-feature"></a>Funktion „Wartungsfenster“
+
+Die Wartungsfensterfunktion bietet die Möglichkeit, Zeitpläne für vorhersehbare Wartungsfenster für berechtigte Azure SQL-Datenbanken und verwaltete SQL-Instanzen zu konfigurieren. Weitere Informationen finden Sie unter [Wartungsfenster](maintenance-window.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich über [Resource Health](resource-health-to-troubleshoot-connectivity.md) für Azure SQL-Datenbank und Azure SQL Managed Instance.
 - Weitere Informationen zur Wiederholungslogik finden Sie unter [Wiederholungslogik für vorübergehende Fehler](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors).
+- Konfigurieren von Zeitplänen für Wartungsfenster mit der Funktion [Wartungsfenster](maintenance-window.md).

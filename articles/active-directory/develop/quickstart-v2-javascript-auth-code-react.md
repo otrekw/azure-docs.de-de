@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: fe85fd314ba631a26ece4164e317b0977e7cf749
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: ae31265aee7b0919daf0fec9efbe4d5c6aa7cd91
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103667"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653455"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>Schnellstart: Anmelden und Abrufen eines Zugriffstokens in einer React-SPA mithilfe des Autorisierungscodeflows
 
@@ -141,7 +141,7 @@ In dieser Schnellstartanleitung wird MSAL React mit dem Autorisierungscodeflow 
 >
 > Scrollen Sie in derselben Datei nach unten, und aktualisieren Sie `graphMeEndpoint`. 
 > - Ersetzen Sie die Zeichenfolge `Enter_the_Graph_Endpoint_Herev1.0/me` durch `https://graph.microsoft.com/v1.0/me`.
-> - `Enter_the_Graph_Endpoint_Herev1.0/me` ist der Endpunkt, für den API-Aufrufe ausgeführt werden. Geben Sie für den Microsoft Graph-API-Hauptdienst (global) `https://graph.microsoft.com/` (einschließlich des nachstehenden Schrägstrichs) ein. Weitere Informationen finden Sie in der [Dokumentation](https://docs.microsoft.com/graph/deployments).
+> - `Enter_the_Graph_Endpoint_Herev1.0/me` ist der Endpunkt, für den API-Aufrufe ausgeführt werden. Geben Sie für den Microsoft Graph-API-Hauptdienst (global) `https://graph.microsoft.com/` (einschließlich des nachstehenden Schrägstrichs) ein. Weitere Informationen finden Sie in der [Dokumentation](/graph/deployments).
 >
 >
 >

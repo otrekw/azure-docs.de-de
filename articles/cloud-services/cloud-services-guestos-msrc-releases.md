@@ -3,21 +3,21 @@ title: Liste der Updates für das Azure-Gastbetriebssystem | Microsoft-Dokumenta
 description: In diesem Artikel werden die Microsoft Security Response Center-Updates aufgelistet, die auf verschiedene Azure-Gastbetriebssysteme angewendet wurden. Überprüfen Sie, ob ein Update für das Gastbetriebssystem gültig ist, das Sie verwenden.
 services: cloud-services
 documentationcenter: na
-author: yohaddad
+author: gunnarcms
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/9/2021
-ms.author: yohaddad
-ms.openlocfilehash: bd295a753447771654522b3aef938b9a32c468c5
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.date: 2/17/2021
+ms.author: gunnarcms
+ms.openlocfilehash: 1a77ab15bc4d1095f47d9d411b5a0fd64bb568de
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100105129"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650795"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.

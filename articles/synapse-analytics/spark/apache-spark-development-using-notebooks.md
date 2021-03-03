@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 57999ce53e536d422e6502a77aaccdc66b4c5077
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: d5ff3fb988a7e907308ccccc8d0900d45a0601c0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898493"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671605"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Erstellen, Entwickeln und Verwalten von Synapse Studio-Notebooks in Azure Synapse Analytics
 
@@ -554,5 +554,5 @@ Mithilfe der folgenden Tastenkombinationen können Sie in Azure Synapse-Notebook
 - [Schnellstart: Erstellen eines Apache Spark-Pools in Azure Synapse Analytics mithilfe von Webtools](../quickstart-apache-spark-notebook.md)
 - [Was ist Apache Spark in Azure Synapse Analytics?](apache-spark-overview.md)
 - [Verwenden von .NET für Apache Spark mit Azure Synapse Analytics](spark-dotnet.md)
-- [Dokumentation zu .NET für Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Dokumentation zu .NET für Apache Spark](/dotnet/spark)
 - [Azure Synapse Analytics](../index.yml)

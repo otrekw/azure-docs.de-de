@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08a919338789a02d50cbb6976ee50b214cb0d612
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d081754616b40a21b3b842758844eb13e2752569
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416556"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650956"
 ---
 # <a name="securing-standalone-managed-service-accounts"></a>Schützen von eigenständigen verwalteten Dienstkonten
 
@@ -44,7 +44,7 @@ sMSAs bieten bei der Verwendung als Dienstkonten mehr Sicherheit als Benutzerkon
 
    * Der DNS-Name des Hostcomputers wird geändert.
 
-   * Ein zusätzlicher Parameter „sam-accountname“ oder „dns-hostname“ wird mithilfe von [PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-adserviceaccount?view=win10-ps) hinzugefügt oder entfernt.
+   * Ein zusätzlicher Parameter „sam-accountname“ oder „dns-hostname“ wird mithilfe von [PowerShell](/powershell/module/addsadministration/set-adserviceaccount?view=win10-ps) hinzugefügt oder entfernt.
 
 ## <a name="when-to-use-smsas"></a>Wann sind sMSAs zu verwenden?
 
@@ -53,7 +53,7 @@ sMSAs können Verwaltungs- und Sicherheitsaufgaben vereinfachen. Verwenden Sie s
 > [!NOTE] 
 > Sie können sMSAs zwar für mehr als einen Dienst verwenden, zu Überwachungszwecken ist es jedoch empfehlenswert, für jeden Dienst eine eigene Identität zu verwenden. 
 
-Wenn der Ersteller der Software nicht sagen kann, ob Sie ein verwaltetes Dienstkonto verwenden können, müssen Sie die Anwendung testen. Erstellen Sie hierzu eine Testumgebung, und stellen Sie sicher, dass Sie auf alle erforderlichen Ressourcen zugreifen können. Eine schrittweise Anleitung finden Sie unter [Erstellen und Installieren eines sMSAs](https://docs.microsoft.com/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting).
+Wenn der Ersteller der Software nicht sagen kann, ob Sie ein verwaltetes Dienstkonto verwenden können, müssen Sie die Anwendung testen. Erstellen Sie hierzu eine Testumgebung, und stellen Sie sicher, dass Sie auf alle erforderlichen Ressourcen zugreifen können. Eine schrittweise Anleitung finden Sie unter [Erstellen und Installieren eines sMSAs](/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting).
 
 ### <a name="assess-security-posture-of-smsas"></a>Bewerten des Sicherheitsstatus von sMSAs
 
@@ -64,7 +64,7 @@ In der folgenden Tabelle wird gezeigt, wie Sie potenzielle Sicherheitsprobleme m
 | Sicherheitsprobleme| Gegenmaßnahmen |
 | - | - |
 | Das sMSA ist Mitglied von privilegierten Gruppen|Entfernen Sie das sMSA aus Gruppen mit erhöhten Rechten (z. B. Domänenadministratoren). <br> Verwenden Sie das Modell mit den geringsten Berechtigungen, und erteilen Sie dem sMSA nur die Rechte und Berechtigungen, die zum Ausführen des Diensts (oder der Dienste) erforderlich sind. <br> Wenn Sie nicht sicher sind, welche Berechtigungen erforderlich sind, wenden Sie sich an den Ersteller des Diensts. |
-| Das sMSA verfügt über Lese-/Schreibzugriff auf vertrauliche Ressourcen.|Überwachen Sie den Zugriff auf vertrauliche Ressourcen. Archivieren Sie zur Analyse die Überwachungsprotokolle in einem SIEM-System wie Azure Log Analytics oder Azure Sentinel. <br> Korrigieren Sie Ressourcenberechtigungen, wenn eine unerwünschte Zugriffsebene erkannt wird. |
+| Das sMSA verfügt über Lese-/Schreibzugriff auf vertrauliche Ressourcen.|Überwachen Sie den Zugriff auf vertrauliche Ressourcen. Archivieren Sie Überwachungsprotokolle zur Analyse in einem SIEM-System (Azure Log Analytics oder Azure Sentinel). <br> Korrigieren Sie Ressourcenberechtigungen, wenn eine unerwünschte Zugriffsebene erkannt wird. |
 | Standardmäßig beträgt das Kennwortrolloverintervall von sMSAs 30 Tage.| Mit einer Gruppenrichtlinie können Sie die Dauer entsprechend den Sicherheitsanforderungen des Unternehmens optimieren. <br> *Sie können die Gültigkeitsdauer von Kennwörtern über den folgenden Pfad festlegen: <br>Computerkonfiguration\Richtlinien\Windows-Einstellungen\Sicherheitseinstellungen\Sicherheitsoptionen\Domänenmitglied: Maximales Alter von Computerkontenkennwörtern |
 
 
@@ -112,7 +112,7 @@ Mit den folgenden Active Directory PowerShell-Cmdlets können Sie sMSAs verwalte
 
 ## <a name="move-to-smsas"></a>Wechseln zu sMSAs
 
-Wenn ein Anwendungsdienst ein sMSA, aber kein gMSA unterstützt und derzeit ein Benutzerkonto oder ein Computerkonto für den Sicherheitskontext verwendet wird, [erstellen und installieren Sie ein sMSA](https://docs.microsoft.com/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) auf dem Server. 
+Wenn ein Anwendungsdienst ein sMSA, aber kein gMSA unterstützt und derzeit ein Benutzerkonto oder ein Computerkonto für den Sicherheitskontext verwendet wird, [erstellen und installieren Sie ein sMSA](/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) auf dem Server. 
 
 Im Idealfall verschieben Sie Ressourcen zu Azure und verwenden verwaltete Azure-Identitäten oder Dienstprinzipale.
 
@@ -133,4 +133,3 @@ Lesen Sie die folgenden Artikel zum Schützen von Dienstkonten:
 
 * [Steuern lokaler Dienstkonten](service-accounts-govern-on-premises.md)
 
- 

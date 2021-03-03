@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b7dc7a9f93d6d70abec57632ffc95aea8a6bc699
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 82e15712fe1e7a5791b1374e4aa4cd446f8f5e90
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804987"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574427"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>Azure-Sicherheitsbaseline für Network Watcher
 
@@ -118,9 +118,9 @@ Network Watcher muss aktiviert sein
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll, um Änderungen an Azure Network Watcher zu überwachen. Sie haben die Möglichkeit, in Azure Monitor Warnungen zu erstellen, die bei Änderungen ausgelöst werden.
 
-* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -142,7 +142,7 @@ Network Watcher muss aktiviert sein
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen von Konfigurationen und zum Erkennen von Änderungen an Ihren Azure Network Watcher-Instanzen. Anders als auf der Steuerungsebene (z. B. Azure-Portal) generiert Network Watcher selbst keine Protokolle in Zusammenhang mit dem Netzwerkdatenverkehr. Network Watcher bietet Tools für die Überwachung, Diagnose, Metrikanzeige und Aktivierung/Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk.
 
-* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Grundlegendes zu Network Watcher](./network-watcher-monitoring-overview.md)
 
@@ -154,7 +154,7 @@ Network Watcher muss aktiviert sein
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen von Konfigurationen und zum Erkennen von Änderungen an Ihren Azure Network Watcher-Instanzen. Anders als auf der Steuerungsebene (z. B. Azure-Portal) generiert Network Watcher selbst keine Überwachungsprotokolle. Network Watcher bietet Tools für die Überwachung, Diagnose, Metrikanzeige und Aktivierung/Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk.
 
-* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Grundlegendes zu Network Watcher](./network-watcher-monitoring-overview.md)
 
@@ -174,7 +174,7 @@ Network Watcher muss aktiviert sein
 
 **Leitfaden**: Legen Sie in Azure Monitor den Aufbewahrungszeitraum für Protokolle für Log Analytics-Arbeitsbereiche, die Azure Network Watcher zugeordnet sind, gemäß den Compliancevorschriften Ihrer Organisation fest.
 
-* [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -184,7 +184,7 @@ Network Watcher muss aktiviert sein
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen von Konfigurationen und zum Erkennen von Änderungen an Ihren Azure Network Watcher-Instanzen. Anders als auf der Steuerungsebene (z. B. Azure-Portal) generiert Network Watcher selbst keine Protokolle in Zusammenhang mit dem Netzwerkdatenverkehr. Network Watcher bietet Tools für die Überwachung, Diagnose, Metrikanzeige und Aktivierung/Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk.
 
-* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Grundlegendes zu Network Watcher](./network-watcher-monitoring-overview.md)
 
@@ -479,7 +479,7 @@ Damit die Network Watcher-Funktionen verwendet werden kann, muss das Konto, mit 
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an Azure Network Watcher und anderen kritischen bzw. zugehörigen Ressourcen vorgenommen werden.
 
-* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 

@@ -2,18 +2,19 @@
 title: Entwerfen und Implementieren einer Oracle-Datenbank in Azure | Microsoft-Dokumentation
 description: Entwerfen und implementieren Sie eine Oracle-Datenbank in Ihrer Azure-Umgebung.
 author: dbakevlar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 12/17/2020
 ms.author: kegorman
 ms.reviewer: tigorman
-ms.openlocfilehash: 0b6f4e652ca8fef7bee4165bcd0673be2fa11eac
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 6e59d0065dfa74979bf3bbc72458bda516e3b641
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890763"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669975"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Entwerfen und Implementieren einer Oracle-Datenbank in Azure
 

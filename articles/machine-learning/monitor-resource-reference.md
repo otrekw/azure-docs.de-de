@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/02/2020
-ms.openlocfilehash: 6da9c6775a6d5c96bc52183fefc3e5330272e9ff
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: f9f25ec2dd8fb8b859f7863c1e695e22cb9a9cec
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585125"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575068"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Überwachen von Azure Machine Learning-Daten – Referenz
 
@@ -23,7 +23,7 @@ Erfahren Sie mehr über die Daten und Ressourcen, die von Azure Monitor aus Ihre
 
 ## <a name="metrics"></a>Metriken
 
-In diesem Abschnitt werden alle automatisch erfassten Plattformmetriken aufgeführt, die für Azure Machine Learning gesammelt werden. Der Ressourcenanbieter für diese Metriken ist [Microsoft.MachineLearningServices/workspaces](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
+In diesem Abschnitt werden alle automatisch erfassten Plattformmetriken aufgeführt, die für Azure Machine Learning gesammelt werden. Der Ressourcenanbieter für diese Metriken ist [Microsoft.MachineLearningServices/workspaces](../azure-monitor/essentials/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
 
 **Modell**
 
@@ -74,7 +74,7 @@ Informationen zu Trainingsausführungen
 
 ## <a name="metric-dimensions"></a>Metrikdimensionen
 
-Weitere Informationen zu Metrikdimensionen finden Sie unter [Mehrdimensionale Metriken](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics).
+Weitere Informationen zu Metrikdimensionen finden Sie unter [Mehrdimensionale Metriken](../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
 
 Den Metriken in Azure Machine Learning sind die folgenden Dimensionen zugeordnet.
 
@@ -117,7 +117,7 @@ In der folgenden Tabelle finden Sie die Vorgänge in Zusammenhang mit Azure Mach
 
 In diesem Abschnitt werden die Typen der Ressourcenprotokolle aufgeführt, die für einen Azure Machine Learning-Arbeitsbereich erfasst werden können.
 
-Ressourcenanbieter und Typ: [Microsoft.MachineLearningServices/workspace](../azure-monitor/platform/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
+Ressourcenanbieter und Typ: [Microsoft.MachineLearningServices/workspace](../azure-monitor/essentials/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
 
 | Kategorie | Anzeigename |
 | ----- | ----- |
@@ -232,4 +232,4 @@ Die folgenden Schemas werden von Azure Machine Learning verwendet.
 ## <a name="see-also"></a>Weitere Informationen
 
 - Eine Beschreibung der Überwachung von Azure Machine Learning finden Sie unter [Überwachen von Azure Machine Learning](monitor-azure-machine-learning.md).
-- Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md).
+- Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md).

@@ -2,18 +2,18 @@
 title: Häufig gestellte Fragen zum Azure Arc-fähigen Kubernetes
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 02/19/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Dieser Artikel enthält eine Liste mit häufig gestellten Fragen zu Azure Arc-fähigem Kubernetes.
 keywords: Kubernetes, Arc, Azure, Container, Konfiguration, GitOps, FAQ, Häufig gestellte Fragen
-ms.openlocfilehash: 237b2629b833a63552b172636f46a1ac92e321c0
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: dc12294b5d53372be5f2e1dd71436973fefbb194
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100561243"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647862"
 ---
 # <a name="frequently-asked-questions---azure-arc-enabled-kubernetes"></a>Häufig gestellte Fragen: Azure Arc-fähiges Kubernetes
 
@@ -31,19 +31,21 @@ Nein. Alle Azure Arc-fähigen Kubernetes-Funktionen, einschließlich Azure Monit
     
 ## <a name="should-i-connect-my-aks-hci-cluster-and-kubernetes-clusters-on-azure-stack-hub-and-azure-stack-edge-to-azure-arc"></a>Sollte ich meinen AKS-HCI-Cluster und meine Kubernetes-Cluster auf Azure Stack Hub und Azure Stack Edge mit Azure Arc verbinden?
 
-Ja, wenn Sie Ihren AKS-HCI-Cluster oder Ihre Kubernetes-Cluster auf Azure Stack Edge oder Azure Stack Hub mit Azure Arc verbinden, wird Clustern die Ressourcendarstellung in Azure Resource Manager bereitgestellt. Diese Ressourcendarstellung erweitert Funktionen wie Clusterkonfiguration, Azure Monitor und Azure Policy (Gatekeeper) auf die Kubernetes-Cluster, die Sie verbinden.
+Ja, wenn Sie Ihren AKS-HCI-Cluster oder Ihre Kubernetes-Cluster auf Azure Stack Edge oder Azure Stack Hub mit Azure Arc verbinden, wird Clustern die Ressourcendarstellung in Azure Resource Manager bereitgestellt. Diese Ressourcendarstellung erweitert Funktionen wie Clusterkonfiguration, Azure Monitor und Azure Policy (Gatekeeper) auf die verbundenen Kubernetes-Cluster.
+
+Wenn sich der Kubernetes-Cluster mit Azure Arc-Aktivierung unter Azure Stack Edge, AKS unter Azure Stack HCI (>= Update von April 2021) oder AKS unter Windows Server 2019 Datacenter (>= Update von April 2021) befindet, dann ist die Kubernetes-Konfiguration kostenlos enthalten.
 
 ## <a name="how-to-address-expired-azure-arc-enabled-kubernetes-resources"></a>Wie geht man mit abgelaufenen Azure Arc-fähigen Kubernetes-Ressourcen um?
 
-Das Zertifikat der verwalteten Dienstidentität (Managed Service Identity, MSI), das Ihrem Azure Arc-fähigen Kuberenetes zugeordnet ist, verfügt über ein Ablauffenster von 90 Tagen. Nach Ablauf dieses Zertifikats wird die Ressource als `Expired` betrachtet, und alle Features wie Konfiguration, Überwachung und Richtlinie stellen in diesem Cluster die Funktion ein. Führen Sie folgende Schritte aus, damit Ihr Kubernetes-Cluster wieder mit Azure Arc zusammenarbeitet:
+Das Zertifikat der verwalteten Dienstidentität (Managed Service Identity, MSI), das Ihrem Kubernetes mit Azure Arc-Aktivierung zugeordnet ist, verfügt über ein Ablauffenster von 90 Tagen. Nach Ablauf dieses Zertifikats wird die Ressource als `Expired` betrachtet, und alle Features (wie Konfiguration, Überwachung und Richtlinie) stellen in diesem Cluster die Funktion ein. Führen Sie folgende Schritte aus, damit Ihr Kubernetes-Cluster wieder mit Azure Arc zusammenarbeitet:
 
-1. Löschen die Azure Arc-fähige Kubernetes-Ressource und Agents auf dem Cluster 
+1. Löschen Sie die Kubernetes-Ressource mit Azure Arc-Aktivierung sowie die Agents auf dem Cluster. 
 
     ```console
     az connectedk8s delete -n <name> -g <resource-group>
     ```
 
-1. Erstellen Sie die Azure Arc-fähige Kubernetes-Ressource erneut, indem Sie wieder Agents auf dem Cluster bereitstellen.
+1. Erstellen Sie die Azure Arc-fähige Kubernetes-Ressource erneut, indem Sie Agents auf dem Cluster bereitstellen.
     
     ```console
     az connectedk8s connect -n <name> -g <resource-group>
@@ -62,12 +64,14 @@ Die CI/CD-Pipeline wendet Änderungen während der Pipelineausführung nur einma
 
 **Anwenden von GitOps im großen Stil**
 
-CI/CD-Pipelines eignen sich gut für ereignisgestützte Bereitstellungen in Ihrem Kubernetes-Cluster, wobei das Ereignis ein Push in ein Git-Repository sein könnte. Allerdings muss bei einer Bereitstellung derselben Konfiguration auf allen Ihren Kubernetes-Clustern die CI/CD-Pipeline manuell mit Anmeldeinformationen jedes einzelnen dieser Kubernetes-Cluster konfiguriert werden. Andererseits können Sie im Falle von Azure Arc-fähigem Kubernetes, da Azure Resource Manager Ihre Konfigurationen verwaltet, Azure Policy verwenden, um die Anwendung der gewünschten Konfiguration auf alle Kubernetes-Cluster in einem Abonnement- oder Ressourcengruppenumfang in einem Schritt zu automatisieren. Diese Funktion kann sogar auf Azure Arc-fähige Kubernetes-Ressourcen angewendet werden, die nach der Richtlinienzuweisung erstellt wurden.
+CI/CD-Pipelines sind hilfreich für ereignisgesteuerte Bereitstellungen in Ihrem Kubernetes-Cluster (Beispiel: Push in ein Git-Repository). Wenn Sie jedoch dieselbe Konfiguration für alle Ihre Kubernetes-Cluster bereitstellen möchten, müssen Sie die Anmeldeinformationen jedes Kubernetes-Clusters manuell für die CI/CD-Pipeline konfigurieren. 
 
-Die Funktion „Konfigurationen“ wird verwendet, um Baselinekonfigurationen wie Netzwerkrichtlinien, Rollenbindungen und Podsicherheitsrichtlinien im gesamten Bestand von Kubernetes-Clustern auf Compliance- und Governanceanforderungen anzuwenden.
+Da Azure Resource Manager Ihre Konfigurationen für Kubernetes mit Azure Arc-Aktivierung verwaltet, können Sie mithilfe von Azure Policy im Rahmen eines Abonnements oder einer Ressourcengruppe automatisch dieselbe Konfiguration für alle Kubernetes-Ressourcen mit Azure Arc-Aktivierung erstellen. Diese Funktion kann sogar auf Azure Arc-fähige Kubernetes-Ressourcen angewendet werden, die nach der Richtlinienzuweisung erstellt wurden.
+
+Dieses Feature wendet Baselinekonfigurationen (wie Netzwerkrichtlinien, Rollenbindungen und Podsicherheitsrichtlinien) auf den gesamten Bestand der Kubernetes-Cluster an, um Compliance- und Governanceanforderungen zu entsprechen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verbinden eines Clusters mit Azure Arc](./connect-cluster.md)
+* [Verbinden eines Clusters mit Azure Arc](./quickstart-connect-cluster.md)
 * [Erstellen von Konfigurationen auf Ihrem Arc-fähigen Kubernetes-Cluster](./use-gitops-connected-cluster.md)
 * [Verwenden von Azure Policy zum Anwenden von Konfigurationen im großen Stil](./use-azure-policy.md)

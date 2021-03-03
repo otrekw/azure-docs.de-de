@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5141c7fcfe1128574145930548f41731529c2ad8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 484e8853d02aa68c8a8695ba7cc724adb5a8766a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012460"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572973"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Grundlegendes zur Stream Analytics-Auftragsüberwachung und zum Überwachen von Abfragen
 
@@ -48,7 +48,7 @@ Das Fenster wird wie folgt angezeigt:
 Sie können diese Metriken zum [Überwachen der Leistung des Stream Analytics-Auftrags](./stream-analytics-set-up-alerts.md#scenarios-to-monitor) verwenden. 
 
 ## <a name="customizing-monitoring-in-the-azure-portal"></a>Anpassen der Überwachung im Azure-Portal
-Sie können den Diagrammtyp, die angezeigten Metriken und den Uhrzeitbereich in den Einstellungen unter "Diagramm bearbeiten" anpassen. Weitere Informationen finden Sie unter [Anpassen der Überwachung](../azure-monitor/platform/data-platform.md).
+Sie können den Diagrammtyp, die angezeigten Metriken und den Uhrzeitbereich in den Einstellungen unter "Diagramm bearbeiten" anpassen. Weitere Informationen finden Sie unter [Anpassen der Überwachung](../azure-monitor/data-platform.md).
 
   ![Zeitdiagramm für die Stream Analytics-Abfrageüberwachung](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
 

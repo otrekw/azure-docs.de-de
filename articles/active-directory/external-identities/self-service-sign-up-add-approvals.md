@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: article
-ms.date: 06/16/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3165bc28e6d6283bf8578d9c10b11f7b19981002
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: b447873df882847f052125254ea52b5ae6ab9ec4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355238"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644866"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Hinzufügen eines benutzerdefinierten Genehmigungsworkflows zur Self-Service-Registrierung
 
@@ -81,7 +81,7 @@ Nun fügen Sie die API-Connectors mit folgenden Schritten einem Self-Service-Reg
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Azure AD-Administrator an.
 2. Wählen Sie unter **Azure-Dienste** die Option **Azure Active Directory** aus.
 3. Wählen Sie im Menü auf der linken Seite **Externe Identitäten** aus.
-4. Wählen Sie **Benutzerflows (Vorschau)** aus und dann den Benutzerflow, für den Sie den API-Connector aktivieren möchten.
+4. Wählen Sie **Benutzerflows** und dann den Benutzerflow aus, für den Sie den API-Connector aktivieren möchten.
 5. Wählen Sie mit folgenden Schritte **API-Connectors** aus und dann die API-Endpunkte, die Sie im Benutzerflow aufrufen möchten:
 
    - **Nach der Anmeldung mit einem Identitätsanbieter**: Wählen Sie den API-Connector für den Genehmigungsstatus aus, z. B. _Genehmigungsstatus überprüfen_.
@@ -357,8 +357,8 @@ POST https://graph.microsoft.com/v1.0/invitations
 Content-type: application/json
 
 {
-    "invitedUserEmailAddress":"johnsmith@fabrikam.onmicrosoft.com",
-    "inviteRedirectUrl" : "https://myapp.com"
+    "invitedUserEmailAddress": "johnsmith@fabrikam.onmicrosoft.com",
+    "inviteRedirectUrl" : "https://myapp.com"
 }
 ```
 
@@ -370,9 +370,9 @@ Content-type: application/json
 
 {
     ...
-    "invitedUser": {
-        "id": "<generated-user-guid>"
-    }
+    "invitedUser": {
+        "id": "<generated-user-guid>"
+    }
 }
 ```
 

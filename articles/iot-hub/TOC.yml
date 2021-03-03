@@ -349,6 +349,16 @@
           href: iot-hub-azure-service-health-integration.md
         - name: Sortieren der Geräteverbindungsstatus-Ereignisse von Event Grid
           href: iot-hub-how-to-order-connection-state-events.md
+    - name: Bereitstellen von Updates
+      items:
+        - name: Erstellen eines Geräteupdatekontos
+          href: /iot-hub-device-update/create-device-update-account.md
+        - name: Importieren eines Updates
+          href: /iot-hub-device-update/import-update.md
+        - name: Erstellen einer Updategruppe
+          href: /iot-hub-device-update/create-update-group.md
+        - name: Bereitstellen eines Updates
+          href: /iot-hub-device-update/deploy-update.md
     - name: Verwenden echter Geräte
       items:
         - name: Verwenden eines Onlinesimulators

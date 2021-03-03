@@ -7,17 +7,17 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 2/7/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3ae3224ae17d0dee2ed1080669c6057ca62959d9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: db5506f1f1fcabf3a922115c24aa64e35b888fbd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384502"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573758"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
 > [!NOTE]
-> In diesem Artikel wird beschrieben, wie Sie die Kosten für Application Insights ermitteln und steuern.  In einem verwandten Artikel, [Überwachen der Nutzung und der geschätzten Kosten](../platform/usage-estimated-costs.md), wird erläutert, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden.
+> In diesem Artikel wird beschrieben, wie Sie die Kosten für Application Insights ermitteln und steuern.  In einem verwandten Artikel, [Überwachen der Nutzung und der geschätzten Kosten](..//usage-estimated-costs.md), wird erläutert, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden.
 
 Application Insights ist so konzipiert, dass es alles bietet, was Sie für die Überwachung der Verfügbarkeit, Leistung und Nutzung Ihrer Webanwendungen benötigen – ganz gleich, ob diese in Azure oder lokal gehostet werden. Zudem unterstützt Application Insights beliebte Sprachen und Frameworks wie .NET, Java und Node.js und kann in DevOps-Prozesse und -Tools wie Azure DevOps, Jira und PagerDuty integriert werden. Es ist wichtig zu verstehen, wodurch sich die Kosten für die Überwachung Ihrer Anwendungen ergeben. In diesem Artikel erfahren Sie, wie die Kosten für die Anwendungsüberwachung entstehen und wie Sie diese proaktiv überwachen und steuern können.
 
@@ -33,7 +33,7 @@ Die Application Insights-Option zum [Aktivieren von Warnungen für benutzerdefin
 
 ### <a name="workspace-based-application-insights"></a>Arbeitsbereichsbasierte Application Insights-Instanz
 
-Für Application Insights-Ressourcen, die ihre Daten an einen Log Analytics-Arbeitsbereich senden (als [arbeitsbereichsbasierte Application Insights-Ressourcen](create-workspace-resource.md) bezeichnet), erfolgt die Abrechnung für die Datenerfassung und -aufbewahrung über den Arbeitsbereich, in dem sich die Application Insights-Daten befinden. Auf diese Weise können Kunden alle Optionen des[Preismodells](../platform/manage-cost-storage.md#pricing-model) von Log Analytics nutzen, z. B. Kapazitätsreservierung und nutzungsbasierte Zahlung. Log Analytics verfügt auch noch über weitere Optionen für die Datenaufbewahrung, z. B. [Aufbewahrung nach Datentyp](../platform/manage-cost-storage.md#retention-by-data-type). Für Application Insights-Datentypen im Arbeitsbereich gilt eine gebührenfreie Aufbewahrungsdauer von 90 Tagen. Die Nutzung von Webtests und die Aktivierung von Warnungen für benutzerdefinierte Metrikdimensionen wird weiterhin über Application Insights gemeldet. Machen Sie sich damit vertraut, wie Sie die Kosten für die Datenerfassung und -aufbewahrung in Log Analytics nachverfolgen können, indem Sie die Informationen unter [Verstehen Ihrer Nutzung und Schätzen von Kosten](../platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs), [Anzeigen des Log Analytics-Verbrauchs auf Ihrer Azure-Rechnung](../platform/manage-cost-storage.md#viewing-log-analytics-usage-on-your-azure-bill) und zu [Log Analytics-Abfragen](#data-volume-for-workspace-based-application-insights-resources) lesen. 
+Für Application Insights-Ressourcen, die ihre Daten an einen Log Analytics-Arbeitsbereich senden (als [arbeitsbereichsbasierte Application Insights-Ressourcen](create-workspace-resource.md) bezeichnet), erfolgt die Abrechnung für die Datenerfassung und -aufbewahrung über den Arbeitsbereich, in dem sich die Application Insights-Daten befinden. Auf diese Weise können Kunden alle Optionen des[Preismodells](../logs/manage-cost-storage.md#pricing-model) von Log Analytics nutzen, z. B. Kapazitätsreservierung und nutzungsbasierte Zahlung. Log Analytics verfügt auch noch über weitere Optionen für die Datenaufbewahrung, z. B. [Aufbewahrung nach Datentyp](../logs/manage-cost-storage.md#retention-by-data-type). Für Application Insights-Datentypen im Arbeitsbereich gilt eine gebührenfreie Aufbewahrungsdauer von 90 Tagen. Die Nutzung von Webtests und die Aktivierung von Warnungen für benutzerdefinierte Metrikdimensionen wird weiterhin über Application Insights gemeldet. Machen Sie sich damit vertraut, wie Sie die Kosten für die Datenerfassung und -aufbewahrung in Log Analytics nachverfolgen können, indem Sie die Informationen unter [Verstehen Ihrer Nutzung und Schätzen von Kosten](../logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs), [Anzeigen des Log Analytics-Verbrauchs auf Ihrer Azure-Rechnung](../logs/manage-cost-storage.md#viewing-log-analytics-usage-on-your-azure-bill) und zu [Log Analytics-Abfragen](#data-volume-for-workspace-based-application-insights-resources) lesen. 
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Schätzen der Kosten für die Verwaltung Ihrer Anwendung
 
@@ -106,7 +106,7 @@ systemEvents
 | summarize sum(BillingTelemetrySizeInBytes) by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
 ```
 
-Diese Abfrage kann in einer [Azure-Protokollwarnung](../platform/alerts-unified-log.md) verwendet werden, um Warnungen für Datenvolumen einzurichten.  
+Diese Abfrage kann in einer [Azure-Protokollwarnung](../alerts/alerts-unified-log.md) verwendet werden, um Warnungen für Datenvolumen einzurichten.  
 
 Wenn Sie mehr über die Änderungen Ihrer Telemetriedaten erfahren möchten, können Sie mit der folgenden Abfrage die Anzahl von Ereignissen nach Typ abrufen:
 
@@ -224,7 +224,7 @@ Wenn Sie [die tägliche Obergrenze über Azure Resource Manager](./powershell.md
 
 ### <a name="create-alerts-for-the-daily-cap"></a>Erstellen von Warnungen für die tägliche Obergrenze
 
-Bei der täglichen Obergrenze von Application Insights wird ein Ereignis im Azure-Aktivitätsprotokoll erstellt, wenn für das erfasste Datenvolumen die Warnstufe oder die tägliche Obergrenze erreicht wird.  Sie können [basierend auf diesen Aktivitätsprotokollereignissen eine Warnung erstellen](../platform/alerts-activity-log.md#create-with-the-azure-portal). Die Signalnamen für diese Ereignisse lauten:
+Bei der täglichen Obergrenze von Application Insights wird ein Ereignis im Azure-Aktivitätsprotokoll erstellt, wenn für das erfasste Datenvolumen die Warnstufe oder die tägliche Obergrenze erreicht wird.  Sie können [basierend auf diesen Aktivitätsprotokollereignissen eine Warnung erstellen](../alerts/alerts-activity-log.md#create-with-the-azure-portal). Die Signalnamen für diese Ereignisse lauten:
 
 * Warnungsschwellenwert für Tageslimit der Application Insights-Komponente erreicht
 
@@ -248,7 +248,7 @@ Um die Erfassungs-Stichprobenerstellung festzulegen, navigieren Sie zum Bereich 
 > Über den Bereich **Datensampling** wird nur der Wert der Erfassungs-Stichprobenerstellung gesteuert. Die Rate der Stichprobenerstellung, die vom Application Insights-SDK in Ihrer App angewendet wird, wird nicht widergespiegelt. Falls für die eingehenden Telemetriedaten bereits im SDK Stichproben erstellt wurden, wird die Erfassungs-Stichprobenerstellung nicht angewendet.
 >
 
-Verwenden Sie eine [Analytics-Abfrage](../log-query/log-query-overview.md), um den tatsächlichen Prozentsatz der Stichprobenerstellung unabhängig davon zu ermitteln, wo er angewendet wird. Die Abfrage sieht folgendermaßen aus:
+Verwenden Sie eine [Analytics-Abfrage](../logs/log-query-overview.md), um den tatsächlichen Prozentsatz der Stichprobenerstellung unabhängig davon zu ermitteln, wo er angewendet wird. Die Abfrage sieht folgendermaßen aus:
 
 ```kusto
 requests | where timestamp > ago(1d)
@@ -288,7 +288,7 @@ Für Kunden, die schon lange Azure Application Insights nutzen, gibt es weiterhi
 
 Diese älteren Tarife wurden umbenannt: Der Enterprise-Tarif heißt jetzt **Pro Knoten**, der Basic-Tarif heißt jetzt **Pro GB**. Diese neuen Namen werden nachfolgend und im Azure-Portal verwendet.  
 
-Für den Tarif „Pro Knoten“ (ehemals „Enterprise“) wird eine knotenbasierte Gebühr erhoben, und jedem Knoten ist ein tägliches Datenkontingent zugewiesen. Im Tarif „Pro Knoten“ werden die Daten, die über das enthaltene Datenkontingent hinausgehen, berechnet. Bei Verwendung der Operations Management Suite sollten Sie sich für den Tarif „Pro Knoten“ entscheiden. Im April 2018 haben wir ein [neues Preismodell für die Azure-Überwachung eingeführt](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/). Bei diesem Modell gilt für das gesamte Portfolio der Überwachungsdienste das einfache Prinzip der nutzungsbasierten Bezahlung. [Weitere Informationen zum neuen Preismodell.](../platform/usage-estimated-costs.md)
+Für den Tarif „Pro Knoten“ (ehemals „Enterprise“) wird eine knotenbasierte Gebühr erhoben, und jedem Knoten ist ein tägliches Datenkontingent zugewiesen. Im Tarif „Pro Knoten“ werden die Daten, die über das enthaltene Datenkontingent hinausgehen, berechnet. Bei Verwendung der Operations Management Suite sollten Sie sich für den Tarif „Pro Knoten“ entscheiden. Im April 2018 haben wir ein [neues Preismodell für die Azure-Überwachung eingeführt](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/). Bei diesem Modell gilt für das gesamte Portfolio der Überwachungsdienste das einfache Prinzip der nutzungsbasierten Bezahlung. [Weitere Informationen zum neuen Preismodell.](..//usage-estimated-costs.md)
 
 Aktuelle Preise in Ihrer Währung und für Ihre Region finden Sie auf der Seite [Application Insights – Preise](https://azure.microsoft.com/pricing/details/application-insights/).
 

@@ -4,16 +4,17 @@ description: In diesem Artikel werden die Fehler aufgeführt und beschrieben, di
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines
+ms.subservice: classic-to-arm-migration
 ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 8b56d7294237c39d085a30a701ead3bde309759a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 02bf0430892490b5d3cfe35a6da4bf0973373fd3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882364"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676131"
 ---
 # <a name="errors-that-commonly-occur-during-classic-to-azure-resource-manager-migration"></a>Fehler, die häufig bei der Migration von einer klassischen Bereitstellung zu einer Azure Resource Manager-Bereitstellung auftreten
 
@@ -179,7 +180,7 @@ Remove-AzVMSecret -VM $vm
 Update-AzVM -ResourceGroupName "MyRG" -VM $vm
 ```
 
-#### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az vm update -g "myrg" -n "myvm" --set osProfile.Secrets=[]

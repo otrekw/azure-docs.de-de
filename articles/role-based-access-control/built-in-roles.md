@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/15/2021
 ms.custom: generated
-ms.openlocfilehash: d9a2667907108cfb4c8d7a2a2c9b1558e02a9110
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 1cd86ac2b9500c15bc32445e1866a40ca1c6b409
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535126"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577000"
 ---
 # <a name="azure-built-in-roles"></a>Integrierte Azure-Rollen
 
@@ -196,9 +196,9 @@ Die folgende Tabelle enthält eine kurze Beschreibung und die eindeutige ID alle
 > | **Überwachen** |  |  |
 > | [Mitwirkender der Application Insights-Komponente](#application-insights-component-contributor) | Kann Application Insights-Komponenten verwalten | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights-Momentaufnahmedebugger](#application-insights-snapshot-debugger) | Gibt dem Benutzer die Berechtigung zum Anzeigen und Herunterladen von Debugmomentaufnahmen, die mit dem Application Insights-Momentaufnahmedebugger erfasst wurden. Beachten Sie, dass diese Berechtigungen in der Rolle [Besitzer](#owner) oder [Mitwirkender](#contributor) nicht enthalten sind. Die Application Insights-Rolle „Momentaufnahmedebugger“ muss Benutzern direkt zugewiesen werden. Die Rolle wird nicht erkannt, wenn sie einer benutzerdefinierten Rolle hinzugefügt wird. | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
-> | [Überwachungsmitwirkender](#monitoring-contributor) | Kann sämtliche Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
+> | [Überwachungsmitwirkender](#monitoring-contributor) | Kann sämtliche Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles). | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | [Herausgeber von Überwachungsmetriken](#monitoring-metrics-publisher) | Ermöglicht die Veröffentlichung von Metriken für Azure-Ressourcen. | 3913510d-42f4-4e42-8a64-420c390055eb |
-> | [Überwachungsleser](#monitoring-reader) | Kann alle Überwachungsdaten (Metriken, Protokolle usw.) lesen. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
+> | [Überwachungsleser](#monitoring-reader) | Kann alle Überwachungsdaten (Metriken, Protokolle usw.) lesen. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles). | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | [Arbeitsmappenmitwirkender](#workbook-contributor) | Kann freigegebene Arbeitsmappen speichern. | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
 > | [Arbeitsmappenleser](#workbook-reader) | Kann Arbeitsmappen lesen. | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 > | **Verwaltung und Governance** |  |  |
@@ -4774,7 +4774,7 @@ Erstellen und verwalten Sie Data Factorys sowie die darin enthaltenen untergeord
 
 ### <a name="data-purger"></a>Datenpurger
 
-Kann Analysedaten endgültig löschen. [Weitere Informationen](../azure-monitor/platform/personal-data-mgmt.md)
+Kann Analysedaten endgültig löschen. [Weitere Informationen](../azure-monitor/logs/personal-data-mgmt.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -4917,7 +4917,7 @@ Ermöglicht Ihnen, Vorgänge im Zusammenhang mit Domänendiensten, die für das 
 
 ### <a name="log-analytics-contributor"></a>Log Analytics-Mitwirkender
 
-Ein Log Analytics-Mitwirkender kann alle Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Das Bearbeiten von Überwachungseinstellungen schließt folgende Aufgaben ein: Hinzufügen der VM-Erweiterung zu VMs, Lesen von Speicherkontoschlüsseln zum Konfigurieren von Protokollsammlungen aus Azure Storage, Erstellen und Konfigurieren von Automation-Konten, Hinzufügen von Lösungen, Konfigurieren der Azure-Diagnose für alle Azure-Ressourcen. [Weitere Informationen](../azure-monitor/platform/manage-access.md)
+Ein Log Analytics-Mitwirkender kann alle Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Das Bearbeiten von Überwachungseinstellungen schließt folgende Aufgaben ein: Hinzufügen der VM-Erweiterung zu VMs, Lesen von Speicherkontoschlüsseln zum Konfigurieren von Protokollsammlungen aus Azure Storage, Erstellen und Konfigurieren von Automation-Konten, Hinzufügen von Lösungen, Konfigurieren der Azure-Diagnose für alle Azure-Ressourcen. [Weitere Informationen](../azure-monitor/logs/manage-access.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -4982,7 +4982,7 @@ Ein Log Analytics-Mitwirkender kann alle Überwachungsdaten lesen und Überwachu
 
 ### <a name="log-analytics-reader"></a>Log Analytics-Leser
 
-Ein Log Analytics-Leser kann alle Überwachungsdaten anzeigen und durchsuchen sowie Überwachungseinstellungen anzeigen. Hierzu zählt auch die Anzeige der Konfiguration von Azure-Diagnosen für alle Azure-Ressourcen. [Weitere Informationen](../azure-monitor/platform/manage-access.md)
+Ein Log Analytics-Leser kann alle Überwachungsdaten anzeigen und durchsuchen sowie Überwachungseinstellungen anzeigen. Hierzu zählt auch die Anzeige der Konfiguration von Azure-Diagnosen für alle Azure-Ressourcen. [Weitere Informationen](../azure-monitor/logs/manage-access.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -8596,7 +8596,7 @@ Gibt dem Benutzer die Berechtigung zum Anzeigen und Herunterladen von Debugmomen
 
 ### <a name="monitoring-contributor"></a>Überwachungsmitwirkender
 
-Kann sämtliche Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). [Weitere Informationen](../azure-monitor/platform/roles-permissions-security.md)
+Kann sämtliche Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles). [Weitere Informationen](../azure-monitor/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -8742,7 +8742,7 @@ Ermöglicht die Veröffentlichung von Metriken für Azure-Ressourcen. [Weitere I
 
 ### <a name="monitoring-reader"></a>Überwachungsleser
 
-Kann alle Überwachungsdaten (Metriken, Protokolle usw.) lesen. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). [Weitere Informationen](../azure-monitor/platform/roles-permissions-security.md)
+Kann alle Überwachungsdaten (Metriken, Protokolle usw.) lesen. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles). [Weitere Informationen](../azure-monitor/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |

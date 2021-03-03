@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: subject-monitoring
-ms.openlocfilehash: 6dd53358b67eef481948d3349afc07086ea26fcd
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: b37586f66106e33b2a8dad034a6e7c131484be73
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584905"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571624"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Überwachen von Daten in Azure-Blobspeicher – Referenz
 
@@ -36,7 +36,7 @@ Azure Storage stellt in Azure Monitor folgende Kapazitätsmetriken bereit:
 
 #### <a name="blob-storage"></a>Blob Storage
 
-Diese Tabelle enthält [Blob Storage-Metriken](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices).
+Diese Tabelle enthält [Blob Storage-Metriken](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsblobservices).
 
 | Metrik | BESCHREIBUNG |
 | ------------------- | ----------------- |
@@ -176,4 +176,4 @@ In der nachstehenden Tabelle sind die Eigenschaften für Azure Storage-Ressource
 ## <a name="see-also"></a>Weitere Informationen
 
 - Eine Beschreibung der Überwachung von Azure Storage finden Sie unter [Überwachen von Azure Storage](monitor-blob-storage.md).
-- Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md).
+- Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../../azure-monitor/essentials/monitor-azure-resource.md).

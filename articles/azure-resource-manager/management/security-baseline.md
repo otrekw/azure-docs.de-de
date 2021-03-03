@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b4f0c64abf150165e3239e78e8cf9b824b34eed6
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 1ba497094a28e056d5984f1e58e2f15c9d21eae2
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202367"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094434"
 ---
 # <a name="azure-security-baseline-for-azure-resource-manager"></a>Azure-Sicherheitsbaseline für Azure Resource Manager
 
@@ -31,9 +31,9 @@ Der Inhalt wird nach den **Sicherheitskontrollen** gruppiert, die durch den Azur
 
 - [Durchführen des Onboardings für Azure Sentinel](../../sentinel/quickstart-onboard.md) 
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md) 
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Sammeln von internen Azure Virtual Machine-Hostprotokollen mit Azure Monitor](../../azure-monitor/learn/quick-collect-azurevm.md) 
+- [Sammeln von internen Azure Virtual Machine-Hostprotokollen mit Azure Monitor](../../azure-monitor/vm/quick-collect-azurevm.md) 
 
 - [Erste Schritte mit Azure Monitor und der Integration einer SIEM-Drittanbieterlösung](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -45,9 +45,9 @@ Der Inhalt wird nach den **Sicherheitskontrollen** gruppiert, die durch den Azur
 
 **Leitfaden**: Azure Resource Manager verwendet automatisch aktivierte Aktivitätsprotokolle, um Elemente wie Ereignisquelle, Datum, Benutzer, Zeitstempel, Quelladressen, Zieladressen und andere nützliche Elemente einzuschließen.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md) 
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../../azure-monitor/platform/platform-logs-overview.md)
+- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -61,9 +61,9 @@ Alternativ können Sie auch Daten in Azure Sentinel oder einer SIEM-Drittanbiete
 
 - [Durchführen des Onboardings für Azure Sentinel](../../sentinel/quickstart-onboard.md) 
 
-- [Erste Schritte mit Log Analytics-Abfragen](../../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Erste Schritte mit Log Analytics-Abfragen](../../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
+- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -77,7 +77,7 @@ Alternativ können Sie auch Daten in Azure Sentinel oder einer SIEM-Drittanbiete
 
 - [Verwalten von Warnungen in Azure Security Center](../../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Warnungen bei Log Analytics-Protokolldaten](../../azure-monitor/learn/tutorial-response.md)
+- [Warnungen bei Log Analytics-Protokolldaten](../../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -241,7 +241,7 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 **Leitfaden**: Verwenden Sie Azure AD-RBAC, um den Zugriff auf Daten und Ressourcen zu steuern, und verwenden Sie andernfalls dienstspezifische Zugriffssteuerungsmethoden.
 
-- [Konfigurieren von RBAC in Azure](../../role-based-access-control/role-assignments-portal.md)
+- [Konfigurieren von Azure RBAC](../../role-based-access-control/role-assignments-portal.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -261,7 +261,7 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen zu erstellen, die bei Änderungen an wichtigen Azure-Ressourcen ausgegeben werden.
 
-- [Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse](../../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Ja
 

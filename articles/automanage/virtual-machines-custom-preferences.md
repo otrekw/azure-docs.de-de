@@ -1,29 +1,29 @@
 ---
 title: Erstellen einer benutzerdefinierten Voreinstellung in der automatischen Azure-Verwaltung für VMs
-description: Erfahren Sie, wie Sie das Konfigurationsprofil in der automatischen Azure-Verwaltung für VMs anpassen und Ihre eigenen Voreinstellungen festlegen können.
+description: Erfahren Sie, wie Sie die Umgebungskonfiguration in Azure Automanage anpassen und Ihre eigenen Voreinstellungen festlegen können.
 author: ju-shim
 ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 09/04/2020
+ms.date: 02/22/2021
 ms.author: jushiman
-ms.openlocfilehash: 377677c9e5e81487059241db68baff639a3de033
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 584a3503bf736fcf727a169611e6c79e0c374c90
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715046"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647930"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>Erstellen einer benutzerdefinierten Voreinstellung in der automatischen Azure-Verwaltung für VMs
 
-Die bewährten Methoden für die automatische Azure-Verwaltung von virtuellen Computern verfügt über Standardkonfigurationsprofile, die bei Bedarf angepasst werden können. In diesem Artikel wird erläutert, wie Sie Ihre eigenen Konfigurationsprofileinstellungen festlegen können, wenn Sie die automatische Verwaltung auf einer neuen oder bestehenden VM aktivieren.
+Die bewährten Methoden für Azure Automanage für virtuelle Computer verfügt über Standardumgebungen, die bei Bedarf angepasst werden können. In diesem Artikel wird erläutert, wie Sie Ihre eigenen Voreinstellungen festlegen können, wenn Sie die automatische Verwaltung auf einer neuen oder bestehenden VM aktivieren.
 
 Wir unterstützen derzeit Anpassungen bei [Azure Backup](..\backup\backup-azure-arm-vms-prepare.md#create-a-custom-policy) und [Microsoft Antimalware](../security/fundamentals/antimalware.md#default-and-custom-antimalware-configuration).
 
 
 > [!NOTE]
-> Sie können das Konfigurationsprofil oder die Konfigurationseinstellung auf Ihrer VM nicht ändern, solange die automatische Verwaltung aktiviert ist. Sie müssen die automatische Verwaltung für diese VM deaktivieren und dann die automatische Verwaltung mit dem gewünschten Konfigurationsprofil und den gewünschten Voreinstellungen erneut aktivieren.
+> Sie können die Umgebung oder die Voreinstellung auf Ihrer VM nicht ändern, solange Automanage aktiviert ist. Sie müssen die automatische Verwaltung für diese VM deaktivieren und dann Automanage mit der gewünschten Konfigurationsumgebung und den gewünschten Voreinstellungen erneut aktivieren.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -44,7 +44,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="enable-automanage-for-vms-on-an-existing-vm"></a>Aktivieren der automatischen Verwaltung für virtuelle Computer auf einem vorhandenen virtuellen Computer
 
-1. Suchen Sie über die Suchleiste nach **Automatische Verwaltung – Best Practices für Azure-VMs**, und wählen Sie die Option aus.
+1. Suchen Sie über die Suchleiste nach **Automanage – Best Practices für Azure-VMs**, und wählen Sie die Option aus.
 
 2. Wählen Sie **Für vorhandene VM aktivieren** aus.
 
@@ -55,15 +55,18 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
     :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-select-machine.png" alt-text="Auswählen eines vorhandenen virtuellen Computers aus der Liste verfügbarer virtueller Computer":::
 
-4. Klicken Sie unter **Configuration Profile** (Konfigurationsprofil) auf **Browse and change profiles and preferences** (Profile und Einstellungen durchsuchen und ändern).
+    > [!NOTE]
+    > Klicken Sie auf die Option zum **Anzeigen unzulässiger Computer**, um die Liste der nicht unterstützten Computer und die Gründe dafür anzuzeigen. 
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="Auswählen eines vorhandenen virtuellen Computers aus der Liste verfügbarer virtueller Computer":::
+4. Klicken Sie unter **Konfiguration** auf **Umgebungen vergleichen**.
 
-5. Wählen Sie auf dem Blatt **Konfigurationsprofil und -einstellungen auswählen** ein Profil auf der linken Seite aus: *Dev/Test* für Tests, *Prod* für die Produktion.
+    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="Vergleichen von Umgebungen":::
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="Auswählen eines vorhandenen virtuellen Computers aus der Liste verfügbarer virtueller Computer":::
+5. Wählen Sie auf dem Blatt **Umgebungsdetails** eine Umgebung aus dem Dropdownmenü aus: *Dev/Test* für Tests, *Prod* für Produktion, und klicken Sie dann auf **OK**.
 
-6. Auf dem gewählten Profil gibt es unter **Konfigurationseinstellungen** eine Dropdownliste, in der Sie bestimmte Dienste anpassen können.
+    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="Durchsuchen der Produktionsumgebung":::
+
+6. Nachdem Sie Ihre Umgebung ausgewählt haben, können Sie **Konfigurationseinstellungen** auswählen. Standardmäßig werden die Best Practices in Azure verwendet. Diese Voreinstellung enthält die empfohlenen Einstellungen für die einzelnen Dienste. Ändern Sie diese Einstellungen, indem Sie eine benutzerdefinierte Voreinstellung erstellen: 
     1. Klicken Sie auf die Option zum **Erstellen neuer Voreinstellungen**.
     1. Füllen Sie im Blatt **Konfigurationseinstellung erstellen** die Registerkarte „Grundlagen“ aus:
         1. Subscription
@@ -71,14 +74,14 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
         1. Name der Voreinstellung
         1. Region
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="Auswählen eines vorhandenen virtuellen Computers aus der Liste verfügbarer virtueller Computer":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="Füllen Sie die Konfigurationseinstellungen aus.":::
 
-7. Wechseln Sie zur Registerkarte „Voreinstellungen“, und passen Sie die von Ihnen gewünschten Konfigurationseinstellungen an.
+7. Passen Sie die gewünschten Konfigurationseinstellungen an.
         
     > [!NOTE]
-    > Bei der Änderung von Profilkonfigurationen werden nur Anpassungen zugelassen, die noch innerhalb der oberen und unteren Grenzen unserer bewährten Methoden liegen.
+    > Bei der Änderung von Umgebungskonfigurationen werden nur Anpassungen zugelassen, die noch innerhalb der oberen und unteren Grenzen unserer bewährten Methoden liegen.
 
-8. Überprüfen Sie Ihr Konfigurationsprofil.
+8. Überprüfen Sie Ihre Konfigurationsdetails.
 9. Klicken Sie auf die Schaltfläche **Erstellen**.
 
 10. Klicken Sie auf die Schaltfläche **Aktivieren**.
@@ -88,7 +91,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 Sie können die Verwendung der automatischen Azure-Verwaltung für virtuelle Computer schnell beenden, indem Sie die automatische Verwaltung deaktivieren.
 
-:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="Auswählen eines vorhandenen virtuellen Computers aus der Liste verfügbarer virtueller Computer":::
+:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="Deaktivieren der automatischen Verwaltung auf einem virtuellen Computer":::
 
 1. Navigieren Sie zur Seite **Automatische Verwaltung – Best Practices für Azure-VMs**, auf der alle automatisch verwalteten virtuellen Computer aufgeführt sind.
 1. Aktivieren Sie das Kontrollkästchen neben dem virtuellen Computer, den Sie deaktivieren möchten.

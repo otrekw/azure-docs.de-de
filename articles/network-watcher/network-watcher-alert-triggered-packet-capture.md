@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 3b6cb195f44bf6c868402481480d9b10802c4d59
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8e2af73be0fc887b132f523133159472ce1d1f98
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965669"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570972"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Warnungen und Azure Functions
 
@@ -332,7 +332,7 @@ Bei dem folgenden Beispiel handelt es sich um PowerShell-Code, der in der Funkti
 
     ![Kopieren der Funktions-URL][2]
 
-Wenn Sie in der Nutzlast der Webhook-POST-Anforderung benutzerdefinierte Eigenschaften benötigen, helfen Ihnen die Informationen unter [Konfigurieren eines Webhooks für eine Azure-Metrikwarnung](../azure-monitor/platform/alerts-webhooks.md) weiter.
+Wenn Sie in der Nutzlast der Webhook-POST-Anforderung benutzerdefinierte Eigenschaften benötigen, helfen Ihnen die Informationen unter [Konfigurieren eines Webhooks für eine Azure-Metrikwarnung](../azure-monitor/alerts/alerts-webhooks.md) weiter.
 
 ## <a name="configure-an-alert-on-a-vm"></a>Konfigurieren einer Warnung auf einem virtuellen Computer
 
@@ -340,7 +340,7 @@ Warnungen können konfiguriert werden, um Personen zu benachrichtigen, wenn eine
 
 ### <a name="create-the-alert-rule"></a>Erstellen der Warnungsregel
 
-Navigieren Sie zu einem vorhandenen virtuellen Computer, und fügen Sie eine Warnungsregel hinzu. Ausführlichere Informationen zum Konfigurieren von Warnungen finden Sie unter [Erstellen von Metrikwarnungen in Azure Monitor für Azure-Dienste – Azure-Portal](../azure-monitor/platform/alerts-classic-portal.md). Geben Sie auf dem Blatt **Warnungsregel** die folgenden Werte ein, und wählen Sie dann **OK** aus.
+Navigieren Sie zu einem vorhandenen virtuellen Computer, und fügen Sie eine Warnungsregel hinzu. Ausführlichere Informationen zum Konfigurieren von Warnungen finden Sie unter [Erstellen von Metrikwarnungen in Azure Monitor für Azure-Dienste – Azure-Portal](../azure-monitor/alerts/alerts-classic-portal.md). Geben Sie auf dem Blatt **Warnungsregel** die folgenden Werte ein, und wählen Sie dann **OK** aus.
 
   |**Einstellung** | **Wert** | **Details** |
   |---|---|---|

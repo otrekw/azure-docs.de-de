@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 75c0058f2d4878016281656935cbd82f79b859fd
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 96a076ef144af1d32e9ef3ec2903557b8edff006
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120001"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586703"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Überwachen der Ressourcennutzung und Abfrageaktivität in Azure Synapse Analytics
 
@@ -24,7 +24,7 @@ Azure Synapse Analytics bietet umfassende Überwachungsfunktionen im Azure-Porta
 
 ## <a name="resource-utilization"></a>Ressourcenverwendung
 
-Im Azure-Portal stehen die folgenden Metriken für Synapse SQL zur Verfügung. Diese Metriken werden über [Azure Monitor](../../azure-monitor/platform/data-platform.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#metrics) angegeben.
+Im Azure-Portal stehen die folgenden Metriken für Synapse SQL zur Verfügung. Diese Metriken werden über [Azure Monitor](../../azure-monitor/data-platform.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#metrics) angegeben.
 
 | Metrikname             | BESCHREIBUNG                                                  | Aggregationstyp |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
@@ -57,7 +57,7 @@ Eine Liste der DMVs, die für Synapse SQL gelten, finden Sie in dieser [Dokument
 
 ## <a name="metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosedaten 
 
-Sowohl Metriken als auch Protokolle können in Azure Monitor exportiert werden, insbesondere die Komponente [Azure Monitor-Protokolle](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), und auf sie kann programmgesteuert über [Protokollabfragen](../../azure-monitor/log-query/log-analytics-tutorial.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json) zugegriffen werden. Die Protokollwartezeit für Synapse SQL beträgt ca. 10 bis 15 Minuten. Weitere Informationen zu den Faktoren, die sich auf die Wartezeit auswirken, finden Sie in der folgenden Dokumentation.
+Sowohl Metriken als auch Protokolle können in Azure Monitor exportiert werden, insbesondere die Komponente [Azure Monitor-Protokolle](../../azure-monitor/logs/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), und auf sie kann programmgesteuert über [Protokollabfragen](../../azure-monitor/logs/log-analytics-tutorial.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json) zugegriffen werden. Die Protokollwartezeit für Synapse SQL beträgt ca. 10 bis 15 Minuten. Weitere Informationen zu den Faktoren, die sich auf die Wartezeit auswirken, finden Sie in der folgenden Dokumentation.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,14 +8,14 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 02/17/2021
 ms.author: v-doeris
-ms.openlocfilehash: 3d4211acbf6b65ef8f04d00b3936d70bb930ed9e
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 33d3712e25a06419e0ccc5914cdddfae7d85a371
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100561065"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645788"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-in-a-nodejs-console-app"></a>Tutorial: Aufrufen der Microsoft Graph-API in einer Node.js-Konsolen-App
 
@@ -125,9 +125,9 @@ Erstellen Sie im Ordner *bin* eine weitere Datei mit dem Namen *auth.js*, und f�
 const msal = require('@azure/msal-node');
 
 /**
- * Configuration object to be passed to MSAL instance on creation. 
+ * Configuration object to be passed to MSAL instance on creation.
  * For a full list of MSAL Node configuration parameters, visit:
- * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/configuration.md 
+ * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/configuration.md
  */
 const msalConfig = {
     auth: {
@@ -139,8 +139,8 @@ const msalConfig = {
 
 /**
  * With client credentials flows permissions need to be granted in the portal by a tenant administrator.
- * The scope is always in the format '<resource>/.default'. For more, visit: 
- * https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow 
+ * The scope is always in the format '<resource>/.default'. For more, visit:
+ * https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow
  */
 const tokenRequest = {
     scopes: [process.env.GRAPH_ENDPOINT + '.default'],
@@ -158,7 +158,7 @@ const cca = new msal.ConfidentialClientApplication(msalConfig);
 
 /**
  * Acquires token with client credentials.
- * @param {object} tokenRequest 
+ * @param {object} tokenRequest
  */
 async function getToken(tokenRequest) {
     return await cca.acquireTokenByClientCredential(tokenRequest);
@@ -212,8 +212,8 @@ const axios = require('axios');
 
 /**
  * Calls the endpoint with authorization bearer token.
- * @param {string} endpoint 
- * @param {string} accessToken 
+ * @param {string} endpoint
+ * @param {string} accessToken
  */
 async function callApi(endpoint, accessToken) {
 
@@ -239,7 +239,7 @@ module.exports = {
 };
 ```
 
-In dieser Beispielanwendung dient die `callApi`-Methode zum Senden einer HTTP `GET`-Anforderung an eine geschützte Ressource, die ein Zugriffstoken erfordert. Der Inhalt wird anschließend an den Aufrufer zurückgegeben. Diese Methode fügt das abgerufene Token in den *HTTP-Autorisierungsheader* ein. Die geschützte Ressource ist in diesem Fall der [Endpunkt „users“](https://docs.microsoft.com/graph/api/user-list) der Microsoft Graph-API, der die Benutzer im Mandanten anzeigt, in dem diese App registriert ist.
+In dieser Beispielanwendung dient die `callApi`-Methode zum Senden einer HTTP `GET`-Anforderung an eine geschützte Ressource, die ein Zugriffstoken erfordert. Der Inhalt wird anschließend an den Aufrufer zurückgegeben. Diese Methode fügt das abgerufene Token in den *HTTP-Autorisierungsheader* ein. Die geschützte Ressource ist in diesem Fall der [Endpunkt „users“](/graph/api/user-list) der Microsoft Graph-API, der die Benutzer im Mandanten anzeigt, in dem diese App registriert ist.
 
 ## <a name="test-the-app"></a>Testen der App
 
@@ -278,7 +278,7 @@ request made to web API at: Fri Jan 22 2021 09:31:52 GMT-0800 (Pacific Standard 
 
 ## <a name="how-the-application-works"></a>Funktionsweise der Anwendung
 
-Diese Anwendung verwendet die [Gewährung von OAuth 2.0-Clientanmeldeinformationen](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow). Diese Art der Gewährung wird häufig für Interaktionen zwischen Servern verwendet, die ohne Benutzereingriff im Hintergrund ausgeführt werden müssen. Beim Flow zur Gewährung von Anmeldeinformationen kann ein Webdienst (ein vertraulicher Client) seine eigenen Anmeldeinformationen zum Authentifizieren verwenden, wenn ein anderer Webdienst aufgerufen wird, anstatt die Identität eines Benutzers anzunehmen. In der Regel werden für dieses Authentifizierungsmodell Anwendungen vom Typ **Daemon** oder **Dienstkonto** unterstützt.
+Diese Anwendung verwendet die [Gewährung von OAuth 2.0-Clientanmeldeinformationen](./v2-oauth2-client-creds-grant-flow.md). Diese Art der Gewährung wird häufig für Interaktionen zwischen Servern verwendet, die ohne Benutzereingriff im Hintergrund ausgeführt werden müssen. Beim Flow zur Gewährung von Anmeldeinformationen kann ein Webdienst (ein vertraulicher Client) seine eigenen Anmeldeinformationen zum Authentifizieren verwenden, wenn ein anderer Webdienst aufgerufen wird, anstatt die Identität eines Benutzers anzunehmen. In der Regel werden für dieses Authentifizierungsmodell Anwendungen vom Typ **Daemon** oder **Dienstkonto** unterstützt.
 
 Der anzufordernde Bereich für einen Anmeldeinformationsfluss für Clients ist der Name der Ressource, gefolgt von `/.default`. Durch diese Notation weiß Azure Active Directory (Azure AD), dass die Berechtigungen auf Anwendungsebene verwendet werden sollen, die im Zuge der Anwendungsregistrierung statisch deklariert wurden. Außerdem müssen diese API-Berechtigungen von einem **Mandantenadministrator** gewährt werden.
 

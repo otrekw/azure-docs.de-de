@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: troubleshooting
-ms.date: 09/04/2020
+ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: b8f2b3e1ffde49c8df3c3a6d7c0b9b3751fda5fa
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 214730733780ef3492048f697b1c5e180434a527
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696175"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654016"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Häufig gestellte Fragen zur automatischen Azure-Verwaltung für VMs
 
@@ -27,7 +27,7 @@ Suchen Sie in den Azure-Foren bei [MSDN und Stack Overflow](https://azure.micros
 **Welche Voraussetzungen müssen erfüllt sein, um die automatische Azure-Verwaltung zu aktivieren?**
 
 Die folgenden Voraussetzungen müssen für die Aktivierung der automatischen Azure-Verwaltung erfüllt sein:
-- Nur Windows Server-VMs
+- Unterstützte [Windows Server-Versionen](automanage-windows-server.md#supported-windows-server-versions) und [Linux-Distributionen](automanage-linux.md#supported-linux-distributions-and-versions)
 - VMs müssen sich in einer unterstützten Region befinden
 - Benutzer muss über die richtigen Berechtigungen verfügen
 - Nur VMs, die keiner Skalierungsgruppe angehören
@@ -42,12 +42,12 @@ Wenn Sie beim Aktivieren ein neues Automanage-Konto verwenden, müssen Sie entwe
 
 **Welche Regionen werden unterstützt?**
 
-Es werden VMs in den folgenden Regionen unterstützt: „Europa, Westen“, „USA, Osten“, „USA, Westen 2“, „Kanada, Mitte“, „USA, Westen-Mitte“, „Japan, Osten“.
+Die vollständige Liste der unterstützten Regionen finden Sie [hier](./automanage-virtual-machines.md#supported-regions).
 
 
 **Welche Funktionen automatisiert die automatische Azure-Verwaltung?**
 
-Die automatische Azure-Verwaltung registriert, konfiguriert und überwacht während des gesamten Lebenszyklus der VM die [hier](virtual-machines-best-practices.md) aufgeführten Dienste.
+Die automatische Azure-Verwaltung registriert, konfiguriert und überwacht während des gesamten Lebenszyklus der VM die [hier](automanage-virtual-machines.md) aufgeführten Dienste.
 
 **Funktioniert Azure Automanage mit Azure Arc-fähigen VMs?**
 
@@ -55,12 +55,12 @@ Automanage unterstützt zurzeit keine Arc-fähigen VMs.
 
 **Kann ich Konfigurationen für die automatische Azure-Verwaltung anpassen?**
 
-Kunden können die Einstellungen für bestimmte Dienste, z. B. die Datenaufbewahrung von Azure Backup, durch Konfigurationseinstellungen anpassen. Eine vollständige Liste der Einstellungen, die geändert werden können, finden Sie [hier](virtual-machines-best-practices.md) in der Dokumentation.
+Kunden können die Einstellungen für bestimmte Dienste, z. B. die Datenaufbewahrung von Azure Backup, durch Konfigurationseinstellungen anpassen. Eine vollständige Liste der Einstellungen, die geändert werden können, finden Sie [hier](automanage-virtual-machines.md#customizing-an-environment-using-preferences) in der Dokumentation.
 
 
 **Funktioniert die automatische Azure-Verwaltung sowohl mit Linux- als auch mit Windows-VMs?**
 
-Derzeit unterstützt die automatische Azure-Verwaltung Azure-VMs für Windows Server.
+Ja, schauen Sie sich die unterstützten [Windows Server-Versionen](automanage-windows-server.md#supported-windows-server-versions) und [Linux-Distributionen](automanage-linux.md#supported-linux-distributions-and-versions) an.
 
 
 **Kann ich die automatische Verwaltung selektiv nur auf eine Reihe von VMs anwenden?**

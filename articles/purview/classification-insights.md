@@ -6,19 +6,19 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/24/2020
-ms.openlocfilehash: a0eed27636a3f65d68489d1f2249db784ba1d722
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/17/2021
+ms.openlocfilehash: b6ea3e762ad098e373baa8487d8926105820f226
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196536"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666511"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Klassifizierungserkenntnisse zu Ihren Daten aus Azure Purview
 
 In dieser Schrittanleitung wird beschrieben, wie Sie auf Purview-Klassifizierungserkenntnisberichte für Ihre Daten zugreifen, sie anzeigen und filtern können.
 
-Unterstützte Datenquellen: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, Azure Cosmos DB (SQL API), Azure Synapse Analytics (ehemals SQL DW), Azure SQL-Datenbank, Azure SQL Managed Instance, SQL Server
+Unterstützte Datenquellen: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, Azure Cosmos DB (SQL API), Azure Synapse Analytics (ehemals SQL DW), Azure SQL-Datenbank, Azure SQL Managed Instance, SQL Server, Amazon S3 Buckets
 
 In dieser Schrittanleitung lernen Sie Folgendes:
 
@@ -33,9 +33,9 @@ Stellen Sie vor dem Beginn mit Purview-Erkenntnissen sicher, dass Sie die folgen
 
 - Einrichten Ihrer Azure-Ressourcen und Füllen der entsprechenden Konten mit Testdaten
 
-- Einrichten und Abschließen einer Überprüfung der Testdaten in den einzelnen Datenquellen
+- Einrichten und Abschließen einer Überprüfung der Testdaten in den einzelnen Datenquellen. Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview (Vorschau)](manage-data-sources.md) und [Erstellen eines Überprüfungsregelsatzes](create-a-scan-rule-set.md).
 
-- Anmeldung mit einem Konto mit einer Rollen [„Datenleser“ oder „Datenkurator“](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)
+- Anmeldung bei Purview mit einem Konto mit der Rolle [„Datenleser“ oder „Datenkurator“](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)
 
 Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview (Vorschau)](manage-data-sources.md).
 
@@ -87,7 +87,7 @@ Beispiel:
 
 Führen Sie einen der folgenden Schritte aus, um weitere Informationen zu erhalten:
 
-|Option  |Beschreibung  |
+|Option  |BESCHREIBUNG  |
 |---------|---------|
 |**Filtern der Daten**     |  Verwenden Sie die Filter oberhalb des Rasters, um die angezeigten Daten zu filtern, einschließlich des Klassifizierungsnamens, des Abonnementnamens oder des Quellentyps. <br><br>Wenn Sie sich bezüglich des genauen Klassifizierungsnamens nicht sicher sind, können Sie einen Teil oder den ganzen Namen in das Feld **Nach Schlüsselwort filtern** eingeben.       |
 |**Sortieren des Rasters** |Wählen Sie einen Spaltenheader aus, um das Raster nach dieser Spalte zu sortieren. | 

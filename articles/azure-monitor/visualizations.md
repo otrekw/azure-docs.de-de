@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2021
-ms.openlocfilehash: bc59c639856de6a5ce5adda1f78266eb7e4d5dd3
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: ffdafbe991d3cd78e45c4804fd6cc5377099acbc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881230"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589404"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Visualisieren von Daten aus Azure Monitor
 Dieser Artikel enthält eine Zusammenfassung der verfügbaren Methoden zum Visualisieren von in Azure Monitor gespeicherten Metrik- und Protokolldaten.
@@ -19,7 +19,7 @@ Dieser Artikel enthält eine Zusammenfassung der verfügbaren Methoden zum Visua
 Visualisierungen wie Diagramme und Grafiken können Ihnen die Analyse Ihrer Überwachungsdaten zur Anzeige von Detailinformationen zu Problemen und zum Identifizieren von Mustern erleichtern. Je nach dem Tool, das Sie verwenden, haben Sie vielleicht auch die Möglichkeit, Visualisierungen für andere Benutzer innerhalb und außerhalb Ihrer Organisation freizugeben.
 
 ## <a name="workbooks"></a>Arbeitsmappen
-[Arbeitsmappen](./platform/workbooks-overview.md) sind interaktive Dokumente, die umfassende Einblicke in Ihre Daten, Untersuchungen und die Zusammenarbeit innerhalb des Teams bereitstellen. Spezifische Beispiele, wo Arbeitsmappen hilfreich sind, sind Anleitungen zur Problembehandlung und Nachbesprechungen zu Incidents.
+[Arbeitsmappen](./visualize/workbooks-overview.md) sind interaktive Dokumente, die umfassende Einblicke in Ihre Daten, Untersuchungen und die Zusammenarbeit innerhalb des Teams bereitstellen. Spezifische Beispiele, wo Arbeitsmappen hilfreich sind, sind Anleitungen zur Problembehandlung und Nachbesprechungen zu Incidents.
 
 ![Das Diagramm zeigt Screenshots mehrerer Seiten einer Arbeitsmappe, einschließlich der Analyse der Seitenaufrufe, der Nutzung und der auf der Seite verbrachten Zeit.](media/visualizations/workbook.png)
 
@@ -46,9 +46,9 @@ Im Folgenden finden Sie eine Videoanleitung zum Erstellen von Dashboards.
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 
 ### <a name="advantages"></a>Vorteile
-- Enge Integration in Azure. Visualisierungen von mehreren Azure-Seiten (einschließlich [Metrik-Explorer](platform/metrics-charts.md), [Log Analytics](log-query/log-analytics-overview.md) und [Application Insights](app/app-insights-overview.md)) können an Dashboards angeheftet werden.
+- Enge Integration in Azure. Visualisierungen von mehreren Azure-Seiten (einschließlich [Metrik-Explorer](essentials/metrics-charts.md), [Log Analytics](logs/log-analytics-overview.md) und [Application Insights](app/app-insights-overview.md)) können an Dashboards angeheftet werden.
 - Sowohl Metriken als auch Protokolle werden unterstützt.
-- Daten aus mehreren Quellen (einschließlich der Ausgabe des [Metrik-Explorers](platform/metrics-charts.md)) können mit [Protokollabfragen](log-query/log-query-overview.md), [Karten](app/app-map.md) und Verfügbarkeit in [Application Insights](app/app-insights-overview.md) kombiniert werden.
+- Daten aus mehreren Quellen (einschließlich der Ausgabe des [Metrik-Explorers](essentials/metrics-charts.md)) können mit [Protokollabfragen](logs/log-query-overview.md), [Karten](app/app-map.md) und Verfügbarkeit in [Application Insights](app/app-insights-overview.md) kombiniert werden.
 - Option für persönliche oder freigegebene Dashboards. Integriert in [Azure RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung in Azure)](../role-based-access-control/overview.md).
 - Automatische Aktualisierung. Metriken werden abhängig vom Zeitbereich mindestens alle fünf Minuten aktualisiert. Protokolle werden stündlich aktualisiert, können mit einer Option für die manuelle Aktualisierung bei Bedarf aktualisiert werden (durch Klicken auf das Symbol „Aktualisieren“ für eine bestimmte Visualisierung) oder werden durch eine Aktualisierung des gesamten Dashboards aktualisiert.
 - Dashboards mit parametrisierten Metriken mit Zeitstempel und benutzerdefinierten Parametern.
@@ -66,7 +66,7 @@ Im Folgenden finden Sie eine Videoanleitung zum Erstellen von Dashboards.
 
 
 ## <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) ist besonders nützlich zum Erstellen von geschäftskritischen Dashboards und Berichten sowie Berichten, die langfristige KPI-Trends analysieren. Sie können [die Ergebnisse einer Protokollabfrage in ein Power BI-Dataset importieren](platform/powerbi.md), damit Sie dessen Features wie das Kombinieren von Daten aus verschiedenen Quellen und das Freigeben von Berichten im Web und auf mobilen Geräten nutzen können.
+[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) ist besonders nützlich zum Erstellen von geschäftskritischen Dashboards und Berichten sowie Berichten, die langfristige KPI-Trends analysieren. Sie können [die Ergebnisse einer Protokollabfrage in ein Power BI-Dataset importieren](visualize/powerbi.md), damit Sie dessen Features wie das Kombinieren von Daten aus verschiedenen Quellen und das Freigeben von Berichten im Web und auf mobilen Geräten nutzen können.
 
 ![Power BI](media/visualizations/power-bi.png)
 
@@ -86,7 +86,7 @@ Im Folgenden finden Sie eine Videoanleitung zum Erstellen von Dashboards.
 
 
 ## <a name="grafana"></a>Grafana
-[Grafana](https://grafana.com/) ist eine offene Plattform, die für operationale Dashboards ideal ist. Sie ist besonders nützlich zum Erkennen, Isolieren und Selektieren von Betriebsincidents. Sie können das [Grafana Azure Monitor-Datenquellen-Plug-in](platform/grafana-plugin.md) Ihrem Azure-Abonnement hinzufügen, damit es Ihre Azure-Metrikdaten visualisiert.
+[Grafana](https://grafana.com/) ist eine offene Plattform, die für operationale Dashboards ideal ist. Sie ist besonders nützlich zum Erkennen, Isolieren und Selektieren von Betriebsincidents. Sie können das [Grafana Azure Monitor-Datenquellen-Plug-in](visualize/grafana-plugin.md) Ihrem Azure-Abonnement hinzufügen, damit es Ihre Azure-Metrikdaten visualisiert.
 
 ![Screenshot von Grafana-Visualisierungen](media/visualizations/grafana.png)
 
@@ -115,9 +115,9 @@ Sie können auf Protokoll- und Metrikdaten in Azure Monitor mit einem beliebigen
 ## <a name="azure-monitor-views"></a>Azure Monitor-Ansichten
 
 > [!IMPORTANT]
-> Ansichten werden zurzeit ausgesondert. Anleitungen zum Umwandeln von Ansichten in Arbeitsmappen finden Sie im [Handbuch für den Übergang vom Azure Monitor-Ansicht-Designer zu Arbeitsmappen](platform/view-designer-conversion-overview.md).
+> Ansichten werden zurzeit ausgesondert. Anleitungen zum Umwandeln von Ansichten in Arbeitsmappen finden Sie im [Handbuch für den Übergang vom Azure Monitor-Ansicht-Designer zu Arbeitsmappen](visualize/view-designer-conversion-overview.md).
 
-Mit [Ansichten in Azure Monitor](platform/view-designer.md) erstellen Sie benutzerdefinierte Visualisierungen mit Protokolldaten. Sie werden von [Überwachungslösungen](insights/solutions.md) zur Präsentation der Daten verwendet, die sie sammeln.
+Mit [Ansichten in Azure Monitor](visualize/view-designer.md) erstellen Sie benutzerdefinierte Visualisierungen mit Protokolldaten. Sie werden von [Überwachungslösungen](insights/solutions.md) zur Präsentation der Daten verwendet, die sie sammeln.
 
 
 ![Screenshot einer Kachel „Containerüberwachungslösung“ und der detaillierten Azure Monitor-Ansicht, die bei deren Auswahl geöffnet wird](media/visualizations/view.png)
@@ -126,7 +126,7 @@ Mit [Ansichten in Azure Monitor](platform/view-designer.md) erstellen Sie benutz
 - Umfangreiche Visualisierungen für die Protokolldaten.
 - Exportieren und Importieren von Ansichten, um sie in andere Ressourcengruppen und Abonnements zu übertragen.
 - Integriert in das Azure Monitor-Verwaltungsmodell mit Arbeitsbereichen und Überwachungslösungen.
-- [Filtern](platform/view-designer-filters.md) nach benutzerdefinierten Parametern.
+- [Filtern](visualize/view-designer-filters.md) nach benutzerdefinierten Parametern.
 - Interaktiv, unterstützt Drill-In (Sicht, die Detailinformationen einer anderen Ansicht zeigt) mit mehreren Ebenen.
 
 ### <a name="limitations"></a>Einschränkungen
@@ -138,11 +138,11 @@ Mit [Ansichten in Azure Monitor](platform/view-designer.md) erstellen Sie benutz
 - Die Antwortgröße für Abfragen ist auf 8MB und die Abfrageausführungszeit auf 110 Sekunden beschränkt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zum [Sammeln von Daten in Azure Monitor](platform/data-platform.md).
+- Weitere Informationen zum [Sammeln von Daten in Azure Monitor](/data-platform.md).
 - Weitere Informationen zum [Erstellen und Freigeben von Dashboards im Azure-Portal](../azure-portal/azure-portal-dashboards.md).
-- [Weitere Informationen zum Metrik-Explorer](platform/metrics-getting-started.md)
-- Weitere Informationen zu [Arbeitsmappen](./platform/workbooks-overview.md).
-- Weitere Informationen zum [Importieren von Log Analytics-Daten in Power BI](./platform/powerbi.md).
-- Weitere Informationen zum [Überwachen Ihrer Azure-Dienste in Grafana](./platform/grafana-plugin.md).
-- Weitere Informationen zum [Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Log Analytics](platform/view-designer.md).
+- [Weitere Informationen zum Metrik-Explorer](essentials/metrics-getting-started.md)
+- Weitere Informationen zu [Arbeitsmappen](./visualize/workbooks-overview.md).
+- Weitere Informationen zum [Importieren von Log Analytics-Daten in Power BI](./visualize/powerbi.md).
+- Weitere Informationen zum [Überwachen Ihrer Azure-Dienste in Grafana](./visualize/grafana-plugin.md).
+- Weitere Informationen zum [Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Log Analytics](visualize/view-designer.md).
 

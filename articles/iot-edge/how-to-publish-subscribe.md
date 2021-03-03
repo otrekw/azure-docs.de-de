@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 13bfd7c602389ff286a80f625829da5924a73bdf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e4043fd8b7c9571b62cbf65d7398754b27375efd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621894"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633970"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Veröffentlichen und Abonnieren mit Azure IoT Edge
 
@@ -366,8 +366,8 @@ Mit den [Azure IoT-Geräte-SDKs](https://github.com/Azure/azure-iot-sdks) könne
 
 Das Senden von Telemetriedaten an IoT Hub ähnelt der Veröffentlichung in einem benutzerdefinierten Thema, aber unter Verwendung eines bestimmten IoT Hub-Themas:
 
-- Für ein Gerät werden die Telemetriedaten gesendet im Thema: `devices/<device_name>/messages/events`
-- Für ein Modul werden die Telemetriedaten gesendet im Thema: `devices/<device_name>/<module_name>/messages/events`
+- Für ein Gerät werden die Telemetriedaten gesendet im Thema: `devices/<device_name>/messages/events/`
+- Für ein Modul werden die Telemetriedaten gesendet im Thema: `devices/<device_name>/<module_name>/messages/events/`
 
 Erstellen Sie außerdem eine Route, z. B. `FROM /messages/* INTO $upstream`, zum Senden von Telemetriedaten vom IoT Edge-MQTT-Broker an IoT Hub. Weitere Informationen zum Routing finden Sie unter [Deklarieren von Routen](module-composition.md#declare-routes).
 

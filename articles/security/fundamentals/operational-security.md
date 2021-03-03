@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: f968267d4233c765bfd107d81957cf04edace923
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7380c0d9679fe74bc91eea269f53fea750922b79
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408514"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575012"
 ---
 # <a name="azure-operational-security"></a>Azure Operational Security
 ## <a name="introduction"></a>Einführung
@@ -108,7 +108,7 @@ Geschützte Daten werden in Azure Backup in einem Sicherungstresor gespeichert, 
 
 ![Verwaltungslösungen](./media/operational-security/azure-operational-security-fig4.png)
 
-Die [Lösung für die Updateverwaltung](../../automation/update-management/overview.md) ist ein gutes Beispiel für eine Lösung, die mehrere Dienste verwendet, um zusätzliche Funktionen bereitzustellen. Diese Lösung verwendet den Agent für [Azure Monitor-Protokolle](../../azure-monitor/log-query/log-query-overview.md) für Windows und Linux, um Informationen zu erforderlichen Updates für die einzelnen Agents zu sammeln. Die Daten werden in das Repository von Azure Monitor-Protokolle geschrieben, wo Sie sie über ein enthaltenes Dashboard analysieren können.
+Die [Lösung für die Updateverwaltung](../../automation/update-management/overview.md) ist ein gutes Beispiel für eine Lösung, die mehrere Dienste verwendet, um zusätzliche Funktionen bereitzustellen. Diese Lösung verwendet den Agent für [Azure Monitor-Protokolle](../../azure-monitor/logs/log-query-overview.md) für Windows und Linux, um Informationen zu erforderlichen Updates für die einzelnen Agents zu sammeln. Die Daten werden in das Repository von Azure Monitor-Protokolle geschrieben, wo Sie sie über ein enthaltenes Dashboard analysieren können.
 
 Wenn Sie eine Bereitstellung erstellen, werden erforderliche Updates mithilfe von Runbooks in [Azure Automation](../../automation/automation-intro.md) installiert. Der gesamte Prozess wird über das Portal verwaltet, und Sie müssen sich keine Gedanken über die zugrunde liegenden Details machen.
 
@@ -150,7 +150,7 @@ Azure Security Center erfasst und verarbeitet sicherheitsbezogene Daten (einschl
 
 -   **Trennung von Daten:** Daten werden für jede Komponente des Diensts logisch getrennt verwaltet. Sämtliche Daten werden nach Organisation gekennzeichnet. Dieser Kennzeichnung wird während des gesamten Datenlebenszyklus beibehalten und auf jeder Ebene des Diensts erzwungen.
 
--   **Datenzugriff** : Bei der Bereitstellung von Sicherheitsempfehlungen sowie bei der Untersuchung potenzieller Sicherheitsrisiken greifen Mitarbeiter von Microsoft unter Umständen auf Informationen zu, die von Azure-Diensten erfasst oder analysiert wurden. Hierzu zählen etwa Absturzabbilddateien, Prozesserstellungsereignisse, Momentaufnahmen von VM-Datenträgern und Artefakte. Diese können ggf. Kundendaten oder persönliche Informationen von Ihren virtuellen Computern enthalten. Wir halten uns an die [Microsoft Online Services-Bedingungen und Datenschutzerklärung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). Darin ist festgelegt, dass Microsoft keine Kundendaten oder daraus abgeleiteten Informationen zu Werbezwecken oder anderen kommerziellen Zwecken verwendet.
+-   **Datenzugriff**: Bei der Bereitstellung von Sicherheitsempfehlungen sowie bei der Untersuchung potenzieller Sicherheitsrisiken greifen Mitarbeiter von Microsoft unter Umständen auf Informationen zu, die von Azure-Diensten erfasst oder analysiert wurden. Hierzu zählen etwa Absturzabbilddateien, Prozesserstellungsereignisse, Momentaufnahmen von VM-Datenträgern und Artefakte. Diese können ggf. Kundendaten oder persönliche Informationen von Ihren virtuellen Computern enthalten. Wir halten uns an die [Microsoft Online Services-Bedingungen und Datenschutzerklärung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). Darin ist festgelegt, dass Microsoft keine Kundendaten oder daraus abgeleiteten Informationen zu Werbezwecken oder anderen kommerziellen Zwecken verwendet.
 
 -   **Datennutzung:** Microsoft nutzt mandantenübergreifende Muster und Informationen zu Bedrohungen (Threat Intelligence), um die Funktionen für Prävention und Erkennung zu verbessern. Dies erfolgt in Übereinstimmung mit den in unserer [Datenschutzerklärung](https://www.microsoft.com/en-us/privacystatement/OnlineServices/) beschriebenen Datenschutzzusagen.
 
@@ -158,7 +158,7 @@ Azure Security Center erfasst und verarbeitet sicherheitsbezogene Daten (einschl
 
 Azure Security Center erfasst kurzlebige Kopien Ihrer Absturzabbilddateien und analysiert sie, um nach Spuren von Exploitversuchen und erfolgreichen Kompromittierungen zu suchen. Azure Security Center führt diese Analyse in dem geografischen Raum durch, in dem sich auch der Arbeitsbereich befindet, und löscht die kurzlebigen Kopien nach Abschluss der Analyse. Computerartefakte werden zentral in der Region gespeichert, in der sich auch der virtuelle Computer befindet.
 
--   **Ihre Speicherkonten** : Ein Speicherkonto wird für jede Region angegeben, in der virtuelle Computer ausgeführt werden. So können Sie Daten in derselben Region speichern, in der auch der virtuelle Computer angeordnet ist, von dem die Daten erfasst werden.
+-   **Ihre Speicherkonten**: Ein Speicherkonto wird für jede Region angegeben, in der virtuelle Computer ausgeführt werden. So können Sie Daten in derselben Region speichern, in der auch der virtuelle Computer angeordnet ist, von dem die Daten erfasst werden.
 
 -   **Azure Security Center-Speicher:** Informationen zu Sicherheitswarnungen (einschließlich Partnerwarnungen, Empfehlungen und Informationen zum Sicherheitsintegritätsstatus) werden zentral gespeichert (aktuell in den USA). Diese Informationen können auch verwandte Konfigurationsinformationen und Sicherheitsereignisse umfassen, die je nach Bedarf von Ihren virtuellen Computern erfasst werden, um für Sie die Sicherheitswarnung, die Empfehlung oder den Sicherheitsintegritätsstatus bereitzustellen.
 
@@ -195,17 +195,17 @@ Diese Protokolle werden von einer Ressource ausgegeben und stellen umfangreiche,
 
 Windows-Ereignissystemprotokolle sind z. B. eine Kategorie des Diagnoseprotokolls für virtuelle Computer, und Blob-, Tabellen- und Warteschlangenprotokolle sind Kategorien der Diagnoseprotokolle für Speicherkonten.
 
-Diagnoseprotokolle unterscheiden sich vom [Aktivitätsprotokoll (früher als Überwachungsprotokoll oder Betriebsprotokoll bezeichnet)](../../azure-monitor/platform/platform-logs-overview.md). Das Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden. Diagnoseprotokolle bieten Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.
+Diagnoseprotokolle unterscheiden sich vom [Aktivitätsprotokoll (früher als Überwachungsprotokoll oder Betriebsprotokoll bezeichnet)](../../azure-monitor/essentials/platform-logs-overview.md). Das Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden. Diagnoseprotokolle bieten Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.
 
 ### <a name="metrics"></a>metrics
 
-Mit Azure Monitor können Sie Telemetriedaten verwenden, um sich einen Überblick über Leistung und Integrität Ihrer Workloads in Azure zu verschaffen. Die wichtigsten Typen von Telemetriedaten sind Metriken (auch Leistungsindikatoren genannt), die von den meisten Azure-Ressourcen ausgegeben werden. Azure Monitor bietet Ihnen verschiedene Möglichkeiten, diese [Metriken](../../azure-monitor/platform/data-platform.md) für die Überwachung und Problembehandlung zu konfigurieren und zu nutzen. Metriken sind eine wertvolle Quelle für Telemetriedaten, mit denen Sie folgende Aufgaben ausführen können:
+Mit Azure Monitor können Sie Telemetriedaten verwenden, um sich einen Überblick über Leistung und Integrität Ihrer Workloads in Azure zu verschaffen. Die wichtigsten Typen von Telemetriedaten sind Metriken (auch Leistungsindikatoren genannt), die von den meisten Azure-Ressourcen ausgegeben werden. Azure Monitor bietet Ihnen verschiedene Möglichkeiten, diese [Metriken](../../azure-monitor/data-platform.md) für die Überwachung und Problembehandlung zu konfigurieren und zu nutzen. Metriken sind eine wertvolle Quelle für Telemetriedaten, mit denen Sie folgende Aufgaben ausführen können:
 
 -   **Verfolgen der Leistung** Ihrer Ressourcen (z.B. virtuelle Computer, Websites oder Logik-Apps) durch Darstellung der entsprechenden Metriken in einem Diagramm im Portal, das Sie an Ihr Dashboard anheften.
 
--   **Erhalten von Benachrichtigungen über Probleme** , die die Leistung Ihrer Ressourcen beeinträchtigen, wenn ein Metrikwert einen bestimmten Schwellenwert überschreitet.
+-   **Erhalten von Benachrichtigungen über Probleme**, die die Leistung Ihrer Ressourcen beeinträchtigen, wenn ein Metrikwert einen bestimmten Schwellenwert überschreitet.
 
--   **Konfigurieren automatisierter Aktionen** , z. B. der automatischen Skalierung einer Ressource oder der Auslösung eines Runbooks, wenn ein Metrikwert einen bestimmten Schwellenwert überschreitet.
+-   **Konfigurieren automatisierter Aktionen**, z. B. der automatischen Skalierung einer Ressource oder der Auslösung eines Runbooks, wenn ein Metrikwert einen bestimmten Schwellenwert überschreitet.
 
 -   **Ausführen fortgeschrittener Analysen** oder Erstellen von Berichten zu Leistungs- oder Nutzungstrends für Ihre Ressource.
 
@@ -213,7 +213,7 @@ Mit Azure Monitor können Sie Telemetriedaten verwenden, um sich einen Überblic
 
 ### <a name="azure-diagnostics"></a>Azure-Diagnose
 
-Sie ist eine Funktion in Azure, mit der Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden die [Web- und Workerrollen des Azure-Clouddiensts](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), [Azure Virtual Machines](../../virtual-machines/windows/overview.md) unter Microsoft Windows und [Service Fabric](../../azure-monitor/platform/diagnostics-extension-overview.md) unterstützt. Andere Azure-Dienste verwenden ihre eigenen separaten Diagnosefunktionen.
+Sie ist eine Funktion in Azure, mit der Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden die [Web- und Workerrollen des Azure-Clouddiensts](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), [Azure Virtual Machines](../../virtual-machines/windows/overview.md) unter Microsoft Windows und [Service Fabric](../../azure-monitor/agents/diagnostics-extension-overview.md) unterstützt. Andere Azure-Dienste verwenden ihre eigenen separaten Diagnosefunktionen.
 
 ## <a name="azure-network-watcher"></a>Azure Network Watcher
 
