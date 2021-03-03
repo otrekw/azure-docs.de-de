@@ -8,16 +8,17 @@ ms.author: bobazile
 ms.date: 02/09/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5f7c2b0168c914c836aca7b551a9c22d4718c7b6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 06029590a2fbca66cd3a672af3f93d6a842ba0b2
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100419398"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651022"
 ---
 # <a name="telephony-concepts"></a>Telefoniekonzepte
 
 [!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Mithilfe der Azure Communication Services-Clientbibliotheken für Telefonie können Sie Ihren Anwendungen Telefonie- und Festnetzfunktionen hinzufügen. Auf dieser Seite werden wichtige Telefoniekonzepte und -funktionen zusammengefasst. Weitere Informationen zu bestimmten Sprachen und Funktionen der Clientbibliothek finden Sie [hier](../../quickstarts/voice-video-calling/calling-client-samples.md).
 

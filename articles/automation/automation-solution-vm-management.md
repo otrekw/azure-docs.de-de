@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: a521ca80039b68f93bf7c9d98e51d9846e96e985
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e58f63b6ed7fb26a4e3b3069773810c5e5b7cdc3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593828"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732274"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VMs außerhalb der Geschäftszeiten starten/beenden – Übersicht
 
@@ -39,7 +39,7 @@ Die aktuelle Funktion hat folgende Einschränkungen:
 
 - Die Runbooks für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ funktionieren mit einem [ausführenden Azure-Konto](./automation-security-overview.md#run-as-accounts). Das ausführende Konto ist die bevorzugte Authentifizierungsmethode, da anstelle eines Kennworts, das ablaufen oder sich häufig ändern kann, eine Zertifikatauthentifizierung verwendet wird.
 
-- Ein [Azure Monitor Log Analytics-Arbeitsbereich](../azure-monitor/platform/design-logs-deployment.md) zum Speichern der Protokolle zu Runbookaufträgen und der Ergebnisse von Auftragsstreams in einem Arbeitsbereich für Abfragen und Analysen. Das Automation-Konto kann mit einem neuen oder einem vorhandenen Log Analytics-Arbeitsbereich verknüpft sein, und beide Ressourcen müssen sich in derselben Ressourcengruppe befinden.
+- Ein [Azure Monitor Log Analytics-Arbeitsbereich](../azure-monitor/logs/design-logs-deployment.md) zum Speichern der Protokolle zu Runbookaufträgen und der Ergebnisse von Auftragsstreams in einem Arbeitsbereich für Abfragen und Analysen. Das Automation-Konto kann mit einem neuen oder einem vorhandenen Log Analytics-Arbeitsbereich verknüpft sein, und beide Ressourcen müssen sich in derselben Ressourcengruppe befinden.
 
 Sie sollten für die Arbeit mit VMs, die für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ aktiviert sind, ein separates Automation-Konto verwenden. Die Azure-Modulversionen werden häufig aktualisiert, und ihre Parameter können sich ändern. Die Funktion wird nicht mit derselben Häufigkeit aktualisiert, sodass sie eventuell nicht mit neueren Versionen der verwendeten Cmdlets funktioniert. Vor dem Importieren der aktualisierten Module in Ihre Automation-Produktionskonten sollten Sie sie in ein Automation-Testkonto importieren, um sicherzustellen, dass keine Kompatibilitätsprobleme vorliegen.
 

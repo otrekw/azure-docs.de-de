@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 0650a173b02e1b8f1f829953be1dd852024e6f65
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 541448f08e4ce9961d34063dcc225bf89d969a73
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524514"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703370"
 ---
 # <a name="create-a-custom-voice"></a>Erstellen einer benutzerdefinierten Stimme
 
@@ -60,7 +60,7 @@ Bei einer niedrigen Aussprachebewertung oder einem geringen SNR-Wert sollten Sie
 
 > [!NOTE]
 > Wenn Sie das Feature „Benutzerdefinierte neuronale Stimme“ verwenden, müssen Sie Ihren Sprecher auf der Registerkarte **Sprecher** registrieren. Stellen Sie beim Vorbereiten des Aufzeichnungsmanuskripts sicher, dass es den folgenden Satz enthält, um die Zustimmung des Sprechers zur Verwendung seiner Stimmdaten für die Erstellung eines TTS-Sprachmodells sowie für die Sprachsynthese festzuhalten. „Ich [Vor- und Nachname nennen] akzeptiere, dass die Aufzeichnungen meiner Stimme von [Name des Unternehmens nennen] verwendet werden, um eine synthetische Version meiner Stimme zu erstellen und diese zu verwenden.“
-Anhand dieses Satzes wird überprüft, ob die Aufzeichnungen in den Trainingsdatasets von der Person stammen, die die Zustimmung erteilt hat. [Weitere Informationen über die Verarbeitung Ihrer Daten und die Sprecherüberprüfung](https://aka.ms/CNV-data-privacy) 
+Anhand dieses Satzes wird überprüft, ob die Aufzeichnungen in den Trainingsdatasets von der Person stammen, die die Zustimmung erteilt hat. [Weitere Informationen über die Verarbeitung Ihrer Daten und die Sprecherüberprüfung](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) 
 
 ## <a name="build-your-custom-voice-model"></a>Erstellen Ihres benutzerdefinierten Stimmmodells
 
@@ -87,7 +87,7 @@ Nachdem Ihr Dataset überprüft wurde, können Sie damit Ihr benutzerdefiniertes
 5. Wählen Sie im nächsten Schritt die **Trainingsmethode** aus. 
 
     > [!NOTE]
-    > Wenn Sie eine neuronale Stimme trainieren möchten, müssen Sie ein Sprecherprofil mit der Audiozustimmungsdatei des Sprechers angeben, in der dieser der Verwendung seiner Sprachdaten zum Trainieren eines benutzerdefinierten Sprachmodells zustimmt. Das Feature „Benutzerdefinierte neuronale Stimme“ ist mit eingeschränktem Zugriff verfügbar. Stellen Sie sicher, dass Sie die [Anforderungen für verantwortungsvolle KI](https://aka.ms/gating-overview) kennen, und [fordern Sie hier den Zugriff an](https://aka.ms/customneural). 
+    > Wenn Sie eine neuronale Stimme trainieren möchten, müssen Sie ein Sprecherprofil mit der Audiozustimmungsdatei des Sprechers angeben, in der dieser der Verwendung seiner Sprachdaten zum Trainieren eines benutzerdefinierten Sprachmodells zustimmt. Das Feature „Benutzerdefinierte neuronale Stimme“ ist mit eingeschränktem Zugriff verfügbar. Stellen Sie sicher, dass Sie die [Anforderungen für verantwortungsvolle KI](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) kennen, und [fordern Sie hier den Zugriff an](https://aka.ms/customneural). 
     
     Auf dieser Seite können Sie auch Ihr Manuskript zum Testen hochladen. Das Testmanuskript muss eine TXT-Datei mit einer Größe von weniger als 1 MB sein. Unterstützte Codierungsformat sind z. B. ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE oder UTF-16-BE. Jeder Absatz der Äußerung ergibt eine separate Audiodatei. Wenn Sie alle Sätze in einer Audiodatei kombinieren möchten, fügen Sie sie zu einem einzigen Absatz zusammen. 
 
@@ -126,7 +126,7 @@ Bei jedem Training werden 100 Beispielaudiodateien automatisch generiert, um da
 
 3.  Auf der Modelldetailseite finden Sie die Beispielaudiodateien auf der Registerkarte **Test**. 
 
-Die Qualität der Stimme hängt von einer Reihe von Faktoren ab, z. B. der Größe des Trainingsdatasets, der Qualität der Aufzeichnung, der Genauigkeit der Transkriptionsdatei sowie davon, wie gut die in den Trainingsdaten aufgezeichnete Stimme zu der Persönlichkeit der für Ihren vorgesehenen Anwendungsfall entworfenen Stimme passt. [Weitere Informationen zu den Funktionen und Beschränkungen dieser Technologie sowie bewährte Methoden zur Verbesserung der Modellqualität](https://aka.ms/CNV-limits) 
+Die Qualität der Stimme hängt von einer Reihe von Faktoren ab, z. B. der Größe des Trainingsdatasets, der Qualität der Aufzeichnung, der Genauigkeit der Transkriptionsdatei sowie davon, wie gut die in den Trainingsdaten aufgezeichnete Stimme zu der Persönlichkeit der für Ihren vorgesehenen Anwendungsfall entworfenen Stimme passt. [Weitere Informationen zu den Funktionen und Beschränkungen dieser Technologie sowie bewährte Methoden zur Verbesserung der Modellqualität](/legal/cognitive-services/speech-service/custom-neural-voice/characteristics-and-limitations-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) 
 
 ## <a name="create-and-use-a-custom-voice-endpoint"></a>Erstellen und Verwenden eines benutzerdefinierten Stimmendpunkts
 

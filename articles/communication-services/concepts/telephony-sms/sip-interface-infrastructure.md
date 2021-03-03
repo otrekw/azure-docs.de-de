@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 02/09/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b258f2ef82e74073e3e4f1aa61b036d423c30300
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 432a9dab851bda65ecf8736d725b08c5e726ac16
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100419408"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659255"
 ---
 # <a name="sip-interface-infrastructure-requirements"></a>Infrastrukturanforderungen für die SIP-Schnittstelle 
 
@@ -31,7 +31,7 @@ In der folgenden Tabelle sind die Infrastrukturanforderungen für die unterstüt
 |Session Border Controller (SBC)|Unterstützter SBC. Weitere Informationen finden Sie unter [Unterstützte Session Border Controller (SBC)](#supported-session-border-controllers-sbcs).|
 |Mit dem SBC verbundene Telefonie-Trunks|Mindestens ein mit dem SBC verbundener Telefonie-Trunk. Auf einer Seite ist der SBC über die SIP-Schnittstelle mit der Azure Communication Services-Instanz verbunden. Der SBC kann auch Verbindungen mit Drittanbieter-Telefonieentitäten wie Nebenstellenanlagen, analogen Telefonieadaptern und Ähnlichem herstellen. Jede mit dem SBC verbundene Festnetz-Konnektivitätsoption funktioniert. (Informationen zur Konfiguration der Festnetz-Trunks für den SBC erhalten Sie vom jeweiligen SBC- oder Trunk-Anbieter.)|
 |Azure-Abonnement|Ein Azure-Abonnement zum Erstellen der ACS-Ressource sowie die Konfiguration und die Verbindung mit dem SBC.|
-|Communication Services-Zugriffstoken|Um Anrufe tätigen zu können, benötigen Sie ein gültiges Zugriffstoken mit dem Bereich `voip`. Weitere Informationen finden Sie unter [Zugriffstoken](https://docs.microsoft.com/azure/communication-services/concepts/identity-model#access-tokens).|
+|Communication Services-Zugriffstoken|Um Anrufe tätigen zu können, benötigen Sie ein gültiges Zugriffstoken mit dem Bereich `voip`. Weitere Informationen finden Sie unter [Zugriffstoken](../identity-model.md#access-tokens).|
 |Öffentliche IP-Adresse für den SBC|Eine öffentliche IP-Adresse, die verwendet werden kann, um eine Verbindung mit dem SBC herzustellen. Basierend auf dem SBC-Typ kann der SBC NAT verwenden.|
 |Vollqualifizierter Domänenname (Fully Qualified Domain Name, FQDN) für den SBC|Ein FQDN für den SBC, bei dem der Domänenteil des FQDN keiner registrierten Domäne in Ihrer Microsoft 365- oder Office 365-Organisation entspricht. Weitere Informationen finden Sie unter [SBC-Domänennamen](#sbc-domain-names).|
 |Öffentlicher DNS-Eintrag für den SBC |Ein öffentlicher DNS-Eintrag, der den SBC-FQDN der öffentlichen IP-Adresse zuordnet. |
@@ -187,7 +187,7 @@ Für den Abschnitt zwischen dem Cloudmedienprozessor und der ACS SDK-App wird e
 
 ## <a name="supported-session-border-controllers-sbcs"></a>Unterstützte Session Border Controller (SBCs)
 
-Die Zertifizierung ist in Arbeit. In der Zwischenzeit können Kunden [für Teams zertifizierte Session Border Controller](https://docs.microsoft.com/MicrosoftTeams/direct-routing-border-controllers) verwenden. 
+Die Zertifizierung ist in Arbeit. In der Zwischenzeit können Kunden [für Teams zertifizierte Session Border Controller](/MicrosoftTeams/direct-routing-border-controllers) verwenden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

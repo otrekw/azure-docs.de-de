@@ -4,12 +4,12 @@ description: Erfahren Sie, welche Metriken häufig für die automatische Skalier
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: f358efb8f99066dc1d7a564ad36d6ed1290853e0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4b763f39d3b88a7884e89dddbc2c483c1bb84d31
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601753"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717773"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Allgemeine Metriken für die automatische Skalierung in Azure Monitor
 
@@ -33,8 +33,8 @@ Wenn einer der oben genannten Fälle zutrifft, lesen Sie unter [Aktivieren der A
 ### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>Hostmetriken für Resource Manager-basierte virtuelle Windows- und Linux-Computer
 Die folgenden Metriken auf Hostebene werden standardmäßig für virtuelle Azure-Computer und VM-Skalierungsgruppen ausgegeben (sowohl in Windows- als auch in Linux-Instanzen). Diese Metriken beschreiben Ihren virtuellen Azure-Computer, werden aber nicht per installiertem Agent auf dem virtuellen Gastcomputer, sondern vom Azure-VM-Host erfasst. Sie können diese Metriken in Regeln für die automatische Skalierung verwenden.
 
-- [Hostmetriken für Resource Manager-basierte virtuelle Windows- und Linux-Computer](../platform/metrics-supported.md#microsoftcomputevirtualmachines)
-- [Hostmetriken für Resource Manager-basierte VM Scale Sets-Instanzen unter Windows oder Linux](../platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
+- [Hostmetriken für Resource Manager-basierte virtuelle Windows- und Linux-Computer](../essentials/metrics-supported.md#microsoftcomputevirtualmachines)
+- [Hostmetriken für Resource Manager-basierte VM Scale Sets-Instanzen unter Windows oder Linux](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
 ### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>Gastbetriebssystem-Metriken für Resource Manager-basierte virtuelle Windows-Computer
 Wenn Sie in Azure einen virtuellen Computer erstellen, wird die Diagnose durch Verwenden der Diagnoseerweiterung aktiviert. Die Diagnoseerweiterung gibt einen Satz von Metriken aus dem virtuellen Computer aus. Das bedeutet, dass Sie für die automatische Skalierung Metriken verwenden können, die standardmäßig nicht ausgegeben werden.
@@ -186,4 +186,3 @@ Für VM-Skalierungsgruppen können Sie die Einstellung für die automatische Ska
 > Für Service Bus gibt es das Konzept einer Ressourcengruppe nicht, Azure Resource Manager erstellt jedoch eine Standardressourcengruppe pro Region. Die Ressourcengruppe hat in der Regel das Format „Default-ServiceBus-[Region]“. Beispiel: „Default-ServiceBus-EastUS“, „Default-ServiceBus-WestUS“, „Default-ServiceBus-AustraliaEast“ usw.
 >
 >
-

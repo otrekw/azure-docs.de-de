@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 2e103bb3cce364aeb5c25dcc2b54bf78c6993ca0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2dda18232e0cf3afa63a01814e776b90988e0b10
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601941"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704343"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-Connector-Verwaltungslösung (Veraltet)
 
@@ -22,7 +22,7 @@ ms.locfileid: "100601941"
 >
 >Vorhandene Verbindungen sind weiterhin bis zum 30 Juni 2019 einsetzbar.  Aufgrund der Veraltung des OMS-Portals können vorhandene Verbindungen nicht mehr über das Portal konfiguriert oder entfernt werden. Ein Skript zur Verwendung von PowerShell für das Entfernen vorhandener Verbindungen finden Sie weiter unten im Abschnitt [Entfernen des Connectors mit PowerShell](#removing-the-connector-with-powershell).
 >
->Eine Anleitung zum Abfragen von Application Insights-Protokolldaten für mehrere Anwendungen finden Sie unter [Vereinigen mehrerer Azure Monitor-Application Insights-Ressourcen](../log-query/unify-app-resource-data.md). Weitere Informationen zur Veraltung des OMS-Portals finden Sie unter [Wechsel des OMS-Portals zu Azure](../platform/oms-portal-transition.md).
+>Eine Anleitung zum Abfragen von Application Insights-Protokolldaten für mehrere Anwendungen finden Sie unter [Vereinigen mehrerer Azure Monitor-Application Insights-Ressourcen](./unify-app-resource-data.md). Weitere Informationen zur Veraltung des OMS-Portals finden Sie unter [Wechsel des OMS-Portals zu Azure](./oms-portal-transition.md).
 >
 > 
 
@@ -318,5 +318,4 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Verwenden Sie die [Protokollsuche](../log-query/log-query-overview.md), um ausführliche Informationen zu Ihren Application Insights-Apps anzuzeigen.
-
+- Verwenden Sie die [Protokollsuche](./log-query-overview.md), um ausführliche Informationen zu Ihren Application Insights-Apps anzuzeigen.

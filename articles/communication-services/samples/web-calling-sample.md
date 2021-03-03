@@ -9,22 +9,20 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fbd5d3c4489d124014e0d956359f64a8ec9c568a
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 5752f20cb433a417a684076338214cd2ea80bc8b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592788"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658096"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Erste Schritte mit dem Webanrufbeispiel
 
-Das Webanrufbeispiel ist eine Webanwendung, die als schrittweise exemplarische Vorgehensweise für die verschiedenen Funktionen der Webanruf-Clientclibliothek von Communication Services fungiert. 
+Das Webanrufbeispiel ist eine Webanwendung, die als schrittweise exemplarische Vorgehensweise für die verschiedenen Funktionen der Webanruf-Clientclibliothek von Communication Services fungiert.
 
 Dieses Beispiel wurde für Entwickler erstellt und erleichtert Ihnen den Einstieg in Communication Services. Seine Benutzeroberfläche ist in mehrere Abschnitte unterteilt, die jeweils eine Schaltfläche „Show Code“ (Code anzeigen) aufweisen, mit der Sie Code direkt aus Ihrem Browser in Ihre eigene Communication Services-Anwendung kopieren können.
 
 ## <a name="get-started-with-the-web-calling-sample"></a>Erste Schritte mit dem Webanrufbeispiel
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 > [!IMPORTANT]
 > [Dieses Beispiel ist auf GitHub ](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/) verfügbar.
@@ -36,7 +34,7 @@ Wenn das [Webanrufbeispiel](https://github.com/Azure-Samples/communication-servi
 
 :::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Web calling tutorial 2 (Webanrufe: Tutorial 2)" lightbox="./media/web-calling-tutorial-page-2.png":::
 
-## <a name="user-provisioning-and-sdk-initialization"></a>Benutzerbereitstellung und SDK-Initialisierung 
+## <a name="user-provisioning-and-sdk-initialization"></a>Benutzerbereitstellung und SDK-Initialisierung
 
 Klicken Sie auf „Provisioning user and initialize SDK“ (Benutzer bereitstellen und SDK initialisieren), um das SDK mit einem Token zu initialisieren, das vom Back-End-Tokenbereitstellungsdienst bereitgestellt wird. Dieser Back-End-Dienst befindet sich in `/project/webpack.config.js`.
 
@@ -52,7 +50,7 @@ Sie sind jetzt bereit, mit der Communication Services-Ressource Anrufe zu tätig
 
 Das Webanruf-SDK für Communication Services ermöglicht **1:1**-, **1:N**- und **Gruppenanrufe**.
 
-Bei ausgehenden 1:1- oder 1:N-Anrufen können Sie mehrere anzurufende Communication Services-Benutzeridentitäten angeben, indem Sie durch Trennzeichen getrennte Werte verwenden. Sie können auch anzurufende herkömmliche Telefonnummern (PSTN) angeben, indem Sie durch Trennzeichen getrennte Werte verwenden. 
+Bei ausgehenden 1:1- oder 1:N-Anrufen können Sie mehrere anzurufende Communication Services-Benutzeridentitäten angeben, indem Sie durch Trennzeichen getrennte Werte verwenden. Sie können auch anzurufende herkömmliche Telefonnummern (PSTN) angeben, indem Sie durch Trennzeichen getrennte Werte verwenden.
 
 Wenn Sie PSTN-Telefonnummern anrufen, geben Sie Ihre alternative Anrufer-ID an. Klicken Sie auf die Schaltfläche „Place call“ (Anrufen), um einen ausgehenden Anruf zu tätigen:
 
@@ -80,7 +78,7 @@ Dieses Beispiel enthält auch Codeausschnitte für die folgenden Funktionen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[Laden Sie das Beispiel von GitHub herunter](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/).
 
 Weitere Informationen finden Sie in den folgenden Artikeln:

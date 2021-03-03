@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie eine Logik-App erstellen, die das allgemeine 
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 4553ecc8d2df20ffdf9b76d381ecf3b88d84ef38
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4824c5ab1826260ee1eb3639712d7138c7c85bfe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599716"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738666"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Integrieren des allgemeinen Warnungsschemas mit Logic Apps
 
@@ -23,8 +23,8 @@ Das [allgemeine Warnungsschema](./alerts-common-schema.md) stellt ein standardis
 ## <a name="prerequisites"></a>Voraussetzungen 
 
 In diesem Artikel wird davon ausgegangen, dass Sie mit Folgendem vertraut sind: 
-* Einrichten von Warnungsregeln ([Metrik](../alerts/alerts-metric.md), [Protokoll](../platform/alerts-log.md), [Aktivitätsprotokoll](../platform/alerts-activity-log.md))
-* Einrichten von [Aktionsgruppen](../platform/action-groups.md)
+* Einrichten von Warnungsregeln ([Metrik](../alerts/alerts-metric.md), [Protokoll](./alerts-log.md), [Aktivitätsprotokoll](./alerts-activity-log.md))
+* Einrichten von [Aktionsgruppen](./action-groups.md)
 * Aktivieren des [allgemeinen Warnungsschemas](./alerts-common-schema.md#how-do-i-enable-the-common-alert-schema) aus Aktionsgruppen heraus
 
 ## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>Erstellen einer Logik-App, die das allgemeine Warnungsschema nutzt
@@ -137,5 +137,5 @@ In diesem Artikel wird davon ausgegangen, dass Sie mit Folgendem vertraut sind:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie mehr über Aktionsgruppen](../platform/action-groups.md).
+* [Erfahren Sie mehr über Aktionsgruppen](./action-groups.md).
 * [Erfahren Sie mehr über das allgemeine Warnungsschema](./alerts-common-schema.md).

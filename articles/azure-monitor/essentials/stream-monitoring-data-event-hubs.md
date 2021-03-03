@@ -7,12 +7,12 @@ ms.author: bwren
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.subservice: ''
-ms.openlocfilehash: e541869d040cc1eead2d295583c42016b64d5edb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: db8f8628f77ef2a04a7e6d42d6470f254e458e01
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601316"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708083"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-or-external-partner"></a>Streamen von Azure-Überwachungsdaten an einen Event Hub oder externen Partner
 
@@ -58,10 +58,9 @@ Die Weiterleitung Ihrer Überwachungsdaten an einen Event Hub mit Azure Monitor 
 | LogRhythm | Nein| Anweisungen zum Einrichten von LogRhythm zum Erfassen von Protokollen aus einem Event Hub sind [hier](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/) verfügbar. 
 |Logz.io | Ja | Weitere Informationen finden Sie unter [Erste Schritte bei der Überwachung und Protokollierung mithilfe von Logz.io für in Azure ausgeführte Java-Apps](/azure/developer/java/fundamentals/java-get-started-with-logzio).
 
-Möglicherweise sind auch andere Partner verfügbar. Eine vollständigere Liste aller Azure Monitor-Partner und ihrer Funktionen finden Sie unter [Azure Monitor – integrierte Partnerlösungen](../platform/partners.md).
+Möglicherweise sind auch andere Partner verfügbar. Eine vollständigere Liste aller Azure Monitor-Partner und ihrer Funktionen finden Sie unter [Azure Monitor – integrierte Partnerlösungen](../partners.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Archivieren Sie das Aktivitätsprotokoll in einem Speicherkonto.](./activity-log.md#legacy-collection-methods)
 * [Lesen Sie die Übersicht über das Azure-Aktivitätsprotokoll.](../essentials/platform-logs-overview.md)
 * [Richten Sie eine Warnung ein, die auf einem Aktivitätsprotokollereignis basiert.](../alerts/alerts-log-webhook.md)
-

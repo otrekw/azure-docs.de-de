@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99ad0963677b9ef536deacc2122130186afe0726
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 37e41a00c1489d5b7b4822fec8bb4da35e917826
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016965"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686460"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health-Vorgänge
 In diesem Thema werden die verschiedenen Vorgänge beschrieben, die Sie mit Azure Active Directory (Azure AD) Connect Health durchführen können.
@@ -46,8 +46,6 @@ Sie können Azure AD Connect Health so konfigurieren, dass E-Mail-Benachrichtigu
 > Wenn beim Verarbeiten von Synchronisierungsanforderungen in unserem Back-End-Dienst Probleme auftreten, sendet dieser Dienst eine Benachrichtigungs-E-Mail mit den Details des Fehlers an die E-Mail-Adresse(n) des Administratorkontakts Ihres Mandanten. Wir haben Feedback von Kunden erhalten, dass die Menge dieser Nachrichten in bestimmten Fällen unangemessen groß ist, sodass wir die Art und Weise ändern, wie diese Nachrichten gesendet werden. 
 >
 > Anstatt bei jedem Auftreten eines Synchronisierungsfehlers eine Nachricht zu senden, wird eine tägliche Auswahl aller Fehler gesendet, die vom Back-End-Dienst zurückgegeben wurden. Dies ermöglicht Kunden, diese Fehler auf effizientere Weise zu verarbeiten und die Anzahl doppelter Fehlermeldungen zu verringern.
->
-> Wir planen, dass diese Änderung am 15. Januar 2020 implementiert wird.
 
 ## <a name="delete-a-server-or-service-instance"></a>Löschen eines Servers oder einer Serverinstanz
 

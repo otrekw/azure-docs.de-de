@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: db410133bab530db731eee58048d1f9d26a1a3fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 65f18a21be48b6f78605b10950a2b38709b66f2d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599440"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713659"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Azure Resource Manager-Vorlage für eine VM-Skalierungsgruppe von Windows
 
@@ -30,7 +30,7 @@ Wenn Sie noch nicht mit Resource Manager-Vorlagen vertraut sind, informieren Sie
 
 - Sie müssen [Azure PowerShell](/powershell/azure) installiert haben, oder Sie können [Azure Cloud Shell](../../cloud-shell/overview.md) verwenden. 
 
-- Die VM-Ressource muss sich in einer [Region befinden, die benutzerdefinierte Metriken unterstützt](../platform/metrics-custom-overview.md#supported-regions).
+- Die VM-Ressource muss sich in einer [Region befinden, die benutzerdefinierte Metriken unterstützt](./metrics-custom-overview.md#supported-regions).
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Einrichten von Azure Monitor als Datensenke 
 Die Azure-Diagnoseerweiterung verwendet eine Feature namens **Datensenken**, um Metriken und Protokolle an verschiedene Orte zu leiten. Die folgenden Schritte zeigen, wie Sie eine Resource Manager-Vorlage und PowerShell verwenden, um eine VM mit der neuen Datensenke „Azure Monitor“ bereitzustellen. 
@@ -252,7 +252,7 @@ Für die Bereitstellung der Resource Manager-Vorlage wird Azure PowerShell verwe
    ```
 
    > [!NOTE]  
-   > Denken Sie daran, eine Azure-Region zu verwenden, in der benutzerdefinierte Metriken aktiviert sind. Denken Sie daran, eine [Azure-Region zu verwenden, in der benutzerdefinierte Metriken aktiviert sind](../platform/metrics-custom-overview.md#supported-regions).
+   > Denken Sie daran, eine Azure-Region zu verwenden, in der benutzerdefinierte Metriken aktiviert sind. Denken Sie daran, eine [Azure-Region zu verwenden, in der benutzerdefinierte Metriken aktiviert sind](./metrics-custom-overview.md#supported-regions).
  
 1. Führen Sie die folgenden Befehle aus, um den virtuellen Computers bereitzustellen:  
 
@@ -292,4 +292,4 @@ Sie können dann auch die Verwendung der Dimensionen zu dieser Metrik auswählen
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über [benutzerdefinierte Metriken](../platform/metrics-custom-overview.md).
+- Erfahren Sie mehr über [benutzerdefinierte Metriken](./metrics-custom-overview.md).

@@ -4,16 +4,16 @@ description: Verschaffen Sie sich einen Überblick darüber, was Sie mit Metrikw
 ms.date: 01/19/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 989c3b8a50c3e613e67726684f35c6adce9c8b96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fc0f41f23f1d9387f806c947ac27e6f31cc0e053
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599679"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723604"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor
 
-Die Metrikwarnungen in Azure Monitor ergänzen die mehrdimensionalen Metriken. Diese Metriken können [Plattformmetriken](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [benutzerdefinierte Metriken](../platform/metrics-custom-overview.md), [gängige Protokolle von Azure Monitor, die in Metriken umgewandelt wurden](./alerts-metric-logs.md), und Application Insights-Metriken sein. Metrikwarnungen werden in regelmäßigen Abständen ausgewertet, um zu überprüfen, ob die Bedingungen für eine oder mehrere metrische Zeitreihen erfüllt sind, und um Sie darüber zu informieren, wann die Auswertungen erfüllt sind. Metrikwarnungen sind zustandsbehaftet. Sie senden Benachrichtigungen nur dann, wenn sich der Zustand ändert.
+Die Metrikwarnungen in Azure Monitor ergänzen die mehrdimensionalen Metriken. Diese Metriken können [Plattformmetriken](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [benutzerdefinierte Metriken](../essentials/metrics-custom-overview.md), [gängige Protokolle von Azure Monitor, die in Metriken umgewandelt wurden](./alerts-metric-logs.md), und Application Insights-Metriken sein. Metrikwarnungen werden in regelmäßigen Abständen ausgewertet, um zu überprüfen, ob die Bedingungen für eine oder mehrere metrische Zeitreihen erfüllt sind, und um Sie darüber zu informieren, wann die Auswertungen erfüllt sind. Metrikwarnungen sind zustandsbehaftet. Sie senden Benachrichtigungen nur dann, wenn sich der Zustand ändert.
 
 ## <a name="how-do-metric-alerts-work"></a>Wie funktionieren Metrikwarnungen?
 
@@ -26,7 +26,7 @@ Nehmen wir an, Sie haben wie folgt eine einfache statische Metrikwarnung mit Sch
 - Zielressource (die zu überwachende Azure-Ressource): myVM
 - Metrik: CPU in Prozent
 - Bedingungstyp: statischen
-- Aggregationstyp (eine Statistik, die über Rohmetriken geführt wird. [Unterstützte Aggregationstypen](../platform/metrics-aggregation-explained.md#aggregation-types) sind „Minimum“, „Maximum“, „Durchschnitt“, „Gesamt“, „Anzahl“): Average
+- Aggregationstyp (eine Statistik, die über Rohmetriken geführt wird. [Unterstützte Aggregationstypen](../essentials/metrics-aggregation-explained.md#aggregation-types) sind „Minimum“, „Maximum“, „Durchschnitt“, „Gesamt“, „Anzahl“): Average
 - Zeitraum (das zurückliegende Zeitfenster, über das Metrikwerte geprüft werden): Über die letzten 5 Minuten
 - Häufigkeit (die Häufigkeit, mit der die Metrikwarnung überprüft werden soll, wenn die Bedingungen erfüllt sind): 1 Minute
 - Operator: Größer als
@@ -43,7 +43,7 @@ Nehmen wir an, Sie haben wie folgt eine einfache dynamische Metrikwarnung mit Sc
 - Zielressource (die zu überwachende Azure-Ressource): myVM
 - Metrik: CPU in Prozent
 - Bedingungstyp: Dynamisch
-- Aggregationstyp (eine Statistik, die über Rohmetriken geführt wird. [Unterstützte Aggregationstypen](../platform/metrics-aggregation-explained.md#aggregation-types) sind „Minimum“, „Maximum“, „Durchschnitt“, „Gesamt“, „Anzahl“): Average
+- Aggregationstyp (eine Statistik, die über Rohmetriken geführt wird. [Unterstützte Aggregationstypen](../essentials/metrics-aggregation-explained.md#aggregation-types) sind „Minimum“, „Maximum“, „Durchschnitt“, „Gesamt“, „Anzahl“): Average
 - Zeitraum (das zurückliegende Zeitfenster, über das Metrikwerte geprüft werden): Über die letzten 5 Minuten
 - Häufigkeit (die Häufigkeit, mit der die Metrikwarnung überprüft werden soll, wenn die Bedingungen erfüllt sind): 1 Minute
 - Operator: Größer als
@@ -180,9 +180,8 @@ Die vollständige Liste der unterstützten Ressourcentypen finden Sie in diesem 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erfahren Sie, wie Sie in Azure Metrikwarnungen erstellen, anzeigen und verwalten können.](../alerts/alerts-metric.md)
-- [Erfahren Sie, wie Sie Warnungen im Azure Monitor-Metrik-Explorer erstellen können](../platform/metrics-charts.md#alert-rules).
+- [Erfahren Sie, wie Sie Warnungen im Azure Monitor-Metrik-Explorer erstellen können](../essentials/metrics-charts.md#alert-rules).
 - [Erfahren Sie, wie Sie Metrikwarnungen mithilfe von Azure Resource Manager-Vorlagen bereitstellen können](./alerts-metric-create-templates.md).
-- [Erfahren Sie mehr über Aktionsgruppen](../platform/action-groups.md).
+- [Erfahren Sie mehr über Aktionsgruppen](./action-groups.md).
 - [Erfahren Sie mehr über den Bedingungstyp für dynamische Schwellenwerte.](../alerts/alerts-dynamic-thresholds.md)
 - [Erfahren Sie mehr über das Behandeln von Problemen mit Metrikwarnungen.](alerts-troubleshoot-metric.md)
-

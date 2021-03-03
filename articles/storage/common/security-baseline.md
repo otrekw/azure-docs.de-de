@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b484873f6c118c49712cbcd66eeb6a63d8aa05f6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5367fbcb88e19253eead58d8f99933fdadc41898
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591546"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714713"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-Sicherheitsbaseline für Azure Storage
 
@@ -190,7 +190,7 @@ Sie können auch die integrierten Richtliniendefinitionen für Storage-Konten ve
 
 **Leitfaden**: Azure Storage Analytics bietet Protokolle für Blobs, Warteschlangen und Tabellen. Sie können das Azure-Portal verwenden, um zu konfigurieren, welche Protokolle für Ihr Konto angelegt werden. 
 
-- [Konfigurieren der Überwachung für ein Azure Storage-Konten](./storage-monitor-storage-account.md#configure-monitoring-for-a-storage-account)
+- [Konfigurieren der Überwachung für ein Azure Storage-Konten](./manage-storage-analytics-logs.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -208,7 +208,7 @@ Sie können auch die integrierten Richtliniendefinitionen für Storage-Konten ve
 
 **Leitfaden**: Beim Speichern von Sicherheitsereignisprotokollen im Azure Storage-Konto oder Log Analytics-Arbeitsbereich können Sie die Aufbewahrungsrichtlinie den Anforderungen Ihrer Organisation entsprechend festlegen. 
 
-- [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](./storage-monitor-storage-account.md#configure-logging)
+- [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](./manage-storage-analytics-logs.md#configure-logging)
 
 - [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -414,7 +414,7 @@ Eine effektive Möglichkeit, das Risiko eines unerwarteten Benutzerkontozugriffs
 
 - [Verwalten des anonymen Lesezugriffs auf Container und Blobs](../blobs/anonymous-read-access-configure.md)
 
-- [Überwachen eines Speicherkontos im Azure-Portal](./storage-monitor-storage-account.md)
+- [Überwachen eines Speicherkontos im Azure-Portal](./manage-storage-analytics-logs.md)
 
 - [Verwalten von Zugriffsschlüsseln für Speicherkonten](./storage-account-keys-manage.md)
 
@@ -432,7 +432,7 @@ Erstellen Sie Diagnoseeinstellungen für Azure Active Directory-Benutzerkonten, 
 
 - [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Konfigurieren von Metrikwarnungen für Azure Storage-Konten](./storage-monitor-storage-account.md)
+- [Konfigurieren von Metrikwarnungen für Azure Storage-Konten](./manage-storage-analytics-logs.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -576,7 +576,7 @@ Richtlinien für VNET-Dienstendpunkte ermöglichen es Ihnen zudem, ausgehenden v
 
 - [Azure Storage Analytics-Protokollierung](./storage-analytics-logging.md)
 
-- [Konfigurieren von Metrikwarnungen für Azure Storage-Konten](./storage-monitor-storage-account.md)
+- [Konfigurieren von Metrikwarnungen für Azure Storage-Konten](./manage-storage-analytics-logs.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 

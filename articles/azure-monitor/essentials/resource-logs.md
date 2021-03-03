@@ -7,27 +7,27 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 3560152ce5e3185e79c7a7ff34e5360f10236980
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dcd6522c46b6ca35031092c634803267a8486647
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601324"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731458"
 ---
 # <a name="azure-resource-logs"></a>Azure-Ressourcenprotokolle
-Azure-Ressourcenprotokolle sind [Plattformprotokolle](../essentials/platform-logs-overview.md), die Einblicke in Vorgänge bereitstellen, die in einer Azure-Ressource ausgeführt wurden. Der Inhalt dieser Protokolle variiert je nach Azure-Dienst und -Ressourcentyp. Ressourcenprotokolle werden standardmäßig nicht erfasst. Sie müssen eine Diagnoseeinstellung für jede Azure-Ressource erstellen, um deren Ressourcenprotokolle an einen Log Analytics-Arbeitsbereich zu senden, damit sie mit [Azure Monitor-Protokollen](../platform/data-platform-logs.md), Azure Event Hubs zur Weiterleitung außerhalb von Azure oder Azure Storage zur Archivierung verwendet werden können.
+Azure-Ressourcenprotokolle sind [Plattformprotokolle](../essentials/platform-logs-overview.md), die Einblicke in Vorgänge bereitstellen, die in einer Azure-Ressource ausgeführt wurden. Der Inhalt dieser Protokolle variiert je nach Azure-Dienst und -Ressourcentyp. Ressourcenprotokolle werden standardmäßig nicht erfasst. Sie müssen eine Diagnoseeinstellung für jede Azure-Ressource erstellen, um deren Ressourcenprotokolle an einen Log Analytics-Arbeitsbereich zu senden, damit sie mit [Azure Monitor-Protokollen](../logs/data-platform-logs.md), Azure Event Hubs zur Weiterleitung außerhalb von Azure oder Azure Storage zur Archivierung verwendet werden können.
 
 Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung finden Sie unter [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../essentials/diagnostic-settings.md). Informationen zur Verwendung von Azure Policy zum automatischen Erstellen einer Diagnoseeinstellung für jede erstellte Azure-Ressource finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](../deploy-scale.md).
 
 ## <a name="send-to-log-analytics-workspace"></a>Senden an den Log Analytics-Arbeitsbereich
- Senden Sie Ressourcenprotokolle an einen Log Analytics-Arbeitsbereich, um die Features von [Azure Monitor-Protokolle](../platform/data-platform-logs.md) zu aktivieren. Hierzu zählen Folgende:
+ Senden Sie Ressourcenprotokolle an einen Log Analytics-Arbeitsbereich, um die Features von [Azure Monitor-Protokolle](../logs/data-platform-logs.md) zu aktivieren. Hierzu zählen Folgende:
 
 - Korrelieren von Ressourcenprotokolldaten mit anderen von Azure Monitor gesammelten Überwachungsdaten
 - Konsolidieren von Protokolleinträgen mehrerer Azure-Ressourcen, -Abonnements und -Mandanten an einem einzigen Ort zur gemeinsamen Analyse
 - Verwenden von Protokollabfragen zum Ausführen komplexer Analysen und Erhalten tiefer Einblicke in Protokolldaten
 - Verwenden von Protokollwarnungen mit komplexer Warnungslogik
 
-[Erstellen Sie eine Diagnoseeinstellung](../essentials/diagnostic-settings.md), um Ressourcenprotokolle an einen Log Analytics-Arbeitsbereich zu senden. Diese Daten werden in Tabellen gespeichert, wie es unter [Struktur von Azure Monitor-Protokollen](../platform/data-platform-logs.md) beschrieben ist. Welche Tabellen von Ressourcenprotokollen verwendet werden, hängt von dem von der Ressource verwendeten Sammlungstyp ab:
+[Erstellen Sie eine Diagnoseeinstellung](../essentials/diagnostic-settings.md), um Ressourcenprotokolle an einen Log Analytics-Arbeitsbereich zu senden. Diese Daten werden in Tabellen gespeichert, wie es unter [Struktur von Azure Monitor-Protokollen](../logs/data-platform-logs.md) beschrieben ist. Welche Tabellen von Ressourcenprotokollen verwendet werden, hängt von dem von der Ressource verwendeten Sammlungstyp ab:
 
 - Azure-Diagnose: Alle Daten werden in die Tabelle _AzureDiagnostics_ geschrieben.
 - Ressourcenspezifisch: Daten werden für jede Kategorie der Ressource in eine individuelle Tabelle geschrieben.
@@ -90,7 +90,7 @@ Die meisten Azure-Ressourcen schreiben Daten entweder im Modus **Azure-Diagnose*
    ![Auswahl eines Modus in den Diagnose-Einstellungen](media/resource-logs/diagnostic-settings-mode-selector.png)
 
 > [!NOTE]
-> Ein Beispiel für das Festlegen des Sammlungsmodus mithilfe einer Resource Manager-Vorlage finden Sie unter [Beispiele für Resource Manager-Vorlagen für Diagnoseeinstellungen in Azure Monitor](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault).
+> Ein Beispiel für das Festlegen des Sammlungsmodus mithilfe einer Resource Manager-Vorlage finden Sie unter [Beispiele für Resource Manager-Vorlagen für Diagnoseeinstellungen in Azure Monitor](./resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault).
 
 
 Sie können eine vorhandene Diagnoseeinstellung in den Modus „Ressourcenspezifisch“ ändern. In diesem Fall verbleiben Daten, die bereits gesammelt wurden, in der Tabelle _AzureDiagnostics_, bis sie gemäß Ihrer Aufbewahrungseinstellung für den Arbeitsbereich entfernt werden. Neue Daten werden in der dedizierten Tabelle gesammelt. Verwenden Sie den [union](/azure/kusto/query/unionoperator)-Operator, um Daten in beiden Tabellen abzufragen.

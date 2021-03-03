@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e098256a43add6df026ab136bcd6a6b549c147e7
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 842c56ef1fb6f68c3d8b82e2633d9a604db9fde2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871314"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671626"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP-Workloadkonfigurationen mit Azure-Verfügbarkeitszonen
 Zusätzlich zur Bereitstellung der verschiedenen SAP-Architekturebenen in Azure-Verfügbarkeitsgruppen können für SAP-Workloadbereitstellungen auch die vor Kurzem eingeführten [Azure-Verfügbarkeitszonen](../../../availability-zones/az-overview.md) verwendet werden. Eine Azure-Verfügbarkeitszone ist wie folgt definiert: „Physische Orte innerhalb einer Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren.“ Azure-Verfügbarkeitszonen sind nicht in allen Regionen verfügbar. Azure-Regionen, die Verfügbarkeitszonen bereitstellen, finden Sie unter [Karte mit Azure-Regionen](https://azure.microsoft.com/global-infrastructure/geographies/). Auf dieser Karte sehen Sie, in welchen Regionen bereits Verfügbarkeitszonen bereitgestellt werden und für welche Regionen die Bereitstellung angekündigt ist. 

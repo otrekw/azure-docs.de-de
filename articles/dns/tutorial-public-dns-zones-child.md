@@ -10,12 +10,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
-ms.openlocfilehash: d805fb926131e047572887758b10506e4edd5944
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1e2eddd821bb7a9d2050913efef3d73b406e32f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183378"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733209"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>Tutorial: Erstellen einer neuen untergeordneten DNS-Zone
 
@@ -81,7 +81,8 @@ Sie können auch eine neue untergeordnete DNS-Zone erstellen und sie an die übe
 1.  Klicken Sie auf **Weiter: Tags** und dann auf **Weiter: Überprüfen + erstellen**.
 1.  Überprüfen Sie auf der Registerkarte **Überprüfen + erstellen** die Zusammenfassung, beheben Sie alle Validierungsfehler, und wählen Sie dann **Erstellen** aus.
 
-    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="Screenshot der ausgewählten untergeordneten Zone" border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="Screenshot der ausgewählten untergeordneten Zone" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+
 ## <a name="verify-child-dns-zone"></a>Überprüfen der untergeordneten DNS-Zone
 Sie haben die neue untergeordnete DNS-Zone *subdomain.contoso.com* eingerichtet. Um zu überprüfen, ob die Delegierung ordnungsgemäß erfolgt ist, sollten Sie die Namenservereinträge (NS) für Ihre untergeordnete Zone in der übergeordneten Zone überprüfen, wie unten beschrieben.  
 

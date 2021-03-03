@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2020
-ms.openlocfilehash: 089c0739ff091d49734cad048c2bfb10d857617c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 96eab2d93ae0212568f8ef23e32a35016cb17248
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601500"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732053"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Sammeln von IIS-Protokollen mit dem Log Analytics-Agent in Azure Monitor
-IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die vom Log Analytics-Agent gesammelt und in [Azure Monitor-Protokollen](../platform/data-platform.md) gespeichert werden können.
+IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die vom Log Analytics-Agent gesammelt und in [Azure Monitor-Protokollen](../data-platform.md) gespeichert werden können.
 
 > [!IMPORTANT]
-> In diesem Artikel wird das Sammeln von IIS-Protokollen mit dem [Log Analytics-Agent](../platform/log-analytics-agent.md) beschrieben, einem der von Azure Monitor verwendeten Agents. Andere Agents sammeln andere Daten und werden anders konfiguriert. Eine Liste der verfügbaren Agents und der von ihnen gesammelten Daten finden Sie unter [Übersicht über Azure Monitor-Agents](../agents/agents-overview.md).
+> In diesem Artikel wird das Sammeln von IIS-Protokollen mit dem [Log Analytics-Agent](./log-analytics-agent.md) beschrieben, einem der von Azure Monitor verwendeten Agents. Andere Agents sammeln andere Daten und werden anders konfiguriert. Eine Liste der verfügbaren Agents und der von ihnen gesammelten Daten finden Sie unter [Übersicht über Azure Monitor-Agents](../agents/agents-overview.md).
 
 ![IIS-Protokolle](media/data-sources-iis-logs/overview.png)
 
@@ -75,4 +75,4 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die II
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Konfigurieren Sie Azure Monitor für die Sammlung von Daten aus anderen [Datenquellen](../agents/agent-data-sources.md) zur Analyse.
-* Erfahren Sie mehr über [Protokollabfragen](../log-query/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.
+* Erfahren Sie mehr über [Protokollabfragen](../logs/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.

@@ -1,38 +1,36 @@
 ---
-title: Verwenden von Azure Policy zum Anwenden von skalierbaren Clusterkonfigurationen (Vorschauversion)
+title: Verwenden von Azure Policy zum Anwenden skalierbarer Clusterkonfigurationen
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 03/02/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Verwenden von Azure Policy zum Anwenden skalierbarer Clusterkonfigurationen
 keywords: Kubernetes, Arc, Azure, K8s, Container
-ms.openlocfilehash: b80e50cb4823632f054de3b7f9da71392f8578d7
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 7f85050666c383ba49730bd88ce1f26d55607e7a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560192"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652146"
 ---
-# <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Verwenden von Azure Policy zum Anwenden von skalierbaren Clusterkonfigurationen (Vorschauversion)
+# <a name="use-azure-policy-to-apply-cluster-configurations-at-scale"></a>Verwenden von Azure Policy zum Anwenden skalierbarer Clusterkonfigurationen
 
 ## <a name="overview"></a>Übersicht
 
-Sie können Azure Policy verwenden, um die Anwendung spezieller `Microsoft.KubernetesConfiguration/sourceControlConfigurations` auf eine der folgenden Ressourcen zu erzwingen:
-*  `Microsoft.Kubernetes/connectedclusters`-Ressource
-* GitOps-fähige `Microsoft.ContainerService/managedClusters`-Ressource 
+Sie können mit Azure Policy entsprechende Konfigurationen (`Microsoft.KubernetesConfiguration/sourceControlConfigurations`-Ressourcentyp) im großen Stil auf Kubernetes-Cluster mit Azure Arc-Aktivierung (`Microsoft.Kubernetes/connectedclusters`) anwenden.
 
 Um Azure Policy zu verwenden, wählen Sie eine vorhandene Richtliniendefinition aus, und erstellen Sie eine Richtlinienzuweisung. Beim Erstellen der Richtlinienzuweisung:
 1. Legen Sie den Bereich für die Zuweisung fest.
     * Der Bereich ist eine Azure-Ressourcengruppe oder ein Azure-Abonnement. 
-2. Legen Sie die Parameter für die `sourceControlConfiguration` fest, die erstellt wird. 
+2. Legen Sie die Parameter für die Konfiguration fest, die erstellt wird. 
 
-Nachdem die Zuweisung erstellt wurde, identifiziert die Azure Policy-Engine alle `connectedCluster`- oder `managedCluster`-Ressourcen, die sich innerhalb des Bereichs befinden, und wendet die `sourceControlConfiguration` jeweils auf diese an.
+Sobald die Zuweisung erstellt ist, identifiziert die Azure Policy-Engine alle Kubernetes-Cluster mit Azure Arc-Aktivierung, die sich innerhalb des Bereichs befinden, und wendet die Konfiguration auf jeden Cluster an.
 
-Sie können für jeden Cluster mehrere Git-Repositorys als autoritative Quellen aktiveren, indem Sie mehrere Richtlinienzuweisungen verwenden. Jede Richtlinienzuweisung wird dann für die Verwendung eines anderen Git-Repositorys konfiguriert, z. B. ein Repository für den zentralen IT-/Clusteroperator und andere Repositorys für die Anwendungsteams.
+Sie können mehrere Konfigurationen erstellen, die jeweils auf ein anderes Git-Repository verweisen, indem Sie mehrere Richtlinienzuweisungen verwenden. Beispiel: Ein Repository für den zentralen IT-/Clusteroperator und weitere Repositorys für Anwendungsteams.
 
-## <a name="prerequisite"></a>Voraussetzungen
+## <a name="prerequisite"></a>Voraussetzung
 
 Überprüfen Sie, ob Sie über `Microsoft.Authorization/policyAssignments/write`-Berechtigungen für den Bereich (Abonnement oder Ressourcengruppe) verfügen, in dem Sie diese Richtlinienzuweisung erstellen möchten.
 
@@ -54,24 +52,21 @@ Sie können für jeden Cluster mehrere Git-Repositorys als autoritative Quellen 
     * Weitere Informationen finden Sie im [Schnellstart zum Erstellen einer Richtlinienzuweisung](../../governance/policy/assign-policy-portal.md) und im Artikel [Korrigieren nicht konformer Ressourcen mit Azure Policy](../../governance/policy/how-to/remediate-resources.md).
 1. Klicken Sie auf **Überprüfen + erstellen**.
 
-Nachdem Sie die Richtlinienzuweisung erstellt haben, wird die `sourceControlConfiguration` auf alle folgenden Ressourcen angewandt, die sich innerhalb des Bereichs der Zuweisung befinden:
-* Neue `connectedCluster`-Ressourcen
-* Neue `managedCluster`-Ressourcen mit installierten GitOps-Agents 
+Nach dem Erstellen der Richtlinienzuweisung wird die Konfiguration auf neue Kubernetes-Cluster mit Azure Arc-Aktivierung angewendet, die im Bereich der Richtlinienzuweisung erstellt wurden.
 
 Bei vorhandenen Clustern müssen Sie manuell einen Wartungstask ausführen. Es dauert in der Regel 10 bis 20 Minuten, bis die Richtlinienzuweisung wirksam wird.
 
 ## <a name="verify-a-policy-assignment"></a>Überprüfen einer Richtlinienzuweisung
 
-1. Navigieren Sie im Azure-Portal zu einer Ihrer `connectedCluster`-Ressourcen.
+1. Navigieren Sie im Azure-Portal zu einem Ihrer Kubernetes-Cluster mit Azure Arc-Aktivierung.
 1. Wählen Sie im Abschnitt **Einstellungen** auf der Randleiste **Richtlinien** aus. 
-    * Die Benutzeroberfläche für AKS-Cluster ist noch nicht implementiert.
     * In der Liste der Richtlinien sollte die oben erstellte Richtlinienzuweisung angezeigt werden, und der **Konformitätszustand** sollte *Konform* lauten.
 1. Wählen Sie im Abschnitt **Einstellungen** auf der Randleiste **Konfigurationen** aus.
-    * In der Liste der Konfigurationen sollte die `sourceControlConfiguration` angezeigt werden, die von der Richtlinienzuweisung erstellt wurde.
+    * In der Liste der Konfigurationen sollte die durch die Richtlinienzuweisung erstellte Konfiguration angezeigt werden.
 1. Verwenden Sie `kubectl`, um den Cluster abzufragen. 
-    * Sie sollten den Namespace und die Artefakte sehen, die von der `sourceControlConfiguration` erstellt wurden.
-    * Innerhalb von 5 Minuten sollten im Cluster die Artefakte angezeigt werden, die in den Manifesten im konfigurierten Git-Repository beschrieben werden.
+    * Sie sollten den Namespace und die Artefakte sehen, die von den Konfigurationsressourcen erstellt wurden.
+    * Innerhalb von fünf Minuten (vorausgesetzt, der Cluster verfügt über Netzwerkkonnektivität mit Azure) sollten Sie sehen, dass die Objekte, die durch die Manifeste im Git-Repository beschrieben werden, auf dem Cluster erstellt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Einrichten von Azure Monitor für Container mit Arc-fähigen Kubernetes-Clustern](../../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md)
+* [Einrichten von Azure Monitor für Container mit Arc-fähigen Kubernetes-Clustern](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md)

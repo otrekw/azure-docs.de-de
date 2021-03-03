@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0f705aa61f1fe627dc0c8227242538e01ffce1d5
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: e61d2ff3807b65022d72414615af9fa729359358
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070835"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715716"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Verwalten von Endpunkten und Routen in Azure Digital Twins (Portal)
 
@@ -76,7 +76,7 @@ Sobald Sie die Endpunktressourcen erstellt haben, können Sie sie für einen Azu
 1. Schließen Sie die Erstellung Ihres Endpunkts ab, indem Sie auf _Speichern_ klicken.
 
 >[!IMPORTANT]
-> Damit Sie die identitätsbasierte Authentifizierung erfolgreich für Ihren Endpunkt verwenden können, müssen Sie eine verwaltete Identität für Ihre Instanz erstellen, indem Sie die Schritte unter [*Aktivieren einer verwalteten Identität für die Weiterleitung von Azure Digital Twins-Ereignissen (Vorschau)* ](how-to-enable-managed-identities.md) befolgen.
+> Damit Sie die identitätsbasierte Authentifizierung erfolgreich für Ihren Endpunkt verwenden können, müssen Sie eine verwaltete Identität für Ihre Instanz erstellen, indem Sie die Schritte unter [*Aktivieren einer verwalteten Identität für die Weiterleitung von Azure Digital Twins-Ereignissen (Vorschau)*](./how-to-enable-managed-identities-portal.md) befolgen.
 
 Nach Erstellung Ihres Endpunkts können Sie überprüfen, ob der Endpunkt erfolgreich erstellt wurde, indem Sie das Benachrichtigungssymbol oben in der Leiste im Azure-Portal überprüfen: 
 

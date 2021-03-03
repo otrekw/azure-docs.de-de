@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2020
 ms.author: gistefan
 ms.reviewer: mikben
-ms.openlocfilehash: 9fd8a17deeb49d836ff5902042bdb88696e29f31
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7e8d9b56077819fc404d6c2bdc39f9f697224136
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416727"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692180"
 ---
 # <a name="use-managed-identities-net"></a>Verwenden verwalteter Identitäten (.NET)
 
@@ -25,7 +25,7 @@ In diesem Schnellstart erfahren Sie, wie Sie den Zugriff auf die Verwaltungs- un
 ## <a name="prerequisites"></a>Voraussetzungen
 
  - Ein Azure-Konto mit einem aktiven Abonnement. [Kostenlos ein Konto erstellen](https://azure.microsoft.com/free)
- - Eine aktive Communication Services-Ressource und eine Verbindungszeichenfolge. [Erstellen Sie eine Communication Services-Ressource.](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp)
+ - Eine aktive Communication Services-Ressource und eine Verbindungszeichenfolge. [Erstellen Sie eine Communication Services-Ressource.](./create-communication-resource.md?pivots=platform-azp&tabs=windows)
 
 ## <a name="setting-up"></a>Einrichten
 
@@ -76,7 +76,7 @@ using Azure.Communication.Configuration;
 using Azure.Communication.Sms;
 ```
 
-In den nachstehenden Beispielen wird [DefaultAzureCredential](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) verwendet. Diese Anmeldeinformationen eignen sich für Produktions- und Entwicklungsumgebungen.
+In den nachstehenden Beispielen wird [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) verwendet. Diese Anmeldeinformationen eignen sich für Produktions- und Entwicklungsumgebungen.
 
 ### <a name="create-an-identity-and-issue-a-token"></a>Erstellen einer Identität und Ausstellen eines Tokens
 
@@ -124,7 +124,7 @@ Im folgenden Codebeispiel wird veranschaulicht, wie ein Dienstclientobjekt mit A
 Das könnte Sie auch interessieren:
 
 - [Weitere Informationen zur rollenbasierten Zugriffssteuerung in Azure](../../../articles/role-based-access-control/index.yml)
-- [Weitere Informationen zur Azure-Identitätsbibliothek für .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)
+- [Weitere Informationen zur Azure-Identitätsbibliothek für .NET](/dotnet/api/overview/azure/identity-readme)
 - [Erstellen von Benutzerzugriffstoken](../quickstarts/access-tokens.md)
 - [Senden einer SMS](../quickstarts/telephony-sms/send.md)
 - [Weitere Informationen zu SMS](../concepts/telephony-sms/concepts.md)

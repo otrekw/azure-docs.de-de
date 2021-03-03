@@ -3,12 +3,12 @@ title: Programmgesteuertes Erstellen von Azure-Dashboards
 description: Verwenden eines Dashboards im Azure-Portal als Vorlage, um Azure-Dashboards programmgesteuert zu erstellen. Der Artikel enthält eine JSON-Referenz.
 ms.topic: how-to
 ms.date: 12/4/2020
-ms.openlocfilehash: e69d3f3cea0ff63f94e797047eb10b9583678b1b
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bd56dc1c729c5aa7a77e79aa3af3366166fdcfea
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745807"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095165"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programmgesteuertes Erstellen von Azure-Dashboards
 
@@ -46,7 +46,7 @@ Nach dem Konfigurieren des Dashboards muss es im nächsten Schritt mithilfe des 
 
 ![Freigeben eines Dashboards](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-Wenn Sie **Freigeben** auswählen, werden Sie aufgefordert, das Abonnement und die Ressourcengruppe auszuwählen, in dem bzw. der Sie veröffentlichen möchten. Sie müssen für das Abonnement und die Ressourcengruppe, die Sie auswählen, über Schreibzugriff verfügen. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe des Azure-Portals](../role-based-access-control/role-assignments-portal.md).
+Wenn Sie **Freigeben** auswählen, werden Sie aufgefordert, das Abonnement und die Ressourcengruppe auszuwählen, in dem bzw. der Sie veröffentlichen möchten. Sie müssen für das Abonnement und die Ressourcengruppe, die Sie auswählen, über Schreibzugriff verfügen. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 
 ![Vornehmen von Änderungen an Freigabe und Zugriff](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 

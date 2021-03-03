@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: e9845eaf6d84caad3ddb8c7e615cb72f71c91f3b
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 80455b442bbfb9c8a7d40799b2ddd5fc25460578
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412832"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595587"
 ---
 # <a name="azure-database-security-checklist"></a>Checkliste für die Sicherheit der Azure-Datenbank
 
@@ -53,7 +53,7 @@ Es wird empfohlen, den Artikel [Azure Database Security Best Practices (Bewährt
 |<br> Datenbankzugriff | <ul><li>[Authentifizierung](../../azure-sql/database/logins-create-manage.md) (Azure Active Directory-Authentifizierung, AD-Authentifizierung) verwendet von Azure Active Directory verwaltete Identitäten.</li><li>[Autorisierung](../../azure-sql/database/logins-create-manage.md) erteilt Benutzern die minimal erforderlichen Berechtigungen.</li></ul> |
 |<br>Anwendungszugriff| <ul><li>[Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security) (Verwendet Sicherheitsrichtlinien und beschränkt gleichzeitig den Zugriff auf Zeilenebene auf Grundlage einer Benutzeridentität, einer Rolle oder eines Ausführungskontexts).</li><li>[Dynamische Datenmaskierung](../../azure-sql/database/dynamic-data-masking-overview.md) (Verwendet Permission &amp; Policy, schränkt die Offenlegung sensibler Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden).</li></ul>|
 |**Proaktive Überwachung**||  
-| <br>Nachverfolgen und Erkennen| <ul><li>Die [Überprüfung](../../azure-sql/database/auditing-overview.md) verfolgt Datenbankereignisse und schreibt diese in ein Überwachungs-/Aktivitätsprotokoll in Ihrem [Azure Speicherkonto](../../storage/common/storage-account-create.md).</li><li>Nachverfolgen der Integrität der Azure-Datenbank mit [Azure Monitor-Aktivitätsprotokollen](../../azure-monitor/platform/platform-logs-overview.md).</li><li>Die [Bedrohungserkennung](../../azure-sql/database/threat-detection-configure.md) erkennt anormale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten. </li></ul> |
+| <br>Nachverfolgen und Erkennen| <ul><li>Die [Überprüfung](../../azure-sql/database/auditing-overview.md) verfolgt Datenbankereignisse und schreibt diese in ein Überwachungs-/Aktivitätsprotokoll in Ihrem [Azure Speicherkonto](../../storage/common/storage-account-create.md).</li><li>Nachverfolgen der Integrität der Azure-Datenbank mit [Azure Monitor-Aktivitätsprotokollen](../../azure-monitor/essentials/platform-logs-overview.md).</li><li>Die [Bedrohungserkennung](../../azure-sql/database/threat-detection-configure.md) erkennt anormale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten. </li></ul> |
 |<br>Azure Security Center| <ul><li>Die [Überwachung der Daten](../../security-center/security-center-remediate-recommendations.md) verwendet Azure Security Center als eine zentralisierte Sicherheitsüberwachungslösung für SQL und anderen Azure-Dienste.</li></ul>|        
 
 ## <a name="conclusion"></a>Zusammenfassung

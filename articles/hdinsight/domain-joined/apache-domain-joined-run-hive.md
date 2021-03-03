@@ -1,18 +1,15 @@
 ---
 title: 'Apache Hive-Richtlinien in Apache Ranger: Azure HDInsight'
 description: Erfahren Sie, wie Sie Apache Ranger-Richtlinien für Hive in einem Azure HDInsight-Dienst mit dem Enterprise-Sicherheitspaket konfigurieren.
-author: omidm1
-ms.author: omidm
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 8ebc03d0847414730c51b899be4cf6586d064696
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: fbe4361033321f2ba81478c41a138937f70b5498
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932225"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705703"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurieren von Apache Hive-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket
 
@@ -60,7 +57,7 @@ In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf �
     |Benutzer auswählen|hiveuser1|
     |Berechtigungen|select|
 
-    ![HDInsight ESP Ranger – Konfigurieren von Hive-Richtlinien](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png)erforderlich.
+    ![HDInsight ESP Ranger – Konfigurieren von Hive-Richtlinien](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
     > [!NOTE]  
     > Wenn unter „Benutzer auswählen“ kein Domänenbenutzer eingetragen wird, warten Sie kurz, bis Ranger mit AAD synchronisiert wurde.

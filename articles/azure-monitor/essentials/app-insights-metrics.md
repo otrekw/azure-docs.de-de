@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 400f239f3e7b736196bf950e81148fa2e39aca96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ca19fdfa617b71b1465e4710d8ca52b18c9ebff5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599444"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731679"
 ---
 # <a name="application-insights-log-based-metrics"></a>Protokollbasierte Metriken von Application Insights
 
@@ -21,13 +21,13 @@ Mit den protokollbasierten Metriken von Application Insights können Sie die Int
 * [Protokollbasierte Metriken](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) im Hintergrund werden aus gespeicherten Ereignissen in [Kusto-Abfragen](/azure/kusto/query/) übersetzt.
 * [Standardmetriken](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) werden als vorab aggregierte Zeitreihe gespeichert.
 
-Da *Standardmetriken* während der Erfassung vorab aggregiert werden, weisen sie zum Abfragezeitpunkt eine bessere Leistung auf. Dies macht sie zu einer besseren Wahl für Dashboarding und Echtzeitwarnungen. Die *protokollbasierten Metriken* verfügen über mehr Dimensionen, was sie zur überlegenen Option für die Datenanalyse und Ad-hoc-Diagnosen macht. Verwenden Sie die [Namespace-Auswahl](../platform/metrics-getting-started.md#create-your-first-metric-chart), um im [Metrik-Explorer](../platform/metrics-getting-started.md) zwischen protokollbasierten Metriken und Standardmetriken zu wechseln.
+Da *Standardmetriken* während der Erfassung vorab aggregiert werden, weisen sie zum Abfragezeitpunkt eine bessere Leistung auf. Dies macht sie zu einer besseren Wahl für Dashboarding und Echtzeitwarnungen. Die *protokollbasierten Metriken* verfügen über mehr Dimensionen, was sie zur überlegenen Option für die Datenanalyse und Ad-hoc-Diagnosen macht. Verwenden Sie die [Namespace-Auswahl](./metrics-getting-started.md#create-your-first-metric-chart), um im [Metrik-Explorer](./metrics-getting-started.md) zwischen protokollbasierten Metriken und Standardmetriken zu wechseln.
 
 ## <a name="interpret-and-use-queries-from-this-article"></a>Interpretieren und Verwenden von Abfragen aus diesem Artikel
 
 Dieser Artikel listet Metriken mit unterstützten Aggregationen und Dimensionen auf. Zu den Details der protokollbasierten Metriken gehören die zugrunde liegenden Kusto-Abfrageanweisungen. Zur Vereinfachung verwendet jede Abfrage Standardwerte für Zeitgranularität, Diagrammtyp und manchmal auch Teilungsdimensionen, was die Verwendung der Abfrage in Log Analytics vereinfacht, ohne dass Änderungen erforderlich sind.
 
-Wenn Sie die gleiche Metrik im [Metrik-Explorer](../platform/metrics-getting-started.md) darstellen, gibt es keine Standardwerte – die Abfrage wird dynamisch entsprechend Ihren Diagrammeinstellungen angepasst:
+Wenn Sie die gleiche Metrik im [Metrik-Explorer](./metrics-getting-started.md) darstellen, gibt es keine Standardwerte – die Abfrage wird dynamisch entsprechend Ihren Diagrammeinstellungen angepasst:
 
 - Der ausgewählte **Zeitbereich** wird in eine zusätzliche *where timestamp*-Klausel übersetzt, um nur die Ereignisse aus dem ausgewählten Zeitbereich auszuwählen. Beispielsweise enthält ein Diagramm, in dem Daten der letzten 24 Stunden angezeigt werden, die Abfrage *| where timestamp > ago(24 h)*.
 
@@ -38,7 +38,7 @@ Wenn Sie die gleiche Metrik im [Metrik-Explorer](../platform/metrics-getting-sta
 - Die ausgewählte **Teilungsdiagramm**-Dimension wird in eine zusätzliche Zusammenfassungseigenschaft übersetzt. Wenn Sie beispielsweise Ihr Diagramm nach *Standort* aufteilen und mit einer Zeitgranularität von 5 Minuten grafisch darstellen, wird die *summarize*-Klausel in der Form *... by bin(timestamp, 5 m), location* zusammengefasst.
 
 > [!NOTE]
-> Wenn Sie noch nicht mit der Kusto-Abfragesprache vertraut sind, müssen Sie zunächst die Kusto-Anweisungen kopieren und in den Log Analytics-Abfragebereich einfügen, ohne Änderungen vorzunehmen. Klicken Sie auf **Ausführen**, um das grundlegende Diagramm anzuzeigen. Wenn Sie mit der Syntax der Abfragesprache vertraut sind, können Sie damit beginnen, kleine Änderungen vorzunehmen und die Auswirkung Ihrer Änderung anzuzeigen. Das Untersuchen Ihrer eigenen Daten ist eine gute Möglichkeit, um die volle Leistungsfähigkeit von [Log Analytics](../log-query/log-analytics-tutorial.md) und [Azure Monitor](../overview.md) zu erkennen.
+> Wenn Sie noch nicht mit der Kusto-Abfragesprache vertraut sind, müssen Sie zunächst die Kusto-Anweisungen kopieren und in den Log Analytics-Abfragebereich einfügen, ohne Änderungen vorzunehmen. Klicken Sie auf **Ausführen**, um das grundlegende Diagramm anzuzeigen. Wenn Sie mit der Syntax der Abfragesprache vertraut sind, können Sie damit beginnen, kleine Änderungen vorzunehmen und die Auswirkung Ihrer Änderung anzuzeigen. Das Untersuchen Ihrer eigenen Daten ist eine gute Möglichkeit, um die volle Leistungsfähigkeit von [Log Analytics](../logs/log-analytics-tutorial.md) und [Azure Monitor](../overview.md) zu erkennen.
 
 ## <a name="availability-metrics"></a>Verfügbarkeitsmetriken
 

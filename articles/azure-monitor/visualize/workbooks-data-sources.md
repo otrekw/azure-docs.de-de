@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: ee4436d2b8445f2a1d368fb6c76e04d1ec790d98
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 862c6c5253c1bb4481476b67c7cfb203c2568e24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602351"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700574"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Datenquellen für Azure Monitor-Arbeitsmappen
 
@@ -34,7 +34,7 @@ Arbeitsmappenautoren können problemlos Abfragen für mehrere Ressourcen durchf�
 
 ## <a name="metrics"></a>Metriken
 
-Azure-Ressourcen geben [Metriken](../platform/data-platform-metrics.md) aus, auf die über Arbeitsmappen zugegriffen werden kann. Der Zugriff auf Metriken kann in Arbeitsmappen über ein spezielles Steuerelement erfolgen, das Ihnen die Angabe der Zielressourcen, der gewünschten Metriken und deren Aggregation ermöglicht. Diese Daten können dann in Diagrammen oder Rastern dargestellt werden.
+Azure-Ressourcen geben [Metriken](../essentials/data-platform-metrics.md) aus, auf die über Arbeitsmappen zugegriffen werden kann. Der Zugriff auf Metriken kann in Arbeitsmappen über ein spezielles Steuerelement erfolgen, das Ihnen die Angabe der Zielressourcen, der gewünschten Metriken und deren Aggregation ermöglicht. Diese Daten können dann in Diagrammen oder Rastern dargestellt werden.
 
 ![Screenshot des Metrikdiagramms für die CPU-Auslastung in der Arbeitsmappe](./media/workbooks-data-sources/metrics-graph.png)
 
@@ -145,6 +145,6 @@ Dieser Anbieter unterstützt [JSONPath](workbooks-jsonpath.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie mehr](../platform/workbooks-overview.md#visualizations) über die vielen umfassenden Visualisierungsoptionen für Arbeitsmappen.
-* [Steuern](../platform/workbooks-access-control.md) Sie den Zugriff auf Ihre Arbeitsmappenressourcen, und geben Sie diese frei.
-* [Tipps zur Optimierung von Log Analytics-Abfragen](../log-query/query-optimization.md)
+* [Erfahren Sie mehr](./workbooks-overview.md#visualizations) über die vielen umfassenden Visualisierungsoptionen für Arbeitsmappen.
+* [Steuern](./workbooks-access-control.md) Sie den Zugriff auf Ihre Arbeitsmappenressourcen, und geben Sie diese frei.
+* [Tipps zur Optimierung von Log Analytics-Abfragen](../logs/query-optimization.md)

@@ -3,12 +3,12 @@ title: 'Erste Schritte mit Live Video Analytics in IoT Edge: Azure'
 description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie in die Nutzung von Live Video Analytics in IoT Edge einsteigen. Es wird beschrieben, wie Sie in einem Livevideostream Bewegung erkennen.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d9f2637166c3807e36f4304e9394bf2ecf91d88c
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 57edf1721249f839f5c781756b3e09bf59888dab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573805"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730285"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Schnellstart: Erste Schritte: Live Video Analytics in IoT Edge
 
@@ -69,10 +69,10 @@ Für diese Schnellstartanleitung wird die Verwendung des [Setupskripts für Live
     1. **Netzwerkschnittstelle**: Ermöglicht einem virtuellen Azure-Computer die Kommunikation mit dem Internet, Azure und anderen Ressourcen.
     1. **Bastion-Verbindung**: Ermöglicht Ihnen das Herstellen einer Verbindung mit Ihrem virtuellen Computer über Ihren Browser und das Azure-Portal.
     1. **Öffentliche IP-Adresse**: Ermöglicht es Azure-Ressourcen, mit dem Internet und öffentlichen Azure-Diensten zu kommunizieren.
-    1. **Virtuelles Netzwerk**: Ermöglicht es vielen Arten von Azure-Ressourcen (z. B. Ihrem virtuellen Computer), sicher untereinander sowie mit dem Internet und mit lokalen Netzwerken zu kommunizieren. Informieren Sie sich eingehender über [virtuelle Netzwerke](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+    1. **Virtuelles Netzwerk**: Ermöglicht es vielen Arten von Azure-Ressourcen (z. B. Ihrem virtuellen Computer), sicher untereinander sowie mit dem Internet und mit lokalen Netzwerken zu kommunizieren. Informieren Sie sich eingehender über [virtuelle Netzwerke](../../virtual-network/virtual-networks-overview.md).
     1. **IoT Hub**: Dient als zentraler Nachrichtenhub für die bidirektionale Kommunikation zwischen Ihrer IoT-Anwendung, IoT Edge-Modulen und den verwalteten Geräten.
     1. **Media Services-Konto**: Dient als Hilfe beim Verwalten und Streamen von Medieninhalten in Azure.
-    1. **Speicherkonto**: Sie müssen über ein primäres Speicherkonto verfügen. Darüber hinaus können Sie beliebig viele sekundäre Speicherkonten an Ihr Media Services-Konto anfügen. Weitere Informationen finden Sie unter [Azure Storage-Konten mit Azure Media Services-Konten](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept).
+    1. **Speicherkonto**: Sie müssen über ein primäres Speicherkonto verfügen. Darüber hinaus können Sie beliebig viele sekundäre Speicherkonten an Ihr Media Services-Konto anfügen. Weitere Informationen finden Sie unter [Azure Storage-Konten mit Azure Media Services-Konten](../latest/storage-account-concept.md).
     1. **Containerregistrierung**: Dient zum Speichern und Verwalten Ihrer privaten Docker-Containerimages und der zugehörigen Artefakte.
 
 In der Ausgabe des Skripts ist in einer Tabelle mit den Ressourcen der Name des IoT-Hubs angegeben. Suchen Sie nach dem Ressourcentyp **`Microsoft.Devices/IotHubs`** , und notieren Sie sich den Namen. Sie benötigen diesen Namen im nächsten Schritt.  
@@ -119,7 +119,7 @@ Befolgen Sie die unten angegebene Anleitung, um mit der Azure IoT Tools-Erweiter
 1. Geben Sie Ihre IoT Hub-Verbindungszeichenfolge ein, wenn das entsprechende Eingabefeld angezeigt wird. In Cloud Shell finden Sie die Verbindungszeichenfolge in *~/clouddrive/lva-sample/appsettings.json*.
 
 > [!NOTE]
-> Unter Umständen werden Sie aufgefordert, für die IoT Hub-Instanz die Informationen zum integrierten Endpunkt anzugeben. Sie erhalten diese Informationen, indem Sie im Azure-Portal zu Ihrer IoT Hub-Instanz navigieren und im linken Navigationsbereich nach der Option **Integrierte Endpunkte** suchen. Klicken Sie darauf, und suchen Sie im Abschnitt **Event Hub-kompatibler Endpunkt** nach dem **Event Hub-kompatiblen Endpunkt**. Kopieren und verwenden Sie den im Feld enthaltenen Text. Der Endpunkt sieht in etwa wie folgt aus:  
+> Unter Umständen werden Sie aufgefordert, für die IoT Hub-Instanz die Informationen zum integrierten Endpunkt anzugeben. Sie erhalten diese Informationen, indem Sie im Azure-Portal zu Ihrer IoT Hub-Instanz navigieren und im linken Navigationsbereich nach der Option **Integrierte Endpunkte** suchen. Klicken Sie darauf, und suchen Sie im Abschnitt **Event Hub-kompatibler Endpunkt** nach dem **Event Hub-kompatiblen Endpunkt**. Kopieren und verwenden Sie den im Feld enthaltenen Text. Der Endpunkt sieht in etwa wie folgt aus:  
     ```
     Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
     ```

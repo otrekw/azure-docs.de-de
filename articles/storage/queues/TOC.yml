@@ -236,7 +236,7 @@
         - name: Überwachen (klassisch)
           items:
             - name: Überwachen im Azure-Portal (klassisch)
-              href: ../common/storage-monitor-storage-account.md??toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+              href: ../common/manage-storage-analytics-logs.md??toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Problembehandlung
       items:
         - name: Wartezeitprobleme

@@ -3,12 +3,12 @@ title: Wiederherstellen von Azure Managed Disks
 description: Erfahren Sie, wie Sie Azure Managed Disks über das Azure-Portal wiederherstellen können.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: b9c9a22f25a8003151217bec15b618e3c380e67e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 995217cd17d1e2a16cd7a5f963ee88aa7116d4a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737375"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703748"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a>Wiederherstellen von Azure Managed Disks (Vorschau)
 
@@ -66,7 +66,7 @@ Der Wiederherstellungsvorgang setzt voraus, dass folgende Schritte ausgeführt w
     >
     >Bei geplanten oder bedarfsgesteuerten Sicherungen speichert Azure Backup die inkrementellen Momentaufnahmen des Datenträgers in der Momentaufnahme-Ressourcengruppe, die beim Konfigurieren der Sicherung des Datenträgers bereitgestellt wird. Azure Backup verwendet diese inkrementellen Momentaufnahmen während des Wiederherstellungsvorgangs. Wenn die Momentaufnahmen gelöscht oder aus der Momentaufnahme-Ressourcengruppe verschoben werden oder wenn die Rollenzuweisungen des Sicherungstresors für die Ressourcengruppe für die Momentaufnahme aufgehoben werden, tritt beim Wiederherstellungsvorgang ein Fehler auf.
 
-1. Wenn der wiederherzustellende Datenträger mit [kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) oder mit [Mehrfachverschlüsselung mithilfe von über die Plattform verwalteten Schlüsseln und kundenseitig verwalteten Schlüsseln](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal) verschlüsselt wurde, weisen Sie der verwalteten Identität des Sicherungstresors auf der Ressource **Datenträgerverschlüsselungssatz** die Rolle **Leser** zu.
+1. Wenn der wiederherzustellende Datenträger mit [kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK)](../virtual-machines/disks-enable-customer-managed-keys-portal.md) oder mit [Mehrfachverschlüsselung mithilfe von über die Plattform verwalteten Schlüsseln und kundenseitig verwalteten Schlüsseln](../virtual-machines/disks-enable-double-encryption-at-rest-portal.md) verschlüsselt wurde, weisen Sie der verwalteten Identität des Sicherungstresors auf der Ressource **Datenträgerverschlüsselungssatz** die Rolle **Leser** zu.
 
 Sobald die Voraussetzungen erfüllt sind, führen Sie die folgenden Schritte aus, um den Wiederherstellungsvorgang zu starten.
 

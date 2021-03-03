@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: alexeyo
-ms.openlocfilehash: 9b923ba208dd2a5111a59f67401b1e4f080b7187
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f5566276f4555e2480434e385bf2129f5b8cdd24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754163"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699979"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Kontingente und Grenzwerte für Speech-Dienste
 
@@ -104,7 +104,7 @@ Grenzwerte für gleichzeitige Anforderung in den Modellen **Basis** und **Benutz
 Der vorhandene Wert des Parameters für den Grenzwert für gleichzeitige Anforderungen wird im Azure-Portal, in Befehlszeilentools und in API-Anforderungen **nicht** angezeigt. Erstellen Sie eine Azure-Supportanfrage, um den vorhandenen Wert zu überprüfen.
 
 >[!NOTE]
->Für [Speech-Container](speech-container-howto.md) muss der Grenzwert für gleichzeitige Anforderungen nicht erhöht werden, da Container einzig durch die CPUs der Hardware eingeschränkt sind, auf der sie gehostet werden. Speech-Container haben jedoch ihre eigenen Kapazitätsgrenzen, die berücksichtigt werden sollten. Weitere Informationen finden Sie unter der Frage *„Könnten Sie bei der Kapazitätsplanung und Kostenvorkalkulation von lokalen Spracherkennungscontainern helfen?“* in [Häufig gestellte Fragen zu Speech-Containern](speech-container-faq.md).
+>Für [Speech-Container](speech-container-howto.md) muss der Grenzwert für gleichzeitige Anforderungen nicht erhöht werden, da Container einzig durch die CPUs der Hardware eingeschränkt sind, auf der sie gehostet werden. Speech-Container haben jedoch ihre eigenen Kapazitätsgrenzen, die berücksichtigt werden sollten. Weitere Informationen finden Sie unter der Frage *„Könnten Sie bei der Kapazitätsplanung und Kostenvorkalkulation von lokalen Spracherkennungscontainern helfen?“* in [Häufig gestellte Fragen zu Speech-Containern](./speech-container-howto.md).
 
 #### <a name="have-the-required-information-ready"></a>Halten Sie die erforderlichen Informationen bereit:
 - **Basismodell:**
@@ -205,4 +205,3 @@ Wenn Sie eine Erhöhungsanforderung erstellen möchten, müssen Sie Ihre Bereits
   - [Zuvor ermittelte](#prepare-the-required-information) Azure-Ressourceninformationen 
   - Geben Sie die übrigen erforderlichen Informationen ein, und klicken Sie auf der Registerkarte *Überprüfen + erstellen* auf die Schaltfläche *Erstellen*.
   - Notieren Sie sich die Nummer der Supportanfrage aus den Benachrichtigungen im Azure-Portal. Sie werden in Kürze zur weiteren Bearbeitung kontaktiert.
-

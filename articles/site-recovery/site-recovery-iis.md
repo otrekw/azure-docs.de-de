@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56ac58e47bffc73c7079af043ad567a77e8f3323
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083768"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735504"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Einrichten der Notfallwiederherstellung für eine IIS-basierte Webanwendung mit mehreren Ebenen
 
@@ -122,10 +122,10 @@ Jede Website besteht aus Bindungsinformationen. Die Bindungsinformationen enthal
 
 ![Screenshot zum Festlegen der TLS-/SSL-Bindung](./media/site-recovery-iis/sslbinding.png)
 
-Wenn Sie die IP-Adresse einer Website zugeordnet haben, müssen Sie alle Websitebindungen mit der neuen IP-Adresse aktualisieren. Zum Ändern der Websitebindungen fügen Sie ein [Skript zum Aktualisieren der IIS-Webebene](https://aka.ms/asr-web-tier-update-runbook-classic) nach Gruppe 3 im Wiederherstellungsplan hinzu.
+Wenn Sie die IP-Adresse einer Website zugeordnet haben, müssen Sie alle Websitebindungen mit der neuen IP-Adresse aktualisieren. Zum Ändern der Websitebindungen fügen Sie ein [Skript zum Aktualisieren der IIS-Webebene](/samples/browse/?redirectedfrom=TechNet-Gallery) nach Gruppe 3 im Wiederherstellungsplan hinzu.
 
 #### <a name="update-the-load-balancer-ip-address"></a>Aktualisieren der IP-Adresse des Lastenausgleichs
-Wenn Sie über einen virtuellen ARR-Computer (Application Request Routing, Routing von Anwendungsanforderungen) verfügen, fügen Sie ein [IIS-ARR-Failoverskript](https://aka.ms/asr-iis-arrtier-failover-script-classic) nach Gruppe 4 hinzu.
+Wenn Sie über einen virtuellen ARR-Computer (Application Request Routing, Routing von Anwendungsanforderungen) verfügen, fügen Sie ein [IIS-ARR-Failoverskript](/samples/browse/?redirectedfrom=TechNet-Gallery) nach Gruppe 4 hinzu.
 
 #### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>TLS-/SSL-Zertifikatbindung für eine HTTPS-Verbindung
 Eine Website kann über ein zugeordnetes TLS-/SSL-Zertifikat verfügen, mit dem sichergestellt werden kann, dass zwischen dem Webserver und dem Browser des Benutzers eine sichere Kommunikation erfolgt. Falls für die Website eine HTTPS-Verbindung und eine zugeordnete HTTPS-Websitebindung mit der IP-Adresse des IIS-Servers mit einer TLS-/SSL-Zertifikatbindung verwendet werden, muss für das Zertifikat mit der IP-Adresse des virtuellen IIS-Computers nach dem Failover eine neue Websitebindung hinzugefügt werden.

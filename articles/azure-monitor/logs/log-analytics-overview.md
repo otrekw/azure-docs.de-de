@@ -6,24 +6,24 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
-ms.openlocfilehash: 485c2cc6c95f5922025fe887f7c25131e849a01d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ef8be3d1fd815362971d5ae2beb27edf47766c94
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602364"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723162"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Übersicht über Log Analytics in Azure Monitor
 Log Analytics ist ein Tool im Azure-Portal, mit dem Protokollabfragen für Daten in Azure Monitor-Protokollen bearbeitet und ausgeführt werden. Sie können eine einfache Abfrage schreiben, die eine Reihe von Datensätzen zurückgibt, und dann Funktionen von Log Analytics zum Sortieren, Filtern und Analysieren verwenden. Sie können auch eine erweiterte Abfrage schreiben, um eine statistische Analyse durchzuführen und die Ergebnisse in einem Diagramm zu visualisieren, und auf diese Weise einen bestimmten Trend erkennen. Unabhängig davon, ob Sie die Ergebnisse Ihrer Abfragen interaktiv verwenden oder mit anderen Azure Monitor-Funktionen wie Protokollabfragewarnungen oder Arbeitsmappen nutzen, ist Log Analytics das Tool, das Sie zum Schreiben und Testen der Abfragen verwenden. 
 
 
 > [!TIP]
-> Dieser Artikel enthält eine Beschreibung von Log Analytics und den einzelnen Funktionen. Wenn Sie direkt mit einem Tutorial fortfahren möchten, wechseln Sie zum [Log Analytics-Tutorial](../log-query/log-analytics-tutorial.md).
+> Dieser Artikel enthält eine Beschreibung von Log Analytics und den einzelnen Funktionen. Wenn Sie direkt mit einem Tutorial fortfahren möchten, wechseln Sie zum [Log Analytics-Tutorial](./log-analytics-tutorial.md).
 
 
 
 ## <a name="starting-log-analytics"></a>Starten von Log Analytics
-Starten Sie Log Analytics im Azure-Portal im **Azure Monitor**-Menü über **Protokolle**. Diese Option wird auch im Menü für die meisten Azure-Ressourcen angezeigt. Unabhängig davon, von welcher Stelle aus Sie Log Analytics starten, ist es immer das gleiche Tool. Das Menü, das Sie zum Starten von Log Analytics verwenden, bestimmt jedoch die jeweils verfügbaren Daten. Wenn Sie das Tool über das **Azure Monitor**-Menü oder das Menü **Log Analytics-Arbeitsbereiche** starten, haben Sie Zugriff auf alle Datensätze in einem Arbeitsbereich. Wenn Sie **Protokolle** über einen anderen Ressourcentyp auswählen, sind die Daten auf die Protokolldaten für diese Ressource beschränkt. Ausführliche Informationen finden Sie unter [Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics](../log-query/scope.md).
+Starten Sie Log Analytics im Azure-Portal im **Azure Monitor**-Menü über **Protokolle**. Diese Option wird auch im Menü für die meisten Azure-Ressourcen angezeigt. Unabhängig davon, von welcher Stelle aus Sie Log Analytics starten, ist es immer das gleiche Tool. Das Menü, das Sie zum Starten von Log Analytics verwenden, bestimmt jedoch die jeweils verfügbaren Daten. Wenn Sie das Tool über das **Azure Monitor**-Menü oder das Menü **Log Analytics-Arbeitsbereiche** starten, haben Sie Zugriff auf alle Datensätze in einem Arbeitsbereich. Wenn Sie **Protokolle** über einen anderen Ressourcentyp auswählen, sind die Daten auf die Protokolldaten für diese Ressource beschränkt. Ausführliche Informationen finden Sie unter [Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics](./scope.md).
 
 [![Starten von Log Analytics](media/log-analytics-overview/start-log-analytics.png)](media/log-analytics-overview/start-log-analytics.png#lightbox)
 
@@ -39,9 +39,9 @@ Steuerelemente zum Arbeiten mit der Abfrage im Abfragefenster.
 
 | Option | BESCHREIBUNG |
 |:---|:---|
-| `Scope` | Gibt den für die Abfrage verwendeten Bereich von Daten an. Dabei kann es sich um alle Daten in einem Log Analytics-Arbeitsbereich oder um Daten für eine bestimmte Ressource in mehreren Arbeitsbereichen handeln. Informationen finden Sie unter [Abfragebereich](../log-query/scope.md). |
+| `Scope` | Gibt den für die Abfrage verwendeten Bereich von Daten an. Dabei kann es sich um alle Daten in einem Log Analytics-Arbeitsbereich oder um Daten für eine bestimmte Ressource in mehreren Arbeitsbereichen handeln. Informationen finden Sie unter [Abfragebereich](./scope.md). |
 | Schaltfläche „Ausführen“ | Klicken Sie auf diese Schaltfläche, um die ausgewählte Abfrage im Abfragefenster auszuführen. Sie können auch UMSCHALT+EINGABETASTE drücken, um eine Abfrage auszuführen. |
-| Zeitauswahl | Wählen Sie den Zeitraum für die Daten aus, die für die Abfrage zur Verfügung stehen. Dieser wird überschrieben, wenn Sie einen Zeitfilter in die Abfrage einschließen. Weitere Informationen finden Sie unter [Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics](../log-query/scope.md). |
+| Zeitauswahl | Wählen Sie den Zeitraum für die Daten aus, die für die Abfrage zur Verfügung stehen. Dieser wird überschrieben, wenn Sie einen Zeitfilter in die Abfrage einschließen. Weitere Informationen finden Sie unter [Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics](./scope.md). |
 | Schaltfläche „Speichern“ | Speichern Sie die Abfrage im Abfrage-Explorer für den Arbeitsbereich. |
  Schaltfläche „Kopieren“ | Kopieren Sie einen Link für die Abfrage, den Abfragetext oder die Abfrageergebnisse in die Zwischenablage. |
 | Schaltfläche „Neue Warnungsregel“ | Erstellen Sie eine neue Registerkarte mit einer leeren Abfrage. |
@@ -91,5 +91,5 @@ Zeigt die Ergebnisse als einen von mehreren verfügbaren Diagrammtypen an. Sie k
 Wenn Sie bereits mit der Azure Data Explorer-Webbenutzeroberfläche vertraut sind, dann sollte Ihnen Log Analytics bekannt vorkommen. Der Grund dafür ist, dass Log Analytics auf Azure Data Explorer basiert und die gleiche Kusto-Abfragesprache (KQL) verwendet. Log Analytics fügt Azure Monitor-spezifische Funktionen hinzu, z. B. das Filtern nach Zeitbereich und die Möglichkeit, eine Warnungsregel aus einer Abfrage zu erstellen. Beide Tools enthalten einen Explorer, mit dem Sie die Struktur von verfügbaren Tabellen durchsuchen können, doch verwendet die Azure Data Explorer-Webbenutzeroberfläche hauptsächlich Tabellen in Azure Data Explorer-Datenbanken, während Log Analytics mit Tabellen in einem Log Analytics-Arbeitsbereich arbeitet. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen erhalten Sie im [Tutorial zum Verwenden von Log Analytics im Azure-Portal](../log-query/log-analytics-tutorial.md).
-- Weitere Informationen erhalten Sie im [Tutorial zum Schreiben von Abfragen](../log-query/get-started-queries.md).
+- Weitere Informationen erhalten Sie im [Tutorial zum Verwenden von Log Analytics im Azure-Portal](./log-analytics-tutorial.md).
+- Weitere Informationen erhalten Sie im [Tutorial zum Schreiben von Abfragen](./get-started-queries.md).

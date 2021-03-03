@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: makromer
-ms.openlocfilehash: 3b97f09c2b6f4c5f5352bbaa081e0bcae900ebd5
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 12b640fd97f48e293320593b33ab2fdc54980c0f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808022"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716294"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-data-factory-data-flows"></a>Anwendung eines Reservierungsrabatts auf Azure Data Factory-Datenflüsse
 
@@ -32,7 +32,7 @@ Die folgenden Beispiele zeigen, wie der Rabatt für reservierte ADF-Datenflusska
 - Szenario 1: Sie kaufen eine ADF-Datenflussreservierung für 1 Stunde mit 80 arbeitsspeicheroptimierten Computekernen, indem Sie 80 als Menge für den arbeitsspeicheroptimierten Computetyp eingeben. Sie führen für eine Stunde einen Datenfluss mit einer Azure Integration Runtime-Instanz aus, die auf 144 Kerne von arbeitsspeicheroptimiertem Compute festgelegt ist. Ihnen wird der Preis für die nutzungsbasierte Bezahlung für die Datenflussnutzung von 64 Kernen für eine Stunde in Rechnung gestellt. Sie erhalten den Reservierungsrabatt für die einstündige Nutzung für 80 Kerne von arbeitsspeicheroptimiertem Compute.
 - Szenario 2: Sie kaufen eine ADF-Datenflussreservierung für 1 Stunde mit 32 universellen Computekernen, indem Sie 32 als Menge für den universellen Computetyp eingeben. Sie debuggen ihre Datenflüsse eine Stunde lang mit Azure Integration Runtime mit 32 Kernen von Compute für allgemeine Zwecke. Sie erhalten den Reservierungsrabatt für die gesamte Nutzungsstunde.
 
-Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Reservierungen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung von Azure-Reservierungen](https://docs.microsoft.com/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea).
+Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Reservierungen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung von Azure-Reservierungen](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md).
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 
@@ -42,4 +42,4 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
 
 Weitere Informationen zu Azure-Reservierungen finden Sie in folgendem Artikel:
 
-- [Was sind Azure-Reservierungen?](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)
+- [Was sind Azure-Reservierungen?](../cost-management-billing/reservations/save-compute-costs-reservations.md)

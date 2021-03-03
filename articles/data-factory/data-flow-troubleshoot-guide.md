@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/11/2020
-ms.openlocfilehash: a95cacafc5b1d00b1e4d04fd84cdda2de72b6a59
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 4545c3529baf92e2f90d9289ec6828ad9a720e3a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523004"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738003"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Problembehandlung bei Zuordnungsdatenflüssen in Azure Data Factory
 
@@ -132,7 +132,7 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Zuordnung
  
 - **Meldung**: Nicht genügend Arbeitsspeicher während der Ausführung im Cluster verfügbar. Wiederholen Sie den Vorgang mit einer Integration Runtime mit einer größeren Anzahl von Kernen und/oder einem arbeitsspeicheroptimierten Computetyp.
 - **Ursachen**: Der Cluster verfügt nicht über genügend Arbeitsspeicher.
-- **Empfehlung**: Debugcluster sind für Entwicklungszwecke gedacht. Nutzen Sie die Stichprobenentnahme, den entsprechenden Computetyp und die richtige Größe, um die Payload auszuführen. Informationen zum Optimieren der Leistung von Datenflüssen finden Sie im [Leitfaden zur Datenflussleistung](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-performance).
+- **Empfehlung**: Debugcluster sind für Entwicklungszwecke gedacht. Nutzen Sie die Stichprobenentnahme, den entsprechenden Computetyp und die richtige Größe, um die Payload auszuführen. Informationen zum Optimieren der Leistung von Datenflüssen finden Sie im [Leitfaden zur Datenflussleistung](./concepts-data-flow-performance.md).
 
 ### <a name="error-code-df-executor-illegalargument"></a>Fehlercode: DF-Executor-illegalArgument
 - **Meldung:** Stellen Sie sicher, dass in Ihrem verknüpften Dienst der richtige Zugriffsschlüssel verwendet wird.
@@ -182,7 +182,7 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Zuordnung
 
 - **Meldung:** Es wurde ein ungültiger Bereich angegeben.
 - **Ursachen**: Unbestimmt
-- **Empfehlung**: Überprüfen Sie den Parameterwert, und geben Sie den gültigen Bereich als Verweis an: [Excel-Eigenschaften](https://docs.microsoft.com/azure/data-factory/format-excel#dataset-properties).
+- **Empfehlung**: Überprüfen Sie den Parameterwert, und geben Sie den gültigen Bereich als Verweis an: [Excel-Eigenschaften](./format-excel.md#dataset-properties).
 
 - **Meldung:** Es wurde eine ungültige Excel-Datei angegeben. Es werden nur XLSX- und XLS-Dateien unterstützt.
 - **Ursachen**: Unbestimmt
@@ -204,7 +204,7 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Zuordnung
 
 ### <a name="error-code-4502"></a>Fehlercode: 4502
 - **Meldung:** There are substantial concurrent MappingDataflow executions which are causing failures due to throttling under Integration Runtime. (Es gibt viele gleichzeitige MappingDataflow-Ausführungen, die aufgrund von Drosselung unter Integration Runtime zu Fehlern führen).
-- **Ursachen**: In der Integration Runtime finden viele Ausführungen der Datenflussaktivität gleichzeitig statt. Bitte informieren Sie sich genauer über die [ Grenzwerte bei Azure Data Factory](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#data-factory-limits).
+- **Ursachen**: In der Integration Runtime finden viele Ausführungen der Datenflussaktivität gleichzeitig statt. Bitte informieren Sie sich genauer über die [ Grenzwerte bei Azure Data Factory](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits).
 - **Empfehlung**: Falls Sie mehrere Datenflussaktivitäten parallel ausführen möchten, verteilen Sie sie bitte auf mehrere Integration Runtimes.
 
 

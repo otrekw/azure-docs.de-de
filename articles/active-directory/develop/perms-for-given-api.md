@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 87adba3b9595265e726f05e8720b62327c9b231a
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: fe6e7277761c670d5af8743e6330ffe2340d235c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054211"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647454"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>Auswählen von Berechtigungen für eine bestimmte API
 
@@ -29,4 +29,4 @@ ms.locfileid: "99054211"
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Azure AD – Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+[Azure AD bei Microsoft Q&A](/answers/topics/azure-active-directory.html)

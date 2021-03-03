@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 2947f1c484f013c2d0bef9899b849f7ea761d89e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8b0debed6e0865f39cd42c7003347b2510600f81
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599483"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720017"
 ---
 # <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Datenquellen für den Log Analytics-Agent in Azure Monitor
-Die Daten, die Azure Monitor mit dem [Log Analytics](../platform/log-analytics-agent.md)-Agent von virtuellen Computern sammelt, werden durch die im [Log Analytics-Arbeitsbereich](../platform/data-platform-logs.md) konfigurierten Datenquellen definiert.   Jede Datenquelle erstellt Datensätze eines bestimmten Typs, von denen jeder über einen eigenen Satz von Eigenschaften verfügt.
+Die Daten, die Azure Monitor mit dem [Log Analytics](./log-analytics-agent.md)-Agent von virtuellen Computern sammelt, werden durch die im [Log Analytics-Arbeitsbereich](../logs/data-platform-logs.md) konfigurierten Datenquellen definiert.   Jede Datenquelle erstellt Datensätze eines bestimmten Typs, von denen jeder über einen eigenen Satz von Eigenschaften verfügt.
 
 > [!IMPORTANT]
-> In diesem Artikel werden Datenquellen für den [Log Analytics-Agent](../platform/log-analytics-agent.md) beschrieben, einen der von Azure Monitor verwendeten Agents. Andere Agents sammeln andere Daten und werden anders konfiguriert. Eine Liste der verfügbaren Agents und der von ihnen gesammelten Daten finden Sie unter [Übersicht über Azure Monitor-Agents](agents-overview.md).
+> In diesem Artikel werden Datenquellen für den [Log Analytics-Agent](./log-analytics-agent.md) beschrieben, einen der von Azure Monitor verwendeten Agents. Andere Agents sammeln andere Daten und werden anders konfiguriert. Eine Liste der verfügbaren Agents und der von ihnen gesammelten Daten finden Sie unter [Übersicht über Azure Monitor-Agents](agents-overview.md).
 
 ![Protokolldatensammlung](media/agent-data-sources/overview.png)
 
@@ -51,7 +51,7 @@ Jede Konfiguration wird an alle Agents übermittelt, die mit dem Arbeitsbereich 
 ## <a name="data-collection"></a>Datensammlung
 Die Konfigurationen der Datenquellen werden innerhalb weniger Minuten an Agents übermittelt, die direkt mit Azure Monitor verbunden sind.  Die angegebenen Daten werden vom Agent gesammelt und in den für jede Datenquelle spezifischen Intervallen direkt an Azure Monitor übermittelt.  Informationen zu diesen Spezifikationen finden Sie in der Dokumentation zu jeder Datenquelle.
 
-Bei System Center Operations Manager-Agents in einer verbundenen Verwaltungsgruppe werden Datenquellenkonfigurationen in Management Packs übersetzt und standardmäßig alle fünf Minuten an die Verwaltungsgruppe übermittelt.  Der Agent lädt das Management Pack wie jedes andere Paket herunter und sammelt die angegebenen Daten. Je nach Datenquelle werden die Daten entweder an einen Verwaltungsserver gesendet, der die Daten an Azure Monitor weiterleitet, oder der Agent sendet die Daten ohne den Umweg über den Verwaltungsserver direkt an Azure Monitor. Einzelheiten hierzu finden Sie unter [Ausführliche Informationen zu Datensammlungen für Überwachungslösungen in Azure](../monitor-reference.md).  Informationen zum Verbinden von Operations Manager und Azure Monitor und zum Ändern der Häufigkeit, mit der die Konfiguration übermittelt wird, finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../platform/om-agents.md).
+Bei System Center Operations Manager-Agents in einer verbundenen Verwaltungsgruppe werden Datenquellenkonfigurationen in Management Packs übersetzt und standardmäßig alle fünf Minuten an die Verwaltungsgruppe übermittelt.  Der Agent lädt das Management Pack wie jedes andere Paket herunter und sammelt die angegebenen Daten. Je nach Datenquelle werden die Daten entweder an einen Verwaltungsserver gesendet, der die Daten an Azure Monitor weiterleitet, oder der Agent sendet die Daten ohne den Umweg über den Verwaltungsserver direkt an Azure Monitor. Einzelheiten hierzu finden Sie unter [Ausführliche Informationen zu Datensammlungen für Überwachungslösungen in Azure](../monitor-reference.md).  Informationen zum Verbinden von Operations Manager und Azure Monitor und zum Ändern der Häufigkeit, mit der die Konfiguration übermittelt wird, finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](./om-agents.md).
 
 Falls der Agent keine Verbindung mit Azure Monitor oder Operations Manager herstellen kann, sammelt er weiter Daten und übermittelt diese, sobald eine Verbindung hergestellt wird.  Daten können verloren, wenn die Datenmenge die maximale Cachegröße für den Client erreicht oder der Agent 24 Stunden lang keine Verbindung herstellen kann.
 
@@ -60,5 +60,5 @@ Alle von Azure Monitor gesammelten Protokolldaten werden im Arbeitsbereich als D
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Überwachungslösungen](../insights/solutions.md), die Azure Monitor um zusätzliche Funktionen erweitern und ebenfalls Daten für den Azure Monitor-Arbeitsbereich sammeln.
-* Erfahren Sie mehr über [Protokollabfragen](../log-query/log-query-overview.md) zum Analysieren der aus Datenquellen und Überwachungslösungen gesammelten Daten.  
-* Konfigurieren Sie [Warnungen](../platform/alerts-overview.md), damit Sie bei kritischen Daten, die aus Datenquellen und Überwachungslösungen gesammelt werden, direkt benachrichtigt werden.
+* Erfahren Sie mehr über [Protokollabfragen](../logs/log-query-overview.md) zum Analysieren der aus Datenquellen und Überwachungslösungen gesammelten Daten.  
+* Konfigurieren Sie [Warnungen](../alerts/alerts-overview.md), damit Sie bei kritischen Daten, die aus Datenquellen und Überwachungslösungen gesammelt werden, direkt benachrichtigt werden.

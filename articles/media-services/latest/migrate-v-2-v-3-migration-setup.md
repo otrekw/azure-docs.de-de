@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2021
 ms.author: inhenkel
-ms.openlocfilehash: 1f9e0816a3533008a01f26ca7c0e712abfa23e8e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 779a52b44a5dc4e81dc7910da12c5cfb91c1c3ca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946238"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705380"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>Schritt 3: Einrichten der Migration zur V3-REST-API oder zum Client-SDK
 
@@ -50,8 +50,8 @@ Befolgen Sie die Schritte im Schnellstart zum [Einrichten Ihrer Umgebung](how-to
 
 ## <a name="download-client-sdk-of-your-choice-and-set-up-your-environment"></a>Herunterladen des gewünschten Client-SDK und Einrichten Ihrer Umgebung
 
-- Es sind SDKs für [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet&preserve-view=true), .NET Core, [Node.js](https://docs.microsoft.com/javascript/api/overview/azure/mediaservices/management?view=azure-node-latest&preserve-view=true), [Python](https://docs.microsoft.com/python/api/overview/azure/mediaservices/management?view=azure-python&preserve-view=true), [Java](https://docs.microsoft.com/java/api/overview/azure/mediaservices/management?view=azure-java-stable&preserve-view=true), [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/mediaservices/mgmt/2018-07-01/media) und [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md) verfügbar.
-- Die Integration in die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest&preserve-view=true) sorgt für eine einfache Skriptunterstützung.
+- Es sind SDKs für [.NET](/dotnet/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-dotnet), .NET Core, [Node.js](/javascript/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-node-latest), [Python](/python/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-python), [Java](/java/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-java-stable), [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/mediaservices/mgmt/2018-07-01/media) und [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md) verfügbar.
+- Die Integration in die [Azure-Befehlszeilenschnittstelle](/cli/azure/ams?preserve-view=true&view=azure-cli-latest) sorgt für eine einfache Skriptunterstützung.
 
 > [!NOTE]
 > Ein PHP SDK der Community ist für Azure Media Services V3 nicht mehr verfügbar. Wenn Sie PHP unter V2 verwenden, sollten Sie direkt in Ihrem Code zur REST-API migrieren.
@@ -66,8 +66,8 @@ Befolgen Sie die Schritte im Schnellstart zum [Einrichten Ihrer Umgebung](how-to
 
 ## <a name="rest"></a>[REST](#tab/rest)
 
-Verwenden Sie [Postman](https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman) für Aufrufe der REST-API von Media Services V3.
-Lesen Sie die [REST-API-Referenzseiten](https://docs.microsoft.com/rest/api/media/).
+Verwenden Sie [Postman](./media-rest-apis-with-postman.md) für Aufrufe der REST-API von Media Services V3.
+Lesen Sie die [REST-API-Referenzseiten](/rest/api/media/).
 
 Sie sollten die Versionszeichenfolge „2020-05-01“ in der Postman-Sammlung verwenden.
 

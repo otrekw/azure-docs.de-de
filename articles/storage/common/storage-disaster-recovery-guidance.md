@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9a4453c29c52f8821643e93584666c3a6a8e6b4c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e00e22862121f2f974f9531a9892e32e115d6041
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379827"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737646"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Notfallwiederherstellung und Speicherkontofailover
 
@@ -55,7 +55,7 @@ Beachten Sie außerdem diese Best Practices zur Aufrechterhaltung der Hochverfü
 
 - **Datenträger:** Verwenden Sie den [Azure Backup](https://azure.microsoft.com/services/backup/), um die von Ihrem virtuellen Computer verwendeten VM-Datenträger zu sichern. Erwägen Sie auch, [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) zu verwenden, um Ihre VMs im Falle eines regionalen Ausfalls zu schützen.
 - **Blockblobs:** Aktivieren Sie [Vorläufiges Löschen](../blobs/soft-delete-blob-overview.md), um das versehentliche Löschen und Überschreiben von Objekten zu verhindern, oder kopieren Sie die Blockblobs in ein anderes Speicherkonto in einer andere Region mithilfe von [AzCopy](./storage-use-azcopy-v10.md), [Azure PowerShel](/powershell/module/az.storage/)l oder [Azure Data Movement Library](storage-use-data-movement-library.md).
-- **Dateien:** Verwenden Sie [Azure Backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview), um Ihre Dateifreigaben zu sichern. Aktivieren Sie außerdem die Funktion für [vorläufiges Löschen](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) zum Schutz vor versehentlichem Löschen von Dateifreigaben. Um die Georedundanz bei nicht vorhandenem GRS zu erreichen, können Sie [AzCopy](./storage-use-azcopy-v10.md) oder [Azure PowerShell](/powershell/module/az.storage/) verwenden, um die Dateien in ein anderes Speicherkonto in einer anderen Region zu kopieren.
+- **Dateien:** Verwenden Sie [Azure Backup](../../backup/azure-file-share-backup-overview.md), um Ihre Dateifreigaben zu sichern. Aktivieren Sie außerdem die Funktion für [vorläufiges Löschen](../files/storage-files-prevent-file-share-deletion.md) zum Schutz vor versehentlichem Löschen von Dateifreigaben. Um die Georedundanz bei nicht vorhandenem GRS zu erreichen, können Sie [AzCopy](./storage-use-azcopy-v10.md) oder [Azure PowerShell](/powershell/module/az.storage/) verwenden, um die Dateien in ein anderes Speicherkonto in einer anderen Region zu kopieren.
 - **Tabellen:** Verwenden Sie [AzCopy](./storage-use-azcopy-v10.md), um die Tabellendaten in ein anderes Speicherkonto in einer anderen Region zu exportieren.
 
 ## <a name="track-outages"></a>Nachverfolgen von Ausfällen

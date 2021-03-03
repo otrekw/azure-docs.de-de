@@ -4,12 +4,12 @@ description: Hier wird das Behandeln von Problemen mit der automatischen Skalier
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: 8936d1b94082291f5c081c47f8331cc64042896b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a0fed6c2d06edcb2c9eb8d715feb0ef6c6ade46f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601725"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711398"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Problembehandlung für automatische Skalierung in Azure
  
@@ -24,14 +24,14 @@ Der Dienst für die automatische Skalierung bietet Metriken und Protokolle, anha
   
 ## <a name="autoscale-metrics"></a>Metriken der automatischen Skalierung
 
-Die automatische Skalierung bietet Ihnen [vier Metriken](../platform/metrics-supported.md#microsoftinsightsautoscalesettings), anhand derer Sie den Vorgang verstehen können. 
+Die automatische Skalierung bietet Ihnen [vier Metriken](../essentials/metrics-supported.md#microsoftinsightsautoscalesettings), anhand derer Sie den Vorgang verstehen können. 
 
 - **Beobachteter Metrikwert**: Der Wert der Metrik, für welche die Skalierungsaktion ausgeführt werden soll, entsprechend der Anzeige oder berechnet durch das Autoskalierungsmodul. Da eine einzelne Autoskalierungseinstellung über mehrere Regeln und damit mehrere Metrikquellen verfügen kann, können Sie nach der Dimension „Metrikquelle“ filtern.
 - **Metrikschwellenwert**: Der Schwellenwert, den Sie für die Ausführung der Skalierungsaktion festlegen. Da eine einzelne Autoskalierungseinstellung über mehrere Regeln und damit mehrere Metrikquellen verfügen kann, können Sie nach der Dimension „Metrikregel“ filtern.
 - **Beobachtete Kapazität**: Die aktive Anzahl von Instanzen der Zielressource, die vom Autoskalierungsmodul festgestellt wurde.
 - **Initiierte Skalierungsaktionen**: Die Anzahl der vom Autoskalierungsmodul initiierten Aktionen zum horizontalen Hoch- und Herunterskalieren. Sie können nach Aktionen zum Aufskalieren und Abskalieren filtern.
 
-Mit dem [Metrik-Explorer](../platform/metrics-getting-started.md) können Sie die obigen Metriken an einem Ort grafisch darstellen. Das Diagramm sollte Folgendes angezeigt werden:
+Mit dem [Metrik-Explorer](../essentials/metrics-getting-started.md) können Sie die obigen Metriken an einem Ort grafisch darstellen. Das Diagramm sollte Folgendes angezeigt werden:
 
   - tatsächliche Metrik
   - Metrik entsprechend Anzeige/Berechnung durch das Autoskalierungsmodul
@@ -87,7 +87,7 @@ Im Diagramm unten werden einige Werte dargestellt.
  - Die **Beobachtete Kapazität** (lila) zeigt die Anzahl der Instanzen, die vom Autoskalierungsmodul festgestellt wurde. 
  - Der **Metrikschwellenwert** (hellgrün) ist auf 10 festgelegt. 
 
-Wenn mehrere Regeln für Skalierungsaktionen vorhanden sind, können Sie die Teilungsoption oder die Option **Filter hinzufügen** im Diagramm des Metrik-Explorers verwenden, um Metriken nach einer bestimmten Quelle oder Regel anzeigen zu lassen. Weitere Informationen zum Teilen eines Metrikdiagramms finden Sie unter [Erweiterte Funktionen von Azure Metrik-Explorer – Teilen](../platform/metrics-charts.md#apply-splitting).
+Wenn mehrere Regeln für Skalierungsaktionen vorhanden sind, können Sie die Teilungsoption oder die Option **Filter hinzufügen** im Diagramm des Metrik-Explorers verwenden, um Metriken nach einer bestimmten Quelle oder Regel anzeigen zu lassen. Weitere Informationen zum Teilen eines Metrikdiagramms finden Sie unter [Erweiterte Funktionen von Azure Metrik-Explorer – Teilen](../essentials/metrics-charts.md#apply-splitting).
 
 ## <a name="example-3---understanding-autoscale-events"></a>Beispiel 3: Verstehen von Autoskalierungsereignissen
 
@@ -97,13 +97,13 @@ Wechseln Sie im Bildschirm für Autoskalierungseinstellungen zur Registerkarte *
 
 ## <a name="autoscale-resource-logs"></a>Ressourcenprotokolle für die Autoskalierung
 
-Wie jede andere Azure-Ressource stellt auch der Autoskalierungsdienst [Ressourcenprotokolle](../platform/platform-logs-overview.md) bereit. Es gibt zwei Kategorien von Protokollen.
+Wie jede andere Azure-Ressource stellt auch der Autoskalierungsdienst [Ressourcenprotokolle](../essentials/platform-logs-overview.md) bereit. Es gibt zwei Kategorien von Protokollen.
 
 - **Bewertungen der Autoskalierung**: Das Autoskalierungsmodul zeichnet bei jeder Überprüfung Protokolleinträge für jede einzelne Bedingungsauswertung auf.  Der Eintrag enthält Details zu den beobachteten Werten der Metriken, zu den ausgewerteten Regeln sowie Angaben dazu, ob die Bewertung zu einer Skalierungsaktion geführt hat.
 
 - **Skalierungsaktionen der Autoskalierung**: Das Modul zeichnet vom Autoskalierungsdienst initiierte Ereignisse von Skalierungsaktionen sowie die Ergebnisse dieser Skalierungsaktionen (Erfolg, Fehler und vom Autoskalierungsdienst beobachteter Umfang der Skalierung) auf.
 
-Wie bei jedem von Azure Monitor unterstützten Dienst können Sie diese Protokolle mit [Diagnoseeinstellungen](../platform/diagnostic-settings.md) weiterleiten:
+Wie bei jedem von Azure Monitor unterstützten Dienst können Sie diese Protokolle mit [Diagnoseeinstellungen](../essentials/diagnostic-settings.md) weiterleiten:
 
 - an Ihren Log Analytics-Arbeitsbereich für die ausführliche Analyse
 - an Event Hubs und anschließend an Nicht-Azure-Tools
@@ -206,4 +206,4 @@ Erstellen Sie Warnungsregeln, um über Autoskalierungsaktionen und auftretende F
 Weitere Informationen finden Sie unter [Ressourcenprotokolle für die Autoskalierung](autoscale-resource-log-schema.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informieren Sie sich über [bewährte Methoden der Autoskalierung](autoscale-best-practices.md). 
+Informieren Sie sich über [bewährte Methoden der Autoskalierung](autoscale-best-practices.md).

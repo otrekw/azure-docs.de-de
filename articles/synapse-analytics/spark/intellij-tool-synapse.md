@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 04faaa05cf51f740958238ece0a9a211c43fca41
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a4512a8f75d59f617058a50846d7578a90b9d062
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935439"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675822"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>Tutorial: Erstellen einer Apache Spark-Anwendung mit IntelliJ mithilfe eines Synapse-Arbeitsbereichs
 
@@ -34,7 +34,7 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - [IntelliJ IDEA (Community-Version)](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC)
-- Azure-Toolkit-Plug-In 3.27.0-2019.2 (kann über das [IntelliJ-Plug-In-Repository](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) installiert werden)
+- Azure-Toolkit-Plug-In 3.27.0-2019.2 (kann über das [IntelliJ-Plug-In-Repository](/java/azure/intellij/azure-toolkit-for-intellij-installation) installiert werden)
 - [JDK (Version 1.8)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 - Scala-Plug-In (kann über das [IntelliJ-Plug-In-Repository](../../hdinsight/spark/apache-spark-intellij-tool-plugin.md#install-scala-plugin-for-intellij-idea) installiert werden)
 - Die folgende Voraussetzung gilt nur für Windows-Benutzer:
@@ -145,7 +145,7 @@ Nachdem Sie eine Scala-Anwendung erstellt haben, können Sie sie remote ausführ
     |„Main class name“ (Name der Hauptklasse)|Der Standardwert ist die Hauptklasse der ausgewählten Datei. Sie können die Klasse ändern, indem Sie die Schaltfläche mit den Auslassungspunkten ( **…** ) und anschließend eine andere Klasse auswählen.|
     |Job configurations (Auftragskonfigurationen)|Sie können die Standardschlüssel und -werte ändern. Weitere Informationen finden Sie unter [Apache Livy-REST-API](http://livy.incubator.apache.org./docs/latest/rest-api.html).|
     |Befehlszeilenargumente|Sie können bei Bedarf durch Leerzeichen getrennte Argumente für die Hauptklasse eingeben.|
-    |Referenced Jars and Referenced Files („Referenzierte JARs“ und „Referenzierte Dateien“)|Sie können bei Bedarf die Pfade für die JAR-Dateien und für die anderen Dateien eingeben, auf die verwiesen wird. Sie können auch Dateien im virtuellen Dateisystem von Azure durchsuchen, das derzeit nur ADLS Gen2-Cluster unterstützt. Weitere Informationen: [Apache Spark-Konfiguration]https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment) und [Hochladen von Ressourcen in Cluster](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
+    |Referenced Jars and Referenced Files („Referenzierte JARs“ und „Referenzierte Dateien“)|Sie können bei Bedarf die Pfade für die JAR-Dateien und für die anderen Dateien eingeben, auf die verwiesen wird. Sie können auch Dateien im virtuellen Dateisystem von Azure durchsuchen, das derzeit nur ADLS Gen2-Cluster unterstützt. Weitere Informationen: [Apache Spark-Konfiguration]https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment) und [Hochladen von Ressourcen in Cluster](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md).|
     |Job Upload Storage (Speicher für Auftragsupload)|Erweitern Sie die Option, um zusätzliche Optionen anzuzeigen.|
     |Speichertyp|Wählen Sie in der Dropdownliste **Use Azure Blob to upload** (Azure-Blob für Upload verwenden) oder **Use cluster default storage account to upload** (Standardspeicherkonto des Clusters für Upload verwenden).|
     |Speicherkonto|Geben Sie Ihr Speicherkonto ein.|

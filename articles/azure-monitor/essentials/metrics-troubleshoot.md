@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: d62c4b79fcb86080649c542e34b81d3213978604
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2a3bf022d178fbd0de3ca800e0a560235c3f33b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601372"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731492"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Problembehandlung für Metrikdiagramme
 
@@ -62,7 +62,7 @@ Das Sammeln von **Gastbetriebssystem**-Metriken erfordert die Konfiguration der 
 
 Dieses Problem kann auftreten, wenn Ihr Dashboard mit einer Metrik erstellt wurde, die später nicht mehr verwendet und aus Azure entfernt wurde. Um sicherzustellen, dass dies der Fall ist, öffnen Sie die Registerkarte **Metriken** Ihrer Ressource, und überprüfen Sie die verfügbaren Metriken in der Metrikauswahl. Wenn die Metrik nicht angezeigt wird, wurde die Metrik aus Azure entfernt. Wenn eine Metrik veraltet ist, existiert in der Regel eine bessere neue Metrik, die eine ähnliche Sicht auf die Ressourcenintegrität bietet.
 
-**Lösung:** Aktualisieren Sie die fehlerhafte Kachel, indem Sie eine alternative Metrik für Ihr Diagramm im Dashboard auswählen. Sie können [eine Liste der verfügbaren Metriken für Azure-Dienste](../platform/metrics-supported.md) anzeigen.
+**Lösung:** Aktualisieren Sie die fehlerhafte Kachel, indem Sie eine alternative Metrik für Ihr Diagramm im Dashboard auswählen. Sie können [eine Liste der verfügbaren Metriken für Azure-Dienste](./metrics-supported.md) anzeigen.
 
 ## <a name="chart-shows-dashed-line"></a>Das Diagramm zeigt eine gestrichelte Linie an
 
@@ -104,5 +104,5 @@ Standardmäßig werden die Metriken des Gastbetriebssystems im Azure Storage-Kon
 
 * [Erste Schritte mit dem Metrik-Explorer](metrics-getting-started.md)
 * [Erweiterte Funktionen des Metrik-Explorers](../essentials/metrics-charts.md)
-* [Unterstützte Metriken von Azure Monitor](../platform/metrics-supported.md)
+* [Unterstützte Metriken von Azure Monitor](./metrics-supported.md)
 * [Beispiele für Metrikdiagramme](../essentials/metric-chart-samples.md)

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b3c3d4d474c61cbe472b4122ac2f80f218bf8d
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 74bfa4987f584bbd3490bc5f4f187dee5bc1bd87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797261"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646281"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Bedingter Zugriff für Benutzer von B2B-Zusammenarbeit
 
@@ -28,7 +28,7 @@ In diesem Artikel wird beschrieben, wie Organisationen Richtlinien für bedingte
 
 Im folgenden Diagramm ist der Ablauf dargestellt: ![Abbildung: Authentifizierungsablauf für B2B-Gastbenutzer aus einem externen Verzeichnis](./media/conditional-access-b2b/authentication-flow-b2b-guests.png)
 
-| Schritt | Beschreibung |
+| Schritt | BESCHREIBUNG |
 |--------------|-----------------------|
 | 1. | Der B2B-Gastbenutzer fordert Zugriff auf eine Ressource an. Die Ressource leitet den Benutzer an ihren Ressourcenmandanten (vertrauenswürdiger IdP) weiter.|
 | 2. | Der Ressourcenmandant identifiziert den Benutzer als „Extern“ und leitet ihn an den IdP des B2B-Gastbenutzers um. Der Benutzer führt die primäre Authentifizierung über den IdP durch.
@@ -39,10 +39,10 @@ Im folgenden Diagramm ist der Ablauf dargestellt: ![Abbildung: Authentifizierung
 
 Im folgenden Diagramm ist der Ablauf dargestellt: ![Abbildung: Authentifizierungsablauf für B2B-Gastbenutzer mit Einmalkennung](./media/conditional-access-b2b/authentication-flow-b2b-guests-otp.png)
 
-| Schritt | Beschreibung |
+| Schritt | BESCHREIBUNG |
 |--------------|-----------------------|
 | 1. |Der Benutzer fordert den Zugriff auf eine Ressource auf einem anderen Mandanten an. Die Ressource leitet den Benutzer an ihren Ressourcenmandanten (vertrauenswürdiger IdP) weiter.|
-| 2. | Der Ressourcenmandant identifiziert den Benutzer als [externen Benutzer mit Einmalkennung](https://docs.microsoft.com/azure/active-directory/external-identities/one-time-passcode) und sendet eine E-Mail mit der Einmalkennung an den Benutzer.|
+| 2. | Der Ressourcenmandant identifiziert den Benutzer als [externen Benutzer mit Einmalkennung](./one-time-passcode.md) und sendet eine E-Mail mit der Einmalkennung an den Benutzer.|
 | 3. | Der Benutzer ruft die Einmalkennung ab und übermittelt den Code. Der Ressourcenmandant führt die Bewertung des Benutzers anhand seiner ZS-Richtlinien durch.
 | 4. | Nachdem alle ZS-Richtlinien erfüllt wurden, erstellt der Ressourcenmandant ein Token und leitet den Benutzer an seine Ressource um. |
 
@@ -64,7 +64,7 @@ Der Ressourcenmandant ist immer für die mehrstufige Azure AD-Authentifizierung 
 
 5. Dieses Szenario funktioniert für alle Identitäten: Azure AD oder persönliches Microsoft-Konto (MSA). Ein Beispiel hierfür ist ein Fall, in dem ein Benutzer die Authentifizierung für Contoso mit einer ID aus einem sozialen Netzwerk durchführt.
 
-6. Fabrikam muss über eine ausreichende Zahl von Azure AD-Premium-Lizenzen verfügen, für die die mehrstufige Azure AD-Authentifizierung unterstützt wird. Der Contoso-Benutzer nutzt dann diese Lizenz von Fabrikam. Informationen zur B2B-Lizenzierung finden Sie unter [Abrechnungsmodell für externe Identitäten in Azure AD](https://docs.microsoft.com/azure/active-directory/external-identities/external-identities-pricing).
+6. Fabrikam muss über eine ausreichende Zahl von Azure AD-Premium-Lizenzen verfügen, für die die mehrstufige Azure AD-Authentifizierung unterstützt wird. Der Contoso-Benutzer nutzt dann diese Lizenz von Fabrikam. Informationen zur B2B-Lizenzierung finden Sie unter [Abrechnungsmodell für externe Identitäten in Azure AD](./external-identities-pricing.md).
 
 >[!NOTE]
 >Die mehrstufige Azure AD-Authentifizierung wird auf dem Ressourcenmandanten durchgeführt, um die Vorhersagbarkeit sicherzustellen.
@@ -115,44 +115,43 @@ Es gibt verschiedene Faktoren, die ZS-Richtlinien für B2B-Gastbenutzer beeinflu
 
 ### <a name="device-based-conditional-access"></a>Gerätebasierter bedingter Zugriff
 
-Für die ZS gibt es eine Option, mit der erzwungen werden kann, dass das [Gerät des Benutzers als konform markiert oder in Azure AD Hybrid eingebunden ist](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#device-state-preview). B2B-Gastbenutzer können nur dann Konformität erzielen, wenn ihr Gerät vom Ressourcenmandanten verwaltet werden kann. Geräte können nicht von mehr als einer Organisation gleichzeitig verwaltet werden. B2B-Gastbenutzer können die Anforderungen für die Einbindung in Azure AD Hybrid nicht erfüllen, weil sie nicht über ein lokales AD-Konto verfügen. Nur wenn es sich beim Gerät des Gastbenutzers um ein nicht verwaltetes Gerät handelt, kann dieser es beim Ressourcenmandanten registrieren und dann die Konformität dafür herstellen. Anschließend kann der Benutzer die Anforderungen des Gewährungssteuerelements erfüllen.
+Für die ZS gibt es eine Option, mit der erzwungen werden kann, dass das [Gerät des Benutzers als konform markiert oder in Azure AD Hybrid eingebunden ist](../conditional-access/concept-conditional-access-conditions.md#device-state-preview). B2B-Gastbenutzer können nur dann Konformität erzielen, wenn ihr Gerät vom Ressourcenmandanten verwaltet werden kann. Geräte können nicht von mehr als einer Organisation gleichzeitig verwaltet werden. B2B-Gastbenutzer können die Anforderungen für die Einbindung in Azure AD Hybrid nicht erfüllen, weil sie nicht über ein lokales AD-Konto verfügen. Nur wenn es sich beim Gerät des Gastbenutzers um ein nicht verwaltetes Gerät handelt, kann dieser es beim Ressourcenmandanten registrieren und dann die Konformität dafür herstellen. Anschließend kann der Benutzer die Anforderungen des Gewährungssteuerelements erfüllen.
 
 >[!Note]
 >Wir empfehlen Ihnen, für externe Benutzer die Verwendung eines verwalteten Geräts zu erzwingen.
 
 ### <a name="mobile-application-management-policies"></a>Verwaltungsrichtlinien für mobile Anwendungen
 
-Für die Nutzung der ZS-Gewährungssteuerelemente, z. B. **Vorschreiben der Verwendung genehmigter Client-Apps** und **App-Schutzrichtlinie erforderlich**, muss das Gerät beim Mandanten registriert sein. Diese Steuerelemente können nur auf [iOS- und Android-Geräte](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#device-platforms) angewendet werden. Das Anwenden dieser Steuerelemente auf B2B-Gastbenutzer ist aber nicht möglich, wenn das Gerät des Benutzers bereits von einer anderen Organisation verwaltet wird. Ein mobiles Gerät kann nicht gleichzeitig bei mehr als einem Mandanten registriert sein. Wenn das mobile Gerät von einer anderen Organisation verwaltet wird, wird der Benutzer blockiert. Nur wenn das Gerät des Gastbenutzers nicht verwaltet wird, kann dieser das Gerät beim Ressourcenmandanten registrieren. Anschließend kann der Benutzer die Anforderungen des Gewährungssteuerelements erfüllen.  
+Für die Nutzung der ZS-Gewährungssteuerelemente, z. B. **Vorschreiben der Verwendung genehmigter Client-Apps** und **App-Schutzrichtlinie erforderlich**, muss das Gerät beim Mandanten registriert sein. Diese Steuerelemente können nur auf [iOS- und Android-Geräte](../conditional-access/concept-conditional-access-conditions.md#device-platforms) angewendet werden. Das Anwenden dieser Steuerelemente auf B2B-Gastbenutzer ist aber nicht möglich, wenn das Gerät des Benutzers bereits von einer anderen Organisation verwaltet wird. Ein mobiles Gerät kann nicht gleichzeitig bei mehr als einem Mandanten registriert sein. Wenn das mobile Gerät von einer anderen Organisation verwaltet wird, wird der Benutzer blockiert. Nur wenn das Gerät des Gastbenutzers nicht verwaltet wird, kann dieser das Gerät beim Ressourcenmandanten registrieren. Anschließend kann der Benutzer die Anforderungen des Gewährungssteuerelements erfüllen.  
 
 >[!NOTE]
 >Es ist nicht zu empfehlen, für externe Benutzer eine App-Schutzrichtlinie zu erzwingen.
 
 ### <a name="location-based-conditional-access"></a>Standortbasierter bedingter Zugriff
 
-Die [standortbasierte Richtlinie](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#locations) auf Grundlage von IP-Adressbereichen kann erzwungen werden, wenn die einladende Organisation einen vertrauenswürdigen IP-Adressbereich erstellen kann, mit dem ihre Partnerorganisationen definiert werden.
+Die [standortbasierte Richtlinie](../conditional-access/concept-conditional-access-conditions.md#locations) auf Grundlage von IP-Adressbereichen kann erzwungen werden, wenn die einladende Organisation einen vertrauenswürdigen IP-Adressbereich erstellen kann, mit dem ihre Partnerorganisationen definiert werden.
 
 Richtlinien können auch anhand von **geografischen Standorten** erzwungen werden.
 
 ### <a name="risk-based-conditional-access"></a>Risikobasierter bedingter Zugriff
 
-Die [Anmelderisiko-Richtlinie](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#sign-in-risk) wird erzwungen, wenn der B2B-Gastbenutzer die Anforderungen des Gewährungssteuerelements erfüllt. Beispielsweise kann eine Organisation bei einem mittleren oder hohen Anmelderisiko die mehrstufige Azure AD-Authentifizierung erzwingen. Falls sich ein Benutzer aber nicht bereits auf dem Ressourcenmandanten für die mehrstufige Azure AD-Authentifizierung registriert hat, wird er blockiert. Hierdurch soll verhindert werden, dass böswillige Benutzer ihre eigenen Anmeldeinformationen für die mehrstufige Azure AD-Authentifizierung registrieren können, wenn sie in den Besitz des Kennworts eines rechtmäßigen Benutzers gelangen.
+Die [Anmelderisiko-Richtlinie](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk) wird erzwungen, wenn der B2B-Gastbenutzer die Anforderungen des Gewährungssteuerelements erfüllt. Beispielsweise kann eine Organisation bei einem mittleren oder hohen Anmelderisiko die mehrstufige Azure AD-Authentifizierung erzwingen. Falls sich ein Benutzer aber nicht bereits auf dem Ressourcenmandanten für die mehrstufige Azure AD-Authentifizierung registriert hat, wird er blockiert. Hierdurch soll verhindert werden, dass böswillige Benutzer ihre eigenen Anmeldeinformationen für die mehrstufige Azure AD-Authentifizierung registrieren können, wenn sie in den Besitz des Kennworts eines rechtmäßigen Benutzers gelangen.
 
-Die [Benutzerrisiko-Richtlinie](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#user-risk) kann auf dem Ressourcenmandanten aber nicht aufgelöst werden. Falls beispielsweise eine Kennwortänderung für Gastbenutzer mit hohem Risiko erzwungen wird, werden diese blockiert, weil Kennwörter im Ressourcenverzeichnis nicht zurückgesetzt werden können.
+Die [Benutzerrisiko-Richtlinie](../conditional-access/concept-conditional-access-conditions.md#user-risk) kann auf dem Ressourcenmandanten aber nicht aufgelöst werden. Falls beispielsweise eine Kennwortänderung für Gastbenutzer mit hohem Risiko erzwungen wird, werden diese blockiert, weil Kennwörter im Ressourcenverzeichnis nicht zurückgesetzt werden können.
 
 ### <a name="conditional-access-client-apps-condition"></a>Bedingter Zugriff: Client-Apps-Bedingung
 
-[Client-Apps-Bedingungen](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps) verhalten sich für B2B-Gastbenutzer genauso wie für andere Arten von Benutzern. Sie können beispielsweise verhindern, dass Gastbenutzer Legacy-Authentifizierungsprotokolle verwenden.
+[Client-Apps-Bedingungen](../conditional-access/concept-conditional-access-conditions.md#client-apps) verhalten sich für B2B-Gastbenutzer genauso wie für andere Arten von Benutzern. Sie können beispielsweise verhindern, dass Gastbenutzer Legacy-Authentifizierungsprotokolle verwenden.
 
 ### <a name="conditional-access-session-controls"></a>Bedingter Zugriff: Sitzungssteuerelemente
 
-[Sitzungssteuerelemente](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) verhalten sich für B2B-Gastbenutzer genauso wie für andere Arten von Benutzern.
+[Sitzungssteuerelemente](../conditional-access/concept-conditional-access-session.md) verhalten sich für B2B-Gastbenutzer genauso wie für andere Arten von Benutzern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie in den folgenden Artikeln zur Azure AD B2B-Zusammenarbeit:
 
-- [Was ist die Azure AD B2B-Zusammenarbeit?](https://docs.microsoft.com/azure/active-directory/external-identities/what-is-b2b)
-- [Identity Protection und B2B-Benutzer](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-b2b)
+- [Was ist die Azure AD B2B-Zusammenarbeit?](./what-is-b2b.md)
+- [Identity Protection und B2B-Benutzer](../identity-protection/concept-identity-protection-b2b.md)
 - [Preise für externe Identitäten](https://azure.microsoft.com/pricing/details/active-directory/)
-- [Häufig gestellte Fragen (FAQs)](https://docs.microsoft.com/azure/active-directory/external-identities/faq)
-
+- [Häufig gestellte Fragen (FAQs)](./faq.md)

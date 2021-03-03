@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Erfahren Sie, wie Sie ein Upgrade von CentOS und Ubuntu 16.04 auf die neueste Version Ubuntu 18.04 Data Science Virtual Machine durchführen.
 keywords: Deep Learning, KI, Data Science-Tools, virtueller Data Science-Computer, Data Science-Teamprozess
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 5b98384d4d735f4c124c6af40d6edbff896900ce
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5b897ff7527d2d60234162ccbdeb08a00260bb1d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320977"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659459"
 ---
 # <a name="upgrade-your-data-science-virtual-machine-to-ubuntu-1804"></a>Aktualisieren von Data Science Virtual Machine auf Ubuntu 18.04
 
@@ -103,11 +102,11 @@ Sie können die Betriebssystemkomponenten des Dateisystems aktualisieren und Ben
 
 Wenn Sie noch keine VM-Momentaufnahme wie oben beschrieben erstellt haben, erstellen Sie diese Momentaufnahme jetzt. 
 
-1. Suchen Sie im Azure-Portal nach **Datenträgern** , und wählen Sie **Hinzufügen** aus. Dadurch wird die Seite **Datenträger** geöffnet.
+1. Suchen Sie im Azure-Portal nach **Datenträgern**, und wählen Sie **Hinzufügen** aus. Dadurch wird die Seite **Datenträger** geöffnet.
 
 :::image type="content" source="media/ubuntu_upgrade/portal-disks-search.png" alt-text="Screenshot: Azure-Portal mit der Seite „Nach Datenträgern suchen“ und der Schaltfläche „Hinzufügen“":::
 
-2. Legen Sie das **Abonnement** , die **Ressourcengruppe** und die **Region** auf die Werte Ihrer VM-Momentaufnahme fest. Wählen Sie einen **Namen** für den zu erstellenden Datenträger aus.
+2. Legen Sie das **Abonnement**, die **Ressourcengruppe** und die **Region** auf die Werte Ihrer VM-Momentaufnahme fest. Wählen Sie einen **Namen** für den zu erstellenden Datenträger aus.
 
 3. Wählen Sie **Quelltyp** als **Momentaufnahme** aus, und wählen Sie die VM-Momentaufnahme als **Quellmomentaufnahme** aus. Überprüfen und erstellen Sie den Datenträger. 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 7a456057bc088264cefb91be9f3e5069b29474a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 36937ace82d2bd8d4317f90a375042de10fe719f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596805"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709817"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure Monitor-Protokolle für Azure Load Balancer Standard
 
@@ -74,7 +74,7 @@ Die Aktivitätsprotokollierung ist automatisch für alle Resource Manager-Ressou
 
 ## <a name="view-and-analyze-the-activity-log"></a>Anzeigen und Analysieren des Aktivitätsprotokolls
 
-Das Aktivitätsprotokoll wird standardmäßig generiert. Es kann konfiguriert werden, um auf Abonnementebene [gemäß der folgenden Anweisungen in diesem Artikel](../azure-monitor/platform/activity-log.md) exportiert zu werden. Mehr zu diesen Protokollen können Sie im Artikel [Anzeigen von Aktivitätsprotokollen zur Überwachung von Aktionen in Ressourcen](../azure-resource-manager/management/view-activity-logs.md) erfahren.
+Das Aktivitätsprotokoll wird standardmäßig generiert. Es kann konfiguriert werden, um auf Abonnementebene [gemäß der folgenden Anweisungen in diesem Artikel](../azure-monitor/essentials/activity-log.md) exportiert zu werden. Mehr zu diesen Protokollen können Sie im Artikel [Anzeigen von Aktivitätsprotokollen zur Überwachung von Aktionen in Ressourcen](../azure-resource-manager/management/view-activity-logs.md) erfahren.
 
 Mit einer der folgenden Methoden können Sie die Aktivitätsprotokolldaten anzeigen und analysieren:
 
@@ -113,4 +113,4 @@ Bei der Verwendung der Funktion zum Exportieren von Metriken in Protokolle für 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Überprüfen der verfügbaren Metriken für Ihren Load Balancer](./load-balancer-standard-diagnostics.md)
-* [Erstellen und Testen von Abfragen anhand von Azure Monitor-Anweisungen](../azure-monitor/log-query/log-query-overview.md)
+* [Erstellen und Testen von Abfragen anhand von Azure Monitor-Anweisungen](../azure-monitor/logs/log-query-overview.md)

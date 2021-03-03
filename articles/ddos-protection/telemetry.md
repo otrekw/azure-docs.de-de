@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 0a8c30076231aecb17505dd0d7a2fe4e7be485a3
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 0be184921ff0bd6b98dd2975acb4e0d5c8b26ba0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522664"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716192"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>Anzeigen und Konfigurieren der DDoS Protection-Telemetrie
 
@@ -34,7 +34,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!NOTE]
 > Im Azure-Portal werden mehrere Optionen für die **Aggregation** angezeigt, aber nur die in der folgenden Tabelle aufgeführten Aggregationstypen werden für jede Metrik unterstützt. Wir entschuldigen uns für diese Unübersichtlichkeit und arbeiten bereits an ihrer Behebung.
 
-Die folgenden [Metriken](../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses) sind für Azure DDoS Protection verfügbar. Diese Metriken können auch über Diagnoseeinstellungen exportiert werden. (Weitere Informationen finden Sie unter [Anzeigen und Konfigurieren der DDoS-Diagnoseprotokollierung](diagnostic-logging.md).)
+Die folgenden [Metriken](../azure-monitor/essentials/metrics-supported.md#microsoftnetworkpublicipaddresses) sind für Azure DDoS Protection verfügbar. Diese Metriken können auch über Diagnoseeinstellungen exportiert werden. (Weitere Informationen finden Sie unter [Anzeigen und Konfigurieren der DDoS-Diagnoseprotokollierung](diagnostic-logging.md).)
 
 
 | Metrik | Metrikanzeigename | Einheit | Aggregationstyp | BESCHREIBUNG |

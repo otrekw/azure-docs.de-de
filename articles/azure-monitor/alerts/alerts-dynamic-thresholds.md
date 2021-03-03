@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: 31a034a7f52efd915b7a07e1abb953a14839892e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9cf4caf77d14dd1296276ca48827c170ef265e9b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599701"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718062"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrikwarnungen mit dynamischen Schwellenwerten in Azure Monitor
 
@@ -22,7 +22,7 @@ Wir freuen uns auf Ihr Feedback: <azurealertsfeedback@microsoft.com>
 
 ## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>Warum und wann ist der dynamische Bedingungstyp empfehlenswert?
 
-1. **Skalierbare Warnungen:** Warnungsregeln für den dynamischen Schwellenwert können individuelle Schwellenwerte für Hunderte von Metriken erstellen. Gleichzeitig kann eine Warnungsregel für eine einzelne Metrik ganz einfach definiert werden. Dadurch müssen Sie weniger Warnungen erstellen und verwalten. Zur Erstellung können Sie entweder das Azure-Portal oder die Azure Resource Manager-API verwenden. Der skalierbare Ansatz ist besonders hilfreich beim Umgang mit Metrikdimensionen oder bei der Anwendung auf mehrere Ressourcen, z. B. auf alle Abonnementressourcen.  [Erfahren Sie mehr über das Konfigurieren von Metrikwarnungen mit dynamischen Schwellenwerten mithilfe von Vorlagen](../platform/alerts-metric-create-templates.md).
+1. **Skalierbare Warnungen:** Warnungsregeln für den dynamischen Schwellenwert können individuelle Schwellenwerte für Hunderte von Metriken erstellen. Gleichzeitig kann eine Warnungsregel für eine einzelne Metrik ganz einfach definiert werden. Dadurch müssen Sie weniger Warnungen erstellen und verwalten. Zur Erstellung können Sie entweder das Azure-Portal oder die Azure Resource Manager-API verwenden. Der skalierbare Ansatz ist besonders hilfreich beim Umgang mit Metrikdimensionen oder bei der Anwendung auf mehrere Ressourcen, z. B. auf alle Abonnementressourcen.  [Erfahren Sie mehr über das Konfigurieren von Metrikwarnungen mit dynamischen Schwellenwerten mithilfe von Vorlagen](./alerts-metric-create-templates.md).
 
 1. **Intelligente Erkennung von Metrikmustern:** Mit unserer ML-Technologie können wir Metrikmuster automatisch erkennen und uns im Laufe der Zeit an Metrikänderungen anpassen, die häufig Saisonalität (stündlich/täglich/wöchentlich) enthalten. Durch die Anpassung an das Metrikverhalten und Warnungen basierend auf Abweichungen von Mustern müssen Sie nicht mehr den „richtigen“ Schwellenwert für die einzelnen Metriken ermitteln. Der ML-Algorithmus in dynamischen Schwellenwerten soll überflüssige (geringe Genauigkeit) oder zu weit gefasste (geringe Trefferquote) Schwellenwerte ohne erwartetes Muster verhindern.
 
@@ -75,7 +75,7 @@ Mit den folgenden Einstellungen wird eine Warnung ausgelöst, wenn ein dynamisch
 
 ## <a name="how-do-you-find-out-why-a-dynamic-thresholds-alert-was-triggered"></a>Wie finden Sie heraus, warum eine „Dynamische Schwellenwerte“-Warnung ausgelöst wurde?
 
-Um ausgelöste Warnungsinstanzen in der Warnungsansicht zu untersuchen, klicken Sie auf den Link in E-Mail, SMS oder Browser, um die Warnungsansicht im Azure-Portal anzuzeigen. Erfahren Sie mehr über die [Warnungsansicht](../platform/alerts-overview.md#alerts-experience).
+Um ausgelöste Warnungsinstanzen in der Warnungsansicht zu untersuchen, klicken Sie auf den Link in E-Mail, SMS oder Browser, um die Warnungsansicht im Azure-Portal anzuzeigen. Erfahren Sie mehr über die [Warnungsansicht](./alerts-overview.md#alerts-experience).
 
 Die Warnungsansicht zeigt Folgendes an:
 
@@ -188,4 +188,4 @@ Verwenden Sie die folgenden Informationen zur Interpretation des oben stehenden 
 - **Roter Punkt mit einer schwarzen Umrandung:** Dieser Punkt zeigt den ersten Metrikwert des zulässigen Bereichs an. Dieser Wert löst eine Metrikwarnung aus und versetzt diese in einen aktiven Zustand.
 - **Rote Punkte:** Diese Punkte geben die zusätzlich gemessenen Werte außerhalb des zulässigen Bereichs an. Die Werte lösen keine zusätzlichen Metrikwarnungen aus, die Warnung bleibt jedoch aktiv.
 - **Roter Bereich:** Dieser Bereich zeigt die Zeit an, in der der Metrikwert außerhalb des zulässigen Bereichs lag. Die Warnung bleibt aktiv, solange nachfolgende Messwerte außerhalb des zulässigen Bereichs liegen, aber keine neuen Warnungen ausgelöst werden.
-- **Ende des roten Bereichs:** Wenn die blaue Linie wieder im zulässigen Bereich liegt, endet der rote Bereich und die gemessene Wertelinie wird blau. Der Status der Metrikwarnung, die zum Zeitpunkt des roten Punkts mit einer schwarzen Umrandung ausgelöst wurde, wird gelöst festgelegt. 
+- **Ende des roten Bereichs:** Wenn die blaue Linie wieder im zulässigen Bereich liegt, endet der rote Bereich und die gemessene Wertelinie wird blau. Der Status der Metrikwarnung, die zum Zeitpunkt des roten Punkts mit einer schwarzen Umrandung ausgelöst wurde, wird gelöst festgelegt.

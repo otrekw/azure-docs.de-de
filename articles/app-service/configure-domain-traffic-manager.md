@@ -5,12 +5,12 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: e4d4b7e01eb5799bee604c05e1660a7a45188763
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 2910ea3f896ba3920126737965ca9c9dbabcfeb3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223339"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709103"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service mit Traffic Manager-Integration
 
@@ -75,7 +75,7 @@ Speichern Sie die Änderungen, sobald Sie die DNS-Datensätze bei Ihrem Domänen
 
 ### <a name="what-about-root-domains"></a>Wie verhält es sich mit Stammdomänen?
 
-Da Traffic Manager nur die Zuordnung benutzerdefinierter Domänen mit CNAME-Einträgen unterstützt und da die DNS-Standards keine CNAME-Einträge für die Zuordnung von Stammdomänen unterstützen (z. B. **contoso.com**), unterstützt Traffic Manager keine Zuordnung zu Stammdomänen. Um dieses Problem zu umgehen, verwenden Sie eine URL-Umleitung auf App-Ebene. In ASP.NET Core können Sie beispielsweise die [URL-Umschreibung](/aspnet/core/fundamentals/url-rewriting) verwenden. Verwenden Sie dann Traffic Manager, um einen Lastausgleich für die Unterdomäne (**www.contoso.com**) vorzunehmen. Ein anderer Ansatz besteht darin, [einen Aliaseintrag für den Domänennamen-Apex zu erstellen, um auf ein Azure Traffic Manager-Profil zu verweisen](https://docs.microsoft.com/azure/dns/tutorial-alias-tm). Ein Beispiel wäre etwa „contoso.com“. Statt einen Umleitungsdienst zu verwenden, können Sie Azure DNS so konfigurieren, dass direkt von Ihrer Zone aus auf ein Traffic Manager-Profil verwiesen wird. 
+Da Traffic Manager nur die Zuordnung benutzerdefinierter Domänen mit CNAME-Einträgen unterstützt und da die DNS-Standards keine CNAME-Einträge für die Zuordnung von Stammdomänen unterstützen (z. B. **contoso.com**), unterstützt Traffic Manager keine Zuordnung zu Stammdomänen. Um dieses Problem zu umgehen, verwenden Sie eine URL-Umleitung auf App-Ebene. In ASP.NET Core können Sie beispielsweise die [URL-Umschreibung](/aspnet/core/fundamentals/url-rewriting) verwenden. Verwenden Sie dann Traffic Manager, um einen Lastausgleich für die Unterdomäne (**www.contoso.com**) vorzunehmen. Ein anderer Ansatz besteht darin, [einen Aliaseintrag für den Domänennamen-Apex zu erstellen, um auf ein Azure Traffic Manager-Profil zu verweisen](../dns/tutorial-alias-tm.md). Ein Beispiel wäre etwa „contoso.com“. Statt einen Umleitungsdienst zu verwenden, können Sie Azure DNS so konfigurieren, dass direkt von Ihrer Zone aus auf ein Traffic Manager-Profil verwiesen wird. 
 
 In Hochverfügbarkeitsszenarien können Sie eine DNS-Einrichtung mit Lastenausgleich ohne Traffic Manager implementieren, indem Sie mehrere *A-Einträge* erstellen, die von der Stammdomäne auf die IP-Adresse der einzelnen App-Kopien verweisen. Dann [ordnen Sie dieselbe Stammdomäne allen App-Kopien zu](app-service-web-tutorial-custom-domain.md#map-an-a-record). Da derselbe Domänenname nicht zwei verschiedenen Apps in derselben Region zugeordnet werden kann, funktioniert diese Einrichtung nur, wenn sich die App-Kopien in unterschiedlichen Regionen befinden.
 

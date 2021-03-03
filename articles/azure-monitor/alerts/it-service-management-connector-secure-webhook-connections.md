@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 6b273b864c8329547ef91eb7063a064e0f5cb77d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b1295904f25d38c97578fa6fd6ede4ecd50c0456
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602380"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728976"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Verbinden von Azure mit ITSM-Tools unter Verwendung von Secure Export
 
 In diesem Artikel erfahren Sie, wie Sie die Verbindung zwischen Ihrem ITSM-Produkt oder -Dienst (IT-Service-Management) mithilfe von Secure Export konfigurieren.
 
-Secure Export ist eine aktualisierte Version des [ITSM-Connectors (ITSMC)](../platform/itsmc-overview.md). Beide Versionen ermöglichen es Ihnen, Arbeitselemente in einem ITSM-Tool zu erstellen, wenn Azure Monitor Warnungen sendet. Diese Funktionalität umfasst Metrik-, Protokoll- und Aktivitätsprotokollwarnungen.
+Secure Export ist eine aktualisierte Version des [ITSM-Connectors (ITSMC)](./itsmc-overview.md). Beide Versionen ermöglichen es Ihnen, Arbeitselemente in einem ITSM-Tool zu erstellen, wenn Azure Monitor Warnungen sendet. Diese Funktionalität umfasst Metrik-, Protokoll- und Aktivitätsprotokollwarnungen.
 
 Der ITSM-Connector verwendet Anmeldeinformationen aus Benutzername und Kennwort. Da Secure Export Azure Active Directory (Azure AD) nutzt, bietet diese Variante eine strengere Authentifizierung. Azure AD ist der cloudbasierte Identitäts- und Zugriffsverwaltungsdienst von Microsoft. Über diesen Dienst können Benutzer sich anmelden und auf interne oder externe Ressourcen zugreifen. Bei Verwendung von Azure AD mit ITSM können Azure-Warnungen (anhand der Anwendungs-ID von Azure AD) identifiziert werden, die an das externe System gesendet wurden.
 
@@ -55,4 +55,4 @@ Die Integration hat unter anderem folgende Vorteile:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen](../platform/itsmc-overview.md)
+* [Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen](./itsmc-overview.md)

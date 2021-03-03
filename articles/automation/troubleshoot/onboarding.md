@@ -2,15 +2,14 @@
 title: Beheben von Problemen bei der Azure Automation-Featurebereitstellung
 description: In diesem Artikel erfahren Sie, wie Sie Probleme lösen, die beim Bereitstellen von Azure Automation-Features auftreten können.
 services: automation
-ms.subservice: ''
-ms.date: 06/30/2020
+ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 41388e46f5204acaa53f376bc05cebf975361dad
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 43bc367be9ad9bb32f33f94df774acb3e808182a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008161"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651118"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>Beheben von Problemen bei der Featurebereitstellung
 
@@ -82,7 +81,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>Ursache
 
-Dieser Fehler kann auftreten, wenn der Tarif nicht mit dem Abrechnungsmodell des Abonnements übereinstimmt. Weitere Informationen finden Sie unter [Überwachen der Nutzung und geschätzten Kosten in Azure Monitor](../../azure-monitor/platform/usage-estimated-costs.md).
+Dieser Fehler kann auftreten, wenn der Tarif nicht mit dem Abrechnungsmodell des Abonnements übereinstimmt. Weitere Informationen finden Sie unter [Überwachen der Nutzung und geschätzten Kosten in Azure Monitor](../../azure-monitor//usage-estimated-costs.md).
 
 #### <a name="resolution"></a>Lösung
 

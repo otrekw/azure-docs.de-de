@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: 55f433786ed9dd40b08bb64395a6bbc50800add4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e07abdda805205701a10ca3bf295b7b0d2e71766
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601256"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718028"
 ---
 # <a name="upgrade-to-the-current-log-alerts-api-from-legacy-log-analytics-alert-api"></a>Upgrade von der Log Analytics-Legacywarnungs-API auf die aktuelle Protokollwarnungs-API
 
@@ -19,23 +19,23 @@ ms.locfileid: "100601256"
 > Dieser Artikel ist nur für die öffentlichen Azure-Regionen relevant (**nicht** für Azure Government oder die Azure China-Cloud).
 
 > [!NOTE]
-> Sobald sich ein Benutzer dazu entscheidet, zur aktuellen [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules) zu wechseln, ist keine Rückkehr zur älteren [Legacywarnungs-API von Log Analytics](../platform/api-alerts.md) mehr möglich.
+> Sobald sich ein Benutzer dazu entscheidet, zur aktuellen [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules) zu wechseln, ist keine Rückkehr zur älteren [Legacywarnungs-API von Log Analytics](./api-alerts.md) mehr möglich.
 
-In der Vergangenheit haben Benutzer die [Log Analytics-Legacywarnungs-API](../platform/api-alerts.md) verwendet, um Protokollwarnungsregeln zu verwalten. Aktuelle Arbeitsbereiche verwenden die [ScheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules). In diesem Artikel werden die Vorteile und der Wechsel von der Legacy-API zur aktuellen API beschrieben.
+In der Vergangenheit haben Benutzer die [Log Analytics-Legacywarnungs-API](./api-alerts.md) verwendet, um Protokollwarnungsregeln zu verwalten. Aktuelle Arbeitsbereiche verwenden die [ScheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules). In diesem Artikel werden die Vorteile und der Wechsel von der Legacy-API zur aktuellen API beschrieben.
 
 ## <a name="benefits"></a>Vorteile
 
 - einzelne Vorlage für die Erstellung von Warnungsregeln (zuvor drei separate Vorlagen erforderlich)
 - einzelne API für Log Analytics-Arbeitsbereiche oder Application Insights-Ressourcen
-- [Unterstützung von PowerShell-Cmdlets](../platform/alerts-log.md#managing-log-alerts-using-powershell)
+- [Unterstützung von PowerShell-Cmdlets](./alerts-log.md#managing-log-alerts-using-powershell)
 - Ausrichtung von Schweregraden auf alle anderen Warnungstypen
-- Möglichkeit zum Erstellen von [arbeitsbereichsübergreifenden Warnungsregeln](../log-query/cross-workspace-query.md), die mehrere externe Ressourcen wie Log Analytics-Arbeitsbereiche oder Application Insights-Ressourcen umfassen
+- Möglichkeit zum Erstellen von [arbeitsbereichsübergreifenden Warnungsregeln](../logs/cross-workspace-query.md), die mehrere externe Ressourcen wie Log Analytics-Arbeitsbereiche oder Application Insights-Ressourcen umfassen
 - Angeben von Dimensionen durch Benutzer, um die Warnungen mithilfe des „Aggregieren nach“-Parameters aufzuteilen
 - verlängerte Zeiträume von bis zu zwei Tagen bei Protokollwarnungen für Daten (zuvor auf einen Tag beschränkt)
 
 ## <a name="impact"></a>Auswirkung
 
-- Alle neuen Regeln müssen mit der aktuellen API erstellt bzw. bearbeitet werden. Weitere Informationen finden Sie unter [Beispiel für die Verwendung über eine Azure-Ressourcenvorlage](alerts-log-create-templates.md) und [Verwalten von Protokollwarnungen mit PowerShell](../platform/alerts-log.md#managing-log-alerts-using-powershell).
+- Alle neuen Regeln müssen mit der aktuellen API erstellt bzw. bearbeitet werden. Weitere Informationen finden Sie unter [Beispiel für die Verwendung über eine Azure-Ressourcenvorlage](alerts-log-create-templates.md) und [Verwalten von Protokollwarnungen mit PowerShell](./alerts-log.md#managing-log-alerts-using-powershell).
 - Da Regeln zu von Azure Resource Manager überwachten Ressourcen in der aktuellen API werden und eindeutig sein müssen, wird die Ressourcen-ID der Regeln in diese Struktur geändert: `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`. Die Anzeigenamen der Warnungsregel bleiben unverändert.
 
 ## <a name="process"></a>Prozess
@@ -104,7 +104,7 @@ Wenn der Log Analytics-Arbeitsbereich nicht geändert wurde, lautet die Antwort 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über [Azure Monitor: Protokollwarnungen](../platform/alerts-unified-log.md).
+- Erfahren Sie mehr über [Azure Monitor: Protokollwarnungen](./alerts-unified-log.md).
 - Informationen zum [Verwalten Ihrer Protokollwarnungen mithilfe der API](alerts-log-create-templates.md)
-- Informationen zum [Verwalten von Protokollwarnungen mit PowerShell](../platform/alerts-log.md#managing-log-alerts-using-powershell)
-- Erfahren Sie mehr über die neue [Azure Alerts-Benutzeroberfläche](../platform/alerts-overview.md).
+- Informationen zum [Verwalten von Protokollwarnungen mit PowerShell](./alerts-log.md#managing-log-alerts-using-powershell)
+- Erfahren Sie mehr über die neue [Azure Alerts-Benutzeroberfläche](./alerts-overview.md).

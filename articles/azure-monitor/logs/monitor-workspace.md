@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: bef7db19142f0387077af1487230e7891c255aa1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 09df1c2ecb94089f23a88dd36c5343bb4cf2feea
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601710"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710939"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Überwachen der Integrität des Log Analytics-Arbeitsbereichs in Azure Monitor
 Um die Leistung und Verfügbarkeit Ihres Log Analytics-Arbeitsbereichs in Azure Monitor zu gewährleisten, müssen Sie in der Lage sein, jedes auftretende Probleme proaktiv zu erkennen. In diesem Artikel wird beschrieben, wie Sie die Integrität Ihres Log Analytics-Arbeitsbereichs mithilfe von Daten in der Tabelle [Operation](/azure/azure-monitor/reference/tables/operation) überwachen. Diese Tabelle ist in jedem Log Analytics-Arbeitsbereich enthalten und enthält Fehler und Warnungen, die im Arbeitsbereich auftreten. Sie sollten diese Daten regelmäßig überprüfen und Warnungen erstellen, damit Sie proaktiv benachrichtigt werden, wenn im Arbeitsbereich wichtige Vorfälle auftreten.
@@ -58,10 +58,10 @@ Erfassungsvorgänge sind Probleme, die während der Datenerfassung aufgetreten s
 | Benutzerdefiniertes Protokoll | Fehler   | Das Spaltenlimit für benutzerdefinierte Felder wurde erreicht. | [Azure Monitor-Diensteinschränkungen](../service-limits.md#log-analytics-workspaces) |
 | Benutzerdefiniertes Protokoll | Fehler   | Fehler beim Erfassen von benutzerdefinierten Protokollen. | |
 | Metadaten | Fehler | Ein Konfigurationsfehler wurde erkannt. | |
-| Datensammlung | Fehler   | Daten wurden verworfen, da die Anforderung vor der festgelegten Anzahl von Tagen erstellt wurde. | [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../platform/manage-cost-storage.md#alert-when-daily-cap-reached)
+| Datensammlung | Fehler   | Daten wurden verworfen, da die Anforderung vor der festgelegten Anzahl von Tagen erstellt wurde. | [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](./manage-cost-storage.md#alert-when-daily-cap-reached)
 | Datensammlung | Info    | Die Konfiguration des Sammlungscomputers wurde erkannt.| |
-| Datensammlung | Info    | Die Datensammlung wurde aufgrund eines neuen Tags gestartet. | [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../platform/manage-cost-storage.md#alert-when-daily-cap-reached) |
-| Datensammlung | Warnung | Die Datensammlung wurde beendet, da das Tageslimit erreicht wurde.| [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../platform/manage-cost-storage.md#alert-when-daily-cap-reached) |
+| Datensammlung | Info    | Die Datensammlung wurde aufgrund eines neuen Tags gestartet. | [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](./manage-cost-storage.md#alert-when-daily-cap-reached) |
+| Datensammlung | Warnung | Die Datensammlung wurde beendet, da das Tageslimit erreicht wurde.| [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](./manage-cost-storage.md#alert-when-daily-cap-reached) |
 | Datenverarbeitung | Fehler   | Ungültiges JSON-Format. | [Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API (Public Preview)](../logs/data-collector-api.md#request-body) | 
 | Datenverarbeitung | Warnung | Der Wert wurde auf die maximal zulässige Größe gekürzt. | [Azure Monitor-Diensteinschränkungen](../service-limits.md#log-analytics-workspaces) |
 | Datenverarbeitung | Warnung | Der Feldwert wurde abgeschnitten, da das Größenlimit erreicht wurde. | [Azure Monitor-Diensteinschränkungen](../service-limits.md#log-analytics-workspaces) | 
@@ -125,4 +125,4 @@ Im folgenden Beispiel wird eine Warnung erstellt, wenn die Datensammlung das Tag
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über [Protokollwarnungen](../alerts/alerts-log.md).
-- [Sammeln Sie Abfrageüberwachungsdaten](../log-query/query-audit.md) für Ihren Arbeitsbereich.
+- [Sammeln Sie Abfrageüberwachungsdaten](./query-audit.md) für Ihren Arbeitsbereich.

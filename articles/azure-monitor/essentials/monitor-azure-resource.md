@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 33f7ed21ee20f78bae6803fab10fbb151995345f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7d5fcd4da5ab8b8516794bf99b8aab69ada24644
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601369"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708117"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Überwachen von Azure-Ressourcen mit Azure Monitor
 Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfügen, die auf Azure-Ressourcen beruhen, sollten Sie Verfügbarkeit, Leistung und Betrieb dieser Ressourcen überwachen. In diesem Artikel wird das Überwachen von Daten beschrieben, die von Azure-Ressourcen generiert wurden. Außerdem wird erläutert, wie Sie die Funktionen von Azure Monitor nutzen können, um diese Daten zu analysieren und Warnungen dafür zu erstellen.
@@ -20,7 +20,7 @@ Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfüge
 > Dieser Artikel gilt für alle Dienste in Azure, die Azure Monitor verwenden. Computeressourcen, einschließlich virtueller Computer und App Service, generieren die gleichen Überwachungsdaten, die hier beschrieben werden. Sie verfügen aber auch über ein Gastbetriebssystem, das ebenfalls Protokolle und Metriken generieren kann. Einzelheiten zum Erfassen und Analysieren dieser Daten finden Sie in der Dokumentation zur Überwachung dieser Dienste.
 
 ## <a name="what-is-azure-monitor"></a>Was ist Azure Monitor?
-Azure Monitor ist ein vollständiger Überwachungsdienst in Azure, der sämtliche Funktionen für das Überwachen Ihrer Azure-Ressourcen sowie der Ressourcen in anderen Clouds und lokaler Ressourcen bereitstellt. Die [Azure Monitor-Datenplattform](../platform/data-platform.md) sammelt Daten in [Protokollen](../platform/data-platform-logs.md) und [Metriken](../essentials/data-platform-metrics.md), wo sie mit einem vollständigen Überwachungstoolset analysiert werden können. Eine vollständige Liste der Anwendungen und Dienste, die von Azure Monitor überwacht werden können, finden Sie unter [Was wird von Azure Monitor überwacht?](../monitor-reference.md).
+Azure Monitor ist ein vollständiger Überwachungsdienst in Azure, der sämtliche Funktionen für das Überwachen Ihrer Azure-Ressourcen sowie der Ressourcen in anderen Clouds und lokaler Ressourcen bereitstellt. Die [Azure Monitor-Datenplattform](../data-platform.md) sammelt Daten in [Protokollen](../logs/data-platform-logs.md) und [Metriken](../essentials/data-platform-metrics.md), wo sie mit einem vollständigen Überwachungstoolset analysiert werden können. Eine vollständige Liste der Anwendungen und Dienste, die von Azure Monitor überwacht werden können, finden Sie unter [Was wird von Azure Monitor überwacht?](../monitor-reference.md).
 
 Sobald Sie eine Azure-Ressource erstellen, wird Azure Monitor aktiviert und beginnt mit dem Sammeln von Metriken und Aktivitätsprotokollen, die Sie im [Azure-Portal anzeigen und analysieren](#monitoring-in-the-azure-portal) können. Bei einigen Konfigurationen können Sie zusätzliche Überwachungsdaten sammeln und weitere Funktionen aktivieren. Weitere Informationen zu den Konfigurationsanforderungen finden Sie unter [Überwachungsdaten](#monitoring-data) weiter unten.
 
@@ -46,15 +46,15 @@ Eventuelle Kosten für Azure Monitor für Folgendes. Weitere Informationen finde
 - Zugreifen auf Metriken über die API
 
 ## <a name="monitoring-data"></a>Überwachungsdaten
-Ressourcen in Azure generieren [Protokolle](../platform/data-platform-logs.md) und [Metriken](../essentials/data-platform-metrics.md), wie im folgenden Diagramm dargestellt. Informieren Sie sich in der Dokumentation zum jeweiligen Azure-Dienst über die spezifischen generierten Daten und die damit bereitgestellten Lösungen oder Erkenntnisse.
+Ressourcen in Azure generieren [Protokolle](../logs/data-platform-logs.md) und [Metriken](../essentials/data-platform-metrics.md), wie im folgenden Diagramm dargestellt. Informieren Sie sich in der Dokumentation zum jeweiligen Azure-Dienst über die spezifischen generierten Daten und die damit bereitgestellten Lösungen oder Erkenntnisse.
 
 ![Übersicht](media/monitor-azure-resource/logs-metrics.png)
 
 
 
 - [Plattformmetriken](../essentials/data-platform-metrics.md) sind numerische Werte, die automatisch in regelmäßigen Abständen erfasst werden und einen Aspekt einer Ressource zu einem bestimmten Zeitpunkt beschreiben. 
-- [Ressourcenprotokolle](../platform/platform-logs-overview.md) bieten einen Einblick in Vorgänge, die innerhalb einer Azure-Ressource (der Datenebene) ausgeführt wurden, z. B. das Abrufen eines Geheimnisses aus einem Schlüsseltresor oder die Ausgabe einer Anforderung an eine Datenbank. Der Inhalt und die Struktur dieser Protokolle variieren je nach Azure-Dienst und Ressourcentyp.
-- [Aktivitätsprotokolle](../platform/platform-logs-overview.md) bieten Einblicke in die Vorgänge für jede Azure-Ressource im Abonnement von außen (die Verwaltungsebene), z. B. die Erstellung einer neuen Ressource oder den Start eines virtuellen Computers. Diese Informationen bieten Antworten auf die Fragen Was, Wer und Wann für alle Schreibvorgänge (PUT, POST, DELETE), die für die Ressourcen Ihres Abonnements durchgeführt wurden.
+- [Ressourcenprotokolle](./platform-logs-overview.md) bieten einen Einblick in Vorgänge, die innerhalb einer Azure-Ressource (der Datenebene) ausgeführt wurden, z. B. das Abrufen eines Geheimnisses aus einem Schlüsseltresor oder die Ausgabe einer Anforderung an eine Datenbank. Der Inhalt und die Struktur dieser Protokolle variieren je nach Azure-Dienst und Ressourcentyp.
+- [Aktivitätsprotokolle](./platform-logs-overview.md) bieten Einblicke in die Vorgänge für jede Azure-Ressource im Abonnement von außen (die Verwaltungsebene), z. B. die Erstellung einer neuen Ressource oder den Start eines virtuellen Computers. Diese Informationen bieten Antworten auf die Fragen Was, Wer und Wann für alle Schreibvorgänge (PUT, POST, DELETE), die für die Ressourcen Ihres Abonnements durchgeführt wurden.
 
 
 ## <a name="configuration-requirements"></a>Konfigurationsanforderungen
@@ -63,11 +63,11 @@ Ressourcen in Azure generieren [Protokolle](../platform/data-platform-logs.md) u
 Einige Überwachungsdaten werden automatisch erfasst. Sie müssen jedoch je nach Ihren Anforderungen eventuell einige Konfigurationen vornehmen. Weiter unten finden Sie spezifische Informationen zu den einzelnen Typen von Überwachungsdaten.
 
 - [Plattformmetriken](../essentials/data-platform-metrics.md) werden automatisch in [Azure Monitor-Metriken](../essentials/data-platform-metrics.md) erfasst, ohne dass eine Konfiguration erforderlich ist. Erstellen Sie eine Diagnoseeinstellung, um Einträge an Azure Monitor-Protokolle zu senden oder an ein Ziel außerhalb von Azure weiterzuleiten.
-- [Ressourcenprotokolle](../platform/platform-logs-overview.md) werden automatisch von Azure-Ressourcen generiert, aber nicht ohne Diagnoseeinstellung erfasst.  Erstellen Sie eine Diagnoseeinstellung, um Einträge an Azure Monitor-Protokolle zu senden oder an ein Ziel außerhalb von Azure weiterzuleiten.
-- [Aktivitätsprotokolle](../platform/platform-logs-overview.md) werden automatisch gesammelt, ohne dass eine Konfiguration erforderlich ist. Sie können im Azure-Portal angezeigt werden. Erstellen Sie eine Diagnoseeinstellung, um sie in Azure Monitor-Protokolle zu kopieren oder an ein Ziel außerhalb von Azure weiterzuleiten.
+- [Ressourcenprotokolle](./platform-logs-overview.md) werden automatisch von Azure-Ressourcen generiert, aber nicht ohne Diagnoseeinstellung erfasst.  Erstellen Sie eine Diagnoseeinstellung, um Einträge an Azure Monitor-Protokolle zu senden oder an ein Ziel außerhalb von Azure weiterzuleiten.
+- [Aktivitätsprotokolle](./platform-logs-overview.md) werden automatisch gesammelt, ohne dass eine Konfiguration erforderlich ist. Sie können im Azure-Portal angezeigt werden. Erstellen Sie eine Diagnoseeinstellung, um sie in Azure Monitor-Protokolle zu kopieren oder an ein Ziel außerhalb von Azure weiterzuleiten.
 
 ### <a name="log-analytics-workspace"></a>Log Analytics-Arbeitsbereich
-Zum Sammeln von Daten in Azure Monitor-Protokollen ist ein Log Analytics-Arbeitsbereich erforderlich. Sie können schnell mit der Überwachung des Diensts beginnen, indem Sie einen neuen Arbeitsbereich erstellen. Es kann jedoch auch sinnvoll sein, einen Arbeitsbereich zu verwenden, der Daten von anderen Diensten sammelt. Ausführliche Informationen zum Erstellen eines Arbeitsbereichs finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](../platform/design-logs-deployment.md). Um zu ermitteln, welcher Arbeitsbereich sich am besten für Ihre Anforderungen eignet, lesen Sie den Artikel [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../learn/quick-create-workspace.md). Wenn Sie einen vorhandenen Arbeitsbereich in Ihrer Organisation verwenden, benötigen Sie entsprechende Berechtigungen, wie unter [Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor](../platform/manage-access.md) beschrieben. 
+Zum Sammeln von Daten in Azure Monitor-Protokollen ist ein Log Analytics-Arbeitsbereich erforderlich. Sie können schnell mit der Überwachung des Diensts beginnen, indem Sie einen neuen Arbeitsbereich erstellen. Es kann jedoch auch sinnvoll sein, einen Arbeitsbereich zu verwenden, der Daten von anderen Diensten sammelt. Ausführliche Informationen zum Erstellen eines Arbeitsbereichs finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](../logs/design-logs-deployment.md). Um zu ermitteln, welcher Arbeitsbereich sich am besten für Ihre Anforderungen eignet, lesen Sie den Artikel [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../logs/quick-create-workspace.md). Wenn Sie einen vorhandenen Arbeitsbereich in Ihrer Organisation verwenden, benötigen Sie entsprechende Berechtigungen, wie unter [Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor](../logs/manage-access.md) beschrieben. 
 
 
 
@@ -76,11 +76,11 @@ Zum Sammeln von Daten in Azure Monitor-Protokollen ist ein Log Analytics-Arbeits
 ## <a name="diagnostic-settings"></a>Diagnoseeinstellungen
 Diagnoseeinstellungen definieren, wohin Ressourcenprotokolle und -metriken für eine bestimmte Ressource gesendet werden sollen. Mögliche Ziele:
 
-- [Log Analytics-Arbeitsbereiche](../platform/resource-logs.md#send-to-log-analytics-workspace) ermöglichen Ihnen das Analysieren von Daten zusammen mit anderen Überwachungsdaten, die mithilfe leistungsstarker Protokollabfragen von Azure Monitor erfasst werden, sowie die Nutzung anderer Azure Monitor-Features wie Warnungen und Visualisierungen. 
-- [Event Hubs](../platform/resource-logs.md#send-to-azure-event-hubs) ermöglichen das Streamen von Daten an externe Systeme, z. B. SIEMs und andere Protokollanalyselösungen von Drittanbietern. 
-- [Azure Storage-Konten](../platform/resource-logs.md#send-to-azure-storage) sind hilfreich für Überwachung, statische Analyse oder Sicherung.
+- [Log Analytics-Arbeitsbereiche](./resource-logs.md#send-to-log-analytics-workspace) ermöglichen Ihnen das Analysieren von Daten zusammen mit anderen Überwachungsdaten, die mithilfe leistungsstarker Protokollabfragen von Azure Monitor erfasst werden, sowie die Nutzung anderer Azure Monitor-Features wie Warnungen und Visualisierungen. 
+- [Event Hubs](./resource-logs.md#send-to-azure-event-hubs) ermöglichen das Streamen von Daten an externe Systeme, z. B. SIEMs und andere Protokollanalyselösungen von Drittanbietern. 
+- [Azure Storage-Konten](./resource-logs.md#send-to-azure-storage) sind hilfreich für Überwachung, statische Analyse oder Sicherung.
 
-Befolgen Sie die Vorgehensweise unter [Erstellen einer Diagnoseeinstellung zum Erfassen von Plattformprotokollen und Metriken in Azure](../essentials/diagnostic-settings.md), um Diagnoseeinstellungen über das Azure-Portal zu erstellen und zu verwalten. Unter [Erstellen von Diagnoseeinstellungen in Azure mithilfe einer Resource Manager-Vorlage](../samples/resource-manager-diagnostic-settings.md) erfahren Sie, wie Sie sie in einer Vorlage definieren und die komplette Überwachung für eine Ressource bei ihrer Erstellung aktivieren.
+Befolgen Sie die Vorgehensweise unter [Erstellen einer Diagnoseeinstellung zum Erfassen von Plattformprotokollen und Metriken in Azure](../essentials/diagnostic-settings.md), um Diagnoseeinstellungen über das Azure-Portal zu erstellen und zu verwalten. Unter [Erstellen von Diagnoseeinstellungen in Azure mithilfe einer Resource Manager-Vorlage](./resource-manager-diagnostic-settings.md) erfahren Sie, wie Sie sie in einer Vorlage definieren und die komplette Überwachung für eine Ressource bei ihrer Erstellung aktivieren.
 
 
 ## <a name="monitoring-in-the-azure-portal"></a>Überwachen im Azure-Portal
@@ -100,9 +100,9 @@ Wenn für einen Dienst eine Azure Monitor-Erkenntnis bereitgestellt wird, könne
 ![Erkenntnisse im Azure-Portal](media/monitor-azure-resource/insights.png)
 
 ### <a name="metrics"></a>Metriken
-Analysieren Sie Metriken im Azure-Portal mit dem [Metrik-Explorer](../platform/metrics-getting-started.md), der für die meisten Dienste über das Menüelement **Metriken** verfügbar ist. Dieses Tool ermöglicht es, mit einzelnen Metriken zu arbeiten oder mehrere Metriken zu kombinieren, um Korrelationen und Trends zu identifizieren. 
+Analysieren Sie Metriken im Azure-Portal mit dem [Metrik-Explorer](./metrics-getting-started.md), der für die meisten Dienste über das Menüelement **Metriken** verfügbar ist. Dieses Tool ermöglicht es, mit einzelnen Metriken zu arbeiten oder mehrere Metriken zu kombinieren, um Korrelationen und Trends zu identifizieren. 
 
-- Grundlegendes zur Verwendung des Metrik-Explorers finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../platform/metrics-getting-started.md).
+- Grundlegendes zur Verwendung des Metrik-Explorers finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](./metrics-getting-started.md).
 - Weitere Informationen zu erweiterten Features des Metrik-Explorers, wie z. B. Verwenden mehrerer Metriken und Anwenden von Filtern und Aufteilungen, finden Sie unter [Erweiterte Funktionen von Azure Metrik-Explorer](../essentials/metrics-charts.md).
 
 ![Metrik-Explorer im Azure-Portal](media/monitor-azure-resource/metrics.png)
@@ -119,11 +119,11 @@ Zeigen Sie die Einträge im Aktivitätsprotokoll im Azure-Portal an, wobei der a
 ### <a name="azure-monitor-logs"></a>Azure Monitor-Protokolle
 Azure Monitor-Protokolle konsolidieren Protokolle und Metriken aus mehreren Diensten und anderen Datenquellen für die Analyse mit einem leistungsfähigen Abfragetool. Erstellen Sie wie oben beschrieben eine Diagnoseeinstellung zum Erfassen von Plattformmetriken, Aktivitätsprotokollen und Ressourcenprotokollen in einem Log Analytics-Arbeitsbereich in Azure Monitor.
 
-[Log Analytics](../log-query/log-analytics-tutorial.md) ermöglicht Ihnen die Arbeit mit [Protokollabfragen](../log-query/log-query-overview.md). Hierbei handelt es sich um ein leistungsstarkes Feature von Azure Monitor, mit dem Sie mithilfe einer Abfragesprache mit vollem Funktionsumfang eine erweiterte Analyse der Protokolldaten durchführen können. Öffnen Sie Log Analytics über **Protokolle** im Menü **Überwachung** für eine Azure-Ressource, um mit Protokollabfragen mit dieser Ressource als [Abfragebereich](../log-query/scope.md#query-scope) zu arbeiten. Auf diese Weise können Sie Daten über mehrere Tabellen hinweg ausschließlich für diese Ressource analysieren. Verwenden Sie **Protokolle** im Menü von Azure Monitor, um auf Protokolle für alle Ressourcen zuzugreifen. 
+[Log Analytics](../logs/log-analytics-tutorial.md) ermöglicht Ihnen die Arbeit mit [Protokollabfragen](../logs/log-query-overview.md). Hierbei handelt es sich um ein leistungsstarkes Feature von Azure Monitor, mit dem Sie mithilfe einer Abfragesprache mit vollem Funktionsumfang eine erweiterte Analyse der Protokolldaten durchführen können. Öffnen Sie Log Analytics über **Protokolle** im Menü **Überwachung** für eine Azure-Ressource, um mit Protokollabfragen mit dieser Ressource als [Abfragebereich](../logs/scope.md#query-scope) zu arbeiten. Auf diese Weise können Sie Daten über mehrere Tabellen hinweg ausschließlich für diese Ressource analysieren. Verwenden Sie **Protokolle** im Menü von Azure Monitor, um auf Protokolle für alle Ressourcen zuzugreifen. 
 
-- Ein Tutorial zur Verwendung der Abfragesprache zum Schreiben von Protokollabfragen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../log-query/get-started-queries.md).
-- Informationen zur Erfassung von Ressourcenprotokollen in Azure Monitor-Protokollen und Details dazu, wie Sie in einer Abfrage darauf zugreifen, finden Sie unter [Erfassen von Azure-Ressourcenprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](../platform/resource-logs.md#send-to-log-analytics-workspace).
-- Eine Erläuterung der Struktur von Ressourcenprotokolldaten in Azure Monitor-Protokollen finden Sie unter [Sammlungsmodus](../platform/resource-logs.md#send-to-log-analytics-workspace).
+- Ein Tutorial zur Verwendung der Abfragesprache zum Schreiben von Protokollabfragen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../logs/get-started-queries.md).
+- Informationen zur Erfassung von Ressourcenprotokollen in Azure Monitor-Protokollen und Details dazu, wie Sie in einer Abfrage darauf zugreifen, finden Sie unter [Erfassen von Azure-Ressourcenprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](./resource-logs.md#send-to-log-analytics-workspace).
+- Eine Erläuterung der Struktur von Ressourcenprotokolldaten in Azure Monitor-Protokollen finden Sie unter [Sammlungsmodus](./resource-logs.md#send-to-log-analytics-workspace).
 - Ausführliche Informationen zu den Tabellen der einzelnen Azure-Dienste in Azure Monitor Protokollen finden Sie in der jeweiligen Dokumentation.
 
 ![Log Analytics im Azure-Portal](media/monitor-azure-resource/logs.png)
@@ -139,11 +139,11 @@ Mithilfe der [Azure PowerShell](/powershell/azure/)- oder [Azure-Befehlszeilensc
 ## <a name="monitoring-from-rest-api"></a>Überwachen über die REST API
 Sie können die von ihrer Ressource gesammelten Überwachungsdaten in einer benutzerdefinierten Anwendung mithilfe einer REST API einschließen.
 
-- Weitere Informationen zum Zugriff auf Metriken über die Azure Monitor-REST-API finden Sie unter [Exemplarische Vorgehensweise für die Azure Monitoring-REST-API](../platform/rest-api-walkthrough.md).
+- Weitere Informationen zum Zugriff auf Metriken über die Azure Monitor-REST-API finden Sie unter [Exemplarische Vorgehensweise für die Azure Monitoring-REST-API](./rest-api-walkthrough.md).
 - Informationen zum Zugriff auf Azure Monitor-Protokolldaten mithilfe einer Protokollabfrage aus Azure PowerShell finden Sie unter [REST-API der Azure-Protokollanalyse](https://dev.loganalytics.io/).
 
 ## <a name="alerts"></a>Alerts
-[Warnungen](../platform/alerts-overview.md) informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden, und ermöglichen damit zeitnahe Aktionen. Sie erstellen eine Warnungsregel, mit der ein Ziel für die Warnung, die Bedingungen für das Erstellen einer Warnung und alle Aktionen definiert werden, die als Reaktion ausgeführt werden sollen.
+[Warnungen](../alerts/alerts-overview.md) informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden, und ermöglichen damit zeitnahe Aktionen. Sie erstellen eine Warnungsregel, mit der ein Ziel für die Warnung, die Bedingungen für das Erstellen einer Warnung und alle Aktionen definiert werden, die als Reaktion ausgeführt werden sollen.
 
 Für die verschiedenen Arten von Warnungsregeln werden unterschiedliche Arten von Überwachungsdaten verwendet.
 
@@ -160,4 +160,4 @@ Verwenden Sie **Warnungen** im Menü einer Ressource, um Warnungen anzuzeigen un
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ausführliche Informationen zu Ressourcenprotokollen für die einzelnen Azure-Dienste finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle](../platform/resource-logs-schema.md).
+* Ausführliche Informationen zu Ressourcenprotokollen für die einzelnen Azure-Dienste finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle](./resource-logs-schema.md).

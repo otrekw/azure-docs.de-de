@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/29/2020
-ms.openlocfilehash: 6564e7263639f0a78df6f2674ce7a4b610fb0fc1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 03e534564b4a32f112c2aaff44a187b10eb2a537
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601702"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723111"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>Deaktivierung der OperationalInsights-API-Version
 Wenn Microsoft eine API deaktiviert, werden Sie mindestens 12 Monate vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten. Wir haben eine neue Version (2020-08-01) für Ressourcenanbieter-APIs vom Typ **OperationalInsights** veröffentlicht. Alle älteren API-Versionen werden am 29. Februar 2024 eingestellt.
 
-Es wird empfohlen, ab sofort die Version 2020-08-01 zu verwenden, um von neuen Funktionen wie [dediziertem Cluster](../log-query/logs-dedicated-clusters.md), [kundenseitig verwalteten Schlüsseln](../logs/customer-managed-keys.md), [Private Link](./private-link-security.md) und [Datenexport](./logs-data-export.md) zu profitieren. Außerdem werden neue Features, Funktionen und Optimierungen werden nur der aktuellen API hinzugefügt.
+Es wird empfohlen, ab sofort die Version 2020-08-01 zu verwenden, um von neuen Funktionen wie [dediziertem Cluster](./logs-dedicated-clusters.md), [kundenseitig verwalteten Schlüsseln](../logs/customer-managed-keys.md), [Private Link](./private-link-security.md) und [Datenexport](./logs-data-export.md) zu profitieren. Außerdem werden neue Features, Funktionen und Optimierungen werden nur der aktuellen API hinzugefügt.
 
 Nach dem 29. Februar 2024 werden ältere API-Versionen als 2020-08-01 nicht mehr von Azure Monitor unterstützt. Wenn Sie kein Upgrade durchführen möchten, werden von älteren Versionen gesendete Anforderungen bis zum 29. Februar 2024 weiterhin vom Azure Monitor-Dienst verarbeitet.
 

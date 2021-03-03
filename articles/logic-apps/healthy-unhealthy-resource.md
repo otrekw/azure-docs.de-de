@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: ed1fe2885b1be28a03251bcfcecd08bdbd35adcf
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 42b33a5b96de7334f8310b040052c633342f5e05
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790071"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712384"
 ---
 # <a name="set-up-logging-to-monitor-logic-apps-in-azure-security-center"></a>Einrichten der Protokollierung zum Überwachen von Logik-Apps in Azure Security Center
 
@@ -24,7 +24,7 @@ Bei der Überwachung Ihrer Logic Apps-Ressourcen in [Microsoft Azure Security Ce
 
 * Ein Azure-Abonnement. Falls Sie noch nicht über ein Abonnement verfügen, müssen Sie ein [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
 * Vorhandene Logik-Apps mit [aktivierter Diagnoseprotokollierung](#enable-diagnostic-logging).
-* Ein Log Analytics-Arbeitsbereich, der zum Aktivieren der Protokollierung für die Logik-App erforderlich ist. [Erstellen Sie zunächst Ihren Arbeitsbereich](../azure-monitor/learn/quick-create-workspace.md), wenn noch kein Arbeitsbereich vorhanden ist.
+* Ein Log Analytics-Arbeitsbereich, der zum Aktivieren der Protokollierung für die Logik-App erforderlich ist. [Erstellen Sie zunächst Ihren Arbeitsbereich](../azure-monitor/logs/quick-create-workspace.md), wenn noch kein Arbeitsbereich vorhanden ist.
 
 ## <a name="enable-diagnostic-logging"></a>Aktivieren der Diagnoseprotokollierung
 

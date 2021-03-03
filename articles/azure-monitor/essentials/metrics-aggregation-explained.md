@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.subservice: metrics
-ms.openlocfilehash: c47c316c82d8c510b4446e4335a219f400d476e4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a88a52163f03d2bffb0c9c4eab53fd814d9554fb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600832"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725865"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Erläuterungen zur Azure Monitor-Metrikaggregation und -anzeige
 
@@ -101,7 +101,7 @@ Metriken werden für jede einzelne Ressource erfasst. Die Ebene, auf der die Met
 
 Wenn Sie eine Metrik im Metrik-Explorer als Diagramm darstellen, haben Sie die Option, das Diagramm nach einer Dimension aufzuteilen.  Das Aufteilen eines Diagramms bedeutet, dass Sie sich die zugrunde liegenden Daten im Detail ansehen und diese Daten als Diagramm oder gefiltert im Metrik-Explorer angezeigt werden.
 
-Beispiel: [Microsoft.ApiManagement/service](../platform/metrics-supported.md#microsoftapimanagementservice) umfasst für viele Metriken die Dimension *Standort*. 
+Beispiel: [Microsoft.ApiManagement/service](./metrics-supported.md#microsoftapimanagementservice) umfasst für viele Metriken die Dimension *Standort*. 
 
 - Eine solche Metrik ist **Kapazität**. Die Dimension *Standort* impliziert, dass das zugrunde liegende System einen Metrikdatensatz für die Kapazität an jedem Standort und nicht lediglich einen Datensatz für die aggregierte Menge speichert. Sie können diese Informationen anschließend in einem Metrikdiagramm abrufen oder aufteilen.  
 
@@ -109,7 +109,7 @@ Beispiel: [Microsoft.ApiManagement/service](../platform/metrics-supported.md#mic
 
 - Eine der flexibleren Metriken, **Anforderungen**, umfasst 7 verschiedene Dimensionen. 
  
-Weitere Informationen zu jeder Metrik und den verfügbaren Dimensionen finden Sie im Artikel zu den von Azure Monitor [unterstützten Metriken](../platform/metrics-supported.md). Zusätzlich werden in der Dokumentation zu jedem Ressourcenanbieter und -typ möglicherweise weitere Informationen zu den Dimensionen und deren Messung bereitgestellt.
+Weitere Informationen zu jeder Metrik und den verfügbaren Dimensionen finden Sie im Artikel zu den von Azure Monitor [unterstützten Metriken](./metrics-supported.md). Zusätzlich werden in der Dokumentation zu jedem Ressourcenanbieter und -typ möglicherweise weitere Informationen zu den Dimensionen und deren Messung bereitgestellt.
 
 Sie können Aufteilung und Filterung gemeinsam verwenden, um ein Problem zu untersuchen. Die nachfolgende Abbildung zeigt die Metrik *Durchschnittliche Datenträgerschreibvorgänge in Bytes* für eine Gruppe von VMs in einer Ressourcengruppe. Es ist ein Rollup aller VMs mit dieser Metrik vorhanden, aber wir möchten möglicherweise wissen, welche VMs für die Spitzen um etwa 6:00 Uhr morgens verantwortlich sind. Handelt es sich um ein und dieselbe VM? Wie viele VMs sind beteiligt?  
 

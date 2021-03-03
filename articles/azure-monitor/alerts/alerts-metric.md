@@ -6,18 +6,18 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: e3a9810aef356b7acf5ae2522645c14ee445812b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bf55d66f7099717079190a538bad8bf777581825
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599678"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723553"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor
 
-Metrikwarnungen in Azure Monitor bieten eine Möglichkeit, benachrichtigt zu werden, wenn eine Ihrer Metriken einen Schwellenwert überschreitet. Die Metrikwarnungen funktionieren mit einer Reihe von mehrdimensionalen Plattformmetriken, benutzerdefinierten Metriken sowie Standard- und benutzerdefinierten Metriken von Application Insights. In diesem Artikel wird beschrieben, wie Sie Metrikwarnungsregeln über das Azure-Portal und die Azure CLI erstellen, anzeigen und verwalten können. Sie können Metrikwarnungsregeln auch mithilfe von Azure Resource Manager-Vorlagen erstellen, die in [einem separaten Artikel](../platform/alerts-metric-create-templates.md) beschrieben sind.
+Metrikwarnungen in Azure Monitor bieten eine Möglichkeit, benachrichtigt zu werden, wenn eine Ihrer Metriken einen Schwellenwert überschreitet. Die Metrikwarnungen funktionieren mit einer Reihe von mehrdimensionalen Plattformmetriken, benutzerdefinierten Metriken sowie Standard- und benutzerdefinierten Metriken von Application Insights. In diesem Artikel wird beschrieben, wie Sie Metrikwarnungsregeln über das Azure-Portal und die Azure CLI erstellen, anzeigen und verwalten können. Sie können Metrikwarnungsregeln auch mithilfe von Azure Resource Manager-Vorlagen erstellen, die in [einem separaten Artikel](./alerts-metric-create-templates.md) beschrieben sind.
 
-Sie können weitere Informationen zur Funktionsweise von Metrikwarnungen in der [Übersicht zu Metrikwarnungen](../platform/alerts-metric-overview.md) erhalten.
+Sie können weitere Informationen zur Funktionsweise von Metrikwarnungen in der [Übersicht zu Metrikwarnungen](./alerts-metric-overview.md) erhalten.
 
 ## <a name="create-with-azure-portal"></a>Erstellen mit dem Azure-Portal
 
@@ -32,7 +32,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie eine Metrikwarnungsregel im Azu
 
 3. Klicken Sie auf **Ziel auswählen** und wählen Sie im geladenen Kontextbereich eine Zielressource aus, für die Sie eine Warnungsregel erstellen möchten. Verwenden Sie die Dropdownlisten **Abonnement** und **Ressourcentyp**, um die zu überwachende Ressource zu finden. Sie können auch die Suchleiste verwenden, um Ihre Ressource zu finden.
 
-4. Wenn die ausgewählte Ressource über Metriken verfügt, für die Sie Warnungen erstellen können, enthält die Option **Verfügbare Signale** unten rechts entsprechende Metriken. Sie können die vollständige Liste der für Metrikwarnungen unterstützten Ressourcentypen in diesem [Artikel](../platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported) einsehen.
+4. Wenn die ausgewählte Ressource über Metriken verfügt, für die Sie Warnungen erstellen können, enthält die Option **Verfügbare Signale** unten rechts entsprechende Metriken. Sie können die vollständige Liste der für Metrikwarnungen unterstützten Ressourcentypen in diesem [Artikel](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported) einsehen.
 
 5. Nachdem Sie eine Zielressource ausgewählt haben, klicken Sie auf **Bedingung hinzufügen**.
 
@@ -45,7 +45,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie eine Metrikwarnungsregel im Azu
     - Wenn der gesuchte Dimensionswert nicht angezeigt wird, klicken Sie auf „Benutzerdefinierten Wert hinzufügen“, um einen benutzerdefinierten Dimensionswert hinzuzufügen.
     - Sie können für alle Dimensionen auch die Option **Alle aktuellen und zukünftigen Werte auswählen** aktivieren. Hierbei wird die Auswahl auf alle aktuellen und zukünftigen Werte für eine Dimension skaliert.
 
-    Die Metrikwarnungsregel wertet die Bedingung für alle ausgewählten Wertekombinationen aus. [Erfahren Sie mehr über die Funktionsweise von Warnungen für mehrdimensionale Metriken](../platform/alerts-metric-overview.md).
+    Die Metrikwarnungsregel wertet die Bedingung für alle ausgewählten Wertekombinationen aus. [Erfahren Sie mehr über die Funktionsweise von Warnungen für mehrdimensionale Metriken](./alerts-metric-overview.md).
 
 9. Wählen Sie den Typ für **Schwellenwert**, den **Operator** und den **Aggregationstyp** aus. Dadurch wird die Logik bestimmt, die die Metrikwarnungsregel auswerten soll.
     - Wenn Sie einen Schwellenwert vom Typ **Statisch** verwenden, legen Sie auch einen **Schwellenwert** fest. Anhand des Metrikdiagramms können Sie einen angemessenen Schwellenwert ermitteln.
@@ -154,8 +154,8 @@ In Metrikwarnungsregeln stehen folgende dedizierte PowerShell-Cmdlets zur Verfü
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen von Metrikwarnungen mithilfe von Azure Resource Manager-Vorlagen](../platform/alerts-metric-create-templates.md)
-- [Informationen zur Funktionsweise von Metrikwarnungen](../platform/alerts-metric-overview.md)
+- [Erstellen von Metrikwarnungen mithilfe von Azure Resource Manager-Vorlagen](./alerts-metric-create-templates.md)
+- [Informationen zur Funktionsweise von Metrikwarnungen](./alerts-metric-overview.md)
 - [Informationen zur Funktionsweise von Metrikwarnungen mit Bedingung „Dynamische Schwellenwerte“](../alerts/alerts-dynamic-thresholds.md)
-- [Informationen zum Webhook-Schema für Metrikwarnungen](../platform/alerts-metric-near-real-time.md#payload-schema)
-- [Behandeln von Problemen mit Metrikwarnungen](../platform/alerts-troubleshoot-metric.md)
+- [Informationen zum Webhook-Schema für Metrikwarnungen](./alerts-metric-near-real-time.md#payload-schema)
+- [Behandeln von Problemen mit Metrikwarnungen](./alerts-troubleshoot-metric.md)

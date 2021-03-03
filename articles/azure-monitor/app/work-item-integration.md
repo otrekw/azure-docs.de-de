@@ -3,12 +3,12 @@ title: Integration von Arbeitselementen (Vorschau) – Application Insights
 description: Erfahren Sie, wie Sie Arbeitselemente in GitHub oder Azure DevOps mit darin eingebetteten Application Insights-Daten erstellen.
 ms.topic: conceptual
 ms.date: 02/9/2021
-ms.openlocfilehash: 0c1d6ffd6a5a39fa49eadc558aa80f365f856df2
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ba0a67bad3ba47191414d6b406ab6cb4e6b7da78
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101017"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731917"
 ---
 # <a name="work-item-integration-preview"></a>Integration von Arbeitselementen (Vorschau)
 
@@ -53,7 +53,7 @@ Zum Bearbeiten der Vorlage navigieren Sie unter *Konfigurieren* zur Registerkart
 
 :::image type="content" source="./media/work-item-integration/edit-template.png" alt-text=" Screenshot der Registerkarte für Arbeitselemente mit ausgewähltem Stiftsymbol für die Bearbeitung":::
 
-Wählen Sie oben das Bearbeitungssymbol ![Bearbeitungssymbol](./media/work-item-integration/edit-icon.png) aus, um mit dem Bearbeiten der Vorlage zu beginnen. Arbeitselementvorlagen basieren auf [Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md). Die Arbeitselementinformationen werden mithilfe der Sprache KQL (Keyword Query Language) generiert. Sie können die Abfragen ändern, um weiteren wichtigen Kontext für Ihr Team hinzuzufügen. Wenn Sie die Bearbeitung abgeschlossen haben, speichern Sie die Arbeitsmappe, indem Sie auf der oberen Symbolleiste das Symbol zum Speichern ![Symbol zum Speichern](./media/work-item-integration/save-icon.png) auswählen.
+Wählen Sie oben das Bearbeitungssymbol ![Bearbeitungssymbol](./media/work-item-integration/edit-icon.png) aus, um mit dem Bearbeiten der Vorlage zu beginnen. Arbeitselementvorlagen basieren auf [Azure Monitor-Arbeitsmappen](../visualize/workbooks-overview.md). Die Arbeitselementinformationen werden mithilfe der Sprache KQL (Keyword Query Language) generiert. Sie können die Abfragen ändern, um weiteren wichtigen Kontext für Ihr Team hinzuzufügen. Wenn Sie die Bearbeitung abgeschlossen haben, speichern Sie die Arbeitsmappe, indem Sie auf der oberen Symbolleiste das Symbol zum Speichern ![Symbol zum Speichern](./media/work-item-integration/save-icon.png) auswählen.
 
 :::image type="content" source="./media/work-item-integration/edit-workbook.png" alt-text=" Screenshot der Arbeitsmappe mit der Arbeitselementvorlage im Bearbeitungsmodus" lightbox="./media/work-item-integration/edit-workbook.png":::
 

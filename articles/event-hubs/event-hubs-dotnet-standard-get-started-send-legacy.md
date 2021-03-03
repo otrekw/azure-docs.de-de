@@ -1,15 +1,15 @@
 ---
 title: Senden und Empfangen von Ereignissen von Azure Event Hubs mithilfe von .NET (alt)
 description: Dieser Artikel enthält eine exemplarische Vorgehensweise zum Erstellen einer .NET Core-App, die Ereignisse über das alte Paket „Microsoft.Azure.EventHubs“ an Azure Event Hubs sendet bzw. von dort empfängt.
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8819a95364bf41c6f9837c3db31a9800968d096c
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 7092c3a4c32fe2ad46b71c5a796ac811e4253dbb
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332160"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653090"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Senden von Ereignissen an oder Empfangen von Ereignissen aus Event Hubs mithilfe von .NET Core (Microsoft.Azure.EventHubs)
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der .NET Core-Bibliothek **Microsoft.Azure.EventHubs** Ereignisse an einen Event Hub senden bzw. von diesem empfangen.
@@ -36,7 +36,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine .NET Core-Anwendung zum Senden vo
 
 ### <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
 
-Starten Sie Visual Studio. Klicken Sie im Menü **Datei** auf **Neu**und dann auf **Projekt**. Erstellen Sie eine .NET Core-Konsolenanwendung.
+Starten Sie Visual Studio. Klicken Sie im Menü **Datei** auf **Neu** und dann auf **Projekt**. Erstellen Sie eine .NET Core-Konsolenanwendung.
 
 ![Neues Projekt](./media/event-hubs-dotnet-standard-getstarted-send/netcoresnd.png)
 
@@ -198,7 +198,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine .NET Core-Konsolenanwendung schre
 
 ### <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
 
-Starten Sie Visual Studio. Klicken Sie im Menü **Datei** auf **Neu**und dann auf **Projekt**. Erstellen Sie eine .NET Core-Konsolenanwendung.
+Starten Sie Visual Studio. Klicken Sie im Menü **Datei** auf **Neu** und dann auf **Projekt**. Erstellen Sie eine .NET Core-Konsolenanwendung.
 
 ![Neues Projekt für den Empfang](./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcorercv.png)
 

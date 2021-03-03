@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 7534052412c2bee0f31e352fc577d376c11215c3
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: cb6b8e310f46cd98c4d3343d44fd83a3cc714a32
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804931"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730710"
 ---
 # <a name="gpu-vms-for-your-azure-stack-edge-pro-device"></a>GPU-VMs für Ihr Azure Stack Edge Pro-Gerät
 
@@ -110,8 +110,8 @@ Führen Sie die folgenden Schritte aus, um auf Ihrem Gerät GPU-VMs bereitzustel
 1. Nachdem die VM erstellt wurde, stellen Sie die GPU-Erweiterung mithilfe der Erweiterungsvorlage bereit. Informationen für Linux-VMs finden Sie unter [Installieren der GPU-Erweiterung für Linux](#gpu-extension-for-linux) und für Windows-VMs unter [Installieren der GPU-Erweiterung für Windows](#gpu-extension-for-windows).
 
 1. Stellen Sie zum Überprüfen der Installation der GPU-Erweiterung eine Verbindung mit der GPU-VM her:
-    1. Wenn Sie eine Windows-VM verwenden, befolgen Sie die Schritte unter [Herstellen einer Verbindung mit einer Windows-VM](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-windows-vm). [Überprüfen Sie die Installation.](#verify-windows-driver-installation)
-    1. Wenn Sie eine Linux-VM verwenden, befolgen Sie die Schritte unter [Herstellen einer Verbindung mit einer Linux-VM](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-linux-vm). [Überprüfen Sie die Installation.](#verify-linux-driver-installation)
+    1. Wenn Sie eine Windows-VM verwenden, befolgen Sie die Schritte unter [Herstellen einer Verbindung mit einer Windows-VM](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-windows-vm). [Überprüfen Sie die Installation.](#verify-windows-driver-installation)
+    1. Wenn Sie eine Linux-VM verwenden, befolgen Sie die Schritte unter [Herstellen einer Verbindung mit einer Linux-VM](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-linux-vm). [Überprüfen Sie die Installation.](#verify-linux-driver-installation)
 
 1. Bei Bedarf können Sie das Computenetzwerk wieder auf die gewünschte Konfiguration umstellen. 
 
@@ -545,7 +545,7 @@ Die Ausgabe der Erweiterungsausführung wird in der folgenden Datei protokollier
 
 Führen Sie diese Schritte aus, um die Treiberinstallation zu überprüfen:
 
-1. Stellen Sie eine Verbindung mit der GPU-VM her. Befolgen Sie die Anweisungen unter [Herstellen einer Verbindung mit einer Linux-VM](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-linux-vm). 
+1. Stellen Sie eine Verbindung mit der GPU-VM her. Befolgen Sie die Anweisungen unter [Herstellen einer Verbindung mit einer Linux-VM](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-linux-vm). 
 
     Hier ist eine Beispielausgabe:
 

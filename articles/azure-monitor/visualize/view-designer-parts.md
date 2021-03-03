@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 7b670cafa4d643e37fae068a4c0033fc97a96ccd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 074c5dda8ff8d5f837e8ea2a85c183c69421bedb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599548"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710871"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Referenzleitfaden zu Ansicht-Designer-Visualisierungskomponenten in Azure Monitor
 Mithilfe des Ansicht-Designers in Azure Monitor können Sie verschiedene benutzerdefinierten Ansichten im Azure-Portal erstellen, in denen Sie Daten in Ihrem Log Analytics-Arbeitsbereich visualisieren können. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungsteilen.
@@ -39,7 +39,7 @@ Die verfügbaren Ansicht-Designer-Kacheltypen werden in der folgenden Tabelle be
 Die nächsten Abschnitte beschreiben die Kacheltypen und ihre Eigenschaften ausführlich.
 
 > [!NOTE]
-> Teile der Ansichten basieren auf den [Protokollabfragen](../log-query/log-query-overview.md) in Ihrem Log Analytics-Arbeitsbereich. [Ressourcenübergreifende Abfragen](../log-query/cross-workspace-query.md) werden derzeit nicht zum Abrufen von Daten aus Application Insights unterstützt.
+> Teile der Ansichten basieren auf den [Protokollabfragen](../logs/log-query-overview.md) in Ihrem Log Analytics-Arbeitsbereich. [Ressourcenübergreifende Abfragen](../logs/cross-workspace-query.md) werden derzeit nicht zum Abrufen von Daten aus Application Insights unterstützt.
 
 ## <a name="list-of-queries-part"></a>Komponente mit der Liste der Abfragen
 Die Komponente für die Liste der Abfragen zeigt eine Liste der Protokollabfragen an. Sie können einzelne Abfragen auswählen, um die Ergebnisse anzuzeigen. Die Ansicht enthält standardmäßig eine einzelne Abfrage, und Sie können **+ Abfrage** wählen, um zusätzliche Abfragen hinzuzufügen.
@@ -318,7 +318,7 @@ Die Trennlinie für Name und Wert ist ein einstelliges Trennzeichen, um die Text
 Beispiel: Eine Eigenschaft namens *Standort* weist Werte wie *Redmond-Gebäude 41* und *Bellevue-Gebäude 12* auf. Sie können eine Bindestrich (-) als Trennlinie für Name und Wert festlegen und *Ort-Gebäude* als Namen angeben. Durch diesen Ansatz wird jeder Wert in die beiden Eigenschaften *Ort* und *Gebäude* gliedert.
 
 ### <a name="click-through-navigation"></a><a name="click-through-navigation"></a>Click-through navigation (Navigation per Klick)
-Mit der Navigation per Klick wird definiert, welche Aktion durchgeführt wird, wenn Sie in einer Ansicht auf einen Header oder einen Listeneintrag klicken.  Hierdurch wird entweder eine Abfrage in [Log Analytics](../log-query/log-query-overview.md) geöffnet oder eine andere Ansicht gestartet.
+Mit der Navigation per Klick wird definiert, welche Aktion durchgeführt wird, wenn Sie in einer Ansicht auf einen Header oder einen Listeneintrag klicken.  Hierdurch wird entweder eine Abfrage in [Log Analytics](../logs/log-query-overview.md) geöffnet oder eine andere Ansicht gestartet.
 
 In der folgenden Tabelle sind die Einstellungen für die Navigation per Klick beschrieben.
 
@@ -357,4 +357,4 @@ In der folgenden Tabelle sind Einstellungen für Schwellenwerte beschrieben:
 | Color |Die Farbe, die den Schwellenwert angibt. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über [Protokollabfragen](../log-query/log-query-overview.md) zur Unterstützung der Abfragen in Visualisierungskomponenten.
+* Erfahren Sie mehr über [Protokollabfragen](../logs/log-query-overview.md) zur Unterstützung der Abfragen in Visualisierungskomponenten.

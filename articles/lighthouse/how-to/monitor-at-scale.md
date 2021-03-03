@@ -3,12 +3,12 @@ title: Überwachen von delegierten Ressourcen in beliebigem Umfang
 description: Erfahren Sie, wie Sie Azure Monitor-Protokolle für alle von Ihnen verwalteten Mandanten auf skalierbare Weise verwenden.
 ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: aadd14bb3e4aad61fb2afc0735b5714deedfe301
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 98fd984492276dbdfbc2f8001bca19560764a2a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593113"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742584"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Überwachen von delegierten Ressourcen in beliebigem Umfang
 
@@ -49,7 +49,7 @@ Nachdem Sie Ihre Richtlinien bereitgestellt haben, werden Daten in die Log Analy
 
 Sie können [Warnungen](../../azure-monitor/alerts/alerts-overview.md) für die delegierten Abonnements in den von Ihnen verwalteten Kundenmandanten anzeigen.
 
-Von Ihrem verwaltenden Mandanten aus können Sie [Aktivitätsprotokollwarnungen im Azure-Portal oder über APIs und Verwaltungstools erstellen, anzeigen und verwalten](../../azure-monitor/platform/alerts-activity-log.md).
+Von Ihrem verwaltenden Mandanten aus können Sie [Aktivitätsprotokollwarnungen im Azure-Portal oder über APIs und Verwaltungstools erstellen, anzeigen und verwalten](../../azure-monitor/alerts/alerts-activity-log.md).
 
 Filtern Sie die Warnungen mit einer [Azure Resource Graph](../../governance/resource-graph/overview.md)-Abfrage, um die Warnungen für mehrere Kunden zu aktualisieren. Sie können die Abfrage an Ihr Dashboard anheften und alle zugehörigen Kunden und Abonnements auswählen. Mit der folgenden Abfrage werden z. B. Warnungen mit den Schweregraden 0 und 1 angezeigt, die alle 60 Minuten aktualisiert werden.
 

@@ -6,15 +6,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 9f8ad1e9a3c69d4ab629694fb18eab4bce95bb38
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4d4f9b7caed81f8c01e7e2d7e9f94ec3acf3ba92
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597821"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737340"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>Beispiele für Resource Manager-Vorlagen für Agents in Azure Monitor
-Dieser Artikel enthält Beispiele für [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) zum Bereitstellen und Konfigurieren des [Log Analytics-Agents](../platform/log-analytics-agent.md) und der [Diagnoseerweiterung](../platform/diagnostics-extension-overview.md) für virtuelle Computer in Azure Monitor. Jedes Beispiel umfasst eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
+Dieser Artikel enthält Beispiele für [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) zum Bereitstellen und Konfigurieren des [Log Analytics-Agents](./log-analytics-agent.md) und der [Diagnoseerweiterung](./diagnostics-extension-overview.md) für virtuelle Computer in Azure Monitor. Jedes Beispiel umfasst eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
@@ -421,7 +421,7 @@ Im folgenden Beispiel wird der Log Analytics-Agent auf einem virtuellen Linux-Co
 In den Beispielen in diesem Abschnitt wird die Diagnoseerweiterung auf virtuellen Windows- und Linux-Computern in Azure installiert und für die Datensammlung konfiguriert.
 
 ### <a name="windows"></a>Windows
-Im folgenden Beispiel wird die Diagnoseerweiterung auf einem virtuellen Windows-Computer in Azure aktiviert und konfiguriert. Ausführliche Informationen zur Konfiguration finden Sie unter [Schema der Diagnoseerweiterung für Windows](../platform/diagnostics-extension-schema-windows.md).
+Im folgenden Beispiel wird die Diagnoseerweiterung auf einem virtuellen Windows-Computer in Azure aktiviert und konfiguriert. Ausführliche Informationen zur Konfiguration finden Sie unter [Schema der Diagnoseerweiterung für Windows](./diagnostics-extension-schema-windows.md).
 
 #### <a name="template-file"></a>Vorlagendatei
 
@@ -807,6 +807,6 @@ Im folgenden Beispiel wird die Diagnoseerweiterung auf einem virtuellen Linux-Co
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Rufen Sie weitere Beispielvorlagen für Azure Monitor ab](../samples/resource-manager-samples.md).
-* [Erfahren Sie mehr über den Log Analytics-Agent](../platform/log-analytics-agent.md).
-* [Erfahren Sie mehr über die Diagnoseerweiterung](../platform/diagnostics-extension-overview.md).
+* [Rufen Sie weitere Beispielvorlagen für Azure Monitor ab](../resource-manager-samples.md).
+* [Erfahren Sie mehr über den Log Analytics-Agent](./log-analytics-agent.md).
+* [Erfahren Sie mehr über die Diagnoseerweiterung](./diagnostics-extension-overview.md).

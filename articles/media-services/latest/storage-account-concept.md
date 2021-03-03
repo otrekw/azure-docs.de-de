@@ -42,7 +42,7 @@ Zum Schutz Ihrer im Ruhezustand befindlichen Medienobjekte sollten die Medienobj
 
 ## <a name="storage-account-double-encryption"></a>Speicherkonto: Mehrfachverschlüsselung
 
-Speicherkonten unterstützen die Mehrfachverschlüsselung, aber die zweite Ebene muss explizit aktiviert werden. Weitere Informationen finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#doubly-encrypt-data-with-infrastructure-encryption).  
+Speicherkonten unterstützen die Mehrfachverschlüsselung, aber die zweite Ebene muss explizit aktiviert werden. Weitere Informationen finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption).  
 
 ## <a name="storage-account-errors"></a>Speicherkontofehler
 

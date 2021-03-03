@@ -152,8 +152,6 @@
               href: configure-server-vrealize-automation-endpoint.md
             - name: Migrieren virtueller Workload-Computer zu einer privaten Cloud
               href: migrate-workloads.md
-            - name: Migration mit Azure Data Box
-              href: migration-using-azure-data-box.md
             - name: Sicherstellen der Hochverfügbarkeit von Anwendung in VMware in Azure
               href: ensuring-high-availability.md
             - name: Auswählen einer Lastenausgleichslösung

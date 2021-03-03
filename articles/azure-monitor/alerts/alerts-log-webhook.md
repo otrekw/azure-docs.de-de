@@ -7,16 +7,16 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: f90709431ea54a640554b642b96a63c7edac472e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19cf900b8e943b4f9ee69a6241ebc7ddb5a3dba6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601432"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704394"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
 
-[Protokollwarnungen](alerts-log.md) unterstützen das [Konfigurieren von Webhookaktionsgruppen](../platform/action-groups.md#webhook). In diesem Artikel wird beschrieben, welche Eigenschaften verfügbar sind und wie Sie einen benutzerdefinierten JSON-Webhook konfigurieren.
+[Protokollwarnungen](alerts-log.md) unterstützen das [Konfigurieren von Webhookaktionsgruppen](./action-groups.md#webhook). In diesem Artikel wird beschrieben, welche Eigenschaften verfügbar sind und wie Sie einen benutzerdefinierten JSON-Webhook konfigurieren.
 
 > [!NOTE]
 > Der benutzerdefinierte JSON-Webhook wird derzeit in der API-Version `2020-05-01-preview` nicht unterstützt.
@@ -47,7 +47,7 @@ Standardmäßige Webhookaktionseigenschaften und deren benutzerdefinierte JSON-P
 | *SearchQuery* |#searchquery |Von der Warnungsregel verwendete Protokollsuchabfrage |
 | *SearchResults* |"IncludeSearchResults": true|Hierbei handelt es sich um die von der Abfrage als JSON-Tabelle zurückgegebenen Datensätze, beschränkt auf die ersten 1.000 Datensätze. "IncludeSearchResults": true wird in einer benutzerdefinierten JSON-Webhookdefinition als Eigenschaft der obersten Ebene hinzugefügt. |
 | *Dimensionen* |"IncludeDimensions": true|Hierbei handelt es sich um Dimensionswertkombinationen, die diese Warnung ausgelöst haben, als JSON-Abschnitt. "IncludeDimensions": true wird in einer benutzerdefinierten JSON-Webhookdefinition als Eigenschaft der obersten Ebene hinzugefügt. |
-| *Warnungstyp*| #alerttype | Der Typ der konfigurierten Protokollwarnungsregel als [metrische Maßeinheit oder Anzahl von Ergebnissen](../platform/alerts-unified-log.md#measure).|
+| *Warnungstyp*| #alerttype | Der Typ der konfigurierten Protokollwarnungsregel als [metrische Maßeinheit oder Anzahl von Ergebnissen](./alerts-unified-log.md#measure).|
 | *WorkspaceID* |#workspaceid |ID Ihres Log Analytics-Arbeitsbereichs. |
 | *Anwendungs-ID* |#applicationid |ID Ihrer Application Insights-App. |
 | *Abonnement-ID* |#subscriptionid |ID des von Ihnen verwendeten Azure-Abonnements. |
@@ -84,7 +84,7 @@ Dieser Abschnitt zeigt Beispielnutzlasten für Webhooks für Protokollwarnungen.
 Die folgende Beispielnutzlast ist für eine Standardwebhookaktion gedacht, die für Warnungen verwendet wird, die auf Log Analytics basieren:
 
 > [!NOTE]
-> Der Wert des Felds „Severity“ ändert sich, wenn Sie [von der älteren Log Analytics-Warnungs-API](../platform/api-alerts.md) zur [aktuellen scheduledQueryRules-API gewechselt haben](../alerts/alerts-log-api-switch.md).
+> Der Wert des Felds „Severity“ ändert sich, wenn Sie [von der älteren Log Analytics-Warnungs-API](./api-alerts.md) zur [aktuellen scheduledQueryRules-API gewechselt haben](../alerts/alerts-log-api-switch.md).
 
 ```json
 {
@@ -318,8 +318,8 @@ Die folgende Beispielnutzlast ist für eine benutzerdefinierte Webhookaktion fü
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über [Protokollwarnungen in Azure-Warnungen](../platform/alerts-unified-log.md).
+- Erfahren Sie mehr über [Protokollwarnungen in Azure-Warnungen](./alerts-unified-log.md).
 - Grundlegendes zum [Verwalten von Protokollwarnungen in Azure](alerts-log.md).
-- Erstellen und Verwalten von [Aktionsgruppen in Azure](../platform/action-groups.md).
-- Erfahren Sie mehr über [Application Insights](../log-query/log-query-overview.md).
-- Weitere Informationen zum [Analysieren von Protokolldaten in Azure Monitor](../log-query/log-query-overview.md). 
+- Erstellen und Verwalten von [Aktionsgruppen in Azure](./action-groups.md).
+- Erfahren Sie mehr über [Application Insights](../logs/log-query-overview.md).
+- Weitere Informationen zum [Analysieren von Protokolldaten in Azure Monitor](../logs/log-query-overview.md).

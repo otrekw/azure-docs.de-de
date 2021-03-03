@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: 6b1403b12c05420c6296cbafd0d4ee0bc02f8dd4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 665137688a000433a9101a77342fa6f9350d7141
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601829"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714322"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Erstellen einer Protokollwarnung anhand einer Resource Manager-Vorlage
 
-Mithilfe von Protokollwarnungen können Benutzer eine [Log Analytics](../log-query/log-analytics-tutorial.md)-Abfrage verwenden, um Ressourcenprotokolle mit einer bestimmten Häufigkeit auszuwerten und basierend auf den Ergebnissen eine Warnung auszulösen. Durch Regeln können über [Aktionsgruppen](../platform/action-groups.md) einzelne oder mehrere Aktionen ausgelöst werden. Weitere Informationen zu Funktionen und zur Terminologie von Protokollwarnungen finden Sie [hier](../platform/alerts-unified-log.md).
+Mithilfe von Protokollwarnungen können Benutzer eine [Log Analytics](../logs/log-analytics-tutorial.md)-Abfrage verwenden, um Ressourcenprotokolle mit einer bestimmten Häufigkeit auszuwerten und basierend auf den Ergebnissen eine Warnung auszulösen. Durch Regeln können über [Aktionsgruppen](./action-groups.md) einzelne oder mehrere Aktionen ausgelöst werden. Weitere Informationen zu Funktionen und zur Terminologie von Protokollwarnungen finden Sie [hier](./alerts-unified-log.md).
 
-In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) [Protokollwarnungen](../platform/alerts-unified-log.md) in Azure Monitor konfigurieren können. Mit Resource Manager-Vorlagen können Sie programmgesteuert konsistent und reproduzierbar Ihre Umgebungen übergreifende Warnungen einrichten. Protokollwarnungen werden im Ressourcenanbieter `Microsoft.Insights/scheduledQueryRules` erstellt. Weitere Informationen finden Sie in der API-Referenz für die [API für Regeln für geplante Abfragen](/rest/api/monitor/scheduledqueryrules/).
+In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) [Protokollwarnungen](./alerts-unified-log.md) in Azure Monitor konfigurieren können. Mit Resource Manager-Vorlagen können Sie programmgesteuert konsistent und reproduzierbar Ihre Umgebungen übergreifende Warnungen einrichten. Protokollwarnungen werden im Ressourcenanbieter `Microsoft.Insights/scheduledQueryRules` erstellt. Weitere Informationen finden Sie in der API-Referenz für die [API für Regeln für geplante Abfragen](/rest/api/monitor/scheduledqueryrules/).
 
 Die grundlegenden Schritte lauten wie folgt:
 
@@ -26,15 +26,15 @@ Die grundlegenden Schritte lauten wie folgt:
 4. Stellen Sie die Vorlage mithilfe einer beliebigen Bereitstellungsmethode bereit.
 
 > [!NOTE]
-> Protokolldaten aus einem [Log Analytics-Arbeitsbereich](../log-query/log-analytics-tutorial.md) können an den Azure Monitor-Metrikspeicher gesendet werden. Metrikwarnungen weisen ein [anderes Verhalten](../platform/alerts-metric-overview.md) auf. Je nach den Daten, mit denen Sie arbeiten, kann dies wünschenswert sein. Informationen zu den Protokollen, die Sie an Metriken weiterleiten können, und der zugehörigen Vorgehensweise finden Sie unter [Metrikwarnungen für Protokolle](../platform/alerts-metric-logs.md).
+> Protokolldaten aus einem [Log Analytics-Arbeitsbereich](../logs/log-analytics-tutorial.md) können an den Azure Monitor-Metrikspeicher gesendet werden. Metrikwarnungen weisen ein [anderes Verhalten](./alerts-metric-overview.md) auf. Je nach den Daten, mit denen Sie arbeiten, kann dies wünschenswert sein. Informationen zu den Protokollen, die Sie an Metriken weiterleiten können, und der zugehörigen Vorgehensweise finden Sie unter [Metrikwarnungen für Protokolle](./alerts-metric-logs.md).
 
 > [!NOTE]
-> Protokollwarnungen für Log Analytics wurden bisher über die ältere [Log Analytics-Warnungs-API](../platform/api-alerts.md) und über Legacyvorlagen von [gespeicherten Log Analytics-Suchen und -Warnungen](../insights/solutions.md) verwaltet. [Informieren Sie sich über den Wechsel zur aktuellen ScheduledQueryRules-API](alerts-log-api-switch.md).
+> Protokollwarnungen für Log Analytics wurden bisher über die ältere [Log Analytics-Warnungs-API](./api-alerts.md) und über Legacyvorlagen von [gespeicherten Log Analytics-Suchen und -Warnungen](../insights/solutions.md) verwaltet. [Informieren Sie sich über den Wechsel zur aktuellen ScheduledQueryRules-API](alerts-log-api-switch.md).
 
 
 ## <a name="simple-template-up-to-api-version-2018-04-16"></a>Einfache Vorlage (bis API-Version 2018-04-16)
 
-Die folgende Vorlage für die [Erstellung von Regeln für geplante Abfragen](/rest/api/monitor/scheduledqueryrules/createorupdate) basiert auf der [Anzahl von Ergebnisprotokollwarnungen](../platform/alerts-unified-log.md#count-of-the-results-table-rows). Sie enthält Beispieldaten als Variablen.
+Die folgende Vorlage für die [Erstellung von Regeln für geplante Abfragen](/rest/api/monitor/scheduledqueryrules/createorupdate) basiert auf der [Anzahl von Ergebnisprotokollwarnungen](./alerts-unified-log.md#count-of-the-results-table-rows). Sie enthält Beispieldaten als Variablen.
 
 ```json
 {
@@ -109,7 +109,7 @@ Dieser JSON-Code kann mit dem [Azure Resource Manager im Azure-Portal](../../azu
 
 ## <a name="template-with-cross-resource-query-up-to-api-version-2018-04-16"></a>Vorlage mit ressourcenübergreifender Abfrage (bis API-Version 2018-04-16)
 
-Die folgende Vorlage für die [Erstellung von Regeln für geplante Abfragen](/rest/api/monitor/scheduledqueryrules/createorupdate), die auf der [Messung von Metriken](../platform/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) basiert, führt eine [ressourcenübergreifende](../log-query/cross-workspace-query.md) Abfrage aus. Sie enthält Beispieldaten als Variablen.
+Die folgende Vorlage für die [Erstellung von Regeln für geplante Abfragen](/rest/api/monitor/scheduledqueryrules/createorupdate), die auf der [Messung von Metriken](./alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) basiert, führt eine [ressourcenübergreifende](../logs/cross-workspace-query.md) Abfrage aus. Sie enthält Beispieldaten als Variablen.
 
 ```json
 {
@@ -432,7 +432,7 @@ Dieser JSON-Code kann mit dem [Azure Resource Manager im Azure-Portal](../../azu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informieren Sie sich über [Protokollwarnungen](../platform/alerts-unified-log.md).
-* Informieren Sie sich über das [Verwalten von Protokollwarnungen](../platform/alerts-log.md).
-* Machen Sie sich mit [Webhookaktionen für Protokollwarnungen](../platform/alerts-log-webhook.md) vertraut.
-* Weitere Informationen zum [Analysieren von Protokolldaten in Azure Monitor](../log-query/log-query-overview.md).
+* Informieren Sie sich über [Protokollwarnungen](./alerts-unified-log.md).
+* Informieren Sie sich über das [Verwalten von Protokollwarnungen](./alerts-log.md).
+* Machen Sie sich mit [Webhookaktionen für Protokollwarnungen](./alerts-log-webhook.md) vertraut.
+* Weitere Informationen zum [Analysieren von Protokolldaten in Azure Monitor](../logs/log-query-overview.md).

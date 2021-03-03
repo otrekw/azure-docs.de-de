@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie Azure Functions-Telemetriedaten anzeigen
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 56af6af6f4204a819c06fd97cda357dca20a19b0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d06fe64ddc0475b5ca7d9c16876c8dfc9acda544
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591178"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729367"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Analysieren von Azure Functions-Telemetriedaten in Application Insights 
 
@@ -142,14 +142,14 @@ Die folgenden Telemetrieabfragen sind spezifisch für Metriken, die sich im Verb
 
 ## <a name="azure-monitor-metrics"></a>Azure Monitor-Metriken
 
-Zusätzlich zu den von Application Insights erfassten Telemetriedaten können Sie auch Daten über die Ausführung von Funktions-Apps von den [Azure Monitor-Metriken](../azure-monitor/platform/data-platform-metrics.md) erhalten. Neben den herkömmlichen [für App Service-Apps verfügbaren Metriken](../app-service/web-sites-monitor.md#understand-metrics) gibt es zwei spezifische Metriken für Azure Functions, die interessant sind:
+Zusätzlich zu den von Application Insights erfassten Telemetriedaten können Sie auch Daten über die Ausführung von Funktions-Apps von den [Azure Monitor-Metriken](../azure-monitor/essentials/data-platform-metrics.md) erhalten. Neben den herkömmlichen [für App Service-Apps verfügbaren Metriken](../app-service/web-sites-monitor.md#understand-metrics) gibt es zwei spezifische Metriken für Azure Functions, die interessant sind:
 
 | Metrik | BESCHREIBUNG |
 | ---- | ---- |
 | **FunctionExecutionCount** | Die Anzahl der Funktionsausführungen gibt an, wie oft Ihre Funktions-App ausgeführt wurde. Dies korreliert mit der Anzahl der Ausführung einer Funktion in Ihrer App. Diese Metrik für derzeit nicht für die App Service-Tarife Premium und Dedicated unter Linux unterstützt. |
 | **FunctionExecutionUnits** | Die Funktionsausführungseinheiten sind eine Kombination aus Ausführungszeit und der Arbeitsspeicherauslastung.  Arbeitsspeicherdaten sind keine aktuell in Azure Monitor verfügbare Metrik. Wenn Sie jedoch die Speichernutzung Ihrer App optimieren möchten, können Sie die von Application Insights erfassten Daten der Leistungsindikatoren verwenden. Diese Metrik für derzeit nicht für die App Service-Tarife Premium und Dedicated unter Linux unterstützt.|
 
-Weitere Informationen zum Berechnen der Kosten eines Verbrauchstarifs mithilfe von Application Insights-Daten finden Sie unter [Schätzen der Kosten des Verbrauchstarifs](functions-consumption-costs.md). Weitere Informationen über die Verwendung des Metrik-Explorers finden Sie unter [Erste Schritte mit dem Metrik-Explorer von Azure](../azure-monitor/platform/metrics-getting-started.md).
+Weitere Informationen zum Berechnen der Kosten eines Verbrauchstarifs mithilfe von Application Insights-Daten finden Sie unter [Schätzen der Kosten des Verbrauchstarifs](functions-consumption-costs.md). Weitere Informationen über die Verwendung des Metrik-Explorers finden Sie unter [Erste Schritte mit dem Metrik-Explorer von Azure](../azure-monitor/essentials/metrics-getting-started.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -158,4 +158,3 @@ Weitere Informationen zur Überwachung in Azure Functions finden Sie unter:
 
 + [Überwachen von Azure Functions](functions-monitoring.md)
 + [Konfigurieren der Überwachung für Azure Functions](configure-monitoring.md)
-

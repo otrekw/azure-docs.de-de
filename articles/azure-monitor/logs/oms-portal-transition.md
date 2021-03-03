@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 0fc57b87e5ec1d7f47d9f9d74698af56172246ec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ab7d4bf0b8d8ca32dafe6f19b46047eca89a7734
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601704"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733974"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Wechsel des OMS-Portals zu Azure
 
@@ -64,7 +64,7 @@ In beiden Fällen muss Ihr Administrator Ihnen die geeignete Rolle aus der folge
  
 
 ## <a name="new-workspaces"></a>Neue Arbeitsbereiche
-Sie können im OMS-Portal keine neuen Arbeitsbereiche mehr erstellen. Folgen Sie den Anweisungen unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../learn/quick-create-workspace.md), um einen neuen Arbeitsbereich im Azure-Portal zu erstellen.
+Sie können im OMS-Portal keine neuen Arbeitsbereiche mehr erstellen. Folgen Sie den Anweisungen unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](./quick-create-workspace.md), um einen neuen Arbeitsbereich im Azure-Portal zu erstellen.
 
 ## <a name="changes-to-alerts"></a>Änderungen bei Warnungen
 
@@ -73,9 +73,9 @@ Sie können im OMS-Portal keine neuen Arbeitsbereiche mehr erstellen. Folgen Sie
 Warnungen wurden [in das Azure-Portal erweitert](../alerts/alerts-unified-log.md). Vorhandene Warnungen werden weiterhin im OMS-Portal aufgelistet, aber Sie können sie nur im Azure-Portal verwalten. Wenn Sie programmgesteuert mithilfe der Log Analytics-REST-API für Warnungen oder der Log Analytics-Warnungsressourcenvorlage auf Warnungen zugreifen, müssen Sie in Ihren API-Aufrufen, Azure Resource Manager-Vorlagen und PowerShell-Befehlen anstelle von Aktionen nun Aktionsgruppen verwenden.
 
 ### <a name="alert-management-solution"></a>Lösung „Alert Management“
-Die [Warnungsverwaltungslösung](../platform/alert-management-solution.md) ist entgegen einer früheren Ankündigung weiterhin im Azure-Portal verfügbar und wird weiterhin vollständig unterstützt. Die Lösung kann weiterhin über den Azure Marketplace installiert werden.
+Die [Warnungsverwaltungslösung](../insights/alert-management-solution.md) ist entgegen einer früheren Ankündigung weiterhin im Azure-Portal verfügbar und wird weiterhin vollständig unterstützt. Die Lösung kann weiterhin über den Azure Marketplace installiert werden.
 
-Auch wenn die Warnungsverwaltungslösung weiterhin verfügbar ist, empfehlen wir die Verwendung der [einheitlichen Warnungsoberfläche von Azure Monitor](../platform/alerts-overview.md), um alle Warnungen in Azure zu visualisieren und zu verwalten. Diese neue Oberfläche aggregiert Warnungen aus mehreren Quellen nativ in Azure (einschließlich Protokollwarnungen aus Log Analytics). Wenn Sie die einheitliche Warnungsoberfläche von Azure Monitor verwenden, wird die Warnungsverwaltungslösung nur noch für die Integration von Warnungen aus System Center Operation Manager in Azure benötigt. Auf der einheitlichen Warnungsoberfläche von Azure Monitor können Sie sich Verteilungen Ihrer Warnungen ansehen, die automatisierte Gruppierung zusammengehöriger Warnungen mithilfe intelligenter Gruppen nutzen und Warnungen für mehrere Abonnements unter Verwendung umfangreicher Filter anzeigen. Zukünftige Verbesserungen bei der Warnungsverwaltung werden in erster Linie in dieser neuen Umgebung bereitgestellt. 
+Auch wenn die Warnungsverwaltungslösung weiterhin verfügbar ist, empfehlen wir die Verwendung der [einheitlichen Warnungsoberfläche von Azure Monitor](../alerts/alerts-overview.md), um alle Warnungen in Azure zu visualisieren und zu verwalten. Diese neue Oberfläche aggregiert Warnungen aus mehreren Quellen nativ in Azure (einschließlich Protokollwarnungen aus Log Analytics). Wenn Sie die einheitliche Warnungsoberfläche von Azure Monitor verwenden, wird die Warnungsverwaltungslösung nur noch für die Integration von Warnungen aus System Center Operation Manager in Azure benötigt. Auf der einheitlichen Warnungsoberfläche von Azure Monitor können Sie sich Verteilungen Ihrer Warnungen ansehen, die automatisierte Gruppierung zusammengehöriger Warnungen mithilfe intelligenter Gruppen nutzen und Warnungen für mehrere Abonnements unter Verwendung umfangreicher Filter anzeigen. Zukünftige Verbesserungen bei der Warnungsverwaltung werden in erster Linie in dieser neuen Umgebung bereitgestellt. 
 
 Die von der Warnungsverwaltungslösung gesammelten Daten (Datensätze vom Typ „Warnung“) sind weiterhin in Log Analytics verfügbar, solange die Lösung für den Arbeitsbereich installiert ist. 
 
@@ -83,7 +83,7 @@ Die von der Warnungsverwaltungslösung gesammelten Daten (Datensätze vom Typ �
 Der Lebenszyklus der mobilen OMS-App endet zusammen mit dem OMS-Portal. Statt die mobile OMS-App zu verwenden, können Sie für den Zugriff auf Informationen über Ihre IT-Infrastruktur, Dashboards und gespeicherte Abfragen direkt über den Browser auf Ihrem mobilen Gerät auf das Azure-Portal zugreifen. Um Warnungen zu erhalten, sollten Sie [Azure-Aktionsgruppen](../alerts/action-groups.md) konfigurieren, damit Sie Benachrichtigungen in Form einer SMS oder eines Sprachanrufs empfangen.
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights-Connector und -Lösung
-[Application Insights-Connector](../logs/app-insights-connector.md) bietet eine Möglichkeit, Application Insights-Daten in einen Log Analytics-Arbeitsbereich einzuschließen. Diese Datenduplizierung war für die Sichtbarkeit in der gesamten Infrastruktur und für alle Anwendungsdaten erforderlich. Dank der Unterstützung der erweiterten Datenaufbewahrung von Application Insights (März 2019) und der Möglichkeit zum Ausführen [ressourcenübergreifender Abfragen](../logs/cross-workspace-query.md) sowie dem [Anzeigen mehrerer Azure Monitor Application Insights-Ressourcen](../log-query/unify-app-resource-data.md) müssen keine Daten aus Ihren Application Insights-Ressourcen dupliziert und an Log Analytics gesendet werden. Darüber hinaus sendet der Connector einen Teil der Anwendungseigenschaften an Log Analytics, und die ressourcenübergreifenden Abfragen sorgen für mehr Flexibilität.  
+[Application Insights-Connector](../logs/app-insights-connector.md) bietet eine Möglichkeit, Application Insights-Daten in einen Log Analytics-Arbeitsbereich einzuschließen. Diese Datenduplizierung war für die Sichtbarkeit in der gesamten Infrastruktur und für alle Anwendungsdaten erforderlich. Dank der Unterstützung der erweiterten Datenaufbewahrung von Application Insights (März 2019) und der Möglichkeit zum Ausführen [ressourcenübergreifender Abfragen](../logs/cross-workspace-query.md) sowie dem [Anzeigen mehrerer Azure Monitor Application Insights-Ressourcen](./unify-app-resource-data.md) müssen keine Daten aus Ihren Application Insights-Ressourcen dupliziert und an Log Analytics gesendet werden. Darüber hinaus sendet der Connector einen Teil der Anwendungseigenschaften an Log Analytics, und die ressourcenübergreifenden Abfragen sorgen für mehr Flexibilität.  
 
 Die Unterstützung für den Application Insights-Connector wurde eingestellt. Am 30. März 2019 wurde dieser parallel zur Einstellung des OMS-Portals aus dem Azure Marketplace entfernt. Vorhandene Verbindungen sind weiterhin bis zum 30 Juni 2019 einsetzbar. Aufgrund der Veraltung des OMS-Portals können vorhandene Verbindungen nicht mehr über das Portal konfiguriert oder entfernt werden. Dies wird über die REST-API unterstützt, die im Januar 2019 bereitgestellt wird, und eine entsprechende Benachrichtigung wird unter [Azure-Updates](https://azure.microsoft.com/updates/) veröffentlicht. 
 

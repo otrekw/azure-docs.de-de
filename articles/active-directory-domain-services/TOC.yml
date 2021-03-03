@@ -21,7 +21,7 @@
       href: tutorial-configure-ldaps.md
     - name: Konfigurieren der Kennworthashsynchronisierung
       href: tutorial-configure-password-hash-sync.md
-    - name: Erstellen einer Replikatgruppe (Vorschauversion)
+    - name: Erstellen einer Replikatgruppe
       href: tutorial-create-replica-set.md
     - name: Erstellen einer angepassten verwalteten Domäne
       href: tutorial-create-instance-advanced.md
@@ -43,7 +43,7 @@
       href: administration-concepts.md
     - name: Allgemeine Bereitstellungsszenarien
       href: scenarios.md
-    - name: Replikatgruppen (Vorschauversion)
+    - name: Replikatgruppen
       href: concepts-replica-sets.md
     - name: Gesamtstrukturen und Vertrauensstellungen
       items:

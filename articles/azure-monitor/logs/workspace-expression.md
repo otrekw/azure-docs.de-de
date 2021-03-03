@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
-ms.openlocfilehash: 9ce9957d348fc9d57ff688408d6aaade67e95465
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 34b1f850b262a0027d3a9cb2e926bcb2c8a49665
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602096"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710905"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>workspace()-Ausdruck in Azure Monitor-Protokollabfragen
 
@@ -64,6 +64,6 @@ union
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum Verweisen auf Application Insights-Apps finden Sie unter [app-Ausdruck](../log-query/app-expression.md).
-- Erfahren Sie mehr zum Speichern von [Azure Monitor-Daten](../log-query/log-query-overview.md).
+- Informationen zum Verweisen auf Application Insights-Apps finden Sie unter [app-Ausdruck](./app-expression.md).
+- Erfahren Sie mehr zum Speichern von [Azure Monitor-Daten](./log-query-overview.md).
 - Greifen Sie auf die vollständige Dokumentation für die [Abfragesprache Kusto](/azure/kusto/query/) zu.

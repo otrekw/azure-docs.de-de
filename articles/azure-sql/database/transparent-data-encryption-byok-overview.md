@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/01/2021
-ms.openlocfilehash: 62bdafd2dba31d875b0befccca0fb4a0e94f4e79
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e096e21e7d20c992e18634d684f663f149cc3c55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582816"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691245"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption mithilfe eines kundenseitig verwalteten Schlüssels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -187,7 +187,7 @@ Ein weiterer zu berücksichtigender Aspekt für Protokolldateien: Gesicherte Pro
 
 Selbst ohne konfigurierte Georedundanz wird dringend empfohlen, den Server für die Verwendung von zwei verschiedenen Schlüsseltresoren in zwei unterschiedlichen Regionen mit demselben Schlüsselmaterial zu konfigurieren. Der Schlüssel im sekundären Schlüsseltresor in der anderen Region sollte nicht als TDE-Schutzvorrichtung gekennzeichnet werden. Daher ist dies auch nicht zulässig. Nur bei einem Ausfall, der den primären Schlüsseltresor betrifft, wechselt das System automatisch zum anderen verknüpften Schlüssel mit demselben Fingerabdruck im sekundären Schlüsseltresor (sofern vorhanden). Beachten Sie jedoch, dass der Wechsel nicht erfolgt, wenn auf die TDE-Schutzvorrichtung nicht zugegriffen werden kann, weil die Zugriffsrechte entzogen wurden oder weil der Schlüssel oder der Schlüsseltresor gelöscht wurde. Dies kann darauf hindeuten, dass der Kunde absichtlich den Zugriff des Servers auf den Schlüssel einschränken möchte.Die Bereitstellung desselben Schlüsselmaterials für zwei Schlüsseltresore in verschiedenen Regionen kann erfolgen, indem der Schlüssel außerhalb des Schlüsseltresors erstellt und in beide Schlüsseltresore importiert wird. 
 
-Alternativ kann der Schlüssel mithilfe des primären Schlüsseltresors generiert werden, der sich in der gleichen Region wie der Server befindet, und in einen Schlüsseltresor in einer anderen Azure-Region geklont werden. Rufen Sie mit dem Cmdlet [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Backup-AzKeyVaultKey) den Schlüssel in einem verschlüsselten Format aus dem primären Schlüsseltresor ab. Geben Sie dann mit dem Cmdlet [Restore-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey) einen Schlüsseltresor in der zweiten Region für das Klonen des Schlüssels an. Alternativ können Sie das Azure-Portal verwenden, um den Schlüssel zu sichern und wiederherzustellen. Der Sicherungs-/Wiederherstellungsvorgang für Schlüssel ist nur zwischen Schlüsseltresoren innerhalb desselben Azure-Abonnements und derselben [Azure-Region](https://azure.microsoft.com/global-infrastructure/geographies/) zulässig.  
+Alternativ kann der Schlüssel mithilfe des primären Schlüsseltresors generiert werden, der sich in der gleichen Region wie der Server befindet, und in einen Schlüsseltresor in einer anderen Azure-Region geklont werden. Rufen Sie mit dem Cmdlet [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/Backup-AzKeyVaultKey) den Schlüssel in einem verschlüsselten Format aus dem primären Schlüsseltresor ab. Geben Sie dann mit dem Cmdlet [Restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) einen Schlüsseltresor in der zweiten Region für das Klonen des Schlüssels an. Alternativ können Sie das Azure-Portal verwenden, um den Schlüssel zu sichern und wiederherzustellen. Der Sicherungs-/Wiederherstellungsvorgang für Schlüssel ist nur zwischen Schlüsseltresoren innerhalb desselben Azure-Abonnements und derselben [Azure-Region](https://azure.microsoft.com/global-infrastructure/geographies/) zulässig.  
 
 ![Hochverfügbarkeit bei Einzelservern](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 

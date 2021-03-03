@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 1/29/2021
-ms.openlocfilehash: 95b721f12e4818a77f18d01c99a5c6d60b881169
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d356cad1b4754875574e19be732fdf6481c61e22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089652"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691211"
 ---
 # <a name="quickstart-create-an-azure-sql-managed-instance"></a>Schnellstart: Erstellen einer verwalteten Azure SQL-Instanz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -113,7 +113,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erst
 
 ### <a name="tags"></a>`Tags`
 
-- Fügen Sie den Ressourcen in Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) Tags hinzu. [Tags](/azure/azure-resource-manager/management/tag-resources) helfen Ihnen dabei, Ihre Ressourcen logisch zu organisieren. Die Tagwerte werden in Kostenberichten angezeigt und ermöglichen andere Verwaltungsaktivitäten per Tag. 
+- Fügen Sie den Ressourcen in Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) Tags hinzu. [Tags](../../azure-resource-manager/management/tag-resources.md) helfen Ihnen dabei, Ihre Ressourcen logisch zu organisieren. Die Tagwerte werden in Kostenberichten angezeigt und ermöglichen andere Verwaltungsaktivitäten per Tag. 
 
 - Wir empfehlen Ihnen, zumindest Folgendes zu erwägen: Versehen Sie Ihre neue SQL Managed Instance mit dem Owner-Tag, um den Ersteller zu identifizieren, und dem Environment-Tag, um zu ermitteln, ob das System den Typ „Produktion“, „Entwicklung“ usw. hat. Weitere Informationen finden Sie unter [Entwickeln Ihrer Benennungs- und Kennzeichnungsstrategie für Azure-Ressourcen](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
  

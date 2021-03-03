@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbullwin
-ms.openlocfilehash: d1f792859aa5407cfaceda0e3ed1b5c21ee160f0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: ecbfb2d9acf6c62f95c264a14e306442db25e483
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043373"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703421"
 ---
 # <a name="how-to-diagnose-an-incident-using-metrics-advisor"></a>Gewusst wie: Diagnostizieren eines Incidents mit Metrics Advisor
 
@@ -37,17 +37,17 @@ Der Abschnitt **Übersicht** enthält Erkennungsergebnisse, einschließlich der 
 
 Erkannte Incidents innerhalb der ausgewählten Metrik und des Zeitbereichs werden in der **Incident list** (Incidentliste) aufgeführt. Es gibt Optionen zum Filtern und Sortieren der Incidents. Beispielsweise nach Schweregrad. Klicken Sie auf einen Incident, um zur **Incidentseite** zu gelangen, um eine weitere Diagnose durchzuführen.
 
-:::image type="content" source="../media/diagnostics/incident-list.png" alt-text="Incident hub (Incidenthub)" lightbox="../media/diagnostics/incident-list.png":::
+:::image type="content" source="../media/diagnostics/incident-list.png" alt-text="Incident list (Incidentliste)" lightbox="../media/diagnostics/incident-list.png":::
 
 Im Abschnitt **Diagnose** können Sie eine detaillierte Analyse eines Incidents ausführen und erhalten Tools zum Identifizieren der Ursachen.
 
-:::image type="content" source="../media/diagnostics/diagnose-incident.png" alt-text="Incident hub (Incidenthub)" lightbox="../media/diagnostics/diagnose-incident.png" :::
+:::image type="content" source="../media/diagnostics/diagnose-incident.png" alt-text="Diagnostizieren eines Incidents" lightbox="../media/diagnostics/diagnose-incident.png" :::
 
 ## <a name="root-cause-advice"></a>Ursachenratschlag
 
 Wenn eine Gruppe von Anomalien in einer Metrik erkannt wird und dies einen Incident verursacht, versucht Metrics Advisor, die Grundursache des Vorfalls zu analysieren. **Root cause advice** (Ursachenratschlag) bietet automatische Vorschläge für wahrscheinliche Grundursachen eines Vorfalls. Diese Funktion ist nur verfügbar, wenn ein aggregierter Wert innerhalb der Dimension vorhanden ist. Wenn die Metrik keine Dimension hat, ist sie selbst die Grundursache. Die Grundursachen sind im rechten Bereich aufgelistet und umfassen ggf. mehrere Gründe. Wenn keine Daten in der Tabelle vorhanden sind, bedeutet dies, dass Ihre Dimension die Anforderungen nicht erfüllt, um eine Analyse durchzuführen.
 
-:::image type="content" source="../media/diagnostics/root-cause-advice.png" lightbox="../media/diagnostics/root-cause-advice.png" alt-text="Incident hub (Incidenthub)":::
+:::image type="content" source="../media/diagnostics/root-cause-advice.png" lightbox="../media/diagnostics/root-cause-advice.png" alt-text="Root cause advice (Ursachenratschlag)":::
 
 
 Wenn die Grundursachenmetrik mit bestimmten Dimensionen bereitgestellt wird, klicken Sie auf **go to metric** (Zu Metrik wechseln), um weitere Details der Metrik anzuzeigen.
@@ -60,7 +60,7 @@ Die Schnelldiagnosestruktur dient zur Diagnose eines aktuellen Incidents, und de
 
 Mit der interaktiven Struktur können Sie aktuelle Incidents sowie ältere und verknüpfte Incidents diagnostizieren. Wenn Sie die interaktive Struktur verwenden, klicken Sie mit der rechten Maustaste auf einen Knoten, um ein Aktionsmenü zu öffnen. Hier können Sie eine Dimension für ein Drillup für die Stammknoten sowie eine Dimension für ein Drilldown für die einzelnen Knoten hinzufügen. Wenn Sie auf die Schaltfläche „Abbrechen“ der Dimensionsliste oben klicken, können Sie das Drillup oder das Drilldown für diese Dimension entfernen. Klicken Sie mit der linken Maustaste auf einen Knoten, um ihn auszuwählen und die zugehörige Reihe mit der aktuellen Incidentreihe im Diagramm anzuzeigen.
 
-:::image type="content" source="../media/diagnostics/incident-tree.png" alt-text="Incident hub (Incidenthub)" lightbox="../media/diagnostics/incident-tree.png" :::
+:::image type="content" source="../media/diagnostics/incident-tree.png" alt-text="Incident tree (Incidentstruktur)" lightbox="../media/diagnostics/incident-tree.png" :::
 
 ## <a name="anomaly-drill-down"></a>Drilldown für Anomalien
 
@@ -68,7 +68,7 @@ Wenn Sie Incidentinformationen anzeigen, müssen Sie ggf. ausführlichere Inform
 
 Um die Drilldownfunktion zu verwenden, klicken Sie unter **Incident hub** (Incidenthub) auf die Registerkarte **Metric drilling** (Metrikdrilling). 
 
-:::image type="content" source="../media/diagnostics/metric-drilling.png" lightbox="../media/diagnostics/metric-drilling.png" alt-text="Incident hub (Incidenthub)":::
+:::image type="content" source="../media/diagnostics/metric-drilling.png" lightbox="../media/diagnostics/metric-drilling.png" alt-text="Metric drilling (Metrikdrilling)":::
 
 Die Einstellung **Dimensionen** ist eine Liste von Dimensionen für einen Incident, Sie können jeweils andere verfügbare Dimensionswerte auswählen. Nach dem Ändern der Dimensionswerte Mit der Einstellung **Zeitstempel** können Sie den aktuellen Incident zu anderen Zeitpunkten anzeigen.
 
@@ -80,25 +80,25 @@ Es gibt zwei Typen von Drilldownoptionen: **Drilldown** und **Horizontal compari
 > 1. Bei einem Drilldown können Sie die Daten unterschiedlicher Dimensionswerte untersuchen, mit Ausnahme der aktuell ausgewählten Dimensionen. 
 > 2. Bei einem horizontalen Vergleich können Sie die Daten unterschiedlicher Dimensionswerte untersuchen, mit Ausnahme der Gesamtdimensionen.
 
-:::image type="content" source="../media/diagnostics/drill-down-dimension.png"  lightbox="../media/diagnostics/drill-down-dimension.png" alt-text="Incident hub (Incidenthub)":::
+:::image type="content" source="../media/diagnostics/drill-down-dimension.png" lightbox="../media/diagnostics/drill-down-dimension.png" alt-text="Drilldowndimension":::
 
 ### <a name="value-comparison-for-different-dimension-values"></a>Wertvergleich für verschiedene Dimensionswerte
 
 Der zweite Abschnitt der Registerkarte „Drilldown“ ist eine Tabelle mit Vergleichen für unterschiedliche Dimensionswerte. Sie enthält den Wert, den Grundwert, den Differenzwert und den Deltawert und gibt an, ob es sich um eine Anomalie handelt.
  
-:::image type="content" source="../media/diagnostics/drill-down-comparison.png" alt-text="Incident hub (Incidenthub)" lightbox="../media/diagnostics/drill-down-comparison.png":::
+:::image type="content" source="../media/diagnostics/drill-down-comparison.png" alt-text="Drilldownvergleich" lightbox="../media/diagnostics/drill-down-comparison.png":::
 
 
 ### <a name="value-and-expected-value-comparisons-for-different-dimension-value"></a>Vergleiche von Werten und erwarteten Werten für unterschiedliche Dimensionswerte
 
 Der dritte Abschnitt der Registerkarte „Drilldown“ ist ein Histogramm mit den Werten und den erwarteten Werten für verschiedene Dimensionswerte. Das Histogramm ist nach dem Unterschied zwischen dem Wert und dem erwarteter Wert sortiert. Sie können den unerwarteten Wert mit der größten Auswirkung leicht finden. In der obigen Abbildung können Sie beispielsweise feststellen, dass **US7** (mit Ausnahme des Gesamtwerts) am meisten zur Anomalie beiträgt.
 
-:::image type="content" source="../media/diagnostics/drill-down-table.png" alt-text="Incident hub (Incidenthub)" lightbox="../media/diagnostics/drill-down-table.png":::
+:::image type="content" source="../media/diagnostics/drill-down-table.png" alt-text="Drilldowntabelle" lightbox="../media/diagnostics/drill-down-table.png":::
 
 ### <a name="raw-value-visualization"></a>Visualisierung von Rohwerten
 Der letzte Teil der Drilldowntabelle ist ein Liniendiagramm der Rohwerte. Mit diesem Diagramm müssen Sie nicht zur Metrikseite navigieren, um Details anzuzeigen.
 
-:::image type="content" source="../media/diagnostics/drill-down-line-chart.png" alt-text="Incident hub (Incidenthub)" lightbox="../media/diagnostics/drill-down-line-chart.png":::
+:::image type="content" source="../media/diagnostics/drill-down-line-chart.png" alt-text="Drilldown-Liniendiagramm" lightbox="../media/diagnostics/drill-down-line-chart.png":::
 
 ## <a name="view-similar-anomalies-using-time-series-clustering"></a>Anzeigen ähnlicher Anomalien mithilfe von Zeitreihen-Clustering
 
@@ -109,13 +109,13 @@ Beim Anzeigen eines Incidents können Sie die Registerkarte **Similar time-serie
 
 Die verfügbaren Dimensionen werden oben auf der Registerkarte aufgelistet, und Sie können eine Auswahl treffen, um die Reihe anzugeben.
 
-:::image type="content" source="../media/diagnostics/series-group.png" lightbox="../media/diagnostics/series-group.png"alt-text="Incident hub (Incidenthub)":::
+:::image type="content" source="../media/diagnostics/series-group.png" lightbox="../media/diagnostics/series-group.png" alt-text="Reihengruppe":::
 
 ## <a name="compare-time-series"></a>Vergleichen von Zeitreihen
 
 Wenn eine Anomalie für eine bestimmte Zeitreihe erkannt wird, ist es manchmal hilfreich, sie mit mehreren anderen Reihen in einer einzelnen Visualisierung zu vergleichen. Klicken Sie auf die Registerkarte **Vergleichstools** und anschließend auf die blaue Schaltfläche **+Hinzufügen**. 
 
-:::image type="content" source="../media/diagnostics/add-series.png" alt-text="Incident hub (Incidenthub)" lightbox="../media/diagnostics/add-series.png":::
+:::image type="content" source="../media/diagnostics/add-series.png" alt-text="Zu vergleichende Reihe hinzufügen" lightbox="../media/diagnostics/add-series.png":::
 
 Wählen Sie eine Reihe aus dem Datenfeed aus. Sie können dieselbe oder eine andere Granularität auswählen. Wählen Sie die Zieldimensionen aus, und laden Sie den Reihentrend. Klicken Sie anschließend auf **OK**, um ihn mit einer früheren Reihe zu vergleichen. Die Reihen werden in einer Visualisierung zusammengefügt. Sie können weitere Reihen für Vergleiche hinzufügen und weitere Erkenntnisse erhalten. Klicken Sie auf das Dropdownmenü oben auf der Registerkarte **Vergleichstools**, um die Zeitreihendaten über einen zeitversetzten Zeitraum zu vergleichen.  
 
@@ -133,7 +133,7 @@ Nachdem Sie den zeitversetzten Vergleich ausgewählt haben, können Sie auswähl
 
 Manchmal müssen Sie ggf. gleichzeitig die Incidents verschiedener Metriken oder verknüpfte Incidents in anderen Metriken überprüfen. Eine Liste verknüpfter Incidents finden Sie im Abschnitt **Cross Metrics Analysis** (Metrikübergreifende Analyse). 
 
-:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="Incident hub (Incidenthub)":::
+:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="Metrikübergreifende verknüpfte Incidents":::
 
 Bevor Sie verknüpfte Incidents für die aktuelle Metrik anzeigen können, müssen Sie eine Beziehung zwischen den Metriken hinzufügen. Klicken Sie auf **Metrics Graph Settings** (Metrikdiagrammeinstellungen), um eine Beziehung hinzuzufügen. Nur Metriken mit denselben Dimensionsnamen können verknüpft werden. Verwenden Sie die folgenden Parameter.
 

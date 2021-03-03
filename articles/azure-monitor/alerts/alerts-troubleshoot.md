@@ -6,18 +6,18 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3ee29e6c65dcd2b2226dc4dc7844b3b02a571a4f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d3f8da7e985e62ce0b40c6dddcd137cce8561e59
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599656"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717858"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Behandeln von Problemen bei Azure Monitor-Warnungen
 
 In diesem Artikel werden gängige Probleme bei Azure Monitor-Warnungen und -Benachrichtigungen erläutert.
 
-Azure Monitor-Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen es Ihnen, Probleme zu identifizieren und zu beheben, bevor die Benutzer Ihres Systems sie bemerken. Weitere Informationen über Warnungen finden Sie unter [Überblick über Warnungen in Microsoft Azure](../platform/alerts-overview.md).
+Azure Monitor-Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen es Ihnen, Probleme zu identifizieren und zu beheben, bevor die Benutzer Ihres Systems sie bemerken. Weitere Informationen über Warnungen finden Sie unter [Überblick über Warnungen in Microsoft Azure](./alerts-overview.md).
 
 Wenn bei Ihnen das Problem besteht, dass eine Warnung entweder nicht erwartungsgemäß ausgelöst wird oder unerwartet ausgelöst wird, finden Sie in den untenstehenden Artikeln weitere Informationen. Alle ausgelösten Warnungen können im Azure-Portal angezeigt werden.
 
@@ -36,7 +36,7 @@ Führen Sie die folgenden Schritte aus, wenn eine ausgelöste Warnung im Azure-P
 
 1. **Wurde die E-Mail aufgrund einer [Aktionsregel](../alerts/alerts-action-rules.md) unterdrückt?**
 
-    Überprüfen Sie dies, indem Sie im Portal auf die ausgelöste Warnung klicken und die Registerkarte „Verlauf“ auf unterdrückte [Aktionsgruppen](../platform/action-groups.md) untersuchen:
+    Überprüfen Sie dies, indem Sie im Portal auf die ausgelöste Warnung klicken und die Registerkarte „Verlauf“ auf unterdrückte [Aktionsgruppen](./action-groups.md) untersuchen:
 
     ![Verlauf mit unterdrückten Aktionsregeln bei einer Warnung](media/alerts-troubleshoot/history-action-rule.png)
 
@@ -92,7 +92,7 @@ Führen Sie die folgenden Schritte aus, wenn eine ausgelöste Warnung im Azure-P
 
 1. **Wurde die Aktion aufgrund einer [Aktionsregel](../alerts/alerts-action-rules.md) unterdrückt?**
 
-    Überprüfen Sie dies, indem Sie im Portal auf die ausgelöste Warnung klicken und die Registerkarte „Verlauf“ auf unterdrückte [Aktionsgruppen](../platform/action-groups.md) untersuchen: 
+    Überprüfen Sie dies, indem Sie im Portal auf die ausgelöste Warnung klicken und die Registerkarte „Verlauf“ auf unterdrückte [Aktionsgruppen](./action-groups.md) untersuchen: 
 
     ![Verlauf mit unterdrückten Aktionsregeln bei einer Warnung](media/alerts-troubleshoot/history-action-rule.png)
 
@@ -125,7 +125,7 @@ Wenn eine ausgelöste Warnung im Portal angezeigt wird, deren konfigurierte Akti
 
 1. **Wurde die Aktion aufgrund einer Aktionsregel unterdrückt?**
 
-    Überprüfen Sie dies, indem Sie im Portal auf die ausgelöste Warnung klicken und die Registerkarte „Verlauf“ auf unterdrückte [Aktionsgruppen](../platform/action-groups.md) untersuchen:
+    Überprüfen Sie dies, indem Sie im Portal auf die ausgelöste Warnung klicken und die Registerkarte „Verlauf“ auf unterdrückte [Aktionsgruppen](./action-groups.md) untersuchen:
 
     ![Verlauf mit unterdrückten Aktionsregeln bei einer Warnung](media/alerts-troubleshoot/history-action-rule.png)
  
@@ -135,7 +135,7 @@ Wenn eine ausgelöste Warnung im Portal angezeigt wird, deren konfigurierte Akti
 
     1. **Wurden die Quell-IP-Adressen blockiert?**
     
-       Fügen Sie die [IP-Adressen](../platform/action-groups.md#action-specific-information), von denen der Webhook aufgerufen wird, zur Whitelist hinzu.
+       Fügen Sie die [IP-Adressen](./action-groups.md#action-specific-information), von denen der Webhook aufgerufen wird, zur Whitelist hinzu.
 
     1. **Funktioniert Ihr Webhookendpunkt ordnungsgemäß?**
 
@@ -180,12 +180,12 @@ Wenn Sie die Warnung erhalten haben, aber glauben, dass einige ihrer Felder fehl
 
     Überprüfen Sie, ob das auf der Aktionsebene angegebene Format Ihren Erwartungen entspricht. Beispielsweise haben Sie womöglich Code entwickelt, der auf Warnungen reagiert (Webhooks, Funktionen, Logik-Apps usw.) und ein Format erwartet, aber später in der Aktion haben Sie oder eine andere Person ein anderes Format angegeben.  
 
-    Überprüfen Sie außerdem das Format der Nutzlast (JSON) für [Aktivitätsprotokollwarnungen](../alerts/activity-log-alerts-webhook.md), [Protokollsuchwarnungen](../alerts/alerts-log-webhook.md) (sowohl für Application Insights als auch für die Protokollanalyse), [Metrikwarnungen](alerts-metric-near-real-time.md#payload-schema), [das allgemeine Warnungsschema](../alerts/alerts-common-schema-definitions.md) und die veralteten [klassischen Metrikwarnungen](../platform/alerts-webhooks.md).
+    Überprüfen Sie außerdem das Format der Nutzlast (JSON) für [Aktivitätsprotokollwarnungen](../alerts/activity-log-alerts-webhook.md), [Protokollsuchwarnungen](../alerts/alerts-log-webhook.md) (sowohl für Application Insights als auch für die Protokollanalyse), [Metrikwarnungen](alerts-metric-near-real-time.md#payload-schema), [das allgemeine Warnungsschema](../alerts/alerts-common-schema-definitions.md) und die veralteten [klassischen Metrikwarnungen](./alerts-webhooks.md).
 
  
 1. **Aktivitätsprotokollwarnungen: Ist die Information im Aktivitätsprotokoll verfügbar?** 
 
-    [Aktivitätsprotokollwarnungen](../platform/activity-log-alerts.md) sind Warnungen, die auf Ereignissen basieren, die in das Azure-Aktivitätsprotokoll geschrieben werden, z. B. Ereignisse zum Erstellen, Aktualisieren oder Löschen von Azure-Ressourcen, Ereignisse zur Dienst- und Ressourcenintegrität oder Ergebnisse von Azure Advisor und Azure Policy. Wenn Sie eine Warnung basierend auf dem Aktivitätsprotokoll erhalten haben, aber einige der erforderlichen Felder fehlen oder sind fehlerhaft, dann überprüfen Sie die Ereignisse direkt im Aktivitätsprotokoll. Wenn die Azure-Ressource die gesuchten Felder nicht in das Aktivitätsprotokollereignis geschrieben hat, sind diese Felder nicht in der entsprechenden Warnung enthalten. 
+    [Aktivitätsprotokollwarnungen](./activity-log-alerts.md) sind Warnungen, die auf Ereignissen basieren, die in das Azure-Aktivitätsprotokoll geschrieben werden, z. B. Ereignisse zum Erstellen, Aktualisieren oder Löschen von Azure-Ressourcen, Ereignisse zur Dienst- und Ressourcenintegrität oder Ergebnisse von Azure Advisor und Azure Policy. Wenn Sie eine Warnung basierend auf dem Aktivitätsprotokoll erhalten haben, aber einige der erforderlichen Felder fehlen oder sind fehlerhaft, dann überprüfen Sie die Ereignisse direkt im Aktivitätsprotokoll. Wenn die Azure-Ressource die gesuchten Felder nicht in das Aktivitätsprotokollereignis geschrieben hat, sind diese Felder nicht in der entsprechenden Warnung enthalten. 
 
 ## <a name="action-rule-is-not-working-as-expected"></a>Die Aktionsregel funktioniert nicht erwartungsgemäß 
 
@@ -250,4 +250,4 @@ Wenn Sie einen Fehler beim Erstellen, Aktualisieren oder Löschen einer [Aktions
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zur Verwendung von Protokollwarnungen finden Sie unter [Behandeln von Problemen bei Protokollwarnungen](./alerts-troubleshoot-log.md).
-- Rufen Sie das [Azure-Portal](https://portal.azure.com) wieder auf, um zu überprüfen, ob Sie das Problem mithilfe der oben genannten Anweisungen erfolgreich beheben konnten. 
+- Rufen Sie das [Azure-Portal](https://portal.azure.com) wieder auf, um zu überprüfen, ob Sie das Problem mithilfe der oben genannten Anweisungen erfolgreich beheben konnten.

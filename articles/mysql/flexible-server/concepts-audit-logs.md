@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: d38a0ea7307584c25ddec9389feaef7518bcf925
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1232a0753c988f5a28ebba28f9819aa67ce28603
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591759"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718742"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>Überwachen der Datenbankaktivität mit Überwachungsprotokolle in Azure Database for MySQL – Flexible Server
 
@@ -46,7 +46,7 @@ Sie können die folgenden anderen Parameter verwenden, um das Verhalten der Übe
 | `DCL` | Abfragen wie GRANT PERMISSION |
 | `ADMIN` | Abfragen wie SHOW STATUS |
 | `GENERAL` | Alle in DML_SELECT, DML_NONSELECT, DML, DDL, DCL und ADMIN |
-| `TABLE_ACCESS` | - Nur für MySQL 5.7 verfügbar <br> - Leseanweisungen für Tabelle, z. B. SELECT oder INSERT INTO... SELECT <br> - Löschanweisungen für Tabelle, z. B. DELETE oder TRUNCATE TABLE <br> - Einfügeanweisungen für Tabelle, z. B. INSERT oder REPLACE <br> - Aktualisierungsanweisungen für Tabelle, z. B. UPDATE |
+| `TABLE_ACCESS` | - Leseanweisungen für Tabelle, z. B. SELECT oder INSERT INTO... SELECT <br> - Löschanweisungen für Tabelle, z. B. DELETE oder TRUNCATE TABLE <br> - Einfügeanweisungen für Tabelle, z. B. INSERT oder REPLACE <br> - Aktualisierungsanweisungen für Tabelle, z. B. UPDATE |
 
 ## <a name="access-audit-logs"></a>Zugreifen auf Überwachungsprotokolle
 
@@ -72,7 +72,7 @@ In den folgenden Abschnitten wird beschrieben, was von MySQL-Überwachungsprotok
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Name des Servers |
 | `event_class_s` | `connection_log` |
-| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` (nur für MySQL 5.7 verfügbar) |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` |
 | `connection_id_d` | Von MySQL generierte eindeutige Verbindungs-ID |
 | `host_s` | Leer |
 | `ip_s` | IP-Adresse des Clients, der die Verbindung mit MySQL herstellt |
@@ -116,7 +116,7 @@ Das unten angegebene Schema gilt für die Ereignistypen GENERAL, DML_SELECT, DML
 ### <a name="table-access"></a>Tabellenzugriff
 
 > [!NOTE]
-> Tabellenzugriffsprotokolle werden nur für MySQL 5.7 ausgegeben.<br>Bei `sql_text_s` wird das Protokoll abgeschnitten, wenn es länger als 2.048 Zeichen ist.
+> Bei `sql_text_s` wird das Protokoll abgeschnitten, wenn es länger als 2.048 Zeichen ist.
 
 | **Eigenschaft** | **Beschreibung** |
 |---|---|

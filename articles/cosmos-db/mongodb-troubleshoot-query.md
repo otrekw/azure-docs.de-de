@@ -5,15 +5,15 @@ author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
 ms.subservice: cosmosdb-mongo
-ms.date: 10/12/2020
+ms.date: 03/02/2021
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 88ef081c75a64b5cb7517ba6994834b3a64a0e6f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 5302cb7bb3f4683d200f6f9ea106991bb934fc17
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340888"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659901"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>Behandeln von Abfrageproblemen bei Verwendung der Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -25,12 +25,12 @@ Abfrageoptimierungen in Azure Cosmos DB lassen sich grob in folgende Kategorien 
 - Optimierungen, die die Anzahl der verbrauchten Anforderungseinheiten (Request Units, RUs) der Abfrage verringern
 - Optimierungen ausschließlich zum Verringern der Latenz
 
-Durch Reduzieren der Anzahl der verbrauchten RUs einer Abfrage können Sie in der Regel auch die Wartezeit verringern.
+Durch Senken der RU-Gebühr einer Abfrage können Sie in der Regel auch die Wartezeit verringern.
 
 Dieser Artikel enthält Beispiele, die Sie mit dem [Dataset „Nutrition“](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) neu erstellen können.
 
 > [!NOTE] 
-> In diesem Artikel wird davon ausgegangen, dass Sie die Version 3.6 der Azure Cosmos DB-API für MongoDB verwenden. Einige Abfragen, die in Version 3.2 schlecht funktionieren, wurden in Version 3.6 erheblich verbessert. Führen Sie ein Upgrade auf die Version 3.6 durch, indem Sie eine [Supportanfrage](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) einreichen.
+> In diesem Artikel wird davon ausgegangen, dass Sie die Azure Cosmos DB-API für MongoDB-Konten mit Version 3.6 und höher verwenden. Einige Abfragen, die in Version 3.2 schlecht funktionieren, wurden in den Versionen 3.6 und höher erheblich verbessert. Führen Sie ein Upgrade auf die Version 3.6 durch, indem Sie eine [Supportanfrage](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) einreichen.
 
 ## <a name="use-explain-command-to-get-metrics"></a>Verwenden des $explain-Befehls zum Abrufen von Metriken
 
@@ -113,7 +113,7 @@ db.coll.find({foodGroup: "Baby Foods"}).explain({"executionStatistics": true })
 
 Die Ausgabe des `$explain`-Befehls ist langwierig und enthält ausführliche Informationen zur Abfrageausführung. Im Allgemeinen gibt es jedoch einige Abschnitte, in denen Sie sich auf die Optimierung der Abfrageleistung konzentrieren sollten:
 
-| Metrik | Beschreibung | 
+| Metrik | BESCHREIBUNG | 
 | ------ | ----------- |
 | `timeInclusiveMS` | Wartezeit der Back-End-Abfrage |
 | `pathsIndexed` | Zeigt die von der Abfrage verwendeten Indizes an. | 

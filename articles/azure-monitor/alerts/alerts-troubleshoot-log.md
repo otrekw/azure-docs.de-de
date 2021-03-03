@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 09/22/2020
-ms.openlocfilehash: b877cba794f97dd4736e30a72d91695774c8e688
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9352b27002162e08d53bc8166ceddd010be3c8d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599659"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738649"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Behandeln von Protokollwarnungen in Azure Monitor  
 
 In diesem Artikel erfahren Sie, wie Sie häufig auftretende Probleme mit Protokollwarnungen in Azure Monitor beheben. Er bietet auch Lösungen für häufig auftretende Probleme bezüglich der Funktionalität und der Konfiguration von Protokollwarnungen.
 
-Mithilfe von Protokollwarnungen können Benutzer eine [Log Analytics](../log-query/log-analytics-tutorial.md)-Abfrage verwenden, um Ressourcenprotokolle mit einer bestimmten Häufigkeit auszuwerten und basierend auf den Ergebnissen eine Warnung auszulösen. Durch Regeln können über [Aktionsgruppen](../platform/action-groups.md) einzelne oder mehrere Aktionen ausgelöst werden. Weitere Informationen zu Funktionen und zur Terminologie von Protokollwarnungen finden Sie [hier](alerts-unified-log.md).
+Mithilfe von Protokollwarnungen können Benutzer eine [Log Analytics](../logs/log-analytics-tutorial.md)-Abfrage verwenden, um Ressourcenprotokolle mit einer bestimmten Häufigkeit auszuwerten und basierend auf den Ergebnissen eine Warnung auszulösen. Durch Regeln können über [Aktionsgruppen](./action-groups.md) einzelne oder mehrere Aktionen ausgelöst werden. Weitere Informationen zu Funktionen und zur Terminologie von Protokollwarnungen finden Sie [hier](alerts-unified-log.md).
 
 > [!NOTE]
 > In diesem Artikel werden keine Fälle berücksichtigt, in denen das Azure-Portal eine ausgelöste Warnungsregel anzeigt und eine Benachrichtigung nicht durch eine zugeordnete Aktionsgruppe erfolgt. Weitere Informationen zur Problembehandlung für Fälle dieser Art finden Sie [hier](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected).
@@ -26,7 +26,7 @@ Mithilfe von Protokollwarnungen können Benutzer eine [Log Analytics](../log-qu
 
 ### <a name="data-ingestion-time-for-logs"></a>Datenerfassungszeit für Protokolle
 
-Mit Azure Monitor werden Kundenprotokolle im Terabytebereich verarbeitet, die aus der ganzen Welt stammen, und dies kann zu [Latenz bei der Protokollerfassung](../platform/data-ingestion-time.md) führen.
+Mit Azure Monitor werden Kundenprotokolle im Terabytebereich verarbeitet, die aus der ganzen Welt stammen, und dies kann zu [Latenz bei der Protokollerfassung](../logs/data-ingestion-time.md) führen.
 
 Bei Protokollen handelt es sich um halbstrukturierte Daten, die von Haus aus eine höhere Latenz als Metriken aufweisen. Wenn es bei Ihnen für ausgelöste Warnungen zu einer Verzögerung von mehr als vier Minuten kommt, sollten Sie die Verwendung von [Metrikwarnungen](alerts-metric-overview.md) erwägen. Sie können Daten aus Protokollen an den Metrikspeicher senden, indem Sie [Metrikwarnungen für Protokolle](alerts-metric-logs.md) verwenden.
 
@@ -60,7 +60,7 @@ Unter Umständen wird unerwarteterweise eine konfigurierte [Protokollwarnungsreg
 
 ### <a name="alert-triggered-by-partial-data"></a>Warnung wird durch unvollständige Daten ausgelöst.
 
-Mit Azure Monitor werden Kundenprotokolle im Terabytebereich verarbeitet, die aus der ganzen Welt stammen, und dies kann zu [Latenz bei der Protokollerfassung](../platform/data-ingestion-time.md) führen.
+Mit Azure Monitor werden Kundenprotokolle im Terabytebereich verarbeitet, die aus der ganzen Welt stammen, und dies kann zu [Latenz bei der Protokollerfassung](../logs/data-ingestion-time.md) führen.
 
 Bei Protokollen handelt es sich um halbstrukturierte Daten, die von Haus aus eine höhere Latenz als Metriken aufweisen. Falls bei Ihnen viele Warnungen fälschlicherweise ausgelöst werden, sollten Sie erwägen, [Metrikwarnungen](alerts-metric-overview.md) zu nutzen. Sie können Daten aus Protokollen an den Metrikspeicher senden, indem Sie [Metrikwarnungen für Protokolle](alerts-metric-logs.md) verwenden.
 
@@ -87,7 +87,7 @@ SecurityEvent
 
 Es ist nicht erforderlich, der Abfrage Warnungslogik hinzuzufügen. Dies kann sogar zu Problemen führen. Wenn Sie im obigen Beispiel `count` in Ihre Abfrage einfügen, führt dies immer zum Wert 1, weil vom Warnungsdienst `count` für `count` durchgeführt wird.
 
-Die optimierte Abfrage wird vom Protokollwarnungsdienst ausgeführt. Sie können die geänderte Abfrage im Log Analytics-[Portal](../log-query/log-query-overview.md) oder in der [API](/rest/api/loganalytics/) ausführen.
+Die optimierte Abfrage wird vom Protokollwarnungsdienst ausgeführt. Sie können die geänderte Abfrage im Log Analytics-[Portal](../logs/log-query-overview.md) oder in der [API](/rest/api/loganalytics/) ausführen.
 
 Für Arbeitsbereiche und Application Insights lautet die Bezeichnung im Bereich mit den Bedingungen **Auszuführende Abfrage**. Wählen Sie für alle anderen Ressourcentypen auf der Registerkarte „Bedingung“ die Option **Abschließende Warnungsabfrage anzeigen** aus.
 
@@ -108,7 +108,7 @@ Von Azure Monitor wird die Protokollwarnung nach Ablauf einer Woche deaktiviert,
 Wenn eine Protokollwarnungsregel erstellt wird, wird die Abfrage auf die richtige Syntax überprüft. Es kann auch vorkommen, dass für die in der Protokollwarnungsregel angegebene Abfrage ein Fehler auftritt. Häufige Gründe:
 
 - Regeln wurden über die API erstellt, und die Überprüfung wurde vom Benutzer übersprungen.
-- Die Abfrage wird [auf mehreren Ressourcen ausgeführt](../log-query/cross-workspace-query.md), und mindestens eine der Ressourcen wurde gelöscht oder verschoben.
+- Die Abfrage wird [auf mehreren Ressourcen ausgeführt](../logs/cross-workspace-query.md), und mindestens eine der Ressourcen wurde gelöscht oder verschoben.
 - Für die [Abfrage tritt ein Fehler auf](https://dev.loganalytics.io/documentation/Using-the-API/Errors), weil Folgendes passiert:
     - Da die Protokollierungslösung nicht [im Arbeitsbereich bereitgestellt](../insights/solutions.md#install-a-monitoring-solution) wurde, werden keine Tabellen erstellt.
     - Mehr als 30 Tage lang sind in eine Tabelle in der Abfrage keine Daten mehr geflossen.
@@ -219,5 +219,5 @@ Wenn für die Abfrage sieben Tage hintereinander ein Fehler auftritt, wird die P
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über [Protokollwarnungen in Azure](./alerts-unified-log.md).
-- Informieren Sie sich über das [Konfigurieren von Protokollwarnungen](../log-query/log-query-overview.md).
-- Weitere Informationen zum [Analysieren von Protokolldaten in Azure Monitor](../log-query/log-query-overview.md).
+- Informieren Sie sich über das [Konfigurieren von Protokollwarnungen](../logs/log-query-overview.md).
+- Weitere Informationen zum [Analysieren von Protokolldaten in Azure Monitor](../logs/log-query-overview.md).

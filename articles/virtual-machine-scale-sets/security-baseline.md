@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b5ce8e3d6482c13a8ba02065f2a97074610c25bb
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 2d902bbdc03596fe246fc36813895e72c53da05a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98877713"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571406"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Azure-Sicherheitsbaseline für VM-Skalierungsgruppen
 
@@ -178,9 +178,9 @@ Sie können mit dem Just-in-Time-Netzwerkzugriff in Azure Security Center die Ve
 
 Verwenden Sie Azure Policy, um die Konfiguration für Netzwerkressourcen im Zusammenhang mit VM-Skalierungsgruppen zu überprüfen (und zu korrigieren).
 
-* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -216,7 +216,7 @@ Mit Azure Security Center können Sie die Protokolle für sicherheitsrelevante E
 
 Wenn Ihre Organisation die Daten im Sicherheitsereignisprotokoll des virtuellen Computers beibehalten möchte, können sie in einem Log Analytics-Arbeitsbereich auf der gewünschten in Azure Security Center konfigurierten Datensammlungsebene gespeichert werden.
 
-* [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+* [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 * [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -224,7 +224,7 @@ Wenn Ihre Organisation die Daten im Sicherheitsereignisprotokoll des virtuellen 
 
 * [Datensammlung in Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-* [Informationen zum Überwachen von virtuellen Computern in Azure](../azure-monitor/insights/monitor-vm-azure.md)
+* [Informationen zum Überwachen von virtuellen Computern in Azure](../azure-monitor/vm/monitor-vm-azure.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -238,11 +238,11 @@ Aktivieren Sie die Sammlung von Diagnosedaten für das Gastbetriebssystem, indem
 
 Für erweiterte Einblicke in die von der Azure VM-Skalierungsgruppe unterstützten Anwendungen und Dienste können Sie Azure Monitor für VMs und Application Insights aktivieren. Mit Application Insights können Sie Ihre Anwendung überwachen und Telemetriedaten erfassen, etwa HTTP-Anforderungen, Ausnahmen usw., damit Sie Probleme zwischen den VMs und ihrer Anwendung korrelieren können.
 
-* [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+* [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Informationen zum Überwachen von virtuellen Computern in Azure](../azure-monitor/insights/monitor-vm-azure.md)
+* [Informationen zum Überwachen von virtuellen Computern in Azure](../azure-monitor/vm/monitor-vm-azure.md)
 
 * [Übersicht über Application Insights](../azure-monitor/app/app-insights-overview.md)
 
@@ -258,7 +258,7 @@ Wenn Ihre Organisation die Daten im Sicherheitsereignisprotokoll des virtuellen 
 
 * [Datensammlung in Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-* [Informationen zum Überwachen von virtuellen Computern in Azure](../azure-monitor/insights/monitor-vm-azure.md)
+* [Informationen zum Überwachen von virtuellen Computern in Azure](../azure-monitor/vm/monitor-vm-azure.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -268,9 +268,9 @@ Wenn Ihre Organisation die Daten im Sicherheitsereignisprotokoll des virtuellen 
 
 **Leitfaden**: Stellen Sie sicher, dass für die Speicherkonten oder Log Analytics-Arbeitsbereiche zum Speichern der Protokolle virtueller Computer der Protokollaufbewahrungszeitraum gemäß den Konformitätsbestimmungen Ihrer Organisation festgelegt ist.
 
-* [Informationen zum Überwachen von virtuellen Computern in Azure](../azure-monitor/insights/monitor-vm-azure.md)
+* [Informationen zum Überwachen von virtuellen Computern in Azure](../azure-monitor/vm/monitor-vm-azure.md)
 
-* [Konfigurieren des Aufbewahrungszeitraums des Log Analytics-Arbeitsbereichs](../azure-monitor/platform/manage-cost-storage.md)
+* [Konfigurieren des Aufbewahrungszeitraums des Log Analytics-Arbeitsbereichs](../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -284,9 +284,9 @@ Alternativ dazu können Sie zum Überwachen und Überprüfen Ihrer Protokolle au
 
 * [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -302,7 +302,7 @@ Alternativ dazu können Sie zum Einrichten von Warnungen für anomale Aktivität
 
 * [Verwalten von Warnungen in Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/learn/tutorial-response.md)
+* [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -340,9 +340,9 @@ Bei Linux-VMs können Sie die Konsolenprotokollierung pro Knoten manuell konfigu
 
 * [Datensammlung in Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
-* [Syslog-Datenquellen in Azure Monitor](../azure-monitor/platform/data-sources-syslog.md)
+* [Syslog-Datenquellen in Azure Monitor](../azure-monitor/agents/data-sources-syslog.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -430,7 +430,7 @@ Bei Linux-VMs können Sie die Konsolenprotokollierung pro Knoten manuell konfigu
 
 * [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Konfigurieren von Aktionsgruppen für benutzerdefinierte Warnungen und Benachrichtigungen](../azure-monitor/platform/action-groups.md)
+* [Konfigurieren von Aktionsgruppen für benutzerdefinierte Warnungen und Benachrichtigungen](../azure-monitor/alerts/action-groups.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -472,13 +472,13 @@ Bei Linux-VMs können Sie die Konsolenprotokollierung pro Knoten manuell konfigu
 
 **Leitfaden**: Konfigurieren Sie Diagnoseeinstellungen für Azure Active Directory, um die Überwachungs- und Anmeldeprotokolle an einen Log Analytics-Arbeitsbereich zu senden. Verwenden Sie außerdem Azure Monitor, um Protokolle zu überprüfen und Abfragen für Daten von Azure-VMs auszuführen.
 
-* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/logs/log-analytics-tutorial.md)
 
 * [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
-* [Informationen zum Überwachen von virtuellen Computern in Azure](../azure-monitor/insights/monitor-vm-azure.md)
+* [Informationen zum Überwachen von virtuellen Computern in Azure](../azure-monitor/vm/monitor-vm-azure.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -610,7 +610,7 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen zu erstellen, die bei Änderungen an VM-Skalierungsgruppen und zugehörigen Ressourcen ausgegeben werden.
 
-* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
+* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Azure Storage Analytics-Protokollierung](../storage/common/storage-analytics-logging.md)
 

@@ -10,19 +10,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 8fa61855b5647c1caefd939af17b70c9d08c2f8f
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: eab1ebb3bf66b28bae80fbf16eaf24dbbc63bfb0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517823"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690531"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Migration des Azure SQL-Datenbank-Datenverkehrs zu neueren Gateways
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Die Azure-Infrastruktur wird kontinuierlich verbessert, und Microsoft aktualisiert immer wieder die Hardware, um das bestmögliche Kundenerlebnis sicherzustellen. In den kommenden Monaten ist geplant, in einigen Regionen Gateways auf der Basis neuerer Hardwaregenerationen hinzuzufügen, Datenverkehr zu diesen Gateways zu migrieren und schließlich Gateways außer Betrieb zu nehmen, die auf älterer Hardware basieren.  
 
-Kunden werden per Dienstintegritätsbenachrichtigungen rechtzeitig vor jeder Änderung der in den einzelnen Regionen verfügbaren Gateways informiert. Kunden können das [Azure-Portal zum Einrichten von Aktivitätsprotokollwarnungen verwenden](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal).
+Kunden werden per Dienstintegritätsbenachrichtigungen rechtzeitig vor jeder Änderung der in den einzelnen Regionen verfügbaren Gateways informiert. Kunden können das [Azure-Portal zum Einrichten von Aktivitätsprotokollwarnungen verwenden](../../service-health/alerts-activity-log-service-notifications-portal.md).
 
 Aktuelle Informationen finden Sie in der Tabelle mit den [Gateway-IP-Adressen von Azure SQL-Datenbank](connectivity-architecture.md#gateway-ip-addresses).
 

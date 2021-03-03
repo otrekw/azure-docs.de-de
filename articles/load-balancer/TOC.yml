@@ -160,8 +160,6 @@
           href: load-balancer-troubleshoot-health-probe-status.md
         - name: Datenverkehr des Back-End-Pools (VM)
           href: load-balancer-troubleshoot-backend-traffic.md
-        - name: Häufige Bereitstellungsfehler
-          href: load-balancer-common-deployment-errors.md
         - name: Allgemeine Probleme bei der ausgehenden Verbindung
           href: troubleshoot-outbound-connection.md
         - name: Probleme mit Ressourcenintegrität und eingehender Verfügbarkeit
@@ -191,6 +189,8 @@
       displayName: ARM
     - name: Allgemeine Fehlercodes für Azure Instance Metadata Service (IMDS)
       href: troubleshoot-load-balancer-imds.md
+    - name: Häufige Bereitstellungsfehler
+      href: load-balancer-common-deployment-errors.md
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

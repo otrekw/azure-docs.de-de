@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 940f7efc7130ef80817be3b42e3c0eff83588a90
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a46ddeddfcefcd4d6e7f87747fe36cfc6ec82e35
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587990"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737561"
 ---
 # <a name="monitoring-time-series-insights"></a>Überwachung mithilfe von Time Series Insights
 
@@ -63,7 +63,7 @@ Sie können für Azure Time Series Insights Protokolle der folgenden Kategorien 
 
 ## <a name="analyzing-metrics"></a>Analysieren von Metriken
 
-Sie können Metriken für Azure Time Series Insights zusammen mit Metriken anderer Azure-Dienste analysieren, indem Sie im Menü „Azure Monitor“ die Option „Metriken“ öffnen. Ausführliche Informationen zur Verwendung dieses Tools finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md).
+Sie können Metriken für Azure Time Series Insights zusammen mit Metriken anderer Azure-Dienste analysieren, indem Sie im Menü „Azure Monitor“ die Option „Metriken“ öffnen. Ausführliche Informationen zur Verwendung dieses Tools finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../azure-monitor/essentials/metrics-getting-started.md).
 
 Eine Liste der erfassten Plattformmetriken finden Sie in der [Referenz zur Überwachung von Azure Time Series Insights-Daten](how-to-monitor-tsi-reference.md#metrics).
 
@@ -115,7 +115,7 @@ Es folgen Abfragen zur Überwachung Ihrer Azure Time Series Insights-Umgebung:
 
 ## <a name="alerts"></a>Alerts
 
-Azure Monitor-Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen Ihnen, Probleme in Ihrem System zu identifizieren und zu beheben, bevor Ihre Kunden sie bemerken. Sie können Warnungen für [Metriken](../azure-monitor/platform/alerts-metric-overview.md), [Protokolle](../azure-monitor/platform/alerts-unified-log.md) und das [Aktivitätsprotokoll](../azure-monitor/platform/activity-log-alerts.md) festlegen. Verschiedene Arten von Warnungen haben Vor- und Nachteile.
+Azure Monitor-Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen Ihnen, Probleme in Ihrem System zu identifizieren und zu beheben, bevor Ihre Kunden sie bemerken. Sie können Warnungen für [Metriken](../azure-monitor/alerts/alerts-metric-overview.md), [Protokolle](../azure-monitor/alerts/alerts-unified-log.md) und das [Aktivitätsprotokoll](../azure-monitor/alerts/activity-log-alerts.md) festlegen. Verschiedene Arten von Warnungen haben Vor- und Nachteile.
 
 Beachten Sie Folgendes beim Erstellen einer Warnungsregel, die auf Plattformmetriken basiert: Bei Time Series Insights-Plattformmetriken, die als Anzahl von Einheiten gesammelt werden, sind einige Aggregationen möglicherweise nicht verfügbar oder nutzbar.
 

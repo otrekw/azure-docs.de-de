@@ -3,12 +3,12 @@ title: Problembehandlung bei Sicherungsfehlern in SAP HANA-Datenbanken
 description: Beschreibt, wie häufige Fehler behoben werden, die auftreten können, wenn Sie SAP HANA-Datenbanken mithilfe von Azure Backup sichern.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: b9fa73ee38e337a547816432212bc68d419f40bb
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 22800adc323bda8a60278160f24bc559103fb57e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95411324"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713336"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Behandeln von Problemen beim Sichern von SAP HANA-Datenbanken in Azure
 
@@ -46,13 +46,6 @@ Informationen finden Sie in den Abschnitten zu den [Voraussetzungen](tutorial-ba
 | Fehlermeldung      | <span style="font-weight:normal">Der angegebene SAP HANA-Vorgang wird nicht unterstützt.</span>              |
 | ------------------ | ------------------------------------------------------------ |
 | **Mögliche Ursachen**    | Azure Backup für SAP HANA unterstützt keine inkrementellen Sicherungen und keine Aktionen, die für SAP HANA-native Clients (Studio/Cockpit/DBA Cockpit) ausgeführt werden. |
-| **Empfohlene Maßnahme** | Weitere Informationen finden Sie [hier](./sap-hana-backup-support-matrix.md#scenario-support). |
-
-### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
-
-| Fehlermeldung      | <span style="font-weight:normal">Diese SAP HANA-Datenbank unterstützt nicht den angeforderten Sicherungstyp.</span>  |
-| ------------------ | ------------------------------------------------------------ |
-| **Mögliche Ursachen**    | Azure Backup unterstützt keine inkrementellen Sicherungen und keine Sicherungen mit Momentaufnahmen. |
 | **Empfohlene Maßnahme** | Weitere Informationen finden Sie [hier](./sap-hana-backup-support-matrix.md#scenario-support). |
 
 ### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure

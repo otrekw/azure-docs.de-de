@@ -6,25 +6,25 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: 1908232184218316a1a887f17f2fc8104529a0e7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 79cc7e1e4b574533fcad4592134109c52897e9ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599665"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737255"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Behandeln von Problemen mit Azure Monitor-Metrikwarnungen 
 
 In diesem Artikel werden häufige Probleme mit [Metrikwarnungen](alerts-metric-overview.md) in Azure Monitor sowie Lösungen zu diesen erläutert.
 
-Azure Monitor-Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen es Ihnen, Probleme zu identifizieren und zu beheben, bevor die Benutzer Ihres Systems sie bemerken. Weitere Informationen über Warnungen finden Sie unter [Überblick über Warnungen in Microsoft Azure](../platform/alerts-overview.md).
+Azure Monitor-Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen es Ihnen, Probleme zu identifizieren und zu beheben, bevor die Benutzer Ihres Systems sie bemerken. Weitere Informationen über Warnungen finden Sie unter [Überblick über Warnungen in Microsoft Azure](./alerts-overview.md).
 
 ## <a name="metric-alert-should-have-fired-but-didnt"></a>Metrikwarnung wurde fälschlicherweise nicht ausgelöst 
 
 Wenn Sie der Meinung sind, dass eine Metrikwarnung hätte ausgelöst werden sollen, dies aber nicht der Fall war und sie nicht im Azure-Portal angezeigt wird, versuchen Sie Folgendes:
 
 1. **Konfiguration:** Überprüfen Sie die Konfiguration der Metrikwarnungsregel, um sicherzustellen, dass sie richtig konfiguriert ist:
-    - Überprüfen Sie, ob die Optionen **Aggregationstyp** und **Aggregationsgranularität (Zeitraum)** wie erwartet konfiguriert sind. Die Einstellung **Aggregationstyp** bestimmt, wie Metrikwerte aggregiert werden ([weitere Informationen](../platform/metrics-aggregation-explained.md#aggregation-types)). Die Einstellung **Aggregationsgranularität (Zeitraum)** steuert, wie weit die in die Auswertung einbezogenen Metrikwerte zurückreichen sollen, wenn die Warnungsregel ausgeführt wird.
+    - Überprüfen Sie, ob die Optionen **Aggregationstyp** und **Aggregationsgranularität (Zeitraum)** wie erwartet konfiguriert sind. Die Einstellung **Aggregationstyp** bestimmt, wie Metrikwerte aggregiert werden ([weitere Informationen](../essentials/metrics-aggregation-explained.md#aggregation-types)). Die Einstellung **Aggregationsgranularität (Zeitraum)** steuert, wie weit die in die Auswertung einbezogenen Metrikwerte zurückreichen sollen, wenn die Warnungsregel ausgeführt wird.
     -  Vergewissern Sie sich, dass die Optionen **Schwellenwert** bzw. **Sensibilität** wie erwartet konfiguriert sind.
     - Überprüfen Sie bei einer Regel, für die dynamische Schwellwerte verwendet werden, ob die erweiterten Einstellungen konfiguriert sind. Der Grund ist, dass die **Anzahl von Verstößen** ggf. zu einer Filterung der Warnungen führt und die Option **Vor dem folgenden Datum liegende Daten ignorieren** sich darauf auswirken kann, wie die Schwellenwerte berechnet werden.
 
@@ -69,10 +69,10 @@ Wenn Sie der Meinung sind, dass Ihre Metrikwarnung fälschlicherweise ausgelöst
 ## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>Metrik für Warnung kann nicht gefunden werden – Metriken für virtuelle Gastcomputer
 
 Um Warnungen für Metriken für Gastbetriebssysteme (z. B. zu Arbeitsspeicher oder Speicherplatz auf dem Datenträger) zu senden, stellen Sie sicher, dass der erforderliche Agent zum Erfassen dieser Daten in Azure Monitor-Metriken installiert ist:
-- [Für virtuelle Windows-Computer](../platform/collect-custom-metrics-guestos-resource-manager-vm.md)
-- [Für virtuelle Linux-Computer](../platform/collect-custom-metrics-linux-telegraf.md)
+- [Für virtuelle Windows-Computer](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md)
+- [Für virtuelle Linux-Computer](../essentials/collect-custom-metrics-linux-telegraf.md)
 
-Weitere Informationen zum Erfassen von Daten aus dem Gastbetriebssystem eines virtuellen Computers finden Sie [hier](../insights/monitor-vm-azure.md#guest-operating-system).
+Weitere Informationen zum Erfassen von Daten aus dem Gastbetriebssystem eines virtuellen Computers finden Sie [hier](../vm/monitor-vm-azure.md#guest-operating-system).
 
 > [!NOTE] 
 > Wenn Sie für Gastmetriken das Senden zu einem Log Analytics-Arbeitsbereich konfiguriert haben, werden die Metriken unter der Log Analytics-Arbeitsbereichsressource angezeigt. Die Daten werden dann **erst** angezeigt, nachdem eine Warnungsregel für deren Überwachung erstellt wurde. Führen Sie hierzu die Schritte zum [Konfigurieren der Metrikwarnung für Protokolle](./alerts-metric-logs.md#configuring-metric-alert-for-logs) aus.
@@ -84,8 +84,8 @@ Weitere Informationen zum Erfassen von Daten aus dem Gastbetriebssystem eines vi
 
 Wenn Sie für eine bestimmte Metrik eine Warnung anzeigen möchten, diese aber beim Erstellen einer Warnungsregel nicht angezeigt wird, überprüfen Sie Folgendes:
 - Wenn keine Metriken für die Ressource angezeigt werden, [überprüfen Sie, ob der Ressourcentyp für Metrikwarnungen unterstützt wird](./alerts-metric-near-real-time.md).
-- Wenn einige Metriken für die Ressource angezeigt werden, eine bestimmte Metrik jedoch nicht gefunden werden kann, [überprüfen Sie, ob diese Metrik verfügbar ist](../platform/metrics-supported.md). Wenn dies der Fall ist, sehen Sie in der Metrikbeschreibung nach, ob diese nur in bestimmten Versionen oder Editionen der Ressource verfügbar ist.
-- Wenn die Metrik für die Ressource nicht verfügbar ist, ist Sie möglicherweise in den Ressourcenprotokollen verfügbar und kann mithilfe von Protokollwarnungen überwacht werden. Hier finden Sie weitere Informationen zum [Sammeln und Analysieren von Ressourcenprotokollen von einer Azure-Ressource](../learn/tutorial-resource-logs.md).
+- Wenn einige Metriken für die Ressource angezeigt werden, eine bestimmte Metrik jedoch nicht gefunden werden kann, [überprüfen Sie, ob diese Metrik verfügbar ist](../essentials/metrics-supported.md). Wenn dies der Fall ist, sehen Sie in der Metrikbeschreibung nach, ob diese nur in bestimmten Versionen oder Editionen der Ressource verfügbar ist.
+- Wenn die Metrik für die Ressource nicht verfügbar ist, ist Sie möglicherweise in den Ressourcenprotokollen verfügbar und kann mithilfe von Protokollwarnungen überwacht werden. Hier finden Sie weitere Informationen zum [Sammeln und Analysieren von Ressourcenprotokollen von einer Azure-Ressource](../essentials/tutorial-resource-logs.md).
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Metrikdimension für Warnung kann nicht gefunden werden
 
@@ -211,7 +211,7 @@ Stellen Sie sicher, dass Sie die richtigen CLI-Befehle für Metrikwarnungen verw
 
 - Im Fall eines Fehlers vom Typ `Metric not found` haben Sie folgende Möglichkeiten:
 
-   - Bei einer Plattformmetrik: Vergewissern Sie sich, dass Sie den Namen der **Metrik** von der [Azure Monitor-Seite mit unterstützten Metriken](../platform/metrics-supported.md) und nicht den **Metrikanzeigenamen** verwenden.
+   - Bei einer Plattformmetrik: Vergewissern Sie sich, dass Sie den Namen der **Metrik** von der [Azure Monitor-Seite mit unterstützten Metriken](../essentials/metrics-supported.md) und nicht den **Metrikanzeigenamen** verwenden.
 
    - Bei einer benutzerdefinierten Metrik: Vergewissern Sie sich, dass die Metrik bereits ausgegeben wird (Sie können keine Warnungsregel auf der Grundlage einer benutzerdefinierten Metrik erstellen, die noch nicht vorhanden ist). Stellen Sie zudem sicher, dass Sie den Namespace der benutzerdefinierten Metrik angeben (ein Beispiel für eine Resource Manager-Vorlage finden Sie [hier](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)).
 

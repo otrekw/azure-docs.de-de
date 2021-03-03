@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: 038663a6b8fe015f36f70b7bf13d25accb470903
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a7a6ba395769677fe46ddfff675640f6e15060a0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597917"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723179"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics-Tutorial
 Log Analytics ist ein Tool im Azure-Portal, mit dem Protokollabfragen aus den von Azure Monitor-Protokollen erfassten Daten bearbeitet und ausgeführt sowie deren Ergebnisse interaktiv analysiert werden können. Mit Log Analytics-Abfragen können Sie Datensätze abrufen, die bestimmte Kriterien erfüllen, Trends identifizieren, Muster analysieren und eine Vielzahl von Erkenntnissen aus Ihren Daten gewinnen. 
@@ -33,7 +33,7 @@ In diesem Tutorial werden die Log Analytics-Benutzeroberfläche, die ersten Sch
 In diesem Tutorial wird die [Demoumgebung von Log Analytics](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade) verwendet, die zahlreiche Beispieldaten zum Ausführen der Beispielabfragen enthält. Sie können auch Ihr eigenes Azure-Abonnement verwenden, verfügen dann aber möglicherweise nicht über Daten in denselben Tabellen.
 
 ## <a name="open-log-analytics"></a>Öffnen von Log Analytics
-Öffnen Sie die [Demoumgebung von Log Analytics](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), oder wählen Sie im Azure Monitor-Menü in Ihrem Abonnement die Option **Protokolle** aus. Dadurch wird der Anfangsbereich auf einen Log Analytics-Arbeitsbereich festgelegt. Dies bedeutet, dass Ihre Abfrage die Auswahl auf Grundlage aller Daten in diesem Arbeitsbereich trifft. Wenn Sie die Option **Protokolle** im Menü einer Azure-Ressource auswählen, wird der Bereich nur auf Datensätze in dieser Ressource festgelegt. Ausführliche Informationen zum Bereich finden Sie unter [Protokollabfragebereich](../log-query/scope.md).
+Öffnen Sie die [Demoumgebung von Log Analytics](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), oder wählen Sie im Azure Monitor-Menü in Ihrem Abonnement die Option **Protokolle** aus. Dadurch wird der Anfangsbereich auf einen Log Analytics-Arbeitsbereich festgelegt. Dies bedeutet, dass Ihre Abfrage die Auswahl auf Grundlage aller Daten in diesem Arbeitsbereich trifft. Wenn Sie die Option **Protokolle** im Menü einer Azure-Ressource auswählen, wird der Bereich nur auf Datensätze in dieser Ressource festgelegt. Ausführliche Informationen zum Bereich finden Sie unter [Protokollabfragebereich](./scope.md).
 
 Sie können den Bereich in der oberen linken Ecke des Bildschirms anzeigen. Wenn Sie Ihre eigene Umgebung verwenden, wird eine Option zum Auswählen eines anderen Bereichs angezeigt, in der Demoumgebung ist diese Option jedoch nicht verfügbar.
 

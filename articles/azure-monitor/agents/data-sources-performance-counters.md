@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: f885945dfb6910df919038106487db912d87caee
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c06123b33c7f467e12742cf6180d821e647b5115
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601273"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711551"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Datenquellen für das Sammeln von Windows- und Linux-Leistungsdaten mit dem Log Analytics-Agent
 Leistungsindikatoren in Windows und Linux bieten Einblick in die Leistung von Hardwarekomponenten, Betriebssystemen und Anwendungen.  Azure Monitor kann in sehr kurzen Intervallen Leistungsindikatoren von Log Analytics-Agents abrufen, um Analysen in Quasi-Echtzeit zu ermöglichen. Darüber hinaus kann Azure Monitor Leistungsdaten zusammenstellen, um längerfristige Analysen und Berichte zu ermöglichen.
 
 > [!IMPORTANT]
-> In diesem Artikel wird das Sammeln von Leistungsdaten mit dem [Log Analytics-Agent](../platform/log-analytics-agent.md) beschrieben, einem der von Azure Monitor verwendeten Agents. Andere Agents sammeln andere Daten und werden anders konfiguriert. Eine Liste der verfügbaren Agents und der von ihnen gesammelten Daten finden Sie unter [Übersicht über Azure Monitor-Agents](../agents/agents-overview.md).
+> In diesem Artikel wird das Sammeln von Leistungsdaten mit dem [Log Analytics-Agent](./log-analytics-agent.md) beschrieben, einem der von Azure Monitor verwendeten Agents. Andere Agents sammeln andere Daten und werden anders konfiguriert. Eine Liste der verfügbaren Agents und der von ihnen gesammelten Daten finden Sie unter [Übersicht über Azure Monitor-Agents](../agents/agents-overview.md).
 
 ![Leistungsindikatoren](media/data-sources-performance-counters/overview.png)
 
@@ -224,5 +224,5 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, mit de
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Sammeln von Leistungsindikatoren aus Linux-Anwendungen wie](data-sources-linux-applications.md) MySQL und Apache HTTP Server.
-* Erfahren Sie mehr über [Protokollabfragen](../log-query/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
-* Exportieren Sie gesammelte Daten nach [Power BI](../platform/powerbi.md) , um weitere Möglichkeiten der Visualisierung und Analyse zu nutzen.
+* Erfahren Sie mehr über [Protokollabfragen](../logs/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
+* Exportieren Sie gesammelte Daten nach [Power BI](../visualize/powerbi.md) , um weitere Möglichkeiten der Visualisierung und Analyse zu nutzen.

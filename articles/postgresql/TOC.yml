@@ -113,6 +113,9 @@
       items:
         - name: Azure CLI
           href: sample-scripts-azure-cli.md
+        - name: Integrierte Azure Policy-Aktionen
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
     - name: Konzepte
       items:
         - name: Server
@@ -572,14 +575,6 @@
         - name: Entwerfen eines Echtzeitdashboards
           href: tutorial-design-database-hyperscale-realtime.md
           displayName: 'hyperscale, tutorial, real-time'
-    - name: Beispiele
-      items:
-        - name: Azure CLI
-          href: sample-scripts-azure-cli.md
-          displayName: 'samples, azure cli'
-        - name: Integrierte Azure Policy-Aktionen
-          displayName: 'samples, policies, definitions'
-          href: ./policy-reference.md
     - name: Konzepte
       items:
         - name: Verteilte Daten

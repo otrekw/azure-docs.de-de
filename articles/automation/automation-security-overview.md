@@ -4,14 +4,14 @@ description: Dieser Artikel enthält eine Übersicht über die Azure Automation
 keywords: Automation-Sicherheit, sicher Automation; Automation-Authentifizierung
 services: automation
 ms.subservice: process-automation
-ms.date: 02/01/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: e3ed14a0845d90a1b9b951dd5175acf6233f8718
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: c559a81b17b92f48b2d51b7c2d26325d6a1b1cca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99254998"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708899"
 ---
 # <a name="automation-account-authentication-overview"></a>Übersicht über die Automation-Kontoauthentifizierung
 
@@ -44,6 +44,8 @@ Weitere Informationen zum Resource Manager-Bereitstellungsmodell und zum klassis
 >Azure Cloud Solution Provider-Abonnements (Azure CSP) unterstützen nur das Azure Resource Manager-Modell. Dienste, die nicht auf Azure Resource Manager basieren, sind in diesem Programm nicht verfügbar. Wenn Sie ein CSP-Abonnement verwenden, wird kein klassisches ausführendes Azure-Konto erstellt, sondern das ausführende Azure-Konto. Weitere Informationen zu CSP-Abonnements finden Sie unter [Verfügbare Dienste in CSP-Abonnements](/azure/cloud-solution-provider/overview/azure-csp-available-services).
 
 Wenn Sie ein Automation-Konto erstellen, wird standardmäßig gleichzeitig ein ausführendes Konto erstellt. Wenn Sie sich entscheiden, es nicht zusammen mit dem Automation-Konto zu erstellen, können Sie es zu einem späteren Zeitpunkt separat erstellen. Ein klassisches ausführendes Azure-Konto ist optional und wird getrennt erstellt, wenn Sie klassische Ressourcen verwalten müssen.
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWwtF3]
 
 ### <a name="run-as-account"></a>Ausführendes Konto
 

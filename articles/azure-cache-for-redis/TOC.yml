@@ -100,8 +100,10 @@
           href: cache-private-link.md
         - name: Aktivieren der Zonenredundanz
           href: cache-how-to-zone-redundancy.md
-        - name: Einrichten der Georeplikation
+        - name: Einrichten der OSS-Georeplikation
           href: cache-how-to-geo-replication.md
+        - name: Einrichten der aktiven Georeplikation für Unternehmen
+          href: cache-how-to-active-geo-replication.md
         - name: Sparen mit reservierter Kapazität
           href: cache-reserved-pricing.md
         - name: Migrieren zu Azure Cache for Redis

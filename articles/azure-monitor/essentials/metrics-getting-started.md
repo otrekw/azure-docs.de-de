@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: d914c9b5f96cf502247d40a913ce8ad4651a4a14
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 68a9dd5cb24dda54e867580cf7c1bc869e692833
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599779"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734416"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Erste Schritte mit dem Azure-Metrik-Explorer
 
@@ -29,7 +29,7 @@ Der Azure Monitor-Metrik-Explorer ist eine Komponente des Microsoft Azure-Portal
 
 Öffnen Sie die Registerkarte **Metriken**, und führen Sie die folgenden Schritte aus, um ein Metrikdiagramm aus Ihrer Ressource, Ressourcengruppe, Ihrem Abonnement oder einer Azure Monitor-Ansicht zu erstellen:
 
-1. Klicken Sie auf die Schaltfläche „Bereich auswählen“, um die Auswahl für den Ressourcenbereich zu öffnen. Auf diese Weise können Sie die Ressourcen auswählen, für die Sie Metriken anzeigen möchten. Wenn Sie den Metrik-Explorer über das Menü einer Ressource geöffnet haben, sollte die Ressource bereits ausgefüllt sein. In [diesem Artikel](../platform/metrics-dynamic-scope.md) erfahren Sie, wie Sie Metriken für mehrere Ressourcen anzeigen können.
+1. Klicken Sie auf die Schaltfläche „Bereich auswählen“, um die Auswahl für den Ressourcenbereich zu öffnen. Auf diese Weise können Sie die Ressourcen auswählen, für die Sie Metriken anzeigen möchten. Wenn Sie den Metrik-Explorer über das Menü einer Ressource geöffnet haben, sollte die Ressource bereits ausgefüllt sein. In [diesem Artikel](./metrics-dynamic-scope.md) erfahren Sie, wie Sie Metriken für mehrere Ressourcen anzeigen können.
     > ![Auswählen einer Ressource](./media/metrics-getting-started/scope-picker.png)
 
 2. Für einige Ressourcen müssen Sie einen Namespace auswählen. Der Namespace dient lediglich der Organisation der Metriken, damit Sie sich mühelos finden können. Speicherkonten verfügen beispielsweise über separate Namespaces zum Speichern von Metriken zu Dateien, Tabellen, Blobs und Warteschlangen. Viele Ressourcentypen verfügen über nur einen Namespace.
@@ -72,7 +72,7 @@ Sie können die Formatierung des Diagramms, den Titel und erweiterte Diagrammein
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erweiterte Funktionen des Metrik-Explorers](../essentials/metrics-charts.md)
-* [Anzeigen mehrerer Ressourcen in Metrik-Explorer](../platform/metrics-dynamic-scope.md)
+* [Anzeigen mehrerer Ressourcen in Metrik-Explorer](./metrics-dynamic-scope.md)
 * [Problembehandlung für den Metrik-Explorer](metrics-troubleshoot.md)
-* [Unterstützte Metriken von Azure Monitor](../platform/metrics-supported.md)
+* [Unterstützte Metriken von Azure Monitor](./metrics-supported.md)
 * [Beispiele für Metrikdiagramme](../essentials/metric-chart-samples.md)

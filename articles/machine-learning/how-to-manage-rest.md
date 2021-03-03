@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 09a0580adbe6d51e4de811a57ee17203d65a2435
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bf1d6f5838e467c5f44a0090a4f1a15cd9d4ac77
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316910"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692452"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Erstellen, Ausführen und Löschen von Azure ML-Ressourcen mithilfe von REST
 
@@ -35,10 +35,10 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein **Azure-Abonnement** , für das Sie über Administratorrechte verfügen. Wenn Sie nicht über ein solches Abonnement verfügen, testen Sie das [kostenlose oder kostenpflichtige persönliche Abonnement](https://aka.ms/AMLFree).
+- Ein **Azure-Abonnement**, für das Sie über Administratorrechte verfügen. Wenn Sie nicht über ein solches Abonnement verfügen, testen Sie das [kostenlose oder kostenpflichtige persönliche Abonnement](https://aka.ms/AMLFree).
 - Ein [Azure Machine Learning-Arbeitsbereich](./how-to-manage-workspace.md).
 - Administrative REST-Anforderungen verwenden Dienstprinzipalauthentifizierung. Führen Sie die Schritte in [Einrichten von Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows](./how-to-setup-authentication.md#service-principal-authentication) zum Erstellen eines Dienstprinzipals in Ihrem Arbeitsbereich aus.
-- Das **curl** -Hilfsprogramm. Das **curl** -Programm ist im [Windows-Subsystem für Linux](/windows/wsl/install-win10) oder jeder beliebigen UNIX-Distribution verfügbar. In PowerShell ist **curl** ein Alias für **Invoke-WebRequest** , und `curl -d "key=val" -X POST uri` wird zu `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri`. 
+- Das **curl**-Hilfsprogramm. Das **curl**-Programm ist im [Windows-Subsystem für Linux](/windows/wsl/install-win10) oder jeder beliebigen UNIX-Distribution verfügbar. In PowerShell ist **curl** ein Alias für **Invoke-WebRequest**, und `curl -d "key=val" -X POST uri` wird zu `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri`. 
 
 ## <a name="retrieve-a-service-principal-authentication-token"></a>Abrufen eines Tokens für die Dienstprinzipalauthentifizierung
 
@@ -79,7 +79,7 @@ Die Antwort sollte ein Zugriffstoken bereitstellen, das eine Stunde lang gültig
 Notieren Sie sich das Token, da Sie es verwenden, um alle nachfolgenden administrativen Anforderungen zu authentifizieren. Hierzu legen Sie einen Autorisierungsheader in allen Anforderungen fest:
 
 ```bash
-curl -h "Authentication: Bearer {your-access-token}" ...more args...
+curl -h "Authorization:Bearer {your-access-token}" ...more args...
 ```
 
 Beachten Sie, dass der Wert mit der Zeichenfolge „Bearer“ beginnt, einschließlich eines einzelnen Leerzeichens, bevor Sie das Token hinzufügen.
@@ -167,7 +167,7 @@ Sie erhalten erneut eine JSON-Liste, die dieses Mal eine Liste enthält, in der 
 }
 ```
 
-Zum Arbeiten mit Ressourcen in einem Arbeitsbereich wechseln Sie vom allgemeinen **management.azure.com** -Server zu einem REST-API-Server, der für den Speicherort des Arbeitsbereichs spezifisch ist. Beachten Sie den Wert des `discoveryUrl`-Schlüssels in der JSON-Antwort oben. Wenn Sie diese URL mit GET abrufen, erhalten Sie eine Antwort ähnlich der folgenden:
+Zum Arbeiten mit Ressourcen in einem Arbeitsbereich wechseln Sie vom allgemeinen **management.azure.com**-Server zu einem REST-API-Server, der für den Speicherort des Arbeitsbereichs spezifisch ist. Beachten Sie den Wert des `discoveryUrl`-Schlüssels in der JSON-Antwort oben. Wenn Sie diese URL mit GET abrufen, erhalten Sie eine Antwort ähnlich der folgenden:
 
 ```json
 {

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 10/7/2020
 ms.subservice: alerts
-ms.openlocfilehash: 304a7adf69ed3622cf2031cfbebb920bff5238cc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5589697771227c8105adcce61e4daeebdb315391
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599700"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714339"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 
@@ -27,7 +27,7 @@ Die grundlegenden Schritte lauten wie folgt:
 
 1. Verwenden Sie eine der folgenden Vorlagen als JSON-Datei, die die Erstellung der Warnung beschreibt.
 2. Bearbeiten und verwenden Sie die entsprechende Parameterdatei als JSON-Datei zum Anpassen der Warnung.
-3. Die verfügbare Metriken für den `metricName`-Parameter finden Sie unter [Von Azure Monitor unterstützte Metriken](../platform/metrics-supported.md).
+3. Die verfügbare Metriken für den `metricName`-Parameter finden Sie unter [Von Azure Monitor unterstützte Metriken](../essentials/metrics-supported.md).
 4. Stellen Sie die Vorlage mithilfe einer [beliebigen Bereitstellungsmethode](../../azure-resource-manager/templates/deploy-powershell.md) bereit.
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Vorlage für eine einfache Metrikwarnung mit statischem Schwellenwert
@@ -1247,7 +1247,7 @@ az deployment group create \
 
 Mit der folgenden Vorlage können Sie eine erweiterte Metrikwarnungsregel mit statischem Schwellenwert für eine benutzerdefinierte Metrik erstellen.
 
-Weitere Informationen zu benutzerdefinierten Metriken in Azure Monitor finden Sie unter [Benutzerdefinierte Metriken in Azure Monitor](../platform/metrics-custom-overview.md).
+Weitere Informationen zu benutzerdefinierten Metriken in Azure Monitor finden Sie unter [Benutzerdefinierte Metriken in Azure Monitor](../essentials/metrics-custom-overview.md).
 
 Wenn Sie eine Warnungsregel für eine benutzerdefinierte Metrik erstellen, müssen Sie sowohl den Metriknamen als auch den Metriknamespace angeben. Sie sollten sich auch vergewissern, dass die benutzerdefinierte Metrik bereits gemeldet wird, da Sie keine Warnungsregel auf der Grundlage einer benutzerdefinierten Metrik erstellen können, die noch nicht vorhanden ist.
 
@@ -1503,7 +1503,7 @@ az deployment group create \
 
 >[!NOTE]
 >
-> Sie können den Metriknamespace einer bestimmten benutzerdefinierten Metrik ermitteln, indem Sie [Ihre benutzerdefinierten Metriken über das Azure-Portal durchsuchen](../platform/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal).
+> Sie können den Metriknamespace einer bestimmten benutzerdefinierten Metrik ermitteln, indem Sie [Ihre benutzerdefinierten Metriken über das Azure-Portal durchsuchen](../essentials/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal).
 
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Vorlage für eine Metrikwarnung, mit der mehrere Ressourcen überwacht werden
@@ -3624,7 +3624,6 @@ az deployment group create \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu [Warnungen in Azure](../platform/alerts-overview.md).
+- Weitere Informationen zu [Warnungen in Azure](./alerts-overview.md).
 - Erfahren Sie, wie Sie [eine Aktionsgruppe mithilfe einer Resource Manager-Vorlage erstellen](../alerts/action-groups-create-resource-manager-template.md).
 - Informationen zur JSON-Syntax und zu den Eigenschaften finden Sie in der Vorlagenreferenz für [Microsoft.Insights/metricAlerts](/azure/templates/microsoft.insights/metricalerts).
-

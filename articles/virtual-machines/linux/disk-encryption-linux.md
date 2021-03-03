@@ -8,15 +8,14 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3b6928b759d2349051dbb69258952f2f1ee10a31
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d32e5c55bbaa7357c1f13200213dbaed19986825
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878137"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694341"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Linux-Computern
-
 
 Azure Disk Encryption für virtuelle Linux-Computer (VMs) bietet mithilfe des DM-Crypt-Features von Linux eine vollständige Datenträgerverschlüsselung des Betriebssystemdatenträgers und der Datenträger für Daten. Darüber hinaus wird bei Verwendung des EncryptFormatAll-Features Verschlüsselung des temporären Datenträgers bereitstellt.
 
@@ -408,7 +407,6 @@ Die folgenden Linux-Szenarien,- Features und -Technologien werden von Azure Disk
 - Erstellen eines Images oder einer Momentaufnahme einer verschlüsselten VM und dessen oder deren Verwendung zum Bereitstellen weiterer VMs
 - Kernel-Absturzabbild (kdump).
 - Oracle-ACFS (ASM-Clusterdateisystem).
-- Gen2-VMs (siehe: [Unterstützung für VMs der Generation 2 in Azure](../generation-2.md#generation-1-vs-generation-2-capabilities)).
 - Die NVMe-Datenträger der VMs der Lsv2-Serie (siehe: [LSv2-Serie](../lsv2-series.md)).
 - Eine VM mit „geschachtelten Bereitstellungspunkten“, also mehrere Bereitstellungspunkte in einem einzelnen Pfad (z. B. „/1stmountpoint/data/2stmountpoint“).
 - Eine VM mit einem Datenlaufwerk, das über einem Betriebssystemordner eingebunden ist
@@ -416,7 +414,6 @@ Die folgenden Linux-Szenarien,- Features und -Technologien werden von Azure Disk
 - VMs der M-Serie mit Datenträgern mit Schreibbeschleunigung
 - Anwenden von ADE auf eine VM, die mit [serverseitiger Verschlüsselung mit kundenseitig verwalteten Schlüsseln](../disk-encryption.md) (SSE + CMK) verschlüsselte Datenträger aufweist. Das Anwenden von SSE + CMK auf einen Datenträger auf einer mit ADE verschlüsselten VM ist ebenfalls ein nicht unterstütztes Szenario.
 - Migrieren einer VM, die mit ADE verschlüsselt ist oder **jemals** mit ADE verschlüsselt war, zur [serverseitigen Verschlüsselung mit kundenseitig verwalteten Schlüsseln](../disk-encryption.md).
-- [Azure-VM-Größen ohne lokalen temporären Datenträger](../azure-vms-no-temp-disk.md), insbesondere Dv4, Dsv4, Ev4 und Esv4.
 - Verschlüsseln von VMs in Failoverclustern.
 
 ## <a name="next-steps"></a>Nächste Schritte

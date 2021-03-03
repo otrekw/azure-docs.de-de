@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 27d357279a54d7abc351370e7afda3a7961bac33
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 4564e28f76aebe7f708c2b6f68903fe67bcefe26
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428553"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698857"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Bring Your Own Key (vom Kunden verwaltete Schlüssel) in Media Services
 
@@ -42,7 +42,7 @@ Sie können wahlweise einen Schlüsselnamen und eine Schlüsselversion oder nur 
 Media Services unterstützt die Mehrfachverschlüsselung automatisch. Bei ruhenden Daten wird von der ersten Verschlüsselungsebene abhängig von der Einstellung von `AccountEncryption` für das Konto ein kundenseitig verwalteter Schlüssel oder ein von Microsoft verwalteter Schlüssel verwendet.  Die zweite Verschlüsselungsebene für ruhende Daten wird automatisch mit einem separaten, von Microsoft verwalteten Schlüssel bereitgestellt. Weitere Informationen dazu finden Sie unter [Mehrfachverschlüsselung in Azure](../../security/fundamentals/double-encryption.md).
 
 > [!NOTE]
-> Die Mehrfachverschlüsselung wird automatisch für das Media Services-Konto aktiviert. Sie müssen jedoch den kundenseitig verwalteten Schlüssel und die Mehrfachverschlüsselung in Ihrem Speicherkonto separat konfigurieren. Weitere Informationen finden Sie unter [Speicherverschlüsselung](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+> Die Mehrfachverschlüsselung wird automatisch für das Media Services-Konto aktiviert. Sie müssen jedoch den kundenseitig verwalteten Schlüssel und die Mehrfachverschlüsselung in Ihrem Speicherkonto separat konfigurieren. Weitere Informationen finden Sie unter [Speicherverschlüsselung](../../storage/common/storage-service-encryption.md).
 
 ## <a name="tutorials"></a>Tutorials
 

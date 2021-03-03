@@ -3,12 +3,12 @@ title: Überwachen der Leistung auf Azure-VMs – Azure Application Insights
 description: Leistungsüberwachung für Anwendungen auf Azure-VMs und in Azure-VM-Skalierungsgruppen. Ladezeit für Diagramme und Antwortzeit, Informationen zu den Abhängigkeiten und Festlegen von Benachrichtigungen zur Leistung.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 48441711c8c6209b25974108fd91d1023fd6e6be
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 0951d1d622f59de4780735fad78ac73649ea2369
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493735"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711480"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Bereitstellen des Azure Monitor Application Insights-Agents auf virtuellen Azure-Computern und in Azure-VM-Skalierungsgruppen
 
@@ -16,7 +16,7 @@ Die Überwachung der .NET- oder Java-basierten Webanwendungen auf [Azure-VMs](ht
 
 Dieser Artikel führt Sie Schritt für Schritt durch das Aktivieren der Application Insights-Überwachung mithilfe des Application Insights-Agents und bietet eine vorläufige Anleitung zur Automatisierung des Prozesses für umfangreiche Bereitstellungen.
 > [!IMPORTANT]
-> **Java**-basierte Anwendungen, die auf Azure-VMs und in VM-Skalierungsgruppen (VMSS) ausgeführt werden, werden mit dem **[Application Insights Java 3.0-Agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)** überwacht, der allgemein verfügbar ist.
+> **Java**-basierte Anwendungen, die auf Azure-VMs und in VM-Skalierungsgruppen (VMSS) ausgeführt werden, werden mit dem **[Application Insights Java 3.0-Agent](./java-in-process-agent.md)** überwacht, der allgemein verfügbar ist.
 
 > [!IMPORTANT]
 > Der Azure Application Insights-Agent für ASP.NET-Anwendungen, die **auf Azure-VMs und in VM-Skalierungsgruppen** ausgeführt werden, befindet sich derzeit in der Public Preview. Verwenden Sie zum Überwachen Ihrer **lokal** ausgeführten ASP.NET-Anwendungen den [Azure Application Insights-Agent für lokale Server](./status-monitor-v2-overview.md), der allgemein verfügbar ist und vollständig unterstützt wird.
@@ -42,7 +42,7 @@ Es gibt zwei Methoden, um die Überwachung von Anwendungen zu aktivieren, die au
   * Der Application Insights-Agent sammelt automatisch die gleichen Abhängigkeitssignale wie das .NET SDK. Weitere Informationen finden Sie unter [Automatisches Sammeln von Abhängigkeiten](./auto-collect-dependencies.md#net).
         
 #### <a name="java"></a>Java
-  * Für Java stellt der **[Application Insights Java 3.0-Agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)** die empfohlene Vorgehensweise dar. Die beliebtesten Bibliotheken und Frameworks sowie Protokolle und Abhängigkeiten werden [automatisch erfasst](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#auto-collected-requests-dependencies-logs-and-metrics), während Ihnen gleichzeitig eine Vielzahl von [zusätzlichen Konfigurationsmöglichkeiten](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config) zur Verfügung steht.
+  * Für Java stellt der **[Application Insights Java 3.0-Agent](./java-in-process-agent.md)** die empfohlene Vorgehensweise dar. Die beliebtesten Bibliotheken und Frameworks sowie Protokolle und Abhängigkeiten werden [automatisch erfasst](./java-in-process-agent.md#auto-collected-requests-dependencies-logs-and-metrics), während Ihnen gleichzeitig eine Vielzahl von [zusätzlichen Konfigurationsmöglichkeiten](./java-standalone-config.md) zur Verfügung steht.
 
 ### <a name="code-based-via-sdk"></a>Codebasiert über SDK
     
@@ -55,19 +55,19 @@ Es gibt zwei Methoden, um die Überwachung von Anwendungen zu aktivieren, die au
     > Nur für .NET-Apps gilt: Wenn sowohl die Agent-basierte Überwachung als auch die manuelle SDK-basierte Instrumentierung erkannt wird, werden nur die Einstellungen der manuellen Instrumentierung berücksichtigt. Dadurch wird verhindert, dass doppelte Daten gesendet werden. Weitere Informationen dazu finden Sie im [Abschnitt zur Problembehandlung](#troubleshooting) weiter unten.
 
 #### <a name="net-core"></a>.NET Core
-Verwenden Sie zum Überwachen von .NET Core-Anwendungen das [SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core). 
+Verwenden Sie zum Überwachen von .NET Core-Anwendungen das [SDK](./asp-net-core.md). 
 
 #### <a name="java"></a>Java 
 
-Wenn Sie zusätzliche benutzerdefinierte Telemetriedaten für Java-Anwendungen benötigen, informieren Sie sich über weitere [verfügbare Optionen](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#send-custom-telemetry-from-your-application), fügen Sie [benutzerdefinierte Dimensionen](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config#custom-dimensions) hinzu, oder verwenden Sie [Telemetrieprozessoren](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-telemetry-processors). 
+Wenn Sie zusätzliche benutzerdefinierte Telemetriedaten für Java-Anwendungen benötigen, informieren Sie sich über weitere [verfügbare Optionen](./java-in-process-agent.md#send-custom-telemetry-from-your-application), fügen Sie [benutzerdefinierte Dimensionen](./java-standalone-config.md#custom-dimensions) hinzu, oder verwenden Sie [Telemetrieprozessoren](./java-standalone-telemetry-processors.md). 
 
 #### <a name="nodejs"></a>Node.js
 
-Verwenden Sie zum Instrumentieren Ihrer Node.js-Anwendung das [SDK](https://docs.microsoft.com/azure/azure-monitor/app/nodejs).
+Verwenden Sie zum Instrumentieren Ihrer Node.js-Anwendung das [SDK](./nodejs.md).
 
 #### <a name="python"></a>Python
 
-Verwenden Sie zum Überwachen von Python-Apps das [SDK](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
+Verwenden Sie zum Überwachen von Python-Apps das [SDK](./opencensus-python.md).
 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>Verwalten des Application Insights-Agents für .NET-Anwendungen auf virtuellen Azure-Computern mithilfe von PowerShell
 

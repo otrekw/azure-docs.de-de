@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: 685c54131e4a82950ea64e5374d9e1d260ffabc7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f35100d703e56d1fda731aab5e6a96c791c8f0d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602073"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713676"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Erstellen von benutzerdefinierten Feldern in einem Log Analytics-Arbeitsbereich in Azure Monitor (Vorschauversion)
 
 > [!NOTE]
-> In diesem Artikel wird beschrieben, wie Sie Textdaten in einem Log Analytics-Arbeitsbereich beim Sammeln analysieren können. Es wird empfohlen, Textdaten nach dem Sammeln in einem Abfragefilter zu analysieren, wie es unter [Analysieren von Textdaten in Azure Monitor](../log-query/parse-text.md) beschrieben ist. Dies bietet mehrere Vorteile gegenüber der Verwendung benutzerdefinierter Felder.
+> In diesem Artikel wird beschrieben, wie Sie Textdaten in einem Log Analytics-Arbeitsbereich beim Sammeln analysieren können. Es wird empfohlen, Textdaten nach dem Sammeln in einem Abfragefilter zu analysieren, wie es unter [Analysieren von Textdaten in Azure Monitor](./parse-text.md) beschrieben ist. Dies bietet mehrere Vorteile gegenüber der Verwendung benutzerdefinierter Felder.
 
 > [!IMPORTANT]
-> Benutzerdefinierte Felder erhöhen die Menge an Daten, die im Log Analytics-Arbeitsbereich gesammelt werden, wodurch auch Ihre Kosten steigen können. Ausführliche Informationen finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../platform/manage-cost-storage.md#pricing-model).
+> Benutzerdefinierte Felder erhöhen die Menge an Daten, die im Log Analytics-Arbeitsbereich gesammelt werden, wodurch auch Ihre Kosten steigen können. Ausführliche Informationen finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](./manage-cost-storage.md#pricing-model).
 
 Mit dem Feature **Benutzerdefinierte Felder** von Azure Monitor können Sie vorhandene Datensätze in Ihrem Log Analytics-Arbeitsbereich durch eigene durchsuchbare Felder erweitern.  Benutzerdefinierte Felder werden automatisch auf der Grundlage von Daten aufgefüllt, die aus anderen Eigenschaften im gleichen Datensatz extrahiert wurden.
 
@@ -42,9 +42,9 @@ In den folgenden Abschnitten wird die Vorgehensweise zum Erstellen eines benutze
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>Schritt 1: Angeben der Datensätze, die über das benutzerdefinierte Feld verfügen sollen
-Als Erstes müssen die Datensätze angegeben werden, die über das benutzerdefinierte Feld verfügen sollen.  Hierzu führen Sie zunächst eine [Standard-Protokollabfrage](../log-query/log-query-overview.md) durch und wählen dann einen Datensatz aus, der Azure Monitor als Modell für die Ermittlung dient.  Wenn Sie angeben, dass Sie Daten in ein benutzerdefiniertes Feld extrahieren möchten, wird der **Feldextraktions-Assistent** geöffnet, in dem Sie die Kriterien überprüfen und anpassen können.
+Als Erstes müssen die Datensätze angegeben werden, die über das benutzerdefinierte Feld verfügen sollen.  Hierzu führen Sie zunächst eine [Standard-Protokollabfrage](./log-query-overview.md) durch und wählen dann einen Datensatz aus, der Azure Monitor als Modell für die Ermittlung dient.  Wenn Sie angeben, dass Sie Daten in ein benutzerdefiniertes Feld extrahieren möchten, wird der **Feldextraktions-Assistent** geöffnet, in dem Sie die Kriterien überprüfen und anpassen können.
 
-1. Wechseln Sie zu **Protokolle**, und verwenden Sie eine [Abfrage zum Abrufen der Datensätze](../log-query/log-query-overview.md), die über das benutzerdefinierte Feld verfügen sollen.
+1. Wechseln Sie zu **Protokolle**, und verwenden Sie eine [Abfrage zum Abrufen der Datensätze](./log-query-overview.md), die über das benutzerdefinierte Feld verfügen sollen.
 2. Wählen Sie einen Datensatz aus, der Log Analytics als Modell für die Extraktion von Daten zur Auffüllung des benutzerdefinierten Felds dienen soll.  Nachdem Sie die Daten angegeben haben, die aus diesem Datensatz extrahiert werden sollen, ermittelt Log Analytics auf der Grundlage dieser Informationen die Logik, mit der das benutzerdefinierte Felds für alle ähnlichen Datensätze aufgefüllt werden kann.
 3. Erweitern Sie die Datensatzeigenschaften, klicken Sie auf die Auslassungspunkte links neben der oberen Eigenschaft des Datensatzes, und wählen Sie **Felder aus „ “ extrahieren** aus.
 4. Der **Feldextraktions-Assistent** wird geöffnet, und der ausgewählte Datensatz wird in der Spalte **Hauptbeispiel** angezeigt.  Das benutzerdefinierte Feld wird für Datensätze mit den gleichen Werten in den ausgewählten Eigenschaften definiert.  
@@ -128,6 +128,5 @@ Nun können wir das benutzerdefinierte Feld wie jede andere Datensatzeigenschaft
 ![Gruppierungsabfrage](media/custom-fields/query-group.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über [Protokollabfragen](../log-query/log-query-overview.md), um Abfragen mithilfe von benutzerdefinierten Feldern für die Kriterien zu erstellen.
+* Erfahren Sie mehr über [Protokollabfragen](./log-query-overview.md), um Abfragen mithilfe von benutzerdefinierten Feldern für die Kriterien zu erstellen.
 * Überwachen Sie [benutzerdefinierte Protokolldateien](../agents/data-sources-custom-logs.md), die Sie mithilfe von benutzerdefinierten Feldern analysieren.
-

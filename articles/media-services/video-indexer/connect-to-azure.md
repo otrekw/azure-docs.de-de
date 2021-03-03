@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 4174e63ed12faf5d10029db5b4eb9bf9a40b9b5b
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: fe6be5778997f0ef4a3f53ae45d17352eca60d8e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576277"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727259"
 ---
 # <a name="create-a-video-indexer-account"></a>Erstellen eines Video Indexer-Kontos
 
@@ -201,7 +201,7 @@ Die Automatisierung des Erstellens des Kontos ist ein Prozess in zwei Schritten:
 
 ### <a name="prerequisites-for-connecting-to-azure-government"></a>Voraussetzungen zum Herstellen einer Verbindung mit Azure Government
 
--   Ein Abonnement in [Azure Government](https://docs.microsoft.com/azure/azure-government/)
+-   Ein Abonnement in [Azure Government](../../azure-government/index.yml)
 - Ein Azure AD-Konto in Azure Government
 - Alle Voraussetzungen für Berechtigungen und Ressourcen, wie oben unter [Voraussetzungen zum Herstellen einer Verbindung mit Azure](#prerequisites-for-connecting-to-azure) beschrieben.
 
@@ -222,7 +222,7 @@ So erstellen Sie ein kostenpflichtiges Konto über das Video Indexer-Portal
     
 ### <a name="create-new-account-via-the-api-on-azure-government"></a>Erstellen eines neuen Kontos über die API in Azure Government
 
-Um ein kostenpflichtiges Konto in Azure Government zu erstellen, folgen Sie den Anweisungen zum [Erstellen eines kostenpflichtigen Kontos](/azure/media-services/video-indexer/connect-to-azure). Dieser API-Endpunkt umfasst nur Government-Cloudregionen.
+Um ein kostenpflichtiges Konto in Azure Government zu erstellen, folgen Sie den Anweisungen zum [Erstellen eines kostenpflichtigen Kontos](). Dieser API-Endpunkt umfasst nur Government-Cloudregionen.
 
 ### <a name="limitations-of-video-indexer-on-azure-government"></a>Einschränkungen von Video Indexer in Azure Government
 

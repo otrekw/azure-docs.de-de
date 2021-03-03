@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: f0d062766f0a5d58fbcaaa32b1df5a5e40c783b4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 17c7609afeef8b5129e3bfe252def74b45cb4208
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599465"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719949"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a>Installieren des Azure Monitor-Agents (Vorschau)
 In diesem Artikel werden die verschiedenen Optionen beschrieben, die derzeit für die Installation des [Azure Monitor-Agents](azure-monitor-agent-overview.md) auf Azure-VMs und Servern mit Azure Arc-Unterstützung verfügbar sind, sowie die Optionen zum Erstellen von [Zuordnungen für Datensammlungsregeln](data-collection-rule-azure-monitor-agent.md), die definieren, welche Daten der Agent erfassen soll.
@@ -42,7 +42,7 @@ Mithilfe von Resource Manager-Vorlagen können Sie den Azure Monitor-Agent auf A
 Hier finden Sie Beispielvorlagen für die Installation des Agents und die Erstellung der Zuordnung: 
 
 - [Vorlage zum Installieren des Azure Monitor-Agents (Azure und Azure Arc)](../agents/resource-manager-agent.md#azure-monitor-agent-preview) 
-- [Vorlage zum Erstellen einer Zuordnung zu einer Datensammlungsregel](../samples/resource-manager-data-collection-rules.md)
+- [Vorlage zum Erstellen einer Zuordnung zu einer Datensammlungsregel](./resource-manager-data-collection-rules.md)
 
 Installieren Sie die Vorlagen mit [einer Bereitstellungsmethode für Resource Manager-Vorlagen](../../azure-resource-manager/templates/deploy-powershell.md), z. B. mit den folgenden Befehlen.
 

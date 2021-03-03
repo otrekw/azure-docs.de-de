@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: f1889d49d1eb4981e59af6248817a6a9b6e2002d
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 472d55f79033d60c4f40e60b55e0f7fc2ea4517e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537254"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716651"
 ---
 # <a name="disclosure-design-guidelines"></a>Entwurfsrichtlinien für die Offenlegung
 Erfahren Sie, wie Sie Vertrauen zu Ihren Kunden aufbauen und erhalten können, indem Sie sich in Bezug auf die synthetische Natur Ihres Spracherlebnisses transparent verhalten.
@@ -77,5 +77,5 @@ Verwenden Sie das folgende Diagramm, um zu ermitteln, ob die Erfahrung mit Ihrer
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Entwurfsmuster für die Offenlegung](concepts-disclosure-patterns.md)
-* [Offenlegung für Sprecher](https://docs.microsoft.com/legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context)
+* [Offenlegung für Sprecher](/legal/cognitive-services/speech-service/disclosure-voice-talent?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)
 * [Richtlinien für die verantwortungsvolle Bereitstellung von Technologien mit künstlicher Sprache](concepts-guidelines-responsible-deployment-synthetic.md)

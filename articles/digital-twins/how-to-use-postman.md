@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 96872a067d2414254aec3f212542dadabdf2bd6f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: d99ec80308152ce9e4870da809acaa25c663d98d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791740"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715699"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Verwenden von Postman zum Senden von Anforderungen an die Azure Digital Twins-APIs
 
@@ -140,7 +140,7 @@ In diesem Artikel wird die Abfrage-API und die entsprechende [Referenzdokumentat
 1. Überprüfen Sie, ob die Header, die für die Anforderung auf der Registerkarte *Header* angezeigt werden, den in der Referenzdokumentation beschriebenen entsprechen. Für diese Anforderung wurden mehrere Header automatisch ausgefüllt. Bei der Abfrage-API ist keine der Headeroptionen erforderlich, sodass dieser Schritt erledigt ist.
 1. Überprüfen Sie, ob der Textkörper, der für die Anforderung in der Registerkarte *Textkörper* angezeigt wird, den in der Referenzdokumentation beschriebenen Anforderungen entspricht. Für die Abfrage-API ist ein JSON-Textkörper erforderlich, um den Abfragetext bereitzustellen. Nachfolgend finden Sie ein Beispieltextkörper für diese Anforderung, die alle digitalen Zwillinge in der Instanz abfragt:
 
-   :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="In den Details der neuen Anforderung wird die Registerkarte „Textkörper“ angezeigt. Sie enthält einen unformatierten JSON-Textkörper mit einer Abfrage von „SELECT * FROM DIGITALTWINS“."lightbox="media/how-to-use-postman/postman-request-body.png":::
+   :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="In den Details der neuen Anforderung wird die Registerkarte „Textkörper“ angezeigt. Sie enthält einen unformatierten JSON-Textkörper mit einer Abfrage von „SELECT * FROM DIGITALTWINS“." lightbox="media/how-to-use-postman/postman-request-body.png":::
 
    Weitere Informationen zum Erstellen von Azure Digital Twins-Abfragen finden Sie unter [*Abfragen des Zwillingsdiagramms von Azure Digital Twins*](how-to-query-graph.md).
 

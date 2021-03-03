@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 2fb9677f0874de1fb715082d58a0e354880e654b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 86caf39e0d31a41ca454c65311ff2fab52b56f5b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358074"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691160"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Erstellen einer FCI mit einer Premium-Dateifreigabe (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In diesem Artikel wird erläutert, wie Sie auf virtuellen Azure-Computern eine SQL Server-Failoverclusterinstanz (FCI) mit SQL Server mithilfe einer [Premium-Dateifreigabe](../../../storage/files/storage-how-to-create-premium-fileshare.md) erstellen.
+In diesem Artikel wird erläutert, wie Sie auf virtuellen Azure-Computern eine SQL Server-Failoverclusterinstanz (FCI) mit SQL Server mithilfe einer [Premium-Dateifreigabe](../../../storage/files/storage-how-to-create-file-share.md) erstellen.
 
 Premium-Dateifreigaben sind SSD-gestützte (Storage Spaces Direct) Dateifreigaben mit durchgängig niedriger Latenz, die für die Verwendung mit Failoverclusterinstanzen für SQL Server 2012 oder höher unter Windows Server 2012 oder höher vollständig unterstützt werden. Premium-Dateifreigaben bieten Ihnen mehr Flexibilität, sodass Sie ohne Ausfallzeiten die Größe der Dateifreigabe ändern und diese skalieren können.
 
@@ -37,7 +37,7 @@ Bevor Sie die in diesem Artikel aufgeführten Anweisungen ausführen, sollten Si
 - Ein Azure-Abonnement.
 - Ein Konto mit Berechtigungen zum Erstellen von Objekten auf virtuellen Azure-Computern und in Active Directory
 - [Mindestens zwei vorbereitete virtuelle Azure-Computer mit Windows](failover-cluster-instance-prepare-vm.md) in einer [Verfügbarkeitsgruppe](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) oder unterschiedlichen [Verfügbarkeitszonen](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address).
-- Eine [Premium-Dateifreigabe ](../../../storage/files/storage-how-to-create-premium-fileshare.md) basierend auf dem Speicherkontingent Ihrer Datenbank für Ihre Datendateien, die als Clusterlaufwerk verwendet werden kann.
+- Eine [Premium-Dateifreigabe ](../../../storage/files/storage-how-to-create-file-share.md) basierend auf dem Speicherkontingent Ihrer Datenbank für Ihre Datendateien, die als Clusterlaufwerk verwendet werden kann.
 - Die neueste Version von [PowerShell](/powershell/azure/install-az-ps). 
 
 ## <a name="mount-premium-file-share"></a>Einbinden der Premium-Dateifreigabe

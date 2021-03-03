@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
-ms.openlocfilehash: 213437e68efb27c483c8013d209261408ab9d4ea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e2050784d03b1f01e743df9b00916ec286a3e7ef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602367"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736949"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Beispiele für Protokollabfragen in Azure Monitor
-Dieser Artikel enthält mehrere Beispiele für [Abfragen](../log-query/log-query-overview.md) unter Verwendung der [Abfragesprache Kusto](/azure/kusto/query/), mit denen verschiedene Arten von Protokolldaten aus Azure Monitor abgerufen werden. Da Daten auf unterschiedliche Weise konsolidiert und analysiert werden, können Sie anhand dieser Beispiele verschiedene Strategien ermitteln, die ggf. für Ihre eigenen Anforderungen geeignet sind.  
+Dieser Artikel enthält mehrere Beispiele für [Abfragen](./log-query-overview.md) unter Verwendung der [Abfragesprache Kusto](/azure/kusto/query/), mit denen verschiedene Arten von Protokolldaten aus Azure Monitor abgerufen werden. Da Daten auf unterschiedliche Weise konsolidiert und analysiert werden, können Sie anhand dieser Beispiele verschiedene Strategien ermitteln, die ggf. für Ihre eigenen Anforderungen geeignet sind.  
 
-Ausführliche Informationen zu den Schlüsselwörtern aus diesen Beispielen finden Sie in der [Kusto-Sprachreferenz](/azure/kusto/query/). Sollten Sie noch keine Erfahrung mit Azure Monitor haben, machen Sie sich anhand [dieser Lektion](../log-query/get-started-queries.md) mit dem Erstellen von Abfragen vertraut.
+Ausführliche Informationen zu den Schlüsselwörtern aus diesen Beispielen finden Sie in der [Kusto-Sprachreferenz](/azure/kusto/query/). Sollten Sie noch keine Erfahrung mit Azure Monitor haben, machen Sie sich anhand [dieser Lektion](./get-started-queries.md) mit dem Erstellen von Abfragen vertraut.
 
 ## <a name="events"></a>Events
 
@@ -375,7 +375,7 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>Verwendung
 
-Mit dem Datentyp `Usage` kann die erfasste Datenmenge nach Lösung oder Datentyp nachverfolgt werden. Es gibt weitere Methoden, mit denen erfasste Datenmengen nach [Computer](../platform/manage-cost-storage.md#data-volume-by-computer) oder [Azure-Abonnement, Ressourcengruppe oder Ressourcen](../platform/manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription) untersucht werden können.
+Mit dem Datentyp `Usage` kann die erfasste Datenmenge nach Lösung oder Datentyp nachverfolgt werden. Es gibt weitere Methoden, mit denen erfasste Datenmengen nach [Computer](./manage-cost-storage.md#data-volume-by-computer) oder [Azure-Abonnement, Ressourcengruppe oder Ressourcen](./manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription) untersucht werden können.
 
 #### <a name="data-volume-by-solution"></a>Datenvolumen nach Lösung
 
@@ -438,4 +438,4 @@ Update
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Ausführliche Informationen zur Kusto-Sprache finden Sie in der entsprechenden [Sprachreferenz](/azure/kusto/query).
-- Machen Sie sich mit dem [Schreiben von Protokollabfragen in Azure Monitor](../log-query/get-started-queries.md) vertraut.
+- Machen Sie sich mit dem [Schreiben von Protokollabfragen in Azure Monitor](./get-started-queries.md) vertraut.

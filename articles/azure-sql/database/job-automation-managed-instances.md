@@ -12,12 +12,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 02/01/2021
-ms.openlocfilehash: beb82f8435aea817a074ce83fddc6a5417b86c26
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6ba1ba9d8c809a805fe8691baf96350b70ec6a51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416679"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691891"
 ---
 # <a name="automate-management-tasks-using-sql-agent-jobs-in-azure-sql-managed-instance"></a>Automatisieren von Verwaltungsaufgaben mithilfe von SQL-Agent-Aufträgen in Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -78,7 +78,7 @@ Im Zusammenhang mit SQL-Agent-Aufträgen gibt es mehrere wichtige Konzepte:
 
 SQL-Agent-Auftragsschritte sind Aktionssequenzen, die der SQL-Agent ausführen soll. Jeder Schritt verfügt über den nächsten Schritt, der ausgeführt werden soll, wenn der Schritt erfolgreich oder nicht erfolgreich war, sowie die Anzahl von Wiederholungsversuchen, falls der Schritt nicht erfolgreich war.
 
-Der SQL-Agent ermöglicht die Erstellung verschiedener Arten von Auftragsschritten. Hierzu zählen etwa Transact-SQL-Auftragsschritte zum Ausführen eines einzelnen Transact-SQL-Batchs in der Datenbank, Betriebssystembefehls-/PowerShell-Schritte zum Ausführen eines benutzerdefinierten Betriebssystemskripts, [SSIS-Auftragsschritte](/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent) zum Laden von Daten unter Verwendung der SSIS-Runtime sowie [Replikationsschritte](../managed-instance/replication-transactional-overview.md) zum Veröffentlichen von Änderungen aus Ihrer Datenbank in anderen Datenbanken.
+Der SQL-Agent ermöglicht die Erstellung verschiedener Arten von Auftragsschritten. Hierzu zählen etwa Transact-SQL-Auftragsschritte zum Ausführen eines einzelnen Transact-SQL-Batchs in der Datenbank, Betriebssystembefehls-/PowerShell-Schritte zum Ausführen eines benutzerdefinierten Betriebssystemskripts, [SSIS-Auftragsschritte](../../data-factory/how-to-invoke-ssis-package-managed-instance-agent.md) zum Laden von Daten unter Verwendung der SSIS-Runtime sowie [Replikationsschritte](../managed-instance/replication-transactional-overview.md) zum Veröffentlichen von Änderungen aus Ihrer Datenbank in anderen Datenbanken.
 
 > [!Note]
 > Weitere Informationen zum Nutzen der Azure SSIS Integration Runtime mit SSISDB gehostet von Azure SQL Managed Instance finden Sie unter [Verwenden von Azure SQL Managed Instance mit SQL Server Integration Services (SSIS) in Azure Data Factory](/../azure/data-factory/how-to-use-sql-managed-instance-with-ir.md).

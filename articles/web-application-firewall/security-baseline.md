@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d1f0b0b36c8f0ed5ede7b5c3113207ae3cce10fd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f29e6f0de3286b04321207b4c469f34aeaee8ef5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581250"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737408"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure-Sicherheitsbaseline für Azure Web Application Firewall
 
@@ -164,7 +164,7 @@ Azure Sentinel verfügt über eine integrierte Azure WAF-Arbeitsmappe, die einen
 ### <a name="25-configure-security-log-storage-retention"></a>2.5: Konfigurieren der Sicherheitsprotokoll-Aufbewahrungsdauer im Speicher
 
 **Leitfaden**: Senden Sie Azure Web Application Firewall (WAF)-Protokolle an ein benutzerdefiniertes Speicherkonto, und definieren Sie die Aufbewahrungsrichtlinie. Verwenden Sie Azure Monitor, um den Aufbewahrungszeitraum Ihres Log Analytics-Arbeitsbereichs auf Grundlage der Complianceanforderungen Ihrer Organisation festzulegen.
-- [Konfigurieren der Überwachung für ein Speicherkonto](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Konfigurieren der Überwachung für ein Speicherkonto](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

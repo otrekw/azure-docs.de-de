@@ -4,12 +4,12 @@ description: In diesem Artikel wird erläutert, was Aktionsregeln in Azure Monit
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 5fc9b1f75faec7f2be8f9e6126fdacf9697413f6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1a837ac9aa94effa021d5395fb4856d1d5df2e90
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602311"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718147"
 ---
 # <a name="action-rules-preview"></a>Aktionsregeln (Vorschau)
 
@@ -209,7 +209,7 @@ Contoso möchte Benachrichtigungen für alle Protokollwarnungen, die für **Comp
 
 ### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>Szenario 3: In einer Ressourcengruppe definierte Aktionsgruppe
 
-Contoso hat [eine Metrikwarnung auf Abonnementebene](../platform/alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) definiert. Contoso möchte aber die Aktionen definieren, die bei Warnungen speziell ausgelöst werden, die aus der Ressourcengruppe **ContosoRG** generiert wurden.
+Contoso hat [eine Metrikwarnung auf Abonnementebene](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) definiert. Contoso möchte aber die Aktionen definieren, die bei Warnungen speziell ausgelöst werden, die aus der Ressourcengruppe **ContosoRG** generiert wurden.
 
 **Lösung:** Erstellen Sie eine Aktionsregel mit:
 * Bereich = **ContosoRG**
@@ -253,11 +253,11 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
-Protokollwarnungen, die mit der Option [Anzahl von Ergebnissen](../platform/alerts-unified-log.md) erstellt werden, generieren eine einzige Warnungsinstanz anhand sämtlicher Suchergebnisse (die sich über mehrere Computer erstrecken können). Wenn in diesem Szenario eine Aktionsregel den Filter **Warnungskontext (Nutzlast)** verwendet, reagiert sie auf die Warnungsinstanz, sofern eine Übereinstimmung vorhanden ist. Wenn in Szenario 2, wie zuvor beschrieben, die Suchergebnisse für die generierte Protokollwarnung sowohl **Computer-01** als auch **Computer-02** enthalten, wird die gesamte Benachrichtigung unterdrückt. Es wird überhaupt keine Benachrichtigung für **Computer-02** generiert.
+Protokollwarnungen, die mit der Option [Anzahl von Ergebnissen](./alerts-unified-log.md) erstellt werden, generieren eine einzige Warnungsinstanz anhand sämtlicher Suchergebnisse (die sich über mehrere Computer erstrecken können). Wenn in diesem Szenario eine Aktionsregel den Filter **Warnungskontext (Nutzlast)** verwendet, reagiert sie auf die Warnungsinstanz, sofern eine Übereinstimmung vorhanden ist. Wenn in Szenario 2, wie zuvor beschrieben, die Suchergebnisse für die generierte Protokollwarnung sowohl **Computer-01** als auch **Computer-02** enthalten, wird die gesamte Benachrichtigung unterdrückt. Es wird überhaupt keine Benachrichtigung für **Computer-02** generiert.
 
 ![Diagramm der Aktionsregeln und Protokollwarnungen mit hervorgehobener einzelner Warnungsinstanz](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
-Um Protokollwarnungen mit Aktionsregeln optimal zu nutzen, empfiehlt es sich, Protokollwarnungen mit der Option [Metrische Maßeinheit](../platform/alerts-unified-log.md) zu erstellen. Separate Benachrichtigungsinstanzen werden von dieser Option basierend auf dem definierten Gruppenfeld generiert. In Szenario 2 werden schließlich separate Warnungsinstanzen für **Computer-01** und **Computer-02** generiert. Aufgrund der Aktionsregel, die im Szenario beschrieben wird, wird nur die Benachrichtigung für **Computer-01** unterdrückt. Die Benachrichtigung für **Computer-02** wird weiterhin normal ausgelöst.
+Um Protokollwarnungen mit Aktionsregeln optimal zu nutzen, empfiehlt es sich, Protokollwarnungen mit der Option [Metrische Maßeinheit](./alerts-unified-log.md) zu erstellen. Separate Benachrichtigungsinstanzen werden von dieser Option basierend auf dem definierten Gruppenfeld generiert. In Szenario 2 werden schließlich separate Warnungsinstanzen für **Computer-01** und **Computer-02** generiert. Aufgrund der Aktionsregel, die im Szenario beschrieben wird, wird nur die Benachrichtigung für **Computer-01** unterdrückt. Die Benachrichtigung für **Computer-02** wird weiterhin normal ausgelöst.
 
 ![Aktionsregeln und Protokollwarnungen (Anzahl von Ergebnissen)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
@@ -287,7 +287,7 @@ Nachdem Sie die Zielressource für Ihre Warnungsregel definiert haben, können S
 
 ### <a name="can-i-see-the-alerts-that-have-been-suppressed-by-an-action-rule"></a>Kann ich die durch eine Aktionsregel unterdrückten Warnungen anzeigen?
 
-Auf der [Seite mit der Liste der Warnungen](../platform/alerts-managing-alert-instances.md) kann eine weitere Spalte mit dem Namen **Suppression Status** (Unterdrückungsstatus) ausgewählt werden. Wenn die Benachrichtigung für eine Warnungsinstanz unterdrückt wurde, wird dieser Status in der Liste angezeigt.
+Auf der [Seite mit der Liste der Warnungen](./alerts-managing-alert-instances.md) kann eine weitere Spalte mit dem Namen **Suppression Status** (Unterdrückungsstatus) ausgewählt werden. Wenn die Benachrichtigung für eine Warnungsinstanz unterdrückt wurde, wird dieser Status in der Liste angezeigt.
 
 ![Unterdrückte Warnungsinstanzen](media/alerts-action-rules/action-rules-suppressed-alerts.png)
 
@@ -321,4 +321,4 @@ Für jede Warnung zu „VM1“ wird die Aktionsgruppe „AG1“ ein Mal ausgelö
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Weitere Informationen zu Warnungen in Azure](../platform/alerts-overview.md)
+- [Weitere Informationen zu Warnungen in Azure](./alerts-overview.md)

@@ -3,12 +3,12 @@ title: Private Endpunkte
 description: Erfahren Sie mehr über den Prozess zum Erstellen privater Endpunkte für Azure Backup und die Szenarien, in denen private Endpunkte dazu beitragen, die Sicherheit Ihrer Ressourcen zu gewährleisten.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: a22da7341e3ebeff29bc784cfff0cc8aeb87fb9b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9363aaf45a7c092d8a773a07803c8c1bce1eedd7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362500"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728211"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Private Endpunkte für Azure Backup
 
@@ -170,9 +170,9 @@ Wenn Sie Ihre eigenen DNS-Server verwenden, müssen Sie die erforderlichen DNS-Z
     > Im oben stehenden Text bezieht sich `<geo>` auf den Regionscode (z. B. *eus* und *ne* für „USA, Osten“ bzw. „Europa, Norden“). In den folgenden Listen finden Sie die Regionscodes:
     >
     > - [Alle öffentlichen Clouds](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)
-    > - [China](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
-    > - [Deutschland](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
-    > - [US Gov](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
+    > - [China](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+    > - [Deutschland](../germany/germany-developer-guide.md#endpoint-mapping)
+    > - [US Gov](../azure-government/documentation-government-developer-guide.md)
 
 1. Als Nächstes fügen Sie die erforderlichen DNS-Einträge hinzu. Zum Anzeigen der Datensätze, die der Azure Backup-DNZ-Zone hinzugefügt werden müssen, navigieren Sie zu dem oben erstellten privaten Endpunkt und dann in der linken Navigationsleiste zur Option **DNS-Konfiguration**.
 

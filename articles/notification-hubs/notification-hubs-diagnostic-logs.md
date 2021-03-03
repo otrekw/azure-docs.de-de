@@ -6,12 +6,12 @@ ms.author: brjones
 ms.service: notification-hubs
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: b532dca6ceba44a32132bf64b322e1b4764fd5fa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b98a04a70062461cec603bea83052c4f1224819e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416696"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736235"
 ---
 # <a name="enable-diagnostics-logs-for-notification-hubs"></a>Aktivieren von Diagnoseprotokollen für Notification Hubs
 
@@ -141,8 +141,7 @@ Die neuen Einstellungen werden in etwa zehn Minuten wirksam. Danach werden die P
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Konfigurieren von Diagnosespeicher finden Sie hier:
-* [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/platform-logs-overview.md).
+* [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/essentials/platform-logs-overview.md).
 
 Weitere Informationen zu Azure Notification Hubs finden Sie hier:
 * [Was ist Azure Notification Hubs?](notification-hubs-push-notification-overview.md)
-

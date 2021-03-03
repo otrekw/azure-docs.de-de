@@ -13,12 +13,12 @@ author: williamdassafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 2/1/2021
-ms.openlocfilehash: 942698e5c42e1f46ff05dacdacdb0d124135a6c4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1f4bd28d2b95aeebe07fcad84d757327622d51f0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390758"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690429"
 ---
 # <a name="automate-management-tasks-using-elastic-jobs-preview"></a>Automatisieren von Verwaltungsaufgaben mithilfe elastischer Aufträge (Vorschau)
 
@@ -56,7 +56,7 @@ Elastische Aufträge können für [Azure SQL-Datenbank-Instanzen](sql-database-
 
 Bei der T-SQL-skriptbasierten Auftragsautomatisierung in SQL Server und Azure SQL Managed Instance kann ein [SQL-Agent](job-automation-managed-instances.md) verwendet werden. 
 
-Bei der T-SQL-skriptbasierten Auftragsautomatisierung in Azure Synapse Analytics können Sie [Pipelines mit sich wiederholenden Triggern](/azure/synapse-analytics/data-integration/concepts-data-factory-differences.md) verwenden, die [auf Azure Data Factory basieren](/azure/synapse-analytics/data-integration/concepts-data-factory-differences).
+Bei der T-SQL-skriptbasierten Auftragsautomatisierung in Azure Synapse Analytics können Sie [Pipelines mit sich wiederholenden Triggern](../../synapse-analytics/data-integration/concepts-data-factory-differences.md) verwenden, die [auf Azure Data Factory basieren](../../synapse-analytics/data-integration/concepts-data-factory-differences.md).
 
 Beachten Sie die Unterschiede zwischen dem (in SQL Server und als Teil von SQL Managed Instance verfügbaren) SQL-Agent und dem Datenbank-Agent für elastische Aufträge (der T-SQL für Azure SQL-Datenbank-Instanzen oder für Datenbanken in SQL Server und Azure SQL Managed Instance sowie in Azure Synapse Analytics ausführen kann).
 

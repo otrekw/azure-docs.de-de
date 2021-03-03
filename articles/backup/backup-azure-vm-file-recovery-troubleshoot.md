@@ -3,12 +3,12 @@ title: Problembehandlung bei der Azure VM-Dateiwiederherstellung
 description: Erfahren Sie, wie Sie Probleme bei der Wiederherstellung von Dateien und Ordnern aus einer Azure-VM-Sicherung beheben.
 ms.topic: troubleshooting
 ms.date: 07/12/2020
-ms.openlocfilehash: c4d0d233237cb477d72efea0b91d4e5288e2a302
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0ee856b10c6a5fbea6f6f76b2082949ab9c1e0db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735876"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700302"
 ---
 # <a name="troubleshoot-issues-in-file-recovery-of-an-azure-vm-backup"></a>Behandlung von Problemen bei der Dateiwiederherstellung aus einer Azure VM-Sicherung
 
@@ -88,7 +88,7 @@ Beheben Sie dieses Problem mit den Schritten für Ihr Betriebssystem.
 Während der erstmaligen Ausführung des Skripts unter Windows Server 2012 R2 und Windows Server 2016 (mit Speicherpools) wird der Speicherpool der VM möglicherweise im schreibgeschützten Zustand angefügt.
 
 >[!Tip]
-> Sorgen Sie dafür, dass Sie den [richtigen Computer zum Ausführen des Skripts](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) haben.
+> Sorgen Sie dafür, dass Sie den [richtigen Computer zum Ausführen des Skripts](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) haben.
 
 Zur Behebung dieses Problems nehmen Sie die Zuweisung des Lese-/Schreibzugriffs für den Speicherpool und das Anfügen der virtuellen Datenträger manuell vor:
 
@@ -108,7 +108,7 @@ Zur Behebung dieses Problems nehmen Sie die Zuweisung des Lese-/Schreibzugriffs 
 
 Während der Ausführung der Dateiwiederherstellung erkennt der Sicherungsdienst Volumes und automatische Einbindungen. Wenn die gesicherten Datenträger aber unformatierte Partitionen enthalten, werden diese Datenträger nicht automatisch eingebunden, und der Datenträger wird bei der Wiederherstellung nicht angezeigt.
 
-Um dieses Problem zu lösen, gehen Sie zu [Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms).
+Um dieses Problem zu lösen, gehen Sie zu [Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern](./backup-azure-restore-files-from-vm.md#lvmraid-arrays-for-linux-vms).
 
 #### <a name="linux-file-recovery-fails-because-the-os-couldnt-identify-the-file-system"></a>Bei der Linux-Dateiwiederherstellung tritt ein Fehler auf, weil das Betriebssystem das Dateisystem nicht identifizieren konnte
 
@@ -122,7 +122,7 @@ Wenn Sie das Skript zur Dateiwiederherstellung ausführen, kann der Datenträger
 
    ![Screenshot, der die Ergebnisse des Befehls zeigt, mit dem Geräte blockiert werden.](./media/backup-azure-restore-files-from-vm/disk-without-volume-5.png)
 
-1. Überprüfen Sie das Dateisystem und die Verschlüsselung. Wenn das Volume verschlüsselt wurde, wird die Dateiwiederherstellung nicht unterstützt. Weitere Informationen finden Sie unter [Unterstützungsmatrix für die Sicherung virtueller Azure-Computer](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#support-for-file-level-restore).
+1. Überprüfen Sie das Dateisystem und die Verschlüsselung. Wenn das Volume verschlüsselt wurde, wird die Dateiwiederherstellung nicht unterstützt. Weitere Informationen finden Sie unter [Unterstützungsmatrix für die Sicherung virtueller Azure-Computer](./backup-support-matrix-iaas.md#support-for-file-level-restore).
 
 ### <a name="disks-are-attached-but-the-volumes-arent-mounted"></a>Datenträger werden angefügt, aber die Volumes nicht eingebunden
 
@@ -139,7 +139,7 @@ Wenn Sie das Skript zur Dateiwiederherstellung für Windows ausführen, wird die
 Führen Sie zum Identifizieren und Beheben dieses Problems die folgenden Schritte aus:
 
 >[!Tip]
->Sorgen Sie dafür, dass Sie den [richtigen Computer zum Ausführen des Skripts](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) haben.
+>Sorgen Sie dafür, dass Sie den [richtigen Computer zum Ausführen des Skripts](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) haben.
 
 1. Führen Sie im Fenster **cmd** den Befehl **diskmgmt** aus, um die **Datenträgerverwaltung** zu öffnen.
 1. Suchen Sie nach zusätzlichen Datenträgern. Im folgenden Beispiel ist **Datenträger 2** ein zusätzlicher Datenträger.
@@ -159,9 +159,9 @@ Führen Sie zum Identifizieren und Beheben dieses Problems die folgenden Schritt
 #### <a name="linux"></a>Linux
 
 >[!Tip]
->Sorgen Sie dafür, dass Sie den [richtigen Computer zum Ausführen des Skripts](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) haben.
+>Sorgen Sie dafür, dass Sie den [richtigen Computer zum Ausführen des Skripts](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) haben.
 
-Wenn der geschützte virtuelle Linux-Computer LVM- oder RAID-Arrays verwendet, befolgen Sie die Schritte unter [LVM/RAID-Arrays (für virtuelle Linux-Computer)](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms).
+Wenn der geschützte virtuelle Linux-Computer LVM- oder RAID-Arrays verwendet, befolgen Sie die Schritte unter [LVM/RAID-Arrays (für virtuelle Linux-Computer)](./backup-azure-restore-files-from-vm.md#lvmraid-arrays-for-linux-vms).
 
 ### <a name="you-cant-copy-the-files-from-mounted-volumes"></a>Sie können Dateien aus eingebundenen Volumes nicht kopieren
 

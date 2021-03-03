@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 16e7f04c62f25e787c3cab44b85a075e1c7d7277
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8be747d2027291203272a960efe6b26368471a50
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386746"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735045"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps-Community: Open-Source-Projekte
 
@@ -70,9 +70,9 @@ Im Folgenden finden Sie eine Liste von Open-Source-Projekten, mit denen die Funk
 
 | Projektname | BESCHREIBUNG |
 |-|-|
-| [Azure Maps-Cesium-Plug-In](https://github.com/azure-samples/azure-maps-cesium) | Ein [Cesium JS](https://cesium.com/cesiumjs/)-Plug-In, das die Integration von Azure Maps-Diensten wie [Kachelebenen](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) und [Geocodierungsdienste](https://docs.microsoft.com/rest/api/maps/search) vereinfacht. |
-| [Azure Maps-Leaflet-Plug-In](https://github.com/azure-samples/azure-maps-leaflet) | Ein [Leaflet](https://leafletjs.com/)-JavaScript-Plug-In, das die Überlagerung von Kachelebenen aus [Azure Maps-Kacheldiensten](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) erleichtert. |
- | [Azure Maps-OpenLayers-Plug-In](https://github.com/azure-samples/azure-maps-openlayers) | Ein [OpenLayers](https://www.openlayers.org/)-JavaScript-Plug-In, das die Überlagerung von Kachelebenen aus [Azure Maps-Kacheldiensten](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) erleichtert. |
+| [Azure Maps-Cesium-Plug-In](https://github.com/azure-samples/azure-maps-cesium) | Ein [Cesium JS](https://cesium.com/cesiumjs/)-Plug-In, das die Integration von Azure Maps-Diensten wie [Kachelebenen](/rest/api/maps/renderv2/getmaptilepreview) und [Geocodierungsdienste](/rest/api/maps/search) vereinfacht. |
+| [Azure Maps-Leaflet-Plug-In](https://github.com/azure-samples/azure-maps-leaflet) | Ein [Leaflet](https://leafletjs.com/)-JavaScript-Plug-In, das die Überlagerung von Kachelebenen aus [Azure Maps-Kacheldiensten](/rest/api/maps/renderv2/getmaptilepreview) erleichtert. |
+ | [Azure Maps-OpenLayers-Plug-In](https://github.com/azure-samples/azure-maps-openlayers) | Ein [OpenLayers](https://www.openlayers.org/)-JavaScript-Plug-In, das die Überlagerung von Kachelebenen aus [Azure Maps-Kacheldiensten](/rest/api/maps/renderv2/getmaptilepreview) erleichtert. |
 
 **Tools und Ressourcen**
 

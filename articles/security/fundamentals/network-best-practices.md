@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 68f3b9f9cfa8ea74a8240fab6e47bf737788081f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4793216a12b17c4e4ea03f62d5a0ba512febc232
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094323"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735725"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Bewährte Methoden für die Netzwerksicherheit in Azure
 In diesem Artikel werden bewährte Methoden zur Verbesserung der Netzwerksicherheit in Azure beschrieben. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit dem Azure-Netzwerk und den Erfahrungen von Kunden wie Ihnen abgeleitet.
@@ -206,7 +206,7 @@ Azure Private Link bietet folgende Vorteile:
 - **Globale Reichweite**: Stellen Sie private Verbindungen zu Diensten her, die in anderen Regionen ausgeführt werden. Das virtuelle Netzwerk des Consumers kann sich beispielsweise in Region A befinden und eine Verbindung mit Diensten in Region B herstellen.
 - **Problemlose Einrichtung und Verwaltung**: Sie benötigen in Ihren virtuellen Netzwerken keine reservierten öffentlichen IP-Adressen mehr, um Azure-Ressourcen über eine IP-Firewall zu schützen. Es sind keine NAT- oder Gatewaygeräte erforderlich, um die privaten Endpunkte einzurichten. Private Endpunkte werden über einen einfachen Workflow konfiguriert. Auf Dienstseite können Sie auch die Verbindungsanforderungen für Ihre Azure-Dienstressource problemlos verwalten. Azure Private Link funktioniert auch für Consumer und Dienste, die zu unterschiedlichen Azure Active Directory-Mandanten gehören. 
     
-Weitere Informationen zu privaten Endpunkten und den Azure-Diensten und Regionen, für die private Endpunkte verfügbar sind, finden Sie unter [Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview).
+Weitere Informationen zu privaten Endpunkten und den Azure-Diensten und Regionen, für die private Endpunkte verfügbar sind, finden Sie unter [Azure Private Link](../../private-link/private-link-overview.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

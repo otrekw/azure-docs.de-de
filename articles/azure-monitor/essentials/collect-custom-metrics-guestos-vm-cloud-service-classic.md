@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 971a3063ff86e2a6b7d1b11f72ff0a257f459da0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d6866361b78656d99888c4df70cc0c92ed096425
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599429"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737068"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Metrikspeicher – Cloud Services (klassisch) 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Die [Diagnoseerweiterung](../agents/diagnostics-extension-overview.md) von Azure Monitor ermöglicht es Ihnen, Metriken und Protokolle von einem Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an [viele verschiedene Standorte](../platform/data-platform.md?toc=/azure/azure-monitor/toc.json) senden.
+Die [Diagnoseerweiterung](../agents/diagnostics-extension-overview.md) von Azure Monitor ermöglicht es Ihnen, Metriken und Protokolle von einem Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an [viele verschiedene Standorte](../data-platform.md?toc=%2fazure%2fazure-monitor%2ftoc.json) senden.
 
 In diesem Artikel erfahren Sie, wie Sie Leistungsmetriken des Gastbetriebssystems für klassische Azure-Clouddienste an den Azure Monitor-Metrikspeicher senden. Ab Version 1.11 der Diagnoseerweiterung können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. 
 
@@ -34,7 +34,7 @@ Der in diesem Artikel beschriebene Prozess funktioniert nur mit Leistungsindikat
 
 - [Azure PowerShell](/powershell/azure) oder [Azure Cloud Shell](../../cloud-shell/overview.md) muss installiert sein.
 
-- Der Clouddienst muss sich in einer [Region befinden, die benutzerdefinierte Metriken unterstützt](../platform/metrics-custom-overview.md#supported-regions).
+- Der Clouddienst muss sich in einer [Region befinden, die benutzerdefinierte Metriken unterstützt](./metrics-custom-overview.md#supported-regions).
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>Bereitstellen eines Clouddiensts und eines Speicherkontos 
 
@@ -191,4 +191,4 @@ Mithilfe der Funktionen zum Filtern und Aufteilen von Dimensionen können Sie de
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über [benutzerdefinierte Metriken](../platform/metrics-custom-overview.md).
+- Erfahren Sie mehr über [benutzerdefinierte Metriken](./metrics-custom-overview.md).

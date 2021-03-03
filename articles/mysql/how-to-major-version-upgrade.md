@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
 ms.date: 1/28/2021
-ms.openlocfilehash: ea2dc877c7bc6db387985e7b5cd1153e195ab4f1
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 471ccd6176bd8821ce7e40fde6d961bd9bcf7f0c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509569"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702146"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>Hauptversionsupgrade in Azure Database for MySQL Single Server
 
@@ -59,7 +59,7 @@ Führen Sie die folgenden Schritte aus, um ein Hauptversionsupgrade für Ihren A
  
    Für dieses Upgrade ist mindestens Version 2.16.0 oder höher der Azure-Befehlszeilenschnittstelle erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert. Führen Sie az version aus, um die installierte Version und die abhängigen Bibliotheken zu ermitteln. Führen Sie az upgrade aus, um das Upgrade auf die aktuelle Version durchzuführen.
 
-2. Nachdem Sie sich angemeldet haben, führen Sie den Befehl [az mysql server upgrade](https://docs.microsoft.com/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_upgrade&preserve-view=true) aus:
+2. Nachdem Sie sich angemeldet haben, führen Sie den Befehl [az mysql server upgrade](/cli/azure/mysql/server?preserve-view=true&view=azure-cli-latest#az_mysql_server_upgrade) aus:
 
    ```azurecli
    az mysql server upgrade --name testsvr --resource-group testgroup --subscription MySubscription --target-server-version 5.7"
@@ -89,7 +89,7 @@ Sie können ein Hauptversionsupgrade von MySQL 5.6 auf MySQL 5.7 unter Verwend
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren vorhandene Instanz von Azure Database for MySQL 5.6 aus.
 
-2. Erstellen Sie ein [Lesereplikat](https://docs.microsoft.com/azure/mysql/concepts-read-replicas#create-a-replica) des primären Servers.
+2. Erstellen Sie ein [Lesereplikat](./concepts-read-replicas.md#create-a-replica) des primären Servers.
 
 3. [Aktualisieren Sie das Lesereplikat](#perform-major-version-upgrade-from-mysql-56-to-mysql-57-on-read-replica-using-azure-portal) auf Version 5.7.
 
@@ -105,7 +105,7 @@ Sie können ein Hauptversionsupgrade von MySQL 5.6 auf MySQL 5.7 unter Verwend
 
    Wenn der Status von `Slave_IO_Running` und `Slave_SQL_Running` „yes“ lautet und der Wert von `Seconds_Behind_Master` „0“ ist, funktioniert die Replikation ordnungsgemäß. `Seconds_Behind_Master` gibt an, wie stark das Replikat verzögert ist. Wenn der Wert nicht „0“ ist, bedeutet dies, dass das Replikat Updates verarbeitet. Sobald Sie bestätigen, dass `Seconds_Behind_Master` den Wert 0 hat, kann die Replikation sicher beendet werden.
 
-6. Stufen Sie Ihr Lesereplikat zum primären Replikat höher, indem Sie [die Replikation anhalten](https://docs.microsoft.com/azure/mysql/howto-read-replicas-portal#stop-replication-to-a-replica-server).
+6. Stufen Sie Ihr Lesereplikat zum primären Replikat höher, indem Sie [die Replikation anhalten](./howto-read-replicas-portal.md#stop-replication-to-a-replica-server).
 
 7. Zeigen Sie mit Ihrer Anwendung auf das neue primäre (bisherige Replikat), in dem Server 5.7 läuft. Jeder Server verfügt über eine eindeutige Verbindungszeichenfolge. Aktualisieren Sie Ihre Anwendung so, dass Sie auf das (ehemalige) Replikat und nicht auf die Quelle verweist.
 

@@ -1,17 +1,16 @@
 ---
 title: Senden von Daten aus der Windows Azure-Diagnoseerweiterung an Azure Event Hubs
 description: Konfigurieren Sie die Diagnoseerweiterung in Azure Monitor so, dass Daten an Azure Event Hub gesendet werden, damit Sie diese an Speicherorte außerhalb von Azure weiterleiten können.
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
-ms.openlocfilehash: 979535b1f9a237f6975908178fb1e5ed819181b0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19c39632a1ed040636372d6bad53bf6859960b94
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601838"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732036"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Senden von Daten aus der Windows Azure-Diagnoseerweiterung an Azure Event Hubs
 Die Azure-Diagnoseerweiterung ist ein Agent in Azure Monitor, der Überwachungsdaten vom Gastbetriebssystem und Workloads von virtuellen Azure-Computern und anderen Computeressourcen sammelt. In diesem Artikel wird beschrieben, wie Daten aus der Windows Azure-Diagnoseerweiterung (WAD) an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) gesendet werden, damit Sie diese an Speicherorte außerhalb von Azure weiterleiten können.

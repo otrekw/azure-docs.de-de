@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 23507a01f3ed0015690d9655fde92a875f89c2da
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: a321361a7624f2b9016d6303df63501fd0d7e7c5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095483"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734467"
 ---
 # <a name="view-multiple-resources-in-the-azure-metrics-explorer"></a>Anzeigen mehrerer Ressourcen im Azure-Metrik-Explorer
 
@@ -88,5 +88,5 @@ Informationen zum Anheften des Diagramms über mehrere Ressourcen an ein Dashboa
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Problembehandlung für Metrikdiagramme](../essentials/metrics-troubleshoot.md)
-* [Unterstützte Metriken von Azure Monitor](../platform/metrics-supported.md)
+* [Unterstützte Metriken von Azure Monitor](./metrics-supported.md)
 * [Beispiele für Metrikdiagramme](../essentials/metric-chart-samples.md)

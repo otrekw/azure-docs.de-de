@@ -9,16 +9,16 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: cbbc0edf710b8823c1a36daa66bc01d89acf63da
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: e52c4acb4b59414e89e87bf5a6ee2cfae8207cae
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575482"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712452"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
 
-In diesem Artikel wird erläutert, wie Sie aus Logic Apps auf Ihre SAP-Ressourcen zugreifen können, indem Sie den [SAP-Connector](https://docs.microsoft.com/connectors/sap/) verwenden.
+In diesem Artikel wird erläutert, wie Sie aus Logic Apps auf Ihre SAP-Ressourcen zugreifen können, indem Sie den [SAP-Connector](/connectors/sap/) verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -547,14 +547,14 @@ Für lokale Datengatewayreleases ab April 2020 und früher sind Protokolle stan
 
 Wenn Sie ein [lokales Datengateway für Logic Apps](../logic-apps/logic-apps-gateway-install.md) verwenden, können Sie eine erweiterte Protokolldatei für den SAP-Connector konfigurieren. Sie können Ihr lokales Datengateway verwenden, um Ereignisse der Ereignisablaufverfolgung für Windows (Event Tracing for Windows, ETW) in rotierende Protokolldateien umzuleiten, die in die ZIP-Protokollierungsdateien Ihres Gateways eingeschlossen werden. 
 
-Sie können [alle Konfigurations- und Dienstprotokolle Ihres Gateways](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app) aus den Einstellungen der Gateway-App in eine ZIP-Datei exportieren.
+Sie können [alle Konfigurations- und Dienstprotokolle Ihres Gateways](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app) aus den Einstellungen der Gateway-App in eine ZIP-Datei exportieren.
 
 > [!NOTE]
 > Die erweiterte Protokollierung kann die Leistung Ihrer Logik-Apps beeinträchtigen, wenn sie immer aktiviert ist. Es ist eine bewährte Methode, erweiterte Protokolldateien zu deaktivieren, nachdem Sie mit der Analyse und Behebung eines Problems fertig sind.
 
 #### <a name="capture-etw-events"></a>Erfassen von ETW-Ereignissen
 
-Optional können fortgeschrittene Benutzer ETW-Ereignisse direkt erfassen. Sie können dann [anschließend Ihre Daten in Azure-Diagnose in Event Hubs verwenden](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs) oder [Ihre Daten in Azure Monitor-Protokollen sammeln](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-logs). Weitere Informationen finden Sie unter [Bewährte Methoden für das Sammeln und Speichern von Daten](https://docs.microsoft.com/azure/architecture/best-practices/monitoring#collecting-and-storing-data). Sie können [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) verwenden, um mit den sich ergebenden ETL-Dateien zu arbeiten, oder Sie können ein eigenes Programm schreiben. In dieser exemplarischen Vorgehensweise wird PerfView verwendet:
+Optional können fortgeschrittene Benutzer ETW-Ereignisse direkt erfassen. Sie können dann [anschließend Ihre Daten in Azure-Diagnose in Event Hubs verwenden](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md) oder [Ihre Daten in Azure Monitor-Protokollen sammeln](/azure/azure-monitor/agents/diagnostics-extension-logs). Weitere Informationen finden Sie unter [Bewährte Methoden für das Sammeln und Speichern von Daten](/azure/architecture/best-practices/monitoring#collecting-and-storing-data). Sie können [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) verwenden, um mit den sich ergebenden ETL-Dateien zu arbeiten, oder Sie können ein eigenes Programm schreiben. In dieser exemplarischen Vorgehensweise wird PerfView verwendet:
 
 1. Wählen Sie im PerfView-Menü **Erfassen** &gt; **Sammeln** aus, um die Ereignisse zu erfassen.
 
@@ -1336,7 +1336,7 @@ Ausführliche Beispiele zur Verwendung der Aktion „BAPI aufrufen“ finden Sie
 
 ### <a name="send-idoc-action"></a>Aktion „IDoc senden“
 
-Die Aktion [IDoc senden (`SendIDoc`)](https://docs.microsoft.com/connectors/sap/#send-idoc-(preview)) sendet die IDoc-Nachricht an Ihren SAP-Server.
+Die Aktion [IDoc senden (`SendIDoc`)](/connectors/sap/) sendet die IDoc-Nachricht an Ihren SAP-Server.
 
 Sie müssen die folgenden Parameter mit Ihrem Aufruf verwenden: 
 

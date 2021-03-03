@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: 2614117d153b1db50d4487bf4045a63af430f3ac
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b36dec79e5d60d97c11b9f8c74790527e1bd19fb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600980"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731356"
 ---
 # <a name="how-to-use-groups-in-workbooks"></a>Verwenden von Gruppen in Arbeitsmappen
 
@@ -143,5 +143,5 @@ Zum Umwandeln einer größeren Vorlage in mehrere Untervorlagen führen Sie die 
 6. Anschließend können Sie den Gruppenschritt in das Laden aus einer Vorlage ändern und das Feld für die Vorlagen-ID auf die in Schritt 5 erstellte Arbeitsmappe/Vorlage festlegen. Zum Arbeiten mit Arbeitsmappen-IDs muss es sich bei der Quelle um die Ressourcen-ID einer gemeinsam genutzten Arbeitsmappe handeln. Klicken Sie auf *Laden*. Der Inhalt dieser Gruppe wird nun aus dieser Untervorlage geladen, anstatt in dieser äußeren Arbeitsmappe gespeichert zu werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Übersicht über Arbeitsmappen](../platform/workbooks-overview.md)
+- [Übersicht über Arbeitsmappen](./workbooks-overview.md)
 - [Verwenden von JSONPath bei Arbeitsmappen](workbooks-jsonpath.md)

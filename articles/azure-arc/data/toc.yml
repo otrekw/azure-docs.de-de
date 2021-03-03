@@ -6,6 +6,8 @@
       href: overview.md
     - name: Versionshinweise
       href: release-notes.md
+    - name: Bekannte Probleme
+      href: known-issues.md
 - name: Schnellstarts
   items:
     - name: Erstellen eines Datencontrollers
@@ -180,6 +182,8 @@
               href: configure-managed-instance.md
             - name: 'Überwachung, Protokollanalyse, Abrechnungsinformationen, Azure-Portal'
               href: monitoring-log-analytics-azure-portal-managed-instance.md
+            - name: Hochverfügbarkeit
+              href: managed-instance-high-availability.md
             - name: Löschen
               href: delete-managed-instance.md
         - name: Migrieren

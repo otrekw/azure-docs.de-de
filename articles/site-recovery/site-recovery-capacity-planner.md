@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a5764e44db31755110ac99a3e8e8e0984cdf9604
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa96845a2bd2f4659da1155c4f75281268dce76d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87490573"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737714"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Planen der Kapazität für die Notfallwiederherstellung von Hyper-V-VMs 
 
@@ -43,7 +43,7 @@ Sie können das Tool in zwei Modi ausführen:
 
 
 ## <a name="run-the-quick-planner"></a>Ausführen des Quick Planner-Tools
-1. Laden Sie das Tool [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel) herunter, und öffnen Sie es. Sie müssen Makros ausführen. Entscheiden Sie, wenn Sie dazu aufgefordert werden, ob Sie das Bearbeiten und die Inhalte aktivieren möchten.
+1. Laden Sie das Tool [Site Recovery Capacity Planner](/samples/browse/?redirectedfrom=TechNet-Gallery) herunter, und öffnen Sie es. Sie müssen Makros ausführen. Entscheiden Sie, wenn Sie dazu aufgefordert werden, ob Sie das Bearbeiten und die Inhalte aktivieren möchten.
 
 2. Wählen Sie im Listenfeld **Select a planner type** (Planertyp auswählen) die Option **Quick Planner** (Schnellplaner) aus.
 
@@ -81,7 +81,7 @@ Sie können das Tool in zwei Modi ausführen:
 
 ## <a name="run-the-detailed-planner"></a>Ausführen des Detailed Planner-Tools
 
-1. Laden Sie das Tool [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel) herunter, und öffnen Sie es. Sie müssen Makros ausführen. Entscheiden Sie, wenn Sie dazu aufgefordert werden, ob Sie das Bearbeiten und die Inhalte aktivieren möchten.
+1. Laden Sie das Tool [Site Recovery Capacity Planner](/samples/browse/?redirectedfrom=TechNet-Gallery) herunter, und öffnen Sie es. Sie müssen Makros ausführen. Entscheiden Sie, wenn Sie dazu aufgefordert werden, ob Sie das Bearbeiten und die Inhalte aktivieren möchten.
 
 2. Wählen Sie unter **Select a planner type** im Listenfeld die Option **Detailed Planner** aus.
 

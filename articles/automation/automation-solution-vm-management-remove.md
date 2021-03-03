@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: bed9cd23abc96c51cad0a13e81ee0b64f0d433b6
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: a201274bf0c06382da790dd051bf5023337970b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100012270"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723842"
 ---
 # <a name="remove-startstop-vms-during-off-hours-from-automation-account"></a>Entfernen von „VMs außerhalb der Geschäftszeiten starten/beenden“ aus Automation-Konto
 
@@ -94,7 +94,7 @@ Während die Informationen überprüft werden und das Konto gelöscht wird, kön
 
 ## <a name="delete-the-feature"></a>Löschen des Features
 
-Führen Sie die folgenden Schritte aus, um „VMs außerhalb der Geschäftszeiten starten/beenden“ aus Ihrem Automation-Konto zu löschen. Das Automation-Konto und der Log Analytics-Arbeitsbereich werden bei diesem Vorgang nicht gelöscht. Wenn Sie den Log Analytics-Arbeitsbereich nicht beibehalten möchten, müssen Sie ihn manuell löschen. Weitere Informationen zum Löschen des Arbeitsbereichs finden Sie unter [Löschen und Wiederherstellen eines Azure Log Analytics-Arbeitsbereichs](../azure-monitor/platform/delete-workspace.md).
+Führen Sie die folgenden Schritte aus, um „VMs außerhalb der Geschäftszeiten starten/beenden“ aus Ihrem Automation-Konto zu löschen. Das Automation-Konto und der Log Analytics-Arbeitsbereich werden bei diesem Vorgang nicht gelöscht. Wenn Sie den Log Analytics-Arbeitsbereich nicht beibehalten möchten, müssen Sie ihn manuell löschen. Weitere Informationen zum Löschen des Arbeitsbereichs finden Sie unter [Löschen und Wiederherstellen eines Azure Log Analytics-Arbeitsbereichs](../azure-monitor/logs/delete-workspace.md).
 
 1. Navigieren Sie zu Ihrem Automation-Konto, und wählen Sie unter **Zugehörige Ressourcen** die Option **Verknüpfter Arbeitsbereich** aus.
 

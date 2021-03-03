@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: 040c487df83c117e177b8a8b0e8fddde8682c67f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ae95580a8c192f0815623461fb21ec9ecf52ae26
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599564"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700642"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>Archivieren von Daten aus dem Log Analytics-Arbeitsbereich in Azure Storage mithilfe von Logic Apps
 In diesem Artikel wird eine Methode zur Verwendung von [Azure Logic Apps](../../logic-apps/index.yml) zum Abfragen von Daten in einem Log Analytics-Arbeitsbereich in Azure Monitor und zum Senden der Daten an Azure Storage beschrieben. Verwenden Sie diesen Vorgang, wenn Sie Ihre Azure Monitor Logs-Daten für Überprüfungs- und Complianceszenarios exportieren müssen oder wenn Sie zulassen müssen, dass diese Daten von einem anderen Dienst abgerufen werden können.  
@@ -118,7 +118,7 @@ AzureActivity
     ResourceId = _ResourceId 
 ```
 
-Mit dem **Zeitbereich** werden die Datensätze angegeben, die basierend auf der Spalte **TimeGenerated** in die Abfrage einbezogen werden. Diese Einstellung muss auf einen Wert festgelegt werden, der gleich oder größer als der in der Abfrage ausgewählte Zeitbereich ist. Da in dieser Abfrage die Spalte **TimeGenerated** nicht verwendet wird, ist die Option **In Abfrage festlegen** nicht verfügbar. Weitere Informationen zum Zeitbereich finden Sie unter [Abfragebereich](../log-query/scope.md). 
+Mit dem **Zeitbereich** werden die Datensätze angegeben, die basierend auf der Spalte **TimeGenerated** in die Abfrage einbezogen werden. Diese Einstellung muss auf einen Wert festgelegt werden, der gleich oder größer als der in der Abfrage ausgewählte Zeitbereich ist. Da in dieser Abfrage die Spalte **TimeGenerated** nicht verwendet wird, ist die Option **In Abfrage festlegen** nicht verfügbar. Weitere Informationen zum Zeitbereich finden Sie unter [Abfragebereich](./scope.md). 
 
 Wählen Sie für den **Zeitbereich** die Option **Letzte 4 Stunden** aus. Damit wird sichergestellt, dass Datensätze, bei denen der Wert für die Erfassungszeit größer ist als der Wert für **TimeGenerated**, in die Ergebnisse einbezogen werden.
    
@@ -210,6 +210,6 @@ Wechseln Sie zum Menü **Speicherkonten** im Azure-Portal, und wählen Sie Ihr S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über [Protokollabfragen in Azure Monitor](../log-query/log-query-overview.md).
+- Erfahren Sie mehr über [Protokollabfragen in Azure Monitor](./log-query-overview.md).
 - Weitere Informationen zu [Logik-Apps](../../logic-apps/index.yml)
 - Weitere Informationen zu [Power Automate](https://flow.microsoft.com)

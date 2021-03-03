@@ -55,7 +55,7 @@
             - name: "Konfigurieren von Azure Monitor für Container für ARO\_4 (Vorschau)"
               href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
             - name: "Deaktivieren von Azure Monitor für Container in ARO\_4 (Vorschau)"
-              href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+              href: ../azure-monitor/containers/container-insights-optout-openshift-v4.md
     - name: Entwickeln und Ausführen von Anwendungen
       items:
         - name: "Bereitstellen einer Open\_Liberty-/WebSphere\_Liberty-App"
@@ -80,10 +80,10 @@
             - name: "Azure Monitor für Container in Azure Red Hat OpenShift\_3.11 (Vorschau)"
               items:
                 - name: "Konfigurieren von Azure Monitor für Container in Azure Red Hat OpenShift\_3.11"
-                  href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+                  href: ../azure-monitor/containers/container-insights-azure-redhat-setup.md
                   maintainContext: true
                 - name: "Deaktivieren von Azure Monitor für Container in Azure Red Hat OpenShift\_3.11"
-                  href: ../azure-monitor/insights/container-insights-optout-openshift-v3.md
+                  href: ../azure-monitor/containers/container-insights-optout-openshift-v3.md
                   maintainContext: true
         - name: "Ausführen von privilegierten Containern in Azure Red Hat OpenShift\_3.11"
           href: howto-run-privileged-containers.md

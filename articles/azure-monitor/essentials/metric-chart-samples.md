@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 0430f8efedbcefba551ce3ee81d0db8a654f5b13
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 882c9e50c344b792d70d09017aeca3a2874cb106
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601592"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700744"
 ---
 # <a name="metric-chart-examples"></a>Beispiele für Metrikdiagramme 
 
-Die Azure-Plattform stellt [mehr als tausend Metriken](../platform/metrics-supported.md) bereit, von denen viele Dimensionen umfassen. Durch die Verwendung von [Dimensionsfiltern](./metrics-charts.md), das Anwenden einer [Aufteilung](./metrics-charts.md), die Steuerung des Diagrammtyps und eine Anpassung der Diagrammeinstellungen können Sie leistungsstarke Diagnoseansichten und Dashboards erstellen, die Einblick in den Zustand Ihrer Infrastruktur und Anwendungen bieten. Dieser Artikel zeigt einige Beispiele für die Diagramme, die Sie mit dem [Metrik-Explorer](./metrics-charts.md) erstellen können, und erklärt die notwendigen Schritte zur Konfiguration jedes dieser Diagramme.
+Die Azure-Plattform stellt [mehr als tausend Metriken](./metrics-supported.md) bereit, von denen viele Dimensionen umfassen. Durch die Verwendung von [Dimensionsfiltern](./metrics-charts.md), das Anwenden einer [Aufteilung](./metrics-charts.md), die Steuerung des Diagrammtyps und eine Anpassung der Diagrammeinstellungen können Sie leistungsstarke Diagnoseansichten und Dashboards erstellen, die Einblick in den Zustand Ihrer Infrastruktur und Anwendungen bieten. Dieser Artikel zeigt einige Beispiele für die Diagramme, die Sie mit dem [Metrik-Explorer](./metrics-charts.md) erstellen können, und erklärt die notwendigen Schritte zur Konfiguration jedes dieser Diagramme.
 
 Möchten Sie Ihre Diagrammbeispiele für andere Benutzer zur Verfügung stellen? Tragen Sie zu dieser Seite auf GitHub bei, und teilen Sie hier Ihre eigenen Diagrammbeispiele!
 
@@ -54,4 +54,3 @@ Bei der Metrikauswahl geben Sie Ihr Speicherkonto und die Metrik **Transaktionen
 
 * Informationen zu Azure Monitor-[Arbeitsmappen](../visualize/workbooks-overview.md)
 * Weitere Informationen zum [Metrik-Explorer](metrics-charts.md)
-

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: lagayhar
 ms.custom: include file
-ms.openlocfilehash: eda50bb9f65591cd837b7e74e9d783464de43367
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 1c4f6b876a4aa80c7e51f2bb3ca88234203d0daa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520685"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726177"
 ---
 Es gibt einige Grenzwerte hinsichtlich der Anzahl von Metriken und Ereignissen pro Anwendung (d. h. pro Instrumentationsschlüssel). Die Beschränkungen hängen von dem von Ihnen ausgewählten [Tarif](https://azure.microsoft.com/pricing/details/application-insights/) ab.
 
@@ -21,8 +21,8 @@ Es gibt einige Grenzwerte hinsichtlich der Anzahl von Metriken und Ereignissen p
 | --- | --- | --- |
 | Gesamtdaten pro Tag | 100 GB | Die Datenmenge kann durch Festlegen einer Obergrenze reduziert werden. Wird eine höhere Datenmenge benötigt, können Sie den Grenzwert im Portal auf bis zu 1.000 GB erhöhen. Bei Kapazitäten über 1.000 GB senden Sie eine E-Mail an AIDataCap@microsoft.com.
 | Drosselung | 32.000 Ereignisse/s | Das Limit wird eine Minute lang gemessen.
-| Datenaufbewahrungsprotokolle | [30 – 730 Tage](../articles/azure-monitor/app/pricing.md#change-the-data-retention-period)  | Diese Ressource ist für [Protokolle](../articles/azure-monitor/log-query/log-query-overview.md) vorgesehen.
-| Datenaufbewahrungsmetriken | 90 Tage| Diese Ressource ist für den [Metrik-Explorer](../articles/azure-monitor/platform/metrics-charts.md) vorgesehen.
+| Datenaufbewahrungsprotokolle | [30 – 730 Tage](../articles/azure-monitor/app/pricing.md#change-the-data-retention-period)  | Diese Ressource ist für [Protokolle](../articles/azure-monitor/logs/log-query-overview.md) vorgesehen.
+| Datenaufbewahrungsmetriken | 90 Tage| Diese Ressource ist für den [Metrik-Explorer](../articles/azure-monitor/essentials/metrics-charts.md) vorgesehen.
 | [Webtests in mehreren Schritten](../articles/azure-monitor/app/availability-multistep.md) mit detaillierter Ergebnisaufbewahrung | 90 Tage | Diese Ressource liefert detaillierte Ergebnisse der einzelnen Schritte.
 | Maximale Größe von Telemetrieelementen | 64 KB |
 | Maximale Anzahl von Telemetrieelementen pro Batch | 64 K |

@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1453d43707a3680380e553fe69d738b27fe5ae3a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c335c1cf7e5319b812345714dbdc6b87ddc4e81b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571345"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709171"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Behandeln von Problemen mit Azure Monitor für Windows Virtual Desktop (Vorschau)
 
@@ -42,7 +42,7 @@ Wenn Ihre Daten nicht ordnungsgemäß angezeigt werden, überprüfen Sie die Kon
     - Lesezugriff auf die Ressourcengruppen des Abonnements, die Ihre Windows Virtual Desktop-Sitzungshosts enthalten 
     - Lesezugriff auf den Log Analytics-Arbeitsbereich
 
-- Möglicherweise müssen Sie ausgehende Ports in der Firewall Ihres Servers öffnen, damit Azure Monitor Daten an das Portal senden kann, siehe [Ausgehende Ports](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses). 
+- Möglicherweise müssen Sie ausgehende Ports in der Firewall Ihres Servers öffnen, damit Azure Monitor Daten an das Portal senden kann, siehe [Ausgehende Ports](../azure-monitor/app/ip-addresses.md). 
 
 - Es werden keine Daten der letzten Aktivität angezeigt? Sie sollten vielleicht 15 Minuten warten und den Feed aktualisieren. Azure Monitor weist eine Wartezeit von 15 Minuten beim Auffüllen von Protokolldaten auf. Weitere Informationen finden Sie unter [Protokolldatenerfassungszeit in Azure Monitor](../azure-monitor/logs/data-ingestion-time.md).
 
@@ -62,8 +62,8 @@ Weitere Informationen zu den Datenbegriffen finden Sie im [Glossar für Azure Mo
 
 Wenn Sie mehr Leistungsindikatoren oder Ereignisse überwachen möchten, können Sie diese zum Senden an Ihren Log Analytics-Arbeitsbereich aktivieren und sie in der Hostdiagnose überwachen: Hostbrowser 
 
-- Informationen zum Hinzufügen von Leistungsindikatoren finden Sie unter [Konfigurieren von Leistungsindikatoren](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#configuring-performance-counters).
-- Informationen zum Hinzufügen von Windows-Ereignissen finden Sie unter [Konfigurieren der Windows-Ereignisprotokolle](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events#configuring-windows-event-logs).
+- Informationen zum Hinzufügen von Leistungsindikatoren finden Sie unter [Konfigurieren von Leistungsindikatoren](../azure-monitor/agents/data-sources-performance-counters.md#configuring-performance-counters).
+- Informationen zum Hinzufügen von Windows-Ereignissen finden Sie unter [Konfigurieren der Windows-Ereignisprotokolle](../azure-monitor/agents/data-sources-windows-events.md#configuring-windows-event-logs).
 
 Sie können keinen Datenpunkt finden, der bei der Diagnose eines Problems hilft? Senden Sie uns Feedback!
 

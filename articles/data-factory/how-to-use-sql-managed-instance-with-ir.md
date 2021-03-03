@@ -6,12 +6,12 @@ ms.author: chugu
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 43b118b8f3f7444cd3c4d0cfa31b72a3522d6d84
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c268dba51ecf2c2b246c54574ecf3838533b017e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392577"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710208"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Verwenden von verwalteten Azure SQL-Instanzen mit SQL Server Integration Services (SSIS) in Azure Data Factory
 
@@ -22,7 +22,7 @@ Sie können Ihre SQL Server Integration Services-Projekte, -Pakete und -Workload
 - [Bereitstellen einer Azure-SSIS IR mit SSIS-Katalog (SSISDB), die auf einer verwalteten Azure SQL-Instanz gehostet wird](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
 - [Ausführen von SSIS-Paketen mit einem Agent-Auftrag einer verwalteten Azure SQL-Datenbankinstanz](how-to-invoke-ssis-package-managed-instance-agent.md)
 - [Bereinigen von SSISDB-Protokollen mit einem Agent-Auftrag einer verwalteten Azure SQL-Datenbankinstanz](#clean-up-ssisdb-logs)
-- [Azure-SSIS IR-Failover bei einer verwalteten Azure SQL-Instanz](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-managed-instance)
+- [Azure-SSIS IR-Failover bei einer verwalteten Azure SQL-Instanz](configure-bcdr-azure-ssis-integration-runtime.md)
 - [Migrieren von lokalen SSIS-Workloads zu SSIS in ADF mit einer verwalteten Azure SQL-Instanz als Datenbank-Workloadziel](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
 
 ## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>Bereitstellen einer Azure-SSIS IR mit SSISDB, die auf einer verwalteten Azure SQL-Instanz gehostet wird

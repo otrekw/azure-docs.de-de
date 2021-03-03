@@ -75,17 +75,13 @@
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
     - name: Preise und Einschränkungen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
-    - name: UserVoice
-      href: 'https://go.microsoft.com/fwlink/?linkid=2090535'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/form-recognizer'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Regionale Verfügbarkeit
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
     - name: Sprachunterstützung
       href: language-support.md
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: encrypt-data-at-rest.md

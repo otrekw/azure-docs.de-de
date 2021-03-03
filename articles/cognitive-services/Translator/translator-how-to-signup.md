@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: 37b9860546f9fd16045906ce9385a1590c46b970
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: a0d8532d19aff41bc5e7defb3b58462e81018749
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556345"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712928"
 ---
 # <a name="create-a-translator-resource"></a>Erstellen einer Translator-Ressource
 
@@ -57,7 +57,7 @@ Der Zugriff auf die Übersetzerressource ist über zwei verschiedene Ressourcent
 
 1. **Ressourcengruppe:** Wählen Sie die Azure-Ressourcengruppe aus, die als virtueller Container für Ihre neue Ressource dienen soll. Sie können eine neue Ressourcengruppe erstellen oder Ihre Ressource zu einer bereits vorhandenen Ressourcengruppe hinzufügen, die denselben Lebenszyklus, dieselben Berechtigungen und dieselben Richtlinien aufweist.
 
-1. **Ressourcenregion:** Wählen Sie die Option **Global** aus, es sei denn, Ihr Unternehmen oder Ihre Anwendung erfordert eine spezifische Region. Bei dem Übersetzer handelt es sich um einen Dienst, der keine Abhängigkeit von einer bestimmten Azure-Region aufweist. *Weitere Informationen finden Sie unter* [Regionen und Verfügbarkeitszonen in Azure](/azure/availability-zones/az-overview).
+1. **Ressourcenregion:** Wählen Sie die Option **Global** aus, es sei denn, Ihr Unternehmen oder Ihre Anwendung erfordert eine spezifische Region. Bei dem Übersetzer handelt es sich um einen Dienst, der keine Abhängigkeit von einer bestimmten Azure-Region aufweist. *Weitere Informationen finden Sie unter* [Regionen und Verfügbarkeitszonen in Azure](../../availability-zones/az-overview.md).
 
 1. **Name**. Geben Sie den Namen ein, den Sie für Ihre Ressource ausgewählt haben. Der ausgewählte Name muss innerhalb von Azure eindeutig sein.
 

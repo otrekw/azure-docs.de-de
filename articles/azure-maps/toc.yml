@@ -160,10 +160,10 @@
               href: create-data-source-web-sdk.md
             - name: Hinzufügen einer Symbolebene
               href: map-add-pin.md
-            - name: Hinzufügen eines Popups
-              href: map-add-popup.md
             - name: Hinzufügen einer Blasenebene
               href: map-add-bubble-layer.md
+            - name: Hinzufügen eines Popups
+              href: map-add-popup.md
             - name: Hinzufügen von HTML-Markern
               href: map-add-custom-html.md
             - name: Hinzufügen einer Linienebene
@@ -250,14 +250,14 @@
           href: how-to-add-symbol-to-android-map.md
         - name: Hinzufügen einer Blasenebene
           href: map-add-bubble-layer-android.md
-        - name: Hinzufügen von Formen
+        - name: Anzeigen von Featureinformationen
+          href: display-feature-information-android.md
+        - name: Hinzufügen einer Linienebene
+          href: android-map-add-line-layer.md
+        - name: Hinzufügen einer Polygonebene
           href: how-to-add-shapes-to-android-map.md
         - name: Hinzufügen einer Wärmebildebene
           href: map-add-heat-map-layer-android.md
-        - name: Hinzufügen einer Linienebene
-          href: android-map-add-line-layer.md
-        - name: Anzeigen von Featureinformationen
-          href: display-feature-information-android.md
         - name: Hinzufügen einer Kachelebene
           href: how-to-add-tile-layer-android-map.md
         - name: Anzeigen von Datenverkehrsdaten

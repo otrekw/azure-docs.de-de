@@ -6,12 +6,12 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.date: 02/05/2021
-ms.openlocfilehash: d41646ef1ef964db38245009717554eaeb783824
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: c4d6ebc8d57857deeb2a5cc71867484bd3519ea6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526305"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699673"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-data-factory-data-flows"></a>Sparen von Kosten für Ressourcen mit reservierter Kapazität: Azure Data Factory-Datenflüsse
 
@@ -21,12 +21,12 @@ Sparen Sie Kosten für Azure Data Factory-Datenflüsse im Vergleich zur nutzungs
 
 Es ist nicht erforderlich, dass Sie die Reservierung einer bestimmten Factory oder Integration Runtime zuweisen. Für vorhandene oder neu bereitgestellte Factorys gilt der Vorteil automatisch. Beim Kauf einer Reservierung zahlen Sie für einen Zeitraum von einem oder drei Jahren die für die Nutzung anfallenden Datenfluss-Computekosten. Sobald Sie eine Reservierung erworben haben, werden die Computegebühren, die den Reservierungsattributen entsprechen, nicht mehr zu den Preisen der nutzungsbasierten Bezahlung abgerechnet. 
 
-Sie können [reservierte Kapazitäten](https://portal.azure.com) erwerben, indem Sie Reservierungen [im Voraus oder monatlich bezahlen](https://docs.microsoft.com/azure/cost-management-billing/reservations/prepare-buy-reservation.md). So erwerben Sie reservierte Kapazität:
+Sie können [reservierte Kapazitäten](https://portal.azure.com) erwerben, indem Sie Reservierungen [im Voraus oder monatlich bezahlen](../cost-management-billing/reservations/prepare-buy-reservation.md). So erwerben Sie reservierte Kapazität:
 
 - Ihnen muss die Besitzerrolle für mindestens ein Enterprise-Abonnement oder ein individuelles Abonnement mit nutzungsbasierter Bezahlung zugeordnet sein.
 - Bei Enterprise-Abonnements muss im [EA-Portal](https://ea.azure.com) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie ein EA-Administrator für das Abonnement sein. Reservierte Kapazität.
 
-Weitere Informationen zur Berechnung der Reservierung von Kapazitäten für Unternehmenskunden und Kunden mit nutzungsbasierter Bezahlung finden Sie unter [Grundlegendes zur Nutzung von Azure-Reservierungen für die Enterprise-Registrierung](https://docs.microsoft.com/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea) und [Informationen zur Azure-Reservierungsnutzung bei Ihrem einzelnen Abonnement mit nutzungsbasierter Bezahlung](https://docs.microsoft.com/azure/cost-management-billing/reservations/understand-reserved-instance-usage).
+Weitere Informationen zur Berechnung der Reservierung von Kapazitäten für Unternehmenskunden und Kunden mit nutzungsbasierter Bezahlung finden Sie unter [Grundlegendes zur Nutzung von Azure-Reservierungen für die Enterprise-Registrierung](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) und [Informationen zur Azure-Reservierungsnutzung bei Ihrem einzelnen Abonnement mit nutzungsbasierter Bezahlung](../cost-management-billing/reservations/understand-reserved-instance-usage.md).
 
 > [!NOTE]
 > Ein Erwerb einer reservierten Kapazität hat nicht zur Folge, dass bestimmte Infrastrukturressourcen (virtuelle Computer oder Cluster) für ihre Verwendung vorab zugeordnet oder reserviert werden.
@@ -49,7 +49,7 @@ Angenommen, bei Ihnen wird eine Pipeline stündlich mit dem Typ „Arbeitsspeich
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Stornieren, Umtauschen oder Rückerstatten von Reservierungen
 
-Reservierungen können unter bestimmten Einschränkungen storniert, umgetauscht oder rückerstattet werden. Weitere Informationen finden Sie unter [Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
+Reservierungen können unter bestimmten Einschränkungen storniert, umgetauscht oder rückerstattet werden. Weitere Informationen finden Sie unter [Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 

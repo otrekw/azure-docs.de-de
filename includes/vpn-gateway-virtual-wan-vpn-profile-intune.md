@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8fc3ad3e1597d9b38bd095875c8a6f11260e8711
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f64bb0dd0841e89d05a4399db4373a9eaaec48a2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515167"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750047"
 ---
 Sie können Profile für Azure-VPN-Clients (Windows 10) mit Microsoft Intune bereitstellen. Dieser Artikel unterstützt Sie beim Erstellen eines Intune-Profils mit benutzerdefinierten Einstellungen.
 
@@ -30,7 +30,7 @@ In den folgenden Schritten verwenden wir eine XML-Beispieldatei für ein benutze
 * Automat. Verbindung EIN
 * Erkennung vertrauenswürdiger Netzwerke aktiviert.
 
-Weitere unterstützte Optionen finden Sie im Artikel [VPNv2-Konfigurationsdienstanbieter](https://docs.microsoft.com/windows/client-management/mdm/vpnv2-csp).
+Weitere unterstützte Optionen finden Sie im Artikel [VPNv2-Konfigurationsdienstanbieter](/windows/client-management/mdm/vpnv2-csp).
 
 1. Laden Sie das VPN-Profil aus dem Azure-Portal herunter, und extrahieren Sie die Datei *azurevpnconfig.xml* aus dem Paket.
 1. Kopieren Sie den folgenden Text, und fügen Sie ihn im Text-Editor in eine neue Datei ein.
@@ -82,4 +82,4 @@ In diesem Abschnitt erstellen Sie ein Microsoft Intune-Profil mit benutzerdefini
 1. Wählen Sie auf der Seite **Überprüfen + erstellen** die Option **Erstellen** aus.
 
     :::image type="content" source="./media/vpn-gateway-virtual-wan-vpn-profile-intune/create-profile.png" alt-text="Profil erstellen":::
-1. Ihr benutzerdefiniertes Profil wird nun erstellt. Die Microsoft Intune-Schritte zum Bereitstellen dieses Profils finden Sie unter [Zuweisen von Benutzer- und Geräteprofilen in Microsoft Intune](https://docs.microsoft.com/mem/intune/configuration/device-profile-assign).
+1. Ihr benutzerdefiniertes Profil wird nun erstellt. Die Microsoft Intune-Schritte zum Bereitstellen dieses Profils finden Sie unter [Zuweisen von Benutzer- und Geräteprofilen in Microsoft Intune](/mem/intune/configuration/device-profile-assign).

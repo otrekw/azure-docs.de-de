@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: c29e952e22aaccf31c10de8f6e16d240b4660a23
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 4f9cc8321d5d1d19dbcb8294ad6205b01337ee72
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240714"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715053"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server-preview"></a>Übersicht über die Geschäftskontinuität mit Azure Database for MySQL – Flexible Server (Vorschau)
 
@@ -27,7 +27,7 @@ Die nachstehende Tabelle veranschaulicht die Features, die Flexible Server biete
 | **Sicherung und Wiederherstellung** | Flexible Server führt automatisch tägliche Sicherungen Ihrer Datenbankdateien durch und sichert kontinuierlich Transaktionsprotokolle. Sicherungen können zwischen 1 und 35 Tagen aufbewahrt werden. Sie können Ihren Datenbankserver zu jedem beliebigen Zeitpunkt innerhalb des Aufbewahrungszeitraums Ihrer Sicherung wiederherstellen. Die Wiederherstellungszeit hängt von der Größe der wiederherzustellenden Daten und der Zeit für die Durchführung der Protokollwiederherstellung ab. Weitere Informationen finden Sie unter [Konzepte: Sicherung und Wiederherstellung](./concepts-backup-restore.md). |Sicherungsdaten verbleiben innerhalb der Region |
 | **Lokal redundante Sicherung** | Flexible Server-Sicherungen werden automatisch und sicher in einem lokal redundanten Speicher innerhalb einer Region sowie in derselben Verfügbarkeitszone gespeichert. Die lokal redundanten Sicherungen replizieren die Sicherungsdatendateien des Servers dreimal innerhalb eines einzelnen physischen Standorts in der primären Region. Lokal redundanter Sicherungsspeicher stellt eine Dauerhaftigkeit von mindestens 99,999999999 % (11 Neunen) für Objekte in einem bestimmten Jahr bereit. Weitere Informationen finden Sie unter [Konzepte: Sicherung und Wiederherstellung](./concepts-backup-restore.md).| Anwendbar in allen Regionen |
 | **Zonenredundante Hochverfügbarkeit** | Flexible Server kann im Hochverfügbarkeitsmodus bereitgestellt werden, bei dem primäre und Standbyserver in zwei verschiedenen Verfügbarkeitszonen innerhalb einer Region bereitgestellt werden. Dies schützt vor Fehlern auf Zonenebene und hilft auch bei der Reduzierung der Downtime von Anwendungen während geplanter und ungeplanter Downtimeereignisse. Die Daten vom primären Server werden synchron mit dem Standbyreplikat repliziert. Bei allen Downtimeereignissen erfolgt für den Datenbankserver automatisch ein Failover auf das Standbyreplikat. Weitere Informationen finden Sie unter [Konzepte: Hochverfügbarkeit](./concepts-high-availability.md). | Unterstützt auf den Computeebenen „Allgemeiner Zweck“ und „Arbeitsspeicheroptimiert“. Nur verfügbar in Regionen, in denen mehrere Zonen verfügbar sind.|
-| **Premium-Dateifreigaben** | Die Datenbankdateien werden in sehr langlebigen und zuverlässigen Azure Premium-Dateifreigaben gespeichert, die Datenredundanz mit drei Replikatkopien bieten, die in einer Verfügbarkeitszone mit automatischer Datenwiederherstellung gespeichert sind. Weitere Informationen finden Sie unter [Premium-Dateifreigaben](../../storage/files/storage-how-to-create-premium-fileshare.md). | In einer Verfügbarkeitszone gespeicherte Daten |
+| **Premium-Dateifreigaben** | Die Datenbankdateien werden in sehr langlebigen und zuverlässigen Azure Premium-Dateifreigaben gespeichert, die Datenredundanz mit drei Replikatkopien bieten, die in einer Verfügbarkeitszone mit automatischer Datenwiederherstellung gespeichert sind. Weitere Informationen finden Sie unter [Premium-Dateifreigaben](../../storage/files/storage-how-to-create-file-share.md). | In einer Verfügbarkeitszone gespeicherte Daten |
 
 > [!IMPORTANT]
 > Während des Vorschauzeitraums werden weder Uptime noch RTO und RPO SLAs angeboten. Die Angaben auf dieser Seite dienen nur zu Ihrer Information und zu Planungszwecken.
@@ -65,5 +65,5 @@ Im Folgenden finden Sie einige ungeplante Fehlerszenarien und den Wiederherstell
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr zur [zonenredundanten Hochverfügbarkeit](./concepts-high-availability.md)
+- Weitere Informationen zur [zonenredundanten Hochverfügbarkeit](./concepts-high-availability.md)
 - Weitere Informationen zu [Sicherung und Wiederherstellung](./concepts-backup-restore.md)

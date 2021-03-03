@@ -221,9 +221,9 @@
         - name: Härten Ihrer Docker-Hosts
           displayName: containers
           href: harden-docker-hosts.md
-        - name: Verwenden von Azure Defender für SQL
-          href: defender-for-sql-usage.md
-          displayName: 'hybrid, arc'
+    - name: Verwenden von Azure Defender für SQL
+      href: defender-for-sql-usage.md
+      displayName: 'hybrid, arc'
     - name: Verwenden von Azure Defender für Containerregistrierungen
       items:
         - name: Überprüfen Ihrer Registrierungsimages auf Sicherheitsrisiken
@@ -269,8 +269,6 @@
     - name: Schützen Ihrer Kubernetes-Workloads
       displayName: 'k8s, containers, aks'
       href: kubernetes-workload-protections.md
-    - name: Benutzerdaten für Untersuchung verwalten
-      href: security-center-investigation-user-data.md
     - name: Erreichen von mandantenweiter Transparenz
       href: security-center-management-groups.md
     - name: Anpassen der Information Protection-Richtlinie für SQL
@@ -292,7 +290,7 @@
           href: faq-vms.md
         - name: Vorhandene Benutzer von Azure Log Analytics
           href: faq-azure-monitor-logs.md
-    - name: Integrierte Sicherheitsrichtlinien
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policy'
       href: policy-reference.md
     - name: 'Azure-Roadmap: Blog'

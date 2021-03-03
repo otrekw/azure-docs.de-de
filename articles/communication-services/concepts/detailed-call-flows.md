@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 12/11/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1333bd08f8a79969817bcb21aa4580d1994d09ce
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: d2df7255980ca00d405cf80a9fff69ff0511bd17
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594659"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659306"
 ---
 # <a name="call-flow-topologies"></a>Topologien für Anrufabläufe
 Dieser Artikel enthält eine Beschreibung der Topologien für Anrufabläufe in Azure Communication Services. Die Informationen in diesem Artikel sind gut für Sie geeignet, wenn Sie als Unternehmenskunde Communication Services in ein von Ihnen verwaltetes Netzwerk integrieren möchten. Eine Einführung in Communication Services-Anrufabläufe finden Sie in der [Dokumentation zu den Konzepten von Anrufabläufen](./call-flows.md).
@@ -26,7 +26,7 @@ Bevor es um die Topologien von Anrufabläufen geht, sollen zunächst einige Begr
 
 Ein **Kundennetzwerk** enthält alle von Ihnen verwalteten Netzwerksegmente. Hierbei kann es sich um kabelgebundene und drahtlose Netzwerke in Ihrer Niederlassung oder zwischen Standorten, Rechenzentren und Internetdienstanbietern handeln.
 
-Ein Kundennetzwerk verfügt normalerweise über mehrere Netzwerkgrenzen mit Firewalls bzw. Proxyservern, mit denen die Sicherheitsrichtlinien Ihrer Organisation durchgesetzt werden. Wir empfehlen Ihnen, eine [umfassende Netzwerkbewertung](https://docs.microsoft.com/microsoftteams/3-envision-evaluate-my-environment) durchzuführen, um die optimale Leistung und Qualität Ihrer Kommunikationslösung sicherzustellen.
+Ein Kundennetzwerk verfügt normalerweise über mehrere Netzwerkgrenzen mit Firewalls bzw. Proxyservern, mit denen die Sicherheitsrichtlinien Ihrer Organisation durchgesetzt werden. Wir empfehlen Ihnen, eine [umfassende Netzwerkbewertung](/microsoftteams/3-envision-evaluate-my-environment) durchzuführen, um die optimale Leistung und Qualität Ihrer Kommunikationslösung sicherzustellen.
 
 Das **Communication Services-Netzwerk** ist das Netzwerksegment, von dem Azure Communication Services unterstützt wird. Dieses weltweite Netzwerk wird von Microsoft verwaltet und verfügt über Edgebereiche in der Nähe der meisten Kundennetzwerke. Das Netzwerk wird für die Transportvermittlung, Medienverarbeitung für Gruppenanrufe und andere Komponenten genutzt, für die eine umfassende Medienkommunikation in Echtzeit unterstützt wird.
 
@@ -199,4 +199,3 @@ Die Artikel zu den folgenden Themen könnten Sie auch interessieren:
 
 - [Anruftypen](../concepts/voice-video-calling/about-call-types.md)
 - [Client-Server-Architektur](./client-and-server-architecture.md)
-

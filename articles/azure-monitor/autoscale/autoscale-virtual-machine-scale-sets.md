@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 96d8c32791bd968dd8740a2d4633496b42e9f3f4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 26cfdf05847b01d28a8574483acc89cfeced0ffa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601719"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717739"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Konfiguration der erweiterten automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM Scale Sets
 Sie können VM-Skalierungsgruppen basierend auf Leistungsmetrik-Schwellenwerten horizontal herunter- und hochskalieren – entweder nach einem sich wiederholenden Zeitplan oder zu einem bestimmten Datum. Außerdem können Sie E-Mail- und Webhookbenachrichtigungen für Skalierungsaktionen konfigurieren. Diese exemplarische Vorgehensweise zeigt ein Beispiel für die Konfiguration der oben genannten Objekte mithilfe einer Resource Manager-Vorlage für eine VM-Skalierungsgruppe.
@@ -243,9 +243,9 @@ Sie haben eine Einstellung für die automatische Skalierung für eine VM-Skalier
 
 [Empfohlene Methoden für die automatische Skalierung](autoscale-best-practices.md)
 
-[Verwalten der automatischen Skalierung mit PowerShell](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
+[Verwalten der automatischen Skalierung mit PowerShell](../powershell-samples.md#create-and-manage-autoscale-settings)
 
-[Verwalten der automatischen Skalierung über die CLI](../samples/cli-samples.md#autoscale)
+[Verwalten der automatischen Skalierung über die CLI](../cli-samples.md#autoscale)
 
 [Konfigurieren von Webhook- und E-Mail-Benachrichtigungen für die automatische Skalierung](autoscale-webhook-email.md)
 

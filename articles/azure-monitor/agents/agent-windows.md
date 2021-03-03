@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/03/2020
-ms.openlocfilehash: abad5a0146f98993cd02425b33466c447f9d97ca
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 50bfed0ee4346955a9e478e7567f00610d8184f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599469"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708661"
 ---
 # <a name="install-log-analytics-agent-on-windows-computers"></a>Installieren des Log Analytics-Agents auf Windows-Computern
 Dieser Artikel enthält ausführliche Informationen zum Installieren des Log Analytics-Agents auf Windows-Computern mithilfe der folgenden Methoden:
@@ -20,7 +20,7 @@ Dieser Artikel enthält ausführliche Informationen zum Installieren des Log Ana
 * [Azure Automation Desired State Configuration (DSC)](#install-agent-using-dsc-in-azure-automation). 
 
 >[!IMPORTANT]
-> Die in diesem Artikel beschriebenen Installationsmethoden werden in der Regel für virtuelle Computer in der lokalen Umgebung oder in anderen Clouds verwendet. Effizientere Optionen für virtuelle Azure-Computer finden Sie unter [Installationsoptionen](../platform/log-analytics-agent.md#installation-options).
+> Die in diesem Artikel beschriebenen Installationsmethoden werden in der Regel für virtuelle Computer in der lokalen Umgebung oder in anderen Clouds verwendet. Effizientere Optionen für virtuelle Azure-Computer finden Sie unter [Installationsoptionen](./log-analytics-agent.md#installation-options).
 
 > [!NOTE]
 > Wenn Sie den Agenten so konfigurieren müssen, dass er an mehrere Arbeitsbereiche berichtet, ist dies bei der ersten Einrichtung nicht möglich. Sie können dies nur später tun, indem Sie die Einstellungen aus der Systemsteuerung oder aus PowerShell aktualisieren, wie dies unter [Hinzufügen oder Entfernen von Arbeitsbereichen](agent-manage.md#adding-or-removing-a-workspace) beschrieben ist.  
@@ -42,12 +42,12 @@ Der Windows-Agent verwendet ab dem 17. August 2020 ausschließlich die SHA-2-Si
 4. Es wird empfohlen, den Agent zur Verwendung von [TLS 1.2](agent-windows.md#configure-agent-to-use-tls-12) zu konfigurieren. 
 
 ## <a name="network-requirements"></a>Netzwerkanforderungen
-Die Netzwerkanforderungen für den Windows-Agent finden Sie unter [Übersicht über den Log Analytics-Agent](../platform/log-analytics-agent.md#network-requirements).
+Die Netzwerkanforderungen für den Windows-Agent finden Sie unter [Übersicht über den Log Analytics-Agent](./log-analytics-agent.md#network-requirements).
 
 
    
 ## <a name="configure-agent-to-use-tls-12"></a>Konfigurieren des Agents für die Verwendung von TLS 1.2
-Das [TLS 1.2](/windows-server/security/tls/tls-registry-settings#tls-12)-Protokoll gewährleistet die Sicherheit der Daten während der Übertragung bei der Kommunikation zwischen dem Windows-Agent und dem Log Analytics-Dienst. Wenn Sie die Installation auf einem Betriebssystem ausführen [auf dem TLS 1.2 standardmäßig nicht aktiviert ist](../platform/data-security.md#sending-data-securely-using-tls-12), sollten Sie TLS 1.2 über die nachstehenden Schritte konfigurieren.
+Das [TLS 1.2](/windows-server/security/tls/tls-registry-settings#tls-12)-Protokoll gewährleistet die Sicherheit der Daten während der Übertragung bei der Kommunikation zwischen dem Windows-Agent und dem Log Analytics-Dienst. Wenn Sie die Installation auf einem Betriebssystem ausführen [auf dem TLS 1.2 standardmäßig nicht aktiviert ist](../logs/data-security.md#sending-data-securely-using-tls-12), sollten Sie TLS 1.2 über die nachstehenden Schritte konfigurieren.
 
 1. Suchen Sie nach dem folgenden Registrierungsschlüssel: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. Erstellen Sie einen Unterschlüssel unter **Protokolle** für TLS 1.2 **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2**

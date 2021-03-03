@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 328bfe57c675d49aa951388e2808fcecfe8da8b5
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ae0112292994fdcf88e80abff8ab52e5971cb0ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100096530"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731084"
 ---
 # <a name="how-to-improve-your-custom-vision-model"></a>Verbessern Ihres Custom Vision-Modells
 
-In diesem Leitfaden erfahren Sie, wie Sie die Qualität Ihres Modells für den Custom Vision-Dienst verbessern. Die Qualität Ihrer [Klassifizierung](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) oder [Objekterkennung](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector) hängt von der Menge, Qualität und Vielseitigkeit der von Ihnen bereitgestellten getaggten Daten sowie von der Ausgewogenheit des gesamten Datasets ab. Ein gutes Modell verfügt über ein ausgewogenes Trainingsdataset, das repräsentativ für das ist, was an das Modell übermittelt wird. Solche Modelle werden iterativ erstellt. Üblicherweise werden einige Trainingsrunden durchlaufen, um die erwarteten Ergebnisse zu erzielen.
+In diesem Leitfaden erfahren Sie, wie Sie die Qualität Ihres Modells für den Custom Vision-Dienst verbessern. Die Qualität Ihrer [Klassifizierung](./getting-started-build-a-classifier.md) oder [Objekterkennung](./get-started-build-detector.md) hängt von der Menge, Qualität und Vielseitigkeit der von Ihnen bereitgestellten getaggten Daten sowie von der Ausgewogenheit des gesamten Datasets ab. Ein gutes Modell verfügt über ein ausgewogenes Trainingsdataset, das repräsentativ für das ist, was an das Modell übermittelt wird. Solche Modelle werden iterativ erstellt. Üblicherweise werden einige Trainingsrunden durchlaufen, um die erwarteten Ergebnisse zu erzielen.
 
 Im Folgenden wird ein allgemeines Muster erläutert, das Ihnen dabei hilft, ein genaueres Modell zu trainieren:
 

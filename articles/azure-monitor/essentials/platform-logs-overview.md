@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: d2162a5c3d88eaae69b3a67456fdc29f19b1a79a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7a57a39dd72e2330c2adde2b471bca2f9f2e00a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601377"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725848"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Übersicht über Protokolle der Azure-Plattform
 Plattformprotokolle liefern detaillierte Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. Sie werden automatisch generiert, obwohl Sie bestimmte Plattformprotokolle so konfigurieren müssen, dass sie an mindestens ein Ziel weitergeleitet werden, damit sie gespeichert werden. Dieser Artikel bietet einen Überblick über die Plattformprotokolle, einschließlich der Informationen, die sie liefern und wie Sie sie für die Erfassung und Analyse konfigurieren können.
@@ -22,7 +22,7 @@ In der folgenden Tabelle werden die spezifischen Plattformprotokolle aufgeführt
 
 | Log | Ebene | BESCHREIBUNG |
 |:---|:---|:---|
-| [Ressourcenprotokolle](../platform/resource-logs.md) | Azure-Ressourcen | Sie bieten einen Einblick in Vorgänge, die innerhalb einer Azure-Ressource (der *Datenebene*) ausgeführt wurden, z.B. das Abrufen eines Geheimnisses aus einem Key Vault oder die Ausgabe einer Anforderung an eine Datenbank. Der Inhalt dieser Protokolle variiert je nach Azure-Dienst und -Ressourcentyp.<br><br>*Ressourcenprotokolle wurden zuvor als Diagnoseprotokolle bezeichnet.*  |
+| [Ressourcenprotokolle](./resource-logs.md) | Azure-Ressourcen | Sie bieten einen Einblick in Vorgänge, die innerhalb einer Azure-Ressource (der *Datenebene*) ausgeführt wurden, z.B. das Abrufen eines Geheimnisses aus einem Key Vault oder die Ausgabe einer Anforderung an eine Datenbank. Der Inhalt dieser Protokolle variiert je nach Azure-Dienst und -Ressourcentyp.<br><br>*Ressourcenprotokolle wurden zuvor als Diagnoseprotokolle bezeichnet.*  |
 | [Aktivitätsprotokoll](../essentials/activity-log.md) | Azure-Abonnement | Bietet Einblicke in die Vorgänge für jede Azure-Ressource im Abonnement von außen (*die Verwaltungsebene*) sowie Aktualisierungen zu Service Health-Ereignissen. Verwenden Sie das Aktivitätsprotokoll zum Ermitteln der Antworten auf die Fragen _Was_, _Wer_ und _Wann_ für alle Schreibvorgänge (PUT, POST, DELETE), die für die Ressourcen Ihres Abonnements durchgeführt wurden. Es gibt jeweils ein Aktivitätsprotokoll für jedes Azure-Abonnement. |
 | [Azure Active Directory-Protokolle](../../active-directory/reports-monitoring/overview-reports.md) | Azure-Mandant |  Sie enthalten den Verlauf der Anmeldeaktivität und das Überwachungsprotokoll der Änderungen, die in Azure Active Directory für einen bestimmten Mandanten vorgenommen wurden.   |
 
@@ -46,7 +46,7 @@ Abhängig von den Überwachungsanforderungen können Sie Plattformprotokolle an 
 
 | Destination | BESCHREIBUNG |
 |:---|:---|
-| Log Analytics-Arbeitsbereich | Analysieren Sie die Protokolle aller ihrer Azure-Ressourcen zusammen, und nutzen Sie alle Features, die für [Azure Monitor-Protokolle](../platform/data-platform-logs.md) verfügbar sind, einschließlich [Protokollabfragen](../log-query/log-query-overview.md) und [Protokollwarnungen](../alerts/alerts-log.md). Heften Sie die Ergebnisse einer Protokollabfrage an ein Azure-Dashboard an, oder fügen Sie diese als Teil eines interaktiven Berichts in eine Arbeitsmappe ein. |  |
+| Log Analytics-Arbeitsbereich | Analysieren Sie die Protokolle aller ihrer Azure-Ressourcen zusammen, und nutzen Sie alle Features, die für [Azure Monitor-Protokolle](../logs/data-platform-logs.md) verfügbar sind, einschließlich [Protokollabfragen](../logs/log-query-overview.md) und [Protokollwarnungen](../alerts/alerts-log.md). Heften Sie die Ergebnisse einer Protokollabfrage an ein Azure-Dashboard an, oder fügen Sie diese als Teil eines interaktiven Berichts in eine Arbeitsmappe ein. |  |
 | Event Hub | Senden Sie Protokolldaten zu Plattformen außerhalb von Azure, z. B. an eine externe SIEM- oder eine benutzerdefinierte Telemetrieplattform.
 | Azure-Speicher | Archivieren Sie die Protokolle zur Überwachung oder Sicherung. |
 
@@ -61,5 +61,4 @@ Abhängig von den Überwachungsanforderungen können Sie Plattformprotokolle an 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Weitere Informationen zum Aktivitätsprotokoll](../essentials/activity-log.md)
-* [Weitere Informationen zu Ressourcenprotokollen](../platform/resource-logs.md)
-
+* [Weitere Informationen zu Ressourcenprotokollen](./resource-logs.md)

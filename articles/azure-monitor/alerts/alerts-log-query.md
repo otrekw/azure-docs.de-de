@@ -6,19 +6,19 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: cfe6aa489bcc771213ec04ca9cddd1267ccf1338
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cda3af012a83342d5650c542fafdcd6bc36bd8e3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601253"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717977"
 ---
 # <a name="optimizing-log-alert-queries"></a>Optimieren von Protokollwarnungsabfragen
-In diesem Artikel wird beschrieben, wie Abfragen für [Protokollwarnungen](../platform/alerts-unified-log.md) zum Erzielen optimaler Leistung geschrieben und konvertiert werden. Optimierte Abfragen verringern die Latenz und die Auslastung durch Warnungen, die häufig ausgeführt werden.
+In diesem Artikel wird beschrieben, wie Abfragen für [Protokollwarnungen](./alerts-unified-log.md) zum Erzielen optimaler Leistung geschrieben und konvertiert werden. Optimierte Abfragen verringern die Latenz und die Auslastung durch Warnungen, die häufig ausgeführt werden.
 
 ## <a name="how-to-start-writing-an-alert-log-query"></a>Schreiben einer Warnungsprotokollabfrage
 
-Warnungsabfragen beginnen mit dem [Abfragen der Protokolldaten in Log Analytics](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal), die auf das Problem hinweisen. Unter [Gespeicherte Abfragen in Azure Monitor Log Analytics](../log-query/example-queries.md) können Sie sich anhand von Beispielen mit den Ermittlungsoptionen vertraut machen. Sie können auch [mit dem Schreiben einer eigenen Abfrage beginnen](../log-query/log-analytics-tutorial.md). 
+Warnungsabfragen beginnen mit dem [Abfragen der Protokolldaten in Log Analytics](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal), die auf das Problem hinweisen. Unter [Gespeicherte Abfragen in Azure Monitor Log Analytics](../logs/example-queries.md) können Sie sich anhand von Beispielen mit den Ermittlungsoptionen vertraut machen. Sie können auch [mit dem Schreiben einer eigenen Abfrage beginnen](../logs/log-analytics-tutorial.md). 
 
 ### <a name="queries-that-indicate-the-issue-and-not-the-alert"></a>Abfragen, die auf das Problem und nicht die Warnung hinweisen
 
@@ -44,7 +44,7 @@ Es ist nicht erforderlich, der Abfrage Warnungslogik hinzuzufügen. Dies kann so
 Die Verwendung von `limit` und `take` in Abfragen kann die Latenz und die Auslastung durch Warnungen erhöhen, da die Ergebnisse im Laufe der Zeit nicht konsistent sind. Es wird empfohlen, diese nur bei Bedarf zu verwenden.
 
 ## <a name="log-query-constraints"></a>Beschränkungen für Protokollabfragen
-[Protokollabfragen in Azure Monitor](../log-query/log-query-overview.md) beginnen entweder mit einer Tabelle, einem [`search`](/azure/kusto/query/searchoperator)- oder einem [`union`](/azure/kusto/query/unionoperator)-Operator.
+[Protokollabfragen in Azure Monitor](../logs/log-query-overview.md) beginnen entweder mit einer Tabelle, einem [`search`](/azure/kusto/query/searchoperator)- oder einem [`union`](/azure/kusto/query/unionoperator)-Operator.
 
 Abfragen für Protokollwarnungsregeln sollten immer mit einer Tabelle beginnen, um einen klaren Bereich festzulegen. Dadurch verbessern sich die Abfrageleistung und die Relevanz der Ergebnisse. Abfragen in Warnungsregeln werden häufig ausgeführt. Daher kann die Verwendung von `search` und `union` zu übermäßigem Mehraufwand und somit zu größerer Latenz für die Warnung führen, da eine Überprüfung mehrerer Tabellen erforderlich ist. Diese Operatoren verringern auch die Fähigkeit des Warnungsdiensts zur Optimierung der Abfrage.
 
@@ -57,7 +57,7 @@ SecurityEvent
 | where EventID == 4624
 ```
 
-Protokollwarnungsregeln mit [ressourcenübergreifenden Abfragen](../log-query/cross-workspace-query.md) sind von dieser Änderung nicht betroffen, da ressourcenübergreifende Abfragen einen `union`-Typ verwenden, durch den der Abfragebereich auf bestimmte Ressourcen beschränkt ist. Das folgende Beispiel ist eine gültige Protokollwarnungsabfrage:
+Protokollwarnungsregeln mit [ressourcenübergreifenden Abfragen](../logs/cross-workspace-query.md) sind von dieser Änderung nicht betroffen, da ressourcenübergreifende Abfragen einen `union`-Typ verwenden, durch den der Abfragebereich auf bestimmte Ressourcen beschränkt ist. Das folgende Beispiel ist eine gültige Protokollwarnungsabfrage:
 
 ```Kusto
 union
@@ -67,7 +67,7 @@ workspace('Contoso-workspace1').Perf
 ```
 
 >[!NOTE]
-> [Ressourcenübergreifende Abfragen](../log-query/cross-workspace-query.md) werden in der neuen [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules) unterstützt. Wenn Sie noch die [Legacywarnungs-API von Log Analytics](../platform/api-alerts.md) zum Erstellen von Protokollwarnungen verwenden, finden Sie [hier](../alerts/alerts-log-api-switch.md) Informationen für einen Wechsel.
+> [Ressourcenübergreifende Abfragen](../logs/cross-workspace-query.md) werden in der neuen [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules) unterstützt. Wenn Sie noch die [Legacywarnungs-API von Log Analytics](./api-alerts.md) zum Erstellen von Protokollwarnungen verwenden, finden Sie [hier](../alerts/alerts-log-api-switch.md) Informationen für einen Wechsel.
 
 ## <a name="examples"></a>Beispiele
 Die folgenden Beispiele umfassen Protokollabfragen mit `search` und `union` und enthalten Schritte, mit denen Sie diese Abfragen für die Verwendung in Warnungsregeln ändern können.
@@ -217,4 +217,4 @@ SecurityEvent
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [Protokollwarnungen](alerts-log.md) in Azure Monitor.
-- Erfahren Sie mehr über [Protokollabfragen](../log-query/log-query-overview.md).
+- Erfahren Sie mehr über [Protokollabfragen](../logs/log-query-overview.md).

@@ -3,16 +3,16 @@ title: Übersicht über das Blaupausenbeispiel „Azure Security Benchmark Found
 description: Übersicht und Architektur für das Blaupausenbeispiel „Azure Security Benchmark Foundation“.
 ms.date: 02/17/2020
 ms.topic: sample
-ms.openlocfilehash: b3b58f2fb603e23e4b188e527fa4fc60f4041a29
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ed497eff85e07b6a51939907bc751f3b40c99b30
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095273"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741870"
 ---
 # <a name="overview-of-the-azure-security-benchmark-foundation-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „Azure Security Benchmark Foundation“
 
-Das Blaupausenbeispiel „Azure Security Benchmark Foundation“ enthält eine Reihe grundlegender Infrastrukturmuster, die Sie bei der Erstellung einer sicheren und konformen Azure-Umgebung unterstützen. Mithilfe der Blaupause können Sie eine cloudbasierte Architektur mit Lösungen für Szenarien bereitstellen, in denen Akkreditierungs- oder Konformitätsanforderungen erfüllt werden müssen. Dieses grundlegende Blaupausenbeispiel ist eine Erweiterung des [Blaupausenbeispiel „Azure Security Benchmark“](../azure-security-benchmark/index.md). Es dient zum Bereitstellen und Konfigurieren von Netzwerkgrenzen, Überwachungsmöglichkeiten und anderen Ressourcen im Einklang mit den Richtlinien und anderen Schutzmaßnahmen, die im [Azure-Sicherheitsvergleichstest](../../../../security/benchmarks/index.yml) definiert sind.
+Das Blaupausenbeispiel „Azure Security Benchmark Foundation“ enthält eine Reihe grundlegender Infrastrukturmuster, die Sie bei der Erstellung einer sicheren und konformen Azure-Umgebung unterstützen. Mithilfe der Blaupause können Sie eine cloudbasierte Architektur mit Lösungen für Szenarien bereitstellen, in denen Akkreditierungs- oder Konformitätsanforderungen erfüllt werden müssen. Dieses grundlegende Blaupausenbeispiel ist eine Erweiterung des [Blaupausenbeispiel „Azure Security Benchmark“](../azure-security-benchmark.md). Es dient zum Bereitstellen und Konfigurieren von Netzwerkgrenzen, Überwachungsmöglichkeiten und anderen Ressourcen im Einklang mit den Richtlinien und anderen Schutzmaßnahmen, die im [Azure-Sicherheitsvergleichstest](../../../../security/benchmarks/index.yml) definiert sind.
 
 ## <a name="architecture"></a>Aufbau
 
@@ -23,7 +23,7 @@ Durch die Blaupause wird ein virtuelles Hub-Netzwerk mit folgenden Komponenten b
 
 Durch diese Blaupause werden mehrere Azure-Dienste bereitgestellt, um eine sichere, überwachte und für Unternehmen geeignete Grundlage zu erhalten. Diese Umgebung besteht aus den folgenden Komponenten:
 
-- [Azure Monitor-Protokolle](../../../../azure-monitor/platform/data-platform-logs.md) und ein Azure-Speicherkonto, um sicherzustellen, dass Ressourcenprotokolle, Aktivitätsprotokolle, Metriken und Netzwerkdatenverkehrsflüsse an einem zentralen Ort gespeichert werden, was Abfragen, Analysen, Warnungen und die Archivierung erleichtert.
+- [Azure Monitor-Protokolle](../../../../azure-monitor/logs/data-platform-logs.md) und ein Azure-Speicherkonto, um sicherzustellen, dass Ressourcenprotokolle, Aktivitätsprotokolle, Metriken und Netzwerkdatenverkehrsflüsse an einem zentralen Ort gespeichert werden, was Abfragen, Analysen, Warnungen und die Archivierung erleichtert.
 - [Azure Security Center](../../../../security-center/security-center-introduction.md) (Standardversion), um Azure-Ressourcen vor Bedrohungen zu schützen.
 - [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md) im Hub-Netzwerk zur Unterstützung von Subnetzen für Konnektivität mit einem lokalen Netzwerk, ein Eingangs- und Ausgangsstapel für Internetkonnektivität sowie optionale Subnetze für die Bereitstellung zusätzlicher administrativer oder verwaltungsbezogener Dienste. Virtual Network im Spoke-Netzwerk enthält Subnetze zum Hosten von Anwendungsworkloads. Nach der Bereitstellung können bei Bedarf weitere Subnetze erstellt werden, um bestimmte Szenarien zu unterstützen.
 - [Azure Firewall](../../../../firewall/overview.md), um sämtlichen ausgehenden Internetdatenverkehr weiterzuleiten und eingehenden Internetdatenverkehr per Jumpbox zu ermöglichen. (Durch die standardmäßigen Firewallregeln wird sowohl ein- als auch ausgehender Internetdatenverkehr blockiert. Daher müssen nach der Bereitstellung entsprechende Regeln konfiguriert werden.)

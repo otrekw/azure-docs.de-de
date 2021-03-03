@@ -8,10 +8,13 @@
 - name: Konzepte
   expanded: true
   items:
-    - name: Virtuelle Computer
-      href: automanage-virtual-machines.md
-    - name: Bewährte Methoden für virtuelle Computer
-      href: virtual-machines-best-practices.md
+    - name: Automanage für Linux
+      href: automanage-linux.md
+    - name: Automanage für Windows Server
+      href: automanage-windows-server.md
+      items:
+        - name: Hotpatch für neue virtuelle Computer
+          href: automanage-hotpatch.md
 - name: Anleitung
   expanded: true
   items:

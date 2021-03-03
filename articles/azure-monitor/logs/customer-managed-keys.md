@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 9d8d37e1b161dfc8344d7ff03bc0093d23f86101
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fa826e951b9fe34eb27481718b8f026747011e4e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599590"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717416"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundenseitig verwaltete Schlüssel in Azure Monitor 
 
@@ -25,11 +25,11 @@ Die [Verschlüsselung ruhender Daten](../../security/fundamentals/encryption-atr
 
 Mit Azure Monitor wird sichergestellt, dass alle Daten und gespeicherten Abfragen im Ruhezustand mit von Microsoft verwalteten Schlüsseln (MMK) verschlüsselt werden. Azure Monitor bietet auch eine Option für Verschlüsselung mit Ihrem eigenen Schlüssel, der in Ihrer [Azure Key Vault](../../key-vault/general/overview.md)-Instanz gespeichert ist. Damit können Sie den Zugriff auf Ihre Daten jederzeit widerrufen. Die Verwendung der Verschlüsselung durch Azure Monitor entspricht der Funktionsweise der [Azure Storage-Verschlüsselung](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption).
 
-Kundenseitig verwaltete Schlüssel werden auf [dedizierten Clustern](../log-query/logs-dedicated-clusters.md) bereitgestellt, die mehr Schutz und Kontrolle bieten. In dedizierten Clustern erfasste Daten werden zweimal verschlüsselt: einmal auf der Dienstebene mithilfe von Microsoft verwalteten Schlüsseln oder kundenseitig verwalteten Schlüsseln und einmal auf der Infrastrukturebene anhand von zwei verschiedenen Verschlüsselungsalgorithmen und zwei verschiedenen Schlüsseln. Die [doppelte Verschlüsselung](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) schützt vor dem Szenario, dass einer der Verschlüsselungsalgorithmen oder Schlüssel kompromittiert wurde. In diesem Fall werden die Daten weiterhin durch die zusätzliche Verschlüsselungsebene geschützt. Ein dedizierter Cluster ermöglicht Ihnen außerdem das Schützen Ihrer Daten mit [Lockbox](#customer-lockbox-preview).
+Kundenseitig verwaltete Schlüssel werden auf [dedizierten Clustern](./logs-dedicated-clusters.md) bereitgestellt, die mehr Schutz und Kontrolle bieten. In dedizierten Clustern erfasste Daten werden zweimal verschlüsselt: einmal auf der Dienstebene mithilfe von Microsoft verwalteten Schlüsseln oder kundenseitig verwalteten Schlüsseln und einmal auf der Infrastrukturebene anhand von zwei verschiedenen Verschlüsselungsalgorithmen und zwei verschiedenen Schlüsseln. Die [doppelte Verschlüsselung](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) schützt vor dem Szenario, dass einer der Verschlüsselungsalgorithmen oder Schlüssel kompromittiert wurde. In diesem Fall werden die Daten weiterhin durch die zusätzliche Verschlüsselungsebene geschützt. Ein dedizierter Cluster ermöglicht Ihnen außerdem das Schützen Ihrer Daten mit [Lockbox](#customer-lockbox-preview).
 
 Daten, die in den letzten 14 Tagen erfasst wurden, werden für einen effizienten Betrieb der Abfrage-Engine auch im Hot-Cache (SSD-gestützt) aufbewahrt. Unabhängig von der Konfiguration kundenseitig verwalteter Schlüssel bleiben diese Daten mit Microsoft-Schlüsseln verschlüsselt, aber Ihre Kontrolle über SSD-Daten entspricht der [Schlüsselsperrung](#key-revocation). Wir arbeiten daran, dass SSD-Daten in der ersten Hälfte des Jahres 2021 mit kundenseitig verwalteten Schlüsseln verschlüsselt werden.
 
-Für dedizierte Log Analytics-Cluster gilt ein [Preismodell](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) für Kapazitätsreservierungen ab 1.000 GB/Tag.
+Für dedizierte Log Analytics-Cluster gilt ein [Preismodell](./logs-dedicated-clusters.md#cluster-pricing-model) für Kapazitätsreservierungen ab 1.000 GB/Tag.
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Funktionsweise von kundenseitig verwalteten Schlüsseln in Azure Monitor
 
@@ -145,7 +145,7 @@ Cluster unterstützen zwei [Typen verwalteter Identitäten](../../active-directo
 > [!IMPORTANT]
 > Sie können die benutzerseitig zugewiesene verwaltete Identität nicht verwenden, wenn Ihre Key Vault-Instanz unter einer privaten Verbindung (VNET) angeordnet ist. Für dieses Szenario können Sie die systemseitig zugewiesene verwaltete Identität verwenden.
 
-Folgen Sie dem im [Artikel zu dedizierten Clustern](../log-query/logs-dedicated-clusters.md#creating-a-cluster) beschriebenen Verfahren. 
+Folgen Sie dem im [Artikel zu dedizierten Clustern](./logs-dedicated-clusters.md#creating-a-cluster) beschriebenen Verfahren. 
 
 ## <a name="grant-key-vault-permissions"></a>Erteilen von Key Vault-Berechtigungen
 
@@ -253,7 +253,7 @@ Nach Abschluss der Aktualisierung des Schlüssels sollte die Antwort auf die GET
 
 Sie müssen sowohl für Ihren Arbeitsbereich als auch für den Cluster über Schreibberechtigungen verfügen, um diesen Vorgang auszuführen. Dazu gehören die Berechtigungen `Microsoft.OperationalInsights/workspaces/write` und `Microsoft.OperationalInsights/clusters/write`.
 
-Folgen Sie dem im [Artikel zu dedizierten Clustern](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-cluster) beschriebenen Verfahren.
+Folgen Sie dem im [Artikel zu dedizierten Clustern](./logs-dedicated-clusters.md#link-a-workspace-to-cluster) beschriebenen Verfahren.
 
 ## <a name="key-revocation"></a>Schlüsselsperrung
 
@@ -387,7 +387,7 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
 
 ## <a name="customer-managed-key-operations"></a>Vorgänge für kundenseitig verwaltete Schlüssel
 
-Der kundenseitig verwaltete Schlüssel wird im dedizierten Cluster bereitgestellt. Die folgenden Vorgänge werden im Artikel über [dedizierte Cluster](../log-query/logs-dedicated-clusters.md#change-cluster-properties) behandelt:
+Der kundenseitig verwaltete Schlüssel wird im dedizierten Cluster bereitgestellt. Die folgenden Vorgänge werden im Artikel über [dedizierte Cluster](./logs-dedicated-clusters.md#change-cluster-properties) behandelt:
 
 - Abrufen aller Cluster in einer Ressourcengruppe  
 - Abrufen aller Cluster in einem Abonnement
@@ -470,8 +470,8 @@ Der kundenseitig verwaltete Schlüssel wird im dedizierten Cluster bereitgestell
 
   **Clusterupdate**
   -  400 –-Der Cluster befindet sich im Zustand „wird gelöscht“. Asynchroner Vorgang wird ausgeführt. Der Cluster muss seinen Vorgang beenden, bevor ein Aktualisierungsvorgang ausgeführt wird.
-  -  400 – „KeyVaultProperties“ ist nicht leer, hat aber ein ungültiges Format. Lesen Sie [Key Identifier Update](../platform/customer-managed-keys.md#update-cluster-with-key-identifier-details) (Aktualisierung des Schlüsselbezeichners).
-  -  400 – Fehler beim Überprüfen des Schlüssels in Key Vault. Mögliche Ursachen: Fehlende Berechtigungen, oder der Schlüssel ist nicht vorhanden. Vergewissern Sie sich, dass Sie die [Schlüssel- und Zugriffsrichtlinie in Key Vault](../platform/customer-managed-keys.md#grant-key-vault-permissions) festgelegt haben.
+  -  400 – „KeyVaultProperties“ ist nicht leer, hat aber ein ungültiges Format. Lesen Sie [Key Identifier Update](#update-cluster-with-key-identifier-details) (Aktualisierung des Schlüsselbezeichners).
+  -  400 – Fehler beim Überprüfen des Schlüssels in Key Vault. Mögliche Ursachen: Fehlende Berechtigungen, oder der Schlüssel ist nicht vorhanden. Vergewissern Sie sich, dass Sie die [Schlüssel- und Zugriffsrichtlinie in Key Vault](#grant-key-vault-permissions) festgelegt haben.
   -  400 – Der Schlüssel kann nicht wiederhergestellt werden. Key Vault muss auf „Vorläufiges Löschen und Löschschutz“ festgelegt werden. Lesen Sie die [Dokumentation zu Key Vault](../../key-vault/general/soft-delete-overview.md).
   -  400 – Der Vorgang kann jetzt nicht ausgeführt werden. Warten Sie, bis der asynchrone Vorgang beendet wurde, und versuchen Sie es erneut.
   -  400 –-Der Cluster befindet sich im Zustand „wird gelöscht“. Warten Sie, bis der asynchrone Vorgang beendet wurde, und versuchen Sie es erneut.
@@ -492,5 +492,5 @@ Der kundenseitig verwaltete Schlüssel wird im dedizierten Cluster bereitgestell
   -  409 – Arbeitsbereichverknüpfung oder Aufheben der Verknüpfung in Bearbeitung.
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die [Abrechnung dedizierter Log Analytics-Cluster](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters).
-- Erfahren Sie mehr über das [Entwerfen von Log Analytics-Arbeitsbereichen](../platform/design-logs-deployment.md).
+- Erfahren Sie mehr über die [Abrechnung dedizierter Log Analytics-Cluster](./manage-cost-storage.md#log-analytics-dedicated-clusters).
+- Erfahren Sie mehr über das [Entwerfen von Log Analytics-Arbeitsbereichen](./design-logs-deployment.md).

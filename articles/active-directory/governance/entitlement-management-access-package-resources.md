@@ -16,12 +16,12 @@ ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82247ae9817e5ff2e26d0862230654021876406b
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 65f69cf492ec3e28d7f4aa86971dc6c91b34bdf5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223273"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644175"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern von Ressourcenrollen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -144,13 +144,9 @@ Mit Azure AD kann Benutzern, die einem Zugriffspaket zugewiesen sind, automatisc
 
 1. Klicken Sie auf der Seite **Hinzufügen von Ressourcenrollen zu einem Zugriffspaket** auf **SharePoint-Websites**, um den Bereich „SharePoint Online-Websites auswählen“ zu öffnen.
 
-    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-portal.png" alt-text="Zugriffspaket: Hinzufügen von Ressourcenrollen: Auswählen von SharePoint-Websites: Portalansicht":::
+    :::image type="content" source="media/entitlement-management-access-package-resources/resource-sharepoint-add.png" alt-text="Zugriffspaket: Hinzufügen von Ressourcenrollen: Auswählen von SharePoint-Websites: Portalansicht":::
 
-1. Wenn für SharePoint [Multi-Geo](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365?view=o365-worldwide) aktiviert ist, wählen Sie die Umgebung aus, aus der Sie Websites auswählen möchten.
-    
-    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-select.png" alt-text="Zugriffspaket: Hinzufügen von Ressourcenrollen: Auswählen von SharePoint-Websites: Multi-Geo-Websites":::
-
-1. Ist „Multi-Geo“ nicht aktiviert, muss keine Umgebung ausgewählt werden. Wählen Sie die SharePoint Online-Websites aus, die Sie in das Zugriffspaket einschließen möchten.
+1. Wählen Sie die SharePoint Online-Websites aus, die Sie in das Zugriffspaket einschließen möchten.
 
     ![Zugriffspaket: Ressourcenrollen hinzufügen – SharePoint Online-Websites auswählen](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 

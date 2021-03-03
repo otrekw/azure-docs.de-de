@@ -7,21 +7,18 @@ manager: celestedg
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 03/02/2021
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cddb40a6a43c38079906699d9fa4865c4daf558
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: a199c207e8ea35f1471df9bfd0c4134551b9995f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837089"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653489"
 ---
-# <a name="language-customization-in-azure-active-directory-preview"></a>Sprachanpassung in Azure Active Directory (Vorschau)
-
-> [!NOTE]
-> Die Self-Service-Registrierung ist eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="language-customization-in-azure-active-directory"></a>Sprachanpassung in Azure Active Directory
 
 Mit der Sprachanpassung in Azure Active Directory (Azure AD) kann Ihr Benutzerflow verschiedene Sprachen abdecken, um die Anforderungen Ihrer Benutzer zu erfüllen. Microsoft stellt Übersetzungen für [36 Sprachen](#supported-languages) bereit. Auch wenn Ihre Benutzeroberfläche nur für eine einzelne Sprache bestimmt ist, können Sie die Attributnamen auf der Attributerfassungsseite anpassen.
 
@@ -39,7 +36,7 @@ Mit der Sprachanpassung können Sie alle Zeichenfolgen Ihres Benutzerflows anpas
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Azure AD-Administrator an.
 2. Wählen Sie unter **Azure-Dienste** die Option **Azure Active Directory** aus.
 3. Wählen Sie im Menü auf der linken Seite **Externe Identitäten** aus.
-4. Wählen Sie **Benutzerflows (Vorschau)** aus.
+4. Wählen Sie **Benutzerflows** aus.
 3. Wählen Sie den Benutzerflow aus, den Sie für Übersetzungen aktivieren möchten.
 4. Wählen Sie **Sprachen** aus.
 5. Wählen Sie auf der Seite **Sprachen** für den Benutzerflow die Sprache aus, die Sie anpassen möchten.
