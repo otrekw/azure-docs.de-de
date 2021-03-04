@@ -4,17 +4,17 @@ titleSuffix: Azure VMware Solution by CloudSimple
 description: Beschreibt den CloudSimple-Dienstprozess für planmäßige Wartung und Updates.
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 08/20/2019
+ms.date: 03/04/2021
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 814a901fba065e36ea3ba9e3a6fe1175365de6c5
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025026"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120707"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple-Wartung und -Updates
 
@@ -100,7 +100,7 @@ Softwareupdates umfassen:
 * **Updates**. Ändern der Nebenversion einer VMware-Stack-Komponente.
 * **Upgrades**. Ändern der Hauptversion einer VMware-Stack-Komponente.
 
-CloudSimple testet einen wichtigen Sicherheitspatch, sobald er von VMware verfügbar ist. Gemäß SLA führt CloudSimple das Rollout des Sicherheitspatches an private Cloudumgebungen innerhalb einer Woche aus.
+CloudSimple testet einen wichtigen Sicherheitspatch, sobald er von VMware verfügbar ist. 
 
 CloudSimple bietet vierteljährliche Wartungsupdates für VMware-Softwarekomponenten. Wenn eine neue Hauptversion der VMware-Software verfügbar ist, arbeitet CloudSimple mit Kunden zusammen, um ein geeignetes Wartungsfenster für das Upgrade zu koordinieren.
 

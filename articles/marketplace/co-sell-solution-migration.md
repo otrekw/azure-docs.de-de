@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/07/2020
-ms.openlocfilehash: 84d98eedb3ea6f3faaeaecf832811f9f4c78c7c5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 445810d5873bb935ded180a969e4612542bde5ed
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880354"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120180"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>Migrieren von Co-Selling-Lösungen von OCP GTM zum kommerziellen Marketplace
 
@@ -136,7 +136,7 @@ Ausführliche Anweisungen zu den Informationen, die Sie angeben müssen, bevor d
 
     :::image type="content" source="media/co-sell-migrate/offer-setup.png" alt-text="Registerkarten mit einer Übersicht der Angebotseinrichtung im Partner Center":::
 
-3. Einige Details zu Microsoft-Verkäufern wurden aus der OCP GTM-Lösung kopiert. Bearbeiten Sie die übrigen erforderlichen Informationen auf der Registerkarte **Co-Selling mit Microsoft**, um den Co-Sell Ready-Status für Ihr Angebot zu erhalten. Wählen Sie **Überprüfen und veröffentlichen** aus, wenn Sie fertig sind. Weitere Informationen finden Sie unter [Übermitteln von Co-Selling-Materialien in Partner Center](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center).
+3. Einige Details zu Microsoft-Verkäufern wurden aus der OCP GTM-Lösung kopiert. Bearbeiten Sie die übrigen erforderlichen Informationen auf der Registerkarte **Co-Selling mit Microsoft**, um den Co-Sell Ready-Status für Ihr Angebot zu erhalten. Wählen Sie **Überprüfen und veröffentlichen** aus, wenn Sie fertig sind. Weitere Informationen finden Sie unter [Übermitteln von Co-Selling-Materialien in Partner Center](marketplace-co-sell.md).
 
     :::image type="content" source="media/co-sell-migrate/co-sell-page.png" alt-text="Registerkarte für das Co-Selling von Angeboten im Partner Center":::
 
@@ -154,5 +154,5 @@ Ausführliche Anweisungen zu den Informationen, die Sie angeben müssen, bevor d
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Verkaufen über CSP-Partner](cloud-solution-providers.md)
-- [Übermitteln von Co-Selling-Materialien in Partner Center](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)
+- [Übermitteln von Co-Selling-Materialien in Partner Center](marketplace-co-sell.md)
 - Lesen Sie diese [FAQ](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) (PDF)

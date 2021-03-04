@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 09/02/2020
-ms.openlocfilehash: 688fabb7138ad71a978051e742dd8397042ffcf1
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 9ec914e5fea0d54f4705e8f14f5a64fa80c1adfe
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744668"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120027"
 ---
 # <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Bundesstaaten- und Provinzcodes für das Co-Selling im Azure Marketplace
 
-In diesem Artikel werden die Codes für Bundesstaaten und Provinzen aufgelistet, die Sie bei der Angabe von Kontaktinformationen für das Co-Selling Ihres Angebots verwenden können. Verwenden Sie ggf. diese Codes, um Informationen zum Bundesland/Kanton bereitzustellen, wenn Sie [Kontaktinformationen auf der Co-Selling-Seite Ihres Angebots bereitstellen](commercial-marketplace-co-sell.md#contacts).
+In diesem Artikel werden die Codes für Bundesstaaten und Provinzen aufgelistet, die Sie bei der Angabe von Kontaktinformationen für das Co-Selling Ihres Angebots verwenden können. Verwenden Sie ggf. diese Codes, um Informationen zum Bundesland/Kanton bereitzustellen, wenn Sie [Kontaktinformationen auf der Co-Selling-Seite Ihres Angebots bereitstellen](commercial-marketplace-co-sell.md#enter-your-contacts).
 
 ## <a name="us-states-and-territories"></a>US-Bundesstaaten und -Territorien
 

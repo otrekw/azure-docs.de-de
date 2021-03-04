@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ea23be06939d58b08516a00bbe8aba97c6ccc87d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 488065b0a1865484e96ea574b3031f2bf61869dd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095271"
+ms.locfileid: "102120588"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -153,7 +153,7 @@ Das **SingleSignOn**-Element enthält das folgende Attribut:
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `Scope` | Ja | Der Bereich des SSO-Verhaltens. Mögliche Werte: `Suppressed`, `Tenant`, `Application` oder `Policy`. Der Wert `Suppressed` gibt an, dass das Verhalten unterdrückt wird, und der Benutzer wird immer aufgefordert, einen Identitätsanbieter auszuwählen.  Der Wert `Tenant` gibt an, dass das Verhalten auf alle Richtlinien im Mandanten angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Mandanten navigiert nicht, dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Application` gibt an, dass das Verhalten auf alle Richtlinien für die Anwendung angewendet wird, die die Anforderung stellt. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien einer Anwendung navigiert, nicht dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Policy` gibt an, dass das Verhalten nur auf eine Richtlinie angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Vertrauensframeworks navigiert, dazu aufgefordert, einen Identitätsanbieter auszuwählen, wenn er zwischen Richtlinien wechselt. |
-| KeepAliveInDays | Ja | Steuert, wie lange der Benutzer angemeldet bleibt. Durch Festlegen des Werts auf 0 wird die Funktion „Angemeldet bleiben“ deaktiviert. Weitere Informationen finden Sie unter [Angemeldet bleiben](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi). |
+| KeepAliveInDays | Nein | Steuert, wie lange der Benutzer angemeldet bleibt. Durch Festlegen des Werts auf 0 wird die Funktion „Angemeldet bleiben“ deaktiviert. Weitere Informationen finden Sie unter [Angemeldet bleiben](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi). |
 |EnforceIdTokenHintOnLogout| Nein|  Erzwingt, dass ein zuvor ausgestelltes ID-Token als Hinweis bezüglich der aktuellen authentifizierten Sitzung des Endbenutzers mit dem Client an den Abmeldeendpunkt übergeben wird. Mögliche Werte: `false` (Standard) oder `true`. Weitere Informationen finden Sie unter [Webanmeldung mit OpenID Connect](openid-connect.md).  |
 
 

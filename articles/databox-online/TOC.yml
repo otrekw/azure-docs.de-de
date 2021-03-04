@@ -102,7 +102,7 @@
     - name: Übersicht
       items:
         - name: Was ist Azure Stack Edge Mini R?
-          href: azure-stack-edge-k-series-overview.md
+          href: azure-stack-edge-mini-r-overview.md
     - name: Konzepte
       items:
         - name: Bereite Sicherheit

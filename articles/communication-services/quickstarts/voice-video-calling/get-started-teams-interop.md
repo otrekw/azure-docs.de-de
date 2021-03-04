@@ -8,17 +8,17 @@ ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 6da700fdd8149a7fff92ed0edef2015e354eca05
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f8daed736f1d7f5ecf77a5b44f95d191eb5930f8
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660046"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120452"
 ---
 # <a name="quickstart-join-your-calling-app-to-a-teams-meeting"></a>Schnellstart: Beitreten mit einer Telefonie-App zu einer Teams-Besprechung
 
 > [!IMPORTANT]
-> Um die [Interoperabilität von Teams-Mandanten](../concepts/teams-interop.md) zu aktivieren/deaktivieren, füllen Sie [dieses Formular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u) aus.
+> Um die [Interoperabilität von Teams-Mandanten](../../concepts/teams-interop.md) zu aktivieren/deaktivieren, füllen Sie [dieses Formular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u) aus.
 
 Steigen Sie in die Nutzung von Azure Communication Services ein, indem Sie Ihre Telefonlösung per JavaScript-Clientbibliothek mit Microsoft Teams verbinden.
 
