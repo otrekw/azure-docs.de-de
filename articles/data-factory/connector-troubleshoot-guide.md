@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 02/08/2021
 ms.author: jingwang
 ms.custom: has-adal-ref
-ms.openlocfilehash: 574c4967c1e45ce1ae2be92d8648d654322e2244
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9d8f940e3900c00b1c6f6623dfeff2d92ca85aa3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727820"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042435"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Problembehandlung für Azure Data Factory-Connectors
 
@@ -831,7 +831,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
     Wenn der Inhalt des privaten Schlüssels aus Ihrem Schlüsseltresor stammt, kann die ursprüngliche Schlüsseldatei funktionieren, wenn Sie sie direkt in den verknüpften SFTP-Dienst hochladen.
 
-    Weitere Informationen finden Sie unter [Kopieren von Daten von einem und auf einen SFTP-Server mithilfe von Azure Data Factory](./connector-sftp.md#using-ssh-public-key-authentication). Der Inhalt des privaten Schlüssels ist der base64-codierte Inhalt eines privaten SSH-Schlüssels.
+    Weitere Informationen finden Sie unter [Kopieren von Daten von einem und auf einen SFTP-Server mithilfe von Azure Data Factory](./connector-sftp.md#use-ssh-public-key-authentication). Der Inhalt des privaten Schlüssels ist der base64-codierte Inhalt eines privaten SSH-Schlüssels.
 
     Codieren Sie den *gesamten* Inhalt der ursprünglichen Datei mit dem privaten Schlüssel mit base64, und speichern Sie die codierte Zeichenfolge in Ihrem Schlüsseltresor. Die ursprüngliche Datei mit dem privaten Schlüssel funktioniert bei einem verknüpften SFTP-Dienst, wenn Sie **Hochladen** in der Datei auswählen.
 

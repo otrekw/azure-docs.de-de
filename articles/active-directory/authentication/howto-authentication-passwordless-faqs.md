@@ -1,24 +1,24 @@
 ---
 title: 'Häufig gestellte Fragen zur Bereitstellung hybrider FIDO2-Sicherheitsschlüssel: Azure Active Directory'
-description: Hier finden Sie einige häufig gestellte Fragen zur kennwortlosen Anmeldung mit hybridem FIDO2-Sicherheitsschlüssel unter Verwendung von Azure Active Directory (Vorschau).
+description: Hier finden Sie einige häufig gestellte Fragen zur kennwortlosen Anmeldung mit hybridem FIDO2-Sicherheitsschlüssel unter Verwendung von Azure Active Directory.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 08/19/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98cb990ede7c4d6e261bba05b0b8c97d758e6c32
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ca4943293f9474d4089267d05460d6d8766b79e6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743529"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646383"
 ---
-# <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>Häufig gestellte Fragen (FAQs) zur Bereitstellung hybrider FIDO2-Sicherheitsschlüssel in Azure AD
+# <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Häufig gestellte Fragen (FAQs) zur Bereitstellung hybrider FIDO2-Sicherheitsschlüssel in Azure AD 
 
 In diesem Artikel werden häufig gestellte Fragen (Frequently Asked Questions, FAQs) zur Bereitstellung von in Azure AD eingebundenen Hybridgeräten und zur kennwortlosen Anmeldung bei lokalen Ressourcen behandelt. Bei diesem kennwortlosen Feature können Sie die Azure AD-Authentifizierung auf Windows 10-Geräten für in Azure AD eingebundene Hybridgeräte mithilfe von FIDO2-Sicherheitsschlüsseln aktivieren. Benutzer können sich auf ihren Geräten mit modernen Anmeldeinformationen wie FIDO2-Schlüsseln bei Windows anmelden und auf herkömmliche AD DS-basierte Ressourcen (Active Directory Domain Services) zugreifen, indem sie für ihre lokalen Ressourcen nahtloses einmaliges Anmelden (Single Sign-On, SSO) nutzen.
 
@@ -32,9 +32,6 @@ Informationen zu den ersten Schritten mit FIDO2-Sicherheitsschlüsseln und dem H
 * [Kennwortlose FIDO2-Sicherheitsschlüssel](howto-authentication-passwordless-security-key.md)
 * [Kennwortlos: Windows 10](howto-authentication-passwordless-security-key-windows.md)
 * [Kennwortlos: lokal](howto-authentication-passwordless-security-key-on-premises.md)
-
-> [!NOTE]
-> FIDO2-Sicherheitsschlüssel sind eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="security-keys"></a>Sicherheitsschlüssel
 

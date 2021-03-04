@@ -244,6 +244,8 @@
           href: how-to-use-android-map-control-library.md
         - name: Ändern des Kartenstils
           href: set-android-map-styles.md
+        - name: Hinzufügen von Steuerelementen zur Karte
+          href: map-add-controls-android.md
         - name: Erstellen einer Datenquelle
           href: create-data-source-android-sdk.md
         - name: Hinzufügen einer Symbolebene
@@ -256,8 +258,12 @@
           href: android-map-add-line-layer.md
         - name: Hinzufügen einer Polygonebene
           href: how-to-add-shapes-to-android-map.md
+        - name: Hinzufügen einer Polygonextrusionsebene
+          href: map-extruded-polygon-android.md
         - name: Hinzufügen einer Wärmebildebene
           href: map-add-heat-map-layer-android.md
+        - name: Hinzufügen einer Bildebene
+          href: map-add-image-layer-android.md
         - name: Hinzufügen einer Kachelebene
           href: how-to-add-tile-layer-android-map.md
         - name: Anzeigen von Datenverkehrsdaten

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 11/12/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 4517c939e14f3157db606f087ef042c1ba7eba3e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ed6319d5374db56cfe85e7ef9413480e523d9a34
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672257"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050884"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Bereitstellen von VMs auf dedizierten Hosts über Azure PowerShell
 
@@ -24,7 +24,6 @@ Vergewissern Sie sich, dass die Azure PowerShell-Version 2.8.0 oder höher insta
 
 ## <a name="limitations"></a>Einschränkungen
 
-- VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
 - Die verfügbaren Größen und Hardwaretypen für dedizierte Hosts variieren je nach Region. Weitere Informationen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).
 
 ## <a name="create-a-host-group"></a>Erstellen einer Hostgruppe

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 915f8675ffda0d70347905d11c7d93975b9d4526
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 1bf9a2cf7af8b18994ef2473c11176b8aea74f6e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132736"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042724"
 ---
 # <a name="quotas-in-azure-static-web-apps-preview"></a>Kontingente in Azure Static Web Apps (Vorschauversion)
 
@@ -27,7 +27,7 @@ Für die Vorschauversion von Azure Static Web Apps gelten folgende Kontingente.
 | Zusätzliche Bandbreite           | Nicht verfügbar      |
 | Apps pro Azure-Abonnement | 10               |
 | App-Größe                    | 250 MB           |
-| Präproduktionsumgebungen | 1                |
+| Präproduktionsumgebungen | 3                |
 | Benutzerdefinierte Domänen              | 1                |
 | Autorisierung<br><br>Mit benutzerdefinierten Rollen und Routingregeln | Maximal 25 eingeladene Endbenutzer und zugewiesene Rollen |
 | Azure-Funktionen             | Verfügbar        |
