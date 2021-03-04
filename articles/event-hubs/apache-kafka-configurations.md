@@ -2,13 +2,13 @@
 title: 'Empfohlene Konfigurationen für Apache Kafka-Clients: Azure Event Hubs'
 description: Dieser Artikel enthält empfohlene Apache Kafka-Konfigurationen für Clients, die mit Azure Event Hubs für Apache Kafka interagieren.
 ms.topic: reference
-ms.date: 01/07/2021
-ms.openlocfilehash: 713900a3cc7e2b9f6f176edb21455faa577098d6
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.date: 03/03/2021
+ms.openlocfilehash: be009aae41b2cb26ab02fdbe14bc4e18311ad235
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028827"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042350"
 ---
 # <a name="recommended-configurations-for-apache-kafka-clients"></a>Empfohlene Konfigurationen für Apache Kafka-Clients
 Hier finden Sie die empfohlenen Konfigurationen für die Verwendung von Azure Event Hubs aus Apache Kafka-Clientanwendungen. 
@@ -33,7 +33,6 @@ Eigenschaft | Empfohlene Werte | Zulässiger Bereich | Notizen
 `metadata.max.idle.ms` | 180.000 | > 5.000 | Steuert, wie lange der Producer Metadaten für ein Thema zwischenspeichert, das sich im Leerlauf befindet. Wenn die Zeit, die seit der letzten Erstellung eines Themas verstrichen ist, die Leerlaufzeit der Metadaten überschreitet, werden die Metadaten des Themas verworfen, und der nächste Zugriff darauf erzwingt eine Anforderung zum Abrufen der Metadaten.
 `linger.ms` | > 0 | | Bei Szenarien mit hohem Durchsatz sollte der Verweilwert gleich dem höchsten tolerablen Wert sein, um Batchverarbeitung zu nutzen.
 `delivery.timeout.ms` | | | Wird gemäß der Formel (`request.timeout.ms` + `linger.ms`) * `retries` festgelegt.
-`enable.idempotence` | false | | Idempotenz wird derzeit nicht unterstützt.
 `compression.type` | `none` | | Komprimierung wird derzeit nicht unterstützt.
 
 ### <a name="consumer-configurations-only"></a>Nur Consumerkonfigurationen
@@ -62,7 +61,6 @@ Eigenschaft | Empfohlene Werte | Zulässiger Bereich | Notizen
 `retries` | > 0 | | Standard ist 2. Es wird empfohlen, diesen Wert beizubehalten. 
 `request.timeout.ms` | 30.000 60000 | > 20.000| EH wird intern standardmäßig auf mindestens 20.000 ms festgelegt.  Der `librdkafka`-Standardwert ist 5.000. Dies kann problematisch sein. *Obwohl Anforderungen mit niedrigeren Timeoutwerten akzeptiert werden, wird das Clientverhalten nicht garantiert.*
 `partitioner` | `consistent_random` | Weitere Informationen finden Sie in der librdkafka-Dokumentation. | `consistent_random` ist Standard und am besten geeignet.  Leere und NULL-Schlüssel werden in den meisten Fällen ideal behandelt.
-`enable.idempotence` | false | | Idempotenz wird derzeit nicht unterstützt.
 `compression.codec` | `none` || Komprimierung wird derzeit nicht unterstützt.
 
 ### <a name="consumer-configurations-only"></a>Nur Consumerkonfigurationen

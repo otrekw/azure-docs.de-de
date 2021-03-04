@@ -183,6 +183,8 @@
       href: core/concepts-telemetry-properties-commands.md
     - name: Verbinden von IoT Edge-Geräten
       href: core/concepts-iot-edge.md
+    - name: Bewährte Methoden
+      href: core/concepts-best-practices.md
 - name: Anleitungen
   items:
     - name: Entwickeln und Verbinden von Geräten

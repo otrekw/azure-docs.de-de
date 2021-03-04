@@ -1,17 +1,16 @@
 ---
 title: Integrieren von Log Analytics und Excel
 description: Integrieren Sie eine Log Analytics-Abfrage in Excel, und aktualisieren Sie Ergebnisse in Excel.
-ms.subservice: logs
 ms.topic: conceptual
 author: roygalMS
 ms.author: roygal
 ms.date: 11/03/2020
-ms.openlocfilehash: 6fa181a35c46ed16e4e8c1884e66c54984c418ca
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f2834e9bd91ecbbf32e0321179c2359862a5b605
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602056"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041109"
 ---
 # <a name="integrate-log-analytics-and-excel"></a>Integrieren von Log Analytics und Excel
 

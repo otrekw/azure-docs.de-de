@@ -1,17 +1,16 @@
 ---
 title: Log Analytics-Tutorial
 description: In diesem Tutorial erfahren Sie, wie Sie mit den Features von Log Analytics in Azure Monitor eine Protokollabfrage erstellen und ausführen und die Ergebnisse im Azure-Portal analysieren.
-ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: a7a6ba395769677fe46ddfff675640f6e15060a0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 06a73b495cefc361db88d80413f4f4be50e105d1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723179"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041143"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics-Tutorial
 Log Analytics ist ein Tool im Azure-Portal, mit dem Protokollabfragen aus den von Azure Monitor-Protokollen erfassten Daten bearbeitet und ausgeführt sowie deren Ergebnisse interaktiv analysiert werden können. Mit Log Analytics-Abfragen können Sie Datensätze abrufen, die bestimmte Kriterien erfüllen, Trends identifizieren, Muster analysieren und eine Vielzahl von Erkenntnissen aus Ihren Daten gewinnen. 

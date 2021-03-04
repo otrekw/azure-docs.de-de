@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 30c7e6b1412373cf3bfe1c511206aa4b916bf1ee
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: efc3bfef7c182ea005ac17a59793ac8f6484a424
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557501"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042010"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen
 
@@ -33,7 +33,7 @@ Wenn Sie globaler Administrator sind, müssen Sie unter Umständen folgende Akti
 
 ## <a name="how-does-elevated-access-work"></a>Wie erhöhe ich den Zugriff?
 
-Azure AD und Azure-Ressourcen werden unabhängig voneinander geschützt. Das bedeutet, dass Azure AD-Rollenzuweisungen keinen Zugriff auf Azure-Ressourcen gewähren und Azure-Rollenzuweisungen keinen Zugriff auf Azure AD. Wenn Sie jedoch [globaler Administrator](../active-directory/roles/permissions-reference.md#global-administrator-permissions) in Azure AD sind, können Sie sich selbst Zugriff auf alle Azure-Abonnements und Verwaltungsgruppen in Ihrem Verzeichnis zuweisen. Verwenden Sie diese Funktion, wenn Sie keinen Zugriff auf Azure-Abonnementressourcen wie virtuelle Computer oder Speicherkonten haben und Sie Ihre globalen Administratorrechte verwenden möchten, um Zugriff auf diese Ressourcen zu erhalten.
+Azure AD und Azure-Ressourcen werden unabhängig voneinander geschützt. Das bedeutet, dass Azure AD-Rollenzuweisungen keinen Zugriff auf Azure-Ressourcen gewähren und Azure-Rollenzuweisungen keinen Zugriff auf Azure AD. Wenn Sie jedoch [globaler Administrator](../active-directory/roles/permissions-reference.md#global-administrator) in Azure AD sind, können Sie sich selbst Zugriff auf alle Azure-Abonnements und Verwaltungsgruppen in Ihrem Verzeichnis zuweisen. Verwenden Sie diese Funktion, wenn Sie keinen Zugriff auf Azure-Abonnementressourcen wie virtuelle Computer oder Speicherkonten haben und Sie Ihre globalen Administratorrechte verwenden möchten, um Zugriff auf diese Ressourcen zu erhalten.
 
 Wenn Sie Ihre Zugriffsrechte erhöhen, wird Ihnen die Rolle [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) in Azure für den Stammbereich (`/`) zugewiesen. Auf diese Weise können Sie alle Ressourcen anzeigen und den Zugriff in jeder Abonnement- oder Verwaltungsgruppe im Verzeichnis zuweisen. Die Rollenzuweisung „Benutzerzugriffsadministrator“ kann mit Azure PowerShell, der Azure-Befehlszeilenschnittstelle oder der REST-API entfernt werden.
 

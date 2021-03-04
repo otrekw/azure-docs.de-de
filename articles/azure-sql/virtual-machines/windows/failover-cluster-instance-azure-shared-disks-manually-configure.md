@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 70f4ac69721db57aa06c0d8fda12189f43e79686
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: ce77021e74507ead6d225081debc7024cb89a15a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537829"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042401"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Erstellen einer FCI mit freigegebenen Azure-Datenträgern (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -205,7 +205,9 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Konfigurieren von Konnektivität 
 
-Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, konfigurieren Sie die für Ihre Umgebung geeignete Konnektivitätsoption. Sie können einen [Azure-Lastenausgleich](failover-cluster-instance-vnn-azure-load-balancer-configure.md) erstellen oder bei Verwendung von SQL Server 2019 CU2 (oder höher) und Windows Server 2016 (oder höher) stattdessen das Feature für [verteilte Netzwerknamen](failover-cluster-instance-distributed-network-name-dnn-configure.md) verwenden. 
+Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, konfigurieren Sie die für Ihre Umgebung geeignete Konnektivitätsoption. Sie können einen [Azure-Lastenausgleich](failover-cluster-instance-vnn-azure-load-balancer-configure.md) erstellen oder bei Verwendung von SQL Server 2019 CU2 (oder höher) und Windows Server 2016 (oder höher) stattdessen das Feature für [verteilte Netzwerknamen](failover-cluster-instance-distributed-network-name-dnn-configure.md) verwenden.  
+
+Weitere Informationen zu den Optionen für Clusterkonnektivität finden Sie unter [Weiterleiten von HADR-Verbindungen an SQL Server auf Azure-VMs](hadr-cluster-best-practices.md#connectivity). 
 
 ## <a name="limitations"></a>Einschränkungen
 

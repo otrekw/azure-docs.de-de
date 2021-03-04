@@ -1,17 +1,16 @@
 ---
 title: Sammeln von benutzerdefinierten Protokollen mit dem Log Analytics-Agent in Azure Monitor
 description: Azure Monitor kann Ereignisse aus Textdateien auf Windows- und Linux-Computern erfassen.  Dieser Artikel enthält Informationen zum Definieren eines neuen benutzerdefinierten Protokolls sowie Details zu den Datensätzen, die in Azure Monitor erstellt werden.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 9ea33c7dca55e22687bd1db873c281caa1a3c4cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b66011ff41e1dd4a7439105862ca61355a95bd71
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719932"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042707"
 ---
 # <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Sammeln von benutzerdefinierten Protokollen mit dem Log Analytics-Agent in Azure Monitor
 

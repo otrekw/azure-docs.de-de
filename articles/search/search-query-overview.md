@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: 7277ad060c57b44d633054c4fc4d29d151bd7192
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.date: 03/03/2021
+ms.openlocfilehash: 234a0137f0a9487a56b3e0343eaea375d2f9a1af
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400810"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043013"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Abfragen in Azure Cognitive Search
 
@@ -84,8 +84,8 @@ Möglicherweise benötigen Sie auch Filter, um ein spezielles Abfrageformular au
 
 | Filterszenario | Beschreibung |
 |-----------------|-------------|
-| Bereichsfilter | In der kognitiven Azure-Suche werden Bereichsabfragen anhand des Filterparameters erstellt. Weitere Informationen und Beispiele finden Sie unter [Beispiel: Bereichsfilter](search-query-simple-examples.md#example-4-range-filters). |
-| Suche nach einem geografischen Standort | Wenn ein durchsuchbares Feld den [Typ „Edm.GeographyPoint“](/rest/api/searchservice/supported-data-types) aufweist, können Sie einen Filterausdruck für „Standorte in meiner Nähe suchen“ oder kartenbasierte Suchsteuerelemente erstellen. Felder, die eine geografische Suche unterstützen, enthalten Koordinaten. Weitere Informationen und ein Beispiel finden Sie unter [Beispiel: Geografische Suche](search-query-simple-examples.md#example-5-geo-search). |
+| Bereichsfilter | In der kognitiven Azure-Suche werden Bereichsabfragen anhand des Filterparameters erstellt. Weitere Informationen und Beispiele finden Sie unter [Beispiel: Bereichsfilter](search-query-simple-examples.md#example-5-range-filters). |
+| Suche nach einem geografischen Standort | Wenn ein durchsuchbares Feld den [Typ „Edm.GeographyPoint“](/rest/api/searchservice/supported-data-types) aufweist, können Sie einen Filterausdruck für „Standorte in meiner Nähe suchen“ oder kartenbasierte Suchsteuerelemente erstellen. Felder, die eine geografische Suche unterstützen, enthalten Koordinaten. Weitere Informationen und ein Beispiel finden Sie unter [Beispiel: Geografische Suche](search-query-simple-examples.md#example-6-geo-search). |
 | Facettennavigation | Eine facettenbasierte Navigationsstruktur ist ein wichtiges Instrument in der benutzergesteuerten Navigation, wenn als Antwort auf ein `onclick`-Ereignis in einer Facette ein Filter aufgerufen wird. Aus diesem Grund gehen Facetten und Filter Hand in Hand. Wenn Sie eine Facettennavigation hinzufügen, benötigen Sie Filter, um die Funktionalität vollständig bereitzustellen. Weitere Informationen finden Sie unter [Erstellen eines Facettenfilters](search-filters-facets.md). |
 
 > [!NOTE]
@@ -101,12 +101,12 @@ Ein erweitertes Abfrageformular benötigt die vollständige Version des Lucene-P
 
 | Abfragetyp | Verwendung | Beispiele und weitere Informationen |
 |------------|--------|------------------------------|
-| [Feldbezogene Suche](query-lucene-syntax.md#bkmk_fields) | **`search`** -Parameter, **`queryType=full`**  | Erstellen Sie einen zusammengesetzten Abfrageausdruck für ein einzelnes Feld. <br/>[Beispiel für die feldbezogene Suche](search-query-lucene-examples.md#example-2-fielded-search) |
-| [Fuzzysuche](query-lucene-syntax.md#bkmk_fuzzy) | **`search`** -Parameter, **`queryType=full`** | Sucht nach Begriffen mit ähnlichem Aufbau oder ähnlicher Rechtschreibung. <br/>[Beispiel für die Fuzzysuche](search-query-lucene-examples.md#example-3-fuzzy-search) |
-| [NEAR-Suche](query-lucene-syntax.md#bkmk_proximity) | **`search`** -Parameter, **`queryType=full`** | Sucht nach Begriffen, die in einem Dokument nahe beieinander vorkommen. <br/>[Beispiel für die NEAR-Suche](search-query-lucene-examples.md#example-4-proximity-search) |
-| [Term Boosting](query-lucene-syntax.md#bkmk_termboost) | **`search`** -Parameter, **`queryType=full`** | Weist einem Dokument, das den verstärkten Begriff enthält, im Vergleich zu anderen Dokumenten, bei denen dies nicht der Fall ist, einen höheren Rang zu. <br/>[Beispiele für die Begriffsverstärkung (Term Boosting)](search-query-lucene-examples.md#example-5-term-boosting) |
-| [Suche mit regulären Ausdrücken](query-lucene-syntax.md#bkmk_regex) | **`search`** -Parameter, **`queryType=full`** | Sucht basierend auf dem Inhalt eines regulären Ausdrucks nach Übereinstimmungen. <br/>[Beispiel für einen regulären Ausdruck](search-query-lucene-examples.md#example-6-regex) |
-|  [Platzhalter- oder Präfixsuche](query-lucene-syntax.md#bkmk_wildcard) | **`search`** -Parameter mit **_`~`_* oder **`?`** , **`queryType=full`**| Sucht basierend auf einem Präfix und dem Tildezeichen (`~`) oder einem einzelnen Zeichen (`?`) nach Übereinstimmungen. <br/>[Beispiel für die Platzhaltersuche](search-query-lucene-examples.md#example-7-wildcard-search) |
+| [Feldbezogene Suche](query-lucene-syntax.md#bkmk_fields) | **`search`** -Parameter, **`queryType=full`**  | Erstellen Sie einen zusammengesetzten Abfrageausdruck für ein einzelnes Feld. <br/>[Beispiel für die feldbezogene Suche](search-query-lucene-examples.md#example-1-fielded-search) |
+| [Fuzzysuche](query-lucene-syntax.md#bkmk_fuzzy) | **`search`** -Parameter, **`queryType=full`** | Sucht nach Begriffen mit ähnlichem Aufbau oder ähnlicher Rechtschreibung. <br/>[Beispiel für die Fuzzysuche](search-query-lucene-examples.md#example-2-fuzzy-search) |
+| [NEAR-Suche](query-lucene-syntax.md#bkmk_proximity) | **`search`** -Parameter, **`queryType=full`** | Sucht nach Begriffen, die in einem Dokument nahe beieinander vorkommen. <br/>[Beispiel für die NEAR-Suche](search-query-lucene-examples.md#example-3-proximity-search) |
+| [Term Boosting](query-lucene-syntax.md#bkmk_termboost) | **`search`** -Parameter, **`queryType=full`** | Weist einem Dokument, das den verstärkten Begriff enthält, im Vergleich zu anderen Dokumenten, bei denen dies nicht der Fall ist, einen höheren Rang zu. <br/>[Beispiele für die Begriffsverstärkung (Term Boosting)](search-query-lucene-examples.md#example-4-term-boosting) |
+| [Suche mit regulären Ausdrücken](query-lucene-syntax.md#bkmk_regex) | **`search`** -Parameter, **`queryType=full`** | Sucht basierend auf dem Inhalt eines regulären Ausdrucks nach Übereinstimmungen. <br/>[Beispiel für einen regulären Ausdruck](search-query-lucene-examples.md#example-5-regex) |
+|  [Platzhalter- oder Präfixsuche](query-lucene-syntax.md#bkmk_wildcard) | **`search`** -Parameter mit **_`~`_* oder **`?`** , **`queryType=full`**| Sucht basierend auf einem Präfix und dem Tildezeichen (`~`) oder einem einzelnen Zeichen (`?`) nach Übereinstimmungen. <br/>[Beispiel für die Platzhaltersuche](search-query-lucene-examples.md#example-6-wildcard-search) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
