@@ -1,15 +1,14 @@
 ---
 title: Außerbetriebnahme der Bereitstellungs-APIs für Azure Monitor-Metriken und automatische Skalierung
 description: Metriken und klassische APIs für Autoskalierung, auch Azure Service Management (ASM) oder RDFE-Bereitstellungsmodell genannt, werden eingestellt.
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: d818e06b13454633199488ca94e1ff8fbe418360
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0169de93b92de179c0ae9a36ff8dba3b7b1dc0fb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599441"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049031"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor: Einstellung der APIs des klassischen Bereitstellungsmodells für Metriken und Autoskalierung
 

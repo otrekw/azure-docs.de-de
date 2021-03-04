@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: b57d55e91918ba612ad42acd5e6059ae0dbd0090
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: aa44a27fa5bf6b7b4ea649e1a9b9a69ef8cd78d3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422449"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049320"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Übersicht über den Datenimport – kognitive Azure-Suche
 
-Bei der kognitiven Azure-Suche werden Abfragen für Inhalte ausgeführt, die in einen [Suchindex](search-what-is-an-index.md) geladen und dort gespeichert wurden. In diesem Artikel werden die zwei grundlegenden Ansätze zum Auffüllen eines Index untersucht: Sie können die Daten programmgesteuert in den Index *pushen* , oder Sie können für einen [Indexer der kognitiven Azure-Suche](search-indexer-overview.md) auf eine unterstützte Datenquelle verweisen, um die Daten zu *pullen*.
+Bei der kognitiven Azure-Suche werden Abfragen für Inhalte ausgeführt, die in einen [Suchindex](search-what-is-an-index.md) geladen und dort gespeichert wurden. In diesem Artikel werden die zwei grundlegenden Ansätze zum Auffüllen eines Index untersucht: Sie können die Daten programmgesteuert in den Index *pushen*, oder Sie können für einen [Indexer der kognitiven Azure-Suche](search-indexer-overview.md) auf eine unterstützte Datenquelle verweisen, um die Daten zu *pullen*.
 
 Bei beiden Methoden besteht das Ziel darin, Daten aus einer externen Datenquelle in einen Azure Cognitive Search-Index zu laden. Die kognitive Azure-Suche ermöglicht Ihnen das Erstellen eines leeren Index, dieser kann aber erst abgefragt werden, wenn Sie Daten in ihn pushen oder pullen.
 
@@ -63,7 +63,7 @@ Beim .NET SDK packen Sie Ihre Daten in einem `IndexBatch`-Objekt. Ein `IndexBatc
 
 Es gibt zwei Möglichkeiten, um [den Index mithilfe der REST-API zu durchsuchen](/rest/api/searchservice/Search-Documents). Eine Möglichkeit besteht darin, eine HTTP POST-Anforderung auszugeben, wobei die Abfrageparameter in ein JSON-Objekt im Anforderungstext definiert werden. Die andere Möglichkeit besteht darin, eine HTTP GET-Anforderung auszugeben, wobei die Abfrageparameter in der Anforderungs-URL definiert werden. Die Beschränkungen in Bezug auf die Größe der Abfrageparameter sind bei POST [geringer](/rest/api/searchservice/Search-Documents) als bei GET. Aus diesem Grund empfehlen wir die Verwendung von POST, sofern GET nicht aufgrund bestimmter Umstände praktischer wäre.
 
-Sowohl bei POST- als auch bei GET-Vorgängen müssen in der Anforderungs-URL der *Dienstname* , der *Indexname* und eine *API-Version* angegeben werden. 
+Sowohl bei POST- als auch bei GET-Vorgängen müssen in der Anforderungs-URL der *Dienstname*, der *Indexname* und eine *API-Version* angegeben werden. 
 
 Für GET befindet sich die *Abfragezeichenfolge* am Ende der URL, wo Sie die Abfrageparameter angeben. Das URL-Format finden Sie weiter unten:
 
@@ -81,6 +81,8 @@ Beim Pull-Modell wird eine unterstützte Datenquelle durchsucht, und die Daten w
 + [Tabellenspeicherung](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure SQL-Datenbank, SQL Managed Instance und SQL Server auf virtuellen Azure-Computern](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [SharePoint Online (Vorschauversion)](search-howto-index-sharepoint-online.md)
++ [Azure Data Lake Storage Gen2 (Vorschauversion)](search-howto-index-azure-data-lake-storage.md)
 
 Mit Indexern wird für einen Index eine Verbindung mit einer Datenquelle (normalerweise eine Tabelle, Sicht oder ähnliche Struktur) hergestellt, und Quellfelder werden gleichwertigen Feldern im Index zugeordnet. Während der Ausführung wird das Rowset automatisch in JSON transformiert und in den angegebenen Index geladen. Alle Indexer unterstützen die Verwendung von Zeitplänen, sodass Sie angeben können, wie häufig die Daten aktualisiert werden sollen. Die meisten Indexer verfügen über eine Änderungsnachverfolgung, wenn dies von der Datenquelle unterstützt wird. Da Änderungen und Löschvorgänge in vorhandenen Dokumenten nachverfolgt und neue Dokumente erkannt werden, ist es mithilfe von Indexern nicht mehr erforderlich, die Daten in Ihrem Index aktiv zu verwalten.
 
