@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 245dd9abf93771d5be142367679d622a3908b7d5
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: 3de4b3869b5df0da4c71eade1fe4f684653dc265
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97717452"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657088"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,15 +41,15 @@ npm init -y
 
 ### <a name="install-the-package"></a>Installieren des Pakets
 
-Verwenden Sie den Befehl `npm install`, um die Azure Communication Services-Clientbibliothek „Administration“ für JavaScript zu installieren.
+Verwenden Sie den Befehl `npm install`, um die Clientbibliothek für Identitäten von Azure Communication Services für JavaScript zu installieren.
 
 ```console
 
-npm install @azure/communication-administration --save
+npm install @azure/communication-identity --save
 
 ```
 
-Durch die Option `--save` wird die Bibliothek als Abhängigkeit in der Datei **package.json** aufgeführt.
+Mit der Option `--save` wird die Bibliothek als Abhängigkeit in Ihrer Datei **package.json** aufgelistet.
 
 ## <a name="set-up-the-app-framework"></a>Einrichten des App-Frameworks
 
@@ -62,7 +62,7 @@ Durch die Option `--save` wird die Bibliothek als Abhängigkeit in der Datei **p
 Verwenden Sie zum Einstieg den folgenden Code:
 
 ```javascript
-const { CommunicationIdentityClient } = require('@azure/communication-administration');
+const { CommunicationIdentityClient } = require('@azure/communication-identity');
 
 const main = async () => {
   console.log("Azure Communication Services - Access Tokens Quickstart")
@@ -93,6 +93,24 @@ const connectionString = process.env['COMMUNICATION_SERVICES_CONNECTION_STRING']
 const identityClient = new CommunicationIdentityClient(connectionString);
 ```
 
+Alternativ dazu können Sie auch den Endpunkt und den Zugriffsschlüssel trennen.
+```javascript
+// This code demonstrates how to fetch your endpoint and access key
+// from an environment variable.
+const endpoint = process.env["COMMUNICATION_SERVICES_ENDPOINT"];
+const accessKey = process.env["COMMUNICATION_SERVICES_ACCESSKEY"];
+const tokenCredential = new AzureKeyCredential(accessKey);
+// Instantiate the identity client
+const identityClient = new CommunicationIdentityClient(endpoint, tokenCredential)
+```
+
+Wenn Sie die verwaltete Identität eingerichtet haben, finden Sie unter [Verwenden verwalteter Identitäten](../managed-identity.md) weitere Informationen zum Authentifizierungsvorgang mit der verwalteten Identität.
+```javascript
+const endpoint = process.env["COMMUNICATION_SERVICES_ENDPOINT"];
+const tokenCredential = new DefaultAzureCredential();
+var client = new CommunicationIdentityClient(endpoint, tokenCredential);
+```
+
 ## <a name="create-an-identity"></a>Erstellen einer Identität
 
 Von Azure Communication Services wird ein einfaches Identitätsverzeichnis gepflegt. Verwenden Sie die Methode `createUser`, um in dem Verzeichnis einen neuen Eintrag mit einer eindeutigen `Id` zu erstellen. Speichern Sie die empfangene Identität mit einer Zuordnung zu den Benutzern Ihrer Anwendung. Beispielsweise, indem Sie sie in der Datenbank des Anwendungsservers speichern. Die Identität ist später erforderlich, um Zugriffstoken auszustellen.
@@ -104,11 +122,11 @@ console.log(`\nCreated an identity with ID: ${identityResponse.communicationUser
 
 ## <a name="issue-access-tokens"></a>Ausstellen von Zugriffstoken
 
-Verwenden Sie die Methode `issueToken`, um ein Zugriffstoken für eine bereits vorhandene Communication Services-Identität auszustellen. Der Parameter `scopes` definiert einen Satz primitiver Elemente, die dieses Zugriffstoken autorisieren. Weitere Informationen finden Sie in der [Liste der unterstützten Aktionen](../../concepts/authentication.md). Eine neue Instanz des Parameters `communicationUser` kann basierend auf der Zeichenfolgendarstellung der Azure Communication Service-Identität generiert werden.
+Verwenden Sie die Methode `getToken`, um ein Zugriffstoken für eine bereits vorhandene Communication Services-Identität auszustellen. Der Parameter `scopes` definiert einen Satz primitiver Elemente, die dieses Zugriffstoken autorisieren. Weitere Informationen finden Sie in der [Liste der unterstützten Aktionen](../../concepts/authentication.md). Eine neue Instanz des Parameters `communicationUser` kann basierend auf der Zeichenfolgendarstellung der Azure Communication Service-Identität generiert werden.
 
 ```javascript
 // Issue an access token with the "voip" scope for an identity
-let tokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
+let tokenResponse = await identityClient.getToken(identityResponse, ["voip"]);
 const { token, expiresOn } = tokenResponse;
 console.log(`\nIssued an access token with 'voip' scope that expires at ${expiresOn}:`);
 console.log(token);
@@ -119,7 +137,7 @@ Zugriffstoken sind kurzlebige Anmeldeinformationen, die erneut ausgestellt werde
 
 ## <a name="refresh-access-tokens"></a>Zugriffstoken für die Aktualisierung
 
-Das Aktualisieren von Zugriffstoken ist genau so einfach wie das Aufrufen von `issueToken` mit der gleichen Identität, die zum Ausstellen der Token verwendet wurde. Außerdem müssen Sie die `scopes`-Elemente der aktualisierten Token angeben. 
+Das Aktualisieren von Zugriffstoken ist genau so einfach wie das Aufrufen von `getToken` mit der gleichen Identität, die zum Ausstellen der Token verwendet wurde. Außerdem müssen Sie die `scopes`-Elemente der aktualisierten Token angeben.
 
 ```javascript
 // // Value of identityResponse represents the Azure Communication Services identity stored during identity creation and then used to issue the tokens being refreshed
@@ -131,7 +149,7 @@ let refreshedTokenResponse = await identityClient.issueToken(identityResponse, [
 
 In einigen Fällen können Sie Zugriffstoken explizit widerrufen. Beispielsweise dann, wenn der Benutzer einer Anwendung das Kennwort ändert, das für die Authentifizierung beim Dienst verwendet wird. Die Methode `revokeTokens` erklärt alle aktiven Zugriffstoken für ungültig, die für die Identität ausgestellt wurden.
 
-```javascript  
+```javascript
 await identityClient.revokeTokens(identityResponse);
 console.log(`\nSuccessfully revoked all access tokens for identity with ID: ${identityResponse.communicationUserId}`);
 ```

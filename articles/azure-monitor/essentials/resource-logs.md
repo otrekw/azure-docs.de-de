@@ -6,13 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
-ms.subservice: logs
-ms.openlocfilehash: dcd6522c46b6ca35031092c634803267a8486647
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cb4f1ecdada68218c104558a85277417641906f6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731458"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033011"
 ---
 # <a name="azure-resource-logs"></a>Azure-Ressourcenprotokolle
 Azure-Ressourcenprotokolle sind [Plattformprotokolle](../essentials/platform-logs-overview.md), die Einblicke in Vorgänge bereitstellen, die in einer Azure-Ressource ausgeführt wurden. Der Inhalt dieser Protokolle variiert je nach Azure-Dienst und -Ressourcentyp. Ressourcenprotokolle werden standardmäßig nicht erfasst. Sie müssen eine Diagnoseeinstellung für jede Azure-Ressource erstellen, um deren Ressourcenprotokolle an einen Log Analytics-Arbeitsbereich zu senden, damit sie mit [Azure Monitor-Protokollen](../logs/data-platform-logs.md), Azure Event Hubs zur Weiterleitung außerhalb von Azure oder Azure Storage zur Archivierung verwendet werden können.

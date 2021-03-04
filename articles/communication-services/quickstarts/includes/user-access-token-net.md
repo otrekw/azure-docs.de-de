@@ -10,16 +10,16 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 4c05b654b6714c5317e1334d3a3ea5c327a5ff18
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 49c4179432c0b57dfe68de563621807b1141fc67
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97770818"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657071"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Die aktuelle Version der [.NET Core-Clientbibliothek](https://dotnet.microsoft.com/download/dotnet-core) für Ihr Betriebssystem.
 - Eine aktive Communication Services-Ressource und eine Verbindungszeichenfolge. [Erstellen Sie eine Communication Services-Ressource.](../create-communication-resource.md)
 
@@ -42,10 +42,10 @@ dotnet build
 
 ### <a name="install-the-package"></a>Installieren des Pakets
 
-Installieren Sie im Anwendungsverzeichnis mithilfe des Befehls `dotnet add package` das .NET-Paket der Azure Communication Services-Bibliothek „Administration“.
+Installieren Sie im Anwendungsverzeichnis mithilfe des Befehls `dotnet add package` die Azure Communication Services-Identitätsbibliothek für das .NET-Paket.
 
 ```console
-dotnet add package Azure.Communication.Administration --version 1.0.0-beta.3
+dotnet add package Azure.Communication.Identity --version 1.0.0
 ```
 
 ### <a name="set-up-the-app-framework"></a>Einrichten des App-Frameworks
@@ -53,7 +53,7 @@ dotnet add package Azure.Communication.Administration --version 1.0.0-beta.3
 Über das Projektverzeichnis:
 
 1. Öffnen Sie die Datei **Program.cs** in einem Text-Editor.
-1. Fügen Sie eine Anweisung vom Typ `using` hinzu, um den Namespace `Azure.Communication.Administration` einzuschließen.
+1. Fügen Sie eine Anweisung vom Typ `using` hinzu, um den Namespace `Azure.Communication.Identity` einzuschließen.
 1. Aktualisieren der `Main`-Methodendeklaration zur Unterstützung von asynchronem Code
 
 Verwenden Sie zum Einstieg den folgenden Code:
@@ -61,7 +61,7 @@ Verwenden Sie zum Einstieg den folgenden Code:
 ```csharp
 using System;
 using Azure.Communication;
-using Azure.Communication.Administration;
+using Azure.Communication.Identity;
 
 namespace AccessTokensQuickstart
 {
@@ -89,6 +89,21 @@ string connectionString = Environment.GetEnvironmentVariable("COMMUNICATION_SERV
 var client = new CommunicationIdentityClient(connectionString);
 ```
 
+Alternativ dazu können Sie auch den Endpunkt und den Zugriffsschlüssel trennen.
+```csharp
+// This code demonstrates how to fetch your endpoint and access key
+// from an environment variable.
+string endpoint = Environment.GetEnvironmentVariable("COMMUNICATION_SERVICES_ENDPOINT");
+string accessKey = Environment.GetEnvironmentVariable("COMMUNICATION_SERVICES_ACCESSKEY");
+var client = new CommunicationIdentityClient(new Uri(endpoint), new AzureKeyCredential(accessKey));
+```
+
+Wenn Sie die verwaltete Identität eingerichtet haben, finden Sie unter [Verwenden verwalteter Identitäten](../managed-identity.md) weitere Informationen zum Authentifizierungsvorgang mit der verwalteten Identität.
+```csharp
+TokenCredential tokenCredential = new DefaultAzureCredential();
+var client = new CommunicationIdentityClient(endpoint, tokenCredential);
+```
+
 ## <a name="create-an-identity"></a>Erstellen einer Identität
 
 Von Azure Communication Services wird ein einfaches Identitätsverzeichnis gepflegt. Verwenden Sie die `createUser`-Methode, um einen neuen Eintrag im Verzeichnis mit einer eindeutigen empfangenen `Id`.Store-Identität mit einer Zuordnung zu den Benutzern Ihrer Anwendung zu erstellen. Beispielsweise, indem Sie sie in der Datenbank des Anwendungsservers speichern. Die Identität ist später erforderlich, um Zugriffstoken auszustellen.
@@ -101,34 +116,34 @@ Console.WriteLine($"\nCreated an identity with ID: {identity.Id}");
 
 ## <a name="issue-identity-access-tokens"></a>Ausstellen von Identitätszugriffstoken
 
-Verwenden Sie die Methode `issueToken`, um ein Zugriffstoken für eine bereits vorhandene Communication Services-Identität auszustellen. Der Parameter `scopes` definiert einen Satz primitiver Elemente, die dieses Zugriffstoken autorisieren. Weitere Informationen finden Sie in der [Liste der unterstützten Aktionen](../../concepts/authentication.md). Eine neue Instanz des Parameters `communicationUser` kann basierend auf der Zeichenfolgendarstellung der Azure Communication Service-Identität generiert werden.
+Verwenden Sie die Methode `GetToken`, um ein Zugriffstoken für eine bereits vorhandene Communication Services-Identität auszustellen. Der Parameter `scopes` definiert einen Satz primitiver Elemente, die dieses Zugriffstoken autorisieren. Weitere Informationen finden Sie in der [Liste der unterstützten Aktionen](../../concepts/authentication.md). Eine neue Instanz des Parameters `communicationUser` kann basierend auf der Zeichenfolgendarstellung der Azure Communication Service-Identität generiert werden.
 
 ```csharp
 // Issue an access token with the "voip" scope for an identity
-var tokenResponse = await client.IssueTokenAsync(identity, scopes: new [] { CommunicationTokenScope.VoIP });
+var tokenResponse = await client.GetTokenAsync(identity, scopes: new [] { CommunicationTokenScope.VoIP });
 var token =  tokenResponse.Value.Token;
 var expiresOn = tokenResponse.Value.ExpiresOn;
 Console.WriteLine($"\nIssued an access token with 'voip' scope that expires at {expiresOn}:");
 Console.WriteLine(token);
 ```
 
-Zugriffstoken sind kurzlebige Anmeldeinformationen, die erneut ausgestellt werden müssen. Wenn dies nicht der Fall ist, kann die Benutzerumgebung Ihrer Anwendung unterbrochen werden. Die Antworteigenschaft `expiresOn` gibt die Lebensdauer des Zugriffstokens an. 
+Zugriffstoken sind kurzlebige Anmeldeinformationen, die erneut ausgestellt werden müssen. Wenn dies nicht der Fall ist, kann die Benutzerumgebung Ihrer Anwendung unterbrochen werden. Die Antworteigenschaft `expiresOn` gibt die Lebensdauer des Zugriffstokens an.
 
 ## <a name="refresh-access-tokens"></a>Zugriffstoken für die Aktualisierung
 
-Um ein Zugriffstoken zu aktualisieren, übergeben Sie eine Instanz des `CommunicationUser`-Objekts an `IssueTokenAsync`. Wenn Sie diese `Id` gespeichert haben und einen neuen `CommunicationUser` erstellen müssen, können Sie zu diesem Zweck die gespeicherte `Id` wie folgt an den `CommunicationUser`-Konstruktor übergeben:
+Um ein Zugriffstoken zu aktualisieren, übergeben Sie eine Instanz des `CommunicationUserIdentifier`-Objekts an `GetTokenAsync`. Wenn Sie diese `Id` gespeichert haben und einen neuen `CommunicationUserIdentifier` erstellen müssen, können Sie zu diesem Zweck die gespeicherte `Id` wie folgt an den `CommunicationUserIdentifier`-Konstruktor übergeben:
 
-```csharp  
+```csharp
 // In this example, userId is a string containing the Id property of a previously-created CommunicationUser
-identityToRefresh = new CommunicationUser(userId);
-tokenResponse = await client.IssueTokenAsync(identityToRefresh, scopes: new [] { CommunicationTokenScope.VoIP });
+var identityToRefresh = new CommunicationUserIdentifier(userId);
+var tokenResponse = await client.GetTokenAsync(identityToRefresh, scopes: new [] { CommunicationTokenScope.VoIP });
 ```
 
 ## <a name="revoke-access-tokens"></a>Widerrufen von Zugriffstoken
 
 In einigen Fällen können Sie Zugriffstoken explizit widerrufen. Beispielsweise dann, wenn der Benutzer einer Anwendung das Kennwort ändert, das für die Authentifizierung beim Dienst verwendet wird. Die Methode `RevokeTokensAsync` erklärt alle aktiven Zugriffstoken für ungültig, die für die Identität ausgestellt wurden.
 
-```csharp  
+```csharp
 await client.RevokeTokensAsync(identity);
 Console.WriteLine($"\nSuccessfully revoked all access tokens for identity with ID: {identity.Id}");
 ```

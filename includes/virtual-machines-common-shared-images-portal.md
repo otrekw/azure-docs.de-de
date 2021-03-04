@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e7a4af2c18bfc2b8fbd6149dab12c0bcfc665341
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 7bf71f55e1b49a9280b25cfcc01090afbd0c42db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878821"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750558"
 ---
 ## <a name="create-an-image-gallery"></a>Erstellen eines Imagekatalogs
 
@@ -93,10 +93,7 @@ Es kann eine Weile dauern, bis das Image in alle Zielregionen repliziert ist.
 
 Wir empfehlen, dass Sie den Zugriff auf der Ebene des Imagekatalogs teilen. Im Folgenden werden Sie durch das Teilen des Katalogs geführt, den Sie gerade erstellt haben.
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-1. Wählen Sie im Menü auf der linken Seite die Option **Ressourcengruppen** aus. 
-1. Wählen Sie in der Liste der Ressourcengruppen **myGalleryRG-Portal** aus. Das Blatt für Ihre Ressourcengruppe wird geöffnet.
-1. Wählen Sie im Menü auf der linken Seite **myGalleryRG** und dann **Zugriffssteuerung (IAM)** aus. 
+1. Wählen Sie auf der Seite für Ihren neuen Imagekatalog im Menü auf der linken Seite die Option **Zugriffssteuerung (IAM)** aus. 
 1. Wählen Sie unter **Rollenzuweisung hinzufügen** die Option **Hinzufügen** aus. Der Bereich **Rollenzuweisung hinzufügen** wird geöffnet. 
 1. Wählen Sie unter **Rolle** die Option **Leser** aus.
 1. Behalten Sie unter **Zugriff zuweisen zu** den Standardwert von **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** bei.

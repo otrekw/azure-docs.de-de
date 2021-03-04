@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 28c92004fe67de35e5776cd7dc24cf534ec6f8f3
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 801f0f03b49d20c84a4531bd0daad7630a0ed01d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98061050"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585055"
 ---
 ## <a name="common-scenarios"></a>Häufige Szenarios
 Die folgenden Szenarien können von einem Bursting stark profitieren:
@@ -37,9 +37,10 @@ Es gibt drei Zustände, in denen sich Ihre Ressource mit aktiviertem Bursting be
 - **Konstant**: Der Datenverkehr der Ressource entspricht exakt dem Leistungsziel.
 
 ## <a name="examples-of-bursting"></a>Beispiele für Bursting
-Die folgenden Beispiele zeigen, wie das Bursting mit verschiedenen Kombinationen aus virtuellem Computer und Datenträger funktioniert. Damit die Beispiele leicht nachvollziehbar sind, konzentrieren wir uns auf MB/s, doch dieselbe Logik wird unabhängig davon auch auf IOPS angewandt.
 
-### <a name="non-burstable-virtual-machine-with-burstable-disks"></a>Nicht burstfähiger virtueller Computer mit burstfähigen Datenträgern
+Die folgenden Beispiele zeigen, wie das Bursting mit verschiedenen Kombinationen aus VM und Datenträger funktioniert. Damit die Beispiele leicht nachvollziehbar sind, konzentrieren wir uns auf MB/s, doch dieselbe Logik wird unabhängig davon auch auf IOPS angewandt.
+
+### <a name="non-burstable-virtual-machine-with-burstable-disks"></a>Nicht burstfähige VM mit burstfähigen Datenträgern
 **Kombination aus virtuellem Computer und Datenträger:** 
 - Standard_D8as_v4 
     - Nicht zwischengespeicherte MB/s: 192
@@ -50,17 +51,17 @@ Die folgenden Beispiele zeigen, wie das Bursting mit verschiedenen Kombinationen
     - Bereitgestellte MB/s:
     - MB/s bei max. Burst: 170
 
- Wenn der virtuelle Computer gestartet wird, werden Daten vom Betriebssystemdatenträger abgerufen. Da der Betriebssystemdatenträger Teil eines virtuellen Computers ist, der gerade gestartet wird, ist der Betriebssystemdatenträger mit Bursting-Guthaben gefüllt. Diese Guthaben ermöglichen es dem Betriebssystemdatenträger, seinen Start mit einem Burst von 170 MB/s auszuführen, wie unten gezeigt:
+ Wenn die VM gestartet wird, werden Daten vom Betriebssystemdatenträger abgerufen. Da der Betriebssystemdatenträger Teil einer VM ist, die gerade gestartet wird, ist der Betriebssystemdatenträger mit Bursting-Guthaben gefüllt. Diese Guthaben ermöglichen es dem Betriebssystemdatenträger, seinen Start mit einem Burst von 170 MB/s auszuführen.
 
-![Virtueller Computer ohne Bursting und Startdatenträger mit Bursting](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-startup.jpg)
+![Die VM sendet eine Anforderung für einen Durchsatz von 192 MB/s an den Betriebssystemdatenträger, der mit einem Datendurchsatz von 170 MB/s antwortet.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-startup.jpg)
 
-Nachdem der Startvorgang abgeschlossen ist, wird eine Anwendung auf dem virtuellen Computer ausgeführt, die über eine nicht kritische Workload verfügt. Diese Workload erfordert 15 MB/s, die gleichmäßig auf alle Datenträger verteilt werden:
+Nachdem der Startvorgang abgeschlossen ist, wird eine Anwendung auf dem virtuellen Computer ausgeführt, die über eine nicht kritische Workload verfügt. Diese Workload erfordert 15 MB/s, die gleichmäßig auf alle Datenträger verteilt werden.
 
-![Virtueller Computer ohne Bursting und Datenträger mit Bursting im Leerlauf](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-idling.jpg)
+![Die Anwendung sendet eine Anforderung für einen Durchsatz von 15 MB/s an die VM, die anhand dieser Anforderung von allen Datenträgern 5 MB/s anfordert. Jeder Datenträger gibt 5 MB/s zurück, und die VM gibt 15 MB/s an die Anwendung zurück.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-idling.jpg)
 
-Anschließend muss die Anwendung einen Batchauftrag verarbeiten, der 192 MB/s erfordert. 2 MB/s werden vom Betriebssystemdatenträger verwendet, und die restlichen Daten werden gleichmäßig zwischen den Datenträgern für Daten aufgeteilt:
+Anschließend muss die Anwendung einen Batchauftrag verarbeiten, der 192 MB/s erfordert. 2 MB/s werden vom Betriebssystemdatenträger verwendet, und die restlichen Daten werden gleichmäßig zwischen den Datenträgern für Daten aufgeteilt.
 
-![Virtueller Computer ohne Bursting und Datenträger mit Bursting beim Bursting](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-bursting.jpg)
+![Die Anwendung sendet eine Anforderung für einen Durchsatz von 192 MB/s an die VM, die aufgrund dieser Anforderung selbst mehrere Anforderungen an die Datenträger (für jeweils 95 MB/s) sowie an den Betriebssystemdatenträger (für 2 MB/s) übermittelt. Die Datenträger führen das Bursting durch, um die Nachfrage zu erfüllen, und alle Datenträger geben den angeforderten Durchsatz an die VM zurück, die ihn an die Anwendung zurückgibt.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-bursting.jpg)
 
 ### <a name="burstable-virtual-machine-with-non-burstable-disks"></a>Burstfähiger virtueller Computer mit nicht burstfähigen Datenträgern
 **Kombination aus virtuellem Computer und Datenträger:** 
@@ -72,12 +73,13 @@ Anschließend muss die Anwendung einen Batchauftrag verarbeiten, der 192 MB/s e
 - 2 P10-Datenträger für Daten 
     - Bereitgestellte MB/s: 250
 
- Nach dem anfänglichen Start wird eine Anwendung auf dem virtuellen Computer ausgeführt, die eine nicht kritische Workload aufweist. Diese Workload erfordert 30 MB/s, die gleichmäßig auf alle Datenträger verteilt werden: ![Virtueller Computer mit Bursting und Datenträger ohne Bursting im Leerlauf](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
+ Nach dem anfänglichen Start wird eine Anwendung auf dem virtuellen Computer ausgeführt, die eine nicht kritische Workload aufweist. Diese Workload erfordert 30 MB/s, die gleichmäßig auf alle Datenträger verteilt werden.
+![Die Anwendung sendet eine Anforderung für einen Durchsatz von 30 MB/s an die VM, die anhand dieser Anforderung von allen Datenträgern 10 MB/s anfordert. Jeder Datenträger gibt 10 MB/s zurück, und die VM gibt 30 MB/s an die Anwendung zurück.](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
 
-Anschließend muss die Anwendung einen Batchauftrag verarbeiten, der 600 MB/s erfordert. Der Standard_L8s_v2 nutzt das Bursting, um diese Anforderung zu erfüllen, und dann werden Anforderungen an die Datenträger gleichmäßig auf die P50-Datenträger verteilt:
+Anschließend muss die Anwendung einen Batchauftrag verarbeiten, der 600 MB/s erfordert. Bei Standard_L8s_v2 wird Bursting genutzt, um diese Anforderung zu erfüllen. Die Anforderungen an die Datenträger werden dabei gleichmäßig auf P50-Datenträger verteilt.
 
-![Virtueller Computer mit Bursting und Datenträger ohne Bursting beim Bursting](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-bursting.jpg)
-### <a name="burstable-virtual-machine-with-burstable-disks"></a>Burstfähiger virtueller Computer mit burstfähigen Datenträgern
+![Die Anwendung sendet eine Anforderung für einen Durchsatz von 600 MB/s an die VM, die anhand dieser Anforderung von allen Datenträgern 200 MB/s anfordert. Jeder Datenträger gibt 200 MB/s zurück, und die VM gibt per Bursting 600 MB/s an die Anwendung zurück.](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-bursting.jpg)
+### <a name="burstable-virtual-machine-with-burstable-disks"></a>Burstfähige VM mit burstfähigen Datenträgern
 **Kombination aus virtuellem Computer und Datenträger:** 
 - Standard_L8s_v2 
     - Nicht zwischengespeicherte MB/s: 160
@@ -89,14 +91,14 @@ Anschließend muss die Anwendung einen Batchauftrag verarbeiten, der 600 MB/s e
     - Bereitgestellte MB/s: 25
     - MB/s bei max. Burst: 170 
 
-Wenn der virtuelle Computer gestartet wird, nutzt er das Bursting, um seine Burstgrenze von 1.280 MB/s vom Betriebssystemdatenträger anzufordern, und der Betriebssystemdatenträger wird mit seiner Burstleistung von 170 MB/s antworten:
+Wenn die VM gestartet wird, nutzt sie das Bursting, um ihre Burstgrenze von 1.280 MB/s vom Betriebssystemdatenträger anzufordern, und der Betriebssystemdatenträger wird mit seiner Burstleistung von 170 MB/s antworten.
 
-![Virtueller Computer mit Bursting und Startdatenträger mit Bursting](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-startup.jpg)
+![Beim Start führt die VM das Bursting durch, um 1.280 MB/s vom Betriebssystemdatenträger anzufordern, der ebenfalls per Bursting 1.280 MB/s zurückgibt.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-startup.jpg)
 
-Nachdem der Startvorgang abgeschlossen wurde, wird anschließend eine Anwendung auf dem virtuellen Computer ausgeführt. Die Anwendung verfügt über eine nicht kritische Workload, die 15 MB/s erfordert, die gleichmäßig auf alle Datenträger verteilt werden:
+Nach dem Start starten Sie eine Anwendung mit einer nicht kritischen Workload. Diese Anwendung erfordert 15 MB/s, die gleichmäßig auf alle Datenträger verteilt werden.
 
-![Virtueller Computer mit Bursting und Datenträger mit Bursting im Leerlauf](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
+![Die Anwendung sendet eine Anforderung für einen Durchsatz von 15 MB/s an die VM, die anhand dieser Anforderung von allen Datenträgern 5 MB/s anfordert. Jeder Datenträger gibt 5 MB/s zurück, und die VM gibt 15 MB/s an die Anwendung zurück.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
 
-Anschließend muss die Anwendung einen Batchauftrag verarbeiten, der 360 MB/s erfordert. Der Standard_L8s_v2 nutzt das Bursting, um diese Anforderung zu erfüllen, und stellt dann Anforderungen. Es werden nur 20 MB/s vom Betriebssystemdatenträger benötigt. Die verbleibenden 340 MB/s werden von den P4-Datenträgern mit Bursting verarbeitet:  
+Anschließend muss die Anwendung einen Batchauftrag verarbeiten, der 360 MB/s erfordert. Der Standard_L8s_v2 nutzt das Bursting, um diese Anforderung zu erfüllen, und stellt dann Anforderungen. Es werden nur 20 MB/s vom Betriebssystemdatenträger benötigt. Die verbleibenden 340 MB/s werden per Bursting von den P4-Datenträgern verarbeitet.
 
-![Virtueller Computer mit Bursting und Datenträger mit Bursting beim Bursting](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-bursting.jpg)
+![Die Anwendung sendet eine Anforderung für einen Durchsatz von 360 MB/s an die VM, die anhand dieser Anforderung ein Bursting durchführt und von allen Datenträgern 170 MB/s und vom Betriebssystemdatenträger 20 MB/s anfordert. Jeder Datenträger gibt die angeforderten MB/s zurück, und die VM gibt per Bursting 360 MB/s an die Anwendung zurück.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-bursting.jpg)

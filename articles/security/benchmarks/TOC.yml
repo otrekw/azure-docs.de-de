@@ -235,3 +235,11 @@
   items:
     - name: Zuordnung zwischen ASB- und CIS-Benchmark
       href: v2-cis-benchmark.md
+    - name: Grundlegenden Azure-Sicherheitsinformationen
+      href: ../fundamentals/index.yml
+    - name: Gemeinsame Verantwortung in der Cloud
+      href: ../fundamentals/shared-responsibility.md
+    - name: Azure Security Center
+      href: ../../security-center/index.yml
+    - name: Blaupausenbeispiel „Azure Security Benchmark Foundation“
+      href: ../../governance/blueprints/samples/azure-security-benchmark-foundation/index.yml

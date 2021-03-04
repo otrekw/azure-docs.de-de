@@ -86,8 +86,10 @@
               href: add-user-without-invite.md
             - name: Anpassen von Einladungen mithilfe der API
               href: customize-invitation-api.md
-        - name: Verbund mit externen Identitätsanbietern
+        - name: Identitätsanbieter
           items:
+            - name: Microsoft-Konto (Vorschau)
+              href: microsoft-account.md
             - name: Verbund mit Google
               href: google-federation.md
             - name: Facebook-Verbund

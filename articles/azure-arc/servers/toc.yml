@@ -31,6 +31,8 @@
       items:
         - name: "Übersicht über den Connected\_Machine-Agent"
           href: agent-overview.md
+        - name: Planen für die Bereitstellung im großen Stil
+          href: plan-at-scale-deployment.md
         - name: Verbinden von Computern mit Azure Arc über das Azure-Portal
           href: onboard-portal.md
         - name: Verbinden von Computern im großen Stil mithilfe eines Dienstprinzipals

@@ -104,7 +104,7 @@
     - name: Erneutes Hosten von Mainframes
       href: ./workloads/mainframe-rehosting/overview.md
     - name: SQL in Virtual Machines
-      href: 'https://docs.microsoft.com/azure/azure-sql/virtual-machines/'
+      href: ../azure-sql/virtual-machines/index.yml
     - name: High Performance Computing (HPC)
       href: /azure/architecture/topics/high-performance-computing/
 - name: Instanzen
@@ -164,6 +164,8 @@
               href: ev4-esv4-series.md
             - name: M-Serie
               href: m-series.md
+            - name: Msv2- und Mdsv2-Serie mit mittlerem Arbeitsspeicher
+              href: msv2-mdsv2-series.md
             - name: Mv2-Serie
               href: mv2-series.md
             - name: Eingeschränkte vCPUs
@@ -255,7 +257,7 @@
     - name: Dedizierte Hosts
       items:
         - name: Übersicht
-          href: ./linux/dedicated-hosts.md
+          href: dedicated-hosts.md
         - name: Befehlszeilenschnittstelle (CLI)
           href: ./linux/dedicated-hosts-cli.md
         - name: Portal
@@ -293,7 +295,7 @@
         - name: Reservierte Instanzen
           items:
             - name: Vorauszahlung für virtuelle Computer
-              href: ./linux/prepay-reserved-vm-instances.md
+              href: ./prepay-reserved-vm-instances.md
             - name: Vorauszahlung für Dedicated Host-Instanzen
               href: prepay-dedicated-hosts-reserved-instances.md
             - name: Was sind Azure-Reservierungen?
@@ -363,7 +365,7 @@
         - name: Verwenden von Java
           href: ./windows/java.md
         - name: Python
-          href: 'https://docs.microsoft.com/samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=/azure/virtual-machines/context/context'
+          href: /samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: Verwenden einer ARM-Vorlage
           displayName: Azure Resource Manager template
           href: ./windows/ps-template.md
@@ -447,7 +449,7 @@
             - name: Azure Monitor-Agent
               href: ../azure-monitor/agents/azure-monitor-agent-install.md?context=/azure/virtual-machines/context/context
             - name: Diagnoseerweiterung
-              href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/diagnostics-extension-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Log Analytics
               items:
                 - name: Linux
@@ -642,7 +644,7 @@
     - name: Kataloge mit freigegebenen Images
       items:
         - name: Übersicht
-          href: ./linux/shared-image-galleries.md
+          href: ./shared-image-galleries.md
         - name: Befehlszeilenschnittstelle (CLI)
           items:
             - name: Erstellen eines Katalogs
@@ -786,13 +788,13 @@
     - name: Verfügbarkeit
       href: availability.md
     - name: Zusammenstellung
-      href: ./linux/co-location.md
+      href: co-location.md
     - name: Netzwerkleistung
       href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?context=/azure/virtual-machines/context/context
     - name: Zustände und Lebenszyklus
       href: states-lifecycle.md
     - name: Autoscale
-      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+      href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
     - name: Hochverfügbarkeit
       href: manage-availability.md
     - name: Verfügbarkeitsgruppen
@@ -822,6 +824,8 @@
       href: managed-disks-overview.md
     - name: Auswählen eines Datenträgertyps für virtuelle IaaS-Computer
       href: disks-types.md
+    - name: Optionen für die Datenträgerredundanz
+      href: disks-redundancy.md
     - name: Freigegebene Datenträger
       href: disks-shared.md
     - name: Aktivieren freigegebener Datenträger
@@ -952,8 +956,10 @@
           href: premium-storage-performance.md
         - name: Datenträgerbezogene Metriken
           href: disks-metrics.md
-        - name: Datenträgerbursting
+        - name: Modelle für Datenträgerbursting
           href: disk-bursting.md
+        - name: Aktivieren des bedarfsgesteuerten Burstings
+          href: disks-enable-bursting.md
         - name: Leistungsstufen für Datenträger
           href: disks-change-performance.md
         - name: Ändern der Leistungsstufe für Datenträger
@@ -1157,6 +1163,12 @@
           href: ./windows/security-baseline.md
     - name: Empfehlungen
       href: security-recommendations.md
+    - name: Vertrauenswürdiger Start
+      items:
+        - name: Übersicht
+          href: trusted-launch.md
+        - name: Bereitstellen mit dem Portal
+          href: trusted-launch-portal.md
     - name: Just-in-Time-Zugriff
       href: ../security-center/security-center-just-in-time.md
     - name: Richtlinie
@@ -1181,7 +1193,7 @@
         - name: Erstellen eines Bastion-Hosts
           items:
             - name: Portal
-              href: ../bastion/bastion-create-host-portal.md
+              href: ../bastion/tutorial-create-host-portal.md
             - name: PowerShell
               href: ../bastion/bastion-create-host-powershell.md
             - name: Befehlszeilenschnittstelle (CLI)
@@ -1231,9 +1243,9 @@
     - name: Übersicht
       href: maintenance-and-updates.md
     - name: Automatisches Patchen von VM-Gästen (Vorschau)
-      href: ./windows/automatic-vm-guest-patching.md
+      href: automatic-vm-guest-patching.md
     - name: Automatisches Erweiterungsupgrade (Vorschau)
-      href: ./automatic-extension-upgrade.md
+      href: automatic-extension-upgrade.md
     - name: Wartungssteuerung
       items:
         - name: Wartungsbenachrichtigungen
@@ -1281,7 +1293,7 @@
 - name: Überwachung
   items:
     - name: Übersicht
-      href: ../azure-monitor/insights/monitor-vm-azure.md?context=/azure/virtual-machines/context/context
+      href: ../azure-monitor/vm/monitor-vm-azure.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
     - name: Überwachen virtueller Computer
       items:
         - name: Windows
@@ -1295,7 +1307,7 @@
         - name: Azure-Diagnoseerweiterung
           items:
             - name: Übersicht
-              href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/diagnostics-extension-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Linux-Diagnoseerweiterung
               items:
                 - name: "Version\_4.0"
@@ -1303,16 +1315,16 @@
                 - name: "Version\_3.0"
                   href: ../virtual-machines/extensions/diagnostics-linux-v3.md?context=/azure/virtual-machines/context/context
                 - name: Erfassen von Metriken mit Telegraf
-                  href: ../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/essentials/collect-custom-metrics-linux-telegraf.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                   displayname: diagnostics extension
         - name: Log Analytics-Agent
           items:
             - name: Übersicht
-              href: ../azure-monitor/platform/log-analytics-agent.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/log-analytics-agent.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Linux-Agents
               href: ../azure-monitor/agents/agent-linux.md?context=/azure/virtual-machines/context/context
             - name: Log Analytics-Gateway
-              href: ../azure-monitor/platform/gateway.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/gateway.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Agentverwaltung
               href: ../azure-monitor/agents/agent-manage.md?context=/azure/virtual-machines/context/context
             - name: Agent-Integrität
@@ -1334,11 +1346,11 @@
                 - name: Benutzerdefinierte Protokolle
                   href: ../azure-monitor/agents/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
                 - name: Benutzerdefinierte Felder
-                  href: ../azure-monitor/platform/custom-fields.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/logs/custom-fields.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: Problembehandlung
           items:
             - name: Log Analytics-Erweiterung für virtuelle Computer
-              href: ../azure-monitor/platform/vmext-troubleshoot.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/visualize/vmext-troubleshoot.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
               displayname: 'troubleshoot, troubleshooting'
             - name: Log Analytics-Agent für Linux
               href: ../azure-monitor/agents/agent-linux-troubleshoot.md?context=/azure/virtual-machines/context/context
@@ -1346,37 +1358,37 @@
         - name: Azure Monitor für VMs
           items:
             - name: Übersicht
-              href: ../azure-monitor/insights/vminsights-overview.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 'Allgemeine Verfügbarkeit: häufig gestellte Fragen'
-              href: ../azure-monitor/insights/vminsights-ga-release-faq.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-ga-release-faq.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Häufig gestellte Fragen
               href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#azure-monitor-for-vms
             - name: Aktivieren der Überwachung
               items:
                 - name: 'Aktivieren der Überwachung: Übersicht'
-                  href: ../azure-monitor/insights/vminsights-enable-overview.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Aktivieren für einen einzelnen virtuellen Azure-Computer
-                  href: ../azure-monitor/insights/vminsights-enable-portal.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-portal.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Aktivieren mithilfe von Azure Policy
-                  href: ../azure-monitor/insights/vminsights-enable-policy.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-policy.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Aktivieren mithilfe von Azure PowerShell
-                  href: ../azure-monitor/insights/vminsights-enable-powershell.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-powershell.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Aktivieren für Hybridumgebungen
-                  href: ../azure-monitor/insights/vminsights-enable-hybrid.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-hybrid.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Zuordnen von Abhängigkeiten
-              href: ../azure-monitor/insights/vminsights-maps.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-maps.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Überwachen der Leistung
-              href: ../azure-monitor/insights/vminsights-performance.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-performance.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Analysieren von Daten mit Protokollabfragen
-              href: ../azure-monitor/insights/vminsights-log-search.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-log-search.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Visualisieren von Daten mit Arbeitsmappen
-              href: ../azure-monitor/insights/vminsights-workbooks.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-workbooks.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Erstellen von Warnungsregeln
-              href: ../azure-monitor/insights/vminsights-alerts.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-alerts.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Upgrade des Dependency-Agents
-              href: ../azure-monitor/insights/vminsights-dependency-agent-maintenance.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-dependency-agent-maintenance.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Deaktivieren der Überwachung
-              href: ../azure-monitor/insights/vminsights-optout.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-optout.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
     - name: VM-Nutzung
       href: vm-usage.md
     - name: Kennzeichnen eines virtuellen Computers
@@ -1422,7 +1434,7 @@
         - name: Sichern von mehreren virtuellen Computern
           href: ../backup/tutorial-backup-vm-at-scale.md
         - name: Wiederherstellungsoptionen
-          href: /azure/backup/backup-azure-arm-restore-vms
+          href: ../backup/backup-azure-arm-restore-vms.md
         - name: Unterstützungsmatrix
           href: ../backup/backup-support-matrix-iaas.md
         - name: Preise
@@ -1479,15 +1491,15 @@
     - name: Benutzerdefinierte Daten
       href: custom-data.md
     - name: Ansible
-      href: 'https://docs.microsoft.com/azure/developer/ansible/'
+      href: /azure/developer/ansible/
     - name: Terraform
-      href: 'https://docs.microsoft.com/azure/developer/terraform/'
+      href: /azure/developer/terraform/
     - name: Jenkins
-      href: 'https://docs.microsoft.com/en-us/azure/developer/jenkins/'
+      href: /azure/developer/jenkins/
     - name: Azure DevOps
       href: ./linux/tutorial-azure-devops-blue-green-strategy.md
 - name: Problembehandlung
-  href: 'https://docs.microsoft.com/troubleshoot/azure/virtual-machines/welcome-virtual-machines'
+  href: /troubleshoot/azure/virtual-machines/welcome-virtual-machines
 - name: Ressourcen
   items:
     - name: Cloud Adoption Framework

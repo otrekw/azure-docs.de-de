@@ -150,8 +150,10 @@
           href: disable-user-sign-in-portal.md
         - name: Konfigurieren der Self-Service-App-Zuweisung
           href: manage-self-service-access.md
-        - name: 'Startbereichsermittlung (Home Realm Discovery, HDR)'
+        - name: Erzwingen der automatischen Beschleunigung mithilfe der Richtlinie für die Startbereichsermittlung
           href: configure-authentication-for-federated-users-portal.md
+        - name: 'Verhindern der automatischen Anmeldebeschleunigung mit der Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HRD)'
+          href: prevent-domain-hints-with-home-realm-discovery.md
     - name: "Migrieren der Identitätsverwaltung zu Azure\_AD"
       items:
         - name: Migrationsressourcen

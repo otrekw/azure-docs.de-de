@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 472129be5baa865365b49894b705d84c23e9cd04
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: b4a5dcbd6bc0a6468e8ac8cc7edc8589ea380b28
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506295"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657093"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,7 +37,7 @@ ms.locfileid: "97506295"
 
    ```python
    import os
-   from azure.communication.administration import CommunicationIdentityClient
+   from azure.communication.identity import CommunicationIdentityClient
 
    try:
       print('Azure Communication Services - Access Tokens Quickstart')
@@ -49,10 +49,10 @@ ms.locfileid: "97506295"
 
 ### <a name="install-the-package"></a>Installieren des Pakets
 
-Installieren Sie im Anwendungsverzeichnis mithilfe des Befehls `pip install` das Python-Paket der Azure Communication Services-Clientbibliothek „Administration“.
+Installieren Sie im Anwendungsverzeichnis mithilfe des Befehls `pip install` das Python-Paket der Clientbibliothek für Identitäten von Azure Communication Services.
 
 ```console
-pip install azure-communication-administration
+pip install azure-communication-identity
 ```
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
@@ -70,6 +70,12 @@ connection_string = os.environ['COMMUNICATION_SERVICES_CONNECTION_STRING']
 client = CommunicationIdentityClient.from_connection_string(connection_string)
 ```
 
+Wenn Sie die verwaltete Identität eingerichtet haben, finden Sie unter [Verwenden verwalteter Identitäten](../managed-identity.md) weitere Informationen zum alternativen Authentifizierungsvorgang mit der verwalteten Identität.
+```python
+const endpoint = os.environ["COMMUNICATION_SERVICES_ENDPOINT"];
+var client = new CommunicationIdentityClient(endpoint, DefaultAzureCredential());
+```
+
 ## <a name="create-an-identity"></a>Erstellen einer Identität
 
 Von Azure Communication Services wird ein einfaches Identitätsverzeichnis gepflegt. Verwenden Sie die Methode `create_user`, um in dem Verzeichnis einen neuen Eintrag mit einer eindeutigen `Id` zu erstellen. Speichern Sie die empfangene Identität mit einer Zuordnung zu den Benutzern Ihrer Anwendung. Beispielsweise, indem Sie sie in der Datenbank des Anwendungsservers speichern. Die Identität ist später erforderlich, um Zugriffstoken auszustellen.
@@ -81,11 +87,11 @@ print("\nCreated an identity with ID: " + identity.identifier + ":")
 
 ## <a name="issue-access-tokens"></a>Ausstellen von Zugriffstoken
 
-Verwenden Sie die Methode `issue_token`, um ein Zugriffstoken für eine bereits vorhandene Communication Services-Identität auszustellen. Der Parameter `scopes` definiert einen Satz primitiver Elemente, die dieses Zugriffstoken autorisieren. Weitere Informationen finden Sie in der [Liste der unterstützten Aktionen](../../concepts/authentication.md). Eine neue Instanz des Parameters `communicationUser` kann basierend auf der Zeichenfolgendarstellung der Azure Communication Service-Identität generiert werden.
+Verwenden Sie die Methode `get_token`, um ein Zugriffstoken für eine bereits vorhandene Communication Services-Identität auszustellen. Der Parameter `scopes` definiert einen Satz primitiver Elemente, die dieses Zugriffstoken autorisieren. Weitere Informationen finden Sie in der [Liste der unterstützten Aktionen](../../concepts/authentication.md). Eine neue Instanz des Parameters `CommunicationUserIdentifier` kann basierend auf der Zeichenfolgendarstellung der Azure Communication Service-Identität generiert werden.
 
 ```python
 # Issue an access token with the "voip" scope for an identity
-token_result = client.issue_token(identity, ["voip"])
+token_result = client.get_token(identity, ["voip"])
 expires_on = token_result.expires_on.strftime('%d/%m/%y %I:%M %S %p')
 print("\nIssued an access token with 'voip' scope that expires at " + expires_on + ":")
 print(token_result.token)
@@ -95,19 +101,19 @@ Zugriffstoken sind kurzlebige Anmeldeinformationen, die erneut ausgestellt werde
 
 ## <a name="refresh-access-tokens"></a>Zugriffstoken für die Aktualisierung
 
-Verwenden Sie zum Aktualisieren eines Zugriffstokens das `CommunicationUser`-Objekt für die erneute Ausstellung:
+Verwenden Sie zum Aktualisieren eines Zugriffstokens das `CommunicationUserIdentifier`-Objekt für die erneute Ausstellung:
 
-```python  
+```python
 # Value existingIdentity represents identity of Azure Communication Services stored during identity creation
-identity = CommunicationUser(existingIdentity)
-token_result = client.issue_token( identity, ["voip"])
+identity = CommunicationUserIdentifier(existingIdentity)
+token_result = client.get_token( identity, ["voip"])
 ```
 
 ## <a name="revoke-access-tokens"></a>Widerrufen von Zugriffstoken
 
 In einigen Fällen können Sie Zugriffstoken explizit widerrufen. Beispielsweise dann, wenn der Benutzer einer Anwendung das Kennwort ändert, das für die Authentifizierung beim Dienst verwendet wird. Die Methode `revoke_tokens` erklärt alle aktiven Zugriffstoken für ungültig, die für die Identität ausgestellt wurden.
 
-```python  
+```python
 client.revoke_tokens(identity)
 print("\nSuccessfully revoked all access tokens for identity with ID: " + identity.identifier)
 ```

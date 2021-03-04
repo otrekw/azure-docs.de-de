@@ -117,7 +117,7 @@
       href: production-checklist.md
     - name: IoT Edge-Glossar
       href: iot-edge-glossary.md
-- name: Exemplarische Vorgehensweisen
+- name: Anleitungen
   items:
     - name: Erstellen eines IoT Edge-Geräts
       items:
@@ -251,6 +251,8 @@
       href: how-to-create-test-certificates.md
     - name: Windows-Geräteverwaltungsskripts
       href: reference-windows-scripts.md
+    - name: IoT Edge für Linux unter Windows (Skripts)
+      href: reference-iot-edge-for-linux-on-windows-scripts.md
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: Ressourcen

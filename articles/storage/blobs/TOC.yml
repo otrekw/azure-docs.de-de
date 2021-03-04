@@ -246,14 +246,18 @@
                   href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Überwachen, Diagnostizieren und Durchführen der Problembehandlung'
                   href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: "Unterstützung des NFS\_3.0-Protokolls"
+          items:
+            - name: Übersicht
+              href: network-file-system-protocol-support.md
+            - name: Überlegungen zur Leistung
+              href: network-file-system-protocol-support-performance.md
         - name: Behandlung von Ereignissen
           href: storage-blob-event-overview.md
         - name: Features für Seitenblobs
           href: storage-blob-pageblob-overview.md
         - name: Statische Websites
           href: storage-blob-static-website.md
-        - name: "Unterstützung des NFS\_3.0-Protokolls"
-          href: network-file-system-protocol-support.md
     - name: Anleitung
       items:
         - name: Erstellen und Verwalten von Speicherkonten
@@ -391,6 +395,8 @@
                       href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Konfigurieren der TLS-Version für eine Clientanwendung
                       href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Konfigurieren der Netzwerkroutingpräferenz
+                  href: ../common/configure-network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Konfigurieren von Azure Defender für Bedrohungsschutz
               href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Schützen von Blobdaten
@@ -557,6 +563,8 @@
               href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
             - name: Beheben von Problemen mit dem Storage-Explorer
               href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Storage-Explorer-Befehlszeilenoptionen
+              href: ../common/storage-explorer-command-line-options.md
             - name: Storage-Explorer-Sicherheit
               href: ../common/storage-explorer-security.md
             - name: Versionsverwaltung für Storage-Explorer-Blobs
@@ -883,3 +891,5 @@
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
         - name: Videos
           href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
+        - name: Partner
+          href: ../solution-integration/

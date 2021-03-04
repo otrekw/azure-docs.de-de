@@ -1,27 +1,27 @@
 ### YamlMime:Landing
-title: Dokumentation zur Entwicklung von IoT-Geräten und -Anwendungen
-summary: Erkunden Sie die Azure IoT-Dokumentation zum Entwickeln eingebetteter Geräte und zum Erstellen gerätefähiger Cloudanwendungen.
+title: Dokumentation zur IoT-Geräteentwicklung
+summary: Erkunden Sie die Azure IoT-Dokumentation zum Entwickeln von mit der Cloud verbundenen eingebetteten Geräten und Geräteanwendungen.
 metadata:
-  title: Entwicklung von IoT-Geräten und -Anwendungen
-  description: Hier erfahren Sie, wie Sie mit Azure IoT eingebettete Geräte entwickeln und gerätefähige Cloudanwendungen erstellen.
+  title: IoT-Geräteentwicklung
+  description: Hier erfahren Sie, wie Sie Azure IoT zum Entwickeln von mit der Cloud verbundenen eingebetteten Geräten und Geräteanwendungen verwenden können.
   services: iot-develop
   ms.service: iot-develop
   ms.topic: landing-page
   author: timlt
   ms.author: timlt
   ms.date: 01/11/2021
-  ms.openlocfilehash: 98d3a7f3eb51ce9c2fddfe5b3ac6730d8ef3b3eb
-  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+  ms.openlocfilehash: bb3bd1766e20fd16fa996eb66008140009f6bd5d
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 02/18/2021
-  ms.locfileid: "100656272"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101721445"
 landingContent:
-- title: Informationen zur Entwicklung von IoT-Geräten und -Anwendungen
+- title: Informationen zur IoT-Geräteentwicklung
   linkLists:
   - linkListType: overview
     links:
-    - text: Worum handelt es sich bei der Entwicklung von Azure IoT-Geräten und -Anwendungen?
+    - text: Was ist die Azure IoT-Geräteentwicklung?
       url: about-iot-develop.md
     - text: Welches SDK sollte ich verwenden?
       url: about-iot-sdks.md

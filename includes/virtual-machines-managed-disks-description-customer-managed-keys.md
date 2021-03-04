@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/05/2020
+ms.date: 03/02/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ba50def51bcea4f477bea5cecbe5b1ed0409b01a
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 52b9bee1d43c0f136889a6a54277d4bb45dd4a45
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98792335"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750721"
 ---
 Sie können die Verschlüsselung auf der Ebene verwalteter Datenträger mit eigenen Schlüsseln verwalten. Die serverseitige Verschlüsselung für verwaltete Datenträger mit vom Kunden verwalteten Schlüsseln bietet eine integrierte Benutzerfunktionalität mit Azure Key Vault. Sie können entweder [ihre RSA-Schlüssel](../articles/key-vault/keys/hsm-protected-keys.md) in den Schlüsseltresor importieren oder neue RSA-Schlüssel in Azure Key Vault generieren. 
 
@@ -43,3 +43,7 @@ In der folgenden Liste wird das Diagramm ausführlicher erläutert:
 1. Zum Lesen oder Schreiben von Daten senden verwaltete Datenträger Anforderungen an Azure Key Vault, um den Datenverschlüsselungsschlüssel zu verschlüsseln (wrap) und zu entschlüsseln (unwrap), um die Daten zu verschlüsseln und zu entschlüsseln. 
 
 Informationen zum Widerrufen von Kunden verwalteter Schlüsseln finden Sie in den Artikeln zu [Azure Key Vault-PowerShell](/powershell/module/azurerm.keyvault/) und zur [Azure Key Vault-CLI](/cli/azure/keyvault). Durch das Widerrufen des Zugriffs wird der Zugriff auf alle Daten im Speicherkonto blockiert, da Azure Storage keinen Zugriff mehr auf den Verschlüsselungsschlüssel hat.
+
+#### <a name="automatic-key-rotation-of-customer-managed-keys-preview"></a>Automatische Schlüsselrotation von kundenseitig verwalteten Schlüsseln (Vorschau)
+
+Sie können die automatische Schlüsselrotation für die neueste Schlüsselversion aktivieren. Ein Datenträger verweist über den Datenträgerverschlüsselungssatz auf einen Schlüssel. Wenn Sie die automatische Rotation für einen Datenträgerverschlüsselungssatz aktivieren, aktualisiert das System automatisch alle verwalteten Datenträger, Momentaufnahmen und Images, die auf den Datenträgerverschlüsselungssatz verweisen, um die neue Version des Schlüssels innerhalb von einer Stunde zu verwenden. Das Feature ist derzeit in der Vorschauversion für eine begrenzte Anzahl von Regionen verfügbar. Informationen zur regionalen Verfügbarkeit finden Sie im Abschnitt zu [unterstützten Regionen](#supported-regions).

@@ -10,6 +10,8 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: Erstellen von Vorlagen – VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
+    - name: Erstellen von Bicep – VS Code
+      href: quickstart-create-bicep-use-visual-studio-code.md
     - name: Erstellen und Bereitstellen von Vorlagenspezifikationen
       href: quickstart-create-template-specs.md
     - name: Azure-Dienste
@@ -141,7 +143,7 @@
             - name: Verwaltete Anwendungen
               href: ../managed-applications/publish-service-catalog-app.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Überwachen
-              href: ../../azure-monitor/learn/quick-collect-activity-log-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
+              href: ../../azure-monitor/essentials/quick-collect-activity-log-arm.md?toc=%2fazure%2fazure-resource-manager%2ftemplates%2ftoc.json
             - name: Richtlinie
               href: ../../governance/policy/assign-policy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Portal
@@ -220,7 +222,7 @@
               href: ../../azure-signalr/signalr-quickstart-azure-signalr-service-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
 - name: Tutorials
   items:
-    - name: Vorlagen für Einsteiger
+    - name: JSON-Vorlagen für Anfänger
       items:
         - name: 1. Erstellen der ersten Vorlage
           href: template-tutorial-create-first-template.md
@@ -242,6 +244,28 @@
           href: template-tutorial-add-tags.md
         - name: 10. Verwenden einer Parameterdatei
           href: template-tutorial-use-parameter-file.md
+    - name: Bicep für Anfänger
+      items:
+        - name: 1. Erstellen der ersten Vorlage
+          href: bicep-tutorial-create-first-bicep.md
+        - name: 2. Hinzufügen von Parametern
+          href: bicep-tutorial-add-parameters.md
+        - name: 3. Hinzufügen von Vorlagenfunktionen
+          href: bicep-tutorial-add-functions.md
+        - name: 4. Hinzufügen von Variablen
+          href: bicep-tutorial-add-variables.md
+        - name: 5. Hinzufügen von Ausgaben
+          href: bicep-tutorial-add-outputs.md
+        - name: 6. Verwenden einer exportierten Vorlage
+          href: bicep-tutorial-export-template.md
+        - name: 7. Verwenden einer Schnellstartvorlage
+          href: bicep-tutorial-quickstart-template.md
+        - name: 8. Hinzufügen von Tags
+          href: bicep-tutorial-add-tags.md
+        - name: 9. Verwenden einer Parameterdatei
+          href: bicep-tutorial-use-parameter-file.md
+        - name: 10. Hinzufügen von Modulen
+          href: bicep-tutorial-add-modules.md
     - name: Bereitstellung
       items:
         - name: 1. Bereitstellen einer lokalen Vorlage
@@ -298,6 +322,12 @@
   items:
     - name: Bewährte Methoden für Vorlagen
       href: template-best-practices.md
+    - name: Bicep
+      items:
+        - name: Übersicht
+          href: bicep-overview.md
+        - name: Wechseln von JSON zu Bicep
+          href: compare-template-syntax.md
     - name: Häufig gestellte Fragen
       href: frequently-asked-questions.md
     - name: Vorlagen für Cloudkonsistenz
@@ -333,6 +363,8 @@
           href: template-user-defined-functions.md
         - name: Ressourcen
           items:
+            - name: Ressourcendeklaration
+              href: resource-declaration.md
             - name: Name und Typ der untergeordneten Ressource
               href: child-resource-name-type.md
             - name: Bedingte Bereitstellung
@@ -491,6 +523,8 @@
       items:
         - name: Alle Funktionen
           href: template-functions.md
+        - name: Any-Funktion (Bicep)
+          href: template-functions-any.md
         - name: Arrayfunktionen
           href: template-functions-array.md
         - name: Vergleichsfunktionen

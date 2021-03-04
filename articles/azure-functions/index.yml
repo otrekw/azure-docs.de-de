@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Dokumentation zu Azure Functions
-summary: Azure Functions ist ein bedarfsgesteuerter Clouddienst, der sämtliche ständig aktualisierte Infrastrukturen und Ressourcen bereitstellt, die zum Ausführen Ihrer Anwendungen erforderlich sind. Stattdessen können Sie sich ganz auf die Codeelemente konzentrieren, die für Sie am wichtigsten sind, und Azure Functions kümmert sich um den Rest. Sie können mit Azure Functions Web-APIs erstellen, auf Datenbankänderungen reagieren, IoT-Datenströme verarbeiten, Nachrichtenwarteschlangen verwalten und vieles mehr.
+summary: Azure Functions ist ein bedarfsgesteuerter Clouddienst, der sämtliche ständig aktualisierte Infrastrukturen und Ressourcen bereitstellt, die zum Ausführen Ihrer Anwendungen erforderlich sind. Stattdessen können Sie sich ganz auf die Codeelemente konzentrieren, die für Sie am wichtigsten sind, und Functions kümmert sich um den Rest. Functions bietet serverloses Compute für Azure. Sie können mit Functions Web-APIs erstellen, auf Datenbankänderungen reagieren, IoT-Datenströme verarbeiten, Nachrichtenwarteschlangen verwalten und vieles mehr.
 metadata:
   title: Dokumentation zu Azure Functions
-  description: Azure Functions ist ein bedarfsgesteuerter Clouddienst, der sämtliche ständig aktualisierte Infrastrukturen und Ressourcen bereitstellt, die zum Ausführen Ihrer Anwendungen erforderlich sind. Stattdessen können Sie sich ganz auf die Codeelemente konzentrieren, die für Sie am wichtigsten sind, und Azure Functions kümmert sich um den Rest. Sie können mit Azure Functions Web-APIs erstellen, auf Datenbankänderungen reagieren, IoT-Datenströme verarbeiten, Nachrichtenwarteschlangen verwalten und vieles mehr.
+  description: Azure Functions ist ein bedarfsgesteuerter Clouddienst, der sämtliche ständig aktualisierte Infrastrukturen und Ressourcen bereitstellt, die zum Ausführen Ihrer Anwendungen erforderlich sind. Stattdessen können Sie sich ganz auf die Codeelemente konzentrieren, die für Sie am wichtigsten sind, und Azure Functions kümmert sich um den Rest. Functions bietet serverloses Compute für Azure. Sie können mit Azure Functions Web-APIs erstellen, auf Datenbankänderungen reagieren, IoT-Datenströme verarbeiten, Nachrichtenwarteschlangen verwalten und vieles mehr.
   ms.service: azure-functions
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: 65b2c25bde616f8a2bbc9abf6439871d288306b9
-  ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+  ms.openlocfilehash: 4d856232d2f0780852a1f369548b08012d124834
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 02/14/2021
-  ms.locfileid: "100363031"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101729163"
 landingContent:
 - title: Informationen zu Azure Functions
   linkLists:

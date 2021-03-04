@@ -51,6 +51,14 @@
               href: 9-secure-access-teams-sharepoint.md
         - name: Schützen von Dienstkonten
           items:
+            - name: Einführung in Azure-Dienstkonten
+              href: service-accounts-introduction-azure.md
+            - name: Sichern von verwalteten Identitäten
+              href: service-accounts-managed-identities.md
+            - name: Sichern von Dienstprinzipalen
+              href: service-accounts-principal.md
+            - name: Steuern von Azure-Dienstkonten
+              href: service-accounts-governing-azure.md
             - name: Einführung in lokale Dienstkonten
               href: service-accounts-on-premises.md
             - name: Schützen von Gruppen-MSAs

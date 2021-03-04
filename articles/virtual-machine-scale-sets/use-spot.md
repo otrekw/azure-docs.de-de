@@ -6,15 +6,15 @@ ms.author: jagaveer
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: spot
-ms.date: 03/25/2020
+ms.date: 02/26/2021
 ms.reviewer: cynthn
-ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 265f78970f17fe7321db8786c2fb8dd2304bb578
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 33aa553e688b595551c20e8b1432163152865537
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558667"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675021"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Azure-Spot-VMs und VM-Skalierungsgruppen 
 
@@ -46,19 +46,38 @@ Folgende [Angebotstypen](https://azure.microsoft.com/support/legal/offer-details
 -   Enterprise Agreement
 -   Angebotscode für nutzungsbasierte Bezahlung: 003P
 -   Sponsoren
-- Wenden Sie sich hinsichtlich des Cloud-Dienstanbieters (CSP) an Ihren Partner.
+- Informationen zu Cloud-Dienstanbietern (CSP) finden Sie in [Partner Center](https://docs.microsoft.com/partner-center/azure-plan-get-started), oder indem Sie sich direkt an Ihren Partner wenden.
 
 ## <a name="eviction-policy"></a>Entfernungsrichtlinie
 
-Wenn Sie Azure-Spot-VM-Skalierungsgruppen erstellen, können Sie die Entfernungsrichtlinie auf *Zuordnung aufheben* (Standardeinstellung) oder *Löschen* festlegen. 
+Wenn Sie eine Skalierungsgruppe mit Azure-Spot-VMs erstellen, können Sie die Entfernungsrichtlinie auf *Zuordnung aufheben* (Standardeinstellung) oder *Löschen* festlegen. 
 
 Durch die Richtlinie *Zuordnung aufheben* werden die entfernten Instanzen in den Zustand „Beendet/Zuordnung aufgehoben“ versetzt, sodass Sie entfernte Instanzen erneut bereitstellen können. Es gibt jedoch keine Garantie dafür, dass die Zuordnung erfolgreich ist. Die virtuellen Computer, deren Zuordnung aufgehoben wurde, werden auf Ihr Kontingent an Skalierungsgruppeninstanzen angerechnet, und die zugrunde liegenden Datenträger werden Ihnen in Rechnung gestellt. 
 
-Wenn die Instanzen in Ihrer Azure-Spot-VM-Skalierungsgruppe beim Entfernen gelöscht werden sollen, können Sie die Entfernungsrichtlinie auf *Löschen* festlegen. Wenn die Entfernungsrichtlinie zum Löschen festgelegt ist, können Sie neue VMs durch Heraufsetzen der Skalierungsgruppeninstanzenanzahl-Eigenschaft erstellen. Die entfernten VMs werden zusammen mit ihren zugrunde liegenden Datenträgern gelöscht, und darum fallen keine Kosten für ihre Speicherung an. Sie können auch die Funktion zur automatischen Skalierung von Skalierungsgruppen verwenden, um zu versuchen, entfernte VMs automatisch zu kompensieren, es gibt jedoch keine Garantie, dass die Zuordnung erfolgreich ist. Die Funktion für die Autoskalierung sollte nur für Azure-Spot-VM-Skalierungsgruppen verwendet werden, wenn Sie die Entfernungsrichtlinie auf „Löschen“ festlegen. So vermeiden Sie Kosten für Datenträger und das Überschreiten von Kontingentgrenzen. 
+Wenn die Instanzen beim Entfernen gelöscht werden sollen, legen Sie die Entfernungsrichtlinie auf *Löschen* fest. Wenn die Entfernungsrichtlinie zum Löschen festgelegt ist, können Sie neue VMs durch Heraufsetzen der Skalierungsgruppeninstanzenanzahl-Eigenschaft erstellen. Die entfernten VMs werden zusammen mit ihren zugrunde liegenden Datenträgern gelöscht, und darum fallen keine Kosten für ihre Speicherung an. Sie können auch die Funktion zur automatischen Skalierung von Skalierungsgruppen verwenden, um zu versuchen, entfernte VMs automatisch zu kompensieren, es gibt jedoch keine Garantie, dass die Zuordnung erfolgreich ist. Die Funktion für die Autoskalierung sollte nur für Azure-Spot-VM-Skalierungsgruppen verwendet werden, wenn Sie die Entfernungsrichtlinie auf „Löschen“ festlegen. So vermeiden Sie Kosten für Datenträger und das Überschreiten von Kontingentgrenzen. 
 
 Benutzer können Benachrichtigungen in der VM über [Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md) abonnieren. Dadurch werden Sie benachrichtigt, wenn Ihre virtuellen Computer entfernt werden, und Sie haben vor dem Entfernen 30 Sekunden Zeit, Aufträge abzuschließen und die VMs herunterzufahren. 
 
+<a name="bkmk_try"></a>
+## <a name="try--restore-preview"></a>Testen und wiederherstellen (Vorschau)
+
+Diese neue Funktion auf Plattformebene nutzt KI, um automatisch zu versuchen, entfernte Instanzen von Azure-Spot-VMs in einer Skalierungsgruppe wiederherzustellen und so die Zielanzahl von Instanzen beizubehalten. 
+
+> [!IMPORTANT]
+> „Testen und wiederherstellen“ ist zurzeit als öffentliche Vorschauversion verfügbar.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Vorteile von „Testen und wiederherstellen“:
+- Standardmäßig aktiviert, wenn eine Azure-Spot-VM in einer Skalierungsgruppe bereitgestellt wird
+- Versuche zur Wiederherstellung von Azure-Spot-VMs, die aufgrund der Kapazität entfernt wurden
+- Bei wiederhergestellten Azure-Spot-VMs wird eine längere Ausführungszeit erwartet bei einer niedrigeren Wahrscheinlichkeit der Entfernung aufgrund der Kapazität
+- Längere Lebensdauer von Azure-Spot-VMs und damit längere Ausführungszeit von Workloads
+- Unterstützt Virtual Machine Scale Sets bei der Einhaltung der Zielanzahl von Azure-Spot-VMs (ähnlich wie bei der Funktion zur Beibehaltung der Zielanzahl für VMs mit nutzungsbasierter Bezahlung)
+
+„Testen und wiederherstellen“ ist in Skalierungsgruppen mit [Autoskalierung](virtual-machine-scale-sets-autoscale-overview.md) deaktiviert. Die Anzahl der VMs in der Skalierungsgruppe wird über die Regeln für die Autoskalierung gesteuert.
+
 ## <a name="placement-groups"></a>Platzierungsgruppen
+
 Eine Platzierungsgruppe ist ein ähnliches Konstrukt wie eine Azure-Verfügbarkeitsgruppe und verfügt über eigene Fehler- und Upgradedomänen. Standardmäßig besteht eine Skalierungsgruppe aus einer einzelnen Platzierungsgruppe mit einer maximalen Größe von 100 virtuellen Computern. Wenn die Skalierungsgruppeneigenschaft `singlePlacementGroup` auf *false* festgelegt ist, kann die Skalierungsgruppe mehrere Platzierungsgruppen und bis zu 1.000 virtuelle Computer umfassen. 
 
 > [!IMPORTANT]
@@ -136,6 +155,24 @@ Fügen Sie dem Abschnitt `"virtualMachineProfile":` in Ihrer Vorlage die Eigensc
 ```
 
 Um die Instanz nach dem Entfernen zu löschen, ändern Sie den `evictionPolicy`-Parameter in `Delete`.
+
+
+## <a name="simulate-an-eviction"></a>Simulieren einer Entfernung
+
+Sie können die Entfernung einer Azure-Spot-VM [simulieren](https://docs.microsoft.com/rest/api/compute/virtualmachines/simulateeviction), um zu testen, wie gut die Anwendung auf einen plötzlichen Entfernungsvorgang reagiert. 
+
+Ersetzen Sie Folgendes durch Ihre Informationen: 
+
+- `subscriptionId`
+- `resourceGroupName`
+- `vmName`
+
+
+```rest
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+```
+
+`Response Code: 204` bedeutet, dass die simulierte Entfernung erfolgreich war. 
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 

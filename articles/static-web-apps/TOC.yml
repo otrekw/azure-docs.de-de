@@ -18,6 +18,9 @@
           href: get-started-cli.md
 - name: Konzepte
   items:
+    - name: Konfiguration
+      href: configuration.md
+      displayName: Routing
     - name: API-Unterstützung mit Azure Functions
       href: apis.md
     - name: Routen
@@ -42,6 +45,8 @@
       href: application-settings.md
     - name: Konfigurieren von Front-End-Frameworks und -Bibliotheken
       href: front-end-frameworks.md
+    - name: Zurücksetzen des Bereitstellungstokens
+      href: deployment-token-management.md
 - name: Tutorials
   items:
     - name: Veröffentlichen über einen Generator für statische Websites
