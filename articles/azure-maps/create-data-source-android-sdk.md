@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 78b0cbbdccc7d6853d4ce2821bf659e888680a5f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: fc68dc25aad3671a55e5c11cbee094b4027e7070
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674642"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047671"
 ---
 # <a name="create-a-data-source-android-sdk"></a>Erstellen einer Datenquelle (Android SDK)
 
@@ -360,14 +360,17 @@ Azure Maps hält den offenen Standard [Mapbox Vector Tile Specification](https:/
 - Verkehrsfluss: [Dokumentation](/rest/api/maps/traffic/gettrafficflowtile) | [Details zum Datenformat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
 - In Azure Maps Creator können Sie über [Render V2 – Get Map Tiles](/rest/api/maps/renderv2/getmaptilepreview) auch benutzerdefinierte Vektorkacheln erstellen und auf diese zugreifen.
 
+> [!TIP]
+> Wenn Sie Vektor- oder Rasterbildkacheln des Azure Maps-Renderdiensts mit dem Web-SDK verwenden, können Sie `atlas.microsoft.com` durch den Platzhalter `azmapsdomain.invalid` ersetzen. Dieser Platzhalter wird durch dieselbe Domäne ersetzt, die von der Karte verwendet wird, und automatisch an dieselben Authentifizierungsdetails angefügt. Dies vereinfacht die Authentifizierung beim Renderdienst bei Verwendung der Azure Active Directory-Authentifizierung erheblich.
+
 Um Daten aus einer Vektorkachelquelle auf der Karte anzuzeigen, verbinden Sie die Quelle mit einer der Datenrenderingebenen. Für alle Ebenen, die eine Vektorquelle verwenden, muss in den Optionen einen `sourceLayer`-Wert angegeben sein. Der folgende Code lädt den Azure Maps-Vektorkacheldienst für den Verkehrsfluss als Vektorkachelquelle und zeigt den Vektor dann auf einer Linienebene auf einer Karte an. Diese Vektorkachelquelle verfügt über einen einzigen Datensatz in der Quellebene namens „Verkehrsfluss“. Die Liniendaten in diesem Dataset besitzen eine Eigenschaft namens `traffic_level`, die in diesem Code zum Auswählen der Farbe und Skalieren der Linienstärke verwendet wird.
 
 ```java
 //Formatted URL to the traffic flow vector tiles, with the maps subscription key appended to it.
-String trafficFlowUrl = "https://atlas.microsoft.com/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}&subscription-key=" + AzureMaps.getSubscriptionKey();
+String trafficFlowUrl = "https://azmapsdomain.invalid/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}";
 
 //Create a vector tile source and add it to the map.
-VectorTileSource source = new VectorTileSource("flowLayer",
+VectorTileSource source = new VectorTileSource(
     tiles(new String[] { trafficFlowUrl }),
     maxSourceZoom(22)
 );

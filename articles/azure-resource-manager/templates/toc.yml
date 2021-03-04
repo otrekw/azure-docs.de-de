@@ -4,6 +4,8 @@
   items:
     - name: Was sind ARM-Vorlagen?
       href: overview.md
+    - name: Übersicht über Bicep
+      href: bicep-overview.md
 - name: Schnellstarts
   items:
     - name: Erstellen von Vorlagen – Portal
@@ -324,9 +326,7 @@
       href: template-best-practices.md
     - name: Bicep
       items:
-        - name: Übersicht
-          href: bicep-overview.md
-        - name: Wechseln von JSON zu Bicep
+        - name: Vergleichen von JSON mit Bicep
           href: compare-template-syntax.md
     - name: Häufig gestellte Fragen
       href: frequently-asked-questions.md

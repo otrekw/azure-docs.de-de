@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 03/03/2021
 ms.author: cherylmc
-ms.openlocfilehash: c2efd9ac137c226c1d3a77e2cb6ebe17d75cb496
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 751d11fcd4b5d4c33145ee7f2b7b49971b8927ae
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051529"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048256"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>Verwalten des sicheren Zugriffs auf Ressourcen in Spoke-VNETs für Benutzer-VPN-Clients
 
@@ -50,8 +50,6 @@ Wenn Sie die Authentifizierungsmethode auswählen, stehen Ihnen drei Optionen zu
 * **RADIUS-basierte Authentifizierung:** Abrufen der IP-Adresse des RADIUS-Servers, des RADIUS-Servergeheimnisses und der Zertifikatinformationen.
 
 * **Azure-Zertifikate:** Für diese Konfiguration sind Zertifikate erforderlich. Sie müssen Zertifikate entweder generieren oder abrufen. Ein Clientzertifikat wird für jeden Client benötigt. Außerdem müssen die Stammzertifikatinformationen (öffentlicher Schlüssel) hochgeladen werden. Weitere Informationen zu den erforderlichen Zertifikaten finden Sie unter [Generieren und Exportieren von Zertifikaten für Punkt-zu-Standort-Verbindungen mithilfe von PowerShell](../vpn-gateway/vpn-gateway-certificates-point-to-site.md).
-
-Das folgende Beispiel zeigt die Azure-Zertifikatauthentifizierung.
 
 [!INCLUDE [Define parameters](../../includes/virtual-wan-p2s-configuration-include.md)]
 

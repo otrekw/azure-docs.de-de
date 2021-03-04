@@ -1,17 +1,16 @@
 ---
 title: Überwachen von Abfragen in Azure Monitor-Protokollabfragen
 description: Details von Überwachungsprotokollen für Protokollabfragen, die Telemetrie zu den in Azure Monitor ausgeführten Protokollabfragen liefern.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: 70741e91830027e210afce75e93d931d70bdbed1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 28dfac7de8e73adf577b0a13e5fbd8740b1e3b06
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601696"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047416"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Überwachen von Abfragen in Azure Monitor-Protokollen (Vorschau)
 Überwachungsprotokolle für Protokollabfragen bieten Telemetrie zu den in Azure Monitor ausgeführten Protokollabfragen. Dazu gehören Informationen dazu, wann z. B. eine Abfrage ausgeführt wurde, wer sie ausgeführt hat, welches Tool verwendet wurde, der Abfragetext und die Leistungsstatistiken, die die Ausführung der Abfrage beschreiben.

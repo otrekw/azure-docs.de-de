@@ -1,6 +1,6 @@
 - name: Dedizierter SQL-Pool (früher SQL DW)
   href: sql-data-warehouse-overview-what-is.md
-- name: Wechsel zu Azure Synapse
+- name: Wechseln zu Azure Synapse >
   href: ../overview-what-is.md
 - name: Übersicht
   items:

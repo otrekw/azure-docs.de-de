@@ -36,6 +36,8 @@
           items:
             - name: Bewerten von virtuellen VMware-Computern für die Migration zu virtuellen Azure-Computern
               href: tutorial-assess-vmware-azure-vm.md
+            - name: Bewerten von SQL-Instanzen für die Migration zu Azure SQL
+              href: tutorial-assess-sql.md
             - name: Bewerten von virtuellen VMware-Computern für die Migration zu AVS
               href: tutorial-assess-vmware-azure-vmware-solution.md
         - name: Bewerten von virtuellen Hyper-V-Computern für die Migration zu Azure
@@ -102,6 +104,8 @@
       items:
         - name: Bewertungsübersicht (Migration zu Azure-VMs)
           href: concepts-assessment-calculation.md
+        - name: Bewertungsübersicht (Migration zu Azure SQL)
+          href: concepts-azure-sql-assessment-calculation.md
         - name: Bewertungsübersicht (Migration zu AVS)
           href: concepts-azure-vmware-solution-assessment-calculation.md
         - name: Bewährte Methoden für die Bewertung
@@ -144,8 +148,12 @@
               href: deploy-appliance-script-government.md
         - name: Begrenzen des Ermittlungsbereichs für VMware-VMS
           href: set-discovery-scope.md
+        - name: Hinzufügen von Serveranmeldeinformationen
+          href: add-server-credentials.md
         - name: Erkunden von Anwendungen/Rollen/Features
           href: how-to-discover-applications.md
+        - name: Ermitteln von SQL-Instanzen in einem vorhandenen Projekt
+          href: how-to-discover-sql-existing-project.md
         - name: Analysieren von Computerabhängigkeiten (Agent-basiert)
           href: how-to-create-group-machine-dependencies.md
         - name: Analysieren von Computerabhängigkeiten (ohne Agent)
@@ -158,6 +166,8 @@
           href: how-to-create-a-group.md
         - name: Erstellen einer Azure-VM-Bewertung
           href: how-to-create-assessment.md
+        - name: "Erstellen einer Azure\_SQL-Bewertung"
+          href: how-to-create-azure-sql-assessment.md
         - name: Erstellen einer AVS-Bewertung
           href: how-to-create-azure-vmware-solution-assessment.md
         - name: "Bewerten einer SQL\_Server-Datenbank"
@@ -176,6 +186,8 @@
       items:
         - name: Hinzufügen von Migrationstools
           href: how-to-migrate.md
+        - name: Replizieren mithilfe von ExpressRoute
+          href: replicate-using-expressroute.md
         - name: Vorbereiten von Computern für die Migration
           href: prepare-for-migration.md
         - name: "Vorbereiten von Windows\_2003-Servern für die Migration"
