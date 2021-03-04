@@ -1,17 +1,16 @@
 ---
 title: Verbinden von Cherwell mit dem ITSM-Connector
 description: Dieser Artikel enthält Informationen dazu, wie Sie Cherwell mit dem ITSM-Connector (ITSMC) in Azure Monitor verbinden, um die ITSM-Arbeitselemente zentral zu überwachen und zu verwalten.
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 6d9d8136ef0936927af238726e30c7feed7d0b83
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d1fe5e20c06648aa6efc899fabb3ced3345ab41f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601809"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045410"
 ---
 # <a name="connect-cherwell-with-it-service-management-connector"></a>Verbinden von Cherwell mit dem ITSM-Connector
 
