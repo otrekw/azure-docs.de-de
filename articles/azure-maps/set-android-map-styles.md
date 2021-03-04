@@ -3,17 +3,18 @@ title: Festlegen eines Kartenstils in Android-Karten | Microsoft Azure Maps
 description: Erlernen Sie zwei Möglichkeiten, den Stil einer Karte festzulegen. Erfahren Sie, wie Sie den Stil mit dem Azure Maps Android SDK in der Layoutdatei oder der „Activity“-Klasse anpassen.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 04/26/2019
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 1cce355c8ffbcd4704bd32b0e4d1739c77c2b623
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: aef8fbacf8302fb5dd4b5fe28afc615c6bf56090
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97678474"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100983"
 ---
 # <a name="set-map-style-android-sdk"></a>Festlegen eines Kartenstils (Android SDK)
 
@@ -47,6 +48,8 @@ Der folgende Screenshot veranschaulicht, wie durch den oben aufgeführten Code e
 
 Der Kartenstil kann mithilfe der `setStyle`-Methode der Karte programmgesteuert im Code festgelegt werden. Mit dem folgenden Code werden der Mittelpunkt und Zoomfaktor der Karte mithilfe der `setCamera`-Methode festgelegt. Außerdem wird der Kartenstil auf `SATELLITE_ROAD_LABELS` festgelegt.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 mapControl.onReady(map -> {
 
@@ -58,6 +61,22 @@ mapControl.onReady(map -> {
 });
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+mapControl!!.onReady { map: AzureMap ->
+    //Set the camera of the map.
+    map.setCamera(center(Point.fromLngLat(-122.33, 47.64)), zoom(14))
+
+    //Set the style of the map.
+    map.setStyle(style(MapStyle.SATELLITE_ROAD_LABELS))
+}
+```
+
+::: zone-end
+
 Der folgende Screenshot veranschaulicht, wie durch den oben aufgeführten Code eine Karte mit dem Stil „Straßenbezeichnungen in Satellitenansicht“ dargestellt wird.
 
 ![Karte mit dem Stil „Straßenbezeichnungen in Satellitenansicht“](media/set-android-map-styles/android-satellite-road-labels.png)
@@ -65,6 +84,8 @@ Der folgende Screenshot veranschaulicht, wie durch den oben aufgeführten Code e
 ## <a name="setting-the-map-camera"></a>Festlegen der Kartenkamera
 
 Mit der Kartenkamera wird gesteuert, welcher Teil der Karte in der Karte angezeigt wird. Die Kamera kann im Layout oder programmgesteuert im Code festgelegt werden. Beim Festlegen im Code gibt es zwei Hauptmethoden zum Festlegen der Kartenposition: Sie verwenden „center“ und „zoom“, oder Sie übergeben einen Begrenzungsrahmen. Der folgende Code zeigt, wie Sie bei Verwendung von `center` und `zoom` alle optionalen Kameraoptionen festlegen.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Set the camera of the map using center and zoom.
@@ -88,7 +109,37 @@ map.setCamera(
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Set the camera of the map using center and zoom.
+map.setCamera(
+    center(Point.fromLngLat(-122.33, 47.64)), 
+
+    //The zoom level. Typically a value between 0 and 22.
+    zoom(14),
+
+    //The amount of tilt in degrees the map where 0 is looking straight down.
+    pitch(45),
+
+    //Direction the top of the map is pointing in degrees. 0 = North, 90 = East, 180 = South, 270 = West
+    bearing(90),
+
+    //The minimum zoom level the map will zoom-out to when animating from one location to another on the map.
+    minZoom(10),
+    
+    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    maxZoom(14)
+)
+```
+
+::: zone-end
+
 Häufig ist es wünschenswert, den Fokus der Karte auf einen Satz von Daten zu richten. Ein Begrenzungsrahmen kann mithilfe der `MapMath.fromData`-Methode aus Features berechnet und an die Option `bounds` der Kartenkamera übergeben werden. Beim Festlegen einer Kartenansicht, die auf einem Begrenzungsrahmen basiert, ist es häufig sinnvoll, einen `padding`-Wert anzugeben, um die Pixelgröße der Punkte zu berücksichtigen, die als Blasen oder Symbole gerendert werden. Der folgende Code zeigt, wie Sie alle optionalen Kameraoptionen festlegen, wenn Sie einen Begrenzungsrahmen zum Festlegen der Kameraposition verwenden.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Set the camera of the map using a bounding box.
@@ -115,6 +166,38 @@ map.setCamera(
     maxZoom(14)
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Set the camera of the map using a bounding box.
+map.setCamera(
+    //The area to focus the map on.
+    bounds(BoundingBox.fromLngLats(
+        //West
+        -122.4594,
+
+        //South
+        47.4333,
+        
+        //East
+        -122.21866,
+        
+        //North
+        47.75758
+    )),
+
+    //Amount of pixel buffer around the bounding box to provide extra space around the bounding box.
+    padding(20),
+
+    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    maxZoom(14)
+)
+```
+
+::: zone-end
 
 Beachten Sie, dass das Seitenverhältnis eines Begrenzungsrahmens u. U. nicht mit dem Seitenverhältnis der Karte identisch ist, da auf der Karte häufig der vollständige Bereich des Begrenzungsrahmens zu sehen ist, während sie häufig auf einen kleineren vertikalen oder horizontalen Ausschnitt beschränkt sein kann.
 

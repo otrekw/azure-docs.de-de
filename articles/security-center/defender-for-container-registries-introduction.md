@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 79a428c322b65bfbb982be7a7e0c8b9fab7eed18
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 3f358bebc1cc4eb17b8c50b1e3a13366717ae98c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132731"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100711"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Einführung in Azure Defender für Containerregistrierungen
 
@@ -76,7 +76,7 @@ Security Center filtert und klassifiziert die Ergebnisse des Scanners. Wenn ein 
 Ja. Die Ergebnisse befinden sich unter [Sub-Assessments Rest API](/rest/api/securitycenter/subassessments/list/) (Unterbewertungen-REST-API). Außerdem können Sie Azure Resource Graph (ARG) verwenden, die Kusto-ähnliche API für alle Ihre Ressourcen: Mit einer Abfrage kann ein bestimmter Scan abgerufen werden.
 
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>Welche Typen von Registrierungen werden überprüft? Welche Typen werden abgerechnet?
-Eine Liste der Typen von Containerregistrierungen, die von Azure Defender für Containerregistrierungen unterstützt werden, finden Sie unter [Verfügbarkeit](defender-for-container-registries-usage.md#availability).
+Eine Liste der Typen von Containerregistrierungen, die von Azure Defender für Containerregistrierungen unterstützt werden, finden Sie unter [Verfügbarkeit](#availability).
 
 Wenn Sie nicht unterstützte Registrierungen mit Ihrem Azure-Abonnement verbinden, werden sie nicht überprüft und Ihnen nicht in Rechnung gestellt.
 

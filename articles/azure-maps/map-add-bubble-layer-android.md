@@ -3,17 +3,18 @@ title: Hinzufügen einer Blasenebene zu Android-Karten | Microsoft Azure Maps
 description: Lernen Sie, Punkte auf Karten als Kreise mit fester Größe zu rendern. Erfahren Sie, wie Sie das Azure Maps Android SDK verwenden, um Blasenebenen zu diesem Zweck hinzuzufügen und anzupassen.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/07/2020
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 7506a2083a34832ee3f6f6222f86d35d10228728
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: f3c175f30c5c0e6206f4fee274e0f3f000e55a74
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681380"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100167"
 ---
 # <a name="add-a-bubble-layer-to-a-map-android-sdk"></a>Hinzufügen einer Blasenebene zu einer Karte (Android SDK)
 
@@ -29,6 +30,8 @@ Stellen Sie sicher, dass Sie die Schritte im Dokument [Schnellstart: Erstellen e
 ## <a name="add-a-bubble-layer"></a>Hinzufügen einer Blasenebene
 
 Mit dem folgenden Code wird ein Array von Punkten in eine Datenquelle geladen. Anschließend werden die Datenpunkte mit einer Blasenebene verbunden. Die Blasenebene rendert den Radius jeder Blase mit fünf Pixeln und einer weißen Füllfarbe sowie einer blauen Strichfarbe und einer Strichbreite von sechs Pixeln.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -58,6 +61,41 @@ BubbleLayer layer = new BubbleLayer(source,
 map.layers.add(layer);
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create point locations.
+val points: Array<Point> = arrayOf<Point>(
+    Point.fromLngLat(-73.985708, 40.75773),
+    Point.fromLngLat(-73.985600, 40.76542),
+    Point.fromLngLat(-73.985550, 40.77900),
+    Point.fromLngLat(-73.975550, 40.74859),
+    Point.fromLngLat(-73.968900, 40.78859)
+)
+
+//Add multiple points to the data source.
+source.add(points)
+
+//Create a bubble layer to render the filled in area of the circle, and add it to the map.
+val layer = BubbleLayer(
+    source,
+    bubbleRadius(5f),
+    bubbleColor("white"),
+    bubbleStrokeColor("#4288f7"),
+    bubbleStrokeWidth(6f)
+)
+
+map.layers.add(layer)
+```
+
+::: zone-end
+
 Der folgende Screenshot veranschaulicht, wie durch den oben aufgeführten Code Punkte in einer Blasenebene gerendert werden.
 
 ![Karte mit Punkten, die unter Verwendung einer Blasenebene gerendert wurden](media/map-add-bubble-layer-android/android-bubble-layer.png)
@@ -65,6 +103,8 @@ Der folgende Screenshot veranschaulicht, wie durch den oben aufgeführten Code P
 ## <a name="show-labels-with-a-bubble-layer"></a>Anzeigen von Bezeichnungen bei einer Blasenebene
 
 Dieser Code zeigt, wie Sie eine Blasenebene zum Rendern eines Punkts auf der Karte verwenden. Außerdem wird gezeigt, wie Sie eine Symbolebene verwenden, um eine Bezeichnung zu rendern. Legen Sie die Option `iconImage` auf `"none"` fest, um das Symbol der Symbolebene auszublenden.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -91,6 +131,43 @@ map.layers.add(new SymbolLayer(source,
     textOffset(new Float[]{0f, -2.2f})
 ));
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Add a data point to the map.
+source.add(Point.fromLngLat(-122.336641, 47.627631))
+
+//Add a bubble layer.
+map.layers.add(
+    BubbleLayer(
+        source,
+        bubbleRadius(5f),
+        bubbleColor("white"),
+        bubbleStrokeColor("#4288f7"),
+        bubbleStrokeWidth(6f)
+    )
+)
+
+//Add a symbol layer to display text, hide the icon image.
+map.layers.add(
+    SymbolLayer(
+        source,  //Hide the icon image.
+        iconImage("none"),
+        textField("Museum of History & Industry (MOHAI)"),
+        textColor("#005995"),
+        textOffset(arrayOf(0f, -2.2f))
+    )
+)
+```
+
+::: zone-end
 
 Der folgende Screenshot veranschaulicht, wie durch den oben aufgeführten Code ein Punkt in einer Blasenebene und eine Beschriftung für den Punkt in einer Symbolebene gerendert werden.
 

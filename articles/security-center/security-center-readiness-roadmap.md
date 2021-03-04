@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: fcaf427c2e0ab275a5a6e08306dda785bca690d6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e4f905b7a08564eadb20d65d651c137ef3741376
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784166"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100320"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Roadmap für Azure Security Center-Bereitschaft
 Dieses Dokument enthält eine Roadmap für die Bereitschaft, die Ihnen als Hilfe bei den ersten Schritten mit Azure Security Center dient.
@@ -59,7 +59,6 @@ Security Center erfasst, analysiert und vereinigt automatisch Protokolldaten von
 Verwenden Sie die folgenden Ressourcen als Hilfe beim Verwalten von Sicherheitswarnungen und Schützen Ihrer Ressourcen.
 
 Artikel    
-- [Überwachen der Sicherheitsintegrität in Azure Security Center](./security-center-monitoring.md)
 - [Schützen Ihres Netzwerks in Azure Security Center](./security-center-network-recommendations.md)
 - [Schützen des Azure SQL-Diensts und Ihrer Daten in Azure Security Center](./security-center-remediate-recommendations.md)
 

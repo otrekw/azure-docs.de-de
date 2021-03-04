@@ -3,17 +3,18 @@ title: Hinzufügen einer Wärmebildebene zu Android-Karten | Microsoft Azure Map
 description: Informationen zum Erstellen eines Wärmebilds. Erfahren Sie, wie Sie einer Karte mit dem Azure Maps Android SDK eine Wärmebildebene hinzufügen. Lernen Sie, Wärmebildebenen anzupassen.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/01/2020
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 4de59bd0b2a9dc9b11acf55a59b82724d2c7b862
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: fce2c2d007f92c43e763826f9345f773324e885e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681313"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100184"
 ---
 # <a name="add-a-heat-map-layer-android-sdk"></a>Hinzufügen einer Wärmebildebene (Android SDK)
 
@@ -43,6 +44,8 @@ Stellen Sie sicher, dass Sie die Schritte im Dokument [Schnellstart: Erstellen e
 Wenn Sie eine Datenquelle, die aus Punkten besteht, als Wärmebild rendern möchten, übergeben Sie diese an eine Instanz der `HeatMapLayer`-Klasse, und fügen Sie sie der Karte hinzu.
 
 Im folgenden Codebeispiel wird ein GeoJSON-Feed von Erdbeben aus der letzten Woche geladen und als Wärmebild gerendert. Jeder Datenpunkt wird bei allen Zoomfaktoren mit einem Radius von 10 Pixeln gerendert. Das Wärmebild befindet sich unter der Bezeichnungsebene, um eine bessere Benutzerfreundlichkeit und deutliche Sichtbarkeit der Bezeichnungen sicherzustellen. Die Daten in diesem Beispiel stammen aus dem [USGS Earthquake Hazards Program](https://earthquake.usgs.gov/). In diesem Beispiel werden GeoJSON-Daten mithilfe des im Dokument [Erstellen einer Datenquelle](create-data-source-android-sdk.md) bereitgestellten Codeblocks des Datenimport-Hilfsprogramms aus dem Web geladen.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -80,6 +83,49 @@ Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
     });
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a heat map layer.
+val layer = HeatMapLayer(
+    source,
+    heatmapRadius(10f),
+    heatmapOpacity(0.8f)
+)
+
+//Add the layer to the map, below the labels.
+map.layers.add(layer, "labels")
+
+//Import the geojson data and add it to the data source.
+Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson",
+    this
+) { result: String? ->
+    //Parse the data as a GeoJSON Feature Collection.
+    val fc = FeatureCollection.fromJson(result!!)
+
+    //Add the feature collection to the data source.
+    source.add(fc)
+
+    //Optionally, update the maps camera to focus in on the data.
+    //Calculate the bounding box of all the data in the Feature Collection.
+    val bbox = MapMath.fromData(fc)
+
+    //Update the maps camera so it is focused on the data.
+    map.setCamera(
+        bounds(bbox),
+        padding(20)
+    )
+}
+```
+
+::: zone-end
+
 Der folgende Screenshot veranschaulicht, wie mithilfe des oben aufgeführten Codes ein Wärmebild in einer Karte geladen wird.
 
 ![Karte mit einer Wärmebildebene der letzten Erdbeben](media/map-add-heat-map-layer-android/android-heat-map-layer.png)
@@ -110,6 +156,8 @@ Im vorherigen Beispiel wurde das Wärmebild angepasst, indem der Radius und die 
 - `visible`: Blendet die Ebene aus oder ein.
 
 Im Folgenden ein Beispiel für ein Wärmebild, in dem ein Ausdruck für eine lineare Interpolation verwendet wird, um einen glatten Farbverlauf zu erzielen. Die in den Daten definierte `mag`-Eigenschaft wird mit einer exponentiellen Interpolation verwendet, um die Gewichtung oder Relevanz der einzelnen Datenpunkte festzulegen.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 HeatMapLayer layer = new HeatMapLayer(source,
@@ -143,6 +191,44 @@ HeatMapLayer layer = new HeatMapLayer(source,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+    heatmapRadius(10f),
+
+    //A linear interpolation is used to create a smooth color gradient based on the heat map density.
+    heatmapColor(
+        interpolate(
+            linear(),
+            heatmapDensity(),
+            stop(0, color(Color.TRANSPARENT)),
+            stop(0.01, color(Color.BLACK)),
+            stop(0.25, color(Color.MAGENTA)),
+            stop(0.5, color(Color.RED)),
+            stop(0.75, color(Color.YELLOW)),
+            stop(1, color(Color.WHITE))
+        )
+    ),
+
+    //Using an exponential interpolation since earthquake magnitudes are on an exponential scale.
+    heatmapWeight(
+       interpolate(
+            exponential(2),
+            get("mag"),
+            stop(0,0),
+
+            //Any earthquake above a magnitude of 6 will have a weight of 1
+            stop(6, 1)
+       )
+    )
+)
+```
+
+::: zone-end
+
 Im folgenden Screenshot ist die oben aufgeführte benutzerdefinierte Wärmebildebene mit denselben Daten wie im vorherigen Wärmebildbeispiel zu sehen.
 
 ![Karte mit einer benutzerdefinierten Wärmebildebene der letzten Erdbeben](media/map-add-heat-map-layer-android/android-custom-heat-map-layer.png)
@@ -156,6 +242,8 @@ Standardmäßig ist für die in der Wärmebildebene gerenderten Daten ein fester
 Zum Skalieren des Radius für jede Zoomebene können Sie einen `zoom`-Ausdruck verwenden, sodass jeder Datenpunkt den gleichen physischen Bereich der Karte abdeckt. Durch diesen Ausdruck sieht die Wärmebildebene statischer und konsistenter aus. Jede Zoomebene der Karte hat vertikal und horizontal doppelt so viele Pixel wie die vorherige Zoomebene.
 
 Wenn der Radius so skaliert wird, dass er sich mit jeder Zoomebene verdoppelt, wird ein Wärmebild erstellt, das auf allen Zoomebenen einheitlich aussieht. Verwenden Sie zum Anwenden dieser Skalierung Folgendes (wie im folgenden Beispiel veranschaulicht): `zoom` mit dem Basis-2-Ausdruck `exponential interpolation`, einen festgelegten Pixelradius für den minimalen Zoomfaktor und einen skalierten Radius für den maximalen Zoomfaktor mit der Berechnung `2 * Math.pow(2, minZoom - maxZoom)`. Zoomen Sie die Karte, um zu sehen, wie das Wärmebild mit der Zoomebene skaliert wird.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 HeatMapLayer layer = new HeatMapLayer(source,
@@ -174,6 +262,30 @@ HeatMapLayer layer = new HeatMapLayer(source,
   heatmapOpacity(0.75f)
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+  heatmapRadius(
+    interpolate(
+      exponential(2),
+      zoom(),
+
+      //For zoom level 1 set the radius to 2 pixels.
+      stop(1, 2f),
+
+      //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * (maxZoom - minZoom)^2 pixels.
+      stop(19, Math.pow(2.0, 19 - 1.0) * 2f)
+    )
+  ),
+  heatmapOpacity(0.75f)
+)
+```
+
+::: zone-end
 
 Das folgende Video zeigt eine Karte, die unter Verwendung des oben aufgeführten Codes ausgeführt wird. Beim Zoomen der Karte wird der Radius skaliert, damit das Wärmebild bei allen Zoomfaktoren auf konsistente Weise gerendert werden kann.
 
