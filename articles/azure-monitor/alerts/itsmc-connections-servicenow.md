@@ -1,17 +1,16 @@
 ---
 title: Verbinden von ServiceNow mit dem ITSM-Connector
 description: Erfahren Sie, wie Sie ServiceNow mit dem ITSM-Connector (ITSMC) in Azure Monitor verbinden, um ITSM-Arbeitselemente zentral zu überwachen und zu verwalten.
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: daaaf25bc1739b57d4696dc8978a330b00b08f70
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 51d16ae53e34dacfc41e3d31b01115f9c55ca9f7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601795"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039545"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>Verbinden von ServiceNow mit dem ITSM-Connector
 

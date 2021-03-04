@@ -1,17 +1,16 @@
 ---
 title: Leitfaden für in Azure Log Analytics gespeicherte personenbezogene Daten | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie personenbezogene Daten verwalten, die in Azure Log Analytics gespeichert sind, und wie Sie diese Daten identifizieren und entfernen.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 078ff7b48423f0e5327a6d22f3ddd6887dffeb43
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ff6d532d3c391ffecfbfb54a761c73ff24c823d9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602206"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040259"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Leitfaden für personenbezogene Daten, die in Log Analytics und Application Insights gespeichert sind
 

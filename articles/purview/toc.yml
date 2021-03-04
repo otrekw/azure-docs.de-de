@@ -122,8 +122,6 @@ items:
             href: how-to-create-import-export-glossary.md
           - name: Begriffsvorlagen verwalten
             href: how-to-manage-term-templates.md
-          - name: Massenbearbeitung von Ressourcen zum Zuweisen von Glossarbegriffen
-            href: how-to-bulk-edit-assets.md
       - name: Massenbearbeitung
         items:
           - name: Massenbearbeitung von Objekten zum Markieren von Anmerkungen und Kontakten

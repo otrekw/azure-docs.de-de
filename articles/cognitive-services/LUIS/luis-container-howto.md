@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 03/02/2021
 ms.author: aahi
 keywords: Lokal, Docker, Container
-ms.openlocfilehash: 2bef6aa4e624386750a4c989d7e56cc1b22aaa5e
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: e157e976186f03aa984877435c42b996ce476740
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861997"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040191"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>Installieren und Ausführen von Docker-Containern für LUIS
 
@@ -281,7 +281,7 @@ Die Abfrageparameter legen fest, was auf welche Weise in der Abfrageantwort zur�
 |`staging`|boolean|Gibt bei Festlegung auf TRUE die Abfrage aus den Ergebnissen der Stagingumgebung zurück. |
 |`log`|boolean|Protokolliert Abfragen, die später für [aktives Lernen](luis-how-to-review-endpoint-utterances.md) verwendet werden können. Der Standardwert ist "true".|
 
-**_
+***
 
 ### <a name="query-the-luis-app"></a>Abfragen der LUIS-App
 
@@ -299,7 +299,7 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/production/predict"
 ```
 
-Ersetzen Sie zum Abfragen der _ *Stagingumgebung** `production` in der Route durch `staging`:
+Um Abfragen an die **Stagingumgebung** vorzunehmen, ersetzen Sie `production` in der Route durch `staging`:
 
 `http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/staging/predict`
 
@@ -335,7 +335,7 @@ curl -X GET \
 ```
 Der Versionsname enthält maximal 10 Zeichen, die auch in einer URL zulässig wären.
 
-**_
+***
 
 ## <a name="import-the-endpoint-logs-for-active-learning"></a>Importieren der Endpunktprotokolle für aktives Lernen
 
@@ -346,7 +346,7 @@ Der folgende Pfad veranschaulicht die geschachtelte Verzeichnisstruktur für die
 /output/luis/{INSTANCE_ID}/
 ```
 
-Wählen Sie Ihre App im LUIS-Portal aus, und klicken Sie dann auf _ *Endpunktprotokolle importieren**, um diese Protokolle hochzuladen.
+Wählen Sie Ihre App im LUIS-Portal aus, und wählen Sie dann **Endpunktprotokolle importieren** aus, um diese Protokolle hochzuladen.
 
 ![Importieren der Protokolldateien des Containers für aktives Lernen](./media/luis-container-how-to/upload-endpoint-log-files.png)
 

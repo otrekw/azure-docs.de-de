@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: 85f8b340635354d4bb0f28f2b3d79b617bd897f8
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: ea902b8b609d226f6bb9e61ec0bfd60f75a3825d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754877"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038576"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Modus für gemeinsam genutzte Geräte für Android-Geräte
 
@@ -34,7 +34,7 @@ Der Modus für gemeinsam genutzte Geräte ermöglicht auch eine auf Microsoft-Id
 Bei der Erstellung einer App für den Modus für gemeinsam genutzte Geräte arbeiten Entwickler und Cloudgeräteadministratoren zusammen:
 
 - Entwickler schreiben eine App für ein einzelnes Konto (Apps für mehrere Konten werden im Modus für gemeinsam genutzte Geräte nicht unterstützt), fügen `"shared_device_mode_supported": true` in der Konfiguration der App hinzu und schreiben Code zum Ausführen von Vorgängen wie z. B. das Abmelden bei dem gemeinsam genutzten Gerät.
-- Geräteadministratoren bereiten das gemeinsam zu nutzende Gerät vor, indem sie die Authenticator-App installieren und das Gerät mithilfe der Authenticator-App auf den Modus für gemeinsam genutzte Geräte festlegen. Nur Benutzer mit der Rolle [Cloudgeräteadministrator](../roles/permissions-reference.md#cloud-device-administrator-permissions) können mithilfe der [Authenticator-App](../user-help/user-help-auth-app-overview.md) für ein Gerät den Modus für gemeinsam genutzte Geräte festlegen. Sie können die Mitgliedschaft der Organisationsrollen im Azure-Portal über **Azure Active Directory** > **Rollen und Administratoren** > **Cloudgeräteadministrator** konfigurieren.
+- Geräteadministratoren bereiten das gemeinsam zu nutzende Gerät vor, indem sie die Authenticator-App installieren und das Gerät mithilfe der Authenticator-App auf den Modus für gemeinsam genutzte Geräte festlegen. Nur Benutzer mit der Rolle [Cloudgeräteadministrator](../roles/permissions-reference.md#cloud-device-administrator) können mithilfe der [Authenticator-App](../user-help/user-help-auth-app-overview.md) für ein Gerät den Modus für gemeinsam genutzte Geräte festlegen. Sie können die Mitgliedschaft der Organisationsrollen im Azure-Portal über **Azure Active Directory** > **Rollen und Administratoren** > **Cloudgeräteadministrator** konfigurieren.
 
  Dieser Artikel konzentriert sich hauptsächlich darauf, was Entwickler berücksichtigen sollten.
 
