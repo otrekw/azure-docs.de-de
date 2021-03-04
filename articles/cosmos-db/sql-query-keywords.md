@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: tisande
-ms.openlocfilehash: 09148e65e446d723fbfe7a54602db59ee0739f83
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4711401172c4a2b224c231db4a773e0c4219d3a7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599358"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659833"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Schlüsselwörter in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -113,7 +113,7 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 Gibt je nachdem, ob eine bestimmte Zeichenfolge mit einem angegebenen Muster übereinstimmt, einen booleschen Wert zurück. Ein Muster kann normale Zeichen und Platzhalterzeichen einschließen. Sie können logisch äquivalente Abfragen schreiben, indem Sie entweder das `LIKE`-Schlüsselwort oder die [RegexMatch](sql-query-regexmatch.md)-Systemfunktion verwenden. Sie werden unabhängig von der ausgewählten Option dieselbe Indexauslastung beobachten. Daher sollten Sie `LIKE` verwenden, wenn Sie dessen Syntax anderen regulären Ausdrücken vorziehen.
 
 > [!NOTE]
-> Da `LIKE` einen Index verwenden kann, sollten Sie [einen Bereichsindex erstellen](indexing-policy.md) für Eigenschaften, die Sie mit `LIKE` vergleichen.
+> Da `LIKE` einen Index verwenden kann, sollten Sie [einen Bereichsindex erstellen](./index-policy.md) für Eigenschaften, die Sie mit `LIKE` vergleichen.
 
 Sie können folgende Platzhalterzeichen mit „LIKE“ verwenden:
 

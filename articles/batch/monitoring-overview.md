@@ -3,12 +3,12 @@ title: Überwachen von Azure Batch
 description: Hier finden Sie Informationen zu Azure-Überwachungsdiensten, Metriken Diagnoseprotokollen und weiteren Überwachungsfeatures für Azure Batch.
 ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: 9387d4894dbf06445fd43722353ca7ae98607359
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b926f9c6d173cd0b8d886047eae490e4a151988f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86144946"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595430"
 ---
 # <a name="monitor-batch-solutions"></a>Überwachen von Batch-Lösungen
 
@@ -18,15 +18,15 @@ Eine Übersicht über die verfügbaren Azure-Komponenten und -Dienste zur Überw
 
 ## <a name="subscription-level-monitoring"></a>Überwachung auf Abonnementebene
 
-Auf der Abonnementebene (die auch Batch-Konten einschließt) werden im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md) Betriebsereignisdaten in [verschiedenen Kategorien](../azure-monitor/platform/activity-log.md#view-the-activity-log) gesammelt.
+Auf der Abonnementebene (die auch Batch-Konten einschließt) werden im [Azure-Aktivitätsprotokoll](../azure-monitor/essentials/platform-logs-overview.md) Betriebsereignisdaten in [verschiedenen Kategorien](../azure-monitor/essentials/activity-log.md#view-the-activity-log) gesammelt.
 
 Speziell für Batch-Konten werden Ereignisse im Zusammenhang mit der Kontoerstellung/-löschung und der Schlüsselverwaltung erfasst.
 
-Ereignisse können unter anderem über das Azure-Portal aus dem Aktivitätsprotokoll abgerufen werden. Klicken Sie auf **Alle Dienste** > **Aktivitätsprotokoll**. Alternativ können Ereignisse über die Azure-Befehlszeilenschnittstelle, mithilfe von PowerShell-Cmdlets oder unter Verwendung der Azure Monitor-REST-API abgefragt werden. Sie können das Aktivitätsprotokoll auch exportieren oder [Aktivitätsprotokollwarnungen](../azure-monitor/platform/alerts-activity-log.md) konfigurieren.
+Ereignisse können unter anderem über das Azure-Portal aus dem Aktivitätsprotokoll abgerufen werden. Klicken Sie auf **Alle Dienste** > **Aktivitätsprotokoll**. Alternativ können Ereignisse über die Azure-Befehlszeilenschnittstelle, mithilfe von PowerShell-Cmdlets oder unter Verwendung der Azure Monitor-REST-API abgefragt werden. Sie können das Aktivitätsprotokoll auch exportieren oder [Aktivitätsprotokollwarnungen](../azure-monitor/alerts/alerts-activity-log.md) konfigurieren.
 
 ## <a name="batch-account-level-monitoring"></a>Überwachung auf Batch-Kontoebene
 
-Überwachen Sie die einzelnen Batch-Konten mithilfe der Features von [Azure Monitor](../azure-monitor/overview.md). Azure Monitor erfasst [Metriken](../azure-monitor/platform/data-platform-metrics.md) und optional [Diagnoseprotokolle](../azure-monitor/platform/platform-logs-overview.md) für Ressourcen auf der Ebene eines Batch-Kontos. Hierzu zählen beispielsweise Pools, Aufträge und Aufgaben. Erfassen und nutzen Sie diese Daten manuell oder programmgesteuert, um Aktivitäten in Ihrem Batch-Konto zu überwachen und Probleme zu diagnostizieren. Ausführliche Informationen finden Sie unter [Batch-Metriken, -Warnungen und -Protokolle für die Diagnoseauswertung und -überwachung](batch-diagnostics.md).
+Überwachen Sie die einzelnen Batch-Konten mithilfe der Features von [Azure Monitor](../azure-monitor/overview.md). Azure Monitor erfasst [Metriken](../azure-monitor/essentials/data-platform-metrics.md) und optional [Diagnoseprotokolle](../azure-monitor/essentials/platform-logs-overview.md) für Ressourcen auf der Ebene eines Batch-Kontos. Hierzu zählen beispielsweise Pools, Aufträge und Aufgaben. Erfassen und nutzen Sie diese Daten manuell oder programmgesteuert, um Aktivitäten in Ihrem Batch-Konto zu überwachen und Probleme zu diagnostizieren. Ausführliche Informationen finden Sie unter [Batch-Metriken, -Warnungen und -Protokolle für die Diagnoseauswertung und -überwachung](batch-diagnostics.md).
  
 > [!NOTE]
 > Metriken sind standardmäßig ohne zusätzliche Konfiguration in Ihrem Batch-Konto verfügbar und decken jeweils die letzten 30 Tage ab. Sie müssen die Diagnoseprotokollierung für ein Batch-Konto aktivieren, und durch die Speicherung oder Verarbeitung von Diagnoseprotokolldaten entstehen unter Umständen zusätzliche Kosten. 

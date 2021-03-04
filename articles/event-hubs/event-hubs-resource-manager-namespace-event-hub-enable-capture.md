@@ -1,15 +1,15 @@
 ---
 title: 'Erstellen eines Event Hubs, für den Capture aktiviert ist: Azure Event Hubs | Microsoft-Dokumentation'
 description: Erstellen eines Azure Event Hubs-Namespace mit einem Event Hub und Aktivieren der von Capture über eine Azure Resource Manager-Vorlage
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 658defcef5c9d145d499eb72ae372d1a7edfb740
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 17157e05e4ad123ba2bbdffa199c111df9f8912e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705420"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653022"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Erstellen eines Namespace mit Event Hub und Aktivieren von Capture mithilfe einer Vorlage
 
@@ -27,7 +27,7 @@ Die vollständigen Vorlagen finden Sie unter den folgenden GitHub-Links:
 - [Event Hub und Aktivierung der Erfassung in Azure Data Lake Store (Vorlage)][Event Hub and enable Capture to Azure Data Lake Store template]
 
 > [!NOTE]
-> Um die neuesten Vorlagen zu finden, rufen Sie den Katalog [Azure-Schnellstartvorlagen][Azure Quickstart Templates] auf, und suchen Sie nach „Event Hubs“.
+> Die neuesten Vorlagen finden Sie, indem Sie im Katalog [Azure-Schnellstartvorlagen][Azure Quickstart Templates] nach „Event Hubs“ suchen.
 > 
 > 
 
@@ -399,7 +399,7 @@ Stellen Sie Ihre Vorlage bereit, um Event Hubs Capture mit Azure Data Lake Store
 New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json
 ```
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+## <a name="azure-cli"></a>Azure CLI
 
 Azure Blob Storage als Ziel:
 

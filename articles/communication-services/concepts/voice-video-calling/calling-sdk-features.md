@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 666474b7c7b823114b6dee2925ed5f81973e212d
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: ed56d0cf69710173d41c5262e7a3121a0cad1304
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650931"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660139"
 ---
 # <a name="calling-client-library-overview"></a>Übersicht über die Clientbibliothek für Telefonie
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Es gibt zwei separate Familien von Clientbibliotheken für Telefonie: eine für *Clients* und eine für *Dienste*. Die aktuell verfügbaren Clientbibliotheken sind für Endbenutzerumgebungen (Websites und native Apps) vorgesehen.
 
@@ -28,35 +26,35 @@ Die Clientbibliotheken für Dienste sind noch nicht verfügbar und ermöglichen 
 
 Die folgende Liste enthält die Features, die aktuell in den Clientbibliotheken für Telefonie von Communication Services verfügbar sind:
 
-| Featuregruppe | Funktion                                                                                                          | JS  | Java (Android) | Objective-C (iOS) 
+| Featuregruppe | Funktion                                                                                                          | JS  | Java (Android) | Objective-C (iOS)
 | ----------------- | ------------------------------------------------------------------------------------------------------------------- | ---  | -------------- | -------------
-| Grundlegende Funktionen | Tätigen eines 1:1-Anrufs zwischen zwei Benutzern                                                                           | ✔️   | ✔️            | ✔️  
-|                   | Tätigen eines Gruppenanrufs zwischen mehr als zwei Benutzern (bis zu 350 Benutzer)                                                       | ✔️   | ✔️            | ✔️ 
-|                   | Höherstufen eines 1:1-Anrufs mit zwei Benutzern zu einem Gruppenanruf mit mehr als zwei Benutzern                                 | ✔️   | ✔️            | ✔️ 
-|                   | Beitreten zu einem bereits gestarteten Gruppenanruf                                                                              | ✔️   | ✔️            | ✔️ 
+| Grundlegende Funktionen | Tätigen eines 1:1-Anrufs zwischen zwei Benutzern                                                                           | ✔️   | ✔️            | ✔️
+|                   | Tätigen eines Gruppenanrufs zwischen mehr als zwei Benutzern (bis zu 350 Benutzer)                                                       | ✔️   | ✔️            | ✔️
+|                   | Höherstufen eines 1:1-Anrufs mit zwei Benutzern zu einem Gruppenanruf mit mehr als zwei Benutzern                                 | ✔️   | ✔️            | ✔️
+|                   | Beitreten zu einem bereits gestarteten Gruppenanruf                                                                              | ✔️   | ✔️            | ✔️
 |                   | Einladen eines weiteren VoIP-Teilnehmers zu einem laufenden Gruppenanruf                                                       | ✔️   | ✔️            | ✔️
-|                   | Aktivieren/Deaktivieren Ihres Videos                                                         | ✔️   | ✔️            | ✔️ 
-|                   | Stummschalten des Mikrofons/Aufheben der Stummschaltung                                                                                                     | ✔️   | ✔️            | ✔️         
-|                   | Wechseln zwischen Kameras                                                                                              | ✔️   | ✔️            | ✔️           
-|                   | Lokales Halten/Aufheben des Haltens                                                                                                  | ✔️   | ✔️            | ✔️           
-|                   | Aktiver Lautsprecher                                                                                                      | ✔️   | ✔️            | ✔️           
-|                   | Auswählen des Lautsprechers für Anrufe                                                                                            | ✔️   | ✔️            | ✔️           
-|                   | Auswählen des Mikrofons für Anrufe                                                                                         | ✔️   | ✔️            | ✔️           
-|                   | Anzeigen des Status eines Teilnehmers<br/>*Beschäftigt, Early Media, Verbindungsaufbau, Verbunden, Gehalten, Im Wartebereich, Getrennt*         | ✔️   | ✔️            | ✔️           
-|                   | Anzeigen des Zustands eines Anrufs<br/>*Early Media, Eingehend, Verbindungsaufbau, Klingeln, Verbunden, Halten, Trennung, Getrennt* | ✔️   | ✔️            | ✔️           
-|                   | Anzeigen, ob ein Teilnehmer stummgeschaltet ist                                                                                      | ✔️   | ✔️            | ✔️           
-|                   | Anzeigen des Grunds, warum ein Teilnehmer einen Anruf verlassen hat                                                                       | ✔️   | ✔️            | ✔️     
-| Bildschirmfreigabe    | Freigeben des gesamten Bildschirms innerhalb der Anwendung                                                                 | ✔️   | ❌            | ❌           
-|                   | Freigeben einer bestimmten Anwendung (aus der Liste aktiver Anwendungen)                                                | ✔️   | ❌            | ❌           
-|                   | Freigeben eines Webbrowsertabs aus der Liste geöffneter Tabs                                                                  | ✔️   | ❌            | ❌           
-|                   | Anzeigen von Remotebildschirmfreigabe durch Teilnehmer                                                                            | ✔️   | ✔️            | ✔️         
-| Liste            | Auflisten von Teilnehmern                                                                                                   | ✔️   | ✔️            | ✔️           
-|                   | Entfernen eines Teilnehmers                                                                                                | ✔️   | ✔️            | ✔️         
-| PSTN              | Tätigen eines 1:1-Anrufs mit einem PSTN-Teilnehmer                                                                     | ✔️   | ✔️            | ✔️   
+|                   | Aktivieren/Deaktivieren Ihres Videos                                                         | ✔️   | ✔️            | ✔️
+|                   | Stummschalten des Mikrofons/Aufheben der Stummschaltung                                                                                                     | ✔️   | ✔️            | ✔️
+|                   | Wechseln zwischen Kameras                                                                                              | ✔️   | ✔️            | ✔️
+|                   | Lokales Halten/Aufheben des Haltens                                                                                                  | ✔️   | ✔️            | ✔️
+|                   | Aktiver Lautsprecher                                                                                                      | ✔️   | ✔️            | ✔️
+|                   | Auswählen des Lautsprechers für Anrufe                                                                                            | ✔️   | ✔️            | ✔️
+|                   | Auswählen des Mikrofons für Anrufe                                                                                         | ✔️   | ✔️            | ✔️
+|                   | Anzeigen des Status eines Teilnehmers<br/>*Beschäftigt, Early Media, Verbindungsaufbau, Verbunden, Gehalten, Im Wartebereich, Getrennt*         | ✔️   | ✔️            | ✔️
+|                   | Anzeigen des Zustands eines Anrufs<br/>*Early Media, Eingehend, Verbindungsaufbau, Klingeln, Verbunden, Halten, Trennung, Getrennt* | ✔️   | ✔️            | ✔️
+|                   | Anzeigen, ob ein Teilnehmer stummgeschaltet ist                                                                                      | ✔️   | ✔️            | ✔️
+|                   | Anzeigen des Grunds, warum ein Teilnehmer einen Anruf verlassen hat                                                                       | ✔️   | ✔️            | ✔️
+| Bildschirmfreigabe    | Freigeben des gesamten Bildschirms innerhalb der Anwendung                                                                 | ✔️   | ❌            | ❌
+|                   | Freigeben einer bestimmten Anwendung (aus der Liste aktiver Anwendungen)                                                | ✔️   | ❌            | ❌
+|                   | Freigeben eines Webbrowsertabs aus der Liste geöffneter Tabs                                                                  | ✔️   | ❌            | ❌
+|                   | Anzeigen von Remotebildschirmfreigabe durch Teilnehmer                                                                            | ✔️   | ✔️            | ✔️
+| Liste            | Auflisten von Teilnehmern                                                                                                   | ✔️   | ✔️            | ✔️
+|                   | Entfernen eines Teilnehmers                                                                                                | ✔️   | ✔️            | ✔️
+| PSTN              | Tätigen eines 1:1-Anrufs mit einem PSTN-Teilnehmer                                                                     | ✔️   | ✔️            | ✔️
 |                   | Tätigen eines Gruppenanrufs mit PSTN-Teilnehmern                                                                           | ✔️   | ✔️            | ✔️
 |                   | Höherstufen eines 1:1-Anrufs mit einem PSTN-Teilnehmer zu einem Gruppenanruf                                                 | ✔️   | ✔️            | ✔️
-|                   | Verlassen eines Gruppenanrufs als PSTN-Teilnehmer                                                                    | ✔️   | ✔️            | ✔️   
-| Allgemein           | Testen von Mikrofon, Lautsprecher und Kamera mit einem Audiotestdienst (verfügbar durch Anrufen von 8:echo123)                   |  ✔️  | ✔️            | ✔️   
+|                   | Verlassen eines Gruppenanrufs als PSTN-Teilnehmer                                                                    | ✔️   | ✔️            | ✔️
+| Allgemein           | Testen von Mikrofon, Lautsprecher und Kamera mit einem Audiotestdienst (verfügbar durch Anrufen von 8:echo123)                   |  ✔️  | ✔️            | ✔️
 
 ## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>JavaScript-Clientbibliothek für Telefonie: Unterstützung nach Betriebssystemen und Browsern
 
@@ -96,7 +94,7 @@ Die Clientbibliothek für Telefonie von Communication Services unterstützt die 
 
 |           |Web | Android/iOS|
 |-----------|----|------------|
-|**Anzahl der ausgehenden Datenströme, die gleichzeitig gesendet werden können.** |1 Audio-/Videostream oder 1 Audio-/Bildschirmfreigabe | 1 Audio-/Videostream | 
+|**Anzahl der ausgehenden Datenströme, die gleichzeitig gesendet werden können.** |1 Audio-/Videostream oder 1 Audio-/Bildschirmfreigabe | 1 Audio-/Videostream |
 |**Anzahl der eingehenden Datenströme, die gleichzeitig gerendert werden können.** |1 Audio-/Videostream oder 1 Audio-/Bildschirmfreigabe| 6 Audio-/Videostreams oder 1 Bildschirmfreigabe |
 
 Beachten Sie, dass in Gruppenszenarien ein gemischter Audiostream zur Unterstützung aller Audioteilnehmer verwendet wird.
@@ -107,6 +105,6 @@ Beachten Sie, dass in Gruppenszenarien ein gemischter Audiostream zur Unterstüt
 > [Erste Schritte mit Anrufen](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
-- Machen Sie sich mit allgemeinen [Anrufflows](../call-flows.md) vertraut. 
+- Machen Sie sich mit allgemeinen [Anrufflows](../call-flows.md) vertraut.
 - Informieren Sie sich über [Anruftypen](../voice-video-calling/about-call-types.md).
 - Weitere Informationen zu Telefonnummerntypen finden Sie [hier](../telephony-sms/plan-solution.md).

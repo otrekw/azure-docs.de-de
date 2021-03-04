@@ -5,12 +5,12 @@ author: grzuber
 ms.topic: article
 ms.date: 05/09/2019
 ms.author: grzuber
-ms.openlocfilehash: 983d45a7a240701fa6441d2d9edeeda16f1ed18b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 400651b240f0518a85b9deb7a7293a77a88b0861
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86256491"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591713"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>Diagnostizieren von häufigen Fehlern im Zusammenhang mit Codepaketen mit Service Fabric
 
@@ -58,5 +58,5 @@ Exitcode | Hexadezimalwert | Kurze Beschreibung | Grundursache | Mögliche Lösu
 
 * Weitere Informationen zur [Diagnose weiterer häufiger Szenarien](service-fabric-diagnostics-common-scenarios.md).
 * Eine ausführlichere Übersicht über Azure Monitor-Protokolle und ihre Inhalte finden Sie unter [Azure Monitor: Übersicht.](../azure-monitor/overview.md)
-* Erfahren Sie mehr über die [Warnungen](../azure-monitor/platform/alerts-overview.md) von Azure Monitor-Protokollen, die bei der Erkennung und Diagnose hilfreich sein können.
-* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../azure-monitor/log-query/log-query-overview.md) in Azure Monitor-Protokollen vertraut, die als Bestandteil von Azure Monitor-Protokollen angeboten werden.
+* Erfahren Sie mehr über die [Warnungen](../azure-monitor/alerts/alerts-overview.md) von Azure Monitor-Protokollen, die bei der Erkennung und Diagnose hilfreich sein können.
+* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../azure-monitor/logs/log-query-overview.md) in Azure Monitor-Protokollen vertraut, die als Bestandteil von Azure Monitor-Protokollen angeboten werden.

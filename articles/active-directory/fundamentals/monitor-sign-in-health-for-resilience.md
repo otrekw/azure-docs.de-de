@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40bfa27dba905cb2e9a363c7739f0a43e7c2afdf
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ad99c8d319a22f8b5388838b9d537de2f610478a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100100966"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650990"
 ---
 # <a name="monitoring-application-sign-in-health-for-resilience"></a>Überwachen der Anwendungsanmeldeintegrität für mehr Resilienz
 
@@ -51,7 +51,7 @@ In diesem Artikel wird schrittweise das Einrichten der Arbeitsmappe „Anwendung
 
 * Ein Log Analytics-Arbeitsbereich in Ihrem Azure-Abonnement, um Protokolle an Azure Monitor-Protokolle zu senden. 
 
-   * Lesen Sie hierzu [Erstellen eines Log Analytics-Arbeitsbereichs](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
+   * Lesen Sie hierzu [Erstellen eines Log Analytics-Arbeitsbereichs](../../azure-monitor/logs/quick-create-workspace.md)
 
 * In Azure Monitor-Protokolle integrierte Azure AD-Protokolle.
 
@@ -94,7 +94,7 @@ Erstellen Sie anhand der folgenden Anweisungen E-Mail-Warnungen, die auf den in 
 
  Führen Sie die folgenden Schritte aus, um die zugrunde liegende Abfrage zu konfigurieren und Warnungen festzulegen. Die Beispielabfrage wird als Grundlage für Ihre Konfiguration verwendet. Eine Erläuterung der Abfragestruktur finden Sie am Ende dieses Abschnitts.
 
-Weitere Informationen zum Erstellen, Anzeigen und Verwalten von Protokollwarnungen mit Azure Monitor finden Sie unter [Verwalten von Protokollwarnungen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log).
+Weitere Informationen zum Erstellen, Anzeigen und Verwalten von Protokollwarnungen mit Azure Monitor finden Sie unter [Verwalten von Protokollwarnungen](../../azure-monitor/alerts/alerts-log.md).
 
  
 1. Wählen Sie in der Arbeitsmappe **Bearbeiten** aus, und wählen Sie dann das **Abfragesymbol** direkt über der rechten Seite des Diagramms aus.   
@@ -280,10 +280,9 @@ Nachdem Sie Abfrage und Warnungen eingerichtet haben, erstellen Sie Geschäftspr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Weitere Informationen zu Arbeitsmappen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks)
+[Weitere Informationen zu Arbeitsmappen](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
  
 
  
 
- 

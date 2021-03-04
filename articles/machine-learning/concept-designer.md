@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 059b521461969d8148ced90cb3ceffd14a00c4bb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b439c5f084c762d3a256806d2e45dab96832bb78
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322263"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661085"
 ---
 # <a name="what-is-azure-machine-learning-designer"></a>Was ist der Azure Machine Learning-Designer? 
 
@@ -41,9 +41,9 @@ Der Designer bietet Ihnen einen visuellen Zeichenbereich zum Erstellen, Testen u
 + Verbinden der Module, um einen [Pipelineentwurf](#pipeline-draft) zu erstellen
 + Übermitteln einer [Pipelineausführung](#pipeline-run) mithilfe der Computeressourcen in Ihrem Azure Machine Learning-Arbeitsbereich
 + Konvertieren Ihrer **Trainingspipelines** in die **Rückschlusspipelines**
-+ [Veröffentlichen](#publish) Ihrer Pipelines an einem REST-basierten **Pipelineendpunkt** , um eine neue Pipeline zu übermitteln, die mit anderen Parametern und Datasets ausgeführt wird
-    + Veröffentlichen einer **Trainingspipeline** , um beim Ändern von Parametern und Datasets eine einzelnen Pipeline zum Trainieren mehrerer Modelle nochmal zu verwenden
-    + Veröffentlichen einer **Batchrückschlusspipeline** , um Vorhersage zu neuen Daten zu treffen, indem ein zuvor trainiertes Modell verwendet wird
++ [Veröffentlichen](#publish) Ihrer Pipelines an einem REST-basierten **Pipelineendpunkt**, um eine neue Pipeline zu übermitteln, die mit anderen Parametern und Datasets ausgeführt wird
+    + Veröffentlichen einer **Trainingspipeline**, um beim Ändern von Parametern und Datasets eine einzelnen Pipeline zum Trainieren mehrerer Modelle nochmal zu verwenden
+    + Veröffentlichen einer **Batchrückschlusspipeline**, um Vorhersage zu neuen Daten zu treffen, indem ein zuvor trainiertes Modell verwendet wird
 + [Bereitstellen](#deploy) einer **Echtzeit-Rückschlusspipeline** für einen Echtzeitendpunkt, um in Echtzeit Vorhersagen zu neuen Daten zu treffen
 
 ![Workflowdiagramm für Training, Batchrückschluss und Echtzeitrückschluss im Designer](./media/concept-designer/designer-workflow-diagram.png)
@@ -81,7 +81,7 @@ Ein Modul ist ein Algorithmus, den Sie auf Ihre Daten anwenden können. Der Desi
 
 Ein Modul kann eine Reihe von Parametern haben, die Sie zum Konfigurieren der internen Algorithmen des Moduls einsetzen können. Wenn Sie ein Modul auf der Canvas auswählen, werden dessen Parameter rechts neben der Canvas im Bereich „Eigenschaften“ angezeigt. Sie können die Parameter in diesem Bereich zur Abstimmung Ihres Modells verändern. Sie können die Computeressourcen für einzelne Module im Designer festlegen. 
 
-:::image type="content" source="./media/concept-designer/properties.png"alt-text="Moduleigenschaften":::
+:::image type="content" source="./media/concept-designer/properties.png" alt-text="Moduleigenschaften":::
 
 
 Unterstützung bei der Navigation durch die Bibliothek der verfügbaren Machine Learning-Algorithmen finden Sie unter [Algorithmen und Module: Referenzübersicht](algorithm-module-reference/module-reference.md). Hilfe bei der Auswahl eines Algorithmus finden Sie unter [Azure Machine Learning – Cheat Sheet für Algorithmen](algorithm-cheat-sheet.md).

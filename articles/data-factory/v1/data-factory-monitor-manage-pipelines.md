@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 486f12c29c473d46e3aff73abe747f8aa5a2ef8d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c728654e868bcb8213e6a4039fa1e2e169b0078c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380405"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576377"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Überwachen und Verwalten von Azure Data Factory-Pipelines mit dem Azure-Portal und PowerShell
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ In diesem Artikel wird das Überwachen, Verwalten und Debuggen Ihrer Pipelines m
 > Die Anwendung „Überwachung und Verwaltung“ bietet eine bessere Unterstützung der Überwachung und Verwaltung Ihrer Datenpipelines und der Problembehandlung. Unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md) erfahren Sie mehr über die Anwendung. 
 
 > [!IMPORTANT]
-> Azure Data Factory Version 1 verwendet jetzt die neue [Azure Monitor-Warnungsinfrastruktur](../../azure-monitor/platform/alerts-metric.md). Die alte Warnungsinfrastruktur ist veraltet. Folglich funktionieren Ihre für Data Factorys der Version 1 konfigurierten vorhandenen Warnungen nicht mehr. Ihre vorhandenen Warnungen für Data Factorys der Version 1 werden nicht automatisch migriert. Sie müssen diese Warnungen in der neuen Warnungsinfrastruktur neu erstellen. Melden Sie sich beim Azure-Portal an, und wählen Sie **Überwachen** zum Erstellen neuer Warnungen zu Metriken (z.B. fehlerhafte oder erfolgreiche Ausführungen) für Ihre Data Factorys der Version 1.
+> Azure Data Factory Version 1 verwendet jetzt die neue [Azure Monitor-Warnungsinfrastruktur](../../azure-monitor/alerts/alerts-metric.md). Die alte Warnungsinfrastruktur ist veraltet. Folglich funktionieren Ihre für Data Factorys der Version 1 konfigurierten vorhandenen Warnungen nicht mehr. Ihre vorhandenen Warnungen für Data Factorys der Version 1 werden nicht automatisch migriert. Sie müssen diese Warnungen in der neuen Warnungsinfrastruktur neu erstellen. Melden Sie sich beim Azure-Portal an, und wählen Sie **Überwachen** zum Erstellen neuer Warnungen zu Metriken (z.B. fehlerhafte oder erfolgreiche Ausführungen) für Ihre Data Factorys der Version 1.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -157,7 +157,7 @@ Nachdem Sie eine Data Factory bereitgestellt haben und die Pipelines einen gült
 
 ![Statusdiagramm](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
 
-Der Statusübergang für das Dataset in der Data Factory läuft wie folgt ab: Warten > In Bearbeitung/In Bearbeitung (Wird überprüft) > Bereit/Fehler.
+In Data Factory gibt es die folgenden Übergänge beim Status von Datasets: Warten > In Bearbeitung/In Bearbeitung (Überprüfung) > Bereit/Fehler.
 
 Der Slice startet im Status **Warten**. Es wird gewartet, bis die Vorbedingungen erfüllt sind, bevor die Ausführung beginnen kann. Anschließend beginnt die Ausführung der Aktivität, und der Slice wechselt in den Status **In Bearbeitung**. Die Ausführung der Aktivität kann erfolgreich oder nicht erfolgreich sein. Der Slice wird basierend auf dem Ergebnis der Ausführung als **Bereit** oder **Fehler** markiert.
 

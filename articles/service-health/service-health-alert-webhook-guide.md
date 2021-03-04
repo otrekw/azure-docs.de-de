@@ -4,12 +4,12 @@ description: Senden Sie personalisierte Benachrichtigungen zu Service Health-Ere
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
-ms.openlocfilehash: 05b0572c89a29fddc881f9977ee437d1319e6254
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a70c4fcd01a1a95c598d980004ee60292a6cf24b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86518927"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594620"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Konfigurieren von Integritätsbenachrichtigungen für vorhandene Problemverwaltungssysteme mit einem Webhook
 
@@ -31,7 +31,7 @@ Wenn Sie eine vorkonfigurierte Integration verwenden möchten, lesen Sie die fol
 ## <a name="configure-a-custom-notification-by-using-the-service-health-webhook-payload"></a>Konfigurieren einer benutzerdefinierten Benachrichtigung mit der Service Health-Webhooknutzlast
 Wenn Sie Ihre eigene benutzerdefinierte Webhookintegration einrichten möchten, müssen Sie die über die Service Health-Benachrichtigung gesendete JSON-Nutzlast analysieren.
 
-Hier finden Sie [ein Beispiel für die](../azure-monitor/platform/activity-log-alerts-webhook.md) `ServiceHealth`-Webhooknutzlast.
+[Hier finden Sie ein Beispiel für die ](../azure-monitor/alerts/activity-log-alerts-webhook.md) `ServiceHealth`-Webhooknutzlast.
 
 Durch einen Blick auf `context.eventSource == "ServiceHealth"` können Sie bestätigen, dass dies eine Service Health-Warnung ist. Die folgenden Eigenschaften sind die relevantesten:
 - **data.context.activityLog.status**
@@ -46,7 +46,7 @@ Durch einen Blick auf `context.eventSource == "ServiceHealth"` können Sie best�
 ## <a name="create-a-link-to-the-service-health-dashboard-for-an-incident"></a>Erstellen eines Links zum Service Health-Dashboard für einen Vorfall
 Sie können einen direkten Link zu Ihrem Service Health-Dashboard auf einem Desktop oder mobilen Gerät erstellen, indem Sie eine spezialisierte URL generieren. Verwenden Sie die *Nachverfolgungs-ID* (trackingId) und die ersten drei und die letzten drei Ziffern Ihrer *Abonnement-ID* (subscriptionId) im folgenden Format:
 
-https<i></i>://app.azure.com/h/ *&lt;Nachverfolgungs-ID&gt;* / *&lt;die ersten drei und die letzten drei Ziffern der Abonnement-ID&gt;*
+https <i></i>://app.azure.com/h/ *&lt;Nachverfolgungs-ID&gt;* / *&lt;die ersten drei und die letzten drei Ziffern der Abonnement-ID&gt;*
 
 Wenn Ihre *Abonnement-ID* (subscriptionId) z. B. „bba14129-e895-429b-8809-278e836ecdb3“ und Ihre *Nachverfolgungs-ID* (trackingId) „0DET-URB“ lautet, sieht Ihre Service Health-URL folgendermaßen aus:
 
@@ -98,7 +98,7 @@ In diesem Beispiel wird gezeigt, dass Probleme bestehen bei:
 
 Folgen Sie diesen Schritten:
 
-1. Erstellen Sie die Service Health-Nutzlast, die Sie senden möchten. Ein Beispiel für eine Service Health-Webhooknutzlast finden Sie unter [Webhooks für Azure-Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts-webhook.md).
+1. Erstellen Sie die Service Health-Nutzlast, die Sie senden möchten. Ein Beispiel für eine Service Health-Webhooknutzlast finden Sie unter [Webhooks für Azure-Aktivitätsprotokollwarnungen](../azure-monitor/alerts/activity-log-alerts-webhook.md).
 
 1. Erstellen Sie eine HTTP POST-Anforderung, indem Sie wie folgt vorgehen:
 
@@ -114,6 +114,6 @@ Folgen Sie diesen Schritten:
 1. Wechseln Sie zu [PagerDuty](https://www.pagerduty.com/), um zu überprüfen, ob Ihre Integration erfolgreich eingerichtet wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts-webhook.md). 
+- Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](../azure-monitor/alerts/activity-log-alerts-webhook.md). 
 - Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](./service-notifications.md).
-- Weitere Informationen zu [Aktionsgruppen](../azure-monitor/platform/action-groups.md).
+- Weitere Informationen zu [Aktionsgruppen](../azure-monitor/alerts/action-groups.md).

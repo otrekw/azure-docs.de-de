@@ -6,12 +6,12 @@ author: eternovsky
 ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 17de697686485d695586ffa798196efb4a34c251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 933280b5d3b81098f18f22a72bd2c7f942869e6a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092914"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578317"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Korrelieren von Application Insights-Daten mit benutzerdefinierten Datenquellen
 
@@ -31,19 +31,19 @@ Da Application Insights auf der leistungsstarken Azure Monitor-Protokollplattfor
 
 In diesem Abschnitt wird beschrieben, wie Ihre Daten in Azure Monitor-Protokolle gelangen.
 
-Falls noch nicht geschehen, sollten Sie einen neuen Log Analytics-Arbeitsbereich bereitstellen, indem Sie [diese Anleitung](../learn/quick-collect-azurevm.md) befolgen und den Schritt zum „Erstellen eines Arbeitsbereichs“ ausführen.
+Falls noch nicht geschehen, sollten Sie einen neuen Log Analytics-Arbeitsbereich bereitstellen, indem Sie [diese Anleitung](../vm/quick-collect-azurevm.md) befolgen und den Schritt zum „Erstellen eines Arbeitsbereichs“ ausführen.
 
 Gehen Sie wie unten angegeben vor, um mit dem Senden von Daten an Azure Monitor zu beginnen. Sie haben mehrere Optionen:
 
-- Zur Verwendung eines synchronen Mechanismus können Sie entweder die [Datensammler-API](../platform/data-collector-api.md) direkt aufrufen oder unseren Logic App-Connector verwenden. Suchen Sie einfach nach „Azure Log Analytics“, und wählen Sie die Option zum Senden von Daten:
+- Zur Verwendung eines synchronen Mechanismus können Sie entweder die [Datensammler-API](../logs/data-collector-api.md) direkt aufrufen oder unseren Logic App-Connector verwenden. Suchen Sie einfach nach „Azure Log Analytics“, und wählen Sie die Option zum Senden von Daten:
 
   ![Screenshot: Auswahl und Aktion](./media/custom-data-correlation/01-logic-app-connector.png)  
 
-- Wenn Sie eine asynchrone Option verwenden möchten, können Sie die Datensammler-API nutzen, um eine Verarbeitungspipeline zu erstellen. Nähere Einzelheiten finden Sie in [diesem Artikel](../platform/create-pipeline-datacollector-api.md).
+- Wenn Sie eine asynchrone Option verwenden möchten, können Sie die Datensammler-API nutzen, um eine Verarbeitungspipeline zu erstellen. Nähere Einzelheiten finden Sie in [diesem Artikel](../logs/create-pipeline-datacollector-api.md).
 
 ## <a name="correlating-data"></a>Korrelieren von Daten
 
-Application Insights basiert auf der Azure Monitor-Protokollplattform. Daher können wir [ressourcenübergreifende Verknüpfungen](../log-query/cross-workspace-query.md) verwenden, um alle Daten, die wir über Azure Monitor erfasst haben, mit den Application Insights-Daten zu korrelieren.
+Application Insights basiert auf der Azure Monitor-Protokollplattform. Daher können wir [ressourcenübergreifende Verknüpfungen](../logs/cross-workspace-query.md) verwenden, um alle Daten, die wir über Azure Monitor erfasst haben, mit den Application Insights-Daten zu korrelieren.
 
 Beispielsweise können wir unseren Labbestand und die Standorte in einer Tabelle mit dem Namen „LabLocations_CL“ in einem Log Analytics-Arbeitsbereich mit dem Namen „myLA“ erfassen. Wenn wir dann unsere Anforderungen prüfen möchten, die mit der Application Insights-App „myAI“ nachverfolgt wurden, und die Namen der Computer, über die die Anforderungen bereitgestellt wurden, mit den Standorten dieser Computer aus der oben erwähnten benutzerdefinierten Tabelle korrelieren möchten, können wir über den Application Insights- oder den Azure Monitor-Kontext die folgende Abfrage ausführen:
 
@@ -57,5 +57,5 @@ app('myAI').requests
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie die Referenz zur [Datensammler-API](../platform/data-collector-api.md).
-- Sehen Sie sich die weiteren Informationen zu [ressourcenübergreifenden Verknüpfungen](../log-query/cross-workspace-query.md) an.
+- Lesen Sie die Referenz zur [Datensammler-API](../logs/data-collector-api.md).
+- Sehen Sie sich die weiteren Informationen zu [ressourcenübergreifenden Verknüpfungen](../logs/cross-workspace-query.md) an.

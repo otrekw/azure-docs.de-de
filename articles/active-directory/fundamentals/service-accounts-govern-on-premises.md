@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 503d5c5c8d605e56ca510f12cd9c6f5a1f21c0bc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 88fdfa1f449a0b65861ee09f2e78055a606c99d3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416560"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649205"
 ---
 # <a name="governing-on-premises-service-accounts"></a>Steuern lokaler Dienstkonten
 
@@ -60,11 +60,11 @@ Verwenden Sie beim Erstellen eines neuen Dienstkontos die folgenden Kriterien.
 
 Verwenden Sie die folgenden Einstellungen für Benutzerkonten, die als Dienstkonten verwendet werden:
 
-* [**Kontoablaufdatum**](https://docs.microsoft.com/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps): Legen Sie für das Dienstkonto fest, dass es im Anschluss an den Überprüfungszeitraum nach einer bestimmten Zeit automatisch abläuft, sofern keine weitere Nutzung explizit festgelegt wird.
+* [**Kontoablaufdatum**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps): Legen Sie für das Dienstkonto fest, dass es im Anschluss an den Überprüfungszeitraum nach einer bestimmten Zeit automatisch abläuft, sofern keine weitere Nutzung explizit festgelegt wird.
 
 *  **Anmeldearbeitsstationen**: Schränken Sie die Berechtigungen auf die Standorte ein, von denen sich das Dienstkonto anmelden kann. Wenn es lokal auf einem Computer ausgeführt wird und nur auf Ressourcen auf diesem Computer zugreift, unterbinden Sie die Anmeldung von einem anderen Standort.
 
-* [**Keine Kennwortänderung**](https://docs.microsoft.com/powershell/module/addsadministration/set-aduser?view=win10-ps): Verhindern Sie, dass das Dienstkonto sein eigenes Kennwort ändert, indem Sie den Parameter auf „False“ festlegen.
+* [**Keine Kennwortänderung**](/powershell/module/addsadministration/set-aduser?view=win10-ps): Verhindern Sie, dass das Dienstkonto sein eigenes Kennwort ändert, indem Sie den Parameter auf „False“ festlegen.
 
  
 ## <a name="build-a-lifecycle-management-process"></a>Erstellen eines Lebenszyklusverwaltungsprozesses
@@ -149,17 +149,17 @@ Nach Durchführung und Dokumentation kann die Risikobewertung Auswirkungen auf f
 
 Erstellen Sie erst dann ein Dienstkonto, wenn relevante Informationen in ihrer CMDB dokumentiert sind und Sie eine Risikobewertung vorgenommen haben. Die Kontoeinschränkungen sollten sich nach der Risikobewertung richten. Beachten Sie die folgenden Einschränkungen, wenn sie für Ihre Bewertung relevant sind:
 
-* [Kontoablaufdatum](https://docs.microsoft.com/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
+* [Kontoablaufdatum](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
 
-   * Definieren Sie für alle Benutzerkonten, die als Dienstkonten verwendet werden, ein realistisches und definitives Enddatum für die Nutzung. Legen Sie diese Einstellung mit dem Flag „Konto läuft ab“ fest. Weitere Einzelheiten finden Sie unter [Set-ADAccountExpiration](https://docs.microsoft.com/powershell/module/addsadministration/set-adaccountexpiration?view=win10-ps). 
+   * Definieren Sie für alle Benutzerkonten, die als Dienstkonten verwendet werden, ein realistisches und definitives Enddatum für die Nutzung. Legen Sie diese Einstellung mit dem Flag „Konto läuft ab“ fest. Weitere Einzelheiten finden Sie unter [Set-ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration?view=win10-ps). 
 
-* Anmelden bei ([Anmeldearbeitsstation](https://docs.microsoft.com/powershell/module/addsadministration/set-aduser?view=win10-ps))
+* Anmelden bei ([Anmeldearbeitsstation](/powershell/module/addsadministration/set-aduser?view=win10-ps))
 
-* Anforderungen für [Kennwortrichtlinien](https://docs.microsoft.com/azure/active-directory-domain-services/password-policy)
+* Anforderungen für [Kennwortrichtlinien](../../active-directory-domain-services/password-policy.md)
 
-* Erstellung an einem [Standort der Organisationseinheit](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/delegating-administration-of-account-ous-and-resource-ous), der die Verwaltung nur für berechtigte Benutzer gewährleistet
+* Erstellung an einem [Standort der Organisationseinheit](/windows-server/identity/ad-ds/plan/delegating-administration-of-account-ous-and-resource-ous), der die Verwaltung nur für berechtigte Benutzer gewährleistet
 
-* Einrichten der Überwachung und Sammeln von Überwachungsdaten zum [Erkennen von Änderungen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-changes) am Dienstkonto und zur [Nutzung des Dienstkontos](https://www.manageengine.com/products/active-directory-audit/how-to/audit-kerberos-authentication-events.html).
+* Einrichten der Überwachung und Sammeln von Überwachungsdaten zum [Erkennen von Änderungen](/windows/security/threat-protection/auditing/audit-directory-service-changes) am Dienstkonto und zur [Nutzung des Dienstkontos](https://www.manageengine.com/products/active-directory-audit/how-to/audit-kerberos-authentication-events.html).
 
 Wenn Sie bereit sind, das Konto für die Produktion freizugeben, gewähren Sie den Zugriff auf das Dienstkonto auf sichere Art und Weise. 
 
@@ -193,7 +193,7 @@ Nachdem Sie alle Berechtigungen entfernt haben, verwenden Sie diesen Prozess zum
 
 3. Löschen Sie das Dienstkonto, nachdem die Richtlinie für das Bestehenbleiben deaktivierter Konten erfüllt wurde. 
 
-   * Microsoft-Konten (MSAs) können Sie mithilfe von PowerShell [deinstallieren](https://docs.microsoft.com/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps) oder manuell aus dem Container für verwaltete Dienstkonten löschen.
+   * Microsoft-Konten (MSAs) können Sie mithilfe von PowerShell [deinstallieren](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps) oder manuell aus dem Container für verwaltete Dienstkonten löschen.
 
    * Computer- oder Benutzerkonten können Sie manuell in Active Directory löschen.
 

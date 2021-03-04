@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f8edeb452f01af88f0305cd0a3e3a2332ec09e4e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2c35356951560b11a605334aba4c26dbc38086de
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186948"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583542"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights-Kohorten
 
@@ -28,7 +28,7 @@ Sie können beispielsweise eine Kohorte aus Benutzern definieren, die alle ein n
 > [!NOTE]
 > Nach ihrer Erstellung sind Kohorten in den Tools für Benutzer, Sitzungen, Ereignisse und Benutzerabläufe verfügbar.
 
-## <a name="example-engaged-users"></a>Beispiel: Aktive Benutzer
+## <a name="example-engaged-users"></a>Beispiel: aktive Benutzer
 
 Ihr Team definiert jede Person als „aktiven Benutzer“, die Ihre App in einem bestimmten Monat mindestens fünfmal verwendet. In diesem Abschnitt definieren Sie eine Kohorte dieser aktiven Benutzer.
 
@@ -71,7 +71,7 @@ Folgende wichtige Punkte sind zu berücksichtigen:
 
 Diese Filter unterstützen komplexere Fragen, die sich nicht mit dem Abfrage-Generator formulieren lassen. Ein Beispiel ist _Personen, die an der letzten 28 Tage aktiv waren. Wie haben sich dieselben Personen in den letzten 60 Tagen verhalten?_
 
-## <a name="example-events-cohort"></a>Beispiel: Kohorte für Ereignisse
+## <a name="example-events-cohort"></a>Beispiel: Ereigniskohorte
 
 Sie können auch Kohorten von Ereignissen erstellen. In diesem Abschnitt definieren Sie eine Kohorte der Ereignisse und Seitenansichten. Anschließend wird gezeigt, wie Sie die Kohorten in den anderen Tools verwenden können. In dieser Kohorte könnte eine Gruppe von Ereignissen, die Ihr Team als _aktive Verwendung_ einstuft, oder eine Gruppe definiert sein, die mit einem bestimmten neuen Feature zu tun hat.
 
@@ -131,7 +131,7 @@ Kohorten und Filter unterscheiden sich. Angenommen, Sie haben eine Kohorte von B
 
 ## <a name="learn-more"></a>Weitere Informationen
 
-* [Analytics-Abfragesprache](../log-query/log-analytics-tutorial.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+* [Analytics-Abfragesprache](../logs/log-analytics-tutorial.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [Benutzer, Sitzungen, Ereignisse](usage-segmentation.md)
 * [Benutzerabläufe](usage-flows.md)
 * [Nutzungsübersicht](usage-overview.md)

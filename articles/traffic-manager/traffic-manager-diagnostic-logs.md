@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: f24a4a0d982ff78ca4d6726e950825ed2c784e67
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 0c1273f4a2025658520118ed843d90b3378a129f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184540"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577882"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Aktivieren der Ressourcenprotokollierung in Azure Traffic Manager
 
@@ -64,7 +64,7 @@ Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure
 
 ## <a name="traffic-manager-log-schema"></a>Traffic Manager-Protokollschema
 
-Für alle Ressourcenprotokolle, die über Azure Monitor verfügbar sind, wird ein Schema der obersten Ebene gemeinsam genutzt. Auf diese Weise kann jeder Dienst für seine eigenen Ereignisse flexibel eindeutige Eigenschaften ausgeben. Informationen zum Ressourcenprotokollschema der obersten Ebene finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle](../azure-monitor/platform/resource-logs-schema.md).
+Für alle Ressourcenprotokolle, die über Azure Monitor verfügbar sind, wird ein Schema der obersten Ebene gemeinsam genutzt. Auf diese Weise kann jeder Dienst für seine eigenen Ereignisse flexibel eindeutige Eigenschaften ausgeben. Informationen zum Ressourcenprotokollschema der obersten Ebene finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle](../azure-monitor/essentials/resource-logs-schema.md).
 
 Die folgende Tabelle enthält das Protokollschema für die Azure Traffic Manager-Profilressource.
 

@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ae8dbf6ffd2d827bbcd0fd723f63255d71d47a5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 9f2fe29ede2bf0f92049d1ae82bae87326057a63
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090789"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594295"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -212,7 +212,7 @@ Microsoft-Konten aus anderen Programmen wie Xbox, Live und Outlook sollten nicht
 
 #### <a name="monitor-azure-activity"></a>Überwachen der Azure-Aktivität
 
-Das Azure-Aktivitätsprotokoll zeigt den Verlauf der Ereignisse auf Abonnementebene in Azure an. Darüber hinaus enthält es Informationen darüber, welche Ressourcen von welcher Person zu einem bestimmten Zeitpunkt erstellt, aktualisiert und gelöscht wurden, und wann diese Ereignisse auftraten. Weitere Informationen finden Sie unter [Überwachen und Empfangen von Benachrichtigungen zu wichtigen Aktionen im Azure-Abonnement](../../azure-monitor/platform/alerts-activity-log.md).
+Das Azure-Aktivitätsprotokoll zeigt den Verlauf der Ereignisse auf Abonnementebene in Azure an. Darüber hinaus enthält es Informationen darüber, welche Ressourcen von welcher Person zu einem bestimmten Zeitpunkt erstellt, aktualisiert und gelöscht wurden, und wann diese Ereignisse auftraten. Weitere Informationen finden Sie unter [Überwachen und Empfangen von Benachrichtigungen zu wichtigen Aktionen im Azure-Abonnement](../../azure-monitor/alerts/alerts-activity-log.md).
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Zusätzliche Schritte für Organisationen, die den Zugriff auf andere Cloud-Apps über Azure AD verwalten
 
