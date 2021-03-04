@@ -2,13 +2,14 @@
 title: Zonenredundante Registrierung für Hochverfügbarkeit
 description: Hier erfahren Sie, wie Sie Zonenredundanz in Azure Container Registry aktivieren. Erstellen Sie eine Containerregistrierung oder Replikation in einer Azure-Verfügbarkeitszone. Zonenredundanz ist ein Feature der Dienstebene „Premium“.
 ms.topic: article
-ms.date: 01/07/2021
-ms.openlocfilehash: 7de8ed101d2df9e491c475f522a56580798c49a9
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 02/23/2021
+ms.custom: references_regions
+ms.openlocfilehash: 931adcf8258c48d7df42bd5927e8789d7cc871db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696277"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738105"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>Aktivieren von Zonenredundanz in Azure Container Registry für Resilienz und Hochverfügbarkeit
 
@@ -20,7 +21,7 @@ Zonenredundanz ist eine **Preview** funktion der Containerregistrierungs-Dienste
 
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
 
-* Derzeit nur in den folgenden Regionen unterstützt: „USA, Osten“, „USA, Osten 2“ und „USA, Westen 2“.
+* Derzeit in den folgenden Regionen unterstützt: USA, Osten, USA, Osten 2, USA, Westen 2, Europa, Norden; Europa, Westen; Japan, Osten.
 * Regionskonvertierungen in Verfügbarkeitszonen werden derzeit nicht unterstützt. Um die Unterstützung für Verfügbarkeitszonen in einer Region zu aktivieren, muss die Registrierung entweder in der gewünschten Region mit aktivierter Verfügbarkeitszonenunterstützung erstellt werden, oder sie muss mit aktivierter Unterstützung für Verfügbarkeitszonen hinzugefügt werden.
 * Zonenredundanz kann in einer Region nicht deaktiviert werden.
 * [ACR Tasks](container-registry-tasks-overview.md) unterstützt noch keine Verfügbarkeitszonen.

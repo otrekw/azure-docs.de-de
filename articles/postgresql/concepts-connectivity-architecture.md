@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: 97778951777677ce02adec59d906c1246494457a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0c8f55b6eeba4319b0ce9e39085912b8c4829235
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369406"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720799"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Verbindungsarchitektur in Azure Database for PostgreSQL
 In diesem Artikel wird die Verbindungsarchitektur von Azure Database for PostgreSQL beschrieben, und Sie erfahren, wie Datenverkehr von Clients innerhalb und außerhalb von Azure an Ihre Azure Database for PostgreSQL-Datenbankinstanz weitergeleitet wird.
@@ -64,7 +64,7 @@ Die folgende Tabelle enthält die Gateway-IP-Adressen des Azure Database for Pos
 | Indien, Mitte | 104.211.96.159     | | |
 | Indien, Süden | 104.211.224.146  | | |
 | Indien, Westen | 104.211.160.80    | | |
-| Japan, Osten | 40.79.192.23 | 13.78.61.196 | |
+| Japan, Osten | 40.79.192.23, 40.79.184.8 | 13.78.61.196 | |
 | Japan, Westen | 191.238.68.11, 40.74.96.6, 40.74.96.7     | 104.214.148.156 | |
 | Korea, Mitte | 52.231.17.13   | 52.231.32.42 | |
 | Korea, Süden | 52.231.145.3     | 52.231.200.86 | |

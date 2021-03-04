@@ -6,12 +6,12 @@ ms.author: lichris
 ms.date: 2/17/2021
 ms.topic: troubleshooting
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 6329e93bb5e628d68afbb2700ce0b9e3a2a711ad
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3c1f60b214397b1f97e0157b5beca32d504102d6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678480"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030629"
 ---
 # <a name="device-update-for-iot-hub-troubleshooting-guide"></a>Device Update für IoT Hub – Handbuch zur Problembehandlung
 
@@ -46,7 +46,7 @@ _Es kann bis zu 5 Minuten dauern, bis der Gerätekonformitätsstatus aktualisie
 ### <a name="q-my-devices-deployment-status-shows-incompatible-what-should-i-do"></a>F: Für den Bereitstellungsstatus meines Geräts wird „inkompatibel“ angezeigt. Wie sollte ich jetzt vorgehen?
 _Die Hersteller- und Modelleigenschaften eines Zielgeräts wurden möglicherweise geändert, nachdem das Gerät mit IoT Hub verbunden wurde. Dies hat dazu geführt, dass das Gerät jetzt als inkompatibel mit dem Updateinhalt der aktuellen Bereitstellung betrachtet wird._
 
-_Überprüfen Sie auf der [ADU Core-Schnittstelle](./device-update-plug-and-play), welchen Hersteller und welches Modell Ihr Gerät dem Device Update-Dienst meldet, und stellen Sie sicher, dass diese Angaben mit dem Hersteller und Modell übereinstimmen, den/das Sie im [Importmanifest](./import-concepts.md) des gerade bereitgestellten Updateinhalts angegeben haben. Sie können diese Eigenschaften für ein bestimmtes Gerät mithilfe der [Device Update-Konfigurationsdatei](./device-update-cofiguration-file.md) ändern._
+_Überprüfen Sie auf der [ADU Core-Schnittstelle](./device-update-plug-and-play.md), welchen Hersteller und welches Modell Ihr Gerät dem Device Update-Dienst meldet, und stellen Sie sicher, dass diese Angaben mit dem Hersteller und Modell übereinstimmen, den/das Sie im [Importmanifest](./import-concepts.md) des gerade bereitgestellten Updateinhalts angegeben haben. Sie können diese Eigenschaften für ein bestimmtes Gerät mithilfe der [Device Update-Konfigurationsdatei](./device-update-configuration-file.md) ändern._
 
 ### <a name="q-i-see-my-deployment-is-in-active-stage-but-none-of-my-devices-are-in-progress-with-the-update-what-should-i-do"></a>F: Ich sehe, dass meine Bereitstellung in der Phase „Aktiv“ ist, aber für keines meiner Geräte wird beim Update „In Bearbeitung“ angezeigt. Wie sollte ich vorgehen?
 _Sorgen Sie dafür, dass Ihr festgelegtes Startdatum für die Bereitstellung nicht in der Zukunft liegt. Wenn Sie eine neue Bereitstellung erstellen, wird als Startdatum dafür standardmäßig sicherheitshalber der nächste Tag festgelegt, wenn Sie dies nicht explizit ändern. Sie können entweder warten, bis das Startdatum für die Bereitstellung erreicht ist, oder die laufende Bereitstellung abbrechen und eine neue Bereitstellung mit dem gewünschten Startdatum erstellen._

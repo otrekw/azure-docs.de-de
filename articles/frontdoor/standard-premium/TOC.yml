@@ -49,14 +49,16 @@
       href: how-to-configure-https-custom-domain.md
     - name: Routenzuordnung
       href: how-to-configure-route.md
+    - name: Konfigurieren eines Regelsatzes
+      href: how-to-configure-rule-set.md
     - name: Konfigurieren von Sicherheitsheadern mit einem Regelsatz
       href: how-to-add-security-headers.md
     - name: Cachebereinigung
       href: how-to-cache-purge.md
     - name: Komprimierung
       href: how-to-compression.md
-    - name: Aktivieren von Private Link
-      href: how-to-enable-private-link.md
+    - name: Aktivieren von Private Link für eine Web-App
+      href: how-to-enable-private-link-web-app.md
     - name: Protokollierung
       href: how-to-logs.md
     - name: Überwachung und Warnungen

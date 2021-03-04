@@ -1,17 +1,16 @@
 ---
 title: Log Analytics in Azure Monitor umfasst eine Reihe von Beispielabfragen, die Sie unverändert ausführen oder als Vorlage für Ihre eigenen Abfragen verwenden können.
 description: Abfragen, die Sie als Vorlage verwenden und nach Bedarf ändern können
-ms.subservice: logs
 ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 06/16/2020
-ms.openlocfilehash: e421676ab8c44abc3432ab7ac45aecf98c98c304
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e4f20032febe1c4afe9cb0964c1b448eaa018103
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708032"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030850"
 ---
 # <a name="example-queries-in-azure-monitor-log-analytics"></a>Beispielabfragen in Azure Monitor Log Analytics
 Log Analytics umfasst eine Reihe von Beispielabfragen, die Sie unverändert ausführen oder als Vorlage für Ihre eigenen Abfragen verwenden können. In diesem Artikel werden diese Beispielabfragen und ihre Verwendung beschrieben.

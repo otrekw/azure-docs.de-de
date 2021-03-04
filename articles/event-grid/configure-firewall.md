@@ -2,13 +2,13 @@
 title: Konfigurieren der IP-Firewall für Azure Event Grid-Themen oder -Domänen
 description: In diesem Artikel wird beschrieben, wie Firewalleinstellungen für Azure Event Grid-Themen oder -Domänen konfiguriert werden.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: fd190a13a177b6b6d0f6b0dbcaa35d63dccd93c9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 03/02/2021
+ms.openlocfilehash: 178b9d84ea8b2e0f764f7584526db8dbcf5284f3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324160"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031836"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>Konfigurieren der IP-Firewall für Azure Event Grid-Themen oder -Domänen 
 Standardmäßig kann auf Themen und Domänen über das Internet zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken. Herausgeber, die von einer anderen IP-Adresse stammen, werden abgelehnt und erhalten eine 403-Antwort (Verboten). Weitere Informationen zu Netzwerksicherheitsfunktionen, die von Event Grid unterstützt werden, finden Sie unter [Netzwerksicherheit für Event Grid](network-security.md).
@@ -34,19 +34,6 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem Azure-Portal eingehende IP-Fir
 ## <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
 In diesem Abschnitt wird gezeigt, wie Sie Azure CLI-Befehle verwenden, um Themen mit eingehenden IP-Regeln zu erstellen. Die in diesem Abschnitt beschriebenen Schritte beziehen sich auf Themen. Sie können ähnliche Schritte verwenden, um Regeln für eingehende IP-Adressen für **Domänen** zu erstellen. 
 
-
-### <a name="prerequisites"></a>Voraussetzungen
-Aktualisieren Sie die Azure Event Grid-Erweiterung für die CLI, indem Sie den folgenden Befehl ausführen: 
-
-```azurecli-interactive
-az extension update -n eventgrid
-```
-
-Wenn die Erweiterung nicht installiert ist, führen Sie den folgenden Befehl aus, um sie zu installieren: 
-
-```azurecli-interactive
-az extension add -n eventgrid
-```
 
 ### <a name="enable-or-disable-public-network-access"></a>Aktivieren oder Deaktivieren des Zugriffs auf das öffentliche Netzwerk
 Standardmäßig ist der öffentliche Netzwerkzugriff für Themen und Domänen aktiviert. Sie können ihn auch explizit aktivieren oder deaktivieren. Sie können den Datenverkehr einschränken, indem Sie eingehende IP-Firewallregeln konfigurieren. 

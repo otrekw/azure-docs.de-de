@@ -4,35 +4,37 @@ description: Azure-Sicherheitsvergleichstest V2 für Endpunktsicherheit
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 937d0b379c4f669e5b57e5053d5e3bffeb091e78
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 7672f4eb4530dbfb5d039b066fe7cf6eaf79e5a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368952"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718640"
 ---
 # <a name="security-control-v2-endpoint-security"></a>Sicherheitskontrolle V2: Endpunktsicherheit
 
 Endpunktsicherheit umfasst Steuerelemente im Zusammenhang mit Endpunkterkennung und -antwort. Dies beinhaltet die Verwendung von Endpunkterkennung und -antwort (Endpoint Detection and Response, EDR) und des Antischadsoftwarediensts für Endpunkte in Azure-Umgebungen.
 
+Die entsprechende integrierte Azure Policy finden Sie unter [Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß Azure-Sicherheitsvergleichstest: Endpunktsicherheit](../../governance/policy/samples/azure-security-benchmark#endpoint-security).
+
 ## <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1: Verwenden von Endpunkterkennung und -antwort (Endpoint Detection and Response, EDR)
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | ID(s) von NIST SP 800-53 r4 |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | ES-1 | 8.1 | SI-2, SI-3, SC-3 |
 
 Aktivieren Sie EDR-Funktionen (Endpoint Detection and Response, Endpunkterkennung und -antwort) für Server und Clients, und implementieren Sie eine Integration für SIEM- und Security Operations-Prozesse.
 
-Microsoft Defender Advanced Threat Protection bietet EDR-Funktionen im Rahmen einer Endpunktsicherheitsplattform für Unternehmen, um komplexe Bedrohungen zu vermeiden, zu erkennen, zu untersuchen und darauf zu reagieren. 
+Microsoft Defender für Endpunkt bietet EDR-Funktionen im Rahmen einer Endpunktsicherheitsplattform für Unternehmen, um komplexe Bedrohungen zu vermeiden, zu erkennen, zu untersuchen und darauf zu reagieren.
 
-- [Microsoft Defender Advanced Threat Protection](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)
+- [Microsoft Defender für Endpunkt – Übersicht](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)
 
-- [Durchführen des Onboardings von Windows-Servern für den Microsoft Defender ATP-Dienst](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)
+- [Microsoft Defender für Endpunkt für Windows-Server](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)
 
-- [Durchführen des Onboardings für Windows-fremde Server](/windows/security/threat-protection/microsoft-defender-atp/configure-endpoints-non-windows)
+- [Microsoft Defender für Endpunkt für Nicht-Windows-Server](/windows/security/threat-protection/microsoft-defender-atp/configure-endpoints-non-windows)
 
 **Verantwortlichkeit**: Kunde
 
@@ -48,7 +50,7 @@ Microsoft Defender Advanced Threat Protection bietet EDR-Funktionen im Rahmen ei
 
 ## <a name="es-2-use-centrally-managed-modern-anti-malware-software"></a>ES-2: Verwenden von moderner, zentral verwalteter Antischadsoftware
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | ID(s) von NIST SP 800-53 r4 |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | ES-2 | 8.1 | SI-2, SI-3, SC-3 |
 
@@ -56,7 +58,7 @@ Verwenden Sie eine zentral verwaltete Antischadsoftwarelösung für Endpunkte, m
 
 Azure Security Center kann automatisch die Verwendung verschiedener gängiger Antischadsoftwarelösungen für Ihre virtuellen Computer erkennen, den Ausführungsstatus des Endpunktschutzes melden und Empfehlungen abgeben. 
 
-Microsoft Antimalware für Azure Cloud Services ist die Standard-Antischadsoftware für virtuelle Windows-Computer (virtual machines, VMs). Verwenden Sie für virtuelle Linux-Computer eine Antischadsoftware eines Drittanbieters.  Mithilfe der Azure Security Center-Bedrohungserkennung für Datendienste können Sie auch Schadsoftware erkennen, die in Azure Storage-Konten hochgeladen wurde. 
+Microsoft Antimalware für Azure Cloud Services ist die Standard-Antischadsoftware für virtuelle Windows-Computer (virtual machines, VMs). Verwenden Sie für virtuelle Linux-Computer eine Antischadsoftware eines Drittanbieters. Mithilfe der Azure Security Center-Bedrohungserkennung für Datendienste können Sie auch Schadsoftware erkennen, die in Azure Storage-Konten hochgeladen wurde. 
 
 - [Konfigurieren von Microsoft Antimalware für Cloud Services und Virtual Machines](../fundamentals/antimalware.md)
 
@@ -76,13 +78,13 @@ Microsoft Antimalware für Azure Cloud Services ist die Standard-Antischadsoftwa
 
 ## <a name="es-3-ensure-anti-malware-software-and-signatures-are-updated"></a>ES-3: Sicherstellen der Aktualisierung von Antischadsoftware und Signaturen
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | ID(s) von NIST SP 800-53 r4 |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | ES-3 | 8,2 | SI-2, SI-3 |
 
-Stellen Sie sicher, dass Antischadsoftwaresignaturen schnell und konsistent aktualisiert werden. 
+Stellen Sie sicher, dass Antischadsoftwaresignaturen schnell und konsistent aktualisiert werden.
 
-Befolgen Sie die Empfehlungen in Azure Security Center: „Compute &amp; Apps“, um sicherzustellen, dass alle Endpunkte mit den neuesten Signaturen auf dem aktuellen Stand sind. Mit Microsoft Antimalware werden standardmäßig die neuesten Signaturen und Engine-Updates automatisch installiert. Verwenden Sie für Linux eine Antischadsoftware von Drittanbietern.
+Befolgen Sie die Empfehlungen im Azure Security Center unter „Compute und Apps“, um sicherzustellen, dass alle Endpunkte mit den neuesten Signaturen auf dem aktuellen Stand sind. Mit Microsoft Antimalware werden standardmäßig die neuesten Signaturen und Engine-Updates automatisch installiert. Stellen Sie für Linux sicher, dass die Signaturen in der Antischadsoftware-Lösung des Drittanbieters aktualisiert werden.
 
 - [Bereitstellen von Microsoft Antimalware für Azure Cloud Services und Virtual Machines](../fundamentals/antimalware.md)
 

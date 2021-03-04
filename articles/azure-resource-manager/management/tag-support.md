@@ -3,12 +3,12 @@ title: Tagunterstützung für Ressourcen
 description: Zeigt, welche Azure-Ressourcentypen Tags unterstützen. Enthält Details für alle Azure-Dienste.
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 12a57577241e3b2206aab9c3badb29502e7b0301
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: b1f9e61b409c395a13cc6a18d21d17530f38ac7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656970"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722890"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagunterstützung für Azure-Ressourcen
 In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](tag-resources.md) unterstützt. Die Spalte mit der Bezeichnung **Tagunterstützung** zeigt an, ob der Ressourcentyp eine Eigenschaft für das Tag hat. Die Spalte mit der Bezeichnung **Tag in Kostenbericht** gibt an, ob dieser Ressourcentyp das Tag an den Kostenbericht übergibt. Sie können die Kosten nach Tags in der [Cost Management-Kostenanalyse](../../cost-management-billing/costs/group-filter.md) und den [Azure-Abrechnungen und täglichen Nutzungsdaten](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md) anzeigen.
@@ -845,7 +845,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ReservationRecommendations | Nein | Nein |
 > | ReservationSummaries | Nein | Nein |
 > | ReservationTransactions | Nein | Nein |
-> | Tags | Nein | Nein |
+> | `Tags` | Nein | Nein |
 > | tenants | Nein | Nein |
 > | Begriffe | Nein | Nein |
 > | UsageDetails | Nein | Nein |
@@ -1565,6 +1565,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | workspaces/models/versions | Nein | Nein |
 > | workspaces/onlineEndpoints | Ja | Ja |
 > | workspaces/onlineEndpoints/deployments | Ja | Ja |
+ 
+> [!NOTE]
+> Arbeitsbereichtags werden nicht an Compute-Cluster und Compute-Instanzen weitergegeben. 
 
 ## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
 
@@ -2262,6 +2265,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | managedInstances/keys | Nein | Nein |
 > | managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | Nein | Nein |
 > | managedInstances/vulnerabilityAssessments | Nein | Nein |
+> | longtermRetentionManagedInstance/longtermRetentionDatabase/longtermRetentionBackup | Nein | Nein |
 > | servers | Ja | Ja |
 > | servers/administrators | Nein | Nein |
 > | servers/communicationLinks | Nein | Nein |
@@ -2272,6 +2276,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | servers/restorableDroppedDatabases | Nein | Nein |
 > | servers/serviceobjectives | Nein | Nein |
 > | servers/tdeCertificates | Nein | Nein |
+> | longtermRetentionServer/longtermRetentionDatabase/longtermRetentionBackup | Nein | Nein |
 > | virtualClusters | Nein | Nein |
 
 <a id="sqlnote"></a>

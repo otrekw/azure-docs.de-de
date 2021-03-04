@@ -3,12 +3,13 @@ title: Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 description: Finden Sie Antworten auf einige der häufig gestellten Fragen zu Azure Kubernetes Service (AKS).
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 6c2eddf3b7002b101fed8face4a58f2d2b2f4878
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.custom: references_regions
+ms.openlocfilehash: 6d7ea48722e6604fe67d7a4ddcb12870623d9354
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820261"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739626"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -134,7 +135,7 @@ Die Windows Server-Unterstützung für Knotenpools umfasst einige Einschränkung
 
 AKS bietet SLA-Garantien als optionales Add-On-Feature mit [Betriebszeit-SLA][uptime-sla]. 
 
-Die standardmäßig angebotene kostenlose SLA garantiert keinen hochverfügbaren API-Serverendpunkt (unser Servicelevelziel ist 99,5 %). Es kann vorkommen, dass vorübergehende Konnektivitätsprobleme bei Upgrades, fehlerhaften zugrunde liegenden Knoten, Wartungsarbeiten an der Plattform usw. auftreten. Wenn Ihre Workload keine Neustarts von APIServer toleriert, empfehlen wir die Wahl der Betriebszeit-SLA.
+Die kostenlose SKU (Tarif „Free“), die standardmäßig angeboten wird, besitzt keine zugehörige *Vereinbarung* zum Servicelevel (SLA), besitzt aber ein Servicelevel *ziel* von 99,5 %. Es kann vorkommen, dass vorübergehende Konnektivitätsprobleme bei Upgrades, fehlerhaften zugrunde liegenden Knoten, Wartungsarbeiten an der Plattform, den API-Server überlastenden Anwendungen usw. auftreten. Wenn Ihre Workload keine Neustarts des API-Servers toleriert, empfehlen wir die Wahl der Betriebszeit-SLA.
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Kann ich Rabatte für Azure-Reservierungen auf meine AKS-Agent-Knoten anwenden?
 
@@ -202,7 +203,7 @@ Der Log Analytics-Agent wird unterstützt, da es sich hierbei um eine von Micros
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>Speichert AKS Kundendaten außerhalb der Region des Clusters?
 
-Die Funktion zum Aktivieren des Speicherns von Kundendaten in einer einzelnen Region ist derzeit nur in der Region „Asien, Südosten“ (Singapur) des geografischen Raums „Asien-Pazifik“ verfügbar. Bei allen anderen Regionen werden Kundendaten unter „Geografien“ gespeichert.
+Das Feature zum Aktivieren der Speicherung von Kundendaten in einer einzelnen Region ist derzeit nur in der Region „Asien, Südosten“ (Singapur) des geografischen Raums „Asien-Pazifik“ und in der Region „Brasilien, Süden“ (São Paulo, Bundesstaat) des geografischen Raums „Brasilien“ verfügbar. Bei allen anderen Regionen werden Kundendaten unter „Geografien“ gespeichert.
 
 ## <a name="are-aks-images-required-to-run-as-root"></a>Sind AKS-Images für eine Ausführung als root erforderlich?
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c9a5be358c40c3411115d8c2ee3f9471c68771b8
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1ee631e3e4a13a18bb61ee6237ff67a49f663179
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576209"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693899"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Steuern des Speicherkontozugriffs für einen serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -122,7 +122,7 @@ Führen Sie diese Schritte aus, um die Speicherkontofirewall zu konfigurieren un
     Connect-AzAccount
     ```
 4. Definieren Sie Variablen in PowerShell: 
-    - Ressourcengruppenname: Sie finden diesen Namen im Azure-Portal in der Übersicht des Synapse-Arbeitsbereichs.
+    - Ressourcengruppenname: Sie finden diesen Namen im Azure-Portal in der Übersicht des Speicherkontos.
     - Kontoname: Name des Speicherkontos, das durch Firewallregeln geschützt ist
     - Mandanten-ID: Sie finden diese ID im Azure-Portal in Azure Active Directory in den Mandanteninformationen.
     - Arbeitsbereichname: Name des Synapse-Arbeitsbereichs.
@@ -192,16 +192,14 @@ Um eine Anmeldeinformation verwenden zu können, muss ein Benutzer über die Ber
 GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 ```
 
-Um reibungslose Azure AD-Pass-Through-Vorgänge sicherzustellen, verfügen alle Benutzer standardmäßig über die Berechtigung zur Verwendung der Anmeldeinformation `UserIdentity`.
-
 ## <a name="server-scoped-credential"></a>Serverbezogene Anmeldeinformationen
 
-Serverbezogene Anmeldeinformationen werden verwendet, wenn die SQL-Anmeldung die `OPENROWSET`-Funktion ohne `DATA_SOURCE` aufruft, um Dateien in einem Speicherkonto zu lesen. Der Name der serverbezogenen Anmeldeinformation **muss** der URL des Azure-Speichers entsprechen. Eine Anmeldeinformation wird durch Ausführen von [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) hinzugefügt. Sie müssen ein CREDENTIAL NAME-Argument angeben. Dieses muss entweder einem Teil des Pfads oder dem gesamten Pfad zu den Daten in Storage entsprechen (siehe unten).
+Serverbezogene Anmeldeinformationen werden verwendet, wenn die SQL-Anmeldung die `OPENROWSET`-Funktion ohne `DATA_SOURCE` aufruft, um Dateien in einem Speicherkonto zu lesen. Der Name der für den Server gültigen Anmeldeinformationen **muss** mit der Basis-URL von Azure Storage (optional gefolgt von einem Containernamen) übereinstimmen. Eine Anmeldeinformation wird durch Ausführen von [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?view=azure-sqldw-latest&preserve-view=true) hinzugefügt. Sie müssen ein CREDENTIAL NAME-Argument angeben.
 
 > [!NOTE]
 > Das Argument `FOR CRYPTOGRAPHIC PROVIDER` wird nicht unterstützt.
 
-Der Name der Anmeldeinformation auf Serverebene muss dem vollständigen Pfad zum Speicherkonto (und optional dem Container) im Format `<prefix>://<storage_account_path>/<storage_path>` entsprechen. Die Speicherkontopfade sind in der folgenden Tabelle aufgeführt:
+Der Name der Anmeldeinformation auf Serverebene muss dem vollständigen Pfad zum Speicherkonto (und optional dem Container) im Format `<prefix>://<storage_account_path>[/<container_name>]` entsprechen. Die Speicherkontopfade sind in der folgenden Tabelle aufgeführt:
 
 | Externe Datenquelle       | Präfix | Speicherkontopfad                                |
 | -------------------------- | ------ | --------------------------------------------------- |
@@ -224,11 +222,13 @@ Mit dem folgenden Skript wird eine Anmeldeinformation auf Serverebene erstellt, 
 Ersetzen Sie <*mystorageaccountname*> durch den tatsächlichen Namen Ihres Speicherkontos und <*mystorageaccountcontainername*> durch den tatsächlichen Namen des Containers:
 
 ```sql
-CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
+CREATE CREDENTIAL [https://<mystorageaccountname>.dfs.core.windows.net/<mystorageaccountcontainername>]
 WITH IDENTITY='SHARED ACCESS SIGNATURE'
 , SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
 ```
+
+Optional können Sie einfach nur die Basis-URL des Speicherkontos ohne den Containernamen verwenden.
 
 ### <a name="managed-identity"></a>[Verwaltete Identität](#tab/managed-identity)
 
@@ -238,6 +238,8 @@ Mit dem folgenden Skript wird eine Anmeldeinformation auf Serverebene erstellt, 
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
 WITH IDENTITY='Managed Identity'
 ```
+
+Optional können Sie einfach nur die Basis-URL des Speicherkontos ohne den Containernamen verwenden.
 
 ### <a name="public-access"></a>[Öffentlicher Zugriff](#tab/public-access)
 

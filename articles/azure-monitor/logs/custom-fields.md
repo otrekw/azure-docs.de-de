@@ -1,17 +1,16 @@
 ---
 title: Benutzerdefinierte Felder in Azure Monitor (Vorschauversion) | Microsoft-Dokumentation
 description: Mit dem Azure Monitor-Feature „Benutzerdefinierte Felder“ können Sie auf der Grundlage von Datensätzen in einem Log Analytics-Arbeitsbereich eigene durchsuchbare Felder erstellen, um die Eigenschaften gesammelter Datensätze zu erweitern.  Dieser Artikel beschreibt die Erstellung eines benutzerdefinierten Felds und enthält eine ausführliche exemplarische Vorgehensweise mit einem Beispielereignis.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: f35100d703e56d1fda731aab5e6a96c791c8f0d9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e7ddeaf1273a9e3b5608336b24c07fad3c3f4525
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713676"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031037"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Erstellen von benutzerdefinierten Feldern in einem Log Analytics-Arbeitsbereich in Azure Monitor (Vorschauversion)
 

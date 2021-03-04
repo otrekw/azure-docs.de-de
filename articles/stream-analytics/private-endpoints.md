@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Löschen privater Endpunkte in einem Azure Stream Analytics-Cluster
+title: Erstellen und Löschen verwalteter privater Endpunkte in einem Azure Stream Analytics-Cluster
 description: Erfahren Sie, wie Sie private Endpunkte in einem Azure Stream Analytics-Cluster verwalten.
 author: sidramadoss
 ms.author: sidram
@@ -7,28 +7,28 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: cff02bb4b7d0f7e969589a9977a89f89e2674ffc
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 9939130782594c03a497d98ce6cd9b33b28eadec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019413"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718402"
 ---
-# <a name="create-and-delete-private-endpoints-in-an-azure-stream-analytics-cluster"></a>Erstellen und Löschen privater Endpunkte in einem Azure Stream Analytics-Cluster
+# <a name="create-and-delete-managed-private-endpoints-in-an-azure-stream-analytics-cluster"></a>Erstellen und Löschen verwalteter privater Endpunkte in einem Azure Stream Analytics-Cluster
 
-Sie können Ihre Azure Stream Analytics-Aufträge in einem Cluster mit Eingabe- und Ausgaberessourcen hinter einer Firewall oder einer Azure Virtual Network-Instanz (VNET) verbinden. Erstellen Sie zunächst einen privaten Endpunkt für eine Ressource (z. B. Azure Event Hub oder Azure SQL-Datenbank) in Ihrem Stream Analytics-Cluster. Genehmigen Sie dann die Verbindung mit einem privaten Endpunkt von Ihrer Eingabe- oder Ausgaberessource.
+Sie können Ihre Azure Stream Analytics-Aufträge in einem Cluster mit Eingabe- und Ausgaberessourcen hinter einer Firewall oder einer Azure Virtual Network-Instanz (VNET) verbinden. Erstellen Sie zunächst einen verwalteten privaten Endpunkt für eine Ressource (z. B. Azure Event Hub oder Azure SQL-Datenbank) in Ihrem Stream Analytics-Cluster. Genehmigen Sie dann die Verbindung mit einem privaten Endpunkt von Ihrer Eingabe- oder Ausgaberessource.
 
 Nachdem Sie die Verbindung genehmigt haben, kann jeder Auftrag, der in Ihrem Stream Analytics-Cluster ausgeführt wird, über den privaten Endpunkt auf die Ressource zugreifen. In diesem Artikel wird gezeigt, wie private Endpunkte in einem Stream Analytics-Cluster erstellt und gelöscht werden. Sie können private Endpunkte für Azure SQL-Datenbank, Azure Storage, Azure Data Lake Storage Gen2, Azure Event Hub und Azure Service Bus erstellen. Private Endpunkte für andere Dienste werden in Kürze hinzugefügt. 
 
-## <a name="create-private-endpoint-in-stream-analytics-cluster"></a>Erstellen eines privaten Endpunkts in einem Stream Analytics-Cluster
+## <a name="create-managed-private-endpoint-in-stream-analytics-cluster"></a>Erstellen eines verwalteten privaten Endpunkts in einem Stream Analytics-Cluster
 
 In diesem Abschnitt erfahren Sie, wie Sie einen privaten Endpunkt in einem Stream Analytics-Cluster erstellen.
 
 1. Wählen Sie im Azure-Portal Ihren Stream Analytics-Cluster aus.
 
-1. Wählen Sie unter **Einstellungen** die Option **Private Endpunkte** aus.
+1. Wählen Sie unter **Einstellungen** die Option **Verwaltete private Endpunkte** aus.
 
-1. Wählen Sie **Privaten Endpunkt hinzufügen** aus, und geben Sie die folgenden Informationen ein, um die Ressource auszuwählen, auf die sicher über einen privaten Endpunkt zugegriffen werden soll.
+1. Wählen Sie **Neu** aus, und geben Sie die folgenden Informationen ein, um die Ressource auszuwählen, auf die sicher über einen privaten Endpunkt zugegriffen werden soll.
 
    |Einstellung|Wert|
    |---|---|
@@ -47,11 +47,11 @@ In diesem Abschnitt erfahren Sie, wie Sie einen privaten Endpunkt in einem Strea
 
 1. Sie können erneut zu Ihrem Stream Analytics-Cluster wechseln, um zu sehen, wie sich der Status innerhalb weniger Minuten von **Kundengenehmigung ausstehend** in **DNS-Einrichtung ausstehend** und **Einrichtung abgeschlossen** ändert.
 
-## <a name="delete-a-private-endpoint-in-a-stream-analytics-cluster"></a>Löschen eines privaten Endpunkts in einem Stream Analytics-Cluster
+## <a name="delete-a-managed-private-endpoint-in-a-stream-analytics-cluster"></a>Löschen eines verwalteten privaten Endpunkts in einem Stream Analytics-Cluster
 
 1. Wählen Sie im Azure-Portal Ihren Stream Analytics-Cluster aus.
 
-1. Wählen Sie unter **Einstellungen** die Option **Private Endpunkte** aus.
+1. Wählen Sie unter **Einstellungen** die Option **Verwaltete private Endpunkte** aus.
 
 1. Wählen Sie den privaten Endpunkt aus, den Sie löschen möchten, und wählen Sie dann **Löschen** aus.
 

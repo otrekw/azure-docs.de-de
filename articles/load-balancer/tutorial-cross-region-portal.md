@@ -6,13 +6,13 @@ author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
-ms.date: 11/24/2020
-ms.openlocfilehash: d94736656f691da9e893e4619a2299a061acd8e8
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.date: 02/24/2021
+ms.openlocfilehash: 7fc964abf7e6832341ad8b1ad55711b3a9993506
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611201"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712509"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Tutorial: Erstellen einer regionsübergreifenden Azure Load Balancer-Instanz mithilfe des Azure-Portals
 
@@ -41,15 +41,16 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="sign-in-to-azure-portal"></a>Anmelden beim Azure-Portal
 
-Sie müssen sich beim Azure-Vorschauportal [anmelden](https://portal.azure.com).
+Sie müssen sich beim Azure-Vorschauportal [anmelden](https://preview.portal.azure.com).
 
 ## <a name="create-cross-region-load-balancer"></a>Erstellen eines regionsübergreifenden Lastenausgleichs
 
 In diesem Abschnitt erstellen Sie einen regionsübergreifenden Lastenausgleich und eine öffentliche IP-Adresse.
 
-1. Wählen Sie auf dem Bildschirm links oben **Ressource erstellen > Netzwerk > Lastenausgleich** aus, oder suchen Sie über das Suchfeld nach **Lastenausgleich**.
-
-2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, bzw. wählen Sie sie aus: 
+1. Wählen Sie **Ressource erstellen**. 
+2. Geben Sie im Suchfeld **Load Balancer** ein. Wählen Sie in den Suchergebnissen **Load Balancer** aus.
+3. Wählen Sie auf der Seite **Load Balancer** die Option **Erstellen** aus.
+4. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, bzw. wählen Sie sie aus: 
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
@@ -58,11 +59,11 @@ In diesem Abschnitt erstellen Sie einen regionsübergreifenden Lastenausgleich u
     | Name                   | Geben Sie **myLoadBalancer-CR** ein.                                   |
     | Region         | Wählen Sie **USA, Westen** aus.                                        |
     | type          | Wählen Sie **Öffentlich** aus.                                        |
-    | SKU           | Wählen Sie **Standard** aus. |
+    | SKU           | Übernehmen Sie den Standardwert **Standard**. |
     | Tarif           | Wählen Sie **Global** aus. |
     | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**.|
     | Name der öffentlichen IP-Adresse | Geben Sie **myPublicIP-CR** in das Textfeld ein.|
-    | Routingpräferenz| Wählen Sie **Microsoft-Netzwerk** aus. |
+    | Routingpräferenz| Wählen Sie **Microsoft-Netzwerk** aus. </br> Weitere Informationen zu den Routingpräferenzen finden Sie unter [Was ist Routingpräferenz (Vorschau)?](../virtual-network/routing-preference-overview.md). |
 
     > [!NOTE]
     > Regionsübergreifender Lastenausgleich kann nur in den folgenden Startregionen bereitgestellt werden: **USA, Osten 2; USA, Westen, Europa, Westen; Asien, Südosten; USA, Mitte; Europa, Norden; Asien, Osten**. Weitere Informationen finden Sie unter **https://aka.ms/homeregionforglb**.

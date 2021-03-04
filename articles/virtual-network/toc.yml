@@ -99,6 +99,8 @@
           href: ipv6-public-ip-address-prefix.md
         - name: Routingpräferenz
           href: routing-preference-overview.md
+        - name: Routing Preference Unmetered
+          href: routing-preference-unmetered.md
         - name: Sicherheitsbaseline für öffentliche IP-Adressen
           href: public-ip-security-baseline.md
     - name: Sicherheit
@@ -274,6 +276,10 @@
                       href: configure-routing-preference-virtual-machine-powershell.md
                     - name: Azure CLI
                       href: configure-routing-preference-virtual-machine-cli.md
+                - name: Konfigurieren einer gemischten Routingpräferenz für einen virtuellen Computer
+                  href: routing-preference-mixed-network-adapter-portal.md
+                - name: Konfigurieren der Routingpräferenz für einen AKS-Cluster
+                  href: routing-preference-azure-kubernetes-service-cli.md
     - name: Sicherheit
       items:
         - name: Filtern des Netzwerkdatenverkehrs

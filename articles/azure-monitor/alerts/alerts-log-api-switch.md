@@ -5,13 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.subservice: alerts
-ms.openlocfilehash: e07abdda805205701a10ca3bf295b7b0d2e71766
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b91560f09b30cc5d3089e5beca4d670f94f33402
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718028"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031309"
 ---
 # <a name="upgrade-to-the-current-log-alerts-api-from-legacy-log-analytics-alert-api"></a>Upgrade von der Log Analytics-Legacywarnungs-API auf die aktuelle Protokollwarnungs-API
 

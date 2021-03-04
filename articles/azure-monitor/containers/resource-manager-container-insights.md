@@ -1,26 +1,26 @@
 ---
-title: Beispiele für Resource Manager-Vorlagen für Azure Monitor für Container
-description: Hier finden Sie Beispiele für Azure Resource Manager-Vorlagen zum Bereitstellen und Konfigurieren von Azure Monitor für Container.
+title: Resource Manager-Vorlagenbeispiele für Container Insights
+description: Hier finden Sie Beispiele für Azure Resource Manager-Vorlagen zum Bereitstellen und Konfigurieren von Container Insights.
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: e33bb6ae04f0b11a25a7ab87362bc243ee19c79c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f75278663abde8d4b0f47c8df1dbbdbc298bcafb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597479"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723332"
 ---
-# <a name="resource-manager-template-samples-for-azure-monitor-for-containers"></a>Beispiele für Resource Manager-Vorlagen für Azure Monitor für Container
+# <a name="resource-manager-template-samples-for-container-insights"></a>Resource Manager-Vorlagenbeispiele für Container Insights
 Dieser Artikel enthält Beispiele für [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) zum Bereitstellen und Konfigurieren des Log Analytics-Agents für virtuelle Computer in Azure Monitor. Jedes Beispiel umfasst eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
 ## <a name="enable-for-aks-cluster"></a>Aktivieren für AKS-Cluster
-Im folgenden Beispiel wird Azure Monitor für Container in einem AKS-Cluster aktiviert.
+Im folgenden Beispiel werden Container Insights in einem AKS-Cluster aktiviert.
 
 
 ### <a name="template-file"></a>Vorlagendatei
@@ -357,4 +357,4 @@ Im folgenden Beispiel wird Azure Monitor für Container in einem AKS-Cluster akt
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Rufen Sie weitere Beispielvorlagen für Azure Monitor ab](../resource-manager-samples.md).
-* [Erfahren Sie mehr über Azure Monitor für Container](../containers/container-insights-overview.md).
+* [Weitere Informationen zu Container Insights](../containers/container-insights-overview.md).

@@ -66,10 +66,8 @@
     - name: Branchenspezifische Lösungen
       items:
         - name: Retail
-          href: retail/overview-iot-central-retail.md
           items:
             - name: In-Store-Analyse – Auschecken
-              href: retail/store-analytics-architecture.md
               items:
                 - name: 1. Erstellen einer Einzelhandelsanwendung
                   href: retail/tutorial-in-store-analytics-create-app.md
@@ -77,28 +75,15 @@
                   href: retail/tutorial-in-store-analytics-customize-dashboard.md
                 - name: 3. Exportieren von Daten und Visualisieren von Erkenntnissen
                   href: retail/tutorial-in-store-analytics-export-data-visualize-insights.md
-            - name: Intelligente Bestandsverwaltung
-              href: retail/architecture-smart-inventory-management.md
-              items:
-                - name: Erstellen einer Anwendung für die intelligente Bestandsverwaltung
-                  href: retail/tutorial-iot-central-smart-inventory-management.md
-            - name: Vernetzte Logistik
-              href: retail/architecture-connected-logistics.md
-              items:
-                - name: Erstellen einer Anwendung für vernetzte Logistik
-                  href: retail/tutorial-iot-central-connected-logistics.md
-            - name: Digitales Verteilzentrum
-              href: retail/architecture-digital-distribution-center.md
-              items:
-                - name: Erstellen einer Anwendung für digitale Verteilzentren
-                  href: retail/tutorial-iot-central-digital-distribution-center.md
-            - name: Micro-Fulfillment-Center
-              href: retail/architecture-micro-fulfillment-center.md
-              items:
-                - name: Erstellen einer Micro-Fulfillment-Center-App
-                  href: retail/tutorial-micro-fulfillment-center.md
+            - name: Erstellen einer Anwendung für die intelligente Bestandsverwaltung
+              href: retail/tutorial-iot-central-smart-inventory-management.md
+            - name: Erstellen einer Anwendung für vernetzte Logistik
+              href: retail/tutorial-iot-central-connected-logistics.md
+            - name: Erstellen einer Anwendung für digitale Verteilzentren
+              href: retail/tutorial-iot-central-digital-distribution-center.md
+            - name: Erstellen einer Micro-Fulfillment-Center-App
+              href: retail/tutorial-micro-fulfillment-center.md
             - name: 'Videoanalyse: Objekt- und Bewegungserkennung'
-              href: retail/architecture-video-analytics.md
               items:
                 - name: 0. Bereitstellen einer Anwendung für die Objekt- und Bewegungserkennung
                   href: retail/tutorial-video-analytics-deploy.md
@@ -119,38 +104,21 @@
                 - name: '4: Ändern und Erstellen der Gatewaymodule für die Livevideoanalyse'
                   href: retail/tutorial-video-analytics-build-module.md
         - name: Energieversorgung
-          href: energy/overview-iot-central-energy.md
           items:
-            - name: App-Architektur für intelligente Stromzähler
-              href: energy/concept-iot-central-smart-meter-app.md
             - name: Erstellen einer App für die Überwachung von intelligenten Stromzählern
               href: energy/tutorial-smart-meter-app.md
-            - name: App-Architektur für Solarelemente
-              href: energy/concept-iot-central-solar-panel-app.md
             - name: Erstellen einer App für die Überwachung von Solarelementen
               href: energy/tutorial-solar-panel-app.md
         - name: Regierung
-          href: government/overview-iot-central-government.md
           items:
-            - name: 'Überwachung für vernetzte Abfallwirtschaft: Referenzarchitektur'
-              href: government/concepts-connectedwastemanagement-architecture.md
             - name: Erstellen einer App für die vernetzte Abfallwirtschaft
               href: government/tutorial-connected-waste-management.md
-            - name: 'Überwachung des Wasserverbrauchs: Referenzarchitektur'
-              href: government/concepts-waterconsumptionmonitoring-architecture.md
             - name: Erstellen einer App zur Überwachung des Wasserverbrauchs
               href: government/tutorial-water-consumption-monitoring.md
-            - name: 'Überwachung der Wasserqualität: Referenzarchitektur'
-              href: government/concepts-waterqualitymonitoring-architecture.md
             - name: Erstellen einer App zur Überwachung der Wasserqualität
               href: government/tutorial-water-quality-monitoring.md
-            - name: "Verbinden Ihrer Azure\_IoT\_Central-Anwendung mit Dynamics\_365 for Field Service"
-              href: government/how-to-configure-connected-field-services.md
         - name: Gesundheitswesen
-          href: healthcare/overview-iot-central-healthcare.md
           items:
-            - name: Architektur für die ständige Überwachung von Patienten
-              href: healthcare/concept-continuous-patient-monitoring-architecture.md
             - name: Erstellen einer App für die ständige Überwachung von Patienten
               href: healthcare/tutorial-continuous-patient-monitoring.md
             - name: Erstellen eines Dashboards für die Selektierung von Integritätsdaten
@@ -162,9 +130,51 @@
     - name: Leitfaden für Geräteentwickler
       href: core/overview-iot-central-developer.md
     - name: Leitfaden für Lösungsentwickler
-      href: core/overview-iot-central-developer.md
+      href: core/overview-iot-central-solution-builder.md
     - name: Was sind Anwendungsvorlagen?
       href: core/concepts-app-templates.md
+    - name: Branchenspezifische Anwendungsvorlagen
+      items:
+        - name: Einzelhandel
+          items:
+            - name: Übersicht
+              href: retail/overview-iot-central-retail.md
+            - name: Auftragsabschlussarchitektur für In-Store Analytics
+              href: retail/store-analytics-architecture.md
+            - name: Architektur für intelligente Bestandsverwaltung
+              href: retail/architecture-smart-inventory-management.md
+            - name: Architektur für vernetzte Logistik
+              href: retail/architecture-connected-logistics.md
+            - name: Digitales Verteilzentrum
+              href: retail/architecture-digital-distribution-center.md
+            - name: Micro-Fulfillment-Center-Architektur
+              href: retail/architecture-micro-fulfillment-center.md
+            - name: 'Videoanalyse: Objekt- und Bewegungserkennung'
+              href: retail/architecture-video-analytics.md
+        - name: Energieversorgung
+          items:
+            - name: Übersicht
+              href: energy/overview-iot-central-energy.md
+            - name: App-Architektur für intelligente Stromzähler
+              href: energy/concept-iot-central-smart-meter-app.md
+            - name: App-Architektur für Solarelemente
+              href: energy/concept-iot-central-solar-panel-app.md
+        - name: Regierung
+          items:
+            - name: Übersicht
+              href: government/overview-iot-central-government.md
+            - name: Architektur zur Überwachung der vernetzten Abfallwirtschaft
+              href: government/concepts-connectedwastemanagement-architecture.md
+            - name: Architektur zur Überwachung des Wasserverbrauchs
+              href: government/concepts-waterconsumptionmonitoring-architecture.md
+            - name: Architektur zur Überwachung der Wasserqualität
+              href: government/concepts-waterqualitymonitoring-architecture.md
+        - name: Gesundheitswesen
+          items:
+            - name: Übersicht
+              href: healthcare/overview-iot-central-healthcare.md
+            - name: Architektur für die ständige Überwachung von Patienten
+              href: healthcare/concept-continuous-patient-monitoring-architecture.md
     - name: Was sind Gerätevorlagen?
       href: core/concepts-device-templates.md
     - name: Gerätekonnektivität
@@ -221,6 +231,8 @@
           href: core/howto-create-custom-analytics.md
         - name: Visualisieren Ihrer Daten in Power BI
           href: core/howto-connect-powerbi.md
+        - name: "Verbinden Ihrer Anwendung mit Dynamics\_365 Field Services"
+          href: government/how-to-configure-connected-field-services.md
     - name: Verwalten von Geräten
       items:
         - name: Hinzufügen und Entfernen von Geräten

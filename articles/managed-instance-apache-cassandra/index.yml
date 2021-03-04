@@ -1,0 +1,54 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure Managed Instance for Apache Cassandra
+summary: Azure Managed Instance for Apache Cassandra bietet automatisierte Bereitstellungs- und Skalierungsvorgänge für verwaltete Open-Source-basierte Apache Cassandra-Rechenzentren. Die Lösung trägt zur Beschleunigung von Hybridszenarien sowie zur Verringerung laufender Wartungsmaßnahmen bei.
+metadata:
+  title: Azure Managed Instance for Apache Cassandra
+  description: Azure Managed Instance for Apache Cassandra bietet automatisierte Bereitstellungs- und Skalierungsvorgänge für verwaltete Open-Source-basierte Apache Cassandra-Rechenzentren. Die Lösung trägt zur Beschleunigung von Hybridszenarien sowie zur Verringerung laufender Wartungsmaßnahmen bei.
+  services: service
+  ms.service: managed-instance-apache-cassandra
+  ms.topic: landing-page
+  ms.collection: collection
+  author: TheovanKraay
+  ms.author: thvankra
+  ms.date: 01/18/2021
+  ms.openlocfilehash: 8300012954756f1083c93745299ca57e4c4db0d3
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101742701"
+landingContent:
+- title: Informationen zu Azure Managed Instance for Apache Cassandra
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Managed Instance for Apache Cassandra?
+      url: introduction.md
+  - linkListType: get-started
+    links:
+    - text: Gegenüberstellung von Azure Managed Instance for Apache Cassandra und Cassandra-API für Azure Cosmos DB
+      url: compare-cosmosdb-managed-instance.md
+  - linkListType: quickstart
+    links:
+    - text: 'Erstellen eines Clusters: Portal'
+      url: create-cluster-portal.md
+    - text: 'Erstellen eines Clusters: CLI'
+      url: create-cluster-cli.md
+    - text: Bereitstellen eines Spark-Clusters mit Azure Databricks
+      url: deploy-cluster-databricks.md
+  - linkListType: concept
+    links:
+    - text: Häufig gestellte Fragen
+      url: faq.md
+- title: Konfigurieren und Verwalten der Clusterressourcen
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Konfigurieren eines Hybridclusters
+      url: configure-hybrid-cluster.md
+  - linkListType: how-to-guide
+    links:
+    - text: Verwalten von Ressourcen mithilfe der Azure CLI
+      url: manage-resources-cli.md
+    - text: Visualisieren von Metriken in Prometheus mit Grafana
+      url: visualize-prometheus-grafana.md
