@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/09/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7309d9d32eba5cae350bbe8a1df325dfb2ab0c8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 7fafeae02bce001d473b0ed916624046a559a795
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744362"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648797"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Authentifizierungsmethoden in Azure Active Directory – Microsoft Authenticator-App
 
@@ -23,7 +23,7 @@ Die Microsoft Authenticator-App bietet eine zusätzliche Sicherheitsstufe für I
 
 Benutzer erhalten dann eine Benachrichtigung über die mobile App und können den Vorgang genehmigen oder ablehnen. Sie können aber auch mit der Microsoft Authenticator-App einen OATH-Prüfcode generieren und auf einem Anmeldebildschirm eingeben. Wenn Sie sowohl die Benachrichtigung als auch den Prüfcode aktivieren, können Benutzer, die die Microsoft Authenticator-App registrieren, ihre Identität anhand von beiden Methoden bestätigen.
 
-Informationen zur Verwendung der Microsoft Authenticator-App an einer Anmeldeaufforderung (anstelle der Kombination aus Benutzername und Kennwort) finden Sie unter [Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschau)](howto-authentication-passwordless-phone.md).
+Informationen zur Verwendung der Microsoft Authenticator-App an einer Anmeldeaufforderung anstelle der Kombination aus Benutzername und Kennwort finden Sie unter [Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App](howto-authentication-passwordless-phone.md).
 
 > [!NOTE]
 > Wenn Benutzer SSPR aktivieren, haben sie keine Möglichkeit, die mobile App zu registrieren. Stattdessen können sie die mobile App auf [https://aka.ms/mfasetup](https://aka.ms/mfasetup) oder im Rahmen der kombinierten Registrierung von Sicherheitsinformationen auf [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) registrieren.
@@ -34,7 +34,7 @@ Einem Benutzer, der die Anmeldung per Telefon über die Microsoft Authenticator-
 
 ![Beispiel für eine browserbasierte Anmeldung, die der Benutzer bestätigen muss](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
 
-Diese Authentifizierungsmethode bietet ein hohes Maß an Sicherheit. Zudem muss der Benutzer bei der Anmeldung kein Kennwort mehr eingeben. Die Anmeldung ohne Kennwort mithilfe der Microsoft Authenticator-App ist derzeit als Vorschauversion verfügbar.
+Diese Authentifizierungsmethode bietet ein hohes Maß an Sicherheit. Zudem muss der Benutzer bei der Anmeldung kein Kennwort mehr eingeben. 
 
 Informationen zu den ersten Schritten mit der Anmeldung ohne Kennwort finden Sie unter [Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App](howto-authentication-passwordless-phone.md).
 

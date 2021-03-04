@@ -1,29 +1,26 @@
 ---
-title: Kennwortlose Anmeldung mit Sicherheitsschlüsseln bei lokalen Ressourcen (Vorschauversion) – Azure Active Directory
-description: Erfahren Sie, wie Sie die kennwortlose Anmeldung mit Sicherheitsschlüsseln bei lokalen Ressourcen mit Azure Active Directory aktivieren (Vorschauversion).
+title: Kennwortlose Anmeldung mit Sicherheitsschlüsseln bei lokalen Ressourcen – Azure Active Directory
+description: Erfahren Sie, wie Sie die kennwortlose Anmeldung mit Sicherheitsschlüsseln bei lokalen Ressourcen mit Azure Active Directory aktivieren.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/09/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1459442f7d99d1de88a685eed34493da530c1a4
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: db1b559bb4f6a1f8866116c287df5b814500210b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743478"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647471"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei lokalen Ressourcen mit Azure Active Directory (Vorschauversion)
+# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei lokalen Ressourcen mit Azure Active Directory 
 
 In diesem Dokument liegt der Schwerpunkt auf der Aktivierung der kennwortlosen Authentifizierung bei lokalen Ressourcen für Umgebungen mit **in Azure AD eingebundenen** und **in Hybrid-Azure AD eingebundenen** Windows 10-Geräten. Diese Funktion ermöglicht nahtloses einmaliges Anmelden (Single Sign-On, SSO) bei lokalen Ressourcen mithilfe von Microsoft-kompatiblen Sicherheitsschlüsseln.
-
-> [!NOTE]
-> FIDO2-Sicherheitsschlüssel sind eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>Einmaliges Anmelden bei lokalen Ressourcen mithilfe von FIDO2-Schlüsseln
 
@@ -42,7 +39,7 @@ Ein Azure AD Kerberos-Serverobjekt wird in Ihrer lokalen Active Directory-Instan
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
-Organisationen müssen vor dem Ausführen der Schritte die im Artikel [Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei Windows 10-Geräten (Vorschauversion)](howto-authentication-passwordless-security-key.md) aufgeführten Schritte ausführen.
+Organisationen müssen vor dem Ausführen der Schritte in diesem Artikel die im Artikel [Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei Windows 10-Geräten](howto-authentication-passwordless-security-key.md) aufgeführten Schritte ausführen.
 
 Organisationen müssen auch die folgenden Softwareanforderungen erfüllen.
 
@@ -156,13 +153,13 @@ Die Anmeldung mit FIDO wird blockiert, wenn Ihr Kennwort abgelaufen ist. Es wird
 
 ## <a name="troubleshooting-and-feedback"></a>Problembehandlung und Feedback
 
-Wenn Sie Feedback geben möchten oder Probleme beim Anzeigen der Vorschau dieses Features auftreten, teilen Sie uns dies in folgenden Schritten über die Windows-Feedback-Hub-App mit:
+Wenn Sie Feedback geben möchten oder Probleme mit diesem Feature auftreten, teilen Sie uns dies in folgenden Schritten über die Windows-Feedback-Hub-App mit:
 
 1. Starten Sie **Feedback-Hub**, und stellen Sie sicher, dass Sie angemeldet sind.
 1. Senden Sie Ihr Feedback unter der folgenden Kategorisierung:
    - Kategorie: Sicherheit und Datenschutz
    - Unterkategorie: FIDO
-1. Zum Erfassen von Protokollen verwenden Sie die Option **Problem reproduzieren**.
+1. Verwenden Sie die Option **Problem reproduzieren**, um Protokolle zu erfassen.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

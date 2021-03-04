@@ -1,42 +1,39 @@
 ---
-title: Kennwortlose Anmeldung mit Sicherheitsschlüsseln (Vorschau) – Azure Active Directory
-description: Aktivieren der kennwortlosen Anmeldung mit FIDO2-Sicherheitsschlüsseln bei Azure AD (Vorschauversion)
+title: Kennwortlose Anmeldung mit Sicherheitsschlüsseln – Azure Active Directory
+description: Aktivieren der kennwortlosen Anmeldung mit FIDO2-Sicherheitsschlüsseln bei Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ac8cf172a13e7198233170634ee4a3954793cd2
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 71a29a2a7e379e253b52813eb7a76f669abbf668
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743427"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653829"
 ---
-# <a name="enable-passwordless-security-key-sign-in-preview"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln (Vorschauversion)
+# <a name="enable-passwordless-security-key-sign-in"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln 
 
 Sicherheitsschlüssel bieten Unternehmen, die aktuell Kennwörter verwenden und über eine freigegebene PC-Umgebung verfügen, eine nahtlose Möglichkeit für Mitarbeiter, sich ohne Eingabe eines Benutzernamens oder Kennworts zu authentifizieren. Sicherheitsschlüssel ermöglichen den Mitarbeitern eine bessere Produktivität und bieten eine höhere Sicherheit.
 
 In diesem Dokument liegt der Schwerpunkt auf der Aktivierung der auf Sicherheitsschlüsseln basierenden kennwortlosen Authentifizierung. Am Ende dieses Artikels können Sie sich mit Ihrem Azure AD-Konto mithilfe eines FIDO2-Sicherheitsschlüssels bei webbasierten Anwendungen anmelden.
 
-> [!NOTE]
-> FIDO2-Sicherheitsschlüssel sind eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
 - [Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md)
-- Aktivieren der [kombinierten Registrierung von Sicherheitsinformationen (Vorschauversion)](concept-registration-mfa-sspr-combined.md)
+- Aktivieren der [kombinierten Registrierung von Sicherheitsinformationen](concept-registration-mfa-sspr-combined.md)
 - Kompatible [FIDO2-Sicherheitsschlüssel](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN erfordert Windows 10, Version 1903 oder höher**
 
 Um Sicherheitsschlüssel für die Anmeldung bei Web-Apps und-Diensten verwenden zu können, benötigen Sie einen Browser, der das WebAuthN-Protokoll unterstützt. Hierzu zählen Microsoft Edge, Chrome, Firefox und Safari.
 
-## <a name="prepare-devices-for-preview"></a>Vorbereiten von Geräten für die Vorschauversion
+## <a name="prepare-devices"></a>Vorbereiten von Geräten
 
 Für in Azure AD eingebundene Geräte eignet sich besonders Windows 10, Version 1903 oder höher.
 
@@ -46,12 +43,12 @@ Auf hybrid in Azure AD eingebundenen Geräten muss Windows 10, Version 2004 o
 
 ### <a name="enable-the-combined-registration-experience"></a>Aktivieren der kombinierten Registrierung
 
-Die Registrierungsfunktionen für Methoden zur kennwortlosen Authentifizierung sind von der kombinierten Registrierungsfunktion abhängig. Führen Sie die im Artikel [Aktivieren der kombinierten Registrierung von Sicherheitsinformationen (Vorschauversion)](howto-registration-mfa-sspr-combined.md) aufgeführten Schritte aus, um die kombinierte Registrierung zu aktivieren.
+Die Registrierungsfunktionen für Methoden zur kennwortlosen Authentifizierung sind von der kombinierten Registrierungsfunktion abhängig. Führen Sie die im Artikel [Aktivieren der kombinierten Registrierung von Sicherheitsinformationen](howto-registration-mfa-sspr-combined.md) aufgeführten Schritte aus, um die kombinierte Registrierung zu aktivieren.
 
 ### <a name="enable-fido2-security-key-method"></a>Aktivieren der Methode „FIDO2-Sicherheitsschlüssel“
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Authentifizierungsmethoden** > **Authentifizierungsmethodenrichtlinie (Vorschau)** .
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Authentifizierungsmethoden** > **Authentifizierungsmethodenrichtlinie**.
 1. Wählen Sie unter der Methode **FIDO2-Sicherheitsschlüssel** die folgenden Optionen aus:
    1. **Aktivieren**: „Ja“ oder „Nein“
    1. **Ziel**: „Alle Benutzer“ oder „Benutzer auswählen“
@@ -79,7 +76,7 @@ Im nachfolgenden Beispiel hat der Benutzer bereits einen FIDO2-Sicherheitsschlü
 
 ## <a name="troubleshooting-and-feedback"></a>Problembehandlung und Feedback
 
-Wenn Sie Feedback geben möchten oder Probleme beim Anzeigen der Vorschau dieses Features auftreten, teilen Sie uns dies in folgenden Schritten über die Windows-Feedback-Hub-App mit:
+Wenn Sie Feedback geben möchten oder Probleme mit diesem Feature auftreten, teilen Sie uns dies in folgenden Schritten über die Windows-Feedback-Hub-App mit:
 
 1. Starten Sie **Feedback-Hub**, und stellen Sie sicher, dass Sie angemeldet sind.
 1. Senden Sie Ihr Feedback unter der folgenden Kategorisierung:
@@ -91,7 +88,7 @@ Wenn Sie Feedback geben möchten oder Probleme beim Anzeigen der Vorschau dieses
 
 ### <a name="security-key-provisioning"></a>Bereitstellung von Sicherheitsschlüsseln
 
-Die Administratorbereitstellung und Bereitstellungsaufhebung von Sicherheitsschlüsseln ist in der öffentlichen Vorschauversion nicht verfügbar.
+Die Administratorbereitstellung und Bereitstellungsaufhebung von Sicherheitsschlüsseln ist nicht verfügbar.
 
 ### <a name="upn-changes"></a>Änderungen des Benutzerprinzipalnamens
 

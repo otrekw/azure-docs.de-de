@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 02/22/2021
 ms.author: baselden
 author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d04c148e8a96e3b1d72c5301f6226df6d9a569
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: dc5916cf4277935f6d7d7f453fd4dd76d7909ef2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530347"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651126"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Planen einer Bereitstellung mit kennwortloser Authentifizierung in Azure Active Directory
 
@@ -149,7 +149,7 @@ Es gibt drei Arten von Bereitstellungen der kennwortlosen Anmeldung mit Sicherhe
 
 -    Azure Active Directory-Web-Apps in einem unterstützten Browser
 -    In Azure Active Directory eingebundene Windows 10-Geräte
--    Windows 10-Geräte mit Azure Active Directory-Hybrideinbindung (Vorschauversion)
+-    Windows 10-Geräte mit Azure Active Directory-Hybrideinbindung
      -    Sie ermöglichen den Zugriff auf cloudbasierte und lokale Ressourcen. Weitere Informationen zum Zugriff auf lokale Ressourcen finden Sie unter [Einmaliges Anmelden bei lokalen Ressourcen mithilfe von FIDO2-Schlüsseln](./howto-authentication-passwordless-security-key-on-premises.md).
 
 Sie müssen **kompatible FIDO2-Sicherheitsschlüssel** aktivieren. Microsoft hat [Schlüsselpartnerschaften mit FIDO2-Schlüsselanbietern](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493) angekündigt.
@@ -193,7 +193,7 @@ Um die Windows 10-Anmeldung mit FIDO2-Sicherheitsschlüsseln zu aktivieren, mus
 
 #### <a name="enable-on-premises-integration"></a>Aktivieren der lokalen Integration
 
-Gehen Sie wie unter [Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei lokalen Ressourcen mit Azure Active Directory (Vorschauversion)](howto-authentication-passwordless-security-key-on-premises.md) beschrieben vor, um den Zugriff auf lokale Ressourcen zu ermöglichen.
+Gehen Sie wie unter [Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei lokalen Ressourcen mit Azure Active Directory](howto-authentication-passwordless-security-key-on-premises.md) beschrieben vor, um den Zugriff auf lokale Ressourcen zu ermöglichen.
 
 > [!IMPORTANT]
 > Diese Schritte müssen auch für alle Geräte mit Azure AD-Hybrideinbindung ausgeführt werden, um FIDO2-Sicherheitsschlüssel für die Windows 10-Anmeldung verwenden zu können.

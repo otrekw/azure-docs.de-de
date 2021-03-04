@@ -3,12 +3,12 @@ title: Sichere WebHook-Zustellung mit Azure AD in Azure Event Grid
 description: Beschreibt, wie Ereignisse mittels Azure Event Grid an HTTPS-Endpunkte zugestellt werden, die von Azure Active Directory geschützt werden.
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: b01f0342e185883c4d1552800ab9bdb30cea3040
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: be38edfb4edfee5b3a3b42d7b1c5a44c9d72ceef
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549151"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035444"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Veröffentlichen von Ereignissen auf mit Azure Active Directory geschützten Endpunkten
 
@@ -26,7 +26,7 @@ Beginnen Sie damit, eine Azure AD-Anwendung für Ihren geschützten Endpunkt zu 
 In diesem Abschnitt erfahren Sie, wie Sie Event Grid für die Verwendung Ihrer Azure AD-Anwendung aktivieren. 
 
 > [!NOTE]
-> Sie müssen Mitglied der [Rolle „Azure AD-Anwendungsadministrator“](../active-directory/roles/permissions-reference.md#available-roles) sein, um dieses Skript ausführen zu können.
+> Sie müssen Mitglied der [Rolle „Azure AD-Anwendungsadministrator“](../active-directory/roles/permissions-reference.md#all-roles) sein, um dieses Skript ausführen zu können.
 
 ### <a name="connect-to-your-azure-tenant"></a>Herstellen einer Verbindung mit Ihrem Azure-Mandanten
 Stellen Sie zunächst mithilfe des `Connect-AzureAD`-Befehls eine Verbindung mit Ihrem Azure-Mandanten her. 

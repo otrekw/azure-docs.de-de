@@ -11,18 +11,37 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd9b07f1f7aed479e94e77a5641130cb784dd69e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 32ad7199360ca0acc8674f7a4e34bd206f8b335f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741965"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648764"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Versionsverlauf des Azure AD-Kennwortschutz-Agents
 
+## <a name="121720"></a>1.2.172.0
+
+Veröffentlichungsdatum: 22. Februar 2021
+
+Vor fast zwei Jahren wurden die GA-Versionen der lokalen Azure AD-Kennwortschutz-Agents veröffentlicht. Jetzt ist ein neues Update verfügbar. Weitere Informationen finden Sie unten in den Änderungsbeschreibungen. Wir danken allen, die uns Feedback zum Produkt gegeben haben. 
+
+* Die DC-Agent- und Proxy-Agent-Software setzen nun die Installation von .NET 4.7.2 voraus.
+  * Wenn .NET 4.7.2 nicht bereits installiert ist, laden Sie das Installationsprogramm unter [.NET Framework 4.7.2-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2) herunter, und führen Sie es aus.
+* Das PowerShell-Modul AzureADPasswordProtection wird nun auch von der DC-Agent-Software installiert.
+* Es wurden zwei neue integritätsbezogene PowerShell-Cmdlets hinzugefügt: Test-AzureADPasswordProtectionDCAgent und Test-AzureADPasswordProtectionProxy.
+* Die Kennwortfilter-DLL für den AzureADPasswordProtection-DC-Agent wird nun auf Computern geladen und ausgeführt, auf denen lsass.exe für die Ausführung im PPL-Modus konfiguriert ist.
+* Eine Fehlerbehebung wurde bei dem Kennwortalgorithmus durchgeführt, der zuließ, dass gesperrte Kennwörter mit weniger als fünf Zeichen fälschlicherweise akzeptiert wurden.
+  * Diese Fehlerbehebung ist nur relevant, wenn Ihre lokale AD-Richtlinie für die Mindestlänge von Kennwörtern so konfiguriert wurde, dass sie Kennwörter mit weniger als fünf Zeichen zulässt.
+* Weitere geringfügige Fehlerbehebungen.
+
+Die neuen Installationsprogramme aktualisieren ältere Versionen der Software automatisch. Wenn Sie sowohl die DC-Agent- als auch die Proxysoftware auf einem einzelnen Computer installiert haben (dies wird nur für Testumgebungen empfohlen), müssen Sie beide gleichzeitig aktualisieren.
+
+Die Ausführung älterer und neuerer Versionen der DC-Agent-und Proxysoftware in einer Domäne oder Gesamtstruktur wird unterstützt, doch als bewährte Vorgehensweise wird empfohlen, alle Agents auf die neueste Version zu aktualisieren. Jede Reihenfolge der Agent-Upgrades wird unterstützt. Neue DC-Agents können über ältere Proxy-Agents kommunizieren, und ältere DC-Agents können über neuere Proxy-Agents kommunizieren.
+
 ## <a name="121250"></a>1.2.125.0
 
-Veröffentlichungsdatum: 22.3.2019
+Veröffentlichungsdatum: 22. März 2019
 
 * Beheben von kleineren Tippfehlern in Ereignisprotokollmeldungen
 * Aktualisieren des Endbenutzer-Lizenzvertrags auf die endgültige Version der allgemeinen Verfügbarkeit
@@ -38,7 +57,7 @@ Veröffentlichungsdatum: 13.3.2019
   * Die Daten zur Softwareversion und zum Azure-Mandanten sind nur für DC-Agents und Proxys verfügbar, die mit Version 1.2.116.0 oder höher ausgeführt werden.
   * Die Daten des Azure-Mandanten können erst angezeigt werden, nachdem eine erneute Registrierung (oder Erneuerung) des Proxys oder der Gesamtstruktur erfolgt ist.
 * Für den Proxydienst ist nun die Installation von .NET 4.7 erforderlich.
-  * .NET 4.7 sollte bereits auf einem vollständig aktualisierten Windows-Server installiert sein. Wenn dies nicht der Fall ist, laden Sie das Installationsprogramm unter [.NET Framework 4.7-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows) herunter, und führen Sie es aus.
+  * Wenn .NET 4.7 nicht bereits installiert ist, laden Sie das Installationsprogramm unter [.NET Framework 4.7-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows) herunter, und führen Sie es aus.
   * Auf Server Core-Systemen muss möglicherweise das Flag „/q“ an das .NET 4.7-Installationsprogramm übergeben werden, damit dieses erfolgreich ausgeführt werden kann.
 * Der Proxydienst unterstützt jetzt das automatische Upgrade. Für das automatische Upgrade wird der Microsoft Azure AD Connect Agent Updater-Dienst verwendet, der zusammen mit dem Proxydienst installiert wird. Das automatische Upgrade ist standardmäßig aktiviert.
 * Das automatische Upgrade kann mithilfe des Cmdlets „Set-AzureADPasswordProtectionProxyConfiguration“ aktiviert und deaktiviert werden. Die aktuelle Einstellung kann mithilfe des Cmdlets „Get-AzureADPasswordProtectionProxyConfiguration“ abgefragt werden.
@@ -50,14 +69,14 @@ Veröffentlichungsdatum: 13.3.2019
 
 ## <a name="12650"></a>1.2.65.0
 
-Veröffentlichungsdatum: 1.2.2019
+Veröffentlichungsdatum: 1. Februar 2019
 
 Änderungen:
 
-* DC-Agent und Proxydienst werden jetzt unter Server Core unterstützt. Die Mindestanforderungen an das Betriebssystem sind unverändert: Windows Server 2012 für DC-Agents und Windows Server 2012 R2 für Proxys.
+* DC-Agent und Proxydienst werden jetzt unter Server Core unterstützt. Die Mindestanforderungen an das Betriebssystem bleiben unverändert: Windows Server 2012 für DC-Agents und Windows Server 2012 R2 für Proxys.
 * Die Cmdlets Register-AzureADPasswordProtectionProxy und Register-AzureADPasswordProtectionForest unterstützen jetzt gerätecodebasierte Azure-Authentifizierungsmodi.
-* Das Cmdlet Get-AzureADPasswordProtectionDCAgent ignoriert fehlerhafte und/oder ungültige Dienstverbindungspunkte. Dies behebt den Fehler, bei dem Domänencontroller manchmal mehrmals in der Ausgabe aufgeführt wurden.
-* Das Cmdlet Get-AzureADPasswordProtectionSummaryReport ignoriert fehlerhafte und/oder ungültige Dienstverbindungspunkte. Dies behebt den Fehler, bei dem Domänencontroller manchmal mehrmals in der Ausgabe aufgeführt wurden.
+* Das Cmdlet Get-AzureADPasswordProtectionDCAgent ignoriert fehlerhafte und/oder ungültige Dienstverbindungspunkte. Diese Änderung behebt den Fehler, dass Domänencontroller manchmal mehrmals in der Ausgabe aufgeführt wurden.
+* Das Cmdlet Get-AzureADPasswordProtectionSummaryReport ignoriert fehlerhafte und/oder ungültige Dienstverbindungspunkte. Diese Änderung behebt den Fehler, dass Domänencontroller manchmal mehrmals in der Ausgabe aufgeführt wurden.
 * Das Proxy-PowerShell-Modul wird jetzt von „%ProgramFiles%\WindowsPowerShell\Modules“ registriert. Die Umgebungsvariable PSModulePath des Computers wird nicht mehr geändert.
 * Das neue Cmdlet Get-AzureADPasswordProtectionProxy wurde hinzugefügt, um bei der Ermittlung von registrierten Proxys in einer Gesamtstruktur oder Domäne zu helfen.
 * Der DC-Agent verwendet einen neuen Ordner in der SYSVOL-Freigabe für die Replikation von Kennwortrichtlinien und anderen Dateien.
@@ -88,12 +107,12 @@ Veröffentlichungsdatum: 1.2.2019
 
 ## <a name="12250"></a>1.2.25.0
 
-Veröffentlichungsdatum: 1.11.2018
+Veröffentlichungsdatum: 1. November 2018
 
 Fehlerbehebungen:
 
 * DC-Agent- und Proxydienst sollten nicht mehr aufgrund von Zertifikatvertrauensfehlern fehlschlagen.
-* DC-Agent- und Proxydienst weisen zusätzliche Fixes für FIPS-konforme Computer auf.
+* DC-Agent- und Proxydienst weisen Fixes für FIPS-konforme Computer auf.
 * Der Proxydienst funktioniert jetzt in einer reinen TLS 1.2-Netzwerkumgebung ordnungsgemäß.
 * Kleinere Fehlerbehebungen bei Leistung und Stabilität.
 * Verbesserte Protokollierung.
@@ -102,11 +121,11 @@ Fehlerbehebungen:
 
 * Die mindestens erforderliche Betriebssystemebene für den Proxydienst ist jetzt Windows Server 2012 R2. Die mindestens erforderliche Betriebssystemebene für den DC-Agent-Dienst bleibt Windows Server 2012.
 * Der Proxydienst erfordert jetzt .NET Version 4.6.2.
-* Der Algorithmus für die Kennwortüberprüfung verwendet eine erweiterte Zeichennormalisierungstabelle. Dies kann dazu führen, dass Kennwörter abgelehnt werden, die in früheren Versionen akzeptiert wurden.
+* Der Algorithmus für die Kennwortüberprüfung verwendet eine erweiterte Zeichennormalisierungstabelle. Diese Änderung kann dazu führen, dass Kennwörter abgelehnt werden, die in früheren Versionen akzeptiert wurden.
 
 ## <a name="12100"></a>1.2.10.0
 
-Veröffentlichungsdatum: 17.8.2018
+Veröffentlichungsdatum: 17. August 2018
 
 Fehlerbehebungen:
 
@@ -130,7 +149,7 @@ Fehlerbehebungen:
 
 ## <a name="11103"></a>1.1.10.3
 
-Veröffentlichungsdatum: 15.6.2018
+Veröffentlichungsdatum: 15. Juni 2018
 
 Erste öffentliche Vorschauversion
 

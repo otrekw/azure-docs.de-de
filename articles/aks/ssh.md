@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie eine SSH-Verbindung mit Azure Kubernetes Serv
 services: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.openlocfilehash: 96334985862c65000d783df3a205406f046be07a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7455b98348f2b8c40f2ffc125abe1297af88fbd8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740544"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034454"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Herstellen einer SSH-Verbindung mit Azure Kubernetes Service-Clusterknoten (AKS) zur Wartung oder Problembehandlung
 
@@ -168,7 +168,7 @@ Zum Erstellen einer SSH-Verbindung mit einem AKS-Knoten führen Sie einen Hilfsp
 1. Wechseln Sie zurück zur Terminalsitzung für Ihren Container, und aktualisieren Sie die Berechtigungen für den kopierten privaten SSH-Schlüssel `id_rsa`, damit er für Benutzer schreibgeschützt ist:
 
     ```console
-    chmod 0600 id_rsa
+    chmod 0400 id_rsa
     ```
 
 1. Erstellen Sie eine SSH-Verbindung mit Ihrem AKS-Knoten. Auch hier lautet der Standardbenutzername für AKS-Knoten *azureuser*. Bestätigen Sie die Aufforderung zum Fortsetzen der Verbindung, da zuerst die Vertrauenswürdigkeit des SSH-Schlüssels überprüft wird. Anschließend wird die Bash-Eingabeaufforderung Ihres AKS-Knotens angezeigt:

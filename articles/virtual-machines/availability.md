@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 6601cd31cf6e332bf292cd887b498a92946d8af7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c336c1632cf206cdf2bf7151dc191c4de5ef820d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101668298"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036927"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Verfügbarkeitsoptionen für virtuelle Computer in Azure
 
@@ -55,7 +55,7 @@ VM-Skalierungsgruppen vereinfachen durch das Ausrichten von Fehlerdomänen und U
 
 **Orchestrierungsmodi für Skalierungsgruppen**
 
-Die Orchestrierungsmodi für VM-Skalierungsgruppen ermöglichen Ihnen eine bessere Kontrolle darüber, wie die Instanzen virtueller Computer von der Skalierungsgruppe verwaltet werden. Sie können einen einheitlichen oder flexiblen Orchestrierungsmodus für Ihre Skalierungsgruppe aktivieren. Eine einheitliche Orchestrierung ist für große zustandslose Workloads mit identischen Instanzen optimiert. Die flexible Orchestrierung (Vorschau) ist für Hochverfügbarkeit im großen Stil mit identischen oder mehreren virtuellen Computern vorgesehen. Erfahren Sie mehr über diese [Orchestrierungsmodi](./virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) und wie Sie sie aktivieren können.
+Die Orchestrierungsmodi für VM-Skalierungsgruppen ermöglichen Ihnen eine bessere Kontrolle darüber, wie die Instanzen virtueller Computer von der Skalierungsgruppe verwaltet werden. Sie können einen einheitlichen oder flexiblen Orchestrierungsmodus für Ihre Skalierungsgruppe aktivieren. Eine einheitliche Orchestrierung ist für große zustandslose Workloads mit identischen Instanzen optimiert. Die flexible Orchestrierung (Vorschau) ist für Hochverfügbarkeit im großen Stil mit identischen oder mehreren virtuellen Computern vorgesehen. Erfahren Sie mehr über diese [Orchestrierungsmodi](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) und wie Sie sie aktivieren können.
 
 
 ## <a name="availability-sets"></a>Verfügbarkeitsgruppen

@@ -176,7 +176,7 @@
     - name: Berichterstellung
       items:
         - name: Aktivität für Authentifizierungsmethoden
-          href: howto-authentication-methods-usage-insights.md
+          href: howto-authentication-methods-activity.md
         - name: SSPR-Berichte
           href: howto-sspr-reporting.md
         - name: MFA-Berichte

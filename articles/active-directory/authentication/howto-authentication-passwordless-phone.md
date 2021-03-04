@@ -1,6 +1,6 @@
 ---
 title: 'Azure Active Directory: Kennwortlose Anmeldung mit der Microsoft Authenticator-App'
-description: Aktivieren der kennwortlosen Anmeldung bei Azure AD mit der Microsoft Authenticator-App (Vorschauversion)
+description: Aktivieren der kennwortlosen Anmeldung bei Azure AD mit der Microsoft Authenticator-App
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62dea67f139857befc7ca24b8b8a105241b5c949
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 51e6cd7efcd0e851c15975aba5ff9b99c615eb7d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626154"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653472"
 ---
-# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion)
+# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion) 
 
 Mit der Microsoft Authenticator-App können sich Benutzer bei jedem beliebigen Azure AD-Konto anmelden, ohne ein Kennwort zu verwenden. Microsoft Authenticator aktiviert mit der schlüsselbasierten Authentifizierung Benutzeranmeldeinformationen, die an ein Gerät gebunden sind, wobei das Gerät eine PIN oder einen biometrischen Wert verwendet. [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) verwendet eine ähnliche Technologie.
 
@@ -40,7 +40,7 @@ Die folgenden Voraussetzungen müssen erfüllt sein, damit die kennwortlose Anme
 - Aktuelle Version von Microsoft Authenticator auf Geräten mit iOS 8.0 oder höher oder Android 6.0 oder höher installieren.
 
 > [!NOTE]
-> Wenn Sie die Vorschauversion der kennwortlosen Anmeldung mit Microsoft Authenticator mithilfe von Azure AD PowerShell aktiviert haben, wurde sie für Ihr gesamtes Verzeichnis aktiviert. Wenn Sie die Aktivierung mit dieser neuen Methode vornehmen, wird die PowerShell-Richtlinie dadurch ersetzt. Es wird empfohlen, für alle Benutzer in Ihrem Mandanten die Aktivierung über das neue Menü *Authentifizierungsmethoden* vorzunehmen. Andernfalls können sich Benutzer, die nicht in der neuen Richtlinie enthalten sind, nicht mehr ohne Kennwort anmelden.
+> Wenn Sie die kennwortlose Anmeldung mit Microsoft Authenticator mithilfe von Azure AD PowerShell aktiviert haben, wurde sie für Ihr gesamtes Verzeichnis aktiviert. Wenn Sie die Aktivierung mit dieser neuen Methode vornehmen, wird die PowerShell-Richtlinie dadurch ersetzt. Es wird empfohlen, für alle Benutzer in Ihrem Mandanten die Aktivierung über das neue Menü *Authentifizierungsmethoden* vorzunehmen. Andernfalls können sich Benutzer, die nicht in der neuen Richtlinie enthalten sind, nicht mehr ohne Kennwort anmelden.
 
 ## <a name="enable-passwordless-authentication-methods"></a>Aktivieren von Methoden zur kennwortlosen Authentifizierung
 
@@ -58,7 +58,7 @@ Führen Sie die folgenden Schritte aus, um die Authentifizierungsmethode für di
 
 1. Melden Sie sich mit einem globalen *Administratorkonto* im [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach *Azure Active Directory*, und wählen Sie die Option aus. Navigieren Sie anschließend zu **Sicherheit** > **Authentifizierungsmethoden** > **Richtlinien**.
-1. Wählen Sie unter **Microsoft Authenticator (Vorschau)** die folgenden Optionen aus:
+1. Wählen Sie unter **Microsoft Authenticator** die folgenden Optionen aus:
    1. **Aktivieren**: „Ja“ oder „Nein“
    1. **Ziel**: „Alle Benutzer“ oder „Benutzer auswählen“
 1. Bei jeder hinzugefügten Gruppe und jedem hinzugefügten Benutzer ist standardmäßig Microsoft Authenticator sowohl im kennwortlosen als auch im Pushbenachrichtigungsmodus („Beliebig“) aktiviert. Um dies zu ändern, führen Sie für jede Zeile folgende Schritte aus:
@@ -104,7 +104,7 @@ Nachdem der Benutzer die kennwortlose Anmeldung verwendet hat, leitet die App de
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
-Die folgenden bekannten Probleme können in der aktuellen Vorschauversion auftreten.
+Die folgenden Probleme sind bekannt.
 
 ### <a name="not-seeing-option-for-passwordless-phone-sign-in"></a>Die Option für die kennwortlose Anmeldung per Telefon wird nicht angezeigt
 

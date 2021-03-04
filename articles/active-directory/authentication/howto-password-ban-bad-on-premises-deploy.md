@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f17f6eb913d1ea54e8db6acd369d165553e16ec
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c8cae19bd07e1cc87a0aaa25e47cf5f431d566ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091039"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653812"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Planen und Bereitstellen des lokalen Azure AD-Kennwortschutzes
 
@@ -102,7 +102,8 @@ Die folgenden Anforderungen gelten für den Azure AD-Kennwortschutz-DC-Agent:
 
 * Alle Computer, auf denen die DC-Agent-Software für den Azure AD-Kennwortschutz installiert werden soll, müssen unter Windows Server 2012 oder höher (einschließlich der Windows Server Core-Editionen) ausgeführt werden.
     * Die Active Directory-Domäne oder -Gesamtstruktur muss sich nicht ebenfalls in einer Windows Server 2012-Domänenfunktionsebene oder der Funktionsebene der Gesamtstruktur befinden. Wie unter [Entwurfsprinzipien](concept-password-ban-bad-on-premises.md#design-principles) ausgeführt, gibt es für das Ausführen des DC-Agents oder der Proxysoftware keine Mindestanforderungen an die Domänenfunktionsebene (DFL) oder die Funktionsebene der Gesamtstruktur (FFL).
-* Auf allen Computern, auf denen der Azure AD-Kennwortschutz-DC-Agent ausgeführt wird, muss .NET 4.5 installiert sein.
+* Auf allen Computern, auf denen der Azure AD-Kennwortschutz-Proxydienst installiert werden soll, muss .NET 4.7.2 installiert sein.
+    * Wenn .NET 4.7.2 nicht bereits installiert ist, laden Sie das Installationsprogramm unter [.NET Framework 4.7.2-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2) herunter, und führen Sie es aus.
 * Alle Active Directory-Domänen, die den DC-Agent-Dienst für den Azure AD-Kennwortschutz ausführen, müssen DFSR (Distributed File System Replication) für die SYSVOL-Replikation verwenden.
    * Sollte DFSR von Ihrer Domäne noch nicht verwendet werden, müssen Sie vor der Installation des Azure AD-Kennwortschutzes eine Migration durchführen. Weitere Informationen finden Sie im [Migrationshandbuch für die SYSVOL-Replikation: Replikation von FRS zu DFS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
@@ -122,8 +123,8 @@ Die folgenden Anforderungen gelten für den Azure AD-Kennwortschutz-Proxydienst
     > [!NOTE]
     > Die Bereitstellung des Azure AD-Kennwortschutz-Proxydiensts ist eine obligatorische Voraussetzung für das Bereitstellen des Azure AD-Kennwortschutzes, auch wenn der Domänencontroller möglicherweise über eine direkte ausgehende Internetverbindung verfügt.
 
-* Auf allen Computern, auf denen der Azure AD-Kennwortschutz-Proxydienst installiert werden soll, muss .NET 4.7 installiert sein.
-    * .NET 4.7 sollte bereits auf einem vollständig aktualisierten Windows-Server installiert sein. Laden Sie bei Bedarf das Installationsprogramm unter [.NET Framework 4.7-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows) herunter, und führen Sie es aus.
+* Auf allen Computern, auf denen der Azure AD-Kennwortschutz-Proxydienst installiert werden soll, muss .NET 4.7.2 installiert sein.
+    * Wenn .NET 4.7.2 nicht bereits installiert ist, laden Sie das Installationsprogramm unter [.NET Framework 4.7.2-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2) herunter, und führen Sie es aus.
 * Alle Computer, auf denen der Proxydienst für den Azure AD-Kennwortschutz gehostet wird, müssen so konfiguriert werden, dass Domänencontrollern die Anmeldung beim Proxydienst ermöglicht wird. Dies wird über die Zuweisung der Berechtigung „Auf diesen Computer vom Netzwerk aus zugreifen“ gesteuert.
 * Alle Computer, die den Proxydienst für den Azure AD-Kennwortschutz hosten, müssen so konfiguriert sein, dass sie ausgehenden HTTP-Datenverkehr mit TLS 1.2 zulassen.
 * Ein Konto vom Typ *Globaler Administrator* oder *Sicherheitsadministrator* zum Registrieren des Azure AD-Kennwortschutz-Proxydiensts und der Gesamtstruktur bei Azure AD.
@@ -157,7 +158,7 @@ Im nächsten Abschnitt installieren Sie die Azure AD-Kennwortschutz-DC-Agents a
 Wählen Sie mindestens einen Server für das Hosten des Azure AD-Kennwortschutz-Proxydiensts aus. Die folgenden Überlegungen gelten für diese Server:
 
 * Jeder dieser Dienste kann nur Kennwortrichtlinien für eine einzelne Gesamtstruktur bereitstellen. Der Hostcomputer muss einer Domäne in dieser Gesamtstruktur angehören.
-* Die Installation des Proxydiensts in Stammdomänen oder untergeordneten Domänen bzw. in einer Kombination dieser Domänen wird unterstützt.
+* Sie können den Proxydienst entweder in Stammdomänen oder untergeordneten Domänen bzw. in einer Kombination dieser Domänen installieren.
 * Sie benötigen eine Netzwerkverbindung zwischen mindestens einem Domänencontroller in jeder Domäne der Gesamtstruktur und einem Kennwortschutz-Proxyserver.
 * Sie haben die Möglichkeit, den Azure AD-Kennwortschutz-Proxydienst zu Testzwecken auf einem Domänencontroller auszuführen. Für den Domänencontroller ist dann aber eine Internetverbindung erforderlich. Diese Konnektivität kann ein Sicherheitsproblem darstellen. Es wird empfohlen, diese Konfiguration nur zu Testzwecken zu verwenden.
 * Es wird empfohlen, aus Redundanzgründen mindestens zwei Azure AD-Kennwortschutz-Proxyserver pro Gesamtstruktur zu verwenden, wie im vorherigen Abschnitt mit [Überlegungen zur Hochverfügbarkeit](#high-availability-considerations) beschrieben.
@@ -200,7 +201,7 @@ Befolgen Sie zum Installieren des Azure AD-Kennwortschutz-Proxydiensts die folg
 
     Dieses Cmdlet erfordert die Anmeldeinformationen des *globalen Administrators* oder des *Sicherheitsadministrators* für Ihren Azure-Mandanten. Dieses Cmdlet muss außerdem mit einem Konto mit lokalen Administratorrechten ausgeführt werden.
 
-    Nachdem dieser Befehl einmal für einen Azure AD-Kennwortschutz-Proxydienst erfolgreich war, sind weitere Aufrufe erfolgreich, aber nicht erforderlich.
+    Nachdem dieser Befehl einmal erfolgreich ausgeführt wurde, sind auch weitere Aufrufe erfolgreich, aber unnötig.
 
     Das Cmdlet `Register-AzureADPasswordProtectionProxy` unterstützt die folgenden drei Authentifizierungsmodi. Die ersten beiden Modi unterstützen Azure AD Multi-Factor Authentication, der dritte hingegen nicht.
 

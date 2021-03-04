@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 173e6541b4113a5d2e71d76b3b939a69d5224b5a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7c37fbead3f7b87da16e77caeda8286d05ca628b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735595"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035134"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Schnellstart: Erstellen und Bereitstellen von Apps in Azure Spring Cloud
 
@@ -77,14 +77,14 @@ Wenn Sie bis jetzt Azure Cloud Shell verwendet haben, wechseln Sie zu einer loka
    cd steeltoe-sample/src/planet-weather-provider
    ```
 
-1. Erstellen Sie die Binärdateien und die *ZIP* -Datei, die bereitgestellt werden sollen.
+1. Erstellen Sie die Binärdateien und die *ZIP*-Datei, die bereitgestellt werden sollen.
 
    ```console
    dotnet publish -c release -o ./publish
    ```
 
    > [!TIP]
-   > Die Projektdatei enthält den folgenden XML-Code zum Verpacken der Binärdateien in einer *ZIP* -Datei, nachdem diese in den Ordner *./publish* geschrieben wurden:
+   > Die Projektdatei enthält den folgenden XML-Code zum Verpacken der Binärdateien in einer *ZIP*-Datei, nachdem diese in den Ordner *./publish* geschrieben wurden:
    >
    > ```xml
    > <Target Name="Publish-Zip" AfterTargets="Publish">
@@ -100,7 +100,7 @@ Wenn Sie bis jetzt Azure Cloud Shell verwendet haben, wechseln Sie zu einer loka
    az spring-cloud app deploy -n planet-weather-provider --runtime-version NetCore_31 --main-entry Microsoft.Azure.SpringCloud.Sample.PlanetWeatherProvider.dll --artifact-path ./publish-deploy-planet.zip
    ```
 
-   Die Option `--main-entry` gibt den relativen Pfad vom Stammordner der *ZIP* -Datei zur  *DLL* -Datei an, die den Einstiegspunkt der Anwendung enthält. Nachdem der Dienst die *ZIP* -Datei hochgeladen hat, werden alle Dateien und Ordner extrahiert, und es wird versucht, den Einstiegspunkt in der angegebenen *DLL* -Datei auszuführen.
+   Die Option `--main-entry` gibt den relativen Pfad vom Stammordner der *ZIP*-Datei zur  *DLL*-Datei an, die den Einstiegspunkt der Anwendung enthält. Nachdem der Dienst die *ZIP*-Datei hochgeladen hat, werden alle Dateien und Ordner extrahiert, und es wird versucht, den Einstiegspunkt in der angegebenen *DLL*-Datei auszuführen.
 
    Die Ausführung dieses Befehls kann einige Minuten in Anspruch nehmen.
 
@@ -122,7 +122,7 @@ Wenn Sie bis jetzt Azure Cloud Shell verwendet haben, wechseln Sie zu einer loka
    cd ../solar-system-weather
    ```
 
-1. Erstellen Sie die Binärdateien und die *ZIP* -Datei, die bereitgestellt werden sollen.
+1. Erstellen Sie die Binärdateien und die *ZIP*-Datei, die bereitgestellt werden sollen.
 
    ```console
    dotnet publish -c release -o ./publish
@@ -143,7 +143,7 @@ Senden Sie zum Testen der Anwendung im Browser eine HTTP GET-Anforderung an die
 1. Führen Sie zum Zuweisen des Endpunkts den folgenden Befehl aus:
 
    ```azurecli
-   az spring-cloud app update -n solar-system-weather --is-public true
+   az spring-cloud app update -n solar-system-weather --assign-endpoint true
    ```
 
 1. Führen Sie zum Abrufen der URL des Endpunkts den folgenden Befehl aus:
@@ -222,7 +222,7 @@ Die Kompilierung des Projekts dauert etwa fünf Minuten. Nach Abschluss des Vor
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-1. Erstellen Sie mithilfe der im vorherigen Schritt erstellten JAR-Dateien Azure Spring Cloud-Microservices. Sie erstellen drei Apps: **gateway** , **auth-service** und **account-service** .
+1. Erstellen Sie mithilfe der im vorherigen Schritt erstellten JAR-Dateien Azure Spring Cloud-Microservices. Sie erstellen drei Apps: **gateway**, **auth-service** und **account-service**.
 
     ```azurecli
     az spring-cloud app create --name gateway
@@ -245,7 +245,7 @@ Wir benötigen eine Methode, um über einen Webbrowser auf die Anwendung zugreif
 1. Weisen Sie den Endpunkt mit dem folgenden Befehl zu:
 
     ```azurecli
-    az spring-cloud app update -n gateway --is-public true
+    az spring-cloud app update -n gateway --assign-endpoint true
     ```
 
 2. Fragen Sie die öffentliche IP-Adresse der Anwendung **gateway** ab, damit Sie überprüfen können, ob die Anwendung ausgeführt wird:
@@ -297,7 +297,7 @@ Wir benötigen eine Methode, um über einen Webbrowser auf die Anwendung zugreif
 
 1. Laden Sie das Quellrepository für dieses Tutorial herunter, und entpacken Sie es, oder klonen Sie es mithilfe von Git: `git clone https://github.com/Azure-Samples/piggymetrics`. 
 
-1. Öffnen Sie das IntelliJ-Dialogfeld **Willkommens** , und wählen Sie **Projekt importieren** aus, um den Importassistenten zu öffnen.
+1. Öffnen Sie das IntelliJ-Dialogfeld **Willkommens**, und wählen Sie **Projekt importieren** aus, um den Importassistenten zu öffnen.
 
 1. Wählen Sie den Ordner `piggymetric` aus.
 
@@ -316,13 +316,13 @@ Für die Bereitstellung in Azure müssen Sie sich mit Ihrem Azure-Konto beim Azu
 1. Wählen Sie im Textfeld **Spring Cloud** die Instanz von Azure Spring Cloud aus, die Sie unter [Schnellstart: Bereitstellen des Azure Spring Cloud-Diensts](./spring-cloud-quickstart-provision-service-instance.md) erstellt haben.
 1. Legen Sie **Öffentlicher Endpunkt** auf *Aktivieren* fest.
 1. Wählen Sie im Textfeld **App:** die Option **App erstellen...** aus.
-1. Geben Sie *gateway* ein, und klicken Sie dann auf **OK** .
+1. Geben Sie *gateway* ein, und klicken Sie dann auf **OK**.
 
     ![In Azure bereitstellen OK](media/spring-cloud-intellij-howto/revision-deploy-to-azure-2.png)
 
 1. Doppelklicken Sie im Abschnitt **Before launch** (Vor dem Start) des Dialogfelds auf *Run Maven Goal* (Maven-Ziel ausführen).
-1. Navigieren Sie im Textfeld **Arbeitsverzeichnis** zum Ordner *piggymetrics/gateway* .
-1. Geben Sie im Textfeld **Befehlszeile** die Zeichenfolge *package -DskipTests* ein. Klicken Sie auf **OK** .
+1. Navigieren Sie im Textfeld **Arbeitsverzeichnis** zum Ordner *piggymetrics/gateway*.
+1. Geben Sie im Textfeld **Befehlszeile** die Zeichenfolge *package -DskipTests* ein. Klicken Sie auf **OK**.
 1. Starten Sie die Bereitstellung, indem Sie unten im Dialogfeld **Deploy Azure Spring Cloud app** (Azure Spring Cloud-App bereitstellen) auf die Schaltfläche **Ausführen** klicken. Das Plug-In führt den Befehl `mvn package` für die App `gateway` aus, und stellt die vom `package`-Befehl generierte JAR-Datei bereit.
 
 ### <a name="deploy-auth-service-and-account-service-apps-to-azure-spring-cloud"></a>Bereitstellen der Apps „auth-service“ und „account-service“ in Azure Spring Cloud
@@ -347,7 +347,7 @@ Sie können auch im Azure-Portal navigieren, um die URL zu suchen.
 
     ![Navigieren zur App](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
     
-4. Suchen Sie die URL auf der Seite **Gateway | Übersicht** .
+4. Suchen Sie die URL auf der Seite **Gateway | Übersicht**.
 
     ![Navigieren zur App 2](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 

@@ -1,36 +1,33 @@
 ---
 title: Kennwortlose Anmeldung mit Sicherheitsschlüsseln bei Windows – Azure Active Directory
-description: Erfahren Sie, wie Sie die kennwortlose Anmeldung mit FIDO2-Sicherheitsschlüsseln bei Azure Active Directory (Vorschauversion) aktivieren.
+description: Erfahren Sie, wie Sie die kennwortlose Anmeldung mit FIDO2-Sicherheitsschlüsseln bei Azure Active Directory aktivieren.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/24/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04a46a691b2f629b64cfe09c22813b05c593af1c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 190e9c857f1ec9d19eb89493dc4b4a9fb68fac87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743461"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653506"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei Windows 10-Geräten mit Azure Active Directory (Vorschauversion)
+# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei Windows 10-Geräten mit Azure Active Directory 
 
 In diesem Dokument liegt der Schwerpunkt auf der Aktivierung der auf FIDO2-Sicherheitsschlüsseln basierenden kennwortlosen Authentifizierung bei Windows 10-Geräten. Am Ende dieses Artikels können Sie sich mit Ihrem Azure AD-Konto mithilfe eines FIDO2-Sicherheitsschlüssels sowohl bei Ihren in Azure AD als auch in Azure AD Hybrid eingebundenen Windows 10-Geräten anmelden.
-
-> [!NOTE]
-> FIDO2-Sicherheitsschlüssel sind eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
 | Gerätetyp | In Azure AD eingebunden | Hybrid in Azure AD eingebunden |
 | --- | --- | --- |
 | [Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
-| [Kombinierte Registrierung von Sicherheitsinformationen (Vorschauversion)](concept-registration-mfa-sspr-combined.md) | X | X |
+| [Kombinierte Registrierung von Sicherheitsinformationen](concept-registration-mfa-sspr-combined.md) | X | X |
 | Kompatible [FIDO2-Sicherheitsschlüssel](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | WebAuthN erfordert Windows 10, Version 1903 oder höher | X | X |
 | [In Azure AD eingebundene Geräte](../devices/concept-azure-ad-join.md) erfordern Windows 10, Version 1909 oder höher | X |   |
@@ -54,9 +51,9 @@ Folgende Szenarien werden nicht unterstützt:
 - Anmelden oder Entsperren eines Windows 10-Geräts mit einem Sicherheitsschlüssel, der mehrere Azure AD-Konten enthält In diesem Szenario wird das letzte Konto verwendet, das dem Sicherheitsschlüssel hinzugefügt wurde. WebAuthN ermöglicht Benutzern die Auswahl des gewünschten Kontos.
 - Entsperren eines Geräts unter Windows 10, Version 1809. Hierfür eignet sich besonders Windows 10 (Version 1903 oder höher).
 
-## <a name="prepare-devices-for-preview"></a>Vorbereiten von Geräten für die Vorschauversion
+## <a name="prepare-devices"></a>Vorbereiten von Geräten
 
-Auf in Azure AD eingebundenen Geräten, auf denen Sie während der Featurevorschau Pilottests ausführen, muss Windows 10, Version 1909 oder höher ausgeführt werden.
+Auf in Azure AD eingebundenen Geräten muss Windows 10, Version 1909 oder höher, ausgeführt werden.
 
 Auf in Azure AD Hybrid eingebundenen Geräte muss Windows 10, Version 2004 oder höher, ausgeführt werden.
 
@@ -150,7 +147,7 @@ Im nachstehenden Beispiel hat der Benutzer Bala Sandhu den FIDO2-Sicherheitsschl
 
 ## <a name="troubleshooting-and-feedback"></a>Problembehandlung und Feedback
 
-Wenn Sie Feedback geben möchten oder Probleme beim Anzeigen der Vorschau dieses Features auftreten, teilen Sie uns dies in folgenden Schritten über die Windows-Feedback-Hub-App mit:
+Wenn Sie Feedback geben möchten oder Probleme mit diesem Feature auftreten, teilen Sie uns dies in folgenden Schritten über die Windows-Feedback-Hub-App mit:
 
 1. Starten Sie **Feedback-Hub**, und stellen Sie sicher, dass Sie angemeldet sind.
 1. Senden Sie Ihr Feedback unter der folgenden Kategorisierung:
