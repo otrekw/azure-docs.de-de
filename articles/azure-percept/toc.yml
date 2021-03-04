@@ -38,12 +38,6 @@
           href: tutorial-nocode-vision.md
         - name: Erstellen und Bereitstellen einer Sprachlösung ohne Code
           href: tutorial-no-code-speech.md
-    - name: Erweiterte Entwicklung
-      items:
-        - name: Tutorial zur erweiterten Entwicklung (Cloud)
-          href: advanced-development-cloud.md
-        - name: Tutorial zur erweiterten Entwicklung (lokal)
-          href: advanced-development-local.md
 - name: Konzepte
   items:
     - name: "Azure\_Percept-Audio"
@@ -106,5 +100,3 @@
           href: azure-percept-vision-datasheet.md
         - name: "Datenblatt für Azure\_Percept-Audio"
           href: azure-percept-audio-datasheet.md
-- name: Ressourcen
-  items: null

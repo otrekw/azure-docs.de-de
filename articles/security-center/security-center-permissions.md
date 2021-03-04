@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/01/2020
 ms.author: memildin
-ms.openlocfilehash: 668fe1436feeb0888f7d871144da6cb6b8e3864e
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 14ee9f23379a26c1756c622efb7d739f49dd0537
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922609"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099181"
 ---
 # <a name="permissions-in-azure-security-center"></a>Berechtigungen in Azure Security Center
 
@@ -59,6 +59,5 @@ In diesem Artikel wurde beschrieben, wie Security Center die rollenbasierte Zugr
 
 - [Festlegen von Sicherheitsrichtlinien in Azure Security Center](tutorial-security-policy.md)
 - [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md)
-- [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md)
 - [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md)
 - [Überwachen von Partnerlösungen mit Azure Security Center](./security-center-partner-integration.md)
