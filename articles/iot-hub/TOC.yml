@@ -352,13 +352,13 @@
     - name: Bereitstellen von Updates
       items:
         - name: Erstellen eines Geräteupdatekontos
-          href: /iot-hub-device-update/create-device-update-account.md
+          href: ../iot-hub-device-update/create-device-update-account.md
         - name: Importieren eines Updates
-          href: /iot-hub-device-update/import-update.md
+          href: ../iot-hub-device-update/import-update.md
         - name: Erstellen einer Updategruppe
-          href: /iot-hub-device-update/create-update-group.md
+          href: ../iot-hub-device-update/create-update-group.md
         - name: Bereitstellen eines Updates
-          href: /iot-hub-device-update/deploy-update.md
+          href: ../iot-hub-device-update/deploy-update.md
     - name: Verwenden echter Geräte
       items:
         - name: Verwenden eines Onlinesimulators

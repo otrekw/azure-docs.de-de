@@ -174,7 +174,7 @@
     - name: Azure Remote Rendering
       tocHref: /azure/remote-rendering/
       topicHref: /azure/remote-rendering/
-    - name: Azure Object Understanding
+    - name: Verständnis von Azure-Objekten
       tocHref: /azure/object-understanding/
       topicHref: /azure/object-understanding/
     - name: Containerregistrierung
@@ -266,8 +266,8 @@
       topicHref: /azure/partner-solutions/
       items:
         - name: Apache Kafka für Confluent Cloud
-          tocHref: /azure/partner-solutions/apache-kafka-confluent-cloud/overview
-          topicHref: /azure/partner-solutions/apache-kafka-confluent-cloud/overview
+          tocHref: /azure/partner-solutions/apache-kafka-confluent-cloud/
+          topicHref: /azure/partner-solutions/apache-kafka-confluent-cloud/
     - name: SignalR Service
       tocHref: /azure/azure-signalr/
       topicHref: /azure/azure-signalr/
@@ -457,7 +457,7 @@
     - name: Cosmos DB
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/
-    - name: Verwaltete Instanz für Apache Cassandra
+    - name: Azure Managed Instance for Apache Cassandra
       tocHref: /azure/managed-instance-apache-cassandra/
       topicHref: /azure/managed-instance-apache-cassandra/
     - name: Storage
@@ -691,7 +691,7 @@
         - name: Peering Service
           tocHref: /azure/peering-service/
           topicHref: /azure/peering-service/
-        - name: Route Server (Vorschau)
+        - name: Azure Route Server (Vorschauversion)
           tocHref: /azure/route-server/
           topicHref: /azure/route-server/
         - name: Traffic Manager

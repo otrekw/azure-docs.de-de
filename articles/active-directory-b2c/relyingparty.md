@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0f0f3b6ffcb7ee12a692470b922cf23a3f0f40f0
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: ea23be06939d58b08516a00bbe8aba97c6ccc87d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858433"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095271"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -218,20 +218,6 @@ Das **Protocol**-Element enthält die folgenden Attribute:
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Name | Ja | Der Name eines gültigen Protokolls, das von Azure AD B2C unterstützt und als Teil des technischen Profils verwendet wird. Mögliche Werte: `OpenIdConnect` oder `SAML2`. Der Wert `OpenIdConnect` stellt den Protokollstandard „OpenID Connect 1.0“ gemäß der Vorgaben der OpenID Foundation dar. Der Wert `SAML2` stellt den Protokollstandard „SAML 2.0“ gemäß der Vorgaben von OASIS dar. |
-
-### <a name="metadata"></a>Metadaten
-
-Wenn `SAML` das Protokoll ist, enthält ein Metadatenelement die folgenden Elemente:
-
-| attribute | Erforderlich | Beschreibung |
-| --------- | -------- | ----------- |
-| IdpInitiatedProfileEnabled | Nein | Gibt an, ob der IdP-initiierte Fluss unterstützt wird. Mögliche Werte: `true` und `false` (Standardwert). | 
-| XmlSignatureAlgorithm | Nein | Die Methode, die Azure AD B2C zur Signierung der SAML-Antwort verwendet. Mögliche Werte: `Sha256`, `Sha384`, `Sha512` oder `Sha1`. Vergewissern Sie sich, dass Sie den Signaturalgorithmus auf beiden Seiten mit demselben Wert konfigurieren. Verwenden Sie nur den Algorithmus, den Ihr Zertifikat unterstützt. Informationen zum Konfigurieren der SAML-Assertion finden Sie unter [Metadaten für das technische Profil des SAML-Ausstellers](saml-issuer-technical-profile.md#metadata). |
-| DataEncryptionMethod | Nein | Gibt die Methode an, die von Azure AD B2C zum Verschlüsseln der Daten mit dem AES-Algorithmus (Advanced Encryption Standard) verwendet wird. Die Metadaten bestimmen den Wert des `<EncryptedData>`-Elements in der SAML-Antwort. Mögliche Werte: `Aes256` (Standard), `Aes192`, `Sha512` oder ` Aes128`. |
-| KeyEncryptionMethod| Nein | Gibt die Methode an, die von Azure AD B2C zum Verschlüsseln der Kopie des Schlüssels verwendet wird, der zum Verschlüsseln der Daten verwendet wurde. Die Metadaten bestimmen den Wert des `<EncryptedKey>`-Elements in der SAML-Antwort. Mögliche Werte: ` Rsa15` (Standardwert) – RSA PKCS-Algorithmus (Public Key Cryptography Standard), Version 1.5, ` RsaOaep` – RSA OAEP-Verschlüsselungsalgorithmus (Optimal Asymmetric Encryption Padding). |
-| UseDetachedKeys | Nein |  Mögliche Werte sind `true` oder `false` (Standardwert). Wenn der Wert auf `true` festgelegt wird, wird das Format der verschlüsselten Assertionen von Azure AD B2C geändert. Durch die Verwendung von getrennten Schlüsseln wird die verschlüsselte Assertion als untergeordnetes Element der EncrytedAssertion und nicht den EncryptedData hinzugefügt. |
-| WantsSignedResponses| Nein | Gibt an, ob Azure AD B2C den Abschnitt `Response` der SAML-Antwort signiert. Mögliche Werte: `true` (Standard) oder `false`.  |
-| RemoveMillisecondsFromDateTime| Nein | Gibt an, ob die Millisekunden aus DateTime-Werten in der SAML-Antwort entfernt werden (dazu gehören IssueInstant, NotBefore, NotOnOrAfter und AuthnInstant). Mögliche Werte: `false` (Standard) oder `true`.  |
 
 ### <a name="outputclaims"></a>OutputClaims
 

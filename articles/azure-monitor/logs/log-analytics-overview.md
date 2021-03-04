@@ -1,17 +1,16 @@
 ---
 title: Übersicht über Log Analytics in Azure Monitor
 description: Dieser Artikel beschreibt Log Analytics, ein Tool im Azure-Portal, mit dem Protokollabfragen zum Analysieren von Daten in Azure Monitor-Protokollen bearbeitet und ausgeführt werden.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
-ms.openlocfilehash: ef8be3d1fd815362971d5ae2beb27edf47766c94
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d83cc4045f09ed0f704a0d61c6b303406835eb44
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723162"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052295"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Übersicht über Log Analytics in Azure Monitor
 Log Analytics ist ein Tool im Azure-Portal, mit dem Protokollabfragen für Daten in Azure Monitor-Protokollen bearbeitet und ausgeführt werden. Sie können eine einfache Abfrage schreiben, die eine Reihe von Datensätzen zurückgibt, und dann Funktionen von Log Analytics zum Sortieren, Filtern und Analysieren verwenden. Sie können auch eine erweiterte Abfrage schreiben, um eine statistische Analyse durchzuführen und die Ergebnisse in einem Diagramm zu visualisieren, und auf diese Weise einen bestimmten Trend erkennen. Unabhängig davon, ob Sie die Ergebnisse Ihrer Abfragen interaktiv verwenden oder mit anderen Azure Monitor-Funktionen wie Protokollabfragewarnungen oder Arbeitsmappen nutzen, ist Log Analytics das Tool, das Sie zum Schreiben und Testen der Abfragen verwenden. 

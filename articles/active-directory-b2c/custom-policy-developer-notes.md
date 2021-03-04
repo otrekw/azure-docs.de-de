@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 18a3216855516156792524dc577ecef725d3119d
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 76dcb9aec935dd4ea4f57a1362953d9741d8eaf0
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99218773"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095798"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Entwicklerhinweise zu benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -70,7 +70,7 @@ Die Funktionen für benutzerdefinierte Richtlinien werden ständig weiterentwick
 | [Impliziter OAuth2-Fluss](implicit-flow-single-page-application.md) |  |  | X |  |
 | [Kennwortanmeldeinformationen von Ressourcenbesitzern mittels OAuth2](ropc-custom.md) |  | X |  |  |
 | [OIDC Connect](openid-connect.md) |  |  | X |  |
-| [SAML2](connect-with-saml-service-providers.md)  |  |  |X  | POST- und Umleitungsbindungen |
+| [SAML2](saml-service-provider.md)  |  |  |X  | POST- und Umleitungsbindungen |
 | OAuth1 |  |  |  | Wird nicht unterstützt. |
 | WSFED | X |  |  |  |
 
@@ -81,7 +81,7 @@ Die Funktionen für benutzerdefinierte Richtlinien werden ständig weiterentwick
 | [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | z.B. Google+  |
 | [OAuth2](oauth2-technical-profile.md) |  |  | X | z.B. Facebook  |
 | [OAuth1](oauth1-technical-profile.md) |  | X |  | z.B. Twitter |
-| [SAML2](saml-identity-provider-technical-profile.md) |  |   | X | z.B. Salesforce, ADFS |
+| [SAML2](identity-provider-generic-saml.md) |  |   | X | z.B. Salesforce, ADFS |
 | WSFED| X |  |  |  |
 
 
