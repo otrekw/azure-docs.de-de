@@ -1,17 +1,16 @@
 ---
 title: 'ITSM-Connector – Secure Export in Azure Monitor: Azure-Konfiguration'
 description: In diesem Artikel erfahren Sie, wie Sie Azure konfigurieren, um Ihre ITSM-Produkte/-Dienste mit Secure Export in Azure Monitor zu verbinden und so ITSM-Arbeitselemente zentral zu überwachen und zu verwalten.
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/03/2021
-ms.openlocfilehash: 62167b8fd72c660e50378a9492528aa5b70bbee7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8eb9430e3d280c52cf84c61f0a44cb12152ac054
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602373"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037539"
 ---
 # <a name="configure-azure-to-connect-itsm-tools-using-secure-export"></a>Konfigurieren von Azure für Verbindungen mit ITSM-Tools unter Verwendung von Secure Export
 
