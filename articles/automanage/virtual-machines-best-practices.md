@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 1bcf9009a039a10017d53ca6fe9e78acec1efd55
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5cdc0080c0d8b06bd0b7e19566b54b4f105648e5
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581222"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122101"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices"></a>Bewährte Methoden für die automatische Azure-Verwaltung von virtuellen Computern
 
@@ -38,7 +38,7 @@ Bei all diesen Diensten werden wir das Onboarding automatisch durchführen, sie 
 |Log Analytics-Arbeitsbereich    |Azure Monitor speichert Protokolldaten in einem Log Analytics-Arbeitsbereich, bei dem es sich um eine Azure-Ressource und einen Container handelt, in dem Daten gesammelt und aggregiert werden und der als eine administrative Grenze dient. [Weitere Informationen](../azure-monitor/logs/design-logs-deployment.md).    |Bewährte Methoden für Azure-VMs – Produktion, Bewährte Methoden für Azure-VMs – Dev/Test    |Nein    |
 
 
-<sup>1</sup> Konfigurationsprofile sind verfügbar, wenn Sie die automatische Verwaltung aktivieren. [Weitere Informationen](automanage-virtual-machines.md#configuration-profiles). Sie können auch die Standardeinstellungen des Konfigurationsprofils anpassen und Ihre eigenen Voreinstellungen im Rahmen der bewährten Methoden festlegen.
+<sup>1</sup> Konfigurationsprofile sind verfügbar, wenn Sie die automatische Verwaltung aktivieren. [Weitere Informationen](automanage-virtual-machines.md). Sie können auch die Standardeinstellungen des Konfigurationsprofils anpassen und Ihre eigenen Voreinstellungen im Rahmen der bewährten Methoden festlegen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

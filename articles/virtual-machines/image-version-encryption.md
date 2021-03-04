@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: 0f5eb6a2964cdb679c2a83bd9d9b6296e3e962ed
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f8ea2224020e6fa6c5dae135dc575cc77510efd5
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499287"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123937"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Vorschau: Verwenden von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von Images
 
@@ -27,7 +27,7 @@ Die serverseitige Verschlüsselung über kundenseitig verwaltete Schlüssel verw
 
 In diesem Artikel wird vorausgesetzt, dass Sie bereits über einen Datenträgerverschlüsselungssatz in den einzelnen Regionen verfügen, in denen Sie Ihr Image replizieren möchten:
 
-- Wenn Sie nur einen kundenseitig verwalteten Schlüssel verwenden möchten, finden Sie weitere Informationen in den Artikeln zum Aktivieren kundenseitig verwalteter Schlüssel mit serverseitiger Verschlüsselung über das [Azure-Portal](./disks-enable-customer-managed-keys-portal.md) oder mithilfe von [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset).
+- Wenn Sie nur einen kundenseitig verwalteten Schlüssel verwenden möchten, finden Sie weitere Informationen in den Artikeln zum Aktivieren kundenseitig verwalteter Schlüssel mit serverseitiger Verschlüsselung über das [Azure-Portal](./disks-enable-customer-managed-keys-portal.md) oder mithilfe von [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-without-automatic-key-rotation).
 
 - Wenn Sie sowohl plattformseitig als auch kundenseitig verwaltete Schlüssel (für die doppelte Verschlüsselung) verwenden möchten, lesen Sie die Artikel zum Aktivieren der doppelten Verschlüsselung für ruhende Daten über das [Azure-Portal](./disks-enable-double-encryption-at-rest-portal.md) oder mithilfe von [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md).
 

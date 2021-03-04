@@ -1346,7 +1346,7 @@
             - name: 'Allgemeine Verfügbarkeit: häufig gestellte Fragen'
               href: ../azure-monitor/vm/vminsights-ga-release-faq.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Häufig gestellte Fragen
-              href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#azure-monitor-for-vms
+              href: ../azure-monitor/faq.md
             - name: Aktivieren der Überwachung
               items:
                 - name: 'Aktivieren der Überwachung: Übersicht'

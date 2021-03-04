@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a204db8453ec8126e1aa9033e10f739a6f8a0d43
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 5df7088551e7e7f616077342b762baca179f8640
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100095136"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123359"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen in Azure Active Directory (Vorschau)
 
@@ -56,10 +56,10 @@ Folgende Szenarios werden derzeit nicht unterstützt:
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
-- Das Feature **Gestaffelten Rollout für verwaltete Benutzeranmeldung aktivieren** unterstützt keine Zuweisung über eine Gruppe.
 - *Nur Kunden mit Azure AD P2-Lizenz*: Weisen Sie einer Rolle eine Gruppe nicht über Azure AD und Privileged Identity Management (PIM) als „Aktiv“ zu. Vermeiden Sie es, einer Gruppe, der eine Rolle zugewiesen werden kann, eine Rolle bei ihrer Erstellung *und* später noch eine Rolle über PIM zuzuweisen. Dies führt zu Problemen, bei denen Benutzer ihre aktiven Rollenzuweisungen in PIM nicht sehen können und es nicht möglich ist, diese PIM-Zuweisung zu entfernen. Berechtigte Zuweisungen sind in diesem Szenario nicht beeinträchtigt. Wenn Sie versuchen, diese Zuweisung vorzunehmen, tritt möglicherweise ein unerwartetes Verhalten wie z. B. Folgendes auf:
   - Die Endzeit für die Rollenzuweisung wird möglicherweise falsch angezeigt.
   - Im PIM-Portal kann unter **Meine Rollen** nur eine Rollenzuweisung angezeigt werden, unabhängig davon, durch wie viele Methoden die Zuweisung gewährt wird (über eine oder mehrere Gruppen und direkt).
+- Das Feature **Gestaffelten Rollout für verwaltete Benutzeranmeldung aktivieren** unterstützt keine Zuweisung über eine Gruppe.
 - *Nur Kunden mit Azure AD P2-Lizenz*: Auch nach dem Löschen der Gruppe wird sie noch immer als ein berechtigtes Mitglied der Rolle auf der PIM-Benutzeroberfläche angezeigt. Funktionell gibt es kein Problem. Es ist lediglich ein Cacheproblem im Azure-Portal.  
 - Verwenden Sie das neue [Exchange Admin Center](https://admin.exchange.microsoft.com/) zum Zuweisen von Rollen über Gruppenmitgliedschaften. Das alte Exchange Admin Center unterstützt dieses Feature noch nicht. Exchange PowerShell-Cmdlets funktionieren den Erwartungen entsprechend.
 - Das Azure Information Protection-Portal (klassisches Portal) erkennt die Rollenmitgliedschaft über eine Gruppe noch nicht. Sie können [zur Plattform für einheitliche Vertraulichkeitsbezeichnungen migrieren](/azure/information-protection/configure-policy-migrate-labels) und dann das Office 365 Security & Compliance Center verwenden, um Gruppenzuweisungen für das Verwalten von Rollen zu nutzen.
