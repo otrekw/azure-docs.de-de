@@ -1,18 +1,17 @@
 ---
 title: Übersicht über den ITSM-Connector
 description: In diesem Artikel finden Sie eine Übersicht über den ITSM-Connector (IT Service Management).
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: d22bb05ad6db3630e9b0242e098fd81f65e34b05
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3f6131bc585b91676f29ed34dfedd49a5ca92201
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601616"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041789"
 ---
 # <a name="it-service-management-connector-overview"></a>Übersicht über den ITSM-Connector
 

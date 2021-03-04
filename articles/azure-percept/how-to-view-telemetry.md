@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: b03cd8bc71f87e3ce7984a55d330bc116614f928
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 07abbc5f5e85c75b73774d11b6b81dd2085735b7
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660425"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095322"
 ---
 # <a name="view-your-azure-percept-dks-model-inference-telemetry"></a>Anzeigen der Telemetriedaten für Azure Percept DK-Modellrückschlüsse
 
@@ -35,7 +35,7 @@ Befolgen Sie diese Anleitung, um die Rückschlusstelemetriedaten Ihres Azure Per
 
 1. Verbinden Sie Ihre IoT Hub-Instanz mit Azure IoT-Explorer:
 
-    1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod&microsoft_azure_marketplace_ItemHideKey=Microsoft_Azure_ADUHidden#home).
+    1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 
     1. Wählen Sie **Alle Ressourcen**.
 
@@ -70,5 +70,4 @@ Befolgen Sie diese Anleitung, um die Rückschlusstelemetriedaten Ihres Azure Per
     1. Klicken Sie auf **Start**, um Telemetrieereignisse vom Gerät anzuzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-Informieren Sie sich darüber, wie Sie den [Azure Percept DK-Videostream](how-to-view-video-stream.md) anzeigen.
+Informieren Sie sich darüber, wie Sie den [Azure Percept DK-Videostream](./how-to-view-video-stream.md) anzeigen.

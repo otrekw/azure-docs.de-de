@@ -1,18 +1,17 @@
 ---
 title: Senden eines Azure-Aktivitätsprotokolls an den Log Analytics-Arbeitsbereich per Azure Resource Manager-Vorlage
 description: Verwenden Sie ARM-Vorlagen, um einen Log Analytics-Arbeitsbereich zu erstellen, und eine Diagnoseeinstellung, um das Aktivitätsprotokoll an Azure Monitor-Protokolle zu senden.
-ms.subservice: logs
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 0a740b4c6c6e89c9a4990651779ea4f0b376c971
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 56810cffcb9665810c452276be34e6924fd992b2
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734348"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033266"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>Schnellstart: Senden eines Azure-Aktivitätsprotokolls an einen Log Analytics-Arbeitsbereich per ARM-Vorlage
 

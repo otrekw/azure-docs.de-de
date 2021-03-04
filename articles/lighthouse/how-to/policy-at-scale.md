@@ -1,14 +1,14 @@
 ---
 title: Bereitstellen von Azure Policy für delegierte Abonnements in großem Umfang
 description: Hier erfahren Sie, wie Sie mit Azure Lighthouse eine Richtliniendefinition und eine Richtlinienzuweisung für mehrere Mandanten bereitstellen können.
-ms.date: 11/09/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 5af938c61ad3e42e36360a15c6011b54fa1e823d
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 48354c3cca7574b1d5acf71865218564591bc23e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412067"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049779"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Bereitstellen von Azure Policy für delegierte Abonnements in großem Umfang
 
@@ -51,6 +51,9 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
+> [!NOTE]
+> Sie können zwar Richtlinien mandantenübergreifend bereitstellen, aber für nicht konforme Ressourcen in diesen Mandanten keine [Konformitätsdetails anzeigen](../../governance/policy/how-to/determine-non-compliance.md#compliance-details).
+
 ## <a name="validate-the-policy-deployment"></a>Überprüfen der Richtlinienbereitstellung
 
 Nachdem Sie die Azure Resource Manager-Vorlage bereitgestellt haben, können Sie überprüfen, ob die Richtliniendefinition erfolgreich angewendet wurde, indem Sie versuchen, ein Speicherkonto zu erstellen, wobei **EnableHttpsTrafficOnly** in einem ihrer Delegiertenabonnements auf **false** festgelegt ist. Aufgrund der Richtlinienzuweisung sollte es nicht möglich sein, dieses Speicherkonto zu erstellen.  
@@ -90,9 +93,6 @@ foreach ($ManagedSub in $ManagedSubscriptions)
     }
 }
 ```
-
-> [!NOTE]
-> Sie können zwar Richtlinien mandantenübergreifend bereitstellen, aber für nicht konforme Ressourcen in diesen Mandanten keine [Konformitätsdetails anzeigen](../../governance/policy/how-to/determine-non-compliance.md#compliance-details).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

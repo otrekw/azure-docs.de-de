@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 5c1f52fda2edfa0a03caa72fcd7fa8dc02d0a607
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 5c70c575464d82f714022291406418cdd1ca0f8d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954663"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102094965"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Entwerfen von virtuellen Netzwerken mit NAT-Gatewayressourcen
 
@@ -224,7 +224,7 @@ Auch wenn das Szenario scheinbar funktioniert, sind das Integritätsmodell und d
 >Die Zoneneigenschaft einer NAT-Gatewayressource ist nicht veränderlich.  Stellen Sie die NAT-Gatewayressource mit der gewünschten Regions- oder Zonenpräferenz erneut bereit.
 
 >[!NOTE] 
->IP-Adressen allein sind nicht zonenredundant, wenn keine Zone angegeben wird.  Das Front-End einer [Load Balancer Standard-Instanz ist zonenredundant](../load-balancer/load-balancer-standard-availability-zones.md#frontend), wenn in einer bestimmten Zone keine IP-Adresse erstellt wird.  Dies gilt nicht für NAT.  Nur die Regions- oder Zonenisolation wird unterstützt.
+>IP-Adressen allein sind nicht zonenredundant, wenn keine Zone angegeben wird.  Das Front-End einer [Load Balancer Standard-Instanz ist zonenredundant](../load-balancer/load-balancer-standard-availability-zones.md), wenn in einer bestimmten Zone keine IP-Adresse erstellt wird.  Dies gilt nicht für NAT.  Nur die Regions- oder Zonenisolation wird unterstützt.
 
 ## <a name="performance"></a>Leistung
 
@@ -350,20 +350,3 @@ Wir möchten wissen, wie wir den Dienst verbessern können. Fehlt eine Funktion?
 * Informieren Sie sich über [Virtual Network NAT](nat-overview.md).
 * Informieren Sie sich über [Metriken und Warnungen für NAT-Gatewayressourcen](nat-metrics.md).
 * Informieren Sie sich über die [Problembehandlung im Zusammenhang mit der Azure Virtual Network NAT-Konnektivität](troubleshoot-nat.md).
-* Tutorial zur Überprüfung des NAT-Gateways
-  - [Azure-Befehlszeilenschnittstelle](tutorial-create-validate-nat-gateway-cli.md)
-  - [PowerShell](tutorial-create-validate-nat-gateway-powershell.md)
-  - [Portal](tutorial-create-validate-nat-gateway-portal.md)
-* Schnellstart zur Bereitstellung einer NAT-Gatewayressource
-  - [Azure-Befehlszeilenschnittstelle](./quickstart-create-nat-gateway-cli.md)
-  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
-  - [Portal](./quickstart-create-nat-gateway-portal.md)
-  - [Vorlage](./quickstart-create-nat-gateway-template.md)
-* Informieren Sie sich über die NAT-Gatewayressourcen-API:
-  - [REST-API](/rest/api/virtualnetwork/natgateways)
-  - [Azure-Befehlszeilenschnittstelle](/cli/azure/network/nat/gateway)
-  - [PowerShell](/powershell/module/az.network/new-aznatgateway)
-* Informieren Sie sich über [Verfügbarkeitszonen](../availability-zones/az-overview.md).
-* Informieren Sie sich über [Load Balancer Standard](../load-balancer/load-balancer-overview.md).
-* Informieren Sie sich über [Verfügbarkeitszonen und Load Balancer Standard](../load-balancer/load-balancer-standard-availability-zones.md).
-* [Teilen Sie uns bei UserVoice mit, welche Funktionen wir als Nächstes für Virtual Network NAT entwickeln sollen.](https://aka.ms/natuservoice)

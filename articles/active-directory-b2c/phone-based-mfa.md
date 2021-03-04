@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3ca73e020009817001f309ddf29c2984a8541026
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: cc9e0be90c138ba33e1b4dfe11ea6f9c8b7da297
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527017"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033553"
 ---
 # <a name="securing-phone-based-multi-factor-authentication-mfa"></a>Schützen der telefonbasierten mehrstufigen Authentifizierung (MFA)
 
@@ -89,7 +89,7 @@ Führen Sie die folgenden Aktionen aus, um betrügerische Registrierungen auf ei
 - Verwenden Sie die **empfohlenen** Versionen der Benutzerflows, um folgende Aufgaben auszuführen:
      
    - [Aktivieren Sie für die mehrstufige Authentifizierung (MFA) die Funktion „Einmalkennung per E-Mail“](phone-authentication-user-flows.md) (gilt sowohl für Registrierungs- als auch für Anmeldeflows).
-   - [Konfigurieren Sie eine Richtlinie für bedingten Zugriff](conditional-access-identity-protection-setup.md) zum Blockieren von Anmeldungen nach Standort (gilt nur für Anmeldeflows und nicht für Registrierungsflows).
+   - [Konfigurieren Sie eine Richtlinie für bedingten Zugriff](conditional-access-user-flow.md) zum Blockieren von Anmeldungen nach Standort (gilt nur für Anmeldeflows und nicht für Registrierungsflows).
    - Verwenden Sie API-Connectors für die [Integration mit einer Anti-Bot-Lösung wie reCAPTCHA](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-captcha) (gilt für Registrierungsflows).
 
 - Entfernen Sie die für Ihre Organisation nicht relevanten Landeskennzahlen aus dem Dropdownmenü, in dem Benutzer ihre Telefonnummern verifizieren (diese Änderung gilt für zukünftige Registrierungen):
