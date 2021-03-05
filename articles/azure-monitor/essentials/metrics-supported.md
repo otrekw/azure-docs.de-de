@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/06/2021
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 3f9ec395e8ccf6d5162717b2e38b0650ccc84812
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6e4a776bd9aaf3900d05a6191b8ff4dcbb11fd52
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091811"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731662"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -156,7 +156,7 @@ Weitere wichtige Informationen finden Sie unter [Übersicht über Azure Monitor-
 |---|---|---|---|---|---|---|
 |active-timer-count|Ja|active-timer-count|Anzahl|Average|Anzahl der derzeit aktiven Timer|Deployment, AppName, Pod|
 |alloc-rate|Ja|alloc-rate|Byte|Average|Anzahl der im verwalteten Heap zugeordneten Bytes|Deployment, AppName, Pod|
-|AppCpuUsage|Ja|App-CPU-Auslastung (Vorschau)|Percent|Average|Die aktuelle CPU-Auslastung für die App|Deployment, AppName, Pod|
+|AppCpuUsage|Ja|App-CPU-Auslastung |Percent|Average|Die aktuelle CPU-Auslastung für die App|Deployment, AppName, Pod|
 |assembly-count|Ja|assembly-count|Anzahl|Average|Anzahl der geladenen Assemblys|Deployment, AppName, Pod|
 |cpu-usage|Ja|cpu-usage|Percent|Average|% Zeit, zu der der Prozess die CPU verwendet hat|Deployment, AppName, Pod|
 |current-requests|Ja|current-requests|Anzahl|Average|Gesamtanzahl der Verarbeitungsanforderungen während der Lebensdauer des Prozesses|Deployment, AppName, Pod|
@@ -2167,9 +2167,9 @@ Weitere wichtige Informationen finden Sie unter [Übersicht über Azure Monitor-
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|---|
-|QueryVolume|Ja|Abfragevolume|Anzahl|Gesamt|Anzahl von Abfragen für eine DNS-Zone|Keine Dimensionen|
+|QueryVolume|Nein|Abfragevolume|Anzahl|Gesamt|Anzahl von Abfragen für eine DNS-Zone|Keine Dimensionen|
 |RecordSetCapacityUtilization|Nein|Kapazitätsauslastung von Datensatzgruppen|Percent|Maximum|Von einer DNS-Zone genutzte Kapazität einer Datensatzgruppe in Prozent|Keine Dimensionen|
-|RecordSetCount|Ja|Anzahl von Datensatzgruppen|Anzahl|Maximum|Anzahl von Datensatzgruppen in einer DNS-Zone|Keine Dimensionen|
+|RecordSetCount|Nein|Anzahl von Datensatzgruppen|Anzahl|Maximum|Anzahl von Datensatzgruppen in einer DNS-Zone|Keine Dimensionen|
 
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
@@ -2799,7 +2799,7 @@ Weitere wichtige Informationen finden Sie unter [Übersicht über Azure Monitor-
 |SuccessE2ELatency|Ja|E2E-Latenz (erfolgreich)|Millisekunden|Average|Die durchschnittliche End-to-End-Latenz für erfolgreiche Anforderungen in Millisekunden, die an einen Speicherdienst oder den angegebenen API-Vorgang gesendet wurden. Dieser Wert umfasst die erforderliche Verarbeitungszeit in Azure Storage für das Lesen der Anforderung, das Senden der Antwort und das Empfangen der Antwortbestätigung.|GeoType, ApiName, Authentication|
 |SuccessServerLatency|Ja|Serverlatenz (erfolgreich)|Millisekunden|Average|Die durchschnittliche Verarbeitungszeit einer erfolgreichen Anforderung durch Azure Storage. Dieser Wert beinhaltet nicht die in „SuccessE2ELatency“ angegebene Netzwerklatenz.|GeoType, ApiName, Authentication|
 |Transaktionen|Ja|Transaktionen|Anzahl|Gesamt|Die Anzahl von Anforderungen, die an einen Speicherdienst oder an den angegebenen API-Vorgang gerichtet wurden. Diese Anzahl umfasst erfolgreiche und fehlgeschlagene Anforderungen sowie Anforderungen, die Fehler erzeugt haben. Verwenden Sie die Dimension „ResponseType“ für die Anzahl von verschiedenen Antworttypen.|ResponseType, GeoType, ApiName, Authentication|
-|UsedCapacity|Nein|Verwendete Kapazität|Byte|Average|Die vom Speicherkonto beanspruchte Speichermenge. Bei Standardspeicherkonten ist das die Summe der von Blob, Table, File und Queue beanspruchten Kapazität. Bei Premium-Speicherkonten und Blob Storage-Konten ist diese mit BlobCapacity oder FileCapacity identisch.|Keine Dimensionen|
+|UsedCapacity|Ja|Verwendete Kapazität|Byte|Average|Die vom Speicherkonto beanspruchte Speichermenge. Bei Standardspeicherkonten ist das die Summe der von Blob, Table, File und Queue beanspruchten Kapazität. Bei Premium-Speicherkonten und Blob Storage-Konten ist diese mit BlobCapacity oder FileCapacity identisch.|Keine Dimensionen|
 
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
@@ -3137,11 +3137,11 @@ Weitere wichtige Informationen finden Sie unter [Übersicht über Azure Monitor-
 |AverageResponseTime|Ja|Durchschnittliche Antwortzeit (veraltet)|Sekunden|Average|Die durchschnittliche Zeit in Sekunden, die die App zum Bereitstellen von Anforderungen benötigt.|Instanz|
 |BytesReceived|Ja|Eingehende Daten|Byte|Gesamt|Die Menge an eingehender Bandbreite in MiB, die von der App verbraucht wird.|Instanz|
 |BytesSent|Ja|Datenausgabe|Byte|Gesamt|Die Menge an ausgehender Bandbreite in MiB, die von der App verbraucht wird.|Instanz|
-|CpuTime|Ja|CPU-Zeit|Sekunden|Gesamt|Die CPU-Menge in Sekunden, die von der App verbraucht wird. Weitere Informationen zu dieser Metrik finden Sie unter https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage (CPU-Zeit und CPU-Prozentsatz).|Instanz|
+|CpuTime|Ja|CPU-Zeit|Sekunden|Gesamt|Die CPU-Menge in Sekunden, die von der App verbraucht wird. Weitere Informationen zu dieser Metrik finden Sie unter https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage (CPU-Zeit und CPU-Prozentsatz). Gilt nicht für Azure Functions.|Instanz|
 |CurrentAssemblies|Ja|Aktuelle Assemblys|Anzahl|Average|Die aktuelle Anzahl von Assemblys, die in allen Anwendungsdomänen in dieser Anwendung geladen wurden.|Instanz|
 |FileSystemUsage|Ja|Dateisystemnutzung|Byte|Average|Prozentsatz des von der App genutzten Dateisystemkontingents.|Keine Dimensionen|
-|FunctionExecutionCount|Ja|Ausführungsanzahl für Funktion|Anzahl|Gesamt|Ausführungsanzahl für Funktion|Instanz|
-|FunctionExecutionUnits|Ja|Ausführungseinheiten für Funktion|Anzahl|Gesamt|Ausführungseinheiten für Funktion|Instanz|
+|FunctionExecutionCount|Ja|Ausführungsanzahl für Funktion|Anzahl|Gesamt|Ausführungsanzahl für Funktion. Nur für Azure Functions vorhanden.|Instanz|
+|FunctionExecutionUnits|Ja|Ausführungseinheiten für Funktion|Anzahl|Gesamt|Ausführungseinheiten für Funktion. Nur für Azure Functions vorhanden.|Instanz|
 |Gen0Collections|Ja|Garbage Collections der Generation 0|Anzahl|Gesamt|Die Häufigkeit, mit der seit dem Start des App-Prozesses eine Garbage Collection für die Objekte der Generation 0 ausgeführt wurde. In Garbage Collections höherer Generationen sind alle Garbage Collections niedrigerer Generationen enthalten.|Instanz|
 |Gen1Collections|Ja|Garbage Collections der Generation 1|Anzahl|Gesamt|Die Häufigkeit, mit der seit dem Start des App-Prozesses eine Garbage Collection für die Objekte der Generation 1 ausgeführt wurde. In Garbage Collections höherer Generationen sind alle Garbage Collections niedrigerer Generationen enthalten.|Instanz|
 |Gen2Collections|Ja|Garbage Collections der Generation 2|Anzahl|Gesamt|Die Häufigkeit, mit der seit dem Start des App-Prozesses eine Garbage Collection für die Objekte der Generation 2 ausgeführt wurde.|Instanz|

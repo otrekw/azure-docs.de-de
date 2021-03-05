@@ -2,19 +2,19 @@
 title: Übersicht über klassische Warnungen in Azure Monitor
 description: Klassische Warnungen sind veraltet. Mit Warnungen können Sie Metriken, Ereignisse oder Protokolle für Ihre Azure-Ressourcen überwachen. Lassen Sie sich benachrichtigen, wenn eine von Ihnen festgelegte Bedingung erfüllt ist.
 ms.topic: conceptual
-ms.date: 05/19/2018
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: 2b1f236255c7cbf073cf7edc5a10df895f9c1095
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 38b393281692ac14083a0a8bbf5b8908b5758a39
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602393"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737306"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Was sind klassische Warnungen in Microsoft Azure?
 
 > [!NOTE]
-> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen erstellen. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](../platform/alerts-overview.md). Klassische Warnungen werden für Benutzer der öffentlichen Cloud [eingestellt](../platform/monitoring-classic-retirement.md), sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz.
+> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen erstellen. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](./alerts-overview.md). Klassische Warnungen werden für Benutzer der öffentlichen Cloud [eingestellt](./monitoring-classic-retirement.md), sind jedoch bis zum **31. Mai 2021** weiterhin beschränkt im Einsatz. Klassische Warnungen für Azure Government Cloud und Azure China 21ViaNet werden am **29. Februar 2024** eingestellt.
 >
 
 Mit Warnungen können Sie Bedingungen für Daten konfigurieren und benachrichtigt werden, wenn die Bedingungen Übereinstimmungen mit den aktuellen Überwachungsdaten ergeben.
@@ -40,7 +40,7 @@ Die neueren Metrikwarnungen haben folgende Vorteile gegenüber den klassischen M
 - **Unterstützung mehrdimensionaler Metriken:** Für dimensionale Metriken können Warnungen ausgegeben werden, um ein für Sie interessantes Segment der Metrik zu überwachen.
 - **Mehr Kontrolle über Metrikbedingungen:** Sie können umfangreichere Warnungsregeln definieren. Die neueren Warnungen unterstützen die Überwachung der maximalen, minimalen und durchschnittlichen Werte sowie der Gesamtwerte der Metriken.
 - **Kombinierte Überwachung mehrerer Metriken:** Sie können mehrere Metriken (aktuell bis zu zwei) mit einer einzelnen Regel überwachen. Eine Warnung wird ausgelöst, wenn beide Metriken ihren jeweiligen Schwellenwert für den angegebenen Zeitraum überschreiten.
-- **Besseres Benachrichtigungssystem:** Alle neueren Warnungen verwenden [Aktionsgruppen](../platform/action-groups.md). Hierbei handelt es sich um benannte Gruppen von Benachrichtigungen und Aktionen, die in mehreren Warnungen wiederverwendet werden können.  Klassische Metrikwarnungen und ältere Log Analytics-Warnungen verwenden keine Aktionsgruppen. 
+- **Besseres Benachrichtigungssystem:** Alle neueren Warnungen verwenden [Aktionsgruppen](./action-groups.md). Hierbei handelt es sich um benannte Gruppen von Benachrichtigungen und Aktionen, die in mehreren Warnungen wiederverwendet werden können.  Klassische Metrikwarnungen und ältere Log Analytics-Warnungen verwenden keine Aktionsgruppen. 
 - **Metriken aus Protokollen** (Public Preview): Bei Log Analytics eingehende Protokolldaten können jetzt extrahiert und in Azure Monitor-Metriken konvertiert werden. Dadurch können sie genau wie andere Metriken in Warnungen genutzt werden. Informationen zur spezifischen Terminologie für klassische Warnungen finden Sie unter [Warnungen (klassisch)](). 
 
 
@@ -51,7 +51,7 @@ Es sind zwei Arten von klassischen Warnungen verfügbar – Metrikwarnungen und 
 
 * **Klassische Aktivitätsprotokollwarnungen**: Eine Streamingprotokollwarnung, die bei einem Aktivitätsprotokollereignis-Eintrag ausgelöst wird, der Ihren Filterkriterien entspricht. Diese Warnungen haben nur ein Status, nämlich „Aktiviert“. Die Warnungs-Engine wendet die Filterkriterien einfach auf jedes neue Ereignis an. Sie sucht nicht nach älteren Einträgen. Diese Warnungen können Sie darüber informieren, dass ein neuer Service Health-Vorfall eintritt oder ein Benutzer oder eine Anwendung in Ihrem Abonnement einen Vorgang durchführt, z. B. „Virtuellen Computer löschen“.
 
-Für Ressourcenprotokolldaten, die über Azure Monitor verfügbar sind, leiten Sie die Daten zu Log Analytics weiter und verwenden dann eine Protokollabfragewarnung. Log Analytics verwendet jetzt die [neue Warnmethode](../platform/alerts-overview.md) 
+Für Ressourcenprotokolldaten, die über Azure Monitor verfügbar sind, leiten Sie die Daten zu Log Analytics weiter und verwenden dann eine Protokollabfragewarnung. Log Analytics verwendet jetzt die [neue Warnmethode](./alerts-overview.md) 
 
 Das folgende Diagramm enthält eine Zusammenfassung der Quellen von Daten in Azure Monitor und des Konzepts zum Erzeugen von Warnungen aus diesen Daten.
 
@@ -68,7 +68,7 @@ In Azure werden die folgenden Begriffe verwendet, um klassische Warnungen und ih
 ## <a name="how-do-i-receive-a-notification-from-an-azure-monitor-classic-alert"></a>Wie erhalte ich eine Benachrichtigung von einer klassischen Azure Monitor-Warnung?
 Bisher wurden für Azure-Warnungen unterschiedlicher Dienste die eigenen integrierten Benachrichtigungsmethoden verwendet. 
 
-Azure Monitor hat eine wiederverwendbare Benachrichtigungsgruppierung mit der Bezeichnung *Aktionsgruppen* erstellt. Aktionsgruppen geben einen Reihe von Empfängern für eine Benachrichtigung an. Immer wenn eine Warnung aktiviert wird, die auf die Aktionsgruppe verweist, erhalten alle Empfänger diese Benachrichtigung. Aktionsgruppen ermöglichen es, eine Gruppierung von Empfängern (z. B. Ihre Liste mit Technikern in Bereitschaft) für viele Warnungsobjekte wiederzuverwenden. Für die Aktionsgruppen werden Benachrichtigungen unterstützt, indem zusätzlich zu E-Mail-Adressen, SMS-Telefonnummern und einer Reihe anderer Aktionen eine Webhook-URL bereitgestellt wird.  Weitere Informationen finden Sie unter [Aktionsgruppen](../platform/action-groups.md). 
+Azure Monitor hat eine wiederverwendbare Benachrichtigungsgruppierung mit der Bezeichnung *Aktionsgruppen* erstellt. Aktionsgruppen geben einen Reihe von Empfängern für eine Benachrichtigung an. Immer wenn eine Warnung aktiviert wird, die auf die Aktionsgruppe verweist, erhalten alle Empfänger diese Benachrichtigung. Aktionsgruppen ermöglichen es, eine Gruppierung von Empfängern (z. B. Ihre Liste mit Technikern in Bereitschaft) für viele Warnungsobjekte wiederzuverwenden. Für die Aktionsgruppen werden Benachrichtigungen unterstützt, indem zusätzlich zu E-Mail-Adressen, SMS-Telefonnummern und einer Reihe anderer Aktionen eine Webhook-URL bereitgestellt wird.  Weitere Informationen finden Sie unter [Aktionsgruppen](./action-groups.md). 
 
 Ältere klassische Aktivitätsprotokollwarnungen verwenden Aktionsgruppen.
 
@@ -85,15 +85,14 @@ Webhooks ermöglichen die Automatisierung und Fehlerbehebung, z.B. mit folgenden
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen über Warnregeln und ihre Konfiguration erhalten Sie hier:
 
-* Weitere Informationen zu [Metriken](../platform/data-platform.md)
+* Weitere Informationen zu [Metriken](../data-platform.md)
 * Konfigurieren von [klassischen Metrikwarnungen über das Azure-Portal](alerts-classic-portal.md)
 * Konfigurieren von [klassischen Metrikwarnungen mit PowerShell](alerts-classic-portal.md)
 * Konfigurieren von [klassischen Metrikwarnungen über die Befehlszeilenschnittstelle (CLI)](alerts-classic-portal.md)
 * Konfigurieren von [klassischen Metrikwarnungen mithilfe der Azure Monitor-REST-API](/rest/api/monitor/alertrules)
-* Weitere Informationen zu [Aktivitätsprotokollen](../platform/platform-logs-overview.md)
-* Konfigurieren von [Aktivitätsprotokollwarnungen über das Azure-Portal](../platform/activity-log-alerts.md)
-* Konfigurieren von [Aktivitätsprotokollwarnungen über den Resource Manager](../platform/alerts-activity-log.md)
+* Weitere Informationen zu [Aktivitätsprotokollen](../essentials/platform-logs-overview.md)
+* Konfigurieren von [Aktivitätsprotokollwarnungen über das Azure-Portal](./activity-log-alerts.md)
+* Konfigurieren von [Aktivitätsprotokollwarnungen über den Resource Manager](./alerts-activity-log.md)
 * Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](activity-log-alerts-webhook.md)
-* Erfahren Sie mehr über [Aktionsgruppen](../platform/action-groups.md).
+* Erfahren Sie mehr über [Aktionsgruppen](./action-groups.md).
 * Konfigurieren [neuerer Warnungen](alerts-metric.md)
-

@@ -1,24 +1,24 @@
 ---
-title: Darstellen der Leistung in Diagrammen mit Azure Monitor for VMs
-description: Leistung ist ein Feature von Azure Monitor for VMs, das Anwendungskomponenten auf Windows- und Linux-Systemen automatisch ermittelt und die Kommunikation zwischen Diensten abbildet. Dieser Artikel enthält Details zu seiner Verwendung in einer Reihe von Szenarien.
+title: Darstellen der Leistung in Diagrammen mit VM Insights
+description: Leistung ist ein Feature von VM Insights, das Anwendungskomponenten auf Windows- und Linux-Systemen automatisch ermittelt und die Kommunikation zwischen Diensten abbildet. Dieser Artikel enthält Details zu seiner Verwendung in einer Reihe von Szenarien.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/31/2020
-ms.openlocfilehash: f9578fadfbe057b723af63e338bf8bda63cf6f21
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9c69ea3da71063d7e20ebf31ae2eb3df9a51e2c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602136"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725440"
 ---
-# <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>Darstellen der Leistung in Diagrammen mit Azure Monitor for VMs
+# <a name="how-to-chart-performance-with-vm-insights"></a>Darstellen der Leistung in Diagrammen mit VM Insights
 
-Azure Monitor for VMs beinhaltet einen Satz Leistungsdiagramme, die auf verschiedene Key Performance Indicators (KPIs) abzielen, um Sie beim Bestimmen der Leistung eines virtuellen Computers zu unterstützen. Die Diagramme zeigen die Ressourcennutzung über einen Zeitraum an, damit Sie Engpässe und Anomalien erkennen oder zu einer Perspektive wechseln können, in der jede VM aufgelistet ist, um die Ressourcennutzung nach der ausgewählten Metrik anzuzeigen. Beim Thema Leistung sind zwar eine Vielzahl von Elementen zu berücksichtigen, Azure Monitor für VMs überwacht jedoch Betriebssystem-Key Performance Indicators im Zusammenhang mit Prozessor, Arbeitsspeicher, Netzwerkadapter und Datenträgerverwendung. Leistung ergänzt das Feature zur Integritätsüberwachung und hilft bei der Offenlegung von Problemen, die auf einen möglichen Ausfall von Systemkomponenten hinweisen, Feinabstimmung und Optimierung unterstützen, um Effizienz zu erreichen, oder bei der Kapazitätsplanung helfen.  
+VM Insights beinhaltet einen Satz von Leistungsdiagrammen, die auf verschiedene Key Performance Indicators (KPIs) abzielen, um Sie beim Bestimmen der Leistung eines virtuellen Computers zu unterstützen. Die Diagramme zeigen die Ressourcennutzung über einen Zeitraum an, damit Sie Engpässe und Anomalien erkennen oder zu einer Perspektive wechseln können, in der jede VM aufgelistet ist, um die Ressourcennutzung nach der ausgewählten Metrik anzuzeigen. Beim Thema Leistung sind zwar eine Vielzahl von Elementen zu berücksichtigen, VM Insights überwacht jedoch Betriebssystem-Key Performance Indicators im Zusammenhang mit Prozessor, Arbeitsspeicher, Netzwerkadapter und Datenträgerverwendung. Leistung ergänzt das Feature zur Integritätsüberwachung und hilft bei der Offenlegung von Problemen, die auf einen möglichen Ausfall von Systemkomponenten hinweisen, Feinabstimmung und Optimierung unterstützen, um Effizienz zu erreichen, oder bei der Kapazitätsplanung helfen.  
 
 ## <a name="limitations"></a>Einschränkungen
-Nachfolgend sind Einschränkungen bei der Leistungserfassung mit Azure Monitor für VMs aufgeführt.
+Nachfolgend sind Einschränkungen bei der Leistungserfassung mit VM Insights aufgeführt.
 
 - **Verfügbarer Arbeitsspeicher** ist für virtuelle Computer mit Red Hat Linux (RHEL) 6 nicht verfügbar. Diese Metrik wird aus **MemAvailable** berechnet, das in [Kernelversion 3.14](http://www.man7.org/linux/man-pages/man1/free.1.html) eingeführt wurde.
 - Metriken sind nur für Datenträger auf virtuellen Linux-Computern mit dem XFS-Dateisystem oder der EXT-Dateisystemfamilie (EXT2, EXT3, EXT4) verfügbar.
@@ -33,7 +33,7 @@ In Azure Monitor stellt das Leistungsfeature eine Ansicht aller überwachten VMs
 
 ![Top-N-Listenansicht Leistung in VM Insights](media/vminsights-performance/vminsights-performance-aggview-01.png)
 
-Gehen Sie wie folgt vor, falls Sie über mehrere Log Analytics-Arbeitsbereiche verfügen: Wählen Sie auf der Registerkarte **Top-N-Diagramme** über den Selektor **Arbeitsbereich** oben auf der Seite den Arbeitsbereich aus, der für die Lösung aktiviert ist. Mit dem Selektor **Gruppe** werden Abonnements, Ressourcengruppen, [Computergruppen](../platform/computer-groups.md) und VM-Skalierungsgruppen für Computer des ausgewählten Arbeitsbereichs zurückgegeben. Sie können diese Daten nutzen, um die Ergebnisse, die in den Diagrammen auf dieser Seite und auf anderen Seiten angezeigt werden, noch weiter zu filtern. Ihre Auswahl gilt nur für das Leistungsfeature und nicht für die Integrität oder die Karte.  
+Gehen Sie wie folgt vor, falls Sie über mehrere Log Analytics-Arbeitsbereiche verfügen: Wählen Sie auf der Registerkarte **Top-N-Diagramme** über den Selektor **Arbeitsbereich** oben auf der Seite den Arbeitsbereich aus, der für die Lösung aktiviert ist. Mit dem Selektor **Gruppe** werden Abonnements, Ressourcengruppen, [Computergruppen](../logs/computer-groups.md) und VM-Skalierungsgruppen für Computer des ausgewählten Arbeitsbereichs zurückgegeben. Sie können diese Daten nutzen, um die Ergebnisse, die in den Diagrammen auf dieser Seite und auf anderen Seiten angezeigt werden, noch weiter zu filtern. Ihre Auswahl gilt nur für das Leistungsfeature und nicht für die Integrität oder die Karte.  
 
 Standardmäßig zeigen die Diagramme die letzten 24 Stunden an. Mithilfe des **TimeRange**-Selektors können Sie nach historischen Zeiträumen von bis zu 30 Tagen abfragen, um darzustellen, wie die Leistung in der Vergangenheit war.
 
@@ -45,7 +45,7 @@ Diese fünf Diagramme zur Kapazitätsauslastung werden auf der Seite angezeigt:
 * Rate der gesendeten Bytes: Zeigt die fünf Computer mit der durchschnittlich größten Anzahl von gesendeten Bytes an. 
 * Bytes Receive Rate (Rate der empfangenen Byte): Zeigt die fünf Computer mit der durchschnittlich größten Anzahl von empfangen Byte an. 
 
-Wenn Sie auf das Stecknadelsymbol in der oberen rechten Ecke eines der fünf Diagramme klicken, wird das ausgewählte Diagramm an das Azure-Dashboard angeheftet, das Sie zuletzt angezeigt haben.  Über dem Dashboard können Sie die Größe des Diagramms ändern und es neu positionieren. Die Auswahl des Diagramms über das Dashboard leitet Sie zum Azure Monitor für VMs weiter und lädt den richtigen Bereich und die richtige Ansicht.  
+Wenn Sie auf das Stecknadelsymbol in der oberen rechten Ecke eines der fünf Diagramme klicken, wird das ausgewählte Diagramm an das Azure-Dashboard angeheftet, das Sie zuletzt angezeigt haben.  Über dem Dashboard können Sie die Größe des Diagramms ändern und es neu positionieren. Durch Auswahl des Diagramms über das Dashboard werden Sie zu VM Insights weitergeleitet, und der richtige Bereich und die richtige Ansicht werden geladen.  
 
 Klicken Sie auf das Symbol links neben dem Stecknadelsymbol in einem der fünf Diagramme, um die Ansicht **Top-N-Liste** zu öffnen.  Hier sehen Sie die Ressourcennutzung für die betreffende Leistungsmetrik nach einzelnen VMs in einer Listenansicht und den Computer mit der tendenziell höchsten Nutzung.  
 
@@ -104,7 +104,7 @@ Die folgenden Diagramme zur Kapazitätsauslastung stehen zur Verfügung:
 * Rate der gesendeten Bytes – zeigt standardmäßig den Mittelwert für gesendete Bytes an 
 * Rate der empfangenen Bytes – zeigt standardmäßig den Mittelwert für empfangene Bytes an
 
-Wenn Sie auf das Stecknadelsymbol in der oberen rechten Ecke eines der Diagramme klicken, wird das ausgewählte Diagramm an das Azure-Dashboard angeheftet, das Sie zuletzt angezeigt haben. Über dem Dashboard können Sie die Größe des Diagramms ändern und es neu positionieren. Die Auswahl des Diagramms über das Dashboard leitet Sie zum Azure Monitor für VMs weiter und lädt die Leistungsdetailansicht für den virtuellen Computer.  
+Wenn Sie auf das Stecknadelsymbol in der oberen rechten Ecke eines der Diagramme klicken, wird das ausgewählte Diagramm an das Azure-Dashboard angeheftet, das Sie zuletzt angezeigt haben. Über dem Dashboard können Sie die Größe des Diagramms ändern und es neu positionieren. Durch Auswahl des Diagramms über das Dashboard werden Sie zu VM Insights weitergeleitet, und die Leistungsdetailansicht für den virtuellen Computer wird geladen.  
 
 ![Ansicht von VM Insights – Leistung direkt in der VM](./media/vminsights-performance/vminsights-performance-directvm-01.png)
 
@@ -117,7 +117,7 @@ Führen Sie für den direkten Zugriff über eine Azure-VM-Skalierungsgruppe die 
 
 Auf dieser Seite wird die Leistungsansicht für Azure Monitor für die ausgewählte Skalierungsgruppe geladen. Dadurch können Sie die Top-N-Instanzen in der Skalierungsgruppe für die überwachten Metriken, die aggregierte Leistung der Skalierungsgruppe sowie die Trends für die ausgewählten Metriken für die einzelnen Instanzen in der Skalierungsgruppe anzeigen. Wenn Sie eine Instanz aus der Listenansicht auswählen, können Sie deren Übersicht laden oder eine detaillierte Leistungsansicht für diese Instanz aufrufen.
 
-Wenn Sie auf das Stecknadelsymbol in der oberen rechten Ecke eines der Diagramme klicken, wird das ausgewählte Diagramm an das Azure-Dashboard angeheftet, das Sie zuletzt angezeigt haben. Über dem Dashboard können Sie die Größe des Diagramms ändern und es neu positionieren. Die Auswahl des Diagramms über das Dashboard leitet Sie zum Azure Monitor für VMs weiter und lädt die Leistungsdetailansicht für den virtuellen Computer.  
+Wenn Sie auf das Stecknadelsymbol in der oberen rechten Ecke eines der Diagramme klicken, wird das ausgewählte Diagramm an das Azure-Dashboard angeheftet, das Sie zuletzt angezeigt haben. Über dem Dashboard können Sie die Größe des Diagramms ändern und es neu positionieren. Durch Auswahl des Diagramms über das Dashboard werden Sie zu VM Insights weitergeleitet, und die Leistungsdetailansicht für den virtuellen Computer wird geladen.  
 
 ![VM-Leistungsübersicht über die Ansicht der VM-Skalierungsgruppe](./media/vminsights-performance/vminsights-performance-directvmss-01.png)
 
@@ -128,6 +128,6 @@ Wenn Sie auf das Stecknadelsymbol in der oberen rechten Ecke eines der Diagramme
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich darüber, wie Sie in Azure Monitor für VMs enthaltene [Arbeitsmappen](vminsights-workbooks.md) verwenden, um Leistungs- und Netzwerkmetriken eingehender zu analysieren.  
+- Informieren Sie sich darüber, wie Sie in VM Insights enthaltene [Arbeitsmappen](vminsights-workbooks.md) verwenden, um Leistungs- und Netzwerkmetriken eingehender zu analysieren.  
 
-- Weitere Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Anzeigen der Zuordnung in Azure Monitor](vminsights-maps.md).
+- Weitere Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Anzeigen der Zuordnung in VM Insights](vminsights-maps.md).

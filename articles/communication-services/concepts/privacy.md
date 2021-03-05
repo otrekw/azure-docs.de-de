@@ -8,22 +8,24 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a047761669920d6460c3d6fb6d74b970effa7846
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8e08c531cd46d5112138a3feedf97b27307e3dca
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572037"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656192"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionale Verfügbarkeit und Datenresidenz
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure Communication Services unterstützt Kunden bei der Erfüllung ihrer Anforderungen in puncto Datenschutz und persönliche Daten. Entwickler, die Communication Services mit einer direkten Beziehung zu Benutzern der Anwendung verwenden, fungieren möglicherweise als Datencontroller. Da Azure Communication Services diese Daten in Ihrem Namen speichert, fungieren wir höchstwahrscheinlich als Datenverarbeiter. Hier erfahren Sie, wie Daten durch den Dienst gespeichert werden und wie Sie diese Daten identifizieren, exportieren und löschen können.
 
 ## <a name="data-residency"></a>Datenresidenz
 
 Bei der Erstellung einer Communication Services-Ressource geben Sie kein Azure-Rechenzentrum, sondern eine **geografische Region** an. Alle ruhenden Daten, die von Communication Services gespeichert werden, werden in dieser geografischen Region gespeichert. Das Rechenzentrum wird dabei intern von Communication Services ausgewählt. Daten können jedoch andere geografische Regionen durchlaufen oder in anderen geografischen Regionen verarbeitet werden. Diese globalen Endpunkte sind erforderlich, um Endbenutzern unabhängig von ihrem Standort eine hohe Leistung mit geringer Wartezeit zu bieten.
+
+## <a name="data-residency-and-events"></a>Datenresidenz und Ereignisse
+
+Alle Event Grid-Systemthemen, die mit Azure Communication Services konfiguriert wurden, werden an einem globalen Standort erstellt. Zur Unterstützung der zuverlässigen Übermittlung kann ein globales Event Grid-Systemthema die Ereignisdaten in einem beliebigen Microsoft-Rechenzentrum speichern. Wenn Sie Event Grid mit Azure Communication Services konfigurieren, stellen Sie Ihre Ereignisdaten für Event Grid bereit. Dabei handelt es sich um eine von Ihnen kontrollierte Azure-Ressource. Azure Communication Services kann zwar für die Verwendung von Azure Event Grid konfiguriert werden, aber Sie sind für die Verwaltung Ihrer Event Grid-Ressource und der darin gespeicherten Daten verantwortlich.
 
 ## <a name="relating-humans-to-azure-communication-services-identities"></a>Verknüpfen von Benutzern mit Azure Communication Services-Identitäten
 
@@ -61,7 +63,7 @@ Chatthreads und -nachrichten werden aufbewahrt, bis sie explizit gelöscht werde
 
 ### <a name="sms"></a>SMS
 
-Gesendete und empfangene SMS-Nachrichten werden flüchtig durch den Dienst verarbeitet und nicht gespeichert. 
+Gesendete und empfangene SMS-Nachrichten werden flüchtig durch den Dienst verarbeitet und nicht gespeichert.
 
 ### <a name="pstn-voice-calling"></a>Sprachanrufe über das Festnetz
 

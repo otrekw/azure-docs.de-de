@@ -10,17 +10,17 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 4d3781c7a3894429cb5daccb334655543e3eea01
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 18282bbe902599c471775a853704e459ea44bac1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100552142"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661641"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
-- Erstellen Sie ein Azure-Konto mit einem aktiven Abonnement. Details finden Sie auf der [Seite zum Erstellen eines kostenloses Azure-Kontos](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Erstellen Sie ein Azure-Konto mit einem aktiven Abonnement. Details finden Sie auf der [Seite zum Erstellen eines kostenloses Azure-Kontos](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Installieren Sie die Versionen Active LTS und Maintenance LTS (8.11.1 und 10.14.1 empfohlen) von [Node.js](https://nodejs.org/en/download/).
 - Erstellen Sie eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure Communication Services-Ressource](../../create-communication-resource.md). Für diese Schnellstartanleitung müssen Sie den **Endpunkt** Ihrer Ressource aufzeichnen.
 - Erstellen Sie *drei* ACS-Benutzer, und stellen Sie ein [Benutzerzugriffstoken](../../access-tokens.md) für sie aus. Legen Sie den Bereich auf **Chat** fest, und **notieren Sie sich die Tokenzeichenfolge und die userId-Zeichenfolge**. In der vollständigen Demo wird ein Thread mit zwei Teilnehmern erstellt und dann ein dritter Teilnehmer hinzugefügt.
@@ -34,7 +34,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 ```console
 mkdir chat-quickstart && cd chat-quickstart
 ```
-   
+
 Führen Sie `npm init -y` aus, um die Datei **package.json** mit den Standardeinstellungen zu erstellen.
 
 ```console
@@ -48,7 +48,7 @@ Verwenden Sie den Befehl `npm install`, um die unten angegebenen Communication S
 ```console
 npm install @azure/communication-common --save
 
-npm install @azure/communication-administration --save
+npm install @azure/communication-identity --save
 
 npm install @azure/communication-signaling --save
 
@@ -86,26 +86,9 @@ Erstellen Sie im Stammverzeichnis Ihres Projekts eine Datei mit dem Namen **clie
 
 ### <a name="create-a-chat-client"></a>Erstellen eines Chatclients
 
-Zum Erstellen eines Chatclients in Ihrer Web-App benötigen Sie den Communication Services-**Endpunkt** und das **Zugriffstoken**, das im Rahmen der Vorbereitung generiert wurde. 
+Zum Erstellen eines Chatclients in Ihrer Web-App benötigen Sie den Communication Services-**Endpunkt** und das **Zugriffstoken**, das im Rahmen der Vorbereitung generiert wurde.
 
-Mit Benutzerzugriffstoken können Sie Clientanwendungen erstellen, die gegenüber Azure Communication Services direkt authentifiziert werden.
-
-##### <a name="server-vs-client-side"></a>Gegenüberstellung von Server- und Clientseite
-
-Wir empfehlen, Zugriffstoken unter Verwendung einer serverseitigen Komponente zu erstellen, von der sie an die Clientanwendung übergeben werden. In diesem Szenario ist die Serverseite für die Erstellung und Verwaltung von Benutzern sowie für die Ausstellung ihrer Token zuständig. Auf der Clientseite können dann Zugriffstoken vom Dienst empfangen und zum Authentifizieren der Azure Communication Services-Clientbibliotheken verwendet werden.
-
-Mithilfe der Azure-Kommunikationsverwaltungsbibliothek für JavaScript können Token auch auf der Clientseite ausgestellt werden. In diesem Szenario muss die Clientseite über Benutzer informiert sein, um ihre Token ausstellen zu können.
-
-Ausführlichere Informationen finden Sie in der Dokumentation [Client- und Serverarchitektur](../../../concepts/client-and-server-architecture.md).
-
-Im folgenden Diagramm empfängt die clientseitige Anwendung ein Zugriffstoken von einer vertrauenswürdigen Dienstebene. Das Token wird dann von der Anwendung für die Authentifizierung von Communication Services-Bibliotheken verwendet. Nach der Authentifizierung kann die Anwendung die clientseitigen Communication Services-Bibliotheken verwenden, um beispielsweise Chats mit anderen Benutzern durchzuführen.
-
-:::image type="content" source="../../../media/scenarios/archdiagram-access.png" alt-text="Diagramm der Architektur von Benutzerzugriffstoken":::
-
-##### <a name="instructions"></a>Instructions
-Das Erstellen einer Dienstebene für Ihre Chatanwendung wird in dieser Demo nicht behandelt. 
-
-Falls Sie noch keine Benutzer und zugehörigen Token generiert haben, führen Sie die unter dem folgenden Link beschriebenen Schritte aus: [Schnellstart: Erstellen und Verwalten von Zugriffstoken](../../access-tokens.md). Denken Sie daran, den Bereich nicht auf „VoIP“, sondern auf „Chat“ festzulegen.
+Mit Benutzerzugriffstoken können Sie Clientanwendungen erstellen, die gegenüber Azure Communication Services direkt authentifiziert werden. Die Erstellung einer Dienstebene zum Verwalten von Token für Ihre Chatanwendung wird in dieser Schnellstartanleitung nicht behandelt. Unter [Chatkonzepte](../../../concepts/chat/concepts.md) finden Sie weitere Informationen zur Chatarchitektur und unter [Benutzerzugriffstoken](../../access-tokens.md) weitere Informationen zu Zugriffstoken.
 
 Verwenden Sie in **client.js** den Endpunkt und das Zugriffstoken im folgenden Code, um Chatfunktionen über die JavaScript-Clientbibliothek für Chats von Azure Communication Services hinzuzufügen.
 
@@ -139,7 +122,7 @@ In Ihrem Browser in der Konsole mit den Entwicklertools sollte Folgendes angezei
 Azure Communication Chat client created!
 ```
 
-## <a name="object-model"></a>Objektmodell 
+## <a name="object-model"></a>Objektmodell
 Die folgenden Klassen und Schnittstellen werden für einige der wichtigsten Features der JavaScript-Clientbibliothek für Chats von Azure Communication Services verwendet.
 
 | Name                                   | Beschreibung                                                                                                                                                                           |
@@ -154,7 +137,7 @@ Verwenden Sie die `createThread`-Methode, um einen Chatthread zu erstellen.
 
 `createThreadRequest` wird zum Beschreiben der Threadanforderung verwendet:
 
-- Verwenden Sie `topic`, um für diesen Chat ein Thema anzugeben. Nach der Erstellung des Chatthreads kann das Thema mit der Funktion `UpdateThread` aktualisiert werden. 
+- Verwenden Sie `topic`, um für diesen Chat ein Thema anzugeben. Themen können nach der Erstellung des Chatthreads mit der Funktion `UpdateThread` aktualisiert werden.
 - Verwenden Sie `participants`, um die Teilnehmer aufzulisten, die dem Chatthread hinzugefügt werden sollen.
 
 Nach der Auflösung wird von der Methode `createChatThread` eine Antwort vom Typ `CreateChatThreadResponse` zurückgegeben. Dieses Modell enthält eine Eigenschaft vom Typ `chatThread`. Dort können Sie auf die ID (`id`) des neu erstellten Threads zugreifen. Mithilfe der ID (`id`) können Sie anschließend eine Instanz eines Chatthreadclients (`ChatThreadClient`) abrufen. Mit dem Chatthreadclient (`ChatThreadClient`) können dann innerhalb des Threads Vorgänge wie das Senden von Nachrichten oder das Auflisten von Teilnehmer ausgeführt werden.
@@ -220,7 +203,7 @@ Mit `sendMessageRequest` werden die erforderlichen Felder der Anforderung für d
 
 Mit `sendMessageOptions` werden die optionalen Felder der Anforderung für die Chatnachricht beschrieben:
 
-- Verwenden Sie `priority`, um die Prioritätsstufe für die Chatnachricht anzugeben, z. B. „Normal“ oder „High“ (Hoch). Diese Eigenschaft kann verwendet werden, um für den empfangenden Benutzer in Ihrer App einen Hinweis in der Benutzeroberfläche anzuzeigen, auf die Nachricht aufmerksam zu machen oder benutzerdefinierte Geschäftslogik auszuführen.   
+- Verwenden Sie `priority`, um die Prioritätsstufe der Chatnachricht anzugeben, z. B. „Normal“ oder „High“ (Hoch). Diese Eigenschaft kann verwendet werden, um für den empfangenden Benutzer in Ihrer App einen Hinweis auf der Benutzeroberfläche anzuzeigen, auf die Nachricht aufmerksam zu machen oder benutzerdefinierte Geschäftslogik auszuführen.
 - Verwenden Sie `senderDisplayName`, um den Anzeigenamen des Absenders anzugeben.
 
 Die Antwort `sendChatMessageResult` enthält eine ID, bei der es sich um die eindeutige ID der Nachricht handelt.
@@ -263,7 +246,7 @@ chatClient.on("chatMessageReceived", (e) => {
 Fügen Sie diesen Code anstelle des Kommentars `<RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>` in **client.js** hinzu.
 Wenn Sie die Registerkarte in Ihrem Browser aktualisieren, sollte in der Konsole die Meldung `Notification chatMessageReceived` angezeigt werden.
 
-Alternativ können Sie Chatnachrichten auch abrufen, indem Sie die `listMessages`-Methode jeweils nach dem angegebenen Intervallzeitraum abfragen. 
+Alternativ können Sie Chatnachrichten auch abrufen, indem Sie die `listMessages`-Methode jeweils nach dem angegebenen Intervallzeitraum abfragen.
 
 ```JavaScript
 

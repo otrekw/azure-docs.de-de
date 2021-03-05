@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Erstellen und Verwalten von Zugriffstoken'
 titleSuffix: An Azure Communication Services quickstart
-description: Hier erfahren Sie, wie Sie Identitäten und Zugriffstoken mithilfe der Azure Communication Services-Clientbibliothek „Administration“ verwalten.
+description: Hier erfahren Sie, wie Sie Identitäten und Zugriffstoken mithilfe der Azure Communication Services-Identitätsclientbibliothek verwalten.
 author: tomaschladek
 manager: nmurav
 services: azure-communication-services
@@ -10,18 +10,16 @@ ms.date: 08/20/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 246b8041e7e12ea1a1391cb4690d02892bc31b63
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 8937210b366981d9768e5329989a8ad14f5e8f35
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325294"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657058"
 ---
 # <a name="quickstart-create-and-manage-access-tokens"></a>Schnellstart: Erstellen und Verwalten von Zugriffstoken
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
-Steigen Sie in Azure Communication Services ein, indem Sie die Communication Services-Verwaltungsclientbibliothek verwenden. Sie ermöglicht es Ihnen, Identitäten zu erstellen und Ihre Zugriffstoken zu verwalten. Die Identität stellt die Entität Ihrer Anwendung in Azure Communication Service (z. B. Benutzer oder Gerät) dar. Zugriffstoken ermöglichen die direkte Authentifizierung Ihrer Clientbibliotheken für Chats und Telefonie bei Azure Communication Services. Es wird empfohlen, Zugriffstoken mit einem serverseitigen Dienst zu erstellen. Zugriffstoken werden dann verwendet, um die Communication Services-Clientbibliotheken auf Clientgeräten zu initialisieren.
+Steigen Sie in Azure Communication Services ein, indem Sie die Communication Services-Identitätsclientbibliothek verwenden. Sie ermöglicht es Ihnen, Identitäten zu erstellen und Ihre Zugriffstoken zu verwalten. Die Identität stellt die Entität Ihrer Anwendung in Azure Communication Service (z. B. Benutzer oder Gerät) dar. Zugriffstoken ermöglichen die direkte Authentifizierung Ihrer Clientbibliotheken für Chats und Telefonie bei Azure Communication Services. Es wird empfohlen, Zugriffstoken mit einem serverseitigen Dienst zu erstellen. Zugriffstoken werden dann verwendet, um die Communication Services-Clientbibliotheken auf Clientgeräten zu initialisieren.
 
 Sämtliche Preise, die auf Abbildungen in diesem Tutorial zu sehen sind, dienen lediglich Demonstrationszwecken.
 
@@ -69,7 +67,7 @@ In diesem Schnellstart haben Sie Folgendes gelernt:
 > [!div class="checklist"]
 > * Identitäten verwalten
 > * Ausstellen von Zugriffstoken
-> * Verwenden der Communication Services-Clientbibliothek „Administration“
+> * Verwenden der Communication Services-Identitätsclientbibliothek
 
 
 > [!div class="nextstepaction"]
@@ -80,4 +78,3 @@ Das könnte Sie auch interessieren:
  - [Informationen zur Authentifizierung](../concepts/authentication.md)
  - [Hinzufügen von Chatfunktionen zu Ihrer App](./chat/get-started.md)
  - [Informationen zur Client- und Serverarchitektur](../concepts/client-and-server-architecture.md)
- 

@@ -9,20 +9,18 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 8b63ce25d6839e8672027240099859dc7aad96c5
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 0dbd1770030eeee8768c0b610171f5f27456ed70
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886072"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656226"
 ---
 # <a name="client-and-server-architecture"></a>Client- und Serverarchitektur
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
 <!--
 > [!WARNING]
-> This document is under construction and needs the following items to be addressed: 
+> This document is under construction and needs the following items to be addressed:
 > - Need to add security best practices for token management here
 > - Reference docs:
 > - https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/create-a-token-object
@@ -56,11 +54,11 @@ Viele Szenarien eignen sich am besten für native Anwendungen. Azure Communicati
 Die Kommunikation über das Telefonfestnetz kann die Reichweite Ihrer Anwendung erheblich vergrößern. Um Szenarien für Sprachkommunikation im Festnetz und mit SMS zu unterstützen, hilft Ihnen Azure Communication Services direkt im Azure-Portal oder mithilfe von REST-APIs und Clientbibliotheken beim [Bezug von Telefonnummern](../quickstarts/telephony-sms/get-phone-number.md). Sobald Telefonnummern bezogen wurden, können sie verwendet werden, um Kunden sowohl über das Festnetz als auch per SMS in ein- und ausgehenden Szenarien zu erreichen. Ein Beispiel eines Flows durch die Architektur finden Sie nachstehend:
 
 > [!Note]
-> Während der Public Preview-Phase steht die Bereitstellung von US-Telefonnummern für Kunden mit Rechnungsanschrift innerhalb der USA und Kanadas zur Verfügung. 
+> Während der Public Preview-Phase steht die Bereitstellung von US-Telefonnummern für Kunden mit Rechnungsanschrift innerhalb der USA und Kanadas zur Verfügung.
 
 :::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="Diagramm der Festnetzarchitektur von Communication Services":::
 
-Weitere Informationen zu Festnetz- und SMS-Lösungen finden Sie unter [Planen Ihrer Festnetz- und SMS-Lösung](../concepts/telephony-sms/plan-solution.md).
+Weitere Informationen zu PSTN-Telefonnummern finden Sie unter [Telefonnummerntypen](../concepts/telephony-sms/plan-solution.md).
 
 ## <a name="humans-communicating-with-bots-and-other-services"></a>Kommunikation zwischen Menschen und Bots und anderen Diensten
 
@@ -83,7 +81,7 @@ Möglicherweise möchten Sie bestimmte Daten zwischen Benutzern austauschen, z.�
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - Informationen zur [Authentifizierung](../concepts/authentication.md)
-- Informationen zu [Festnetz- und SMS-Lösungen](../concepts/telephony-sms/plan-solution.md)
+- Weitere Informationen zu Telefonnummerntypen finden Sie [hier](../concepts/telephony-sms/plan-solution.md).
 
 - [Hinzufügen von Chatfunktionen zu Ihrer App](../quickstarts/chat/get-started.md)
 - [Hinzufügen von Sprachanrufen zu Ihrer App](../quickstarts/voice-video-calling/getting-started-with-calling.md)

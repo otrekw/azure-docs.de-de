@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: f2f2272363cbc26895b061fe7b6263ed2a29fbab
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: bcd56e464419312e74aec01cf22ae56f797991ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993257"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731764"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy
 Während einige Features von Azure Monitor einmalig oder nur für eine begrenzte Zahl von Malen konfiguriert werden, muss dies bei anderen für jede Ressource wiederholt werden, die Sie überwachen möchten. In diesem Artikel werden Methoden beschrieben, wie Sie Azure Monitor mit Azure Policy bedarfsorientiert implementieren, um sicherzustellen, dass die Überwachung für alle Ihre Azure-Ressourcen konsistent und genau konfiguriert ist.
@@ -33,7 +33,7 @@ Azure Policy umfasst die Objekte in der folgenden Tabelle: Eine ausführlichere 
 | Zuweisung | Eine Richtliniendefinition oder -initiative tritt erst in Kraft, wenn sie einem Bereich zugewiesen wird. Weisen Sie z. B. einer Ressourcengruppe eine Richtlinie zu, um sie auf alle Ressourcen anzuwenden, die in dieser Ressource erstellt werden, oder wenden Sie sie auf ein Abonnement an, um sie auf alle Ressourcen in diesem Abonnement anzuwenden.  Weitere Informationen finden Sie unter [Azure Policy-Zuweisungsstruktur](../governance/policy/concepts/assignment-structure.md). |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>Integrierte Richtliniendefinitionen für Azure Monitor
-Azure Policy enthält mehrere vordefinierte Definitionen im Zusammenhang mit Azure Monitor. Sie können diese Richtliniendefinitionen Ihrem vorhandenen Abonnement zuweisen oder sie als Grundlage verwenden, um eigene benutzerdefinierte Definitionen zu erstellen. Eine umfassende Liste der integrierten Richtlinien in der Kategorie **Überwachung** finden Sie unter [Integrierte Azure Policy-Definitionen für Azure Monitor](./samples/policy-reference.md).
+Azure Policy enthält mehrere vordefinierte Definitionen im Zusammenhang mit Azure Monitor. Sie können diese Richtliniendefinitionen Ihrem vorhandenen Abonnement zuweisen oder sie als Grundlage verwenden, um eigene benutzerdefinierte Definitionen zu erstellen. Eine umfassende Liste der integrierten Richtlinien in der Kategorie **Überwachung** finden Sie unter [Integrierte Azure Policy-Definitionen für Azure Monitor](.//policy-reference.md).
 
 Führen Sie die folgenden Schritte aus, um die in Bezug auf die Überwachung integrierten Richtliniendefinitionen anzuzeigen:
 
@@ -45,7 +45,7 @@ Führen Sie die folgenden Schritte aus, um die in Bezug auf die Überwachung int
 
 
 ## <a name="diagnostic-settings"></a>Diagnoseeinstellungen
-[Diagnoseeinstellungen](platform/diagnostic-settings.md) sammeln Ressourcenprotokolle und Metriken von Azure-Ressourcen an mehreren Speicherorten, in der Regel in einem Log Analytics-Arbeitsbereich, der Ihnen ermöglicht, die Daten mit [Protokollabfragen](log-query/log-query-overview.md) und [Protokollwarnungen](platform/alerts-log.md) zu analysieren. Verwenden Sie Policy, um automatisch jedes Mal, wenn Sie eine Ressource erstellen, eine Diagnoseeinstellung zu erstellen.
+[Diagnoseeinstellungen](essentials/diagnostic-settings.md) sammeln Ressourcenprotokolle und Metriken von Azure-Ressourcen an mehreren Speicherorten, in der Regel in einem Log Analytics-Arbeitsbereich, der Ihnen ermöglicht, die Daten mit [Protokollabfragen](logs/log-query-overview.md) und [Protokollwarnungen](alerts/alerts-log.md) zu analysieren. Verwenden Sie Policy, um automatisch jedes Mal, wenn Sie eine Ressource erstellen, eine Diagnoseeinstellung zu erstellen.
 
 Jeder Azure-Ressourcentyp verfügt über einen eindeutigen Satz von Kategorien, die in der Diagnoseeinstellung aufgelistet werden müssen. Daher ist für jeden Ressourcentyp eine separate Richtliniendefinition erforderlich. Einige Ressourcentypen verfügen über integrierte Richtliniendefinitionen, die Sie ohne Änderungen zuweisen können. Bei anderen Ressourcentypen müssen Sie eine benutzerdefinierte Definition erstellen.
 
@@ -121,34 +121,34 @@ Die Initiative gilt für jeden virtuellen Computer, während er erstellt wird. M
 ![Initiativwartung](media/deploy-scale/initiative-remediation.png)
 
 
-## <a name="azure-monitor-for-vms"></a>Azure Monitor für VMs
-[Azure Monitor für VMs](insights/vminsights-overview.md) ist das primäre Tool in Azure Monitor zur VM-Überwachung. Beim Aktivieren von Azure Monitor für VMs werden sowohl der Log Analytics-Agent als auch der Dependency-Agent installiert. Anstatt diese Aufgaben manuell auszuführen, verwenden Sie Azure Policy, um sicherzustellen, dass jeder virtuelle Computer bei der Erstellung konfiguriert wird.
+## <a name="vm-insights"></a>VM Insights
+[VM Insights](vm/vminsights-overview.md) ist das primäre Tool in Azure Monitor zur Überwachung virtueller Computer. Beim Aktivieren von VM Insights werden sowohl der Log Analytics-Agent als auch der Dependency-Agent installiert. Anstatt diese Aufgaben manuell auszuführen, verwenden Sie Azure Policy, um sicherzustellen, dass jeder virtuelle Computer bei der Erstellung konfiguriert wird.
 
 > [!NOTE]
-> Azure Monitor für VMs umfasst die Funktion **Richtlinienabdeckung in Azure Monitor für VMs**, mit der Sie nicht richtlinienkonforme VMs in Ihrer Umgebung ermitteln und die jeweils vorliegenden Probleme behandeln können. Sie können diese Funktion verwenden, anstatt direkt mit Azure Policy für Azure-VMs zu arbeiten. Außerdem eignet sie sich für Hybrid-VMs, die mit Azure Arc verbunden sind. Für Azure-VM-Skalierungsgruppen müssen Sie die Zuweisung mithilfe von Azure Policy erstellen.
+> VM Insights umfasst die Funktion **Richtlinienabdeckung in VM Insights**, mit der Sie nicht richtlinienkonforme VMs in Ihrer Umgebung ermitteln und die jeweils vorliegenden Probleme behandeln können. Sie können diese Funktion verwenden, anstatt direkt mit Azure Policy für Azure-VMs zu arbeiten. Außerdem eignet sie sich für Hybrid-VMs, die mit Azure Arc verbunden sind. Für Azure-VM-Skalierungsgruppen müssen Sie die Zuweisung mithilfe von Azure Policy erstellen.
  
 
-Azure Monitor für VMs umfasst die folgenden integrierten Initiativen, mit denen beide Agents installiert werden, um eine umfassende Überwachung zu ermöglichen. 
+VM Insights umfasst die folgenden integrierten Initiativen, mit denen beide Agents installiert werden, um eine umfassende Überwachung zu ermöglichen. 
 
 |Name |BESCHREIBUNG |
 |:---|:---|
-|Aktivieren von Azure Monitor für VMs | Installiert den Log Analytics-Agent und den Dependency-Agent auf Azure-VMs und Hybrid-VMs, die mit Azure Arc verbunden sind. |
+|Aktivieren von VM Insights | Installiert den Log Analytics-Agent und den Dependency-Agent auf Azure-VMs und Hybrid-VMs, die mit Azure Arc verbunden sind. |
 |Aktivieren von Azure Monitor für VM-Skalierungsgruppen | Installiert den Log Analytics-Agent und den Dependency-Agent in der Azure-VM-Skalierungsgruppe. |
 
 
 ### <a name="virtual-machines"></a>Virtuelle Computer
-Anstatt Zuweisungen für diese Initiativen mithilfe der Azure Policy-Schnittstelle zu erstellen, enthält Azure Monitor für VMs eine Funktion, mit der Sie die Anzahl der VMs in den einzelnen Bereichen überprüfen können, um zu bestimmen, ob die Initiative angewendet wurde. Anschließend können Sie den Arbeitsbereich konfigurieren und alle erforderlichen Zuweisungen mithilfe dieser Schnittstelle erstellen.
+Anstatt Zuweisungen für diese Initiativen mithilfe der Azure Policy-Schnittstelle zu erstellen, enthält VM Insights eine Funktion, mit der Sie die Anzahl der VMs in den einzelnen Bereichen überprüfen können, um zu bestimmen, ob die Initiative angewendet wurde. Anschließend können Sie den Arbeitsbereich konfigurieren und alle erforderlichen Zuweisungen mithilfe dieser Schnittstelle erstellen.
 
-Weitere Informationen hierzu finden Sie unter [Aktivieren von Azure Monitor für VMs mit Azure Policy](./insights/vminsights-enable-policy.md).
+Weitere Informationen hierzu finden Sie unter [Aktivieren von VM Insights mit Azure Policy](./vm/vminsights-enable-policy.md).
 
-![Richtlinie für Azure Monitor für VMs](media/deploy-scale/vminsights-policy.png)
+![VM Insights-Richtlinie](media/deploy-scale/vminsights-policy.png)
 
 ### <a name="virtual-machine-scale-sets"></a>VM-Skalierungsgruppen
 Wenn Sie Azure Policy zum Aktivieren der Überwachung von VM-Skalierungsgruppen verwenden möchten, weisen Sie die Initiative **Azure Monitor für Virtual Machine Scale Sets aktivieren** einer Azure-Verwaltungsgruppe, einem Abonnement oder einer Ressource zu (abhängig vom Umfang der Ressourcen, die überwacht werden sollen). Eine [Verwaltungsgruppe](../governance/management-groups/overview.md) ist besonders nützlich für bereichsbezogene Richtlinien, insbesondere wenn Ihre Organisation über mehrere Abonnements verfügt.
 
 ![Screenshot der Seite „Initiative zuweisen“ im Azure-Portal. Die Initiativdefinition ist auf „Aktivieren von Azure Monitor für VM-Skalierungsgruppen“ festgelegt.](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
 
-Wählen Sie den Arbeitsbereich aus, an den die Daten gesendet werden. In diesem Arbeitsbereich muss die *VMInsights*-Lösung installiert sein, wie unter []() beschrieben.
+Wählen Sie den Arbeitsbereich aus, an den die Daten gesendet werden. In diesem Arbeitsbereich muss die *VMInsights*-Lösung installiert sein, wie unter [Konfigurieren eines Log Analytics-Arbeitsbereichs für VM Insights](vm/vminsights-configure-workspace.md) beschrieben.
 
 ![Arbeitsbereich auswählen](media/deploy-scale/virtual-machine-scale-set-workspace.png)
 
@@ -157,7 +157,7 @@ Erstellen Sie einen Wartungstask, wenn Sie über eine vorhandene VM-Skalierungsg
 ![Wartungstask](media/deploy-scale/virtual-machine-scale-set-remediation.png)
 
 ### <a name="log-analytics-agent"></a>Log Analytics-Agent
-Möglicherweise gibt es Szenarien, in denen zwar der Log Analytics-Agent, jedoch nicht der Dependency-Agent installiert werden soll. Es ist keine integrierte Initiative vorhanden, die nur für diesen einen Agent verwendet werden kann. Sie können jedoch eine eigene Initiative erstellen, die auf den integrierten Richtliniendefinitionen basiert, die von Azure Monitor für VMs bereitgestellt werden.
+Möglicherweise gibt es Szenarien, in denen zwar der Log Analytics-Agent, jedoch nicht der Dependency-Agent installiert werden soll. Es ist keine integrierte Initiative vorhanden, die nur für diesen einen Agent verwendet werden kann. Sie können jedoch eine eigene Initiative erstellen, die auf den integrierten Richtliniendefinitionen basiert, die von VM Insights bereitgestellt werden.
 
 > [!NOTE]
 > Da der Dependency-Agent den Log Analytics-Agent benötigt, um Daten an Azure Monitor zu übermitteln, ist die alleinige Bereitstellung des Dependency-Agents nicht sinnvoll.
@@ -181,4 +181,4 @@ Möglicherweise gibt es Szenarien, in denen zwar der Log Analytics-Agent, jedoch
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über [Azure Policy](../governance/policy/overview.md).
-- Erfahren Sie mehr über [Diagnoseeinstellungen](platform/diagnostic-settings.md).
+- Erfahren Sie mehr über [Diagnoseeinstellungen](essentials/diagnostic-settings.md).

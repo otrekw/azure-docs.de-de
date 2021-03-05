@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e661b99e3c5028f40ea69ddedc22c7ee2895acec
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: cb253ebfd8269779adf02dcbc01d7998590ce78c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888724"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657161"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Ereignisbehandlung in Azure Communication Services
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure Communication Services ist in [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) integriert, um Echtzeit-Ereignisbenachrichtigungen zuverlässig, skalierbar und sicher bereitzustellen. In diesem Artikel erfahren Sie, wie Sie Ihre Anwendungen so konfigurieren, dass sie auf Communication Services-Ereignisse lauschen. So können Sie beispielsweise eine Datenbank aktualisieren, eine Arbeitsaufgabe erstellen und eine Pushbenachrichtigung senden, wenn eine SMS-Nachricht von einer Telefonnummer eingeht, die Ihrer Communication Services-Ressource zugeordnet ist.
 
@@ -26,9 +24,12 @@ Azure Event Grid ist ein vollständig verwalteter Ereignisroutingdienst, der ein
 
 :::image type="content" source="https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png" alt-text="Diagramm: Ereignismodell von Azure Event Grid":::
 
+> [!NOTE]
+> Weitere Informationen zur Datenresidenz in Bezug auf die Ereignisbehandlung finden Sie in der [konzeptionellen Dokumentation zu Datenresidenz](./privacy.md).
+
 ## <a name="events-types"></a>Ereignistypen
 
-Event Grid verwendet [Ereignisabonnements](../../event-grid/concepts.md#event-subscriptions) zum Weiterleiten von Ereignisnachrichten an Abonnenten. 
+Event Grid verwendet [Ereignisabonnements](../../event-grid/concepts.md#event-subscriptions) zum Weiterleiten von Ereignisnachrichten an Abonnenten.
 
 Von Azure Communication Services werden folgende Ereignistypen ausgegeben:
 
@@ -204,7 +205,7 @@ In diesem Abschnitt wird anhand eines Beispiels gezeigt, wie diese Daten für je
 }]
 ```
 
-### <a name="microsoftcommunicationchatthreadcreatedwithuser-event"></a>Ereignis „Microsoft.Communication.ChatThreadCreatedWithUser“ 
+### <a name="microsoftcommunicationchatthreadcreatedwithuser-event"></a>Ereignis „Microsoft.Communication.ChatThreadCreatedWithUser“
 
 ```json
 [{
@@ -262,7 +263,7 @@ In diesem Abschnitt wird anhand eines Beispiels gezeigt, wie diese Daten für je
 }]
 ```
 
-### <a name="microsoftcommunicationchatthreadpropertiesupdatedperuser-event"></a>Ereignis „Microsoft.Communication.ChatThreadPropertiesUpdatedPerUser“ 
+### <a name="microsoftcommunicationchatthreadpropertiesupdatedperuser-event"></a>Ereignis „Microsoft.Communication.ChatThreadPropertiesUpdatedPerUser“
 
 ```json
 [{

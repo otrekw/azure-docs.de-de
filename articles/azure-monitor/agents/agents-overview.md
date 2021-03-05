@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: d46fef97824b9dbe72539177a14b4a778058c625
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: af18356ef42f8796b972626da4567aac68a6de5a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599468"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719983"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Übersicht über Azure Monitor-Agents
 
@@ -21,7 +21,7 @@ Virtuelle Computer und andere Computeressourcen benötigen einen Agent, um Über
 > [!NOTE]
 > Aufgrund der kürzlich vorgenommenen Konsolidierung von Azure Monitor und Log Analytics verfügt Azure Monitor über mehrere Agents. Die Features überschneiden sich zwar unter Umständen, jeder hat jedoch seine eigenen Funktionen. Je nach Anforderungen benötigen Sie auf Ihren Computern möglicherweise einen oder mehrere der Agents. 
 
-Es kann vorkommen, dass spezifische Anforderungen für einen bestimmten Computer nicht vollständig durch einen einzelnen Agent erfüllt werden können. Dies wäre etwa der Fall, wenn Sie Metrikwarnungen verwenden möchten, für die die Azure-Diagnoseerweiterung erforderlich ist, gleichzeitig aber auch die Funktionen von Azure Monitor für VMs nutzen möchten, für die der Log Analytics-Agent und der Dependency-Agent benötigt werden. In solchen Fällen können Sie mehrere Agents verwenden. Dies ist ein gängiges Szenario für Kunden, die Funktionen beider Agents benötigen.
+Es kann vorkommen, dass spezifische Anforderungen für einen bestimmten Computer nicht vollständig durch einen einzelnen Agent erfüllt werden können. Dies wäre etwa der Fall, wenn Sie Metrikwarnungen verwenden möchten, für die die Azure-Diagnoseerweiterung erforderlich ist, gleichzeitig aber auch die Funktionen von VM Insights nutzen möchten, für die der Log Analytics-Agent und der Dependency-Agent benötigt werden. In solchen Fällen können Sie mehrere Agents verwenden. Dies ist ein gängiges Szenario für Kunden, die Funktionen beider Agents benötigen.
 
 ## <a name="summary-of-agents"></a>Übersicht über die Agents
 
@@ -38,7 +38,7 @@ Die folgenden Tabellen enthalten eine kurze Gegenüberstellung der Azure Monito
 | **Agent-Anforderungen**  | Keine | Keine | Keine | Erfordert Log Analytics-Agent |
 | **Gesammelte Daten** | Ereignisprotokolle<br>Leistung | Ereignisprotokolle<br>ETW-Ereignisse<br>Leistung<br>Dateibasierte Protokolle<br>IIS-Protokolle<br>.NET-App-Protokolle<br>Absturzabbilder<br>Agent-Diagnoseprotokolle | Ereignisprotokolle<br>Leistung<br>Dateibasierte Protokolle<br>IIS-Protokolle<br>Erkenntnisse und Lösungen<br>Sonstige Dienste | Prozessabhängigkeiten<br>Netzwerkverbindungsmetriken |
 | **Senden von Daten an** | Azure Monitor-Protokolle<br>Azure Monitor-Metriken | Azure Storage<br>Azure Monitor-Metriken<br>Event Hub | Azure Monitor-Protokolle | Azure Monitor-Protokolle<br>(über den Log Analytics-Agent) |
-| **Dienste und**<br>**features**<br>**Unterstützt** | Log Analytics<br>Metrik-Explorer | Metrik-Explorer | Azure Monitor für VMs<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | Azure Monitor für VMs<br>Dienstzuordnung |
+| **Dienste und**<br>**features**<br>**Unterstützt** | Log Analytics<br>Metrik-Explorer | Metrik-Explorer | VM Insights<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM Insights<br>Dienstzuordnung |
 
 ### <a name="linux-agents"></a>Linux-Agents
 
@@ -48,7 +48,7 @@ Die folgenden Tabellen enthalten eine kurze Gegenüberstellung der Azure Monito
 | **Agent-Anforderungen**  | Keine | Keine | Keine | Keine | Erfordert Log Analytics-Agent |
 | **Gesammelte Daten** | syslog<br>Leistung | syslog<br>Leistung | Leistung | syslog<br>Leistung| Prozessabhängigkeiten<br>Netzwerkverbindungsmetriken |
 | **Senden von Daten an** | Azure Monitor-Protokolle<br>Azure Monitor-Metriken | Azure Storage<br>Event Hub | Azure Monitor-Metriken | Azure Monitor-Protokolle | Azure Monitor-Protokolle<br>(über den Log Analytics-Agent) |
-| **Dienste und**<br>**features**<br>**Unterstützt** | Log Analytics<br>Metrik-Explorer | | Metrik-Explorer | Azure Monitor für VMs<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | Azure Monitor für VMs<br>Dienstzuordnung |
+| **Dienste und**<br>**features**<br>**Unterstützt** | Log Analytics<br>Metrik-Explorer | | Metrik-Explorer | VM Insights<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM Insights<br>Dienstzuordnung |
 
 
 ## <a name="azure-monitor-agent-preview"></a>Azure Monitor-Agent (Vorschau)
@@ -60,7 +60,7 @@ Verwenden Sie den Azure Monitor-Agent zu folgenden Zwecken:
 - Sammeln von Gastprotokollen und Metriken von einem beliebigen Computer in Azure, in anderen Clouds oder in lokalen Systemen. (Für Computer außerhalb von Azure sind [Azure Arc-fähige Server](../../azure-arc/servers/overview.md) erforderlich.) 
 - Senden von Daten an Azure Monitor-Protokolle und Azure Monitor- Metriken zur Analyse mit Azure Monitor. 
 - Senden von Daten an Azure Storage zur Archivierung.
-- Senden von Daten an Drittanbietertools mithilfe von [Azure Event Hubs](../platform/diagnostics-extension-stream-event-hubs.md)
+- Senden von Daten an Drittanbietertools mithilfe von [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md)
 - Verwalten der Sicherheit Ihrer Computer mithilfe von [Azure Security Center](../../security-center/security-center-introduction.md) oder [Azure Sentinel](../../sentinel/overview.md). (In der Vorschau nicht verfügbar.)
 
 Einschränkungen des Azure Monitor-Agents:
@@ -69,7 +69,7 @@ Einschränkungen des Azure Monitor-Agents:
 
 ## <a name="log-analytics-agent"></a>Log Analytics-Agent
 
-Der [Log Analytics-Agent](../platform/log-analytics-agent.md) erfasst Überwachungsdaten vom Gastbetriebssystem und Workloads von virtuellen Computern in Azure, anderen Cloudanbietern und lokalen Computern. Er sendet Daten an einen Log Analytics-Arbeitsbereich. Der Log Analytics-Agent ist der gleiche Agent, der auch von System Center Operations Manager verwendet wird, und Sie können Multihoming-Agent-Computer verwenden, um gleichzeitig mit Ihrer Verwaltungsgruppe und Azure Monitor zu kommunizieren. Dieser Agent wird auch für bestimmte Erkenntnisse in Azure Monitor und anderen Diensten benötigt.
+Der [Log Analytics-Agent](./log-analytics-agent.md) erfasst Überwachungsdaten vom Gastbetriebssystem und Workloads von virtuellen Computern in Azure, anderen Cloudanbietern und lokalen Computern. Er sendet Daten an einen Log Analytics-Arbeitsbereich. Der Log Analytics-Agent ist der gleiche Agent, der auch von System Center Operations Manager verwendet wird, und Sie können Multihoming-Agent-Computer verwenden, um gleichzeitig mit Ihrer Verwaltungsgruppe und Azure Monitor zu kommunizieren. Dieser Agent wird auch für bestimmte Erkenntnisse in Azure Monitor und anderen Diensten benötigt.
 
 > [!NOTE]
 > Der Log Analytics-Agent für Windows wird häufig als Microsoft Monitoring Agent (MMA) bezeichnet. Der Log Analytics-Agent für Linux wird häufig als OMS-Agent bezeichnet.
@@ -77,8 +77,8 @@ Der [Log Analytics-Agent](../platform/log-analytics-agent.md) erfasst Überwachu
 Verwenden Sie den Log Analytics-Agent für Folgendes:
 
 * Erfassen von Protokollen und Leistungsdaten von Azure-VMs oder Hybridcomputern, die außerhalb von Azure gehostet werden.
-* Senden von Überwachungsdaten an einen Log Analytics-Arbeitsbereich, um die von [Azure Monitor-Protokollen](../platform/data-platform-logs.md) unterstützten Features wie etwa [Protokollabfragen](../log-query/log-query-overview.md) zu nutzen
-* Verwenden von [Azure Monitor für VMs](../insights/vminsights-overview.md) zur Überwachung Ihrer Computer im großen Stil sowie zur Überwachung der zugehörigen Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen.  
+* Senden von Überwachungsdaten an einen Log Analytics-Arbeitsbereich, um die von [Azure Monitor-Protokollen](../logs/data-platform-logs.md) unterstützten Features wie etwa [Protokollabfragen](../logs/log-query-overview.md) zu nutzen
+* Verwenden von [VM Insights](../vm/vminsights-overview.md) zur Überwachung Ihrer Computer im großen Stil sowie zur Überwachung der zugehörigen Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen.  
 * Verwalten der Sicherheit Ihrer Computer mithilfe von [Azure Security Center](../../security-center/security-center-introduction.md) oder [Azure Sentinel](../../sentinel/overview.md).
 * Verwenden von [Azure Automation-Updateverwaltung](../../automation/update-management/overview.md), [Azure Automation State Configuration](../../automation/automation-dsc-overview.md) oder [Azure Automation für Änderungsnachverfolgung und Bestand](../../automation/change-tracking/overview.md) zur umfassenden Verwaltung Ihrer Azure- und Nicht-Azure-Computer.
 * Verwenden verschiedener [Lösungen](../monitor-reference.md#insights-and-core-solutions) zur Überwachung eines bestimmten Diensts oder einer bestimmten Anwendung
@@ -91,13 +91,13 @@ Einschränkungen des Log Analytics-Agents:
 
 ## <a name="azure-diagnostics-extension"></a>Azure-Diagnoseerweiterung
 
-Die [Azure-Diagnoseerweiterung](../platform/diagnostics-extension-overview.md) erfasst Überwachungsdaten vom Gastbetriebssystem sowie von Workloads auf virtuellen Azure-Computern und anderen Computeressourcen. Die Daten werden in erster Linie in Azure Storage erfasst. Es können aber auch Datensenken definiert werden, um Daten an andere Ziele zu senden (etwa an Azure Monitor-Metriken oder an Azure Event Hubs).
+Die [Azure-Diagnoseerweiterung](./diagnostics-extension-overview.md) erfasst Überwachungsdaten vom Gastbetriebssystem sowie von Workloads auf virtuellen Azure-Computern und anderen Computeressourcen. Die Daten werden in erster Linie in Azure Storage erfasst. Es können aber auch Datensenken definiert werden, um Daten an andere Ziele zu senden (etwa an Azure Monitor-Metriken oder an Azure Event Hubs).
 
 Verwenden Sie die Azure-Diagnoseerweiterung für Folgendes:
 
 - Senden von Daten an Azure Storage, um sie zu archivieren oder mit Tools wie dem [Azure Storage-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) zu analysieren
-- Senden von Daten an [Azure Monitor-Metriken](../platform/data-platform-metrics.md), um sie mit dem [Metrik-Explorer](../platform/metrics-getting-started.md) analysieren und Features wie [Metrikwarnungen](./../platform/alerts-metric-overview.md) in Quasi-Echtzeit und [automatische Skalierung](../platform/autoscale-overview.md) (nur unter Windows) nutzen zu können
-- Senden von Daten an Drittanbietertools mithilfe von [Azure Event Hubs](../platform/diagnostics-extension-stream-event-hubs.md)
+- Senden von Daten an [Azure Monitor-Metriken](../essentials/data-platform-metrics.md), um sie mit dem [Metrik-Explorer](../essentials/metrics-getting-started.md) analysieren und Features wie [Metrikwarnungen](../alerts/alerts-metric-overview.md) in Quasi-Echtzeit und [automatische Skalierung](../autoscale/autoscale-overview.md) (nur unter Windows) nutzen zu können
+- Senden von Daten an Drittanbietertools mithilfe von [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md)
 - Erfassen von [Startdiagnosedaten](../../virtual-machines/troubleshooting/boot-diagnostics.md) zur Untersuchung von VM-Startfehlern
 
 Einschränkungen der Azure-Diagnoseerweiterung:
@@ -107,11 +107,11 @@ Einschränkungen der Azure-Diagnoseerweiterung:
 
 ## <a name="telegraf-agent"></a>Telegraf-Agent
 
-Der [InfluxData Telegraf-Agent](../platform/collect-custom-metrics-linux-telegraf.md) wird verwendet, um Leistungsdaten von Linux-Computern in Azure Monitor-Metriken zu erfassen.
+Der [InfluxData Telegraf-Agent](../essentials/collect-custom-metrics-linux-telegraf.md) wird verwendet, um Leistungsdaten von Linux-Computern in Azure Monitor-Metriken zu erfassen.
 
 Verwenden Sie den Telegraf-Agent für Folgendes:
 
-* Senden von Daten an [Azure Monitor-Metriken](../platform/data-platform-metrics.md), um sie mit dem [Metrik-Explorer](../platform/metrics-getting-started.md) analysieren und Features wie [Metrikwarnungen](./../platform/alerts-metric-overview.md) in Quasi-Echtzeit und [automatische Skalierung](../platform/autoscale-overview.md) (nur unter Linux) nutzen zu können
+* Senden von Daten an [Azure Monitor-Metriken](../essentials/data-platform-metrics.md), um sie mit dem [Metrik-Explorer](../essentials/metrics-getting-started.md) analysieren und Features wie [Metrikwarnungen](../alerts/alerts-metric-overview.md) in Quasi-Echtzeit und [automatische Skalierung](../autoscale/autoscale-overview.md) (nur unter Linux) nutzen zu können
 
 ## <a name="dependency-agent"></a>Abhängigkeits-Agent
 
@@ -119,7 +119,7 @@ Der Dependency-Agent sammelt ermittelte Daten über Prozesse, die auf dem Comput
 
 Verwenden Sie den Dependency-Agent für Folgendes:
 
-* Verwenden des Zuordnungsfeatures [Azure Monitor für VMs](../insights/vminsights-overview.md) oder der [Dienstzuordnung](../insights/service-map.md)
+* Nutzung des Zuordnungsfeatures [VM Insights](../vm/vminsights-overview.md) oder der [Dienstzuordnung](../vm/service-map.md)
 
 Beachten Sie bei der Verwendung des Dependency-Agents Folgendes:
 
@@ -224,6 +224,6 @@ Da der Dependency-Agent auf der Kernelebene arbeitet, ist die Unterstützung auc
 
 Weitere Details zu den einzelnen Agents finden Sie hier:
 
-- [Übersicht über den Log Analytics-Agent](../platform/log-analytics-agent.md)
-- [Übersicht zur Azure-Diagnoseerweiterung](../platform/diagnostics-extension-overview.md)
-- [Erfassen von benutzerdefinierten Metriken für einen virtuellen Linux-Computer mit dem InfluxData Telegraf-Agent](../platform/collect-custom-metrics-linux-telegraf.md)
+- [Übersicht über den Log Analytics-Agent](./log-analytics-agent.md)
+- [Übersicht zur Azure-Diagnoseerweiterung](./diagnostics-extension-overview.md)
+- [Erfassen von benutzerdefinierten Metriken für einen virtuellen Linux-Computer mit dem InfluxData Telegraf-Agent](../essentials/collect-custom-metrics-linux-telegraf.md)

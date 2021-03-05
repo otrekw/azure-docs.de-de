@@ -1,28 +1,28 @@
 ---
 title: Aktivieren von Azure Monitor für eine Hybridumgebung
-description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs für eine Hybridcloudumgebung aktivieren, die einen oder mehrere virtuelle Computer enthält.
+description: In diesem Artikel wird beschrieben, wie Sie VM Insights für eine Hybridcloudumgebung aktivieren, die einen oder mehrere virtuelle Computer enthält.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: d56b1ed7b4923b054ad6864b713fc2a26d95f7e2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6518906f264077ac88a90513a237840f7f814247
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602178"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731271"
 ---
-# <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>Aktivieren von Azure Monitor für VMs für eine Hybrid-VM
-In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs für einen virtuellen Computer außerhalb von Azure aktivieren, einschließlich lokaler und anderer Cloudumgebungen.
+# <a name="enable-vm-insights-for-a-hybrid-virtual-machine"></a>Aktivieren von VM Insights für eine Hybrid-VM
+In diesem Artikel wird beschrieben, wie Sie VM Insights für einen virtuellen Computer außerhalb von Azure aktivieren, einschließlich lokaler und anderer Cloudumgebungen.
 
 > [!IMPORTANT]
-> Bei der empfohlenen Methode zum Aktivieren von Hybrid-VMs wird zunächst [Azure Arc für Server](../../azure-arc/servers/overview.md) aktiviert, damit die VMs mithilfe von Prozessen, die Azure-VMs ähneln, für Azure Monitor für VMs aktiviert werden können. In diesem Artikel wird beschrieben, wie Sie Hybrid-VMs integrieren, falls Sie sich gegen die Verwendung von Azure Arc entschieden haben.
+> Bei der empfohlenen Methode zum Aktivieren von Hybrid-VMs wird zunächst [Azure Arc für Server](../../azure-arc/servers/overview.md) aktiviert, damit die VMs mithilfe von Prozessen, die Azure-VMs ähneln, für VM Insights aktiviert werden können. In diesem Artikel wird beschrieben, wie Sie Hybrid-VMs integrieren, falls Sie sich gegen die Verwendung von Azure Arc entschieden haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Erstellen und konfigurieren Sie einen Log Analytics-Arbeitsbereich](../insights/vminsights-configure-workspace.md).
-- Beachten Sie die Informationen unter [Unterstützte Betriebssysteme](../insights/vminsights-enable-overview.md#supported-operating-systems), um sicherzustellen, dass das Betriebssystem der VM bzw. der VM-Skalierungsgruppe, die Sie aktivieren, unterstützt wird. 
+- [Erstellen und konfigurieren Sie einen Log Analytics-Arbeitsbereich](./vminsights-configure-workspace.md).
+- Beachten Sie die Informationen unter [Unterstützte Betriebssysteme](./vminsights-enable-overview.md#supported-operating-systems), um sicherzustellen, dass das Betriebssystem der VM bzw. der VM-Skalierungsgruppe, die Sie aktivieren, unterstützt wird. 
 
 
 ## <a name="overview"></a>Übersicht
@@ -31,13 +31,13 @@ Virtuelle Computer außerhalb von Azure erfordern denselben Log Analytics-Agent 
 Ausführliche Informationen zum Bereitstellen des Log Analytics-Agents finden Sie unter [Verbinden von Windows-Computern mit Azure Monitor](../agents/agent-windows.md) oder [Verbinden von Linux-Computern mit Azure Monitor](../agents/agent-linux.md). Ausführliche Informationen zum Dependency-Agent sind in diesem Artikel enthalten. 
 
 ## <a name="firewall-requirements"></a>Firewallanforderungen
-Die Firewallanforderungen für den Log Analytics-Agent finden Sie in der [Übersicht über den Log Analytics-Agent](../agents/log-analytics-agent.md#network-requirements). Der Dependency-Agent für das Zuordnungsfeature von Azure Monitor für VMs überträgt selbst keine Daten und erfordert keine Änderungen an Firewalls oder Ports. Die Zuordnungsdaten werden immer vom Log Analytics-Agent an den Azure Monitor-Dienst übertragen, entweder direkt oder über das [Operations Management Suite-Gateway](../../azure-monitor/agents/gateway.md), falls Ihre IT-Sicherheitsrichtlinien es nicht zulassen, dass Computer im Netzwerk eine Verbindung mit dem Internet herstellen.
+Die Firewallanforderungen für den Log Analytics-Agent finden Sie in der [Übersicht über den Log Analytics-Agent](../agents/log-analytics-agent.md#network-requirements). Der Dependency-Agent für das Zuordnungsfeature von VM Insights überträgt selbst keine Daten und erfordert keine Änderungen an Firewalls oder Ports. Die Zuordnungsdaten werden immer vom Log Analytics-Agent an den Azure Monitor-Dienst übertragen, entweder direkt oder über das [Operations Management Suite-Gateway](../../azure-monitor/agents/gateway.md), falls Ihre IT-Sicherheitsrichtlinien es nicht zulassen, dass Computer im Netzwerk eine Verbindung mit dem Internet herstellen.
 
 
 ## <a name="dependency-agent"></a>Abhängigkeits-Agent
 
 >[!NOTE]
->Die in diesem Abschnitt beschriebenen Informationen gelten auch für die [Dienstzuordnungslösung](../insights/service-map.md).  
+>Die in diesem Abschnitt beschriebenen Informationen gelten auch für die [Dienstzuordnungslösung](./service-map.md).  
 
 Sie können den Dependency-Agent über die folgenden Speicherorte herunterladen:
 
@@ -177,8 +177,8 @@ Wenn Ihr Server auf der Karte angezeigt wird, aber keine Prozess- oder Verbindun
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem die Überwachung für Ihre virtuellen Computer aktiviert wurde, stehen diese Informationen für die Analyse mit Azure Monitor für VMs zur Verfügung.
+Nachdem die Überwachung für Ihre virtuellen Computer aktiviert wurde, stehen diese Informationen für die Analyse mit VM Insights zur Verfügung.
 
-- Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Azure Monitor für VMs – Zuordnung anzeigen](vminsights-maps.md).
+- Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Anzeigen der Zuordnung in VM Insights](vminsights-maps.md).
 
 - Informationen zum Erkennen von Engpässen und der Gesamtauslastung im Hinblick auf die Leistung Ihrer VM finden Sie unter [Anzeigen der Leistung von Azure-VMs](vminsights-performance.md).

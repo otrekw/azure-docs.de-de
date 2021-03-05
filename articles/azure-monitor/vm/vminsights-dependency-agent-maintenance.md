@@ -1,21 +1,21 @@
 ---
-title: Durchführen eines Upgrades für den Dependency-Agent für Azure Monitor für VMs
-description: In diesem Artikel wird beschrieben, wie Sie ein Upgrade des Dependency-Agents für Azure Monitor für VMs über die Befehlszeile, den Setup-Assistenten und mithilfe anderer Methoden durchführen.
+title: Durchführen eines Upgrades für den VM Insights-Dependency-Agent
+description: In diesem Artikel wird beschrieben, wie Sie ein Upgrade des VM Insights-Dependency-Agents über die Befehlszeile, den Setup-Assistenten und mithilfe anderer Methoden durchführen.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/16/2020
-ms.openlocfilehash: 05358c560c70396d4e165abd174178378aad517b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 14ca614c1e108ce43f05f98520cff6ff215ec5cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602179"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722907"
 ---
-# <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>Durchführen eines Upgrades für den Dependency-Agent für Azure Monitor für VMs
+# <a name="how-to-upgrade-the-vm-insights-dependency-agent"></a>Durchführen eines Upgrades für den VM Insights-Dependency-Agent
 
-Nach der Erstbereitstellung des Dependency-Agents für Azure Monitor für VMs werden Updates veröffentlicht, die Fehlerbehebungen oder die Unterstützung neuer Features oder Funktionen enthalten.  Dieser Artikel enthält Informationen zu den verfügbaren Methoden sowie zur manuellen oder automatisierten Durchführung des Upgrades.
+Nach der Erstbereitstellung des VM Insights-Dependency-Agents werden Updates veröffentlicht, die Fehlerbehebungen oder die Unterstützung neuer Features oder Funktionen enthalten.  Dieser Artikel enthält Informationen zu den verfügbaren Methoden sowie zur manuellen oder automatisierten Durchführung des Upgrades.
 
 ## <a name="upgrade-options"></a>Upgradeoptionen 
 
@@ -70,4 +70,4 @@ Falls der Dependency-Agent nicht gestartet wird, suchen Sie in den Protokollen n
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie die Überwachung Ihrer VMs für einen bestimmten Zeitraum beenden oder Azure Monitor für VMS vollständig entfernen möchten, finden Sie Informationen dazu unter [Deaktivieren der Überwachung Ihrer virtuellen Computer in Azure Monitor für VMs](../vm/vminsights-optout.md).
+Wenn Sie die Überwachung Ihrer VMs für einen bestimmten Zeitraum beenden oder VM Insights vollständig entfernen möchten, finden Sie Informationen dazu unter [Deaktivieren der Überwachung Ihrer virtuellen Computer in VM Insights](../vm/vminsights-optout.md).

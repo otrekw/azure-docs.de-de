@@ -11,20 +11,20 @@ ms.topic: overview
 ms.service: azure-communication-services
 ms.custom: tracking-python, devx-track-js
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 60c51de4e4549649c681c961c6ddc1acdb12e698
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 061a7787183918aaee529b686c1478cd4d4b396b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659691"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661595"
 ---
 # <a name="quickstart-send-an-sms-message"></a>Schnellstart: Senden einer SMS-Nachricht
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 > [!IMPORTANT]
 > SMS-Nachrichten können an Telefonnummern in den USA gesendet und von solchen Telefonnummern empfangen werden. Telefonnummern in anderen geografischen Regionen werden von Communication Services-SMS noch nicht unterstützt.
-> Weitere Informationen finden Sie unter **[Planen Ihrer Telefonie- und SMS-Lösung](../../concepts/telephony-sms/plan-solution.md)** .
+> Weitere Informationen finden Sie unter **[Telefonnummerntypen](../../concepts/telephony-sms/plan-solution.md)** .
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Send SMS with .NET client library](./includes/send-sms-net.md)]
@@ -48,7 +48,7 @@ Bei der Behandlung von Problemen im Zusammenhang mit der SMS-Übermittlung könn
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind. Erfahren Sie mehr über das [Bereinigen von Ressourcen](../create-communication-resource.md#clean-up-resources).
+Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind. Weitere Informationen zum Bereinigen von Ressourcen finden Sie [hier](../create-communication-resource.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -58,7 +58,7 @@ In dieser Schnellstartanleitung haben Sie erfahren, wie Sie Azure Communication 
 > [Abonnieren von SMS-Ereignissen](./handle-sms-events.md)
 
 > [!div class="nextstepaction"]
-> [Planen Ihrer PSTN-Lösung](../../concepts/telephony-sms/plan-solution.md)
+> [Telefonnummerntypen](../../concepts/telephony-sms/plan-solution.md)
 
 > [!div class="nextstepaction"]
 > [Weitere Informationen zu SMS](../../concepts/telephony-sms/concepts.md)

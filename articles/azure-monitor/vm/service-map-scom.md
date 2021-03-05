@@ -1,29 +1,29 @@
 ---
-title: Integrieren des Zuordnungsfeatures von Azure Monitor für VMs in Operations Manager | Microsoft-Dokumentation
-description: Azure Monitor für VMs ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In diesem Artikel wird die Verwendung des Zuordnungsfeatures zum automatischen Erstellen von Diagrammen der verteilten Anwendungen in Operations Manager erörtert.
+title: Integrieren des Zuordnungsfeatures von VM Insights in Operations Manager | Microsoft-Dokumentation
+description: VM Insights ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In diesem Artikel wird die Verwendung des Zuordnungsfeatures zum automatischen Erstellen von Diagrammen der verteilten Anwendungen in Operations Manager erörtert.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 0722a1806cc94102f92045c78850d96ed9890d02
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a39f40c2a284a743db258a49f36cb4f13c2a4d1c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599385"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725491"
 ---
-# <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>Integrieren des Zuordnungsfeatures von Azure Monitor für VMs in System Center Operations Manager
+# <a name="integrate-system-center-operations-manager-with-vm-insights-map-feature"></a>Integrieren des Zuordnungsfeatures von VM Insights in System Center Operations Manager
 
-In Azure Monitor für VMs können Sie sich ermittelte Anwendungskomponenten für Windows- und Linux-VMs anzeigen lassen, die in Azure oder in Ihrer eigenen Umgebung ausgeführt werden. Durch diese Integration zwischen dem Zuordnungsfeature und System Center Operations Manager können Sie in Operations Manager automatisch Diagramme der verteilten Anwendungen erstellen, die auf den dynamischen Abhängigkeitszuordnungen in Azure Monitor für VMs basieren. In diesem Artikel wird beschrieben, wie Sie Ihre System Center Operations Manager-Verwaltungsgruppe für die Unterstützung dieses Features konfigurieren.
+In VM Insights können Sie sich ermittelte Anwendungskomponenten für Windows- und Linux-VMs anzeigen lassen, die in Azure oder in Ihrer eigenen Umgebung ausgeführt werden. Durch diese Integration zwischen dem Zuordnungsfeature und System Center Operations Manager können Sie in Operations Manager automatisch Diagramme der verteilten Anwendungen erstellen, die auf den dynamischen Abhängigkeitszuordnungen in VM Insights basieren. In diesem Artikel wird beschrieben, wie Sie Ihre System Center Operations Manager-Verwaltungsgruppe für die Unterstützung dieses Features konfigurieren.
 
 >[!NOTE]
->Wenn Sie die Dienstzuordnung bereits bereitgestellt haben, können Sie Ihre Zuordnungen in Azure Monitor für VMs anzeigen. Diese Lösung enthält zusätzliche Funktionen zum Überwachen der Integrität und Leistung von virtuellen Computern. Das Zuordnungsfeature von Azure Monitor für VMs soll die eigenständige Dienstzuordnungslösung ersetzen. Weitere Informationen finden Sie in der [Übersicht über Azure Monitor für VMs](../vm/vminsights-overview.md).
+>Wenn Sie die Dienstzuordnung bereits bereitgestellt haben, können Sie Ihre Zuordnungen in VM Insights anzeigen. Diese Lösung enthält zusätzliche Funktionen zum Überwachen der Integrität und Leistung von virtuellen Computern. Das Zuordnungsfeature von VM Insights soll die eigenständige Dienstzuordnungslösung ersetzen. Weitere Informationen finden Sie unter [Übersicht über VM Insights](../vm/vminsights-overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Eine System Center Operations Manager-Verwaltungsgruppe (2012 R2 oder höher).
-* Ein für die Unterstützung von Azure Monitor für VMs konfigurierter Log Analytics-Arbeitsbereich.
+* Ein für die Unterstützung von VM Insights konfigurierter Log Analytics-Arbeitsbereich.
 * Ein oder mehrere virtuelle Windows- und Linux-Computer oder physische Computer, die von Operations Manager überwacht werden und Daten an Ihren Log Analytics Arbeitsbereich senden. Linux-Server, die Berichte an eine Operations Manager-Verwaltungsgruppe senden, müssen für eine direkte Verbindung mit Azure Monitor konfiguriert werden. Weitere Informationen finden Sie in der Übersicht unter [Sammeln von Protokolldaten mit dem Log Analytics-Agent](../agents/log-analytics-agent.md).
 * Ein Dienstprinzipal mit Zugriff auf das Azure-Abonnement, das dem Log Analytics-Arbeitsbereich zugeordnet ist. Weitere Informationen finden Sie unter [Erstellen eines Dienstprinzipals](#create-a-service-principal).
 
@@ -43,7 +43,7 @@ Nach der Installation des Management Packs der Dienstzuordnung wird in Ihrer Ope
 >[!NOTE]
 >[Operations Management Suite war eine Sammlung von Diensten](../terminology.md#april-2018---retirement-of-operations-management-suite-brand), zu der auch Log Analytics gehörte, das jetzt Teil von [Azure Monitor](../overview.md) ist.
 
-Gehen Sie zum Konfigurieren der Integration des Zuordnungsfeatures von Azure Monitor für VMs wie folgt vor:
+Gehen Sie folgendermaßen vor, um die Integration des Zuordnungsfeatures von VM Insights zu konfigurieren:
 
 1. Um den Konfigurations-Assistenten zu öffnen, klicken Sie im Bereich **Service Map Overview** (Service Map-Übersicht) auf **Arbeitsbereich hinzufügen**.  
 
@@ -66,7 +66,7 @@ Gehen Sie zum Konfigurieren der Integration des Zuordnungsfeatures von Azure Mon
     Damit die Integration ein Diagramm der verteilten Anwendung für einen Server erstellen kann, muss der Server folgende Voraussetzungen erfüllen:
 
    * Er muss von Operations Manager überwacht werden.
-   * Er muss für das Senden von Berichten an den mit Azure Monitor für VMs konfigurierten Log Analytics-Arbeitsbereich konfiguriert sein.
+   * Er muss für das Senden von Berichten an den mit VM Insights konfigurierten Log Analytics-Arbeitsbereich konfiguriert sein.
    * In der „Service Map-Servergruppe“ aufgelistet
 
      ![Die Operations Manager-Konfigurationsgruppe](media/service-map-scom/scom-config-group.png)
@@ -92,7 +92,7 @@ Der Ordner „Service Map“ umfasst vier Knoten:
   >[!NOTE]
   >Bei diesen Warnungen handelt es sich nicht um Log Analytics-Warnungen, die mit Operations Manager synchronisiert werden. Sie werden in der Verwaltungsgruppe basierend auf Workflows generiert, die im Management Pack der Dienstzuordnung definiert sind.
 
-* **Server**: Listet die überwachten Server auf, die für die Synchronisierung über das Zuordnungsfeature von Azure Monitor für VMs konfiguriert sind.
+* **Server**: Listet die überwachten Server auf, die für die Synchronisierung über das Zuordnungsfeature von VM Insights konfiguriert sind.
 
     ![Der Serverüberwachungsbereich von Operations Manager](media/service-map-scom/scom-monitoring-servers.png)
 
@@ -117,7 +117,7 @@ In diesem aktuellen Release können Sie nur einen Log Analytics-Arbeitsbereich k
 
 ## <a name="configure-rules-and-overrides"></a>Konfigurieren von Regeln und Außerkraftsetzungen
 
-Die Regel *Microsoft.SystemCenter.ServiceMapImport.Rule* ruft regelmäßig Informationen aus dem Zuordnungsfeature von Azure Monitor für VMs ab. Wenn Sie das Synchronisierungsintervall ändern möchten, können Sie die Regel außer Kraft setzen und den Wert für den Parameter **IntervalMinutes** ändern.
+Die Regel *Microsoft.SystemCenter.ServiceMapImport.Rule* ruft regelmäßig Informationen aus dem Zuordnungsfeature von VM Insights ab. Wenn Sie das Synchronisierungsintervall ändern möchten, können Sie die Regel außer Kraft setzen und den Wert für den Parameter **IntervalMinutes** ändern.
 
 ![Das Operations Manager-Fenster für Eigenschaften von Außerkraftsetzungen](media/service-map-scom/scom-overrides.png)
 
@@ -131,8 +131,8 @@ Die Regel *Microsoft.SystemCenter.ServiceMapImport.Rule* ruft regelmäßig Infor
 Das aktuelle Design weist folgende Probleme und Einschränkungen auf:
 
 * Sie können nur eine Verbindung mit einem einzigen Log Analytics-Arbeitsbereich herstellen.
-* Sie können im Bereich **Erstellen** der „Service Map-Servergruppe“ zwar manuell Server hinzufügen, aber die Zuordnungen für diese Server werden nicht sofort synchronisiert. Sie werden beim nächsten Synchronisierungszyklus vom Zuordnungsfeature von Azure Monitor für VMs synchronisiert.
-* Wenn Sie Änderungen an den vom Management Pack erstellten Diagrammen der verteilten Anwendungen vornehmen, werden diese Änderungen wahrscheinlich bei der nächsten Synchronisierung mit Azure Monitor für VMs überschrieben.
+* Sie können im Bereich **Erstellen** der „Service Map-Servergruppe“ zwar manuell Server hinzufügen, aber die Zuordnungen für diese Server werden nicht sofort synchronisiert. Sie werden beim nächsten Synchronisierungszyklus vom VM Insights-Zuordnungsfeature synchronisiert.
+* Wenn Sie Änderungen an den vom Management Pack erstellten Diagrammen der verteilten Anwendungen vornehmen, werden diese Änderungen wahrscheinlich bei der nächsten Synchronisierung mit VM Insights überschrieben.
 
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
@@ -144,5 +144,5 @@ Die offizielle Azure-Dokumentation zum Erstellen eines Dienstprinzipals finden S
 
 ### <a name="suggestions"></a>Vorschläge
 
-Möchten Sie uns Feedback zur Integration des Zuordnungsfeatures von Azure Monitor für VMs oder zu dieser Dokumentation geben? Besuchen Sie unsere [UserVoice-Webseite](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), auf der Sie Features vorschlagen oder vorhandene Vorschläge unterstützen können.
+Möchten Sie uns Feedback zur Integration des Zuordnungsfeatures von VM Insights oder zu dieser Dokumentation geben? Besuchen Sie unsere [UserVoice-Webseite](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), auf der Sie Features vorschlagen oder vorhandene Vorschläge unterstützen können.
 

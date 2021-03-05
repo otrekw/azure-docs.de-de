@@ -1,19 +1,19 @@
 ---
-title: Erstellen interaktiver Berichte mit Arbeitsmappen mithilfe von Azure Monitor für VMs
-description: Vereinfachen Sie komplexe Berichte mit vorgefertigten und benutzerdefiniert parametrisierten Arbeitsmappen für Azure Monitor für VMs.
+title: Erstellen interaktiver Berichte in VM Insights mit Arbeitsmappen
+description: Vereinfachen Sie komplexe Berichte mit vorgefertigten und benutzerdefiniert parametrisierten Arbeitsmappen für VM Insights.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 43cdb9de111bdea5486e49a56d58d38279b685c7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1e2f6c7a6b4a36eb1aa4230f62ee4b0c2a1c57c3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602125"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731288"
 ---
-# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Erstellen interaktiver Berichte mit Arbeitsmappen mithilfe von Azure Monitor für VMs
+# <a name="create-interactive-reports-vm-insights-with-workbooks"></a>Erstellen interaktiver Berichte in VM Insights mit Arbeitsmappen
 
 Arbeitsmappen kombinieren Text,  [Protokollabfragen](/azure/data-explorer/kusto/query/), Metriken und Parameter zu umfassenden interaktiven Berichten. Arbeitsmappen können von anderen Teammitgliedern bearbeitet werden, die Zugriff auf dieselben Azure-Ressourcen haben.
 
@@ -24,7 +24,7 @@ Arbeitsmappen sind beispielsweise für folgende Szenarien hilfreich:
 * Weitergeben der Ergebnisse eines Größenänderungsexperiments für Ihren virtuellen Computer an andere Mitglieder Ihres Teams. Sie können die Ziele des Experiments in Textform erläutern und anschließend die einzelnen Nutzungsmetriken und Analyseabfragen für die Auswertung des Experiments sowie eindeutige Anmerkungen dazu präsentieren, ob eine Metrik oberhalb oder unterhalb des Zielwerts lag.
 * Melden der Auswirkungen eines Ausfalls auf die Nutzung Ihres virtuellen Computers durch eine Kombination aus Daten, einer Erläuterung in Textform und einer Auflistung der nächsten Schritte, mit denen sich Ausfälle in Zukunft vermeiden lassen.
 
-Um Ihnen den Einstieg zu erleichtern, sind in der folgenden Tabelle die Arbeitsmappen zusammengefasst, die Azure Monitor für VMs enthält:
+In der folgenden Tabelle sind die Arbeitsmappen zusammengefasst, die VM Insights für den Einstieg enthält.
 
 | Arbeitsmappe | BESCHREIBUNG | `Scope` |
 |----------|-------------|-------|
@@ -96,7 +96,7 @@ Abfrageabschnitte sind sehr flexibel und können verwendet werden, um Fragen zu 
 
 Darüber hinaus sind Sie nicht auf Abfragen aus dem Kontext des virtuellen Computers beschränkt, über den Sie die Arbeitsmappe gestartet haben. Sie können Abfragen für mehrere virtuelle Computer sowie für Log Analytics-Arbeitsbereiche ausführen, sofern Sie Zugriffsberechtigungen für diese Ressourcen besitzen.
 
-Mithilfe des Bezeichners **workspace** können Sie Daten aus anderen Log Analytics-Arbeitsbereichen oder aus einer bestimmten Application Insights-App einschließen. Weitere Informationen zu ressourcenübergreifenden Abfragen finden Sie in der [offiziellen Anleitung](../log-query/cross-workspace-query.md).
+Mithilfe des Bezeichners **workspace** können Sie Daten aus anderen Log Analytics-Arbeitsbereichen oder aus einer bestimmten Application Insights-App einschließen. Weitere Informationen zu ressourcenübergreifenden Abfragen finden Sie in der [offiziellen Anleitung](../logs/cross-workspace-query.md).
 
 ### <a name="advanced-analytic-query-settings"></a>Erweiterte Analyseabfrageeinstellungen
 
@@ -137,7 +137,7 @@ VMConnection
 
 ## <a name="adding-metrics-sections"></a>Hinzufügen von Metrikabschnitten
 
-Metrikabschnitte bieten Ihnen vollständigen Zugriff, um Metrikdaten von Azure Monitor in Ihre interaktiven Berichte zu integrieren. Die vorgefertigten Arbeitsmappen in Azure Monitor für VMs enthalten in der Regel keine Metrikdaten, sondern Analyseabfragedaten.  Sie können allerdings Arbeitsmappen mit Metrikdaten erstellen, um die Vorteile beider Features miteinander zu kombinieren. Sie können außerdem Metrikdaten aus Ressourcen in jedem der Abonnements einlesen, auf die Sie Zugriff haben.
+Metrikabschnitte bieten Ihnen vollständigen Zugriff, um Metrikdaten von Azure Monitor in Ihre interaktiven Berichte zu integrieren. Die vorgefertigten Arbeitsmappen in VM Insights enthalten in der Regel keine Metrikdaten, sondern Analyseabfragedaten.  Sie können allerdings Arbeitsmappen mit Metrikdaten erstellen, um die Vorteile beider Features miteinander zu kombinieren. Sie können außerdem Metrikdaten aus Ressourcen in jedem der Abonnements einlesen, auf die Sie Zugriff haben.
 
 Hier sehen Sie ein Beispiel für Daten eines virtuellen Computers, die in eine Arbeitsmappe gepullt werden, um eine Rastervisualisierung der CPU-Leistung bereitzustellen:
 
@@ -244,4 +244,4 @@ Gehen Sie wie folgt vor, um in einem Azure-Dashboard einen Link zu einer Arbeits
 
 - Weitere Informationen zum Ermitteln von Beschränkungen und der Gesamtleistung einer VM finden Sie unter [Direktes Anzeigen der Leistung in einer Azure-VM](vminsights-performance.md).
 
-- Weitere Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Anzeigen der Zuordnung in Azure Monitor](vminsights-maps.md).
+- Weitere Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Anzeigen der Zuordnung in VM Insights](vminsights-maps.md).
