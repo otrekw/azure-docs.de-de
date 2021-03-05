@@ -4,13 +4,13 @@ description: Hier erfahren Sie, wie Sie in FarmBeats Regeln konfigurieren und Wa
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 5e6a5d414c341f482c3fddf95a2f8bb8e55a3ca2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: a04f973cbfa3a68016065f50e9e2ff4f7566da94
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168544"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182926"
 ---
 # <a name="configure-rules-and-manage-alerts"></a>Regeln konfigurieren und Warnungen verwalten
 
@@ -18,7 +18,7 @@ Azure FarmBeats ermöglicht nicht nur die Erstellung von Regeln auf der Grundlag
 
 ## <a name="create-rule"></a>Erstellen einer Regel
 
-1. Navigieren Sie auf der Startseite zu **Regeln** .
+1. Navigieren Sie auf der Startseite zu **Regeln**.
 2. Wählen Sie **Neue Regel** aus. Das Fenster „Neue Regel“ wird angezeigt.
 
     ![Der Screenshot, der die Schaltfläche „Neue Regel“ und den Abschnitt „Neue Regel“ hervorhebt.](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-1.png)
@@ -28,7 +28,7 @@ Azure FarmBeats ermöglicht nicht nur die Erstellung von Regeln auf der Grundlag
 
     ![Screenshot, in dem der Abschnitt „Bedingungen“ hervorgehoben ist](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-condition-1.png)
 
-5. Geben Sie unter **Bedingungen** Werte für **Measure** , **Operator** und **Wert** ein.
+5. Geben Sie unter **Bedingungen** Werte für **Measure**, **Operator** und **Wert** ein.
 6. Geben Sie im Dropdownmenü **Measure** den Measurenamen ein.
 7. Wählen Sie **+Bedingung hinzufügen** aus, um der Regel weitere Bedingungen hinzuzufügen.
 8. Wählen Sie unter **Schweregrad** den Schweregrad aus.
@@ -69,9 +69,9 @@ Gehen Sie zum Bearbeiten einer Regel wie folgt vor:
 
     ![Der Screenshot zeigt den Bildschirm „Regel bearbeiten“.](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-one-1.png)
 
-4. Ändern Sie die Angaben unter **Regelname** und **Regelbeschreibung** , und wählen Sie anschließend im Dropdownmenü **Select Farm** (Landwirtschaftlichen Betrieb auswählen) einen landwirtschaftlichen Betrieb aus.
+4. Ändern Sie die Angaben unter **Regelname** und **Regelbeschreibung**, und wählen Sie anschließend im Dropdownmenü **Select Farm** (Landwirtschaftlichen Betrieb auswählen) einen landwirtschaftlichen Betrieb aus.
 5. Geben Sie zum Auswählen des landwirtschaftlichen Betriebs den Namen Ihres landwirtschaftlichen Betriebs ein. Daraufhin wird im gleichen Fenster **Bedingungen** angezeigt.  
-6. Bearbeiten Sie unter **Bedingungen** die Angaben für **Measure** , **Operator** und **Wert** .
+6. Bearbeiten Sie unter **Bedingungen** die Angaben für **Measure**, **Operator** und **Wert**.
 7. Geben Sie im Dropdownmenü **Measure** den Measurenamen ein.
 8. Wählen Sie **+Bedingung hinzufügen** aus, um Bedingungen für die Regeln hinzuzufügen/zu bearbeiten.
 
@@ -79,7 +79,7 @@ Gehen Sie zum Bearbeiten einer Regel wie folgt vor:
 
 9.  Wählen Sie unter **Schweregrad** den Schweregrad aus.  
 10. Aktivieren Sie unter **Aktion** die Umschaltfläche **Email enabled** (E-Mail aktiviert), um E-Mail-Warnungen zu aktivieren.
-11. Bearbeiten Sie unter **E-Mail-Adressen** die E-Mail-Adressen, an die die E-Mail-Warnung gesendet werden soll, und bearbeiten Sie auch die Angaben unter **E-Mail-Betreff** und **Weitere Hinweise** .  
+11. Bearbeiten Sie unter **E-Mail-Adressen** die E-Mail-Adressen, an die die E-Mail-Warnung gesendet werden soll, und bearbeiten Sie auch die Angaben unter **E-Mail-Betreff** und **Weitere Hinweise**.  
 12. Legen Sie unter **Regelstatus** die Umschaltfläche zum Aktivieren oder Deaktivieren der Regel auf **Aktiviert** fest.
 Sie können die Anzahl von Geräten anzeigen, die von dieser Regel betroffen sind.
 13. Wählen Sie **Anwenden** aus, um die Regel zu bearbeiten.
@@ -97,7 +97,7 @@ Der Status einer Regel kann wie folgt geändert werden:
 
     ![Der Screenshot zeigt die Schaltfläche „Status ändern“.](./media/configure-rules-and-alerts-in-azure-farmbeats/rule-change-status-1.png)
 
-3. Ändern Sie den Regelstatus mithilfe der Umschaltfläche **Status ändern** .
+3. Ändern Sie den Regelstatus mithilfe der Umschaltfläche **Status ändern**.
    Sie können die Anzahl von Geräten anzeigen, die von der Regel betroffen sind.
 4. Wählen Sie **Anwenden** aus, um den Regelstatus zu ändern.
 
@@ -114,4 +114,4 @@ Eine Regel kann wie folgt gelöscht werden:
 
     ![FarmBeats-Projekt](./media/configure-rules-and-alerts-in-azure-farmbeats/delete-rule-1.png)
 
-4. Das Dialogfeld **Regel löschen** wird angezeigt. Klicken Sie auf **Löschen** .
+4. Das Dialogfeld **Regel löschen** wird angezeigt. Klicken Sie auf **Löschen**.

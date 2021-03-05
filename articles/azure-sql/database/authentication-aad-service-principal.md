@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 02/11/2021
-ms.openlocfilehash: 4012cd83cf2e6fe438792a503731729b57a1425c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 15cc935457f76fb1d2fe4e8d699db831ebacc357
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380592"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181753"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure Active Directory-Dienstprinzipal mit Azure SQL
 
@@ -72,7 +72,7 @@ Zum Aktivieren einer Azure AD-Objekterstellung in SQL-Datenbank und Azure Synap
     - Führen Sie den Befehl „Get-azsqlserver“ aus, um zu überprüfen, ob die Serveridentität dem Server zugewiesen wurde.
 
     > [!NOTE]
-    > Die Serveridentität kann auch mithilfe von CLI-Befehlen zugewiesen werden. Weitere Informationen finden Sie unter [az sql server create](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create&preserve-view=true) und [az sql server update](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-update&preserve-view=true).
+    > Die Serveridentität kann auch mithilfe von CLI-Befehlen zugewiesen werden. Weitere Informationen finden Sie unter [az sql server create](/cli/azure/sql/server#az-sql-server-create) und [az sql server update](/cli/azure/sql/server#az-sql-server-update).
 
 2. Erteilen Sie die Azure AD-Berechtigung [**Verzeichnisleseberechtigte**](../../active-directory/roles/permissions-reference.md#directory-readers) für die Serveridentität, die erstellt oder dem Server zugewiesen wurde.
     - Führen Sie zum Erteilen dieser Berechtigung die Schritte in der Beschreibung für SQL Managed Instance aus, die im folgenden Artikel zu finden ist: [Bereitstellen eines Azure AD-Administrators (SQL Managed Instance)](authentication-aad-configure.md?tabs=azure-powershell#provision-azure-ad-admin-sql-managed-instance)
@@ -94,7 +94,7 @@ Zum Aktivieren einer Azure AD-Objekterstellung in SQL-Datenbank und Azure Synap
       - Führen Sie beim vorstehenden Fehler die Schritte zum [Zuweisen einer Identität zum logischen Azure SQL-Server](authentication-aad-service-principal-tutorial.md#assign-an-identity-to-the-azure-sql-logical-server) und [Zuweisen der Berechtigung „Verzeichnisleseberechtigte“ zur Identität des logischen SQL-Servers](authentication-aad-service-principal-tutorial.md#assign-directory-readers-permission-to-the-sql-logical-server-identity) aus.
     > [!NOTE]
     > Die oben aufgeführten Fehlermeldungen werden vor dem Feature GA (General Availability, allgemeine Verfügbarkeit) geändert, um die fehlende Setupanforderung zur Unterstützung der Azure AD-Anwendung eindeutig identifizieren zu können.
-- Das Festlegen der Azure AD-Anwendung als Azure AD-Administrator für SQL Managed Instance wird nur mit dem CLI-Befehl und dem PowerShell-Befehl bei [Az.Sql 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) oder höher unterstützt. Weitere Informationen finden Sie unter den Befehlen [az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin?view=azure-cli-latest&preserve-view=true#az-sql-mi-ad-admin-create) und [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator). 
+- Das Festlegen der Azure AD-Anwendung als Azure AD-Administrator für SQL Managed Instance wird nur mit dem CLI-Befehl und dem PowerShell-Befehl bei [Az.Sql 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) oder höher unterstützt. Weitere Informationen finden Sie unter den Befehlen [az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) und [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator). 
     - Wenn Sie zum Festlegen des Azure AD-Administrators das Azure-Portal für SQL Managed Instance verwenden möchten, ist eine mögliche Problemumgehung das Erstellen einer Azure AD-Gruppe. Fügen Sie dieser Gruppe dann den Dienstprinzipal (Azure AD-Anwendung) hinzu, und legen Sie sie als Azure AD-Administrator für die SQL Managed Instance fest.
     - Das Festlegen des Dienstprinzipals (Azure AD-Anwendung) als Azure AD-Administrator für SQL-Datenbank und Azure Synapse wird über das Azure-Portal, mithilfe von [PowerShell](authentication-aad-configure.md?tabs=azure-powershell#powershell-for-sql-database-and-azure-synapse) und [CLI](authentication-aad-configure.md?tabs=azure-cli#powershell-for-sql-database-and-azure-synapse)-Befehlen unterstützt.
 - Die Verwendung einer Azure AD-Anwendung bei einem Dienstprinzipal aus einem anderen Azure AD-Mandanten schlägt beim Zugriff auf SQL-Datenbank oder SQL Managed Instance fehl, die in einem anderen Mandanten erstellt wurden. Ein dieser Anwendung zugewiesener Dienstprinzipal muss von demselben Mandanten wie der logische SQL-Server oder Managed Instance sein.

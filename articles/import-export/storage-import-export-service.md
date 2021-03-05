@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 03/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 6dd2c7fcef6860cb5a2eaf88d141f8567955ed25
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: b1f1560fc1a00577e1e4b30d922fc7d4cae0ab92
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98705990"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181839"
 ---
 # <a name="what-is-azure-importexport-service"></a>Was ist der Azure Import/Export-Dienst?
 
@@ -79,7 +79,7 @@ Ein Importauftrag umfasst im Allgemeinen die folgenden Schritte:
 >
 > Geben Sie für internationale Lieferungen (außerhalb des Lands/der Region, in dem/der sich das Rechenzentrum befindet) ein internationales Spediteurkonto an.
 
- ![Abbildung 1: Ablauf eines Importauftrags](./media/storage-import-export-service/importjob.png)
+ ![Abbildung 1: Ablauf eines Importauftrags](./media/storage-import-export-service/import-job.png)
 
 Ausführliche Anweisungen zum Datenimport finden Sie unter:
 
@@ -108,7 +108,7 @@ Ein Exportauftrag umfasst im Allgemeinen die folgenden Schritte:
 >
 > Geben Sie für internationale Lieferungen (außerhalb des Lands/der Region, in dem/der sich das Rechenzentrum befindet) ein internationales Spediteurkonto an.
   
- ![Abbildung 2: Ablauf eines Exportauftrags](./media/storage-import-export-service/exportjob.png)
+ ![Abbildung 2: Ablauf eines Exportauftrags](./media/storage-import-export-service/export-job.png)
 
 Eine ausführliche Anleitung zum Datenexport finden Sie unter [Exportieren von Daten aus Azure-Blobs](storage-import-export-data-from-blobs.md).
 

@@ -704,6 +704,8 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: Erstellen einer Triggerabhängigkeit für ein rollierendes Fenster
           href: tumbling-window-trigger-dependency.md
+        - name: Verweisen auf Triggermetadaten in einer Pipeline
+          href: how-to-use-trigger-parameterization.md
     - name: Data Catalog und Governance
       items:
         - name: Herstellen einer Verbindung zwischen einer Data Factory und Azure Purview

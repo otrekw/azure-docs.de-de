@@ -4,13 +4,13 @@ description: In diesem Artikel erfahren Sie, wie Sie Sensordaten von Partnern ab
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 57baa00f7f9b64212d0aee8b0a2efeca814abeb3
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: 474b6f8356724546105d902a15427f483f656317
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168527"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182773"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Abrufen der Sensordaten von Sensorpartnern
 
@@ -46,9 +46,9 @@ Führen Sie die folgenden Schritte aus, um die obigen Informationen zu generiere
 
 2. **Wenn Sie über FarmBeats Version 1.2.7 oder höher verfügen, überspringen Sie die Schritte a, b und c, und fahren Sie mit Schritt 3 fort.** Sie können die FarmBeats-Version überprüfen, indem Sie das Symbol **Einstellungen** in der oberen rechten Ecke der FarmBeats-Benutzeroberfläche auswählen.
 
-      a.  Wechseln Sie zu **Azure Active Directory** > **App-Registrierungen** .
+      a.  Wechseln Sie zu **Azure Active Directory** > **App-Registrierungen**.
 
-      b. Wählen Sie die **App-Registrierung** , die als Teil Ihrer FarmBeats-Bereitstellung erstellt wurde. Sie wird denselben Namen aufweisen wie Ihr FarmBeats-Datenhub.
+      b. Wählen Sie die **App-Registrierung**, die als Teil Ihrer FarmBeats-Bereitstellung erstellt wurde. Sie wird denselben Namen aufweisen wie Ihr FarmBeats-Datenhub.
 
       c. Wählen Sie **Expose an API** (API offenlegen) -> **Add a client application** (Clientanwendung hinzufügen) aus, und geben Sie **04b07795-8ddb-461a-bbee-02f9e1bf7b46** ein. Aktivieren Sie dann die Option **Authorize Scope** (Bereich autorisieren). Dies ermöglicht den Zugriff auf die Azure CLI (Cloud Shell), um die nachfolgenden Schritte durchzuführen:
 
@@ -92,7 +92,7 @@ Führen Sie die folgenden Schritte aus, um die obigen Informationen zu generiere
 > 1. Der Name des Datenhub-API-Endpunkts darf nur aus Kleinbuchstaben bestehen.
 > 2. Wenn Sie die URL des FarmBeats-Websitenamens für den Datenhub-API-Endpunkt kopieren, stellen Sie sicher, dass sie keinen nachgestellten Schrägstrich (/) enthält.
 
-9. Folgen Sie den Anweisungen auf dem Bildschirm, um die Werte für **API-Endpunkt** , **Mandanten-ID** , **Client-ID** , **Geheimer Clientschlüssel** und **EventHub-Verbindungszeichenfolge** zu erfassen.
+9. Folgen Sie den Anweisungen auf dem Bildschirm, um die Werte für **API-Endpunkt**, **Mandanten-ID**, **Client-ID**, **Geheimer Clientschlüssel** und **EventHub-Verbindungszeichenfolge** zu erfassen.
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Integrieren von Gerätedaten unter Verwendung der generierten Anmeldeinformationen
 
@@ -122,7 +122,7 @@ Verwenden Sie den folgenden Abschnitt, um die Geräte und Sensoren Ihres landwir
 Für FarmBeats werden derzeit folgende Geräte unterstützt:
 
 - **Knoten:** Ein Gerät, das mit mindestens einem Sensor verknüpft ist.
-- **Gateway** : Ein Gerät, das mit mindestens einem Knoten verknüpft ist.
+- **Gateway**: Ein Gerät, das mit mindestens einem Knoten verknüpft ist.
 
 Folgen Sie diesen Schritten:
 

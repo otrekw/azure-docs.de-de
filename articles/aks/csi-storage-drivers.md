@@ -5,20 +5,20 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 2af4f9e2ea1dc0fcb8e5f40e0024297124292b49
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: fa40ab22f0c1ebf47bb490a50f782a848d1441e1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074820"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182110"
 ---
 # <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks-preview"></a>Aktivieren von CSI-Treibern (Container Storage Interface) für Azure-Datenträger und Azure Files in Azure Kubernetes Service (AKS) (Vorschauversion)
 
 Container Storage Interface (CSI) ist ein Standard für die Bereitstellung beliebiger Block- und Dateispeichersysteme für containerisierte Workloads in Kubernetes. Durch die Einführung und Verwendung von CSI kann Azure Kubernetes Service (AKS) Plug-Ins schreiben, bereitstellen und durchlaufen, um neue Speichersysteme in Kubernetes verfügbar zu machen oder vorhandene Speichersysteme in Kubernetes zu verbessern, ohne den Kerncode von Kubernetes zu ändern und die Releasezyklen abwarten zu müssen.
 
 Die Unterstützung des CSI-Speichertreibers in AKS ermöglicht die native Verwendung von Folgendem:
-- [*Azure-Datenträger:* ](azure-disk-csi.md) Diese können zum Erstellen einer Kubernetes-Ressource vom Typ *DataDisk* verwendet werden. Datenträger können auf Hochleistungs-SSDs basierenden Speicher vom Typ „Azure Storage Premium“ oder auf regulären Festplatten oder Standard-SSDs basierenden Speicher vom Typ „Azure Storage Standard“ nutzen. Für die meisten Produktions- und Entwicklungsworkloads wird die Verwendung von Storage Premium empfohlen. Azure-Datenträger werden als *ReadWriteOnce* eingebunden und sind somit nur für einen einzelnen Pod verfügbar. Verwenden Sie für die Speichervolumes, auf die mehrere Pods gleichzeitig zugreifen können, Azure Files.
-- [*Azure Files:* ](azure-files-csi.md) Kann verwendet werden, um eine auf einem Azure Storage-Konto basierende SMB 3.0-Freigabe in Pods einzubinden. Mit Azure Files können Daten über mehrere Knoten und Pods hinweg gemeinsam genutzt werden. Von Azure Files kann auf regulären Festplatten basierender Speicher vom Typ „Azure Storage Standard“ oder auf Hochleistungs-SSDs basierender Speicher vom Typ „Azure Storage Premium“ genutzt werden.
+- [*Azure-Datenträger:*](azure-disk-csi.md) Diese können zum Erstellen einer Kubernetes-Ressource vom Typ *DataDisk* verwendet werden. Datenträger können auf Hochleistungs-SSDs basierenden Speicher vom Typ „Azure Storage Premium“ oder auf regulären Festplatten oder Standard-SSDs basierenden Speicher vom Typ „Azure Storage Standard“ nutzen. Für die meisten Produktions- und Entwicklungsworkloads wird die Verwendung von Storage Premium empfohlen. Azure-Datenträger werden als *ReadWriteOnce* eingebunden und sind somit nur für einen einzelnen Pod verfügbar. Verwenden Sie für die Speichervolumes, auf die mehrere Pods gleichzeitig zugreifen können, Azure Files.
+- [*Azure Files:*](azure-files-csi.md) Kann verwendet werden, um eine auf einem Azure Storage-Konto basierende SMB 3.0-Freigabe in Pods einzubinden. Mit Azure Files können Daten über mehrere Knoten und Pods hinweg gemeinsam genutzt werden. Von Azure Files kann auf regulären Festplatten basierender Speicher vom Typ „Azure Storage Standard“ oder auf Hochleistungs-SSDs basierender Speicher vom Typ „Azure Storage Premium“ genutzt werden.
 
 > [!IMPORTANT]
 > Ab der Kubernetes-Version 1.21 werden von Kubernetes standardmäßig nur noch CSI-Treiber verwendet. Diese Treiber sind die Zukunft der Speicherunterstützung in Kubernetes.
@@ -132,8 +132,8 @@ $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocata
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add&preserve-view=true
-[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update&preserve-view=true
-[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register&preserve-view=true
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
