@@ -2,20 +2,20 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: "Informationen zu Kubernetes mit Azure\_Arc-Aktivierung"
+    - name: Informationen zu Kubernetes mit Azure Arc-Aktivierung
       href: overview.md
     - name: Azure Arc-Validierungsprogramm
       href: validation-program.md
+- name: Schnellstarts
+  items:
+    - name: Verbinden eines Clusters mit Azure Arc
+      href: quickstart-connect-cluster.md
 - name: Tutorials
   items:
     - name: Bereitstellen von Konfigurationen mithilfe von GitOps
       href: tutorial-use-gitops-connected-cluster.md
     - name: Implementieren von CI/CD mit GitOps
       href: tutorial-gitops-ci-cd.md
-- name: Schnellstarts
-  items:
-    - name: Verbinden eines Clusters mit Azure Arc
-      href: quickstart-connect-cluster.md
 - name: Konzepte
   items:
     - name: Agent-Architektur

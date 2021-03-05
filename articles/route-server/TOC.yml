@@ -6,6 +6,8 @@
       href: overview.md
 - name: Schnellstarts
   items:
+    - name: "Konfigurieren einer Route\_Server-Instanz – Portal"
+      href: quickstart-configure-route-server-portal.md
     - name: "Konfigurieren einer Route\_Server-Instanz – PowerShell"
       href: quickstart-configure-route-server-powershell.md
     - name: "Konfigurieren einer Route\_Server-Instanz – CLI"
