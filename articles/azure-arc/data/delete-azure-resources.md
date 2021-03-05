@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4c76b2c0109637ce34681d2fa5c8b29e1ff800a1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 60c5ddcc67db6e4a0649458cfbd5c2949aa9a32a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364370"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202041"
 ---
 # <a name="delete-resources-from-azure"></a>Löschen von Azure-Ressourcen
 
@@ -43,7 +43,7 @@ Wenn Sie eine bestimmte dedizierte Ressourcengruppe für Azure Arc-fähige Daten
 Führen Sie die folgenden Schritte aus, um eine Ressourcengruppe im Azure-Portal zu löschen:
 
 - Navigieren Sie zu der Ressourcengruppe im Azure-Portal, in der die Azure Arc-fähigen Datendienstressourcen erstellt wurden.
-- Klicken Sie auf die Schaltfläche **Ressourcengruppe löschen** .
+- Klicken Sie auf die Schaltfläche **Ressourcengruppe löschen**.
 - Bestätigen Sie den Löschvorgang, indem Sie den Ressourcengruppennamen eingeben und auf **Löschen** klicken.
 
 ## <a name="delete-specific-resources-in-the-resource-group"></a>Löschen bestimmter Ressourcen in der Ressourcengruppe
@@ -64,10 +64,10 @@ Sie können bestimmte Azure Arc-fähige Datendienstressourcen über die Azure CL
 Um SQL Managed Instance-Ressourcen über die Azure CLI aus Azure zu löschen, ersetzen Sie die Platzhalterwerte im folgenden Befehl und führen den Befehl dann aus.
 
 ```azurecli
-az resource delete --name <sql instance name> --resource-type Microsoft.AzureData/sqlManagedInstances --resource-group <resource group name>
+az resource delete --name <sql instance name> --resource-type Microsoft.AzureArcData/sqlManagedInstances --resource-group <resource group name>
 
 #Example
-#az resource delete --name sql1 --resource-type Microsoft.AzureData/sqlManagedInstances --resource-group rg1
+#az resource delete --name sql1 --resource-type Microsoft.AzureArcData/sqlManagedInstances --resource-group rg1
 ```
 
 ### <a name="delete-postgresql-hyperscale-server-group-resources-using-the-azure-cli"></a>Löschen von PostgreSQL Hyperscale-Servergruppenressourcen über die Azure CLI
@@ -75,10 +75,10 @@ az resource delete --name <sql instance name> --resource-type Microsoft.AzureDat
 Um PostgreSQL Hyperscale-Servergruppenressourcen über die Azure CLI aus Azure zu löschen, ersetzen Sie die Platzhalterwerte im folgenden Befehl und führen den Befehl dann aus.
 
 ```azurecli
-az resource delete --name <postgresql instance name> --resource-type Microsoft.AzureData/postgresInstances --resource-group <resource group name>
+az resource delete --name <postgresql instance name> --resource-type Microsoft.AzureArcData/postgresInstances --resource-group <resource group name>
 
 #Example
-#az resource delete --name pg1 --resource-type Microsoft.AzureData/postgresInstances --resource-group rg1
+#az resource delete --name pg1 --resource-type Microsoft.AzureArcData/postgresInstances --resource-group rg1
 ```
 
 ### <a name="delete-azure-arc-data-controller-resources-using-the-azure-cli"></a>Löschen von Azure Arc-Datencontrollerressourcen über die Azure CLI
@@ -89,10 +89,10 @@ az resource delete --name <postgresql instance name> --resource-type Microsoft.A
 Um Azure Arc-Datencontroller über die Azure CLI aus Azure zu löschen, ersetzen Sie die Platzhalterwerte im folgenden Befehl und führen den Befehl dann aus.
 
 ```azurecli
-az resource delete --name <data controller name> --resource-type Microsoft.AzureData/dataControllers --resource-group <resource group name>
+az resource delete --name <data controller name> --resource-type Microsoft.AzureArcData/dataControllers --resource-group <resource group name>
 
 #Example
-#az resource delete --name dc1 --resource-type Microsoft.AzureData/dataControllers --resource-group rg1
+#az resource delete --name dc1 --resource-type Microsoft.AzureArcData/dataControllers --resource-group rg1
 ```
 
 ### <a name="delete-a-resource-group-using-the-azure-cli"></a>Löschen einer Ressourcengruppe über die Azure CLI

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: a5d51a77b1da0ae44c76d0187113105c4e53c9b4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f894fd5ca7bb98c48b106c13b8fe6130b2c76c6e
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279215"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201055"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Tutorial: Schnelles Skalieren und Schützen einer Webanwendung mithilfe von Azure Front Door und Azure Web Application Firewall (WAF)
 
@@ -36,7 +36,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- In den Schritten dieses Tutorials wird die Azure-Befehlszeilenschnittstelle verwendet. Informationen zu den ersten Schritten mit der Azure-Befehlszeilenschnittstelle finden Sie in [dieser Anleitung](/cli/azure/get-started-with-azure-cli?preserve-view=true&view=azure-cli-latest).
+- In den Schritten dieses Tutorials wird die Azure-Befehlszeilenschnittstelle verwendet. Informationen zu den ersten Schritten mit der Azure-Befehlszeilenschnittstelle finden Sie in [dieser Anleitung](/cli/azure/get-started-with-azure-cli).
 
   > [!TIP] 
   > [Bash in Azure Cloud Shell](../cloud-shell/quickstart.md) ermöglicht einen schnellen und einfachen Einstieg in die Verwendung der Azure-Befehlszeilenschnittstelle.
@@ -48,7 +48,7 @@ In diesem Tutorial lernen Sie Folgendes:
    ```
 
 > [!NOTE] 
-> Weitere Informationen zu den in diesem Tutorial verwendeten Befehlen finden Sie in der [Azure CLI-Referenz für Front Door](/cli/azure/ext/front-door/?preserve-view=true&view=azure-cli-latest).
+> Weitere Informationen zu den in diesem Tutorial verwendeten Befehlen finden Sie in der [Azure CLI-Referenz für Front Door](/cli/azure/ext/front-door).
 
 ## <a name="create-an-azure-front-door-resource"></a>Erstellen einer Azure Front Door-Ressource
 
@@ -144,7 +144,7 @@ Es empfiehlt sich, dafür zu sorgen, dass nur Azure Front Door-Edges mit Ihrer
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die in diesem Tutorial verwendeten Ressourcen nicht mehr benötigen, entfernen Sie die Ressourcengruppe, Front Door und die WAF-Richtlinie mithilfe des Befehls [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true):
+Wenn Sie die in diesem Tutorial verwendeten Ressourcen nicht mehr benötigen, entfernen Sie die Ressourcengruppe, Front Door und die WAF-Richtlinie mithilfe des Befehls [az group delete](/cli/azure/group#az-group-delete):
 
 ```azurecli-interactive
   az group delete \

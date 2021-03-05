@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: f731236b235883f019c74ef0b32f5066ca5b7514
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: b2e1ffb3cbd513766945864e33589c46284bf942
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179366"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200936"
 ---
 # <a name="configure-development-environment-for-deployment-scripts-in-arm-templates"></a>Konfigurieren der Entwicklungsumgebung für Bereitstellungsskripts in ARM-Vorlagen
 
@@ -357,7 +357,7 @@ Der Standardwert für den Einbindungspfad lautet `/mnt/azscripts/azscriptinput`.
 Das in der Vorlage angegebene Standardcontainerimage ist **mcr.microsoft.com/azure-cli:2.9.1**. Eine Liste mit den unterstützten Azure CLI-Versionen finden Sie [hier](https://mcr.microsoft.com/v2/azure-cli/tags/list).
 
 > [!IMPORTANT]
-> Das Bereitstellungsskript verwendet die verfügbaren CLI-Images von Microsoft Container Registry (MCR). Das Zertifizieren eines CLI-Images für ein Bereitstellungsskript dauert ungefähr einen Monat. Verwenden Sie nicht die CLI-Versionen, die innerhalb von 30 Tagen veröffentlicht wurden. Die Veröffentlichungsdaten für die Images finden Sie unter [Versionshinweise für die Azure CLI](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Wenn Sie eine nicht unterstützte Version verwenden, werden in der Fehlermeldung die unterstützten Versionen aufgelistet.
+> Das Bereitstellungsskript verwendet die verfügbaren CLI-Images von Microsoft Container Registry (MCR). Das Zertifizieren eines CLI-Images für ein Bereitstellungsskript dauert ungefähr einen Monat. Verwenden Sie nicht die CLI-Versionen, die innerhalb von 30 Tagen veröffentlicht wurden. Die Veröffentlichungsdaten für die Images finden Sie unter [Versionshinweise für die Azure CLI](/cli/azure/release-notes-azure-cli). Wenn Sie eine nicht unterstützte Version verwenden, werden in der Fehlermeldung die unterstützten Versionen aufgelistet.
 
 Die Vorlage hält die Containerinstanz nach 1.800 Sekunden an. Sie haben 30 Minuten Zeit, bis die Containerinstanz in einen Beendigungsstatus wechselt und die Sitzung beendet wird.
 

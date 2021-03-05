@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e69e5d9b94a47bf7db21ef3732a4ddcba7c2cf5c
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 5d78299c4583251180b3fb9a902561406b849b4a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181549"
+ms.locfileid: "102201174"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Tutorial: Verwenden von Azure Key Vault mit einem virtuellen Windows in .NET
 
@@ -42,7 +42,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Für Windows, Mac und Linux:
   * [Git-Client](https://git-scm.com/downloads)
   * [.NET Core 3.1 SDK oder höher](https://dotnet.microsoft.com/download/dotnet-core/3.1)
-  * [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest).
+  * [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 
 ## <a name="create-resources-and-assign-permissions"></a>Erstellen von Ressourcen und Zuweisen von Berechtigungen
 
@@ -74,7 +74,7 @@ Erstellen Sie mit einer der folgenden Methoden einen virtuellen Windows- oder Li
 | [Azure portal](../../virtual-machines/windows/quick-create-portal.md) | [Azure portal](../../virtual-machines/linux/quick-create-portal.md) |
 
 ## <a name="assign-an-identity-to-the-vm"></a>Zuweisen einer Identität zum virtuellen Computer
-Erstellen Sie für den virtuellen Computer mit dem Befehl [az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) eine vom System zugewiesene Identität:
+Erstellen Sie für den virtuellen Computer mit dem Befehl [az vm identity assign](/cli/azure/vm/identity#az-vm-identity-assign) eine vom System zugewiesene Identität:
 
 ```azurecli
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
@@ -90,7 +90,7 @@ Beachten Sie die systemseitig zugewiesene Identität, die im folgenden Code ange
 ```
 
 ## <a name="assign-permissions-to-the-vm-identity"></a>Zuweisen von Berechtigungen für die VM-Identität
-Weisen Sie Ihrem Schlüsseltresor mit dem Befehl [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) die zuvor erstellten Identitätsberechtigungen zu:
+Weisen Sie Ihrem Schlüsseltresor mit dem Befehl [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) die zuvor erstellten Identitätsberechtigungen zu:
 
 ```azurecli
 az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list

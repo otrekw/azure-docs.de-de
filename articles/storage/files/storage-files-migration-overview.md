@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 995ae176a8eec58f8dc9522e6fac6fd78170014d
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 4a874e6f1e026a1888b9039799be71c95f040ac6
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628916"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202347"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrieren zu Azure-Dateifreigaben
 
@@ -153,4 +153,4 @@ Weitere Informationen zu den in diesem Artikel erwähnten Azure Files-Technologi
 
 * [Übersicht über Azure-Dateifreigaben](storage-files-introduction.md)
 * [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)
-* [Azure-Dateisynchronisierung: Cloudtiering](storage-sync-cloud-tiering.md)
+* [Azure-Dateisynchronisierung: Cloudtiering](storage-sync-cloud-tiering-overview.md)

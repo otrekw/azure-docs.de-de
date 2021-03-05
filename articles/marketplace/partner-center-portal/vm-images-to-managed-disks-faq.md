@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-author: iqshahmicrosoft
-ms.author: iqshah
-ms.openlocfilehash: 814a4012ace95e84e75bcb4071c549822b2b0633
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: kriti-ms
+ms.author: krsh
+ms.openlocfilehash: e3d20b5e9206cf05d749f75982a07937a8caf078
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89182427"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201089"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>VM-Images im Azure Marketplace werden in verwalteten Datenträgerspeicher verschoben
 
@@ -29,8 +29,6 @@ Wenn Sie Fragen haben, [kontaktieren Sie uns](https://support.microsoft.com/supp
 ### <a name="would-the-users-of-my-vm-images-experience-an-outage"></a>Treten für die Benutzer meiner VM-Images Ausfälle auf?
 
 Für die Benutzer meiner VM-Images treten keine Ausfälle auf. 
-
-In der ersten Phase werden nur VM-Images verschoben, auf denen keine virtuellen Computer ausgeführt werden. Da es für diese Images keine Benutzer gibt, hat die Verschiebung auch keine Auswirkungen. Auch in den nachfolgenden Phasen kommt es nicht zu Auswirkungen auf die Benutzer.
 
 ### <a name="how-long-does-it-take-for-the-process-to-complete"></a>Wie lange dauert es, bis der Prozess abgeschlossen ist?
 

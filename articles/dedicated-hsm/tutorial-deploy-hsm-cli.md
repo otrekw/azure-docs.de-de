@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b6f4610887092b1dac5cdc85622739318d5921d7
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 1ca8bc5c82540b0dc02959d26b452554ef294368
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852233"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200528"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>Tutorial: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe der Azure CLI
 
@@ -38,7 +38,7 @@ Dieses Tutorial konzentriert sich auf die Integration eines HSM-Paars und des er
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Der Azure-Dienst für dedizierte HSMs ist derzeit nicht im Azure-Portal verfügbar. Sämtliche Interaktionen mit dem Dienst werden über die Befehlszeile oder mithilfe von PowerShell abgewickelt. In diesem Tutorial wird die Befehlszeilenschnittstelle (Command Line Interface, CLI) in Azure Cloud Shell verwendet. Sollten Sie noch nicht mit der Azure-Befehlszeilenschnittstelle vertraut sein, informieren Sie sich hier über die ersten Schritte: [Erste Schritte mit der Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest&preserve-view=true).
+Der Azure-Dienst für dedizierte HSMs ist derzeit nicht im Azure-Portal verfügbar. Sämtliche Interaktionen mit dem Dienst werden über die Befehlszeile oder mithilfe von PowerShell abgewickelt. In diesem Tutorial wird die Befehlszeilenschnittstelle (Command Line Interface, CLI) in Azure Cloud Shell verwendet. Sollten Sie noch nicht mit der Azure-Befehlszeilenschnittstelle vertraut sein, informieren Sie sich hier über die ersten Schritte: [Erste Schritte mit der Azure CLI](/cli/azure/get-started-with-azure-cli).
 
 Voraussetzungen:
 

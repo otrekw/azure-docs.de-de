@@ -211,7 +211,7 @@
               items:
                 - name: Azure-Portal
                   href: logs/quick-create-workspace.md
-                - name: Azure CLI
+                - name: Azure-Befehlszeilenschnittstelle
                   href: logs/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: logs/powershell-workspace-configuration.md
@@ -1078,7 +1078,7 @@
           href: insights/container-insights-reports.md
         - name: Anzeigen von Livedaten
           items:
-            - name: Übersicht über Livedaten (Vorschau)
+            - name: Übersicht über Livedaten
               href: containers/container-insights-livedata-overview.md
             - name: Einrichten
               href: containers/container-insights-livedata-setup.md

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 02/17/2021
 ms.author: jushiman
-ms.openlocfilehash: d00a9c6012da7ad8d1566ef82bce628c7d47e7a7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5f5f1e70d9ae309c90291ccac1e6dd61e7a9d056
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687007"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038383"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>Schnellstart: Aktivieren der automatischen Azure-Verwaltung für virtuelle Computer im Azure-Portal
 
@@ -88,7 +88,7 @@ Melden Sie sich [hier](https://aka.ms/AzureAutomanagePreview) beim Azure-Portal 
 1. Füllen Sie die Registerkarte **Grundlagen** mit Ihren VM-Details aus.
 
 > [!NOTE]
-> Überprüfen Sie die für Automanage [unterstützten Regionen](automanage-virtual-machines#supported-regions) sowie die für Automanage unterstützten [Linux-Distributionen](automanage-linux.md#supported-linux-distributions-and-versions) und [Windows Server-Versionen](automanage-windows-server.md#supported-windows-server-versions).
+> Überprüfen Sie die für Automanage [unterstützten Regionen](automanage-virtual-machines.md#supported-regions) sowie die für Automanage unterstützten [Linux-Distributionen](automanage-linux.md#supported-linux-distributions-and-versions) und [Windows Server-Versionen](automanage-windows-server.md#supported-windows-server-versions).
 
 2. Navigieren Sie zur Registerkarte **Verwaltung**, und wählen Sie Ihre **Automanage-Umgebung** aus.
 

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: e75786c42b54882c249b5ed7100ebd12f3f78e78
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 78ec0af0acbb74436af16abba75d64de061d5268
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99254358"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202164"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Importieren von Azure Key Vault-Zertifikaten: Häufig gestellte Fragen
 
@@ -43,7 +43,7 @@ Nein. Es ist nicht möglich, Zertifikatvorgänge mit einer ARM-Vorlage (Azure Re
 
 ### <a name="when-i-import-a-certificate-via-the-azure-portal-i-get-a-something-went-wrong-error-how-can-i-investigate-further"></a>Wenn ich ein Zertifikat über das Azure-Portal importiere, tritt ein Fehler der Art „Es ist ein Problem aufgetreten“ auf. Wie kann ich weitere Untersuchungen durchführen?
     
-Importieren Sie die Zertifikatsdatei mit der [Azure CLI](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import) oder mit [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0), wenn Sie einen Fehler mit aussagekräftigeren Informationen anzeigen möchten.
+Importieren Sie die Zertifikatsdatei mit der [Azure CLI](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) oder mit [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0), wenn Sie einen Fehler mit aussagekräftigeren Informationen anzeigen möchten.
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>Wie kann ich den folgenden Fehlertyp beheben: „Access denied or user is unauthorized to import certificate“ (Zugriff verweigert, oder der Benutzer ist nicht autorisiert, das Zertifikat zu importieren)?
     
