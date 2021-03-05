@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 8d5ce3cde8c86d66bec025c778318a192ef60b73
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: de7eaf40271965d48dc0507e0335e6924bdfb73f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560842"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204183"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Lösungen auf virtuellen Azure-Computern
 
@@ -29,7 +29,7 @@ Beginnen Sie mit der Bereitstellung einer VM der DCsv2-Serie über den kommerzie
 
 ### <a name="current-available-sizes-and-regions"></a>Aktuelle verfügbare Größen und Regionen
 
-Um eine Liste aller allgemein verfügbaren Größen für Confidential Computing-VMs in verfügbaren Regionen und Verfügbarkeitszonen zu erhalten, führen Sie in der [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) den folgenden Befehl aus:
+Um eine Liste aller allgemein verfügbaren Größen für Confidential Computing-VMs in verfügbaren Regionen und Verfügbarkeitszonen zu erhalten, führen Sie in der [Azure CLI](/cli/azure/install-azure-cli-windows) den folgenden Befehl aus:
 
 ```azurecli-interactive
 az vm list-skus `

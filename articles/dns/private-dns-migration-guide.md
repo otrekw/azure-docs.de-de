@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: 63bd1d01adf66f33a8ee5349f35063473429b007
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bfc7a851442d6dd70d55c9f00e6d2f18d37e56bf
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964778"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203401"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Migrieren von älteren Azure DNS Private Zones zum neuen Ressourcenmodell
 
@@ -108,7 +108,7 @@ In diesem Schritt werden die älteren DNS-Zonen entfernt. Dieser Schritt sollte 
 
 Wenn Sie die Automatisierung mit Vorlagen, PowerShell-Skripts oder benutzerdefiniertem mit dem SDK entwickelten Code verwenden, müssen Sie Ihre Automatisierung so aktualisieren, dass das neue Ressourcenmodell für die privaten DNS-Zonen verwendet wird. Nachfolgend finden Sie Links zur Dokumentation für die Befehlszeilenschnittstelle, PowerShell und das SDK für die neuen DNS-Zonen.
 * [Azure DNS Private Zones-REST-API](/rest/api/dns/privatedns/privatezones)
-* [Azure DNS Private Zones-Befehlszeilenschnittstelle](/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
+* [Azure DNS Private Zones-Befehlszeilenschnittstelle](/cli/azure/ext/privatedns/network/private-dns)
 * [Azure DNS Private Zones-PowerShell](/powershell/module/az.privatedns/?view=azps-2.3.2)
 * [Azure DNS Private Zones-SDK](/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
 

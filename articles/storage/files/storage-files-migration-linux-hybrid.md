@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 0ef4faf14ec01a25419fd22ba8c73a8a033b4172
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f95585237bbee743083b855dd78cc850c4daffe8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879981"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202687"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migration von Linux zu einer Hybrid-Cloud-Bereitstellung mit der Azure-Dateisynchronisierung
 
@@ -39,7 +39,7 @@ Wenn Sie Samba nicht auf Ihrem Linux-Server ausführen und stattdessen Ordner zu
 * Erstellen Sie eine Instanz von Windows Server 2019 als virtuellen Computer oder physischen Server. Es ist mindestens Windows Server 2012 R2 erforderlich. Ein Windows Server-Failovercluster wird ebenfalls unterstützt.
 * Stellen Sie einen direkt angeschlossenen Speicher bereit, oder fügen Sie ihn hinzu. Network Attached Storage (NAS) wird nicht unterstützt.
 
-  Die bereitgestellte Speichermenge kann kleiner sein als jene, die Sie zurzeit auf Ihrem Linux-Samba-Server verwenden, wenn Sie das [Cloudtiering](storage-sync-cloud-tiering.md)-Feature der Azure-Dateisynchronisierung verwenden. Wenn Sie jedoch Ihre Dateien in einer späteren Phase aus dem größeren Linux-Samba-Serverbereich in das kleinere Windows Server-Volume kopieren, müssen Sie in Batches arbeiten:
+  Die bereitgestellte Speichermenge kann kleiner sein als jene, die Sie zurzeit auf Ihrem Linux-Samba-Server verwenden, wenn Sie das [Cloudtiering](storage-sync-cloud-tiering-overview.md)-Feature der Azure-Dateisynchronisierung verwenden. Wenn Sie jedoch Ihre Dateien in einer späteren Phase aus dem größeren Linux-Samba-Serverbereich in das kleinere Windows Server-Volume kopieren, müssen Sie in Batches arbeiten:
 
   1. Verschieben Sie eine Dateimenge, die auf den Datenträger passt.
   2. Lassen Sie die Dateisynchronisierung und das Cloudtiering interagieren.
@@ -98,7 +98,7 @@ Erstellen Sie die erste lokale Kopie in Ihrem Windows Server-Zielordner:
 
 Mit dem folgenden Robocopy-Befehl werden Dateien vom Speicher Ihres Linux-Samba-Servers in den Windows Server-Zielordner kopiert. Windows-Server synchronisiert diesen Ordner mit den Azure-Dateifreigaben. 
 
-Wenn Sie auf Ihrer Windows Server-Instanz weniger Speicher bereitgestellt haben als Ihre Daten auf dem Linux-Samba-Server verwenden, haben Sie Cloudtiering konfiguriert. Wenn das lokale Windows Server-Volume voll ist, beginnt das [Cloudtiering](storage-sync-cloud-tiering.md) für die Dateien, die bereits erfolgreich synchronisiert wurden. Durch das Cloudtiering wird ausreichend Speicherplatz generiert, um mit dem Kopiervorgang vom Linux-Samba-Server fortzufahren. Einmal pro Stunde wird überprüft, was bereits im Cloudtiering synchronisiert wurde, und Speicherplatz freigegeben, um auf dem Volume einen freien Speicherplatz von 99 % zu erreichen.
+Wenn Sie auf Ihrer Windows Server-Instanz weniger Speicher bereitgestellt haben als Ihre Daten auf dem Linux-Samba-Server verwenden, haben Sie Cloudtiering konfiguriert. Wenn das lokale Windows Server-Volume voll ist, beginnt das [Cloudtiering](storage-sync-cloud-tiering-overview.md) für die Dateien, die bereits erfolgreich synchronisiert wurden. Durch das Cloudtiering wird ausreichend Speicherplatz generiert, um mit dem Kopiervorgang vom Linux-Samba-Server fortzufahren. Einmal pro Stunde wird überprüft, was bereits im Cloudtiering synchronisiert wurde, und Speicherplatz freigegeben, um auf dem Volume einen freien Speicherplatz von 99 % zu erreichen.
 
 Robocopy verschiebt die Dateien möglicherweise zu schnell für den Synchronisierungsvorgang mit der Cloud und führt dann ein lokales Tiering durch. Dadurch kann der Speicherplatz auf dem lokalen Datenträger knapp werden. Robocopy führt dann zu einem Fehler. Es wird empfohlen, die Freigaben nacheinander abzuarbeiten, um dieses Problem zu verhindern. Beispielsweise sollten Sie nicht für alle Freigaben gleichzeitig Robocopy-Aufträge starten. Sie können auch Freigaben verschieben, für die der aktuell freie Speicherplatz auf der Windows Server-Instanz ausreicht. Wenn der Robocopy-Auftrag zu einem Fehler führt, können Sie den Befehl jederzeit erneut ausführen, sofern Sie die folgende Option zum Spiegeln/Löschen verwenden:
 
@@ -145,7 +145,7 @@ Hintergrund:
       /MIR
    :::column-end:::
    :::column span="1":::
-      Ermöglicht, diesen Robocopy-Befehl mehrmals auf demselben Ziel auszuführen. Dabei werden die bereits kopierten Daten erkannt und ausgelassen. Es werden nur Änderungen, Ergänzungen und Löschungen verarbeitet, die seit der letzten Ausführung aufgetreten sind. Wenn der Befehl noch nicht ausgeführt wurde, wird nichts ausgelassen. Das Flag **/MIR** ist eine hervorragende Option für Quellspeicherorte, die weiterhin aktiv verwendet und geändert werden.
+      Ermöglicht, diesen Robocopy-Befehl mehrmals auf demselben Ziel auszuführen. Dabei werden die bereits kopierten Daten erkannt und ausgelassen. Es werden nur Änderungen, Ergänzungen und Löschungen verarbeitet, die seit der letzten Ausführung aufgetreten sind. Wenn der Befehl noch nicht ausgeführt wurde, wird nichts ausgelassen. Das Flag **/MIR** ist eine hervorragende Option für Quellspeicherorte, die weiterhin aktiv verwendet werden und Änderungen unterliegen.
    :::column-end:::
 :::row-end:::
 :::row:::

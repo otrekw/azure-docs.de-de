@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0e1ce841f6da8f15bd977437bca6b835a7b0d745
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 9ec1e59a5599ca2e95578eacc1484932956ebf16
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108737"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204013"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Aktivieren der Protokollierung in Key Vault
 
@@ -34,7 +34,7 @@ Die Befehle in diesem Leitfaden sind für [Cloud Shell](https://shell.azure.com)
 
 Der erste Schritt für das Einrichten der Schlüsselprotokollierung ist das Herstellen einer Verbindung zum Abonnement, das Ihren Schlüsseltresor enthält. Dies ist besonders dann wichtig, wenn Ihrem Konto mehrere Abonnements zugeordnet sind.
 
-Mithilfe der Azure CLI können Sie alle Abonnements anzeigen, indem Sie den Befehl [az account list](/cli/azure/account?view=azure-cli-latest#az_account_list) verwenden. Stellen Sie dann mit dem Befehl [az account set](/cli/azure/account?view=azure-cli-latest#az_account_set) eine Verbindung zu einem Abonnement her:
+Mithilfe der Azure CLI können Sie alle Abonnements anzeigen, indem Sie den Befehl [az account list](/cli/azure/account#az_account_list) verwenden. Stellen Sie dann mit dem Befehl [az account set](/cli/azure/account#az_account_set) eine Verbindung zu einem Abonnement her:
 
 ```azurecli-interactive
 az account list
@@ -58,7 +58,7 @@ Um die Verwaltung noch weiter zu vereinfachen, verwenden wir auch die gleiche Re
 
 Geben Sie außerdem einen Speicherkontonamen an. Speicherkontonamen müssen eindeutig und zwischen drei und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten.  Zuletzt wird ein Speicherkonto mit der SKU „Standard_LRS“ erstellt.
 
-Verwenden Sie in der Azure CLI den Befehl [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create).
+Verwenden Sie in der Azure CLI den Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create).
 
 ```azurecli-interactive
 az storage account create --name "<your-unique-storage-account-name>" -g "myResourceGroup" --sku "Standard_LRS"
@@ -84,9 +84,9 @@ Der id-Wert des Speicherkontos weist das folgende Format auf: /Abonnements/<Ihre
 
 ## <a name="obtain-your-key-vault-resource-id"></a>Abrufen der Ressourcen-ID des Schlüsseltresors
 
-Im [CLI-Schnellstart](quick-create-cli.md) bzw. [PowerShell-Schnellstart](quick-create-powershell.md) haben Sie einen Schlüssel mit eindeutigem Namen erstellt.  Verwenden Sie diesen Namen für die Schritte unten noch mal.  Wenn Sie sich an den Namen Ihres Schlüsseltresors nicht mehr erinnern, können Sie den Azure CLI-Befehl [az keyvault list](/cli/azure/keyvault?view=azure-cli-latest#az_keyvault_list) oder das Azure PowerShell-Cmdlet [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) verwenden, um den Namen abzurufen.
+Im [CLI-Schnellstart](quick-create-cli.md) bzw. [PowerShell-Schnellstart](quick-create-powershell.md) haben Sie einen Schlüssel mit eindeutigem Namen erstellt.  Verwenden Sie diesen Namen für die Schritte unten noch mal.  Wenn Sie sich an den Namen Ihres Schlüsseltresors nicht mehr erinnern, können Sie den Azure CLI-Befehl [az keyvault list](/cli/azure/keyvault#az_keyvault_list) oder das Azure PowerShell-Cmdlet [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) verwenden, um den Namen abzurufen.
 
-Verwenden Sie den Namen Ihres Schlüsseltresors, um nach seiner Ressourcen-ID zu suchen.  Verwenden Sie bei Verwendung der Azure CLI den Befehl [az keyvault show](/cli/azure/keyvault?view=azure-cli-latest#az_keyvault_show).
+Verwenden Sie den Namen Ihres Schlüsseltresors, um nach seiner Ressourcen-ID zu suchen.  Verwenden Sie bei Verwendung der Azure CLI den Befehl [az keyvault show](/cli/azure/keyvault#az_keyvault_show).
 
 ```azurecli-interactive
 az keyvault show --name "<your-unique-keyvault-name>"
@@ -102,7 +102,7 @@ Die Ressourcen-ID für Ihren Schlüsseltresor weist das folgende Format auf: /Ab
 
 ## <a name="enable-logging-using-azure-powershell"></a>Aktivieren der Protokollierung mithilfe von Azure PowerShell
 
-Für die Aktivierung der Protokollierung in Azure Key Vault verwenden Sie den Azure CLI-Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest) bzw. das Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) zusammen mit der Speicherkonto-ID und der Ressourcen-ID des Schlüsseltresors.
+Für die Aktivierung der Protokollierung in Azure Key Vault verwenden Sie den Azure CLI-Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings) bzw. das Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) zusammen mit der Speicherkonto-ID und der Ressourcen-ID des Schlüsseltresors.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
@@ -116,7 +116,7 @@ Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId 
 
 Optional können Sie eine Aufbewahrungsrichtlinie für Ihre Protokolle festlegen, mit der ältere Protokolle nach einer angegeben Dauer automatisch gelöscht werden. Sie könnten beispielsweise eine Aufbewahrungsrichtlinie so festlegen, dass alle Protokolle, die älter als 90 Tage sind, automatisch gelöscht werden.
 
-<!-- With the Azure CLI, use the [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az_monitor_diagnostic_settings_update) command. 
+<!-- With the Azure CLI, use the [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) command. 
 
 ```azurecli-interactive
 az monitor diagnostic-settings update 
@@ -143,7 +143,7 @@ Protokollierte Inhalte
 
 Key Vault-Protokolle werden im Container „insights-logs-auditevent“ im von Ihnen angegebenen Speicherkonto gespeichert. Zur Anzeige der Protokolle müssen Sie Blobs herunterladen.
 
-Rufen Sie zunächst alle Blobs im Container ab.  Verwenden Sie in der Azure CLI den Befehl [az storage blob list](/cli/azure/storage/blob?view=azure-cli-latest#az_storage_blob_list).
+Rufen Sie zunächst alle Blobs im Container ab.  Verwenden Sie in der Azure CLI den Befehl [az storage blob list](/cli/azure/storage/blob#az_storage_blob_list).
 
 ```azurecli-interactive
 az storage blob list --account-name "<your-unique-storage-account-name>" --container-name "insights-logs-auditevent"
@@ -159,7 +159,7 @@ Wie an der Ausgabe entweder des Azure CLI-Befehls oder des Azure PowerShell-Cmdl
 
 Da dasselbe Speicherkonto zum Erfassen von Protokollen für mehrere Ressourcen verwendet werden kann, ist die vollständige Ressourcen-ID im Blobnamen sehr hilfreich, um nur auf die benötigten Blobs zuzugreifen bzw. diese herunterzuladen. Zuerst wird aber beschrieben, wie Sie alle Blobs herunterladen.
 
-Wenn Sie die Azure CLI verwenden, nutzen Sie den Befehl [az storage blob download](/cli/azure/storage/blob?view=azure-cli-latest#az_storage_blob_download). Übergeben Sie dabei die Blobnamen sowie den Pfad zur Datei, in der die Ergebnisse gespeichert werden sollen.
+Wenn Sie die Azure CLI verwenden, nutzen Sie den Befehl [az storage blob download](/cli/azure/storage/blob#az_storage_blob_download). Übergeben Sie dabei die Blobnamen sowie den Pfad zur Datei, in der die Ergebnisse gespeichert werden sollen.
 
 ```azurecli-interactive
 az storage blob download --container-name "insights-logs-auditevent" --file <path-to-file> --name "<blob-name>" --account-name "<your-unique-storage-account-name>"

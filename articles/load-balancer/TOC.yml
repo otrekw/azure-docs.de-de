@@ -39,9 +39,11 @@
           href: tutorial-cross-region-portal.md
         - name: 'Erstellen eines regionsübergreifenden Lastenausgleichs: PowerShell'
           href: tutorial-cross-region-powershell.md
+        - name: 'Erstellen eines regionsübergreifenden Lastenausgleichs: Azure CLI'
+          href: tutorial-cross-region-cli.md
 - name: Beispiele
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -119,7 +121,7 @@
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Erstellen des öffentlichen Lastenausgleichs mit IPv6
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
         - name: Azure PowerShell
           href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
@@ -134,7 +136,7 @@
       items:
         - name: Portal
           href: load-balancer-multiple-ip.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
@@ -170,7 +172,7 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=load-balancer'
     - name: Azure PowerShell
       href: /powershell/module/az.network
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/network/lb
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.network.models

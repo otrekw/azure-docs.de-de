@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cbaa83b38482203655f7de98cd5bbfec3ef7a870
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5bd7ffda508980a9a56d86037887fc53a0fed640
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100473468"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202942"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-cli"></a>Aktivieren des privaten Zugriffs mit Private Link (Vorschau): Azure CLI
 
@@ -41,7 +41,7 @@ Wenn Sie die [Azure CLI](/cli/azure/what-is-azure-cli) verwenden, können Sie pr
 
 ### <a name="add-a-private-endpoint-to-an-existing-instance"></a>Hinzufügen eines privaten Endpunkts zu einer vorhandenen Instanz
 
-Verwenden Sie den Befehl [**az network private-endpoint create**](/cli/azure/network/private-endpoint?view=azure-cli-latest&preserve-view=true#az_network_private_endpoint_create), um einen privaten Endpunkt zu erstellen und diesen mit einer Azure Digital Twins-Instanz zu verknüpfen. Identifizieren Sie die Azure Digital Twins-Instanz mithilfe ihrer vollqualifizierten ID im Parameter `--private-connection-resource-id`.
+Verwenden Sie den Befehl [**az network private-endpoint create**](/cli/azure/network/private-endpoint#az_network_private_endpoint_create), um einen privaten Endpunkt zu erstellen und diesen mit einer Azure Digital Twins-Instanz zu verknüpfen. Identifizieren Sie die Azure Digital Twins-Instanz mithilfe ihrer vollqualifizierten ID im Parameter `--private-connection-resource-id`.
 
 Im folgenden Beispiel wird der Befehl zum Erstellen eines privaten Endpunkts mit nur den erforderlichen Parametern verwendet.
 
@@ -49,25 +49,25 @@ Im folgenden Beispiel wird der Befehl zum Erstellen eines privaten Endpunkts mit
 az network private-endpoint create --connection-name {private_link_service_connection} -n {name_for_private_endpoint} -g {resource_group} --subnet {subnet_ID} --private-connection-resource-id "/subscriptions/{subscription_ID}/resourceGroups/{resource_group}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{Azure_Digital_Twins_instance_name}" 
 ```
 
-Eine vollständige Liste der erforderlichen und optionalen Parameter sowie weitere Beispiele zur Erstellung privater Endpunkte finden Sie in der [Referenzdokumentation zu **az network private-endpoint create**](/cli/azure/network/private-endpoint?view=azure-cli-latest&preserve-view=true#az_network_private_endpoint_create).
+Eine vollständige Liste der erforderlichen und optionalen Parameter sowie weitere Beispiele zur Erstellung privater Endpunkte finden Sie in der [Referenzdokumentation zu **az network private-endpoint create**](/cli/azure/network/private-endpoint#az_network_private_endpoint_create).
 
 ### <a name="manage-private-endpoint-connections-on-the-instance"></a>Verwalten privater Endpunktverbindungen für die Instanz
 
-Sobald ein privater Endpunkt für Ihre Azure Digital Twins-Instanz erstellt wurde, können Sie den Befehl [**az dt network private-endpoint connection**](/cli/azure/ext/azure-iot/dt/network/private-endpoint/connection?view=azure-cli-latest&preserve-view=true) verwenden, um mit der Verwaltung **privater Endpunktverbindungen** in Bezug auf die Instanz fortzufahren. Folgende Vorgänge sind möglich:
+Sobald ein privater Endpunkt für Ihre Azure Digital Twins-Instanz erstellt wurde, können Sie den Befehl [**az dt network private-endpoint connection**](/cli/azure/ext/azure-iot/dt/network/private-endpoint/connection) verwenden, um mit der Verwaltung **privater Endpunktverbindungen** in Bezug auf die Instanz fortzufahren. Folgende Vorgänge sind möglich:
 * Anzeigen einer privaten Endpunktverbindung
 * Festlegen des Zustands der privaten Endpunktverbindung
 * Löschen der privaten Endpunktverbindung
 * Auflisten aller privaten Endpunktverbindungen für eine Instanz
 
-Weitere Informationen und Beispiele finden Sie in der [Referenzdokumentation zu **az dt network private-endpoint**](/cli/azure/ext/azure-iot/dt/network/private-endpoint?view=azure-cli-latest&preserve-view=true).
+Weitere Informationen und Beispiele finden Sie in der [Referenzdokumentation zu **az dt network private-endpoint**](/cli/azure/ext/azure-iot/dt/network/private-endpoint).
 
 ### <a name="manage-other-private-link-information-on-an-azure-digital-twins-instance"></a>Verwalten anderer Private Link-Informationen zu einer Azure Digital Twins-Instanz
 
-Sie können weitere Informationen zum Private Link-Status Ihrer Instanz mithilfe des Befehls [**az dt network private-link**](/cli/azure/ext/azure-iot/dt/network/private-link?view=azure-cli-latest&preserve-view=true) abrufen. Folgende Vorgänge sind möglich:
+Sie können weitere Informationen zum Private Link-Status Ihrer Instanz mithilfe des Befehls [**az dt network private-link**](/cli/azure/ext/azure-iot/dt/network/private-link) abrufen. Folgende Vorgänge sind möglich:
 * Auflisten privater Verbindungen einer Azure Digital Twins-Instanz
 * Anzeigen einer privaten Verbindung der Instanz
 
-Weitere Informationen und Beispiele finden Sie in der [Referenzdokumentation zu **az dt network private-link**](/cli/azure/ext/azure-iot/dt/network/private-link?view=azure-cli-latest&preserve-view=true).
+Weitere Informationen und Beispiele finden Sie in der [Referenzdokumentation zu **az dt network private-link**](/cli/azure/ext/azure-iot/dt/network/private-link).
 
 ## <a name="disable--enable-public-network-access-flags"></a>Deaktivieren und Aktivieren von Zugriffsflags für das öffentliche Netzwerk
 
@@ -79,7 +79,7 @@ In diesem Artikel wird gezeigt, wie der Wert des Netzwerkflags mithilfe der [Azu
 
 ### <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
 
-In der Azure CLI können Sie den öffentlichen Netzwerkzugriff deaktivieren oder aktivieren, indem Sie einen `--public-network-access`-Parameter zum `az dt create`-Befehl hinzufügen. Obwohl dieser Befehl auch zum Erstellen einer neuen Instanz verwendet werden kann, können Sie ihn zum Bearbeiten der Eigenschaften einer vorhandenen Instanz verwenden, indem Sie den Namen einer bereits vorhandenen Instanz angeben. (Weitere Informationen zu diesem Befehl finden Sie in der zugehörigen [Referenzdokumentation](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_create) oder in den [allgemeinen Anweisungen zum Einrichten einer Azure Digital Twins-Instanz](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance).)
+In der Azure CLI können Sie den öffentlichen Netzwerkzugriff deaktivieren oder aktivieren, indem Sie einen `--public-network-access`-Parameter zum `az dt create`-Befehl hinzufügen. Obwohl dieser Befehl auch zum Erstellen einer neuen Instanz verwendet werden kann, können Sie ihn zum Bearbeiten der Eigenschaften einer vorhandenen Instanz verwenden, indem Sie den Namen einer bereits vorhandenen Instanz angeben. (Weitere Informationen zu diesem Befehl finden Sie in der zugehörigen [Referenzdokumentation](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create) oder in den [allgemeinen Anweisungen zum Einrichten einer Azure Digital Twins-Instanz](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance).)
 
 Verwenden Sie den Parameter `--public-network-access` wie folgt, um den öffentlichen Netzwerkzugriff für eine Azure Digital Twins-Instanz zu **deaktivieren**:
 

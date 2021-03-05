@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: ae62bf353f8a92c4408d4a38a91771ad60a13107
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 2fc77d0cdfb6bd8a62555951c0b6dc7e9b732f93
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285308"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203537"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>Tutorial: Verwenden von Azure Key Vault mit einem virtuellen Windows in Python
 
@@ -58,7 +58,7 @@ az login
 
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-Erstellen Sie mit einer der folgenden Methoden einen virtuellen Computer namens **myVM** :
+Erstellen Sie mit einer der folgenden Methoden einen virtuellen Computer namens **myVM**:
 
 | Linux | Windows |
 |--|--|
@@ -66,7 +66,7 @@ Erstellen Sie mit einer der folgenden Methoden einen virtuellen Computer namens 
 | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) |
 | [Azure portal](../../virtual-machines/linux/quick-create-portal.md) | [Azure-Portal](../../virtual-machines/windows/quick-create-portal.md) |
 
-Verwenden Sie zum Erstellen eines virtuellen Linux-Computers mithilfe der Azure CLI den Befehl [az vm create](/cli/azure/vm).  Im folgenden Beispiel wird ein Benutzerkonto mit dem Namen *azureuser* hinzugefügt. Der Parameter `--generate-ssh-keys` wird genutzt, um automatisch einen SSH-Schlüssel zu generieren und am Speicherort für den Standardschlüssel abzulegen ( *~/.ssh* ). 
+Verwenden Sie zum Erstellen eines virtuellen Linux-Computers mithilfe der Azure CLI den Befehl [az vm create](/cli/azure/vm).  Im folgenden Beispiel wird ein Benutzerkonto mit dem Namen *azureuser* hinzugefügt. Der Parameter `--generate-ssh-keys` wird genutzt, um automatisch einen SSH-Schlüssel zu generieren und am Speicherort für den Standardschlüssel abzulegen ( *~/.ssh*). 
 
 ```azurecli-interactive
 az vm create \
@@ -81,7 +81,7 @@ Beachten Sie den Wert von `publicIpAddress` in der Ausgabe.
 
 ## <a name="assign-an-identity-to-the-vm"></a>Zuweisen einer Identität zum virtuellen Computer
 
-Erstellen Sie für den virtuellen Computer mit dem Azure CLI-Befehl [az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) eine systemseitig zugewiesene Identität:
+Erstellen Sie für den virtuellen Computer mit dem Azure CLI-Befehl [az vm identity assign](/cli/azure/vm/identity#az-vm-identity-assign) eine systemseitig zugewiesene Identität:
 
 ```azurecli
 az vm identity assign --name "myVM" --resource-group "myResourceGroup"

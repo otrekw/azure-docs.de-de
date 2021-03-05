@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 6c628d93c112a770c85a10d0eff958614a7cf4cb
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 59c5ca9ce9e95319b36e002da0b5d1438ef3fdd1
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814158"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203775"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Schnellstart: Erstellen und Konfigurieren eines Azure DDoS Protection Standard-Plans über die Azure CLI
 
@@ -39,7 +39,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 In Azure ordnen Sie verwandte Ressourcen einer Ressourcengruppe zu. Sie können entweder eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen.
 
-Verwenden Sie zum Erstellen einer Ressourcengruppe [az group create](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-create). In diesem Beispiel legen wir für die Ressourcengruppe den Namen _MyResourceGroup_ fest, und wir verwenden den Standort _USA, Osten_:
+Verwenden Sie zum Erstellen einer Ressourcengruppe [az group create](/cli/azure/group#az-group-create). In diesem Beispiel legen wir für die Ressourcengruppe den Namen _MyResourceGroup_ fest, und wir verwenden den Standort _USA, Osten_:
 
 ```azurecli-interactive
 az group create \
@@ -67,6 +67,7 @@ az network vnet create \
     --name MyVnet \
     --location eastus \
     --ddos-protection true
+    --ddos-protection-plan MyDdosProtectionPlan
 ```
 
 Ein virtuelles Netzwerk kann nicht in eine andere Ressourcengruppe oder ein anderes Abonnement verschoben werden, wenn der DDoS-Standard für das virtuelle Netzwerk aktiviert ist. Wenn Sie ein virtuelles Netzwerks mit aktiviertem DDoS-Standard verschieben müssen, deaktivieren Sie zuerst den DDoS-Standard, verschieben Sie das virtuelle Netzwerk, und aktivieren Sie dann den DDoS-Standard. Nach der Verschiebung werden die automatisch optimierten Schwellenwerte der Richtlinie für alle geschützten, öffentlichen IP-Adressen im virtuellen Netzwerk zurückgesetzt.
@@ -83,7 +84,7 @@ az group create \
 az network ddos-protection create \
     --resource-group MyResourceGroup \
     --name MyDdosProtectionPlan
-    --vnet MyVnet
+    --vnets MyVnet
 ```
 
 Alternativ können Sie den DDoS-Schutz auch für ein vorhandenes virtuelles Netzwerk aktivieren:
@@ -91,8 +92,9 @@ Alternativ können Sie den DDoS-Schutz auch für ein vorhandenes virtuelles Netz
 ```azurecli-interactive
 az network vnet update \
     --resource-group MyResourceGroup \
-    --vnet MyVnet \
+    --name MyVnet \
     --ddos-protection true
+    --ddos-protection-plan MyDdosProtectionPlan
 ```
 
 ## <a name="validate-and-test"></a>Überprüfen und Testen
@@ -111,7 +113,7 @@ Stellen Sie sicher, dass der Befehl die korrekten Details Ihres DDoS-Schutzplans
 
 Sie können Ihre Ressourcen für das nächste Tutorial beibehalten. Löschen Sie die Ressourcengruppe _MyResourceGroup_, wenn Sie sie nicht mehr benötigen. Wenn Sie die Ressourcengruppe löschen, werden auch der DDoS-Schutzplan und alle zugehörigen Ressourcen gelöscht. 
 
-Führen Sie [az group delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az_group_delete) aus, um die Ressourcengruppe zu löschen:
+Führen Sie [az group delete](/cli/azure/group#az_group_delete) aus, um die Ressourcengruppe zu löschen:
 
 ```azurecli-interactive
 az group delete \
@@ -123,8 +125,9 @@ Aktualisieren Sie ein vorhandenes virtuelles Netzwerk, um den DDoS-Schutz zu dea
 ```azurecli-interactive
 az network vnet update \
     --resource-group MyResourceGroup \
-    --vnet MyVnet \
+    --name MyVnet \
     --ddos-protection false
+    --ddos-protection-plan ""
 ```
 
 Wenn Sie einen DDoS-Schutzplan löschen möchten, müssen Sie zuerst die Zuordnung aller virtuellen Netzwerke für diesen Plan aufheben. 
