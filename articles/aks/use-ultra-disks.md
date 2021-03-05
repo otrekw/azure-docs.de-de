@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Ultra Disks in einem Azure Kubernetes Service
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 049c2682a8f61bb658083b0418a4fcf99dc477a5
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: d66b806adb7285e0ce2a21d8fe9254b3dbe89bcb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900036"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178846"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Verwenden von Azure Ultra Disks in Azure Kubernetes Service (Vorschauversion)
 
@@ -38,7 +38,7 @@ Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wi
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableUltraSSD')].{Name:name,State:properties.state}"
 ```
 
-Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider register][az-provider-register] die Registrierung des Ressourcenanbieters *Microsoft.ContainerService* :
+Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider register][az-provider-register] die Registrierung des Ressourcenanbieters *Microsoft.ContainerService*:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -48,7 +48,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
 
-Um einen AKS-Cluster oder Knotenpool zu erstellen, der Ultra Disks verwenden kann, benötigen Sie die aktuelle CLI-Erweiterung *aks-preview* . Installieren Sie die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], oder installieren Sie mit dem Befehl [az extension update][az-extension-update] alle verfügbaren Updates:
+Um einen AKS-Cluster oder Knotenpool zu erstellen, der Ultra Disks verwenden kann, benötigen Sie die aktuelle CLI-Erweiterung *aks-preview*. Installieren Sie die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], oder installieren Sie mit dem Befehl [az extension update][az-extension-update] alle verfügbaren Updates:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -130,7 +130,7 @@ storageclass.storage.k8s.io/ultra-disk-sc created
 
 Ein Anspruch auf ein persistentes Volume (Persistent Volume Claim, PVC) wird verwendet, um basierend auf einer Speicherklasse automatisch Speicher bereitzustellen. In diesem Fall kann ein Anspruch auf ein persistentes Volume die zuvor erstellte Speicherklasse zum Erstellen einer Ultra Disk verwenden.
 
-Erstellen Sie eine Datei namens `azure-ultra-disk-pvc.yaml`, und fügen Sie das folgende Manifest ein. Der Anspruch fordert einen Datenträger namens `ultra-disk` mit einer Größe von *1.000 GB* und *ReadWriteOnce* -Zugriff an. Als Speicherklasse ist *ultra-disk-sc* angegeben.
+Erstellen Sie eine Datei namens `azure-ultra-disk-pvc.yaml`, und fügen Sie das folgende Manifest ein. Der Anspruch fordert einen Datenträger namens `ultra-disk` mit einer Größe von *1.000 GB* und *ReadWriteOnce*-Zugriff an. Als Speicherklasse ist *ultra-disk-sc* angegeben.
 
 ```yaml
 apiVersion: v1
@@ -246,8 +246,8 @@ Events:
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add
-[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update
-[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

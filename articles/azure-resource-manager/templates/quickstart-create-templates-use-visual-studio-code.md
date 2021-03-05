@@ -5,18 +5,18 @@ author: neilpeterson
 ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: d8fd44a1e4c1ddfd78b2afa3280bb05c8fde91e3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 97f956c1b1c1ea18242dc656c533451eda29dc6d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350142"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179050"
 ---
 # <a name="quickstart-create-arm-templates-with-visual-studio-code"></a>Schnellstart: Erstellen von ARM-Vorlagen mit Visual Studio Code
 
 Die Azure Resource Manager-Tools für Visual Studio Code bieten Sprachunterstützung, Ressourcenausschnitte und eine automatische Vervollständigung für Ressourcen. Diese Tools unterstützen Sie beim Erstellen und Überprüfen von Azure Resource Manager-Vorlagen (ARM-Vorlagen). In dieser Schnellstartanleitung wird mithilfe der Erweiterung eine ganz neue ARM-Vorlage erstellt. Dabei werden Erweiterungsfunktionen wie ARM-Vorlagenausschnitte, Überprüfung, Vervollständigungen und die Unterstützung einer Parameterdatei genutzt.
 
-Für diese Schnellstartanleitung benötigen Sie [Visual Studio Code](https://code.visualstudio.com/) mit installierter Erweiterung [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools). Außerdem muss entweder die [Azure-Befehlszeilenschnittstelle](/cli/azure/?view=azure-cli-latest) oder das [Azure PowerShell-Modul](/powershell/azure/new-azureps-module-az?view=azps-3.7.0) installiert und authentifiziert sein.
+Für diese Schnellstartanleitung benötigen Sie [Visual Studio Code](https://code.visualstudio.com/) mit installierter Erweiterung [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools). Außerdem muss entweder die [Azure-Befehlszeilenschnittstelle](/cli/azure/) oder das [Azure PowerShell-Modul](/powershell/azure/new-azureps-module-az?view=azps-3.7.0) installiert und authentifiziert sein.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 

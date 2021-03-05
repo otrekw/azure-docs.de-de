@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/19/2019
-ms.openlocfilehash: 8298c673ddc707130d0873f686e1baed3677a46f
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 68fa089713c3dd89b4699011ded7d667bca6f73f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593968"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178071"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Tutorial: Hinzufügen einer Azure SQL-Datenbank-Instanz zu einer Autofailovergruppe
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,7 +49,7 @@ Für dieses Tutorial wird Folgendes vorausgesetzt:
 Für dieses Tutorial wird Folgendes vorausgesetzt:
 
 - Ein Azure-Abonnement. [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen.
-- Die aktuelle Version der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+- Die aktuelle Version der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 
 ---
 
@@ -91,7 +91,7 @@ Erstellen Sie Ihre Failovergruppe, und fügen Sie Ihre Datenbank mithilfe des Az
 
    - **Datenbank innerhalb der Gruppe**: Sobald ein sekundärer Server ausgewählt wurde, wird diese Option entsperrt. Wählen Sie die Option aus, um **Hinzuzufügende Datenbank auswählen** auszuwählen. Wählen Sie anschließend die in Abschnitt 1 erstellte Datenbank aus. Durch das Hinzufügen der Datenbank zur Failovergruppe wird automatisch der Georeplikationsprozess gestartet.
 
-   ![Hinzufügen einer SQL-Datenbank-Instanz zur Failovergruppe](./media/failover-group-add-single-database-tutorial/add-sqldb-to-failover-group.png)
+   ![Hinzufügen von Azure SQL-Datenbank zu einer Failovergruppe](./media/failover-group-add-single-database-tutorial/add-sqldb-to-failover-group.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -197,9 +197,9 @@ In diesem Teil des Tutorials werden die folgenden Azure CLI-Cmdlets verwendet:
 
 | Get-Help | Notizen |
 |---|---|
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Dieses Cmdlet erstellt einen Server, der Datenbanken und Pools für elastische Datenbanken hostet. |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Erstellt einen Server, der Datenbanken und Pools für elastische Datenbanken hostet. |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | Erstellt die Firewallregeln eines Servers. |
-| [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create&preserve-view=true) | Erstellt eine Failovergruppe. |
+| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) | Erstellt eine Failovergruppe. |
 
 ---
 
@@ -322,8 +322,8 @@ In diesem Teil des Tutorials werden die folgenden Azure CLI-Cmdlets verwendet:
 
 | Get-Help | Notizen |
 |---|---|
-| [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list&preserve-view=true) | Listet die Failovergruppen eines Servers auf. |
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary&preserve-view=true) | Legt die primäre Failovergruppe fest, indem für alle Datenbanken auf dem aktuellen primären Server ein Failover ausgeführt wird. |
+| [az sql failover-group list](/cli/azure/sql/failover-group#az-sql-failover-group-list) | Listet die Failovergruppen eines Servers auf. |
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Legt die primäre Failovergruppe fest, indem für alle Datenbanken auf dem aktuellen primären Server ein Failover ausgeführt wird. |
 
 ---
 
@@ -409,14 +409,14 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Get-Help | Notizen |
 |---|---|
-| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) | Legt ein Abonnement als aktuelles aktives Abonnement fest. |
+| [az account set](/cli/azure/account#az-account-set) | Legt ein Abonnement als aktuelles aktives Abonnement fest. |
 | [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Dieses Cmdlet erstellt einen Server, der Singletons und Pools für elastische Datenbanken in Azure SQL-Datenbank hostet. |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | Dieses Cmdlet erstellt IP-Firewallregeln auf Serverebene in Azure SQL-Datenbank. |
-| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest&preserve-view=true) | Dieses Cmdlet erstellt eine Datenbank in Azure SQL-Datenbank. |
-| [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create&preserve-view=true) | Dieses Cmdlet erstellt eine Failovergruppe in Azure SQL-Datenbank. |
-| [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list&preserve-view=true) | Dieses Cmdlet listet die Failovergruppen eines Servers in Azure SQL-Datenbank auf. |
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary&preserve-view=true) | Legt die primäre Failovergruppe fest, indem für alle Datenbanken auf dem aktuellen primären Server ein Failover ausgeführt wird. |
+| [az sql db create](/cli/azure/sql/db) | Dieses Cmdlet erstellt eine Datenbank in Azure SQL-Datenbank. |
+| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) | Dieses Cmdlet erstellt eine Failovergruppe in Azure SQL-Datenbank. |
+| [az sql failover-group list](/cli/azure/sql/failover-group#az-sql-failover-group-list) | Dieses Cmdlet listet die Failovergruppen eines Servers in Azure SQL-Datenbank auf. |
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Legt die primäre Failovergruppe fest, indem für alle Datenbanken auf dem aktuellen primären Server ein Failover ausgeführt wird. |
 | [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 # <a name="the-portal"></a>[Portal](#tab/azure-portal)

@@ -4,13 +4,13 @@ description: In diesem Artikel erfahren Sie, wie Sie Drohnenbilder von Partnern 
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 04f0c3c63d00ea49bf43f00f256266599a73d6c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: v-ummehabiba
+ms.openlocfilehash: 18932d2ddb60242b4d7874dddf0349a62cd5c738
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88508803"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177605"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>Abrufen der Drohnenbilder von Drohnenpartnern
 
@@ -35,7 +35,7 @@ Geben Sie die folgenden Informationen an Ihren Geräteanbieter weiter, um die In
  - Client-ID
  - Geheimer Clientschlüssel
 
-Führen Sie folgende Schritte durch:
+Führen Sie die folgenden Schritte aus.
 
 1. Laden Sie dieses [Skript](https://aka.ms/farmbeatspartnerscript) herunter, und extrahieren Sie es auf Ihr lokales Laufwerk. In der ZIP-Datei befinden sich zwei Dateien.
 2. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und öffnen Sie Azure Cloud Shell. Diese Option ist auf der Symbolleiste in der rechten oberen Ecke des Portals verfügbar.

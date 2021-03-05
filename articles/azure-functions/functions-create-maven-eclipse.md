@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: a4e240837dd3c95efc4dc83a7491f2ad9163435a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7dd881d130b9df19335ac64be501553af99d58d8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373316"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179543"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Erstellen der ersten Funktion mit Java und Eclipse 
 
@@ -68,7 +68,7 @@ Legen Sie Breakpoints fest, und überprüfen Sie Objekte in Ihrer Funktion mit d
 
 ## <a name="deploy-the-function-to-azure"></a>Bereitstellen der Funktion in Azure
 
-Bei dem Bereitstellungsprozess in Azure Functions werden die Anmeldeinformationen aus der Azure CLI verwendet. [Melden Sie sich mit der Azure CLI an](/cli/azure/authenticate-azure-cli?view=azure-cli-latest), bevor Sie die Eingabeaufforderung Ihres Computers weiterverwenden.
+Bei dem Bereitstellungsprozess in Azure Functions werden die Anmeldeinformationen aus der Azure CLI verwendet. [Melden Sie sich mit der Azure CLI an](/cli/azure/authenticate-azure-cli), bevor Sie die Eingabeaufforderung Ihres Computers weiterverwenden.
 
 ```azurecli
 az login

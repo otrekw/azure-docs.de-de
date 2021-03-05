@@ -1,17 +1,17 @@
 ---
 title: Anomalieerkennung in Azure Stream Analytics
 description: Dieser Artikel beschreibt, wie Sie Azure Stream Analytics und Azure Machine Learning zusammen verwenden, um Anomalien zu erkennen.
-author: krishna0815
-ms.author: krishmam
 ms.service: stream-analytics
+author: jasonwhowell
+ms.author: jasonh
 ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: c7cb8e40bc9a8f6664d8286ad368e2613495878b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 78730b011e508f98779b9e00624882466d6a03a0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020297"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178491"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomalieerkennung in Azure Stream Analytics
 
@@ -118,7 +118,7 @@ Die Leistungsfähigkeit dieser Modelle hängt von der Verlaufsgröße, der Fenst
 * **Ereignislast** – Je größer die **Ereignislast**, desto mehr Arbeit müssen die Modelle leisten, was sich wiederum auf die CPU-Auslastung auswirkt. Der Auftrag kann durch eine extreme Parallelverarbeitung horizontal skaliert werden. Dabei muss die Verwendung zusätzlicher Eingabepartitionen für die Geschäftslogik jedoch sinnvoll sein.
 * Bei der **Partitionierung auf Funktionsebene** - **Partitionierung auf Funktionsebene** wird ```PARTITION BY``` innerhalb des Funktionsaufrufs der Anomalieerkennung verwendet. Durch diese Partitionierung entsteht ein Mehraufwand, da der Zustand für mehrere Modelle gleichzeitig aufrechterhalten werden muss. Die Partitionierung auf Funktionsebene wird in Szenarien wie der Partitionierung auf Geräteebene verwendet.
 
-### <a name="relationship"></a>Beziehung
+### <a name="relationship"></a>Relationship
 Zwischen der Verlaufsgröße, der Fensterdauer und der Gesamtereignislast besteht folgende Beziehung:
 
 windowDuration (in ms) = 1000 * historySize/(Eingabeereignisse gesamt [s]/Anzahl der Eingabepartitionen)
@@ -131,19 +131,19 @@ In der folgenden Tabelle sind die beobachteten Durchsätze bei einem einzelnen K
 | Verlaufsgröße (Ereignisse) | Fensterdauer (ms) | Eingabeereignisse gesamt/s |
 | --------------------- | -------------------- | -------------------------- |
 | 60 | 55 | 2\.200 |
-| 600 | 728 | 1\.650 |
-| 6\.000 | 10.910 | 1\.100 |
+| 600 | 728 | 1.650 |
+| 6\.000 | 10.910 | 1.100 |
 
 In der folgenden Tabelle sind die beobachteten Durchsätze bei einem einzelnen Knoten (6 SU) mit Partitionierung aufgeführt:
 
 | Verlaufsgröße (Ereignisse) | Fensterdauer (ms) | Eingabeereignisse gesamt/s | Geräteanzahl |
 | --------------------- | -------------------- | -------------------------- | ------------ |
-| 60 | 1\.091 | 1\.100 | 10 |
-| 600 | 10.910 | 1\.100 | 10 |
+| 60 | 1.091 | 1.100 | 10 |
+| 600 | 10.910 | 1.100 | 10 |
 | 6\.000 | 218.182 | < 550 | 10 |
 | 60 | 21.819 | 550 | 100 |
 | 600 | 218.182 | 550 | 100 |
-| 6\.000 | 2\.181.819 | < 550 | 100 |
+| 6\.000 | 2.181.819 | < 550 | 100 |
 
 Codebeispiele zum Ausführen der oben genannten Konfigurationen ohne Partitionierung finden Sie in den Azure-Beispielen im [Streaming At Scale-Repository](https://github.com/Azure-Samples/streaming-at-scale/blob/f3e66fa9d8c344df77a222812f89a99b7c27ef22/eventhubs-streamanalytics-eventhubs/anomalydetection/create-solution.sh). Im Code wird ein Stream Analytics-Auftrag ohne Partitionierung auf Funktionsebene erstellt. Die Ein- und Ausgabe erfolgt über Event Hub. Die Eingabelast wird mithilfe von Testclients generiert. Jedes Eingabeereignis ist ein JSON-Dokument von 1 KB. Mit den Ereignissen wird ein IoT-Gerät simuliert, das JSON-Daten (für bis zu 1.000 Geräte) sendet. Die Verlaufsgröße, die Fensterdauer und die Gesamtereignislast verteilen sich auf zwei Eingabepartitionen:
 

@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: cshoe
 zone_pivot_groups: programming-languages-set-functions-lang-workers
-ms.openlocfilehash: e969cc4bee9f09f4279d137abb33b75ca0672ffc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 77d370b895c777278d3136c7d2c511e7f9e23b36
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364714"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179254"
 ---
 # <a name="getting-started-with-azure-functions"></a>Erste Schritte mit Azure Functions
 
@@ -46,7 +46,7 @@ Verwenden Sie die folgenden Ressourcen, um zu beginnen.
 ::: zone pivot="programming-language-javascript"
 | Aktion | Ressourcen |
 | --- | --- |
-| **Erstellen Ihrer ersten Funktion** | Verwenden Sie eines der folgenden Tools:<br><br><li>[Visual Studio Code](./create-first-function-vs-code-node.md)<li>[Terminal/Eingabeaufforderung für Node.js](./create-first-function-cli-java.md) |
+| **Erstellen Ihrer ersten Funktion** | Verwenden Sie eines der folgenden Tools:<br><br><li>[Visual Studio Code](./create-first-function-vs-code-node.md)<li>[Terminal/Eingabeaufforderung für Node.js](./create-first-function-cli-node.md) |
 | **Ansehen einer ausgeführten Funktion** | <li>[Browser für Azure-Beispiele](/samples/browse/?expanded=azure&languages=javascript%2ctypescript&products=azure-functions)<li>[Azure-Communitybibliothek](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=JavaScript%2CTypeScript) |
 | **Erkunden eines interaktiven Tutorials** | <li>[Auswählen der besten serverlosen Azure-Technologie für Ihr Geschäftsszenario](/learn/modules/serverless-fundamentals/)<li>[Well-Architected Framework: Leistungseffizienz](/learn/modules/azure-well-architected-performance-efficiency/)<li>[Erstellen serverloser APIs mit Azure Functions](/learn/modules/build-api-azure-functions/)<li>[Erstellen von serverloser Logik mit Azure Functions](/learn/modules/create-serverless-logic-with-azure-functions/)<li>[Umgestalten von Node.js- und Express-APIs in serverlose APIs mit Azure Functions](/learn/modules/shift-nodejs-express-apis-serverless/) <br><br>Eine [vollständige Liste interaktiver Tutorials](/learn/browse/?expanded=azure&products=azure-functions) finden Sie bei Microsoft Learn.|
 | **Bewährte Methoden** |<li>[Leistung und Zuverlässigkeit](./functions-best-practices.md)<li>[Verwalten von Verbindungen](./manage-connections.md)<li>[Fehlerbehandlung und Funktionswiederholungen](./functions-bindings-error-pages.md?tabs=javascript)<li>[Security](./security-concepts.md)|

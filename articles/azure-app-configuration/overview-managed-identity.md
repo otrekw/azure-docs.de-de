@@ -7,12 +7,12 @@ ms.date: 02/25/2020
 ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: e6ced30e8c8c5eb60eea3806d9c8080df7c2a12d
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 5424b776b977d8a6939bbb28c5d4c9c428cac444
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979588"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179611"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Verwenden von verwalteten Identitäten für Azure App Configuration
 
@@ -106,5 +106,5 @@ Eine vom System zugewiesene Identität kann entfernt werden, indem das Feature m
 > [!div class="nextstepaction"]
 > [Erstellen einer ASP.NET Core-App mit Azure App Configuration](quickstart-aspnet-core-app.md)
 
-[az appconfig identity assign]: /cli/azure/appconfig/identity?view=azure-cli-latest#az-appconfig-identity-assign
+[az appconfig identity assign]: /cli/azure/appconfig/identity#az-appconfig-identity-assign
 [az login]: /cli/azure/reference-index#az-login

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: e23318684294a833c59fd5666db8c0a14efde890
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f18d1850cb6ccf28ff70f826e3d4bfe74ae05c40
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658502"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178727"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Überwachen von Microsoft Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -125,7 +125,7 @@ Sie können Metriken mit der Option **Apply splitting** (Aufteilung anwenden) gr
 
 ## <a name="analyzing-logs"></a><a id="analyze-log-data"></a> Analysieren von Protokollen
 
-Daten in Azure Monitor-Protokollen werden in Tabellen gespeichert, wobei jede Tabelle ihren eigenen Satz eindeutiger Eigenschaften hat.
+Daten in Azure Monitor-Protokollen werden in Tabellen gespeichert, wobei jede Tabelle ihren eigenen Satz an eindeutigen Eigenschaften hat.
 
 Alle Ressourcenprotokolle in Azure Monitor enthalten dieselben Felder, gefolgt von dienstspezifischen Feldern. Das allgemeine Schema wird in [Azure Monitor-Ressourcenprotokollschema](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema) beschrieben. Eine Liste der für Azure Cosmos DB erfassten Typen von Ressourcenprotokollen finden Sie im Artikel [Ressourcenprotokolle](monitor-cosmos-db-reference.md#resource-logs).
 

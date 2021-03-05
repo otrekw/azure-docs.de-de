@@ -4,13 +4,13 @@ description: In diesem Artikel wird beschrieben, wie die Datenwiederherstellung 
 author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
-ms.author: v-umha
-ms.openlocfilehash: bdd59d078da1df021b7e23ec858ba7305f72cfa1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: 9ece624546cab1b8b6fab8c19f4401bd050f6267
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164209"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179883"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>Notfallwiederherstellung für FarmBeats
 
@@ -26,9 +26,9 @@ In den folgenden Abschnitten finden Sie Informationen zum Konfigurieren der Date
 
 ## <a name="enable-data-redundancy"></a>Aktivieren von Datenredundanz
 
-FarmBeats speichert Daten in drei Azure-Erstanbieterdiensten: **Azure Storage** , **Cosmos DB** und **Time Series Insights** . Führen Sie die folgenden Schritte aus, um Datenredundanz für diese Dienste in einer gekoppelten Azure-Region zu aktivieren:
+FarmBeats speichert Daten in drei Azure-Erstanbieterdiensten: **Azure Storage**, **Cosmos DB** und **Time Series Insights**. Führen Sie die folgenden Schritte aus, um Datenredundanz für diese Dienste in einer gekoppelten Azure-Region zu aktivieren:
 
-1.  **Azure Storage** : Befolgen Sie diese Anleitung, um Datenredundanz für jedes Speicherkonto in Ihrer FarmBeats-Bereitstellung zu aktivieren.
+1.  **Azure Storage**: Befolgen Sie diese Anleitung, um Datenredundanz für jedes Speicherkonto in Ihrer FarmBeats-Bereitstellung zu aktivieren.
 2.  **Azure Cosmos DB:** Befolgen Sie diese Anleitung, um Datenredundanz für ein Cosmos DB-Konto in Ihrer FarmBeats-Bereitstellung zu aktivieren.
 3.  **Azure Time Series Insights (TSI):** TSI bietet derzeit keine Datenredundanz. Um Time Series Insights-Daten wiederherzustellen, wechseln Sie zu Ihrem Sensor-/Wetterpartner, und pushen Sie die Daten erneut an die FarmBeats-Bereitstellung.
 

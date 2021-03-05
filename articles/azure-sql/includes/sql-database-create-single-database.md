@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: 57f504b15c0a9c72a2cb0f17b486846f44171a25
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c7bd942b427bdbd2d8184f712f97dd2a0a57fa90
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101682402"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178070"
 ---
 In diesem Schritt werden ein [logischer SQL-Server](../database/logical-servers.md) und eine [Einzeldatenbank](../database/single-database-overview.md) mit AdventureWorksLT-Beispieldaten erstellt. Sie können die Datenbank über Menüs und Bildschirme des Azure-Portals erstellen oder die Azure-Befehlszeilenschnittstelle oder ein PowerShell-Skript in Azure Cloud Shell verwenden.
 
@@ -151,11 +151,11 @@ Im obigen Code werden folgende Azure CLI-Befehle verwendet:
 
 | Get-Help | BESCHREIBUNG |
 |---|---|
-| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) | Legt ein Abonnement als aktuelles aktives Abonnement fest. |
+| [az account set](/cli/azure/account#az-account-set) | Legt ein Abonnement als aktuelles aktives Abonnement fest. |
 | [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Erstellt einen Server, der Datenbanken und Pools für elastische Datenbanken hostet. |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | Erstellt eine Firewallregel auf Serverebene. |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest&preserve-view=true) | Erstellt eine Datenbank. |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Erstellt eine Datenbank. |
 
 Weitere Azure CLI-Beispiele für Azure SQL-Datenbank finden Sie [hier](../database/az-cli-script-samples-content-guide.md).
 
