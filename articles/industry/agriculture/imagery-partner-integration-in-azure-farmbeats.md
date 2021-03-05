@@ -4,14 +4,14 @@ description: In diesem Artikel wird die Integration eines Partnerunternehmens f√
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
+ms.author: v-ummehabiba
 ms.custom: has-adal-ref
-ms.openlocfilehash: 40e17a9f73d98f24c6c7fbb55ef38cc2bc088861
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1bc723892e29ccc24a7612cfbe50d4b274cdacdf
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675936"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183793"
 ---
 # <a name="imagery-partner-integration"></a>Integration eines Partnerunternehmens f√ºr Bilder
 

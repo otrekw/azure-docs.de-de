@@ -6,12 +6,12 @@ author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 486dc2ab3a14917e8c7bdddf8b5b9c6f9da1a1dc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: fea572c2e75f62b5e7e7b4634e37da348bdcdaf1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373996"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183487"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Transformieren von Daten durch Ausführen eines Databricks-Notebooks
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -114,10 +114,10 @@ In bestimmten Fällen müssen Sie möglicherweise bestimmte Werte aus dem Notebo
 
 1. Sie können in Ihrem Notebook [dbutils.notebook.exit("returnValue")](/azure/databricks/notebooks/notebook-workflows#notebook-workflows-exit) aufrufen, und der entsprechende Rückgabewert (returnValue) wird an Data Factory zurückgeben.
 
-2. Mit einem Ausdruck wie `'@activity('databricks notebook activity name').output.runOutput'` können Sie die Ausgabe in Data Factory verwenden.
+2. Mit einem Ausdruck wie `@{activity('databricks notebook activity name').output.runOutput}` können Sie die Ausgabe in Data Factory verwenden. 
 
    > [!IMPORTANT]
-   > Wenn Sie ein JSON-Objekt übergeben, können Sie Werte abrufen, indem Sie Eigenschaftsnamen anhängen. Beispiel: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
+   > Wenn Sie ein JSON-Objekt übergeben, können Sie Werte abrufen, indem Sie Eigenschaftsnamen anhängen. Beispiel: `@{activity('databricks notebook activity name').output.runOutput.PropertyName}`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Hochladen einer Bibliothek in Databricks
 
