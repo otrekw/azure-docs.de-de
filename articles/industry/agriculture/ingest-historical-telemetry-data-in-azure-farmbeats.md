@@ -4,14 +4,14 @@ description: In diesem Artikel wird beschrieben, wie historische Telemetriedaten
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
+ms.author: v-ummehabiba
 ms.custom: has-adal-ref
-ms.openlocfilehash: 603f14d2076b5b74dde0b92a732f8fe816f6dd10
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e4182f3718422be3a0aa99c980d33026df4ce9af
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656783"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173748"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Erfassen historischer Telemetriedaten
 
@@ -114,7 +114,7 @@ Folgen Sie diesen Schritten:
 | DeviceModelId | ID des zugeordneten Gerätemodells |
 | HardwareId | Eindeutige ID für das Gerät, z. B. die MAC-Adresse |
 | ReportingInterval | Berichtsintervall in Sekunden |
-| Position | Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Geräts |
+| Standort | Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Geräts |
 | ParentDeviceId | ID des übergeordneten Geräts, mit dem dieses Gerät verbunden ist. Beispielsweise ein Knoten, der mit einem Gateway verbunden ist. Ein Knoten weist die parentDeviceId als Gateway auf. |
 | Name | Ein Name zum Identifizieren der Ressource. Gerätepartner müssen einen Namen senden, der mit dem Gerätenamen auf der Partnerseite konsistent ist. Ist der Partnergerätename benutzerdefiniert, muss der gleiche benutzerdefinierte Name in FarmBeats angegeben werden. |
 | BESCHREIBUNG | Eine aussagekräftige Beschreibung |
@@ -134,7 +134,7 @@ Folgen Sie diesen Schritten:
 | **Sensor** |  |
 | HardwareId | Eindeutige, vom Hersteller festgelegte ID für den Sensor |
 | SensorModelId | ID des zugeordneten Sensormodells |
-| Position | Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Sensors |
+| Standort | Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Sensors |
 | Port > Name | Name und Typ des Ports, über den der Sensor mit dem Gerät verbunden ist. Hierbei muss es sich um denselben Namen handeln, der auch im Gerätemodell definiert ist. |
 | DeviceID | ID des Geräts, mit dem der Sensor verbunden ist |
 | Name | Der Name zur Identifizierung der Ressource. Beispiel: Sensorname oder Produktname und Modellnummer oder Produktcode |

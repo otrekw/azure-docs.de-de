@@ -4,13 +4,13 @@ description: Hier erfahren Sie, wie Sie landwirtschaftliche Betriebe verwalten.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: dc06f7c75e27d831994b97b97f3d20bb34c3a6c5
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: 050b3b4d67eda9b6c9b4621c014e3e6baad34053
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167932"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173799"
 ---
 # <a name="manage-farms"></a>Verwalten landwirtschaftlicher Betriebe
 
@@ -28,7 +28,7 @@ Führen Sie die folgenden Schritte durch:
     ![Screenshot der Seite „Farms“](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
 
 
-2. Wählen Sie **Create Farm** (Landwirtschaftlichen Betrieb erstellen) aus, und machen Sie unter **Name** , **Crops** (Anbauprodukt) und **Adresse** entsprechende Angaben.
+2. Wählen Sie **Create Farm** (Landwirtschaftlichen Betrieb erstellen) aus, und machen Sie unter **Name**, **Crops** (Anbauprodukt) und **Adresse** entsprechende Angaben.
 3. Wählen Sie im Pflichtfeld **Define Farm Boundary** (Grenze des landwirtschaftlichen Betriebs definieren) entweder **Mark on Map** (Auf Karte markieren) oder **Paste GeoJSON code** (GeoJSON-Code einfügen) aus.
 
 Die Grenze eines landwirtschaftlichen Betriebs kann auf zwei Arten definiert werden:
@@ -48,9 +48,9 @@ Nutzen Sie die QuickInfos, wenn Sie Hilfe beim Ausfüllen benötigen.
 
 Auf der Seite mit der Liste landwirtschaftlicher Betriebe wird eine Liste mit den erstellten landwirtschaftlichen Betrieben angezeigt. Wählen Sie einen landwirtschaftlichen Betrieb aus, um eine Liste mit folgenden Informationen anzuzeigen:
 
- - **Geräteanzahl** : Anzahl und Status der Geräte, die innerhalb des landwirtschaftlichen Betriebs bereitgestellt sind.
- - **Karte** : Karte des landwirtschaftlichen Betriebs mit den bereitgestellten Geräten.
- - **Telemetrie** : Die Telemetriedaten der innerhalb des landwirtschaftlichen Betriebs bereitgestellten Sensoren.
+ - **Geräteanzahl**: Anzahl und Status der Geräte, die innerhalb des landwirtschaftlichen Betriebs bereitgestellt sind.
+ - **Karte**: Karte des landwirtschaftlichen Betriebs mit den bereitgestellten Geräten.
+ - **Telemetrie**: Die Telemetriedaten der innerhalb des landwirtschaftlichen Betriebs bereitgestellten Sensoren.
  - **Latest Precision Maps** (Neueste Präzisionskarten): Die neueste Satellitenindizes-Karte (EVI, NDWI), die neueste Heatmap für die Bodenfeuchtigkeit sowie die neueste Karte für Sensorplatzierungen.
 
 ## <a name="edit-farm"></a>Bearbeiten des landwirtschaftlichen Betriebs
@@ -58,7 +58,7 @@ Auf der Seite mit der Liste landwirtschaftlicher Betriebe wird eine Liste mit de
 Auf der Seite **Farms** (Landwirtschaftliche Betriebe) wird eine Liste mit den erstellten landwirtschaftlichen Betrieben angezeigt.
 
 1.  Wählen Sie einen landwirtschaftlichen Betrieb aus, um ihn anzuzeigen und zu bearbeiten.
-2.  Wählen Sie **Edit Farm** (Landwirtschaftlichen Betrieb bearbeiten) aus, um die Informationen zu bearbeiten. Im Fenster **Farm Details** (Details zum landwirtschaftlichen Betrieb) können Sie die Felder **Name** , **Crops** (Anbauprodukte) und **Adresse** bearbeiten sowie **Farm Boundary** (Grenze des landwirtschaftlichen Betriebs) definieren.
+2.  Wählen Sie **Edit Farm** (Landwirtschaftlichen Betrieb bearbeiten) aus, um die Informationen zu bearbeiten. Im Fenster **Farm Details** (Details zum landwirtschaftlichen Betrieb) können Sie die Felder **Name**, **Crops** (Anbauprodukte) und **Adresse** bearbeiten sowie **Farm Boundary** (Grenze des landwirtschaftlichen Betriebs) definieren.
 
     ![FarmBeats-Projekt](./media/create-farms-in-azure-farmbeats/edit-farm-1.png)
 

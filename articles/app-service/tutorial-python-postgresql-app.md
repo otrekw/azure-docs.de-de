@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 6112247a99c519aad8aadf7946c7707480b3b491
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: a9f8fe10c5ffa787a6c170a29188cba21427b602
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558422"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175157"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Tutorial: Bereitstellen einer Django-Web-App mit PostgreSQL in Azure App Service
 
@@ -231,7 +231,7 @@ Durch Django-Datenbankmigrationen wird sichergestellt, dass das Schema in der Po
 
     Ersetzen Sie `<app-name>` durch den Namen, den Sie zuvor in dem Befehl `az webapp up` verwendet haben.
 
-    Sie können alternativ mit dem Befehl [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) eine Verbindung mit einer SSH-Sitzung herstellen. Unter Windows ist für diesen Befehl die Azure CLI 2.18.0 oder höher erforderlich.
+    Sie können alternativ mit dem Befehl [`az webapp ssh`](/cli/azure/webapp#az_webapp_ssh) eine Verbindung mit einer SSH-Sitzung herstellen. Unter Windows ist für diesen Befehl die Azure CLI 2.18.0 oder höher erforderlich.
 
     Können Sie keine Verbindung mit der SSH-Sitzung herstellen, konnte die App selbst nicht gestartet werden. Ausführliche Informationen finden Sie in den [Diagnoseprotokollen](#6-stream-diagnostic-logs). Wenn Sie beispielsweise nicht die erforderlichen App-Einstellungen im vorherigen Abschnitt erstellt haben, ist in den Protokollen `KeyError: 'DBNAME'`angegeben.
 

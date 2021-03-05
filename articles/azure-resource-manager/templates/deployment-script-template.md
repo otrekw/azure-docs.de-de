@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/28/2020
 ms.author: jgao
-ms.openlocfilehash: 574dcf50111c14f4924f009a74ed6f2ac2bb31e9
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 9d045fb75838ac016f3e9b04cd2519d8a8530a4b
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733839"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175650"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Verwenden von Bereitstellungsskripts in ARM-Vorlagen
 
@@ -141,7 +141,7 @@ Details zu Eigenschaftswerten:
 - `azPowerShellVersion`/`azCliVersion`: Geben Sie die zu verwendende Modulversion an. Eine Liste mit den unterstützten Azure PowerShell-Versionen finden Sie [hier](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Eine Liste mit den unterstützten Azure CLI-Versionen finden Sie [hier](https://mcr.microsoft.com/v2/azure-cli/tags/list).
 
   >[!IMPORTANT]
-  > Das Bereitstellungsskript verwendet die verfügbaren CLI-Images von Microsoft Container Registry (MCR). Das Zertifizieren eines CLI-Images für das Bereitstellungsskript dauert ungefähr einen Monat. Verwenden Sie nicht die CLI-Versionen, die innerhalb von 30 Tagen veröffentlicht wurden. Die Veröffentlichungsdaten für die Images finden Sie unter [Versionshinweise für die Azure CLI](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Wenn eine nicht unterstützte Version verwendet wird, werden in der Fehlermeldung die unterstützten Versionen aufgelistet.
+  > Das Bereitstellungsskript verwendet die verfügbaren CLI-Images von Microsoft Container Registry (MCR). Das Zertifizieren eines CLI-Images für das Bereitstellungsskript dauert ungefähr einen Monat. Verwenden Sie nicht die CLI-Versionen, die innerhalb von 30 Tagen veröffentlicht wurden. Die Veröffentlichungsdaten für die Images finden Sie unter [Versionshinweise für die Azure CLI](/cli/azure/release-notes-azure-cli). Wenn eine nicht unterstützte Version verwendet wird, werden in der Fehlermeldung die unterstützten Versionen aufgelistet.
 
 - `arguments`: Geben Sie die Parameterwerte an. Die Werte werden durch Leerzeichen voneinander getrennt.
 
@@ -377,10 +377,10 @@ Timeout             : PT1H
 
 Über die Azure-Befehlszeilenschnittstelle können Sie Bereitstellungsskripts im Abonnement- oder Ressourcengruppenbereich verwalten:
 
-- [az deployment-scripts delete](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-delete): Dient zum Löschen eines Bereitstellungsskripts.
-- [az deployment-scripts list](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-list): Dient zum Auflisten aller Bereitstellungsskripts.
-- [az deployment-scripts show](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-show): Dient zum Abrufen eines Bereitstellungsskripts.
-- [az deployment-scripts show-log](/cli/azure/deployment-scripts?view=azure-cli-lates&preserve-view=truet#az-deployment-scripts-show-log): Dient zum Anzeigen von Bereitstellungsskriptprotokollen.
+- [az deployment-scripts delete](/cli/azure/deployment-scripts#az-deployment-scripts-delete): Dient zum Löschen eines Bereitstellungsskripts.
+- [az deployment-scripts list](/cli/azure/deployment-scripts#az-deployment-scripts-list): Dient zum Auflisten aller Bereitstellungsskripts.
+- [az deployment-scripts show](/cli/azure/deployment-scripts#az-deployment-scripts-show): Dient zum Abrufen eines Bereitstellungsskripts.
+- [az deployment-scripts show-log](/cli/azure/deployment-scripts#az-deployment-scripts-show-log): Dient zum Anzeigen von Bereitstellungsskriptprotokollen.
 
 Die Ausgabe des Befehls „list“ sieht in etwa wie folgt aus:
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a70b8be6c034f002f0e387b5d3b4ba5deafa1a5e
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: e3d3a41e4100e36ae2400c8076d4c5b713b899d6
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120503"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174868"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -555,7 +555,7 @@ Das Element **UseTechnicalProfileForSessionManagement** verweist auf ein [techni
 
 ## <a name="enabled-for-user-journeys"></a>Aktiviert für User Journeys
 
-Das [ClaimsProviderSelections](userjourneys.md#identity-provider-selection)-Element in einer User Journey definiert die Liste der Auswahloptionen für Anspruchsanbieter und deren Reihenfolge. Mit dem **EnabledForUserJourneys**-Element filtern Sie, welcher Anspruchsanbieter für den Benutzer verfügbar ist. Das **EnabledForUserJourneys**-Element enthält einen der folgenden Werte:
+Das [ClaimsProviderSelections](userjourneys.md#claims-provider-selection)-Element in einer User Journey definiert die Liste der Auswahloptionen für Anspruchsanbieter und deren Reihenfolge. Mit dem **EnabledForUserJourneys**-Element filtern Sie, welcher Anspruchsanbieter für den Benutzer verfügbar ist. Das **EnabledForUserJourneys**-Element enthält einen der folgenden Werte:
 
 - **Immer** – das technische Profil wird ausgeführt.
 - **Nie** – das technische Profil wird übersprungen.

@@ -4,13 +4,13 @@ description: Es wird beschrieben, wie Sie in Azure FarmBeats ein Wärmebild zur 
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 2887e7c5fd875942c3d19391267ddbb9b73ccfec
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: dd8d688355e0f71ce77cdbc6012d788c7b16d825
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165552"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173782"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Generieren eines Wärmebilds zur Bodenfeuchtigkeit
 

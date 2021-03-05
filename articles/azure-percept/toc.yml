@@ -90,6 +90,8 @@
           href: vision-solution-troubleshooting.md
         - name: "Problembehandlung für Azure\_Percept-Audio"
           href: troubleshoot-audio-accessory-speech-module.md
+        - name: Bekannte Probleme
+          href: known-issues.md
 - name: Verweis
   items:
     - name: "Datenblätter für Azure\_Percept-Geräte"
@@ -98,5 +100,5 @@
           href: azure-percept-dk-datasheet.md
         - name: "Datenblatt für Azure\_Percept-Vision"
           href: azure-percept-vision-datasheet.md
-        - name: "Datenblatt für Azure\_Percept-Audio"
+        - name: Datenblatt für Azure Percept-Audio
           href: azure-percept-audio-datasheet.md

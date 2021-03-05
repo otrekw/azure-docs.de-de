@@ -11,12 +11,12 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 039dd8b6fa0769b6798630e666bfbf6de48ccf14
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7e5eb77a27a7c74ad9738a0e1784066a6a859e43
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649239"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175367"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>Browserunterstützung der kennwortlosen FIDO2-Authentifizierung
 
@@ -26,12 +26,14 @@ Azure Active Directory ermöglicht die Verwendung von [FIDO2-Sicherheitsschlüss
 
 In der folgenden Tabelle wird die Unterstützung für das Authentifizieren von Azure Active Directory-Konten (Azure AD-Konten) und Microsoft-Konten (MSA) aufgeführt. Microsoft-Konten werden von Kunden für Dienste wie Xbox, Skype oder Outlook.com erstellt. Zu den unterstützten Gerätetypen gehören **USB**, Near-Field Communication (**NFC**) und Bluetooth Low Energy (**BLE**).
 
-|  | Chrome |  |  | Edge |  |  | Firefox |  |  |
+| OS | Chrome | Chrome  | Chrome | Edge | Edge | Edge | Firefox | Firefox | Firefox |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | | USB | NFC | BLE | USB | NFC | BLE | USB | NFC | BLE |
 | **Windows**  | ![Chrome unterstützt USB unter Windows für AAD-Konten.][y] | ![Chrome unterstützt NFC unter Windows für AAD-Konten.][y] | ![Chrome unterstützt BLE unter Windows für AAD-Konten.][y] | ![Edge unterstützt USB unter Windows für AAD-Konten.][y] | ![Edge unterstützt NFC unter Windows für AAD-Konten.][y] | ![Edge unterstützt BLE unter Windows für AAD-Konten.][y] | ![Firefox unterstützt USB unter Windows für AAD-Konten.][y] | ![Firefox unterstützt NFC unter Windows für AAD-Konten.][y] | ![Firefox unterstützt BLE unter Windows für AAD-Konten.][y] |
 | **macOS**  | ![Chrome unterstützt USB unter macOS für AAD-Konten.][y] | ![Chrome bietet unter macOS keine Unterstützung für NFC für AAD-Konten.][n] | ![Chrome bietet unter macOS keine Unterstützung für BLE für AAD-Konten.][n] | ![Edge unterstützt USB unter macOS für AAD-Konten.][y] | ![Edge bietet unter macOS keine Unterstützung für NFC für AAD-Konten.][n] | ![Edge bietet unter macOS keine Unterstützung für BLE für AAD-Konten.][n] | ![Firefox bietet unter macOS keine Unterstützung für USB für AAD-Konten.][n] | ![Firefox bietet unter macOS keine Unterstützung für NFC für AAD-Konten.][n] | ![Firefox bietet unter macOS keine Unterstützung für BLE für AAD-Konten.][n] |
 | **Linux**  | ![Chrome unterstützt USB unter Linux für AAD-Konten.][y] | ![Chrome bietet unter Linux keine Unterstützung für NFC für AAD-Konten.][n] | ![Chrome bietet unter Linux keine Unterstützung für BLE für AAD-Konten.][n] | ![Edge bietet unter Linux keine Unterstützung für USB für AAD-Konten.][n] | ![Edge bietet unter Linux keine Unterstützung für NFC für AAD-Konten.][n] | ![Edge bietet unter Linux keine Unterstützung für BLE für AAD-Konten.][n] | ![Firefox bietet unter Linux keine Unterstützung für USB für AAD-Konten.][n] | ![Firefox bietet unter Linux keine Unterstützung für NFC für AAD-Konten.][n] | ![Firefox bietet unter Linux keine Unterstützung für BLE für AAD-Konten.][n] |
+
+
 
 ## <a name="unsupported-browsers"></a>Nicht unterstützte Browser
 
