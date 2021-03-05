@@ -554,7 +554,7 @@
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
         - name: Übermitteln von Spark-Auftragsdefinitionen
           href: ./spark/apache-spark-job-definitions.md
-        - name: Verbinden und Überwachen von Metriken der Azure Synapse Spark-Anwendungsebene
+        - name: Verbinden und Überwachen von Azure Synapse Spark-Metriken auf Anwendungsebene
           href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
         - name: Überwachen von Apache Spark-Metriken auf Anwendungsebene mit Prometheus und Grafana
           href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
@@ -588,6 +588,8 @@
               href: ./spark/apache-spark-manage-scala-packages.md
             - name: Beheben von Fehlern bei der Installation von Python-Paketen
               href: ./spark/apache-spark-troubleshoot-library-errors.md
+            - name: Erstellen eines privaten Conda-Kanals
+              href: ./spark/apache-spark-custom-conda-channel.md
         - name: Verwenden von Notebooks und IDE-Tools
           items:
             - name: Verwalten von Notebooks

@@ -166,6 +166,10 @@ items:
             href: sensitivity-insights.md
           - name: Erkenntnisse zu Dateierweiterungen anzeigen
             href: file-extension-insights.md
+      - name: Sicherheit + Netzwerkbetrieb
+        items:
+          - name: Verwalten von privaten Endpunkten
+            href: catalog-private-link.md
   - name: Verweis
     items:
       - name: Unterstützte Klassifizierungen

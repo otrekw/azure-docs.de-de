@@ -78,6 +78,18 @@
           href: synapse-link-use-cases.md
         - name: Häufig gestellte Fragen zu Synapse Link
           href: synapse-link-frequently-asked-questions.md
+    - name: Sichern und Wiederherstellen
+      items:
+        - name: 'Einführung: Sichern und Wiederherstellen'
+          href: online-backup-and-restore.md
+        - name: Fortlaufende Sicherung
+          items:
+            - name: 'Fortlaufende Sicherung: Einführung'
+              href: continuous-backup-restore-introduction.md
+            - name: 'Fortlaufende Sicherung: Häufig gestellte Fragen'
+              href: continuous-backup-restore-frequently-asked-questions.md
+            - name: 'Fortlaufende Sicherung: Ressourcenmodell'
+              href: continuous-backup-restore-resource-model.md
     - name: Optimieren der Kosten für Azure Cosmos DB
       items:
         - name: Planen und Verwalten von Kosten
@@ -112,34 +124,6 @@
       href: concepts-limits.md
     - name: Unternehmensfähigkeit
       items:
-        - name: 'Einführung: Sichern und Wiederherstellen'
-          href: online-backup-and-restore.md
-        - name: Fortlaufende Sicherung
-          items:
-            - name: 'Fortlaufende Sicherung: Einführung'
-              href: continuous-backup-restore-introduction.md
-            - name: 'Fortlaufende Sicherung: Häufig gestellte Fragen'
-              href: continuous-backup-restore-frequently-asked-questions.md
-            - name: 'Fortlaufende Sicherung: Ressourcenmodell'
-              items:
-                - name: Übersicht über das Ressourcenmodell
-                  href: continuous-backup-restore-resource-model.md
-                - name: 'Wiederherstellbare Konten: Auflisten'
-                  href: restorable-database-accounts-list.md
-                - name: 'Wiederherstellbare Konten: Auflisten nach Standort'
-                  href: restorable-database-accounts-list-by-location.md
-                - name: 'Wiederherstellbare SQL-Ressourcen: Auflisten'
-                  href: restorable-sql-resources-list.md
-                - name: 'Wiederherstellbare SQL-Datenbanken: Auflisten'
-                  href: restorable-sql-databases-list.md
-                - name: 'Wiederherstellbare SQL-Container: Auflisten'
-                  href: restorable-sql-containers-list.md
-                - name: 'Wiederherstellbare MongoDB-Ressourcen: Auflisten'
-                  href: restorable-mongodb-resources-list.md
-                - name: 'Wiederherstellbare MongoDB-Sammlungen: Auflisten'
-                  href: restorable-mongodb-collections-list.md
-                - name: 'Wiederherstellbare MongoDB-Datenbanken: Auflisten'
-                  href: restorable-mongodb-databases-list.md
         - name: Kompatibilität
           href: compliance.md
     - name: Automatische Empfehlungen
@@ -1391,6 +1375,22 @@
           href: ../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Verwenden von Power BI mit Synapse Link
           href: synapse-link-power-bi.md
+    - name: Sichern und Wiederherstellen
+      items:
+        - name: Verwalten der fortlaufenden Sicherung
+          items:
+            - name: 'Fortlaufende Sicherung: Berechtigungen und Rollen'
+              href: continuous-backup-restore-permissions.md
+            - name: 'Fortlaufende Sicherung: Portal'
+              href: continuous-backup-restore-portal.md
+            - name: 'Fortlaufende Sicherung: PowerShell'
+              href: continuous-backup-restore-powershell.md
+            - name: 'Fortlaufende Sicherung: Befehlszeilenschnittstelle'
+              href: continuous-backup-restore-command-line.md
+            - name: 'Fortlaufende Sicherung: Resource Manager'
+              href: continuous-backup-restore-template.md
+        - name: Verwalten der regelmäßigen Sicherung
+          href: configure-periodic-backup-restore.md
     - name: Sicherheit
       items:
         - name: Konfigurieren der IP-Firewall
@@ -1410,20 +1410,6 @@
           href: how-to-setup-cmk.md
     - name: Unternehmensfähigkeit
       items:
-        - name: Verwalten der fortlaufenden Sicherung
-          items:
-            - name: 'Fortlaufende Sicherung: Berechtigungen und Rollen'
-              href: continuous-backup-restore-permissions.md
-            - name: 'Fortlaufende Sicherung: Portal'
-              href: continuous-backup-restore-portal.md
-            - name: 'Fortlaufende Sicherung: PowerShell'
-              href: continuous-backup-restore-powershell.md
-            - name: 'Fortlaufende Sicherung: Befehlszeilenschnittstelle'
-              href: continuous-backup-restore-command-line.md
-            - name: 'Fortlaufende Sicherung: ARM'
-              href: continuous-backup-restore-template.md
-        - name: Verwalten der regelmäßigen Sicherung
-          href: configure-periodic-backup-restore.md
         - name: Kontingenterhöhung anfordern
           href: create-support-request-quota-increase.md
     - name: Überwachen

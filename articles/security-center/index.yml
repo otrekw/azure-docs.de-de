@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 08/17/2020
-  ms.openlocfilehash: 0ee97ba1d0190cfb3331372329677b8ffe740439
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 3049f7598990a97e6647011012bae0ddd2651944
+  ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "90883850"
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102095526"
 landingContent:
 - title: Informationen zu Security Center
   linkLists:
@@ -24,38 +24,38 @@ landingContent:
     links:
     - text: Was sind die wichtigsten Funktionen von Security Center?
       url: security-center-introduction.md
+    - text: Was sind die wichtigsten Funktionen von Azure Defender?
+      url: azure-defender.md
     - text: Welche Versionen von Windows Server und Linux werden unterstützt?
       url: security-center-os-coverage.md
-    - text: Was ist Azure Defender?
-      url: azure-defender.md
 - title: Auf dem Laufenden bleiben
   linkLists:
   - linkListType: whats-new
     links:
     - text: Versionshinweise für Security Center
       url: release-notes.md
-    - text: Erkunden der neuen Übersichtsseite
+    - text: Erkunden des Übersichtsdashboards
       url: overview-page.md
-    - text: Schützen Ihrer Kubernetes-Workloads
-      url: kubernetes-workload-protections.md
+    - text: Verwenden der Berichte zu integrierten Arbeitsmappen
+      url: custom-dashboards-azure-workbooks.md
     - text: Reagieren auf Warnungen zu Azure Defender für Key Vault
       url: defender-for-key-vault-usage.md
     - text: Sicherheitsbewertungs-API
-      url: secure-score-security-controls.md#get-your-secure-score-from-the-rest-api
+      url: secure-score-access-and-track.md#get-your-secure-score-from-the-rest-api
 - title: Erste Schritte
   linkLists:
   - linkListType: get-started
     links:
-    - text: Erste Schritte mit Security Center
+    - text: Aktivieren von Security Center in Ihren Abonnements
       url: security-center-get-started.md
-    - text: Konfigurieren der Sicherheitsrichtlinien
-      url: tutorial-security-policy.md
-    - text: Auswerten der Erkenntnisse über Ihre Sicherheitssituation
-      url: secure-score-security-controls.md
-    - text: Herstellen einer Verbindung mit Ihrem AWS-Konto
-      url: quickstart-onboard-aws.md
-    - text: Herstellen einer Verbindung mit Ihrem GCP-Konto
-      url: quickstart-onboard-gcp.md
+    - text: Aktivieren von Azure Defender
+      url: enable-azure-defender.md
+    - text: Konfigurieren der automatischen Bereitstellung
+      url: security-center-enable-data-collection.md
+    - text: Einrichten von E-Mail-Benachrichtigungen
+      url: security-center-provide-security-contact-details.md
+    - text: Verbinden von Nicht-Azure-Computern
+      url: quickstart-onboard-machines.md
 - title: Verbessern Ihrer Sicherheitsbewertung
   linkLists:
   - linkListType: how-to-guide
@@ -66,10 +66,8 @@ landingContent:
       url: security-center-remediate-recommendations.md
     - text: Ausschließen einer Ressource aus einer Empfehlung
       url: exempt-resource.md
-    - text: Verwenden von Empfehlungen zur Verbesserung der Sicherheit
-      url: security-center-using-recommendations.md
-    - text: Nachverfolgen mit der Sicherheitsbewertungs-API
-      url: secure-score-security-controls.md#get-your-secure-score-from-the-rest-api
+    - text: Nachverfolgen Ihrer Bewertungen im Zeitverlauf
+      url: custom-dashboards-azure-workbooks.md#use-the-secure-score-over-time-report
 - title: Minimieren von Risiken
   linkLists:
   - linkListType: how-to-guide
@@ -80,7 +78,5 @@ landingContent:
       url: security-center-adaptive-application.md
     - text: Implementieren der adaptiven Netzwerkhärtung
       url: security-center-adaptive-network-hardening.md
-    - text: Kostenloses Testen von Azure Defender (30 Tage)
-      url: security-center-pricing.md#try-azure-defender-free-for-30-days
     - text: Verwenden des Azure Defender-Dashboards
       url: azure-defender-dashboard.md
