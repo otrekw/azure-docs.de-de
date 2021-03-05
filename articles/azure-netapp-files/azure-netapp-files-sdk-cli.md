@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: b-juche
-ms.openlocfilehash: f7b9cabdc7c2c706ff3b8dd5a0b3b5f7ed3666d6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e2f7328a0acc8e5206abc600a4052f83828a87f6
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369028"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174222"
 ---
 # <a name="azure-netapp-files-sdks-cli-tools-and-arm-templates"></a>Azure NetApp Files SDKs, CLI-Tools und ARM-Vorlagen
 
@@ -44,7 +44,7 @@ In der folgenden Tabelle sind die unterstützten CLI-Tools und die zugehörigen 
 
 |    Tool    |    Befehlsreferenz    |
 |------------------|--------------------------------------------|
-|    Azure CLI  |    [az netappfiles](/cli/azure/netappfiles?view=azure-cli-latest&preserve-view=true)    |
+|    Azure CLI  |    [az netappfiles](/cli/azure/netappfiles)    |
 |    PowerShell   |    [Azure PowerShell für Azure NetApp Files](/powershell/module/az.netappfiles/?view=azps-2.5.0#netapp_files&preserve-view=true)    |
 
 ## <a name="code-samples"></a>Codebeispiele

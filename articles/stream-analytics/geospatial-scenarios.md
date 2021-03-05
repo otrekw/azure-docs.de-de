@@ -1,17 +1,17 @@
 ---
 title: Geofencing und räumliche Aggregation per Azure Stream Analytics
 description: In diesem Artikel wird beschrieben, wie Sie Azure Stream Analytics für das Geofencing und die räumliche Aggregation verwenden.
-author: krishna0815
-ms.author: krishmam
 ms.service: stream-analytics
+author: jasonwhowell
+ms.author: jasonh
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.openlocfilehash: 7f83fe3a8443ac1b9339a0ddb91ee95414eef437
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: fc9442b01685deb710c49adf6be84af740a11805
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016302"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174987"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Szenarien mit Geofencing und räumlicher Aggregation per Azure Stream Analytics
 
@@ -103,7 +103,7 @@ Die folgende Tabelle enthält Streamingdaten zu Taxifahrten.
 |„A“|„POINT(-74.00726861389182 40.71610611981975)“|„POINT(-73.98615095917779 40.703107386025835)“|„2019-03-12T07:00:00Z“|
 |„B“|„POINT(-74.00249841021645 40.723827238895666)“|„POINT(-74.01160699942085 40.71378884930115)“|„2019-03-12T07:01:00Z“|
 |„C“|„POINT(-73.99680120565864 40.716439898624024)“|„POINT(-73.98289663412544 40.72582343969828)“|„2019-03-12T07:02:00Z“|
-|„D“|„POINT(-74.00741090068288 40.71615626755086)“|„POINT(-73.97999843120539 40.73477895807408)“|„2019-03-12T07:03:00Z“|
+|"D"|„POINT(-74.00741090068288 40.71615626755086)“|„POINT(-73.97999843120539 40.73477895807408)“|„2019-03-12T07:03:00Z“|
 
 Mit der folgenden Abfrage wird der Gerätedatenstrom mit den Geofence-Referenzdaten verknüpft, und in einem Zeitfenster von 15 Minuten wird jede Minute die Anzahl von Anforderungen pro Region berechnet.
 

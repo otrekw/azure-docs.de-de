@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 4599f4e3ca291c312c99e938b237d1eb9cd9d407
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: c5993dc1dc645319e272ab310a97bc3ff8ac495d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929279"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174239"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>Entwickeln für Azure NetApp Files mit REST-API 
 
@@ -34,7 +34,7 @@ Die REST-API-Spezifikation für Azure NetApp Files wird über [GitHub](https://g
 
 ## <a name="access-the-azure-netapp-files-rest-api"></a>Zugriff auf die Azure NetApp Files-REST-API  
 
-1. [Installieren Sie die Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), wenn Sie dies noch nicht getan haben.
+1. [Installieren Sie die Azure CLI](/cli/azure/install-azure-cli), wenn Sie dies noch nicht getan haben.
 2. Erstellen Sie einen Dienstprinzipal in Ihrem Azure Active Directory (Azure AD):
    1. Überprüfen Sie, ob Sie über [ausreichende Berechtigungen](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app) verfügen.
 

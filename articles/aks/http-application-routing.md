@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: bbedb20d9e5c75fd49c08950bbf5d459130206ce
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 25fc021a48e8936f242df35f7485fc59a93bba13
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125868"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172799"
 ---
 # <a name="http-application-routing"></a>HTTP-Anwendungsrouting
 
@@ -93,7 +93,7 @@ annotations:
   kubernetes.io/ingress.class: addon-http-application-routing
 ```
 
-Erstellen Sie eine Datei namens **samples-http-application-routing.yaml** , und kopieren Sie den folgenden YAML-Code. Aktualisieren Sie in Zeile 43 `<CLUSTER_SPECIFIC_DNS_ZONE>` mit dem im vorherigen Schritt dieses Artikels erfassten DNS-Zonennamen.
+Erstellen Sie eine Datei namens **samples-http-application-routing.yaml**, und kopieren Sie den folgenden YAML-Code. Aktualisieren Sie in Zeile 43 `<CLUSTER_SPECIFIC_DNS_ZONE>` mit dem im vorherigen Schritt dieses Artikels erfassten DNS-Zonennamen.
 
 ```yaml
 apiVersion: apps/v1
@@ -173,9 +173,9 @@ Die HTTP-Routinglösung kann mithilfe der Azure CLI entfernt werden. Dazu führe
 az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myResourceGroup --no-wait
 ```
 
-Wenn das Routing-Add-On für HTTP-Anwendungen deaktiviert ist, verbleiben eventuell einige Kubernetes-Ressourcen im Cluster. Zu diesen Ressourcen zählen *configMaps* und *secrets* , die im Namespace *kube-system* erstellt werden. Wenn Sie stets einen sauberen Cluster haben möchten, empfiehlt es sich, diese Ressourcen zu entfernen.
+Wenn das Routing-Add-On für HTTP-Anwendungen deaktiviert ist, verbleiben eventuell einige Kubernetes-Ressourcen im Cluster. Zu diesen Ressourcen zählen *configMaps* und *secrets*, die im Namespace *kube-system* erstellt werden. Wenn Sie stets einen sauberen Cluster haben möchten, empfiehlt es sich, diese Ressourcen zu entfernen.
 
-Suchen Sie mit den folgenden [kubectl get][kubectl-get]-Befehlen nach Ressourcen des Typs *addon-http-application-routing* :
+Suchen Sie mit den folgenden [kubectl get][kubectl-get]-Befehlen nach Ressourcen des Typs *addon-http-application-routing*:
 
 ```console
 kubectl get deployments --namespace kube-system
@@ -201,7 +201,7 @@ Verwenden Sie zum Löschen von Ressourcen den Befehl [kubectl delete][kubectl-de
 kubectl delete configmaps addon-http-application-routing-nginx-configuration --namespace kube-system
 ```
 
-Wiederholen Sie den vorherigen Schritt `kubectl delete` für alle Ressourcen des Typs *addon-http-application-routing* , die sich noch in Ihrem Cluster befinden.
+Wiederholen Sie den vorherigen Schritt `kubectl delete` für alle Ressourcen des Typs *addon-http-application-routing*, die sich noch in Ihrem Cluster befinden.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
@@ -280,8 +280,8 @@ ingress "aks-helloworld" deleted
 Informationen zur Installation eines HTTPS-gesicherten Eingangscontrollers in AKS finden Sie unter [Eingehender HTTPS-Datenverkehr in Azure Kubernetes Service (AKS)][ingress-https].
 
 <!-- LINKS - internal -->
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-show]: /cli/azure/aks#az-aks-show
 [ingress-https]: ./ingress-tls.md
 [az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
 [az aks install-cli]: /cli/azure/aks#az-aks-install-cli

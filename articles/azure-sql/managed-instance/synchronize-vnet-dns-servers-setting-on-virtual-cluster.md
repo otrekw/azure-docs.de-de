@@ -7,12 +7,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.topic: how-to
 ms.date: 01/17/2021
-ms.openlocfilehash: 0da38475c0e3c766cabbf765ea89dc5714a5b830
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: b95afe513dba2f1da9556b27ec17bcccc9fe88e1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747553"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173550"
 ---
 # <a name="synchronize-virtual-network-dns-servers-setting-on-sql-managed-instance-virtual-cluster"></a>Synchronisieren der Einstellung für DNS-Server virtueller Netzwerke in einem virtuellen SQL Managed Instance-Cluster
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -66,7 +66,7 @@ virtualNetworkName="vnet-fog-eastus"
 virtualNetwork=$(az network vnet show -g $resourceGroup -n $virtualNetworkName --query "id" -otsv)
 ```
 
-Verwenden Sie den Azure CLI-Befehl [az resource invoke-action](/cli/azure/resource?view=azure-cli-latest#az_resource_invoke_action), um die DNS-Serverkonfiguration für alle virtuellen Cluster im Subnetz zu synchronisieren.
+Verwenden Sie den Azure CLI-Befehl [az resource invoke-action](/cli/azure/resource#az_resource_invoke_action), um die DNS-Serverkonfiguration für alle virtuellen Cluster im Subnetz zu synchronisieren.
 
 ```Azure CLI
 az sql virtual-cluster list --query "[? contains(subnetId,'$virtualNetwork')].id" -o tsv \

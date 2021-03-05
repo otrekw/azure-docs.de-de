@@ -9,12 +9,12 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: cefb0105a0a95d26aadea2a98fc4d3cec68ccc03
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 6daec7658c6db6c18bd198b9aff0b8993f27ac22
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787350"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177246"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Schnellstart: Ausführen eines Workflows über den Microsoft Genomics-Dienst
 
@@ -144,4 +144,4 @@ Nach Abschluss des Workflows können Sie die Ausgabedateien im konfigurierten Au
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie Beispieleingabedaten in Azure Storage hochgeladen und einen Workflow über den `msgen`-Python-Client an den Microsoft Genomics-Dienst übermittelt. Weitere Informationen zu anderen Eingabedateitypen, die mit dem Microsoft Genomics-Dienst verwendet werden können, finden Sie auf den folgenden Seiten: [Übermitteln eines Workflows mit FASTQ-Eingabedateien](quickstart-input-pair-FASTQ.md) | [Übermitteln eines Workflows mit einer BAM-Eingabedatei](quickstart-input-BAM.md) | [Übermitteln eines Workflows mit mehreren Eingaben aus dem gleichen Beispiel](quickstart-input-multiple.md). Sie können dieses Tutorial auch mit unserem [Azure Notebooks-Beispiel](https://aka.ms/genomicsnotebook) erkunden. Laden Sie dazu die Datei „Genomics Tutorial.ipynb“ herunter, und verwenden Sie einen Notebook-Reader wie [Jupyter](https://notebooks.azure.com), um die Datei zu öffnen und zu durchlaufen.
+In diesem Artikel haben Sie Beispieleingabedaten in Azure Storage hochgeladen und einen Workflow über den `msgen`-Python-Client an den Microsoft Genomics-Dienst übermittelt. Weitere Informationen zu anderen Eingabedateitypen, die mit dem Microsoft Genomics-Dienst verwendet werden können, finden Sie auf den folgenden Seiten: [Übermitteln eines Workflows mit FASTQ-Eingabedateien](quickstart-input-pair-FASTQ.md) | [Übermitteln eines Workflows mit einer BAM-Eingabedatei](quickstart-input-BAM.md) | [Übermitteln eines Workflows mit mehreren Eingaben aus dem gleichen Beispiel](quickstart-input-multiple.md). 
