@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.openlocfilehash: ba80d78cbc7d34b1496daffbd489a1d0dbfed8b4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: fc33b24aac8964d0a8390b4b38c5e1862ed639a8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285657"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198913"
 ---
 # <a name="tutorial-access-azure-blob-storage-using-azure-databricks-and-azure-key-vault"></a>Tutorial: Zugreifen auf Azure Blob Storage über Azure Databricks und Azure Key Vault
 
@@ -29,11 +29,11 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest), bevor Sie mit diesem Tutorial beginnen.
+Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli-windows), bevor Sie mit diesem Tutorial beginnen.
 
 ## <a name="create-a-storage-account-and-blob-container-with-azure-cli"></a>Erstellen eines Speicherkontos und eines Blobcontainers mithilfe der Azure-Befehlszeilenschnittstelle
 
-Erstellen Sie für die Verwendung von Blobs zunächst ein universelles Speicherkonto. Sollten Sie über keine [Ressourcengruppe](/cli/azure/group?view=azure-cli-latest#az-group-create) verfügen, erstellen Sie eine, bevor Sie den Befehl ausführen. Mit dem folgenden Befehl werden die Metadaten des Speichercontainers erstellt und angezeigt. Notieren Sie sich die **ID**.
+Erstellen Sie für die Verwendung von Blobs zunächst ein universelles Speicherkonto. Sollten Sie über keine [Ressourcengruppe](/cli/azure/group#az-group-create) verfügen, erstellen Sie eine, bevor Sie den Befehl ausführen. Mit dem folgenden Befehl werden die Metadaten des Speichercontainers erstellt und angezeigt. Notieren Sie sich die **ID**.
 
 ```azurecli
 az storage account create --name contosoblobstorage5 --resource-group contosoResourceGroup --location eastus --sku Standard_ZRS --encryption-services blob

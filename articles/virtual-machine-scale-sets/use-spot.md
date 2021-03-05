@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 33aa553e688b595551c20e8b1432163152865537
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b20a5bd9c06c3948097389d5439defa219a7931b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675021"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694987"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Azure-Spot-VMs und VM-Skalierungsgruppen 
 
@@ -68,13 +68,56 @@ Diese neue Funktion auf Plattformebene nutzt KI, um automatisch zu versuchen, en
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Vorteile von „Testen und wiederherstellen“:
-- Standardmäßig aktiviert, wenn eine Azure-Spot-VM in einer Skalierungsgruppe bereitgestellt wird
 - Versuche zur Wiederherstellung von Azure-Spot-VMs, die aufgrund der Kapazität entfernt wurden
 - Bei wiederhergestellten Azure-Spot-VMs wird eine längere Ausführungszeit erwartet bei einer niedrigeren Wahrscheinlichkeit der Entfernung aufgrund der Kapazität
 - Längere Lebensdauer von Azure-Spot-VMs und damit längere Ausführungszeit von Workloads
 - Unterstützt Virtual Machine Scale Sets bei der Einhaltung der Zielanzahl von Azure-Spot-VMs (ähnlich wie bei der Funktion zur Beibehaltung der Zielanzahl für VMs mit nutzungsbasierter Bezahlung)
 
 „Testen und wiederherstellen“ ist in Skalierungsgruppen mit [Autoskalierung](virtual-machine-scale-sets-autoscale-overview.md) deaktiviert. Die Anzahl der VMs in der Skalierungsgruppe wird über die Regeln für die Autoskalierung gesteuert.
+
+### <a name="register-for-try--restore"></a>Registrieren für „Testen und wiederherstellen“
+
+Bevor Sie das Feature zum Testen und Wiederherstellen verwenden können, müssen Sie Ihr Abonnement für die Vorschauversion registrieren. Die Registrierung kann mehrere Minuten dauern. Sie können die Azure CLI oder PowerShell verwenden, um die Featureregistrierung abzuschließen.
+
+
+**Verwenden der CLI 2.0**
+
+Verwenden Sie [az feature register](/cli/azure/feature#az-feature-register), um die Vorschauversion für Ihr Abonnement zu aktivieren. 
+
+```azurecli-interactive
+az feature register --namespace Microsoft.Compute --name SpotTryRestore 
+```
+
+Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus: 
+
+```azurecli-interactive
+az feature show --namespace Microsoft.Compute --name SpotTryRestore 
+```
+
+Schließen Sie den Opt-in-Prozess ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben. 
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute 
+```
+**Verwenden von PowerShell** 
+
+Verwenden Sie das Cmdlet [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature), um die Vorschauversion für Ihr Abonnement zu aktivieren. 
+
+```azurepowershell-interactive
+Register-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
+```
+
+Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus: 
+
+```azurepowershell-interactive
+Get-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
+```
+
+Schließen Sie den Opt-in-Prozess ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben. 
+
+```azurepowershell-interactive
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute 
+```
 
 ## <a name="placement-groups"></a>Platzierungsgruppen
 

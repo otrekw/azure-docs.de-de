@@ -1,39 +1,37 @@
 ---
 title: Erstellen eines Suchindex im Azure-Portal
 titleSuffix: Azure Cognitive Search
-description: In dieser Schnellstartanleitung zum Azure-Portal erfahren Sie, wie Sie den Datenimport-Assistenten verwenden, um Ihren ersten Suchindex in Azure Cognitive Search zu erstellen, zu laden und abzufragen.
+description: Verwenden Sie den Datenimport-Assistenten im Azure-Portal, um Ihren ersten Suchindex zu erstellen, zu laden und abzufragen. In diesem Schnellstart wird für die Beispieldaten ein Dataset mit fiktiven Hotels verwendet.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/12/2020
-ms.openlocfilehash: 1e9d63c88cf0cd6f65db99b2bc878797770d53cd
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.date: 03/02/2021
+ms.openlocfilehash: 1be165bfe7cca44e8a928933c3c8fe926ad7d4c9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368629"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694834"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Schnellstart: Erstellen eines Index für Azure Cognitive Search im Azure-Portal
 
-Erstellen Sie Ihren ersten Index mithilfe des Assistenten zum **Importieren von Daten** und einer integrierten Beispieldatenquelle, die fiktive Hoteldaten umfasst. Der Assistent führt Sie durch die Erstellung eines Suchindex („hotels-sample-index“), sodass Sie innerhalb weniger Minuten interessante Abfragen schreiben können. 
+Erstellen Sie Ihren ersten Suchindex mithilfe des **Datenimport-Assitenten** und einer integrierten Beispieldatenquelle, die fiktive Hotels enthält. Der Assistent führt Sie durch die Erstellung eines Suchindex („hotels-sample-index“), sodass Sie innerhalb weniger Minuten interessante Abfragen schreiben können. 
 
 Der Assistent enthält auch eine Seite für KI-Anreicherung, sodass Sie Text und eine Struktur aus Bilddateien und unstrukturiertem Text extrahieren können. In dieser Schnellstartanleitung werden diese Optionen jedoch nicht verwendet. Eine ähnliche exemplarische Vorgehensweise, die KI-Anreicherung umfasst, finden Sie unter [Schnellstart: Erstellen eines kognitiven Skillsets](cognitive-search-quickstart-blob.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
-
 + Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/).
 
-+ Ein Azure Cognitive Search-Dienst [Erstellen Sie einen Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
++ Ein Azure Cognitive Search-Dienst (beliebige Dienstebene, beliebige Region). [Erstellen Sie einen Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
 
 ### <a name="check-for-space"></a>Überprüfen des Speicherplatzes
 
-Viele Kunden beginnen mit dem kostenlosen Dienst (Free). Diese Version ist auf drei Indizes, drei Datenquellen und drei Indexer beschränkt. Stellen Sie sicher, dass Sie über ausreichend Platz für zusätzliche Elemente verfügen, bevor Sie beginnen. In diesem Tutorial wird jeweils eine Instanz von jedem Objekt erstellt.
+Viele Kunden beginnen mit dem kostenlosen Dienst (Free). Der Free-Tarif ist auf drei Indizes, drei Datenquellen und drei Indexer beschränkt. Stellen Sie sicher, dass Sie über ausreichend Platz für zusätzliche Elemente verfügen, bevor Sie beginnen. In diesem Tutorial wird jeweils eine Instanz von jedem Objekt erstellt.
 
-In Abschnitten des Service-Dashboards sehen Sie, über wie viele Indizes, Indexer und Datenquellen Sie bereits verfügen. 
+Auf der Übersichtsseite des Diensts erfahren Sie, wie viele Indizes, Indexer und Datenquellen Sie bereits haben. 
 
 :::image type="content" source="media/search-get-started-portal/tiles-indexers-datasources.png" alt-text="Listen mit Indizes, Indexern und Datenquellen":::
 
@@ -70,14 +68,18 @@ Der Assistent unterstützt die Erstellung einer [Pipeline für KI-Anreicherung](
 
 ### <a name="step-3---configure-index"></a>Schritt 3: Konfigurieren des Index
 
-In der Regel erfolgt eine Indexerstellung codebasiert und vor dem Laden der jeweiligen Daten. Wie in diesem Tutorial gezeigt wird, kann der Assistent jedoch einen Basisindex für jede Datenquelle erstellen, die er durchforsten kann. Für einen Index sind mindestens ein Name und eine Felderauflistung erforderlich, wobei ein Feld als Dokumentschlüssel gekennzeichnet sein muss, um die einzelnen Dokumente eindeutig zu identifizieren. Außerdem können Sie Sprachanalysen oder Vorschlagsfunktionen angeben, wenn Sie Abfragen mit AutoVervollständigen oder vorgeschlagene Abfragen verwenden möchten.
+Für den integrierten Beispielhotelindex wird ein Standardindexschema für Sie definiert. Mit Ausnahme einiger erweiterter Filterbeispiele werden Abfragen in der Dokumentation und den Beispielen für den Beispielhotelindex in dieser Indexdefinition ausgeführt:
+
+:::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Generierter Hotelindex":::
+
+In der Regel erfolgt vor dem Laden der jeweiligen Daten eine codebasierte Indexerstellung. Der Datenimport-Assistent fasst diese Schritte zusammen, indem er einen einfachen Index für jede Datenquelle erstellt, die er durchsuchen kann. Für einen Index sind mindestens ein Name und eine Felderauflistung erforderlich, wobei ein Feld als Dokumentschlüssel gekennzeichnet sein muss, um die einzelnen Dokumente eindeutig zu identifizieren. Außerdem können Sie Sprachanalysen oder Vorschlagsfunktionen angeben, wenn Sie Abfragen mit AutoVervollständigen oder vorgeschlagene Abfragen verwenden möchten.
 
 Felder besitzen Datentypen und Attribute. Die Kontrollkästchen im oberen Bereich sind *Indexattribute*, mit denen die Verwendung des Felds gesteuert wird.
 
-* **Abrufbar** bedeutet, dass es in der Liste mit den Suchergebnissen angezeigt wird. Indem Sie dieses Kontrollkästchen deaktivieren, können Sie einzelne Felder aus den Suchergebnissen ausschließen, z.B. wenn Felder nur in Filterausdrücken verwendet werden.
-* **Schlüssel** ist der eindeutige Bezeichner des Dokuments. Er ist immer eine Zeichenfolge, und er ist erforderlich.
-* Mit **Filterbar**, **Sortierbar** und **Facettenreich** wird festgelegt, ob Felder in einer Filter-, Sortier- oder Facettennavigationsstruktur verwendet werden können.
-* **Durchsuchbar** bedeutet, dass ein Feld in die Volltextsuche einbezogen wird. Zeichenfolgen sind durchsuchbar. Numerische Felder und boolesche Felder werden häufig als „Nicht durchsuchbar“ markiert.
++ **Abrufbar** bedeutet, dass es in der Liste mit den Suchergebnissen angezeigt wird. Indem Sie dieses Kontrollkästchen deaktivieren, können Sie einzelne Felder aus den Suchergebnissen ausschließen, z.B. wenn Felder nur in Filterausdrücken verwendet werden.
++ **Schlüssel** ist der eindeutige Bezeichner des Dokuments. Er ist immer eine Zeichenfolge, und er ist erforderlich.
++ Mit **Filterbar**, **Sortierbar** und **Facettenreich** wird festgelegt, ob Felder in einer Filter-, Sortier- oder Facettennavigationsstruktur verwendet werden können.
++ **Durchsuchbar** bedeutet, dass ein Feld in die Volltextsuche einbezogen wird. Zeichenfolgen sind durchsuchbar. Numerische Felder und boolesche Felder werden häufig als „Nicht durchsuchbar“ markiert.
 
 Speicheranforderungen ändern sich nicht als Folge Ihrer Auswahl. Wenn Sie z. B. das Attribut **Abrufbar** für mehrere Felder festlegen, erhöhen sich die Speicheranforderungen nicht.
 
@@ -87,10 +89,7 @@ Standardmäßig durchsucht der Assistent die Datenquelle nach eindeutigen Bezeic
 
    Wenn Sie den Assistenten ein zweites Mal unter Verwendung einer vorhandenen Quelle mit Hoteldaten ausführen, wird der Index nicht mit Standardattributen konfiguriert. Sie müssen Attribute für künftige Importe manuell auswählen. 
 
-   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Generierter Hotelindex":::
-
-2. Wechseln Sie zur nächsten Seite.
-
+1. Wechseln Sie zur nächsten Seite.
 
 ### <a name="step-4---configure-indexer"></a>Schritt 4: Konfigurieren des Indexers
 
@@ -104,7 +103,7 @@ Klicken Sie auf **Senden**, um den Indexer zu erstellen und gleichzeitig auszuf�
 
 ## <a name="monitor-progress"></a>Fortschritt überwachen
 
-Der Assistent sollte die Liste der Indexer anzeigen, in der Sie den Fortschritt überwachen können. Zur eigenen Navigation wechseln Sie zur Seite „Übersicht“, und klicken Sie auf **Indexer**.
+Der Assistent sollte die Liste der Indexer anzeigen, in der Sie den Fortschritt überwachen können. Zur eigenen Navigation wechseln Sie zur Seite „Übersicht“ und klicken auf die Registerkarte **Indexer**.
 
 Es kann einige Minuten dauern, bis die Seite im Portal aktualisiert ist, aber der neu erstellte Indexer sollte in der Liste angezeigt werden. Der Status sollte „In Bearbeitung“ oder „Erfolgreich“ lauten, und die Anzahl indizierter Dokumente sollte angegeben sein.
 
@@ -112,7 +111,7 @@ Es kann einige Minuten dauern, bis die Seite im Portal aktualisiert ist, aber de
 
 ## <a name="view-the-index"></a>Anzeigen des Index
 
-Die Hauptseite des Diensts enthält Links zu den Ressourcen, die in Ihrem Azure Cognitive Search-Dienst erstellt wurden.  Klicken Sie zum Anzeigen des gerade erstellten Index in der Liste mit den Links auf **Indizes**. 
+Die Übersichtsseite des Diensts enthält Links zu den Ressourcen, die in Ihrem Azure Cognitive Search-Dienst erstellt wurden.  Klicken Sie zum Anzeigen des gerade erstellten Index in der Liste mit den Links auf **Indizes**. 
 
 Warten Sie, bis die Portalseite aktualisiert wurde. Nach einigen Minuten sollte der Index mit der Dokumentanzahl und der Speichergröße angezeigt werden.
 
@@ -120,7 +119,9 @@ Warten Sie, bis die Portalseite aktualisiert wurde. Nach einigen Minuten sollte 
 
 In dieser Liste können Sie auf den gerade erstellten Index für *hotels-sample* klicken und das Indexschema anzeigen. Optional können Sie auch neue Felder hinzufügen. 
 
-Auf der Registerkarte **Felder** wird das Indexschema angezeigt. Scrollen Sie in der Liste nach unten, um ein neues Feld einzugeben. In den meisten Fällen ist es nicht möglich, bereits vorhandene Felder zu ändern. Vorhandene Felder verfügen über eine physische Darstellung in Azure Cognitive Search und können daher nicht geändert werden (auch nicht im Code). Wenn Sie ein vorhandenes Feld grundlegend ändern möchten, erstellen Sie einen neuen Index, wobei der ursprüngliche Index verworfen wird.
+Auf der Registerkarte **Felder** wird das Indexschema angezeigt. Für die Erstellung von Abfragen und die Überprüfung, ob ein Feld gefiltert oder sortiert werden kann, werden auf dieser Registerkarte die Attribute angezeigt.
+
+Scrollen Sie in der Liste nach unten, um ein neues Feld einzugeben. Sie können zwar immer ein neues Feld erstellen, vorhandene Felder können aber in den meisten Fällen nicht geändert werden. Vorhandene Felder verfügen über eine physische Darstellung in Ihrem Suchdienst und können daher nicht geändert werden (auch nicht im Code). Wenn Sie ein vorhandenes Feld grundlegend ändern möchten, erstellen Sie einen neuen Index, wobei der ursprüngliche Index verworfen wird.
 
    :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="Beispiel für Indexdefinition":::
 
@@ -142,11 +143,11 @@ Der **Suchexplorer** ist nur auf die Verarbeitung von [REST-API-Anforderungen](/
 
    :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="Suchexplorerbefehl":::
 
-2. Wählen Sie in der Dropdownliste **Index** den Eintrag *hotels-sample-index* aus. Klicken Sie auf die Dropdownliste **API-Version**, um herauszufinden, welche REST-APIs verfügbar sind. Verwenden Sie für die Abfragen unten die allgemein verfügbare Version (2020-06-30).
+1. Wählen Sie in der Dropdownliste **Index** den Eintrag *hotels-sample-index* aus. Klicken Sie auf die Dropdownliste **API-Version**, um herauszufinden, welche REST-APIs verfügbar sind. Verwenden Sie für die Abfragen unten die allgemein verfügbare Version (2020-06-30).
 
    :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="Index- und API-Befehle":::
 
-3. Fügen Sie über die Suchleiste die folgenden Abfragezeichenfolgen ein, und klicken Sie auf **Suchen**.
+1. Fügen Sie über die Suchleiste die folgenden Abfragezeichenfolgen ein, und klicken Sie auf **Suchen**.
 
    :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="Abfragezeichenfolge und Schaltfläche „Suchen“":::
 
@@ -158,19 +159,19 @@ Sie können Begriffe und Ausdrücke eingeben, ähnlich wie bei einer Bing- oder 
 
 #### <a name="example-string-query-searchspa"></a>Beispiel (Abfragezeichenfolge): `search=spa`
 
-* Der Parameter **search** dient zum Eingeben eines Stichworts für die Volltextsuche. In diesem Fall werden Daten für Hotels zurückgegeben, die in einem beliebigen durchsuchbaren Feld des Dokuments den Begriff *spa* enthalten.
++ Der Parameter **search** dient zum Eingeben eines Stichworts für die Volltextsuche. In diesem Fall werden Daten für Hotels zurückgegeben, die in einem beliebigen durchsuchbaren Feld des Dokuments den Begriff *spa* enthalten.
 
-* Der **Suchexplorer** gibt Ergebnisse im JSON-Format zurück. Dieses Format ist sehr ausführlich und in Dokumenten mit einer dichten Struktur nur schwer lesbar. Dies ist so gewollt. Die Sichtbarkeit in das gesamte Dokument ist wichtig für Entwicklungszwecke, vor allem beim Testen. Zur Verbesserung der Benutzerfreundlichkeit müssen Sie Code schreiben, mit dem [Suchergebnisse verarbeitet werden](search-pagination-page-layout.md), um wichtige Elemente hervorzuheben.
++ Der **Suchexplorer** gibt Ergebnisse im JSON-Format zurück. Dieses Format ist sehr ausführlich und in Dokumenten mit einer dichten Struktur nur schwer lesbar. Dies ist so gewollt. Die Sichtbarkeit in das gesamte Dokument ist wichtig für Entwicklungszwecke, vor allem beim Testen. Zur Verbesserung der Benutzerfreundlichkeit müssen Sie Code schreiben, mit dem [Suchergebnisse verarbeitet werden](search-pagination-page-layout.md), um wichtige Elemente hervorzuheben.
 
-* Dokumente bestehen aus allen Feldern, die im Index als „abrufbar“ gekennzeichnet sind. Klicken Sie zum Anzeigen von Indexattributen im Portal in der Liste **Indizes** auf *hotels-sample*.
++ Dokumente bestehen aus allen Feldern, die im Index als „abrufbar“ gekennzeichnet sind. Klicken Sie zum Anzeigen von Indexattributen im Portal in der Liste **Indizes** auf *hotels-sample*.
 
 #### <a name="example-parameterized-query-searchspacounttruetop10"></a>Beispiel (parametrisierte Abfrage): `search=spa&$count=true&$top=10`
 
-* Das Symbol **&** dient zum Anfügen von Suchparametern. Diese können in beliebiger Reihenfolge angegeben werden.
++ Das Symbol **&** dient zum Anfügen von Suchparametern. Diese können in beliebiger Reihenfolge angegeben werden.
 
-* Der Parameter **$count=true** gibt die Gesamtanzahl aller zurückgegebenen Dokumente zurück. Dieser Wert wird oben im Bereich mit den Suchergebnissen angezeigt. Zur Überprüfung von Filterabfragen können Sie von **$count=true** gemeldete Änderungen überwachen. Niedrigere Zahlen weisen darauf hin, dass Ihr Filter funktioniert.
++ Der Parameter **$count=true** gibt die Gesamtanzahl aller zurückgegebenen Dokumente zurück. Dieser Wert wird oben im Bereich mit den Suchergebnissen angezeigt. Zur Überprüfung von Filterabfragen können Sie von **$count=true** gemeldete Änderungen überwachen. Niedrigere Zahlen weisen darauf hin, dass Ihr Filter funktioniert.
 
-* **$top=10** gibt die 10 Dokumente mit dem höchsten Rang zurück. Standardmäßig gibt Azure Cognitive Search die ersten 50 besten Treffer zurück. Die Menge kann mithilfe von **$top** erhöht oder verringert werden.
++ **$top=10** gibt die 10 Dokumente mit dem höchsten Rang zurück. Standardmäßig gibt Azure Cognitive Search die ersten 50 besten Treffer zurück. Die Menge kann mithilfe von **$top** erhöht oder verringert werden.
 
 ### <a name="filter-the-query"></a><a name="filter-query"></a> Filtern der Abfrage
 
@@ -178,9 +179,9 @@ Filter werden in Suchanfragen eingefügt, wenn Sie den Parameter **$filter** anf
 
 #### <a name="example-filtered-searchbeachfilterrating-gt-4"></a>Beispiel (gefiltert): `search=beach&$filter=Rating gt 4`
 
-* Der Parameter **$filter** gibt Ergebnisse zurück, die den angegebenen Kriterien entsprechen. In diesem Fall: höhere Bewertungen als 4.
++ Der Parameter **$filter** gibt Ergebnisse zurück, die den angegebenen Kriterien entsprechen. In diesem Fall: höhere Bewertungen als 4.
 
-* Bei der Filtersyntax handelt es sich um eine OData-Konstruktion. Weitere Informationen finden Sie unter [OData Expression Syntax for Azure Search](/rest/api/searchservice/odata-expression-syntax-for-azure-search) (OData-Ausdruckssyntax für Azure Search).
++ Bei der Filtersyntax handelt es sich um eine OData-Konstruktion. Weitere Informationen finden Sie unter [OData Expression Syntax for Azure Search](/rest/api/searchservice/odata-expression-syntax-for-azure-search) (OData-Ausdruckssyntax für Azure Search).
 
 ### <a name="facet-the-query"></a><a name="facet-query"></a> Facettieren der Abfrage
 
@@ -188,19 +189,18 @@ Facettenfilter werden in Suchanfragen eingebunden. Sie können den Parameter „
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Beispiel (facettiert mit Verringerung des Umfangs): `search=*&facet=Category&$top=2`
 
-* **search=** _ ist eine leere Suche. Bei einer leeren Suche wird alles durchsucht. Eine leere Abfrage kann beispielsweise übermittelt werden, um den vollständigen Satz von Dokumenten zu filtern oder zu facettieren – etwa, wenn eine Navigationsstruktur mit Facetten alle Hotels im Index enthalten soll.
-_ **facet** gibt eine Navigationsstruktur zurück, die Sie an ein UI-Steuerelement übergeben können. Er gibt Kategorien und eine Anzahl zurück. In diesem Fall basieren alle Kategorien auf einem Feld, das praktischerweise *Kategorie* heißt. In Azure Cognitive Search steht zwar keine Aggregation zur Verfügung, mit `facet` lässt sich jedoch eine Art Aggregation erreichen, die eine Anzahl von Dokumenten in den einzelnen Kategorien liefert.
++ **search=** * ist eine leere Suche. Bei einer leeren Suche wird alles durchsucht. Eine leere Abfrage kann beispielsweise übermittelt werden, um den vollständigen Satz von Dokumenten zu filtern oder zu facettieren – etwa, wenn eine Navigationsstruktur mit Facetten alle Hotels im Index enthalten soll.
++ **facet** gibt eine Navigationsstruktur zurück, die Sie an ein Benutzeroberflächenelement übergeben können. Er gibt Kategorien und eine Anzahl zurück. In diesem Fall basieren alle Kategorien auf einem Feld, das praktischerweise *Kategorie* heißt. In Azure Cognitive Search steht zwar keine Aggregation zur Verfügung, mit `facet` lässt sich jedoch eine Art Aggregation erreichen, die eine Anzahl von Dokumenten in den einzelnen Kategorien liefert.
 
-* **$top=2** gibt zwei Dokumente zurück und zeigt, dass Sie mithilfe von `top` die Ergebnisse sowohl verringern als auch erhöhen können.
++ **$top=2** gibt zwei Dokumente zurück und zeigt, dass Sie mithilfe von `top` die Ergebnisse sowohl verringern als auch erhöhen können.
 
 #### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>Beispiel (Facette für numerische Werte): `search=spa&facet=Rating`
 
-* Bei dieser Abfrage handelt es sich um eine Facette für die Bewertung bei einer Textsuche nach *spa*. Der Begriff *Bewertung* kann als Facette angegeben werden, da das Feld im Index als abrufbar, filterbar und facettierbar markiert ist und die enthaltenen Werte (numerische Werte von 1 bis 5) für die Kategorisierung von Angeboten in Gruppen geeignet ist.
++ Bei dieser Abfrage handelt es sich um eine Facette für die Bewertung bei einer Textsuche nach *spa*. Der Begriff *Bewertung* kann als Facette angegeben werden, da das Feld im Index als abrufbar, filterbar und facettierbar markiert ist und die enthaltenen Werte (numerische Werte von 1 bis 5) für die Kategorisierung von Angeboten in Gruppen geeignet ist.
 
-* Nur filterbare Felder können facettiert werden. In den Ergebnissen können nur abrufbare Felder zurückgegeben werden.
++ Nur filterbare Felder können facettiert werden. In den Ergebnissen können nur abrufbare Felder zurückgegeben werden.
 
-* Das Feld *Bewertung* ist eine Gleitkommazahl mit doppelter Genauigkeit. Weitere Informationen zum Gruppieren per Intervall (z. B. „Bewertungen mit 3 Sternen“, „Bewertungen mit 4 Sternen“ usw.) finden Sie unter [Implementieren der Facettennavigation in Azure Cognitive Search](./search-faceted-navigation.md#filter-based-on-a-range).
-
++ Das Feld *Bewertung* ist eine Gleitkommazahl mit doppelter Genauigkeit. Weitere Informationen zum Gruppieren per Intervall (z. B. „Bewertungen mit 3 Sternen“, „Bewertungen mit 4 Sternen“ usw.) finden Sie unter [Implementieren der Facettennavigation in Azure Cognitive Search](./search-faceted-navigation.md#filter-based-on-a-range).
 
 ### <a name="highlight-search-results"></a><a name="highlight-query"></a> Hervorheben von Suchergebnissen
 
@@ -208,13 +208,13 @@ Bei Treffermarkierungen wird Text, der dem Schlüsselwort entspricht, mit einer 
 
 #### <a name="example-highlighter-searchbeachhighlightdescription"></a>Beispiel (Textmarker): `search=beach&highlight=Description`
 
-* In diesem Beispiel ist das formatierte Wort *beach* im Beschreibungsfeld leichter zu erkennen.
++ In diesem Beispiel ist das formatierte Wort *beach* im Beschreibungsfeld leichter zu erkennen.
 
 #### <a name="example-linguistic-analysis-searchbeacheshighlightdescription"></a>Beispiel (linguistische Analyse): `search=beaches&highlight=Description`
 
-* Die Volltextsuche erkennt grundlegende Varianten von Wortformen. Die Suchergebnisse für die Stichwortsuche nach „beaches“ enthalten in diesem Fall markierten Text für „beach“ für Hotels, in deren durchsuchbaren Feldern dieses Wort vorkommt. Dank linguistischer Analyse können in den Ergebnissen unterschiedliche Formen des gleichen Worts erscheinen. 
++ Die Volltextsuche erkennt grundlegende Varianten von Wortformen. Die Suchergebnisse für die Stichwortsuche nach „beaches“ enthalten in diesem Fall markierten Text für „beach“ für Hotels, in deren durchsuchbaren Feldern dieses Wort vorkommt. Dank linguistischer Analyse können in den Ergebnissen unterschiedliche Formen des gleichen Worts erscheinen. 
 
-* Azure Cognitive Search unterstützt 56 Analysetools von Lucene und Microsoft. Standardmäßig verwendet Azure Cognitive Search die Standardanalyse von Lucene.
++ Azure Cognitive Search unterstützt 56 Analysetools von Lucene und Microsoft. Standardmäßig verwendet Azure Cognitive Search die Standardanalyse von Lucene.
 
 ### <a name="try-fuzzy-search"></a><a name="fuzzy-search"></a> Ausprobieren der Fuzzysuche
 

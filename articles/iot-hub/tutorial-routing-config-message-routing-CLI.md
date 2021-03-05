@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 25c3ff7582ed408776c0ae6904e4bacddd89e40b
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: a1cce7264e56b16d285685392186a05e2f075439
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624170"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199763"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Tutorial: Konfigurieren des IoT Hub-Nachrichtenroutings mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -147,7 +147,7 @@ Nachdem die grundlegenden Ressourcen eingerichtet wurden, können Sie das Nachri
 
 [!INCLUDE [iot-hub-include-create-routing-description](../../includes/iot-hub-include-create-routing-description.md)]
 
-Verwenden Sie [az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create&preserve-view=true), um einen Routingendpunkt zu erstellen. Verwenden Sie [az iot hub route create](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create&preserve-view=true), um die Nachrichtenroute für den Endpunkt zu erstellen.
+Verwenden Sie [az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint#az-iot-hub-routing-endpoint-create), um einen Routingendpunkt zu erstellen. Verwenden Sie [az iot hub route create](/cli/azure/iot/hub/route#az-iot-hub-route-create), um die Nachrichtenroute für den Endpunkt zu erstellen.
 
 ### <a name="route-to-a-storage-account"></a>Weiterleiten an ein Speicherkonto
 

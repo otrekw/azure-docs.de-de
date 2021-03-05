@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: d1a0a6ad5b45af2157b960f8990574e47d10eeb2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2dbb491e77f132daf7b432f27705eba9e3e3cd3c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718419"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036961"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>Automatisieren von Builds, Tests und Bereitstellungen eines Azure Stream Analytics-Auftrags mit CI/CD-Tools
 
@@ -122,6 +122,9 @@ azure-streamanalytics-cicd addtestcase -project <projectFullPath> [-testConfigPa
 |---|---|
 | `-project` | Der Pfad der Datei **asaproj.json** für das Visual Studio Code-Projekt oder der Datei **[Name Ihres Projekts].asaproj** für das Visual Studio-Projekt. |
 | `-testConfigPath` | Der Pfad der Testkonfigurationsdatei. Wenn er nicht angegeben ist, wird die Datei in **\test** unter dem aktuellen Verzeichnis der Datei **asaproj.json** gesucht. Der Standarddateiname lautet **testConfig.json**. Falls die Datei noch nicht vorhanden ist, wird eine neue Datei erstellt. |
+
+> [!NOTE]
+> Der `Script`-Wert in der generierten **testConfig.json**-Datei dient nur zum Bereitstellen des Kontexts und wird nicht in der Testlogik verwendet. 
 
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 

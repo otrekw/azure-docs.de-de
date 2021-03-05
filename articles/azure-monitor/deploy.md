@@ -1,17 +1,16 @@
 ---
 title: Bereitstellen von Azure Monitor
 description: Beschreibt die erforderlichen Schritte für eine vollständige Implementierung von Azure Monitor, um alle Ressourcen in Ihrem Azure-Abonnement zu überwachen.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: f5855d7ab1f7ba8e11334f1373fb10166f47003a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7656efeb26a8a8b3c752ea996c8e644c68a48626
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708253"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043999"
 ---
 # <a name="deploy-azure-monitor"></a>Bereitstellen von Azure Monitor
 Die Aktivierung von Azure Monitor für die Überwachung aller Ihrer Azure-Ressourcen umfasst die Konfiguration von Azure Monitor-Komponenten und von Azure-Ressourcen, damit diese Überwachungsdaten generieren, die Azure Monitor dann sammeln kann. In diesem Artikel werden die erforderlichen Schritte für eine vollständige Implementierung von Azure Monitor anhand einer allgemeinen Konfiguration beschrieben, mit der alle Ressourcen in Ihrem Azure-Abonnement überwacht werden können. Die grundlegenden Beschreibungen der einzelnen Schritte enthalten Links zu weiteren Informationen mit detaillierten Konfigurationsanforderungen.
@@ -96,7 +95,7 @@ VM Insights erfordert einen Log Analytics-Arbeitsbereich, der in der Regel dem e
 Ausführliche Informationen zum Konfigurieren des Log Analytics-Arbeitsbereichs für VM Insights finden Sie unter [Konfigurieren eines Log Analytics-Arbeitsbereichs für VM Insights](vm/vminsights-configure-workspace.md).
 
 ### <a name="enable-vm-insights-on-each-virtual-machine"></a>Aktivieren von VM Insights auf jedem virtuellen Computer
-Nachdem ein Arbeitsbereich konfiguriert wurde, können Sie jeden virtuellen Computer aktivieren, indem Sie den Log Analytics-Agent und den Dependency-Agent installieren. Es gibt mehrere Methoden für die Installation dieser Agents, einschließlich Azure Policy, das auch die Möglichkeit bietet, jeden virtuellen Computer bei der Erstellung automatisch zu konfigurieren. Die von VM Insights gesammelten Leistungsdaten und Prozessdetails werden in Azure Monitor-Protokollen gespeichert.
+Nachdem ein Arbeitsbereich konfiguriert wurde, können Sie jeden virtuellen Computer aktivieren, indem Sie den Log Analytics-Agent und den Abhängigkeits-Agent installieren. Es gibt mehrere Methoden für die Installation dieser Agents, einschließlich Azure Policy, das auch die Möglichkeit bietet, jeden virtuellen Computer bei der Erstellung automatisch zu konfigurieren. Die von VM Insights gesammelten Leistungsdaten und Prozessdetails werden in Azure Monitor-Protokollen gespeichert.
 
 Optionen zum Bereitstellen der Agents auf Ihren virtuellen Computern und zur Aktivierung für die Überwachung finden Sie unter [Aktivieren von VM Insights: Übersicht](vm/vminsights-enable-overview.md).
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: cdc5de8153e8b2e0ea8bb8ea372fe8610ccb895b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: da172e9a7605876711e4a4f32bf4fac698b35109
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678742"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694800"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>Hinzufügen der Rechtschreibprüfung zu Abfragen in Azure Cognitive Search
 
@@ -36,7 +36,7 @@ Sie können die Trefferquote (Recall) verbessern, indem Sie die Rechtschreibung 
   „queryLanguage“ muss für die Rechtschreibprüfung angegeben werden, und derzeit ist „en-us“ der einzige gültige Wert.
 
 > [!Note]
-> Der Parameter „speller“ ist in allen Tarifen verfügbar, und zwar in denselben Regionen, die die semantische Suche bereitstellen. Weitere Informationen finden Sie unter [Verfügbarkeit und Preise](semantic-search-overview.md#availability-and-pricing).
+> Der Parameter „speller“ ist in allen Tarifen verfügbar, und zwar in denselben Regionen, die die semantische Suche bereitstellen. Sie müssen sich für den Zugriff auf diese Previewfunktion nicht registrieren. Weitere Informationen finden Sie unter [Verfügbarkeit und Preise](semantic-search-overview.md#availability-and-pricing).
 
 ## <a name="spell-correction-with-simple-search"></a>Rechtschreibkorrektur mit einfacher Suche
 
@@ -94,7 +94,13 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="language-considerations"></a>Sprachbezogene Überlegungen
 
-Der für eine Semantikabfrage erforderliche queryLanguage-Parameter muss mit den [Sprachanalysetools](index-add-language-analyzers.md) übereinstimmen, die den Felddefinitionen im Indexschema zugewiesen sind. Wird „queryLanguage“ in einer Abfrageanforderung angegeben, bestimmt sein Wert, welche Lexika für die Rechtschreibprüfung verwendet werden. Zudem bestimmt der Wert die Eingabe für den [Algorithmus für die semantische Rangfolge](semantic-how-to-query-response.md), sofern Sie diesen verwenden. Sprachanalysetools werden bei der Indizierung und beim Abrufen übereinstimmender Dokumente im Suchindex verwendet. Aus Konsistenzgründen gilt: Wenn „queryLanguage=en-us“ ist, dann müssen alle Sprachananalysetools auch eine englische Variante sein („en.microsoft“ oder „en.lucene“). 
+Der für eine Semantikabfrage erforderliche queryLanguage-Parameter muss mit den [Sprachanalysetools](index-add-language-analyzers.md) übereinstimmen, die den Felddefinitionen im Indexschema zugewiesen sind. 
+
++ queryLanguage bestimmt, welche Lexika für die Rechtschreibprüfung verwendet werden, und dient zudem als Eingabe für den [semantischen Klassifizierungsalgorithmus](semantic-how-to-query-response.md), sofern Sie "queryType=semantic" verwenden.
+
++ Sprachanalyzer werden bei der Indizierung und Abfrageausführung übereinstimmender Dokumente im Suchindex eingesetzt. Ein Beispiel für eine Felddefinition mit einem Sprachanalyzer ist `"name": "Description", "type": "Edm.String", "analyzer": "en.microsoft"`.
+
+Wenn queryLanguage auf "en-us" festgelegt ist, müssen alle Sprachanalyzer ebenfalls einer Variante des Englischen entsprechen ("en.microsoft" oder "en.lucene").
 
 > [!NOTE]
 > Sprachunabhängige Analysetools (wie z. B. „keyword“, „simple“, “standard“, „stop“, „whitespace“ oder `standardasciifolding.lucene`) stehen nicht in Konflikt mit den queryLanguage-Einstellungen.

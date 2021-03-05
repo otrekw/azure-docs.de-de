@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 1e7ea0dc929fdbb4ca306405e6ed8993ed2e4afe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4a3eaddd160acb8d4d2ae9f0da43ce6cb0236055
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "100386100"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198148"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>Importieren von durch HSM geschützten Schlüsseln in Key Vault (BYOK)
 
@@ -52,7 +52,7 @@ In der folgenden Tabelle sind die Voraussetzungen für die Verwendung von BYOK i
 | Ein Azure-Abonnement |Um in Azure Key Vault einen Schlüsseltresor erstellen zu können, benötigen Sie ein Azure-Abonnement. [Registrieren Sie sich für eine kostenlose Testversion.](https://azure.microsoft.com/pricing/free-trial/) |
 | Eine Key Vault-Instanz mit Premium-SKU zum Importieren von durch HSM geschützten Schlüsseln |Weitere Informationen zu den Dienstebenen und Funktionen in Azure Key Vault finden Sie unter [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Ein HSM aus der Liste der unterstützten HSMs sowie ein BYOK-Tool mit den zugehörigen Anweisungen Ihres HSM-Anbieters | Sie müssen über die Berechtigungen für ein HSM und grundlegende Kenntnisse in der Verwendung Ihres HSM verfügen. Weitere Informationen finden Sie unter [Unterstützte HSMs](#supported-hsms). |
-| Azure-Befehlszeilenschnittstelle Version 2.1.0 oder höher | Weitere Informationen finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).|
+| Azure-Befehlszeilenschnittstelle Version 2.1.0 oder höher | Weitere Informationen finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).|
 
 ## <a name="supported-hsms"></a>Unterstützte HSMs
 
@@ -101,7 +101,7 @@ Für den KEK gilt Folgendes:
 > [!NOTE]
 > Der KEK muss als einzigen zulässigen Schlüsselvorgang „import“ aufweisen. „import“ schließt sich mit allen anderen wichtigen Vorgängen gegenseitig aus.
 
-Verwenden Sie den Befehl [az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-create), um den KEK mit auf `import` festgelegten Schlüsselvorgängen zu erstellen. Notieren Sie die Schlüssel-ID (`kid`), die vom folgenden Befehl zurückgegeben wird. (Sie verwenden den `kid`-Wert in [Schritt 3](#step-3-generate-and-prepare-your-key-for-transfer).)
+Verwenden Sie den Befehl [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create), um den KEK mit auf `import` festgelegten Schlüsselvorgängen zu erstellen. Notieren Sie die Schlüssel-ID (`kid`), die vom folgenden Befehl zurückgegeben wird. (Sie verwenden den `kid`-Wert in [Schritt 3](#step-3-generate-and-prepare-your-key-for-transfer).)
 
 ```azurecli
 az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import --vault-name ContosoKeyVaultHSM
@@ -109,7 +109,7 @@ az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import 
 
 ### <a name="step-2-download-the-kek-public-key"></a>Schritt 2: Herunterladen des öffentlichen Schlüssels des KEK
 
-Verwenden Sie den Befehl [az keyvault key download](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-download), um den öffentlichen Schlüssel des KEK in eine PEM-Datei herunterzuladen. Der importierte Zielschlüssel ist mit dem öffentlichen Schlüssel des KEK verschlüsselt.
+Verwenden Sie den Befehl [az keyvault key download](/cli/azure/keyvault/key#az-keyvault-key-download), um den öffentlichen Schlüssel des KEK in eine PEM-Datei herunterzuladen. Der importierte Zielschlüssel ist mit dem öffentlichen Schlüssel des KEK verschlüsselt.
 
 ```azurecli
 az keyvault key download --name KEKforBYOK --vault-name ContosoKeyVaultHSM --file KEKforBYOK.publickey.pem
@@ -130,7 +130,7 @@ Informieren Sie sich in der Dokumentation Ihres HSM-Anbieters darüber, wie Sie 
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>Schritt 4: Übertragen des Schlüssels an Azure Key Vault
 
-Um den Schlüsselimport abzuschließen, übertragen Sie das Schlüsselübertragungspaket (BYOK-Datei) von Ihrem nicht verbundenen Computer an den mit dem Internet verbundenen Computer. Verwenden Sie den Befehl [az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-import), um die BYOK-Datei in das Key Vault-HSM hochzuladen.
+Um den Schlüsselimport abzuschließen, übertragen Sie das Schlüsselübertragungspaket (BYOK-Datei) von Ihrem nicht verbundenen Computer an den mit dem Internet verbundenen Computer. Verwenden Sie den Befehl [az keyvault key import](/cli/azure/keyvault/key#az-keyvault-key-import), um die BYOK-Datei in das Key Vault-HSM hochzuladen.
 
 Verwenden Sie zum Importieren eines RSA-Schlüssels den folgenden Befehl: Der Parameter „--kty“ ist optional und wird standardmäßig auf „RSA-HSM“ festgelegt.
 ```azurecli

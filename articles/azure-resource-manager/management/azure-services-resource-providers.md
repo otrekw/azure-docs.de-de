@@ -3,12 +3,12 @@ title: Ressourcenanbieter durch Azure-Dienste
 description: Listet alle Ressourcenanbieter-Namespaces für Azure Resource Manager auf und gibt den Azure-Dienst für den jeweiligen Namespace an.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 581c25b384bf6e2865a21f083ba12eef2e5e8bcd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: cc9793bfc0ca6cc0afbede241534453209685d94
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733786"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198930"
 ---
 # <a name="resource-providers-for-azure-services"></a>Ressourcenanbieter für Azure-Dienste
 
@@ -35,7 +35,7 @@ Die Ressourcenanbieter, die mit **– registriert** gekennzeichnet sind, sind st
 | Microsoft.AutonomousSystems | [Autonome Systeme](https://www.microsoft.com/ai/autonomous-systems) |
 | Microsoft.AVS | [Azure VMware Solution](../../azure-vmware/index.yml) |
 | Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
-| Microsoft.AzureArcData | Registrierung für Azure Arc-fähige Datendienste |
+| Microsoft.AzureArcData | Azure Arc-fähige Datendienste |
 | Microsoft.AzureData | SQL Server-Registrierung |
 | Microsoft.AzureStack | core |
 | Microsoft.AzureStackHCI | [Azure Stack HCI](/azure-stack/hci/overview) |

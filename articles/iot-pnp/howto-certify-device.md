@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b3ba007f03b3aa4883d9455dc43b2bc19676da59
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 43a568149ccf85579b4f8190974fff872d6e09ea
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803968"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199644"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>Zertifizieren von IoT Plug & Play-Geräten
 
@@ -51,13 +51,13 @@ Ihr Gerät muss Folgendes durchführen, um die Anforderungen an die Zertifizieru
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>Testen mit der Befehlszeilenschnittstelle der Azure IoT-Erweiterung
 
-Mit der [Azure IoT CLI-Erweiterung](/cli/azure/ext/azure-iot/iot/product?preserve-view=true&view=azure-cli-latest) können Sie überprüfen, ob die Geräteimplementierung mit dem Modell übereinstimmt, bevor Sie das Gerät zur Zertifizierung über das Azure Certified Device-Portal übermitteln.
+Mit der [Azure IoT CLI-Erweiterung](/cli/azure/ext/azure-iot/iot/product) können Sie überprüfen, ob die Geräteimplementierung mit dem Modell übereinstimmt, bevor Sie das Gerät zur Zertifizierung über das Azure Certified Device-Portal übermitteln.
 
 In den folgenden Schritten wird gezeigt, wie Sie die Zertifizierungstests mithilfe der CLI vorbereiten und ausführen:
 
 ### <a name="install-the-azure-iot-extension-for-the-azure-cli"></a>Installieren der Azure IoT-Erweiterung für die Azure CLI
 
-Folgen Sie den [Installationsanleitungen](/cli/azure/?preserve-view=true&view=azure-cli-latest) zum Einrichten der Azure CLI in Ihrer Umgebung.
+Folgen Sie den [Installationsanleitungen](/cli/azure) zum Einrichten der Azure CLI in Ihrer Umgebung.
 
 Führen Sie zum Installieren der Azure IoT-Erweiterung den folgenden Befehl aus:
 
@@ -65,7 +65,7 @@ Führen Sie zum Installieren der Azure IoT-Erweiterung den folgenden Befehl aus:
 az extension add --name azure-iot
 ```
 
-Weitere Informationen finden Sie unter [Azure CLI für Azure IoT](/cli/azure/azure-cli-reference-for-iot?preserve-view=true&view=azure-cli-latest).
+Weitere Informationen finden Sie unter [Azure CLI für Azure IoT](/cli/azure/azure-cli-reference-for-iot).
 
 ### <a name="create-a-new-product-test"></a>Erstellen eines neuen Produkttests
 
@@ -79,7 +79,7 @@ az iot product test create --badge-type Pnp --at SymmetricKey --device-type Fini
 ```
 
 > [!NOTE]
-> Sie müssen sich bei Ihrem Abonnement [anmelden](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest), wenn Sie die Befehlszeilenschnittstelle (CLI) verwenden.
+> Sie müssen sich bei Ihrem Abonnement [anmelden](/cli/azure/authenticate-azure-cli), wenn Sie die Befehlszeilenschnittstelle (CLI) verwenden.
 
 Die JSON-Ausgabe des Befehls enthält `primaryKey`, `registrationId` und `scopeID`, die beim Herstellen einer Verbindung für Ihr Gerät zu verwenden sind.
 

@@ -1,17 +1,17 @@
 ---
 title: Importieren eines neuen Updates | Microsoft-Dokumentation
 description: Schrittanleitung zum Importieren eines neuen Updates in IoT Hub Device Update für IoT Hub.
-author: andbrown
+author: andrewbrownmsft
 ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: d8757f3076f784576f95bbdfc30abf578446c776
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c83221743e0566d783c38c40aaf92111a0cd80f7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660648"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030731"
 ---
 # <a name="import-new-update"></a>Importieren eines neuen Updates
 Hier erfahren Sie, wie Sie ein neues Update in Device Update für IoT Hub importieren.
@@ -53,7 +53,7 @@ Hier erfahren Sie, wie Sie ein neues Update in Device Update für IoT Hub import
     $importManifest | Out-File '.\importManifest.json' -Encoding UTF8
     ```
 
-    Als Kurzreferenz: Hier sind einige Beispielwerte für die vorstehenden Parameter. Eine vollständige Dokumentation finden Sie unten im Schema des vollständigen Importmanifests.
+    Als Kurzreferenz: Hier sind einige Beispielwerte für die vorstehenden Parameter. Sie können sich auch das vollständige [Importmanifestschema](import-schema.md) ansehen, um mehr Details zu erhalten.
 
     | Parameter | BESCHREIBUNG |
     | --------- | ----------- |
@@ -66,19 +66,6 @@ Hier erfahren Sie, wie Sie ein neues Update in Device Update für IoT Hub import
     | installedCriteria | <ul><li>Wert von „SWVersion“ für Updatetyp `microsoft/swupdate:1` angeben</li><li>Geben Sie den empfohlenen Wert für den Updatetyp `microsoft/apt:1` an.
     | updateFilePath(s) | Pfad zu der/den Updatedatei(en) auf Ihrem Computer
 
-    Schema des vollständigen Importmanifests
-
-    | Name | type | BESCHREIBUNG | Beschränkungen |
-    | --------- | --------- | --------- | --------- |
-    | UpdateId | `UpdateId`-Objekt | Update-Identität. |
-    | UpdateType | Zeichenfolge | Updatetyp: <ul><li>Geben `microsoft/apt:1` Sie an, wenn Sie ein paketbasiertes Update mit dem Referenz-Agent ausführen.</li><li>Geben `microsoft/swupdate:1` Sie an, wenn Sie ein imagebasiertes Update mit dem Referenz-Agent ausführen.</li><li>Geben `microsoft/simulator:1` Sie an, wenn Sie den Beispiel-Agent-Simulator verwenden.</li><li>Geben Sie einen benutzerdefinierten Typ an, wenn Sie einen benutzerdefinierten Agent entwickeln.</li></ul> | <ul><li>Format: `{provider}/{type}:{typeVersion}`</li><li>Insgesamt maximal 32 Zeichen</li></ul> |
-    | InstalledCriteria | Zeichenfolge | Vom Agent interpretierte Zeichenfolge zur Ermittlung, ob das Update erfolgreich angewendet wurde:  <ul><li>Geben Sie den **Wert** von „SWVersion“ für den Updatetyp `microsoft/swupdate:1` an.</li><li>Geben Sie `{name}-{version}` für den Updatetyp `microsoft/apt:1` an, dessen Name und Version aus der APT-Datei abgerufen werden.</li><li>Geben Sie den Hash der Updatedatei für den Updatetyp `microsoft/simulator:1` an.</li><li>Geben Sie eine benutzerdefinierte Zeichenfolge an, wenn Sie einen benutzerdefinierten Agent entwickeln.</li></ul> | Maximal 64 Zeichen |
-    | Kompatibilität | Array von `CompatibilityInfo`-Objekten | Kompatibilitätsinformationen des Geräts, das mit diesem Update kompatibel ist. | Maximal 10 Elemente |
-    | CreatedDateTime | date/time | Datum und Uhrzeit, an dem/zu der das Update erstellt wurde. | Durch Trennzeichen getrenntes ISO 8601-Datums- und Uhrzeitformat, in UTC |
-    | ManifestVersion | Zeichenfolge | Schemaversion des Importmanifests. Geben Sie den Wert `2.0` an, der mit der Schnittstelle `urn:azureiot:AzureDeviceUpdateCore:1` und der Schnittstelle `urn:azureiot:AzureDeviceUpdateCore:4` kompatibel ist.</li></ul> | Muss gleich `2.0` sein. |
-    | Dateien | Array von `File`-Objekten | Aktualisieren von Nutzlastdateien | Maximal 5 Dateien |
-
-Hinweis: Alle Felder sind erforderlich.
 
 ## <a name="review-generated-import-manifest"></a>Überprüfen des generierten Importmanifests
 

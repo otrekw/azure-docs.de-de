@@ -1,17 +1,16 @@
 ---
 title: Integrieren des Zuordnungsfeatures von VM Insights in Operations Manager | Microsoft-Dokumentation
 description: VM Insights ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In diesem Artikel wird die Verwendung des Zuordnungsfeatures zum automatischen Erstellen von Diagrammen der verteilten Anwendungen in Operations Manager erörtert.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: a39f40c2a284a743db258a49f36cb4f13c2a4d1c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3a7d0d49313cb524a5bf39add5c9a55862dcad47
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725491"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046889"
 ---
 # <a name="integrate-system-center-operations-manager-with-vm-insights-map-feature"></a>Integrieren des Zuordnungsfeatures von VM Insights in System Center Operations Manager
 

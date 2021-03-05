@@ -1,31 +1,48 @@
 ---
-title: include file
-description: include file
-services: virtual-wan
 author: cherylmc
+ms.author: cherylmc
+ms.date: 02/23/2021
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 09/12/2018
-ms.author: cherylmc
-ms.custom: include file
-ms.openlocfilehash: 411c28c0bbbf5ea659c6b6cca1e5bfae847ddd7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 567c0bb75c30a1f0ccdcde7ec1b0f04f5d6e54c5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812723"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048255"
 ---
-1. Navigieren Sie zu **Alle Ressourcen**.
-1. Wählen Sie das virtuelle WAN aus, das Sie erstellt haben.
-1. Wählen Sie oben auf der Seite die Option **+ Benutzer-VPN-Konfiguration erstellen** aus, um die Seite **Neue Benutzer-VPN-Konfiguration erstellen** zu öffnen.
+[!INCLUDE [Portal feature rollout](virtual-wan-portal-feature-rollout.md)]
 
-   :::image type="content" source="media/virtual-wan-p2s-configuration/user-vpn.jpg" alt-text="Benutzer-VPN-Konfigurationen":::
+1. Navigieren Sie zu **Alle Ressourcen**, und wählen Sie das von Ihnen erstellte virtuelle WAN und anschließend **Benutzer-VPN-Konfigurationen** im linken Menü aus.
+1. Wählen Sie auf der Seite **Benutzer-VPN-Konfigurationen** oben auf der Seite die Option **+ Benutzer-VPN-Konfiguration erstellen** aus, um die Seite **Neue Benutzer-VPN-Konfiguration erstellen** zu öffnen.
 
-1. Füllen Sie auf der Seite **Neue Benutzer-VPN-Konfiguration erstellen** die folgenden Felder aus:
+   :::image type="content" source="media/virtual-wan-p2s-configuration/user-vpn.png" alt-text="Screenshot der Seite „Benutzer-VPN-Konfigurationen“":::
 
-   * **Konfigurationsname**: Dies ist der Name, unter dem Sie auf Ihre Konfiguration verweisen möchten.
-   * **Tunneltyp**: Das Protokoll, das für den Tunnel verwendet wird.
-   * **Name des Stammzertifikats**: Ein beschreibender Name für das Zertifikat.
-   * **Daten des öffentlichen Zertifikats**: X.509-Zertifikatdaten mit Base64-Codierung.
-  
-1. Wählen Sie **Erstellen** aus, um die Konfiguration zu erstellen.
+1. Geben Sie auf der Registerkarte **Basic** (Grundlagen) unter **Instanzdetails** den **Namen** ein, den Sie Ihrer VPN-Konfiguration zuweisen möchten.
+1. Wählen Sie für den **Tunneltyp** über das Dropdownmenü den Tunneltyp aus, den Sie verwenden möchten. Die Optionen für den Tunneltyp sind die folgenden: **IKEv2-VPN**, **OpenVpn** und **IkeV2**.
+1. Führen Sie die folgenden Schritte aus, die dem ausgewählten Tunneltyp entsprechen. Wenn alle Werte angegeben sind, klicken Sie auf **Überprüfen + erstellen** und dann auf **Erstellen**, um die Konfiguration zu erstellen.
+
+   **IKEv2 VPN**
+
+   * **Anforderungen:** Wenn Sie den Tunneltyp **IKEv2** auswählen, wird eine Meldung angezeigt, die Sie auffordert, eine Authentifizierungsmethode auszuwählen. Bei IKEv2 können Sie nur eine Authentifizierungsmethode angeben. Sie können Azure Certificate, Azure Active Directory oder eine RADIUS-basierte Authentifizierung auswählen.
+
+   * **Benutzerdefinierte IPsec-Parameter:** Wenn Sie die Parameter für IKE Phase 1 und IKE Phase 2 anpassen möchten, legen Sie den IPsec-Umschalter auf **Custom** (Benutzerdefiniert) fest, und wählen Sie die Parameterwerte aus. Weitere Informationen zu anpassbaren Parametern finden Sie im Artikel zu den [Benutzerdefinierten IPsec-Richtlinien](../articles/virtual-wan/point-to-site-ipsec.md).
+
+     :::image type="content" source="media/virtual-wan-p2s-configuration/custom.png" alt-text="Screenshot des IPsec-Umschalters, der auf „custom“ (benutzerdefiniert) festgelegt ist":::
+
+   * **Authentifizierung:** Navigieren Sie zum Authentifizierungsmechanismus, den Sie verwenden möchten, und klicken Sie entweder ganz unten auf der Seite auf **Weiter**, um zur Authentifizierungsmethode zu wechseln, oder klicken Sie auf die entsprechende Registerkarte oben auf der Seite. Verschieben den Umschalter auf **Ja**, um die Methode auszuwählen.
+
+     In diesem Beispiel ist die RADIUS-Authentifizierung ausgewählt. Bei der RADIUS-basierten Authentifizierung können Sie eine sekundäre IP-Adresse des RADIUS-Servers und ein Servergeheimnis bereitstellen.
+
+     :::image type="content" source="media/virtual-wan-p2s-configuration/ike-radius.png" alt-text="Screenshot von IKE":::
+
+   **OpenVPN**
+
+   * **Anforderungen:** Wenn Sie den **OpenVPN**-Tunneltyp auswählen, wird eine Meldung angezeigt, die Sie auffordert, einen Authentifizierungsmechanismus auszuwählen. Wenn OpenVPN als Tunneltyp ausgewählt ist, können Sie mehrere Authentifizierungsmethoden angeben. Sie können eine beliebige Teilmenge von Azure Certificate, Azure Active Directory oder eine RADIUS-basierte Authentifizierung auswählen. Bei der RADIUS-basierten Authentifizierung können Sie eine sekundäre IP-Adresse des RADIUS-Servers und ein Servergeheimnis bereitstellen.
+
+   * **Authentifizierung:** Navigieren Sie zur Authentifizierungsmethode, die Sie verwenden möchten, und klicken Sie entweder ganz unten auf der Seite auf **Weiter**, um zur Authentifizierungsmethode zu wechseln, oder klicken Sie auf die entsprechende Registerkarte oben auf der Seite.
+   Schieben Sie für jede Methode, die Sie auswählen möchten, den Umschalter auf **Ja**, und geben Sie die entsprechenden Werte ein.
+
+     In diesem Beispiel ist Azure Active Directory ausgewählt.
+
+     :::image type="content" source="media/virtual-wan-p2s-configuration/openvpn.png" alt-text="Screenshot der OpenVPN-Seite":::

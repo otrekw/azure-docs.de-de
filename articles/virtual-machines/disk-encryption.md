@@ -2,18 +2,18 @@
 title: Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern
 description: Azure Storage schützt Ihre Daten, indem der Dienst diese im Ruhezustand verschlüsselt, bevor diese auf Storage-Clustern gespeichert werden. Sie können mit kundenseitig verwalteten Schlüsseln die Verschlüsselung mit Ihren eigenen Schlüsseln verwalten, oder Sie können sich bei der Verschlüsselung Ihrer verwalteten Datenträger auf von Microsoft verwaltete Schlüssel verlassen.
 author: roygara
-ms.date: 10/22/2020
+ms.date: 03/02/2021
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f9152e341ac04209754bbf5f008cd56373967b9f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a1fbd536943023d3e6724b9c1638f7a0bd97d847
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677438"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036944"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Serverseitige Verschlüsselung von Azure Disk Storage
 
@@ -66,6 +66,8 @@ Die automatische Schlüsselrotation ist in der Vorschau und nur in den folgenden
 > [!IMPORTANT]
 > Von Kunden verwaltete Schlüssel basieren auf verwalteten Identitäten für Azure-Ressourcen, einem Feature von Azure Active Directory (Azure AD). Wenn Sie vom Kunden verwaltete Schlüssel konfigurieren, wird Ihren Ressourcen im Hintergrund automatisch eine verwaltete Identität zugewiesen. Wenn Sie anschließend das Abonnement, die Ressourcengruppe oder den verwalteten Datenträger in ein anderes Azure AD-Verzeichnis verschieben, wird die den verwalteten Datenträgern zugeordnete verwaltete Identität nicht an den neuen Mandanten übertragen, sodass kundenseitig verwaltete Schlüssel möglicherweise nicht mehr funktionieren. Weitere Informationen finden Sie unter [Übertragen eines Abonnements zwischen Azure AD-Verzeichnissen](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
 
+Informationen zum Aktivieren kundenseitig verwalteter Schlüssel für verwaltete Datenträger finden Sie in den Artikeln, in denen erläutert wird, wie Sie diese entweder mit dem [Azure PowerShell-Modul](windows/disks-enable-customer-managed-keys-powershell.md), der [Azure CLI](linux/disks-enable-customer-managed-keys-cli.md) oder dem [Azure-Portal](disks-enable-customer-managed-keys-portal.md) aktivieren. Lesen Sie den Artikel [Einrichten von Azure Key Vault und DiskEncryptionSet ohne automatische Schlüsselrotation](windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation-preview), um zu erfahren, wie Sie kundenseitig verwaltete Schlüssel mit automatischer Schlüsselrotation aktivieren.
+
 ## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>Verschlüsselung auf dem Host: End-to-End-Verschlüsselung für Ihre VM-Daten
 
 Wenn Sie die Verschlüsselung auf dem Host aktivieren, wird die Verschlüsselung auf dem VM-Host gestartet (also auf dem Azure-Server, dem Ihr virtueller Computer zugeordnet ist). Die Daten für Ihren temporären Datenträger sowie für den Cache von Betriebssystemdatenträgern und regulären Datenträgern werden auf diesem VM-Host gespeichert. Nach Aktivierung der Verschlüsselung auf dem Host werden alle diese Daten sowohl im Ruhezustand als auch bei der Übertragung an den Speicherdienst verschlüsselt, wo sie gespeichert werden. Mit der Verschlüsselung auf dem Host erreichen Sie also im Grunde eine End-to-End-Verschlüsselung Ihrer Daten. Bei der Verschlüsselung auf dem Host wird weder die CPU Ihres virtuellen Computers beansprucht noch die Leistung Ihres virtuellen Computers beeinträchtigt. 
@@ -84,6 +86,8 @@ Temporäre Datenträger und kurzlebige Betriebssystemdatenträger werden im Ruhe
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
 
+Informationen zum Aktivieren der End-to-End-Verschlüsselung mithilfe der Verschlüsselung auf dem Host finden Sie in den Artikeln, in denen erläutert wird, wie Sie diese entweder mit dem [Azure PowerShell-Modul](windows/disks-enable-host-based-encryption-powershell.md), der [Azure CLI](linux/disks-enable-host-based-encryption-cli.md) oder dem [Azure-Portal](disks-enable-host-based-encryption-portal.md) aktivieren.
+
 ## <a name="double-encryption-at-rest"></a>Doppelte Verschlüsselung im Ruhezustand
 
 Kunden mit besonders hohen Sicherheitsanforderungen, die befürchten, dass ein einzelner Verschlüsselungsalgorithmus, eine einzelne Verschlüsselungsimplementierung oder ein einzelner Verschlüsselungsschlüssel kompromittiert werden könnte, haben nun die Möglichkeit, eine zusätzliche Verschlüsselungsebene mit einem anderen Verschlüsselungsalgorithmus/-modus auf der Infrastrukturebene zu nutzen (unter Verwendung von plattformseitig verwalteten Schlüsseln). Diese neue Ebene kann auf Datenträger für persistente Betriebssysteme und für Daten, Momentaufnahmen und Images angewendet werden, um sie im Ruhezustand mit doppelter Verschlüsselung zu verschlüsseln.
@@ -91,6 +95,8 @@ Kunden mit besonders hohen Sicherheitsanforderungen, die befürchten, dass ein e
 ### <a name="supported-regions"></a>Unterstützte Regionen
 
 Die doppelte Verschlüsselung wird in allen Regionen unterstützt, in denen verwaltete Datenträger verfügbar sind.
+
+Informationen zum Aktivieren der Mehrfachverschlüsselung im Ruhezustand für verwaltete Datenträger finden Sie in den Artikeln, in denen erläutert wird, wie Sie diese entweder mit dem [Azure PowerShell-Modul](windows/disks-enable-double-encryption-at-rest-powershell.md), der [Azure CLI](linux/disks-enable-double-encryption-at-rest-cli.md) oder dem [Azure-Portal](disks-enable-double-encryption-at-rest-portal.md) aktivieren.
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Vergleich: Serverseitige Verschlüsselung und Azure-Datenträgerverschlüsselung
 

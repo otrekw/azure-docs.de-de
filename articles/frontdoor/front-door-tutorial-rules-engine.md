@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c15b6115c2b07503320cd7b5f3c790be03aeea94
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 5d26d36c9f4ecb4aa0c7114b1ebef066e104f175
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278116"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198862"
 ---
 # <a name="tutorial-configure-your-rules-engine"></a>Tutorial: Konfigurieren Ihres Regelmoduls
 
@@ -58,7 +58,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="configure-rules-engine-in-azure-cli"></a>Konfigurieren des Regelmoduls in der Azure CLI
 
-1. Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest), falls Sie dies noch nicht getan haben. Fügen Sie die Front Door-Erweiterung hinzu:- az extension add --name front-door. Melden Sie sich dann an, und wechseln Sie zu Ihrem Abonnement: az account set --subscription <Name_oder_ID>.
+1. Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli), falls Sie dies noch nicht getan haben. Fügen Sie die Front Door-Erweiterung hinzu:- az extension add --name front-door. Melden Sie sich dann an, und wechseln Sie zu Ihrem Abonnement: az account set --subscription <Name_oder_ID>.
 
 1. Beginnen Sie mit dem Erstellen eines Regelmoduls. In diesem Beispiel wird eine Regel mit einer headerbasierten Aktion und einer Übereinstimmungsbedingung gezeigt. 
 
@@ -96,7 +96,7 @@ In diesem Tutorial lernen Sie Folgendes:
     az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --remove rulesEngine # case sensitive word ‘rulesEngine’
     ```
 
-Weitere Informationen und die vollständige Liste der Befehle des AFD-Regelmoduls finden Sie [hier](/cli/azure/ext/front-door/network/front-door/rules-engine?preserve-view=true&view=azure-cli-latest).   
+Weitere Informationen und die vollständige Liste der Befehle des AFD-Regelmoduls finden Sie [hier](/cli/azure/ext/front-door/network/front-door/rules-engine).   
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -108,11 +108,11 @@ In den vorherigen Schritten haben Sie eine Regelmodulkonfiguration erstellt und 
 
 1. Deaktivieren Sie alle Routingregeln, denen diese Regelmodulkonfiguration zugeordnet ist, und klicken Sie auf „Speichern“.
 
-    :::image type="content" source="./media/front-door-rules-engine/front-door-routing-rule-association.png" alt-text="Zuordnen von Routingregeln":::
+    :::image type="content" source="./media/front-door-rules-engine/front-door-routing-rule-association.png" alt-text="Routingregelzuordnung":::
 
 1. Nun können Sie die Regelmodulkonfiguration aus Front Door löschen.
 
-    :::image type="content" source="./media/front-door-rules-engine/front-door-delete-rule-engine-configuration.png" alt-text="Zuordnen von Routingregeln":::
+    :::image type="content" source="./media/front-door-rules-engine/front-door-delete-rule-engine-configuration.png" alt-text="Löschen der Regelmodulkonfiguration":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

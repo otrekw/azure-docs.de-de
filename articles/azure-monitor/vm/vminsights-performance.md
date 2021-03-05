@@ -1,17 +1,16 @@
 ---
 title: Darstellen der Leistung in Diagrammen mit VM Insights
 description: Leistung ist ein Feature von VM Insights, das Anwendungskomponenten auf Windows- und Linux-Systemen automatisch ermittelt und die Kommunikation zwischen Diensten abbildet. Dieser Artikel enthält Details zu seiner Verwendung in einer Reihe von Szenarien.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/31/2020
-ms.openlocfilehash: 9c69ea3da71063d7e20ebf31ae2eb3df9a51e2c2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 02cb6a0c69fef1a33dd9327ddbd86e02b376a60e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725440"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046464"
 ---
 # <a name="how-to-chart-performance-with-vm-insights"></a>Darstellen der Leistung in Diagrammen mit VM Insights
 

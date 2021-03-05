@@ -8,25 +8,25 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
-ms.openlocfilehash: bdd5a379afb9603c8966320d85c778632948cfd0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 710e6902be6ebe28caaf40fb446e4ee7cd2bf4dc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660329"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687565"
 ---
-# <a name="hotpatch-for-windows-server-azure-edition-preview"></a>Hotpatch für Windows Server Azure Edition (Vorschau)
+# <a name="hotpatch-for-new-virtual-machines-preview"></a>Hotpatch für neue VMs (Vorschau)
 
 Hotpatching ist eine neue Methode zur Installation von Updates auf neuen virtuellen Computern (VMs) der Windows Server Azure Edition, die keinen Neustart nach der Installation erfordert. Dieser Artikel enthält Informationen über VMs für Hotpatch für Windows Server Azure Edition. Dies hat die folgenden Vorteile:
 * Geringere Auswirkungen auf die Workload mit weniger Neustarts
 * Schnellere Bereitstellung von Updates, da die Pakete kleiner sind, schneller installiert werden und eine einfachere Patchorchestrierung mit Azure Update Manager möglich ist
 * Besserer Schutz, da die Hotpatch-Updatepakete auf Windows-Sicherheitsupdates beschränkt sind, die schneller und ohne Neustart installiert werden
 
-## <a name="how-hotpatch-works"></a>Funktionsweise von Hotpatch
+## <a name="how-hotpatch-works"></a>Funktionsweise von Hotpatches
 
 Hotpatch funktioniert, indem zuerst eine Baseline mit einem aktuellen kumulativen Update von Windows Update festgelegt wird. Es werden regelmäßig Hotpatches freigegeben (z. B. am zweiten Dienstag des Monats), die auf dieser Baseline aufsetzen. Hotpatches enthalten Updates, für die kein Neustart erforderlich ist. Die Baseline wird in regelmäßigen Abständen (beginnend mit „alle drei Monate“) mit einem neuen aktuellen kumulativen Update aktualisiert.
 
-    :::image type="content" source="media\automanage-hotpatch\hotpatch-sample-schedule.png" alt-text="Hotpatch Sample Schedule.":::
+:::image type="content" source="media\automanage-hotpatch\hotpatch-sample-schedule.png" alt-text="Hotpatch-Beispielzeitplan":::
 
 Es gibt zwei Arten von Baselines: **Geplante Baselines** und **Nicht geplante Baselines**.
 *  **Geplante Baselines** werden in einem regelmäßigen Rhythmus veröffentlicht, wobei zwischendurch Hotpatch-Releases veröffentlicht werden.  Geplante Baselines enthalten alle Updates in einem vergleichbaren _letzten kumulativen Update_ für diesen Monat und erfordern einen Neustart.
@@ -154,7 +154,7 @@ Um den Patchstatus für Ihre VM anzuzeigen, navigieren Sie im Azure-Portal zum A
 Auf diesem Bildschirm wird der Hotpatch-Status für Ihre VM angezeigt. Sie können auch überprüfen, ob es verfügbare Patches für Ihre VM gibt, die noch nicht installiert wurden. Wie im obigen Abschnitt zur Patchinstallation beschrieben, werden alle sicherheitsbezogenen und kritischen Updates mithilfe [automatischer VM-Gastpatches](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) automatisch auf Ihrer VM installiert, ohne dass zusätzliche Aktionen erforderlich sind. Patches mit anderen Updateklassifizierungen werden nicht automatisch installiert. Stattdessen werden sie in der Liste der verfügbaren Patches auf der Registerkarte „Updatekonformität“ angezeigt. Sie können auch den Verlauf der Bereitstellung von Updates auf Ihrer VM über den „Updateverlauf“ anzeigen. Der Updateverlauf der letzten 30 Tage wird zusammen mit den Details zur Patchinstallation angezeigt.
 
 
-    :::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="Hotpatch Management.":::
+:::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="Hotpatch-Verwaltung":::
 
 Mit den automatischen VM-Gastpatches wird Ihre VM regelmäßig und automatisch auf verfügbare Updates geprüft. Diese regelmäßigen Bewertungen stellen sicher, dass verfügbare Patches erkannt werden. Sie können die Ergebnisse der Bewertung auf dem Bildschirm „Updates“ oben anzeigen, einschließlich des Zeitpunkts der letzten Bewertung. Sie können auch jederzeit eine bedarfsgesteuerte Patchbewertung für Ihre VM mithilfe der Option „Jetzt bewerten“ auslösen und die Ergebnisse nach Abschluss der Bewertung überprüfen.
 
@@ -197,7 +197,7 @@ Es gibt einige wichtige Überlegungen zum Betrieb einer VM mit Windows Server Az
 
 ### <a name="are-reboots-still-needed-for-a-vm-enrolled-in-hotpatch"></a>Sind für einen in Hotpatch registrierten virtuellen Computer noch Neustarts erforderlich?
 
-* Neustarts sind weiterhin erforderlich, um Updates zu installieren, die nicht im Hotpatch-Programm enthalten sind, und sind regelmäßig erforderlich, nachdem eine Baseline (letztes kumulatives Update von Windows Update) installiert wurde. Durch diesen Neustart wird Ihre VM mit allen Patches, die im kumulativen Update enthalten sind, auf dem neuesten Stand gehalten. Die Baselines (die einen Neustart erfordern) beginnen mit einem dreimonatigen Rhythmus und erhöhen sich mit der Zeit auf einen Rhythmus von sechs oder mehr Monaten.
+* Neustarts sind weiterhin erforderlich, um Updates zu installieren, die nicht im Hotpatch-Programm enthalten sind, und sind regelmäßig erforderlich, nachdem eine Baseline (letztes kumulatives Update von Windows Update) installiert wurde. Durch diesen Neustart wird Ihre VM mit allen Patches, die im kumulativen Update enthalten sind, auf dem neuesten Stand gehalten. Die Baselines (die einen Neustart erfordern) beginnen mit einem dreimonatigen Rhythmus, der mit der Zeit verlängert wird.
 
 ### <a name="are-my-applications-affected-when-a-hotpatch-update-is-installed"></a>Sind meine Anwendungen betroffen, wenn ein Hotpatch-Update installiert wird?
 

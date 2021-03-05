@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6cafbff86a55ad0bed7da17fcef1aea2b0a53d1b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f0f3baf1bf56f958408f789961812c0555f289f1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678682"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043642"
 ---
 # <a name="redundancy-options-for-managed-disks"></a>Redundanzoptionen für verwaltete Datenträger
 
@@ -23,7 +23,7 @@ Verwaltete Azure-Datenträger bieten zwei Optionen für die Speicherredundanz: z
 
 Bei lokal redundantem Speicher (LRS) werden die Daten innerhalb eines einzelnen Rechenzentrums in der ausgewählten Region repliziert. LRS schützt Ihre Daten vor Serverrack- und Laufwerkfehlern. 
 
-Es gibt einige Möglichkeiten, wie Sie Ihre Anwendung mithilfe von LRS-Datenträgern vor einem Ausfall der gesamten Zone schützen können, der aufgrund von Naturkatastrophen oder Hardwareproblemen auftreten kann:
+Es gibt einige Möglichkeiten, wie Sie Ihre Anwendung mithilfe von LRS-Datenträgern vor einem möglichen Ausfall der gesamten Zone aufgrund von Naturkatastrophen oder Hardwareproblemen schützen können:
 - Verwenden Sie eine Anwendung wie SQL Server AlwaysOn, die Daten synchron in zwei Zonen schreiben kann und im Notfall ein automatisches Failover in eine andere Zone durchführt.
 - Führen Sie regelmäßige Sicherungen von LRS-Datenträgern mit ZRS-Momentaufnahmen durch.
 - Aktivieren Sie die zonenübergreifende Notfallwiederherstellung für LRS-Datenträger über [Azure Site Recovery](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md). Eine zonenübergreifende Notfallwiederherstellung bietet jedoch kein Null-RPO (Recovery Point Objective).
@@ -34,7 +34,7 @@ Wenn Ihr Workflow keine zonenübergreifenden synchronen Schreibvorgänge auf Anw
 
 Bei zonenredundantem Speicher (ZRS) wird Ihr verwalteter Azure-Datenträger synchron über drei Azure-Verfügbarkeitszonen hinweg in der ausgewählten Region repliziert. Jede Verfügbarkeitszone ist ein getrennter physischer Standort mit unabhängigen Stromversorgungs-, Kühlungs- und Netzwerkgeräten. 
 
-ZRS-Datenträger ermöglichen die Wiederherstellung nach Fehlern in Verfügbarkeitszonen. Wenn eine gesamte Zone ausgefallen ist, kann ein ZRS-Datenträger an einen virtuellen Computer in einer anderen Zone angefügt werden. ZRS-Datenträger können auch in Kombination mit freigegebenen Datenträgern verwendet werden, um eine verbesserte Verfügbarkeit für gruppierte oder verteilte Anwendungen wie SQL FCI, SAP ASCS/SCS oder GFS2 bereitzustellen. Sie können einen freigegebenen ZRS-Datenträger an primäre und sekundäre VMs in verschiedenen Zonen anfügen, um sowohl ZRS als auch [Verfügbarkeitszonen](../availability-zones/az-overview.md) zu nutzen. Wenn bei der primären Zone ein Fehler auftritt, können Sie mithilfe von [permanenter SCSI-Reservierung](disks-shared-enable.md#supported-scsi-pr-commands) schnell ein Failover auf den sekundären virtuellen Computer durchführen.
+ZRS-Datenträger ermöglichen die Wiederherstellung nach Fehlern in Verfügbarkeitszonen. Wenn eine gesamte Zone ausgefallen ist, kann ein ZRS-Datenträger an einen virtuellen Computer in einer anderen Zone angefügt werden. ZRS-Datenträger können auch als freigegebene Datenträger verwendet werden, um eine bessere Verfügbarkeit für gruppierte oder verteilte Anwendungen wie SQL FCI, SAP ASCS/SCS oder GFS2 zu bieten. Sie können einen freigegebenen ZRS-Datenträger an primäre und sekundäre VMs in verschiedenen Zonen anfügen, um sowohl ZRS als auch [Verfügbarkeitszonen](../availability-zones/az-overview.md) zu nutzen. Wenn bei der primären Zone ein Fehler auftritt, können Sie mithilfe von [permanenter SCSI-Reservierung](disks-shared-enable.md#supported-scsi-pr-commands) schnell ein Failover auf den sekundären virtuellen Computer durchführen.
 
 ### <a name="limitations"></a>Einschränkungen
 
@@ -56,7 +56,7 @@ Abgesehen von einer höheren Wartezeit beim Schreiben sind Datenträger, die ZRS
 
 ### <a name="create-zrs-managed-disks"></a>Erstellen von verwalteten ZRS-Datenträgern
 
-Sie müssen die `2020-12-01`-API mit Ihrer Azure Resource Manager-Vorlage verwenden, um einen ZRS-Datenträger zu erstellen.
+Verwenden Sie die `2020-12-01`-API mit Ihrer Azure Resource Manager-Vorlage, um einen ZRS-Datenträger zu erstellen.
 
 #### <a name="create-a-vm-with-zrs-disks"></a>Erstellen einer VM mit ZRS-Datenträgern
 
@@ -120,3 +120,7 @@ New-AzResourceGroupDeployment -ResourceGroupName zrstesting `
 -osDiskType "StandardSSD_LRS" `
 -dataDiskType "Premium_ZRS" `
 ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Erstellen Sie mit den verlinkten [Azure Resource Manager-Beispielvorlagen eine VM mit ZRS-Datenträgern](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/ZRSDisks).

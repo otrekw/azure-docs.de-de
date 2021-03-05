@@ -8,12 +8,12 @@ ms.date: 03/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 161aafce1c04e5d09cf08529bcbf1baf6b8a86b1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 429845aa22b6d069b8d7233132de8eb3b24b2985
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674934"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043676"
 ---
 # <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>Ändern der Leistungsstufe mithilfe des Azure PowerShell-Moduls oder der Azure CLI
 
@@ -117,7 +117,7 @@ $disk.Tier
 
 ## <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>Ändern der Leistungsstufe eines Datenträgers ohne Downtime (Vorschau)
 
-Sie können Ihre Leistungsstufe auch ohne Downtime ändern, damit Sie Ihre VM nicht freigeben oder Ihren Datenträger trennen müssen, um die Stufe zu ändern. Weitere Informationen und den Registrierungslink für die Vorschauversion finden Sie im Abschnitt [Ändern der Leistungsstufe ohne Downtime (Vorschau)](#changing-performance-tier-without-downtime-preview).
+Sie können Ihre Leistungsstufe auch ohne Downtime ändern, damit Sie Ihre VM nicht freigeben oder Ihren Datenträger trennen müssen, um die Stufe zu ändern. Weitere Informationen und den Registrierungslink für die Vorschauversion finden Sie im Abschnitt [Ändern der Leistungsstufe eines Datenträgers ohne Downtime (Vorschau)](#change-performance-tier-without-downtime-preview).
 
 
 Das folgende Skript aktualisiert die Stufe eines Datenträgers, die höher als die Baselinestufe ist, mithilfe der Beispielvorlage [CreateUpdateDataDiskWithTier.json](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json). Ersetzen Sie `<yourSubScriptionID>`, `<yourResourceGroupName>`, `<yourDiskName>`, `<yourDiskSize>` und `<yourDesiredPerformanceTier>`, und führen Sie dann das Skript aus:

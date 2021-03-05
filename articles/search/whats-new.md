@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: 606b102b1922d382f479235ffc4c61b68e7db766
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 36f10bebfc42ae5e9e75206392e8a5f8ccef563a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101676386"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694596"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
@@ -23,7 +23,7 @@ Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen f
 
 |Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  BESCHREIBUNG | Verfügbarkeit  |
 |------------------------------|---------------|---------------|
-| [Semantische Suche](semantic-search-overview.md) | Eine Sammlung von abfragespezifischen Features, die Suchergebnisse modifizieren, um relevantere Ergebnisse zu erzielen. Mit kleinen Änderungen an einer Suchabfrage können Sie diese Features an bestehenden Indizes ausprobieren.</br></br>Bei der [semantischen Abfrage](semantic-how-to-query-request.md) handelt es sich um einen neuen Abfragetyp, der Verbesserungen bei der Verarbeitung natürlicher Sprache nutzt, um die Rangfolge zu verbessern und die Abfrageabsicht zu verstehen und damit Antworten, Beschriftungen und Semantikhervorhebungen bereitzustellen.</br></br>Die [semantische Rangfolge und die Reaktionen (Antworten, Beschriftungen und Hervorhebungen)](semantic-how-to-query-response.md) beziehen sich auf den Algorithmus, der eine semantische Abfrage definiert, und auf die Struktur der Reaktion. | Öffentliche Vorschau ([auf Anforderung](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Verwenden Sie [Suchdokumente (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview und [Suchexplorer](search-explorer.md) im Azure-Portal. </br></br>Es gelten Regions- und Tarifeinschränkungen. |
+| [Semantische Suche](semantic-search-overview.md) | Eine Sammlung von abfragebezogenen Features, die die Relevanz von Suchergebnissen mit sehr geringem Aufwand verbessern. Mit kleinen Änderungen an einer Suchabfrage können Sie diese Features an bestehenden Indizes ausprobieren.</br></br>Bei der [semantischen Abfrage](semantic-how-to-query-request.md) handelt es sich um einen neuen Abfragetyp, der Verbesserungen bei der Verarbeitung natürlicher Sprache nutzt, um die Rangfolge zu verbessern und die Abfrageabsicht zu verstehen und damit Antworten, Beschriftungen und Semantikhervorhebungen bereitzustellen.</br></br>Die Begriffe [„semantische Klassifizierung“ und „semantische Antworten“ (Antworten, Schlagzeilen und Hervorhebungen)](semantic-how-to-query-response.md) beziehen sich auf das Modell, das die Ergebnisse auswertet, und dessen Fähigkeit, die Antwort zu strukturieren. | Öffentliche Vorschau ([auf Anforderung](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Verwenden Sie [Suchdokumente (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview und [Suchexplorer](search-explorer.md) im Azure-Portal. </br></br>Es gelten Regions- und Tarifeinschränkungen. |
 | [Rechtschreibprüfung für Abfragebegriffe](speller-how-to-add.md) | Bevor die Abfragebegriffe die Suchmaschine erreichen, können sie auf Rechtschreibfehler überprüft werden. Die Option `speller` kann mit jedem Abfragetyp verwendet werden (einfach, vollständig oder semantisch). |  Öffentliche Vorschau, nur Rest, api-version=2020-06-30-Preview|
 | [SharePoint Online-Indexer](search-howto-index-sharepoint-online.md) | Dieser Indexer verbindet Sie mit einer SharePoint Online-Website, sodass Sie Inhalte aus einer Dokumentbibliothek indizieren können. | Öffentliche Vorschau, nur Rest, api-version=2020-06-30-Preview |
 
@@ -46,7 +46,7 @@ Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen f
 | Month (Monat) | Funktion | BESCHREIBUNG |
 |-------|---------|-------------|
 | November | [Verschlüsselung mit kundenseitig verwalteten Schlüsseln (erweitert)](search-security-manage-encryption-keys.md) | Erweitert die kundenseitig verwaltete Verschlüsselung für alle Ressourcen, die von einem Suchdienst erstellt und verwaltet werden. Allgemein verfügbar.|
-| September | [Visual Studio Code-Erweiterung für Azure Cognitive Search](search-get-started-vs-code.md) | Hinzufügung von Arbeitsbereich, Navigationselementen, IntelliSense und Vorlagen für die Erstellung von Indizes, Indexern, Datenquellen und Skillsets. | Public Preview |
+| September | [Visual Studio Code-Erweiterung für Azure Cognitive Search](search-get-started-vs-code.md) | Hinzufügung von Arbeitsbereich, Navigationselementen, IntelliSense und Vorlagen für die Erstellung von Indizes, Indexern, Datenquellen und Skillsets. Dieses Feature ist zurzeit als öffentliche Preview verfügbar.| 
 | September | [Verwaltete Dienstidentität (Indexer)](search-howto-managed-identities-data-sources.md) | Allgemein verfügbar.  |
 | September | [Ausgehende Anforderungen über eine Private Link-Instanz](search-indexer-howto-access-private.md) | Allgemein verfügbar.  |
 | September | [Verwaltungs-REST-API (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | Allgemein verfügbar. |

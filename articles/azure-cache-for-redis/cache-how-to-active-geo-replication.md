@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: d52998e477e44f89a35a70f7e2b5d49cbc68e386
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: edf7a7cdbd24249205fedb4654aa092755700910
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660343"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035652"
 ---
 # <a name="configure-active-geo-replication-for-enterprise-azure-cache-for-redis-instances-preview"></a>Konfigurieren der aktiven Georeplikation für Azure Cache for Redis-Enterprise-Instanzen (Vorschau)
 
@@ -36,7 +36,7 @@ Die aktive Georeplikation gruppiert zwei oder mehr Azure Cache for Redis-Enterpr
 
 1. Klicken Sie auf **Konfigurieren**, um den Vorgang abzuschließen.
 
-    ![Verknüpfen von Caches](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-configured.png)
+    ![Konfigurierte aktive Georeplikation](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-configured.png)
 
 1. Wiederholen Sie die obigen Schritte für jede zusätzliche Cache-Instanz in der Georeplikationsgruppe.
 

@@ -5,30 +5,81 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/27/2020
+ms.date: 02/12/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 801f0f03b49d20c84a4531bd0daad7630a0ed01d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 54c29d76757916a8eea54af16babdae21b809a19
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585055"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101749949"
 ---
-## <a name="common-scenarios"></a>Häufige Szenarios
-Die folgenden Szenarien können von einem Bursting stark profitieren:
-- **Verbesserung der Startzeiten**: Mit Bursting wird Ihre Instanz deutlich schneller starten. Beispielsweise ist der standardmäßige Betriebssystemdatenträger für Premium-fähige virtuelle Computer der P4-Datenträger, der eine bereitgestellte Leistung von bis zu 120 IOPS und 25 MB/s bietet. Mit Bursting kann der P4 bis zu 3500 IOPS und 170 MB/s erreichen, wodurch die Startzeit um das Sechsfache beschleunigt werden kann.
-- **Behandlung von Batchaufträgen**: Die Workloads einiger Anwendungen besitzen eine zyklische Natur und erfordern für die meiste Zeit eine Basisleistung und für kurze Zeit eine höhere Leistung. Ein Beispiel hierfür ist ein Buchhaltungsprogramm, das täglich Transaktionen verarbeitet, die eine geringe Menge an Datenverkehr auf dem Datenträger erfordern. Am Ende des Monats erfolgt dann der Abgleich von Berichten, die eine viel höhere Menge an Datenverkehr auf dem Datenträger erfordern.
-- **Bereitschaft für Datenverkehrsspitzen**: Webserver und ihre Anwendungen können jederzeit einen Anstieg des Datenverkehrs erfahren. Wenn Ihr Webserver durch virtuelle Computer oder Datenträger mittels Bursting gesichert ist, sind die Server besser für die Bewältigung von Datenverkehrsspitzen gerüstet. 
+## <a name="disk-level-bursting"></a>Bursting auf Datenträgerebene
+
+### <a name="on-demand-bursting-preview"></a>Bedarfsgesteuertes Bursting (Vorschau)
+
+Datenträger, die das bedarfsgesteuerte Burstingmodell des Datenträgerburstings verwenden, können das Bursting über ihre ursprünglich bereitgestellten Ziele hinaus durchführen und auch so oft wie von ihrer Workload benötigt (bis zum maximalen Burstziel). Beispielsweise ist für einen P30-Datenträger (1 TiB) der bereitgestellte IOPS-Wert 5000 IOPS. Wenn auf diesem Datenträger das Datenträgerbursting aktiviert ist, können Ihre Workloads E/As bis zur maximalen Burstleistung von 30.000 IOPS und 1.000 Mbit/s auf diesem Datenträger ausgeben.
+
+Das Datenträgerbursting ist nicht kostengünstig, wenn Sie davon ausgehen, dass Ihre Workloads häufig über das bereitgestellte Leistungsziel hinaus ausgeführt werden. In diesem Fall wird empfohlen, dass Sie stattdessen die Leistungsstufe Ihres Datenträgers auf eine [höhere Ebene](../articles/virtual-machines/disks-performance-tiers.md) ändern, um eine bessere Baselineleistung zu erzielen. Überprüfen Sie die Abrechnungsdetails, und vergleichen Sie diese mit dem Datenverkehrsmuster Ihrer Workloads.
+
+Bevor Sie das bedarfsgesteuerte Bursting aktivieren, sollten Sie Folgendes beachten:
+
+[!INCLUDE [managed-disk-bursting-regions-limitations](managed-disk-bursting-regions-limitations.md)]
+
+#### <a name="regional-availability"></a>Regionale Verfügbarkeit
+
+[!INCLUDE [managed-disk-bursting-availability](managed-disk-bursting-availability.md)]
+
+#### <a name="billing"></a>Abrechnung
+
+Datenträger, die das bedarfsgesteuerte Burstingmodell verwenden, wird eine stündliche Pauschalgebühr für die Burstaktivierung berechnet. Die Transaktionskosten gelten für alle Bursttransaktionen, die über das bereitgestellte Ziel hinausgehen. Die Transaktionskosten werden mithilfe des Modells für die nutzungsbasierte Bezahlung basierend auf nicht zwischengespeicherten Datenträger-E/As in Rechnung gestellt, einschließlich Lese- und Schreibvorgängen, die bereitgestellte Ziele überschreiten. Nachstehend finden Sie ein Beispiel von Datenverkehrsmustern über eine Abrechnungsstunde:
+
+Datenträgerkonfiguration: SSD Premium, 1 TiB (P30), Datenträgerbursting aktiviert
+
+- 00:00:00 – 00:10:00 Der Datenträger-IOPS unten verfügt über ein bereitgestelltes Ziel von 5.000 IOPS. 
+- 00:10:01 – 00:10:10 Die Anwendung hat den Batchauftrag ausgegeben, wodurch der Datenträger-IOPS für zehn Sekunden bei 6.000 IOPS einen Burst durchgeführt hat. 
+- 00:10:11 – 00:59:00 Der Datenträger-IOPS unten verfügt über ein bereitgestelltes Ziel von 5.000 IOPS. 
+- 00:59:01 – 01:00:00 Die Anwendung hat weiteren Batchauftrag ausgegeben, wodurch der Datenträger-IOPS für 60 Sekunden bei 7.000 IOPS einen Burst durchgeführt hat. 
+
+In dieser Abrechnungsstunde bestehen die Burstkosten aus zwei Gebühren:
+
+Bei der ersten Gebühr handelt es sich um eine Pauschalgebühr von X USD für die Burstaktivierung (abhängig von Ihrer Region). Diese Pauschalgebühr wird immer pro Datenträger abgerechnet, unabhängig vom Anfügestatus, bis das Bursting deaktiviert wird. 
+
+Die zweite Gebühr sind die Bursttransaktionskosten. Das Datenträgerbursting wurde in zwei Zeitfenstern durchgeführt. Von 00:10:01 bis 00:10:10, und die akkumulierte Bursttransaktion ist (6.000 – 5.000) × 10 = 10.000. Von 00:59:01 bis 01:00:00, und die akkumulierte Bursttransaktion ist (7.000 – 5.000) × 60 = 120.000. Die Gesamtanzahl der Bursttransaktionen beträgt 10.000 + 120.000 = 130.000. Die Kosten für Bursttransaktionen werden auf Y USD basierend auf 13 Einheiten von 10.000 Transaktionen (basierend auf den regionalen Preisen) berechnet.
+
+Dadurch entsprechen die Gesamtkosten für das Datenträgerbursting dieser Abrechnungsstunde X USD + Y USD. Die gleiche Berechnung gilt für das Bursting über ein bereitgestelltes Ziel von MBit/s. Die Überschreitung von MB wird in Transaktionen mit der E/A-Größe von 256 KB übersetzt. Wenn der Datenverkehr Ihrer Datenträger sowohl den bereitgestellten IOPS und das MBit/s-Ziel überschreitet, können Sie mit dem Beispiel unten die Bursttransaktionen berechnen. 
+
+Datenträgerkonfiguration: SSD Premium, 1 TiB (P30), Datenträgerbursting aktiviert
+
+- 00:00:01 – 00:00:05 Die Anwendung hat den Batchauftrag ausgegeben, wodurch der Datenträger-IOPS für fünf Sekunden bei 10.000 IOPS und 300 MBit/s einen Burst durchgeführt hat.
+- 00:00:06 – 00:00:10 Die Anwendung hat den Wiederherstellungsauftrag ausgegeben, wodurch der Datenträger-IOPS für fünf Sekunden bei 6.000 IOPS und 600 MBit/s einen Burst durchgeführt hat.
+
+Die Bursttransaktion wird als maximale Anzahl von Transaktionen aus einem IOPS- oder Mbit/s-Burst berücksichtigt. Von 00:00:01 bis 00:00:05 beträgt die akkumulierte Bursttransaktion maximal((10.000 – 5.000), (300 – 200) × 1024 / 256)) × 5 = 25.000 Transaktionen. Von 00:00:06 bis 00:00:10 beträgt die akkumulierte Bursttransaktion maximal((6.000 – 5.000), (600 – 200) × 1024 / 256)) × 5 = 8.000 Transaktionen. Darüber hinaus wird die Pauschalgebühr für die Burstaktivierung eingeschlossen, um die Gesamtkosten für das Aktivieren von bedarfsbasiertem Datenträgerbursting zu erhalten. 
+
+Weitere Informationen zu Preisen finden Sie auf der [Managed Disks-Preisseite](https://azure.microsoft.com/pricing/details/managed-disks/). Mit dem [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=storage) können Sie Ihre Workload bewerten. 
+
+### <a name="credit-based-bursting"></a>Guthabenbasiertes Bursting
+
+Das guthabenbasierte Bursting steht für Datenträgergrößen P20 und kleiner in allen Regionen („Azure, öffentlich“, „Government“ und „China-Clouds“) zur Verfügung. Das Datenträgerbursting ist standardmäßig für alle neuen und vorhandenen Bereitstellungen der unterstützten Datenträgergrößen aktiviert. Beim Bursting auf VM-Ebene wird nur das guthabenbasierte Bursting verwendet.
+
+### <a name="virtual-machine-level-bursting"></a>Bursting auf VM-Ebene
+Die Burstingunterstützung auf VM-Ebene ist in allen Regionen in der öffentlichen Cloud für die folgenden unterstützten Größen aktiviert: 
+- [Lsv2-Serie](../articles/virtual-machines/lsv2-series.md)
+
+Das Bursting auf VM-Ebene ist auch in „USA, Westen-Mitte“ für die folgenden unterstützten Größen erhältlich:
+- [Dv3- und Dsv3-Serie](../articles/virtual-machines/dv3-dsv3-series.md)
+- [Ev3- und Esv3-Serie](../articles/virtual-machines/ev3-esv3-series.md)
+
+Das Bursting ist standardmäßig für virtuelle Computer aktiviert, die diese Technologie unterstützen.
 
 ## <a name="bursting-flow"></a>Bursting-Flow
-Das Bursting-Guthabensystem gilt in gleicher Weise sowohl auf der Ebene virtueller Computer als auch auf Datenträgerebene. Ihre Ressource, entweder ein virtueller Computer oder ein Datenträger, startet mit vollständig aufgefüllten Guthaben. Mit diesen Guthaben können Sie das Bursting 30 Minuten lang mit der maximalen Burstrate nutzen. Das Guthaben für das Bursting akkumuliert sich, wenn Ihre Ressource unter ihren Leistungsgrenzwerten für den Datenträgerspeicher arbeitet. Für alle IOPS und MB/s, die Ihre Ressource unterhalb der Leistungsgrenzwerte nutzt, beginnen Sie Guthaben zu akkumulieren. Wenn Ihre Ressource Guthaben angesammelt hat, die Sie für das Bursting verwenden können, und Ihre Workload die zusätzliche Leistung benötigt, kann Ihre Ressource diese Guthaben verwenden, um über Ihre Leistungsgrenzwerte hinauszugehen und ihr die E/A-Datenträgerleistung zu bieten, die sie zum Erfüllen der Anforderungen benötigt.
 
+Das Burstingguthabensystem gilt in gleicher Weise sowohl auf der Ebene virtueller Computer als auch auf Datenträgerebene. Ihre Ressource, entweder ein virtueller Computer oder ein Datenträger, startet mit vollständig aufgefüllten Guthaben in ihrem eigenen Burstbucket. Mit diesen Guthaben können Sie das Bursting bis zu 30 Minuten lang mit der maximalen Burstrate nutzen. Sie sammeln immer dann Guthaben, wenn der IOPS- oder MB/s-Wert der Ressource unterhalb des Leistungsziels der Ressource verwendet wird. Wenn Ihre Ressource Burstingguthaben akkumuliert hat, und Ihre Workload zusätzliche Leistung benötigt, kann Ihre Ressource dieses Guthaben nutzen, um ihre Leistungsgrenze zu überschreiten und die Leistung zu optimieren, um den Anforderungen der Workload gerecht zu werden.
 
+![Diagramm für Burstingbucket](media/managed-disks-bursting/bucket-diagram.jpg)
 
-![Diagramm für Bursting-Bucket](media/managed-disks-bursting/bucket-diagram.jpg)
-
-Wie Sie das 30-minütige Bursting nutzen möchten, bleibt vollkommen Ihnen überlassen. Sie können es fortlaufend 30 Minuten oder sporadisch im Laufe des Tages verwenden. Bei der Bereitstellung des Produkts steht das vollständige Guthaben zur Verfügung, und wenn das Guthaben erschöpft ist, dauert es weniger als einen Tag, bis das Guthaben wieder vollständig aufgefüllt ist. Sie können Ihre Bursting-Guthaben ansammeln und nach eigenem Ermessen ausgeben, und um das Bursting nutzen zu können, muss der 30-Minuten-Eimer nicht wieder voll sein. Beachten Sie bei der Burstakkumulation, dass sie für jede Ressource unterschiedlich ist, da sie auf den nicht genutzten IOPS und MB/s unterhalb ihrer Leistungswerte basiert. Dies bedeutet, dass Produkte mit einer höheren Basisleistung schneller ihre Bursting-Guthaben ansammeln können als Produkte mit einer niedrigeren Basisleistung. Bei einem P1-Datenträger im Leerlauf ohne Aktivität fallen z. B. 120 IOPS pro Sekunde an, während bei einem P20-Datenträger 2.300 IOPS pro Sekunde im Leerlauf ohne Aktivität anfallen.
+Wie Sie Ihr verfügbares Guthaben aufbrauchen, liegt ganz bei Ihnen. Sie können Ihr Bustingguthaben von 30 Minuten aufeinanderfolgend aufbrauchen oder sporadisch im Laufe des Tages. Wenn Ressourcen bereitgestellt werden, ist diesen ein vollständiges Guthaben zugewiesen. Wenn dieses Guthaben erschöpft ist, dann wird es in weniger als einen Tag aufgefüllt. Das Guthaben kann nach eigenem Ermessen verwendet werden. Der Burstbucket muss nicht voll sein, damit für die Ressourcen ein Burst ausgeführt werden kann. Die Burstakkumulation variiert abhängig von den einzelnen Ressourcen, da sie auf nicht verwendeten IOPS und MB/s unterhalb ihrer Leistungsziele basiert. Ressourcen für eine höhere Baselineleistung können ihr Burstingguthaben schneller ansammeln als Ressourcen mit einer niedrigeren Baselineleistung. Beispielsweise kann ein P1-Datenträger im Leerlauf 120 IOPS pro Sekunde akkumulieren, wobei ein P20-Datenträger im Leerlauf 2300 IOPS pro Sekunden akkumulieren würde.
 
 ## <a name="bursting-states"></a>Bursting-Zustände
 Es gibt drei Zustände, in denen sich Ihre Ressource mit aktiviertem Bursting befinden kann:
@@ -36,7 +87,7 @@ Es gibt drei Zustände, in denen sich Ihre Ressource mit aktiviertem Bursting be
 - **Bursting**: Der Datenverkehr der Ressource verbraucht mehr als das Leistungsziel. Der Burstdatenverkehr beansprucht das Guthaben unabhängig von IOPS und Bandbreite.
 - **Konstant**: Der Datenverkehr der Ressource entspricht exakt dem Leistungsziel.
 
-## <a name="examples-of-bursting"></a>Beispiele für Bursting
+## <a name="bursting-examples"></a>Beispiele für das Bursting
 
 Die folgenden Beispiele zeigen, wie das Bursting mit verschiedenen Kombinationen aus VM und Datenträger funktioniert. Damit die Beispiele leicht nachvollziehbar sind, konzentrieren wir uns auf MB/s, doch dieselbe Logik wird unabhängig davon auch auf IOPS angewandt.
 
@@ -53,15 +104,15 @@ Die folgenden Beispiele zeigen, wie das Bursting mit verschiedenen Kombinationen
 
  Wenn die VM gestartet wird, werden Daten vom Betriebssystemdatenträger abgerufen. Da der Betriebssystemdatenträger Teil einer VM ist, die gerade gestartet wird, ist der Betriebssystemdatenträger mit Bursting-Guthaben gefüllt. Diese Guthaben ermöglichen es dem Betriebssystemdatenträger, seinen Start mit einem Burst von 170 MB/s auszuführen.
 
-![Die VM sendet eine Anforderung für einen Durchsatz von 192 MB/s an den Betriebssystemdatenträger, der mit einem Datendurchsatz von 170 MB/s antwortet.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-startup.jpg)
+![Die VM sendet eine Anforderung für einen Durchsatz von 192 MB/s an den Betriebssystemdatenträger, der mit einem Datendurchsatz von 170 MB/s antwortet.](media/managed-disks-bursting/nonbursting-vm-bursting-disk/nonbursting-vm-bursting-disk-startup.jpg)
 
 Nachdem der Startvorgang abgeschlossen ist, wird eine Anwendung auf dem virtuellen Computer ausgeführt, die über eine nicht kritische Workload verfügt. Diese Workload erfordert 15 MB/s, die gleichmäßig auf alle Datenträger verteilt werden.
 
-![Die Anwendung sendet eine Anforderung für einen Durchsatz von 15 MB/s an die VM, die anhand dieser Anforderung von allen Datenträgern 5 MB/s anfordert. Jeder Datenträger gibt 5 MB/s zurück, und die VM gibt 15 MB/s an die Anwendung zurück.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-idling.jpg)
+![Die Anwendung sendet eine Anforderung für einen Durchsatz von 15 MB/s an die VM, die anhand dieser Anforderung von allen Datenträgern 5 MB/s anfordert. Jeder Datenträger gibt 5 MB/s zurück, und die VM gibt 15 MB/s an die Anwendung zurück.](media/managed-disks-bursting/nonbursting-vm-bursting-disk/nonbursting-vm-bursting-disk-idling.jpg)
 
 Anschließend muss die Anwendung einen Batchauftrag verarbeiten, der 192 MB/s erfordert. 2 MB/s werden vom Betriebssystemdatenträger verwendet, und die restlichen Daten werden gleichmäßig zwischen den Datenträgern für Daten aufgeteilt.
 
-![Die Anwendung sendet eine Anforderung für einen Durchsatz von 192 MB/s an die VM, die aufgrund dieser Anforderung selbst mehrere Anforderungen an die Datenträger (für jeweils 95 MB/s) sowie an den Betriebssystemdatenträger (für 2 MB/s) übermittelt. Die Datenträger führen das Bursting durch, um die Nachfrage zu erfüllen, und alle Datenträger geben den angeforderten Durchsatz an die VM zurück, die ihn an die Anwendung zurückgibt.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-bursting.jpg)
+![Die Anwendung sendet eine Anforderung für einen Durchsatz von 192 MB/s an die VM, die aufgrund dieser Anforderung selbst mehrere Anforderungen an die Datenträger (für jeweils 95 MB/s) sowie an den Betriebssystemdatenträger (für 2 MB/s) übermittelt. Die Datenträger führen das Bursting durch, um die Nachfrage zu erfüllen, und alle Datenträger geben den angeforderten Durchsatz an die VM zurück, die ihn an die Anwendung zurückgibt.](media/managed-disks-bursting/nonbursting-vm-bursting-disk/nonbursting-vm-bursting-disk-bursting.jpg)
 
 ### <a name="burstable-virtual-machine-with-non-burstable-disks"></a>Burstfähiger virtueller Computer mit nicht burstfähigen Datenträgern
 **Kombination aus virtuellem Computer und Datenträger:** 

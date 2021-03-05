@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: 214730733780ef3492048f697b1c5e180434a527
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0b4e116210cf68dc672122ad4ddc98f85067f3b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101654016"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688007"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Häufig gestellte Fragen zur automatischen Azure-Verwaltung für VMs
 
@@ -80,7 +80,7 @@ Die automatische Azure-Verwaltung ist ohne zusätzliche Kosten in der öffentlic
 
 **Kann ich die automatische Azure-Verwaltung über Azure Policy anwenden?**
 
-Ja, wir haben eine integrierte Richtlinie erstellt, die die automatische Verwaltung auf alle VMs innerhalb des von Ihnen definierten Bereichs automatisch anwendet. Außerdem werden Sie das Konfigurationsprofil (DevTest oder Produktion) zusammen mit Ihrem Konto für die automatische Verwaltung angeben. Weitere Informationen über die Aktivierung der automatischen Verwaltung über Azure Policy finden Sie [hier](virtual-machines-policy-enable.md).
+Ja, wir haben eine integrierte Richtlinie erstellt, die die automatische Verwaltung auf alle VMs innerhalb des von Ihnen definierten Bereichs automatisch anwendet. Außerdem geben Sie die Umgebungskonfiguration (Dev/Test oder Produktion) zusammen mit Ihrem Automanage-Konto an. Weitere Informationen über die Aktivierung der automatischen Verwaltung über Azure Policy finden Sie [hier](virtual-machines-policy-enable.md).
 
 
 **Was ist ein Konto für die automatische Verwaltung?**
@@ -93,9 +93,9 @@ Das Konto für die automatische Verwaltung ist eine verwaltete Dienstidentität 
 Wenn Ihre VM mit einem vorhandenen Log Analytics-Arbeitsbereich verknüpft ist, verwenden wir diesen Arbeitsbereich, um diese Lösungen anzuwenden: Änderungsnachverfolgung, Bestand und Updateverwaltung. Auf allen mit diesem Arbeitsbereich verbundenen VMs werden diese Lösungen aktiviert.
 
 
-**Kann ich das Konfigurationsprofil meiner VM ändern?**
+**Kann ich die Umgebung meiner VM ändern?**
 
-Zu diesem Zeitpunkt müssen Sie die automatische Verwaltung für diese VM deaktivieren und dann die automatische Verwaltung mit dem gewünschten Konfigurationsprofil und den gewünschten Einstellungen erneut aktivieren.
+Sie müssen derzeit Automanage für diese VM deaktivieren und dann mit der gewünschten Umgebung und den gewünschten Voreinstellungen erneut aktivieren.
 
 
 **Wenn meine VM bereits für einen Dienst wie die Updateverwaltung konfiguriert ist, wird sie von der automatischen Verwaltung neu konfiguriert?**

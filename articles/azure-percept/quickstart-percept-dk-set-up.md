@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/15/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 3540204d66bb589c567514f92a9a8acb2159e343
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 77ccf09903b6cff83b52d60d43d0c52533c9c1ad
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664318"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041687"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Einrichten Ihres Azure Percept DK und Bereitstellen Ihres ersten KI-Modells
 
@@ -173,7 +173,7 @@ Wenn Sie ein neues Abonnement erstellen möchten, befolgen Sie [diese Schritte](
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-19-0-warning.png" alt-text="Warnung wegen Trennung der Verbindung der Einrichtungserfahrung."::: 
 
-1. Fortfahren mit dem Azure-Portal: Wechseln Sie zurück zum Fenster mit der Einrichtungserfahrung, und klicken Sie auf die Schaltfläche **Zum Azure-Portal wechseln**, um mit dem Erstellen Ihrer benutzerdefinierten KI-Modelle in Azure Percept Studio zu beginnen.
+1. Wechseln Sie zum Azure-Portal. Navigieren Sie zurück zum Fenster mit der Einrichtungsoberfläche, und klicken Sie auf die Schaltfläche **Continue to the Azure portal** (Zum Azure-Portal wechseln), um mit dem Erstellen Ihrer benutzerdefinierten KI-Modelle in Azure Percept Studio zu beginnen.
 
     > [!NOTE]
     > Vergewissern Sie sich, dass Ihr Hostcomputer in Ihren WLAN-Einstellungen nicht mehr mit dem DevKit-Zugriffspunkt verbunden ist und nun wieder mit Ihrem lokalen WLAN verbunden ist.
@@ -205,8 +205,6 @@ Wenn Sie ein neues Abonnement erstellen möchten, befolgen Sie [diese Schritte](
     
 1. Stellen Sie ein neues vorgefertigtes Beispiel auf Ihrem verbundenen Gerät bereit. Wählen Sie ein Beispiel aus der Bibliothek aus, und klicken Sie auf „Auf Gerät bereitstellen“.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/portal-05-1-select-prebuilt.png" alt-text="Auswählen eines vorgefertigten Beispiels.":::
-    
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-05-2-select-journey.png" alt-text="Objekterkennung in Aktion sehen.":::
 
 ## <a name="next-steps"></a>Nächste Schritte

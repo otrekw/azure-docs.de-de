@@ -1,20 +1,20 @@
 ---
-title: Bereitstellen eines Vision-KI-Modells für Azure Percept DK
-description: Hier erfahren Sie, wie Sie ein Vision-KI-Modell in Azure Percept DK über Azure Percept Studio bereitstellen.
+title: Erstellen von Bildern für eine codelose Lösung für maschinelles Sehen in Azure Percept Studio
+description: Hier erfahren Sie, wie Sie mit Azure Percept DK in Azure Percept Studio Bilder für eine codelose Lösung für maschinelles Sehen erstellen.
 author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5ad263f5ae3b0b8e91de30b620002e33086608b4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 44bf498af52f4d8a0d880dc1f1d5874d5b444cae
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660355"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035533"
 ---
-# <a name="capture-images-for-a-vision-project"></a>Erfassen von Bildern für ein Vision-Projekt
+# <a name="capture-images-for-a-vision-project-in-azure-percept-studio"></a>Erstellen von Bildern für ein Projekt für maschinelles Sehen in Azure Percept Studio
 
 In dieser Anleitung erfahren Sie, wie Sie Bilder mit dem Vision-SOM von Azure Percept DK für ein bereits vorhandenes Vision-Projekt in Azure Percept Studio erfassen. Falls Sie noch kein Vision-Projekt erstellt haben, sehen Sie sich das [Vision-Tutorial ohne Code](./tutorial-nocode-vision.md) an.
 
@@ -56,7 +56,7 @@ In dieser Anleitung erfahren Sie, wie Sie Bilder mit dem Vision-SOM von Azure Pe
         1. Wählen Sie unter **Capture rate** (Erfassungsrate) die gewünschte Rate für die Erfassung aus.
         1. Wählen Sie unter **Ziel** aus, wie viele Bilder insgesamt erfasst werden sollen.
 
-    :::image type="content" source="./media/how-to-capture-images/take-photo.png" alt-text="Seite mit Percept-Geräten und den verfügbaren Aktionen":::
+    :::image type="content" source="./media/how-to-capture-images/take-photo.png" alt-text="Bildschirm für Bilderfassung":::
 
 Alle Bilder stehen in [Custom Vision](https://www.customvision.ai/) zur Verfügung.
 

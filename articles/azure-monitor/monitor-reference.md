@@ -1,17 +1,16 @@
 ---
 title: Was wird von Azure Monitor überwacht?
 description: Eine Referenz aller Dienste und anderer Ressourcen, die von Azure Monitor überwacht werden.
-ms.subservice: ''
 ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 7c8f1a45f46975b489690eded5b094ffee94dbf1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4bf792dd02e7cddcc40ef868e4a602fdb03ab3c6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728398"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052278"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 

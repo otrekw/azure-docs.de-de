@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: d99ec80308152ce9e4870da809acaa25c663d98d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c6b9cfab4256c72118a65f7fb0c8e672e2082ffe
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715699"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199661"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Verwenden von Postman zum Senden von Anforderungen an die Azure Digital Twins-APIs
 
@@ -21,7 +21,7 @@ ms.locfileid: "101715699"
 
 In diesem Artikel wird beschrieben, wie Sie über die folgenden Schritte den [Postman-REST-Client](https://www.getpostman.com/) für die Interaktion mit den Azure Digital Twins-APIs konfigurieren:
 
-1. Verwenden Sie die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true), um ein Bearertoken zu erhalten, das Sie für API-Anforderungen in Postman verwenden können.
+1. Verwenden Sie die [Azure CLI](/cli/azure/install-azure-cli), um ein Bearertoken zu erhalten, das Sie für API-Anforderungen in Postman verwenden können.
 1. Richten Sie eine Postman-Sammlung ein, und konfigurieren Sie den Postman-REST-Client, um das Bearertoken für die Authentifizierung zu verwenden.
 1. Verwenden Sie das konfigurierte Postman-Tool zum Erstellen und Senden einer Anforderung an die Azure Digital Twins-APIs.
 
@@ -41,9 +41,9 @@ Laden Sie anschließend die Desktopversion des Postman-Clients herunter. Navigie
 
 Nachdem Sie Postman und die Azure Digital Twins-Instanz eingerichtet haben, müssen Sie ein Bearertoken abrufen, das von Postman-Anforderungen zur Autorisierung mit den Azure Digital Twins-APIs verwendet werden kann.
 
-Es gibt mehrere Möglichkeiten, dieses Token abzurufen. In diesem Artikel wird die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) verwendet, um sich bei Ihrem Azure-Konto anzumelden und auf diese Weise ein Token zu erhalten.
+Es gibt mehrere Möglichkeiten, dieses Token abzurufen. In diesem Artikel wird die [Azure CLI](/cli/azure/install-azure-cli) verwendet, um sich bei Ihrem Azure-Konto anzumelden und auf diese Weise ein Token zu erhalten.
 
-Wenn Sie eine Azure CLI [lokal installiert](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) haben, können Sie eine Eingabeaufforderung auf Ihrem Computer starten, um die folgenden Befehle auszuführen.
+Wenn Sie eine Azure CLI [lokal installiert](/cli/azure/install-azure-cli) haben, können Sie eine Eingabeaufforderung auf Ihrem Computer starten, um die folgenden Befehle auszuführen.
 Andernfalls können Sie ein [Azure Cloud Shell](https://shell.azure.com)-Fenster im Browser öffnen und dort die Befehle ausführen.
 
 1. Stellen Sie zunächst sicher, dass Sie mit den entsprechenden Anmeldeinformationen bei Azure angemeldet sind, indem Sie den folgenden Befehl ausführen:
@@ -52,7 +52,7 @@ Andernfalls können Sie ein [Azure Cloud Shell](https://shell.azure.com)-Fenster
     az login
     ```
 
-1. Verwenden Sie als Nächstes den Befehl [az account get-access-token](/cli/azure/account?preserve-view=true&view=azure-cli-latest#az_account_get_access_token), um ein Bearertoken mit Zugriff auf den Azure Digital Twins-Dienst abzurufen.
+1. Verwenden Sie als Nächstes den Befehl [az account get-access-token](/cli/azure/account#az_account_get_access_token), um ein Bearertoken mit Zugriff auf den Azure Digital Twins-Dienst abzurufen.
 
     ```azurecli-interactive
     az account get-access-token --resource 0b07f429-9f4b-4714-9392-cc5e8e80c8b0

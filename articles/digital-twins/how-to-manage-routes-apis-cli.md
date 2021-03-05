@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d25a429873ccf8b546c0919456c97e64445f184c
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 40cf83b0ca9e4c794979f2b20ddb73360758abc5
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071697"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198539"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Verwalten von Endpunkten und Routen in Azure Digital Twins (APIs und CLI)
 
@@ -48,7 +48,7 @@ In diesem Abschnitt wird erläutert, wie diese Endpunkte mithilfe der Azure CLI 
 
 ### <a name="create-the-endpoint"></a>Erstellen des Endpunkts
 
-Sobald Sie die Endpunktressourcen erstellt haben, können Sie sie für einen Azure Digital Twins-Endpunkt verwenden. In den folgenden Beispielen wird gezeigt, wie Endpunkte mithilfe des Befehls [az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) für die [Azure Digital Twins-CLI](how-to-use-cli.md) erstellt werden. Ersetzen Sie die Platzhalter in den Befehlen durch die Details Ihrer eigenen Ressourcen.
+Sobald Sie die Endpunktressourcen erstellt haben, können Sie sie für einen Azure Digital Twins-Endpunkt verwenden. In den folgenden Beispielen wird gezeigt, wie Endpunkte mithilfe des Befehls [az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create) für die [Azure Digital Twins-CLI](how-to-use-cli.md) erstellt werden. Ersetzen Sie die Platzhalter in den Befehlen durch die Details Ihrer eigenen Ressourcen.
 
 Erstellen eines Event Grid-Endpunkts:
 
@@ -119,7 +119,7 @@ Führen Sie die folgenden Schritte aus, um diese Speicherressourcen in Ihrem Azu
     
 #### <a name="create-the-dead-letter-endpoint"></a>Erstellen des Endpunkts für unzustellbare Nachrichten
 
-Fügen Sie die folgenden Parameter für unzustellbare Nachrichten zum Befehl [az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) für die [Azure Digital Twins-CLI](how-to-use-cli.md) hinzu, um einen Endpunkt mit aktivierter Funktion für unzustellbare Nachrichten zu erstellen.
+Fügen Sie die folgenden Parameter für unzustellbare Nachrichten zum Befehl [az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create) für die [Azure Digital Twins-CLI](how-to-use-cli.md) hinzu, um einen Endpunkt mit aktivierter Funktion für unzustellbare Nachrichten zu erstellen.
 
 Der Wert für den Parameter ist der **SAS-URI für unzustellbare Nachrichten**, der aus dem Speicherkontonamen, dem Containernamen und dem SAS-Token besteht, die Sie im [vorherigen Abschnitt](#set-up-storage-resources) gesammelt haben. Dieser Parameter erstellt den Endpunkt mit der schlüsselbasierten Authentifizierung.
 
@@ -204,7 +204,7 @@ Wenn es keinen Routennamen gibt, werden keine Nachrichten außerhalb von Azure D
 
 Eine Route sollte es ermöglichen, mehrere Benachrichtigungen und Ereignistypen auszuwählen. 
 
-Ereignisrouten können mit den [**EventRoutes**-Datenebenen-APIs](/rest/api/digital-twins/dataplane/eventroutes) für Azure Digital Twins oder den [**az dt route**-CLI-Befehlen](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true) erstellt werden. Der Rest dieses Abschnitts führt Sie durch den Erstellungsprozess.
+Ereignisrouten können mit den [**EventRoutes**-Datenebenen-APIs](/rest/api/digital-twins/dataplane/eventroutes) für Azure Digital Twins oder den [**az dt route**-CLI-Befehlen](/cli/azure/ext/azure-iot/dt/route) erstellt werden. Der Rest dieses Abschnitts führt Sie durch den Erstellungsprozess.
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>Erstellen von Routen mit den APIs und dem C#-SDK
 
@@ -225,7 +225,7 @@ Die folgende Beispielmethode zeigt, wie Sie eine Ereignisroute mit dem C#-SDK er
 
 ### <a name="create-routes-with-the-cli"></a>Erstellen von Routen mit der CLI
 
-Routen können auch mithilfe der [az dt route](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true)-Befehle für die Azure Digital Twins-CLI verwaltet werden. 
+Routen können auch mithilfe der [az dt route](/cli/azure/ext/azure-iot/dt/route)-Befehle für die Azure Digital Twins-CLI verwaltet werden. 
 
 Weitere Informationen zur Verwendung der CLI und zu den verfügbaren Befehlen finden Sie unter [*Vorgehensweise: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md).
 

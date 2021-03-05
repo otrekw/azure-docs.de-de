@@ -38,6 +38,8 @@
       items:
         - name: Hinzufügen von Sprachanrufen zu Ihrer App
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
+        - name: Hinzufügen von Videoanrufen zu Ihrer App (JavaScript)
+          href: quickstarts/voice-video-calling/get-started-with-video-calling.md
         - name: Verwenden der Clientbibliothek für Telefonie
           href: quickstarts/voice-video-calling/calling-client-samples.md
         - name: Beitreten mit einer Telefonie-App zu einer Teams-Besprechung

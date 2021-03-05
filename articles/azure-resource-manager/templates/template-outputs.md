@@ -3,18 +3,18 @@ title: Ausgaben in Vorlagen
 description: Beschreibt, wie Ausgabewerte in einer Azure Resource Manager-Vorlage (ARM-Vorlage) und Bicep-Datei definiert werden.
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: 91feb1a0b653e4b6e96e38df57f87af27e4676f5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2b6a6afa127bf43102103baadae576233843f00d
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703833"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123410"
 ---
 # <a name="outputs-in-arm-templates"></a>Ausgaben in ARM-Vorlagen
 
 Dieser Artikel beschreibt, wie Sie Ausgabewerte in Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) und Bicep-Datei definieren. Sie verwenden Ausgaben, wenn Werte von den bereitgestellten Ressourcen zurückgegeben werden müssen.
 
-Das Format der einzelnen Ausgabewerte muss sich zu einem der [Datentypen](template-syntax.md#data-types) auflösen lassen.
+Das Format der einzelnen Ausgabewerte muss sich zu einem der [Datentypen](data-types.md) auflösen lassen.
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
