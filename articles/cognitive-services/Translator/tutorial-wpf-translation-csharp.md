@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dd5b83908ae7c6d62acd3391933028685facf755
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0665dcbc8de518c5759c52a8fc3aec26859566d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927471"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728007"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Tutorial: Erstellen einer Übersetzungs-App mit WPF
 
@@ -41,7 +41,7 @@ Die Liste enthält die in diesem Tutorial verwendeten Cognitive Services. Verwen
 | Dienst | Funktion | BESCHREIBUNG |
 |---------|---------|-------------|
 | Übersetzer | [Get Languages](./reference/v3-0-languages.md) | Ruft eine vollständige Liste mit den unterstützten Sprachen für die Textübersetzung ab. |
-| Übersetzer | [Translate](./reference/v3-0-translate.md) | Übersetzt Text in mehr als 70 Sprachen. |
+| Übersetzer | [Translate](./reference/v3-0-translate.md) | Übersetzt Text in 90 Sprachen und Dialekte. |
 | Übersetzer | [Detect](./reference/v3-0-detect.md) | Erkennt die Sprache des Eingabetexts. Enthält eine Zuverlässigkeitsbewertung für die Erkennung. |
 | Bing-Rechtschreibprüfung | [Spell Check](/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Korrigiert Rechtschreibfehler, um die Genauigkeit der Übersetzung zu verbessern. |
 
@@ -264,7 +264,7 @@ Abschließend haben wir Code zum Aufrufen von Methoden hinzugefügt, um Sprachen
 
 ## <a name="get-supported-languages"></a>Abrufen der unterstützten Sprachen
 
-Übersetzer unterstützt derzeit mehr als 70 Sprachen. Da im Laufe der Zeit Unterstützung für neue Sprachen hinzugefügt wird, empfehlen wir Ihnen, die von Translator verfügbar gemachte Ressource „Languages“ aufzurufen, anstatt die Sprachenliste in Ihrer App hartzucodieren.
+Der Übersetzer unterstützt derzeit 90 Sprachen und Dialekte. Da im Laufe der Zeit Unterstützung für neue Sprachen hinzugefügt wird, empfehlen wir Ihnen, die von Translator verfügbar gemachte Ressource „Languages“ aufzurufen, anstatt die Sprachenliste in Ihrer App hartzucodieren.
 
 In diesem Abschnitt erstellen wir eine `GET`-Anforderung für die Ressource „Languages“ und geben an, dass für die Übersetzung eine Liste mit Sprachen verfügbar sein soll.
 

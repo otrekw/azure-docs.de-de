@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: db21f1170dacbfa1e4367e7f22143ec3d0b0f6e4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: af028499d84a767ccb2a888ec7e7f92c80dbdd36
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737335"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710565"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installieren und Ausführen des Containers für räumliche Analyse (Vorschau)
 
@@ -249,7 +249,7 @@ sudo systemctl --now enable nvidia-mps.service
 
 ## <a name="configure-azure-iot-edge-on-the-host-computer"></a>Konfigurieren von Azure IoT Edge auf dem Hostcomputer
 
-Erstellen Sie zum Bereitstellen des Containers für räumliche Analyse auf dem Hostcomputer eine Instanz des Diensts [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md), indem Sie den Standard- (S1) oder Free-Tarif (F0) verwenden. Wenn Ihr Hostcomputer vom Typ „Azure Stack Edge“ ist, sollten Sie dasselbe Abonnement und dieselbe Ressourcengruppe verwenden, das bzw. die von der Azure Stack Edge-Ressource verwendet wird.
+Erstellen Sie zum Bereitstellen des Containers für räumliche Analyse auf dem Hostcomputer eine Instanz des Diensts [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md), indem Sie den Standard- (S1) oder Free-Tarif (F0) verwenden. 
 
 Verwenden Sie die Azure CLI, um eine Instanz von Azure IoT Hub zu erstellen. Ersetzen Sie die Parameter nach Bedarf. Alternativ können Sie die Instanz von Azure IoT Hub auch über das [Azure-Portal](https://portal.azure.com/) erstellen.
 
@@ -264,7 +264,7 @@ sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test
 sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-Wenn es sich beim Hostcomputer nicht um ein Azure Stack Edge-Gerät handelt, müssen Sie [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) Version 1.0.9 installieren. Führen Sie die folgenden Schritte aus, um die richtige Version herunterzuladen:
+Sie müssen [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) Version 1.0.9 installieren. Führen Sie die folgenden Schritte aus, um die richtige Version herunterzuladen:
 
 Ubuntu Server 18.04:
 ```bash
@@ -295,7 +295,7 @@ Installieren Sie das Release 1.0.9:
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-Registrieren Sie den Hostcomputer als Nächstes als IoT Edge-Gerät auf Ihrer IoT Hub-Instanz, indem Sie eine [Verbindungszeichenfolge](../../iot-edge/how-to-manual-provision-symmetric-key.md?view=iotedge-2018-06) verwenden.
+Registrieren Sie den Hostcomputer als Nächstes als IoT Edge-Gerät auf Ihrer IoT Hub-Instanz, indem Sie eine [Verbindungszeichenfolge](../../iot-edge/how-to-register-device.md?view=iotedge-2018-06) verwenden.
 
 Sie müssen das IoT Edge-Gerät mit Ihrer Azure IoT Hub-Instanz verbinden. Sie müssen die Verbindungszeichenfolge von dem IoT Edge-Gerät kopieren, das Sie weiter oben erstellt haben. Alternativ können Sie auch den unten angegebenen Befehl über die Azure CLI ausführen.
 
@@ -396,7 +396,73 @@ sudo apt-get install -y docker-ce nvidia-docker2
 sudo systemctl restart docker
 ```
 
-Führen Sie, nachdem Sie nun Ihre VM eingerichtet und konfiguriert haben, die folgenden Schritte aus, um den Container für die räumliche Analyse bereitzustellen. 
+Nachdem Sie Ihre VM eingerichtet und konfiguriert haben, befolgen Sie die folgenden Schritten, um Azure IoT Edge zu konfigurieren. 
+
+## <a name="configure-azure-iot-edge-on-the-vm"></a>Konfigurieren von Azure IoT Edge auf der VM
+
+Erstellen Sie zum Bereitstellen des Containers für räumliche Analyse auf der VM eine Instanz des Diensts [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md), indem Sie den Standard- (S1) oder Free-Tarif (F0) verwenden.
+
+Verwenden Sie die Azure CLI, um eine Instanz von Azure IoT Hub zu erstellen. Ersetzen Sie die Parameter nach Bedarf. Alternativ können Sie die Instanz von Azure IoT Hub auch über das [Azure-Portal](https://portal.azure.com/) erstellen.
+
+```bash
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+sudo az login
+sudo az account set --subscription <name or ID of Azure Subscription>
+sudo az group create --name "test-resource-group" --location "WestUS"
+
+sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
+
+sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
+```
+
+Sie müssen [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) Version 1.0.9 installieren. Führen Sie die folgenden Schritte aus, um die richtige Version herunterzuladen:
+
+Ubuntu Server 18.04:
+```bash
+curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+```
+
+Kopieren Sie die generierte Liste.
+```bash
+sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+```
+
+Installieren Sie den öffentlichen Schlüssel von Microsoft GPG.
+
+```bash
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+```
+
+Aktualisieren Sie die Paketlisten auf Ihrem Gerät.
+
+```bash
+sudo apt-get update
+```
+
+Installieren Sie das Release 1.0.9:
+
+```bash
+sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
+```
+
+Registrieren Sie die VM als nächstes als IoT Edge-Gerät auf Ihrer IoT Hub-Instanz, indem Sie eine [Verbindungszeichenfolge](../../iot-edge/how-to-register-device.md?view=iotedge-2018-06) verwenden.
+
+Sie müssen das IoT Edge-Gerät mit Ihrer Azure IoT Hub-Instanz verbinden. Sie müssen die Verbindungszeichenfolge von dem IoT Edge-Gerät kopieren, das Sie weiter oben erstellt haben. Alternativ können Sie auch den unten angegebenen Befehl über die Azure CLI ausführen.
+
+```bash
+sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+```
+
+Öffnen Sie `/etc/iotedge/config.yaml` auf der VM zur Bearbeitung. Ersetzen Sie `ADD DEVICE CONNECTION STRING HERE` durch die Verbindungszeichenfolge. Speichern und schließen Sie die Datei. Führen Sie diesen Befehl aus, um den IoT Edge-Dienst auf der VM neu zu starten.
+
+```bash
+sudo systemctl restart iotedge
+```
+
+Stellen Sie den Container für räumliche Analyse über das [Azure-Portal](../../iot-edge/how-to-deploy-modules-portal.md) oder die [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) auf der VM als IoT-Modul bereit. Legen Sie bei Verwendung des Portals den Image-URI auf den Speicherort Ihrer Azure Container Registry-Instanz fest. 
+
+Führen Sie die unten angegebenen Schritte aus, um den Container mit der Azure CLI bereitzustellen.
 
 ---
 

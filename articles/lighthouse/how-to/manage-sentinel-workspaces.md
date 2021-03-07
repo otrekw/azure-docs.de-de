@@ -1,14 +1,14 @@
 ---
 title: Verwalten von Azure Sentinel-Arbeitsbereichen im großen Maßstab
 description: Erfahren Sie, wie Sie Azure Sentinel auf delegierten Kundenressourcen effektiv verwalten.
-ms.date: 09/30/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 91e2f875aa2fc067420c0c6eda4e7dd56bd2b088
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 009edaefe021dedb5d9a40a8cc3bac2c2974ae10
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424102"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702520"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Verwalten von Azure Sentinel-Arbeitsbereichen im großen Maßstab
 
@@ -80,9 +80,9 @@ Erstellen und speichern Sie Log Analytics-Abfragen zur Bedrohungserkennung einsc
 
 Sie können Automation verwenden, um mehrere Azure Sentinel-Arbeitsbereiche zu verwalten und [Hunting-Abfragen](../../sentinel/hunting.md), Playbooks und Arbeitsmappen zu konfigurieren. Weitere Informationen finden Sie unter [Arbeitsbereichsübergreifende Verwaltung mithilfe von Automatisierung](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation).
 
-## <a name="manage-security-of-office-365-environments"></a>Verwalten der Sicherheit von Office 365-Umgebungen
+## <a name="monitor-security-of-office-365-environments"></a>Überwachen der Sicherheit von Office 365-Umgebungen
 
-Verwenden Sie Azure Lighthouse in Verbindung mit Azure Sentinel, um die Sicherheit von Office 365-Umgebungen mandantenübergreifend zu verwalten. Zunächst müssen [im verwalteten Mandanten vorkonfigurierte Office 365-Datenconnectors aktiviert werden](../../sentinel/connect-office-365.md), damit Informationen zu Benutzer- und Verwaltungsaktivitäten in Exchange und SharePoint (einschließlich OneDrive) in einen Azure Sentinel-Arbeitsbereich innerhalb des verwalteten Mandanten erfasst werden können. Dies umfasst Details zu Aktionen wie z. B. Dateidownloads, gesendeten Zugriffsanforderungen, Änderungen an Gruppenereignissen und Postfachvorgängen sowie Informationen zu dem Benutzer, der die Aktionen ausgeführt hat. [Office 365-DLP-Warnungen](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820) werden auch als Teil des integrierten Office 365-Connectors unterstützt.
+Verwenden Sie Azure Lighthouse in Verbindung mit Azure Sentinel, um die Sicherheit von Office 365-Umgebungen mandantenübergreifend zu überwachen. Zunächst müssen [im verwalteten Mandanten vorkonfigurierte Office 365-Datenconnectors aktiviert werden](../../sentinel/connect-office-365.md), damit Informationen zu Benutzer- und Verwaltungsaktivitäten in Exchange und SharePoint (einschließlich OneDrive) in einen Azure Sentinel-Arbeitsbereich innerhalb des verwalteten Mandanten erfasst werden können. Dies umfasst Details zu Aktionen wie z. B. Dateidownloads, gesendeten Zugriffsanforderungen, Änderungen an Gruppenereignissen und Postfachvorgängen sowie Informationen zu dem Benutzer, der die Aktionen ausgeführt hat. [Office 365-DLP-Warnungen](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820) werden auch als Teil des integrierten Office 365-Connectors unterstützt.
 
 Sie können den [MCAS-Connector (Microsoft Cloud App Security)](../../sentinel/connect-cloud-app-security.md) zum Streamen von Warnungen und Cloud Discovery-Protokollen in Azure Sentinel aktivieren. So erhalten Sie Einblicke in Cloud-Apps, erweiterte Analysen zur Erkennung und Abwehr von Cyberbedrohungen und Kontrolle darüber, wie Daten übertragen werden. Aktivitätsprotokolle für MCAS können [mithilfe von CEF (Common Event Format) genutzt werden](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849).
 

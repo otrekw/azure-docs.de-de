@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 979f40e13aab71f02a316e4ddf60306170166845
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 543fb7474c0a9efc41667945c89489054a44d657
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753925"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724488"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Vorbereiten von lokalen Computern für die Migration zu Azure
 
@@ -35,7 +35,7 @@ Die Tabelle enthält eine Übersicht über die Ermittlungs-, Bewertungs- und Mig
 
 **Szenario** | **Projekt** | **Ermittlung/Bewertung** | **Migration**
 --- | --- | --- | ---
-**Virtuelle VMware-Computer** | In einem einzelnen Azure Migrate-Projekt können bis zu 35.000 virtuelle Computer ermittelt und bewertet werden. | Mit einer einzelnen [Azure Migrate-Appliance](common-questions-appliance.md) für VMware können bis zu 10.000 virtuelle VMware-Computer ermittelt werden. | **Migration ohne Agent:** Bis zu 300 virtuelle Computer können gleichzeitig repliziert werden. Ab 50 virtuellen Computern empfiehlt es sich, mehrere Batches zu erstellen, um eine optimale Leistung zu erzielen.<br/><br/> **Agent-basierte Migration:** Die [Replikationsappliance](migrate-replication-appliance.md) kann [aufskaliert](./agent-based-migration-architecture.md#performance-and-scaling) werden, um viele virtuelle Computer zu replizieren.<br/><br/> Im Portal können für die Replikation bis zu zehn virtuelle Computer gleichzeitig ausgewählt werden. Wenn Sie mehr Computer replizieren möchten, fügen Sie jeweils Batches mit zehn Stück hinzu.
+**Virtuelle VMware-Computer** | In einem einzelnen Azure Migrate-Projekt können bis zu 35.000 virtuelle Computer ermittelt und bewertet werden. | Mit einer einzelnen [Azure Migrate-Appliance](common-questions-appliance.md) für VMware können bis zu 10.000 virtuelle VMware-Computer ermittelt werden. | **Migration ohne Agent:** Bis zu 500 virtuelle Computer können gleichzeitig von jedem vCenter Server repliziert werden. **Agent-basierte Migration:** Die [Replikationsappliance](migrate-replication-appliance.md) kann [aufskaliert](./agent-based-migration-architecture.md#performance-and-scaling) werden, um viele virtuelle Computer zu replizieren.<br/><br/> Im Portal können für die Replikation bis zu zehn virtuelle Computer gleichzeitig ausgewählt werden. Wenn Sie mehr Computer replizieren möchten, fügen Sie jeweils Batches mit zehn Stück hinzu.
 **Virtuelle Hyper-V-Computer** | In einem einzelnen Azure Migrate-Projekt können bis zu 35.000 virtuelle Computer ermittelt und bewertet werden. | Mit einer einzelnen Azure Migrate-Appliance können bis zu 5.000 virtuelle Hyper-V-Computer ermittelt werden. | Für die Hyper-V-Migration wird keine Appliance verwendet. Stattdessen wird auf jedem Hyper-V-Host der Hyper-V-Replikationsanbieter ausgeführt.<br/><br/> Die Replikationskapazität hängt von Leistungsfaktoren wie VM-Änderungsrate und Uploadbandbreite für Replikationsdaten ab.<br/><br/> Im Portal können für die Replikation bis zu zehn virtuelle Computer gleichzeitig ausgewählt werden. Wenn Sie mehr Computer replizieren möchten, fügen Sie jeweils Batches mit zehn Stück hinzu.
 **Physische Computer** | In einem einzelnen Azure Migrate-Projekt können bis zu 35.000 Computer ermittelt und bewertet werden. | Mit einer einzelnen Azure Migrate-Appliance für physische Server können bis zu 250 physische Server ermittelt werden. | Die [Replikationsappliance](migrate-replication-appliance.md) kann [aufskaliert](./agent-based-migration-architecture.md#performance-and-scaling) werden, um viele Server zu replizieren.<br/><br/> Im Portal können für die Replikation bis zu zehn virtuelle Computer gleichzeitig ausgewählt werden. Wenn Sie mehr Computer replizieren möchten, fügen Sie jeweils Batches mit zehn Stück hinzu.
 
@@ -116,7 +116,7 @@ Für folgende Versionen werden diese Aktionen von Azure Migrate automatisch ausg
 - SUSE Linux Enterprise Server 12 SP1+
 - SUSE Linux Enterprise Server 15 SP1
 - Ubuntu 19.04, 19.10, 18.04LTS, 16.04LTS, 14.04LTS
-- Debian 8, 7
+- Debian 9, 8, 7
 - Oracle Linux 7.7, 7.7-CI
 
 Für andere Versionen müssen die Computer gemäß der Zusammenfassung in der Tabelle vorbereitet werden.  
