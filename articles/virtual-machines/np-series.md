@@ -7,19 +7,20 @@ ms.subservice: hpc
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: 8d350e248d09f29496f4461b902eba96d8375732
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4fe6df5a9eabc6e5088618039fdea450ee8314ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101668281"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693848"
 ---
-# <a name="np-series-preview"></a>NP-Serie (Vorschau)
-
+# <a name="np-series-preview"></a>NP-Serie (Vorschau) 
 Die virtuellen Computer der NP-Serie basieren auf [Xilinx U250](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html)-FPGAs zum Beschleunigen von Workloads einschließlich Machine Learning-Rückschluss, Videotranscodierung und Datenbanksuche und Analysen. VMs der NP-Serie werden auch mit Intel Xeon 8171m-CPUs (Skylake) mit einem Turbotakt von 3,2 GHz für alle Kerne betrieben.
 
+Übermitteln Sie unter Verwendung des [Formulars für die Vorschau](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR9x_QCQkJXxHl4qOI4jC9YtUOVI0VkgwVjhaTFFQMTVBTDFJVFpBMzJSSCQlQCN0PWcu) eine Anforderung, um am Vorschauprogramm für die NP-Serie teilzunehmen.
 
-[Storage Premium](premium-storage-performance.md): Unterstützt<br>
+
+[Storage Premium:](premium-storage-performance.md) Unterstützt<br>
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
 [Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>

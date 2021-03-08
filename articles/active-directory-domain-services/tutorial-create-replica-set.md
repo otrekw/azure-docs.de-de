@@ -8,22 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 02/26/2021
 ms.author: justinha
-ms.openlocfilehash: 059f711269fd5f1eea9675f238a6003eaf1a0534
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: e8887cc39b48f090ff223e5e83c13d65b921dc0b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618109"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687497"
 ---
-# <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>Tutorial: Erstellen und Verwenden von Replikatgruppen für Resilienz oder Geolocation in Azure Active Directory Domain Services (Vorschau)
+# <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services"></a>Tutorial: Erstellen und Verwenden von Replikatgruppen für Resilienz oder Geolocation in Azure Active Directory Domain Services
 
 Sie können *Replikatgruppen* verwenden, um die Resilienz von Azure Active Directory Domain Services (Azure AD DS) zu verbessern oder Bereitstellungen an zusätzlichen geografischen Standorten in der Nähe Ihrer Anwendungen durchzuführen. Jeder Namespace einer verwalteten Azure AD DS-Domäne (beispielsweise *aaddscontoso.com*) enthält eine anfängliche Replikatgruppe. Durch die Erstellung zusätzlicher Replikatgruppen in anderen Azure-Regionen lässt sich geografische Resilienz für eine verwaltete Domäne erzielen.
 
 Eine Replikatgruppe kann einem beliebigen, mittels Peering verknüpften virtuellen Netzwerk in einer beliebigen Azure-Region mit Azure AD DS-Unterstützung hinzugefügt werden.
-
-Replikatgruppen sind eine öffentliche Previewfunktion in Azure AD Domain Services. Berücksichtigen Sie die für Previewfunktionen geltenden Supportunterschiede. Weitere Informationen zu Vorschauversionen Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -78,7 +76,7 @@ Führen Sie die folgenden Schritte aus, um eine zusätzliche Replikatgruppe zu e
 
 1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus.
 1. Wählen Sie Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus.
-1. Wählen Sie auf der linken Seite **Replica sets (preview)** (Replikatgruppen (Vorschauversion)) aus. Jede verwaltete Domäne enthält eine anfängliche Replikatgruppe in der ausgewählten Region, wie im folgenden Beispielscreenshot zu sehen:
+1. Wählen Sie auf der linken Seite **Replikatgruppen** aus. Jede verwaltete Domäne enthält eine anfängliche Replikatgruppe in der ausgewählten Region, wie im folgenden Beispielscreenshot zu sehen:
 
     ![Beispielscreenshot: Anzeigen und Hinzufügen einer Replikatgruppe im Azure-Portal](./media/tutorial-create-replica-set/replica-set-list.png)
 
@@ -113,7 +111,7 @@ Führen Sie die folgenden Schritte aus, um eine Replikatgruppe zu löschen:
 
 1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus.
 1. Wählen Sie Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus.
-1. Wählen Sie auf der linken Seite **Replica sets (preview)** (Replikatgruppen (Vorschauversion)) aus. Wählen Sie in der Liste mit den Replikatgruppen das Kontextmenü ( **...** ) neben der Replikatgruppe aus, die Sie löschen möchten.
+1. Wählen Sie auf der linken Seite **Replikatgruppen** aus. Wählen Sie in der Liste mit den Replikatgruppen das Kontextmenü ( **...** ) neben der Replikatgruppe aus, die Sie löschen möchten.
 1. Wählen Sie im Kontextmenü die Option **Löschen** aus, und bestätigen Sie, dass Sie die Replikatgruppe löschen möchten.
 
 > [!NOTE]

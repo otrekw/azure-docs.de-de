@@ -6,13 +6,13 @@ ms.author: dech
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/19/2020
-ms.openlocfilehash: 8315369d2100036a50aae770267aa04bceb2dfb0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 02/22/2021
+ms.openlocfilehash: f7002b3968e91447a26315f31347ad469aa5daca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339800"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690650"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>Importieren von Notebooks aus einem GitHub-Repository in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,7 +45,7 @@ Sie können eine Verbindung mit Ihren eigenen GitHub-Repositorys oder mit andere
 
 Nach erfolgter GitHub-Kontointegration ist die Liste der Repositorys und Notebooks in Ihrem Azure Cosmos-Konto nur für Sie sichtbar. Das gilt auch, wenn sich mehrere Benutzer bei dem Azure Cosmos DB-Konto anmelden und ihre eigenen Konten hinzufügen. Anders ausgedrückt: Mehrere Benutzer können das gleiche Azure Cosmos-Konto verwenden, um den Notebook-Arbeitsbereich mit GitHub zu verbinden. Den einzelnen Benutzern wird jedoch jeweils nur die Liste der von ihnen importierten Repositorys und Notebooks angezeigt. Von anderen importierte Notebooks sind für Sie nicht sichtbar.
 
-Wenn Sie die Verbindung zwischen Ihrem GitHub-Konto und dem Notebook-Arbeitsbereich trennen möchten, öffnen Sie die Registerkarte **Daten-Explorer** , wählen Sie `…` neben **GitHub-Repositorys** aus, und wählen Sie anschließend **Disconnect from GitHub** (GitHub-Verbindung trennen) aus.
+Wenn Sie die Verbindung zwischen Ihrem GitHub-Konto und dem Notebook-Arbeitsbereich trennen möchten, öffnen Sie die Registerkarte **Daten-Explorer**, wählen Sie `…` neben **GitHub-Repositorys** aus, und wählen Sie anschließend **Disconnect from GitHub** (GitHub-Verbindung trennen) aus.
 
 ## <a name="edit-a-notebook-and-push-changes-to-github"></a>Bearbeiten eines Notebooks und Pushen der Änderungen an GitHub
 
@@ -57,7 +57,12 @@ Im regulären GitHub-Flow werden die Änderungen nach dem Committen in der Regel
 
 :::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="Bearbeiten von Notebooks und Committen von Änderungen in GitHub":::
 
+Nach der Bearbeitung des Notebooks können Sie es [im Katalog für Notebooks veröffentlichen](publish-notebook-gallery.md). 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu den Vorteilen von Jupyter Notebook-Instanzen in Azure Cosmos DB finden Sie [hier](cosmosdb-jupyter-notebooks.md).
-
+* [Erkunden des Katalogs mit Notebookbeispielen](https://cosmos.azure.com/gallery.html)
+* [Veröffentlichen von Notebooks im Katalog für Azure Cosmos DB-Notebooks](publish-notebook-gallery.md)
+* [Verwenden von Python-Notebookfunktionen und -befehlen](use-python-notebook-features-and-commands.md)
+* [Verwenden von C#-Notebookfunktionen und -befehlen](use-csharp-notebook-features-and-commands.md)

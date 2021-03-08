@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 9da725c433ad5d6233fd164d256692ca407714fc
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 16546432c8c0a23d5c9dc471fe8c62ced5eca993
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206451"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687531"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Hochladen von Abrechnungsdaten in Azure und Anzeigen im Azure-Portal
 
@@ -27,8 +27,8 @@ ms.locfileid: "92206451"
 
 In Zukunft gibt es zwei Modi, in denen Sie Ihre Azure Arc-fähigen Datendienste ausführen können:
 
-- **Indirekt verbunden** : Es gibt keine direkte Verbindung mit Azure. Daten werden nur über einen Export-/Uploadprozess an Azure gesendet. Alle Bereitstellungen der Azure Arc-Datendienste arbeiten heute während der Vorschauphase in diesem Modus.
-- **Direkt verbunden** : In diesem Modus besteht eine Abhängigkeit vom Azure Arc-fähigen Kubernetes-Dienst, um eine direkte Verbindung zwischen Azure und dem Kubernetes-Cluster bereitzustellen, auf dem die Azure Arc-fähigen Datendienste ausgeführt werden. Dies ermöglicht mehr Funktionen und erlaubt es Ihnen auch, das Azure-Portal und die Azure CLI zu nutzen, um Ihre Azure Arc-fähigen Datendienste so zu verwalten, wie Sie Ihre Datendienste in Azure PaaS verwalten.  Dieser Konnektivitätsmodus ist in der Vorschau noch nicht verfügbar, wird jedoch in Kürze bereitgestellt werden.
+- **Indirekt verbunden**: Es gibt keine direkte Verbindung mit Azure. Daten werden nur über einen Export-/Uploadprozess an Azure gesendet. Alle Bereitstellungen der Azure Arc-Datendienste arbeiten heute während der Vorschauphase in diesem Modus.
+- **Direkt verbunden**: In diesem Modus besteht eine Abhängigkeit vom Azure Arc-fähigen Kubernetes-Dienst, um eine direkte Verbindung zwischen Azure und dem Kubernetes-Cluster bereitzustellen, auf dem die Azure Arc-fähigen Datendienste ausgeführt werden. Dies ermöglicht mehr Funktionen und erlaubt es Ihnen auch, das Azure-Portal und die Azure CLI zu nutzen, um Ihre Azure Arc-fähigen Datendienste so zu verwalten, wie Sie Ihre Datendienste in Azure PaaS verwalten.  Dieser Konnektivitätsmodus ist in der Vorschau noch nicht verfügbar, wird jedoch in Kürze bereitgestellt werden.
 
 Sie können mehr über den Unterschied zwischen den [Verbindungsmodi](./connectivity.md) erfahren.
 
@@ -111,22 +111,23 @@ azdata arc dc upload -p usage.json
 
 Gehen Sie wie folgt vor, um Abrechnungsdaten im Azure-Portal anzuzeigen:
 
-1. Öffnen Sie das Azure-Portal mit der speziellen URL: [https://aka.ms/arcdata](https://aka.ms/arcdata).
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 1. Geben Sie im Suchfeld oben auf dem Bildschirm **Cost Management** ein, und klicken Sie auf den Cost Management-Dienst.
-1. Klicken Sie auf der linken Seite auf die Registerkarte **Kostenanalyse** .
-1. Klicken Sie oben in der Ansicht auf die Schaltfläche **Kosten nach Ressource** .
+1. Klicken Sie unter **Cost Management – Übersicht** auf die Registerkarte **Cost Management**.
+1. Klicken Sie auf der linken Seite auf die Registerkarte **Kostenanalyse**.
+1. Klicken Sie oben in der Ansicht auf die Schaltfläche **Kosten nach Ressource**.
 1. Stellen Sie sicher, dass Ihr Bereich auf das Abonnement festgelegt ist, in dem Ihre Datendienstressourcen erstellt wurden.
 1. Wählen Sie **Kosten nach Ressource** in der Dropdownliste „Anzeigen“ neben der Auswahl „Bereich“ oben in der Ansicht aus.
 1. Stellen Sie sicher, dass der Datumsfilter auf **Dieser Monat** oder einen anderen Zeitbereich festgelegt ist, der hinsichtlich des Erstellungszeitpunkts der Datendienstressourcen sinnvoll ist.
-1. Klicken Sie auf **Filter hinzufügen** , um einen Filter nach **Ressourcentyp** = `microsoft.azuredata/<data service type>` hinzuzufügen, wenn Sie nur auf einen Typ von Azure Arc-fähigem Datendienst filtern möchten.
+1. Klicken Sie auf **Filter hinzufügen**, um einen Filter nach **Ressourcentyp** = `microsoft.azuredata/<data service type>` hinzuzufügen, wenn Sie nur auf einen Typ von Azure Arc-fähigem Datendienst filtern möchten.
 1. Nun wird eine Liste aller Ressourcen angezeigt, die erstellt und in Azure hochgeladen wurden. Da die Verbrauchseinheit 0 USD ausweist, stellen Sie fest, dass die Kosten immer 0 USD betragen.
 
 ## <a name="download-billing-data"></a>Herunterladen von Abrechnungsdaten
 
 Sie können Abrechnungszusammenfassungsdaten direkt aus dem Azure-Portal herunterladen.
 
-1. Klicken Sie in der gleichen Ansicht **Kostenanalyse > Nach Ressourcentyp anzeigen** , die Sie durch Befolgen der oben beschriebenen Anweisungen geöffnet haben, oben auf die Schaltfläche „Herunterladen“.
-1. Wählen Sie den Dateityp (Excel oder CSV) für den Download aus, und klicken Sie auf die Schaltfläche **Daten herunterladen** .
+1. Klicken Sie in der gleichen Ansicht **Kostenanalyse > Nach Ressourcentyp anzeigen**, die Sie durch Befolgen der oben beschriebenen Anweisungen geöffnet haben, oben auf die Schaltfläche „Herunterladen“.
+1. Wählen Sie den Dateityp (Excel oder CSV) für den Download aus, und klicken Sie auf die Schaltfläche **Daten herunterladen**.
 1. Öffnen Sie die Datei in einem für den ausgewählten Dateityp geeigneten Editor.
 
 ## <a name="export-billing-data"></a>Exportieren von Abrechnungsdaten
@@ -135,11 +136,11 @@ Sie können auch in regelmäßigen Abständen **detaillierte** Nutzungs- und Abr
 
 Führen Sie die folgenden Schritte aus, um einen Abrechnungsexportauftrag einzurichten:
 
-1. Klicken Sie auf der linken Seite auf **Exporte** .
-1. Klicken Sie auf **Hinzufügen** .
+1. Klicken Sie auf der linken Seite auf **Exporte**.
+1. Klicken Sie auf **Hinzufügen**.
 1. Geben Sie einen Namen und die Exporthäufigkeit ein, und klicken Sie auf „Weiter“.
 1. Erstellen Sie ein neues Speicherkonto, oder verwenden Sie ein vorhandenes Speicherkonto, und füllen Sie das Formular aus, um das Speicherkonto, den Container und den Verzeichnispfad für den Export der Abrechnungsdatendateien anzugeben. Klicken Sie anschließend auf „Weiter“.
-1. Klicken Sie auf **Erstellen** .
+1. Klicken Sie auf **Erstellen**.
 
 Die Exportdateien für Abrechnungsdaten stehen in ungefähr vier Stunden zur Verfügung und werden nach dem von Ihnen beim Erstellen des Abrechnungsexportauftrags angegebenen Zeitplan exportiert.
 
@@ -150,13 +151,13 @@ Sie können die Abrechnungsdatendateien im Azure-Portal überprüfen.
 > [!IMPORTANT]
 > Nachdem Sie den Abrechnungsexportauftrag erstellt haben, warten Sie vier Stunden, bevor Sie mit den folgenden Schritten fortfahren.
 
-1. Geben Sie im Suchfeld oben im Portal **Speicherkonten** ein, und klicken Sie auf **Speicherkonten** .
+1. Geben Sie im Suchfeld oben im Portal **Speicherkonten** ein, und klicken Sie auf **Speicherkonten**.
 3. Klicken Sie auf das Speicherkonto, das Sie beim Erstellen des Auftragsexportauftrags weiter oben angegeben haben.
 4. Klicken Sie auf der linken Seite auf „Container“.
 5. Klicken Sie auf den Container, den Sie beim Erstellen des Abrechnungsexportauftrags weiter oben angegeben haben.
 6. Klicken Sie auf den Ordner, den Sie beim Erstellen des Abrechnungsexportauftrags weiter oben angegeben haben.
 7. Führen Sie einen Drilldown in die generierten Ordner und Dateien aus, und klicken Sie auf eine der generierten CSV-Dateien.
-8. Klicken Sie auf die Schaltfläche **Herunterladen** , um die Datei in Ihrem lokalen Ordner „Downloads“ zu speichern.
+8. Klicken Sie auf die Schaltfläche **Herunterladen**, um die Datei in Ihrem lokalen Ordner „Downloads“ zu speichern.
 9. Öffnen Sie die Datei mit einem CSV-Dateiviewer, z. B. in Excel.
 10. Filtern Sie die Ergebnisse, um nur die Zeilen mit dem **Ressourcentyp** = `Microsoft.AzureData/<data service resource type` anzuzeigen.
 11. In der Spalte UsageQuantity sehen Sie die Anzahl der Stunden, die die Instanz im aktuellen 24-Stunden-Zeitraum verwendet wurde.

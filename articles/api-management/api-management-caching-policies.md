@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 4db42d8fa8c676b20b236577ce6646b909df7c3a
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: bd3a63db7dd4946a9836b3978992fb544b9ab0ab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638885"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688041"
 ---
 # <a name="api-management-caching-policies"></a>Cacherichtlinien für API Management
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](./api-management-policies.md).
@@ -248,7 +248,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-poli
 `cache-store-value` führt die Cachespeicherung nach Schlüssel durch. Der Schlüssel kann einen beliebigen Zeichenfolgenwert aufweisen und wird in der Regel über einen Richtlinienausdruck angegeben.
 
 > [!NOTE]
-> Diese Richtlinie setzt das Vorhandensein einer entsprechenden Richtlinie [Wert aus Cache abrufen](#GetFromCacheByKey) voraus.
+> Der von dieser Richtlinie ausgeführte Vorgang zum Speichern des Werts im Cache ist asynchron. Der gespeicherte Wert kann mithilfe der Richtlinie [Wert aus Cache abrufen](#GetFromCacheByKey) abgerufen werden. Der gespeicherte Wert ist jedoch möglicherweise nicht sofort für den Abruf verfügbar, da der asynchrone Vorgang, mit dem der Wert im Cache gespeichert wird, möglicherweise noch ausgeführt wird. 
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2c69cea7055476bcc4c4a28cea0a0cf8c8f66f88
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bbb42a4955ff0b4fbbac58830ec5c8aecf04915d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753464"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686732"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Eine Web-API, die Web-APIs aufruft: Aufrufen einer API
 
@@ -29,9 +29,15 @@ Sobald Sie über ein Token verfügen, können Sie eine geschützte Web-API aufru
 
 Wenn Sie *Microsoft.Identity.Web* verwenden, gibt es drei Verwendungsszenarien:
 
-- [Option 1: Aufrufen von Microsoft Graph mit dem Microsoft Graph SDK](#option-1-call-microsoft-graph-with-the-sdk)
-- [Option 2: Aufrufen einer Downstream-Web-API mit der Hilfsklasse](#option-2-call-a-downstream-web-api-with-the-helper-class)
-- [Option 3: Aufrufen einer Downstream-Web-API ohne die Hilfsklasse](#option-3-call-a-downstream-web-api-without-the-helper-class)
+- [Eine Web-API, die Web-APIs aufruft: Aufrufen einer API](#a-web-api-that-calls-web-apis-call-an-api)
+  - [Controllercode](#controller-code)
+- [ASP.NET Core](#aspnet-core)
+      - [Option 1: Aufrufen von Microsoft Graph mit dem SDK](#option-1-call-microsoft-graph-with-the-sdk)
+      - [Option 2: Aufrufen einer Downstream-Web-API mit der Hilfsklasse](#option-2-call-a-downstream-web-api-with-the-helper-class)
+      - [Option 3: Aufrufen einer Downstream-Web-API ohne die Hilfsklasse](#option-3-call-a-downstream-web-api-without-the-helper-class)
+- [Java](#java)
+- [Python](#python)
+  - [Nächste Schritte](#next-steps)
 
 #### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>Option 1: Aufrufen von Microsoft Graph mit dem SDK
 
@@ -159,7 +165,7 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 ```
 
 # <a name="python"></a>[Python](#tab/python)
-Es ist noch kein Beispiel verfügbar, das diesen Flow mit MSAL Python veranschaulicht.
+Ein Beispiel zur Veranschaulichung dieses Flows mit MSAL Python ist unter [ms-identity-python-on-behalf-of](https://github.com/Azure-Samples/ms-identity-python-on-behalf-of) verfügbar.
 
 ---
 

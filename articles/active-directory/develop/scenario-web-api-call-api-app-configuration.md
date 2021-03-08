@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d1ab7da9753642093505fa91ea76b9327612a6ac
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 5072ae58d3a9412237e70a9bc98970296ce1e1fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582365"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686579"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Web-API, die Web-APIs aufruft: Codekonfiguration
 
@@ -245,6 +245,8 @@ class MsalAuthHelper {
 Der On-Behalf-Of-Fluss (OBO) wird verwendet, um ein Token zum Aufrufen der Downstream-Web-API abzurufen. In diesem Flow empfängt Ihre Web-API ein Bearertoken mit den vom Benutzer delegierten Berechtigungen von der Clientanwendung und tauscht dieses Token dann mit einem anderen Zugriffstoken aus, um die Downstream-Web-API aufzurufen.
 
 Eine Python-Web-API muss eine Middleware verwenden, um das vom Client empfangene Bearertoken zu überprüfen. Die Web-API kann dann das Zugriffstoken für die Downstream-API mithilfe der MSAL-Python-Bibliothek über einen Aufruf der [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of)-Methode abrufen. Ein Beispiel zur Verwendung dieser API finden Sie im [Testcode für microsoft-authentication-library-for-python in GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472). Siehe auch die Erörterung von [Issue 53](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53) im selben Repository zum Ansatz, der die Notwendigkeit einer Anwendung auf mittlerer Ebene umgeht.
+
+Ein Beispiel für die Implementierung des OBO-Flusses finden Sie auch im Beispiel [ms-identity-python-on-behalf-of](https://github.com/Azure-Samples/ms-identity-python-on-behalf-of).
 
 ---
 

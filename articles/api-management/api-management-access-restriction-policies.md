@@ -7,14 +7,14 @@ author: vladvino
 ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
 ms.topic: article
-ms.date: 02/09/2021
+ms.date: 02/26/2021
 ms.author: apimpm
-ms.openlocfilehash: 0b18a73d0357b5dd90b329ba55c6601e60df5bbc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 882d96271b6976db1ffc0dde181d5699c5cc27de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367570"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688245"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management-Richtlinien für die Zugriffsbeschränkung
 
@@ -137,8 +137,8 @@ Im folgenden Beispiel beträgt das Ratenlimit pro Abonnement 20 Aufrufe pro 90�
 | Name           | BESCHREIBUNG                                                                                           | Erforderlich | Standard |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | name           | Der Name der API, auf die die Ratenbegrenzung angewendet werden soll.                                                | Ja      | –     |
-| calls          | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Ja      | –     |
-| renewal-period | Der Zeitraum in Sekunden, nach dem die Rate zurückgesetzt wird.                                              | Ja      | –     |
+| calls          | Die maximale Gesamtanzahl von Aufrufen, die während des in `renewal-period` angegebenen Zeitraums zulässig sind | Ja      | –     |
+| renewal-period | Die Länge des gleitenden Fensters in Sekunden, in der die Anzahl zulässiger Anforderungen den in `calls` angegebenen Wert nicht überschreiten darf                                              | Ja      | –     |
 | retry-after-header-name    | Der Name eines Antwortheaders, dessen Wert das empfohlene Wiederholungsintervall in Sekunden ist, nach dem die angegebene Aufrufrate überschritten wird. |  Nein | –  |
 | retry-after-variable-name    | Der Name einer Richtlinienausdrucksvariablen, die das empfohlene Wiederholungsintervall in Sekunden speichert, nach dem die angegebene Aufrufrate überschritten wird. |  Nein | –  |
 | remaining-calls-header-name    | Der Name einer Antwortheaders, dessen Wert nach jeder Richtlinienausführung die Anzahl der verbleibenden Aufrufe ist, die für den Zeitraum zulässig sind, der in `renewal-period` angegeben ist. |  Nein | –  |
@@ -214,9 +214,9 @@ Im folgenden Beispiel wird die Ratenbegrenzung von 10 Aufrufen pro 60 Sekunden
 | calls               | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Ja      | –     |
 | counter-key         | Der Schlüssel, der für die Ratenbegrenzungsrichtlinie verwendet werden soll.                                                             | Ja      | –     |
 | increment-condition | Der boolesche Ausdruck, der angibt, ob die Anforderung für die Rate gezählt werden soll (`true`).        | Nein       | –     |
-| renewal-period      | Der Zeitraum in Sekunden, nach dem die Rate zurückgesetzt wird.                                              | Ja      | –     |
+| renewal-period      | Die Länge des gleitenden Fensters in Sekunden, in der die Anzahl zulässiger Anforderungen den in `calls` angegebenen Wert nicht überschreiten darf                                           | Ja      | –     |
 | retry-after-header-name    | Der Name eines Antwortheaders, dessen Wert das empfohlene Wiederholungsintervall in Sekunden ist, nach dem die angegebene Aufrufrate überschritten wird. |  Nein | –  |
-| retry-after-variable-name    | Der Name einer Richtlinienausdrucksvariablen, die das empfohlene Wiederholungsintervall in Sekunden speichert, nach dem die angegebene Aufrufrate überschritten wird. |  Nein | N/V  |
+| retry-after-variable-name    | Der Name einer Richtlinienausdrucksvariablen, die das empfohlene Wiederholungsintervall in Sekunden speichert, nach dem die angegebene Aufrufrate überschritten wird. |  Nein | –  |
 | remaining-calls-header-name    | Der Name einer Antwortheaders, dessen Wert nach jeder Richtlinienausführung die Anzahl der verbleibenden Aufrufe ist, die für den Zeitraum zulässig sind, der in `renewal-period` angegeben ist. |  Nein | –  |
 | remaining-calls-variable-name    | Der Name einer Richtlinienausdrucksvariablen, in der nach jeder Richtlinienausführung die Anzahl der verbleibenden Aufrufe gespeichert wird, die für den Zeitraum zulässig sind, der in `renewal-period` angegeben ist. |  Nein | –  |
 | total-calls-header-name    | Der Name eines Antwortheaders, dessen Wert der in `calls` angegebene Wert ist. |  Nein | –  |
@@ -263,10 +263,10 @@ Im folgenden Beispiel lässt die Richtlinie nur Anfragen zu, die entweder von de
 
 ### <a name="attributes"></a>Attributes
 
-| Name                                      | Beschreibung                                                                                 | Erforderlich                                           | Standard |
+| Name                                      | BESCHREIBUNG                                                                                 | Erforderlich                                           | Standard |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
 | address-range from="Adresse" to="Adresse" | Ein IP-Adressbereich, für den diese Richtlinie gelten soll.                                        | Erforderlich, wenn das `address-range`-Element verwendet wird. | N/V     |
-| ip-filter action="allow &#124; forbid"    | Gibt an, ob Aufrufe für die angegebenen IP-Adressen oder -Adressbereiche erlaubt oder blockiert werden sollen. | Ja                                                | N/V     |
+| ip-filter action="allow &#124; forbid"    | Gibt an, ob Aufrufe für die angegebenen IP-Adressen oder -Adressbereiche erlaubt oder blockiert werden sollen. | Ja                                                | –     |
 
 ### <a name="usage"></a>Verwendung
 
@@ -317,7 +317,7 @@ Die `quota`-Richtlinie erzwingt ein erneuerbares oder für die Lebensdauer gült
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | quota     | Stammelement                                                                                                                                                                                                                                                                                | Ja      |
 | api       | Fügen Sie mindestens eines dieser Elemente hinzu, um ein Aufrufkontingent für APIs innerhalb des Produkts zu erzwingen. Produkt- und API-Aufrufkontingente werden unabhängig voneinander angewendet. Auf „api“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert.                    | Nein       |
-| operation | Fügen Sie mindestens eines dieser Elemente hinzu, um ein Aufrufkontingent für Vorgänge innerhalb einer API zu erzwingen. Aufrufkontingente für Produkte, APIs und Vorgänge werden unabhängig voneinander angewendet. Auf „operation“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert. | Nein       |
+| operation | Fügen Sie mindestens eines dieser Elemente hinzu, um ein Aufrufkontingent für Vorgänge innerhalb einer API zu erzwingen. Aufrufkontingente für Produkte, APIs und Vorgänge werden unabhängig voneinander angewendet. Auf „operation“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert. | Nein      |
 
 ### <a name="attributes"></a>Attributes
 
@@ -326,7 +326,7 @@ Die `quota`-Richtlinie erzwingt ein erneuerbares oder für die Lebensdauer gült
 | name           | Der Name der API oder des Vorgangs, für die bzw. den das Kontingent gilt.                                             | Ja                                                              | N/V     |
 | bandwidth      | Die maximale Gesamtanzahl von Kilobytes, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | –     |
 | calls          | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind.     | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | –     |
-| renewal-period | Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.                                                  | Ja                                                              | –     |
+| renewal-period | Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird. Wenn der Wert auf `0` festgelegt ist, wird der Zeitraum auf „Unendlich“ gesetzt. | Ja                                                              | –     |
 
 ### <a name="usage"></a>Verwendung
 
@@ -390,7 +390,7 @@ Im folgenden Beispiel wird das Kontingent anhand der IP-Adresse des Aufrufers be
 | calls               | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind.     | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | –     |
 | counter-key         | Der Schlüssel, der für die Kontingentrichtlinie verwendet werden soll.                                                                      | Ja                                                              | –     |
 | increment-condition | Der boolesche Ausdruck, der angibt, ob die Anforderung für das Kontingent gezählt werden soll (`true`).             | Nein                                                               | –     |
-| renewal-period      | Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.                                                  | Ja                                                              | –     |
+| renewal-period      | Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird. Wenn der Wert auf `0` festgelegt ist, wird der Zeitraum auf „Unendlich“ gesetzt.                                                   | Ja                                                              | –     |
 
 ### <a name="usage"></a>Verwendung
 

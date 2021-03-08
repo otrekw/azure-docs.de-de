@@ -3,12 +3,12 @@ title: 'Azure Service Bus: Ablauf von Nachrichten'
 description: In diesem Artikel werden der Ablauf und die Gültigkeitsdauer von Azure Service Bus-Nachrichten behandelt. Nach einer solchen Frist wird die Nachricht nicht mehr zugestellt.
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 505a041d2f6129b159166e9f99ce7fef779e1e66
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 74df8909633c2fa048c23c559ffdd315a8616e11
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698364"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042826"
 ---
 # <a name="message-expiration-time-to-live"></a>Nachrichtenablauf (Gültigkeitsdauer)
 Die Nutzlast in einer Nachricht oder die in einer Nachricht an einen Empfänger übermittelten Befehle/Anforderungen unterliegen fast immer einer Form von Ablauffrist auf Anwendungsebene. Nach Ablauf einer solchen Frist wird der Inhalt nicht mehr zugestellt oder der gewünschte Vorgang nicht mehr ausgeführt.
@@ -21,7 +21,7 @@ Nach Ablauf des **expires-at-utc**-Zeitpunkts können Nachrichten nicht mehr abg
 
 Solange die Nachricht gesperrt ist, kann die Anwendung möglicherweise im Besitz einer Nachricht sein, die abgelaufen ist. Ob die Anwendung bereit ist, mit der Verarbeitung fortzufahren oder ob die Nachricht abgebrochen wird, bleibt dem Implementierer überlassen.
 
-Es wird empfohlen, den Wert für den **time-to-live**-Wert einer Nachricht in Stunden oder Tagen festzulegen. Wenn Sie einen niedrigen Wert in Sekunden oder Millisekunden festlegen, läuft die Nachricht möglicherweise ab, bevor sie von den Consumern genutzt werden kann. 
+Eine extrem niedrige Gültigkeitsdauer (TTL) im Bereich von Millisekunden oder Sekunden kann dazu führen, dass Nachrichten ablaufen, bevor Empfängeranwendungen diese empfangen können. Erwägen Sie die höchste Gültigkeitsdauer, die für Ihre Anwendung funktioniert.
 
 ## <a name="entity-level-expiration"></a>Ablauf auf Entitätsebene
 Alle Nachrichten, die in eine Warteschlange oder an ein Thema gesendet werden, unterliegen einer Standardablaufzeit, die auf Entitätsebene festgelegt wird. Sie kann auch im Portal während der Erstellung festgelegt und später angepasst werden. Die Standardablaufzeit wird für alle an die Entität gesendeten Nachrichten verwendet, bei denen time-to-live nicht explizit festgelegt ist. Die Standardablaufzeit dient auch als Obergrenze für den time-to-live-Wert. Nachrichten, die eine längere time-to-live-Ablaufzeit als der Standardwert haben, werden automatisch an den time-to-live-Standardnachrichtenwert angepasst, bevor sie in die Warteschlange eingereiht werden.

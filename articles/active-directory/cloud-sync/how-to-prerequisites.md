@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 03/02/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83c9b0ece933ad71810c50e89ae296aa218ec75
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: ac247b9dc70c565621d3544d14e2f76ff12fda47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98612645"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689316"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Voraussetzungen für die Azure AD Connect-Cloudsynchronisierung
 Dieser Artikel enthält Anleitungen zur Auswahl und Verwendung der Azure Active Directory Connect-Cloudsynchronisierung (Azure AD) als Identitätslösung.
@@ -26,7 +26,7 @@ Für die Verwendung der Azure AD Connect-Cloudsynchronisierung benötigen Sie Fo
 
 - Anmeldeinformationen eines Domänenadministrators oder Unternehmensadministrators zum Erstellen des gMSA (group Managed Service Account, gruppenverwaltetes Dienstkonto) für die Azure AD Connect-Cloudsynchronisierung zum Ausführen des-Agent-Diensts 
 - Ein Hybrididentität-Administratorkonto für Ihren Azure AD-Mandanten, das kein Gastbenutzer ist.
-- einen lokalen Server für den Bereitstellungs-Agent mit Windows 2012 R2 oder höher  Bei diesem Server sollte es sich um einen Server der Ebene 0 im [Active Directory-Verwaltungsebenenmodell](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) handeln.
+- Einen lokalen Server für den Bereitstellungs-Agent mit Windows 2016 oder höher.  Bei diesem Server sollte es sich um einen Server der Ebene 0 im [Active Directory-Verwaltungsebenenmodell](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) handeln.
 - lokale Firewallkonfigurationen
 
 ## <a name="group-managed-service-accounts"></a>Gruppenverwaltete Dienstkonten
@@ -35,7 +35,7 @@ Ein gruppenverwaltetes Dienstkonto ist ein verwaltetes Domänenkonto, das eine a
 ### <a name="prerequisites-for-gmsa"></a>Voraussetzungen für das gMSA:
 1.  Das Active Directory-Schema in der Gesamtstruktur der gMSA-Domäne muss auf Windows Server 2012 aktualisiert werden.
 2.  [PowerShell-RSAT-Module](/windows-server/remote/remote-server-administration-tools) auf einem Domänencontroller
-3.  Auf mindestens einem Domänencontroller in der Domäne muss Windows Server 2012 ausgeführt werden.
+3.  Auf mindestens einem Domänencontroller in der Domäne muss Windows Server 201 ausgeführt werden.
 4.  Ein in eine Domäne eingebundener Server, auf dem der Agent installiert ist, muss Windows Server 2012 oder höher aufweisen.
 
 ### <a name="custom-gmsa-account"></a>Benutzerdefiniertes gMSA-Konto
@@ -65,7 +65,7 @@ Führen Sie das [IdFix-Tool](/office365/enterprise/prepare-directory-attributes-
 
 ### <a name="in-your-on-premises-environment"></a>In Ihrer lokalen Umgebung
 
-1. Geben Sie einen in die Domäne eingebundenen Hostserver unter Windows Server 2012 R2 oder höher mit mindestens 4 GB RAM und .NET 4.7.1 + Runtime an.
+1. Geben Sie einen in die Domäne eingebundenen Hostserver unter Windows Server 2016 oder höher mit mindestens 4 GB RAM und .NET-Runtime (ab 4.7.1) an.
 
 2. Die PowerShell-Ausführungsrichtlinie auf dem lokalen Server muss auf „Nicht definiert“ oder „RemoteSigned“ festgelegt werden.
 

@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44266f7a7485b44ba60a27aadd7422e8d1c3acf4
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: bb1935242790333a91b47ccecc19d934b8145085
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259405"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688330"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>Umleiten von hartcodierten Links für Apps, die mit Azure AD-Anwendungsproxy veröffentlicht wurden
 
@@ -63,6 +63,9 @@ Mit der MyApps-Browsererweiterung werden alle internen mit dem Anwendungsproxy v
 Zur Verwendung dieses Features muss der Benutzer die Erweiterung herunterladen und angemeldet sein. Administratoren oder Benutzer müssen keine weitere Konfiguration vornehmen. 
 
 Weitere Informationen, auch zum Konfigurieren dieser Option, finden Sie in der Dokumentation [MyApps-Browsererweiterung](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension).
+
+> [!NOTE]
+> Die MyApps-Browsererweiterung unterstützt keine Linkübersetzung für Platzhalter-URLs.
 
 ### <a name="option-3-link-translation-setting"></a>Option 3: Einstellung für die Linkübersetzung 
 

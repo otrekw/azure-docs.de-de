@@ -1,6 +1,6 @@
 ---
 title: Vorabbenachrichtigungen für geplante Wartungsereignisse (Vorschau)
-description: Erhalten Sie vor einer geplanten Wartung für Azure SQL-Datenbank oder Azure SQL Managed Instance eine Benachrichtigung.
+description: Erhalten Sie vor einer geplanten Wartung für Azure SQL-Datenbank eine Benachrichtigung.
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
@@ -11,24 +11,26 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/02/2021
-ms.openlocfilehash: 3f63a8d2f75a58a771d837128c2b2498c28948ef
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 07f6267a14a4604e1a43dd1a1a9930d63a419336
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678454"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690888"
 ---
 # <a name="advance-notifications-for-planned-maintenance-events-preview"></a>Vorabbenachrichtigungen für geplante Wartungsereignisse (Vorschau)
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Vorabbenachrichtigungen (Vorschau) sind für Datenbanken verfügbar, für die das [Wartungsfenster (Vorschau)](maintenance-window.md) konfiguriert ist. Vorabbenachrichtigungen bieten dem Kunden die Möglichkeit, Benachrichtigungen so zu konfigurieren, dass sie bis zu 24 Stunden vor einem geplanten Ereignis gesendet werden.
 
 Durch Konfiguration der Benachrichtigungen können Sie Text, E-Mails, Azure-Pushbenachrichtigungen oder Voicemails erhalten, wenn die geplante Wartung in den nächsten 24 Stunden beginnen soll. Weitere Benachrichtigungen werden bei Beginn und am Ende der Wartung gesendet.
 
+> [!Note]
+> Für verwaltete Azure SQL-Instanzen ist zwar die Option zum Auswählen eines Wartungsfensters verfügbar, Vorabbenachrichtigungen derzeit aber nicht.
 
 ## <a name="create-an-advance-notification"></a>Erstellen einer Vorabbenachrichtigung
 
-Vorabbenachrichtigungen sind für Azure SQL-Datenbanken und verwaltete Instanzen verfügbar, für die das Wartungsfenster konfiguriert ist. 
+Vorabbenachrichtigungen sind für Azure SQL-Datenbanken verfügbar, für die das Wartungsfenster konfiguriert ist. 
 
 Führen Sie die folgenden Schritte aus, um eine Benachrichtigung zu aktivieren.  
 

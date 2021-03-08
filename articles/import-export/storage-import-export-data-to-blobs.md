@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/24/2021
+ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 2acc3d104786be330e3e799ad7bd96d703587581
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: 77a1c02c1ec59778521104e57f3bf3de8e52fa44
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738989"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177413"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Blob Storage
 
@@ -104,46 +104,57 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 1. Melden Sie sich bei https://portal.azure.com/ an.
 2. Suchen Sie nach **Aufträge importieren/exportieren**.
 
-    ![Suchen nach „Aufträge importieren/exportieren“](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
+   ![Suchen nach „Aufträge importieren/exportieren“](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
 3. Wählen Sie **+ Neu** aus.
 
-    ![Auswählen von „Neu“, um einen neuen Auftrag zu erstellen ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
+   ![Auswählen von „Neu“, um einen neuen Auftrag zu erstellen ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. Gehen Sie unter **Grundlegende Einstellungen** wie folgt vor:
 
-   * Wählen Sie **Import in Azure** aus.
-   * Geben Sie einen aussagekräftigen Namen für den Importauftrag ein. Verwenden Sie den Namen, um den Fortschritt Ihrer Aufträge zu verfolgen.
-       * Der Name darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten.
-       * Der Name muss mit einem Buchstaben beginnen und darf keine Leerzeichen enthalten.
-   * Wählen Sie ein Abonnement aus.
-   * Wählen Sie eine Ressourcengruppe aus, oder geben Sie eine Gruppe ein.
+   1. Wählen Sie ein Abonnement aus.
+   1. Wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und erstellen Sie eine neue.
+   1. Geben Sie einen aussagekräftigen Namen für den Importauftrag ein. Verwenden Sie den Namen, um den Fortschritt Ihrer Aufträge zu verfolgen.
+      * Der Name darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten.
+      * Der Name muss mit einem Buchstaben beginnen und darf keine Leerzeichen enthalten.
 
-     ![Importauftrag erstellen – Schritt 1](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
+   1. Wählen Sie **Import in Azure** aus.
+
+    ![Importauftrag erstellen – Schritt 1](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
+
+    Wählen Sie **Weiter: Auftragsdetails >** aus, um fortzufahren.
 
 5. Gehen Sie unter **Auftragsdetails** wie folgt vor:
 
-   * Laden Sie die Laufwerkjournaldateien hoch, die Sie während der Vorbereitung des Laufwerks erhalten haben. Bei Verwendung von `waimportexport.exe version1` müssen Sie pro vorbereitetem Laufwerk eine Datei hochladen. Wenn die Größe der Journaldatei 2 MB überschreitet, können Sie die `<Journal file name>_DriveInfo_<Drive serial ID>.xml`-Datei verwenden, die zusammen mit der Journaldatei erstellt wurde.
-   * Wählen Sie das Zielspeicherkonto aus, in dem Daten gespeichert werden sollen.
-   * Der Ablageort wird automatisch basierend auf der Region des ausgewählten Speicherkontos mit Daten aufgefüllt.
+   1. Laden Sie die Journaldateien hoch, die Sie im vorhergehenden [Schritt 1: Vorbereiten der Laufwerke](#step-1-prepare-the-drives) erstellt haben. Bei Verwendung von `waimportexport.exe version1` müssen Sie pro vorbereitetem Laufwerk eine Datei hochladen. Wenn die Größe der Journaldatei 2 MB überschreitet, können Sie die `<Journal file name>_DriveInfo_<Drive serial ID>.xml`-Datei verwenden, die zusammen mit der Journaldatei erstellt wurde.
+   1. Wählen Sie die Azure-Zielregion für die Bestellung aus.
+   1. Wählen Sie das Speicherkonto für den Import aus.
+      
+      Der Ablageort wird automatisch basierend auf der Region des ausgewählten Speicherkontos mit Daten aufgefüllt.
+   1. Wenn Sie kein ausführliches Protokoll speichern möchten, deaktivieren Sie die Option **Ausführliches Protokoll im Blobcontainer „waimportexport“ speichern**.
 
-   ![Importauftrag erstellen – Schritt 2](./media/storage-import-export-data-to-blobs/import-to-blob-4.png)
+   ![Importauftrag erstellen – Schritt 2](./media/storage-import-export-data-to-blobs/import-to-blob-4.png).
 
-6. Gehen Sie unter **Informationen für Rücksendung** wie folgt vor:
+   Wählen Sie **Weiter: Versand >** aus, um fortzufahren.
 
-   * Wählen Sie den Spediteur in der Dropdownliste aus. Wenn Sie einen anderen Spediteur als FedEx/DHL beauftragen möchten, wählen Sie eine der Optionen in der Dropdownliste aus. Wenden Sie sich unter `adbops@microsoft.com` an das Azure Data Box Operations-Team, und informieren Sie es über den von Ihnen vorgesehenen Spediteur.
-   * Geben Sie eine gültige Spediteurkontonummer ein, die Sie mit diesem Spediteur erstellt haben. Microsoft verwendet dieses Konto, um die Laufwerke nach Abschluss des Importauftrags an Sie zurückzuschicken. Wenn Sie keine Kontonummer haben, erstellen Sie ein [FedEx](https://www.fedex.com/us/oadr/)- oder [DHL](https://www.dhl.com/)-Spediteurkonto.
-   * Geben Sie vollständige und gültige Kontaktdaten an: Name, Telefonnummer, E-Mail-Adresse, Straße, Stadt, PLZ, Bundesstaat/Provinz und Land/Region.
+6. In **Versand**:
+
+   1. Wählen Sie den Spediteur in der Dropdownliste aus. Wenn Sie einen anderen Spediteur als FedEx/DHL beauftragen möchten, wählen Sie eine der Optionen in der Dropdownliste aus. Wenden Sie sich unter `adbops@microsoft.com` an das Azure Data Box Operations-Team, und informieren Sie es über den von Ihnen vorgesehenen Spediteur.
+   1. Geben Sie eine gültige Spediteurkontonummer ein, die Sie mit diesem Spediteur erstellt haben. Microsoft verwendet dieses Konto, um die Laufwerke nach Abschluss des Importauftrags an Sie zurückzuschicken. Wenn Sie keine Kontonummer haben, erstellen Sie ein [FedEx](https://www.fedex.com/us/oadr/)- oder [DHL](https://www.dhl.com/)-Spediteurkonto.
+   1.  Geben Sie vollständige und gültige Kontaktdaten an: Name, Telefonnummer, E-Mail-Adresse, Straße, Stadt, PLZ, Bundesstaat/Provinz und Land/Region.
 
        > [!TIP]
        > Geben Sie anstelle einer E-Mail-Adresse für einen einzelnen Benutzer, eine Gruppen E-Mail-Adresse ein. Dadurch wird sichergestellt, dass Sie Benachrichtigungen erhalten, selbst wenn ein Administrator geht.
 
-     ![Importauftrag erstellen – Schritt 3](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
+   ![Importauftrag erstellen – Schritt 3](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
 
-7. Gehen Sie unter **Zusammenfassung** wie folgt vor:
+   Wählen Sie **Überprüfen und erstellen** aus, um den Vorgang fortzusetzen.
 
-   * Überprüfen Sie die in der Zusammenfassung bereitgestellten Informationen zum Auftrag. Notieren Sie sich den Namen des Auftrags und die Versandadresse des Azure-Rechenzentrums, damit Sie Datenträger an Azure zurücksenden können. Diese Informationen werden später auf dem Adressetikett verwendet.
-   * Klicken Sie auf **OK**, um den Importauftrag zu erstellen.
+7. In der Bestellübersicht:
+
+   1. Lesen Sie die **Geschäftsbedingungen**, und wählen sie dann „Ich bestätige die Richtigkeit aller angegebenen Informationen und stimme den oben genannten Bestimmungen zu“ aus. Anschließend wird die Überprüfung ausgeführt.
+   1. Überprüfen Sie die in der Zusammenfassung bereitgestellten Informationen zum Auftrag. Notieren Sie sich den Namen des Auftrags und die Versandadresse des Azure-Rechenzentrums, damit Sie Datenträger an Azure zurücksenden können. Diese Informationen werden später auf dem Adressetikett verwendet.
+   1. Klicken Sie auf **Erstellen**.
 
      ![Importauftrag erstellen – Schritt 4](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 

@@ -5,15 +5,15 @@ author: mgoedtel
 ms.author: magoedte
 ms.service: azure-arc
 ms.topic: quickstart
-ms.date: 02/24/2021
+ms.date: 03/03/2021
 ms.custom: template-quickstart
 keywords: Kubernetes, Arc, Azure, Cluster
-ms.openlocfilehash: 8eb177f0c80d7ed2df70c75ca476a1dfe33c8425
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3fc522c4bdda9eb1047d5258bcc431d0268990b9
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664270"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121642"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>Schnellstart: Herstellen einer Verbindung eines vorhandenen Kubernetes-Clusters mit Azure Arc 
 
@@ -25,7 +25,7 @@ In diesem Schnellstart werden wir die Vorteile von Kubernetes mit Azure Arc-Akti
 
 * Überprüfen Sie, ob Folgendes vorhanden ist:
     * Ein funktionierender Kubernetes-Cluster.
-    * Eine `kubeconfig`-Datei.
+    * Eine `kubeconfig`-Datei, die auf den Cluster verweist, den Sie mit Azure Arc verbinden möchten
     * Lese- und Schreibberechtigungen für den Benutzer oder Dienstprinzipal, der die Verbindung herstellt und den Kubernetes-Ressourcentyp mit Azure Arc-Aktivierung (`Microsoft.Kubernetes/connectedClusters`) erstellt.
 * Installieren Sie das [neueste Release von Helm 3](https://helm.sh/docs/intro/install).
 * Installieren Sie die folgenden Kubernetes-CLI-Erweiterungen mit Azure Arc-Aktivierung der Versionen >= 1.0.0:
@@ -68,16 +68,6 @@ In diesem Schnellstart werden wir die Vorteile von Kubernetes mit Azure Arc-Akti
 | `https://login.microsoftonline.com`                                                                            | Erforderlich zum Abrufen und Aktualisieren von Azure Resource Manager-Token.                                                                                    |  
 | `https://mcr.microsoft.com`                                                                            | Erforderlich zum Pullen von Containerimages für Azure Arc-Agents.                                                                  |  
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`, `https://wcus.his.arc.azure.com`, `https://scus.his.arc.azure.com`, `https://sea.his.arc.azure.com`, `https://uks.his.arc.azure.com`, `https://wus2.his.arc.azure.com`, `https://ae.his.arc.azure.com`, `https://eus2.his.arc.azure.com`, `https://ne.his.arc.azure.com` |  Erforderlich zum Pullen vom System zugewiesener Zertifikate für verwaltete Dienstidentitäten (MSI).                                                                  |
-
-
-## <a name="install-the-azure-arc-enabled-kubernetes-cli-extensions"></a>Installieren der CLI-Erweiterungen für Kubernetes mit Azure Arc-Aktivierung
-
-Geben Sie die folgenden Befehle ein:  
-
-    ```azurecli
-    az extension add --name connectedk8s
-    az extension add --name k8s-configuration
-    ```
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Registrieren der beiden Anbieter für Kubernetes mit Azure Arc-Unterstützung
 
@@ -147,6 +137,9 @@ eastus      AzureArcTest
       "type": "Microsoft.Kubernetes/connectedClusters"
     }
     ```
+
+> [!TIP]
+> Mit dem obigen Befehl ohne den angegebenen location-Parameter wird die Kubernetes-Ressource mit Azure Arc-Unterstützung am gleichen Standort wie die Ressourcengruppe erstellt. Wenn Sie die Kubernetes-Ressource mit Azure Arc-Unterstützung an einem anderen Standort erstellen möchten, geben Sie bei Ausführung des Befehls `az connectedk8s connect` entweder `--location <region>` oder `-l <region>` an.
 
 ## <a name="verify-cluster-connection"></a>Überprüfen der Clusterverbindung
 
@@ -245,4 +238,4 @@ az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
 
 Fahren Sie mit dem nächsten Artikel fort, um zu erfahren, wie Sie Konfigurationen mithilfe von GitOps für Ihren verbundenen Kubernetes-Cluster bereitstellen.
 > [!div class="nextstepaction"]
-> [Bereitstellen von Konfigurationen mithilfe von GitOps](use-gitops-connected-cluster.md)
+> [Bereitstellen von Konfigurationen mithilfe von GitOps](tutorial-use-gitops-connected-cluster.md)

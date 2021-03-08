@@ -11,16 +11,37 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 11f32d893ccc26dd30d9997d4348661d45f84eb8
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 56e6d859293b91a56252372574f59c8dcc2cd80e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225478"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687327"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Dokumentation zur Microsoft Identity Platform: Neues
 
 Willkommen bei den Neuerungen in der Dokumentation zu Microsoft Identity Platform. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden.
+
+## <a name="february-2021"></a>Februar 2021
+
+### <a name="new-articles"></a>Neue Artikel
+
+- [Schnellstart: Abrufen eines Zugriffstokens und Aufrufen der Microsoft Graph-API über eine Electron-Desktop-App](quickstart-v2-nodejs-desktop.md)
+- [Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API in einer Electron-Desktop-App](tutorial-v2-nodejs-desktop.md)
+- [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Node.js-Konsolen-App unter Verwendung der App-Identität](quickstart-v2-nodejs-console.md)
+- [Tutorial: Aufrufen der Microsoft Graph-API in einer Node.js-Konsolen-App](tutorial-v2-nodejs-console.md)
+- [Tutorial: Anmelden von Benutzern bei einer Node.js- und Express-Web-App](tutorial-v2-nodejs-webapp-msal.md)
+- [Unterstützen der kennwortlosen Authentifizierung mit FIDO2-Schlüsseln in von Ihnen entwickelten Apps](support-fido2-authentication.md)
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Neuerungen bei der Authentifizierung](reference-breaking-changes.md)
+- [Verwenden von MSAL.NET zur Anmeldung von Benutzern mit Identitäten sozialer Netzwerke](msal-net-aad-b2c-considerations.md)
+- [Microsoft Identity Platform – Codebesipiele (V2.0-Endpunkt)](sample-v2-code.md)
+- [Videos zu Microsoft Identity Platform](identity-videos.md)
+- [Schnellstart: Einrichten eines Mandanten](quickstart-create-new-tenant.md)
+- [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](quickstart-register-app.md)
+- [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Java-Konsolen-App anhand der Identität der App](quickstart-v2-java-daemon.md)
 
 ## <a name="january-2021"></a>Januar 2021
 
@@ -66,17 +87,3 @@ Willkommen bei den Neuerungen in der Dokumentation zu Microsoft Identity Platfor
 - [Microsoft Identity Platform-Zugriffstoken](access-tokens.md)
 - [Web-API, die Web-APIs aufruft: Abrufen eines Tokens für die App](scenario-web-api-call-api-acquire-token.md)
 
-
-## <a name="november-2020"></a>November 2020
-
-### <a name="new-articles"></a>Neue Artikel
-
-- [Verwenden von CAE-fähigen APIs in Ihren Anwendungen](app-resilience-continuous-access-evaluation.md)
-
-### <a name="updated-articles"></a>Aktualisierte Artikel
-
-- [Microsoft Identity Platform-Zugriffstoken](access-tokens.md)
-- [Anwendungskonfigurationsoptionen (MSAL)](msal-client-application-configuration.md)
-- [Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre App](active-directory-optional-claims.md)
-- [Veröffentlichen Ihrer App im Azure AD-App-Katalog](v2-howto-app-gallery-listing.md)
-- [Vorgehensweise: Hinzufügen von App-Rollen zu Ihrer Anwendung und Empfangen der Rollen im Token](howto-add-app-roles-in-azure-ad-apps.md)

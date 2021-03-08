@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie mehr über die Überwachungs- und Be
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 74669a1347fac9f61d028d9cb1f3da174bb71f96
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2273b66be88cb22a15d0779ed2918ba3d94da1ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550341"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713370"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Überwachen von Azure Backup-Workloads
 
@@ -119,6 +119,18 @@ Wenn die Häufigkeit auf eine stündliche Übersicht festgelegt und eine Warnung
 Um eine aktive Warnung zu deaktivieren bzw. aufzulösen, können Sie das Listenelement auswählen, das der Warnung entspricht, die Sie deaktivieren möchten. Dadurch wird ein Bildschirm geöffnet, auf dem detaillierte Informationen zur Warnung angezeigt werden. Oberhalb der Warnung finden Sie eine Schaltfläche zum **Deaktivieren**. Wenn Sie diese Schaltfläche auswählen, ändert sich der Status der Warnung zu **Inaktiv**. Sie können eine Warnung auch deaktivieren, indem Sie mit der rechten Maustaste auf das Listenelement klicken, das dieser Warnung entspricht, und dann **Deaktivieren** auswählen.
 
 ![Deaktivieren einer Warnung zum Recovery Services-Tresor](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
+
+## <a name="azure-monitor-alerts-for-azure-backup-preview"></a>Azure Monitor-Warnungen für Azure Backup (Vorschau)
+
+Azure Backup stellt über Azure Monitor auch Warnungen bereit, um Benutzern übergreifend über unterschiedliche Azure-Dienste (einschließlich Azure Backup) eine einheitliche Oberfläche für die Warnungsverwaltung zu bieten. Mit Azure Monitor-Warnungen können Sie Warnungen an jeden Benachrichtigungskanal weiterleiten, der von Azure Backup unterstützt wird (z. B. E-Mail, ITSM, Webhook, Logik-App usw.).
+
+Diese Funktion ist derzeit für Azure Database for PostgreSQL-Server, Azure Blobs und Azure Managed Disks verfügbar. Warnungen werden für die folgenden Szenarien generiert (Sie können darauf zugreifen, indem Sie zu einem Sicherungstresor navigieren und auf das Menüelement **Warnungen** klicken):
+
+- Löschen von Sicherungsdaten
+- Sicherungsfehler (um Warnungen zu Sicherungsfehlern zu erhalten, müssen Sie das AFEC-Flag namens **EnableAzureBackupJobFailureAlertsToAzureMonitor** über das Vorschauportal registrieren)
+- Wiederherstellungsfehler (um Warnungen zu Wiederherstellungsfehlern zu erhalten, müssen Sie das AFEC-Flag namens **EnableAzureBackupJobFailureAlertsToAzureMonitor** über das Vorschauportal registrieren)
+
+Weitere Informationen zu Azure Monitor-Warnungen finden Sie unter [Überblick über Warnungen in Azure](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-overview).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

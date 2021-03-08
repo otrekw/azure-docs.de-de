@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 1752e6687cd4dda72ee330c489a4642ae32f8219
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 2536ae0d33767de5ad53740407622e67c582cc37
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820771"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710667"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -43,7 +43,7 @@ Sicherung von verwalteten Datenträgern nach Aktivierung einer Ressourcengruppen
 Ändern der Sicherungsrichtlinie für einen virtuellen Computer | Unterstützt.<br/><br/> Der virtuelle Computer wird unter Verwendung der Zeitplan- und Aufbewahrungseinstellungen der neuen Richtlinie gesichert. Wenn die Aufbewahrungseinstellungen erweitert werden, werden vorhandene Wiederherstellungspunkte markiert und beibehalten. Wenn die Einstellungen reduziert werden, werden vorhandene Wiederherstellungspunkte im nächsten Bereinigungsauftrag gelöscht und schließlich endgültig entfernt.
 Abbrechen eines Sicherungsauftrags| Wird während des Prozesses der Momentaufnahme unterstützt.<br/><br/> Wird nicht unterstützt, wenn die Momentaufnahme in den Tresor übertragen wird.
 Sicherung des virtuellen Computers in einer anderen Region oder einem anderen Abonnement |Wird nicht unterstützt.<br><br>Damit die Sicherung erfolgreich ausgeführt werden kann, müssen sich die virtuellen Computer im gleichen Abonnement wie der Tresor für die Sicherung befinden.
-Sicherungen pro Tag (über die Azure-VM-Erweiterung) | Eine geplante Sicherung pro Tag<br/><br/>Der Azure Backup-Dienst unterstützt bis zu neun bedarfsgesteuerte Sicherungen pro Tag. Microsoft empfiehlt jedoch nicht mehr als vier bedarfsgesteuerte Sicherungen pro Tag, um eine optimale Leistung zu gewährleisten.
+Sicherungen pro Tag (über die Azure-VM-Erweiterung) | Eine geplante Sicherung pro Tag<br/><br/>Der Azure Backup-Dienst unterstützt bis zu drei bedarfsabhängige Sicherungen pro Tag und eine zusätzliche geplante Sicherung.
 Sicherungen pro Tag (über den MARS-Agent) | Drei geplante Sicherungen pro Tag
 Sicherungen pro Tag (über DPM/MABS) | Zwei geplante Sicherungen pro Tag
 Monatliche oder jährliche Sicherung| Wird bei der Sicherung mit der Azure-VM-Erweiterung nicht unterstützt. Lediglich tägliche und wöchentliche Sicherungen werden unterstützt.<br/><br/> Sie können die Richtlinie so einrichten, dass tägliche oder wöchentliche Sicherungen in einem monatlichen oder jährlichen Aufbewahrungszeitraum beibehalten werden.
@@ -115,6 +115,7 @@ Wiederherstellen von Dateien von Speicherkonten mit Netzwerkbeschränkung | Wird
 Wiederherstellen von Dateien auf virtuellen Computern mit Windows-Speicherplätzen | Die Wiederherstellung auf demselben Computer wird nicht unterstützt.<br/><br/> Führen Sie stattdessen die Wiederherstellung der Dateien auf einem kompatiblen virtuellen Computer durch.
 Wiederherstellen von Dateien auf einem virtuellen Linux-Computer mit LVM/RAID-Arrays | Die Wiederherstellung auf demselben Computer wird nicht unterstützt.<br/><br/> Führen Sie die Wiederherstellung auf einem kompatiblen virtuellen Computer durch.
 Wiederherstellen von Dateien mit spezifischen Netzwerkeinstellungen | Die Wiederherstellung auf demselben Computer wird nicht unterstützt. <br/><br/> Führen Sie die Wiederherstellung auf einem kompatiblen virtuellen Computer durch.
+Wiederherstellen von Dateien von freigegebenen Datenträgern, temporären Laufwerken, deduplizierten Datenträgern, Ultra-Datenträgern und Datenträgern mit aktivierter Schreibbeschleunigung. | Die Wiederherstellung wird nicht unterstützt <br/><br/>(siehe [Unterstützung für Azure VM-Speicher](#vm-storage-support)).
 
 ## <a name="support-for-vm-management"></a>Unterstützung für die Datenträgerverwaltung
 
@@ -144,12 +145,12 @@ Sicherung von auf dem [Azure Marketplace](https://azuremarketplace.microsoft.com
 Sicherung von über ein benutzerdefiniertes Image bereitgestellten VMs (Drittanbieter) |Unterstützt.<br/><br/> Auf dem virtuellen Computer muss ein unterstütztes Betriebssystem ausgeführt werden.<br/><br/> Die Wiederherstellung von Dateien auf dem virtuellen Computer kann nur unter einem kompatiblen Betriebssystem (kein früheres oder späteres Betriebssystem) durchgeführt werden.
 Sicherung von zu Azure migrierten VMs| Unterstützt.<br/><br/> Für die Sicherung des virtuellen Computers muss der VM-Agent auf dem migrierten Computer installiert werden.
 Sichern der Konsistenz mehrerer virtueller Computer | Azure Backup bietet keine mehrere VMs übergreifende Konsistenz von Daten und Anwendungen.
-Sichern mit [Diagnoseeinstellungen](../azure-monitor/platform/platform-logs-overview.md)  | Nicht unterstützt. <br/><br/> Wenn die Wiederherstellung der Azure-VM mit Diagnoseeinstellungen mithilfe der Option [Neu erstellen](backup-azure-arm-restore-vms.md#create-a-vm) ausgelöst wird, tritt bei der Wiederherstellung ein Fehler auf.
+Sichern mit [Diagnoseeinstellungen](../azure-monitor/essentials/platform-logs-overview.md)  | Nicht unterstützt. <br/><br/> Wenn die Wiederherstellung der Azure-VM mit Diagnoseeinstellungen mithilfe der Option [Neu erstellen](backup-azure-arm-restore-vms.md#create-a-vm) ausgelöst wird, tritt bei der Wiederherstellung ein Fehler auf.
 Wiederherstellen von an Zonen angehefteten virtuellen Computern | Unterstützt (für VMs, die nach Januar 2019 gesichert wurden und bei denen es [Verfügbarkeitszonen](https://azure.microsoft.com/global-infrastructure/availability-zones/) gibt).<br/><br/>Wir unterstützen derzeit die Wiederherstellung in derselben Zone, die in virtuellen Computern angeheftet ist. Wenn die Zone jedoch aufgrund eines Ausfalls nicht verfügbar ist, tritt bei der Wiederherstellung ein Fehler auf.
 Gen2-VMS | Unterstützt <br> Azure Backup unterstützt die Sicherung und Wiederherstellung von [Gen2-VMS](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/). Bei Wiederherstellung über einen Wiederherstellungspunkt werden diese VMs als [Gen2-VMs](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) wiederhergestellt.
 Sicherung virtueller Azure-Computer mit Sperren | Wird für nicht verwaltete virtuelle Computer nicht unterstützt. <br><br> Wird für verwaltete virtuelle Computer unterstützt.
 [Spot-VMs](../virtual-machines/spot-vms.md) | Nicht unterstützt. Azure Backup stellt Spot-VMs als reguläre Azure-VMs wieder her.
-[Azure Dedicated Host](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts) | Unterstützt
+[Azure Dedicated Host](../virtual-machines/dedicated-hosts.md) | Unterstützt
 Konfiguration von „Windows-Speicherplätze“ für eigenständige virtuelle Azure-Computer | Unterstützt
 
 ## <a name="vm-storage-support"></a>Unterstützung für VM-Speicher
@@ -168,7 +169,7 @@ Hinzufügen eines Datenträgers zu geschütztem virtuellen Computer | Unterstüt
 Freigegebener Speicher| Das Sichern von VMs mit freigegebenem Clustervolume (Cluster Shared Volume, CSV) oder Dateiservern mit horizontaler Skalierung wird nicht unterstützt. Bei CSV-Schreibern treten während der Sicherung voraussichtlich Fehler auf. Bei der Wiederherstellung werden Datenträger, die CSV-Volumes enthalten, möglicherweise nicht hochgefahren.
 [Freigegebene Datenträger](../virtual-machines/disks-shared-enable.md) | Wird nicht unterstützt.
 SSD Ultra-Datenträger | Wird nicht unterstützt. Weitere Informationen finden Sie unter [Einschränkungen](selective-disk-backup-restore.md#limitations).
-[Temporäre Datenträger](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview#temporary-disk) | Temporäre Datenträger werden nicht von Azure Backup gesichert.
+[Temporäre Datenträger](../virtual-machines/managed-disks-overview.md#temporary-disk) | Temporäre Datenträger werden nicht von Azure Backup gesichert.
 
 ## <a name="vm-network-support"></a>Netzwerkunterstützung bei virtuellen Computern
 

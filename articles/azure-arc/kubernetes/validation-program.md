@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Beschreibung des Arc-Validierungsprogramms für Kubernetes-Distributionen
 keywords: Kubernetes, Arc, Azure, K8s, Validierung
-ms.openlocfilehash: ad87fe3f11c97524595a517b17bb52fa1b771c9d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0d7756f407a3a176c8913d99bdb45a5026300569
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660350"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689214"
 ---
 # <a name="azure-arc-validation-program"></a>Azure Arc-Validierungsprogramm
 
@@ -32,11 +32,11 @@ Die folgenden Anbieter und ihre entsprechenden Kubernetes-Distributionen haben d
 
 | Anbietername | Distributionsname | Version |
 | ------------ | ----------------- | ------- |
-| RedHat       | [OpenShift Container Platform](https://www.openshift.com/products/container-platform) | [4.6](https://docs.openshift.com/container-platform/4.6/release_notes/ocp-4-6-release-notes.html) |
+| RedHat       | [OpenShift Container Platform](https://www.openshift.com/products/container-platform) | [4.5](https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html), [4.6](https://docs.openshift.com/container-platform/4.6/release_notes/ocp-4-6-release-notes.html), [4.7](https://docs.openshift.com/container-platform/4.7/release_notes/ocp-4-7-release-notes.html) |
 | VMware       | [Tanzu Kubernetes Grid](https://tanzu.vmware.com/kubernetes-grid) | Kubernetes-Version: v1.17.5 |
 | Canonical    | [Charmed Kubernetes](https://ubuntu.com/kubernetes) | [1.19](https://ubuntu.com/kubernetes/docs/1.19/components) |
-| Rancher      | [Rancher Kubernetes Engine](https://rancher.com/products/rke/) | RKE CLI-Version: [v1.2.4](https://github.com/rancher/rke/releases/tag/v1.2.4); Kubernetes-Versionen: [1.19.6](https://github.com/kubernetes/kubernetes/releases/tag/v1.19.6)), [1.18.14](https://github.com/kubernetes/kubernetes/releases/tag/v1.18.14)), [1.17.16](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.16))  |
-| Nutanix      | [Karbon](https://www.nutanix.com/products/karbon)    | Releaseversion: [2.0](https://www.nutanix.com/blog/introducing-nutanix-karbon-2-kubernetes-simplicity-upgraded); Kubernetes-Version: [1.17.0](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.0) |
+| SUSE Rancher      | [Rancher Kubernetes Engine](https://rancher.com/products/rke/) | RKE CLI-Version: [v1.2.4](https://github.com/rancher/rke/releases/tag/v1.2.4); Kubernetes-Versionen: [1.19.6](https://github.com/kubernetes/kubernetes/releases/tag/v1.19.6)), [1.18.14](https://github.com/kubernetes/kubernetes/releases/tag/v1.18.14)), [1.17.16](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.16))  |
+| Nutanix      | [Karbon](https://www.nutanix.com/products/karbon)    | Version 2.2.1 |
 
 Das Azure Arc-Team führte auch die Konformitätstests durch und überprüfte Kubernetes-Szenarien mit Azure Arc-Aktivierung auf den folgenden öffentlichen Cloudanbietern:
 

@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 303a919cc0afc9b5db49918233f3e5718a896646
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4461fb6904d51ee8d740b633a2d0028658ac2ced
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148044"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687548"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>Zentrales Hoch- und Herunterskalieren einer Azure Database for PostgreSQL Hyperscale-Servergruppe mithilfe der CLI (azdata oder kubectl)
 
@@ -180,6 +180,21 @@ Die neue Definition der Servergruppe wird angezeigt:
 ## <a name="scale-down-the-server-group"></a>Herunterskalieren der Servergruppe
 
 Zum horizontalen Herunterskalieren der Servergruppe führen Sie denselben Befehl aus, legen jedoch für die Einstellungen, die Sie zentral herunterskalieren möchten, geringere Werte fest. Um die Anforderungen und/oder Grenzwerte zu entfernen, geben Sie die entsprechenden Werte als leere Zeichenfolge an.
+
+## <a name="reset-to-default-values"></a>Zurücksetzen auf Standardwerte
+Zum Zurücksetzen der Parameter für Kerne/Arbeitsspeichergrenzwerte/Anforderungen auf ihre Standardwerte bearbeiten Sie sie und übergeben eine leere Zeichenfolge anstelle eines tatsächlichen Werts. Wenn Sie beispielsweise den Parameter für den Kerngrenzwert (cl) zurücksetzen möchten, führen Sie die folgenden Befehle aus:
+- auf einem Linux-Client:
+
+```console
+    azdata arc postgres server edit -n <servergroup name> -cl ""
+```
+
+- auf einem Windows-Client: 
+ 
+```console
+    azdata arc postgres server edit -n <servergroup name> -cl '""'
+```
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

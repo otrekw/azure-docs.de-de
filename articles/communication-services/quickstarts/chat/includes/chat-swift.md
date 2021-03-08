@@ -10,12 +10,12 @@ ms.date: 2/11/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 7833656b9b9be45aa3a0f0a8aa45cd70f925ce73
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5c79ea68e648cd3d78f94eb2272b6f32e3c4806f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379661"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750636"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
@@ -53,9 +53,11 @@ pod 'AzureCommunicationChat', '~> 1.0.0-beta.8'
 
 Installieren Sie die Abhängigkeiten. Dadurch wird auch ein Xcode-Arbeitsbereich erstellt: `pod install`
 
+**Öffnen Sie das Projekt nach dem Ausführen der Podinstallation erneut in Xcode, indem Sie den neu erstellten Arbeitsbereich `.xcworkspace` auswählen.**
+
 ### <a name="setup-the-placeholders"></a>Einrichten der Platzhalter
 
-Öffnen Sie die Arbeitsbereichsdatei `ChatQuickstart.xcworkspace` in Xcode, und öffnen Sie anschließend `ViewController.swift`.
+Öffnen Sie den Arbeitsbereich `ChatQuickstart.xcworkspace` in Xcode und anschließend `ViewController.swift`.
 
 In dieser Schnellstartanleitung fügen wir unseren Code zu `viewController` hinzu und sehen uns die Ausgabe in der Xcode-Konsole an. Das Erstellen einer Benutzeroberfläche in iOS wird in dieser Schnellstartanleitung nicht behandelt. 
 
@@ -120,6 +122,10 @@ let endpoint = "<ACS_RESOURCE_ENDPOINT>"
 
 Ersetzen `<ACS_RESOURCE_ENDPOINT>` Sie durch den Endpunkt Ihrer ACS-Ressource.
 Ersetzen Sie `<ACCESS_TOKEN>` durch ein gültiges ACS-Zugriffstoken.
+
+Die Erstellung einer Dienstebene zum Verwalten von Token für Ihre Chatanwendung wird in dieser Schnellstartanleitung nicht behandelt, sie wird jedoch empfohlen. Ausführlichere Informationen finden Sie in der Dokumentation zur [Chatarchitektur](../../../concepts/chat/concepts.md).
+
+Informieren Sie sich über [Benutzerzugriffstoken](../../access-tokens.md).
 
 ## <a name="object-model"></a>Objektmodell 
 Die folgenden Klassen und Schnittstellen werden für einige der wichtigsten Features der JavaScript-Clientbibliothek für Chats von Azure Communication Services verwendet.

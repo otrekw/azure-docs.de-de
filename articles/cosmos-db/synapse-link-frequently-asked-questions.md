@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 885aab68c769c0705994bad34bee6aaa4fdc3f3d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9fb6e94062639d32707f52f66e0b99531884a636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658468"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692265"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Häufig gestellte Fragen zu Azure Synapse Link für Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -73,6 +73,10 @@ Azure Cosmos DB garantiert eine Leistungsisolation zwischen Transaktions- und An
 Ja. Sie können einen [verwalteten privaten Endpunkt](analytical-store-private-endpoints.md) konfigurieren und den Netzwerkzugriff von Analysespeicher auf das von Azure Synapse verwaltete virtuelle Netzwerk beschränken. Mit verwalteten privaten Endpunkten wird eine private Verbindung mit Ihrem Analysespeicher hergestellt. Dieser private Endpunkt schränkt auch den Schreibzugriff auf den Transaktionsspeicher ein (neben anderen Azure-Datendiensten).
 
 Sie können private Endpunkte sowohl für den Transaktionsspeicher als auch den Analysespeicher dem gleichen Azure Cosmos DB-Konto in einem Azure Synapse Analytics-Arbeitsbereich hinzufügen. Wenn Sie nur analytische Abfragen ausführen möchten, können Sie auch nur den analytischen privaten Endpunkt zuordnen.
+
+### <a name="can-i-use-customer-managed-keys-with-the-azure-cosmos-db-analytical-store"></a>Kann ich kundenseitig verwaltete Schlüssel in Verbindung mit dem Azure Cosmos DB-Analysespeicher verwenden?
+
+Sie können Daten nahtlos im Transaktions- und Analysespeicher verschlüsseln und dabei die gleichen kundenseitig verwalteten Schlüssel automatisiert und transparent verwenden. Die Verwendung von kundenseitig verwalteten Schlüsseln mit dem Azure Cosmos DB-Analysespeicher erfordert derzeit eine zusätzliche Konfiguration für Ihr Konto. Weitere Informationen erhalten Sie vom [Azure Cosmos DB-Team](mailto:azurecosmosdbcmk@service.microsoft.com).
 
 ### <a name="are-delete-and-update-operations-on-the-transactional-store-reflected-in-the-analytical-store"></a>Spiegeln sich im Transaktionsspeicher vorgenommene Lösch- und Aktualisierungsvorgänge im Analysespeicher wider?
 

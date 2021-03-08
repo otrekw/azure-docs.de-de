@@ -5,15 +5,15 @@ author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 02/09/2021
+ms.date: 02/22/2021
 ms.author: dech
 ms.custom: references_regions
-ms.openlocfilehash: fd7f663ee5b6ceb49e6f1a393fc30919d5b245e9
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 02e8ad5f2b5326f947ba0bca6456ce9d9d3c27d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547824"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692775"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Aktivieren von Notebooks für Azure Cosmos DB-Konten (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,12 +27,12 @@ Integrierte Jupyter Notebooks in Azure Cosmos DB ermöglichen es Ihnen, Ihre Dat
 Ab dem 10. Februar 2021 sind für neue Azure Cosmos-Konten, die in einer der [unterstützten Regionen](#supported-regions) erstellt werden, Notebooks automatisch aktiviert. Es ist keine zusätzliche Konfiguration erforderlich, um Notebooks zu aktivieren. Gehen Sie folgendermaßen vor, um ein neues Konto zu erstellen:
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Wählen Sie **Ressourcen erstellen** > **Datenbanken** > **Azure Cosmos DB** aus.
-1. Geben Sie die grundlegenden Einstellungen für das Konto ein. 
- 
+1. Geben Sie die grundlegenden Einstellungen für das Konto ein.
+
    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail-2.png" alt-text="Die Seite „Neues Konto“ für Azure Cosmos DB":::
 
 1. Klicken Sie auf **Überprüfen + erstellen**. Sie können die Optionen **Netzwerk** und **Tags** überspringen. 
-1. Überprüfen Sie die Kontoeinstellungen, und wählen Sie anschließend **Erstellen** aus. Die Erstellung des Kontos dauert einige Minuten. Warten Sie, bis auf der Portalseite **Ihre Bereitstellung wurde abgeschlossen.** angezeigt wird. 
+1. Überprüfen Sie die Kontoeinstellungen, und wählen Sie anschließend **Erstellen** aus. Die Erstellung des Kontos dauert einige Minuten. Warten Sie, bis auf der Portalseite **Ihre Bereitstellung wurde abgeschlossen.** angezeigt wird.
 
    :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks-complete.png" alt-text="Der Bereich „Benachrichtigungen“ im Azure-Portal":::
 
@@ -60,12 +60,12 @@ Sie können auch Notebooks für vorhandene Konten aktivieren. Dieser Schritt mus
 
 Um zu überprüfen, ob Sie Notebooks verwenden können, wählen Sie eines der Notebooks unter den Beispielnotebooks aus. Dadurch wird eine Kopie des Notebooks in Ihrem Arbeitsbereich gespeichert und geöffnet.
 
-In diesem Beispiel wird **GettingStarted.ipynb**. verwendet. 
+In diesem Beispiel wird **GettingStarted.ipynb**. verwendet.
 
 :::image type="content" source="media/enable-notebooks/select-getting-started-notebook.png" alt-text="Anzeigen des Notebooks „GettingStarted.ipynb“":::
 
 So führen Sie das Notebook aus:
-1. Wählen Sie die erste Codezelle mit Python-Code aus. 
+1. Wählen Sie die erste Codezelle mit Python-Code aus.
 1. Klicken Sie auf **Ausführen**, um die Zelle auszuführen. Sie können zum Ausführen der Zelle auch **UMSCHALT+EINGABE** verwenden.
 1. Aktualisieren Sie den Ressourcenbereich, um die Datenbank und den Container anzuzeigen, die erstellt wurden.
 
@@ -112,8 +112,7 @@ Integrierte Notebooks für Azure Cosmos DB sind zurzeit in 29 Azure-Regionen v
 
 * Erfahren Sie mehr über die Vorteile von [Jupyter Notebooks in Azure Cosmos DB](cosmosdb-jupyter-notebooks.md).
 * [Erkunden des Katalogs mit Notebookbeispielen](https://cosmos.azure.com/gallery.html)
+* [Veröffentlichen von Notebooks im Katalog für Azure Cosmos DB-Notebooks](publish-notebook-gallery.md)
 * [Verwenden von Python-Notebookfunktionen und -befehlen](use-python-notebook-features-and-commands.md)
 * [Verwenden von C#-Notebookfunktionen und -befehlen](use-csharp-notebook-features-and-commands.md)
 * [Importieren von Notebooks aus einem GitHub-Repository](import-github-notebooks.md)
-
-

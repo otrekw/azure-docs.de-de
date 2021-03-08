@@ -11,17 +11,17 @@ ms.workload: identity
 ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.openlocfilehash: a4b029a1397a2522dfaa6eba9c0206dd5a031875
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 6ba622bd52dc13fb0053b61b65529db6e6912611
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258132"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686715"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD-Anwendungsproxy: Verlauf der Versionsveröffentlichungen
 In diesem Artikel werden die veröffentlichten Versionen und Features des Anwendungsproxys von Azure Active Directory (Azure AD) aufgeführt. Das Azure AD-Team aktualisiert den Anwendungsproxy regelmäßig mit neuen Features und Funktionen. Anwendungsproxyconnectors werden automatisch aktualisiert, wenn eine neue Version veröffentlicht wird. 
 
-Wir empfehlen die Aktivierung von automatischen Updates für Ihre Connectors, um sicherzustellen, dass Sie über die neuesten Features und Fehlerbehebungen verfügen. Microsoft stellt direkte Unterstützung für die neueste Connectorversion und die unmittelbare Vorgängerversion bereit.
+Wir empfehlen die Aktivierung von automatischen Updates für Ihre Connectors, um sicherzustellen, dass Sie über die neuesten Features und Fehlerbehebungen verfügen. Microsoft bietet direkte Unterstützung für die neueste Connectorversion und die unmittelbare Vorgängerversion.
 
 Hier finden Sie eine Liste der zugehörigen Ressourcen:
 
@@ -60,7 +60,7 @@ Herunterladen des Azure AD-Anwendungsproxyconnectors |  [Laden Sie den aktuellen
 
 ### <a name="release-status"></a>Releasestatus
 
-7\. April 2020: Für den Download veröffentlicht
+07. April 2020: Für den Download veröffentlicht: Diese Version steht nur über die Downloadseite zur Installation zur Verfügung. Ein automatisches Upgrade dieser Version wird zu einem späteren Zeitpunkt veröffentlicht.
 
 ### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
 -   Connectors verwenden für alle Verbindungen ausschließlich TLS 1.2. Weitere Informationen finden Sie unter [Voraussetzungen für Connectors](application-proxy-add-on-premises-application.md#prerequisites).

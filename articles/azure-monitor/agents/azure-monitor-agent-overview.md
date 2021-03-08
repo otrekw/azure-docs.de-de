@@ -1,17 +1,16 @@
 ---
 title: Übersicht über den Azure Monitor-Agent
 description: Übersicht über den Azure Monitor-Agent (AMA) zur Sammlung von Überwachungsdaten aus dem Gastbetriebssystem virtueller Computer.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: e4837de70e9f00308b440933e0cd433ad5b27cf9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0487e5bd8109c02605e785e74d45589dd5fde5b9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711534"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039596"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Übersicht über den Azure Monitor-Agent (Vorschauversion)
 Der Azure Monitor-Agent (AMA) sammelt Überwachungsdaten aus dem Gastbetriebssystem virtueller Computer und übermittelt sie an Azure Monitor. Dieser Artikel enthält eine Übersicht über den Azure Monitor-Agent sowie Informationen zur Installation und zur Konfiguration der Datensammlung.

@@ -8,22 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 02/26/2021
 ms.author: justinha
-ms.openlocfilehash: 5359a955ea97b559b7e3d244bfb6c4fb09e8681b
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 8eb1560887c08c3f64fa599c39e5577242d2a1e8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620034"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689061"
 ---
-# <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services-preview"></a>Konzepte und Features zu Replikatgruppen für Azure Active Directory Domain Services (Vorschauversion)
+# <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services"></a>Konzepte und Features zu Replikatgruppen für Azure Active Directory Domain Services
 
 Beim Erstellen einer verwalteten Azure AD DS-Domäne (Azure Active Directory Domain Services) definieren Sie einen eindeutigen Namespace. Dieser Namespace ist der Domänenname, etwa *aaddscontoso.com*. Anschließend werden zwei Domänencontroller (DCs) in der ausgewählten Azure-Region bereitgestellt. Diese Bereitstellung von Domänencontrollern wird als Replikatgruppe bezeichnet.
 
 Sie können eine verwaltete Domäne erweitern, sodass mehrere Replikatgruppen pro Azure AD-Mandant festgelegt sind. Replikatgruppen können einem beliebigen virtuellen Netzwerk mit Peering in einer beliebigen Azure-Region mit Azure AD DS-Unterstützung hinzugefügt werden. Zusätzliche Replikatgruppen in verschiedenen Azure-Regionen bieten eine geografische Notfallwiederherstellung für Legacyanwendungen, wenn eine Azure-Region offline geschaltet wird.
-
-Replikatgruppen sind derzeit als Vorschau verfügbar.
 
 > [!NOTE]
 > Sie können mit Replikatgruppen nicht mehrere eindeutige verwaltete Domänen in einem einzelnen Azure-Mandanten bereitstellen. Jede Replikatgruppe enthält dieselben Daten.
@@ -56,15 +54,11 @@ Das folgende Beispiel zeigt eine verwaltete Domäne, für die mit drei Replikatg
 
 Die Standard-SKU für eine verwaltete Domäne ist die *Enterprise*-SKU, die mehrere Replikatgruppen unterstützt. Um bei einem Wechsel von der *Standard*-SKU zusätzliche Replikatgruppen zu erstellen, [führen Sie ein Upgrade der verwalteten Domänen](change-sku.md) auf *Enterprise* oder *Premium* durch.
 
-Die maximale Anzahl von Replikatgruppen, die während der Vorschauphase unterstützt werden, beträgt vier. Dies schließt auch das erste Replikat ein, das beim Erstellen der verwalteten Domäne erstellt wird.
+Die unterstützte maximale Anzahl von Replikatgruppen beträgt vier. Dies schließt auch das erste Replikat ein, das beim Erstellen der verwalteten Domäne erstellt wird.
 
 Die Abrechnung für die einzelnen Replikatgruppe basiert auf der für die Domäne konfigurierten SKU. Wenn Sie z. B. eine verwaltete Domäne mit der *Enterprise*-SKU verwenden und über drei Replikatgruppen verfügen, erfolgt die Abrechnung in Ihrem Abonnement pro Stunde für jede der drei Replikatgruppen.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-
-### <a name="can-i-use-my-production-managed-domain-with-this-preview"></a>Kann ich meine verwaltete Domäne mit dieser Vorschauversion in der Produktion verwenden?
-
-Replikatgruppen sind eine öffentliche Previewfunktion in Azure AD Domain Services. Sie können eine verwaltete Domäne für die Produktion verwenden, berücksichtigen Sie jedoch die für Previewfunktionen geltenden Supportunterschiede. Weitere Informationen zu Vorschauversionen Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ### <a name="can-i-create-a-replica-set-in-subscription-different-from-my-managed-domain"></a>Kann ich eine Replikatgruppe in einem anderen Abonnement als meine verwaltete Domäne erstellen?
 
@@ -72,7 +66,7 @@ Nein. Replikatgruppen müssen sich im selben Abonnement befinden wie die verwalt
 
 ### <a name="how-many-replica-sets-can-i-create"></a>Wie viele Replikatgruppen kann ich erstellen?
 
-Während der Vorschauphase ist die Anzahl auf vier Replikatgruppen beschränkt (die anfängliche Replikatgruppe für die verwaltete Domäne und drei zusätzliche Replikatgruppen).
+Sie können maximal vier Replikatgruppen erstellen (die anfängliche Replikatgruppe für die verwaltete Domäne und drei zusätzliche Replikatgruppen).
 
 ### <a name="how-does-user-and-group-information-get-synchronized-to-my-replica-sets"></a>Wie werden Benutzer- und Gruppeninformationen mit meinen Replikatgruppen synchronisiert?
 

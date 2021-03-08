@@ -16,12 +16,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b45decd2f2cf9c99cffb0e08d4d6a5c5cfafc67
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: e10aa5d96722b414d7384ceb81f393575d57e2a2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858398"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688772"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Wiederherstellen der LocalDB-Obergrenze von 10 GB
 Azure AD Connect erfordert eine SQL Server-Datenbank zum Speichern von Identitätsdaten. Sie können entweder die mit Azure AD Connect installierte SQL Server 2012 Express LocalDB-Standardinstanz oder Ihre eigene vollständige Version von SQL Server verwenden. In SQL Server Express gilt eine Größenbeschränkung von 10 GB. Wenn Sie LocalDB verwenden und dieser Grenzwert erreicht ist, kann Azure AD Connect Synchronization Service nicht mehr ordnungsgemäß gestartet oder synchronisiert werden. In diesem Artikel werden die Schritte zur Wiederherstellung beschrieben.
@@ -74,7 +74,7 @@ Der Name der für Azure AD Connect erstellten Datenbank lautet **ADSync**. Um ei
 
 4. Starten Sie das Hilfsprogramm **sqlcmd** mithilfe des Befehls `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>`. Verwenden Sie dabei die Anmeldeinformationen eines Systemadministrators oder des Datenbankbesitzers.
 
-5. Geben Sie zum Verkleinern der Datenbank an der sqlcmd-Eingabeaufforderung (1>) `DBCC Shrinkdatabase(ADSync,1);` gefolgt von `GO` in der nächsten Zeile ein.
+5. Geben Sie zum Verkleinern der Datenbank an der sqlcmd-Eingabeaufforderung (`1>`) `DBCC Shrinkdatabase(ADSync,1);` gefolgt von `GO` in der nächsten Zeile ein.
 
 6. Wenn der Vorgang erfolgreich ist, versuchen Sie erneut, Synchronization Service zu starten. Wenn Synchronization Service gestartet werden kann, fahren Sie mit dem Schritt [Löschen der Ausführungsverlaufsdaten](#delete-run-history-data) fort. Kontaktieren Sie andernfalls den Support.
 

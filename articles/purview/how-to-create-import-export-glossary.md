@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: a693761bcecab87e343014127ad37077c2569e21
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 7466e143f345ea305c7e9ef118d09fb6f685ac16
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550345"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694484"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>Erstellen, Importieren und Exportieren von Glossarbegriffen
 
@@ -88,6 +88,10 @@ Sie können Begriffe aus dem Glossar exportieren, solange die ausgewählten Begr
 1. Wenn Sie sich im Glossar befinden, ist die Schaltfläche **Exportieren** standardmäßig deaktiviert. Nachdem Sie die Begriffe ausgewählt haben, die Sie exportieren möchten, ist die Schaltfläche **Exportieren** aktiviert, wenn die ausgewählten Begriffe zur selben Vorlage gehören.
 
 2. Wählen Sie **Exportieren** aus, um die ausgewählten Begriffe herunterzuladen.
+
+ > [!Important]
+   > Wenn die Begriffe in einer Hierarchie zu unterschiedlichen Begriffsvorlagen gehören, müssen Sie diese für den Import in unterschiedliche CSV-Dateien aufteilen. Außerdem wird die Aktualisierung eines übergeordneten Elements eines Begriffs während des Importvorgangs derzeit nicht unterstützt.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

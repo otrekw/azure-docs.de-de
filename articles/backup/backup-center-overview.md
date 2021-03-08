@@ -3,14 +3,14 @@ title: Übersicht über Backup Center
 description: Dieser Artikel enthält eine Übersicht zu Backup Center für Azure.
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 93f9e5dc064d264e0cc111d8ddb093639307c55b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0acf3a17e41b89b462a7fb07c5d3ebd55d4052af
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592025"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725372"
 ---
-# <a name="overview-of-backup-center-preview"></a>Übersicht über Backup Center (Vorschau)
+# <a name="overview-of-backup-center"></a>Übersicht über Backup Center
 
 Backup Center bietet eine **zentralisierte einheitliche Verwaltungsumgebung** in Azure, mit der Unternehmen Sicherungen in großem Maßstab steuern, überwachen, betreiben und analysieren können. Als solches ist Backup Center konsistent mit den nativen Verwaltungsumgebungen von Azure.
 
@@ -18,11 +18,11 @@ Zu den wichtigsten Vorteilen von Backup Center gehören:
 
 * **Zentralisierte Benutzeroberfläche zum Verwalten von Sicherungen** – Backup Center ist für die Verwendung in einer großen und verteilten Azure-Umgebung ausgelegt. Mit Backup Center können Sie Sicherungen, die mehrere Workloadtypen, Tresore, Abonnements, Regionen und [Azure Lighthouse](../lighthouse/overview.md)-Mandanten umfassen, effizient verwalten.
 * **Datenquellenzentrierte Verwaltung** – Backup Center bietet Ansichten und Filter, die auf die zu sichernden Datenquellen (z. B. virtuelle Computer und Datenbanken) zentriert sind. Dies ermöglicht es Ressourcenbesitzern oder Sicherungsadministratoren, Sicherungen von Elementen zu überwachen und betreiben, ohne sich damit befassen zu müssen, in welchem Tresor ein Element gesichert wird. Ein wesentliches Merkmal dieses Designs ist die Möglichkeit, Ansichten nach datenquellenspezifischen Eigenschaften zu filtern, wie z. B. nach Datenquellenabonnement, Datenquellen-Ressourcengruppe oder Datenquellentags. Wenn Ihre Organisation beispielsweise üblicherweise virtuellen Computern, die verschiedenen Abteilungen angehören, unterschiedliche Tags zuweist, können Sie Backup Center verwenden, um Sicherungsinformationen auf der Grundlage der Tags der zugrunde liegenden virtuellen Computer, die gesichert werden, zu filtern, ohne sich auf das Tag des Tresors konzentrieren müssen.
-* **Verbundene Erfahrungen** – Backup Center bietet native Integrationen in bestehende Azure-Dienste, die eine Verwaltung in großem Maßstab ermöglichen. Beispielsweise nutzt Backup Center die [Azure Policy](../governance/policy/overview.md)-Umgebung, um Ihnen bei der Steuerung Ihrer Sicherungen zu helfen. Es nutzt auch [Azure-Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md) und [Azure Monitor-Protokolle](../azure-monitor/logs/data-platform-logs.md), um Ihnen zu helfen, detaillierte Berichte über Sicherungen anzuzeigen. Sie müssen also keine neuen Prinzipien erlernen, um die vielfältigen Features, die Backup Center bietet, nutzen zu können.
+* **Verbundene Erfahrungen** – Backup Center bietet native Integrationen in bestehende Azure-Dienste, die eine Verwaltung in großem Maßstab ermöglichen. Beispielsweise nutzt Backup Center die [Azure Policy](../governance/policy/overview.md)-Umgebung, um Ihnen bei der Steuerung Ihrer Sicherungen zu helfen. Es nutzt auch [Azure-Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md) und [Azure Monitor-Protokolle](../azure-monitor/logs/data-platform-logs.md), um Ihnen zu helfen, detaillierte Berichte über Sicherungen anzuzeigen. Sie müssen also keine neuen Prinzipien erlernen, um die vielfältigen Features, die Backup Center bietet, nutzen zu können. Sie können aus dem Backup Center auch Communityressourcen ermitteln.
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
+## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
-* Backup Center wird derzeit für Sicherungen von virtuellen Azure-Computern, für SQL in Azure-VM-Sicherungen, für SAP HANA in Azure-VM-Sicherungen, für Azure Files-Sicherungen und für Azure Database for PostgreSQL-Serversicherungen unterstützt.
+* Backup Center wird derzeit für Sicherungen folgender Produkte unterstützt: virtuelle Azure-Computer, SQL auf virtuellen Azure-Computern, SAP HANA auf virtuellen Azure-Computern, Azure Files, Azure Blobs, Azure Managed Disks und Azure Database for PostgreSQL-Server.
 * Eine ausführliche Liste der unterstützten und nicht unterstützten Szenarien finden Sie in der [Supportmatrix](backup-center-support-matrix.md).
 
 ## <a name="get-started"></a>Erste Schritte

@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5d314331059a96388f23cd43667fca20a689f167
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2a0411e97f78104de1356d482e4e43a42701c073
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258845"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687623"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Beheben von Anmeldeproblemen bei einer Anwendung aus „Meine Apps“ in Azure AD
 
@@ -145,10 +145,11 @@ Wenn ein Benutzer über mehr als 999 App-Rollenzuweisungen verfügt, werden ihm 
 
 Dies liegt daran, dass im Portal „Meine Apps“ derzeit nur maximal 999 App-Rollenzuweisungen gelesen werden, um die dem Benutzer zugewiesenen Apps zu ermitteln. Sind einem Benutzer mehr als 999 Apps zugewiesen, kann nicht gesteuert werden, welche dieser Apps im Portal „Meine Apps“ angezeigt werden.
 
-Gehen Sie wie folgt vor, um die Anzahl der einem Benutzer erteilten App-Rollenzuweisungen zu überprüfen:
+Führen Sie zum Überprüfen, ob ein Benutzer über mehr als 999 App-Rollenzuweisungen verfügt, die folgenden Schritte aus:
 1. Installieren Sie das PowerShell-Modul von [**Microsoft Graph**](https://github.com/microsoftgraph/msgraph-sdk-powershell).
-2. Führen Sie `Connect-MgGraph -Scopes "Directory.Read.All"` aus, und authentifizieren Sie sich als **globaler Administrator**.
-3. Führen Sie `$m = Get-MgUserAppRoleAssignment -UserId "<userId>" | Measure; $m.Count` aus, um die Anzahl der App-Rollenzuweisungen zu ermitteln, die dem Benutzer derzeit erteilt sind.
+2. Führen Sie `Connect-MgGraph -Scopes "User.ReadBasic.All Application.Read.All"` aus.
+3. Führen Sie `(Get-MgUserAppRoleAssignment -UserId "<userId>" -Top 999).Count` aus, um die Anzahl der App-Rollenzuweisungen zu ermitteln, die dem Benutzer derzeit erteilt sind.
+4. Ist das Ergebnis 999, verfügt der Benutzer wahrscheinlich über mehr als 999 App-Rollenzuweisungen.
 
 ### <a name="check-a-users-assigned-licenses"></a>Überprüfen der zugewiesenen Lizenzen eines Benutzers
 Um die einem Benutzer zugewiesenen Lizenzen zu überprüfen, führen Sie die folgenden Schritte aus:

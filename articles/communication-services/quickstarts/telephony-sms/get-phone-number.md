@@ -9,15 +9,16 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: a4a569a11561671febf31b037c499b6f32b44d48
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4fda626581265b4b1f6541a3b453b164ccd27963
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657569"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690446"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Schnellstart: Beschaffen einer Telefonnummer über das Azure-Portal
 
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Steigen Sie in Azure Communication Services ein, indem Sie über das Azure-Portal eine Telefonnummer erwerben.
@@ -39,15 +40,15 @@ Navigieren Sie im Ressourcenmenü zum Blatt **Telefonnummern**.
 
 :::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="Screenshot: Telefonnummernseite einer Communication Services-Ressource":::
 
-Klicken Sie auf die Schaltfläche **Abrufen**, um den Assistenten zu starten. Im Assistenten werden auf dem Blatt **Telefonnummern** einige Fragen gestellt, um die Telefonnummer zu ermitteln, die für Ihr Szenario am besten geeignet ist.
+Klicken Sie auf die Schaltfläche **Abrufen**, um den Assistenten zu starten. Im Assistenten werden auf dem Blatt **Telefonnummern** einige Fragen gestellt, um die Telefonnummer zu ermitteln, die für Ihr Szenario am besten geeignet ist. 
 
-Zuerst müssen Sie eine Auswahl für **Land/Region** treffen, um anzugeben, wo die Telefonnummer bereitgestellt werden soll. Nach der Auswahl des Lands bzw. der Region müssen Sie den **Anwendungsfall** auswählen, der Ihre Anforderungen am besten erfüllt.
+Zuerst müssen Sie eine Auswahl für **Land/Region** treffen, um anzugeben, wo die Telefonnummer bereitgestellt werden soll. Nach der Auswahl des Lands bzw. der Region müssen Sie den **Anwendungsfall** auswählen, der Ihre Anforderungen am besten erfüllt. 
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Screenshot: Ansicht „Telefonnummer erhalten“":::
 
 ### <a name="select-your-phone-number-features"></a>Auswählen der Telefonnummernfeatures
 
-Das Konfigurieren Ihrer Telefonnummer ist in zwei Schritte unterteilt:
+Das Konfigurieren Ihrer Telefonnummer ist in zwei Schritte unterteilt: 
 
 1. Auswahl des [Nummerntyps](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services)
 2. Auswahl der [Telefonnummernfeatures](../../concepts/telephony-sms/plan-solution.md#phone-number-features-in-azure-communication-services)
@@ -116,7 +117,9 @@ Wählen Sie aus den verfügbaren Optionen die gewünschten Features aus, und kli
 
 Häufig gestellte Fragen und Probleme:
 
-- Derzeit wird der Erwerb von Telefonnummern nur in den USA unterstützt. Als Grundlage hierfür gilt die Rechnungsadresse des Abonnements, dem die Ressource zugeordnet ist. Derzeit ist es nicht möglich, eine Ressource in ein anderes Abonnement zu verschieben.
+- Der Erwerb von Telefonnummern wird nur in den USA unterstützt. Stellen Sie zum Erwerben von Telefonnummern Folgendes sicher:
+  - Die zugehörige Abrechnungsadresse für das Azure-Abonnement liegt in den USA. Derzeit ist es nicht möglich, eine Ressource in ein anderes Abonnement zu verschieben.
+  - Ihre Communication Services-Ressource wird am Datenstandort „USA“ bereitgestellt. Derzeit ist es nicht möglich, eine Ressource an einen anderen Datenstandort zu verschieben.
 
 - Wenn eine Telefonnummer freigegeben wurde, kann sie bis zum Ende des Abrechnungszeitraums nicht freigegeben oder erneut erworben werden.
 

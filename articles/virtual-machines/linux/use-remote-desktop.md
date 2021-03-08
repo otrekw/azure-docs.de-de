@@ -1,26 +1,23 @@
 ---
-title: Verwenden von Remotedesktop mit einem virtuellen Linux-Computer in Azure
+title: Verwenden von xrdp mit Linux
 description: Erfahren Sie, wie Sie Remotedesktop (XRDP) zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure mithilfe von Tools mit grafischer Benutzeroberfläche installieren und konfigurieren.
 services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.collection: linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
-ms.date: 09/12/2019
+ms.date: 03/01/2021
 ms.author: cynthn
-ms.openlocfilehash: bea7e38c35ceddafb64937d6e1a6f69d7c727f44
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 448e9f6487b5afc51be9b3dee8e07007c8534a0b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196383"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695174"
 ---
-# <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure
+# <a name="install-and-configure-xrdp-to-use-remote-desktop-with-a-linux-vm"></a>Installieren und Konfigurieren von xrdp für die Verwendung von Remotedesktop mit einem virtuellen Linux-Computer
+
 Virtuelle Linux-Computer (Linux-VMs) in Azure werden normalerweise von der Befehlszeile aus mithilfe einer SSH-Verbindung (Secure Shell) verwaltet. Wenn Sie erst in Linux einsteigen oder schnell eine Fehlerbehandlung durchführen müssen, ist die Verwendung von Remotedesktop unter Umständen einfacher. Dieser Artikel erläutert im Detail die Installation und Konfiguration von Desktopumgebung ([XFCE](https://www.xfce.org)) und Remotedesktop ([XRDP](http://xrdp.org)) für Ihren virtuellen Linux-Computer mithilfe des Resource Manager-Bereitstellungsmodells.
 
 
@@ -32,6 +29,7 @@ Für diesen Artikel ist ein vorhandener virtueller Ubuntu 18.04 LTS-Computer (VM
 
 
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Installieren Sie eine Desktopumgebung auf Ihrem virtuellen Linux-Computer
+
 Auf den meisten virtuellen Linux-Computern in Azure ist standardmäßig keine Desktopumgebung installiert. Virtuelle Linux-Computer werden üblicherweise mithilfe von SSH-Verbindungen anstelle einer Desktopumgebung verwaltet. Unter Linux stehen verschiedene Desktopumgebungen zur Wahl. Je nach der gewählten Desktopumgebung werden 1 bis 2 GB Speicherplatz auf dem Datenträger und 5 bis 10 Minuten zum Installieren und Konfigurieren aller erforderlichen Pakete benötigt.
 
 Im folgenden Beispiel wird die schlanke [XFCE4](https://www.xfce.org/)-Desktopumgebung auf einem virtuellen Ubuntu 18.04 LTS-Computer (VM) installiert. Die Befehle für andere Distributionen weichen geringfügig ab (verwenden Sie beispielsweise `yum`, um unter Red Hat Enterprise Linux zu installieren und passende `selinux`-Regeln zu konfigurieren, oder verwenden Sie `zypper` für die Installation unter SUSE).
@@ -94,9 +92,14 @@ az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 
 
 ## <a name="connect-your-linux-vm-with-a-remote-desktop-client"></a>Herstellen einer Verbindung mit dem virtuellen Linux-Computer mithilfe eines Remotedesktopclients
-Öffnen Sie Ihren lokalen Remotedesktopclient, und stellen Sie eine Verbindung mit der IP-Adresse oder dem DNS-Namen Ihres virtuellen Linux-Computers her. Geben Sie den Benutzernamen und das Kennwort des Benutzerkontos für Ihren virtuellen Computer wie folgt ein:
 
-![Stellen Sie eine Verbindung mit XRDP mithilfe Ihres Remotedesktopclients her](./media/use-remote-desktop/remote-desktop-client.png)
+Öffnen Sie Ihren lokalen Remotedesktopclient, und stellen Sie eine Verbindung mit der IP-Adresse oder dem DNS-Namen Ihres virtuellen Linux-Computers her. 
+
+:::image type="content" source="media/use-remote-desktop/remote-desktop.png" alt-text="Screenshot: Remotedesktopclient":::
+
+Geben Sie den Benutzernamen und das Kennwort des Benutzerkontos für Ihren virtuellen Computer wie folgt ein:
+
+:::image type="content" source="media/use-remote-desktop/xrdp-login.png" alt-text="Screenshot: xrdp-Anmeldebildschirm":::
 
 Nach der Authentifizierung wird die XFCE-Desktopumgebung geladen. Sie sieht ähnlich wie das folgende Beispiel aus:
 

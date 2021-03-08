@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 03/02/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f76aecc80537e6db55c8c4f2e5a7a240be6b1415
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: dcd0ccdc42a820f1e264b739cb0063516a0cb53e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675745"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688551"
 ---
 # <a name="user-profile-attributes"></a>Benutzerprofilattribute
 
@@ -39,7 +39,7 @@ In der nachstehenden Tabelle sind die Attribute von [Benutzerressourcentypen](/g
 - Ob das Attribut in einem Benutzerflow verwendet werden kann
 - Ob das Attribut in einem [technischen Azure AD-Profil](active-directory-technical-profile.md) in einer benutzerdefinierten Richtlinie verwendet werden kann und in welchem Abschnitt (&lt;InputClaims&gt;, &lt;OutputClaims&gt; oder &lt;PersistedClaims&gt;)
 
-|Name     |Typ     |BESCHREIBUNG|Azure-Portal|Benutzerabläufe|Benutzerdefinierte Richtlinie|
+|Name     |type     |BESCHREIBUNG|Azure-Portal|Benutzerabläufe|Benutzerdefinierte Richtlinie|
 |---------|---------|----------|------------|----------|-------------|
 |accountEnabled  |Boolean|Gibt an, ob das Benutzerkonto aktiviert oder deaktiviert ist: **true**, wenn das Konto aktiviert ist, andernfalls **false**.|Ja|Nein|Persistent, Ausgabe|
 |ageGroup        |String|Die Altersgruppe des Benutzers. Mögliche Werte: „Null“, „Undefined“, „Minor“, „Adult“ und „NotAdult“.|Ja|Nein|Persistent, Ausgabe|
@@ -105,7 +105,7 @@ Ein Benutzer mit einem Kundenkonto kann sich mit mehreren Identitäten anmelden.
 
 In der Microsoft Graph-API werden sowohl lokale als auch Verbundidentitäten im Benutzerattribut `identities` gespeichert, das den Typ [objectIdentity][graph-objectIdentity] aufweist. Die Sammlung `identities` stellt einen Satz von Identitäten dar, die für die Anmeldung bei einem Benutzerkonto verwendet werden. Diese Sammlung ermöglicht dem Benutzer, sich mit den zugehörigen Identitäten beim Benutzerkonto anzumelden.
 
-| Name   | Typ |BESCHREIBUNG|
+| Name   | type |BESCHREIBUNG|
 |:---------------|:--------|:----------|
 |signInType|Zeichenfolge| Gibt die Benutzeranmeldetypen in Ihrem Verzeichnis an. Für ein lokales Konto: `emailAddress`, `emailAddress1`, `emailAddress2`, `emailAddress3`, `userName` oder ein beliebiger anderer Typ. Bei einem Konto für soziale Netzwerke muss dies auf `federated` festgelegt werden.|
 |Issuer (Aussteller)|Zeichenfolge|Gibt den Aussteller der Identität an. Bei lokalen Konten (bei denen **signInType** nicht `federated` ist) ist diese Eigenschaft der Standarddomänenname des lokalen B2C-Mandanten, z. B. `contoso.onmicrosoft.com`. Bei einer Identität für ein soziales Netzwerk (bei der der **signInType** `federated` ist) entspricht der Wert dem Namen des Ausstellers, z. B. `facebook.com`.|
@@ -137,7 +137,7 @@ Bei Verbundidentitäten handelt es sich abhängig vom Identitätsanbieter bei de
 
 ## <a name="password-profile-property"></a>Eigenschaft „passwordProfile“ (Kennwortprofil)
 
-Für eine lokale Identität ist das Attribut **passwordProfile** erforderlich, und es enthält das Kennwort des Benutzers. Das Attribut `forceChangePasswordNextSignIn` muss auf `false` festgelegt werden.
+Für eine lokale Identität ist das Attribut **passwordProfile** erforderlich, und es enthält das Kennwort des Benutzers. Das Attribut `forceChangePasswordNextSignIn` gibt an, ob ein Benutzer bei der nächsten Anmeldung das Kennwort zurücksetzen muss. Zur Behandlung der erzwungenen Kennwortzurücksetzung [richten Sie den Flow für die erzwungene Kennwortzurücksetzung ein](force-password-reset.md).
 
 Für eine Verbundidentität (Identität für ein soziales Netzwerk) ist das Attribut **passwordProfile** nicht erforderlich.
 

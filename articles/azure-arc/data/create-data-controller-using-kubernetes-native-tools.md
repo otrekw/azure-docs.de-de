@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: e8d00055d9a4d7355ccd8a33c8a9b811b852f5c8
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 45ba08193d4907126bd51412805f04b7aec4fce0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955279"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686392"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Erstellen eines Azure Arc-Datencontrollers unter Verwendung von Kubernetes-Tools
 
@@ -175,16 +175,27 @@ Bearbeiten Sie die folgenden Einstellungen nach Bedarf:
 **ÜBERPRÜFUNG UND GGF. ÄNDERUNG DER STANDARDWERTE EMPFOHLEN**
 - **storage..className**: Die Speicherklasse, die für die Daten- und Protokolldateien des Datencontrollers verwendet werden soll.  Wenn Sie nicht sicher sind, welche Speicherklassen in Ihrem Kubernetes-Cluster verfügbar sind, können Sie den folgenden Befehl ausführen: `kubectl get storageclass`.  Der Standardwert ist `default`. Dabei wird davon ausgegangen, dass eine Speicherklasse mit dem Namen `default` vorhanden ist, und _nicht_, dass eine Speicherklasse vorhanden ist, die der Standardspeicherklasse entspricht.  Hinweis: Es gibt zwei className-Einstellungen, die auf die gewünschte Speicherklasse festgelegt werden müssen – eine für Daten und eine für Protokolle.
 - **serviceType**: Ändern Sie den Diensttyp in `NodePort`, wenn Sie keinen LoadBalancer verwenden.  Hinweis: Es gibt zwei serviceType-Einstellungen, die geändert werden müssen.
+- Auf der Azure Red Hat OpenShift- oder Red Hat OpenShift-Containerplattform müssen Sie die Einschränkung beim Sicherheitskontext anwenden, bevor Sie den Datencontroller erstellen. Befolgen Sie die Anweisungen unter [Anwenden einer Einschränkung beim Sicherheitskontext auf Azure Arc-fähige Datendienste in OpenShift](how-to-apply-security-context-constraint.md).
+- **Sicherheit:** Ersetzen Sie bei Azure Red Hat OpenShift oder bei der Red Hat OpenShift-Containerplattform die Einstellungen vom Typ `security:` durch die folgenden Werte in der YAML-Datei des Datencontrollers. 
+
+```yml
+  security:
+    allowDumps: true
+    allowNodeMetricsCollection: false
+    allowPodMetricsCollection: false
+    allowRunAsRoot: false
+```
 
 **OPTIONAL**
 - **name:** Der Standardname des Datencontrollers lautet `arc`. Sie können ihn jedoch ändern.
 - **displayName**: Legen Sie diesen Wert auf denselben Wert fest wie das name-Attribut am Anfang der Datei.
 - **registry**: Die Microsoft Container Registry ist die Standardregistrierung.  Wenn Sie die Images aus der Microsoft Container Registry pullen und [in eine private Containerregistrierung pushen](offline-deployment.md), geben Sie hier die IP-Adresse oder den DNS-Namen Ihrer Registrierung ein.
 - **dockerRegistry**: Das Geheimnis für Imagepullvorgänge, das verwendet wird, um die Images ggf. aus einer privaten Containerregistrierung zu pullen.
-- **repository**: Das Standardrepository der Microsoft Container Registry lautet `arcdata`.  Wenn Sie eine private Containerregistrierung verwenden, geben Sie den Pfad für den Ordner/das Repository mit den Containerimages der Azure Arc-fähigen Datendienste ein.
+- **repository**: Das Standardrepository der Microsoft Container Registry lautet `arcdata`.  Wenn Sie eine private Containerregistrierung verwenden, geben Sie den Pfad für den Ordner/das Repository mit den Containerimages der Azure Arc-fähigen Datendienste ein.
 - **imageTag**: Das aktuelle Tag der letzten Version wird standardmäßig in der Vorlage verwendet, Sie können es jedoch ändern, wenn Sie eine ältere Version verwenden möchten.
 
-Beispiel einer vollständigen YAML-Datei für einen Datencontroller:
+Das folgende Beispiel zeigt die vollständige YAML-Datei eines Datencontrollers. Aktualisieren Sie das Beispiel für Ihre Umgebung basierend auf Ihren Anforderungen und den oben genannten Informationen.
+
 ```yaml
 apiVersion: arcdata.microsoft.com/v1alpha1
 kind: datacontroller
@@ -194,7 +205,7 @@ metadata:
 spec:
   credentials:
     controllerAdmin: controller-login-secret
-    #dockerRegistry: mssql-private-registry - optional if you are using a private container registry that requires authentication using an image pull secret
+    #dockerRegistry: arc-private-registry - optional if you are using a private container registry that requires authentication using an image pull secret
     serviceAccount: sa-mssql-controller
   docker:
     imagePullPolicy: Always
