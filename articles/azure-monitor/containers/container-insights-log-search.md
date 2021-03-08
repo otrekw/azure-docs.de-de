@@ -1,22 +1,22 @@
 ---
-title: Abfragen von Protokollen aus Azure Monitor für Container | Microsoft-Dokumentation
-description: Azure Monitor für Container erfasst Metriken und Protokolldaten. In diesem Artikel werden die Datensätze und einige Beispielabfragen beschrieben.
+title: Abfragen von Protokollen aus Container Insights | Microsoft-Dokumentation
+description: Container Insights erfasst Metriken und Protokolldaten. In diesem Artikel werden die Datensätze und einige Beispielabfragen beschrieben.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 8f02d900ba931768c7f8acebc1b124aff777da18
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 79efa714548adbde67774cab741bf953a4ff1e83
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602212"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711109"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Abfragen von Protokollen aus Azure Monitor für Container
+# <a name="how-to-query-logs-from-container-insights"></a>Abfragen von Protokollen aus Container Insights
 
-Azure Monitor erfasst für Container Leistungsmetriken, Inventurdaten und Integritätszustandsinformationen der Containerhosts und Container. Die Daten werden alle drei Minuten erfasst und an den Log Analytics-Arbeitsbereich in Azure Monitor weitergeleitet. Diese Daten stehen in Azure Monitor für [Abfragen](../log-query/log-query-overview.md) zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
+Container Insights erfasst Leistungsmetriken, Inventurdaten und Informationen zum Integritätszustand von Containerhosts und Containern. Die Daten werden alle drei Minuten erfasst und an den Log Analytics-Arbeitsbereich in Azure Monitor weitergeleitet. Diese Daten stehen in Azure Monitor für [Abfragen](../logs/log-query-overview.md) zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
 
 ## <a name="container-records"></a>Containerdatensätze
 
-In der folgenden Tabelle finden Sie Informationen zu Datensätzen, die von Azure Monitor für Container erfasst werden. Eine Auflistung der Spaltenbeschreibungen finden Sie in der Referenz zu den Tabellen [ContainerInventory](/azure/azure-monitor/reference/tables/containerinventory) und [ContainerLog](/azure/azure-monitor/reference/tables/containerlog).
+In der folgenden Tabelle finden Sie Informationen zu Datensätzen, die von Container Insights erfasst werden. Eine Auflistung der Spaltenbeschreibungen finden Sie in der Referenz zu den Tabellen [ContainerInventory](/azure/azure-monitor/reference/tables/containerinventory) und [ContainerLog](/azure/azure-monitor/reference/tables/containerlog).
 
 | Daten | Datenquelle | Datentyp | Felder |
 |------|-------------|-----------|--------|
@@ -110,4 +110,4 @@ Die Ausgabe enthält Ergebnisse, die dem folgenden Beispiel ähneln:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Azure Monitor für Container umfasst keinen vordefinierten Satz von Warnungen. Informationen zum Erstellen von empfohlenen Warnungen für hohe CPU- und Arbeitsspeicherauslastung zur Unterstützung Ihrer DevOps oder Betriebsprozesse und -verfahren finden Sie unter [Erstellen von Leistungswarnungen mit Azure Monitor für Container](./container-insights-log-alerts.md).
+Container Insights umfasst keine vordefinierten Warnungen. Informationen zum Erstellen empfohlener Warnungen für hohe CPU- und Arbeitsspeicherauslastung zur Unterstützung Ihrer DevOps oder Betriebsprozesse und -verfahren finden Sie unter [Erstellen von Leistungswarnungen mit Container Insights](./container-insights-log-alerts.md).

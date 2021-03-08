@@ -5,28 +5,32 @@ author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 5f46e2871aa0017f0a4b33df04a8ae9058c59e17
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/25/2021
+ms.openlocfilehash: 4b2fb49899b6a676520fe0912dd122dd72cce023
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385471"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712911"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Lookup-Aktivität in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Mithilfe der Lookup-Aktivität kann ein Dataset aus einer der von Azure Data Factory unterstützten Datenquellen abgerufen werden. Verwenden Sie sie im folgenden Szenario:
-- Es müssen Objekte dynamisch bestimmt werden, die in einer nachfolgenden Aktivität verarbeitet werden sollen, statt der Hartcodierung von Objektnamen. Beispiele für Objekte sind Dateien und Tabellen.
+Mithilfe der Lookup-Aktivität kann ein Dataset aus einer der von Azure Data Factory unterstützten Datenquellen abgerufen werden. Sie können damit dynamisch ermitteln, welche Objekte in einer nachfolgenden Aktivität verarbeitet werden sollen, statt den Objektnamen hart zu codieren. Beispiele für Objekte sind Dateien und Tabellen.
 
-Die Lookup-Aktivität liest die Daten und gibt den Inhalt einer Konfigurationsdatei oder Tabelle zurück. Zudem gibt sie auch das Ergebnis einer ausgeführten Abfrage oder gespeicherten Prozedur zurück. Die Ausgabe der Lookup-Aktivität kann als Singleton-Wert in einer nachfolgenden Kopier- oder Transformationsaktivität verwendet werden. Wenn es sich um eine Gruppe von Attributen handelt, kann die Ausgabe in einer ForEach-Aktivität verwendet werden.
+Die Lookup-Aktivität liest die Daten und gibt den Inhalt einer Konfigurationsdatei oder Tabelle zurück. Zudem gibt sie auch das Ergebnis einer ausgeführten Abfrage oder gespeicherten Prozedur zurück. Die Ausgabe kann ein Singleton-Wert oder ein Array von Attributen sein, das in einer nachfolgenden Kopier-, Transformations-oder Ablaufsteuerungsaktivität wie einer ForEach-Aktivität verwendet werden kann.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Die folgenden Datenquellen werden für die Lookup-Aktivität unterstützt. 
+Beachten Sie Folgendes:
 
-Die Lookup-Aktivität kann bis zu 5.000 Zeilen zurückgeben. Wenn das Resultset mehr Datensätze enthält, werden die ersten 5.000 Zeilen zurückgegeben. Die Ausgabe der Lookup-Aktivität unterstützt eine Größe von bis zu ca. 4 MB. Wenn die Größe den Grenzwert überschreitet, kann die Aktivität nicht erfolgreich ausgeführt werden. Derzeit beträgt die Höchstdauer für die Lookup-Aktivität vor dem Timeout 24 Stunden.
+- Die Lookup-Aktivität kann bis zu **5000 Zeilen** zurückgeben. Wenn das Resultset mehr Datensätze enthält, werden die ersten 5000 Zeilen zurückgegeben.
+- Die Ausgabe der Lookup-Aktivität unterstützt eine Größe von bis zu **4 MB**. Wenn die Größe diesen Grenzwert überschreitet, schlägt die Aktivität fehl. 
+- Die Höchstdauer für die Lookup-Aktivität vor dem Timeout beträgt **24 Stunden**.
+- Wenn Sie zum Suchen von Daten eine Abfrage oder gespeicherte Prozedur verwenden, müssen Sie sicherstellen, dass genau ein Resultset zurückgegeben wird. Andernfalls schlägt die Lookup-Aktivität fehl.
+
+Die folgenden Datenquellen werden für die Lookup-Aktivität unterstützt. 
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -51,7 +55,7 @@ Die Lookup-Aktivität kann bis zu 5.000 Zeilen zurückgeben. Wenn das Resultset
 
 ## <a name="type-properties"></a>Typeigenschaften
 
-Name | Beschreibung | type | Erforderlich?
+Name | BESCHREIBUNG | type | Erforderlich?
 ---- | ----------- | ---- | --------
 dataset | Enthält die Datasetreferenz für die Lookupaktivität. Details finden Sie in den entsprechenden Connectorartikeln im Abschnitt **Dataset-Eigenschaften**. | Schlüssel-Wert-Paar | Ja
 source | Enthält spezifische Quelleneigenschaften für das Dataset, identisch mit der Quelle der Kopieraktivität. Details finden Sie in jedem entsprechenden Connectorartikel im Abschnitt **Eigenschaften der Kopieraktivität**. | Schlüssel-Wert-Paar | Ja
@@ -381,7 +385,7 @@ Hier werden einige Einschränkungen der Lookup-Aktivität und empfohlene Problem
 
 | Einschränkung | Problemumgehung |
 |---|---|
-| Die Grenze einer Lookup-Aktivität liegt bei maximal 5.000 Zeilen und einer maximalen Größe von 2MB. | Entwerfen Sie eine Pipeline mit zwei Ebenen, wobei die äußere Pipeline eine innere Pipeline durchläuft, die Daten abruft, die die maximale Zeilenanzahl oder Größe nicht überschreiten. |
+| Die Grenze der Lookup-Aktivität liegt bei maximal 5.000 Zeilen und einer maximalen Größe von 4 MB. | Entwerfen Sie eine Pipeline mit zwei Ebenen, wobei die äußere Pipeline eine innere Pipeline durchläuft, die Daten abruft, die die maximale Zeilenanzahl oder Größe nicht überschreiten. |
 | | |
 
 ## <a name="next-steps"></a>Nächste Schritte

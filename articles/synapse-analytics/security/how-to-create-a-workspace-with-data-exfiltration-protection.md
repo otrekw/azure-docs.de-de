@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12d858488c4530e4b0d949cd36ed9ad2f7df4c59
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6fd28c9392d760888eafde37471a49ffaa2e4423
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384485"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694137"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>Erstellen eines Arbeitsbereichs mit aktiviertem Schutz vor Datenexfiltration
 In diesem Artikel wird beschrieben, wie Sie einen Arbeitsbereich mit aktiviertem Schutz vor Datenexfiltration und die genehmigten Azure AD-Mandanten für diesen Arbeitsbereich verwalten.
@@ -50,7 +50,7 @@ Sie können verwaltete private Endpunkte erstellen, um eine Verbindung mit Azure
 >Für Ressourcen auf anderen Mandanten als dem Mandanten des Arbeitsbereichs dürfen keine blockierenden Firewallregeln vorhanden sein, weil die SQL-Pools ansonsten keine Verbindung damit herstellen können. Ressourcen im verwalteten virtuellen Netzwerk des Arbeitsbereichs, z. B. Spark-Cluster, können über verwaltete private Links eine Verbindung mit per Firewall geschützten Ressourcen herstellen.
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
-Benutzer können eine Umgebungskonfigurationsdatei bereitstellen, um Python-Pakete aus öffentlichen Repositorys wie PyPI zu installieren. In vor Datenexfiltration geschützten Arbeitsbereichen werden Verbindungen mit ausgehenden Respositorys blockiert. Folglich werden aus öffentlichen Repositorys wie PyPI installierte Python-Bibliotheken nicht unterstützt. 
+Benutzer können eine Umgebungskonfigurationsdatei bereitstellen, um Python-Pakete aus öffentlichen Repositorys wie PyPI zu installieren. In vor Datenexfiltration geschützten Arbeitsbereichen werden Verbindungen mit ausgehenden Respositorys blockiert. Folglich werden aus öffentlichen Repositorys wie PyPI installierte Python-Bibliotheken nicht unterstützt. Als Alternative können Benutzer einen privaten Kanal innerhalb ihres primären Azure Data Lake Storage-Kontos erstellen und in der Konfigurationsdatei der Conda-Umgebung darauf verweisen. 
   
 ## <a name="next-steps"></a>Nächste Schritte
 

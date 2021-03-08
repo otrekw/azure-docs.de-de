@@ -6,12 +6,12 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: d815c919c2b2d63b093c4290a661cbf508c56012
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: e9208e617eb73786bcb003dc1b55d0d77ca6650f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601066"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704428"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>Upgrade des Application Insights Java 2.x SDK
 
@@ -220,3 +220,16 @@ Auch hier bevorzugen Sie bei einigen Anwendungen möglicherweise immer noch die 
 Zuvor wurde im 2.x SDK der Vorgangsname aus der Anforderungstelemetrie auch für die Abhängigkeitstelemetrie festgelegt.
 In Application Insights Java 3.0 wird der Vorgangsname für die Abhängigkeitstelemetrie nicht mehr aufgefüllt.
 Wenn Sie den Vorgangsnamen für die Anforderung anzeigen möchten, die der Abhängigkeitstelemetrie übergeordnet ist, können Sie eine Protokollabfrage (Kusto) zur Verknüpfung der Abhängigkeitstabelle mit der Anforderungstabelle schreiben.
+
+## <a name="2x-sdk-logging-appenders"></a>2.x SDK-Protokollierungs-Appender
+
+Der 3.0-Agent [erfasst die Protokollierung automatisch](./java-standalone-config#auto-collected-logging), ohne dass Protokollierungs-Appender konfiguriert werden müssen.
+Wenn Sie 2.x SDK-Protokollierungs-Appender verwenden, können Sie diese entfernen, da sie vom 3.0-Agent ohnehin unterdrückt werden.
+
+## <a name="2x-sdk-spring-boot-starter"></a>2.x SDK Spring Boot Starter
+
+In 3.0 gibt es keinen Spring Boot Starter.
+Bei der Einrichtung und Konfiguration des 3.0-Agents gelten dieselben [einfachen Schritte](./java-in-process-agent.md#quickstart), unabhängig davon, ob Sie Spring Boot verwenden.
+
+Beachten Sie beim Upgrade vom 2.x SDK Spring Boot Starter, dass der Name der Cloudrolle nicht mehr standardmäßig `spring.application.name` lautet.
+Informationen zum Festlegen des Cloudrollennamens in 3.0 über die JSON-Konfiguration oder die Umgebungsvariable finden Sie in der [Dokumentation zur 3.0-Konfiguration](./java-standalone-config.md#cloud-role-name).

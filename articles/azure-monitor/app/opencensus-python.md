@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: f50628395526783face11fcb1438e2716135b640
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d22174b269ba9cea3b2c9cb9de2b5521df2786fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584031"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704411"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Einrichten von Azure Monitor für Ihre Python-Anwendung
 
@@ -221,6 +221,15 @@ Einzelheiten dazu, wie Sie nachverfolgte Telemetrie ändern können, bevor sie a
 
 ### <a name="metrics"></a>Metriken
 
+„OpenCensus.stats“ unterstützt vier Aggregationsmethoden, bietet jedoch teilweise Unterstützung für Azure Monitor:
+
+- **Count:** Die Anzahl der Messpunkte. Der Wert ist kumulativ. Er kann nur erhöht werden und wird beim Neustart auf 0 zurückgesetzt. 
+- **Sum:** Die Summe der Messpunkte. Der Wert ist kumulativ. Er kann nur erhöht werden und wird beim Neustart auf 0 zurückgesetzt. 
+- **LastValue:** Behält den zuletzt aufgezeichneten Wert bei und löscht alle übrigen Werte.
+- **Distribution:** Histogrammverteilung der Messpunkte. Diese Methode wird **vom Azure-Exportprogramm NICHT unterstützt**.
+
+### <a name="count-aggregation-example"></a>Beispiel für die Aggregation der Anzahl
+
 1. Zuerst generieren wir einige lokale Metrikdaten. Wir erstellen eine einfache Metrik, um nachzuverfolgen, wie häufig der Benutzer die **EINGABETASTE** betätigt.
 
     ```python
@@ -320,7 +329,7 @@ Einzelheiten dazu, wie Sie nachverfolgte Telemetrie ändern können, bevor sie a
         main()
     ```
 
-1. Das Exportprogramm sendet die Metrikdaten in einem festen Intervall an Azure Monitor. Die Standardeinstellung ist alle 15 Sekunden. Wir verfolgen nur eine einzelne Metrik. Diese Metrikdaten werden also mit dem jeweiligen Wert und Zeitstempel in jedem Intervall gesendet. Sie finden die Daten unter `customMetrics`.
+1. Das Exportprogramm sendet die Metrikdaten in einem festen Intervall an Azure Monitor. Die Standardeinstellung ist alle 15 Sekunden. Wir verfolgen nur eine einzelne Metrik. Diese Metrikdaten werden also mit dem jeweiligen Wert und Zeitstempel in jedem Intervall gesendet. Der Wert ist kumulativ. Er kann nur erhöht werden und wird beim Neustart auf 0 zurückgesetzt. Sie finden die Daten unter `customMetrics`, die `customMetrics`-Eigenschaften „valueCount“, „valueSum“, „valueMin“, „valueMax“ und „valueStdDev“ werden effektiv jedoch nicht verwendet.
 
 #### <a name="performance-counters"></a>Leistungsindikatoren
 

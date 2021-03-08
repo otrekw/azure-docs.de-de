@@ -2,14 +2,14 @@
 title: Erstellen eines Kontos über das Azure-Portal
 description: Erfahren Sie, wie Sie ein Azure Batch-Konto im Azure-Portal erstellen, um umfangreiche parallele Workloads in der Cloud auszuführen.
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 02/23/2021
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd9dd9b6d6d3a8d6938427b83528746ae5d09318
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 36759a0caef41af9307bf621a1b6b634ddf586cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368505"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703663"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Erstellen eines Batch-Kontos mit dem Azure-Portal
 
@@ -101,7 +101,7 @@ Im Modus „Benutzerabonnement“ ist ein [Azure-Schlüsseltresor](../key-vault/
 
 Geben Sie beim Erstellen des Batch-Kontos im Modus „Benutzerabonnement“ die Option **Benutzerabonnement** als Poolzuordnungsmodus an. Wählen Sie den Schlüsseltresor aus, den Sie erstellt haben, und aktivieren Sie das Kontrollkästchen, um Azure Batch Zugriff auf den Schlüsseltresor zu gewähren.
 
-Wenn Sie den Zugriff auf den Schlüsseltresor lieber manuell gewähren möchten, wechseln Sie zum Abschnitt **Zugriffsrichtlinien** des Schlüsseltresors, und wählen Sie **Zugriffsrichtlinie hinzufügen** aus. Wählen Sie den Link neben **Prinzipal auswählen** aus, und suchen Sie nach **Microsoft Azure Batch** (Anwendungs-ID **ddbf3205-c6bd-46ae-8127-60eb93363864**). Wählen Sie den Prinzipal aus, und konfigurieren Sie dann die **Berechtigungen für Geheimnis** mithilfe des Dropdownmenüs. Azure Batch muss mindestens die Berechtigungen **Abrufen**, **Auflisten**, **Festlegen** und **Löschen** erhalten.
+Wenn Sie den Zugriff auf den Schlüsseltresor lieber manuell gewähren möchten, wechseln Sie zum Abschnitt **Zugriffsrichtlinien** des Schlüsseltresors, und wählen Sie **Zugriffsrichtlinie hinzufügen** aus. Wählen Sie den Link neben **Prinzipal auswählen** aus, und suchen Sie nach **Microsoft Azure Batch** (Anwendungs-ID **ddbf3205-c6bd-46ae-8127-60eb93363864**). Wählen Sie den Prinzipal aus, und konfigurieren Sie dann die **Berechtigungen für Geheimnis** mithilfe des Dropdownmenüs. Azure Batch muss mindestens die Berechtigungen **Abrufen**, **Auflisten**, **Festlegen** und **Löschen** erhalten. Bei [Schlüsseltresoren mit aktiviertem vorläufigem Löschen](../key-vault/general/soft-delete-overview.md) muss Azure Batch außerdem die Berechtigung zum **Wiederherstellen** erhalten.
 
 :::image type="content" source="media/batch-account-create-portal/secret-permissions.png" alt-text="Screenshot: Auswahloptionen für „Berechtigungen für Geheimnis“ für Azure Batch":::
 

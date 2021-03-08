@@ -1,17 +1,16 @@
 ---
 title: Standardspalten in Azure Monitor-Protokolldatensätzen | Microsoft-Dokumentation
 description: Beschreibt Spalten, die mehreren Datentypen in Azure Monitor-Protokollen gemein sind.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/09/2020
-ms.openlocfilehash: e8d89de079a50159bbed9c38487effb0c89448c2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/25/2021
+ms.openlocfilehash: 3e12bef7569110084cd059b0dfde8562bd914823
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601093"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030765"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Standardspalten in Azure Monitor-Protokollen
 Daten in Azure Monitor-Protokollen werden [als Gruppe von Datensätzen in einem Log Analytics-Arbeitsbereich oder einer Application Insights-Anwendung gespeichert](../logs/data-platform-logs.md). Diese haben jeweils einen bestimmten Datentyp, der über eine eindeutigen Satz von Spalten verfügt. Viele Datentypen weisen Standardspalten auf, die sie mit mehreren Typen gemein haben. In diesem Artikel werden diese Spalten beschrieben, zusammen mit Beispielen für ihre Verwendung in Abfragen.
@@ -20,6 +19,10 @@ Arbeitsbereichsbasierte Anwendungen in Application Insights speichern ihre Daten
 
 > [!NOTE]
 > Einige der Standardspalten werden in der Schemaansicht oder in IntelliSense in Log Analytics nicht angezeigt und erscheinen auch nicht in Abfrageergebnissen, sofern die Spalte nicht explizit in der Ausgabe angegeben wird.
+> 
+
+## <a name="tenantid"></a>TenantId
+In der Spalte **TenantId** ist die Arbeitsbereichs-ID für den Log Analytics-Arbeitsbereich enthalten.
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated und timestamp
 Die Spalten **TimeGenerated** (Log Analytics-Arbeitsbereich) und **timestamp** (Application Insights-Anwendung) enthalten das Datum und die Uhrzeit der Erstellung des Datensatzes durch die Datenquelle. Weitere Informationen finden Sie unter [Protokolldatenerfassungszeit in Azure Monitor](../logs/data-ingestion-time.md).
@@ -49,6 +52,10 @@ exceptions
 
 ## <a name="_timereceived"></a>\_TimeReceived
 Die Spalte **\_TimeReceived** enthält den Zeitpunkt (Datum und Uhrzeit), zu dem der Datensatz vom Azure Monitor-Erfassungspunkt in der Azure-Cloud empfangen wurde. Dies kann hilfreich sein, um Probleme im Zusammenhang mit der Wartezeit zwischen Datenquelle und Cloud zu ermitteln. Ein Beispiel wäre etwa ein Netzwerkproblem, das zu einer Verzögerung bei Daten führt, die von einem Agent gesendet werden. Weitere Informationen finden Sie unter [Protokolldatenerfassungszeit in Azure Monitor](../logs/data-ingestion-time.md).
+
+> [!NOTE]
+> Die Spalte **\_TimeReceived** wird bei jeder Verwendung berechnet. Dieser Prozess ist ressourcenintensiv. Sie sollten sie nicht zum Filtern einer großen Anzahl von Datensätzen verwenden. Die wiederholte Verwendung dieser Funktion kann zu einer längeren Ausführungsdauer der Abfrage führen.
+
 
 Die folgende Abfrage gibt die durchschnittliche Wartezeit (auf Stundenbasis) für Ereignisdatensätze eines Agents zurück. Dies beinhaltet die Zeit zwischen Agent und Cloud sowie die Gesamtzeit bis zur Verfügbarkeit des Datensatzes für Protokollabfragen.
 
@@ -238,6 +245,6 @@ union withsource = tt *
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr zum [Speichern von Azure Monitor-Protokolldaten](../log-query/log-query-overview.md).
-- Arbeiten Sie eine Lektion zum [Schreiben von Protokollabfragen ](../log-query/get-started-queries.md) durch.
+- Erfahren Sie mehr zum [Speichern von Azure Monitor-Protokolldaten](./log-query-overview.md).
+- Arbeiten Sie eine Lektion zum [Schreiben von Protokollabfragen ](./get-started-queries.md) durch.
 - Arbeiten Sie eine Lektion zum [Verknüpfen von Tabellen in Protokollabfragen](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins) durch.

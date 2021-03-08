@@ -7,12 +7,12 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: 091c0cb20877090453f38ab922cc2bd277e90093
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5c33ef9559d9ce67eea62ee7f78425d18010c1cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393750"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727956"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Beheben von CI/CD-, Azure DevOps- und GitHub-Problemen in ADF 
 
@@ -162,7 +162,7 @@ Bis vor Kurzem war die einzige Möglichkeit zum Veröffentlichen einer ADF-Pipel
 
 #### <a name="resolution"></a>Lösung
 
-Der CI/CD-Prozess wurde erweitert. Mit dem Feature **Automatisierte Veröffentlichung** werden alle ARM-Vorlagenfunktionen (Azure Resource Manager) aus der ADF-Benutzeroberfläche verwendet, überprüft und exportiert. Hierdurch kann die Logik über das öffentlich verfügbare npm-Paket [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) genutzt werden. So können Sie diese Aktionen programmgesteuert initiieren und müssen nicht zur ADF-Benutzeroberfläche wechseln und auf Schaltflächen klicken. So werden Ihre CI/CD-Pipelines zu **echten** Continuous Integration-Prozessen. Weitere Informationen finden Sie unter [Automatisiertes Veröffentlichen für Continuous Integration und Delivery](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment-improvements). 
+Der CI/CD-Prozess wurde erweitert. Mit dem Feature **Automatisierte Veröffentlichung** werden alle ARM-Vorlagenfunktionen (Azure Resource Manager) aus der ADF-Benutzeroberfläche verwendet, überprüft und exportiert. Hierdurch kann die Logik über das öffentlich verfügbare npm-Paket [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) genutzt werden. So können Sie diese Aktionen programmgesteuert initiieren und müssen nicht zur ADF-Benutzeroberfläche wechseln und auf Schaltflächen klicken. So werden Ihre CI/CD-Pipelines zu **echten** Continuous Integration-Prozessen. Weitere Informationen finden Sie unter [Automatisiertes Veröffentlichen für Continuous Integration und Delivery](./continuous-integration-deployment-improvements.md). 
 
 ###  <a name="cannot-publish-because-of-4mb-arm-template-limit"></a>Veröffentlichung aufgrund von 4-MB-Grenzwert für ARM-Vorlagen nicht möglich  
 
@@ -176,7 +176,45 @@ Für Azure Resource Manager ist die Vorlagengröße auf 4 MB beschränkt. Begre
 
 #### <a name="resolution"></a>Lösung
 
-Bei kleinen bis mittelgroßen Lösungen lässt sich eine Einzelvorlage einfacher verstehen und verwalten. Sie können alle Ressourcen und Werte in einer einzelnen Datei anzeigen. In erweiterten Szenarien können Sie mithilfe verknüpfter Vorlagen die Lösung in Zielkomponenten unterteilen. Halten Sie sich an die bewährte Methode unter [Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/templates/linked-templates?tabs=azure-powershell).
+Bei kleinen bis mittelgroßen Lösungen lässt sich eine Einzelvorlage einfacher verstehen und verwalten. Sie können alle Ressourcen und Werte in einer einzelnen Datei anzeigen. In erweiterten Szenarien können Sie mithilfe verknüpfter Vorlagen die Lösung in Zielkomponenten unterteilen. Halten Sie sich an die bewährte Methode unter [Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell).
+
+### <a name="cannot-connect-to-git-enterprise"></a>Ich kann keine Verbindung mit Git Enterprise herstellen 
+
+##### <a name="issue"></a>Problem
+
+Aufgrund von Berechtigungsproblemen können Sie keine Verbindung mit Git Enterprise herstellen. Ein Fehler wie **422 – Einheit kann nicht bearbeitet werden.** wird angezeigt.
+
+#### <a name="cause"></a>Ursache
+
+Sie haben OAuth für ADF nicht konfiguriert. Ihre URL ist falsch konfiguriert.
+
+##### <a name="resolution"></a>Lösung
+
+Sie gewähren zuerst den OAuth-Zugriff auf ADF. Anschließend müssen Sie durch Angabe der richtigen URL eine Verbindung mit Git Enterprise herstellen. Die Konfiguration muss auf die Kundenorganisation(en) festgelegt werden, weil der ADF-Dienst zuerst https://hostname/api/v3/search/repositories?q=user%3<customer credential> ausprobiert und dann fehlschlägt. Anschließend probiert er https://hostname/api/v3/orgs/<vaorg>/<repo> aus, und das gelingt. 
+ 
+### <a name="recover-from-a-deleted-data-factory"></a>Wiederstellen aus einer gelöschten Data Factory
+
+#### <a name="issue"></a>Problem
+Der Kunde hat die Data Factory oder die Ressourcengruppe mit der Data Factory gelöscht. Er möchte wissen, wie er eine gelöschte Data Factory wiederherstellen kann.
+
+#### <a name="cause"></a>Ursache
+
+Die Data Factory kann nur dann wiederhergestellt werden, wenn der Kunde die Quellcodeverwaltung konfiguriert hat (DevOps oder Git). Dadurch wird die neueste veröffentlichte Ressource angezeigt, und die unveröffentlichte Pipeline, das Dataset und der verknüpfte Dienst **werden nicht** wiederhergestellt.
+
+Wenn es keine Quellcodeverwaltung gibt, kann eine gelöschte Data Factory aus dem Back-End nicht wiederhergestellt werden. Der Grund: Sobald der Dienst den Löschbefehl empfangen hat, wird die Instanz gelöscht, und es wurde keine Sicherung gespeichert.
+
+#### <a name="resoloution"></a>Lösung
+Führen Sie die folgenden Schritte aus, um die gelöschte Data Factory mit der Quellcodeverwaltung wiederherzustellen:
+
+ * Erstellen Sie eine neue Azure Data Factory-Instanz.
+
+ * Konfigurieren Sie Git mit denselben Einstellungen neu. Vergewissern Sie sich aber, dass „Import existing Data Factory resources to the selected repository“ (Vorhandene Data Factory-Ressourcen in das ausgewählte Repository importieren) aktiviert ist, und wählen Sie „Neuer Branch“ aus.
+
+ * Erstellen Sie einen Pull Request zum Mergen der Änderungen in den Kollaborationsbranch und zum Veröffentlichen.
+
+ * Wenn ein Kunde eine selbstgehostete Integration Runtime im gelöschten ADF hatte, muss er eine neue Instanz in der neuen ADF erstellen, sie dann auf dem lokalen Computer bzw. virtuellen Computer deinstallieren und erneut installieren, wobei der neue Schlüssel abgerufen wird. Nachdem der Setupvorgang für die IR abgeschlossen ist, muss der Kunde den verknüpften Dienst so ändern, dass er auf die neue IR verweist, und dann die Verbindung testen. Andernfalls tritt der Fehler **Ungültiger Verweis** auf.
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

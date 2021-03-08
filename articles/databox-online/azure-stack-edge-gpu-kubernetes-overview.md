@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 5b96e568b57c34fec1c93727aabe8e739a2a45cd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6e9ae9b8d9d1154d55991d078af0faef65ff654b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448654"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699571"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
@@ -107,6 +107,16 @@ Weitere Informationen zur Bereitstellung von Anwendungen in Ihrem Kubernetes-Clu
 ### <a name="kubernetes-and-azure-arc"></a>Kubernetes und Azure Arc
 
 Azure Arc ist ein Hybridverwaltungstool, mit dem Sie Anwendungen in Ihren Kubernetes-Clustern bereitstellen können. Darüber hinaus ermöglicht Azure Arc die Verwendung von Azure Monitor für Container, um Ihre Cluster anzuzeigen und zu überwachen. Weitere Informationen finden Sie unter [Was ist Kubernetes mit Azure Arc-Unterstützung?](../azure-arc/kubernetes/overview.md). Informationen zu den Preisen von Azure Arc finden Sie unter [Azure Arc-Preise](https://azure.microsoft.com/services/azure-arc/#pricing).
+
+Ab März 2021 steht Kubernetes mit Azure Arc-Unterstützung für die Benutzer allgemein zur Verfügung, und es fallen Standardnutzungsgebühren an. Als einem unserer geschätzten Kunden der Vorschauversion wird Ihnen Kubernetes mit Azure Arc-Unterstützung für Azure Stack Edge-Geräte kostenlos zur Verfügung gestellt. Wenn Sie dieses Vorschauangebot nutzen möchten, erstellen Sie eine [Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest):
+
+1. Wählen Sie unter **Problemtyp** die Option **Abrechnung** aus.
+2. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
+3. Wählen Sie unter **Dienst** die Option **Meine Dienste** und dann **Azure Stack Edge** aus.
+4. Wählen Sie unter **Ressource** Ihre Ressource aus.
+5. Geben Sie unter **Zusammenfassung** eine Beschreibung Ihres Problems ein.
+6. Wählen Sie unter **Problemtyp** die Option **Unerwartete Gebühren** aus.
+7. Wählen Sie unter **Problemuntertyp** die Option **Ich möchte meine Kosten für meine kostenlose Testversion verstehen** aus.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

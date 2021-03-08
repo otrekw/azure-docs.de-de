@@ -1,22 +1,22 @@
 ---
-title: Bereitstellungs- und HPA-Metriken bei Azure Monitor für Container | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, welche Bereitstellungs- und HPA-Metriken (horizontale automatische Podskalierung) mit Azure Monitor für Container gesammelt werden.
+title: Bereitstellung und HPA-Metriken mit Container Insights | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, welche Bereitstellungs- und HPA-Metriken (horizontale automatische Podskalierung) mit Container Insights gesammelt werden.
 ms.topic: conceptual
 ms.date: 08/09/2020
-ms.openlocfilehash: ee1f0d4849a8382a898aaca84956ff78166e138f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c8bb100b756ea92d73e1c3a698f119b4f8157930
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602223"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717705"
 ---
-# <a name="deployment--hpa-metrics-with-azure-monitor-for-containers"></a>Bereitstellungs- und HPA-Metriken bei Azure Monitor für Container
+# <a name="deployment--hpa-metrics-with-container-insights"></a>Bereitstellungs- und HPA-Metriken mit Container Insights
 
-Ab Agent-Version *ciprod08072020* werden von dem in Azure Monitor für Container integrierten Agent nun Metriken für Bereitstellungen und HPAs erfasst.
+Ab Agent-Version *ciprod08072020* werden von dem in Container Insights integrierten Agent jetzt Metriken für Bereitstellungen und HPAs erfasst.
 
 ## <a name="deployment-metrics"></a>Bereitstellungsmetriken
 
-Azure Monitor für Container beginnt automatisch mit der Überwachung von Bereitstellungen, indem die folgenden Metriken in 60-Sekunden-Intervallen gesammelt und in der **InsightMetrics**-Tabelle gespeichert werden:
+Container Insights beginnt automatisch mit der Überwachung von Bereitstellungen, indem die folgenden Metriken in 60-Sekunden-Intervallen gesammelt und in der **InsightMetrics**-Tabelle gespeichert werden:
 
 |Metrikname |Metrikdimension (Tags) |Beschreibung |
 |------------|------------------------|------------|
@@ -24,7 +24,7 @@ Azure Monitor für Container beginnt automatisch mit der Überwachung von Bereit
 
 ## <a name="hpa-metrics"></a>HPA-Metriken
 
-Azure Monitor für Container beginnt automatisch mit der Überwachung von HPAs, indem die folgenden Metriken in 60-Sekunden-Intervallen gesammelt und in der **InsightMetrics**-Tabelle gespeichert werden:
+Container Insights beginnt automatisch mit der Überwachung von HPAs, indem die folgenden Metriken in 60-Sekunden-Intervallen gesammelt und in der **InsightMetrics**-Tabelle gespeichert werden:
 
 |Metrikname |Metrikdimension (Tags) |Beschreibung |
 |------------|------------------------|------------|
@@ -32,7 +32,7 @@ Azure Monitor für Container beginnt automatisch mit der Überwachung von HPAs, 
 
 ## <a name="deployment--hpa-charts"></a>Bereitstellungs- und HPA-Diagramme 
 
-Azure Monitor für Container enthält vorkonfigurierte Diagramme für die Metriken, die weiter oben in der Tabelle als eine Arbeitsmappe für jeden Cluster aufgeführt sind. Sie finden die Bereitstellungs- und HPA-Arbeitsmappe **Deployments & HPA** direkt von einem AKS-Cluster aus, indem Sie **Arbeitsmappen** im linken Bereich und in der Dropdownliste in Insight **Arbeitsmappen anzeigen** auswählen.
+Container Insights enthält vorkonfigurierte Diagramme für die Metriken, die weiter oben in der Tabelle als Arbeitsmappe für jeden Cluster aufgeführt sind. Sie finden die Bereitstellungs- und HPA-Arbeitsmappe **Deployments & HPA** direkt von einem AKS-Cluster aus, indem Sie **Arbeitsmappen** im linken Bereich und in der Dropdownliste in Insight **Arbeitsmappen anzeigen** auswählen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

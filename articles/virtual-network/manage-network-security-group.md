@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 5070b64c3900aa4ee1cf51519c7b64362ac37413
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5de909d0d57ae212fa562eb31551e2271d307d47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596665"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694256"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe
 
@@ -361,6 +361,11 @@ Zum Durchführen von Aufgaben für Netzwerksicherheitsgruppen, Sicherheitsregeln
 | Microsoft.Network/networkSecurityGroups/write                 |   Netzwerksicherheitsgruppe erstellen oder aktualisieren                             |
 | Microsoft.Network/networkSecurityGroups/delete                |   Netzwerksicherheitsgruppe löschen                                       |
 | Microsoft.Network/networkSecurityGroups/join/action           |   Netzwerksicherheitsgruppe einem Subnetz oder einer Netzwerkschnittstelle zuordnen 
+
+
+>[!NOTE]
+> Um `write`-Vorgänge für eine Netzwerksicherheitsgruppe auszuführen, muss das Abonnementkonto mindestens über `read`-Berechtigungen für die Ressourcengruppe sowie über die Berechtigung `Microsoft.Network/networkSecurityGroups/write` verfügen.
+
 
 ### <a name="network-security-group-rule"></a>Netzwerksicherheitsgruppen-Regel
 

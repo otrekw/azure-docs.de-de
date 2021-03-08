@@ -4,19 +4,21 @@ description: 'Azure-Sicherheitsvergleichstest V2: Netzwerksicherheit'
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4c87dd905ae842647e7ec2e365abf450caf352b0
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: b47f833a3b47dae145aa18eb6eda0c6bd95f6689
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369326"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042912"
 ---
 # <a name="security-control-v2-network-security"></a>Sicherheitskontrolle V2: Netzwerksicherheit
 
 Netzwerksicherheit deckt Steuerelemente zum Sichern und Schützen von Azure-Netzwerken ab. Dies umfasst das Sichern von virtuellen Netzwerken, das Einrichten privater Verbindungen, das Verhindern und Entschärfen externer Angriffe und das Sichern des DNS.
+
+Die entsprechende integrierte Azure Policy-Instanz finden Sie unter [Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß Azure-Sicherheitsvergleichstest: Netzwerksicherheit](../../governance/policy/samples/azure-security-benchmark.md#network-security).
 
 ## <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1: Implementieren der Sicherheit für internen Datenverkehr
 
@@ -24,9 +26,9 @@ Netzwerksicherheit deckt Steuerelemente zum Sichern und Schützen von Azure-Netz
 |--|--|--|--|
 | NS-1 | 9.2, 9.4, 14.1, 14.2, 14.3 | AC-4, CA-3, SC-7 |
 
-Stellen Sie sicher, dass alle virtuellen Azure-Netzwerke einem Prinzip der Unternehmenssegmentierung unterliegen, das sich den geschäftlichen Risiken anpasst. Jedes System, das ein höheres Risiko für das Unternehmen darstellen könnte, sollte innerhalb eines eigenen virtuellen Netzwerks isoliert und mit einer Netzwerksicherheitsgruppe (NSG) und/oder Azure Firewall ausreichend geschützt werden. 
+Stellen Sie sicher, dass alle virtuellen Azure-Netzwerke einem Prinzip der Unternehmenssegmentierung unterliegen, das sich den geschäftlichen Risiken anpasst. Jedes System, das ein höheres Risiko für das Unternehmen darstellen könnte, sollte innerhalb eines eigenen virtuellen Netzwerks isoliert und mit einer Netzwerksicherheitsgruppe (NSG) und/oder Azure Firewall ausreichend geschützt werden.
 
-Beschränken oder ermöglichen Sie den Datenverkehr zwischen internen Ressourcen gemäß Ihren Anwendungen und der Strategie der Unternehmenssegmentierung auf der Basis von Netzwerksicherheitsgruppen-Regeln. Bei bestimmten klar definierten Anwendungen (z. B. einer App mit drei Ebenen) kann dies ein äußerst sicherer Ansatz sein (standardmäßig verweigern, als Ausnahme zulassen). Dies ist möglicherweise nicht gut skalierbar, wenn viele Anwendungen und Endpunkte miteinander interagieren. Sie können auch die Azure-Firewall verwenden, wenn für eine große Anzahl von Unternehmenssegmenten oder Spokes (in einer Hub/Spoke-Topologie) eine zentrale Verwaltung erforderlich ist. 
+Beschränken oder ermöglichen Sie den Datenverkehr zwischen internen Ressourcen gemäß Ihren Anwendungen und der Strategie der Unternehmenssegmentierung auf der Basis von Netzwerksicherheitsgruppen-Regeln. Bei bestimmten klar definierten Anwendungen (z. B. einer App mit drei Ebenen) kann dies ein äußerst sicherer Ansatz sein (standardmäßig verweigern, als Ausnahme zulassen). Dies ist möglicherweise nicht gut skalierbar, wenn viele Anwendungen und Endpunkte miteinander interagieren. Sie können auch die Azure-Firewall verwenden, wenn für eine große Anzahl von Unternehmenssegmenten oder Spokes (in einer Hub/Spoke-Topologie) eine zentrale Verwaltung erforderlich ist.
 
 Verwenden Sie die adaptive Netzwerkhärtung in Azure Security Center, um Netzwerksicherheitsgruppen-Konfigurationen zu empfehlen, die Ports und Quell-IP-Adressen gemäß externer Regeln für den Netzwerk-Datenverkehr einschränken.
 
@@ -44,9 +46,9 @@ Verwenden Sie Azure Sentinel, um die Verwendung von unsicheren Legacyprotokollen
 
 **Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)     
+- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Anwendungssicherheit und DevSecOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -56,11 +58,11 @@ Verwenden Sie Azure Sentinel, um die Verwendung von unsicheren Legacyprotokollen
 |--|--|--|--|
 | NS-2 | – | CA-3, AC-17, MA-4 |
 
-Stellen Sie mit Azure ExpressRoute oder dem virtuellen privaten Azure-Netzwerk (VPN) private Verbindungen mit Azure-Rechenzentren und lokaler Infrastruktur in einer Housingumgebung her. ExpressRoute-Verbindungen werden nicht über das öffentliche Internet hergestellt und bieten mehr Zuverlässigkeit, eine höhere Geschwindigkeit und weniger Latenz als herkömmliche Internetverbindungen. Für Point-to-Site-VPN und Site-to-Site-VPN können Sie lokale Geräte oder Netzwerke mit einem virtuellen Netzwerk verbinden, indem Sie eine beliebige Kombination dieser VPN-Optionen und Azure ExpressRoute verwenden.
+Stellen Sie mit Azure ExpressRoute oder dem virtuellen privaten Azure-Netzwerk (VPN) private Verbindungen mit Azure-Rechenzentren und lokaler Infrastruktur in einer Housingumgebung her. ExpressRoute-Verbindungen werden nicht über das öffentliche Internet hergestellt und zeichnen sich im Vergleich zu herkömmlichen Internetverbindungen durch eine höhere Zuverlässigkeit und Geschwindigkeit sowie durch kürzere Wartezeiten aus. Für Point-to-Site-VPN und Site-to-Site-VPN können Sie lokale Geräte oder Netzwerke mit einem virtuellen Netzwerk verbinden, indem Sie eine beliebige Kombination dieser VPN-Optionen und Azure ExpressRoute verwenden.
 
-Stellen Sie eine Verbindung von zwei oder mehr virtuellen Netzwerken in Azure mittels Peering virtueller Netzwerke oder über Private Link her. Der Netzwerkdatenverkehr zwischen mittels Peering verbundenen virtuellen Netzwerken ist privat und wird im Azure-Backbone-Netzwerk verwaltet. 
+Stellen Sie eine Verbindung von zwei oder mehr virtuellen Netzwerken in Azure mittels Peering virtueller Netzwerke oder über Private Link her. Der Netzwerkdatenverkehr zwischen mittels Peering verbundenen virtuellen Netzwerken ist privat und wird im Azure-Backbone-Netzwerk verwaltet.
 
-- [ExpressRoute-Konnektivitätsmodelle](../../expressroute/expressroute-connectivity-models.md) 
+- [ExpressRoute-Konnektivitätsmodelle](../../expressroute/expressroute-connectivity-models.md)
 
 - [Was ist VPN Gateway?](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
@@ -72,11 +74,11 @@ Stellen Sie eine Verbindung von zwei oder mehr virtuellen Netzwerken in Azure mi
 
 **Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)    
+- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-- [Anwendungssicherheit und DevSecOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Anwendungssicherheit und DevSecOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 ## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: Einrichten des Zugriffs über das private Netzwerk auf Azure-Dienste
 
@@ -84,9 +86,9 @@ Stellen Sie eine Verbindung von zwei oder mehr virtuellen Netzwerken in Azure mi
 |--|--|--|--|
 | NS-3 | 14,1 | AC-4, CA-3, SC-7 |
 
-Ermöglichen Sie mit Azure Private Link von Ihren virtuellen Netzwerken aus privaten Zugriff auf Azure-Dienste, ohne über das Internet zu gehen. Verwenden Sie in Situationen, in denen Azure Private Link noch nicht verfügbar ist, Azure Virtual Network-Dienstendpunkte.  Azure Virtual Network-Dienstendpunkte bieten über eine optimierte, über das Azure-Backbone-Netzwerk führende Route sicheren Zugriff auf Dienste.  
+Ermöglichen Sie mit Azure Private Link von Ihren virtuellen Netzwerken aus privaten Zugriff auf Azure-Dienste, ohne über das Internet zu gehen. Verwenden Sie in Situationen, in denen Azure Private Link noch nicht verfügbar ist, Azure Virtual Network-Dienstendpunkte. Azure Virtual Network-Dienstendpunkte bieten über eine optimierte, über das Azure-Backbone-Netzwerk führende Route sicheren Zugriff auf Dienste.
 
-Der private Zugriff ist neben der Authentifizierung und der von Azure-Diensten gebotenen Datenverkehrssicherheit eine zusätzliche Verteidigungsmaßnahme. 
+Der private Zugriff ist neben der Authentifizierung und der von Azure-Diensten gebotenen Datenverkehrssicherheit eine zusätzliche Verteidigungsmaßnahme.
 
 - [Grundlegendes zu Azure Private Link](../../private-link/private-link-overview.md)
 
@@ -96,9 +98,9 @@ Der private Zugriff ist neben der Authentifizierung und der von Azure-Diensten g
 
 **Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Anwendungssicherheit und DevSecOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -111,10 +113,10 @@ Der private Zugriff ist neben der Authentifizierung und der von Azure-Diensten g
 Schützen Sie Azure-Ressourcen vor Angriffen aus externen Netzwerken einschließlich verteilter Denial-of-Service-Angriffe (DDoS), anwendungsspezifischer Angriffe und unerwünschtem und potenziell schädlichem Internetdatenverkehr. Azure bietet native Funktionen für Folgendes:
 -   Schützen Sie mit der Azure-Firewall Anwendungen und Dienste vor potenziell schädlichem Datenverkehr aus dem Internet und von anderen externen Standorten. 
 
--   Schützen Sie mit WAF-Funktionen (Web Application Firewall) in Azure Application Gateway, Azure Front Door und Azure Content Delivery Network (CDN) Ihre Anwendungen, Dienste und APIs gegen Angriffe auf Anwendungsebene. 
+-   Schützen Sie mit WAF-Funktionen (Web Application Firewall) in Azure Application Gateway, Azure Front Door und Azure Content Delivery Network (CDN) Ihre Anwendungen, Dienste und APIs gegen Angriffe auf Anwendungsebene.
 
--   Schützen Sie Ihre Ressourcen durch Aktivieren des DDoS-Standardschutzes in Ihren virtuellen Azure-Netzwerken vor DDoS-Angriffen. 
--   Verwenden Sie Azure Security Center, um Risiken durch Fehlkonfigurationen im Zusammenhang mit den oben genannten Punkten zu erkennen. 
+-   Schützen Sie Ihre Ressourcen durch Aktivieren des DDoS-Standardschutzes in Ihren virtuellen Azure-Netzwerken vor DDoS-Angriffen.
+-   Verwenden Sie Azure Security Center, um Risiken durch Fehlkonfigurationen im Zusammenhang mit den oben genannten Punkten zu erkennen.
 
 - [Azure Firewall-Dokumentation](../../firewall/index.yml)
 
@@ -128,7 +130,7 @@ Schützen Sie Azure-Ressourcen vor Angriffen aus externen Netzwerken einschließ
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Anwendungssicherheit und DevSecOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -138,7 +140,7 @@ Schützen Sie Azure-Ressourcen vor Angriffen aus externen Netzwerken einschließ
 |--|--|--|--|
 | NS-5 | 12.6, 12.7 | SI-4 |
 
-Verwenden Sie auf Azure Firewall-Threat Intelligence basierende Filterung, um bei bekannten böswilligen IP-Adressen und Domänen zu warnen und/oder Datenverkehr zu und von diesen Adressen oder Domänen zu blockieren. Die IP-Adressen und Domänen stammen aus dem Microsoft Threat Intelligence-Feed. Wenn eine Payloaduntersuchung erforderlich ist, können Sie ein Angriffserkennungs-/Eindringschutzsystem (IDS/IPS) eines Drittanbieters mit Payloaduntersuchungsfunktionen aus Azure Marketplace bereitstellen. Alternativ können Sie eine hostbasierte IDS/IPS- oder Endpunkterkennungs- und Antwortlösung (EDR) in Verbindung mit einem netzwerkbasierten IDS/IPS oder stattdessen verwenden.  
+Verwenden Sie auf Azure Firewall-Threat Intelligence basierende Filterung, um bei bekannten böswilligen IP-Adressen und Domänen zu warnen und/oder Datenverkehr zu und von diesen Adressen oder Domänen zu blockieren. Die IP-Adressen und Domänen stammen aus dem Microsoft Threat Intelligence-Feed. Wenn eine Payloaduntersuchung erforderlich ist, können Sie ein Angriffserkennungs-/Eindringschutzsystem (IDS/IPS) eines Drittanbieters mit Payloaduntersuchungsfunktionen aus Azure Marketplace bereitstellen. Alternativ können Sie eine hostbasierte IDS/IPS- oder Endpunkterkennungs- und Antwortlösung (EDR) in Verbindung mit einem netzwerkbasierten IDS/IPS oder stattdessen verwenden.
 
 Hinweis: Bei einer gesetzlichen oder sonstigen Anforderung der Verwendung von IDS/IPS müssen Sie sicherstellen, dass sie stets auf hochwertige Warnungen für Ihre SIEM-Lösung abgestimmt ist. 
 
@@ -146,17 +148,17 @@ Hinweis: Bei einer gesetzlichen oder sonstigen Anforderung der Verwendung von ID
 
 - [Azure Marketplace umfasst IDS-Funktionen von Drittanbietern](https://azuremarketplace.microsoft.com/marketplace?search=IDS)
 
-- [ATP-EDR-Funktion von Microsoft Defender](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
+- [Microsoft Defender für Endpunkt-Funktion](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
 **Verantwortlichkeit**: Kunde
 
 **Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-- [Anwendungssicherheit und DevSecOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Anwendungssicherheit und DevSecOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 ## <a name="ns-6-simplify-network-security-rules"></a>NS-6: Vereinfachen von Netzwerksicherheitsregeln
 
@@ -164,7 +166,7 @@ Hinweis: Bei einer gesetzlichen oder sonstigen Anforderung der Verwendung von ID
 |--|--|--|--|
 | NS-6 | 1.5 | IA-4 |
 
-Vereinfachen Sie Netzwerksicherheitsregeln durch Nutzung von Diensttags und Anwendungssicherheitsgruppen (ASGs). 
+Vereinfachen Sie Netzwerksicherheitsregeln durch Nutzung von Diensttags und Anwendungssicherheitsgruppen (ASGs).
 
 Verwenden Sie Diensttags in virtuellen Netzwerken, um Netzwerkzugriffssteuerungen für Netzwerksicherheitsgruppen oder Azure Firewall zu definieren. Sie können Diensttags anstelle von spezifischen IP-Adressen nutzen, wenn Sie Sicherheitsregeln erstellen. Indem Sie den Diensttagnamen im Quell- oder Zielfeld einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern.
 
@@ -178,9 +180,9 @@ Sie können auch Anwendungssicherheitsgruppen verwenden, um eine komplexe Sicher
 
 **Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)    
+- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Anwendungssicherheit und DevSecOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -190,9 +192,9 @@ Sie können auch Anwendungssicherheitsgruppen verwenden, um eine komplexe Sicher
 |--|--|--|--|
 | NS-7 | – | SC-20, SC-21 |
 
-Befolgen Sie die bewährten Methoden für die DNS-Sicherheit, um häufige Angriffe wie verwaistes DNS, DNS-Verstärkungsangriffe, DNS-Vergiftungen und -Spoofing usw. zu vermeiden. 
+Befolgen Sie die bewährten Methoden für die DNS-Sicherheit, um häufige Angriffe wie verwaistes DNS, DNS-Verstärkungsangriffe, DNS-Vergiftungen und -Spoofing usw. zu vermeiden.
 
-Wenn Azure DNS als autorisierender DNS-Dienst verwendet wird, stellen Sie sicher, dass DNS-Zonen und -Einträge vor versehentlicher oder böswilliger Änderung mit Azure RBAC und Ressourcensperren geschützt werden. 
+Wenn Azure DNS als autorisierender DNS-Dienst verwendet wird, stellen Sie sicher, dass DNS-Zonen und -Einträge vor versehentlicher oder böswilliger Änderung mit Azure RBAC und Ressourcensperren geschützt werden.
 
 - [Azure DNS – Übersicht](../../dns/dns-overview.md)
 
@@ -204,8 +206,8 @@ Wenn Azure DNS als autorisierender DNS-Dienst verwendet wird, stellen Sie sicher
 
 **Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Anwendungssicherheit und DevSecOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)

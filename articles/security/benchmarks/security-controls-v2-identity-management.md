@@ -4,19 +4,21 @@ description: 'Azure-Sicherheitsvergleichstest V2: Identitätsverwaltung'
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 33f5dff65fa7ad8274051f784f2e61dc8366d389
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: f76ebf8609b5f4ac587800359a5cbb0c6f967f3c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368850"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698602"
 ---
 # <a name="security-control-v2-identity-management"></a>Sicherheitskontrolle V2: Identitätsverwaltung
 
 Identitätsverwaltung umfasst Kontrollelemente zur Einrichtung einer sicheren Identität sowie Zugriffssteuerungen mit Azure Active Directory. Dazu gehören die Verwendung von Single Sign-On, starken Authentifizierungen, verwalteten Identitäten (und Dienstprinzipalen) für Anwendungen, bedingter Zugriff sowie Überwachung von Kontoanomalien.
+
+Die entsprechende integrierte Azure Policy-Instanz finden Sie unter [Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß Azure-Sicherheitsvergleichstest: Identitätsverwaltung](../../governance/policy/samples/azure-security-benchmark#identity-management).
 
 ## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1: Standardisieren von Azure Active Directory als zentrales Identitäts- und Authentifizierungssystem
 
@@ -37,7 +39,7 @@ Hinweis: Azure AD unterstützt externe Identitätsanbieter, die es Benutzern ohn
 
 - [Erstellen und Konfigurieren einer Azure AD-Instanz](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-- [Definieren von Azure AD-Mandanten](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)  
+- [Definieren von Azure AD-Mandanten](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)
 
 - [Verwenden externer Identitätsanbieter für eine Anwendung](../../active-directory/external-identities/identity-providers.md)
 
@@ -63,7 +65,7 @@ Hinweis: Azure AD unterstützt externe Identitätsanbieter, die es Benutzern ohn
 
 Verwenden Sie für nicht zu einer Person gehörige Konten (z. B. Dienste oder Automatisierung) von Azure verwaltete Identitäten, anstatt ein leistungsfähigeres zu einer Person gehöriges Konto für den Zugriff auf Ressourcen oder die Ausführung von Code zu erstellen. Verwaltete Identitäten in Azure können sich bei Azure-Diensten und -Ressourcen authentifizieren, die die Azure AD-Authentifizierung unterstützen. Die Authentifizierung wird durch vordefinierte Zugriffszuweisungsregeln aktiviert, sodass hart codierte Anmeldeinformationen im Quellcode oder in Konfigurationsdateien vermieden werden. 
 
-Für Dienste, die keine verwalteten Identitäten unterstützen, können Sie stattdessen mit Azure AD Dienstprinzipale mit eingeschränkten Berechtigungen auf Ressourcenebene erstellen.  Sie sollten Dienstprinzipale mit Zertifikatanmeldeinformationen und Fallback auf geheime Clientschlüssel konfigurieren. In beiden Fällen kann Azure Key Vault in Verbindung mit verwalteten Azure-Identitäten verwendet werden, damit die Laufzeitumgebung (z. B. eine Azure-Funktion) die Anmeldeinformationen aus dem Schlüsseltresor abrufen kann.
+Für Dienste, die keine verwalteten Identitäten unterstützen, können Sie stattdessen mit Azure AD Dienstprinzipale mit eingeschränkten Berechtigungen auf Ressourcenebene erstellen. Sie sollten Dienstprinzipale mit Zertifikatanmeldeinformationen und Fallback auf geheime Clientschlüssel konfigurieren. In beiden Fällen kann Azure Key Vault in Verbindung mit verwalteten Azure-Identitäten verwendet werden, damit die Laufzeitumgebung (z. B. eine Azure-Funktion) die Anmeldeinformationen aus dem Schlüsseltresor abrufen kann.
 
 - [Von Azure verwaltete Identitäten](../../active-directory/managed-identities-azure-resources/overview.md)
 
@@ -91,7 +93,7 @@ Verwenden Sie Azure Key Vault für die Registrierung von Sicherheitsprinzipalen:
 
 Azure AD bietet Identitäts- und Zugriffsverwaltung für Azure-Ressourcen, Cloudanwendungen und lokale Anwendungen. Die Identitäts- und Zugriffsverwaltung gilt sowohl für Unternehmensidentitäten wie Mitarbeiter als auch für externe Identitäten wie Partner, Anbieter und Zulieferer.
 
-Verwenden Sie Azure AD Single Sign-On (SSO), um den Zugriff auf die Daten und Ressourcen Ihres Unternehmens lokal und in der Cloud zu verwalten und zu sichern. Verbinden Sie alle Ihre Benutzer, Anwendungen und Geräte mit Azure AD für einen nahtlosen, sicheren Zugriff sowie mehr Transparenz und Kontrolle. 
+Verwenden Sie einmaliges Anmelden in Azure AD (Single Sign-On, SSO), um den Zugriff auf die Daten und Ressourcen Ihres Unternehmens lokal und in der Cloud zu verwalten und zu sichern. Verbinden Sie alle Ihre Benutzer, Anwendungen und Geräte mit Azure AD für einen nahtlosen, sicheren Zugriff sowie mehr Transparenz und Kontrolle. 
 
 - [Grundlegendes zu Anwendungs-SSO mit Azure AD](../../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -111,16 +113,17 @@ Verwenden Sie Azure AD Single Sign-On (SSO), um den Zugriff auf die Daten und Re
 |--|--|--|--|
 | IM-4 | 4.2, 4.4 4.5, 11.5, 12.11, 16.3 | AC-2, AC-3, IA-2, IA-4 |
 
-Azure AD unterstützt starke Authentifizierungskontrollelemente durch Multi-Factor Authentication (MFA) und starke kennwortlose Methoden.  
-- Multi-Factor Authentication: Aktivieren Sie Azure AD MFA, und befolgen Sie die Empfehlungen für die Identitäts- und Zugriffsverwaltung in Azure Security Center für Ihr MFA-Setup. MFA kann für alle Benutzer, für ausgewählte Benutzer oder auf Benutzerebene auf der Grundlage von Anmeldebedingungen und Risikofaktoren durchgesetzt werden. 
+Azure AD unterstützt starke Authentifizierungskontrollelemente durch Multi-Factor Authentication (MFA) und starke kennwortlose Methoden.
 
-- Kennwortlose Authentifizierung: Es sind drei kennwortlose Authentifizierungsoptionen verfügbar: Windows Hello for Business, die Microsoft Authenticator-App und lokale Authentifizierungsmethoden wie Smartcards. 
+- Multi-Factor Authentication: Aktivieren Sie Azure AD MFA, und befolgen Sie die Empfehlungen für die Identitäts- und Zugriffsverwaltung in Azure Security Center für Ihr MFA-Setup. MFA kann für alle Benutzer, für ausgewählte Benutzer oder auf Benutzerebene auf der Grundlage von Anmeldebedingungen und Risikofaktoren durchgesetzt werden.
+
+- Kennwortlose Authentifizierung: Es stehen drei Optionen für die kennwortlose Authentifizierung zur Verfügung: Windows Hello for Business, die Microsoft Authenticator-App und lokale Authentifizierungsmethoden wie Smartcards.
 
 Stellen Sie für Administratoren und privilegierte Benutzer sicher, dass die höchste Stufe der starken Authentifizierungsmethode verwendet wird, und führen Sie für andere Benutzer eine geeignete starke Authentifizierungsrichtlinie ein.
 
-Wenn für die Azure AD-Authentifizierung noch die veraltete kennwortbasierte Authentifizierung verwendet wird, beachten Sie, dass für reine Cloudkonten (Benutzerkonten, die direkt in Azure erstellt wurden) eine Standardbaseline-Kennwortrichtlinie gilt. Und Hybridkonten (Benutzerkonten, die aus dem lokalen Active Directory stammen) folgen den lokalen Kennwortrichtlinien. Bei der Verwendung der kennwortbasierten Authentifizierung bietet Azure AD eine Kennwortschutzfunktion, die Benutzer daran hindert, leicht zu erratende Kennwörter festzulegen. Microsoft stellt eine globale Liste verbotener Kennwörter zur Verfügung, die auf der Grundlage von Telemetrie aktualisiert wird, und Kunden können die Liste entsprechend ihren Bedürfnissen erweitern (z. B. um Markennamen, kulturelle Verweise usw.). Dieser Kennwortschutz kann für reine Cloud- und Hybridkonten verwendet werden. 
+Wenn für die Azure AD-Authentifizierung noch die veraltete kennwortbasierte Authentifizierung verwendet wird, beachten Sie, dass für reine Cloudkonten (Benutzerkonten, die direkt in Azure erstellt wurden) eine Standardbaseline-Kennwortrichtlinie gilt. Und Hybridkonten (Benutzerkonten, die aus dem lokalen Active Directory stammen) folgen den lokalen Kennwortrichtlinien. Bei der Verwendung der kennwortbasierten Authentifizierung bietet Azure AD eine Kennwortschutzfunktion, die Benutzer daran hindert, leicht zu erratende Kennwörter festzulegen. Microsoft stellt eine globale Liste verbotener Kennwörter zur Verfügung, die auf der Grundlage von Telemetrie aktualisiert wird, und Kunden können die Liste ihren Anforderungen entsprechend erweitern (z. B. um Markennamen oder kulturelle Verweise). Dieser Kennwortschutz kann für reine Cloud- und Hybridkonten verwendet werden.
 
-Hinweis: Die Authentifizierung allein auf der Grundlage von Kennwortanmeldeinformationen ist anfällig für beliebte Angriffsmethoden. Für höhere Sicherheit verwenden Sie starke Authentifizierungsmethoden wie MFA und eine starke Kennwortrichtlinie. Bei Anwendungen von Drittanbietern und Marketplace-Dienste, die möglicherweise über Standardkennwörter verfügen, sollten Sie diese während der ersten Einrichtung des Dienstes ändern. 
+Hinweis: Die Authentifizierung allein auf der Grundlage von Kennwortanmeldeinformationen ist anfällig für beliebte Angriffsmethoden. Für höhere Sicherheit verwenden Sie starke Authentifizierungsmethoden wie MFA und eine starke Kennwortrichtlinie. Bei Anwendungen von Drittanbietern und Marketplace-Dienste, die möglicherweise über Standardkennwörter verfügen, sollten Sie diese während der ersten Einrichtung des Dienstes ändern.
 
 - [Aktivieren von MFA in Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -175,7 +178,7 @@ Azure Advanced Threat Protection (ATP) ist eine Sicherheitslösung, die lokale A
 
 - [Verknüpfen von Daten aus Azure AD Identity Protection](../../sentinel/connect-azure-ad-identity-protection.md)
 
-- [Azure Advanced Threat Protection](/azure-advanced-threat-protection/what-is-atp)
+- [Microsoft Defender for Identity](/azure-advanced-threat-protection/what-is-atp)
 
 **Verantwortlichkeit**: Kunde
 
@@ -219,7 +222,7 @@ Verwenden Sie die Azure AD-Zugriffsberechtigung für eine präzisere Zugriffsste
 
 Implementieren Sie Credential Scanner von Azure DevOps, um Anmeldeinformationen im Code zu identifizieren. In Credential Scanner wird auch das Verschieben von ermittelten Anmeldeinformationen an sicherere Speicherorte (z. B. Azure Key Vault) empfohlen.
 
-Für GitHub können Sie das native Feature zur geheimen Überprüfung verwenden, um Anmeldeinformationen oder eine andere Form von Geheimnissen im Code zu identifizieren.
+Für GitHub können Sie das native Feature zur Geheimnisüberprüfung verwenden, um Anmeldeinformationen oder eine andere Form von Geheimnissen im Code zu identifizieren.
 
 - [Einrichten von Credential Scanner](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -241,9 +244,9 @@ Für GitHub können Sie das native Feature zur geheimen Überprüfung verwenden,
 
 Stellen Sie sicher, dass Sie über moderne Zugriffssteuerungen und Sitzungsüberwachung für Legacyanwendungen und die darin gespeicherten und verarbeiteten Daten verfügen. Zwar werden für den Zugriff auf Legacyanwendungen häufig VPNs verwendet, diese verfügen aber oft nur über eine grundlegende Zugriffssteuerung und eine begrenzte Sitzungsüberwachung.
 
-Der Azure AD-Anwendungsproxy ermöglicht es Ihnen, lokale Legacyanwendungen für Remotebenutzer mit Single Sign-On (SSO) zu veröffentlichen und gleichzeitig die Vertrauenswürdigkeit der Remotebenutzer und der Geräte mit bedingtem Zugriff auf Azure AD explizit zu überprüfen. 
+Der Azure AD-Anwendungsproxy ermöglicht es Ihnen, lokale Legacyanwendungen für Remotebenutzer mit Single Sign-On (SSO) zu veröffentlichen und gleichzeitig die Vertrauenswürdigkeit der Remotebenutzer und der Geräte mit bedingtem Zugriff auf Azure AD explizit zu überprüfen.
 
-Alternativ dazu ist Microsoft Cloud App Security ein CASB-Service (Cloud Access Security Broker), der Kontrollelemente zur Überwachung der Anwendungssitzungen eines Benutzers und zum Blockieren von Aktionen (sowohl für lokale Legacyanwendungen als auch für Software as a Service (SaaS)-Cloudanwendungen) bereitstellen kann. 
+Alternativ dazu ist Microsoft Cloud App Security ein CASB-Dienst (Cloud Access Security Broker), der Kontrollelemente zur Überwachung der Anwendungssitzungen eines Benutzers und zum Blockieren von Aktionen sowohl für lokale Legacyanwendungen als auch für SaaS-Cloudanwendungen (Software as a Service) bereitstellen kann.
 
 - [Azure AD-Anwendungsproxy](../../active-directory/manage-apps/application-proxy.md#what-is-application-proxy)
 

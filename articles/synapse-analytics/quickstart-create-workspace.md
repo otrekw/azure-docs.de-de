@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: fb7672a0d7bdd14415a51f2296c281e92cf5542a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d2f2ed99af288b72a4c53f07d3cd7ba8b46974c0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450656"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693627"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Schnellstart: Erstellen eines Synapse-Arbeitsbereichs
 In dieser Schnellstartanleitung werden die Schritte zum Erstellen eines Azure Synapse-Arbeitsbereichs über das Azure-Portal erläutert.
@@ -34,7 +34,8 @@ In dieser Schnellstartanleitung werden die Schritte zum Erstellen eines Azure S
 1. Wählen Sie **Bewerten + erstellen** > **Erstellen** aus. Ihr Arbeitsbereich steht nach wenigen Minuten zur Verfügung.
 
 > [!NOTE]
-> Nach der Erstellung Ihres Azure Synapse-Arbeitsbereichs können Sie ihn nicht in einen anderen Azure Active Directory-Mandanten verschieben. Wenn Sie dies über die Abonnementmigration oder andere Aktionen durchführen, verlieren Sie unter Umständen den Zugriff auf die Artefakte im Arbeitsbereich.  
+> Nach der Erstellung Ihres Azure Synapse-Arbeitsbereichs können Sie ihn nicht in einen anderen Azure Active Directory-Mandanten verschieben. Wenn Sie dies über die Abonnementmigration oder andere Aktionen durchführen, verlieren Sie unter Umständen den Zugriff auf die Artefakte im Arbeitsbereich.
+> Darüber hinaus können Sie derzeit keinen Synapse Analytics-Arbeitsbereich in einem [CSP](https://docs.microsoft.com/partner-center/csp-overview)-Abonnement (Cloud Solution Provider) erstellen.
 
 ## <a name="open-synapse-studio"></a>Öffnen von Synapse Studio
 

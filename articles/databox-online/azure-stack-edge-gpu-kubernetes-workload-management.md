@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: ef840b3d9db4e82eeecea37079a08ccb0858a77b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: aac4278c6ce03c43418e99978cd039e24dc01194
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448529"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719269"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Kubernetes-Workloadverwaltung auf Ihrem Azure Stack Edge Pro-Gerät
 
@@ -54,6 +54,17 @@ Es gibt drei Hauptmethoden zum Bereitstellen von Workloads. Mit jeder dieser Ber
 - **Kubernetes-Bereitstellung mit Azure Arc-Unterstützung**: Kubernetes mit Azure Arc-Unterstützung ist ein Hybridverwaltungstool, mit dem Sie Anwendungen in Ihren Kubernetes-Clustern bereitstellen können. Auf Ihrem Azure Stack Edge Pro-Gerät stellen Sie über den `azure-arc namespace` eine Verbindung mit dem Kubernetes-Cluster her. Die in diesem Namespace bereitgestellten Agents sind für die Konnektivität mit Azure verantwortlich. Sie wenden die Bereitstellungskonfiguration mithilfe der GitOps-basierten Konfigurationsverwaltung an. 
     
     Kubernetes mit Azure Arc-Unterstützung ermöglicht außerdem die Verwendung von Azure Monitor für Container, um Ihre Cluster anzuzeigen und zu überwachen. Weitere Informationen finden Sie unter [Was ist Kubernetes mit Azure Arc-Unterstützung?](../azure-arc/kubernetes/overview.md).
+    
+    Ab März 2021 wird Kubernetes mit Azure Arc-Unterstützung für die Benutzer allgemein zur Verfügung stehen, und es fallen Standardnutzungsgebühren an. Als einem unserer geschätzten Kunden für die Vorschauversion wird Ihnen Kubernetes mit Azure Arc-Unterstützung für Azure Stack Edge-Gerät(e) kostenlos zur Verfügung stehen. Wenn Sie dieses Vorschauangebot nutzen möchten, erstellen Sie eine [Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest):
+
+    1. Wählen Sie unter **Problemtyp** die Option **Abrechnung** aus.
+    2. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
+    3. Wählen Sie unter **Dienst** die Option **Meine Dienste** und dann **Azure Stack Edge** aus.
+    4. Wählen Sie unter **Ressource** Ihre Ressource aus.
+    5. Geben Sie unter **Zusammenfassung** eine Beschreibung Ihres Problems ein.
+    6. Wählen Sie unter **Problemtyp** die Option **Unerwartete Gebühren** aus.
+    7. Wählen Sie unter **Untertyp „Problem“** die Option **Ich möchte meine Kosten für meine kostenlose Testversion verstehen** aus.
+
 
 ## <a name="choose-the-deployment-type"></a>Auswählen des Bereitstellungstyps
 

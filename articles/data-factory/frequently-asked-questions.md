@@ -6,12 +6,12 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: a3b892b5d92feb743d9a538c4e418b1f47e39b03
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d0fd62c0173bec17c217ece5560119749d1a4fc6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386304"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739333"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory: Häufig gestellte Fragen
 
@@ -48,7 +48,7 @@ Mit Data Factory können Sie nun flexibel einen beliebigen Ablaufstil modelliere
     - Schleifencontainer:
         * Die ForEach-Aktivität durchläuft eine bestimmte Sammlung von Aktivitäten in einer Schleife. 
 - Triggerbasierte Abläufe:
-    - Pipelines können nach Bedarf oder zeitgesteuert ausgelöst werden.
+    - Pipelines können nach Bedarf, nach der regulären Uhrzeit (Ortszeit) oder als Reaktion auf die von Event Grid-Themen gesteuerten Informationen ausgelöst werden.
 - Deltaabläufe:
     - Sie können mithilfe von Parametern die Obergrenze für Deltakopien beim Verschieben von Dimensions- oder Referenztabellen aus einem relationalen Speicher (entweder lokal oder in der Cloud) definieren, um die Daten in den Lake zu laden.
 

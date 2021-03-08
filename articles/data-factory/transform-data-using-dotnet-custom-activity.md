@@ -7,12 +7,12 @@ ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: ec1e7c77c44cf1969e472a6e7288d1af5d6640e1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 64588d5968df635c3bb017bd1ff1d10951968f32
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374795"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724947"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
 
@@ -35,6 +35,9 @@ Lesen Sie die folgenden Artikel, wenn Sie noch nicht mit dem Azure Batch-Dienst 
 * [Azure Batch – Grundlagen](../batch/batch-technical-overview.md) finden Sie eine Übersicht über den Azure Batch-Dienst.
 * Erstellen Sie ein Azure Batch-Konto mit dem Cmdlet [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount), oder erstellen Sie das Azure Batch-Konto über das [Azure-Portal](../batch/batch-account-create-portal.md). Im Artikel [Verwenden von PowerShell zum Verwalten eines Azure Batch-Kontos](/archive/blogs/windowshpc/using-azure-powershell-to-manage-azure-batch-account) ist die Verwendung dieses Cmdlets im Detail beschrieben.
 * [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool), um einen Azure Batch-Pool zu erstellen.
+
+> [!IMPORTANT]
+> Beim Erstellen eines neuen Azure Batch-Pools muss „VirtualMachineConfiguration“ (und NICHT „CloudServiceConfiguration“) verwendet werden. Weitere Informationen finden Sie im [Azure Batch Pool migration guidance](../batch/batch-pool-cloud-service-to-virtual-machine-configuration.md) (Leitfaden zur Migration eines Azure Batch-Pools). 
 
 ## <a name="azure-batch-linked-service"></a>Verknüpfter Azure Batch-Dienst
 
@@ -298,7 +301,7 @@ Activity Error section:
 Wenn Sie den Inhalt von „stdout.txt“ in nachgelagerten Aktivitäten nutzen möchten, können Sie den Pfad zur Datei „stdout.txt“ im Ausdruck „\@activity('MyCustomActivity').output.outputs[0]“ abrufen.
 
 > [!IMPORTANT]
-> - Die Dateien „activity.json“, „linkedServices.json“ und „datasets.json“ werden im Ordner „runtime“ der Batch-Aufgabe gespeichert. In diesem Beispiel werden die Dateien „activity.json“, „linkedServices.json“ und „datasets.json“ im Pfad `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` gespeichert. Bei Bedarf müssen diese separat bereinigt werden.
+> - Die Dateien „activity.json“, „linkedServices.json“ und „datasets.json“ werden im Ordner „runtime“ der Batch-Aufgabe gespeichert. In diesem Beispiel werden die Dateien „activity.json“, „linkedServices.json“ und „datasets.json“ im Pfad `https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/` gespeichert. Bei Bedarf müssen diese separat bereinigt werden.
 > - Für verknüpfte Dienste, die die selbstgehostete Integration Runtime verwenden, werden vertrauliche Informationen wie Schlüssel oder Kennwörter von der selbstgehosteten Integration Runtime verschlüsselt, um sicherzustellen, dass die Anmeldeinformationen in der vom Kunden definierten privaten Netzwerkumgebung verbleiben. Einige sensible Felder können fehlen, wenn auf sie von Ihrem eigenen Anwendungscode auf diese Weise verwiesen wird. Verwenden Sie bei Bedarf „SecureString“ in „extendedProperties“ anstelle des Verweises auf den verknüpften Dienst.
 
 ## <a name="pass-outputs-to-another-activity"></a>Übergeben von Ausgaben an eine andere Aktivität

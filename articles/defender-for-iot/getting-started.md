@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/26/2020
+ms.date: 2/18/2021
 ms.author: shhazam
-ms.openlocfilehash: 06cf8b5f35bdebed0ebaa9e6949261d7c0d516f2
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: c224dc3f919471e769717f308aff9ae58630d421
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522562"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712758"
 ---
 # <a name="get-started-with-defender-for-iot"></a>Erste Schritte mit Defender für IoT
 
@@ -69,6 +69,8 @@ So registrieren Sie sich:
 1. Klicken Sie auf **Onboard subscription** (Onboarding für Abonnement durchführen).
 1. Wählen Sie auf der Seite **Preise** ein Abonnement aus, oder erstellen Sie ein neues, und fügen Sie die Anzahl committeter Geräte hinzu.
 1. Klicken Sie auf die Registerkarte **Download the on-premises management console** (Lokale Verwaltungskonsole herunterladen), und speichern Sie die heruntergeladene Aktivierungsdatei. Diese Datei enthält die aggregierten committeten Geräte, die Sie definiert haben. Die Datei wird nach der ersten Anmeldung in die Verwaltungskonsole hochgeladen.
+
+Informationen dazu, wie das Offboarding für ein Abonnement durchgeführt wird, finden Sie unter [Offboard a subscription](how-to-manage-sensors-on-the-cloud.md#offboard-a-subscription) (Offboarding für ein Abonnement durchführen).
 
 ## <a name="3-install-and-set-up-the-on-premises-management-console"></a>3. Installieren und Einrichten der lokalen Verwaltungskonsole
 
@@ -126,8 +128,9 @@ Weitere Informationen finden Sie unter [Verbinden von Sensoren mit der lokalen V
 ## <a name="7-populate-azure-sentinel-with-alert-information-optional"></a>7. Senden von Warnungsinformationen an Azure Sentinel (optional)
 
 Konfigurieren Sie Azure Sentinel so, dass Warnungsinformationen an Azure Sentinel gesendet werden. Unter [Verbinden Ihrer Daten aus Defender für IoT mit Azure Sentinel (Vorschau)](how-to-configure-with-sentinel.md) erhalten Sie weitere Informationen.
-## <a name="next-steps"></a>Nächste Schritte
 
-[Einführung in Azure Defender für IoT (Vorschau)](overview.md)
+## <a name="see-also"></a>Weitere Informationen
 
-[Architektur von Azure Defender für IoT](architecture.md)
+- [Einführung in Azure Defender für IoT (Vorschau)](overview.md)
+
+- [Architektur von Azure Defender für IoT](architecture.md)

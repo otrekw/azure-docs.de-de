@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer Azure Database for PostgreSQL Hyperscale-Servergruppe in Azure Arc
-description: Erstellen einer Azure Database for PostgreSQL Hyperscale-Servergruppe in Azure Arc
+title: Erstellen einer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe
+description: Erstellen einer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 4ff45eea8e07a282d8529c745344c11706bc27bb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 046f9d80c034e1ac1f2e7ffe144b4f389861b043
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387987"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687939"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Erstellen einer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe
 
@@ -32,7 +32,7 @@ Dabei handelt es sich um wichtige Themen, die Sie lesen sollten, bevor Sie mit d
 - [Speicherkonfiguration und Kubernetes-Speicherkonzepte](storage-configuration.md)
 - [Kubernetes-Ressourcenmodell](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)
 
-Wenn Sie es vorziehen, dies auszuprobieren, ohne selbst eine vollständige Umgebung bereitzustellen, können Sie mit dem [Azure Arc-Schnelleinstieg](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) in Azure Kubernetes Service (AKS), AWS Elastic Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) oder auf einer Azure-VM einsteigen.
+Wenn Sie es vorziehen, dies auszuprobieren, ohne selbst eine vollständige Umgebung bereitzustellen, können Sie mit dem [Azure Arc-Schnelleinstieg](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) in Azure Kubernetes Service (AKS), AWS Elastic Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) oder auf einer Azure-VM einsteigen.
 
 
 ## <a name="login-to-the-azure-arc-data-controller"></a>Anmelden beim Azure Arc-Datencontroller
@@ -43,7 +43,7 @@ Bevor Sie eine Instanz erstellen können, müssen Sie sich zuerst beim Azure Arc
 azdata login
 ```
 
-Sie werden dazu aufgefordert, den Benutzernamen, Ihr Kennwort und den Systemnamespace einzugeben.  
+Dann werden Sie zur Eingabe von Benutzername, Kennwort und Systemnamespace aufgefordert.  
 
 > Wenn Sie das Skript zum Erstellen des Datencontrollers verwendet haben, sollte Ihr Namespace **arc** lauten.
 
@@ -55,51 +55,95 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 ```
 
 ## <a name="preliminary-and-temporary-step-for-openshift-users-only"></a>Vorläufiger und temporärer Schritt nur für OpenShift-Benutzer
+Implementieren Sie diesen Schritt, bevor Sie mit dem nächsten fortfahren. Sie müssen die folgenden Befehle zum Updaten der Sicherheitseinschränkungen für Ihren Cluster ausführen, um eine PostgreSQL Hyperscale-Servergruppe in Red Hat OpenShift in einem Projekt bereitzustellen, das nicht dem Standardprojekt entspricht. Dieser Befehl gewährt den Dienstkonten, unter denen Ihre PostgreSQL Hyperscale-Servergruppe ausgeführt wird, die erforderlichen Berechtigungen. Die Sicherheitskontexteinschränkung arc-data-scc haben Sie hinzugefügt, als Sie den Azure Arc-Datencontroller bereitgestellt haben.
 
-Implementieren Sie diesen Schritt, bevor Sie mit dem nächsten fortfahren. Sie müssen die folgenden Befehle zum Updaten der Sicherheitseinschränkungen für Ihren Cluster ausführen, um eine PostgreSQL Hyperscale-Servergruppe in Red Hat OpenShift in einem Projekt bereitzustellen, das nicht dem Standardprojekt entspricht. Dieser Befehl gewährt den Dienstkonten, unter denen Ihre PostgreSQL Hyperscale-Servergruppe ausgeführt wird, die erforderlichen Berechtigungen. Die Sicherheitskontexteinschränkung **_arc-data-scc_** haben Sie hinzugefügt, als Sie den Azure Arc-Datencontroller bereitgestellt haben.
-
-```console
+```Console
 oc adm policy add-scc-to-user arc-data-scc -z <server-group-name> -n <namespace name>
 ```
 
-_**Server-group-name** entspricht dem Namen der Servergruppe, die Sie im nächsten Schritt erstellen._
-   
-Weitere Informationen zu Sicherheitskontexteinschränkungen in OpenShift finden Sie in der [OpenShift-Dokumentation](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html).
-Sie können nun mit dem nächsten Schritt fortfahren.
+**Server-group-name entspricht dem Namen der Servergruppe, die Sie im nächsten Schritt erstellen.**
 
-## <a name="create-an-azure-database-for-postgresql-hyperscale-server-group"></a>Erstellen einer Azure Database for PostgreSQL Hyperscale-Servergruppe
+Weitere Informationen zu Sicherheitskontexteinschränkungen in OpenShift finden Sie in der [OpenShift-Dokumentation](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html). Sie können nun mit dem nächsten Schritt fortfahren.
 
-Verwenden Sie den folgenden Befehl zum Erstellen einer Azure Database for PostgreSQL Hyperscale-Servergruppe in Azure Arc:
+
+## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Erstellen einer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe
+
+Um eine PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung auf Ihrem Arc-Datencontroller zu erstellen, verwenden Sie den Befehl `azdata arc postgres server create`, an den Sie mehrere Parameter übergeben.
+
+Details zu allen Parametern, die Sie bei der Erstellung festlegen können, finden Sie in der Ausgabe des Befehls:
+```console
+azdata arc postgres server create --help
+```
+
+Folgende Hauptparameter sollten Sie berücksichtigen:
+- **Name der Servergruppe**, die Sie bereitstellen möchten. Geben Sie entweder `--name` oder `-n` an, gefolgt von einem Namen mit maximal 11 Zeichen.
+
+- **Version der PostgreSQL-Engine**, die Sie bereitstellen möchten (die Standardeinstellung ist Version 12). Zum Bereitstellen von Version 12 können Sie entweder diesen Parameter weglassen oder einen der folgenden Parameter übergeben: `--engine-version 12` oder `-ev 12`. Zum Bereitstellen von Version 11 geben Sie `--engine-version 11` oder `-ev 11` an.
+
+- **Anzahl von Workerknoten**, die Sie zum Aufskalieren und ggf. zum Verbessern der Leistung bereitstellen möchten. Lesen Sie die [Konzepte zu Postgres Hyperscale](concepts-distributed-postgres-hyperscale.md), bevor Sie fortfahren. Verwenden Sie zum Angeben der Anzahl von Workerknoten, die bereitgestellt werden sollen, den Parameter `--workers` oder `-w` gefolgt von einer ganzen Zahl größer oder gleich 2. Wenn Sie z. B. eine Servergruppe mit zwei Workerknoten bereitstellen möchten, geben Sie `--workers 2` oder `-w 2` an. Dadurch werden drei Pods erstellt: einer für den Koordinatorknoten/die Koordinatorinstanz und zwei für die Workerknoten/Workerinstanzen (einer für jeden Worker).
+
+- **Speicherklassen**, die von der Servergruppe verwendet werden sollen. Es ist wichtig, dass Sie die Speicherklasse direkt beim Bereitstellen einer Servergruppe festlegen, da diese nach der Bereitstellung nicht mehr geändert werden kann. Um die Speicherklasse nach der Bereitstellung zu ändern, müssten Sie die Daten extrahieren, Ihre Servergruppe löschen, eine neue Servergruppe erstellen und die Daten importieren. Sie können die Speicherklassen angeben, die für die Daten, Protokolle und Sicherungen verwendet werden sollen. Wenn Sie keine Speicherklassen angeben, werden standardmäßig die Speicherklassen des Datencontrollers verwendet.
+    - Um die Speicherklasse für die Daten festzulegen, geben Sie den Parameter `--storage-class-data` oder `-scd` gefolgt vom Namen der Speicherklasse an.
+    - Um die Speicherklasse für die Protokolle festzulegen, geben Sie den Parameter `--storage-class-logs` oder `-scl` gefolgt vom Namen der Speicherklasse an.
+    - Um die Speicherklasse für die Sicherungen festzulegen: In dieser Vorschauversion von PostgreSQL Hyperscale mit Azure Arc-Unterstützung gibt es je nach Sicherungs-/Wiederherstellungsvorgängen, die Sie ausführen möchten, zwei Möglichkeiten zum Festlegen von Speicherklassen. Wir arbeiten daran, diese Funktion zu vereinfachen. Sie geben entweder eine Speicherklasse oder eine Volumeanspruchseinbindung an. Bei einer Volumeanspruchseinbindung handelt es sich um ein durch einen Doppelpunkt getrenntes Paar, das aus einem Anspruch auf ein vorhandenes persistentes Volume (Persistent Volume Claim, PVC) im selben Namespace und dem Volumetyp (sowie je nach Volumetyp optionalen Metadaten) besteht. Das persistente Volume wird in jedem Pod für die PostgreSQL-Servergruppe eingebunden.
+        - Wenn Sie nur vollständige Datenbankwiederherstellungen ausführen möchten, geben Sie den Parameter `--storage-class-backups` oder `-scb` gefolgt vom Namen der Speicherklasse an.
+        - Wenn Sie sowohl vollständige Datenbankwiederherstellungen als auch Zeitpunktwiederherstellungen ausführen möchten, geben Sie den Parameter `--volume-claim-mounts` oder `-vcm` gefolgt vom Namen eines Volumeanspruchs und eines Volumetyps an.
+
+Beim Ausführen des Erstellungsbefehls werden Sie zur Eingabe des Kennworts des `postgres`-Standardadministrators aufgefordert. Der Name dieses Benutzers kann in dieser Vorschauversion nicht geändert werden. Sie können die interaktive Eingabeaufforderung überspringen, indem Sie die Sitzungsumgebungsvariable `AZDATA_PASSWORD` festlegen, bevor Sie den Erstellungsbefehl ausführen.
+
+### <a name="examples"></a>Beispiele
+
+**Führen Sie den folgenden Befehl aus, um eine Servergruppe mit Postgres-Version 12 namens „postgres01“ mit zwei Workerknoten bereitzustellen, die die gleichen Speicherklassen wie der Datencontroller verwendet:**
+```console
+azdata arc postgres server create -n postgres01 --workers 2
+```
+
+**Führen Sie die folgenden Schritte aus, um eine Servergruppe mit Postgres-Version 12 namens „postgres01“ mit zwei Workerknoten bereitzustellen, die die gleichen Speicherklassen wie der Datencontroller für Daten und Protokolle, aber eine bestimmte Speicherklasse für die Ausführung von vollständigen Wiederherstellungen und Zeitpunktwiederherstellungen verwendet:**
+
+ In diesem Beispiel wird davon ausgegangen, dass die Servergruppe in einem AKS-Cluster (Azure Kubernetes Service) gehostet wird. In diesem Beispiel wird der Speicherklassenname „azurefile-premium“ verwendet. Sie können das folgende Beispiel entsprechend Ihrer Umgebung anpassen. Beachten Sie, dass für diese Konfiguration **accessModes ReadWriteMany** erforderlich ist.  
+
+Erstellen Sie zunächst eine YAML-Datei (z. B. mit dem Namen „CreateBackupPVC.yml“), die die unten stehende Beschreibung des Sicherungs-PVC enthält:
+```console
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: backup-pvc
+  namespace: arc
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: azurefile-premium
+```
+
+Erstellen Sie anschließend einen PVC mit der in der YAML-Datei gespeicherten Definition:
 
 ```console
-azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2> --storage-class-data <storage class name> --storage-class-logs <storage class name> --storage-class-backups <storage class name>
+kubectl create -f e:\CreateBackupPVC.yml -n arc
+``` 
 
-#Example
-#azdata arc postgres server create -n postgres01 --workers 2
+Erstellen Sie als Nächstes die Servergruppe:
+
+```console
+azdata arc postgres server create -n postgres01 --workers 2 -vcm backup-pvc:backup
 ```
 
 > [!IMPORTANT]
-> - Ohne Angabe wird die für Sicherungen verwendete Speicherklasse ( _--storage-class-backups -scb_) standardmäßig auf die Datenspeicherklasse des Datencontrollers festgelegt.
-> - Zum Wiederherstellen einer Servergruppe in einer separaten Servergruppe (z. B. Zeitpunktwiederherstellung) müssen Sie die Servergruppe für die Verwendung von PVCs im Zugriffsmodus ReadWriteMany konfigurieren. Dies muss bei der Erstellung der Servergruppe erfolgen. Nach dem Erstellen ist keine Änderung mehr möglich. Weitere Informationen:
->    - [Erstellen einer Servergruppe, die für Sicherungen und Wiederherstellungen bereit ist](backup-restore-postgresql-hyperscale.md#create-a-server-group-that-is-ready-for-backups-and-restores)
->    - [Einschränkungen für PostgreSQL Hyperscale mit Azure Arc-Unterstützung](limitations-postgresql-hyperscale.md)
+> - Lesen Sie die [aktuellen Einschränkungen im Zusammenhang mit der Sicherung und Wiederherstellung](limitations-postgresql-hyperscale.md#backup-and-restore).
 
 
-> [!NOTE]
-> - **Es stehen auch andere Befehlszeilenparameter zur Verfügung.  Sie können eine vollständige Liste der Optionen anzeigen, indem Sie `azdata arc postgres server create --help` ausführen.**
->
-> - Die von den Parametern „--volume-size-*“ akzeptierte Einheit ist eine Kubernetes-Ressourcenmenge (ein Integer gefolgt von einem SI-Suffix (T, G, M, K, m) oder einem Äquivalent mit Zweierpotenz (Ti, Gi, Mi, Ki)).
-> - Namen dürfen maximal 12 Zeichen lang sein und müssen den DNS-Benennungskonventionen entsprechen.
-> - Sie werden dazu aufgefordert, das Kennwort für den Standardadministrator für _Postgre_ einzugeben.  Sie können die interaktive Eingabeaufforderung überspringen, indem Sie die Sitzungsumgebungsvariable `AZDATA_PASSWORD` festlegen, bevor Sie den Befehl zum Erstellen ausführen.
-> - Wenn Sie den Datencontroller mithilfe der Sitzungsumgebungsvariablen „AZDATA_USERNAME“ und „AZDATA_PASSWORD“ in der gleichen Terminalsitzung bereitgestellt haben, werden die Werte für „AZDATA_PASSWORD“ auch verwendet, um die PostgreSQL Hyperscale-Servergruppe bereitzustellen. Wenn Sie lieber ein anderes Kennwort verwenden möchten, können Sie entweder (1) den Wert für „AZDATA_PASSWORD“ aktualisieren oder (2) die Umgebungsvariable „AZDATA_PASSWORD“ oder deren Wert löschen. Im letzteren Fall werden Sie beim Erstellen einer Servergruppe interaktiv zur Eingabe eines Kennworts aufgefordert.
-> - Der Name des Standardadministrators für die PostgreSQL Hyperscale-Datenbank-Engine lautet _postgres_ und kann zu diesem Zeitpunkt nicht geändert werden.
+> [!NOTE]  
+> - Wenn Sie den Datencontroller mithilfe der Sitzungsumgebungsvariablen `AZDATA_USERNAME` und `AZDATA_PASSWORD` in der gleichen Terminalsitzung bereitgestellt haben, werden die Werte für `AZDATA_PASSWORD` auch verwendet, um die PostgreSQL Hyperscale-Servergruppe bereitzustellen. Wenn Sie lieber ein anderes Kennwort verwenden möchten, können Sie entweder (1) den Wert für `AZDATA_PASSWORD` aktualisieren, (2) die Umgebungsvariable `AZDATA_PASSWORD` löschen oder (3) deren Wert löschen. Im letzteren Fall werden Sie beim Erstellen einer Servergruppe interaktiv zur Eingabe eines Kennworts aufgefordert.
 > - Durch das Erstellen einer PostgreSQL Hyperscale-Servergruppe werden nicht sofort Ressourcen in Azure registriert. Im Rahmen des Uploads des [Ressourcenbestands](upload-metrics-and-logs-to-azure-monitor.md) oder der [Nutzungsdaten](view-billing-data-in-azure.md) in Azure, werden die Ressourcen in Azure erstellt, und Sie können Ihre Ressourcen im Azure-Portal anzeigen.
 
 
 
-## <a name="list-your-azure-database-for-postgresql-server-groups-created-in-your-arc-setup"></a>Auflisten der Azure Database for PostgreSQL-Servergruppen, die in Ihrem Arc-Setup erstellt wurden
+## <a name="list-the-postgresql-hyperscale-server-groups-deployed-in-your-arc-data-controller"></a>Auflisten der in Ihrem Arc-Datencontroller bereitgestellten PostgreSQL Hyperscale-Servergruppen
 
-Verwenden Sie den folgenden Befehl, um die PostgreSQL Hyperscale-Servergruppen in Azure Arc anzuzeigen:
+Führen Sie den folgenden Befehl aus, um die in Ihrem Arc-Datencontroller bereitgestellten PostgreSQL Hyperscale-Servergruppen aufzulisten:
 
 ```console
 azdata arc postgres server list
@@ -112,9 +156,9 @@ Name        State     Workers
 postgres01  Ready     2
 ```
 
-## <a name="get-the-endpoints-to-connect-to-your-azure-database-for-postgresql-server-groups"></a>Abrufen der Endpunkte zum Herstellen einer Verbindung mit Ihren Azure Database for PostgreSQL-Servergruppen
+## <a name="get-the-endpoints-to-connect-to-your-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Abrufen der Endpunkte zum Herstellen einer Verbindung mit den PostgreSQL Hyperscale-Servergruppen mit Azure Arc-Unterstützung
 
-Führen Sie den folgenden Befehl aus, um die Endpunkte für eine PostgreSQL-Instanz anzuzeigen:
+Führen Sie den folgenden Befehl aus, um die Endpunkte für eine PostgreSQL-Servergruppe anzuzeigen:
 
 ```console
 azdata arc postgres endpoint list -n <server group name>
@@ -137,9 +181,7 @@ Beispiel:
 ]
 ```
 
-Sie können den Endpunkt der PostgreSQL-Instanz verwenden, um über Ihr bevorzugtes Tool eine Verbindung mit der PostgreSQL Hyperscale-Servergruppe herzustellen:  [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio), [pgcli](https://www.pgcli.com/) psql, pgAdmin, usw.
-
-Wenn Sie eine Azure-VM zum Testen verwenden, führen Sie die folgenden Anweisungen aus:
+Sie können den Endpunkt der PostgreSQL-Instanz verwenden, um über Ihr bevorzugtes Tool eine Verbindung mit der PostgreSQL Hyperscale-Servergruppe herzustellen: [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio), [pgcli](https://www.pgcli.com/) psql, pgAdmin usw. In diesem Fall stellen Sie eine Verbindung mit dem Koordinatorknoten (Koordinatorinstanz) her, der die Abfrage an die entsprechenden Workerknoten (Workerinstanzen) weiterleitet, wenn Sie verteilte Tabellen erstellt haben. Weitere Informationen finden Sie im Thema zu den [Konzepten von PostgreSQL Hyperscale mit Azure Arc-Unterstützung](concepts-distributed-postgres-hyperscale.md).
 
 ## <a name="special-note-about-azure-virtual-machine-deployments"></a>Besonderer Hinweis zu Azure-VM-Bereitstellungen
 
@@ -192,7 +234,7 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie die Konzepte und Schrittanleitungen zu Azure Database for PostgreSQL Hyperscale, um Ihre Daten auf mehrere PostgreSQL Hyperscale-Knoten zu verteilen und von der gesamten Leistung von Azure Database for PostgreSQL Hyperscale zu profitieren. :
+- Lesen Sie die Konzepte und Schrittanleitungen zu Azure Database for PostgreSQL Hyperscale, um Ihre Daten auf mehrere PostgreSQL Hyperscale-Knoten zu verteilen und so von einer besseren Leistung zu profitieren:
     * [Knoten und Tabellen](../../postgresql/concepts-hyperscale-nodes.md)
     * [Festlegen des Anwendungstyps](../../postgresql/concepts-hyperscale-app-type.md)
     * [Auswählen einer Verteilungsspalte](../../postgresql/concepts-hyperscale-choose-distribution-column.md)
@@ -203,7 +245,7 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 
     > \* Überspringen Sie die Abschnitte **Anmelden am Azure-Portal** und **Erstellen einer Azure Database for PostgreSQL-Instanz für Hyperscale (Citus)** in den oben aufgeführten Dokumenten. Implementieren Sie die restlichen Schritte in Ihrer Azure Arc-Bereitstellung. Diese Abschnitte sind speziell für den PaaS-Dienst „Azure Database for PostgreSQL Hyperscale (Citus)“ in der Azure-Cloud vorgesehen. Die anderen Abschnitte der Dokumente sind jedoch direkt auf Ihre Azure Arc-fähige PostgreSQL Hyperscale-Instanz übertragbar.
 
-- [Skalieren der Azure Database for PostgreSQL Hyperscale-Servergruppe](scale-out-postgresql-hyperscale-server-group.md)
+- [Aufskalieren der PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung](scale-out-postgresql-hyperscale-server-group.md)
 - [Speicherkonfiguration und Kubernetes-Speicherkonzepte](storage-configuration.md)
 - [Erweitern von Ansprüchen persistenter Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Kubernetes-Ressourcenmodell](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)

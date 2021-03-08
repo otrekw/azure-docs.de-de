@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4fe22e0dae73df7af4fc24ba508ecbecf72dfd05
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: b6a0dee4c3fef1be4f4b9f910b4c6256b4924a2d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795371"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700217"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Verwenden von NSG-Zugriff und Azure Bastion
 
@@ -32,11 +32,15 @@ In diesem Diagramm:
 
 In diesem Abschnitt wird der Netzwerkdatenverkehr zwischen dem Benutzer und Azure Bastion und weiter zu virtuellen Zielcomputern in Ihrem virtuellen Netzwerk gezeigt:
 
+> [!IMPORTANT]
+> Wenn Sie sich für die Verwendung einer NSG mit Ihrer Azure Bastion-Ressource entscheiden, **müssen** Sie alle folgenden Regeln für den eingehenden und ausgehenden Datenverkehr erstellen. Durch Auslassen einer der folgenden Regeln in Ihrer NSG wird verhindert, dass Ihre Azure Bastion-Ressource künftig erforderliche Updates empfängt. Damit ist Ihre Ressource anfällig für Sicherheitsrisiken.
+> 
+
 ### <a name="azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet
 
-Azure Bastion wird speziell in ***AzureBastionSubnet** _ bereitgestellt.
+Azure Bastion wird speziell im Azure Bastion-Subnetz (***AzureBastionSubnet***) bereitgestellt.
 
-_ **Eingehender Datenverkehr:**
+* **Eingehender Datenverkehr:**
 
    * **Eingehender Datenverkehr über das öffentliche Internet:** Azure Bastion erstellt eine öffentliche IP-Adresse, für die Port 443 auf der öffentlichen IP-Adresse für den eingehenden Datenverkehr aktiviert sein muss. Ports 3389/22 müssen NICHT auf dem AzureBastionSubnet geöffnet sein.
    * **Eingehender Datenverkehr von der Azure Bastion-Steuerungsebene:** Aktivieren Sie für Steuerungsebenenkonnektivität den Eingangsport 443 über das Diensttag **GatewayManager**. Dadurch kann die Steuerungsebene (also der Gateway-Manager) mit Azure Bastion kommunizieren.

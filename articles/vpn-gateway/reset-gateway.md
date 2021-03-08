@@ -1,24 +1,26 @@
 ---
-title: Zurücksetzen einer Azure VPN Gateway-Instanz zum erneuten Herstellen des IPsec-Tunnels
-description: Setzen Sie die Azure VPN Gateway-Instanz zurück, um IPSec-Tunnel für VPN-Gateways im klassischen und im Resource Manager-Bereitstellungsmodell wiederherzustellen.
-services: vpn-gateway
+title: Zurücksetzen einer VPN Gateway-Instanz oder einer Verbindung zum erneuten Herstellen des IPsec-Tunnels
+titleSuffix: Azure VPN Gateway
+description: Setzen Sie eine Verbindung oder eine VPN Gateway-Instanz zurück, um IPSec-Tunnel wiederherzustellen.
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/21/2020
+ms.date: 02/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: cd25c7638bd7e178cdb963ba528cccefde6b9eca
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: adc2ffd63d73baaddce00324787df61061ea69dc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646490"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726637"
 ---
-# <a name="reset-a-vpn-gateway"></a>Zurücksetzen einer VPN Gateway-Instanz
+# <a name="reset-a-vpn-gateway-or-a-connection"></a>Zurücksetzen einer VPN Gateway-Instanz oder einer Verbindung
 
-Das Zurücksetzen von Azure VPN Gateway-Instanzen ist nützlich, wenn die standortübergreifende VPN-Verbindung bei mindestens einem Site-to-Site-VPN-Tunnel unterbrochen ist. In diesem Fall funktionieren Ihre lokalen VPN-Geräte ordnungsgemäß, können jedoch keine IPsec-Tunnelverbindungen mit Azure VPN Gateway-Instanzen herstellen. In diesem Artikel erfahren Sie, wie Sie Ihre VPN Gateway-Instanz zurücksetzen.
+Das Zurücksetzen einer Azure VPN Gateway-Instanz oder einer Gatewayverbindung ist nützlich, wenn die standortübergreifende VPN-Verbindung bei mindestens einem Site-to-Site-VPN-Tunnel unterbrochen ist. In diesem Fall funktionieren Ihre lokalen VPN-Geräte ordnungsgemäß, können jedoch keine IPsec-Tunnelverbindungen mit Azure VPN Gateway-Instanzen herstellen. Dieser Artikel unterstützt Sie beim Zurücksetzen einer VPN Gateway-Instanz oder einer Gatewayverbindung.
 
-### <a name="what-happens-during-a-reset"></a>Was geschieht beim Zurücksetzen?
+## <a name="what-happens-during-a-reset"></a>Was geschieht beim Zurücksetzen?
+
+### <a name="gateway-reset"></a>Gatewayzurücksetzung
 
 Eine VPN Gateway-Instanz umfasst zwei VM-Instanzen, die in einer Konfiguration mit aktivem Standbymodus ausgeführt werden. Beim Zurücksetzen des Gateways wird das Gateway neu gestartet, und die standortübergreifenden Konfigurationen werden erneut auf das Gateway angewendet. Die öffentliche IP-Adresse des Gateways bleibt unverändert. Die VPN-Routerkonfiguration muss also nicht mit einer neuen öffentlichen IP-Adresse für Azure VPN Gateway aktualisiert werden.
 
@@ -28,7 +30,21 @@ Wenn die Verbindung nach dem ersten Neustart nicht wiederhergestellt wird, führ
 
 Wenn nach den beiden Neustarts weiterhin standortübergreifende Konnektivitätsprobleme auftreten, erstellen Sie über das Azure-Portal ein Supportticket.
 
-## <a name="before-you-begin"></a><a name="before"></a>Voraussetzungen
+### <a name="connection-reset"></a>Verbindungszurücksetzung
+
+Wenn Sie auswählen, dass eine Verbindung zurückgesetzt werden soll, wird das Gateway nicht neu gestartet. Es wird nur die ausgewählte Verbindung zurückgesetzt und wiederhergestellt.
+
+## <a name="reset-a-connection"></a>Zurücksetzen einer Verbindung
+
+Eine Verbindung kann einfach über das Azure-Portal zurückgesetzt werden.
+
+1. Navigieren Sie zu der **Verbindung**, die Sie zurücksetzen möchten. Sie finden die Verbindungsressource entweder, indem Sie sie unter **Alle Ressourcen** suchen oder indem Sie zu **Gatewayname > Verbindungen > Verbindungsname** navigieren.
+1. Wählen Sie auf der Seite **Verbindung** im Menü auf der linken Seite die Option **Zurücksetzen** aus.
+1. Klicken Sie auf der Seite **Zurücksetzen** auf **Zurücksetzen**, um die Verbindung zurückzusetzen.
+
+   :::image type="content" source="./media/reset-gateway/reset-connection.png" alt-text="Screenshot für Zurücksetzung.":::
+
+## <a name="reset-a-vpn-gateway"></a>Zurücksetzen eines VPN-Gateways
 
 Überprüfen Sie vor dem Zurücksetzen des Gateways die unten aufgeführten Elemente für die einzelnen IPsec-Site-to-Site-VPN-Tunnel (S2S). Treten bei diesen Elementen Konflikte auf, werden S2S-VPN-Tunnelverbindungen unterbrochen. Indem Sie die Konfigurationen für Ihre lokalen VPN-Gateways und Azure VPN Gateway-Instanzen überprüfen und korrigieren, werden nicht erforderliche Neustarts und Unterbrechungen anderer funktionierender Verbindungen der Gateways verhindert.
 
@@ -38,17 +54,15 @@ Wenn nach den beiden Neustarts weiterhin standortübergreifende Konnektivitätsp
 * Der vorinstallierte Schlüssel muss sowohl bei der Azure VPN Gateway-Instanz als auch auf dem lokalen VPN-Gateway identisch sein.
 * Wenn Sie eine bestimmte IPsec/IKE-Konfiguration – z.B. Verschlüsselung, Hashalgorithmus oder PFS (Perfect Forward Secrecy) – anwenden, müssen Sie sicherstellen, dass die Azure VPN Gateway-Instanz und das lokale VPN-Gateway dieselbe Konfiguration aufweisen.
 
-## <a name="azure-portal"></a><a name="portal"></a>Azure-Portal
+### <a name="azure-portal"></a><a name="portal"></a>Azure-Portal
 
 Sie können im Ressourcen-Manager-Bereitstellungsmodell ein VPN Gateway im Azure-Portal zurücksetzen. Wenn Sie ein klassisches Gateway zurücksetzen möchten, lesen Sie die PowerShell-Schritte für das [klassische Bereitstellungsmodell](#resetclassic).
 
-### <a name="resource-manager-deployment-model"></a>Ressourcen-Manager-Bereitstellungsmodell
-
 [!INCLUDE [portal steps](../../includes/vpn-gateway-reset-gw-portal-include.md)]
 
-## <a name="powershell"></a><a name="ps"></a>PowerShell
+### <a name="powershell"></a><a name="ps"></a>PowerShell
 
-### <a name="resource-manager-deployment-model"></a>Ressourcen-Manager-Bereitstellungsmodell
+#### <a name="resource-manager-deployment-model"></a>Ressourcen-Manager-Bereitstellungsmodell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -63,7 +77,7 @@ Ergebnis:
 
 Wenn ein Ergebnis zurückgegeben wird, können Sie davon ausgehen, dass das Gateway erfolgreich zurückgesetzt wurde. Nichts im zurückgegebenen Ergebnis gibt jedoch explizit an, dass das Zurücksetzen erfolgreich war. Wenn Sie sich den Verlauf näher ansehen möchten, um zu prüfen, wann genau das Zurücksetzen des Gateways erfolgt ist, können Sie diese Informationen im [Azure-Portal](https://portal.azure.com) anzeigen. Wechseln Sie im Portal zu **GatewayName -> Resource Health**.
 
-### <a name="classic-deployment-model"></a><a name="resetclassic"></a>Klassisches Bereitstellungsmodell
+#### <a name="classic-deployment-model"></a><a name="resetclassic"></a>Klassisches Bereitstellungsmodell
 
 Das Cmdlet zum Zurücksetzen eines Gateways ist **Reset-AzureVNetGateway**. Die Azure PowerShell-Cmdlets für die Dienstverwaltung müssen lokal auf Ihrem Desktop installiert sein. Azure Cloud Shell können Sie nicht verwenden. Stellen Sie vor dem Zurücksetzen sicher, dass Sie die aktuelle Version der [Dienstverwaltungs-PowerShell-Cmdlets](/powershell/azure/servicemanagement/install-azure-ps#azure-service-management-cmdlets) installiert haben. Wenn Sie diesen Befehl verwenden, müssen Sie den vollständigen Namen des virtuellen Netzwerks verwenden. Ein klassisches virtuelles Netzwerk, das über das Portal erstellt wurde, hat einen langen Namen, der für PowerShell erforderlich ist. Sie können den langen Namen anzeigen, indem Sie „Get-AzureVNetConfig -ExportToFile C:\MeinOrdnername\NetworkConfig.xml“ verwenden.
 
@@ -84,7 +98,7 @@ RequestId      : 9ca273de2c4d01e986480ce1ffa4d6d9
 StatusCode     : OK
 ```
 
-## <a name="azure-cli"></a><a name="cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a><a name="cli"></a>Azure-Befehlszeilenschnittstelle
 
 Verwenden Sie zum Zurücksetzen des Gateways den Befehl [az network vnet-gateway reset](/cli/azure/network/vnet-gateway). Im folgenden Beispiel wird das Gateway des virtuellen Netzwerks mit dem Namen „VNet5GW“ in der Ressourcengruppe „TestRG5“ zurückgesetzt:
 

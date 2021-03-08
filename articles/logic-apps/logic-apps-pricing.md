@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 103855748c4b5d998dfc81eeb4044f5f53dae9e5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2b37308bcbcd489876c21dce56878de7e0daf545
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372007"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699027"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Preis- und Abrechnungsmodelle für Azure Logic Apps
 
@@ -94,7 +94,9 @@ Informationen zu Grenzwerten finden Sie unter [ISE-Grenzwerte in Azure Logic App
 
 ## <a name="integration-accounts"></a>Integrationskonten
 
-Ein [Integrationskonto](../logic-apps/logic-apps-pricing.md#integration-accounts) ist eine gesonderte Ressource, die Sie erstellen und mit Logik-Apps verknüpfen. Es dient zum Erkunden, Erstellen und Testen von B2B-Integrationslösungen, die [EDI](logic-apps-enterprise-integration-b2b.md)- und [XML-Verarbeitungsfunktionen](logic-apps-enterprise-integration-xml.md) nutzen. Azure Logic Apps bietet diese Ebenen bzw. Tarife für Integrationskonten:
+Ein [Integrationskonto](../logic-apps/logic-apps-pricing.md#integration-accounts) ist eine gesonderte Ressource, die Sie erstellen und mit Logik-Apps verknüpfen. Es dient zum Erkunden, Erstellen und Testen von B2B-Integrationslösungen, die [EDI](logic-apps-enterprise-integration-b2b.md)- und [XML-Verarbeitungsfunktionen](logic-apps-enterprise-integration-xml.md) nutzen.
+
+Azure Logic Apps bietet folgende Integrationskontoebenen oder -tarife, die je nachdem, ob Ihre Logik-Apps auf dem Verbrauch oder auf der ISE basieren, [unterschiedliche Preise](https://azure.microsoft.com/pricing/details/logic-apps/) und [Abrechnungsmodelle](logic-apps-pricing.md#integration-accounts) aufweisen:
 
 | Tarif | BESCHREIBUNG |
 |------|-------------|

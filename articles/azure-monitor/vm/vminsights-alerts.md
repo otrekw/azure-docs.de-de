@@ -1,36 +1,35 @@
 ---
-title: Warnungen aus Azure Monitor für VMs
-description: Hier wird beschrieben, wie Sie Warnungsregeln anhand von Leistungsdaten erstellen, die von Azure Monitor für VMs gesammelt wurden.
-ms.subservice: ''
+title: Warnungen aus VM Insights
+description: In diesem Artikel wird beschrieben, wie Sie Warnungsregeln anhand von Leistungsdaten erstellen, die von VM Insights erfasst werden.
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 4ae5b12f22b0cbcef7577c2eb9d4f3e3ae737590
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 06c58b7081ed68724a3c907f8fe76dcf5f7b8057
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601857"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046804"
 ---
-# <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>Erstellen von Warnungen aus Azure Monitor für VMs
-[Warnungen in Azure Monitor](../platform/alerts-overview.md) informieren Sie proaktiv über interessante Daten und Muster in Ihren Überwachungsdaten. Azure Monitor für VMs enthält keine vorkonfigurierten Warnungsregeln, doch Sie können eigene Regeln basierend auf den gesammelten Daten erstellen. Dieser Artikel enthält Anleitungen zum Erstellen von Warnungsregeln sowie eine Reihe von Beispielabfragen.
+# <a name="how-to-create-alerts-from-vm-insights"></a>Erstellen von Warnungen über VM Insights
+[Warnungen in Azure Monitor](../alerts/alerts-overview.md) informieren Sie proaktiv über interessante Daten und Muster in Ihren Überwachungsdaten. VM Insights enthält keine vorkonfigurierten Warnungsregeln, aber Sie können eigene Regeln basierend auf den gesammelten Daten erstellen. Dieser Artikel enthält Anleitungen zum Erstellen von Warnungsregeln sowie eine Reihe von Beispielabfragen.
 
 > [!IMPORTANT]
-> Die in diesem Artikel beschriebenen Warnungen basieren auf Protokollabfragen für Daten, die von Azure Monitor für VMs gesammelt wurden. Diese unterscheiden sich von den Warnungen, die durch das [Feature „Gastintegrität“ von Azure Monitor für VMs](vminsights-health-overview.md) erstellt werden, das sich derzeit in der Public Preview-Phase befindet. Wenn dieses Feature allgemein verfügbar wird, werden die Informationen für Warnungen konsolidiert.
+> Die in diesem Artikel beschriebenen Warnungen basieren auf Protokollabfragen für Daten, die von VM Insights erfasst wurden. Diese unterscheiden sich von den Warnungen, die durch das [Feature „Gastintegrität“ von Azure Monitor für VMs](vminsights-health-overview.md) erstellt werden, das sich derzeit in der Public Preview-Phase befindet. Wenn dieses Feature allgemein verfügbar wird, werden die Informationen für Warnungen konsolidiert.
 
 
 ## <a name="alert-rule-types"></a>Warnungsregeltypen
-Azure Monitor verfügt über [verschiedene Typen von Warnungsregeln](../platform/alerts-overview.md#what-you-can-alert-on) basierend auf den Daten, die zum Erstellen der Warnung verwendet werden. Alle von Azure Monitor für VMs gesammelten Daten werden in Azure Monitor-Protokollen gespeichert, die [Protokollwarnungen](../alerts/alerts-log.md) unterstützen. Sie können derzeit keine [Metrikwarnungen](../alerts/alerts-log.md) für von Azure Monitor für VMs gesammelte Leistungsdaten verwenden, da die Daten nicht in Azure Monitor-Metriken erfasst werden. Zum Sammeln von Daten für Metrikwarnungen installieren Sie die [Diagnoseerweiterung](../agents/diagnostics-extension-overview.md) für Windows-VMs oder den [Telegraf-Agent](../platform/collect-custom-metrics-linux-telegraf.md) für Linux-VMs, um Leistungsdaten in Metriken zu erfassen.
+Azure Monitor verfügt über [verschiedene Typen von Warnungsregeln](../alerts/alerts-overview.md#what-you-can-alert-on) basierend auf den Daten, die zum Erstellen der Warnung verwendet werden. Alle von VM Insights gesammelten Daten werden in Azure Monitor-Protokollen gespeichert, die [Protokollwarnungen](../alerts/alerts-log.md) unterstützen. Sie können derzeit keine [Metrikwarnungen](../alerts/alerts-log.md) für von VM Insights gesammelte Leistungsdaten verwenden, weil die Daten nicht in Azure Monitor-Metriken erfasst werden. Zum Sammeln von Daten für Metrikwarnungen installieren Sie die [Diagnoseerweiterung](../agents/diagnostics-extension-overview.md) für Windows-VMs oder den [Telegraf-Agent](../essentials/collect-custom-metrics-linux-telegraf.md) für Linux-VMs, um Leistungsdaten in Metriken zu erfassen.
 
 In Azure Monitor gibt es zwei Typen von Protokollwarnungen:
 
 - Bei [Warnungen des Typs „Anzahl von Ergebnissen“](../alerts/alerts-unified-log.md#count-of-the-results-table-rows) wird eine einzelne Warnung erzeugt, wenn eine Abfrage mindestens eine angegebene Anzahl von Datensätzen zurückgibt. Diese eignen sich ideal für nicht numerische Daten, wie z. B. Windows- und Syslog-Ereignisse, die vom [Log Analytics-Agent](../agents/log-analytics-agent.md) gesammelt werden, oder zum Analysieren von Leistungstrends auf mehreren Computern.
-- Bei [Warnungen des Typs „Metrische Maßeinheit“](../alerts/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) wird eine separate Warnung für jeden Datensatz in einer Abfrage erzeugt, dessen Wert einen in der Warnungsregel definierten Schwellenwert überschreitet. Diese Warnungsregeln eignen sich ideal für Leistungsdaten, die von Azure Monitor für VMs gesammelt werden, da hiermit für jeden Computer individuelle Warnungen erstellt werden können.
+- Bei [Warnungen des Typs „Metrische Maßeinheit“](../alerts/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) wird eine separate Warnung für jeden Datensatz in einer Abfrage erzeugt, dessen Wert einen in der Warnungsregel definierten Schwellenwert überschreitet. Diese Warnungsregeln eignen sich ideal für Leistungsdaten, die von VM Insights erfasst werden, weil für jeden Computer individuelle Warnungen erstellt werden können.
 
 
 ## <a name="alert-rule-walkthrough"></a>Exemplarische Vorgehensweise für Warnungsregeln
-In diesem Abschnitt wird die Erstellung einer Warnungsregel des Typs „Metrische Maßeinheit“ mithilfe von Leistungsdaten aus Azure Monitor für VMs erläutert. Sie können diese grundlegende Vorgehensweise für eine Vielzahl von Protokollabfragen verwenden und so Warnungen für verschiedene Leistungsindikatoren erstellen.
+In diesem Abschnitt wird die Erstellung einer Warnungsregel des Typs „Metrische Maßeinheit“ mithilfe von Leistungsdaten aus VM Insights erläutert. Sie können diese grundlegende Vorgehensweise für eine Vielzahl von Protokollabfragen verwenden und so Warnungen für verschiedene Leistungsindikatoren erstellen.
 
 Erstellen Sie zunächst eine neue Warnungsregel anhand des unter [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../alerts/alerts-log.md) beschriebenen Verfahrens. Wählen Sie als **Ressource** den Log Analytics-Arbeitsbereich aus, den Azure Monitor für VMs in Ihrem Abonnement verwendet. Da es sich bei der Zielressource für Protokollwarnungsregeln immer um einen Log Analytics-Arbeitsbereich handelt, muss die Protokollabfrage einen Filter für bestimmte virtuelle Computer oder VM-Skalierungsgruppen enthalten. 
 
@@ -200,5 +199,5 @@ or _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über [Warnungen in Azure Monitor](../platform/alerts-overview.md).
-- Erfahren Sie mehr über [Protokollabfragen mithilfe von Daten aus Azure Monitor für VMs](vminsights-log-search.md).
+- Erfahren Sie mehr über [Warnungen in Azure Monitor](../alerts/alerts-overview.md).
+- Erfahren Sie mehr über [Protokollabfragen mithilfe von Daten aus VM Insights](vminsights-log-search.md).

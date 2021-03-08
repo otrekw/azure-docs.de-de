@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: dc301cf7149ad9fcd5bd5c02226afedc4df5e3ee
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 63db8375379144b2ede78d9e7010a350b3f69b12
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833094"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726409"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Codeeinschränkungen für Orchestratorfunktionen
 
@@ -31,7 +31,7 @@ Die folgende Tabelle zeigt einige Beispiele für APIs, die *nicht* deterministis
 | API-Kategorie | `Reason` | Problemumgehung |
 | ------------ | ------ | ---------- |
 | Datums- und Zeitangaben  | APIs, die das aktuelle Datum oder die aktuelle Uhrzeit zurückgeben, sind nicht deterministisch, da der Rückgabewert bei jeder Wiedergabe unterschiedlich ist. | Verwenden Sie die [CurrentUtcDateTime](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.currentutcdatetime)-Eigenschaft in .NET, die `currentUtcDateTime`-API in JavaScript oder die `current_utc_datetime`-API in Python, die für die Wiedergabe sicher sind. |
-| GUIDs und UUIDs  | APIs, die eine zufällige GUID oder UUID zurückgeben, sind nicht deterministisch, da der generierte Wert bei jeder Wiedergabe unterschiedlich ist. | Verwenden Sie [NewGuid](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid) in .NET oder `newGuid` in JavaScript zur sicheren Generierung von Zufalls-GUIDs. |
+| GUIDs und UUIDs  | APIs, die eine zufällige GUID oder UUID zurückgeben, sind nicht deterministisch, da der generierte Wert bei jeder Wiedergabe unterschiedlich ist. | Verwenden Sie [NewGuid](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid) in .NET, `newGuid` in JavaScript und `new_guid` in Python zum sicheren Generieren von Zufalls-GUIDs. |
 | Zufallszahlen | APIs, die eine zufällige Zahlen zurückgeben, sind nicht deterministisch, da der generierte Wert bei jeder Wiedergabe unterschiedlich ist. | Verwenden Sie eine Aktivitätsfunktion, um Zufallszahlen an eine Orchestrierung zurückzugeben. Die Rückgabewerte von Aktivitätsfunktionen können immer für die Wiedergabe verwendet werden. |
 | Bindungen | Eingabe- und Ausgabebindungen werden in der Regel für Eingaben/Ausgaben genutzt und sind nicht deterministisch. Eine Orchestratorfunktion darf nicht einmal die Bindungen [Orchestrierungsclient](durable-functions-bindings.md#orchestration-client) und [Entitätsclient](durable-functions-bindings.md#entity-client) direkt verwenden. | Verwenden Sie Eingabe- und Ausgabebindungen innerhalb von Client- oder Aktivitätsfunktionen. |
 | Netzwerk | An Netzwerkaufrufen sind externe Systeme beteiligt. Sie sind nicht deterministisch. | Verwenden Sie für Netzwerkaufrufe Aktivitätsfunktionen. Wenn Sie in Ihrer Orchestratorfunktion einen HTTP-Aufruf ausführen müssen, können Sie auch [dauerhafte HTTP-APIs](durable-functions-http-features.md#consuming-http-apis) verwenden. |

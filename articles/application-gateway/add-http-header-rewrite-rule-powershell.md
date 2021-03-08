@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: absha
-ms.openlocfilehash: 6938ad55915286af397fee6d72a333e3bb39a1e6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 29ca3aff7d75c7a14bf7b325719924936762d191
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397914"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711687"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>Erneutes Generieren von HTTP-Anforderungs- und Antwortheadern mit Azure Application Gateway – Azure PowerShell
 
@@ -31,23 +31,23 @@ Um das erneute Generieren von HTTP-Headern zu konfigurieren, müssen Sie diese S
 
 1. Erstellen Sie die Objekte, die zum erneuten Generieren von HTTP-Headern erforderlich sind:
 
-   - **RequestHeaderConfiguration** : Dient dazu, die Felder für Anforderungsheader, die Sie erneut generieren möchten, und den neuen Wert für die Header anzugeben.
+   - **RequestHeaderConfiguration**: Diese dient dazu, die Anforderungsheaderfelder, die Sie erneut generieren möchten, und den neuen Wert für die Header anzugeben.
 
-   - **ResponseHeaderConfiguration** : Dient dazu, die Felder für Antwortheader, die Sie erneut generieren möchten, und den neuen Wert für die Header anzugeben.
+   - **ResponseHeaderConfiguration**: Diese dient dazu, die Antwortheaderfelder, die Sie erneut generieren möchten, und den neuen Wert für die Header anzugeben.
 
-   - **ActionSet** : Dieses Objekt beinhaltet die Konfigurationen der Anforderungs- und Antwortheader, die zuvor bestimmt wurden.
+   - **ActionSet**: Dieses Objekt beinhaltet die Konfigurationen der Anforderungs- und Antwortheader, die zuvor angegeben wurden.
 
-   - **Bedingung:** Eine optionale Konfiguration. Bedingungen für das erneute Generieren werten den Inhalt von HTTP(S)-Anforderungen und -Antworten aus. Die Aktion für das erneute Generieren wird ausgeführt, wenn die HTTP(S)-Anforderung oder -Antwort die Bedingung für das erneute Generieren erfüllt.
+   - **Condition**: Dies ist eine optionale Konfiguration. Bedingungen für das erneute Generieren werten den Inhalt von HTTP(S)-Anforderungen und -Antworten aus. Die Aktion für das erneute Generieren wird ausgeführt, wenn die HTTP(S)-Anforderung oder -Antwort die Bedingung für das erneute Generieren erfüllt.
 
      Wenn Sie der Aktion mehr als eine Bedingung zuordnen, erfolgt die Aktion nur, wenn alle Bedingungen erfüllt sind. Das heißt also, dass der Vorgang ein logischer UND-Vorgang ist.
 
-   - **RewriteRule** : Enthält mehrere Kombinationen aus Aktion und Bedingung für das erneute Generieren.
+   - **RewriteRule**: Diese Regel enthält mehrere Kombinationen aus Aktion und Bedingung zum erneuten Generieren.
 
-   - **RuleSequence** : Eine optionale Konfiguration, die dabei hilft, die Reihenfolge zu bestimmen, in der die Regeln zum erneuten Generieren ausgeführt werden. Diese Konfiguration ist hilfreich, wenn Sie mehrere Regeln zum erneuten Generieren in einem Satz zum erneuten Generieren haben. Eine Regel zum erneuten Generieren, die eine niedrigere Regelsequenz besitzt, wird zuerst ausgeführt. Wenn Sie denselben Regelsequenzwert zwei Regeln zum erneuten Generieren zuweisen, ist die Reihenfolge der Ausführung unbestimmt.
+   - **RuleSequence**: Dieses Objekt ist eine optionale Konfiguration zum Festlegen der Reihenfolge, in der die Regeln zum erneuten Generieren ausgeführt werden. Diese Konfiguration ist hilfreich, wenn Sie mehrere Regeln zum erneuten Generieren in einem Satz zum erneuten Generieren haben. Eine Regel zum erneuten Generieren, die eine niedrigere Regelsequenz besitzt, wird zuerst ausgeführt. Wenn Sie denselben Regelsequenzwert zwei Regeln zum erneuten Generieren zuweisen, ist die Reihenfolge der Ausführung unbestimmt.
 
      Wenn Sie die „RuleSequence“ nicht explizit angeben, wird der Standardwert 100 festgelegt.
 
-   - **RewriteRuleSet** : Enthält mehrere Regeln zum erneuten Generieren, die einer Anforderungsroutingregel zugeordnet werden.
+   - **RewriteRuleSet**: Dieses Objekt enthält mehrere Regeln zum erneuten Generieren, die einer Anforderungsroutingregel zugeordnet werden.
 
 2. Fügen Sie den „RewriteRuleSet“ an eine Routingregel an. Die Konfiguration für das erneute Generieren wird dem Quelllistener über die Routingregel angefügt. Bei Verwendung einer einfachen Routingregel wird die Konfiguration der erneuten Generierung eines Headers einem Quelllistener zugeordnet und fungiert als erneute Generierung eines globalen Headers. Wenn eine pfadbasierte Routingregel verwendet wird, wird die Konfiguration der erneuten Generierung eines Headers in der URL-Pfadzuordnung definiert. In diesem Fall gilt sie nur für den bestimmten Pfadbereich einer Site.
 
@@ -62,7 +62,7 @@ Select-AzSubscription -Subscription "<sub name>"
 
 ## <a name="specify-the-http-header-rewrite-rule-configuration"></a>Festlegen der Regelkonfiguration für das erneute Generieren eines HTTP-Headers
 
-In diesem Beispiel werden wir eine Umleitungs-URL ändern, indem der Adressheader in der HTTP-Antwort immer dann erneut generiert wird, wenn der Adressheader einen Verweis auf „azurewebsites.net“ enthält. Hierzu fügen wir eine Bedingung hinzu, um zu prüfen, ob der Adressheader in der Antwort „azurewebsites.net“ enthält. Wir verwenden das Muster `(https?):\/\/.*azurewebsites\.net(.*)$`. Außerdem verwenden wir `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` als Headerwert. Dieser Wert ersetzt im Adressheader *azurewebsites.net* durch *contoso.com*.
+In diesem Beispiel werden wir eine Umleitungs-URL ändern, indem der Adressheader in der HTTP-Antwort immer dann erneut generiert wird, wenn der Adressheader einen Verweis auf „azurewebsites.net“ enthält. Hierzu fügen wir eine Bedingung hinzu, um zu prüfen, ob der Adressheader in der Antwort „azurewebsites.net“ enthält. Wir verwenden das Muster `(https?)://.*azurewebsites.net(.*)$`. Außerdem verwenden wir `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` als Headerwert. Dieser Wert ersetzt im Adressheader *azurewebsites.net* durch *contoso.com*.
 
 ```azurepowershell
 $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Location" -HeaderValue "{http_resp_Location_1}://contoso.com{http_resp_Location_2}"

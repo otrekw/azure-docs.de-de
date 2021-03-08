@@ -6,14 +6,14 @@ manager: nberdy
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 02/14/2021
 ms.author: xujing
-ms.openlocfilehash: 2d68314aab636180ff17e330c49c9859b8851b06
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: ba81be54592e591f734b05235bb3ce183a07a11c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950685"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709885"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Problembehandlung beim Azure IoT Hub Device Provisioning-Dienst
 
@@ -44,7 +44,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie eine Warnung zur Metrik des IoT
 
 7. Wählen Sie **Bedingung hinzufügen** und dann die gewünschte Metrik und den Schwellenwert aus, indem Sie den Aufforderungen folgen.
 
-Weitere Informationen finden Sie unter [Was sind klassische Warnungen in Microsoft Azure?](../azure-monitor/platform/alerts-overview.md).
+Weitere Informationen finden Sie unter [Warnungen in Azure Monitor](../azure-monitor/platform/alerts-overview.md).
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Verwenden von Log Analytics zum Anzeigen und Beheben von Fehlern
 
@@ -58,7 +58,7 @@ Weitere Informationen finden Sie unter [Was sind klassische Warnungen in Microso
 
 5. Aktivieren Sie die gewünschten Protokolle, die gesammelt werden sollen.
 
-    | Protokollname | BESCHREIBUNG |
+    | Protokollname | Beschreibung |
     |-------|------------|
     | DeviceOperations | Protokolle im Zusammenhang mit Geräteverbindungsereignissen |
     | ServiceOperations | Ereignisprotokolle im Zusammenhang mit der Verwendung des Dienst-SDKs (z.B. Erstellen oder Aktualisieren von Registrierungsgruppen)|
@@ -82,4 +82,4 @@ Verwenden Sie diese Tabelle, um häufig auftretende Fehler zu verstehen und zu b
 | 404 | Die Device Provisioning-Dienstinstanz oder eine Ressource (z.B. eine Registrierung) ist nicht vorhanden. |404 – Nicht gefunden |
 | 412 | Gemäß RFC7232 entspricht das ETag in der Anforderung nicht dem ETag der vorhandenen Ressource. | 412 Fehler bei Vorbedingung |
 | 429 | Vorgänge werden vom Dienst gedrosselt. Informationen zu bestimmten Dienstgrenzwerten finden Sie unter [Grenzwerte für den IoT Hub Device Provisioning-Dienst](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits). | 429 Zu viele Anforderungen |
-| 500 | Ein interner Fehler ist aufgetreten. | 500 Interner Serverfehler|
+| 500 | Interner Fehler. | 500 Interner Serverfehler|

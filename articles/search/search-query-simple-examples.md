@@ -1,19 +1,19 @@
 ---
 title: Verwenden der einfachen Lucene-Abfragesyntax
 titleSuffix: Azure Cognitive Search
-description: Lernen Sie anhand von Beispielen, indem Sie Abfragen auf der Grundlage der einfachen Syntax für Volltextsuche, Filtersuche, geografische Suche und Facettensuche für einen Azure Cognitive Search-Index ausführen.
+description: Diese Abfragebeispiele zeigen die einfache Syntax für Volltextsuche, Filtersuche und geografische Suche für einen Azure Cognitive Search-Index.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/12/2020
-ms.openlocfilehash: ff9495e37a499b5502d8f8ced79b69608fa9552a
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.date: 03/03/2021
+ms.openlocfilehash: 2abe19351c92bf9cea85c85dd55f47b5ee6d1625
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401745"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694035"
 ---
 # <a name="use-the-simple-search-syntax-in-azure-cognitive-search"></a>Verwenden der „einfachen“ Suchsyntax in Azure Cognitive Search
 
@@ -22,309 +22,508 @@ In Azure Cognitive Search wird bei der [einfachen Abfragesyntax](query-simple-sy
 > [!NOTE]
 > Eine alternative Abfragesyntax ist die [vollständige Lucene-Abfragesyntax](query-lucene-syntax.md), die komplexere Abfragestrukturen wie z. B. die Fuzzysuche und die Platzhaltersuche unterstützt. Weitere Informationen und Beispiele finden Sie unter [Verwenden der vollständigen Lucene-Syntax](search-query-lucene-examples.md).
 
-## <a name="nyc-jobs-examples"></a>Beispiele für Jobs in New York City
+## <a name="hotels-sample-index"></a>Beispielindex für Hotels
 
-Der in den folgenden Beispielen verwendete [Suchindex für Jobs in NYC](https://azjobsdemo.azurewebsites.net/) besteht aus Stellenangeboten basierend auf einem Dataset, das von der [Initiative „NYC OpenData“](https://nycopendata.socrata.com/) bereitgestellt wird. Diese Daten sollten weder als aktuell noch als vollständig betrachtet werden. Der Index wird über einen Sandboxdienst von Microsoft bereitgestellt. Das bedeutet, dass Sie zum Testen dieser Abfragen weder ein Azure-Abonnement noch Azure Cognitive Search benötigen.
+Die folgenden Abfragen basieren auf „hotels-sample-index“. Diesen Index können Sie mithilfe der Anweisungen in diesem [Schnellstart](search-get-started-portal.md) erstellen.
 
-Sie benötigen lediglich Postman oder ein äquivalentes Tool zum Senden von HTTP-Anforderungen per GET oder POST. Wenn Sie mit diesen Tools nicht vertraut sind, lesen Sie den Artikel [Schnellstart: Untersuchen der Azure Cognitive Search-REST-API](search-get-started-rest.md).
+Beispielabfragen werden mithilfe der REST-API und POST-Anforderungen formuliert. Sie können sie in [Postman](search-get-started-rest.md) oder in [Visual Studio Code mit Cognitive Search-Erweiterung](search-get-started-vs-code.md) einfügen und ausführen.
 
-## <a name="set-up-the-request"></a>Einrichten der Anforderung
+Anforderungsheader müssen die folgenden Werte aufweisen:
 
-1. Anforderungsheader müssen die folgenden Werte aufweisen:
+| Schlüssel | Wert |
+|-----|-------|
+| Content-Type | Anwendung/json|
+| api-key  | `<your-search-service-api-key>`, entweder Abfrage- oder Administratorschlüssel |
 
-   | Schlüssel | Wert |
-   |-----|-------|
-   | Content-Type | `application/json`|
-   | api-key  | `252044BE3886FE4A8E3BAA4F595114BB` </br> (Dies ist der tatsächliche API-Abfrageschlüssel für den Sandbox-Suchdienst, der den Index für Jobs in NYC hostet.) |
-
-1. Legen Sie das Verb auf **`GET`** fest.
-
-1. Legen Sie die URL auf **`https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&search=*&$count=true`** fest. 
-
-   + Die Dokumentsammlung für den Index enthält den gesamten durchsuchbaren Inhalt. Der im Anforderungsheader angegebene API-Abfrageschlüssel funktioniert nur für Lesevorgänge für die Dokumentsammlung.
-
-   + **`$count=true`** gibt die Anzahl der Dokumente zurück, die den Suchkriterien entsprechen. Bei einer leeren Suchzeichenfolge ist dies die Anzahl aller Dokumente im Index (in unserem Beispiel „2558“ im Index für Jobs in NYC).
-
-   + **`search=*`** ist eine Abfrage ohne Angaben, die einer NULL-Suche oder leeren Suche entspricht. Dies ist nicht besonders nützlich, aber es ist die einfachste Suche, die Sie ausführen können, und es werden alle abrufbaren Felder im Index mit allen Werten angezeigt.
-
-1. Fügen Sie als Überprüfungsschritt die folgende Anforderung in GET ein, und klicken Sie auf **Senden**. Die Ergebnisse werden als ausführliche JSON-Dokumente zurückgegeben.
-
-   ```http
-   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=*&queryType=full
-   ```
-
-### <a name="how-to-invoke-simple-query-parsing"></a>Aufrufen der einfachen Abfrageanalyse
-
-Für interaktive Abfragen müssen Sie nichts angeben: einfache Abfragen sind die Standardeinstellung. Wenn Sie zuvor **`queryType=full`** aufgerufen haben, können Sie im Code die Standardeinstellung mit **`queryType=simple`** zurücksetzen.
+URI-Parameter müssen Ihren Suchdienstendpunkt mit dem Indexnamen, den Dokumentationssammlungen, dem Suchbefehl und der API-Version enthalten, ähnlich wie im folgenden Beispiel gezeigt:
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
-{
-    "queryType": "simple"
-}
+https://{{service-name}}.search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 ```
 
-## <a name="example-1-full-text-search-on-specific-fields"></a>Beispiel 1: Volltextsuche für bestimmte Felder
+Der Anforderungstext muss als gültiger JSON-Code vorliegen:
 
-Dieses erste Beispiel ist nicht parserspezifisch, wir beginnen jedoch mit diesem Beispiel, um das erste Grundkonzept für Abfragen vorzustellen: die Eingrenzung. In diesem Beispiel werden sowohl die Abfrageausführung als auch die Antwort auf wenige bestimmte Felder beschränkt. Bei Verwendung des Tools Postman oder Suchexplorer ist es wichtig, zu wissen, wie eine lesbare JSON-Antwort strukturiert wird. 
-
-Diese Abfrage zielt nur auf *business_title* in **`searchFields`** ab, wobei der Parameter **`select`** das gleiche Feld in der Antwort angibt.
-
-```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+```json
 {
-    "count": true,
-    "queryType": "simple",
     "search": "*",
-    "searchFields": "business_title",
-    "select": "business_title"
+    "queryType": "simple",
+    "select": "HotelId, HotelName, Category, Tags, Description",
+    "count": true
 }
 ```
 
-Die Antwort auf diese Abfrage sollte etwa wie im folgenden Screenshot aussehen.
++ Wenn „search“ auf `*` festgelegt ist, erfolgt die Abfrage ohne Angaben und entspricht einer NULL-Suche oder leeren Suche. Dies ist nicht besonders nützlich, aber es ist die einfachste Suche, die Sie ausführen können, und es werden alle abrufbaren Felder im Index mit allen Werten angezeigt.
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-sample-results.png" alt-text="Postman-Beispielantwort" border="false":::
++ „queryType“ ist standardmäßig auf „simple“ festgelegt und kann ausgelassen werden. Hier ist dieser Ausdruck jedoch enthalten, um zu verdeutlichen, dass die Abfragebeispiele in diesem Artikel in einfacher Syntax ausgedrückt werden.
 
-Möglicherweise ist Ihnen die Suchbewertung in der Antwort aufgefallen. Zu einer einheitlichen Bewertung von **1** kommt es, wenn kein Rang vorhanden ist, weil es entweder keine Volltextsuche war oder weil keine Kriterien angegeben wurden. Bei einer leeren Suche werden Zeilen in beliebiger Reihenfolge zurückgegeben. Wenn Sie tatsächliche Kriterien einfügen, werden aussagekräftige Werte für die Suchbewertungen angezeigt.
++ „select“ ist auf eine durch Trennzeichen getrennte Liste von Feldern festgelegt und wird zur Zusammenstellung von Suchergebnissen verwendet. Es werden nur die Felder einbezogen, die im Kontext von Suchergebnissen nützlich sind.
+
++ „count“ gibt die Anzahl der Dokumente zurück, die mit den Suchkriterien übereinstimmen. Bei einer leeren Suchzeichenfolge ist dies die Anzahl aller Dokumente im Index (50 im Fall von „hotels-sample-index“).
+
+## <a name="example-1-full-text-search"></a>Beispiel 1: Volltextsuche
+
+Die Volltextsuche kann eine beliebige Anzahl von eigenständigen Begriffen oder in Anführungszeichen eingeschlossenen Ausdrücken mit oder ohne boolesche Operatoren sein. 
+
+```http
+POST /indexes/hotel-samples-index/docs/search?api-version=2020-06-30
+{
+    "search": "pool spa +airport",
+    "searchMode": any,
+    "queryType": "simple",
+    "select": "HotelId, HotelName, Category, Description",
+    "count": true
+}
+```
+
+Eine Schlüsselwortsuche, die aus wichtigen Begriffen oder Ausdrücken besteht, funktioniert tendenziell am besten. Während der Indizierung und der Abfrage werden Zeichenfolgenfelder einer Textanalyse unterzogen, wobei unwesentliche Wörter wie Artikel (der/die/das) oder Pronomen (er/sie/es) gelöscht werden. Wenn Sie sehen möchten, wie eine Abfragezeichenfolge im Index mit Token versehen wird, übergeben Sie die Zeichenfolge in einem [Textanalyse](/rest/api/searchservice/test-analyzer)-Aufruf an den Index.
+
+Der Parameter „searchMode“ steuert die Genauigkeit und den Abruf. Wenn Sie mehr Abrufe benötigen, verwenden Sie den Standardwert „any“. Dieser gibt ein Ergebnis zurück, wenn ein beliebiger Teil der Abfragezeichenfolge übereinstimmt. Wenn Sie ein genaues Ergebnis bevorzugen, bei dem alle Teile der Zeichenfolge übereinstimmen müssen, ändern Sie „searchMode“ in „all“. Testen Sie die obige Abfrage mit beiden Optionen, um zu sehen, wie „searchMode“ das Ergebnis beeinflusst.
+
+Das Ergebnis der Abfrage „pool spa +airport“ sollte in etwa wie im folgenden (gekürzten) Beispiel aussehen.
+
+```json
+"@odata.count": 6,
+"value": [
+    {
+        "@search.score": 7.3617697,
+        "HotelId": "21",
+        "HotelName": "Nova Hotel & Spa",
+        "Description": "1 Mile from the airport.  Free WiFi, Outdoor Pool, Complimentary Airport Shuttle, 6 miles from the beach & 10 miles from downtown.",
+        "Category": "Resort and Spa",
+        "Tags": [
+            "pool",
+            "continental breakfast",
+            "free parking"
+        ]
+    },
+    {
+        "@search.score": 2.5560288,
+        "HotelId": "25",
+        "HotelName": "Scottish Inn",
+        "Description": "Newly Redesigned Rooms & airport shuttle.  Minutes from the airport, enjoy lakeside amenities, a resort-style pool & stylish new guestrooms with Internet TVs.",
+        "Category": "Luxury",
+        "Tags": [
+            "24-hour front desk service",
+            "continental breakfast",
+            "free wifi"
+        ]
+    },
+    {
+        "@search.score": 2.2988036,
+        "HotelId": "35",
+        "HotelName": "Suites At Bellevue Square",
+        "Description": "Luxury at the mall.  Located across the street from the Light Rail to downtown.  Free shuttle to the mall and airport.",
+        "Category": "Resort and Spa",
+        "Tags": [
+            "continental breakfast",
+            "air conditioning",
+            "24-hour front desk service"
+        ]
+    }
+```
+
+Beachten Sie die Suchbewertung („search.score“) im Ergebnis. Dies ist die Relevanzbewertung der Übereinstimmung. Standardmäßig gibt ein Suchdienst basierend auf dieser Bewertung die ersten 50 Übereinstimmungen zurück.
+
+Zu einer einheitlichen Bewertung von „1.0“ kommt es, wenn kein Rang vorliegt, weil es entweder keine Volltextsuche war oder weil keine Kriterien angegeben wurden. Beispielsweise werden bei einer leeren Suche (search=`*`) Zeilen in beliebiger Reihenfolge zurückgegeben. Wenn Sie tatsächliche Kriterien einfügen, werden aussagekräftige Werte für die Suchbewertungen angezeigt.
 
 ## <a name="example-2-look-up-by-id"></a>Beispiel 2: Suchen anhand der ID
 
-Wenn Sie Suchergebnisse in einer Abfrage zurückgeben, besteht ein logischer nachfolgender Schritt darin, eine Detailseite bereitzustellen, die mehr Felder aus dem Dokument enthält. In diesem Beispiel wird veranschaulicht, wie Sie ein einzelnes Dokument mithilfe eines [Suchvorgangs](/rest/api/searchservice/lookup-document) zurückgeben, um die Dokument-ID zu übergeben.
-
-Alle Dokumente verfügen über einen eindeutigen Bezeichner. Beim Ausprobieren der Syntax für eine Suchabfrage können Sie zuerst eine Liste mit Dokument-IDs zurückgeben, um eine geeignete ID auszuwählen. Für „NYC Jobs“ sind diese Bezeichner im Feld `id` gespeichert.
+Wenn Sie Suchergebnisse in einer Abfrage zurückgeben, besteht ein logischer nachfolgender Schritt darin, eine Detailseite bereitzustellen, die weitere Felder aus dem Dokument enthält. In diesem Beispiel wird veranschaulicht, wie Sie ein einzelnes Dokument mithilfe eines [Suchdokuments](/rest/api/searchservice/lookup-document) zurückgeben, indem Sie die Dokument-ID übergeben.
 
 ```http
-GET /indexes/nycjobs/docs?api-version=2020-06-30&search=*&$select=id&$count=true
+GET /indexes/hotels-sample-index/docs/41?api-version=2020-06-30
 ```
 
-Rufen Sie als Nächstes ein Dokument aus der Sammlung basierend auf der `id` „9E1E3AF9-0660-4E00-AF51-9B654925A2D5“ ab, die in der vorherigen Antwort an erster Stelle angezeigt wurde. Mit der folgenden Abfrage werden alle abrufbaren Felder für das gesamte Dokument zurückgegeben.
+Alle Dokumente verfügen über einen eindeutigen Bezeichner. Wenn Sie das Portal verwenden, wählen Sie den Index auf der Registerkarte **Indizes** aus, und stellen Sie dann anhand der Felddefinitionen fest, welches Feld als Schlüssel dient. Bei Verwendung von REST gibt der Aufruf [Get Index](/rest/api/searchservice/get-index) die Indexdefinition im Antworttext zurück.
 
-```http
-GET /indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2020-06-30
+Die Antwort für die obige Abfrage besteht aus dem Dokument mit dem Schlüssel 41. Alle Felder, die in der Indexdefinition als abrufbar gekennzeichnet sind, können in den Suchergebnissen zurückgegeben und in Ihrer App gerendert werden.
+
+```json
+{
+    "HotelId": "41",
+    "HotelName": "Ocean Air Motel",
+    "Description": "Oceanfront hotel overlooking the beach features rooms with a private balcony and 2 indoor and outdoor pools. Various shops and art entertainment are on the boardwalk, just steps away.",
+    "Description_fr": "L'hôtel front de mer surplombant la plage dispose de chambres avec balcon privé et 2 piscines intérieures et extérieures. Divers commerces et animations artistiques sont sur la promenade, à quelques pas.",
+    "Category": "Budget",
+    "Tags": [
+        "pool",
+        "air conditioning",
+        "bar"
+    ],
+    "ParkingIncluded": true,
+    "LastRenovationDate": "1951-05-10T00:00:00Z",
+    "Rating": 3.5,
+    "Location": {
+        "type": "Point",
+        "coordinates": [
+            -157.846817,
+            21.295841
+        ],
+        "crs": {
+            "type": "name",
+            "properties": {
+                "name": "EPSG:4326"
+            }
+        }
+    },
+    "Address": {
+        "StreetAddress": "1450 Ala Moana Blvd 2238 Ala Moana Ctr",
+        "City": "Honolulu",
+        "StateProvince": "HI",
+        "PostalCode": "96814",
+        "Country": "USA"
+    },
 ```
 
-## <a name="example-3-filter-queries"></a>Beispiel 3: Filterabfragen
+## <a name="example-3-filter-on-text"></a>Beispiel 3: Filtern nach Text
 
-Die [Filtersyntax](./search-query-odata-filter.md) ist ein OData-Ausdruck, den Sie allein oder mit **`search`** verwenden können. Ein eigenständiger Filter ohne Suchparameter ist nützlich, wenn der Filterausdruck Dokumente von Interesse vollständig qualifizieren kann. Ohne Abfragezeichenfolge wird keine lexikalische oder linguistische Analyse, Bewertung („1“ für alle Bewertungen) und Rangzuweisung durchgeführt. Beachten Sie, dass die Suchzeichenfolge leer ist.
+Die [Filtersyntax](search-query-odata-filter.md) ist ein OData-Ausdruck, den Sie allein oder mit „search“ verwenden können. Wenn sie zusammen verwendet werden, wird „filter“ zuerst auf den gesamten Index angewendet, und anschließend wird die Suche für die Ergebnisse des Filters ausgeführt. Filter können daher eine nützliche Methode zum Verbessern der Abfrageleistung darstellen, da sie die Menge der Dokumente reduzieren, die bei der Suchabfrage verarbeitet werden müssen.
+
+Filter können für alle Felder definiert werden, die in der Indexdefinition als filterbar gekennzeichnet sind. Für „hotels-sample-index“ gehören „Category“, „Tags“, „ParkingIncluded“, „Rating“ und die meisten Adressfelder zu den filterbaren Feldern.
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "search": "art tours",
+    "queryType": "simple",
+    "filter": "Category eq 'Resort and Spa'",
+    "select": "HotelId,HotelName,Description,Category",
+    "count": true
+}
+```
+
+Die Antwort für die obige Abfrage ist auf die Hotels beschränkt, die sich in der Kategorie „Resort and Spa“ befinden und die Begriffe „art“ oder „tours“ enthalten. In diesem Fall gibt es nur eine Übereinstimmung.
+
+```json
+{
+    "@search.score": 2.8576312,
+    "HotelId": "31",
+    "HotelName": "Santa Fe Stay",
+    "Description": "Nestled on six beautifully landscaped acres, located 2 blocks from the Plaza. Unwind at the spa and indulge in art tours on site.",
+    "Category": "Resort and Spa"
+}
+```
+
+## <a name="example-4-filter-functions"></a>Beispiel 4: Filterfunktionen
+
+Filterausdrücke können die [Funktionen „search.isMatch“ und „search.ismatchscoring“](search-query-odata-full-text-search-functions.md) enthalten, sodass Sie eine Suchabfrage innerhalb des Filters erstellen können. Dieser Filterausdruck verwendet einen Platzhalter für *free*, um die enthaltenen Zusatzleistungen wie z. B. kostenloses WLAN oder kostenloses Parken auszuwählen.
+
+```http
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+  {
+    "search": "",
+    "filter": "search.ismatch('free*', 'Tags', 'full', 'any')",
+    "select": "HotelId, HotelName, Category, Description",
+    "count": true
+  }
+```
+
+Die Antwort auf die obigen Abfrage enthält Übereinstimmungen mit 19 Hotels, die kostenlose Zusatzleistungen anbieten. Beachten Sie, dass die Suchbewertung in den gesamten Ergebnissen einheitlich „1.0“ lautet. Dies liegt daran, dass der Suchausdruck NULL oder leer ist. So erhalten Sie wörtliche Filterübereinstimmungen, es wird jedoch keine Volltextsuche durchgeführt. Relevanzbewertungen werden nur bei einer Volltextsuche zurückgegeben. Wenn Sie Filter ohne „search“ verwenden, stellen Sie sicher, dass genügend sortierbare Felder vorliegen, damit Sie den Suchrang steuern können.
+
+```json
+"@odata.count": 19,
+"value": [
     {
-      "count": true,
-      "search": "",
-      "filter": "salary_frequency eq 'Annual' and salary_range_from gt 90000",
-      "select": "job_id, business_title, agency, salary_range_from"
+        "@search.score": 1.0,
+        "HotelId": "31",
+        "HotelName": "Santa Fe Stay",
+        "Tags": [
+            "view",
+            "restaurant",
+            "free parking"
+        ]
+    },
+    {
+        "@search.score": 1.0,
+        "HotelId": "27",
+        "HotelName": "Super Deluxe Inn & Suites",
+        "Tags": [
+            "bar",
+            "free wifi"
+        ]
+    },
+    {
+        "@search.score": 1.0,
+        "HotelId": "39",
+        "HotelName": "Whitefish Lodge & Suites",
+        "Tags": [
+            "continental breakfast",
+            "free parking",
+            "free wifi"
+        ]
+    },
+    {
+        "@search.score": 1.0,
+        "HotelId": "11",
+        "HotelName": "Regal Orb Resort & Spa",
+        "Tags": [
+            "free wifi",
+            "restaurant",
+            "24-hour front desk service"
+        ]
+    },
+```
+
+## <a name="example-5-range-filters"></a>Beispiel 5: Bereichsfilter
+
+Die Bereichsfilterung wird durch Filterausdrücke für jeden Datentyp unterstützt. In den folgenden Beispielen werden numerische Bereiche und Zeichenfolgenbereiche veranschaulicht. Datentypen sind bei Bereichsfiltern wichtig und funktionieren am besten bei numerischen Daten in numerischen Feldern und Zeichenfolgendaten in Zeichenfolgenfeldern. Numerische Daten in Zeichenfolgenfeldern eignen sich nicht für Bereiche, weil sich numerische Zeichenfolgen nicht vergleichen lassen.
+
+In der folgenden Abfrage wird ein numerischer Bereich verwendet. In „hotels-sample-index“ ist „Rating“ das einzige filterbare numerische Feld.
+
+```http
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "search": "*",
+    "filter": "Rating ge 2 and Rating lt 4",
+    "select": "HotelId, HotelName, Rating",
+    "orderby": "Rating desc",
+    "count": true
+}
+```
+
+Das Ergebnis dieser Abfrage sollte in etwa wie im folgenden (gekürzten) Beispiel aussehen.
+
+```json
+"@odata.count": 27,
+"value": [
+    {
+        "@search.score": 1.0,
+        "HotelId": "22",
+        "HotelName": "Stone Lion Inn",
+        "Rating": 3.9
+    },
+    {
+        "@search.score": 1.0,
+        "HotelId": "25",
+        "HotelName": "Scottish Inn",
+        "Rating": 3.8
+    },
+    {
+        "@search.score": 1.0,
+        "HotelId": "2",
+        "HotelName": "Twin Dome Motel",
+        "Rating": 3.6
     }
 ```
 
-Wenn sie zusammen verwendet werden, wird der Filter zuerst auf den gesamten Index angewendet, und anschließend wird die Suche für die Ergebnisse des Filters ausgeführt. Filter können daher eine nützliche Methode zum Verbessern der Abfrageleistung darstellen, da sie die Menge der Dokumente reduzieren, die bei der Suchabfrage verarbeitet werden müssen.
-
-  :::image type="content" source="media/search-query-simple-examples/filtered-query.png" alt-text="Filtern von Abfrageantworten" border="false":::
-
-Eine andere leistungsstarke Möglichkeit zum Kombinieren von Filter und Suche ist die Verwendung von **`search.ismatch*()`** in einem Filterausdruck, wobei Sie eine Suchabfrage innerhalb des Filters durchführen können. Bei diesem Filterausdruck wird ein Platzhalter für *plan* (um „term plan“, „planner“, „planning“ usw. einzuschließen) verwendet, um „business_title“ auszuwählen.
+Bei der nächsten Abfrage handelt es sich um einen Bereichsfilter für ein Zeichenfolgenfeld (Address/StateProvince):
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
-    {
-      "count": true,
-      "search": "",
-      "filter": "search.ismatch('plan*', 'business_title', 'full', 'any')",
-      "select": "job_id, business_title, agency, salary_range_from"
-    }
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "search": "*",
+    "filter": "Address/StateProvince ge 'A*' and Address/StateProvince lt 'D*'",
+    "select": "HotelId, HotelName, Address/StateProvince",
+    "count": true
+}
 ```
 
-Weitere Informationen zu dieser Funktion finden Sie unter [„search.ismatch“ unter „Filterbeispiele“](./search-query-odata-full-text-search-functions.md#examples).
+Das Ergebnis dieser Abfrage sollte in etwa wie im folgenden (gekürzten) Beispiel aussehen. In diesem Beispiel ist es nicht möglich, nach „StateProvince“ zu sortieren, weil das Feld in der Indexdefinition nicht mit dem Attribut „sortable“ (sortierbar) versehen ist.
 
-## <a name="example-4-range-filters"></a>Beispiel 4: Bereichsfilter
+```json
+"@odata.count": 9,
+"value": [
+    {
+        "@search.score": 1.0,
+        "HotelId": "9",
+        "HotelName": "Smile Hotel",
+        "Address": {
+            "StateProvince": "CA "
+        }
+    },
+    {
+        "@search.score": 1.0,
+        "HotelId": "39",
+        "HotelName": "Whitefish Lodge & Suites",
+        "Address": {
+            "StateProvince": "CO"
+        }
+    },
+    {
+        "@search.score": 1.0,
+        "HotelId": "7",
+        "HotelName": "Countryside Resort",
+        "Address": {
+            "StateProvince": "CA "
+        }
+    },
+```
 
-Die Bereichsfilterung wird durch **`$filter`** -Ausdrücke für jeden Datentyp unterstützt. In den folgenden Beispielen werden numerische und Zeichenfolgenfelder durchsucht. 
+## <a name="example-6-geo-search"></a>Beispiel 6: Geografische Suche
 
-Datentypen sind bei Bereichsfiltern wichtig und funktionieren am besten bei numerischen Daten in numerischen Feldern und Zeichenfolgendaten in Zeichenfolgenfeldern. Numerische Daten in Zeichenfolgenfeldern eignen sich nicht für Bereiche, da sich numerische Zeichenfolgen in Azure Cognitive Search nicht vergleichen lassen.
-
-In der folgenden Abfrage wird ein numerischer Bereich verwendet:
+„hotels-sample-index“ enthält ein Feld „geo_location“ mit Breiten- und Längengradkoordinaten. In diesem Beispiel wird die [geo.distance-Funktion](search-query-odata-geo-spatial-functions.md#examples) verwendet, mit der Dokumente im Umkreis eines Startpunkts bis zu einer beliebigen festgelegten Entfernung (in Kilometer) gefiltert werden. Sie können den letzten Wert in der Abfrage (10) anpassen, um die Fläche der Abfrage zu verkleinern oder zu vergrößern.
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
-    {
-      "count": true,
-      "search": "",
-      "filter": "num_of_positions ge 5 and num_of_positions lt 10",
-      "select": "job_id, business_title, num_of_positions, agency",
-      "orderby": "agency"
-    }
-```
-Die Antwort auf diese Abfrage sollte etwa wie im folgenden Screenshot aussehen.
-
-  :::image type="content" source="media/search-query-simple-examples/rangefilternumeric.png" alt-text="Bereichsfilter für numerische Bereiche" border="false":::
-
-In der folgenden Abfrage liegt der Bereich über einem Zeichenfolgenfeld („business_title“):
-
-```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
-    {
-      "count": true,
-      "search": "",
-      "filter": "business_title ge 'A*' and business_title lt 'C*'",
-      "select": "job_id, business_title, agency",
-      "orderby": "business_title"
-    }
+POST /indexes/v/docs/search?api-version=2020-06-30
+{
+    "search": "*",
+    "filter": "geo.distance(Location, geography'POINT(-122.335114 47.612839)') le 10",
+    "select": "HotelId, HotelName, Address/City, Address/StateProvince",
+    "count": true
+}
 ```
 
-Die Antwort auf diese Abfrage sollte etwa wie im folgenden Screenshot aussehen.
+Im Ergebnis dieser Abfrage werden alle Hotels zurückgegeben, die innerhalb eines 10-Kilometer-Radius von den angegebenen Koordinaten liegen:
 
-  :::image type="content" source="media/search-query-simple-examples/rangefiltertext.png" alt-text="Bereichsfilter für Textbereiche" border="false":::
-
-> [!NOTE]
-> Die Verwendung von Facettenwertbereichen ist eine verbreitete Anforderung für Suchanwendungen. Weitere Informationen und Beispiele finden Sie unter [Erstellen eines Facettenfilters](search-filters-facets.md).
-
-## <a name="example-5-geo-search"></a>Beispiel 5: Geografische Suche
-
-Der Beispielindex enthält das Feld „geo_location“ mit Breiten- und Längengradkoordinaten. In diesem Beispiel wird die [geo.distance-Funktion](search-query-odata-geo-spatial-functions.md#examples) verwendet, mit der Dokumente im Umkreis eines Startpunkts bis zu einer beliebigen festgelegten Entfernung (in Kilometer) gefiltert werden. Sie können den letzten Wert in der Abfrage (4) anpassen, um die Fläche der Abfrage zu verkleinern oder zu vergrößern.
-
-```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
-    {
-      "count": true,
-      "search": "",
-      "filter": "geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4",
-      "select": "business_title, work_location"
-    }
+```json
+{
+    "@odata.count": 3,
+    "value": [
+        {
+            "@search.score": 1.0,
+            "HotelId": "45",
+            "HotelName": "Arcadia Resort & Restaurant",
+            "Address": {
+                "City": "Seattle",
+                "StateProvince": "WA"
+            }
+        },
+        {
+            "@search.score": 1.0,
+            "HotelId": "24",
+            "HotelName": "Gacc Capital",
+            "Address": {
+                "City": "Seattle",
+                "StateProvince": "WA"
+            }
+        },
+        {
+            "@search.score": 1.0,
+            "HotelId": "16",
+            "HotelName": "Double Sanctuary Resort",
+            "Address": {
+                "City": "Seattle",
+                "StateProvince": "WA"
+            }
+        }
+    ]
+}
 ```
-
-Um die Lesbarkeit der Ergebnisse zu verbessern, werden die Suchergebnisse gekürzt, sodass sie die Position und den Arbeitsstandort enthalten. Die Anfangskoordinaten wurden aus einem zufällig ausgewählten Dokument im Index abgerufen (in diesem Fall für einen Arbeitsstandort auf Staten Island).
-
-  :::image type="content" source="media/search-query-simple-examples/geo-search.png" alt-text="Karte von Staten Island" border="false":::
-
-## <a name="example-6-search-precision"></a>Beispiel 6: Suchgenauigkeit
-
-Begriffsabfragen sind einzelne Begriffe (ggf. in größerer Zahl), die unabhängig voneinander ausgewertet werden. Ausdrucksabfragen sind in Anführungszeichen gesetzt und werden Wort für Wort als Zeichenfolge ausgewertet. Die Genauigkeit der Übereinstimmung wird mithilfe von Operatoren und des searchMode-Elements gesteuert.
-
-Beispiel 1: `search=fire` führt zu 140 Ergebnissen, wobei alle Übereinstimmungen das Wort „fire“ an irgendeiner Stelle im Dokument enthalten.
-
-```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
-    {
-      "count": true,
-      "search": "fire"
-    }
-```
-
-Beispiel 2: `search=fire department` gibt 2.002 Ergebnisse zurück. Übereinstimmungen werden für Dokumente zurückgegeben, die entweder den Begriff „fire“ oder „department“ enthalten.
-
-```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
-    {
-      "count": true,
-      "search": "fire department"
-    }
-```
-
-Beispiel 3: `search="fire department"` gibt 77 Ergebnisse zurück. Wenn Sie die Zeichenfolge in Anführungszeichen einschließen, wird eine aus beiden Begriffen bestehende Ausdruckssuche erstellt, und es werden Übereinstimmungen für tokenisierte Begriffe im Index gefunden, die aus einer Kombination der Begriffe bestehen. Dies ist der Grund dafür, warum die Suche nach `search=+fire +department` hiermit nicht gleichwertig ist. Beide Begriffe sind erforderlich, aber es wird unabhängig danach gesucht. 
-
-```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
-    {
-    "count": true,
-    "search": "\"fire department\""
-    }
-```
-
-> [!Note]
-> Weil eine Ausdrucksabfrage durch Anführungszeichen angegeben wird, haben wir in diesem Beispiel ein Escapezeichen (`\`) hinzugefügt, um die Syntax beizubehalten.
 
 ## <a name="example-7-booleans-with-searchmode"></a>Beispiel 7: Boolesche Werte mit „searchMode“
 
-Bei der einfachen Syntax werden boolesche Operatoren in Form von Zeichen (`+, -, |`) unterstützt. Mit dem Parameter „searchMode“ werden Kompromisse in Bezug auf die Genauigkeit und Trefferquote angegeben, wobei bei **`searchMode=any`** die Trefferquote (eine Übereinstimmung mit einem der Kriterien qualifiziert ein Dokument für das Resultset) und bei **`searchMode=all`** die Genauigkeit (alle Kriterien müssen übereinstimmen) im Mittelpunkt steht. 
+Die einfache Syntax unterstützt boolesche Operatoren in Form von Zeichen (`+, -, |`) zur Unterstützung der Abfragelogik UND, ODER und NICHT. Die boolesche Suche verhält sich erwartungsgemäß, mit einigen bemerkenswerten Ausnahmen. 
 
-Die Standardeinstellung ist **`searchMode=any`** . Dies kann verwirrend sein, wenn Sie für eine Abfrage mehrere Operatoren verwenden und keinen engeren Bereich von Ergebnissen erhalten, sondern einen weiteren Bereich. Dies gilt besonders für den Operator NOT, bei dem die Ergebnisse alle Dokumente umfassen, die einen bestimmten Begriff „nicht enthalten“.
+In den vorherigen Beispielen wurde der Parameter „searchMode“ als Mechanismus zum Beeinflussen der Genauigkeit und des Abrufs eingeführt, wobei „searchMode=any“ den Schwerpunkt auf den Abruf (ein Dokument, das beliebige Kriterien erfüllt, wird als Übereinstimmung betrachtet) und „searchMode=all“ den Schwerpunkt auf die Genauigkeit legt (in einem Dokument müssen alle Kriterien übereinstimmen). 
 
-Bei Verwendung der Standardeinstellung „searchMode=any“ werden 2800 Dokumente zurückgegeben: Dokumente, die den Begriff „fire department“ enthalten, sowie alle Dokumente, die den Begriff „Metrotech Center“ nicht enthalten.
+Im Kontext einer booleschen Suche kann der Standardwert „searchMode=any“ zu Verwirrung führen, wenn Sie eine Abfrage mit mehreren Operatoren stapeln und statt einer kleineren eine größere Ergebnismenge erzielen. Dies gilt besonders für den Operator NICHT, bei dem die Ergebnisse alle Dokumente umfassen, die einen bestimmten Begriff nicht enthalten.
 
-```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
-    {
-      "count": true,
-      "search": "\"fire department\"-\"Metrotech Center\"",
-      "searchMode": "any"
-    }
-```
+Dies wird im folgenden Beispiel veranschaulicht. Bei Ausführung der folgenden Abfrage mit searchMode „any“ werden 42 Dokumente zurückgegeben: diejenigen, die den Begriff „restaurant“ enthalten, sowie alle Dokumente, die nicht den Ausdruck „air conditioning“ aufweisen. 
 
-Die Antwort auf diese Abfrage sollte etwa wie im folgenden Screenshot aussehen.
-
-  :::image type="content" source="media/search-query-simple-examples/searchmodeany.png" alt-text="Suchmodus „any“" border="false":::
-
-Wenn Sie die Einstellung in **`searchMode=all`** ändern, kommt es für die Kriterien zu einem kumulativen Effekt, und es wird ein kleineres Resultset mit nur 21 Dokumenten zurückgegeben. Dies sind Dokumente, die den gesamten Begriff „fire department“ enthalten, abzüglich der Jobs unter der Metrotech Center-Adresse.
+Beachten Sie, dass zwischen dem booleschen Operator (`-`) und dem Ausdruck „air conditioning“ kein Leerzeichen vorhanden ist.
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
-    {
-      "count": true,
-      "search": "\"fire department\"-\"Metrotech Center\"",
-      "searchMode": "all"
-    }
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "search": "restaurant -\"air conditioning\"",
+    "searchMode": "any",
+    "searchFields": "Tags",
+    "select": "HotelId, HotelName, Tags",
+    "count": true
+}
 ```
 
-  :::image type="content" source="media/search-query-simple-examples/searchmodeall.png" alt-text="Suchmodus „all“" border="false":::
+Wenn Sie die Abfrage in „searchMode=all“ ändern, wird eine kumulative Wirkung für die Kriterien erzwungen, und es wird ein kleineres Resultset (7 Übereinstimmungen) zurückgegeben. Dieses umfasst Dokumente, die den Begriff „Restaurant“ enthalten, abzüglich der Dokumente mit dem Ausdruck „air conditioning“.
 
-## <a name="example-8-structuring-results"></a>Beispiel 8: Strukturieren von Ergebnissen
+Das Ergebnis dieser Abfrage sollte in etwa wie im folgenden (gekürzten) Beispiel aussehen.
 
-Mit mehreren Parametern wird gesteuert, welche Felder in den Suchergebnissen enthalten sind, wie viele Dokumente in jedem Batch zurückgegeben werden und welche Sortierreihenfolge verwendet wird. In diesem Beispiel wird auf einige der vorherigen Beispiele zurückgegriffen, wobei die Ergebnisse mit der **`$select`** -Anweisung auf bestimmte Felder beschränkt und „wörtliche“ Suchkriterien verwendet werden. Es werden 82 Übereinstimmungen zurückgegeben.
+```json
+"@odata.count": 7,
+"value": [
+    {
+        "@search.score": 2.5460577,
+        "HotelId": "11",
+        "HotelName": "Regal Orb Resort & Spa",
+        "Tags": [
+            "free wifi",
+            "restaurant",
+            "24-hour front desk service"
+        ]
+    },
+    {
+        "@search.score": 2.166792,
+        "HotelId": "10",
+        "HotelName": "Countryside Hotel",
+        "Tags": [
+            "24-hour front desk service",
+            "coffee in lobby",
+            "restaurant"
+        ]
+    },
+```
+
+## <a name="example-8-paging-results"></a>Beispiel 8: Paginieren von Ergebnissen
+
+In den vorherigen Beispielen haben Sie Parameter kennengelernt, die sich auf die Zusammenstellung der Suchergebnisse auswirken, darunter „select“ zum Festlegen der in einem Ergebnis enthaltenen Felder, Sortierreihenfolgen und das Einbeziehen der Anzahl aller Übereinstimmungen. Bei diesem Beispiel handelt es sich um eine Fortsetzung der Zusammenstellung von Suchergebnissen in Form von Paginierungsparametern, mit denen Sie die Anzahl der Ergebnisse, die auf einer beliebigen Seite angezeigt werden, in Batches zusammenfassen können. 
+
+Standardmäßig gibt ein Suchdienst die ersten 50 Übereinstimmungen zurück. Um die Anzahl der Übereinstimmungen auf jeder Seite zu steuern, definieren Sie die Größe des Batches mit „top“, und verwenden Sie dann „skip“, um nachfolgende Batches auszuwählen.
+
+Im folgenden Beispiel werden ein Filter und eine Sortierreihenfolge für das Feld „Rating“ verwendet („Rating“ ist sowohl filter- als auch sortierbar), weil die Auswirkungen der Paginierung auf sortierte Ergebnisse leichter erkennbar sind. In einer regulären Volltextsuchabfrage werden die ersten Übereinstimmungen über @search.score mit einem Rang versehen und paginiert.
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
-    {
-      "count": true,
-      "search": "\"fire department\"",
-      "searchMode": "any",
-      "select": "job_id,agency,business_title,civil_service_title,work_location,job_description"
-    }
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "search": "*",
+    "filter": "Rating gt 4",
+    "select": "HotelName, Rating",
+    "orderby": "Rating desc",
+    "top": "5",
+    "count": true
+}
 ```
 
-Basierend auf dem vorherigen Beispiel können Sie nach der Bezeichnung sortieren. Diese Sortierung funktioniert, weil „civil_service_title“ im Index *sortierbar* ist.
-
-```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
-    {
-      "count": true,
-      "search": "\"fire department\"",
-      "searchMode": "any",
-      "select": "job_id,agency,business_title,civil_service_title,work_location,job_description",
-      "orderby": "civil_service_title"
-    }
-```
-
-Die Auslagerungsergebnisse werden mit dem Parameter **`$top`** implementiert, und in diesem Fall werden die obersten fünf Dokumente zurückgegeben:
-
-```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
-    {
-      "count": true,
-      "search": "\"fire department\"",
-      "searchMode": "any",
-      "select": "job_id,agency,business_title,civil_service_title,work_location,job_description",
-      "orderby": "civil_service_title",
-      "top": "5"
-    }
-```
+Die Abfrage findet 21 übereinstimmende Dokumente. Da Sie jedoch „top“ angegeben haben, gibt die Antwort nur die ersten fünf Übereinstimmungen zurück, deren Bewertungen bei 4.9 beginnen und mit „Lady of the Lake B & B“ bei 4.7 enden. 
 
 Überspringen Sie den ersten Batch, um die nächsten fünf Dokumente zu erhalten:
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "search": "*",
+    "filter": "Rating gt 4",
+    "select": "HotelName, Rating",
+    "orderby": "Rating desc",
+    "top": "5",
+    "skip": "5",
+    "count": true
+}
+```
+
+In der Antwort für den zweiten Batch werden die ersten fünf Übereinstimmungen übersprungen und die nächsten fünf zurückgegeben, beginnend bei „Pull‘r Inn Motel“. Um mit weiteren Batches fortzufahren, behalten Sie für „top“ den Wert 5 bei und erhöhen dann bei jeder neuen Anforderung den Wert für „Skip“ um 5 (skip=5, skip=10, skip=15 usw.).
+
+```json
+"value": [
     {
-      "count": true,
-      "search": "\"fire department\"",
-      "searchMode": "any",
-      "select": "job_id,agency,business_title,civil_service_title,work_location,job_description",
-      "orderby": "civil_service_title",
-      "top": "5",
-      "skip": "5"
+        "@search.score": 1.0,
+        "HotelName": "Pull'r Inn Motel",
+        "Rating": 4.7
+    },
+    {
+        "@search.score": 1.0,
+        "HotelName": "Sublime Cliff Hotel",
+        "Rating": 4.6
+    },
+    {
+        "@search.score": 1.0,
+        "HotelName": "Antiquity Hotel",
+        "Rating": 4.5
+    },
+    {
+        "@search.score": 1.0,
+        "HotelName": "Nordick's Motel",
+        "Rating": 4.5
+    },
+    {
+        "@search.score": 1.0,
+        "HotelName": "Winter Panorama Resort",
+        "Rating": 4.5
     }
+]
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Versuchen Sie, Abfragen im Code anzugeben. Unter den folgenden Links wird erläutert, wie Suchabfragen mithilfe der Azure SDKs eingerichtet werden.
+Nachdem Sie hier die grundlegende Abfragesyntax kennengelernt haben, versuchen Sie, Abfragen im Code anzugeben. Unter den folgenden Links wird erläutert, wie Suchabfragen mithilfe der Azure SDKs eingerichtet werden.
 
 + [Abfragen des Index mit dem .NET SDK](search-get-started-dotnet.md)
 + [Abfragen des Index mit dem Python SDK](search-get-started-python.md)

@@ -4,22 +4,21 @@ description: Erfahren Sie, wie Sie Ihre Webhooks, Logik-Apps und Runbooks zur Vo
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 03/19/2018
-ms.subservice: alerts
-ms.openlocfilehash: 1d6fc8e4b9baecf02531fc1baa617b87a9d3255c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/14/2021
+ms.openlocfilehash: ce61c3539a4ea29cbeb48c379ed143363500701e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599683"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038015"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Vorbereiten Ihrer Logik-Apps und Runbooks für die Migration von klassischen Warnungsregeln
 
 > [!NOTE]
-> Wie [bereits angekündigt](../platform/monitoring-classic-retirement.md) werden klassische Warnungen in Azure Monitor für Benutzer der öffentlichen Cloud eingestellt, sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz. Das Deaktivierungsdatum für diese Warnungen wurde auf einen späteren Termin verschoben. Ein neues Datum wird demnächst angekündigt.
+> Wie [zuvor angekündigt](monitoring-classic-retirement.md) werden klassische Warnungen in Azure Monitor für Benutzer der öffentlichen Cloud eingestellt. Bis zum **31. Mai 2021** ist die Verwendung noch eingeschränkt möglich. Klassische Warnungen für Azure Government Cloud und Azure China 21ViaNet werden am **29. Februar 2024** eingestellt.
 >
 
-Wenn Sie sich entscheiden, Ihre klassischen Warnungsregeln freiwillig zu neuen Warnungsregeln zu migrieren, beachten Sie, dass einige Unterschiede zwischen den beiden Systemen bestehen. In diesem Artikel werden die Unterschiede erläutert, und Sie erfahren, wie Sie sich auf die Änderung vorbereiten können.
+Wenn Sie sich entscheiden, Ihre klassischen Warnungsregeln zu neuen Warnungsregeln zu migrieren, beachten Sie, dass zwischen den beiden Systemen einige Unterschiede bestehen. In diesem Artikel werden die Unterschiede erläutert, und Sie erfahren, wie Sie sich auf die Änderung vorbereiten können.
 
 ## <a name="api-changes"></a>API-Änderungen
 
@@ -36,7 +35,7 @@ In der folgenden Tabelle sind befehlsorientierte Benutzerschnittstellen für kla
 
 ## <a name="notification-payload-changes"></a>Änderungen der Benachrichtigungsnutzlast
 
-Das Format der Benachrichtigungsnutzlast für [klassische Warnungsregeln](../platform/alerts-webhooks.md) und [neue Metrikwarnungen](alerts-metric-near-real-time.md#payload-schema) unterscheidet sich geringfügig. Wenn Sie Webhook-, Logik-App- oder Runbookaktionen haben, die durch klassische Warnungsregeln ausgelöst werden, müssen Sie diese Benachrichtigungsendpunkte zum Akzeptieren des Nutzlastformats der neuen Metrikwarnungen aktualisieren.
+Das Format der Benachrichtigungsnutzlast für [klassische Warnungsregeln](alerts-webhooks.md) und [neue Metrikwarnungen](alerts-metric-near-real-time.md#payload-schema) unterscheidet sich geringfügig. Wenn Sie über klassische Warnungsregeln mit Webhook-, Logik-App- oder Runbookaktionen verfügen, müssen Sie die Ziele so aktualisieren, dass sie das neue Nutzdatenformat akzeptieren.
 
 Mithilfe der folgenden Tabelle können Sie die Felder für die Webhooknutzlast im klassischen Format dem neuen Format zuordnen:
 
@@ -153,13 +152,13 @@ Ein vollständiges Beispiel für ein Runbook, das bei Auslösung einer Warnung e
 
 ## <a name="partner-integration-via-webhooks"></a>Partnerintegration über Webhooks
 
-Die meisten [unserer Partner, die integrierte Lösungen für klassische Warnungen anbieten](../platform/partners.md), unterstützen neuere Metrikwarnungen bereits über ihre Integrationen. Bekannte Integrationen, die bereits mit neuen Metrikwarnungen funktionieren:
+Die meisten [unserer Partner, die integrierte Lösungen für klassische Warnungen anbieten](../partners.md), unterstützen neuere Metrikwarnungen bereits über ihre Integrationen. Bekannte Integrationen, die bereits mit neuen Metrikwarnungen funktionieren:
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)
 - [Signl4](https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/)
 
-Wenn Sie eine Partnerintegration verwenden, die hier nicht aufgeführt ist, erkundigen Sie sich beim Integrationsanbieter, ob die Integration mit neuen Metrikwarnungen funktioniert.
+Wenn Sie eine Partnerintegration verwenden, die hier nicht aufgeführt ist, erkundigen Sie sich beim Anbieter, ob diese mit neuen Metrikwarnungen funktioniert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

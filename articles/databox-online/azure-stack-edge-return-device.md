@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 02/26/2021
 ms.author: alkohli
-ms.openlocfilehash: 0c35bde40cac9629f084d69d52f119651b5655f7
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 6c9e8938feb3c3444d01f9d37476589776707425
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784476"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703183"
 ---
 # <a name="return-your-azure-stack-edge-pro-device"></a>Zurückgeben Ihres Azure Stack Edge Pro-Geräts
 
@@ -30,26 +30,16 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="erase-data-from-the-device"></a>Löschen der Daten vom Gerät
 
-Um die Daten von den Datenträgern Ihres Geräts zu löschen, müssen Sie Ihr Gerät zurücksetzen. Sie können Ihr Gerät über die lokale Webbenutzeroberfläche oder die PowerShell-Benutzeroberfläche zurücksetzen.
+Um die Daten von den Datenträgern Ihres Geräts zu löschen, müssen Sie Ihr Gerät zurücksetzen.
 
-Erstellen Sie bei Bedarf vor dem Zurücksetzen eine Kopie der lokalen Daten auf dem Gerät. Sie können die Daten vom Gerät in einen Azure Storage-Container kopieren.
+Erstellen Sie bei Bedarf vor dem Zurücksetzen eine Kopie der lokalen Daten auf dem Gerät. Sie können die Daten vom Gerät in einen Azure Storage-Container kopieren. 
 
-Die Geräterückgabe kann bereits vor dem Zurücksetzen des Geräts initiiert werden. 
+Die Geräterückgabe kann bereits vor dem Zurücksetzen des Geräts initiiert werden.
 
-Führen Sie zum Zurücksetzen Ihres Geräts über die lokale Webbenutzeroberfläche die folgenden Schritte aus.
+Sie können Ihr Gerät über die lokale Webbenutzeroberfläche oder über PowerShell zurücksetzen. PowerShell-Anweisungen finden Sie unter [Zurücksetzen Ihres Geräts](./azure-stack-edge-connect-powershell-interface.md#reset-your-device).
 
-1. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung > Geräterücksetzung**.
-2. Wählen Sie **Gerät zurücksetzen** aus.
 
-    ![Zurücksetzen des Geräts](media/azure-stack-edge-return-device/device-reset-1.png)
-
-3. Wenn Sie zur Bestätigung aufgefordert werden, überprüfen Sie den Warnhinweis, und wählen Sie **Ja** aus, um fortzufahren.
-
-    ![Bestätigen des Zurücksetzens](media/azure-stack-edge-return-device/device-reset-2.png)  
-
-Beim Zurücksetzen werden die Daten von den Datenträgern des Geräts gelöscht. Abhängig von der Menge der auf Ihrem Gerät gespeicherten Daten dauert dieser Vorgang ca. 30 bis 40 Minuten.
-
-Alternativ können Sie eine Verbindung mit der PowerShell-Schnittstelle des Geräts herstellen und die Daten mit dem `Reset-HcsAppliance`-Cmdlet von den Datenträgern löschen. Weitere Informationen finden Sie unter [Zurücksetzen Ihres Geräts](azure-stack-edge-connect-powershell-interface.md#reset-your-device).
+[!INCLUDE] [Zurücksetzen von Daten auf dem Gerät](../../includes/azure-stack-edge-device-reset.md)
 
 > [!NOTE]
 > - Bei einem Geräteaustausch oder Upgrade auf ein neues Gerät sollten Sie Ihr Gerät erst zurücksetzen, nachdem Sie das neue Gerät erhalten haben.
@@ -67,15 +57,15 @@ Beginnen Sie den Rückgabeprozess mit den folgenden Schritten.
 
     1. Geben Sie die Seriennummer des Geräts an. Die Seriennummer des Geräts ist auf der lokalen Webbenutzeroberfläche des Geräts in der **Übersicht** angegeben.  
     
-    ![Seriennummer des Geräts 1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
+       ![Seriennummer des Geräts 1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
 
-    2. Geben Sie die Nummer des Serviceetiketts ein. Hierbei handelt es sich um eine mindestens fünfstellige eindeutige ID für Ihr Gerät. Das Serviceetikett befindet sich in der rechten unteren Ecke des Geräts (wenn Sie auf das Gerät blicken). Ziehen Sie das Informationsetikett heraus. Der Auszug enthält Systeminformationen wie Serviceetikett, NIC, MAC-Adresse und Ähnliches. 
+    2. Geben Sie die Nummer des Serviceetiketts ein. Die Nummer des Serviceetiketts ist ein Bezeichner mit fünf oder mehr Zeichen, der für Ihr Gerät eindeutig ist. Das Serviceetikett befindet sich in der rechten unteren Ecke des Geräts (wenn Sie auf das Gerät blicken). Ziehen Sie das Informationsetikett heraus. Der Auszug enthält Systeminformationen wie Serviceetikett, NIC, MAC-Adresse und Ähnliches. 
     
-    ![Serviceetikettnummer 1](media/azure-stack-edge-return-device/service-tag-number-1.png)
+       ![Serviceetikettnummer 1](media/azure-stack-edge-return-device/service-tag-number-1.png)
 
     3. Wählen Sie in der Dropdownliste einen Grund für die Rückgabe aus.
 
-    ![Zurückgeben des Geräts 2](media/azure-stack-edge-return-device/return-device-2.png) 
+       ![Zurückgeben des Geräts 2](media/azure-stack-edge-return-device/return-device-2.png) 
 
 3. Gehen Sie unter **Versandinformationen** wie folgt vor:
 
@@ -123,8 +113,8 @@ Nachdem das Gerät im Azure-Rechenzentrum eingegangen ist, wird das Gerät auf B
 
 Sie können das Gerät im Azure-Portal löschen:
 
-- Nachdem Sie die Bestellung aufgegeben haben und bevor das Gerät von Microsoft vorbereitet wird.
-- Nachdem Sie das Gerät an Microsoft zurückgegeben haben, durchläuft es die physische Kontrolle im Azure-Rechenzentrum, und das Azure Stack Edge Pro-Betriebsteam bestätigt telefonisch, dass das Gerät zurückgegeben wurde.
+- Nachdem Sie eine Bestellung aufgegeben haben und bevor das Gerät von Microsoft vorbereitet wird.
+- Nachdem Sie ein Gerät an Microsoft zurückgegeben haben und das Azure Stack Edge Pro-Betriebsteam Ihnen die Rückgabe des Geräts telefonisch bestätigt hat. Das Betriebsteam meldet sich erst, wenn das zurückgegebene Gerät die physische Überprüfung im Azure-Rechenzentrum bestanden hat.
 
 Wenn Sie das Gerät mit einem anderen Abonnement oder Standort aktiviert haben, verschiebt Microsoft Ihre Bestellung innerhalb eines Geschäftstags an das neue Abonnement oder den neuen Standort. Nach dem Verschieben der Bestellung können Sie diese Ressource löschen.
 

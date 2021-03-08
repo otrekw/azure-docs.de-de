@@ -2,17 +2,17 @@
 title: 'Azure-VPN Gateway: Konfigurieren der Paketerfassung'
 description: Erfahren Sie mehr über die Paketerfassungsfunktionen, die Sie für VPN Gateways verwenden können, um die Ursache eines Problems einzugrenzen.
 services: vpn-gateway
-author: radwiv
+author: anzaman
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 12/2/2020
-ms.author: radwiv
-ms.openlocfilehash: caa9a0869d7d4bca58b91a0c682177e1408f8300
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.date: 02/22/2021
+ms.author: alzam
+ms.openlocfilehash: 0983139d1c9af235eba4c9f99da7bc9dea3f231b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733805"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726613"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>Konfigurieren der Paketerfassung für VPN Gateways
 
@@ -27,6 +27,7 @@ Die können die VPN Gateway-Paketerfassung je nach Anforderung für das Gateway 
 Die Verwendung von 5-Tupel-Filtern (Quellsubnetz, Zielsubnetz, Quellport, Zielport, Protokoll) und TCP-Flags (SYN, ACK, FIN, URG, PSH, RST) ist hilfreich, um eine Problemisolierung bei einem hohen Datenverkehrsaufkommen durchzuführen.
 
 Die folgenden JSON-Beispiele und ein JSON-Schema bieten Erläuterungen zu den einzelnen Eigenschaften. Beachten Sie die folgenden Einschränkungen, wenn Sie Paketerfassungen ausführen:
+
 - Im hier gezeigten Schema ist der Filter ein Array, aber derzeit kann jeweils nur ein Filter gleichzeitig verwendet werden.
 - Mehrere gatewayweite Paketerfassungen können nicht zur gleichen Zeit ausgeführt werden.
 - Sie können nicht mehrere Paketerfassungen gleichzeitig für eine einzige Verbindung ausführen. Sie können Paketerfassungen für verschiedene Verbindungen gleichzeitig ausführen.
@@ -317,7 +318,13 @@ Die folgenden JSON-Beispiele und ein JSON-Schema bieten Erläuterungen zu den ei
 }
 ```
 
-## <a name="set-up-packet-capture-by-using-powershell"></a>Einrichten der Paketerfassung mithilfe von PowerShell
+## <a name="packet-capture---portal"></a>Paketerfassung: Portal
+
+Sie können die Paketerfassung im Azure-Portal einrichten.
+
+:::image type="content" source="./media/packet-capture/portal.jpg" alt-text="Screenshot der Paketerfassung im Portal." lightbox="./media/packet-capture/portal.jpg":::
+
+## <a name="packet-capture---powershell"></a>Paketerfassung: PowerShell
 
 Die folgenden Beispiele zeigen PowerShell-Befehle zum Starten und Beenden von Paketerfassungen. Weitere Informationen zu Parameteroptionen finden Sie unter [Start-AzVirtualnetworkGatewayPacketCapture](/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
 

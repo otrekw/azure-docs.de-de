@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 01/11/2021
 ms.author: duau
-ms.openlocfilehash: f780c8c2f932b612ee42e13906f72983b324eefd
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 11a4798c0cb3bc010bbdbae1fcb709951c67781a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108533"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721912"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-the-azure-portal"></a>Tutorial: Erstellen und Ändern des Peerings für eine ExpressRoute-Leitung mithilfe des Azure-Portals
 
@@ -75,14 +75,17 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
 
 2. Konfigurieren Sie das Microsoft-Peering für die Verbindung. Stellen Sie vorab sicher, dass Ihnen die folgenden Informationen vorliegen:
 
-   * Ein Paar von /30-Subnetzen, deren Besitzer Sie sind und die in einem RIR/IRR registriert sind. Diese müssen gültige öffentliche IPv4-Präfixe sein. Ein Subnetz wird für den primären Link verwendet, während das andere Subnetz für den sekundären Link verwendet wird. Über jedes dieser Subnetze weisen Sie die erste verwendbare IP-Adresse für Ihren Router zu, da die zweite verwendbare IP-Adresse von Microsoft für den eigenen Router genutzt wird.
+   * Ein Paar von Subnetzen, deren Besitzer Sie sind und die in einem RIR/IRR registriert sind. Ein Subnetz wird für den primären Link verwendet, während das andere Subnetz für den sekundären Link verwendet wird. Über jedes dieser Subnetze weisen Sie die erste verwendbare IP-Adresse für Ihren Router zu, da die zweite verwendbare IP-Adresse von Microsoft für den eigenen Router genutzt wird. Sie verfügen über drei Optionen für dieses Paar von Subnetzen:
+       * IPv4: zwei/30 Subnetze. Diese müssen gültige öffentliche IPv4-Präfixe sein.
+       * IPv6: zwei/126 Subnetze. Diese müssen gültige öffentliche IPv6-Präfixe sein.
+       * Beides: zwei/30 Subnetze und zwei/126 Subnetze.
    * Eine gültige VLAN-ID zum Einrichten dieses Peerings. Stellen Sie sicher, dass kein anderes Peering der Verbindung die gleiche VLAN-ID verwendet. Sie müssen sowohl für primäre als auch für sekundäre Verknüpfungen die gleiche VLAN-ID verwenden.
    * AS-Nummer für Peering. Sie können sowohl AS-Nummern mit 2 Byte als auch mit 4 Byte verwenden.
    * Angekündigte Präfixe: Sie geben eine Liste mit allen Präfixen an, die Sie über die BGP-Sitzung ankündigen möchten. Nur öffentliche IP-Adresspräfixe werden akzeptiert. Wenn Sie planen, einen Satz mit Präfixen zu senden, können Sie eine durch Komma getrennte Liste senden. Diese Präfixe müssen über eine RIR/IRR-Registrierung für Sie verfügen.
    * **Optional:** Kunden-ASN: Wenn Sie Präfixe ankündigen, die nicht für die Peering-AS-Nummer registriert sind, können Sie die AS-Nummer angeben, unter der sie registriert sind.
    * Routing-Registrierungsname: Sie können den RIR/IRR-Wert angeben, unter dem die AS-Nummer und die Präfixe registriert sind.
    * **Optional** – Einen MD5-Hash, wenn Sie sich für dessen Einsatz entscheiden.
-3. Sie können das Peering auswählen, das Sie konfigurieren möchten, wie im folgenden Beispiel zu sehen. Wählen Sie die Zeile für das Microsoft-Peering aus.
+1. Sie können das Peering auswählen, das Sie konfigurieren möchten, wie im folgenden Beispiel zu sehen. Wählen Sie die Zeile für das Microsoft-Peering aus.
 
    :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/select-microsoft-peering.png" alt-text="Auswählen der Zeile für das Microsoft-Peering":::
 
@@ -120,6 +123,11 @@ Sie können die Zeile für das Peering auswählen, das Sie ändern möchten, und
 
 Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Löschen der privaten Azure-Peeringkonfiguration für eine ExpressRoute-Verbindung.
 
+> [!IMPORTANT]
+> Die IPv6-Unterstützung für privates Peering befindet sich zurzeit in **Public Preview**. Wenn Sie Ihr virtuelles Netzwerk mit einer ExpressRoute-Verbindung verbinden möchten, bei der IPv6-basiertes privates Peering konfiguriert ist, stellen Sie sicher, dass Ihr virtuelles Netzwerk ein Dual Stack ist und die [hier](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)beschriebenen Richtlinien einhält.
+> 
+> 
+
 ### <a name="to-create-azure-private-peering"></a>So erstellen Sie ein privates Azure-Peering
 
 1. Konfigurieren Sie die ExpressRoute-Verbindung. Stellen Sie vor dem Fortfahren sicher, dass die Verbindung vom Konnektivitätsanbieter vollständig bereitgestellt wird. 
@@ -136,7 +144,10 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
 
 2. Konfigurieren Sie das private Azure-Peering für die Verbindung. Bevor Sie mit den nächsten Schritten fortfahren, stellen Sie sicher, dass Sie über Folgendes verfügen:
 
-   * Ein Paar mit /30-Subnetzen, die sich in Ihrem Besitz befinden. Ein Subnetz wird für den primären Link verwendet, während das andere Subnetz für den sekundären Link verwendet wird. Über jedes dieser Subnetze weisen Sie die erste verwendbare IP-Adresse für Ihren Router zu, da die zweite verwendbare IP-Adresse von Microsoft für den eigenen Router genutzt wird.
+   * Ein Paar von Subnetzen, die nicht zu einem für virtuelle Netzwerke reservierten Adressraum gehören. Ein Subnetz wird für den primären Link verwendet, während das andere Subnetz für den sekundären Link verwendet wird. Über jedes dieser Subnetze weisen Sie die erste verwendbare IP-Adresse für Ihren Router zu, da die zweite verwendbare IP-Adresse von Microsoft für den eigenen Router genutzt wird. Sie verfügen über drei Optionen für dieses Paar von Subnetzen:
+       * IPv4: zwei/30 Subnetze.
+       * IPv6: zwei/126 Subnetze.
+       * Beides: zwei/30 Subnetze und zwei/126 Subnetze.
    * Eine gültige VLAN-ID zum Einrichten dieses Peerings. Stellen Sie sicher, dass kein anderes Peering der Verbindung die gleiche VLAN-ID verwendet. Sie müssen sowohl für primäre als auch für sekundäre Verknüpfungen die gleiche VLAN-ID verwenden.
    * AS-Nummer für Peering. Sie können sowohl AS-Nummern mit 2 Byte als auch mit 4 Byte verwenden. Sie können eine private AS-Nummer für dieses Peering mit Ausnahme der Nummern von 65515 bis 65520 einschließlich verwenden.
    * Wenn Sie das private Peering konfigurieren, müssen Sie Azure die Routen von Ihrem lokalen Edge-Router über BGP ankündigen.
