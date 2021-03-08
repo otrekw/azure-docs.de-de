@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: afb0e04d6f8a34d844df382081d53a32899e9a5c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 70416daced2cbdebb70fb8e1defbcbcb599710f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934763"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705482"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>Schnellstart: Azure Key Vault-Geheimnisclientbibliothek für JavaScript (Version 4)
 
@@ -56,13 +56,13 @@ Als Nächstes erstellen Sie eine Node.js-Anwendung, die in der Cloud bereitgeste
 
 1. Erstellen Sie in einer Befehlsshell einen Ordner mit dem Namen `key-vault-node-app`:
 
-```azurecli
+```terminal
 mkdir key-vault-node-app
 ```
 
 1. Wechseln Sie zum neu erstellten Verzeichnis *key-vault-node-app*, und führen Sie den Befehl „init“ aus, um das Knotenprojekt zu initialisieren:
 
-```azurecli
+```terminal
 cd key-vault-node-app
 npm init -y
 ```
@@ -71,13 +71,13 @@ npm init -y
 
 Installieren Sie über das Konsolenfenster die Azure Key Vault-[Geheimnisbibliothek](https://www.npmjs.com/package/@azure/keyvault-secrets) für Node.js.
 
-```azurecli
+```terminal
 npm install @azure/keyvault-secrets
 ```
 
 Installieren Sie das Paket [azure.identity](https://www.npmjs.com/package/@azure/identity) für die Authentifizierung bei Key Vault:
 
-```azurecli
+```terminal
 npm install @azure/identity
 ```
 
@@ -154,7 +154,7 @@ const { SecretClient } = require("@azure/keyvault-secrets");
 
 In dieser Schnellstartanleitung wird der angemeldete Benutzer zum Authentifizieren beim Schlüsseltresor verwendet. Dies ist die bevorzugte Methode für die lokale Entwicklung. Bei Anwendungen, die in Azure bereitgestellt werden, sollte die verwaltete Identität App Service oder einem virtuellen Computer zugewiesen werden. Weitere Informationen finden Sie in der [Übersicht zu verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-Im folgenden Beispiel wird der Name Ihres Schlüsseltresors in den Schlüsseltresor-URI mit dem Format „https://\<your-key-vault-name\>.vault.azure.net“ erweitert. In diesem Beispiel wird die Klasse [DefaultAzureCredential()](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential) aus der [Azure Identity-Bibliothek](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme) verwendet, wodurch der gleiche Code in verschiedenen Umgebungen mit verschiedenen Optionen für die Identitätsbereitstellung verwendet werden kann. Weitere Informationen zur Authentifizierung beim Schlüsseltresor finden Sie im [Entwicklerhandbuch](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
+Im folgenden Beispiel wird der Name Ihres Schlüsseltresors in den Schlüsseltresor-URI mit dem Format „https://\<your-key-vault-name\>.vault.azure.net“ erweitert. In diesem Beispiel wird die Klasse [DefaultAzureCredential()](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential) aus der [Azure Identity-Bibliothek](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme) verwendet, wodurch der gleiche Code in verschiedenen Umgebungen mit verschiedenen Optionen für die Identitätsbereitstellung verwendet werden kann. Weitere Informationen zur Authentifizierung beim Schlüsseltresor finden Sie im [Entwicklerhandbuch](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
 
 Fügen Sie der Funktion „main()“ den folgenden Code hinzu:
 
@@ -168,7 +168,7 @@ const client = new SecretClient(KVUri, credential);
 
 ### <a name="save-a-secret"></a>Speichern eines Geheimnisses
 
-Nachdem Ihre Anwendung nun authentifiziert ist, können Sie mithilfe der [Methode „setSecret“](/javascript/api/@azure/keyvault-secrets/secretclient?#setsecret-string--string--setsecretoptions-) ein Geheimnis in Ihrem Schlüsseltresor platzieren. Hierzu benötigen Sie einen Namen für das Geheimnis. In diesem Beispiel wird „mySecret“ verwendet.  
+Nachdem Ihre Anwendung nun authentifiziert ist, können Sie mithilfe der [Methode „setSecret“](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#setSecret_string__string__SetSecretOptions_) ein Geheimnis in Ihrem Schlüsseltresor platzieren. Hierzu benötigen Sie einen Namen für das Geheimnis. In diesem Beispiel wird „mySecret“ verwendet.  
 
 ```javascript
 await client.setSecret(secretName, secretValue);
@@ -176,7 +176,7 @@ await client.setSecret(secretName, secretValue);
 
 ### <a name="retrieve-a-secret"></a>Abrufen eines Geheimnisses
 
-Nun können Sie den zuvor festgelegten Wert mithilfe der [Methode „getSecret“](/javascript/api/@azure/keyvault-secrets/secretclient?#getsecret-string--getsecretoptions-) abrufen.
+Nun können Sie den zuvor festgelegten Wert mithilfe der [Methode „getSecret“](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#getSecret_string__GetSecretOptions_) abrufen.
 
 ```javascript
 const retrievedSecret = await client.getSecret(secretName);
@@ -258,9 +258,9 @@ main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 
 1. Führen Sie die folgenden Befehle aus, um die App auszuführen:
 
-    ```azurecli
+    ```terminal
     npm install
-    npm index.js
+    node index.js
     ```
 
 1. Geben Sie bei entsprechender Aufforderung einen Geheimniswert ein, z. B. „mySecretPassword“.

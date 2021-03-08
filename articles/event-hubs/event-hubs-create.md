@@ -3,12 +3,12 @@ title: 'Azure-Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portal
 description: In diesem Schnellstart erfahren Sie, wie Sie einen Azure Event Hub im Azure-Portal erstellen.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: c1244317655815da91429585eff9ffbcc16662d4
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6bd9d247db6cd5a956ff4bce9b70f1f8a5a7499a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435500"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742040"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der Millionen von Ereignissen pro Sekunde empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).
@@ -87,7 +87,7 @@ Führen Sie die folgenden Schritte aus, um im Namespace einen Event Hub zu erste
 
     Über die Einstellung **Partitionsanzahl** können Sie den Verbrauch vieler Consumer parallelisieren. Weitere Informationen finden Sie unter [Partitionen](event-hubs-scalability.md#partitions).
 
-    Die Einstellung **Nachrichtenaufbewahrung** gibt an, wie lange der Event Hubs-Dienst Daten speichert. Die maximalen Grenzwerte für diese Einstellung finden Sie unter [Kontingente und Grenzwerte in Azure Event Hubs](event-hubs-quotas.md).
+    Die Einstellung **Nachrichtenaufbewahrung** gibt an, wie lange der Event Hubs-Dienst Daten speichert. Weitere Informationen finden Sie unter [Ereignisaufbewahrung](event-hubs-features.md#event-retention).
 1. Sie können den Status der Event Hub-Erstellung in den Warnungen überprüfen. Nachdem der Event Hub erstellt wurde, wird er in der Liste der Event Hubs angezeigt.
 
     ![Erstellter Event Hub](./media/event-hubs-quickstart-portal/event-hub-created.png)

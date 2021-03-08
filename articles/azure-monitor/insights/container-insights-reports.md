@@ -1,17 +1,17 @@
 ---
-title: Berichte in Azure Monitor für Container
-description: Hier werden die Berichte beschrieben, die zum Analysieren der von Azure Monitor für Container gesammelten Daten bereitstehen.
+title: Berichte in Container Insights
+description: Hier werden die Berichte beschrieben, die zum Analysieren der von Container Insights gesammelten Daten bereitstehen.
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 94709cf4a8b579447c11f91f9bc6863ab4b4fe08
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ab704ed184d9d67ddfba5aede385899faf2a56de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582305"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704275"
 ---
-# <a name="reports-in-azure-monitor-for-containers"></a>Berichte in Azure Monitor für Container
-Als Berichte in Azure Monitor für Container werden standardmäßige [Azure-Arbeitsmappen](../visualize/workbooks-overview.md) empfohlen. In diesem Artikel werden die verschiedenen verfügbaren Berichte und der Zugriff darauf beschrieben.
+# <a name="reports-in-container-insights"></a>Berichte in Container Insights
+Bei Berichten in Container Insights handelt es sich um empfohlene und sofort verwendbare [Azure-Arbeitsmappen](../visualize/workbooks-overview.md). In diesem Artikel werden die verschiedenen verfügbaren Berichte und der Zugriff darauf beschrieben.
 
 ## <a name="viewing-reports"></a>Anzeigen von Berichten
 Wählen Sie im Azure-Portal im **Azure Monitor**-Menü die Option **Container** aus. Wählen Sie im Abschnitt **Überwachung** die Option **Einblicke** aus. Wählen Sie dann einen bestimmten Cluster und anschließend die Seite **Berichte (Vorschau)** aus. 

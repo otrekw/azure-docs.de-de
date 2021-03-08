@@ -8,16 +8,16 @@ ms.subservice: features
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jovanpop-msft
-ms.author: jovanpop
+author: danimir
+ms.author: danil
 ms.reviewer: bonova, sstein, danil
-ms.date: 12/25/2020
-ms.openlocfilehash: 7bdde57c1d33118fd7d3c8e04a2507d8997c36d0
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.date: 02/21/2021
+ms.openlocfilehash: 75fc4166614862c5ac48a72bacb6b7b19019d003
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809512"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691908"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Featurevergleich: Azure SQL-Datenbank und Azure SQL Managed Instance
 
@@ -48,7 +48,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [BULK INSERT-Anweisung](/sql/relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server) | Ja, aber nur aus Azure Blob Storage als Quelle. | Ja, aber nur aus Azure Blob Storage als Quelle – siehe [Unterschiede](../managed-instance/transact-sql-tsql-differences-sql-server.md#bulk-insert--openrowset). |
 | [Zertifikate und asymmetrische Schlüssel](/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | Ja, ohne Zugriff auf das Dateisystem für `BACKUP`- und `CREATE`-Vorgänge. | Ja, ohne Zugriff auf das Dateisystem für `BACKUP`- und `CREATE`-Vorgänge – siehe [Unterschiede zwischen Zertifikaten](../managed-instance/transact-sql-tsql-differences-sql-server.md#certificates). |
 | [Change Data Capture – CDC](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Nein | Ja |
-| [Sortierung – Server/Instanz](/sql/relational-databases/collations/set-or-change-the-server-collation) | Nein, es wird immer die standardmäßige Serversortierung `SQL_Latin1_General_CP1_CI_AS` verwendet. | Ja, kann festgelegt werden, wenn die [Instanz erstellt wird](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md), eine spätere Aktualisierung ist nicht möglich. |
+| [Sortierung – Server/Instanz](/sql/relational-databases/collations/set-or-change-the-server-collation) | Nein, es wird immer die standardmäßige Serversortierung `SQL_Latin1_General_CP1_CI_AS` verwendet. | Ja, kann festgelegt werden, wenn die [Instanz erstellt wird](../managed-instance/create-template-quickstart.md), eine spätere Aktualisierung ist nicht möglich. |
 | [ColumnStore-Indizes](/sql/relational-databases/indexes/columnstore-indexes-overview) | Ja – [Premium-Tarif, Standard-Tarif – mindestens S3, Tarif „Universell“, Tarife „Unternehmenskritisch“ und „Hyperscale“](/sql/relational-databases/indexes/columnstore-indexes-overview) |Ja |
 | [Common Language Runtime – CLR](/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Nein | Ja, aber ohne Zugriff auf das Dateisystem in der `CREATE ASSEMBLY`-Anweisung – siehe [CLR-Unterschiede](../managed-instance/transact-sql-tsql-differences-sql-server.md#clr) |
 | [Anmeldeinformationen](/sql/relational-databases/security/authentication-access/credentials-database-engine) | Ja, aber nur [datenbankweit gültige Anmeldeinformationen](/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Ja, es werden aber nur **Azure Key Vault** und `SHARED ACCESS SIGNATURE` unterstützt – siehe [Details](../managed-instance/transact-sql-tsql-differences-sql-server.md#credential). |
@@ -77,7 +77,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Sprachelemente](/sql/t-sql/language-elements/language-elements-transact-sql) | Die meisten (siehe einzelne Elemente) |  Ja – siehe [T-SQL-Unterschiede](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [Verknüpfte Server](/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nein (siehe [Elastische Abfrage](elastic-query-horizontal-partitioning.md)) | Ja. Nur für [SQL Server und SQL-Datenbank](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers) ohne verteilte Transaktionen. |
 | [Verbindungsserver](/sql/relational-databases/linked-servers/linked-servers-database-engine), die aus Dateien (CSV, Excel) lesen| Nein. Verwenden Sie [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) oder [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) als Alternative zum CSV-Format. | Nein. Verwenden Sie [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) oder [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) als Alternative zum CSV-Format. Verfolgen Sie diese Anforderungen im [Feedback zu SQL Managed Instance](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources).|
-| [Protokollversand](/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [Hochverfügbarkeit](high-availability-sla.md) ist in jeder Datenbank enthalten. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität](business-continuity-high-availability-disaster-recover-hadr-overview.md). | Ist als Teil des Migrationsprozesses des Azure-Datenmigrationsdiensts nativ integriert. Nicht als Hochverfügbarkeitslösung verfügbar, da andere [Hochverfügbarkeitsmethoden](high-availability-sla.md) in jeder Datenbank enthalten sind und es nicht empfohlen wird, Protokollversand als Hochverfügbarkeitsalternative zu verwenden. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität](business-continuity-high-availability-disaster-recover-hadr-overview.md). Nicht als Replikationsmechanismus zwischen Datenbanken verfügbar. Verwenden Sie sekundäre Replikate für die [unternehmenskritische Ebene](service-tier-business-critical.md), [Gruppen für automatisches Failover](auto-failover-group-overview.md) oder [Transaktionsreplikation](../managed-instance/replication-transactional-overview.md) als Alternativen. |
+| [Protokollversand](/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [Hochverfügbarkeit](high-availability-sla.md) ist in jeder Datenbank enthalten. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität](business-continuity-high-availability-disaster-recover-hadr-overview.md). | Ist als Teil des Migrationsprozesses des [Azure-Datenmigrationsdiensts (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md) nativ integriert. Ist für benutzerdefinierte Datenmigrationsprojekte als externer [Protokollwiedergabedienst (LRS)](../managed-instance/log-replay-service-migrate.md) nativ erstellt.<br /> Nicht als Hochverfügbarkeitslösung verfügbar, da andere [Hochverfügbarkeitsmethoden](high-availability-sla.md) in jeder Datenbank enthalten sind und es nicht empfohlen wird, Protokollversand als Hochverfügbarkeitsalternative zu verwenden. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität](business-continuity-high-availability-disaster-recover-hadr-overview.md). Nicht als Replikationsmechanismus zwischen Datenbanken verfügbar. Verwenden Sie sekundäre Replikate für die [unternehmenskritische Ebene](service-tier-business-critical.md), [Gruppen für automatisches Failover](auto-failover-group-overview.md) oder [Transaktionsreplikation](../managed-instance/replication-transactional-overview.md) als Alternativen. |
 | [Anmeldungen und Benutzer](/sql/relational-databases/security/authentication-access/principals-database-engine) | Ja, aber die `CREATE`- und `ALTER`-Anmeldeanweisungen bieten nicht alle Optionen (keine Windows- und Azure Active Directory-Anmeldungen auf Serverebene). `EXECUTE AS LOGIN` wird nicht unterstützt – verwenden Sie stattdessen `EXECUTE AS USER`.  | Ja, mit einigen [Unterschieden](../managed-instance/transact-sql-tsql-differences-sql-server.md#logins-and-users). Windows-Anmeldungen werden nicht unterstützt, sie sollten durch Azure Active Directory-Anmeldungen ersetzt werden. |
 | [Minimale Protokollierung bei Massenimport](/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | Nein, nur das vollständige Wiederherstellungsmodell wird unterstützt. | Nein, nur das vollständige Wiederherstellungsmodell wird unterstützt. |
 | [Ändern von Systemdaten](/sql/relational-databases/databases/system-databases) | Nein | Ja |
@@ -159,7 +159,7 @@ Azure SQL-Datenbank und Azure SQL Managed Instance unterstützen verschiedene D
 | Azure-Portal | Ja | Ja |
 | Azure CLI | Ja | Ja|
 | [Azure Data Studio](/sql/azure-data-studio/what-is) | Ja | Ja |
-| Azure Powershell | Ja | Ja |
+| Azure PowerShell | Ja | Ja |
 | [BACPAC Datei (Export)](/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Ja: siehe [Export der SQL-Datenbank](database-export.md) | Ja, siehe [SQL Managed Instance-Export](database-export.md) |
 | [BACPAC Datei (Import)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Ja: siehe [Import der SQL-Datenbank](database-import.md) | Ja, siehe [SQL Managed Instance-Import](database-import.md) |
 | [Data Quality Services (DQS)](/sql/data-quality-services/data-quality-services) | Nein | Nein |
@@ -169,7 +169,7 @@ Azure SQL-Datenbank und Azure SQL Managed Instance unterstützen verschiedene D
 | [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | Ja | Ja, [Version 18.0 und höher](/sql/ssms/download-sql-server-management-studio-ssms) |
 | [SQL Server-PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | Ja | Ja |
 | [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | Nein (siehe [Erweiterte Ereignisse](xevent-db-diff-from-svr.md)) | Ja |
-| [System Center Operations Manager (SCOM)](/system-center/scom/welcome) | [Ja](https://www.microsoft.com/download/details.aspx?id=38829) | Ja, in der [Vorschauversion](https://www.microsoft.com/download/details.aspx?id=38829) |
+| [System Center Operations Manager (SCOM)](/system-center/scom/welcome) | [Ja](https://www.microsoft.com/download/details.aspx?id=38829) | [Ja](https://www.microsoft.com/en-us/download/details.aspx?id=101203) |
 
 ## <a name="migration-methods"></a>Migrationsmethoden
 

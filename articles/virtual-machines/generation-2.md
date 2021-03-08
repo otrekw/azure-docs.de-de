@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 02/26/2021
 ms.author: jushiman
-ms.openlocfilehash: 61897a790da8a5f52b1b8f8e208629e7755690fa
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 356afea7573b24649f682205d26823b4e24e7fbe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97759737"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695191"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Unterstützung für VMs der Generation 2 in Azure
 
@@ -79,11 +79,13 @@ Azure unterstützt zurzeit einige der Funktionen nicht, die lokale Hyper-V-Insta
 
 | Funktionen der Generation 2                | Lokale Hyper-V-Instanz | Azure |
 |-------------------------------------|---------------------|-------|
-| Sicherer Start                         | :heavy_check_mark:  | :x:   |
+| Sicherer Start                         | :heavy_check_mark:  | Mit vertrauenswürdigem Start (Vorschau)   |
 | Abgeschirmte VM                         | :heavy_check_mark:  | :x:   |
-| vTPM                                | :heavy_check_mark:  | :x:   |
-| Virtualisierungsbasierte Sicherheit (VBS) | :heavy_check_mark:  | :x:   |
+| vTPM                                | :heavy_check_mark:  | Mit vertrauenswürdigem Start (Vorschau)  |
+| Virtualisierungsbasierte Sicherheit (VBS) | :heavy_check_mark:  | Mit vertrauenswürdigem Start (Vorschau)   |
 | VHDX-Format                         | :heavy_check_mark:  | :x:   |
+
+Weitere Informationen finden Sie unter [Vertrauenswürdiger Start (Vorschau)](trusted-launch.md).
 
 ## <a name="features-and-capabilities"></a>Features und Funktionen
 
@@ -105,7 +107,7 @@ Azure unterstützt zurzeit einige der Funktionen nicht, die lokale Hyper-V-Insta
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | Sichern/Wiederherstellen                    | :heavy_check_mark: | :heavy_check_mark: |
 | Shared Image Gallery              | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | :x:                |
+| [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | :heavy_check_mark:                |
 | [Serverseitige Verschlüsselung](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="creating-a-generation-2-vm"></a>Erstellen einer VM der Generation 2
@@ -206,7 +208,7 @@ VMs der Generation 2 können auch mithilfe von VM-Skalierungsgruppen erstellt we
     Ja. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Computers mit beschleunigtem Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md).
 
 * **Wird von virtuellen Computern der zweiten Generation der sichere Start oder vTPM in Azure unterstützt?**
-    Sicherer Start und vTPM werden weder von virtuellen Computern der ersten Generation noch von virtuellen Computern der zweiten Generation unterstützt. 
+    vTPM und Secure Boot sind Features des vertrauenswürdigen Starts (Vorschauversion) für VMs der Generation 2. Weitere Informationen finden Sie unter [Vertrauenswürdiger Start](trusted-launch.md).
     
 * **Wird VHDX für Generation 2 unterstützt?**  
     Nein, VMs der Generation 2 unterstützen nur VHD.
@@ -225,5 +227,7 @@ VMs der Generation 2 können auch mithilfe von VM-Skalierungsgruppen erstellt we
     1. Vergewissern Sie sich, dass Sie nach einer [VM-Größe suchen, die Gen2-VMs unterstützt](#generation-2-vm-sizes).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie mehr über den [Vertrauenswürdigen Start (Vorschau)](trusted-launch-portal.md) mit virtuellen Computern der Generation 2.
 
 Erfahren Sie mehr über [virtuelle Computer der Generation 2 in Hyper-V](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).

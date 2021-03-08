@@ -1,17 +1,16 @@
 ---
 title: Gastintegritätswarnungen von VM Insights (Vorschau)
 description: In diesem Artikel werden die von VM Insights erstellten Warnungen zur Gastintegrität sowie ihre Aktivierung und das Konfigurieren von Benachrichtigungen beschrieben.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: a32ba9f1c4cf5d6bb9de69e1a6860c858e3ee2a6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1b5fd10b3e0bd84aa7d34a918f4f2376130d2e45
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707505"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052261"
 ---
 # <a name="vm-insights-guest-health-alerts-preview"></a>Gastintegritätswarnungen von VM Insights (Vorschau)
 Mit dem Feature „Gastintegrität“ von VM Insights können Sie Informationen zur Integrität einer VM anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. Eine Warnung kann erstellt werden, wenn ein virtueller Computer oder ein „Monitor“ (Überwachungskomponente) in den Status „Fehlerhaft“ wechselt. Sie können diese Warnungen zusammen mit den Warnungen anzeigen und verwalten, die [mit den Warnungsregeln in Azure Monitor erstellt werden](../alerts/alerts-overview.md), und die proaktive Benachrichtigung über die Erstellung neuer Warnungen auswählen.

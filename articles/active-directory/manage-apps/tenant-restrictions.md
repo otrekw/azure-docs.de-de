@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f605b2bb48855d70ea305dcda194b26da71ee9ec
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: a9a884cbe9ad30ce298318d217aa9ed1947c8f21
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99252473"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123019"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen
 
@@ -27,7 +27,9 @@ Zur Lösung dieses Problems bietet Azure Active Directory (Azure AD) ein Feature
 
 Mit Mandanteneinschränkungen können Organisationen eine Liste mit Mandanten angeben, für die ihre Benutzer zugriffsberechtigt sind. Azure AD gewährt daraufhin nur Zugriff auf die zugelassenen Mandanten.
 
-In diesem Artikel konzentrieren wir uns auf Mandanteneinschränkungen für Microsoft 365, das Feature sollte aber auch für jede andere SaaS-Cloud-App verwendet werden können, die moderne Authentifizierungsprotokolle mit Azure AD für einmaliges Anmelden verwendet. Falls Sie SaaS-Apps mit einem Azure AD-Mandanten verwenden, der nicht dem von Microsoft 365 verwendeten Mandanten entspricht, müssen Sie sicherstellen, dass alle erforderlichen Mandanten zugelassen sind. Weitere Informationen zu SaaS-Cloud-Apps finden Sie im [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory).
+In diesem Artikel liegt der Schwerpunkt auf Mandanteneinschränkungen für Microsoft 365, aber das Feature schützt alle Apps, die den Benutzer zum einmaligen Anmelden an Azure AD senden. Falls Sie SaaS-Apps mit einem Azure AD-Mandanten verwenden, der nicht dem von Microsoft 365 verwendeten Mandanten entspricht, müssen Sie sicherstellen, dass alle erforderlichen Mandanten zugelassen sind (z. B. in B2B Collaboration-Szenarien). Weitere Informationen zu SaaS-Cloud-Apps finden Sie im [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps).
+
+Darüber hinaus unterstützt das Mandanteneinschränkungsfeature nun [das Blockieren der Verwendung aller Microsoft-Consumeranwendungen](#blocking-consumer-applications-public-preview) (MSA-Apps), wie z. B. OneDrive, Hotmail und Xbox.com.  Dieses verwendet einen separaten Header zum `login.live.com`-Endpunkt und wird am Ende des Dokuments ausführlich erläutert.
 
 ## <a name="how-it-works"></a>Funktionsweise
 
@@ -39,7 +41,7 @@ Die Lösung umfasst folgende Komponenten:
 
 3. **Clientsoftware**: Zur Unterstützung von Mandanteneinschränkungen muss Clientsoftware Token direkt von Azure AD anfordern, damit Datenverkehr von der Proxyinfrastruktur abgefangen werden kann. Browserbasierte Microsoft 365-Anwendungen unterstützen derzeit Mandanteneinschränkungen, ebenso wie Office-Clients, die eine moderne Authentifizierung verwenden (wie OAuth 2.0).
 
-4. **Moderne Authentifizierung**: Clouddienste müssen eine moderne Authentifizierung verwenden, um Mandanteneinschränkungen nutzen und den Zugriff auf nicht zugelassene Mandanten blockieren zu können. Microsoft 365-Clouddienste müssen so konfiguriert werden, dass sie standardmäßig moderne Authentifizierungsprotokolle verwenden. Aktuelle Informationen zur Unterstützung von moderner Authentifizierung in Microsoft 365 finden Sie unter [Office 2013: Public Preview für moderne Authentifizierung angekündigt](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+4. **Moderne Authentifizierung**: Clouddienste müssen eine moderne Authentifizierung verwenden, um Mandanteneinschränkungen nutzen und den Zugriff auf nicht zugelassene Mandanten blockieren zu können. Microsoft 365-Clouddienste müssen so konfiguriert werden, dass sie standardmäßig moderne Authentifizierungsprotokolle verwenden. Aktuelle Informationen zur Unterstützung von moderner Authentifizierung in Microsoft 365 finden Sie unter [Office 2013: Public Preview für moderne Authentifizierung angekündigt](https://www.microsoft.com/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
 
 Das folgende Diagramm veranschaulicht den allgemeinen Datenverkehrsfluss. Mandanteneinschränkungen erfordern die TLS-Überprüfung nur bei Datenverkehr für Azure AD, nicht bei Datenverkehr für die Microsoft 365-Clouddienste. Diese Unterscheidung ist wichtig, da der durch die Authentifizierung bedingte Datenverkehr für Azure AD in der Regel erheblich geringer ausfällt als der Datenverkehr für SaaS-Anwendungen wie Exchange Online und SharePoint Online.
 
@@ -63,22 +65,20 @@ Die folgende Konfiguration ist erforderlich, um Mandanteneinschränkungen über 
 
 - Clients müssen der Zertifikatkette vertrauen, die vom Proxy für die TLS-Kommunikation präsentiert wird. Wenn also z. B. Zertifikate einer internen [PKI (Public Key-Infrastruktur)](/windows/desktop/seccertenroll/public-key-infrastructure) verwendet werden, muss dem Zertifikat der internen ausstellenden Stammzertifizierungsstelle vertraut werden.
 
-- Zur Verwendung von Mandanteneinschränkungen sind Azure AD Premium 1-Lizenzen erforderlich. 
+- Zur Verwendung von Mandanteneinschränkungen sind Azure AD Premium 1-Lizenzen erforderlich.
 
 #### <a name="configuration"></a>Konfiguration
 
-Fügen Sie für jede eingehende, an „login.microsoftonline.com“, „login.microsoft.com“ oder „login.windows.net“ gerichtete Anforderung zwei HTTP-Header ein: *Restrict-Access-To-Tenants* und *Restrict-Access-Context*.
+Fügen Sie für jede ausgehende, an „login.microsoftonline.com“, „login.microsoft.com“ oder „login.windows.net“ gerichtete Anforderung zwei HTTP-Header ein: *Restrict-Access-To-Tenants* und *Restrict-Access-Context*.
 
 > [!NOTE]
-> Stellen Sie beim Konfigurieren des Abfangens von SSL und von Header Injection sicher, dass der Datenverkehr zu https://device.login.microsoftonline.com ausgeschlossen wird. Diese URL wird für die Geräteauthentifizierung verwendet. Beim Ausführen von TLSI (TLS break and inspect) wird möglicherweise die Authentifizierung von Clientzertifikaten beeinträchtigt, was zu Problemem bei der Geräteregistrierung und dem gerätebasierten bedingten Zugriff führen kann.
-
-
+> Fügen Sie in der Proxykonfiguration unter `*.login.microsoftonline.com` keine Unterdomänen ein. Dadurch wird „device.login.microsoftonline.com“ eingefügt, was möglicherweise die Authentifizierung mit Clientzertifikaten beeinträchtigt, die für die Geräteregistrierung und den gerätebasierten bedingten Zugriff verwendet werden. Konfigurieren Sie den Proxyserver so, dass „device.login.microsoftonline.com“ von TLSI (TLS break and inspect) und Header Injection ausgeschlossen ist.
 
 Die Header müssen folgende Elemente enthalten:
 
 - *Restrict-Access-To-Tenants:* Verwenden Sie den Wert \<permitted tenant list\>. Dabei handelt es sich um eine durch Kommas getrennte Liste mit Mandanten, auf die Benutzer zugreifen können sollen. Der Mandant in dieser Liste kann mithilfe jeder bei einem Mandanten registrierten Domäne sowie mit der Verzeichnis-ID selbst identifiziert werden. In einem Beispiel aller drei Möglichkeiten, einen Mandanten zu beschreiben, sieht das Name-Wert-Paar, um Contoso, Fabrikam und Microsoft zuzulassen, folgendermaßen aus: `Restrict-Access-To-Tenants: contoso.com,fabrikam.onmicrosoft.com,72f988bf-86f1-41af-91ab-2d7cd011db47`.
 
-- *Restrict-Access-Context:* Verwenden Sie einen Wert für eine einzelne Verzeichnis-ID, um zu deklarieren, welcher Mandant die Mandanteneinschränkungen festlegt. Wenn Sie z. B. Contoso als den Mandanten deklarieren möchten, der die Mandanteneinschränkungsrichtlinie festlegt, sieht das Name-Wert-Paar wie folgt aus: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`.  Hier **müssen** Sie Ihre eigene Verzeichnis-ID verwenden.
+- *Restrict-Access-Context:* Verwenden Sie einen Wert für eine einzelne Verzeichnis-ID, um zu deklarieren, welcher Mandant die Mandanteneinschränkungen festlegt. Wenn Sie z. B. Contoso als den Mandanten deklarieren möchten, der die Mandanteneinschränkungsrichtlinie festlegt, sieht das Name-Wert-Paar wie folgt aus: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`.  Sie **müssen** an dieser Stelle ihre eigene Verzeichnis-ID verwenden, um Protokolle für diese Authentifizierungen zu erhalten.
 
 > [!TIP]
 > Ihre Verzeichnis-ID finden Sie im [Azure Active Directory-Portal](https://aad.portal.azure.com/). Melden Sie sich als Administrator an, und wählen Sie **Azure Active Directory** und anschließend **Eigenschaften** aus. 
@@ -88,9 +88,6 @@ Die Header müssen folgende Elemente enthalten:
 Um zu verhindern, dass Benutzer ihre eigenen HTTP-Header mit nicht genehmigten Mandanten einfügen, muss der Proxy den *Restrict-Access-To-Tenants*-Header ersetzen, falls er in der eingehenden Anforderung bereits vorhanden ist.
 
 Für Clients muss bei allen Anforderungen an „login.microsoftonline.com“, „login.microsoft.com“ oder „login.windows.net“ die Verwendung des Proxys erzwungen werden. Wenn Clients also z. B. mithilfe von PAC-Dateien zur Verwendung des Proxys angewiesen werden, sollten Endbenutzer die PAC-Dateien nicht bearbeiten oder deaktivieren können.
-
-> [!NOTE]
-> Fügen Sie in der Proxykonfiguration unter „*.login.microsoftonline.com“ keine Unterdomänen ein. Dadurch wird „device.login.microsoftonline.com“ eingefügt, was möglicherweise die Authentifizierung mit Clientzertifikaten beeinträchtigt, die für die Geräteregistrierung und den gerätebasierten bedingten Zugriff verwendet werden. Konfigurieren Sie den Proxyserver so, dass „device.login.microsoftonline.com“ von TLSI (TLS break and inspect) und Header Injection ausgeschlossen ist.
 
 ## <a name="the-user-experience"></a>Die Benutzererfahrung
 
@@ -112,22 +109,18 @@ Die Konfiguration der Mandanteneinschränkungen erfolgt zwar in der Proxyinfrast
 
 Der Administrator für den Mandanten, der als Restricted-Access-Context-Mandant angegeben ist, kann sich anhand dieses Berichts über Anmeldungen informieren, die aufgrund der Mandanteneinschränkungsrichtlinie blockiert wurden (einschließlich der jeweils verwendeten Identität und der Zielverzeichnis-ID). Anmeldungen sind enthalten, wenn es sich beim Mandanten, der die Einschränkung festlegt, entweder um den Benutzermandanten oder den Ressourcenmandanten für die Anmeldung handelt.
 
-> [!NOTE]
-> Der Bericht enthält möglicherweise eingeschränkte Informationen (z. B. die Zielverzeichnis-ID), wenn sich ein Benutzer anmeldet, der sich in einem anderen Mandanten als dem Restricted-Access-Context-Mandanten befindet. In diesem Fall werden benutzerbezogene Informationen (z. B. Name und Benutzerprinzipalname) maskiert, um die Benutzerdaten in anderen Mandanten zu schützen („00000000-0000-0000-0000-00000000@domain.com“). 
+Der Bericht enthält möglicherweise eingeschränkte Informationen (z. B. die Zielverzeichnis-ID), wenn sich ein Benutzer anmeldet, der sich in einem anderen Mandanten als dem Restricted-Access-Context-Mandanten befindet. In diesem Fall werden benutzerbezogene Informationen wie Name und Benutzerprinzipalname maskiert, um Benutzerdaten in anderen Mandanten zu schützen (je nachdem "{PII Removed}@domain.com" oder 00000000-0000-0000-0000-000000000000 anstelle von Benutzernamen und Objekt-IDs). 
 
 Genau wie bei anderen Berichten im Azure-Portal können Sie auch hier mithilfe von Filtern den gewünschten Umfang des Berichts angeben. Der Bericht kann nach einem bestimmten Zeitintervall, einem Benutzer, einer Anwendung, einem Client oder einem Status gefiltert werden. Wenn Sie die Schaltfläche **Spalten** auswählen, können Sie Daten mit einer beliebigen Kombination der folgenden Felder anzeigen:
 
-- **Benutzer**
+- **Benutzer**: In diesem Feld können personenbezogene Informationen entfernt werden, wobei es auf `00000000-0000-0000-0000-000000000000` festgelegt wird. 
 - **Anwendung**
 - **Status**
 - **Date**
 - **Datum (UTC)** (UTC bedeutet Coordinated Universal Time)
-- **MFA-Authentifizierungsmethode** (Methode für Multi-Factor Authentication)
-- **MFA-Authentifizierungsdetails** (Details zur Multi-Factor Authentication)
-- **MFA-Ergebnis**
 - **IP-Adresse**
 - **Client**
-- **Benutzername**
+- **Benutzername**: In diesem Feld können personenbezogene Informationen entfernt werden, wobei es auf `{PII Removed}@domain.com` festgelegt wird.
 - **Location**
 - **Zielmandanten-ID**
 
@@ -162,23 +155,32 @@ Fiddler ist ein kostenloser Web Debugging Proxy, mit dem Sie HTTP/HTTPS-Datenver
 
    1. Wählen Sie im Fiddler Web Debugger-Tool das Menü **Rules** (Regeln) und anschließend **Customize Rules...** (Regeln anpassen...) aus, um die Datei „CustomRules“ zu öffnen.
 
-   2. Fügen Sie am Anfang der `OnBeforeRequest`-Funktion die folgenden Zeilen hinzu: Ersetzen Sie \<tenant domain\> durch eine bei Ihrem Mandanten registrierte Domäne (z. B. `contoso.onmicrosoft.com`). Ersetzen Sie \<directory ID\> durch den Azure AD-GUID Ihres Mandanten.
+   2. Fügen Sie am Anfang der `OnBeforeRequest`-Funktion die folgenden Zeilen hinzu: Ersetzen Sie \<List of tenant identifiers\> durch eine bei Ihrem Mandanten registrierte Domäne (z. B. `contoso.onmicrosoft.com`). Ersetzen Sie \<directory ID\> durch den Azure AD-GUID Ihres Mandanten.  Sie **müssen** den richtigen GUID-Bezeichner einschließen, damit die Protokolle in Ihrem Mandanten angezeigt werden. 
 
-      ```JScript.NET
+   ```JScript.NET
+    // Allows access to the listed tenants.
       if (
           oSession.HostnameIs("login.microsoftonline.com") ||
           oSession.HostnameIs("login.microsoft.com") ||
           oSession.HostnameIs("login.windows.net")
       )
       {
-          oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";
-          oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";
+          oSession.oRequest["Restrict-Access-To-Tenants"] = "<List of tenant identifiers>";
+          oSession.oRequest["Restrict-Access-Context"] = "<Your directory ID>";
       }
-      ```
 
-      Falls Sie mehrere Mandanten zulassen möchten, trennen Sie die einzelnen Mandantennamen jeweils durch ein Komma. Beispiel:
+    // Blocks access to consumer apps
+      if (
+          oSession.HostnameIs("login.live.com")
+      )
+      {
+          oSession.oRequest["sec-Restrict-Tenant-Access-Policy"] = "restrict-msa";
+      }
+   ```
 
-      `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
+   Falls Sie mehrere Mandanten zulassen möchten, trennen Sie die einzelnen Mandantennamen jeweils durch ein Komma. Beispiel:
+
+   `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 
 4. Speichern und schließen Sie die Datei „CustomRules“.
 
@@ -193,7 +195,33 @@ Abhängig von den Funktionen Ihrer Proxyinfrastruktur können Sie unter Umständ
 
 Spezifische Details finden Sie in der Dokumentation Ihres Proxyservers.
 
+## <a name="blocking-consumer-applications-public-preview"></a>Blockieren von Consumer-Anwendungen (öffentliche Vorschau)
+
+Anwendungen von Microsoft, die sowohl Consumerkonten als auch Organisationskonten unterstützen (z. B. [OneDrive](https://onedrive.live.com/) oder [Microsoft Learn](https://docs.microsoft.com/learn/)), können manchmal auf derselben URL gehostet werden.  Dies bedeutet, dass Benutzer, die für Arbeitszwecke auf diese URL zugreifen müssen, auch für den persönlichen Gebrauch darauf zugreifen können. Dies ist nach Ihren Betriebsrichtlinien möglicherweise nicht zulässig.
+
+Einige Organisationen versuchen, das Problem zu beheben, indem sie `login.live.com` blockieren, um persönliche Konten für die Authentifizierung zu blockieren.  Dies hat mehrere Nachteile:
+
+1. Durch die Blockierung von `login.live.com` wird die Verwendung persönlicher Konten in B2B-Gastszenarien blockiert, was für Besucher und die Zusammenarbeit nachteilig sein kann.
+1. [Autopilot erfordert die Verwendung von `login.live.com`](https://docs.microsoft.com/mem/autopilot/networking-requirements) zur Bereitstellung. Bei Intune- und Autopilot-Szenarien können Fehler auftreten, wenn `login.live.com` blockiert ist.
+1. Organisationstelemetrie und Windows-Updates, die vom login.live.com-Dienst für Geräte-IDs abhängig sind, [funktionieren nicht mehr](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are).
+
+### <a name="configuration-for-consumer-apps"></a>Konfiguration für Consumer-Apps
+
+Während der `Restrict-Access-To-Tenants`-Header als Zulassungsliste fungiert, fungiert die Blockierung des Microsoft-Kontos (MSA) als Ablehnungssignal, das der Microsoft-Kontoplattform mitteilt, die Anmeldung von Benutzern bei Consumeranwendungen nicht zuzulassen. Um dieses Signal zu senden, wird der `sec-Restrict-Tenant-Access-Policy`-Header mithilfe desselben Unternehmensproxys oder derselben Firewall wie [oben](#proxy-configuration-and-requirements) in den Datenverkehr zu `login.live.com` eingefügt. Der Wert des Headers muss `restrict-msa` sein. Wenn der Header vorhanden ist und eine Consumer-App versucht, einen Benutzer direkt anzumelden, wird diese Anmeldung blockiert.
+
+Derzeit wird die Authentifizierung bei Consumeranwendungen nicht in den [Administratorprotokollen](#admin-experience) angezeigt, da „login.live.com“ separat von Azure AD gehostet wird.
+
+### <a name="what-the-header-does-and-does-not-block"></a>Was der Header blockiert und was nicht
+
+Die `restrict-msa`-Richtlinie blockiert die Verwendung von Consumeranwendungen, lässt jedoch verschiedene andere Arten von Datenverkehr und Authentifizierung zu:
+
+1. Benutzerloser Datenverkehr für Geräte.  Dies schließt den Datenverkehr für Autopilot, Windows Update und Organisationstelemetrie ein.
+1. B2B-Authentifizierung von Consumerkonten. Benutzer mit Microsoft-Konten, die [zur Zusammenarbeit mit einem Mandanten eingeladen](https://docs.microsoft.com/azure/active-directory/external-identities/redemption-experience#invitation-redemption-flow) werden, authentifizieren sich bei „login.live.com“, um auf einen Ressourcenmandanten zuzugreifen.
+    1. Dieser Zugriff wird mithilfe des `Restrict-Access-To-Tenants`-Headers gesteuert, um den Zugriff auf diesen Ressourcenmandanten zuzulassen oder zu verweigern.
+1. „Pass-Through“-Authentifizierung, die von vielen Azure-Apps und Office.com verwendet wird, wobei Apps Azure AD zum Anmelden von Consumerbenutzern in einem Consumerkontext verwenden.
+    1. Dieser Zugriff wird auch mit dem `Restrict-Access-To-Tenants`-Header gesteuert, um den Zugriff auf den speziellen „Pass-through“-Mandanten zuzulassen oder zu verweigern (`f8cdef31-a31e-4b4a-93e4-5f571e91255a`).  Wenn dieser Mandant nicht in der `Restrict-Access-To-Tenants`-Liste der zulässigen Domänen angezeigt wird, wird die Anmeldung von Consumerkonten bei diesen Apps durch Azure AD blockiert.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie [Updated Office 365 modern authentication](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) (Aktualisierte moderne Authentifizierung für Office 365).
+- Lesen Sie [Updated Office 365 modern authentication](https://www.microsoft.com/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) (Aktualisierte moderne Authentifizierung für Office 365).
 - Informieren Sie sich über die [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).

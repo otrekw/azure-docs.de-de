@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: c8d0ea43410b8d191d3d0b08c2f232bd72c80b20
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b86414758c3b644725e5aa29ca3b314f489508aa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669626"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693525"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Automatisches Bezeichnen Ihrer Daten in Azure Purview
 
@@ -102,7 +102,10 @@ Durch die Erweiterung der MIP-Vertraulichkeitsbezeichnungen mit Azure Purview k�
 
 **So erweitern Sie Vertraulichkeitsbezeichnungen auf Purview:**
 
-Navigieren Sie in Microsoft 365 zur Seite **Information Protection**. Wählen Sie in **Bezeichnung auf Ressourcen in Azure Purview erweitern** die Schaltfläche **Aktivieren** und im dann angezeigten Bestätigungsdialogfeld **Ja** aus.
+Mit den folgenden Schritten können Sie Ihre Vertraulichkeitsbezeichnungen zur Verwendung in Azure Purview zur Verfügung stellen, wo Sie Ihre Vertraulichkeitsbezeichnungen auf Objekte wie SQL-Spalten, Dateien in Azure Blob Storage und vieles mehr anwenden können.
+
+1. Navigieren Sie in Microsoft 365 zur Seite **Information Protection**. 
+1. Wählen Sie in **Bezeichnung auf Ressourcen in Azure Purview erweitern** die Schaltfläche **Aktivieren** und im dann angezeigten Bestätigungsdialogfeld **Ja** aus.
 
 Beispiel:
 

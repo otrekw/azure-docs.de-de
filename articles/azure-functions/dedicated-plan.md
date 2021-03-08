@@ -3,12 +3,12 @@ title: Dediziertes Hosten von Azure Functions
 description: Lernen Sie die Vorteile kennen, von denen Sie profitieren, wenn Sie Azure Functions in einem dedizierten App Service-Hostingplan ausführen.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 0ee32d4c4a7d33664da88b133a1f7011fc09f298
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a9f976eda4a551c302ba7df92fbdbbf7a4fce1d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591065"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704564"
 ---
 # <a name="dedicated-hosting-plans-for-azure-functions"></a>Dedizierte Hostingpläne für Azure Functions
 
@@ -41,7 +41,7 @@ Mit einem App Service-Plan können Sie manuell aufskalieren, indem Sie weitere V
 
 ## <a name="app-service-environments"></a>App Service-Umgebungen
 
-Durch die Ausführung in einer [App Service-Umgebung](../app-service/environment/intro.md) können Sie Ihre Funktionen vollständig isolieren und von einer höheren Anzahl von Instanzen als in einem App Service-Plan profitieren. Informationen zu ersten Schritten finden Sie unter .
+Durch die Ausführung in einer App Service-Umgebung können Sie Ihre Funktionen vollständig isolieren und von einer höheren Anzahl von Instanzen als in einem App Service-Plan profitieren. Weitere Informationen zu den ersten Schritten finden Sie unter [Einführung in die App Service-Umgebungen](../app-service/environment/intro.md).
 
 Wenn Sie nur Ihre Funktions-App in einem virtuellen Netzwerk ausführen möchten, können Sie den [Premium-Plan](functions-premium-plan.md) nutzen. Weitere Informationen finden Sie unter [Einrichten von privatem Websitezugriff für Azure Functions](functions-create-private-site-access.md). 
 

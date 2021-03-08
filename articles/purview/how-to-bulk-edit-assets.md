@@ -7,12 +7,12 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: c42a6894c33993dc9aee5a9fdd10b1c3a3627320
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 77bfa3d22d628cf179e95cd4892ec030f22ab35f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97372032"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693763"
 ---
 # <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>Massenbearbeitung von Ressourcen zum Taggen mit Glossarbegriffen
 
@@ -63,11 +63,15 @@ In diesem Artikel wird beschrieben, wie Sie eine Liste ausgewählter Objekte in 
    
     :::image type="content" source="media/how-to-bulk-edit-assets/replace-list.png" alt-text="Screenshot des Entfernens von Begriffen":::
 
-7. Schließen Sie nach Abschluss des Vorgangs das Blatt für die Massenbearbeitung, indem Sie **Schließen** oder **Remove all and close** (Alle entfernen und schließen) auswählen. Durch „Schließen“ werden die ausgewählten Ressourcen nicht entfernt, mit „Remove all and close“ (Alle entfernen und schließen) hingegen schon.
+7. Wiederholen Sie die obigen Schritte für Klassifizierungen, Besitzer und Experten.
+
+    :::image type="content" source="media/how-to-bulk-edit-assets/all-list.png" alt-text="Screenshot des Entfernens von Begriffen":::
+
+8. Schließen Sie nach Abschluss des Vorgangs das Blatt für die Massenbearbeitung, indem Sie **Schließen** oder **Remove all and close** (Alle entfernen und schließen) auswählen. Durch „Schließen“ werden die ausgewählten Ressourcen nicht entfernt, mit „Remove all and close“ (Alle entfernen und schließen) hingegen schon.
     :::image type="content" source="media/how-to-bulk-edit-assets/close-list.png" alt-text="Screenshot des Schließens":::
 
    > [!Important]
-   > Die empfohlene Anzahl von Ressourcen für die Massenbearbeitung beträgt 15. Wenn Sie mehr als 15 auswählen, kann dies die Leistung beeinträchtigen.
+   > Die empfohlene Anzahl von Ressourcen für die Massenbearbeitung beträgt 15. Wenn Sie mehr als 25 auswählen, kann dies die Leistung beeinträchtigen.
    > Das Feld **Ausgewählte anzeigen** wird nur angezeigt, wenn mindestens eine Ressource ausgewählt ist.
 
 

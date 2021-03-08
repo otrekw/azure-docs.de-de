@@ -1,20 +1,19 @@
 ---
-title: Konfigurieren der Überwachung für das Feature „Gastintegrität“ von Azure Monitor für VMs (Vorschau)
-description: Es wird beschrieben, wie Sie die Standardüberwachung für das Feature „Gastintegrität“ von Azure Monitor für VMs (Vorschau) über das Azure-Portal ändern.
-ms.subservice: ''
+title: Konfigurieren der Überwachung des Features „Gastintegrität“ in VM Insights (Vorschau)
+description: In diesem Artikel wird beschrieben, wie Sie die Standardüberwachung für das Feature „Gastintegrität“ in VM Insights (Vorschau) über das Azure-Portal ändern.
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/14/2020
-ms.openlocfilehash: 427bdec2b5e5ab14d566375d5ad8f9da9dc3e81b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0f6599bb9f379cf471dafbb83a7deefbb05c0dbe
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602326"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052210"
 ---
-# <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-preview"></a>Konfigurieren der Überwachung für das Feature „Gastintegrität“ von Azure Monitor für VMs (Vorschau)
-Mit dem Feature „Gastintegrität“ von Azure Monitor für VMs können Sie Informationen zur Integrität eines virtuellen Computers anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. In diesem Artikel wird beschrieben, wie Sie die Standardüberwachung mit dem Azure-Portal ändern können. Darüber hinaus enthält er auch eine Beschreibung der grundlegenden Konzepte von „Monitoren“ (Überwachungskomponenten), die zum [Konfigurieren der Überwachung per Datensammlungsregel](vminsights-health-configure-dcr.md) erforderlich sind.
+# <a name="configure-monitoring-in-vm-insights-guest-health-preview"></a>Konfigurieren der Überwachung des Features „Gastintegrität“ in VM Insights (Vorschau)
+Mit dem Feature „Gastintegrität“ von VM Insights können Sie Informationen zur Integrität einer VM anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. In diesem Artikel wird beschrieben, wie Sie die Standardüberwachung mit dem Azure-Portal ändern können. Darüber hinaus enthält er auch eine Beschreibung der grundlegenden Konzepte von „Monitoren“ (Überwachungskomponenten), die zum [Konfigurieren der Überwachung per Datensammlungsregel](vminsights-health-configure-dcr.md) erforderlich sind.
 
 ## <a name="open-monitor-configuration"></a>Öffnen der Monitorkonfiguration
 Öffnen Sie im Azure-Portal die Monitorkonfiguration, indem Sie den Monitor und dann die Registerkarte **Konfiguration** auswählen.

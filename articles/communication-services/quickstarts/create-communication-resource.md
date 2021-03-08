@@ -10,21 +10,21 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: d861f6bfbe38ad73715ef521a36cc097b8538c9b
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f40da8b2c9f64da424d43a6679977cda5bf111df
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820002"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691772"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource
  
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-Führen Sie erste Schritte mit Azure Communication Services aus, indem Sie Ihre erste Communication Services-Ressource bereitstellen. Communication Services-Ressourcen können über das Azure-Portal oder mit der .NET-Verwaltungsclientbibliothek bereitgestellt werden. Mithilfe der Verwaltungsclientbibliothek können Sie Ihre Ressource und Schnittstellen mit [Azure Resource Manager](../../azure-resource-manager/management/overview.md), dem Bereitstellungs- und Verwaltungsdienst von Azure, erstellen, konfigurieren, aktualisieren und löschen. Alle in den Clientbibliotheken verfügbaren Funktionen sind auch im Azure-Portal verfügbar. 
+Führen Sie erste Schritte mit Azure Communication Services aus, indem Sie Ihre erste Communication Services-Ressource bereitstellen. Communication Services-Ressourcen können über das [Azure-Portal](https://portal.azure.com) oder mit der .NET-Verwaltungsclientbibliothek bereitgestellt werden. Mithilfe der Verwaltungsclientbibliothek und dem Azure-Portal können Sie Ihre Ressource und Schnittstellen mit [Azure Resource Manager](../../azure-resource-manager/management/overview.md), dem Bereitstellungs- und Verwaltungsdienst von Azure, erstellen, konfigurieren, aktualisieren und löschen. Alle in den Clientbibliotheken verfügbaren Funktionen sind auch im Azure-Portal verfügbar. 
 
 > [!WARNING]
-> Beachten Sie, dass die Verfügbarkeit von Communication Services während der öffentlichen Vorschauphase auf die geografische Region „USA“ beschränkt ist. Beachten Sie zudem, dass während der öffentlichen Vorschauphase keine Kommunikationsressourcen in ein anderes Abonnement übertragen werden können.
+> Beachten Sie Folgendes: Obwohl Communication Services in mehreren geografischen Regionen verfügbar sind, muss für die Ressource ein Datenspeicherort auf „US“ festgelegt sein, um eine Telefonnummer zu erhalten. Beachten Sie zudem, dass während der öffentlichen Vorschauphase keine Kommunikationsressourcen in ein anderes Abonnement übertragen werden können.
 
 ::: zone pivot="platform-azp"
 [!INCLUDE [Azure portal](./includes/create-resource-azp.md)]

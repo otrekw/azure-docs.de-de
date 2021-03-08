@@ -1,17 +1,16 @@
 ---
 title: Konfigurieren der Überwachung für das Feature „Gastintegrität“ von VM Insights mit Datensammlungsregeln (Vorschau)
 description: Hier wird beschrieben, wie Sie für das Feature „Gastintegrität“ von VM Insights die Standardüberwachung umfassend ändern, indem Sie Resource Manager-Vorlagen verwenden.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 907aea16b018fb5dd3846db546787d132f8f5a9f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0db6ed7566c53429f8b9798ac8cdafe76ca7bd5a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731220"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052142"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>Konfigurieren der Überwachung für das Feature „Gastintegrität“ von VM Insights mit Datensammlungsregeln (Vorschau)
 Mit dem [Feature „Gastintegrität“ von VM Insights](vminsights-health-overview.md) können Sie Informationen zur Integrität einer VM anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. In diesem Artikel wird beschrieben, wie Sie die Standardüberwachung übergreifend für mehrere virtuelle Computer mit Datensammlungsregeln ändern können.

@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/11/2021
+ms.date: 02/17/2021
 tags: azure-synapse
-ms.openlocfilehash: 254d69c723a97d9007a1f6c0f0eb7b34bcfe3c4e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f47303a953dbb06b4c9efdfbbae41715cad81d2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392764"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690803"
 ---
 # <a name="data-discovery--classification"></a>Datenermittlung und -klassifizierung
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -187,11 +187,12 @@ Sie können die REST-API verwenden, um Klassifizierungen und Empfehlungen progra
 
 ## <a name="faq---advanced-classification-capabilities"></a>FAQ: Erweiterte Klassifizierungsfunktionen
 
-**Frage:** Ersetzt [Azure Purview](https://docs.microsoft.com/azure/purview/overview) SQL-Datenermittlung und -klassifizierung, oder wird SQL-Datenermittlung und -klassifizierung bald eingestellt?
-**Antwort:** Wir unterstützen weiterhin SQL-Datenerkennung und -klassifizierung und empfehlen, [Azure Purview](https://docs.microsoft.com/azure/purview/overview) zu verwenden, damit Sie über umfangreichere Funktionen für erweiterte Klassifizierungsmöglichkeiten und Data Governance verfügen. Wenn wir uns entscheiden, einen Service, eine Funktion, eine API oder eine SKU einzustellen, erhalten Sie eine Vorankündigung, die einen Migrations- oder Übergangspfad enthält. Weitere Informationen zu Microsoft-Lebenszyklusrichtlinien finden Sie hier.
+**Frage:** Ersetzt [Azure Purview](../../purview/overview.md) SQL-Datenermittlung und -klassifizierung, oder wird SQL-Datenermittlung und -klassifizierung bald eingestellt?
+**Antwort:** Wir unterstützen weiterhin SQL-Datenerkennung und -klassifizierung und empfehlen, [Azure Purview](../../purview/overview.md) zu verwenden, damit Sie über umfangreichere Funktionen für erweiterte Klassifizierungsmöglichkeiten und Data Governance verfügen. Wenn wir uns entscheiden, einen Service, eine Funktion, eine API oder eine SKU einzustellen, erhalten Sie eine Vorankündigung, die einen Migrations- oder Übergangspfad enthält. Weitere Informationen zu Microsoft-Lebenszyklusrichtlinien finden Sie hier.
 
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Nächste Schritte
 
 - Erwägen Sie, die [Azure SQL-Überwachung](../../azure-sql/database/auditing-overview.md) für die Überwachung und Überprüfung des Zugriffs auf Ihre klassifizierten vertraulichen Daten zu konfigurieren.
 - Eine Präsentation mit Informationen zur Datenermittlung und -klassifizierung finden Sie unter [Ermitteln, Klassifizieren, Bezeichnen und Schützen von SQL-Daten | Data Exposed](https://www.youtube.com/watch?v=itVi9bkJUNc).
+- Informationen zum Klassifizieren von Azure SQL-Datenbanken und Azure Synapse Analytics mit Azure Purview-Bezeichnungen mithilfe von T-SQL-Befehlen finden Sie unter [Klassifizieren der Azure SQL-Daten mithilfe von Azure Purview-Bezeichnungen](../../sql-database/scripts/sql-database-import-purview-labels.md).

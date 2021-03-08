@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 03/31/2020
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b051a4ffe4d24e1ef0e69ab7c18a8ed3388b57e5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 21fc7e6de38a98e4f0853cf513f9f3441c7e2106
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89078281"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735351"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit PowerShell
 
@@ -26,6 +26,8 @@ Verwenden Sie das Azure PowerShell-Modul, um Azure-Ressourcen zu erstellen und z
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Sie benötigen ein Azure-Abonnement, um auf Azure Storage zuzugreifen. Wenn Sie noch kein Abonnement haben, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+Sie benötigen zudem die Rolle „Mitwirkender an Storage-Blobdaten“, um Lese- und Schreibvorgänge für Azure Storage-Container und -Blobs auszuführen und diese zu löschen.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -113,7 +115,7 @@ Get-AzStorageBlobContent -Blob "Image002.png" `
 
 ## <a name="data-transfer-with-azcopy"></a>Übertragen von Daten mit AzCopy
 
-Das Befehlszeilenprogramm AzCopy bietet skriptfähige Hochleistungsdatenübertragung für Azure Storage. Mit AzCopy können Daten zwischen Blobspeicher und Azure Files übertragen werden. Weitere Informationen zu AzCopy v10 (der aktuellen Version von AzCopy) finden Sie unter [Erste Schritte mit AzCopy](../common/storage-use-azcopy-v10.md). Informationen zur Verwendung von AzCopy V10 mit Blobspeicher finden Sie unter [Übertragen von Daten mit AzCopy und Blob Storage](../common/storage-use-azcopy-blobs.md).
+Das Befehlszeilenprogramm AzCopy bietet skriptfähige Hochleistungsdatenübertragung für Azure Storage. Mit AzCopy können Daten zwischen Blobspeicher und Azure Files übertragen werden. Weitere Informationen zu AzCopy v10 (der aktuellen Version von AzCopy) finden Sie unter [Erste Schritte mit AzCopy](../common/storage-use-azcopy-v10.md). Informationen zur Verwendung von AzCopy V10 mit Blobspeicher finden Sie unter [Übertragen von Daten mit AzCopy und Blob Storage](../common/storage-use-azcopy-v10.md#transfer-data).
 
 Im folgenden Beispiel wird AzCopy verwendet, um eine lokale Datei in ein Blob hochzuladen. Denken Sie daran, die Beispielwerte durch Ihre eigenen Werte zu ersetzen:
 

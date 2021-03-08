@@ -1,19 +1,19 @@
 ---
-title: Regionszuordnungen für Azure Monitor für Container
-description: Hier werden die zwischen Azure Monitor für Container, dem Log Analytics-Arbeitsbereich und benutzerdefinierten Metriken unterstützten Regionszuordnungen beschrieben.
+title: Regionszuordnungen in Container Insights
+description: In diesem Artikel werden die von Container Insights, dem Log Analytics-Arbeitsbereich und von benutzerdefinierten Metriken unterstützten Regionszuordnungen beschrieben.
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9b77242de3e7845a97874b663266103bf00a8e66
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f9e910b1352109608becb82609e85e26d27d2cd1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602089"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728874"
 ---
-# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Von Azure Monitor für Container unterstützte Regionszuordnungen
+# <a name="region-mappings-supported-by-container-insights"></a>Von Container Insights unterstützte Regionszuordnungen
 
- Wenn Sie Azure Monitor für Container aktivieren, werden nur bestimmte Regionen unterstützt, um einen Log Analytics-Arbeitsbereich und einen AKS-Cluster zu verbinden und benutzerdefinierte Metriken zu sammeln, die an Azure Monitor übermittelt werden.
+ Wenn Sie Container Insights aktivieren, werden nur bestimmte Regionen für das Verknüpfen eines Log Analytics-Arbeitsbereichs und eines AKS-Clusters sowie für das Erfassen benutzerdefinierter Metriken unterstützt, die an Azure Monitor übermittelt werden.
 
 ## <a name="log-analytics-workspace-supported-mappings"></a>Log Analytics-Arbeitsbereich unterstützt Zuordnungen
 
@@ -53,4 +53,4 @@ Das Sammeln von Metriken von Knoten und Pods von AKS-Clustern (Azure Kubernetes 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Um in die Überwachung Ihrer AKS-Cluster einzusteigen, lesen Sie [Aktivieren von Azure Monitor für Container](container-insights-onboard.md), um ein Verständnis für die Anforderungen und verfügbaren Methoden zum Aktivieren von Überwachung zu entwickeln.  
+Informationen für die Voraussetzungen und verfügbaren Methoden zum Aktivieren der Überwachung, damit Sie mit der Überwachung Ihres AKS-Clusters beginnen können, finden Sie unter [Aktivieren von Container Insights](container-insights-onboard.md).  

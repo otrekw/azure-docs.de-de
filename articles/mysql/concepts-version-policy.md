@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4903f1e48eb2f33c68d62c635201474b841ed146
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 6acb3268ba40399612940b395437fde3beffda1a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591511"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732869"
 ---
 # <a name="azure-database-for-mysql-versioning-policy"></a>Azure Database for MySQL: Versionsrichtlinie
 
@@ -20,13 +20,18 @@ Auf dieser Seite wird die Versionsrichtlinie für Azure Database for MySQL besch
 
 ## <a name="supported--mysql-versions"></a>Unterstützte MySQL-Versionen
 
-Azure Database for MySQL unterstützt die folgenden Datenbankversionen.
+Azure Database for MySQL wurde basierend auf [MySQL Community Edition](https://www.mysql.com/products/community/) mit der InnoDB-Speicher-Engine entwickelt. Dieser Dienst unterstützt alle aktuellen Hauptversionen, die von der Community unterstützt werden, und zwar MySQL 5.6, 5.7 und 8.0. Für MySQL wird das Benennungsschema „X.Y.Z“ verwendet. „X“ steht dabei für die Hauptversion, „Y“ für die Nebenversion und „Z“ für das Programmfehlerbehebungs-Release. Weitere Informationen zum Schema finden Sie in der [MySQL-Dokumentation](https://dev.mysql.com/doc/refman/5.7/en/which-version.html).
 
-| Version | Einzelner Server | Flexible Server (Vorschau) |
-| ----- | :------: | :----: |
-| MySQL 8 | X |  | 
-| MySQL 5.7 | X | X |
-| MySQL 5.6| X |  |
+> [!NOTE]
+> Bei der Bereitstellungsoption „Einzelserver“ werden die Verbindungen mit einem Gateway zu Serverinstanzen umgeleitet. Sobald die Verbindung hergestellt ist, zeigt der MySQL-Client die im Gateway festgelegte Version von MySQL an, nicht die tatsächliche Version, die auf Ihrer MySQL-Serverinstanz ausgeführt wird. Um die Version Ihrer MySQL-Serverinstanz zu ermitteln, geben Sie den `SELECT VERSION();`-Befehl an der MySQL-Eingabeaufforderung ein.
+
+Azure Database for MySQL unterstützt derzeit die folgenden Haupt- und Nebenversionen von MySQL:
+
+| Version | Einzelner Server <br/> Aktuelle Nebenversion |Flexible Server (Vorschau) <br/> Aktuelle Nebenversion  |
+|:-------------------|:-------------------------------------------|:---------------------------------------------|
+|MySQL-Version 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) | Nicht unterstützt|
+|MySQL-Version 5.7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
+|MySQL, Version 8.0 | [8.0.15](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) | [8.0.21](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)|
 
 
 ## <a name="major-version-support"></a>Support für die Hauptversion
@@ -50,7 +55,7 @@ Die folgende Tabelle enthält die Details zur Einstellung von MySQL-Hauptversion
 Wenn Sie nach dem Einstellungsdatum der jeweiligen MySQL-Datenbankversionen die eingestellte Version weiterhin ausführen, beachten Sie die folgenden Einschränkungen:
 - Da die Community keine weiteren Fehlerbehebungen oder Sicherheitskorrekturen mehr veröffentlicht, patcht Azure Database for MySQL die eingestellte Datenbank-Engine nicht bei Fehlern oder Sicherheitsproblemen und ergreift keinerlei Sicherheitsmaßnahmen im Hinblick auf die eingestellte Datenbank-Engine. Azure führt jedoch weiterhin regelmäßige Wartung und Patchen für den Host, das Betriebssystem, die Container sowie alle anderen dienstbezogenen Komponenten durch.
 - Im Fall eines Unterstützungsproblems im Zusammenhang mit der MySQL-Datenbank können wir Ihnen möglicherweise keinen Support bieten. In solchen Fällen müssen Sie Ihre Datenbank aktualisieren, damit wir Ihnen Support dafür bieten können.
-- Sie können für die eingestellte Version keine neuen Datenbankserver erstellen. Sie können jedoch Zeitpunktwiederherstellungen durchführen und Lesereplikate für Ihre vorhandenen Server erstellen.
+<!-- - You will not be able to create new database servers for the retired version. However, you will be able to perform point-in-time recoveries and create read replicas for your existing servers. -->
 - Neue von Azure Database for MySQL entwickelte Dienstfunktionen stehen möglicherweise nur für unterstützte Datenbankserverversionen zur Verfügung.
 - Betriebszeit-SLAs gelten ausschließlich für dienstbezogene Probleme bei Azure Database for MySQL und nicht für Ausfallzeiten, die durch Fehler im Zusammenhang mit der Datenbank-Engine verursacht werden.  
 - Im Extremfall einer ernsthaften Bedrohung des Diensts aufgrund eines Sicherheitsrisikos der MySQL-Datenbank-Engine, das in der eingestellten Datenbankversion identifiziert wird, beendet Azure möglicherweise den Computeknoten Ihres Datenbankservers, um zunächst den Dienst zu sichern. Sie werden aufgefordert, ein Upgrade des Servers auszuführen, bevor Sie den Server wieder online schalten. Während des Upgradeprozesses sind Ihre Daten jederzeit über automatische Sicherungen geschützt, die für den Dienst ausgeführt werden und bei Bedarf zur Wiederherstellung der älteren Version verwendet werden können. 

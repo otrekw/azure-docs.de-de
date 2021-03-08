@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4667e8fa3a5624dddc3cb0dd792fc73ea812332
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8100d9e12f107e0c4598876c46453b46c6ee4d0e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692888"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121999"
 ---
 # <a name="known-issues---azure-arc-enabled-data-services-preview"></a>Bekannte Probleme: Azure Arc-fähige Datendienste (Vorschauversion)
 
@@ -22,10 +22,7 @@ ms.locfileid: "101692888"
 
 ## <a name="february-2021"></a>Februar 2021
 
-
 - Modus für verbundene Cluster ist deaktiviert
-- PostgreSQL Hyperscale mit Azure Arc-Unterstützung gibt eine ungenaue Fehlermeldung zurück, wenn es nicht auf den von Ihnen angegebenen relativen Zeitpunkt wiederherstellen kann. Wenn Sie beispielsweise einen Zeitpunkt für die Wiederherstellung angegeben haben, der weiter zurückliegt als das, was Ihre Sicherungen enthalten, ist die Wiederherstellung nicht erfolgreich, und es wird eine Fehlermeldung wie die folgende angezeigt: `ERROR: (404). Reason: Not found. HTTP response body: {"code":404, "internalStatus":"NOT_FOUND", "reason":"Failed to restore backup for server...}`. Wenn dies eintritt, starten Sie den Befehl neu, nachdem Sie einen Zeitpunkt angegeben haben, der innerhalb des Datumsbereichs liegt, für den Sie Sicherungen besitzen. Listen Sie zum Bestimmen dieses Bereichs Ihre Sicherungen auf, und sehen Sie sich jeweils das Erstellungsdatum an.
-- Bei Durchführung einer vollständigen Wiederherstellung ist eine Backup-ID erforderlich. Wenn Sie keine Sicherungs-ID angeben, wird standardmäßig die letzte Sicherung verwendet. Dies funktioniert in dieser Version nicht.
 
 ## <a name="introduced-prior-to-february-2021"></a>Vor Februar 2021
 

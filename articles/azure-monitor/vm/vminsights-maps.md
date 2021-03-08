@@ -1,22 +1,22 @@
 ---
-title: Anzeigen von App-Abhängigkeiten mit Azure Monitor für VMs
-description: Die Dienstzuordnung ist ein Feature von Azure Monitor für VMs. Sie ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In diesem Artikel wird beschrieben, wie Sie dieses Feature in unterschiedlichen Szenarios verwenden.
+title: Anzeigen von App-Abhängigkeiten mit VM Insights
+description: Beim Zuordnungsfeature handelt es sich um ein Feature von VM Insights. Sie ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In diesem Artikel wird beschrieben, wie Sie dieses Feature in unterschiedlichen Szenarios verwenden.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: ea11a2dbff9c05400f24ecfa86c66395032b8ac9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19da3e3e02581ce9fad080bb23bc48dcb9a3ceb3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602155"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719643"
 ---
-# <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Verwenden des Zuordnungsfeatures in Azure Monitor für VMs zum Analysieren von Anwendungskomponenten
-In Azure Monitor für VMs können Sie sich ermittelte Anwendungskomponenten für Windows- und Linux-VMs anzeigen lassen, die in Azure oder in Ihrer eigenen Umgebung ausgeführt werden. Sie können die VMs auf zwei Arten überwachen. Entweder rufen Sie die Zuordnung direkt über eine VM oder über Azure Monitor auf, um sich die Komponenten in den verschiedenen VM-Gruppen anzusehen. In diesem Artikel werden die beiden Anzeigemethoden beschrieben. Außerdem wird erklärt, wie Sie das Zuordnungsfeature verwenden. 
+# <a name="use-the-map-feature-of-vm-insights-to-understand-application-components"></a>Verwenden des Zuordnungsfeatures von VM Insights für ein besseres Verständnis von Anwendungskomponenten
+In VM Insights können Sie sich ermittelte Anwendungskomponenten für Windows- und Linux-VMs anzeigen lassen, die in Azure oder in Ihrer eigenen Umgebung ausgeführt werden. Sie können die VMs auf zwei Arten überwachen. Entweder rufen Sie die Zuordnung direkt über eine VM oder über Azure Monitor auf, um sich die Komponenten in den verschiedenen VM-Gruppen anzusehen. In diesem Artikel werden die beiden Anzeigemethoden beschrieben. Außerdem wird erklärt, wie Sie das Zuordnungsfeature verwenden. 
 
-Informationen zum Konfigurieren von Azure Monitor for VMs finden Sie unter [Enable Azure Monitor for VMs](../insights/vminsights-enable-overview.md) (Aktivieren von Azure Monitor for VMs).
+Weitere Informationen zum Konfigurieren von VM Insights finden Sie unter [Aktivieren von VM Insights](./vminsights-enable-overview.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
@@ -49,7 +49,7 @@ Damit das Zuordnungsfeature die relevanten Warnungen anzeigen kann, müssen Sie 
 - Beziehen Sie eine Klausel zur Gruppierung der Warnungen nach Computer ein (z. B. **by Computer interval 1 minute**).
 - Legen Sie als Auslöser der Warnung eine Metrik fest.
 
-Weitere Informationen zu Azure-Warnungen und zum Erstellen von Warnungsregeln finden Sie unter [Einheitliche Oberfläche für Warnungen in Azure Monitor](../platform/alerts-overview.md).
+Weitere Informationen zu Azure-Warnungen und zum Erstellen von Warnungsregeln finden Sie unter [Einheitliche Oberfläche für Warnungen in Azure Monitor](../alerts/alerts-overview.md).
 
 In der **Legende** oben rechts werden die Symbole und die Rollen in einer Zuordnung beschrieben. Mit den Zoomsteuerelementen unten rechts können Sie sich diese Zuordnung genauer ansehen und darin navigieren. Dabei haben Sie die Möglichkeit, die Zoomstufe einzustellen und die Größe der Zuordnung an die Seite anzupassen.  
 
@@ -85,7 +85,7 @@ Wenn die Gruppe überwachte und nicht überwachte Server beinhaltet, können Sie
 
 ## <a name="view-a-map-from-a-vm"></a>Anzeigen einer Zuordnung über eine VM 
 
-Gehen Sie wie folgt vor, um über eine VM direkt auf Azure Monitor für VMs zuzugreifen:
+So greifen Sie direkt über eine VM auf VM Insights zu:
 
 1. Wählen Sie im Azure-Portal die Option **Virtual Machines** aus. 
 2. Wählen Sie aus der Liste eine VM aus. Wählen Sie im Abschnitt **Überwachung** die Option **Insights** aus.  
@@ -99,7 +99,7 @@ Standardmäßig zeigt die Zuordnung die letzten 30 Minuten. Sie können auch Abh
 
 ## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>Anzeigen einer Zuordnung über eine VM-Skalierungsgruppe
 
-Gehen Sie wie folgt vor, um direkt über eine VM-Skalierungsgruppe auf Azure Monitor für VMs zuzugreifen:
+So greifen Sie direkt über eine VM-Skalierungsgruppe auf VM Insights zu:
 
 1. Klicken Sie im Azure-Portal auf **VM-Skalierungsgruppen**.
 2. Wählen Sie aus der Liste eine VM aus. Wählen Sie anschließend im Abschnitt **Überwachung** die Option **Insights** aus.  
@@ -128,11 +128,10 @@ In Azure Monitor stellt das Zuordnungsfeature eine globale Sicht Ihrer VMs und d
 
 Wählen Sie oben auf der Seite mit dem Auswahlelement **Arbeitsbereich** einen Arbeitsbereich aus. Wenn Sie über mehrere Log Analytics-Arbeitsbereiche verfügen, wählen Sie denjenigen aus, der für die Lösung aktiviert ist und an den VMs Daten übermitteln. 
 
-Mit dem Auswahlelement **Gruppe** werden Abonnements, Ressourcengruppen, [Computergruppen](../platform/computer-groups.md) und VM-Skalierungsgruppen mit Computern angezeigt, die sich auf den ausgewählten Arbeitsbereich beziehen. Ihre Auswahl gilt nur für das Zuordnungsfeature und nicht für das Integritäts- oder Leistungsfeature.
+Mit dem Auswahlelement **Gruppe** werden Abonnements, Ressourcengruppen, [Computergruppen](../logs/computer-groups.md) und VM-Skalierungsgruppen mit Computern angezeigt, die sich auf den ausgewählten Arbeitsbereich beziehen. Ihre Auswahl gilt nur für das Zuordnungsfeature und nicht für das Integritäts- oder Leistungsfeature.
 
 Standardmäßig zeigt die Zuordnung die letzten 30 Minuten. Sie können auch Abhängigkeiten abfragen, die maximal eine Stunde zurückliegen. Nutzen Sie das Auswahlelement **TimeRange**, um die Abfrage auszuführen. Das ist beispielsweise während eines Incidents oder zur Anzeige eines Status vor einer Änderung sinnvoll.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wie Sie Engpässe ermitteln, die Leistung überprüfen und die Gesamtauslastung Ihrer VMs nachvollziehen können, erfahren Sie unter [Anzeigen des Leistungsstatus in Azure Monitor für VMs](vminsights-performance.md). 
-
+Wie Sie Engpässe ermitteln, die Leistung überprüfen und die Gesamtauslastung Ihrer VMs nachvollziehen können, erfahren Sie unter [Anzeigen des Leistungsstatus in VM Insights](vminsights-performance.md).

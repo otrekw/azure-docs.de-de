@@ -1,17 +1,16 @@
 ---
 title: Verwenden der Service Map-Lösung in Azure | Microsoft-Dokumentation
 description: Service Map ist eine Lösung in Azure, die Anwendungskomponenten auf Windows- und Linux-Systemen automatisch ermittelt und die Kommunikation zwischen Diensten abbildet. Dieser Artikel enthält Informationen zum Bereitstellen von Service Map in Ihrer Umgebung und zur Verwendung der Lösung in einer Vielzahl von Szenarien.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 0374c7d304a40031919bae8816d31477e742b9c8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ad3f8821189e6e7aabb5653e5f938bb73f57a34b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601865"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046998"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Verwenden der Service Map-Lösung in Azure
 
@@ -26,7 +25,7 @@ In diesem Artikel werden die Details von Onboarding und Verwendung der Dienstzuo
 * Der [Dependency-Agent](vminsights-enable-overview.md#agents) ist auf dem Windows-Computer oder Linux-Server installiert.
 
 >[!NOTE]
->Wenn Sie Dienstzuordnung bereits bereitgestellt haben, können Sie jetzt auch Ihre Zuordnungen in Azure Monitor für VMs anzeigen, der zusätzliche Funktionen für die Überwachung von VM-Status und -Leistung enthält. Weitere Informationen finden Sie in der [Übersicht über Azure Monitor für VMs](../vm/vminsights-overview.md). Informationen zu den Unterschieden zwischen der Dienstzuordnungslösung und dem Zuordnungsfeature von Azure Monitor für VMs finden Sie unter [Wie unterscheidet sich das Zuordnungsfeature von Azure Monitor für VMs von der Dienstzuordnung?](../faq.md#azure-monitor-for-vms) in den häufig gestellten Fragen zu Azure Monitor für VMs.
+>Wenn Sie die Dienstzuordnung bereits bereitgestellt haben, können Sie Ihre Zuordnungen auch in VM Insights anzeigen. Diese Lösung enthält zusätzliche Features zum Überwachen der Integrität und Leistung von VMs. Weitere Informationen finden Sie unter [Übersicht über VM Insights](../vm/vminsights-overview.md). Informationen zu den Unterschieden zwischen der Lösung „Dienstzuordnung“ und dem Zuordnungsfeature von VM Insights finden Sie in den folgenden [FAQ](../faq.md#vm-insights).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -241,7 +240,7 @@ Service Map ist in die Protokollsuche integriert, um die Anzahl aller verfügbar
 
 ## <a name="service-desk-integration"></a>Integration von Service Desk
 
-Die Integration von Service Map in den ITSM-Connector erfolgt automatisch, wenn beide Lösungen in Ihrem Log Analytics-Arbeitsbereich aktiviert und konfiguriert sind. Die Integration in Service Map wird als „Service Desk“ bezeichnet. Weitere Informationen finden Sie unter [Centrally manage ITSM work items using IT Service Management Connector (Zentrales Verwalten von ITSM-Arbeitselementen mit dem IT Service Management Connector)](../platform/itsmc-overview.md).
+Die Integration von Service Map in den ITSM-Connector erfolgt automatisch, wenn beide Lösungen in Ihrem Log Analytics-Arbeitsbereich aktiviert und konfiguriert sind. Die Integration in Service Map wird als „Service Desk“ bezeichnet. Weitere Informationen finden Sie unter [Centrally manage ITSM work items using IT Service Management Connector (Zentrales Verwalten von ITSM-Arbeitselementen mit dem IT Service Management Connector)](../alerts/itsmc-overview.md).
 
 Im Bereich **Computer-Service Desk** wird eine Liste aller IT Service Management-Ereignisse für den ausgewählten Server im ausgewählten Zeitraum angezeigt. Der Server zeigt ein Symbol an, wenn es aktuelle Elemente gibt. Diese werden im Bereich „Computer-Service Desk“ angezeigt.
 
@@ -304,7 +303,7 @@ Im Bereich für **Computerupdates** werden Daten aus der Updateverwaltungslösun
 
 ## <a name="log-analytics-records"></a>Log Analytics-Datensätze
 
-Die Computer- und Prozessbestandsdaten von Service Map stehen in Log Analytics zur [Suche](../log-query/log-query-overview.md) zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
+Die Computer- und Prozessbestandsdaten von Service Map stehen in Log Analytics zur [Suche](../logs/log-query-overview.md) zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
 
 Zusätzlich zu den Datensätzen, die beim Starten eines Prozesses oder Computers oder beim Onboarding in Service Map generiert werden, wird pro Stunde ein Datensatz für jeden eindeutigen Computer und jeden eindeutigen Prozess generiert. Die Eigenschaften der Datensätze sind in den folgenden Tabellen aufgeführt. Die Felder und Werte in den ServiceMapComputer_CL-Ereignissen sind Feldern der Computerressource in der ServiceMap ARM-API (Azure Resource Manager) zugeordnet. Die Felder und Werte in den ServiceMapProcess_CL-Ereignissen sind Feldern der Prozessressource in der ServiceMap ARM-API zugeordnet. Das Feld „ResourceName_s“ entspricht dem Namensfeld in der entsprechenden ARM-Ressource. 
 
@@ -550,7 +549,7 @@ Weitere Informationen zur Sammlung und Nutzung von Daten finden Sie in den [Date
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über [Protokollsuchvorgänge](../log-query/log-query-overview.md) in Log Analytics, um Daten abzurufen, die von Service Map gesammelt wurden.
+Erfahren Sie mehr über [Protokollsuchvorgänge](../logs/log-query-overview.md) in Log Analytics, um Daten abzurufen, die von Service Map gesammelt wurden.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

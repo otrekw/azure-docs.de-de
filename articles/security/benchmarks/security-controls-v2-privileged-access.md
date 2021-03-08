@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a4f1c6e32bbc679a7ec946384903b2bda3887d05
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 29d4acc50ed872c37268a0b21c3e34837249a026
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720578"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035412"
 ---
 # <a name="security-control-v2-privileged-access"></a>Sicherheitskontrolle V2: Privilegierter Zugriff
 
 Privilegierter Zugriff gilt für Kontrollelemente, um den privilegierten Zugriff auf Ihren Azure-Mandanten und Ihre Azure-Ressourcen zu schützen. Dies umfasst eine Reihe von Kontrollelementen, um Ihr Verwaltungsmodell, Ihre Verwaltungskonten und Workstations mit privilegiertem Zugriff vor absichtlichen und unbeabsichtigten Risiken zu schützen.
 
-Die entsprechende integrierte Azure Policy-Instanz finden Sie unter [Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß Azure-Sicherheitsvergleichstest: Privilegierter Zugriff](../../governance/policy/samples/azure-security-benchmark#privileged-access).
+Die entsprechende integrierte Azure Policy-Instanz finden Sie unter [Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß Azure-Sicherheitsvergleichstest: Privilegierter Zugriff](../../governance/policy/samples/azure-security-benchmark.md#privileged-access).
 
 ## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: Schützen und Einschränken stark privilegierter Benutzer
 
@@ -160,8 +160,6 @@ Verwenden Sie die Berechtigungsverwaltungsfeatures von Azure AD, um die Zugriffs
 Gesicherte, isolierte Arbeitsstationen sind von entscheidender Bedeutung für die Sicherheit vertraulicher Rollen wie Administratoren, Entwickler und Betreiber kritischer Dienste. Verwenden Sie stark gesicherte Benutzerworkstations und/oder Azure Bastion für administrative Aufgaben. Verwenden Sie Azure Active Directory, Microsoft Defender Advanced Threat Protection (ATP) und/oder Microsoft Intune, um eine sichere und verwaltete Benutzerworkstation für administrative Aufgaben einzurichten. Die gesicherten Workstations können zentral verwaltet werden, um eine gesicherte Konfiguration einschließlich starker Authentifizierung, Software- und Hardwarebaselines sowie eingeschränktem logischen und Netzwerkzugang durchzusetzen. 
 
 - [Informationen zu sicheren, von Azure verwalteten Arbeitsstationen](/security/compass/privileged-access-deployment)
-
-- [Bereitstellen einer sicheren, von Azure verwalteten Arbeitsstation](../../active-directory/devices/howto-azure-managed-workstation)
 
 **Verantwortlichkeit**: Kunde
 

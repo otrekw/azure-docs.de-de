@@ -1,19 +1,19 @@
 ---
-title: Einrichten von Livedaten (Vorschau) mit Azure Monitor für Container | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie die Echtzeitansicht von Containerprotokollen (stdout/stderr) und Ereignissen ohne Verwendung von kubectl mit Azure Monitor für Container einrichten.
+title: Einrichten von Livedaten in Container Insights (Vorschau) | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie die Echtzeitansicht von Containerprotokollen (stdout/stderr) und Ereignissen ohne Verwendung von kubectl mit Container Insights einrichten.
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3c176b2db659577d585ac077eebe0484203eb9cf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4302bdbb3d71c890f7fb0cfb82ab5f8d5aecbd43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599623"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713778"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Einrichten der Funktion für Livedaten (Vorschau)
 
-Zum Anzeigen von Livedaten (Vorschau) von AKS-Clustern (Azure Kubernetes Service) mit Azure Monitor für Container müssen Sie die Authentifizierung mit Berechtigung für den Zugriff auf Ihre Kubernetes-Daten konfigurieren. Diese Sicherheitskonfiguration ermöglicht den Echtzeitzugriff auf Ihre Daten über die Kubernetes-API direkt im Azure-Portal.
+Zum Anzeigen von Livedaten (Vorschau) von AKS-Clustern (Azure Kubernetes Service) mit Container Insights müssen Sie die Authentifizierung mit Berechtigung für den Zugriff auf Ihre Kubernetes-Daten konfigurieren. Diese Sicherheitskonfiguration ermöglicht den Echtzeitzugriff auf Ihre Daten über die Kubernetes-API direkt im Azure-Portal.
 
 Diese Funktion unterstützt die folgenden Methoden, um den Zugriff auf die Protokolle, Ereignisse und Metriken zu steuern:
 
@@ -46,7 +46,7 @@ Im Azure-Portal werden Sie aufgefordert, Ihre Anmeldeinformationen für einen Az
 
 Um zu vermeiden, dass zusätzliche Konfigurationsänderungen erforderlich sind, damit die Kubernetes-Benutzerrollenbindung **clusterUser** nach [Aktivierung der Kubernetes RBAC](#configure-kubernetes-rbac-authorization)-Autorisierung auf die Funktion für Livedaten (Vorschau) zugreifen kann, hat AKS eine neue Kubernetes-Clusterrollenbindung mit Namen **clusterMonitoringUser** hinzugefügt. Diese Clusterrollenbindung verfügt standardmäßig über alle erforderlichen Berechtigungen für den Zugriff auf die Kubernetes-API und die Endpunkte, um die Funktion für Livedaten (Vorschau) zu nutzen.
 
-Damit die Funktion für Livedaten (Vorschau) mit diesem neuen Benutzer verwendet werden kann, müssen Sie Mitglied einer der Rollen [Azure Kubernetes Service-Clusterbenutzer](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) oder [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) für die AKS-Clusterressource sein. Azure Monitor für Container ist bei Aktivierung standardmäßig für die Authentifizierung mit dem Benutzer clusterMonitoringUser konfiguriert. Ist die Rollenbindung „clusterMonitoringUser“ in einem Cluster nicht vorhanden, wird stattdessen **clusterUser** für die Authentifizierung verwendet. Die Rolle „Mitwirkender“ ermöglicht Ihnen den Zugriff auf clusterMonitoringUser (sofern vorhanden), und mit „Azure Kubernetes Service-Clusterbenutzer“ können Sie auf clusterUser zugreifen. Jede dieser beiden Rollen bietet ausreichenden Zugriff für die Verwendung dieses Features.
+Damit die Funktion für Livedaten (Vorschau) mit diesem neuen Benutzer verwendet werden kann, müssen Sie Mitglied einer der Rollen [Azure Kubernetes Service-Clusterbenutzer](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) oder [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) für die AKS-Clusterressource sein. Container Insights ist bei Aktivierung standardmäßig für die Authentifizierung mit dem Benutzer clusterMonitoringUser konfiguriert. Ist die Rollenbindung „clusterMonitoringUser“ in einem Cluster nicht vorhanden, wird stattdessen **clusterUser** für die Authentifizierung verwendet. Die Rolle „Mitwirkender“ ermöglicht Ihnen den Zugriff auf clusterMonitoringUser (sofern vorhanden), und mit „Azure Kubernetes Service-Clusterbenutzer“ können Sie auf clusterUser zugreifen. Jede dieser beiden Rollen bietet ausreichenden Zugriff für die Verwendung dieses Features.
 
 AKS hat diese neue Rollenbindung im Januar 2020 veröffentlicht, sodass Cluster, die vor Januar 2020 erstellt wurden, nicht darüber verfügen. Wenn Sie über einen Cluster verfügen, der vor Januar 2020 erstellt wurde, kann die neue Rollenbindung **clusterMonitoringUser** einem vorhandenen Cluster hinzugefügt werden, indem Sie einen PUT-Vorgang für den Cluster ausführen oder einen anderen Vorgang verwenden, mit dem ein PUT-Vorgang für den Cluster ausgeführt wird, wie etwa das Aktualisieren der Clusterversion.
 
@@ -106,7 +106,7 @@ Die Azure AD-Clientregistrierung muss neu konfiguriert werden, damit das Azure-P
 Weitere Informationen zur Einrichtung für erweiterte Sicherheit in Kubernetes finden Sie in der [Kubernetes-Dokumentation](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
 >[!NOTE]
->Wenn Sie einen neuen Kubernetes RBAC-fähigen Cluster erstellen, lesen Sie [Integrieren von Azure Active Directory in Azure Kubernetes Service](../../aks/azure-ad-integration-cli.md), und folgen Sie den Schritten zum Konfigurieren der Azure AD-Authentifizierung. Während der Schritte zum Erstellen der Clientanwendung werden in einem Hinweis in diesem Abschnitt zwei Umleitungs-URLs hervorgehoben, die Sie für Azure Monitor für Container erstellen müssen, die den in Schritt 3 unten angegebenen Containern entsprechen.
+>Wenn Sie einen neuen Kubernetes RBAC-fähigen Cluster erstellen, lesen Sie [Integrieren von Azure Active Directory in Azure Kubernetes Service](../../aks/azure-ad-integration-cli.md), und folgen Sie den Schritten zum Konfigurieren der Azure AD-Authentifizierung. Während der Schritte zum Erstellen der Clientanwendung werden in einem Hinweis in diesem Abschnitt zwei Umleitungs-URLs hervorgehoben, die Sie für Container Insights erstellen müssen, die den in Schritt 3 unten angegebenen Containern entsprechen.
 
 ### <a name="client-registration-reconfiguration"></a>Neukonfiguration der Clientregistrierung
 

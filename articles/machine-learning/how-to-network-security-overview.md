@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 857fba6dfa6191163c06c423cefb42d57f25dc1d
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 1a73988b66ba7b47f18ecaaa07df59e9047a933b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980574"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691823"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken
 
@@ -71,7 +71,7 @@ Führen Sie die folgenden Schritte aus, um Ihren Arbeitsbereich und zugehörige 
 1. Erstellen Sie einen [Arbeitsbereich mit Private Link-Unterstützung](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint), um die Kommunikation zwischen Ihrem VNET und dem Arbeitsbereich zu ermöglichen.
 1. Fügen Sie Azure Key Vault mit einem [Dienstendpunkt](../key-vault/general/overview-vnet-service-endpoints.md) oder einem [privaten Endpunkt](../key-vault/general/private-link-service.md) dem virtuellen Netzwerk hinzu. Legen Sie für Key Vault die Einstellung [„Zulassen, dass vertrauenswürdige Microsoft-Dienste diese Firewall umgehen“](how-to-secure-workspace-vnet.md#secure-azure-key-vault) fest.
 1. Fügen Sie Ihr Azure Storage-Konto mit einem [Dienstendpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) oder einem [privaten Endpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints) dem virtuellen Netzwerk hinzu.
-1. [Konfigurieren Sie die Verwendung eines privaten Endpunkts in Azure Container Registry](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr) und [aktivieren Sie die Subnetzdelegierung in Azure Container Instances](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci).
+1. [Konfigurieren Sie Azure Container Registry für die Verwendung eines privaten Endpunkts](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr).
 
 ![Architekturdiagramm, das darstellt, wie der Arbeitsbereich und die zugehörigen Ressourcen über Dienstendpunkte oder private Endpunkte in einem VNET miteinander kommunizieren](./media/how-to-network-security-overview/secure-workspace-resources.png)
 

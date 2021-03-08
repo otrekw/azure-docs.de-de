@@ -1,19 +1,19 @@
 ---
 title: Überwachen eines neuen AKS-Clusters (Azure Kubernetes Service) | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie die Überwachung eines neuen AKS-Clusters (Azure Kubernetes Service) mit Azure Monitor für ein Containerabonnement aktivieren.
+description: In diesem Artikel erfahren Sie, wie Sie die Überwachung eines neuen AKS-Clusters (Azure Kubernetes Service) mit einem Container Insights-Abonnement aktivieren.
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: 19c4a88cee8776136593b041e94dd14c7c9c28d6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9b6c4f8a05b8e7a350ebd5afd677e8bb2ee6e9b4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602216"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717569"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Aktivieren der Überwachung eines neuen AKS-Clusters (Azure Kubernetes Service)
 
-In diesem Artikel erfahren Sie, wie Sie Azure Monitor für Container einrichten, um verwaltete, in [Azure Kubernetes Service](../../aks/index.yml) gehostete Kubernetes-Cluster zu überwachen, die Sie für die Bereitstellung in Ihrem Abonnement vorbereiten.
+In diesem Artikel erfahren Sie, wie Sie Container Insights einrichten, um verwaltete, in [Azure Kubernetes Service](../../aks/index.yml) gehostete Kubernetes-Cluster zu überwachen, die Sie für die Bereitstellung in Ihrem Abonnement vorbereiten.
 
 Sie können die Überwachung eines AKS-Clusters mit einer der unterstützten Methoden aktivieren:
 
@@ -34,14 +34,14 @@ Wenn Sie [einen neuen AKS-Cluster mit Terraform](/azure/developer/terraform/crea
 >[!NOTE]
 >Wenn Sie sich für Terraform entscheiden, müssen Sie den Terraform Azure RM-Anbieter, Version 1.17.0 oder höher, verwenden.
 
-Informationen zum Hinzufügen von Azure Monitor für Container zum Arbeitsbereich finden Sie unter [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html), und vervollständigen Sie das Profil, indem Sie [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) einbeziehen und **oms_agent** angeben. 
+Informationen zum Hinzufügen von Container Insights zum Arbeitsbereich finden Sie unter [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html). Vervollständigen Sie das Profil, indem Sie [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) einbeziehen und **oms_agent** angeben. 
 
 Nachdem Sie die Überwachung aktiviert haben, und alle Konfigurationsaufgaben erfolgreich abgeschlossen wurden, haben Sie zwei Möglichkeiten, die Leistung Ihres Clusters zu überwachen:
 
 * Direkt über das AKS-Cluster durch Auswählen von **Integrität** im linken Bereich.
 * Durch Auswählen der Kachel **Monitor Container insights** (Containereinblicke überwachen) auf der AKS-Clusterseite für den ausgewählten Cluster. Wählen Sie in Azure Monitor im linken Bereich **Integrität** aus. 
 
-  ![Optionen zum Auswählen von Azure Monitor für Container in AKS](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
+  ![Optionen zum Auswählen von Container Insights in AKS](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
 
 Nach dem Aktivieren der Überwachung kann es ca. 15 Minuten dauern, bis Integritätsmetriken für den Cluster angezeigt werden. 
 
@@ -117,5 +117,5 @@ Nach wenigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werde
 
 * Wenn beim Onboarding der Lösung Probleme auftreten, lesen Sie den [Leitfaden zur Problembehandlung](container-insights-troubleshoot.md)
 
-* Wenn die Überwachung aktiviert ist, um Integrität und Ressourcennutzung Ihres AKS-Clusters und der darauf ausgeführten Workloads zu erfassen, informieren Sie sich über die [Verwendung](container-insights-analyze.md) von Azure Monitor für Container.
+* Wenn die Überwachung aktiviert ist, um Integrität und Ressourcennutzung Ihres AKS-Clusters und der darauf ausgeführten Workloads zu erfassen, informieren Sie sich über die [Verwendung](container-insights-analyze.md) von Container Insights.
 

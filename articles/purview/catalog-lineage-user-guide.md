@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/29/2020
-ms.openlocfilehash: 6af183c16238c6630b194b112f0c09fd4399d443
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 47c5ad18f50bd25dd3bf351090ffc9ef5d54f0b2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694069"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202908"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Azure Purview: Leitfaden zur Datenkatalogherkunft
 
@@ -31,7 +31,7 @@ Datenintegrations- und ETL-Tools können die Herkunftsinformationen zur Ausführ
 
 | Datenverarbeitungssystem | Unterstützter Bereich |
 | ---------------------- | ------------|
-| Azure Data Factory | [Kopieraktivität](how-to-link-azure-data-factory.md#data-factory-copy-data-support) <br> [Datenflussaktivität](how-to-link-azure-data-factory.md#data-factory-data-flow-support) <br> [Aktivität „SSIS-Paket ausführen“](how-to-link-azure-data-factory.md#data-factory-execute-ssis-package-support) |
+| Azure Data Factory | [Kopieraktivität](how-to-link-azure-data-factory.md#data-factory-copy-activity-support) <br> [Datenflussaktivität](how-to-link-azure-data-factory.md#data-factory-data-flow-support) <br> [Aktivität „SSIS-Paket ausführen“](how-to-link-azure-data-factory.md#data-factory-execute-ssis-package-support) |
 | Azure Data Share | [Momentaufnahme freigeben](how-to-link-azure-data-share.md) |
  
 ### <a name="data-storage-systems"></a>Datenspeichersysteme
@@ -49,6 +49,8 @@ Datensysteme wie Azure ML und Power BI melden die Informationen zur Herkunft an 
 | Power BI | [Datasets, Datenflüsse, Berichte und Dashboards](register-scan-power-bi-tenant.md)
 
 ## <a name="get-started-with-lineage"></a>Erste Schritte für Herkunft
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE1XVQS]
 
 Die Herkunft in Purview umfasst Datasets und Prozesse. Datasets werden auch als Knoten bezeichnet, während für Prozesse auch die Bezeichnung „Edges“ verwendet wird:
 

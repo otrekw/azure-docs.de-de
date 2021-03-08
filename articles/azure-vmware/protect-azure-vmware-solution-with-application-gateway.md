@@ -3,12 +3,12 @@ title: Verwenden von Azure Application Gateway zum Schützen Ihrer Web-Apps in A
 description: Konfigurieren Sie Azure Application Gateway, um Ihre in Azure VMware Solution ausgeführten Web-Apps sicher verfügbar zu machen.
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 9b10c206114ca922cc11bd8cb0321941b8ba672c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1ad615efe0de86a49714914507227b7cc1dca4cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384196"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733583"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Verwenden von Azure Application Gateway zum Schützen Ihrer Web-Apps in Azure VMware Solution
 
@@ -35,7 +35,7 @@ Das Diagramm zeigt das Testszenario zum Überprüfen von Application Gateway mit
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Diagramm mit dem Testszenario zum Überprüfen von Application Gateway mit Azure VMware Solution-Webanwendungen." border="false":::
 
-Die Application Gateway-Instanz wird auf dem Hub in einem dedizierten Subnetz bereitgestellt. Sie hat eine öffentliche Azure-IP-Adresse. Es wird empfohlen, den DDoS-Standardschutz für das virtuelle Netzwerk zu aktivieren. Der Webserver wird in einer privaten Azure VMware Solution-Cloud hinter NSX T0- und T1-Gateways gehostet. Azure VMware Solution aktiviert die Kommunikation mit dem Hub und den lokalen Systemen mit [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md).
+Die Application Gateway-Instanz wird auf dem Hub in einem dedizierten Subnetz bereitgestellt. Sie hat eine öffentliche Azure-IP-Adresse. Es wird empfohlen, [Azure DDoS Protection Standard](../ddos-protection/ddos-protection-overview.md) für das virtuelle Netzwerk zu aktivieren. Der Webserver wird in einer privaten Azure VMware Solution-Cloud hinter NSX T0- und T1-Gateways gehostet. Azure VMware Solution aktiviert die Kommunikation mit dem Hub und den lokalen Systemen mit [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -193,3 +193,4 @@ Nachdem Sie sich mit Application Gateway zum Schutz einer in Azure VMware Soluti
 - [Konfigurieren von Azure Application Gateway für verschiedene Szenarien](../application-gateway/configuration-overview.md)
 - [Bereitstellen von Traffic Manager zum Ausgleichen von Azure VMware Solution-Workloads](deploy-traffic-manager-balance-workloads.md)
 - [Integrieren von Azure NetApp Files und auf Azure VMware Solution basierenden Workloads](netapp-files-with-azure-vmware-solution.md)
+- [Übersicht über Azure DDoS Protection Standard](../ddos-protection/ddos-protection-overview.md)

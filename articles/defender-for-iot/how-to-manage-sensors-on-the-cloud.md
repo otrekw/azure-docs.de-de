@@ -1,20 +1,20 @@
 ---
-title: Durchführen des Onboardings für und Verwalten von Sensoren im Defender für IoT-Portal
+title: Durchführen des Onboardings für und Verwalten von Sensoren und Abonnements im Defender für IoT-Portal
 description: Erfahren Sie, wie Sie im Defender für IoT-Portal das Onboarding für Sensoren durchführen und Sensoren anzeigen und verwalten.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/27/2020
+ms.date: 2/18/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 7cc4fe4e2b675fb1b46bb4404d892c02a1f00553
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 63b3b450e289b40aa9acbfb0d5170e8eb57f9e58
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526858"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733260"
 ---
-# <a name="onboard-and-manage-sensors-in-the-defender-for-iot-portal"></a>Durchführen des Onboardings für und Verwalten von Sensoren im Defender für IoT-Portal
+# <a name="onboard-and-manage-sensors-and-subscriptions-in-the-defender-for-iot-portal"></a>Durchführen des Onboardings für und Verwalten von Sensoren und Abonnements im Defender für IoT-Portal
 
 In diesem Artikel wird beschrieben, wie Sie im [Defender für das IoT-Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) das Onboarding für Sensoren durchführen und Sensoren anzeigen und verwalten.
 
@@ -64,7 +64,7 @@ Im [Defender für IoT-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Io
 
 ## <a name="manage-onboarded-sensors"></a>Verwalten integrierter Sensoren
 
-Sie verwenden das [Defender für IoT-Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) zum Ausführen von Verwaltungsaufgaben für Sensoren.
+Verwenden Sie das [Defender für IoT-Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) zum Ausführen von Verwaltungsaufgaben für Sensoren.
 
 Integrierte Sensoren können auf der Seite **Standorte und Sensoren** angezeigt werden. Sie können auf dieser Seite auch Sensorinformationen bearbeiten.
 
@@ -78,8 +78,8 @@ Verwenden Sie die Bearbeitungsoptionen auf der Seite **Standorte und Sensoren**,
 
 So bearbeiten Sie die Informationen
 
-1. Wählen Sie die Auslassungspunkte ( **...** ) für den zu bearbeitenden Sensor aus.
-1. Wählen Sie Bearbeiten aus.
+1. Klicken Sie auf die **Auslassungspunkte** ( **...** ) für den zu bearbeitenden Sensor.
+1. Wählen Sie **Bearbeiten** aus.
 1. Aktualisieren Sie die Sensorzone, oder erstellen Sie eine neue Zone.
 
 ### <a name="delete-a-sensor"></a>Löschen eines Sensors
@@ -122,6 +122,24 @@ Gehen Sie wie folgt vor, um einen Sensor erneut zu aktivieren:
 8. Wählen Sie **Hochladen** und dann die Datei aus, die Sie auf der Seite „Sensor integrieren“ gespeichert haben.
 
 9. Wählen Sie **Aktivieren** aus.
+
+## <a name="offboard-a-subscription"></a>Offboarding eines Abonnements
+
+Abonnements werden auf monatlicher Basis verwaltet. Beim Offboarding eines Abonnements wird Ihnen die Nutzung dieses Abonnements bis zum Ende des Monats in Rechnung gestellt. 
+
+Deinstallieren Sie vor dem Offboarding des Abonnements alle Sensoren, die dem Abonnement zugeordnet sind. Weitere Informationen zum Löschen eines Sensors finden Sie unter [Löschen eines Sensors](#delete-a-sensor). 
+
+Offboarding eines Abonnements:
+
+1. Navigieren Sie zur Seite **Preise**.
+1. Wählen Sie das Abonnement aus, und klicken Sie dann auf das **Löschsymbol** :::image type="icon" source="media/how-to-manage-sensors-on-the-cloud/delete-icon.png" border="false":::.
+1. Aktivieren Sie im Bestätigungspopupfenster das Kontrollkästchen, um zu bestätigen, dass Sie alle dem Abonnement zugeordneten Sensoren gelöscht haben.
+
+    :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/offboard-popup.png" alt-text="Aktivieren des Kontrollkästchens und Klicken auf „Offboard“ für das Offboarding des Sensors":::
+
+1. Klicken Sie auf die Schaltfläche **Offboard**. 
+
+Dies hat keine Auswirkungen auf die lokale Umgebung, aber Sie sollten den Sensor aus der lokalen Umgebung deinstallieren oder einem anderen Abonnement zuweisen, um zu verhindern, dass zugehörige Daten in die lokale Verwaltungskonsole übertragen werden. 
 
 ## <a name="see-also"></a>Weitere Informationen
 

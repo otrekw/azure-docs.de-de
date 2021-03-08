@@ -4,16 +4,16 @@ description: Überwachung der Anwendungsleistung für Azure App Services. Ladeze
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 74b39219b3b18c8de0214367d141085f6dc5f674
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7661066bc2666070c8b3ed9263b1223c09d6c720
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573997"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734722"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Überwachen der Leistung von Azure App Service
 
-Das Aktivieren der Überwachung für Ihre ASP.NET- und ASP.NET Core-basierten Webanwendungen unter [Azure App Services](../../app-service/index.yml) ist jetzt einfacher als je zuvor. Während Sie zuvor manuell eine Websiteerweiterung installieren mussten, ist die neueste Erweiterung/der neueste Agent nun standardmäßig in das App Service-Image integriert. Dieser Artikel führt Sie Schritt für Schritt durch das Aktivieren der Application Insights-Überwachung und bietet eine vorläufige Anleitung zur Automatisierung des Prozesses für umfangreiche Bereitstellungen.
+Das Aktivieren der Überwachung für Ihre ASP.NET-, ASP.NET Core- und Node.js-basierten Webanwendungen unter [Azure App Services](../../app-service/index.yml) ist jetzt einfacher als je zuvor. Während Sie zuvor manuell eine Websiteerweiterung installieren mussten, ist die neueste Erweiterung/der neueste Agent nun standardmäßig in das App Service-Image integriert. Dieser Artikel führt Sie Schritt für Schritt durch das Aktivieren der Application Insights-Überwachung und bietet eine vorläufige Anleitung zur Automatisierung des Prozesses für umfangreiche Bereitstellungen.
 
 > [!NOTE]
 > Das manuelle Hinzufügen einer Application Insights-Websiteerweiterung über **Entwicklungstools** > **Erweiterungen** ist veraltet. Diese Methode der Erweiterungsinstallation war von manuellen Updates für jede neue Version abhängig. Die neueste stabile Version der Erweiterung ist jetzt als Teil des App Service-Images [vorinstalliert](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions). Die Dateien befinden sich in `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` und werden mit jeder stabilen Version automatisch aktualisiert. Wenn Sie den weiter unten beschriebenen Anweisungen zum Aktivieren der Agent-basierten Überwachung folgen, wird die veraltete Erweiterung automatisch entfernt.
@@ -97,7 +97,7 @@ Die Agent-/Erweiterung-basierte Überwachung für das vollständige Framework au
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Wählen Sie in Ihrer App Service-Web-App die Option **Einstellungen** > **Application Insights** > **Aktivieren** aus. Die Agent-basierte Überwachung für Node.js befindet sich derzeit in der Vorschauphase.
+Die Agent-basierte Überwachung unter Windows wird nicht unterstützt. Wenn Sie Linux aktivieren möchten, finden Sie in der [App Service-Dokumentation zu Node.js](../../app-service/configure-language-nodejs.md?pivots=platform-linux#monitor-with-application-insights) weitere Informationen.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -170,6 +170,7 @@ Sie müssen nur die Anwendungseinstellungen festlegen, um die Sammlung von Telem
 |XDT_MicrosoftApplicationInsights_Mode |  Wichtige Features werden nur im Standardmodus aktiviert, um eine optimale Leistung zu gewährleisten. | `default` oder `recommended` |
 |InstrumentationEngine_EXTENSION_VERSION | Legt fest, ob die Engine zum binären erneuten Generieren `InstrumentationEngine` aktiviert ist. Diese Einstellung wirkt sich auf die Leistung aus und beeinträchtigt den Kaltstart/die Startzeit. | `~1` |
 |XDT_MicrosoftApplicationInsights_BaseExtensions | Legt fest, ob SQL- und Azure-Tabellentext gemeinsam mit Abhängigkeitsaufrufen erfasst wird. Leistungswarnung: die Kaltstartzeit der Anwendung wird beeinträchtigt. Diese Einstellung erfordert die `InstrumentationEngine`. | `~1` |
+|XDT_MicrosoftApplicationInsights_PreemptSdk | Diese Einstellung ist nur für ASP.NET Core-Apps geeignet. Sie aktiviert die Interoperabilität mit dem Application Insights-SDK. Außerdem lädt sie die Erweiterung zusammen mit dem SDK und verwendet es, um Telemetriedaten zu senden. Das Application Insights-SDK wird dabei deaktiviert. |`1`|
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>App Service-Anwendungseinstellungen mit dem Azure Resource Manager.
 

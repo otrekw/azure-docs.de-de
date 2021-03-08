@@ -10,12 +10,12 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
 ms.date: 03/02/2021
-ms.openlocfilehash: 4006cedf5f24ab2fc08e41b58f8acf90c404f668
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9dc4d17ea95362dd915bd1dfdfd82f4cdec611b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678507"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692809"
 ---
 # <a name="maintenance-window-preview"></a>Wartungsfenster (Vorschau)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +28,7 @@ Weitere Informationen zu Wartungsereignissen finden Sie unter [Planen von Azure-
 
 Azure führt regelmäßig geplante Wartungsupdates für Ressourcen in Azure SQL-Datenbank und Azure SQL Managed Instance aus, die häufig Aktualisierungen der zugrundeliegenden Hardware, der Software (einschließlich des zugrundeliegenden Betriebssystems) und der SQL-Engine beinhalten. Während eines Wartungsupdates sind die Ressourcen in vollem Umfang verfügbar und zugänglich, doch ist bei einigen Wartungsupdates ein Failover erforderlich, da Azure zum Anwenden der Wartungsupdates die Instanzen für kurze Zeit offline schaltet (im Schnitt etwa acht Sekunden).  Geplante Wartungsupdates erfolgen im Schnitt alle 35 Tage. Dies bedeutet, dass der Kunde mit etwa einem geplanten Wartungsereignis pro Monat für jede Azure SQL-Datenbank oder verwaltete SQL-Instanz rechnen kann, das nur in dem vom Kunden ausgewählten Wartungszeitfenster erfolgt.   
 
-Das Wartungsfenster ist für geschäftliche Workloads gedacht, die empfindlich auf mögliche Verbindungsunterbrechungen reagieren, die durch geplante Wartungsereignisse während des Standardwartungsfensters entstehen können.  
+Das Wartungsfenster ist für geschäftliche Workloads gedacht, die nicht resilient gegen zeitweilige Verbindungsprobleme sind, die durch geplante Wartungsereignisse entstehen können.
 
 Das Wartungsfenster kann im Azure-Portal, mit Azure PowerShell, der Befehlszeilenschnittstelle (CLI) oder der Azure-API konfiguriert werden. Es kann beim Erstellen von SQL-Datenbanken und verwalteten SQL-Instanzen, aber auch für vorhandene SQL-Datenbanken und verwaltete SQL-Instanzen konfiguriert werden.
 
@@ -37,15 +37,15 @@ Das Wartungsfenster kann im Azure-Portal, mit Azure PowerShell, der Befehlszeile
 Standardmäßig werden alle Azure SQL- und Azure SQL Managed Instance-Datenbanken über Nacht zwischen 17 Uhr und 8 Uhr (Ortszeit, an allen Tagen) aktualisiert, um Unterbrechungen während der Hauptgeschäftszeiten zu vermeiden. Die Ortszeit hängt von der [Azure-Region](https://azure.microsoft.com/global-infrastructure/geographies/) ab, in der die Ressource gehostet wird. Zum weiteren Anpassen der Wartungsupdates auf eine für Ihre Datenbank geeignete Zeit stehen zwei zusätzliche Wartungszeitfenster zur Auswahl:
 
 * Wartungsfenster **Standard**, 17 Uhr bis 8 Uhr Ortszeit (Montag-Sonntag) 
-* Wartungsfenster „Wochentag“, 22 Uhr bis 6 Uhr Ortszeit (Montag-Donnerstag): **muss vom Kunden aktiviert werden** 
-* Wartungsfenster „Wochenende“, 22 Uhr bis 6 Uhr Ortszeit (Freitag-Sonntag): **muss vom Kunden aktiviert werden**  
+* Wartungsfenster „Wochentag“, 22 Uhr bis 6 Uhr Ortszeit (Montag-Donnerstag)
+* Wartungsfenster „Wochenende“, 22 Uhr bis 6 Uhr Ortszeit (Freitag-Sonntag)
 
 Nach Auswahl des Wartungsfensters werden alle geplanten Wartungsupdates nur im ausgewählten Wartungsfenster ausgeführt.   
 
 > [!Note]
 > Neben den geplanten Wartungsupdates können in seltenen Fällen nicht geplante Wartungsereignisse eine Nichtverfügbarkeit verursachen. 
 
-### <a name="cost"></a>Kosten
+### <a name="cost-and-eligibility"></a>Kosten und Berechtigungen
 
 Die Auswahl eines Wartungsfensters ist für die folgenden [Abonnement-Angebotstypen](https://azure.microsoft.com/support/legal/offer-details/) kostenlos: Nutzungsbasierte Bezahlung (Pay-As-You-Go), Cloud Solution Provider (CSP), Microsoft Enterprise oder Microsoft-Kundenvereinbarung.
 

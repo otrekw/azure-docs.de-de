@@ -9,15 +9,16 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 01/26/2021
-ms.openlocfilehash: 7588ce055ce0df89a7dca87a75a38c8acccf6d46
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.date: 02/27/2021
+ms.openlocfilehash: 3c969c1898e67361e37a825d7976b1c52d08dd24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806085"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691143"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Vom Benutzer initiiertes manuelles Failover für SQL Managed Instance
+[!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 In diesem Artikel wird erläutert, wie Sie ein manuelles Failover eines primären Knotens auf den SQL Managed Instance-Dienstebenen „Universell“ und „Unternehmenskritisch“ ausführen. Außerdem erfahren Sie, wie Sie ein manuelles Failover eines sekundären, schreibgeschützten Replikatknotens nur auf der Dienstebene „Unternehmenskritisch“ ausführen.
 
@@ -33,7 +34,7 @@ In folgenden Fällen sollten Sie allerdings ein [manuelles Failover](../database
 - Wenn die Abfrageleistung beeinträchtigt ist, kann ein manuelles Failover in einigen Fällen die Leistungsprobleme mindern.
 
 > [!NOTE]
-> Bevor Sie eine Anwendung in der Produktion bereitstellen, sollten Sie sicherstellen, dass sie resilient gegenüber Failovervorgängen ist. So reduzieren Sie das Risiko, dass die Anwendung in der Produktion ausfällt, und verbessern die Verfügbarkeit Ihrer Anwendung für Ihre Kunden.
+> Bevor Sie eine Anwendung in der Produktion bereitstellen, sollten Sie sicherstellen, dass sie resilient gegenüber Failovervorgängen ist. So reduzieren Sie das Risiko, dass die Anwendung in der Produktion ausfällt, und verbessern die Verfügbarkeit Ihrer Anwendung für Ihre Kunden. Erfahren Sie mehr über das Testen Ihrer Anwendungen für die Cloudbereitschaft mit der Videoaufzeichnung [Testing App Cloud Readiness for Failover Resiliency with SQL Managed Instance](https://youtu.be/FACWYLgYDL8) (Testen der App-Cloudbereitschaft für Failoverresilienz mit SQL Managed Instance).
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>Initiieren eines manuellen Failovers in SQL Managed Instance
 
@@ -42,7 +43,7 @@ In folgenden Fällen sollten Sie allerdings ein [manuelles Failover](../database
 Benutzer, die einen Failover initiieren, müssen über eine der folgenden Azure-Rollen verfügen:
 
 - Rolle „Besitzer des Abonnements“ oder
-- Rolle „Mitwirkender“ der verwalteten Instanz oder
+- Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) von Managed Instance oder
 - Benutzerdefinierte Rolle mit der folgenden Berechtigung:
   - `Microsoft.Sql/managedInstances/failover/action`
 
@@ -150,8 +151,9 @@ Der kurze Verlust der Konnektivität mit Ihrem Client während des Failovers, de
 > - Bei unternehmenskritischen Instanzen muss ein Quorum mit Replikaten vorhanden sein, damit die Failoveranforderung akzeptiert wird.
 > - Bei unternehmenskritischen Instanzen kann nicht angegeben werden, auf welchem lesbaren sekundären Replikat das Failover initiiert werden soll.
 > - Das Failover ist erst zulässig, wenn die erste vollständige Sicherung für eine neue Datenbank durch automatisierte Sicherungssysteme abgeschlossen ist.
+> - Ein Failover ist nicht zulässig, wenn eine Datenbankwiederherstellung ausgeführt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
+- Erfahren Sie mehr über das Testen Ihrer Anwendungen für die Cloudbereitschaft mit der Videoaufzeichnung [Testing App Cloud Readiness for Failover Resiliency with SQL Managed Instance](https://youtu.be/FACWYLgYDL8) (Testen der App-Cloudbereitschaft für Failoverresilienz mit SQL Managed Instance).
 - Erfahren Sie mehr über die [Hochverfügbarkeit für Azure SQL Managed Instance](../database/high-availability-sla.md).
 - Eine Übersicht finden Sie unter [Was ist Azure SQL Managed Instance?](sql-managed-instance-paas-overview.md).

@@ -13,14 +13,14 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c9df24a255d640c463bd62e8bdfe8a576df3b09
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fff9f9e809c61761ae22bc64cb0810b6e8b98f07
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692894"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122696"
 ---
-# <a name="securing-service-principals"></a>Schützen von Dienstprinzipalen
+# <a name="securing-service-principals"></a>Sichern von Dienstprinzipalen
 
 Bei einem Azure AD-[Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) (Azure Active Directory) handelt es sich um die lokale Darstellung eines Anwendungsobjekts in einem einzelnen Mandanten oder Verzeichnis.  ‎Er dient als Identität der Anwendungsinstanz. Mit Dienstprinzipalen wird definiert, wer auf die Anwendung zugreifen kann und auf welche Ressourcen die Anwendung Zugriff hat. Ein Dienstprinzipal wird in jedem Mandanten erstellt, in dem die Anwendung verwendet wird, und es verweist auf das global eindeutige Anwendungsobjekt. Mit dem Mandanten werden die Anmeldung des Dienstprinzipals und den Zugriff auf Ressourcen geschützt.  
 
@@ -107,7 +107,7 @@ Die Anmeldung von Dienstprinzipalen kann nicht per bedingtem Zugriff verwaltet w
 ## <a name="move-from-a-user-account-to-a-service-principal"></a>Wechseln von einem Benutzerkonto zu einem Dienstprinzipal  
 ‎Wenn Sie ein Azure-Benutzerkonto als Dienstprinzipal verwenden, sollten Sie evaluieren, ob die Umstellung auf eine [verwaltete Identität](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) oder einen Dienstprinzipal möglich ist. Falls Sie keine verwaltete Identität nutzen können, sollten Sie einen Dienstprinzipal bereitstellen, der über gerade ausreichende Berechtigungen und den entsprechenden Bereich für die Ausführung der erforderlichen Aufgaben verfügt. Sie können einen Dienstprinzipal erstellen, indem Sie eine [Anwendung registrieren](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) oder [PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell) verwenden.
 
-Informieren Sie sich bei Verwendung von Microsoft Graph in der Dokumentation zur jeweiligen API ([wie in diesem Beispiel](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-5.0.0)), ‎und vergewissern Sie sich, dass der Berechtigungstyp für die Anwendung unterstützt wird.
+Informieren Sie sich bei Verwendung von Microsoft Graph in der Dokumentation zur jeweiligen API ([wie in diesem Beispiel](/powershell/azure/create-azure-service-principal-azureps)), ‎und vergewissern Sie sich, dass der Berechtigungstyp für die Anwendung unterstützt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -115,14 +115,14 @@ Informieren Sie sich bei Verwendung von Microsoft Graph in der Dokumentation zur
 
 [Erstellen eines Dienstprinzipals](../develop/howto-create-service-principal-portal.md)
 
- [Überwachen der Anmeldungen von Dienstprinzipalen](../reports-monitoring/concept-all-sign-ins#sign-ins-report.md)
+ [Überwachen der Anmeldungen von Dienstprinzipalen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report)
 
 **Weitere Informationen zum Schützen von Dienstkonten:**
 
 [Einführung in Azure-Dienstkonten](service-accounts-introduction-azure.md)
 
-[Schützen von verwalteten Identitäten](service-accounts-managed-identities.md)
+[Sichern von verwalteten Identitäten](service-accounts-managed-identities.md)
 
 [Steuern von Azure-Dienstkonten](service-accounts-governing-azure.md)
 
-[Einführung in lokale Dienstkonten](service-accounts-on-poremises.md)
+[Einführung in lokale Dienstkonten](service-accounts-on-premises.md)

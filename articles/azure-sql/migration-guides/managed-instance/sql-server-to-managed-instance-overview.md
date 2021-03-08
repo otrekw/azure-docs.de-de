@@ -9,13 +9,13 @@ ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
-ms.date: 11/06/2020
-ms.openlocfilehash: 9afe50e419f9c180b0b5efcd6182eb693dc6622a
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.date: 02/18/2020
+ms.openlocfilehash: 1f619e1eac58f70642117dabafc266d1bc250609
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093942"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690412"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Migrationsübersicht: SQL Server zu SQL Managed Instance
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -90,6 +90,7 @@ In der folgenden Tabelle werden die empfohlenen Migrationstools aufgeführt:
 |---------|---------|
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | Hierbei handelt es sich um einen Erstanbieterdienst von Azure, der die Migration im Offlinemodus für Anwendungen unterstützt, die sich Downtime während des Migrationsprozesses leisten können. Im Gegensatz zur kontinuierlichen Migration im Onlinemodus führt die Migration im Offlinemodus eine einmalige Wiederherstellung einer vollständigen Datenbanksicherung von der Quelle zum Ziel aus. | 
 |[Native Sicherung und Wiederherstellung](../../managed-instance/restore-sample-database-quickstart.md) | SQL Managed Instance unterstützt die Wiederherstellung nativer SQL Server-Datenbanksicherungen (BAK-Dateien), weshalb es sich hierbei um die einfachste Migrationsoption für Kunden handelt, die vollständige Datenbanksicherungen in Azure Storage bereitstellen können. Vollständige und differenzielle Sicherungen werden ebenfalls unterstützt und später in diesem Artikel im Abschnitt [Migrationsressourcen](#migration-assets) dokumentiert.| 
+|[Protokollwiedergabedienst (Log Replay Service, LRS)](../../managed-instance/log-replay-service-migrate.md) | Dabei handelt es sich um einen für Managed Instance aktivierten Clouddienst, der auf der SQL Server-Protokollversandtechnologie basiert. Dies macht ihn zu einer Migrationsoption für Kunden, die vollständige, differenzielle und Protokolldatenbanksicherungen in Azure-Speicher bereitstellen können. LRS wird zum Wiederherstellen von Sicherungsdateien aus Azure Blob Storage in verwalteten SQL-Instanzen verwendet.| 
 | | |
 
 ### <a name="alternative-tools"></a>Alternative Tools
@@ -114,8 +115,9 @@ In der folgenden Tabelle werden die empfohlenen Migrationsoptionen verglichen:
 
 |Migrationsoption  |Verwendung  |Überlegungen  |
 |---------|---------|---------|
-|[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | – Migrieren einzelner oder mehrerer Datenbanken nach Maß </br> – Während des Migrationsprozesses ist Downtime möglich </br> </br> Unterstützte Quellen: </br> – SQL Server (2005 – 2019) lokal oder Azure-VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP Compute mit SQL Server-VM |  – Migrationen im großen Stil können mit [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md) automatisiert werden. </br> – Die Zeit bis zum Abschluss der Migration ist von der Datenbankgröße abhängig und wird von der Sicherungs- und Wiederherstellungszeit beeinflusst. </br> – Möglicherweise ist eine gewisse Downtime erforderlich. |
+|[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | – Migrieren einzelner oder mehrerer Datenbanken nach Maß </br> – Während des Migrationsprozesses ist Downtime möglich </br> </br> Unterstützte Quellen: </br> – SQL Server (2005 – 2019) lokal oder Azure-VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP Compute mit SQL Server-VM |  – Migrationen im großen Stil können mit [PowerShell](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md) automatisiert werden. </br> – Die Zeit bis zum Abschluss der Migration ist von der Datenbankgröße abhängig und wird von der Sicherungs- und Wiederherstellungszeit beeinflusst. </br> – Möglicherweise ist eine gewisse Downtime erforderlich. |
 |[Native Sicherung und Wiederherstellung](../../managed-instance/restore-sample-database-quickstart.md) | – Migrieren individueller Branchenanwendungsdatenbanken  </br> – Schnelle und einfache Migration ohne separaten Migrationsdienst oder ein Tool  </br> </br> Unterstützte Quellen: </br> – SQL Server (2005 – 2019) lokal oder Azure-VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP Compute mit SQL Server-VM | – Die Datenbanksicherung verwendet mehrere Threads zum Optimieren der Datenübertragung an Azure Blob Storage, jedoch kann sich die ISV-Bandbreite und -Datenbankgröße auf die Übertragungsrate auswirken. </br> – Die Downtime sollte den Zeitaufwand zum Durchführen einer vollständigen Sicherung und Wiederherstellung berücksichtigen (dieser Vorgang ist von der Datengröße abhängig).| 
+|[Protokollwiedergabedienst (Log Replay Service, LRS)](../../managed-instance/log-replay-service-migrate.md) | – Migrieren individueller Branchenanwendungsdatenbanken  </br> – Für Datenbankmigrationen ist mehr Kontrolle erforderlich.  </br> </br> Unterstützte Quellen: </br> – SQL Server (2008 - 2019) lokal oder Azure-VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP Compute mit SQL Server-VM | – Die Migration umfasst das Erstellen vollständiger Datenbanksicherungen auf SQL Server und das Kopieren von Sicherungsdateien zu Azure Blob Storage. LRS wird zum Wiederherstellen von Sicherungsdateien aus Azure Blob Storage in verwalteten SQL-Instanzen verwendet. </br> – Datenbanken, die während des Migrationsvorgangs wiederhergestellt werden, befinden sich in einem Wiederherstellungsmodus und können nicht zum Lesen oder Schreiben verwendet werden, bis der Prozess abgeschlossen ist.| 
 | | | |
 
 ### <a name="alternative-options"></a>Alternative Optionen
@@ -161,7 +163,7 @@ Neben der in SQL Managed Instance enthaltenen Hochverfügbarkeitsarchitektur gib
 
 #### <a name="sql-agent-jobs"></a>SQL-Agent-Aufträge
 
-Verwenden Sie die Azure Database Migration Service-Offlineoption zum Migrieren von [SQL-Agent-Aufträgen](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md#offline-migrations). Andernfalls müssen Sie die Aufträge mithilfe von SSMS (SQL Server Management Studio) in Transact-SQL (T-SQL) schreiben und dann im SQL Managed Instance-Ziel manuell neu erstellen. 
+Verwenden Sie die Azure Database Migration Service-Offlineoption zum Migrieren von [SQL-Agent-Aufträgen](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md). Andernfalls müssen Sie die Aufträge mithilfe von SSMS (SQL Server Management Studio) in Transact-SQL (T-SQL) schreiben und dann im SQL Managed Instance-Ziel manuell neu erstellen. 
 
 > [!IMPORTANT]
 > Derzeit unterstützt Azure Database Migration Service nur Aufträge mit T-SQL-Subsystemschritten. Aufträge mit SSIS-Paketschritten müssen manuell migriert werden. 

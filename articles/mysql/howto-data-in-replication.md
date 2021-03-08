@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: 22974a47a6b1e9d49e5055a85f46286497cfe149
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 29ac0c5991964de48cedd15622d15e929bc9d733
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250531"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709545"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Gewusst wie: Konfigurieren der Datenreplikation in Azure Database for MySQL
 
@@ -101,9 +101,23 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
    ```
 
    Wenn die Variable [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) mit dem Wert „ON“ zurückgegeben wird, ist die binäre Protokollierung auf Ihrem Server aktiviert.
-
-   Wenn `log_bin` mit dem Wert „OFF“ zurückgegeben wird, aktivieren Sie die binäre Protokollierung, indem Sie die Datei „my.cnf“ ändern, sodass `log_bin=ON` lautet. Starten Sie dann den Server neu, damit die Änderung wirksam wird.
-
+   
+   Gehen Sie folgendermaßen vor, wenn `log_bin` mit dem Wert „OFF“ zurückgegeben wird: 
+   1. Suchen Sie Ihre MySQL-Konfigurationsdatei („my.cnf“) auf dem Quellserver. (Zum Beispiel: „/etc/my.cnf“)
+   2. Öffnen Sie die Konfigurationsdatei, um sie zu bearbeiten und in der Datei nach dem Abschnitt **mysqld** zu suchen.
+   3.  Fügen Sie die folgende Zeile im Abschnitt „mysqld“ hinzu:
+   
+       ```bash
+       log-bin=mysql-bin.log
+       ```
+     
+   4. Starten Sie den MySQL-Quellserver neu, damit die Änderungen wirksam werden.
+   5. Stellen Sie nach dem Neustart des Servers sicher, dass die binäre Protokollierung aktiviert ist, indem Sie dieselbe Abfrage wie zuvor ausführen:
+   
+      ```sql
+      SHOW VARIABLES LIKE 'log_bin';
+      ```
+   
 4. Quellservereinstellungen
 
    Der Parameter `lower_case_table_names` muss bei der Datenreplikation zwischen Quell- und Replikatserver konsistent sein. Dieser Parameter ist bei Azure Database for MySQL standardmäßig „1“.

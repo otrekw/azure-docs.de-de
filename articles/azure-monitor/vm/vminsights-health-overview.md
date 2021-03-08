@@ -1,26 +1,25 @@
 ---
-title: Feature „Gastintegrität“ von Azure Monitor für VMs (Vorschau)
-description: Enthält eine Übersicht über das Integritätsfeature von Azure Monitor für VMs, z. B. Informationen zum Anzeigen der Integrität Ihrer virtuellen Computer und Empfangen von Warnungen bei einem Fehlerstatus eines virtuellen Computers.
-ms.subservice: ''
+title: Gastintegrität von VM Insights (Vorschau)
+description: In diesem Artikel finden Sie eine Übersicht über das Integritätsfeature von VM Insights. Außerdem erfahren Sie, wie Sie die Integrität Ihrer virtuellen Computer anzeigen und Warnungen erhalten, wenn ein virtueller Computer fehlerhaft ist.
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/27/2020
-ms.openlocfilehash: 96bed9f3b04e54e2e9a5234d78f9a2660126742e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2922ca4068531c45e6acad0ce54aa96624c6238e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599738"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052125"
 ---
-# <a name="azure-monitor-for-vms-guest-health-preview"></a>Feature „Gastintegrität“ von Azure Monitor für VMs (Vorschau)
-Mit dem Feature „Gastintegrität“ von Azure Monitor für VMs können Sie Informationen zur Integrität virtueller Computer anzeigen. Diese basieren auf verschiedenen Leistungsmessungen, für die in regelmäßigen Abständen Stichproben des Gastbetriebssystems genommen werden. Sie können die Integrität aller virtuellen Computer eines Abonnements oder einer Ressourcengruppe schnell überprüfen, einen Drilldown zu den ausführlichen Integritätsinformationen eines bestimmten virtuellen Computers ausführen oder sich proaktiv benachrichtigen lassen, wenn ein virtueller Computer nicht mehr fehlerfrei ist. 
+# <a name="vm-insights-guest-health-preview"></a>Gastintegrität von VM Insights (Vorschau)
+Mit dem Feature „Gastintegrität“ von VM Insights können Sie Informationen zur Integrität virtueller Computer anzeigen. Diese basieren auf verschiedenen Leistungsmeasures, für die in regelmäßigen Abständen Stichproben des Gastbetriebssystems genommen werden. Sie können die Integrität aller virtuellen Computer eines Abonnements oder einer Ressourcengruppe schnell überprüfen, einen Drilldown zu den ausführlichen Integritätsinformationen eines bestimmten virtuellen Computers ausführen oder sich proaktiv benachrichtigen lassen, wenn ein virtueller Computer nicht mehr fehlerfrei ist. 
 
 ## <a name="enable-virtual-machine-health"></a>Aktivieren des Integritätsfeatures für virtuelle Computer
-Ausführliche Informationen zur Aktivierung des Features „Gastintegrität“ und zur Durchführung des Onboardings für virtuelle Computer finden Sie unter [Aktivieren des Features „Gastintegrität“ von Azure Monitor für VMs (Vorschau)](vminsights-health-enable.md).
+Ausführliche Informationen zum Aktivieren des Features „Gastintegrität“ und zum Onboarding von virtuellen Computern finden Sie unter [Aktivieren des Features „Gastintegrität“ von VM Insights (Vorschau)](vminsights-health-enable.md).
 
 ## <a name="pricing"></a>Preise
-Für das Feature „Gastintegrität“ fallen keine direkten Kosten an, aber für die Erfassung und Speicherung von Integritätsstatusdaten im Log Analytics-Arbeitsbereich werden Kosten berechnet. Alle Daten werden in der Tabelle *HealthStateChangeEvent* gespeichert. Ausführliche Informationen zu Preismodellen und Kosten finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../platform/manage-cost-storage.md).
+Für das Feature „Gastintegrität“ fallen keine direkten Kosten an, aber für die Erfassung und Speicherung von Integritätsstatusdaten im Log Analytics-Arbeitsbereich werden Kosten berechnet. Alle Daten werden in der Tabelle *HealthStateChangeEvent* gespeichert. Ausführliche Informationen zu Preismodellen und Kosten finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../logs/manage-cost-storage.md).
 
 ## <a name="view-virtual-machine-health"></a>Anzeigen der Integrität von virtuellen Computern
 Auf der Seite **Erste Schritte** in der Spalte **Integrität der Gast-VM** finden Sie eine Kurzübersicht zur Integrität der einzelnen virtuellen Computer eines bestimmten Abonnements oder einer Ressourcengruppe. Der aktuelle Integritätsstatus der einzelnen virtuellen Computer wird angezeigt, und auf Symbolen für jede Gruppe wird die Anzahl von virtuellen Computern angegeben, die jeweils einen bestimmten Status aufweisen.
@@ -95,7 +94,7 @@ Wählen Sie einen Monitor aus, um die zugehörigen Details anzuzeigen. Diese bef
 [![Monitordetails: Verlauf](media/vminsights-health-overview/monitor-details-history.png)](media/vminsights-health-overview/monitor-details-history.png#lightbox)
 
 ### <a name="configuration"></a>Konfiguration
-Auf dieser Registerkarte können Sie die Konfiguration des Monitors für die ausgewählte VM anzeigen und ändern. Weitere Informationen finden Sie unter [Konfigurieren der Überwachung für das Feature „Gastintegrität“ von Azure Monitor für VMs (Vorschau)](vminsights-health-enable.md).
+Auf dieser Registerkarte können Sie die Konfiguration des Monitors für die ausgewählte VM anzeigen und ändern. Ausführliche Informationen finden Sie unter [Konfigurieren der Überwachung des Features „Gastintegrität“ in VM Insights (Vorschau)](vminsights-health-enable.md).
 
 [![Monitordetails: Konfiguration](media/vminsights-health-overview/monitor-details-configuration.png)](media/vminsights-health-overview/monitor-details-configuration.png#lightbox)
 
@@ -104,6 +103,6 @@ Auf dieser Registerkarte können Sie die Konfiguration des Monitors für die aus
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Aktivieren des Features „Gastintegrität“ in Azure Monitor für VMs und Durchführen des Onboardings für Agents](vminsights-health-enable.md)
+- [Aktivieren des Features „Gastintegrität“ von VM Insights und Onboarding von Agents](vminsights-health-enable.md)
 - [Konfigurieren von Monitoren mit dem Azure-Portal](vminsights-health-configure.md)
 - [Konfigurieren von Monitoren mit Datensammlungsregeln](vminsights-health-configure-dcr.md)

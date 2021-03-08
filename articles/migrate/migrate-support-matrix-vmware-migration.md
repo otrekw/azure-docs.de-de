@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 0b671fbdfe16848012ac94671ce68e8a33a8b3e8
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: fc3ba062f4995e975015d7c4db145ccde0c3f701
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703868"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705210"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Unterstützungsmatrix für die VMware-Migration
 
@@ -29,8 +29,8 @@ In [diesem Artikel](server-migrate-overview.md) finden Sie Informationen zur Ver
 
 ## <a name="migration-limitations"></a>Einschränkungen bei der Migration
 
-- Sie können bis zu 10 VMs gleichzeitig für die Replikation auswählen. Wenn Sie weitere Computer migrieren möchten, replizieren Sie sie in Gruppen von 10.
-- Bei der VMware-Migration ohne Agent können Sie bis zu 300 Replikationsvorgänge gleichzeitig ausführen.
+- Sie können für die Replikation über das Azure-Portal bis zu zehn VMs gleichzeitig auswählen. Wenn Sie weitere Computer migrieren möchten, replizieren Sie sie in Gruppen von 10. Die Anzahl von VMs, die über PowerShell-Cmdlets repliziert werden können, ist nicht beschränkt. Es wird empfohlen, nicht mehr als 500 VMs gleichzeitig für eine einzelne vCenter-Instanz über PowerShell zu replizieren, um eine optimale Leistung gewährleisten zu können.
+- Bei der VMware-Migration ohne Agent können Sie bis zu 500 Replikationsvorgänge gleichzeitig pro vCenter-Instanz ausführen.
 
 ## <a name="agentless-migration"></a>Migration ohne Agent 
 
@@ -56,7 +56,7 @@ In der Tabelle werden die Migrationsanforderungen ohne Agent für VMware-VMs zus
 --- | ---
 **Unterstützte Betriebssysteme** | Sie können alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)- und [Linux](../virtual-machines/linux/endorsed-distros.md)-Betriebssysteme migrieren, die von Azure unterstützt werden.
 **Windows-VMs in Azure** | Möglicherweise müssen Sie vor der Migration [einige Änderungen](prepare-for-migration.md#verify-required-changes-before-migrating) an VMs vornehmen. 
-**Linux-VMs in Azure** | Einige VMs erfordern möglicherweise Änderungen, damit sie in Azure ausgeführt werden können.<br/><br/> Bei diesen Linux-Betriebssystemen führt Azure Migrate diese Änderungen automatisch durch:<br/> – Red Hat Enterprise Linux 7.8, 7.7, 7.6, 7.5, 7.4, 7.0 und 6.x<br/> – Cent OS 7.7, 7.6, 7.5, 7.4 und 6.x</br> - SUSE Linux Enterprise Server 12 SP1+<br/> – SUSE Linux Enterprise Server 15 SP1 <br/>– Ubuntu 19.04, 19.10, 14.04LTS, 16.04LTS, 18.04LTS<br/> – Debian 7, 8 <br/> Oracle Linux 7.7, 7.7-CI<br/> Bei anderen Betriebssystemen nehmen Sie die [erforderlichen Änderungen](prepare-for-migration.md#verify-required-changes-before-migrating) manuell vor.
+**Linux-VMs in Azure** | Einige VMs erfordern möglicherweise Änderungen, damit sie in Azure ausgeführt werden können.<br/><br/> Bei diesen Linux-Betriebssystemen führt Azure Migrate diese Änderungen automatisch durch:<br/> – Red Hat Enterprise Linux 7.8, 7.7, 7.6, 7.5, 7.4, 7.0 und 6.x<br/> – Cent OS 7.7, 7.6, 7.5, 7.4 und 6.x</br> - SUSE Linux Enterprise Server 12 SP1+<br/> – SUSE Linux Enterprise Server 15 SP1 <br/>– Ubuntu 19.04, 19.10, 14.04LTS, 16.04LTS, 18.04LTS<br/> - Debian 7, 8, 9 <br/> Oracle Linux 7.7, 7.7-CI<br/> Bei anderen Betriebssystemen nehmen Sie die [erforderlichen Änderungen](prepare-for-migration.md#verify-required-changes-before-migrating) manuell vor.
 **Linux-Start** | Wenn sich „/boot“ in einer dedizierten Partition befindet, sollte diese auf dem Betriebssystemdatenträger und nicht auf mehrere Datenträger verteilt vorhanden sein.<br/> Wenn „/boot“ Teil der Stammpartition („/“) ist, sollte sich diese auf dem Betriebssystemdatenträger befinden und nicht auf andere Datenträger erstrecken.
 **UEFI-Start** | Unterstützt. UEFI-basierte VMs werden zu Azure-VMs der 2. Generation migriert. 
 **Datenträgergröße** | 2 TB für den Betriebssystemdatenträger, 32 TB für Datenträger
@@ -72,7 +72,7 @@ In der Tabelle werden die Migrationsanforderungen ohne Agent für VMware-VMs zus
 **Kombinierte Netzwerkadapter** | Wird nicht unterstützt.
 **IPv6** | Wird nicht unterstützt.
 **Zieldatenträger** | Virtuelle Computer können nur zu verwalteten Datenträgern (HDD Standard, SSD Standard, SSD Premium) in Azure migriert werden.
-**Gleichzeitige Replikation** | 300 virtuelle Computer pro vCenter Server. Bei mehr virtuellen Computern sind diese in Batches von 300 zu migrieren.
+**Gleichzeitige Replikation** | 500 VMs pro vCenter Server-Instanz. Bei mehr VMs sind diese in Batches von 500 zu migrieren.
 **Automatische Installation des Azure-VM-Agents (Windows-Agent)** | Unterstützt ab Windows Server 2008 R2.
 
 ### <a name="appliance-requirements-agentless"></a>Applianceanforderungen (ohne Agent)

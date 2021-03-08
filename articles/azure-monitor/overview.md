@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor-Übersicht | Microsoft-Dokumentation
 description: Übersicht über die Microsoft-Dienste und -Funktionen, die zu einer vollständigen Überwachungsstrategie für Ihre Azure-Dienste und -Anwendungen beitragen.
-ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: 00f1bec4d4117d9ccebb4440e3649dd9dff32058
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 544d6937e412e3e1cfc2cf4e520c02f3f804fc8c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717348"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047161"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – Übersicht
 
@@ -145,7 +144,7 @@ Bei [Azure Event Hubs](../event-hubs/index.yml) handelt es sich um eine Streamin
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen:
 
-* [Metriken und Protokolle](data-platform.md) für die von Azure Monitor gesammelten Daten
+* [Metriken und Protokolle](https://docs.microsoft.com/azure/azure-monitor/data-platform#metrics) für die von Azure Monitor gesammelten Daten
 * [Datenquellen](agents/data-sources.md) dazu, wie die verschiedenen Komponenten Ihrer Anwendung Telemetriedaten senden
 * [Protokollabfragen](logs/log-query-overview.md) zur Analyse der gesammelten Daten
 * [Bewährte Methoden](/azure/architecture/best-practices/monitoring) zum Überwachen von Cloudanwendungen und-Diensten.

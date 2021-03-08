@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: ed8948ddeddf25272355cd1dc06d4e95c52f7f62
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 1edfbca2f2a16aeebc1244b298426dc46d72c6d5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035256"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708814"
 ---
 # <a name="create-your-first-java-function-in-azure-using-intellij"></a>Erstellen Ihrer ersten Java-Funktion in Azure mit IntelliJ
 
@@ -56,7 +56,7 @@ Installieren Sie die folgende Software, um Java-Funktionen mit IntelliJ in Azure
 
    ![Der Browser für die Geräteanmeldung][intellij-azure-link-ms-account]
 
-6. Wenn das Dialogfeld **Select Subscriptions** (Abonnements auswählen) angezeigt wird, wählen Sie die Abonnements aus, die Sie verwenden möchten, und klicken Sie dann auf **OK**.
+6. Wählen Sie im Dialogfeld **Abonnements auswählen** die Abonnements aus, die Sie verwenden möchten, und klicken Sie dann auf **Auswählen**.
 
    ![Dialogfeld zum Auswählen von Abonnements][intellij-azure-login-select-subs]
    

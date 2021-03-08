@@ -1,17 +1,16 @@
 ---
 title: Aktivieren von Azure Monitor für einen einzelnen virtuellen Computer oder eine einzelne VM-Skalierungsgruppe im Azure-Portal
 description: Hier erfahren Sie, wie Sie VM Insights für einen einzelnen virtuellen Azure-Computer oder eine einzelne VM-Skalierungsgruppe über das Azure-Portal aktivieren.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 47dde48e916361620a832d26e6249c4147d0f8b5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 076fcab7b0747a7993407edd65f9d08efc27309f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733736"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035584"
 ---
 # <a name="enable-azure-monitor-for-single-virtual-machine-or-virtual-machine-scale-set-in-the-azure-portal"></a>Aktivieren von Azure Monitor für einen einzelnen virtuellen Computer oder eine einzelne VM-Skalierungsgruppe im Azure-Portal
 In diesem Artikel wird beschrieben, wie Sie VM Insights für einen virtuellen Computer oder eine VM-Skalierungsgruppe über das Azure-Portal aktivieren. Dieses Verfahren kann für Folgendes verwendet werden:

@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd9a01868230efd9e9078171359d81302b472cd3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 39466ad621eff1a7d3490c936c90fbff6f63e0fc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724420"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051547"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>Sicherheitskontrolle V2: Sicherung und Wiederherstellung
 
 Sicherung und Wiederherstellung umfasst Kontrollelemente, die sicherstellen, dass Daten- und Konfigurationssicherungen auf den verschiedenen Dienstebenen durchgeführt, validiert und geschützt werden.
 
-Die entsprechende integrierte Azure Policy finden Sie unter [Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß Azure-Sicherheitsvergleichstest: Sicherung und Wiederherstellung](../../governance/policy/samples/azure-security-benchmark#backup-and-recovery).
+Die entsprechende integrierte Azure Policy finden Sie unter [Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß Azure-Sicherheitsvergleichstest: Sicherung und Wiederherstellung](../../governance/policy/samples/azure-security-benchmark.md#backup-and-recovery).
 
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1: Sicherstellen regelmäßiger automatisierter Sicherungen
 
@@ -66,7 +66,7 @@ Verwenden Sie rollenbasierte Zugriffssteuerung von Azure in Azure Backup, Azure 
 
 - [Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln](../../backup/encryption-at-rest-with-cmk.md) 
 
-- [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 - [Sicherheitsfeatures für den Schutz von Hybridsicherungen vor Angriffen](../../backup/backup-azure-security-feature.md#prevent-attacks)
 
@@ -90,7 +90,7 @@ Führen Sie regelmäßige Datenwiederherstellungen Ihrer Sicherung aus. Stellen 
 
 - [Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern](../../backup/backup-azure-restore-files-from-vm.md)
 
-- [Wiederherstellen von Key Vault-Schlüsseln in Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Wiederherstellen von Key Vault-Schlüsseln in Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Verantwortlichkeit**: Kunde
 

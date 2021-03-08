@@ -4,14 +4,14 @@ description: Behandeln von Problemen mit Webtests in Azure Application Insights 
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 11/19/2020
+ms.date: 02/14/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 849701caf73a4fb289773c67bccaab2e0f39dbd1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 940a70de81df60f7b6c1545c992e1ee10e69fa9f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100583730"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728925"
 ---
 # <a name="troubleshooting"></a>Problembehandlung
 
@@ -58,7 +58,7 @@ Der Problembehandlungsbericht ermöglicht Ihnen eine einfache Diagnose häufig a
 
 ### <a name="i-did-not-get-an-email-when-the-alert-triggered-or-resolved-or-both"></a>Ich habe keine E-Mail erhalten, als die Warnung ausgelöst und/oder behoben wurde.
 
-Überprüfen Sie die klassische Warnungskonfiguration, um zu bestätigen, dass Ihre E-Mail-Adresse direkt aufgeführt ist, oder dass eine Verteilerliste, deren Mitglied Sie sind, für den Empfang von Benachrichtigungen konfiguriert ist. Ist dies der Fall, überprüfen Sie die Konfiguration der Verteilerliste, um zu bestätigen, dass sie externe E-Mails empfangen kann. Überprüfen Sie außerdem, ob Ihr E-Mail-Administrator eventuell Richtlinien konfiguriert hat, die dieses Problem verursachen können.
+Überprüfen Sie die Aktionsgruppenkonfiguration der Warnung, um zu bestätigen, dass Ihre E-Mail-Adresse direkt aufgeführt ist, oder dass eine Verteilerliste, deren Mitglied Sie sind, für den Empfang von Benachrichtigungen konfiguriert ist. Ist dies der Fall, überprüfen Sie die Konfiguration der Verteilerliste, um zu bestätigen, dass sie externe E-Mails empfangen kann. Überprüfen Sie außerdem, ob Ihr E-Mail-Administrator eventuell Richtlinien konfiguriert hat, die dieses Problem verursachen können.
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Ich habe die Webhookbenachrichtigung nicht empfangen.
 
@@ -110,21 +110,6 @@ Pro Test können maximal 100 Anforderungen verwendet werden. Der Test wird auße
 ### <a name="how-can-i-run-a-test-with-client-certificates"></a>Wie kann ich einen Test mit Clientzertifikaten durchführen?
 
 Dies wird derzeit nicht unterstützt.
-
-## <a name="who-receives-the-classic-alert-notifications"></a>Wer erhält die (klassischen) Warnungsbenachrichtigungen?
-
-Dieser Abschnitt gilt nur für klassische Benachrichtigungen und hilft Ihnen, Ihre Warnungsbenachrichtigungen zu optimieren, um sicherzustellen, dass nur die gewünschten Empfänger Benachrichtigungen erhalten. Um mehr über den Unterschied zwischen [klassischen Benachrichtigungen](../alerts/alerts-classic.overview.md) und der neuen Benutzeroberfläche für Warnungen zu erfahren, lesen Sie den Artikel [Überblick über Warnungen in Microsoft Azure](../alerts/alerts-overview.md). Um die Warnungsbenachrichtigung in der neuen Benutzeroberfläche für Warnungen zu steuern, verwenden Sie [Aktionsgruppen](../alerts/action-groups.md).
-
-* Wir empfehlen die Verwendung bestimmter Empfänger für klassische Warnungsbenachrichtigungen.
-
-* Für Warnungen zu Fehlern bei X von Y Standorten werden bei aktivierter Option **Massenversand/Gruppe** Benutzer mit Administrator-/Co-Administratorrolle benachrichtigt.  Im Wesentlichen erhalten _alle_ Administratoren des _Abonnements_ Benachrichtigungen.
-
-* Für Warnungen zu Verfügbarkeitsmetriken werden bei aktivierter Option **bulk/group** (Masse/Gruppe) Benachrichtigungen an Benutzer mit der Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ im Abonnement gesendet. Tatsächlich sind _alle_ Benutzer mit Zugriff auf das Abonnement der Application Insights-Ressource im Umfang enthalten und erhalten Benachrichtigungen. 
-
-> [!NOTE]
-> Wenn Sie aktuell die Option **Massenversand/Gruppe** verwenden und diese deaktivieren, können Sie die Änderung nicht rückgängig machen.
-
-Verwenden Sie die neue Benutzeroberfläche für Warnungen/Warnungen nahezu in Echtzeit, wenn Sie Benutzer basierend auf ihren Rollen benachrichtigen müssen. Mit [Aktionsgruppen](../alerts/action-groups.md) können Sie E-Mail-Benachrichtigungen für Benutzer mit den Rollen „Mitwirkender“, „Besitzer“, „Leser“ konfigurieren (nicht kombiniert als eine einzige Option).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/14/2020
+ms.date: 03/01/2021
 ms.author: apimpm
-ms.openlocfilehash: 77d9d20f3321aa5bb6c5ea47a3949a82bdd1ad75
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 85abf30d792b24b92685e191f5b460a42dc29142
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131240"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688415"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Domänenübergreifende API Management-Richtlinien)
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](./api-management-policies.md).
@@ -62,7 +62,10 @@ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-poli
 - **Richtlinienbereiche:** alle Bereiche
 
 ## <a name="cors"></a><a name="CORS"></a> CORS
-Die `cors`-Richtlinie fügt Unterstützung für CORS (Cross-Origin Resource Sharing) einer Operation oder einer API hinzu, um domänenübergreifende Aufrufe von browserbasierten Clients aus zu ermöglichen.
+Die `cors`-Richtlinie fügt Unterstützung für CORS (Cross-Origin Resource Sharing) einer Operation oder einer API hinzu, um domänenübergreifende Aufrufe von browserbasierten Clients aus zu ermöglichen. 
+
+> [!NOTE]
+> Wenn die Anforderung einem Vorgang entspricht, für den in der API eine OPTIONS-Methode definiert ist, wird die mit CORS-Richtlinien verknüpfte Preflight-Anforderungsverarbeitungslogik nicht ausgeführt. Daher können solche Vorgänge verwendet werden, um eine benutzerdefinierte Preflight-Verarbeitungslogik zu implementieren.
 
 Mit CORS können Browser und Server miteinander interagieren und ermitteln, ob bestimmte ursprungsübergreifende Anfragen (z. B. XMLHttpRequests-Aufrufe aus JavaScript in einer Webseite an andere Domänen) zulässig sind. Dies bietet mehr Flexibilität als wenn nur Anfragen gleichen Ursprungs erlaubt sind, und ist gleichzeitig sicherer als wenn alle ursprungsübergreifenden Anfragen erlaubt sind.
 
@@ -71,7 +74,7 @@ Sie müssen die CORS-Richtlinie anwenden, um die interaktive Konsole im Entwickl
 ### <a name="policy-statement"></a>Richtlinienanweisung
 
 ```xml
-<cors allow-credentials="false|true">
+<cors allow-credentials="false|true" terminate-unmatched-request="true|false">
     <allowed-origins>
         <origin>origin uri</origin>
     </allowed-origins>
@@ -138,6 +141,7 @@ In diesem Beispiel wird die Unterstützung von Preflightanforderungen veranschau
 |Name|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |allow-credentials|Der Header `Access-Control-Allow-Credentials` in der Preflightantwort wird auf den Wert dieses Attributs festgelegt und wirkt sich auf die Fähigkeit des Clients aus, Anmeldeinformationen in domänenübergreifenden Anforderungen zu senden.|Nein|false|
+|terminate-unmatched-request|Dieses Attribut steuert die Verarbeitung ursprungsübergreifender Anforderungen, die nicht den CORS-Richtlinieneinstellungen entsprechen. Wenn eine OPTIONS-Anforderung als Preflightanforderung verarbeitet wird und nicht den CORS-Richtlinieneinstellungen entspricht, gilt Folgendes: Ist das Attribut auf `true` festgelegt, wird die Anforderung sofort mit einer leeren Antwort vom Typ „200 OK“ beendet. Ist das Attribut auf `false` festgelegt, wird das eingehende Element auf andere CORS-Richtlinien im Gültigkeitsbereich überprüft, bei denen es sich um direkte untergeordnete Elemente des eingehenden Elements handelt, und sie werden angewendet.  Werden keine CORS-Richtlinien gefunden, wird die Anforderung mit einer leeren Antwort vom Typ „200 OK“ beendet. Wenn eine GET- oder HEAD-Anforderung den Ursprungsheader enthält (also als ursprungsübergreifende Anforderung verarbeitet wird) und nicht den CORS-Richtlinieneinstellungen entspricht, gilt Folgendes: Ist das Attribut auf `true` festgelegt, wird die Anforderung sofort mit einer leeren Antwort vom Typ „200 OK“ beendet. Ist das Attribut auf `false` festgelegt, wird die Anforderung normal verarbeitet, und der Antwort werden keine CORS-Header hinzugefügt.|Nein|true|
 |preflight-result-max-age|Der Header `Access-Control-Max-Age` in der Preflightantwort wird auf den Wert dieses Attributs festgelegt und wirkt sich auf die Fähigkeit des Benutzer-Agents aus, die Preflightantwort zwischenzuspeichern.|Nein|0|
 
 ### <a name="usage"></a>Verwendung

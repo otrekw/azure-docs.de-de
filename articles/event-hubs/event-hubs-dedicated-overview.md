@@ -3,12 +3,12 @@ title: Übersicht über dedizierte Event Hubs – Azure Event Hubs | Microsoft-D
 description: Dieser Artikel enthält eine Übersicht über dedizierte Azure Event Hubs, die Bereitstellungen von Event Hubs mit einzelnen Mandanten bieten.
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 1a15206fc35f0d536c7105aa73dfdcfc9967124d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 721acf354c7d14c1362b4f760982af37d59115f9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358863"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715614"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Übersicht über Event Hubs Dedicated
 
@@ -52,7 +52,7 @@ Das Event Hubs Dedicated-Angebot wird zu einem festen Monatspreis mit einem Mini
 | Partitionen | 32 pro Event Hub | 1\.024 pro Event Hub<br/>2000 pro CU |
 | Verbrauchergruppen | 20 pro Event Hub | Kein Limit pro CU, 1000 pro Event Hub |
 | Brokerverbindungen | 1\.000 enthalten, max. 5.000 | 100.000 enthalten, gleichzeitig Max. |
-| Nachrichtenaufbewahrung | 7 Tage, 84 GB enthalten pro TU | 90 Tage, 10 TB enthalten pro CU |
+| [Aufbewahrung von Ereignissen](event-hubs-features.md#event-retention) | 7 Tage, 84 GB enthalten pro TU | 90 Tage, 10 TB enthalten pro CU |
 | Erfassung | Bezahlung pro Stunde | Enthalten |
 
 Weitere Informationen zu Kontingenten und Grenzwerten finden Sie unter [Kontingente und Grenzwerte in Event Hubs](event-hubs-quotas.md).

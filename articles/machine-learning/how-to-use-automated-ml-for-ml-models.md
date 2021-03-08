@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 1a40fe01240474c2a6df3e028b7d03f3e8bb73fc
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d7a0832fd15df402c88e1ba565c90a24e0d6eb8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879746"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692418"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Erstellen, Überprüfen und Bereitstellen von automatisierten Machine Learning-Modellen mit Azure Machine Learning
 
@@ -179,6 +179,21 @@ Die Registerkarte **Modelle** enthält eine Liste der erstellten Modelle, wobei 
 Führen Sie einen Drilldown für eines der abgeschlossenen Modelle aus, um Details zur Trainingsausführung anzuzeigen, z. B. eine Modellzusammenfassung auf der Registerkarte **Modell** oder Leistungsmetrikdiagramme auf der Registerkarte **Metriken**. [Weitere Informationen zu Diagrammen](how-to-understand-automated-ml.md).
 
 [![Details zur Iteration](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
+
+## <a name="model-explanations"></a>Modellerklärungen
+
+Zum besseren Verständnis Ihres Modells können Sie sich auf dem Dashboard für Modellerklärungen ansehen, welche Datenfeatures (Rohdaten oder verarbeitete Daten) die Vorhersagen des Modells beeinflusst haben. 
+
+Das Dashboard für Modellerklärungen enthält eine Gesamtanalyse des trainierten Modells sowie die zugehörigen Vorhersagen und Erklärungen. Außerdem können Sie hier Detailinformationen für einen Datenpunkt sowie die jeweils zugehörige Featurerelevanz anzeigen. Weitere Informationen zu den Visualisierungen des Erklärungsdashboards und zu spezifischen Plots finden Sie [hier](how-to-machine-learning-interpretability-aml.md#visualizations).
+
+So rufen Sie Erklärungen für ein bestimmtes Modell ab: 
+
+1. Wählen Sie auf der Registerkarte **Modelle** das gewünschte Modell aus. 
+1. Wählen Sie die Schaltfläche **Modell erklären** aus, und geben Sie eine Computeressource zum Generieren der Erklärungen an.
+1. Überprüfen Sie den Status auf der Registerkarte **Untergeordnete Ausführungen**. 
+1. Navigieren Sie nach Abschluss des Vorgangs zur Registerkarte **Erklärungen (Vorschau)** . Dort finden Sie das Erklärungsdashboard. 
+
+    ![Dashboard für Modellerklärungen](media/how-to-use-automated-ml-for-ml-models/model-explanation-dashboard.png)
 
 ## <a name="deploy-your-model"></a>Bereitstellen Ihres Modells
 

@@ -11,35 +11,39 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/16/2020
-ms.openlocfilehash: 983fc2cd7e9863361776d5a9d5bc02359fccd510
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fad19d360f7c476ba71a9bbe00b58387b92f8ac4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580814"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690554"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Verwalten der langfristigen Aufbewahrung von Sicherungen in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-In Azure SQL-Datenbank können Sie eine Datenbank mit einer Richtlinie für die [Langzeitaufbewahrung](long-term-retention-overview.md) (Long-Term Retention, LTR) konfigurieren, um die Datenbanksicherungen automatisch in separaten Azure Blob Storage-Containern bis zu 10 Jahre lang aufzubewahren. Sie können dann mit dem Azure-Portal oder mit PowerShell eine Datenbank anhand dieser Sicherungen wiederherstellen. Sie können die Langzeitaufbewahrung auch für [Azure SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md) konfigurieren. Dieses Feature befindet sich jedoch derzeit in der eingeschränkten öffentlichen Vorschau.
+In Azure SQL-Datenbank können Sie eine Richtlinie für die [Langzeitaufbewahrung von Sicherungen](long-term-retention-overview.md) (Long-Term Retention, LTR) festlegen, um die Sicherungen automatisch in separaten Azure Blob Storage-Containern bis zu 10 Jahre lang aufzubewahren. Sie können dann mit dem Azure-Portal oder mit PowerShell eine Datenbank anhand dieser Sicherungen wiederherstellen. Richtlinien für die Langzeitaufbewahrung werden auch für [Azure SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md) unterstützt.
 
 ## <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 
-In den folgenden Abschnitten wird erläutert, wie Sie mithilfe des Azure-Portals die langfristige Aufbewahrung konfigurieren, Sicherungen in der langfristigen Aufbewahrung anzeigen und Sicherungen aus der langfristigen Aufbewahrung wiederherstellen.
+In den folgenden Abschnitten erfahren Sie, wie Sie das Azure-Portal verwenden, um Richtlinien für die Langzeitaufbewahrung festzulegen, verfügbare Sicherungen für die Langzeitaufbewahrung verwalten und eine Wiederherstellung aus einer verfügbaren Sicherung durchführen.
 
 ### <a name="configure-long-term-retention-policies"></a>Konfigurieren von Richtlinien für die langfristige Aufbewahrung
 
 Sie können SQL-Datenbank [zur Aufbewahrung von automatisierten Sicherungen](long-term-retention-overview.md) für einen längeren Zeitraum konfigurieren, als gemäß der Aufbewahrungsdauer für Ihre Dienstebene vorgesehen ist.
 
-1. Wählen Sie im Azure-Portal Ihre SQL Server-Instanz aus, und klicken Sie dann auf **Sicherungen verwalten**. Aktivieren Sie auf der Registerkarte **Richtlinien konfigurieren** das Kontrollkästchen fürdie Datenbank, für die Sie Richtlinien für die langfristige Sicherungsaufbewahrung festlegen oder ändern möchten. Wenn das Kontrollkästchen neben der Datenbank nicht aktiviert ist, gelten die Änderungen für die Richtlinie nicht für diese Datenbank.  
+1. Navigieren Sie im Azure-Portal zu Ihrem Server, und wählen Sie **Sicherungen** aus. Wählen Sie die Registerkarte **Aufbewahrungsrichtlinien** aus, um Ihre Einstellungen für die Sicherungsaufbewahrung zu ändern.
 
-   ![Link zum Verwalten von Sicherungen](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
+   ![Registerkarte „Aufbewahrungsrichtlinien“](./media/long-term-backup-retention-configure/ltr-policies-tab.png)
 
-2. Wählen Sie im Bereich **Configure policies** (Richtlinien konfigurieren) aus, ob Sie wöchentliche, monatliche oder jährliche Sicherungen aufbewahren möchten, und geben Sie den jeweiligen Aufbewahrungszeitraum an.
+2. Wählen Sie auf der Registerkarte „Aufbewahrungsrichtlinien“ die Datenbank(en) aus, für die Sie Richtlinien für die Langzeitaufbewahrung von Sicherungen festlegen oder ändern möchten. Nicht ausgewählte Datenbanken sind nicht betroffen.
 
-   ![Konfigurieren von Richtlinien](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
+   ![Auswählen der Datenbank zum Konfigurieren von Sicherungsaufbewahrungsrichtlinien](./media/long-term-backup-retention-configure/ltr-policies-tab-configure.png)
 
-3. Klicken Sie auf **Anwenden**, wenn Sie fertig sind.
+3. Geben Sie im Bereich **Richtlinien konfigurieren** den gewünschten Aufbewahrungszeitraum für wöchentliche, monatliche oder jährliche Sicherungen an. Wählen Sie den Aufbewahrungszeitraum „0“ aus, um anzugeben, dass keine Langzeitaufbewahrung von Sicherungen festgelegt werden soll.
+
+   ![Bereich „Richtlinien konfigurieren“](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
+
+4. Wählen Sie **Anwenden** aus, um die ausgewählten Datenaufbewahrungseinstellungen auf alle ausgewählten Datenbanken anzuwenden.
 
 > [!IMPORTANT]
 > Wenn Sie eine Richtlinie für die Langzeitaufbewahrung von Sicherungen aktivieren, kann es bis zu 7 Tage dauern, bevor die erste Sicherung angezeigt wird und wiederhergestellt werden kann. Weitere Informationen dazu, in welchen Intervallen Sicherungskopien für die Langzeitaufbewahrung erstellt werden, finden Sie unter [Langzeitaufbewahrung von Sicherungen](long-term-retention-overview.md).
@@ -48,21 +52,23 @@ Sie können SQL-Datenbank [zur Aufbewahrung von automatisierten Sicherungen](lon
 
 Zeigen Sie die Sicherungen an, die für eine bestimmte Datenbank mit einer LTR-Richtlinie aufbewahrt werden, und führen Sie die Wiederherstellung aus diesen Sicherungen aus.
 
-1. Wählen Sie Ihren Server im Azure-Portal aus, und klicken Sie dann auf **Sicherungen verwalten**. Wählen Sie auf der Registerkarte **Verfügbare Sicherungen** die Datenbank aus, für die Sie verfügbare Sicherungen anzeigen möchten.
+1. Navigieren Sie im Azure-Portal zu Ihrem Server, und wählen Sie **Sicherungen** aus. Um die verfügbaren LTR-Sicherungen für eine bestimmte Datenbank anzuzeigen, wählen Sie in der Spalte „Verfügbare LTR-Sicherungen“ die Option **Verwalten** aus. Ein Bereich mit einer Liste der verfügbaren LTR-Sicherungen für die ausgewählte Datenbank wird angezeigt.
 
-   ![Auswählen der Datenbank](./media/long-term-backup-retention-configure/ltr-available-backups-select-database.png)
+   ![Registerkarte „Verfügbare Sicherungen“](./media/long-term-backup-retention-configure/ltr-available-backups-tab.png)
 
-1. Überprüfen Sie im Bereich **Verfügbare Sicherungen** die verfügbaren Sicherungen.
+1. Überprüfen Sie im Bereich **Verfügbare LTR-Sicherungen** die verfügbaren Sicherungen. Sie können eine Sicherung zum Wiederherstellen oder Löschen auswählen.
 
-   ![Anzeigen von Sicherungen](./media/long-term-backup-retention-configure/ltr-available-backups.png)
+   ![Anzeige verfügbarer LTR-Sicherungen](./media/long-term-backup-retention-configure/ltr-available-backups-manage.png)
 
-1. Wählen Sie die Sicherung aus, die Sie wiederherstellen möchten, und geben Sie dann den neuen Datenbanknamen an.
+1. Wählen Sie zum Wiederherstellen aus einer verfügbaren LTR-Sicherung die Sicherung, die Sie zum Wiederherstellen nutzen möchten, und dann **Wiederherstellen** aus.
 
-   ![Wiederherstellen](./media/long-term-backup-retention-configure/ltr-restore.png)
+   ![Wiederherstellen aus einer verfügbaren LTR-Sicherung](./media/long-term-backup-retention-configure/ltr-available-backups-restore.png)
 
-1. Klicken Sie auf **OK**, um Ihre Datenbank aus der Sicherung in Azure Storage in der neuen Datenbank wiederherzustellen.
+1. Wählen Sie einen Namen für die neue Datenbank und dann **Überprüfen + erstellen** aus, um die Details Ihrer Wiederherstellung anzuzeigen. Wählen Sie **Erstellen** aus, um die Datenbank aus der ausgewählten Sicherung wiederherzustellen.
 
-1. Klicken Sie auf der Symbolleiste auf das Benachrichtigungssymbol, um den Status des Wiederherstellungsauftrags anzuzeigen.
+   ![Konfigurieren von Wiederherstellungsdetails](./media/long-term-backup-retention-configure/restore-ltr.png)
+
+1. Wählen Sie auf der Symbolleiste das Benachrichtigungssymbol aus, um den Status des Wiederherstellungsauftrags anzuzeigen.
 
    ![Status des Wiederherstellungsauftrags](./media/long-term-backup-retention-configure/restore-job-progress-long-term.png)
 

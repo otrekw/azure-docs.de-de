@@ -2,13 +2,13 @@
 title: 'Übersicht über die Features: Azure Event Hubs | Microsoft-Dokumentation'
 description: Dieser Artikel enthält Details zu Features und Terminologie von Azure Event Hubs.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 8860a8aa83a17b12236dd47d79479a82846fa8a8
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 02/19/2021
+ms.openlocfilehash: 8bb63bfdbeb5b875b1e461fbd93fb48dcbb43054
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791945"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739074"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Features und Terminologie in Azure Event Hubs
 
@@ -47,7 +47,12 @@ Event Hubs stellt sicher, dass alle Ereignisse mit dem gleichen Partitionsschlü
 
 ### <a name="event-retention"></a>Aufbewahrung von Ereignissen
 
-Veröffentlichte Ereignisse werden basierend auf einer konfigurierbaren, zeitbasierten Aufbewahrungsrichtlinie von einem Event Hub entfernt. Der Standardwert und der kürzestmögliche Aufbewahrungszeitraum beträgt einen Tag (24 Stunden). Für Event Hubs Standard beträgt der maximale Aufbewahrungszeitraum sieben Tage. Für Event Hubs Dedicated beträgt der maximale Aufbewahrungszeitraum 90 Tage.
+Veröffentlichte Ereignisse werden basierend auf einer konfigurierbaren, zeitbasierten Aufbewahrungsrichtlinie von einem Event Hub entfernt. Folgende wichtige Punkte sind zu beachten:
+
+- Der **Standardwert** und der **kürzestmögliche** Aufbewahrungszeitraum beträgt **einen Tag (24 Stunden)** .
+- Für Event Hubs **Standard** beträgt der maximale Aufbewahrungszeitraum **sieben Tage**. 
+- Für Event Hubs **Dedicated** beträgt der maximale Aufbewahrungszeitraum **90 Tage**.
+- Wenn Sie den Aufbewahrungszeitraum ändern, gilt dies für alle Nachrichten, einschließlich Nachrichten, die sich bereits im Event Hub befinden. 
 
 > [!NOTE]
 > Event Hubs ist eine Engine für das Ereignisstreaming in Echtzeit. Sie ist nicht dafür ausgelegt, anstelle einer Datenbank bzw. als dauerhafter Speicher für Ereignisdatenströme mit unendlich langer Aufbewahrungsdauer verwendet zu werden. 
@@ -117,6 +122,9 @@ Ein *Offset* ist die Position eines Ereignisses innerhalb einer Partition. Sie k
 *Setzen von Prüfpunkten* ist ein Vorgang, bei dem Leser ihre Position innerhalb einer Partitionsereignissequenz markieren oder bestätigen. Dies liegt in der Verantwortung des Consumers und erfolgt auf Partitionsbasis innerhalb einer Consumergruppe. Das bedeutet, dass jeder Partitionsleser für jede Consumergruppe seine aktuelle Position im Ereignisstream nachverfolgen muss und den Dienst informieren kann, wenn er den Datenstrom als abgeschlossen betrachtet.
 
 Wenn ein Leser die Verbindung zu eine Partition trennt, beginnt nach dem erneuten Herstellen der Verbindung das Lesen bei dem Prüfpunkt, der zuvor durch den letzten Leser dieser Partition in dieser Consumergruppe übermittelt wurde. Wenn der Leser verbunden ist, übergibt er diesen Offset an den Event Hub, um die Position für den nächsten Lesevorgang anzugeben. Auf diese Weise können mithilfe von Prüfpunkten Ereignisse von Downstreamanwendungen als abgeschlossen markiert werden. Darüber hinaus sorgen Prüfpunkte für Resilienz bei einem Failover zwischen Lesern, die auf unterschiedlichen Computern ausgeführt werden. Sie können ältere Daten zurückgeben, indem Sie einen niedrigeren Offset aus diesem Prüfpunktprozess angeben. Durch diesen Mechanismus ermöglicht das Setzen von Prüfpunkten Failoverstabilität und eine erneute Wiedergabe des Ereignisstreams.
+
+> [!IMPORTANT]
+> Offsets werden vom Event Hubs-Dienst bereitgestellt. Es liegt in der Verantwortung des Consumers, einen Prüfpunkt zu erstellen, wenn Ereignisse verarbeitet werden.
 
 > [!NOTE]
 > Wenn Sie Azure Blob Storage als Prüfpunktspeicher in einer Umgebung verwenden, die eine andere Version des Storage Blob SDK unterstützt als diejenigen, die in der Regel in Azure verfügbar sind, müssen Sie Code verwenden, um die Version der Speicherdienst-API in die von dieser Umgebung unterstützte Version zu ändern. Wenn Sie z. B. [Event Hubs mit einer Azure Stack Hub-Version 2002](/azure-stack/user/event-hubs-overview) ausführen, ist die höchste verfügbare Version für den Speicherdienst Version 2017-11-09. In diesem Fall müssen Sie Code verwenden, um Version 2017-11-09 der Storage Service-API als Ziel zu nutzen. Ein Beispiel für die Verwendung einer bestimmten Storage-API-Version als Ziel finden Sie in den folgenden Beispielen auf GitHub: 

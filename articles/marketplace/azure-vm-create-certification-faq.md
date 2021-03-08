@@ -4,15 +4,15 @@ description: Es wird beschrieben, wie Sie häufige Probleme beim Testen und Zert
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
-author: iqshahmicrosoft
-ms.author: iqshah
+author: mathapli
+ms.author: mathapli
 ms.date: 01/18/2021
-ms.openlocfilehash: 80dc19a58d212bb6ab8d608e222cd3a0bd3990d1
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: adcd91d58b3bb5fde3ffa81c828c58d4b6db48d4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600986"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721156"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Problembehandlung bei der Zertifizierung von virtuellen Computern
 
@@ -594,8 +594,37 @@ Veröffentlichen Sie das Angebot anschließend erneut.
 
 Unter [Überprüfen und Veröffentlichen von Angeboten](review-publish-offer.md) erfahren Sie, wie Sie die Veröffentlichung abschließen.
 
+### <a name="vm-images-with-limited-access-or-requiring-custom-templates"></a>VM-Images mit beschränktem Zugriff oder erforderlichen benutzerdefinierten Vorlagen
+
+#### <a name="locked-down-or-ssh-disabled-offer"></a>Gesperrtes (oder) deaktiviertes SSH-Angebot
+
+  Images, die entweder mit deaktiviertem SSH (für Linux) oder deaktiviertem RDP (für Windows) veröffentlicht werden, werden als gesperrte VMs behandelt. Es gibt spezielle Geschäftsszenarios, in denen Herausgeber nur wenigen oder keinen Benutzern den beschränkten Zugriff gewähren. Gesperrte VMs lassen die Ausführung bestimmter Zertifizierungsbefehle möglicherweise während Validierungsüberprüfungen nicht zu.
+
+
+#### <a name="custom-templates"></a>Benutzerdefinierte Vorlagen
+
+   Im Allgemeinen entsprechen alle Images, die unter Angeboten mit einer einzelnen VM veröffentlicht werden, der ARM-Standardvorlage für die Bereitstellung. Es gibt jedoch Szenarios, in denen der Herausgeber erfordert, dass während der Bereitstellung von VMs Anpassungen vorgenommen werden (z. B. die Konfiguration mehrerer Netzwerkschnittstellen).
+    
+   Abhängig von den unten aufgeführten Szenarios (unvollständige Liste), verwenden Herausgeber benutzerdefinierte Vorlagen für die Bereitstellung der VM:
+
+   * Die VM erfordert zusätzliche Netzwerksubnetze.
+   * Es sollen zusätzliche Metadaten in die ARM-Vorlage eingefügt werden.
+   * Es sind Befehle für die Ausführung der ARM-Vorlage erforderlich.
+
+### <a name="vm-extensions"></a>VM-Erweiterungen   
+
+   Erweiterungen für virtuelle Azure-Computer sind kleine Anwendungen, die Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern nach der Bereitstellung ermöglichen. Wenn z.B. Software auf einem virtuellen Computer (virtual machine, VM) installiert werden muss, Virenschutz oder die Ausführung eines Skripts erforderlich ist, kann eine VM-Erweiterung verwendet werden. 
+
+   Folgendes muss für Überprüfungen der Linux-VM-Erweiterung im Image enthalten sein:
+* Azure Linux-Agent über Version 2.2.41
+* Python über Version 2.8 
+
+
+Weitere Informationen finden Sie unter [VM-Erweiterung](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
+     
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Konfigurieren von VM-Angebotseigenschaften](azure-vm-create-properties.md)
 - [Aktive Marketplace-Prämien](partner-center-portal/marketplace-rewards.md)
 - Wenden Sie sich an den [Partner Center-Support](https://aka.ms/marketplacepublishersupport), wenn Sie Fragen oder Verbesserungsvorschläge haben.
+ 

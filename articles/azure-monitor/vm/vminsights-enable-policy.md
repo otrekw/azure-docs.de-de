@@ -1,17 +1,16 @@
 ---
 title: Aktivieren von VM Insights mithilfe von Azure Policy
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Policy VM Insights für mehrere Azure-VMs oder VM-Skalierungsgruppen aktivieren.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: a63a647f3d76e3cc2616f05fe96d86dbdd36e74d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 51baf009543208fbbfe091238d0215a24761641d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707539"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031955"
 ---
 # <a name="enable-vm-insights-by-using-azure-policy"></a>Aktivieren von VM Insights mithilfe von Azure Policy
 In diesem Artikel wird erläutert, wie Sie VM Insights mithilfe von Azure Policy für Azure-VMs oder Hybrid-VMs aktivieren, die mit Azure Arc (Preview) verbunden sind. Azure Policy ermöglicht Ihnen das Zuweisen von Richtliniendefinitionen, mit denen die erforderlichen Agents für VM Insights in Ihrer Azure-Umgebung installiert werden. Außerdem wird bei der Erstellung der einzelnen VMs automatisch die Überwachung dieser VMs aktiviert. VM Insights bietet ein Feature, mit dem Sie nicht konforme VMs in Ihrer Umgebung ermitteln und warten können. Verwenden Sie diese Funktion, anstatt direkt mit Azure Policy zu arbeiten.
@@ -19,7 +18,7 @@ In diesem Artikel wird erläutert, wie Sie VM Insights mithilfe von Azure Policy
 Wenn Sie nicht mit Azure Policy vertraut sind, finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](../deploy-scale.md) eine kurze Einführung.
 
 > [!NOTE]
-> Informationen zur Verwendung von Azure Policy mit Azure-VM-Skalierungsgruppen sowie zur direkten Verwendung von Azure Policy zum Aktivieren von Azure-VMs finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](../deploy-scale.md#azure-monitor-for-vms).
+> Informationen zur Verwendung von Azure Policy mit Azure-VM-Skalierungsgruppen sowie zur direkten Verwendung von Azure Policy zum Aktivieren von Azure-VMs finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](../deploy-scale.md#vm-insights).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - [Erstellen und konfigurieren Sie einen Log Analytics-Arbeitsbereich](./vminsights-configure-workspace.md).

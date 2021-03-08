@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: e3422f468d1355245fb31e8f04d5f8625f583c37
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 84fdca96f2ce42c608e7def98f6a3400964cfe46
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462192"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691925"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL-Konnektivitätseinstellungen
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -104,7 +104,7 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 Die Einstellung der Mindestversion für [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) ermöglicht es Kunden, die TLS-Version auszuwählen, die von ihrer SQL-Datenbank-Instanz verwendet wird.
 
-Derzeit werden die TLS-Versionen 1.0, 1.1 und 1.2 unterstützt. Durch Festlegen einer TLS-Mindestversion wird sichergestellt, dass neuere TLS-Versionen unterstützt werden. Ein Beispiel: Wenn Sie Version 1.1 als TLS-Mindestversion festlegen, werden nur Verbindungen mit TLS 1.1 und 1.2 akzeptiert. Verbindungen mit TLS 1.0 werden abgelehnt. Wenn Sie getestet haben, ob Ihre Anwendung Version 1.2 unterstützt, wird empfohlen, die TLS-Mindestversion auf 1.2 festzulegen. Diese Version enthält Fehlerbehebungen für Sicherheitsrisiken in früheren Version und ist die höchste TLS-Version, die in Azure SQL-Datenbank unterstützt wird.
+Derzeit werden die TLS-Versionen 1.0, 1.1 und 1.2 unterstützt. Durch Festlegen einer TLS-Mindestversion wird sichergestellt, dass neuere TLS-Versionen unterstützt werden. Ein Beispiel: Wenn Sie TLS-Version 1.1 festlegen, werden nur Verbindungen mit TLS 1.1 und 1.2 akzeptiert. Verbindungen mit TLS 1.0 werden abgelehnt. Wenn Sie getestet haben, ob Ihre Anwendung Version 1.2 unterstützt, empfiehlt es sich, die TLS-Mindestversion auf 1.2 festzulegen. Diese Version enthält Fehlerbehebungen für Sicherheitsrisiken in früheren Version und ist die höchste TLS-Version, die in Azure SQL-Datenbank unterstützt wird.
 
 > [!IMPORTANT]
 > Gemäß Standardeinstellung für die TLS-Mindestversion sind alle Versionen zugelassen. Nachdem Sie eine bestimmte Version von TLS festgelegt haben, können Sie nicht mehr zum Standardwert zurückkehren.

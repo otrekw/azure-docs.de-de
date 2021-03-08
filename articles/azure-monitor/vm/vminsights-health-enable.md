@@ -1,24 +1,24 @@
 ---
-title: Aktivieren des Features „Gastintegrität“ von Azure Monitor für VMs (Vorschau)
-description: Es wird beschrieben, wie Sie das Feature „Gastintegrität“ von Azure Monitor für VMs in Ihrem Abonnement aktivieren und das Onboarding für VMs durchführen.
+title: Aktivieren der Gastintegrität in VM Insights (Vorschau)
+description: In diesem Artikel wird beschrieben, wie Sie das Feature „Gastintegrität“ von VM Insights in Ihrem Abonnement aktivieren und das Onboarding für VMs durchführen.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 5a65a986e95f333b6179c71a46edc69ca61acdea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3747e9190010bd3c0b88dfdbe9da01009316c275
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601569"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733719"
 ---
-# <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Aktivieren des Features „Gastintegrität“ von Azure Monitor für VMs (Vorschau)
-Mit dem Feature „Gastintegrität“ von Azure Monitor für VMs können Sie Informationen zur Integrität eines virtuellen Computers anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. In diesem Artikel wird beschrieben, wie Sie dieses Feature in Ihrem Abonnement aktivieren und die Gastüberwachung für die einzelnen virtuellen Computer aktivieren.
+# <a name="enable-vm-insights-guest-health-preview"></a>Aktivieren der Gastintegrität in VM Insights (Vorschau)
+Mit dem Feature „Gastintegrität“ von VM Insights können Sie Informationen zur Integrität einer VM anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. In diesem Artikel wird beschrieben, wie Sie dieses Feature in Ihrem Abonnement aktivieren und die Gastüberwachung für die einzelnen virtuellen Computer aktivieren.
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
-Das Feature „Gastintegrität“ von Azure Monitor für VMs verfügt in der öffentlichen Vorschauphase über die folgenden Einschränkungen:
+Das Feature „Gastintegrität“ von VM Insights verfügt in der öffentlichen Vorschauphase über die folgenden Einschränkungen:
 
 - Aktuell werden nur virtuelle Azure-Computer unterstützt. Azure Arc für Server wird derzeit nicht unterstützt.
 
@@ -36,19 +36,25 @@ Der virtuelle Computer muss sich in einer der folgenden Regionen befinden:
 - Australien, Mitte
 - Australien (Osten)
 - Australien, Südosten
+- Kanada, Mitte
 - Indien, Mitte
 - USA (Mitte)
 - Asien, Osten
 - East US
 - USA (Ost) 2
 - USA, Osten 2 (EUAP)
+- Frankreich, Mitte
 - Deutschland, Westen-Mitte
 - Japan, Osten
+- Korea, Mitte
 - USA Nord Mitte
 - Nordeuropa
 - USA Süd Mitte
+- Südafrika, Norden
 - Asien, Südosten
+- Schweiz, Norden
 - UK, Süden
+- UK, Westen
 - USA, Westen-Mitte
 - Europa, Westen
 - USA (Westen)
@@ -57,24 +63,36 @@ Der virtuelle Computer muss sich in einer der folgenden Regionen befinden:
 
 Der Log Analytics-Arbeitsbereich muss sich in einer der folgenden Regionen befinden:
 
+- Australien, Mitte
+- Australien (Osten)
+- Australien, Südosten
+- Kanada, Mitte
+- Indien, Mitte
 - USA (Mitte)
+- Asien, Osten
 - East US
 - USA (Ost) 2
 - USA, Osten 2 (EUAP)
+- Frankreich, Mitte
+- Japan, Osten
+- USA Nord Mitte
 - Nordeuropa
+- USA Süd Mitte
 - Asien, Südosten
+- Schweiz, Norden
 - UK, Süden
 - Region „Europa, Westen“
+- USA (Westen)
 - USA, Westen 2
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Für den virtuellen Computer muss das Onboarding für Azure Monitor für VMs durchgeführt werden.
+- Für die VM muss ein Onboarding in VM Insights durchgeführt werden.
 - Der Benutzer, der die Schritte für das Onboarding ausführt, muss mindestens über die Zugriffsebene „Mitwirkender“ für das Abonnement verfügen, unter dem sich der virtuelle Computer und die Datensammlungsregel befinden.
 - Erforderliche Azure-Ressourcenanbieter müssen wie im folgenden Abschnitt beschrieben registriert werden.
 
 ## <a name="register-required-azure-resource-providers"></a>Registrieren von erforderlichen Azure-Ressourcenanbietern
-Die folgenden Azure-Ressourcenanbieter müssen für Ihr Abonnement registriert werden, damit das Feature „Gastintegrität“ von Azure Monitor für VMs aktiviert werden kann. 
+Die folgenden Azure-Ressourcenanbieter müssen für Ihr Abonnement registriert werden, damit das Feature „Gastintegrität“ von VM Insights aktiviert werden kann. 
 
 - Microsoft.WorkloadMonitor
 - Microsoft.Insights
@@ -90,7 +108,7 @@ POST https://management.azure.com/subscriptions/[subscriptionId]/providers/Micro
 ## <a name="enable-a-virtual-machine-using-the-azure-portal"></a>Aktivieren eines virtuellen Computers über das Azure-Portal
 Wenn Sie „Gastintegrität“ für einen virtuellen Computer im Azure-Portal aktivieren, wird die gesamte erforderliche Konfiguration für Sie durchgeführt. Dies umfasst auch die Erstellung der benötigten Datensammlungsregel, die Installation der Gastintegrität-Erweiterung auf dem virtuellen Computer und die Erstellung einer Zuordnung zur Datensammlungsregel.
 
-Klicken Sie in der Ansicht **Erste Schritte** in Azure Monitor für VMs auf den Link neben der Upgradenachricht für einen virtuellen Computer und dann auf die Schaltfläche **Upgrade**. Sie können auch mehrere virtuelle Computer auswählen, um den Upgradevorgang dafür zusammen durchzuführen.
+Klicken Sie in der Ansicht **Los geht‘s** in VM Insights auf den Link neben der Upgradenachricht für eine VM und dann auf **Upgrade**. Sie können auch mehrere virtuelle Computer auswählen, um den Upgradevorgang dafür zusammen durchzuführen.
 
 ![Aktivieren des Integritätsfeatures auf dem virtuellen Computer](media/vminsights-health-enable/enable-agent.png)
 
@@ -107,10 +125,10 @@ Es sind drei Schritte erforderlich, um virtuelle Computer per Azure Resource Man
 > [!NOTE]
 > Wenn Sie einen virtuellen Computer über das Azure-Portal aktivieren, wird die hier beschriebene Datensammlungsregel für Sie erstellt. In diesem Fall müssen Sie diesen Schritt nicht ausführen.
 
-Die Konfiguration für die Monitore des Features „Gastintegrität“ von Azure Monitor für VMs wird in [Datensammlungsregeln](../agents/data-collection-rule-overview.md) gespeichert. Für jeden virtuellen Computer mit der Erweiterung für die Gastintegrität wird eine Zuordnung dieser Regel benötigt.
+Die Konfiguration der Monitore des VM Insights-Features „Gastintegrität“ wird in den [Datensammlungsregeln](../agents/data-collection-rule-overview.md) gespeichert. Für jeden virtuellen Computer mit der Erweiterung für die Gastintegrität wird eine Zuordnung dieser Regel benötigt.
 
 > [!NOTE]
-> Sie können weitere Datensammlungsregeln erstellen, um die Standardkonfiguration von Monitoren zu ändern. Dies ist unter [Konfigurieren der Überwachung für das Feature „Gastintegrität“ von Azure Monitor für VMs (Vorschau)](vminsights-health-configure.md) beschrieben.
+> Sie können weitere Datensammlungsregeln erstellen, um die Standardkonfiguration von Monitoren zu ändern. Dies wird unter [Konfigurieren der Überwachung für das VM Insights-Feature „Gastintegrität“ (Vorschau)](vminsights-health-configure.md) beschrieben.
 
 Für die Vorlage sind Werte für die folgenden Parameter erforderlich:
 
@@ -414,4 +432,4 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Anpassen von Monitoren, die mit Azure Monitor für VMs aktiviert wurden](vminsights-health-configure.md)
+- [Anpassen von Monitoren für VM Insights](vminsights-health-configure.md)

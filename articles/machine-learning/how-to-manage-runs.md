@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: ec006636ed7e975b696aa32300b32089e3209bb5
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3eaab31d3948e41a216eaa402c2a11e470a6545d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600471"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691500"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Starten, Überwachen und Abbrechen von Trainingsausführungen in Python
 
@@ -112,17 +112,7 @@ Sie benötige folgende Elemente:
         > Weitere RUNCONFIG-Beispieldateien finden Sie unter [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/).
     
         Weitere Informationen finden Sie unter [az ml run submit-script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
-    
-    # <a name="studio"></a>[Studio](#tab/azure-studio)
-    
-    Führen Sie die folgenden Schritte aus, um eine Pipelineausführung im Designer zu übermitteln:
-    
-    1. Legen Sie ein Standardcomputeziel für Ihre Pipeline fest.
-    
-    1. Wählen Sie im oberen Bereich der Pipelinecanvas die Option **Ausführen** aus.
-    
-    1. Wählen Sie ein Experiment zum Gruppieren ihrer Pipelineausführungen aus.
-    
+
     ---
 
 * Überwachen des Status einer Ausführung
@@ -183,24 +173,128 @@ Sie benötige folgende Elemente:
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
-    So zeigen Sie die Anzahl aktiver Ausführungen für Ihr Experiment in Studio an
+    So zeigen Sie Ihre Ausführungen in Studio an: 
     
-    1. Navigieren Sie zum Abschnitt **Experimente**.
+    1. Navigieren Sie zur Registerkarte **Experimente**.
     
-    1. Wählen Sie ein Experiment aus.
+    1. Wählen Sie entweder **Alle Experimente** aus, um alle Ausführungen in einem Experiment anzuzeigen, oder **Alle Ausführungen**, um alle im Arbeitsbereich übermittelten Ausführungen anzuzeigen.
     
-        Auf der Seite „Experiment“ sehen Sie die Anzahl der aktiven Computeziele und die Dauer jeder Ausführung. 
+        Auf der Seite **Alle Ausführungen** können Sie die Liste der Ausführungen nach Tags, Experimenten, Computeziel und mehr filtern, um Ihre Arbeit besser zu organisieren und zu optimieren.  
     
-    1. Nehmen Sie Anpassungen an dem Experiment vor, indem Sie zu vergleichende Ausführungen auswählen, Diagramme hinzufügen oder Filter anwenden. Diese Änderungen können als **Benutzerdefinierte Ansicht** gespeichert werden, sodass Sie problemlos zu Ihrer Arbeit zurückkehren können. Benutzer mit Arbeitsbereichsberechtigungen können die benutzerdefinierte Ansicht bearbeiten oder anzeigen. Außerdem können Sie die benutzerdefinierte Ansicht für andere Benutzer freigeben, indem Sie die URL im Browser kopieren und einfügen.  
+    1. Nehmen Sie Anpassungen an der Seite vor, indem Sie zu vergleichende Ausführungen auswählen, Diagramme hinzufügen oder Filter anwenden. Diese Änderungen können als **Benutzerdefinierte Ansicht** gespeichert werden, sodass Sie problemlos zu Ihrer Arbeit zurückkehren können. Benutzer mit Arbeitsbereichsberechtigungen können die benutzerdefinierte Ansicht bearbeiten oder anzeigen. Außerdem können Sie die benutzerdefinierte Ansicht zur besseren Zusammenarbeit für Teammitglieder freigeben, indem Sie **Ansicht freigeben** auswählen.   
     
         :::image type="content" source="media/how-to-manage-runs/custom-views.gif" alt-text="Screenshot: Erstellen einer benutzerdefinierten Ansicht":::
     
-    1. Wählen Sie eine bestimmte Ausführungsnummer aus.
-    
-    1. Auf der Registerkarte **Protokolle** finden Sie Diagnose- und Fehlerprotokolle für Ihre Pipelineausführung.
+    1. Wenn Sie die Ausführungsprotokolle anzeigen möchten, wählen Sie eine bestimmte Ausführung aus, und auf der Registerkarte **Ausgaben und Protokolle** finden Sie Diagnose- und Fehlerprotokolle für Ihre Ausführung.
     
     ---
+
+## <a name="run-description"></a>Ausführungsbeschreibung 
+
+Eine Ausführungsbeschreibung kann einer Ausführung hinzugefügt werden, um mehr Informationen zur Ausführung zu liefern, u. a. zum Kontext. Sie können diese Beschreibungen auch in der Liste der Ausführungen suchen und die Ausführungsbeschreibung als Spalte der Liste der Ausführungen hinzufügen. 
+
+Navigieren Sie zur Seite **Ausführungsdetails** für Ihre Ausführung, und wählen Sie das Bearbeitungs- oder Stiftsymbol aus, um Beschreibungen für Ihre Ausführung hinzuzufügen, zu bearbeiten oder zu löschen. Wenn Sie die Änderungen an der Liste der Ausführungen beibehalten möchten, speichern Sie die Änderungen in Ihrer vorhandenen „Benutzerdefinierten Ansicht“ oder einer neuen „Benutzerdefinierten Ansicht“. Das Markdown-Format wird für Ausführungsbeschreibungen unterstützt, sodass wie unten gezeigt Bilder eingebettet werden können und Deep Linking möglich ist.
+
+:::image type="content" source="media/how-to-manage-runs/rundescription.gif" alt-text="Screenshot: Erstellen einer Ausführungsbeschreibung"::: 
     
+
+## <a name="tag-and-find-runs"></a>Markieren und Suchen von Ausführungen
+
+In Azure Machine Learning können Sie Eigenschaften und Tags zum Organisieren und Abfragen wichtiger Informationen Ihrer Ausführungen verwenden.
+
+* Hinzufügen von Eigenschaften und Tags
+
+    # <a name="python"></a>[Python](#tab/python)
+    
+    Um Ihren Ausführungen durchsuchbare Metadaten hinzuzufügen, verwenden Sie die [`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-properties-properties-)-Methode. Der folgende Code fügt der Ausführung z. B. die `"author"`-Eigenschaft hinzu:
+    
+    ```Python
+    local_run.add_properties({"author":"azureml-user"})
+    print(local_run.get_properties())
+    ```
+    
+    Eigenschaften sind unveränderlich, sodass sie eine permanente Aufzeichnung zu Überwachungszwecken erstellen. Das folgende Codebeispiel führt zu einem Fehler, weil `"azureml-user"` im vorstehenden Code bereits als Wert der `"author"`-Eigenschaft hinzugefügt wurde:
+    
+    ```Python
+    try:
+        local_run.add_properties({"author":"different-user"})
+    except Exception as e:
+        print(e)
+    ```
+    
+    Im Gegensatz zu Eigenschaften können Tags geändert werden. Um durchsuchbare und aussagekräftige Informationen für Consumer Ihres Experiments hinzuzufügen, verwenden Sie die [`tag()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truetag-key--value-none-)-Methode.
+    
+    ```Python
+    local_run.tag("quality", "great run")
+    print(local_run.get_tags())
+    
+    local_run.tag("quality", "fantastic run")
+    print(local_run.get_tags())
+    ```
+    
+    Sie können auch einfache Zeichenfolgentags hinzufügen. Wenn diese Tags in das Tag-Wörterbuch als Schlüssel aufgenommen wurden, haben sie den Wert `None`.
+    
+    ```Python
+    local_run.tag("worth another look")
+    print(local_run.get_tags())
+    ```
+    
+    # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+    
+    > [!NOTE]
+    > Mit der CLI können Sie nur Tags hinzufügen oder aktualisieren.
+    
+    Verwenden Sie den folgenden Befehl, um ein Tag hinzuzufügen oder zu aktualisieren:
+    
+    ```azurecli-interactive
+    az ml run update -r runid --add-tag quality='fantastic run'
+    ```
+    
+    Weitere Informationen finden Sie unter [az ml run update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
+    
+    # <a name="studio"></a>[Studio](#tab/azure-studio)
+    
+    Sie können Ausführungstags aus dem Studio hinzufügen, bearbeiten oder löschen. Navigieren Sie zur Seite **Ausführungsdetails** für Ihre Ausführung, und wählen Sie das Bearbeitungs- oder Stiftsymbol aus, um Tags für Ihre Ausführungen hinzuzufügen, zu bearbeiten oder zu löschen. Sie können auch auf der Seite mit der Ausführungsliste diese Tags suchen und danach filtern.
+    
+    :::image type="content" source="media/how-to-manage-runs/run-tags.gif" alt-text="Screenshot: Hinzufügen, Bearbeiten oder Löschen von Ausführungstags":::
+    
+    ---
+
+* Abfragen von Eigenschaften und Tags
+
+    Sie können Ausführungen in einem Experiment abfragen, um eine Liste der Ausführungen zurückzugeben, die mit bestimmten Eigenschaften und Tags übereinstimmen.
+
+    # <a name="python"></a>[Python](#tab/python)
+    
+    ```Python
+    list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantastic run"}))
+    list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"))
+    ```
+    
+    # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+    
+    Die Azure CLI unterstützt [JMESPath](http://jmespath.org)-Abfragen, mit denen Ausführungen nach Eigenschaften und Tags gefiltert werden können. Wenn Sie eine JMESPath-Abfrage mit der Azure CLI verwenden möchten, geben Sie diese mit dem Parameter `--query` an. Die folgenden Beispiele zeigen einige Abfragen mithilfe von Eigenschaften und Tags:
+    
+    ```azurecli-interactive
+    # list runs where the author property = 'azureml-user'
+    az ml run list --experiment-name experiment [?properties.author=='azureml-user']
+    # list runs where the tag contains a key that starts with 'worth another look'
+    az ml run list --experiment-name experiment [?tags.keys(@)[?starts_with(@, 'worth another look')]]
+    # list runs where the author property = 'azureml-user' and the 'quality' tag starts with 'fantastic run'
+    az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
+    ```
+    
+    Weitere Informationen zum Abfragen von Azure CLI-Ergebnissen finden Sie unter [Abfragen der Azure CLI-Befehlsausgabe](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest).
+    
+    # <a name="studio"></a>[Studio](#tab/azure-studio)
+    
+    1. Navigieren Sie zur Liste **Alle Ausführungen**.
+    
+    1. Verwenden Sie die Suchleiste, um anhand von Ausführungsmetadaten wie Tags, Beschreibungen, Experimentnamen und Absendernamen zu filtern. Der Tagsfilter kann auch zum Filtern der Tags verwendet werden. 
+    
+    ---
+
+
 ## <a name="cancel-or-fail-runs"></a>Abbrechen oder Fehler von Ausführungen
 
 Wenn Sie einen Fehler bemerken oder die Ausführung zu lange dauert, können Sie die Ausführung abbrechen.
@@ -344,101 +438,6 @@ current_child_run = Run.get_context()
 root_run(current_child_run).log("MyMetric", f"Data from child run {current_child_run.id}")
 
 ```
-
-
-## <a name="tag-and-find-runs"></a>Markieren und Suchen von Ausführungen
-
-In Azure Machine Learning können Sie Eigenschaften und Tags zum Organisieren und Abfragen wichtiger Informationen Ihrer Ausführungen verwenden.
-
-* Hinzufügen von Eigenschaften und Tags
-
-    # <a name="python"></a>[Python](#tab/python)
-    
-    Um Ihren Ausführungen durchsuchbare Metadaten hinzuzufügen, verwenden Sie die [`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-properties-properties-)-Methode. Der folgende Code fügt der Ausführung z. B. die `"author"`-Eigenschaft hinzu:
-    
-    ```Python
-    local_run.add_properties({"author":"azureml-user"})
-    print(local_run.get_properties())
-    ```
-    
-    Eigenschaften sind unveränderlich, sodass sie eine permanente Aufzeichnung zu Überwachungszwecken erstellen. Das folgende Codebeispiel führt zu einem Fehler, weil `"azureml-user"` im vorstehenden Code bereits als Wert der `"author"`-Eigenschaft hinzugefügt wurde:
-    
-    ```Python
-    try:
-        local_run.add_properties({"author":"different-user"})
-    except Exception as e:
-        print(e)
-    ```
-    
-    Im Gegensatz zu Eigenschaften können Tags geändert werden. Um durchsuchbare und aussagekräftige Informationen für Consumer Ihres Experiments hinzuzufügen, verwenden Sie die [`tag()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truetag-key--value-none-)-Methode.
-    
-    ```Python
-    local_run.tag("quality", "great run")
-    print(local_run.get_tags())
-    
-    local_run.tag("quality", "fantastic run")
-    print(local_run.get_tags())
-    ```
-    
-    Sie können auch einfache Zeichenfolgentags hinzufügen. Wenn diese Tags in das Tag-Wörterbuch als Schlüssel aufgenommen wurden, haben sie den Wert `None`.
-    
-    ```Python
-    local_run.tag("worth another look")
-    print(local_run.get_tags())
-    ```
-    
-    # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-    
-    > [!NOTE]
-    > Mit der CLI können Sie nur Tags hinzufügen oder aktualisieren.
-    
-    Verwenden Sie den folgenden Befehl, um ein Tag hinzuzufügen oder zu aktualisieren:
-    
-    ```azurecli-interactive
-    az ml run update -r runid --add-tag quality='fantastic run'
-    ```
-    
-    Weitere Informationen finden Sie unter [az ml run update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
-    
-    # <a name="studio"></a>[Studio](#tab/azure-studio)
-    
-    Die Eigenschaften und Tags können in Studio angezeigt, aber dort nicht geändert werden.
-    
-    ---
-
-* Abfragen von Eigenschaften und Tags
-
-    Sie können Ausführungen in einem Experiment abfragen, um eine Liste der Ausführungen zurückzugeben, die mit bestimmten Eigenschaften und Tags übereinstimmen.
-
-    # <a name="python"></a>[Python](#tab/python)
-    
-    ```Python
-    list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantastic run"}))
-    list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"))
-    ```
-    
-    # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-    
-    Die Azure CLI unterstützt [JMESPath](http://jmespath.org)-Abfragen, mit denen Ausführungen nach Eigenschaften und Tags gefiltert werden können. Wenn Sie eine JMESPath-Abfrage mit der Azure CLI verwenden möchten, geben Sie diese mit dem Parameter `--query` an. Die folgenden Beispiele zeigen einige Abfragen mithilfe von Eigenschaften und Tags:
-    
-    ```azurecli-interactive
-    # list runs where the author property = 'azureml-user'
-    az ml run list --experiment-name experiment [?properties.author=='azureml-user']
-    # list runs where the tag contains a key that starts with 'worth another look'
-    az ml run list --experiment-name experiment [?tags.keys(@)[?starts_with(@, 'worth another look')]]
-    # list runs where the author property = 'azureml-user' and the 'quality' tag starts with 'fantastic run'
-    az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
-    ```
-    
-    Weitere Informationen zum Abfragen von Azure CLI-Ergebnissen finden Sie unter [Abfragen der Azure CLI-Befehlsausgabe](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest).
-    
-    # <a name="studio"></a>[Studio](#tab/azure-studio)
-    
-    1. Navigieren Sie zum Abschnitt **Pipelines**.
-    
-    1. Verwenden Sie die Suchleiste, um Pipelines anhand von Tags, Beschreibungen, Experimentnamen und Absendernamen zu filtern.
-    
-    ---
 
 ## <a name="example-notebooks"></a>Beispielnotebooks
 

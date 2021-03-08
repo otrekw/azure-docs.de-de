@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 3c0e348e62184f839ce38e4c364fb5c6b81f1131
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 90addb74811819dec563ba072e9a6aea2cf72ca4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726222"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036536"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Übersicht zur Azure-Diagnoseerweiterung
 Die Azure-Diagnoseerweiterung ist ein [Agent in Azure Monitor](../agents/agents-overview.md), der Überwachungsdaten vom Gastbetriebssystem von Azure-Computeressourcen inklusive VMs sammelt. Dieser Artikel bietet eine Übersicht zur Azure-Diagnoseerweiterung einschließlich spezifischer Funktionen, die unterstützt werden, sowie Optionen für die Installation und Konfiguration. 
@@ -78,7 +78,7 @@ Konfigurieren Sie mindestens eine *Datensenke*, um Daten an andere zusätzliche 
 | Azure Storage-Blobs | Schreiben von Daten außer in Tabellen in Blobs in Azure Storage. |
 | Application Insights | Sammeln von Daten aus Anwendungen, die auf Ihrer VM ausgeführt werden, zur Integration in andere Anwendungsüberwachungen in Application Insights. Siehe [Senden von Cloud Services-, Virtual Machines- oder Service Fabric-Diagnosedaten an Application Insights](diagnostics-extension-to-application-insights.md). |
 
-Sie können auch WAD-Daten aus dem Speicher in einem Log Analytics-Arbeitsbereich sammeln, um sie mit Azure Monitor-Protokollen zu analysieren, obwohl der Log Analytics-Agent in der Regel für diese Funktionalität verwendet wird. Er kann Daten direkt an einen Log Analytics-Arbeitsbereich senden und unterstützt Lösungen und Erkenntnisse, die zusätzliche Funktionalität bereitstellen.  Siehe [Sammeln von Azure-Diagnoseprotokollen aus Azure Storage](../essentials/diagnostics-extension-logs.md). 
+Sie können auch WAD-Daten aus dem Speicher in einem Log Analytics-Arbeitsbereich sammeln, um sie mit Azure Monitor-Protokollen zu analysieren, obwohl der Log Analytics-Agent in der Regel für diese Funktionalität verwendet wird. Er kann Daten direkt an einen Log Analytics-Arbeitsbereich senden und unterstützt Lösungen und Erkenntnisse, die zusätzliche Funktionalität bereitstellen.  Siehe [Sammeln von Azure-Diagnoseprotokollen aus Azure Storage](../agents/diagnostics-extension-logs.md). 
 
 
 ### <a name="linux-diagnostics-extension-lad"></a>Linux-Diagnoseerweiterung (LAD)

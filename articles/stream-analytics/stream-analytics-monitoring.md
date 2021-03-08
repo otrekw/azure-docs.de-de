@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 484e8853d02aa68c8a8695ba7cc724adb5a8766a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3356e0bdd45b6a213ef5ef4a814e64585d8e8924
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572973"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726766"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Grundlegendes zur Stream Analytics-Auftragsüberwachung und zum Überwachen von Abfragen
 
@@ -30,6 +30,7 @@ Das Fenster wird wie folgt angezeigt:
 | ---------------------- | ---------------------------------------- |
 | Eingabeereignisse im Rückstand       | Anzahl der Eingabeereignisse, die im Rückstand sind. Ein Wert ungleich Null für diese Metrik bedeutet, dass Ihr Auftrag nicht in der Lage ist, mit der Anzahl der eingehenden Ereignisse Schritt zu halten. Wenn dieser Wert langsam ansteigt oder konstant ungleich Null ist, sollten Sie Ihren Auftrag aufskalieren. Weitere Informationen finden Sie unter [Verstehen und Anpassen von Streamingeinheiten](stream-analytics-streaming-unit-consumption.md). |
 | Konvertierungsfehler | Anzahl der Ausgabeereignisse, die nicht in das erwartete Ausgabeschema konvertiert werden konnten. Die Fehlerrichtlinie kann auf „Drop“ geändert werden, um Ereignisse zu löschen, bei denen dieses Szenario auftritt. |
+| CPU-Auslastung in Prozent (Vorschau)       | Hierbei handelt es sich um die CPU-Auslastung Ihres Auftrags in Prozent. Wenn diese Metrik dauerhaft 80 Prozent überschreitet, kann dies darauf hinweisen, dass für Ihren Auftrag ein Engpass bei der CPU-Auslastung besteht. Dies kann dazu führen, dass Eingabeereignisse zu Rückstand führen. Sie können die Anzahl der Ihrem Auftrag zugeordneten SUs erhöhen, um solche Probleme zu lösen. |
 | Frühe Eingabeereignisse       | Ereignisse, deren Anwendungszeitstempel mehr als fünf Minuten vor dem Zeitpunkt ihres Eintreffens liegt. |
 | Fehlerhafte Funktionsanforderungen | Anzahl der fehlerhaften Aufrufe an die Azure Machine Learning-Funktion (falls vorhanden) |
 | Funktionsereignisse        | Anzahl der an die Azure Machine Learning-Funktion gesendeten Ereignisse (falls vorhanden) |
@@ -42,7 +43,7 @@ Das Fenster wird wie folgt angezeigt:
 | Ereignisse für falsche Reihenfolge    | Anzahl der Ereignisse, die in falscher Reihenfolge empfangen und anhand der Richtlinie für die Ereignissortierung entweder verworfen oder mit einem angepassten Zeitstempel versehen wurden. Dies kann von der Konfiguration der Einstellung „Toleranzfenster für Fehlordnung“ beeinflusst werden. |
 | Ausgabeereignisse          | Vom Stream Analytics-Auftrag an das Ausgabeziel gesendete Datenmenge, ausgedrückt in der Anzahl von Ereignissen. |
 | Laufzeitfehler         | Gesamtanzahl von Fehlern im Zusammenhang mit der Abfrageverarbeitung (mit Ausnahme von Fehlern, die beim Untersuchen von Ereignissen oder beim Ausgeben von Ergebnissen ermittelt werden) |
-| Speichereinheitnutzung in %       | Wenn die Ressourcenverwendung konstant mehr als 80 % beträgt, die Verzögerung des Wasserzeichens steigt und die Anzahl der protokollierten Ereignisse zunimmt, erhöhen Sie ggf. die Streamingeinheiten. Eine hohe Auslastung deutet darauf hin, dass der Auftrag fast die Höchstzahl der bereitgestellten Ressourcen verwendet. |
+| Speichereinheitnutzung in %       | Hierbei handelt es sich um die Arbeitsspeicherauslastung Ihres Auftrags in Prozent. Wenn die SU-Auslastung konstant mehr als 80 Prozent beträgt, die Verzögerung für einen Grenzwert steigt und die Anzahl der protokollierten Ereignisse zunimmt, ziehen Sie eine Erhöhung der Streamingeinheiten in Erwägung. Eine hohe Auslastung deutet darauf hin, dass der Auftrag fast die Höchstzahl der bereitgestellten Ressourcen verwendet. |
 | Wasserzeichenverzögerung       | Die maximale Wasserzeichenverzögerung für alle Partitionen aller Ausgaben im Auftrag. |
 
 Sie können diese Metriken zum [Überwachen der Leistung des Stream Analytics-Auftrags](./stream-analytics-set-up-alerts.md#scenarios-to-monitor) verwenden. 

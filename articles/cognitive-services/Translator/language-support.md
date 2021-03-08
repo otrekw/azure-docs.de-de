@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
-ms.openlocfilehash: 935a9e92de88c2519dc1a1042315d204e8f60099
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b114c4f3e6646f68e7a1068be8dd52778a26fb58
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919917"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738139"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Sprach- und Regionsunterstützung für Text- und Sprachübersetzung
 
-Verwenden Sie den Translator zum Übersetzen in jede und aus jeder der über 70 Textübersetzungssprachen. Die neuronale maschinelle Übersetzung (Neural Machine Translation, NMT) ist der neue Standard für qualitativ hochwertige, auf künstlicher Intelligenz basierende maschinelle Übersetzungen und steht standardmäßig in V3 von Translator zur Verfügung, wenn ein neuronales System verfügbar ist.
+Verwenden Sie den Übersetzer zum Übersetzen in jede und aus jeder der über 90 Textübersetzungssprachen und -dialekte. Die neuronale maschinelle Übersetzung (Neural Machine Translation, NMT) ist der neue Standard für qualitativ hochwertige, auf künstlicher Intelligenz basierende maschinelle Übersetzungen und steht standardmäßig in V3 von Translator zur Verfügung, wenn ein neuronales System verfügbar ist.
 
 Sie können den Translator auch in Verbindung mit dem benutzerdefinierten Translator verwenden, um neuronale Übersetzungssysteme zu erstellen, die die in Ihrem Unternehmen und Ihrer Branche verwendete Terminologie verstehen, oder in Verbindung mit dem Spracherkennungsdienst von Microsoft, um Ihrer App die Sprachübersetzung hinzuzufügen.
 
@@ -37,8 +37,12 @@ Der Translator unterstützt die folgenden Sprachen für die Übersetzung von Tex
 | Sprache | Sprachcode |
 |:-|:-:|
 | Afrikaans | `af` |
+| Albanisch | `sq` |
+| Amharisch | `am` |
 | Arabisch | `ar` |
+| Armenisch | `hy` |
 | Assamesisch | `as` |
+| Aserbaidschanisch | `az` |
 | Bengalisch | `bn` |
 | Bosnisch (Lateinisch) | `bs` |
 | Bulgarisch | `bg` |
@@ -74,11 +78,13 @@ Der Translator unterstützt die folgenden Sprachen für die Übersetzung von Tex
 | Japanisch | `ja` |
 | Kannada | `kn` |
 | Kasachisch | `kk` |
+| Khmer | `km` |
 | Klingonisch | `tlh-Latn` |
 | Klingonisch (plqaD) | `tlh-Piqd` |
 | Koreanisch | `ko` |
 | Kurdisch (zentral) | `ku` |
 | Kurdisch (nördlich) | `kmr` |
+| Laotisch | `lo` |
 | Lettisch | `lv` |
 | Litauisch | `lt` |
 | Madagassisch | `mg` |
@@ -87,6 +93,8 @@ Der Translator unterstützt die folgenden Sprachen für die Übersetzung von Tex
 | Maltesisch | `mt` |
 | Maori | `mi` |
 | Marathi | `mr` |
+| Myanmar | `my` |
+| Nepalesisch | `ne` |
 | Norwegisch | `nb` |
 | Odia | `or` |
 | Paschtu | `ps` |
@@ -110,6 +118,7 @@ Der Translator unterstützt die folgenden Sprachen für die Übersetzung von Tex
 | Tamilisch | `ta` |
 | Telugu | `te` |
 | Thailändisch | `th` |
+| Tigrinya | `ti` |
 | Tongaisch | `to` |
 | Türkisch | `tr` |
 | Ukrainisch | `uk` |
@@ -130,6 +139,7 @@ Der Translator erkennt die folgenden Sprachen für die Übersetzung und Translit
 | Sprache | Sprachcode |
 |:-|:-:|
 | Afrikaans | `af` |
+| Albanisch | `sq` |
 | Arabisch | `ar` |
 | Bulgarisch | `bg` |
 | Katalanisch | `ca` |
@@ -152,6 +162,7 @@ Der Translator erkennt die folgenden Sprachen für die Übersetzung und Translit
 | Ungarisch | `hu` |
 | Isländisch | `is` |
 | Indonesisch | `id` |
+| Inuktitut | `iu` |
 | Irisch | `ga` |
 | Italienisch | `it` |
 | Japanisch | `ja` |

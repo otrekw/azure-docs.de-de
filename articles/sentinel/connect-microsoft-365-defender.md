@@ -1,6 +1,6 @@
 ---
-title: Verknüpfen von Microsoft 365 Defender-Rohdaten mit Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie unformatierte Ereignisdaten aus Microsoft 365 Defender in Azure Sentinel erfassen.
+title: Verknüpfen von Microsoft 365 Defender-Daten mit Azure Sentinel | Microsoft-Dokumentation
+description: In diesem Artikel erfahren Sie, wie Sie Incidents, Warnungen und Ereignisrohdaten aus Microsoft 365 Defender in Azure Sentinel erfassen.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: 756c245fe06ae81545a125dd98f30fb27fdff2dd
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6500805a4dc7e26f5e1bc601df9ea78279ae17e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655578"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709341"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>Verknüpfen von Daten aus Microsoft 365 Defender mit Azure Sentinel
 
@@ -33,54 +33,83 @@ ms.locfileid: "94655578"
 
 ## <a name="background"></a>Hintergrund
 
-Mithilfe des neuen [Microsoft 365 Defender](/microsoft-365/security/mtp/microsoft-threat-protection)-Connectors können Sie **erweiterte Hunting**-Protokolle – einen Typ von Ereignisrohdaten – von Microsoft 365 Defender in Azure Sentinel streamen. 
+Der [Microsoft 365 Defender](/microsoft-365/security/mtp/microsoft-threat-protection)-Connector (M365D) von Azure Sentinel mit Incidentintegration ermöglicht es Ihnen, alle M365D-Incidents und -Warnungen in Azure Sentinel zu streamen. Außerdem sorgt er dafür, dass Incidents zwischen den Portalen synchronisiert werden. M365D-Incidents enthalten alle dazugehörigen Warnungen, Entitäten und andere relevante Informationen. Diese Informationen werden angereichert. Warnungen aus den Komponentendiensten von M365D, **Microsoft Defender für Endpunkt**, **Microsoft Defender for Identity**, **Microsoft Defender für Office 365** und **Microsoft Cloud App Security**, werden zusammen gruppiert.
 
-Dank der Integration von [Microsoft Defender for Endpoint (MDATP)](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) in den Schutzschirm von Microsoft 365 Defender können Sie jetzt Ihre [erweiterten Hunting](/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview)-Ereignisse aus Microsoft Defender for Endpoint mithilfe des Microsoft 365 Defender-Connectors erfassen und sie direkt in neue, zu diesem Zweck erstellte Tabellen in Ihrem Azure Sentinel-Arbeitsbereich streamen. Diese Tabellen bauen auf dem gleichen Schema auf, das im Microsoft 365 Defender-Portal verwendet wird, wodurch Sie vollen Zugriff auf die gesamte Reihe erweiterter Huntingprotokolle erhalten und Folgendes erreichen können:
+Der Connector ermöglicht Ihnen auch das Streamen von Ereignissen der **erweiterten Bedrohungssuche** aus Microsoft Defender für Endpunkt zu Azure Sentinel. So können Sie erweiterte Abfragen der erweiterten Bedrohungssuche in Microsoft Defender für Endpunkt in Azure Sentinel kopieren, Sentinel-Warnungen mit Rohereignisdaten aus Microsoft Defender für Endpunkt anreichen, um zusätzliche Erkenntnisse zu ermöglichen, und die Protokolle mit erhöhter Aufbewahrungsdauer in Log Analytics speichern.
 
-- Einfaches Kopieren Ihrer vorhandenen erweiterten Huntingabfragen für Microsoft Defender ATP in Azure Sentinel.
-
-- Verwenden der Ereignisrohprotokolle zum Gewinnen zusätzlicher Erkenntnisse für Ihre Benachrichtigungen, Huntings und Untersuchungen und Korrelieren von Ereignissen mit Daten aus zusätzlichen Datenquellen in Azure Sentinel.
-
-- Speichern der Protokolle mit verlängerter Aufbewahrungsdauer, jenseits der Standardaufbewahrungsdauer von 30 Tagen in Microsoft Defender for Endpoint oder Microsoft 365 Defender. Dies erreichen Sie durch Konfigurieren der Aufbewahrungsdauer Ihres Arbeitsbereichs oder der tabellenweisen Aufbewahrung in Log Analytics.
+Weitere Informationen zur Incidentintegration und zur Erfassung von Ereignissen der erweiterten Bedrohungssuche finden Sie unter [Microsoft 365 Defender-Integration mit Azure Sentinel](microsoft-365-defender-sentinel-integration.md).
 
 > [!IMPORTANT]
 >
-> Der Microsoft 365 Defender-Connector befindet sich derzeit in der öffentlichen Vorschauphase. Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Der Microsoft 365 Defender-Connector ist derzeit als **VORSCHAU** verfügbar. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Sie müssen über eine gültige Lizenz für Microsoft Defender for Endpoint verfügen, wie unter [Set up Microsoft Defender for Endpoint deployment](/windows/security/threat-protection/microsoft-defender-atp/licensing) (Einrichten der Bereitstellung von Microsoft Defender for Endpoint). 
+- Wie unter [Voraussetzungen für Microsoft 365 Defender](/microsoft-365/security/mtp/prerequisites) beschrieben, benötigen Sie eine gültige Lizenz für Microsoft 365 Defender. 
 
-- Ihrem Benutzer muss die globale Administratorrolle im Mandanten (in Azure Active Directory) zugewiesen sein.
+- Sie müssen in Azure Active Directory ein **globaler Administrator** oder **Sicherheitsadministrator** sein.
 
 ## <a name="connect-to-microsoft-365-defender"></a>Herstellen einer Verbindung mit Microsoft 365 Defender
 
-Wenn Microsoft Defender for Endpoint bereitgestellt ist und Ihre Daten erfasst, können die Ereignisprotokolle auf einfache Weise in Azure Sentinel gestreamt werden.
-
 1. Wählen Sie in Azure Sentinel **Datenconnectors**, dann im Katalog **Microsoft 365 Defender (Vorschau)** und anschließend **Connectorseite öffnen** aus.
 
-1. Die folgenden Typen von Ereignissen können aus ihren entsprechenden erweiterten Huntingtabellen erfasst werden. Aktivieren Sie die Kontrollkästchen der Ereignistypen, die Sie erfassen möchten:
+1. Klicken Sie unter **Configuration** (Konfiguration) im Abschnitt **Connect incidents & alerts** (Incidents und Warnungen verknüpfen) auf die Schaltfläche **Connect incidents & alerts** (Incidents und Warnungen verknüpfen).
 
-    | Ereignistyp | Tabellenname |
-    |-|-|
-    | Computerinformationen (einschließlich Betriebssysteminformationen) | DeviceInfo |
-    | Netzwerkeigenschaften von Computern | DeviceNetworkInfo |
-    | Prozesserstellung und zugehörige Ereignisse | DeviceProcessEvents |
-    | Netzwerkverbindung und zugehörige Ereignisse | DeviceNetworkEvents |
-    | Dateierstellung, Änderung und andere Dateisystemereignisse | DeviceFileEvents |
-    | Erstellen und Ändern von Registrierungseinträgen | DeviceRegistryEvents |
-    | Anmeldungen und andere Authentifizierungsereignisse | DeviceLogonEvents |
-    | DLL-Ladeereignisse | DeviceImageLoadEvents |
-    | Weitere Ereignistypen | DeviceEvents |
-    |
+1. Damit Incidents nicht dupliziert werden, sollten Sie das Kontrollkästchen mit der Bezeichnung **Turn off all Microsoft incident creation rules for these products** (Alle Incidenterstellungsregeln von Microsoft für diese Produkte deaktivieren) aktivieren.
 
-1. Klicken Sie auf **Apply Changes**. 
+    > [!NOTE]
+    > Wenn Sie den Microsoft 365 Defender-Connector aktivieren, werden alle Connectors der M365D-Komponenten (wie zu Beginn dieses Artikels erwähnt) automatisch im Hintergrund verbunden. Damit die Verbindung eines der Connectors der Komponenten getrennt wird, müssen Sie zunächst die Verbindung des Microsoft 365 Defender-Connectors aufheben.
 
-1. Zum Abfragen der erweiterten Huntingtabellen in Log Analytics geben Sie den Tabellennamen aus der Liste oben im Abfragefenster ein.
+1. Wenn Sie M365 Defender-Incidentdaten abfragen möchten, verwenden Sie die folgende Anweisung im Abfragefenster:
+    ```kusto
+    SecurityIncident
+    | where ProviderName == "Microsoft 365 Defender"
+    ```
+
+1. Wenn Sie Ereignisse der erweiterten Bedrohungssuche aus Microsoft Defender für Endpunkt erfassen möchten, können die folgenden Ereignistypen aus den entsprechenden Tabellen für die erweiterte Bedrohungssuche erfasst werden.
+
+    1. Aktivieren Sie die Kontrollkästchen der Tabellen mit den Ereignistypen, die Sie erfassen möchten:
+
+       | Tabellenname | Ereignistyp |
+       |-|-|
+       | DeviceInfo | Computerinformationen (einschließlich Betriebssysteminformationen) |
+       | DeviceNetworkInfo | Netzwerkeigenschaften von Computern |
+       | DeviceProcessEvents | Prozesserstellung und zugehörige Ereignisse |
+       | DeviceNetworkEvents | Netzwerkverbindung und zugehörige Ereignisse |
+       | DeviceFileEvents | Dateierstellung, Änderung und andere Dateisystemereignisse |
+       | DeviceRegistryEvents | Erstellen und Ändern von Registrierungseinträgen |
+       | DeviceLogonEvents | Anmeldungen und andere Authentifizierungsereignisse |
+       | DeviceImageLoadEvents | DLL-Ladeereignisse |
+       | DeviceEvents | Weitere Ereignistypen |
+       | DeviceFileCertificateInfo | Zertifikatinformationen der signierten Dateien |
+       |
+
+    1. Klicken Sie auf **Apply Changes**.
+
+    1. Zum Abfragen der erweiterten Huntingtabellen in Log Analytics geben Sie den Tabellennamen aus der Liste oben im Abfragefenster ein.
 
 ## <a name="verify-data-ingestion"></a>Überprüfen der Datenerfassung
 
-Das Datendiagramm auf der Connectorseite weist darauf hin, dass Sie Daten erfassen. Sie werden feststellen, dass es eine einzelne Linie anzeigt, die das Ereignisvolumen über alle aktivierten Tabellen zusammenfasst. Nachdem Sie den Connector aktiviert haben, können Sie die folgende KQL-Abfrage verwenden, um ein ähnliches Diagramm des Ereignisvolumens für eine einzelne Tabelle zu generieren (ändern Sie die *DeviceEvents*-Tabelle in die erforderliche Tabelle Ihrer Wahl):
+Das Datendiagramm auf der Connectorseite weist darauf hin, dass Sie Daten erfassen. Wie Sie sehen können wird für Incidents, Warnungen und Ereignisse jeweils eine Zeile angezeigt. Bei der Ereigniszeile handelt es sich um eine Aggregation des Ereignisvolumens für alle aktivierten Tabellen. Sobald Sie den Connector aktiviert haben, können Sie die folgenden KQL-Abfragen verwenden, um spezifischere Graphen zu generieren.
+
+Verwenden Sie die folgende KQL-Abfrage für einen Graph der eingehenden M365 Defender-Incidents:
+
+```kusto
+let Now = now(); 
+(range TimeGenerated from ago(14d) to Now-1d step 1d 
+| extend Count = 0 
+| union isfuzzy=true ( 
+    SecurityIncident
+    | where ProviderName == "Microsoft 365 Defender"
+    | summarize Count = count() by bin_at(TimeGenerated, 1d, Now) 
+) 
+| summarize Count=max(Count) by bin_at(TimeGenerated, 1d, Now) 
+| sort by TimeGenerated 
+| project Value = iff(isnull(Count), 0, Count), Time = TimeGenerated, Legend = "Events") 
+| render timechart 
+```
+
+Verwenden Sie die folgenden KQL-Abfrage, um einen Graph des Ereignisvolumens für eine einzelne Tabelle zu erzeugen. Ändern Sie die Tabelle *DeviceEvents* in die erforderliche Tabelle Ihrer Wahl:
 
 ```kusto
 let Now = now();
@@ -96,9 +125,11 @@ let Now = now();
 | render timechart
 ```
 
-Auf der Registerkarte **Nächste Schritte**  finden Sie einige Beispielabfragen, die wir für Sie aufgenommen haben. Sie können sie sofort ausführen oder sie ändern und speichern.
+Auf der Registerkarte **Next steps** (Weitere Schritte) finden Sie hilfreiche Arbeitsmappen, Beispielabfragen und Vorlagen für Analyseregeln, die enthalten sind. Sie können sie sofort ausführen oder sie ändern und speichern.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Dokument haben Sie erfahren, wie Ereignisrohdaten aus Microsoft Defender for Endpoint mithilfe des Microsoft 365 Defender-Connectors in Azure Sentinel erfasst werden können. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+
+In diesem Artikel haben Sie erfahren, wie Sie Microsoft 365 Defender-Incidents sowie Ereignisdaten der erweiterten Bedrohungssuche aus Microsoft Defender für Endpunkt in Azure Sentinel integrieren. Dafür haben Sie den Microsoft 365 Defender-Connector verwendet. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](./tutorial-detect-threats-built-in.md).

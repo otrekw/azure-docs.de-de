@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: b0cafcbc9fa6f0fcb31f44b44dfbe4fc3e10c17d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1fe36dc7b3c04f033c1b693b657e07bcf42e3223
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656070"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715002"
 ---
 # <a name="connect-data-from-microsoft-defender-for-identity-formerly-azure-advanced-threat-protection"></a>Verbinden von Daten aus Microsoft Defender for Identity (ehemals Azure Advanced Threat Protection)
 
@@ -27,7 +27,9 @@ ms.locfileid: "94656070"
 > Der Microsoft Defender for Identity-Datenconnector in Azure Sentinel befindet sich derzeit in der Public Preview.
 > Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Sie können Protokolle aus [Microsoft Defender for Identity](/azure-advanced-threat-protection/what-is-atp) mit einem einzigen Klick an Azure Sentinel streamen.
+In diesem Artikel wird beschrieben, wie Sie Sicherheitswarnungen aus [Microsoft Defender for Identity](/azure-advanced-threat-protection/what-is-atp) zu Azure Sentinel streamen. 
+
+Damit Integritätswarnungen zusätzlich zu Sicherheitswarnungen weitergeleitet werden, integrieren Sie Microsoft Defender for Identity mit einem Syslog-Server. Weitere Informationen finden Sie in der Dokumentation zu [Microsoft Defender for Identity](/defender-for-identity/setting-syslog). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

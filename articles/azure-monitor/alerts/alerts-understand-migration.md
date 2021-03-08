@@ -5,13 +5,12 @@ ms.topic: conceptual
 ms.date: 02/14/2021
 ms.author: yalavi
 author: yalavi
-ms.subservice: alerts
-ms.openlocfilehash: fdac8015cf87ffa0a25a8558668329a8cd82327f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 88b75c46898e1a74b33051d8996af96201f639c7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737187"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037709"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>Grundlegendes zu den Optionen zur Migration zu neueren Warnungen
 

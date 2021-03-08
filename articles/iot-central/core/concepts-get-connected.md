@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 028088087b16ded182042aadec4be08a4b8a9589
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 4db7c9fdfd439e049ca76fec6f0e66bd4a37fffd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062677"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702707"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Herstellen einer Verbindung mit Azure IoT Central
 
@@ -217,7 +217,44 @@ Wenn ein echtes Gerät eine Verbindung mit Ihrer IoT Central-Anwendung herstellt
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
-Sie sollten die Geräteverbindungszeichenfolge, die von DPS zurückgegeben wird, wenn Sie das Gerät zum ersten Mal verbinden, nicht speichern oder zwischenspeichern. Um eine Verbindung mit einem Gerät wiederherzustellen, durchlaufen Sie den Standardflow für die Geräteregistrierung, um die richtige Geräteverbindungszeichenfolge zu erhalten. Wenn das Gerät die Verbindungszeichenfolge zwischenspeichert, besteht die Gefahr einer veralteten Verbindungszeichenfolge in der Gerätesoftware. Wenn IoT Central die zugrunde liegende verwendete Azure IoT-Hub-Instanz aktualisiert, kann ein Gerät mit einer veralteten Verbindungszeichenfolge keine Verbindung herstellen.
+Diese Empfehlungen unterstützen Sie dabei, Geräte so zu implementieren, dass Sie die Vorteile der integrierten Notfallwiederherstellung und automatischen Skalierung in IoT Central nutzen können.
+
+In der folgenden Liste wird der allgemeine Flow dargestellt, wenn ein Gerät eine Verbindung zu IoT Central herstellt:
+
+1. Verwenden Sie DPS, um das Gerät bereitzustellen und eine Verbindungszeichenfolge für das Gerät abzurufen.
+
+1. Verwenden Sie die Verbindungszeichenfolge, um den internen IoT Hub-Endpunkt von IoT Central zu verbinden. Senden Sie Daten an die IoT Central-Anwendung, und empfangen Sie Daten von der Anwendung.
+
+1. Wenn für das Gerät Verbindungsfehler auftreten, können Sie je nach Fehlertyp entweder versuchen, die Verbindung neu herzustellen oder das Gerät neu bereitzustellen.
+
+### <a name="use-dps-to-provision-the-device"></a>Bereitstellen des Geräts mithilfe von DPS
+
+Wenn Sie ein Gerät mit DPS bereitstellen möchten, verwenden Sie diese Bereichs-ID sowie die Geräte-ID Ihrer IoT Central-Anwendung. Weitere Informationen zu den verschiedenen Typen an Anmeldeinformationen finden Sie unter [Gruppenregistrierung mit X.509](#x509-group-enrollment) und [Gruppenregistrierung mit SAS](#sas-group-enrollment). Weitere Informationen zu Geräte-IDs finden Sie unter [Geräteregistrierung](#device-registration).
+
+Bei Erfolg gibt DPS eine Verbindungszeichenfolge zurück, mit der das Gerät eine Verbindung zu Ihrer IoT Central-Anwendung herstellen kann. Informationen zum Troubleshooting für Bereitstellungsfehler finden Sie unter [Überprüfen des Bereitstellungsstatus Ihres Geräts](troubleshoot-connection.md#check-the-provisioning-status-of-your-device).
+
+Das Gerät kann die Verbindungszeichenfolge zwischenspeichern und für spätere Verbindungen verwenden. Das Gerät muss jedoch darauf vorbereitet sein, [Verbindungsfehler zu verarbeiten](#handle-connection-failures).
+
+### <a name="connect-to-iot-central"></a>Herstellen einer Verbindung zu IoT Central
+
+Verwenden Sie die Verbindungszeichenfolge, um den internen IoT Hub-Endpunkt von IoT Central zu verbinden. Die Verbindung ermöglicht es Ihnen, Telemetriedaten an Ihre IoT Central-Anwendung zu senden, Eigenschaftswerte mit Ihrer IoT Central-Anwendung zu synchronisieren und auf Befehle zu reagieren, die von Ihrer IoT Central-Anwendung gesendet werden.
+
+### <a name="handle-connection-failures"></a>Verarbeiten von Verbindungsfehlern
+
+Zu Skalierungs- oder Notfallwiederherstellungszwecken kann IoT Central den zugrunde liegenden IoT-Hub aktualisieren. Damit die Konnektivität bestehen bleibt, sollte Ihr Gerätecode bestimmte Verbindungsfehler verarbeiten können, indem eine Verbindung zum neuen IoT Hub-Endpunkt hergestellt wird.
+
+Wenn für das Gerät beim Herstellen einer Verbindung einer der folgenden Fehler angezeigt wird, sollte es den Bereitstellungsprozess mit DPS wiederholen, um eine neue Verbindungszeichenfolge abzurufen. Diese Fehler deuten darauf hin, dass die vom Gerät verwendete Verbindungszeichenfolge nicht mehr gültig ist:
+
+- Der IoT Hub-Endpunkt kann nicht erreicht werden.
+- Das Sicherheitstoken ist abgelaufen.
+- Das Gerät wurde in IoT Hub deaktiviert.
+
+Wenn für das Gerät beim Herstellen einer Verbindung einer der folgenden Fehler angezeigt wird, sollte eine Backoffstrategie verwendet werden, um noch mal zu versuchen, die Verbindung herzustellen. Diese Fehler bedeuten, dass die Verbindungszeichenfolge, die das Gerät verwendet, immer noch gültig ist. Vorübergehende Bedingungen verhindern jedoch, dass das Gerät eine Verbindung herstellen kann:
+
+- Der Operator hat das Gerät blockiert.
+- Es wird ein interner Fehler 500 vom Dienst ausgegeben.
+
+Weitere Informationen zu Fehlercodes für Geräte finden Sie unter [Troubleshooting für Geräteverbindungen](troubleshoot-connection.md).
 
 ## <a name="sdk-support"></a>SDK-Unterstützung
 

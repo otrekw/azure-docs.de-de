@@ -7,90 +7,26 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 12/09/2020
 ms.topic: how-to
-ms.openlocfilehash: d27537f017707e937303dd0c08a589db28aac6ef
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8b3304c673e8606667246a7d0df9ad8f3be11d9b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071437"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686698"
 ---
-# <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Sichern und Wiederherstellen von Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppen
+# <a name="back-up-and-restore-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Sichern und Wiederherstellen von PostgreSQL Hyperscale-Servergruppen mit Azure Arc-Unterstützung
 
-Sie können eine vollständige Sicherung/Wiederherstellung Ihrer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe durchführen. In diesem Fall werden alle Datenbanken auf allen Knoten Ihrer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe gesichert und/oder wiederhergestellt.
-Sie müssen sicherstellen, dass eine Sicherungsspeicherklasse für Ihre Servergruppe konfiguriert ist, um eine Sicherung zu erstellen und diese wiederherzustellen. Zunächst müssen Sie eine Sicherungsspeicherklasse für den Zeitpunkt angeben, zu dem Sie die Servergruppe erstellen. Es ist noch nicht möglich, Ihre Servergruppe zur Verwendung einer Sicherungsspeicherklasse zu konfigurieren, nachdem sie erstellt wurde.
+[!INCLUDE [azure-arc-common-prerequisites](../../../includes/azure-arc-common-prerequisites.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-> [!CAUTION]
-> Die Vorschau unterstützt keine Sicherung/Wiederherstellung für Version 11 der Postgres-Engine. Es wird nur die Sicherung/Wiederherstellung für die Postgres-Version 12 unterstützt.
+Wenn Sie Ihre PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung sichern oder wiederherstellen, werden alle Datenbanken auf allen PostgreSQL-Knoten Ihrer Servergruppe gesichert und/oder wiederhergestellt.
 
-## <a name="verify-configuration"></a>Überprüfen der Konfiguration
-
-Überprüfen Sie zunächst, ob Ihre vorhandene Servergruppe zur Verwendung von Sicherungsspeicherklassen konfiguriert wurde.
-
-Führen Sie den folgenden Befehl aus, nachdem Sie den Namen Ihrer Servergruppe festgelegt haben:
-```console
- azdata arc postgres server show -n postgres01
-```
-Sehen Sie sich den Speicherabschnitt der Ausgabe an:
-```console
-...
-"storage": {
-      "backups": {
-        "className": "local-storage"
-      },
-      "data": {
-        "className": "local-storage",
-        "size": "5Gi"
-      },
-      "logs": {
-        "className": "local-storage",
-        "size": "5Gi"
-      }
-    }
-...
-```
-Wenn der Name einer Speicherklasse im Abschnitt „backups“ der Ausgabe des Befehls angegeben ist, bedeutet dies, dass Ihre Servergruppe zur Verwendung einer Sicherungsspeicherklasse konfiguriert wurde und Sie Sicherungen erstellen und Wiederherstellungen durchführen können. Wenn Ihnen der Abschnitt „Sicherungen“ nicht angezeigt wird, müssen Sie Ihre Servergruppe löschen und neu erstellen, um die Sicherungsspeicherklasse zu konfigurieren. Es ist derzeit nicht möglich, eine Sicherungsspeicherklasse zu konfigurieren, nachdem die Servergruppe erstellt wurde.
-
->[!IMPORTANT]
->Wenn Ihre Servergruppe bereits zur Verwendung einer Sicherungsspeicherklasse konfiguriert ist, überspringen Sie den nächsten Schritt, und fahren Sie direkt mit dem Schritt „Manuelles Erstellen einer vollständigen Sicherung“ fort.
-
-## <a name="create-a-server-group"></a>Servergruppe erstellen 
-
-Als Nächstes erstellen Sie eine Servergruppe, die für Sicherungen/Wiederherstellungen konfiguriert ist.
-
-Damit Sie Sicherungen erstellen und mit diesen Wiederherstellungen durchführen können, müssen Sie einen Server erstellen, der mit einer Speicherklasse konfiguriert ist.
-
-Führen Sie den folgenden Befehl aus, um eine Liste der Speicherklassen abzurufen, die für Ihren Kubernetes-Cluster verfügbar sind:
-
-```console
-kubectl get sc
-```
-
-<!--The general format of create server group command is documented [here](create-postgresql-instances.md)-->
-
-```console
-azdata arc postgres server create -n <name> --workers 2 --storage-class-backups <storage class name> [--storage-class-data <storage class name>] [--storage-class-logs <storage class name>]
-```
-
-Wenn Sie beispielsweise eine einfache auf kubeadm basierende Umgebung erstellt haben:
-```console
-azdata arc postgres server create -n postgres01 --workers 2 --storage-class-backups local-storage
-```
-
-## <a name="take-manual-full-backup"></a>Manuelles Erstellen einer vollständigen Sicherung
-
-
-Als nächstes erstellen Sie eine vollständige Sicherung manuell.
-
-> [!CAUTION]
-> **Nur für Benutzer von Azure Kubernetes Service (AKS):** Uns ist ein Problem bei der Erstellung von Sicherungen einer Servergruppe bekannt, die in Azure Kubernetes Service (AKS) gehostet wird. Wir arbeiten bereits an der Lösung dieses Problems. Bis in einem zukünftigen Release oder Update eine Aktualisierung bereitgestellt wird, müssen Sie vor dem Erstellen einer Sicherung die Pods Ihrer Servergruppen löschen. Löschen Sie die einzelnen Pods der Servergruppe (die Pods können Sie durch Ausführen von **kubectl get pods -n \<namespace name>** auflisten), indem Sie **kubectl delete pod \<server group pod name>-n \<namespace name>** ausführen. Löschen Sie keine Pods, die nicht Teil der Servergruppe sind. Das Löschen von Pods stellt keine Gefahr für Ihre Daten dar. Warten Sie, bis alle Pods wieder online sind und den Status „Wird ausgeführt“ aufweisen, bevor Sie eine Sicherung durchführen. Der Status des Pods wird in der Ausgabe des obigen Befehls „kubectl get pods“ angegeben.
-
+## <a name="take-a-manual-full-backup"></a>Manuelles Erstellen einer vollständigen Sicherung
 
 Führen Sie den folgenden Befehl aus, um eine vollständige Sicherung der gesamten Daten und Protokollordner Ihrer Servergruppe zu erstellen:
-
 ```console
 azdata arc postgres backup create [--name <backup name>] --server-name <server group name> [--no-wait] 
 ```
@@ -102,18 +38,22 @@ Hierbei gilt:
 Dieser Befehl koordiniert eine verteilte vollständige Sicherung für alle Knoten, aus denen Ihre Azure Arc-fähige PostgreSQL Hyperscale-Servergruppe besteht. Das bedeutet, alle Daten in Ihren Coordinator- und Workerknoten werden gesichert.
 
 Zum Beispiel:
+
 ```console
-azdata arc postgres backup create --name MyBackup_Aug31_0730amPST --server-name postgres01
+azdata arc postgres backup create --name backup12082020-0250pm --server-name postgres01
 ```
 
-Wenn die Sicherung fertiggestellt wird, werden die ID, der Name und der Zustand der Sicherung zurückgegeben. Zum Beispiel:
+Bei Abschluss der Sicherung werden ID, Name, Größe, Zustand und Zeitstempel der Sicherung zurückgegeben. Beispiel:
 ```console
 {
-  "ID": "d134f51aa87f4044b5fb07cf95cf797f",
-  "name": "MyBackup_Aug31_0730amPS",
-  "state": "Done"
+  "ID": "8085723fcbae4aafb24798c1458f4bb7",
+  "name": "backup12082020-0250pm",
+  "size": "9.04 MiB",
+  "state": "Done",
+  "timestamp": "2020-12-08 22:50:22+00:00"
 }
 ```
+`+xx:yy` gibt die Zeitzone für den Zeitpunkt der Sicherungserstellung an. „+ 00:00“ steht in diesem Beispiel für koordinierte Weltzeit (UTC + 00 Stunden und 00 Minuten).
 
 > [!NOTE]
 > Folgendes ist noch nicht möglich:
@@ -122,8 +62,6 @@ Wenn die Sicherung fertiggestellt wird, werden die ID, der Name und der Zustand 
 
 ## <a name="list-backups"></a>Auflisten der Sicherungen
 
-Führen Sie die Sicherungen auf, die zur Wiederherstellung verfügbar sind.
-
 Führen Sie den folgenden Befehl aus, um die Sicherungen aufzulisten, die zur Wiederherstellung verfügbar sind:
 
 ```console
@@ -131,55 +69,124 @@ azdata arc postgres backup list --server-name <servergroup name>
 ```
 
 Zum Beispiel:
+
 ```console
 azdata arc postgres backup list --server-name postgres01
 ```
 
-Dabei wird eine Ausgabe wie die folgende zurückgegeben:
-```console
-ID                                Name                      State    Timestamp
---------------------------------  ------------------------  -------  ------------------------------
-d134f51aa87f4044b5fb07cf95cf797f  MyBackup_Aug31_0730amPST  Done     2020-08-31 14:30:00:00+00:00
+Beispiel für die Ausgabe:
+
+```output
+ID                                Name                   Size       State    Timestamp
+--------------------------------  ---------------------  ---------  -------  -------------------------
+d744303b1b224ef48be9cba4f58c7cb9  backup12072020-0731pm  13.83 MiB  Done     2020-12-08 03:32:09+00:00
+c4f964d28da34318a420e6d14374bd36  backup12072020-0819pm  9.04 MiB   Done     2020-12-08 04:19:49+00:00
+a304c6ef99694645a2a90ce339e94714  backup12072020-0822pm  9.1 MiB    Done     2020-12-08 04:22:26+00:00
+47d1f57ec9014328abb0d8fe56020760  backup12072020-0827pm  9.06 MiB   Done     2020-12-08 04:27:22+00:00
+8085723fcbae4aafb24798c1458f4bb7  backup12082020-0250pm  9.04 MiB   Done     2020-12-08 22:50:22+00:00
 ```
 
-„Timestamp“ gibt den Zeitpunkt (in UTC) an, zu dem die Sicherung erstellt wurde.
+In der Zeitstempelspalte wird der Zeitpunkt (in UTC) angegeben, zu dem die Sicherung erstellt wurde.
 
 ## <a name="restore-a-backup"></a>Wiederherstellen einer Sicherung
+In diesem Abschnitt erfahren Sie, wie Sie eine vollständige Wiederherstellung oder eine Point-in-Time-Wiederherstellung durchführen. Wenn Sie eine vollständige Sicherung wiederherstellen, wird der gesamte Inhalt der Sicherung wiederhergestellt. Bei einer Point-in-Time-Wiederherstellung werden die Daten bis zu dem von Ihnen angegebenen Zeitpunkt wiederhergestellt. Transaktionen, die nach diesem Zeitpunkt stattgefunden haben, werden nicht wiederhergestellt.
 
-Führen Sie den folgenden Befehl aus, um die Sicherung einer gesamten Servergruppe wiederherzustellen:
-
+### <a name="restore-a-full-backup"></a>Wiederherstellen einer vollständigen Sicherung
+Wenn Sie den gesamten Inhalt einer Sicherung wiederherstellen möchten, führen Sie den folgenden Befehl aus:
 ```console
-azdata arc postgres backup restore --server-name <server group name> --backup-id <backup id>
+azdata arc postgres backup restore --server-name <target server group name> [--source-server-name <source server group name> --backup-id <backup id>]
+or
+azdata arc postgres backup restore -sn <target server group name> [-ssn <source server group name> --backup-id <backup id>]
 ```
+<!--To read the general format of restore command, run: azdata arc postgres backup restore --help -->
 
 Hierbei gilt:
-- __backup-id__ entspricht der ID der Sicherung, die mit dem Befehl zum Auflisten der Sicherungen angezeigt wird (siehe Schritt 3).
+- __backup-id__ entspricht der ID der Sicherung, die mit dem oben gezeigten Befehl zum Auflisten der Sicherungen angezeigt wird.
 Hiermit wird eine verteilte vollständige Wiederherstellung für alle Knoten koordiniert, aus denen Ihre Azure Arc-fähige PostgreSQL Hyperscale-Servergruppe besteht. Das bedeutet, alle Daten in Ihren Coordinator- und Workerknoten werden wiederhergestellt.
 
-Zum Beispiel:
+#### <a name="examples"></a>Beispiele:
+
+__Wiederherstellen der Servergruppe „postgres01“ in sich selbst:__
+
 ```console
-azdata arc postgres backup restore --server-name postgres01 --backup-id d134f51aa87f4044b5fb07cf95cf797f
+azdata arc postgres backup restore -sn postgres01 --backup-id d134f51aa87f4044b5fb07cf95cf797f
 ```
 
-Wenn der Wiederherstellungsvorgang abgeschlossen ist, wird eine Ausgabe ähnlich der folgenden in der Befehlszeile zurückgegeben:
+Dieser Vorgang wird erst ab der PostgreSQL-Version 12 unterstützt.
+
+__Wiederherstellen der Servergruppe „postgres01“ als eine andere Servergruppe (postgres02):__
+
 ```console
+azdata arc postgres backup restore -sn postgres02 -ssn postgres01 --backup-id d134f51aa87f4044b5fb07cf95cf797f
+```
+Dieser Vorgang wird ab der PostgreSQL-Version 11 unterstützt. Die Zielservergruppe muss vor dem Wiederherstellungsvorgang erstellt werden. Außerdem muss sie die gleiche Konfiguration besitzen und den gleichen Sicherungs-PVC verwenden wie die Quellservergruppe.
+
+Wenn der Wiederherstellungsvorgang abgeschlossen ist, wird eine Ausgabe ähnlich der folgenden in der Befehlszeile zurückgegeben:
+
+```json
 {
   "ID": "d134f51aa87f4044b5fb07cf95cf797f",
   "state": "Done"
 }
 ```
+
 > [!NOTE]
 > Folgendes ist noch nicht möglich:
 > - Wiederherstellen einer Sicherung durch Angabe ihres Namens
-> - Wiederherstellen einer Servergruppe unter einem anderen Namen oder einer anderen Servergruppe
+> - Anzeigen des Fortschritts eines Wiederherstellungsvorgangs
+
+
+### <a name="do-a-point-in-time-restore"></a>Durchführen einer Point-in-Time-Wiederherstellung
+
+Wenn Sie eine Servergruppe bis zu einem bestimmten Zeitpunkt wiederherstellen möchten, führen Sie den folgenden Befehl aus:
+```console
+azdata arc postgres backup restore --server-name <target server group name> --source-server-name <source server group name> --time <point in time to restore to>
+or
+azdata arc postgres backup restore -sn <target server group name> -ssn <source server group name> -t <point in time to restore to>
+```
+
+Führen Sie Folgendes aus, um sich das allgemeine Format des Wiederherstellungsbefehls anzusehen: `azdata arc postgres backup restore --help`.
+
+`time` ist der Zeitpunkt für die Wiederherstellung. Geben Sie entweder einen Zeitstempel oder eine Zahl und ein Suffix ( `m` für Minuten, `h` für Stunden, `d` für Tage oder `w` für Wochen) an. `1.5h` geht beispielsweise 90 Minuten zurück.
+
+#### <a name="examples"></a>Beispiele:
+__Durchführen einer Point-in-Time-Wiederherstellung der Servergruppe „postgres01“ in sich selbst:__
+
+Es ist noch nicht möglich, eine Point-in-Time-Wiederherstellung einer Servergruppe in sich selbst durchzuführen.
+
+__Durchführen einer Point-in-Time-Wiederherstellung der Servergruppe „postgres01“ als eine andere Servergruppe (postgres02) mit einem bestimmten Zeitstempel:__
+```console
+azdata arc postgres backup restore -sn postgres02 -ssn postgres01 -t "2020-12-08 04:23:48.751326+00"
+``` 
+
+In diesem Beispiel wird der Zustand, in dem sich die Servergruppe „postgres01“ am 8. Dezember 2020 um 04:23:48,75 Uhr (UTC) befand, in der Servergruppe „postgres02“ wiederhergestellt. Beachten Sie, dass „+00“ die Zeitzone des gewünschten Zeitpunkts angibt. Wenn Sie keine Zeitzone angeben, wird die Zeitzone des Clients verwendet, von dem aus Sie den Wiederherstellungsvorgang ausführen.
+
+Beispiel:
+- `2020-12-08 04:23:48.751326+00` wird als `2020-12-08 04:23:48.751326` (UTC) interpretiert.
+- Wenn Sie sich in der PST-Zeitzone (UTC+08) befinden, wird `2020-12-08 04:23:48.751326` als `2020-12-08 12:23:48.751326` interpretiert. Dieser Vorgang wird ab der PostgreSQL-Version 11 unterstützt. Die Zielservergruppe muss vor dem Wiederherstellungsvorgang erstellt werden und den gleichen Sicherungs-PVC verwenden wie die Quellservergruppe.
+
+
+__Durchführen einer Point-in-Time-Wiederherstellung der Servergruppe „postgres01“ als eine andere Servergruppe (postgres02) mit einem Zustand, der eine bestimmte Zeit zurückliegt:__
+```console
+azdata arc postgres backup restore -sn postgres02 -ssn postgres01 -t "22m"
+```
+
+In diesem Beispiel wird der Zustand, in dem sich die Servergruppe „postgres01“ vor 22 Minuten befand, in der Servergruppe „postgres02“ wiederhergestellt.
+Dieser Vorgang wird ab der PostgreSQL-Version 11 unterstützt. Die Zielservergruppe muss vor dem Wiederherstellungsvorgang erstellt werden und den gleichen Sicherungs-PVC verwenden wie die Quellservergruppe.
+
+> [!NOTE]
+> Folgendes ist noch nicht möglich:
 > - Anzeigen des Fortschritts eines Wiederherstellungsvorgangs
 
 ## <a name="delete-backups"></a>Löschen von Sicherungen
+
 Die Aufbewahrungsdauer für Sicherungen kann in der Vorschau nicht festgelegt werden. Sie können jedoch nicht benötigte Sicherungen manuell löschen.
 Der allgemeine Befehl zum Löschen von Sicherungen lautet:
+
 ```console
 azdata arc postgres backup delete  [--server-name, -sn] {[--name, -n], -id}
 ```
+
 Dabei gilt Folgendes:
 - `--server-name` ist der Name der Servergruppe, aus der der Benutzer eine Sicherung löschen möchte.
 - `--name` ist der Name der Sicherung, die gelöscht werden soll.
@@ -188,17 +195,8 @@ Dabei gilt Folgendes:
 > [!NOTE]
 > `--name` und `-id` schließen sich gegenseitig aus.
 
-Sie können den Namen und die ID der Sicherungen abrufen, indem Sie den Befehl „list backup“ ausführen, wie im vorherigen Absatz erläutert.
+Beispiel:
 
-Angenommen, die folgenden Sicherungen sind aufgelistet:
-```console
-azdata arc postgres backup list -sn postgres01
-ID                                Name                    State
---------------------------------  ----------------------  -------
-5b0481dfc1c94b4cac79dd56a1bb21f4  MyBackup091720200110am  Done
-0cf39f1e92344e6db4cfa285d36c7b14  MyBackup091720200111am  Done
-```
-Wenn Sie die erste Sicherung löschen möchten, würden Sie den folgenden Befehl ausführen:
 ```console
 azdata arc postgres backup delete -sn postgres01 -n MyBackup091720200110am
 {
@@ -207,19 +205,15 @@ azdata arc postgres backup delete -sn postgres01 -n MyBackup091720200110am
   "state": "Done"
 }
 ```
-Wenn Sie die Sicherungen zu diesem Zeitpunkt auflisten müssten, würden Sie die folgende Ausgabe erhalten:
-```console
-azdata arc postgres backup list -sn postgres01
-ID                                Name                    State
---------------------------------  ----------------------  -------
-0cf39f1e92344e6db4cfa285d36c7b14  MyBackup091720200111am  Done
-```
+
+Sie können den Namen und die ID der Sicherungen abrufen, indem Sie den Befehl „list backup“ ausführen, wie im vorherigen Absatz erläutert.
 
 Um weitere Informationen zum Löschbefehl zu erhalten, führen Sie Folgendes aus:
+
 ```console
 azdata arc postgres backup delete --help
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Hier erfahren Sie mehr über das [horizontale Skalieren (Hinzufügen von Workerknoten)](scale-out-postgresql-hyperscale-server-group.md) Ihrer Servergruppe.
-- Hier erfahren Sie mehr über das [zentrale Hoch- oder Herunterskalieren (Erhöhen oder Verringern von Arbeitsspeicher/virtuellen Kernen)](scale-up-down-postgresql-hyperscale-server-group-using-cli.md) Ihrer Servergruppe.
+- Erfahren Sie mehr über das [Aufskalieren](scale-out-postgresql-hyperscale-server-group.md) der Servergruppe (Hinzufügen von Workerknoten).
+- Erfahren Sie mehr über das [zentrale Hoch- oder Herunterskalieren](scale-up-down-postgresql-hyperscale-server-group-using-cli.md) der Servergruppe (Vergrößern/Verkleinern von Arbeitsspeicher/virtuellen Kernen).

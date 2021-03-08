@@ -10,20 +10,20 @@ ms.custom: how-to, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
-ms.date: 11/16/2020
-ms.openlocfilehash: 6784361dde67d7dcc1423d9edbcc92ec513ff6d4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 02/25/2021
+ms.openlocfilehash: 2c61cfaf0e97f7d483239a23e5eea52b51c6a126
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222631"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690208"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Modellinterpretierbarkeit in Azure Machine Learning (Vorschauversion)
 
 
-## <a name="overview-of-model-interpretability"></a>Übersicht über die Modellinterpretierbarkeit
+## <a name="model-interpretability-overview"></a>Übersicht über die Modellinterpretierbarkeit
 
-Die Interpretierbarkeit ist wichtig für Data Scientists, Prüfer und Entscheidungsträger im Unternehmen, um die Einhaltung von Unternehmensrichtlinien, Industriestandards und behördlichen Vorschriften zu gewährleisten:
+Die Modellinterpretierbarkeit ist wichtig für Data Scientists, Prüfer und Entscheidungsträger im Unternehmen, um die Einhaltung von Unternehmensrichtlinien, Industriestandards und behördlichen Vorschriften zu gewährleisten:
 
 + Data Scientists müssen die Möglichkeit haben, ihre Modelle für Führungskräfte und Projektbeteiligte zu erklären, damit diese den Wert und die Genauigkeit ihrer Ergebnisse verstehen können. Sie erfordern auch die Interpretierbarkeit, um ihre Modelle zu debuggen und fundierte Entscheidungen darüber zu treffen, wie sie verbessert werden können. 
 
@@ -31,15 +31,15 @@ Die Interpretierbarkeit ist wichtig für Data Scientists, Prüfer und Entscheidu
 
 + Entscheidungsträger im Unternehmen müssen zu ihrer Entlastung Transparenz für Endbenutzer bereitstellen können. Dadurch können sie sich das Vertrauen dauerhaft erarbeiten.
 
-
 Die Möglichkeit, ein Machine Learning-Modell erklären zu können, ist in zwei Hauptphasen der Modellentwicklung wichtig:
+
 + Während der Trainingsphase, in der Modellentwickler und -bewerter die Interpretierbarkeitsausgabe eines Modells verwenden können, um Hypothesen zu überprüfen und Vertrauen bei den Beteiligten aufzubauen. Sie verwenden außerdem die Erkenntnisse aus dem Modell zum Debuggen, zum Überprüfen des Modellverhaltens auf die Erfüllung der Ziele und zum Suchen nach Modellungerechtigkeiten oder nicht signifikanten Features.
 
 + Während der Rückschlussphase können Führungskräfte bei bereitgestellten Modellen mithilfe von Transparenz im Zusammenhang mit der Modellbereitstellung erfahren, wie das Modell bei der Bereitstellung funktioniert und wie sich seine Entscheidungen in echten Situationen auf Menschen auswirken. 
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Interpretierbarkeit mit Azure Machine Learning
 
-Die Interpretierbarkeitsklassen werden über das folgende SDK-Paket zur Verfügung gestellt: (Erfahren Sie, wie Sie [SDK-Pakete für Azure Machine Learning installieren](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).)
+Die Modellinterpretierbarkeitsklassen werden über das folgende SDK-Paket zur Verfügung gestellt: (Erfahren Sie, wie Sie [SDK-Pakete für Azure Machine Learning installieren](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).)
 
 * `azureml.interpret`, enthält von Microsoft unterstützte Funktionen.
 
@@ -52,11 +52,7 @@ Durch Verwenden der Klassen und Methoden im SDK haben Sie folgende Möglichkeite
 + Erreichen der Modellinterpretierbarkeit realer Datasets in beliebigem Umfang während des Trainings und in der Rückschlussphase.
 + Verwenden eines interaktiven Visualisierungsdashboards zum Ermitteln von Mustern in Daten und Erklärungen zur Trainingszeit.
 
-
 Beim maschinellen Lernen sind **Merkmale** diejenigen Datenfelder, die zum Vorhersagen eines Zieldatenpunkts verwendet werden. Um beispielsweise ein Kreditrisiko vorherzusagen, werden möglicherweise Datenfelder für Alter, Kontogröße und Kontoalter verwendet. In diesem Fall sind Alter, Kontogröße und Kontoalter **Merkmale**. Die Relevanz eines Merkmals informiert darüber, wie sich jedes Datenfeld auf die Vorhersagen des Modells ausgewirkt hat. Das Alter spielt möglicherweise bei der Vorhersage eine schwerer wiegende Rolle, wohingegen Kontogröße und Kontoalter sich nur unwesentlich auf die Vorhersagewerte auswirken. Dank dieses Prozesses können Data Scientists die getroffenen Vorhersagen erklären, sodass alle Beteiligten einen Einblick darin erhalten, welche Features die wichtigsten im Modell sind.
-
-Erfahren Sie hier mehr über unterstützte Interpretierbarkeitstechniken, unterstützte Machine Learning-Modelle und unterstützte Ausführungsumgebungen.
-
 
 ## <a name="supported-interpretability-techniques"></a>Unterstützte Interpretierbarkeitstechniken
 
@@ -70,9 +66,6 @@ Erfahren Sie hier mehr über unterstützte Interpretierbarkeitstechniken, unters
 |SHAP Kernel Explainer| KernelExplainer in SHAP verwendet eine speziell gewichtete lokale lineare Regression zum Schätzen von SHAP-Werten für **alle Modelle**.|Modellagnostisch|
 |Mimic Explainer (Globaler Surrogat)| Der Mimic Explainer basiert auf der Idee des Trainierens von [globalen Surrogatmodellen](https://christophm.github.io/interpretable-ml-book/global.html) zur Nachahmung von Blackboxmodellen. Ein globales Surrogatmodell ist ein eigenständig interpretierbares Modell, das trainiert wird, um die Vorhersagen **eines Blackbox-Modells** so genau wie möglich zu treffen. Data Scientists können das Surrogatmodell interpretieren, um Rückschlüsse in Bezug auf das Blackbox-Modell zu ziehen. Sie können eines der folgenden interpretierbaren Modelle als Surrogatmodell verwenden: LightGBM (LGBMExplainableModel), Linear Regression (LinearExplainableModel), Stochastic Gradient Descent explainable model (SGDExplainableModel) und Decision Tree (DecisionTreeExplainableModel).|Modellagnostisch|
 |Permutation Feature Importance Explainer (PFI)| Permutation Feature Importance ist ein Verfahren zum Erklären von Klassifizierungs- und Regressionsmodellen, das auf dem [Random Forests Paper von Breiman](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (siehe Abschnitt 10) basiert. Die grobe Funktionsweise besteht darin, nach dem Zufallsprinzip die Daten des gesamten Datasets für jeweils ein Feature zu vermischen und dann zu berechnen, wie stark sich die gewünschte Leistungsmetrik ändert. Je größer die Änderung, desto wichtiger ist das Feature. PFI kann das Gesamtverhalten **jedes zugrunde liegenden Modells** erklären, erläutert aber nicht einzelne Vorhersagen. |Modellagnostisch|
-
-
-
 
 Neben den oben beschriebenen Interpretierbarkeitstechniken wird ein weiterer SHAP-basierter Explainer namens `TabularExplainer` unterstützt. Je nach Modell verwendet `TabularExplainer` einen der unterstützten SHAP-Explainer:
 

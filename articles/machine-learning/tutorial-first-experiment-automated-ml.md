@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: f0bb354bce0c4696f60e2be5c6186760518c7431
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: ad8a9f7af9ddabe969d090f80378ba5ff891d7f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549185"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691942"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning
 
@@ -186,6 +186,30 @@ Während Sie auf den Abschluss aller Experimentmodelle warten, können Sie den *
 Nachfolgend werden die Registerkarten **Details** und **Metriken** durchlaufen, um die Eigenschaften, Metriken und Leistungsdiagramme des ausgewählten Modells anzuzeigen. 
 
 ![Details zur Iterationsausführung](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
+
+## <a name="model-explanations"></a>Modellerklärungen
+
+Während Sie darauf warten, dass die Modelle abgeschlossen werden, können Sie anhand der Modellerklärungen ermitteln, welche Datenfeatures (Rohdaten oder verarbeitete Daten) die Vorhersagen eines bestimmten Modells beeinflusst haben. 
+
+Diese Modellerklärungen können bei Bedarf generiert werden und werden auf der Registerkarte **Erklärungen (Vorschau)** auf dem Dashboard für Modellerklärungen zusammengefasst.
+
+So generieren Sie Modellerklärungen: 
+ 
+1. Wählen Sie am oberen Rand die Option **Ausführung 1** aus, um zum Bildschirm **Modelle** zurückzukehren. 
+1. Wählen Sie die Registerkarte **Modelle** aus.
+1. Wählen Sie für dieses Tutorial das erste Modell **MaxAbsScaler, LightGBM** aus.
+1. Wählen Sie im oberen Bereich die Schaltfläche **Modell erklären** aus. Auf der rechten Seite wird der Bereich **Modell erklären** angezeigt. 
+1. Wählen Sie den zuvor erstellten Computecluster **automl-compute** aus. Dieser Computecluster initiiert einen untergeordneten Testlauf, um die Modellerklärungen zu generieren.
+1. Wählen Sie im unteren Bereich die Option **Erstellen** aus. Im oberen Bereich des Bildschirms wird eine grüne Erfolgsmeldung angezeigt. 
+    >[!NOTE]
+    > Die Erklärbarkeitsausführung dauert ca. zwei bis fünf Minuten.
+1. Wählen Sie die Schaltfläche **Erklärungen (Vorschau)** aus. Diese Registerkarte wird nach Abschluss der Erklärbarkeitsausführung aufgefüllt.
+1. Erweitern Sie den Bereich auf der linken Seite, und wählen Sie die Zeile aus, in der unter **Features** der Wert **Rohdaten** angegeben ist. 
+1. Wählen Sie auf der rechten Seite die Registerkarte **Aggregierte Featurerelevanz** aus. Dieses Diagramm zeigt, welche Datenfeatures die Vorhersagen des ausgewählten Modells beeinflusst haben. 
+
+    In diesem Beispiel hatte offenbar die *Dauer* den größten Einfluss auf die Vorhersagen des Modells.
+    
+    ![Dashboard für Modellerklärungen](media/tutorial-first-experiment-automated-ml/model-explanation-dashboard.png)
 
 ## <a name="deploy-the-best-model"></a>Bereitstellen des besten Modells
 

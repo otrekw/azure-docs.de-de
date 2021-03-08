@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/05/2020
+ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 56e35c23eacdf98db283ba5d8c2e32687cbe0ea8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6c6969fdf413c4eb5e7bbcf046fc397834d6c0a2
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740901"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038916"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Tutorial: Konfigurieren eines virtuellen Netzwerkgateways für ExpressRoute mit dem Azure-Portal
 > [!div class="op_single_selector"]
@@ -67,9 +67,9 @@ Sie können sich ein [Video](https://azure.microsoft.com/documentation/videos/az
 
     Wenn Sie ein virtuelles Netzwerk für den dualen Stapel verwenden und IPv6-basiertes privates Peering über ExpressRoute verwenden möchten, klicken Sie auf **IPv6-Adressraum hinzufügen**, und geben Sie die Werte für den **IPv6-Adressbereich** ein.
 
-Wählen Sie dann **OK** aus, um die Werte zu speichern und das Gatewaysubnetz zu erstellen.
+    Wählen Sie dann **OK** aus, um die Werte zu speichern und das Gatewaysubnetz zu erstellen.
 
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Adding the subnet":::
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Hinzufügen des Subnetzes":::
 
 ## <a name="create-the-virtual-network-gateway"></a>Erstellen des Gateways für das lokale Netzwerk
 

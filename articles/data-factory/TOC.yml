@@ -13,7 +13,7 @@
   items:
     - name: 'Erstellen einer Data Factory – Benutzeroberfläche (User Interface, UI)'
       href: quickstart-create-data-factory-portal.md
-    - name: Erstellen einer Data Factory – Tool zum Kopieren von Daten
+    - name: 'Erstellen einer Data Factory: Tool zum Kopieren von Daten'
       href: quickstart-create-data-factory-copy-data-tool.md
     - name: Erstellen einer Data Factory – Azure PowerShell
       href: quickstart-create-data-factory-powershell.md
@@ -26,8 +26,6 @@
     - name: 'Erstellen einer Data Factory: Resource Manager-Vorlage'
       displayName: Resource Manager
       href: quickstart-create-data-factory-resource-manager-template.md
-    - name: 'Sicherheit: Aktivieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln'
-      href: enable-customer-managed-key.md
     - name: Erstellen eines Datenflusses
       href: data-flow-create.md
 - name: Tutorials
@@ -173,10 +171,6 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Integrationslaufzeit
       href: concepts-integration-runtime.md
-    - name: Sicherheit
-      items:
-        - name: Sicherheitsbaseline
-          href: security-baseline.md
     - name: Datenflüsse
       items:
         - name: Transformieren von Daten mit Zuordnungsdatenflüssen
@@ -470,7 +464,7 @@
           href: control-flow-execute-data-flow-activity.md
         - name: Ausführen der Power Query-Aktivität
           href: control-flow-power-query-activity.md
-        - name: Azure-Funktionsaktivität
+        - name: Aktivität „Azure Function“
           href: control-flow-azure-function-activity.md
         - name: Benutzerdefinierte Aktivität
           href: transform-data-using-dotnet-custom-activity.md
@@ -494,13 +488,13 @@
           href: transform-data-using-spark.md
         - name: HDInsight-Streamingaktivität
           href: transform-data-using-hadoop-streaming.md
-        - name: Machine Learning-Pipelineausführungsaktivität
+        - name: Execute Pipeline-Aktivität (Machine Learning)
           href: transform-data-machine-learning-service.md
-        - name: Batchausführungsaktivität für Machine Learning Studio (Classic)
+        - name: Batch Execution-Aktivität für Machine Learning Studio (klassisch)
           href: transform-data-using-machine-learning.md
-        - name: Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (Classic)
+        - name: Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (klassisch)
           href: update-machine-learning-models.md
-        - name: Aktivität „Gespeicherte Prozedur“
+        - name: Aktivität der gespeicherten Prozedur
           href: transform-data-using-stored-procedure.md
         - name: Verknüpfte Computedienste
           href: compute-linked-services.md
@@ -508,15 +502,15 @@
       items:
         - name: Aktivität „Variable anfügen“
           href: control-flow-append-variable-activity.md
-        - name: Aktivität „Pipeline ausführen“
+        - name: Execute Pipeline-Aktivität
           href: control-flow-execute-pipeline-activity.md
         - name: Filteraktivität
           href: control-flow-filter-activity.md
-        - name: Aktivität „For Each“
+        - name: ForEach-Aktivität
           href: control-flow-for-each-activity.md
         - name: Aktivität „Metadaten abrufen“
           href: control-flow-get-metadata-activity.md
-        - name: Aktivität „Falls-Bedingung“
+        - name: If Condition-Aktivität
           href: control-flow-if-condition-activity.md
         - name: Lookup-Aktivität
           href: control-flow-lookup-activity.md
@@ -524,11 +518,11 @@
           href: control-flow-set-variable-activity.md
         - name: Switch-Aktivität
           href: control-flow-switch-activity.md
-        - name: Aktivität „Bis“
+        - name: Until-Aktivität
           href: control-flow-until-activity.md
         - name: Aktivität „Prüfung“
           href: control-flow-validation-activity.md
-        - name: Aktivität „Warten“
+        - name: Warteaktivität
           href: control-flow-wait-activity.md
         - name: Webaktivität
           href: control-flow-web-activity.md
@@ -608,12 +602,14 @@
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Verwaltete Identität für Data Factory
           href: data-factory-service-identity.md
-        - name: Verschlüsselung mit kundenseitig verwalteten Schlüsseln
+        - name: Verschlüsseln von Data Factory mit vom Kunden verwalteten Schlüsseln
           href: enable-customer-managed-key.md
         - name: Verwaltetes virtuelles Netzwerk
           href: managed-virtual-network-private-endpoint.md
         - name: Azure Private Link für Data Factory
           href: data-factory-private-link.md
+        - name: Azure-Sicherheitsbaseline
+          href: security-baseline.md
     - name: Überwachen und Verwalten
       items:
         - name: Visuelle Überwachung
