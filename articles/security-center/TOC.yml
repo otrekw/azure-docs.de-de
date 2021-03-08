@@ -112,7 +112,7 @@
           href: exempt-resource.md
         - name: Erstellen von benutzerdefinierten Sicherheitsinitiativen und -richtlinien
           href: custom-security-policies.md
-    - name: Schützen Ihrer Computer mit Azure Defender für Server
+    - name: Schützen Ihrer Computer mit Defender für Server
       displayName: 'hybrid, arc, Azure Defender for machines'
       items:
         - name: Übersicht über Azure Defender für Server
@@ -143,10 +143,10 @@
         - name: Verwenden der integrierten Microsoft Defender for Endpoint-Lizenz
           displayName: 'ATP, mdatp, wdatp'
           href: security-center-wdatp.md
-        - name: Definieren von Listen mit sicheren Anwendungen für Ihre Computer
+        - name: Definieren von Listen mit sicheren Anwendungen für Computer
           displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'
           href: security-center-adaptive-application.md
-        - name: Nachverfolgen von Änderungen an Dateien und Registrierungen mit der Dateiintegritätsüberwachung
+        - name: Nachverfolgen von Änderungen an Dateien und Registrierungen
           items:
             - name: Übersicht über die Überwachung der Dateiintegrität
               displayName: 'fim, change'
@@ -154,8 +154,8 @@
             - name: Vergleichen der Baselines mithilfe der Dateiintegritätsüberwachung
               displayName: 'fim, change'
               href: security-center-file-integrity-monitoring-baselines.md
-        - name: Verbessern des Netzwerksicherheitsstatus mit adaptiver Netzwerkhärtung
-          displayName: anh
+        - name: Verbessern des Netzwerksicherheitsstatus
+          displayName: 'anh, adaptive network hardening'
           href: security-center-adaptive-network-hardening.md
         - name: Härten Ihrer Docker-Hosts
           displayName: containers
@@ -209,7 +209,7 @@
         - name: Übersicht über Azure Defender für Key Vault
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
-        - name: Reagieren auf Warnungen zu Azure Defender für Key Vault
+        - name: Behandeln von Warnungen in Defender für Key Vault
           displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
     - name: Überwachen von Ressourcenverwaltungsvorgängen
@@ -217,7 +217,7 @@
         - name: Übersicht über Azure Defender für Resource Manager
           displayName: ARM
           href: defender-for-resource-manager-introduction.md
-        - name: Reagieren auf Warnungen von Azure Defender für Resource Manager
+        - name: Behandeln von Warnungen in Defender für Resource Manager
           displayName: arm
           href: defender-for-resource-manager-usage.md
     - name: Überwachen der DNS-Abfragen Ihrer Azure-Ressourcen

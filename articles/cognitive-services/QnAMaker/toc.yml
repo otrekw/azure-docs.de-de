@@ -8,10 +8,12 @@
       href: whats-new.md
 - name: Schnellstarts
   items:
-    - name: "Erstellen und Abfragen einer Wissensdatenbank im QnA\_Maker-Portal"
-      href: Quickstarts/create-publish-knowledge-base.md
-    - name: Erstellen und Abfragen einer Wissensdatenbank unter Verwendung von Clientbibliotheken oder REST-API
-      href: Quickstarts/quickstart-sdk.md
+    - name: Erstellen und Abfragen einer Wissensdatenbank
+      items:
+        - name: QnA Maker-Portal
+          href: Quickstarts/create-publish-knowledge-base.md
+        - name: Clientbibliotheken oder REST-API
+          href: Quickstarts/quickstart-sdk.md
     - name: Abfragen einer Wissensdatenbank mit REST-APIs
       href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
 - name: Tutorials
@@ -48,6 +50,8 @@
     - name: Verwalten von Azure-Ressourcen
       href: How-To/set-up-qnamaker-service-azure.md
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
+    - name: Netzwerkisolation für Azure-Ressourcen
+      href: How-To/network-isolation.md
     - name: "Verwalten des QnA\_Maker-Ressourcenzugriffs"
       href: How-To/manage-qna-maker-app.md
     - name: Verwalten einer Wissensdatenbank
@@ -108,7 +112,7 @@
     - name: Format von Batchtests
       href: reference-tsv-format-batch-testing.md
     - name: Verschlüsselung
-      href: qna-maker-encryption-of-data-at-rest.md
+      href: encrypt-data-at-rest.md
     - name: REST-API-Referenz
       items:
         - name: QnA Maker 4.0
