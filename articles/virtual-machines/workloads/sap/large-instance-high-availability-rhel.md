@@ -7,12 +7,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.topic: how-to
 ms.date: 02/08/2021
-ms.openlocfilehash: 5a02901b2dfc589033c7249cddf463a581eea720
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 99e9994d01e4579bf6ef2e369e0fe85c48af52ef
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695886"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182433"
 ---
 # <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>Hohe Verfügbarkeit von Azure (große Instanzen) für SAP auf RHEL
 
@@ -648,19 +648,20 @@ In diesem Abschnitt initialisieren Sie den Cluster. In diesem Abschnitt werden d
 
 18. Testen Sie die SBD-Umgrenzung, indem Sie den Kernel zum Absturz bringen.
 
-   * Lösen Sie den Kernelabsturz aus.
+    * Lösen Sie den Kernelabsturz aus.
 
-    ```
-    echo c > /proc/sysrq-trigger
+      ```
+      echo c > /proc/sysrq-trigger
 
-    System must reboot after 5 Minutes (BMC timeout) or the value which is
-    set as panic_wdt_timeout in the /etc/sysconfig/ipmi config file.
-    ```
+      System must reboot after 5 Minutes (BMC timeout) or the value which is
+      set as panic_wdt_timeout in the /etc/sysconfig/ipmi config file.
+      ```
   
-   * Der zweite auszuführenden Test besteht darin, einen Knoten mithilfe von PCS-Befehlen zu umgrenzen.
-    ```
-    pcs stonith fence sollabdsm36
-    ```
+    * Der zweite auszuführenden Test besteht darin, einen Knoten mithilfe von PCS-Befehlen zu umgrenzen.
+
+      ```
+      pcs stonith fence sollabdsm36
+      ```
   
 
 19. Für den Rest des SAP HANA-Clusterings können Sie STONITH deaktivieren, indem Sie Folgendes festlegen:
