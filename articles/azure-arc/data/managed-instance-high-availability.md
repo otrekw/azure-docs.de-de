@@ -10,12 +10,12 @@ ms.topic: conceptual
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.openlocfilehash: e04b9b98db26b3b9a024a60c6f82820fe20fcbf1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 92f5c900238fc5d40e22870e2f00f8adeb5d335f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692887"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032193"
 ---
 # <a name="azure-arc-enabled-managed-instance-high-availability"></a>Verwaltete Instanz mit Azure Arc-Unterstützung und Hochverfügbarkeit
 
@@ -31,7 +31,7 @@ In diesem Abschnitt wird die von Kubernetes bereitgestellte integrierte Hochverf
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-- Kubernetes-Cluster mit [freigegebenem Remotespeicher](https://docs.microsoft.com/en-us/azure/azure-arc/data/storage-configuration#factors-to-consider-when-choosing-your-storage-configuration) 
+- Kubernetes-Cluster mit [freigegebenem Remotespeicher](storage-configuration.md#factors-to-consider-when-choosing-your-storage-configuration) 
 - Eine verwaltete Instanz mit Azure Arc-Unterstützung, bereitgestellt mit einem einzelnen Replikat (Standard)
 
 1. Zeigen Sie die Pods an. 
