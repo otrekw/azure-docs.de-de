@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 02/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 7e71719d83426a3444435ed78d0d63a2599a9157
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8a02bb7c70df4fed55c354638fe6662b85e6c164
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747722"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049630"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-cwinrt-and-directx"></a>Schnellstart: Erstellen einer HoloLens-App mit Azure Object Anchors in C++/WinRT und DirectX
 
@@ -23,7 +23,6 @@ Sie lernen Folgendes:
 > [!div class="checklist"]
 > * Erstellen und Querladen einer HoloLens-Anwendung
 > * Erkennen eines Objekts und Visualisieren seines Modells
-> * Erfassen von Laufzeitdiagnosen
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -31,7 +30,7 @@ Sie lernen Folgendes:
 
 Stellen Sie für diese Schnellstartanleitung sicher, dass Sie über Folgendes verfügen:
 
-* Ein physisches Objekt in Ihrer Umgebung und das zugehörige 3D-Modell (CAD oder gescannt).
+* Ein physisches Objekt in Ihrer Umgebung und das zugehörige 3D-Modell (CAD oder gescannt)
 * Einen Windows-Computer, auf dem folgende Komponenten installiert sind:
   * <a href="https://git-scm.com" target="_blank">Git für Windows</a>
   * <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> mit der Workload **Entwicklung für die universelle Windows-Plattform** und der Komponente **Windows 10 SDK (10.0.18362.0 oder höher)**
@@ -64,7 +63,7 @@ Um die App zu starten und zu debuggen, wählen Sie **Debuggen > Debuggen starten
 
 ## <a name="ingest-object-model-and-detect-its-instance"></a>Erfassen des Objektmodells und Erkennen seiner Instanz
 
-Sie müssen ein Objektmodell erstellen, um die Beispiel-App ausführen zu können. Angenommen, Sie haben bereits entweder ein CAD- oder ein gescanntes 3D-Gittermodell eines Objekts in Ihrem Raum. Informationen zum Erstellen eines Modells finden Sie unter [Schnellstart: Erfassen eines 3D-Modells](./get-started-model-ingestion.md).
+Sie müssen ein Objektmodell erstellen, um die Beispiel-App ausführen zu können. Angenommen, Sie haben bereits entweder ein CAD- oder ein gescanntes 3D-Gittermodell eines Objekts in Ihrem Raum. Informationen zum Erstellen eines Modells finden Sie unter [Schnellstart: Erfassen eines 3D-Modells](./get-started-model-conversion.md).
 
 Laden Sie dieses Modell (**chair.ou** in unserem Fall) auf Ihren Computer herunter. Wählen Sie dann im HoloLens-Geräteportal **System > Datei-Explorer > LocalAppData > AoaSampleApp > LocalState** und **Durchsuchen...** aus. Wählen Sie dann Ihre Modelldatei (z. B. **chair.ou**) und **Hochladen** aus. Die Modelldatei sollte anschließend im lokalen Cache angezeigt werden.
 
@@ -86,7 +85,7 @@ Die App richtet ein 3D-Modell genau an seinem physischen Pendant aus. Ein Benutz
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Erfassen eines 3D-Modells](./get-started-model-ingestion.md)
+> [Schnellstart: Erfassen eines 3D-Modells](./get-started-model-conversion.md)
 
 > [!div class="nextstepaction"]
 > [Konzepte: SDK-Übersicht](../concepts/sdk-overview.md)
