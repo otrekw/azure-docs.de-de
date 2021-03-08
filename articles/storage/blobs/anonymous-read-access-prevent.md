@@ -10,12 +10,12 @@ ms.date: 12/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 179e60a41a9cd6a2277959b3cd31159c796d845d
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 53f29c2b8f7a17ac2a23cc081660e8dcb4b9f387
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937286"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701857"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Verhindern von anonymem öffentlichem Lesezugriff auf Container und Blobs
 
@@ -35,7 +35,7 @@ Wenn Sie die möglichen Auswirkungen einer Verweigerung des öffentlichen Zugrif
 
 ### <a name="monitor-anonymous-requests-with-metrics-explorer"></a>Überwachen anonymer Anforderungen mit dem Metrik-Explorer
 
-Verwenden Sie den Azure-Metrik-Explorer im Azure-Portal, um anonyme Anforderungen für ein Speicherkonto nachzuverfolgen. Weitere Informationen zum Metrik-Explorer finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md).
+Verwenden Sie den Azure-Metrik-Explorer im Azure-Portal, um anonyme Anforderungen für ein Speicherkonto nachzuverfolgen. Weitere Informationen zum Metrik-Explorer finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../../azure-monitor/essentials/metrics-getting-started.md).
 
 Gehen Sie wie folgt vor, um eine Metrik zur Nachverfolgung anonymer Anforderungen zu erstellen:
 
@@ -61,7 +61,7 @@ Nachdem Sie die Metrik konfiguriert haben, werden nach und nach anonyme Anforder
 
 :::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="Screenshot: Aggregierte anonyme Anforderungen für Blobspeicher":::
 
-Sie können auch eine Warnungsregel konfigurieren, um benachrichtigt zu werden, wenn eine bestimmte Anzahl anonymer Anforderungen an Ihr Speicherkonto gerichtet wird. Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../../azure-monitor/platform/alerts-metric.md).
+Sie können auch eine Warnungsregel konfigurieren, um benachrichtigt zu werden, wenn eine bestimmte Anzahl anonymer Anforderungen an Ihr Speicherkonto gerichtet wird. Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../../azure-monitor/alerts/alerts-metric.md).
 
 ### <a name="analyze-logs-to-identify-containers-receiving-anonymous-requests"></a>Analysieren von Protokollen zur Identifizierung von Containern, die anonyme Anforderungen erhalten
 
@@ -69,7 +69,7 @@ In Azure Storage-Protokollen werden Details zu Anforderungen für das Speicherk
 
 Wenn Sie Anforderungen für Ihr Azure Storage-Konto protokollieren möchten, um anonyme Anforderungen zu untersuchen, können Sie die Azure Storage-Protokollierung in Azure Monitor (Vorschauversion) verwenden. Weitere Informationen finden Sie unter [Überwachen von Azure Storage](./monitor-blob-storage.md).
 
-Die Azure Storage-Protokollierung in Azure Monitor unterstützt die Verwendung von Protokollabfragen für die Analyse von Protokolldaten. Für die Abfrage von Protokollen können Sie einen Azure Log Analytics-Arbeitsbereich verwenden. Weitere Informationen zu Protokollabfragen finden Sie unter [Tutorial: Erste Schritte mit Log Analytics-Abfragen](../../azure-monitor/log-query/log-analytics-tutorial.md).
+Die Azure Storage-Protokollierung in Azure Monitor unterstützt die Verwendung von Protokollabfragen für die Analyse von Protokolldaten. Für die Abfrage von Protokollen können Sie einen Azure Log Analytics-Arbeitsbereich verwenden. Weitere Informationen zu Protokollabfragen finden Sie unter [Tutorial: Erste Schritte mit Log Analytics-Abfragen](../../azure-monitor/logs/log-analytics-tutorial.md).
 
 > [!NOTE]
 > Die Vorschauversion der Azure Storage-Protokollierung in Azure Monitor wird nur in der öffentlichen Azure-Cloud unterstützt. Government-Clouds unterstützten die Protokollierung für Azure Storage mit Azure Monitor nicht.
@@ -78,8 +78,7 @@ Die Azure Storage-Protokollierung in Azure Monitor unterstützt die Verwendung 
 
 Wenn Sie Azure Storage-Daten mit Azure Monitor protokollieren und mit Azure Log Analytics analysieren möchten, müssen Sie zunächst eine Diagnoseeinstellung erstellen, die angibt, welche Anforderungstypen und für welche Speicherdienste Daten protokolliert werden sollen. Führen Sie zum Erstellen einer Diagnoseeinstellung im Azure-Portal die folgenden Schritte aus:
 
-1. Registrieren Sie sich für die [Azure Storage-Protokollierung in Azure Monitor (Vorschauversion)](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u).
-1. Erstellen Sie in dem Abonnement, das Ihr Azure Storage-Konto enthält, einen neuen Log Analytics-Arbeitsbereich. Nachdem Sie die Protokollierung für Ihr Speicherkonto konfiguriert haben, sind die Protokolle im Log Analytics-Arbeitsbereich verfügbar. Weitere Informationen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../../azure-monitor/learn/quick-create-workspace.md).
+1. Erstellen Sie in dem Abonnement, das Ihr Azure Storage-Konto enthält, einen neuen Log Analytics-Arbeitsbereich. Nachdem Sie die Protokollierung für Ihr Speicherkonto konfiguriert haben, sind die Protokolle im Log Analytics-Arbeitsbereich verfügbar. Weitere Informationen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../../azure-monitor/logs/quick-create-workspace.md).
 1. Navigieren Sie zum Speicherkonto im Azure-Portal.
 1. Klicken Sie im Abschnitt „Überwachung“ auf **Diagnoseeinstellungen (Vorschau)** .
 1. Wählen Sie **Blob** aus, um Anforderungen für Blobspeicher zu protokollieren.
@@ -90,7 +89,7 @@ Wenn Sie Azure Storage-Daten mit Azure Monitor protokollieren und mit Azure Log 
 
     :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="Screenshot: Erstellen einer Diagnoseeinstellung für die Protokollierung von Anforderungen":::
 
-Nachdem Sie die Diagnoseeinstellung erstellt haben, werden Anforderungen für das Speicherkonto gemäß dieser Einstellung protokolliert. Weitere Informationen finden Sie unter [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../../azure-monitor/platform/diagnostic-settings.md).
+Nachdem Sie die Diagnoseeinstellung erstellt haben, werden Anforderungen für das Speicherkonto gemäß dieser Einstellung protokolliert. Weitere Informationen finden Sie unter [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../../azure-monitor/essentials/diagnostic-settings.md).
 
 Eine Referenz der Felder, die in Azure Storage-Protokollen in Azure Monitor verfügbar sind, finden Sie unter [Ressourcenprotokolle (Vorschau)](./monitor-blob-storage-reference.md#resource-logs-preview).
 
@@ -106,7 +105,7 @@ StorageBlobLogs
 | project TimeGenerated, AccountName, AuthenticationType, Uri
 ```
 
-Sie können auch eine auf dieser Abfrage basierende Warnungsregel konfigurieren, um über anonyme Anforderungen informiert zu werden. Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../../azure-monitor/platform/alerts-log.md).
+Sie können auch eine auf dieser Abfrage basierende Warnungsregel konfigurieren, um über anonyme Anforderungen informiert zu werden. Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../../azure-monitor/alerts/alerts-log.md).
 
 ## <a name="remediate-anonymous-public-access"></a>Behandeln von anonymem öffentlichem Zugriff
 
@@ -290,13 +289,13 @@ Die folgende Abbildung zeigt den Fehler, der beim Erstellen eines Speicherkontos
 
 ## <a name="permissions-for-allowing-or-disallowing-public-access"></a>Berechtigungen zum Zulassen oder Ablehnen von öffentlichem Zugriff
 
-Zum Festlegen der Eigenschaft **AllowBlobPublicAccess** für das Speicherkonto muss ein Benutzer Berechtigungen zum Erstellen und Verwalten von Speicherkonten haben. Azure RBAC-Rollen (Role-Based Access Control, Rollenbasierte Zugriffssteuerung), die diese Berechtigungen bieten, enthalten die Aktion **Microsoft.Storage/storageAccounts/write** oder **Microsoft.Storage/storageAccounts/\** _. In diese Aktion sind folgende Rollen integriert:
+Zum Festlegen der Eigenschaft **AllowBlobPublicAccess** für das Speicherkonto muss ein Benutzer Berechtigungen zum Erstellen und Verwalten von Speicherkonten haben. Azure RBAC-Rollen (Role-Based Access Control, rollenbasierte Zugriffssteuerung), die diese Berechtigungen bieten, enthalten die Aktion **Microsoft.Storage/storageAccounts/write** oder **Microsoft.Storage/storageAccounts/\*** . In diese Aktion sind folgende Rollen integriert:
 
 - Die Azure Resource Manager-Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner)
 - Die Azure Resource Manager-Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor)
 - Die Rolle [Speicherkontomitwirkender](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Diese Rollen bieten keinen Zugriff auf Daten in einem Speicherkonto über Azure Active Directory (Azure AD). Sie enthalten jedoch die Aktion „_*Microsoft.Storage/storageAccounts/listkeys/action**“, die Zugriff auf die Kontozugriffsschlüssel gewährt. Bei dieser Berechtigung kann ein Benutzer mithilfe der Kontozugriffsschlüssel auf alle Daten in einem Speicherkonto zuzugreifen.
+Diese Rollen bieten keinen Zugriff auf Daten in einem Speicherkonto über Azure Active Directory (Azure AD). Sie enthalten jedoch die Aktion **Microsoft.Storage/storageAccounts/listkeys/action**, die Zugriff auf die Kontozugriffsschlüssel gewährt. Bei dieser Berechtigung kann ein Benutzer mithilfe der Kontozugriffsschlüssel auf alle Daten in einem Speicherkonto zuzugreifen.
 
 Rollenzuweisungen müssen auf die Ebene des Speicherkontos oder höher eingeschränkt werden, damit ein Benutzer den öffentlichen Zugriff für das Speicherkonto zulassen oder ablehnen darf. Weitere Informationen zum Rollenbereich finden Sie unter [Grundlegendes zum Bereich für Azure RBAC](../../role-based-access-control/scope-overview.md).
 

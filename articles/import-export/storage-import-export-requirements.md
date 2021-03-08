@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 02/22/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 99521a746a16a2d0de310fc6cfb2d2272e7b2593
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0bfc09a372584a25c23060cef33d1f698e6d5ff3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98705994"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712605"
 ---
 # <a name="azure-importexport-system-requirements"></a>Systemanforderungen für Azure Import/Export
 
@@ -43,7 +43,10 @@ Der Azure Import-/Export-Dienst unterstützt die folgenden Typen von Speicherkon
 
 - Standardmäßige Speicherkonten vom Typ „Universell v2“ (für die meisten Szenarien empfohlen)
 - Blob Storage-Konten
-- Speicherkonten vom Typ „Universell v1“ (sowohl klassische als auch Azure Resource Manager-Bereitstellungen)
+- Speicherkonten vom Typ Allgemein v1 (sowohl klassische als auch Azure Resource Manager-Bereitstellungen)
+
+> [!IMPORTANT]
+> Die Unterstützung für das NFS 3.0-Protokoll (Network File System) in Azure Blog Storage wird mit Azure Import/Export nicht unterstützt.
 
 Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonten – Übersicht](../storage/common/storage-account-overview.md).
 

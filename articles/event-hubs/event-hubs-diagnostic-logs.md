@@ -2,13 +2,13 @@
 title: Einrichten der Diagnoseprotokolle – Azure Event Hubs | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Aktivitäts- und Diagnoseprotokolle für Event Hubs in Azure einrichten.
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: dc5cbea31583a4e8126897b2dcda63b216438e1b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/25/2021
+ms.openlocfilehash: 538ff86f1ef4c06bb5400af3fbd2394134aa17f3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573174"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742533"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Einrichten von Diagnoseprotokollen für Azure Event Hubs
 
@@ -207,7 +207,7 @@ Die JSON-Zeichenfolge für das Event Hubs-Verbindungsereignis mit virtuellem Net
 | `Count` | Anzahl von Vorkommen für die angegebene Aktion. |
 | `ResourceId` | Azure Resource Manager-Ressourcen-ID |
 
-Protokolle virtueller Netzwerke werden nur dann generiert, wenn der Namespace Zugriff aus **ausgewählten Netzwerken** oder über **spezifische IP-Adressen** (IP-Filterregeln) erlaubt. Wenn Sie den Zugriff auf Ihren Namespace mit diesen Features nicht einschränken möchten und dennoch Protokolle virtueller Netzwerke erhalten möchten, um IP-Adressen von Clients zu verfolgen, die sich mit dem Namespace der Event Hubs verbinden, können Sie die folgende Umgehungslösung verwenden. Aktivieren Sie die IP-Filterung, und fügen Sie den gesamten adressierbaren IPv4-Bereich (1.0.0.0/1 bis 255.0.0.0/1) hinzu. Event Hubs unterstützt keine IPv6-Adressbereiche. 
+Protokolle virtueller Netzwerke werden nur dann generiert, wenn der Namespace Zugriff aus **ausgewählten Netzwerken** oder über **spezifische IP-Adressen** (IP-Filterregeln) erlaubt. Wenn Sie den Zugriff auf Ihren Namespace mit diesen Features nicht einschränken möchten und dennoch Protokolle virtueller Netzwerke erhalten möchten, um IP-Adressen von Clients zu verfolgen, die sich mit dem Namespace der Event Hubs verbinden, können Sie die folgende Umgehungslösung verwenden. [Aktivieren Sie IP-Filterung](event-hubs-ip-filtering.md), und fügen Sie den gesamten adressierbaren IPv4-Bereich (1.0.0.0/1 bis 255.0.0.0/1) hinzu. Die IP-Filterung von Event Hubs unterstützt keine IPv6-Adressbereiche. Beachten Sie, dass im IPv6-Format im Protokoll möglicherweise private Endpunktadressen angezeigt werden. 
 
 ### <a name="example"></a>Beispiel
 

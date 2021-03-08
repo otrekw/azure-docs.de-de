@@ -4,12 +4,12 @@ description: Beschreibt die Verwendung des CloudEvents-Schemas für Ereignisse i
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 93e514e0eac40cfaa51d410a446608deca3cbd6d
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 484f118791d57c082a9f4383b1af4a22c04849c4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901401"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737901"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Verwenden des CloudEvents 1.0-Schemas mit Event Grid
 Zusätzlich zu seinem [Standardereignisschema](event-schema.md) unterstützt Azure Event Grid nativ Ereignisse in der [JSON-Implementierung von CloudEvents 1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) und in der [HTTP-Bindung](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md). [CloudEvents](https://cloudevents.io/) ist eine [offene Spezifikation](https://github.com/cloudevents/spec/blob/v1.0/spec.md) zur Beschreibung von Ereignisdaten.
@@ -60,10 +60,10 @@ Sie können Event Grid für die Eingabe und Ausgabe von Ereignissen im CloudEven
 
  Event Grid-Ressource | Eingabeschema       | Schema für Bereitstellung
 |---------------------|-------------------|---------------------
-| Systemthemen       | Event Grid-Schema | Event Grid-Schema oder CloudEvent-Schema
-| Benutzerthemen/-domänen | Event Grid-Schema | Event Grid-Schema
+| Systemthemen       | Event Grid-Schema | Event Grid-Schema oder CloudEvents-Schema
+| Benutzerthemen/-domänen | Event Grid-Schema | Event Grid-Schema oder CloudEvents-Schema
 | Benutzerthemen/-domänen | CloudEvents-Schema | CloudEvents-Schema
-| Benutzerthemen/-domänen | Benutzerdefiniertes Schema     | Benutzerdefiniertes Schema, Event Grid-Schema oder CloudEvent-Schema
+| Benutzerthemen/-domänen | Benutzerdefiniertes Schema     | Benutzerdefiniertes Schema, Event Grid-Schema oder CloudEvents-Schema
 | PartnerTopics       | CloudEvents-Schema | CloudEvents-Schema
 
 In allen Ereignisschemas erfordert Event Grid vor dem Veröffentlichen in einem Event Grid-Thema und vor dem Erstellen eines Ereignisabonnements eine Überprüfung.

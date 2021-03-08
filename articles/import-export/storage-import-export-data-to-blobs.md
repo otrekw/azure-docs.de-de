@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 02/24/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b014f81354b2f7eb2fb06de540f16b08206d583e
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 2acc3d104786be330e3e799ad7bd96d703587581
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706004"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738989"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Blob Storage
 
@@ -68,7 +68,7 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
 6. Um den BitLocker-Schlüssel des Laufwerks abzurufen, führen Sie den folgenden Befehl aus:
 
     `manage-bde -protectors -get <DriveLetter>:`
-7. Um den Datenträger vorzubereiten, führen Sie den folgenden Befehl aus: **Dies kann je nach Größe der Daten mehrere Stunden bis Tage dauern.**
+7. Um den Datenträger vorzubereiten, führen Sie den folgenden Befehl aus: **Abhängig von der Datengröße kann die Vorbereitung des Datenträgers mehrere Stunden bis Tage dauern.**
 
     ```powershell
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
@@ -86,13 +86,14 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
     |/bk:     |Der BitLocker-Schlüssel für das Laufwerk Sein numerisches Kennwort aus der Ausgabe von `manage-bde -protectors -get D:`      |
     |/srcdir:     |Der Laufwerksbuchstabe des auszuliefernden Datenträgers gefolgt von `:\`. Beispiel: `D:\`.         |
     |/dstdir:     |Der Name des Zielcontainers in Azure Storage.         |
-    |/blobtype:     |Diese Option gibt den Typ des Blobs an, in den die Daten importiert werden sollen. Bei Blockblobs ist dies `BlockBlob` und bei Seitenblobs `PageBlob`.         |
-    |/skipwrite:     |Option, die angibt, dass keine neuen Daten kopiert werden müssen und vorhandene Daten auf dem Datenträger vorbereitet werden sollen.          |
+    |/blobtype:     |Diese Option gibt den Typ des Blobs an, in den die Daten importiert werden sollen. Bei Blockblobs ist der Blobtyp `BlockBlob`, für Seitenblobs `PageBlob`.         |
+    |/skipwrite:     | Gibt an, dass keine neuen Daten kopiert werden müssen und vorhandene Daten auf dem Datenträger vorbereitet werden sollen.          |
     |/enablecontentmd5:     |Wenn diese Option aktiviert ist, wird sichergestellt, dass MD5 berechnet und als `Content-md5`-Eigenschaft für jeden Blob festgelegt wird. Verwenden Sie diese Option nur, wenn Sie nach dem Hochladen der Daten in Azure das Feld `Content-md5` verwenden möchten. <br> Diese Option wirkt sich nicht auf die Datenintegritätsprüfung aus (diese wird standardmäßig ausgeführt). Durch diese Einstellung wird die Zeit zum Hochladen von Daten in die Cloud nicht verlängert.          |
 8. Wiederholen Sie den vorherigen Schritt für jeden Datenträger, der versendet werden muss. Für jede Ausführung an der Befehlszeile wird eine Journaldatei mit dem bereitgestellten Namen erstellt.
 
     > [!IMPORTANT]
     > * Zusammen mit der Journaldatei wird auch eine `<Journal file name>_DriveInfo_<Drive serial ID>.xml`-Datei erstellt, und zwar im gleichen Ordner, in dem sich das Tool befindet. Die XML-Datei wird beim Erstellen eines Auftrags anstelle der Journaldatei verwendet, wenn die Journaldatei zu groß ist.
+   > * Die maximale Größe der Journaldatei, die das Portal zulässt, beträgt 2 MB. Wenn die Journaldatei diesen Grenzwert überschreitet, wird ein Fehler zurückgegeben.
 
 ## <a name="step-2-create-an-import-job"></a>Schritt 2: Erstellen eines Importauftrags
 
@@ -101,13 +102,13 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
 Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal zu erstellen.
 
 1. Melden Sie sich bei https://portal.azure.com/ an.
-2. Wechseln Sie zu **Alle Dienste > Speicher > Import-/Exportaufträge**.
+2. Suchen Sie nach **Aufträge importieren/exportieren**.
 
-    ![Wechseln zu „Import/Exportaufträge“](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+    ![Suchen nach „Aufträge importieren/exportieren“](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
-3. Klicken Sie auf **Import-/Exportauftrag erstellen**.
+3. Wählen Sie **+ Neu** aus.
 
-    ![Auf „Import-/Exportauftrag erstellen“ klicken](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+    ![Auswählen von „Neu“, um einen neuen Auftrag zu erstellen ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. Gehen Sie unter **Grundlegende Einstellungen** wie folgt vor:
 
@@ -118,7 +119,7 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
    * Wählen Sie ein Abonnement aus.
    * Wählen Sie eine Ressourcengruppe aus, oder geben Sie eine Gruppe ein.
 
-     ![Importauftrag erstellen – Schritt 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+     ![Importauftrag erstellen – Schritt 1](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
 
 5. Gehen Sie unter **Auftragsdetails** wie folgt vor:
 
@@ -126,7 +127,7 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
    * Wählen Sie das Zielspeicherkonto aus, in dem Daten gespeichert werden sollen.
    * Der Ablageort wird automatisch basierend auf der Region des ausgewählten Speicherkontos mit Daten aufgefüllt.
 
-   ![Importauftrag erstellen – Schritt 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
+   ![Importauftrag erstellen – Schritt 2](./media/storage-import-export-data-to-blobs/import-to-blob-4.png)
 
 6. Gehen Sie unter **Informationen für Rücksendung** wie folgt vor:
 
@@ -137,14 +138,14 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
        > [!TIP]
        > Geben Sie anstelle einer E-Mail-Adresse für einen einzelnen Benutzer, eine Gruppen E-Mail-Adresse ein. Dadurch wird sichergestellt, dass Sie Benachrichtigungen erhalten, selbst wenn ein Administrator geht.
 
-     ![Importauftrag erstellen – Schritt 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+     ![Importauftrag erstellen – Schritt 3](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
 
 7. Gehen Sie unter **Zusammenfassung** wie folgt vor:
 
    * Überprüfen Sie die in der Zusammenfassung bereitgestellten Informationen zum Auftrag. Notieren Sie sich den Namen des Auftrags und die Versandadresse des Azure-Rechenzentrums, damit Sie Datenträger an Azure zurücksenden können. Diese Informationen werden später auf dem Adressetikett verwendet.
    * Klicken Sie auf **OK**, um den Importauftrag zu erstellen.
 
-     ![Importauftrag erstellen – Schritt 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+     ![Importauftrag erstellen – Schritt 4](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -323,7 +324,7 @@ Install-Module -Name Az.ImportExport
 
 ## <a name="step-3-optional-configure-customer-managed-key"></a>Schritt 3 (optional): Konfigurieren des kundenseitig verwalteten Schlüssels
 
-Überspringen Sie diesen Schritt, und fahren Sie mit dem nächsten Schritt fort, wenn Sie den von Microsoft verwalteten Schlüssel zum Schutz Ihrer BitLocker-Schlüssel für die Laufwerke verwenden möchten. Wenn Sie einen eigenen Schlüssel zum Schutz des BitLocker-Schlüssels konfigurieren möchten, befolgen Sie die Anweisungen unter [Konfigurieren von Kunden verwalteter Schlüssel mit Azure Key Vault für Azure Import/Export im Azure-Portal](storage-import-export-encryption-key-portal.md).
+Überspringen Sie diesen Schritt, und fahren Sie mit dem nächsten Schritt fort, wenn Sie den von Microsoft verwalteten Schlüssel zum Schutz Ihrer BitLocker-Schlüssel für die Laufwerke verwenden möchten. Wenn Sie einen eigenen Schlüssel zum Schutz des BitLocker-Schlüssels konfigurieren möchten, befolgen Sie die Anweisungen unter [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault für Azure Import/Export im Azure-Portal](storage-import-export-encryption-key-portal.md).
 
 ## <a name="step-4-ship-the-drives"></a>Schritt 4: Versenden der Laufwerke
 
