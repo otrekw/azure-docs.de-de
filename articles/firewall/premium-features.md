@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 02/25/2021
 ms.author: victorh
-ms.openlocfilehash: e823e1efc66592e9f48b7ff5e53a176a4e8cb514
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: ff5c6961e64deddc8e52dc92a7c34b5b369a44ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100549451"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715563"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Features der Azure Firewall Premium-Vorschau
 
@@ -80,7 +80,20 @@ Die Kategorien werden basierend auf dem Schweregrad in **Haftung**, **Hohe Bandb
 
 #### <a name="category-exceptions"></a>Kategorieausnahmen
 
-Sie können Ausnahmen für Ihre Webkategorisierungsregeln erstellen. Erstellen Sie innerhalb der Regelsammlungsgruppe eine separate Sammlung mit Zulassungs- oder Verweigerungsregeln mit einer höheren Priorität. Sie können beispielsweise eine Regelsammlung konfigurieren, die `www.linkedin.com` mit Priorität 100 zulässt, und eine Regelsammlung, die **Soziale Netzwerke** mit der Priorität 200 verweigert. Dadurch wird eine Ausnahme für die vordefinierte Webkategorie **Soziale Netzwerke** erstellt. 
+Sie können Ausnahmen für Ihre Webkategorisierungsregeln erstellen. Erstellen Sie innerhalb der Regelsammlungsgruppe eine separate Sammlung mit Zulassungs- oder Verweigerungsregeln mit einer höheren Priorität. Sie können beispielsweise eine Regelsammlung konfigurieren, die `www.linkedin.com` mit Priorität 100 zulässt, und eine Regelsammlung, die **Soziale Netzwerke** mit der Priorität 200 verweigert. Dadurch wird eine Ausnahme für die vordefinierte Webkategorie **Soziale Netzwerke** erstellt.
+
+#### <a name="categorization-change"></a>Kategorisierungsänderung
+
+In folgenden Fällen können Sie eine Kategorisierungsänderung anfordern:
+
+ - Wenn Sie glauben, dass sich ein FQDN oder eine URL in einer anderen Kategorie befinden sollte 
+ 
+oder 
+
+- Wenn Sie über eine vorgeschlagene Kategorie für einen nicht kategorisierten FQDN bzw. nicht kategorisierte URL verfügen
+
+Sie können gerne eine Anforderung über [https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) senden.
+ 
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
@@ -98,6 +111,7 @@ Nicht vertrauenswürdige, vom Kunden signierte Zertifikate|Vom Kunden signierte 
 |Falsche Quell-IP-Adresse in Warnungen mit IDPS für HTTP (ohne TLS-Inspektion).|Wenn HTTP-Nur-Text-Datenverkehr verwendet wird und IDPS eine neue Warnung ausgibt und das Ziel eine öffentliche IP-Adresse ist, ist die angezeigte Quell-IP-Adresse falsch (die interne IP-Adresse wird anstelle der ursprünglichen IP-Adresse angezeigt).|Die Korrektur ist geplant für die allgemeine Verfügbarkeit.|
 |Zertifikatverteilung|Nachdem ein Zertifizierungsstellenzertifikat auf die Firewall angewendet wurde, kann es zwischen 5-10 Minuten dauern, bis das Zertifikat wirksam wird.|Die Korrektur ist geplant für die allgemeine Verfügbarkeit.|
 |IDPS-Umgehung|Die IDPS-Umgehung funktioniert nicht für TLS-terminierten Datenverkehr und Quell-IP-Adressen und Quell-IP-Gruppen werden nicht unterstützt.|Die Korrektur ist geplant für die allgemeine Verfügbarkeit.|
+|Unterstützung für TLS 1.3|TLS 1.3 wird teilweise unterstützt. Der TLS-Tunnel vom Client zur Firewall basiert auf TLS 1.2 und der von der Firewall zum externen Webserver auf TLS 1.3.|Updates werden derzeit untersucht.|
 
 
 

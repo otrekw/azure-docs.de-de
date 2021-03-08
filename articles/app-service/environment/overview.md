@@ -4,15 +4,15 @@ description: Übersicht über die Azure App Service-Umgebung
 author: ccompy
 ms.assetid: 3d37f007-d6f2-4e47-8e26-b844e47ee919
 ms.topic: article
-ms.date: 11/16/2020
+ms.date: 03/02/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fbc498fcd654d16936c2548528e2600be68a2ad9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 23b23340550ded3642d19500270f06cfb6faf8cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663327"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735096"
 ---
 # <a name="app-service-environment-overview"></a>Übersicht über die App Service-Umgebung 
 
@@ -53,7 +53,7 @@ Die App Service-Umgebung umfasst viele Anwendungsfälle, einschließlich:
 Es gibt eine Reihe von Netzwerkfeatures, mit denen Apps im mehrinstanzenfähigen App Service netzwerkisolierte Ressourcen erreichen oder selbst netzwerkisoliert werden können. Diese Features werden auf Anwendungsebene aktiviert.  Bei einer ASE ist keine zusätzliche Konfiguration für die Apps erforderlich, damit sie im VNET vorhanden sein können. Die Apps werden in einer netzwerkisolierten Umgebung bereitgestellt, die sich bereits in einem VNET befindet. Die ASE hostet nicht nur netzwerkisolierte Apps, sie ist auch ein System mit nur einem Mandanten. Es gibt keine anderen Kunden, die die ASE verwenden. Wenn Sie wirklich eine vollständige Isolation benötigen, können Sie Ihre ASE auch auf dedizierter Hardware bereitstellen lassen. Zwischen netzwerkisoliertem Hosten von Anwendungen, Einzelmandant und der Fähigkeit 
 
 ## <a name="dedicated-environment"></a>Dedizierte Umgebung
-Eine ASE wird dediziert für ein einzelnes Abonnement verwendet und kann 200 App Service-Planinstanzen hosten. Dabei kann es sich um 100 Instanzen in einem einzelnen App Service-Plan oder auch um 100 App Service-Einzelinstanzpläne und alles dazwischen handeln.
+Eine ASE ist exklusiv für ein Einzelabonnement dediziert und kann insgesamt 200 App Service Plan-Instanzen für mehrere App Service-Pläne hosten. Das Wort „Instanz“ bezieht sich dabei auf die horizontale Skalierung für App Service-Plan. Jede Instanz ist äquivalent zu einer Workerrolle. Während eine ASE über insgesamt 200 Instanzen verfügen kann, kann ein einzelner Plan für App Service (isoliert, v2) 100 Instanzen enthalten. Die ASE kann zwei App Service-Pläne mit 100 Instanzen jeweils, 200 App Service-Pläne für eine Einzelinstanz oder einen beliebigen dazwischen liegenden Wert beinhalten.
 
 Eine ASE besteht aus Front-Ends und Worker. Front-Ends sind für die HTTP/HTTPS-Beendigung und den automatischen Lastenausgleich von App-Anforderungen in einer ASE zuständig. Front-Ends werden automatisch hinzugefügt, wenn die App Service-Pläne in der ASE horizontal hochskaliert werden.
 
@@ -77,7 +77,7 @@ Apps müssen häufig auch auf Unternehmensressourcen wie interne Datenbanken und
 ## <a name="preview"></a>Vorschau
 Die App Service-Umgebung v3 ist als öffentliche Vorschauversion verfügbar.  Einige Features werden im Verlauf der Vorschauphase hinzugefügt. Die aktuellen Einschränkungen von ASEv3 umfassen Folgendes:
 
-- App Service-Pläne können nicht über fünf Instanzen hinaus skaliert werden.
+- App Service-Pläne können nicht über fünfzig Instanzen hinaus skaliert werden.
 - Es kann kein Container aus einer privaten Registrierung abgerufen werden.
 - Derzeit nicht unterstützte App Service-Features können im Kunden-VNET nicht genutzt werden.
 - Kein externes Bereitstellungsmodell mit einem Endpunkt, auf den über das Internet zugegriffen werden kann.

@@ -4,12 +4,12 @@ description: Enthält grundlegende Informationen zum allgemeinen Warnungsschema,
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: aa619976c8fa03b925d66e884ad03fc4e385693e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 70e37f8f1c9391eee5901f611bae579efe1cd9b9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599702"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737289"
 ---
 # <a name="common-alert-schema"></a>Allgemeines Warnungsschema
 
@@ -52,7 +52,7 @@ Sie können sowohl im Portal als auch in der REST-API über Aktionsgruppen eine 
 > 1. Für die folgenden Warnungstypen wird das allgemeine Schema standardmäßig unterstützt (keine Aktivierung erforderlich):
 >     * Warnungen der intelligenten Erkennung
 > 1. Von den folgenden Warnungstypen wird das allgemeine Schema derzeit nicht unterstützt:
->     * Von [Azure Monitor für VMs](../insights/vminsights-overview.md) generierte Warnungen
+>     * Von [VM Insights](../vm/vminsights-overview.md) generierte Warnungen
 >     * Von [Azure Cost Management](../../cost-management-billing/manage/cost-management-budget-scenario.md) generierte Warnungen
 
 ### <a name="through-the-azure-portal"></a>Über das Azure-Portal

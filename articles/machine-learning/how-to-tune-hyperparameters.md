@@ -8,15 +8,15 @@ ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 01/29/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a4be95561c097191803f2faa271c5d6bba875869
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 768d2011ae3f2826b42befa8f0d40f0e56b993fd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430370"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032686"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Optimierung der Hyperparameter eines Modells mit Azure Machine Learning
 
@@ -25,7 +25,7 @@ Automatisieren eine effiziente Hyperparameteroptimierung mithilfe des [HyperDriv
 1. Definieren des Suchbereichs für Parameter
 1. Festlegen einer zu optimierenden primären Metrik  
 1. Festlegen einer Richtlinie für die frühzeitige Beendigung bei Ausführungen mit geringer Leistung
-1. Zuordnen von Ressourcen
+1. Erstellen und Zuweisen von Ressourcen
 1. Starten eines Experiments mit der definierten Konfiguration
 1. Visualisieren der Trainingsläufe
 1. Auswählen der für Ihr Modell am besten geeigneten Konfiguration
@@ -119,7 +119,7 @@ param_sampling = RandomParameterSampling( {
 
 [Rastersampling](/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?preserve-view=true&view=azure-ml-py) unterstützt diskrete Hyperparameter. Verwenden Sie das Rastersampling, wenn Sie es sich leisten können, Suchbereiche umfassend zu durchsuchen. Diese Methode unterstützt die Beendigung von Ausführungen mit geringer Leistung.
 
-Bei dieser Methode wird eine einfache Rastersuche für alle möglichen Werte durchgeführt. Das Rastersampling kann nur für `choice`-Hyperparameter verwendet werden. Der folgende Bereich enthält insgesamt sechs Stichproben:
+Beim Rastersampling wird eine einfache Rastersuche für alle möglichen Werte durchgeführt. Das Rastersampling kann nur für `choice`-Hyperparameter verwendet werden. Der folgende Bereich enthält insgesamt sechs Stichproben:
 
 ```Python
 from azureml.train.hyperdrive import GridParameterSampling
@@ -133,7 +133,7 @@ param_sampling = GridParameterSampling( {
 
 #### <a name="bayesian-sampling"></a>Bayessches Sampling
 
-[Bayessches Sampling](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?preserve-view=true&view=azure-ml-py) basiert auf dem bayesschen Optimierungsalgorithmus. Bei dieser Methode werden Stichproben anhand der Leistung vorheriger Stichproben so ausgewählt, dass die primäre Metrik durch die neuen Stichproben verbessert wird.
+[Bayessches Sampling](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?preserve-view=true&view=azure-ml-py) basiert auf dem bayesschen Optimierungsalgorithmus. Bei dieser Methode werden Stichproben auf der Grundlage des Ergebnisses vorheriger Stichproben so gewählt, dass die primäre Metrik durch die neuen Stichproben verbessert wird.
 
 Bayessches Sampling wird empfohlen, wenn Sie es sich leisten können, den Hyperparameterbereich zu erkunden. Optimale Ergebnisse erzielen Sie mit einer maximalen Anzahl von Ausführungen, die größer als oder gleich dem 20-fachen der Anzahl der zu optimierenden Hyperparameter ist. 
 
@@ -203,7 +203,7 @@ Azure Machine Learning unterstützt die folgenden Richtlinien für vorzeitige Be
 
 ### <a name="bandit-policy"></a>Banditenrichtlinie
 
-Eine [Banditenrichtlinie](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition) basiert auf einem Pufferbereich/Pufferbetrag und einem Bewertungsintervall. Die Banditenrichtlinie beendet Ausführungen, bei denen die primäre Metrik verglichen mit der Ausführung mit der besten Leistung nicht dem angegebenen Pufferbereich/Pufferbetrag entspricht.
+Eine [Banditenrichtlinie](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition) basiert auf einem Pufferbereich/Pufferbetrag und einem Bewertungsintervall. Durch die Banditenrichtlinie werden Ausführungen beendet, wenn die primäre Metrik nicht innerhalb des angegebenen Pufferbereichs/Pufferbetrags der erfolgreichsten Ausführung liegt.
 
 > [!NOTE]
 > Beim bayesschen Sampling wird die frühzeitige Beendigung nicht unterstützt. Legen Sie bei Verwendung des bayesschen Sampling `early_termination_policy = None` fest.
@@ -226,7 +226,7 @@ In diesem Beispiel wird die Richtlinie zur frühzeitigen Beendigung bei jedem In
 
 ### <a name="median-stopping-policy"></a>Medianstopprichtlinie
 
-Die [Medianstopprichtlinie](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?preserve-view=true&view=azure-ml-py) ist eine Richtlinie für vorzeitige Beendigung, die auf dem gleitenden Durchschnitt der von den Ausführungen gemeldeten primären Metriken basiert. Diese Richtlinie berechnet den gleitenden Durchschnitt über alle Trainingsausführungen und beendet Ausführungen mit primären Metrikwerten, die schlechter als der Median der Durchschnittswerte sind.
+Die [Medianstopprichtlinie](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?preserve-view=true&view=azure-ml-py) ist eine Richtlinie für vorzeitige Beendigung, die auf dem gleitenden Durchschnitt der von den Ausführungen gemeldeten primären Metriken basiert. Diese Richtlinie berechnet den gleitenden Durchschnitt für alle Trainingsausführungen und beendet Ausführungen, bei denen der Wert der primären Metrik schlechter ist als der Median der Durchschnittswerte.
 
 Diese Richtlinie akzeptiert die folgenden Konfigurationsparameter:
 * `evaluation_interval`: die Anwendungshäufigkeit der Richtlinie (optionaler Parameter).
@@ -238,7 +238,7 @@ from azureml.train.hyperdrive import MedianStoppingPolicy
 early_termination_policy = MedianStoppingPolicy(evaluation_interval=1, delay_evaluation=5)
 ```
 
-In diesem Beispiel wird die Richtlinie zur frühzeitigen Beendigung bei jedem Intervall angewendet, beginnend bei Auswertungsintervall 5. Eine Ausführung wird in Intervall 5 beendet, wenn die beste primäre Metrik schlechter als der Median des gleitenden Durchschnitts der Intervalle 1:5 über alle Trainingsausführungen ist.
+In diesem Beispiel wird die Richtlinie zur frühzeitigen Beendigung bei jedem Intervall angewendet, beginnend bei Auswertungsintervall 5. Eine Ausführung wird im fünften Intervall beendet, wenn die beste primäre Metrik schlechter als der Median des gleitenden Durchschnitts der Intervalle 1:5 für alle Trainingsausführungen ist.
 
 ### <a name="truncation-selection-policy"></a>Kürzungsauswahlrichtlinie
 
@@ -271,7 +271,7 @@ policy=None
 * Bei einer konservativen Richtlinie, die eine Ersparnis ohne Beendigung vielversprechender Aufträge ermöglicht, sollten Sie eine Medianstopprichtlinie mit den Werten 1 für `evaluation_interval` und 5 für `delay_evaluation` verwenden. Dies ist eine konservative Einstellung, die annähernd 25 %–35 % Ersparnis ohne Verluste bei der primären Metrik erbringen kann (bezogen auf unsere Auswertungsdaten).
 * Bei aggressiveren Einsparungen verwenden Sie die Banditenrichtlinie mit einem strengeren (kleineren) zulässigen Puffer oder die Kürzungsauswahlrichtlinie mit einem höheren Kürzungsprozentsatz.
 
-## <a name="allocate-resources"></a>Zuordnen von Ressourcen
+## <a name="create-and-assign-resources"></a>Erstellen und Zuweisen von Ressourcen
 
 Legen Sie Ihr Ressourcenbudget fest, indem Sie die maximale Anzahl von Trainingsausführungen festlegen.
 
@@ -302,18 +302,28 @@ Geben Sie Folgendes an, um [Ihr Experiment zur Hyperparameteroptimierung zu konf
 * Ihre Richtlinie für vorzeitige Beendigung
 * Die primäre Metrik
 * Einstellungen für die Ressourcenzuordnung
-* ScriptRunConfig `src`
+* ScriptRunConfig `script_run_config`
 
 „ScriptRunConfig“ ist das Trainingsskript, das mit den als Stichprobe entnommenen Hyperparametern ausgeführt wird. Damit werden die Ressourcen pro Auftrag (mit einem oder mehreren Knoten) und das zu verwendende Computeziel definiert.
 
 > [!NOTE]
->Das in `src` angegebene Computeziel muss über genügend Ressourcen für Ihren Parallelitätsgrad verfügen. Weitere Informationen zu „ScriptRunConfig“ finden Sie unter [Konfigurieren einer Trainingsausführung](how-to-set-up-training-targets.md).
+>Das in `script_run_config` verwendete Computeziel muss über genügend Ressourcen für Ihren Parallelitätsgrad verfügen. Weitere Informationen zu „ScriptRunConfig“ finden Sie unter [Konfigurieren einer Trainingsausführung](how-to-set-up-training-targets.md).
 
 Konfigurieren Sie Ihr Experiment zur Hyperparameteroptimierung:
 
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
-hd_config = HyperDriveConfig(run_config=src,
+from azureml.train.hyperdrive import RandomParameterSampling, BanditPolicy, uniform, PrimaryMetricGoal
+
+param_sampling = RandomParameterSampling( {
+        'learning_rate': uniform(0.0005, 0.005),
+        'momentum': uniform(0.9, 0.99)
+    }
+)
+
+early_termination_policy = BanditPolicy(slack_factor=0.15, evaluation_interval=1, delay_evaluation=10)
+
+hd_config = HyperDriveConfig(run_config=script_run_config,
                              hyperparameter_sampling=param_sampling,
                              policy=early_termination_policy,
                              primary_metric_name="accuracy",
@@ -321,6 +331,36 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_total_runs=100,
                              max_concurrent_runs=4)
 ```
+
+Durch `HyperDriveConfig` werden die an `ScriptRunConfig script_run_config` übergebenen Parameter festgelegt. Von `script_run_config` werden im Gegenzug Parameter an das Trainingsskript übergeben. Der obige Codeausschnitt stammt aus dem [Beispielnotebook zum Trainieren, Optimieren der Hyperparameter und Bereitstellen mit PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch). In diesem Beispiel werden die Parameter `learning_rate` und `momentum` optimiert. Die frühzeitige Beendigung von Ausführungen wird durch eine Banditenrichtlinie (`BanditPolicy`) bestimmt. Bei dieser Richtlinie werden Ausführungen beendet, deren primäre Metrik außerhalb von `slack_factor` liegt. (Weitere Informationen finden Sie in der [Referenz zur BanditPolicy-Klasse](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy).) 
+
+Der folgende Code aus dem Beispiel zeigt, wie die zu optimierenden Werte empfangen, analysiert und an die Funktion `fine_tune_model` des Trainingsskripts übergeben werden:
+
+```python
+# from pytorch_train.py
+def main():
+    print("Torch version:", torch.__version__)
+
+    # get command-line arguments
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--num_epochs', type=int, default=25,
+                        help='number of epochs to train')
+    parser.add_argument('--output_dir', type=str, help='output directory')
+    parser.add_argument('--learning_rate', type=float,
+                        default=0.001, help='learning rate')
+    parser.add_argument('--momentum', type=float, default=0.9, help='momentum')
+    args = parser.parse_args()
+
+    data_dir = download_data()
+    print("data directory is: " + data_dir)
+    model = fine_tune_model(args.num_epochs, data_dir,
+                            args.learning_rate, args.momentum)
+    os.makedirs(args.output_dir, exist_ok=True)
+    torch.save(model, os.path.join(args.output_dir, 'model.pt'))
+```
+
+> [!Important]
+> Das Training wird bei jeder Hyperparameterausführung von Grund auf neu gestartet (einschließlich Neuerstellung des Modells und _aller Datenlader_). Zur Kompensierung können Sie eine Azure Machine Learning-Pipeline oder einen manuellen Prozess verwenden, um einen möglichst großen Teil der Datenaufbereitung vor der Trainingsausführung durchzuführen. 
 
 ## <a name="submit-hyperparameter-tuning-experiment"></a>Übermitteln des Experiments zur Hyperparameteroptimierung
 
@@ -335,7 +375,6 @@ hyperdrive_run = experiment.submit(hd_config)
 ## <a name="warm-start-hyperparameter-tuning-optional"></a>Warmstart für die Hyperparameteroptimierung (optional)
 
 Die Suche nach den besten Hyperparameterwerten für Ihr Modell kann ein iterativer Vorgang sein. Zur Beschleunigung der Hyperparameteroptimierung können Sie das Wissen aus den fünf vorherigen Ausführungen wiederverwenden.
-
 
 Der Warmstart erfolgt je nach Samplingmethode unterschiedlich:
 - **Bayessches Sampling**: Versuche aus den früheren Ausführungen werden bei der Auswahl neuer Stichproben als Vorwissen und zur Verbesserung der primären Metrik verwendet.
@@ -368,7 +407,7 @@ Sie können Ihr Experiment zur Hyperparameteroptimierung so konfigurieren, dass 
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
 
-hd_config = HyperDriveConfig(run_config=src,
+hd_config = HyperDriveConfig(run_config=script_run_config,
                              hyperparameter_sampling=param_sampling,
                              policy=early_termination_policy,
                              resume_from=warmstart_parents_to_resume_from,

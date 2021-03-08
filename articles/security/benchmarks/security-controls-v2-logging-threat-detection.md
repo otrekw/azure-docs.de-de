@@ -4,19 +4,21 @@ description: 'Azure-Sicherheitsvergleichstest V2: Protokollierung und Bedrohungs
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2a0ce52c094739ffbbce2f93a41b2533222066b8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a274ec1aab3f530700f89ef810fa667fdf4d08e6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576808"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042979"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>Sicherheitskontrolle V2: Protokollierung und Bedrohungserkennung
 
-Die Protokollierung und Bedrohungserkennung umfasst alle Steuerelemente zum Erkennen von Bedrohungen in Azure und zum Aktivieren, Sammeln und Speichern von Überwachungsprotokollen für Azure-Dienste. Dazu gehört das Aktivieren von Erkennungs-, Untersuchungs- und Wiederherstellungsprozessen mit Steuerelementen, um mithilfe von nativer Bedrohungserkennung hochwertige Warnungen in Azure-Diensten zu generieren. Zudem werden mit Azure Monitor Protokolle gesammelt, die Sicherheitsanalyse wird mit Azure Sentinel zentralisiert, die Zeit wird synchronisiert sowie Protokolle aufbewahrt. 
+Die Protokollierung und Bedrohungserkennung umfasst alle Steuerelemente zum Erkennen von Bedrohungen in Azure und zum Aktivieren, Sammeln und Speichern von Überwachungsprotokollen für Azure-Dienste. Dazu gehört das Aktivieren von Erkennungs-, Untersuchungs- und Wiederherstellungsprozessen mit Steuerelementen, um mithilfe von nativer Bedrohungserkennung hochwertige Warnungen in Azure-Diensten zu generieren. Zudem werden mit Azure Monitor Protokolle gesammelt, die Sicherheitsanalyse wird mit Azure Sentinel zentralisiert, die Zeit wird synchronisiert sowie Protokolle aufbewahrt.
+
+Die entsprechende integrierte Azure Policy-Richtlinie finden Sie [im Abschnitt „Protokollierung und Bedrohungserkennung“ des Artikels „Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen im Azure-Sicherheitsvergleichstest“](../../governance/policy/samples/azure-security-benchmark.md#logging-and-threat-detection).
 
 ## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: Aktivieren der Bedrohungserkennung für Azure-Ressourcen
 
@@ -28,7 +30,7 @@ Stellen Sie sicher, dass Sie unterschiedliche Arten von Azure-Ressourcen nach po
 
 Verwenden Sie die integrierte Funktion zur Bedrohungserkennung in Azure Security Center, die auf der Überwachung der Telemetrie von Azure-Diensten und der Analyse von Dienstprotokollen basiert. Die Daten werden mit dem Log Analytics-Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle im System und kopiert die Daten zur Analyse in den Arbeitsbereich. 
 
-Zusätzlich können Sie mithilfe von Azure Sentinel Analyseregeln erstellen, anhand derer in der gesamten Umgebung nach Bedrohungen gesucht wird, die bestimmten Kriterien entsprechen. Bei Übereinstimmung mit den Kriterien werden durch die Regeln Incidents generiert, die Sie einzeln untersuchen können. Sie können in Azure Sentinel auch Threat Intelligence von Drittanbietern importieren, um dessen Funktion zur Bedrohungserkennung zu verbessern. 
+Verwenden Sie außerdem Azure Sentinel, um Analyseregeln für die Suche nach Bedrohungen mit bestimmten Kriterien in Ihrer Umgebung zu erstellen. Bei Übereinstimmung mit den Kriterien werden durch die Regeln Incidents generiert, die Sie einzeln untersuchen können. Azure Sentinel kann auch Threat Intelligence von Drittanbietern importieren, um dessen Funktion zur Bedrohungserkennung zu verbessern. 
 
 - [Bedrohungsschutz in Azure Security Center](../../security-center/azure-defender.md)
 
@@ -46,7 +48,7 @@ Zusätzlich können Sie mithilfe von Azure Sentinel Analyseregeln erstellen, anh
 
 - [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Anwendungssicherheit und DevSecOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -67,7 +69,7 @@ Azure AD stellt die folgenden Benutzerprotokolle bereit, die Sie in der Azure AD
 
 -   Benutzer mit Risikomarkierung: Ein Benutzer mit Risikomarkierung ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
 
-Auch Azure Security Center kann bestimmte verdächtige Aktivitäten melden, wie z. B. eine übermäßige Anzahl fehlgeschlagener Authentifizierungsversuche oder veraltete Konten im Abonnement. Zusätzlich zur grundlegenden Sicherheitsüberwachung kann das Threat Protection-Modul von Azure Security Center auch ausführlichere Sicherheitswarnungen von einzelnen Azure-Computeressourcen (z. B. virtuelle Computer, Container, App Service), Datenressourcen (z. B. SQL-Datenbank und SQL-Speicher) und Azure-Dienstebenen sammeln. So erhalten Sie Einblick in Kontoanomalien innerhalb einzelner Ressourcen.
+Auch Azure Security Center kann bestimmte verdächtige Aktivitäten melden, wie z. B. eine übermäßige Anzahl fehlgeschlagener Authentifizierungsversuche oder veraltete Konten im Abonnement. Neben der grundlegenden Überwachung der Sicherheitshygiene kann das Threat Protection-Modul von Azure Security Center auch ausführlichere Sicherheitswarnungen von einzelnen Azure-Computeressourcen (z. B. virtuellen Computern, Containern, App Service), Datenressourcen (z. B. SQL-Datenbank und SQL-Speicher) und Azure-Dienstebenen sammeln. So erhalten Sie Einblick in Kontoanomalien innerhalb einzelner Ressourcen.
 
 - [Berichte zu Überwachungsaktivitäten in Azure AD](../../active-directory/reports-monitoring/concept-audit-logs.md)
 
@@ -83,9 +85,9 @@ Auch Azure Security Center kann bestimmte verdächtige Aktivitäten melden, wie 
 
 - [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-- [Anwendungssicherheit und DevSecOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Anwendungssicherheit und DevSecOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [Threat Intelligence](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
@@ -95,7 +97,9 @@ Auch Azure Security Center kann bestimmte verdächtige Aktivitäten melden, wie 
 |--|--|--|--|
 | LT-3 | 9.3, 12.2, 12.5, 12.8 | AU-3, AU-6, AU-12, SI-4 |
 
-Aktivieren und Sammeln Sie für die Sicherheitsanalyse NSG-Ressourcenprotokolle (Netzwerksicherheitsgruppe), NSG-Datenflussprotokolle, Azure Firewall-Protokolle sowie WAF-Protokolle (Web Application Firewall), um die Untersuchung von Incidents, die Bedrohungssuche und die Generierung von Sicherheitswarnungen zu unterstützen. Sie können die Datenflussprotokolle an einen Log Analytics-Arbeitsbereich von Azure Monitor senden und dann mithilfe von Traffic Analytics Einblicke ermöglichen. Stellen Sie sicher, dass es sich bei den gesammelten Protokollen um DNS-Abfragen handelt, um die Korrelation mit anderen Netzwerkdaten zu unterstützen.
+Aktivieren und Sammeln Sie für die Sicherheitsanalyse NSG-Ressourcenprotokolle (Netzwerksicherheitsgruppe), NSG-Datenflussprotokolle, Azure Firewall-Protokolle sowie WAF-Protokolle (Web Application Firewall), um die Untersuchung von Incidents, die Bedrohungssuche und die Generierung von Sicherheitswarnungen zu unterstützen. Sie können die Datenflussprotokolle an einen Log Analytics-Arbeitsbereich von Azure Monitor senden und dann mithilfe von Traffic Analytics Einblicke ermöglichen.
+
+Stellen Sie sicher, dass Sie Protokolle für DNS-Abfragen erfassen, um die Korrelation mit anderen Netzwerkdaten zu unterstützen.
 
 - [Aktivieren von Datenflussprotokollen für Netzwerksicherheitsgruppen](../../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -117,7 +121,7 @@ Aktivieren und Sammeln Sie für die Sicherheitsanalyse NSG-Ressourcenprotokolle 
 
 - [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Anwendungssicherheit und DevSecOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -131,7 +135,7 @@ Aktivieren und Sammeln Sie für die Sicherheitsanalyse NSG-Ressourcenprotokolle 
 
 Aktivieren Sie die Protokollierung für Azure-Ressourcen, um die Anforderungen hinsichtlich Compliance, Bedrohungserkennung und -suche sowie Untersuchung von Incidents zu erfüllen. 
 
-Sie können mithilfe von Azure Security Center und Azure Policy Ressourcenprotokolle und die Erfassung von Protokolldaten für Azure-Ressourcen aktivieren, um Zugriff auf Überwachungs-, Sicherheits- und Ressourcenprotokolle zu erhalten. Aktivitätsprotokolle, die automatisch verfügbar sind, enthalten Ereignisquelle, Datum, Benutzer, Zeitstempel, Quelladressen, Zieladressen und andere nützliche Elemente. 
+Sie können mithilfe von Azure Security Center und Azure Policy Ressourcenprotokolle und die Erfassung von Protokolldaten für Azure-Ressourcen aktivieren, um Zugriff auf Überwachungs-, Sicherheits- und Ressourcenprotokolle zu erhalten. Aktivitätsprotokolle, die automatisch verfügbar sind, enthalten Ereignisquelle, Datum, Benutzer, Zeitstempel, Quelladressen, Zieladressen und andere nützliche Elemente.
 
 - [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../../azure-monitor/essentials/platform-logs-overview.md)
 
@@ -145,7 +149,7 @@ Sie können mithilfe von Azure Security Center und Azure Policy Ressourcenprotok
 
 Infrastruktur- und Endpunktsicherheit 
 
-- [Anwendungssicherheit und DevOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Anwendungssicherheit und DevOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [Threat Intelligence](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
@@ -157,11 +161,11 @@ Infrastruktur- und Endpunktsicherheit
 
 Zentralisieren Sie die Speicherung und Analyse von Protokollen, um eine Korrelation zu ermöglichen. Stellen Sie sicher, dass jeder Protokollquelle ein Datenbesitzer, eine Zugriffsanleitung, ein Speicherort, die für die Verarbeitung und den Zugriff verwendeten Tools sowie Anforderungen zur Datenaufbewahrung zugewiesen werden.
 
-Stellen Sie sicher, dass die Azure-Aktivitätsprotokolle in die zentrale Protokollierung integriert werden. Erfassen von Protokollen über Azure Monitor zum Aggregieren von Sicherheitsdaten, die von Endpunktgeräten, Netzwerkressourcen und anderen Sicherheitssystemen generiert werden. Verwenden Sie in Azure Monitor Log Analytics-Arbeitsbereiche, um Analysen abzufragen und auszuführen, und verwenden Sie Azure Storage-Konten für langfristige Speicherung und Archivierung.
+Stellen Sie sicher, dass Sie Azure-Aktivitätsprotokolle in die zentrale Protokollierung integrieren. Erfassen von Protokollen über Azure Monitor zum Aggregieren von Sicherheitsdaten, die von Endpunktgeräten, Netzwerkressourcen und anderen Sicherheitssystemen generiert werden. Verwenden Sie in Azure Monitor Log Analytics-Arbeitsbereiche, um Analysen abzufragen und auszuführen, und verwenden Sie Azure Storage-Konten für langfristige Speicherung und Archivierung.
 
 Zusätzlich können Sie auch Daten in Azure Sentinel oder der SIEM-Lösung eines Drittanbieters aktivieren und integrieren.
 
-Viele Unternehmen verwenden Azure Sentinel für „heiße“ Daten, die häufig verwendet werden, und Azure Storage für seltener verwendete „kalte“ Daten. 
+Viele Organisationen verwenden Azure Sentinel für heiße Daten, die häufig verwendet werden, und Azure Storage für seltener verwendete, kalte Daten.
 
 - [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
@@ -189,7 +193,7 @@ In Azure Monitor können Sie den Aufbewahrungszeitraum des Log Analytics-Arbeits
 
 - [Ändern des Datenaufbewahrungszeitraums in Protokollanalyse](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Konfigurieren der Aufbewahrungsrichtlinie für Azure Storage-Kontoprotokolle](../../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 - [Exportieren von Azure Security Center-Warnungen und -Empfehlungen](../../security-center/continuous-export.md)
 
@@ -199,9 +203,9 @@ In Azure Monitor können Sie den Aufbewahrungszeitraum des Log Analytics-Arbeits
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Anwendungssicherheit und DevSecOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Anwendungssicherheit und DevSecOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
+- [Sicherheitsvorgänge](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Sicherheitscomplianceverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -211,7 +215,7 @@ In Azure Monitor können Sie den Aufbewahrungszeitraum des Log Analytics-Arbeits
 |--|--|--|--|
 | LT-7 | 6.1 | AU-8 |
 
-Microsoft verwaltet für die meisten PaaS- und SaaS-Dienste in Azure Zeitquellen. Verwenden Sie für Ihre virtuellen Computer zur Zeitsynchronisierung den NTP-Standardserver (Network Time Protocol) von Microsoft, sofern keine spezifischen Anforderungen vorliegen.  Sollten Sie einen eigenen NTP-Server einrichten müssen, schützen Sie den UDP-Dienstport 123.
+Microsoft verwaltet für die meisten PaaS- und SaaS-Dienste in Azure Zeitquellen. Verwenden Sie für Ihre virtuellen Computer zur Zeitsynchronisierung den NTP-Standardserver (Network Time Protocol) von Microsoft, sofern keine spezifischen Anforderungen vorliegen. Sollten Sie einen eigenen NTP-Server einrichten müssen, schützen Sie den UDP-Dienstport 123.
 
 Alle Protokolle, die in Azure von Ressourcen generiert werden, enthalten Zeitstempel der angegebenen Standardzeitzone.
 

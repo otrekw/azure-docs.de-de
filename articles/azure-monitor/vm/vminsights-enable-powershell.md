@@ -1,33 +1,33 @@
 ---
-title: Aktivieren von Azure Monitor für VMs mithilfe von PowerShell
-description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs für Azure-VMs oder VM-Skalierungsgruppen mithilfe von Azure PowerShell aktivieren.
+title: Aktivieren von VM Insights mithilfe von PowerShell
+description: In diesem Artikel wird beschrieben, wie Sie VM Insights für Azure-VMs oder VM-Skalierungsgruppen mithilfe von Azure PowerShell aktivieren.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 83b17e021ce8003b5dbd279886edfdc199f58ce3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 47ac71797684f82dfd94acff2d18bca11b2f50d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602163"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717076"
 ---
-# <a name="enable-azure-monitor-for-vms-using-powershell"></a>Aktivieren von Azure Monitor für VMs mithilfe von PowerShell
-In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs auf virtuellen Azure-Computern mithilfe von PowerShell aktivieren. Dieses Verfahren kann für Folgendes verwendet werden:
+# <a name="enable-vm-insights-using-powershell"></a>Aktivieren von VM Insights mithilfe von PowerShell
+In diesem Artikel wird beschrieben, wie Sie VM Insights auf virtuellen Azure-Computern mithilfe von PowerShell aktivieren. Dieses Verfahren kann für Folgendes verwendet werden:
 
 - Virtueller Azure-Computer
 - Azure-VM-Skalierungsgruppe
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Erstellen und konfigurieren Sie einen Log Analytics-Arbeitsbereich](../insights/vminsights-configure-workspace.md).
-- Beachten Sie die Informationen unter [Unterstützte Betriebssysteme](../insights/vminsights-enable-overview.md#supported-operating-systems), um sicherzustellen, dass das Betriebssystem der VM bzw. die von Ihnen aktivierte VM-Skalierungsgruppe unterstützt wird. 
+- [Erstellen und konfigurieren Sie einen Log Analytics-Arbeitsbereich](./vminsights-configure-workspace.md).
+- Beachten Sie die Informationen unter [Unterstützte Betriebssysteme](./vminsights-enable-overview.md#supported-operating-systems), um sicherzustellen, dass das Betriebssystem der VM bzw. die von Ihnen aktivierte VM-Skalierungsgruppe unterstützt wird. 
 
 
 ## <a name="powershell-script"></a>PowerShell-Skript
 
-Sie können das PowerShell-Skript [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights) verwenden, das im Azure PowerShell-Katalog verfügbar ist, um Azure Monitor für VMs für mehrere VMs oder VM-Skalierungsgruppen zu aktivieren. Das Skript durchläuft Folgendes:
+Sie können das PowerShell-Skript [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights) verwenden, das im Azure PowerShell-Katalog verfügbar ist, um VM Insights für mehrere VMs oder VM-Skalierungsgruppen zu aktivieren. Das Skript durchläuft Folgendes:
 
 - Alle virtuellen Computer und VM-Skalierungsgruppen in Ihrem Abonnement.
 - Die bereichsbezogene Ressourcengruppe gemäß der Angabe in *ResourceGroup*.
@@ -139,7 +139,7 @@ PARAMETERS
     Specify to use a PolicyAssignmentName for source and to reinstall (move to a new workspace)
 ```
 
-Das folgende Beispiel veranschaulicht die Verwendung der PowerShell-Befehle im Ordner, um Azure Monitor for VMs zu aktivieren und die erwartete Ausgabe zu verstehen:
+Das folgende Beispiel veranschaulicht die Verwendung der PowerShell-Befehle im Ordner, um VM Insights zu aktivieren und die erwartete Ausgabe zu verstehen:
 
 ```powershell
 $WorkspaceId = "<GUID>"
@@ -190,5 +190,5 @@ Failed: (0)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Verwenden des Zuordnungsfeatures in Azure Monitor für VMs](vminsights-maps.md). 
+* Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Verwenden der VM Insights-Zuordnung](vminsights-maps.md). 
 * Informationen zum Erkennen von Engpässen, der Gesamtauslastung und der Leistung Ihrer VM finden Sie unter [Darstellen der Leistung mit Azure Monitor für VMs](vminsights-performance.md).

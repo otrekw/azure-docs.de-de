@@ -7,18 +7,39 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 51e8f01726c732604199ff08323f073d508da66e
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6a5460a691658bda1cd60e503be8c98433c9c343
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602313"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720153"
 ---
 # <a name="examples-of-an-attestation-policy"></a>Beispiele für eine Nachweisrichtlinie
 
-Mit einer Nachweisrichtlinie wird der Nachweisbeweis verarbeitet und festgelegt, ob Azure Attestation ein Nachweistoken ausstellt. Die Erstellung von Nachweistoken kann mit benutzerdefinierten Richtlinien gesteuert werden. Nachfolgend sehen Sie einige Beispiele für eine Nachweisrichtlinie.
+Mit einer Nachweisrichtlinie wird der Nachweisbeweis verarbeitet und festgelegt, ob Azure Attestation ein Nachweistoken ausstellt. Die Erstellung von Nachweistoken kann mit benutzerdefinierten Richtlinien gesteuert werden. Nachfolgend sehen Sie einige Beispiele für eine Nachweisrichtlinie. 
 
-## <a name="default-policy-for-an-sgx-enclave"></a>Standardrichtlinie für eine SGX-Enclave 
+## <a name="sample-custom-policy-for-an-sgx-enclave"></a>Benutzerdefinierte Beispielrichtlinie für eine SGX-Enclave 
+
+```
+version= 1.0;
+authorizationrules
+{
+       [ type=="x-ms-sgx-is-debuggable", value==false ]
+        && [ type=="x-ms-sgx-product-id", value==<product-id> ]
+        && [ type=="x-ms-sgx-svn", value>= 0 ]
+        && [ type=="x-ms-sgx-mrsigner", value=="<mrsigner>"]
+    => permit();
+};
+issuancerules {
+c:[type=="x-ms-sgx-mrsigner"] => issue(type="<custom-name>", value=c.value);
+};
+
+```
+Weitere Informationen zu den eingehenden Ansprüchen, die von Azure Attestation erstellt werden, finden Sie unter [Anspruchsätze](/azure/attestation/claim-sets). Eingehende Ansprüche können von Richtlinienerstellern verwendet werden, um Autorisierungsregeln in einer benutzerdefinierten Richtlinie zu definieren. 
+
+Der Abschnitt zu Ausstellungsregeln ist nicht verpflichtend. Dieser Abschnitt kann von Benutzern verwendet werden, um weitere ausgehende Ansprüche zu erhalten, die im Nachweistoken mit benutzerdefinierten Namen erstellt werden. Weitere Informationen zu den vom Dienst im Nachweistoken erstellten ausgehenden Ansprüchen finden Sie unter [Anspruchsätze](/azure/attestation/claim-sets).
+
+## <a name="default-policy-for-an-sgx-enclave"></a>Standardrichtlinie für eine SGX-Enclave
 
 ```
 version= 1.0;
@@ -38,17 +59,18 @@ issuancerules
 };
 ```
 
-## <a name="sample-custom-policy-for-an-sgx-enclave"></a>Benutzerdefinierte Beispielrichtlinie für eine SGX-Enclave 
+Die in der Standardrichtlinie verwendeten Ansprüche werden als veraltet eingestuft, aber sie werden vollständig unterstützt und sind auch in Zukunft noch vorhanden. Wir empfehlen Ihnen, die nicht als veraltet eingestuften Anspruchsnamen zu verwenden. Weitere Informationen zu empfohlenen Anspruchsnamen finden Sie unter [Anspruchsätze](/azure/attestation/claim-sets). 
+
+## <a name="sample-custom-policy-to-support-multiple-sgx-enclaves"></a>Benutzerdefinierte Beispielrichtlinie mit Unterstützung für mehrere SGX-Enclaves
 
 ```
 version= 1.0;
-authorizationrules
+authorizationrules 
 {
-       [ type=="x-ms-sgx-is-debuggable", value==false ]
-        && [ type=="x-ms-sgx-product-id", value==<product-id> ]
-        && [ type=="x-ms-sgx-svn", value>= 0 ]
-        && [ type=="x-ms-sgx-mrsigner", value=="<mrsigner>"]
-    => permit();
+    [ type=="x-ms-sgx-is-debuggable", value==true ]&&
+    [ type=="x-ms-sgx-mrsigner", value=="mrsigner1"] => permit(); 
+    [ type=="x-ms-sgx-is-debuggable", value==true ]&& 
+    [ type=="x-ms-sgx-mrsigner", value=="mrsigner2"] => permit(); 
 };
 ```
 

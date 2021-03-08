@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: aadaedfd2c9ecf544d142e42a0fbeb410324b7d8
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e7c8653b39a3e0333ff6e98783a6e9a1437dba22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581362"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739210"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Systemanforderungen für Azure Data Box Gateway
 
@@ -32,7 +32,7 @@ Das dem Data Box Gateway zugrunde liegende Hostsystem ist in der Lage, die folge
 | Spezifikationen                                          | BESCHREIBUNG              |
 |---------------------------------------------------------|--------------------------|
 | Virtuelle Prozessoren (Kerne)   | Mindestens 4 |
-| Arbeitsspeicher  | Mindestens 8 GB|
+| Arbeitsspeicher  | Mindestens 8 GB, es werden jedoch dringend 16 GB empfohlen. |
 | Verfügbarkeit|Einzelner Knoten|
 | Datenträger| Betriebssystemdatenträger: 250 GB <br> Datenträger für Daten: Mindestens 2 TB, für schlanke Speicherzuweisung geeignet, muss durch SSD-Datenträger unterstützt werden|
 | Netzwerkschnittstellen|Mindestens eine virtuelle Netzwerkschnittstelle|

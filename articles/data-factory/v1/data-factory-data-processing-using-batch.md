@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c59e164d67a665a5e99cb5045b3b0cf38e33dc87
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ec04000e678cd3fc55f4681781f91b6d98ea41f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364272"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730863"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Verarbeiten umfangreicher Datasets mit Azure Data Factory und Azure Batch
 > [!NOTE]
@@ -575,9 +575,7 @@ In diesem Schritt erstellen Sie für Ihr Batch-Konto einen verknüpften Dienst, 
    d. Geben Sie die Batch-URI für die JSON-Eigenschaft **batchUri** ein.
 
       > [!IMPORTANT]
-      > Die URL auf dem Blatt **Batch-Konto** hat folgendes Format: \<accountname\>.\<region\>.batch.azure.com. Für die **batchUri**-Eigenschaft im JSON-Skript müssen Sie a88"accountname** aus der URL entfernen. z. B. `"batchUri": "https://eastus.batch.azure.com"`.
-      >
-      >
+      > Die URL auf dem Blatt **Batch-Konto** hat das folgende Format: `<accountname>.<region>.batch.azure.com`. Für die `batchUri`-Eigenschaft im JSON-Skript müssen Sie `<accountname>.` aus der URL entfernen. z. B. `"batchUri": "https://eastus.batch.azure.com"`.
 
       ![Blatt „Batch-Konto“](./media/data-factory-data-processing-using-batch/image9.png)
 

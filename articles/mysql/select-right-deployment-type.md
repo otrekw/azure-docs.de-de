@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 000de084cf9375347704cc4d3905ca36bdd77ff8
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 125431e6630ccfdd9e0e5d6b2a4ec5fa9b9e58fd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926188"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736184"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Auswählen der richtigen MySQL Server-Option in Azure
 
@@ -19,7 +19,7 @@ Mit Azure können Ihre MySQL-Serverworkloads auf einer gehosteten IaaS-VM (Infra
 
 Berücksichtigen Sie bei der Entscheidung die beiden folgenden Optionen:
 
-- **Azure Database for MySQL** : Diese Option ist eine vollständig verwaltete MySQL-Datenbank-Engine, die auf der stabilen Version der MySQL Community Edition basiert. Diese relationale DBaaS-Lösung (Database-as-a-Service), die auf der Azure-Cloudplattform gehostet wird, fällt in die Branchenkategorie PaaS.
+- **Azure Database for MySQL**: Diese Option ist eine vollständig verwaltete MySQL-Datenbank-Engine, die auf der stabilen Version der MySQL Community Edition basiert. Diese relationale DBaaS-Lösung (Database-as-a-Service), die auf der Azure-Cloudplattform gehostet wird, fällt in die Branchenkategorie PaaS.
 
   Mit einer verwalteten Instanz von MySQL in Azure können Sie die integrierten Features, d. h. automatisiertes Patchen, Hochverfügbarkeit, automatisierte Sicherungen, elastische Skalierung, Sicherheit auf Unternehmensniveau, Compliance und Governance, Überwachung und Warnungen, nutzen, für die ansonsten eine umfassende Konfiguration erforderlich ist, wenn MySQL Server lokal oder auf einem virtuellen Azure-Computer ausgeführt wird. Wenn Sie mit MySQL als Dienst arbeiten, bezahlen Sie nur für das, was Sie nutzen. Darüber hinaus haben Sie dank Optionen zum Hoch- und Aufskalieren ohne Unterbrechung mehr Kontrolle.
   
@@ -35,7 +35,7 @@ Berücksichtigen Sie bei der Entscheidung die beiden folgenden Optionen:
   - Zonenredundante Hochverfügbarkeit
   - Verwaltete Wartungsfenster
 
-- **MySQL auf Azure-VMs** : Diese Option fällt in die Branchenkategorie IaaS. Mit diesem Dienst können Sie MySQL Server auf einem verwalteten virtuellen Computer auf der Azure-Cloudplattform ausführen. Alle aktuellen Versionen und Editionen von MySQL können auf diesem virtuellen Computer installiert werden.
+- **MySQL auf Azure-VMs**: Diese Option fällt in die Branchenkategorie IaaS. Mit diesem Dienst können Sie MySQL Server auf einem verwalteten virtuellen Computer auf der Azure-Cloudplattform ausführen. Alle aktuellen Versionen und Editionen von MySQL können auf diesem virtuellen Computer installiert werden.
 
 ## <a name="comparing-the-mysql-deployment-options-in-azure"></a>Vergleich der MySQL-Bereitstellungsoptionen in Azure
 
@@ -43,17 +43,19 @@ Die Hauptunterschiede zwischen diesen Optionen werden in der folgenden Tabelle a
 
 | attribute          | Azure Database for MySQL<br/>Einzelner Server |Azure Database for MySQL<br/>Flexible Server  |MySQL auf Azure-VMs                      |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|:---------------------------------------|
-| Unterstützte MySQL-Versionen | 5.6, 5.7 & 8.0| 5.7 | Beliebige Version|
+| Unterstützte MySQL-Versionen | 5.6, 5.7 & 8.0| 5.7 und 8.0 | Beliebige Version|
 | Compute-Skalierung | Unterstützt (die Skalierung vom und zum Tarif Basic wird nicht unterstützt)| Unterstützt | Unterstützt|
 | Speichergröße | 5 GiB bis 16 TiB| 5 GiB bis 16 TiB | 32 GiB bis 32.767 GiB|
 | Onlinespeicherskalierung | Unterstützt| Unterstützt| Nicht unterstützt|
 | Automatische Speicherskalierung | Unterstützt| In der Vorschauversion nicht unterstützt| Nicht unterstützt|
+| Zusätzliche IOPS-Skalierung | Nicht unterstützt| Unterstützt| Nicht unterstützt|
 | Netzwerkverbindung | – Öffentliche Endpunkte mit Serverfirewall<br/> – Privater Zugriff mit Private Link-Unterstützung|– Öffentliche Endpunkte mit Serverfirewall<br/> – Privater Zugriff mit Virtual Network-Integration.| – Öffentliche Endpunkte mit Serverfirewall<br/> – Privater Zugriff mit Private Link-Unterstützung|
 | Vereinbarung zum Servicelevel (SLA) | SLA mit 99,99 %Verfügbarkeit |Keine SLA in der Vorschauversion| 99,99 % bei Verwendung von Verfügbarkeitszonen|
 | Betriebssystempatching| Automatic  | Automatisch mit benutzerdefinierter Wartungsfenstersteuerung | Von Endbenutzern verwaltet |
 | MySQL-Patching     | Automatic  | Automatisch mit benutzerdefinierter Wartungsfenstersteuerung | Von Endbenutzern verwaltet |
 | Hochverfügbarkeit | Integrierte Hochverfügbarkeit in einer einzelnen Verfügbarkeitszone| Integrierte Hochverfügbarkeit in Verfügbarkeitszonen und verfügbarkeitszonenübergreifend | Benutzerdefinierte Verwaltung, unter anderem mithilfe von Clustering und Replikation|
 | Zonenredundanz | Nicht unterstützt | Unterstützt | Unterstützt|
+| Zonenplatzierung | Nicht unterstützt | Unterstützt | Unterstützt|
 | Hybridszenario | Unterstützt mit [Datenreplikation](./concepts-data-in-replication.md)| Nicht in der Vorschau verfügbar | Von Endbenutzern verwaltet |
 | Lesereplikate | Unterstützt (bis zu 5 Replikate)| Unterstützt (bis zu 10 Replikate)| Von Endbenutzern verwaltet |
 | Backup | Automatisiert mit Aufbewahrungsdauer von 7 bis 35 Tagen | Automatisiert mit Aufbewahrungsdauer von 1 bis 35 Tagen | Von Endbenutzern verwaltet |

@@ -2,15 +2,15 @@
 title: Erstellen und Bereitstellen von Vorlagenspezifikationen
 description: Beschreibt, wie Sie Vorlagenspezifikationen erstellen und diese mit anderen Benutzern in Ihrer Organisation teilen.
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 03/02/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 762c483883d391c436065b13b54f127f1618d7f9
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: e4efc63ffa49b1c8ca44fc806e37e4aa91cd76c8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734914"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700387"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager-Vorlagenspezifikationen (Vorschau)
 
@@ -246,6 +246,78 @@ az deployment group create \
 
 ---
 
+## <a name="versioning"></a>Versionsverwaltung
+
+Wenn Sie eine Vorlagenspezifikation erstellen, geben Sie einen Versionsnamen dafür an. Wenn Sie den Vorlagencode durchlaufen, können Sie entweder eine vorhandene Version aktualisieren (für Hotfixes) oder eine neue Version veröffentlichen. Die Version ist eine Textzeichenfolge. Sie können sich für ein beliebiges Versionskontrollsystem entscheiden, einschließlich einer semantischen Versionsverwaltung. Benutzer der Vorlagenspezifikation können den Versionsnamen angeben, die sie bei der Bereitstellung verwenden möchten.
+
+## <a name="use-tags"></a>Verwenden von Tags
+
+[Tags](../management/tag-resources.md) helfen Ihnen dabei, Ihre Ressourcen logisch zu organisieren. Mithilfe von Azure PowerShell und der Azure CLI können Sie Tags zu Vorlagenspezifikationen hinzufügen:
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzTemplateSpec `
+  -Name storageSpec `
+  -Version 1.0a `
+  -ResourceGroupName templateSpecsRg `
+  -Location westus2 `
+  -TemplateFile ./mainTemplate.json `
+  -Tag @{Dept="Finance";Environment="Production"}
+```
+
+# <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/azure-cli)
+
+```azurecli
+az ts create \
+  --name storageSpec \
+  --version "1.0a" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json" \
+  --tags Dept=Finance Environment=Production
+```
+
+---
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Set-AzTemplateSpec `
+  -Name storageSpec `
+  -Version 1.0a `
+  -ResourceGroupName templateSpecsRg `
+  -Location westus2 `
+  -TemplateFile ./mainTemplate.json `
+  -Tag @{Dept="Finance";Environment="Production"}
+```
+
+# <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/azure-cli)
+
+```azurecli
+az ts update \
+  --name storageSpec \
+  --version "1.0a" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json" \
+  --tags Dept=Finance Environment=Production
+```
+
+---
+
+Beim Erstellen oder Ändern einer Vorlagenspezifikation mit angegebenem Parameter „Version“, aber ohne den Parameter „Tag/Tags“, gilt Folgendes:
+
+- Wenn die Vorlagenspezifikation vorliegt und Tags aufweist, aber die Version nicht vorhanden ist, erbt die neue Version dieselben Tags wie die vorhandene Vorlagenspezifikation.
+
+Beim Erstellen oder Ändern einer Vorlagenspezifikation, bei der sowohl die Parameter „Tag/Tags“ als auch „Version“ angegeben sind, gilt Folgendes:
+
+- Wenn sowohl die Vorlagenspezifikation als auch die Version nicht vorhanden sind, werden die Tags zur neuen Vorlagenspezifikation und zur neuen Version hinzugefügt.
+- Wenn die Vorlagenspezifikation vorhanden ist, aber die Version nicht vorliegt, werden die Tags nur zur neuen Version hinzugefügt.
+- Wenn sowohl die Vorlagenspezifikation als auch die Version vorhanden sind, werden die Tags nur auf die Version angewendet.
+
+Beim Ändern einer Vorlage mit festgelegtem Parameter „Tag/Tags“, aber ohne den Parameter „Version“, werden die Tags nur zur Vorlagenspezifikation hinzugefügt.
+
 ## <a name="create-a-template-spec-with-linked-templates"></a>Erstellen einer Vorlagenspezifikation mit verknüpften Vorlagen
 
 Wenn die Hauptvorlage für Ihre Vorlagenspezifikation auf verknüpfte Vorlagen verweist, können die PowerShell- und CLI-Befehle die verknüpften Vorlagen auf Ihrem lokalen Laufwerk automatisch suchen und verpacken. Sie müssen keine Speicherkonten oder Repositorys manuell konfigurieren, um die Vorlagenspezifikationen zu hosten – alles befindet sich eigenständig in der Vorlagenspezifikationsressource.
@@ -331,10 +403,6 @@ Das folgende Beispiel ähnelt dem vorherigen Beispiel, aber Sie verwenden die `i
 ```
 
 Weitere Informationen zum Verknüpfen von Vorlagenspezifikationen finden Sie unter [Tutorial: Bereitstellen einer Vorlagenspezifikation als verknüpfte Vorlage](template-specs-deploy-linked-template.md).
-
-## <a name="versioning"></a>Versionsverwaltung
-
-Wenn Sie eine Vorlagenspezifikation erstellen, geben Sie einen Versionsnamen dafür an. Wenn Sie den Vorlagencode durchlaufen, können Sie entweder eine vorhandene Version aktualisieren (für Hotfixes) oder eine neue Version veröffentlichen. Die Version ist eine Textzeichenfolge. Sie können sich für ein beliebiges Versionskontrollsystem entscheiden, einschließlich einer semantischen Versionsverwaltung. Benutzer der Vorlagenspezifikation können den Versionsnamen angeben, die sie bei der Bereitstellung verwenden möchten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

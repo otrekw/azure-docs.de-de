@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: ff4882f2146a8b978047df2fcf6c52734534979f
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: d4ab5361d245ad1ee10d43184cc0a2d65fed2054
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833982"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730030"
 ---
 # <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>Migrieren von Verbindungsmonitor (klassisch) zu Verbindungsmonitor
 
@@ -32,7 +32,7 @@ Die Migration hilft beim Liefern der folgenden Ergebnisse:
 
 * Die Funktionen von Agents und Firewalleinstellungen bleiben unverändert erhalten. Es sind keine Änderungen erforderlich. 
 * Vorhandene Verbindungsmonitore werden „Verbindungsmonitor > Testgruppe > Testformat“ zugeordnet. Sie können **Bearbeiten** auswählen, um die Eigenschaften des neuen Verbindungsmonitors anzuzeigen und zu ändern. Laden Sie eine Vorlage herunter, um Änderungen am Verbindungsmonitor vorzunehmen und diese über Azure Resource Manager zu übermitteln. 
-* Virtuelle Azure-Computer mit der Network Watcher-Erweiterung senden Daten an den Arbeitsbereich und die Metriken. Verbindungsmonitore stellen die Daten über die neuen Metriken „ChecksFailedPercent“ und „RoundTripTimeMs“ anstatt über die veralteten Metriken „ProbesFailedPercent“ und „AverageRoundtripMs“ zur Verfügung. 
+* Virtuelle Azure-Computer mit der Network Watcher-Erweiterung senden Daten an den Arbeitsbereich und die Metriken. Verbindungsmonitore stellen die Daten über die neuen Metriken „ChecksFailedPercent“ und „RoundTripTimeMs“ anstatt über die veralteten Metriken „ProbesFailedPercent“ und „AverageRoundtripMs“ zur Verfügung. Die alten Metriken werden zu neuen Metriken migriert, also ProbesFailedPercent zu ChecksFailedPercent und AverageRoundtripMs zu RoundTripTimeMs.
 * Datenüberwachung:
    * **Warnungen**: Wurden automatisch zu den neuen Metriken migriert.
    * **Analysen und Integrationen**: Erfordern die manuelle Bearbeitung des Satzes der Metriken. 
@@ -49,7 +49,7 @@ Wenn Sie einen benutzerdefinierten Arbeitsbereich verwenden, stellen Sie sicher,
     
 1. Wählen Sie Ihr Abonnement und die Verbindungsmonitore aus, die Sie migrieren möchten, und wählen Sie dann **Ausgewählte migrieren** aus. 
 
-Sie haben mit nur wenigen Klicks die Migration von vorhandenen Verbindungsmonitoren zu Verbindungsmonitor durchgeführt. 
+Sie haben mit nur wenigen Klicks die Migration von vorhandenen Verbindungsmonitoren zu Verbindungsmonitor durchgeführt. Nach der Migration vom Verbindungsmonitor (klassisch) zum Verbindungsmonitor wird kein Monitor unter „Verbindungsmonitor (klassisch)“ angezeigt.
 
 Sie können jetzt die Verbindungsmonitor-Eigenschaften anpassen, den Standardarbeitsbereich ändern, Vorlagen herunterladen und den Migrationsstatus überprüfen. 
 

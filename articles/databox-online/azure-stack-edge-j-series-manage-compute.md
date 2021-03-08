@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 4c4fbef807d31e03a79f80db7fd29580074fb8bd
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: bd49edcfaca781ac3d36fbf871ec146b32c64ae3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955453"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733413"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Verwalten von Computeressourcen auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
@@ -21,11 +21,6 @@ ms.locfileid: "98955453"
 
 In diesem Artikel erfahren Sie, wie Sie Computeressourcen per IoT Edge-Dienst auf Ihrem Azure Stack Edge Pro-GPU-Gerät verwalten. Die Computekonfiguration kann über das Azure-Portal oder über die lokale Webbenutzeroberfläche verwaltet werden. Verwenden Sie das Azure-Portal, um Module, Trigger und die IoT Edge-Konfiguration zu verwalten, und die lokale Webbenutzeroberfläche, um Compute-Netzwerkeinstellungen zu verwalten.
 
-In diesem Artikel werden folgende Vorgehensweisen behandelt:
-
-> [!div class="checklist"]
-> * Verwalten von Triggern
-> * Verwalten der IoT Edge-Konfiguration
 
 
 ## <a name="manage-triggers"></a>Verwalten von Triggern
@@ -130,6 +125,22 @@ Gehen Sie im Azure-Portal wie folgt vor, um die Zugriffsschlüssel für Ihr Ger�
     ![Auswählen von „Ja“ bei entsprechender Aufforderung](media/azure-stack-edge-j-series-manage-compute/refresh-configuration-2.png)
 
 3. Schließen Sie das Dialogfeld, wenn die Synchronisierung abgeschlossen ist.
+
+## <a name="change-external-service-ips-for-containers"></a>Ändern externer Dienst-IP-Adressen für Container
+
+Kubernetes-externe Dienst-IP-Adressen werden verwendet, um Dienste zu erreichen, die außerhalb des Kubernetes-Clusters verfügbar gemacht werden. Nachdem Ihr Gerät aktiviert wurde, können Sie die externen Dienst-IP-Adressen für containerisierte Workloads für Ihr Gerät festlegen oder ändern, indem Sie auf die lokale Benutzeroberfläche zugreifen.
+
+
+1. Rufen Sie in der lokalen Benutzeroberfläche des Geräts **Rechnen** auf.
+1. Wählen Sie den Port aus, dessen Netzwerk für Compute konfiguriert ist. Geben Sie auf dem Blatt, das geöffnet wird, die Kubernetes-externen Dienst-IP-Adressen (neu) an, oder ändern Sie diese (sofern vorhanden). Diese IP-Adressen werden für alle Dienste verwendet, die außerhalb des Kubernetes-Clusters verfügbar gemacht werden müssen. 
+    - Sie benötigen mindestens eine Dienst-IP für den Dienst `edgehub`, der auf Ihrem Gerät ausgeführt wird und von IoT Edge-Modulen verwendet wird. 
+    - Sie benötigen eine IP-Adresse für jedes zusätzliche IoT Edge-Modul oder jeden zusätzlichen IoT Edge-Container, den Sie bereitstellen möchten. 
+    - Dabei handelt es sich um statische, zusammenhängende IP-Adressen.
+
+    ![Ändern von Kubernetes-Dienst-IP-Adressen](media/azure-stack-edge-j-series-manage-compute/change-service-ips-1.png)
+
+1. Wählen Sie **Übernehmen**. Nachdem die IP-Adressen übernommen wurden, muss Ihr Gerät nicht neu gestartet werden. Die neuen IP-Adressen werden sofort wirksam.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

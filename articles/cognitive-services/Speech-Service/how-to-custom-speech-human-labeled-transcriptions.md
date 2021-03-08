@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: erhopf
-ms.openlocfilehash: db3d8f4424f59d8432221753af776a5b55859882
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: af6ced49071b7fbae983508e68964aa064ef38e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388854"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700030"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Erstellen von menschenmarkierten Transkriptionen
 
 Wenn Sie die Genauigkeit der Spracherkennung verbessern möchten, insbesondere bei Problemen, die durch Löschen oder falsches Ersetzen von Wörtern verursacht werden, können Sie menschenmarkierte Transkriptionen zusammen mit Ihren Audiodaten verwenden. Doch was sind menschenmarkierte Transkriptionen? Ganz einfach: Es sind wortwörtliche Transkriptionen einer Audiodatei.
 
-Zum Verbessern der Erkennung ist eine umfangreiche Stichprobe von Transkriptionsdaten erforderlich. Es wird empfohlen, zwischen 10 und 20 Stunden an Transkriptionsdaten bereitzustellen. Auf dieser Seite werden Richtlinien besprochen, die Ihnen beim Erstellen qualitativ hochwertiger Transkriptionen helfen sollen. Dieser Leitfaden ist nach Gebietsschema unterteilt und enthält Abschnitte für Englisch (USA), Chinesisch (Mandarin) und Deutsch.
+Zum Verbessern der Erkennung ist eine umfangreiche Stichprobe von Transkriptionsdaten erforderlich. Es wird empfohlen, zwischen 1 und 20 Stunden an Transkriptionsdaten bereitzustellen. Der Speech-Dienst verwendet bis zu 20 Stunden Audiodaten für das Training. Auf dieser Seite werden Richtlinien besprochen, die Ihnen beim Erstellen qualitativ hochwertiger Transkriptionen helfen sollen. Dieser Leitfaden ist nach Gebietsschema unterteilt und enthält Abschnitte für Englisch (USA), Chinesisch (Mandarin) und Deutsch.
 
 > [!NOTE]
 > Nicht alle Basismodelle unterstützen die Anpassung mit Audiodateien. Wenn ein Basismodell Anpassungen nicht unterstützt, wird für das Training nur der Text der Transkriptionen auf die gleiche Weise verwendet, wie der zugehörige Text genutzt wird. Eine Liste mit Basismodellen, die das Training mit Audiodaten unterstützen, finden Sie unter [Sprachunterstützung](language-support.md#speech-to-text).

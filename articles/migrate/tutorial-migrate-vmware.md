@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: a858bcc0e6f6364a1eb5c37d555f5f1e7064b650
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 17d9d3bf787b67716fb2270cd055e30a4fefbe0f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879460"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702197"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrieren von VMware-VMs zu Azure (ohne Agent)
 
@@ -57,7 +57,7 @@ Die Azure Migrate-Servermigration führt eine einfache VMware VM-Appliance aus, 
 
 Nachdem Sie die Appliance eingerichtet und die Ermittlung abgeschlossen haben, können Sie mit der Replikation von VMware-VMs in Azure beginnen. 
 
-- Sie können bis zu 300 Replizierungen gleichzeitig ausführen.
+- Sie können bis zu 500 Replizierungen gleichzeitig ausführen.
 - Sie können im Portal bis zu 10 VMs gleichzeitig für die Migration auswählen. Wenn Sie weitere Computer migrieren möchten, fügen Sie sie in Batches von 10 zu Gruppen hinzu.
 
 Aktivieren Sie die Replikation:
@@ -88,9 +88,10 @@ Aktivieren Sie die Replikation:
 9. Wählen Sie unter **Datenträgerverschlüsselungstyp** Folgendes aus:
     - Verschlüsselung ruhender Daten mit plattformseitig verwaltetem Schlüssel
     - Verschlüsselung ruhender Daten mit kundenseitig verwaltetem Schlüssel
+    - Mehrfachverschlüsselung mit plattformseitig und kundenseitig verwalteten Schlüsseln
 
    > [!NOTE]
-   > Um VMs mit CMK zu replizieren, müssen Sie unter der Zielressourcengruppe einen [Datenträgerverschlüsselungssatz erstellen](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set). Ein Datenträgerverschlüsselungssatz-Objekt ordnet verwaltete Datenträger einer Key Vault-Instanz zu, die den für SSE zu verwendenden CMK enthält.
+   > Um VMs mit CMK zu replizieren, müssen Sie unter der Zielressourcengruppe einen [Datenträgerverschlüsselungssatz erstellen](https://go.microsoft.com/fwlink/?linkid=2151800). Ein Datenträgerverschlüsselungssatz-Objekt ordnet verwaltete Datenträger einer Key Vault-Instanz zu, die den für SSE zu verwendenden CMK enthält.
   
 10. Wählen Sie unter **Azure-Hybridvorteil**
 

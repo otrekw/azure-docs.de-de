@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Probleme mit dem Java-Agent für Azure Monito
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 90e0ceb6ba9d696eb446d607ed2f2f134733618e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 286354ecf508dec7b9ba7633bf3b5c7ddc6bfd91
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881135"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737056"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Handbuch zur Problembehandlung: Azure Monitor Application Insights für Java
 
@@ -45,15 +45,23 @@ Eine Protokollierung erfolgt nur, wenn erstens der für das Protokollierungsfram
 
 Wenn Sie wissen möchten, ob eine bestimmte Protokollierungsanweisung den konfigurierten Schwellenwert des Protokollierungsframeworks erreicht, überprüfen Sie am besten, ob er in Ihrem normalen Anwendungsprotokoll (z. B. in einer Datei oder an der Konsole) angezeigt wird.
 
+Beachten Sie ebenso, dass die Protokollmeldung (und die Ausnahme) im Azure-Portal in der `exceptions`-Tabelle und nicht in der `traces`-Tabelle angezeigt wird, wenn eine Ausnahme an die Protokollierung übergeben wird.
+
 Weitere Informationen finden Sie unter [Automatisch gesammelte Protokolle](./java-standalone-config.md#auto-collected-logging).
 
 ## <a name="import-ssl-certificates"></a>Importieren von SSL-Zertifikaten
 
 Dieser Abschnitt hilft Ihnen bei der Problembehandlung und möglichen Behebung von Ausnahmen im Zusammenhang mit SSL-Zertifikaten bei Verwendung des Java-Agents.
 
-Es gibt zwei verschiedene Pfade zur Problembehandlung.
+Nachfolgend sehen Sie zwei verschiedene Möglichkeiten zum Beheben dieses Problems:
+* Bei Verwendung eines standardmäßigen Java-Keystores
+* Bei Verwendung eines benutzerdefinierten Java-Keystores
 
-### <a name="if-using-a-default-java-keystore"></a>Bei Verwendung eines standardmäßigen Java-Keystores:
+Wenn Sie nicht sicher sind, welche Methode Sie nutzen sollen, überprüfen Sie, ob Sie ein JVM-Argument `-Djavax.net.ssl.trustStore=...` besitzen.
+Wenn Sie _nicht_ über ein solches JVM-Argument verfügen, verwenden Sie aller Wahrscheinlichkeit nach den standardmäßigen Java-Keystore.
+Wenn Sie ein solches JVM-Argument _besitzen_, verwenden Sie aller Wahrscheinlichkeit nach einen benutzerdefinierten Keystore, und das JVM-Argument weist Sie auf Ihren benutzerdefinierten Keystore hin.
+
+### <a name="if-using-the-default-java-keystore"></a>Bei Verwendung des standardmäßigen Java-Keystores:
 
 Der standardmäßige Java-Keystore verfügt in der Regel bereits über alle Stammzertifikate der Zertifizierungsstelle. Es kann jedoch einige Ausnahmen geben, z. B. kann das Zertifikat für den Erfassungsendpunkt von einem anderen Stammzertifikat signiert sein. Deshalb werden die folgenden drei Schritte zur Behebung dieses Problems empfohlen:
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: b56c57a0b803a41c095f6f25f69a18a815d182f1
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 4e81d8f88a7c01b6d302bcdaa88559159bed04ea
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582008"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709407"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Private Link
 
@@ -65,6 +65,12 @@ Sie können Ihren Private Link-Dienst auf verschiedene Arten skalieren:
 - Fügen Sie dem Pool hinter Ihrem Load Balancer Standard Back-End-VMs hinzu. 
 - Fügen Sie dem Private Link-Dienst eine IP-Adresse hinzu. Es sind bis zu acht IP-Adressen pro Private Link-Dienst gestattet.  
 - Fügen Sie dem Load Balancer Standard einen neuen Private Link-Dienst hinzu. Es sind bis zu acht Private Link-Dienste pro Load Balancer Standard gestattet.   
+
+### <a name="what-is-natnetwork-address-translation-ip-configuration-used-in-private-link-service-how-can-i-scale-in-terms-of-available-ports-and-connections"></a>Was ist die NAT-IP-Konfiguration (Netzwerkadressenübersetzung), die im Private Link-Dienst verwendet wird? Wie können verfügbare Ports und Verbindungen skaliert werden? 
+
+Durch die NAT-IP-Konfiguration wird sichergestellt, dass kein IP-Konflikt zwischen dem Quell- (Verbraucherseite) und dem Zieladressraum (Dienstanbieter) entsteht, indem die Quell-NAT für den Private Link-Datenverkehr auf der Zielseite (Dienstanbieterseite) bereitgestellt wird. Die NAT-IP-Adresse wird als Quell-IP-Adresse für alle Pakete, die von Ihrem Dienst empfangen werden, und als Ziel-IP-Adresse für alle von Ihrem Dienst gesendeten Pakete angezeigt.  Die NAT-IP-Adresse kann aus einem beliebigen Subnetz im virtuellen Netzwerk eines Dienstanbieters ausgewählt werden. 
+
+Jede NAT-IP-Adresse bietet 64k-TCP-Verbindungen (64k-Ports) pro VM hinter Load Balancer Standard. Zum Skalieren und Hinzufügen weiterer Verbindungen können Sie entweder neue NAT-IP-Adressen oder weitere VMs hinter Load Balancer Standard hinzufügen. Dadurch wird die Portverfügbarkeit skaliert und weitere Verbindungen werden ermöglicht. Verbindungen werden über NAT-IP-Adressen und VMs hinter Load Balancer Standard verteilt.
 
 ### <a name="can-i-connect-my-service-to-multiple-private-endpoints"></a>Kann ich meinen Dienst mit mehreren privaten Endpunkten verbinden?
 Ja. Ein Private Link-Dienst kann Verbindungen von mehreren privaten Endpunkten empfangen. Ein privater Endpunkt kann jedoch nur eine Verbindung mit einem Private Link-Dienst herstellen.  

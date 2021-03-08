@@ -1,24 +1,24 @@
 ---
 title: Erweitern von Azure IoT Central mit benutzerdefinierten Analysen | Microsoft-Dokumentation
 description: Als Lösungsentwickler konfigurieren Sie eine IoT Central-Anwendung zur Ausführung von benutzerdefinierten Analysen und Visualisierungen. Diese Lösung verwendet Azure Databricks.
-author: dominicbetts
-ms.author: dobett
-ms.date: 12/02/2019
+author: TheJasonAndrew
+ms.author: v-anjaso
+ms.date: 02/18/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 1e261e8d5d9cd147f3157303b7a2a50db7c33e58
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 86f94b8059d85b892a87c82537b1e9b02552f8f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123044"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741727"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Erweitern von Azure IoT Central mit benutzerdefinierten Analysen mithilfe von Azure Databricks
 
-Diese Schrittanleitung zeigt, wie Sie als Lösungsentwickler Ihre IoT Central-Anwendung um benutzerdefinierte Analysen und Visualisierungen erweitern können. Im Beispiel wird ein [Azure Databricks](/azure/azure-databricks/)-Arbeitsbereich verwendet, um den IoT Central-Telemetriedatenstrom zu analysieren und Visualisierungen wie [Boxplots](https://wikipedia.org/wiki/Box_plot) zu generieren.
+Diese Schrittanleitung zeigt, wie Sie als Lösungsentwickler Ihre IoT Central-Anwendung um benutzerdefinierte Analysen und Visualisierungen erweitern können. Im Beispiel wird ein [Azure Databricks](/azure/azure-databricks/)-Arbeitsbereich verwendet, um den IoT Central-Telemetriedatenstrom zu analysieren und Visualisierungen wie [Boxplots](https://wikipedia.org/wiki/Box_plot) zu generieren.  
 
 Diese Schrittanleitung zeigt, wie Sie IoT Central mithilfe der integrierten [Analysetools](./howto-create-custom-analytics.md) über die bisherige Funktionalität hinaus erweitern.
 
@@ -59,25 +59,25 @@ Verwenden Sie das [Azure-Portal zum Erstellen einer Ressourcengruppe](https://po
 
 Verwenden Sie das [Azure-Portal zum Erstellen eines Event Hubs-Namespace](https://portal.azure.com/#create/Microsoft.EventHub) mit den folgenden Einstellungen:
 
-| Einstellung | value |
+| Einstellung | Wert |
 | ------- | ----- |
 | Name    | Namen Ihres Namespace auswählen |
 | Tarif | Basic |
 | Subscription | Ihr Abonnement |
 | Resource group | IoTCentralAnalysis |
-| Location | East US |
+| Standort | East US |
 | Durchsatzeinheiten | 1 |
 
 ### <a name="azure-databricks-workspace"></a>Azure Databricks-Arbeitsbereich
 
 Verwenden Sie das [Azure-Portal zum Erstellen eines Azure Databricks-Diensts](https://portal.azure.com/#create/Microsoft.Databricks) mit den folgenden Einstellungen:
 
-| Einstellung | value |
+| Einstellung | Wert |
 | ------- | ----- |
 | Arbeitsbereichname    | Wählen Sie den Namen Ihres Arbeitsbereichs |
 | Subscription | Ihr Abonnement |
 | Resource group | IoTCentralAnalysis |
-| Location | East US |
+| Standort | East US |
 | Preisstufe | Standard |
 
 Wenn Sie die erforderlichen Ressourcen erstellt haben, sieht Ihre Ressourcengruppe **IoTCentralAnalysis** wie im folgenden Screenshot aus:
@@ -103,10 +103,10 @@ Ihr Event Hubs-Namespace sieht wie im folgenden Screenshot aus:
 
 Navigieren Sie auf der Website des [Azure IoT Central-Anwendungs-Managers](https://aka.ms/iotcentral) zu der IoT Central-Anwendung, die Sie aus der Contoso-Vorlage erstellt haben. In diesem Abschnitt konfigurieren Sie die Anwendung so, dass die Telemetriedaten aus den simulierten Geräten an Ihren Event Hub gestreamt werden. So konfigurieren Sie den Export:
 
-1. Navigieren Sie zur Seite **Datenexport**, wählen Sie **+ Neu** und dann **Azure Event Hubs** aus.
+1. Navigieren Sie zur Seite **Datenexport (Legacy)** , und klicken Sie auf **+ Neu** > **Azure Event Hubs**.
 1. Verwenden Sie die folgenden Einstellungen, um den Export zu konfigurieren, und klicken Sie dann auf **Speichern**:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Anzeigename | Exportieren nach Event Hubs |
     | Enabled | Andererseits |
@@ -130,11 +130,11 @@ Wählen Sie auf der Seite **Azure Databricks** unter der Liste der allgemeinen A
 
 Verwenden Sie die Informationen in der folgenden Tabelle zum Erstellen Ihres Clusters:
 
-| Einstellung | value |
+| Einstellung | Wert |
 | ------- | ----- |
 | Clustername | centralanalysis |
 | Clustermodus | Standard |
-| Databricks-Runtimeversion | 5.5 LTS (Scala 2.11, Spark 2.4.3) |
+| Databricks-Runtimeversion | 5.5 LTS (Scala 2.11, Spark 2.4.5) |
 | Python-Version | 3 |
 | Automatische Skalierung aktivieren | Nein |
 | Terminate after __ minutes of inactivity (Nach __ Minuten Inaktivität beenden) | 30 |

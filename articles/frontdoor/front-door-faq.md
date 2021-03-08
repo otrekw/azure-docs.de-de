@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: e28c995a0fb574f2e7319f8ee540f49d1bbed4dd
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 77cc509a9fac2a24b3cd70675c1ee4160ecdb24d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656902"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741853"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Häufig gestellte Fragen zu Azure Front Door
 
@@ -97,9 +97,9 @@ Um Ihre Anwendung so zu sperren, dass sie nur Datenverkehr von Ihrer spezifische
     > [!WARNING]
     > Der Back-End-IP-Adressbereich von Front Door kann später geändert werden, aber wir werden sicherstellen, dass zuvor eine Integration in [Azure-IP-Adressbereiche und Diensttags](https://www.microsoft.com/download/details.aspx?id=56519) erfolgt ist. Es wird empfohlen, dass Sie [Azure-IP-Adressbereiche und Diensttags](https://www.microsoft.com/download/details.aspx?id=56519) für alle Änderungen oder Updates abonnieren.
 
--    Führen Sie eine GET-Operation in Front Door mit der API-Version `2020-01-01` oder höher aus. Suchen Sie im API-Befehl nach dem `frontdoorID`-Feld. Filtern Sie nach dem von Front Door an Ihr Back-End gesendeten eingehenden Header „**X-Azure-FDID**“ mit dem Wert des Felds `frontdoorID`. Sie finden den `Front Door ID`-Wert auch im Abschnitt „Übersicht“ über die Front Door-Portalseite. 
+- Suchen Sie auf der Front Door-Portalseite im Abschnitt „Übersicht“ nach dem Wert `Front Door ID`. Sie können dann nach dem eingehenden Header **X-Azure-FDID** filtern, der von Front Door mit diesem Wert an Ihr Back-End gesendet wurde, um sicherzustellen, dass nur Ihre eigene Front Door-Instanz zulässig ist (weil die vorherigen IP-Adressbereiche mit den Front Door-Instanzen anderer Kunden geteilt werden).
 
-- Wenden Sie Regelfilterung in Ihrem Back-End-Webserver an, um den Datenverkehr basierend auf dem resultierenden „X-Azure-FDID“-Headerwert einzuschränken.
+- Wenden Sie Regelfilterung in Ihrem Back-End-Webserver an, um den Datenverkehr basierend auf dem resultierenden „X-Azure-FDID“-Headerwert einzuschränken. Beachten Sie, dass einige Dienste wie Azure App Service diese [headerbasierte Filterfunktion](../app-service/app-service-ip-restrictions#restrict-access-to-a-specific-azure-front-door-instance-preview) bereitstellen, ohne dass Sie Ihre Anwendung oder den Host ändern müssen.
 
   Hier folgt ein Beispiel für [Microsoft-Internetinformationsdienste (IIS)](https://www.iis.net/):
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: bccd1f001cca67a5be3d14c50e6a6db96cb6584c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7356b9bb814f8bca5465fe74d48409b9dbca6d3b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600853"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731696"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor-Datenplattform
 
@@ -28,7 +28,7 @@ Um bei den heutigen komplexen Computingumgebungen mit verteilten Anwendungen, di
 ## <a name="observability-data-in-azure-monitor"></a>Daten für Transparenz in Azure Monitor
 Metriken, Protokolle und verteilte Ablaufverfolgungen werden allgemein als die drei Säulen der Transparenz bezeichnet. Hierbei handelt es sich um die verschiedenen Arten von Daten, die von einem Überwachungstool gesammelt und analysiert werden müssen, um ausreichende Transparenz eines überwachten Systems zu bieten. Transparenz kann erreicht werden, indem Daten von mehreren Säulen korreliert und Daten übergreifend für die gesamte Gruppe überwachter Ressourcen aggregiert werden. Da Azure Monitor Daten aus mehreren Quellen zusammen speichert, können die Daten mithilfe einer gemeinsamen Gruppe von Tools korreliert und analysiert werden. Zusätzlich zum Hosten von Daten für andere Dienste werden Daten auch übergreifend für mehrere Azure-Abonnements und -Mandanten korreliert.
 
-Azure-Ressourcen generieren eine erhebliche Menge an Überwachungsdaten. Azure Monitor konsolidiert diese Daten zusammen mit Überwachungsdaten aus anderen Quellen entweder auf einer Metrik- oder einer Protokollplattform. Diese sind jeweils für bestimmte Überwachungsszenarien optimiert und unterstützen verschiedene Funktionen in Azure Monitor. Für die Nutzung von Funktionen wie Datenanalysen, Visualisierungen oder Warnungen müssen Sie die Unterschiede kennen, damit Sie das erforderliche Szenario auf die effizienteste und kostengünstigste Weise implementieren können. Dienste zum Gewinnen von Erkenntnissen in Azure Monitor, z.B. [Application Insights](app/app-insights-overview.md) oder [Azure Monitor für VMs](vm/vminsights-overview.md) bieten Analysetools, mit denen Sie sich auf das jeweilige Überwachungsszenario konzentrieren können, ohne die Unterschiede zwischen den beiden Datentypen verstehen zu müssen. 
+Azure-Ressourcen generieren eine erhebliche Menge an Überwachungsdaten. Azure Monitor konsolidiert diese Daten zusammen mit Überwachungsdaten aus anderen Quellen entweder auf einer Metrik- oder einer Protokollplattform. Diese sind jeweils für bestimmte Überwachungsszenarien optimiert und unterstützen verschiedene Funktionen in Azure Monitor. Für die Nutzung von Funktionen wie Datenanalysen, Visualisierungen oder Warnungen müssen Sie die Unterschiede kennen, damit Sie das erforderliche Szenario auf die effizienteste und kostengünstigste Weise implementieren können. Dienste zum Gewinnen von Erkenntnissen in Azure Monitor, z. B. [Application Insights](app/app-insights-overview.md) oder [VM Insights](vm/vminsights-overview.md) bieten Analysetools, mit denen Sie sich auf das jeweilige Überwachungsszenario konzentrieren können, ohne die Unterschiede zwischen den beiden Datentypen verstehen zu müssen. 
 
 
 ### <a name="metrics"></a>Metriken

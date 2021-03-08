@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 02/24/2021
-ms.openlocfilehash: 395e1279f3578dd1ee834836dead4169d0ea281a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 114e52884ca220635085bdbb8ab19b4f9cf810c0
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743300"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120095"
 ---
 # <a name="verify-co-sell-status-of-a-commercial-marketplace-offer"></a>Überprüfen des Co-Selling-Status für ein Angebot im kommerziellen Marketplace
 
@@ -30,10 +30,10 @@ In der folgenden Tabelle sind alle möglichen Co-Selling-Status aufgeführt: Inf
 
 | Status | Comment |
 | ------------ | ------------- |
-| Not Co-Sell Ready (Nicht für Co-Selling bereit) | Die [Mindestanforderungen für den Status „Co-Sell Ready“](#requirements-for-co-sell-ready-status) (Bereit für Co-Selling) wurden nicht erfüllt. |
-| Co-Sell Ready | Alle [Anforderungen für den Status „Co-Sell Ready“](#requirements-for-co-sell-ready-status) wurden erfüllt. |
-| Azure IP Co-Sell Incentivized | Die Anforderungen für den Status „Co-Sell Ready“ sowie [diese zusätzlichen Anforderungen](#requirements-for-IP-Co-sell-incentivized-status) wurden erfüllt. |
-| Biz Apps ISV Connect Premium Incentive  | Dieser Status gilt für Dynamics 365- und Power Apps-Angebote und gibt an, dass alle [Anforderungen für diesen Status](#requirements-for-biz-apps-isv-connect-premium-incentive-status) erfüllt wurden. |
+| Not Co-Sell Ready (Nicht für Co-Selling bereit) | Die [Mindestanforderungen für den Status „Co-Sell Ready“](co-sell-requirements.md#requirements-for-co-sell-ready-status) (Bereit für Co-Selling) wurden nicht erfüllt. |
+| Co-Sell Ready | Alle [Anforderungen für den Status „Co-Sell Ready“](co-sell-requirements.md#requirements-for-co-sell-ready-status) wurden erfüllt. |
+| Azure IP Co-Sell Incentivized | Die Anforderungen für den Status „Co-Sell Ready“ sowie [diese zusätzlichen Anforderungen](co-sell-requirements.md#requirements-for-ip-co-sell-incentivized-status) wurden erfüllt. |
+| Biz Apps ISV Connect Premium Incentive  | Dieser Status gilt für Dynamics 365- und Power Apps-Angebote und gibt an, dass alle [Anforderungen für diesen Status](co-sell-requirements.md#requirements-for-biz-apps-isv-connect-premium-incentive-status) erfüllt wurden. |
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte

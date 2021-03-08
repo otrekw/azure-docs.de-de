@@ -1,22 +1,22 @@
 ---
-title: Überwachen der Kosten für Azure Monitor für Container | Microsoft-Dokumentation
-description: In diesem Artikel wird die Überwachung der Kosten für Metriken und Bestandsdaten beschrieben, die von Azure Monitor für Container gesammelt werden, damit Kunden ihre Nutzung und die entsprechenden Kosten besser verwalten können.
+title: Kostenüberwachung für Container Insights | Microsoft-Dokumentation
+description: In diesem Artikel wird die Überwachung der Kosten für Metriken und Bestandsdaten beschrieben, die von Container Insights gesammelt werden, damit Kunden ihre Nutzung und die entsprechenden Kosten besser verwalten können.
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 0a3118e1dd839eced5e1f15d28feff4bbb58014f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 78387e950d476126d7c2065a530844e44fd59b4f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602224"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728908"
 ---
-# <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>Überwachen der Kosten für Azure Monitor für Container
+# <a name="understand-monitoring-costs-for-container-insights"></a>Informationen zur Kostenüberwachung für Container Insights
 
-In diesem Artikel erhalten Sie Informationen rund um die folgenden Kostenfragen zu Azure Monitor für Container:
+In diesem Artikel erhalten Sie Informationen rund um die folgenden Kostenfragen zu Container Insights:
 
 * Wie kann ich die Kosten vor dem Aktivieren dieser Insight-Funktion abschätzen?
 
-* Wie kann ich die Kosten bemessen, wenn ich Azure Monitor für Container für einen oder mehrere Container aktiviert habe?
+* Wie kann ich die Kosten bemessen, wenn ich Container Insights für einen oder mehrere Container aktiviert habe?
 
 * Wie kann ich das Sammeln von Daten verwalten und meine Kosten senken?
 
@@ -27,7 +27,7 @@ Das Azure Monitor-Preismodell basiert hauptsächlich auf der Datenmenge (in GB),
 >[!NOTE]
 >Alle Größen- und Preisangaben dienen nur als Grundlage für eine Kostenschätzung. Auf der Seite [Preisübersicht](https://azure.microsoft.com/pricing/details/monitor/) für Azure Monitor finden Sie die aktuellen Preise basierend auf Ihrem Azure Monitor Log Analytics-Preismodell und der Azure-Region.
 
-In der folgenden Auflistung werden die Datentypen zusammengefasst, die mit Azure Monitor für Container in einem Kubernetes-Cluster gesammelt werden, die Kosten verursachen und die entsprechend der Nutzung angepasst werden können:
+In der folgenden Auflistung werden die Datentypen zusammengefasst, die in einem Kubernetes-Cluster mit Container Insights gesammelt werden, die Kosten verursachen und die entsprechend der Nutzung angepasst werden können:
 
 - Die Containerprotokolle „stdout“ und „stderr“ aus allen überwachten Containern in sämtlichen Kubernetes-Namespaces im Cluster.
 
@@ -37,11 +37,11 @@ In der folgenden Auflistung werden die Datentypen zusammengefasst, die mit Azure
 
 - Das aktive Abrufen von Prometheus-Metriken.
 
-- Die [Sammlung von Diagnoseprotokollen](../../aks/view-master-logs.md) von Kubernetes-Masterknotenprotokollen in Ihrem AKS-Cluster zur Analyse von Protokolldaten, die von Masterkomponenten wie *kube-apiserver* und *kube-controller-manager* generiert werden.
+- Die [Sammlung von Diagnoseprotokollen](../../aks/view-control-plane-logs.md) von Kubernetes-Masterknotenprotokollen in Ihrem AKS-Cluster zur Analyse von Protokolldaten, die von Masterkomponenten wie *kube-apiserver* und *kube-controller-manager* generiert werden.
 
 ## <a name="what-is-collected-from-kubernetes-clusters"></a>Erfasste Elemente in Kubernetes-Clustern
 
-Azure Monitor für Container enthält vordefinierte Metriken und Bestandselemente, die als Protokolldaten in Ihren Log Analytics-Arbeitsbereich geschrieben werden. Die unten aufgeführten Metriken werden standardmäßig im Minutentakt gesammelt.
+Container Insights enthält vordefinierte Metriken und Bestandselemente, die als Protokolldaten in Ihren Log Analytics-Arbeitsbereich geschrieben werden. Die unten aufgeführten Metriken werden standardmäßig im Minutentakt gesammelt.
 
 ### <a name="node-metrics-collected"></a>Gesammelte Knotenmetriken
 
@@ -194,10 +194,10 @@ Wenn Sie [Prometheus-Metriken](container-insights-prometheus-integration.md) abf
 
 - Vergewissern Sie sich, dass die Abfragefrequenz optimal festgelegt ist (der Standardwert beträgt 60 Sekunden). Die Abfragehäufigkeit kann bis auf 15 Sekunden erhöht werden. Stellen Sie jedoch sicher, dass die Metriken, die Sie abrufen möchten, auch in dieser Häufigkeit veröffentlicht werden. Andernfalls werden in einem bestimmten Zeitraum viele doppelte Metriken abgerufen und an Ihren Log Analytics-Arbeitsbereich gesendet, was nur zu höheren Kosten für die Datenerfassung und -aufbewahrung, jedoch nicht zu weiteren Vorteilen führt. 
 
-- Azure Monitor für Container unterstützt Ausschluss- und Aufnahmelisten basierend auf dem Namen der Metrik. Wenn Sie beispielsweise in Ihrem Cluster **kubedns**-Metriken abrufen, werden möglicherweise Hunderte davon standardmäßig abgerufen, obwohl Sie etwa nur an einer Teilmenge interessiert sind. Geben Sie eine Liste mit den Metriken an, die abgerufen werden sollen, oder erstellen Sie eine Liste mit ausgeschlossen Metriken, um die Menge der erfassten Daten zu verringern. Das Abrufen von Metriken ist schnell aktiviert. Wenn Sie jedoch nur einen Bruchteil davon auch wirklich nutzen, entstehen unnötige Kosten.
+- Container Insights unterstützt Ausschlusslisten und Aufnahmelisten nach Metrikname. Wenn Sie beispielsweise in Ihrem Cluster **kubedns**-Metriken abrufen, werden möglicherweise Hunderte davon standardmäßig abgerufen, obwohl Sie etwa nur an einer Teilmenge interessiert sind. Geben Sie eine Liste mit den Metriken an, die abgerufen werden sollen, oder erstellen Sie eine Liste mit ausgeschlossen Metriken, um die Menge der erfassten Daten zu verringern. Das Abrufen von Metriken ist schnell aktiviert. Wenn Sie jedoch nur einen Bruchteil davon auch wirklich nutzen, entstehen unnötige Kosten.
 
 - Filtern Sie beim Abrufen von Podanmerkungen nach Namespaces, damit Sie nicht verwendete Namespaces ausschließen können (etwa den Namespace **dev-test**).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Kostenschätzungen basierend auf aktuellen Verwendungsmustern von Daten, die mit Azure Monitor für Container gesammelt werden, finden Sie unter [Verwalten von Nutzung und Kosten](../platform/manage-cost-storage.md).
+Weitere Informationen zu Kostenschätzungen basierend auf aktuellen Verwendungsmustern von Daten, die mit Container Insights gesammelt werden, finden Sie unter [Verwalten von Nutzung und Kosten](../logs/manage-cost-storage.md).

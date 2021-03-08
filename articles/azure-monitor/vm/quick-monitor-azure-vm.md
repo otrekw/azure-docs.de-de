@@ -2,39 +2,38 @@
 title: Überwachen eines virtuellen Azure-Computers mit Azure Monitor
 description: Hier erfahren Sie, wie Sie Daten für einen virtuellen Azure-Computer in Azure Monitor erfassen und analysieren.
 ms.service: azure-monitor
-ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: defeeb42340cbc3203141561aa33a2b4b7b00bb1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7efd8baf54aeacbd2f55640240a15f2517dcd904
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100626155"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046923"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Schnellstart: Überwachen eines virtuellen Azure-Computers mit Azure Monitor
-[Azure Monitor](../overview.md) beginnt sofort nach der Erstellung virtueller Azure-Computer mit der Datenerfassung. Diese Schnellstartanleitung bietet eine kurze Übersicht darüber, welche Daten für einen virtuellen Azure-Computer automatisch gesammelt werden und wie sie im Azure-Portal angezeigt werden können. Anschließend erfahren Sie, wie Sie [Azure Monitor für VMs](../vm/vminsights-overview.md) für Ihren virtuellen Computer aktivieren, sodass Agents auf dem virtuellen Computer Daten aus dem Gastbetriebssystem erfassen und analysieren können (einschließlich Prozesse und deren Abhängigkeiten).
+[Azure Monitor](../overview.md) beginnt sofort nach der Erstellung virtueller Azure-Computer mit der Datenerfassung. Diese Schnellstartanleitung bietet eine kurze Übersicht darüber, welche Daten für einen virtuellen Azure-Computer automatisch gesammelt werden und wie sie im Azure-Portal angezeigt werden können. Anschließend aktivieren Sie [VM Insights](../vm/vminsights-overview.md) für Ihre VM, sodass Agents auf der VM Daten aus dem Gastbetriebssystem erfassen und analysieren können (einschließlich Prozesse und deren Abhängigkeiten).
 
 Dieser Schnellstart setzt voraus, dass Sie über einen virtuellen Azure-Computer verfügen. Falls nicht, können Sie mithilfe unserer VM-Schnellstartanleitungen einen [virtuellen Windows-Computer](../../virtual-machines/windows/quick-create-portal.md) oder einen [virtuellen Linux-Computer](../../virtual-machines/linux/quick-create-cli.md) erstellen.
 
-Eine ausführlichere Beschreibung der gesammelten Überwachungsdaten von Azure-Ressourcen finden Sie unter [Überwachen virtueller Azure-Computer mit Azure Monitor](../insights/monitor-vm-azure.md).
+Eine ausführlichere Beschreibung der gesammelten Überwachungsdaten von Azure-Ressourcen finden Sie unter [Überwachen virtueller Azure-Computer mit Azure Monitor](./monitor-vm-azure.md).
 
 
 ## <a name="complete-the-monitor-an-azure-resource-quickstart"></a>Durchlaufen der Schnellstartanleitung zur Überwachung einer Azure-Ressource
-Durchlaufen Sie [Schnellstart: Überwachen einer Azure-Ressource mit Azure Monitor](../learn/quick-monitor-azure-resource.md), um die Übersichtsseite, das Aktivitätsprotokoll und Metriken für einen virtuellen Computer in Ihrem Abonnement anzuzeigen. Von virtuellen Azure-Computern werden die gleichen Überwachungsdaten erfasst wie von anderen Azure-Ressourcen. Dies gilt jedoch nur für den virtuellen Hostcomputer. In der restlichen Schnellstartanleitung steht die Überwachung des Gastbetriebssystems und dessen Workloads im Mittelpunkt.
+Durchlaufen Sie [Schnellstart: Überwachen einer Azure-Ressource mit Azure Monitor](../essentials/quick-monitor-azure-resource.md), um die Übersichtsseite, das Aktivitätsprotokoll und Metriken für einen virtuellen Computer in Ihrem Abonnement anzuzeigen. Von virtuellen Azure-Computern werden die gleichen Überwachungsdaten erfasst wie von anderen Azure-Ressourcen. Dies gilt jedoch nur für den virtuellen Hostcomputer. In der restlichen Schnellstartanleitung steht die Überwachung des Gastbetriebssystems und dessen Workloads im Mittelpunkt.
 
 
-## <a name="enable-azure-monitor-for-vms"></a>Aktivieren von Azure Monitor für VMs
-Metriken und Aktivitätsprotokolle werden zwar für den virtuellen Hostcomputer erfasst, für die Erfassung und Analyse von Überwachungsdaten des Gastbetriebssystems und dessen Workloads sind jedoch ein Agent und ein paar Konfigurationsschritte erforderlich. Azure Monitor für VMs installiert diese Agents und stellt zusätzliche leistungsstarke Features für die Überwachung Ihrer virtuellen Computer bereit.
+## <a name="enable-vm-insights"></a>Aktivieren von VM Insights
+Metriken und Aktivitätsprotokolle werden zwar für den virtuellen Hostcomputer erfasst, für die Erfassung und Analyse von Überwachungsdaten des Gastbetriebssystems und dessen Workloads sind jedoch ein Agent und ein paar Konfigurationsschritte erforderlich. VM Insights installiert diese Agents und stellt zusätzliche leistungsstarke Features für die Überwachung Ihrer VMs bereit.
 
 1. Navigieren Sie zum Menü für Ihren virtuellen Computer.
 2. Klicken Sie entweder in der Kachel auf der Seite **Übersicht** auf **Zu Insights wechseln**, oder klicken Sie im Menü **Überwachung** auf **Insights**.
 
     ![Seite „Übersicht“](media/quick-monitor-azure-vm/overview-insights.png)
 
-3. Falls Azure Monitor für VMs noch nicht für den virtuellen Computer aktiviert wurde, klicken Sie auf **Aktivieren**. 
+3. Wenn VM Insights für die VM noch nicht aktiviert wurde, klicken Sie auf **Aktivieren**. 
 
     ![Aktivieren von Erkenntnissen](media/quick-monitor-azure-vm/enable-insights.png)
 
@@ -42,7 +41,7 @@ Metriken und Aktivitätsprotokolle werden zwar für den virtuellen Hostcomputer 
 
     ![Arbeitsbereich auswählen](media/quick-monitor-azure-vm/select-workspace.png)
 
-5. Das Onboarding dauert einige Minuten. In dieser Zeit werden Erweiterungen aktiviert und Agents auf dem virtuellen Computer installiert. Nach Abschluss des Vorgangs erhalten Sie eine Meldung mit dem Hinweis, dass Erkenntnisse erfolgreich bereitgestellt wurden. Klicken Sie auf **Azure Monitor**, um Azure Monitor für VMs zu öffnen.
+5. Das Onboarding dauert einige Minuten. In dieser Zeit werden Erweiterungen aktiviert und Agents auf dem virtuellen Computer installiert. Nach Abschluss des Vorgangs erhalten Sie eine Meldung mit dem Hinweis, dass Erkenntnisse erfolgreich bereitgestellt wurden. Klicken Sie auf **Azure Monitor**, um VM Insights zu öffnen.
 
     ![Öffnen von Azure Monitor](media/quick-monitor-azure-vm/azure-monitor.png)
 
@@ -104,7 +103,7 @@ Wenn Sie einen neuen Log Analytics-Arbeitsbereich erstellen, muss er für die P
     ![Log Analytics](media/quick-monitor-azure-vm/log-analytics.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-In dieser Schnellstartanleitung haben Sie Azure Monitor für VMs für einen virtuellen Computer aktiviert und den Log Analytics-Arbeitsbereich konfiguriert, um Ereignisse für das Gastbetriebssystem zu erfassen. Um zu erfahren, wie Sie die Daten anzeigen und analysieren, fahren Sie mit dem Tutorial fort.
+In dieser Schnellstartanleitung haben Sie VM Insights für eine VM aktiviert und den Log Analytics-Arbeitsbereich konfiguriert, um Ereignisse für das Gastbetriebssystem zu erfassen. Um zu erfahren, wie Sie die Daten anzeigen und analysieren, fahren Sie mit dem Tutorial fort.
 
 > [!div class="nextstepaction"]
-> [Anzeigen oder Analysieren der Daten in Log Analytics](../log-query/log-analytics-tutorial.md)
+> [Anzeigen oder Analysieren der Daten in Log Analytics](../logs/log-analytics-tutorial.md)

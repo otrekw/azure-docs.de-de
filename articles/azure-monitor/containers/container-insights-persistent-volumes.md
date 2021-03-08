@@ -1,22 +1,22 @@
 ---
-title: Konfigurieren der PV-Überwachung mit Azure Monitor für Container | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie die Überwachung von Kubernetes-Clustern mit persistenten Volumes mit Azure Monitor für Container konfigurieren können.
+title: Konfigurieren der PV-Überwachung mit Container Insights | Microsoft-Dokumentation
+description: In diesem Artikel erfahren Sie, wie Sie die Überwachung von Kubernetes-Clustern mit persistenten Volumes mit Container Insights konfigurieren können.
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: d7da6bc88e7c8526e3940714502d3c92d2f37dd8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0afbeab49a6909a0011cd75a0419f7325ca68132
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602441"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713727"
 ---
-# <a name="configure-pv-monitoring-with-azure-monitor-for-containers"></a>Konfigurieren der PV-Überwachung mit Azure Monitor für Container
+# <a name="configure-pv-monitoring-with-container-insights"></a>Konfigurieren der PV-Überwachung mit Container Insights
 
-Ab der Agent-Version *ciprod10052020* unterstützt der integrierte Agent von Azure Monitor für Container die Überwachung der Nutzung persistenter Volumes (PVs).
+Ab der Agent-Version *ciprod10052020* unterstützt der integrierte Agent von Container Insights die Überwachung der Nutzung persistenter Volumes (PVs).
 
 ## <a name="pv-metrics"></a>PV-Metriken
 
-Azure Monitor für Container beginnt automatisch mit der Überwachung von PVs. Hierzu werden die folgenden Metriken im 60-Sekunden-Takt gesammelt und in der Tabelle **InsightMetrics** gespeichert:
+Container Insights beginnt automatisch mit der Überwachung von PVs. Hierzu werden die folgenden Metriken im 60-Sekunden-Takt gesammelt und in der Tabelle **InsightMetrics** gespeichert:
 
 |Metrikname |Metrikdimension (Tags) |Beschreibung |
 |------------|------------------------|------------|
@@ -24,7 +24,7 @@ Azure Monitor für Container beginnt automatisch mit der Überwachung von PVs. H
 
 ## <a name="monitor-persistent-volumes"></a>Überwachen persistenter Volumes
 
-Azure Monitor für Container enthält vorkonfigurierte Diagramme für diese Metrik in einer Arbeitsmappe für jeden Cluster. Die Diagramme befinden sich in der Arbeitsmappe **Workloaddetails** auf der Registerkarte „Persistentes Volume“. Dorthin können Sie direkt von einem AKS-Cluster aus navigieren, indem Sie im linken Bereich die Option „Arbeitsmappen“ auswählen. Alternativ können Sie in der Erkenntnis die Dropdownliste **Arbeitsmappen anzeigen** verwenden. Sie können auch eine empfohlene Warnung für die PV-Nutzung aktivieren sowie diese Metriken in Log Analytics abfragen.  
+Container Insights enthält vorkonfigurierte Diagramme für diese Metrik in einer Arbeitsmappe für jeden Cluster. Die Diagramme befinden sich in der Arbeitsmappe **Workloaddetails** auf der Registerkarte „Persistentes Volume“. Dorthin können Sie direkt von einem AKS-Cluster aus navigieren, indem Sie im linken Bereich die Option „Arbeitsmappen“ auswählen. Alternativ können Sie in der Erkenntnis die Dropdownliste **Arbeitsmappen anzeigen** verwenden. Sie können auch eine empfohlene Warnung für die PV-Nutzung aktivieren sowie diese Metriken in Log Analytics abfragen.  
 
 ![Azure Monitor: Beispielworkbook für PV-Workload](./media/container-insights-persistent-volumes/pv-workload-example.PNG)
 

@@ -12,15 +12,15 @@ ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 02/23/2021
 ms.author: mlearned
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 63d3ac356e4f2c1d17e1511227f5089b7ff4266f
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 59f8d721c23cbb033f295f2ef3045fc96f08ba96
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589156"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733181"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Erstellen einer CI/CD-Pipeline für .NET mit Azure DevOps Starter
 
@@ -43,7 +43,9 @@ Mit DevOps Starter wird eine CI/CD-Pipeline in Azure DevOps erstellt. Sie könne
 1. Wählen Sie die **.NET**-Beispielanwendung aus. Die Beispiele für .NET enthalten eine Auswahl von Anwendungen des ASP.NET Open Source-Frameworks oder des plattformübergreifenden .NET Core-Frameworks.
 
    ![.NET Framework](_img/azure-devops-project-aspnet-core/select-dotnet.png)
-
+   
+   > [!NOTE]
+   > Die Standardoption für die Einrichtung von DevOps Starter unter Verwendung von **GitHub**. Diese Einstellung kann jedoch nicht über den Assistenten geändert werden.
 2. Bei diesem Beispiel handelt es sich um eine ASP.NET Core MVC-Anwendung. Wählen Sie das **.NET Core**-Anwendungsframework und dann **Weiter** aus.    
     
 3. Wählen Sie **Windows-Web-App** als Bereitstellungsziel und dann **Weiter** aus. Optional können Sie andere Azure-Dienste für Ihre Bereitstellung auswählen. Das Anwendungsframework, das Sie zuvor ausgewählt haben, bestimmt den Typ der hier verfügbaren Bereitstellungsziele für den Azure-Dienst.

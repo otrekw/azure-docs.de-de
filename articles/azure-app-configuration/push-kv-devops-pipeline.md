@@ -5,14 +5,14 @@ services: azure-app-configuration
 author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: c5e0cc3eb29fb612460b16d8de9dee62949b5bd2
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 7d343e07414dd1c3f9786c1684eb6f14d5f45e51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979605"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718181"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Pushen von Einstellungen an App Configuration mit Azure Pipelines
 
@@ -80,7 +80,7 @@ Von der Aufgabe „Azure App Configuration Push“ werden folgende Parameter ver
 
 - **Azure-Abonnement**: Eine Dropdownliste mit Ihren verfügbaren Azure-Dienstverbindungen. Klicken Sie zum Aktualisieren der Liste mit den verfügbaren Azure-Dienstverbindungen rechts neben dem Textfeld auf die Schaltfläche **Refresh Azure subscription** (Azure-Abonnement aktualisieren).
 - **App Configuration Name** (App Configuration-Name): Eine Dropdownliste mit Ihren verfügbaren Konfigurationsspeichern unter dem ausgewählten Abonnement. Klicken Sie zum Aktualisieren der Liste mit den verfügbaren Konfigurationsspeichern rechts neben dem Textfeld auf die Schaltfläche **Refresh App Configuration Name** (App Configuration-Name aktualisieren).
-- **Konfigurationsdateipfad**: Der Pfad zu Ihrer Konfigurationsdatei. Sie können Ihr Buildartefakt durchsuchen, um eine Konfigurationsdatei auszuwählen. (Verwenden Sie hierzu die Schaltfläche `...` rechts neben dem Textfeld.)
+- **Konfigurationsdateipfad**: Der Pfad zu Ihrer Konfigurationsdatei. Sie können Ihr Buildartefakt durchsuchen, um eine Konfigurationsdatei auszuwählen. (Verwenden Sie hierzu die Schaltfläche `...` rechts neben dem Textfeld.) Die unterstützten Dateiformate sind: YAML, JSON und Eigenschaften.
 - **Trennzeichen**: Das Trennzeichen zum Vereinfachen von JSON- und YML-Dateien.
 - **Tiefe**: Die Tiefe für die Vereinfachung der JSON- und YML-Dateien.
 - **Präfix:** Eine Zeichenfolge, die jedem Schlüssel vorangestellt wird, der in den App Configuration-Speicher gepusht wird.

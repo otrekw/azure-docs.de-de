@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 496b315e23beeb97d08befca13e05c4797268f36
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8b1c4077c036cbb75738115437d29ffd14b160ff
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85341563"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723672"
 ---
 # <a name="entity-functions"></a>Entitätsfunktionen
 
@@ -24,7 +24,10 @@ Mit Entitäten können Anwendungen horizontal hochskaliert werden, indem die Arb
 
 Entitäten verhalten sich ein wenig wie kleine Dienste, die mithilfe von Nachrichten kommunizieren. Jede Entität hat eine eindeutige Identität und einen internen Zustand (sofern vorhanden). Entitäten führen genau wie Dienste oder Objekte Vorgänge aus, wenn sie dazu aufgefordert werden. Bei der Ausführung eines Vorgangs wird ggf. der interne Zustand der Entität aktualisiert. Ein Vorgang kann auch externe Dienste aufrufen und auf eine Antwort warten. Entitäten kommunizieren mit anderen Entitäten, Orchestrierungen und Clients über Nachrichten, die implizit über zuverlässige Warteschlangen gesendet werden. 
 
-Zur Vermeidung von Konflikten werden alle Vorgänge für eine einzelne Entität seriell (also nacheinander) ausgeführt. 
+Zur Vermeidung von Konflikten werden alle Vorgänge für eine einzelne Entität seriell (also nacheinander) ausgeführt.
+
+> [!NOTE]
+> Wenn eine Entität aufgerufen wird, werden die dazugehörigen Nutzdaten vollständig verarbeitet. Anschließend wird eine neue Ausführung geplant, die aktiviert wird, sobald weitere Eingaben erfolgen. Dies führt dazu, dass in Ihren Entitätsausführungsprotokollen möglicherweise nach den Aufrufen der einzelnen Entitäten eine zusätzliche Ausführung aufgeführt ist. Dabei handelt es sich um ein zu erwartendes Verhalten.
 
 ### <a name="entity-id"></a>Entitäts-ID
 Der Zugriff auf Entitäten erfolgt über einen eindeutigen Bezeichner: die *Entitäts-ID*. Eine Entitäts-ID ist einfach ein Paar aus Zeichenfolgen, das eine Entitätsinstanz eindeutig identifiziert. Sie besteht aus folgenden Elementen:
@@ -149,7 +152,48 @@ module.exports = df.entity(function(context) {
     }
 });
 ```
+# <a name="python"></a>[Python](#tab/python)
 
+### <a name="example-python-entity"></a>Beispiel: Python-Entität
+
+Mit dem folgenden Code wird die Entität `Counter` als dauerhafte Funktion in Python implementiert.
+
+**Counter/function.json**
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "context",
+      "type": "entityTrigger",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+**Counter/__init__.py**
+```Python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def entity_function(context: df.DurableEntityContext):
+    current_value = context.get_state(lambda: 0)
+    operation = context.operation_name
+    if operation == "add":
+        amount = context.get_input()
+        current_value += amount
+    elif operation == "reset":
+        current_value = 0
+    elif operation == "get":
+        context.set_result(current_value)
+    context.set_state(current_value)
+
+
+
+main = df.Entity.create(entity_function)
+```
 ---
 
 ## <a name="access-entities"></a>Zugreifen auf Entitäten
@@ -201,6 +245,19 @@ module.exports = async function (context) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+from azure.durable_functions import DurableOrchestrationClient
+import azure.functions as func
+
+
+async def main(req: func.HttpRequest, starter: str, message):
+    client = DurableOrchestrationClient(starter)
+    entityId = df.EntityId("Counter", "myCounter")
+    await client.signal_entity(entityId, "add", 1)
+```
+
 ---
 
 *Signalisierung* bedeutet, dass der Entitäts-API-Aufruf unidirektional und asynchron ist. Einer Clientfunktion ist nicht bekannt, wann der Vorgang durch die Entität verarbeitet wurde. Außerdem kann die Clientfunktion keine Ergebniswerte oder Ausnahmen berücksichtigen. 
@@ -235,6 +292,11 @@ module.exports = async function (context) {
     return stateResponse.entityState;
 };
 ```
+
+# <a name="python"></a>[Python](#tab/python)
+
+> [!NOTE]
+> Python unterstützt aktuell Lesevorgänge für Entitätszustände für Clients nicht. Verwenden Sie stattdessen eine `callEntity`-Klasse des Orchestrators.
 
 ---
 
@@ -279,6 +341,21 @@ module.exports = df.orchestrator(function*(context){
 > [!NOTE]
 > JavaScript unterstützt derzeit nicht die Signalisierung von Entitäten aus einem Orchestrator. Verwenden Sie stattdessen `callEntity`.
 
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    entityId = df.EntityId("Counter", "myCounter")
+    current_value = yield context.call_entity(entityId, "get")
+    if current_value < 10:
+        context.signal_entity(entityId, "add", 1)
+    return state
+```
+
 ---
 
 Nur Orchestrierungen können Entitäten aufrufen und eine Antwort erhalten. Dabei kann es sich entweder um einen Rückgabewert oder um eine Ausnahme handeln. Clientfunktionen, für die die [Clientbindung](durable-functions-bindings.md#entity-client) verwendet wird, können nur die Signalisierung für Entitäten durchführen.
@@ -318,6 +395,11 @@ Das obige Beispiel mit der Entität `Counter` kann beispielsweise so angepasst w
         context.df.setState(currentValue + amount);
         break;
 ```
+
+# <a name="python"></a>[Python](#tab/python)
+
+> [!NOTE]
+> Python unterstützt aktuell Signale von Entität zu Entität noch nicht. Verwenden Sie stattdessen einen Orchestrator für die Entitätensignalisierung.
 
 ---
 
@@ -421,7 +503,6 @@ Es gibt aber einige wichtige Unterschiede, die beachtet werden sollten:
 * Anforderung/Antwort-Muster in Entitäten sind auf Orchestrierungen beschränkt. Innerhalb von Entitäten sind genau wie im ursprünglichen Akteurmodell (und im Gegensatz zu Grains bei Orleans) nur unidirektionale Nachrichten zulässig (Stichwort: Signalisierung). 
 * Bei dauerhaften Entitäten treten keine Deadlocks auf. Bei Orleans können Deadlocks auftreten, die erst nach dem Nachrichtentimeout aufgelöst werden.
 * Dauerhafte Entitäten können in Verbindung mit dauerhaften Orchestrierungen verwendet werden und unterstützen verteilte Sperrmechanismen. 
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

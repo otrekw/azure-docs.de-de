@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mithilfe der Hive-Replikation in HDInsight-Cl
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 3dd894a46b666703f64e44336c0bf022da8a063a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2e57b7d8121ac0bd6fc9cb693750c41a0ef6a5bc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941337"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733056"
 ---
 # <a name="how-to-use-apache-hive-replication-in-azure-hdinsight-clusters"></a>Verwenden der Apache Hive-Replikation in Azure HDInsight-Clustern
 
@@ -19,7 +19,7 @@ Hive Replication hat sich im Laufe der Jahre weiterentwickelt, wobei neuere Vers
 
 ## <a name="advantages-of-replv2"></a>Vorteile von Replv2
 
-[Hive ReplicationV2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development) oder (Replv2) hat die folgenden Vorteile gegenüber der ersten Version von Hive Replication, die Hive [IMPORT-EXPORT](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ImportExport) verwendete:
+[Hive ReplicationV2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development) (auch „Replv2“ genannt) bietet die folgenden Vorteile gegenüber der ersten Version der Hive-Replikation, die die Hive-Befehle [IMPORT und EXPORT](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ImportExport) verwendet hat:
 
 - Ereignisbasierte inkrementelle Replikation
 - Zeitpunktreplikation  

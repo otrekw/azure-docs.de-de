@@ -6,18 +6,17 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
-ms.subservice: metrics
-ms.openlocfilehash: 8d0f1e711b325b1b9ce4e431c1438e511384e8a0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d728dfb364cb0f82326a472196cb28d79b85b1e9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599799"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031484"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Erweiterte Funktionen des Azure-Metrik-Explorers
 
 > [!NOTE]
-> In diesem Artikel wird davon ausgegangen, dass Sie mit grundlegenden Funktionen des Azure-Metrik-Explorers in Azure Monitor vertraut sind. Wenn Sie ein neuer Benutzer sind und erfahren möchten, wie Sie Ihr erstes Metrikdiagramm erstellen können, lesen Sie [Erste Schritte mit dem Azure-Metrik-Explorer](../platform/metrics-getting-started.md).
+> In diesem Artikel wird davon ausgegangen, dass Sie mit grundlegenden Funktionen des Azure-Metrik-Explorers in Azure Monitor vertraut sind. Wenn Sie ein neuer Benutzer sind und erfahren möchten, wie Sie Ihr erstes Metrikdiagramm erstellen können, lesen Sie [Erste Schritte mit dem Azure-Metrik-Explorer](./metrics-getting-started.md).
 
 In Azure Monitor sind [Metriken](data-platform-metrics.md) eine Reihe von Messwerten und Zahlen, die im Lauf der Zeit gesammelt und gespeichert werden. Bei Metriken kann es sich um Standardmetriken (auch „Plattformmetriken“ genannt) oder benutzerdefinierte Metriken handeln. 
 
@@ -49,11 +48,11 @@ Wenn Sie mit der Auswahl zufrieden sind, wählen Sie **Anwenden** aus.
 ### <a name="view-metrics-across-multiple-resources"></a>Anzeigen von Metriken für mehrere Ressourcen
 Einige Ressourcentypen können Metriken für mehrere Ressourcen abfragen. Die Ressourcen müssen sich im selben Abonnement und am selben Standort befinden. Diese Ressourcentypen finden Sie oben im Menü **Ressourcentypen**. 
 
-Weitere Informationen finden Sie unter [Auswählen mehrerer Ressourcen](../platform/metrics-dynamic-scope.md#select-multiple-resources).
+Weitere Informationen finden Sie unter [Auswählen mehrerer Ressourcen](./metrics-dynamic-scope.md#select-multiple-resources).
 
 ![Screenshot mit ressourcenübergreifenden Typen](./media/metrics-charts/multi-resource-scope.png)
 
-Bei Typen, die mit mehreren Ressourcen kompatibel sind, können Sie Metriken für ein Abonnement oder mehrere Ressourcengruppen abfragen. Weitere Informationen finden Sie unter [Auswählen einer Ressourcengruppe oder eines Abonnements](../platform/metrics-dynamic-scope.md#select-a-resource-group-or-subscription).
+Bei Typen, die mit mehreren Ressourcen kompatibel sind, können Sie Metriken für ein Abonnement oder mehrere Ressourcengruppen abfragen. Weitere Informationen finden Sie unter [Auswählen einer Ressourcengruppe oder eines Abonnements](./metrics-dynamic-scope.md#select-a-resource-group-or-subscription).
 
 ## <a name="multiple-metric-lines-and-charts"></a>Mehrere Metriklinien und -diagramme
 
@@ -67,7 +66,7 @@ Stellen Sie sich beispielsweise vor, Sie haben fünf Speicherkonten und möchten
 
 ### <a name="multiple-metrics-on-the-same-chart"></a>Mehrere Metriken in demselben Diagramm
 
-Wenn Sie mehrere Metriken in demselben Diagramm anzeigen möchten, [erstellen Sie zuerst ein neues Diagramm](../platform/metrics-getting-started.md#create-your-first-metric-chart). Wählen Sie dann **Metrik hinzufügen** aus. Wiederholen Sie diesen Schritt, um eine weitere Metrik im gleichen Diagramm hinzuzufügen.
+Wenn Sie mehrere Metriken in demselben Diagramm anzeigen möchten, [erstellen Sie zuerst ein neues Diagramm](./metrics-getting-started.md#create-your-first-metric-chart). Wählen Sie dann **Metrik hinzufügen** aus. Wiederholen Sie diesen Schritt, um eine weitere Metrik im gleichen Diagramm hinzuzufügen.
 
 > [!NOTE]
 > In der Regel sollten in Ihren Diagrammen keine Metriken mit unterschiedlichen Maßeinheiten gemeinsam verwendet werden. Vermeiden Sie z. B. das Kombinieren einer Metrik, die Millisekunden verwendet, mit einer anderen, die Kilobytes verwendet. Vermeiden Sie auch das Kombinieren von Metriken mit deutlich abweichenden Skalierungen. 
@@ -86,7 +85,7 @@ Wenn Sie einem Diagramm eine Metrik hinzufügen, wendet der Metrik-Explorer auto
 
 Bevor Sie verschiedene Aggregationen in einem Diagramm verwenden, sollten Sie wissen, wie diese vom Metrik-Explorer verarbeitet werden. Bei Metriken handelt es sich um eine Reihe von Messwerten (oder „Metrikwerte“), die über einen Zeitraum erfasst werden. Wenn Sie ein Diagramm zeichnen, werden die Werte der ausgewählten Metrik separat über das *Aggregationsintervall* aggregiert. 
 
-Sie wählen die Dauer des Aggregationsintervalls mithilfe des [Zeitauswahlbereichs](../platform/metrics-getting-started.md#select-a-time-range) im Metrik-Explorer aus. Wenn Sie das Aggregationsintervall nicht explizit auswählen, wird standardmäßig der aktuell ausgewählte Zeitraum verwendet. Nach Festlegen des Aggregationsintervalls werden die Metrikwerte, die während jedes Aggregationsintervalls erfasst wurden, im Diagramm aggregiert (jeweils ein Datenpunkt pro Aggregationsintervall).
+Sie wählen die Dauer des Aggregationsintervalls mithilfe des [Zeitauswahlbereichs](./metrics-getting-started.md#select-a-time-range) im Metrik-Explorer aus. Wenn Sie das Aggregationsintervall nicht explizit auswählen, wird standardmäßig der aktuell ausgewählte Zeitraum verwendet. Nach Festlegen des Aggregationsintervalls werden die Metrikwerte, die während jedes Aggregationsintervalls erfasst wurden, im Diagramm aggregiert (jeweils ein Datenpunkt pro Aggregationsintervall).
 
 Angenommen, ein Diagramm zeigt die Metrik *Serverantwortzeit*. Es verwendet den Aggregationstyp *Average* (Durchschnitt) über den Zeitraum *letzte 24 Stunden*. In diesem Beispiel:
 
@@ -230,6 +229,42 @@ Der Erstellungsbereich für Warnungsregeln wird geöffnet. In diesem Bereich wer
 
 Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen](../alerts/alerts-metric.md).
 
+## <a name="correlate-metrics-to-logs"></a>Korrelieren von Metriken mit Protokollen
+„Drilldown in Protokolle ausführen“ wurde entwickelt, damit Kunden die Grundursache von Anomalien leichter anhand des Metrikdiagramms diagnostizieren können. Mithilfe von „Drilldown in Protokolle ausführen“ können Kunden Spitzen im Metrikdiagramm mit Protokollen und Abfragen korrelieren. 
+
+Bevor näher auf die Benutzeroberfläche eingegangen wird, werden zunächst die verschiedenen Typen von Protokollen und Abfragen vorgestellt. 
+
+| Begriff             | Definition  | 
+|------------------|-------------|
+| Aktivitätsprotokolle    | Bietet Einblicke in die Vorgänge für jede Azure-Ressource im Abonnement von außen (die Verwaltungsebene) sowie Aktualisierungen zu Service Health-Ereignissen. Über das Aktivitätsprotokoll können Sie für jeden Schreibvorgang (PUT, POST, DELETE), der für die Ressourcen Ihres Abonnements durchgeführt wurde, ermitteln, welcher Benutzer welche Aktion zu welchem Zeitpunkt durchgeführt hat. Es gibt jeweils ein Aktivitätsprotokoll für jedes Azure-Abonnement.  |   
+| Diagnoseprotokoll   | Dieses Protokoll bietet einen Einblick in Vorgänge, die innerhalb einer Azure-Ressource (der Datenebene) ausgeführt wurden, z. B. das Abrufen eines Geheimnisses aus einem Schlüsseltresor oder das Senden einer Anforderung an eine Datenbank. Der Inhalt dieser Protokolle variiert je nach Azure-Dienst und -Ressourcentyp. **Hinweis:** Das Diagnoseprotokoll muss vom Dienst bereitgestellt und vom Kunden aktiviert werden.  | 
+| Empfohlenes Protokoll | Szenariobasierte Abfragen, mit denen Kunden Anomalien im Metrik-Explorer untersuchen können  |
+
+Derzeit ist „Drilldown in Protokolle ausführen“ für ausgewählte Ressourcenanbieter verfügbar. Für folgende Ressourcenanbieter wird die vollständige Funktionalität „Drilldown in Protokolle ausführen“ angeboten: 
+
+* Application Insights 
+* Autoscale 
+* App-Dienste  
+* Storage  
+
+Nachstehend finden Sie einen Beispielscreenshot der Benutzeroberfläche für den Ressourcenanbieter „Application Insights“.
+
+![Spitze bei Fehlern auf dem Blatt mit Application Insights-Metriken](./media/metrics-charts/drill-into-log-ai.png)
+
+Wenn Sie eine Diagnose für die Spitze in den fehlerhaften Anforderungen durchführen möchten, klicken Sie auf „Drilldown in Protokolle ausführen“.
+
+![Screenshot des Dropdownmenüs „Drilldown für Protokolle ausführen“](./media/metrics-charts/drill-into-logs-dropdown.png)
+
+Wenn Sie auf die Fehleroption klicken, werden Sie zu einem benutzerdefinierten Fehlerblatt weitergeleitet, auf dem die fehlgeschlagenen Vorgänge, die häufigsten Ausnahmetypen und die Abhängigkeiten angezeigt werden. 
+
+![Screenshot des Fehlerblatts für Application Insights](./media/metrics-charts/ai-failure-blade.png)
+
+### <a name="common-problems-with-drill-into-logs"></a>Häufige Probleme mit „Drilldown für Protokolle ausführen“
+
+* Protokoll und Abfragen sind deaktiviert: Damit empfohlene Protokolle und Abfragen angezeigt werden, müssen Sie Ihre Diagnoseprotokolle an Log Analytics weiterleiten. [In diesem Artikel](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) erfahren Sie, wie dies funktioniert. 
+* Aktivitätsprotokolle werden nur bereitgestellt: Das Feature „Drilldown für Protokolle ausführen“ ist nur für ausgewählte Ressourcenanbieter verfügbar. Aktivitätsprotokolle werden standardmäßig bereitgestellt. 
+
+ 
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Wenn im Diagramm keine Daten angezeigt werden, sehen Sie sich die folgenden Informationen zur Problembehandlung an:
@@ -242,6 +277,5 @@ Wenn im Diagramm keine Daten angezeigt werden, sehen Sie sich die folgenden Info
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Erstellen von Dashboards mit ausführbaren Aktionen mithilfe von Metriken finden Sie unter [Erstellen von benutzerdefinierten KPI-Dashboards](../learn/tutorial-app-dashboards.md).
+Informationen zum Erstellen von Dashboards mit ausführbaren Aktionen mithilfe von Metriken finden Sie unter [Erstellen von benutzerdefinierten KPI-Dashboards](../app/tutorial-app-dashboards.md).
 
- 

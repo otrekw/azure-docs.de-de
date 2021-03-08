@@ -3,16 +3,18 @@ title: Webhooks zum Reagieren auf Registrierungsaktionen
 description: Erfahren Sie, wie Sie Webhooks verwenden, um Ereignisse auszulösen, wenn in einem Ihrer Registrierungsrepositorys Push- oder Pull-Aktionen stattfinden.
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 1db1098da81e6cf9ecb262c99f705b77af2efd26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5374b58ba72727500294a173c26e9a131b29fe34
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004482"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722244"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Verwenden von Azure Container Registry-Webhooks
 
 Eine Azure Container Registry speichert und verwaltet private Docker-Containerimages. Dies ähnelt der Art und Weise, in der Docker Hub öffentliche Docker-Images speichert. Sie können auch Repositorys für [Helm-Diagramme](container-registry-helm-repos.md) hosten (Vorschauversion), ein Paketformat zum Bereitstellen von Anwendungen in Kubernetes. Sie können Webhooks verwenden, um Ereignisse auszulösen, wenn in einem Ihrer Registrierungsrepositorys bestimmte Aktionen stattfinden. Webhooks können auf Ereignisse auf Ebene der Registrierung reagieren oder auf ein bestimmtes Repositorytag begrenzt werden. Mit einer [georeplizierten](container-registry-geo-replication.md) Registrierung können Sie jeden Webhook so konfigurieren, dass er auf Ereignisse auf einem bestimmten regionalen Replikat reagiert.
+
+Der Endpunkt für einen Webhook muss über die Registrierung öffentlich zugänglich sein. Sie können Registrierungsanforderungen für Webhooks konfigurieren, um sich bei einem gesicherten Endpunkt zu authentifizieren.
 
 Ausführliche Informationen zu Webhookanforderungen finden Sie unter [Referenz zu Azure Container Registry-Webhookschemas](container-registry-webhook-reference.md).
 

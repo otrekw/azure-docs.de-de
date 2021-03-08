@@ -4,19 +4,21 @@ description: Datenschutz im Azure-Sicherheitsvergleichstest V2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 687c344aefc70729c85fb37d615ec0a272ff4fde
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: c8d907062835f18393946b04f1f1e9d5ec345411
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368867"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735759"
 ---
 # <a name="security-control-v2-data-protection"></a>Sicherheitskontrolle V2: Datenschutz
 
 Datenschutz deckt die Steuerung des Schutzes von Daten im Ruhezustand, während der Übertragung und über autorisierte Zugriffsmechanismen ab. Dies umfasst das Ermitteln, Klassifizieren, Schützen und Überwachen vertraulicher Datenressourcen über Zugriffssteuerung, Verschlüsselung und Protokollierung in Azure.
+
+Die entsprechende integrierte Azure Policy-Instanz finden Sie unter [Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß Azure-Sicherheitsvergleichstest: Datenschutz](../../governance/policy/samples/azure-security-benchmark#data-protection).
 
 ## <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1: Ermitteln, Klassifizieren und Bezeichnen von vertraulichen Daten
 
@@ -24,9 +26,9 @@ Datenschutz deckt die Steuerung des Schutzes von Daten im Ruhezustand, während 
 |--|--|--|--|
 | DP-1 | 13.1, 14.5, 14.7 | SC-28 |
 
-Ermitteln, klassifizieren und bezeichnen Sie Ihre vertraulichen Daten, sodass Sie die entsprechenden Steuerungen entwerfen können, um sicherzustellen, dass vertrauliche Daten von den Technologiesystemen der Organisation sicher gespeichert, verarbeitet und übertragen werden. 
+Ermitteln, klassifizieren und bezeichnen Sie Ihre vertraulichen Daten, sodass Sie die entsprechenden Steuerungen entwerfen können, um sicherzustellen, dass vertrauliche Daten von den Technologiesystemen der Organisation sicher gespeichert, verarbeitet und übertragen werden.
 
-Verwenden Sie Azure Information Protection (und das zugehörige Überprüfungstool) für vertrauliche Informationen in Office-Dokumenten in Azure-, lokalen, Office 365- und anderen Speicherorten. 
+Verwenden Sie Azure Information Protection (und das zugehörige Überprüfungstool) für vertrauliche Informationen in Office-Dokumenten in Azure-, lokalen, Office 365- und anderen Speicherorten.
 
 Sie können Azure SQL Information Protection verwenden, um die Klassifizierung und Bezeichnung von Informationen zu vereinfachen, die in Azure SQL-Datenbanken gespeichert sind.
 
@@ -38,7 +40,7 @@ Sie können Azure SQL Information Protection verwenden, um die Klassifizierung u
 
 **Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Anwendungssicherheit und DevOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
+- [Anwendungssicherheit und DevOps-Funktionen](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [Datensicherheit](/azure/cloud-adoption-framework/organize/cloud-security-data-security) 
 
@@ -84,9 +86,9 @@ Azure Information Protection (AIP) bietet Überwachungsfunktionen für Informati
 
 Wenn Compliance hinsichtlich Datenverlust (Data Loss Prevention, DLP) erforderlich ist, können Sie eine hostbasierte DLP-Lösung verwenden, um Erkennungs- und/oder präventive Steuerungsmaßnahmen zu erzwingen und so die Datenexfiltration verhindern.
 
-- [Aktivieren von Azure SQL ATP](../../azure-sql/database/threat-detection-overview.md)
+- [Azure Defender für SQL](../../azure-sql/database/azure-defender-for-sql.md)
 
-- [Aktivieren von Azure Storage ATP](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
+- [Azure Defender für Storage](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
 **Verantwortlichkeit**: Shared
 
@@ -104,11 +106,11 @@ Wenn Compliance hinsichtlich Datenverlust (Data Loss Prevention, DLP) erforderli
 |--|--|--|--|
 | DP-4 | 14.4 | SC-8 |
 
-Als Ergänzung zu Zugriffssteuerungen sollten die Daten während der Übertragung durch Verschlüsselung vor Out-of-Band-Angriffen (z. B. Erfassung des Datenverkehrs) geschützt werden, um sicherzustellen, dass Angreifer die Daten nicht einfach lesen oder ändern können. 
+Als Ergänzung zu Zugriffssteuerungen sollten die Daten während der Übertragung durch Verschlüsselung vor Out-of-Band-Angriffen (z. B. Erfassung des Datenverkehrs) geschützt werden, um sicherzustellen, dass Angreifer die Daten nicht einfach lesen oder ändern können.
 
-Obwohl dies bei Datenverkehr in privaten Netzwerken optional ist, ist es für den Datenverkehr in externen und öffentlichen Netzwerken von entscheidender Bedeutung. Stellen Sie bei HTTP-Datenverkehr sicher, dass alle Clients, die Verbindungen mit Ihren Azure-Ressourcen herstellen, TLS 1.2 oder höher aushandeln können. Verwenden Sie für die Remoteverwaltung SSH (für Linux) bzw. RDP/TLS (für Windows) anstelle eines unverschlüsselten Protokolls. Veraltete SSL-, TLS- und SSH-Versionen und -Protokolle sowie schwache Verschlüsselungsverfahren sollten deaktiviert werden.  
+Obwohl dies bei Datenverkehr in privaten Netzwerken optional ist, ist es für den Datenverkehr in externen und öffentlichen Netzwerken von entscheidender Bedeutung. Stellen Sie bei HTTP-Datenverkehr sicher, dass alle Clients, die Verbindungen mit Ihren Azure-Ressourcen herstellen, TLS 1.2 oder höher aushandeln können. Verwenden Sie für die Remoteverwaltung SSH (für Linux) bzw. RDP/TLS (für Windows) anstelle eines unverschlüsselten Protokolls. Veraltete SSL-, TLS- und SSH-Versionen und -Protokolle sowie schwache Verschlüsselungsverfahren sollten deaktiviert werden.
 
-Azure ermöglicht standardmäßig die Verschlüsselung von Daten während der Übertragung zwischen Azure-Rechenzentren. 
+Azure ermöglicht standardmäßig die Verschlüsselung von Daten während der Übertragung zwischen Azure-Rechenzentren.
 
 - [Grundlegendes zur Verschlüsselung während der Übertragung mit Azure](../fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 

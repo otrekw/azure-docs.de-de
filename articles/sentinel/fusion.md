@@ -12,19 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 5c715804693571bc421951de1288fc884d2eae8d
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 23e116eba6393f834b3368901d4440e668b16fca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746183"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724284"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Erweiterte Erkennung von mehrstufigen Angriffen in Azure Sentinel
 
-
 > [!IMPORTANT]
-> Einige Fusion-Features in Azure Sentinel befinden sich zurzeit in der **Public Preview**.
-> Diese Features werden ohne Vereinbarung zum Servicelevel bereitgestellt und nicht für Produktionsworkloads empfohlen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Einige Fusion-Erkennungen (weiter unten aufgeführt) befinden sich derzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
 Durch die Verwendung der auf maschinellem Lernen basierenden Fusion-Technologie kann Azure Sentinel mehrstufige Angriffe automatisch erkennen. Hierzu werden Kombinationen von anomalen Verhaltensweisen und verdächtigen Aktivitäten kombiniert, die an verschiedenen Stellen der Kill Chain beobachtet werden. Auf der Grundlage dieser Entdeckungen generiert Azure Sentinel Incidents, die auf andere Weise nur schwer abgefangen werden können. Diese Incidents umfassen mindestens zwei Warnungen oder Aktivitäten. Standardmäßig weisen diese Incidents ein geringes Volumen, eine hohe Qualität und einen hohen Schweregrad auf.
 
@@ -60,12 +58,12 @@ Wie bereits erwähnt, korreliert Fusion mehrere Sicherheitswarnungen aus verschi
 Zum Ermöglichen dieser von Fusion gestützten Szenarien zur Angriffsermittlung müssen alle aufgelisteten Datenquellen mithilfe der zugeordneten Azure Sentinel-Daten-Connectors erfasst werden.
 
 > [!NOTE]
-> Einige dieser Szenarien befinden sich in der **Public Preview**. Diese sind entsprechend gekennzeichnet.
+> Einige dieser Szenarios befinden sich in der **VORSCHAU**. Diese sind entsprechend gekennzeichnet.
 
 ## <a name="compute-resource-abuse"></a>Missbrauch von Computeressourcen
 
 ### <a name="multiple-vm-creation-activities-following-suspicious-azure-active-directory-sign-in"></a>Mehrere Aktivitäten zur Erstellung von VMs im Anschluss an verdächtige Anmeldungen bei Azure Active Directory
-Dieses Szenario befindet sich zurzeit in der **Public Preview**.
+Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Taktiken:** Erstzugriff, Beeinträchtigung 
 
@@ -214,7 +212,7 @@ Dieses Szenario befindet sich zurzeit in der **Public Preview**.
 ### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>Verdächtige Regeln zur Posteingangsänderung im Anschluss an verdächtige Azure AD-Anmeldung festgelegt
 Dieses Szenario ist zwei Klassifikationen in dieser Liste zuzuordnen: **Datenexfiltration** und **Lateral Movement**. Aus Gründen der Klarheit wird es in beiden Abschnitten aufgeführt.
 
-Dieses Szenario befindet sich zurzeit in der **Public Preview**.
+Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Taktiken:** Erstzugriff, Lateral Movement, Exfiltration
 
@@ -235,7 +233,7 @@ Dieses Szenario befindet sich zurzeit in der **Public Preview**.
 - **Anmeldeereignis eines Benutzers mit kompromittierten Anmeldeinformationen, das zu verdächtiger Regel zur Posteingangsänderung führt**
 
 ### <a name="multiple-power-bi-report-sharing-activities-following-suspicious-azure-ad-sign-in"></a>Mehrere Aktivitäten zur Freigabe von Power BI-Berichten nach verdächtiger Azure AD Anmeldung 
-Dieses Szenario befindet sich zurzeit in der **Public Preview**.
+Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Taktiken:** Erstzugriff, Exfiltration 
 
@@ -256,7 +254,7 @@ Dieses Szenario befindet sich zurzeit in der **Public Preview**.
 - **Anmeldeereignis eines Benutzers mit kompromittierten Anmeldeinformationen führt zu mehreren Aktivitäten zur Freigabe von Power BI-Berichten**
 
 ### <a name="suspicious-power-bi-report-sharing-following-suspicious-azure-ad-sign-in"></a>Verdächtige Freigabe von Power BI-Berichten im Anschluss an verdächtige Azure AD-Anmeldung
-Dieses Szenario befindet sich zurzeit in der **Public Preview**.
+Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Taktiken:** Erstzugriff, Exfiltration 
 
@@ -299,7 +297,7 @@ Dieses Szenario befindet sich zurzeit in der **Public Preview**.
 - **Anmeldeereignis eines Benutzers mit kompromittierten Anmeldeinformationen, das zur Massenlöschung von Dateien führt**
 
 ### <a name="suspicious-email-deletion-activity-following-suspicious-azure-ad-sign-in"></a>Verdächtige Aktivität zur E-Mail-Löschung im Anschluss an eine verdächtige Azure AD-Anmeldung
-Dieses Szenario befindet sich zurzeit in der **Public Preview**.
+Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Taktiken:** Erstzugriff, Beeinträchtigung 
 
@@ -322,7 +320,7 @@ Dieses Szenario befindet sich zurzeit in der **Public Preview**.
 ## <a name="denial-of-service"></a>Denial of Service
 
 ### <a name="multiple-vm-delete-activities-following-suspicious-azure-ad-sign-in"></a>Mehrere Aktivitäten zur Löschung von VMs nach verdächtiger Azure AD Anmeldung
-Dieses Szenario befindet sich zurzeit in der **Public Preview**.
+Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Taktiken:** Erstzugriff, Beeinträchtigung
 
@@ -367,7 +365,7 @@ Dieses Szenario befindet sich zurzeit in der **Public Preview**.
 ### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>Verdächtige Regeln zur Posteingangsänderung im Anschluss an verdächtige Azure AD-Anmeldung festgelegt
 Dieses Szenario ist zwei Klassifikationen in dieser Liste zuzuordnen: **Seitwärtsbewegung** und **Datenexfiltration**. Aus Gründen der Klarheit wird es in beiden Abschnitten aufgeführt.
 
-Dieses Szenario befindet sich zurzeit in der **Public Preview**.
+Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Taktiken:** Erstzugriff, Lateral Movement, Exfiltration
 
@@ -412,7 +410,7 @@ Dieses Szenario befindet sich zurzeit in der **Public Preview**.
 ## <a name="malicious-execution-with-legitimate-process"></a>Böswillige Ausführung mit legitimem Prozess
 
 ### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>PowerShell hat eine verdächtige Netzwerkverbindung hergestellt, auf die anomaler, durch die Palo Alto Networks-Firewall gekennzeichneter Datenverkehr folgte.
-Dieses Szenario befindet sich zurzeit in der **Public Preview**.
+Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Taktiken:** Ausführung
 
@@ -423,7 +421,7 @@ Dieses Szenario befindet sich zurzeit in der **Public Preview**.
 **Beschreibung:** Fusion-Vorfälle dieses Typs zeigen an, dass eine ausgehende Verbindungsanforderung mithilfe eines PowerShell-Befehls durchgeführt wurde. Im Anschluss daran wurde von der Palo Alto Networks-Firewall eine ungewöhnliche eingehende Aktivität erkannt. Dies bietet einen Hinweis darauf, dass ein Angreifer wahrscheinlich Zugriff auf Ihr Netzwerk erlangt hat und versucht, böswillige Aktionen auszuführen. Verbindungsversuche von PowerShell, die diesem Muster folgen, können einen Hinweis auf Command-and-Control-Aktivitäten von Malware, Anforderungen für den Download zusätzlicher Malware oder einen Angreifer darstellen, der interaktiven Remotezugriff einrichtet. Wie bei allen Living-off-the-Land-Angriffen könnte diese Aktivität auch eine legitime Verwendung von PowerShell darstellen. Die Ausführung eines PowerShell-Befehls, auf die verdächtige eingehende Firewall-Aktivitäten folgen, steigert aber die Glaubwürdigkeit der Annahme, dass PowerShell in böswilliger Weise verwendet wird und der Vorfall genauer untersucht werden sollte. In Palo Alto-Protokollen sucht Azure Sentinel hauptsächlich nach [Bedrohungen](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs), und der Datenverkehr wird als verdächtig eingestuft, wenn Bedrohungen durchgelassen werden (verdächtige Daten, Dateien, Überflutungen, Pakete, Scans, Spyware, URLs, Viren, Sicherheitsrisiken, Wildfireviren, Wildfires). Konsultieren Sie außerdem das Palo Alto-Bedrohungsprotokoll, das dem in der Fusion-Vorfallsbeschreibung aufgelisteten [Bedrohungs-/Inhaltstyp](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) entspricht, um weitere Details zur Benachrichtigung zu erhalten.
 
 ### <a name="suspicious-remote-wmi-execution-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Verdächtige WMI-Remoteausführung, auf die anomaler, durch die Palo Alto Networks-Firewall gekennzeichneter Datenverkehr folgte.
-Dieses Szenario befindet sich zurzeit in der **Public Preview**.
+Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Taktiken:** Ausführung, Ermittlung
 
@@ -456,7 +454,7 @@ Dieses Szenario befindet sich zurzeit in der **Public Preview**.
 ## <a name="malware-c2-or-download"></a>Malware C2 oder Download
 
 ### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Netzwerkanforderung an den TOR-Anonymisierungsdienst gefolgt von anomalem, durch die Palo Alto Networks-Firewall gekennzeichnetem Datenverkehr
-Dieses Szenario befindet sich zurzeit in der **Public Preview**.
+Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Taktiken:** Befehl und Steuerung
 
@@ -467,7 +465,7 @@ Dieses Szenario befindet sich zurzeit in der **Public Preview**.
 **Beschreibung:** Fusion-Vorfälle dieses Typs zeigen an, dass eine ausgehende Verbindungsanforderung an den TOR-Anonymisierungsdienst durchgeführt wurde. Im Anschluss daran wurde dann von der Palo Alto Networks-Firewall eine ungewöhnliche eingehende Aktivität erkannt. Dies bietet einen Hinweis darauf, dass ein Angreifer wahrscheinlich Zugriff auf Ihr Netzwerk erlangt hat und versucht, seine Aktionen und Absichten zu verbergen. Verbindungsversuche mit dem TOR-Netzwerk, die diesem Muster folgen, können einen Hinweis auf Command-and-Control-Aktivitäten von Malware, Anforderungen für den Download zusätzlicher Malware oder einen Angreifer darstellen, der interaktiven Remotezugriff einrichtet. In Palo Alto-Protokollen sucht Azure Sentinel hauptsächlich nach [Bedrohungen](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs), und der Datenverkehr wird als verdächtig eingestuft, wenn Bedrohungen durchgelassen werden (verdächtige Daten, Dateien, Überflutungen, Pakete, Scans, Spyware, URLs, Viren, Sicherheitsrisiken, Wildfireviren, Wildfires). Konsultieren Sie außerdem das Palo Alto-Bedrohungsprotokoll, das dem in der Fusion-Vorfallsbeschreibung aufgelisteten [Bedrohungs-/Inhaltstyp](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) entspricht, um weitere Details zur Benachrichtigung zu erhalten.
 
 ### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Ausgehende Verbindung mit IP mit einem Verlauf nicht autorisierter Zugriffsversuche, gefolgt von anomalem, durch die Palo Alto Networks-Firewall gekennzeichnetem Datenverkehr
-Dieses Szenario befindet sich zurzeit in der **Public Preview**.
+Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Taktiken:** Befehl und Steuerung
 
@@ -502,7 +500,7 @@ Dieses Szenario befindet sich zurzeit in der **Public Preview**.
 ## <a name="remote-exploitation"></a>Remoteausnutzung
 
 ### <a name="suspected-use-of-attack-framework-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Verdacht der Nutzung eines Angriffs-Frameworks, auf den anomaler, durch die Palo Alto Networks-Firewall gekennzeichneter Datenverkehr folgt.
-Dieses Szenario befindet sich zurzeit in der **Public Preview**.
+Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Taktiken:** Erstzugriff, Ausführung, Lateral Movement, Rechteausweitung
 

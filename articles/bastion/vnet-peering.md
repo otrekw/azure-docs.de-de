@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 472261666c86b666efd09c7217d12e5a795a50d9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f72a3739fac1e7d6afdafd2676ea6fcefe847b2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094885"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710582"
 ---
 # <a name="vnet-peering-and-azure-bastion-preview"></a>VNET-Peering und Azure Bastion (Vorschau)
 
@@ -40,9 +40,15 @@ In dieser Abbildung ist die Architektur einer Azure Bastion-Bereitstellung in ei
 **Schritte:**
 
 1. Stellen Sie in einem HTML5-Browser eine Verbindung mit dem Azure-Portal her.
-1. Wählen Sie die VM aus, mit der Sie eine Verbindung herstellen möchten.
-1. Azure Bastion wird nahtlos über das Peering-VNET erkannt.
-1. Mit nur einem Klick wird die RDP- oder SSH-Sitzung im Browser geöffnet. Informationen zu den Grenzwerten für gleichzeitige RDP- und SSH-Sitzungen finden Sie unter [RDP- und SSH-Sitzungen](bastion-faq.md#limits).
+2. Stellen Sie sicher, dass Sie sowohl für die Ziel-VM als auch für das VNet mit Peering über **Lesezugriff** verfügen. Überprüfen Sie außerdem unter „IAM“, ob Sie Lesezugriff auf die folgenden Ressourcen haben:
+   * Rolle „Leser“ für den virtuellen Computer
+   * Rolle „Leser“ für den Netzwerkadapter mit privater IP-Adresse des virtuellen Computers
+   * Rolle „Leser“ für die Azure Bastion-Ressource
+   * Rolle „Leser“ im virtuellen Netzwerk (nicht erforderlich, wenn kein mittels Peering verbundenes virtuelles Netzwerk vorhanden ist)
+3. Damit Bastion im Dropdownmenü **Verbinden** angezeigt wird, müssen Sie unter **Subscription > global subscription** (Abonnement > Globales Abonnement) die Abonnements auswählen, auf die Sie Zugriff haben.
+4. Wählen Sie die VM aus, mit der Sie eine Verbindung herstellen möchten.
+5. Azure Bastion wird nahtlos über das Peering-VNET erkannt.
+6. Mit nur einem Klick wird die RDP- oder SSH-Sitzung im Browser geöffnet. Informationen zu den Grenzwerten für gleichzeitige RDP- und SSH-Sitzungen finden Sie unter [RDP- und SSH-Sitzungen](bastion-faq.md#limits).
 
   :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="Herstellen einer Verbindung":::
 

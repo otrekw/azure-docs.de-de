@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: ''
-ms.openlocfilehash: 0791ccf10c76f2a1781bf373c674f606ca365fff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9218886ded7827d4b7a1e2413f1470ee5cd1563d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597916"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733957"
 ---
 # <a name="resource-manager-template-samples-for-azure-monitor"></a>Beispiele für Resource Manager-Vorlagen für Azure Monitor
 
@@ -54,7 +54,7 @@ az deployment group create \
 - [Protokollabfragen](logs/resource-manager-log-queries.md): Erstellen gespeicherter Protokollabfragen in einem Log Analytics-Arbeitsbereich
 - [Log Analytics-Arbeitsbereich](logs/resource-manager-workspace.md): Erstellen eines Log Analytics-Arbeitsbereichs und Konfigurieren der Erfassung verschiedener Datenquellen vom Log Analytics Agent
 - [Arbeitsmappen](visualize/resource-manager-workbooks.md): Erstellen von Arbeitsmappen
-- [Azure Monitor für Container](containers/resource-manager-container-insights.md): Integrieren von Clustern in Azure Monitor für Container
+- [Container Insights:](containers/resource-manager-container-insights.md) Durchführen des Onboardings für Cluster in Container Insights.
 - [Azure Monitor für VMs](vm/resource-manager-vminsights.md): Integrieren virtueller Computer in Azure Monitor für VMs
 
 

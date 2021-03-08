@@ -3,15 +3,15 @@ title: 'Problembehandlung bei Apache Kafka in Confluent Cloud: Azure-Partnerlös
 description: Dieser Artikel enthält Informationen zur Problembehandlung und Antworten auf häufig gestellte Fragen (FAQ) zur Confluent Cloud in Azure.
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 02/18/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: cbf166086a489165e8100dafd7c212ab6c298b41
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: b1e4b06fcbecf11d7d5f58a583fe3bd6643d99ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253253"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709393"
 ---
 # <a name="troubleshooting-apache-kafka-for-confluent-cloud-solutions"></a>Problembehandlung bei Apache Kafka für Confluent Cloud-Lösungen
 
@@ -28,6 +28,16 @@ Um das Angebot im Azure Marketplace zu finden, führen Sie die folgenden Schritt
 1. Wählen Sie die Anwendungskachel aus.
 
 Wenn das Angebot nicht angezeigt wird, wenden Sie sich an den [Confluent-Support](https://support.confluent.io). Die ID Ihres Azure Active Directory Mandanten muss in der Liste der zulässigen Mandanten enthalten sein. Informationen zum Suchen Ihrer Mandanten-ID finden Sie unter [Ermitteln Ihrer Azure Active Directory-Mandanten-ID](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md).
+
+## <a name="purchase-errors"></a>Fehler beim Kauf
+
+* Beim Kauf tritt ein Fehler auf, weil keine gültige Kreditkarte mit dem Azure-Abonnement verknüpft ist oder keine Zahlungsmethode für das Abonnement angegeben ist.
+
+  Verwenden Sie ein anderes Azure-Abonnement. Alternativ können Sie die Kreditkarte oder Zahlungsmethode für das Abonnement hinzufügen oder aktualisieren. Weitere Informationen finden Sie unter [Hinzufügen oder Aktualisieren einer Kreditkarte für Azure](../../cost-management-billing/manage/change-credit-card.md).
+
+* Das EA-Abonnement lässt keine Marketplace-Käufe zu.
+
+  Verwenden Sie ein anderes Abonnement, oder überprüfen Sie, ob Marketplace-Käufe für Ihr EA-Abonnement aktiviert sind. Weitere Informationen finden Sie unter [Aktivieren von Azure Marketplace-Einkäufen](../../cost-management-billing/manage/ea-azure-marketplace.md#enabling-azure-marketplace-purchases). Wenn hierdurch das Problem nicht behoben wird, wenden Sie sich an den [Confluent-Support](https://support.confluent.io).
 
 ## <a name="conflict-error"></a>Konfliktfehler
 

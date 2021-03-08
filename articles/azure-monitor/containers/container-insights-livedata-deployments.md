@@ -1,19 +1,19 @@
 ---
-title: Anzeigen von Bereitstellungen in Azure Monitor für Container (Vorschau) | Microsoft-Dokumentation
-description: In diesem Artikel wird die Echtzeitansicht von Kubernetes-Bereitstellungen in Azure Monitor für Container ohne Verwendung von kubectl beschrieben.
+title: Anzeigen der Container Insights-Bereitstellung (Vorschauversion) | Microsoft-Dokumentation
+description: In diesem Artikel wird die Echtzeitansicht von Kubernetes-Bereitstellungen in Container Insights ohne Verwendung von kubectl beschrieben.
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2f1eac82ce67818c7bf86ce3ca8924155d8ee2aa
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c6eaac209234f7352395502c6761312cf258108f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601245"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713914"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>Anzeigen von Bereitstellungen (Vorschau) in Echtzeit
 
-Mit Azure Monitor für Container emuliert die Funktion „Bereitstellungen anzeigen“ (Vorschau) den direkten Zugriff auf Kubernetes-Bereitstellungsobjekte in Echtzeit, indem die Befehle `kubeclt get deployments` und `kubectl describe deployment {your deployment}` verfügbar gemacht werden.
+Mit Container Insights emuliert das Feature „Bereitstellungen anzeigen“ (Vorschau) den direkten Zugriff auf Kubernetes-Bereitstellungsobjekte in Echtzeit, indem die Befehle `kubeclt get deployments` und `kubectl describe deployment {your deployment}` verfügbar gemacht werden.
 
 >[!NOTE]
 >Als [private Cluster](https://azure.microsoft.com/updates/aks-private-cluster/) aktivierte AKS-Cluster werden mit dieser Funktion nicht unterstützt. Diese Funktion basiert auf dem direkten Zugriff auf die Kubernetes-API über einen Proxyserver im Browser. Durch die Aktivierung der Netzwerksicherheit zum Blockieren der Kubernetes-API über den Proxy wird der Datenverkehr blockiert.
@@ -56,7 +56,7 @@ Wenn Sie in der Liste eine Bereitstellung auswählen, wird rechts auf der Seite 
 
 Beim Überprüfen der Bereitstellungsdetails können Sie Containerprotokolle und -ereignisse in Echtzeit sehen. Wenn Sie **Livekonsole anzeigen** auswählen, wird der Konsolenbereich für Livedaten (Vorschau) unterhalb der Datentabelle für Bereitstellungen angezeigt. Hier können Sie Liveprotokolldaten in einem kontinuierlichen Stream sehen. Wenn in der Abrufstatusanzeige ein grünes Häkchen angezeigt wird, das sich ganz rechts im Bereich befindet, bedeutet das, dass Daten abgerufen werden können und in die Konsole gestreamt werden.
 
-Sie können außerdem nach dem Namespace oder nach Ereignissen auf Clusterebene filtern. Weitere Informationen zum Anzeigen von Daten in Echtzeit in der Konsole finden Sie unter [Anzeigen von Livedaten (Vorschau) mit Azure Monitor für Container](container-insights-livedata-overview.md).
+Sie können außerdem nach dem Namespace oder nach Ereignissen auf Clusterebene filtern. Weitere Informationen zum Anzeigen von Daten in Echtzeit in der Konsole finden Sie unter [Anzeigen von Livedaten (Vorschau) mit Container Insights](container-insights-livedata-overview.md).
 
 ![Livedaten in der Ansicht „Bereitstellungen“ in der Konsole](./media/container-insights-livedata-deployments/deployments-console-view-events.png)
 

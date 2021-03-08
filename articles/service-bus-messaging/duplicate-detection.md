@@ -3,12 +3,12 @@ title: Erkennung doppelter Nachrichten von Azure Service Bus | Microsoft-Dokumen
 description: In diesem Artikel wird erläutert, wie Sie Duplikate in Azure Service Bus-Nachrichten erkennen können. Die doppelte Nachricht kann ignoriert und gelöscht werden.
 ms.topic: article
 ms.date: 01/13/2021
-ms.openlocfilehash: 8ff98b3a052be6004a2dc070f10d6f8c9ca0617f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 527c2dea34b02733907372b6e75a40a5ef5fc289
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684807"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711924"
 ---
 # <a name="duplicate-detection"></a>Duplikaterkennung
 
@@ -48,7 +48,7 @@ Im Portal wird das Feature während der Erstellung der Entität mit dem Kontroll
 
 Programmgesteuert legen Sie das Flag mit der [QueueDescription.requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection)-Eigenschaft im vollständigen Framework der .NET-API fest. Mit der Azure Resource Manager-API wird der Wert mit der [queueProperties.requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values)-Eigenschaft festgelegt.
 
-Die Zeit für den Verlauf der Duplikaterkennung beträgt für Warteschlangen und Themen standardmäßig 30 Sekunden. Der Höchstwert beträgt 7 Tage. Sie können diese Einstellung im Eigenschaftenfenster für Warteschlangen und Themen im Azure-Portal ändern.
+Die Zeit für den Verlauf der Duplikaterkennung beträgt für Warteschlangen und Themen standardmäßig 10 Minuten. Der Mindestwert beträgt 20 Sekunden, der Höchstwert beträgt 7 Tage. Sie können diese Einstellung im Eigenschaftenfenster für Warteschlangen und Themen im Azure-Portal ändern.
 
 ![Screenshot des Service Bus-Features mit hervorgehobener Einstellung „Eigenschaften“ und rot umrandeter Option „Verlauf der Duplikaterkennung“][2]
 

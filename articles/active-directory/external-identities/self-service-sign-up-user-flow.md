@@ -5,39 +5,39 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51602e97a8424bade542eec6f88b673130fee8b5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 883e658fd3f03eb50d54e548ffac49e23b340808
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586022"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688645"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Hinzufügen eines Benutzerflows für die Self-Service-Registrierung zu einer App (Vorschau)
-> [!NOTE]
-> Die Self-Service-Registrierung ist eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Sie können Benutzerflows für Apps erstellen, die von Ihrer Organisation erstellt werden. Wenn Sie den Benutzerflow einer Anwendung zuordnen, können Sie die Registrierung für diese App aktivieren. Sie können mehrere Anwendungen auswählen, die dem Benutzerflow zugeordnet werden sollen. Nachdem Sie den Benutzerflow den entsprechenden Anwendungen zugewiesen haben, können sich Benutzer, die diese App aufrufen, mit den im Benutzerflow konfigurierten Optionen registrieren und ein Gastkonto erhalten.
+> [!NOTE]
+> Einige der in diesem Artikel erwähnten Features sind öffentliche Previewfunktionen von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Für selbst erstellte Anwendungen können Sie Benutzerflows erstellen, die es einem Benutzer ermöglichen, sich für eine App zu registrieren und ein neues Gastkonto zu erstellen. In einem Benutzerflow für die Self-Service-Registrierung werden die Schritte, die der Benutzer im Rahmen der Registrierung ausführen muss, sowie die zulässigen Identitätsanbieter und die zu erfassenden Benutzerattribute definiert. Einem Benutzerflow können eine oder mehrere Anwendungen zugeordnet werden.
 
 > [!NOTE]
 > Sie können Benutzerflows mit Apps verknüpfen, die von Ihrer Organisation erstellt wurden. Benutzerflows können nicht für Microsoft-Apps wie SharePoint oder Teams verwendet werden.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-### <a name="add-social-identity-providers-optional"></a>Hinzufügen eines sozialen Netzwerks als Identitätsanbieter (optional)
+### <a name="add-identity-providers-optional"></a>Hinzufügen von Identitätsanbietern (optional)
 
-Azure AD ist der Standardidentitätsanbieter für die Self-Service-Registrierung. Das bedeutet, dass Benutzer sich standardmäßig mit einem Azure AD-Konto anmelden können. Soziale Netzwerke als Identitätsanbieter können ebenfalls in diese Registrierungsflows eingeschlossen werden, um Google- und Facebook-Konten zu unterstützen.
+Azure AD ist der Standardidentitätsanbieter für die Self-Service-Registrierung. Das bedeutet, dass Benutzer sich standardmäßig mit einem Azure AD-Konto anmelden können. In Ihren Benutzerflows für die Self-Service-Registrierung können Sie auch soziale Netzwerke wie Google und Facebook sowie Microsoft-Konto (Vorschau) und Einmalkennung per E-Mail (Vorschau) einschließen.
 
+- [Identitätsanbieter: Microsoft-Konto (Vorschau)](microsoft-account.md)
+- [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md)
 - [Hinzufügen von Facebook zu Ihrer Liste der sozialen Netzwerke als Identitätsanbieter](facebook-federation.md)
 - [Hinzufügen von Google zu Ihrer Liste der sozialen Netzwerke als Identitätsanbieter](google-federation.md)
-
-> [!NOTE]
-> Wenn in der aktuellen Vorschau ein Benutzerflow für die Self-Service-Registrierung mit einer App verknüpft ist und Sie einem Benutzer eine Einladung für diese App senden, kann der Benutzer die Einladung nicht mit einem Gmail-Konto einlösen. Um dieses Problem zu umgehen, kann der Benutzer den Self-Service-Registrierungsprozess durchlaufen. Oder er kann die Einladung einlösen, indem er auf eine andere App zugreift oder das Portal „Meine Apps“ auf https://myapps.microsoft.com verwendet.
 
 ### <a name="define-custom-attributes-optional"></a>Definieren von benutzerdefinierten Attributen (optional)
 
@@ -50,7 +50,7 @@ Bevor Sie Ihren Anwendungen einen Benutzerflow für die Self-Service-Registrieru
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Azure AD-Administrator an.
 2. Wählen Sie unter **Azure-Dienste** die Option **Azure Active Directory** aus.
 3. Wählen Sie **Benutzereinstellungen** und dann unter **Externe Benutzer** die Option **Externe Einstellungen zur Zusammenarbeit verwalten** aus.
-4. Legen Sie den Umschalter **Self-Service-Registrierung von Gästen über Benutzerflows aktivieren (Vorschau)** auf **Ja** fest.
+4. Legen Sie den Umschalter **Self-Service-Registrierung von Gästen über Benutzerflows aktivieren** auf **Ja** fest.
 
    ![Aktivieren der Self-Service-Registrierung für Gäste](media/self-service-sign-up-user-flow/enable-self-service-sign-up.png)
 5. Wählen Sie **Speichern** aus.
@@ -61,7 +61,7 @@ Als Nächstes erstellen Sie den Benutzerflow für die Self-Service-Registrierung
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Azure AD-Administrator an.
 2. Wählen Sie unter **Azure-Dienste** die Option **Azure Active Directory** aus.
 3. Wählen Sie im Menü auf der linken Seite **Externe Identitäten** aus.
-4. Wählen Sie **Benutzerflows (Vorschau)** und dann **Neuer Benutzerflow** aus.
+4. Wählen Sie **Benutzerflows** und dann **Neuer Benutzerflow** aus.
 
    ![Schaltfläche zum Hinzufügen eines neuen Benutzerflows](media/self-service-sign-up-user-flow/new-user-flow.png)
 
@@ -75,14 +75,14 @@ Als Nächstes erstellen Sie den Benutzerflow für die Self-Service-Registrierung
 > Sie können nur Attribute erfassen, wenn sich ein Benutzer zum ersten Mal registriert. Nachdem sich ein Benutzer registriert hat, wird er nicht mehr aufgefordert, Attributinformationen zu erfassen, auch wenn Sie den Benutzerflow ändern.
 
 8. Klicken Sie auf **Erstellen**.
-9. Der neue Benutzerflow wird in der Liste **Benutzerflows (Vorschau)** angezeigt. Aktualisieren Sie die Seite bei Bedarf.
+9. Der neue Benutzerflow wird in der Liste **Benutzerflows** angezeigt. Aktualisieren Sie die Seite bei Bedarf.
 
 ## <a name="select-the-layout-of-the-attribute-collection-form"></a>Auswählen des Layouts des Attributesammlungsformulars
 
 Sie können die Reihenfolge auswählen, in der die Attribute auf der Registrierungsseite angezeigt werden. 
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Azure Active Directory** aus.
-2. Wählen Sie **Externe Identitäten** und dann **Benutzerflows (Vorschau)** aus.
+2. Wählen Sie **Externe Identitäten** und dann **Benutzerflows** aus.
 3. Wählen Sie in der Liste den Benutzerflow für die Self-Service-Registrierung aus.
 4. Wählen Sie unter **Anpassen** die Option **Seitenlayouts** aus.
 5. Die Attribute, die Sie sammeln möchten, werden aufgelistet. Wenn Sie die Anzeigereihenfolge ändern möchten, wählen Sie ein Attribut aus und dann **Nach oben verschieben**, **Nach unten verschieben**, **Move to the top** (An den Anfang verschieben) oder **Move to the bottom** (Ans Ende verschieben).
@@ -95,7 +95,7 @@ Nun können Sie dem Benutzerflow Anwendungen zuordnen.
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Azure AD-Administrator an.
 2. Wählen Sie unter **Azure-Dienste** die Option **Azure Active Directory** aus.
 3. Wählen Sie im Menü auf der linken Seite **Externe Identitäten** aus.
-4. Wählen Sie unter **Self-Service-Registrierung** die Option **Benutzerflows (Vorschau)** aus.
+4. Wählen Sie unter **Self-Service-Registrierung** die Option **Benutzerflows** aus.
 5. Wählen Sie in der Liste den Benutzerflow für die Self-Service-Registrierung aus.
 6. Wählen Sie im Menü auf der linken Seite unter **Verwenden** die Option **Anwendungen** aus.
 7. Wählen Sie **Anwendung hinzufügen** aus.

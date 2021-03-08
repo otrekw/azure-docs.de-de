@@ -3,20 +3,20 @@ title: Aktivieren des Überwachungs-Add-On für AKS mithilfe von Azure Policy
 description: Erfahren Sie, wie Sie das Überwachungs-Add-On für AKS mithilfe einer benutzerdefinierten Azure-Richtlinie aktivieren.
 ms.topic: conceptual
 ms.date: 02/04/2021
-ms.openlocfilehash: 302fdbbbcadf211339952f4b1bd97dcbb4ab1a85
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 2163527cc83e70913e9a6e11bf2e22f9ed9c6690
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808020"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713897"
 ---
 # <a name="enable-aks-monitoring-addon-using-azure-policy"></a>Aktivieren des Überwachungs-Add-On für AKS mithilfe von Azure Policy
 Erfahren Sie in diesem Artikel, wie Sie das Überwachungs-Add-On für AKS mithilfe einer benutzerdefinierten Azure-Richtlinie aktivieren. Das Überwachungs-Add-On „Benutzerdefinierte Richtlinie“ kann entweder auf Abonnement- oder Ressourcengruppenebene zugewiesen werden. Wenn sich der Azure Log Analytics-Arbeitsbereich und AKS-Cluster in verschiedenen Abonnements befinden, muss die für die Richtlinienzuweisung verwendete verwaltete Identität über die erforderlichen Rollenberechtigungen für beide Abonnements oder zumindest für die Ressource des Log Analytics-Arbeitsbereichs verfügen. Ähnlich verhält es sich, wenn die Richtlinie auf die Ressourcengruppe begrenzt ist. Dann muss die verwaltete Identität über die erforderlichen Rollenberechtigungen für den Log Analytics-Arbeitsbereich verfügen, wenn der Arbeitsbereich nicht im ausgewählten Ressourcengruppenbereich liegt.
 
 Das Überwachungs-Add-On erfordert die folgenden Rollen für die verwaltete Identität, die von Azure Policy verwendet wird:
 
- - [azure-kubernetes-service-contributor-role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-contributor-role)
- - [log-analytics-contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor)
+ - [azure-kubernetes-service-contributor-role](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-contributor-role)
+ - [log-analytics-contributor](../../role-based-access-control/built-in-roles.md#log-analytics-contributor)
 
 ## <a name="create-and-assign-policy-definition-using-azure-portal"></a>Erstellen und Zuweisen einer Richtliniendefinition im Azure-Portal
 
@@ -79,6 +79,5 @@ Das Überwachungs-Add-On erfordert die folgenden Rollen für die verwaltete Iden
 
 - Informieren Sie sich weiter über [Azure Policy](../../governance/policy/overview.md).
 - Erfahren Sie, wie die [Sicherheit durch Wiederherstellung](../../governance/policy/how-to/remediate-resources.md#how-remediation-security-works) funktioniert.
-- Erfahren Sie mehr über [Azure Monitor für Container](../insights/container-insights-overview.md).
-- Installieren Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
-
+- [Übersicht über Container Insights](./container-insights-overview.md)
+- Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli).

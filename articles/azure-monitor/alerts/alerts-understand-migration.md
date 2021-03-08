@@ -2,43 +2,43 @@
 title: Grundlegendes zur Migration von Azure Monitor-Warnungen
 description: Enthält eine Beschreibung der Funktionsweise der Warnungsmigration sowie Informationen zur Problembehandlung.
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 02/14/2021
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 0c4c36c61b73e5c5625d02ae581d186e7dc2c9de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fdac8015cf87ffa0a25a8558668329a8cd82327f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599652"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737187"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>Grundlegendes zu den Optionen zur Migration zu neueren Warnungen
 
-Klassische Warnungen werden für Benutzer der öffentlichen Cloud [eingestellt](../platform/monitoring-classic-retirement.md), sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz. In Kürze wird ein neues Datum für die Migration verbleibender Warnungen bekannt gegeben, und zwar für [Azure Government-Cloud](../../azure-government/documentation-government-welcome.md) und [Azure China 21Vianet](https://docs.azure.cn/).
+Klassische Warnungen werden für Benutzer der öffentlichen Cloud [eingestellt](./monitoring-classic-retirement.md), sind jedoch bis zum **31. Mai 2021** weiterhin beschränkt im Einsatz. Klassische Warnungen für die Azure Government-Cloud und Azure China 21Vianet werden am **29. Februar 2024** eingestellt.
 
-In diesem Artikel wird erläutert, wie das Tool für die manuelle Migration und die freiwillige Migration verwendet wird, mit dem die verbleibenden Warnungsregeln migriert werden. Außerdem werden Abhilfemaßnahmen für einige häufige Probleme beschrieben.
+In diesem Artikel wird erläutert, wie das Tool für die manuelle Migration und die freiwillige Migration verwendet wird, mit dem die verbleibenden Warnungsregeln migriert werden. Außerdem werden Lösungen für einige häufig auftretende Probleme beschrieben.
 
 > [!IMPORTANT]
-> Aktivitätsprotokollwarnungen (einschließlich Service Health-Warnungen) und Protokollwarnungen sind von der Migration nicht betroffen. Die Migration gilt nur für klassische Warnungsregeln, die [hier](../platform/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform) beschrieben werden.
+> Aktivitätsprotokollwarnungen (einschließlich Service Health-Warnungen) und Protokollwarnungen sind von der Migration nicht betroffen. Die Migration gilt nur für klassische Warnungsregeln, die [hier](./monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform) beschrieben werden.
 
 > [!NOTE]
 > Wenn Ihre klassischen Warnungsregeln ungültig sind (d. h. für [veraltete Metriken](#classic-alert-rules-on-deprecated-metrics) oder Ressourcen gelten, die gelöscht wurden), werden sie nicht migriert und sind nach Außerbetriebnahme des Diensts nicht mehr verfügbar.
 
 ## <a name="manually-migrating-classic-alerts-to-newer-alerts"></a>Manuelles Migrieren klassischer Warnungen zu neueren Warnungen
 
-Kunden, die ihre verbleibenden Warnungen manuell migrieren möchten, können dies anhand der folgenden Abschnitte bereits tun. In diesen Abschnitten werden auch Metriken definiert, die vom Ressourcenanbieter eingestellt werden und derzeit nicht direkt migriert werden können.
+Kunden, die ihre verbleibenden Warnungen manuell migrieren möchten, können dies anhand der folgenden Abschnitte bereits tun. Außerdem sind Metriken enthalten, die nicht mehr aktuell sind und daher nicht direkt migriert werden können.
 
 ### <a name="guest-metrics-on-virtual-machines"></a>Gastmetriken auf virtuellen Computern
 
-Bevor Sie neue Metrikwarnungen für Gastmetriken erstellen können, müssen die Gastmetriken an den benutzerdefinierten Metrikspeicher von Azure Monitor gesendet werden. Befolgen Sie die nachstehenden Anweisungen, um die Azure Monitor-Senke in den Diagnoseeinstellungen zu aktivieren:
+Bevor Sie neue Metrikwarnungen für Gastmetriken erstellen können, müssen die Gastmetriken an den Azure Monitor-Protokollspeicher gesendet werden. Befolgen Sie die folgenden Anweisungen, um Warnungen zu erstellen:
 
-- [Aktivieren von Gastmetriken für Windows-VMs](../platform/collect-custom-metrics-guestos-resource-manager-vm.md)
-- [Aktivieren von Gastmetriken für Linux-VMs](../platform/collect-custom-metrics-linux-telegraf.md)
+- [Datenquellen für den Log Analytics-Agent in Azure Monitor](../agents/agent-data-sources.md)
+- [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](./alerts-log.md)
 
-Nachdem die oben genannten Schritte ausgeführt wurden, können Sie neue Metrikwarnungen für Gastmetriken erstellen. Und nachdem Sie neue Metrikwarnungen erstellt haben, können Sie klassische Warnungen löschen.
+Informieren Sie sich über [weitere Möglichkeiten](../agents/agents-overview.md) zum Erfassen von Gastmetriken und Warnungen für diese Metriken.
 
-### <a name="storage-account-metrics"></a>Speicherkontometriken
+### <a name="storage-and-classic-storage-account-metrics"></a>Metriken für Speicherkonten und klassische Speicherkonten
 
 Alle klassischen Warnungen in Speicherkonten können migriert werden, mit Ausnahme von Warnungen in den folgenden Metriken:
 
@@ -55,7 +55,7 @@ Alle klassischen Warnungen in Speicherkonten können migriert werden, mit Ausnah
 
 Klassische Warnungsregeln für Metriken vom Typ „Percent“ müssen basierend auf der [Zuordnung zwischen alten und neuen Speichermetriken](../../storage/common/storage-metrics-migration.md#metrics-mapping-between-old-metrics-and-new-metrics) migriert werden. Schwellenwerte müssen entsprechend geändert werden, da die neue verfügbare Metrik eine absolute Metrik ist.
 
-Die klassischen Warnungsregeln für AnonymousThrottlingError, SASThrottlingError und ThrottlingError müssen in zwei neue Warnungen aufgeteilt werden, da es keine kombinierte Metrik gibt, die über die gleiche Funktionalität verfügt. Schwellenwerte müssen entsprechend angepasst werden.
+Die klassischen Warnungsregeln für „AnonymousThrottlingError“, „SASThrottlingError“ und „ThrottlingError“ müssen in zwei neue Warnungen aufgeteilt werden, da es keine kombinierte Metrik gibt, die über die gleiche Funktionalität verfügt. Schwellenwerte müssen entsprechend angepasst werden.
 
 ### <a name="cosmos-db-metrics"></a>Cosmos DB-Metriken
 
@@ -65,39 +65,22 @@ Alle klassischen Warnungen für Cosmos DB-Metriken können migriert werden, mit 
 - Konsistenzebene
 - HTTP 2xx
 - HTTP 3xx
-- HTTP 400
-- HTTP 401
-- Interner Serverfehler
 - Max RUPM Consumed Per Minute (Maximal verwendete U/min)
 - Max RUs Per Second (Maximale RUs pro Sekunde)
-- Mongo Count Failed Requests (Fehlgeschlagene Mongo-Zählungsanforderungen)
-- Mongo Delete Failed Requests (Fehlgeschlagene Mongo-Löschanforderungen)
-- Mongo Insert Failed Requests (Fehlgeschlagene Mongo-Einfügeanforderungen)
-- Mongo Other Failed Requests (Sonstige fehlgeschlagene Mongo-Anforderungen)
 - Mongo Other Request Charge (Kosten sonstiger Mongo-Anforderungen)
 - Mongo Other Request Rate (Rate sonstiger Mongo-Anforderungen)
-- Mongo Query Failed Requests (Fehlgeschlagene Mongo-Abfrageanforderungen)
-- Mongo Query Failed Requests (Fehlgeschlagene Mongo-Aktualisierungsanforderungen)
 - Beobachtete Leselatenz
 - Beobachtete Schreiblatenz
 - Dienstverfügbarkeit
 - Speicherkapazität
-- Gedrosselte Anforderungen
-- Anzahl von Anforderungen
 
-„Mittelwert der Anforderungen pro Sekunde“, „Konsistenzebene“, „Max RUPM Consumed Per Minute“ (Maximal verwendete U/min), „Max RUs Per Second“ (Maximale RUs pro Sekunde), „Beobachtete Leselatenz“, „Beobachtete Schreiblatenz“ und „Speicherkapazität" sind im [neuen System](../platform/metrics-supported.md#microsoftdocumentdbdatabaseaccounts) derzeit nicht verfügbar.
+„Mittelwert der Anforderungen pro Sekunde“, „Konsistenzebene“, „Max RUPM Consumed Per Minute“ (Maximal verwendete U/min), „Max RUs Per Second“ (Maximale RUs pro Sekunde), „Beobachtete Leselatenz“, „Beobachtete Schreiblatenz“ und „Speicherkapazität“ sind im [neuen System](../essentials/metrics-supported.md#microsoftdocumentdbdatabaseaccounts) derzeit nicht verfügbar.
 
-Warnungen zu Anforderungsmetriken wie „HTTP 2xx“, „HTTP 3xx“, „HTTP 400“, „HTTP 401“, „Interner Serverfehler“, „Dienstverfügbarkeit“, „Gedrosselte Anforderungen“ und „Anforderungen insgesamt“ werden nicht migriert, da sich die Zählung der Anforderungen zwischen klassischen Metriken und neuen Metriken unterscheidet. Warnungen für diese Metriken müssen manuell mit angepassten Schwellenwerten neu erstellt werden.
-
-Warnungen zu Metriken für fehlgeschlagene Mongo-Anforderungen müssen in mehrere Warnungen unterteilt werden, da keine gemeinsame Metrik vorhanden ist, die die gleiche Funktionalität bietet. Schwellenwerte müssen entsprechend angepasst werden.
-
-### <a name="classic-compute-metrics"></a>Klassische Computemetriken
-
-Die Warnungen zu klassischen Computemetriken werden nicht mithilfe des Migrationstools migriert, da klassische Computeressourcen für neue Warnungen noch nicht unterstützt werden. Die Unterstützung für neue Warnungen zu diesen Ressourcentypen befindet sich zurzeit in der Public Preview. Kunden können basierend auf ihren klassischen Warnungsregeln neue äquivalente Warnungsregeln erstellen.
+Warnungen für Anforderungsmetriken wie „Http 2xx“, „Http 3xx“ und „Dienstverfügbarkeit“ werden nicht migriert, da sich die Art, wie Anforderungen bei den klassischen und neuen Metriken gezählt werden, unterscheidet. Warnungen für diese Metriken müssen manuell mit angepassten Schwellenwerten neu erstellt werden.
 
 ### <a name="classic-alert-rules-on-deprecated-metrics"></a>Klassische Warnungsregeln für veraltete Metriken
 
-Hierbei handelt es sich um klassische Warnungsregeln für Metriken, die früher unterstützt wurden, irgendwann aber veraltet sind. Ein kleiner Prozentsatz der Kunden verfügt möglicherweise über ungültige klassische Warnungsregeln für diese Metriken. Da diese Warnungsregeln ungültig sind, werden sie nicht migriert.
+Bei den folgenden Regeln handelt es sich um klassische Warnungsregeln für Metriken, die früher unterstützt wurden, irgendwann aber veraltet sind. Ein kleiner Prozentsatz der Kunden verfügt möglicherweise über ungültige klassische Warnungsregeln für diese Metriken. Da diese Warnungsregeln ungültig sind, werden sie nicht migriert.
 
 | Ressourcentyp| Veraltete Metrik(en) |
 |-------------|----------------- |
@@ -112,14 +95,14 @@ Hierbei handelt es sich um klassische Warnungsregeln für Metriken, die früher 
 
 Das Migrationstool konvertiert klassische Warnungsregeln in entsprechende neue Warnungsregeln und Aktionsgruppen. Bei den meisten klassischen Warnungsregeln gelten die entsprechenden neuen Warnungsregeln für dieselben Metriken mit denselben Eigenschaften (z. B. `windowSize` und `aggregationType`). Es gibt jedoch einige klassische Warnungsregeln, die für Metriken gelten, die im neuen System eine andere Metrikentsprechung haben. Die folgenden Prinzipien gelten für die Migration von klassischen Warnungen, sofern im folgenden Abschnitt nichts anderes angegeben ist:
 
-- **Häufigkeit**: Definiert, wie oft eine klassische oder neue Warnungsregel die Bedingung überprüft. Die Häufigkeit (`frequency`) bei klassischen Warnungsregeln konnte vom Benutzer nicht konfiguriert werden. Sie war für alle Ressourcentypen auf 5 Minuten eingestellt (mit Ausnahme von Application Insights-Komponenten, für die 1 Minute festgelegt war). Daher wird die Häufigkeit bei den entsprechenden Regeln ebenfalls auf 5 Minuten bzw. 1 Minute festgelegt.
+- **Häufigkeit**: Definiert, wie oft eine klassische oder neue Warnungsregel die Bedingung überprüft. Die `frequency` in klassischen Warnungsregeln konnte nicht vom Benutzer konfiguriert werden und betrug bei allen Ressourcentypen immer fünf Minuten. Die Frequenz äquivalenter Regeln ist ebenfalls auf fünf Minuten festgelegt.
 - **Aggregationstyp**: Definiert, wie die Metrik über das interessierende Zeitfenster aggregiert wird. Auch der Aggregationstyp (`aggregationType`) bleibt für klassische und neue Warnungen und die meisten Metriken unverändert. Da bei klassischen und neuen Warnungen manchmal die Metrik unterschiedlich ist, wird das entsprechende, für die Metrik definierte Attribut `aggregationType` oder `primary Aggregation Type` verwendet.
 - **Einheiten**: Eigenschaft der Metrik, für die die Warnung erstellt wird. Einige Metrikentsprechungen weisen unterschiedliche Einheiten auf. Der Schwellenwert wird nach Bedarf entsprechend angepasst. Beispiel: Wenn die ursprüngliche Metrik Sekunden, die neue entsprechende Metrik jedoch Millisekunden als Einheit hat, wird der ursprüngliche Schwellenwert mit 1000 multipliziert, um das gleiche Verhalten sicherzustellen.
-- **Fenstergröße**: Definiert das Zeitfenster, über das die Metrikdaten aggregiert und mit dem Schwellenwert verglichen werden. An den Standardwerten für die Fenstergröße (`windowSize`) (z. B. 5 Min., 15 Min., 30 Min., 1 Std., 3 Std., 6 Std., 12 Std., 1 Tag) wurden bei der entsprechenden neuen Warnungsregel keine Änderung vorgenommen. Bei anderen Werten wird die nächstliegende Fenstergröße (`windowSize`) ausgewählt und verwendet. Bei den meisten Kunden hat diese Änderung keine Auswirkungen. Ein kleiner Prozentsatz der Kunden muss den Schwellenwert möglicherweise optimieren, um genau dasselbe Verhalten zu erzielen.
+- **Fenstergröße**: Definiert das Zeitfenster, über das die Metrikdaten aggregiert und mit dem Schwellenwert verglichen werden. An den Standardwerten für die Fenstergröße (`windowSize`) (z. B. 5 Min., 15 Min., 30 Min., 1 Stunde, 3 Stunden, 6 Stunden, 12 Stunden, 1 Tag) wurden bei der entsprechenden neuen Warnungsregel keine Änderung vorgenommen. Bei anderen Werten wird die nächstgelegene `windowSize` verwendet. Bei den meisten Kunden hat diese Änderung keine Auswirkungen. Ein kleiner Prozentsatz der Kunden muss den Schwellenwert möglicherweise optimieren, um genau dasselbe Verhalten zu erzielen.
 
-In den folgenden Abschnitten werden die Metriken im Detail beschrieben, die im neuen System eine andere Metrikentsprechung haben. Alle Metriken, die bei klassischen und neuen Warnungsregeln unverändert bleiben, sind nicht aufgeführt. Eine Liste der im neuen System unterstützten Metriken finden Sie [hier](../platform/metrics-supported.md).
+In den folgenden Abschnitten werden die Metriken im Detail beschrieben, die im neuen System eine andere Metrikentsprechung haben. Alle Metriken, die bei klassischen und neuen Warnungsregeln unverändert bleiben, sind nicht aufgeführt. Eine Liste der im neuen System unterstützten Metriken finden Sie [hier](../essentials/metrics-supported.md).
 
-### <a name="microsoftstorageaccountsservices"></a>Microsoft.StorageAccounts/services
+### <a name="microsoftstoragestorageaccounts-and-microsoftclassicstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts und Microsoft.ClassicStorage/storageAccounts
 
 Bei Speicherkontodiensten wie Blob Storage, Table Storage, Azure Files und Queue Storage werden die folgenden Metriken wie nachstehend gezeigt den entsprechenden Metriken zugeordnet:
 
@@ -156,46 +139,23 @@ Bei Speicherkontodiensten wie Blob Storage, Table Storage, Azure Files und Queue
 | TotalIngress | Eingehende Daten | |
 | TotalRequests | Transaktionen | |
 
-### <a name="microsoftinsightscomponents"></a>Microsoft.insights/components
-
-Für Application Insights gibt es die folgenden entsprechenden Metriken:
-
-| Metrik in klassischen Warnungen | Entsprechende Metrik in neuen Warnungen | Kommentare|
-|--------------------------|---------------------------------|---------|
-| availability.availabilityMetric.value | availabilityResults/availabilityPercentage|   |
-| availability.durationMetric.value | availabilityResults/duration| Multiplizieren Sie den ursprüngliche Schwellenwert mit 1000, da die Einheiten für die klassische Metrik in Sekunden und für die neue in Millisekunden angegeben ist.  |
-| basicExceptionBrowser.count | exceptions/browser|  Verwenden Sie für `aggregationType` „count“ anstelle von „sum“. |
-| basicExceptionServer.count | exceptions/server| Verwenden Sie für `aggregationType` „count“ anstelle von „sum“.  |
-| clientPerformance.clientProcess.value | browserTimings/processingDuration| Multiplizieren Sie den ursprüngliche Schwellenwert mit 1000, da die Einheiten für die klassische Metrik in Sekunden und für die neue in Millisekunden angegeben ist.  |
-| clientPerformance.networkConnection.value | browserTimings/networkDuration|  Multiplizieren Sie den ursprüngliche Schwellenwert mit 1000, da die Einheiten für die klassische Metrik in Sekunden und für die neue in Millisekunden angegeben ist. |
-| clientPerformance.receiveRequest.value | browserTimings/receiveDuration| Multiplizieren Sie den ursprüngliche Schwellenwert mit 1000, da die Einheiten für die klassische Metrik in Sekunden und für die neue in Millisekunden angegeben ist.  |
-| clientPerformance.sendRequest.value | browserTimings/sendDuration| Multiplizieren Sie den ursprüngliche Schwellenwert mit 1000, da die Einheiten für die klassische Metrik in Sekunden und für die neue in Millisekunden angegeben ist.  |
-| clientPerformance.total.value | browserTimings/totalDuration| Multiplizieren Sie den ursprüngliche Schwellenwert mit 1000, da die Einheiten für die klassische Metrik in Sekunden und für die neue in Millisekunden angegeben ist.  |
-| performanceCounter.available_bytes.value | performanceCounters/memoryAvailableBytes|   |
-| performanceCounter.io_data_bytes_per_sec.value | performanceCounters/processIOBytesPerSecond|   |
-| performanceCounter.number_of_exceps_thrown_per_sec.value | performanceCounters/exceptionsPerSecond|   |
-| performanceCounter.percentage_processor_time_normalized.value | performanceCounters/processCpuPercentage|   |
-| performanceCounter.percentage_processor_time.value | performanceCounters/processCpuPercentage| Der Schwellenwert muss entsprechend geändert werden, da die ursprüngliche Metrik alle Kerne einbezog und die neue Metrik auf einen Kern normalisiert wird. Das Migrationstool ändert die Schwellenwerte nicht.  |
-| performanceCounter.percentage_processor_total.value | performanceCounters/processorCpuPercentage|   |
-| performanceCounter.process_private_bytes.value | performanceCounters/processPrivateBytes|   |
-| performanceCounter.request_execution_time.value | performanceCounters/requestExecutionTime|   |
-| performanceCounter.requests_in_application_queue.value | performanceCounters/requestsInQueue|   |
-| performanceCounter.requests_per_sec.value | performanceCounters/requestsPerSecond|   |
-| request.duration | requests/duration| Multiplizieren Sie den ursprüngliche Schwellenwert mit 1000, da die Einheiten für die klassische Metrik in Sekunden und für die neue in Millisekunden angegeben ist.  |
-| request.rate | requests/rate|   |
-| requestFailed.count | requests/failed| Verwenden Sie für `aggregationType` „count“ anstelle von „sum“.   |
-| view.count | pageViews/count| Verwenden Sie für `aggregationType` „count“ anstelle von „sum“.   |
-
 ### <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
 Für Cosmos DB gibt es die folgenden entsprechenden Metriken:
 
 | Metrik in klassischen Warnungen | Entsprechende Metrik in neuen Warnungen | Kommentare|
 |--------------------------|---------------------------------|---------|
-| AvailableStorage     |AvailableStorage|   |
+| AvailableStorage | AvailableStorage||
 | Datengröße | DataUsage| |
 | Dokumentanzahl | DocumentCount||
 | Indexgröße | IndexUsage||
+| Dienst nicht verfügbar | ServiceAvailability||
+| TotalRequestUnits | TotalRequestUnits||
+| Gedrosselte Anforderungen | TotalRequests mit Dimension "StatusCode" = "429"| Aggregationstyp „Average“ wird in „Count“ korrigiert|
+| Interne Serverfehler | TotalRequests mit Dimension "StatusCode" = "500"}| Aggregationstyp „Average“ wird in „Count“ korrigiert|
+| HTTP 401 | TotalRequests mit Dimension "StatusCode" = "401"| Aggregationstyp „Average“ wird in „Count“ korrigiert|
+| HTTP 400 | TotalRequests mit Dimension "StatusCode" = "400"| Aggregationstyp „Average“ wird in „Count“ korrigiert|
+| Anzahl von Anforderungen | TotalRequests| Aggregationstyp „Max“ wird in „Count“ korrigiert|
 | Mongo Count Request Charge (Kosten von Mongo-Zählungsanforderung)| MongoRequestCharge mit Dimension „CommandName“ = „count“||
 | Mongo Count Request Rate (Rate von Mongo-Zählungsanforderung) | MongoRequestsCount mit Dimension „CommandName“ = „count“||
 | Mongo Delete Request Charge (Kosten von Mongo-Löschanforderung) | MongoRequestCharge mit Dimension „CommandName“ = „delete“||
@@ -205,12 +165,16 @@ Für Cosmos DB gibt es die folgenden entsprechenden Metriken:
 | Mongo Query Request Charge (Kosten von Mongo-Abfrageanforderung) | MongoRequestCharge mit Dimension „CommandName“ = „find“||
 | Mongo Query Request Rate (Rate von Mongo-Abfrageanforderung) | MongoRequestsCount mit Dimension „CommandName“ = „find“||
 | Mongo Update Request Charge (Kosten von Mongo-Aktualisierungsanforderung) | MongoRequestCharge mit Dimension „CommandName“ = „update“||
-| Dienst nicht verfügbar| ServiceAvailability||
-| TotalRequestUnits | TotalRequestUnits||
+| Mongo Insert Failed Requests (Fehlgeschlagene Mongo-Einfügeanforderungen) | MongoRequestCount mit Dimensionen "CommandName" = "insert" und "Status" = "failed"| Aggregationstyp „Average“ wird in „Count“ korrigiert|
+| Mongo Query Failed Requests (Fehlgeschlagene Mongo-Abfrageanforderungen) | MongoRequestCount mit Dimensionen "CommandName" = "query" und "Status" = "failed"| Aggregationstyp „Average“ wird in „Count“ korrigiert|
+| Mongo Count Failed Requests (Fehlgeschlagene Mongo-Zählungsanforderungen) | MongoRequestCount mit Dimensionen "CommandName" = "count" und "Status" = "failed"| Aggregationstyp „Average“ wird in „Count“ korrigiert|
+| Mongo Query Failed Requests (Fehlgeschlagene Mongo-Aktualisierungsanforderungen) | MongoRequestCount mit Dimensionen "CommandName" = "update" und "Status" = "failed"| Aggregationstyp „Average“ wird in „Count“ korrigiert|
+| Mongo Other Failed Requests (Sonstige fehlgeschlagene Mongo-Anforderungen) | MongoRequestCount mit Dimensionen "CommandName" = "other" und "Status" = "failed"| Aggregationstyp „Average“ wird in „Count“ korrigiert|
+| Mongo Delete Failed Requests (Fehlgeschlagene Mongo-Löschanforderungen) | MongoRequestCount mit Dimensionen "CommandName" = "delete" und "Status" = "failed"| Aggregationstyp „Average“ wird in „Count“ korrigiert|
 
 ### <a name="how-equivalent-action-groups-are-created"></a>Erstellen entsprechender Aktionsgruppen
 
-Bei klassischen Warnungsregeln waren E-Mail-, Webhook-, Logik-App-und Runbook-Aktionen direkt mit der eigentlichen Warnungsregel verbunden. Die neuen Warnungsregeln verwenden Aktionsgruppen, die übergreifend über mehrere Warnungsregeln wiederverwendet werden können. Das Migrationstool erstellt eine einzelne Aktionsgruppe für gleiche Aktionen, und zwar unabhängig davon, wie viele Warnungsregeln die Aktion verwenden. Vom Migrationstool erstellte Aktionsgruppen erhalten das Namensformat „Migrated_AG*“.
+Bei klassischen Warnungsregeln waren E-Mail-, Webhook-, Logik-App- und Runbook-Aktionen direkt mit der eigentlichen Warnungsregel verbunden. Die neuen Warnungsregeln verwenden Aktionsgruppen, die warnungsregelübergreifend wiederverwendet werden können. Das Migrationstool erstellt eine einzelne Aktionsgruppe für gleiche Aktionen, und zwar unabhängig davon, wie viele Warnungsregeln die Aktion verwenden. Vom Migrationstool erstellte Aktionsgruppen erhalten das Namensformat „Migrated_AG*“.
 
 > [!NOTE]
 > Für klassische Warnungen wurden lokalisierte E-Mails gesendet, die auf dem Gebietsschema des klassischen Administrators basierten, wenn sie zum Benachrichtigen klassischer Administratorrollen verwendet wurden. Neue Warnungs-E-Mails werden über Aktionsgruppen gesendet und sind nur in englischer Sprache verfügbar.
@@ -250,13 +214,13 @@ Aufgrund von einigen kürzlich durchgeführten Änderungen an den klassischen Wa
 
 ### <a name="scope-lock-preventing-us-from-migrating-your-rules"></a>Bereichssperre verhindert die Migration Ihrer Regeln
 
-Im Rahmen der Migration werden neue Metrikwarnungen und neue Aktionsgruppen erstellt und anschließend klassische Warnungsregeln gelöscht. Eine Bereichssperre kann jedoch das Erstellen oder Löschen von Ressourcen verhindern. Je nach Bereichssperre können einige oder alle Regeln nicht migriert werden. Sie können dieses Problem beheben, indem Sie die Bereichssperre für das Abonnement, die Ressourcengruppe oder die Ressource aufheben, die im [Migrationstool](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel) aufgeführt ist, und die Migration erneut auslösen. Die Bereichssperre kann nicht deaktiviert werden und muss für die Dauer des Migrationsprozesses entfernt werden. [Erfahren Sie mehr über das Verwalten von Bereichssperren](../../azure-resource-manager/management/lock-resources.md#portal).
+Im Rahmen der Migration werden neue Metrikwarnungen und neue Aktionsgruppen erstellt und anschließend klassische Warnungsregeln gelöscht. Eine Bereichssperre kann jedoch das Erstellen oder Löschen von Ressourcen verhindern. Je nach Bereichssperre können einige oder alle Regeln nicht migriert werden. Sie können dieses Problem beheben, indem Sie die Bereichssperre für das Abonnement, die Ressourcengruppe oder die Ressource aufheben, die im [Migrationstool](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel) aufgeführt ist, und die Migration erneut auslösen. Die Bereichssperre kann nicht deaktiviert werden und muss während des Migrationsprozesses entfernt werden. [Erfahren Sie mehr über das Verwalten von Bereichssperren](../../azure-resource-manager/management/lock-resources.md#portal).
 
 ### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>Richtlinie mit Auswirkung „deny“ verhindert die Migration Ihrer Regeln
 
 Im Rahmen der Migration werden neue Metrikwarnungen und neue Aktionsgruppen erstellt und anschließend klassische Warnungsregeln gelöscht. Eine [Azure Policy](../../governance/policy/index.yml)-Zuweisung kann jedoch das Erstellen von Ressourcen verhindern. Je nach Richtlinienzuweisung können einige oder alle Regeln nicht migriert werden. Die Richtlinienzuweisungen, die den Prozess blockieren, werden im [Migrationstool](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel) aufgeführt. Dieses Problem lässt sich auf eine der folgenden Arten beheben:
 
-- Schließen Sie Abonnements, Ressourcengruppen oder einzelnen Ressourcen für die Dauer des Migrationsprozesses aus der Richtlinienzuweisung aus. [Erfahren Sie mehr über das Verwalten von Ausschlussbereichen für Richtlinien](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion).
+- Schließen Sie Abonnements, Ressourcengruppen oder einzelnen Ressourcen während des Migrationsprozesses aus der Richtlinienzuweisung aus. [Erfahren Sie mehr über das Verwalten von Ausschlussbereichen für Richtlinien](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion).
 - Legen Sie den Erzwingungsmodus in der Richtlinienzuweisung auf **Deaktiviert** fest. [Erfahren Sie mehr über die enforcementMode-Eigenschaft einer Richtlinienzuweisung.](../../governance/policy/concepts/assignment-structure.md#enforcement-mode)
 - Legen Sie eine Azure Policy-Ausnahme (Vorschau) für die Abonnements, Ressourcengruppen oder einzelnen Ressource in der Richtlinienzuweisung fest. [Erfahren Sie mehr über die Ausnahmestruktur von Azure Policy.](../../governance/policy/concepts/exemption-structure.md)
 - Entfernen Sie die Auswirkung einer Richtlinie, oder ändern Sie die Auswirkung in „disabled“, „audit“, „append“ oder „modify“ (wodurch beispielsweise Probleme im Zusammenhang mit fehlenden Tags gelöst werden können). [Erfahren Sie mehr über das Verwalten von Richtlinienauswirkungen](../../governance/policy/concepts/definition-structure.md#policy-rule).

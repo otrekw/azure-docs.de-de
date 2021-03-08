@@ -1,18 +1,18 @@
 ---
-title: Protokollwarnungen aus Azure Monitor für Container | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Protokollwarnungen für die Arbeitsspeicher- und CPU-Auslastung von Azure Monitor für Container erstellen.
+title: Warnungsprotokollierung in Container Insights | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Protokollwarnungen für die Arbeitsspeicherauslastung und die CPU-Auslastung in Container Insights erstellen.
 ms.topic: conceptual
 ms.date: 01/05/2021
-ms.openlocfilehash: 4239567c60afda6ca165e097562cb888c731f15a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 64d499d69194ac338d367ae094e42f4c8af23bef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599621"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711194"
 ---
-# <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Erstellen von Protokollwarnungen aus Azure Monitor für Container
+# <a name="how-to-create-log-alerts-from-container-insights"></a>Erstellen von Protokollwarnungen in Container Insights
 
-Azure Monitor für Container überwacht die Leistung von Containerworkloads, die für verwaltete oder selbstverwaltete Kubernetes-Cluster bereitgestellt werden. Um Warnungen zu wichtigen Aspekten zu erhalten, wird in diesem Artikel beschrieben, wie Sie protokollbasierte Warnungen für die folgenden Situationen mit AKS-Clustern erstellen:
+Container Insights überwacht die Leistung von Containerworkloads, die für verwaltete oder selbstverwaltete Kubernetes-Cluster bereitgestellt werden. Um Warnungen zu wichtigen Aspekten zu erhalten, wird in diesem Artikel beschrieben, wie Sie protokollbasierte Warnungen für die folgenden Situationen mit AKS-Clustern erstellen:
 
 - Wenn die CPU- oder Arbeitsspeicherauslastung für Clusterknoten einen Schwellenwert überschreitet
 - Wenn die CPU- oder Arbeitsspeicherauslastung für einen Container innerhalb eines Controllers einen Schwellenwert relativ zu einem für die entsprechende Ressource festgelegten Grenzwert überschreitet
@@ -20,9 +20,9 @@ Azure Monitor für Container überwacht die Leistung von Containerworkloads, die
 - Podphasenanzahl mit Status *Failed*, *Pending*, *Unknown*, *Running* oder *Succeeded*
 - Wenn der freie Speicherplatz für Clusterknoten einen Schwellenwert überschreitet
 
-Verwenden Sie zum Auslösen einer Warnung bei hoher CPU- oder Arbeitsspeicherauslastung oder wenig freiem Speicherplatz für Clusterknoten die bereitgestellten Abfragen, um eine Metrikwarnung oder eine Warnung aufgrund von metrischen Messungen zu erstellen. Zwar weisen Metrikwarnungen eine geringere Latenz als Protokollwarnungen auf, doch ermöglichen Protokollwarnungen erweiterte Abfragen und größere Komplexität. Protokollwarnungsabfragen vergleichen mithilfe des *now*-Operators einen „datetime“-Wert mit dem vorhandenen Wert und gehen um eine Stunde zurück. (Azure Monitor für Container speichert alle Datumsangaben im Format der koordinierten Weltzeit (Coordinated Universal Time, UTC).)
+Verwenden Sie zum Auslösen einer Warnung bei hoher CPU- oder Arbeitsspeicherauslastung oder wenig freiem Speicherplatz für Clusterknoten die bereitgestellten Abfragen, um eine Metrikwarnung oder eine Warnung aufgrund von metrischen Messungen zu erstellen. Zwar weisen Metrikwarnungen eine geringere Latenz als Protokollwarnungen auf, doch ermöglichen Protokollwarnungen erweiterte Abfragen und größere Komplexität. Protokollwarnungsabfragen vergleichen mithilfe des *now*-Operators einen „datetime“-Wert mit dem vorhandenen Wert und gehen um eine Stunde zurück. (Container Insights speichert alle Daten im UTC-Format (koordinierte Weltzeit).)
 
-Wenn Sie mit Azure Monitor-Warnungen nicht vertraut sind, lesen Sie zunächst den [Überblick über Warnungen in Microsoft Azure](../platform/alerts-overview.md). Weitere Informationen zu Warnungen, bei denen Protokollabfragen verwendet werden, finden Sie unter [Protokollwarnungen in Azure Monitor](../alerts/alerts-unified-log.md). Weitere Informationen zu Metrikwarnungen finden Sie unter [Metrikwarnungen in Azure Monitor](../alerts/alerts-metric-overview.md).
+Wenn Sie mit Azure Monitor-Warnungen nicht vertraut sind, lesen Sie zunächst den [Überblick über Warnungen in Microsoft Azure](../alerts/alerts-overview.md). Weitere Informationen zu Warnungen, bei denen Protokollabfragen verwendet werden, finden Sie unter [Protokollwarnungen in Azure Monitor](../alerts/alerts-unified-log.md). Weitere Informationen zu Metrikwarnungen finden Sie unter [Metrikwarnungen in Azure Monitor](../alerts/alerts-metric-overview.md).
 
 ## <a name="resource-utilization-log-search-queries"></a>Suchabfragen für die Ressourcenverwendung
 
@@ -275,7 +275,7 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>Erstellen einer Warnungsregel
 
-In diesem Abschnitt wird die Erstellung einer Warnungsregel des Typs „Metrische Maßeinheit“ mithilfe von Leistungsdaten aus Azure Monitor für Container erläutert. Sie können diese grundlegende Vorgehensweise für eine Vielzahl von Protokollabfragen verwenden und so Warnungen für verschiedene Leistungsindikatoren erstellen. Verwenden Sie zunächst eine der zuvor bereitgestellten Protokollsuchabfragen. Informationen zum Erstellen mithilfe einer ARM-Vorlage finden Sie in den [Beispielen für das Erstellen einer Protokollwarnung mithilfe einer Azure-Ressourcenvorlage](../alerts/alerts-log-create-templates.md).
+In diesem Abschnitt wird die Erstellung einer Warnungsregel des Typs „Metrische Maßeinheit“ mithilfe von Leistungsdaten in Container Insights erläutert. Sie können diese grundlegende Vorgehensweise für eine Vielzahl von Protokollabfragen verwenden und so Warnungen für verschiedene Leistungsindikatoren erstellen. Verwenden Sie zunächst eine der zuvor bereitgestellten Protokollsuchabfragen. Informationen zum Erstellen mithilfe einer ARM-Vorlage finden Sie in den [Beispielen für das Erstellen einer Protokollwarnung mithilfe einer Azure-Ressourcenvorlage](../alerts/alerts-log-create-templates.md).
 
 >[!NOTE]
 >Das folgende Verfahren zum Erstellen einer Warnungsregel für die Auslastung von Containerressourcen erfordert, dass Sie – wie unter [Wechseln der API-Einstellung für Protokollwarnungen](../alerts/alerts-log-api-switch.md) beschrieben – zu einer neuen Protokollwarnungs-API wechseln.
@@ -283,7 +283,7 @@ In diesem Abschnitt wird die Erstellung einer Warnungsregel des Typs „Metrisch
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Suchen Sie im Azure-Portal nach **Log Analytics-Arbeitsbereiche**, und wählen Sie diese Option aus.
-3. Wählen Sie in der Liste der Log Analytics-Arbeitsbereiche den Arbeitsbereich aus, der Azure Monitor für Container unterstützt. 
+3. Wählen Sie in der Liste der Log Analytics-Arbeitsbereiche den Arbeitsbereich aus, der Container Insights unterstützt. 
 4. Wählen Sie im Bereich auf der linken Seite die Option **Protokolle** aus, um die Seite mit Azure Monitor-Protokollen zu öffnen. Über diese Seite können Sie Azure-Protokollabfragen schreiben und ausführen.
 5. Fügen Sie auf der Seite **Protokolle** eine der zuvor bereitgestellten [Abfragen](#resource-utilization-log-search-queries) in das Feld **Suchabfrage** ein, und wählen Sie dann **Ausführen** aus, um die Ergebnisse zu überprüfen. Wenn Sie diesen Schritt nicht ausführen, steht die Option **+Neue Warnung** nicht zur Auswahl bereit.
 6. Wählen Sie **+Neue Warnung** aus, um eine Protokollwarnung zu erstellen.

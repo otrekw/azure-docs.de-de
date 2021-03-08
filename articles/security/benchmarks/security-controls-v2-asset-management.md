@@ -4,19 +4,21 @@ description: 'Azure-Sicherheitsvergleichstest V2: Ressorcenverwaltung'
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f0c2fe78c32357798e1f9acb43f5867df9148b38
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: fbeb88b6aa542666481458fde97d7c63f467fa30
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368901"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051530"
 ---
 # <a name="security-control-v2-asset-management"></a>Sicherheitskontrolle V2: Ressourcenverwaltung
 
 Die Ressourcenverwaltung deckt Kontrollen ab, mit denen die Sichtbarkeit und Governance der Sicherheit von Azure-Ressourcen sichergestellt werden soll. Dies umfasst Empfehlungen zu Berechtigungen für Sicherheitspersonal, den sicheren Zugriff auf den Ressourcenbestand und das Verwalten von Genehmigungen für Dienste und Ressourcen (Bestand, Nachverfolgung und Richtigkeit).
+
+Die entsprechende integrierte Azure Policy-Instanz finden Sie unter [Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß Azure-Sicherheitsvergleichstest: Netzwerksicherheit](../../governance/policy/samples/azure-security-benchmark.md#asset-management).
 
 ## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Sicherstellen, dass das Sicherheitsteam Risiken für Ressourcen einsehen kann
 
@@ -24,13 +26,13 @@ Die Ressourcenverwaltung deckt Kontrollen ab, mit denen die Sichtbarkeit und Gov
 |--|--|--|--|
 | AM-1 | 1.1, 1.2 | CM-8, PM-5 |
 
-Stellen Sie sicher, dass Sicherheitsteams die Berechtigungen „Sicherheitsleseberechtigter“ in Ihrem Azure-Mandanten und Ihren Abonnements erhalten, damit sie mit Azure Security Center Sicherheitsrisiken überwachen können. 
+Stellen Sie sicher, dass Sicherheitsteams die Berechtigungen „Sicherheitsleseberechtigter“ in Ihrem Azure-Mandanten und Ihren Abonnements erhalten, damit sie mit Azure Security Center Sicherheitsrisiken überwachen können.
 
 Abhängig davon, wie die Verantwortungsbereiche des Sicherheitsteams strukturiert sind, kann die Überwachung auf Sicherheitsrisiken unter die Verantwortung eines zentralen Sicherheitsteams oder eines lokalen Teams fallen. Aus diesem Grund müssen Sicherheitserkenntnisse und -risiken immer innerhalb einer Organisation zentral aggregiert werden. 
 
 Die Berechtigungen der Rolle „Sicherheitsleseberechtigter“ können weit gefasst auf einen gesamten Mandanten (Stammverwaltungsgruppe) angewandt oder auf Verwaltungsgruppen oder bestimmte Abonnements beschränkt werden. 
 
-Hinweis: Möglicherweise sind zusätzliche Berechtigungen erforderlich, um Einblick in Workloads und Dienste zu erhalten. 
+Hinweis: Möglicherweise sind zusätzliche Berechtigungen erforderlich, um Einblick in Workloads und Dienste zu erhalten.
 
 - [Übersicht über die Rolle „Sicherheitsleseberechtigter“](../../role-based-access-control/built-in-roles.md#security-reader)
 
@@ -48,13 +50,13 @@ Hinweis: Möglicherweise sind zusätzliche Berechtigungen erforderlich, um Einbl
 
 | Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
-| AM-2 | 1.1, 1.2,  1.4, 1.5,  9.1, 12.1 | CM-8, PM-5 |
+| AM-2 | 1.1, 1.2, 1.4, 1.5, 9.1, 12.1 | CM-8, PM-5 |
 
 Stellen Sie sicher, dass Sicherheitsteams Zugriff auf einen fortlaufend aktualisierten Bestand der Ressourcen in Azure haben. Sicherheitsteams benötigen diesen Bestand häufig, um die potenziellen Angriffsflächen ihrer Organisation im Hinblick auf neue Risiken zu evaluieren, sowie als Quelle für die kontinuierliche Verbesserung der Sicherheit. 
 
-Das Azure Security Center-Bestandsfeature und Azure Resource Graph können alle Ressourcen in Ihren Abonnements abfragen und ermitteln, einschließlich Azure-Diensten, Anwendungen und Netzwerkressourcen.  
+Das Azure Security Center-Bestandsfeature und Azure Resource Graph können alle Ressourcen in Ihren Abonnements abfragen und ermitteln, einschließlich Azure-Diensten, Anwendungen und Netzwerkressourcen.
 
-Organisieren Sie Ressourcen logisch gemäß der Taxonomie Ihrer Organisation mithilfe von Tags und anderen Metadaten in Azure (Name, Beschreibung und Kategorie).  
+Organisieren Sie Ressourcen logisch gemäß der Taxonomie Ihrer Organisation mithilfe von Tags und anderen Metadaten in Azure (Name, Beschreibung und Kategorie).
 
 - [Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers](../../governance/resource-graph/first-query-portal.md)
 
@@ -76,7 +78,7 @@ Organisieren Sie Ressourcen logisch gemäß der Taxonomie Ihrer Organisation mit
 |--|--|--|--|
 | AM-3 | 2.3, 2.4 | CM-7, CM-8 |
 
-Verwenden Sie Azure Policy, um die Dienste, die von Benutzern in Ihrer Umgebung bereitgestellt werden, zu überwachen und einzuschränken. Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufragen und zu ermitteln.  Sie können auch mit Azure Monitor Regeln erstellen, mit denen Warnungen ausgelöst werden, wenn ein nicht genehmigter Dienst erkannt wird.
+Verwenden Sie Azure Policy, um die Dienste, die von Benutzern in Ihrer Umgebung bereitgestellt werden, zu überwachen und einzuschränken. Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufragen und zu ermitteln. Sie können auch mit Azure Monitor Regeln erstellen, mit denen Warnungen ausgelöst werden, wenn ein nicht genehmigter Dienst erkannt wird.
 
 - [Konfigurieren und Verwalten von Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -90,7 +92,7 @@ Verwenden Sie Azure Policy, um die Dienste, die von Benutzern in Ihrer Umgebung 
 
 - [Sicherheitscomplianceverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 ## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4: Gewährleisten der Sicherheit der bei der Lebenszyklusverwaltung von Ressourcen
 
@@ -110,7 +112,7 @@ Entfernen Sie Azure-Ressourcen, wenn diese nicht mehr benötigt werden.
 
 - [Infrastruktur- und Endpunktsicherheit](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Sicherheitscomplianceverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -128,7 +130,7 @@ Mithilfe des bedingten Azure AD-Zugriffs können Sie die Möglichkeiten von Ben
 
 **Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Infrastruktur- und Endpunktsicherheit](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -144,7 +146,7 @@ Verwenden Sie die adaptiven Anwendungssteuerungen in Azure Security Center (ASC)
 
 Verwenden Sie das Feature Änderungsnachverfolgung und Bestand von Azure Automation, um die Sammlung von Bestandsinformationen von Ihren Windows- und Linux-VMs zu automatisieren. Softwarename, Version, Herausgeber und Aktualisierungszeit sind im Azure-Portal verfügbar. Um das Installationsdatum und andere Informationen abzurufen, aktivieren Sie die Diagnose auf Gastebene, und leiten Sie die Windows-Ereignisprotokolle an einen Log Analytics-Arbeitsbereich um.
 
-Abhängig vom Skripttyp können Sie betriebssystemspezifische Konfigurationen oder Ressourcen von Drittanbietern verwenden, um die Möglichkeit der Benutzer zur Skriptausführung in Azure-Computeressourcen einzuschränken. 
+Abhängig vom Skripttyp können Sie betriebssystemspezifische Konfigurationen oder Ressourcen von Drittanbietern verwenden, um die Möglichkeit der Benutzer zur Skriptausführung in Azure-Computeressourcen einzuschränken.
 
 Sie können auch eine Drittanbieterlösung verwenden, um nicht genehmigte Software zu ermitteln und zu identifizieren.
 
@@ -152,7 +154,7 @@ Sie können auch eine Drittanbieterlösung verwenden, um nicht genehmigte Softwa
 
 - [Grundlegendes zu Azure Automation-Änderungsnachverfolgung und -Bestand](../../automation/change-tracking/overview.md)
 
-- [Steuern der PowerShell-Skriptausführung in Windows-Umgebungen](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [Steuern der PowerShell-Skriptausführung in Windows-Umgebungen](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 **Verantwortlichkeit**: Kunde
 
@@ -160,6 +162,6 @@ Sie können auch eine Drittanbieterlösung verwenden, um nicht genehmigte Softwa
 
 - [Infrastruktur- und Endpunktsicherheit](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Sicherheitscomplianceverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)

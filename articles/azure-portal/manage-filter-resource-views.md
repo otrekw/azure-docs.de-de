@@ -3,12 +3,12 @@ title: Anzeigen und Filtern von Ressourceninformationen in Azure
 description: In diesem Artikel erfahren Sie, wie Sie Informationen filtern und verschiedene Ansichten verwenden, um Ihre Azure-Ressourcen besser zu verstehen.
 ms.topic: how-to
 ms.date: 09/11/2020
-ms.openlocfilehash: d1bd00a9e7f8c9c18484378f7c21d3bacdac2d3f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d3ad0c225a260fd0ae6b131b951b53c28042f4d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745892"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738632"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Anzeigen und Filtern von Ressourceninformationen in Azure
 
@@ -49,6 +49,18 @@ Löschen einer Ansicht:
 1. Klicken Sie auf **Ansicht verwalten** und dann auf **Alle Ansichten durchsuchen**.
 
 1. Wählen Sie im Bereich **Gespeicherte Ansichten** für „Alle Ressourcen“ eine Ansicht aus, und klicken Sie dann auf das Symbol zum **Löschen** ![Symbol „Ansicht löschen“](media/manage-filter-resource-views/icon-delete.png).
+
+## <a name="export-information-from-a-view"></a>Exportieren von Informationen aus einer Ansicht
+
+Sie können die Ressourceninformationen aus einer Ansicht exportieren. So exportieren Sie Informationen im CSV-Format:
+
+1. Wählen Sie **In CSV exportieren** aus.
+
+    :::image type="content" source="media/manage-filter-resource-views/export-csv.png" alt-text="Screenshot vom Exportvorgang in das CSV-Format":::
+
+1. Speichern Sie die Datei lokal, und öffnen Sie sie dann in Excel oder einer anderen Anwendung, die das CSV-Format unterstützt. 
+
+Wenn Sie das Portal verschieben, sehen Sie weitere Bereiche, in denen Sie Informationen exportieren können, z. B. eine einzelne Ressourcengruppe.
 
 ## <a name="summarize-resources-with-visuals"></a>Zusammenfassen von Ressourcen mithilfe von Visuals
 

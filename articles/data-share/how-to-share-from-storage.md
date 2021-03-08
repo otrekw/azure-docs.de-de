@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 12/16/2020
-ms.openlocfilehash: 242980ac1b89345ed9d8ff903e65129cff3cb917
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.date: 02/23/2021
+ms.openlocfilehash: dc309e85373193e4f5d431f543ff3e59ea5bebc7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964098"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739261"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Freigeben und Empfangen von Daten aus Azure Blob Storage und Azure Data Lake Storage
 
@@ -24,6 +24,7 @@ Azure Data Share unterstützt die Freigabe von Dateien, Ordnern und Dateisysteme
 Wenn Dateisysteme, Container oder Ordner in einer auf Momentaufnahmen basierenden Freigabe freigegeben werden, kann der Datenconsumer wahlweise eine vollständige Kopie der Freigabedaten erstellen. Alternativ kann die Funktion für inkrementelle Momentaufnahmen verwendet werden, um nur neue oder aktualisierte Dateien zu kopieren. Die Funktion für inkrementelle Momentaufnahmen basiert auf dem Zeitpunkt der letzten Änderung der Dateien. 
 
 Vorhandene Dateien mit demselben Namen werden während der Momentaufnahmeerstellung überschrieben. Eine aus der Quelle gelöschte Datei wird nicht im Ziel gelöscht. Leere Unterordner in der Quelle werden nicht in das Ziel kopiert. 
+
 ## <a name="share-data"></a>Freigeben von Daten
 
 Verwenden Sie die Informationen in den folgenden Abschnitten, um Daten unter Verwendung von Azure Data Share freizugeben. 
@@ -184,7 +185,7 @@ Befolgen Sie die Schritte in diesem Abschnitt, um einen Speicherort zum Empfang 
 ### <a name="trigger-a-snapshot"></a>Auslösen einer Momentaufnahme
 Die Schritte in diesem Abschnitt gelten nur für die Freigabe basierend auf Momentaufnahmen.
 
-1. Sie können über die Registerkarte **Details** eine Momentaufnahme auslösen. Klicken Sie auf der Registerkarte auf **Momentaufnahme auslösen**. Sie können wahlweise eine vollständige oder eine inkrementelle Momentaufnahme Ihrer Daten erstellen. Falls Sie zum ersten Mal Daten von Ihrem Datenanbieter empfangen, wählen Sie **Vollständige Kopie** aus. 
+1. Sie können über die Registerkarte **Details** eine Momentaufnahme auslösen. Klicken Sie auf der Registerkarte auf **Momentaufnahme auslösen**. Sie können wahlweise eine vollständige oder eine inkrementelle Momentaufnahme Ihrer Daten erstellen. Falls Sie zum ersten Mal Daten von Ihrem Datenanbieter empfangen, wählen Sie **Vollständige Kopie** aus. Wenn eine Momentaufnahme ausgeführt wird, starten anschließende Momentaufnahmen nur, wenn die vorherige abgeschlossen ist.
 
    ![Screenshot: Auswahl zum Auslösen einer Momentaufnahme](./media/trigger-snapshot.png "Auslösen einer Momentaufnahme") 
 
@@ -194,6 +195,14 @@ Die Schritte in diesem Abschnitt gelten nur für die Freigabe basierend auf Mome
 
 ### <a name="view-history"></a>Anzeigen des Verlaufs
 Sie können den Verlauf Ihrer Momentaufnahmen nur für eine auf Momentaufnahmen basierende Freigabe anzeigen. Öffnen Sie zur Anzeige von Verlaufsdaten die Registerkarte **Verlauf**. Hier wird ein Verlauf aller Momentaufnahmen angezeigt, die in den letzten 30 Tagen generiert wurden. 
+
+## <a name="storage-snapshot-performance"></a>Leistung von Storage-Momentaufnahmen
+Die Leistung von Storage-Momentaufnahmen wird von mehren Faktoren beeinflusst. Zusätzlich spielen die Anzahl der Dateien und die Größe der freigegebenen Daten eine Rolle. Es wird immer empfohlen, eigene Leistungstests durchzuführen. Nachfolgend sind einige Beispielfaktoren aufgerührt, die sich auf die Leistung auswirken.
+
+* Gleichzeitiger Zugriff auf Quell- und Zieldatenspeicher.  
+* Standort der Quell- und Zieldatenspeicher. 
+* Bei inkrementellen Momentaufnahmen kann die Anzahl der Dateien im freigegebenen Dataset beeinflussen, wie lange es dauert, die Liste der Dateien mit dem Zeitpunkt der letzten Bearbeitung nach der letzten erfolgreichen Momentaufnahme zu finden. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie haben erfahren, wie Sie mithilfe des Azure Data Share-Diensts Daten aus einem Speicherkonto freigeben und empfangen. Informationen zum Freigeben von Daten aus anderen Datenquellen finden Sie unter [Unterstützte Datenspeicher](supported-data-stores.md).

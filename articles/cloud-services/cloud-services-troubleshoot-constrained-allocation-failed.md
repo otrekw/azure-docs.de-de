@@ -1,30 +1,24 @@
 ---
-title: Problembehandlung von ConstrainedAllocationFailed beim Bereitstellen eines Clouddiensts in Azure | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie eine ConstrainedAllocationFailed-Ausnahme bei der Bereitstellung eines Clouddiensts in Azure auflösen.
+title: Problembehandlung von ConstrainedAllocationFailed beim Bereitstellen eines Clouddiensts (klassisch) in Azure | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie eine ConstrainedAllocationFailed-Ausnahme bei der Bereitstellung eines Clouddiensts (klassisch) in Azure auflösen.
 services: cloud-services
 author: mibufo
 ms.author: v-mibufo
 ms.service: cloud-services
 ms.topic: troubleshooting
-ms.date: 02/04/2020
-ms.openlocfilehash: de344bbcd89158676bacf2a8aa1743d282700b9d
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 02/22/2021
+ms.openlocfilehash: 346e7eb77039ab80e6f9dffb8ea8360198040504
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520782"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738281"
 ---
-# <a name="troubleshoot-constrainedallocationfailed-when-deploying-a-cloud-service-to-azure"></a>Problembehandlung von ConstrainedAllocationFailed beim Bereitstellen eines Clouddiensts in Azure
+# <a name="troubleshoot-constrainedallocationfailed-when-deploying-a-cloud-service-classic-to-azure"></a>Problembehandlung von ConstrainedAllocationFailed beim Bereitstellen eines Clouddiensts (klassisch) in Azure
 
-In diesem Artikel behandeln Sie Zuordnungsfehler, bei denen Azure Cloud Services aufgrund von Einschränkungen nicht bereitstellen kann.
+In diesem Artikel beheben Sie Zuteilungsfehler, bei denen Azure-Clouddienste (klassisch) aufgrund von Zuteilungseinschränkungen nicht bereitgestellt werden können.
 
-Microsoft Azure führt Zuordnungen durch, wenn Sie folgende Aktionen durchführen:
-
-- Aktualisieren von Cloud Services-Instanzen
-
-- Hinzufügen neuer Web- oder Workerrolleninstanzen
-
-- Bereitstellen von Instanzen in einem Clouddienst
+Wenn Sie Instanzen in einem Clouddienst (klassisch) bereitstellen oder neue Web- oder Workerrolleninstanzen hinzufügen, weist Microsoft Azure Computeressourcen zu.
 
 Unter Umständen erhalten Sie bei diesen Vorgängen auch dann gelegentlich Fehlermeldungen, wenn Sie die Grenzwerte des Azure-Abonnements noch nicht erreicht haben.
 
@@ -33,9 +27,11 @@ Unter Umständen erhalten Sie bei diesen Vorgängen auch dann gelegentlich Fehle
 
 ## <a name="symptom"></a>Symptom
 
-Navigieren Sie im Azure-Portal zu Ihrem Clouddienst, und wählen Sie in der Randleiste *Vorgangsprotokolle (klassisch)* aus, um die Protokolle anzuzeigen.
+Navigieren Sie im Azure-Portal zu Ihrem Clouddienst (klassisch), und klicken Sie in der Randleiste auf *Vorgangsprotokolle (klassisch)* , um die Protokolle anzuzeigen.
 
-Wenn Sie die Protokolle Ihres Clouddiensts überprüfen, wird die folgende Ausnahme angezeigt:
+![Das Bild zeigt das Blatt „Vorgangsprotokolle (klassisch)“.](./media/cloud-services-troubleshoot-constrained-allocation-failed/cloud-services-troubleshoot-allocation-logs.png)
+
+Wenn Sie die Protokolle Ihres Clouddiensts (klassisch) überprüfen, wird die folgende Ausnahme angezeigt:
 
 |Ausnahmetyp  |Fehlermeldung  |
 |---------|---------|
@@ -43,99 +39,42 @@ Wenn Sie die Protokolle Ihres Clouddiensts überprüfen, wird die folgende Ausna
 
 ## <a name="cause"></a>Ursache
 
-Bei der Region oder dem Cluster, wo Sie die Bereitstellung durchführen, liegt ein Kapazitätsproblem vor. Dies tritt auf, wenn die von Ihnen ausgewählte Ressourcen-SKU für den angegebenen Speicherort nicht verfügbar ist.
+Wenn die erste Instanz in einem Clouddienst bereitgestellt wird (entweder beim Staging oder in der Produktion), wird der Clouddienst an einen Cluster angeheftet.
 
-> [!NOTE]
-> Wenn der erste Knoten eines Clouddiensts bereitgestellt wird, wird er einem Ressourcenpool *angeheftet*. Ein Ressourcenpool kann ein einzelner Cluster oder eine Gruppe von Clustern sein.
->
-> Im Laufe der Zeit können die Ressourcen in diesem Ressourcenpool vollständig ausgelastet werden. Wenn ein Clouddienst eine Zuordnungsanforderung für zusätzliche Ressourcen sendet, wenn die Ressourcen im angehefteten Ressourcenpool unzureichend sind, führt die Anforderung zu einem [Zuordnungsfehler](cloud-services-allocation-failures.md).
+Im Laufe der Zeit werden die Ressourcen in diesem Cluster unter Umständen vollständig ausgelastet. Wenn ein Clouddienst (klassisch) eine Zuteilungsanforderung für weitere Ressourcen sendet, wenn die Ressourcen im angehefteten Cluster nicht ausreichen, führt die Anforderung zu einem Zuteilungsfehler. Weitere Informationen finden Sie unter [Häufige Probleme bei Zuteilungsfehlern](cloud-services-allocation-failures.md#common-issues).
 
 ## <a name="solution"></a>Lösung
 
-In diesem Szenario sollten Sie eine andere Region oder SKU auswählen, wo der Clouddienst bereitgestellt werden soll. Vor dem Bereitstellen oder Aktualisieren Ihres Clouddiensts können Sie ermitteln, welche SKUs in einer Region oder Verfügbarkeitszone verfügbar sind. Befolgen Sie die folgenden [Azure CLI](#list-skus-in-region-using-azure-cli)-, [PowerShell](#list-skus-in-region-using-powershell)- oder [REST-API](#list-skus-in-region-using-rest-api)-Prozesse.
+Vorhandene Clouddienste werden an einen Cluster *angeheftet*. Alle weiteren Bereitstellungen für den Clouddienst (klassisch) erfolgen im gleichen Cluster.
 
-### <a name="list-skus-in-region-using-azure-cli"></a>Auflisten von SKUs in der Region mithilfe von Azure CLI
+Wenn in diesem Szenario ein Zuteilungsfehler auftritt, wird empfohlen, einen neuen Clouddienst (klassisch) bereitzustellen (und den *CNAME*-Eintrag zu aktualisieren).
 
-Sie können den Befehl [az vm list-skus](https://docs.microsoft.com/cli/azure/vm.html#az_vm_list_skus) verwenden.
+> [!TIP]
+> Diese Lösung ist wahrscheinlich am erfolgreichsten, da die Plattform hierbei eine Auswahl aus allen Clustern in dieser Region treffen kann.
 
-- Filtern Sie die Ausgabe mit dem Parameter `--location` auf den verwendeten Standort.
-- Verwenden Sie den Parameter `--size`, um nach dem Teil eines Namens für die Größe zu suchen.
-- Weitere Informationen finden Sie unter [Lösung 2: Azure CLI](../azure-resource-manager/templates/error-sku-not-available.md#solution-2---azure-cli).
+> [!NOTE]
+> Bei dieser Lösung sollten keine Ausfallzeiten entstehen.
 
-    **Beispiel:**
+1. Stellen Sie die Workload in einem neuen Clouddienst (klassisch) bereit.
+    - Weitere Hinweise finden Sie im Leitfaden [Erstellen und Bereitstellen eines Clouddiensts (klassisch)](cloud-services-how-to-create-deploy-portal.md).
 
-    ```azurecli
-    az vm list-skus --location southcentralus --size Standard_F --output table
-    ```
+    > [!WARNING]
+    > Wenn Sie die mit diesem Bereitstellungsslot verknüpfte IP-Adresse nicht verlieren möchten, können Sie [Lösung 3 – Beibehalten der IP-Adresse](cloud-services-allocation-failures.md#solutions) verwenden.
 
-    **Beispielergebnisse:** ![Azure CLI-Ausgabe der Ausführung des Befehls „az vm list-skus --location southcentralus --size Standard_F --output table“, der die verfügbaren SKUs anzeigt.](./media/cloud-services-troubleshoot-constrained-allocation-failed/cloud-services-troubleshoot-constrained-allocation-failed-1.png)
+1. Aktualisieren Sie den *CNAME*- oder *A*-Eintrag, um den Datenverkehr an den neuen Clouddienst (klassisch) umzuleiten.
+    - Weitere Anleitungen finden Sie im Leitfaden [Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst (klassisch)](cloud-services-custom-domain-name-portal.md#understand-cname-and-a-records).
 
-#### <a name="list-skus-in-region-using-powershell"></a>Auflisten von SKUs in der Region mithilfe von PowerShell
+1. Wenn kein Datenverkehr mehr an die alte Website geleitet wird, können Sie den alten Clouddienst (klassisch) löschen.
+    - Weitere Anleitungen finden Sie im Leitfaden [Löschen von Bereitstellungen und eines Clouddiensts (klassisch)](cloud-services-how-to-manage-portal.md#delete-deployments-and-a-cloud-service).
+    - Informationen zum Netzwerkdatenverkehr in Ihrem Clouddienst (klassisch) finden Sie unter [Einführung in die Überwachung von Clouddiensten (klassisch)](cloud-services-how-to-monitor.md).
 
-Sie können den Befehl [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) verwenden.
-
-- Filtern Sie die Ergebnisse nach Standort.
-- Für diesen Befehl benötigen Sie die aktuelle Version von PowerShell.
-- Weitere Informationen finden Sie unter [Lösung 1: PowerShell](../azure-resource-manager/templates/error-sku-not-available.md#solution-1---powershell).
-
-**Beispiel:**
-
-```azurepowershell
-Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
-```
-
-**Einige weitere nützliche Befehle:**
-
-Filtern Sie die Standorte, die die Größe (Standard_DS14_v2) enthalten:
-
-```azurepowershell
-Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_DS14_v2")}
-```
-
-Filtern Sie alle Standorte, die die Größe (V3) enthalten:
-
-```azurepowershell
-Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("v3")} | fc
-```
-
-#### <a name="list-skus-in-region-using-rest-api"></a>Auflisten von SKUs in der Region mithilfe von REST-API
-
-Verwenden Sie den Vorgang [Auflisten von Ressourcen-SKUs](https://docs.microsoft.com/rest/api/compute/resourceskus/list). Verfügbare SKUs und Regionen werden im folgenden Format zurückgegeben:
-
-```json
-{
-  "value": [
-    {
-      "resourceType": "virtualMachines",
-      "name": "Standard_A0",
-      "tier": "Standard",
-      "size": "A0",
-      "locations": [
-        "eastus"
-      ],
-      "restrictions": []
-    },
-    {
-      "resourceType": "virtualMachines",
-      "name": "Standard_A1",
-      "tier": "Standard",
-      "size": "A1",
-      "locations": [
-        "eastus"
-      ],
-      "restrictions": []
-    },
-    <Rest_of_your_file_is_located_here...>
-  ]
-}
-    
-```
+Weitere Wartungsschritte finden Sie unter [Problembehandlung von Zuteilungsfehlern in Clouddiensten (klassisch) | Microsoft-Dokumentation](cloud-services-allocation-failures.md#common-issues).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Zuordnungsfehlerlösungen und Informationen zum besseren Verständnis ihrer Generierung finden Sie hier:
+Weitere Informationen zu Zuteilungsfehlern und Hintergrundinformationen:
 
 > [!div class="nextstepaction"]
-> [Behandeln von Zuordnungsfehlern bei der Bereitstellung von Cloud Services (klassisch) in Azure](cloud-services-allocation-failures.md)
+> [Zuteilungsfehler – Clouddienste (klassisch)](cloud-services-allocation-failures.md)
 
 Suchen Sie in den Azure-Foren bei [MSDN und Stack Overflow](https://azure.microsoft.com/support/forums/), falls Sie Ihr Azure-Problem mit diesem Artikel nicht beheben konnten. Sie können Ihr Problem in diesen Foren veröffentlichen oder [auf Twitter an @AzureSupport senden](https://twitter.com/AzureSupport). Sie können auch eine Azure-Supportanfrage senden. Wenn Sie eine Supportanfrage senden möchten, wählen Sie auf der [Azure-Support-Seite](https://azure.microsoft.com/support/options/) die Option *Support erhalten* aus.

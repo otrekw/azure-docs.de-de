@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 09/15/2020
-ms.openlocfilehash: 01232aa101e2964354acfbeb6cea341a0da33ca6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 02/19/2021
+ms.openlocfilehash: 04fc020b2b08d4d3dc68b62c417eb8e2d2e85b97
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489887"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720612"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Kunden-Lockbox für Microsoft Azure
 
@@ -22,18 +22,16 @@ ms.locfileid: "96489887"
 
 Kunden-Lockbox für Microsoft Azure bietet eine Oberfläche, auf der Kunden Anforderungen nach Zugriff auf Kundendaten prüfen und dann genehmigen oder ablehnen können. Das Feature wird in Fällen verwendet, in denen ein Microsoft-Techniker während einer Supportanfrage auf Kundendaten zugreifen muss.
 
-Dieser Artikel behandelt, wie Kunden-Lockbox-Anforderungen initiiert, nachverfolgt und für spätere Überprüfungen und Audits gespeichert werden.
+In diesem Artikel wird erläutert, wie Sie die Kunden-Lockbox aktivieren und Lockbox-Anforderungen für spätere Überprüfungen und Audits initiieren, nachverfolgen und speichern.
 
-Kunden-Lockbox ist jetzt allgemein verfügbar und derzeit für Remotedesktopzugriff auf virtuelle Computer aktiviert.
+<a id='supported-services-and-scenarios-in-preview'>## Unterstützte Dienste und Szenarios (allgemein verfügbar)
 
-## <a name="supported-services-and-scenarios-in-preview"></a>Unterstützte Dienste und Szenarien während der Vorschau
+Die folgenden Dienste sind jetzt für die Kunden-Lockbox allgemein verfügbar:
 
-Die folgenden Dienste sind derzeit für Kunden-Lockbox als Vorschauversion verfügbar:
-
-- API Management
+- Azure API Management
 - Azure App Service
-- Cognitive Services
-- Container Registry
+- Azure Cognitive Services
+- Azure Container Registry
 - Azure Database for MySQL
 - Azure Databricks
 - Azure Data Box
@@ -41,34 +39,21 @@ Die folgenden Dienste sind derzeit für Kunden-Lockbox als Vorschauversion verf�
 - Azure Data Factory
 - Azure Database for PostgreSQL
 - Azure Functions
-- HDInsight
+- Azure HDInsight
 - Azure Kubernetes Service
 - Azure Monitor
 - Azure Storage
 - Azure SQL-Datenbank
 - Azure-Abonnementübertragung
 - Azure Synapse Analytics
-- Virtuelle Computer (jetzt auch mit Zugriff auf Speicherabbilder und verwaltete Datenträger)
+- Virtuelle Computer in Azure (inklusive Remotedesktopzugriff, Zugriff auf Speicherabbilder und verwalteter Datenträger)
 
-Wenn Sie Kunden-Lockbox für diese Vorschauangebote für Ihre Organisation aktivieren möchten, registrieren Sie sich für dir [Public Preview von Kunden-Lockbox für Azure](https://aka.ms/customerlockbox/insiderprogram).
+## <a name="enable-customer-lockbox"></a>Aktivieren der Kunden-Lockbox
 
-## <a name="supported-services-and-scenarios-in-general-availability"></a>Unterstützte Dienste und Szenarien bei allgemeiner Verfügbarkeit
-
-Die folgenden Dienste und Szenarien sind derzeit für Kunden-Lockbox allgemein verfügbar.
-
-### <a name="remote-desktop-access-to-virtual-machines"></a>Remotedesktopzugriff auf virtuelle Computer
-
-Kunden-Lockbox ist derzeit für Remotedesktop-Zugriffsanforderungen auf virtuelle Computer aktiviert. Die folgenden Workloads werden unterstützt:
-- Platform-as-a-Service (PaaS): Azure Cloud Services (Webrolle und Workerrolle)
-- Infrastructure-as-a-Service (IaaS) – Windows und Linux (nur Azure Resource Manager)
-- VM-Skalierungsgruppen – Windows und Linux
+Sie können die Kunden-Lockbox jetzt über das [Verwaltungsmodul](https://aka.ms/customerlockbox/administration) auf dem Blatt „Kunden-Lockbox“ aktivieren.  
 
 > [!NOTE]
-> Klassische IaaS-Instanzen werden von Kunden-Lockbox nicht unterstützt. Wenn keine Ihrer Workloads auf klassischen IaaS-Instanzen ausgeführt werden, empfehlen wir, sie vom klassischen zum Resource Manager-Bereitstellungsmodell zu migrieren. Anweisungen hierzu finden Sie unter [Plattformgestützte Migration von IaaS-Ressourcen vom klassischen zum Azure Resource Manager-Bereitstellungsmodell](../../virtual-machines/migration-classic-resource-manager-overview.md).
-
-#### <a name="detailed-audit-logs"></a>Ausführliche Überwachungsprotokolle
-
-In Szenarien mit Remotedesktopzugriff können Sie die vom Microsoft-Techniker ausgeführten Aktionen mithilfe von Windows-Ereignisprotokollen überprüfen. Ziehen Sie in Erwägung, die Ereignisprotokolle mit Azure Security Center zu sammeln und die Daten für die Analyse in Ihren Arbeitsbereich zu kopieren. Weitere Informationen finden Sie unter [Datensammlung in Azure Security Center](../../security-center/security-center-enable-data-collection.md).
+> Die Aktivierung der Kunden-Lockbox ist nur möglich, wenn dem Benutzerkonto die Rolle [Globaler Administrator](../../active-directory/roles/manage-roles-portal.md) zugewiesen wurde.
 
 ## <a name="workflow"></a>Workflow
 
@@ -80,7 +65,7 @@ Die folgenden Schritte beschreiben einen typischen Workflow für eine Kunden-Loc
 
 3. Ein Azure-Supporttechniker überprüft den Service Request und ermittelt die nächsten Schritte zur Behebung des Problems.
 
-4. Wenn der Supporttechniker das Problem nicht mithilfe von Standardtools und Telemetriedaten beheben kann, besteht der nächste Schritt darin, über einen JIT-Zugriffsdienst (Just-In-Time) erhöhte Berechtigungen anzufordern. Diese Anforderung kann vom ursprünglichen Supportmitarbeiter stammen. Sie kann auch von einem anderen Techniker stammen, wenn das Problem an das Azure DevOps-Team eskaliert wurde.
+4. Wenn der Supporttechniker das Problem nicht mithilfe von Standardtools und Telemetriedaten beheben kann, besteht der nächste Schritt darin, über einen JIT-Zugriffsdienst (Just-In-Time) erhöhte Berechtigungen anzufordern. Diese Anforderung kann vom ursprünglichen Supporttechniker oder einem anderen Supporttechniker gestellt werden, da das Problem an das Azure DevOps-Team eskaliert wird.
 
 5. Nachdem die Zugriffsanforderung vom Azure-Techniker übermittelt wurde, wertet der JIT-Dienst die Anforderung unter Berücksichtigung von Faktoren wie den folgenden aus:
     - Bereich der Ressource
@@ -99,7 +84,7 @@ Die folgenden Schritte beschreiben einen typischen Workflow für eine Kunden-Loc
 
     ![Azure Kunden-Lockbox – E-Mail-Benachrichtigung](./media/customer-lockbox-overview/customer-lockbox-email-notification.png)
 
-8. Die E-Mail-Benachrichtigung enthält einen Link zum Blatt **Kunden-Lockbox** im Azure-Portal. Über diesen Link meldet sich die festgelegte genehmigende Person beim Azure-Portal an, um ausstehende Anforderungen anzuzeigen, die bei ihrer Organisation für Kunden-Lockbox vorliegen:
+8. Die E-Mail-Benachrichtigung enthält einen Link zum Blatt **Kunden-Lockbox** im Verwaltungsmodul. Über diesen Link meldet sich die festgelegte genehmigende Person beim Azure-Portal an, um ausstehende Anforderungen anzuzeigen, die bei ihrer Organisation für Kunden-Lockbox vorliegen:
 
     ![Azure Kunden-Lockbox – Startseite](./media/customer-lockbox-overview/customer-lockbox-landing-page.png)
 
@@ -137,18 +122,17 @@ Beispiel:
 
 ## <a name="customer-lockbox-integration-with-azure-security-benchmark"></a>Kunden-Lockbox-Integration im Azure-Sicherheitsvergleichstest
 
-Wir haben dem Azure-Sicherheitsvergleichstest eine neue Baselinekontrolle ([3.13](../benchmarks/security-control-identity-access-control.md#313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios)) für Kunden-Lockbox hinzugefügt. Kunden können nun den Vergleichstest nutzen, um die Anwendbarkeit von Kunden-Lockbox für einen Dienst zu überprüfen.
+Wir haben dem Azure-Sicherheitsvergleichstest eine neue Baselinekontrolle ([3.13](../benchmarks/security-control-identity-access-control.md#313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios)) für Kunden-Lockbox hinzugefügt. Kunden können nun die Benchmark nutzen, um die Anwendbarkeit der Kunden-Lockbox für einen Dienst zu überprüfen.
 
 ## <a name="exclusions"></a>Ausschlüsse
 
-In den folgenden Szenarien mit technischem Support werden keine Kunden-Lockbox-Anforderungen ausgelöst:
+In den folgenden Supportszenarios werden keine Kunden-Lockbox-Anforderungen ausgelöst:
 
 - Ein Microsoft-Techniker muss eine Aktivität ausführen, die außerhalb der Standardbetriebsvorgänge liegt. Beispiel: Wiederherstellen von Diensten in unerwarteten oder unvorhersehbaren Szenarien.
-
-- Ein Microsoft-Techniker greift im Rahmen der Problembehandlung auf die Azure-Plattform zu und hat versehentlich Zugriff auf Kundendaten. Beispiel: Das Azure-Team führt eine Problembehandlung durch, die zur Erfassung eines Pakets auf einem Netzwerkgerät führt. Wenn der Kunde die Daten jedoch während der Übertragung verschlüsselt hat, kann der Techniker die Daten nicht lesen.
+- Ein Microsoft-Techniker greift im Rahmen der Problembehandlung auf die Azure-Plattform zu und hat versehentlich Zugriff auf Kundendaten. Beispiel: Das Azure-Team führt eine Problembehandlung durch, die zur Erfassung eines Pakets auf einem Netzwerkgerät führt. In diesem Szenario kann der Techniker die Daten nicht lesen, wenn sie vom Kunden während der Übertragung verschlüsselt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Kunden-Lockbox steht für alle Kunden, die über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) mit der Mindestebene **Developer** verfügen, automatisch zur Verfügung.
+Die Kunden-Lockbox steht allen Kunden zur Verfügung, die einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) mit der Mindestebene **Developer** besitzen. Sie können die Kunden-Lockbox über das [Verwaltungsmodul](https://aka.ms/customerlockbox/administration) auf dem Blatt „Kunden-Lockbox“ aktivieren.
 
-Wenn Sie über einen entsprechenden Supportplan verfügen, ist keine Aktion von Ihnen erforderlich, um Kunden-Lockbox zu aktivieren. Kunden-Lockbox-Anforderungen werden von einem Microsoft-Techniker initiiert, wenn diese Aktion zum Fortfahren mit einem Supportticket, das von einer anderen Person in Ihrer Organisation eröffnet wurde, erforderlich ist.
+Kunden-Lockbox-Anforderungen werden von einem Microsoft-Techniker initiiert, falls dies für die weitere Bearbeitung eines Supportfalls erforderlich ist.

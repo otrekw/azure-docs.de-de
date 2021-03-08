@@ -1,18 +1,18 @@
 ---
 title: Beenden der Überwachung Ihres Kubernetes-Hybridclusters | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie die Überwachung Ihres Kubernetes-Hybridclusters mit Azure Monitor für Container beenden können.
+description: In diesem Artikel wird beschrieben, wie Sie die Überwachung Ihres Kubernetes-Clusters mit Container Insights beenden können.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 2754649cd990b015162be158effa2b85aa1fe27e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e8708d6b860683cc96a806160ccc7c8e33949ab2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602450"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713693"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>Beenden der Überwachung Ihres Hybridclusters
 
-Die Überwachung Ihres Kubernetes-Clusters kann nach der Aktivierung wieder beendet werden, wenn Sie den Cluster nicht mehr mit Azure Monitor für Container überwachen möchten. Dieser Artikel erläutert die Vorgehensweise für eine der folgenden Umgebungen:
+Die Überwachung Ihres Kubernetes-Clusters kann nach der Aktivierung wieder beendet werden, wenn Sie den Cluster nicht mehr mit Container Insights überwachen möchten. Dieser Artikel erläutert die Vorgehensweise für eine der folgenden Umgebungen:
 
 - AKS-Engine in Azure und Azure Stack
 - OpenShift-Version 4 und höher
@@ -25,7 +25,7 @@ Die folgenden Schritte gelten für folgende Umgebungen:
 - AKS-Engine in Azure und Azure Stack
 - OpenShift-Version 4 und höher
 
-1. Führen Sie den folgenden Helm-Befehl aus, um zunächst das auf Ihrem Cluster installierte Azure Monitor für Container-Helm-Chartrelease zu identifizieren.
+1. Führen Sie den folgenden Helm-Befehl aus, um zunächst das auf Ihrem Cluster installierte Container Insights-Helm-Chartrelease zu identifizieren.
 
     ```
     helm list
@@ -38,7 +38,7 @@ Die folgenden Schritte gelten für folgende Umgebungen:
     azmon-containers-release-1      default         3               2020-04-21 15:27:24.1201959 -0700 PDT   deployed        azuremonitor-containers-2.7.0   7.0.0-1
     ```
 
-    *azmon-containers-release-1* stellt das Helm-Chartrelease für Azure Monitor für Container dar.
+    *azmon-containers-release-1* stellt das Helm-Chartrelease für Container Insights dar.
 
 2. Führen Sie den folgenden Helm-Befehl aus, um das Chartrelease zu löschen.
 
@@ -157,4 +157,4 @@ bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-conte
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn der Log Analytics-Arbeitsbereich nur als Unterstützung für die Clusterüberwachung erstellt wurde und nicht mehr benötigt wird, müssen Sie ihn manuell löschen. Wie ein Arbeitsbereich gelöscht wird, erfahren Sie unter [Löschen eines Log Analytics-Arbeitsbereichs](../platform/delete-workspace.md).
+Wenn der Log Analytics-Arbeitsbereich nur als Unterstützung für die Clusterüberwachung erstellt wurde und nicht mehr benötigt wird, müssen Sie ihn manuell löschen. Wie ein Arbeitsbereich gelöscht wird, erfahren Sie unter [Löschen eines Log Analytics-Arbeitsbereichs](../logs/delete-workspace.md).

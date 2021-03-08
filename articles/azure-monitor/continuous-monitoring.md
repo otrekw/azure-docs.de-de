@@ -1,17 +1,16 @@
 ---
 title: Kontinuierliche Überwachung mit Azure Monitor | Microsoft-Dokumentation
 description: Beschreibt bestimmte Schritte für die Verwendung von Azure Monitor, um eine kontinuierliche Überwachung in Ihren Workflows zu ermöglichen.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 89ce214ef9686d2704878304b8b324871ad9473f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2fe9d7e4da8950cee2dcb2fbcfb26355ace7285d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579492"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044016"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Kontinuierliche Überwachung mit Azure Monitor
 
@@ -36,7 +35,7 @@ Um die Transparenz in Ihrer gesamten Umgebung sicherzustellen, müssen Sie die �
 Anwendungen sind nur so zuverlässig wie ihre zugrunde liegende Infrastruktur. Die Aktivierung der Überwachung in der gesamten Infrastruktur hilft Ihnen, eine vollständige Transparenz zu erreichen und erleichtert es, bei Ausfällen eine mögliche Grundursache zu finden. Azure Monitor hilft Ihnen, die Integrität und Leistung Ihrer gesamten Hybridinfrastruktur zu überwachen, einschließlich Ressourcen wie virtuelle Computer, Container, Speicher und Netzwerk.
 
 - Sie erhalten automatisch [Plattformmetriken, Aktivitäts- und Diagnoseprotokolle](agents/data-sources.md) von den meisten Ihrer Azure-Ressourcen ohne Konfiguration.
-- Aktivieren Sie eine intensivere Überwachung für virtuelle Computer mit [Azure Monitor für VMs](vm/vminsights-overview.md).
+- Mit [VM Insights](vm/vminsights-overview.md) können Sie eine intensivere Überwachung für VMs aktivieren.
 -  Aktivieren Sie eine intensivere Überwachung für AKS-Cluster mit [Azure Monitor für Container](containers/container-insights-overview.md).
 - Fügen Sie [Überwachungslösungen](./monitor-reference.md) für verschiedene Anwendungen und Dienste in Ihrer Umgebung hinzu.
 

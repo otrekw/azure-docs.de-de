@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 9f01961ec7c7f8e0a4e2d72e28e6def50e93ad5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b75e6e0a8b79f374900e6cb2dfc49680d3d0190
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854306"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739057"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Tutorial: Konfigurieren eines Gateways für ein virtuelles Netzwerk für ExpressRoute mit PowerShell
 > [!div class="op_single_selector"]
@@ -53,6 +53,11 @@ Bei den Schritten für diese Aufgabe wird ein VNet basierend auf den Werten verw
 | type | *ExpressRoute* |
 | Name der öffentlichen Gateway-IP  | *gwpip* |
 
+> [!IMPORTANT]
+> Die IPv6-Unterstützung für privates Peering befindet sich zurzeit in der **Public Preview**. Wenn Sie Ihr virtuelles Netzwerk mit einer ExpressRoute-Verbindung verbinden möchten, für die IPv6-basiertes privates Peering konfiguriert ist, stellen Sie sicher, dass Ihr virtuelles Netzwerk ein Dual Stack ist und die [hier](https://docs.microsoft.com/azure/virtual-network/ipv6-overview) beschriebenen Richtlinien einhält.
+> 
+> 
+
 ## <a name="add-a-gateway"></a>Hinzufügen eines Gateways
 
 1. Führen Sie `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
@@ -77,6 +82,11 @@ Bei den Schritten für diese Aufgabe wird ein VNet basierend auf den Werten verw
    ```azurepowershell-interactive
    Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
    ```
+    Wenn Sie ein virtuelles Dual-Stack-Netzwerk verwenden und beabsichtigen, IPv6-basiertes privates Peering über ExpressRoute einzusetzen, sollten Sie stattdessen ein Dual-Stack-Gatewaysubnetz erstellen.
+
+   ```azurepowershell-interactive
+   Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix "10.0.0.0/26","ace:daa:daaa:deaa::/64"
+   ```
 1. Legen Sie die Konfiguration fest.
 
    ```azurepowershell-interactive
@@ -97,11 +107,15 @@ Bei den Schritten für diese Aufgabe wird ein VNet basierend auf den Werten verw
    ```azurepowershell-interactive
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
    ```
-1. Erstellen Sie das Gateway. In diesem Schritt ist **-GatewayType** besonders wichtig. Sie müssen den Wert **ExpressRoute**verwenden. Das Erstellen des Gateways kann nach der Ausführung dieser Cmdlets 45 Minuten oder länger dauern.
+1. Erstellen Sie das Gateway. In diesem Schritt ist **-GatewayType** besonders wichtig. Sie müssen den Wert **ExpressRoute** verwenden. Das Erstellen des Gateways kann nach der Ausführung dieser Cmdlets 45 Minuten oder länger dauern.
 
    ```azurepowershell-interactive
    New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
    ```
+> [!IMPORTANT]
+> Wenn Sie das IPv6-basierte private Peering über ExpressRoute verwenden möchten, wählen Sie unbedingt eine AZ-SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) für **-GatewaySku** aus.
+> 
+> 
 
 ## <a name="verify-the-gateway-was-created"></a>Erstellung des Gateways überprüfen
 Verwenden Sie die folgenden Befehle, um zu überprüfen, ob das Gateway erstellt wurde:
@@ -130,7 +144,7 @@ Remove-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie das VNet-Gateway erstellt haben, können Sie Ihr VNet mit einer ExpressRoute-Verbindung verknüpfen. 
+Nachdem Sie das VNET-Gateway erstellt haben, können Sie Ihr VNET mit einer ExpressRoute-Leitung verknüpfen. 
 
 > [!div class="nextstepaction"]
 > [Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe des Portals](expressroute-howto-linkvnet-arm.md)

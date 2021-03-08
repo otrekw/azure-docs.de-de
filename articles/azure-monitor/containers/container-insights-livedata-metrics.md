@@ -1,19 +1,19 @@
 ---
-title: Anzeigen von Metriken in Echtzeit mit Azure Monitor für Container | Microsoft-Dokumentation
-description: In diesem Artikel wird die Echtzeitansicht von Metriken ohne Verwendung von kubectl mit Azure Monitor für Container beschrieben.
+title: Anzeigen von Metriken in Echtzeit mit Container Insights | Microsoft-Dokumentation
+description: In diesem Artikel wird die Echtzeitansicht von Metriken ohne Verwendung von kubectl mit Container Insights beschrieben.
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 81d7210778fd6b5d75fb4b4fa8e066d2e015174f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2e3a8a417a934374c2c0b256bb65a471d98fdebe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601220"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731849"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Anzeigen von Metriken in Echtzeit
 
-Mit der Funktion für Livedaten (Vorschau) in Azure Monitor für Container können Sie Metriken zum Knoten- und Podstatus in einem Cluster in Echtzeit visualisieren. Hierbei wird der direkte Zugriff auf die Befehle `kubectl top nodes`, `kubectl get pods –all-namespaces` und `kubectl get nodes` emuliert, um die Daten abzurufen, zu analysieren und in Leistungsdiagrammen zu visualisieren, die in diesen Einblicken enthalten sind.
+Mit dem Container Insights-Feature für Livedaten (Vorschau) können Sie Metriken zum Knoten- und Podstatus in einem Cluster in Echtzeit visualisieren. Hierbei wird der direkte Zugriff auf die Befehle `kubectl top nodes`, `kubectl get pods –all-namespaces` und `kubectl get nodes` emuliert, um die Daten abzurufen, zu analysieren und in Leistungsdiagrammen zu visualisieren, die in diesen Einblicken enthalten sind.
 
 Dieser Artikel bietet eine ausführliche Übersicht und hilft Ihnen, die Verwendung dieser Funktion zu verstehen.
 
@@ -26,7 +26,7 @@ Hilfe bei der Einrichtung oder Problembehandlung der Funktion für Livedaten (Vo
 
 Informationen zum Direktzugriff auf die Kubernetes-API über die Funktion für Livedaten (Vorschau) sowie weitere Informationen zum Authentifizierungsmodell finden Sie [hier](https://kubernetes.io/docs/concepts/overview/kubernetes-api/).
 
-Diese Funktion führt standardmäßig alle fünf Sekunden einen Abrufvorgang für die Metrikendpunkte (einschließlich `/api/v1/nodes`, `/apis/metrics.k8s.io/v1beta1/nodes`und `/api/v1/pods`) aus. Diese Daten werden in Ihrem Browser zwischengespeichert und in den vier Leistungsdiagrammen dargestellt, die in Azure Monitor für Container bei Auswahl von **Live schalten (Vorschau)** auf der Registerkarte **Cluster** enthalten sind. Jeder nachfolgende Abruf wird in einem rollierenden Fünf-Minuten-Visualisierungsfenster dargestellt.
+Diese Funktion führt standardmäßig alle fünf Sekunden einen Abrufvorgang für die Metrikendpunkte (einschließlich `/api/v1/nodes`, `/apis/metrics.k8s.io/v1beta1/nodes`und `/api/v1/pods`) aus. Diese Daten werden in Ihrem Browser zwischengespeichert und in den vier Leistungsdiagrammen dargestellt, die in Container Insights bei Auswahl von **Live schalten (Vorschau)** auf der Registerkarte **Cluster** enthalten sind. Jeder nachfolgende Abruf wird in einem rollierenden Fünf-Minuten-Visualisierungsfenster dargestellt.
 
 ![Option „Live schalten“ in der Ansicht „Cluster“](./media/container-insights-livedata-metrics/cluster-view-go-live-example-01.png)
 

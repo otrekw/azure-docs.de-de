@@ -1,15 +1,15 @@
 ---
 title: Continuous Integration mit Azure Pipelines
 description: Hier finden Sie Informationen zum kontinuierlichen Erstellen, Testen und Bereitstellen von Azure Resource Manager-Vorlagen (ARM-Vorlagen).
-ms.date: 02/16/2021
+ms.date: 03/02/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d367da33d6b9997d77606e9a77a961808d66ff99
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 3ff98c1c033c6da4b6bdf40c3b8ecb3347601741
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560894"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722801"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Tutorial: Continuous Integration von ARM-Vorlagen mit Azure Pipelines
 
@@ -83,8 +83,8 @@ Der Ordner _CreateWebApp_ ist der Speicherort für die Vorlage. Der Befehl `pwd`
 
 Anstatt die Vorlagen zu erstellen, können Sie sie herunterladen und im Ordner _CreateWebApp_ speichern.
 
-* Die Hauptvorlage: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/azuredeploy.json
-* Die verknüpfte Vorlage: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/linkedStorageAccount.json
+* Die Hauptvorlage: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
+* Die verknüpfte Vorlage: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
 
 Sowohl der Ordnername als auch der Dateiname werden genau so in der Pipeline verwendet. Wenn Sie diese Namen ändern, müssen auch die in der Pipeline verwendeten Namen aktualisiert werden.
 
@@ -106,7 +106,7 @@ Die Datei _azuredeploy.json_ wurde dem lokalen Repository hinzugefügt. Als Näc
     Daraufhin wird unter Umständen eine LF-Warnung angezeigt. Diese Warnung kann ignoriert werden. **main** ist der Mainbranch.  Üblicherweise wird für jedes Update ein eigener Branch erstellt. Zur Vereinfachung des Tutorials verwenden wir den Mainbranch direkt.
 
 1. Navigieren Sie in einem Browser zu Ihrem GitHub-Repository. Die URL ist `https://github.com/[YourAccountName]/[YourGitHubRepository]`. Der Ordner _CreateWebApp_ und die zwei Dateien im Ordner werden angezeigt.
-1. Wählen Sie _linkedStorageAccount.json_ aus, um die Vorlage zu öffnen.
+1. Klicken Sie auf _azuredeploy.json_, um die Vorlage zu öffnen.
 1. Wählen Sie die Schaltfläche **raw** (unformatiert) aus. Die URL beginnt mit `https://raw.githubusercontent.com`.
 1. Kopieren Sie die URL. Sie müssen diesen Wert angeben, wenn Sie die Pipeline später in diesem Tutorial konfigurieren.
 
@@ -174,10 +174,10 @@ So erstellen Sie eine Pipeline mit einem Vorlagenbereitstellungsschritt:
     * **Aktion:** Durch Auswählen der Aktion **Ressourcengruppe erstellen oder aktualisieren** werden zwei Aktionen ausgeführt: 1. Sie erstellt eine Ressourcengruppe, falls ein neuer Ressourcengruppenname angegeben wurde. 2. Sie stellt die angegebene Vorlage bereit.
     * **Ressourcengruppe**: Geben Sie einen neuen Namen für die Ressourcengruppe ein. Beispiel: **AzureRmPipeline-rg**.
     * **Standort**: Wählen Sie einen Ort für die Ressourcengruppe (beispielsweise **USA, Mitte**).
-    * **Speicherort der Vorlage**: Wählen Sie **Verknüpftes Artefakt** aus. Dies bedeutet, dass die Aufgabe direkt im verbundenen Repository nach der Vorlagendatei sucht.
-    * **Vorlage**: Geben Sie _CreateWebApp/azuredeploy.json_ ein. Wenn Sie den Ordnernamen und den Dateinamen geändert haben, müssen Sie diesen Wert ändern.
-    * **Vorlagenparameter**: Lassen Sie dieses Feld leer. Sie geben die Parameterwerte in **Vorlagenparameter überschreiben** an.
-    * **Vorlagenparameter überschreiben**: Geben Sie `-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]` ein. Ersetzen Sie den Projektnamen und die URL der verknüpften Vorlage. Die URL der verknüpften Vorlage ist das, was Sie am Ende von [Erstellen eines GitHub-Repositorys](#create-a-github-repository) aufgeschrieben haben. Sie beginnt mit `https://raw.githubusercontent.com` .
+    * **Template location** (Vorlagenspeicherort): Klicken Sie auf **URL of the file** (URL der Datei). Dies bedeutet, dass der Task mithilfe der URL nach der Vorlagendatei sucht. Da _relativePath_ in der Hauptvorlage verwendet wird und _relativePath_ nur bei URI-basierten Bereitstellungen unterstützt wird, müssen Sie hier die URL verwenden.
+    * **Vorlagenlink**: Geben Sie die URL ein, die Sie am Ende des Abschnitts [Ein GitHub-Repository erstellen](#prepare-a-github-repository) erhalten haben. Sie beginnt mit `https://raw.githubusercontent.com` .
+    * **Vorlagenparameterlink**: Lassen Sie dieses Feld leer. Sie geben die Parameterwerte in **Vorlagenparameter überschreiben** an.
+    * **Vorlagenparameter überschreiben**: Geben Sie `-projectName [EnterAProjectName]` ein.
     * **Bereitstellungsmodus**: Wählen Sie **Inkrementell** aus.
     * **Bereitstellungsname**: Geben Sie **DeployPipelineTemplate** ein. Wählen Sie **Erweitert** aus, damit **Bereitstellungsname** angezeigt wird.
 

@@ -6,21 +6,21 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 9e0d9162c497ff035438b5a65c6f4500ce834860
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 06b59aa1fe6b51bf237c0cd64117166ca4ece10b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599476"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734926"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Installieren des Log Analytics-Agents auf Linux-Computern
 Dieser Artikel enthält ausführliche Informationen zum Installieren des Log Analytics-Agents auf Linux-Computern mithilfe der folgenden Methoden:
 
 * [Installieren Sie den Agent für Linux mithilfe eines Wrapperskripts](#install-the-agent-using-wrapper-script), das auf GitHub gehostet wird. Dies ist die empfohlene Methode für Installation und Upgrade des Agents, wenn der Computer direkt oder über einen Proxyserver mit dem Internet verbunden ist.
-* [Laden Sie den Agent manuell herunter, und installieren Sie ihn](#install-the-agent-manually). Dies ist erforderlich, wenn der Linux-Computer keinen Zugriff auf das Internet hat und über das [Log Analytics-Gateway](../platform/gateway.md) mit Azure Monitor oder Azure Automation kommuniziert. 
+* [Laden Sie den Agent manuell herunter, und installieren Sie ihn](#install-the-agent-manually). Dies ist erforderlich, wenn der Linux-Computer keinen Zugriff auf das Internet hat und über das [Log Analytics-Gateway](./gateway.md) mit Azure Monitor oder Azure Automation kommuniziert. 
 
 >[!IMPORTANT]
-> Die in diesem Artikel beschriebenen Installationsmethoden werden in der Regel für virtuelle Computer in der lokalen Umgebung oder in anderen Clouds verwendet. Effizientere Optionen für virtuelle Azure-Computer finden Sie unter [Installationsoptionen](../platform/log-analytics-agent.md#installation-options).
+> Die in diesem Artikel beschriebenen Installationsmethoden werden in der Regel für virtuelle Computer in der lokalen Umgebung oder in anderen Clouds verwendet. Effizientere Optionen für virtuelle Azure-Computer finden Sie unter [Installationsoptionen](./log-analytics-agent.md#installation-options).
 
 
 
@@ -32,7 +32,7 @@ Eine Liste der Linux-Distributionen, die vom Log Analytics-Agent unterstützt we
 >OpenSSL 1.1.0 wird nur auf x86_x64-Plattformen (64 Bit) unterstützt. OpenSSL vor Version 1.x wird auf keiner Plattform unterstützt.
 
 >[!NOTE]
->Das Ausführen des Log Analytics-Linux-Agents in Containern wird nicht unterstützt. Verwenden Sie zur Überwachung von Containern die [Containerüberwachungslösung](../insights/containers.md) (für Docker-Hosts) oder [Azure Monitor für Container](../insights/container-insights-overview.md) (für Kubernetes).
+>Das Ausführen des Log Analytics-Linux-Agents in Containern wird nicht unterstützt. Verwenden Sie zur Überwachung von Containern die [Containerüberwachungslösung](../containers/containers.md) für Docker-Hosts oder [Container Insights](../containers/container-insights-overview.md) für Kubernetes.
 
 Beginnend mit den nach August 2018 veröffentlichten Versionen gelten folgende Änderungen für unser Supportmodell:  
 
@@ -100,7 +100,7 @@ In der folgenden Tabelle sind die erforderlichen Pakete für [unterstützte Linu
 >Zum Sammeln von syslog-Nachrichten sind entweder rsyslog oder syslog-ng erforderlich. Der Standard-syslog-Daemon in Version 5 von Red Hat Enterprise Linux, CentOS und Oracle Linux-Version (sysklog) wird für die syslog-Ereigniserfassung nicht unterstützt. Der rsyslog-Daemon sollte installiert und so konfiguriert werden, dass er sysklog ersetzt, um syslog-Daten von dieser Version dieser Verteilung zu sammeln.
 
 ## <a name="network-requirements"></a>Netzwerkanforderungen
-Die Netzwerkanforderungen für den Linux-Agent finden Sie unter [Übersicht über den Log Analytics-Agent](../platform/log-analytics-agent.md#network-requirements).
+Die Netzwerkanforderungen für den Linux-Agent finden Sie unter [Übersicht über den Log Analytics-Agent](./log-analytics-agent.md#network-requirements).
 
 ## <a name="agent-install-package"></a>Agent-Installationspaket
 

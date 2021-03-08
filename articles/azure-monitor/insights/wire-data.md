@@ -1,17 +1,16 @@
 ---
 title: Wire Data-Lösung in Azure Monitor | Microsoft-Dokumentation
 description: Daten zur Kommunikation sind konsolidierte Netzwerk- und Leistungsdaten von Computern mit Log Analytics-Agents. Netzwerkdaten werden mit Ihren Protokolldaten kombiniert, um Ihnen das Korrelieren von Daten zu ermöglichen.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
-ms.openlocfilehash: 563104a82da3b6b2263fce46792cf4f627c8f6ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5981a5f136d613ffcedda86797d807d2eecfab0d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572342"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713625"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Wire Data 2.0-Lösung (Vorschauversion) in Azure Monitor
 
@@ -26,7 +25,7 @@ Zusätzlich zum Log Analytics-Agent verwendet die Wire Data-Lösung Microsoft De
 > 
 >Bestehende Kunden, die die Wire Data-Lösung verwenden, können diese weiterhin verwenden. Für die Migration zur Dienstzuordnungslösung wird eine Anleitung mit einem Migrationsplan veröffentlicht.
 >
->Neue Kunden sollten die [Dienstzuordnungslösung](../vm/service-map.md) oder [Azure Monitor für VMs](../vm/vminsights-overview.md) installieren.  Das Dataset der Dienstzuordnung ist mit Wire Data vergleichbar.  Azure Monitor für VMs umfasst das Dataset der Dienstzuordnung mit zusätzlichen Leistungsdaten und Analysefeatures. 
+>Neue Kunden sollten die [Dienstzuordnungslösung](../vm/service-map.md) oder [VM Insights](../vm/vminsights-overview.md) installieren.  Das Dataset der Dienstzuordnung ist mit Wire Data vergleichbar.  VM Insights umfasst das Dataset der Dienstzuordnung mit zusätzlichen Leistungsdaten und Analysefeatures. 
 
 
 Standardmäßig protokolliert Azure Monitor Daten für CPU, Arbeitsspeicher, Datenträger sowie Netzwerkleistungsdaten von Leistungsindikatoren, die in Windows und Linux integriert sind. Zudem werden Daten von anderen Leistungsindikatoren protokolliert, die Sie angeben können. Die Erfassung von Netzwerkdaten und anderen Daten wird für jeden Agent in Echtzeit durchgeführt, einschließlich der vom Computer verwendeten Subnetze und Anwendungsebenenprotokolle.  Wire Data untersucht Netzwerkdaten auf Anwendungsebene und nicht unten auf der TCP-Transportebene.   Die Lösung betrachtet keine einzelnen ACKs und SYNs.   Sobald der Handshake abgeschlossen ist, wird er als Liveverbindung betrachtet und als „Verbunden“ gekennzeichnet. Diese Liveverbindung bleibt so lange bestehen, wie beide Seiten zustimmen, dass der Socket offen ist und Daten in beide Richtungen übertragen werden können.   Sobald eine Seite die Verbindung schließt, wird sie als „Getrennt“ markiert.  Aus diesem Grund wird nur die Bandbreite von erfolgreich abgeschlossenen Paketen gezählt, während erneut gesendete oder fehlerhafte Pakete nicht gemeldet werden.

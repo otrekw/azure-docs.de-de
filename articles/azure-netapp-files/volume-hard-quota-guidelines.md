@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: b-juche
-ms.openlocfilehash: b173342c1c384213e88f216334b5e03cd8b7bea7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 12807e83f7841bc67999ce385d0cb82bf15f4c71
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374489"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175990"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>Auswirkungen der Änderungen am festen Volumekontingent auf Ihren Azure NetApp Files-Dienst
 
 Seit der Veröffentlichung des Azure NetApp Files-Diensts werden zwei Mechanismen eingesetzt: die Kapazitätspoolbereitstellung und die automatische Vergrößerung. Azure NetApp Files-Volumes werden einem zugrunde liegenden, vom Kunden bereitgestellten Kapazitätspool mit einer bestimmten Dienstebene und Größe schlank zugewiesen. Die Volumegrößen (Kontingente) stellen die Leistung und Kapazität bereit und können jederzeit dynamisch angepasst werden. Das bedeutet, dass das Volumekontingent derzeit die Leistung – also die Bandbreite – kontrolliert, die das Volume nutzen kann. Die zugrunde liegenden Kapazitätspools werden derzeit automatisch vergrößert, wenn die Kapazität ausgelastet ist.   
 
 > [!IMPORTANT] 
-> Das Verhalten von Azure NetApp Files für die Volume- und Kapazitätspoolbereitstellung wird in einen *manuellen*, *kontrollierbaren* Mechanismus geändert. **Ab dem 1. April 2021 entscheidet die Volumegröße (Kontingent) über die Bandbreite (Leistung) und die bereitgestellte Kapazität. Außerdem werden zugrunde liegende Kapazitätspools nicht mehr automatisch vergrößert.** 
+> Das Verhalten von Azure NetApp Files für die Volume- und Kapazitätspoolbereitstellung wird in einen *manuellen*, *kontrollierbaren* Mechanismus geändert. **Ab dem 1. April 2021 (aktualisiert) entscheidet die Volumegröße (Kontingent) über die Bandbreitenleistung und die bereitgestellte Kapazität. Außerdem werden zugrunde liegende Kapazitätspools nicht mehr automatisch vergrößert.** 
 
 ## <a name="reasons-for-the-change-to-volume-hard-quota"></a>Gründe für die Änderung des festen Volumekontingents
 
@@ -185,8 +185,8 @@ Manchmal ist auf dem hostenden Kapazitätspool nicht genügend Kapazität vorhan
 
 Sie können die [CLI-Tools von Azure NetApp Files](azure-netapp-files-sdk-cli.md#cli-tools) wie die Azure CLI und Azure PowerShell verwenden, um die Volume- oder Kapazitätspoolgröße manuell zu ändern.  Mithilfe der folgenden beiden Befehle können Sie Azure NetApp Files-Volume- und -Poolressourcen verwalten:  
 
-* [`az netappfiles pool`](https://docs.microsoft.com/cli/azure/netappfiles/pool?view=azure-cli-latest&preserve-view=true)
-* [`az netappfiles volume`](https://docs.microsoft.com/cli/azure/netappfiles/volume?view=azure-cli-latest&preserve-view=true)
+* [`az netappfiles pool`](/cli/azure/netappfiles/pool)
+* [`az netappfiles volume`](/cli/azure/netappfiles/volume)
 
 Öffnen Sie das Azure-Portal, und klicken Sie oben in der Menüleiste auf den Link **Azure Cloud Shell**, um Azure NetApp Files-Ressourcen mithilfe der Azure CLI zu verwalten: 
 
@@ -196,13 +196,13 @@ Durch diese Aktion wird Azure Cloud Shell geöffnet:
 
 [ ![Screenshot: Cloud Shell-Fenster](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png) ](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png#lightbox)
 
-In den folgenden Beispielen werden die Befehle zum [Anzeigen](https://docs.microsoft.com/cli/azure/netappfiles/volume?view=azure-cli-latest#az-netappfiles-volume-show&preserve-view=true) und [Ändern](https://docs.microsoft.com/cli/azure/netappfiles/volume?view=azure-cli-latest#az-netappfiles-volume-update&preserve-view=true) der Volumegröße verwendet:
+In den folgenden Beispielen werden die Befehle zum [Anzeigen](/cli/azure/netappfiles/volume#az-netappfiles-volume-show) und [Ändern](/cli/azure/netappfiles/volume#az-netappfiles-volume-update) der Volumegröße verwendet:
  
 [ ![Screenshot: Anzeigen der Volumegröße über PowerShell](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png) ](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png#lightbox)
 
 [ ![Screenshot: Ändern der Volumegröße über PowerShell](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png) ](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png#lightbox)
 
-In den folgenden Beispielen werden die Befehle zum [Anzeigen](https://docs.microsoft.com/cli/azure/netappfiles/pool?view=azure-cli-latest#az-netappfiles-pool-show&preserve-view=true) und [Ändern](https://docs.microsoft.com/cli/azure/netappfiles/pool?view=azure-cli-latest#az-netappfiles-pool-update&preserve-view=true) der Kapazitätspoolgröße verwendet:
+In den folgenden Beispielen werden die Befehle zum [Anzeigen](/cli/azure/netappfiles/pool#az-netappfiles-pool-show) und [Ändern](/cli/azure/netappfiles/pool#az-netappfiles-pool-update) der Kapazitätspoolgröße verwendet:
 
 [ ![Screenshot: Anzeigen der Kapazitätspoolgröße über PowerShell](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png) ](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png#lightbox) 
 
@@ -277,4 +277,4 @@ Sie können Fehler melden und Features beantragen, indem Sie auf der GitHub-Seit
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Ändern der Größe eines Kapazitätspools oder Volumes](azure-netapp-files-resize-capacity-pools-or-volumes.md) 
-* [Metriken für Azure NetApp Files](azure-netapp-files-metrics.md) 
+* [Metriken für Azure NetApp Files](azure-netapp-files-metrics.md)

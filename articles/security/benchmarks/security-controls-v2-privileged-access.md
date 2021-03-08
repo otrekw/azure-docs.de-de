@@ -4,19 +4,21 @@ description: 'Azure-Sicherheitsvergleichstest V2: Privilegierter Zugriff'
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd39f5e0af34c702cddc8e08b6a94e428c7f0167
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: a4f1c6e32bbc679a7ec946384903b2bda3887d05
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092049"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720578"
 ---
 # <a name="security-control-v2-privileged-access"></a>Sicherheitskontrolle V2: Privilegierter Zugriff
 
 Privilegierter Zugriff gilt für Kontrollelemente, um den privilegierten Zugriff auf Ihren Azure-Mandanten und Ihre Azure-Ressourcen zu schützen. Dies umfasst eine Reihe von Kontrollelementen, um Ihr Verwaltungsmodell, Ihre Verwaltungskonten und Workstations mit privilegiertem Zugriff vor absichtlichen und unbeabsichtigten Risiken zu schützen.
+
+Die entsprechende integrierte Azure Policy-Instanz finden Sie unter [Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß Azure-Sicherheitsvergleichstest: Privilegierter Zugriff](../../governance/policy/samples/azure-security-benchmark#privileged-access).
 
 ## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: Schützen und Einschränken stark privilegierter Benutzer
 
@@ -30,7 +32,7 @@ Schränken Sie die Anzahl der Benutzerkonten mit hohen Privilegien ein, und sch�
 
 - Administrator für privilegierte Rollen: Benutzer mit dieser Rolle können Rollenzuweisungen in Azure AD und Azure AD Privileged Identity Management (PIM) verwalten. Überdies ermöglicht diese Rolle Verwaltung aller Aspekte von PIM und administrativer Einheiten.
 
-Hinweis: Möglicherweise verfügen Sie über weitere kritische Rollen, die geregelt werden müssen, wenn Sie benutzerdefinierte Rollen mit bestimmten zugewiesenen privilegierten Berechtigungen verwenden. Es empfiehlt sich, ähnliche Kontrollelemente auch auf das Administratorkonto für kritische Unternehmensressourcen anzuwenden.  
+Hinweis: Möglicherweise verfügen Sie über weitere kritische Rollen, die geregelt werden müssen, wenn Sie benutzerdefinierte Rollen mit bestimmten zugewiesenen privilegierten Berechtigungen verwenden. Es empfiehlt sich, ähnliche Kontrollelemente auch auf das Administratorkonto für kritische Unternehmensressourcen anzuwenden.
 
 Mit Azure AD Privileged Identity Management (PIM) können Sie privilegierten Just-in-Time-Zugriff (JIT) auf Azure-Ressourcen und Azure AD ermöglichen. JIT erteilt nur dann temporäre Berechtigungen zur Ausführung privilegierter Aufgaben, wenn die Benutzer sie benötigen. PIM kann auch Sicherheitswarnungen erzeugen, wenn es in Ihrer Azure AD-Organisation verdächtige oder unsichere Aktivitäten gibt.
 
@@ -155,11 +157,11 @@ Verwenden Sie die Berechtigungsverwaltungsfeatures von Azure AD, um die Zugriffs
 |--|--|--|--|
 | PA-6 | 4.6, 11.6, 12.12 | AC-2, SC-3, SC-7 |
 
-Gesicherte, isolierte Arbeitsstationen sind von entscheidender Bedeutung für die Sicherheit sensibler Rollen wie Administratoren, Entwickler und Operatoren kritischer Dienste. Verwenden Sie stark gesicherte Benutzerworkstations und/oder Azure Bastion für administrative Aufgaben. Verwenden Sie Azure Active Directory, Microsoft Defender Advanced Threat Protection (ATP) und/oder Microsoft Intune, um eine sichere und verwaltete Benutzerworkstation für administrative Aufgaben einzurichten. Die gesicherten Workstations können zentral verwaltet werden, um eine gesicherte Konfiguration einschließlich starker Authentifizierung, Software- und Hardwarebaselines sowie eingeschränktem logischen und Netzwerkzugang durchzusetzen. 
+Gesicherte, isolierte Arbeitsstationen sind von entscheidender Bedeutung für die Sicherheit vertraulicher Rollen wie Administratoren, Entwickler und Betreiber kritischer Dienste. Verwenden Sie stark gesicherte Benutzerworkstations und/oder Azure Bastion für administrative Aufgaben. Verwenden Sie Azure Active Directory, Microsoft Defender Advanced Threat Protection (ATP) und/oder Microsoft Intune, um eine sichere und verwaltete Benutzerworkstation für administrative Aufgaben einzurichten. Die gesicherten Workstations können zentral verwaltet werden, um eine gesicherte Konfiguration einschließlich starker Authentifizierung, Software- und Hardwarebaselines sowie eingeschränktem logischen und Netzwerkzugang durchzusetzen. 
 
-- [Informationen zu sicheren, von Azure verwalteten Arbeitsstationen](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
+- [Informationen zu sicheren, von Azure verwalteten Arbeitsstationen](/security/compass/privileged-access-deployment)
 
-- [Bereitstellen einer sicheren, von Azure verwalteten Arbeitsstation](/security/compass/privileged-access-deployment)
+- [Bereitstellen einer sicheren, von Azure verwalteten Arbeitsstation](../../active-directory/devices/howto-azure-managed-workstation)
 
 **Verantwortlichkeit**: Kunde
 
@@ -178,7 +180,8 @@ Gesicherte, isolierte Arbeitsstationen sind von entscheidender Bedeutung für di
 | PA-7 | 14.6 | AC-2, AC-3, SC-3 |
 
 Mit der rollenbasierten Zugriffssteuerung (Azure RBAC) kann der Zugriff auf Azure-Ressourcen über Rollenzuweisungen verwaltet werden. Diese Rollen können Benutzern, Gruppendienstprinzipalen und verwalteten Identitäten zugewiesen werden. Für bestimmte Ressourcen sind vordefinierte integrierte Rollen verfügbar. Diese Rollen können über Tools wie die Azure CLI, Azure PowerShell und das Azure-Portal inventarisiert oder abgefragt werden. Die Berechtigungen, die Sie Ressourcen über Azure RBAC zuweisen, sollten immer auf die nötigsten Anforderungen der Rollen beschränkt sein. Eingeschränkte Berechtigungen ergänzen den JIT-Ansatz (Just-in-Time) von Azure AD Privileged Identity Management (PIM), und diese Berechtigungen sollten regelmäßig überprüft werden.
-Verwenden Sie integrierte Rollen, um Berechtigungen zuzuweisen und benutzerdefinierte Rollen nur bei Bedarf zu erstellen. 
+
+Verwenden Sie integrierte Rollen zur Zuweisung von Berechtigungen, und erstellen Sie benutzerdefinierte Rollen nur bei Bedarf.
 
 - [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md)
 
@@ -192,9 +195,9 @@ Verwenden Sie integrierte Rollen, um Berechtigungen zuzuweisen und benutzerdefin
 
 - [Anwendungssicherheit und DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [Sicherheitscomplianceverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management) 
+- [Sicherheitscomplianceverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)    
+- [Statusverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Funktion von Identitäts- und Schlüsselverwaltung in der Cloud](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 

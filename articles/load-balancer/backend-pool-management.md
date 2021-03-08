@@ -6,14 +6,14 @@ services: load-balancer
 author: asudbring
 ms.service: load-balancer
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: e5efbf695b85f474e5d7c84c86809acb2f5a1035
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 0218bfef66e779a31d999c8d58bc1ce2691f46d4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429601"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179220"
 ---
 # <a name="backend-pool-management"></a>Back-End-Pool-Verwaltung
 Der Back-End-Pool ist eine kritische Komponente des Lastenausgleichs. Der Back-End-Pool definiert die Gruppe der Ressourcen, die den Datenverkehr für eine bestimmte Lastenausgleichsregel verarbeiten.
@@ -181,9 +181,11 @@ JSON-Anforderungstext:
           "subnet": {
             "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}/subnets/{subnet-name}"
           },
-          "loadBalancerBackendAddressPools": {
-                                    "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}"
-          }
+          "loadBalancerBackendAddressPools": [
+            {
+              "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}"
+            }
+          ]
         }
       }
     ]
@@ -255,8 +257,16 @@ Verwenden Sie in Szenarien mit vorab aufgefüllten Back-End-Pool die IP-Adresse 
 
 Die gesamte Back-End-Poolverwaltung erfolgt direkt in dem Back-End-Poolobjekt, wie in den folgenden Beispielen gezeigt.
 
-  >[!IMPORTANT] 
-  >Diese Funktion steht derzeit als Vorschau zur Verfügung. Informationen zu den aktuellen Grenzwerten dieses Features finden Sie in [diesem Abschnitt](#limitations).
+### <a name="limitations"></a>Einschränkungen
+Für einen per IP-Adresse konfigurierten Back-End-Pool gelten folgende Einschränkungen:
+  * Der Back-End-Pool kann nur für Load Balancer Standard-Instanzen verwendet werden.
+  * Limit von 100 IP-Adressen im Back-End-Pool
+  * Die Back-End-Ressourcen müssen sich im selben virtuellen Netzwerk wie der Lastenausgleich befinden.
+  * Ein Lastenausgleich mit IP-basiertem Back-End-Pool kann nicht als Private Link-Dienst fungieren.
+  * Diese Funktion wird im Azure-Portal derzeit nicht unterstützt.
+  * Derzeit werden keine ACI-Container von dieser Funktion unterstützt.
+  * Lastenausgleichsmodule oder von Lastenausgleichsmodulen verfügbar gemachte Dienste können nicht im Back-End-Pool des Lastenausgleichsmoduls platziert werden.
+  * NAT-Regel für eingehenden Datenverkehr können nicht per IP-Adresse angegeben werden.
 
 ### <a name="powershell"></a>PowerShell
 Erstellen Sie einen neuen Back-End-Pool:
@@ -517,17 +527,6 @@ JSON-Anforderungstext:
   }
 }
 ```
-
-## <a name="limitations"></a>Einschränkungen
-Für einen per IP-Adresse konfigurierten Back-End-Pool gelten folgende Einschränkungen:
-  * Nur Load Balancer Standard.
-  * Limit von 100 IP-Adressen im Back-End-Pool
-  * Die Back-End-Ressourcen müssen sich im selben virtuellen Netzwerk wie der Lastenausgleich befinden.
-  * Ein Lastenausgleich mit IP-basiertem Back-End-Pool kann nicht als Private Link-Dienst fungieren.
-  * Diese Funktion wird im Azure-Portal derzeit nicht unterstützt.
-  * Derzeit werden keine ACI-Container von dieser Funktion unterstützt.
-  * Lastenausgleichsmodule oder von Lastenausgleichsmodulen verfügbar gemachte Dienste können nicht im Back-End-Pool des Lastenausgleichsmoduls platziert werden.
-  * NAT-Regel für eingehenden Datenverkehr können nicht per IP-Adresse angegeben werden.
   
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie die Back-End-Pool-Verwaltung von Azure Load Balancer kennen gelernt und wie Sie einen Back-End-Pool anhand von IP-Adresse und virtuellem Netzwerk konfigurieren.

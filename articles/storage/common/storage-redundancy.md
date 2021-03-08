@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 03/02/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 78958dc0f95d2bc7a9e393ac2e769a97f7e92efa
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 955d3330d3f08d7e7f024ec2c36941d02244d9ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556451"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726835"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -87,10 +87,11 @@ Wenn Sie ein Speicherkonto erstellen, wählen Sie die primäre Region für das K
 
 Azure Storage bietet zwei Optionen für das Kopieren Ihrer Daten in eine sekundäre Region:
 
-- **Georedundanter Speicher (GRS):** Die Daten werden synchron dreimal innerhalb eines einzelnen physischen Standorts in der primären Region mit LRS kopiert. Anschließend werden die Daten asynchron an einen einzelnen physischen Standort in der sekundären Region kopiert.
-- **Geozonenredundanter Speicher (GZRS):** Die Daten werden mit ZRS synchron über drei Azure-Verfügbarkeitszonen hinweg in der primären Region kopiert. Anschließend werden die Daten asynchron an einen einzelnen physischen Standort in der sekundären Region kopiert.
+- **Georedundanter Speicher (GRS):** Die Daten werden synchron dreimal innerhalb eines einzelnen physischen Standorts in der primären Region mit LRS kopiert. Anschließend werden die Daten asynchron an einen einzelnen physischen Standort in der sekundären Region kopiert. In der sekundären Region werden Ihre Daten dreimal mit LRS synchron kopiert.
+- **Geozonenredundanter Speicher (GZRS):** Die Daten werden mit ZRS synchron über drei Azure-Verfügbarkeitszonen hinweg in der primären Region kopiert. Anschließend werden die Daten asynchron an einen einzelnen physischen Standort in der sekundären Region kopiert. In der sekundären Region werden Ihre Daten dreimal mit LRS synchron kopiert.
 
-Der Hauptunterschied zwischen GRS und GZRS besteht in der Art, wie Daten in der primären Region repliziert werden. In der sekundären Region werden die Daten immer dreimal synchron mithilfe von LRS repliziert. LRS in der sekundären Region schützt Ihre Daten vor Hardwareausfällen.
+> [!NOTE]
+> Der Hauptunterschied zwischen GRS und GZRS besteht in der Art, wie Daten in der primären Region repliziert werden. In der sekundären Region werden die Daten immer dreimal synchron mithilfe von LRS repliziert. LRS in der sekundären Region schützt Ihre Daten vor Hardwareausfällen.
 
 Mit GRS oder GZRS sind die Daten in der sekundären Region nicht für Lese- oder Schreibzugriffe verfügbar, sofern kein Failover in die sekundäre Region ausgeführt wird. Für den Lesezugriff in der sekundären Region konfigurieren Sie Ihr Speicherkonto für die Verwendung von georedundantem Speicher mit Lesezugriff (RA-GRS) oder geozonenredundantem Speicher mit Lesezugriff (RA-GZRS). Weitere Informationen finden Sie unter [Lesezugriff auf Daten in der sekundären Region](#read-access-to-data-in-the-secondary-region).
 

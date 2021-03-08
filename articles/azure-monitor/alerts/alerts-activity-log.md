@@ -2,14 +2,13 @@
 title: Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen in Azure Monitor
 description: Erstellen von Aktivitätsprotokollwarnungen über das Azure-Portal mit einer Azure Resource Manager-Vorlage und Azure PowerShell.
 ms.topic: conceptual
-ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 83023cca6b034ee0e9acddfa081f09eb47b9fb1e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 26ca755f6675fa19c3b122c3528e05d1e8d76845
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602410"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045529"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor  
 
@@ -26,7 +25,9 @@ Stellen Sie beim Erstellen von Warnungsregeln Folgendes sicher:
 
 - Das Abonnement im Bereich unterscheidet sich nicht von dem Abonnement, unter dem die Warnung erstellt wird.
 - Die Kriterien, für die die Warnung konfiguriert wird, müssen die Ereigniskategorie „Ebene“, „Status“, „Aufrufer“, „Ressourcengruppe“, „Ressourcen-ID“ oder „Ressourcentyp“ sein.
-- Im JSON-Code für die Warnungskonfiguration gibt es keine Bedingung „anyOf“ oder geschaltete Bedingungen. Grundsätzlich ist nur eine „allOf“-Bedingung ohne weitere „allOf“- oder „anyOf“-Bedingungen zulässig.
+- Nur eine „allOf“-Bedingung ist zulässig.
+- „AnyOf“ kann verwendet werden, damit für mehrere Felder mehrere Bedingungen zulässig sind, z. B. wenn entweder das Feld „status“ oder das Feld „subStatus“ einem bestimmten Wert entspricht. Beachten Sie, dass die Verwendung von „AnyOf“ derzeit auf das Erstellen von Warnungsregeln mithilfe einer ARM-Vorlagenbereitstellung beschränkt ist.
+- „ContainsAny“ kann verwendet werden, wenn für ein Feld mehrere Werte verwendet werden sollen, z. B. wenn für „operation“ entweder der Wert „delete“ oder „modify“ gilt. Beachten Sie, dass die Verwendung von „ContainsAny“ derzeit auf das Erstellen von Warnungsregeln mithilfe einer ARM-Vorlagenbereitstellung beschränkt ist.
 - Wenn die Kategorie „Verwaltung“ lautet, müssen Sie in Ihrer Warnung mindestens ein Kriterium der oben genannten Kriterien angeben. Eine Warnung, die jedes Mal aktiviert wird, wenn ein Ereignis in den Aktivitätsprotokollen erstellt wird, kann nicht erstellt werden.
 - Warnungen können für Ereignisse in der Kategorie „Warnung“ des Aktivitätsprotokolls nicht erstellt werden.
 
@@ -92,7 +93,7 @@ Verwenden Sie das folgende Verfahren.
     - **Beschreibung**: Die Beschreibung für die Warnungsregel.
     - **Warnung in Ressourcengruppe speichern**: Wählen Sie die Ressourcengruppe aus, in der Sie die neue Regel speichern möchten.
 
-5. Geben Sie unter **Aktionsgruppe** im Dropdownmenü die Aktionsgruppe an, der Sie die neue Warnungsregel zuweisen möchten. Alternativ hierzu können Sie auch [eine neue Aktionsgruppe erstellen](../platform/action-groups.md) und der neuen Regel zuweisen. Klicken Sie zum Erstellen einer neuen Gruppe auf **+ Neue Gruppe**.
+5. Geben Sie unter **Aktionsgruppe** im Dropdownmenü die Aktionsgruppe an, der Sie die neue Warnungsregel zuweisen möchten. Alternativ hierzu können Sie auch [eine neue Aktionsgruppe erstellen](./action-groups.md) und der neuen Regel zuweisen. Klicken Sie zum Erstellen einer neuen Gruppe auf **+ Neue Gruppe**.
 
 6. Klicken Sie zum Aktivieren der Regeln nach der Erstellung für **Regel beim Erstellen aktivieren** auf **Ja**.
 7. Wählen Sie **Warnungsregel erstellen** aus.
@@ -287,6 +288,5 @@ Ressourcen für Warnungsregeln des Aktivitätsprotokolls können mit dem Azure C
 
 - Weitere Informationen zum [Webhookschema für Aktivitätsprotokolle](./activity-log-alerts-webhook.md).
 - Lesen Sie eine [Übersicht über Aktivitätsprotokolle](./activity-log-alerts.md).
-- Weitere Informationen zu [Aktionsgruppen](../platform/action-groups.md).  
+- Weitere Informationen zu [Aktionsgruppen](./action-groups.md).  
 - Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](../../service-health/service-notifications.md).
-

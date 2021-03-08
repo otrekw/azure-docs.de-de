@@ -1,16 +1,15 @@
 ---
 title: Exemplarische Vorgehensweise für die Azure Monitoring-REST-API
 description: Informationen zum Authentifizieren von Anforderungen und Verwenden der Azure Monitor-REST-API, um verfügbare Metrikdefinitionen und Metrikwerte abzurufen.
-ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: 41c2432c3c80be7d28e8f33372dea44ba108c5d3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a7cd6ff7c0c3b5d4bee859ef288f16673ebe0835
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601317"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033077"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Exemplarische Vorgehensweise für die Azure Monitoring-REST-API
 
@@ -462,9 +461,9 @@ Sobald die verfügbaren Metrikdefinitionen bekannt sind, können die entsprechen
 >
 >
 
-**Methode**: GET
+**Methode**: `GET`
 
-**Anforderungs-URI:** `https:\//management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
+**Anforderungs-URI:** `https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}/providers/microsoft.insights/metrics?$filter={filter}&api-version={apiVersion}`
 
 Um zum Beispiel RunsSucceeded-Metrikdatenpunkte für einen bestimmten Zeitraum und ein Aggregationsintervall von einer Stunde abzurufen, sähe die Anforderung wie folgt aus:
 
@@ -734,7 +733,6 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Lesen Sie die [Übersicht über die Überwachung](../overview.md).
-* Lesen Sie [Unterstützte Metriken von Azure Monitor](../platform/metrics-supported.md).
+* Lesen Sie [Unterstützte Metriken von Azure Monitor](./metrics-supported.md).
 * Lesen Sie die [REST-API-Referenz zu Microsoft Azure Monitor](/rest/api/monitor/).
 * Schlagen Sie in der [Azure-Verwaltungsbibliothek](/previous-versions/azure/reference/mt417623(v=azure.100))nach.
-

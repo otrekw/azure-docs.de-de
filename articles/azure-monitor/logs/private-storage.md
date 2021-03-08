@@ -1,17 +1,16 @@
 ---
 title: Verwenden von kundenseitig verwalteten Speicherkonten in Azure Monitor Log Analytics
 description: Verwenden Sie Ihr eigenes Speicherkonto für Log Analytics-Szenarios.
-ms.subservice: logs
 ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: 3c5a528ada9e7239f5c53da1cae6df7ceffac918
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 69b5927c73dac14c76b94a4ee5bbb21449f8ec98
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601700"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047451"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Verwenden von kundenseitig verwalteten Speicherkonten in Azure Monitor Log Analytics
 
@@ -23,7 +22,7 @@ Log Analytics verwendet Azure Storage für verschiedene Szenarien. Dies wird in 
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Erfassen von Azure-Diagnose-Erweiterungsprotokollen (WAD/LAD)
 Die Erweiterungs-Agents für die Azure-Diagnose (auch WAD für Windows-Agents und LAD für Linux-Agents) erfassen verschiedene Betriebssystemprotokolle und speichern sie in einem kundenseitig verwalteten Speicherkonto. Anschließend können Sie diese Protokolle in Log Analytics importieren, um sie zu überprüfen und zu analysieren.
 ### <a name="how-to-collect-azure-diagnostics-extension-logs-from-your-storage-account"></a>Erfassen von Azure-Diagnose-Erweiterungsprotokollen in Ihrem Speicherkonto
-Verbinden Sie das Speicherkonto als Speicherdatenquelle über das [Azure-Portal](../essentials/diagnostics-extension-logs.md#collect-logs-from-azure-storage) oder durch Aufrufen der [Storage Insights-API](/rest/api/loganalytics/storage%20insights/createorupdate) mit Ihrem Log Analytics-Arbeitsbereich.
+Verbinden Sie das Speicherkonto als Speicherdatenquelle über das [Azure-Portal](../agents/diagnostics-extension-logs.md#collect-logs-from-azure-storage) oder durch Aufrufen der [Storage Insights-API](/rest/api/loganalytics/storage%20insights/createorupdate) mit Ihrem Log Analytics-Arbeitsbereich.
 
 Unterstützte Datentypen:
 * syslog
@@ -51,6 +50,7 @@ Damit das Speicherkonto erfolgreich eine Verbindung mit Ihrer Private Link-Insta
 * Es muss den Zugriff auf das Speicherkonto durch Azure Monitor zulassen. Wenn Sie nur ausgewählten Netzwerken den Zugriff auf Ihr Speicherkonto gestatten möchten, sollten Sie die folgende Ausnahme auswählen: „Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben“.
 ![Abbildung zu vertrauenswürdigen Microsoft-Diensten für ein Speicherkonto](./media/private-storage/storage-trust.png)
 * Wenn Ihr Arbeitsbereich auch Datenverkehr aus anderen Netzwerken verarbeitet, sollten Sie das Speicherkonto so konfigurieren, dass eingehender Datenverkehr aus diesen Netzwerken/dem Internet zugelassen wird.
+* Koordinieren Sie die TLS-Version zwischen den Agents und dem Speicherkonto. Es wird empfohlen, Daten mit TLS 1.2 oder höher an Log Analytics zu senden. Lesen Sie die [plattformspezifischen Anleitungen](https://docs.microsoft.com/azure/azure-monitor/logs/data-security#sending-data-securely-using-tls-12) und, falls erforderlich, [Konfigurieren Ihrer Agents für TLS 1.2](https://docs.microsoft.com/azure/azure-monitor/agents/agent-windows#configure-agent-to-use-tls-12). Wenn das aus irgendeinem Grund nicht möglich ist, sollten Sie das Speicherkonto so konfigurieren, das TLS 1.0 akzeptiert wird.
 
 ### <a name="using-a-customer-managed-storage-account-for-cmk-data-encryption"></a>Verwenden eines kundenseitig verwalteten Speicherkontos für die CMK-Datenverschlüsselung
 Azure Storage verschlüsselt alle ruhenden Daten in einem Speicherkonto. Standardmäßig werden von Microsoft verwaltete Schlüssel (MMK) zum Verschlüsseln der Daten verwendet. Azure Storage erlaubt jedoch auch die Verwendung von CMK aus Azure Key Vault zum Verschlüsseln der Speicherdaten. Sie können entweder Ihre eigenen Schlüssel in Azure Key Vault importieren oder Schlüssel über die Azure Key Vault-APIs generieren.

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/29/2020
-ms.openlocfilehash: a319dbce2502f35272cf9b70da2022f581d64275
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 6af183c16238c6630b194b112f0c09fd4399d443
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550882"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694069"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Azure Purview: Leitfaden zur Datenkatalogherkunft
 
@@ -74,39 +74,47 @@ Azure Purview unterstützt die Anzeige von Herkunftsinformationen auf Ressourcen
 
    :::image type="content" source="./media/catalog-lineage-user-guide/view-columns-from-lineage.png" alt-text="Screenshot: Auswählen der Spaltenanzeige auf der Seite „Herkunft“" border="true":::
 
-## <a name="column-level-lineage"></a>Herkunft auf Spaltenebene
+## <a name="dataset-column-lineage"></a>Spaltenherkunft für Dataset
 
-Azure Purview unterstützt die Anzeige von Herkunftsinformationen auf Spaltenebene für die Datasets. Navigieren Sie zum Anzeigen der Herkunftsinformationen auf Spaltenebene zur Registerkarte **Herkunft** für die aktuelle Ressource im Katalog, und führen Sie die hier angegebenen Schritte aus:
+Navigieren Sie zum Anzeigen der Herkunftsinformationen auf Spaltenebene eines Datasets zur Registerkarte **Herkunft** für die aktuelle Ressource im Katalog, und führen Sie die folgenden Schritte aus:
 
 1. Wählen Sie auf der Registerkarte „Herkunft“ im linken Bereich jeweils das Kontrollkästchen neben einer Spalte aus, für die die Informationen zur Datenherkunft angezeigt werden sollen.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/select-columns-to-show-in-lineage.png" alt-text="Screenshot: Auswählen von Spalten für die Anzeige auf der Seite „Herkunft“" lightbox="./media/catalog-lineage-user-guide/select-columns-to-show-in-lineage.png":::
 
-1. Bewegen Sie den Mauszeiger im linken Bereich auf eine ausgewählte Spalte oder auf das Dataset in der Canvas für die Herkunft, um die Spaltenzuordnung anzuzeigen. Alle Spalteninstanzen werden hervorgehoben.
+2. Bewegen Sie den Mauszeiger im linken Bereich auf eine ausgewählte Spalte oder auf das Dataset in der Canvas für die Herkunft, um die Spaltenzuordnung anzuzeigen. Alle Spalteninstanzen werden hervorgehoben.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/show-column-flow-in-lineage.png" alt-text="Screenshot: Bewegen des Mauszeigers auf einen Spaltennamen zum Hervorheben des Spaltenflusses eines Datenherkunftspfads" lightbox="./media/catalog-lineage-user-guide/show-column-flow-in-lineage.png":::
 
-1. Falls die Spaltenanzahl zu hoch für die Anzeige im linken Bereich ist, können Sie die Filteroption verwenden, um eine bestimmte Spalte anhand des Namens auszuwählen. Die Alternative besteht darin, mit der Maus durch die Liste zu scrollen.
+3. Falls die Spaltenanzahl zu hoch für die Anzeige im linken Bereich ist, können Sie die Filteroption verwenden, um eine bestimmte Spalte anhand des Namens auszuwählen. Die Alternative besteht darin, mit der Maus durch die Liste zu scrollen.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/filter-columns-by-name.png" alt-text="Screenshot: Filtern von Spalten nach Spaltenname auf der Seite „Herkunft“" lightbox="./media/catalog-lineage-user-guide/filter-columns-by-name.png":::
 
-1. Wenn die Canvas für die Herkunft weitere Knoten und Edges enthält, können Sie den Filter nutzen, um Datenressourcen oder Prozessknoten anhand des Namens auszuwählen. Alternativ können Sie das Fenster „Herkunft“ schwenken, indem Sie die Maus verwenden.
+4. Wenn die Canvas für die Herkunft weitere Knoten und Edges enthält, können Sie den Filter nutzen, um Datenressourcen oder Prozessknoten anhand des Namens auszuwählen. Alternativ können Sie das Fenster „Herkunft“ schwenken, indem Sie die Maus verwenden.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/filter-assets-by-name.png" alt-text="Screenshot: Anzeigen von Datenressourcenknoten anhand des Namens auf der Seite „Herkunft“" lightbox="./media/catalog-lineage-user-guide/filter-assets-by-name.png":::
 
-1. Verwenden Sie die Umschaltfläche im linken Bereich, um die Liste mit den Datasets auf der Canvas für die Herkunft hervorzuheben. Wenn Sie die Umschaltfläche auf „Aus“ festlegen, werden alle Ressourcen angezeigt, die mindestens eine der ausgewählten Spalten enthalten. Wenn Sie die Umschaltfläche auf „Ein“ festlegen, werden nur Datasets angezeigt, die alle Spalten enthalten.
+5. Verwenden Sie die Umschaltfläche im linken Bereich, um die Liste mit den Datasets auf der Canvas für die Herkunft hervorzuheben. Wenn Sie die Umschaltfläche auf „Aus“ festlegen, werden alle Ressourcen angezeigt, die mindestens eine der ausgewählten Spalten enthalten. Wenn Sie die Umschaltfläche auf „Ein“ festlegen, werden nur Datasets angezeigt, die alle Spalten enthalten.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/use-toggle-to-filter-nodes.png" alt-text="Screenshot: Verwenden der Umschaltfläche zum Filtern der Liste mit den Knoten auf der Seite „Herkunft“" lightbox="./media/catalog-lineage-user-guide/use-toggle-to-filter-nodes.png":::
 
+## <a name="process-column-lineage"></a>Spaltenherkunft für Prozess
+Von der Datenverarbeitung können einzelne oder mehrere Datasets verwendet werden, um eine Ausgabe (oder auch mehrere Ausgaben) zu generieren. In Purview ist die Herkunft auf Spaltenebene für Prozessknoten verfügbar. 
+1. Über eine Dropdownliste im Spaltenbereich kann zwischen Ein- und Ausgabedatasets gewechselt werden.
+2. Wählen Sie Spalten aus mindestens einer Tabelle aus, um die Herkunft für das Eingabedataset und das entsprechende Ausgabedataset anzuzeigen.
+
+   :::image type="content" source="./media/catalog-lineage-user-guide/process-column-lineage.png" alt-text="Screenshot: Spaltenherkunft eines Prozessknotens" lightbox="./media/catalog-lineage-user-guide/process-column-lineage.png":::
+
+## <a name="browse-assets-in-lineage"></a>Durchsuchen von Ressourcen in der Herkunftsansicht
 1. Sie können für eine Ressource jeweils die Option **Switch to asset** (Zu Ressource wechseln) auswählen, um die entsprechenden Metadaten in der Ansicht „Herkunft“ anzuzeigen. Dies ist eine effektive Möglichkeit, um über die Ansicht „Herkunft“ auf eine andere Ressource im Katalog zuzugreifen.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/select-switch-to-asset.png" alt-text="Screenshot: Auswählen von „Switch to asset“ (Zu Ressource wechseln) für eine Herkunftsdatenressource" lightbox="./media/catalog-lineage-user-guide/select-switch-to-asset.png":::
 
-1. Bei beliebten Datasets kann die Canvas für die Herkunft unübersichtlich werden. Aus Gründen der Übersichtlichkeit werden in der Standardansicht für eine Ressource jeweils nur fünf Herkunftsebenen angezeigt. Die restlichen Herkunftsinformationen können angezeigt werden, indem Sie in der Canvas für die Herkunft auf die Blasen klicken. Datenconsumer können in der Canvas Ressourcen, die nicht von Interesse sind, auch ausblenden. Zur weiteren Verbesserung der Übersichtlichkeit können Sie oben in der Canvas für die Herkunftsinformationen die Umschaltfläche **More Lineage** (Mehr Herkunftsdaten) auf „Aus“ festlegen. Dies bewirkt, dass in der Canvas für die Herkunftsinformationen alle Blasen ausgeblendet werden.
+2. Bei beliebten Datasets kann die Canvas für die Herkunft unübersichtlich werden. Aus Gründen der Übersichtlichkeit werden in der Standardansicht für eine Ressource jeweils nur fünf Herkunftsebenen angezeigt. Die restlichen Herkunftsinformationen können angezeigt werden, indem Sie in der Canvas für die Herkunft auf die Blasen klicken. Datenconsumer können in der Canvas Ressourcen, die nicht von Interesse sind, auch ausblenden. Zur weiteren Verbesserung der Übersichtlichkeit können Sie oben in der Canvas für die Herkunftsinformationen die Umschaltfläche **More Lineage** (Mehr Herkunftsdaten) auf „Aus“ festlegen. Dies bewirkt, dass in der Canvas für die Herkunftsinformationen alle Blasen ausgeblendet werden.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/use-toggle-to-hide-bubbles.png" alt-text="Screenshot: Umschaltfläche „More lineage“ (Mehr Herkunftsdaten)" lightbox="./media/catalog-lineage-user-guide/use-toggle-to-hide-bubbles.png":::
 
-1. Verwenden Sie die intelligenten Schaltflächen der Canvas für die Herkunftsinformationen, um eine optimale Darstellung der Herkunftsinformationen zu erhalten. Optionen wie „Automatisches Layout“, „Mit Zoom anpassen“, „Vergrößern/Verkleinern“, „Vollbild“ und „Navigationskarte“ sind verfügbar, um im Katalog für die Herkunftsinformationen für eine immersive Benutzeroberfläche zu sorgen.
+3. Verwenden Sie die intelligenten Schaltflächen der Canvas für die Herkunftsinformationen, um eine optimale Darstellung der Herkunftsinformationen zu erhalten. Optionen wie „Automatisches Layout“, „Mit Zoom anpassen“, „Vergrößern/Verkleinern“, „Vollbild“ und „Navigationskarte“ sind verfügbar, um im Katalog für die Herkunftsinformationen für eine immersive Benutzeroberfläche zu sorgen.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/use-lineage-smart-buttons.png" alt-text="Screenshot: Auswählen der intelligenten Schaltflächen für „Herkunft“" lightbox="./media/catalog-lineage-user-guide/use-lineage-smart-buttons.png":::
 

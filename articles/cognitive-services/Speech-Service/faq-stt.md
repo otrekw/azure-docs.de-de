@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: 21924ad5da8833ca5cf8373270ed1bfd3facfdc9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1ebba3231a7b3a86b98bcc14d1257412d1557ff3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388616"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738190"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
 
@@ -138,7 +138,9 @@ Weitere Informationen finden Sie unter [Kontingente und Grenzwerte für Speech S
 
 **A:** Das Trainieren eines Modells mit Audiodaten ist ein langwieriger Prozess. Je nach Menge der Daten kann das Erstellen eines benutzerdefinierten Modells mehrere Tage dauern. Wenn das Training nicht innerhalb einer Woche abgeschlossen werden kann, bricht der Dienst den Trainingsprozess möglicherweise ab und meldet das Modell als fehlgeschlagen.
 
-Verwenden Sie eine der [Regionen](custom-speech-overview.md#set-up-your-azure-account), in der dedizierte Hardware für das Training verfügbar ist. Allgemein verarbeitet der Dienst ungefähr zehn Stunden an Audiodaten pro Tag in Regionen mit solcher Hardware. In anderen Regionen kann täglich nur eine Stunde an Audiodaten verarbeitet werden. Sie können das vollständig trainierte Modell mithilfe der [REST-API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) in eine andere Region kopieren. Training, bei dem ausschließlich Text verwendet wird, ist deutlich schneller und dauert in der Regel nur Minuten.
+Verwenden Sie eine der [Regionen](custom-speech-overview.md#set-up-your-azure-account), in der dedizierte Hardware für das Training verfügbar ist. Der Speech-Dienst verwendet in diesen Regionen bis zu 20 Stunden Audiodaten für das Training. In anderen Regionen werden nur bis zu 8 Stunden verwendet.
+
+Im Allgemeinen verarbeitet der Dienst ungefähr 10 Stunden an Audiodaten pro Tag in Regionen mit dedizierter Hardware. In anderen Regionen kann täglich nur eine Stunde an Audiodaten verarbeitet werden. Sie können das vollständig trainierte Modell mithilfe der [REST-API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) in eine andere Region kopieren. Training, bei dem ausschließlich Text verwendet wird, ist deutlich schneller und dauert in der Regel nur Minuten.
 
 Einige Basismodelle können nicht mit Audiodaten angepasst werden. Für diese verwendet der Dienst nur den Text der Transkription für das Training. Die Audiodaten werden ignoriert. Das Training wird dann schneller abgeschlossen, und die Ergebnisse sind mit den Ergebnissen des Trainings identisch, für das nur Text verwendet wird. Eine Liste mit Basismodellen, die das Training mit Audiodaten unterstützen, finden Sie unter [Sprachunterstützung](language-support.md#speech-to-text).
 

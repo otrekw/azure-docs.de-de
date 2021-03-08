@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 397c650d1d7a593a855c8f26e61dbf12ec6360fa
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 3806578f5d1af61329e2e32fa3e8eceb9afa4d42
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631320"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713965"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurationsoptionen – Azure Monitor Application Insights für Java
 
@@ -205,7 +205,7 @@ Sie können den Schwellenwert auch mithilfe der Umgebungsvariable `APPLICATIONIN
 
 Nachfolgend werden die gültigen `level`-Werte, die Sie in der Datei `applicationinsights.json` angeben können, und deren Zuordnung zu den Protokolliergraden in verschiedenen Protokollierungsframeworks aufgeführt:
 
-| Level             | Log4j  | Logback | JUL     |
+| level             | Log4j  | Logback | JUL     |
 |-------------------|--------|---------|---------|
 | OFF               | OFF    | OFF     | OFF     |
 | FATAL             | FATAL  | ERROR   | SEVERE  |
@@ -217,6 +217,9 @@ Nachfolgend werden die gültigen `level`-Werte, die Sie in der Datei `applicatio
 | FINER             | DEBUG  | DEBUG   | FINER   |
 | TRACE (oder FINEST) | TRACE  | TRACE   | FINEST  |
 | ALL               | ALL    | ALL     | ALL     |
+
+> [!NOTE]
+> Wenn eine Ausnahme an die Protokollierung übergeben wird, wird die Protokollmeldung (und die Ausnahme) im Azure-Portal in der `exceptions`-Tabelle und nicht in der `traces`-Tabelle angezeigt.
 
 ## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Automatisch gesammelte Micrometer-Metriken (einschließlich Spring Boot Actuator-Metriken)
 

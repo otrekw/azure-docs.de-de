@@ -6,32 +6,32 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: c046ddbaf0fd1afbabaa87d1594f0161c71606c8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c2a97e5e54fea8d80160c1df7007d51871501ef8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600924"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714390"
 ---
 # <a name="log-analytics-agent-overview"></a>Übersicht über den Log Analytics-Agent
 
-Der Azure Log Analytics-Agent sammelt Telemetrie von virtuellen Windows- und Linux-Computern in allen Clouds, lokalen Computern und von [System Center Operations Manager](/system-center/scom/) überwachten Computern und sendet die gesammelten Daten an Ihren Log Analytics-Arbeitsbereich in Azure Monitor. Der Log Analytics-Agent unterstützt auch Erkenntnisse und andere Dienste in Azure Monitor wie etwa [Azure Monitor für VMs](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml) und [Azure Automation](../../automation/automation-intro.md). Dieser Artikel enthält eine ausführliche Übersicht über die Anforderungen an den Agent, das System und das Netzwerk sowie über Bereitstellungsmethoden.
+Der Azure Log Analytics-Agent sammelt Telemetrie von virtuellen Windows- und Linux-Computern in allen Clouds, lokalen Computern und von [System Center Operations Manager](/system-center/scom/) überwachten Computern und sendet die gesammelten Daten an Ihren Log Analytics-Arbeitsbereich in Azure Monitor. Der Log Analytics-Agent unterstützt auch Erkenntnisse und andere Dienste in Azure Monitor, z. B. [VM Insights](../vm/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml) und [Azure Automation](../../automation/automation-intro.md). Dieser Artikel enthält eine ausführliche Übersicht über die Anforderungen an den Agent, das System und das Netzwerk sowie über Bereitstellungsmethoden.
 
 > [!NOTE]
 > Der Log Analytics-Agent wird ggf. auch als Microsoft Monitoring Agent (MMA) oder als OMS-Linux-Agent bezeichnet.
 
 ## <a name="comparison-to-azure-diagnostics-extension"></a>Vergleich mit der Azure-Diagnoseerweiterung
-Die [Azure-Diagnoseerweiterung](../platform/diagnostics-extension-overview.md) in Azure Monitor kann ebenfalls zum Erfassen von Überwachungsdaten aus dem Gastbetriebssystem virtueller Azure-Computer verwendet werden. Je nach Ihren Anforderungen können Sie eine der Möglichkeiten oder beide nutzen. Einen ausführlichen Vergleich der Azure Monitor-Agents finden Sie unter [Übersicht über die Azure Monitor-Agents](../agents/agents-overview.md). 
+Die [Azure-Diagnoseerweiterung](./diagnostics-extension-overview.md) in Azure Monitor kann ebenfalls zum Erfassen von Überwachungsdaten aus dem Gastbetriebssystem virtueller Azure-Computer verwendet werden. Je nach Ihren Anforderungen können Sie eine der Möglichkeiten oder beide nutzen. Einen ausführlichen Vergleich der Azure Monitor-Agents finden Sie unter [Übersicht über die Azure Monitor-Agents](../agents/agents-overview.md). 
 
 Beachten Sie die folgenden Hauptunterschiede:
 
 - Die Azure-Diagnoseerweiterung kann nur mit virtuellen Azure-Computern verwendet werden. Der Log Analytics-Agent kann mit virtuellen Computern in Azure, anderen Clouds und lokal verwendet werden.
-- Die Azure-Diagnoseerweiterung sendet Daten an Azure Storage, [Azure Monitor-Metriken](../platform/data-platform-metrics.md) (nur Windows) und Event Hubs. Der Log Analytics-Agent sendet Daten an [Azure Monitor-Protokolle](../platform/data-platform-logs.md).
-- Der Log Analytics-Agent ist für [Lösungen](../monitor-reference.md#insights-and-core-solutions), [Azure Monitor für VMs](../insights/vminsights-overview.md) und andere Dienste wie [Azure Security Center](../../security-center/index.yml) erforderlich.
+- Die Azure-Diagnoseerweiterung sendet Daten an Azure Storage, [Azure Monitor-Metriken](../essentials/data-platform-metrics.md) (nur Windows) und Event Hubs. Der Log Analytics-Agent sendet Daten an [Azure Monitor-Protokolle](../logs/data-platform-logs.md).
+- Der Log Analytics-Agent ist für [Lösungen](../monitor-reference.md#insights-and-core-solutions), [VM Insights](../vm/vminsights-overview.md) und andere Dienste wie [Azure Security Center](../../security-center/index.yml) erforderlich.
 
 ## <a name="costs"></a>Kosten
 
-Für den Log Analytics-Agent fallen keine Kosten an, möglicherweise aber für die erfassten Daten. Ausführliche Informationen zu den Kosten von Daten, die in einem Log Analytics-Arbeitsbereich erfasst werden, finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../platform/manage-cost-storage.md).
+Für den Log Analytics-Agent fallen keine Kosten an, möglicherweise aber für die erfassten Daten. Ausführliche Informationen zu den Kosten von Daten, die in einem Log Analytics-Arbeitsbereich erfasst werden, finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../logs/manage-cost-storage.md).
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
@@ -77,10 +77,10 @@ Abhängig von Ihren Anforderungen gibt es mehrere Möglichkeiten, um den Log An
 
 ### <a name="azure-virtual-machine"></a>Virtueller Azure-Computer
 
-- [Azure Monitor für VMs](../insights/vminsights-enable-overview.md) bietet mehrere Methoden zum Aktivieren von Agents im großen Stil. Dies schließt die Installation des Log Analytics-Agents und des Dependency-Agents ein. 
+- [VM Insights](../vm/vminsights-enable-overview.md) bietet mehrere Methoden zum Aktivieren von Agents im großen Stil. Dies schließt die Installation des Log Analytics-Agents und des Dependency-Agents ein. 
 - [Azure Security Center kann den Log Analytics-Agent](../../security-center/security-center-enable-data-collection.md) auf allen unterstützten und neu erstellten Azure-VMs bereitstellen, wenn Sie die Überwachung auf Sicherheitslücken und Bedrohungen aktivieren.
 - Die Log Analytics-VM-Erweiterung für [Windows](../../virtual-machines/extensions/oms-windows.md) oder [Linux](../../virtual-machines/extensions/oms-linux.md) kann mit dem Azure-Portal, der Azure-Befehlszeilenschnittstelle, Azure PowerShell oder einer Azure Resource Manager-Vorlage installiert werden.
-- Führen Sie die Installation für einzelne virtuelle Azure-Computer [manuell über das Azure-Portal](../learn/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json) durch.
+- Führen Sie die Installation für einzelne virtuelle Azure-Computer [manuell über das Azure-Portal](../vm/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json) durch.
 
 ### <a name="windows-virtual-machine-on-premises-or-in-another-cloud"></a>Virtueller Windows-Computer, lokal oder in einer anderen Cloud
 
@@ -92,7 +92,7 @@ Abhängig von Ihren Anforderungen gibt es mehrere Möglichkeiten, um den Log An
 ### <a name="linux-virtual-machine-on-premises-or-in-another-cloud"></a>Virtueller Linux-Computer, lokal oder in einer anderen Cloud
 
 - Verwenden Sie [Azure Arc-fähige Server](../../azure-arc/servers/overview.md), um die Log Analytics-VM-Erweiterung bereitzustellen und zu verwalten.
-- Installieren Sie den Agent [manuell](../learn/quick-collect-linux-computer.md) durch Aufrufen eines Wrapperskripts, das auf GitHub gehostet wird.
+- Installieren Sie den Agent [manuell](../vm/quick-collect-linux-computer.md) durch Aufrufen eines Wrapperskripts, das auf GitHub gehostet wird.
 - Integrieren Sie [System Center Operations Manager](./om-agents.md) mit Azure Monitor, um die gesammelten Daten von Windows-Computern weiterzuleiten, die Berichte für eine Verwaltungsgruppe erstellen.
 
 ## <a name="workspace-id-and-key"></a>Arbeitsbereichs-ID und -Schlüssel
@@ -103,7 +103,7 @@ Unabhängig von der verwendeten Installationsmethode benötigen Sie die Arbeitsb
 
 ## <a name="tls-12-protocol"></a>TLS 1.2-Protokoll
 
-Um die Sicherheit von Daten bei der Übertragung an Azure Monitor-Protokolle sicherzustellen, wird dringend empfohlen, den Agent so zu konfigurieren, dass er mindestens TLS 1.2 (Transport Layer Security) verwendet. Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**.  Weitere Informationen finden Sie unter [Senden von Daten über TLS 1.2](../platform/data-security.md#sending-data-securely-using-tls-12). 
+Um die Sicherheit von Daten bei der Übertragung an Azure Monitor-Protokolle sicherzustellen, wird dringend empfohlen, den Agent so zu konfigurieren, dass er mindestens TLS 1.2 (Transport Layer Security) verwendet. Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**.  Weitere Informationen finden Sie unter [Senden von Daten über TLS 1.2](../logs/data-security.md#sending-data-securely-using-tls-12). 
 
 ## <a name="network-requirements"></a>Netzwerkanforderungen
 
@@ -150,5 +150,5 @@ Beispiel: `https://user01:password@proxy01.contoso.com:30443`
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Lesen Sie [Datenquellen](../agents/agent-data-sources.md), um die Datenquellen zu verstehen, die für die Erfassung von Daten aus Ihrem Windows- oder Linux-System zur Verfügung stehen. 
-* Erfahren Sie mehr über [Protokollabfragen](../log-query/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 
+* Erfahren Sie mehr über [Protokollabfragen](../logs/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 
 * Erfahren Sie mehr über [Überwachungslösungen](../insights/solutions.md), die Azure Monitor um zusätzliche Funktionen erweitern und ebenfalls Daten für den Log Analytics-Arbeitsbereich sammeln.

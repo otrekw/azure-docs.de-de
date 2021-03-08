@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
 ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: f2dca513b4413f1761ea1b21bf71f90bb27d3053
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 39370659e71a7d281914b360eea83eb0b68b25ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388650"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716566"
 ---
 # <a name="what-is-custom-speech"></a>Was ist Custom Speech?
 
@@ -45,7 +45,9 @@ Die folgende Abbildung zeigt die Teile, aus denen sich der [Custom Speech-Bereic
 Sie benötigen ein Azure-Konto und ein Abonnement für die Speech-Dienste, um [Speech Studio](https://speech.microsoft.com/customspeech) zum Erstellen eines benutzerdefinierten Modells verwenden zu können. Falls nicht, können Sie [den Speech-Dienst kostenlos testen](overview.md#try-the-speech-service-for-free).
 
 > [!NOTE]
-> Wenn Sie ein benutzerdefiniertes Modell mit **Audiodaten** trainieren möchten, wählen Sie eine der folgenden Regionen aus, in der dedizierte Hardware für das Training verfügbar ist. Dadurch wird die zum Trainieren benötigte Zeit reduziert.
+> Stellen Sie sicher, dass Sie ein Standard-Abonnement (S0) erstellen. Free-Abonnements (F0) werden nicht unterstützt.
+
+Wenn Sie ein benutzerdefiniertes Modell mit **Audiodaten** trainieren möchten, wählen Sie eine der folgenden Regionen aus, in der dedizierte Hardware für das Training verfügbar ist. Dies reduziert die für das Training eines Modells erforderliche Zeit und ermöglicht es Ihnen, mehr Audiodaten für das Training zu verwenden. In diesen Regionen verwendet der Speech-Dienst bis zu 20 Stunden Audiodaten für das Training. In anderen Regionen werden nur bis zu 8 Stunden verwendet.
 
 * Australien (Osten)
 * Kanada, Mitte
@@ -61,9 +63,6 @@ Sie benötigen ein Azure-Konto und ein Abonnement für die Speech-Dienste, um [S
 * US Government, Virginia
 * Europa, Westen
 * USA, Westen 2
-
-> [!NOTE]
-> Stellen Sie sicher, dass Sie ein Standard-Abonnement (S0) erstellen. Free-Abonnements (F0) werden nicht unterstützt.
 
 Nachdem Sie ein Azure-Konto und ein Abonnement für Speech-Dienste erstellt haben, müssen Sie sich bei [Speech Studio](https://speech.microsoft.com/customspeech) anmelden und Ihr Abonnement verknüpfen.
 

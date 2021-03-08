@@ -1,25 +1,25 @@
 ---
-title: Warnungen beim Feature „Gastintegrität“ von Azure Monitor für VMs (Vorschau)
-description: Enthält eine Beschreibung der Warnungen, die vom Feature „Gastintegrität“ von Azure Monitor für VMs erstellt werden, z. B. zu ihrer Aktivierung und zur Konfiguration von Benachrichtigungen.
+title: Gastintegritätswarnungen von VM Insights (Vorschau)
+description: In diesem Artikel werden die von VM Insights erstellten Warnungen zur Gastintegrität sowie ihre Aktivierung und das Konfigurieren von Benachrichtigungen beschrieben.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 30025f387768aaf1e4d642292c21d5b15ccc7451
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a32ba9f1c4cf5d6bb9de69e1a6860c858e3ee2a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602331"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707505"
 ---
-# <a name="azure-monitor-for-vms-guest-health-alerts-preview"></a>Warnungen beim Feature „Gastintegrität“ von Azure Monitor für VMs (Vorschau)
-Mit dem Feature „Gastintegrität“ von Azure Monitor für VMs können Sie Informationen zur Integrität eines virtuellen Computers anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. Eine Warnung kann erstellt werden, wenn ein virtueller Computer oder ein „Monitor“ (Überwachungskomponente) in den Status „Fehlerhaft“ wechselt. Sie können diese Warnungen zusammen mit den Warnungen anzeigen und verwalten, die [mit den Warnungsregeln in Azure Monitor erstellt werden](../platform/alerts-overview.md), und die proaktive Benachrichtigung über die Erstellung neuer Warnungen auswählen.
+# <a name="vm-insights-guest-health-alerts-preview"></a>Gastintegritätswarnungen von VM Insights (Vorschau)
+Mit dem Feature „Gastintegrität“ von VM Insights können Sie Informationen zur Integrität einer VM anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. Eine Warnung kann erstellt werden, wenn ein virtueller Computer oder ein „Monitor“ (Überwachungskomponente) in den Status „Fehlerhaft“ wechselt. Sie können diese Warnungen zusammen mit den Warnungen anzeigen und verwalten, die [mit den Warnungsregeln in Azure Monitor erstellt werden](../alerts/alerts-overview.md), und die proaktive Benachrichtigung über die Erstellung neuer Warnungen auswählen.
 
 ## <a name="configure-alerts"></a>Konfigurieren von Warnungen
-Es ist für Sie nicht möglich, eine explizite Warnungsregel für das Feature „Gastintegrität“ von Azure Monitor für VMs zu erstellen, während es sich in der Vorschauphase befindet. Standardmäßig werden für jeden virtuellen Computer Warnungen erstellt, aber nicht für jeden Monitor.  Dies bedeutet Folgendes: Wenn ein Monitor in einen Status versetzt wird, der keine Auswirkung auf den aktuellen Status des virtuellen Computers hat, wird keine Warnung erstellt, weil sich der Status des virtuellen Computers nicht geändert hat. 
+Sie können keine explizite Warnungsregel für das Feature „Gastintegrität“ von VM Insight erstellen, während sich das Feature in der Vorschauphase befindet. Standardmäßig werden für jeden virtuellen Computer Warnungen erstellt, aber nicht für jeden Monitor.  Dies bedeutet Folgendes: Wenn ein Monitor in einen Status versetzt wird, der keine Auswirkung auf den aktuellen Status des virtuellen Computers hat, wird keine Warnung erstellt, weil sich der Status des virtuellen Computers nicht geändert hat. 
 
-Sie können Warnungen für einen bestimmten virtuellen Computer oder einen Monitor eines virtuellen Computers deaktivieren, indem Sie im Azure-Portal in der Konfiguration für den virtuellen Computer die Einstellung **Warnungsstatus** verwenden. Ausführliche Informationen zum Konfigurieren von Monitoren im Azure-Portal finden Sie unter [Konfigurieren der Überwachung für das Feature „Gastintegrität“ von Azure Monitor für VMs (Vorschau)](vminsights-health-configure.md). Ausführliche Informationen zum Konfigurieren von Monitoren für mehrere virtuelle Computer finden Sie unter [Konfigurieren der Überwachung für das Feature „Gastintegrität“ von Azure Monitor für VMs mit Datensammlungsregeln (Vorschau)](vminsights-health-configure-dcr.md).
+Sie können Warnungen für einen bestimmten virtuellen Computer oder einen Monitor eines virtuellen Computers deaktivieren, indem Sie im Azure-Portal in der Konfiguration für den virtuellen Computer die Einstellung **Warnungsstatus** verwenden. Ausführliche Informationen zum Konfigurieren von Monitoren im Azure-Portal finden Sie unter [Konfigurieren der Überwachung für das Feature „Gastintegrität“ von VM Insights (Vorschau)](vminsights-health-configure.md). Ausführliche Informationen zum Konfigurieren von Monitoren für mehrere virtuelle Computer finden Sie unter [Konfigurieren der Überwachung für das Feature „Gastintegrität“ von VM Insights mit Datensammlungsregeln (Vorschau)](vminsights-health-configure-dcr.md).
 
 ## <a name="alert-severity"></a>Schweregrad der Warnung
 Der Schweregrad der Warnung, die vom Feature „Gastintegrität“ erstellt wird, entspricht direkt dem Schweregrad des virtuellen Computers oder Monitors, von dem die Warnung ausgelöst wird.
@@ -31,12 +31,12 @@ Der Schweregrad der Warnung, die vom Feature „Gastintegrität“ erstellt wird
 | Healthy  | Sev4 |
 
 ## <a name="alert-lifecycle"></a>Lebenszyklus von Warnungen
-Für jeden virtuellen Computer wird immer dann eine [Azure-Warnung](../platform/alerts-overview.md) erstellt, wenn sich sein Status in **Warnung** oder **Kritisch** ändert. Sie können die Warnung über die Option **Warnungen** im **Azure Monitor**-Menü oder im Menü des virtuellen Computers im Azure-Portal anzeigen.
+Für jeden virtuellen Computer wird immer dann eine [Azure-Warnung](../alerts/alerts-overview.md) erstellt, wenn sich sein Status in **Warnung** oder **Kritisch** ändert. Sie können die Warnung über die Option **Warnungen** im **Azure Monitor**-Menü oder im Menü des virtuellen Computers im Azure-Portal anzeigen.
 
 Falls sich eine Warnung bereits im Status **Ausgelöst** befindet, wenn sich der Status des virtuellen Computers ändert, wird keine zweite Warnung erstellt. Allerdings wird der Schweregrad dieser Warnung so geändert, dass er dem Status des virtuellen Computers entspricht. Falls der virtuelle Computer beispielsweise in den Status **Kritisch** versetzt wird, wenn sich eine Warnung vom Typ **Warnung** bereits im Status **Ausgelöst** befindet, wird der Schweregrad dieser Warnung in **Sev1** geändert. Falls der virtuelle Computer in den Status **Warnung** versetzt wird, wenn sich eine Warnung mit **Sev1** bereits im Status **Ausgelöst** befindet, wird der Schweregrad dieser Warnung in **Sev2** geändert. Wenn der virtuelle Computer dann wieder in den Status **Fehlerfrei** versetzt wird, ist die Warnung behoben, und der Schweregrad wird in **Sev4** geändert.
 
 ## <a name="viewing-alerts"></a>Anzeigen von Warnungen
-Zeigen Sie Warnungen, die vom Feature „Gastintegrität“ von Azure Monitor für VMs erstellt werden, zusammen mit anderen [Warnungen im Azure-Portal](../platform/alerts-overview.md#alerts-experience) an. Sie können die Option **Warnungen** im **Azure Monitor**-Menü auswählen, um die Warnungen für alle überwachten Ressourcen anzuzeigen, oder im Menü eines virtuellen Computers die Option **Warnungen** verwenden, um die Warnungen nur für den entsprechenden virtuellen Computer anzuzeigen.
+Sie können Warnungen, die vom Feature „Gastintegrität“ von VM Insights erstellt wurden, zusammen mit anderen [Warnungen im Azure-Portal](../platform/alerts-overview.md#alerts-experience) anzeigen. Sie können die Option **Warnungen** im **Azure Monitor**-Menü auswählen, um die Warnungen für alle überwachten Ressourcen anzuzeigen, oder im Menü eines virtuellen Computers die Option **Warnungen** verwenden, um die Warnungen nur für den entsprechenden virtuellen Computer anzuzeigen.
 
 ## <a name="alert-properties"></a>Warnungseigenschaften
 
@@ -106,6 +106,6 @@ Wählen Sie unter **Für diesen Bereich definieren** die Option **Aktionsgruppe*
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Aktivieren des Features „Gastintegrität“ in Azure Monitor für VMs und Durchführen des Onboardings für Agents](vminsights-health-enable.md)
+- [Aktivieren des Features „Gastintegrität“ von VM Insights und Onboarding von Agents](vminsights-health-enable.md)
 - [Konfigurieren von Monitoren mit dem Azure-Portal](vminsights-health-configure.md)
 - [Konfigurieren von Monitoren mit Datensammlungsregeln](vminsights-health-configure-dcr.md)

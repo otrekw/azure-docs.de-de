@@ -7,18 +7,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 02/01/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 894b0fcddaead6ce60e1becc7221c4f5e608de48
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 5a83211654ad1abafff59d5968c191ec1fa63616
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492296"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692401"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Verschieben von Daten in ML-Pipelineschritte und zwischen ML-Pipelineschritten (Python)
-
 
 Dieser Artikel enthält Code zum Importieren, Transformieren und Verschieben von Daten zwischen Schritten in einer Azure Machine Learning-Pipeline. Eine Übersicht über die Funktionsweise von Daten in Azure Machine Learning finden Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](how-to-access-data.md). Informationen zu den Vorteilen und zur Struktur von Azure Machine Learning-Pipelines finden Sie unter [Beschreibung von Azure Machine Learning-Pipelines](concept-ml-pipelines.md).
 
@@ -29,7 +28,7 @@ In diesem Artikel wird Folgendes gezeigt:
 - Aufteilen von `Dataset`-Daten in Teilmengen, z. B. Teilmengen für Training und Validierung
 - Erstellen von `OutputFileDatasetConfig`-Objekten zum Übertragen von Daten in den nächsten Pipelineschritt
 - Verwenden von `OutputFileDatasetConfig`-Objekten als Eingabe für Pipelineschritte
-- Erstellen neuer `Dataset`-Objekte aus `OutputFileDatasetConfig`, die Sie beibehalten möchten
+- Erstellen neuer Objekte vom Typ `Dataset` auf der Grundlage von `OutputFileDatasetConfig`, um sie beizubehalten
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -64,10 +63,12 @@ Es gibt viele Möglichkeiten, `Dataset`-Objekte zu erstellen und zu registrieren
 datastore = Datastore.get(workspace, 'training_data')
 iris_dataset = Dataset.Tabular.from_delimited_files(DataPath(datastore, 'iris.csv'))
 
-cats_dogs_dataset = Dataset.File.from_files(
-    paths='https://download.microsoft.com/download/3/E/1/3E1C3F21-ECDB-4869-8368-6DEBA77B919F/kagglecatsanddogs_3367a.zip',
-    archive_options=ArchiveOptions(archive_type=ArchiveType.ZIP, entry_glob='**/*.jpg')
-)
+datastore_path = [
+    DataPath(datastore, 'animals/dog/1.jpg'),
+    DataPath(datastore, 'animals/dog/2.jpg'),
+    DataPath(datastore, 'animals/cat/*.jpg')
+]
+cats_dogs_dataset = Dataset.File.from_files(path=datastore_path)
 ```
 
 Weitere Optionen zum Erstellen von Datasets mit verschiedenen Optionen und aus unterschiedlichen Quellen, zum Registrieren und Überprüfen der Daten in der Azure Machine Learning-Benutzeroberfläche, zum Verständnis, wie die Datengröße mit der Computekapazität interagiert, und zu deren Versionsverwaltung finden Sie unter [Erstellen von Azure Machine Learning-Datasets](how-to-create-register-datasets.md). 
@@ -200,7 +201,7 @@ with open(args.output_path, 'w') as f:
 
 Nachdem der anfängliche Pipelineschritt einige Daten in den `OutputFileDatasetConfig`-Pfad geschrieben hat und sie als Ausgabe dieses anfänglichen Schritts dienen, können die Daten als Eingabe für einen späteren Schritt verwendet werden. 
 
-Im folgenden Code 
+Im folgenden Code wird Folgendes ausgeführt: 
 
 * gibt `step1_output_data` an, dass die Ausgabe von PythonScriptStep, `step1`, im Uploadzugriffsmodus in den ADLS Gen 2-Datenspeicher `my_adlsgen2` geschrieben wird. Erfahren Sie mehr über das [Einrichten von Rollenberechtigungen](how-to-access-data.md#azure-data-lake-storage-generation-2), um Daten in ADLS Gen 2-Datenspeicher zurückzuschreiben. 
 
@@ -223,7 +224,7 @@ step2 = PythonScriptStep(
     script_name="step2.py",
     compute_target=compute,
     runconfig = aml_run_config,
-    arguments = ["--pd", step1_output_data.as_input]
+    arguments = ["--pd", step1_output_data.as_input()]
 
 )
 
@@ -239,6 +240,15 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
                                                          description = 'files from step1`)
 ```
 
+## <a name="delete-outputfiledatasetconfig-contents-when-no-longer-needed"></a>Löschen des Inhalts von `OutputFileDatasetConfig`, wenn er nicht mehr benötigt wird
+
+Zwischendaten, die mit `OutputFileDatasetConfig` geschrieben werden, werden von Azure nicht automatisch gelöscht. Um Speichergebühren für große Mengen nicht benötigter Daten zu vermeiden, empfiehlt es sich, einen der folgenden Schritte auszuführen:
+
+* Programmgesteuertes Löschen von Zwischendaten am Ende einer Pipelineausführung, wenn sie nicht mehr benötigt werden
+* Verwenden von Blobspeicher mit einer kurzfristigen Speicherrichtlinie für Zwischendaten (siehe [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](../storage/blobs/storage/blobs/storage-lifecycle-management-concepts.md)) 
+* Regelmäßiges Überprüfen und Löschen nicht mehr benötigter Daten
+
+Weitere Informationen finden Sie unter [Planen und Verwalten von Kosten für Azure Machine Learning](concept-plan-manage-cost.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

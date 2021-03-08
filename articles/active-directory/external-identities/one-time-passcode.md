@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f37c7e2f21c76fcc902b0922399081b9be949e99
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7961997c6a6736c154b6217ee3f21682d0c4c3fc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365530"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688466"
 ---
 # <a name="email-one-time-passcode-authentication"></a>Authentifizierung mit Einmalkennung per E-Mail
 
@@ -26,7 +26,8 @@ In diesem Artikel wird das Aktivieren der Authentifizierung mit Einmalkennung pe
 ![Einmalkennung per E-Mail, Übersichtsdiagramm](media/one-time-passcode/email-otp.png)
 
 > [!IMPORTANT]
-> **Ab Oktober 2021** wird die Funktion „Einmalkennung per E-Mail“ für alle vorhandenen Mandanten und standardmäßig bei neuen Mandanten aktiviert. Wenn Sie nicht möchten, dass diese Funktion automatisch aktiviert wird, können Sie sie deaktivieren. Lesen Sie dazu [Deaktivieren der Einmalkennung per E-Mail](#disable-email-one-time-passcode) weiter unten.
+> - **Ab Oktober 2021** wird die Funktion „Einmalkennung per E-Mail“ für alle vorhandenen Mandanten und standardmäßig bei neuen Mandanten aktiviert. Wenn Sie nicht möchten, dass diese Funktion automatisch aktiviert wird, können Sie sie deaktivieren. Lesen Sie dazu [Deaktivieren der Einmalkennung per E-Mail](#disable-email-one-time-passcode) weiter unten.
+> - Die Einstellungen für die Einmalkennung per E-Mail wurden im Azure-Portal aus den **Einstellungen für externe Zusammenarbeit** in **Alle Identitätsanbieter** verschoben.
 
 > [!NOTE]
 > Benutzer mit Einmalkennung müssen sich über einen Link anmelden, der den Mandantenkontext enthält (z.B. `https://myapps.microsoft.com/?tenantid=<tenant id>` oder `https://portal.azure.com/<tenant id>` bzw. `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com` bei einer überprüften Domäne). Direkte Links zu Anwendungen und Ressourcen funktionieren ebenfalls, sofern sie den Mandantenkontext enthalten. Gastbenutzer können sich derzeit nicht über Endpunkte, die keinen Mandantenkontext aufweisen, anmelden. Bei der Verwendung von `https://myapps.microsoft.com` tritt bei `https://portal.azure.com` ein Fehler auf.
@@ -83,27 +84,50 @@ Ab Oktober 2021 wird die Funktion „Einmalkennung per E-Mail“ für alle vorh
 
 2. Klicken Sie im Navigationsbereich auf **Azure Active Directory**.
 
-3. Wählen Sie **Externe Identitäten** > **Einstellungen für externe Zusammenarbeit** aus.
+3. Wählen Sie **Externe Identitäten** > **Alle Identitätsanbieter** aus.
 
-4. Wählen Sie unter **Einmalkennung per E-Mail für Gastbenutzer** die Option **Einmalkennung per E-Mail für Gastbenutzer deaktivieren** aus.
+4. Wählen Sie **Einmalkennung per E-Mail** und anschließend **Einmalkennung per E-Mail für Gastbenutzer deaktivieren** aus.
 
    > [!NOTE]
-   > Wenn anstelle der Optionen für die Einmalkennung per E-Mail die folgende Umschaltfläche angezeigt wird, bedeutet dies, dass Sie zuvor die Funktion aktiviert oder deaktiviert bzw. die Vorschauversion genutzt haben. Wählen Sie **Nein** aus, um die Funktion zu deaktivieren.
+   > Die Einstellungen für die Einmalkennung per E-Mail wurden im Azure-Portal aus den **Einstellungen für externe Zusammenarbeit** in **Alle Identitätsanbieter** verschoben.
+   > Sollte anstelle der Optionen für die Einmalkennung per E-Mail eine Umschaltfläche angezeigt werden, bedeutet das, dass Sie die Funktion zuvor aktiviert oder deaktiviert bzw. die Vorschauversion genutzt haben. Wählen Sie **Nein** aus, um die Funktion zu deaktivieren.
    >
-   >![Aktivieren der Einmalkennung per E-Mail für Nutzer der Vorschauversion](media/delegate-invitations/enable-email-otp-opted-in.png)
+   >![Deaktivierte Umschaltfläche für Einmalkennung per E-Mail](media/one-time-passcode/enable-email-otp-disabled.png)
 
 5. Wählen Sie **Speichern** aus.
 
 ## <a name="note-for-public-preview-customers"></a>Hinweis für Kunden der öffentlichen Vorschauversion
 
-Wenn Sie die öffentliche Vorschauversion der Funktion „Einmalkennung per E-Mail“ genutzt haben, gilt die automatische Funktionsaktivierung im Oktober 2021 nicht für Sie, sodass Ihre zugehörigen Geschäftsprozesse nicht beeinträchtigt werden. Außerdem wird im Azure-Portal in den Eigenschaften der Funktion **Einmalkennung per E-Mail für Gastbenutzer** nicht die Option **Einmalkennung per E-Mail für Gastbenutzer im Oktober 2021 automatisch aktivieren** angezeigt. Stattdessen wird die folgende Umschaltfläche (**Ja**/**Nein**) angezeigt:
+Wenn Sie die öffentliche Vorschauversion der Funktion „Einmalkennung per E-Mail“ genutzt haben, gilt die automatische Funktionsaktivierung im Oktober 2021 nicht für Sie, sodass Ihre zugehörigen Geschäftsprozesse nicht beeinträchtigt werden. Außerdem wird im Azure-Portal in den Eigenschaften der Funktion **Einmalkennung per E-Mail für Gastbenutzer** nicht die Option **Einmalkennung per E-Mail für Gäste ab Oktober 2021 automatisch aktivieren** angezeigt. Stattdessen wird die folgende Umschaltfläche (**Ja**/**Nein**) angezeigt:
 
-![Aktivieren der Einmalkennung per E-Mail für Nutzer der Vorschauversion](media/delegate-invitations/enable-email-otp-opted-in.png)
+![Nutzung der Einmalkennung per E-Mail](media/one-time-passcode/enable-email-otp-opted-in.png)
 
 Wenn Sie die Vorschauversion nicht mehr nutzen und das automatische Aktivieren der Funktion im Oktober 2021 zulassen möchten, können Sie die Standardeinstellungen wiederherstellen. Verwenden Sie dazu in der Microsoft Graph-API den [Ressourcentyp „emailAuthenticationMethodConfiguration“](/graph/api/resources/emailauthenticationmethodconfiguration). Nachdem Sie die Standardeinstellungen wiederhergestellt haben, stehen unter **Einmalkennung per E-Mail für Gastbenutzer** die folgenden Optionen zur Verfügung:
 
-- **Einmalkennung per E-Mail für Gastbenutzer im Oktober 2021 automatisch aktivieren**. (Standardeinstellung) Wenn die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten noch nicht aktiviert ist, wird sie im Oktober 2021 automatisch aktiviert. Wenn die Funktion zu diesem Zeitpunkt aktiviert werden soll, ist keine weitere Aktion erforderlich. Wenn Sie die Funktion bereits aktiviert oder deaktiviert haben, ist diese Option nicht verfügbar.
+![Aktivieren der Einmalkennung per E-Mail für Nutzer der Vorschauversion](media/one-time-passcode/email-otp-options.png)
+
+- **Einmalkennung per E-Mail für Gäste ab Oktober 2021 automatisch aktivieren** (Standardeinstellung): Wenn die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten noch nicht aktiviert ist, wird sie ab Oktober 2021 automatisch aktiviert. Wenn die Funktion zu diesem Zeitpunkt aktiviert werden soll, ist keine weitere Aktion erforderlich. Wenn Sie die Funktion bereits aktiviert oder deaktiviert haben, ist diese Option nicht verfügbar.
 
 - **Einmalkennung per E-Mail für Gastbenutzer sofort aktivieren**. Aktiviert die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten.
 
 - **Einmalkennung per E-Mail für Gastbenutzer deaktivieren**. Deaktiviert die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten und verhindert, dass die Funktion im Oktober 2021 aktiviert wird.
+
+## <a name="note-for-azure-us-government-customers"></a>Hinweis für Azure US Government-Kunden
+
+Das Feature „Einmalkennung per E-Mail“ ist in der Azure US Government-Cloud standardmäßig deaktiviert.  
+
+ ![Einmalkennung per E-Mail deaktiviert](media/one-time-passcode/enable-email-otp-disabled.png)
+
+So aktivieren Sie das Feature „Einmalkennung per E-Mail“ in der Azure US Government-Cloud:
+
+1. Melden Sie sich als globaler Azure AD-Administrator im [Azure-Portal](https://portal.azure.com) an.
+2. Klicken Sie im Navigationsbereich auf **Azure Active Directory**.
+3. Wählen Sie **Organisationsbeziehungen** > **Einstellungen** aus.
+
+   > [!NOTE]
+   > - Sollte die Option **Organisationsbeziehungen** nicht angezeigt werden, suchen Sie über die Suchleiste im oberen Bereich nach „External Identities“.
+
+4. Wählen Sie **Einmalkennung per E-Mail** und anschließend **Ja** aus.
+5. Wählen Sie **Speichern** aus.
+
+Weitere Informationen zu aktuellen Einschränkungen finden Sie unter [Microsoft Azure Cloud for US Government (Azure-Cloud für US-Behörden)](current-limitations.md#azure-us-government-clouds).

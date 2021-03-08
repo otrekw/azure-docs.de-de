@@ -3,12 +3,12 @@ title: Funktionen von Azure-Ressourcen-Manager-Vorlagen
 description: Es werden die Funktionen beschrieben, die in einer ARM-Vorlage (Azure Resource Manager) zum Abrufen von Werten, Arbeiten mit Zeichenfolgen und numerischen Werten sowie Abrufen von Bereitstellungsinformationen verwendet werden.
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 2d124893cbe1694671231fd206f8e44cc20f6204
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: dbda5c635a5189158424363c341b269d331a5fdc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931706"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707318"
 ---
 # <a name="arm-template-functions"></a>ARM-Vorlagenfunktionen
 
@@ -33,6 +33,10 @@ Die meisten Funktionen funktionieren auf die gleiche Weise, wenn sie in einer Re
 <a id="skip" aria-hidden="true"></a>
 <a id="take" aria-hidden="true"></a>
 <a id="union" aria-hidden="true"></a>
+
+## <a name="any-function"></a>Beliebige Funktion
+
+Die [any-Funktion](template-functions-any.md) wird in Bicep zur Unterstützung bei der Lösung von Problemen in Zusammenhang mit Datentypwarnungen bereitgestellt.
 
 ## <a name="array-functions"></a>Arrayfunktionen
 

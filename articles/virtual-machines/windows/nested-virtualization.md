@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: e85ac58c80e1fd695938bf09b6435dba1f4ee083
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 924ee745804ef31e42dc21437dbb0459f6d37701
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091345"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693746"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Aktivieren der geschachtelten Virtualisierung auf einer Azure-VM
 
@@ -22,11 +22,9 @@ In diesem Artikel werden die Schritte erläutert, die zum Aktivieren von Hyper-V
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>Erstellen eines schachtelungsfähigen virtuellen Azure-Computers
 
-Erstellen Sie einen neuen virtuellen Windows Server 2016-Azure-Computer. Eine vollständige Liste der VM-Größen, die Schachtelung unterstützen, finden Sie im [Artikel zur Azure-Compute-Einheit](../acu.md).
+Erstellen Sie für Ihren Host einen neuen virtuellen Azure-Computer unter Windows Server 2016 oder Windows Server 2019. Wählen Sie für den virtuellen Computer eine Größe, die Schachtelungen unterstützt und groß genug ist, um die Anforderungen der virtuellen Gastcomputer zu erfüllen. Eine Liste der VM-Größen, die Schachtelungen unterstützen, finden Sie im [Artikel zur Azure-Compute-Einheit](../acu.md).
 
-Denken Sie daran, eine ausreichende VM-Größe zu wählen, um die Anforderungen eines virtuellen Gastcomputers zu unterstützen. In diesem Beispiel wird eine Azure-VM der Größe D4_v3 verwendet. 
-
-Informationen zur regionalen Verfügbarkeit von VMs der Serien Dv3 oder Ev3 finden Sie [hier](https://azure.microsoft.com/regions/services/).
+Informationen zur regionalen Verfügbarkeit der VM-Größen finden Sie auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
 
 >[!NOTE]
 >
@@ -94,7 +92,7 @@ Erstellen Sie einen neuen virtuellen Netzwerkadapter für die Gast-VM, und konfi
 4. Erstellen Sie eine IP-Adresse für das NAT-Gateway.
     
 Um das Gateway zu konfigurieren, benötigen Sie einige Informationen über Ihr Netzwerk:    
-  * IPAddress: Die NAT-Gateway-IP gibt die IPv4- oder IPv6-Adresse an, die als standardmäßige Gatewayadresse für das Subnetz des virtuellen Netzwerks verwendet werden soll. Das Format lautet allgemein „a.b.c.1“ (z.B. „192.168.0.1“). Die letzte Position muss nicht unbedingt „.1“ lauten, tut es jedoch in der Regel (basierend auf der Präfixlänge). Üblicherweise sollten Sie einen privaten Netzwerkadressraum gemäß RFC 1918 verwenden. 
+  * IP-Adresse: Die NAT Gateway-IP-Adresse gibt die IPv4- oder IPv6-Adresse an, die als standardmäßige Gatewayadresse für das Subnetz des virtuellen Netzwerks verwendet werden soll. Das Format lautet allgemein „a.b.c.1“ (z.B. „192.168.0.1“). Die letzte Position muss nicht unbedingt „.1“ lauten, tut es jedoch in der Regel (basierend auf der Präfixlänge). Üblicherweise sollten Sie einen privaten Netzwerkadressraum gemäß RFC 1918 verwenden. 
   * PrefixLength: Die Länge des Subnetzpräfixes definiert die Größe des lokalen Subnetzes (Subnetzmaske). Die Länge des Subnetzpräfixes ist ein ganzzahliger Wert zwischen 0 und 32. 0 würde das gesamte Internet zuordnen, 32 würde nur eine zugeordnete IP-Adresse zulassen. Im Allgemeinen reichen die Werte von 24 bis 12, je nachdem, wie viele IP-Adressen an das NAT angefügt werden müssen. Ein häufiger PrefixLength-Wert ist 24 – dies entspricht der Subnetzmaske 255.255.255.0.
   * InterfaceIndex: **ifIndex** ist der Schnittstellenindex des im vorherigen Schritt erstellten virtuellen Switches. 
 

@@ -3,14 +3,14 @@ title: Konfigurieren von Azure Backup-Berichten
 description: Konfigurieren und Anzeigen von Berichten für Azure Backup mithilfe von Log Analytics und Azure-Arbeitsmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 39d1aa17c5e92eccd34013738937e49890109561
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 62bb59a8a77d11e30e54298317a35e1f883a9622
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897274"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710616"
 ---
-# <a name="configure-azure-backup-reports-preview"></a>Konfigurieren von Azure Backup-Berichten (Vorschau)
+# <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 
 Eine häufige Anforderung an Sicherungsadministratoren besteht darin, basierend auf Daten, die sich über einen längeren Zeitraum erstrecken, Einblicke in Sicherungen zu erhalten. Anwendungsfälle für eine solche Lösung sind:
 
@@ -18,7 +18,7 @@ Eine häufige Anforderung an Sicherungsadministratoren besteht darin, basierend 
 - Überwachung von Sicherungen und Wiederherstellungen.
 - Identifizierung wichtiger Trends auf verschiedenen Granularitätsebenen.
 
-Heute bietet Azure Backup eine Berichterstellungslösung, bei der [Azure Monitor-Protokolle](../azure-monitor/log-query/log-analytics-tutorial.md) und [Azure-Arbeitsmappen](../azure-monitor/platform/workbooks-overview.md) verwendet werden. Mithilfe dieser Ressourcen erhalten Sie umfassende Einblicke in Ihre Sicherungen in Ihrem gesamten Sicherungsumfeld. In diesem Artikel wird das Konfigurieren und Anzeigen von Azure Backup-Berichten erläutert.
+Heute bietet Azure Backup eine Berichterstellungslösung, bei der [Azure Monitor-Protokolle](../azure-monitor/logs/log-analytics-tutorial.md) und [Azure-Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md) verwendet werden. Mithilfe dieser Ressourcen erhalten Sie umfassende Einblicke in Ihre Sicherungen in Ihrem gesamten Sicherungsumfeld. In diesem Artikel wird das Konfigurieren und Anzeigen von Azure Backup-Berichten erläutert.
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
@@ -41,9 +41,9 @@ Führen Sie die folgenden Schritte aus, um die Berichte verwenden zu können:
 
 Richten Sie einen oder mehrere Log Analytics-Arbeitsbereiche zum Speichern Ihrer Backup-Berichtsdaten ein. Der Ort und das Abonnement, an dem bzw. in dem dieser Log Analytics-Arbeitsbereich erstellt werden kann, sind unabhängig von dem Ort und dem Abonnement, der bzw. das Ihre Tresore enthält.
 
-Eine Anleitung zum Einrichten eines Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/learn/quick-create-workspace.md).
+Eine Anleitung zum Einrichten eines Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/logs/quick-create-workspace.md).
 
-Standardmäßig werden die Daten in einem Log Analytics-Arbeitsbereich 30 Tage lang aufbewahrt. Wenn Sie Daten für einen längeren Zeithorizont anzeigen möchten, ändern Sie den Aufbewahrungszeitraum des Log Analytics-Arbeitsbereichs. Informationen zum Ändern des Aufbewahrungszeitraums finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../azure-monitor/platform/manage-cost-storage.md).
+Standardmäßig werden die Daten in einem Log Analytics-Arbeitsbereich 30 Tage lang aufbewahrt. Wenn Sie Daten für einen längeren Zeithorizont anzeigen möchten, ändern Sie den Aufbewahrungszeitraum des Log Analytics-Arbeitsbereichs. Informationen zum Ändern des Aufbewahrungszeitraums finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../azure-monitor/logs/manage-cost-storage.md).
 
 ### <a name="2-configure-diagnostics-settings-for-your-vaults"></a>2. Konfigurieren von Diagnoseeinstellungen für Ihre Tresore
 
@@ -139,6 +139,20 @@ Wenn Sie die Kachel **Richtlinienoptimierungen** und dann die Kachel **Sicherung
 Für den Filter **Sicherungsverwaltungstyp** oben auf der Registerkarte sollten die Elemente **SQL in Azure-VM** und **SAP HANA in Azure-VM** ausgewählt sein, damit das Raster die Datenbankworkloads erwartungsgemäß anzeigen kann.
 
 ![Registerkarte „Optimieren“: „Backup Schedule Optimizations“ (Sicherungszeitplanoptimierungen)](./media/backup-azure-configure-backup-reports/optimize-backup-schedule.png)
+
+###### <a name="policy-adherence"></a>Richtlinieneinhaltung
+
+Mithilfe dieser Registerkarte können Sie feststellen, ob für alle Sicherungsinstanzen täglich mindestens eine erfolgreiche Sicherung durchgeführt wurde. Sie können die Richtlinieneinhaltung nach Zeitraum oder Sicherungsinstanz anzeigen.
+
+###### <a name="email-azure-backup-reports"></a>Azure Backup-Berichte per E-Mail
+
+Mit dem in Sicherungsberichten verfügbaren Feature **Bericht per E-Mail senden** können Sie automatisierte Aufgaben zum Empfangen regelmäßiger Berichte per E-Mail erstellen. Dieses Feature stellt eine Logik-App in Ihrer Azure-Umgebung bereit, die Daten aus Ihren ausgewählten Log Analytics-Arbeitsbereichen basierend auf den von Ihnen angegebenen Eingaben abfragt.
+
+Sobald die Logik-App erstellt wurde, müssen Sie die Verbindungen mit Azure Monitor-Protokollen und Office 365 autorisieren. Navigieren Sie hierzu im Azure-Portal zu **Logic Apps**, und suchen Sie nach dem Namen der Aufgabe, die Sie erstellt haben. Wenn Sie auf das Menüelement **API-Verbindungen** klicken, wird die Liste der API-Verbindungen geöffnet, die Sie autorisieren müssen.
+
+###### <a name="customize-azure-backup-reports"></a>Anpassen von Azure Backup-Berichten
+
+Sicherungsberichte verwenden Funktionen für Azure Monitor-Protokolle. Diese Funktionen verarbeiten Daten in den Rohtabellen von Azure Backup in Log Analytics und geben formatierte Daten zurück, mit denen Sie mit einfachen Abfragen problemlos Informationen aus all Ihren auf die Sicherung bezogenen Entitäten abrufen können.
 
 ## <a name="export-to-excel"></a>Exportieren in Excel
 

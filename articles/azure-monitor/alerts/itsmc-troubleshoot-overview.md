@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 991d37b097587e8e4a524c4fc8bc21e9b6af20b5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a01005231b5d775f79555ec10dedeb3f30b3426a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601408"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737204"
 ---
 # <a name="troubleshoot-problems-in-it-service-management-connector"></a>Behandeln von Problemen im ITSM-Connector
 
@@ -55,7 +55,7 @@ In den folgenden Abschnitten werden allgemeine Symptome, mögliche Ursachen und 
 
 * Die Anmeldeinformationen sind nicht korrekt.
 * Die Berechtigungen sind unzureichend.
-* Die Web-App wurde nicht ordnungsgemäß bereitgestellt.
+* Für Service Manager-Verbindungen: Die Web-App wurde nicht ordnungsgemäß bereitgestellt.
 
 **Lösung:**
 
@@ -95,3 +95,12 @@ In den folgenden Abschnitten werden allgemeine Symptome, mögliche Ursachen und 
 **Ursache:** Für eine neu erstellte ITSM-Connectorinstanz muss die Erstsynchronisierung noch abgeschlossen werden.
 
 **Lösung:** Überprüfen Sie die [allgemeinen Fehler und deren Lösungen](itsmc-dashboard-errors.md).
+
+### <a name="sync-connection"></a>Synchronisieren der Verbindung 
+
+**Ursache:** Für dieses Symptom kann es eine Reihe von Gründen geben:
+
+* Vorlagen werden nicht als Teil der Aktionsdefinition angezeigt.
+* Incidents/Ereignisse werden nicht in ServiceNow erstellt.
+
+**Lösung:** [Synchronisieren Sie den Connector](itsmc-resync-servicenow.md).

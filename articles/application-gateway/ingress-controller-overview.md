@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 06/10/2020
+ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: 26f53a8f93d4d51ec8f8fd91051496a46670f432
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2564fd38056241fd48f58f5f6039bf64f92b6741
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397347"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714407"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Was ist der Application Gateway-Eingangscontroller?
 Der Application Gateway-Eingangscontroller (Application Gateway Ingress Controller, AGIC) ist eine Kubernetes-Anwendung, die es Kunden von [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) ermöglicht, den nativen L7-Lastenausgleich von [Application Gateway](https://azure.microsoft.com/services/application-gateway/) zu nutzen, um Cloudsoftware im Internet bereitzustellen. AGIC überwacht den Kubernetes-Cluster, auf dem er gehostet wird, und aktualisiert fortlaufend eine Application Gateway-Instanz, sodass ausgewählte Dienste im Internet bereitgestellt werden.
@@ -37,7 +37,7 @@ AGIC wird über die Kubernetes-[Eingangsressource](https://kubernetes.io/docs/us
   - Integrierte Web Application Firewall
 
 ## <a name="difference-between-helm-deployment-and-aks-add-on"></a>Unterschied zwischen Helm-Bereitstellung und AKS-Add-On
-Es gibt zwei Möglichkeiten, AGIC für Ihren AKS-Cluster bereitzustellen. Die erste Möglichkeit ist die Verwendung von Helm, bei der zweiten wird AKS als Add-On verwendet. Der Hauptvorteil der Bereitstellung von AGIC als AKS-Add-On ist, dass dies wesentlich einfacher ist, als die Bereitstellung mittels Helm. Bei einer neuen Einrichtung können Sie mit nur einer Zeile in Azure CLI ein neues Application Gateway und einen neuen AKS-Cluster mit als Add-On aktiviertem AGIC bereitstellen. Das Add-On ist außerdem ein vollständig verwalteter Dienst, der zusätzliche Vorteile bietet wie automatische Updates und verbesserten Support. Ein mittels Helm bereitgestellter AGIC wird von AKS nicht unterstützt, doch der als AKS-Add-On bereitgestellte AGIC wird von AKS unterstützt. 
+Es gibt zwei Möglichkeiten, AGIC für Ihren AKS-Cluster bereitzustellen. Die erste Möglichkeit ist die Verwendung von Helm, bei der zweiten wird AKS als Add-On verwendet. Der Hauptvorteil der Bereitstellung von AGIC als AKS-Add-On ist, dass dies wesentlich einfacher ist, als die Bereitstellung mittels Helm. Bei einer neuen Einrichtung können Sie mit nur einer Zeile in Azure CLI ein neues Application Gateway und einen neuen AKS-Cluster mit als Add-On aktiviertem AGIC bereitstellen. Das Add-On ist außerdem ein vollständig verwalteter Dienst, der zusätzliche Vorteile bietet wie automatische Updates und verbesserten Support. Beide Bereitstellungsmethoden für AGIC (Helm- und AKS-Add-On) werden von Microsoft vollständig unterstützt. Zusätzlich bietet das Add-On als ein erstklassiges Add-On bessere Integrationsmöglichkeiten mit AKS.
 
 Das AGIC-Add-On wird weiterhin als Pod im AKS-Cluster des Kunden bereitgestellt, doch es gibt ein paar Unterschiede zwischen der Helm-Bereitstellungsversion und der Add-On-Version von AGIC. Im Folgenden finden Sie eine Liste der Unterschiede zwischen den beiden Versionen: 
   - Helm-Bereitstellungswerte können im AKS-Add-On nicht geändert werden:
@@ -50,27 +50,7 @@ Das AGIC-Add-On wird weiterhin als Pod im AKS-Cluster des Kunden bereitgestellt,
   - Da das AGIC-Add-On ein verwalteter Dienst ist, werden Kunden automatisch auf die neueste Version des AGIC-Add-Ons aktualisiert, anders als beim mittels Helm bereitgestellten AGIC, bei dem der Kunde AGIC manuell aktualisieren muss. 
 
 > [!NOTE]
-> Die AGIC-Bereitstellungsmethode mittels AKS-Add-On befindet sich zurzeit in der Vorschauversion. Es wird davon abgeraten, Produktionsworkloads mit Funktionen auszuführen, die sich noch in der Vorschauversion befinden. Wenn Sie also neugierig sind und sie ausprobieren möchten, empfehlen wir, einen neuen Cluster zu Testzwecken einzurichten. 
-
-In den folgenden Tabellen wird sortiert, welche Szenarien derzeit mit der Helm-Bereitstellungsversion und welche mit der AKS-Add-On-Version von AGIC unterstützt werden. 
-
-### <a name="aks-add-on-agic-single-aks-cluster"></a>AKS-Add-On AGIC (einzelner AKS-Cluster)
-|                  |1 Application Gateway |2+ Application Gateways |
-|------------------|---------|--------|
-|**1 AGIC**|Ja, diese Möglichkeit wird unterstützt. |Nein, diese Möglichkeit befindet sich in unserem Backlog. |
-|**2+ AGICs**|Nein, nur 1 AGIC unterstützt/Cluster. |Nein, nur 1 AGIC unterstützt/Cluster. |
-
-### <a name="helm-deployed-agic-single-aks-cluster"></a>Mittels Helm bereitgestellter AGIC (einzelner AKS-Cluster)
-|                  |1 Application Gateway |2+ Application Gateways |
-|------------------|---------|--------|
-|**1 AGIC**|Ja, diese Möglichkeit wird unterstützt. |Nein, diese Möglichkeit befindet sich in unserem Backlog. |
-|**2+ AGICs**|Muss die freigegebene ProhibitedTarget-Funktion verwenden und gesonderte Namespaces beachten. |Ja, diese Möglichkeit wird unterstützt. |
-
-### <a name="helm-deployed-agic-2-aks-clusters"></a>Mittels Helm bereitgestellter AGIC (2+ AKS-Cluster)
-|                  |1 Application Gateway |2+ Application Gateways |
-|------------------|---------|--------|
-|**1 AGIC**|– |– |
-|**2+ AGICs**|Muss die freigegebene ProhibitedTarget-Funktion verwenden. |– |
+> Kunden können nur ein AGIC-Add-On pro AKS-Cluster bereitstellen, und jedes AGIC-Add-On kann aktuell nur ein Anwendungsgateway als Ziel verwenden. Für Bereitstellungen, für die mehr als ein AGIC-Add-On pro Cluster oder mehrere AGIC-Add-Ons für ein Anwendungsgateway erforderlich sind, stellen Sie AGIC weiterhin über Helm bereit. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [**Greenfield-Bereitstellung mit AKS-Add-On**](tutorial-ingress-controller-add-on-new.md): Anleitungen zum Installieren des AGIC-Add-Ons, von AKS und Application Gateway in einer leeren Infrastruktur.

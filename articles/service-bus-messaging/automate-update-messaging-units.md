@@ -3,12 +3,12 @@ title: 'Azure Service Bus: Automatisches Aktualisieren von Messagingeinheiten'
 description: In diesem Artikel erfahren Sie, wie Sie Messagingeinheiten eines Service Bus-Namespace automatisch aktualisieren.
 ms.topic: how-to
 ms.date: 09/15/2020
-ms.openlocfilehash: 932c7bb1235cb54aefe67253e38e1683187f4d2c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 594f9987bfa5a7a439fb862a0345d0004785b189
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581646"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720595"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Automatisches Aktualisieren von Messagingeinheiten eines Azure Service Bus-Namespace 
 Bei der automatischen Skalierung können Sie jeweils die richtige Menge an Ressourcen ausführen, um die Lasten für Ihre Anwendung zu bewältigen. Sie können Ressourcen hinzufügen, um auf einen Anstieg der Last zu reagieren, und Kosten sparen, indem Sie ungenutzte Ressourcen entfernen. Weitere Informationen zur Funktion „Autoskalierung“ von Azure Monitor finden Sie unter [Übersicht über die Autoskalierung in Microsoft Azure](../azure-monitor/autoscale/autoscale-overview.md). 
@@ -57,7 +57,7 @@ Sie können die Autoskalierung von Messagingeinheiten mithilfe von Bedingungen k
 Bei Verwendung der Standardbedingung kann kein fester Zeitplan festgelegt werden, um die Autoskalierung an bestimmten Tagen oder innerhalb eines Datumsbereichs durchzuführen. Diese Skalierungsbedingung wird ausgeführt, wenn keine der anderen Skalierungsbedingungen mit Zeitplänen zutrifft. 
 
 ### <a name="scale-based-on-a-metric"></a>Skalierung basierend auf einer Metrik
-Im Folgenden sind die Schritte gezeigt, um eine Bedingung hinzuzufügen, mit der die Anzahl von Messagingeinheiten automatisch erhöht wird (aufskalieren), wenn die CPU-Auslastung mehr als 75 % beträgt, bzw. mit der die Anzahl von Messagingeinheiten reduziert wird (abskalieren), wenn die CPU-Auslastung bei weniger als 25 % liegt. Beim Erhöhen werden Inkrementierungsschritte von 1 zu 2, 2 zu 4 und 4 zu 8 vorgenommen. Beim Verringern erfolgen die Schritte von 8 zu 4, 4 zu 2 und 2 zu 1. 
+Im Folgenden sind die Schritte gezeigt, um eine Bedingung hinzuzufügen, mit der die Anzahl von Messagingeinheiten automatisch erhöht wird (aufskalieren), wenn die CPU-Auslastung mehr als 75 % beträgt, bzw. mit der die Anzahl von Messagingeinheiten reduziert wird (abskalieren), wenn die CPU-Auslastung bei weniger als 25 % liegt. Beim Erhöhen werden Inkrementierungsschritte von 1 zu 2, 2 zu 4, 4 zu 8 und 8 zu 16 vorgenommen. Beim Verringern erfolgen die Schritte von 16 zu 8, 8 zu 4, 4 zu 2 und 2 zu 1. 
 
 1. Wählen Sie auf der Seite **Einstellung für die Autoskalierung** für **Auswählen, wie Ihre Ressource skaliert werden soll** die Option **Benutzerdefinierte Autoskalierung** aus. 
 1. Geben Sie im Abschnitt **Standard** der Seite einen **Namen** für die Standardbedingung an. Wählen Sie das **Bleistift**-Symbol aus, um den Text zu bearbeiten. 
@@ -74,7 +74,7 @@ Im Folgenden sind die Schritte gezeigt, um eine Bedingung hinzuzufügen, mit der
         :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-75.png" alt-text="Standard: aufskalieren, wenn die CPU-Auslastung bei mehr als 75 % liegt":::       
 
         > [!NOTE]
-        > In diesem Beispiel erhöht die Funktion zur Autoskalierung die Anzahl von Messagingeinheiten für den Namespace, wenn die CPU-Auslastung insgesamt bei über 75 % liegt. Beim Erhöhen werden Inkrementierungsschritte von 1 zu 2, 2 zu 4 und 4 zu 8 vorgenommen. 
+        > In diesem Beispiel erhöht die Funktion zur Autoskalierung die Anzahl von Messagingeinheiten für den Namespace, wenn die CPU-Auslastung insgesamt bei über 75 % liegt. Beim Erhöhen werden Inkrementierungsschritte von 1 zu 2, 2 zu 4, 4 zu 8 und 8 zu 16 vorgenommen. 
 1. Wählen Sie erneut **+ Regel hinzufügen** aus, und führen Sie auf der Seite **Skalierungsregel** die folgenden Schritte aus:
     1. Wählen Sie in der Dropdownliste **Metrikname** eine Metrik aus. In diesem Beispiel wird **CPU** verwendet. 
     1. Wählen Sie einen Operator und Schwellenwerte aus. In diesem Beispiel werden für **Metrikschwellenwert zum Auslösen von Skalierungsaktion** die Operatoren **Weniger als** und **25** verwendet. 
@@ -84,7 +84,7 @@ Im Folgenden sind die Schritte gezeigt, um eine Bedingung hinzuzufügen, mit der
         :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-25.png" alt-text="Standard: abskalieren, wenn die CPU-Auslastung bei weniger als 25 % liegt":::       
 
         > [!NOTE]
-        > In diesem Beispiel verringert die Funktion zur Autoskalierung die Anzahl von Messagingeinheiten für den Namespace, wenn die CPU-Auslastung insgesamt bei weniger als 25 % liegt. Beim Verringern erfolgen die Schritte von 8 zu 4, 4 zu 2 und 2 zu 1. 
+        > In diesem Beispiel verringert die Funktion zur Autoskalierung die Anzahl von Messagingeinheiten für den Namespace, wenn die CPU-Auslastung insgesamt bei weniger als 25 % liegt. Beim Verringern erfolgen die Schritte von 16 zu 8, 8 zu 4, 4 zu 2 und 2 zu 1. 
 1. Legen Sie für **Minimum**, **Maximum** und **Standard** die jeweilige Anzahl von Messagingeinheiten fest.
 
     :::image type="content" source="./media/automate-update-messaging-units/default-scale-metric-based.png" alt-text="Standardregel basierend auf einer Metrik":::

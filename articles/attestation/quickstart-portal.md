@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a8ab7195958a6c2d5a730c38232eb348d505deda
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: d1310e3c4b4a56a27219cce613e8f6109d32c8c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593602"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729390"
 ---
 # <a name="quickstart-set-up-azure-attestation-by-using-the-azure-portal"></a>Schnellstart: Einrichten von Azure Attestation über das Azure-Portal
 
@@ -90,7 +90,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um Richtlinien-Signaturgeberze
 1. Navigieren Sie zum Menü im Azure-Portal oder auf die Startseite, und wählen Sie die Option **Alle Ressourcen** aus.
 1. Geben Sie im Filterfeld den Namen des Nachweisanbieters ein.
 1. Wählen Sie den Nachweisanbieter aus, und navigieren Sie zur Übersichtsseite.
-1. Wählen Sie links im Fenster im Ressourcenmenü oder im unteren Bereich die Option **Richtlinien-Signaturgeberzertifikate** aus.
+1. Wählen Sie links im Fenster im Ressourcenmenü oder im unteren Bereich die Option **Richtlinien-Signaturgeberzertifikate** aus. Es wird eine Aufforderung angezeigt, das Zertifikat für die Authentifizierung auszuwählen. Wählen Sie die richtige Option aus, um fortzufahren.
 1. Wählen Sie **Download policy signer certificates** (Richtlinien-Signaturgeberzertifikate herunterladen) aus. Diese Schaltfläche ist für Nachweisanbieter deaktiviert, die ohne obligatorische Richtliniensignatur erstellt wurden.
 1. Die heruntergeladene Textdatei enthält alle Zertifikate in einem JWS-Format.
 1. Überprüfen Sie die Anzahl von Zertifikaten und die heruntergeladenen Zertifikate.
@@ -122,7 +122,7 @@ In diesem Abschnitt wird beschrieben, wie Sie eine Nachweisrichtlinie anzeigen u
 1.  Navigieren Sie zum Menü im Azure-Portal oder auf die Startseite, und wählen Sie die Option **Alle Ressourcen** aus.
 1.  Geben Sie im Filterfeld den Namen des Nachweisanbieters ein.
 1.  Wählen Sie den Nachweisanbieter aus, und navigieren Sie zur Übersichtsseite.
-1.  Wählen Sie links im Fenster im Ressourcenmenü oder im unteren Bereich die Option **Richtlinie** aus.
+1.  Wählen Sie links im Fenster im Ressourcenmenü oder im unteren Bereich die Option **Richtlinie** aus. Es wird eine Aufforderung angezeigt, das Zertifikat für die Authentifizierung auszuwählen. Wählen Sie die richtige Option aus, um fortzufahren.
 1.  Wählen Sie den gewünschten **Nachweistyp** aus, und zeigen Sie die **Aktuelle Richtlinie** an.
 
 ### <a name="configure-an-attestation-policy"></a>Konfigurieren einer Nachweisrichtlinie
@@ -144,6 +144,7 @@ Führen Sie diese Schritte aus, um eine Richtlinie im JWT- oder Textformat hochz
    Bei der Dateiuploadoption wird die Richtlinienvorschau im Textformat angezeigt und kann nicht bearbeitet werden.
 
 1. Wählen Sie im oberen Menü die Option **Aktualisieren** aus, um die konfigurierte Richtlinie anzuzeigen.
+
 
 Führen Sie diese Schritte aus, um eine Richtlinie im JWT-Format hochzuladen, wenn der Nachweisanbieter mit obligatorischer Richtliniensignatur erstellt wurde.
 

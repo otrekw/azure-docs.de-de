@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: e6dff06e92126e2fc4538273e229dcb0904e3101
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3a0b87f04e60fd56d543c7c7a752cd788e087c78
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465476"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727480"
 ---
 # <a name="azure-stack-edge-mini-r-technical-specifications"></a>Azure Stack Edge Mini R: Technische Spezifikationen
 
@@ -80,9 +80,9 @@ Die folgende Tabelle zeigt die Netzteilspezifikationen:
 
 ## <a name="included-battery"></a>Eingebauter Akku
 
-Das Azure Stack Edge Mini R-Gerät enthält auch einen eingebauten Akku, der durch das Netzteil aufgeladen wird. 
+Das Azure Stack Edge Mini R-Gerät enthält auch einen eingebauten Akku, der durch das Netzteil aufgeladen wird.
 
-Ein zusätzlicher Akku des Typs 2590 kann in Verbindung mit dem eingebauten Akku verwendet werden, um den Einsatz des Geräts zwischen den Ladevorgängen zu verlängern. Dieser Akku sollte allen Sicherheits-, Transport- und Umweltvorschriften des Landes entsprechen, in dem er verwendet wird.
+Ein zusätzlicher [Akku des Typs 2590](https://www.bren-tronics.com/bt-70791ck.html) kann in Verbindung mit dem eingebauten Akku verwendet werden, um den Einsatz des Geräts zwischen den Ladevorgängen zu verlängern. Dieser Akku sollte allen Sicherheits-, Transport- und Umweltvorschriften des Landes entsprechen, in dem er verwendet wird.
 
 
 | Spezifikation           | Wert                      |
@@ -123,9 +123,9 @@ Dieser Abschnitt enthält die Spezifikationen im Zusammenhang mit der Gehäuseum
 |     Temperaturbereich          |     0–43° C (Betrieb)                                              |
 |     Vibration                  |     MIL-STD-810-Methode 514.7*<br> Prozedur I CAT 4, 20                  |
 |     Erschütterung                      |     MIL-STD-810-Methode 516.7*<br> Prozedur IV, Logistic                 |
-|     Höhe                   |     Betrieb:   3048 m (10.000 Fuß)<br> Außerhalb des Betriebs: 12.192 m (40.000 Fuß)          |
+|     Höhe                   |     Betrieb:   3048 m (10.000 Fuß)<br> Außerhalb des Betriebs: 12.192 m (40.000 Fuß)          |
 
-**Alle Verweise beziehen sich auf MIL-STD-810G-Änderung 1 (2014)*
+**Alle Verweise beziehen sich auf MIL-STD-810G-Änderung 1 (2014)*
 
 
 ## <a name="next-steps"></a>Nächste Schritte

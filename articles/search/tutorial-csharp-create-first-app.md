@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 01/26/2021
+ms.date: 02/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 961e30cf17bf385647f4482c6f767641c6b891af
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0a57e45b264badffd0305eb6ac5b3c8f7c42adf3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791677"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695123"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Tutorial: Erstellen Ihrer ersten Such-App mit dem .NET SDK
 
@@ -49,9 +49,11 @@ Mit einem einzigen Aufruf wird der Index abgefragt, und die Ergebnisse werden zu
 
 ## <a name="overview"></a>Übersicht
 
-In diesem Tutorial wird ein vorhandener, gehosteter Beispielindex verwendet, sodass Sie sich auf das Entwickeln einer Suchseite konzentrieren können, die eine Abfragezeichenfolge für die Anforderung sammelt und Ergebnisse zurückgibt. Der Index enthält fiktive Hoteldaten. Wenn Sie dann über eine einfache Seite verfügen, können Sie diese in den nachfolgenden Lektionen so erweitern, dass sie über eine Paginierung, Facetten und eine Textvervollständigung verfügt.
+In diesem Tutorial wird „hotels-sample-index“ verwendet. Diesen Index können Sie in Ihrem eigenen Suchdienst ganz schnell selbst erstellen. Eine entsprechende Anleitung finden Sie in der [Schnellstartanleitung zum Importieren von Daten](search-get-started-portal.md). Der Index enthält fiktive Hoteldaten, die in jedem Suchdienst als integrierte Datenquelle verfügbar sind.
 
-Eine fertige Version des Codes in diesem Tutorial finden Sie im folgenden Projekt:
+In der ersten Lektion dieses Tutorials werden eine grundlegende Abfragestruktur und eine Suchseite erstellt, die dann in den weiteren Lektionen mit Paginierung, Facetten und Vorschlagssuche versehen wird.
+
+Eine fertige Version des Codes finden Sie im folgenden Projekt:
 
 * [1-basic-search-page (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page)
 
@@ -59,7 +61,9 @@ Dieses Tutorial wurde aktualisiert, sodass es das Paket „Azure.Search.Document
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Da Sie einen von Microsoft gehosteten öffentlichen Beispielsuchindex verwenden, benötigen Sie für dieses Tutorial keinen Suchdienst und kein Azure-Konto.
+* [Neuer](search-create-service-portal.md) oder [bereits vorhandener](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) Suchdienst
+
+* Erstellen Sie den Index „hotels-sample-index“ gemäß der Anleitung unter [Schnellstart: Erstellen eines Index für Azure Cognitive Search im Azure-Portal](search-get-started-portal.md).
 
 * [Visual Studio](https://visualstudio.microsoft.com/)
 
@@ -103,12 +107,12 @@ Beginnen Sie mit einem Visual Studio-Projekt, um dieses Projekt von Grund auf ne
 
 Für dieses Beispiel verwenden Sie öffentlich verfügbare Hoteldaten. Diese Daten umfassen eine willkürliche Sammlung mit 50 fiktiven Hotelnamen und -beschreibungen, die nur den Zweck der Bereitstellung von Demodaten erfüllen. Geben Sie einen Namen und einen API-Schlüssel an, um auf diese Daten zuzugreifen.
 
-1. Öffnen Sie die Datei **appsettings.json** in Ihrem neuen Projekt, und ersetzen Sie die Standardzeilen durch den folgenden Namen und Schlüssel. Der hier angezeigte API-Schlüssel ist kein Beispiel für einen Schlüssel, sondern *genau* der Schlüssel, den Sie zum Zugreifen auf die Hoteldaten benötigen. Die Datei sollte jetzt wie folgt aussehen:
+1. Öffnen Sie **appsettings.json**, und ersetzen Sie die Standardzeilen durch die Suchdienst-URL (im Format `https://<service-name>.search.windows.net`) sowie durch einen [Administrator- oder Abfrage-API-Schlüssel](search-security-api-keys.md) Ihres Suchdiensts. Da Sie keinen Index erstellen oder aktualisieren müssen, können Sie für dieses Tutorial den Abfrageschlüssel verwenden.
 
     ```csharp
     {
-        "SearchServiceName": "azs-playground",
-        "SearchServiceQueryApiKey": "EA4510A6219E14888741FCFC19BFBB82"
+        "SearchServiceName": "<YOUR-SEARCH-SERVICE-URI>",
+        "SearchServiceQueryApiKey": "<YOUR-SEARCH-SERVICE-API-KEY>"
     }
     ```
 

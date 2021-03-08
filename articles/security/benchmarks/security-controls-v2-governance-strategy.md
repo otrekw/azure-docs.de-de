@@ -4,15 +4,15 @@ description: 'Azure-Sicherheitsvergleichstest V2: Governance und Strategie'
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 935a6b41152ff914889e299b6455fbb30b2f0447
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 277033e41ec7e02b89eca8cf74fe6854acb51cc1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369054"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727021"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>Sicherheitskontrolle V2: Governance und Strategie
 
@@ -24,15 +24,15 @@ Governance und Strategie bietet Leitlinien für die Gewährleistung einer stimmi
 |--|--|--|--|
 | GS-1 | 2, 13 | SC, AC |
 
-Stellen Sie sicher, dass Sie eine klare Strategie für die kontinuierliche Überwachung und den Schutz von Systemen und Daten dokumentieren und kommunizieren. Priorisieren Sie die Ermittlung, die Bewertung, den Schutz und die Überwachung unternehmenskritischer Daten und Systeme. 
+Stellen Sie sicher, dass Sie eine klare Strategie für die kontinuierliche Überwachung und den Schutz von Systemen und Daten dokumentieren und kommunizieren. Priorisieren Sie die Ermittlung, die Bewertung, den Schutz und die Überwachung unternehmenskritischer Daten und Systeme.
 
 Diese Strategie sollte dokumentierte Anleitungen, Richtlinien und Standards für die folgenden Elemente umfassen: 
 
 - Datenklassifizierungsstandard in Übereinstimmung mit den Geschäftsrisiken
 
-- Sicherheitsorganisationseinblick in Risiken und Ressourcenbestand 
+- Sicherheitsorganisationseinblick in Risiken und Ressourcenbestand
 
-- Genehmigung durch die Sicherheitsorganisation für die Nutzung der Azure-Dienste 
+- Genehmigung durch die Sicherheitsorganisation für die Nutzung der Azure-Dienste
 
 - Sicherheit von Ressourcen durch ihren gesamten Lebenszyklus
 
@@ -127,9 +127,9 @@ Stellen Sie sicher, dass Sie eine klare Strategie für Rollen und Zuständigkeit
 |--|--|--|--|
 | GS-5 | 9 | CA, SC |
 
-Richten Sie einen Ansatz für die Azure-Netzwerksicherheit im Rahmen der Gesamtstrategie Ihrer Organisation für die Sicherheitszugriffssteuerung ein.  
+Richten Sie einen Ansatz für die Azure-Netzwerksicherheit im Rahmen der Gesamtstrategie Ihrer Organisation für die Sicherheitszugriffssteuerung ein.
 
-Diese Strategie sollte dokumentierte Anleitungen, Richtlinien und Standards für die folgenden Elemente umfassen: 
+Diese Strategie sollte dokumentierte Anleitungen, Richtlinien und Standards für die folgenden Elemente umfassen:
 
 - Zentralisieren der Verantwortlichkeit für Netzwerkverwaltung und -sicherheit
 
@@ -165,9 +165,9 @@ Weitere Informationen finden Sie in den folgenden Referenzen:
 |--|--|--|--|
 | GS-6 | 16, 4 | AC, AU, SC |
 
-Richten Sie einen Ansatz für Azure-Identität und privilegierten Zugriff im Rahmen der Gesamtstrategie Ihrer Organisation für die Sicherheitszugriffssteuerung ein.  
+Richten Sie einen Ansatz für Azure-Identität und privilegierten Zugriff im Rahmen der Gesamtstrategie Ihrer Organisation für die Sicherheitszugriffssteuerung ein.
 
-Diese Strategie sollte dokumentierte Anleitungen, Richtlinien und Standards für die folgenden Elemente umfassen: 
+Diese Strategie sollte dokumentierte Anleitungen, Richtlinien und Standards für die folgenden Elemente umfassen:
 
 - Zentralisiertes Identitäts- und Authentifizierungssystem mit Interkonnektivität zu anderen internen und externen Identitätssystemen
 
@@ -175,7 +175,7 @@ Diese Strategie sollte dokumentierte Anleitungen, Richtlinien und Standards für
 
 - Schutz stark privilegierter Benutzer
 
-- Überwachung und Behandlung von Anomalien bei Benutzeraktivitäten  
+- Überwachung und Behandlung von Anomalien bei Benutzeraktivitäten
 
 - Benutzeridentität und Zugriffsüberprüfung und Abstimmungsprozess
 

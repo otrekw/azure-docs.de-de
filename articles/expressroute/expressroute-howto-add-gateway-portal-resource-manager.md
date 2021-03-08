@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 56e35c23eacdf98db283ba5d8c2e32687cbe0ea8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "91761792"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740901"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Tutorial: Konfigurieren eines virtuellen Netzwerkgateways für ExpressRoute mit dem Azure-Portal
 > [!div class="op_single_selector"]
@@ -50,6 +50,11 @@ Bei den Schritten für diese Aufgabe wird ein VNet basierend auf den Werten verw
 
 Sie können sich ein [Video](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) über diese Schritte ansehen, bevor Sie mit der Konfiguration beginnen.
 
+> [!IMPORTANT]
+> Die IPv6-Unterstützung für privates Peering befindet sich zurzeit in **Public Preview**. Wenn Sie Ihr virtuelles Netzwerk mit einer ExpressRoute-Verbindung verbinden möchten, bei der IPv6-basiertes privates Peering konfiguriert ist, stellen Sie sicher, dass Ihr virtuelles Netzwerk ein dualer Stapel ist und die Richtlinien für [IPv6 für Azure VNet](https://docs.microsoft.com/azure/virtual-network/ipv6-overview) einhält.
+> 
+> 
+
 ## <a name="create-the-gateway-subnet"></a>Erstellen des Gatewaysubnetzes
 
 1. Navigieren Sie im [Portal](https://portal.azure.com) zum virtuellen Resource Manager-Netzwerk, für das Sie ein virtuelles Netzwerkgateway erstellen möchten.
@@ -58,9 +63,13 @@ Sie können sich ein [Video](https://azure.microsoft.com/documentation/videos/az
    
     :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-gateway-subnet.png" alt-text="Hinzufügen des Gatewaysubnetzes":::
 
-1. Als **Name** für Ihr Subnetz wird automatisch der Wert „GatewaySubnet“ eingefügt. Dieser Wert ist erforderlich, damit Azure das Subnetz als Gatewaysubnetz erkennt. Passen Sie die automatisch ausgefüllten Werte für **Adressbereich** an Ihre Konfigurationsanforderungen an. Es empfiehlt sich, ein Gatewaysubnetz mit /27 oder größer (/26, /25 usw.) zu erstellen. Wählen Sie dann **OK** aus, um die Werte zu speichern und das Gatewaysubnetz zu erstellen.
+1. Als **Name** für Ihr Subnetz wird automatisch der Wert „GatewaySubnet“ eingefügt. Dieser Wert ist erforderlich, damit Azure das Subnetz als Gatewaysubnetz erkennt. Passen Sie die automatisch ausgefüllten Werte für **Adressbereich** an Ihre Konfigurationsanforderungen an. Es empfiehlt sich, ein Gatewaysubnetz mit /27 oder größer (/26, /25 usw.) zu erstellen.
 
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Hinzufügen des Subnetzes":::
+    Wenn Sie ein virtuelles Netzwerk für den dualen Stapel verwenden und IPv6-basiertes privates Peering über ExpressRoute verwenden möchten, klicken Sie auf **IPv6-Adressraum hinzufügen**, und geben Sie die Werte für den **IPv6-Adressbereich** ein.
+
+Wählen Sie dann **OK** aus, um die Werte zu speichern und das Gatewaysubnetz zu erstellen.
+
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Adding the subnet":::
 
 ## <a name="create-the-virtual-network-gateway"></a>Erstellen des Gateways für das lokale Netzwerk
 
@@ -78,6 +87,11 @@ Sie können sich ein [Video](https://azure.microsoft.com/documentation/videos/az
     | Virtuelles Netzwerk | Wählen Sie *TestVNet* aus. |
     | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**.|
     | Name der öffentlichen IP-Adresse | Geben Sie einen Namen für die öffentliche IP-Adresse ein. |
+
+    > [!IMPORTANT]
+    > Wenn Sie das IPv6-basierte private Peering über ExpressRoute verwenden möchten, wählen Sie unbedingt eine AZ-SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) für **SKU** aus.
+    > 
+    > 
 
 1. Wählen Sie **Bewerten + erstellen** und dann **Erstellen** aus, um mit der Erstellung des Gateways zu beginnen. Die Einstellungen werden überprüft, und das Gateway wird bereitgestellt. Das vollständige Erstellen des virtuellen Netzwerkgateways kann bis zu 45 Minuten dauern.
 

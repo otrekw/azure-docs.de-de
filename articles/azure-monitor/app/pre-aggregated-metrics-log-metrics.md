@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: c419411b0956cdc42055f0e97a47fc8e4ddb38c9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: acbe535d740eb527d165be1675f31e759851a987
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589739"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717824"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Protokollbasierte und vorab aggregierte Metriken in Azure Application Insights
 
@@ -48,8 +48,10 @@ Es ist erwähnenswert, dass der Sammlungsendpunkt Ereignisse vor der Erfassungs-
 | .NET Core und .NET Framework | Unterstützt (V2.13.1+)| Unterstützt über [TrackMetric](api-custom-events-metrics.md#trackmetric)| Unterstützt (V2.7.2+) über [GetMetric](get-metric.md) |
 | Java                         | Nicht unterstützt       | Unterstützt über [TrackMetric](api-custom-events-metrics.md#trackmetric)| Nicht unterstützt                           |
 | Node.js                      | Nicht unterstützt       | Unterstützt über [TrackMetric](api-custom-events-metrics.md#trackmetric)| Nicht unterstützt                           |
-| Python                       | Nicht unterstützt       | Unterstützt                                 | Unterstützt über [OpenCensus.stats](opencensus-python.md#metrics) |  
+| Python                       | Nicht unterstützt       | Unterstützt                                 | Teilweise unterstützt über [OpenCensus.stats](opencensus-python.md#metrics) |  
 
+> [!NOTE]
+>  Die Metrikimplementierung für Python, für die OpenCensus.stats verwendet wird, unterscheidet sich von GetMetric. Weitere Informationen finden Sie unter [Metriken](./opencensus-python.md#metrics).
 
 ### <a name="codeless-supported-pre-aggregated-metrics-table"></a>Tabelle mit vorab aggregierten Metriken (Unterstützung ohne Code)
 

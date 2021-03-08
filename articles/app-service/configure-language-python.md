@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 02/01/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 83c49eea8bda10d665c0a08666276e905c60c584
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: cfbbb7064fcadc06714b237066bb6a009246baac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493701"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709086"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurieren einer Linux-Python-App für Azure App Service
 
@@ -372,6 +372,7 @@ Die folgenden Abschnitte bieten weitere Anleitungen zu spezifischen Problemen.
 - [App wird nicht angezeigt: Standard-App wird angezeigt](#app-doesnt-appear)
 - [App wird nicht angezeigt: Meldung „Dienst nicht verfügbar“](#service-unavailable)
 - [„setup.py“ oder „requirements.txt“ wurde nicht gefunden](#could-not-find-setuppy-or-requirementstxt)
+- [ModuleNotFoundError beim Start](#modulenotfounderror-when-app-starts)
 - [Kennwörter werden bei der Eingabe in der SSH-Sitzung nicht angezeigt](#other-issues)
 - [Befehle in der SSH-Sitzung scheinen abgeschnitten zu werden](#other-issues)
 - [Statische Objekte werden in einer Django-App nicht angezeigt](#other-issues)
@@ -404,6 +405,10 @@ Die folgenden Abschnitte bieten weitere Anleitungen zu spezifischen Problemen.
 - **Für den Protokolldatenstrom wird eine Fehlermeldung der Art „setup.py oder requirements.txt nicht gefunden. pip-Installation wird nicht ausgeführt.“ angezeigt**: Ihre Datei *requirements.txt* konnte während des Oryx-Buildprozesses nicht gefunden werden.
 
     - Stellen Sie eine Verbindung mit dem Container der Web-App über [SSH](#open-ssh-session-in-browser) her, und stellen Sie sicher, dass *requirements.txt* richtig benannt und direkt unter *site/wwwroot* vorhanden ist. Falls nicht, sollen Sie sicherstellen, dass sich die Datei in Ihrem Repository befindet und Teil Ihrer Bereitstellung ist. Verschieben Sie sie in den Stamm, wenn sie in einem separaten Ordner enthalten ist.
+
+#### <a name="modulenotfounderror-when-app-starts"></a>ModuleNotFoundError beim Starten der App
+
+Wenn Ihnen eine Fehlermeldung wie `ModuleNotFoundError: No module named 'example'` angezeigt wird, bedeutet dies, dass Python beim Starten der Anwendung mindestens eines Ihrer Module nicht finden konnte. Dies oft der Fall, wenn Sie Ihre virtuelle Umgebung mit Ihrem Code bereitstellen. Virtuelle Umgebungen sind nicht portierbar. Daher sollten sie nicht mit dem Anwendungscode bereitgestellt werden. Lassen Sie stattdessen Oryx eine virtuelle Umgebung erstellen, und installieren Sie Ihre Pakete in der Web-App, indem Sie die App-Einstellung `SCM_DO_BUILD_DURING_DEPLOYMENT` erstellen und sie auf `1` festlegen. Dadurch wird Oryx gezwungen, Ihre Pakete zu installieren, wann immer Sie eine Bereitstellung in App Service durchführen. Weitere Informationen finden Sie [in diesem Artikel über die Portabilität von virtuellen Umgebungen](https://azure.github.io/AppService/2020/12/11/cicd-for-python-apps.html).
 
 #### <a name="other-issues"></a>Andere Probleme
 

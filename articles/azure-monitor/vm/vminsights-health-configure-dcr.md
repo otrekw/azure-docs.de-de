@@ -1,31 +1,31 @@
 ---
-title: Konfigurieren der Überwachung für das Feature „Gastintegrität“ von Azure Monitor für VMs mit Datensammlungsregeln (Vorschau)
-description: Es wird beschrieben, wie Sie für das Feature „Gastintegrität“ von Azure Monitor für VMs die Standardüberwachung im großen Stil ändern, indem Sie Resource Manager-Vorlagen verwenden.
+title: Konfigurieren der Überwachung für das Feature „Gastintegrität“ von VM Insights mit Datensammlungsregeln (Vorschau)
+description: Hier wird beschrieben, wie Sie für das Feature „Gastintegrität“ von VM Insights die Standardüberwachung umfassend ändern, indem Sie Resource Manager-Vorlagen verwenden.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 2001fece40267ca2e3256e699d2dc253ceb10f0c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 907aea16b018fb5dd3846db546787d132f8f5a9f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602329"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731220"
 ---
-# <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-using-data-collection-rules-preview"></a>Konfigurieren der Überwachung für das Feature „Gastintegrität“ von Azure Monitor für VMs mit Datensammlungsregeln (Vorschau)
-Mit dem [Feature „Gastintegrität“ von Azure Monitor für VMs](vminsights-health-overview.md) können Sie Informationen zur Integrität eines virtuellen Computers anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. In diesem Artikel wird beschrieben, wie Sie die Standardüberwachung übergreifend für mehrere virtuelle Computer mit Datensammlungsregeln ändern können.
+# <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>Konfigurieren der Überwachung für das Feature „Gastintegrität“ von VM Insights mit Datensammlungsregeln (Vorschau)
+Mit dem [Feature „Gastintegrität“ von VM Insights](vminsights-health-overview.md) können Sie Informationen zur Integrität einer VM anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. In diesem Artikel wird beschrieben, wie Sie die Standardüberwachung übergreifend für mehrere virtuelle Computer mit Datensammlungsregeln ändern können.
 
 
 ## <a name="monitors"></a>Monitore
-Der Integritätsstatus eines virtuellen Computers wird anhand des [Integritätsrollups](vminsights-health-overview.md#health-rollup-policy) seiner einzelnen Monitore bestimmt. Die beiden Monitorarten für das Feature „Gastintegrität“ von Azure Monitor für VMs sind unten in der Tabelle angegeben.
+Der Integritätsstatus eines virtuellen Computers wird anhand des [Integritätsrollups](vminsights-health-overview.md#health-rollup-policy) seiner einzelnen Monitore bestimmt. Die beiden Monitorarten für das Feature „Gastintegrität“ von VM Insights sind unten in der Tabelle angegeben.
 
 | Überwachen | BESCHREIBUNG |
 |:---|:---|
 | Einheitenmonitor | Misst einen bestimmten Aspekt einer Ressource oder Anwendung. Dabei kann es sich um die Überprüfung eines Leistungszählers zum Ermitteln der Leistung der Ressource oder ihrer Verfügbarkeit handeln. |
 | Aggregatmonitor | Eine Gruppierung mehrerer Monitore, um einen zusammengefassten Integritätsstatus angeben zu können. Ein Aggregatmonitor kann einen oder mehrere Einheitenmonitore sowie weitere Aggregatmonitore enthalten. |
 
-Es ist nicht möglich, die Monitore, die vom Feature „Gastintegrität“ von Azure Monitor für VMs genutzt werden, sowie die zugehörige Konfiguration direkt zu ändern. Sie können aber [Außerkraftsetzungen](#overrides) erstellen, mit denen das Verhalten der Standardkonfiguration geändert wird. Außerkraftsetzungen werden in Datensammlungsregeln definiert. Sie können mehrere Datensammlungsregeln erstellen, die jeweils mehrere Außerkraftsetzungen enthalten, um Ihre erforderliche Überwachungskonfiguration zu erzielen.
+Es ist nicht möglich, die Monitore, die vom Feature „Gastintegrität“ von VM Insights genutzt werden, sowie die zugehörige Konfiguration direkt zu ändern. Sie können aber [Außerkraftsetzungen](#overrides) erstellen, mit denen das Verhalten der Standardkonfiguration geändert wird. Außerkraftsetzungen werden in Datensammlungsregeln definiert. Sie können mehrere Datensammlungsregeln erstellen, die jeweils mehrere Außerkraftsetzungen enthalten, um Ihre erforderliche Überwachungskonfiguration zu erzielen.
 
 ## <a name="monitor-properties"></a>Monitoreigenschaften
 In der folgenden Tabelle sind die Eigenschaften beschrieben, die für jeden Monitor konfiguriert werden können.

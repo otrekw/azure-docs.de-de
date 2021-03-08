@@ -4,35 +4,25 @@ description: Erfahren Sie, wie Sie mithilfe des freiwilligen Migrationstools Ihr
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 03/19/2018
-ms.subservice: alerts
-ms.openlocfilehash: 28ccdde85f2873839fbe977c3c991177ac8bb3bb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/14/2020
+ms.openlocfilehash: fa487bec49ab9faa0f7c3dce752a30e4440fb873
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100599642"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037675"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Verwenden des freiwilligen Migrationstools zum Migrieren Ihrer klassischen Warnungsregeln
 
-Wie [bereits angekündigt](../platform/monitoring-classic-retirement.md) werden klassische Warnungen in Azure Monitor für Benutzer der öffentlichen Cloud eingestellt, sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz. Im Azure-Portal stand ein Migrationstool für Kunden bereit, die klassische Warnungsregeln verwendeten und die Migration selbst auslösen wollten. In diesem Artikel wird erläutert, wie Sie dieses Migrationstool verwenden, das bis zur weiteren Ankündigung auch für die verbleibenden Warnungen genutzt wird.
+Wie [zuvor angekündigt](monitoring-classic-retirement.md) werden klassische Warnungen in Azure Monitor für Benutzer der öffentlichen Cloud eingestellt. Bis zum **31. Mai 2021** ist die Verwendung noch eingeschränkt möglich. Klassische Warnungen für die Azure Government-Cloud und Azure China 21Vianet werden am **29. Februar 2024** eingestellt.
 
-## <a name="benefits-of-new-alerts"></a>Vorteile der neuen Warnungen
-
-Klassische Warnungen werden durch neue einheitliche Warnungen in Azure Monitor ersetzt. Die neue Warnungsplattform bietet die folgenden Vorteile:
-
-- Sie können Warnungen für eine Vielzahl mehrdimensionaler Metriken für [viele weitere Azure-Dienste](alerts-metric-near-real-time.md#metrics-and-dimensions-supported) ausgeben.
-- Die neuen Metrikwarnungen unterstützen [Warnungsregeln für mehrere Ressourcen](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor), sodass der erforderliche Aufwand zur Verwaltung vieler Regeln erheblich reduziert wird.
-- Einheitlicher Benachrichtigungsmechanismus, mit dem Folgendes unterstützt wird:
-  - [Aktionsgruppen](../platform/action-groups.md), ein modularer Benachrichtigungsmechanismus, der mit allen neuen Warnungstypen (Metrik, Protokoll und Aktivitätsprotokoll) verwendet werden kann.
-  - Neue Benachrichtigungsmechanismen wie SMS, Sprache und ITSM-Connector.
-- In der [einheitlichen Oberfläche für Warnungen](../platform/alerts-overview.md) werden alle Warnungen für unterschiedliche Signale (Metrik, Protokoll und Aktivitätsprotokoll) an einem zentralen Ort zusammengeführt.
+Für Kunden, die klassische Warnungsregeln verwendet haben und die Migration selbst auslösen möchten, ist ein Migrationstool im Azure-Portal verfügbar. In diesem Artikel wird die Verwendung dieses Migrationstools erläutert.
 
 ## <a name="before-you-migrate"></a>Vor der Migration
 
 Im Migrationsprozess werden klassische Warnungsregeln in neue entsprechende Warnungsregeln umgewandelt und Aktionsgruppen erstellt. Bei der Vorbereitung sind folgende Punkte zu beachten:
 
-- Das Format der Benachrichtigungsnutzlast sowie die APIs zum Erstellen und Verwalten neuer Warnungsregeln unterscheiden sich von denen der klassischen Warnungsregeln, da mehr Funktionen unterstützt werden. [Erfahren Sie, wie Sie die Migration vorbereiten](alerts-prepare-migration.md).
+- Das Format der Benachrichtigungsnutzlast sowie die APIs zum Erstellen und Verwalten neuer Warnungsregeln unterscheiden sich von denen der klassischen Warnungsregeln, da mehr Features unterstützt werden. [Erfahren Sie, wie Sie die Migration vorbereiten](alerts-prepare-migration.md).
 
 - Einige klassische Warnungsregeln können mit dem Tool nicht migriert werden. [Erfahren Sie, welche Regeln nicht migriert werden können und wie Sie mit diesen Regeln verfahren](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts).
 

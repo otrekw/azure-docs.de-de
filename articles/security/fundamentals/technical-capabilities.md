@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 6e0642a2124d58bb3af483313ac824568b6bbb39
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 00a44bd0a6176270e70eca030fcfada46effe3a5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585142"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735776"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische Funktionen der Azure-Sicherheit
 Dieser Artikel enthält eine Einführung in die Sicherheitsdienste in Azure, die helfen, Ihre Daten, Ressourcen und Anwendungen in der Cloud zu schützen, und die Sicherheitsanforderungen Ihres Unternehmens erfüllen.
 
 ## <a name="azure-platform"></a>Azure Platform
 
-[Microsoft Azure](https://azure.microsoft.com/overview/what-is-azure/) ist eine Cloudplattform mit Infrastruktur- und Anwendungsdiensten, integrierten Datendiensten und erweiterten Analysefunktionen sowie Entwicklertools und -diensten, die in den öffentlichen Cloud-Rechenzentren von Microsoft gehostet werden. Kunden verwenden Azure für viele verschiedene Kapazitäten und Szenarien: von einfachen Compute-, Netzwerk- und Speicheraufgaben über Dienste für mobile Apps und Web-Apps bis hin zu vollständigen Cloudszenarien wie dem Internet der Dinge. Azure kann mit Open Source-Technologie genutzt und als Hybrid Cloud bereitgestellt oder im Datencenter eines Kunden gehostet werden. In Azure wird Cloudtechnologie in Form von Bausteinen bereitgestellt, damit Unternehmen Kosten sparen, Innovationen schnell umsetzen und Systeme proaktiv verwalten können. Wenn Sie IT-Ressourcen erstellen oder zu einem Cloudanbieter migrieren, verlassen Sie sich darauf, dass die jeweilige Organisation Ihre Anwendungen und Daten mit den Diensten und Steuerungsmöglichkeiten schützen kann, die zum Verwalten der Sicherheit Ihrer cloudbasierten Ressourcen bereitgestellt werden.
+[Microsoft Azure](https://azure.microsoft.com/overview/what-is-azure/) ist eine Cloudplattform mit Infrastruktur- und Anwendungsdiensten, integrierten Datendiensten und erweiterten Analysefunktionen sowie Entwicklertools und -diensten, die in den öffentlichen Cloud-Rechenzentren von Microsoft gehostet werden. Kunden verwenden Azure für viele verschiedene Kapazitäten und Szenarios: von einfachen Compute-, Netzwerk- und Speicheraufgaben über Dienste für mobile Apps und Web-Apps bis hin zu vollständigen Cloudszenarios wie dem Internet der Dinge. Azure kann mit Open-Source-Technologie genutzt und als Hybrid Cloud bereitgestellt oder im Datencenter eines Kunden gehostet werden. In Azure wird Cloudtechnologie in Form von Bausteinen bereitgestellt, damit Unternehmen Kosten sparen, Innovationen schnell umsetzen und Systeme proaktiv verwalten können. Wenn Sie IT-Ressourcen erstellen oder zu einem Cloudanbieter migrieren, verlassen Sie sich darauf, dass die jeweilige Organisation Ihre Anwendungen und Daten mit den Diensten und Steuerungsmöglichkeiten schützen kann, die zum Verwalten der Sicherheit Ihrer cloudbasierten Ressourcen bereitgestellt werden.
 
 Microsoft Azure ist der einzige Cloud Computing-Anbieter, der eine sichere, einheitliche Anwendungsplattform und Infrastructure-as-a-Service bereitstellt, damit Teams mit unterschiedlichen Cloudkenntnissen die jeweiligen Ebenen der Projektkomplexität bewältigen können. Hierfür sind integrierte Datendienste und Analysefunktionen vorhanden, mit denen umfassende Erkenntnisse aus Daten gewonnen werden können – auf Microsoft-Plattformen und anderen Plattformen und für offene Frameworks und Tools. Sie können die Cloud in lokale Datencenter integrieren und Azure-Clouddienste in lokalen Datencentern bereitstellen. Im Rahmen der vertrauenswürdigen Cloud von Microsoft (Microsoft Trusted Cloud) nutzen Kunden Azure, weil sie branchenführende Sicherheit, Zuverlässigkeit, Konformität, Datenschutz und ein großes Netzwerk mit Ansprechpartnern, Partnerunternehmen und Prozessen als Unterstützung für Organisationen in der Cloud erhalten.
 
@@ -37,7 +37,7 @@ Mit Microsoft Azure haben Sie folgende Möglichkeiten:
 
 - Schützen Ihres Unternehmens
 
-## <a name="security-technical-capabilities-to-fulfil-your-responsibility"></a>Technische Funktionen zur Erfüllung Ihrer Sicherheitspflichten
+## <a name="security-technical-capabilities-to-fulfill-your-responsibility"></a>Technische Funktionen zur Erfüllung Ihrer Sicherheitspflichten
 
 Microsoft Azure bietet Dienste, mit denen Sie ihre Sicherheits-, Datenschutz- und Compliance-Anforderungen erfüllen können. In der folgenden Abbildung werden verschiedene Azure-Dienste erläutert, die Sie zum Aufbau einer sicheren und konformen Anwendungsinfrastruktur gemäß Branchenstandards nutzen können.
 
@@ -143,7 +143,7 @@ Azure AD Privileged Identity Management ermöglicht Ihnen Folgendes:
 
 #### <a name="identity-protection"></a>Schutz der Identität (Identity Protection)
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md) ist ein Sicherheitsdienst, der eine umfassende Übersicht über erkannte Risiken und potenzielle Sicherheitsrisiken für die Identitäten Ihrer Organisation bietet. Für Identity Protection werden die vorhandenen Azure Active Directory-Funktionen zur Anomalieerkennung genutzt (über die Berichte zu anomalen Aktivitäten von Azure AD), und es werden neue Risikoerkennungstypen eingeführt, mit denen Anomalien in Echtzeit erkannt werden können.
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md) ist ein Sicherheitsdienst, der eine umfassende Übersicht über erkannte Risiken und potenzielle Sicherheitsrisiken für die Identitäten Ihrer Organisation bietet. Für Identity Protection werden die vorhandenen Azure Active Directory-Funktionen zur Anomalieerkennung genutzt (über die Berichte zu anomalen Aktivitäten von Azure AD), und es werden neue Risikoerkennungstypen eingeführt, mit denen Anomalien in Echtzeit erkannt werden können.
 
 ## <a name="secure-resource-access"></a>Sicherer Ressourcenzugriff
 
@@ -192,7 +192,7 @@ Erfahren Sie mehr über die Azure-VPN-Option im Artikel [Planung und Entwurf fü
 
 ### <a name="enforce-file-level-data-encryption"></a>Erzwingen der Datenverschlüsselung auf Dateiebene
 
-[Azure RMS](/azure/information-protection/what-is-azure-rms) verwendet Verschlüsselungs-, Identitäts- und Autorisierungsrichtlinien, um Ihre Dateien und E-Mails zu schützen. Azure RMS funktioniert über mehrere Geräte (Handys, Tablets und PCs), indem Schutz sowohl innerhalb als auch außerhalb Ihrer Organisation geboten wird. Diese Funktion ist möglich, weil Azure RMS eine Schutzebene hinzufügt, die bei den Daten verbleibt, selbst wenn diese die Grenzen Ihrer Organisation verlassen.
+[Azure RMS](/azure/information-protection/what-is-azure-rms) verwendet Verschlüsselungs-, Identitäts- und Autorisierungsrichtlinien, um Ihre Dateien und E-Mails zu schützen. Azure RMS funktioniert auf mehreren Geräte (Smartphones, Tablets und PCs), indem Schutz sowohl innerhalb als auch außerhalb Ihrer Organisation geboten wird. Diese Funktion ist möglich, weil Azure RMS eine Schutzebene hinzufügt, die bei den Daten verbleibt, selbst wenn diese die Grenzen Ihrer Organisation verlassen.
 
 Wenn Sie Azure RMS verwenden, um Ihre Dateien zu schützen, verwenden Sie eine Kryptographie, die dem Branchenstandard entspricht und [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) voll unterstützt. Wenn Sie Azure RMS für den Datenschutz einsetzen, haben Sie die Garantie, dass die Datei geschützt bleibt, auch wenn diese in einen Speicher kopiert wird, der nicht von der IT kontrolliert wird, beispielsweise einem Cloudspeicherdienst. Dasselbe gilt für Dateien, die mittels E-Mail freigegeben werden. Die Datei ist als Anhang der E-Mail geschützt, und es wird eine Anleitung mitgeschickt, die erklärt, wie der geschützt Anhang geöffnet wird.
 Bei der Planung der Einführung von Azure RMS empfehlen wir Folgendes:
@@ -278,6 +278,8 @@ Mithilfe der [Tunnelerzwingung](https://www.petri.com/azure-forced-tunneling) k�
 
 Azure unterstützt eine dedizierte WAN-Linkkonnektivität mit Ihrem lokalen Netzwerk und ein Azure Virtual Network mit [ExpressRoute](../../expressroute/expressroute-introduction.md). Für den Link zwischen Azure und Ihrem Standort wird eine dedizierte Verbindung verwendet, die nicht über das öffentliche Internet verläuft. Wenn Ihre Azure-Anwendung in mehreren Datencentern ausgeführt wird, können Sie den [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) verwenden, um Anfragen von Benutzern auf intelligente Weise zwischen Instanzen der Anwendung weiterzuleiten. Sie können Datenverkehr auch an Dienste leiten, die nicht in Azure ausgeführt werden, sofern sie über das Internet zugänglich sind.
 
+Azure unterstützt außerdem private und sichere Konnektivität zu Ihren PaaS-Ressourcen (z. B. Azure Storage und SQL-Datenbank) in Ihrer Azure Virtual Network-Instanz mithilfe von [Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview). PaaS-Ressourcen werden einem [privaten Endpunkt](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) in Ihrem virtuellen Netzwerk zugeordnet. Die Verbindung zwischen dem privaten Endpunkt in Ihrem virtuellen Netzwerk und Ihrer PaaS-Ressource verwendet das Backbonenetzwerk von Microsoft und nicht das öffentliche Internet. Es ist nicht mehr erforderlich, dass Sie Ihren Dienst über das öffentliche Internet verfügbar machen. Sie können auch Azure Private Link verwenden, um auf in Azure gehostete kundeneigene Dienste und Partnerdienste in Ihrem virtuellen Netzwerk zu hosten.  Zusätzlich ermöglicht es Ihnen Azure Private Link, einen eigenen [Private Link-Dienst](https://docs.microsoft.com/azure/private-link/private-link-service-overview) in Ihrem virtuellen Netzwerk zu erstellen und für Ihre Kunden privat in ihren virtuellen Netzwerken bereitzustellen. Die Einrichtung und Nutzung von Azure Private Link ist in Azure PaaS-, Kunden- und gemeinsam genutzten Partnerdiensten einheitlich.
+
 ## <a name="virtual-machine-security"></a>Sicherheit virtueller Computer
 
 Mit [Azure Virtual Machines](../../virtual-machines/index.yml) können Sie sehr flexibel eine Vielzahl unterschiedlicher Computinglösungen bereitstellen. Mit Unterstützung für Microsoft Windows, Linux, Microsoft SQL Server, Oracle, IBM, SAP und Azure BizTalk Services können Sie jede Workload und jede Sprache auf fast jedem Betriebssystem bereitstellen.
@@ -304,7 +306,7 @@ Außerdem bietet die Checkliste Folgendes:
 
 - Bereitstellung von wichtigen Diskussionsthemen für Entscheider zu Beginn des Prozesses zur Cloudeinführung
 
-- Unterstützung von eingehenden Unternehmensdiskussionen zu den Bestimmungen und den eigenen Zielen der Organisation in Bezug auf Datenschutz, personenbezogene Informationen und Datensicherheit
+- Unterstützung von umfassenden Unternehmensdiskussionen zu den Bestimmungen und den eigenen Zielen der Organisation in Bezug auf Datenschutz, personenbezogene Informationen und Datensicherheit
 
 - Hilfestellung für Organisationen beim Identifizieren von potenziellen Problemen, die sich auf ein Cloudprojekt auswirken können
 
@@ -316,7 +318,7 @@ Außerdem bietet die Checkliste Folgendes:
 
 ![Sicherheitsüberprüfung (Erkennung)](./media/technical-capabilities/azure-security-technical-capabilities-fig7.png)
 
-Azure Operational Security basiert auf einem Framework, mit dem die über verschiedene einzigartige Microsoft-Funktionen erworbenen Kenntnisse einbezogen werden, z.B. Microsoft Security Development Lifecycle (SDL), Microsoft Security Response Center-Programm und umfassende Informationen zur Bedrohungslage hinsichtlich der Sicherheit im Internet.
+Azure Operational Security basiert auf einem Framework, das die über verschiedene für Microsoft einzigartige Funktionen erworbenen Kenntnisse einbezieht, einschließlich dem Microsoft Security Development Lifecycle (SDL), dem Microsoft Security Response Center-Programm und den umfassenden Informationen zur Bedrohungslage hinsichtlich der Sicherheit im Internet.
 
 ### <a name="microsoft-azure-monitor"></a>Microsoft Azure Monitor
 
@@ -383,7 +385,7 @@ Bei der [Speicheranalyse](/rest/api/storageservices/fileservices/storage-analyti
 
 ### <a name="application-insights"></a>Application Insights
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen. Verwenden Sie ihn, um Ihre aktiven Webanwendung zu überwachen. Der Dienst erkennt automatisch Leistungsanomalien. Er verfügt über leistungsstarke Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von den Benutzern verwendet wird. Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App. Er lässt sich für Apps auf einer Vielzahl von Plattformen einsetzen, z.B. .NET, Node.js oder Java EE – lokal gehostet oder in der Cloud. Der Dienst lässt sich in Ihren DevOps-Prozess integrieren und verfügt über Verbindungspunkte mit verschiedenen Entwicklungstools.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen. Verwenden Sie ihn, um Ihre aktiven Webanwendung zu überwachen. Der Dienst erkennt automatisch Leistungsanomalien. Er verfügt über leistungsstarke Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von den Benutzern verwendet wird. Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App. Er lässt sich für Apps auf einer Vielzahl von Plattformen einsetzen, z.B. .NET, Node.js oder Java EE – lokal gehostet oder in der Cloud. Der Dienst lässt sich mit Ihrem DevOps-Prozess integrieren und verfügt über Verbindungspunkte mit verschiedenen Entwicklungstools.
 
 Der Dienst überwacht:
 

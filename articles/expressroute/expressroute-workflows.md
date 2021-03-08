@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: duau
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 2742b03bcacd73e7e602666b898417f295905f19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 24ad325cae2ee71ad49ee8ee055a83ceb8fa7ef2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034070"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721734"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute-Workflows für die Verbindungsbereitstellung und Verbindungszustände
 
@@ -77,8 +77,12 @@ Konfigurieren Sie Routingdomänen. Wenn Ihr Konnektivitätsanbieter die Layer 3
 
 Aktivieren Sie das private Peering, um eine Verbindung mit VMs und Clouddiensten herzustellen, die im virtuellen Azure-Netzwerk bereitgestellt sind.
 
-* Peeringsubnetz für Pfad 1 (/30)
-* Peeringsubnetz für Pfad 2 (/30)
+* IPv4-Subnetze:
+    * Peeringsubnetz für Pfad 1 (/30)
+    * Peeringsubnetz für Pfad 2 (/30)
+* IPv6-Subnetze (optional):
+    * Peeringsubnetz für Pfad 1 (/126)
+    * Peeringsubnetz für Pfad 2 (/126)
 * VLAN-ID für das Peering
 * ASN für das Peering
 * ExpressRoute-ASN = 12076
@@ -88,8 +92,12 @@ Aktivieren Sie das private Peering, um eine Verbindung mit VMs und Clouddiensten
 
 Aktivieren Sie diese Option, um auf Microsoft-Onlinedienste wie Microsoft 365 zuzugreifen. Darüber hinaus kann über Microsoft-Peering auf alle Azure-PaaS-Dienste zugegriffen werden. Verwenden Sie für die Verbindung mit Microsoft unbedingt einen anderen Proxy/Edge als für die Internetverbindung. Wenn Sie denselben Edge für ExpressRoute und das Internet verwenden, führt das zu asymmetrischem Routing und Konnektivitätsausfällen für Ihr Netzwerk.
 
-* Peeringsubnetz für Pfad 1 (/30) – muss eine öffentliche IP-Adresse sein
-* Peeringsubnetz für Pfad 2 (/30) – muss eine öffentliche IP-Adresse sein
+* IPv4-Subnetze:
+    * Peeringsubnetz für Pfad 1 (/30) – muss eine öffentliche IP-Adresse sein
+    * Peeringsubnetz für Pfad 2 (/30) – muss eine öffentliche IP-Adresse sein
+* IPv6-Subnetze (optional):
+    * Peeringsubnetz für Pfad 1 (/126) – muss eine öffentliche IP-Adresse sein
+    * Peeringsubnetz für Pfad 2 (/126) – muss eine öffentliche IP-Adresse sein
 * VLAN-ID für das Peering
 * ASN für das Peering
 * Angekündigte Präfixe – müssen Präfixe öffentlicher IP-Adressen sein
@@ -160,7 +168,7 @@ Sie können sie bei Bedarf erneut aktivieren oder PowerShell-Cmdlets ausführen,
 
 ## <a name="routing-session-configuration-state"></a>Konfigurationszustand der Routingsitzung
 
-Durch den BGP-Bereitstellungszustand wird gemeldet, ob die BGP-Sitzung in Microsoft Edge aktiviert wurde. Der Zustand muss aktiviert sein, um privates oder Microsoft-Peering zu verwenden.
+Über den BGP-Bereitstellungsstatus wird gemeldet, ob die BGP-Sitzung in Microsoft Edge aktiviert wurde. Der Zustand muss aktiviert sein, um privates oder Microsoft-Peering zu verwenden.
 
 Insbesondere beim Microsoft-Peering sollte der BGP-Sitzungszustand überprüft werden. Zusätzlich zum BGP-Bereitstellungszustand gibt es einen weiteren Zustand: *advertised public prefixes state*. Der Zustand der angekündigten öffentlichen Präfixe muss *configured* lauten, damit die BGP-Sitzung aktiv ist und das Routing durchgängig funktioniert. 
 

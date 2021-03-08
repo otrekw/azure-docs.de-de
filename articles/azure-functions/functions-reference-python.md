@@ -4,12 +4,12 @@ description: Entwickeln von Funktionen mit Python
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a13b4463d2a9c32a3487f839c0bf53b4c5bd2963
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 78965a1a09272663c52469b8ccd91988f30b53cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735842"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708695"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Python-Entwicklerhandbuch für Azure Functions
 
@@ -20,6 +20,9 @@ Für Python-Entwickler sind möglicherweise auch folgende Artikel interessant:
 | Erste Schritte | Konzepte| Szenarien/Beispiele |
 | -- | -- | -- | 
 | <ul><li>[Python-Funktion unter Verwendung von Visual Studio Code](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[Python-Funktion mit Terminal/Eingabeaufforderung](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[Entwicklerhandbuch](functions-reference.md)</li><li>[Hostingoptionen](functions-scale.md)</li><li>[Überlegungen&nbsp;zur Leistung](functions-best-practices.md)</li></ul> | <ul><li>[Imageklassifizierung mit PyTorch](machine-learning-pytorch.md)</li><li>[Azure-Automatisierungsbeispiel](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Maschinelles Lernen mit TensorFlow](functions-machine-learning-tensorflow.md)</li><li>[Durchsuchen von Python-Beispielen](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
+
+> [!NOTE]
+> Obwohl Sie Ihre [Python-basierten Azure-Funktionen lokal unter Windows entwickeln](./azure-functions/create-first-function-vs-code-python#run-the-function-locally) können, wird Python bei der Ausführung in Azure nur in einem Linux-basierten Hostingplan unterstützt. Sehen Sie sich die Liste der unterstützten [Betriebssystem- und Runtimekombinationen](./azure-functions/functions-scale#operating-systemruntime) an.
 
 ## <a name="programming-model"></a>Programmiermodell
 

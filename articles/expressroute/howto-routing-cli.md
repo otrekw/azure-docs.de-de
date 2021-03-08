@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/09/2020
 ms.author: duau
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 7a482e268137946222f1c8b427424598bd78f935
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2c56e847e3b112d50285cd2c116c8f22efbc507f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735102"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715529"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>Tutorial: Erstellen und Ändern des Peerings für eine ExpressRoute-Verbindung mithilfe von CLI
 
@@ -31,8 +31,8 @@ In diesem Tutorial erfahren Sie, wie Sie die Routingkonfiguration/das Peering f�
 
 In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 > [!div class="checklist"]
-> - Konfigurieren, Aktualisieren und Löschen des Microsoft-Peerings für eine Verbindung
-> - Konfigurieren, Aktualisieren und Löschen des privaten Azure-Peerings für eine Verbindung
+> - Konfigurieren, Aktualisieren und Löschen des Microsoft-Peerings für eine Leitung
+> - Konfigurieren, Aktualisieren und Löschen des privaten Azure-Peerings für eine Leitung
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -69,7 +69,7 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
 
 1. Erstellen Sie eine ExpressRoute-Verbindung. Führen Sie die Schritte zum Erstellen einer [ExpressRoute-Verbindung](howto-circuit-cli.md) aus, und lassen Sie sie vom Konnektivitätsanbieter bereitstellen. Wenn Ihr Konnektivitätsanbieter verwaltete Layer 3-Dienste im Angebot hat, können Sie bei ihm die Aktivierung des Microsoft-Peerings anfordern. In diesem Fall müssen Sie die Anweisungen in den nächsten Abschnitten nicht befolgen. Falls Ihr Konnektivitätsanbieter das Routing jedoch nicht für Sie verwaltet, setzen Sie die Konfiguration nach dem Erstellen der Verbindung mit den folgenden Schritten fort. 
 
-1. Überprüfen Sie, ob die ExpressRoute-Verbindung bereitgestellt und auch aktiviert wurde. Nehmen Sie das folgende Beispiel:
+1. Überprüfen Sie, ob die ExpressRoute-Leitung bereitgestellt und auch aktiviert wurde. Nehmen Sie das folgende Beispiel:
 
    ```azurecli
    az network express-route list
@@ -106,7 +106,7 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
    "type": "Microsoft.Network/expressRouteCircuits]
    ```
 
-4. Konfigurieren Sie das Microsoft-Peering für die Verbindung. Bevor Sie fortfahren, stellen Sie sicher, dass Ihnen die folgenden Informationen vorliegen.
+4. Konfigurieren Sie das Microsoft-Peering für die Verbindung. Stellen Sie vorab sicher, dass Ihnen die folgenden Informationen vorliegen:
 
    * Ein /30-Subnetz für die primäre Verknüpfung. Der Adressblock muss ein gültiges öffentliches IPv4-Präfix sein, das sich in Ihrem Besitz befindet und in einer RIR/IRR registriert ist.
    * Ein /30-Subnetz für die sekundäre Verknüpfung. Der Adressblock muss ein gültiges öffentliches IPv4-Präfix sein, das sich in Ihrem Besitz befindet und in einer RIR/IRR registriert ist.
@@ -204,7 +204,7 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
    ```
 1. Erstellen Sie eine ExpressRoute-Verbindung. Führen Sie die Schritte zum Erstellen einer [ExpressRoute-Verbindung](howto-circuit-cli.md) aus, und lassen Sie sie vom Konnektivitätsanbieter bereitstellen. Wenn Ihr Konnektivitätsanbieter verwaltete Layer 3-Dienste im Angebot hat, können Sie bei ihm die Aktivierung des privaten Azure-Peerings anfordern. In diesem Fall müssen Sie die Anweisungen in den nächsten Abschnitten nicht befolgen. Falls Ihr Konnektivitätsanbieter das Routing jedoch nicht für Sie verwaltet, setzen Sie die Konfiguration nach dem Erstellen der Verbindung mit den folgenden Schritten fort.
 
-1. Überprüfen Sie, ob die ExpressRoute-Verbindung bereitgestellt und auch aktiviert wurde. Nehmen Sie das folgende Beispiel:
+1. Überprüfen Sie, ob die ExpressRoute-Leitung bereitgestellt und auch aktiviert wurde. Nehmen Sie das folgende Beispiel:
 
    ```azurecli
    az network express-route show --resource-group ExpressRouteResourceGroup --name MyCircuit
@@ -243,8 +243,10 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
 
 1. Konfigurieren Sie das private Azure-Peering für die Verbindung. Bevor Sie mit den nächsten Schritten fortfahren, stellen Sie sicher, dass Sie über Folgendes verfügen:
 
-   * Ein /30-Subnetz für die primäre Verknüpfung. Dieses Subnetz darf nicht Teil eines Adressraums sein, der für virtuelle Netzwerke reserviert ist.
-   * Ein /30-Subnetz für die sekundäre Verknüpfung. Dieses Subnetz darf nicht Teil eines Adressraums sein, der für virtuelle Netzwerke reserviert ist.
+   * Sie benötigen zwei Subnetze, die nicht zu einem für virtuelle Netzwerke reservierten Adressraum gehören. Ein Subnetz wird für den primären Link verwendet, während das andere Subnetz für den sekundären Link verwendet wird. Über jedes dieser Subnetze weisen Sie die erste verwendbare IP-Adresse für Ihren Router zu, da die zweite verwendbare IP-Adresse von Microsoft für den eigenen Router genutzt wird. Sie verfügen über drei Optionen für dieses Paar von Subnetzen:
+       * IPv4: zwei /30-Subnetze
+       * IPv6: zwei /126-Subnetze
+       * Beides: zwei /30-Subnetze und zwei /126-Subnetze
    * Eine gültige VLAN-ID zum Einrichten dieses Peerings. Stellen Sie sicher, dass kein anderes Peering der Verbindung die gleiche VLAN-ID verwendet.
    * AS-Nummer für Peering. Sie können sowohl AS-Nummern mit 2 Byte als auch mit 4 Byte verwenden. Sie können eine private AS-Nummer für dieses Peering verwenden. Stellen Sie sicher, dass Sie 65515 nicht verwenden.
    * **Optional** – Einen MD5-Hash, wenn Sie sich für dessen Einsatz entscheiden.

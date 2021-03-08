@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4f89ace7130e95ba109edcf6becca1e15c8d32c1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d6e27fddceb69efbb2c1697c09ee9b61d7f38ee4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273199"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687973"
 ---
 # <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Konfigurieren der Sicherheit für Ihre Azure Arc-fähige PostgreSQL Hyperscale-Servergruppe
 
@@ -23,6 +23,7 @@ In dieser Dokumentation werden verschiedene Aspekte der Sicherheit Ihrer Serverg
 - Benutzerverwaltung
    - Allgemeine Perspektiven
    - Ändern des Kennworts des _postgres_-Administrators
+- Audit
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -159,13 +160,14 @@ Das allgemeine Format für den Befehl zum Ändern des Kennworts lautet wie folgt
 azdata arc postgres server edit --name <server group name> --admin-password
 ```
 
-Dabei ist „--admin-password“ ein boolescher Wert, der sich auf das Vorhandensein eines Werts in der Umgebungsvariable der **Sitzung** „AZDATA_PASSWORD“ bezieht.
-Wenn die Umgebungsvariable der **Sitzung** „AZDATA_PASSWORD“ vorhanden ist und einen Wert aufweist, wird durch Ausführen des obigen Befehls das Kennwort des Postgres-Benutzers auf den Wert dieser Umgebungsvariablen festgelegt.
+Dabei ist `--admin-password` ein boolescher Wert, der sich auf das Vorhandensein eines Werts in der Umgebungsvariablen „AZDATA_PASSWORD“ vom Typ **Sitzung** bezieht.
+Wenn die Umgebungsvariable „AZDATA_PASSWORD“ vom Typ **Sitzung** vorhanden ist und einen Wert besitzt, wird durch Ausführen des obigen Befehls das Kennwort des Postgres-Benutzers auf den Wert dieser Umgebungsvariablen festgelegt.
 
-Wenn die Umgebungsvariable der **Sitzung** „AZDATA_PASSWORD“ vorhanden ist, aber keinen Wert aufweist oder die Umgebungsvariable der **Sitzung** „AZDATA_PASSWORD“ nicht vorhanden ist, wird der Benutzer durch Ausführen des obigen Befehls zur interaktiven Eingabe eines Kennworts aufgefordert.
+Wenn die Umgebungsvariable „AZDATA_PASSWORD“ vom Typ **Sitzung** vorhanden ist, aber keinen Wert besitzt, oder die Umgebungsvariable „AZDATA_PASSWORD“ vom Typ **Sitzung** nicht vorhanden ist, wird der Benutzer durch Ausführen des obigen Befehls zur interaktiven Eingabe eines Kennworts aufgefordert.
 
-#### <a name="changing-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>Interaktives Ändern des Kennworts des Postgres-Administrators:
-1. Löschen Sie die Umgebungsvariable der **Sitzung** „AZDATA_PASSWORD“, oder löschen Sie ihren Wert.
+#### <a name="change-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>Interaktives Ändern des Kennworts des Postgres-Administrators
+
+1. Löschen Sie die Umgebungsvariable „AZDATA_PASSWORD“ vom Typ **Sitzung** oder ihren Wert.
 2. Führen Sie den folgenden Befehl aus:
    ```console
    azdata arc postgres server edit --name <server group name> --admin-password
@@ -186,8 +188,8 @@ Wenn die Umgebungsvariable der **Sitzung** „AZDATA_PASSWORD“ vorhanden ist, 
    postgres01 is Ready
    ```
    
-#### <a name="changing-the-password-of-the-postgres-administrative-user-using-the-azdata_password-sessions-environment-variable"></a>Ändern des Kennworts des Postgres-Administrators mithilfe der Umgebungsvariablen der **Sitzung** „AZDATA_PASSWORD“:
-1. Legen Sie den Wert der Umgebungsvariablen der **Sitzung** „AZDATA_PASSWORD“ auf das gewünschte Kennwort fest.
+#### <a name="change-the-password-of-the-postgres-administrative-user-using-the-azdata_password-session-environment-variable"></a>Ändern des Kennworts des Postgres-Administrators mithilfe der Umgebungsvariablen „AZDATA_PASSWORD“ vom Typ **Sitzung**:
+1. Legen Sie den Wert der Umgebungsvariablen „AZDATA_PASSWORD“ vom Typ **Sitzung** auf das gewünschte Kennwort fest.
 2. Führen Sie den Befehl aus:
    ```console
    azdata arc postgres server edit --name <server group name> --admin-password
@@ -216,9 +218,12 @@ Wenn die Umgebungsvariable der **Sitzung** „AZDATA_PASSWORD“ vorhanden ist, 
 > echo $env:AZDATA_PASSWORD
 > ```
 
+## <a name="audit"></a>Audit
+
+Konfigurieren Sie für Überwachungsszenarien Ihre Servergruppe so, dass sie die Postgres-Erweiterungen vom Typ `pgaudit` verwendet. Ausführlichere Informationen zu `pgaudit` finden Sie im [GitHub-Projekt `pgAudit`](https://github.com/pgaudit/pgaudit/blob/master/README.md). Informationen zum Aktivieren der Erweiterung `pgaudit` in Ihrer Servergruppe finden Sie unter [Verwenden von PostgreSQL-Erweiterungen in Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppen](using-extensions-in-postgresql-hyperscale-server-group.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Ausführliche Informationen zur `pgcrypto`-Erweiterung finden Sie [hier](https://www.postgresql.org/docs/current/pgcrypto.html).
-- Ausführliche Informationen zur Verwendung von Postgres-Erweiterungen finden Sie [hier](using-extensions-in-postgresql-hyperscale-server-group.md).
+- [Erweiterung `pgcrypto`](https://www.postgresql.org/docs/current/pgcrypto.html)
+- [Verwenden von PostgreSQL-Erweiterungen in Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppen](using-extensions-in-postgresql-hyperscale-server-group.md)
 

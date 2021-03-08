@@ -4,16 +4,17 @@ description: Hier erfahren Sie, wie Daten mithilfe einer Kopieraktivität in ein
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 06/28/2020
+ms.date: 02/20/2021
 ms.author: jingwang
-ms.openlocfilehash: 95ecb44f154ab84a60a1ee673826d83fc51305b3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 23fc5cabb947f579177a26afc6baec873f2df154
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383499"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727888"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory"></a>Kopieren von Daten aus und in IBM Informix mithilfe von Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einem bzw. in einen IBM Informix-Datenspeicher zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
@@ -27,12 +28,13 @@ Der Informix-Connector wird für die folgenden Aktivitäten unterstützt:
 
 Sie können Daten aus einer Informix-Quelle in jeden unterstützten Senkendatenspeicher oder Daten aus jedem unterstützten Quelldatenspeicher in eine Informix-Senke kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zum Verwenden dieses Informix-Connectors müssen Sie folgende Schritte durchführen:
 
 - Richten Sie eine selbstgehostete Integration Runtime ein. Im Artikel [Selbstgehostete Integration Runtime](create-self-hosted-integration-runtime.md) finden Sie Details.
-- Installieren des Informix-ODBC-Treibers für den Datenspeicher auf dem Computer mit der Integration Runtime. Beispielsweise können Sie den Treiber „IBM INFORMIX Informix DRIVER (64-bit)“ verwenden.
+- Installieren des Informix-ODBC-Treibers für den Datenspeicher auf dem Computer mit der Integration Runtime. Informationen zur Treiberinstallation und -einrichtung finden Sie im Artikel zum [Leitfaden für den Informix ODBC-Treiber](https://www.ibm.com/support/knowledgecenter/SSGU8G_11.70.0/com.ibm.odbc.doc/odbc.htm) im IBM Knowledge Center. Wenden Sie sich alternativ an das IBM-Supportteam, um Anleitungen zur Treiberinstallation zu erhalten.
 
 ## <a name="getting-started"></a>Erste Schritte
 
