@@ -3,12 +3,12 @@ title: Kubernetes-Überwachung mit Container Insights | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie mit Container Insights die Leistung eines Kubernetes-Clusters anzeigen und analysieren.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 432de02d22a418e92a7487001ae8c128323f3685
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 865a21e8c54d2cf569e04534fab6ec14f5519f34
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711347"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124311"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-container-insights"></a>Überwachen der Leistung Ihres Kubernetes-Clusters mit Container Insights
 
@@ -20,7 +20,7 @@ Weitere Informationen zum Aktivieren von Container Insights finden Sie unter [On
 
 Azure Monitor verfügt über eine Multi-Cluster-Ansicht, in der der Integritätsstatus aller überwachten Kubernetes-Cluster angezeigt wird, auf denen Linux und Windows Server 2019 ausgeführt wird und die in Ressourcengruppen in Ihrem Abonnement bereitgestellt wurden. Es werden ermittelte Cluster für alle Umgebungen angezeigt, die nicht von der Lösung überwacht werden. Sie können die Clusterintegrität auf einen Blick einschätzen und von diesem Punkt aus einen Drilldown zur Seite mit der Knoten- bzw. Controllerleistung ausführen oder alternativ zu den Leistungsdiagrammen für den Cluster navigieren. Für AKS-Cluster, die ermittelt und als nicht überwacht erkannt wurden, können Sie die Überwachung jederzeit aktivieren.
 
-Die wichtigsten Unterschiede zwischen der Überwachung eines Windows Server-Clusters mit Container Insights und einem Linux-Cluster sind [hier](container-insights-overview.md#what-does-azure-monitor-for-containers-provide) im Übersichtsartikel beschrieben.
+Die wichtigsten Unterschiede zwischen der Überwachung eines Windows Server-Clusters mit Container Insights und einem Linux-Cluster sind [hier](container-insights-overview.md#what-does-container-insights-provide) im Übersichtsartikel beschrieben.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 

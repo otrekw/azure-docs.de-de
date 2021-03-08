@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/26/2021
-ms.openlocfilehash: c57ac9ddbebcf02cb0118705b63f97fd1880b0f2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 098f62365971fd634001706ab99fd414a6b25056
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695890"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123563"
 ---
 # <a name="register-and-scan-azure-multiple-sources"></a>Registrieren und Überprüfen mehrerer Azure-Quellen
 
@@ -95,12 +95,12 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
     1. Sie können **Anmeldeinformationen auf der übergeordneten Ebene** als MSI oder bestimmte Anmeldeinformationen vom Typ Dienstprinzipal auswählen, die Sie für alle Ressourcentypen unter dem Abonnement oder der Ressourcengruppe verwenden können.
     1. Sie können auch speziell **den Ressourcentyp auswählen und andere Anmeldeinformationen** für diesen Ressourcentyp anwenden.
     1. Alle Anmeldeinformationen werden als Authentifizierungsmethode für alle Ressourcen unter einem bestimmten Typ betrachtet.
-    1. Sie müssen die ausgewählten Anmeldeinformationen für die Ressourcen festlegen, um Sie wie in diesem [Abschnitt](#Setting-up-authentication-to-scan-resources-under-a-subscription-or-resource-group) beschrieben erfolgreich zu überprüfen.
+    1. Sie müssen die ausgewählten Anmeldeinformationen für die Ressourcen festlegen, um Sie wie in diesem [Abschnitt](#setting-up-authentication-to-scan-resources-under-a-subscription-or-resource-group) beschrieben erfolgreich zu überprüfen.
 1. Sie können in jedem Typ auswählen, ob Sie entweder alle Ressourcen oder eine Teilmenge nach Namen überprüfen möchten.
     1. Wenn Sie die Option **Alle** belassen, werden zukünftige Ressourcen dieses Typs in zukünftigen Überprüfungen ebenfalls überprüft.
     1. Wenn Sie bestimmte Speicherkonten oder SQL-Datenbanken auswählen, werden zukünftige Ressourcen dieses Typs, die innerhalb dieses Abonnements oder dieser Ressourcengruppe erstellt werden, nicht für Überprüfungen eingeschlossen, es sei denn, die Überprüfung wird in Zukunft explizit bearbeitet.
  
-1.  Klicken Sie auf **Weiter**, um fortzufahren. Wir testen den Zugriff, um zu überprüfen, ob Sie das Purview-MSI als Leser des Abonnements oder der Ressourcengruppe angewendet haben. Wenn eine Fehlermeldung ausgegeben wird, befolgen Sie [diese](#Setting-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group) Anweisungen.
+1.  Klicken Sie auf **Weiter**, um fortzufahren. Wir testen den Zugriff, um zu überprüfen, ob Sie das Purview-MSI als Leser des Abonnements oder der Ressourcengruppe angewendet haben. Wenn eine Fehlermeldung ausgegeben wird, befolgen Sie [diese](#setting-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group) Anweisungen.
 
 1.  Wählen Sie **Überprüfungsregelsätze** für jeden Ressourcentyp aus, den Sie im vorherigen Schritt ausgewählt haben. Sie können Überprüfungsregelsätze auch inline erstellen.
   :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-scan-rule-set.png" alt-text="Auswahl mehrerer Azure-Überprüfungsregelsätze":::
