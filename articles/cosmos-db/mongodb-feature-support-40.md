@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/02/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: 4a7e80b77048d1853c9cb0d6e59c5bdd76e8d823
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 41293f96246dd4badab000c4e7f936d825e7665a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664276"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691126"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-40-server-version-supported-features-and-syntax"></a>Azure Cosmos DB-API für MongoDB (Serverversion 4.0): unterstützte Features und Syntax
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -583,7 +583,7 @@ Azure Cosmos DB unterstützt eine Gültigkeitsdauer (Time-to-live, TTL) basiere
 
 ## <a name="transactions"></a>Transaktionen
 
-Azure Cosmos DB unterstützt Transaktionen für Sammlungen ohne Shards. Das Timeout für Transaktionen ist auf fünf Sekunden festgelegt.
+Transaktionen mit mehreren Dokumenten werden in einer Sammlung ohne Shards unterstützt. Transaktionen mit mehreren Dokumenten werden nicht sammlungsübergreifend oder in Sammlungen mit Shards unterstützt. Das Timeout für Transaktionen ist auf fünf Sekunden festgelegt.
 
 ## <a name="user-and-role-management"></a>Benutzer- und Rollenverwaltung
 

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/15/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 77ccf09903b6cff83b52d60d43d0c52533c9c1ad
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 49bf89d38edef6a9186cbdb5bb89a763339385b4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041687"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175820"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Einrichten Ihres Azure Percept DK und Bereitstellen Ihres ersten KI-Modells
 
@@ -25,7 +25,7 @@ Wenn während dieses Schnellstarts Probleme auftreten, finden Sie im Leitfaden z
 - Ein Azure Percept DK.
 - Ein Windows-, Linux- oder OS X-basierter Hostcomputer mit WLAN-Funktion und einem Webbrowser.
 - Ein Azure-Konto mit einem aktiven Abonnement. [Kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Das Azure-Konto muss über die Rolle „Besitzer“ oder „Mitwirkender“ für das Abonnement verfügen. Weitere Informationen zu Azure-Rollendefinitionen
+- Das Azure-Konto muss über die Rolle „Besitzer“ oder „Mitwirkender“ für das Abonnement verfügen. Weitere Informationen zu [Azure-Rollendefinitionen](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles)
 
 ### <a name="prerequisite-check"></a>Prüfen der Voraussetzungen
 
@@ -182,7 +182,7 @@ Wenn Sie ein neues Abonnement erstellen möchten, befolgen Sie [diese Schritte](
 
 ## <a name="view-your-device-in-the-azure-percept-studio-and-deploy-common-prebuilt-sample-apps"></a>Anzeigen Ihres Geräts in Azure Percept Studio und Bereitstellen gängiger vorkonfigurierter Beispiel-Apps
 
-1. Zeigen Sie Ihre Liste der „Geräte“ auf der Seite „Übersicht über Azure Percept“ an. Die Seite „Übersicht über Azure Percept“ ist Ihr Ausgangspunkt für den Zugriff auf viele verschiedene Workflows, sowohl für die erste als auch für fortgeschrittenere Entwicklung von erweiterten KI-Edge-Modellen und -Lösungen.
+1. Zeigen Sie die Liste Ihrer Geräte auf der Seite „Übersicht“ von [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) an. Die Seite „Übersicht über Azure Percept“ ist Ihr Ausgangspunkt für den Zugriff auf viele verschiedene Workflows, sowohl für die erste als auch für fortgeschrittenere Entwicklung von erweiterten KI-Edge-Modellen und -Lösungen.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-01-get-device-list.png" alt-text="Anzeigen Ihrer Geräteliste.":::
     

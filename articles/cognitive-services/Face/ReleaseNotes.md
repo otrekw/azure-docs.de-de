@@ -10,16 +10,23 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 49d8eeaa8d1160659a456f147a6a5e27f923af33
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a66f65d48a14853ec1da08f5d83b777f4fdac846
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733464"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183316"
 ---
 # <a name="whats-new-in-face-service"></a>Neuerungen im Dienst „Gesichtserkennung“
 
 Der Azure-Dienst „Gesichtserkennung“ wird fortlaufend aktualisiert. In diesem Artikel finden Sie aktuelle Informationen zu Featureverbesserungen, Fixes und Dokumentationsaktualisierungen.
+
+## <a name="february-2021"></a>Februar 2021
+
+* Neues Erkennungsmodell für Gesichtserkennungs-API: Das neue Modell „detection 03“ ist das genaueste derzeit verfügbare Erkennungsmodell. Wenn Sie Neukunde sind, empfehlen wir die Verwendung dieses Modells. Mit dem Modell „detection 03“ werden sowohl der Rückruf als auch die Genauigkeit für kleinere Gesichter in Bildern (64 x 64 Pixel) verbessert. Zu den weiteren Verbesserungen zählen eine Gesamtverringerung von False Positives und eine verbesserte Erkennung bei gedrehter Ausrichtung von Gesichtern. Das Modell „detection 03“ bietet zusammen mit dem neuen Modell „recognition 04“ zudem eine höhere Erkennungsgenauigkeit. Ausführlichere Informationen finden Sie unter [Angeben eines Gesichtserkennungsmodells](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model).
+* Gesichtsmaskenattribut: Im aktuellen Modell „detection 03“ ist das Gesichtsmaskenattribut zusammen mit dem zusätzlichen Attribut `"noseAndMouthCovered"` verfügbar. Mit letzterem wird ermittelt, ob die Gesichtsmaske wie vorgesehen Nase und Mund bedeckt. Um die aktuelle Funktion zur Maskenerkennung zu verwenden, müssen Benutzer das Erkennungsmodell in der API-Anforderung angeben: Weisen Sie `detection_03` mit dem Parameter _detectionModel_ die Modellversion zu. Ausführlichere Informationen finden Sie unter [Angeben eines Gesichtserkennungsmodells](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model).
+* Neues Erkennungsmodell für Gesichtserkennungs-API: Das neue Modell „recognition 04“ ist das genaueste derzeit verfügbare Erkennungsmodell. Wenn Sie Neukunde sind, empfehlen wir die Verwendung dieses Modells zur Überprüfung und Identifizierung. Es erhöht die Genauigkeit von „recognition 03“ und bietet u. a. verbesserte Erkennung für registrierte Benutzer, die Mund-Nasen-Bedeckungen (OP-Masken, N95-Masken, Stoffmasken) tragen. Kunden können nun sichere und nahtlose Benutzerumgebungen erstellen, in denen mithilfe des neuestens Modell „detection 03“ ermittelt wird, ob ein registrierter Benutzer eine Mund-Nasen-Bedeckung trägt, und anschließend mithilfe des ebenfalls neuesten Modells „recognition_04“ die Identität dieses Benutzers bestimmt wird. Ausführlichere Informationen finden Sie unter [Angeben eines Gesichtserkennungsmodells](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model).
+
 
 ## <a name="january-2021"></a>Januar 2021
 * Verringern der Wartezeit bei Verwendung der Gesichtserkennungs-API: Das Team für den Dienst „Gesichtserkennung“ hat einen neuen Artikel veröffentlicht, in dem potenzielle Ursachen für die Wartezeit beim Verwenden des Diensts sowie mögliche Strategien zur Risikominderung erläutert werden. Weitere Informationen finden Sie unter [Vorgehensweise: Verringern der Wartezeit bei Verwendung des Diensts „Gesichtserkennung“](./face-api-how-to-topics/how-to-mitigate-latency.md).

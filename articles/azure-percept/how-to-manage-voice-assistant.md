@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 593d2ccadf814cb5af27a4bb738f28132f39ab7d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5e41dea3b47c608b9e82ac57fa1cfe5247ea6cc2
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660393"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099011"
 ---
 # <a name="managing-your-voice-assistant"></a>Verwalten Ihres Sprach-Assistenten
 
@@ -28,7 +28,7 @@ Ein Schlüsselwort ist ein Wort oder ein kurzer Ausdruck, mit dem ein Sprach-Ass
 
 1. Klicken Sie auf der Demoseite neben **Benutzerdefiniertes Schlüsselwort** auf **Ändern**.
 
-    :::image type="content" source="./media/manage-voice-assistant/hospitality-demo.png" alt-text="Abbildung":::
+    :::image type="content" source="./media/manage-voice-assistant/hospitality-demo.png" alt-text="Screenshot: Fenster mit der Demo für das Hotel- und Gaststättengewerbe":::
 
     Ist die Demoseite nicht geöffnet, navigieren Sie zur Geräteseite (siehe unten), und klicken Sie unter **Aktionen** auf **Sprach-Assistenten testen**, um auf die Demo zuzugreifen.
 
@@ -40,17 +40,17 @@ Ein Schlüsselwort ist ein Wort oder ein kurzer Ausdruck, mit dem ein Sprach-Ass
 
 1. Klicken Sie auf der Übersichtsseite von [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) im linken Menübereich auf **Geräte**.
 
-    :::image type="content" source="./media/manage-voice-assistant/portal-overview-devices.png" alt-text="Abbildung":::
+    :::image type="content" source="./media/manage-voice-assistant/portal-overview-devices.png" alt-text="Screenshot: Übersichtsseite von Azure Percept Studio mit hervorgehobener Option „Geräte“":::
 
 1. Wählen Sie das Gerät aus, auf dem der Sprach-Assistent bereitgestellt wurde.
 
 1. Öffnen Sie die Registerkarte **Sprache**.
 
-    :::image type="content" source="./media/manage-voice-assistant/device-page.png" alt-text="Abbildung":::
+    :::image type="content" source="./media/manage-voice-assistant/device-page.png" alt-text="Screenshot: Seite „Edgegerät“ mit hervorgehobener Registerkarte „Sprache“":::
 
 1. Klicken Sie neben **Schlüsselwort** auf **Ändern**.
 
-    :::image type="content" source="./media/manage-voice-assistant/change-keyword-device.png" alt-text="Abbildung":::
+    :::image type="content" source="./media/manage-voice-assistant/change-keyword-device.png" alt-text="Screenshot: Verfügbare Aktionen der Sprachlösung":::
 
 1. Wählen Sie eins der verfügbaren Schlüsselwörter aus, und klicken Sie auf **Speichern**, um die Änderungen zu übernehmen.
 

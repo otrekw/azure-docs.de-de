@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 8d150228be2cf6deff3bc2fd0a0599cca70d24ac
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8dda18271de9b7d65246f0882ee7a68191031c05
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660387"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096614"
 ---
 # <a name="connect-to-your-azure-percept-dk-over-ssh"></a>Herstellen einer Verbindung mit Ihrem Azure Percept DK über SSH
 
@@ -25,6 +25,7 @@ Führen Sie die folgenden Schritte aus, um über [PuTTY](https://www.chiark.gree
     - Wenn auf dem Hostcomputer Windows ausgeführt wird, ist [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) ein effektiver SSH-Client und wird in diesem Handbuch verwendet.
     - Wenn auf dem Hostcomputer Linux oder OS X ausgeführt wird, sind SSH-Dienste in diesen Betriebssystemen enthalten und können ohne separate Clientanwendung ausgeführt werden. Weitere Informationen zum Ausführen von SSH-Diensten finden Sie in der Produktdokumentation des Betriebssystems.
 - Azure Percept DK
+- Einrichten eines SSH-Anmeldekontos während des [Onboardings von Azure Percept DK](./quickstart-percept-dk-set-up.md)
 
 ## <a name="initiate-the-ssh-connection"></a>Initiieren der SSH-Verbindung
 
@@ -48,15 +49,8 @@ Führen Sie die folgenden Schritte aus, um über [PuTTY](https://www.chiark.gree
 
     :::image type="content" source="./media/how-to-ssh-into-percept-dk/ssh-putty.png" alt-text="Abbildung.":::
 
-1. Melden Sie sich beim PuTTY-Terminal an. Wenn Sie auf der Windows-Willkommensseite einen SSH-Benutzernamen und ein Kennwort eingerichtet haben, geben Sie diese Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden. Geben Sie andernfalls Folgendes ein:  
-
-    1. Anmelden als: root
-    1. Kennwort: p@ssw0rd
-
-    :::image type="content" source="./media/how-to-ssh-into-percept-dk/putty-terminal.png" alt-text="PuTTY-Terminalfenster.":::  
+1. Melden Sie sich mit dem während des Onboardings erstellten SSH-Benutzernamen und -Kennwort beim PuTTY-Terminal an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nach der erfolgreichen Verbindung mit Ihrem Azure Percept DK über SSH können Sie eine Reihe von Aufgaben durchführen, einschließlich Fehlerbehebung, USB-Updates und Ausführung von DiagTool oder des SoftAP-Tools.
-
-

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: gahllevy
-ms.openlocfilehash: 4d7dcc829f25b7f1b7c6cb6b1d13a664d301bfe6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f319db76c8aee5a2a35ff8ca9670c42089350ede
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678460"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692469"
 ---
 # <a name="use-multi-document-transactions-in-azure-cosmos-db-api-for-mongodb"></a>Verwenden von Transaktionen mit mehreren Dokumenten in der Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -32,11 +32,13 @@ Transaktionen mit mehreren Dokumenten folgen der **ACID**-Semantik:
 
 ## <a name="requirements"></a>Anforderungen
 
-Transaktionen mit mehreren Dokumenten werden in einer Sammlung ohne Shards in Version 4.0 unterstützt. Transaktionen mit mehreren Dokumenten werden nicht sammlungsübergreifend oder in Sammlungen mit Shards unterstützt.
+Transaktionen mit mehreren Dokumenten werden in einer Sammlung ohne Shards in API-Version 4.0 unterstützt. Transaktionen mit mehreren Dokumenten werden nicht sammlungsübergreifend oder in Sammlungen mit Shards in 4.0 unterstützt. Das Timeout für Transaktionen ist auf fünf Sekunden festgelegt.
 
 Alle Treiber, die Wire Protocol-Version 4.0 oder höher unterstützen, bieten auch Unterstützung für Transaktionen mit mehreren Dokumenten in der Azure Cosmos DB-API für MongoDB.
 
 ## <a name="run-multi-document-transactions-in-mongodb-shell"></a>Ausführen von Transaktionen mit mehreren Dokumenten in der MongoDB-Shell
+> [!Note]
+> Dieses Beispiel funktioniert nicht in der in MongoDB Compass eingebetteten MongoSH-Betaversion (Shell).
 
 1. Öffnen Sie eine Eingabeaufforderung, und navigieren Sie zu dem Verzeichnis, in dem die Mongo-Shell, Version 4.0 oder höher, installiert ist:
 

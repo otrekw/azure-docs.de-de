@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: overview
 ms.date: 02/18/2021
 ms.custom: template-overview
-ms.openlocfilehash: 0581e659eca0a59719db0dd0e48cf3628b64dd2a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 85b7f3a62324bc93cd78649cd39e0f4dc7d0baed
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664305"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098195"
 ---
 # <a name="introduction-to-azure-percept"></a>Einführung in Azure Percept
 
@@ -22,21 +22,21 @@ Die Herausforderungen der Integration, denen man sich gegenübersieht, wenn man 
 
 - Identifizieren und Auswählen des richtigen Chips zur Unterstützung der Lösungen.
 - Sicherstellen der kollektiven Sicherheit von Hardware, Software, Modellen und Daten.
-- Die Fähigkeit, Lösungen zu erstellen und zu verwalten, die nahtlos funktionieren.
+- Die Fähigkeit, Lösungen im großen Stil zu erstellen und zu verwalten, die nahtlos funktionieren
 
 ## <a name="components-of-azure-percept"></a>Komponenten von Azure Percept
 
 Die Hauptkomponenten von Azure Percept sind:
 
-- Programme für KI-Hardware-Referenzdesign und -Zertifizierung.
+1. Programme für KI-Hardware-Referenzdesign und -Zertifizierung.
 
     - Stellt dem Ökosystem von Hardwareentwicklern Muster und bewährte Methoden für die Entwicklung bahnbrechender KI-Hardware bereit, die sich problemlos in Azure KI- und IoT-Dienste integrieren lässt.
 
-- Azure Percept DK (DevKit)
+2. Azure Percept DK (DevKit)
 
-    - Ein Development Kit (Entwicklungskit), das flexibel genug ist, um eine Vielzahl verschiedener Prototypenerstellungsszenarien zu unterstützen.
+    - Ein Development Kit (Entwicklungskit), das flexibel genug ist, um eine Vielzahl verschiedener Prototyperstellungsszenarien für Geräteentwickler, Lösungsentwickler und Kunden zu unterstützen
 
-- Dienste und Workflows zum Beschleunigen der Entwicklung bahnbrechender KI-Modelle und -Lösungen.
+3. Dienste und Workflows zum Beschleunigen der Entwicklung bahnbrechender KI-Modelle und -Lösungen.
 
     - Entwicklungsworkflows und vorgefertigte Modelle, auf die aus Azure Percept Studio zugegriffen werden kann.
     - Modellentwicklungsdienste

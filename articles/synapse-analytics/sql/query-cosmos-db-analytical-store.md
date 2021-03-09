@@ -1,35 +1,28 @@
 ---
-title: Abfragen von Azure Cosmos DB-Daten mithilfe eines serverlosen SQL-Pools in Azure Synapse Link (Vorschau)
-description: In diesem Artikel erfahren Sie, wie Sie Azure Cosmos DB unter Verwendung eines serverlosen SQL-Pools in Azure Synapse Link (Vorschau) abfragen.
+title: Abfragen von Azure Cosmos DB-Daten mithilfe eines serverlosen SQL-Pools in Azure Synapse Link
+description: In diesem Artikel erfahren Sie, wie Sie Azure Cosmos DB unter Verwendung eines serverlosen SQL-Pools in Azure Synapse Link abfragen.
 services: synapse analytics
 author: jovanpop-msft
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
-ms.date: 12/04/2020
+ms.date: 03/02/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2059608faa8ce148e5823e48eff6abf9e71c9b01
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a574cacbabf1c0d1730430153a3c0afcad6582c6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735432"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694358"
 ---
-# <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Abfragen von Azure Cosmos DB-Daten mithilfe eines serverlosen SQL-Pools in Azure Synapse Link (Vorschau)
+# <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link"></a>Abfragen von Azure Cosmos DB-Daten mit serverlosem SQL-Pool in Azure Synapse Link
 
-> [!IMPORTANT]
-> Die Unterstützung von serverlosen SQL-Pools für Azure Synapse Link für Azure Cosmos DB befindet sich zurzeit in der Vorschau. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-
-Mit einem serverlosen SQL-Pool können Sie Daten in Ihren Azure Cosmos DB-Containern, die für [Azure Synapse Link](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) aktiviert sind, nahezu in Echtzeit analysieren, ohne dass sich dies auf die Leistung Ihrer Transaktionsarbeitsauslastungen auswirkt. Dieses Verfahren bietet eine vertraute T-SQL-Syntax zum Abfragen von Daten aus dem [Analysespeicher](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) sowie integrierte Konnektivität mit einer Vielzahl von BI-Tools (Business Intelligence) und Ad-hoc-Abfragetools über die T-SQL-Schnittstelle.
+Mit einem serverlosen SQL-Pool können Sie Daten in Ihren Azure Cosmos DB-Containern, die für [Azure Synapse Link](../../cosmos-db/synapse-link.md) aktiviert sind, nahezu in Echtzeit analysieren, ohne dass sich dies auf die Leistung Ihrer Transaktionsarbeitsauslastungen auswirkt. Dieses Verfahren bietet eine vertraute T-SQL-Syntax zum Abfragen von Daten aus dem [Analysespeicher](../../cosmos-db/analytical-store-introduction.md) sowie integrierte Konnektivität mit einer Vielzahl von BI-Tools (Business Intelligence) und Ad-hoc-Abfragetools über die T-SQL-Schnittstelle.
 
 Zum Abfragen von Azure Cosmos DB wird die gesamte [SELECT](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true)-Oberfläche durch die [OPENROWSET](develop-openrowset.md)-Funktion unterstützt, einschließlich eines Großteils der [SQL-Funktionen und -Operatoren](overview-features.md). Mit [CREATE EXTERNAL TABLE AS SELECT](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS) können Sie die Ergebnisse der Abfrage, die Daten aus Azure Cosmos DB liest, auch zusammen mit Daten in Azure Blob Storage oder Azure Data Lake Storage speichern. Das Speichern der Abfrageergebnisse aus einem serverlosen SQL-Pool in Azure Cosmos DB mithilfe von CETAS ist derzeit nicht möglich.
 
-In diesem Artikel erfahren Sie, wie Sie eine Abfrage für einen serverlosen SQL-Pool erstellen, die Daten aus für Azure Synapse Link aktivierten Azure Cosmos DB-Containern abfragt. Danach können Sie sich in [diesem Tutorial](./tutorial-data-analyst.md) darüber informieren, wie Sie Sichten serverloser SQL-Pools über Azure Cosmos DB-Container erstellen und diese Sichten mit Power BI-Modellen verbinden.
-
-> [!IMPORTANT]
-> In diesem Tutorial wird ein Container mit einem [genau definierten Azure Cosmos DB-Schema](../../cosmos-db/analytical-store-introduction.md#schema-representation) verwendet. Das Verhalten der Abfrageoberfläche, die vom serverlosen SQL-Pool für das [Azure Cosmos DB-Schema mit vollständiger Genauigkeit](#full-fidelity-schema) bereitgestellt wird, gilt nur vorübergehend und wird sich basierend auf dem Feedback zur Vorschauversion noch ändern. Verlassen Sie sich nicht auf das Resultset-Schema der `OPENROWSET`-Funktion ohne `WITH`-Klausel, das Daten aus einem Container mit einem vollständigem Genauigkeitsschema ausliest. Der Grund ist, dass die Abfrageoberfläche unter Umständen noch geändert und an ein genau definiertes Schema angepasst wird. Sie können Ihr Feedback im [Feedbackforum für Azure Synapse Analytics](https://feedback.azure.com/forums/307516-azure-synapse-analytics) bereitstellen. Sie können Ihr Feedback auch an das [Azure Synapse Link-Produktteam](mailto:cosmosdbsynapselink@microsoft.com) senden.
+In diesem Artikel erfahren Sie, wie Sie eine Abfrage für einen serverlosen SQL-Pool erstellen, die Daten aus für Azure Synapse Link aktivierten Azure Cosmos DB-Containern abfragt. Danach können Sie sich in [diesem Tutorial](./tutorial-data-analyst.md) darüber informieren, wie Sie Sichten serverloser SQL-Pools über Azure Cosmos DB-Container erstellen und diese Sichten mit Power BI-Modellen verbinden. In diesem Tutorial wird ein Container mit einem [genau definierten Azure Cosmos DB-Schema](../../cosmos-db/analytical-store-introduction.md#schema-representation) verwendet.
 
 ## <a name="overview"></a>Übersicht
 
@@ -377,11 +370,11 @@ Die Anzahl der Fälle ist eine Information, die als `int32`-Wert gespeichert wir
 > [!IMPORTANT]
 > Die `OPENROWSET`-Funktion ohne `WITH`-Klausel macht sowohl die Werte mit erwarteten Typen als auch die Werte mit falsch eingegebenen Typen verfügbar. Diese Funktion ist für das Durchsuchen von Daten konzipiert, nicht für die Berichterstellung. Analysieren Sie keine JSON-Werte, die von dieser Funktion zurückgegeben werden, um daraus Berichte zu erstellen. Verwenden Sie zum Erstellen Ihrer Berichte eine explizite [WITH-Klausel](#query-items-with-full-fidelity-schema). Sie müssen die Werte, die falsche Typen aufweisen, im Azure Cosmos DB-Container bereinigen, um Korrekturen im Analysespeicher mit vollständiger Genauigkeit anzuwenden.
 
-Wenn Sie Azure Cosmos DB-Konten über die Mongo DB-API abfragen möchten, erfahren Sie unter [Was ist der Azure Cosmos DB-Analysespeicher (Vorschau)?](../../cosmos-db/analytical-store-introduction.md#analytical-schema) mehr über die Schemadarstellung mit vollständiger Genauigkeit im Analysespeicher und die dabei zu verwendenden Namen für erweiterte Eigenschaften.
+Wenn Sie Azure Cosmos DB-Konten über die Mongo DB-API abfragen möchten, erfahren Sie unter [Was ist der Azure Cosmos DB-Analysespeicher?](../../cosmos-db/analytical-store-introduction.md#analytical-schema) mehr über die Schemadarstellung mit vollständiger Genauigkeit im Analysespeicher und die dabei zu verwendenden Namen für erweiterte Eigenschaften.
 
 ### <a name="query-items-with-full-fidelity-schema"></a>Abfragen von Elementen mit einem Schema mit vollständiger Genauigkeit
 
-Beim Abfragen eines Schemas mit vollständiger Genauigkeit müssen Sie den SQL-Typ und den erwarteten Azure Cosmos DB-Eigenschaftstyp explizit in der `WITH`-Klausel angeben. Verwenden Sie `OPENROWSET` nicht ohne `WITH`-Klausel in den Berichten, weil das Format des Resultsets in der Vorschau auf Grundlage des Feedbacks geändert werden kann.
+Beim Abfragen eines Schemas mit vollständiger Genauigkeit müssen Sie den SQL-Typ und den erwarteten Azure Cosmos DB-Eigenschaftstyp explizit in der `WITH`-Klausel angeben.
 
 Im folgenden Beispiel gehen wir davon aus, dass `string` der richtige Typ für die `geo_id`-Eigenschaft und `int32` der richtige Typ für die `cases`-Eigenschaft ist:
 
@@ -419,7 +412,6 @@ In diesem Fall wird die Anzahl der Fälle als `int32`-, `int64`- oder `float64`-
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
-- Die Abfrageerfahrung, die der serverlose SQL-Pool für das [Azure Cosmos DB-Schema mit vollständiger Genauigkeit](#full-fidelity-schema) bereitstellt, ist ein temporäres Verhalten, das sich auf der Grundlage des Vorschaufeedbacks ändern wird. Verlassen Sie sich nicht auf das Schema, dass die `OPENROWSET`-Funktion ohne `WITH`-Klausel während der öffentlichen Vorschau bereitstellt – möglicherweise werden die Abfragefunktionen anhand von Kundenfeedback noch an einem gut definierten Schema ausgerichtet. Wenn Sie selber Feedback geben möchten, wenden Sie sich an das [Azure Synapse Link-Produktteam](mailto:cosmosdbsynapselink@microsoft.com).
 - Ein serverloser SQL-Pool gibt eine Kompilierzeitwarnung zurück, wenn die `OPENROWSET`-Spaltensortierung keine UTF-8-Codierung aufweist. Sie können die Standardsortierung für alle `OPENROWSET`-Funktionen, die in der aktuellen Datenbank ausgeführt werden, ganz einfach mit der T-SQL-Anweisung `alter database current collate Latin1_General_100_CI_AS_SC_UTF8` ändern.
 
 In der folgenden Tabelle werden mögliche Fehler und entsprechende Problembehebungsmaßnahmen aufgelistet.

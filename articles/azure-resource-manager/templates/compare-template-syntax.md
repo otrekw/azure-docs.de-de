@@ -1,14 +1,14 @@
 ---
-title: Konvertieren von Azure Resource Manager-Vorlagen zwischen JSON und Bicep
-description: Vergleicht Azure Resource Manager-Vorlagen, die mit JSON und Bicep erstellt wurden.
+title: Vergleichen der Syntax für Azure Resource Manager-Vorlagen in JSON und Bicep
+description: Hier werden mit JSON und Bicep entwickelte Azure Resource Manager-Vorlagen verglichen, und es wird die Konvertierung zwischen den Sprachen veranschaulicht.
 ms.topic: conceptual
-ms.date: 02/19/2021
-ms.openlocfilehash: 9388ed50f13d6885d0a0668b61a9141dae375244
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 29c2b9948957ebc10a26f22f0fe3daf383dfe5ba
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743304"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036213"
 ---
 # <a name="comparing-json-and-bicep-for-templates"></a>Vergleichen von JSON- und Bicep für Vorlagen
 
@@ -18,40 +18,21 @@ In diesem Artikel wird die Bicep-Syntax mit der JSON-Syntax für Azure Resource 
 
 Wenn Sie mit der Verwendung von JSON zum Entwickeln von ARM-Vorlagen vertraut sind, verwenden Sie die folgende Tabelle, um mehr über die entsprechende Syntax für Bicep zu erfahren.
 
-| Szenario | ARM-Vorlage | Bicep |
+| Szenario | Bicep | JSON |
 | -------- | ------------ | ----- |
-| Ausdruck verfassen | `"[func()]"` | `func()` |
-| Parameterwert abrufen | `[parameters('exampleParameter'))]` | `exampleParameter` |
-| Variablenwert abrufen | `[variables('exampleVar'))]` | `exampleVar` |
-| Verketten von Zeichenfolgen | `[concat(parameters('namePrefix'), '-vm')]` | `'${namePrefix}-vm'` |
-| Ressourceneigenschaft festlegen | `"sku": "2016-Datacenter",` | `sku: '2016-Datacenter'` |
-| Logisches UND zurückgeben | `[and(parameter('isMonday'), parameter('isNovember'))]` | `isMonday && isNovember` |
-| Ressourcen-ID der Ressource in der Vorlage abrufen | `[resourceId('Microsoft.Network/networkInterfaces', variables('nic1Name'))]` | `nic1.id` |
-| Eigenschaft aus Ressource in der Vorlage abrufen | `[reference(resourceId('Microsoft.Storage/storageAccounts', variables('diagStorageAccountName'))).primaryEndpoints.blob]` | `diagsAccount.properties.primaryEndpoints.blob` |
-| Einen Wert bedingt festlegen | `[if(parameters('isMonday'), 'valueIfTrue', 'valueIfFalse')]` | `isMonday ? 'valueIfTrue' : 'valueIfFalse'` |
-| Eine Lösung in mehrere Dateien aufteilen | Verknüpfte Vorlagen verwenden | Module verwenden |
-| Zielumfang der Bereitstellung festlegen | `"$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#"` | `targetScope = 'subscription'` |
-| Abhängigkeit festlegen | `"dependsOn": ["[resourceId('Microsoft.Storage/storageAccounts', 'parameters('storageAccountName'))]"]` | Entweder Sie verlassen sich auf die automatische Erkennung von Abhängigkeiten, oder Sie legen Abhängigkeiten manuell mit `dependsOn: [ stg ]` fest. |
-
-Verwenden Sie zum Deklarieren des Typs und der Version für eine Ressource Folgendes in Bicep:
-
-```bicep
-resource vm 'Microsoft.Compute/virtualMachines@2020-06-01' = {
-  ...
-}
-```
-
-Anstelle der entsprechenden Syntax in JSON:
-
-```json
-"resources": [
-  {
-    "type": "Microsoft.Compute/virtualMachines",
-    "apiVersion": "2020-06-01",
-    ...
-  }
-]
-```
+| Ausdruck verfassen | `func()` | `"[func()]"` |
+| Parameterwert abrufen | `exampleParameter` | `[parameters('exampleParameter'))]` |
+| Variablenwert abrufen | `exampleVar` | `[variables('exampleVar'))]` |
+| Verketten von Zeichenfolgen | `'${namePrefix}-vm'` | `[concat(parameters('namePrefix'), '-vm')]` |
+| Ressourceneigenschaft festlegen | `sku: '2016-Datacenter'` | `"sku": "2016-Datacenter",` |
+| Logisches UND zurückgeben | `isMonday && isNovember` | `[and(parameter('isMonday'), parameter('isNovember'))]` |
+| Ressourcen-ID der Ressource in der Vorlage abrufen | `nic1.id` | `[resourceId('Microsoft.Network/networkInterfaces', variables('nic1Name'))]` |
+| Eigenschaft aus Ressource in der Vorlage abrufen | `diagsAccount.properties.primaryEndpoints.blob` | `[reference(resourceId('Microsoft.Storage/storageAccounts', variables('diagStorageAccountName'))).primaryEndpoints.blob]` |
+| Einen Wert bedingt festlegen | `isMonday ? 'valueIfTrue' : 'valueIfFalse'` | `[if(parameters('isMonday'), 'valueIfTrue', 'valueIfFalse')]` |
+| Eine Lösung in mehrere Dateien aufteilen | Module verwenden | Verknüpfte Vorlagen verwenden |
+| Zielumfang der Bereitstellung festlegen | `targetScope = 'subscription'` | `"$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#"` |
+| Abhängigkeit festlegen | Entweder Sie verlassen sich auf die automatische Erkennung von Abhängigkeiten, oder Sie legen Abhängigkeiten manuell mit `dependsOn: [ stg ]` fest. | `"dependsOn": ["[resourceId('Microsoft.Storage/storageAccounts', 'parameters('storageAccountName'))]"]` |
+| Ressourcendeklaration | `resource vm 'Microsoft.Compute/virtualMachines@2020-06-01' = {...}` | `"resources": [ { "type": "Microsoft.Compute/virtualMachines", "apiVersion": "2020-06-01", ... } ]` |
 
 ## <a name="recommendations"></a>Empfehlungen
 
@@ -63,10 +44,7 @@ Anstelle der entsprechenden Syntax in JSON:
 
 Die Bicep CLI bietet einen Befehl zum Dekompilieren jeglicher vorhandener ARM-Vorlage in eine Bicep-Datei. Verwenden Sie zum Dekompilieren einer JSON-Datei `bicep decompile "path/to/file.json"`.
 
-Dieser Befehl bietet einen Ausgangspunkt für die Bicep-Erstellung, aber er funktioniert nicht für alle Vorlagen. Der Befehl kann fehlschlagen, oder Sie müssen möglicherweise nach der Dekompilierung Probleme beheben. Zurzeit weist der Befehl die folgenden Einschränkungen auf:
-
-* Vorlagen mit Kopierschleifen können nicht dekompiliert werden.
-* Geschachtelte Vorlagen können nur dekompiliert werden, wenn sie den Auswertungsbereich „inner“ für Ausdrücke verwenden.
+Dieser Befehl bietet einen Ausgangspunkt für die Bicep-Erstellung, aber er funktioniert nicht für alle Vorlagen. Der Befehl kann fehlschlagen, oder Sie müssen möglicherweise nach der Dekompilierung Probleme beheben. Geschachtelte Vorlagen können derzeit nur dekompiliert werden, wenn sie den Auswertungsbereich „inner“ für Ausdrücke verwenden.
 
 Sie können die Vorlage für eine Ressourcengruppe exportieren und diese dann direkt an den Bicep-Befehl zum Dekompilieren übergeben. Im folgenden Beispiel wird gezeigt, wie Sie eine exportierte Vorlage dekompilieren.
 
@@ -100,4 +78,4 @@ Mit einem [Bicep Playground](https://aka.ms/bicepdemo) können Sie sich entsprec
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Bicep-Projekt finden Sie unter [Projekt Bicep](https://github.com/Azure/bicep).
+Weitere Informationen zu Bicep finden Sie im [Tutorial zu Bicep](./bicep-tutorial-create-first-bicep.md).
