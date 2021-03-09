@@ -3,18 +3,18 @@ title: Rechnungen für die Azure Enterprise-Registrierung
 description: In diesem Artikel wird erläutert, wie Sie Ihre Azure-Unternehmensrechnung verwalten und Aktionen dafür ausführen.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/19/2021
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
-ms.reviewer: boalcsva
+ms.reviewer: ruturajd
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 90ae9bdcee5f5f4c4281f2c3f931389b2ebf9486
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 71ba1d6e1e45c5c2e72e2be620158b1aa4b71582
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598080"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430807"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Rechnungen für die Azure Enterprise-Registrierung
 
@@ -98,29 +98,41 @@ Das Azure Enterprise Portal filtert inaktive Registrierungen aus der Ansicht her
 
 ## <a name="change-a-po-number-for-an-upcoming-overage-invoice"></a>Ändern einer Auftragsnummer für eine bevorstehende Überschreitungsrechnung
 
-Das Azure Enterprise Portal generiert automatisch eine Standardauftragsnummer (Purchase Order, PO), sofern der Enterprise-Administrator vor dem Rechnungsdatum keine Nummer festlegt. Ein Enterprise-Administrator kann die Auftragsnummer bis zu sieben Tage nach dem Empfang einer automatisierten E-Mail-Rechnungsbenachrichtigung aktualisieren.
+Das Azure Enterprise Portal generiert automatisch eine Standardauftragsnummer (Purchase Order, PO), sofern der Enterprise-Administrator vor dem Rechnungsdatum keine Nummer festlegt. Ein Enterprise-Administrator kann die Auftragsnummer bis zu sieben Tage nach dem Empfang einer automatisierten E-Mail-Rechnungsbenachrichtigung aktualisieren. 
 
-### <a name="to-update-the-azure-services-purchase-order-number"></a>So aktualisieren Sie die Auftragsnummer der Azure-Dienste:
+Sie können die Auftragsnummer sperren, um die automatische monatliche Generierung von Auftragsnummern zu verhindern. Informationen hierzu finden Sie im Abschnitt zum [Sperren der Auftragsnummer](#lock-po-number-to-prevent-automatic-update-in-upcoming-billing-cycles).
+
+### <a name="update-the-azure-services-purchase-order-number"></a>Aktualisieren der Auftragsnummer für Azure-Dienste
 
 1. Wählen Sie im Azure Enterprise Portal **Bericht** > **Nutzungszusammenfassung** aus.
 1. Wählen Sie in der oberen rechten Ecke **Auftragsnummern bearbeiten** aus.
 1. Aktivieren Sie das Optionsfeld **Azure-Dienste**.
 1. Wählen Sie im Dropdownmenü der Datumsbereiche einen **Rechnungszeitraum** aus.
-
    Sie können eine Auftragsnummer innerhalb eines Zeitraums von sieben Tagen bearbeiten, nachdem Sie eine Rechnungsbenachrichtigung erhalten haben, aber bevor Sie die Rechnung bezahlt haben.
 1. Geben Sie eine neue Auftragsnummer in das Feld **Auftragsnummer** ein.
 1. Wählen Sie **Speichern** aus, um die Änderung zu übermitteln.
 
-### <a name="to-update-the-azure-marketplace-purchase-order-number"></a>So aktualisieren Sie die Azure Marketplace-Auftragsnummer:
+### <a name="update-the-azure-marketplace-purchase-order-number"></a>Aktualisieren der Azure Marketplace-Auftragsnummer
 
 1. Wählen Sie im Azure Enterprise Portal **Bericht** > **Nutzungszusammenfassung** aus.
 1. Wählen Sie in der oberen rechten Ecke **Auftragsnummern bearbeiten** aus.
 1. Aktivieren Sie das Optionsfeld **Marketplace**.
-1. Wählen Sie im Dropdownmenü der Datumsbereiche einen **Rechnungszeitraum** aus.
-
-   Sie können eine Auftragsnummer innerhalb eines Zeitraums von sieben Tagen bearbeiten, nachdem Sie eine Rechnungsbenachrichtigung erhalten haben, aber bevor Sie die Rechnung bezahlt haben.
+1. Wählen Sie im Dropdownmenü der Datumsbereiche einen **Rechnungszeitraum** aus.  
+    Sie können eine Auftragsnummer innerhalb eines Zeitraums von sieben Tagen bearbeiten, nachdem Sie eine Rechnungsbenachrichtigung erhalten haben, aber bevor Sie die Rechnung bezahlt haben.
 1. Geben Sie eine neue Auftragsnummer in das Feld **Auftragsnummer** ein.
 1. Wählen Sie **Speichern** aus, um die Änderung zu übermitteln.
+
+### <a name="lock-po-number-to-prevent-automatic-update-in-upcoming-billing-cycles"></a>Sperren der Auftragsnummer, um die automatische Aktualisierung in zukünftigen Abrechnungszeiträumen zu verhindern
+
+Nach dem Sperren der Auftragsnummer bleibt sie für alle neuen Rechnungen gesperrt, und Sie müssen die Auftragsnummer nicht aktualisieren.
+
+1.  Wählen Sie im Azure Enterprise Portal **Bericht** > **Nutzungszusammenfassung** aus.
+2.  Wählen Sie in der oberen rechten Ecke **Auftragsnummern bearbeiten** aus.
+3.  Geben Sie eine neue Auftragsnummer in das Feld **Auftragsnummer** ein.
+4.  Aktivieren Sie das Kontrollkästchen **Lock PO number** (Auftragsnummer sperren).
+5.  Wählen Sie **Speichern** aus, um die Änderung zu übermitteln.  
+    :::image type="content" source="./media/ea-portal-enrollment-invoices/lock-po.png" alt-text="Screenshot: Feld „View/Edit PO Numbers“ (Bestellnummern anzeigen/bearbeiten)" lightbox="./media/ea-portal-enrollment-invoices/lock-po.png" :::
+
 
 ## <a name="azure-enterprise-billing-frequency"></a>Azure Enterprise-Fakturierungsintervall
 

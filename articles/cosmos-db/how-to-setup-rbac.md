@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung mit
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.author: thweiss
-ms.openlocfilehash: d83109f380a3044073cf2dd8d10f29027ebb9f41
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7c5497615ce71d0be713ef9ae28ab1e0f85b7ddb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690905"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177231"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Konfigurieren der rollenbasierten Zugriffssteuerung mit Azure Active Directory für Ihr Azure Cosmos DB-Konto (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -314,7 +314,7 @@ resourceGroupName='<myResourceGroup>'
 accountName='<myCosmosAccount>'
 readOnlyRoleDefinitionId = '<roleDefinitionId>' // as fetched above
 principalId = '<aadPrincipalId>'
-az cosmosdb sql role assignment create --account-name $accountName --resource-group --scope "/" --principalId $principalId --role-definition-id $readOnlyRoleDefinitionId
+az cosmosdb sql role assignment create --account-name $accountName --resource-group --scope "/" --principal-id $principalId --role-definition-id $readOnlyRoleDefinitionId
 ```
 
 ## <a name="initialize-the-sdk-with-azure-ad"></a>Initialisieren des SDK mit Azure AD
@@ -370,6 +370,7 @@ Diese zusätzlichen Informationen fließen in die Protokollkategorie **DataPlane
 - Sie können bis zu 100 Rollendefinitionen und 2.000 Rollenzuweisungen pro Azure Cosmos DB-Konto erstellen.
 - Die Azure AD-Gruppenauflösung wird derzeit für Identitäten, die zu mehr als 200 Gruppen gehören, nicht unterstützt.
 - Das Azure AD-Token wird zurzeit mit jeder einzelnen an den Azure Cosmos DB-Dienst gesendeten Anforderung als Header übergeben und erhöht so die Gesamtnutzlastgröße.
+- Der Zugriff auf Ihre Daten mit Azure AD über den [Azure Cosmos DB-Explorer](data-explorer.md) wird noch nicht unterstützt. Wenn Sie den Azure Cosmos DB-Explorer verwenden, muss der Benutzer vorerst noch Zugriff auf den Primärschlüssel des Kontos haben.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
