@@ -7,26 +7,27 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 4fd0a7cb575a109d1393527b48de3fa4e3446167
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4c2ace609d67cc48d1b73bdb044e7048ebda21e7
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660704"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098331"
 ---
 # <a name="azure-percept-dk-overview"></a>Übersicht über das Azure Percept DK
 
-Das Azure Percept DK ein Edge-KI Development Kit, das für die Entwicklung von Vision-KI-Proof of Concepts konzipiert ist. In Kombination mit [Azure Percept Studio](./overview-azure-percept-studio.md) wird es zu einer leistungsstarken, aber dennoch einfach zu verwendenden Plattform für die Erstellung von Edge-KI-Lösungen für eine Vielzahl von Vision-KI-Anwendungen. Es kann im [Microsoft Online Store](https://go.microsoft.com/fwlink/p/?LinkId=2155270) erworben werden.
+Azure Percept DK ist ein Development Kit für Edge-KI und IoT, das für die Entwicklung von Proof of Concepts im Zusammenhang mit KI für maschinelles Sehen und Audio konzipiert ist. In Kombination mit [Azure Percept Studio](./overview-azure-percept-studio.md) und [Azure Percept-Audio](./overview-azure-percept-audio.md) wird es zu einer leistungsstarken, aber dennoch einfach zu verwendenden Plattform für die Erstellung von Edge-KI-Lösungen für eine Vielzahl von KI-Anwendungen für maschinelles Sehen oder Audio. Es kann im [Microsoft Online Store](https://go.microsoft.com/fwlink/p/?LinkId=2155270) erworben werden.
 
-:::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Abbildung.":::
+:::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Azure Percept DK-Gerät":::
 
 ## <a name="key-features"></a>Wichtige Funktionen
 
 - **Die Möglichkeit, KI im Edgebereich auszuführen**. Durch die integrierte Hardwarebeschleunigung können Vision KI-Modelle ohne eine Cloudverbindung ausgeführt werden.
 - **Integrierter Hardwarestamm für Vertrauenssicherheit**. Weitere Details finden Sie in dieser Übersicht über [Azure Percept-Sicherheit](./overview-percept-security.md).
 - **Nahtlose Integration in [Azure Percept Studio](./overview-azure-percept-studio.md)** und andere Azure-Dienste. Z. B. Azure IoT Hub, Azure Cognitive Services und [Live Video Analytics](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview)
+- **Nahtlose Integration mit [Azure Percept-Audio](./overview-azure-percept-audio.md) (optional)**
 - **Unterstützung für die wichtigsten KI-Plattformen**. Beispielsweise ONNX und TensorFlow.
-- **Integration in das 80/20-Schienensystem**. Dies vereinfacht die Erstellung von Prototypen in Produktionsumgebungen. Erfahren Sie mehr über die [80/20-Integration](./overview-8020-integration.md).
+- **Integration in das 80/20-Schienensystem**. Dies vereinfacht die Erstellung von Prototypen in Produktionsumgebungen. Weitere Informationen zur 80/20-Integration finden Sie [hier](./overview-8020-integration.md).
 
 ## <a name="hardware-components"></a>Hardwarekomponenten
 

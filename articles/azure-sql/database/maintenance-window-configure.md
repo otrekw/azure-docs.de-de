@@ -8,13 +8,13 @@ ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/02/2021
-ms.openlocfilehash: e8f7e5451b48066f52a4c1038e58b1efa99951e6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/04/2021
+ms.openlocfilehash: 210f0c52a2b27492bfa2181473043df3537157d2
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048595"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183198"
 ---
 # <a name="configure-maintenance-window-preview"></a>Konfigurieren von Wartungsfenstern (Vorschau)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,6 +26,8 @@ Das als *Systemstandard* vordefinierte Wartungsfenster ist täglich auf die Zeit
 
 Die Möglichkeit, zu einem anderen Wartungsfenster zu wechseln, ist nicht für jede Dienstebene oder in jeder Region verfügbar. Weitere Informationen zur Verfügbarkeit finden Sie unter [Verfügbarkeit von Wartungsfenstern](maintenance-window.md#availability).
 
+> [!Important]
+> Das Konfigurieren des Wartungsfensters ist ein zeitintensiver, asynchroner Vorgang, ähnlich dem Ändern der Dienstebene der Azure SQL-Ressource. Die Ressource bleibt während des Vorgangs verfügbar, mit Ausnahme eines kurzen Failovers, das am Ende des Vorgangs erfolgt und in der Regel etwa 8 Sekunden dauert (auch bei unterbrochenen zeitintensiven Transaktionen). Um die Auswirkungen des Failovers zu minimieren, sollten Sie den Vorgang außerhalb von Spitzenzeiten durchführen.
 
 ## <a name="configure-maintenance-window-during-database-creation"></a>Konfigurieren des Wartungsfensters beim Erstellen der Datenbank 
 
@@ -176,7 +178,7 @@ Beim Festlegen des Wartungsfensters stehen für jede Region eigene Wartungsfenst
 
 ### <a name="discover-sql-database-and-elastic-pool-maintenance-windows"></a>Ermitteln von Wartungsfenstern für SQL-Datenbank und Pools für elastische Datenbanken
 
-Im folgenden Beispiel werden mit dem Befehl [az maintenance public-configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration?view=azure-cli-latest&preserve-view=true#ext_maintenance_az_maintenance_public_configuration_list) die verfügbaren Wartungsfenster für die Region *eastus2* zurückgegeben. Legen Sie für Datenbanken und Pools für elastische Datenbanken die Option `maintenanceScope` auf `SQLDB` fest.
+Im folgenden Beispiel werden mit dem Befehl [az maintenance public-configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration#ext_maintenance_az_maintenance_public_configuration_list) die verfügbaren Wartungsfenster für die Region *eastus2* zurückgegeben. Legen Sie für Datenbanken und Pools für elastische Datenbanken die Option `maintenanceScope` auf `SQLDB` fest.
 
    ```azurecli
    location="eastus2"
@@ -186,7 +188,7 @@ Im folgenden Beispiel werden mit dem Befehl [az maintenance public-configuration
 
 ### <a name="discover-sql-managed-instance-maintenance-windows"></a>Ermitteln von Wartungsfenstern für verwaltete SQL-Instanzen
 
-Im folgenden Beispiel werden mit dem Befehl [az maintenance public-configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration?view=azure-cli-latest&preserve-view=true#ext_maintenance_az_maintenance_public_configuration_list) die verfügbaren Wartungsfenster für die Region *eastus2* zurückgegeben. Legen Sie für verwaltete Instanzen die Option `maintenanceScope` auf `SQLManagedInstance` fest.
+Im folgenden Beispiel werden mit dem Befehl [az maintenance public-configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration#ext_maintenance_az_maintenance_public_configuration_list) die verfügbaren Wartungsfenster für die Region *eastus2* zurückgegeben. Legen Sie für verwaltete Instanzen die Option `maintenanceScope` auf `SQLManagedInstance` fest.
 
    ```azurecli
    az maintenance public-configuration list --query "[?location=='eastus2'&&contains(maintenanceScope,'SQLManagedInstance')]"

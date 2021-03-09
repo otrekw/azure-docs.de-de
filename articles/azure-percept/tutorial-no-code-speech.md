@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: de85c4f8cdcd9781345ee1488549aab23e38ec5c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3c5e6fd62e4f4db9ccc1306d32d09b8338cbf963
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678074"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098025"
 ---
 # <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>Erstellen eines Sprach-Assistenten mit Azure Percept DK und Azure Percept-Audio
 
@@ -24,30 +24,11 @@ In diesem Leitfaden wird Schritt für Schritt der Prozess zum Einrichten Ihrer G
 
 - Azure Percept DK (DevKit)
 - Azure Percept-Audio
-- Lautsprecher oder Kopfhörer (optional)
+- Lautsprecher oder Kopfhörer mit 3,5-mm-Stecker (optional)
 - [Azure-Abonnement](https://azure.microsoft.com/free/)
-- [Azure Percept DK-Setup](./quickstart-percept-dk-set-up.md): Sie haben Ihr DevKit mit einem WLAN verbunden, eine IoT Hub-Instanz erstellt und das DevKit mit der IoT Hub-Instanz verbunden.
+- [Azure Percept DK-Setup:](./quickstart-percept-dk-set-up.md) Sie haben Ihr DevKit mit einem WLAN verbunden, eine IoT Hub-Instanz erstellt und das DevKit mit der IoT Hub-Instanz verbunden.
+- [Einrichten von Azure Percept-Audio](./quickstart-percept-audio-setup.md)
 
-## <a name="device-setup"></a>Geräteeinrichtung
-
-1. (Optional) Schließen Sie Ihre Lautsprecher oder Kopfhörer an der Kopfhörerbuchse des Audio-SoM an. Dieser Anschluss hat die Bezeichnung „Line Out“. Dies ermöglicht es Ihnen, die Audioantworten Ihres Sprach-Assistenten zu hören. Wenn Sie keine Lautsprecher oder Kopfhörer anschließen, können Sie die Antworten aber trotzdem verfolgen, da sie im Demofenster auch in Textform angezeigt werden.
-
-1. Schließen Sie das Audio-SoM mit dem beigefügten USB-A-zu-Micro-B-Kabel an das Board Ihres DevKit an.
-
-1. Schalten Sie das DevKit ein.
-
-    - Die LED L01 des Audio-SoM leuchtet nun grün und gibt damit an, dass das Gerät eingeschaltet wurde.
-    - Die LED L02 blinkt grün und gibt damit an, dass das Audio-SoM authentifiziert wird.
-
-1. Warten Sie, bis der Authentifizierungsvorgang abgeschlossen ist. Dies kann bis zu drei Minuten dauern.
-
-1. Fahren Sie mit dem nächsten Abschnitt fort, wenn einer der folgenden Fälle eintritt:
-
-    - LED L01 ist aus, und LED L02 leuchtet weiß. Dadurch wird angegeben, dass die Authentifizierung abgeschlossen ist und das DevKit noch nicht mit einem Schlüsselwort konfiguriert wurde.
-    - Alle drei LEDs leuchten blau. Dadurch wird angegeben, dass die Authentifizierung abgeschlossen ist und das DevKit mit einem Schlüsselwort konfiguriert wurde.
-
-    > [!NOTE]
-    > Wenden Sie sich an den Support, wenn das DevKit nicht authentifiziert wird.
 
 ## <a name="create-a-voice-assistant-using-an-available-template"></a>Erstellen eines Sprach-Assistenten mit einer verfügbaren Vorlage
 
@@ -55,7 +36,7 @@ In diesem Leitfaden wird Schritt für Schritt der Prozess zum Einrichten Ihrer G
 
 1. Öffnen Sie die Registerkarte **Demos und Tutorials**.
 
-    :::image type="content" source="./media/tutorial-no-code-speech/portal-overview.png" alt-text="Screenshot der Startseite des Azure-Portals":::
+    :::image type="content" source="./media/tutorial-no-code-speech/portal-overview.png" alt-text="Screenshot: Startseite des Azure-Portals":::
 
 1. Klicken Sie unter **Sprachtutorials und -demos** auf **Sprach-Assistenten-Vorlagen ausprobieren**. Auf der rechten Seite des Bildschirms wird ein Fenster geöffnet.
 
@@ -71,7 +52,7 @@ In diesem Leitfaden wird Schritt für Schritt der Prozess zum Einrichten Ihrer G
 
     1. Klicken Sie auf **Erstellen**.
 
-    :::image type="content" source="./media/tutorial-no-code-speech/template-creation.png" alt-text="Screenshot der Erstellung einer Vorlage für den Sprach-Assistenten":::
+    :::image type="content" source="./media/tutorial-no-code-speech/template-creation.png" alt-text="Screenshot: Erstellung einer Vorlage für den Sprach-Assistenten":::
 
 1. Nach dem Klicken auf **Erstellen** wird im Portal ein neues Fenster geöffnet, in dem Sie Ihre Sprachdesignressource erstellen können. Gehen Sie im Fenster wie folgt vor:
 
@@ -90,13 +71,13 @@ In diesem Leitfaden wird Schritt für Schritt der Prozess zum Einrichten Ihrer G
         > [!WARNING]
         > Schließen Sie das Fenster **NICHT**, bevor die Bereitstellung der Ressource im Portal abgeschlossen ist. Das vorzeitige Schließen des Fensters kann für den Sprach-Assistenten zu unerwartetem Verhalten führen. Nachdem Ihre Ressource bereitgestellt wurde, wird die Demo angezeigt.
 
-    :::image type="content" source="./media/tutorial-no-code-speech/resource-group.png" alt-text="Screenshot des Fensters zur Auswahl von Abonnement und Ressourcengruppe":::
+    :::image type="content" source="./media/tutorial-no-code-speech/resource-group.png" alt-text="Screenshot: Fenster zum Auswählen von Abonnement und Ressourcengruppe":::
 
 ## <a name="test-out-your-voice-assistant"></a>Testen Ihres Sprach-Assistenten
 
 Sagen Sie zum Interagieren mit Ihrem Sprach-Assistenten das Schlüsselwort, und nennen Sie dann einen Befehl. Wenn das akustische SoM Ihr Schlüsselwort erkennt, gibt das Gerät einen Glockenton aus (den Sie hören, wenn Lautsprecher oder Kopfhörer angeschlossen sind), und die LEDs blinken blau. Die LEDs blinken schnell nacheinander blau auf, während Ihr Befehl verarbeitet wird. Die Antwort des Sprach-Assistenten auf Ihren Befehl wird in Textform im Demofenster und als Ton über Ihre Lautsprecher bzw. Kopfhörer ausgegeben. Als Standardschlüsselwort (neben **Benutzerdefiniertes Schlüsselwort**) ist „Computer“ festgelegt. Jede Vorlage verfügt über verschiedene kompatible Befehle, mit denen Sie mit virtuellen Objekten im Demofenster interagieren können. Wenn Sie beispielsweise die Demo für das Hotel- und Gaststättengewerbe oder das Gesundheitswesen verwenden möchten, sagen Sie „Computer, turn on TV“ (Computer, Fernseher einschalten), um den virtuellen Fernseher einzuschalten.
 
-:::image type="content" source="./media/tutorial-no-code-speech/hospitality-demo.png" alt-text="Screenshot des Fensters mit der Demo für das Hotel- und Gaststättengewerbe":::
+:::image type="content" source="./media/tutorial-no-code-speech/hospitality-demo.png" alt-text="Screenshot: Fenster mit der Demo für das Hotel- und Gaststättengewerbe":::
 
 ### <a name="hospitality-and-healthcare-demo-commands"></a>Demo für Hotel- und Gaststättengewerbe und Gesundheitswesen: Befehle
 
@@ -108,7 +89,7 @@ Die Demos für „Gesundheitswesen“ und für „Hotel- und Gaststättengewerbe
 * „Open/close the blinds.“ (Jalousien öffnen/schließen.)
 * „Set temperature to X degrees.“ (Temperatur auf X Grad einstellen.) (X ist die gewünschte Temperatur, z. B. 75 Grad Fahrenheit/24 Grad Celsius.)
 
-:::image type="content" source="./media/tutorial-no-code-speech/healthcare-demo.png" alt-text="Screenshot des Fensters mit der Demo für das Gesundheitswesen":::
+:::image type="content" source="./media/tutorial-no-code-speech/healthcare-demo.png" alt-text="Screenshot: Fenster mit der Demo für das Gesundheitswesen":::
 
 ### <a name="automotive-demo-commands"></a>Demo für Automobilindustrie: Befehle
 
@@ -119,7 +100,8 @@ Die Demo für „Automobilindustrie“ umfasst eine Sitzheizung, eine Scheibenhe
 * „Set temperature to X degrees.“ (Temperatur auf X Grad einstellen.) (X ist die gewünschte Temperatur, z. B. 75 Grad Fahrenheit/24 Grad Celsius.)
 * „Increase/decrease the temperature by Y degrees.“ (Temperatur um Y Grad erhöhen/verringern.)
 
-:::image type="content" source="./media/tutorial-no-code-speech/auto-demo.png" alt-text="Screenshot des Fensters mit der Demo für die Automobilindustrie":::
+
+:::image type="content" source="./media/tutorial-no-code-speech/auto-demo.png" alt-text="Screenshot: Fenster mit der Demo für die Automobilindustrie":::
 
 ### <a name="inventory-demo-commands"></a>Demo für Bestandsverwaltung: Befehle
 
@@ -131,19 +113,30 @@ Die Demo für die Bestandsverwaltung verfügt über verschiedene virtuelle Kiste
 * „Count Y boxes.“ (Y Kisten zählen.) (Y ist die Farbe der Kisten, z. B. Gelb.)
 * „Ship everything in stock.“ (Gesamten Bestand versenden.)
 
-:::image type="content" source="./media/tutorial-no-code-speech/inventory-demo.png" alt-text="Screenshot des Fensters mit der Demo für die Bestandsverwaltung":::
+
+:::image type="content" source="./media/tutorial-no-code-speech/inventory-demo.png" alt-text="Screenshot: Fenster mit der Demo für die Bestandsverwaltung":::
 
 ## <a name="configure-your-keyword"></a>Konfigurieren des Schlüsselworts
 
-Klicken Sie zum Ändern Ihres Schlüsselworts im Demofenster neben **Benutzerdefiniertes Schlüsselwort** auf **Ändern**. Wählen Sie eins der verfügbaren Schlüsselwörter aus, und klicken Sie auf **Speichern**. Sie können eine Auswahl aus den vordefinierten Schlüsselwörtern und den von Ihnen erstellten benutzerdefinierten Schlüsselwörtern treffen.
+Sie können das Schlüsselwort für Ihren Sprach-Assistenten anpassen.
 
-:::image type="content" source="./media/tutorial-no-code-speech/change-keyword.png" alt-text="Screenshot der Auswahl verfügbarer Schlüsselwörter":::
+1. Klicken Sie im Demofenster neben **Benutzerdefiniertes Schlüsselwort** auf **Ändern**.
+
+1. Wählen Sie eins der verfügbaren Schlüsselwörter aus. Zur Auswahl stehen verschiedene vordefinierte Schlüsselwörter sowie die von Ihnen erstellten benutzerdefinierten Schlüsselwörter.
+
+1. Klicken Sie auf **Speichern**.
 
 ### <a name="create-a-custom-keyword"></a>Erstellen eines benutzerdefinierten Schlüsselworts
 
-Klicken Sie zum Erstellen eines benutzerdefinierten Schlüsselworts oben im Demofenster auf **+ Benutzerdefiniertes Schlüsselwort erstellen**. Geben Sie Ihr gewünschtes Schlüsselwort ein. Hierbei kann es sich um ein einzelnes Wort oder um eine kurze Wortfolge handeln. Wählen Sie Ihre **Sprachressource** aus (wird im Demofenster neben **Benutzerdefinierter Befehl** angezeigt und enthält Ihr Anwendungspräfix), und klicken Sie auf **Speichern**. Das Training für Ihr benutzerdefiniertes Schlüsselwort dauert ggf. nur wenige Sekunden.
+Sie können ein eigenes Schlüsselwort für Ihre Sprachanwendung erstellen. Das Trainieren für Ihr benutzerdefiniertes Schlüsselwort dauert nur wenige Minuten.
 
-:::image type="content" source="./media/tutorial-no-code-speech/custom-keyword.png" alt-text="Screenshot des Fensters zum Erstellen eines benutzerdefinierten Schlüsselworts":::
+1. Klicken Sie im oberen Bereich des Demofensters auf **+ Benutzerdefiniertes Schlüsselwort erstellen**. 
+
+1. Geben Sie das gewünschte Schlüsselwort ein. Hierbei kann es sich um ein einzelnes Wort oder um einen kurzen Ausdruck handeln.
+
+1. Wählen Sie Ihre **Speech-Ressource** aus (wird im Demofenster neben **Benutzerdefinierter Befehl** angezeigt und enthält Ihr Anwendungspräfix).
+
+1. Klicken Sie auf **Speichern**. 
 
 ## <a name="create-a-custom-command"></a>Erstellen eines benutzerdefinierten Befehls
 
@@ -165,7 +158,7 @@ Klicken Sie zum Erstellen eines neuen benutzerdefinierten Befehls im Demofenster
 
 1. Klicken Sie auf **Erstellen**.
 
-:::image type="content" source="./media/tutorial-no-code-speech/custom-commands.png" alt-text="Screenshot des Fensters für die Erstellung benutzerdefinierter Befehle":::
+:::image type="content" source="./media/tutorial-no-code-speech/custom-commands.png" alt-text="Screenshot: Fenster für die Erstellung benutzerdefinierter Befehle":::
 
 Nachdem Sie einen benutzerdefinierten Befehl erstellt haben, müssen Sie für die weitere Entwicklung zu [Speech Studio](https://speech.microsoft.com/) wechseln. Führen Sie die folgenden Schritte aus, falls Sie Speech Studio öffnen und Ihr benutzerdefinierter Befehl nicht angezeigt wird:
 
@@ -173,11 +166,11 @@ Nachdem Sie einen benutzerdefinierten Befehl erstellt haben, müssen Sie für di
 
 1. Wählen Sie die Registerkarte **Befehle** aus.
 
-    :::image type="content" source="./media/tutorial-no-code-speech/ai-projects.png" alt-text="Screenshot der Liste mit benutzerdefinierten Befehlen für die Bearbeitung":::
+    :::image type="content" source="./media/tutorial-no-code-speech/ai-projects.png" alt-text="Screenshot: Liste mit benutzerdefinierten Befehlen, die bearbeitet werden können":::
 
 1. Wählen Sie den benutzerdefinierten Befehl aus, den Sie weiterentwickeln möchten. Das Projekt wird in Speech Studio geöffnet.
 
-    :::image type="content" source="./media/tutorial-no-code-speech/speech-studio.png" alt-text="Screenshot der Startseite von Speech Studio":::
+    :::image type="content" source="./media/tutorial-no-code-speech/speech-studio.png" alt-text="Screenshot: Startseite von Speech Studio":::
 
 Weitere Informationen zur Entwicklung von benutzerdefinierten Befehlen finden Sie in der [Dokumentation zum Speech-Dienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-commands).
 
@@ -185,13 +178,13 @@ Weitere Informationen zur Entwicklung von benutzerdefinierten Befehlen finden Si
 
 ### <a name="voice-assistant-was-created-but-does-not-respond-to-commands"></a>Sprach-Assistent wurde erstellt, reagiert aber nicht auf Befehle
 
-Überprüfen Sie die LED-Leuchten am Audio-SoM:
+Überprüfen Sie die LEDs der Interposer-Platine:
 
 * Mit drei dauerhaft blau leuchtenden LEDs wird angezeigt, dass der Sprach-Assistent bereit ist und auf das Schlüsselwort wartet.
 * Wenn die mittlere LED (L02) weiß leuchtet, wurde die Initialisierung vom DevKit abgeschlossen, und die Konfiguration mit einem Schlüsselwort ist erforderlich.
-* Mit einer beliebigen Kombination aus grün leuchtenden LEDs wird angegeben, dass die Initialisierung für das Audio-SoM noch nicht abgeschlossen wurde. Der Initialisierungsvorgang kann einige Minuten dauern.
+* Wenn die mittlere LED (L02) weiß blinkt, ist die Initialisierung des Audio-SOM noch nicht abgeschlossen. Der Initialisierungsvorgang kann einige Minuten dauern.
 
-Weitere Informationen zu den LED-Anzeigen des Audio-SoM finden Sie im Artikel zu den LEDs.
+Weitere Informationen zu den LED-Anzeigen finden Sie im [Artikel zu den LEDs](./audio-button-led-behavior.md).
 
 ### <a name="voice-assistant-does-not-respond-to-a-custom-keyword-created-in-speech-studio"></a>Sprach-Assistent reagiert nicht auf ein benutzerdefiniertes Schlüsselwort, das in Speech Studio erstellt wurde
 
@@ -201,13 +194,11 @@ Dies kann passieren, wenn das Sprachmodul veraltet ist. Führen Sie die folgende
 
 1. Suchen Sie nach Ihrem Gerät, und wählen Sie es aus.
 
-    :::image type="content" source="./media/tutorial-no-code-speech/devices.png" alt-text="Screenshot der Geräteliste in Azure Percept Studio":::
+    :::image type="content" source="./media/tutorial-no-code-speech/devices.png" alt-text="Screenshot: Geräteliste in Azure Percept Studio":::
 
 1. Wählen Sie im Gerätefenster die Registerkarte **Sprache** aus.
 
 1. Überprüfen Sie die Version des Sprachmoduls. Wenn ein Update verfügbar ist, wird neben der Versionsnummer die Schaltfläche **Update** angezeigt.
-
-    :::image type="content" source="./media/tutorial-no-code-speech/devkit.png" alt-text="Screenshot des Fensters mit DevKit-Spracheinstellungen":::
 
 1. Klicken Sie auf **Update**, um das Update für das Sprachmodul bereitzustellen. Es dauert normalerweise zwei bis drei Minuten, bis der Updatevorgang abgeschlossen ist.
 
@@ -215,19 +206,19 @@ Dies kann passieren, wenn das Sprachmodul veraltet ist. Führen Sie die folgende
 
 Wenn Sie mit der Arbeit an Ihrer Sprach-Assistenten-Anwendung fertig sind, ist es ratsam, die im Rahmen dieses Tutorials bereitgestellten Sprachressourcen mit den folgenden Schritten zu bereinigen:
 
-1. Wählen Sie im [Azure-Portal](https://ms.portal.azure.com/#home) im Menü auf der linken Seite die Option **Ressourcengruppen** aus, oder geben Sie ihren Namen in der Suchleiste ein.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im Menü auf der linken Seite die Option **Ressourcengruppen** aus, oder geben Sie ihren Namen in der Suchleiste ein.
 
-    :::image type="content" source="./media/tutorial-no-code-speech/azure-portal.png" alt-text="Screenshot der Startseite des Azure-Portals mit linkem Menübereich und Ressourcengruppen":::
+    :::image type="content" source="./media/tutorial-no-code-speech/azure-portal.png" alt-text="Screenshot: Startseite des Azure-Portals mit linkem Menübereich und Ressourcengruppen":::
 
 1. Wählen Sie Ihre Ressourcengruppe aus.
 
 1. Wählen Sie alle sechs Ressourcen aus, die Ihr Anwendungspräfix enthalten, und klicken Sie im oberen Menübereich auf das Symbol **Löschen**.
-
-    :::image type="content" source="./media/tutorial-no-code-speech/select-resources.png" alt-text="Screenshot mit zum Löschen ausgewählten Sprachressourcen":::
+\
+    :::image type="content" source="./media/tutorial-no-code-speech/select-resources.png" alt-text="Screenshot: Zum Löschen ausgewählte Speech-Ressourcen":::
 
 1. Geben Sie zum Bestätigen des Löschvorgangs im entsprechenden Feld **Ja** ein, vergewissern Sie sich, dass Sie die richtigen Ressourcen ausgewählt haben, und klicken Sie auf **Löschen**.
 
-    :::image type="content" source="./media/tutorial-no-code-speech/delete-confirmation.png" alt-text="Screenshot des Bestätigungsfensters für den Löschvorgang":::
+    :::image type="content" source="./media/tutorial-no-code-speech/delete-confirmation.png" alt-text="Screenshot: Bestätigungsfenster für den Löschvorgang":::
 
 > [!WARNING]
 > Hierbei werden alle benutzerdefinierten Schlüsselwörter entfernt, die mit den von Ihnen gelöschten Sprachressourcen erstellt wurden, und die Demo für den Sprach-Assistenten funktioniert nicht mehr.

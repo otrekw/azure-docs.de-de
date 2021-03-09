@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9566560aaebaaa7ba3fc6d963a30637e33118077
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8f2bd316c733f4680a266d609e1cc95a4879016d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651058"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198522"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurieren von Azure AD Multi-Factor Authentication-Einstellungen
 
@@ -57,7 +57,7 @@ Nehmen Sie die Einstellungen vor, um die Kontosperreinstellungen zu konfiguriere
 
 ## <a name="block-and-unblock-users"></a>Benutzer sperren/zulassen
 
-Wenn das Gerät eines Benutzers verloren geht oder gestohlen wird, können Sie Azure AD MFA-Versuche für das zugeordnete Konto blockieren. Sämtliche Azure AD MFA-Versuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt.
+Wenn das Gerät eines Benutzers verloren geht oder gestohlen wird, können Sie Azure AD MFA-Versuche für das zugeordnete Konto blockieren. Sämtliche Azure AD MFA-Versuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt. Wir haben ein Video zum [Sperren und Entsperren von Benutzern in Ihrem Mandanten](https://www.youtube.com/watch?v=WdeE1On4S1o) veröffentlicht, um die Vorgehensweise zu erläutern.
 
 ### <a name="block-a-user"></a>Sperren eines Benutzers
 
