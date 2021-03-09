@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 04d6daac6644bd8d29479ac527bbdd8a5bdbd116
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 986b02ee1127bc929ce34518226424ba06d24b89
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678674"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101544"
 ---
 # <a name="msv2-and-mdsv2-series-medium-memory-preview"></a>Msv2- und Mdsv2-Serie mit mittlerem Arbeitsspeicher (Vorschau)
 
@@ -20,10 +20,10 @@ ms.locfileid: "101678674"
 > [!IMPORTANT]
 > Wenn Sie an der Vorschau teilnehmen möchten, füllen Sie das Formular unter **https://aka.ms/Mv2MedMemoryPreview** aus.  
 
-Die VM-Serien „Msv2“ und „Mdsv2“ mit mittlerem Arbeitsspeicher verfügen über einen Intel® Xeon® Platinum 8280-Prozessor (Cascade Lake) mit einer Kernbasisfrequenz von 2,7 GHz und einer maximalen Einzelkern-Turbofrequenz von 4,0 GHz. Mit diesen VMs erhalten Kunden größere Flexibilität durch Optionen mit lokalen Datenträgern und ohne Datenträger. Außerdem erhalten Kunden Zugriff auf eine Reihe neuer isolierter VM-Größen mit mehr CPU-Leistung und größerem Arbeitsspeicher, die bis zu 192 vCPUs mit 4 TiB Arbeitsspeicher reichen. 
+Die VM-Serien „Msv2“ und „Mdsv2“ mit mittlerem Arbeitsspeicher verfügen über einen Intel® Xeon® Platinum 8280-Prozessor (Cascade Lake) mit einer Kernbasisfrequenz von 2,7 GHz und einer maximalen Einzelkern-Turbofrequenz von 4,0 GHz. Mit diesen VMs erhalten Kunden größere Flexibilität durch Optionen mit lokalen Datenträgern und ohne Datenträger. Außerdem erhalten Kunden Zugriff auf eine Reihe neuer isolierter VM-Größen mit mehr CPU-Leistung und Arbeitsspeicher, die bis zu 192 vCPUs mit 4 TiB Arbeitsspeicher reichen. 
 
 
-VMs der Msv2- und Mdsv2-Serie sind nur Generation 2 und unterstützen eine Teilmenge der unterstützten Images der Generation 2. Unten finden Sie eine vollständige Liste der unterstützten Images für die Msv2- und Mdsv2-Serie.  
+VMs der Msv2- und Mdsv2-Serie sind nur als Generation 2 erhältlich und unterstützen eine Teilmenge der unterstützten Images der Generation 2. Unten finden Sie eine vollständige Liste der unterstützten Images für die Msv2- und Mdsv2-Serie.  
 
 - Windows Server 2019 oder höher
 - SUSE Linux Enterprise Server 12 SP4 oder höher, oder SUSE Linux Enterprise Server 15 SP1 oder höher
@@ -48,13 +48,13 @@ Weitere Informationen zu VMs der Generation 2 finden Sie unter [Unterstützung 
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs | Erwartete Netzwerkbandbreite (MBit/s) | 
 |---|---|---|---|---|---|---|---|
-| Standard_M32dms_v2 | 32 | 875 | 0 | 32 |  20.000/500 | 8 | 8.000 | 
-| Standard_M64ds_v2 | 64 | 1024 | 0 | 64 | 40000/1000 | 8 | 16000 | 
-| Standard_M64dms_v2 | 64 | 1792 | 0 | 64 | 40000/1000 | 8 | 16000 | 
-| Standard_M128ds_v2 | 128 | 2048 | 0 | 64 | 80.000/2.000 | 8 | 30.000 | 
-| Standard_M128dms_v2 | 128 | 3.892 | 0 | 64 | 80.000/2.000 | 8 | 30.000 | 
-| Standard_M192ids_v2 | 192 | 2048 | 0 | 64 | 80.000/2.000 | 8 | 30.000 | 
-| Standard_M192idms_v2 | 192 | 4096 | 0 | 64 | 80.000/2.000 | 8 | 30.000 | 
+| Standard_M32ms_v2 | 32 | 875 | 0 | 32 |  20.000/500 | 8 | 8.000 | 
+| Standard_M64s_v2 | 64 | 1024 | 0 | 64 | 40000/1000 | 8 | 16000 | 
+| Standard_M64ms_v2 | 64 | 1792 | 0 | 64 | 40000/1000 | 8 | 16000 | 
+| Standard_M128s_v2 | 128 | 2048 | 0 | 64 | 80.000/2.000 | 8 | 30.000 | 
+| Standard_M128ms_v2 | 128 | 3.892 | 0 | 64 | 80.000/2.000 | 8 | 30.000 | 
+| Standard_M192is_v2 | 192 | 2048 | 0 | 64 | 80.000/2.000 | 8 | 30.000 | 
+| Standard_M192ims_v2 | 192 | 4096 | 0 | 64 | 80.000/2.000 | 8 | 30.000 | 
 
 ## <a name="mdsv2-medium-memory-with-disk"></a>Mdsv2 mit mittlerem Arbeitsspeicher – mit Datenträger  
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ea6b567d7b48e504d9b79dad568da7170ada5326
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 58e910a721bea95e74a004ae306f1bbc3ade62f2
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706825"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174154"
 ---
 # <a name="specify-a-face-recognition-model"></a>Angeben eines Gesichtserkennungsmodells
 
@@ -24,11 +24,11 @@ In dieser Anleitung erfahren Sie, wie Sie ein Gesichtserkennungsmodell für die 
 
 Der Gesichtserkennungsdienst nutzt Machine Learning-Modelle für Vorgänge mit menschlichen Gesichter in Bildern. Wir verbessern die Genauigkeit unserer Modelle auf der Grundlage von Kundenfeedback und Forschungsergebnissen kontinuierlich, und wir stellen diese Verbesserungen als Modellaktualisierungen zur Verfügung. Entwickler können angeben, welche Version des Gesichtserkennungsmodells sie verwenden möchten. Sie können das Modell auswählen, das am besten zu ihrem Anwendungsfall passt.
 
-Für den Azure-Gesichtserkennungsdienst sind drei Erkennungsmodelle verfügbar. Die Modelle _recognition_01_ (2017 veröffentlicht) und _recognition_02_ (2019 veröffentlicht) werden fortlaufend unterstützt, um Abwärtskompatibilität für Benutzer sicherzustellen, die Gesichterlisten oder **Personengruppen** verwenden, die mit diesen Modellen erstellt wurden. Eine **Gesichterliste** oder **Personengruppe** verwendet immer das Erkennungsmodell, mit dem sie erstellt wurde, und neue Gesichter werden diesem Modell beim Hinzufügen zugeordnet. Dies kann nach der Erstellung nicht mehr geändert werden, und Kunden müssen das entsprechende Erkennungsmodell zusammen mit der entsprechenden **Gesichterliste** oder **Personengruppe** verwenden.
+Für den Azure-Gesichtserkennungsdienst sind vier Erkennungsmodelle verfügbar. Die Modelle _recognition_01_ (2017 veröffentlicht), _recognition_02_ (2019 veröffentlicht) und _recognition_03_ (2020 veröffentlicht) werden fortlaufend unterstützt, um Abwärtskompatibilität für Benutzer sicherzustellen, die Gesichterlisten (FaceLists) oder **Personengruppen** (PersonGroups) verwenden, die mit diesen Modellen erstellt wurden. Eine **Gesichterliste** oder **Personengruppe** verwendet immer das Erkennungsmodell, mit dem sie erstellt wurde, und neue Gesichter werden diesem Modell beim Hinzufügen zugeordnet. Dies kann nach der Erstellung nicht mehr geändert werden, und Kunden müssen das entsprechende Erkennungsmodell zusammen mit der entsprechenden **Gesichterliste** oder **Personengruppe** verwenden.
 
 Sie können jederzeit nach Wunsch zu späteren Erkennungsmodellen wechseln; allerdings müssen Sie neue Gesichterlisten und Personengruppen mit dem Erkennungsmodell Ihrer Wahl erstellen.
 
-Das Modell _recognition_03_ (2020 veröffentlicht) ist das genaueste derzeit verfügbare Modell. Wenn Sie Neukunde sind, empfehlen wir die Verwendung dieses Modells. _Recognition_03_ bietet bessere Genauigkeit sowohl bei Ähnlichkeitsvergleichen als auch bei Vergleichen zur Personenzuordnung. Beachten Sie, dass jedes Modell unabhängig von den anderen arbeitet und dass ein Übereinstimmungsschwellenwert, der für ein Modell festgelegt wurde, nicht mit Werten in den anderen Erkennungsmodellen verglichen werden kann.
+Das Modell _recognition_04_ (2021 veröffentlicht) ist das genaueste derzeit verfügbare Modell. Wenn Sie Neukunde sind, empfehlen wir die Verwendung dieses Modells. _recognition 04_ bietet eine höhere Genauigkeit sowohl bei Ähnlichkeitsvergleichen als auch bei Vergleichen zur Personenzuordnung. _recognition_04_ verbessert die Erkennung für registrierte Benutzer, die eine Mund-Nasen-Bedeckung (OP-Masken, N95-Masken, Stoffmasken) tragen. Sie können nun sichere und nahtlose Benutzerumgebungen erstellen, in denen mithilfe des neuesten Modells _detection_03_ ermittelt wird, ob ein registrierter Benutzer eine Mund-Nasen-Bedeckung trägt, und anschließend mithilfe des ebenfalls neuesten Modells _recognition_04_ die Identität dieses Benutzers bestimmt wird. Beachten Sie, dass jedes Modell unabhängig von den anderen arbeitet und dass ein Übereinstimmungsschwellenwert, der für ein Modell festgelegt wurde, nicht mit Werten in den anderen Erkennungsmodellen verglichen werden kann.
 
 Im Folgenden erfahren Sie, wie Sie in verschiedenen Vorgängen zur Gesichtserkennung ein ausgewähltes Modell angeben und dabei Modellkonflikte vermeiden. Wenn Sie ein fortgeschrittener Benutzer sind und bestimmen möchten, ob ein Wechsel zum neuesten Modell sinnvoll ist, gehen Sie zum Abschnitt [Auswerten verschiedener Modelle](#evaluate-different-models), um das neue Modell zu testen und die Ergebnisse mit Ihrem aktuellen Dataset zu vergleichen.
 
@@ -51,6 +51,7 @@ Wenn Sie die API [Face – Detect] (Gesicht – Erkennen) verwenden, weisen Sie 
 * recognition_01
 * recognition_02
 * recognition_03
+* recognition_04
 
 
 Optional können Sie den Parameter _returnRecognitionModel_ (Standardwert **false**) angeben, um festzulegen, ob _recognitionModel_ als Antwort zurückgegeben werden soll. Eine Anforderungs-URL für die REST-API [Face – Detect] sieht also wie folgt aus:
@@ -91,10 +92,10 @@ Sie können auch ein Erkennungsmodell für die Ähnlichkeitssuche angeben. Sie k
 Nachfolgend ist ein Codebeispiel für die .NET-Clientbibliothek aufgeführt.
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_04");
 ```
 
-Dieser Code erstellt eine Gesichterliste namens `My face collection`, die das Modell _recognition_03_ zum Extrahieren der Merkmale verwendet. Wenn Sie diese Gesichterliste für ein neu erkanntes Gesicht nach ähnlichen Gesichtern durchsuchen, dann muss dieses Gesicht mit dem Modell _recognition_03_ erkannt worden sein ([Face – Detect]). Wie im vorherigen Abschnitt muss das Modell konsistent sein.
+Dieser Code erstellt eine Gesichterliste namens `My face collection`, die das Modell _recognition_04_ zum Extrahieren der Merkmale verwendet. Wenn Sie diese Gesichterliste für ein neu erkanntes Gesicht nach ähnlichen Gesichtern durchsuchen, dann muss dieses Gesicht mit dem Modell _recognition_04_ erkannt worden sein ([Face – Detect]). Wie im vorherigen Abschnitt muss das Modell konsistent sein.
 
 Es gibt keine Änderung bei der API [Face – Find Similar]. Sie geben nur die Modellversion bei der Erkennung an.
 
@@ -105,10 +106,10 @@ Die API [Face – Verify] prüft, ob zwei Gesichter zu derselben Person gehören
 ## <a name="evaluate-different-models"></a>Auswerten unterschiedlicher Modelle
 
 Wenn Sie die Leistungen verschiedener Erkennungsmodelle mit Ihren eigenen Daten vergleichen möchten, müssen Sie wie folgt vorgehen:
-1. Erstellen Sie drei Personengruppen, für die Sie _recognition_01_, _recognition_02_ bzw. _recognition_03_ verwenden.
-1. Verwenden Sie Ihre Bilddaten, um Gesichter zu erkennen und sie für **Personen** innerhalb dieser drei **Personengruppen** zu registrieren. 
+1. Erstellen Sie vier Personengruppen, für die Sie _recognition_01_, _recognition_02_, _recognition_03_ bzw. _recognition_04_ verwenden.
+1. Verwenden Sie Ihre Bilddaten, um Gesichter zu erkennen und sie für **Personen** innerhalb dieser vier **Personengruppen** zu registrieren. 
 1. Trainieren Sie Ihre Personengruppen mithilfe der API „PersonGroup – Train“.
-1. Testen Sie mit „Face – Identify“ alle diese drei **Personengruppen**, und vergleichen Sie die Ergebnisse.
+1. Testen Sie mit „Face – Identify“ alle diese vier **Personengruppen**, und vergleichen Sie die Ergebnisse.
 
 
 Wenn Sie normalerweise einen Übereinstimmungsschwellenwert angeben (ein Wert zwischen Null und Eins, der bestimmt, wie sicher das Modell sein muss, um ein Gesicht zu identifizieren), müssen Sie möglicherweise verschiedene Schwellenwerte für unterschiedlichen Modelle verwenden. Ein Schwellenwert für ein Modell ist nicht dazu vorgesehen, mit einem anderen geteilt zu werden und führt nicht unbedingt zu denselben Ergebnissen.

@@ -1,17 +1,16 @@
 ---
 title: Häufig gestellte Fragen zu VM Insights in der allgemein verfügbaren Version (GA) | Microsoft-Dokumentation
 description: VM Insights ist eine Lösung in Azure, die Integritäts- und Leistungsüberwachung des Azure VM-Betriebssystems mit der automatischen Erkennung von Anwendungskomponenten und Abhängigkeiten mit anderen Ressourcen kombiniert und die Kommunikation unter ihnen als Zuordnung darstellt. In diesem Artikel werden häufig gestellte Fragen zum allgemein verfügbaren Release beantwortet.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 0c55463847e0bf55cf14db2a35de1de16526cd90
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fbef73bfe8058110277b200b8c4091fcde110c04
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710752"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031869"
 ---
 # <a name="vm-insights-generally-available-ga-frequently-asked-questions"></a>Häufig gestellte Fragen zu VM Insights in der allgemein verfügbaren Version (GA)
 Diese häufig gestellten Fragen zur allgemeinen Verfügbarkeit betreffen Änderungen, die im vierten Quartal 2019 und im ersten Quartal 2020 vorgenommen wurden.
@@ -20,15 +19,15 @@ Diese häufig gestellten Fragen zur allgemeinen Verfügbarkeit betreffen Änderu
 Im Januar 2020 wurde vor der Ankündigung der allgemeinen Verfügbarkeit eine neue Version von VM Insights veröffentlicht. Kunden, die VM Insights aktivieren, erhalten nun die neue allgemein verfügbare Version. Bestandskunden, die die Version von VM Insights aus dem vierten Quartal 2019 oder eine ältere Version verwenden, werden zum Upgrade aufgefordert. Diese häufig gestellten Fragen bieten Anleitungen zum Durchführen eines Upgrades in der erforderlichen Größenordnung, wenn Sie über große Bereitstellungen mit mehreren Arbeitsbereichen verfügen.
 
 
-Mit diesem Upgrade werden Leistungsdaten von Azure Monitor für VMs in derselben Tabelle *InsightsMetrics* wie bei [Container Insights](../containers/container-insights-overview.md) gespeichert. So können Sie diese beiden Datasets einfacher abfragen. Außerdem können Sie vielfältigere Datasets speichern, die in der zuvor verwendeten Tabelle nicht gespeichert werden konnten. 
+Mit diesem Upgrade werden VM Insights-Leistungsdaten in derselben *InsightsMetrics*-Tabelle wie bei [Container Insights](../containers/container-insights-overview.md) gespeichert. So können Sie diese beiden Datasets einfacher abfragen. Außerdem können Sie vielfältigere Datasets speichern, die in der zuvor verwendeten Tabelle nicht gespeichert werden konnten. 
 
 In den Leistungsansichten werden nun die in der Tabelle *InsightsMetrics* gespeicherten Daten verwendet.  Wenn Sie noch kein Upgrade zur Nutzung der aktuellen VMInsights-Lösung in Ihrem Arbeitsbereich durchgeführt haben, werden in Ihren Diagrammen keine Informationen mehr angezeigt.  Sie können wie weiter unten beschrieben ein Upgrade über die Seite **Erste Schritte** ausführen.
 
 
 ## <a name="what-is-changing"></a>Was ändert sich?
-Wir haben eine neue Lösung mit dem Namen VMInsights veröffentlicht, die zusätzliche Funktionen für die Datensammlung sowie einen neuen Speicherort für diese Daten in Ihrem Log Analytics-Arbeitsbereich umfasst. 
+Wir haben eine neue Lösung mit dem Namen „VMInsights“ veröffentlicht, die weitere Funktionen für die Datensammlung sowie einen neuen Speicherort für diese Daten in Ihrem Log Analytics-Arbeitsbereich umfasst. 
 
-Bisher hatten wir die ServiceMap-Lösung in Ihrem Arbeitsbereich aktiviert und Leistungsindikatoren in Ihrem Log Analytics-Arbeitsbereich eingerichtet, um die Daten an die Tabelle *Perf* zu senden. Bei dieser neuen Lösung werden die Daten an die Tabelle *InsightsMetrics* gesendet, die auch von Container Insights verwendet wird. Aufgrund dieses Tabellenschemas können wir zusätzliche Metriken und Dienstdatasets speichern, die nicht mit dem Format der Tabelle *Perf* kompatibel sind.
+Bisher hatten wir die ServiceMap-Lösung in Ihrem Arbeitsbereich aktiviert und Leistungsindikatoren in Ihrem Log Analytics-Arbeitsbereich eingerichtet, um die Daten an die Tabelle *Perf* zu senden. Bei dieser neuen Lösung werden die Daten an die Tabelle *InsightsMetrics* gesendet, die auch von Container Insights verwendet wird. Aufgrund dieses Tabellenschemas können wir weitere Metriken und Dienstdatasets speichern, die nicht mit dem Format der Tabelle *Perf* kompatibel sind.
 
 Die Leistungsdiagramme wurden so aktualisiert, dass sie die in der Tabelle *InsightsMetrics* gespeicherten Daten verwenden. Sie können wie nachfolgend beschrieben über die Seite **Erste Schritte** ein Update zur Verwendung der Tabelle *InsightsMetrics* ausführen.
 
@@ -58,7 +57,7 @@ Wenn Sie [Protokollwarnungen](../alerts/alerts-unified-log.md) erstellt haben, d
 
 Diese häufig gestellten Fragen und unsere Dokumentation werden noch aktualisiert, damit Beispiele für Warnungsregeln für die Protokollsuche für die von uns gesammelten Datasets enthalten sind.
 
-## <a name="how-will-this-affect-my-bill"></a>Welche Folgen hat das für meine Rechnung?
+## <a name="how-will-this-change-affect-my-bill"></a>Wie wirkt sich diese Änderung auf meine Rechnung aus?
 
 Die Abrechnung basiert weiterhin auf Daten, die erfasst und in Ihrem Log Analytics-Arbeitsbereich gespeichert werden.
 
@@ -90,7 +89,7 @@ Nein. Die beiden Lösungen nutzen die Zuordnungsdatasets gemeinsam, die wir in `
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>Integritätsfeature in der eingeschränkten Public Preview
 
-Wir haben von Kunden viel wertvolles Feedback zu unserem VM-Integritätsfeature erhalten. Es besteht starkes Interesse an diesem Feature und seinen Möglichkeiten für die Unterstützung von Überwachungsworkflows. Wir planen eine Reihe von Änderungen, um Funktionen hinzuzufügen und das erhaltene Feedback umzusetzen. 
+Wir haben von Kunden viel wertvolles Feedback zu unserem VM-Integritätsfeature erhalten. Es besteht erhebliches Interesse an diesem Feature und seinen Möglichkeiten für die Unterstützung von Überwachungsworkflows. Wir planen eine Reihe von Änderungen, um Funktionen hinzuzufügen und das erhaltene Feedback umzusetzen. 
 
 Um die Auswirkungen dieser Änderungen auf neue Kunden möglichst gering zu halten, haben wir dieses Feature in eine **eingeschränkte Public Preview** verschoben. Dieses Update fand im Oktober 2019 statt.
 

@@ -2,18 +2,18 @@
 title: Upgrade für Kubernetes-Agents mit Azure Arc-Aktivierung
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Steuern von Agent-Upgrades für Kubernetes mit Azure Arc-Aktivierung
 keywords: Kubernetes, Arc, Azure, K8s, Container, Agent, Upgrade
-ms.openlocfilehash: 3a5355269db4ccfc91612f661b464556b22c1d35
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 172654f655e594c295a8807b417c32d7849bd4b1
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660348"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121914"
 ---
 # <a name="upgrading-azure-arc-enabled-kubernetes-agents"></a>Upgrade für Kubernetes-Agents mit Azure Arc-Aktivierung
 
@@ -84,6 +84,6 @@ Etwa einmal im Monat wird eine Nebenversion von Kubernetes-Agents mit Azure Arc-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verbinden eines Clusters mit Azure Arc](./connect-cluster.md)
-* [Erstellen von Konfigurationen auf Ihrem Arc-fähigen Kubernetes-Cluster](./use-gitops-connected-cluster.md)
-* [Verwenden von Azure Policy zum Anwenden von Konfigurationen im großen Stil](./use-azure-policy.md)
+* Führen Sie den Schnellstart zum [Verbinden eines Kubernetes-Clusters mit Azure Arc](./connect-cluster.md) durch.
+* Sie haben bereits einen Kubernetes-Cluster, der mit Azure Arc verbunden ist? [Erstellen Sie Konfigurationen in Ihrem Arc-fähigen Kubernetes-Cluster](./use-gitops-connected-cluster.md).
+* Erfahren Sie, wie Sie [Azure Policy zum Anwenden von Konfigurationen im großen Stil verwenden](./use-azure-policy.md).

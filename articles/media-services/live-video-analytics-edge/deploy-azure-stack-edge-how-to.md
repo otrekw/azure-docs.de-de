@@ -3,12 +3,12 @@ title: Bereitstellen von Live Video Analytics in Azure Stack Edge
 description: In diesem Artikel werden die Schritte aufgelistet, die Sie bei der Bereitstellung von Live Video Analytics in Azure Stack Edge unterstützen.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: cc3dcfaa96034e807d3d82e75eedc0f6a82eff08
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: d49167890009d58b21c3678cb89f608bad665abd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551007"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730268"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Bereitstellen von Live Video Analytics in Azure Stack Edge
 
@@ -42,7 +42,7 @@ Azure Stack Edge ist eine Hardware-as-a-Service-Lösung und ein KI-fähiges Edge
 * [Erstellung von Azure Stack Edge-/Data Box Gateway-Ressourcen](../../databox-online/azure-stack-edge-deploy-prep.md)
 * [Installation und Einrichtung](../../databox-online/azure-stack-edge-deploy-install.md)
 * [Verbindung und Aktivierung](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
-* [Anfügen von IoT Hub an Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-configure-compute#configure-compute)
+* [Anfügen von IoT Hub an Azure Stack Edge](../../databox-online/azure-stack-edge-gpu-deploy-configure-compute.md#configure-compute)
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>Aktivieren von Computevoraussetzungen auf der lokalen Benutzeroberfläche von Azure Stack Edge
 
 Stellen Sie Folgendes sicher, bevor Sie fortfahren:
@@ -234,17 +234,22 @@ Befolgen Sie die unten angegebene Anleitung, um mit der Azure IoT Tools-Erweiter
     
 ## <a name="troubleshooting"></a>Problembehandlung
 
-* Kubernetes-API-Zugriff (kubectl).
+* **Kubernetes-API-Zugriff (kubectl)**
 
-    * Gehen Sie gemäß der Dokumentation vor, um Ihren Computer für den [Zugriff auf den Kubernetes-Cluster](https://review.docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-create-kubernetes-cluster?toc=%2Fazure%2Fdatabox-online%2Fazure-stack-edge-gpu%2Ftoc.json&bc=%2Fazure%2Fdatabox-online%2Fazure-stack-edge-gpu%2Fbreadcrumb%2Ftoc.json&branch=release-tzl#debug-kubernetes-issues) zu konfigurieren.
-    * Alle bereitgestellten IoT Edge Module verwenden den `iotedge`-Namespace. Schließen Sie ihn ein, wenn Sie kubectl verwenden.
-* Modulprotokolle
+    * Gehen Sie gemäß der Dokumentation vor, um Ihren Computer für den [Zugriff auf den Kubernetes-Cluster](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-create-kubernetes-cluster) zu konfigurieren.
+    * Alle bereitgestellten IoT Edge Module verwenden den `iotedge`-Namespace. Schließen Sie ihn ein, wenn Sie kubectl verwenden.  
 
-    Auf das Tool `iotedge` kann nicht zugegriffen werden, um Protokolle abzurufen. Sie müssen [kubectl-Protokolle](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs) verwenden, um die Protokolle anzuzeigen oder an eine Datei zu übergeben. Beispiel: <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`
-* Pod- und Knotenmetriken
+* **Modulprotokolle**
 
-    Verwenden Sie den Befehl [kubectl top](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#top), um Pod- und Knotenmetriken anzuzeigen. (Diese Funktion ist in der nächsten Azure Stack Edge-Version verfügbar – > v2007.)<br/>`kubectl top pods -n iotedge`
-* Modulnetzwerke Zur Modulermittlung in Azure Stack Edge muss für das Modul in „createOptions“ Hostportbindung festgelegt sein. Das Modul ist dann über `moduleName:hostport` adressierbar.
+    Auf das Tool `iotedge` kann nicht zugegriffen werden, um Protokolle abzurufen. Sie müssen [kubectl-Protokolle](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs) verwenden, um die Protokolle anzuzeigen oder an eine Datei zu übergeben. Beispiel: <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`  
+
+* **Pod- und Knotenmetriken**
+
+    Verwenden Sie den Befehl [kubectl top](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#top), um Pod- und Knotenmetriken anzuzeigen.
+    <br/>`kubectl top pods -n iotedge` 
+
+* **Modulnetzwerke**   
+Zur Modulermittlung in Azure Stack Edge muss für das Modul in „createOptions“ die Hostportbindung festgelegt sein. Das Modul ist dann über `moduleName:hostport` adressierbar.
     
     ```json
     "createOptions": {
@@ -256,10 +261,11 @@ Befolgen Sie die unten angegebene Anleitung, um mit der Azure IoT Tools-Erweiter
     }
     ```
     
-* Volumebereitstellung
+* **Volumebereitstellung**
 
     Ein Modul kann nicht gestartet werden, wenn der Container versucht, ein Volume in ein vorhandenes und nicht leeres Verzeichnis einzubinden.
-* Shared Memory
+
+* **Gemeinsam genutzter Arbeitsspeicher bei Verwendung von gRPC**
 
     Gemeinsam genutzter Arbeitsspeicher in Azure Stack Edge-Ressourcen wird mit Host-IPC podübergreifend in jedem Namespace unterstützt.
     Konfigurieren von gemeinsam genutztem Speicher in einem Edgemodul für die Bereitstellung über IoT Hub.
@@ -272,7 +278,7 @@ Befolgen Sie die unten angegebene Anleitung, um mit der Azure IoT Tools-Erweiter
         }
     ...
         
-    (Advanced) Configuring shared memory on a K8s Pod or Deployment manifest for deployment via K8s API.
+    //(Advanced) Configuring shared memory on a K8s Pod or Deployment manifest for deployment via K8s API
     spec:
         ...
         template:
@@ -281,14 +287,14 @@ Befolgen Sie die unten angegebene Anleitung, um mit der Azure IoT Tools-Erweiter
         ...
     ```
     
-* (Erweitert) Gemeinsame Anordnung von Pods
+* **(Erweitert) Gemeinsame Anordnung von Pods**
 
     Wenn Sie mit K8s benutzerdefinierte Rückschlusslösungen bereitstellen, die über gRPC mit Live Video Analytics kommunizieren, müssen Sie sicherstellen, dass die Pods auf denselben Knoten wie Live Video Analytics-Module bereitgestellt werden.
 
-    * Option 1: Verwenden von Knotenaffinität und integrierten Knotenbezeichnungen für die gemeinsame Anordnung.
+    * **Option 1:** Verwenden von Knotenaffinität und integrierten Knotenbezeichnungen für die gemeinsame Anordnung
 
     Die benutzerdefinierte NodeSelector-Konfiguration scheint derzeit keine Option zu sein, da die Benutzer über keinen Zugriff zum Festlegen von Bezeichnungen für die Knoten verfügen. Abhängig von der Topologie und den Benennungskonventionen des Kunden können sie jedoch möglicherweise [integrierte Knotenbezeichnungen](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#built-in-node-labels) verwenden. Um eine gemeinsame Anordnung zu erreichen, kann dem Rückschlusspodmanifest der Abschnitt „nodeAffinity“ hinzugefügt werden, der auf Azure Stack Edge-Ressourcen mit Live Video Analytics verweist.
-    * Option 2: Verwenden von Podaffinität für die gemeinsame Anordnung (empfohlen).
+    * **Option 2:** Verwenden von Podaffinität für die gemeinsame Anordnung (empfohlen)
 Kubernetes unterstützt [Podaffinität](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity), sodass Pods auf demselben Knoten geplant werden können. Um eine gemeinsame Anordnung zu erreichen, kann dem Rückschlusspodmanifest der Abschnitt „podAffinity“ hinzugefügt werden, der auf das Live Video Analytics-Modul verweist.
 
     ```json   
@@ -310,6 +316,31 @@ Kubernetes unterstützt [Podaffinität](https://kubernetes.io/docs/concepts/sche
                 values:
                 - mediaedge
             topologyKey: "kubernetes.io/hostname"
+    ```
+* **404-Fehlercode bei Verwendung des `rtspsim`-Moduls**  
+Der Container liest Videos aus genau einem Ordner innerhalb des Containers. Wenn Sie einen externen Ordner einem Ordner zuweisen bzw. an einen Ordner binden, der im Containerimage bereits vorhanden ist, blendet Docker die Dateien aus, die sich im Containerimage befinden.  
+ 
+    Wenn keine Bindungen bestehen, weist ein Container beispielsweise die folgenden Dateien auf:  
+    ```
+    root@rtspsim# ls /live/mediaServer/media  
+    /live/mediaServer/media/camera-300s.mkv  
+    /live/mediaServer/media/win10.mkv  
+    ```
+     
+    Ihr Host verfügt möglicherweise über die folgenden Dateien:
+    ```    
+    C:\MyTestVideos> dir
+    Test1.mkv
+    Test2.mkv
+    ```
+     
+    Wenn jedoch die folgende Bindung in der Bereitstellungsmanifestdatei hinzugefügt wird, überschreibt Docker die Inhalte von /live/mediaServer/media, um für eine Übereinstimmung mit den Inhalten auf dem Host zu sorgen.
+    `C:\MyTestVideos:/live/mediaServer/media`
+    
+    ```
+    root@rtspsim# ls /live/mediaServer/media
+    /live/mediaServer/media/Test1.mkv
+    /live/mediaServer/media/Test2.mkv
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte

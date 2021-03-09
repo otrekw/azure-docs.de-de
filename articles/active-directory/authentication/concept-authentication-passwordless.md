@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e36acb5a6a0984b003e4e8deb597bddfc43b064a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 97517ad3ff260806108dc22686d49b43b0fc6609
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647556"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096019"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Optionen für die kennwortlose Authentifizierung für Azure Active Directory
 
@@ -89,6 +89,8 @@ FIDO2-Sicherheitsschlüssel sind eine Phishing-resistente, standardbasierte Meth
 Benutzer können einen FIDO2-Sicherheitsschlüssel registrieren und dann auf dem Anmeldebildschirm als Hauptauthentifizierungsmethode auswählen. Bei diesen FIDO2-Sicherheitsschlüsseln handelt es sich in der Regel um USB-Geräte, es können aber auch Bluetooth- oder NFC-Geräte sein. Mit einem Hardwaregerät, das für die Authentifizierung sorgt, erhöht sich die Sicherheit eines Kontos, da es kein Kennwort gibt, das verfügbar gemacht oder erraten werden kann.
 
 FIDO2-Sicherheitsschlüssel können verwendet werden, um sich bei in Azure AD oder Azure AD Hybrid eingebundenen Windows 10-Geräten anzumelden und das einmalige Anmelden für den Zugriff auf cloudbasierte und lokale Ressourcen zu nutzen. Benutzer können sich auch bei unterstützten Browsern anmelden. FIDO2-Sicherheitsschlüssel sind eine gute Option für Unternehmen, die sehr sicherheitsbewusst sind oder deren Mitarbeiter nicht bereit oder in der Lage sind, ihr Telefon als zweiten Faktor zu nutzen, oder aber bei denen andere entsprechende Szenarien vorliegen.
+
+Es stehen ein Referenzdokument, für das [Browser die FIDO2-Authentifizierung mit Azure AD unterstützen](fido2-compatibility.md), sowie bewährte Methoden für Entwickler zur Verfügung, die [FIDO2-Authentifizierung in den von ihnen entwickelten Anwendungen unterstützen](../develop/support-fido2-authentication.md) möchten.
 
 ![Anmelden bei Microsoft Edge mit einem Sicherheitsschlüssel](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 

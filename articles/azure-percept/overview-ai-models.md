@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: template-concept
-ms.openlocfilehash: 28a8de231f179cf69342da81e6a2ae1989d2a5d6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8a9ed564012e8b530436152d931f5a5f6470ff98
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041585"
+ms.locfileid: "102098365"
 ---
 # <a name="azure-percept-ai-models"></a>Azure Percept-KI-Modelle
 
@@ -52,6 +52,8 @@ Vorgefertigte Sprach-Assistenten-Schlüsselwörter und -Befehle sind direkt übe
 
 ## <a name="advanced-development"></a>Komplexe Entwicklung
 
-Für fortgeschrittene Entwickler führt das verfügbare [Jupyter Notebook](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/Transferlearningusing_SSDLiteV2%20Model.ipynb) einen Lerntransfer mithilfe eines vorab trainierten TensorFlow-Modells (MobileNetSSDV2Lite) in Python mit einem benutzerdefinierten Dataset für die Objekterkennung aus. Das Notebook nutzt Remotecompute-Instanzen über [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/#product-overview) und kann in der Cloud mithilfe des AzureML-Portals oder lokal in [Visual Studio Code](https://code.visualstudio.com/) ausgeführt werden.
+Aktuelle Anleitungen, Tutorials und Beispiele zu den folgenden Themen finden Sie im [GitHub-Repository zur erweiterten Entwicklung mit Azure Percept DK](https://github.com/microsoft/azure-percept-advanced-development):
 
-Ferner enthalten sind einige hilfreiche Python-[Skripts](https://github.com/microsoft/Project-Santa-Cruz-Preview/tree/main/Sample-Scripts-and-Notebooks/Official/Scripts) für die Verwaltung von Datasets und das [Installationsprogramm für das Paket mit Entwicklertools](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/dev-tools-installer.md), mit dem alle Tools installiert und konfiguriert werden, die zum Entwickeln einer komplexen KI-Lösung erforderlich sind.
+* Bereitstellen eines benutzerdefinierten KI-Modells auf dem Gerät
+* Aktualisieren eines bereits unterstützten Modells mit Lerntransfer
+* und mehr...
