@@ -2,22 +2,20 @@
 title: Verwenden von Azure Policy zum Anwenden skalierbarer Clusterkonfigurationen
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Verwenden von Azure Policy zum Anwenden skalierbarer Clusterkonfigurationen
 keywords: Kubernetes, Arc, Azure, K8s, Container
-ms.openlocfilehash: 7f85050666c383ba49730bd88ce1f26d55607e7a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 05a6665a985ef8b229ee58082dc9b2c10cdcece3
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652146"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121455"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale"></a>Verwenden von Azure Policy zum Anwenden skalierbarer Clusterkonfigurationen
-
-## <a name="overview"></a>Übersicht
 
 Sie können mit Azure Policy entsprechende Konfigurationen (`Microsoft.KubernetesConfiguration/sourceControlConfigurations`-Ressourcentyp) im großen Stil auf Kubernetes-Cluster mit Azure Arc-Aktivierung (`Microsoft.Kubernetes/connectedclusters`) anwenden.
 
@@ -69,4 +67,4 @@ Bei vorhandenen Clustern müssen Sie manuell einen Wartungstask ausführen. Es d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Einrichten von Azure Monitor für Container mit Arc-fähigen Kubernetes-Clustern](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md)
+[Einrichten von Azure Monitor für Container mit Azure Arc-fähigen Kubernetes-Clustern](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md)

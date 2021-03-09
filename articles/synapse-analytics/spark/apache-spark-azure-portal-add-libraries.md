@@ -1,5 +1,5 @@
 ---
-title: Bibliotheksverwaltung
+title: Paketverwaltung
 description: Erfahren Sie, wie Sie Bibliotheken hinzufügen und verwalten, die von Apache Spark in Azure Synapse Analytics verwendet werden.
 services: synapse-analytics
 author: midesa
@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 955d7f8c2d2ce5ea126d4cce67b0e4e55152ac72
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c6d720c3feec29eb32b1cfa9c31ea45839c98ec7
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695089"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176415"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Verwalten von Bibliotheken für Apache Spark in Azure Synapse Analytics
 Bibliotheken stellen wiederverwendbaren Code bereit, den Sie in Ihre Programme oder Projekte einschließen können. 
@@ -38,17 +38,18 @@ Wenn Sie benutzerdefinierte Anwendungen oder Modelle entwickeln, erstellt Ihr Te
 In Synapse können Arbeitsbereichspakete benutzerdefinierte oder private Wheel- oder JAR-Dateien sein. Sie können diese Pakete in Ihren Arbeitsbereich hochladen und später einem bestimmten Spark-Pool zuweisen. Nach der Zuweisung werden diese Arbeitsbereichspakete automatisch in allen Spark-Poolsitzungen installiert.
 
 Weitere Informationen zum Verwalten von Arbeitsbereichsbibliotheken finden Sie in den folgenden Schrittanleitungen:
-- [Python-Arbeitsbereichspakete:](./apache-spark-manage-python-packages.md#Install-wheel-files) Laden Sie Python-Wheel-Dateien als Arbeitsbereichspaket hoch, und fügen Sie diese Pakete später bestimmten serverlosen Apache Spark-Pools hinzu.
-- [Scala/Java-Arbeitsbereichspakete (Vorschau):](./apache-spark-manage-scala-packages.md#Workspace-packages) Laden Sie Scala- und Java-JAR-Dateien als Arbeitsbereichspaket hoch, und fügen Sie diese Pakete später bestimmten serverlosen Apache Spark-Pools hinzu.
 
-## <a name="pool-management"></a>Poolverwaltung
+- [Python-Arbeitsbereichspakete (Vorschau):](./apache-spark-manage-python-packages.md#install-wheel-files) Laden Sie Python-Wheel-Dateien als Arbeitsbereichspaket hoch, und fügen Sie diese Pakete später bestimmten serverlosen Apache Spark-Pools hinzu.
+- [Scala/Java-Arbeitsbereichspakete (Vorschau):](./apache-spark-manage-scala-packages.md#workspace-packages) Laden Sie Scala- und Java-JAR-Dateien als Arbeitsbereichspaket hoch, und fügen Sie diese Pakete später bestimmten serverlosen Apache Spark-Pools hinzu.
+
+## <a name="pool-packages"></a>Poolpakete
 In einigen Fällen möchten Sie möglicherweise den Satz von Paketen standardisieren, die für einen bestimmten Apache Spark-Pool verwendet werden. Diese Standardisierung kann nützlich sein, wenn dieselben Pakete häufig von mehreren Personen Ihres Teams installiert werden. 
 
 Mithilfe der Verwaltungsfunktionen des Azure Synapse Analytics-Pools können Sie den Standardsatz von Bibliotheken konfigurieren, die in einem bestimmten serverlosen Apache Spark-Pool installiert werden sollen. Diese Bibliotheken werden zusätzlich zur [Basisruntime](./apache-spark-version-support.md) installiert. 
 
 Derzeit wird die Poolverwaltung nur für Python unterstützt. Bei Python nutzen Synapse-Spark-Pools Conda, um Python-Paketabhängigkeiten zu installieren und zu verwalten. Wenn Sie Ihre Bibliotheken auf Poolebene angeben, können Sie jetzt eine Datei „requirements.txt“ oder „environment.yml“ bereitstellen. Diese Umgebungskonfigurationsdatei wird jedes Mal verwendet, wenn eine Spark-Instanz aus diesem Spark-Pool erstellt wird. 
 
-Weitere Informationen zu diesen Funktionen finden Sie in der Dokumentation zur [Verwaltung von Python-Pools](./apache-spark-manage-python-packages.md#Pool-libraries).
+Weitere Informationen zu diesen Funktionen finden Sie in der Dokumentation zur [Verwaltung von Python-Pools](./apache-spark-manage-python-packages.md#pool-libraries).
 
 > [!IMPORTANT]
 > - Wenn das Paket, das Sie installieren, groß ist oder seine Installation lange dauert, wirkt sich dies auf die Startzeit der Spark-Instanz aus.
@@ -60,9 +61,14 @@ Sie werden bei der interaktiven Datenanalyse oder beim maschinellen Lernen häuf
 
 Mit sitzungsbezogenen Paketen können Benutzer zu Beginn ihrer Sitzung Paketabhängigkeiten definieren. Wenn Sie ein sitzungsbezogenes Paket installieren, kann nur die aktuelle Sitzung auf die angegebenen Pakete zugreifen. Daher wirken sich diese sitzungsbezogenen Pakete nicht auf andere Sitzungen oder Aufträge aus, die denselben Apache Spark-Pool verwenden. Außerdem werden diese Bibliotheken zusätzlich zu den Paketen der Basisruntime und der Poolebene installiert. 
 
+Diese Pakete werden Ihrer Python-Umgebung automatisch hinzugefügt. Die Pakete dürfen nicht in der Datei *requirements.txt* erwähnt werden.
+
+Beachten Sie, dass diese Methode zurzeit nur Dateien vom Typ `*.whl` unterstützt. Fügen Sie dem Container keine Dateien vom Typ `*.tar.gz` hinzu.
+
 Weitere Informationen zum Verwalten von sitzungsbezogenen Paketen finden Sie in den folgenden Schrittanleitungen:
-- [Python-Sitzungspakete (Vorschau):](./apache-spark-manage-python-packages.md#Session-scoped-libraries-(preview)) Stellen Sie zu Beginn einer Sitzung eine Conda-Datei namens *environment.yml* bereit, um zusätzliche Python-Pakete aus beliebten Repositorys zu installieren. 
-- [Scala/Java-Sitzungspakete:](./apache-spark-manage-scala-packages.md#Workspace-packages) Geben Sie zu Beginn der Sitzung mithilfe von ```%%configure``` eine Liste mit JAR-Dateien an, die installiert werden sollen.
+
+- [Python-Sitzungspakete (Vorschau):](./apache-spark-manage-python-packages.md) Stellen Sie zu Beginn einer Sitzung eine Conda-Datei namens *environment.yml* bereit, um zusätzliche Python-Pakete aus beliebten Repositorys zu installieren. 
+- [Scala/Java-Sitzungspakete:](./apache-spark-manage-scala-packages.md) Geben Sie zu Beginn der Sitzung mithilfe von `%%configure` eine Liste mit JAR-Dateien an, die installiert werden sollen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Anzeigen der Standardbibliotheken: [Versionsunterstützung für Apache Spark](apache-spark-version-support.md)

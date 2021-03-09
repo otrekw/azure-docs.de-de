@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 21d0191c2c7722ac911461bd8d06cd8492d0c16d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 85ce7518a2dcfe259ab26f49e809ea1de81d2922
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694630"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204132"
 ---
 # <a name="partner-spotlight"></a>Partnerschwerpunktthema
 
@@ -21,6 +21,7 @@ Holen Sie sich fachkundige Hilfe von Microsoft-Partnern, die End-to-End-Lösunge
 
 | Partner | BESCHREIBUNG | Produktlink |
 |---------|-------------|----------------------|
+| ![Agolo](media/resource-partners/agolo-logo.png "Agolo-Unternehmenslogo") | [**Agolo**](https://www.agolo.com) ist die führende Zusammenfassungs-Engine für die Verwendung in Unternehmen. Die KI-Plattform von Agolo analysiert Hunderttausende Medienartikel, Forschungsdokumente und proprietäre Informationen, um jedem Kunden eine Zusammenfassung der wichtigsten Punkte zur Verfügung zu stellen, die für seine Interessengebiete spezifisch sind. </br></br>Unsere Partnerschaft mit Microsoft kombiniert die Leistungsfähigkeit und Flexibilität der Azure Cognitive Search-Plattform und integriert sie in die Agolo-Zusammenfassung. Anstelle von typischen Suchmaschinenausschnitten werden auf der Ergebnisseite kontextrelevante Agolo-Zusammenfassungen angezeigt, sodass der Benutzer sofort die Relevanz dieses Dokuments für seine spezifischen Anforderungen ermitteln kann. Der Vorteil der auf Zusammenfassungen basierenden Suche besteht darin, dass Benutzer relevantere Inhalte schneller finden, sodass sie Ihre Arbeit effektiver erledigen können und damit einen Wettbewerbsvorteil erlangen. | [Produktseite](https://www.agolo.com/microsoft-azure-cognitive-search ) |
 | ![BlueGranite](media/resource-partners/blue-granite-full-color.png "Firmenlogo von BlueGranite") | [**BlueGranite**](https:///www.bluegranite.com/) besitzt 25 Jahre Erfahrung mit moderner Business Intelligence, Datenplattformen und KI-Lösungen in verschiedenen Branchen. Mit den Knowledge Mining-Diensten erhalten Organisationen eindeutige Erkenntnisse aus strukturierten und unstrukturierten Datenquellen. Modulare KI-Funktionen führen Suchvorgänge in zahlreichen Dateitypen durch, um Daten zu indizieren und diese Daten herkömmlichen Datenquellen zuzuordnen. Analysetools extrahieren Muster und Trends aus den angereicherten Daten und zeigen die Ergebnisse für Benutzer auf allen Ebenen an. | [Produktseite](https://www.bluegranite.com/knowledge-mining) |
 | ![Neal Analytics](media/resource-partners/neal-analytics-logo.png "Firmenlogo von Neal Analytics") | [**Neal Analytics**](https://nealanalytics.com/) bietet seit über 10 Jahren Cloud-, Daten- und KI-Kompetenz in Azure. Seine Experten verfügen über anerkanntes, fundiertes Fachwissen rund um die Dienste Azure KI und Azure Machine Learning. Neal kann Kunden bei Anpassung und Implementierung von Azure Cognitive Search in einer Vielzahl von Anwendungsfällen unterstützen. Das Fachwissen von Neal Analytics reicht von der Such-, Formular- und Prozessautomatisierung auf Unternehmensebene bis zur Zuordnung von Domänen für Datenextraktion und -analyse, Plagiatserkennung und mehr. | [Produktseite](https://go.nealanalytics.com/cognitive-search)|
-| ![OrangeNXT](media/resource-partners/orangenxt-beldmerk-boven-160px.png "Firmenlogo von OrangeNXT") | [**OrangeNXT**](https://orangenxt.com/) bietet Fachwissen in den Bereichen Datenkonsolidierung, Datenmodellierung und Aufbau von Skillsets, die eine für spezielle Anwendungsfälle entwickelte Logik beinhalten.<br/><br/>digitalNXT Search ist eine OrangeNXT-Lösung, die KI, optische Zeichenerkennung (OCR) und Verarbeitung natürlicher Sprache in der Azure Cognitive Search-Pipeline kombiniert, um Sie bei der Extraktion von Suchergebnissen aus mehreren strukturierten und unstrukturierten Datenquellen zu unterstützen. Integraler Bestandteil von digitalNXT Search sind fortschrittliche benutzerdefinierte kognitive Skills zum Interpretieren und Korrelieren ausgewählter Daten.<br/><br/>| [Produktseite](https://orangenxt.com/solutions/digitalnxt/digitalnxt-search/)|
+| ![OrangeNXT](media/resource-partners/orangenxt-beldmerk-boven-160px.png "Firmenlogo von OrangeNXT") | [**OrangeNXT**](https://orangenxt.com/) bietet Fachwissen in den Bereichen Datenkonsolidierung, Datenmodellierung und Aufbau von Skillsets, die eine für spezielle Anwendungsfälle entwickelte Logik beinhalten.</br></br>digitalNXT Search ist eine OrangeNXT-Lösung, die KI, optische Zeichenerkennung (OCR) und Verarbeitung natürlicher Sprache in der Azure Cognitive Search-Pipeline kombiniert, um Sie bei der Extraktion von Suchergebnissen aus mehreren strukturierten und unstrukturierten Datenquellen zu unterstützen. Integraler Bestandteil von digitalNXT Search sind fortschrittliche benutzerdefinierte kognitive Skills zum Interpretieren und Korrelieren ausgewählter Daten.</br></br>| [Produktseite](https://orangenxt.com/solutions/digitalnxt/digitalnxt-search/)|

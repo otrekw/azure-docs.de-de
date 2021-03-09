@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./app-service-web-tutorial-custom-domain-uiex
-ms.openlocfilehash: b3ff1b344852d57f0effbd978c06aa617682ea4f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 79599ce04b93409c67342be73cf88d5e20621c1d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720313"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182586"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service
 
@@ -77,7 +77,7 @@ Die Verwaltungsseite der App Service-App wird angezeigt.
 
 1. Der aktuelle Tarif der App wird durch einen blauen Rahmen hervorgehoben. Vergewissern Sie sich, dass sich die App nicht im Tarif **F1** befindet. Benutzerdefiniertes DNS wird im Tarif **F1** nicht unterstützt.
 
-   ![Screenshot: Empfohlene Tarife](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
+   ![Screenshot der empfohlenen Tarife](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
 1. Wenn sich der App Service-Plan nicht im Tarif **F1** befindet, schließen Sie die Seite **Hochskalieren**, und fahren Sie mit [Zuordnen eines CNAME-Eintrags](#map-a-cname-record) fort.
 
@@ -144,7 +144,7 @@ Nach dem Hinzufügen des CNAME- und des TXT-Eintrags sieht die Seite mit den DNS
 
 1. Wählen Sie im linken Bereich der App-Seite im Azure-Portal die Option **Benutzerdefinierte Domänen** aus.
 
-    ![Screenshot: Menü „Benutzerdefinierte Domänen“](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![Screenshot des Menüs „Benutzerdefinierte Domänen“](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
 1. Fügen Sie auf der Seite **Benutzerdefinierte Domänen** der App der Liste den vollqualifizierten benutzerdefinierten DNS-Namen (`www.contoso.com`) hinzu.
 
@@ -185,7 +185,7 @@ Für die Zuordnung eines A-Eintrags benötigen Sie die externe IP-Adresse der Ap
 
 1. Wählen Sie im linken Bereich der App-Seite im Azure-Portal die Option **Benutzerdefinierte Domänen** aus.
 
-   ![Screenshot: Menü „Benutzerdefinierte Domänen“](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+   ![Screenshot des Menüs „Benutzerdefinierte Domänen“](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
 1. Kopieren Sie auf der Seite **Benutzerdefinierte Domänen** die IP-Adresse der App.
 
@@ -277,7 +277,7 @@ Sie können jetzt eine beliebige Unterdomäne hinzufügen, mit der der Platzhalt
 
 1. Wählen Sie im linken Bereich der App-Seite im Azure-Portal die Option **Benutzerdefinierte Domänen** aus.
 
-    ![Screenshot: Menü „Benutzerdefinierte Domänen“](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![Screenshot des Menüs „Benutzerdefinierte Domänen“](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
 1. Wählen Sie **Benutzerdefinierte Domäne hinzufügen**.
 
@@ -308,10 +308,7 @@ Navigieren Sie zu den DNS-Namen, die Sie zuvor konfiguriert haben, z. B. `conto
 
 ## <a name="resolve-404-not-found"></a>Beheben von 404 „Nicht gefunden“
 
-Falls beim Aufrufen der URL Ihrer benutzerdefinierten Domäne ein HTTP-Fehler vom Typ 404 (Nicht gefunden) angezeigt wird, vergewissern Sie sich mithilfe von <a href="https://www.whatsmydns.net/" target="_blank">WhatsmyDNS.net</a>, dass Ihre Domäne in die IP-Adresse Ihrer App aufgelöst wird. Falls nicht, kann dies einen der folgenden Gründe haben:
-
-- Der konfigurierten benutzerdefinierten Domäne fehlt ein A-Eintrag oder ein CNAME-Eintrag.
-- Im Browserclient ist die alte IP-Adresse Ihrer Domäne zwischengespeichert. Leeren Sie den Cache, und testen Sie die DNS-Auflösung erneut. Auf einem Windows-Computer können Sie den Cache mithilfe von `ipconfig /flushdns` leeren.
+Falls beim Aufrufen der URL Ihrer benutzerdefinierten Domäne ein HTTP-Fehler vom Typ 404 (Nicht gefunden) angezeigt wird, vergewissern Sie sich mithilfe von <a href="https://www.nslookup.io/" target="_blank">nslookup.io</a>, dass Ihre Domäne in die IP-Adresse Ihrer App aufgelöst wird. Überprüfen Sie andernfalls, ob die A- und CNAME-Einträge ordnungsgemäß mit derselben Website konfiguriert sind. Wenn die IP-Adresse ordnungsgemäß aufgelöst wird, Sie aber weiterhin den Fehler 404 erhalten, hat der Browser möglicherweise die alte IP-Adresse Ihrer Domäne zwischengespeichert. Leeren Sie den Cache, und testen Sie die DNS-Auflösung erneut. Auf einem Windows-Computer können Sie den Cache mithilfe von `ipconfig /flushdns` leeren.
 
 ## <a name="migrate-an-active-domain"></a>Migrieren einer aktiven Domäne
 

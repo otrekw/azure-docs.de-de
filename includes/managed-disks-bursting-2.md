@@ -5,15 +5,15 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/12/2021
+ms.date: 03/04/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 54c29d76757916a8eea54af16babdae21b809a19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a2f6a3fd8d36bb54773db21e3d36dab0060bae57
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101749949"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178371"
 ---
 ## <a name="disk-level-bursting"></a>Bursting auf Datenträgerebene
 
@@ -63,15 +63,14 @@ Weitere Informationen zu Preisen finden Sie auf der [Managed Disks-Preisseite](h
 
 Das guthabenbasierte Bursting steht für Datenträgergrößen P20 und kleiner in allen Regionen („Azure, öffentlich“, „Government“ und „China-Clouds“) zur Verfügung. Das Datenträgerbursting ist standardmäßig für alle neuen und vorhandenen Bereitstellungen der unterstützten Datenträgergrößen aktiviert. Beim Bursting auf VM-Ebene wird nur das guthabenbasierte Bursting verwendet.
 
-### <a name="virtual-machine-level-bursting"></a>Bursting auf VM-Ebene
-Die Burstingunterstützung auf VM-Ebene ist in allen Regionen in der öffentlichen Cloud für die folgenden unterstützten Größen aktiviert: 
-- [Lsv2-Serie](../articles/virtual-machines/lsv2-series.md)
+## <a name="virtual-machine-level-bursting"></a>Bursting auf VM-Ebene
 
-Das Bursting auf VM-Ebene ist auch in „USA, Westen-Mitte“ für die folgenden unterstützten Größen erhältlich:
+Beim Bursting auf VM-Ebene wird nur das guthabenbasierte Modell angewandt. Es ist standardmäßig für alle VMs aktiviert, von denen es unterstützt wird.
+
+Das Bursting auf VM-Ebene ist in allen Regionen in der öffentlichen Azure-Cloud für die folgenden unterstützten Größen aktiviert: 
+- [Lsv2-Serie](../articles/virtual-machines/lsv2-series.md)
 - [Dv3- und Dsv3-Serie](../articles/virtual-machines/dv3-dsv3-series.md)
 - [Ev3- und Esv3-Serie](../articles/virtual-machines/ev3-esv3-series.md)
-
-Das Bursting ist standardmäßig für virtuelle Computer aktiviert, die diese Technologie unterstützen.
 
 ## <a name="bursting-flow"></a>Bursting-Flow
 

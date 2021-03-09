@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: eedb3dfeafbd378cfff7afb04fcc2b9aa6e791d6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e9cbb7daf61397064bd79f30d851d96fdf63f5a0
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678739"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203231"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Semantische Suche in Azure Cognitive Search
 
@@ -27,7 +27,7 @@ Die zugrunde liegende Technologie nutzt die Investitionen von Bing und Microsoft
 
 Die Public Preview-Features umfassen Folgendes:
 
-+ Algorithmus für die semantische Priorisierung, der relevante Dokumente basierend auf dem Kontext oder der semantischen Bedeutung von Suchabfragebegriffen abruft
++ Ein semantisches Bewertungsmodell, dass die Ergebnisse basierend auf dem Kontext oder der semantischen Bedeutung von Suchabfragebegriffen bewertet
 + Semantische Beschriftungen zur Hervorhebung relevanter Passagen
 + Semantische Antworten auf die Abfrage (auch auf der Grundlage von Ergebnissen formuliert)
 + Rechtschreibprüfung, um Tippfehler zu korrigieren, bevor die Abfragebegriffe die Suchmaschine erreichen
@@ -44,7 +44,9 @@ Zum Erstellen von Beschriftungen und Antworten werden Sprachdarstellungsmodelle 
 
 ## <a name="availability-and-pricing"></a>Verfügbarkeit und Preismodell
 
-Die semantische Rangfolge ist über die [Registrierung](https://aka.ms/SemanticSearchPreviewSignup) für im Tarif „Standard“ (S1, S2, S3) erstellte Suchdienste in folgenden Regionen verfügbar: „USA, Norden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Osten 2“, „Europa, Norden“ und „Europa, Westen“. Die Rechtschreibkorrektur ist in den gleichen Regionen verfügbar, aber auf keinen bestimmten Tarif beschränkt. Wenn Sie bereits einen Dienst nutzen, der den Kriterien für Tarif und Region entspricht, ist nur die Registrierung erforderlich.
+Die semantische Rangfolge ist über die [Registrierung](https://aka.ms/SemanticSearchPreviewSignup) für im Tarif „Standard“ (S1, S2, S3) erstellte Suchdienste in folgenden Regionen verfügbar: „USA, Norden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Osten 2“, „Europa, Norden“ und „Europa, Westen“. Ein vorhandener Suchdienst mit S1 oder höher in den angegebenen Regionen ist für die Vorschau zugelassen (es muss kein neuer Dienst erstellt werden).
+
+Die Rechtschreibkorrektur ist in den gleichen Regionen verfügbar, aber auf keinen bestimmten Tarif beschränkt. Es ist auch keine Registrierung erforderlich. 
 
 Zwischen dem Start der Vorschauversion am 2. März und dem 1. April werden Rechtschreibkorrektur und semantische Rangfolge kostenlos angeboten. Nach dem 1. April wird der Rechenaufwand für die Nutzung dieser Funktionen in Rechnung gestellt. Die Kosten liegen voraussichtlich bei etwa 500 USD/Monat für 250.000 Abfragen. Ausführliche Kosteninformationen finden Sie unter [Azure Cognitive Search – Preise](https://azure.microsoft.com/pricing/details/search/) sowie unter [Schätzen und Verwalten von Kosten](search-sku-manage-costs.md).
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 02/01/2021
-ms.openlocfilehash: 5db0214e9b985df5c5aedb1dbe9878e484af2a55
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.date: 03/02/2021
+ms.openlocfilehash: 9d8d3cb4bf68f7da2bddabd21272d1011ce92f66
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430796"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715206"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Übersicht: Vorschauversion von Azure Logic Apps
 
@@ -38,7 +38,7 @@ In dieser Übersicht geht es um die folgenden Bereiche:
 
 * [Grenzwerte der Vorschauversion von Azure Logic Apps](#limits)
 
-Weiterführende Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen finden Sie in diesen Themen:
 
 * [Azure Logic Apps Running Anywhere - Runtime Deep Dive](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564) (Azure Logic Apps läuft überall – Runtimeanalyse)
 
@@ -50,7 +50,7 @@ Weiterführende Informationen finden Sie in den folgenden Artikeln:
 
 Die Azure Logic Apps-Runtime (Vorschau) wendet das Erweiterbarkeitsmodell von [Azure Functions](../azure-functions/functions-overview.md) an und wird als Erweiterung der Azure Functions-Runtime gehostet. Aufgrund dieser Architektur können Sie den neuen Logik-App-Typ überall dort ausführen können, wo Azure Functions ausgeführt werden kann. Sie können die Azure Logic Apps-Runtime (Vorschau) in jeder gewünschten Netzwerktopologie hosten und jede verfügbare Computegröße auswählen, um die für Ihre Workflows erforderliche Workload zu verarbeiten. Weitere Informationen zur Azure Functions-Erweiterbarkeit finden Sie unter [WebJobs SDK: Creating custom input and output bindings](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings) (WebJobs SDK: Erstellen benutzerdefinierter Eingabe- und Ausgabebindungen).
 
-Dank dieses neuen Ansatzes sind die Azure Logic Apps-Runtime (Vorschau) und Ihre Workflows Bestandteil Ihrer App und können zusammen gepackt werden. So können Sie Ihre Workflows bereitstellen und ausführen, indem Sie einfach Artefakte in die Hostingumgebung kopieren und die App starten. Dieser Ansatz bietet auch eine stärker standardisierte Umgebung für die Erstellung von DevOps-Pipelines für Workflowprojekte, mit denen Sie die erforderlichen Tests und Überprüfungen ausführen können, bevor Sie Änderungen in Produktionsumgebungen bereitstellen. Weitere Informationen finden Sie unter [Azure Logic Apps Running Anywhere - Runtime Deep Dive](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564) (Azure Logic Apps läuft überall – Runtimeanalyse).
+Dank dieses neuen Ansatzes sind die Azure Logic Apps-Runtime (Vorschau) und Ihre Workflows Bestandteil Ihrer App und können zusammen gepackt werden. So können Sie Ihre Workflows bereitstellen und ausführen, indem Sie einfach Artefakte in die Hostingumgebung kopieren und die App starten. Dieser Ansatz bietet auch eine stärker standardisierte Umgebung für die Erstellung von Pipelines für Workflowprojekte, mit denen Sie die erforderlichen Tests und Überprüfungen ausführen können, bevor Sie Änderungen in Produktionsumgebungen bereitstellen. Weitere Informationen finden Sie unter [Azure Logic Apps Running Anywhere - Runtime Deep Dive](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564) (Azure Logic Apps läuft überall – Runtimeanalyse).
 
 In der folgenden Tabelle werden die Unterschiede bei der gemeinsamen Verwendung von Ressourcen durch Workflows in Bezug auf die Umgebung, in der sie ausgeführt werden, kurz zusammengefasst. Die Unterschiede bei den Grenzwerten finden Sie unter [Grenzwerte der Vorschauversion von Azure Logic Apps](#limits).
 
@@ -139,10 +139,17 @@ Azure Logic Apps (Vorschau) umfasst viele aktuelle und zusätzliche Funktionen, 
 
 * Aktivieren Sie die Funktionen zur Diagnoseprotokollierung und Ablaufverfolgung für Ihre Logik-App, indem Sie [Application Insights](../azure-monitor/app/app-insights-overview.md) verwenden, sofern dies von Ihrem Azure-Abonnement und den Einstellungen der Logik-App unterstützt wird.
 
+* Der [Premium-Tarif für Azure Functions](../azure-functions/functions-premium-plan.md) bietet Zugriff auf Netzwerkfunktionen wie das Herstellen einer privaten Verbindung zu virtuellen Azure-Netzwerken und das Integrieren dieser Netzwerke. Diese Funktionen ähneln den Funktionen in Azure Functions für das Erstellen und Bereitstellen Ihrer Logik-Apps. Weitere Informationen finden Sie in diesen Themen:
+
+  * [Netzwerkoptionen von Azure Functions](../azure-functions/functions-networking-options.md)
+
+  * [Azure Logic Apps ohne Grenzen ausführen: Netzwerkoptionen mit Azure Logic Apps (Vorschau)](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)
+
 * Generieren Sie Zugriffsschlüssel für verwaltete Verbindungen erneut, die von einzelnen Workflows in einer **Logik-App (Vorschau)** -Ressource verwendet werden. [Führen Sie die gleichen Schritte wie für die **Logic Apps**-Ressource, aber auf der individuellen Workflowebene](logic-apps-securing-a-logic-app.md#regenerate-access-keys), nicht auf der Logik-App-Ressourcenebene, für diese Aufgabe aus.
 
-> [!NOTE]
-> Informationen zu aktuellen bekannten Problemen finden Sie in GitHub unter [Logic Apps Public Preview Known Issues](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md) (Bekannte Probleme der öffentlichen Vorschauversion von Logic Apps).
+* Zum Hinzufügen paralleler Branches im neuen Designer können Sie dieselben Schritte befolgen wie in der Nicht-Vorschauversion des Designers.
+ 
+Weitere Informationen finden Sie unter [Geänderte, eingeschränkte, nicht verfügbare oder nicht unterstützte Funktionen](#limited-unavailable-unsupported) und auf der [GitHub-Seite zu bekannten Problemen bei der öffentlichen Vorschau von Logic Apps](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
 <a name="pricing-model"></a>
 
@@ -171,7 +178,9 @@ Die folgenden Funktionen wurden in der Vorschauversion von Azure Logic Apps geä
 
 * **Betriebssystemunterstützung:** Derzeit funktioniert der Designer in Visual Studio Code nicht mit einem Linux-Betriebssystem. Sie können jedoch weiterhin Logik-Apps bereitstellen, die die Vorschauversion der Logic Apps-Runtime für Linux-VMs verwenden. Zum jetzigen Zeitpunkt können Sie Ihre Logik-Apps in Visual Studio Code unter Windows oder macOS erstellen und dann auf einer Linux-basierten VM bereitstellen.
 
-* **Trigger und Aktionen:** Einige integrierte Trigger, wie z. B. gleitende Fenster und Batches, sind nicht verfügbar. Um Ihren Workflow zu starten, verwenden Sie den [integrierten Serien-, Anforderungs-, HTTP-, HTTP-Webhook-, Event Hubs- oder Service Bus-Trigger](../connectors/apis-list.md). Integrierte Trigger und Aktionen werden nativ in der Azure Logic Apps-Runtime (Vorschau) ausgeführt, während verwaltete Connectors in Azure bereitgestellt werden. Im Designer werden die integrierten Trigger und Aktionen auf der Registerkarte **Integriert** angezeigt, während die Trigger und Aktionen der verwalteten Connectors auf der Registerkarte **Azure** angezeigt werden.
+* **Trigger und Aktionen:** Integrierte Trigger und Aktionen werden nativ in der Azure Logic Apps-Runtime (Vorschau) ausgeführt, während verwaltete Connectors in Azure bereitgestellt werden. Einige integrierte Trigger, wie z. B. gleitende Fenster und Batches, sind nicht verfügbar.
+
+  Um Ihren Workflow zu starten, verwenden Sie den [integrierten Serien-, Anforderungs-, HTTP-, HTTP-Webhook-, Event Hubs- oder Service Bus-Trigger](../connectors/apis-list.md). Im Designer werden die integrierten Trigger und Aktionen auf der Registerkarte **Integriert** angezeigt, während die Trigger und Aktionen der verwalteten Connectors auf der Registerkarte **Azure** angezeigt werden.
 
   > [!NOTE]
   > Damit webhookbasierte Trigger und Aktionen lokal in Visual Studio Code ausgeführt werden können, sind zusätzliche Einrichtungsschritte erforderlich. Weitere Informationen finden Sie unter [Erstellen zustandsbehafteter und zustandsloser Workflows in Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#webhook-setup).
@@ -199,11 +208,11 @@ Die folgenden Funktionen wurden in der Vorschauversion von Azure Logic Apps geä
 
       * Für Aktionen in Inlinecodevorgängen ist kein Integrationskonto mehr erforderlich.
 
-      * Unter macOS oder Linux sind **Inlinecodevorgänge** derzeit nicht verfügbar, wenn Sie die Azure Logic Apps-Erweiterung (Vorschau) in Visual Studio Code verwenden.
+      * Unter macOS und Linux werden **Inlinecodevorgänge** jetzt unterstützt, wenn Sie die Azure Logic Apps-Erweiterung (Vorschau) in Visual Studio Code verwenden.
 
-      * Wenn Sie Änderungen an einer Aktion in Inlinecodevorgängen vornehmen, müssen Sie die Logik-App neu starten.
+      * Wenn Sie Änderungen an einer Aktion in **Inlinecodevorgängen** vornehmen, müssen Sie die Logik-App nicht mehr neu starten.
 
-      * Die Grenzwerte für Aktionen in Inlinecodevorgängen wurden [aktualisiert](logic-apps-overview-preview.md#inline-code-limits).
+      * Die Grenzwerte für Aktionen in **Inlinecodevorgängen** wurden [aktualisiert](logic-apps-overview-preview.md#inline-code-limits).
 
     * Einige [integrierte B2B-Trigger und -Aktionen für Integrationskonten](../connectors/apis-list.md#integration-account-connectors) sind nicht verfügbar. Dies betrifft z. B. die Aktionen für die Codierung und Decodierung von **Flatfiles**.
 
@@ -211,17 +220,15 @@ Die folgenden Funktionen wurden in der Vorschauversion von Azure Logic Apps geä
 
 * **Verfügbarkeit des Hostingplans:** Unabhängig davon, ob Sie den neuen Ressourcentyp **Logik-App (Vorschau)** im Azure-Portal erstellen oder in Visual Studio Code bereitstellen, benötigen Sie einen Premium- oder App Service-Hostingplan in Azure. Hostingpläne nach Verbrauch sind nicht verfügbar und werden zur Bereitstellung dieses Ressourcentyps nicht unterstützt. Sie können eine Bereitstellung aus Visual Studio Code in einem Docker-Container, jedoch nicht in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) durchführen.
 
-* **Parallele Branches:** Derzeit können Sie über die neue Designer-Benutzeroberfläche keine parallelen Branches hinzufügen. Sie können Sie diese Branches allerdings weiterhin über die ursprüngliche Designer-Benutzeroberfläche hinzufügen und dann im neuen Designer anzeigen lassen.
-
-  1. Deaktivieren Sie unten im Designer die neue Benutzeroberfläche, indem Sie das Steuerelement **Neue Canvas** auswählen.
-
-  1. Fügen Sie dem Workflow die parallelen Branches hinzu.
-
-  1. Aktivieren Sie die neue Benutzeroberfläche, indem Sie das Steuerelement **Neue Canvas** erneut auswählen.
+* **Breakpoints für das Debuggen in Visual Studio Code:** Sie können zwar in der Datei **workflow.json** Breakpoints für einen Workflow hinzufügen und verwenden, aber diese Breakpoints werden derzeit nur für Aktionen unterstützt, nicht für Trigger. Weitere Informationen finden Sie unter [Erstellen zustandsbehafteter und zustandsloser Workflows in Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints).
 
 * **Zoomsteuerelement:** Das Zoomsteuerelement ist im Designer derzeit nicht verfügbar.
 
-* **Breakpoints für das Debuggen in Visual Studio Code:** Sie können zwar in der Datei **workflow.json** Breakpoints für einen Workflow hinzufügen und verwenden, aber diese Breakpoints werden derzeit nur für Aktionen unterstützt, nicht für Trigger. Weitere Informationen finden Sie unter [Erstellen zustandsbehafteter und zustandsloser Workflows in Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints).
+* **Triggerverlauf und Ausführungsverlauf:** Für den Ressourcentyp **Logik-App (Vorschau)** werden Triggerverlauf und Ausführungsverlauf im Azure-Portal auf Workflowebene gezeigt, nicht auf Logik-App-Ebene. Wenn Sie sich Verlaufsdaten ansehen möchten, führen Sie die folgenden Schritte aus:
+
+   * Wenn der Ausführungsverlauf angezeigt werden soll, öffnen Sie den Workflow in Ihrer Logik-App. Klicken Sie im Workflowmenü unter **Developer** auf die Option **Überwachen**.
+
+   * Wenn Sie den Triggerverlauf überprüfen möchten, öffnen Sie den Workflow in Ihrer Logik-App. Klicken Sie im Workflowmenü unter **Developer** auf **Triggerverlauf**.
 
 <a name="limits"></a>
 
