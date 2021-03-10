@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 6aa39709a82b01367463f0128af4223446710a1c
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 3191987ea2d110487321beb0b11428f446f2b7a6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183641"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503877"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Tutorial: Trainieren von Bildklassifizierungsmodellen mit MNIST-Daten und scikit-learn 
 
@@ -37,7 +37,7 @@ In [Teil 2 dieses Tutorials](tutorial-deploy-models-with-aml.md) erfahren Sie, w
 Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
 >[!NOTE]
-> Der Code in diesem Artikel wurde mit Version 1.13.0 des Azure [Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) getestet.
+> Der Code in diesem Artikel wurde mit Version 1.13.0 des Azure [Machine Learning SDK](/python/api/overview/azure/ml/intro) getestet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -309,7 +309,7 @@ Beachten Sie, wie das Skript Daten abruft und Modelle speichert:
 
 ### <a name="configure-the-training-job"></a>Konfigurieren des Trainingsauftrags
 
-Erstellen Sie ein [ScriptRunConfig-](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) Objekt, um die Konfigurationsdetails Ihres Trainingsauftrags anzugeben, einschließlich Ihres Trainingsskripts, der zu verwendenden Umgebung und des Computeziels für die Ausführung. Konfigurieren Sie ScriptRunConfig, indem Sie Folgendes angeben:
+Erstellen Sie ein [ScriptRunConfig-](/python/api/azureml-core/azureml.core.scriptrunconfig) Objekt, um die Konfigurationsdetails Ihres Trainingsauftrags anzugeben, einschließlich Ihres Trainingsskripts, der zu verwendenden Umgebung und des Computeziels für die Ausführung. Konfigurieren Sie ScriptRunConfig, indem Sie Folgendes angeben:
 
 * Das Verzeichnis, das Ihre Skripts enthält. Alle Dateien in dieses Verzeichnis werden zur Ausführung in die Clusterknoten hochgeladen.
 * Das Computeziel. In diesem Fall verwenden Sie den von Ihnen erstellten Azure Machine Learning-Computecluster.
@@ -382,7 +382,7 @@ Sie können den Verlauf eines Auftrags während seiner Ausführung auf mehrere A
 
 ### <a name="jupyter-widget"></a>Jupyter-Widget
 
-Sehen Sie sich den Verlauf der Ausführung mit einem [Jupyter-Widget](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) an. Ebenso wie die Übermittlung der Ausführung ist das Widget asynchron und stellt alle 10 bis 15 Sekunden Liveupdates bereit, bis der Auftrag abgeschlossen ist:
+Sehen Sie sich den Verlauf der Ausführung mit einem [Jupyter-Widget](/python/api/azureml-widgets/azureml.widgets) an. Ebenso wie die Übermittlung der Ausführung ist das Widget asynchron und stellt alle 10 bis 15 Sekunden Liveupdates bereit, bis der Auftrag abgeschlossen ist:
 
 ```python
 from azureml.widgets import RunDetails
