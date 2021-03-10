@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 554c815e6384115d56611e497f49a2c97ed15e38
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0e2230bdcf2b2f4358db4a0d600506b711f39c45
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461438"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508230"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Herstellen einer Verbindung mit Daten in Azure Machine Learning Studio
 
@@ -31,7 +31,7 @@ In der folgenden Tabelle werden die Vorteile von Datenspeichern und Datasets def
 
 Informationen dazu, welche Rolle Datenspeicher und Datasets im Workflow für Datenzugriff in Azure Machine Learning spielen, finden Sie im Artikel [Sicherer Zugriff auf Daten](concept-data.md#data-workflow).
 
-Informationen zu einer Code First-Funktion finden Sie in den folgenden Artikeln, um das [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) für Folgendes zu verwenden:
+Informationen zu einer Code First-Funktion finden Sie in den folgenden Artikeln, um das [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/) für Folgendes zu verwenden:
 * [Herstellen einer Verbindung mit Azure-Speicherdiensten mit Datenspeichern](how-to-access-data.md). 
 * [Erstellen von Azure Machine Learning-Datasets](how-to-create-register-datasets.md). 
 
@@ -138,7 +138,7 @@ Wenn sich Ihr Datenspeicherkonto in einem **virtuellen Netzwerk** befindet, sind
 
 ### <a name="access-validation"></a>Zugriffsüberprüfung
 
-**Im Rahmen des ersten Erstellungs- und Registrierungsvorgangs des Datenspeichers** überprüft Azure Machine Learning automatisch, ob der zugrunde liegende Speicherdienst vorhanden ist und der vom Benutzer bereitgestellte Prinzipal (Benutzername, Dienstprinzipal oder SAS-Token) Zugriff auf den angegebenen Speicher besitzt.
+**Im Rahmen des ersten Erstellungs- und Registrierungsvorgangs des Datenspeichers** überprüft Azure Machine Learning automatisch, ob der zugrunde liegende Speicherdienst vorhanden ist und der vom Benutzer bereitgestellte Prinzipal (Benutzername, Dienstprinzipal oder SAS-Token) Zugriff auf den angegebenen Speicher hat.
 
 **Nach dem Erstellen des Datenspeichers** wird diese Überprüfung nur noch für Methoden ausgeführt, die Zugriff auf den zugrunde liegenden Speichercontainer benötigen, und **nicht** bei jedem Abruf von Datenspeicherobjekten. Beispielsweise erfolgt eine Überprüfung, wenn Sie Dateien aus Ihrem Datenspeicher herunterladen möchten. Wenn Sie jedoch nur den Standarddatenspeicher ändern möchten, findet keine Überprüfung statt.
 

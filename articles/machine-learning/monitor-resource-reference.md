@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/02/2020
-ms.openlocfilehash: f9f25ec2dd8fb8b859f7863c1e695e22cb9a9cec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f130fc0c65c49c33c838812fc2758619e0d1bca0
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575068"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521338"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Überwachen von Azure Machine Learning-Daten – Referenz
 
@@ -88,7 +88,7 @@ Den Metriken in Azure Machine Learning sind die folgenden Dimensionen zugeordnet
 | NodeId | ID des erstellten Knotens, auf dem der Auftrag ausgeführt wird. Diese Dimension ist nur für CpuUtilization und GpuUtilization verfügbar. |
 | RunId | ID des Laufs/Auftrags. Diese Dimension ist nur für CpuUtilization und GpuUtilization verfügbar. |
 | ComputeType | Der für die Ausführung verwendete Computetyp Diese Dimension ist nur für die Metriken „Abgeschlossene Ausführungen“, „Failed Runs“ (Ausführungen mit Fehler) und „Started Runs“ (Begonnene Ausführungen) verfügbar. |
-| PipelineStepType | Der Typ des [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?preserve-view=true&view=azure-ml-py)-Objekts, das in der Ausführung verwendet wurde Diese Dimension ist nur für die Metriken „Abgeschlossene Ausführungen“, „Failed Runs“ (Ausführungen mit Fehler) und „Started Runs“ (Begonnene Ausführungen) verfügbar. |
+| PipelineStepType | Der Typ des [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep)-Objekts, das in der Ausführung verwendet wurde Diese Dimension ist nur für die Metriken „Abgeschlossene Ausführungen“, „Failed Runs“ (Ausführungen mit Fehler) und „Started Runs“ (Begonnene Ausführungen) verfügbar. |
 | PublishedPipelineId | Die ID der veröffentlichten Pipeline, die in der Ausführung verwendet wurde Diese Dimension ist nur für die Metriken „Abgeschlossene Ausführungen“, „Failed Runs“ (Ausführungen mit Fehler) und „Started Runs“ (Begonnene Ausführungen) verfügbar. |
 | RunType | Der Typ der Ausführung. Diese Dimension ist nur für die Metriken „Abgeschlossene Ausführungen“, „Failed Runs“ (Ausführungen mit Fehler) und „Started Runs“ (Begonnene Ausführungen) verfügbar. |
 

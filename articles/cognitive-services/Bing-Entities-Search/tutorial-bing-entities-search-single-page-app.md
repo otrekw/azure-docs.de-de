@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: f725a4095103a7dcfc3dcdbdcefdc84d16501632
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: f2c15221268635ca1892a9292d5b0c208c13dd34
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366532"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426806"
 ---
 # <a name="tutorial-single-page-web-app"></a>Tutorial: Einzelseiten-Web-App
 
@@ -68,8 +68,8 @@ Um dem Tutorial folgen zu können, benötigen Sie Abonnementschlüssel für die 
 
 * Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/cognitive-services/)
 * Sobald Sie über ein Azure-Abonnement verfügen:
-  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Erstellen Sie eine Ressource für die Bing-Suche"  target="_blank">Erstellen einer Ressource für die Bing-Suche<span class="docon docon-navigate-external x-hidden-focus"></span></a> im Azure-Portal, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
-  * <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="Erstellen einer Ressource für maschinelles Sehen"  target="_blank">Erstellen Sie eine Bing Maps-Ressource <span class="docon docon-navigate-external x-hidden-focus"></span></a> im Azure-Portal, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
+  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Erstellen Sie eine Ressource für die Bing-Suche"  target="_blank">Erstellen einer Ressource für die Bing-Suche</a> im Azure-Portal, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
+  * <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="Erstellen einer Ressource für maschinelles Sehen"  target="_blank">Erstellen Sie eine Bing Maps-Ressource </a> im Azure-Portal, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
 
 ## <a name="app-components"></a>App-Komponenten
 
@@ -262,7 +262,7 @@ function bingMapsCallback(response) {
 }
 ```
 
-Die Abfrage für die Bing-Entitätssuche-API erfordert neben Breiten- und Längengrad auch einen *Radius* , der die Genauigkeit der Standortinformationen angibt. Der Radius wird mithilfe des *umgebenden Rechtecks* berechnet, das von der Bing Karten-Antwort bereitgestellt wird. Dabei handelt es sich um ein Rechteck, das den Standort umgibt. Wenn der Benutzer z.B. `NYC` eingibt, enthält das Ergebnis die ungefähren Koordinaten für das Zentrum von New York City und ein umgebendes Rechteck, das die Stadt einschließt. 
+Die Abfrage für die Bing-Entitätssuche-API erfordert neben Breiten- und Längengrad auch einen *Radius*, der die Genauigkeit der Standortinformationen angibt. Der Radius wird mithilfe des *umgebenden Rechtecks* berechnet, das von der Bing Karten-Antwort bereitgestellt wird. Dabei handelt es sich um ein Rechteck, das den Standort umgibt. Wenn der Benutzer z.B. `NYC` eingibt, enthält das Ergebnis die ungefähren Koordinaten für das Zentrum von New York City und ein umgebendes Rechteck, das die Stadt einschließt. 
 
 Zuerst werden die Abstände der primären Koordinaten zu allen vier Ecken des umgebenden Rechtecks verwendet. Dazu wird die Funktion `haversineDistance()` (hier nicht dargestellt) genutzt. Als Radius wird dann der größte der vier Abstände verwendet. Der Mindestradius beträgt ein Kilometer. Dieser Wert wird auch als Standard verwendet, wenn kein umgebendes Rechteck in der Antwort bereitgestellt wird.
 
@@ -447,7 +447,7 @@ function renderSearchResults(results) {
 
 ## <a name="rendering-result-items"></a>Rendern von Ergebniselementen
 
-Im JavaScript-Code dieses Tutorials enthält das `searchItemRenderers`-Objekt *Renderer* , also Funktionen, die für jeden Suchergebnistyp HTML-Code generieren.
+Im JavaScript-Code dieses Tutorials enthält das `searchItemRenderers`-Objekt *Renderer*, also Funktionen, die für jeden Suchergebnistyp HTML-Code generieren.
 
 ```javascript
 searchItemRenderers = { 

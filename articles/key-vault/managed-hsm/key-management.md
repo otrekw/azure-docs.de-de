@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 3f054638e09061c652946c9c2db1a32db73c23d9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8d0cbd35b53bc8460ac8a19e5197d1f560657263
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521032"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212041"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>Verwalten eines verwalteten HSM über die Azure-Befehlszeilenschnittstelle
 
@@ -42,10 +42,10 @@ Geben Sie Folgendes ein, um sich über die Befehlszeilenschnittstelle bei Azure 
 az login
 ```
 
-Weitere Informationen zu den Anmeldeoptionen für die Befehlszeilenschnittstelle finden Sie unter [Anmelden mit der Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true).
+Weitere Informationen zu den Anmeldeoptionen für die Befehlszeilenschnittstelle finden Sie unter [Anmelden mit der Azure CLI](/cli/azure/authenticate-azure-cli).
 
 > [!NOTE]
-> In allen nachfolgenden Befehlen werden zwei Verwendungsmethoden gezeigt: eine mit den Parametern **--hsm-name** und **--name** (für den Schlüsselnamen) und eine mit dem Parameter **--id** , um die Angabe der gesamten URL (ggf. einschließlich des Schlüsselnamens) zu ermöglichen. Letztere Methode ist hilfreich, wenn der Aufrufer (ein Benutzer oder eine Anwendung) keinen Lesezugriff auf die Steuerungsebene und nur eingeschränkten Zugriff auf die Datenebene hat.
+> In allen nachfolgenden Befehlen werden zwei Verwendungsmethoden gezeigt: eine mit den Parametern **--hsm-name** und **--name** (für den Schlüsselnamen) und eine mit dem Parameter **--id**, um die Angabe der gesamten URL (ggf. einschließlich des Schlüsselnamens) zu ermöglichen. Letztere Methode ist hilfreich, wenn der Aufrufer (ein Benutzer oder eine Anwendung) keinen Lesezugriff auf die Steuerungsebene und nur eingeschränkten Zugriff auf die Datenebene hat.
 
 ## <a name="create-an-hsm-key"></a>Erstellen eines HSM-Schlüssels
 
@@ -53,7 +53,7 @@ Verwenden Sie den Befehl `az keyvault key create`, um einen Schlüssel zu erstel
 
 ### <a name="create-an-rsa-key"></a>Erstellen eines RSA-Schlüssels
 
-Das folgende Beispiel zeigt, wie Sie einen **RSA** -Schlüssel mit 3072 Bit erstellen, der nur für Vorgänge (--ops) vom Typ **wrapKey, unwrapKey** verwendet wird. 
+Das folgende Beispiel zeigt, wie Sie einen **RSA**-Schlüssel mit 3072 Bit erstellen, der nur für Vorgänge (--ops) vom Typ **wrapKey, unwrapKey** verwendet wird. 
 
 
 ```azurecli-interactive
@@ -69,7 +69,7 @@ Beachten Sie, dass der Vorgang `get` nur den öffentlichen Schlüssel und Schlü
 
 ### <a name="create-an-ec-key"></a>Erstellen eines EC-Schlüssels
 
-Das folgende Beispiel zeigt, wie Sie einen **EC** -Schlüssel mit P-256-Kurve erstellen, der nur für Vorgänge (--ops) vom Typ **Signieren und Überprüfen** verwendet wird und über zwei Tags ( **usage** und **appname** ) verfügt. Mithilfe von Tags können dem Schlüssel zusätzliche Metadaten für die Nachverfolgung und Verwaltung hinzugefügt werden.
+Das folgende Beispiel zeigt, wie Sie einen **EC**-Schlüssel mit P-256-Kurve erstellen, der nur für Vorgänge (--ops) vom Typ **Signieren und Überprüfen** verwendet wird und über zwei Tags (**usage** und **appname**) verfügt. Mithilfe von Tags können dem Schlüssel zusätzliche Metadaten für die Nachverfolgung und Verwaltung hinzugefügt werden.
 
 ```azurecli-interactive
 az keyvault key create --hsm-name ContosoMHSM --name myec256key --ops sign verify  --tags ‘usage=signing] appname=myapp’ --kty EC-HSM --curve P-256

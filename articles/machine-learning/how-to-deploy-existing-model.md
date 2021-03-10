@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 46b8f153e65f436fa1062a0606e0fb0136d972a5
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 8076e3f6b2198abe46ae49cd8e0fd2b02f000231
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97824622"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519349"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Bereitstellen Ihres vorhandenen Modells mit Azure Machine Learning
 
@@ -28,13 +28,13 @@ Weitere Informationen zu den in diesem Artikel verwendeten Konzepten und Begriff
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Ein Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md)
-  + Python-Beispiele gehen davon aus, dass die Variable `ws` auf Ihren Azure Machine Learning-Arbeitsbereich festgelegt ist. Weitere Informationen, wie Sie eine Verbindung mit einem Arbeitsbereich herstellen, finden Sie in der [Dokumentation zum Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=trueworkspace).
+  + Python-Beispiele gehen davon aus, dass die Variable `ws` auf Ihren Azure Machine Learning-Arbeitsbereich festgelegt ist. Weitere Informationen, wie Sie eine Verbindung mit einem Arbeitsbereich herstellen, finden Sie in der [Dokumentation zum Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/#workspace).
   
   + CLI-Beispiele verwenden Platzhalter von `myworkspace` und `myresourcegroup`, die Sie durch den Namen Ihres Arbeitsbereichs und der Ressourcengruppe, die ihn enthält, ersetzen sollten.
 
-* Das [Python-SDK für Azure Machine Learning](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)  
+* Das [Python-SDK für Azure Machine Learning](/python/api/overview/azure/ml/install)  
 
-* Die [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) und die [Machine Learning-CLI-Erweiterung](reference-azure-machine-learning-cli.md).
+* Die [Azure CLI](/cli/azure/install-azure-cli) und die [Machine Learning-CLI-Erweiterung](reference-azure-machine-learning-cli.md).
 
 * Ein trainiertes Modell. Das Modell muss dauerhaft in mindestens eine Datei in Ihrer Entwicklungsumgebung gespeichert werden. <br><br>Um die Registrierung eines trainierten Modells zu veranschaulichen, verwendet der Beispielcode in diesem Artikel die Modelle aus dem [Twitter-Stimmungsanalyseprojekt von Paolo Ripamonti](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis).
 
@@ -52,7 +52,7 @@ model = Model.register(model_path = "./models",
                        workspace = ws)
 ```
 
-Weitere Informationen finden Sie in der [Model.register()](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none-)-Referenz.
+Weitere Informationen finden Sie in der [Model.register()](/python/api/azureml-core/azureml.core.model%28class%29#register-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none-)-Referenz.
 
 ```azurecli
 az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
@@ -61,7 +61,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 > [!TIP]
 > Sie können auch `tags`- und `properties`-Wörterbuchobjekte zum registrierten Modell hinzufügen. Diese Werte können später verwendet werden, um ein bestimmtes Modell zu identifizieren. Beispiel: das verwendete Framework, Trainingsparameter usw.
 
-Weitere Informationen finden Sie in der [az ml model register](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register)-Referenz.
+Weitere Informationen finden Sie in der [az ml model register](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-register)-Referenz.
 
 
 Weitere Informationen zur Modellregistrierung im Allgemeinen finden Sie unter [Verwalten, Bereitstellen und Überwachen von Modellen für maschinelles Lernen](concept-model-management-and-deployment.md).
@@ -103,7 +103,7 @@ inference_config = InferenceConfig(entry_script="score.py",
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
 + [Erstellen und Verwalten von Umgebungen für Training und Bereitstellung](how-to-use-environments.md)
-+ [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py)-Referenz
++ [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig)-Referenz
 
 
 Die CLI lädt die Rückschlusskonfiguration aus einer YAML-Datei:
@@ -220,7 +220,7 @@ Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Mode
 
 ## <a name="define-deployment"></a>Definieren der Bereitstellung
 
-Das [Webdienst](/python/api/azureml-core/azureml.core.webservice?preserve-view=true&view=azure-ml-py)-Paket enthält die für die Bereitstellung verwendeten Klassen. Die von Ihnen verwendete Klasse bestimmt, wo das Modell bereitgestellt wird. Verwenden Sie z. B. zur Bereitstellung als Webdienst für Azure Kubernetes Service [AksWebService.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-), um die Bereitstellungskonfiguration zu erstellen.
+Das [Webdienst](/python/api/azureml-core/azureml.core.webservice)-Paket enthält die für die Bereitstellung verwendeten Klassen. Die von Ihnen verwendete Klasse bestimmt, wo das Modell bereitgestellt wird. Verwenden Sie z. B. zur Bereitstellung als Webdienst für Azure Kubernetes Service [AksWebService.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.akswebservice#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-), um die Bereitstellungskonfiguration zu erstellen.
 
 Der folgende Python-Code definiert eine Bereitstellungskonfiguration für eine lokale Bereitstellung. Diese Konfiguration stellt das Modell als Webdienst auf Ihrem lokalen Computer bereit.
 
@@ -233,7 +233,7 @@ from azureml.core.webservice import LocalWebservice
 deployment_config = LocalWebservice.deploy_configuration()
 ```
 
-Weitere Informationen finden Sie in der [LocalWebservice.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.localwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-port-none-)-Referenz.
+Weitere Informationen finden Sie in der [LocalWebservice.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.localwebservice#deploy-configuration-port-none-)-Referenz.
 
 Die CLI lädt die Bereitstellungskonfiguration aus einer YAML-Datei:
 
@@ -260,7 +260,7 @@ print(service.state)
 print("scoring URI: " + service.scoring_uri)
 ```
 
-Weitere Informationen finden Sie in der [Model.deploy()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)-Referenz.
+Weitere Informationen finden Sie in der [Model.deploy()](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)-Referenz.
 
 Verwenden Sie den folgenden Befehl, um das Modell über die CLI bereitzustellen. Dieser Befehl stellt die Version 1 des registrierten Modells (`sentiment:1`) unter Verwendung der in den Dateien `inferenceConfig.json` und `deploymentConfig.json` gespeicherten Rückschluss- und Bereitstellungskonfiguration bereit:
 
@@ -268,7 +268,7 @@ Verwenden Sie den folgenden Befehl, um das Modell über die CLI bereitzustellen.
 az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc deploymentConfig.json
 ```
 
-Weitere Informationen finden Sie in der [az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy)-Referenz.
+Weitere Informationen finden Sie in der [az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy)-Referenz.
 
 Weitere Informationen zur Bereitstellung finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 

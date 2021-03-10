@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: c725d0a19dd549d1f7a90efa9edec4cae7b9ea9d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 8405afef07f5d3f52becc1acf184e9a36db8971c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258506"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548530"
 ---
 # <a name="assign-a-user-to-a-specific-azure-ad-application-proxy-application"></a>Zuweisen eines Benutzers zu einer bestimmten Azure AD-Anwendungsproxyanwendung
 
@@ -28,7 +28,7 @@ In diesem Beispiel für ein PowerShell-Skript können Sie einer bestimmten Azure
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Für dieses Beispiel ist das [Azure AD PowerShell V2-Modul für Graph](/powershell/azure/active-directory/install-adv2) (AzureAD) oder das [Azure AD PowerShell V2-Modul in der Vorschauversion für Graph](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) erforderlich.
+Für dieses Beispiel ist das [Azure AD PowerShell V2-Modul für Graph](/powershell/azure/active-directory/install-adv2) (AzureAD) oder das [Azure AD PowerShell V2-Modul in der Vorschauversion für Graph](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) (AzureADPreview) erforderlich.
 
 ## <a name="sample-script"></a>Beispielskript
 

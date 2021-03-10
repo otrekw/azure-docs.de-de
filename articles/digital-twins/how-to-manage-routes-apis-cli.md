@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 40cf83b0ca9e4c794979f2b20ddb73360758abc5
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b0e440f9fe0b7ce1591318362ac0419b9aa01baf
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198539"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433300"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Verwalten von Endpunkten und Routen in Azure Digital Twins (APIs und CLI)
 
@@ -20,7 +20,7 @@ ms.locfileid: "102198539"
 
 In Azure Digital Twins können Sie [Ereignisbenachrichtigungen](how-to-interpret-event-data.md) an Downstreamdienste oder verbundene Computeressourcen weiterleiten. Dies erfolgt, indem zunächst **Endpunkte** eingerichtet werden, die die Ereignisse empfangen können. Anschließend können Sie [**Ereignisrouten**](concepts-route-events.md) erstellen, die angeben, welche von Azure Digital Twins generierten Ereignisse an welche Endpunkte übermittelt werden.
 
-In diesem Artikel wird das Erstellen von Endpunkten und Routen mit den [REST-APIs](/rest/api/azure-digitaltwins/), dem [.NET SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) und der [Azure Digital Twins-CLI](how-to-use-cli.md) ausführlich erläutert.
+In diesem Artikel wird das Erstellen von Endpunkten und Routen mit den [REST-APIs](/rest/api/azure-digitaltwins/), dem [.NET SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client) und der [Azure Digital Twins-CLI](how-to-use-cli.md) ausführlich erläutert.
 
 Alternativ können Sie auch Endpunkte und Routen mit dem [Azure-Portal](https://portal.azure.com) verwalten. Eine Version dieses Artikels, die stattdessen das Portal verwendet, finden Sie unter [*Vorgehensweise: Verwalten von Endpunkten und Routen (Portal)*](how-to-manage-routes-portal.md).
 
@@ -208,7 +208,7 @@ Ereignisrouten können mit den [**EventRoutes**-Datenebenen-APIs](/rest/api/digi
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>Erstellen von Routen mit den APIs und dem C#-SDK
 
-Eine Möglichkeit zum Definieren von Ereignisrouten sind die [Datenebenen-APIs](how-to-use-apis-sdks.md#overview-data-plane-apis). Die Beispiele in diesem Abschnitt verwenden das [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true).
+Eine Möglichkeit zum Definieren von Ereignisrouten sind die [Datenebenen-APIs](how-to-use-apis-sdks.md#overview-data-plane-apis). Die Beispiele in diesem Abschnitt verwenden das [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client).
 
 `CreateOrReplaceEventRouteAsync` ist der SDK-Aufruf, der zum Hinzufügen einer Ereignisroute verwendet wird. Hier ist ein Beispiel für seine Verwendung:
 

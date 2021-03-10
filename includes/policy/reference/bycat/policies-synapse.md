@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: dcd08c0635eb4a104cc945fbf4025a6807987968
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 2b4acda582188d4057f19d4065e5662873436365
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100100343"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102429317"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Für Azure Synapse-Arbeitsbereiche darf ausgehender Datenverkehr nur zu genehmigten Zielen zugelassen sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3484ce98-c0c5-4c83-994b-c5ac24785218) |Erhöhen Sie die Sicherheit Ihres Synapse-Arbeitsbereichs, indem Sie ausgehenden Datenverkehr nur zu genehmigten Zielen zulassen. Dies ist ein Beitrag zum Schutz vor Datenexfiltration, indem das Ziel vor dem Senden von Daten überprüft wird. |Audit, Disabled, Deny |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/Workspace_RestrictOutboundDataTraffic_Audit.json) |
 |[Azure Synapse-Arbeitsbereiche müssen kundenseitig verwaltete Schlüssel zur Verschlüsselung ruhender Daten verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff7d52b2d-e161-4dfa-a82b-55e564167385) |Verwenden Sie kundenseitig verwaltete Schlüssel, um die Verschlüsselung ruhender Daten zu steuern, die in Azure Synapse-Arbeitsbereichen gespeichert sind. Kundenseitig verwaltete Schlüssel bieten eine Mehrfachverschlüsselung, indem zusätzlich zur Standardverschlüsselung mit dienstseitig verwalteten Schlüsseln eine zweite Verschlüsselungsebene hinzugefügt wird. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceCMK_Audit.json) |

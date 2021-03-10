@@ -71,11 +71,11 @@
     - name: SDKs
       items:
         - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet
+          href: /dotnet/api/overview/azure/cognitiveservices/client/faceapi
         - name: Python
-          href: /python/api/azure-cognitiveservices-vision-face/?view=azure-python
+          href: /python/api/azure-cognitiveservices-vision-face/
         - name: Java
-          href: /java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable
+          href: /java/api/overview/azure/cognitiveservices/client/faceapi
         - name: Node.js
           href: /javascript/api/@azure/cognitiveservices-face
         - name: Go
@@ -94,7 +94,7 @@
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: encrypt-data-at-rest.md

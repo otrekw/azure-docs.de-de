@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
-ms.openlocfilehash: ea32358aa86a6093cd72adf959d5fe731cf1e125
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: e046f8cbf6fa0418244f20e9a0c6f75f6da34136
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786875"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434626"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Erstellen eines Sprachassistenten mithilfe von benutzerdefinierten Befehlen
 
@@ -38,7 +38,7 @@ Derzeit unterstützen benutzerdefinierte Befehle Speech-Abonnements, die in folg
 ## <a name="prerequisites"></a>Voraussetzungen
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Erstellen einer Azure Speech-Ressource in einer Region, die benutzerdefinierte Befehle unterstützt<span class="docon docon-navigate-external x-hidden-focus"></span></a> Im Abschnitt **Regionale Verfügbarkeit** weiter oben finden Sie eine Liste der unterstützten Regionen.
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Erstellen einer Azure Speech-Ressource in einer Region, die benutzerdefinierte Befehle unterstützt</a> Im Abschnitt **Regionale Verfügbarkeit** weiter oben finden Sie eine Liste der unterstützten Regionen.
 > * Laden Sie die JSON-Beispieldatei für [Smart Room Lite](https://aka.ms/speech/cc-quickstart) herunter.
 > * Laden Sie die neueste Version des [Windows-Sprachassistent-Clients](https://aka.ms/speech/va-samples-wvac) herunter.
 

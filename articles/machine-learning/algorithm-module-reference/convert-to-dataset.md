@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 671a8f7c6fa4c20ef4fc88f57d4a946a84614389
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 3ba69a6ddf38083e5665e20081f5f909b7100024
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420868"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508485"
 ---
 # <a name="convert-to-dataset"></a>Konvertieren in ein Dataset
 
@@ -35,7 +35,7 @@ Es empfiehlt sich, das Dataset mithilfe des Moduls [Edit Metadata](edit-metadata
 
 2. Verbinden Sie es mit einem beliebigen Modul, das ein Dataset ausgibt.   
 
-    Solange die Daten [tabellarisch](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) sind, können Sie sie in ein Dataset konvertieren. Dies schließt Daten ein, die mit [Import Data](import-data.md) (Daten importieren) geladen oder mithilfe von [Enter Data Manually](enter-data-manually.md) (Daten manuell eingeben) erstellt wurden, sowie Datasets, die mithilfe von [Apply Transformation](apply-transformation.md) (Transformation anwenden) transformiert wurden.
+    Solange die Daten [tabellarisch](/python/api/azureml-core/azureml.data.tabulardataset) sind, können Sie sie in ein Dataset konvertieren. Dies schließt Daten ein, die mit [Import Data](import-data.md) (Daten importieren) geladen oder mithilfe von [Enter Data Manually](enter-data-manually.md) (Daten manuell eingeben) erstellt wurden, sowie Datasets, die mithilfe von [Apply Transformation](apply-transformation.md) (Transformation anwenden) transformiert wurden.
 
 3.  Geben Sie in der Dropdownliste **Aktion** an, ob vor dem Speichern des Datasets eine Datenbereinigung durchgeführt werden soll:  
   

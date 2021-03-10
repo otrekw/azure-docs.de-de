@@ -10,12 +10,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8813b2cad5800bd4ede6e64119117df57c230fdc
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 32777d9f8313457036b103777f251329687b3997
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071220"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508009"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Verwaltung, Bereitstellung und Überwachung von Modellen mit Azure Machine Learning
 
@@ -160,7 +160,7 @@ Bei Azure ML können Sie den End-to-End-Überwachungspfad Ihrer gesamten ML-Ress
 > [!TIP]
 > Während einige Informationen zu Modellen und Datasets automatisch erfasst werden, können Sie mithilfe von __Tags__ zusätzliche Informationen hinzufügen. Wenn Sie in Ihrem Arbeitsbereich nach registrierten Modellen und Datasets suchen, können Sie Tags als Filter verwenden.
 >
-> Die Zuordnung eines Datasets zu einem registrierten Modell ist ein optionaler Schritt. Informationen zum Referenzieren eines Datasets beim Registrieren eines Modells finden Sie in der Referenz zur [Model](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py)-Klasse.
+> Die Zuordnung eines Datasets zu einem registrierten Modell ist ein optionaler Schritt. Informationen zum Referenzieren eines Datasets beim Registrieren eines Modells finden Sie in der Referenz zur [Model](/python/api/azureml-core/azureml.core.model%28class%29)-Klasse.
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Benachrichtigen, Automatisieren und Warnen bei Ereignissen im ML-Lebenszyklus

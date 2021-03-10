@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 8f1cea6e9bc833c6d441c39c401f60d872cd9099
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: a4d1d1c4f4d6354d0206bf598a0622112dc99453
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174936"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518703"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Verschieben von Daten in ML-Pipelineschritte und zwischen ML-Pipelineschritten (Python)
 
@@ -36,7 +36,7 @@ Sie benötigen Folgendes:
 
 - Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
 
-- Das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py), oder greifen Sie auf [Azure Machine Learning-Studio](https://ml.azure.com/) zu.
+- Das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro), oder greifen Sie auf [Azure Machine Learning-Studio](https://ml.azure.com/) zu.
 
 - Ein Azure Machine Learning-Arbeitsbereich.
   
@@ -55,7 +55,7 @@ Sie benötigen Folgendes:
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>Verwenden von `Dataset`-Objekten für bereits vorhandene Daten 
 
-Die bevorzugte Methode zur Erfassung von Daten in einer Pipeline ist die Verwendung eines [Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)-Objekts. `Dataset`-Objekte stellen persistente Daten dar, die im gesamten Arbeitsbereich verfügbar sind.
+Die bevorzugte Methode zur Erfassung von Daten in einer Pipeline ist die Verwendung eines [Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29)-Objekts. `Dataset`-Objekte stellen persistente Daten dar, die im gesamten Arbeitsbereich verfügbar sind.
 
 Es gibt viele Möglichkeiten, `Dataset`-Objekte zu erstellen und zu registrieren. Tabellendatasets sind für durch Trennzeichen getrennte Daten verfügbar, die in einer oder mehreren Dateien enthalten sind. Dateidatasets sind für Binärdaten (z. B. Images) oder für zu analysierende Daten verfügbar. Die einfachsten programmgesteuerten Möglichkeiten zum Erstellen von `Dataset`-Objekte sind die Verwendung vorhandener Blobs im Arbeitsbereichsspeicher oder öffentlicher URLs:
 
@@ -154,7 +154,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>Verwenden von `OutputFileDatasetConfig` für Zwischendaten
 
-Während `Dataset`-Objekte nur persistente Daten darstellen, können [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py)-Objekte zur temporären Datenausgabe von Pipelineschritten **und** für persistente Ausgabedaten verwendet werden. `OutputFileDatasetConfig` unterstützt das Schreiben von Daten in Blob-Speicher, Dateifreigaben, adlsgen1 oder adlsgen2. Sowohl der Einbindungsmodus als auch der Hochlademodus werden unterstützt. Im Einbindungsmodus werden Dateien, die in das eingebundene Verzeichnis geschrieben werden, beim Schließen der Datei dauerhaft gespeichert. Im Hochlademodus werden Dateien, die in das Ausgabeverzeichnis geschrieben werden, zum Auftragsende hochgeladen. Wenn beim Auftrag ein Fehler auftritt oder er abgebrochen wird, wird das Ausgabeverzeichnis nicht hochgeladen.
+Während `Dataset`-Objekte nur persistente Daten darstellen, können [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig)-Objekte zur temporären Datenausgabe von Pipelineschritten **und** für persistente Ausgabedaten verwendet werden. `OutputFileDatasetConfig` unterstützt das Schreiben von Daten in Blob-Speicher, Dateifreigaben, adlsgen1 oder adlsgen2. Sowohl der Einbindungsmodus als auch der Hochlademodus werden unterstützt. Im Einbindungsmodus werden Dateien, die in das eingebundene Verzeichnis geschrieben werden, beim Schließen der Datei dauerhaft gespeichert. Im Hochlademodus werden Dateien, die in das Ausgabeverzeichnis geschrieben werden, zum Auftragsende hochgeladen. Wenn beim Auftrag ein Fehler auftritt oder er abgebrochen wird, wird das Ausgabeverzeichnis nicht hochgeladen.
 
  Das Standardverhalten des `OutputFileDatasetConfig`-Objekts besteht darin, in den Standarddatenspeicher des Arbeitsbereichs zu schreiben. Übergeben Sie die `OutputFileDatasetConfig`-Objekte mit dem `arguments`-Parameter an Ihren `PythonScriptStep`.
 

@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: fc9909614a9d557c19a22e215b7513a038f88c33
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 89309cfe427183d594a5cc2f76332ae150d4f803
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942335"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498675"
 ---
 # <a name="tutorial-train-a-model-in-python-with-automated-machine-learning"></a>Tutorial: Trainieren eines Modells in Python mit automatisiertem maschinellem Lernen
 
@@ -144,7 +144,7 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>Konvertieren eines Datenrahmens in ein Azure Machine Learning-Dataset
-Um ein Remoteexperiment zu übermitteln, müssen Sie das Dataset in eine Azure Machine Learning-Instanz vom Typ ```TabularDatset``` konvertieren. [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellten Dateien analysiert werden.
+Um ein Remoteexperiment zu übermitteln, müssen Sie das Dataset in eine Azure Machine Learning-Instanz vom Typ ```TabularDatset``` konvertieren. [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellten Dateien analysiert werden.
 
 Mit dem folgenden Code werden der vorhandene Arbeitsbereich und der Azure Machine Learning-Standarddatenspeicher abgerufen. Anschließend werden der Datenspeicher und die Dateispeicherorte an den Pfadparameter übergeben, um eine neue ```TabularDataset```-Instanz zu erstellen. 
 

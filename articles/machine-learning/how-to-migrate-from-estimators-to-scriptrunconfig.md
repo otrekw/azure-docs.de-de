@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: d603a12f851dac5b7cefc5bad728d42967bb27dc
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: ae0623a11b940a4d142f6bfae02d4b20727a6f55
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878594"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518871"
 ---
 # <a name="migrating-from-estimators-to-scriptrunconfig"></a>Migrieren von Schätzern zu ScriptRunConfig
 
@@ -30,7 +30,7 @@ Dieser Artikel behandelt allgemeine Überlegungen zur Migration von Schätzern z
 > Stellen Sie sicher, dass Sie >= 1.15.0 des Python SDK verwenden, um von Schätzern zu ScriptRunConfig zu migrieren.
 
 ## <a name="scriptrunconfig-documentation-and-samples"></a>Dokumentation und Beispiele zu ScriptRunConfig
-Die Azure Machine Learning-Dokumentation und -Beispiele wurden aktualisiert, um [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?preserve-view=true&view=azure-ml-py) für die Auftragskonfiguration und -übermittlung zu verwenden.
+Die Azure Machine Learning-Dokumentation und -Beispiele wurden aktualisiert, um [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig) für die Auftragskonfiguration und -übermittlung zu verwenden.
 
 Informationen zur Verwendung von ScriptRunConfig finden Sie in der folgenden Dokumentation:
 * [Übermitteln einer Trainingsausführung an ein Computeziel](how-to-set-up-training-targets.md)
@@ -107,7 +107,7 @@ Weitere Informationen zum Verwenden von Daten für das Training finden Sie unter
 * [Trainieren mit Datasets in Azure ML](./how-to-train-with-datasets.md)
 
 ## <a name="distributed-training"></a>Verteiltes Training
-Wenn Sie einen verteilten Auftrag für das Training konfigurieren müssen, geben Sie dazu den `distributed_job_config`-Parameter im ScriptRunConfig-Konstruktor an. Übergeben Sie eine [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py), [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) oder [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py) für verteilte Aufträge der jeweiligen Typen.
+Wenn Sie einen verteilten Auftrag für das Training konfigurieren müssen, geben Sie dazu den `distributed_job_config`-Parameter im ScriptRunConfig-Konstruktor an. Übergeben Sie eine [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration), [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) oder [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration) für verteilte Aufträge der jeweiligen Typen.
 
 Das folgende Beispiel konfiguriert einen PyTorch-Trainingsauftrag für die Verwendung von verteiltem Training mit MPI/Horovod:
 ```python

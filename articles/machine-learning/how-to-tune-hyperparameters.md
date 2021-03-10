@@ -11,16 +11,16 @@ ms.subservice: core
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 768d2011ae3f2826b42befa8f0d40f0e56b993fd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 34adcf2218e29572ec9a86583addc7c021313085
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032686"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519638"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Optimierung der Hyperparameter eines Modells mit Azure Machine Learning
 
-Automatisieren eine effiziente Hyperparameteroptimierung mithilfe des [HyperDrive-Pakets](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) von Azure Machine Learning. Hier erfahren Sie, wie Sie die Schritte durchführen, die zum Optimieren der Hyperparameter mit dem [Azure Machine Learning SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) erforderlich sind:
+Automatisieren eine effiziente Hyperparameteroptimierung mithilfe des [HyperDrive-Pakets](/python/api/azureml-train-core/azureml.train.hyperdrive) von Azure Machine Learning. Hier erfahren Sie, wie Sie die Schritte durchführen, die zum Optimieren der Hyperparameter mit dem [Azure Machine Learning SDK](/python/api/overview/azure/ml/) erforderlich sind:
 
 1. Definieren des Suchbereichs für Parameter
 1. Festlegen einer zu optimierenden primären Metrik  
@@ -43,7 +43,7 @@ Mit Azure Machine Learning können Sie die Hyperparameteroptimierung automatisie
 
 Optimieren Sie Hyperparameter, indem Sie den für jeden Hyperparameter definierten Wertebereich untersuchen.
 
-Hyperparameter können diskret oder kontinuierlich sein und weisen eine Verteilung von Werten auf, die durch einen [Parameterausdruck](/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?preserve-view=true&view=azure-ml-py) beschrieben wird.
+Hyperparameter können diskret oder kontinuierlich sein und weisen eine Verteilung von Werten auf, die durch einen [Parameterausdruck](/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions) beschrieben wird.
 
 ### <a name="discrete-hyperparameters"></a>Diskrete Hyperparameter
 
@@ -100,7 +100,7 @@ Legen Sie die für den Hyperparameterbereich zu verwendende Parametersamplingmet
 
 #### <a name="random-sampling"></a>Zufallssampling
 
-[Zufallssampling](/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?preserve-view=true&view=azure-ml-py) unterstützt diskrete und kontinuierliche Hyperparameter. Diese Methode unterstützt die Beendigung von Ausführungen mit geringer Leistung. Einige Benutzer führen eine erste Suche mit Zufallssampling durch und optimieren danach den Suchbereich zur Verbesserung der Ergebnisse.
+[Zufallssampling](/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling) unterstützt diskrete und kontinuierliche Hyperparameter. Diese Methode unterstützt die Beendigung von Ausführungen mit geringer Leistung. Einige Benutzer führen eine erste Suche mit Zufallssampling durch und optimieren danach den Suchbereich zur Verbesserung der Ergebnisse.
 
 Beim Zufallssampling werden Hyperparameterwerte zufällig aus dem definierten Suchbereich ausgewählt. 
 
@@ -117,7 +117,7 @@ param_sampling = RandomParameterSampling( {
 
 #### <a name="grid-sampling"></a>Rastersampling
 
-[Rastersampling](/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?preserve-view=true&view=azure-ml-py) unterstützt diskrete Hyperparameter. Verwenden Sie das Rastersampling, wenn Sie es sich leisten können, Suchbereiche umfassend zu durchsuchen. Diese Methode unterstützt die Beendigung von Ausführungen mit geringer Leistung.
+[Rastersampling](/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling) unterstützt diskrete Hyperparameter. Verwenden Sie das Rastersampling, wenn Sie es sich leisten können, Suchbereiche umfassend zu durchsuchen. Diese Methode unterstützt die Beendigung von Ausführungen mit geringer Leistung.
 
 Beim Rastersampling wird eine einfache Rastersuche für alle möglichen Werte durchgeführt. Das Rastersampling kann nur für `choice`-Hyperparameter verwendet werden. Der folgende Bereich enthält insgesamt sechs Stichproben:
 
@@ -133,7 +133,7 @@ param_sampling = GridParameterSampling( {
 
 #### <a name="bayesian-sampling"></a>Bayessches Sampling
 
-[Bayessches Sampling](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?preserve-view=true&view=azure-ml-py) basiert auf dem bayesschen Optimierungsalgorithmus. Bei dieser Methode werden Stichproben auf der Grundlage des Ergebnisses vorheriger Stichproben so gewählt, dass die primäre Metrik durch die neuen Stichproben verbessert wird.
+[Bayessches Sampling](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling) basiert auf dem bayesschen Optimierungsalgorithmus. Bei dieser Methode werden Stichproben auf der Grundlage des Ergebnisses vorheriger Stichproben so gewählt, dass die primäre Metrik durch die neuen Stichproben verbessert wird.
 
 Bayessches Sampling wird empfohlen, wenn Sie es sich leisten können, den Hyperparameterbereich zu erkunden. Optimale Ergebnisse erzielen Sie mit einer maximalen Anzahl von Ausführungen, die größer als oder gleich dem 20-fachen der Anzahl der zu optimierenden Hyperparameter ist. 
 
@@ -155,7 +155,7 @@ param_sampling = BayesianParameterSampling( {
 
 ## <a name="specify-primary-metric"></a><a name="specify-primary-metric-to-optimize"></a> Angeben der primären Metrik
 
-Legen Sie die [primäre Metrik](/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?preserve-view=true&view=azure-ml-py) fest, die durch die Hyperparameteroptimierung optimiert werden soll. Jeder Trainingslauf wird im Hinblick auf die primäre Metrik ausgewertet. Bei der Richtlinie zur vorzeitigen Beendigung wird die primäre Metrik zum Erkennen von Ausführungen mit geringer Leistung verwendet.
+Legen Sie die [primäre Metrik](/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal) fest, die durch die Hyperparameteroptimierung optimiert werden soll. Jeder Trainingslauf wird im Hinblick auf die primäre Metrik ausgewertet. Bei der Richtlinie zur vorzeitigen Beendigung wird die primäre Metrik zum Erkennen von Ausführungen mit geringer Leistung verwendet.
 
 Legen Sie die folgenden Attribute für Ihre primäre Metrik fest:
 
@@ -203,7 +203,7 @@ Azure Machine Learning unterstützt die folgenden Richtlinien für vorzeitige Be
 
 ### <a name="bandit-policy"></a>Banditenrichtlinie
 
-Eine [Banditenrichtlinie](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition) basiert auf einem Pufferbereich/Pufferbetrag und einem Bewertungsintervall. Durch die Banditenrichtlinie werden Ausführungen beendet, wenn die primäre Metrik nicht innerhalb des angegebenen Pufferbereichs/Pufferbetrags der erfolgreichsten Ausführung liegt.
+Eine [Banditenrichtlinie](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy#definition) basiert auf einem Pufferbereich/Pufferbetrag und einem Bewertungsintervall. Durch die Banditenrichtlinie werden Ausführungen beendet, wenn die primäre Metrik nicht innerhalb des angegebenen Pufferbereichs/Pufferbetrags der erfolgreichsten Ausführung liegt.
 
 > [!NOTE]
 > Beim bayesschen Sampling wird die frühzeitige Beendigung nicht unterstützt. Legen Sie bei Verwendung des bayesschen Sampling `early_termination_policy = None` fest.
@@ -226,7 +226,7 @@ In diesem Beispiel wird die Richtlinie zur frühzeitigen Beendigung bei jedem In
 
 ### <a name="median-stopping-policy"></a>Medianstopprichtlinie
 
-Die [Medianstopprichtlinie](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?preserve-view=true&view=azure-ml-py) ist eine Richtlinie für vorzeitige Beendigung, die auf dem gleitenden Durchschnitt der von den Ausführungen gemeldeten primären Metriken basiert. Diese Richtlinie berechnet den gleitenden Durchschnitt für alle Trainingsausführungen und beendet Ausführungen, bei denen der Wert der primären Metrik schlechter ist als der Median der Durchschnittswerte.
+Die [Medianstopprichtlinie](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy) ist eine Richtlinie für vorzeitige Beendigung, die auf dem gleitenden Durchschnitt der von den Ausführungen gemeldeten primären Metriken basiert. Diese Richtlinie berechnet den gleitenden Durchschnitt für alle Trainingsausführungen und beendet Ausführungen, bei denen der Wert der primären Metrik schlechter ist als der Median der Durchschnittswerte.
 
 Diese Richtlinie akzeptiert die folgenden Konfigurationsparameter:
 * `evaluation_interval`: die Anwendungshäufigkeit der Richtlinie (optionaler Parameter).
@@ -242,7 +242,7 @@ In diesem Beispiel wird die Richtlinie zur frühzeitigen Beendigung bei jedem In
 
 ### <a name="truncation-selection-policy"></a>Kürzungsauswahlrichtlinie
 
-Die [Kürzungsauswahlrichtlinie](/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy?preserve-view=true&view=azure-ml-py) bricht bei jedem Auswertungsintervall einen Prozentsatz der Ausführungen mit der schlechtesten Leistung ab. Ausführungen werden anhand der primären Metrik verglichen. 
+Die [Kürzungsauswahlrichtlinie](/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy) bricht bei jedem Auswertungsintervall einen Prozentsatz der Ausführungen mit der schlechtesten Leistung ab. Ausführungen werden anhand der primären Metrik verglichen. 
 
 Diese Richtlinie akzeptiert die folgenden Konfigurationsparameter:
 
@@ -297,7 +297,7 @@ Dieser Code konfiguriert das Experiment zur Hyperparameteroptimierung für eine 
 
 ## <a name="configure-hyperparameter-tuning-experiment"></a>Konfigurieren des Experiments zur Hyperparameteroptimierung
 
-Geben Sie Folgendes an, um [Ihr Experiment zur Hyperparameteroptimierung zu konfigurieren](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?preserve-view=true&view=azure-ml-py):
+Geben Sie Folgendes an, um [Ihr Experiment zur Hyperparameteroptimierung zu konfigurieren](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig):
 * Den definierten Suchbereich für Hyperparameter
 * Ihre Richtlinie für vorzeitige Beendigung
 * Die primäre Metrik
@@ -364,7 +364,7 @@ def main():
 
 ## <a name="submit-hyperparameter-tuning-experiment"></a>Übermitteln des Experiments zur Hyperparameteroptimierung
 
-Nachdem Sie Ihre Konfiguration für die Hyperparameteroptimierung definiert haben, [übermitteln Sie das Experiment](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-):
+Nachdem Sie Ihre Konfiguration für die Hyperparameteroptimierung definiert haben, [übermitteln Sie das Experiment](/python/api/azureml-core/azureml.core.experiment%28class%29#submit-config--tags-none----kwargs-):
 
 ```Python
 from azureml.core.experiment import Experiment
@@ -444,7 +444,7 @@ Sie können alle Ihre Ausführungen der Hyperparameteroptimierung im [Azure Mach
 
 ### <a name="notebook-widget"></a>Notebook-Widget
 
-Verwenden Sie das [Notebook-Widget](/python/api/azureml-widgets/azureml.widgets.rundetails?preserve-view=true&view=azure-ml-py), um den Fortschritt Ihrer Trainingsausführungen zu visualisieren. Der folgende Codeausschnitt visualisiert alle Läufe zur Hyperparameteroptimierung in einem Jupyter Notebook:
+Verwenden Sie das [Notebook-Widget](/python/api/azureml-widgets/azureml.widgets.rundetails), um den Fortschritt Ihrer Trainingsausführungen zu visualisieren. Der folgende Codeausschnitt visualisiert alle Läufe zur Hyperparameteroptimierung in einem Jupyter Notebook:
 
 ```Python
 from azureml.widgets import RunDetails

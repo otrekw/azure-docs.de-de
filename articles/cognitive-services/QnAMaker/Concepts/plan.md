@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: bf5582016f74e67926c38111a3d8d2f468f3ac79
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: e20679c3999f7ece1f6d3ed47a241cfd9dab9236
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987991"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214744"
 ---
 # <a name="plan-your-qna-maker-app"></a>Planen Ihrer QnA Maker-App
 
@@ -177,7 +177,7 @@ Es gibt eine [zweiphasige Antwortrangfolge](query-knowledge-base.md#how-qna-make
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
-Wenden Sie die [aktuellsten Runtimeupdates](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) an, um Dienstupdates automatisch zu verwalten.
+Wenden Sie die [aktuellsten Runtimeupdates](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates) an, um Dienstupdates automatisch zu verwalten.
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
 
@@ -187,7 +187,7 @@ In QnA Maker verwaltet (Vorschau) wird die Runtime vom QnA Maker-Dienst selbst v
 
 ### <a name="scaling-throughput-and-resiliency"></a>Skalierung, Durchsatz und Resilienz
 
-Skalierung, Durchsatz und Resilienz werden durch die [Azure-Ressourcen](../how-to/set-up-qnamaker-service-azure.md), ihre Tarife und alle umgebenden Architekturen, wie [Traffic Manager](../how-to/set-up-qnamaker-service-azure.md#business-continuity-with-traffic-manager) bestimmt.
+Skalierung, Durchsatz und Resilienz werden durch die [Azure-Ressourcen](../how-to/set-up-qnamaker-service-azure.md), ihre Tarife und alle umgebenden Architekturen, wie [Traffic Manager](../how-to/configure-QnA-Maker-resources.md#business-continuity-with-traffic-manager) bestimmt.
 
 ### <a name="analytics-with-application-insights"></a>Analyse mit Application Insights
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 085dd18214f795566669fb862bba63b67eb9115d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 218579176b807bbdae85646f27eaa7f301d4b9a6
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350363"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428268"
 ---
 # <a name="build-an-enrollment-app-for-android-with-react"></a>Erstellen einer Registrierungs-App für Android mit React
 
@@ -37,9 +37,9 @@ Die Registrierungs-Beispiel-App wird mit JavaScript und dem React Native-Framewo
 ## <a name="set-up-the-development-environment"></a>Einrichten der Entwicklungsumgebung
 
 1. Klonen Sie das Git-Repository für die [Registrierungs-Beispiel-App](https://github.com/azure-samples/cognitive-services-FaceAPIEnrollmentSample).
-1. Um Ihre Entwicklungsumgebung einzurichten, befolgen Sie die <a href="https://reactnative.dev/docs/environment-setup"  title=""  target="_blank">React Native-Dokumentation<span class="docon docon-navigate-external x-hidden-focus"></span></a>. Wählen Sie **React Native CLI Schnellstart** als Entwicklungsbetriebssystem und **Android** als Zielbetriebssystem aus. Vervollständigen Sie die Abschnitte **Installieren von Abhängigkeiten** und **Android-Entwicklungsumgebung**.
+1. Um Ihre Entwicklungsumgebung einzurichten, befolgen Sie die <a href="https://reactnative.dev/docs/environment-setup"  title=""  target="_blank">React Native-Dokumentation</a>. Wählen Sie **React Native CLI Schnellstart** als Entwicklungsbetriebssystem und **Android** als Zielbetriebssystem aus. Vervollständigen Sie die Abschnitte **Installieren von Abhängigkeiten** und **Android-Entwicklungsumgebung**.
 1. Öffnen Sie die Datei „env.json“ in Ihrem bevorzugten Text-Editor, z. B. [Visual Studio Code](https://code.visualstudio.com/), und fügen Sie Ihren Endpunkt und Schlüssel hinzu. Sie können Ihren Endpunkt und Schlüssel im Azure-Portal auf der Registerkarte **Übersicht** Ihrer Ressource finden. Dieser Schritt dient nur lokalen Testzwecken. Checken Sie nicht Ihren Gesichtserkennungs-API-Schlüssel in Ihrem Remoterepository ein.
-1. Führen Sie die App entweder mit dem Android-Emulator für virtuelle Geräte aus Android Studio oder Ihrem eigenen Android-Gerät aus. Um Ihre App auf einem physischen Gerät zu testen, befolgen Sie die relevante <a href="https://reactnative.dev/docs/running-on-device"  title=""  target="_blank">React Native-Dokumentation<span class="docon docon-navigate-external x-hidden-focus"></span></a>.  
+1. Führen Sie die App entweder mit dem Android-Emulator für virtuelle Geräte aus Android Studio oder Ihrem eigenen Android-Gerät aus. Um Ihre App auf einem physischen Gerät zu testen, befolgen Sie die relevante <a href="https://reactnative.dev/docs/running-on-device"  title=""  target="_blank">React Native-Dokumentation</a>.  
 
 
 ## <a name="create-an-enrollment-experience"></a>Erstellen einer Registrierungserfahrung  
@@ -78,9 +78,9 @@ Stellen Sie zunächst sicher, dass Ihre App für die Produktionsbereitstellung b
 
 Wenn Sie bereit sind, Ihre App für die Produktion freizugeben, generieren Sie eine releasebereite APK-Datei, bei der es sich um das Paketdateiformat für Android-Apps handelt. Diese APK-Datei muss mit einem privaten Schlüssel signiert werden. Mit diesem Releasebuild können Sie beginnen, die App direkt an Ihre Geräte zu verteilen. 
 
-Befolgen Sie die Dokumentation zur <a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title="Vorbereiten für das Release"  target="_blank">Vorbereiten für das Release<span class="docon docon-navigate-external x-hidden-focus"></span></a>, um zu erfahren, wie Sie einen privaten Schlüssel generieren, Ihre Anwendung signieren und ein APK-Releasepaket generieren.  
+Befolgen Sie die Dokumentation zur <a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title="Vorbereiten für das Release"  target="_blank">Vorbereiten für das Release</a>, um zu erfahren, wie Sie einen privaten Schlüssel generieren, Ihre Anwendung signieren und ein APK-Releasepaket generieren.  
 
-Wenn Sie ein signiertes APK-Paket erstellt haben, finden Sie weitere Informationen zum Freigeben Ihrer App in der Dokumentation <a href="https://developer.android.com/studio/publish"  title="Veröffentlichen Ihrer App"  target="_blank">Veröffentlichen Ihrer App<span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Wenn Sie ein signiertes APK-Paket erstellt haben, finden Sie weitere Informationen zum Freigeben Ihrer App in der Dokumentation <a href="https://developer.android.com/studio/publish"  title="Veröffentlichen Ihrer App"  target="_blank">Veröffentlichen Ihrer App</a>.
 
 ## <a name="next-steps"></a>Nächste Schritte  
 

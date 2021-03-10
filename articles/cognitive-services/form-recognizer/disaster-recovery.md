@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 747ceb0106f437f9e2442c2b8c68c0b73a9107a6
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 0343402d92498bff56250027086cbf2ceb258f0f
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808254"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102427163"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Sichern und Wiederherstellen Ihrer Modelle für die Formularerkennung
 
@@ -28,7 +28,7 @@ Wenn Ihre App oder Ihr Unternehmen von der Verwendung eines benutzerdefinierten 
 
 ##  <a name="prerequisites"></a>Voraussetzungen
 
-1. Zwei Azure-Ressourcen für die Formularerkennung in unterschiedlichen Azure-Regionen. Wenn Sie über keine solchen Ressourcen verfügen, navigieren Sie zum Azure-Portal, und <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title="Erstellen einer neuen Formularerkennungsressource" target="_blank">erstellen Sie eine neue Formularerkennungsressource<span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+1. Zwei Azure-Ressourcen für die Formularerkennung in unterschiedlichen Azure-Regionen. Wenn Sie über keine solchen Ressourcen verfügen, navigieren Sie zum Azure-Portal, und <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title="Erstellen einer neuen Formularerkennungsressource" target="_blank">erstellen Sie eine neue Formularerkennungsressource</a>.
 1. Abonnementschlüssel, Endpunkt-URL und Abonnement-ID Ihrer Formularerkennungsressource. Sie finden diese Werte im Azure-Portal auf der Registerkarte **Übersicht** für die Ressource.
 
 

@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 01/22/2021
-ms.openlocfilehash: aebfd4e2fc89ab597d97ef0da60bb4b265d88b96
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7a95b32449da6dead1c35241ff09af127e0fae43
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695838"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210183"
 ---
 # <a name="tutorial-monitor-apache-spark-application-level-metrics-with-prometheus-and-grafana"></a>Tutorial: Überwachen von Apache Spark-Metriken auf Anwendungsebene mit Prometheus und Grafana
 
@@ -26,7 +26,7 @@ Verwenden Sie diese Lösung, um die Apache Spark-Metrikdaten in Quasi-Echtzeit z
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1.  [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
+1.  [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli)
 2.  [Helm-Client 3.30 und höher](https://github.com/helm/helm/releases)
 3.  [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 4.  [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-us/services/kubernetes-service/)

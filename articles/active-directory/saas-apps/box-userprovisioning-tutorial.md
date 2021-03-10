@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: jeedes
-ms.openlocfilehash: e22738f1fff813e5a928b76f8049e810847fe548
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: df4031a590eb4547d4327cebe96ccbe63d21785a
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358149"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437807"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Box für die automatische Benutzerbereitstellung
 
@@ -36,6 +36,9 @@ Zum Konfigurieren der Azure AD-Integration in Box benötigen Sie Folgendes:
 
 > [!NOTE]
 > Apps müssen zuerst in der Box-Anwendung aktiviert werden.
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 Beachten Sie beim Testen der Schritte in diesem Tutorial die folgenden Empfehlungen:
 
@@ -87,7 +90,7 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
 
-2. Wenn Sie Box bereits für das einmalige Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer Box-Instanz. Wählen Sie andernfalls **Hinzufügen** , und suchen Sie im Anwendungskatalog nach **Box**. Wählen Sie „Box“ in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
+2. Wenn Sie Box bereits für das einmalige Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer Box-Instanz. Wählen Sie andernfalls **Hinzufügen**, und suchen Sie im Anwendungskatalog nach **Box**. Wählen Sie „Box“ in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
 
 3. Wählen Sie Ihre Box-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung** aus.
 
@@ -95,17 +98,17 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
     ![Screenshot der Registerkarte „Bereitstellung“ für Box im Azure-Portal. Der Bereitstellungsmodus ist auf „Automatisch“ festgelegt, und unter „Administratoranmeldeinformationen“ ist „Autorisieren“ hervorgehoben.](./media/box-userprovisioning-tutorial/provisioning.png)
 
-5. Klicken Sie im Abschnitt **Administratoranmeldeinformationen** auf **Autorisieren** , um ein Dialogfeld für die Anmeldung bei Box in einem neuen Browserfenster zu öffnen.
+5. Klicken Sie im Abschnitt **Administratoranmeldeinformationen** auf **Autorisieren**, um ein Dialogfeld für die Anmeldung bei Box in einem neuen Browserfenster zu öffnen.
 
 6. Stellen Sie auf der Seite **Anmelden, um Zugriff auf Box zu gewähren** die erforderlichen Anmeldeinformationen bereit, und klicken Sie dann auf **Autorisieren**. 
    
     ![Screenshot der Anmeldung zum Gewähren des Zugriffs auf den Box-Bildschirm, der einen Eintrag für E-Mail und Kennwort sowie die Schaltfläche „Autorisieren“ zeigt](./media/box-userprovisioning-tutorial/IC769546.png "Automatische Benutzerbereitstellung aktivieren")
 
-7. Klicken Sie auf **Zugriff gewähren auf Box** , um diesen Vorgang zu autorisieren und zum Azure-Portal zurückzukehren. 
+7. Klicken Sie auf **Zugriff gewähren auf Box**, um diesen Vorgang zu autorisieren und zum Azure-Portal zurückzukehren. 
    
     ![Screenshot des Bildschirms „Zugriff gewähren“ in Box mit einer erklärenden Meldung und die Schaltfläche „Zugriff gewähren auf Box“](./media/box-userprovisioning-tutorial/IC769549.png "Automatische Benutzerbereitstellung aktivieren")
 
-8. Klicken Sie im Azure-Portal auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Box-App herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Box-Konto über Teamadministratorberechtigungen verfügt, und wiederholen Sie den Schritt **Autorisieren**.
+8. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Box-App herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Box-Konto über Teamadministratorberechtigungen verfügt, und wiederholen Sie den Schritt **Autorisieren**.
 
 9. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen.
 
