@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 22abd38ead1257b49eeae98acfcd74349f563811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7420ffbe5b365c635c1eac2620cfd54ceb649ebf
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90992168"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211803"
 ---
 # <a name="managed-hsm-logging"></a>Protokollierung für verwaltete HSMs 
 
@@ -22,7 +22,7 @@ Nachdem Sie mindestens ein verwaltetes HSM erstellt haben, möchten Sie wahrsche
 
 Sie können auf Ihre Protokollinformationen (spätestens) zehn Minuten nach dem Vorgang des verwalteten HSM zugreifen. In den meisten Fällen geht es aber schneller.  Die Verwaltung der Protokolle im Speicherkonto ist Ihre Aufgabe:
 
-* Verwenden Sie zum Schützen der Protokolle standardmäßige Azure-Zugriffssteuerungsmethoden, indem Sie einschränken, wer darauf zugreifen kann.
+* Verwenden Sie zum Schutz Ihrer Protokolle standardmäßige Azure-Zugriffssteuerungsmethoden, indem Sie den Zugriff auf diese auf bestimmte Benutzer beschränken.
 * Löschen Sie Protokolle, die im Speicherkonto nicht mehr aufbewahrt werden sollen.
 
 Dieses Tutorial unterstützt Sie bei den ersten Schritten mit der Protokollierung für verwaltete HSMs. Sie erstellen ein Speicherkonto, aktivieren die Protokollierung und interpretieren die erfassten Protokollinformationen.  
@@ -48,7 +48,7 @@ Der erste Schritt bei der Einrichtung der Schlüsselprotokollierung besteht dari
 az login
 ```
 
-Weitere Informationen zu den Anmeldeoptionen für die Befehlszeilenschnittstelle finden Sie unter [Anmelden mit Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true).
+Weitere Informationen zu den Anmeldeoptionen für die Befehlszeilenschnittstelle finden Sie unter [Anmelden mit Azure CLI](/cli/azure/authenticate-azure-cli).
 
 Möglicherweise müssen Sie das Abonnement angeben, mit dem Sie Ihr verwaltetes HSM erstellt haben. Geben Sie den folgenden Befehl ein, um die Abonnements für Ihr Konto anzuzeigen:
 

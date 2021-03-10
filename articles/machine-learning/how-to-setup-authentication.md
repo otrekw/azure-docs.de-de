@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 27c8a0b80068124613af15565f387f15ac6b8e57
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 30e4fede72df8eaf922745e7781c9e0d11f7ddb4
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027253"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210817"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Einrichten der Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows
 
@@ -54,7 +54,7 @@ Wenn Sie einen Dienstprinzipal (SP) verwenden möchten, müssen Sie zunächst de
 >
 > Der Grund für das Erteilen der geringstmöglichen Zugriffsberechtigungen ist, dass ein Dienstprinzipal ein Kennwort für die Authentifizierung verwendet und dieses möglicherweise als Teil eines Automatisierungsskripts gespeichert wird. Wenn das Kennwort offengelegt wird, wird durch die Beschränkung auf den für einen bestimmten Task erforderlichen Mindestzugriff die mögliche böswillige Verwendung des Dienstprinzipals auf ein Minimum beschränkt.
 
-Die einfachste Art der Erstellung eines Dienstprinzipals und Gewährung von Zugriff auf Ihren Arbeitsbereich ist die Verwendung der [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest). Führen Sie die folgenden Schritte aus, um einen Dienstprinzipal zu erstellen und ihm Zugriff auf Ihren Arbeitsbereich zu gewähren:
+Die einfachste Art der Erstellung eines Dienstprinzipals und Gewährung von Zugriff auf Ihren Arbeitsbereich ist die Verwendung der [Azure CLI](/cli/azure/install-azure-cli). Führen Sie die folgenden Schritte aus, um einen Dienstprinzipal zu erstellen und ihm Zugriff auf Ihren Arbeitsbereich zu gewähren:
 
 > [!NOTE]
 > Sie müssen ein Administrator für das Abonnement sein, um alle Schritte ausführen zu können.
@@ -67,9 +67,9 @@ Die einfachste Art der Erstellung eines Dienstprinzipals und Gewährung von Zugr
 
     Die CLI öffnet Ihren Standardbrowser, sofern sie dazu in der Lage ist, und lädt eine Anmeldeseite. Andernfalls müssen Sie einen Browser öffnen und die Anweisungen in der Befehlszeile befolgen. Die Anweisungen umfassen das Navigieren zu [https://aka.ms/devicelogin](https://aka.ms/devicelogin) und Eingeben eines Autorisierungscodes.
 
-    Wenn Sie über mehrere Azure-Abonnements verfügen, können Sie den Befehl `az account set -s <subscription name or ID>` verwenden, um das Abonnement festzulegen. Weitere Informationen finden Sie unter [Verwenden mehrerer Azure-Abonnements](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
+    Wenn Sie über mehrere Azure-Abonnements verfügen, können Sie den Befehl `az account set -s <subscription name or ID>` verwenden, um das Abonnement festzulegen. Weitere Informationen finden Sie unter [Verwenden mehrerer Azure-Abonnements](/cli/azure/manage-azure-subscriptions-azure-cli).
 
-    Andere Methoden zur Authentifizierung finden Sie unter [Anmelden mit der Azure CLI](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest).
+    Andere Methoden zur Authentifizierung finden Sie unter [Anmelden mit der Azure CLI](/cli/azure/authenticate-azure-cli).
 
 1. Installieren Sie die Azure Machine Learning-Erweiterung:
 
@@ -236,7 +236,7 @@ ws.get_details()
 
 ### <a name="use-a-service-principal-from-the-azure-cli"></a>Verwenden eines Dienstprinzipals in der Azure CLI
 
-Sie können einen Dienstprinzipal für Azure CLI-Befehle verwenden. Weitere Informationen finden Sie unter [Anmelden mithilfe eines Dienstprinzipals](/cli/azure/create-an-azure-service-principal-azure-cli?preserve-view=true&view=azure-cli-latest#sign-in-using-a-service-principal).
+Sie können einen Dienstprinzipal für Azure CLI-Befehle verwenden. Weitere Informationen finden Sie unter [Anmelden mithilfe eines Dienstprinzipals](/cli/azure/create-an-azure-service-principal-azure-cli#sign-in-using-a-service-principal).
 
 ### <a name="use-a-service-principal-with-the-rest-api-preview"></a>Verwenden eines Dienstprinzipals mit der REST-API (Vorschau)
 

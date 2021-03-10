@@ -10,12 +10,12 @@ ms.author: sagopal
 ms.date: 12/3/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: 5b2f62e8e04bddadc7068eb75405bcf1568f5713
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ec0c7d64f2145cdaf594cb903c072984f4d376a9
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657297"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519128"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>Problembehandlung für Buildvorgänge für Umgebungsimages
 
@@ -24,8 +24,8 @@ Es wird beschrieben, wie Sie die Problembehandlung durchführen, wenn Probleme m
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Abonnement. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
-* Das [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
-* Die [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
+* Das [Azure Machine Learning SDK](/python/api/overview/azure/ml/install).
+* Die [Azure CLI](/cli/azure/install-azure-cli)
 * Die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * Zum lokalen Debuggen benötigen Sie eine funktionierende Docker-Installation auf Ihrem lokalen System.
 
@@ -158,7 +158,7 @@ Mögliche Probleme:
 
 ### <a name="you-get-a-401-error-from-a-workspace-container-registry"></a>Sie erhalten einen 401-Fehler von der Containerregistrierung eines Arbeitsbereichs
 
-Führen Sie die erneute Synchronisierung von Speicherschlüsseln mit [ws.sync_keys()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--) durch.
+Führen Sie die erneute Synchronisierung von Speicherschlüsseln mit [ws.sync_keys()](/python/api/azureml-core/azureml.core.workspace.workspace#sync-keys--) durch.
 
 ### <a name="the-environment-keeps-throwing-a-waiting-for-other-conda-operations-to-finish-error"></a>Fehler der Art „Warten auf den Abschluss anderer Conda-Vorgänge …“ in der Umgebung
 

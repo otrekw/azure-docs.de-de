@@ -64,7 +64,7 @@
         - name: .NET
           href: /dotnet/api/overview/azure/ai.formrecognizer-readme
         - name: Python
-          href: /python/api/azure-ai-formrecognizer/?view=azure-python
+          href: /python/api/azure-ai-formrecognizer/
         - name: Java
           href: /java/api/overview/azure/ai-formrecognizer-readme
         - name: JavaScript
@@ -81,7 +81,7 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
     - name: Sprachunterstützung
       href: language-support.md
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: encrypt-data-at-rest.md

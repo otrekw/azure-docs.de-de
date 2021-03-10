@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a84e4e767092a1507ef0608c21ff1896cb1dde0d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: de3d9aa60322cc3e6e189f6f16c35d6f42c0cf61
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880943"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500409"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Trainieren von Modellen mit Azure Machine Learning
 
@@ -41,13 +41,13 @@ Jede dieser Trainingsmethoden kann verschiedene Arten von Computeressourcen für
 
 Das Azure Machine Learning SDK für Python ermöglicht es Ihnen, Workflows für maschinelles Lernen mit Azure Machine Learning zu erstellen und auszuführen. Sie können mit dem Dienst über eine interaktive Python-Sitzung, Jupyter Notebooks, Visual Studio Code oder eine andere integrierte Entwicklungsumgebung (IDE) interagieren.
 
-* [Was ist das Azure Machine Learning SDK für Python?](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)
-* [Installieren/Aktualisieren des SDKs](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)
+* [Was ist das Azure Machine Learning SDK für Python?](/python/api/overview/azure/ml/intro)
+* [Installieren/Aktualisieren des SDKs](/python/api/overview/azure/ml/install)
 * [Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning](how-to-configure-environment.md)
 
 ### <a name="run-configuration"></a>Laufzeitkonfiguration
 
-Ein generischer Trainingsauftrag mit Azure Machine Learning kann unter Verwendung von [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) definiert werden. Die Skriptlaufzeitkonfiguration wird dann zusammen mit Ihren Trainingsskripts verwendet, um ein Modell auf einem Computeziel zu trainieren.
+Ein generischer Trainingsauftrag mit Azure Machine Learning kann unter Verwendung von [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) definiert werden. Die Skriptlaufzeitkonfiguration wird dann zusammen mit Ihren Trainingsskripts verwendet, um ein Modell auf einem Computeziel zu trainieren.
 
 Sie können mit einer Laufzeitkonfiguration für Ihren lokalen Computer beginnen und dann bei Bedarf zu einer Laufzeitkonfiguration für ein cloudbasiertes Computeziel wechseln. Wenn Sie das Computeziel ändern, wird nur die von Ihnen verwendete Laufzeitkonfiguration geändert. Eine Ausführung protokolliert auch Informationen zum Trainingsauftrag wie Eingaben, Ausgaben und Protokolle.
 
