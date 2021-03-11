@@ -1,21 +1,19 @@
 ---
 title: Azure Compute – Linux Diagnostic Extension 4.0
 description: Hier erfahren Sie, wie Sie die Linux Diagnostic Extension 4.0 (LAD 4.0) von Azure zum Erfassen von Metriken und Protokollieren von Ereignissen von in Azure ausgeführten virtuellen Linux-Computern konfigurieren.
-services: virtual-machines-linux
-author: axayjo
-manager: gwallace
-ms.service: virtual-machines-linux
-ms.subservice: extensions
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: linux
 ms.date: 02/05/2021
-ms.author: akjosh
-ms.openlocfilehash: 741db5ea10847e2fe6711e7ca01d65efb1f09dea
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4c4851ab28e5da74e7f1fa36f087ecfdabb1c638
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101667309"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560122"
 ---
 # <a name="use-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>Verwenden der Linux Diagnostic Extension 4.0 zum Überwachen von Metriken und Protokollen
 

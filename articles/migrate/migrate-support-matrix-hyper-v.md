@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 4407f9544a7d3a19e3ff7d404669fdb27b881d30
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fc7be5c6c5dda8c5065330f819f646f4abd08994
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590628"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521355"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Unterstützungsmatrix für die Hyper-V-Bewertung
 
@@ -39,7 +39,7 @@ Um die Bewertung von Hyper-V-VMs einzurichten, erstellen Sie ein Azure Migrate-P
 | :-------------------       | :------------------- |
 | **Hyper-V-Host**       | Der Hyper-V-Host kann eigenständig sein oder in einem Cluster bereitgestellt werden.<br/><br/> Auf dem Hyper-V-Host kann Windows Server 2019, Windows Server 2016 oder Windows Server 2012 R2 ausgeführt werden. Die Server Core-Installation dieser Betriebssysteme wird ebenfalls unterstützt. <br/>Sie können keine VMs auf Hyper-V-Hosts mit Windows Server 2012 bewerten.
 | **Berechtigungen**           | Sie benötigen Administratorrechte auf dem Hyper-V-Host. <br/> Falls Sie keine Administratorberechtigungen zuweisen möchten, können Sie ein lokales Benutzerkonto oder ein Domänenbenutzerkonto erstellen und das Benutzerkonto den folgenden Gruppen zuweisen: „Remoteverwaltungsbenutzer“, „Hyper-V-Administratoren“ und „Systemmonitorbenutzer“. |
-| **PowerShell-Remoting**   | [PowerShell-Remoting](/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7) muss auf jedem Hyper-V-Host aktiviert sein. |
+| **PowerShell-Remoting**   | [PowerShell-Remoting](/powershell/module/microsoft.powershell.core/enable-psremoting) muss auf jedem Hyper-V-Host aktiviert sein. |
 | **Hyper-V-Replikat**       | Wenn Sie Hyper-V Replikate verwenden (oder mehrere VMs mit den gleichen VM-Bezeichnern vorliegen) und sowohl die ursprünglichen als auch die replizierten VMs mit Azure Migrate ermitteln, ist die von Azure Migrate generierte Bewertung möglicherweise nicht korrekt. |
 
 

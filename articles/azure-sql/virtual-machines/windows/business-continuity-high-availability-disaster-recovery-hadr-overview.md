@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 4443ccfe8d570e50352cbb70c83d6094132038cc
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f4d870f458607ceb0f05812b5c0c066ce810448e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736893"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508315"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Geschäftskontinuität und HADR für SQL Server in Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -106,7 +106,7 @@ Für die virtuellen Azure-Computer, den Speicher und die Netzwerkressourcen gelt
 ### <a name="high-availability-nodes-in-an-availability-set"></a>Hochverfügbarkeitsknoten in einer Verfügbarkeitsgruppe
 Durch Verfügbarkeitsgruppen in Azure können Sie Hochverfügbarkeitsknoten in separaten Fehler- und Updatedomänen platzieren. Die Azure-Plattform weist jedem virtuellen Computer in Ihrer Verfügbarkeitsgruppe eine Updatedomäne und eine Fehlerdomäne zu. Durch diese Konfiguration in einem Datencenter wird sichergestellt, dass während eines geplanten oder ungeplanten Wartungsereignisses mindestens ein virtueller Computer verfügbar ist und die von der Azure-SLA zugesicherte Verfügbarkeit von 99,95 Prozent eingehalten wird. 
 
-Um die Hochverfügbarkeitseinrichtung zu konfigurieren, platzieren Sie alle beteiligten virtuellen SQL Server-Computer in derselben Verfügbarkeitsgruppe, damit es bei einem Wartungsereignis nicht zu Anwendungs- oder Datenverlust kommt. Nur Knoten in demselben Clouddienst können Mitglieder derselben Verfügbarkeitsgruppe sein. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../../../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Um die Hochverfügbarkeitseinrichtung zu konfigurieren, platzieren Sie alle beteiligten virtuellen SQL Server-Computer in derselben Verfügbarkeitsgruppe, damit es bei einem Wartungsereignis nicht zu Anwendungs- oder Datenverlust kommt. Nur Knoten in demselben Clouddienst können Mitglieder derselben Verfügbarkeitsgruppe sein. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../../../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="high-availability-nodes-in-an-availability-zone"></a>Hochverfügbarkeitsknoten in einer Verfügbarkeitszone
 Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Datencenter mit eigener Stromversorgung, Kühlung und Netzwerk. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region schützt Anwendungen und Daten vor Rechenzentrumsausfällen, indem sichergestellt wird, dass mindestens ein virtueller Computer verfügbar ist. So wird eine Azure-SLA (Vereinbarung zum Servicelevel) von 99,99 Prozent erreicht. 

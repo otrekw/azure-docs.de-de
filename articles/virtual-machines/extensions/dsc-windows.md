@@ -1,25 +1,19 @@
 ---
 title: Azure-DSC-Erweiterungs-Handler (Desired State Configuration)
 description: Hochladen und Anwenden einer PowerShell-DSC-Konfiguration auf einer Azure-VM mithilfe der DSC-Erweiterung
-services: virtual-machines-windows
-documentationcenter: ''
-author: bobbytreed
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: windows
-ms.workload: ''
-ms.date: 03/26/2018
+ms.service: virtual-machines
+ms.subservice: extensions
+author: bobbytreed
 ms.author: robreed
-ms.openlocfilehash: 5254d83c18ddc9f2a5518ed4f711d4cd73ab6de7
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.collection: windows
+ms.date: 03/26/2018
+ms.openlocfilehash: 72f66aeee64133a13ce0e49155c4b2a90240a3fb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510939"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559986"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC-Erweiterung
 
@@ -101,31 +95,31 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
 | Name | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | date |
-| publisher | Microsoft.Powershell.DSC | string |
-| type | DSC | string |
+| publisher | Microsoft.Powershell.DSC | Zeichenfolge |
+| type | DSC | Zeichenfolge |
 | typeHandlerVersion | 2.77 | INT |
 
 ### <a name="settings-property-values"></a>Eigenschaftswerte der Einstellungen
 
 | Name | Datentyp | BESCHREIBUNG
 | ---- | ---- | ---- |
-| settings.wmfVersion | string | Gibt die Version von Windows Management Framework an, die auf Ihrem virtuellen Computer installiert sein muss. Wenn diese Eigenschaft auf „latest“ festgelegt ist, wird die aktuelle Version von WMF installiert. Die einzigen derzeit möglichen Werte für diese Eigenschaft sind „4.0“, „5.0“ und „latest“. Diese möglichen Werte werden gelegentlich aktualisiert. Der Standardwert ist „latest“. |
-| settings.configuration.url | string | Gibt den URL-Speicherort an, von dem die ZIP-Datei Ihrer DSC-Konfiguration herunterzuladen ist. Wenn die bereitgestellte URL ein SAS-Token für den Zugriff erfordert, müssen Sie die protectedSettings.configurationUrlSasToken-Eigenschaft auf den Wert Ihres SAS-Tokens festlegen. Diese Eigenschaft ist erforderlich, wenn „settings.configuration.script“ und/oder „settings.configuration.function“ definiert sind.
-| settings.configuration.script | string | Gibt den Dateinamen des Skripts an, das die Definition Ihrer DSC-Konfiguration enthält. Dieses Skript muss sich im Stammverzeichnis der ZIP-Datei befinden, die von der durch die configuration.url-Eigenschaft angegebenen URL heruntergeladen wurde. Diese Eigenschaft ist erforderlich, wenn „settings.configuration.url“ und/oder „settings.configuration.script“ definiert sind.
-| settings.configuration.function | string | Gibt den Namen Ihrer DSC-Konfiguration an. Die Konfiguration mit diesem Namen muss im Skript enthalten sein, das durch „configuration.script“ definiert ist. Diese Eigenschaft ist erforderlich, wenn „settings.configuration.url“ und/oder „settings.configuration.function“ definiert sind.
+| settings.wmfVersion | Zeichenfolge | Gibt die Version von Windows Management Framework an, die auf Ihrem virtuellen Computer installiert sein muss. Wenn diese Eigenschaft auf „latest“ festgelegt ist, wird die aktuelle Version von WMF installiert. Die einzigen derzeit möglichen Werte für diese Eigenschaft sind „4.0“, „5.0“ und „latest“. Diese möglichen Werte werden gelegentlich aktualisiert. Der Standardwert ist „latest“. |
+| settings.configuration.url | Zeichenfolge | Gibt den URL-Speicherort an, von dem die ZIP-Datei Ihrer DSC-Konfiguration herunterzuladen ist. Wenn die bereitgestellte URL ein SAS-Token für den Zugriff erfordert, müssen Sie die protectedSettings.configurationUrlSasToken-Eigenschaft auf den Wert Ihres SAS-Tokens festlegen. Diese Eigenschaft ist erforderlich, wenn „settings.configuration.script“ und/oder „settings.configuration.function“ definiert sind.
+| settings.configuration.script | Zeichenfolge | Gibt den Dateinamen des Skripts an, das die Definition Ihrer DSC-Konfiguration enthält. Dieses Skript muss sich im Stammverzeichnis der ZIP-Datei befinden, die von der durch die configuration.url-Eigenschaft angegebenen URL heruntergeladen wurde. Diese Eigenschaft ist erforderlich, wenn „settings.configuration.url“ und/oder „settings.configuration.script“ definiert sind.
+| settings.configuration.function | Zeichenfolge | Gibt den Namen Ihrer DSC-Konfiguration an. Die Konfiguration mit diesem Namen muss im Skript enthalten sein, das durch „configuration.script“ definiert ist. Diese Eigenschaft ist erforderlich, wenn „settings.configuration.url“ und/oder „settings.configuration.function“ definiert sind.
 | settings.configurationArguments | Collection | Definiert beliebige Parameter, die Sie Ihrer DSC-Konfiguration übergeben möchten. Diese Eigenschaft wird nicht verschlüsselt.
-| settings.configurationData.url | string | Gibt die URL an, unter der die Datei mit Ihren Konfigurationsdaten (.pds1) heruntergeladen werden kann, um sie als Eingabe für Ihre DSC-Konfiguration zu nutzen. Wenn die bereitgestellte URL ein SAS-Token für den Zugriff erfordert, müssen Sie die protectedSettings.configurationDataUrlSasToken-Eigenschaft auf den Wert Ihres SAS-Tokens festlegen.
-| settings.privacy.dataEnabled | string | Aktiviert bzw. deaktiviert die Erfassung von Telemetriedaten. Die einzig möglichen Werte für diese Eigenschaft sind „Enable“, „Disable“, „''“ oder „$null“. Wird die Eigenschaft leer gelassen oder „null“ angegeben, ist die Telemetrie aktiviert.
+| settings.configurationData.url | Zeichenfolge | Gibt die URL an, unter der die Datei mit Ihren Konfigurationsdaten (.pds1) heruntergeladen werden kann, um sie als Eingabe für Ihre DSC-Konfiguration zu nutzen. Wenn die bereitgestellte URL ein SAS-Token für den Zugriff erfordert, müssen Sie die protectedSettings.configurationDataUrlSasToken-Eigenschaft auf den Wert Ihres SAS-Tokens festlegen.
+| settings.privacy.dataEnabled | Zeichenfolge | Aktiviert bzw. deaktiviert die Erfassung von Telemetriedaten. Die einzig möglichen Werte für diese Eigenschaft sind „Enable“, „Disable“, „''“ oder „$null“. Wird die Eigenschaft leer gelassen oder „null“ angegeben, ist die Telemetrie aktiviert.
 | settings.advancedOptions.forcePullAndApply | Bool | Diese Einstellung ist dafür ausgelegt, die Arbeitserfahrung im Umgang mit der Erweiterung beim Registrieren von Knoten bei Azure Automation DSC zu verbessern.  Wenn der Wert auf `$true` festgelegt ist, wartet die Erweiterung die erste Ausführung der beim Dienst abgerufenen Konfiguration ab, bevor er die Erfolgs-/Fehlermeldung zurückgibt.  Wenn der Wert auf „$false“ festgelegt ist, bezieht sich der von der Erweiterung zurückgegebene Status lediglich darauf, ob der Knoten erfolgreich bei Azure Automation State Configuration registriert wurde, und die Knotenkonfiguration wird während der Registrierung nicht ausgeführt.
 | settings.advancedOptions.downloadMappings | Collection | Definiert alternative Speicherorte zum Herunterladen von Abhängigkeiten wie WMF und .NET.
 
 ### <a name="protected-settings-property-values"></a>Eigenschaftswerte geschützter Einstellungen
 
-| Name | Datentyp | BESCHREIBUNG
+| Name | Datentyp | Beschreibung
 | ---- | ---- | ---- |
-| protectedSettings.configurationArguments | string | Definiert beliebige Parameter, die Sie Ihrer DSC-Konfiguration übergeben möchten. Diese Eigenschaft wird verschlüsselt. |
-| protectedSettings.configurationUrlSasToken | string | Gibt das SAS-Token für den Zugriff auf durch „configuration.url“ definierte URL an. Diese Eigenschaft wird verschlüsselt. |
-| protectedSettings.configurationDataUrlSasToken | string | Gibt das SAS-Token für den Zugriff auf durch „configurationData.url“ definierte URL an. Diese Eigenschaft wird verschlüsselt. |
+| protectedSettings.configurationArguments | Zeichenfolge | Definiert beliebige Parameter, die Sie Ihrer DSC-Konfiguration übergeben möchten. Diese Eigenschaft wird verschlüsselt. |
+| protectedSettings.configurationUrlSasToken | Zeichenfolge | Gibt das SAS-Token für den Zugriff auf durch „configuration.url“ definierte URL an. Diese Eigenschaft wird verschlüsselt. |
+| protectedSettings.configurationDataUrlSasToken | Zeichenfolge | Gibt das SAS-Token für den Zugriff auf durch „configurationData.url“ definierte URL an. Diese Eigenschaft wird verschlüsselt. |
 
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen

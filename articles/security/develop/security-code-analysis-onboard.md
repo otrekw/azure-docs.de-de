@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4fe13c418452a7a88dcd97939d6e853039f3fb64
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 30d6061e15b8eb17c1450500d9e8c141a83a3e08
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517069"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553917"
 ---
 # <a name="onboarding-and-installing"></a>Onboarding und Installation
 
@@ -90,7 +90,7 @@ Nach der Installation der Erweiterung werden die Buildtasks für die sichere Ent
 > - Aktivieren Sie bei Buildtasks für die sichere Entwicklung immer **Bei Fehler fortsetzen**. Selbst wenn bei einem Tool Fehler auftreten, können die anderen ausgeführt werden. Zwischen den Tools bestehen keine Abhängigkeiten.
 > - Buildtasks der Microsoft-Sicherheitscodeanalyse verursachen nur einen Fehler, wenn ein Tool nicht erfolgreich ausgeführt werden kann. Sie werden allerdings selbst dann erfolgreich ausgeführt, wenn ein Tool Probleme im Code identifiziert. Mit dem Nachanalyse-Buildtask können Sie den Build so konfigurieren, dass er unterbrochen wird, wenn ein Tool Probleme im Code identifiziert.
 > - Einige Azure DevOps-Buildtasks werden nicht unterstützt, wenn sie über eine Releasepipeline ausgeführt werden. Genauer gesagt werden Tasks, durch die Artefakte über eine Releasepipeline veröffentlicht werden, von Azure DevOps nicht unterstützt.
-> - Eine Liste der vordefinierten Variablen in Azure DevOps Team Build, die Sie als Parameter angeben können, finden Sie unter [Azure DevOps-Buildvariablen](/azure/devops/pipelines/build/variables?tabs=batch&view=vsts).
+> - Eine Liste der vordefinierten Variablen in Azure DevOps Team Build, die Sie als Parameter angeben können, finden Sie unter [Azure DevOps-Buildvariablen](/azure/devops/pipelines/build/variables?tabs=batch).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

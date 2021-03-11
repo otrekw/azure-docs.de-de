@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 987b56eb1b258e1c5f2fd7d5bcfdd0e95f6c0730
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: dc1954c97da0d7f40deaf0f4efa7ca99793107bb
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091668"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503690"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning: Architektur und Konzepte
 
@@ -102,7 +102,7 @@ Eine Ausführung wird ausgelöst, wenn Sie ein Skript zum Trainieren eines Model
 
 [Arbeitsbereich](#workspace) > [Experimente](#experiments) > [Ausführen](#runs) > **Ausführen der Konfiguration**
 
-Eine Ausführungskonfiguration definiert, wie ein Skript in einem bestimmten Computeziel ausgeführt werden sollte. Verwenden Sie die Konfiguration, um das Skript, das Computeziel und die Azure ML-Umgebung für die Ausführung, alle verteilten auftragsspezifischen Konfigurationen und einige zusätzliche Eigenschaften anzugeben. Weitere Informationen zum vollständigen Satz konfigurierbarer Optionen für Ausführungen finden Sie unter [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py).
+Eine Ausführungskonfiguration definiert, wie ein Skript in einem bestimmten Computeziel ausgeführt werden sollte. Verwenden Sie die Konfiguration, um das Skript, das Computeziel und die Azure ML-Umgebung für die Ausführung, alle verteilten auftragsspezifischen Konfigurationen und einige zusätzliche Eigenschaften anzugeben. Weitere Informationen zum vollständigen Satz konfigurierbarer Optionen für Ausführungen finden Sie unter [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig).
 
 Eine Laufzeitkonfiguration kann in einer Datei in dem Verzeichnis, in dem Ihr Trainingsskript enthalten ist, beständig gespeichert werden.   Alternativ kann sie als Objekt im Arbeitsspeicher erstellt und zum Übermitteln einer Ausführung verwendet werden.
 
@@ -282,7 +282,7 @@ In Studio greifen Sie auch auf die interaktiven Tools zu, die Teil von Azure Mac
 > Die unten markierten Tools (Vorschau) sind aktuell als öffentliche Vorschau verfügbar.
 > Die Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-+  Interagieren Sie mit dem Dienst in einer beliebigen Python-Umgebung, indem Sie das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) verwenden.
++  Interagieren Sie mit dem Dienst in einer beliebigen Python-Umgebung, indem Sie das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro) verwenden.
 + Interagieren Sie mit dem Dienst in einer beliebigen R-Umgebung, indem Sie das [Azure Machine Learning SDK für R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (Vorschauversion) verwenden.
 + Verwenden Sie den [Azure Machine Learning-Designer](concept-designer.md), um die Workflowschritte auszuführen – ganz ohne Programmierung. 
 + Verwenden Sie die [Azure Machine Learning-CLI](./reference-azure-machine-learning-cli.md) zur Automatisierung.

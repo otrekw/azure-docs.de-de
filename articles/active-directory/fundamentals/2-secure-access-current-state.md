@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 302e4becd337c8e7b0b425a52ed46d562db5bae4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 30858e9978f7e8857c5f8a2dcdfd7455f6e97b60
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725326"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553424"
 ---
 # <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>Ermitteln des aktuellen Status der Zusammenarbeit mit externen Benutzern in Ihrer Organisation 
 
@@ -34,11 +34,11 @@ Personen in Ihrer Organisation arbeiten wahrscheinlich bereits mit Benutzern aus
 
 Die Benutzer, die die Zusammenarbeit mit externen Benutzern initiieren, wissen am besten, welche Anwendungen für diese Zusammenarbeit am relevantesten sind und welche Zugriffsberechtigungen gewährt werden sollten. Wenn Sie sich in die Lage dieser Benutzer versetzen, finden Sie schnell heraus, wer über delegierte Berechtigungen zum Einladen externer Benutzer, Erstellen von Zugriffspaketen und Durchführen von Zugriffsüberprüfungen verfügen sollte.
 
-Überprüfen Sie das [Microsoft 365-Überwachungsprotokoll für Freigabe- und Zugriffsanforderungsaktivitäten](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide#sharing-and-access-request-activities), um nach Benutzern zu suchen, die derzeit mit anderen zusammenarbeiten. Sie können sich auch das [Azure AD-Überwachungsprotokoll ansehen, um herauszufinden, wer B2B-Benutzer](../external-identities/auditing-and-reporting.md) in Ihr Verzeichnis eingeladen hat.
+Überprüfen Sie das [Microsoft 365-Überwachungsprotokoll für Freigabe- und Zugriffsanforderungsaktivitäten](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#sharing-and-access-request-activities), um nach Benutzern zu suchen, die derzeit mit anderen zusammenarbeiten. Sie können sich auch das [Azure AD-Überwachungsprotokoll ansehen, um herauszufinden, wer B2B-Benutzer](../external-identities/auditing-and-reporting.md) in Ihr Verzeichnis eingeladen hat.
 
 ## <a name="find-current-collaboration-partners"></a>Suchen nach aktuellen Kollaborationspartnern
 
-Externe Benutzer sind möglicherweise [Azure AD B2B-Benutzer](../external-identities/what-is-b2b.md) (bevorzugt) mit von Partnern verwalteten Anmeldeinformationen oder externe Benutzer mit lokal bereitgestellten Anmeldeinformationen. Diese Benutzer sind in der Regel (aber nicht immer) mit dem UserType „Gast“ gekennzeichnet. Gastbenutzer können über die [Microsoft Graph-API](/graph/api/user-list?tabs=http&view=graph-rest-1.0), [PowerShell](/graph/api/user-list?tabs=http&view=graph-rest-1.0) oder das [Azure-Portal](../enterprise-users/users-bulk-download.md) aufgelistet werden.
+Externe Benutzer sind möglicherweise [Azure AD B2B-Benutzer](../external-identities/what-is-b2b.md) (bevorzugt) mit von Partnern verwalteten Anmeldeinformationen oder externe Benutzer mit lokal bereitgestellten Anmeldeinformationen. Diese Benutzer sind in der Regel (aber nicht immer) mit dem UserType „Gast“ gekennzeichnet. Gastbenutzer können über die [Microsoft Graph-API](/graph/api/user-list?tabs=http), [PowerShell](/graph/api/user-list?tabs=http) oder das [Azure-Portal](../enterprise-users/users-bulk-download.md) aufgelistet werden.
 
 ### <a name="use-email-domains-and-companyname-property"></a>Verwenden von E-Mail-Domänen und der companyName-Eigenschaft
 
@@ -55,7 +55,7 @@ Bei Verwendung der Berechtigungsverwaltung können Sie Zugriffspakete auch auf e
 
 ## <a name="find-access-being-granted-to-external-users"></a>Ermitteln der Zugriffsberechtigungen, die externen Benutzern gewährt werden
 
-Wenn Sie mit mehreren externen Benutzern und Organisationen zusammenarbeiten, können Sie die Zugriffsberechtigungen für diese Benutzer mithilfe der Microsoft Graph-API festlegen, um [Azure AD-Gruppenmitgliedschaften](/graph/api/resources/groups-overview?view=graph-rest-1.0) oder[direkte Anwendungszuweisungen](/graph/api/resources/approleassignment?view=graph-rest-1.0) in Azure AD zu verwalten.
+Wenn Sie mit mehreren externen Benutzern und Organisationen zusammenarbeiten, können Sie die Zugriffsberechtigungen für diese Benutzer mithilfe der Microsoft Graph-API festlegen, um [Azure AD-Gruppenmitgliedschaften](/graph/api/resources/groups-overview) oder[direkte Anwendungszuweisungen](/graph/api/resources/approleassignment) in Azure AD zu verwalten.
 
 
 ### <a name="enumerate-application-specific-permissions"></a>Aufzählen anwendungsspezifischer Berechtigungen
@@ -65,7 +65,7 @@ Möglicherweise können Sie auch anwendungsspezifische Berechtigungsaufzählunge
 Untersuchen Sie insbesondere den Zugriff auf alle geschäfts- und unternehmenskritischen Apps, damit Sie über jeglichen externen Zugriff vollständig Bescheid wissen.
 
 ### <a name="detect-ad-hoc-sharing"></a>Erkennen von Ad-hoc-Freigaben
-Wenn Ihre E-Mail-Infrastruktur und Ihre Netzwerkpläne es zulassen, können Sie per E-Mail oder über nicht autorisierte SaaS-Apps (Software-as-a-Service) freigegebene Inhalte untersuchen. Die [Microsoft 365-Mechanismen zur Verhinderung von Datenverlust (Data Loss Protection, DLP)](/microsoft-365/compliance/data-loss-prevention-policies?view=o365-worldwide) unterstützen Sie beim Identifizieren, Verhindern und Überwachen von versehentlichen Freigaben vertraulicher Informationen in Ihrer gesamten Microsoft 365-Infrastruktur. Mit [Microsoft Cloud App Security](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/cloud-app-security) können Sie die Verwendung nicht autorisierter SaaS-Apps in Ihrer Umgebung identifizieren.
+Wenn Ihre E-Mail-Infrastruktur und Ihre Netzwerkpläne es zulassen, können Sie per E-Mail oder über nicht autorisierte SaaS-Apps (Software-as-a-Service) freigegebene Inhalte untersuchen. Die [Microsoft 365-Mechanismen zur Verhinderung von Datenverlust (Data Loss Protection, DLP)](/microsoft-365/compliance/data-loss-prevention-policies) unterstützen Sie beim Identifizieren, Verhindern und Überwachen von versehentlichen Freigaben vertraulicher Informationen in Ihrer gesamten Microsoft 365-Infrastruktur. Mit [Microsoft Cloud App Security](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/cloud-app-security) können Sie die Verwendung nicht autorisierter SaaS-Apps in Ihrer Umgebung identifizieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,12 +3,12 @@ title: Automatisieren des Hinzufügens eines Lab-Benutzers in Azure DevTest Labs
 description: In diesem Artikel erfahren Sie, wie Sie das Hinzufügen eines Benutzers zu einem Lab in Azure DevTest Labs mithilfe von Azure Resource Manager-Vorlagen, PowerShell und Befehlszeilenschnittstelle automatisieren.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 61853efacc5974b81d46b2b8cca0f2796672d72d
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: dc5522cfe694f193b9bbeeb3145808a367a62c12
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327959"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519400"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatisieren des Hinzufügens eines Lab-Benutzers zu einem Lab in Azure DevTest Labs
 Mit Azure DevTest Labs können Sie über das Azure-Portal schnell Self-Service-DevTest-Umgebungen erstellen. Wenn Sie jedoch über mehrere Teams und mehrere DevTest Labs-Instanzen verfügen, kann die Automatisierung des Erstellungsprozesses Zeit sparen. [Azure Resource Manager-Vorlagen](https://github.com/Azure/azure-devtestlab/tree/master/Environments) ermöglichen Ihnen das Erstellen von Labs, Lab-VMs, benutzerdefinierten Images, Formeln sowie das Hinzufügen von Benutzern auf automatisierte Weise. Dieser Artikel befasst sich insbesondere mit dem Hinzufügen von Benutzern zu einer DevTest Labs-Instanz.
@@ -100,7 +100,7 @@ Die Rollendefinitions-ID ist der Zeichenfolgenbezeichner für die vorhandene Rol
 
 Die Abonnement-ID wird mit der Vorlagenfunktion `subscription().subscriptionId` abgerufen.  
 
-Sie müssen die Rollendefinition für die integrierte Rolle `DevTest Labs User` abrufen. Zum Abrufen der GUID für die Rolle [DevTest Labs-Benutzer](../role-based-access-control/built-in-roles.md#devtest-labs-user) können Sie die [Rollenzuweisungs-REST-API](/rest/api/authorization/roleassignments) oder das Cmdlet [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition?view=azps-1.8.0) verwenden.
+Sie müssen die Rollendefinition für die integrierte Rolle `DevTest Labs User` abrufen. Zum Abrufen der GUID für die Rolle [DevTest Labs-Benutzer](../role-based-access-control/built-in-roles.md#devtest-labs-user) können Sie die [Rollenzuweisungs-REST-API](/rest/api/authorization/roleassignments) oder das Cmdlet [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) verwenden.
 
 ```powershell
 $dtlUserRoleDefId = (Get-AzRoleDefinition -Name "DevTest Labs User").Id
@@ -161,7 +161,7 @@ New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -Resou
 
 Es ist wichtig zu beachten, dass der Name der Gruppenbereitstellung und die GUID für die Rollenzuweisung eindeutig sein müssen. Wenn Sie versuchen, eine Ressourcenzuordnung mit einer nicht eindeutigen GUID bereitzustellen, erhalten Sie einen `RoleAssignmentUpdateNotPermitted`-Fehler.
 
-Wenn Sie planen, die Vorlage mehrmals zu verwenden, um mehrere Active Directory-Objekte der Rolle „DevTest Labs-Benutzer“ für Ihr Lab hinzuzufügen, sollten Sie die Verwendung dynamischer Objekte in Ihrem PowerShell-Befehl in Betracht ziehen. Das folgende Beispiel verwendet das Cmdlet [New-Guid](/powershell/module/Microsoft.PowerShell.Utility/New-Guid?view=powershell-5.0), um den Namen des Ressourcengruppenbereitstellung und die GUID der Rollenzuweisung dynamisch anzugeben.
+Wenn Sie planen, die Vorlage mehrmals zu verwenden, um mehrere Active Directory-Objekte der Rolle „DevTest Labs-Benutzer“ für Ihr Lab hinzuzufügen, sollten Sie die Verwendung dynamischer Objekte in Ihrem PowerShell-Befehl in Betracht ziehen. Das folgende Beispiel verwendet das Cmdlet [New-Guid](/powershell/module/Microsoft.PowerShell.Utility/New-Guid), um den Namen des Ressourcengruppenbereitstellung und die GUID der Rollenzuweisung dynamisch anzugeben.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateFile .\azuredeploy.json -roleAssignmentGuid "$(New-Guid)" -labName "MyLab" -principalId "11111111-1111-1111-1111-111111111111"

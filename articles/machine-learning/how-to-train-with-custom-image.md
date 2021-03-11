@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ad86ebdbef8bf8c8ec00e54e15b751fd2285ad68
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 03400173dd35660d6e7a98500b831a7c6aa4ebd7
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601339"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521169"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Trainieren eines Modells mithilfe eines benutzerdefinierten Docker-Images
 
@@ -32,7 +32,7 @@ Führen Sie den Code in einer der folgenden Umgebungen aus:
   * Navigieren Sie im [Azure Machine Learning-Beispielrepository](https://github.com/Azure/azureml-examples) zum Verzeichnis **notebooks** > **fastai** > **train-pets-resnet34.ipynb**, um dort nach einem fertigen Notebook zu suchen. 
 * Auf Ihrem eigenen Jupyter Notebook-Server:
   * Erstellen Sie eine [Konfigurationsdatei für den Arbeitsbereich](how-to-configure-environment.md#workspace).
-  * Installieren Sie das [Azure Machine Learning SDK.](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) 
+  * Installieren Sie das [Azure Machine Learning SDK.](/python/api/overview/azure/ml/install) 
   * Erstellen Sie eine [Azure Container Registry](../container-registry/index.yml)-Instanz oder eine andere Docker-Registrierung, auf die über das Internet zugegriffen werden kann.
 
 ## <a name="set-up-a-training-experiment"></a>Einrichten eines Trainingsexperiments
@@ -41,7 +41,7 @@ In diesem Abschnitt richten Sie Ihr Trainingsexperiment ein, indem Sie einen Arb
 
 ### <a name="initialize-a-workspace"></a>Initialisieren eines Arbeitsbereichs
 
-Der [Azure Machine Learning-Arbeitsbereich](concept-workspace.md) ist die Ressource der obersten Ebene für den Dienst. Er stellt einen zentralen Ort für die Arbeit mit allen von Ihnen erstellten Artefakten dar. Im Python SDK können Sie auf die Arbeitsbereichsartefakte zugreifen, indem Sie ein [`Workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py)-Objekt erstellen.
+Der [Azure Machine Learning-Arbeitsbereich](concept-workspace.md) ist die Ressource der obersten Ebene für den Dienst. Er stellt einen zentralen Ort für die Arbeit mit allen von Ihnen erstellten Artefakten dar. Im Python SDK können Sie auf die Arbeitsbereichsartefakte zugreifen, indem Sie ein [`Workspace`](/python/api/azureml-core/azureml.core.workspace.workspace)-Objekt erstellen.
 
 Erstellen Sie aus der Datei „config.json“, die Sie im Abschnitt [Voraussetzungen](#prerequisites) erstellt haben, ein `Workspace`-Objekt.
 
@@ -169,7 +169,7 @@ run.wait_for_completion(show_output=True)
 ```
 
 > [!WARNING]
-> Zum Ausführen von Trainingsskripts wird von Azure Machine Learning das gesamte Quellverzeichnis kopiert. Sind vertrauliche Daten vorhanden, die nicht hochgeladen werden sollen, verwenden Sie für diese eine [IGNORE-Datei](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots), oder legen Sie sie nicht im Quellverzeichnis ab. Greifen Sie stattdessen über einen [Datenspeicher](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py) auf Ihre Daten zu.
+> Zum Ausführen von Trainingsskripts wird von Azure Machine Learning das gesamte Quellverzeichnis kopiert. Sind vertrauliche Daten vorhanden, die nicht hochgeladen werden sollen, verwenden Sie für diese eine [IGNORE-Datei](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots), oder legen Sie sie nicht im Quellverzeichnis ab. Greifen Sie stattdessen über einen [Datenspeicher](/python/api/azureml-core/azureml.data) auf Ihre Daten zu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie ein Modell mit einem benutzerdefinierten Docker-Image trainiert. Weitere Informationen zu Azure Machine Learning finden Sie in den folgenden Artikeln:

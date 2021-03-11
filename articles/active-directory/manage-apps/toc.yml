@@ -38,8 +38,14 @@
       items:
         - name: "Übersicht über App\_Management-Beispiele"
           href: app-management-powershell-samples.md
-        - name: 'Exportieren aller App-Registrierungen, Geheimnisse und Zertifikate'
+        - name: Exportieren von Geheimnissen und Zertifikaten (App-Registrierungen)
           href: ./scripts/powershell-export-all-app-registrations-secrets-and-certs.md
+        - name: Exportieren von Geheimnissen und Zertifikaten (Unternehmens-Apps)
+          href: ./scripts/powershell-export-all-enterprise-apps-secrets-and-certs.md
+        - name: Exportieren von ablaufenden Geheimnissen und Zertifikaten
+          href: ./scripts/powershell-export-apps-with-expriring-secrets.md
+        - name: 'Exportieren von Geheimnissen und Zertifikaten, die nach dem erforderlichen Datum ablaufen'
+          href: ./scripts/powershell-export-apps-with-secrets-beyond-required.md
     - name: PowerShell-Beispiele für App-Proxys
       href: application-proxy-powershell-samples.md
 - name: Konzepte

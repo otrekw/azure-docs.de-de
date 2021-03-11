@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: subject-armqs
-ms.openlocfilehash: ded7b24461fdcdbc3d020a487cafc20620633097
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: bc075e5074fe39ad38e45235af932b40fef78fce
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019719"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521865"
 ---
 # <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>Schnellstart: Konfigurieren von Datenflussprotokollen von Netzwerksicherheitsgruppen mithilfe einer ARM-Vorlage
 
@@ -82,7 +82,7 @@ Eine umfassende Übersicht über die Eigenschaften des NSG-Flussprotokollobjekts
 
 Wenn Sie ARM-Vorlagen zum ersten Mal verwenden, lesen Sie die folgenden Artikel, um mehr über ARM-Vorlagen zu erfahren:
 
-- [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
+- [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template-or-bicep-file)
 - [Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 Das folgende Beispiel ist eine vollständige Vorlage. Es ist auch die einfachste Version der Vorlage. Das Beispiel enthält die Mindestparameter, die zur Einrichtung von NSG-Datenflussprotokollen übergeben werden. Weitere Beispiele finden Sie im Übersichtsartikel [Konfigurieren von NSG-Flussprotokollen aus einer Azure Resource Manager-Vorlage](network-watcher-nsg-flow-logging-azure-resource-manager.md).
@@ -145,7 +145,7 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 Sie haben zwei Möglichkeiten, um zu prüfen, ob Ihre Bereitstellung erfolgreich war:
 
 - Ihre PowerShell-Konsole zeigt `ProvisioningState` als `Succeeded` an.
-- Wechseln Sie zur [Portalseite für NSG-Datenflussprotokolle](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs), um Ihre Änderungen zu bestätigen. 
+- Wechseln Sie zur [Portalseite für NSG-Datenflussprotokolle](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs), um Ihre Änderungen zu bestätigen.
 
 Falls bei der Bereitstellung Probleme aufgetreten sind, lesen Sie den Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md).
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: e0913351d40cd75da17d16cca119b4ad5ce20de0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 84cbc681d0974e91561daf8918dff389226fa7aa
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334700"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553968"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Zertifikatbasierte Authentifizierung für eine Azure AD-Identität für den Zugriff auf Schlüssel aus einem Azure Cosmos DB-Konto
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -32,7 +32,7 @@ In diesem Schritt registrieren Sie eine Beispielwebanwendung in Ihrem Azure AD-K
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Öffnen Sie den Bereich für das Azure **Active Directory** , wechseln Sie zum Bereich **App-Registrierungen** , und wählen Sie **Neue Registrierung** aus. 
+1. Öffnen Sie den Bereich für das Azure **Active Directory**, wechseln Sie zum Bereich **App-Registrierungen**, und wählen Sie **Neue Registrierung** aus. 
 
    :::image type="content" source="./media/certificate-based-authentication/new-app-registration.png" alt-text="Registrierung einer neuen Anwendung in Active Directory":::
 
@@ -40,7 +40,7 @@ In diesem Schritt registrieren Sie eine Beispielwebanwendung in Ihrem Azure AD-K
 
    * **Namen** – Geben Sie einen Namen für Ihre Anwendung ein. Dies kann ein beliebiger Name sein, wie z.B. „sampleApp“.
    * **Unterstützte Kontotypen** – Wählen Sie **Nur Konten nur in diesem Organisationsverzeichnis (Standardverzeichnis)** aus, um Ressourcen in Ihrem aktuellen Verzeichnis den Zugriff auf diese Anwendung zu ermöglichen. 
-   * **Umleitungs-URL** – Wählen Sie eine Anwendung vom Typ **Web** , und geben Sie eine URL an, unter der Ihre Anwendung gehostet wird. Es kann eine beliebige URL sein. Für dieses Beispiel können Sie eine Test-URL wie `https://sampleApp.com` angeben. Dies ist kein Problem, auch wenn die App nicht existiert.
+   * **Umleitungs-URL** – Wählen Sie eine Anwendung vom Typ **Web**, und geben Sie eine URL an, unter der Ihre Anwendung gehostet wird. Es kann eine beliebige URL sein. Für dieses Beispiel können Sie eine Test-URL wie `https://sampleApp.com` angeben. Dies ist kein Problem, auch wenn die App nicht existiert.
 
    :::image type="content" source="./media/certificate-based-authentication/register-sample-web-app.png" alt-text="Registrieren einer Beispielwebanwendung":::
 
@@ -65,7 +65,7 @@ In diesem Schritt installieren Sie das Azure AD PowerShell-Modul. Dieses Modul i
    Set-AzContext $context 
    ```
 
-1. Installieren und Importieren des [AzureAD](/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true)-Moduls
+1. Installieren und Importieren des [AzureAD](/powershell/module/azuread/)-Moduls
 
    ```powershell
    Install-Module AzureAD
@@ -123,7 +123,7 @@ In der Azure-App-Registrierung für die Clientanwendung:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Öffnen Sie den Bereich für das Azure **Active Directory** , wechseln Sie zum Bereich **App-Registrierungen** , und öffnen Sie die Beispiel-App, die Sie im vorherigen Schritt erstellt haben. 
+1. Öffnen Sie den Bereich für das Azure **Active Directory**, wechseln Sie zum Bereich **App-Registrierungen**, und öffnen Sie die Beispiel-App, die Sie im vorherigen Schritt erstellt haben. 
 
 1. Wählen Sie **Zertifikate & Geheimnisse** und dann **Zertifikat hochladen** aus. Suchen Sie nach der im vorherigen Schritt erstellten Zertifikatdatei, die Sie hochladen möchten.
 

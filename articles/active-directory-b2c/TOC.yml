@@ -237,7 +237,7 @@
         - name: Konfigurieren des bedingten Zugriffs
           href: conditional-access-user-flow.md
     - name: Konfigurieren einer Altersbeschränkung
-      href: basic-age-gating.md
+      href: age-gating.md
     - name: API-Connectors (Vorschau)
       items:
         - name: Übersicht
