@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 6a722746c8e06a691e702b095d3081f1530645de
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b922c25561843d140f1e2b8221f62fad89ea00c8
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318917"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520896"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Verwenden privater Python-Pakete mit Azure Machine Learning
 
@@ -31,12 +31,12 @@ Die privaten Pakete werden über die [Environment](/python/api/azureml-core/azur
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
- * über das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)
+ * über das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/install)
  * Ein [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md).
 
 ## <a name="use-small-number-of-packages-for-development-and-testing"></a>Verwenden Sie eine kleine Anzahl von Paketen für Entwicklungs- und Testzwecke.
 
-Verwenden Sie für eine kleine Anzahl von privaten Paketen für einen einzelnen Arbeitsbereich die statische [`Environment.add_private_pip_wheel()`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-private-pip-wheel-workspace--file-path--exist-ok-false-)-Methode. Mit diesem Ansatz können Sie dem Arbeitsbereich schnell ein privates Paket hinzufügen und er eignet sich gut für Entwicklungs- und Testzwecke.
+Verwenden Sie für eine kleine Anzahl von privaten Paketen für einen einzelnen Arbeitsbereich die statische [`Environment.add_private_pip_wheel()`](/python/api/azureml-core/azureml.core.environment.environment#add-private-pip-wheel-workspace--file-path--exist-ok-false-)-Methode. Mit diesem Ansatz können Sie dem Arbeitsbereich schnell ein privates Paket hinzufügen und er eignet sich gut für Entwicklungs- und Testzwecke.
 
 Verweisen Sie das Dateipfadargument auf eine lokale Wheeldatei, und führen Sie den Befehl ```add_private_pip_wheel``` aus. Der Befehl gibt eine URL zurück, die zum Nachverfolgen des Paketspeicherorts innerhalb Ihres Arbeitsbereichs dient. Erfassen Sie die Speicher-URL und übergeben Sie sie der `add_pip_package()`-Methode.
 
@@ -58,7 +58,7 @@ Bei diesem Ansatz wird ein persönliches Zugriffstoken zum Authentifizieren für
 
  1. [Erstellen Sie ein persönliches Zugriffstoken (Personal Access Token, PAT)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?preserve-view=true&tabs=preview-page&view=azure-devops#create-a-pat) für Ihre Azure DevOps-Instanz. Legen Sie den Gültigkeitsbereich des Tokens auf __Verpacken > Lesen__ fest. 
 
- 2. Fügen Sie Azure DevOps-URL und PAT mithilfe der [Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#&preserve-view=trueset-connection-name--category--target--authtype--value-)-Methode als Arbeitsbereichseigenschaften hinzu.
+ 2. Fügen Sie Azure DevOps-URL und PAT mithilfe der [Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace#set-connection-name--category--target--authtype--value-)-Methode als Arbeitsbereichseigenschaften hinzu.
 
      ```python
     from azureml.core import Workspace

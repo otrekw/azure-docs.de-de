@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 8b233211f47250d4742d35cd0782cdd241839496
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 2d2e7d403ab3e9cc7e8e17de53b6e821ec24caa1
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804859"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438011"
 ---
 # <a name="deploy-custom-script-extension-on-vms-running-on-your-azure-stack-edge-pro-device"></a>Bereitstellen von benutzerdefinierten Skripterweiterungen auf VMs, die auf Ihrem Azure Stack Edge Pro-Gerät ausgeführt werden
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Die benutzerdefinierte Skripterweiterung lädt Skripts oder Befehle auf VMs auf Ihren Azure Stack Edge Pro-Geräten herunter und führt sie aus. In diesem Artikel wird erläutert, wie Sie die benutzerdefinierte Skripterweiterung mithilfe einer Azure Resource Manager-Vorlage installieren und ausführen. 
 

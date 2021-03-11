@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eb168610f10ac336084ac04c19679d26fc913e0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2d9d63c7a703987d7b17e6e03d8b5596d5f1dfa5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725243"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560615"
 ---
 # <a name="securing-external-access-with-groups"></a>Schützen des externen Zugriffs mit Gruppen 
 
@@ -54,7 +54,7 @@ Berücksichtigen Sie beim Entwickeln Ihrer Gruppenstrategie für den Schutz des 
 
    * *Standardmäßig können alle Benutzer M365-Gruppen erstellen, und alle Benutzer Ihres Mandanten (intern und extern) können den Gruppen beitreten*. 
 
-      * Sie können die [Erstellung von Microsoft 365-Gruppen für die Mitglieder einer bestimmten Sicherheitsgruppe einschränken](/microsoft-365/solutions/manage-creation-of-groups?view=o365-worldwide). Verwenden Sie Windows PowerShell, um diese Einstellung zu konfigurieren. 
+      * Sie können die [Erstellung von Microsoft 365-Gruppen für die Mitglieder einer bestimmten Sicherheitsgruppe einschränken](/microsoft-365/solutions/manage-creation-of-groups). Verwenden Sie Windows PowerShell, um diese Einstellung zu konfigurieren. 
 
 * **Wer sollte die Möglichkeit haben, Personen für Gruppen einzuladen?** Überlegen Sie, ob das Hinzufügen von anderen Mitgliedern für alle Gruppenmitglieder oder nur für Gruppenbesitzer möglich sein soll.
 
@@ -150,13 +150,13 @@ Hybridorganisationen verfügen sowohl über eine lokale Infrastruktur als auch �
 
 ## <a name="microsoft-365-groups"></a>Microsoft 365-Gruppen
 
-[Microsoft 365-Gruppen](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) stellen den grundlegenden Mitgliedschaftsdienst für den gesamten M365-Zugriff dar. Diese Gruppen können über das [Azure-Portal](https://portal.azure.com/) oder das [M365-Portal](https://admin.microsoft.com/) erstellt werden. Wenn eine M365-Gruppe erstellt wird, gewähren Sie den Zugriff auf eine Gruppe mit Ressourcen für die Zusammenarbeit. Eine umfassende Liste dieser Ressourcen finden Sie unter [Übersicht über Microsoft 365-Gruppen für Administratoren](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide).
+[Microsoft 365-Gruppen](/microsoft-365/admin/create-groups/office-365-groups) stellen den grundlegenden Mitgliedschaftsdienst für den gesamten M365-Zugriff dar. Diese Gruppen können über das [Azure-Portal](https://portal.azure.com/) oder das [M365-Portal](https://admin.microsoft.com/) erstellt werden. Wenn eine M365-Gruppe erstellt wird, gewähren Sie den Zugriff auf eine Gruppe mit Ressourcen für die Zusammenarbeit. Eine umfassende Liste dieser Ressourcen finden Sie unter [Übersicht über Microsoft 365-Gruppen für Administratoren](/microsoft-365/admin/create-groups/office-365-groups).
 
 Für die Rollen von M365-Gruppen gilt die folgende Unterteilung:
 
 * **Besitzer**: Gruppenbesitzer können Mitglieder hinzufügen oder entfernen und verfügen über spezielle Berechtigungen, z. B. zum Löschen von Unterhaltungen aus dem freigegebenen Postfach oder zum Ändern von Gruppeneinstellungen. Gruppenbesitzer können die Gruppe umbenennen, die Beschreibung oder das Bild aktualisieren und weitere Aufgaben durchführen.
 
-* **Mitglieder**: Mitglieder haben Zugriff auf alle Elemente der Gruppe, aber sie können keine Gruppeneinstellungen ändern. Gruppenmitglieder können standardmäßig Gäste zum Beitreten zu Ihrer Gruppe einladen, aber [die Einstellung wird von Ihnen gesteuert](/microsoft-365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide).
+* **Mitglieder**: Mitglieder haben Zugriff auf alle Elemente der Gruppe, aber sie können keine Gruppeneinstellungen ändern. Gruppenmitglieder können standardmäßig Gäste zum Beitreten zu Ihrer Gruppe einladen, aber [die Einstellung wird von Ihnen gesteuert](/microsoft-365/admin/create-groups/manage-guest-access-in-groups).
 
 * **Gäste**: Gäste von Gruppen sind Mitglieder, die keine internen Mitarbeiter Ihrer Organisation sind. Für Gäste sind einige Teams-Funktionen standardmäßig eingeschränkt.
 
@@ -172,7 +172,7 @@ Nach Abschluss der Einrichtung können Sie Mitglieder hinzufügen, Einstellungen
 
 ### <a name="next-steps"></a>Nächste Schritte
 
-In den folgenden Artikeln finden Sie Informationen zum Schützen des externen Zugriffs auf Ressourcen. Wir empfehlen Ihnen, die Aktionen in der angegebenen Reihenfolge durchzuführen.
+In den folgenden Artikeln finden Sie Informationen zum Sichern des externen Zugriffs auf Ressourcen. Wir empfehlen Ihnen, die Aktionen in der angegebenen Reihenfolge durchzuführen.
 
 1. [Ermitteln des gewünschten Sicherheitsstatus für externen Zugriff](1-secure-access-posture.md)
 

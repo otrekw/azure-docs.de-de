@@ -2,19 +2,20 @@
 title: Deaktivieren oder Entfernen des Bereitstellung-Agents
 description: Erfahren Sie, wie Sie den Bereitstellungs-Agent auf Linux-VMs und in Images deaktivieren oder entfernen.
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 0fea82c376a178de0be8ede6c0393e1de21de614
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 7c797957c292b9859ca41951b15f58c3d0be40b2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675803"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561064"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>Deaktivieren oder Entfernen des Linux-Agents aus VMs und Images
 

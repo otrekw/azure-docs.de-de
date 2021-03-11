@@ -1,26 +1,20 @@
 ---
 title: Adaptive Netzwerkhärtung in Azure Security Center | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie anhand echter Datenverkehrsmuster Ihre NSG-Regeln (Netzwerksicherheitsgruppen) härten und den Sicherheitsstatus weiter verbessern.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 09d62d23-ab32-41f0-a5cf-8d80578181dd
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: ca60d5afa38a560492c8574aadd43d6170eca253
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 14523e814c85469aa02a860e87b86defd7823c16
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916183"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439594"
 ---
-# <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptive Netzwerkhärtung in Azure Security Center
+# <a name="improve-your-network-security-posture-with-adaptive-network-hardening"></a>Verbessern des Netzwerksicherheitsstatus mit adaptiver Netzwerkhärtung
 Hier erfahren Sie, wie Sie die adaptive Netzwerkhärtung in Security Center konfigurieren.
 
 ## <a name="availability"></a>Verfügbarkeit

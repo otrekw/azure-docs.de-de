@@ -2,18 +2,18 @@
 title: 'Burstable-Computer der B-Serie: Azure Virtual Machines'
 description: In diesem Artikel werden die Größen von Burstable Azure-VMs der B-Serie beschrieben.
 services: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-general
 author: styli365
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: e3a24e4c947afdc1970f6e624335ecc84dd8eff2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c19c47ac64f1e41fa998a29d3ea0480bf0d92a63
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100594385"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554461"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Größen von virtuellen Burstable-Computern der B-Serie
 

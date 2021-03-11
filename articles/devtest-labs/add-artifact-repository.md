@@ -3,12 +3,12 @@ title: Hinzufügen eines Artefaktrepositorys zu Ihrem Lab in Azure DevTest Labs 
 description: Erfahren Sie, wie Sie Ihr eigenes Artefaktrepository für Ihr Lab in Azure DevTest Labs angeben, um Tools zu speichern, die im öffentlichen Artefaktrepository nicht verfügbar sind.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5dd7d89020bf077e29b177f6871f43b52467b0d8
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: da4e345b18a46226853d71bbf66af0487f1a761f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512010"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502194"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Hinzufügen eines Artefaktrepositorys zu Ihrem Lab in DevTest Labs
 DevTest Labs ermöglicht das Angeben eines Artefakts, das einem virtuellen Computer hinzugefügt werden soll – entweder beim Erstellen des virtuellen Computers oder nach Erstellung des virtuellen Computers. Bei diesem Artefakt kann es sich beispielsweise um ein Tool oder um eine Anwendung handeln, das bzw. die Sie auf dem virtuellen Computer installieren möchten. Artefakte werden in einer JSON-Datei definiert, die aus einem GitHub- oder Azure DevOps-Git-Repository geladen wird.
@@ -183,7 +183,7 @@ New-AzResourceGroupDeployment `
 Nachdem „New-AzResourceGroupDeployment“ erfolgreich ausgeführt wurde, gibt der Befehl wichtige Informationen wie Bereitstellungsstatus (sollte „Erfolgreich“ lauten) und Ausgaben für die Vorlage aus.
 
 ## <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
-Dieser Abschnitt enthält ein PowerShell-Beispielskript, mit dem Sie einem Lab ein Artefaktrepository hinzufügen können. Sollten Sie nicht über Azure PowerShell verfügen, finden Sie unter [Overview of Azure PowerShell](/powershell/azure/?view=azps-1.2.0) (Übersicht über Azure PowerShell) eine ausführliche Installationsanleitung.
+Dieser Abschnitt enthält ein PowerShell-Beispielskript, mit dem Sie einem Lab ein Artefaktrepository hinzufügen können. Sollten Sie nicht über Azure PowerShell verfügen, finden Sie unter [Overview of Azure PowerShell](/powershell/azure/) (Übersicht über Azure PowerShell) eine ausführliche Installationsanleitung.
 
 ### <a name="full-script"></a>Vollständiges Skript
 Hier sehen Sie das vollständige Skript (einschließlich einiger ausführlicher Meldungen und Kommentare):

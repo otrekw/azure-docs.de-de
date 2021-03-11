@@ -13,12 +13,12 @@ ms.date: 01/28/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 9ae5d2279baab69d762a71b2f6400009747c16fe
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: acce282dcaac971716a97d7722543d78e28b7a34
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584212"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517666"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Problembehandlung bei der Herausgeberüberprüfung
 Wenn Sie den Vorgang nicht ausführen können oder bei der [Herausgeberüberprüfung](publisher-verification-overview.md) unerwartetes Verhalten auftritt, sollten Sie zunächst die folgenden Schritte ausführen, wenn Sie Fehlermeldungen erhalten oder unerwartetes Verhalten feststellen: 
@@ -241,7 +241,7 @@ Bei einer Anforderung zum Hinzufügen eines überprüften Herausgebers wird anha
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie alle vorstehenden Informationen gelesen und entsprechend angewendet haben und immer noch einen Fehler von Microsoft Graph erhalten, sammeln Sie möglichst viele der folgenden Informationen in Bezug auf die fehlgeschlagene Anforderung, und [wenden Sie sich an den Microsoft-Support](developer-support-help-options.md#open-a-support-request).
+Wenn Sie alle vorstehenden Informationen gelesen und entsprechend angewendet haben und immer noch einen Fehler von Microsoft Graph erhalten, sammeln Sie möglichst viele der folgenden Informationen in Bezug auf die fehlgeschlagene Anforderung, und [wenden Sie sich an den Microsoft-Support](developer-support-help-options.md#create-an-azure-support-request).
 
 - Timestamp 
 - CorrelationId 

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/25/2021
-ms.openlocfilehash: 74addd691e3a6c42f48100292542cfd3563b5c3a
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 1d5fba12ce9b1ce8d30c59a08aa36e1222abe3c7
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797578"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433929"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Einführung zum bereitgestellten Durchsatz in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -98,13 +98,13 @@ Nachdem Sie einen Azure Cosmos-Container oder eine Datenbank erstellt haben, kö
 
 Sie können den bereitgestellten Durchsatz eines Containers oder einer Datenbank im Azure-Portal oder mithilfe der SDKs abrufen:
 
-* [Container.ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) im .NET SDK
-* [CosmosContainer.readThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.readthroughput?view=azure-java-stable&preserve-view=true) im Java SDK
+* [Container.ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync) im .NET SDK
+* [CosmosContainer.readThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.readthroughput) im Java SDK
 
 Die Antwort dieser Methoden enthält auch den [bereitgestellten Mindestdurchsatz](concepts-limits.md#storage-and-database-operations) für den Container oder die Datenbank:
 
-* [ThroughputResponse.MinThroughput](/dotnet/api/microsoft.azure.cosmos.throughputresponse.minthroughput?view=azure-dotnet&preserve-view=true) im .NET SDK
-* [ThroughputResponse.getMinThroughput()](/java/api/com.azure.cosmos.models.throughputresponse.getminthroughput?view=azure-java-stable&preserve-view=true) im Java SDK
+* [ThroughputResponse.MinThroughput](/dotnet/api/microsoft.azure.cosmos.throughputresponse.minthroughput) im .NET SDK
+* [ThroughputResponse.getMinThroughput()](/java/api/com.azure.cosmos.models.throughputresponse.getminthroughput) im Java SDK
 
 Der tatsächliche Mindestwert an RU/s kann je nach Kontokonfiguration variieren. Im Allgemeinen ist es jedoch ein Maximalwert von:
 
@@ -116,8 +116,8 @@ Der tatsächliche Mindestwert an RU/s kann je nach Kontokonfiguration variieren.
 
 Sie können den bereitgestellten Durchsatz eines Containers oder einer Datenbank über das Azure-Portal oder mithilfe der SDKs skalieren:
 
-* [Container.ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) im .NET SDK
-* [CosmosContainer.replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true) im Java SDK
+* [Container.ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync) im .NET SDK
+* [CosmosContainer.replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput) im Java SDK
 
 Wenn Sie den **bereitgestellten Durchsatz verringern**, ist dies bis zum [Mindestwert](#current-provisioned-throughput) möglich.
 
@@ -128,8 +128,8 @@ Wenn Sie den **bereitgestellten Durchsatz erhöhen**, erfolgt der Vorgang in den
 
 Sie können den Skalierungsfortschritt programmgesteuert überprüfen, indem Sie den [aktuell bereitgestellten Durchsatz](#current-provisioned-throughput) lesen und Folgendes verwenden:
 
-* [ThroughputResponse.IsReplacePending](/dotnet/api/microsoft.azure.cosmos.throughputresponse.isreplacepending?view=azure-dotnet&preserve-view=true) im .NET SDK
-* [ThroughputResponse.isReplacePending()](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending?view=azure-java-stable&preserve-view=true) im Java SDK
+* [ThroughputResponse.IsReplacePending](/dotnet/api/microsoft.azure.cosmos.throughputresponse.isreplacepending) im .NET SDK
+* [ThroughputResponse.isReplacePending()](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending) im Java SDK
 
 Sie können [Azure Monitor-Metriken](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) verwenden, um den Verlauf des bereitgestellten Durchsatzes (RU/s) und des Speichers für eine Ressource anzuzeigen.
 

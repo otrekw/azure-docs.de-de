@@ -3,17 +3,18 @@ title: Ausführen von Shellskripts auf einem virtuellen Linux-Computer in Azure
 description: In diesem Thema erfahren Sie, wie Sie Skripts innerhalb eines virtuellen Azure-Computers unter Linux mithilfe des Features „Skriptausführung“ ausführen.
 services: automation
 ms.service: virtual-machines
+ms.collection: linux
 author: bobbytreed
 ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: dae77dfb72fb6b11721500686991f2b199606b99
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 73dd15a5eed3e27d9b72bc0357e35901c04ba7a2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737862"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552931"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Ausführen von Shellskripts auf einem virtuellen Linux-Computer mithilfe der Skriptausführung
 

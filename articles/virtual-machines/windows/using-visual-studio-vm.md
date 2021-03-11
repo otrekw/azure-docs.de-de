@@ -3,19 +3,19 @@ title: Verwenden von Visual Studio auf einem virtuellen Azure-Computer
 description: Verwenden von Visual Studio auf einem virtuellen Azure-Computer
 author: cathysull
 manager: cathys
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: 315987060b96312c666bd5aa928588e27d13173b
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a6acf27743f17941e14adc3f6deea903f4f5ca87
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938102"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562077"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-Images in Azure
 Die Verwendung von Visual Studio auf einem vorkonfigurierten virtuellen Azure-Computer (VM) ist eine schnelle und einfache Methode zum Erzielen einer einsatzfähigen Entwicklungsumgebung ohne Ausgangsvoraussetzungen. Systemimages mit verschiedenen Visual Studio-Konfigurationen sind im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure) verfügbar.
@@ -46,7 +46,7 @@ Jedes Image enthält die empfohlenen Features für diese Edition von Visual Stud
 
 * Alle verfügbaren Workloads, einschließlich der jeweils empfohlenen optionalen Komponenten für eine Workload
 * SDKs, unterstützte Pakete und Entwicklertools für .NET 4.6.2 und .NET 4.7
-* Visual F#
+* Visual F#
 * GitHub-Erweiterung für Visual Studio
 * LINQ to SQL-Tools
 

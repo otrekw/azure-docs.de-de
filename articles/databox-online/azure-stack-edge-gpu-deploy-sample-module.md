@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 1f16ef0ede25f17acb915a7812ae5b15b45f78a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4142542c9f17ae464a996df310c50d73d8711d8e
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899735"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438198"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-pro-gpu-device"></a>Bereitstellen eines GPU-fähigen IoT-Moduls auf einem Azure Stack Edge Pro-GPU-Gerät
+
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 In diesem Artikel wird beschrieben, wie Sie ein GPU-fähiges IoT Edge-Modul auf Ihrem Azure Stack Edge Pro-GPU-Gerät bereitstellen. 
 
@@ -144,7 +146,7 @@ Vergewissern Sie sich zunächst, dass Sie über Folgendes verfügen:
 
 1. Führen Sie in der Befehlspalette von VS Code den Befehl **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: IoT Hub auswählen) aus.
 
-2. Wählen Sie das Abonnement und den IoT-Hub aus, die das zu konfigurierende IoT Edge-Gerät enthalten. Wählen Sie in diesem Fall das Abonnement aus, das zur Bereitstellung des Azure Stack Edge Pro-Geräts verwendet wird, und dann das für Ihr Azure Stack Edge Pro-Gerät erstellte IoT Edge-Gerät. Dies erfolgt, wenn Sie Compute über das Azure-Portal in den vorherigen Schritten konfigurieren.
+2. Wählen Sie das Abonnement und den IoT-Hub aus, die das zu konfigurierende IoT Edge-Gerät enthalten. Wählen Sie in diesem Fall das Abonnement aus, mit dem das Azure Stack Edge Pro-Gerät bereitgestellt wurde, und dann das für Ihr Azure Stack Edge Pro-Gerät erstellte IoT Edge-Gerät. Dies erfolgt, wenn Sie Compute über das Azure-Portal in den vorherigen Schritten konfigurieren.
 
 3. Klappen Sie im Visual Studio Code-Explorer den Abschnitt „Azure IoT Hub“ auf. Unter **Geräte** sollte das IoT Edge-Gerät angezeigt werden, das Ihrem Azure Stack Edge Pro-Gerät entspricht. 
 

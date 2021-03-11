@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: a4f15a1a0911e5a33da8b5f9445709cb42e7e10e
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 2eec512af9b139b2707c435fd0c78b7d50ac1b11
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981509"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521049"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Erstellen und Untersuchen eines Azure Machine Learning-Datasets mit Bezeichnungen
 
@@ -27,8 +27,8 @@ Azure Machine Learning-Datasets mit Bezeichnungen sind ein spezieller Typ von Da
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLFree) erstellen, bevor Sie beginnen.
-* Das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py), oder greifen Sie auf [Azure Machine Learning-Studio](https://ml.azure.com/) zu.
-    * Installieren des Pakets [azure-contrib-dataset](/python/api/azureml-contrib-dataset/?preserve-view=true&view=azure-ml-py)
+* Das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro), oder greifen Sie auf [Azure Machine Learning-Studio](https://ml.azure.com/) zu.
+    * Installieren des Pakets [azure-contrib-dataset](/python/api/azureml-contrib-dataset/)
 * Ein Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
 * Zugriff auf ein Azure Machine Learning-Datenbezeichnungsprojekt. Wenn Sie nicht über ein Bezeichnungsprojekt verfügen, erstellen Sie eines mit [den folgenden Schritten](how-to-create-labeling-projects.md).
 
@@ -55,7 +55,7 @@ Laden Sie Ihre bezeichneten Datasets in einen Pandas-Datenrahmen oder in ein Tor
 
 ### <a name="pandas-dataframe"></a>Pandas-Datenrahmen
 
-Mit der Methode [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueto-pandas-dataframe-on-error--null---out-of-range-datetime--null--) der Klasse `azureml-contrib-dataset` können Sie bezeichnete Datasets in einen Pandas-Datenrahmen laden. Installieren Sie die Klasse mit dem folgenden Shellbefehl: 
+Mit der Methode [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) der Klasse `azureml-contrib-dataset` können Sie bezeichnete Datasets in einen Pandas-Datenrahmen laden. Installieren Sie die Klasse mit dem folgenden Shellbefehl: 
 
 ```shell
 pip install azureml-contrib-dataset
@@ -90,7 +90,7 @@ imgplot = plt.imshow(img)
 
 ### <a name="torchvision-datasets"></a>Torchvision-Datasets
 
-Sie können bezeichnete Datasets mit der Methode [to_torchvision()](/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueto-torchvision--) auch von der Klasse `azureml-contrib-dataset` in ein Torchvision-Dataset laden. Um diese Methode zu verwenden, muss [PyTorch](https://pytorch.org/) installiert sein. 
+Sie können bezeichnete Datasets mit der Methode [to_torchvision()](/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset#to-torchvision--) auch von der Klasse `azureml-contrib-dataset` in ein Torchvision-Dataset laden. Um diese Methode zu verwenden, muss [PyTorch](https://pytorch.org/) installiert sein. 
 
 Im folgenden Code ist das `animal_labels`-Dataset die Ausgabe eines zuvor im Arbeitsbereich gespeicherten Bezeichnungsprojekts.
 
