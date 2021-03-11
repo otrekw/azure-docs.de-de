@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/10/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: ec7a32739940d53d976e73a7e170df96a0acc245
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c18f875dde43ab6df512375152d76a31c30a9e77
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449525"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439866"
 ---
 # <a name="azure-key-vault-integration-with-azure-stack-edge"></a>Integration von Azure Key Vault in Azure Stack Edge 
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Azure Key Vault wird zur Verwaltung von Geheimnissen in eine Azure Stack Edge-Ressource integriert. Dieser Artikel enthält ausführliche Informationen zum Erstellen einer Azure Key Vault-Instanz für eine Azure Stack Edge-Ressource während der Geräteaktivierung und der anschließenden Nutzung für die Verwaltung von Geheimnissen. 
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0dcf21190b52f966dafb9caa9ae28fdf9b99ba86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d245b780acee59afbc6cb8bde6c916bfd1046e3c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88007572"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508553"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Bereitstellen eines virtuellen Windows 7-Computers in Windows Virtual Desktop
 
@@ -46,7 +46,7 @@ So richten Sie einen virtuellen Windows 7-Computer in Windows Virtual Desktop ei
      shutdown /r /t 0
      ```
 
-12. Führen Sie die [hier](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo?view=azps-4.3.0) aufgeführten Schritte aus, um ein Registrierungstoken abzurufen.
+12. Führen Sie die [hier](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo) aufgeführten Schritte aus, um ein Registrierungstoken abzurufen.
 
       - Wenn Sie stattdessen das Azure-Portal verwenden möchten, können Sie auch zur Übersichtsseite des Hostpools wechseln, dem Sie den virtuellen Computer hinzufügen möchten, und dort ein Token erstellen.
 

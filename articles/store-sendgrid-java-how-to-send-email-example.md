@@ -16,12 +16,12 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.custom: devx-track-java
-ms.openlocfilehash: 57daf9170a7f97c6c141532dafe759cde9d1c77b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7a857b887b53ccb2288507742ca52d72d90ff548
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519063"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214353"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Senden von E-Mails mit SendGrid aus Java in einer Azure-Bereitstellung
 Das folgende Beispiel zeigt, wie Sie mit SendGrid E-Mails von einer in Azure gehosteten Webseite senden können. Die Anwendung fragt den Benutzer nach Werten für die E-Mail, wie im folgenden Screenshot gezeigt.
@@ -40,7 +40,7 @@ Sie benötigen Folgendes, um den Code in diesem Artikel ausführen zu können:
 
 Außerdem benötigen Sie einen Benutzernamen und ein Kennwort für SendGrid, um E-Mails zu verschicken. Hinweise zu ersten Schritten mit SendGrid finden Sie unter [Senden von E-Mails mit SendGrid aus Java](store-sendgrid-java-how-to-send-email.md).
 
-Außerdem sollten Sie sich mit den Informationen unter [Erstellen einer Hallo-Welt-Anwendung für Azure in Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app?view=azure-java-stable)oder mit anderen Techniken zum Hosten von Java-Anwendungen in Azure vertraut machen, falls Sie Eclipse nicht verwenden.
+Außerdem sollten Sie sich mit den Informationen unter [Erstellen einer Hallo-Welt-Anwendung für Azure in Eclipse](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)oder mit anderen Techniken zum Hosten von Java-Anwendungen in Azure vertraut machen, falls Sie Eclipse nicht verwenden.
 
 ## <a name="create-a-web-form-for-sending-email"></a>Erstellen eines Web-Formulars für den E-Mail-Versand
 Der folgende Code erstellt ein Web-Formular zur Eingabe der Benutzerdaten für den E-Mail-Versand. Die JSP-Datei für diesen Inhalt heißt **emailform.jsp**.

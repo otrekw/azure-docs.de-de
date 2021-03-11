@@ -4,22 +4,22 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 10/20/2020
-ms.openlocfilehash: 70df45877a310d74e7c5c82292d18b1c0eb32da8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 33752c1ebb83c5d63e8e1cb396c52f01f07046cd
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521381"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244831"
 ---
 Die folgenden Ressourcen stehen ebenfalls zur Verfügung:
 
-- [Java SDK-Referenzdokumentation](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?preserve-view=true&view=azure-java-stable)
+- [Java SDK-Referenzdokumentation](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice)
 - [Beispiele für Dienstclients](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample)
 - [Digital Twins-Beispiele](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples)
 
 ## <a name="iot-hub-service-client-examples"></a>Beispiele für den IoT Hub-Dienstclient
 
-In diesem Abschnitt werden die Java-Beispiele für die Verwendung des IoT Hub-Dienstclients und der Klassen **DeviceTwin** und **DeviceMethod** aus dem Namespace **com.microsoft.azure.sdk.iot.service.devicetwin** veranschaulicht. Die **DeviceTwin** -Klasse dient dazu, mithilfe von Gerätezwillingen mit dem Gerätestatus zu interagieren. Sie können die **DeviceTwin** -Klasse außerdem verwenden, um in Ihrer IoT Hub-Instanz [Geräteregistrierungen abzufragen](../articles/iot-hub/iot-hub-devguide-query-language.md). Mit der **DeviceMethod** -Klasse rufen Sie Befehle auf dem Gerät auf. Das [DTDL](../articles/iot-pnp/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden. In den Codeausschnitten enthält die `deviceId`-Variable die Geräte-ID des bei Ihrem IoT-Hub registrierten IoT Plug & Play-Geräts.
+In diesem Abschnitt werden die Java-Beispiele für die Verwendung des IoT Hub-Dienstclients und der Klassen **DeviceTwin** und **DeviceMethod** aus dem Namespace **com.microsoft.azure.sdk.iot.service.devicetwin** veranschaulicht. Die **DeviceTwin**-Klasse dient dazu, mithilfe von Gerätezwillingen mit dem Gerätestatus zu interagieren. Sie können die **DeviceTwin**-Klasse außerdem verwenden, um in Ihrer IoT Hub-Instanz [Geräteregistrierungen abzufragen](../articles/iot-hub/iot-hub-devguide-query-language.md). Mit der **DeviceMethod**-Klasse rufen Sie Befehle auf dem Gerät auf. Das [DTDL](../articles/iot-pnp/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden. In den Codeausschnitten enthält die `deviceId`-Variable die Geräte-ID des bei Ihrem IoT-Hub registrierten IoT Plug & Play-Geräts.
 
 ### <a name="get-the-device-twin-and-model-id"></a>Abrufen von Gerätezwilling und Modell-ID
 
@@ -115,7 +115,7 @@ System.out.println("Method result status is: " + result.getStatus());
 
 ## <a name="iot-hub-digital-twin-examples"></a>Beispiele für digitale IoT Hub-Zwillinge
 
-Sie verwenden die Klasse **DigitalTwinAsyncClient** im Namespace **com.microsoft.azure.sdk.iot.service.digitaltwin** , um mithilfe digitaler Zwillinge mit dem Gerätestatus zu interagieren. In den folgenden Beispielen werden darüber hinaus die Klassen **UpdateOperationUtility** und **BasicDigitalTwin** aus demselben Namespace verwendet. Das [DTDL](../articles/iot-pnp/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden.
+Sie verwenden die Klasse **DigitalTwinAsyncClient** im Namespace **com.microsoft.azure.sdk.iot.service.digitaltwin**, um mithilfe digitaler Zwillinge mit dem Gerätestatus zu interagieren. In den folgenden Beispielen werden darüber hinaus die Klassen **UpdateOperationUtility** und **BasicDigitalTwin** aus demselben Namespace verwendet. Das [DTDL](../articles/iot-pnp/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden.
 
 Die `digitalTwinid`-Variable enthält die Geräte-ID des bei Ihrem IoT-Hub registrierten IoT Plug & Play-Geräts.
 

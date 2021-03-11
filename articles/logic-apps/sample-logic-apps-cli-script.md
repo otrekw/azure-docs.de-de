@@ -7,25 +7,25 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: e66edb1325d1c603e89f877f1d34f60c136eb1db
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a4553ceee482fb232e9ab56deca650be93f9dc6b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740722"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218042"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLI-Skriptbeispiel – Erstellen einer Logik-App
 
-Dieses Skript erstellt eine Beispiel-Logik-App über die [Logic Apps-Erweiterung in der Azure CLI](/cli/azure/ext/logic/logic?view=azure-cli-latest) (`az logic`). Eine ausführliche Anleitung zum Erstellen und Verwalten von Logik-Apps über die Azure CLI finden Sie im [Logic Apps-Schnellstart für die Azure CLI](quickstart-logic-apps-azure-cli.md).
+Dieses Skript erstellt eine Beispiel-Logik-App über die [Logic Apps-Erweiterung in der Azure CLI](/cli/azure/ext/logic/logic) (`az logic`). Eine ausführliche Anleitung zum Erstellen und Verwalten von Logik-Apps über die Azure CLI finden Sie im [Logic Apps-Schnellstart für die Azure CLI](quickstart-logic-apps-azure-cli.md).
 
 > [!WARNING]
-> Die Logic Apps-Erweiterung für die Azure-Befehlszeilenschnittstelle ist derzeit eine *experimentelle Erweiterung* , für die *kein Kundensupport* bereitgestellt wird. Verwenden Sie diese CLI-Erweiterung mit Bedacht – insbesondere in Produktionsumgebungen.
+> Die Logic Apps-Erweiterung für die Azure-Befehlszeilenschnittstelle ist derzeit eine *experimentelle Erweiterung*, für die *kein Kundensupport* bereitgestellt wird. Verwenden Sie diese CLI-Erweiterung mit Bedacht – insbesondere in Produktionsumgebungen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Konto mit einem aktiven Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Installation der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest) auf Ihrem lokalen Computer.
-* Installation der [Logic Apps-Erweiterung für die Azure-Befehlszeilenschnittstelle](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest) auf Ihrem Computer. Verwenden Sie zum Installieren dieser Erweiterung den folgenden Befehl: `az extension add --name logic`
+* Installation der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) auf Ihrem lokalen Computer.
+* Installation der [Logic Apps-Erweiterung für die Azure-Befehlszeilenschnittstelle](/cli/azure/azure-cli-extensions-list) auf Ihrem Computer. Verwenden Sie zum Installieren dieser Erweiterung den folgenden Befehl: `az extension add --name logic`
 * Eine [Workflowdefinition](quickstart-logic-apps-azure-cli.md#workflow-definition) für Ihre Logik-App. Diese JSON-Datei muss das [Schema für die Workflowdefinitionssprache](logic-apps-workflow-definition-language.md) einhalten.
 * Eine API-Verbindung zu einem E-Mail-Konto über einen unterstützten [Logic Apps-Connector](../connectors/apis-list.md) in derselben Ressourcengruppe wie Ihre Logik-App. In diesem Beispiel wird der [Outlook 365](../connectors/connectors-create-api-office365-outlook.md)-Connector verwendet, aber Sie können auch andere Connectors wie [Outlook.com](../connectors/connectors-create-api-outlook.md) verwenden.
 
@@ -35,9 +35,9 @@ Dieses Skript erstellt eine Beispiel-Logik-App über die [Logic Apps-Erweiterung
 
 * Melden Sie sich beim Azure-Portal an, und führen Sie `az login` aus, um sich zu vergewissern, dass Ihr Abonnement aktiv ist.
 
-* Überprüfen Sie Ihre Version der Azure-Befehlszeilenschnittstelle, indem Sie in einem Terminal oder Befehlsfenster `az --version`ausführen. Die neueste Version finden Sie unter [Versionshinweise für die Azure CLI](/cli/azure/release-notes-azure-cli?tabs=azure-cli&view=azure-cli-latest).
+* Überprüfen Sie Ihre Version der Azure-Befehlszeilenschnittstelle, indem Sie in einem Terminal oder Befehlsfenster `az --version`ausführen. Die neueste Version finden Sie unter [Versionshinweise für die Azure CLI](/cli/azure/release-notes-azure-cli).
 
-  * Sollten Sie nicht über die neueste Version verfügen, aktualisieren Sie Ihre Installation wie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) beschrieben.
+  * Sollten Sie nicht über die neueste Version verfügen, aktualisieren Sie Ihre Installation wie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli) beschrieben.
 
 ### <a name="sample-workflow-explanation"></a>Erläuterung des Beispielworkflows
 
@@ -197,12 +197,12 @@ In diesem Beispielskript werden die folgenden Befehle verwendet, um eine neue Re
 
 | Get-Help | Notizen |
 | ------- | ----- |
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Erstellt eine Ressourcengruppe, in der die Ressourcen Ihrer Logik-App gespeichert sind. |
-| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create) | Erstellt eine Logik-App auf Grundlage des im Parameter `--definition` definierten Workflows. |
-| [`az group delete`](/cli/azure/vm/extension?view=azure-cli-latest) | Löscht eine Ressourcengruppe und alle ihre geschachtelten Ressourcen. |
+| [`az group create`](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der die Ressourcen Ihrer Logik-App gespeichert sind. |
+| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | Erstellt eine Logik-App auf Grundlage des im Parameter `--definition` definierten Workflows. |
+| [`az group delete`](/cli/azure/vm/extension) | Löscht eine Ressourcengruppe und alle ihre geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure-Befehlszeilenschnittstelle finden Sie in der [Azure CLI-Dokumentation](/cli/azure/?view=azure-cli-latest).
+Weitere Informationen zur Azure-Befehlszeilenschnittstelle finden Sie in der [Azure CLI-Dokumentation](/cli/azure/).
 
 Weitere CLI-Skriptbeispiele für Logik-Apps finden Sie [Browser für Codebeispiele von Microsoft](/samples/browse/?products=azure-logic-apps).

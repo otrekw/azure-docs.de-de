@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a7f0d937d41ee42bf0fe678eb2f49e78882f881
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4c5ab92fcc1d70d12e37ae351e768514b4e7522f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577859"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501701"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archivieren von Protokollen und Erstellen von Berichten mit Azure Monitor in der Azure AD-Berechtigungsverwaltung
 
@@ -130,7 +130,7 @@ Führen Sie die folgenden Schritte aus, um die Rollenzuweisung festzulegen und e
 
 ### <a name="install-azure-powershell-module"></a>Installieren des Azure PowerShell-Moduls
 
-Wenn Sie über die richtige Rollenzuweisung verfügen, starten Sie PowerShell, und [installieren Sie das Azure PowerShell-Modul](/powershell/azure/install-az-ps?view=azps-3.3.0) (falls noch nicht geschehen). Geben Sie dazu Folgendes ein:
+Wenn Sie über die richtige Rollenzuweisung verfügen, starten Sie PowerShell, und [installieren Sie das Azure PowerShell-Modul](/powershell/azure/install-az-ps) (falls noch nicht geschehen). Geben Sie dazu Folgendes ein:
 
 ```azurepowershell
 install-module -Name az -allowClobber -Scope CurrentUser
@@ -158,8 +158,7 @@ $subs = Get-AzSubscription
 $subs | ft
 ```
  
-Sie können sich erneut authentifizieren und Ihre PowerShell-Sitzung mit einem Befehl (z. B. `Connect-AzAccount –Subscription $subs[0].id`) mit diesem Abonnement verknüpfen. Weitere Informationen zum Authentifizieren bei Azure über die PowerShell (einschließlich der nicht interaktiven Authentifizierung) finden Sie unter [Anmelden mit Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
-).
+Sie können sich erneut authentifizieren und Ihre PowerShell-Sitzung mit einem Befehl (z. B. `Connect-AzAccount –Subscription $subs[0].id`) mit diesem Abonnement verknüpfen. Weitere Informationen zum Authentifizieren bei Azure über die PowerShell (einschließlich der nicht interaktiven Authentifizierung) finden Sie unter [Anmelden mit Azure PowerShell](/powershell/azure/authenticate-azureps).
 
 Wenn das Abonnement mehrere Log Analytics-Arbeitsbereiche enthält, können Sie mit dem Cmdlet [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) eine Liste der Arbeitsbereiche zurückgeben. Dann können Sie nach dem Arbeitsbereich mit den Azure AD-Protokollen suchen. Das von diesem Cmdlet zurückgegebene Feld `CustomerId` ist identisch mit der Arbeitsbereichs-ID, die im Azure-Portal in der Übersicht der Log Analytics-Arbeitsbereiche angezeigt wird.
  
@@ -169,8 +168,7 @@ $wks | ft CustomerId, Name
 ```
 
 ### <a name="send-the-query-to-the-log-analytics-workspace"></a>Senden der Abfrage an den Log Analytics-Arbeitsbereich
-Abschließend können Sie, wenn Sie einen Arbeitsbereich identifiziert haben, mit dem Befehl [Invoke-AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-) eine Kusto-Abfrage an diesen Arbeitsbereich senden. Diese Abfragen werden in der [Kusto-Abfragesprache](/azure/kusto/query/) geschrieben.
+Abschließend können Sie, wenn Sie einen Arbeitsbereich identifiziert haben, mit dem Befehl [Invoke-AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery) eine Kusto-Abfrage an diesen Arbeitsbereich senden. Diese Abfragen werden in der [Kusto-Abfragesprache](/azure/kusto/query/) geschrieben.
  
 Sie können beispielsweise mit PowerShell-Cmdlets den Datenbereich der aufgezeichneten Überwachungsereignisse aus dem Log Analytics-Arbeitsbereich abrufen. Dazu senden Sie eine Abfrage ähnlich der Folgenden:
  

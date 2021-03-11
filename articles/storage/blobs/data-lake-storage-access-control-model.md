@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
-ms.openlocfilehash: e5f62456b85791bad5bb66f3abf67e523558d76e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 9fa7f586db5a32640c16db5802b56d6481e8889d
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650387"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439288"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerungsmodell in Azure Data Lake Storage Gen2
 
@@ -106,7 +106,7 @@ Die folgende Tabelle zeigt, wie Sie Azure-Rollen und ACL-Einträge kombinieren, 
 
 
 > [!NOTE] 
-> Um den Inhalt eines Containers in Azure Storage-Explorer anzuzeigen, müssen sich Sicherheitsprinzipale [mit Azure AD bei Storage-Explorer anmelden](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#add-a-resource-via-azure-ad) und mindestens über Lesezugriff (R--) für den Stammordner (`\`) eines Containers verfügen. Diese Berechtigungsebene erlaubt ihnen, den Inhalt des Stammordners aufzulisten. Wenn Sie nicht möchten, dass der Inhalt des Stammordners sichtbar ist, können Sie ihnen die Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) zuweisen. Mit dieser Rolle können sie die Container im Konto, aber nicht die Inhalte der Container auflisten. Anschließend können Sie mithilfe von ACLs Zugriff auf bestimmte Verzeichnisse und Dateien gewähren.   
+> Um den Inhalt eines Containers in Azure Storage-Explorer anzuzeigen, müssen sich Sicherheitsprinzipale [mit Azure AD bei Storage-Explorer anmelden](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#attach-to-an-individual-resource) und mindestens über Lesezugriff (R--) für den Stammordner (`\`) eines Containers verfügen. Diese Berechtigungsebene erlaubt ihnen, den Inhalt des Stammordners aufzulisten. Wenn Sie nicht möchten, dass der Inhalt des Stammordners sichtbar ist, können Sie ihnen die Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) zuweisen. Mit dieser Rolle können sie die Container im Konto, aber nicht die Inhalte der Container auflisten. Anschließend können Sie mithilfe von ACLs Zugriff auf bestimmte Verzeichnisse und Dateien gewähren.   
 
 ## <a name="security-groups"></a>Sicherheitsgruppen
 

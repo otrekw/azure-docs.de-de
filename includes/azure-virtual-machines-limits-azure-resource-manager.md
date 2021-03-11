@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 61af1f1a97e0ffad0332a34034f5dd1d007d1a5c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 397dd3d16fa994df29a08ff9095b4c7c6c4af815
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900949"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510691"
 ---
 | Resource | Begrenzung |
 | --- | --- |
@@ -17,7 +17,7 @@ ms.locfileid: "98900949"
 | Gesamte Kerne pro [Abonnement](https://azure.microsoft.com/pricing/) |20<sup>1</sup> pro Region Wenden Sie sich an den Support, um diesen Grenzwert heraufzusetzen. |
 | Azure Spot-VM: Kerne gesamt pro [Abonnement](https://azure.microsoft.com/pricing/) |20<sup>1</sup> pro Region Wenden Sie sich an den Support, um diesen Grenzwert heraufzusetzen. |
 | VM-Kerne pro Serie (z. B. Dv2 und F) pro [Abonnement](https://azure.microsoft.com/pricing/) |20<sup>1</sup> pro Region Wenden Sie sich an den Support, um diesen Grenzwert heraufzusetzen. |
-| [Verfügbarkeitsgruppen](../articles/virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) pro Abonnement |2\.500 pro Region |
+| [Verfügbarkeitsgruppen](../articles/virtual-machines/availability-set-overview.md) pro Abonnement |2\.500 pro Region |
 | Virtuelle Computer pro Verfügbarkeitsgruppe | 200 |
 | [Näherungsplatzierungsgruppen](../articles/virtual-machines/windows/proximity-placement-groups-portal.md) pro [Ressourcengruppe](../articles/azure-resource-manager/management/overview.md#resource-groups) | 800 | 
 | Zertifikate pro Verfügbarkeitsgruppe | 199<sup>2</sup> |

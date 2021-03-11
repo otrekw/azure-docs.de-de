@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 7d48474d88a60c73f6094d3b9e65017c23404d8a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 53364009f9b9c041c39728e438c3e24eacfd1665
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144253"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435476"
 ---
 # <a name="412002-devicemessagelocklost"></a>412002 DeviceMessageLockLost
 
@@ -25,7 +25,7 @@ Beim Versuch, eine C2D-Nachricht (Cloud-to-Device, Cloud-zu-Gerät) zu senden, s
 
 ## <a name="cause"></a>Ursache
 
-Wenn ein Gerät eine C2D-Nachricht aus der Warteschlange empfängt (z. B. über [`ReceiveAsync()`](/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet)), wird die Nachricht von IoT Hub für eine Sperrtimeoutdauer von einer Minute gesperrt. Wenn das Gerät versucht, die Nachricht nach Ablauf des Sperrtimeouts abzuschließen, löst IoT Hub diese Ausnahme aus.
+Wenn ein Gerät eine C2D-Nachricht aus der Warteschlange empfängt (z. B. über [`ReceiveAsync()`](/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync)), wird die Nachricht von IoT Hub für eine Sperrtimeoutdauer von einer Minute gesperrt. Wenn das Gerät versucht, die Nachricht nach Ablauf des Sperrtimeouts abzuschließen, löst IoT Hub diese Ausnahme aus.
 
 ## <a name="solution"></a>Lösung
 

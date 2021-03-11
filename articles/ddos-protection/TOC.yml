@@ -49,10 +49,10 @@
       href: ddos-protection-partner-onboarding.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/network/ddos-protection
     - name: Azure PowerShell
-      href: /powershell/module/Az.Network/New-AzDdosProtectionPlan?view=azps-2.8.0
+      href: /powershell/module/Az.Network/New-AzDdosProtectionPlan
     - name: .NET
       href: /dotnet/api/
     - name: Java

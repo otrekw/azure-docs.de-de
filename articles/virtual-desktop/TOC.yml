@@ -215,7 +215,7 @@
     - name: Leitfaden zur VM-Größe
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure-Befehlszeilenschnittstelle (CLI)
-      href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
+      href: /cli/azure/ext/desktopvirtualization/
     - name: Azure-Beispielszenarien
       href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
     - name: E-Mail-Ermittlung
@@ -223,7 +223,7 @@
 - name: Ressourcen
   items:
     - name: PowerShell
-      href: /powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization
+      href: /powershell/module/az.desktopvirtualization/#desktopvirtualization
     - name: REST-API-Referenz
       href: /rest/api/desktopvirtualization/
     - name: Erfahrungsschätzung

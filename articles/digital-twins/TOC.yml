@@ -97,10 +97,10 @@
       items:
         - name: Verwenden der APIs und SDKs
           href: how-to-use-apis-sdks.md
+        - name: Erstellen von SDKs mit benutzerdefinierter Sprache mithilfe von AutoRest
+          href: how-to-create-custom-sdks.md
         - name: Senden von Anforderungen mit Postman
           href: how-to-use-postman.md
-        - name: Erstellen benutzerdefinierter SDKs mit AutoRest
-          href: how-to-create-custom-sdks.md
         - name: Integrieren mit Azure SignalR Service
           href: how-to-integrate-azure-signalr.md
     - name: Verbinden der Eingabe
@@ -154,19 +154,19 @@
         - name: Steuerungsebene
           items:
             - name: .NET (C#) SDK
-              href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet
+              href: /dotnet/api/overview/azure/digitaltwins/management
             - name: Java-SDK
-              href: /java/api/overview/azure/digitaltwins/resourcemanagement?view=azure-java-stable
+              href: /java/api/overview/azure/digitaltwins/resourcemanagement
         - name: Datenebene
           items:
             - name: .NET (C#) SDK
-              href: /dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet
+              href: /dotnet/api/overview/azure/digitaltwins/client
             - name: Java-SDK
-              href: /java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable
+              href: /java/api/overview/azure/digitaltwins/client
             - name: JavaScript SDK
-              href: /javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest
+              href: /javascript/api/@azure/digital-twins-core/
             - name: Python SDK
-              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python
+              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core
     - name: 'Digital Twins: CLI'
       href: /cli/azure/ext/azure-iot/dt
 - name: Ressourcen

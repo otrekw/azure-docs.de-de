@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 73a9356de555e33996b92f05c3bbbabb651f1c9f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2c89ad69207a51a92b56d268c685aa2be4118cf1
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014226"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507584"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-powershell"></a>Verschieben des internen Azure Load Balancers in eine andere Region mit PowerShell
 
@@ -43,18 +43,18 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
 
 ### <a name="export-the-virtual-network-template-and-deploy-from-azure-powershell"></a>Exportieren der Vorlage für virtuelle Netzwerke und Bereitstellen aus Azure PowerShell
 
-1. Melden Sie sich mit dem Befehl [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm:
+1. Melden Sie sich mit dem Befehl [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm:
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
-2.  Rufen Sie die Ressourcen-ID des virtuellen Netzwerks ab, das Sie in die Zielregion verschieben möchten, und platzieren Sie sie mithilfe von [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0) in einer Variablen:
+2.  Rufen Sie die Ressourcen-ID des virtuellen Netzwerks ab, das Sie in die Zielregion verschieben möchten, und platzieren Sie sie mithilfe von [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) in einer Variablen:
 
     ```azurepowershell-interactive
     $sourceVNETID = (Get-AzVirtualNetwork -Name <source-virtual-network-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. Exportieren Sie das virtuelle Quellnetzwerk in eine JSON-Datei in dem Verzeichnis, in dem Sie den Befehl [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0) ausführen:
+3. Exportieren Sie das virtuelle Quellnetzwerk in eine JSON-Datei in dem Verzeichnis, in dem Sie den Befehl [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup) ausführen:
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
@@ -98,7 +98,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
 
     ```
   
-7. Zum Abrufen von Regionsstandortcodes können Sie das Azure PowerShell-Cmdlet [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) verwenden, indem Sie den folgenden Befehl ausführen:
+7. Zum Abrufen von Regionsstandortcodes können Sie das Azure PowerShell-Cmdlet [Get-AzLocation](/powershell/module/az.resources/get-azlocation) verwenden, indem Sie den folgenden Befehl ausführen:
 
     ```azurepowershell-interactive
 
@@ -196,20 +196,20 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
 
 9.  Speichern Sie die Datei **\<resource-group-name>.json**.
 
-10. Erstellen Sie mithilfe von [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) eine Ressourcengruppe in der Zielregion für das Ziel-VNET, das bereitgestellt werden soll.
+10. Erstellen Sie mithilfe von [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe in der Zielregion für das Ziel-VNET, das bereitgestellt werden soll.
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Stellen Sie die bearbeitete Datei **\<resource-group-name>.json** in der Ressourcengruppe bereit, die Sie im vorherigen Schritt mit [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) erstellt haben:
+11. Stellen Sie die bearbeitete Datei **\<resource-group-name>.json** in der Ressourcengruppe bereit, die Sie im vorherigen Schritt mit [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) erstellt haben:
 
     ```azurepowershell-interactive
 
     New-AzResourceGroupDeployment -ResourceGroupName <target-resource-group-name> -TemplateFile <source-resource-group-name>.json
     
     ```
-12. Um zu überprüfen, ob die Ressourcen in der Zielregion erstellt wurden, verwenden Sie [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) und [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
+12. Um zu überprüfen, ob die Ressourcen in der Zielregion erstellt wurden, verwenden Sie [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup) und [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork):
     
     ```azurepowershell-interactive
 
@@ -224,19 +224,19 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
     ```
 ### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>Exportieren der Vorlage des internen Load Balancers und Bereitstellen aus Azure PowerShell
 
-1. Melden Sie sich mit dem Befehl [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm:
+1. Melden Sie sich mit dem Befehl [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm:
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
 
-2. Rufen Sie die Ressourcen-ID des internen Load Balancers ab, den Sie in die Zielregion verschieben möchten, und platzieren Sie sie mithilfe von [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0) in einer Variablen:
+2. Rufen Sie die Ressourcen-ID des internen Load Balancers ab, den Sie in die Zielregion verschieben möchten, und platzieren Sie sie mithilfe von [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer) in einer Variablen:
 
     ```azurepowershell-interactive
     $sourceIntLBID = (Get-AzLoadBalancer -Name <source-internal-lb-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. Exportieren Sie die Quellkonfiguration des internen Load Balancers in eine JSON-Datei in das Verzeichnis, in dem Sie den Befehl [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0) ausführen:
+3. Exportieren Sie die Quellkonfiguration des internen Load Balancers in eine JSON-Datei in das Verzeichnis, in dem Sie den Befehl [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup) ausführen:
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceIntLBID -IncludeParameterDefaultValue
@@ -263,7 +263,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
              }
     ```
  
-6. Wenn Sie den Wert des zuvor verschobenen virtuellen Zielnetzwerks bearbeiten möchten, müssen Sie zunächst die Ressourcen-ID abrufen und kopieren und sie dann in die Datei **\<resource-group-name>.json** einfügen.  Um die ID abzurufen, verwenden Sie [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
+6. Wenn Sie den Wert des zuvor verschobenen virtuellen Zielnetzwerks bearbeiten möchten, müssen Sie zunächst die Ressourcen-ID abrufen und kopieren und sie dann in die Datei **\<resource-group-name>.json** einfügen.  Um die ID abzurufen, verwenden Sie [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork):
    
    ```azurepowershell-interactive
     $targetVNETID = (Get-AzVirtualNetwork -Name <target-vnet-name> -ResourceGroupName <target-resource-group-name>).Id
@@ -306,7 +306,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
                 },
     ```
 
-11. Zum Abrufen von Regionsstandortcodes können Sie das Azure PowerShell-Cmdlet [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) verwenden, indem Sie den folgenden Befehl ausführen:
+11. Zum Abrufen von Regionsstandortcodes können Sie das Azure PowerShell-Cmdlet [Get-AzLocation](/powershell/module/az.resources/get-azlocation) verwenden, indem Sie den folgenden Befehl ausführen:
 
     ```azurepowershell-interactive
 
@@ -331,7 +331,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
         ```
       Weitere Informationen zu den Unterschieden zwischen Load Balancern der SKU „basic“ und „standard“ finden Sie unter [Übersicht über Azure Load Balancer Standard](./load-balancer-overview.md).
 
-    * **Lastenausgleichsregeln**: Sie können Lastenausgleichsregeln zur Konfiguration hinzufügen oder daraus entfernen, indem Sie in der Datei **\<resource-group-name>.json** im Abschnitt **loadBalancingRules** Einträge hinzufügen oder entfernen:
+    * **Lastenausgleichsregeln**: Sie können Lastenausgleichsregeln in der Konfiguration hinzufügen oder entfernen, indem Sie Einträge im Abschnitt **loadBalancingRules** in der Datei **\<resource-group-name>.json** hinzufügen oder entfernen:
 
         ```json
         "loadBalancingRules": [
@@ -363,7 +363,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
         ```
        Weitere Informationen zu Lastenausgleichsregeln finden Sie unter [Was ist Azure Load Balancer?](./load-balancer-overview.md)
 
-    * **Tests**: Sie können einen Test des Lastenausgleichsmoduls zur Konfiguration hinzufügen oder daraus entfernen, indem Sie in der Datei **\<resource-group-name>.json** im Abschnitt **Tests** Einträge hinzufügen oder entfernen:
+    * **Tests**: Sie können einen Test des Load Balancers in der Konfiguration hinzufügen oder entfernen, indem Sie Einträge im Abschnitt **Tests** in der Datei **\<resource-group-name>.json** hinzufügen oder entfernen:
 
         ```json
         "probes": [
@@ -383,7 +383,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
         ```
        Weitere Informationen zu Azure Load Balancer-Integritätstests finden Sie unter [Load Balancer-Integritätstests](./load-balancer-custom-probe-overview.md).
 
-    * **NAT-Regeln für eingehenden Datenverkehr**: Sie können NAT-Regeln für eingehenden Datenverkehr des Lastenausgleichsmoduls hinzufügen oder entfernen, indem Sie in der Datei **\<resource-group-name>.json** im Abschnitt **inboundNatRules** Einträge hinzufügen oder entfernen:
+    * **NAT-Regeln für eingehenden Datenverkehr**: Sie können NAT-Regeln für eingehenden Datenverkehr des Load Balancers hinzufügen oder entfernen, indem Sie Einträge im Abschnitt **inboundNatRules** in der Datei **\<resource-group-name>.json** hinzufügen oder entfernen:
 
         ```json
         "inboundNatRules": [
@@ -405,7 +405,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
                     }
                 ]
         ```
-        Um das Hinzufügen oder Entfernen einer NAT-Regel für eingehenden Datenverkehr abzuschließen, müssen Sie die Regel als Eigenschaft vom Typ **type** am Ende der Datei **\<resource-group-name>.json** hinzufügen oder daraus entfernen:
+        Damit das Hinzufügen oder Entfernen einer NAT-Regel für eingehenden Datenverkehr abgeschlossen ist, muss die Regel als Eigenschaft vom Typ **type** am Ende der Datei **\<resource-group-name>.json** vorhanden sein oder daraus entfernt werden:
 
         ```json
         {
@@ -433,12 +433,12 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
     
 13. Speichern Sie die Datei **\<resource-group-name>.json**.
     
-10. Erstellen Sie mithilfe von [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) eine Ressourcengruppe in der Zielregion für den internen Ziel-Load Balancer, der bereitgestellt werden soll. Die oben genannte vorhandene Ressourcengruppe kann im Rahmen dieses Prozesses ebenfalls wiederverwendet werden:
+10. Erstellen Sie mithilfe von [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe in der Zielregion für den internen Ziel-Load Balancer, der bereitgestellt werden soll. Die oben genannte vorhandene Ressourcengruppe kann im Rahmen dieses Prozesses ebenfalls wiederverwendet werden:
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Stellen Sie die bearbeitete Datei **\<resource-group-name>.json** in der Ressourcengruppe bereit, die Sie im vorherigen Schritt mit [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) erstellt haben:
+11. Stellen Sie die bearbeitete Datei **\<resource-group-name>.json** in der Ressourcengruppe bereit, die Sie im vorherigen Schritt mit [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) erstellt haben:
 
     ```azurepowershell-interactive
 
@@ -446,7 +446,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
     
     ```
 
-12. Um zu überprüfen, ob die Ressourcen in der Zielregion erstellt wurden, verwenden Sie [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) und [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0):
+12. Um zu überprüfen, ob die Ressourcen in der Zielregion erstellt wurden, verwenden Sie [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup) und [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer):
     
     ```azurepowershell-interactive
 
@@ -462,7 +462,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
 
 ## <a name="discard"></a>Verwerfen 
 
-Wenn Sie nach der Bereitstellung das virtuelle Netzwerk und den Load Balancer im Ziel neu starten oder verwerfen möchten, löschen Sie die im Ziel erstellte Ressourcengruppe. Das verschobene virtuelle Netzwerk und der Load Balancer werden dann gelöscht.  Um die Ressourcengruppe zu entfernen, verwenden Sie [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0):
+Wenn Sie nach der Bereitstellung das virtuelle Netzwerk und den Load Balancer im Ziel neu starten oder verwerfen möchten, löschen Sie die im Ziel erstellte Ressourcengruppe. Das verschobene virtuelle Netzwerk und der Load Balancer werden dann gelöscht.  Um die Ressourcengruppe zu entfernen, verwenden Sie [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup):
 
 ```azurepowershell-interactive
 
@@ -472,7 +472,7 @@ Remove-AzResourceGroup -Name <resource-group-name>
 
 ## <a name="clean-up"></a>Bereinigung
 
-Um die Änderungen zu übernehmen und die Verschiebung der NSG abzuschließen, löschen Sie die Quell-NSG oder die Ressourcengruppe, verwenden Sie [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) oder [Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0) und [Remove-AzLoadBalancer](/powershell/module/az.network/remove-azloadbalancer?view=azps-2.6.0).
+Um die Änderungen zu übernehmen und die Verschiebung der NSG abzuschließen, löschen Sie die Quell-NSG oder die Ressourcengruppe, verwenden Sie [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) oder [Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork) und [Remove-AzLoadBalancer](/powershell/module/az.network/remove-azloadbalancer).
 
 ```azurepowershell-interactive
 

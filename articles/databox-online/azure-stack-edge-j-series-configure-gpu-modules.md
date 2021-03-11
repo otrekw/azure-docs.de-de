@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: d172ce98ba93360c621a91fb0e2a55d022470943
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: dfae1a9b02db7e7b9577acdb47a1ba089f1609e8
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935557"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439050"
 ---
 # <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>Konfigurieren und Ausführen eines Moduls auf dem GPU Ihres Azure Stack Edge Pro-Geräts
+
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 Ihr Azure Stack Edge Pro-Gerät enthält einen oder mehrere Grafikprozessoren (GPUs). Da GPUs eine Parallelverarbeitung ermöglichen und ein schnelleres Bildrendering bieten als CPUs (Central Processing Unit, Zentralprozessor), werden GPUs häufig für KI-Berechnungen verwendet. Weitere Informationen zur GPU Ihres Azure Stack Edge Pro-Geräts finden Sie in den [technischen Spezifikationen für Ihr Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-technical-specifications-compliance.md).
 

@@ -3,20 +3,21 @@ title: Verwenden von SSH-Schlüsseln zum Herstellen einer Verbindung mit Linux-V
 description: Erfahren Sie, wie Sie SSH-Schlüssel auf einem Windows-Computer generieren und verwenden, um eine Verbindung mit einem virtuellen Linux-Computer in Azure herzustellen.
 author: cynthn
 ms.service: virtual-machines
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: 183b601a4521c3ff3e4578784f7adadd01045b0e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 167ce63931155f5142ed34b41f857505699bc0a6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147146"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552778"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Verwenden von SSH-Schlüsseln mit Windows in Azure
 
-Dieser Artikel richtet sich an Windows-Benutzer, die SSH-Schlüssel ( *Secure Shell* ) [erstellen](#create-an-ssh-key-pair) und verwenden möchten, um eine [Verbindung](#connect-to-your-vm) mit virtuellen Linux-Computern (VMs) in Azure herzustellen. Sie können auch [SSH-Schlüssel im Azure-Portal generieren und speichern](../ssh-keys-portal.md), die dann beim Erstellen von VMs im Portal verwendet werden.
+Dieser Artikel richtet sich an Windows-Benutzer, die SSH-Schlüssel (*Secure Shell*) [erstellen](#create-an-ssh-key-pair) und verwenden möchten, um eine [Verbindung](#connect-to-your-vm) mit virtuellen Linux-Computern (VMs) in Azure herzustellen. Sie können auch [SSH-Schlüssel im Azure-Portal generieren und speichern](../ssh-keys-portal.md), die dann beim Erstellen von VMs im Portal verwendet werden.
 
 
 Informationen zum Verwenden von SSH-Schlüsseln von einem Linux- oder macOS-Client finden Sie in der [Kurzanleitung](mac-create-ssh-keys.md). Eine umfassendere Übersicht über SSH finden Sie unter [Ausführliche Schritte: Erstellen und Verwalten von SSH-Schlüsseln für die Authentifizierung bei einer Linux-VM in Azure](create-ssh-keys-detailed.md).

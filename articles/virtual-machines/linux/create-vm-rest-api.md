@@ -2,16 +2,17 @@
 title: Erstellen einer Linux-VM mit der REST-API
 description: Erfahren Sie, wie Sie einen virtuellen Linux-Computer in Azure erstellen, der verwaltete Datenträger und SSH-Authentifizierung mit der Azure-REST-API verwendet.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: b3eeaf5f343b6026e02d17e4d3bd90dba4b991c4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 519939445e67f0f993662e2faf506eb186686156
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737044"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554563"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Erstellen eines virtuellen Linux-Computers zur Verwendung der SSH-Authentifizierung mit der REST-API
 
@@ -54,10 +55,10 @@ Allgemeine Informationen zum Arbeiten mit REST-API-Anforderung finden Sie unter 
 
 Die folgenden allgemeinen Definitionen werden verwendet, um einen Anforderungstext zu erstellen:
 
-| Name                       | Erforderlich | type                                                                                | BESCHREIBUNG  |
+| Name                       | Erforderlich | Typ                                                                                | BESCHREIBUNG  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| location                   | True     | string                                                                              | Ressourcenspeicherort |
-| name                       |          | string                                                                              | Name des virtuellen Computers |
+| location                   | True     | Zeichenfolge                                                                              | Ressourcenspeicherort |
+| name                       |          | Zeichenfolge                                                                              | Name des virtuellen Computers |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Legt die Hardwareeinstellungen für den virtuellen Computer fest. |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Legt die Speichereinstellungen für die Datenträger des virtuellen Computers fest. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Legt die Einstellungen des Betriebssystems für den virtuellen Computer fest. |
@@ -128,12 +129,12 @@ Sie können den von Ihnen bevorzugten Client zum Senden dieser HTTP-Anforderung 
 
 Es gibt zwei erfolgreiche Antworten für den Vorgang, um einen virtuellen Computer zu erstellen oder zu aktualisieren:
 
-| Name        | type                                                                              | BESCHREIBUNG |
+| Name        | Typ                                                                              | BESCHREIBUNG |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 – OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 – Erstellt | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Erstellt     |
 
-Eine komprimierte *201 – Erstellt*-Antwort aus dem vorherigen Beispielanforderungstext, der eine VM erstellt, zeigt, dass eine *vmId* zugewiesen wurde und *ProvisioningState* *Wird erstellt* ist:
+Eine komprimierte *201 – Erstellt*-Antwort aus dem vorherigen Beispielanforderungstext, der eine VM erstellt, zeigt, dass eine *vmId* zugewiesen wurde und *ProvisioningState**Wird erstellt* ist:
 
 ```json
 {
