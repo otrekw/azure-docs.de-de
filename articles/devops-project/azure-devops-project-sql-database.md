@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 6a1af644bbd88af5c513ed9a43ce154f285c06df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e85b698e1b3c3a1c3e8730ab85e8b72b7b0d9f6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856006"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548477"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>Tutorial: Bereitstellen einer ASP.NET-App und von Azure SQL-Datenbank-Code mithilfe von Azure DevOps Starter
 
@@ -66,7 +66,7 @@ Mit DevOps Starter wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie kö
 
 1. Wählen Sie Ihre Azure-Abonnementsdienste aus. Wählen Sie optional **Ändern** aus, um zusätzliche Azure-Konfigurationseinstellungen anzuzeigen und im Abschnitt **Anmeldeinformationen für Datenbankserver** den Benutzernamen zu ermitteln. Speichern Sie den Benutzernamen für zukünftige Schritte in diesem Tutorial. Wenn Sie diesen optionalen Schritt ausführen, schließen Sie den Azure-Konfigurationsbereich, bevor Sie **Fertig** auswählen.
  
-1. Wählen Sie **Fertig**aus. Nach wenigen Minuten ist der Vorgang abgeschlossen, und das DevOps Starter-Dashboard wird im Azure-Portal geöffnet. Sie können auch direkt über **Alle Ressourcen** im Azure-Portal zum Dashboard navigieren. Wählen Sie auf der rechten Seite **Durchsuchen** aus, um Ihre ausgeführte Anwendung anzuzeigen.
+1. Wählen Sie **Fertig** aus. Nach wenigen Minuten ist der Vorgang abgeschlossen, und das DevOps Starter-Dashboard wird im Azure-Portal geöffnet. Sie können auch direkt über **Alle Ressourcen** im Azure-Portal zum Dashboard navigieren. Wählen Sie auf der rechten Seite **Durchsuchen** aus, um Ihre ausgeführte Anwendung anzuzeigen.
     
 ## <a name="examine-the-ci-pipeline"></a>Überprüfen der CI-Pipeline
 
@@ -190,7 +190,7 @@ Diese Build- und Releasepipelines können Sie optional an die Anforderungen Ihre
 Weitere Informationen zur CI/CD-Pipeline finden Sie in folgendem Artikel:
 
 > [!div class="nextstepaction"]
-> [Define your multi-stage continuous deployment (CD) pipeline](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) (Festlegen Ihrer mehrstufigen CD-Pipeline (Continuous Deployment))
+> [Define your multi-stage continuous deployment (CD) pipeline](/azure/devops/pipelines/release/define-multistage-release-process) (Festlegen Ihrer mehrstufigen CD-Pipeline (Continuous Deployment))
 
 ## <a name="videos"></a>Videos
 

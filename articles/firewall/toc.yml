@@ -99,6 +99,8 @@
       href: firewall-workbook.md
     - name: Bereitstellen und Konfigurieren von Firewall Premium
       href: premium-deploy.md
+    - name: Bereitstellen von Enterprise-ZS-Zertifikaten für Premium
+      href: premium-deploy-certificates-enterprise-ca.md
     - name: Migrieren zu Azure Firewall Premium
       href: premium-migrate.md
 - name: Verweis

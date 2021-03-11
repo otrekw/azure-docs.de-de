@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 778feda8d72101d4ae2a0f0c27549701dfb53340
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 1ce20deed8b26dc5f5bebf4656dd3f1c370d766f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341412"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561227"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection: Bewertung und Empfehlungen in Azure Security Center
 
@@ -29,9 +29,9 @@ Azure Security Center bietet Integritätsbewertungen von [unterstützten](securi
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Security Center empfiehlt Ihnen **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) ausgeführt wird und das Ergebnis **AMServiceEnabled: False** zurückgibt.
+* Security Center empfiehlt Ihnen **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) ausgeführt wird und das Ergebnis **AMServiceEnabled: False** zurückgibt.
 
-* Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) ausgeführt wird und eine der folgenden Situationen eintritt:
+* Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) ausgeführt wird und eine der folgenden Situationen eintritt:
 
   * Eine der folgenden Eigenschaften ist FALSE:
 

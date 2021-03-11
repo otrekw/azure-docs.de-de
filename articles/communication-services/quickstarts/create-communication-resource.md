@@ -10,18 +10,21 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: f40da8b2c9f64da424d43a6679977cda5bf111df
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9324ca3b347550c2514a506c5a143b6e963e116f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691772"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487320"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource
- 
+
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Führen Sie erste Schritte mit Azure Communication Services aus, indem Sie Ihre erste Communication Services-Ressource bereitstellen. Communication Services-Ressourcen können über das [Azure-Portal](https://portal.azure.com) oder mit der .NET-Verwaltungsclientbibliothek bereitgestellt werden. Mithilfe der Verwaltungsclientbibliothek und dem Azure-Portal können Sie Ihre Ressource und Schnittstellen mit [Azure Resource Manager](../../azure-resource-manager/management/overview.md), dem Bereitstellungs- und Verwaltungsdienst von Azure, erstellen, konfigurieren, aktualisieren und löschen. Alle in den Clientbibliotheken verfügbaren Funktionen sind auch im Azure-Portal verfügbar. 
+
+
+Führen Sie erste Schritte mit Azure Communication Services aus, indem Sie Ihre erste Communication Services-Ressource bereitstellen. Communication Services-Ressourcen können über das [Azure-Portal](https://portal.azure.com) oder mit der .NET-Verwaltungsclientbibliothek bereitgestellt werden. Mithilfe der Verwaltungsclientbibliothek und dem Azure-Portal können Sie Ihre Ressource und Schnittstellen mit [Azure Resource Manager](../../azure-resource-manager/management/overview.md), dem Bereitstellungs- und Verwaltungsdienst von Azure, erstellen, konfigurieren, aktualisieren und löschen. Alle in den Clientbibliotheken verfügbaren Funktionen sind auch im Azure-Portal verfügbar.
 
 > [!WARNING]
 > Beachten Sie Folgendes: Obwohl Communication Services in mehreren geografischen Regionen verfügbar sind, muss für die Ressource ein Datenspeicherort auf „US“ festgelegt sein, um eine Telefonnummer zu erhalten. Beachten Sie zudem, dass während der öffentlichen Vorschauphase keine Kommunikationsressourcen in ein anderes Abonnement übertragen werden können.
@@ -40,7 +43,7 @@ Führen Sie erste Schritte mit Azure Communication Services aus, indem Sie Ihre 
 
 ## <a name="access-your-connection-strings-and-service-endpoints"></a>Zugreifen auf die Verbindungszeichenfolgen und Dienstendpunkte
 
-Mit Verbindungszeichenfolgen können Communication Services-Clientbibliotheken eine Verbindung mit Azure herstellen und sich bei Azure authentifizieren. Sie können auf die Communication Services-Verbindungszeichenfolgen und -Dienstendpunkte über das Azure-Portal oder programmgesteuert mit Azure Resource Manager-APIs zugreifen. 
+Mit Verbindungszeichenfolgen können Communication Services-Clientbibliotheken eine Verbindung mit Azure herstellen und sich bei Azure authentifizieren. Sie können auf die Communication Services-Verbindungszeichenfolgen und -Dienstendpunkte über das Azure-Portal oder programmgesteuert mit Azure Resource Manager-APIs zugreifen.
 
 Navigieren Sie zur Communication Services-Ressource, wählen Sie im Navigationsmenü **Schlüssel** aus, und kopieren Sie die Werte **Verbindungszeichenfolge** oder **Endpunkt** zur Verwendung durch die Communication Services-Clientbibliotheken. Beachten Sie, dass Sie Zugriff auf Primär- und Sekundärschlüssel haben. Dies kann in Szenarien nützlich sein, in denen Sie für einen Drittanbieter oder eine Stagingumgebung temporären Zugriff auf Ihre Communication Services-Ressourcen bereitstellen möchten.
 
@@ -49,7 +52,7 @@ Navigieren Sie zur Communication Services-Ressource, wählen Sie im Navigations
 Auf Schlüsselinformationen kann auch über die Azure CLI zugegriffen werden:
 
 ```azurecli
-az communication list --resource-group "<resourceGroup>"    
+az communication list --resource-group "<resourceGroup>"
 
 az communication list-key --name "<communicationName>" --resource-group "<resourceGroup>"
 ```
@@ -103,7 +106,7 @@ Führen Sie nach dem Hinzufügen der Umgebungsvariablen im Konsolenfenster `sour
 
 Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind.
 
-Wenn bei der Ressourcenlöschung der Ressource Telefonnummern zugewiesen waren, werden die Telefonnummern automatisch zum gleichen Zeitpunkt aus der Ressource freigegeben. 
+Wenn bei der Ressourcenlöschung der Ressource Telefonnummern zugewiesen waren, werden die Telefonnummern automatisch zum gleichen Zeitpunkt aus der Ressource freigegeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

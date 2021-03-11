@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: d72d2d094e220bd4e460cfca6b422f0609c083af
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: fde25e4ba75bfb86c9837582d7168f85335836b6
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880066"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520539"
 ---
 # <a name="version-and-track-azure-machine-learning-datasets"></a>Versionieren und Nachverfolgen von Azure Machine Learning-Datasets
 
@@ -31,7 +31,7 @@ Typische Versionierungsszenarios:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- [Installiertes Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). Dieses SDK enthält das Paket [azureml-datasets](/python/api/azureml-core/azureml.core.dataset?preserve-view=true&view=azure-ml-py).
+- [Installiertes Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/install). Dieses SDK enthält das Paket [azureml-datasets](/python/api/azureml-core/azureml.core.dataset).
     
 - Ein [Azure Machine Learning-Arbeitsbereich](concept-workspace.md). Rufen Sie einen vorhandenen Arbeitsbereich ab, indem Sie den folgenden Code ausführen, oder [erstellen Sie einen neuen Arbeitsbereich](how-to-manage-workspace.md).
 
@@ -62,7 +62,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>Abrufen eines Datasets anhand des Namens
 
-Die Methode [get_by_name()](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) für die Klasse `Dataset` gibt standardmäßig die neueste Version des im Arbeitsbereich registrierten Datasets zurück. 
+Die Methode [get_by_name()](/python/api/azureml-core/azureml.core.dataset.dataset#get-by-name-workspace--name--version--latest--) für die Klasse `Dataset` gibt standardmäßig die neueste Version des im Arbeitsbereich registrierten Datasets zurück. 
 
 Mit dem folgenden Code wird Version 1 des `titanic_ds`-Datasets abgerufen.
 
@@ -182,7 +182,7 @@ Im Folgenden finden Sie Szenarios, in denen Ihre Daten als **Ausgabedataset** na
 
 Sie können die als Eingabe verwendeten Datasets für jedes Machine Learning-Experiment einfach mit dem `Run`-Objekt des Experiments nachverfolgen.
 
-Im folgenden Code wird die [`get_details()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--)-Methode verwendet, um nachzuverfolgen, welche Eingabedatasets bei der Ausführung des Experiments verwendet wurden:
+Im folgenden Code wird die [`get_details()`](/python/api/azureml-core/azureml.core.run.run#get-details--)-Methode verwendet, um nachzuverfolgen, welche Eingabedatasets bei der Ausführung des Experiments verwendet wurden:
 
 ```Python
 # get input datasets

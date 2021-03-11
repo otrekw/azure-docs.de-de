@@ -2,16 +2,17 @@
 title: Erstellen und Hochladen eines OpenBSD-Images
 description: Erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD), die das OpenBSD-Betriebssystem enthält, erstellen und hochladen, um einen virtuellen Azure-Computer über Azure CLI zu erstellen.
 author: gbowerman
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 05/24/2017
 ms.author: guybo
-ms.openlocfilehash: efa38384778bb63857d3c867d74ace7f4f199118
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3437fcd2d1d521aad237ecf6d3f7937b4835d376
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685088"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554597"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Erstellen und Hochladen eines OpenBSD-Datenträgerimages in Azure
 In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit dem OpenBSD-Betriebssystem erstellen und hochladen. Nach dem Hochladen können Sie sie als eigenes Image verwenden, um über Azure CLI einen virtuellen Computer (Virtual Machine, VM) in Azure zu erstellen.
@@ -87,7 +88,7 @@ Nun können Sie Ihren virtuellen Computer herunterfahren.
 
 
 ## <a name="prepare-the-vhd"></a>Vorbereiten der VHD
-Das VHDX-Format wird in Azure noch nicht unterstützt, dafür jedoch **virtuelle Festplatten mit fester Größe**. Sie können den Datenträger mit Hyper-V-Manager oder dem Powershell-Cmdlet [convert-vhd](/powershell/module/hyper-v/convert-vhd?view=win10-ps) in das feste VHD-Format konvertieren. Im Folgenden finden Sie ein Beispiel.
+Das VHDX-Format wird in Azure noch nicht unterstützt, dafür jedoch **virtuelle Festplatten mit fester Größe**. Sie können den Datenträger mit Hyper-V-Manager oder dem Powershell-Cmdlet [convert-vhd](/powershell/module/hyper-v/convert-vhd) in das feste VHD-Format konvertieren. Im Folgenden finden Sie ein Beispiel.
 
 ```powershell
 Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed

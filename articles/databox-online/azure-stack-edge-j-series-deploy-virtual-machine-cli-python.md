@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 03/04/2021
 ms.author: alkohli
-ms.openlocfilehash: daf44afbb322cb30ab3a663dce4e935aefa7be13
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 8917758b4d7644cab3281e7d69698768d316f026
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808057"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436130"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-GPU-Gerät mit der Azure CLI und Python
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-virtual-machine-overview](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-overview.md)]
 
@@ -51,14 +51,14 @@ Bevor Sie mit dem Erstellen und Verwalten eines virtuellen Computers auf Ihrem A
 
 1. Sie haben die Netzwerkeinstellungen auf Ihrem Azure Stack Edge Pro-Gerät wie unter [Schritt 1: Konfigurieren des Azure Stack Edge Pro-Geräts](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device) beschrieben festgelegt.
 
-2. Sie haben eine Netzwerkschnittstelle für Compute erstellt. Diese Netzwerkschnittstellen-IP wird verwendet, um einen virtuellen Switch für die VM-Bereitstellung zu erstellen. Die folgenden Schritte führen Sie durch den Prozess:
+2. Sie haben eine Netzwerkschnittstelle für Compute erstellt. Diese IP-Adresse der Netzwerkschnittstelle wird verwendet, um einen virtuellen Switch für die VM-Bereitstellung zu erstellen. Die folgenden Schritte führen Sie durch den Prozess:
 
     1. Navigieren Sie zu **Compute**. Wählen Sie die Netzwerkschnittstelle aus, die Sie verwenden möchten, um einen virtuellen Switch zu erstellen.
 
         > [!IMPORTANT] 
         > Sie können nur einen Port für Compute konfigurieren.
 
-    2. Aktivieren Sie Compute auf der Netzwerkschnittstelle. Azure Stack Edge Pro erstellt und verwaltet einen virtuellen Switch, der dieser Netzwerkschnittstelle entspricht.
+    2. Aktivieren Sie Compute für die Netzwerkschnittstelle. Azure Stack Edge Pro erstellt und verwaltet einen virtuellen Switch, der dieser Netzwerkschnittstelle entspricht.
 
     <!--If you decide to use another network interface for compute, make sure that you:
 
@@ -278,7 +278,7 @@ Bevor Sie mit dem Erstellen und Verwalten eines virtuellen Computers auf Ihrem A
 
 3. Registrieren Sie Ihre Umgebung. Verwenden Sie beim Ausführen von „az cloud register“ die folgenden Parameter:
 
-    | Wert | BESCHREIBUNG | Beispiel |
+    | Wert | Beschreibung | Beispiel |
     | --- | --- | --- |
     | Umgebungsname | Der Name der Umgebung, mit der Sie eine Verbindung herstellen möchten | Geben Sie einen Namen an, wie z. B. `aze-environ`. |
     | Resource Manager-Endpunkt | Die URL lautet `https://Management.<appliancename><dnsdomain>`. <br> Damit Sie diese URL abrufen können, navigieren Sie zur Seite **Geräte** in der lokalen Webbenutzeroberfläche Ihres Geräts. |Beispiel: `https://management.team3device.teatraining1.com`.  |

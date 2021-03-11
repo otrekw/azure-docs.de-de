@@ -14,6 +14,8 @@
       href: tutorial-move-region-virtual-machines.md
     - name: Verschieben von verschlüsselten virtuellen Azure-Computern in eine andere Region
       href: tutorial-move-region-encrypted-virtual-machines.md
+    - name: Verschieben von Ressourcen zwischen Regionen mithilfe von PowerShell
+      href: tutorial-move-region-powershell.md
     - name: Verschieben von SQL-Ressourcen in eine andere Region
       href: tutorial-move-region-sql.md
 - name: Konzepte
@@ -28,8 +30,6 @@
   items:
     - name: Regionsübergreifendes Verschieben
       items:
-        - name: Regionsübergreifendes Verschieben mit PowerShell
-          href: move-region-powershell.md
         - name: Verschieben von virtuellen Azure-Computern in Verfügbarkeitszonen
           href: move-region-availability-zone.md
         - name: Regionsübergreifendes Verschieben (von Ressourcengruppe)

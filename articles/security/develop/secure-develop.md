@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8e69803f4740a58adb4230bd82cc723221762cb4
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 52c93bef4529f27ad38677f17209e7b48e997368
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576615"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548443"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Entwickeln sicherer Anwendungen in Azure
 In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwickeln. Es werden Sicherheitsfragen und -konzepten behandelt, die Sie während der Implementierungs- und Überprüfungsphase von Microsoft [Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
@@ -34,7 +34,7 @@ Angenommen, Ihre Anwendung wird auf Arten verwendet, für die sie nicht beabsich
 
 ### <a name="perform-code-reviews"></a>Ausführen von Code Reviews
 
-Führen Sie vor dem Einchecken von Code [Code Reviews](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) durch, um die Gesamtqualität des Codes zu erhöhen und das Risiko für die Erzeugung von Fehlern zu verringern. Sie können [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) verwenden, um den Code Review-Prozess zu verwalten.
+Führen Sie vor dem Einchecken von Code [Code Reviews](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) durch, um die Gesamtqualität des Codes zu erhöhen und das Risiko für die Erzeugung von Fehlern zu verringern. Sie können [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs) verwenden, um den Code Review-Prozess zu verwalten.
 
 ### <a name="perform-static-code-analysis"></a>Ausführen statischer Codeanalysen
 
