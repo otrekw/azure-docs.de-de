@@ -3,16 +3,17 @@ title: Wartungssteuerung für virtuelle Azure-Computer mit der CLI
 description: Es wird beschrieben, wie Sie die Wartung steuern, wenn diese mithilfe der Wartungssteuerung und der CLI auf Ihre virtuellen Azure-Computer angewendet wird.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: d94cd649df9da6b36ac484d4fc1e6acef7a21bb7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9425759de1e08bc83cac80cd1b56c602edb59fb1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026164"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562961"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Steuern von Updates mit der Wartungssteuerung und der Azure CLI
 

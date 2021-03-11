@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/09/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 81a1263d0eacbffa77e2e35e4594e23235394183
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e867fee753fb9db530db2b2015c3aea9280bc16f
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108670"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448643"
 ---
 # <a name="localization-string-ids"></a>Lokalisierungszeichenfolgen-IDs
 
@@ -357,7 +357,7 @@ Im Folgenden finden Sie die IDs für ein [Anzeigesteuerelement zur Überprüfung
 | id | Standardwert |
 | -- | ------------- |
 |intro_msg| Es ist eine Überprüfung erforderlich. Klicken Sie auf die Schaltfläche „Senden“.|
-|success_send_code_msg | Der Prüfcode wurde an Ihr Postfach gesendet. Kopieren Sie den Code in das nachstehende Eingabefeld.|
+|success_send_code_msg | Prüfcode wurde gesendet. Kopieren Sie den Code in das nachstehende Eingabefeld.|
 |failure_send_code_msg | Beim Überprüfen Ihrer E-Mail-Adresse sind Probleme aufgetreten. Geben Sie eine gültige E-Mail-Adresse ein, und versuchen Sie es erneut.|
 |success_verify_code_msg | Die E-Mail-Adresse wurde verifiziert. Sie können den Vorgang jetzt fortsetzen.|
 |failure_verify_code_msg | Beim Überprüfen Ihrer E-Mail-Adresse sind Probleme aufgetreten. Wiederholen Sie den Vorgang.|

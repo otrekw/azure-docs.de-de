@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 9975e40f7d4f3b69c9281efd0288389740bf92ec
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 9a0d06a8f8fa8f68f063404f2b483b817eb0563f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943651"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452100"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Konfigurieren und Überprüfen von Verbindungen virtueller Netzwerke oder VPN-Verbindungen
 
@@ -248,7 +248,7 @@ BGP ermöglicht auch Transitrouting zwischen mehreren Netzwerken. Hierzu werden 
 
 Informationen zum Konfigurieren einer VPN-Verbindung, für die BGP verwendet wird, finden Sie unter [Konfigurieren von BGP für Azure VPN Gateways mithilfe von PowerShell](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md).
 
-Aktivieren Sie BGP für das Gateway eines virtuellen Netzwerks, indem Sie eine Autonomous System Number (AS-Nummer) für das Gateway erstellen. Gateways im Tarif „Basic“ unterstützen BGP nicht. Um den Tarif (SKU) des Gateways zu überprüfen, navigieren Sie im Azure-Portal auf dem Blatt **VPN Gateway** zum Abschnitt **Übersicht**. Arbeiten Sie im Tarif **Basic**, müssen Sie den Tarif (siehe [Ändern der Gatewaygröße](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?viewFallbackFrom=azurermps-4.0.0)) in **VpnGw1** ändern. 
+Aktivieren Sie BGP für das Gateway eines virtuellen Netzwerks, indem Sie eine Autonomous System Number (AS-Nummer) für das Gateway erstellen. Gateways im Tarif „Basic“ unterstützen BGP nicht. Um den Tarif (SKU) des Gateways zu überprüfen, navigieren Sie im Azure-Portal auf dem Blatt **VPN Gateway** zum Abschnitt **Übersicht**. Arbeiten Sie im Tarif **Basic**, müssen Sie den Tarif (siehe [Ändern der Gatewaygröße](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway)) in **VpnGw1** ändern. 
 
 Ein Überprüfen des Tarifs führt zu einer Ausfallzeit von 20 bis 30 Minuten. Sobald das Gateway den richtigen Tarif (SKU) hat, können Sie die AS-Nummer hinzufügen, indem Sie das PowerShell-Cmdlet [Set-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway) verwenden. Nachdem Sie die AS-Nummer konfiguriert haben, wird automatisch eine BGP-Peer-IP-Adresse für das Gateway bereitgestellt.
 

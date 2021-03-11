@@ -112,7 +112,7 @@
           href: exempt-resource.md
         - name: Erstellen von benutzerdefinierten Sicherheitsinitiativen und -richtlinien
           href: custom-security-policies.md
-    - name: Schützen Ihrer Computer mit Defender für Server
+    - name: Schützen Ihrer Computer
       displayName: 'hybrid, arc, Azure Defender for machines'
       items:
         - name: Übersicht über Azure Defender für Server

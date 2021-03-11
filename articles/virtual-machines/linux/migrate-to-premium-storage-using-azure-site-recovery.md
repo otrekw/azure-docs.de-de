@@ -2,17 +2,18 @@
 title: Migrieren Ihrer Linux-VMs zu Azure Storage Premium mithilfe von Azure Site Recovery
 description: Migrieren Sie Ihre vorhandenen virtuellen Computer mithilfe von Site Recovery zu Azure Storage Premium. Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden.
 author: luywang
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: e00496ad623d534e1fbdcb60f22a1e36f77c4212
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 8a03637352762646b0f209263769dbdb1ff14b21
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806171"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562621"
 ---
 # <a name="use-site-recovery-to-migrate-to-premium-storage"></a>Migrieren zu Storage Premium mithilfe von Site Recovery
 
@@ -165,7 +166,7 @@ Führen Sie die Schritte unter [Einrichten der Replikationseinstellungen](../../
 
    ![Bereich „Replikation aktivieren“ mit ausgewählter Quelle][13]
 
-Für das Entwerfen Ihrer Azure Storage-Umgebung empfehlen wir Ihnen, für jede VM einer Verfügbarkeitsgruppe separate Speicherkonten zu verwenden. Es empfiehlt sich, die bewährte Methode auf der Speicherebene anzuwenden, um [mehrere Speicherkonten für die einzelnen Verfügbarkeitsgruppen zu verwenden](../manage-availability.md). Das Verteilen von VM-Datenträgern auf mehrere Speicherkonten trägt zur Verbesserung der Speicherverfügbarkeit bei, und der E/A-Aufwand wird auf die gesamte Azure-Speicherinfrastruktur verteilt.
+Für das Entwerfen Ihrer Azure Storage-Umgebung empfehlen wir Ihnen, für jede VM einer Verfügbarkeitsgruppe separate Speicherkonten zu verwenden. Es empfiehlt sich, die bewährte Methode auf der Speicherebene anzuwenden, um [mehrere Speicherkonten für die einzelnen Verfügbarkeitsgruppen zu verwenden](../availability.md). Das Verteilen von VM-Datenträgern auf mehrere Speicherkonten trägt zur Verbesserung der Speicherverfügbarkeit bei, und der E/A-Aufwand wird auf die gesamte Azure-Speicherinfrastruktur verteilt.
 
 Falls sich Ihre virtuellen Computer in einer Verfügbarkeitsgruppe befinden, empfehlen wir dringend, mehrere virtuelle Computer mehrfach zu migrieren, anstatt Datenträger aller virtuellen Computer in einem einzelnen Speicherkonto zu replizieren. Dadurch teilen sich die virtuellen Computer in der gleichen Verfügbarkeitsgruppe nicht ein einzelnes Speicherkonto. Richten Sie im Bereich **Replikation aktivieren** nacheinander jeweils ein Zielspeicherkonto für die einzelnen virtuellen Computer ein.
  

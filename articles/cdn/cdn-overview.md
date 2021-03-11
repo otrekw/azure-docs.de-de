@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: b0c8170947b59b3d40a388642dac3df772238197
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 54ee903b490e10f7ea4ca3bca91f742b5811404d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778330"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563301"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Was ist ein Content Delivery Network in Azure?
 Ein Content Delivery Network (CDN) ist ein verteiltes Netzwerk mit Servern, über die Webinhalte auf effiziente Weise für Benutzer bereitgestellt werden können. In CDN-Instanzen werden zwischengespeicherte Inhalte auf Edgeservern an POP-Standorten (Point of Presence) gespeichert, die sich in der Nähe der Endbenutzer befinden, um die Wartezeit zu verringern. 
@@ -74,8 +74,7 @@ Azure CDN bietet folgende Schlüsselfeatures:
 Eine vollständige Liste mit den Features, die von den einzelnen Azure CDN-Produkten unterstützt werden, finden Sie unter [Azure CDN-Produktfeatures](cdn-features.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Informationen zu den ersten Schritten mit CDN finden Sie unter [Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts](cdn-create-new-endpoint.md).
 - Verwalten Sie Ihre CDN-Endpunkte über das [Microsoft Azure-Portal](https://portal.azure.com) oder mit [PowerShell](cdn-manage-powershell.md).
 - Erfahren Sie, wie Sie Azure CDN mit [.NET](cdn-app-dev-net.md) oder [Node.js](cdn-app-dev-node.md) automatisieren.
-- Sehen Sie sich die [Videos zu Azure CDN](https://azure.microsoft.com/resources/videos/index/?services=cdn&sort=newest) an, um Azure CDN in Aktion zu erleben.
-- Informationen zu den neuesten Azure CDN-Features finden Sie im [Azure CDN-Blog](https://azure.microsoft.com/blog/tag/azure-cdn/).

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9913132ca6ff3ce2840b55aa771f7bd9be2404ea
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 319ab7343792be92005611d26acc382df711bf1e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650973"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565064"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Schützen von Microsoft 365 vor lokalen Angriffen
 
@@ -69,7 +69,7 @@ Um den oben beschriebenen Angriffsvektoren Rechnung zu tragen, empfiehlt es sich
 
     Diese Administratorkonten sind Konten mit eingeschränktem Anwendungsbereich. *In Microsoft 365 sollten keine lokalen Konten mit Administratorrechten vorhanden sein.* 
 
-    Weitere Informationen finden Sie in der [Übersicht der Administratorrollen in Microsoft 365](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide). Lesen Sie außerdem [Rollen für Microsoft 365 in Azure AD](../roles/m365-workload-docs.md).
+    Weitere Informationen finden Sie in der [Übersicht der Administratorrollen in Microsoft 365](/microsoft-365/admin/add-users/about-admin-roles). Lesen Sie außerdem [Rollen für Microsoft 365 in Azure AD](../roles/m365-workload-docs.md).
 
 1. **Verwalten von Geräten aus Microsoft 365.** Verwenden Sie den Beitritt zu Azure AD und die cloudbasierte mobile Geräteverwaltung (Mobile Device Management, MDM), um Abhängigkeiten von Ihrer lokalen Infrastruktur für die Geräteverwaltung zu beseitigen. Diese Abhängigkeiten können Geräte- und Sicherheitskontrollen gefährden.
 
@@ -151,7 +151,7 @@ Bei der Verwendung zum Bereitstellen von Hybridkonten stützt sich Azure AD aus
 
 Cloudgruppen ermöglichen es Ihnen, Zusammenarbeit und Zugriff von Ihrer lokalen Infrastruktur zu entkoppeln.
 
-* **Zusammenarbeit:** Verwenden Sie Microsoft 365-Gruppen und Microsoft Teams für die moderne Zusammenarbeit. Setzen Sie lokale Verteilerlisten außer Kraft, und führen Sie ein [Upgrade von Verteilerlisten auf Microsoft 365-Gruppen in Outlook](/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide) durch.
+* **Zusammenarbeit:** Verwenden Sie Microsoft 365-Gruppen und Microsoft Teams für die moderne Zusammenarbeit. Setzen Sie lokale Verteilerlisten außer Kraft, und führen Sie ein [Upgrade von Verteilerlisten auf Microsoft 365-Gruppen in Outlook](/office365/admin/manage/upgrade-distribution-lists) durch.
 
 * **Zugriff**: Verwenden Sie Azure AD-Sicherheitsgruppen oder Microsoft 365-Gruppen, um den Zugriff auf Anwendungen in Azure AD zu autorisieren.
 * **Office 365-Lizenzierung:** Verwenden Sie die gruppenbasierte Lizenzierung, um Office 365 mithilfe von reinen Cloudgruppen bereitzustellen. Durch diese Methode wird die Steuerung der Gruppenmitgliedschaft von der lokalen Infrastruktur entkoppelt.
@@ -205,7 +205,7 @@ Verwenden Sie den bedingten Zugriff von Azure AD, um Signale zu interpretieren 
 
    Weitere Informationen finden Sie unter [Ältere Authentifizierungsprotokolle](../fundamentals/auth-sync-overview.md). Mehr dazu finden Sie in den spezifischen Details für [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) und [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps).
 
-* Implementieren Sie die empfohlenen [Konfigurationen für den Identitäts- und Gerätezugriff](/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide).
+* Implementieren Sie die empfohlenen [Konfigurationen für den Identitäts- und Gerätezugriff](/microsoft-365/security/office-365-security/identity-access-policies).
 
 * Wenn Sie eine Version von Azure AD verwenden, die keinen bedingten Zugriff beinhaltet, achten Sie darauf, dass Sie die [Azure AD-Sicherheitsstandards](../fundamentals/concept-fundamentals-security-defaults.md) verwenden.
 

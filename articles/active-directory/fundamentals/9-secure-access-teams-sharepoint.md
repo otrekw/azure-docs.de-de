@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 218208891cccb4f606a574a9c1c09f30c4ac0b11
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f373c849cd542769fec7a10f20dad04e742c9591
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725077"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565137"
 ---
 # <a name="secure-external-access-to-microsoft-teams-sharepoint-and-onedrive-for-business"></a>Schützen des externen Zugriffs auf Microsoft Teams, SharePoint und OneDrive for Business 
 
@@ -90,7 +90,7 @@ Weitere Informationen zum Verwalten des externen Zugriffs in Teams finden Sie in
 
 * [Verwaltung des externen Zugriffs in Microsoft Teams](/microsoftteams/manage-external-access)
 
-* [Microsoft 365-Identitätsmodelle und Azure Active Directory](/microsoft-365/enterprise/about-microsoft-365-identity?view=o365-worldwide)
+* [Microsoft 365-Identitätsmodelle und Azure Active Directory](/microsoft-365/enterprise/about-microsoft-365-identity)
 
 * [Identitätsmodelle und Authentifizierung für Microsoft Teams](/MicrosoftTeams/identify-models-authentication)
 
@@ -177,7 +177,7 @@ Weitere Informationen zum Steuern des externen Zugriffs auf SharePoint finden Si
 
 #### <a name="next-steps"></a>Nächste Schritte
 
-In den folgenden Artikeln finden Sie Informationen zum Schützen des externen Zugriffs auf Ressourcen. Es wird empfohlen, die Aktionen in der angegebenen Reihenfolge auszuführen.
+In den folgenden Artikeln finden Sie Informationen zum Sichern des externen Zugriffs auf Ressourcen. Es wird empfohlen, die Aktionen in der angegebenen Reihenfolge auszuführen.
 
 1. [Ermitteln des Sicherheitsstatus für externen Zugriff](1-secure-access-posture.md)
 

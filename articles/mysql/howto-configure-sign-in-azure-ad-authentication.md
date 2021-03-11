@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
-ms.openlocfilehash: 0418785fe558503b716ff1e798446fb64db998b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5890ddb2a4b1599dbcfd1e624c9fbe71a564de7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87799837"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442756"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>Verwenden von Azure Active Directory für die Authentifizierung mit MySQL
 
@@ -35,8 +35,6 @@ Nur ein Azure AD-Administratorbenutzer kann Benutzer für Azure AD-basierte Auth
 > Beim Festlegen des Administrators wird dem Azure Database for MySQL-Server ein neuer Benutzer mit vollständigen Administratorberechtigungen hinzugefügt.
 
 Es kann nur ein Azure AD-Administrator pro MySQL-Server erstellt werden, und die Auswahl eines anderen Administrators überschreibt den vorhandenen Azure AD-Administrator, der für den Server konfiguriert ist.
-
-In einer zukünftigen Version wird die Angabe einer Azure AD-Gruppe anstelle eines einzelnen Benutzers für mehrere Administratoren unterstützt. Dies wird jedoch derzeit noch nicht unterstützt.
 
 Nachdem Sie den Administrator konfiguriert haben, können Sie sich jetzt anmelden:
 

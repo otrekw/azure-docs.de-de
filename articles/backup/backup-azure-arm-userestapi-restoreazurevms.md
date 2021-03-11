@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Wiederherstellungsvorgänge
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 260c78af39c46e493ebb79c26ff1c55153a41c1d
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: da6b4cd6134f0cd1fd3d6e04e814bbf8aec9b07d
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174027"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452151"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Wiederherstellen virtueller Azure-Computer mit der REST-API
 
@@ -31,7 +31,7 @@ Der *GET*-URI enthält alle erforderlichen Parameter. Ein zusätzlicher Anforder
 
 ### <a name="responses"></a>Antworten
 
-|Name  |type  |BESCHREIBUNG  |
+|Name  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -144,7 +144,7 @@ Das Auslösen eines Wiederherstellungsvorgangs ist ein [asynchroner Vorgang](../
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|Name  |type  |BESCHREIBUNG  |
+|Name  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |202 – Akzeptiert     |         |     Zulässig    |
 
@@ -216,7 +216,7 @@ Wenn die Erstellung eines virtuellen Computers anhand der Sicherungsdaten angepa
 
 Zum Auslösen einer Datenträgerwiederherstellung auf der Grundlage einer Azure-VM-Sicherung werden im Folgenden die Komponenten des Anforderungstexts angegeben.
 
-|Name  |type  |BESCHREIBUNG  |
+|Name  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -317,17 +317,7 @@ Wie [oben](#restore-operations) erläutert, definiert der folgende Anforderungst
 
 ```json
 {
-  "parameters": {
-        "subscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resourceGroupName": "testVaultRG",
-        "vaultName": "testVault",
-        "fabricName": "Azure",
-        "containerName": "IaasVMContainer;iaasvmcontainerv2;testRG;testVM",
-        "protectedItemName": "VM;iaasvmcontainerv2;testRG;testVM",
-        "recoveryPointId": "348916168024334",
-        "api-version": "2019-05-13",
-      "parameters": {
-        "properties": {
+  "properties": {
           "objectType":  "IaasVMRestoreRequest",
           "recoveryPointId": "348916168024334",
           "recoveryType": "AlternateLocation",
@@ -342,11 +332,8 @@ Wie [oben](#restore-operations) erläutert, definiert der folgende Anforderungst
           "originalStorageAccountOption": false,
           "encryptionDetails": {
             "encryptionEnabled": false
-          }
-        }
-      }
-    }
-}
+     }
+ }
 ```
 
 Die Antwort muss gemäß der Erläuterung im obigen Abschnitt zum [Wiederherstellen von Datenträgern](#responses) verarbeitet werden.

@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/08/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: eb01ae5e9c7e134e33460674eb2c44b710671a4a
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: e8005bbf0373c91cf9f3515059544b9af3d52384
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833353"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443793"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Versionshinweise zu Azure Stack Edge 2101
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 In den folgenden Versionshinweisen werden schwerwiegende ungelöste und behobene Probleme für das Release 2101 für Azure Stack Edge-Geräte beschrieben. Diese Versionshinweise gelten nur für Geräte vom Typ „Azure Stack Edge Pro – GPU“, „Azure Stack Edge Pro R“ und „Azure Stack Edge Mini R“. Funktionen und Probleme, die nur für ein bestimmtes Modell gelten, werden jeweils entsprechend gekennzeichnet.
 

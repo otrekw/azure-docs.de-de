@@ -1,18 +1,18 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Virtual Machines
 description: Enthält eine Liste mit Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy, die für Azure Virtual Machines verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.topic: sample
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 6e2d995ad7fae80c46ae5dd3075ebc4d84249417
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: acc1ed598058be0c64eb6aada0446b8aa5792eb2
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098933"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442099"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-virtual-machines"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Virtual Machines 
 

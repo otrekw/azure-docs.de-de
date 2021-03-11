@@ -126,10 +126,10 @@
 - name: Verweis
   items:
     - name: Graph-API
-      href: /graph/api/resources/azure-ad-overview?view=graph-rest-1.0
+      href: /graph/api/resources/azure-ad-overview
     - name: Azure AD-Befehlszeilenschnittstelle
       href: /cli/azure/ad
     - name: Azure AD PowerShell für Graph
-      href: /powershell/azure/active-directory/install-adv2?view=azureadps-2.0
+      href: /powershell/azure/active-directory/install-adv2
     - name: Azure AD-Diensteinschränkungen
       href: ../users-groups-roles/directory-service-limits-restrictions.md

@@ -1,24 +1,18 @@
 ---
 title: Berechtigungen in Azure Security Center | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Azure Security Center die rollenbasierte Zugriffssteuerung zum Zuweisen von Berechtigungen für Benutzer verwendet und die zulässigen Aktionen für jede Rolle identifiziert.
-services: security-center
-cloud: na
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.date: 12/01/2020
+ms.date: 01/03/2021
 ms.author: memildin
-ms.openlocfilehash: 14ee9f23379a26c1756c622efb7d739f49dd0537
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: dcbb4977e1bfd17f0cbed61abf9ba335615b7799
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099181"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443759"
 ---
 # <a name="permissions-in-azure-security-center"></a>Berechtigungen in Azure Security Center
 
@@ -39,15 +33,15 @@ Neben diesen Rollen gibt es zwei spezifische Security Center-Rollen:
 
 In der folgenden Tabelle sind die Rollen und zulässigen Aktionen von Security Center aufgeführt.
 
-|Aktion|Sicherheitsleseberechtigter / <br> Leser |Sicherheitsadministrator  |Ressourcengruppenmitwirkender / <br> Ressourcengruppenbesitzer  |Mitwirkender des Abonnements  |Besitzer des Abonnements  |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-|Sicherheitsrichtlinie bearbeiten|-|✔|-|-|✔|
-|Initiativen hinzufügen/zuweisen (einschließlich Standards für die Einhaltung gesetzlicher Bestimmungen)|-|-|-|-|✔|
-|Aktivieren/Deaktivieren von Azure Defender|-|✔|-|-|✔|
-|Automatische Bereitstellung aktivieren/deaktivieren|-|✔|-|✔|✔|
-|Sicherheitsempfehlungen für eine Ressource anwenden</br> (und [Schnelle Problembehebung](security-center-remediate-recommendations.md#quick-fix-remediation) verwenden)|-|-|✔|✔|✔|
-|Warnungen verwerfen|-|✔|-|✔|✔|
-|Warnungen und Empfehlungen anzeigen|✔|✔|✔|✔|✔|
+| Aktion                                                                                                                                        | Sicherheitsleseberechtigter / <br> Leser | Sicherheitsadministrator | Ressourcengruppenmitwirkender / <br> Ressourcengruppenbesitzer | Mitwirkender des Abonnements | Besitzer des Abonnements |
+|:----------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------:|:--------------:|:------------------------------------------------------:|:------------------------:|:------------------:|
+| Sicherheitsrichtlinie bearbeiten                                                                                                                          | -                             | ✔             | -                                                      | -                        | ✔                 |
+| Initiativen hinzufügen/zuweisen (einschließlich Standards für die Einhaltung gesetzlicher Bestimmungen)                                                                           | -                             | -              | -                                                      | -                        | ✔                 |
+| Aktivieren/Deaktivieren von Azure Defender                                                                                                               | -                             | ✔             | -                                                      | -                        | ✔                 |
+| Automatische Bereitstellung aktivieren/deaktivieren                                                                                                            | -                             | ✔             | -                                                      | ✔                       | ✔                  |
+| Sicherheitsempfehlungen für eine Ressource anwenden</br> (und [Schnelle Problembehebung](security-center-remediate-recommendations.md#quick-fix-remediation) verwenden) | -                             | -              | ✔                                                     | ✔                        | ✔                 |
+| Warnungen verwerfen                                                                                                                                | -                             | ✔             | -                                                      | ✔                       | ✔                  |
+| Warnungen und Empfehlungen anzeigen                                                                                                               | ✔                            | ✔              | ✔                                                     | ✔                        | ✔                 |
 
 > [!NOTE]
 > Es empfiehlt sich, den Benutzern eine Rolle zuzuweisen, die jeweils nur so viele Berechtigungen umfasst wie für die Erfüllung ihrer Aufgaben erforderlich sind. Weisen Sie die Rolle „Leser“ etwa Benutzern zu, die nur Informationen zur Sicherheitsintegrität einer Ressource anzeigen, aber keine Aktionen durchführen müssen (also beispielsweise keine Empfehlungen umsetzen oder Richtlinien bearbeiten).

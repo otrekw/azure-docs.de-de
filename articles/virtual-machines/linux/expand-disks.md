@@ -2,17 +2,18 @@
 title: Erweitern von virtuellen Festplatten auf Linux-VMs
 description: Erfahren Sie, wie Sie virtuelle Festplatten auf einer Linux-VM mit der Azure CLI erweitern.
 author: roygara
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d1d433c7db36a3f4fe5f528b7fbd17549bc08e4a
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 72778c431c561f5345dde3d6803e814d6fdebfba
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791492"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549123"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Erweitern von virtuellen Festplatten auf virtuellen Linux-Computern mit der Azure-CLI
 

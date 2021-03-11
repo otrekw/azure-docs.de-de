@@ -6,12 +6,12 @@ author: v-dalc
 ms.topic: article
 ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 52b30730ee8ab126521ad0760204ee48ef6a63fe
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4e50f866c0bd44ca54c2f4df78b9507aa7077169
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576007"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452559"
 ---
 # <a name="storsimple-virtual-array-update-13-release-notes"></a>Versionsanmerkungen zu Update 1.3 für StorSimple Virtual Array
 
@@ -65,4 +65,4 @@ Suchen Sie nach älteren Versionsanmerkungen? Wechseln Sie zu:
 - [Versionsanmerkungen zu Update 0.4 für StorSimple Virtual Array](./storsimple-virtual-array-update-04-release-notes.md)
 - [Versionsanmerkungen zu Update 0.3 für StorSimple Virtual Array](./storsimple-ova-update-03-release-notes.md)
 - [Versionsanmerkungen zu Update 0.1 und Update 0.2 für das StorSimple Virtual Array](./storsimple-ova-update-01-release-notes.md)
-- [StorSimple Virtual Array – Version mit allgemeiner Verfügbarkeit – Versionsanmerkungen](https://review.docs.microsoft.com/en-us/azure/storsimple/storsimple-ova-pp-release-notes)
+- [StorSimple Virtual Array – Version mit allgemeiner Verfügbarkeit – Versionsanmerkungen](/azure/storsimple/storsimple-ova-pp-release-notes)

@@ -1,34 +1,28 @@
 ---
-title: Zugreifen auf Speicherblobs unter Verwendung einer benutzerdefinierten Azure CDN-Domäne über HTTPS
+title: 'Tutorial: Zugreifen auf Speicherblobs unter Verwendung einer benutzerdefinierten Azure CDN-Domäne über HTTPS'
 description: Informieren Sie sich darüber, wie Sie eine benutzerdefinierte Azure CDN-Domäne hinzufügen und HTTPS in dieser Domäne für Ihren benutzerdefinierten Blobspeicher-Endpunkt aktivieren.
 services: cdn
 documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: ''
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 6061de0a330518baaa829a9a1c8a05f196d68dcb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 296a51edf024551a03330f4843690e97c6abd47d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92777842"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564882"
 ---
-# <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Tutorial: Zugreifen auf Speicherblobs unter Verwendung einer benutzerdefinierten Azure CDN-Domäne über HTTPS
+# <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Tutorial: Zugreifen auf Speicherblobs unter Verwendung einer benutzerdefinierten Azure CDN-Domäne über HTTPS
 
 Nachdem Sie Ihr Azure-Speicherkonto in das Azure Content Delivery Network (CDN) integriert haben, können Sie eine benutzerdefinierte Domäne hinzufügen und HTTPS in dieser Domäne für Ihren benutzerdefinierten Blobspeicher-Endpunkt aktivieren. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Damit Sie die Schritte in diesem Tutorial ausführen können, müssen Sie zuerst Ihr Azure-Speicherkonto im Azure CDN integrieren. Weitere Informationen finden Sie unter [Quickstart: Integrieren eines Azure-Speicherkontos in Azure CDN](cdn-create-a-storage-account-with-cdn.md).
+Damit Sie die Schritte in diesem Tutorial ausführen können, müssen Sie zuerst Ihr Azure-Speicherkonto im Azure CDN integrieren. Weitere Informationen hierzu finden Sie unter [Schnellstart: Integrieren eines Azure-Speicherkontos in Azure CDN](cdn-create-a-storage-account-with-cdn.md).
 
 ## <a name="add-a-custom-domain"></a>Hinzufügen einer benutzerdefinierten Domäne
 Wenn Sie einen CDN-Endpunkt in Ihrem Profil erstellen, wird der Endpunktname, bei dem es sich um eine Unterdomäne von „azureedge.net“ handelt, standardmäßig in die URL für die Bereitstellung von CDN-Inhalten eingefügt. Außerdem haben Sie die Möglichkeit, eine benutzerdefinierte Domäne einem CDN-Endpunkt zuzuordnen. Bei dieser Option stellen Sie Ihren Inhalt über eine benutzerdefinierte Domäne in Ihrer URL und nicht über einen Endpunktnamen bereit. Um Ihrem Endpunkt eine benutzerdefinierte Domäne hinzuzufügen, befolgen Sie die Anweisungen in diesem Tutorial: [Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt](cdn-map-content-to-custom-domain.md).

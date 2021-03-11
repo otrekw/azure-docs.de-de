@@ -8,14 +8,16 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: aac4278c6ce03c43418e99978cd039e24dc01194
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b962d66349bbed112114c010e8d185ba16c74c8d
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719269"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443079"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Kubernetes-Workloadverwaltung auf Ihrem Azure Stack Edge Pro-Gerät
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Wenn Sie die Computerolle konfigurieren, wird auf Ihrem Azure Stack Edge Pro-Gerät ein Kubernetes-Cluster erstellt. Sobald der Kubernetes-Cluster erstellt wurde, können innerhalb des Kubernetes-Clusters Containeranwendungen in Pods bereitgestellt werden. Es gibt verschiedene Möglichkeiten, Workloads in Ihrem Kubernetes-Cluster bereitzustellen. 
 
@@ -55,7 +57,7 @@ Es gibt drei Hauptmethoden zum Bereitstellen von Workloads. Mit jeder dieser Ber
     
     Kubernetes mit Azure Arc-Unterstützung ermöglicht außerdem die Verwendung von Azure Monitor für Container, um Ihre Cluster anzuzeigen und zu überwachen. Weitere Informationen finden Sie unter [Was ist Kubernetes mit Azure Arc-Unterstützung?](../azure-arc/kubernetes/overview.md).
     
-    Ab März 2021 wird Kubernetes mit Azure Arc-Unterstützung für die Benutzer allgemein zur Verfügung stehen, und es fallen Standardnutzungsgebühren an. Als einem unserer geschätzten Kunden für die Vorschauversion wird Ihnen Kubernetes mit Azure Arc-Unterstützung für Azure Stack Edge-Gerät(e) kostenlos zur Verfügung stehen. Wenn Sie dieses Vorschauangebot nutzen möchten, erstellen Sie eine [Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest):
+    Ab März 2021 wird Kubernetes mit Azure Arc-Unterstützung für die Benutzer allgemein zur Verfügung stehen, und es fallen Standardnutzungsgebühren an. Als einem unserer geschätzten Kunden der Vorschauversion wird Ihnen Kubernetes mit Azure Arc-Unterstützung für Azure Stack Edge-Geräte kostenlos zur Verfügung gestellt. Wenn Sie dieses Vorschauangebot nutzen möchten, erstellen Sie eine [Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest):
 
     1. Wählen Sie unter **Problemtyp** die Option **Abrechnung** aus.
     2. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
