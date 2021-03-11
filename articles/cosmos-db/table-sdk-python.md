@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 0029b3f2f70745997ea99db6d88ee298965453fd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 92771bb22897b0568ae601813ca919a260a31d8d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101135"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499389"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB Table API SDK für Python: Versionshinweise und Ressourcen
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "93101135"
 |   |   |
 |---|---|
 |**SDK-Download**|[PyPI](https://pypi.python.org/pypi/azure-cosmosdb-table/)|
-|**API-Dokumentation**|[Python-API-Referenzdokumentation](/python/api/overview/azure/cosmosdb?preserve-view=true&view=azure-python)|
+|**API-Dokumentation**|[Python-API-Referenzdokumentation](/python/api/overview/azure/cosmosdb)|
 |**SDK-Installationsanweisungen**|[Python-SDK-Installationsanweisungen](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Am SDK mitwirken**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Aktuell unterstützte Plattform**|[Python 2.7](https://www.python.org/downloads/) oder [Python 3.3, 3.4, 3.5 oder 3.6](https://www.python.org/downloads/)|

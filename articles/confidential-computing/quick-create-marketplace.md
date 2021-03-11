@@ -3,17 +3,17 @@ title: 'Schnellstart: Erstellen eines virtuellen Azure Confidential Computing-Co
 description: Machen Sie sich als Einstieg in Ihre Bereitstellungen damit vertraut, wie Sie über den Marketplace schnell einen virtuellen Confidential Computing-Computer erstellen können.
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 82d9c143f84dfced639c928bf12693024079c2ba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aba23b67574fb74b7cd571dc5d4642bb8b991b93
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409492"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566633"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>Schnellstart: Bereitstellen eines virtuellen Azure Confidential Computing-Computers im Marketplace
 

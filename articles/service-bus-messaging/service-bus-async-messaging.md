@@ -3,12 +3,12 @@ title: Asynchrones Messaging mit Service Bus | Microsoft Docs
 description: Erfahren Sie, wie Azure Service Bus Asynchronität über einen Speicher- und Weiterleitungsmechanismus mit Warteschlangen, Themen und Abonnements unterstützt.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ea09b809a19cfe7c7f024b059589748ff9e297d4
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: e37c18b95bca7ef1e6e8f0d74976bb73b214624a
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631622"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500630"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>Asynchrone Nachrichtenmuster und Hochverfügbarkeit
 
@@ -34,7 +34,7 @@ Es gibt mehrere Arten, Probleme mit Nachrichten und Entitäten zu behandeln, und
 * Ausfall von Service Bus in einem Azure-Rechenzentrum. Dies ist ein „schwerwiegender Fehler“, durch den das System für viele Minuten oder einige Stunden nicht erreichbar ist.
 
 > [!NOTE]
-> Mit dem Begriff **Speicher** kann sowohl Azure Storage als auch SQL Azure gemeint sein.
+> Der Begriff **Speicher** kann sich sowohl auf Azure-Speicher als auch auf SQL Azure beziehen.
 > 
 > 
 
@@ -73,5 +73,5 @@ Da Sie nun mit den Grundlagen des asynchronen Messagings in Service Bus vertraut
 [System.TimeSpan.Zero]: /dotnet/api/system.timespan.zero
 [IsTransient]: /dotnet/api/microsoft.servicebus.messaging.messagingexception
 [UnauthorizedAccessException]: /dotnet/api/system.unauthorizedaccessexception
-[BacklogQueueCount]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions?redirectedfrom=MSDN
+[BacklogQueueCount]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
 [handling outages and disasters]: service-bus-outages-disasters.md

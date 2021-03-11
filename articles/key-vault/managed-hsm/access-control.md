@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 02/17/2021
 ms.author: ambapat
-ms.openlocfilehash: 816941fe0ec3a81c41da56acedcedf2de7febe74
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 0c0a0c5f62f92aaf195e207dfd505ffb017d924e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445233"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653899"
 ---
 # <a name="managed-hsm-access-control"></a>Zugriffssteuerung für verwaltetes HSM
 
@@ -63,7 +63,7 @@ Die folgende Tabelle zeigt die Endpunkte für die Verwaltungs- und Datenebene.
 | Zugriffs&nbsp;ebene | Zugriffsendpunkte | Operationen (Operations) | Zugriffssteuerungsmechanismus |
 | --- | --- | --- | --- |
 | Verwaltungsebene | **Global:**<br> management.azure.com:443<br> | Erstellen, Lesen, Aktualisieren, Löschen und Verschieben von verwalteten HSMs<br>Festlegen von verwalteten HSM-Tags | Azure RBAC |
-| Datenebene | **Global:**<br> &lt;hsm-name&gt;.vault.azure.net:443<br> | **Schlüssel**: decrypt, encrypt,<br> unwrap, wrap, verify, sign, get, list, update, create, import, delete, backup, restore, purge<br/><br/> **Rollenverwaltung auf Datenebene (Lokale RBAC für verwaltetes HSM):** _Rollendefinitionen auflisten, Rollen zuweisen, Rollenzuweisungen löschen, benutzerdefinierte Rollen definieren<br/><br/>_ *Sicherung/Wiederherstellung: **Sicherung, Wiederherstellung, Status von Sicherungs-/Wiederherstellungsvorgängen überprüfen <br/><br/>** Sicherheitsdomäne:** Sicherheitsdomäne herunter- und hochladen | Lokale RBAC für verwaltetes HSM |
+| Datenebene | **Global:**<br> &lt;hsm-name&gt;.managedhsm.azure.net:443<br> | **Schlüssel**: decrypt, encrypt,<br> unwrap, wrap, verify, sign, get, list, update, create, import, delete, backup, restore, purge<br/><br/> **Rollenverwaltung auf Datenebene (Lokale RBAC für verwaltetes HSM):** _Rollendefinitionen auflisten, Rollen zuweisen, Rollenzuweisungen löschen, benutzerdefinierte Rollen definieren<br/><br/>_ *Sicherung/Wiederherstellung: **Sicherung, Wiederherstellung, Status von Sicherungs-/Wiederherstellungsvorgängen überprüfen <br/><br/>** Sicherheitsdomäne:** Sicherheitsdomäne herunter- und hochladen | Lokale RBAC für verwaltetes HSM |
 |||||
 ## <a name="management-plane-and-azure-rbac"></a>Verwaltungsebene und Azure RBAC
 

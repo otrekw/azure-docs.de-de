@@ -2,16 +2,16 @@
 title: Bereitstellen von IBM DB2 pureScale in Azure
 description: Erfahren Sie, wie Sie eine Beispielarchitektur bereitstellen, die vor Kurzem zum Migrieren eines Unternehmens von der IBM DB2-Umgebung unter z/OS zu IBM DB2 pureScale in Azure verwendet wurde.
 author: njray
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 91ab11dce1c88f698640ce446b529c9cbe92cac5
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 481816ca0c1fecfee9396f6cc40582695b0952f2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221447"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550194"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Bereitstellen von IBM DB2 pureScale in Azure
 
@@ -71,13 +71,13 @@ Das GitHub-Repository enthält „DB2server.rsp“, eine Antwortdatei (RSP), mit
 > [!NOTE]
 > Eine Beispielantwortdatei („DB2server.rsp“) befindet sich im [DB2onAzure](https://aka.ms/db2onazure)-Repository auf GitHub. Wenn Sie diese Datei verwenden, müssen Sie sie bearbeiten, bevor sie in Ihrer Umgebung funktionieren kann.
 
-| Anzeigename               | Feld                                        | value                                                                                                 |
+| Anzeigename               | Feld                                        | Wert                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | Willkommen                   |                                              | Neue Installation                                                                                           |
 | Produkt auswählen          |                                              | DB2 Version 11.1.3.3. Server-Editionen mit DB2 pureScale                                              |
 | Konfiguration             | Verzeichnis                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | Installationstyp auswählen                 | Typisch                                                                                               |
-|                           | Ich akzeptiere die IBM Bedingungen                     | Aktiviert                                                                                               |
+|                           | Ich akzeptiere die IBM Bedingungen                     | Überprüft                                                                                               |
 | Instanzeigner            | Vorhandener Benutzer für Instanz, Benutzername        | DB2sdin1                                                                                              |
 | Abgeschirmter Benutzer               | Vorhandener Benutzer, Benutzername                     | DB2sdfe1                                                                                              |
 | Clusterdateisystem       | Einheitenpfad gemeinsam genutzter Plattenpartition            | /dev/dm-2                                                                                             |
@@ -111,7 +111,7 @@ Das GitHub-Repository enthält „DB2server.rsp“, eine Antwortdatei (RSP), mit
 
 - Die Setupskripts verwenden Aliase für die iSCSI-Datenträger, sodass die tatsächlichen Namen leicht gefunden werden können.
 
-- Wenn das Setupskript auf d0 ausgeführt wird, können die Werte für **„/dev/dm-\*** “ auf d1, cf0 und cf1 unterschiedlich sein. Der Unterschied bei den Werten hat keine Auswirkung auf das DB2 pureScale-Setup.
+- Wenn das Setupskript auf d0 ausgeführt wird, können die Werte für **„/dev/dm-\***“ auf d1, cf0 und cf1 unterschiedlich sein. Der Unterschied bei den Werten hat keine Auswirkung auf das DB2 pureScale-Setup.
 
 ## <a name="troubleshooting-and-known-issues"></a>Problembehandlung und bekannte Probleme
 

@@ -3,16 +3,16 @@ title: Dv3- und Dsv3-Serie
 description: Hier finden Sie die Spezifikationen für virtuelle Computer der Dv3-Serie und der Dsv3-Serie.
 author: joelpelley
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
-ms.openlocfilehash: 8faf86037bc5c2be4ab83adcbcd7e992840d329a
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 22400164ac82df3ec0e0e24daf6d823eae219837
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557779"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566429"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3- und Dsv3-Serie
 
@@ -61,7 +61,7 @@ Virtuelle Computer der Dsv3-Serie verfügen über Hyper-Threading-Technologie vo
 [Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt (*erfordert mindestens 4 vCPU*)<br>
-[Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Unterstützt <br>
+[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt <br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Zwischengespeicherter maximaler Burst und Durchsatz des temporären Speichers: IOPS/MBit/s<sup>1</sup> | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Durchsatz des Datenträgers mit maximalem Burst ohne Cache: IOPS/MBit/s<sup>1</sup> | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |

@@ -9,14 +9,17 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 515921c4e69b7c2cff8e1055182503b5ce89971c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 66a5ed65b0582aafd641473163e1b273d4a4263d
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657144"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489649"
 ---
 # <a name="voice-and-video-concepts"></a>Sprach- und Videokonzepte
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 Mit Azure Communication Services können Sie Sprach- und Videoanrufe (1:1 oder in der Gruppe) tätigen und empfangen. Es können sowohl andere Geräte mit Internetverbindung als auch herkömmliche Telefone angerufen werden. Mit den JavaScript-, Android- oder iOS-Clientbibliotheken von Communication Services können Sie Anwendungen erstellen, die es Benutzern ermöglichen, sich privat oder in Gruppendiskussionen miteinander zu unterhalten. Von Azure Communication Services werden aus- und eingehende Anrufe mit Diensten oder Bots unterstützt.
 

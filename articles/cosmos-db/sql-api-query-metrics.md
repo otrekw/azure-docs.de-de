@@ -5,15 +5,15 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 01/06/2021
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fedcdd55a465f5c09c331a0fa917811c349b15b1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 019ca26143a4879efafa973299703f0abcb21162
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097225"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488085"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Optimieren der Abfrageleistung mit Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +40,7 @@ Wenn Sie eine Abfrage an Azure Cosmos DB ausgeben, führt das SDK folgende logis
 
 Die SDKs stellen verschiedene Optionen für die Abfrageausführung bereit. In .NET sind diese Optionen beispielsweise in der `FeedOptions`-Klasse verfügbar. Die folgende Tabelle beschreibt diese Optionen und erläutert, wie sie sich auf die Abfrageausführungszeit auswirken. 
 
-| Option | BESCHREIBUNG |
+| Option | Beschreibung |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | Muss auf „true“ für eine Abfrage festgelegt werden, die partitionsübergreifend ausgeführt werden muss. Dies ist eine explizite Kennzeichnung, die es Ihnen bei der Entwicklung ermöglichen soll, gezielt Leistungskompromisse zu finden. |
 | `EnableScanInQuery` | Muss auf „true“ festgelegt werden, wenn Sie die Indizierung deaktiviert haben, die Abfrage jedoch trotzdem mittels einer Überprüfung ausführen möchten. Diese Option ist nur anwendbar, wenn die Indizierung für den angeforderten Filterpfad deaktiviert ist. | 
@@ -126,7 +126,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 Die von der Abfrage zurückgegebenen Schlüsselantwortheader umfassen Folgendes:
 
-| Option | BESCHREIBUNG |
+| Option | Beschreibung |
 | ------ | ----------- |
 | `x-ms-item-count` | Die Anzahl der in der Antwort zurückgegebenen Elemente. Diese ist abhängig vom angegebenen `x-ms-max-item-count`-Header, der Anzahl der Elemente, die maximal als Antwortnutzlast übertragen werden können, dem bereitgestellten Durchsatz und der Abfrageausführungszeit. |  
 | `x-ms-continuation:` | Das Fortsetzungstoken zum Fortsetzen der Abfrageausführung, sofern zusätzliche Ergebnisse verfügbar sind. | 
@@ -143,7 +143,6 @@ Im Folgenden werden die gängigsten Faktoren vorgestellt, die sich auf die Abfra
 | Bereitgestellter Durchsatz | Messen Sie die RUs pro Abfrage, und stellen Sie sicher, dass Sie über den erforderlichen bereitgestellten Durchsatz für Ihre Abfragen verfügen. | 
 | Partitionierung und Partitionsschlüssel | Geben Sie Abfragen mit dem Partitionsschlüsselwert in der Filterklausel aufgrund geringer Latenz den Vorzug. |
 | SDK und Abfrageoptionen | Befolgen Sie bewährte Methoden für SDK wie direkte Konnektivität, und optimieren Sie Optionen für die clientseitige Abfrageausführung. |
-| Netzwerklatenz | Berücksichtigen Sie den Netzwerkoverhead bei der Messung, und verwenden Sie Multihoming-APIs, um den Lesevorgang über die am nächsten gelegene Region durchzuführen. |
 | Indizierungsrichtlinien | Stellen Sie sicher, dass Sie über die erforderlichen Indizierungspfade bzw. die erforderliche Indizierungsrichtlinie für die Abfrage verfügen. |
 | Abfrageausführungsmetriken | Analysieren Sie die Abfrageausführungsmetriken, um potenzielle Änderungen an Abfrage- und Datenformen zu identifizieren.  |
 
@@ -261,7 +260,7 @@ Die Client-SDKs können intern möglicherweise mehrere Abfrageoperationen ausfü
 
 Im Folgenden werden einige Beispielabfragen vorgestellt und erläutert, wie einige von der Abfrageausführung zurückgegebenen Metriken zu interpretieren sind: 
 
-| Abfrage | Beispielmetrik | BESCHREIBUNG | 
+| Abfrage | Beispielmetrik | Beschreibung | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Die Anzahl der abgerufenen Dokumente beträgt 100+1 entsprechend der TOP-Klausel. Die Abfragezeit wird hauptsächlich für `WriteOutputTime` und `DocumentLoadTime` aufgewendet, da es sich um eine Überprüfung handelt. | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | „RetrievedDocumentCount“ ist nun höher (500+1 entsprechend der TOP-Klausel). | 

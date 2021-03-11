@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 054fb2ffc65b44d5436282eab5327f0facf39c06
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ce3f56530a7bad6eecd4c2edd3b21debe8c75a24
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671189"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214149"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Bereitstellen von OpenShift Container Platform 3.11 in Azure
 
@@ -308,7 +308,7 @@ Die Parameter können sich je nach Release unterschieden. Überprüfen Sie daher
 ### <a name="deploy-using-azure-cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle
 
 > [!NOTE] 
-> Der folgende Befehl erfordert Azure CLI 2.0.8 oder höher. Sie können die CLI-Version mit dem `az --version`-Befehl überprüfen. Informationen zum Aktualisieren der CLI-Version finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latesti).
+> Der folgende Befehl erfordert Azure CLI 2.0.8 oder höher. Sie können die CLI-Version mit dem `az --version`-Befehl überprüfen. Informationen zum Aktualisieren der CLI-Version finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
 Im folgenden Beispiel werden der OpenShift-Cluster und alle dazugehörigen Ressourcen in der Ressourcengruppe „openshiftrg“ mit dem Bereitstellungsnamen „myOpenShiftCluster“ bereitgestellt. Auf die Vorlage wird direkt aus dem GitHub-Repository verwiesen. Außerdem wird die lokale Parameterdatei „azuredeploy.parameters.json“ verwendet.
 

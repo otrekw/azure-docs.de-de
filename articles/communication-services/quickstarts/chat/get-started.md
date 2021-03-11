@@ -10,14 +10,17 @@ ms.date: 09/30/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python-swift-android
-ms.openlocfilehash: d8b2edff432bdcbd21afdf81ffea2617b22b0452
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4c2e0ab3170779234c1a1d0b2676632022b9dfcd
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661628"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489722"
 ---
 # <a name="quickstart-add-chat-to-your-app"></a>Schnellstart: Hinzufügen von Chatfunktionen zu Ihrer App
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 Steigen Sie in Azure Communication Services ein, indem Sie die Communication Services-Clientbibliothek für Chats nutzen, um Ihre Anwendung mit Echtzeitchatfunktionen zu versehen. In dieser Schnellstartanleitung wird die Clientbibliothek für Chats verwendet, um Chatthreads zu erstellen, die es Benutzern ermöglichen, miteinander zu kommunizieren. Weitere Informationen zu Chatkonzepten finden Sie in der [Dokumentation zu Chatkonzepten](../../concepts/chat/concepts.md).
 

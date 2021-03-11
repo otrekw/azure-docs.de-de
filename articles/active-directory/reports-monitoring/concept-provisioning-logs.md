@@ -17,12 +17,12 @@ ms.date: 1/29/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 284b554581534a8493225fba0b70b074fb7dd982
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7d8c4876faf9ebc2619309aa0095a8ffe1e9e93d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651936"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500545"
 ---
 # <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>Übersicht über Bereitstellungsprotokolle im Azure-Portal (Vorschau)
 
@@ -207,7 +207,7 @@ Die JSON-Datei wird in einem sehr minimalistischen Format heruntergeladen, um di
 
 Im Anschluss finden Sie einige Beispielbefehle für die Verwendung der JSON-Datei mit PowerShell. Sie können Ihre bevorzugte Programmiersprache verwenden.  
 
-Führen Sie zum [Lesen der JSON-Datei](/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) zunächst den folgenden Befehl aus:
+Führen Sie zum [Lesen der JSON-Datei](/powershell/module/microsoft.powershell.utility/convertfrom-json) zunächst den folgenden Befehl aus:
 
 ` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
 

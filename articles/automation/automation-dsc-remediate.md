@@ -9,12 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: 4430b8cdfe9414ddbfd7aad3c3fe7827adbc8705
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98164c20af2a5d6ae7ccac43331a2876c23ccfb7
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186366"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500171"
 ---
 # <a name="remediate-noncompliant-azure-automation-state-configuration-servers"></a>Korrigieren nicht konformer Azure Automation State Configuration-Server
 
@@ -43,5 +43,5 @@ Für Hybridknoten kann die Korrektur von Abweichungen mithilfe der Python-Skript
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/#automation).
 - Ein Anwendungsbeispiel für Azure Automation State Configuration in einer Continuous Deployment-Pipeline finden Sie unter [Einrichten von Continuous Deployment mit Chocolatey](automation-dsc-cd-chocolatey.md).

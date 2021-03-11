@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: 28b82c87442257124f286a5e7c949afe7f001019
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f05e1a458bc83fe4042c4b6cf35d9aa2095868ef
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146938"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217957"
 ---
 # <a name="get-started-with-device-management-java"></a>Erste Schritte mit der Geräteverwaltung (Java)
 
@@ -54,7 +54,7 @@ Am Ende dieses Tutorials verfügen Sie über zwei Java-Konsolen-Apps:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable) Wählen Sie unter **Langfristiger Support** unbedingt **Java 8** aus, um zu den Downloads für JDK 8 zu gelangen.
+* [Java SE Development Kit 8](/java/azure/jdk/) Wählen Sie unter **Langfristiger Support** unbedingt **Java 8** aus, um zu den Downloads für JDK 8 zu gelangen.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -415,7 +415,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die ein Gerät simulie
     public static void main(String[] args) throws IOException, URISyntaxException
     ```
 
-16. Ersetzen Sie den Code in der **main**-Methode durch den folgenden Code, um einen **DeviceClient**zu instanziieren:
+16. Ersetzen Sie den Code in der **main**-Methode durch den folgenden Code, um einen **DeviceClient** zu instanziieren:
 
     ```java
     System.out.println("Starting device client sample...");

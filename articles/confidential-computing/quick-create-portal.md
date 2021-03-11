@@ -3,17 +3,17 @@ title: 'Schnellstart: Erstellen eines virtuellen Azure Confidential Computing-Co
 description: Machen Sie sich als Einstieg in Ihre Bereitstellungen damit vertraut, wie Sie im Azure-Portal schnell einen virtuellen Confidential Computing-Computer erstellen können.
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 1e417563b463d7033072b27bec505d10ef1adb47
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3f0984acd66bd5d6c148be8451938d3152fb9ca7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695740"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566667"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>Schnellstart: Bereitstellen eines virtuellen Azure Confidential Computing-Computers im Azure-Portal
 

@@ -10,12 +10,12 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.reviewer: cynthn
-ms.openlocfilehash: afb985ecbe91835369738966e39e751f06f8d796
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 622ebfed8294dbcb441aa509fc4f6ba75114f28d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571332"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499355"
 ---
 # <a name="security-recommendations-for-virtual-machines-in-azure"></a>Sicherheitsempfehlungen für virtuelle Computer in Azure
 
@@ -33,7 +33,7 @@ Allgemeine Informationen zu Azure Security Center finden Sie unter [Was ist Azur
 | Wenden Sie beim Erstellen benutzerdefinierter VM-Images die neuesten Updates an. | Installieren Sie vor dem Erstellen von Images die neuesten Updates für das Betriebssystem und alle Anwendungen, die im Image enthalten sein sollen.  | - |
 | Halten Sie Ihre virtuellen Computer auf dem neuesten Stand. | Sie können die Lösung für [Updateverwaltung](../automation/update-management/overview.md) in Azure Automation verwenden, um Betriebssystemupdates für Ihre Windows- und Linux-Computer in Azure zu verwalten. | [Ja](../security-center/asset-inventory.md) |
 | Sichern Sie Ihre VMs. | Mit [Azure Backup](../backup/backup-overview.md) können Sie Ihre Anwendungsdaten bei minimalen Betriebskosten schützen. Anwendungsfehler können Ihre Daten beschädigen, und menschliche Fehler können Bugs in Ihren Anwendungen verursachen. Azure Backup schützt Ihre VMs, auf denen Windows und Linux ausgeführt werden. | - |
-| Verwenden Sie mehrere VMs, um größere Ausfallsicherheit und Verfügbarkeit zu erreichen. | Wenn Ihre VM Anwendungen ausführt, die in hohem Maß verfügbar sein müssen, verwenden Sie mehrere VMs oder [Verfügbarkeitsgruppen](./manage-availability.md). | - |
+| Verwenden Sie mehrere VMs, um größere Ausfallsicherheit und Verfügbarkeit zu erreichen. | Wenn Ihre VM Anwendungen ausführt, die in hohem Maß verfügbar sein müssen, verwenden Sie mehrere VMs oder [Verfügbarkeitsgruppen](./availability.md). | - |
 | Führen Sie eine Strategie für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity & Disaster Recovery, BCDR) ein. | Azure Site Recovery ermöglicht es Ihnen, unter verschiedenen Optionen zu wählen, die Ihre Geschäftskontinuitätsanforderungen unterstützen. Die Unterstützung erstreckt sich über verschiedene Replikations- und Failoverszenarien. Mehr dazu erfahren Sie unter [Informationen zu Azure Site Recovery](../site-recovery/site-recovery-overview.md). | - |
 
 ## <a name="data-security"></a>Datensicherheit

@@ -3,12 +3,12 @@ title: Verteilte gemeinsame Entwicklung von Azure DevTest Labs-Ressourcen
 description: Bietet bewährte Methoden zum Einrichten einer verteilten und gemeinsamen Entwicklungsumgebung für die Entwicklung von DevTest Labs-Ressourcen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1ef6d7aa7d3cfd4fcc64eaa45259684dfcb9ccee
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: caf4bd13f2ec9c45db392a027db269b492cbd802
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592363"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550075"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Bewährte Methoden für die verteilte und gemeinsame Entwicklung von Azure DevTest Labs-Ressourcen
 Mithilfe der verteilten gemeinsamen Entwicklung können unterschiedliche Teams oder Personen eine Codebasis entwickeln und verwalten. Der Erfolg des Entwicklungsprozesses hängt von der Fähigkeit ab, Informationen zu erstellen, freizugeben und zu integrieren. Dieses wichtige Entwicklungsprinzip kann in Azure DevTest Labs verwendet werden. Es gibt mehrere Arten von Ressourcen innerhalb eines Labs, die häufig zwischen verschiedenen Labs innerhalb eines Unternehmens verteilt werden. Die verschiedenen Arten von Ressourcen sind in zwei Bereiche unterteilt:
@@ -27,7 +27,7 @@ Sie können eine allgemeine Quelle für benutzerdefinierte Images verwenden, die
 [Formeln](devtest-lab-manage-formulas.md) sind lab-spezifisch und verfügen nicht über einen Verteilungsmechanismus. Die Lab-Mitglieder führen die gesamte Entwicklung von Formeln durch. 
 
 ## <a name="code-repository-based-resources"></a>Coderepositorybasierte Ressourcen
-Es gibt zwei verschiedene Features, die auf Coderepositorys basieren: Artefakte und Umgebungen. In diesem Artikel werden die Features und die effektivste Einrichtung von Repositorys und Workflows erläutert, damit die verfügbaren Artefakte und Umgebungen auf Organisations- oder Teamebene angepasst werden können.  Dieser Workflow basiert auf der Standardstrategie für [Quellcodeverwaltungs-Branching](/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops). 
+Es gibt zwei verschiedene Features, die auf Coderepositorys basieren: Artefakte und Umgebungen. In diesem Artikel werden die Features und die effektivste Einrichtung von Repositorys und Workflows erläutert, damit die verfügbaren Artefakte und Umgebungen auf Organisations- oder Teamebene angepasst werden können.  Dieser Workflow basiert auf der Standardstrategie für [Quellcodeverwaltungs-Branching](/azure/devops/repos/tfvc/branching-strategies-with-tfvc). 
 
 ### <a name="key-concepts"></a>Wichtige Begriffe
 Die Quellinformationen für Artefakte enthalten Metadaten und Skripts. Zu den Quellinformationen für Umgebungen zählen Metadaten und Resource Manager-Vorlagen mit allen unterstützenden Dateien wie PowerShell-Skripts, DSC-Skripts, ZIP-Dateien usw.  
@@ -39,7 +39,7 @@ Die häufigste Konfiguration für Quellcodeverwaltung (Source Code Control, SCC)
 - Ressourcen für die Geschäftseinheit/-division
 - Teamspezifische Ressourcen.
 
-Jede dieser Ebenen ist mit einem anderen Repository verknüpft, wobei der Mainbranch Produktionsqualität aufweisen muss. Die [Branches](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) in jedem Repository sind für die Entwicklung dieser spezifischen Ressourcen (Artefakte oder Vorlagen) vorgesehen. Diese Struktur ist gut für DevTest Labs geeignet, da Sie problemlos mehrere Repositorys und mehrere Branches gleichzeitig mit den Labs der Organisation verbinden können. Der Repositoryname ist in der Benutzeroberfläche (UI) enthalten, um Verwechslungen zu vermeiden, wenn identische Namen, Beschreibungen und Herausgeber vorhanden sind.
+Jede dieser Ebenen ist mit einem anderen Repository verknüpft, wobei der Mainbranch Produktionsqualität aufweisen muss. Die [Branches](/azure/devops/repos/git/git-branching-guidance) in jedem Repository sind für die Entwicklung dieser spezifischen Ressourcen (Artefakte oder Vorlagen) vorgesehen. Diese Struktur ist gut für DevTest Labs geeignet, da Sie problemlos mehrere Repositorys und mehrere Branches gleichzeitig mit den Labs der Organisation verbinden können. Der Repositoryname ist in der Benutzeroberfläche (UI) enthalten, um Verwechslungen zu vermeiden, wenn identische Namen, Beschreibungen und Herausgeber vorhanden sind.
      
 Die folgende Abbildung zeigt zwei Repositorys: ein Unternehmensrepository, das von der IT-Abteilung verwaltet wird, und ein Divisionsrepository, das von der Division R & D (Research & Development, Forschung und Entwicklung) verwaltet wird.
 

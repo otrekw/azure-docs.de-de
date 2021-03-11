@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 04137fef640da46ca8876811e127e109a8c3d445
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4bfc29472373a53bcebb2ba59134d1f3702d4793
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348303"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549871"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>Erstellen der Landing Page für Ihr transaktionsfähiges SaaS-Angebot im kommerziellen Marketplace
 
@@ -62,7 +62,7 @@ Wenn Sie im Rahmen Ihres Onboarding- oder Bereitstellungsvorgangs erhöhte Recht
 
 Wir haben mehrere Beispiel-Apps bereitgestellt, mit denen eine einfache Website implementiert wird, für die die Azure AD-Anmeldung aktiviert ist. Nachdem Ihre Anwendung in Azure AD registriert wurde, wird auf dem Blatt **Schnellstart** eine Liste gängiger Anwendungstypen und Entwicklungsstapel aufgeführt (siehe Abbildung 1). Wählen Sie die geeignete Option für Ihre Umgebung aus, und befolgen Sie die Anweisungen für Download und Einrichtung.
 
-**_Abbildung 1: Blatt „Schnellstart“ im Azure-Portal_* _
+***Abbildung 1: Blatt „Schnellstart“ im Azure-Portal***
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-quickstart-blade.png" alt-text="Zeigt das Blatt „Schnellstart“ im Azure-Portal.":::
 
@@ -109,7 +109,7 @@ Im Rahmen des [OpenID Connect](../active-directory/develop/v2-protocols-oidc.md)
 
 ## <a name="use-the-microsoft-graph-api"></a>Verwenden der Microsoft Graph-API
 
-Das ID-Token enthält grundlegende Informationen zur Identifizierung des Käufers. Für Ihren Aktivierungsprozess können jedoch weitere Details erforderlich sein (z. B. das Unternehmen des Käufers), um das Onboarding abzuschließen. Fordern Sie diese Informationen mithilfe der [Microsoft Graph-API](/graph/use-the-api) an. Dadurch verhindern Sie, dass der Benutzer diese Einzelheiten erneut eingeben muss. Die _ *User.Read* *-Berechtigungen umfassen standardmäßig folgende Informationen.
+Das ID-Token enthält grundlegende Informationen zur Identifizierung des Käufers. Für Ihren Aktivierungsprozess können jedoch weitere Details erforderlich sein (z. B. das Unternehmen des Käufers), um das Onboarding abzuschließen. Fordern Sie diese Informationen mithilfe der [Microsoft Graph-API](/graph/use-the-api) an. Dadurch verhindern Sie, dass der Benutzer diese Einzelheiten erneut eingeben muss. Die standardmäßigen **User.Read**-Berechtigungen umfassen folgende Informationen:
 
 | Wert | BESCHREIBUNG |
 | ------------ | ------------- |
@@ -122,7 +122,7 @@ Das ID-Token enthält grundlegende Informationen zur Identifizierung des Käufer
 | surname | Der Nachname des Benutzers. |
 |||
 
-Es können weitere Eigenschaften wie der Name des Unternehmens oder der Standort des Benutzers (Land) ausgewählt werden, die in der Anforderung enthalten sein sollen. Weitere Informationen finden Sie unter [Eigenschaften für den Benutzerressourcentyp](/graph/api/resources/user?view=graph-rest-1.0&preserve-view=true#properties).
+Es können weitere Eigenschaften wie der Name des Unternehmens oder der Standort des Benutzers (Land) ausgewählt werden, die in der Anforderung enthalten sein sollen. Weitere Informationen finden Sie unter [Eigenschaften für den Benutzerressourcentyp](/graph/api/resources/user#properties).
 
 Die meisten Apps, die in Azure AD registriert sind, erteilen delegierte Berechtigungen zum Lesen der Benutzerinformationen aus dem Azure AD-Mandanten seines Unternehmens. Microsoft Graph-Anforderungen zum Abrufen dieser Informationen müssen ein Zugriffstoken zur Authentifizierung enthalten. Die jeweils erforderlichen Schritte zum Erzeugen des Zugriffstokens hängen vom verwendeten Technologiestapel ab. Ein Beispiel finden Sie im Beispielcode. Weitere Informationen finden Sie unter [Zugreifen im Namen eines Benutzers](/graph/auth-v2-user).
 

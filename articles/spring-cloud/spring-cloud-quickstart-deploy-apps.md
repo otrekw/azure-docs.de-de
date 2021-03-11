@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 7c37fbead3f7b87da16e77caeda8286d05ca628b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 727354593488cd5af77408eaa7c8d9e747a0b071
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035134"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210307"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Schnellstart: Erstellen und Bereitstellen von Apps in Azure Spring Cloud
 
@@ -187,9 +187,9 @@ Führen Sie vor der Bereitstellung mithilfe der Azure CLI oder von Maven die Bei
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Installation von JDK 8](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
+* [Installation von JDK 8](/java/azure/jdk/)
 * [Registrierung für ein Azure-Abonnement](https://azure.microsoft.com/free/)
-* (Optional) [Installation der Azure CLI, Version 2.0.67 oder höher](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) und Installation der Azure Spring Cloud-Erweiterung mit dem Befehl `az extension add --name spring-cloud`
+* (Optional) [Installation der Azure CLI, Version 2.0.67 oder höher](/cli/azure/install-azure-cli) und Installation der Azure Spring Cloud-Erweiterung mit dem Befehl `az extension add --name spring-cloud`
 * (Optional) [Installation des Azure-Toolkits für IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) und [Anmeldung](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="deployment-procedures"></a>Bereitstellungsverfahren

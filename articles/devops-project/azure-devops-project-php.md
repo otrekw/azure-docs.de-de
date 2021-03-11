@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 5727a08159f750a69920f66f4b743c187aa00885
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 06ac110da35a5a77157bd4e31caaa5aa5fd015cc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588963"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566565"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>Erstellen einer CI/CD-Pipeline für PHP mit Azure DevOps Starter
 
@@ -118,11 +118,11 @@ Wenn Sie kein Azure-Abonnement haben, erhalten Sie über [Visual Studio Dev Esse
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Sie können die Azure App Service-Instanz und zugehörige Ressourcen löschen, wenn Sie sie nicht mehr benötigen. Verwenden Sie die Funktion **Löschen** im DevOps Starter-Dashboard.
+Sie können die Azure App Service-Instanz und zugehörige Ressourcen löschen, wenn Sie sie nicht mehr benötigen. Verwenden Sie die Funktion **Löschen** auf dem DevOps Starter-Dashboard.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Beim Konfigurieren des CI/CD-Prozesses wurden automatisch Build- und Releasepipelines erstellt. Diese Build- und Releasepipelines können Sie den Anforderungen Ihres Teams anpassen. Weitere Informationen zur CI/CD-Pipeline finden Sie im folgenden Tutorial:
 
 > [!div class="nextstepaction"]
-> [Anpassen von CD-Prozessen](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Anpassen von CD-Prozessen](/azure/devops/pipelines/release/define-multistage-release-process)

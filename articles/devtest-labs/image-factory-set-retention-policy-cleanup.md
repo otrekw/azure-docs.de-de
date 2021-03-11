@@ -3,12 +3,12 @@ title: Einrichten von Aufbewahrungsrichtlinien in Azure DevTest Labs | Microsoft
 description: Erfahren Sie, wie Sie eine Aufbewahrungsrichtlinie konfigurieren, die Factory bereinigen und alte Images von DevTest Labs ausmustern.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 115fdff215399a9a51171161191ecf5009e8e20e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85384e88f8d456c7bf67302a57618d7a9703a5ee
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476052"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550024"
 ---
 # <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Einrichten von Aufbewahrungsrichtlinien in Azure DevTest Labs
 In diesem Artikel wird das Festlegen einer Aufbewahrungsrichtlinie, das Bereinigen der Factory und das Ausmustern alter Images aus allen anderen DevTest Labs in der Organisation behandelt. 
@@ -16,8 +16,8 @@ In diesem Artikel wird das Festlegen einer Aufbewahrungsrichtlinie, das Bereinig
 ## <a name="prerequisites"></a>Voraussetzungen
 Stellen Sie sicher, dass Sie folgende Schritte ausgeführt haben, ehe Sie fortfahren:
 
-- [Erstellen einer Image Factory](image-factory-create.md)
-- [Ausführen einer Image Factory in Azure DevOps](image-factory-set-up-devops-lab.md)
+- [Erstellen einer Imagefactory](image-factory-create.md)
+- [Ausführen einer Image Factory aus AzureDevOps](image-factory-set-up-devops-lab.md)
 - [Speichern von benutzerdefinierten Images und Verteilen an mehrere Labs](image-factory-save-distribute-custom-images.md)
 
 Folgende Elemente sollten bereits vorhanden sein:
@@ -64,7 +64,7 @@ Das Hinzufügen eines neuen Image zu Ihrer Factory ist ebenfalls einfach. Wenn S
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-1. [Planen Sie für Ihren Build/Ihr Release](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) die regelmäßige Ausführung der Image Factory. Dadurch werden die von Ihrer Factory generierten Images regelmäßig aktualisiert.
+1. [Planen Sie für Ihren Build/Ihr Release](/azure/devops/pipelines/build/triggers?tabs=designer) die regelmäßige Ausführung der Image Factory. Dadurch werden die von Ihrer Factory generierten Images regelmäßig aktualisiert.
 2. Erstellen Sie weitere Golden Images für Ihre Factory. Sie können auch in Betracht ziehen, [Artefakte](devtest-lab-artifact-author.md) zu erstellen, um zusätzliche Teile Ihrer VM-Einrichtungsaufgaben in ein Skript einzubinden und die Artefakte in Ihre Factory-Images aufzunehmen.
 4. Erstellen Sie einen [separaten Build bzw. ein separates Release](/azure/devops/pipelines/overview?view=azure-devops-2019), um das Skript **DistributeImages** getrennt auszuführen. Sie können dieses Skript ausführen, wenn Sie Änderungen an „Labs.json“ vornehmen und Images in Ziellabs kopieren lassen, ohne alle Images erneut erstellen zu müssen.
 

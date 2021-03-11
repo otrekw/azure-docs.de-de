@@ -3,12 +3,12 @@ title: Verknüpfen von Vorlagen für die Bereitstellung
 description: Beschreibt, wie verknüpfte Vorlagen in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Erstellen einer modularen Vorlagenlösung verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden.
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: ac987b1390e939ad2b081745396245b432bb836b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3636ea64227a7c013134d96647144d4f1e2ae31e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741003"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211310"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -106,9 +106,9 @@ Der Bereich wird durch die `expressionEvaluationOptions`-Eigenschaft festgelegt.
   "apiVersion": "2019-10-01",
   "name": "nestedTemplate1",
   "properties": {
-  "expressionEvaluationOptions": {
-    "scope": "inner"
-  },
+    "expressionEvaluationOptions": {
+      "scope": "inner"
+    },
   ...
 ```
 
