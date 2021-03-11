@@ -3,17 +3,18 @@ title: Erstellen und Verschlüsseln einer Windows-VM mit der Azure CLI
 description: In diesem Schnellstart erfahren Sie, wie Sie mit der Azure CLI einen virtuellen Windows-Computer erstellen und verschlüsseln.
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 90c2584ef56922fc2cd57f445201b63550c485c1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: bffa155a51c4897cd1e2cc07a6d4aea9a8e080ba
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200667"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562740"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-vm-with-the-azure-cli"></a>Schnellstart: Erstellen und Verschlüsseln einer Windows-VM mit der Azure CLI
 

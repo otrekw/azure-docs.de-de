@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: ac8b0e0c2cdbd46626677f4be0f78800d839ad28
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 67f5665225bc1297d0eb1b1e1da954fb47660dee
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358893"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488952"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Migrationsleitfaden: SQL Server zu SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -57,6 +57,8 @@ Alternativ können Sie das  [Microsoft Assessment and Planning Toolkit (MAP To
 Weitere Informationen zu den für die Ermittlungsphase verfügbaren Tools finden Sie unter [Dienste und Tools für Datenmigrationsszenarios](../../../dms/dms-tools-matrix.md). 
 
 ### <a name="assess"></a>Bewerten 
+
+[!INCLUDE [assess-estate-with-azure-migrate](../../../../includes/azure-migrate-to-assess-sql-data-estate.md)]
 
 Nachdem die Datenquellen ermittelt wurden, sollten Sie alle lokalen SQL Server-Instanzen bewerten, die zu Azure SQL Managed Instance migriert werden können, um Hindernisse oder Kompatibilitätsprobleme zu identifizieren. 
 

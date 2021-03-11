@@ -1,20 +1,21 @@
 ---
 title: Azure Key Vault-VM-Erweiterung für Windows
 description: Es wird beschrieben, wie Sie einen Agent zur automatischen Aktualisierung von Key Vault-Geheimnissen auf virtuellen Computern per VM-Erweiterung bereitstellen.
-services: virtual-machines-windows
+services: virtual-machines
 author: msmbaldwin
 tags: keyvault
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f7c8a7eb06490a46e1c5b633944dcd596fa08515
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: a984d044134dbd775bacb653f8590ee78724f15b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093623"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563556"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault-VM-Erweiterung für Windows
 
@@ -230,9 +231,9 @@ Die Azure-Befehlszeilenschnittstelle kann verwendet werden, um die Key Vault-VM
     
     ```azurecli
        # Start the deployment
-         az vm extension set -name "KeyVaultForWindows" `
+         az vm extension set --name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         -resource-group "<resourcegroup>" `
+         --resource-group "<resourcegroup>" `
          --vm-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```

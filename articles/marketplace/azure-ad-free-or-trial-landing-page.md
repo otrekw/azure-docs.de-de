@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/04/2020
-ms.openlocfilehash: 699271316eccec1244db886ed2296f87c52f91ae
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: e7cee47e90e6484a4258ba82e47af03725c41d34
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348354"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559289"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Erstellen der Landing Page für Ihr kostenloses SaaS-Angebot oder Ihr SaaS-Testangebot im kommerziellen Marketplace
 
@@ -59,7 +59,7 @@ Wenn Sie im Rahmen Ihres Onboarding- oder Bereitstellungsvorgangs jedoch erhöht
 
 Microsoft hat mehrere Beispiel-Apps bereitgestellt, mit denen eine einfache Website implementiert wird, für die die Azure AD-Anmeldung aktiviert ist. Nachdem Ihre Anwendung in Azure AD registriert wurde, wird auf dem Blatt **Schnellstart** eine Liste gängiger Anwendungstypen und Entwicklungsstapel aufgeführt (Abbildung 1). Wählen Sie die geeignete Option für Ihre Umgebung aus, und befolgen Sie die Anweisungen zum Herunterladen und Einrichten.
 
-**_Abbildung 1: Blatt „Schnellstart“ im Azure-Portal_* _
+***Abbildung 1: Blatt „Schnellstart“ im Azure-Portal***
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-quickstart-blade.png" alt-text="Veranschaulicht das Blatt „Schnellstart“ im Azure-Portal.":::
 
@@ -82,7 +82,7 @@ Im Rahmen des [OpenID Connect](../active-directory/develop/v2-protocols-oidc.md)
 
 ## <a name="use-the-microsoft-graph-api"></a>Verwenden der Microsoft Graph-API
 
-Das ID-Token enthält grundlegende Informationen zur Identifizierung des Benutzers. Für Ihren Aktivierungsprozess können jedoch weitere Details erforderlich sein (z. B. das Unternehmen des Benutzers), um das Onboarding abzuschließen. Fordern Sie diese Informationen mithilfe der [Microsoft Graph-API](/graph/use-the-api) an. Dadurch verhindern Sie, dass der Benutzer diese Angaben erneut machen muss. Die _ *User.Read* *-Berechtigungen umfassen standardmäßig folgende Informationen:
+Das ID-Token enthält grundlegende Informationen zur Identifizierung des Benutzers. Für Ihren Aktivierungsprozess können jedoch weitere Details erforderlich sein (z. B. das Unternehmen des Benutzers), um das Onboarding abzuschließen. Fordern Sie diese Informationen mithilfe der [Microsoft Graph-API](/graph/use-the-api) an. Dadurch verhindern Sie, dass der Benutzer diese Angaben erneut machen muss. Die standardmäßigen **User.Read**-Berechtigungen umfassen folgende Informationen:
 
 | Wert | BESCHREIBUNG |
 | ------------ | ------------- |
@@ -95,7 +95,7 @@ Das ID-Token enthält grundlegende Informationen zur Identifizierung des Benutze
 | surname | Der Nachname des Benutzers. |
 |||
 
-Es können weitere Eigenschaften wie der Name des Unternehmens oder der Standort des Benutzers (Land) ausgewählt werden, die in der Anforderung enthalten sein sollen. Weitere Informationen finden Sie unter [Eigenschaften für den Benutzerressourcentyp](/graph/api/resources/user?view=graph-rest-1.0&preserve-view=true#properties).
+Es können weitere Eigenschaften wie der Name des Unternehmens oder der Standort des Benutzers (Land) ausgewählt werden, die in der Anforderung enthalten sein sollen. Weitere Informationen finden Sie unter [Eigenschaften für den Benutzerressourcentyp](/graph/api/resources/user#properties).
 
 Die meisten Apps, die in Azure AD registriert sind, erteilen delegierte Berechtigungen zum Lesen der Benutzerinformationen aus dem Azure AD-Mandanten seines Unternehmens. Microsoft Graph-Anforderungen zum Abrufen dieser Informationen müssen ein Zugriffstoken zur Authentifizierung enthalten. Die jeweils erforderlichen Schritte zum Erzeugen des Zugriffstokens hängen vom verwendeten Technologiestapel ab. Ein Beispiel finden Sie im Beispielcode. Weitere Informationen finden Sie unter [Zugreifen im Namen eines Benutzers](/graph/auth-v2-user).
 

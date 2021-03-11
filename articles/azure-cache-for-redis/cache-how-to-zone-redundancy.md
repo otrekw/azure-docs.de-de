@@ -6,17 +6,17 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 0cb7ee5b9fa02e726d03bf1ae9935c07ded6e4a6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0623f47528d0530838f62c28cf5546e1e66c187b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088011"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508264"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis-preview"></a>Aktivieren der Zonenredundanz für Azure Cache for Redis (Vorschau)
 In diesem Artikel erfahren Sie, wie Sie eine zonenredundante Azure Cache-Instanz über das Azure-Portal konfigurieren.
 
-Azure Cache for Redis im Standard-, Premium- und Enterprise-Tarif bietet integrierte Redundanz durch das Hosting jedes Caches auf zwei dedizierten virtuellen Computern (VMs). Obwohl sich diese VMs in separaten [Azure-Fehler- und Updatedomänen befinden](../virtual-machines/manage-availability.md) und hoch verfügbar sind, sind Sie anfällig für Ausfälle auf Rechenzentrumsebene. Azure Cache for Redis unterstützt auch Zonenredundanz im Premium- und Enterprise-Tarif. Ein zonenredundanter Cache wird auf VMs ausgeführt, die auf mehrere [Verfügbarkeitszonen](../virtual-machines/manage-availability.md#use-availability-zones-to-protect-from-datacenter-level-failures) verteilt sind. Dies bietet höhere Resilienz und Verfügbarkeit.
+Azure Cache for Redis im Standard-, Premium- und Enterprise-Tarif bietet integrierte Redundanz durch das Hosting jedes Caches auf zwei dedizierten virtuellen Computern (VMs). Obwohl sich diese VMs in separaten [Azure-Fehler- und Updatedomänen befinden](../virtual-machines/availability.md) und hoch verfügbar sind, sind Sie anfällig für Ausfälle auf Rechenzentrumsebene. Azure Cache for Redis unterstützt auch Zonenredundanz im Premium- und Enterprise-Tarif. Ein zonenredundanter Cache wird auf VMs ausgeführt, die auf mehrere [Verfügbarkeitszonen](../availability-zones/az-overview.md) verteilt sind. Dies bietet höhere Resilienz und Verfügbarkeit.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)

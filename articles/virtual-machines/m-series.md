@@ -3,16 +3,16 @@ title: 'M-Serie: Azure Virtual Machines'
 description: Hier finden Sie Spezifikationen für die virtuellen Computer der M-Serie.
 author: ayshakeen
 ms.service: virtual-machines
-ms.subservice: hpc
+ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: b893d2d381ccea286066d6141142c2ab190242bc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 91c29864367380a303a006d4aac823a22a966a2b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101667036"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563091"
 ---
 # <a name="m-series"></a>M-Serie
 
@@ -28,7 +28,7 @@ Virtuelle Computer der M-Serie verfügen über Hyperthreading-Technologie von In
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Schreibbeschleunigung:](./how-to-enable-write-accelerator.md) Unterstützt<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
-[Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
+[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt <br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |

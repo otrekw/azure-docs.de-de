@@ -5,12 +5,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 4b4b893b222a62619a36d59c2cf042f1aa5590bc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 70b27fec07d074dadb413d1debb098e23b4d33b3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708627"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428727"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Schema der Diagnoseerweiterung für Windows
 Die Azure-Diagnoseerweiterung ist ein Agent in Azure Monitor, der Überwachungsdaten vom Gastbetriebssystem und den Workloads von Azure-Computeressourcen sammelt. In diesem Artikel wird das Schema erläutert, das zur Konfiguration der Diagnoseerweiterung auf virtuellen Windows-Computern und anderen Computeressourcen verwendet wird.
@@ -233,7 +233,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Definiert die Pufferkonfiguration für grundlegende Azure-Protokolle.  
 
-|attribute|type|BESCHREIBUNG|  
+|attribute|Typ|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Die Standardeinstellung ist 0.|  
 |**scheduledTransferLogLevelFilter**|**string**|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert ist **Undefined**, der alle Protokolle überträgt. Weitere mögliche Werte (meiste Informationen bis wenigste Informationen) sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
@@ -265,11 +265,11 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Definiert die Standorte, an die die Diagnosedaten gesendet werden sollen. Beispiel: der Application Insights-Dienst.  
 
-|attribute|type|BESCHREIBUNG|  
+|attribute|Typ|Beschreibung|  
 |---------------|----------|-----------------|  
 |**name**|Zeichenfolge|Eine Zeichenfolge für den Senkennamen.|  
 
-|Element|type|BESCHREIBUNG|  
+|Element|Typ|BESCHREIBUNG|  
 |-------------|----------|-----------------|  
 |**Application Insights**|Zeichenfolge|Wird nur beim Senden von Daten an Application Insights verwendet. Enthält den Instrumentationsschlüssel für ein aktives Application Insights-Konto, für das Sie Zugriff besitzen.|  
 |**Channels**|Zeichenfolge|Einer für jeden zusätzlichen Filter, den Sie streamen|  
@@ -281,7 +281,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Definiert die Filter für Datenströme von Protokolldaten, die durch eine Senke übergeben werden.  
 
-|Element|type|BESCHREIBUNG|  
+|Element|Typ|BESCHREIBUNG|  
 |-------------|----------|-----------------|  
 |**Channel**|Zeichenfolge|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
 
@@ -556,7 +556,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
     <WadCfg>  
       <DiagnosticMonitorConfiguration overallQuotaInMB="10000">  
 
-        <PerformanceCounters scheduledTransferPeriod="PT1M", sinks="AzureMonitorSink">  
+        <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="AzureMonitorSink">  
           <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT1M" unit="percent" />  
         </PerformanceCounters>  
 

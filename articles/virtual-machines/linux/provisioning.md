@@ -2,19 +2,20 @@
 title: Überblick über die Linux-Bereitstellung
 description: Hier erhalten Sie einen Überblick darüber, wie Sie Ihre Linux-VM-Images zur Verwendung in Azure bereitstellen oder neue Images erstellen.
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
+ms.collection: linux
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: a7d9aa7de8bb75a22acc85c77924765eaa1b6b3b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6dafa400f2ce2421db6775084befc0abeab70a04
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87080147"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563216"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Azure Linux-VM-Bereitstellung
 Wenn Sie einen virtuellen Computer (Virtual Machine, VM) aus einem generalisierten Image (über Shared Image Gallery oder ein verwaltetes Image) erstellen, ermöglicht Ihnen die Steuerungsebene das Erstellen eines virtuellen Computers und das Übergeben von Parametern und Einstellungen an den VM. Dies wird als VM-*Bereitstellung* bezeichnet. Während der Bereitstellung stellt die Plattform dem virtuellen Computer beim Starten die erforderlichen „VM Create“-Parameterwerte (Hostname, Benutzername, Kennwort, SSH-Schlüssel, CustomData) zur Verfügung. 

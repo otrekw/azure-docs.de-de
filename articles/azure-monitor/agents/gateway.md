@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 2c8b77e480f3a4f9ba342c6793a708ca6723ec34
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bae48dc78eb6973e5bce4d535091bc330c4c897f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036570"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509029"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Verbinden von Computern ohne Internetzugriff über das Log Analytics-Gateway in Azure Monitor
 
@@ -205,7 +205,7 @@ Informationen zum Entwerfen und Bereitstellen eines Netzwerklastenausgleichs-Clu
 Weitere Informationen zum Entwerfen und Bereitstellen von Azure Load Balancer finden Sie unter [Was ist Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Um einen grundlegenden Lastausgleich bereitzustellen, folgen Sie den in diesem [Schnellstart](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) beschriebenen Schritten mit Ausnahme der im Abschnitt **Erstellen des Back-End-Servers** beschriebenen Schritte.   
 
 > [!NOTE]
-> Die Konfiguration von Azure Load Balancer mit der **SKU „Basic“** erfordert, dass virtuelle Azure-Computer zu einer Verfügbarkeitsgruppe gehören. Weitere Informationen zu Verfügbarkeitsgruppen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../../virtual-machines/manage-availability.md). Wenn Sie vorhandene virtuelle Computer einer Verfügbarkeitsgruppe hinzufügen möchten, finden Sie weitere Informationen unter [Festlegen einer Azure Resource Manager-VM-Verfügbarkeitsgruppe](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
+> Die Konfiguration von Azure Load Balancer mit der **SKU „Basic“** erfordert, dass virtuelle Azure-Computer zu einer Verfügbarkeitsgruppe gehören. Weitere Informationen zu Verfügbarkeitsgruppen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../../virtual-machines/availability.md). Wenn Sie vorhandene virtuelle Computer einer Verfügbarkeitsgruppe hinzufügen möchten, finden Sie weitere Informationen unter [Festlegen einer Azure Resource Manager-VM-Verfügbarkeitsgruppe](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
 > 
 
 Nachdem der Lastausgleich erstellt wurde, muss ein Back-End-Pool erstellt werden, der den Datenverkehr auf mindestens einen Gatewayserver verteilt. Führen Sie die im Abschnitt [Erstellen von Ressourcen für den Lastenausgleich](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) im Schnellstartartikel beschriebenen Schritte aus.  

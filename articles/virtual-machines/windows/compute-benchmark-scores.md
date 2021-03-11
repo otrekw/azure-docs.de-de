@@ -2,19 +2,19 @@
 title: Compute-Benchmarkergebnisse für virtuelle Azure Windows-Computer
 description: Vergleichen Sie SPECint-Compute-Benchmarkergebnisse für Azure-VMs unter Windows Server.
 author: cynthn
-ms.service: virtual-machines-windows
-ms.subservice: sizes
+ms.service: virtual-machines
+ms.subservice: azure-compute-unit
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: b354f6f121e6a055e7db07a587936f3eaff94c33
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: bf809b695e8df14288c2c55e580ee76d37f487d4
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201568"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550772"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Compute-Benchmarkergebnisse für virtuelle Windows-Computer
 Die folgenden SPECInt-Benchmarkergebnisse zeigen die Computeleistung für ausgewählte Azure-VMs unter Windows Server. Compute-Benchmarkergebnisse stehen auch für [virtuelle Linux-Computer](../linux/compute-benchmark-scores.md)zur Verfügung.
