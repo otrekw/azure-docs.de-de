@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 659a8a3b38a79cc9dcc97f6f1e9c4395426ef7a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7d21852ad684782fa1cb917442fee236d3c882b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450259"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502143"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Verwalten von parallelen Upgrades von Cloudanwendungen mithilfe der aktiven Georeplikation von SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -110,7 +110,7 @@ ALTER DATABASE <Prod_DB>
 SET (ALLOW_CONNECTIONS = NO)
 ```
 
-2. Trennen die sekundäre Datenbank (11), um die Georeplikation zu beenden. Diese Aktion erstellt eine unabhängige, aber vollständig synchronisierte Kopie der Produktionsdatenbank. Diese Datenbank wird upgegradet. Im folgenden Beispiel wird Transact-SQL verwendet, [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0&preserve-view=true) ist jedoch auch verfügbar. 
+2. Trennen die sekundäre Datenbank (11), um die Georeplikation zu beenden. Diese Aktion erstellt eine unabhängige, aber vollständig synchronisierte Kopie der Produktionsdatenbank. Diese Datenbank wird upgegradet. Im folgenden Beispiel wird Transact-SQL verwendet, [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary) ist jedoch auch verfügbar. 
 
 ```sql
 -- Disconnect the secondary, terminating geo-replication

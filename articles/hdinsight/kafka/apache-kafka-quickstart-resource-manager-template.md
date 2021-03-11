@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 1bd4a3bfc2ba208371ed71720cc8c89a796ad9a2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: bdab80725f66814b9bf6bfa9429e3eff96fbc908
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940808"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505102"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-arm-template"></a>Schnellstart: Erstellen eines Apache Kafka-Clusters in Azure HDInsight mithilfe einer ARM-Vorlage
 
@@ -47,7 +47,7 @@ Zwei Azure-Ressourcen sind in der Vorlage definiert:
 
 1. Geben Sie folgende Werte ein bzw. wählen diese aus:
 
-    |Eigenschaft |BESCHREIBUNG |
+    |Eigenschaft |Beschreibung |
     |---|---|
     |Subscription|Wählen Sie in der Dropdownliste das Azure-Abonnement aus, das für den Cluster verwendet wird.|
     |Resource group|Wählen Sie in der Dropdownliste Ihre vorhandene Ressourcengruppe oder die Option **Neu erstellen** aus.|
@@ -148,7 +148,7 @@ Kafka speichert Datenströme in *Themen*. Mit dem Hilfsprogramm `kafka-topics.sh
         
         In Regionen mit drei Fehlerdomänen ermöglicht der Replikationsfaktor 3 die Verteilung von Replikaten auf die Fehlerdomänen. In Regionen mit zwei Fehlerdomänen ermöglicht der Replikationsfaktor 4 die gleichmäßige Verteilung von Replikaten auf die Domänen.
         
-        Informationen zur Anzahl von Fehlerdomänen in einer Region finden Sie im Dokument [Verwalten der Verfügbarkeit virtueller Linux-Computer](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
+        Informationen zur Anzahl von Fehlerdomänen in einer Region finden Sie im Dokument [Verwalten der Verfügbarkeit virtueller Linux-Computer](../../virtual-machines/availability.md).
 
         Azure-Fehlerdomänen sind Kafka nicht bekannt. Beim Erstellen von Partitionsreplikaten für Themen kann es daher vorkommen, dass die Replikate nicht ordnungsgemäß für Hochverfügbarkeit verteilt werden.
 

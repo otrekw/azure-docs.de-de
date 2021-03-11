@@ -366,7 +366,7 @@
           href: monitor-azure-backup-with-backup-explorer.md
         - name: Verwenden des Azure-Portals
           href: backup-azure-monitoring-built-in-monitor.md
-        - name: Verwenden von Azure Monitor
+        - name: Verwenden von Azure Monitor-Protokollen
           href: backup-azure-monitoring-use-azuremonitor.md
     - name: Berichte
       items:
@@ -374,10 +374,14 @@
           items:
             - name: Konfigurieren von Azure Backup-Berichten
               href: configure-reports.md
+            - name: Azure Backup-Berichte per E-Mail
+              href: backup-reports-email.md
         - name: Konfigurieren von Diagnoseereignissen für Recovery Services-Tresore
           items:
             - name: Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore
               href: backup-azure-diagnostic-events.md
+            - name: Verwenden von Systemfunktionen
+              href: backup-reports-system-functions.md
             - name: Log Analytics-Datenmodell für ressourcenspezifische Diagnoseereignisse
               href: backup-azure-reports-data-model.md
             - name: "Log\_Analytics-Datenmodell für Azure Backup (Modus „Azure-Diagnose“)"
@@ -500,7 +504,7 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
-    - name: Kompatibilität
+    - name: Compliance
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

@@ -270,6 +270,8 @@
                   href: ./functions-create-your-first-function-visual-studio.md
                 - name: Visual Studio Code
                   href: ./create-first-function-vs-code-csharp.md
+                - name: C# isoliert (.NET 5)
+                  href: dotnet-isolated-process-developer-howtos.md
                 - name: Java mit Gradle
                   href: functions-create-first-java-gradle.md
                 - name: Java mit Eclipse
@@ -454,9 +456,9 @@
         - name: Azure PowerShell
           href: /powershell/module/az.functions
         - name: Java
-          href: /java/api/overview/azure/functions/runtime?view=azure-java-stable
+          href: /java/api/overview/azure/functions/runtime
         - name: Python
-          href: /python/api/azure-functions/azure.functions?view=azure-python
+          href: /python/api/azure-functions/azure.functions
     - name: Referenz zu App-Einstellungen
       href: functions-app-settings.md
     - name: Trigger und Bindungen

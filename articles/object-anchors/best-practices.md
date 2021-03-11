@@ -6,12 +6,12 @@ ms.author: crtreasu
 ms.date: 02/17/2021
 ms.topic: best-practice
 ms.service: azure-object-anchors
-ms.openlocfilehash: 5b84bfae4a338a15b75e4f61114869aab1e94f87
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: da3be6e3d97e50b27ded29ba017164fdbd9a0a5b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743522"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503044"
 ---
 # <a name="best-practices"></a>Bewährte Methoden
 
@@ -28,6 +28,8 @@ Wir empfehlen Ihnen, einige dieser Schritte auszuprobieren, um die besten Ergebn
 - Die Verarbeitung eines Modells mit hoher Detailgenauigkeit (LOD, Level-of-Detail) durch unseren Modellkonvertierungsdienst kann viel Zeit in Anspruch nehmen. Zur Effizienzsteigerung können Sie Ihr 3D-Modell vorverarbeiten, um die Innenflächen zu entfernen.
 
 ## <a name="detection"></a>Erkennung
+
+> [!VIDEO https://channel9.msdn.com/Shows/Docs-Mixed-Reality/Azure-Object-Anchors-Detection-and-Alignment-Best-Practices/player]
 
 - Das bereitgestellte Runtime-SDK benötigt einen benutzerseitig bereitgestellten Suchbereich, um nach den physischen Objekten zu suchen und diese zu erkennen. Der Suchbereich kann ein Begrenzungsrahmen, eine Kugel, ein Pyramidenstumpf (Frustum) oder eine beliebige Kombination daraus sein. Um eine falsche Erkennung zu vermeiden, empfiehlt es sich, einen Suchbereich festzulegen, der groß genug ist, um das Objekt abzudecken. Wenn Sie die bereitgestellten Beispiel-Apps verwenden, können Sie auf einer Seite des Objekts, ungefähr 2 Meter von der nächstgelegenen Oberfläche entfernt, stehen und die App starten.
 - Bevor Sie die Object Anchors-App auf einem HoloLens 2-Gerät starten, entfernen Sie die Hologramme in der Nähe Ihres Arbeitsplatzes über die Haupteinstellungen Ihrer Geräte mittels ***Einstellungen->System->Hologramme***.

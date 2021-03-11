@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: damendo
-ms.openlocfilehash: d172ba7353b7ac4c490584cd7c84871c6244f214
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6e330d2595487366ff7b8979490cb8a897f89520
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961820"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503146"
 ---
 # <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Einführung in die „Wirksame Sicherheitsregeln“-Ansicht in Azure Network Watcher
 
@@ -36,8 +36,8 @@ Es können Regeln ausgewählt werden. Damit wird dann ein neues Blatt geöffnet,
 
 Das Feature *Wirksame Sicherheitsgruppen* können Sie auch über die im Folgenden aufgeführten Methoden verwenden:
 * [REST-API](/rest/api/virtualnetwork/NetworkInterfaces/ListEffectiveNetworkSecurityGroups)
-* [PowerShell](/powershell/module/az.network/get-azeffectivenetworksecuritygroup?view=azps-4.4.0)
-* [Azure-Befehlszeilenschnittstelle](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-list-effective-nsg)
+* [PowerShell](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)
+* [Azure-Befehlszeilenschnittstelle](/cli/azure/network/nic#az-network-nic-list-effective-nsg)
 
 Erfahren Sie unter [Überwachen von Netzwerksicherheitsgruppen-Einstellungen mit PowerShell](network-watcher-nsg-auditing-powershell.md), wie Sie die Einstellungen Ihrer Netzwerksicherheitsgruppe überwachen.
 

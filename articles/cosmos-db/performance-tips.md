@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: 47e20e89c8eaef59b9acd6cf7e31244afd4bcf60
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 57b3d5853f83fc7ee75538d7966f5e20b1a64cd6
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359046"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428948"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Leistungstipps für Azure Cosmos DB und .NET SDK v2
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -137,19 +137,19 @@ Ab Version 1.9.0 des SQL .NET SDK werden parallele Abfragen unterstützt, mit d
 - `MaxDegreeOfParallelism` steuert die maximale Anzahl von Partitionen, die parallel abgefragt werden können. 
 - `MaxBufferedItemCount` steuert die Anzahl der vorab abgerufenen Ergebnisse.
 
-**_Optimieren des Grads der Parallelität_* _
+***Optimieren des Grads der Parallelität***
 
 Bei parallelen Abfragen werden mehrere Partitionen gleichzeitig abgefragt. Die Daten einer individuellen Partition werden in Bezug auf die Abfrage aber seriell abgerufen. Wenn Sie `MaxDegreeOfParallelism` in [SDK V2](sql-api-sdk-dotnet.md) auf die Anzahl von Partitionen festlegen, ist die Wahrscheinlichkeit am höchsten, dass die bestmögliche Leistung für die Abfrage erzielt wird (vorausgesetzt, alle anderen Systembedingungen bleiben unverändert). Wenn Sie die Anzahl der Partitionen nicht kennen, können Sie den Grad der Parallelität auf eine hohe Zahl festlegen. Das System wählt den Mindestwert (Anzahl der Partitionen, vom Benutzer bereitgestellte Eingabe) als Grad der Parallelität aus.
 
 Für parallele Abfragen ergeben sich die größten Vorteile, wenn die Daten in Bezug auf die Abfrage gleichmäßig auf alle Partitionen verteilt sind. Wenn die partitionierte Sammlung so partitioniert ist, dass sich alle Daten bzw. die meisten Daten, die von einer Abfrage zurückgegeben werden, auf einigen wenigen Partitionen befinden (schlimmstenfalls nur auf einer Partition), können diese Partitionen Leistungsengpässe verursachen.
 
-_*_Optimieren von MaxBufferedItemCount_*_
+***Optimieren von MaxBufferedItemCount***
     
 Parallele Abfragen sind so konzipiert, dass Ergebnisse vorab abgerufen werden, während der Client den aktuellen Batch der Ergebnisse verarbeitet. Dieser Vorababruf führt zu einer Verbesserung der allgemeinen Latenz einer Abfrage. Der Parameter `MaxBufferedItemCount` begrenzt die Anzahl von vorab abgerufenen Ergebnissen. Wenn Sie `MaxBufferedItemCount` auf die erwartete Anzahl von zurückgegebenen Ergebnissen (oder eine höhere Zahl) festlegen, ist der Vorteil durch das vorherige Abrufen für die Abfrage am größten.
 
 Das vorherige Abrufen funktioniert unabhängig vom Parallelitätsgrad, und es ist nur ein Puffer für die Daten aller Partitionen vorhanden.  
 
-_ *Implementieren eines Backoffs in RetryAfter-Intervallen**
+**Implementieren eines Backoffs in RetryAfter-Intervallen**
 
 Es empfiehlt sich, die Last während Leistungstests so lange erhöhen, bis eine geringe Menge von Anforderungen gedrosselt wird. Wenn die Anforderungen gedrosselt werden, sollte die Clientanwendung diese Drosselung für das vom Server angegebene Wiederholungsintervall aussetzen. Durch das Aussetzen wird die geringstmögliche Wartezeit zwischen den Wiederholungsversuchen gewährleistet. 
 
@@ -180,7 +180,7 @@ Mithilfe von [x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-requ
 > [!NOTE] 
 > Die `maxItemCount`-Eigenschaft sollte nicht nur für die Paginierung verwendet werden. Ihr Hauptverwendungszweck ist die Verbesserung der Leistung von Abfragen durch Reduzierung der maximalen Anzahl von Elementen, die auf einer einzigen Seite zurückgegeben werden.  
 
-Sie können die Seitengröße auch mithilfe der verfügbaren Azure Cosmos DB-SDKs festlegen. Mit der [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet&preserve-view=true)-Eigenschaft in `FeedOptions` können Sie die maximale Anzahl von Elementen festlegen, die beim Enumerationsvorgang zurückgegeben werden. Wenn `maxItemCount` auf „-1“ festgelegt ist, ermittelt das SDK automatisch den optimalen Wert abhängig von der Größe des Dokuments. Beispiel:
+Sie können die Seitengröße auch mithilfe der verfügbaren Azure Cosmos DB-SDKs festlegen. Mit der [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount)-Eigenschaft in `FeedOptions` können Sie die maximale Anzahl von Elementen festlegen, die beim Enumerationsvorgang zurückgegeben werden. Wenn `maxItemCount` auf „-1“ festgelegt ist, ermittelt das SDK automatisch den optimalen Wert abhängig von der Größe des Dokuments. Beispiel:
     
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });

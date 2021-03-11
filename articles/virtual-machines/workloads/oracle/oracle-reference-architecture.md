@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
-ms.openlocfilehash: 8257c58c4185172218b833c3d4988b4db661a97a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6bce6f011086d9855c4da2739addbb34e661e2d6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669893"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507482"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenzarchitekturen für Oracle Database Enterprise Edition in Azure
 
@@ -29,7 +29,7 @@ Weitere Informationen zur Steigerung der Leistung Ihrer Oracle-Datenbank finden 
 
 ## <a name="high-availability-for-oracle-databases"></a>Hochverfügbarkeit für Oracle-Datenbanken
 
-Die Erzielung von Hochverfügbarkeit in der Cloud ist ein wichtiger Teil jeglicher Planung und Entwurfsarbeit einer Organisation. Microsoft Azure umfasst [Verfügbarkeitszonen](../../../availability-zones/az-overview.md) und Verfügbarkeitsgruppen (für die Verwendung in Regionen, in denen keine Verfügbarkeitszonen verfügbar sind). Lesen Sie die weiteren Informationen zum [Verwalten der Verfügbarkeit Ihrer virtuellen Computer](../../manage-availability.md) im Rahmen der Entwurfsarbeit für die Cloud.
+Die Erzielung von Hochverfügbarkeit in der Cloud ist ein wichtiger Teil jeglicher Planung und Entwurfsarbeit einer Organisation. Microsoft Azure umfasst [Verfügbarkeitszonen](../../../availability-zones/az-overview.md) und Verfügbarkeitsgruppen (für die Verwendung in Regionen, in denen keine Verfügbarkeitszonen verfügbar sind). Lesen Sie die weiteren Informationen zum [Verwalten der Verfügbarkeit Ihrer virtuellen Computer](../../availability.md) im Rahmen der Entwurfsarbeit für die Cloud.
 
 Zusätzlich zu cloudnativen Tools und Angeboten verfügt Oracle auch über Lösungen für Hochverfügbarkeit, z. B. [Oracle Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7), [Data Guard mit FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html), [Sharding](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html) und [GoldenGate](https://www.oracle.com/middleware/technologies/goldengate.html). Diese Lösungen können in Azure eingerichtet werden. In diesem Leitfaden werden Referenzarchitekturen für diese Lösungen beschrieben.
 
@@ -39,7 +39,7 @@ Beim Migrieren oder Erstellen von Anwendungen für die Cloud ist es wichtig, Ihr
 
 Oracle Real Application Cluster (RAC) ist eine Lösung von Oracle, mit der Kunden einen hohen Durchsatz erzielen können, indem viele Instanzen auf einen Datenbankspeicher zugreifen (Architekturmuster für allgemeine Freigabe). Oracle RAC kann auch für lokale Hochverfügbarkeit verwendet werden, aber allein kann Oracle RAC nicht zur Erzielung von Hochverfügbarkeit in der Cloud eingesetzt werden. Der Grund ist, dass nur ein Schutz vor Fehlern auf Instanzebene vorhanden ist, und nicht vor Fehlern auf Rack- oder Datencenterebene. Daher empfiehlt Oracle die Nutzung von Oracle Data Guard für Ihre Datenbank (Einzelinstanz oder RAC), um für Hochverfügbarkeit zu sorgen. Kunden benötigen zur Ausführung ihrer unternehmenskritischen Anwendungen im Allgemeinen einen hohen Servicelevel (SLA). Für Oracle RAC besteht in Azure derzeit keine Zertifizierung oder Unterstützung durch Oracle. Azure verfügt aber über Features, z. B. Verfügbarkeitszonen und geplante Wartungsfenster, um einen Schutz vor Fehlern auf Instanzebene bereitzustellen. Darüber hinaus können Kunden Technologien wie Oracle Data Guard, Oracle GoldenGate und Oracle Sharding zur Erzielung von Hochleistung und Resilienz nutzen, indem sie ihre Datenbanken vor Ausfällen auf Rackebene sowie auf Rechenzentrumsebene und geopolitischer Ebene schützen.
 
-Beim übergreifenden Ausführen von Oracle-Datenbanken in mehreren [Verfügbarkeitszonen](../../../availability-zones/az-overview.md) zusammen mit Oracle Data Guard oder GoldenGate können Kunden eine Betriebszeit-SLA von 99,99 % erreichen. In Azure-Regionen, in denen noch keine Verfügbarkeitszonen vorhanden sind, können Kunden [Verfügbarkeitsgruppen](../../manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) nutzen und so eine Betriebszeit-SLA von 99,95 % erreichen.
+Beim übergreifenden Ausführen von Oracle-Datenbanken in mehreren [Verfügbarkeitszonen](../../../availability-zones/az-overview.md) zusammen mit Oracle Data Guard oder GoldenGate können Kunden eine Betriebszeit-SLA von 99,99 % erreichen. In Azure-Regionen, in denen noch keine Verfügbarkeitszonen vorhanden sind, können Kunden [Verfügbarkeitsgruppen](../../availability-set-overview.md) nutzen und so eine Betriebszeit-SLA von 99,95 % erreichen.
 
 >HINWEIS:  Sie können ein Betriebszeitziel anstreben, das deutlich über der Betriebszeit-SLA von Microsoft liegt.
 
@@ -205,7 +205,7 @@ Während der ersten Anforderung stellt der Anwendungsserver eine Verbindung mit 
 
 ## <a name="patching-and-maintenance"></a>Patchen und Wartung
 
-Beim Bereitstellen Ihrer Oracle-Workloads in Azure übernimmt Microsoft das gesamte Patchen auf der Ebene des Hostbetriebssystems. Kunden werden im Voraus über alle geplanten Wartungsarbeiten auf Betriebssystemebene informiert, damit sich der Kunde darauf einstellen kann. Zwei Server, die in zwei unterschiedlichen Verfügbarkeitszonen angeordnet sind, werden niemals gleichzeitig gepatcht. Weitere Informationen zur Wartung und zum Patchen von virtuellen Computern finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../../manage-availability.md). 
+Beim Bereitstellen Ihrer Oracle-Workloads in Azure übernimmt Microsoft das gesamte Patchen auf der Ebene des Hostbetriebssystems. Kunden werden im Voraus über alle geplanten Wartungsarbeiten auf Betriebssystemebene informiert, damit sich der Kunde darauf einstellen kann. Zwei Server, die in zwei unterschiedlichen Verfügbarkeitszonen angeordnet sind, werden niemals gleichzeitig gepatcht. Weitere Informationen zur Wartung und zum Patchen von virtuellen Computern finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../../availability.md). 
 
 Das Patchen des Betriebssystems Ihres virtuellen Computers kann mit der [Updateverwaltung von Azure Automation](../../../automation/update-management/overview.md) automatisiert werden. Das Patchen und Warten Ihrer Oracle-Datenbank kann mit [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) oder der [Updateverwaltung von Azure Automation](../../../automation/update-management/overview.md) automatisiert und geplant werden, um das Auftreten von Ausfallzeiten zu minimieren. Im Artikel zum Thema [Continuous Delivery und Blau/Grün-Bereitstellung](/azure/devops/learn/what-is-continuous-delivery) können Sie sich damit vertraut machen, wie Sie dies für Ihre Oracle-Datenbanken nutzen können.
 

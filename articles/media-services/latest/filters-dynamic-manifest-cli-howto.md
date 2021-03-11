@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: f75b8055757557eadeb98a45196a116e56c5aa35
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 54e99c645b93bfcb3aee4e81cef3b2b5d6589d95
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093444"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211463"
 ---
 # <a name="creating-filters-with-cli"></a>Erstellen von Filtern mit der CLI
 
@@ -29,7 +29,7 @@ Bei der Inhaltsbereitstellung für Ihre Kunden (Streaming von Liveereignissen od
 
 Eine ausführliche Beschreibung dieses Features und der Szenarien, in denen es verwendet wird, finden Sie unter [Dynamische Manifeste](filters-dynamic-manifest-overview.md) und [Filter](filters-concept.md).
 
-In diesem Thema werden das Konfigurieren eines Filters für ein Video on Demand-Medienobjekt und die Verwendung der Befehlszeilenschnittstelle für Media Services v3 zum Erstellen von [Kontofiltern](/cli/azure/ams/account-filter?view=azure-cli-latest) und [Filtern für Medienobjekte](/cli/azure/ams/asset-filter?view=azure-cli-latest) gezeigt.
+In diesem Thema werden das Konfigurieren eines Filters für ein Video on Demand-Medienobjekt und die Verwendung der Befehlszeilenschnittstelle für Media Services v3 zum Erstellen von [Kontofiltern](/cli/azure/ams/account-filter) und [Filtern für Medienobjekte](/cli/azure/ams/asset-filter) gezeigt.
 
 > [!NOTE]
 > Lesen Sie die Informationen zu [presentationTimeRange](filters-concept.md#presentationtimerange).
@@ -80,7 +80,7 @@ Das folgende Beispiel definiert die Titelauswahlbedingungen, die dem endgültige
 
 ## <a name="create-account-filters"></a>Erstellen von Kontofiltern
 
-Der folgende [az ams account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest)-Befehl erstellt einen Kontofilter mit [zuvor definierten](#define-a-filter) Titelfilter-Auswahloptionen.
+Der folgende [az ams account-filter](/cli/azure/ams/account-filter)-Befehl erstellt einen Kontofilter mit [zuvor definierten](#define-a-filter) Titelfilter-Auswahloptionen.
 
 Mit diesem Befehl können Sie einen optionalen `--tracks`-Parameter übergeben, der JSON-Code für die ausgewählten Spuren enthält.  Verwenden Sie „@{file}“, um den JSON-Code aus einer Datei zu laden. Wenn Sie die Azure CLI lokal verwenden, geben Sie den gesamten Dateipfad an:
 
@@ -92,7 +92,7 @@ Siehe auch [JSON-Beispiele für Filter](/rest/api/media/accountfilters/createoru
 
 ## <a name="create-asset-filters"></a>Erstellen von Medienobjektfiltern
 
-Der folgende [az ams asset-filter](/cli/azure/ams/asset-filter?view=azure-cli-latest)-Befehl erstellt einen Medienobjektfilter mit [zuvor definierten](#define-a-filter) Titelfilter-Auswahloptionen. 
+Der folgende [az ams asset-filter](/cli/azure/ams/asset-filter)-Befehl erstellt einen Medienobjektfilter mit [zuvor definierten](#define-a-filter) Titelfilter-Auswahloptionen. 
 
 ```azurecli
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
@@ -132,4 +132,4 @@ Die folgende Tabelle zeigt einige Beispiele für URLs mit Filtern:
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Azure-Befehlszeilenschnittstelle](/cli/azure/ams?view=azure-cli-latest)
+[Azure-Befehlszeilenschnittstelle](/cli/azure/ams)

@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 6e686c7b22eb834a096cdd7a67beb6d8d291ef20
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 14837391f7bf907acbbe1d573f3171acef4db658
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392322"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503503"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
 
 
-In diesem Artikel erfahren Sie, wie Sie ein Regressionsmodell für Zeitreihenvorhersagen mit automatisiertem maschinellem Lernen (AutoML) im [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) konfigurieren und trainieren. 
+In diesem Artikel erfahren Sie, wie Sie ein Regressionsmodell für Zeitreihenvorhersagen mit automatisiertem maschinellem Lernen (AutoML) im [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/) konfigurieren und trainieren. 
 
 Dazu gehen Sie wie folgt vor: 
 
@@ -120,7 +120,7 @@ Erfahren Sie mehr darüber, wie AutoML die Kreuzvalidierung anwendet, um eine [�
 
 ## <a name="configure-experiment"></a>Konfigurieren des Experiments
 
-Das Objekt [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) definiert die erforderlichen Einstellungen und Daten für eine Aufgabe mit automatisiertem maschinellen Lernen. Die Konfiguration für ein Vorhersagemodell ähnelt der Einrichtung eines Standardregressionsmodells, aber bestimmte Modelle, Konfigurationsoptionen und Featurisierungsschritte gelten speziell für Zeitreihendaten. 
+Das Objekt [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) definiert die erforderlichen Einstellungen und Daten für eine Aufgabe mit automatisiertem maschinellen Lernen. Die Konfiguration für ein Vorhersagemodell ähnelt der Einrichtung eines Standardregressionsmodells, aber bestimmte Modelle, Konfigurationsoptionen und Featurisierungsschritte gelten speziell für Zeitreihendaten. 
 
 ### <a name="supported-models"></a>Unterstützte Modelle
 Beim automatisierten maschinellen Lernen werden im Rahmen des Modellerstellungs- und Optimierungsprozesses automatisch verschiedene Modelle und Algorithmen getestet. Als Benutzer müssen Sie den Algorithmus nicht angeben. Bei Vorhersageexperimenten sind sowohl native Zeitreihen- als auch Deep Learning-Modelle Teil des Empfehlungssystems. In der folgenden Tabelle ist diese Teilmenge von Modellen zusammengefasst. 
@@ -138,7 +138,7 @@ ForecastTCN (Preview)| ForecastTCN ist ein neuronales Netzwerkmodell, das für d
 
 Sie definieren Standardtrainingsparameter wie Aufgabentyp, Iterationsanzahl, Trainingsdaten und Anzahl von Kreuzvalidierungen (ähnlich wie bei einem Regressionsproblem). Bei Vorhersageaufgaben müssen allerdings noch weitere Parameter für das Experiment festgelegt werden. 
 
-Eine Übersicht über zusätzliche Parameter finden in der folgenden Tabelle. Syntaxentwurfsmuster finden Sie in der [Referenzdokumentation zur ForecastingParameter-Klasse](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py).
+Eine Übersicht über zusätzliche Parameter finden in der folgenden Tabelle. Syntaxentwurfsmuster finden Sie in der [Referenzdokumentation zur ForecastingParameter-Klasse](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters).
 
 | Parametername&nbsp; | BESCHREIBUNG | Erforderlich |
 |-------|-------|-------|
@@ -154,7 +154,7 @@ Eine Übersicht über zusätzliche Parameter finden in der folgenden Tabelle. Sy
 
 
 Für den folgenden Code gilt: 
-* Er nutzt die [`ForecastingParameters`](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py)-Klasse, um die Vorhersageparameter für Ihr Experimenttraining zu definieren.
+* Er nutzt die [`ForecastingParameters`](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters)-Klasse, um die Vorhersageparameter für Ihr Experimenttraining zu definieren.
 * Er legt `time_column_name` auf das Feld `day_datetime` im Dataset fest. 
 * Er definiert den Parameter `time_series_id_column_names` als `"store"`. Dadurch wird sichergestellt, dass **zwei separate Zeitreihengruppen** für die Daten erstellt werden: eine für Geschäft A und eine für B.
 * Er legt `forecast_horizon` auf 50 fest, um die Prognose für den gesamten Testsatz durchzuführen. 
@@ -298,7 +298,7 @@ Sehen Sie sich ein Python-Codebeispiel an, in dem das [Feature für rollierende 
 
 ### <a name="short-series-handling"></a>Verarbeitung kurzer Reihen
 
-Beim automatisierten maschinellen Lernen gilt eine Zeitreihe als **kurze Reihe**, wenn nicht genügend Datenpunkte vorhanden sind, um die Trainings- und Validierungsphasen der Modellentwicklung durchzuführen. Die Anzahl von Datenpunkten variiert je nach Experiment und hängt vom „max_horizon“-Wert, der Anzahl von Kreuzvalidierungsteilungen und der Länge des Rückblickzeitraums des Modells ab, d. h. dem maximalen Verlauf, der zum Erstellen der Zeitreihenfeatures erforderlich ist. Die genaue Berechnung finden Sie in der [Referenzdokumentation zu „short_series_handling_configuration“](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration).
+Beim automatisierten maschinellen Lernen gilt eine Zeitreihe als **kurze Reihe**, wenn nicht genügend Datenpunkte vorhanden sind, um die Trainings- und Validierungsphasen der Modellentwicklung durchzuführen. Die Anzahl von Datenpunkten variiert je nach Experiment und hängt vom „max_horizon“-Wert, der Anzahl von Kreuzvalidierungsteilungen und der Länge des Rückblickzeitraums des Modells ab, d. h. dem maximalen Verlauf, der zum Erstellen der Zeitreihenfeatures erforderlich ist. Die genaue Berechnung finden Sie in der [Referenzdokumentation zu „short_series_handling_configuration“](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters#short-series-handling-configuration).
 
 Automatisiertes maschinelles Lernen bietet mit dem `short_series_handling_configuration`-Parameter im `ForecastingParameters`-Objekt standardmäßig eine Verarbeitung kurzer Reihen. 
 

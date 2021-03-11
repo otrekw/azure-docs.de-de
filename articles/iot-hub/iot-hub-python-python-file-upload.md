@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 1112df382fb10051ac06c4461a9e4328e1663388
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 77d51b2c839a64567838fa4d6308d203a6bb8b82
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92139317"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501140"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub (Python)
 
@@ -109,7 +109,7 @@ In diesem Abschnitt erstellen Sie die Geräte-App zum Hochladen einer Datei in I
             return (False, ex)
     ```
 
-    Diese Funktion analysiert die an sie übergebene Struktur *blob_info* und erstellt damit eine URL, über die sie einen [azure.storage.blob.BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python) initialisiert. Anschließend lädt sie Ihre Datei mithilfe dieses Clients in Azure Blob Storage hoch.
+    Diese Funktion analysiert die an sie übergebene Struktur *blob_info* und erstellt damit eine URL, über die sie einen [azure.storage.blob.BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient) initialisiert. Anschließend lädt sie Ihre Datei mithilfe dieses Clients in Azure Blob Storage hoch.
 
 1. Fügen Sie den folgenden Code hinzu, um eine Verbindung mit dem Client herzustellen und die Datei hochzuladen:
 
@@ -211,4 +211,4 @@ Unter folgenden Links finden Sie weitere Informationen zu Azure Blob Storage:
 
 * [Dokumentation zu Azure Blob Storage](../storage/blobs/index.yml)
 
-* [Dokumentation zur Azure Blob Storage-API für Python](/python/api/overview/azure/storage-blob-readme?view=azure-python)
+* [Dokumentation zur Azure Blob Storage-API für Python](/python/api/overview/azure/storage-blob-readme)

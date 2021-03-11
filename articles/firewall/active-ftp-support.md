@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 03/05/2021
 ms.author: victorh
-ms.openlocfilehash: 47bced3c3c4f01212af6919d51adc5dfc2e6e1b5
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: adbc2a9eb6cd3b054df84911604143ddb711ad20
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102200060"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499134"
 ---
 # <a name="azure-firewall-active-ftp-support"></a>Aktive FTP-Unterstützung in Azure Firewall
 
@@ -20,12 +20,10 @@ Bei aktivem FTP initiiert der FTP-Server die Datenverbindung mit dem vorgesehene
 
 Standardmäßig ist die Unterstützung für aktives FTP zum Schutz vor FTP-Bounce-Angriffen in Azure Firewall mithilfe des FTP-Befehls `PORT` deaktiviert. Sie können jedoch aktives FTP aktivieren, wenn Sie Azure PowerShell, die Azure-Befehlszeilenschnittstelle oder eine Azure ARM-Vorlage verwenden.
 
-> [!NOTE]
-> Derzeit wird aktives FTP nur für Firewalls unterstützt, die in einem virtuellen Netzwerk bereitgestellt werden. Die Unterstützung für Virtual WAN wird später hinzugefügt.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Verwenden Sie zur Bereitstellung mithilfe von Azure PowerShell den Parameter `AllowActiveFTP`. Weitere Informationen finden Sie unter [Erstellen einer Firewall durch Zulassen von aktivem FTP](/powershell/module/az.network/new-azfirewall?view=azps-5.4.0#16---create-a-firewall-with-allow-active-ftp-).
+Verwenden Sie zur Bereitstellung mithilfe von Azure PowerShell den Parameter `AllowActiveFTP`. Weitere Informationen finden Sie unter [Erstellen einer Firewall durch Zulassen von aktivem FTP](/powershell/module/az.network/new-azfirewall#16---create-a-firewall-with-allow-active-ftp-).
 
 ## <a name="azure-cli"></a>Azure CLI
 

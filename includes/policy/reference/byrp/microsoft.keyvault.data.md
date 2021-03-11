@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 4fefc59bb43f3df6cbbaf8be44a158eb055eb9c8
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: f3fa84d6c6dab91d734d485122bfec28e1e84798
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098038"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428111"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Zertifikate müssen von der angegebenen integrierten Zertifizierungsstelle ausgestellt werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8e826246-c976-48f6-b03e-619bb92b3d82) |Hiermit werden die Konformitätsanforderungen Ihrer Organisation verwaltet, indem die in Azure integrierten Zertifizierungsstellen angegeben werden, die Zertifikate in Ihrem Schlüsseltresor ausstellen können. Beispiel: Digicert oder GlobalSign. |Audit, Deny, Disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_Issuers_SupportedCAs.json) |
 |[Zertifikate müssen von der angegebenen nicht integrierten Zertifizierungsstelle ausgestellt werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa22f4a40-01d3-4c7d-8071-da157eeff341) |Hiermit werden die Konformitätsanforderungen Ihrer Organisation verwaltet, indem die benutzerdefinierten oder internen Zertifizierungsstellen angegeben werden, die Zertifikate in Ihrem Schlüsseltresor ausstellen können. |Audit, Deny, Disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_Issuers_CustomCAs.json) |

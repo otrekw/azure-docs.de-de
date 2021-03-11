@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40d22a410054f17676c4d9db639fd5e32da18531
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 51bfd632e854132be27a7b971cf03e9fe5b00138
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665980"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504302"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure
 
@@ -138,7 +138,7 @@ Es empfiehlt sich, im Rahmen einer Pilotbereitstellung eine vollständige HADR-L
         - Wenn Sie Azure Load Balancer in Verbindung mit Linux-Gastbetriebssystemen verwenden, überprüfen Sie, ob der Linux-Netzwerkparameter **net.ipv4.tcp_timestamps** auf **0** festgelegt ist. Diese Empfehlung steht im Widerspruch zu Empfehlungen in älteren Versionen von [SAP-Hinweis Nr. 2382421](https://launchpad.support.sap.com/#/notes/2382421). Der SAP-Hinweis wurde jetzt aktualisiert und gibt an, dass dieser Parameter auf **0** festgelegt werden muss, damit er mit Azure Load Balancern funktioniert.
         - Erwägen Sie den Einsatz von [Azure-Näherungsplatzierungsgruppen](../../co-location.md) zum Erreichen einer optimalen Netzwerklatenz. Weitere Informationen finden Sie unter [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz bei SAP-Anwendungen](sap-proximity-placement-scenarios.md)
    4. Bereitstellungen mit Hochverfügbarkeit und Notfallwiederherstellung
-        - Wenn Sie die SAP-Anwendungsschicht bereitstellen, ohne eine bestimmte Azure-Verfügbarkeitszone zu definieren, stellen Sie sicher, dass alle virtuellen Computer, auf denen SAP-Dialoginstanzen oder Middlewareinstanzen eines einzelnen SAP-System ausgeführt werden, in einer [Verfügbarkeitsgruppe](../../manage-availability.md) bereitgestellt werden.
+        - Wenn Sie die SAP-Anwendungsschicht bereitstellen, ohne eine bestimmte Azure-Verfügbarkeitszone zu definieren, stellen Sie sicher, dass alle virtuellen Computer, auf denen SAP-Dialoginstanzen oder Middlewareinstanzen eines einzelnen SAP-System ausgeführt werden, in einer [Verfügbarkeitsgruppe](../../availability-set-overview.md) bereitgestellt werden.
         - Falls Sie für die SAP Central Services und das DBMS keine Hochverfügbarkeit benötigen, können Sie diese virtuellen Computer in derselben Verfügbarkeitsgruppe wie die SAP-Anwendungsschicht bereitstellen.
         - Wenn Sie die SAP Central Services- und die DBMS-Schicht für Hochverfügbarkeit mithilfe von passiver Replikation schützen, müssen Sie die beiden Knoten für SAP Central Services in einer separaten Verfügbarkeitsgruppe und die beiden DBMS-Knoten in einer anderen Verfügbarkeitsgruppe platzieren.
         - Wenn die Bereitstellung in Azure-Verfügbarkeitszonen erfolgt, können Sie keine Verfügbarkeitsgruppen verwenden. Sie müssen aber sicherstellen, dass der aktive und der passive Central Services-Knoten in zwei verschiedenen Verfügbarkeitszonen bereitgestellt werden. Verwenden Sie Verfügbarkeitsknoten, zwischen denen die niedrigste Latenz besteht.

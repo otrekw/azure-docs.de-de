@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/02/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
-ms.openlocfilehash: bf892a45ee6df2ab29a1b326a663dc41057c7ea6
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: d31f490baec49e8e0b6fcf89caa8c19202fdf763
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509741"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431379"
 ---
 # <a name="quickstart-create-an-any-to-any-configuration-using-an-arm-template"></a>Schnellstart: Erstellen einer Any-to-Any-Konfiguration mit einer ARM-Vorlage
 
@@ -125,13 +125,7 @@ Mit der Vorlage werden nicht alle Einstellungen konfiguriert, die für ein Hybri
 
 Wenn Sie die von Ihnen erstellten Ressourcen nicht mehr benötigen, können Sie sie löschen. Einige Virtual WAN-Ressourcen müssen aufgrund von Abhängigkeiten in einer bestimmten Reihenfolge gelöscht werden. Das Löschen kann bis zu 30 Minuten dauern.
 
-1. Öffnen Sie die Virtual WAN-Instanz, die Sie erstellt haben.
-1. Wählen Sie einen virtuellen Hub aus, der der Virtual WAN-Instanz zugeordnet ist, um die Seite für den Hub zu öffnen.
-1. Klicken Sie auf **Löschen**. Löschen Sie alle Entitäten (Verbindungen, Gateways usw.) auf dem Hub. Dieser Vorgang kann bis zu 30 Minuten dauern.
-1. Sie können den Hub entweder jetzt oder zu einem späteren Zeitpunkt löschen, wenn Sie die Ressourcengruppe löschen.
-1. Wiederholen Sie diesen Schritt für alle Hubs, die der Virtual WAN-Instanz zugeordnet sind.
-1. Navigieren Sie im Azure-Portal zur Ressourcengruppe.
-1. Wählen Sie die Option **Ressourcengruppe löschen**. Hierdurch werden alle in der Ressourcengruppe enthaltenen Elemente gelöscht, einschließlich der Hubs und der Virtual WAN-Instanz.
+[!INCLUDE [Delete resources](../../includes/virtual-wan-resource-cleanup.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

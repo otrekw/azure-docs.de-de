@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 27f390c3634887dd616c62dbbd4ad85209efde46
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 40222b6a108976de9c82ffccee119b1c1c55f334
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933706"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505748"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>Verwaltung von HDInsight-Clustern – Bewährte Methoden
 
@@ -28,7 +28,7 @@ Informieren Sie sich über bewährte Methoden für die Verwaltung von HDInsight-
 | Azure-Befehlszeilenschnittstelle | [Erstellen von HDInsight-Clustern mit der Azure-Befehlszeilenschnittstelle](./hdinsight-hadoop-create-linux-clusters-azure-cli.md) |
 | Azure PowerShell | [Erstellen von Linux-basierten Clustern in HDInsight mit Azure PowerShell](./hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |
 | cURL | [Erstellen von Apache Hadoop-Clustern mithilfe der Azure-REST-API](./hdinsight-hadoop-create-linux-clusters-curl-rest.md) |
-| SDKs (.NET, Python, Java) | [.NET](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true), [Python](/python/api/overview/azure/hdinsight?preserve-view=true&view=azure-python), [Java](/java/api/overview/azure/hdinsight?preserve-view=true&view=azure-java-stable), [Go](./hdinsight-go-sdk-overview.md) |
+| SDKs (.NET, Python, Java) | [.NET](/dotnet/api/overview/azure/hdinsight), [Python](/python/api/overview/azure/hdinsight), [Java](/java/api/overview/azure/hdinsight), [Go](./hdinsight-go-sdk-overview.md) |
 
 > [!Note]
 > Wenn Sie einen Cluster erstellen und den Clusternamen eines zuvor erstellten Clusters wiederverwenden, warten Sie, bis der vorherige Cluster vollständig gelöscht ist, bevor Sie den neuen Cluster erstellen.

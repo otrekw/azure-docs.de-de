@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5b0542bbcc4d1acd37f7eeb333a53fb6826a4eea
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9c269e2ab37a08e48eedd3ee468080a382f9a8e3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101643591"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558728"
 ---
 # <a name="manage-app-consent-policies"></a>Verwalten von Richtlinien zur Einwilligung für die App
 
@@ -31,7 +31,7 @@ Richtlinien zur Einwilligung für die App, bei denen die ID mit „microsoft-“
 
 ## <a name="pre-requisites"></a>Voraussetzungen
 
-1. Stellen Sie sicher, dass Sie das Modul [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) verwenden. Dieser Schritt ist wichtig, wenn auf Ihrem Computer sowohl das Modul [AzureAD](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) als auch das Modul [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) installiert ist.
+1. Stellen Sie sicher, dass Sie das Modul [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) verwenden. Dieser Schritt ist wichtig, wenn auf Ihrem Computer sowohl das Modul [AzureAD](/powershell/module/azuread/) als auch das Modul [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) installiert ist.
 
     ```powershell
     Remove-Module AzureAD -ErrorAction SilentlyContinue

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: ec74ca19978a4164289276d44b34eb14b694687f
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: bbac794263fec176e03c7148d860c479a2ed9d39
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051580"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501227"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Erstellen von grafischen Azure Automation-Runbooks
 
@@ -61,7 +61,7 @@ Wählen Sie eine Aktivität auf der Canvas aus, um ihre Eigenschaften und Parame
 
 Ein Parametersatz definiert die erforderlichen und optionalen Parameter, die Werte für ein bestimmtes Cmdlet akzeptieren. Alle Cmdlets müssen über mindestens einen Parametersatz verfügen, einige enthalten mehrere Sätze. Wenn ein Cmdlet mehrere Parametersätze aufweist, können Sie Parameter erst konfigurieren, nachdem Sie den zu verwendenden Parametersatz ausgewählt haben. Sie ändern den durch eine Aktivität verwendeten Parametersatz, indem Sie **Parametersatz** auswählen und einen anderen Satz angeben. In diesem Fall gehen alle bereits konfigurierten Parameterwerte verloren.
 
-Im folgenden Beispiel besitzt das Cmdlet [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0&preserve-view=true) drei Parametersätze. Im Beispiel wird der Parametersatz **ListVirtualMachineInResourceGroupParamSet** mit einem einzelnen optionalen Parameter zum Zurückgeben aller virtuellen Computer in einer Ressourcengruppe verwendet. Im Beispiel wird auch der Parametersatz **GetVirtualMachineInResourceGroupParamSet** verwendet, um den zurückzugebenden virtuellen Computer anzugeben. Dieser Satz verfügt über zwei obligatorische Parameter und einen optionalen Parameter.
+Im folgenden Beispiel besitzt das Cmdlet [Get-AzVM](/powershell/module/az.compute/get-azvm) drei Parametersätze. Im Beispiel wird der Parametersatz **ListVirtualMachineInResourceGroupParamSet** mit einem einzelnen optionalen Parameter zum Zurückgeben aller virtuellen Computer in einer Ressourcengruppe verwendet. Im Beispiel wird auch der Parametersatz **GetVirtualMachineInResourceGroupParamSet** verwendet, um den zurückzugebenden virtuellen Computer anzugeben. Dieser Satz verfügt über zwei obligatorische Parameter und einen optionalen Parameter.
 
 ![Parametersatz](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -254,7 +254,7 @@ Beim Erstellen Ihres Runbooks können Sie auf dessen Eingabeparameter zugreifen,
 
 Jeder Eingabeparameter wird durch die Eigenschaften in der folgenden Tabelle definiert:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | Name | Erforderlich. Der Name des Parameters. Der Name muss innerhalb des Runbooks eindeutig sein. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Unterstriche enthalten. Der Name darf kein Leerzeichen enthalten. |
 | BESCHREIBUNG |Optional. Beschreibung zum Zweck des Eingabeparameters. |
@@ -435,4 +435,4 @@ Sie haben die Möglichkeit, ein Runbook auf die veröffentlichte Version zurück
 * Informationen zu den ersten Schritten mit grafischen Runbooks finden Sie unter [Tutorial: Erstellen eines grafischen Runbooks](learn/automation-tutorial-runbook-graphical.md).
 * Weitere Informationen zu den verschiedenen Runbooktypen sowie zu ihren Vorteilen und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md).
 * Informationen, wie Sie sich mithilfe des ausführenden Automation-Kontos authentifizieren, finden Sie unter [Ausführendes Konto](automation-security-overview.md#run-as-account).
-* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation).
+* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/#automation).

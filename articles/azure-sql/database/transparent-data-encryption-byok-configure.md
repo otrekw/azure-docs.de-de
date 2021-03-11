@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: b4480f3d28cb89165a6ba3c5b26b10b1aba9765c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 610f0a9692c18afbd7bb446959b09bac14d6f629
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461850"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507618"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell und die Azure-Befehlszeilenschnittstelle: Aktivieren von Transparent Data Encryption mithilfe eines vom Kunden verwalteten Azure Key Vault-Schlüssels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -79,7 +79,7 @@ Um Ihrem Server Berechtigungen für eine Managed HSM-Instanz hinzuzufügen, fü
 
 ## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Hinzufügen eines Key Vault-Schlüssels zum Server und Festlegen der TDE-Schutzvorrichtung
 
-- Verwenden Sie das Cmdlet [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey?view=azps-2.4.0), um die Schlüssel-ID aus Key Vault abzurufen.
+- Verwenden Sie das Cmdlet [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey), um die Schlüssel-ID aus Key Vault abzurufen.
 - Fügen Sie dem Server mit dem Cmdlet [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) den Schlüssel aus Key Vault hinzu.
 - Legen Sie den Schlüssel mit dem Cmdlet [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) als TDE-Schutzvorrichtung für alle Serverressourcen fest.
 - Vergewissern Sie sich mit dem Cmdlet [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector), dass die TDE-Schutzvorrichtung wie vorgesehen konfiguriert wurde.

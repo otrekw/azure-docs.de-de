@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2020
 ms.author: damendo
-ms.openlocfilehash: ad60b0be8a9a5341c71d760f98c0db84a72763c2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5feef79a08789ad381b0c93cb938abd9effdfcc8
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951518"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502007"
 ---
 # <a name="introduction-to-network-configuration-diagnostics-in-azure-network-watcher"></a>Einführung in die Netzwerkkonfigurationsdiagnose in Azure Network Watcher
 
@@ -40,5 +40,5 @@ Für einen gegebenen Flow führt das Tool zur Netzwerkkonfigurationsdiagnose ein
 
 Verwenden der Netzwerkkonfigurationsdiagnose über andere Schnittstellen
  - [REST-API](/rest/api/network-watcher/networkwatchers/getnetworkconfigurationdiagnostic)
- - [PowerShell](/powershell/module/az.network/invoke-aznetworkwatchernetworkconfigurationdiagnostic?view=azps-4.6.1)
- - [Azure-Befehlszeilenschnittstelle](/cli/azure/network/watcher?view=azure-cli-latest#az_network_watcher_run_configuration_diagnostic)
+ - [PowerShell](/powershell/module/az.network/invoke-aznetworkwatchernetworkconfigurationdiagnostic)
+ - [Azure-Befehlszeilenschnittstelle](/cli/azure/network/watcher#az_network_watcher_run_configuration_diagnostic)

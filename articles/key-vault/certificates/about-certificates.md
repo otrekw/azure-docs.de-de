@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 66f077028b9f9f7a7644a318d4447eeaaab19e98
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: b410dc89b286ef830f0d5b6a9c33fe77d380f5d1
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919929"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507210"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Informationen zu Azure Key Vault-Zertifikaten
 
@@ -91,7 +91,7 @@ Eine Zertifikatrichtlinie enthält Informationen zum Erstellen und Verwalten des
 
 Wenn ein Key Vault-Zertifikat von Grund auf neu erstellt wird, muss eine Richtlinie angegeben werden. Die Richtlinie gibt an, wie diese oder die nächste Key Vault-Zertifikatversion erstellt werden soll. Nachdem eine Richtlinie eingerichtet wurde, ist bei nachfolgenden Erstellungsvorgängen für zukünftige Versionen keine weitere Richtlinie erforderlich. Es gibt nur eine Instanz einer Richtlinie für alle Versionen eines Key Vault-Zertifikats.  
 
-Generell enthält eine Zertifikatsrichtlinie folgende Informationen (deren Definitionen finden Sie [hier](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)):  
+Generell enthält eine Zertifikatsrichtlinie folgende Informationen (deren Definitionen finden Sie [hier](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy)):  
 
 -   Eigenschaften des X.509-Zertifikats: Enthält den Namen und einen alternativen Namen des Antragstellers sowie weitere Eigenschaften zum Erstellen einer X.509-Zertifikatanforderung.  
 -   Schlüsseleigenschaften: enthalten Schlüsseltyp, Schlüssellänge sowie Exportierbarkeits- und ReuseKeyOnRenewal-Felder. Diese Felder teilen Key Vault mit, wie ein Schlüssel generiert werden soll. 

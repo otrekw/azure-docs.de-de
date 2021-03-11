@@ -4,22 +4,22 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 10/20/2020
-ms.openlocfilehash: 7bf32de017a5f8ad19eb044ae7dbcdc2eaa96ca5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: dfeeb451912dd32770a6ae92d73de83851d9d8f6
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521383"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244865"
 ---
 Die folgende Ressourcen stehen ebenfalls zur Verfügung:
 
-- [Node.js SDK-Referenzdokumentation](/javascript/api/azure-iothub?preserve-view=true&view=azure-node-latest)
+- [Node.js SDK-Referenzdokumentation](/javascript/api/azure-iothub)
 - [Beispiele für Dienstclients](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js)
 - [Digital Twins-Beispiele](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js)
 
 ## <a name="iot-hub-service-client-examples"></a>Beispiele für den IoT Hub-Dienstclient
 
-In diesem Abschnitt werden JavaScript-Beispiele gezeigt, die den IoT Hub-Dienstclient und die Klassen **Registry** und **Client** verwenden. Die **Registry** -Klasse dient dazu, mithilfe von Gerätezwillingen mit dem Gerätestatus zu interagieren. Sie können die **Registry** -Klasse außerdem verwenden, um in Ihrem IoT-Hub [Geräteregistrierungen abzufragen](../articles/iot-hub/iot-hub-devguide-query-language.md). Mit der **Client** -Klasse rufen Sie Befehle auf dem Gerät auf. Das [DTDL](../articles/iot-pnp/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden. In den Codeausschnitten enthält die `deviceId`-Variable die Geräte-ID des bei Ihrem IoT-Hub registrierten IoT Plug & Play-Geräts.
+In diesem Abschnitt werden JavaScript-Beispiele gezeigt, die den IoT Hub-Dienstclient und die Klassen **Registry** und **Client** verwenden. Die **Registry**-Klasse dient dazu, mithilfe von Gerätezwillingen mit dem Gerätestatus zu interagieren. Sie können die **Registry**-Klasse außerdem verwenden, um in Ihrem IoT-Hub [Geräteregistrierungen abzufragen](../articles/iot-hub/iot-hub-devguide-query-language.md). Mit der **Client**-Klasse rufen Sie Befehle auf dem Gerät auf. Das [DTDL](../articles/iot-pnp/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden. In den Codeausschnitten enthält die `deviceId`-Variable die Geräte-ID des bei Ihrem IoT-Hub registrierten IoT Plug & Play-Geräts.
 
 ### <a name="get-the-device-twin-and-model-id"></a>Abrufen von Gerätezwilling und Modell-ID
 
@@ -167,9 +167,9 @@ client.invokeDeviceMethod(deviceId, methodParams, function (err, result) {
 });
 ```
 
-## <a name="iot-hub-digital-twin-examples"></a>Beispiele für IoT Hub Digital Twins
+## <a name="iot-hub-digital-twin-examples"></a>Beispiele für digitale IoT Hub-Zwillinge
 
-Sie können die **DigitalTwinClient** -Klasse verwenden, um mithilfe digitaler Zwillinge mit dem Gerätestatus zu interagieren. Das [DTDL](../articles/iot-pnp/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden.
+Sie können die **DigitalTwinClient**-Klasse verwenden, um mithilfe digitaler Zwillinge mit dem Gerätestatus zu interagieren. Das [DTDL](../articles/iot-pnp/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden.
 
 In diesem Abschnitt werden JavaScript-Beispiele zur Verwendung der Digital Twins-API gezeigt.
 

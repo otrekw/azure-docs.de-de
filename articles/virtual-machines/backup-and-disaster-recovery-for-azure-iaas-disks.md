@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 01133ab5582e63c0e87d8a5cf8de12f5445394c5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e5ae08c23748e55a8c3b75eb8fb9c112684f022e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969703"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507905"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Sicherung und Notfallwiederherstellung für Azure IaaS-Datenträger
 
@@ -48,7 +48,7 @@ Aufgrund dieser Architektur konnte Azure für IaaS-Datenträger durchgängig ein
 
 Lokale Hardwareausfälle auf dem Computehost oder auf der Speicherplattform können in einigen Fällen zu einer vorübergehenden Nichtverfügbarkeit der VM führen. Dies ist durch die [Azure-Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/virtual-machines/) für die VM-Verfügbarkeit abgedeckt. Für Azure wird auch eine branchenführende SLA für einzelne VM-Instanzen bereitgestellt, die Azure-Premium-SSD-Datenträger nutzen.
 
-Um Anwendungsworkloads vor Ausfallzeiten aufgrund der vorübergehenden Nichtverfügbarkeit eines Datenträgers oder einer VM zu schützen, können Kunden [Verfügbarkeitsgruppen](./manage-availability.md) nutzen. Zwei oder mehr virtuelle Computer in einer Verfügbarkeitsgruppe sorgen für die Redundanz der Anwendung. Azure erstellt diese VMs und Datenträger dann in separaten Fehlerdomänen mit unterschiedlichen Stromversorgungs-, Netzwerk- und Serverkomponenten.
+Um Anwendungsworkloads vor Ausfallzeiten aufgrund der vorübergehenden Nichtverfügbarkeit eines Datenträgers oder einer VM zu schützen, können Kunden [Verfügbarkeitsgruppen](./availability.md) nutzen. Zwei oder mehr virtuelle Computer in einer Verfügbarkeitsgruppe sorgen für die Redundanz der Anwendung. Azure erstellt diese VMs und Datenträger dann in separaten Fehlerdomänen mit unterschiedlichen Stromversorgungs-, Netzwerk- und Serverkomponenten.
 
 Wegen dieser separaten Fehlerdomänen wirken sich lokale Hardwareausfälle in der Regel nicht gleichzeitig auf mehrere VMs in der Gruppe aus. Separate Fehlerdomänen gewährleisten Hochverfügbarkeit Ihrer Anwendung. Eine bewährte Methode besteht darin, Verfügbarkeitsgruppen zu verwenden, wenn Hochverfügbarkeit erforderlich ist. Im nächsten Abschnitt wird die Notfallwiederherstellung behandelt.
 

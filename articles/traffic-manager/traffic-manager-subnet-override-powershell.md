@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 502533b69058eacd4ad18a3b29a33fbc4a3715a5
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 7dd7f43044a9643eb7e9d5296dfb209e425d5fb6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183777"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504779"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Außerkraftsetzung für Traffic Manager-Subnetz mithilfe von Azure PowerShell
 
@@ -43,7 +43,7 @@ Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure
 
 1. **Rufen Sie den Traffic Manager-Endpunkt ab:**
 
-    Um die Außerkraftsetzung des Subnetzes zu aktivieren, rufen Sie den Endpunkt ab, dem Sie die Außerkraftsetzung hinzufügen möchten, und speichern Sie ihn mit [Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0) in einer Variablen.
+    Um die Außerkraftsetzung des Subnetzes zu aktivieren, rufen Sie den Endpunkt ab, dem Sie die Außerkraftsetzung hinzufügen möchten, und speichern Sie ihn mit [Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint) in einer Variablen.
 
     Ersetzen Sie „Name“, „ProfilName“ und „ResourceGroupName“ durch die Werte des zu ändernden Endpunkts.
 
@@ -54,7 +54,7 @@ Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure
     ```
 2. **Fügen Sie den IP-Adressbereich zum Endpunkt hinzu:**
     
-    Um den IP-Adressbereich zum Endpunkt hinzuzufügen, verwenden Sie [Add-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0).
+    Um den IP-Adressbereich zum Endpunkt hinzuzufügen, verwenden Sie [Add-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange).
 
     ```powershell
 
@@ -68,18 +68,18 @@ Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure
     Add-AzTrafficManagerIPAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
  
     ```
-    Nachdem die Bereiche hinzugefügt wurden, verwenden Sie [Set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0), um den Endpunkt zu aktualisieren.
+    Nachdem die Bereiche hinzugefügt wurden, verwenden Sie [Set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint), um den Endpunkt zu aktualisieren.
 
     ```powershell
 
     Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $TrafficManagerEndpoint
 
     ```
-Das Entfernen des IP-Adressbereichs kann mit [Remove-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0) abgeschlossen werden.
+Das Entfernen des IP-Adressbereichs kann mit [Remove-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange) abgeschlossen werden.
 
 1.  **Rufen Sie den Traffic Manager-Endpunkt ab:**
 
-    Um die Außerkraftsetzung des Subnetzes zu aktivieren, rufen Sie den Endpunkt ab, dem Sie die Außerkraftsetzung hinzufügen möchten, und speichern Sie ihn mit [Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0) in einer Variablen.
+    Um die Außerkraftsetzung des Subnetzes zu aktivieren, rufen Sie den Endpunkt ab, dem Sie die Außerkraftsetzung hinzufügen möchten, und speichern Sie ihn mit [Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint) in einer Variablen.
 
     Ersetzen Sie „Name“, „ProfilName“ und „ResourceGroupName“ durch die Werte des zu ändernden Endpunkts.
 
@@ -102,7 +102,7 @@ Das Entfernen des IP-Adressbereichs kann mit [Remove-AzTrafficManagerIpAddressRa
     Remove-AzTrafficManagerIpAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
 
     ```
-     Nachdem die Bereiche entfernt wurden, verwenden Sie [Set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0), um den Endpunkt zu aktualisieren.
+     Nachdem die Bereiche entfernt wurden, verwenden Sie [Set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint), um den Endpunkt zu aktualisieren.
 
     ```powershell
 

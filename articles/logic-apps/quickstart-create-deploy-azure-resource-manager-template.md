@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs, devx-track-azurecli
 ms.date: 06/30/2020
-ms.openlocfilehash: 689582d73e29cb60cc2ee5294b568b5db2f73244
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8cee79efd9be53ddb9d450f643c04f21ae5e7fca
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739330"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213996"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>Schnellstart: Erstellen und Bereitstellen eines Logik-App-Workflows mithilfe einer ARM-Vorlage
 
@@ -20,7 +20,7 @@ Bei [Azure Logic Apps](../logic-apps/logic-apps-overview.md) handelt es sich um 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen** . Die Vorlage wird im Azure-Portal geöffnet.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
 [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-logic-app-create%2fazuredeploy.json)
 
@@ -49,7 +49,7 @@ Befolgen Sie die Option, die Sie zum Bereitstellen der Schnellstartvorlage verwe
 | Option | BESCHREIBUNG |
 |--------|-------------|
 | [Azure portal](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-portal#deploy-template) | Wenn Ihre Azure-Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, helfen Ihnen diese Schritte bei der direkten Anmeldung bei Azure und beim Öffnen der Schnellstartvorlage im Azure-Portal. Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure-Portal](../azure-resource-manager/templates/deploy-portal.md). |
-| [Azure-Befehlszeilenschnittstelle](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Die Azure-Befehlszeilenschnittstelle (Azure CLI) setzt sich aus Befehlen zum Erstellen und Verwalten von Azure-Ressourcen zusammen. Um diese Befehle auszuführen, benötigen Sie Azure CLI, Version 2.6 oder höher. Geben Sie zum Überprüfen Ihrer CLI-Version `az --version` ein. Weitere Informationen finden Sie in den folgenden Themen: <p><p>- [Was ist die Azure CLI?](/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Erste Schritte mit der Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
+| [Azure-Befehlszeilenschnittstelle](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Die Azure-Befehlszeilenschnittstelle (Azure CLI) setzt sich aus Befehlen zum Erstellen und Verwalten von Azure-Ressourcen zusammen. Um diese Befehle auszuführen, benötigen Sie Azure CLI, Version 2.6 oder höher. Geben Sie zum Überprüfen Ihrer CLI-Version `az --version` ein. Weitere Informationen finden Sie in den folgenden Themen: <p><p>- [Was ist die Azure CLI?](/cli/azure/what-is-azure-cli) <br>- [Erste Schritte mit der Azure CLI](/cli/azure/get-started-with-azure-cli) |
 | [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Azure PowerShell bietet eine Reihe von Cmdlets, die das Azure Resource Manager-Modell für die Verwaltung von Azure-Ressourcen verwenden. Weitere Informationen finden Sie in den folgenden Themen: <p><p>- [Übersicht über Azure PowerShell](/powershell/azure/azurerm/overview) <br>- [Einführung in das Az-Modul von Azure PowerShell](/powershell/azure/new-azureps-module-az) <br>- [Erste Schritte mit Azure PowerShell](/powershell/azure/get-started-azureps) |
 | [REST-API für Azure-Ressourcenverwaltung](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=rest-api#deploy-template) | Azure bietet REST-APIs (Representational State Transfer), bei denen es sich um Dienstendpunkte handelt, die HTTP-Vorgänge (Methoden) unterstützen, die Sie zum Erstellen, Abrufen, Aktualisieren oder Löschen des Zugriffs auf Dienstressourcen verwenden. Weitere Informationen finden Sie unter [Erste Schritte mit der Azure-REST-API](/rest/api/azure/). |
 |||
@@ -64,7 +64,7 @@ Befolgen Sie die Option, die Sie zum Bereitstellen der Schnellstartvorlage verwe
 
 1. Geben Sie im Portal auf der Seite **Logik-App mithilfe einer Vorlage erstellen** diese Werte ein, oder wählen Sie sie aus:
 
-   | Eigenschaft | Wert | BESCHREIBUNG |
+   | Eigenschaft | Wert | Beschreibung |
    |----------|-------|-------------|
    | **Abonnement** | <*Name des Azure-Abonnements*> | Der Name des zu verwendenden Azure-Abonnements |
    | **Ressourcengruppe** | <*Name der Azure-Ressourcengruppe*> | Der Name für eine neue oder vorhandene Azure-Ressourcengruppe. In diesem Beispiel wird `Check-Azure-Status-RG` verwendet. |
@@ -245,7 +245,7 @@ az logic workflow show --name $logicAppName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-Weitere Informationen finden Sie unter [Azure CLI: az logic workflow show](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show).
+Weitere Informationen finden Sie unter [Azure CLI: az logic workflow show](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show).
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -303,7 +303,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-Weitere Informationen finden Sie unter [Azure CLI: az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete).
+Weitere Informationen finden Sie unter [Azure CLI: az group delete](/cli/azure/group#az-group-delete).
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

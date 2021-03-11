@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: f4d26ba6bec8f3e63ba89ed9abae789704a0828b
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 04e50f5a990624aa01c845c82658639b8450f57d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184100"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503860"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Tutorial: Vorhersagen von Preisen für Taxifahrten mit automatisiertem maschinellem Lernen
 
@@ -175,7 +175,7 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>Konfigurieren des Arbeitsbereichs
 
-Erstellen Sie ein Arbeitsbereichsobjekt aus dem vorhandenen Arbeitsbereich. Ein [Arbeitsbereich](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) ist eine Klasse, die Informationen zu Ihrem Azure-Abonnement und Ihren Azure-Ressourcen akzeptiert. Außerdem erstellt der Arbeitsbereich eine Cloudressource zur Überwachung und Nachverfolgung Ihrer Modellausführungen. `Workspace.from_config()` liest die Datei **config.json** und lädt die Authentifizierungsdetails in ein Objekt namens `ws`. `ws` wird im restlichen Code in diesem Tutorial verwendet.
+Erstellen Sie ein Arbeitsbereichsobjekt aus dem vorhandenen Arbeitsbereich. Ein [Arbeitsbereich](/python/api/azureml-core/azureml.core.workspace.workspace) ist eine Klasse, die Informationen zu Ihrem Azure-Abonnement und Ihren Azure-Ressourcen akzeptiert. Außerdem erstellt der Arbeitsbereich eine Cloudressource zur Überwachung und Nachverfolgung Ihrer Modellausführungen. `Workspace.from_config()` liest die Datei **config.json** und lädt die Authentifizierungsdetails in ein Objekt namens `ws`. `ws` wird im restlichen Code in diesem Tutorial verwendet.
 
 ```python
 from azureml.core.workspace import Workspace
@@ -302,7 +302,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-the-results"></a>Untersuchen der Ergebnisse
 
-Untersuchen Sie die Ergebnisse des automatischen Trainings mit einem [Jupyter-Widget](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py). Mit dem Widget können Sie ein Diagramm und eine Tabelle aller individuellen Ausführungsiterationen sowie Metriken zur Trainingsgenauigkeit und Metadaten anzeigen. Darüber hinaus können Sie über das Dropdownmenü nach anderen Genauigkeitsmetriken filtern.
+Untersuchen Sie die Ergebnisse des automatischen Trainings mit einem [Jupyter-Widget](/python/api/azureml-widgets/azureml.widgets). Mit dem Widget können Sie ein Diagramm und eine Tabelle aller individuellen Ausführungsiterationen sowie Metriken zur Trainingsgenauigkeit und Metadaten anzeigen. Darüber hinaus können Sie über das Dropdownmenü nach anderen Genauigkeitsmetriken filtern.
 
 ```python
 from azureml.widgets import RunDetails

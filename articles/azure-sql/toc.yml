@@ -1230,6 +1230,8 @@
               href: virtual-machines/linux/rhel-high-availability-stonith-tutorial.md
             - name: "Konfigurieren von Verfügbarkeitsgruppenlistenern für SQL\_Server auf virtuellen RHEL-Computern in Azure"
               href: virtual-machines/linux/rhel-high-availability-listener-tutorial.md
+            - name: Einrichten von Always On-Verfügbarkeitsgruppen mit DH2i DxEnterprise
+              href: virtual-machines/linux/dh2i-high-availability-tutorial.md
         - name: Ressourcen
           items:
             - name: Häufig gestellte Fragen

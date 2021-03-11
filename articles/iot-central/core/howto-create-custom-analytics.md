@@ -1,7 +1,7 @@
 ---
 title: Erweitern von Azure IoT Central mit benutzerdefinierten Analysen | Microsoft-Dokumentation
 description: Als Lösungsentwickler konfigurieren Sie eine IoT Central-Anwendung zur Ausführung von benutzerdefinierten Analysen und Visualisierungen. Diese Lösung verwendet Azure Databricks.
-author: TheJasonAndrew
+author: TheRealJasonAndrew
 ms.author: v-anjaso
 ms.date: 02/18/2020
 ms.topic: how-to
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 86f94b8059d85b892a87c82537b1e9b02552f8f7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 11e5ba3c0700cc9b29b8a11c0f9aa20cb5adb132
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741727"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551316"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Erweitern von Azure IoT Central mit benutzerdefinierten Analysen mithilfe von Azure Databricks
 
@@ -103,7 +103,7 @@ Ihr Event Hubs-Namespace sieht wie im folgenden Screenshot aus:
 
 Navigieren Sie auf der Website des [Azure IoT Central-Anwendungs-Managers](https://aka.ms/iotcentral) zu der IoT Central-Anwendung, die Sie aus der Contoso-Vorlage erstellt haben. In diesem Abschnitt konfigurieren Sie die Anwendung so, dass die Telemetriedaten aus den simulierten Geräten an Ihren Event Hub gestreamt werden. So konfigurieren Sie den Export:
 
-1. Navigieren Sie zur Seite **Datenexport (Legacy)** , und klicken Sie auf **+ Neu** > **Azure Event Hubs**.
+1. Navigieren Sie zur Seite **Datenexport**, wählen Sie **+ Neu** und dann **Azure Event Hubs** aus.
 1. Verwenden Sie die folgenden Einstellungen, um den Export zu konfigurieren, und klicken Sie dann auf **Speichern**:
 
     | Einstellung | Wert |

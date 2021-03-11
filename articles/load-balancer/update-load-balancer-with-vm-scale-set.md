@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 952889777e4236d7fa03fad5b1bdbf98499f7066
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 52f2a2ed301bf734ad605a2ee68a0ab672a97014
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721309"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218722"
 ---
 # <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>Aktualisieren oder Löschen einer von einer VM-Skalierungsgruppe verwendeten Load Balancer-Instanz
 
@@ -30,7 +30,7 @@ Wenn Sie mit VM-Skalierungsgruppen und einer Azure Load Balancer-Instanz arbeite
 
 ## <a name="set-up-a-load-balancer-for-scaling-out-virtual-machine-scale-sets"></a>Einrichten einer Load Balancer-Instanz zum Aufskalieren von VM-Skalierungsgruppen
 
-Stellen Sie sicher, dass für die Azure Load Balancer-Instanz ein [NAT-Pool für eingehenden Datenverkehr](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest) eingerichtet wurde und die VM-Skalierungsgruppe im Back-End-Pool der Load Balancer-Instanz platziert ist. Azure Load Balancer erstellt automatisch neue NAT-Regeln für eingehenden Datenverkehr im NAT-Pool für eingehenden Datenverkehr, wenn der VM-Skalierungsgruppe neue VM-Instanzen hinzugefügt werden.
+Stellen Sie sicher, dass für die Azure Load Balancer-Instanz ein [NAT-Pool für eingehenden Datenverkehr](/cli/azure/network/lb/inbound-nat-pool) eingerichtet wurde und die VM-Skalierungsgruppe im Back-End-Pool der Load Balancer-Instanz platziert ist. Azure Load Balancer erstellt automatisch neue NAT-Regeln für eingehenden Datenverkehr im NAT-Pool für eingehenden Datenverkehr, wenn der VM-Skalierungsgruppe neue VM-Instanzen hinzugefügt werden.
 
 So überprüfen Sie, ob der eingehende NAT-Pool ordnungsgemäß eingerichtet wurde:
 
@@ -44,7 +44,7 @@ Einzelne NAT-Regeln für eingehenden Datenverkehr können nicht hinzugefügt wer
 
 Erstellen Sie zunächst einen NAT-Pool für eingehenden Datenverkehr in der Load Balancer-Instanz, um mehrere NAT-Regeln für eingehenden Datenverkehr für die VM-Skalierungsgruppen hinzuzufügen. Verweisen Sie dann vom Netzwerkprofil der VM-Skalierungsgruppe auf den NAT-Pool für eingehenden Datenverkehr. Ein vollständiges Beispiel für die Verwendung der CLI wird angezeigt.
 
-Der neue NAT-Pool für eingehenden Datenverkehr darf keinen überlappenden Front-End-Portbereich mit vorhandenen NAT-Pools für eingehenden Datenverkehr aufweisen. Verwenden Sie den folgenden [CLI-Befehl](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list), um vorhandene eingerichtete NAT-Pools für eingehenden Datenverkehr anzuzeigen:
+Der neue NAT-Pool für eingehenden Datenverkehr darf keinen überlappenden Front-End-Portbereich mit vorhandenen NAT-Pools für eingehenden Datenverkehr aufweisen. Verwenden Sie den folgenden [CLI-Befehl](/cli/azure/network/lb/inbound-nat-pool#az_network_lb_inbound_nat_pool_list), um vorhandene eingerichtete NAT-Pools für eingehenden Datenverkehr anzuzeigen:
   
 ```azurecli-interactive
   az network lb inbound-nat-pool create 

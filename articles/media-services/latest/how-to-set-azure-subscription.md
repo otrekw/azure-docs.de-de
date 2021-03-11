@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: cli,portal, devx-track-azurecli
-ms.openlocfilehash: 07088ebfa5fde4c3c790bd554c1eba8d6844b7d1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f16cc83257dbf6419fc794f34e4cd6df033d3f8b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736076"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213962"
 ---
 # <a name="find-your-azure-subscription"></a>Ermitteln Ihres Azure-Abonnements
 
@@ -47,7 +47,7 @@ ms.locfileid: "92736076"
 
 ### <a name="see-also"></a>Weitere Informationen
 
-* [Azure-Befehlszeilenschnittstelle](/cli/azure/ams?view=azure-cli-latest)
+* [Azure-Befehlszeilenschnittstelle](/cli/azure/ams)
 
 ---
 

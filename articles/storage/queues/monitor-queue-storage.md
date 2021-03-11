@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: bb9eb2e91fb29849f27e7aba9bc4794698bf0b0b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8f49485d00379f5845569976e793f06d56a8967d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570051"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506819"
 ---
 # <a name="monitoring-azure-queue-storage"></a>Überwachen von Azure Queue Storage
 
@@ -108,6 +108,8 @@ Wenn Sie auswählen, dass Ihre Protokolle in einem Speicherkonto archiviert werd
    > ![Seite „Diagnoseeinstellungen“: „In ein Speicherkonto archivieren“](media/monitor-queue-storage/diagnostic-logs-settings-pane-archive-storage.png)
 
 2. Wählen Sie in der Dropdownliste für **Speicherkonto** das Speicherkonto aus, in dem Ihre Protokolle archiviert werden sollen. Klicken Sie auf die Schaltfläche **OK** und dann auf die Schaltfläche **Speichern**.
+ 
+   [!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
 
    > [!NOTE]
    > Bevor Sie ein Speicherkonto als Exportziel auswählen, informieren Sie sich unter [Archivieren von Azure-Ressourcenprotokollen](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) über die Voraussetzungen für das Speicherkonto.
@@ -153,12 +155,14 @@ Wenn Sie auswählen, dass Ihre Protokolle in einem Speicherkonto archiviert werd
 Aktivieren Sie Protokolle mit dem PowerShell-Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) unter Angabe des Parameters `StorageAccountId`.
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log>
 ```
 
 Ersetzen Sie den Platzhalter `<storage-service-resource--id>` in diesem Codeausschnitt durch die Ressourcen-ID der Warteschlange. Sie finden die Ressourcen-ID im Azure-Portal, indem Sie die Seite **Eigenschaften** Ihres Speicherkontos öffnen.
 
 Sie können `StorageRead`, `StorageWrite` und `StorageDelete` als Wert für den Parameter **Category** angeben.
+
+[!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
 
 Hier sehen Sie ein Beispiel:
 
@@ -215,16 +219,18 @@ Wenn Sie auswählen, dass Ihre Protokolle in einem Speicherkonto archiviert werd
 Aktivieren Sie die Protokolle mit dem Befehl [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
 
 ```azurecli-interactive
-az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
+az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true}]'
 ```
 
 Ersetzen Sie den Platzhalter `<storage-service-resource--id>` in diesem Codeausschnitt durch die Ressourcen-ID der Warteschlange. Sie finden die Ressourcen-ID im Azure-Portal, indem Sie die Seite **Eigenschaften** Ihres Speicherkontos öffnen.
 
 Sie können `StorageRead`, `StorageWrite` und `StorageDelete` als Wert für den Parameter `category` angeben.
 
+[!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
+
 Hier sehen Sie ein Beispiel:
 
-`az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/queueServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
+`az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/queueServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true}]'`
 
 Eine Beschreibung der einzelnen Parameter finden Sie unter [Archivieren von Ressourcenprotokollen mithilfe der Azure-Befehlszeilenschnittstelle](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage).
 
