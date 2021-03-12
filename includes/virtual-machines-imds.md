@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: e18c09130fcbcdbb470abc19d76bdf2ccfef0775
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 554730919d4226c07e099d5e457cd0fd20dbad30
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175708"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510942"
 ---
 Der Azure Instance Metadata Service (IMDS) stellt Informationen zu Instanzen virtueller Computer bereit, die derzeit ausgeführt werden. Sie können ihn zur Verwaltung und Konfiguration Ihrer virtuellen Computer verwenden.
 Hierzu gehören die SKU, der Speicher, Netzwerkkonfigurationen und bevorstehende Wartungsereignisse. Eine umfassende Liste der verfügbaren Daten finden Sie in der [Übersicht über die Endpunktkategorien](#endpoint-categories).
@@ -314,7 +314,7 @@ GET /metadata/instance
 
 #### <a name="parameters"></a>Parameter
 
-| Name | Erforderlich/Optional | BESCHREIBUNG |
+| Name | Erforderlich/Optional | Beschreibung |
 |------|-------------------|-------------|
 | `api-version` | Erforderlich | Die zum Durchführen der Anforderung verwendete Version
 | `format` | Optional* | Das Format (`json` oder `text`) der Antwort. *Hinweis: Ist möglicherweise erforderlich, wenn Anforderungsparameter verwendet werden.
@@ -345,8 +345,8 @@ Aufschlüsselung des Schemas:
 | `osType` | Linux oder Windows | 2017-04-02
 | `placementGroupId` | [Platzierungsgruppe](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) der VM-Skalierungsgruppe | 2017-08-01
 | `plan` | Der [Plan](/rest/api/compute/virtualmachines/createorupdate#plan) mit Name, Produkt und Herausgeber für einen virtuellen Computer, wenn es sich um ein Azure Marketplace-Image handelt | 2018-04-02
-| `platformUpdateDomain` |  [Updatedomäne](../articles/virtual-machines/manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
-| `platformFaultDomain` | [Fehlerdomäne](../articles/virtual-machines/manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
+| `platformUpdateDomain` |  [Updatedomäne](../articles/virtual-machines/availability.md), in der die VM ausgeführt wird | 2017-04-02
+| `platformFaultDomain` | [Fehlerdomäne](../articles/virtual-machines/availability.md), in der die VM ausgeführt wird | 2017-04-02
 | `priority` | Dies ist die Priorität der VM. Weitere Informationen finden Sie unter [Spot-VM](../articles/virtual-machines/spot-vms.md). | 2020-12-01
 | `provider` | Anbieter des virtuellen Computers | 2018-10-01
 | `publicKeys` | [Sammlung von öffentlichen Schlüsseln](/rest/api/compute/virtualmachines/createorupdate#sshpublickey), dem virtuellen Computer und den entsprechenden Pfaden zugewiesen | 2018-04-02
@@ -908,7 +908,7 @@ GET /metadata/attested/document
 
 #### <a name="parameters"></a>Parameter
 
-| Name | Erforderlich/Optional | BESCHREIBUNG |
+| Name | Erforderlich/Optional | Beschreibung |
 |------|-------------------|-------------|
 | `api-version` | Erforderlich | Die zum Durchführen der Anforderung verwendete Version
 | `nonce` | Optional | Eine 10-stellige Zeichenfolge, die als kryptografische Nonce fungiert. Wenn kein Wert angegeben wird, verwendet IMDS den aktuellen UTC-Zeitstempel.

@@ -4,6 +4,8 @@
   items:
     - name: Informationen zu Azure VMware Solution
       href: introduction.md
+    - name: Plattformupdates
+      href: azure-vmware-solution-platform-updates.md
 - name: Schnellstart
   items:
     - name: 0. Planen der Bereitstellung
@@ -72,6 +74,8 @@
       href: public-ip-usage.md
     - name: Erstellen eines IPsec-Tunnels
       href: create-ipsec-tunnel.md
+    - name: Windows Server-Failovercluster
+      href: windows-server-failover-cluster.md
     - name: Native Azure-Integration
       items:
         - name: API Management
