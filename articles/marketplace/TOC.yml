@@ -308,6 +308,48 @@
       href: partner-center-portal/downloads-dashboard.md
     - name: Dashboard „Bewertungen und Rezensionen“
       href: partner-center-portal/ratings-reviews.md
+    - name: Programmgesteuerter Zugriff auf Analysen
+      items:
+        - name: Erste Schritte
+          href: analytics-get-started.md
+        - name: Voraussetzungen für den programmgesteuerten Zugriff
+          href: analytics-prerequisites.md
+        - name: Paradigma für den programmgesteuerten Zugriff
+          href: analytics-programmatic-access.md
+        - name: Durchführen Ihres ersten API-Aufrufs
+          href: analytics-make-your-first-api-call.md
+        - name: Liste der Systemabfragen
+          href: analytics-system-queries.md
+        - name: Beispielabfragen
+          href: analytics-sample-queries.md
+        - name: Beispielanwendung
+          href: analytics-sample-application.md
+        - name: Spezifikation für benutzerdefinierte Abfragen
+          href: analytics-custom-query-specification.md
+        - name: Häufig gestellte Fragen zu programmgesteuerten Analysen
+          href: analytics-programmatic-faq.md
+        - name: Analysen-API-Referenz
+          items:
+            - name: Liste der APIs
+              href: analytics-available-apis.md
+            - name: Abrufen aller Datasets
+              href: analytics-api-get-all-datasets.md
+            - name: API zum Abrufen von Berichtsabfragen
+              href: analytics-api-get-report-queries.md
+            - name: API zum Löschen von Berichtsabfragen
+              href: analytics-api-delete-report-queries.md
+            - name: API zum Testen von Berichtsabfragen
+              href: analytics-api-try-report-queries.md
+            - name: API zum Abrufen eines Berichts
+              href: analytics-api-get-report.md
+            - name: API zum Aktualisieren eines Berichts
+              href: analytics-api-update-report.md
+            - name: API zum Löschen eines Berichts
+              href: analytics-api-delete-report.md
+            - name: API zum Anhalten von Berichtsausführungen
+              href: analytics-api-pause-report-executions.md
+            - name: API zum Fortsetzen von Berichtsausführungen
+              href: analytics-api-resume-report-executions.md
     - name: Verwalten von Anomalien bei der getakteten Abrechnung
       href: anomaly-detection.md
     - name: Allgemeine Fragen zu Analytics
