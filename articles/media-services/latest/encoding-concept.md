@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 159336d3e8949739cb00dbe66ed82fa90256dcfd
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 84caa287803fa64b12d9da4c2afb1f8dd1418e13
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897899"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455279"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Codieren von Video- und Audiodaten mit Media Services
 
@@ -137,7 +137,7 @@ Media Services unterstützt die vollständige Anpassung aller Werte in Voreinste
 
 ## <a name="preset-schema"></a>Voreinstellungsschemas
 
-In Media Services v3 sind Voreinstellungen stark typisierte Entitäten in der API selbst. Die „Schema“-Definition für diese Objekte finden Sie in [Offene API-Spezifikation (oder Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Sie können die voreingestellten Definitionen (wie **StandardEncoderPreset**) auch in der [REST-API](/rest/api/media/transforms/createorupdate#standardencoderpreset), im [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) oder eine andere Referenzdokumentation für das Media Services v3 SDK anzeigen.
+In Media Services v3 sind Voreinstellungen stark typisierte Entitäten in der API selbst. Die „Schema“-Definition für diese Objekte finden Sie in [Offene API-Spezifikation (oder Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Sie können die voreingestellten Definitionen (wie **StandardEncoderPreset**) auch in der [REST-API](/rest/api/media/transforms/createorupdate#standardencoderpreset), im [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset) oder eine andere Referenzdokumentation für das Media Services v3 SDK anzeigen.
 
 ## <a name="scaling-encoding-in-v3"></a>Skalieren der Codierung in v3
 

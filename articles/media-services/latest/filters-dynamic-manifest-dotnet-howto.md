@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d007c104dc53683d49547db582e8de6981ab921f
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 11c65498d5a31c2e2ee997bdaf18037b1f0f9060
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093423"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455211"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Erstellen von Filtern mit dem Media Services .NET SDK
 
@@ -29,7 +29,7 @@ Bei der Inhaltsbereitstellung für Ihre Kunden (Streaming von Liveereignissen od
 
 Eine ausführliche Beschreibung dieses Features und der Szenarien, in denen es verwendet wird, finden Sie unter [Dynamische Manifeste](filters-dynamic-manifest-overview.md) und [Filter](filters-concept.md).
 
-In diesem Thema wird beschrieben, wie Sie mit dem Media Services .NET SDK einen Filter für ein Video on Demand-Medienobjekt sowie [Kontofilter](/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) und [Medienobjektfilter](/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet) erstellen. 
+In diesem Thema wird beschrieben, wie Sie mit dem Media Services .NET SDK einen Filter für ein Video on Demand-Medienobjekt sowie [Kontofilter](/dotnet/api/microsoft.azure.management.media.models.accountfilter) und [Medienobjektfilter](/dotnet/api/microsoft.azure.management.media.models.assetfilter) erstellen. 
 
 > [!NOTE]
 > Lesen Sie die Informationen zu [presentationTimeRange](filters-concept.md#presentationtimerange).
@@ -43,7 +43,7 @@ In diesem Thema wird beschrieben, wie Sie mit dem Media Services .NET SDK einen 
 
 ## <a name="define-a-filter"></a>Definieren eines Filters  
 
-In .NET konfigurieren Sie die Spurauswahl mit den Klassen [FilterTrackSelection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) und [FilterTrackPropertyCondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet). 
+In .NET konfigurieren Sie die Spurauswahl mit den Klassen [FilterTrackSelection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection) und [FilterTrackPropertyCondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition). 
 
 Der folgende Code definiert einen Filter, der alle EC-3-Audiotitel und alle Videotitel mit Bitraten im Bereich von 0–1000000 einbezieht.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 24d27859aad7642392a5702ab7ddbb727b538d51
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: d76fd3b30d823efbf85e84a74a21c694f5a0e6fb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025009"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565562"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Häufig gestellte Fragen zu Windows 10 Enterprise mit mehreren Sitzungen
 
@@ -81,7 +81,7 @@ Die meisten virtualisierten Umgebungen sind standardmäßig so konfiguriert, das
 
 - [Veröffentlichen von integrierten Apps in Windows Virtual Desktop](publish-apps.md)
 - [Befehlszeilenoptionen für die Wartung von DISM-App-Paketen (APPX- oder APPXBUNDLE-Dateien)](/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
-- [Add-AppxProvisionedPackage](/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+- [Add-AppxProvisionedPackage](/powershell/module/dism/add-appxprovisionedpackage)
 
 ## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>Wie kann ich sicherstellen, dass Benutzer keine Apps aus dem Microsoft Store herunterladen und installieren?
 

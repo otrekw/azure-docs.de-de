@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: f19e009341ac0e9556cef36f8da6ef19cde0447f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1b47ad27abbe59eceabd15d091f88f4659d8dad6
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93087512"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486385"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globale Datenverteilung mit Azure Cosmos DB: Hintergrundinformationen
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -23,9 +23,9 @@ Azure Cosmos DB ist einer der Basisdienste in Azure und wird daher in sämtliche
 
 **Durch die globale Verteilung in Azure Cosmos DB wird eine schlüsselfertige Lösung bereitgestellt:** Sie können jederzeit und mit nur wenigen Mausklicks oder programmgesteuert mit einem einzigen API-Aufruf die Ihrer Cosmos-Datenbank zugeordneten geografischen Regionen hinzufügen oder entfernen. Eine Cosmos-Datenbank wiederum besteht aus einer Gruppe von Cosmos-Containern. In Cosmos DB dienen Container als logische Einheit für die Verteilung und Skalierung. Die Sammlungen, Tabellen und Diagramme, die Sie erstellen, sind (intern) nur Cosmos-Container. Container sind vollständig schemaunabhängig und stellen einen Gültigkeitsbereich für eine Abfrage dar. Die Daten in einem Cosmos-Container werden bei der Erfassung automatisch indiziert. Durch die automatische Indizierung können Benutzer die Daten abfragen, ohne sich um das Schema oder die Indexverwaltung kümmern zu müssen, was besonders in einem global verteilten Setup hilfreich ist.  
 
-- In einer bestimmten Region werden die Daten in einem Container mithilfe eines Partitionsschlüssels, den Sie angeben, verteilt und transparent von den zugrunde liegenden physischen Partitionen ( *lokale Verteilung* ) verwaltet.  
+- In einer bestimmten Region werden die Daten in einem Container mithilfe eines Partitionsschlüssels, den Sie angeben, verteilt und transparent von den zugrunde liegenden physischen Partitionen (*lokale Verteilung*) verwaltet.  
 
-- Jede physische Partition wird außerdem über geografische Regionen repliziert ( *globale Verteilung* ). 
+- Jede physische Partition wird außerdem über geografische Regionen repliziert (*globale Verteilung*). 
 
 Wenn eine App den Durchsatz in einem Cosmos-Container mithilfe von Cosmos DB elastisch skaliert oder zusätzlichen Speicher verbraucht, verarbeitet Cosmos DB die Vorgänge zur Partitionsverwaltung (z.B. Teilen, Klonen, Löschen usw.) in sämtlichen Regionen transparent. Unabhängig von Skalierung, Verteilung oder Ausfällen stellt Cosmos DB weiterhin ein einzelnes Systemimage der Daten in den Containern bereit, die global auf eine beliebige Anzahl von Regionen verteilt sind.  
 
@@ -85,5 +85,4 @@ Die Semantik der fünf Konsistenzmodelle in Cosmos DB wird [hier](consistency-le
 Als nächstes erfahren Sie, wie Sie die globale Verteilung konfigurieren, indem Sie die folgenden Artikel verwenden:
 
 * [Hinzufügen/Entfernen von Regionen für Ihr Datenbankkonto](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-* [Konfigurieren von Clients für Multihoming](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Erstellen einer benutzerdefinierten Konfliktlösungsrichtlinie](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
