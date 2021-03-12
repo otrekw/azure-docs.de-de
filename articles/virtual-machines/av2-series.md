@@ -3,16 +3,16 @@ title: Av2-Serie
 description: Hier finden Sie Spezifikationen für die virtuellen Computer der Av2-Serie.
 author: migerdes
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: d0972c9ed48f56a495804052c1ffc2b28e1db083
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 680ffe7964104f157debc64e44ac2f004ddac86d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095323"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565511"
 ---
 # <a name="av2-series"></a>Av2-Serie
 
@@ -24,8 +24,8 @@ Die VMs der Av2-Reihe können auf vielen verschiedenen Hardwaretypen und Prozess
 [Livemigration](maintenance-and-updates.md): Unterstützt <br>
 [Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt <br>
 [Unterstützung von VM-Generationen](generation-2.md): Generation 1 <br>
-[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Nicht unterstützt<br>
-[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Nicht unterstützt <br>
+[Beschleunigter Netzwerkbetrieb:](../virtual-network/create-vm-accelerated-networking-cli.md) Nicht unterstützt<br>
+[Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
 <br>
 
 | Size | Virtueller Kern | Memory: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBit/s Schreiben | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs | Erwartete Netzwerkbandbreite (MBit/s)

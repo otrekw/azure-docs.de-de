@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 11/16/2020
-ms.openlocfilehash: 7c10d3066dc7b9ee0994de8c327b286bf8c917e7
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: cc844cbd2518bb131f6902d1da3e7653951224b5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099471"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547848"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-Integration für Azure Machine Learning
 
@@ -89,7 +89,7 @@ cat ~/.ssh/id_rsa.pub
 
 + [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
 
-+ [Azure DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs&preserve-view=true): Beginnen Sie mit **Schritt 2**.
++ [Azure DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate#step-2--add-the-public-key-to-azure-devops-servicestfs): Beginnen Sie mit **Schritt 2**.
 
 + [BitBucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2). Beginnen Sie mit **Schritt 4**.
 
@@ -178,7 +178,7 @@ Die protokollierten Informationen enthalten Text, der so ähnlich aussieht wie d
 
 ### <a name="python-sdk"></a>Python SDK
 
-Nach dem Übermitteln eines Trainingslaufs wird ein [Run](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)-Objekt zurückgegeben. Das `properties`-Attribut dieses Objekts enthält die protokollierten Git-Informationen. Beispielsweise ruft der folgende Code den Commithash ab:
+Nach dem Übermitteln eines Trainingslaufs wird ein [Run](/python/api/azureml-core/azureml.core.run%28class%29)-Objekt zurückgegeben. Das `properties`-Attribut dieses Objekts enthält die protokollierten Git-Informationen. Beispielsweise ruft der folgende Code den Commithash ab:
 
 ```python
 run.properties['azureml.git.commit']
@@ -192,7 +192,7 @@ Der CLI-Befehl `az ml run` kann verwendet werden, um die Eigenschaften eines Lau
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-Weitere Informationen finden Sie in der Referenzdokumentation zu [az ml run](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest).
+Weitere Informationen finden Sie in der Referenzdokumentation zu [az ml run](/cli/azure/ext/azure-cli-ml/ml/run).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

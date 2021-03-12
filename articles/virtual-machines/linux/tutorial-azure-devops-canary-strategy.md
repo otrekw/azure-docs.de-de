@@ -2,22 +2,22 @@
 title: 'Tutorial: Konfigurieren von Canary-Bereitstellungen für virtuelle Linux-Computer in Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie eine CD-Pipeline (Continuous Deployment) einrichten. Diese Pipeline aktualisiert eine Gruppe virtueller Linux-Computer in Azure unter Verwendung der Canary-Bereitstellungsstrategie.
 author: moala
-manager: jpconnock
 tags: azure-devops-pipelines
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: fafe2ba9ae65f95d8a2258ead5715cc0630202ba
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: bbfe6571cf075b2ce4930eea91bfd1e239470c5a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963481"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552506"
 ---
 # <a name="tutorial---configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>Tutorial: Konfigurieren der Canary-Bereitstellungsstrategie für virtuelle Linux-Computer in Azure
 
@@ -38,11 +38,11 @@ Eine Canary-Bereitstellung trägt zur Risikominimierung bei, indem Änderungen v
 Mithilfe der Continuous Delivery-Option können Sie Canary-Bereitstellungen für Ihre virtuellen Computer über das Azure-Portal konfigurieren. Gehen Sie dazu wie folgt vor:
 
 1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu einem virtuellen Computer.
-1. Wählen Sie im äußerst linken Bereich der VM-Einstellungen die Option **Continuous Delivery** aus. Klicken Sie anschließend auf **Konfigurieren**.
+1. Wählen Sie im Bereich ganz links der VM-Einstellungen die Option **Continuous Delivery** aus. Klicken Sie anschließend auf **Konfigurieren**.
 
    ![Bereich „Continuous Delivery“ mit der Schaltfläche „Konfigurieren“](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure.png)
 
-1. Wählen Sie im Konfigurationsbereich die Option **Azure DevOps-Organisation** aus, um ein vorhandenes Konto auszuwählen oder ein neues Konto zu erstellen. Wählen Sie anschließend das Projekt aus, unter dem Sie die Pipeline konfigurieren möchten.  
+1. Wählen Sie im Konfigurationsbereich **Azure DevOps-Organisation** aus, um ein vorhandenes Konto auszuwählen oder ein neues Konto zu erstellen. Wählen Sie anschließend das Projekt aus, unter dem Sie die Pipeline konfigurieren möchten.  
 
    ![Bereich „Continuous Delivery“](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling.png)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: c72fa87201fb0d7fdd526f0e6f4eeb2c35192fc2
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 85a5edc1485cb5a1eeb4428b201380ad9ca89422
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521644"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449168"
 ---
 # <a name="security-agent-authentication-methods"></a>Authentifizierungsmethoden des Sicherheits-Agents
 
@@ -26,9 +26,8 @@ In diesem Artikel werden die verschiedenen Authentifizierungsmethoden erläutert
 
 Für jedes Gerät, das im IoT Hub in Defender für IoT integriert ist, ist ein Sicherheitsmodul erforderlich. Für die Authentifizierung des Geräts kann Defender für IoT eine der beiden Methoden verwenden. Wählen Sie die Methode aus, die sich am besten für Ihre vorhandene IoT-Lösung eignet.
 
-> [!div class="checklist"]
-> * Option „SecurityModule“
-> * Geräteoption
+- Option „SecurityModule“
+- Geräteoption
 
 ## <a name="authentication-methods"></a>Authentifizierungsmethoden
 
@@ -101,7 +100,8 @@ Bearbeiten Sie _LocalConfiguration.json_ mit den folgenden Parametern:
     "HostName" : ""
 }
 ```
-## <a name="next-steps"></a>Nächste Schritte
+
+## <a name="see-also"></a>Weitere Informationen
 
 - [Security agents overview (Sicherheits-Agents (Übersicht))](security-agent-architecture.md)
 - [Deploy security agent (Bereitstellen eines Sicherheits-Agents)](how-to-deploy-agent.md)

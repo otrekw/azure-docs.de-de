@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 7144d576694b6694f426533451717cef58c2da87
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4c03016d003978b3c56361595bec7c559205574b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562445"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520879"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Lernen durch Bestärkung (Vorschau) mit Azure Machine Learning
 
@@ -49,8 +49,8 @@ Führen Sie diesen Code in einer dieser Umgebungen aus. Wir empfehlen Ihnen, die
  
  - Ihr eigener Jupyter Notebook-Server
 
-    - Installieren Sie das [Azure Machine Learning SDK.](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)
-    - Installieren Sie das [Azure Machine Learning RL SDK](/python/api/azureml-contrib-reinforcementlearning/?preserve-view=true&view=azure-ml-py): `pip install --upgrade azureml-contrib-reinforcementlearning`.
+    - Installieren Sie das [Azure Machine Learning SDK.](/python/api/overview/azure/ml/install)
+    - Installieren Sie das [Azure Machine Learning RL SDK](/python/api/azureml-contrib-reinforcementlearning/): `pip install --upgrade azureml-contrib-reinforcementlearning`.
     - Erstellen Sie eine [Konfigurationsdatei für den Arbeitsbereich](how-to-configure-environment.md#workspace).
     - Führen Sie das virtuelle Netzwerk aus, um die Netzwerkports zu öffnen, die für das verteilte vertiefende Lernen verwendet werden.
 
@@ -107,7 +107,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-reinforcement-learning-experiment"></a>Erstellen eines Experiments für Lernen durch Bestärkung
 
-Erstellen Sie ein [Experiment](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py), um die Ausführung des Lernens durch Bestärkung nachzuverfolgen. In Azure Machine Learning handelt es sich bei Experimenten um logische Sammlungen verwandter Testversionen zum Organisieren von Ausführungsprotokollen, dem Verlauf, der Ausgabe usw.
+Erstellen Sie ein [Experiment](/python/api/azureml-core/azureml.core.experiment.experiment), um die Ausführung des Lernens durch Bestärkung nachzuverfolgen. In Azure Machine Learning handelt es sich bei Experimenten um logische Sammlungen verwandter Testversionen zum Organisieren von Ausführungsprotokollen, dem Verlauf, der Ausgabe usw.
 
 ```python
 experiment_name='rllib-pong-multi-node'
@@ -214,7 +214,7 @@ else:
 ```
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Erstellen eines Estimators für Lernen durch Bestärkung
-Übermitteln Sie mit dem [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) einen Trainingsauftrag an Azure Machine Learning.
+Übermitteln Sie mit dem [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator) einen Trainingsauftrag an Azure Machine Learning.
 
 Azure Machine Learning verwendet Schätzklassen, um Informationen zur Ausführungskonfiguration zu kapseln. So können Sie festlegen, wie eine Skriptausführung konfiguriert werden soll. 
 
@@ -402,7 +402,7 @@ def on_train_result(info):
 
 ## <a name="submit-a-run"></a>Initiieren einer Ausführung
 
-Eine [Ausführung](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) verarbeitet den Ausführungsverlauf laufender oder abgeschlossener Aufträge. 
+Eine [Ausführung](/python/api/azureml-core/azureml.core.run%28class%29) verarbeitet den Ausführungsverlauf laufender oder abgeschlossener Aufträge. 
 
 ```python
 run = exp.submit(config=rl_estimator)

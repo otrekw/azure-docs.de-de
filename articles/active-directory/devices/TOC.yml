@@ -80,7 +80,7 @@
     - name: Graph-APIs
       items:
         - name: Geräteidentität-API
-          href: /graph/api/resources/device?view=graph-rest-1.0
+          href: /graph/api/resources/device
 - name: Ressourcen
   items:
     - name: Azure-Feedbackforum

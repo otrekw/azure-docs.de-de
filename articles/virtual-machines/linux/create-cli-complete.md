@@ -2,16 +2,17 @@
 title: Erstellen einer Linux-Umgebung mit der Azure CLI
 description: Erfahren Sie, wie Sie Speicher, einen virtuellen Linux-Computer, ein virtuelles Netzwerk mitsamt Subnetz, einen Load Balancer, eine NIC, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die Azure-CLI von Grund auf neu erstellen.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 5992fb20fc8b86d4a0094a8fe5ed6cb6eb03754d
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: ff86651d56abe090ca08c508a220362f9a011a3f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704468"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554699"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Erstellen einer vollständigen Linux-VM mit der Azure CLI
 Um schnell einen virtuellen Computer (VM) in Azure zu erstellen, können Sie einen einzelnen Azure CLI-Befehl mit Standardwerten verwenden, um alle erforderlichen unterstützenden Ressourcen zu erstellen. Ressourcen wie ein virtuelles Netzwerk, eine öffentliche IP-Adresse und Regeln für Netzwerksicherheitsgruppen werden automatisch erstellt. Um mehr Kontrolle über Ihre Umgebung in der Produktionsumgebung zu erhalten, können Sie diese Ressourcen im Voraus erstellen und Ihre virtuellen Computer ihnen dann hinzufügen. Dieser Artikel führt Sie schrittweise durch das Erstellen eines virtuellen Computers und der einzelnen unterstützenden Ressourcen.
@@ -434,7 +435,7 @@ Durch Fehlerdomänen wird eine Gruppe virtueller Computer definiert, die eine St
 
 Updatedomänen definieren Gruppen virtueller Computer und zugrunde liegender physischer Hardwarekomponenten, die gleichzeitig neu gestartet werden können. Während einer geplanten Wartung werden die Updatedomänen möglicherweise nicht der Reihe nach neu gestartet. Es wird aber jeweils nur eine Updatedomäne neu gestartet.
 
-Azure verteilt virtuelle Computer automatisch auf die Fehler- und Updatedomänen, wenn sie in einer Verfügbarkeitsgruppe enthalten sind. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../manage-availability.md).
+Azure verteilt virtuelle Computer automatisch auf die Fehler- und Updatedomänen, wenn sie in einer Verfügbarkeitsgruppe enthalten sind. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../availability.md).
 
 Erstellen Sie mit [az vm availability-set create](/cli/azure/vm/availability-set) eine Verfügbarkeitsgruppe für Ihre VM. Im folgenden Beispiel wird eine Verfügbarkeitsgruppe namens *myAvailabilitySet* erstellt:
 

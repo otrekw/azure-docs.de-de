@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: e7e8d51b8227acd033c95583d6e61d78a56d62a3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6f073777930b4d026d826d2c3586e0886f906206
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590271"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503078"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 Dieser Artikel beschreibt bewährte Best Practices für die Sicherheit von virtuellen Computern und Betriebssystemen.
@@ -63,7 +63,7 @@ Ihre Abonnementadministratoren und Coadministratoren können diese Einstellung �
 Organisationen, die VM-Zugriff und -Einrichtung steuern, verbessern die gesamte VM-Sicherheit.
 
 ## <a name="use-multiple-vms-for-better-availability"></a>Verwenden mehrerer virtueller Computer für eine höhere Verfügbarkeit
-Falls Ihr virtueller Computer kritische Anwendungen ausführt, die Hochverfügbarkeit erfordern, empfiehlt sich die Verwendung mehrerer virtueller Computer. Verwenden Sie für eine höhere Verfügbarkeit eine [Verfügbarkeitsgruppe](../../virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) oder [Verfügbarkeitszonen](../../availability-zones/az-overview.md).
+Falls Ihr virtueller Computer kritische Anwendungen ausführt, die Hochverfügbarkeit erfordern, empfiehlt sich die Verwendung mehrerer virtueller Computer. Verwenden Sie für eine höhere Verfügbarkeit eine [Verfügbarkeitsgruppe](../../virtual-machines/availability-set-overview.md) oder [Verfügbarkeitszonen](../../availability-zones/az-overview.md).
 
 Eine Verfügbarkeitsgruppe ist eine logische Gruppierung, mit der Sie in Azure sicherstellen können, dass die darin enthaltenen VM-Ressourcen voneinander isoliert sind, wenn sie in einem Azure-Rechenzentrum bereitgestellt werden. Azure stellt sicher, dass die VMs innerhalb einer Verfügbarkeitsgruppe auf mehrere physische Server, Computeracks, Speichereinheiten und Netzwerkswitches verteilt werden. Wenn ein Hardware- oder Softwarefehler in Azure auftritt, ist nur ein Teil Ihrer VMs beeinträchtigt, und die Anwendung ist insgesamt weiterhin für Ihre Kunden verfügbar. Verfügbarkeitsgruppen haben eine wichtige Funktion bei der Erstellung zuverlässiger Cloudlösungen.
 

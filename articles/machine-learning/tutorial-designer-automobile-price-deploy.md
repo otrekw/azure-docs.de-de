@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: e93f912915303ce903a32ceba4f079593657a4ac
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: ec563371ab505113117707f56c31f506f7fdf377
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576057"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659506"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Tutorial: Bereitstellen eines Machine Learning-Modells mit dem Designer
 
@@ -42,7 +42,7 @@ Zum Bereitstellen Ihrer Pipeline müssen Sie zunächst die Trainingspipeline in 
 
 1. Wählen Sie über der Pipelinecanvas **Rückschlusspipeline erstellen** > **Echtzeit-Rückschlusspipeline** aus.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png"alt-text="Screenshot: Position der Schaltfläche „Pipeline erstellen“":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png" alt-text="Screenshot: Position der Schaltfläche „Pipeline erstellen“":::
 
     Ihre Pipeline sollte nun wie folgt aussehen: 
 
@@ -97,13 +97,13 @@ Kehren Sie nach Abschluss der Bereitstellung des AKS-Diensts zur Echtzeit-Rücks
 
 1. Wählen Sie den erstellten AKS-Cluster aus.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Screenshot: Einrichtung eines neuen Echtzeit-Endpunkts":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png" alt-text="Screenshot: Einrichtung eines neuen Echtzeit-Endpunkts":::
 
     Sie können auch die Einstellung **Erweitert** für Ihren Echtzeitendpunkt ändern.
     
     |Einstellung „Erweitert“|BESCHREIBUNG|
     |---|---|
-    |Application Insights-Diagnose und -Datensammlung aktivieren| Gibt an, ob Azure Application Ingishts zum Sammeln von Daten von den bereitgestellten Endpunkten aktiviert werden soll. </br> Standardwert: false |
+    |Application Insights-Diagnose und -Datensammlung aktivieren| Gibt an, ob Azure Application Insights zum Sammeln von Daten von den bereitgestellten Endpunkten aktiviert werden soll. </br> Standardwert: false |
     |Zeitlimit für Bewertung| Ein Timeout in Millisekunden, das für Bewertungsaufrufe an den Webdienst erzwungen werden soll</br>Standardmäßig gilt: 60000|
     |Automatische Skalierung aktiviert|   Gibt an, ob die automatische Skalierung für den Webdienst aktiviert werden soll.</br>Standardwert: true|
     |Mindestanzahl Replikate| Die Mindestanzahl von Containern, die bei der automatischen Skalierung dieses Webdiensts verwendet werden sollen.</br>Standardmäßig gilt: 1|
@@ -137,6 +137,22 @@ Nach Abschluss der Bereitstellung können Sie Ihren Echtzeitendpunkt anzeigen, i
 1. Navigieren Sie zum Testen des Endpunkts zur Registerkarte **Test**. Hier können Sie Testdaten eingeben und **Testen** auswählen, um die Ausgabe des Endpunkts zu überprüfen.
 
 Weitere Informationen zur Nutzung Ihres Webdiensts finden Sie unter [Nutzen eines als Webdienst bereitgestellten Modells](how-to-consume-web-service.md).
+
+## <a name="limitations"></a>Einschränkungen
+
+Wenn Sie in Ihrer Trainingspipeline einige Änderungen vornehmen, sollten Sie die Trainingspipeline erneut übermitteln, die Rückschlusspipeline **aktualisieren** und die Rückschlusspipeline erneut ausführen.
+
+Beachten Sie, dass nur trainierte Modelle in der Rückschlusspipeline aktualisiert werden, die Datentransformation wird hingegen nicht aktualisiert.
+
+Wenn Sie die aktualisierte Transformation in der Rückschlusspipeline verwenden möchten, müssen Sie die Transformationsausgabe des Transformationsmoduls als Dataset registrieren.
+
+![Screenshot: Registrieren des Transformationsdatasets](./media/tutorial-designer-automobile-price-deploy/register-transformation-dataset.png)
+
+Ersetzen Sie dann manuell das Modul **TD-** in der Rückschlusspipeline durch das registrierte Dataset.
+
+![Screenshot: Ersetzen des Transformationsmoduls](./media/tutorial-designer-automobile-price-deploy/replace-td-module.png)
+
+Anschließend können Sie die Rückschlusspipeline mit dem aktualisierten Modell und der aktualisierten Transformation übermitteln und bereitstellen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

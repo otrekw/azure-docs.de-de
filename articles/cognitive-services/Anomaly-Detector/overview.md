@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 01/05/2021
+ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: Anomalieerkennung, maschinelles Lernen, Algorithmen
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 425c6cab4a4a5e1329e2d38f49c5058ec8ffc5b9
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: ad3bd1eed6e5e7efb783c4a40958e16c3ca23691
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901367"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572085"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Worum handelt es sich bei der Anomalieerkennungs-API?
 
@@ -53,13 +53,13 @@ Machen Sie sich anhand [dieses Notebooks](https://aka.ms/adNotebook) mit dem Auf
 Führen Sie die folgenden Schritte aus, um das Notebook auszuführen:
 
 1. Holen Sie sich einen gültigen Abonnementschlüssel für die Anomalieerkennungs-API sowie einen API-Endpunkt. Im folgenden Abschnitt finden Sie Anweisungen zur Registrierung.
-1. Melden Sie sich an, und klicken Sie rechts oben in der Ecke auf „Klon“.
+1. Melden Sie sich an, und wählen Sie rechts oben in der Ecke „Klonen“ aus.
 1. Deaktivieren Sie im Dialogfeld die Option „Öffentlich“, bevor Sie den Klonvorgang durchführen. Andernfalls ist Ihr Notebook, einschließlich aller Abonnementschlüssel, öffentlich zugänglich.
-1. Klicken Sie auf **Run on free compute (Mit kostenlosem Compute ausführen)** .
+1. Wählen Sie **Run on free compute** (Mit kostenlosem Compute ausführen) aus.
 1. Wählen Sie eines der Notebooks aus.
 1. Fügen Sie Ihren gültigen Abonnementschlüssel für die Anomalieerkennungs-API zur Variablen `subscription_key` hinzu.
 1. Ändern Sie die Variable `endpoint` in Ihren Endpunkt. Beispiel: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
-1. Klicken Sie auf der oberen Menüleiste auf **Zelle** und dann auf **Alle ausführen**.
+1. Wählen Sie auf der oberen Menüleiste **Zelle** und dann **Alle ausführen** aus.
 
 ## <a name="workflow"></a>Workflow
 

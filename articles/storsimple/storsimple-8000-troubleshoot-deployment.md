@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: bed1c8fd77e84c69571cfad7dd6b7eeb6607209f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: f1bce5c0ecdab4a9c96c3f2cc0e9734247bdfd66
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808046"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566344"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>Beheben von Problemen mit der Bereitstellung von StorSimple-Geräten
 ## <a name="overview"></a>Übersicht
@@ -189,7 +189,7 @@ Beim Konfigurieren von Netzwerkschnittstellen für eine erste Gerätebereitstell
    * Wenn die Schnittstelle fehlerfrei funktioniert, jedoch nicht aktiviert ist, wird der Status **ifIndex** als **NotPresent** angezeigt.
    * Wenn die Schnittstelle nicht vorhanden ist, wird sie nicht in dieser Liste angezeigt. Der Benutzeroberfläche des StorSimple-Geräte-Manager-Diensts zeigt diese Schnittstelle in einem fehlerhaften Zustand an.
 
-Weitere Informationen zur Verwendung dieses Cmdlets finden Sie unter [Get-NetAdapter](/powershell/module/netadapter/get-netadapter?view=win10-ps&preserve-view=true) in der Windows PowerShell-Cmdlet-Referenz.
+Weitere Informationen zur Verwendung dieses Cmdlets finden Sie unter [Get-NetAdapter](/powershell/module/netadapter/get-netadapter) in der Windows PowerShell-Cmdlet-Referenz.
 
 In den folgenden Abschnitten sind Beispiele für die Ausgabe des Cmdlets `Get-NetAdapter` aufgeführt.
 
