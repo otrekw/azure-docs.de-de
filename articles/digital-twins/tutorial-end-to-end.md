@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: cff40385edc89c0f6d2d105d089b66c046b0c04b
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 30b30697750a0b9068cfcde19ea4bf9c474f9ad9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545937"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424562"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Tutorial: Erstellen einer End-to-End-Lösung
 
@@ -48,7 +48,7 @@ Für dieses Szenario interagieren Sie mit den Komponenten der vorab geschriebene
 
 Hier sind die Komponenten aufgeführt, die mit der Beispiel-App *AdtSampleApp* für das Gebäudeszenario implementiert werden:
 * Geräte-Authentifizierung 
-* Beispiele für die Nutzung des [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) (in *CommandLoop.cs*)
+* Beispiele für die Nutzung des [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) (in *CommandLoop.cs*)
 * Konsolenschnittstelle zum Aufrufen der Azure Digital Twins-API
 * *SampleClientApp*: Azure Digital Twins-Beispiellösung
 * *SampleFunctionsApp*: Eine Azure Functions-App, mit der Ihr Azure Digital Twins-Graph basierend auf den Telemetriedaten von IoT Hub- und Azure Digital Twins-Ereignissen aktualisiert wird
@@ -107,7 +107,7 @@ In Ihrem Visual Studio-Fenster, in dem das Projekt _**AdtE2ESample**_ geöffnet 
 
 Vor dem Veröffentlichen der App sollten Sie sicherstellen, dass Ihre Abhängigkeiten auf dem aktuellen Stand sind und dass Sie jeweils über die aktuelle Version aller enthaltenen Pakete verfügen.
 
-Erweitern Sie im Bereich *Projektmappen-Explorer* die Option *SampleFunctionsApp > Abhängigkeiten*. Klicken Sie mit der rechten Maustaste auf *Pakete*, und wählen Sie *NuGet-Pakete verwalten...* aus.
+Erweitern Sie im Bereich *Projektmappen-Explorer* die Optionen _**SampleFunctionsApp** > Abhängigkeiten_. Klicken Sie mit der rechten Maustaste auf *Pakete*, und wählen Sie *NuGet-Pakete verwalten...* aus.
 
 :::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: Verwalten von NuGet-Paketen für das Projekt „SampleFunctionsApp“" border="false":::
 
@@ -131,15 +131,17 @@ Verwenden Sie in Azure Cloud Shell den folgenden Befehl, um eine Anwendungseinst
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
-Bei der Ausgabe handelt es sich um die Liste der Einstellungen für die Azure-Funktion. Diese sollte nun einen Eintrag namens *ADT_SERVICE_URL* enthalten.
+Bei der Ausgabe handelt es sich um die Liste der Einstellungen für die Azure-Funktion. Diese sollte nun einen Eintrag namens **ADT_SERVICE_URL** enthalten.
 
-Verwenden Sie den folgenden Befehl, um die vom System verwaltete Identität zu erstellen. Beachten Sie in der Ausgabe das Feld *principalId*.
+Verwenden Sie den folgenden Befehl, um die vom System verwaltete Identität zu erstellen. Suchen Sie in der Ausgabe das Feld **principalId**.
 
 ```azurecli-interactive
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-Verwenden Sie den Wert *principalId* aus der Ausgabe im folgenden Befehl, um die Identität der Funktions-App der Rolle *Azure Digital Twins Data Owner* (Azure Digital Twins-Datenbesitzer) für Ihre Azure Digital Twins-Instanz zuzuweisen:
+Verwenden Sie den Wert **principalId** aus der Ausgabe im folgenden Befehl, um die Identität der Funktions-App der Rolle *Azure Digital Twins-Datenbesitzer* für Ihre Azure Digital Twins-Instanz zuzuweisen:
+
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 ```azurecli-interactive
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
@@ -176,7 +178,7 @@ az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku 
 
 Die Ausgabe dieses Befehls enthält Informationen zum erstellten IoT-Hub.
 
-Speichern Sie den Namen, den Sie Ihrem IoT-Hub gegeben haben. Er wird später noch benötigt.
+Speichern Sie den **Namen**, den Sie Ihrem IoT-Hub gegeben haben. Er wird später noch benötigt.
 
 ### <a name="connect-the-iot-hub-to-the-azure-function"></a>Verbinden des IoT-Hubs mit der Azure-Funktion
 
@@ -245,7 +247,7 @@ iotHubConnectionString = <your-hub-connection-string>
 deviceConnectionString = <your-device-connection-string>
 ```
 
-Speichern Sie die Datei.
+Speichern Sie die Datei .
 
 Führen Sie nun das Projekt **DeviceSimulator** mit der folgenden Symbolleistenschaltfläche aus, um die Ergebnisse der von Ihnen eingerichteten Datensimulation anzuzeigen:
 
@@ -269,7 +271,10 @@ Führen Sie im geöffneten Konsolenfenster des Projekts den folgenden Befehl aus
 ObserveProperties thermostat67 Temperature
 ```
 
-Sie sollten verfolgen können, wie die Liveaktualisierung der Temperaturen *von Ihrer Azure Digital Twins-Instanz* alle zehn Sekunden in der Konsole protokolliert wird.
+Sie sollten verfolgen können, wie die Liveaktualisierung der Temperaturen *von Ihrer Azure Digital Twins-Instanz* alle zwei Sekunden in der Konsole protokolliert wird.
+
+>[!NOTE]
+> Es kann einige Sekunden dauern, bis die Daten vom Gerät an den Zwilling weitergegeben werden. Die ersten Temperaturmesswerte werden unter Umständen als 0 angezeigt, bevor die Daten eintreffen.
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry.png" alt-text="Konsolenausgabe mit Protokollierung der Temperaturmeldungen des digitalen Zwillings „thermostat67“":::
 
@@ -327,7 +332,7 @@ Suchen Sie in der Ausgabe nach dem Feld `provisioningState`, und vergewissern Si
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="Ergebnis der Endpunktabfrage mit Anzeige von „Succeeded“ unter „provisioningState“ für den Endpunkt":::
 
-Speichern Sie die Namen, die Sie Ihrem Event Grid-Thema und -Endpunkt in Azure Digital Twins gegeben haben. Sie benötigen sie später noch.
+Speichern Sie die Namen, die Sie Ihrem **Event Grid-Thema** und Event Grid-**Endpunkt** in Azure Digital Twins gegeben haben. Sie benötigen sie später noch.
 
 ### <a name="set-up-route"></a>Einrichten der Route
 
@@ -346,7 +351,7 @@ Die Ausgabe dieses Befehls enthält einige Informationen zur von Ihnen erstellte
 
 Abonnieren Sie als Nächstes die Azure-Funktion *ProcessDTRoutedData* für das von Ihnen erstellte Event Grid-Thema. Dies ermöglicht den Fluss der Telemetriedaten vom Zwilling *thermostat67* über das Event Grid-Thema an die Funktion, mit der in Azure Digital Twins der Zwilling *room21* dann entsprechend aktualisiert wird.
 
-Erstellen Sie hierfür ein **Event Grid-Abonnement** aus Ihrem Event Grid-Thema mit der Azure-Funktion *ProcessDTRoutedData* als Endpunkt.
+Dazu erstellen Sie ein **Event Grid-Abonnement**, das Daten aus dem zuvor erstellten **Event Grid-Thema** an Ihre Azure-Funktion *ProcessDTRoutedData* sendet.
 
 Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrem Event Grid-Thema, indem Sie in der oberen Suchleiste nach dessen Namen suchen. Klicken Sie auf *+ Ereignisabonnement*.
 
@@ -381,7 +386,7 @@ Führen Sie im geöffneten Konsolenfenster des Projekts den folgenden Befehl aus
 ObserveProperties thermostat67 Temperature room21 Temperature
 ```
 
-Sie sollten verfolgen können, wie die Liveaktualisierung der Temperaturen *von Ihrer Azure Digital Twins-Instanz* alle zehn Sekunden in der Konsole protokolliert wird. Beachten Sie, dass die Temperatur für *room21* aktualisiert wird, damit sie mit den Aktualisierungen für *thermostat67* übereinstimmt.
+Sie sollten verfolgen können, wie die Liveaktualisierung der Temperaturen *von Ihrer Azure Digital Twins-Instanz* alle zwei Sekunden in der Konsole protokolliert wird. Beachten Sie, dass die Temperatur für *room21* aktualisiert wird, damit sie mit den Aktualisierungen für *thermostat67* übereinstimmt.
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="Konsolenausgabe mit Protokollierung der Temperaturmeldungen für ein Thermostat und einen Raum":::
 
@@ -403,9 +408,9 @@ Nach Abschluss dieses Tutorials können Sie die zu entfernenden Ressourcen ausw�
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-* **Wenn Sie die in diesem Artikel eingerichtete Azure Digital Twins-Instanz weiterhin verwenden, aber einige oder alle ihrer Modelle, Zwillinge und Beziehungen entfernen möchten**, können Sie die CLI-Befehle vom Typ [az dt](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true) in einem [Azure Cloud Shell](https://shell.azure.com)-Fenster verwenden, um die gewünschten Elemente zu löschen.
+* **Wenn Sie die in diesem Artikel eingerichtete Azure Digital Twins-Instanz weiterhin verwenden, aber einige oder alle ihrer Modelle, Zwillinge und Beziehungen entfernen möchten**, können Sie die CLI-Befehle vom Typ [az dt](/cli/azure/ext/azure-iot/dt) in einem [Azure Cloud Shell](https://shell.azure.com)-Fenster verwenden, um die gewünschten Elemente zu löschen.
 
-    Mit dieser Option werden keine der anderen in diesem Tutorial erstellten Azure-Ressourcen (IoT Hub, Azure Functions-App usw.) entfernt. Sie können diese einzeln mithilfe der entsprechenden [dt-Befehle](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true) für jeden Ressourcentyp löschen.
+    Mit dieser Option werden keine der anderen in diesem Tutorial erstellten Azure-Ressourcen (IoT Hub, Azure Functions-App usw.) entfernt. Sie können diese einzeln mithilfe der entsprechenden [dt-Befehle](/cli/azure/reference-index) für jeden Ressourcentyp löschen.
 
 Löschen Sie ggf. auch den Projektordner von Ihrem lokalen Computer.
 

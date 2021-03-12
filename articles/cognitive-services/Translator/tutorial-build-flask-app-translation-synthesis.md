@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 05/26/2020
+ms.date: 03/04/2021
 ms.author: lajanuar
 ms.custom: devx-track-python, devx-track-js
-ms.openlocfilehash: 755e6370883bf39596850b45dc10f7efd3c9b55b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: c04bac76453d565abb99a971386b9ce0461b88ae
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896679"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172078"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Tutorial: Erstellen einer Flask-App mit Azure Cognitive Services
 
@@ -53,7 +53,7 @@ Hier sind die Software und Abonnementschlüssel angegeben, die Sie für dieses T
 * [Git-Tools](https://git-scm.com/downloads)
 * Eine IDE oder ein Text-Editor, z. B. [Visual Studio Code](https://code.visualstudio.com/) oder [Atom](https://atom.io/)  
 * [Chrome](https://www.google.com/chrome/browser/) oder [Firefox](https://www.mozilla.org/firefox)
-* Ein Abonnementschlüssel für **Translator**  (Hinweis: Sie müssen keine Region auswählen.)
+* Ein Abonnementschlüssel für **Textübersetzung** (Sie können wahrscheinlich den Standort **global** verwenden.)
 * Ein Abonnementschlüssel für die **Textanalyse** in der Region **USA, Westen**.
 * Ein Abonnementschlüssel für **Spracherkennungsdienste** in der Region **USA, Westen**.
 
@@ -263,7 +263,7 @@ Zunächst müssen Sie eine Funktion zum Aufrufen von Translator schreiben. Für 
    # Don't forget to replace with your Cog Services subscription key!
    # If you prefer to use environment variables, see Extra Credit for more info.
    subscription_key = 'YOUR_TRANSLATOR_TEXT_SUBSCRIPTION_KEY'
-   
+   location = 'YOUR_TRANSLATOR_RESOURCE_LOCATION'
    # Don't forget to replace with your Cog Services location!
    # Our Flask route will supply two arguments: text_input and language_output.
    # When the translate text button is pressed in our Flask app, the Ajax request
@@ -277,7 +277,7 @@ Zunächst müssen Sie eine Funktion zum Aufrufen von Translator schreiben. Für 
 
        headers = {
            'Ocp-Apim-Subscription-Key': subscription_key,
-           'Ocp-Apim-Subscription-Region': 'location',
+           'Ocp-Apim-Subscription-Region': location,
            'Content-type': 'application/json',
            'X-ClientTraceId': str(uuid.uuid4())
        }
@@ -495,17 +495,16 @@ Wir schreiben nun eine Funktion zum Aufrufen der Textanalyse-API. Für diese Fun
 
    # Don't forget to replace with your Cog Services subscription key!
    subscription_key = 'YOUR_TEXT_ANALYTICS_SUBSCRIPTION_KEY'
-
+   endpoint = "YOUR_TEXT_ANALYTICS_ENDPOINT" 
    # Our Flask route will supply four arguments: input_text, input_language,
    # output_text, output_language.
    # When the run sentiment analysis button is pressed in our Flask app,
    # the Ajax request will grab these values from our web app, and use them
    # in the request. See main.js for Ajax calls.
 
-   def get_sentiment(input_text, input_language, output_text, output_language):
-       base_url = 'https://westus.api.cognitive.microsoft.com/text/analytics'
-       path = '/v2.0/sentiment'
-       constructed_url = base_url + path
+   def get_sentiment(input_text, input_language):
+       path = '/text/analytics/v3.0/sentiment'
+       constructed_url = endpoint + path
 
        headers = {
            'Ocp-Apim-Subscription-Key': subscription_key,
@@ -521,11 +520,6 @@ Wir schreiben nun eine Funktion zum Aufrufen der Textanalyse-API. Für diese Fun
                    'id': '1',
                    'text': input_text
                },
-               {
-                   'language': output_language,
-                   'id': '2',
-                   'text': output_text
-               }
            ]
        }
        response = requests.post(constructed_url, headers=headers, json=body)
@@ -551,9 +545,7 @@ Wir erstellen eine Route in Ihrer Flask-App, für die `sentiment.py` aufgerufen 
        data = request.get_json()
        input_text = data['inputText']
        input_lang = data['inputLanguage']
-       output_text = data['outputText']
-       output_lang =  data['outputLanguage']
-       response = sentiment.get_sentiment(input_text, input_lang, output_text, output_lang)
+       response = sentiment.get_sentiment(input_text, input_lang)
        return jsonify(response)
    ```
 
@@ -576,9 +568,8 @@ Nachdem Sie nun über eine Funktion zum Ausführen der Standpunktanalyse und in 
    ```html
    <button type="submit" class="btn btn-primary mb-2" id="sentiment-analysis">Run sentiment analysis</button></br>
    <div id="sentiment" style="display: none">
-      <p>Sentiment scores are provided on a 1 point scale. The closer the sentiment score is to 1, indicates positive sentiment. The closer it is to 0, indicates negative sentiment.</p>
-      <strong>Sentiment score for input:</strong> <span id="input-sentiment"></span><br />
-      <strong>Sentiment score for translation:</strong> <span id="translation-sentiment"></span>
+      <p>Sentiment can be labeled as "positive", "negative", "neutral", or "mixed". </p>
+      <strong>Sentiment label for input:</strong> <span id="input-sentiment"></span><br />
    </div>
    ```
 
@@ -592,7 +583,7 @@ Der Code durchläuft dann die Antwort und aktualisiert den HTML-Code mit den Sti
 
 2. Kopieren Sie diesen Code in `static/scripts/main.js`:
    ```javascript
-   //Run sentinment analysis on input and translation.
+   //Run sentiment analysis on input and translation.
    $("#sentiment-analysis").on("click", function(e) {
      e.preventDefault();
      var inputText = document.getElementById("text-to-translate").value;
@@ -600,7 +591,7 @@ Der Code durchläuft dann die Antwort und aktualisiert den HTML-Code mit den Sti
      var outputText = document.getElementById("translation-result").value;
      var outputLanguage = document.getElementById("select-language").value;
 
-     var sentimentRequest = { "inputText": inputText, "inputLanguage": inputLanguage, "outputText": outputText,  "outputLanguage": outputLanguage };
+     var sentimentRequest = { "inputText": inputText, "inputLanguage": inputLanguage};
 
      if (inputText !== "") {
        $.ajax({
@@ -615,10 +606,7 @@ Der Code durchläuft dann die Antwort und aktualisiert den HTML-Code mit den Sti
            for (var i = 0; i < data.documents.length; i++) {
              if (typeof data.documents[i] !== "undefined"){
                if (data.documents[i].id === "1") {
-                 document.getElementById("input-sentiment").textContent = data.documents[i].score;
-               }
-               if (data.documents[i].id === "2") {
-                 document.getElementById("translation-sentiment").textContent = data.documents[i].score;
+                 document.getElementById("input-sentiment").textContent = data.documents[i].sentiment;
                }
              }
            }
@@ -627,12 +615,9 @@ Der Code durchläuft dann die Antwort und aktualisiert den HTML-Code mit den Sti
                if (data.errors[i].id === "1") {
                  document.getElementById("input-sentiment").textContent = data.errors[i].message;
                }
-               if (data.errors[i].id === "2") {
-                 document.getElementById("translation-sentiment").textContent = data.errors[i].message;
-               }
              }
            }
-           if (document.getElementById("input-sentiment").textContent !== '' && document.getElementById("translation-sentiment").textContent !== ""){
+           if (document.getElementById("input-sentiment").textContent !== ''){
              document.getElementById("sentiment").style.display = "block";
            }
          }

@@ -2,16 +2,18 @@
 title: DNS-Namensauflösungsoptionen für Linux-VMs
 description: Namensauflösungsszenarien für virtuelle Linux-Computer in Azure IaaS, einschließlich bereitgestellter DNS-Dienste, hybridem externen DNS und Bring Your Own DNS-Server (Verwenden eines eigenen DNS-Servers).
 author: RicksterCDN
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: conceptual
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: aa007888c68df41242f937e1062a90ec1b7fc3ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.collection: linux
+ms.openlocfilehash: e689e934f11e3cc2a621f25525e507a72a7044b8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372823"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556790"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>DNS-Namensauflösungsoptionen für virtuelle Linux-Computer in Azure
 Azure stellt die DNS-Namensauflösung standardmäßig für alle in einem einzelnen virtuellen Netzwerk enthaltenen virtuellen Computer bereit. Sie können Ihre eigene Lösung für die DNS-Namensauflösung implementieren, indem Sie auf Ihren in Azure gehosteten virtuellen Computern Ihre eigenen DNS-Dienste konfigurieren. Die folgenden Szenarien sollten Ihnen dabei helfen, situationsabhängig die jeweils am besten geeignete Lösung zu wählen.

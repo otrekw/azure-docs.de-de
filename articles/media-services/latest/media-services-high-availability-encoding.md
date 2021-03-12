@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: be3fd9b3d910e64245a1b52056499bbfba2e6379
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 81feb5b95578cedea7bf368aa1e0d6c2e9117077
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955850"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102456010"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Hochverfügbarkeit bei Media Services und Video on Demand (VoD)
 
@@ -59,23 +59,23 @@ Dieses allgemeine Diagramm zeigt die Architektur des Beispiels, das für Ihren E
 
 ### <a name="regions"></a>Regions
 
-* [Erstellen](https://review.docs.microsoft.com/azure/media-services/latest/create-account-cli-how-to) Sie zwei (oder mehr) Azure Media Services-Konten. Die beiden Konten müssen sich in verschiedenen Regionen befinden. Weitere Informationen finden Sie unter [Regionen, in denen der Azure Media Services-Dienst bereitgestellt wird](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).
-* Laden Sie Ihre Medien in dieselbe Region hoch, von der aus Sie den Auftrag übermitteln möchten. Weitere Informationen über den Beginn der Codierung finden Sie unter [Erstellen einer Auftragseingabe aus einer HTTPS-URL](https://review.docs.microsoft.com/azure/media-services/latest/job-input-from-http-how-to) oder [Erstellen einer Auftragseingabe aus einer lokalen Datei](https://review.docs.microsoft.com/azure/media-services/latest/job-input-from-local-file-how-to).
-* Wenn Sie dann den [Auftrag](https://review.docs.microsoft.com/azure/media-services/latest/transforms-jobs-concept) erneut in eine andere Region übermitteln müssen, können Sie die Daten mithilfe von `JobInputHttp` oder `Copy-Blob` aus dem Quellcontainer für Medienobjekte in einen Medienobjektcontainer in der alternativen Region kopieren.
+* [Erstellen](/azure/media-services/latest/create-account-cli-how-to) Sie zwei (oder mehr) Azure Media Services-Konten. Die beiden Konten müssen sich in verschiedenen Regionen befinden. Weitere Informationen finden Sie unter [Regionen, in denen der Azure Media Services-Dienst bereitgestellt wird](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).
+* Laden Sie Ihre Medien in dieselbe Region hoch, von der aus Sie den Auftrag übermitteln möchten. Weitere Informationen über den Beginn der Codierung finden Sie unter [Erstellen einer Auftragseingabe aus einer HTTPS-URL](/azure/media-services/latest/job-input-from-http-how-to) oder [Erstellen einer Auftragseingabe aus einer lokalen Datei](/azure/media-services/latest/job-input-from-local-file-how-to).
+* Wenn Sie dann den [Auftrag](/azure/media-services/latest/transforms-jobs-concept) erneut in eine andere Region übermitteln müssen, können Sie die Daten mithilfe von `JobInputHttp` oder `Copy-Blob` aus dem Quellcontainer für Medienobjekte in einen Medienobjektcontainer in der alternativen Region kopieren.
 
 ### <a name="monitoring"></a>Überwachung
 
 * Abonnieren Sie `JobStateChange`-Nachrichten in den einzelnen Konten über Azure Event Grid.
-    * [Registrieren Sie sich für Ereignisse](https://review.docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events) über das Azure-Portal oder die CLI. (Sie können dies auch über das EventGrid Management SDK erledigen.)
+    * [Registrieren Sie sich für Ereignisse](/azure/media-services/latest/reacting-to-media-services-events) über das Azure-Portal oder die CLI. (Sie können dies auch über das EventGrid Management SDK erledigen.)
     * Verwenden Sie das [Microsoft.Azure.EventGrid-SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) (das Media Services-Ereignisse nativ unterstützt).
     * Sie können Event Grid-Ereignisse auch über Azure Functions nutzen.
 
     Weitere Informationen finden Sie unter:
 
-    * Sehen Sie sich das [Beispiel zur Audioanalyse](https://review.docs.microsoft.com/azure/media-services/latest/transforms-jobs-concept) an. Es zeigt, wie ein Auftrag mit Azure Event Grid überwacht werden kann, einschließlich des Hinzufügens eines Fallbacks für den Fall, dass die Azure Event Grid-Nachrichten aus irgendeinem Grund verzögert werden.
-    * Sehen Sie sich auch die [Azure Event Grid-Schemas für Media Services-Ereignisse](https://review.docs.microsoft.com/azure/media-services/latest/media-services-event-schemas) an.
+    * Sehen Sie sich das [Beispiel zur Audioanalyse](/azure/media-services/latest/transforms-jobs-concept) an. Es zeigt, wie ein Auftrag mit Azure Event Grid überwacht werden kann, einschließlich des Hinzufügens eines Fallbacks für den Fall, dass die Azure Event Grid-Nachrichten aus irgendeinem Grund verzögert werden.
+    * Sehen Sie sich auch die [Azure Event Grid-Schemas für Media Services-Ereignisse](/azure/media-services/latest/media-services-event-schemas) an.
 
-* Wenn Sie einen [Auftrag](https://review.docs.microsoft.com/azure/media-services/latest/transforms-jobs-concept) erstellen:
+* Wenn Sie einen [Auftrag](/azure/media-services/latest/transforms-jobs-concept) erstellen:
     * Wählen Sie ein zufälliges Konto aus der Liste der zurzeit verwendeten Konten aus (diese Liste enthält normalerweise beide Konten; wenn aber Probleme festgestellt werden, enthält sie vielleicht nur ein Konto). Wenn die Liste leer ist, geben Sie eine Warnung aus, damit ein Operator dies untersuchen kann.
     * Erstellen Sie einen Datensatz, um die einzelnen Inflight-Aufträge und die verwendete Region/das verwendete Konto nachzuverfolgen.
 * Wenn Ihr `JobStateChange`-Handler eine Benachrichtigung erhält, dass ein Auftrag den geplanten Zustand erreicht hat, notieren Sie sich die Uhrzeit, zu der er in den geplanten Zustand wechselt, sowie die verwendete Region bzw. das verwendete Konto.

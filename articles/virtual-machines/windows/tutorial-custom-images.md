@@ -2,19 +2,19 @@
 title: 'Tutorial: Erstellen benutzerdefinierter VM-Images mit Azure PowerShell'
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure PowerShell ein benutzerdefiniertes Image für virtuelle Windows-Computer in einer Azure Shared Image Gallery-Instanz erstellen.
 author: cynthn
-ms.service: virtual-machines-windows
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subservice: shared-image-gallery
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0e3521603c4651133f1420809e4921ad27279860
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 145b7300272243099cfccad0c99d8f69e83e6762
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98873185"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555821"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>Tutorial: Erstellen von Windows-VM-Images mit Azure PowerShell
 
@@ -39,7 +39,7 @@ Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein
 
 Der [Katalog mit freigegebenen Images](../shared-image-galleries.md) vereinfacht das Freigeben benutzerdefinierter Images in Ihrer Organisation. Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können zum Starten von Konfigurationen verwendet werden, z.B. zum Vorabladen von Anwendungen, Anwendungskonfigurationen und anderen Betriebssystemkonfigurationen. 
 
-Mithilfe eines Katalogs mit freigegebenen Images können Sie Ihre benutzerdefinierten VM-Images für andere Benutzer freigeben. Wählen Sie aus, welche Images Sie teilen möchten, in welchen Regionen Sie sie verfügbar machen möchten, und mit wem Sie sie teilen möchten. 
+Shared Image Gallery ermöglicht Ihnen die Freigabe Ihrer benutzerdefinierten VM-Images für andere Benutzer. Wählen Sie aus, welche Images Sie teilen möchten, in welchen Regionen Sie sie verfügbar machen möchten, und mit wem Sie sie teilen möchten. 
 
 Die Funktion „Katalog mit geteilten Images“ verfügt über mehrere Ressourcentypen:
 

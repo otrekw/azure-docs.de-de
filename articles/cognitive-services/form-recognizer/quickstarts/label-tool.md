@@ -2,22 +2,26 @@
 title: 'Schnellstart: Beschriften von Formularen, Trainieren eines Modells und Analysieren von Formularen mithilfe des Tools für die Beschriftung von Beispielen – Formularerkennung'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung verwenden Sie das Formularerkennungstool für die Beschriftung von Beispielen, um Formulardokumente manuell zu beschriften. Danach trainieren Sie ein benutzerdefiniertes Modell für die Dokumentverarbeitung mit den beschrifteten Dokumenten und verwenden das Modell, um Schlüssel-Wert-Paare zu extrahieren.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/29/2021
-ms.author: pafarley
+ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: Verarbeiten von Dokumenten
-ms.openlocfilehash: 9642f9ce51cd3eb90344f96bc099da7adea93022
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f07e3b6142ad99ba3b9e64e4733109a7e5ae04f9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364789"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425738"
 ---
+<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD034 -->
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen
 
 In dieser Schnellstartanleitung verwenden Sie die Formularerkennungs-REST-API zusammen mit dem Tool für die Beschriftung von Beispielen, um ein benutzerdefiniertes Modell für die Dokumentverarbeitung mit manuell beschrifteten Daten zu trainieren. Weitere Informationen zum überwachten Lernen mit der Formularerkennung finden Sie im Abschnitt [Trainieren mit Beschriftungen](../overview.md#train-with-labels) der Übersicht.
@@ -29,9 +33,9 @@ In dieser Schnellstartanleitung verwenden Sie die Formularerkennungs-REST-API zu
 Für diesen Schnellstart benötigen Sie Folgendes:
 
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services)
-* Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Erstellen einer Formularerkennungsressource"  target="_blank"> im Azure-Portal eine Formularerkennungsressource <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
-    * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Formularerkennungs-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
-    * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
+* Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Erstellen einer Formularerkennungsressource"  target="_blank"> im Azure-Portal eine Formularerkennungsressource </a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
+  * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Formularerkennungs-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
+  * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
 * Einen Satz mit mindestens sechs Formularen desselben Typs. Diese Daten verwenden Sie zum Trainieren des Modells und zum Testen eines Formulars. Sie können ein [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) für diese Schnellstartanleitung verwenden (*sample_data.zip* herunterladen und extrahieren). Laden Sie die Trainingsdateien in das Stammverzeichnis eines Blobspeichercontainers in einem Azure Storage-Konto mit der Leistungsstufe „Standard“ hoch.
 
 ## <a name="create-a-form-recognizer-resource"></a>Erstellen einer Formularerkennungsressource
@@ -42,27 +46,28 @@ Für diesen Schnellstart benötigen Sie Folgendes:
 
 Um das Tool für die Beschriftung von Beispielen für die Formularerkennung online auszuprobieren, wechseln Sie zur [FOTT-Website](https://fott-preview.azurewebsites.net/).
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)
-> [!div class="nextstepaction"]
-> [Vordefinierte Modelle ausprobieren](https://fott.azurewebsites.net/)
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
 
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
 > [!div class="nextstepaction"]
 > [Vordefinierte Modelle ausprobieren](https://fott-preview.azurewebsites.net/)
 
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+> [!div class="nextstepaction"]
+> [Vordefinierte Modelle ausprobieren](https://fott.azurewebsites.net/)
+
 ---
 
-Zum Ausprobieren des Formularerkennungsdiensts benötigen Sie ein Azure-Abonnement (kann [hier](https://azure.microsoft.com/free/cognitive-services) kostenlos erstellt werden), einen Endpunkt für eine [Formularerkennungsressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) und einen entsprechenden Schlüssel. 
-
+Zum Ausprobieren des Formularerkennungsdiensts benötigen Sie ein Azure-Abonnement (kann [hier](https://azure.microsoft.com/free/cognitive-services) kostenlos erstellt werden), einen Endpunkt für eine [Formularerkennungsressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) und einen entsprechenden Schlüssel.
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Einrichten des Tools für die Beschriftung von Beispielen
 
 Sie verwenden die Docker-Engine, um das Tool für die Beschriftung von Beispielen auszuführen. Gehen Sie folgendermaßen vor, um den Docker-Container einzurichten. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).
 
 > [!TIP]
-> Das OCR Form Labeling Tool steht auch als Open-Source-Projekt auf GitHub zur Verfügung. Bei dem Tool handelt es sich um eine mit React + Redux erstellte TypeScript-Webanwendung. Besuchen Sie das Repository [OCR Form Labeling Tool](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application), wenn Sie weitere Informationen benötigen oder sich beteiligen möchten. Wenn Sie Tool online ausprobieren möchten, besuchen Sie die [FOTT-Website](https://fott.azurewebsites.net/).   
+> Das OCR Form Labeling Tool steht auch als Open-Source-Projekt auf GitHub zur Verfügung. Bei dem Tool handelt es sich um eine mit React + Redux erstellte TypeScript-Webanwendung. Besuchen Sie das Repository [OCR Form Labeling Tool](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application), wenn Sie weitere Informationen benötigen oder sich beteiligen möchten. Wenn Sie Tool online ausprobieren möchten, besuchen Sie die [FOTT-Website](https://fott.azurewebsites.net/).
 
-1. Installieren Sie zunächst Docker auf einem Hostcomputer. In dieser Anleitung wird veranschaulicht, wie Sie den lokalen Computer als Host verwenden. Wenn Sie einen Docker-Hostingdienst in Azure verwenden möchten, hilft Ihnen die Anleitung zum [Bereitstellen des Tools für die Beschriftung von Beispielen](../deploy-label-tool.md) weiter. 
+1. Installieren Sie zunächst Docker auf einem Hostcomputer. In dieser Anleitung wird veranschaulicht, wie Sie den lokalen Computer als Host verwenden. Wenn Sie einen Docker-Hostingdienst in Azure verwenden möchten, hilft Ihnen die Anleitung zum [Bereitstellen des Tools für die Beschriftung von Beispielen](../deploy-label-tool.md) weiter.
 
    Der Hostcomputer muss die folgenden Hardwareanforderungen erfüllen:
 
@@ -70,38 +75,43 @@ Sie verwenden die Docker-Engine, um das Tool für die Beschriftung von Beispiele
     |:--|:--|:--|
     |Tool für die Beschriftung von Beispielen|2 Kerne, 4 GB Arbeitsspeicher|4 Kerne, 8 GB Arbeitsspeicher|
 
-   Installieren Sie Docker auf Ihrem Computer, indem Sie die passenden Anweisungen für Ihr Betriebssystem befolgen: 
+   Installieren Sie Docker auf Ihrem Computer, indem Sie die passenden Anweisungen für Ihr Betriebssystem befolgen:
+
    * [Windows](https://docs.docker.com/docker-for-windows/)
    * [macOS](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/)
 
-
-
 1. Rufen Sie mit dem `docker pull`-Befehl den Container für das Tool für die Beschriftung von Beispielen ab.
 
-    # <a name="v20"></a>[v2.0](#tab/v2-0)    
-    ```
-    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
-    ```
-    # <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)    
-    ```
-    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview
-    ```
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
 
-    ---
+```console
+ docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview
+```
 
-1. Jetzt können Sie mit `docker run` den Container ausführen.
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
-    # <a name="v20"></a>[v2.0](#tab/v2-0)    
-    ```
-    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
-    ```
-    # <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)    
-    ```
-    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview eula=accept    
-    ```
+```console
+docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
+```
 
-    --- 
+---
+</br>
+  3. Jetzt können Sie mit `docker run` den Container ausführen.
+
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+
+```console
+ docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview eula=accept
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+```console
+docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
+```
+
+---
 
    Dieser Befehl macht das Tool für die Beschriftung von Beispielen über einen Webbrowser verfügbar. Gehe zu `http://localhost:3000`.
 
@@ -116,10 +126,10 @@ Stellen Sie zunächst sicher, dass alle Trainingsdokumente im selben Format vorl
 
 Aktivieren Sie CORS in Ihrem Speicherkonto. Wählen Sie im Azure-Portal Ihr Speicherkonto aus, und klicken Sie im linken Bereich auf die Registerkarte **CORS**. Geben Sie auf der untersten Zeile die folgenden Werte ein. Klicken Sie dann oben auf **Speichern**.
 
-* Zulässige Ursprünge = * 
+* Zulässige Ursprünge = *
 * Zulässige Methoden = \[alle auswählen\]
 * Zulässige Header = *
-* Verfügbar gemachte Header = * 
+* Verfügbar gemachte Header = *
 * Max. Alter = 200
 
 > [!div class="mx-imgBorder"]
@@ -164,7 +174,7 @@ Wenn Sie ein Projekt erstellen oder öffnen, wird das Hauptfenster des Beschrift
 
 * Ein Vorschaubereich, dessen Größe angepasst werden kann und der eine scrollbare Liste mit Formularen aus der Quellverbindung enthält.
 * Der Hauptbereich des Editors, in dem Sie Beschriftungen anwenden können.
-* Der Bearbeitungsbereich des Editors, in dem Sie Beschriftungen ändern, sperren, neu anordnen und löschen können. 
+* Der Bearbeitungsbereich des Editors, in dem Sie Beschriftungen ändern, sperren, neu anordnen und löschen können.
 
 ### <a name="identify-text-elements"></a>Identifizieren von Textelementen
 
@@ -178,7 +188,29 @@ Es zeigt außerdem, welche Tabellen automatisch extrahiert wurden. Klicken Sie a
 
 Als Nächstes erstellen Sie Tags (Beschriftungen) und wenden sie auf die Textelemente an, die das Modell analysieren soll.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)  
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+
+1. Verwenden Sie zuerst den Tag-Editor-Bereich, um die Tags zu erstellen, die Sie identifizieren möchten:
+   * Klicken Sie auf **+** , um ein neues Tag zu erstellen.
+   * Geben Sie den Tagnamen ein.
+   * Drücken Sie die EINGABETASTE, um das Tag zu speichern.
+1. Klicken Sie im Hauptbereich des Editors, um Wörter in den markierten Textelementen auszuwählen. In der API _v2.1 preview.2_ können Sie auch klicken, um _Auswahlmarkierungen_ wie Optionsfelder und Kontrollkästchen als Schlüssel-Wert-Paare auszuwählen. Die Formularerkennung ermittelt, ob für die Auswahlmarkierung der Wert „ausgewählt“ oder „nicht ausgewählt“ angegeben ist.
+1. Klicken Sie auf das Tag, das Sie anwenden möchten, oder drücken Sie die entsprechende Taste auf der Tastatur. Die Zifferntasten sind als Schnellzugriffstasten für die ersten zehn Tags zugewiesen. Sie können die Beschriftungen mithilfe der nach oben und unten weisenden Pfeilsymbole im Bearbeitungsbereich neu anordnen.
+    > [!Tip]
+    > Beachten Sie beim Beschriften Ihrer Formulare die folgenden Tipps:
+    >
+    > * Sie können auf jedes ausgewählte Element nur ein Tag anwenden.
+    > * Jedes Tag kann nur einmal pro Seite angewendet werden. Wenn ein Wert in demselben Formular mehrfach erscheint, sollten Sie für jede Instanz andere Tags erstellen. Beispiel: „rechnung 1“, „rechnung 2“ usw.
+    > * Tags können nicht seitenübergreifend genutzt werden.
+    > * Beschriften Sie Werte so, wie sie im Formular vorkommen. Versuchen Sie nicht, einen Wert mit zwei unterschiedlichen Tags in zwei Teile zu unterteilen. Ein Adressfeld sollte beispielsweise auch dann nur mit einem Tag beschriftet werden, wenn es über mehrere Zeilen verläuft.
+    > * Fügen Sie in Ihre beschrifteten Felder keine Schlüssel ein, sondern nur die Werte.
+    > * Die Tabellendaten sollten automatisch erkannt werden und sind in der fertigen JSON-Ausgabedatei enthalten. Falls das Modell nicht Ihre gesamten Tabellendaten erkennen kann, können Sie diese Felder auch manuell beschriften. Verwenden Sie für jede Zelle der Tabelle eine andere Beschriftung. Falls Ihre Formulare über Tabellen mit unterschiedlicher Anzahl von Zeilen verfügen, sollten Sie sicherstellen, dass Sie mindestens ein Formular mit der größtmöglichen Tabelle beschriften.
+    > * Verwenden Sie die Schaltflächen rechts neben dem **+** -Zeichen, um Ihre Tags zu suchen, umzubenennen, neu anzuordnen und zu löschen.
+    > * Um ein angewendetes Tag zu entfernen, ohne das Tag selbst zu löschen, wählen Sie das Tagrechteck in der Dokumentansicht aus und drücken die Taste ENTF.
+    >
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
 1. Verwenden Sie zuerst den Bearbeitungsbereich des Editors, um die Tags zu erstellen, die Sie identifizieren möchten.
    1. Klicken Sie auf **+** , um ein neues Tag zu erstellen.
    1. Geben Sie den Tagnamen ein.
@@ -186,7 +218,8 @@ Als Nächstes erstellen Sie Tags (Beschriftungen) und wenden sie auf die Textele
 1. Klicken Sie im Hauptbereich des Editors, um Wörter in den markierten Textelementen auszuwählen.
 1. Klicken Sie auf das Tag, das Sie anwenden möchten, oder drücken Sie die entsprechende Taste auf der Tastatur. Die Zifferntasten sind als Schnellzugriffstasten für die ersten zehn Tags zugewiesen. Sie können die Beschriftungen mithilfe der nach oben und unten weisenden Pfeilsymbole im Bearbeitungsbereich neu anordnen.
     > [!Tip]
-    > Beachten Sie beim Beschriften Ihrer Formulare die folgenden Tipps.
+    > Beachten Sie beim Beschriften Ihrer Formulare die folgenden Tipps:
+    >
     > * Sie können auf jedes ausgewählte Element nur ein Tag anwenden.
     > * Jedes Tag kann nur einmal pro Seite angewendet werden. Wenn ein Wert in demselben Formular mehrfach erscheint, sollten Sie für jede Instanz andere Tags erstellen. Beispiel: „rechnung 1“, „rechnung 2“ usw.
     > * Tags können nicht seitenübergreifend genutzt werden.
@@ -195,31 +228,11 @@ Als Nächstes erstellen Sie Tags (Beschriftungen) und wenden sie auf die Textele
     > * Die Tabellendaten sollten automatisch erkannt werden und sind in der fertigen JSON-Ausgabedatei enthalten. Falls das Modell nicht Ihre gesamten Tabellendaten erkennen kann, können Sie diese Felder auch manuell beschriften. Verwenden Sie für jede Zelle der Tabelle eine andere Beschriftung. Falls Ihre Formulare über Tabellen mit unterschiedlicher Anzahl von Zeilen verfügen, sollten Sie sicherstellen, dass Sie mindestens ein Formular mit der größtmöglichen Tabelle beschriften.
     > * Verwenden Sie die Schaltflächen rechts neben dem **+** -Zeichen, um Ihre Tags zu suchen, umzubenennen, neu anzuordnen und zu löschen.
     > * Um ein angewendetes Tag zu entfernen, ohne das Tag selbst zu löschen, wählen Sie das Tagrechteck in der Dokumentansicht aus und drücken die Taste ENTF.
-
-
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1) 
-1. Verwenden Sie zuerst den Bearbeitungsbereich des Editors, um die Tags zu erstellen, die Sie identifizieren möchten.
-   1. Klicken Sie auf **+** , um ein neues Tag zu erstellen.
-   1. Geben Sie den Tagnamen ein.
-   1. Drücken Sie die EINGABETASTE, um das Tag zu speichern.
-1. Klicken Sie im Hauptbereich des Editors, um Wörter in den markierten Textelementen auszuwählen. In der API _v2.1 preview.2_ können Sie auch klicken, um _Auswahlmarkierungen_ wie Optionsfelder und Kontrollkästchen als Schlüssel-Wert-Paare auszuwählen. Die Formularerkennung ermittelt, ob für die Auswahlmarkierung der Wert „ausgewählt“ oder „nicht ausgewählt“ angegeben ist.
-1. Klicken Sie auf das Tag, das Sie anwenden möchten, oder drücken Sie die entsprechende Taste auf der Tastatur. Die Zifferntasten sind als Schnellzugriffstasten für die ersten zehn Tags zugewiesen. Sie können die Beschriftungen mithilfe der nach oben und unten weisenden Pfeilsymbole im Bearbeitungsbereich neu anordnen.
-    > [!Tip]
-    > Beachten Sie beim Beschriften Ihrer Formulare die folgenden Tipps.
-    > * Sie können auf jedes ausgewählte Element nur ein Tag anwenden.
-    > * Jedes Tag kann nur einmal pro Seite angewendet werden. Wenn ein Wert in demselben Formular mehrfach erscheint, sollten Sie für jede Instanz andere Tags erstellen. Beispiel: „rechnung 1“, „rechnung 2“ usw.
-    > * Tags können nicht seitenübergreifend genutzt werden.
-    > * Beschriften Sie Werte so, wie sie im Formular vorkommen. Versuchen Sie nicht, einen Wert mit zwei unterschiedlichen Tags in zwei Teile zu unterteilen. Ein Adressfeld sollte beispielsweise auch dann nur mit einem Tag beschriftet werden, wenn es über mehrere Zeilen verläuft.
-    > * Fügen Sie in Ihre beschrifteten Felder keine Schlüssel ein, sondern nur die Werte.
-    > * Die Tabellendaten sollten automatisch erkannt werden und sind in der fertigen JSON-Ausgabedatei enthalten. Falls das Modell nicht Ihre gesamten Tabellendaten erkennen kann, können Sie diese Felder auch manuell beschriften. Verwenden Sie für jede Zelle der Tabelle eine andere Beschriftung. Falls Ihre Formulare über Tabellen mit unterschiedlicher Anzahl von Zeilen verfügen, sollten Sie sicherstellen, dass Sie mindestens ein Formular mit der größtmöglichen Tabelle beschriften.
-    > * Verwenden Sie die Schaltflächen rechts neben dem **+** -Zeichen, um Ihre Tags zu suchen, umzubenennen, neu anzuordnen und zu löschen.
-    > * Um ein angewendetes Tag zu entfernen, ohne das Tag selbst zu löschen, wählen Sie das Tagrechteck in der Dokumentansicht aus und drücken die Taste ENTF.
-
+>
 
 ---
 
 :::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Haupt-Editor-Fenster des Tools für die Beschriftung von Beispielen":::
-
 
 Führen Sie die oben genannten Schritte aus, um mindestens fünf Ihrer Formulare zu beschriften.
 
@@ -231,35 +244,43 @@ Optional können Sie den erwarteten Datentyp für jedes Tag festlegen. Öffnen S
 > ![Werttypauswahl mit dem Tool für die Beschriftung von Beispielen](../media/whats-new/value-type.png)
 
 Derzeit werden die folgenden Werttypen und Variationen unterstützt:
+
 * `string`
-    * Standardwert, `no-whitespaces`, `alphanumeric`
+  * Standardwert, `no-whitespaces`, `alphanumeric`
+
 * `number`
-    * Standardwert, `currency`
-* `date` 
-    * Standardwert, `dmy`, `mdy`, `ymd`
+  * Standardwert, `currency`
+
+* `date`
+  * Standardwert, `dmy`, `mdy`, `ymd`
+
 * `time`
 * `integer`
 * `selectionMark`: _Neu in v2.1-preview.1_
 
 > [!NOTE]
 > Siehe diese Regeln für die Datumsformatierung:
-> 
+>
 > Sie müssen ein Format (`dmy`, `mdy`, `ymd`) angeben, damit die Datumsformatierung funktioniert.
 >
 > Die folgenden Zeichen können als Datumstrennzeichen verwendet werden: `, - / . \`. Leerzeichen können nicht als Trennzeichen verwendet werden. Beispiel:
+>
 > * 01.01.2020
 > * 01-01-2020
 > * 01/01/2020
 >
 > Tag und Monat können jeweils ein- oder zweistellig, die Jahreszahl zwei- oder vierstellig angegeben werden:
+>
 > * 1-1-2020
 > * 1-01-20
 >
 > Wenn eine Datumszeichenfolge acht Ziffern hat, ist das Trennzeichen optional:
+>
 > * 01012020
 > * 01 01 2020
 >
 > Der Monat kann auch als vollständiger oder Kurzname angegeben werden. Wenn der Name verwendet wird, sind Trennzeichen optional. Dieses Format kann jedoch weniger genau erkannt werden als andere.
+>
 > * 01/Jan/2020
 > * 01Jan2020
 > * 01 Jan 2020
@@ -282,21 +303,22 @@ Untersuchen Sie nach Abschluss des Trainings den Wert **Durchschnittliche Genaui
 
 ## <a name="compose-trained-models"></a>Erstellen trainierter Modelle
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)  
-
-Dieses Feature ist derzeit in der Vorschauversion v2.1 verfügbar. 
-
-# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1) 
+### <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
 
 Mit der Modellerstellung können Sie bis zu 100 Modelle mit einer einzelnen Modell-ID erstellen. Wenn Sie mit dieser zusammengesetzten Modell-ID die Option zum Analysieren aufrufen, klassifiziert die Formularerkennung zunächst das übermittelte Formular, gleicht es mit dem am ehesten übereinstimmenden Modell ab und gibt dann Ergebnisse für dieses Modell zurück. Dies ist nützlich, wenn eingehende Formulare zu einer von mehreren Vorlagen gehören können.
 
-Um Modelle im Tool für die Beschriftung von Beispielen zu erstellen, klicken Sie auf der linken Seite auf das Symbol zum Erstellen von Modellen (zusammengeführter Pfeil). Wählen Sie auf der linken Seite die Modelle aus, die Sie zusammen erstellen möchten. Modelle mit dem Pfeilsymbol sind bereits zusammengesetzte Modelle. Klicken Sie auf die Schaltfläche „Erstellen“. Geben Sie im Popupfenster einen Namen für Ihr neu erstelltes Modell ein, und klicken Sie auf „Erstellen“. Nach Abschluss des Vorgangs sollte das neue erstellte Modell in der Liste angezeigt werden. 
+Um Modelle im Tool für die Beschriftung von Beispielen zu erstellen, klicken Sie auf der linken Seite auf das Symbol zum Erstellen von Modellen (zusammengeführter Pfeil). Wählen Sie auf der linken Seite die Modelle aus, die Sie zusammen erstellen möchten. Modelle mit dem Pfeilsymbol sind bereits zusammengesetzte Modelle.
+Klicken Sie auf die Schaltfläche „Erstellen“. Geben Sie im Popupfenster einen Namen für Ihr neu erstelltes Modell ein, und klicken Sie auf „Erstellen“. Nach Abschluss des Vorgangs sollte das neue erstellte Modell in der Liste angezeigt werden.
 
 :::image type="content" source="../media/label-tool/model-compose.png" alt-text="Benutzeroberflächenansicht für die Modellerstellung":::
 
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+Dieses Feature ist derzeit in der Vorschauversion v2.1 verfügbar.
+
 ---
 
-## <a name="analyze-a-form"></a>Analysieren eines Formulars 
+## <a name="analyze-a-form"></a>Analysieren eines Formulars
 
 Klicken Sie links auf das Symbol für die Vorhersage (Glühbirne), um Ihr Modell zu testen. Laden Sie ein Formulardokument hoch, das Sie im Trainingsprozess nicht verwendet haben. Klicken Sie dann rechts auf die Schaltfläche **Vorhersage**, um die Schlüssel-Wert-Vorhersagen für das Formular zu erhalten. Das Tool wendet Beschriftungen in Begrenzungsrahmen an und meldet die Konfidenz jeder Beschriftung.
 
@@ -311,13 +333,15 @@ Die gemeldete durchschnittliche Genauigkeit, die Konfidenzscores und die tatsäc
 
 ## <a name="save-a-project-and-resume-later"></a>Speichern und späteres Fortsetzen eines Projekts
 
-Um Ihr Projekt zu einem anderen Zeitpunkt oder in einem anderen Browser fortzusetzen, müssen Sie das Sicherheitstoken des Projekts speichern und später erneut eingeben. 
+Um Ihr Projekt zu einem anderen Zeitpunkt oder in einem anderen Browser fortzusetzen, müssen Sie das Sicherheitstoken des Projekts speichern und später erneut eingeben.
 
 ### <a name="get-project-credentials"></a>Abrufen der Projektanmeldeinformationen
+
 Wechseln Sie zur Seite mit den Projekteinstellungen (Schiebereglersymbol), und merken Sie sich den Namen des Sicherheitstokens. Wechseln Sie dann zu Ihren Anwendungseinstellungen (Zahnradsymbol), in denen alle Sicherheitstoken in Ihrer aktuellen Browserinstanz angezeigt werden. Suchen Sie nach dem Sicherheitstoken Ihres Projekts, und kopieren Sie den Namen und Schlüsselwert an einen sicheren Speicherort.
 
 ### <a name="restore-project-credentials"></a>Wiederherstellen der Projektanmeldeinformationen
-Wenn Sie Ihr Projekt fortsetzen möchten, müssen Sie zunächst eine Verbindung mit demselben Blobspeichercontainer herstellen. Wiederholen Sie dazu die oben genannten Schritte. Wechseln Sie zur Seite mit den Anwendungseinstellungen (Zahnradsymbol), und überprüfen Sie, ob sich das Sicherheitstoken Ihres Projekts dort befindet. Wenn dies nicht der Fall ist, fügen Sie ein neues Sicherheitstoken hinzu, und fügen Sie den Namen und Schlüssel des Tokens aus dem vorherigen Schritt ein. Klicken Sie dann auf „Einstellungen speichern“. 
+
+Wenn Sie Ihr Projekt fortsetzen möchten, müssen Sie zunächst eine Verbindung mit demselben Blobspeichercontainer herstellen. Wiederholen Sie dazu die oben genannten Schritte. Wechseln Sie zur Seite mit den Anwendungseinstellungen (Zahnradsymbol), und überprüfen Sie, ob sich das Sicherheitstoken Ihres Projekts dort befindet. Wenn dies nicht der Fall ist, fügen Sie ein neues Sicherheitstoken hinzu, und fügen Sie den Namen und Schlüssel des Tokens aus dem vorherigen Schritt ein. Klicken Sie dann auf „Einstellungen speichern“.
 
 ### <a name="resume-a-project"></a>Fortsetzen eines Projekts
 

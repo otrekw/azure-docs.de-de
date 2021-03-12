@@ -2,17 +2,17 @@
 title: Virtuelle Computer in einer Azure Resource Manager-Vorlage | Microsoft Azure
 description: Es wird beschrieben, wie die Ressource des virtuellen Computers in einer Azure Resource Manager-Vorlage definiert wird.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 2726ba3b337dc785de58b06fb5e8372058f71879
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 32b73be3faf6eedb92220725b292a3e69cf7f965
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202095"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555991"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuelle Computer in einer Azure Resource Manager-Vorlage
 
@@ -270,7 +270,7 @@ Woran ist erkennbar, dass eine Abhängigkeit erforderlich ist? Sehen Sie sich di
 
 Zum Festlegen dieser Eigenschaft muss die Netzwerkschnittstelle vorhanden sein. Aus diesem Grund benötigen Sie eine Abhängigkeit. Außerdem müssen Sie eine Abhängigkeit festlegen, wenn eine Ressource (untergeordnetes Element) in einer anderen Ressource (übergeordnetes Element) definiert wird. Beispielsweise sind die Diagnoseeinstellungen und benutzerdefinierten Skripterweiterungen jeweils als untergeordnete Ressourcen des virtuellen Computers definiert. Sie können erst erstellt werden, wenn der virtuelle Computer vorhanden ist. Aus diesem Grund sind beide Ressourcen als abhängig vom virtuellen Computer gekennzeichnet.
 
-## <a name="profiles"></a>Profile
+## <a name="profiles"></a>Profiles
 
 Beim Definieren einer VM-Ressource werden mehrere Profilelemente verwendet. Einige sind erforderlich, und einige sind optional. Die Elemente „hardwareProfile“, „osProfile“, „storageProfile“ und „networkProfile“ sind erforderlich, aber „diagnosticsProfile“ ist optional. Mit diesen Profilen werden beispielsweise folgende Einstellungen definiert:
    

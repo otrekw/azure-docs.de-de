@@ -13,12 +13,12 @@ ms.author: trbye
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-twenty-four
 keywords: Sprachsynthese
-ms.openlocfilehash: c3f1db836ce028b6881efe0b2fa90e9ac19caac8
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7a41c4d9c1074b376da3de556caf63ced0bc84ec
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058232"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428199"
 ---
 # <a name="get-started-with-text-to-speech"></a>Erste Schritte bei der Sprachsynthese
 
@@ -53,6 +53,20 @@ ms.locfileid: "92058232"
 ::: zone pivot="programmer-tool-spx"
 [!INCLUDE [CLI Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-cli.md)]
 ::: zone-end
+
+## <a name="get-position-information"></a>Abrufen von Positionsinformationen
+
+Ihr Projekt benötigt möglicherweise die Information, wann ein Wort von der Sprachsynthese gesprochen wird, um auf der Grundlage dieses Timings eine bestimmte Aktion ausführen zu können. Wenn Sie also beispielsweise Wörter hervorheben möchten, während sie gesprochen werden, müssen Sie wissen, welche Wörter wann und wie lange hervorgehoben werden sollen.
+
+Hierzu können Sie das in `SpeechSynthesizer` verfügbare Ereignis `WordBoundary` verwenden. Dieses Ereignis wird am Anfang jedes neuen gesprochenen Worts ausgelöst und stellt einen Zeitoffset innerhalb des gesprochenen Streams sowie einen Textoffset innerhalb der Eingabeaufforderung bereit.
+
+* `AudioOffset` meldet die verstrichene Zeit der Audioausgabe zwischen dem Beginn der Synthese und dem Anfang des nächsten Worts. Dieser Wert wird in HNS-Einheiten (hundert Nanosekunden) gemessen. 10.000 HNS entsprechen einer Millisekunde.
+* `WordOffset` meldet die Zeichenposition in der Eingabezeichenfolge (ursprünglicher Text oder [SSML](speech-synthesis-markup.md)) unmittelbar vor dem Wort, das als Nächstes gesprochen wird.
+
+> [!NOTE]
+> Ereignisse vom Typ `WordBoundary` werden ausgelöst, wenn die ausgegebenen Audiodaten verfügbar werden, was schneller passiert als die Wiedergabe über ein Ausgabegerät. Das Timing des Streams muss vom Aufrufer ordnungsgemäß mit der tatsächlichen Zeit synchronisiert werden.
+
+Beispiele für die Verwendung von `WordBoundary` finden Sie auf GitHub in den [Beispielen für die Sprachsynthese](https://aka.ms/csspeech/samples).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
