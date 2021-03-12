@@ -5,18 +5,18 @@ author: mumian
 ms.date: 03/02/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: ab1d7b88321ce5959b99423ae2ca1332369ef691
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: a5b5533cd87c417d03db960c477392c24fa59f8a
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178999"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504149"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>Schnellstart: Erstellen von Bicep-Dateien mit Visual Studio Code
 
 Die Bicep-Erweiterung für Visual Studio Code bietet Sprachunterstützung und automatische Vervollständigung für Ressourcen. Diese Tools unterstützen Sie beim Erstellen und Überprüfen von [Bicep](./bicep-overview.md)-Dateien. In diesem Schnellstart verwenden Sie die Erweiterung, um eine Bicep-Datei von Grund auf zu erstellen. Dabei lernen Sie die Funktionen der Erweiterung kennen, z. B. die Überprüfung und Vervollständigung.
 
-Für diesen Schnellstart benötigen Sie [Visual Studio Code](https://code.visualstudio.com/) mit der [Bicep-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) installiert. Außerdem müssen Sie die neueste Version der [Azure CLI](/cli/azure/) oder das neueste [Azure PowerShell-Modul](/powershell/azure/new-azureps-module-az?view=azps-3.7.0&preserve-view=true) installieren und authentifizieren.
+Für diesen Schnellstart benötigen Sie [Visual Studio Code](https://code.visualstudio.com/) mit der [Bicep-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) installiert. Außerdem müssen Sie die neueste Version der [Azure CLI](/cli/azure/) oder das neueste [Azure PowerShell-Modul](/powershell/azure/new-azureps-module-az) installieren und authentifizieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 

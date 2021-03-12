@@ -1,24 +1,18 @@
 ---
 title: Azure Security Center-Bericht mit Bedrohungsinformationen | Microsoft-Dokumentation
 description: Auf dieser Seite erfahren Sie, wie Sie Azure Security Center-Berichte mit Bedrohungsinformationen im Rahmen einer Untersuchung nutzen, um weitere Informationen zu einer Sicherheitswarnung zu ermitteln.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 5662e312-e8c2-4736-974e-576eeb333484
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: f9b3fd0000a1b5dbba00995c37f96a89319de0e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec6d227059c3f4fd1285f224e13169a2479bc65f
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440485"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438232"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure Security Center-Bericht mit Bedrohungsinformationen
 

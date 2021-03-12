@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 470b6b0c871d91a2a8a584a6efd04605e0afcf88
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e978baa556f1bc1cfea0ccd5abbbf92dc77b1622
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666840"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504013"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -265,7 +265,7 @@ Es gibt andere Redundanzmethoden. Weitere Informationen finden Sie unter [Azure 
 
 
 ## <a name="vm-node-resiliency"></a>VM-Knoten – Resilienz
-Azure bietet verschiedene SLAs für VMs. Weitere Informationen finden Sie im letzten Release der [SLA für Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). Da die DBMS-Schicht von entscheidender Bedeutung für die Verfügbarkeit in einem SAP-System ist, müssen Sie mit Verfügbarkeitsgruppen, Verfügbarkeitszonen und Wartungsereignissen vertraut sein. Weitere Informationen zu diesen Konzepten finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../../manage-availability.md) und [Verwalten der Verfügbarkeit virtueller Linux-Computer](../../manage-availability.md).
+Azure bietet verschiedene SLAs für VMs. Weitere Informationen finden Sie im letzten Release der [SLA für Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). Da die DBMS-Schicht von entscheidender Bedeutung für die Verfügbarkeit in einem SAP-System ist, müssen Sie mit Verfügbarkeitsgruppen, Verfügbarkeitszonen und Wartungsereignissen vertraut sein. Weitere Informationen zu diesen Konzepten finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../../availability.md) und [Verwalten der Verfügbarkeit virtueller Linux-Computer](../../availability.md).
 
 Mindestempfehlung für DBMS-Produktionsszenarien mit einer SAP-Workload:
 

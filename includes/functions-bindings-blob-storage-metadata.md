@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: f4e6d5fb41769544b7be0f689447364988d0380d
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c6b038297945ca900508a822460e1358a2524d23
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95998832"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455912"
 ---
-Der Blobtrigger stellt mehrere Metadateneigenschaften bereit. Diese Eigenschaften können als Teil der Bindungsausdrücke in anderen Bindungen oder als Parameter im Code verwendet werden. Diese Werte haben die gleiche Semantik wie der Typ [CloudBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet).
+Der Blobtrigger stellt mehrere Metadateneigenschaften bereit. Diese Eigenschaften können als Teil der Bindungsausdrücke in anderen Bindungen oder als Parameter im Code verwendet werden. Diese Werte haben die gleiche Semantik wie der Typ [CloudBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblob).
 
-|Eigenschaft  |type  |BESCHREIBUNG  |
+|Eigenschaft  |Typ  |Beschreibung  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|Der Pfad des auslösenden Blobs.|
 |`Uri`|`System.Uri`|Der Blob-URI für den primären Speicherort|
