@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 205136437fa1a2a33b3b337f5cc9f2dde283faef
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 6116ab543d6dfc886e44206c2a60e4456b39fbc9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491939"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558184"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff
 
@@ -37,7 +37,7 @@ Die Anmeldehäufigkeit bezeichnet den Zeitraum, bevor ein Benutzer beim Zugriff 
 
 Die Standardkonfiguration von Azure Active Directory (Azure AD) sieht für die Anmeldehäufigkeit von Benutzern ein rollierendes Zeitfenster von 90 Tagen vor. Benutzer häufig zur Eingabe von Anmeldeinformationen aufzufordern, kann einerseits sinnvoll sein, andererseits aber auch das Gegenteil bewirken: Benutzer, die es gewohnt sind, ihre Anmeldeinformationen ohne Überlegung einzugeben, können diese auch versehentlich bei einer schädlichen Anmeldeaufforderung eingeben.
 
-Es klingt vielleicht beunruhigend, keine erneute Anmeldung von einem Benutzer zu fordern, tatsächlich wird die Sitzung bei einer Verletzung der IT-Richtlinien jedoch gesperrt. Einige Beispiele beinhalten u. a. eine Kennwortänderung, ein nicht kompatibles Gerät oder eine Kontodeaktivierung. Sie können [Benutzersitzungen auch explizit mit PowerShell sperren](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0&preserve-view=true). Die Standardkonfiguration von Azure AD basiert auf dem Grundprinzip „Benutzer nicht zur Angabe ihrer Anmeldeinformationen auffordern, solange der Sicherheitsstatus ihrer Sitzung unverändert ist“.
+Es klingt vielleicht beunruhigend, keine erneute Anmeldung von einem Benutzer zu fordern, tatsächlich wird die Sitzung bei einer Verletzung der IT-Richtlinien jedoch gesperrt. Einige Beispiele beinhalten u. a. eine Kennwortänderung, ein nicht kompatibles Gerät oder eine Kontodeaktivierung. Sie können [Benutzersitzungen auch explizit mit PowerShell sperren](/powershell/module/azuread/revoke-azureaduserallrefreshtoken). Die Standardkonfiguration von Azure AD basiert auf dem Grundprinzip „Benutzer nicht zur Angabe ihrer Anmeldeinformationen auffordern, solange der Sicherheitsstatus ihrer Sitzung unverändert ist“.
 
 Die Einstellung für die Anmeldehäufigkeit funktioniert bei Apps mit standardkonformer Implementierung des OAUTH2- oder OIDC-Protokolls. Die meisten nativen Microsoft-Apps für Windows, Mac und mobile Umgebungen, einschließlich der folgenden Webanwendungen, sind mit der Einstellung kompatibel.
 

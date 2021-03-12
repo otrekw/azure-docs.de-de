@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: ea7524b32b7637aa7c36308f8b869aa5207c08a2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b73e7f8c13f621bc359a2ae79a725829420a3ecc
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334411"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455591"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Advanced Threat Protection für Azure Cosmos DB (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,9 +34,9 @@ Für eine vollständige Umgebung zur Untersuchung von Sicherheitswarnungen empfi
 
 Advanced Threat Protection für Azure Cosmos DB erkennt Anomalien bei Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Ihre Datenbanken zuzugreifen oder diese zu nutzen. Es kann die folgenden Warnungen auslösen:
 
-- **Zugriff von einem ungewöhnlichen Ort** : Diese Warnung wird ausgelöst, wenn eine Änderung des Zugriffsmusters für ein Azure Cosmos-Konto erfolgt ist, weil sich eine Person von einem ungewöhnlichen Ort aus mit dem Azure Cosmos DB-Endpunkt verbunden hat. In einigen Fällen erkennt die Warnung eine legitime Aktion (d. h. eine neue Anwendung oder Wartungsvorgänge von Entwicklern). In anderen Fällen erkennt die Warnung eine schädliche Aktion (von einem ehemaligen Mitarbeiter, externen Angreifer usw.).
+- **Zugriff von einem ungewöhnlichen Ort**: Diese Warnung wird ausgelöst, wenn eine Änderung des Zugriffsmusters für ein Azure Cosmos-Konto erfolgt ist, weil sich eine Person von einem ungewöhnlichen Ort aus mit dem Azure Cosmos DB-Endpunkt verbunden hat. In einigen Fällen erkennt die Warnung eine legitime Aktion (d. h. eine neue Anwendung oder Wartungsvorgänge von Entwicklern). In anderen Fällen erkennt die Warnung eine schädliche Aktion (von einem ehemaligen Mitarbeiter, externen Angreifer usw.).
 
-- **Ungewöhnliche Datenextraktion** : Diese Warnung wird ausgelöst, wenn ein Client eine ungewöhnliche Menge an Daten von einem Azure Cosmos DB-Konto extrahiert. Dies kann das Symptom einer Datenexfiltration sein, die durchgeführt wird, um alle im Konto gespeicherten Daten in einen externen Datenspeicher zu übertragen.
+- **Ungewöhnliche Datenextraktion**: Diese Warnung wird ausgelöst, wenn ein Client eine ungewöhnliche Menge an Daten von einem Azure Cosmos DB-Konto extrahiert. Dies kann das Symptom einer Datenexfiltration sein, die durchgeführt wird, um alle im Konto gespeicherten Daten in einen externen Datenspeicher zu übertragen.
 
 
 
@@ -54,8 +54,8 @@ Sie können Advanced Threat Protection auf verschiedene Arten konfigurieren, die
 
 3. Führen Sie auf dem Blatt zur Konfiguration von **Erweiterte Sicherheit** folgende Schritte aus:
 
-    * Klicken Sie auf die Option **Advanced Threat Protection** , um sie zu aktivieren ( **EIN** ).
-    * Klicken Sie auf **Speichern** , um die neue oder aktualisierte Advanced Threat Protection-Richtlinie zu speichern.   
+    * Klicken Sie auf die Option **Advanced Threat Protection**, um sie zu aktivieren (**EIN**).
+    * Klicken Sie auf **Speichern**, um die neue oder aktualisierte Advanced Threat Protection-Richtlinie zu speichern.   
 
 ### <a name="rest-api"></a>[REST-API](#tab/rest-api)
 
@@ -68,9 +68,9 @@ Verwenden Sie REST-API-Befehle, um die Advanced Threat Protection-Einstellung f�
 
 Verwenden Sie die folgenden PowerShell-Cmdlets:
 
-* [Enable Advanced Threat Protection (Advanced Threat Protection aktivieren)](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
-* [Get Advanced Threat Protection (Advanced Threat Protection abrufen)](/powershell/module/az.security/get-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
-* [Disable Advanced Threat Protection (Advanced Threat Protection deaktivieren)](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
+* [Enable Advanced Threat Protection (Advanced Threat Protection aktivieren)](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+* [Get Advanced Threat Protection (Advanced Threat Protection abrufen)](/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+* [Disable Advanced Threat Protection (Advanced Threat Protection deaktivieren)](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ### <a name="arm-template"></a>[ARM-Vorlage](#tab/arm-template)
 
@@ -81,7 +81,7 @@ Weitere Informationen finden Sie unter [Create a CosmosDB Account with Advanced 
 
 Verwenden Sie eine Azure-Richtlinie, um Advanced Threat Protection für Cosmos DB zu aktivieren.
 
-1. Öffnen Sie die Azure-Seite **Richtlinie – Definitionen** , und suchen Sie die Richtlinie **Deploy Advanced Threat Protection for Cosmos DB** (Advanced Threat Protection für Cosmos DB bereitstellen).
+1. Öffnen Sie die Azure-Seite **Richtlinie – Definitionen**, und suchen Sie die Richtlinie **Deploy Advanced Threat Protection for Cosmos DB** (Advanced Threat Protection für Cosmos DB bereitstellen).
 
     :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="Richtlinie suchen"::: 
 
