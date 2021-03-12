@@ -7,16 +7,16 @@ ms.service: web-application-firewall
 ms.date: 11/10/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: c2c84b508ee86ebdd82dbcc7040106142187c506
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: a92679bb3114c4a60870424f3ec68a8de7b303da
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563459"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499916"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Web Application Firewall (WAF) mit Ausschlusslisten des Front Door-Diensts 
 
-Manchmal blockiert Web Application Firewall (WAF) eine Anforderung, die Sie für Ihre Anwendung zulassen möchten. Beispielsweise fügt Active Directory Token ein, die für die Authentifizierung verwendet werden. Diese Token können Sonderzeichen enthalten, die ein falsch positives Ergebnis von den WAF-Regeln auslösen können. Mit WAF-Ausschlusslisten können Sie bestimmte Anforderungsattribute in einer WAF-Auswertung weglassen.  Eine Ausschlussliste kann mit [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0), der [Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), der [REST-API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate) oder dem Azure-Portal konfiguriert werden. Im folgenden Beispiel wird die Konfiguration im Azure-Portal gezeigt. 
+Manchmal blockiert Web Application Firewall (WAF) eine Anforderung, die Sie für Ihre Anwendung zulassen möchten. Beispielsweise fügt Active Directory Token ein, die für die Authentifizierung verwendet werden. Diese Token können Sonderzeichen enthalten, die ein falsch positives Ergebnis von den WAF-Regeln auslösen können. Mit WAF-Ausschlusslisten können Sie bestimmte Anforderungsattribute in einer WAF-Auswertung weglassen.  Eine Ausschlussliste kann mit [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject), der [Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), der [REST-API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate) oder dem Azure-Portal konfiguriert werden. Im folgenden Beispiel wird die Konfiguration im Azure-Portal gezeigt. 
 ## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Konfigurieren von Ausschlusslisten mithilfe des Azure-Portals
 Auf **Ausschlüsse verwalten** kann über das WAF-Portal unter **Verwaltete Regeln** zugegriffen werden.
 

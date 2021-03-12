@@ -3,16 +3,17 @@ title: Erhalten von Wartungsbenachrichtigungen für virtuelle Azure-Computer mit
 description: Zeigen Sie mithilfe von PowerShell Wartungsbenachrichtigungen für in Azure ausgeführte virtuelle Computer an, und starten Sie eine Self-Service-Wartung.
 author: shants123
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 9942ad359bf1e1e7a02f30979ba4a9325d90d484
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4278aa563d76b783e02e67ee964764864931fd68
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336053"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552370"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>Behandeln von geplanten Wartungen mithilfe von PowerShell
 
@@ -27,7 +28,7 @@ Wartungsinformationen werden nur zurückgegeben, wenn eine Wartung geplant ist. 
 Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
 ```
 
-Ausgabe
+Output
 
 ```
 MaintenanceRedeployStatus               : 
@@ -41,7 +42,7 @@ MaintenanceRedeployStatus               :
 
 Unter „MaintenanceRedeployStatus“ werden folgende Eigenschaften zurückgegeben: 
 
-| Wert | Beschreibung   |
+| Wert | BESCHREIBUNG   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Gibt an, ob Sie zum aktuellen Zeitpunkt die Wartung für den virtuellen Computer starten können. |
 | PreMaintenanceWindowStartTime         | Der Anfang des Self-Service-Wartungszeitfensters, in dem Sie die Wartung für Ihren virtuellen Computer initiieren können. |

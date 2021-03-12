@@ -2,31 +2,32 @@
 title: Azure Disk Encryption-Beispielskripts
 description: Dieser Artikel enthält den Anhang zu Microsoft Azure Disk Encryption für virtuelle Linux-Computer.
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: d178ae39d3af6b39047501f0bc47acbc6e792f48
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: f11677d9ebc31f1c1f7cc6332b07b69f8e35ad52
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911493"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561176"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>Azure Disk Encryption-Beispielskripts für virtuelle Linux-Computer
 
 Dieser Artikel bietet Beispielskripts für die Vorbereitung vorab verschlüsselter VHDs und andere Aufgaben.  
 
 > [!NOTE]
-> Alle Skripts beziehen sich auf die neueste Nicht-AAD-Version von ADE, sofern nicht anders angegeben.
+> Alle Skripte beziehen sich auf die neueste, Nicht-AAD-Version von ADE, sofern nicht anders angegeben.
 
 ## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>PowerShell-Beispielskripts für Azure Disk Encryption 
 
 - **Auflisten aller verschlüsselten VMs Ihres Abonnements**
   
-  Sie finden mit [diesem PowerShell-Skript](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VM.ps1) alle mit ADE verschlüsselten VMs samt Erweiterungsversion in allen Ressourcengruppen, die in einem Abonnement vorhanden sind.
+  Sie finden alle mit ADE verschlüsselten VMs und die Erweiterungsversion in allen Ressourcengruppen, die in einem Abonnement vorhanden sind, mit [diesem PowerShell-Skript](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VM.ps1).
 
   Alternativ zeigen diese Cmdlets alle mit ADE verschlüsselten VMs an (jedoch nicht die Erweiterungsversion):
 
@@ -38,7 +39,7 @@ Dieser Artikel bietet Beispielskripts für die Vorbereitung vorab verschlüsselt
 
 - **Auflisten aller verschlüsselten VMSS-Instanzen in Ihrem Abonnement**
     
-    Sie finden mit [diesem PowerShell-Skript](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VMSS.ps1) alle mit ADE verschlüsselten VMSS-Instanzen samt Erweiterungsversion in allen Ressourcengruppen, die in einem Abonnement vorhanden sind.
+    Sie finden alle mit ADE verschlüsselten VMSS-Instanzen und die Erweiterungsversion in allen Ressourcengruppen, die in einem Abonnement vorhanden sind, mit [diesem PowerShell-Skript](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VMSS.ps1).
 
 - **Auflisten aller Geheimnisse der Datenträgerverschlüsselung, die zum Verschlüsseln von VMs in einem Schlüsseltresor verwendet werden** 
 
@@ -240,7 +241,7 @@ Konfigurieren Sie die Verschlüsselung für Azure, indem Sie die folgenden Schri
    ```
     chmod +x /usr/local/sbin/azure_crypt_key.sh
    ```
-5. Bearbeiten Sie */etc/initramfs-tools/modules* , indem Sie Zeilen anfügen:
+5. Bearbeiten Sie */etc/initramfs-tools/modules*, indem Sie Zeilen anfügen:
    ```
     vfat
     ntfs

@@ -3,19 +3,19 @@ title: Erstellen eines Images von einer VM mithilfe der Azure-Befehlszeilenschni
 description: Informationen zum Erstellen eines Images einer VM in Shared Image Gallery in Azure.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ca354ee662ebad0cd514d4822794b056ee6f9850
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 7c35be8821b6763531b43ec85b10325e91f8bc5f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805376"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556859"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>Erstellen einer Imageversion von einer VM in Azure mithilfe der Azure CLI
 

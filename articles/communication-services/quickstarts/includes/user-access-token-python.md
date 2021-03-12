@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: aefad6670e937fcb7994688c8c6e846c3cab94e6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 42fbd1c89418bfe944d416f47a0a885c76f1f22a
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750706"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510875"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -70,6 +70,12 @@ connection_string = os.environ['COMMUNICATION_SERVICES_CONNECTION_STRING']
 client = CommunicationIdentityClient.from_connection_string(connection_string)
 ```
 
+Wenn Sie die verwaltete Identität eingerichtet haben, finden Sie unter [Verwenden verwalteter Identitäten](../managed-identity.md) weitere Informationen zum alternativen Authentifizierungsvorgang mit der verwalteten Identität.
+```python
+const endpoint = os.environ["COMMUNICATION_SERVICES_ENDPOINT"];
+var client = new CommunicationIdentityClient(endpoint, DefaultAzureCredential());
+```
+
 ## <a name="create-an-identity"></a>Erstellen einer Identität
 
 Von Azure Communication Services wird ein einfaches Identitätsverzeichnis gepflegt. Verwenden Sie die Methode `create_user`, um in dem Verzeichnis einen neuen Eintrag mit einer eindeutigen `Id` zu erstellen. Speichern Sie die empfangene Identität mit einer Zuordnung zu den Benutzern Ihrer Anwendung. Beispielsweise, indem Sie sie in der Datenbank des Anwendungsservers speichern. Die Identität ist später erforderlich, um Zugriffstoken auszustellen.
@@ -81,11 +87,11 @@ print("\nCreated an identity with ID: " + identity.identifier)
 
 ## <a name="issue-access-tokens"></a>Ausstellen von Zugriffstoken
 
-Verwenden Sie die Methode `issue_token`, um ein Zugriffstoken für eine bereits vorhandene Communication Services-Identität auszustellen. Der Parameter `scopes` definiert einen Satz primitiver Elemente, die dieses Zugriffstoken autorisieren. Weitere Informationen finden Sie in der [Liste der unterstützten Aktionen](../../concepts/authentication.md). Eine neue Instanz des Parameters `communicationUser` kann basierend auf der Zeichenfolgendarstellung der Azure Communication Service-Identität generiert werden.
+Verwenden Sie die Methode `get_token`, um ein Zugriffstoken für eine bereits vorhandene Communication Services-Identität auszustellen. Der Parameter `scopes` definiert einen Satz primitiver Elemente, die dieses Zugriffstoken autorisieren. Weitere Informationen finden Sie in der [Liste der unterstützten Aktionen](../../concepts/authentication.md). Eine neue Instanz des Parameters `CommunicationUserIdentifier` kann basierend auf der Zeichenfolgendarstellung der Azure Communication Service-Identität generiert werden.
 
 ```python
 # Issue an access token with the "voip" scope for an identity
-token_result = client.issue_token(identity, ["voip"])
+token_result = client.get_token(identity, ["voip"])
 expires_on = token_result.expires_on.strftime('%d/%m/%y %I:%M %S %p')
 print("\nIssued an access token with 'voip' scope that expires at " + expires_on + ":")
 print(token_result.token)
@@ -110,19 +116,19 @@ print(token)
 
 ## <a name="refresh-access-tokens"></a>Zugriffstoken für die Aktualisierung
 
-Verwenden Sie zum Aktualisieren eines Zugriffstokens das `CommunicationUser`-Objekt für die erneute Ausstellung:
+Verwenden Sie zum Aktualisieren eines Zugriffstokens das `CommunicationUserIdentifier`-Objekt für die erneute Ausstellung:
 
-```python  
+```python
 # Value existingIdentity represents identity of Azure Communication Services stored during identity creation
-identity = CommunicationUser(existingIdentity)
-token_result = client.issue_token( identity, ["voip"])
+identity = CommunicationUserIdentifier(existingIdentity)
+token_result = client.get_token( identity, ["voip"])
 ```
 
 ## <a name="revoke-access-tokens"></a>Widerrufen von Zugriffstoken
 
 In einigen Fällen können Sie Zugriffstoken explizit widerrufen. Beispielsweise dann, wenn der Benutzer einer Anwendung das Kennwort ändert, das für die Authentifizierung beim Dienst verwendet wird. Die Methode `revoke_tokens` erklärt alle aktiven Zugriffstoken für ungültig, die für die Identität ausgestellt wurden.
 
-```python  
+```python
 client.revoke_tokens(identity)
 print("\nSuccessfully revoked all access tokens for identity with ID: " + identity.identifier)
 ```

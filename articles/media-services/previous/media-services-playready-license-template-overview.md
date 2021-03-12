@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 8cdf5915396fc40c12644552bb24a044279ea32d
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 6bcf6b439f8e49d194e1c0ea5dc1e996135589cf
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019340"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454310"
 ---
 # <a name="media-services-playready-license-template-overview"></a>Media Services PlayReady-Lizenzvorlage – Übersicht
 
@@ -68,18 +68,18 @@ Ein End-to-End-Beispiel, in dem mit .NET-Klassen die PlayReady-Lizenzvorlage kon
 ## <a name="media-services-net-classes-that-are-used-to-configure-license-templates"></a><a id="classes"></a>Media Services-.NET-Klassen zum Konfigurieren von Lizenzvorlagen
 Die folgenden Klassen sind die wichtigsten .NET-Klassen zum Konfigurieren von PlayReady-Lizenzvorlagen für Media Services. Diese Klassen sind den im [XML-Schema für PlayReady-Lizenzvorlagen](media-services-playready-license-template-overview.md#schema)definierten Typen zugeordnet.
 
-Die [MediaServicesLicenseTemplateSerializer](/dotnet/api/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer?view=azure-dotnet#microsoft_windowsazure_mediaservices_client_contentkeyauthorization_mediaserviceslicensetemplateserializer) -Klasse wird zum Serialisieren und Deserialisieren in und aus dem XML-Code für die Media Services-Lizenzvorlage verwendet.
+Die [MediaServicesLicenseTemplateSerializer](/dotnet/api/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer#microsoft_windowsazure_mediaservices_client_contentkeyauthorization_mediaserviceslicensetemplateserializer) -Klasse wird zum Serialisieren und Deserialisieren in und aus dem XML-Code für die Media Services-Lizenzvorlage verwendet.
 
 ### <a name="playreadylicenseresponsetemplate"></a>PlayReadyLicenseResponseTemplate
-[PlayReadyLicenseResponseTemplate:](/dotnet/api/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate?view=azure-dotnet#microsoft_windowsazure_mediaservices_client_contentkeyauthorization_playreadylicenseresponsetemplate) Diese Klasse stellt die Vorlage für die Antwort dar, die an den Benutzer zurückgesendet wird. Sie enthält ein Feld für eine benutzerdefinierte Datenzeichenfolge zwischen dem Lizenzserver und der Anwendung (kann für benutzerdefinierte Anwendungslogik nützlich sein). Sie enthält auch eine Liste mit einer oder mehreren Lizenzvorlagen.
+[PlayReadyLicenseResponseTemplate:](/dotnet/api/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate#microsoft_windowsazure_mediaservices_client_contentkeyauthorization_playreadylicenseresponsetemplate) Diese Klasse stellt die Vorlage für die Antwort dar, die an den Benutzer zurückgesendet wird. Sie enthält ein Feld für eine benutzerdefinierte Datenzeichenfolge zwischen dem Lizenzserver und der Anwendung (kann für benutzerdefinierte Anwendungslogik nützlich sein). Sie enthält auch eine Liste mit einer oder mehreren Lizenzvorlagen.
 
 Als „Klasse auf oberster Ebene“ in der Vorlagenhierarchie enthält die Antwortvorlage eine Liste von Lizenzvorlagen. Die Lizenzvorlagen umfassen (direkt oder indirekt) alle anderen Klassen, aus denen sich die zu serialisierenden Vorlagendaten zusammensetzen.
 
 ### <a name="playreadylicensetemplate"></a>PlayReadyLicenseTemplate
-[PlayReadyLicenseTemplate:](/dotnet/api/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate?view=azure-dotnet#microsoft_windowsazure_mediaservices_client_contentkeyauthorization_playreadylicensetemplate) Diese Klasse stellt eine Lizenzvorlage zum Erstellen von PlayReady-Lizenzen dar, die an Benutzer zurückgegeben werden. Sie enthält die Daten zum Inhaltsschlüssel in der Lizenz. Sie enthält auch alle Rechte oder Einschränkungen, die die PlayReady DRM-Runtime bei der Verwendung des Inhaltsschlüssels durchsetzen muss.
+[PlayReadyLicenseTemplate:](/dotnet/api/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate#microsoft_windowsazure_mediaservices_client_contentkeyauthorization_playreadylicensetemplate) Diese Klasse stellt eine Lizenzvorlage zum Erstellen von PlayReady-Lizenzen dar, die an Benutzer zurückgegeben werden. Sie enthält die Daten zum Inhaltsschlüssel in der Lizenz. Sie enthält auch alle Rechte oder Einschränkungen, die die PlayReady DRM-Runtime bei der Verwendung des Inhaltsschlüssels durchsetzen muss.
 
 ### <a name="playreadyplayright"></a><a id="PlayReadyPlayRight"></a>PlayReadyPlayRight
-[PlayReadyPlayRight:](/dotnet/api/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright?view=azure-dotnet#microsoft_windowsazure_mediaservices_client_contentkeyauthorization_playreadyplayright) Diese Klasse stellt PlayRight für eine PlayReady-Lizenz dar. Sie gewährt dem Benutzer die Möglichkeit, Inhalte gemäß den Einschränkungen wiederzugeben, die in der Lizenz oder in PlayRight selbst (für wiedergabespezifische Richtlinien) konfiguriert wurden. Ein Großteil der Richtlinien für PlayRight betrifft Ausgabeeinschränkungen, die die Art der Ausgaben steuern, über die der Inhalt wiedergegeben werden kann. Sie enthält auch alle Einschränkungen, die bei der Verwendung einer bestimmten Ausgabe festgelegt werden müssen. Wenn z. B. „DigitalVideoOnlyContentRestriction“ aktiviert ist, erlaubt die DRM-Runtime nur die Anzeige des Videos über digitale Ausgänge. (Analogen Videoausgaben ist es nicht gestattet, Inhalte zu übergeben.)
+[PlayReadyPlayRight:](/dotnet/api/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright#microsoft_windowsazure_mediaservices_client_contentkeyauthorization_playreadyplayright) Diese Klasse stellt PlayRight für eine PlayReady-Lizenz dar. Sie gewährt dem Benutzer die Möglichkeit, Inhalte gemäß den Einschränkungen wiederzugeben, die in der Lizenz oder in PlayRight selbst (für wiedergabespezifische Richtlinien) konfiguriert wurden. Ein Großteil der Richtlinien für PlayRight betrifft Ausgabeeinschränkungen, die die Art der Ausgaben steuern, über die der Inhalt wiedergegeben werden kann. Sie enthält auch alle Einschränkungen, die bei der Verwendung einer bestimmten Ausgabe festgelegt werden müssen. Wenn z. B. „DigitalVideoOnlyContentRestriction“ aktiviert ist, erlaubt die DRM-Runtime nur die Anzeige des Videos über digitale Ausgänge. (Analogen Videoausgaben ist es nicht gestattet, Inhalte zu übergeben.)
 
 > [!IMPORTANT]
 > Dieser Einschränkungstypen können effektiv sein, aber auch die Benutzerfreundlichkeit beeinträchtigen. Wenn der Ausgabeschutz zu viele Einschränkungen aufweist, kann der Inhalt möglicherweise in einigen Clients nicht wiedergegeben werden. Weitere Informationen finden Sie unter den [Regeln zur PlayReady Compliance](https://www.microsoft.com/playready/licensing/compliance/).

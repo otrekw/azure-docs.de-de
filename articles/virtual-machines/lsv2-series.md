@@ -3,16 +3,16 @@ title: 'Lsv2-Serie: Azure Virtual Machines'
 description: Hier finden Sie Spezifikationen für die virtuellen Computer der Lsv2-Serie.
 author: sasha-melamed
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-storage
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 2416c0b4002f560e272393c95a86c543cb5f1009
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 787f9ada921e1580a34431568e87c41496b37f6a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097841"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563199"
 ---
 # <a name="lsv2-series"></a>Lsv2-Reihe
 
@@ -33,7 +33,7 @@ Die Lsv2-Reihe bietet direkt zugeordneten lokalen NVMe-Speicher mit hohem Durchs
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 Bursting: Unterstützt<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
-[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Nicht unterstützt <br>
+[Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
 <br>
 
 | Size | vCPU | Arbeitsspeicher (GiB) | Temporäre Datenträger<sup>1</sup> (GiB) | NVMe-Datenträger<sup>2</sup> | NVMe-Datenträgerdurchsatz<sup>3</sup> (Lese-IOPS/MBit/s) | Datenträgerdurchsatz ohne Cache (IOPS/MB/s)<sup>4</sup> | Maximaler Burst-Datenträgerdurchsatz ohne Cache: (IOPS/MB/s)<sup>5</sup>| Max. Anzahl Datenträger | Maximale Anzahl NICs | Erwartete Netzwerkbandbreite (MBit/s) |

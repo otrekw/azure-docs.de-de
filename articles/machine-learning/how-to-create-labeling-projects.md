@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 4b2777bfd9905a1caa8b69b78ff892b661e4dc4b
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 62801d40295762b0066f0d2887d7d528ee7b7c2a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097539"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656821"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen 
 
@@ -107,12 +107,9 @@ Wenn Sie dem Dataset neue Bilder hinzufügen möchten, verwenden Sie die inkreme
 
 Wenn Sie Ihrem Projekt weitere Bilder hinzufügen möchten, verwenden Sie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/), um sie in den entsprechenden Ordner im Blobspeicher hochzuladen. 
 
-Aktivieren Sie das Kontrollkästchen **Enable incremental refresh** (Inkrementelle Aktualisierung aktivieren), wenn das Projekt den Datenspeicher kontinuierlich auf neue Daten überwachen soll. Ist die Option aktiviert, werden diese Daten werden einmal pro Tag in Ihr Projekt gepullt.
+Aktivieren Sie das Kontrollkästchen **Enable incremental refresh** (Inkrementelle Aktualisierung aktivieren), wenn das Projekt den Datenspeicher kontinuierlich auf neue Daten überwachen soll. Bei Aktivierung der Option werden diese Daten einmal pro Tag in Ihr Projekt gepullt. Daher müssen Sie nach dem Hinzufügen neuer Daten zum Datenspeicher warten, bevor sie im Projekt angezeigt werden.  Im Abschnitt **Inkrementelle Aktualisierung** auf der Registerkarte **Details** können Sie für Ihr Projekt den Zeitstempel für die letzte Aktualisierung der Daten anzeigen.
 
 Deaktivieren Sie dieses Kontrollkästchen, wenn neue Bilder, die im Datenspeicher angezeigt werden, nicht dem Projekt hinzugefügt werden sollen.
-
-Den Zeitstempel der letzten Aktualisierung finden Sie auf der Registerkarte **Details** Ihres Projekts im Abschnitt **Inkrementelle Aktualisierung**.
-
 
 ## <a name="specify-label-classes"></a>Angeben von Beschriftungsklassen
 

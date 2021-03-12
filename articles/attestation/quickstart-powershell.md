@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3c908fffe93d657662310d4e91ed25ae28ca6908
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: cbc415411e05d6fdecee1acf2fbc02b3c170b9d6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429091"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501123"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Schnellstart: Einrichten von Azure Attestation mithilfe von Azure PowerShell
 
-Führen Sie die folgenden Schritte aus, um einen Nachweisanbieter mithilfe von Azure PowerShell einzurichten und zu konfigurieren. Weitere Informationen zum Installieren und Ausführen von Azure PowerShell finden Sie unter [Dokumentation zu Azure PowerShell](/powershell/azure/?view=azps-2.8.0&viewFallbackFrom=azps-2.4.0).
+Führen Sie die folgenden Schritte aus, um einen Nachweisanbieter mithilfe von Azure PowerShell einzurichten und zu konfigurieren. Weitere Informationen zum Installieren und Ausführen von Azure PowerShell finden Sie unter [Dokumentation zu Azure PowerShell](/powershell/azure/).
 
 Beachten Sie, dass im PowerShell-Katalog die TLS-Versionen (Transport Layer Security) 1.0 und 1.1 als veraltet markiert sind. Empfohlen wird TLS 1.2 oder eine höhere Version. Daher werden unter Umständen die folgenden Fehler angezeigt:
 
@@ -226,7 +226,7 @@ Beachten Sie, dass die gesamte semantische Bearbeitung des Signaturgeberzertifik
 
 Ein Beispiel für ein Signaturgeberzertifikat der Richtlinie finden Sie unter [Beispiele für ein Signaturgeberzertifikat einer Nachweisrichtlinie](policy-signer-examples.md).
 
-Weitere Informationen zu den Cmdlets und den zugehörigen Parametern finden Sie im Artikel mit den [PowerShell-Cmdlets für Azure Attestation](/powershell/module/az.attestation/?view=azps-4.3.0#attestation). 
+Weitere Informationen zu den Cmdlets und den zugehörigen Parametern finden Sie im Artikel mit den [PowerShell-Cmdlets für Azure Attestation](/powershell/module/az.attestation/#attestation). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

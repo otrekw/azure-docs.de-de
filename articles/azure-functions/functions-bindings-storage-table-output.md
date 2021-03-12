@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4af29df27a109a9e1e26a720c190ab9d119fc4d1
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: f793f96f55a258b2d7cb11f214984416557618df
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033794"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453001"
 ---
 # <a name="azure-table-storage-output-bindings-for-azure-functions"></a>Azure Table Storage-Ausgabebindungen für Azure Functions
 
@@ -418,7 +418,7 @@ Alternativ können Sie einen `CloudTable`-Methodenparameter verwenden, um unter 
 
 # <a name="java"></a>[Java](#tab/java)
 
-Es gibt zwei Optionen für das Ausgeben einer Tabellenspeicherzeile aus einer Funktion mittels der [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet&preserve-view=true)-Anmerkung:
+Es gibt zwei Optionen für das Ausgeben einer Tabellenspeicherzeile aus einer Funktion mittels der [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput)-Anmerkung:
 
 - **Rückgabewert**: Wenn Sie die Anmerkung auf die Funktion selbst anwenden, wird der Rückgabewert der Funktion als Tabellenspeicherzeile beibehalten.
 
@@ -438,7 +438,7 @@ Es gibt zwei Optionen für das Ausgeben einer Tabellenspeicherzeilen-Nachricht a
 
 - **Rückgabewert**: Legen Sie die Eigenschaft `name` in *function.json* auf `$return` fest. Mit dieser Konfiguration wird der Rückgabewert der Funktion als Tabellenspeicherzeile beibehalten.
 
-- **Imperativ**: Übergeben Sie einen Wert an die [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none)-Methode des Parameters, der als [Out](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true)-Typ deklariert ist. Der an `set` übergebene Wert wird als Event Hub-Nachricht beibehalten.
+- **Imperativ**: Übergeben Sie einen Wert an die [set](/python/api/azure-functions/azure.functions.out#set-val--t-----none)-Methode des Parameters, der als [Out](/python/api/azure-functions/azure.functions.out)-Typ deklariert ist. Der an `set` übergebene Wert wird als Event Hub-Nachricht beibehalten.
 
 ---
 

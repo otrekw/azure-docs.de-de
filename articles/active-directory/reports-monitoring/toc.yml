@@ -98,9 +98,9 @@
     - name: Azure AD PowerShell-Cmdlets für die Berichterstellung
       href: reference-powershell-reporting.md
     - name: API-Referenz zu Überwachungsprotokollen
-      href: /graph/api/resources/directoryaudit?view=graph-rest-1.0
+      href: /graph/api/resources/directoryaudit
     - name: API-Referenz zu Anmeldeprotokollen
-      href: /graph/api/resources/signin?view=graph-rest-1.0
+      href: /graph/api/resources/signin
     - name: Überwachungsaktivitäten
       href: reference-audit-activities.md
     - name: Datenaufbewahrungsrichtlinien

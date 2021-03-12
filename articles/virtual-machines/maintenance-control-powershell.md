@@ -3,16 +3,17 @@ title: Steuerung der Wartung für virtuelle Azure-Computer mithilfe von PowerShe
 description: Erfahren Sie, wie Sie die Wartung steuern, wenn diese mithilfe der Wartungssteuerung und PowerShell auf Ihre virtuellen Azure-Computer angewendet wird.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: 2cc935e81e867609159b5c150b6ee7c346bb9f8e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2868d559f0d848095fa7fec174e09e1b9376c4ae
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026147"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552455"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Steuern von Updates mit der Wartungssteuerung und Azure PowerShell
 
