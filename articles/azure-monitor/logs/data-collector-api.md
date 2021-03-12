@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: 8c5b4eac17b4c7ae9b4081d0eb9118285dc74bd5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e32bf95ef52fdd081eeaa476f44bf5dab99657d6
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030952"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452117"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API (Public Preview)
 In diesem Artikel wird gezeigt, wie Sie die HTTP-Datensammler-API verwenden, um Protokolldaten von einem REST-API-Client an Azure Monitor zu senden.  Es wird beschrieben, wie die von Ihrem Skript oder Ihrer Anwendung gesammelten Daten formatiert und in eine Anforderung eingefügt werden müssen, um diese dann von Azure Monitor autorisieren zu lassen.  Die Beispiele werden für PowerShell, C# und Python angegeben.
@@ -650,7 +650,7 @@ Während die Datensammler-API die meisten Ihrer Anforderungen an die Erfassung v
 |---|---|---|
 | [Benutzerdefinierte Ereignisse](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): Native SDK-basierte Erfassung in Application Insights | Application Insights, das in der Regel über ein SDK in Ihrer Anwendung instrumentiert wird, bietet die Möglichkeit, benutzerdefinierte Daten über benutzerdefinierte Ereignisse zu senden. | <ul><li> Daten, die innerhalb Ihrer Anwendung erzeugt, aber nicht vom SDK über einen der Standarddatentypen (Anforderungen, Abhängigkeiten, Ausnahmen usw.) abgeholt werden.</li><li> Daten, die am häufigsten mit anderen Anwendungsdaten in Application Insights korreliert werden </li></ul> |
 | Datensammler-API in Azure Monitor-Protokollen | Die Datensammler-API in Azure Monitor-Protokollen ist eine völlig offene Methode zur Datenerfassung. Alle in einem JSON-Objekt formatierten Daten können hier gesendet werden. Nachdem sie gesendet wurden, werden sie verarbeitet und stehen in Protokollen zur Verfügung, um mit anderen Daten in Protokollen oder mit anderen Application Insights-Daten korreliert zu werden. <br/><br/> Es ist ziemlich einfach, die Daten als Dateien auf einen Azure Blob-Blob hochzuladen, von wo aus diese Dateien verarbeitet und an Log Analytics hochgeladen werden. Eine Beispielimplementierung einer derartigen Pipeline finden Sie in [diesem](./create-pipeline-datacollector-api.md) Artikel. | <ul><li> Daten, die nicht notwendigerweise innerhalb einer Anwendung generiert werden, die innerhalb von Application Insights instrumentiert wird.</li><li> Beispiele sind Lookup- und Faktentabellen, Referenzdaten, vorab aggregierte Statistiken usw. </li><li> Vorgesehen für Daten, auf die mit anderen Azure Monitor-Daten über Querverweise verwiesen wird (Application Insights, andere Protokolldatentypen, Security Center, Container Insights/VMs usw.). </li></ul> |
-| [Azure Data Explorer](/azure/data-explorer/ingest-data-overview) | Azure Data Explorer (ADX) ist die Datenplattform, die Application Insights Analytics und Azure Monitor Logs unterstützt. Jetzt „allgemein verfügbar“ (GA): Die Verwendung der Datenplattform im Rohformat bietet Ihnen die volle Flexibilität (erfordert aber den Verwaltungsmehraufwand) über den Cluster (Kubernetes RBAC, Bindungsrate, Schema usw.). ADX bietet viele [Erfassungsoptionen](/azure/data-explorer/ingest-data-overview#ingestion-methods) einschließlich [CSV-, TSV- und JSON-](/azure/kusto/management/mappings?branch=master)Dateien. | <ul><li> Daten, die nicht mit anderen Daten unter Application Insights oder in Protokollen korreliert werden. </li><li> Daten, die erweiterte Erfassungs- oder Verarbeitungsfunktionen erfordern, die heute nicht in Azure Monitor Logs verfügbar sind. </li></ul> |
+| [Azure Data Explorer](/azure/data-explorer/ingest-data-overview) | Azure Data Explorer (ADX) ist die Datenplattform, die Application Insights Analytics und Azure Monitor Logs unterstützt. Jetzt „allgemein verfügbar“ (GA): Die Verwendung der Datenplattform im Rohformat bietet Ihnen die volle Flexibilität (erfordert aber den Verwaltungsmehraufwand) über den Cluster (Kubernetes RBAC, Bindungsrate, Schema usw.). ADX bietet viele [Erfassungsoptionen](/azure/data-explorer/ingest-data-overview#ingestion-methods) einschließlich [CSV-, TSV- und JSON-](/azure/kusto/management/mappings)Dateien. | <ul><li> Daten, die nicht mit anderen Daten unter Application Insights oder in Protokollen korreliert werden. </li><li> Daten, die erweiterte Erfassungs- oder Verarbeitungsfunktionen erfordern, die heute nicht in Azure Monitor Logs verfügbar sind. </li></ul> |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

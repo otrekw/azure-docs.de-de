@@ -359,7 +359,7 @@
           href: template-expressions.md
         - name: Parameter
           href: template-parameters.md
-        - name: Variables
+        - name: Variablen
           href: template-variables.md
         - name: Benutzerdefinierte Funktionen
           href: template-user-defined-functions.md
@@ -556,7 +556,7 @@
     - name: Java
       href: /java/api/com.microsoft.azure.management.resources
     - name: Python
-      href: /python/api/overview/azure/resources?view=azure-python
+      href: /python/api/overview/azure/resources
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

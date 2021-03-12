@@ -3,17 +3,17 @@ title: Größen von Azure-VMs – für Compute optimiert | Microsoft-Dokumentati
 description: Auflistung der verschiedenen für Compute optimierten Größen, die für virtuelle Computer in Azure verfügbar sind Dieser Artikel listet Informationen zur Anzahl von vCPUs, Datenträgern und Netzwerkschnittstellenkarten sowie zum Speicherdurchsatz und zur Netzwerkbandbreite für Größen dieser Serie auf.
 author: mimckitt
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-compute
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 58ade8dfdde2c906cbe7c61a232f2643708e19b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01eba7bff571a8db25591b8bfa5c5e712511588f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87832466"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557691"
 ---
 # <a name="compute-optimized-virtual-machine-sizes"></a>Compute-optimierte VM-Größen
 
@@ -36,4 +36,4 @@ Die Fsv2-Serie hat einen niedrigeren Listenpreis pro Stunde und bietet auf Basis
 
 Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](acu.md) die Computeleistung von Azure-SKUs vergleichen können.
 
-Weitere Informationen dazu, wie VM-Namen in Azure zugewiesen werden, finden Sie unter [Namenskonventionen für Azure-VM-Größen](./vm-naming-conventions.md).
+Weitere Informationen zur Benennung von VMs in Azure finden Sie unter [Namenskonventionen für Azure-VM-Größen](./vm-naming-conventions.md).

@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/01/2020
+ms.date: 03/03/2020
 ms.author: alkohli
-ms.openlocfilehash: 4026bac9818b14c33c05d99caff4052adad196c3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 95fbe5dc4a934fee10c558f640bc24f261203a33
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743476"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102443514"
 ---
 # <a name="reset-and-reactivate-your-azure-stack-edge-pro-device"></a>Zurücksetzen und Reaktivieren Ihres Azure Stack Edge Pro-Geräts
 
@@ -32,7 +32,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="reset-data-from-the-device"></a>Zurücksetzen von Daten auf dem Gerät
 
-Um die Daten von den Datenträgern Ihres Geräts zu löschen, müssen Sie Ihr Gerät zurücksetzen. 
+Um die Daten von den Datenträgern Ihres Geräts zu löschen, müssen Sie Ihr Gerät zurücksetzen.
 
 Erstellen Sie bei Bedarf vor dem Zurücksetzen eine Kopie der lokalen Daten auf dem Gerät. Sie können die Daten vom Gerät in einen Azure Storage-Container kopieren.
 
@@ -41,7 +41,7 @@ Erstellen Sie bei Bedarf vor dem Zurücksetzen eine Kopie der lokalen Daten auf 
 
 Sie können Ihr Gerät über die lokale Webbenutzeroberfläche oder in PowerShell zurücksetzen. PowerShell-Anweisungen finden Sie unter [Zurücksetzen Ihres Geräts](./azure-stack-edge-connect-powershell-interface.md#reset-your-device).
 
-[!INCLUDE] [Zurücksetzen von Daten auf dem Gerät](../../includes/azure-stack-edge-device-reset.md)
+[!INCLUDE [Reset data from the device](../../includes/azure-stack-edge-device-reset.md)]
 
 ## <a name="reactivate-device"></a>Reaktivieren eines Geräts
 
@@ -49,11 +49,11 @@ Nachdem Sie das Gerät zurückgesetzt haben, müssen Sie es als neue Ressource r
 
 Führen Sie zum Reaktivieren Ihres vorhandenen Geräts die folgenden Schritte aus:
 
-1. Erstellen Sie einen neuen Auftrag für das vorhandene Gerät, indem Sie die Schritte in [Erstellen einer neuen Ressource](azure-stack-edge-gpu-deploy-prep?tabs=azure-portal#create-a-new-resource) ausführen. Wählen Sie auf der Registerkarte **Versandadresse** die Option **Ich habe bereits ein Gerät** aus.
+1. Erstellen Sie einen neuen Auftrag für das vorhandene Gerät, indem Sie die Schritte in [Erstellen einer neuen Ressource](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource) ausführen. Wählen Sie auf der Registerkarte **Versandadresse** die Option **Ich habe bereits ein Gerät** aus.
 
    ![In der Versandadresse kein neues Gerät angeben](./media/azure-stack-edge-reset-reactivate-device/create-resource-with-no-new-device.png)
 
-1. [Rufen Sie den Aktivierungsschlüssel ab](azure-stack-edge-gpu-deploy-prep?tabs=azure-portal#get-the-activation-key).
+1. [Rufen Sie den Aktivierungsschlüssel ab](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#get-the-activation-key).
 
 1. [Stellen Sie eine Verbindung mit dem Gerät her](azure-stack-edge-gpu-deploy-connect.md).
 
@@ -63,7 +63,7 @@ Führen Sie zum Reaktivieren Ihres vorhandenen Geräts die folgenden Schritte au
 
 1. [Konfigurieren Sie Zertifikate](azure-stack-edge-gpu-deploy-configure-certificates.md).
 
-1. [Aktivieren Sie das Gerät](databox-online/azure-stack-edge-gpu-deploy-activate.md).
+1. [Aktivieren Sie das Gerät](azure-stack-edge-gpu-deploy-activate.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

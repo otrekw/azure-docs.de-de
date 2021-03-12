@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 5a00ba8000f33e8e50b1a5d01f40a68a7fe2442d
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 187c1e60d97e0bebb3b6216b0055ddffe6e6cb4c
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956190"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454380"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Anforderungen und Konfiguration der Apple FairPlay-Lizenz
 
@@ -86,7 +86,7 @@ FairPlay-Lizenzen können mithilfe von Media Services-APIs konfiguriert werden. 
 > [!NOTE]
 > Üblicherweise sollten Sie FairPlay-Richtlinienoptionen nur einmal konfigurieren, da Sie nur einen Satz aus Zertifikat und ASK haben.
 
-Im folgenden Beispiel wird das [Media Services .NET SDK](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) für die Lizenzkonfiguration verwendet.
+Im folgenden Beispiel wird das [Media Services .NET SDK](/dotnet/api/microsoft.azure.management.media.models) für die Lizenzkonfiguration verwendet.
 
 ```csharp
 private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOptions()

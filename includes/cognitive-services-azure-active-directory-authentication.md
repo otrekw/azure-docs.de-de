@@ -4,17 +4,17 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: 1085daca153431a28fdcc2583d0e31308214bf91
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 2d186463f340be14113228baa583fdcf6ff55401
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95562083"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510914"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Authentifizieren mit Azure Active Directory
 
 > [!IMPORTANT]
-> 1. Derzeit unterstützen **nur** Maschinelles Sehen-API, Gesichtserkennungs-API, Textanalyse-API, Plastischer Reader, Formularerkennung, Anomalieerkennung und alle Bing-Dienste mit Ausnahme der benutzerdefinierten Bing-Suche die Authentifizierung mit Azure Active Directory (AAD).
+> 1. Derzeit unterstützen **nur** Maschinelles Sehen-API, Gesichtserkennungs-API, Textanalyse-API, Plastischer Reader, Formularerkennung, Anomalieerkennung, QnA Maker und alle Bing-Dienste mit Ausnahme der benutzerdefinierten Bing-Suche die Authentifizierung mit Azure Active Directory (AAD).
 > 2. Die AAD-Authentifizierung muss immer mit dem Namen der benutzerdefinierten Unterdomäne Ihrer Azure-Ressource verwendet werden. [Regionale Endpunkte](../articles/cognitive-services/cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) unterstützen die AAD-Authentifizierung nicht.
 
 In den vorherigen Abschnitten haben wir Ihnen gezeigt, wie die Authentifizierung bei Azure Cognitive Services mit einem Abonnementschlüssel für einen einzelnen Dienst oder für mehrere Dienste funktioniert. Diese Schlüssel ermöglichen zwar einen schnellen und einfachen Einstieg in die Entwicklung, eignen sich aber nicht für komplexere Szenarien, die eine rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) erfordern. Sehen wir uns an, was für die Authentifizierung über Azure Active Directory (AAD) erforderlich ist.
@@ -25,13 +25,13 @@ In den folgenden Abschnitten verwenden Sie entweder die Azure Cloud Shell-Umgebu
 
 Der erste Schritt besteht darin, eine benutzerdefinierte Unterdomäne zu erstellen. Wenn Sie eine vorhandene Cognitive Services-Ressource verwenden möchten, die nicht über einen benutzerdefinierten Unterdomänennamen verfügt, befolgen Sie die Anweisungen in [Benutzerdefinierte Unterdomänennamen für Cognitive Services](../articles/cognitive-services/cognitive-services-custom-subdomains.md#how-does-this-impact-existing-resources), um die benutzerdefinierte Unterdomäne für Ihre Ressource zu aktivieren.
 
-1. Öffnen Sie als Erstes die Azure Cloud Shell. [Wählen Sie dann ein Abonnement aus](/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0):
+1. Öffnen Sie als Erstes die Azure Cloud Shell. [Wählen Sie dann ein Abonnement aus](/powershell/module/az.accounts/set-azcontext):
 
    ```powershell-interactive
    Set-AzContext -SubscriptionName <SubscriptionName>
    ```
 
-2. Als Nächstes [erstellen Sie eine Cognitive Services-Ressource](/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) mit einer benutzerdefinierten Unterdomäne. Der Name der Unterdomäne muss global eindeutig sein und darf einige Zeichen nicht enthalten, wie z.B. „.“, „!“ oder „,“.
+2. Als Nächstes [erstellen Sie eine Cognitive Services-Ressource](/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount) mit einer benutzerdefinierten Unterdomäne. Der Name der Unterdomäne muss global eindeutig sein und darf einige Zeichen nicht enthalten, wie z.B. „.“, „!“ oder „,“.
 
    ```powershell-interactive
    $account = New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <ACCOUNT_NAME> -Type <ACCOUNT_TYPE> -SkuName <SUBSCRIPTION_TYPE> -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
@@ -47,7 +47,7 @@ Nachdem Sie nun über eine Unterdomäne verfügen, die Ihrer Ressource zugeordne
 > [!NOTE]
 > Denken Sie daran, dass die Weitergabe von Azure-Rollenzuweisungen bis zu fünf Minuten dauern kann.
 
-1. Als Erstes registrieren Sie eine [AAD-Anwendung](/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0).
+1. Als Erstes registrieren Sie eine [AAD-Anwendung](/powershell/module/Az.Resources/New-AzADApplication).
 
    ```powershell-interactive
    $SecureStringPassword = ConvertTo-SecureString -String <YOUR_PASSWORD> -AsPlainText -Force
@@ -57,7 +57,7 @@ Nachdem Sie nun über eine Unterdomäne verfügen, die Ihrer Ressource zugeordne
 
    Im nächsten Schritt benötigen Sie die **ApplicationId**.
 
-2. Als Nächstes müssen Sie einen [Dienstprinzipal](/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) für die AAD-Anwendung erstellen.
+2. Als Nächstes müssen Sie einen [Dienstprinzipal](/powershell/module/az.resources/new-azadserviceprincipal) für die AAD-Anwendung erstellen.
 
    ```powershell-interactive
    New-AzADServicePrincipal -ApplicationId <APPLICATION_ID>
@@ -66,7 +66,7 @@ Nachdem Sie nun über eine Unterdomäne verfügen, die Ihrer Ressource zugeordne
    >[!NOTE]
    > Wenn Sie eine Anwendung im Azure-Portal registrieren, wird dieser Schritt für Sie ausgeführt.
 
-3. Der letzte Schritt besteht darin, dem Dienstprinzipal (im Bereich der Ressource) [die Rolle „Cognitive Services-Benutzer“ zuzuweisen](/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0). Durch Zuweisen einer Rolle gewähren Sie dem Dienstprinzipal Zugriff auf diese Ressource. Sie können einem Dienstprinzipal Zugriff auf mehrere Ressourcen in Ihrem Abonnement gewähren.
+3. Der letzte Schritt besteht darin, dem Dienstprinzipal (im Bereich der Ressource) [die Rolle „Cognitive Services-Benutzer“ zuzuweisen](/powershell/module/az.Resources/New-azRoleAssignment). Durch Zuweisen einer Rolle gewähren Sie dem Dienstprinzipal Zugriff auf diese Ressource. Sie können einem Dienstprinzipal Zugriff auf mehrere Ressourcen in Ihrem Abonnement gewähren.
    >[!NOTE]
    > Es wird die ObjectId des Dienstprinzipals verwendet, nicht die ObjectId der Anwendung.
    > Die ACCOUNT_ID entspricht der Azure-Ressourcen-ID des Cognitive Services-Kontos, das Sie erstellt haben. Die Azure-Ressourcen-ID finden Sie unter den Eigenschaften der jeweiligen Ressource im Azure-Portal.
