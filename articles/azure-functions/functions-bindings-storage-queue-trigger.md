@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 59cedb25295770ba4ae4a33aac3287c5fed1297d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f4477a09f151695b826d0becf28e92ceaf3f9e85
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381493"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453205"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Queue Storage-Trigger für Azure Functions
 
@@ -407,7 +407,7 @@ Beispiele für die Verwendung dieser Typen finden Sie im [GitHub-Repository für
 
 # <a name="java"></a>[Java](#tab/java)
 
-Die [QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable&preserve-view=true)-Anmerkung gewährt Ihnen Zugriff auf die Warteschlangennachricht, die die Funktion ausgelöst hat.
+Die [QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger)-Anmerkung gewährt Ihnen Zugriff auf die Warteschlangennachricht, die die Funktion ausgelöst hat.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -419,7 +419,7 @@ Greifen Sie auf die Warteschlangennachricht über einen Zeichenfolgenparameter z
 
 # <a name="python"></a>[Python](#tab/python)
 
-Greifen Sie über den Parameter, der als [QueueMessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python&preserve-view=true) typisiert ist, auf die Warteschlangennachricht zu.
+Greifen Sie über den Parameter, der als [QueueMessage](/python/api/azure-functions/azure.functions.queuemessage) typisiert ist, auf die Warteschlangennachricht zu.
 
 ---
 
@@ -427,7 +427,7 @@ Greifen Sie über den Parameter, der als [QueueMessage](/python/api/azure-functi
 
 Der Warteschlangentrigger stellt mehrere [Metadateneigenschaften](./functions-bindings-expressions-patterns.md#trigger-metadata) bereit. Diese Eigenschaften können als Teil der Bindungsausdrücke in anderen Bindungen oder als Parameter im Code verwendet werden. Die Eigenschaften sind Elemente der [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage)-Klasse.
 
-|Eigenschaft|type|BESCHREIBUNG|
+|Eigenschaft|Typ|BESCHREIBUNG|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Die Warteschlangennutzlast (bei einer gültigen Zeichenfolge). Handelt es sich bei der Warteschlangennutzlast um eine Zeichenfolge, hat `QueueTrigger` den gleichen Wert wie die Variable, die durch die Eigenschaft `name` in *function.json* benannt wird.|
 |`DequeueCount`|`int`|Gibt an, wie oft diese Nachricht aus der Warteschlange entfernt wurde.|

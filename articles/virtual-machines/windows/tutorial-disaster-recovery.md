@@ -2,18 +2,19 @@
 title: 'Tutorial: Einrichten der Notfallwiederherstellung für Windows-VMs mit Azure Site Recovery'
 description: Erfahren Sie, wie Sie die Notfallwiederherstellung für Windows-VMs in eine andere Azure-Region mit dem Dienst „Azure Site Recovery“ aktivieren.
 author: rayne-wiselman
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.subservice: recovery
 ms.topic: tutorial
 ms.date: 11/05/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 53cc0b820bd2ffb9fc28b37f44bb71a7b9d3cd30
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: e9f44ea2af832729a47bf4b719b90f9b14e401b9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379932"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555855"
 ---
 # <a name="tutorial-enable-disaster-recovery-for-windows-vms"></a>Tutorial: Aktivieren der Notfallwiederherstellung für Windows-VMs
 
@@ -24,7 +25,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie die Notfallwiederherstellung f�
 > * Durchführen einer Notfallwiederherstellungsübung
 > * Beenden der Replikation des virtuellen Computers nach dem Übungslauf
 
-Wenn Sie die Replikation für eine VM aktivieren, wird darauf die Site Recovery Mobility Service-Erweiterung installiert und die Registrierung bei [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) durchgeführt. Während der Replikation werden Schreibvorgänge des VM-Datenträgers an ein Cachespeicherkonto in der Quellregion gesendet. Daten werden vor dort aus in die Zielregion gesendet, und aus den Daten werden Wiederherstellungspunkte generiert.  Wenn Sie während der Notfallwiederherstellung ein Failover für eine VM ausführen, wird ein Wiederherstellungspunkt genutzt, um die VM in der Zielregion wiederherzustellen.
+Wenn Sie die Replikation für eine VM aktivieren, wird darauf die Site Recovery Mobility Service-Erweiterung installiert und die Registrierung bei [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) durchgeführt. Während der Replikation werden Schreibvorgänge des VM-Datenträgers an ein Cachespeicherkonto in der Quellregion gesendet. Daten werden von dort aus in die Zielregion gesendet, und aus den Daten werden Wiederherstellungspunkte generiert.  Wenn Sie während der Notfallwiederherstellung ein Failover für eine VM ausführen, wird ein Wiederherstellungspunkt genutzt, um die VM in der Zielregion wiederherzustellen.
 
 Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/), bevor Sie beginnen.
 
@@ -52,8 +53,8 @@ Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](h
     **Tag** | **Zulassen** 
     --- | --- 
     Storage-Tag | Ermöglicht das Schreiben von Daten von der VM in das Cachespeicherkonto.
-    Azure AD-Tag | Ermöglicht den Zugriff auf alle IP-Adressen, die zu Azure AD gehören.
-    EventsHub-Tag | Ermöglicht den Zugriff auf die Site Recovery-Überwachung.
+    Azure AD-Tag | Ermöglicht den Zugriff auf alle IP-Adressen, die zu Azure AD gehören.
+    EventsHub-Tag | Ermöglicht den Zugriff auf die Site Recovery-Überwachung.
     AzureSiteRecovery-Tag | Ermöglicht den Zugriff auf den Site Recovery-Dienst in beliebigen Regionen.
     GuestAndHybridManagement | Ermöglicht die Durchführung von automatischen Upgrades des Mobilitäts-Agents von Site Recovery, der auf VMs mit Aktivierung für die Replikation ausgeführt wird.
 5.  Installieren Sie auf Windows-VMs die neuesten Windows-Updates, um sicherzustellen, dass die VMs über die neuesten Stammzertifikate verfügen.

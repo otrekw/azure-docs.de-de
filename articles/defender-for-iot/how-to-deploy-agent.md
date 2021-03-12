@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 2634ed819b8818632c58b9e471b0f26190e5f16b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 89ecf26778433a3f075f76905183f3fe866cb5db
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339964"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447264"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Auswählen und Bereitstellen eines Sicherheits-Agents auf Ihrem IoT-Gerät
 
@@ -28,11 +28,9 @@ Weitere Informationen finden Sie unter [Sicherheits-Agent-Referenzarchitektur](s
 Agents werden als Open-Source-Projekte entwickelt und sind in zwei Varianten verfügbar: <br> [C](https://aka.ms/iot-security-github-c) und [C#](https://aka.ms/iot-security-github-cs).
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
-
-> [!div class="checklist"]
-> * Vergleichen der Varianten von Sicherheits-Agents
-> * Identifizieren der unterstützten Agent-Plattformen
-> * Auswählen der passenden Agent-Variante für Ihre Lösung
+- Vergleichen der Varianten von Sicherheits-Agents
+- Identifizieren der unterstützten Agent-Plattformen
+- Auswählen der passenden Agent-Variante für Ihre Lösung
 
 ## <a name="understand-security-agent-options"></a>Grundlegendes zu den Varianten des Sicherheits-Agents
 
