@@ -1,7 +1,7 @@
 ---
 title: Neuerungen bei externen Azure Active Directory-Identitäten
 description: Neue und aktualisierte Dokumentation für externe Azure Active Directory-Identitäten
-ms.date: 02/01/2021
+ms.date: 03/08/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,39 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: e0daa5b1c8d3fcc749f10e48e453ca8f92607643
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: dda3f7c8f4a9a21e16ebab7d243a004c01a40eed
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591700"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453664"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Externe Azure Active Directory-Identitäten: Neuerungen
 
 Hier erfahren Sie mehr über die Neuerungen in der Dokumentation für die externen Azure Active Directory-Identitäten. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden. Informationen zu den Neuerungen beim Dienst für externe Identitäten finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="february-2021"></a>Februar 2021
+
+### <a name="new-articles"></a>Neue Artikel
+
+- [Zurücksetzen des Einlösestatus für einen Gastbenutzer](reset-redemption-status.md)
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Best Practices für B2B-Funktionen in Azure Active Directory](b2b-fundamentals.md)
+- [Aktivieren der externen B2B-Zusammenarbeit und Verwalten, wer Gäste einladen kann](delegate-invitations.md)
+- [Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit](faq.md)
+- [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md)
+- [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](redemption-experience.md)
+- [Problembehandlung für die Azure Active Directory B2B-Zusammenarbeit](troubleshoot.md)
+- [Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers](user-properties.md)
+- [Was ist der Gastzugriff in Azure Active Directory B2B?](what-is-b2b.md)
+- [Externe Azure Active Directory-Identitäten: Neuerungen](whats-new-docs.md)
+- [Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen](allow-deny-list.md)
+- [Azure Active Directory B2B-Zusammenarbeit: API und Anpassung](customize-invitation-api.md)
+- [Einladen von internen Benutzern zur B2B-Zusammenarbeit](invite-internal-users.md)
+- [Externe Microsoft 365-Freigaben und Azure Active Directory B2B-Zusammenarbeit](o365-external-user.md)
+- [Direkter Verbund mit AD FS und Drittanbietern für Gastbenutzer (Preview)](direct-federation.md)
 
 ## <a name="january-2021"></a>Januar 2021
 

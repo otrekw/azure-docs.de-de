@@ -2,18 +2,19 @@
 title: 'Tutorial: Einrichten der Notfallwiederherstellung für Linux-VMs mit Azure Site Recovery'
 description: Erfahren Sie, wie Sie die Notfallwiederherstellung für Linux-VMs in eine andere Region mit dem Dienst „Azure Site Recovery“ durchführen.
 author: rayne-wiselman
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.subservice: recovery
 ms.topic: tutorial
 ms.date: 11/05/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d14d276c798e40d417a8038aee5b7550e84f4114
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: fa43f40d4849a8e773241fa17a1e1787ce86a8ff
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379857"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564746"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-linux-virtual-machines"></a>Tutorial: Einrichten der Notfallwiederherstellung für virtuelle Linux-Computer
 
@@ -53,8 +54,8 @@ Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](h
     **Tag** | **Zulassen** 
     --- | --- 
     Storage-Tag | Ermöglicht das Schreiben von Daten von der VM in das Cachespeicherkonto.
-    Azure AD-Tag | Ermöglicht den Zugriff auf alle IP-Adressen, die zu Azure AD gehören.
-    EventsHub-Tag | Ermöglicht den Zugriff auf die Site Recovery-Überwachung.
+    Azure AD-Tag | Ermöglicht den Zugriff auf alle IP-Adressen, die zu Azure AD gehören.
+    EventsHub-Tag | Ermöglicht den Zugriff auf die Site Recovery-Überwachung.
     AzureSiteRecovery-Tag | Ermöglicht den Zugriff auf den Site Recovery-Dienst in beliebigen Regionen.
     GuestAndHybridManagement | Ermöglicht die Durchführung von automatischen Upgrades des Mobilitäts-Agents von Site Recovery, der auf VMs mit Aktivierung für die Replikation ausgeführt wird.
 5. Stellen Sie sicher, dass die VMs über die aktuellen Stammzertifikate verfügen. Befolgen Sie auf virtuellen Linux-Computern die Anleitung Ihres Linux-Distributors, um die aktuellen vertrauenswürdigen Stammzertifikate und die Zertifikatsperrliste für den virtuellen Computer abzurufen.

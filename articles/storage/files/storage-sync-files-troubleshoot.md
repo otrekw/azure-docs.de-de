@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 534f9e76cfca4037634cfca089f1131984456636
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f54156ed8cc4c049e10bada77a66eee084f7c5fb
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820703"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453273"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -74,8 +74,8 @@ Um das Az- oder AzureRM-Module in PowerShell 5.1 zu installieren, führen Sie di
 
 1. Geben Sie an einer Eingabeaufforderung mit erhöhten Rechten die Zeichenfolge **powershell** ein, und drücken Sie die EINGABETASTE.
 2. Installieren Sie das neueste Az- oder AzureRM-Modul anhand der folgenden Dokumentation:
-    - [Az-Modul (erfordert .NET 4.7.2)](/powershell/azure/install-az-ps?viewFallbackFrom=azps-1.1.0)
-    - [AzureRM-Modul]( https://go.microsoft.com/fwlink/?linkid=856959)
+    - [Az-Modul (erfordert .NET 4.7.2)](/powershell/azure/install-az-ps)
+    - [AzureRM-Modul](https://go.microsoft.com/fwlink/?linkid=856959)
 3. Führen Sie „ServerRegistration.exe“ aus, und schließen Sie den Assistenten ab, um den Server bei einem Storage-Synchronisierungsdienst zu registrieren.
 
 <a id="server-already-registered"></a>**Die Serverregistrierung zeigt die folgende Meldung an: „Dieser Server ist bereits registriert.“** 

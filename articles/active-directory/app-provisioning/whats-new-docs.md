@@ -1,7 +1,7 @@
 ---
 title: Neuerungen bei der Azure Active Directory-Anwendungsbereitstellung
 description: Neue und aktualisierte Dokumentation für die Azure Active Directory-Anwendungsbereitstellung
-ms.date: 02/01/2021
+ms.date: 03/08/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,27 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: a127552c47b9e1ee86d2164926971c8628367dc0
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: abee58607a5492548e4d64f44c15fd365876f3f5
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256000"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453680"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory-Anwendungsbereitstellung: Neues
 
 Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Active Directory-Anwendungsbereitstellung. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden. Informationen zu den Neuerungen beim Bereitstellungsdienst finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="february-2021"></a>Februar 2021
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Integration der Azure Active Directory-Bereitstellung mit Workday](workday-integration-reference.md)
+- [Tutorial: Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](customize-application-attributes.md)
+- [Was ist die automatisierte Bereitstellung von SaaS-App-Benutzern in Azure AD?](user-provisioning.md)
+- [Tutorial: Entwickeln eines SCIM-Beispielendpunkts](use-scim-to-build-users-and-groups-endpoints.md)
+- [Tutorial: Entwickeln eines SCIM-Endpunkts und Planen seiner Bereitstellung](use-scim-to-provision-users-and-groups.md)
+- [Funktionsweise der Bereitstellung](how-provisioning-works.md)
 
 ## <a name="january-2021"></a>Januar 2021
 

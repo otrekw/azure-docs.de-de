@@ -107,6 +107,8 @@
       href: concepts/logging-diagnostics.md
     - name: Ungefähre Standortbestimmung
       href: concepts/coarse-reloc.md
+    - name: Strategie zum Suchen von Ankern
+      href: concepts/anchor-locate-strategy.md
 - name: References
   items:
     - name: SDK für Unity

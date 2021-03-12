@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 101e42263e46c5a21f26b0fa9cdeed798525fee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc87429f269fba5083b87e2c328f0e21de9707ff
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89047078"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454346"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Einrichten der skalierbaren Notfallwiederherstellung für VMware-VMs/physische Server
 
@@ -214,7 +214,7 @@ Für das Ausführen eines umfangreichen Failovers wird Folgendes empfohlen:
     - [hier](recovery-plan-overview.md) .
 2. Fügen Sie Wiederherstellungsplänen Azure Automation-Runbookskripts hinzu, um alle manuellen Aufgaben in Azure zu automatisieren. Zu den typischen Aufgaben gehören die Konfiguration von Lastenausgleichsmodulen, das Aktualisieren von DNS usw. [Weitere Informationen](site-recovery-runbook-automation.md)
 2. Bereiten Sie Windows-Computer vor dem Failover vor, sodass sie der Azure-Umgebung entsprechen. [Failover-Grenzwerte](#plan-azure-subscriptions-and-quotas) sind für Computer höher, die die Vorgaben einhalten. [Erfahren Sie mehr](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) über Runbooks.
-4.  Lösen Sie einen Failover mit dem PowerShell-Cmdlet [Start-AzRecoveryServicesAsrPlannedFailoverJob](/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) zusammen mit einem Wiederherstellungsplan aus.
+4.  Lösen Sie einen Failover mit dem PowerShell-Cmdlet [Start-AzRecoveryServicesAsrPlannedFailoverJob](/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob) zusammen mit einem Wiederherstellungsplan aus.
 
 
 

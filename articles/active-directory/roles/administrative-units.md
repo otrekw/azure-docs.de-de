@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e82be52cff824c69dd2fe4ea5e7e1c0d7489be1d
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 49f2c290c69fcadd594d6cbd5879e7d9f5304a42
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740328"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558014"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Verwaltungseinheiten in Azure Active Directory
 
@@ -47,8 +47,8 @@ Wenn Sie Verwaltungseinheiten verwenden möchten, ist für jeden Administrator e
 Sie können Verwaltungseinheiten im Azure-Portal, mithilfe von PowerShell-Cmdlets und -Skripts oder mit Microsoft Graph verwalten. Weitere Informationen finden Sie unter
 
 - [Erstellen, Entfernen, Auffüllen und Hinzufügen von Rollen zu Verwaltungseinheiten](admin-units-manage.md): Enthält umfassende schrittweise Anleitungen.
-- [Verwenden von Verwaltungseinheiten:](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true) Enthält Informationen zur Verwendung von Verwaltungseinheiten über PowerShell.
-- [Ressourcentyp „administrativeUnit“:](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true) Enthält eine ausführliche Dokumentation zu Microsoft Graph für Verwaltungseinheiten.
+- [Verwenden von Verwaltungseinheiten:](/powershell/azure/active-directory/working-with-administrative-units) Enthält Informationen zur Verwendung von Verwaltungseinheiten über PowerShell.
+- [Ressourcentyp „administrativeUnit“:](/graph/api/resources/administrativeunit) Enthält eine ausführliche Dokumentation zu Microsoft Graph für Verwaltungseinheiten.
 
 ### <a name="plan-your-administrative-units"></a>Planen Ihrer Verwaltungseinheiten
 

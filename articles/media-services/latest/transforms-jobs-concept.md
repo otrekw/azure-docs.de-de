@@ -45,7 +45,7 @@ Verwenden Sie **Transformationen**, um allgemeine Aufgaben zur Codierung oder An
 
 ### <a name="viewing-schema"></a>Anzeigen des Schemas
 
-In Media Services v3 sind Voreinstellungen stark typisierte Entitäten in der API selbst. Die „Schema“-Definition für diese Objekte finden Sie in [Offene API-Spezifikation (oder Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Sie finden die voreingestellten Definitionen (wie **StandardEncoderPreset**) auch in der Referenzdokumentation der [REST-API](/rest/api/media/transforms/createorupdate#standardencoderpreset), des [.NET SDKs](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) oder eines anderen Media Services v3 SDKs.
+In Media Services v3 sind Voreinstellungen stark typisierte Entitäten in der API selbst. Die „Schema“-Definition für diese Objekte finden Sie in [Offene API-Spezifikation (oder Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Sie finden die voreingestellten Definitionen (wie **StandardEncoderPreset**) auch in der Referenzdokumentation der [REST-API](/rest/api/media/transforms/createorupdate#standardencoderpreset), des [.NET SDKs](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset) oder eines anderen Media Services v3 SDKs.
 
 ### <a name="creating-transforms"></a>Erstellen von Transformationen
 
