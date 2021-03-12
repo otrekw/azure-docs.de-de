@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 05d312296b48f35ea87c5443cc587989e2d11fd5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9bdba36e2ff4721bd024369788c7dc04f066e9a5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587975"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565579"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Bereitstellen des Diagnosetools für Windows Virtual Desktop (klassisch)
 
@@ -38,8 +38,8 @@ Sie müssen eine Azure Active Directory-App-Registrierung und einen Log Analytic
 
 Außerdem müssen Sie diese beiden PowerShell-Module installieren, bevor Sie beginnen:
 
-- [Azure PowerShell-Modul](/powershell/azure/install-az-ps?view=azps-2.4.0/&preserve-view=true)
-- [Azure AD-Modul](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/&preserve-view=true)
+- [Azure PowerShell-Modul](/powershell/azure/install-az-ps)
+- [Azure AD-Modul](/powershell/azure/active-directory/install-adv2)
 
 Stellen Sie sicher, dass Ihre Abonnement-ID zur Hand haben, wenn Sie sich anmelden.
 
