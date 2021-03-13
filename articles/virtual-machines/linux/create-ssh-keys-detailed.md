@@ -2,16 +2,17 @@
 title: Ausführliche Schritte zum Erstellen eines SSH-Schlüsselpaars
 description: Lernen Sie die ausführlichen Schritte zum Erstellen und Verwalten eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure kennen.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 07/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 39db1aec06c16a2d44c93bea7785931f8de8ca9e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 9d888de78432558cda8e08c3de91be9673231b47
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182467"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554716"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Ausführliche Schritte: Erstellen und Verwalten von SSH-Schlüsseln für die Authentifizierung bei einer Linux-VM in Azure
 
