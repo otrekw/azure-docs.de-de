@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7b70e8a408c22be0331bfd0dcbe01830b072ab8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 7b6bc00af8d54c8748dd82b934974282e0e8da0e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449979"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426959"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern der Anforderungseinstellungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -198,7 +198,7 @@ Wenn Sie die Anforderungs- und Genehmigungseinstellungen für ein Zugriffspaket 
 
 1. Klicken Sie auf **Weiter**.
 
-1. Wenn Sie von den Anforderern bei der Anforderung von Zugriff auf ein Zugriffspaket zusätzliche Informationen abfragen möchten, folgen Sie den Schritten in [](), um die Informationen zum Anforderer zu konfigurieren (Vorschau).
+1. Wenn Anforderer beim Anfordern des Zugriffs auf ein Zugriffspaket weitere Informationen bereitstellen sollen, verwenden Sie die unter [Ändern der Einstellungen für Genehmigungs- und Anfordererinformationen (Vorschau) für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung](entitlement-management-access-package-approval-policy.md#collect-additional-requestor-information-for-approval-preview) beschriebenen Schritte, um die Anfordererinformationen (Vorschau) zu konfigurieren.
 
 1. Konfigurieren Sie Lebenszykluseinstellungen.
 

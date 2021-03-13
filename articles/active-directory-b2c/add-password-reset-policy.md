@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b82d573b7d8a65447d75aa8f017c87795bbef6cd
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fa34e8ea71c307b75a3f345861f8ed99d131b3fd
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102171653"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447927"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Einrichten eines Kennwortzurücksetzungsflows in Azure Active Directory B2C
 
@@ -203,6 +203,24 @@ In Ihrer User Journey können Sie die Sub Journey vom Typ „Kennwort vergessen�
     ```xml
     <ClaimsExchange Id="ForgotPasswordExchange" TechnicalProfileReferenceId="ForgotPassword" />
     ```
+    
+1. Fügen Sie den folgenden Orchestrierungsschritt zwischen dem aktuellen Schritt und dem nächsten Schritt hinzu. In dem neu hinzugefügten Orchestrierungsschritt wird überprüft, ob der Anspruch `isForgotPassword` vorhanden ist. Ist der Anspruch vorhanden, wird die [Sub Journey für die Kennwortzurücksetzung](#add-the-password-reset-sub-journey) aufgerufen. 
+
+    ```xml
+    <OrchestrationStep Order="3" Type="InvokeSubJourney">
+      <Preconditions>
+        <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
+          <Value>isForgotPassword</Value>
+          <Action>SkipThisOrchestrationStep</Action>
+        </Precondition>
+      </Preconditions>
+      <JourneyList>
+        <Candidate SubJourneyReferenceId="PasswordReset" />
+      </JourneyList>
+    </OrchestrationStep>
+    ```
+    
+1. Nummerieren Sie nach dem Hinzufügen des neuen Orchestrierungsschritts die Schritte nacheinander von 1 bis N neu, ohne eine Ganzzahl zu überspringen.
 
 ### <a name="set-the-user-journey-to-be-executed"></a>Festlegen der auszuführenden User Journey
 
@@ -262,7 +280,7 @@ Das Diagramm weiter unten zeigt Folgendes:
 1. Der Benutzer wählt den Link **Kennwort vergessen?** aus. Von Azure AD B2C wird der Fehlercode AADB2C90118 an Ihre Anwendung zurückgegeben.
 1. Der Fehlercode wird von der Anwendung behandelt, und eine neue Autorisierungsanforderung wird initiiert. In der Autorisierungsanforderung wird der Name der Kennwortzurücksetzungsrichtlinie angegeben (beispielsweise **B2C_1_pwd_reset**).
 
-![Kennwortzurücksetzungsflow](./media/add-password-reset-policy/password-reset-flow-legacy.png)
+![Legacy-Benutzerflow für die Kennwortzurücksetzung](./media/add-password-reset-policy/password-reset-flow-legacy.png)
 
 Die Verknüpfung von Benutzerflows wird in [diesem einfachen ASP.NET-Beispiel](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI) veranschaulicht.
 

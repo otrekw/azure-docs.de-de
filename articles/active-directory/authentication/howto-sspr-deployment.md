@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 765bfe0f805ae4219110d689e8f7f8fd54a26cf3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 94187f2f94581b4ff48ddb0cd014dc26268fcf15
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173935"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500511"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Planen der Bereitstellung einer Self-Service-Kennwortzurücksetzung (SSPR) von Azure Active Directory
 
@@ -25,7 +25,7 @@ ms.locfileid: "96173935"
 >
 > **Wenn Sie ein Endbenutzer sind und keinen Zugriff mehr auf Ihr Konto haben, wechseln Sie zu [https://aka.ms/sspr](https://aka.ms/sspr)** .
 
-Die [Self-Service-Kennwortzurücksetzung (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) ist eine Funktion von Azure Active Directory (AD), die es Benutzern ermöglicht, ihre Kennwörter ohne die Hilfe von IT-Mitarbeitern zurückzusetzen. Die Benutzer können ungeachtet von Tages- oder Nachtzeit und Standort schnell ihre Sperre aufheben und weiterarbeiten. Indem eine Organisation ihren Mitarbeitern erlaubt, die Sperre selbst aufzuheben, kann sie unproduktive Zeit und hohe Supportkosten für die meisten allgemeinen Probleme im Zusammenhang mit Kennwörtern reduzieren.
+Die [Self-Service-Kennwortzurücksetzung (SSPR)](https://www.youtube.com/watch?v=pS3XwfxJrMo) ist eine Funktion von Azure Active Directory (AD), die es Benutzern ermöglicht, ihre Kennwörter ohne die Hilfe von IT-Mitarbeitern zurückzusetzen. Die Benutzer können ungeachtet von Tages- oder Nachtzeit und Standort schnell ihre Sperre aufheben und weiterarbeiten. Indem eine Organisation ihren Mitarbeitern erlaubt, die Sperre selbst aufzuheben, kann sie unproduktive Zeit und hohe Supportkosten für die meisten allgemeinen Probleme im Zusammenhang mit Kennwörtern reduzieren.
 
 Folgende SSPR-Hauptfunktionen sind verfügbar:
 
@@ -78,6 +78,7 @@ Weitere Informationen zur Preisgestaltung finden Sie unter [Azure Active Directo
 | Videos| [Handlungsfähigere Benutzer mit besserer IT-Skalierbarkeit](https://youtu.be/g9RpRnylxS8) 
 | |[Was ist Self-Service-Kennwortzurücksetzung?](https://youtu.be/hc97Yx5PJiM)|
 | |[Bereitstellen der Self-Service-Kennwortzurücksetzung](https://www.youtube.com/watch?v=Pa0eyqjEjvQ&index=18&list=PLLasX02E8BPBm1xNMRdvP6GtA6otQUqp0)|
+| |[Aktivieren und Konfigurieren von SSPR in Azure AD](https://www.youtube.com/watch?v=rA8TvhNcCvQ)|
 | |[Konfigurieren der Self-Service-Kennwortzurücksetzung für Benutzer in Azure AD](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/) |
 | |[[Vorbereiten von Benutzern zum] Registrieren von Sicherheitsinformationen für Azure Active Directory](https://youtu.be/gXuh0XS18wA) |
 | Onlinekurse|[Verwalten von Identitäten in Microsoft Azure Active Directory](https://www.pluralsight.com/courses/microsoft-azure-active-directory-managing-identities) Verwenden Sie SSPR, um Ihren Benutzern eine moderne, geschützte Umgebung bereitzustellen. Achten Sie besonders auf das Modul [Verwalten von Benutzern und Gruppen in Azure Active Directory](https://app.pluralsight.com/library/courses/microsoft-azure-active-directory-managing-identities/table-of-contents). |

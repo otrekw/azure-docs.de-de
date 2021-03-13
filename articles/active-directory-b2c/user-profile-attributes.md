@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dcd0ccdc42a820f1e264b739cb0063516a0cb53e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7dfad71d05a882e3a3941a96e12489adb5fb3234
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688551"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500528"
 ---
 # <a name="user-profile-attributes"></a>Benutzerprofilattribute
 
@@ -39,7 +39,7 @@ In der nachstehenden Tabelle sind die Attribute von [Benutzerressourcentypen](/g
 - Ob das Attribut in einem Benutzerflow verwendet werden kann
 - Ob das Attribut in einem [technischen Azure AD-Profil](active-directory-technical-profile.md) in einer benutzerdefinierten Richtlinie verwendet werden kann und in welchem Abschnitt (&lt;InputClaims&gt;, &lt;OutputClaims&gt; oder &lt;PersistedClaims&gt;)
 
-|Name     |type     |BESCHREIBUNG|Azure-Portal|Benutzerabläufe|Benutzerdefinierte Richtlinie|
+|Name     |Typ     |BESCHREIBUNG|Azure-Portal|Benutzerabläufe|Benutzerdefinierte Richtlinie|
 |---------|---------|----------|------------|----------|-------------|
 |accountEnabled  |Boolean|Gibt an, ob das Benutzerkonto aktiviert oder deaktiviert ist: **true**, wenn das Konto aktiviert ist, andernfalls **false**.|Ja|Nein|Persistent, Ausgabe|
 |ageGroup        |String|Die Altersgruppe des Benutzers. Mögliche Werte: „Null“, „Undefined“, „Minor“, „Adult“ und „NotAdult“.|Ja|Nein|Persistent, Ausgabe|
@@ -69,8 +69,8 @@ In der nachstehenden Tabelle sind die Attribute von [Benutzerressourcentypen](/g
 |passwordPolicies     |String|Die Richtlinie des Kennworts. Dabei handelt sich um eine Zeichenfolge, die aus verschiedenen, durch Komma getrennten Richtliniennamen besteht. Beispiel: „DisablePasswordExpiration, DisableStrongPassword“.|Nein|Nein|Persistent, Ausgabe|
 |physicalDeliveryOfficeName (officeLocation)|String|Position des Büros am Unternehmensstandort des Benutzers. Maximale Länge: 128 Zeichen.|Ja|Nein|Persistent, Ausgabe|
 |postalCode      |String|Die Postleitzahl der Anschrift des Benutzers. Die Postleitzahl ist spezifisch für das Land oder die Region des Benutzers. In den USA enthält dieses Attribut die Postleitzahl. Maximale Länge: 40 Zeichen.|Ja|Nein|Persistent, Ausgabe|
-|preferredLanguage    |String|Die bevorzugte Sprache des Benutzers. Sollte den ISO 639-1-Codes entsprechen. Beispiel:„ en-US“.|Nein|Nein|Persistent, Ausgabe|
-|refreshTokensValidFromDateTime|Datetime|Alle vor diesem Zeitpunkt ausgestellten Aktualisierungstoken sind ungültig, und Anwendungen erhalten eine Fehlermeldung, wenn ein ungültiges Aktualisierungstoken zum Abrufen eines neuen Zugriffstokens verwendet wird. Wenn dieser Fall eintritt, muss die Anwendung ein neues Aktualisierungstoken abrufen, indem eine Anforderung an den Autorisierungsendpunkt gesendet wird. Schreibgeschützt.|Nein|Nein|Output|
+|preferredLanguage    |String|Die bevorzugte Sprache des Benutzers. Das bevorzugte Sprachformat basiert auf RFC 4646. Der Name setzt sich zusammen aus dem aus zwei Kleinbuchstaben bestehenden ISO 639-Kulturcode, der einer Sprache zugeordnet ist, und dem aus zwei Großbuchstaben bestehenden ISO 3166-Subkulturcode, der einem Land oder einer Region zugeordnet ist. Beispiel: „en-US“ oder „de-DE“.|Nein|Nein|Persistent, Ausgabe|
+|refreshTokensValidFromDateTime (signInSessionsValidFromDateTime)|Datetime|Alle vor diesem Zeitpunkt ausgestellten Aktualisierungstoken sind ungültig, und Anwendungen erhalten eine Fehlermeldung, wenn ein ungültiges Aktualisierungstoken zum Abrufen eines neuen Zugriffstokens verwendet wird. Wenn dieser Fall eintritt, muss die Anwendung ein neues Aktualisierungstoken abrufen, indem eine Anforderung an den Autorisierungsendpunkt gesendet wird. Schreibgeschützt.|Nein|Nein|Output|
 |signInNames ([Identities](#identities-attribute)) |String|Der eindeutige Anmeldename des Benutzers des lokalen Kontos eines beliebigen Typs im Verzeichnis. Verwenden Sie dieses Attribut, um einen Benutzer mit einem Anmeldewert abzurufen, ohne den lokalen Kontotyp anzugeben.|Nein|Nein|Eingabe|
 |signInNames.userName ([Identities](#identities-attribute)) |String|Der eindeutige Benutzername des Benutzers des lokalen Kontos im Verzeichnis. Verwenden Sie dieses Attribut, um einen Benutzer mit einem bestimmten Anmeldebenutzernamen zu erstellen oder abzurufen. Wenn Sie nur dieses Attribut in „PersistedClaims“ während eines Patchvorgangs angeben, werden andere Typen von „signInNames“ entfernt. Wenn Sie einen neuen Typ von „signInNames“ hinzufügen möchten, müssen Sie auch vorhandene „signInNames“ beibehalten.|Nein|Nein|Eingabe, Persistent, Ausgabe|
 |signInNames.phoneNumber ([Identities](#identities-attribute)) |String|Die eindeutige Telefonnummer des Benutzers des lokalen Kontos im Verzeichnis. Verwenden Sie dieses Attribut, um einen Benutzer mit einer bestimmten Telefonnummer für die Anmeldung zu erstellen oder abzurufen. Wenn Sie nur dieses Attribut in „PersistedClaims“ während eines Patchvorgangs angeben, werden andere Typen von „signInNames“ entfernt. Wenn Sie einen neuen Typ von „signInNames“ hinzufügen möchten, müssen Sie auch vorhandene „signInNames“ beibehalten.|Nein|Nein|Eingabe, Persistent, Ausgabe|
@@ -101,11 +101,11 @@ Einem Kundenkonto (von einem Endbenutzer, einem Partner oder einem anderen Benut
 - **Lokale** Identität: Der Benutzername und das Kennwort werden lokal im Azure AD B2C-Verzeichnis gespeichert. Diese Identitäten werden häufig als „lokale Konten“ bezeichnet.
 - **Verbundidentität:** Die Identitäten dieser auch als *Konten für soziale Netzwerke* oder *Unternehmenskonten* bezeichneten Benutzer werden von einem Verbundidentitätsanbieter wie Facebook, Microsoft, AD FS oder Salesforce verwaltet.
 
-Ein Benutzer mit einem Kundenkonto kann sich mit mehreren Identitäten anmelden. Er kann z. B. den Benutzernamen, die E-Mail-Adresse, die Mitarbeiter-ID, eine Behördenkennung und andere Daten verwenden. Ein einzelnes Konto kann über mehrere Identitäten verfügen. Dabei kann es sich um lokale Identitäten und Identitäten für soziale Netzwerke handeln, die auch dasselbe Kennwort nutzen können.
+Ein Benutzer mit einem Kundenkonto kann sich mit mehreren Identitäten anmelden. Er kann z. B. den Benutzernamen, die E-Mail-Adresse, die Mitarbeiter-ID, eine Behördenkennung und andere Daten verwenden. Ein einzelnes Konto kann über mehrere Identitäten verfügen. Dabei kann es sich um lokale Identitäten und Identitäten für soziale Netzwerke handeln, die auch dasselbe Kennwort nutzen können. 
 
-In der Microsoft Graph-API werden sowohl lokale als auch Verbundidentitäten im Benutzerattribut `identities` gespeichert, das den Typ [objectIdentity][graph-objectIdentity] aufweist. Die Sammlung `identities` stellt einen Satz von Identitäten dar, die für die Anmeldung bei einem Benutzerkonto verwendet werden. Diese Sammlung ermöglicht dem Benutzer, sich mit den zugehörigen Identitäten beim Benutzerkonto anzumelden.
+In der Microsoft Graph-API werden sowohl lokale als auch Verbundidentitäten im Benutzerattribut `identities` gespeichert, das den Typ [objectIdentity](/graph/api/resources/objectidentity) aufweist. Die Sammlung `identities` stellt einen Satz von Identitäten dar, die für die Anmeldung bei einem Benutzerkonto verwendet werden. Diese Sammlung ermöglicht dem Benutzer, sich mit den zugehörigen Identitäten beim Benutzerkonto anzumelden. Das „identities“-Attribut kann bis zu zehn [objectIdentity](/graph/api/resources/objectidentity)-Objekte enthalten. Jedes Objekt enthält die folgenden Eigenschaften:
 
-| Name   | type |BESCHREIBUNG|
+| Name   | Typ |BESCHREIBUNG|
 |:---------------|:--------|:----------|
 |signInType|Zeichenfolge| Gibt die Benutzeranmeldetypen in Ihrem Verzeichnis an. Für ein lokales Konto: `emailAddress`, `emailAddress1`, `emailAddress2`, `emailAddress3`, `userName` oder ein beliebiger anderer Typ. Bei einem Konto für soziale Netzwerke muss dies auf `federated` festgelegt werden.|
 |Issuer (Aussteller)|Zeichenfolge|Gibt den Aussteller der Identität an. Bei lokalen Konten (bei denen **signInType** nicht `federated` ist) ist diese Eigenschaft der Standarddomänenname des lokalen B2C-Mandanten, z. B. `contoso.onmicrosoft.com`. Bei einer Identität für ein soziales Netzwerk (bei der der **signInType** `federated` ist) entspricht der Wert dem Namen des Ausstellers, z. B. `facebook.com`.|

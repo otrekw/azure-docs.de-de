@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
 ms.reviewer: asteen, japere
-ms.openlocfilehash: 65d68924fbc3a777ef7ef59d2532a1ae20e23c48
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: b8562f3bdd82b5b0c2c1340f511f87ad90dfbe3b
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258217"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487949"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Problembehandlung von Konfigurationen der eingeschränkten Kerberos-Delegierung für den Anwendungsproxy
 
@@ -161,7 +161,7 @@ Wenn dies dennoch keine Abhilfe leistet, kann Microsoft-Support Ihnen weiter hel
 ## <a name="other-scenarios"></a>Andere Szenarien
 
 - Der Azure-Anwendungsproxy fordert vor dem Senden der Anforderung an eine Anwendung ein Kerberos-Ticket an. Bei einigen Drittanbieteranwendungen ist diese Authentifizierungsmethode unüblich. Bei diesen Anwendungen werden konventionellere Aushandlungen erwartet. Die erste Anforderung ist anonym, wodurch es der Anwendung ermöglicht wird, mit den Authentifizierungstypen zu antworten, die sie über eine 401-Meldung unterstützt. Diese Art der Kerberos-Aushandlung kann mithilfe der in diesem Dokument beschriebenen Schritte aktiviert werden: [Eingeschränkte Delegierung von Kerberos für die einmalige Anmeldung](application-proxy-configure-single-sign-on-with-kcd.md).
-- Die Mehrfachhopauthentifizierung wird häufig in Szenarien verwendet, in denen eine Anwendung abgestuft wird, mit einem Back-End und Front-End, die beide eine Authentifizierung erfordern, z.B. SQL Server Reporting Services. Informationen zum Konfigurieren des Mehrfachhopszenarios finden Sie im Supportartikel [Eingeschränkte Kerberos-Delegierung mit eventuell erforderlicher Protokollübertragung in Mehrfachhopszenarien](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
+- Die Mehrfachhopauthentifizierung wird häufig in Szenarien verwendet, in denen eine Anwendung abgestuft wird, mit einem Back-End und Front-End, die beide eine Authentifizierung erfordern, z.B. SQL Server Reporting Services. Weitere Informationen finden Sie unter [Konfigurieren der eingeschränkten Kerberos-Delegierung für Webregistrierungsproxyseiten](/troubleshoot/windows-server/identity/configure-kerberos-constrained-delegation).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

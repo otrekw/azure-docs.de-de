@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 03/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fadc739f16ce9690a735be22758f58857ff8b9ff
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0ee26e7fe74d87f7b20f9a28b049b8043b376273
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951620"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518054"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Verwalten des Benutzerzugriffs in Azure Active Directory B2C
 
@@ -83,7 +83,53 @@ Wenn eine Anwendung zuverlässig Geburtsdatum oder Land/Region-Informationen mit
 - Wenn für einen Benutzer bekannt ist, dass es sich um eine erwachsene Person handelt, wird das Verzeichnisattribut **ageGroup** auf den Wert **Adult** aktualisiert.
 - Falls ein Benutzer sicher als minderjährig eingestuft wird, wird das Verzeichnisattribut **ageGroup** auf den Wert **Minor** aktualisiert und **consentProvidedForMinor** entsprechend festgelegt.
 
-Weitere Informationen zum Erfassen des Geburtsdatums finden Sie unter [Verwenden einer Altersbeschränkung in Azure AD B2C](basic-age-gating.md).
+## <a name="minor-calculation-rules"></a>Regeln für die Berechnungvon Minderjährigen
+
+Die Altersbeschränkung umfasst zwei Alterswerte: das Alter, in dem eine Person nicht mehr als minderjährig angesehen wird, und das Alter, in dem eine minderjährige Person die Zustimmung durch die Erziehungsberechtigten benötigt. In der folgenden Tabelle sind die Altersregeln aufgeführt, die zum Definieren einer minderjährigen Person und des Alters für die Zustimmung durch die Erziehungsberechtigten verwendet werden.
+
+| Land/Region | Name des Landes / der Region | Alter für Zustimmung für Minderjährige | Alter für Einstufung als minderjährig |
+| -------------- | ------------------- | ----------------- | --------- |
+| Standard | Keine | Keine | 18 |
+| AE | Vereinigte Arabische Emirate | Keine | 21 |
+| AT | Österreich | 14 | 18 |
+| BE | Belgien | 14 | 18 |
+| BG | Bulgarien | 16 | 18 |
+| BH | Bahrain | Keine | 21 |
+| CM | Kamerun | Keine | 21 |
+| CY | Zypern | 16 | 18 |
+| CZ | Tschechische Republik | 16 | 18 |
+| DE | Deutschland | 16 | 18 |
+| DK | Dänemark | 16 | 18 |
+| EE | Estland | 16 | 18 |
+| EG | Ägypten | Keine | 21 |
+| ES | Spanien | 13 | 18 |
+| BV | Frankreich | 16 | 18 |
+| GB | United Kingdom | 13 | 18 |
+| GR | Griechenland | 16 | 18 |
+| HR | Kroatien | 16 | 18 |
+| HU | Ungarn | 16 | 18 |
+| IE | Irland | 13 | 18 |
+| IT | Italien | 16 | 18 |
+| KR | Republik Korea | 14 | 18 |
+| LT | Litauen | 16 | 18 |
+| LU | Luxemburg | 16 | 18 |
+| LV | Lettland | 16 | 18 |
+| MT | Malta | 16 | 18 |
+| Nicht verfügbar | Namibia | Keine | 21 |
+| NL | Niederlande | 16 | 18 |
+| PL | Polen | 13 | 18 |
+| PT | Portugal | 16 | 18 |
+| RO | Rumänien | 16 | 18 |
+| SE | Schweden | 13 | 18 |
+| SG | Singapur | Keine | 21 |
+| SI | Slowenien | 16 | 18 |
+| SK | Slowakei | 16 | 18 |
+| TD | Tschad | Keine | 21 |
+| TH | Thailand | Keine | 20 |
+| TW | Taiwan | Keine | 20 |
+| US | USA | 13 | 18 |
+
+
 
 ## <a name="capture-terms-of-use-agreement"></a>Erfassen der Zustimmung zu den Nutzungsbedingungen
 
@@ -175,5 +221,6 @@ Hier ist ein Beispiel für die Zustimmung zu versionsbasierten Nutzungsbedingung
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Aktivieren einer Altersbeschränkung in Azure AD B2C](age-gating.md).
 - Informationen zum Löschen und Exportieren von Benutzerdaten finden Sie unter [Verwalten von Benutzerdaten](manage-user-data.md).
 - Ein Beispiel für eine benutzerdefinierte Richtlinie, die eine Eingabeaufforderung für Nutzungsbedingungen implementiert, finden Sie unter [Benutzerdefinierte B2C IEF-Richtlinie: Registrieren und Anmelden mit einer Eingabeaufforderung „Nutzungsbedingungen“](https://github.com/azure-ad-b2c/samples/tree/master/policies/sign-in-sign-up-versioned-tou).

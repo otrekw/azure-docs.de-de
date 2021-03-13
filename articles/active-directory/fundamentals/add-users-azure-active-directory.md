@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 11/12/2019
+ms.date: 03/05/2021
 ms.author: ajburnle
-ms.reviewer: jeffsta
+ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de529a8ffb0c72854904717c71dbc322c919f1a8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 51f1b122cb005f47e9816db3b403a35f4f502248
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996694"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426823"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Hinzufügen oder Löschen von Benutzern in Azure Active Directory
 
@@ -74,6 +74,9 @@ Wenn Sie eine Umgebung mit sowohl Azure Active Directory (Cloud) als auch Window
 
 Sie können einen vorhandenen Benutzer im Azure Active Directory-Portal löschen.
 
+>[!Note]
+>Sie müssen über eine Rollenzuweisung als globaler Administrator oder Benutzeradministrator verfügen, um Benutzer in Ihrer Organisation zu löschen. Globale Administratoren können alle Benutzer löschen, auch andere Administratoren. Benutzeradministratoren können alle Nicht-Administratorbenutzer, Helpdeskadministratoren und andere Benutzeradministratoren löschen. Weitere Informationen finden Sie unter [Berechtigungen der Administratorrolle in Azure AD](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference).
+
 Um einen Benutzer zu löschen, befolgen Sie diese Schritte:
 
 1. Melden Sie sich mit dem Konto eines Benutzeradministrators für die Organisation beim [Azure-Portal](https://portal.azure.com/) an.
@@ -91,7 +94,7 @@ Der Benutzer wird gelöscht und nicht mehr auf der Seite **Benutzer – Alle Ben
 Wenn ein Benutzer gelöscht wird, werden alle vom Benutzer verwendeten Lizenzen den anderen Benutzer zur Verfügung gestellt.
 
 >[!Note]
->Sie müssen Windows Server Active Directory verwenden, um die Identität, Kontaktinformationen oder Jobinformationen für Benutzer zu aktualisieren, deren Autoritätsquelle Windows Server Active Directory ist. Nachdem Sie das Update abgeschlossen haben, müssen Sie bis zum Abschluss des nächsten Synchronisierungszyklus warten, bevor die Änderungen angezeigt werden.
+>Um Identität, Kontaktinformationen oder Jobinformationen für Benutzer zu aktualisieren, deren Autoritätsquelle Windows Server Active Directory ist, müssen Sie Windows Server Active Directory verwenden. Nachdem Sie das Update abgeschlossen haben, müssen Sie bis zum Abschluss des nächsten Synchronisierungszyklus warten, bevor die Änderungen angezeigt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

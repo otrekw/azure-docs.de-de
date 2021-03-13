@@ -3,7 +3,7 @@ title: Erstellen und Verwalten eines Ressourcenkatalogs in der Berechtigungsverw
 description: Erfahren Sie, wie Sie einen neuen Container für Ressourcen und Zugriffspakete in der Azure Active Directory-Berechtigungsverwaltung erstellen.
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: HANKI
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
 ms.date: 12/23/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b87fdd7c73d089c46d456491c02d49cb6f8883d
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 3c6f37a1b5cc16c80af8316cfeae164d58ea9796
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97745962"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552166"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Erstellen und Verwalten eines Ressourcenkatalogs in der Azure AD-Berechtigungsverwaltung
 
@@ -80,6 +80,14 @@ Um Ressourcen in ein Zugriffspaket einschließen zu können, müssen die Ressour
 1. Klicken Sie abschließend auf **Hinzufügen**.
 
     Diese Ressourcen können jetzt in Zugriffspakete im Katalog aufgenommen werden.
+
+### <a name="add-a-multi-geo-sharepoint-site"></a>Hinzufügen einer SharePoint-Website mit mehreren geografischen Regionen
+
+1. Wenn für SharePoint [Multi-Geo](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365) aktiviert ist, wählen Sie die Umgebung aus, aus der Sie Websites auswählen möchten.
+    
+    :::image type="content" source="media/entitlement-management-catalog-create/sharepoint-multigeo-select.png" alt-text="Zugriffspaket: Hinzufügen von Ressourcenrollen: Auswählen von SharePoint-Websites: Multi-Geo-Websites":::
+
+1. Wählen Sie dann die Websites aus, die Sie dem Katalog hinzufügen möchten. 
 
 ### <a name="adding-a-resource-to-a-catalog-programmatically"></a>Programmgesteuertes Hinzufügen einer Ressource zu einem Katalog
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4e43ebba9f5f3d0c52d1d03bbf6baca92d5b87a4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 0a9615e6bcb350732ccd7b2cf27dad3b46a7e4b3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96178686"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102427010"
 ---
 # <a name="tutorial-configure-github-ae-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von GitHub AE für die automatische Benutzerbereitstellung
 
@@ -32,6 +32,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in GitHub AE 
 > * Erstellen von Benutzern in GitHub AE
 > * Entfernen von Benutzern aus GitHub AE, wenn diese keinen Zugriff mehr benötigen
 > * Synchronisieren von Benutzerattributen zwischen Azure AD und GitHub AE
+> * Bereitstellen von Gruppen und Gruppenmitgliedschaften in GitHub AE
 > * Einmaliges Anmelden bei [GitHub AE](./github-ae-tutorial.md) (empfohlen)
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -51,7 +52,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 Informieren Sie sich [hier](https://docs.github.com/github-ae@latest/admin/authentication/configuring-user-provisioning-for-your-enterprise) über die Aktivierung der Bereitstellung für GitHub AE.
 
-## <a name="step-3-add-github-ae-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von GitHub AE aus dem Azure AD-Anwendungskatalog
+## <a name="step-3-add-github-ae-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von GitHub AE aus dem Azure AD-Anwendungskatalog
 
 Fügen Sie GitHub AE aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwalten der Bereitstellung in GitHub AE zu beginnen. Wenn Sie GitHub AE zuvor für einmaliges Anmelden (Single Sign-On, SSO) eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](../manage-apps/add-application-portal.md) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog. 
 
@@ -59,7 +60,7 @@ Fügen Sie GitHub AE aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwal
 
 Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwendung oder aufgrund von Attributen für den Benutzer und/oder die Gruppe festlegen, wer in die Bereitstellung einbezogen werden soll. Wenn Sie sich dafür entscheiden, anhand der Zuweisung festzulegen, wer für Ihre App bereitgestellt werden soll, können Sie der Anwendung mithilfe der folgenden [Schritte](../manage-apps/assign-user-or-group-access-portal.md) Benutzer und/oder Gruppen zuweisen. Wenn Sie allein anhand der Attribute des Benutzers und/oder der Gruppe auswählen möchten, wer bereitgestellt wird, können Sie einen [hier](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) beschriebenen Bereichsfilter verwenden. 
 
-* Beim Zuweisen von Benutzern zu GitHub AE müssen Sie eine andere Rolle als **Standardzugriff** auswählen. Benutzer mit der Rolle „Standardzugriff“ werden von der Bereitstellung ausgeschlossen und in den Bereitstellungsprotokollen als „nicht effektiv berechtigt“ gekennzeichnet. Wenn für die Anwendung nur die Rolle „Standardzugriff“ verfügbar ist, können Sie das [Anwendungsmanifest aktualisieren](../develop/howto-add-app-roles-in-azure-ad-apps.md) und weitere Rollen hinzufügen. 
+* Beim Zuweisen von Benutzern und Gruppen zu GitHub AE müssen Sie eine andere Rolle als **Standardzugriff** auswählen. Benutzer mit der Rolle „Standardzugriff“ werden von der Bereitstellung ausgeschlossen und in den Bereitstellungsprotokollen als „nicht effektiv berechtigt“ gekennzeichnet. Wenn für die Anwendung nur die Rolle „Standardzugriff“ verfügbar ist, können Sie das [Anwendungsmanifest aktualisieren](../develop/howto-add-app-roles-in-azure-ad-apps.md) und weitere Rollen hinzufügen. 
 
 * Fangen Sie klein an. Testen Sie die Bereitstellung mit einer kleinen Gruppe von Benutzern und/oder Gruppen, bevor Sie sie für alle freigeben. Wenn der Bereitstellungsbereich auf zugewiesene Benutzer und/oder Gruppen festgelegt ist, können Sie dies durch Zuweisen von einem oder zwei Benutzern und/oder Gruppen zur App kontrollieren. Ist der Bereich auf alle Benutzer und Gruppen festgelegt, können Sie einen [attributbasierten Bereichsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) angeben. 
 
@@ -111,17 +112,27 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
    |name.formatted|String|
    |displayName|String|
 
-10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit GitHub AE synchronisieren** aus.
 
-11. Um den Azure AD-Bereitstellungsdienst für GitHub AE zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
+11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit GitHub AE synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in GitHub AE für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+
+      |attribute|type|
+      |---|---|
+      |displayName|String|
+      |externalId|String|
+      |members|Verweis|
+
+12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+
+13. Um den Azure AD-Bereitstellungsdienst für GitHub AE zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
-12. Legen Sie die Benutzer und/oder Gruppen fest, die in GitHub AE bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
+14. Legen Sie die Benutzer und/oder Gruppen fest, die in GitHub AE bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-13. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
@@ -133,6 +144,10 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 1. Mithilfe der [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
 2. Anhand der [Fortschrittsleiste](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
 3. Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](../app-provisioning/application-provisioning-quarantine-status.md).  
+
+## <a name="change-log"></a>Änderungsprotokoll
+
+* 18.02.2021 – Unterstützung für die Bereitstellung von Gruppen hinzugefügt.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

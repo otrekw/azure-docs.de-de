@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6dda65be98934ce90e985b241078ae8019afb7e0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3082c249b04b5efc71187dd03515bc8c875b7c2f
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361263"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448590"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Hinzufügen von AD FS als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ ms.locfileid: "100361263"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Anmeldung für ein AD FS-Benutzerkonto mithilfe [benutzerdefinierter Richtlinien](custom-policy-overview.md) in Azure Active Directory B2C (Azure AD B2C) aktivieren. Sie ermöglichen die Anmeldung, indem Sie einer benutzerdefinierten Richtlinie ein [technisches Profil des SAML-Idenditätsanbieters](saml-identity-provider-technical-profile.md) hinzufügen.
+In diesem Artikel wird beschrieben, wie Sie die Anmeldung für ein AD FS-Benutzerkonto mithilfe [benutzerdefinierter Richtlinien](custom-policy-overview.md) in Azure Active Directory B2C (Azure AD B2C) aktivieren. Sie ermöglichen die Anmeldung, indem Sie einer benutzerdefinierten Richtlinie einen [SAML-Idenditätsanbieter](identity-provider-generic-saml.md) hinzufügen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -62,7 +62,7 @@ Sie müssen Ihr Zertifikat in Ihrem Azure AD B2C-Mandanten speichern.
 
 Wenn Sie möchten, dass sich Benutzer mit einem AD FS-Konto anmelden, müssen Sie das Konto als Anspruchsanbieter definieren, mit dem Azure AD B2C über einen Endpunkt kommunizieren kann. Der Endpunkt bietet eine Reihe von Ansprüchen, mit denen Azure AD B2C überprüft, ob ein bestimmter Benutzer authentifiziert wurde.
 
-Sie können ein AD FS-Konto als Anspruchsanbieter definieren, indem Sie es in der Erweiterungsdatei Ihrer Richtlinie dem **ClaimsProviders**-Element hinzufügen. Weitere Informationen finden Sie unter [Definieren eines technischen Profils des SAML-Identitätsanbieters](saml-identity-provider-technical-profile.md).
+Sie können ein AD FS-Konto als Anspruchsanbieter definieren, indem Sie es in der Erweiterungsdatei Ihrer Richtlinie dem **ClaimsProviders**-Element hinzufügen. Weitere Informationen finden Sie unter [Definieren eines SAML-Identitätsanbieters](identity-provider-generic-saml.md).
 
 1. Öffnen Sie die Datei *TrustFrameworkExtensions.xml*.
 1. Suchen Sie nach dem Element **ClaimsProviders**. Falls das Element nicht vorhanden sein sollte, fügen Sie es unter dem Stammelement hinzu.
@@ -71,10 +71,10 @@ Sie können ein AD FS-Konto als Anspruchsanbieter definieren, indem Sie es in d
     ```xml
     <ClaimsProvider>
       <Domain>contoso.com</Domain>
-      <DisplayName>Contoso AD FS</DisplayName>
+      <DisplayName>Contoso</DisplayName>
       <TechnicalProfiles>
         <TechnicalProfile Id="Contoso-SAML2">
-          <DisplayName>Contoso AD FS</DisplayName>
+          <DisplayName>Contoso</DisplayName>
           <Description>Login with your AD FS account</Description>
           <Protocol Name="SAML2"/>
           <Metadata>
@@ -199,8 +199,10 @@ Ersetzen Sie die folgenden Werte:
 1. Wählen Sie die Richtliniendatei für die vertrauende Seite aus, z. B. `B2C_1A_signup_signin`.
 1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](tutorial-register-applications.md). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
 1. Wählen Sie die Schaltfläche **Jetzt ausführen** aus.
+1. Wählen Sie auf der Registrierungs- oder Anmeldeseite die Option **Contoso AD FS** aus, um sich mit dem AD FS-Identitätsanbieter für „Contoso“ anzumelden.
 
 Wenn der Anmeldevorgang erfolgreich verlaufen ist, wird der Browser an `https://jwt.ms` umgeleitet und dadurch der Inhalt des von Azure AD B2C zurückgegebenen Tokens angezeigt.
+
 ## <a name="troubleshooting-ad-fs-service"></a>Problembehandlung bei AD FS  
 
 AD FS ist für die Nutzung des Anwendungsprotokolls von Windows konfiguriert. Wenn Sie Probleme beim Einrichten von AD FS als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien in Azure AD B2C haben, können Sie das AD FS-Ereignisprotokoll überprüfen:
@@ -217,7 +219,7 @@ Dieser Fehler bedeutet, dass die von Azure AD B2C gesendete SAML-Anforderung nic
 
 #### <a name="option-1-set-the-signature-algorithm-in-azure-ad-b2c"></a>Option 1: Festlegen des Signaturalgorithmus in Azure AD B2C  
 
-Sie können konfigurieren, wie die SAML-Anforderung in Azure AD B2C signiert werden soll. Die Metadaten von [XmlSignatureAlgorithm](saml-identity-provider-technical-profile.md#metadata) bestimmen in der SAML-Anforderung den Wert des Parameters `SigAlg` (Abfragezeichenfolge oder POST-Parameter). Im folgenden Beispiel wird Azure AD B2C für den Signaturalgorithmus `rsa-sha256` konfiguriert.
+Sie können konfigurieren, wie die SAML-Anforderung in Azure AD B2C signiert werden soll. Die Metadaten von [XmlSignatureAlgorithm](identity-provider-generic-saml.md) bestimmen in der SAML-Anforderung den Wert des Parameters `SigAlg` (Abfragezeichenfolge oder POST-Parameter). Im folgenden Beispiel wird Azure AD B2C für den Signaturalgorithmus `rsa-sha256` konfiguriert.
 
 ```xml
 <Metadata>

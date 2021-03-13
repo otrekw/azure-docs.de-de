@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/08/2019
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8b71a7b8ab29e8083a5f119a41ef6de312518301
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9434bd4042798dc05a33401e1884e11a73774936
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388271"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448335"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit OpenID Connect mithilfe von Azure Active Directory B2C
 
@@ -28,6 +28,7 @@ ms.locfileid: "85388271"
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
 1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
 1. Wählen Sie **Identitätsanbieter** und dann **Neuer OpenID Connect-Anbieter** aus.
+1. Geben Sie einen **Namen** ein. Geben Sie beispielsweise *Contoso* ein.
 
 ## <a name="configure-the-identity-provider"></a>Konfigurieren des Identitätsanbieters
 
@@ -40,7 +41,7 @@ Damit Benutzer sich anmelden können, setzt der Identitätsanbieter voraus, dass
 > [!NOTE]
 > Das Clientgeheimnis ist optional. Allerdings müssen Sie ein Clientgeheimnis eingeben, wenn Sie den [Autorisierungscodefluss](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) verwenden möchten, der das Geheimnis für den Austausch des Codes für das Token verwendet.
 
-## <a name="scope"></a>`Scope`
+## <a name="scope"></a>Bereich
 
 Der Bereich definiert die Informationen und Berechtigungen, die Sie bei Ihrem benutzerdefinierten Identitätsanbieter sammeln möchten. OpenID Connect-Anforderungen müssen den `openid`-Bereichswert enthalten, um das ID-Token vom Identitätsanbieter zu empfangen. Ohne das ID-Token können Benutzer sich nicht mit dem benutzerdefinierten Identitätsanbieter bei Azure AD B2C anmelden. Andere Bereiche können (durch Leerzeichen getrennt) angefügt werden. Entnehmen Sie der Dokumentation des benutzerdefinierten Identitätsanbieters, welche anderen Bereiche möglicherweise zur Verfügung stehen.
 
@@ -48,14 +49,14 @@ Der Bereich definiert die Informationen und Berechtigungen, die Sie bei Ihrem be
 
 Der Antworttyp beschreibt, welche Art von Informationen beim ersten Aufruf von `authorization_endpoint` des benutzerdefinierten Identitätsanbieters zurückgesendet werden. Die folgenden Antworttypen können verwendet werden:
 
-* `code`: Gemäß [Autorisierungscodeflow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) wird ein Code an Azure AD B2C zurückgegeben. Azure AD B2C fährt damit fort, den `token_endpoint` für den Austausch des Codes für das Token aufzurufen.
+* `code`: Gemäß dem [Autorisierungscodefluss](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) wird ein Code an Azure AD B2C zurückgegeben. Azure AD B2C fährt damit fort, den `token_endpoint` für den Austausch des Codes für das Token aufzurufen.
 * `id_token`: Ein ID-Token wird vom benutzerdefinierten Identitätsanbieter an Azure AD B2C zurückgegeben.
 
 ## <a name="response-mode"></a>Antwortmodus
 
 Der Antwortmodus definiert die Methode, die zum Senden der Daten vom benutzerdefinierten Identitätsanbieter zurück zu Azure AD B2C verwendet werden sollte. Die folgenden Modi können für die Antwort verwendet werden:
 
-* `form_post`: Dieser Antwortmodus wird für optimale Sicherheit empfohlen. Die Antwort wird mit der HTTP-`POST`-Methode übertragen, wobei Code oder Token im `application/x-www-form-urlencoded`-Format codiert wird.
+* `form_post`: Dieser Antwortmodus wird für die optimale Sicherheit empfohlen. Die Antwort wird mit der HTTP-`POST`-Methode übertragen, wobei Code oder Token im `application/x-www-form-urlencoded`-Format codiert wird.
 * `query`: Der Code oder das Token wird als Abfrageparameter zurückgegeben.
 
 ## <a name="domain-hint"></a>Domänenhinweis
@@ -71,3 +72,16 @@ Nachdem der benutzerdefinierte Identitätsanbieter ein ID-Token an Azure AD B2C 
 * **Vorname**: Geben Sie den Anspruch ein, der den *Vornamen* des Benutzers bereitstellt.
 * **Nachname**: Geben Sie den Anspruch ein, der den *Nachnamen* des Benutzers bereitstellt.
 * **E-Mail**: Geben Sie den Anspruch ein, der die *E-Mail-Adresse* des Benutzers bereitstellt.
+
+## <a name="add-the-identity-provider-to-a-user-flow"></a>Hinzufügen des Identitätsanbieters zu einem Benutzerflow 
+
+1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Benutzerflows** aus.
+1. Klicken Sie auf den Benutzerflow, dem Sie den Identitätsanbieter hinzufügen möchten. 
+1. Wählen Sie unter **Soziales Netzwerk als Identitätsanbieter** den Identitätsanbieter aus, den Sie hinzugefügt haben. Zum Beispiel *Contoso*.
+1. Wählen Sie **Speichern** aus.
+1. Um die Richtlinie zu testen, wählen Sie **Benutzerflow ausführen** aus.
+1. Wählen Sie für **Anwendung** die Webanwendung *testapp1* aus, die Sie zuvor registriert haben. Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
+1. Wählen Sie die Schaltfläche **Benutzerflow ausführen** aus.
+1. Wählen Sie auf der Registrierungs- oder Anmeldeseite den Identitätsanbieter aus, den Sie anmelden möchten. Zum Beispiel *Contoso*.
+
+Wenn der Anmeldevorgang erfolgreich verlaufen ist, wird der Browser an `https://jwt.ms` umgeleitet und dadurch der Inhalt des von Azure AD B2C zurückgegebenen Tokens angezeigt.

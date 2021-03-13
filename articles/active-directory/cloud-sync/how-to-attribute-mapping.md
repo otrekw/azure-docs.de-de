@@ -1,6 +1,6 @@
 ---
-title: Attribut-Editor für die Azure AD Connect-Cloudsynchronisierung
-description: In diesem Artikel wird die Verwendung des Attribut-Editors beschrieben.
+title: Attributzuordnung bei der Azure AD Connect-Cloudsynchronisierung
+description: In diesem Artikel wird beschrieben, wie Sie mit der Cloudsynchronisierungsfunktion von Azure AD Connect Attribute zuordnen können.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,97 +11,97 @@ ms.date: 01/21/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6d2adbd0fe0715cb22ac158d1804f53384f8b94
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: cdb043374cf6252da3929c8f0cda6c0a4be558b7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682104"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555209"
 ---
-# <a name="azure-ad-connect-cloud-sync-attribute-mapping"></a>Attributzuordnung für die Azure AD Connect-Cloudsynchronisierung
+# <a name="attribute-mapping-in-azure-ad-connect-cloud-sync"></a>Attributzuordnung bei der Azure AD Connect-Cloudsynchronisierung
 
-Die Azure AD Connect-Cloudsynchronisierung umfasst eine neue Funktion, die Ihnen das einfache Zuordnen von Attributen zwischen Ihren lokalen Benutzer-/Gruppenobjekten und den Objekten in Azure AD ermöglicht.  Diese Funktion wurde der Cloudsynchronisierungskonfiguration hinzugefügt.
+Sie können die Cloudsynchronisierungsfunktion von Azure Active Directory (Azure AD) Connect verwenden, um Attribute zwischen lokalen Benutzer- oder Gruppenobjekten und den Objekten in Azure AD zuzuordnen. Diese Funktion wurde der Cloudsynchronisierungskonfiguration hinzugefügt.
 
-Sie können die Standardattributzuordnungen den Anforderungen Ihres Unternehmens entsprechend anpassen. Dies bedeutet, dass Sie vorhandene Attributzuordnungen ändern oder löschen und neue Attributzuordnungen erstellen können.  Eine Liste der Attribute, die synchronisiert werden, finden Sie unter [Attribute, die synchronisiert werden](../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context/hybrid/reference-connect-sync-attributes-synchronized.md).
+Sie können die Standardattributzuordnungen an die Anforderungen Ihres Unternehmens anpassen (ändern, löschen oder erstellen). Eine Liste der Attribute, die synchronisiert werden, finden Sie unter [Mit Azure Active Directory synchronisierte Attribute](../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context/hybrid/reference-connect-sync-attributes-synchronized.md).
 
-## <a name="understanding-attribute-mapping-types"></a>Grundlegendes zu Attributzuordnungstypen
-Mit Attributzuordnungen steuern Sie, wie die Attribute in Azure AD mit Daten aufgefüllt werden.
-Vier verschiedene Zuordnungstypen werden unterstützt:
+## <a name="understand-types-of-attribute-mapping"></a>Grundlegendes zu den Attributzuordnungstypen
+Mit Attributzuordnungen steuern Sie, wie Attribute in Azure AD aufgefüllt werden. Azure AD unterstützt vier Zuordnungstypen:
 
-- **Direkt**: Das Zielattribut wird mit dem Wert eines Attributs des verknüpften Objekts in AD aufgefüllt.
-- **Konstante**: Das Zielattribut wird mit einer bestimmten Zeichenfolge aufgefüllt, die Sie angegeben haben.
-- **Ausdruck** : Das Zielattribut wird abhängig vom Ergebnis eines skriptähnlichen Ausdrucks mit Daten aufgefüllt.
-  Weitere Informationen finden Sie unter [Schreiben von Ausdrücken für Attributzuordnungen](reference-expressions.md).
-- **Kein** : Das Zielattribut bleibt unverändert. Wenn das Zielattribut allerdings leer ist, wird es mit dem von Ihnen angegebenen Standardwert aufgefüllt.
+- **Direkt**: Das Zielattribut wird mit dem Wert eines Attributs des verknüpften Objekts in Active Directory aufgefüllt.
+- **Konstante**: Das Zielattribut wird mit einer bestimmten Zeichenfolge aufgefüllt, die Sie angeben.
+- **Ausdruck**: Das Zielattribut wird abhängig vom Ergebnis eines skriptähnlichen Ausdrucks aufgefüllt. Weitere Informationen finden Sie unter [Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory](reference-expressions.md).
+- **Keine**: Das Zielattribut bleibt unverändert. Allerdings wird das Zielattribut, wenn es leer sein sollte, mit dem von Ihnen angegebenen Standardwert aufgefüllt.
 
-Zusätzlich zu diesen vier Basistypen unterstützen benutzerdefinierte Attributzuordnungen das Konzept einer optionalen Zuordnung von **Standardwerten**. Die Standardwertzuordnung stellt sicher, dass ein Zielattribut mit einem Wert aufgefüllt wird, wenn weder in Azure AD noch für das Zielobjekt ein Wert vorhanden ist. Bei der üblichen Konfiguration bleibt dieses Feld leer.
+Neben diesen grundlegenden Typen unterstützen benutzerdefinierte Attributzuordnungen das Konzept einer optionalen Zuordnung von *Standardwerten*. Mit der Standardwertzuordnung wird sichergestellt, dass ein Zielattribut mit einem Wert aufgefüllt wird, wenn weder Azure AD noch das Zielobjekt ein Wert aufweisen. Bei der üblichen Konfiguration bleibt dieses Feld leer.
 
-## <a name="understanding-attribute-mapping-properties"></a>Grundlegendes zu Attributzuordnungseigenschaften
+## <a name="understand-properties-of-attribute-mapping"></a>Grundlegendes zu Eigenschaften der Attributzuordnung
 
-Im vorherigen Abschnitt haben Sie bereits die Attributzuordnungstyp-Eigenschaft kennengelernt.
-Zusätzlich zu dieser Eigenschaft unterstützen Attributzuordnungen auch die folgenden Attribute:
+Neben der Typeigenschaft unterstützen Attributzuordnungen auch die folgenden Attribute:
 
-- **Quellattribut:** Das Benutzerattribut aus dem Quellsystem (Beispiel: Active Directory).
-- **Zielattribut**: Das Benutzerattribut im Zielsystem (Beispiel: Azure Active Directory).
-- **Standardwert bei Null (optional)** : Der Wert, der an das Zielsystem übermittelt wird, wenn das Quellattribut den Wert NULL hat. Dieser Wert wird nur beim Erstellen eines Benutzers bereitgestellt. Beim Aktualisieren eines vorhandenen Benutzers wird „Standardwert bei Null“ nicht bereitgestellt.  
-- **Diese Zuordnung anwenden**
-  - **Immer**: Wenden Sie diese Zuordnung sowohl bei der Aktion zum Erstellen eines Benutzers als auch bei der zum Aktualisieren eines Benutzers an.
-  - **Nur während der Erstellung**: Wenden Sie diese Zuordnung nur bei der Aktion zum Erstellen eines Benutzers an.
+- **Quellattribut**: Das Benutzerattribut aus dem Quellsystem (beispielsweise Active Directory).
+- **Zielattribut**: Das Benutzerattribut im Zielsystem (beispielsweise Azure Active Directory).
+- **Standardwert bei Null (optional)** : Der Wert, der an das Zielsystem übermittelt wird, wenn das Quellattribut den Wert NULL hat. Dieser Wert wird nur beim Erstellen eines Benutzers bereitgestellt. Er wird nicht beim Aktualisieren eines vorhandenen Benutzers bereitgestellt.  
+- **Diese Zuordnung anwenden**:
+  - **Immer**: Diese Zuordnung wird sowohl bei der Benutzererstellung als auch bei Aktualisierungsaktionen angewendet.
+  - **Nur während der Erstellung**: Diese Zuordnung wird nur bei Benutzererstellungsaktionen angewendet.
 
 > [!NOTE]
-> In diesem Dokument wird beschrieben, wie Sie Attribute mit dem Azure-Portal zuordnen.  Weitere Informationen zur Verwendung von Graph finden Sie unter [Transformationen](how-to-transformation.md).
+> In diesem Artikel wird beschrieben, wie Sie Attribute im Azure-Portal zuordnen.  Weitere Informationen zur Verwendung von Microsoft Graph finden Sie unter [Transformationen](how-to-transformation.md).
 
-## <a name="using-attribute-mapping"></a>Verwenden der Attributzuordnung
+## <a name="add-an-attribute-mapping"></a>Hinzufügen einer Attributzuordnung
 
-Führen Sie die folgenden Schritte aus, um die neue Funktion zu verwenden.
+Führen Sie die folgenden Schritte aus, um die neue Funktion zu verwenden:
 
 1.  Wählen Sie im Azure-Portal die Option **Azure Active Directory** aus.
 2.  Wählen Sie **Azure AD Connect** aus.
 3.  Wählen Sie **Cloudsynchronisierung verwalten** aus.
 
-    ![Verwalten der Bereitstellung](media/how-to-install/install-6.png)
+    ![Screenshot: Link zum Verwalten der Cloudsynchronisierung](media/how-to-install/install-6.png)
 
 4. Wählen Sie unter **Konfiguration** Ihre Konfiguration aus.
-5. Wählen Sie **Zum Bearbeiten der Zuordnungen klicken** aus.  Der Bildschirm für die Attributzuordnung wird geöffnet.
+5. Wählen Sie **Zum Bearbeiten der Zuordnungen klicken** aus.  Über diesen Link wird der Bildschirm **Attributzuordnungen** geöffnet.
 
-    ![Hinzufügen von Attributen](media/how-to-attribute-mapping/mapping-6.png)
+    ![Screenshot: Link zum Hinzufügen von Attributen](media/how-to-attribute-mapping/mapping-6.png)
 
 6.  Klicken Sie auf **Attribut hinzufügen**.
 
-    ![Zuordnungstyp](media/how-to-attribute-mapping/mapping-1.png)
+    ![Screenshot: Schaltfläche zum Hinzufügen eines Attributs sowie Listen von Attributen und Zuordnungstypen](media/how-to-attribute-mapping/mapping-1.png)
 
-7. Wählen Sie den **Zuordnungstyp** aus.  In diesem Beispiel wird „Ausdruck“ verwendet.
-8.  Geben Sie den Ausdruck im Feld ein.  In diesem Beispiel verwenden wir `Replace([mail], "@contoso.com", , ,"", ,).`.
-9.  Geben Sie das Zielattribut ein.  In diesem Beispiel verwenden wir „ExtensionAttribute15“.
-10. Wählen Sie aus, wann dieses angewendet werden soll, und klicken Sie dann auf **Anwenden**.
+7. Wählen Sie den Zuordnungstyp aus. In diesem Beispiel wird **Ausdruck** verwendet.
+8. Geben Sie den Ausdruck im Feld ein. In diesem Beispiel wird `Replace([mail], "@contoso.com", , ,"", ,)` verwendet.
+9. Geben Sie das Zielattribut ein. In diesem Beispiel wird **ExtensionAttribute15** verwendet.
+10. Wählen Sie aus, wann diese Zuordnung angewendet werden soll, und wählen Sie dann **Anwenden** aus.
 
-    ![Zuordnungen bearbeiten](media/how-to-attribute-mapping/mapping-2a.png)
+    ![Screenshot: Ausgefüllte Felder beim Erstellen einer Attributzuordnung](media/how-to-attribute-mapping/mapping-2a.png)
 
-11. Sie kehren zum Bildschirm für die Attributzuordnung zurück. Die neue Attributzuordnung sollte jetzt angezeigt werden.  
-12. Klicken Sie auf **Schema speichern**.
+11. Wenn Sie zum Bildschirm **Attributzuordnung** zurückkehren, sollte die neue Attributzuordnung angezeigt werden.  
+12. Wählen Sie **Schema speichern** aus.
 
-    ![Schema speichern](media/how-to-attribute-mapping/mapping-3.png)
+    ![Screenshot: Schaltfläche „Schema speichern“](media/how-to-attribute-mapping/mapping-3.png)
 
 ## <a name="test-your-attribute-mapping"></a>Testen der Attributzuordnung
 
-Zum Testen der Attributzuordnung können Sie [Bedarfsorientierte Bereitstellung](how-to-on-demand-provision.md) verwenden.  Wählen Sie in der Liste 
+Zum Testen der Attributzuordnung können Sie die [bedarfsorientierte Bereitstellung](how-to-on-demand-provision.md) verwenden: 
 
 1. Wählen Sie im Azure-Portal die Option **Azure Active Directory** aus.
 2. Wählen Sie **Azure AD Connect** aus.
 3. Wählen Sie **Bereitstellung verwalten** aus.
 4. Wählen Sie unter **Konfiguration** Ihre Konfiguration aus.
-5. Klicken Sie unter **Validieren** auf die Schaltfläche **Benutzer bereitstellen**. 
-6. Führen Sie die folgenden Schritte auf dem Bildschirm für die bedarfsorientierte Bereitstellung aus.  Geben Sie den **Distinguished Name** eines Benutzers oder einer Gruppe ein, und klicken Sie auf die Schaltfläche **Bereitstellen**.  
-7. Sobald der Vorgang abgeschlossen ist, sollten ein Erfolgsbildschirm und vier grüne Kontrollkästchen angezeigt werden, die darauf hinweisen, dass die Bereitstellung erfolgreich war.  
+5. Wählen Sie unter **Validieren** die Schaltfläche **Benutzer bereitstellen** aus. 
+6. Geben Sie im Bildschirm **Bedarfsgesteuerte Bereitstellung** den Distinguished Name eines Benutzers oder einer Gruppe ein, und wählen Sie die Schaltfläche **Bereitstellen** aus. 
 
-    ![Erfolgreiche Bereitstellung](media/how-to-attribute-mapping/mapping-4.png)
+   Auf dem Bildschirm wird gezeigt, dass die Bereitstellung ausgeführt wird.
 
-8. Klicken Sie unter **Aktion ausführen** auf **Details anzeigen**.  Auf der rechten Seite sollte angezeigt werden, dass das neue Attribut synchronisiert und der Ausdruck angewendet wurde.
+   ![Screenshot: Anzeige des Bereitstellungsfortschritts](media/how-to-attribute-mapping/mapping-4.png)
 
-  ![Aktion ausführen](media/how-to-attribute-mapping/mapping-5.png)
+8. Nachdem die Bereitstellung abgeschlossen ist, wird für den erfolgreichen Vorgang ein Bildschirm mit vier grünen Häkchen angezeigt. 
+
+   Wählen Sie unter **Aktion ausführen** die Option **Details anzeigen** aus. Auf der rechten Seite sollte angezeigt werden, dass das neue Attribut synchronisiert und der Ausdruck angewendet wurde.
+
+   ![Screenshot: Bildschirm mit Erfolgs- und Exportdetails](media/how-to-attribute-mapping/mapping-5.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Worum handelt es sich bei der Azure AD Connect-Cloudsynchronisierung?](what-is-cloud-sync.md)
 - [Schreiben von Ausdrücken für Attributzuordnungen](reference-expressions.md)
-- [Attribute, die synchronisiert werden](../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context/hybrid/reference-connect-sync-attributes-synchronized.md)
+- [Mit Azure Active Directory synchronisierte Attribute](../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context/hybrid/reference-connect-sync-attributes-synchronized.md)

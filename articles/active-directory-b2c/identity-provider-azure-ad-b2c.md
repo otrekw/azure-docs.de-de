@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ea4def3cfaa19e27dc05e955bf97b41976ec2190
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: c9a20305f05b285b29d4a5eaf75116c862f3a6d4
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953919"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448488"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>Einrichten der Registrierung und Anmeldung mit einem Azure AD B2C-Konto von einem anderen Azure AD B2C-Mandanten
 
@@ -115,8 +115,10 @@ Gehen Sie wie folgt vor, um eine Anwendung zu erstellen.
 1. Wählen Sie **Speichern** aus.
 1. Um die Richtlinie zu testen, wählen Sie **Benutzerflow ausführen** aus.
 1. Wählen Sie für **Anwendung** die Webanwendung *testapp1* aus, die Sie zuvor registriert haben. Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
-1. Klicken Sie auf **Benutzerflow ausführen**.
-1. Wählen Sie auf der Registrierungs- oder Anmeldeseite die Option *Fabrikam* aus, um sich mit dem anderen Azure AD B2C-Mandanten anzumelden.
+1. Wählen Sie die Schaltfläche **Benutzerflow ausführen** aus.
+1. Wählen Sie auf der Registrierungs- oder Anmeldeseite die Option **Fabrikam** aus, um sich mit dem anderen Azure AD B2C-Mandanten anzumelden.
+
+Wenn der Anmeldevorgang erfolgreich verlaufen ist, wird der Browser an `https://jwt.ms` umgeleitet und dadurch der Inhalt des von Azure AD B2C zurückgegebenen Tokens angezeigt.
 
 ::: zone-end
 
@@ -221,7 +223,15 @@ Sie können Azure AD B2C als Anspruchsanbieter definieren, indem Sie in der Er
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+
+## <a name="test-your-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
+
+1. Wählen Sie die Richtliniendatei für die vertrauende Seite aus, z. B. `B2C_1A_signup_signin`.
+1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
+1. Wählen Sie die Schaltfläche **Jetzt ausführen** aus.
+1. Wählen Sie auf der Registrierungs- oder Anmeldeseite die Option **Fabrikam** aus, um sich mit dem anderen Azure AD B2C-Mandanten anzumelden.
+
+Wenn der Anmeldevorgang erfolgreich verlaufen ist, wird der Browser an `https://jwt.ms` umgeleitet und dadurch der Inhalt des von Azure AD B2C zurückgegebenen Tokens angezeigt.
 
 ::: zone-end
 

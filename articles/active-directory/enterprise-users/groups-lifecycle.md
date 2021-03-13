@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d71c44ebaba5b0cbcb03afa41ad15237dceaef
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 4a2a69b5013ab8e1bc4637f21ce484a132d37834
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547473"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455711"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Konfigurieren der Ablaufrichtlinie für Microsoft 365-Gruppen
 
@@ -42,7 +42,7 @@ Informationen zum Herunterladen und Installieren der Azure AD-PowerShell-Cmdlets
 
 ## <a name="activity-based-automatic-renewal"></a>Aktivitätsbasierte automatische Erneuerung
 
-Mit Azure AD-Intelligence werden Gruppen nun automatisch erneuert, je nachdem, ob sie kürzlich verwendet wurden. Durch dieses Feature müssen Gruppenbesitzer keine manuellen Aktionen mehr ausführen, weil es auf der Benutzeraktivität in Gruppen in Microsoft 365-Diensten wie Outlook, SharePoint oder Teams basiert. Wenn z. B. ein Besitzer oder ein Gruppenmitglied ein Dokument in SharePoint hochlädt, einen Teams-Kanal besucht oder eine E-Mail an die Gruppe in Outlook sendet, wird die Gruppe automatisch erneuert, und der Besitzer erhält keine Benachrichtigung zur Erneuerung.
+Mit Azure AD-Intelligence werden Gruppen nun automatisch erneuert, je nachdem, ob sie kürzlich verwendet wurden. Durch dieses Feature müssen Gruppenbesitzer keine manuellen Aktionen mehr ausführen, weil es auf der Benutzeraktivität in Gruppen in Microsoft 365-Diensten wie Outlook, SharePoint oder Teams basiert. Wenn beispielsweise ein Besitzer oder ein Gruppenmitglied ein Dokument in SharePoint hochlädt, einen Teams-Kanal besucht oder eine E-Mail an die Gruppe in Outlook sendet, wird die Gruppe etwa 35 Tage vor Ablauf der Gruppengültigkeitsdauer automatisch erneuert, und der Besitzer erhält keine Benachrichtigung zur Erneuerung.
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>Aktivitäten, durch die der Ablauf der Gruppe automatisch verlängert wird
 
@@ -172,7 +172,7 @@ Hier finden Sie einige Beispiele dafür, wie Sie die Ablaufeinstellungen für Mi
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
    ```
   
-Die folgenden Cmdlets können verwendet werden, um die Richtlinie ausführlicher zu konfigurieren. Weitere Informationen finden Sie in der [PowerShell-Dokumentation](/powershell/module/azuread/?branch=master&view=azureadps-2.0-preview#groups).
+Die folgenden Cmdlets können verwendet werden, um die Richtlinie ausführlicher zu konfigurieren. Weitere Informationen finden Sie in der [PowerShell-Dokumentation](/powershell/module/azuread/?view=azureadps-2.0-preview#groups).
 
 - Get-AzureADMSGroupLifecyclePolicy
 - New-AzureADMSGroupLifecyclePolicy

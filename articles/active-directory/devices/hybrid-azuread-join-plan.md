@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c4ed5dfee80c33009874361ae6b4d23ec00bc26
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: cadba181ea7d6a12ca64c78f3c7c58654d5f756f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573329"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500807"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -95,6 +95,7 @@ Als ersten Planungsschritt sollten Sie Ihre Umgebung überprüfen und ermitteln,
 Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte für Ihren Mandanten [bei Azure AD registriert](overview.md#getting-devices-in-azure-ad) sind, kann dies zu einem Doppelstatus der Azure AD-Hybrideinbindung und der Registrierung bei Azure AD des Geräts führen. Es wird empfohlen, ein Upgrade auf Windows 10 1803 (mit angewandtem KB4489894) oder höher durchzuführen, um dieses Szenario automatisch zu beheben. In Releases vor 1803 müssen Sie die Registrierung bei Azure AD manuell entfernen, bevor Sie die Azure AD-Hybrideinbindung aktivieren. In Releases ab 1803 wurden die folgenden Änderungen vorgenommen, um diesen Doppelstatus zu vermeiden:
 
 - Jeder vorhandene Azure AD-Registrierungsstatus für einen Benutzer wird nach der <i>Azure AD-Hybrideinbindung des Geräts und der Anmeldung desselben Benutzers</i> automatisch entfernt. Wenn Benutzer A beispielsweise einen Azure AD-Registrierungsstatus auf dem Gerät hat, wird der Doppelstatus für Benutzer A nur dann bereinigt, wenn sich Benutzer A beim Gerät anmeldet. Bei mehreren Benutzern auf demselben Gerät wird der Doppelstatus individuell bei der Anmeldung der jeweiligen Benutzer bereinigt. Windows 10 entfernt die Registrierung bei Azure AD und hebt darüber hinaus auch die Registrierung des Geräts bei Intune oder einer anderen mobilen Geräteverwaltung auf, wenn die Registrierung im Rahmen der Azure AD-Registrierung über die automatische Registrierung erfolgt ist.
+- Der Azure AD-Registrierungsstatus für lokale Konten auf dem Gerät ist von dieser Änderung nicht betroffen. Sie gilt nur für Domänenkonten. Daher wird der Azure AD-Registrierungsstatus für lokale Konten auch nach der Benutzeranmeldung nicht automatisch entfernt, da der Benutzer kein Domänenbenutzer ist. 
 - Sie können verhindern, dass Ihr in die Domäne eingebundenes Gerät bei Azure AD registriert wird, indem Sie den folgenden Registrierungsschlüssel in „HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin“ hinzufügen: "BlockAADWorkplaceJoin"=dword:00000001.
 - Wenn Sie Windows Hello for Business unter Windows 10 1803 konfiguriert haben, muss der Benutzer Windows Hello for Business nach der Bereinigung des Doppelstatus erneut einrichten. Dieses Problem wird mit KB4512509 behoben.
 
@@ -170,7 +171,7 @@ Die folgende Tabelle enthält Details zur Unterstützung dieser lokalen AD UPNs 
 | ----- | ----- | ----- | ----- |
 | Routingfähig | Im Verbund | Version 1703 | Allgemein verfügbar |
 | Nicht routingfähig | Im Verbund | Version 1803 | Allgemein verfügbar |
-| Routingfähig | Verwaltet | Version 1803 | Allgemein verfügbar, Azure AD SSPR auf Windows-Sperrbildschirm wird nicht unterstützt |
+| Routingfähig | Verwaltet | Version 1803 | Allgemein verfügbar, die Self-Service-Kennwortzurücksetzung von Azure AD wird auf dem Windows-Sperrbildschirm nicht unterstützt. Der lokale UPN muss mit dem Attribut `onPremisesUserPrincipalName` in Azure AD synchronisiert werden. |
 | Nicht routingfähig | Verwaltet | Nicht unterstützt | |
 
 ## <a name="next-steps"></a>Nächste Schritte

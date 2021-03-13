@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 02/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1957adc0effd5b37d7aff3f813267da6ca065e0a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e758933b80efbf36dc263b7bd7d2d3c45a59a9f8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368964"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426789"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Voraussetzungen für Azure AD Connect
 In diesem Artikel werden die Voraussetzungen und die Hardwareanforderungen für Azure Active Directory (Azure AD) Connect beschrieben.
@@ -102,6 +102,7 @@ Es wird empfohlen, den Azure AD Connect-Server zuverlässig zu schützen, um di
 
 ### <a name="connectivity"></a>Konnektivität
 * Der Azure AD Connect-Server benötigt die DNS-Auflösung sowohl für das Intranet als auch für das Internet. Der DNS-Server muss Namen sowohl zu Ihrem lokalen Active Directory als auch zu den Azure AD-Endpunkten auflösen können.
+* Azure AD Connect erfordert Netzwerkkonnektivität zu allen konfigurierten Domänen
 * Wenn Sie in Ihrem Intranet Firewalls verwenden und die Ports zwischen den Azure AD Connect-Servern und Ihren Domänencontrollern öffnen müssen, lesen Sie die Informationen unter [Azure AD Connect-Ports](reference-connect-ports.md).
 * Wenn Ihr Proxy oder Ihre Firewall den Zugriff auf bestimmte URLs beschränkt, müssen die unter [Office 365-URLs und -IP-Adressbereiche](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) dokumentierten URLs geöffnet werden. Weitere Informationen finden Sie auch unter [Hinzufügen der Azure-Portal-URLs zu einer Liste sicherer Adressen für Ihre Firewall oder Ihren Proxyserver](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud)
   * Wenn Sie die Microsoft Cloud in Deutschland oder die Microsoft Azure Government-Cloud verwenden, finden Sie die entsprechenden URLs unter [Azure AD Connect: Besondere Überlegungen zu Instanzen](reference-connect-instances.md).
@@ -167,6 +168,17 @@ Vor der Version 1.1.614.0 verwendet Azure AD Connect standardmäßig TLS 1.0 fü
     "SchUseStrongCrypto"=dword:00000001
     ```
 1. Wenn Sie TLS 1.2 auch zwischen dem Server mit dem Synchronisierungsmodul und einer SQL Server-Remoteinstanz aktivieren möchten, müssen Sie sicherstellen, dass die erforderlichen Versionen für die [TLS 1.2-Unterstützung für Microsoft SQL Server](https://support.microsoft.com/kb/3135244) installiert sind.
+
+### <a name="dcom-prerequisites-on-the-synchronization-server"></a>DCOM-Voraussetzungen auf dem Synchronisierungsserver
+Während der Installation des Synchronisierungsdiensts überprüft Azure AD Connect, ob der folgende Registrierungsschlüssel vorhanden ist:
+
+- HKEY_LOCAL_MACHINE: Software\Microsoft\Ole
+
+Azure AD Connect überprüft auch, ob unter diesem Registrierungsschlüssel die folgenden Werte vorhanden und unbeschädigt sind: 
+
+- [MachineAccessRestriction](/windows/win32/com/machineaccessrestriction)
+- [MachineLaunchRestriction](/windows/win32/com/machinelaunchrestriction)
+- [DefaultLaunchPermission](/windows/win32/com/defaultlaunchpermission)
 
 ## <a name="prerequisites-for-federation-installation-and-configuration"></a>Voraussetzungen für die Verbundinstallation und -konfiguration
 ### <a name="windows-remote-management"></a>Windows-Remoteverwaltung

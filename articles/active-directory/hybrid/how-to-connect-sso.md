@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88eae702782e2f1af9c20797676214db458c2adc
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: eeede88bfbe024a66e40270240d32488e581dd77
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937617"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517700"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Nahtlose einmalige Anmeldung mit Azure Active Directory
 
@@ -37,7 +37,7 @@ Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](how
 
 ## <a name="sso-via-primary-refresh-token-vs-seamless-sso"></a>Einmaliges Anmelden über primäres Aktualisierungstoken und nahtloses einmaliges Anmelden
 
-Unter Windows 10 empfiehlt sich das einmalige Anmelden über das primäre Aktualisierungstoken. Unter Windows 7 und 8.1 ist die Verwendung des nahtlosen einmaligen Anmeldens empfehlenswert.
+Unter Windows 10, Windows Server 2016 und höheren Versionen empfiehlt sich das einmalige Anmelden über das primäre Aktualisierungstoken. Unter Windows 7 und 8.1 ist die Verwendung des nahtlosen einmaligen Anmeldens empfehlenswert.
 Das nahtlose einmalige Anmelden setzt voraus, dass das Gerät des Benutzers in die Domäne eingebunden ist, kann aber unter Windows 10 nicht für [in Azure AD eingebundene Geräte](../devices/concept-azure-ad-join.md)oder für [hybrid in Azure AD eingebundene Geräte](../devices/concept-azure-ad-join-hybrid.md) verwendet werden. Das einmalige Anmelden (SSO) für in Azure AD oder hybrid in Azure AD eingebundene Geräte sowie in Azure AD registrierte Geräte erfolgt auf Basis des [primären Aktualisierungstokens](../devices/concept-primary-refresh-token.md).
 
 Das einmalige Anmelden (SSO) über das primäre Aktualisierungstoken funktioniert für hybrid in Azure AD eingebundene Geräte, in Azure AD eingebundene oder persönliche registrierte Geräte, sobald die Geräte durch Hinzufügen eines Geschäfts-, Schul- oder Unikontos bei Azure AD registriert wurden. Weitere Informationen zur Funktionsweise des einmaligen Anmeldens (SSO) über das primäre Aktualisierungstoken unter Windows 10 finden Sie unter: [Primäres Aktualisierungstoken und Azure AD](../devices/concept-primary-refresh-token.md)

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1ce9c00cb58253e2cca9a7d60c4cce9b77709688
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: ce5e8cfda4a9f51a90c8f26133a710f4d1c258b6
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953851"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448267"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem LinkedIn-Konto mithilfe von Azure Active Directory B2C
 
@@ -69,7 +69,10 @@ Wenn Sie die Anmeldung für Benutzer mit einem LinkedIn-Konto in Azure Active Di
 1. Wählen Sie **Speichern** aus.
 1. Um die Richtlinie zu testen, wählen Sie **Benutzerflow ausführen** aus.
 1. Wählen Sie für **Anwendung** die Webanwendung *testapp1* aus, die Sie zuvor registriert haben. Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
-1. Klicken Sie auf **Benutzerflow ausführen**.
+1. Wählen Sie die Schaltfläche **Benutzerflow ausführen** aus.
+1. Wählen Sie auf der Registrierungs- oder Anmeldeseite die Option **LinkedIn** aus, um sich mit dem LinkedIn-Konto anzumelden.
+
+Wenn der Anmeldevorgang erfolgreich verlaufen ist, wird der Browser an `https://jwt.ms` umgeleitet und dadurch der Inhalt des von Azure AD B2C zurückgegebenen Tokens angezeigt.
 
 ::: zone-end
 
@@ -96,8 +99,8 @@ Um Benutzern zu ermöglichen, sich mit einem LinkedIn-Konto anzumelden, müssen 
 
 Definieren Sie ein LinkedIn-Konto als Anspruchsanbieter, indem Sie es in der Erweiterungsdatei Ihrer Richtlinie dem Element **ClaimsProviders** hinzufügen.
 
-1. Öffnen Sie im Editor die Datei *SocialAndLocalAccounts/**TrustFrameworkExtensions.xml** _. Diese Datei ist im [Starter Pack für benutzerdefinierte Richtlinien][starter-pack] enthalten, das Sie im Rahmen der Voraussetzungen heruntergeladen haben.
-1. Suchen Sie das _ *ClaimsProviders**-Element. Falls das Element nicht vorhanden sein sollte, fügen Sie es unter dem Stammelement hinzu.
+1. Öffnen Sie im Editor die Datei *SocialAndLocalAccounts/ **TrustFrameworkExtensions.xml*** . Diese Datei ist im [Starter Pack für benutzerdefinierte Richtlinien][starter-pack] enthalten, das Sie im Rahmen der Voraussetzungen heruntergeladen haben.
+1. Suchen Sie nach dem Element **ClaimsProviders**. Falls das Element nicht vorhanden sein sollte, fügen Sie es unter dem Stammelement hinzu.
 1. Fügen Sie ein neues **ClaimsProvider**-Element wie folgt hinzu:
 
     ```xml
@@ -213,7 +216,14 @@ Fügen Sie das Element **BuildingBlocks** im oberen Bereich der Datei *TrustFram
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
+
+1. Wählen Sie die Richtliniendatei für die vertrauende Seite aus, z. B. `B2C_1A_signup_signin`.
+1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
+1. Wählen Sie die Schaltfläche **Jetzt ausführen** aus.
+1. Wählen Sie auf der Registrierungs- oder Anmeldeseite die Option **LinkedIn** aus, um sich mit dem LinkedIn-Konto anzumelden.
+
+Wenn der Anmeldevorgang erfolgreich verlaufen ist, wird der Browser an `https://jwt.ms` umgeleitet und dadurch der Inhalt des von Azure AD B2C zurückgegebenen Tokens angezeigt.
 
 ## <a name="migration-from-v10-to-v20"></a>Migration von Version 1.0 zu 2.0
 

@@ -11,30 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 02/11/2021
+ms.date: 03/09/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f05ca02068c82a3839b22b698e49a7be818a56
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4276b48584ecbad91794de58abafd7e3367f6877
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370545"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564032"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Erstellen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in Privileged Identity Management
 
-Für Mitarbeiter kann sich der Zugriff auf privilegierte Azure-Ressourcenrollen im Laufe der Zeit ändern. Daher sollten Sie den Zugriff in regelmäßigen Abständen überprüfen, um das mit veralteten Rollenzuweisungen verbundene Risiko zu verringern. Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie eine Zugriffsüberprüfung für privilegierte Azure-Ressourcenrollen erstellen. Sie können auch wiederholte Zugriffsüberprüfungen konfigurieren, die automatisch ausgeführt werden.
+Die Notwendigkeit, auf privilegierte Ressourcenrollen zugreifen zu müssen, kann sich für Mitarbeiter im Laufe der Zeit ändern. Daher sollten Sie den Zugriff in regelmäßigen Abständen überprüfen, um das mit veralteten Rollenzuweisungen verbundene Risiko zu verringern. Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie Zugriffsüberprüfungen für den privilegierten Zugriff auf Azure-Ressourcenrollen erstellen. Sie können auch wiederholte Zugriffsüberprüfungen konfigurieren, die automatisch ausgeführt werden. In diesem Artikel wird beschrieben, wie Sie eine oder mehrere Zugriffsüberprüfungen erstellen.
 
-In diesem Artikel wird beschrieben, wie Sie eine oder mehrere Zugriffsüberprüfungen für privilegierte Azure-Ressourcenrollen erstellen.
-
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisite-role"></a>Erforderliche Rolle
 
  Zum Erstellen von Zugriffsüberprüfungen müssen Sie der Azure-Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](../../role-based-access-control/built-in-roles.md#user-access-administrator) für die Ressource zugewiesen sein.
 
 ## <a name="open-access-reviews"></a>Öffnen von Zugriffsüberprüfungen
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit einem Benutzer an, der ein Mitglied der Rolle „Administrator für privilegierte Rollen“ ist.
+1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) als Benutzer an, der einer der erforderlichen Rollen zugewiesen ist.
 
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 

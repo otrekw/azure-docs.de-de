@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 19a5d223b587e47c562977cc9fea34f990eb0e46
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: edd2ec633bd78ce1a596782deab57105e9d7f1c3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370817"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487745"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)
 
@@ -37,6 +37,21 @@ Wenn Ihre Lizenz abgelaufen ist, wird der Anwendungsproxy automatisch deaktivier
 Stellen Sie sicher, dass Sie über mindestens eine Azure AD Premium P1- oder P2-Lizenz verfügen und ein Azure AD-Anwendungsproxyconnector installiert ist. Nachdem Sie den ersten Connector erfolgreich installiert haben, wird der Azure AD-Anwendungsproxydienst automatisch aktiviert.
 
 ## <a name="connector-configuration"></a>Connector-Konfiguration
+
+### <a name="why-is-my-connector-still-using-an-older-version-and-not-auto-upgraded-to-latest-version"></a>Warum verwendet mein Connector noch eine ältere Version und wird nicht automatisch auf die neueste Version aktualisiert?
+
+Dies kann darauf zurückzuführen sein, dass der Updatedienst nicht ordnungsgemäß funktioniert oder keine neuen Updates verfügbar sind, die der Dienst installieren kann.
+
+Der Updatedienst funktioniert fehlerfrei, wenn er ausgeführt wird und im Ereignisprotokoll keine Fehler aufgezeichnet sind (Anwendungs- und Dienstprotokolle -> Microsoft -> AadApplicationProxy -> Updater -> Admin). 
+
+> [!IMPORTANT]
+> Nur Hauptversionen werden für das automatische Upgrade veröffentlicht. Es wird empfohlen, den Connector in regelmäßigen Abständen manuell zu aktualisieren. Weitere Informationen zu neuen Releases und zum Versionstyp (Download, automatisches Upgrade), Fehlerbehebungen und neue Funktionen finden Sie unter [Azure AD-Anwendungsproxy: Verlauf der Versionsveröffentlichungen](application-proxy-release-version-history.md).
+
+So aktualisieren Sie einen Connector manuell
+
+-  Laden Sie die neueste Version des Connectors herunter. (Sie finden die Version im Azure-Portal unter „Anwendungsproxy“). Sie finden den Link auch unter [Azure AD-Anwendungsproxy: Verlauf der Versionsveröffentlichungen](application-proxy-release-version-history.md).
+-   Das Installationsprogramm startet die Azure AD-Anwendungsproxyconnector-Dienste neu. In einigen Fällen ist möglicherweise ein Neustart des Servers erforderlich, wenn das Installationsprogramm nicht alle Dateien ersetzen kann. Daher empfiehlt es sich, alle Anwendungen (d. h. Ereignisanzeige) zu schließen, bevor Sie das Upgrade starten.
+-   Führen Sie das Installationsprogramm aus. Der Upgradevorgang ist schnell und erfordert keine Angabe von Anmeldeinformationen. Der Connector wird nicht erneut registriert.
 
 ### <a name="can-application-proxy-connector-services-run-in-a-different-user-context-than-the-default"></a>Können Anwendungsproxyconnector-Dienste in einem anderen als dem Standardbenutzerkontext ausgeführt werden?
 
