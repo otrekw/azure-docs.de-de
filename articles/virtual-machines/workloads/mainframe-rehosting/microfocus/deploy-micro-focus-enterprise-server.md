@@ -1,7 +1,7 @@
 ---
 title: Bereitstellen von Micro Focus Enterprise Server 5.0 für AKS | Microsoft-Dokumentation
 description: Hosten Sie Ihre IBM z/OS-Mainframe-Workloads mithilfe der Micro Focus-Entwicklungs- und Testumgebung neu auf virtuellen Azure-Computern (VMs).
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: maggsl
 ms.author: edprice
@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 6780942d922f885c7afebd8e64f4f28654c3800e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e5b3857c2252a939080206fb1f92cc422f326fc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87042540"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564355"
 ---
 # <a name="deploy-micro-focus-enterprise-server-50-to-aks"></a>Bereitstellen von Micro Focus Enterprise Server 5.0 für AKS
 

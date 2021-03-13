@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 02/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, automl
-ms.openlocfilehash: da973cf377ceace4a92d1cdd1e956321a5592e6a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0de3c9a7cf464f38a1a12d8bc19451fb1158a5ad
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692214"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520505"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Verwenden von automatisiertem ML in einer Azure Machine Learning-Pipeline in Python
 
@@ -37,7 +37,7 @@ Automatisiertes ML in einer Pipeline wird durch ein `AutoMLStep`-Objekt dargeste
 
 `PipelineStep` verfügt über mehrere Unterklassen. Neben `AutoMLStep` wird in diesem Artikel ein `PythonScriptStep` zur Datenaufbereitung sowie ein weiterer Schritt zum Registrieren des Modells erläutert.
 
-Die bevorzugte Methode für das anfängliche Verschieben von Daten _in_ eine ML-Pipeline ist die Verwendung von `Dataset`-Objekten. Das Verschieben von Daten _zwischen_ Schritten und möglicherweise das Speichern von Datenausgaben aus Ausführungen wird bevorzugt mit den Objekten [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) und [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) durchgeführt. Für die Verwendung mit `AutoMLStep` muss das `PipelineData`-Objekt in ein `PipelineOutputTabularDataset`-Objekt transformiert werden. Weitere Informationen finden Sie unter [Verschieben von Daten in ML-Pipelineschritte und zwischen ML-Pipelineschritten (Python)](how-to-move-data-in-out-of-pipelines.md).
+Die bevorzugte Methode für das anfängliche Verschieben von Daten _in_ eine ML-Pipeline ist die Verwendung von `Dataset`-Objekten. Das Verschieben von Daten _zwischen_ Schritten und möglicherweise das Speichern von Datenausgaben aus Ausführungen wird bevorzugt mit den Objekten [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig) und [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig) durchgeführt. Für die Verwendung mit `AutoMLStep` muss das `PipelineData`-Objekt in ein `PipelineOutputTabularDataset`-Objekt transformiert werden. Weitere Informationen finden Sie unter [Verschieben von Daten in ML-Pipelineschritte und zwischen ML-Pipelineschritten (Python)](how-to-move-data-in-out-of-pipelines.md).
 
 `AutoMLStep` wird über ein `AutoMLConfig`-Objekt konfiguriert. `AutoMLConfig` ist eine flexible Klasse, wie unter [Konfigurieren automatisierter ML-Experimente in Python](./how-to-configure-auto-train.md#configure-your-experiment-settings) erläutert. 
 

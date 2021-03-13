@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 7778607b533a836eb5a47a12b73374c2a8299621
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 55f8d37d435aa8adeb4d97246ce7b2c7811140be
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590571"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557997"
 ---
 # <a name="security-alerts-schemas"></a>Schemas für Sicherheitswarnungen
 
@@ -173,7 +173,7 @@ Sie können die Sicherheitswarnungen im Aktivitätsprotokoll anzeigen, indem Sie
 
 Microsoft Graph ist das Gateway zu Daten und Intelligence in Microsoft 365. Microsoft Graph bietet ein einheitliches Programmierbarkeitsmodell, mit dem Sie auf die enormen Datenmengen in Microsoft 365, Windows 10 und Enterprise Mobility + Security zugreifen können. Verwenden Sie die Vielzahl von Daten in Microsoft Graph, um Apps für Organisationen und Consumer zu erstellen, die mit Millionen von Benutzern interagieren.
 
-Das Schema und eine JSON-Darstellung für Sicherheitswarnungen, die an MS Graph gesendet werden, sind in der [Microsoft Graph-Dokumentation](/graph/api/resources/alert?preserve-view=true&view=graph-rest-1.0) verfügbar.
+Das Schema und eine JSON-Darstellung für Sicherheitswarnungen, die an MS Graph gesendet werden, sind in der [Microsoft Graph-Dokumentation](/graph/api/resources/alert) verfügbar.
 
 ---
 

@@ -20,6 +20,8 @@
       href: ../../search/cognitive-search-custom-skill-form.md
     - name: Verwenden der Formularerkennung mit AI Builder
       href: tutorial-ai-builder.md
+    - name: Verwenden der Formularerkennung mit Azure Functions
+      href: tutorial-azure-function.md
     - name: Extrahieren von Formulardaten im Massenvorgang
       href: tutorial-bulk-processing.md
 - name: Konzepte
