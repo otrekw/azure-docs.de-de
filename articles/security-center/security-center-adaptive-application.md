@@ -1,24 +1,18 @@
 ---
 title: Adaptive Anwendungssteuerungen in Azure Security Center
 description: In diesem Dokument erfahren Sie, wie Sie die adaptive Anwendungssteuerung in Azure Security Center für Zulassungslisten von Anwendungen verwenden, die auf Azure-Computern ausgeführt werden.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: a7ad5f661d4eca07deb0942c7684b89ac59931a2
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: de5c5fbb6673d022517bba2486ed4aa1f739d19b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834390"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439577"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Verwenden von adaptiven Anwendungssteuerungen zum Verringern der Angriffsfläche Ihres Computers
 
@@ -193,6 +187,12 @@ So beheben Sie die Probleme:
 
 1. Wählen Sie eine Warnung aus, um weitere Informationen und die Liste der betroffenen Computer zu erhalten.
 
+    Auf der Seite „Warnungen“ werden weitere Details zu den Warnungen angezeigt, und es wird ein Link **Maßnahme ergreifen** mit Empfehlungen zur Entschärfung der Bedrohung angezeigt.
+
+    :::image type="content" source="media/security-center-adaptive-application/adaptive-application-alerts-start-time.png" alt-text="Die Startzeit der Warnungen von adaptiven Anwendungssteuerungen ist das ":::
+
+    > [!NOTE]
+    > „Adaptive Anwendungssteuerungen“ berechnet Ereignisse einmal alle zwölf Stunden. Die auf der Seite „Warnungen“ angezeigte „Startzeit der Aktivität" ist der Zeitpunkt, zu dem die adaptiven Anwendungssteuerungen die Warnung generiert haben, und **nicht** der Zeitpunkt, zu dem der verdächtige Prozess aktiv war.
 
 
 ## <a name="move-a-machine-from-one-group-to-another"></a>Verschieben eines Computers aus einer Gruppe in eine andere
@@ -219,7 +219,7 @@ Wenn Sie einen Computer aus einer Gruppe in eine andere Gruppen verschieben, än
 
 Verwenden Sie die REST-API, um Ihre adaptive Anwendungssteuerung programmgesteuert zu verwalten. 
 
-Die vollständige API-Dokumentation finden Sie [hier](/rest/api/securitycenter/adaptiveapplicationcontrols).
+Die entsprechende API-Dokumentation ist im [Abschnitt „Adaptive Anwendungssteuerungen“ in den Security Center-API-Dokumenten](/rest/api/securitycenter/adaptiveapplicationcontrols) verfügbar.
 
 Einige der Funktionen, die über die REST-API verfügbar sind:
 

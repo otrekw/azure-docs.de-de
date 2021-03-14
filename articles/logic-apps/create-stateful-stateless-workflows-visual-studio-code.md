@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 0850830e6f8101feae80154a0e245196a690f276
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/08/2021
+ms.openlocfilehash: f7f8082cc9120345336610d5cb49741140d3b606
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050238"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557011"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Erstellen zustandsbehafteter und zustandsloser Workflows in Visual Studio Code mit der Erweiterung „Azure Logic Apps (Vorschau)“
 
@@ -33,6 +33,8 @@ In diesem Artikel erfahren Sie, wie Sie Ihre Logik-App und einen Workflow in Vis
 * Hinzufügen eines Triggers und einer Aktion.
 
 * Lokales Ausführen, Testen, Debuggen und Überprüfen des Ausführungsverlaufs.
+
+* Suchen von Domänennamensdetails für den Firewallzugriff.
 
 * Bereitstellen in Azure, was die optionale Aktivierung von Application Insights beinhaltet.
 
@@ -280,6 +282,7 @@ Bevor Sie Ihre Logik-App erstellen können, erstellen Sie ein lokales Projekt, d
    1. Ersetzen Sie den Eigenschaftswert `AzureWebJobsStorage` durch die Verbindungszeichenfolge des Speicherkontos, die Sie zuvor gespeichert haben. Beispiel:
 
       Vorher:
+
       ```json
       {
          "IsEncrypted": false,
@@ -291,6 +294,7 @@ Bevor Sie Ihre Logik-App erstellen können, erstellen Sie ein lokales Projekt, d
       ```
 
       Nachher:
+
       ```json
       {
          "IsEncrypted": false,
@@ -302,6 +306,25 @@ Bevor Sie Ihre Logik-App erstellen können, erstellen Sie ein lokales Projekt, d
       ```
 
    1. Achten Sie darauf, dass Sie nach Abschluss des Vorgangs Ihre Änderungen speichern.
+
+<a name="enable-built-in-connector-authoring"></a>
+
+## <a name="enable-built-in-connector-authoring"></a>Aktivieren der Erstellung integrierter Connectors
+
+Sie können Ihre eigenen integrierten Connectors für jeden benötigten Dienst erstellen, indem Sie das [Erweiterbarkeitsframework der Vorschauversion](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272) verwenden. Ähnlich wie integrierte Connectors wie Azure Service Bus und SQL Server bieten diese Connectors einen höheren Durchsatz, niedrige Wartezeiten, lokale Konnektivität und werden nativ im selben Prozess wie die Vorschau-Runtime ausgeführt.
+
+Die Erstellungsfunktion ist derzeit nur in Visual Studio Code verfügbar, aber nicht standardmäßig aktiviert. Um diese Connectors zu erstellen, müssen Sie zuerst Ihr Projekt von erweiterungspaketbasiert (Node.js) in NuGet-Paketbasiert (.NET) konvertieren.
+
+> [!IMPORTANT]
+> Diese Aktion ist ein unidirektionaler Vorgang, der nicht rückgängig gemacht werden kann.
+
+1. Bewegen Sie im Bereich „Explorer“ im Stammverzeichnis Ihres Projekts den Mauszeiger über einen beliebigen leeren Bereich unterhalb aller anderen Dateien und Ordner, öffnen Sie das Kontextmenü, und wählen Sie **In Nuget-basiertes Logik-App-Projekt konvertieren** aus.
+
+   ![Screenshot, der den Bereich „Explorer“ mit dem aus einem leeren Bereich heraus geöffneten Kontextmenü des Projekts im Projektfenster zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/convert-logic-app-project.png)
+
+1. Wenn die Eingabeaufforderung angezeigt wird, bestätigen Sie die Projektkonvertierung.
+
+1. Um den Vorgang fortzusetzen, überprüfen und befolgen Sie die Schritte im Artikel [Azure Logic Apps läuft überall: Erweiterbarkeit integrierter Connectors](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272).
 
 <a name="open-workflow-definition-designer"></a>
 
@@ -555,7 +578,7 @@ Um einen Haltepunkt hinzuzufügen, führen Sie diese Schritte aus:
 
 1. Um die verfügbaren Informationen zu überprüfen, wenn ein Haltepunkt erreicht wird, untersuchen Sie in der Ausführungsansicht den Bereich **Variablen**.
 
-1. Um die Workflowausführung fortzusetzen, wählen Sie auf der Symbolleiste „Debuggen“ **Fortsetzen** (Wiedergabeschaltfläche) aus. 
+1. Um die Workflowausführung fortzusetzen, wählen Sie auf der Symbolleiste „Debuggen“ **Fortsetzen** (Wiedergabeschaltfläche) aus.
 
 Während der Workflowausführung können Sie jederzeit Haltepunkte hinzufügen und entfernen. Wenn Sie jedoch die **workflow.json**-Datei nach dem Start der Ausführung aktualisieren, werden Haltepunkte nicht automatisch aktualisiert. Um die Haltepunkte zu aktualisieren, starten Sie die Logik-App neu.
 
@@ -737,6 +760,55 @@ Nachdem Sie Aktualisierungen an Ihrer Logik-App vorgenommen haben, können Sie e
    ![Screenshot, der den Status für jeden Schritt im aktualisierten Workflow sowie die Ein- und Ausgaben in der erweiterten Aktion „Antwort“ zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/run-history-details-rerun.png)
 
 1. Um die Debugsitzung zu beenden, wählen Sie im menü **Ausführen** den Eintrag **Debuggen beenden** (UMSCHALT+F5) aus.
+
+<a name="firewall-setup"></a>
+
+##  <a name="find-domain-names-for-firewall-access"></a>Suchen von Domänennamen für den Firewallzugriff
+
+Bevor Sie Ihren Logik-App-Workflow im Azure-Portal bereitstellen und ausführen, müssen Sie, wenn in Ihrer Umgebung strenge Netzwerkanforderungen gelten oder Firewalls vorhanden sind, die den Datenverkehr einschränken, Berechtigungen für alle Trigger- oder Aktionsverbindungen, die in Ihrem Workflow vorhanden sind, einrichten.
+
+Führen Sie die folgenden Schritte aus, um die vollqualifizierten Domänennamen (FQDNs) für diese Verbindungen zu ermitteln:
+
+1. Öffnen Sie in Ihrem Logik-App-Projekt die Datei **connections.json**, die erstellt wird, nachdem Sie Ihrem Workflow den ersten verbindungsbasierten Trigger oder eine Aktion hinzugefügt haben, und suchen Sie das `managedApiConnections`-Objekt.
+
+1. Für jede von Ihnen erstellte Verbindung suchen, kopieren und speichern Sie den `connectionRuntimeUrl`-Eigenschaftswert an einem sicheren Ort, damit Sie Ihre Firewall mit diesen Informationen einrichten können.
+
+   Diese Beispieldatei **connections.json** enthält zwei Verbindungen, eine AS2-Verbindung und eine Office 365-Verbindung mit diesen `connectionRuntimeUrl`-Werten:
+
+   * AS2: `"connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/as2/11d3fec26c87435a80737460c85f42ba`
+
+   * Office 365: `"connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/office365/668073340efe481192096ac27e7d467f`
+
+   ```json
+   {
+      "managedApiConnections": {
+         "as2": {
+            "api": {
+               "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/as2"
+            },
+            "connection": {
+               "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Web/connections/{connection-resource-name}"
+            },
+            "connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/as2/11d3fec26c87435a80737460c85f42ba,
+            "authentication": {
+               "type":"ManagedServiceIdentity"
+            }
+         },
+         "office365": {
+            "api": {
+               "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/office365"
+            },
+            "connection": {
+               "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Web/connections/{connection-resource-name}"
+            },
+            "connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/office365/668073340efe481192096ac27e7d467f,
+            "authentication": {
+               "type":"ManagedServiceIdentity"
+            }
+         }
+      }
+   }
+   ```
 
 <a name="deploy-azure"></a>
 
@@ -1348,6 +1420,7 @@ Beim Versuch, eine Debugsitzung zu starten, erhalten Sie einen Fehler wie **Fehl
 1. Löschen Sie in der folgenden Aufgabe die Zeile `"dependsOn: "generateDebugSymbols"` (einschließlich des Kommas, mit dem die vorherige Zeile abgeschlossen wird). Beispiel:
 
    Vorher:
+
    ```json
     {
       "type": "func",
@@ -1359,6 +1432,7 @@ Beim Versuch, eine Debugsitzung zu starten, erhalten Sie einen Fehler wie **Fehl
    ```
 
    Nachher:
+
    ```json
     {
       "type": "func",

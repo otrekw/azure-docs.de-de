@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 42d388aed618a5a92212152166573719c9e973c6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 36a94f780fa5c196e28730c051e161633ed3ee3d
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371021"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431056"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>VNET-Dienstendpunkte für Azure Key Vault
 
@@ -27,7 +27,7 @@ Es gibt eine wichtige Ausnahme dieser Einschränkung. Wenn ein Benutzer entschie
 Sie können [Key Vault-Firewalls und virtuelle Netzwerke](network-security.md) so konfigurieren, dass der Zugriff auf Datenverkehr aus allen Netzwerken (einschließlich Internetdatenverkehr) standardmäßig verweigert wird. Sie können Zugriff auf Datenverkehr aus bestimmten virtuellen Azure-Netzwerken und IP-Adressbereichen des öffentlichen Internets gewähren, sodass Sie eine sichere Netzwerkgrenze für Ihre Anwendungen erstellen können.
 
 > [!NOTE]
-> Key Vault-Firewalls und VNET-Regeln gelten nur für die [Datenebene](secure-your-key-vault.md#data-plane-access-control) von Key Vault. Vorgänge auf Key Vault-Steuerungsebene (z. B. Vorgänge zum Erstellen, Löschen und Ändern, das Festlegen von Zugriffsrichtlinien, Festlegen von Firewalls und VNET-Regeln) sind von Firewalls und VNET-Regeln nicht betroffen.
+> Key Vault-Firewalls und VNET-Regeln gelten nur für die [Datenebene](secure-your-key-vault.md#data-plane-access-control) von Key Vault. Vorgänge auf Key Vault-Steuerungsebene (z. B. Vorgänge zum Erstellen, Löschen und Ändern, das Festlegen von Zugriffsrichtlinien, Festlegen von Firewalls und VNET-Regeln und Bereitstellen von Geheimnissen oder Schlüsseln durch ARM-Vorlagen) sind von Firewalls und VNET-Regeln nicht betroffen.
 
 Hier finden Sie einige Beispiele dafür, wie Sie Dienstendpunkte verwenden können:
 
@@ -43,7 +43,6 @@ Es folgt eine Liste der vertrauenswürdigen Dienste, denen Zugriff auf einen Sch
 | --- | --- |
 |Azure Virtual Machines-Bereitstellung (Dienst)|[Bereitstellen von Zertifikaten auf virtuellen Computern über eine vom Kunden verwaltete Key Vault-Instanz](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault).|
 |Azure Resource Manager-Vorlagenbereitstellung (Dienst)|[Übergeben sicherer Werte während der Bereitstellung](../../azure-resource-manager/templates/key-vault-parameter.md).|
-|Azure Application Gateway V2-SKU|[TLS-Terminierung mit Key Vault-Zertifikaten](../../application-gateway/key-vault-certs.md)|
 |Azure Disk Encryption-Volumeverschlüsselung (Dienst)|Zulassen des Zugriffs auf den BitLocker-Schlüssel (virtueller Windows-Computer) oder die DM-Passphrase (virtueller Linux-Computer) und den Schlüssel für die Schlüsselverschlüsselung bei der Bereitstellung virtueller Computer. Dies aktiviert die [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md).|
 |Azure Backup|Zulassen der Sicherung und Wiederherstellung von relevanten Schlüsseln und Geheimnissen während der Azure Virtual Machines-Sicherung mithilfe von [Azure Backup](../../backup/backup-overview.md).|
 |Exchange Online und SharePoint Online|Zulassen des Zugriffs auf den Kundenschlüssel für die Azure Storage Service-Dienstverschlüsselung mit [Kundenschlüssel](/microsoft-365/compliance/customer-key-overview).|

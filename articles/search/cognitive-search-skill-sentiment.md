@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 895e22d94122539ee68bcac8ee4debce2d824ff0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6519cd952bd1265b4daad3b77b29aabd47ea4cc5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935278"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547474"
 ---
 # <a name="sentiment-cognitive-skill"></a>Der kognitive Skill „Stimmung“
 
@@ -110,11 +110,9 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 }
 ```
 
-## <a name="notes"></a>Notizen
-Wenn der Wert leer ist, wird für diese Datensätze kein Stimmungswert zurückgegeben.
-
-## <a name="error-cases"></a>Auftretende Fehler
-Wenn eine Sprache nicht unterstützt wird, wird eine Fehlermeldung generiert und kein Stimmungswert zurückgegeben.
+## <a name="warning-cases"></a>Warnungsfälle
+Wenn der Text leer ist, wird eine Warnung generiert, und es wird keine Stimmungswert zurückgegeben.
+Wird eine Sprache nicht unterstützt, wird eine Warnung generiert und kein Stimmungswert zurückgegeben.
 
 ## <a name="see-also"></a>Weitere Informationen
 

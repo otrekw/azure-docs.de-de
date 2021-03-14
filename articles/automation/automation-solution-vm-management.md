@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: e58f63b6ed7fb26a4e3b3069773810c5e5b7cdc3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e9a5427f7c3a057f291067ac83d3d9032d7e693d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732274"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559357"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VMs außerhalb der Geschäftszeiten starten/beenden – Übersicht
 
-Die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ startet bzw. beendet aktivierte virtuelle Azure-Computer. Damit können Sie Computer nach benutzerdefinierten Zeitplänen starten und beenden und außerdem über Azure Monitor-Protokolle Erkenntnisse aus Ihren Daten ziehen und durch die Nutzung von [Aktionsgruppen](../azure-monitor/alerts/action-groups.md) optional E-Mails senden. Die Funktion kann in den meisten Szenarien sowohl auf Azure Resource Manager-VMs als auch auf klassischen VMs aktiviert werden. 
+Die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ startet bzw. beendet aktivierte virtuelle Azure-Computer. Damit können Sie Computer nach benutzerdefinierten Zeitplänen starten und beenden und außerdem über Azure Monitor-Protokolle Erkenntnisse aus Ihren Daten ziehen und durch die Nutzung von [Aktionsgruppen](../azure-monitor/alerts/action-groups.md) optional E-Mails senden. Die Funktion kann in den meisten Szenarien sowohl auf Azure Resource Manager-VMs als auch auf klassischen VMs aktiviert werden.
 
 Diese Funktion verwendet das Cmdlet [Start-AzVm](/powershell/module/az.compute/start-azvm) zum Starten von VMs. Zum Beenden von VMs wird [Stop-AzVM](/powershell/module/az.compute/stop-azvm) verwendet.
 
@@ -34,6 +34,9 @@ Die aktuelle Funktion hat folgende Einschränkungen:
 
 - Sie ermöglicht die Verwaltung von VMs in allen Regionen. Allerdings lässt sie sich nur unter demselben Abonnement wie Ihr Azure Automation-Konto verwenden.
 - Sie ist in Azure und Azure Government für jede Region verfügbar, die einen Log Analytics-Arbeitsbereich, ein Azure Automation-Konto und Warnungen unterstützt. Azure Government-Regionen unterstützen derzeit keine E-Mail-Funktionalität.
+
+> [!NOTE]
+> Vor der Installation dieser Version möchten wir Sie über die [nächste Version](https://github.com/microsoft/startstopv2-deployments) informieren, die sich derzeit in der Vorschauphase befindet.  Diese neue Version (V2) bietet dieselbe Funktionalität wie diese, ist aber darauf ausgelegt, neuere Technologien in Azure zu nutzen. Sie fügt einige der häufig von Kunden angeforderten Features hinzu, z. B. die Unterstützung für mehrere Abonnements von einer einzelnen Starten/Beenden-Instanz.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

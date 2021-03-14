@@ -1,28 +1,28 @@
 ---
 title: Übersicht über die Vorschauversion von Azure Logic Apps
-description: Azure Logic Apps (Vorschau) ist eine Cloudlösung für die Erstellung automatisierter zustandsbehafteter und zustandsloser Workflows, die Apps, Daten, Dienste und Systeme mit minimalem Code in Szenarien auf Unternehmensniveau integrieren.
+description: Azure Logic Apps (Vorschau) ist eine Cloudlösung für die Erstellung automatisierter, einzelinstanzenfähiger zustandsbehafteter und zustandsloser Workflows, die Apps, Daten, Dienste und Systeme mit minimalem Code in Szenarien auf Unternehmensniveau integrieren.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 9d8d3cb4bf68f7da2bddabd21272d1011ce92f66
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/08/2021
+ms.openlocfilehash: d53a36d99c9a54fdfef7baceb50edb4e8f5ae4c8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715206"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561856"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Übersicht: Vorschauversion von Azure Logic Apps
 
 > [!IMPORTANT]
 > Diese Funktion befindet sich in der öffentlichen Vorschauphase, wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Mit Azure Logic Apps (Vorschau) können Sie Automatisierungs- und Integrationslösungen für Apps, Daten, Clouddienste und Systeme erstellen, indem Sie Logik-Apps erstellen und ausführen, die [*zustandsbehaftete* und *zustandslose* Workflows](#stateful-stateless) integrieren, indem Sie den neuen Ressourcentyp **Logik-App (Vorschau)** verwenden. Mit diesem neuen Logik-App-Typ können Sie mehrere Workflows erstellen, die von der neu gestalteten Azure Logic Apps-Runtime (Vorschau) unterstützt werden. Diese Runtime bietet Portabilität, eine bessere Leistung und mehr Flexibilität bei der Bereitstellung und Ausführung in verschiedenen Hostingumgebungen – nicht nur in Azure, sondern auch in Docker-Containern.
+Mit Azure Logic Apps (Vorschau) können Sie Automatisierungs- und Integrationslösungen für Apps, Daten, Clouddienste und Systeme erstellen, indem Sie einzelinstanzenfähige Logik-Apps mit dem neuen Ressourcentyp **Logik-App (Vorschau)** erstellen und ausführen. Unter Verwendung dieses einzelinstanzenfähigen Logik-App-Typs können Sie mehrere [*zustandsbehaftete* und *zustandslose* Workflows](#stateful-stateless) erstellen, die von der neu gestalteten Azure Logic Apps-Runtime (Vorschau) unterstützt werden. Diese Runtime bietet Portabilität, eine bessere Leistung und mehr Flexibilität bei der Bereitstellung und Ausführung in verschiedenen Hostingumgebungen, einschließlich nicht nur Azure, sondern auch Docker-Containern.
 
-Wie ist das möglich? Die neu gestaltete Runtime wendet das [Azure Functions-Erweiterbarkeitsmodell](../azure-functions/functions-bindings-register.md) an und wird als Erweiterung der Azure Functions-Runtime gehostet. Aufgrund dieser Architektur können Sie den neuen Logik-App-Typ überall dort ausführen können, wo Azure Functions ausgeführt werden kann. Sie können die neu gestaltete Runtime in nahezu allen Netzwerktopologien hosten und jede verfügbare Computegröße auswählen, um die für Ihre Workflows erforderliche Workload zu verarbeiten. Weitere Informationen finden Sie unter [Einführung in Azure Functions](../azure-functions/functions-overview.md) und [Azure Functions-Trigger und -Bindungen](../azure-functions/functions-triggers-bindings.md).
+Wie ist das möglich? Die neu gestaltete Runtime wendet das [Azure Functions-Erweiterbarkeitsmodell](../azure-functions/functions-bindings-register.md) an und wird als Erweiterung der Azure Functions-Runtime gehostet. Aufgrund dieser Architektur können Sie den einzelinstanzenfähigen Logik-App-Typ überall dort ausführen können, wo Azure Functions ausgeführt werden kann. Sie können die neu gestaltete Runtime in nahezu allen Netzwerktopologien hosten und jede verfügbare Computegröße auswählen, um die für Ihre Workflows erforderliche Workload zu verarbeiten. Weitere Informationen finden Sie unter [Einführung in Azure Functions](../azure-functions/functions-overview.md) und [Azure Functions-Trigger und -Bindungen](../azure-functions/functions-triggers-bindings.md).
 
-Für die Erstellung der Ressource **Logik-App (Vorschau)** können Sie das [Azure-Portal](create-stateful-stateless-workflows-azure-portal.md) verwenden, oder Sie [erstellen in Visual Studio Code ein Projekt mit der Azure Logic Apps-Erweiterung (Vorschau)](create-stateful-stateless-workflows-visual-studio-code.md). Außerdem können Sie in Visual Studio Code Ihre Workflows in Ihrer Entwicklungsumgebung erstellen und *lokal ausführen*. Unabhängig davon, ob Sie das Portal oder Visual Studio Code verwenden, können Sie den neuen Logik-App-Typ in denselben Hostingumgebungen bereitstellen und ausführen.
+Für die Erstellung der Ressource **Logik-App (Vorschau)** können Sie das [Azure-Portal](create-stateful-stateless-workflows-azure-portal.md) verwenden, oder Sie [erstellen in Visual Studio Code ein Projekt mit der Azure Logic Apps-Erweiterung (Vorschau)](create-stateful-stateless-workflows-visual-studio-code.md). Außerdem können Sie in Visual Studio Code Ihre Workflows in Ihrer Entwicklungsumgebung erstellen und *lokal ausführen*. Unabhängig davon, ob Sie das Portal oder Visual Studio Code verwenden, können Sie den einzelinstanzenfähigen Logik-App-Typ in denselben Hostingumgebungen bereitstellen und ausführen.
 
 In dieser Übersicht geht es um die folgenden Bereiche:
 
@@ -48,7 +48,7 @@ Weitere Informationen finden Sie in diesen Themen:
 
 ## <a name="how-does-azure-logic-apps-preview-differ"></a>Worin unterscheidet sich die Vorschauversion von Azure Logic Apps?
 
-Die Azure Logic Apps-Runtime (Vorschau) wendet das Erweiterbarkeitsmodell von [Azure Functions](../azure-functions/functions-overview.md) an und wird als Erweiterung der Azure Functions-Runtime gehostet. Aufgrund dieser Architektur können Sie den neuen Logik-App-Typ überall dort ausführen können, wo Azure Functions ausgeführt werden kann. Sie können die Azure Logic Apps-Runtime (Vorschau) in jeder gewünschten Netzwerktopologie hosten und jede verfügbare Computegröße auswählen, um die für Ihre Workflows erforderliche Workload zu verarbeiten. Weitere Informationen zur Azure Functions-Erweiterbarkeit finden Sie unter [WebJobs SDK: Creating custom input and output bindings](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings) (WebJobs SDK: Erstellen benutzerdefinierter Eingabe- und Ausgabebindungen).
+Die Azure Logic Apps-Runtime (Vorschau) wendet das Erweiterbarkeitsmodell von [Azure Functions](../azure-functions/functions-overview.md) an und wird als Erweiterung der Azure Functions-Runtime gehostet. Aufgrund dieser Architektur können Sie den einzelinstanzenfähigen Logik-App-Typ überall dort ausführen können, wo Azure Functions ausgeführt werden kann. Sie können die Azure Logic Apps-Runtime (Vorschau) in jeder gewünschten Netzwerktopologie hosten und jede verfügbare Computegröße auswählen, um die für Ihre Workflows erforderliche Workload zu verarbeiten. Weitere Informationen zur Azure Functions-Erweiterbarkeit finden Sie unter [WebJobs SDK: Creating custom input and output bindings](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings) (WebJobs SDK: Erstellen benutzerdefinierter Eingabe- und Ausgabebindungen).
 
 Dank dieses neuen Ansatzes sind die Azure Logic Apps-Runtime (Vorschau) und Ihre Workflows Bestandteil Ihrer App und können zusammen gepackt werden. So können Sie Ihre Workflows bereitstellen und ausführen, indem Sie einfach Artefakte in die Hostingumgebung kopieren und die App starten. Dieser Ansatz bietet auch eine stärker standardisierte Umgebung für die Erstellung von Pipelines für Workflowprojekte, mit denen Sie die erforderlichen Tests und Überprüfungen ausführen können, bevor Sie Änderungen in Produktionsumgebungen bereitstellen. Weitere Informationen finden Sie unter [Azure Logic Apps Running Anywhere - Runtime Deep Dive](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564) (Azure Logic Apps läuft überall – Runtimeanalyse).
 
@@ -57,15 +57,17 @@ In der folgenden Tabelle werden die Unterschiede bei der gemeinsamen Verwendung 
 | Umgebung | Ressourcenfreigabe und -verbrauch |
 |-------------|----------------------------------|
 | Azure Logic Apps (mehrere Mandanten) | Workflows *von Kunden in mehreren Mandanten* nutzen dieselben Ressourcen für die Verarbeitung (Compute), den Speicher, das Netzwerk usw. |
-| Azure Logic Apps (Vorschau) | Workflows *in derselben Logik-App* nutzen dieselben Ressourcen für die Verarbeitung (Compute), den Speicher, das Netzwerk usw. |
+| Azure Logic Apps (Vorschau, einzelinstanzenfähig) | Workflows *in derselben Logik-App und einem einzelnen Mandanten* nutzen dieselben Ressourcen für die Verarbeitung (Compute), den Speicher, das Netzwerk usw. |
 | Integrationsdienstumgebung (in der Vorschau nicht verfügbar) | Workflows *in derselben Umgebung* nutzen dieselben Ressourcen für die Verarbeitung (Compute), den Speicher, das Netzwerk usw. |
 ||||
 
-Derzeit können Sie auch weiterhin noch den ursprünglichen Logik-App-Typ im Azure-Portal und in Visual Studio Code erstellen, indem Sie die ursprüngliche Azure Logic Apps-Erweiterung verwenden. Trotz der Unterschiede bei der Entwicklung zwischen dem ursprünglichen und dem neuen Logik-App-Typ kann Ihr Azure-Abonnement beide Typen enthalten. Sie können alle bereitgestellten Logik-Apps in Ihrem Azure-Abonnement anzeigen und darauf zugreifen, aber die Apps werden getrennt in ihren eigenen Kategorien und Abschnitten angeordnet.
+Derzeit können Sie auch weiterhin noch den mehrinstanzenfähigen Logik-App-Typ im Azure-Portal und in Visual Studio Code erstellen, indem Sie die mehrinstanzenfähige Azure Logic Apps-Erweiterung verwenden. Trotz der Unterschiede bei der Entwicklung zwischen dem mehrinstanzenfähigen und dem einzelinstanzenfähigen Logik-App-Typ kann Ihr Azure-Abonnement beide Typen enthalten. Sie können alle bereitgestellten Logik-Apps in Ihrem Azure-Abonnement anzeigen und darauf zugreifen, aber die Apps werden getrennt in ihren eigenen Kategorien und Abschnitten angeordnet.
 
 <a name="stateful-stateless"></a>
 
 ## <a name="stateful-and-stateless-workflows"></a>Zustandsbehaftete und zustandslose Workflows
+
+Mit dem einzelinstanzenfähigen Logik-App-Typ können Sie diese Workflowtypen in derselben Logik-App erstellen:
 
 * *Zustandsbehaftet*
 
@@ -118,9 +120,13 @@ Diese Tabelle gibt das Verhalten des untergeordneten Workflows an, je nachdem, o
 
 Azure Logic Apps (Vorschau) umfasst viele aktuelle und zusätzliche Funktionen, z. B.:
 
-* Erstellen von Logik-Apps für Workflows mit [mehr als 390 Connectors](/connectors/connector-reference/connector-reference-logicapps-connectors) für SaaS- (Software-as-a-Service) und PaaS-Apps (Platform as a Service) und -Dienste sowie Connectors für lokale Systeme
+* Erstellen von Logik-Apps für Workflows mit [mehr als 400 Connectors](/connectors/connector-reference/connector-reference-logicapps-connectors) für SaaS- (Software-as-a-Service) und PaaS-Apps (Platform as a Service) und -Dienste sowie Connectors für lokale Systeme.
 
-  * Einige verwaltete Connectors, z. B. für Azure Service Bus, Azure Event Hubs und SQL Server, werden ähnlich wie die integrierten Trigger und Aktionen ausgeführt, die in die Azure Logic Apps-Runtime (Vorschau) integriert sind, wie z. B. der Anforderungstrigger und die HTTP-Aktion. Weitere Informationen finden Sie unter [Azure Logic Apps Running Anywhere: Built-in connector extensibility](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272) (Azure Logic Apps läuft überall: Erweiterbarkeit integrierter Connectors).
+  * Einige verwaltete Connectors, z. B. für Azure Service Bus, Azure Event Hubs, SQL Server und MQ, werden ähnlich wie die integrierten Trigger und Aktionen ausgeführt, die in die Azure Logic Apps-Runtime (Vorschau) integriert sind, wie z. B. der Anforderungstrigger und die HTTP-Aktion.
+
+  * Erstellen Sie Ihre eigenen integrierten Connectors für jeden benötigten Dienst, indem Sie das [Erweiterbarkeitsframework der Vorschauversion](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272) verwenden. Ähnlich wie integrierte Connectors wie Azure Service Bus und SQL Server, aber anders als [benutzerdefinierte Connectors](../connectors/apis-list.md#custom-apis-and-connectors), die zurzeit in der Vorschau nicht unterstützt werden, bieten diese Connectors einen höheren Durchsatz, niedrige Wartezeiten, lokale Konnektivität und werden nativ im selben Prozess wie die Vorschau-Runtime ausgeführt.
+
+    Die Erstellungsfunktion ist derzeit nur in Visual Studio Code verfügbar, aber nicht standardmäßig aktiviert. Um diese Connectors zu erstellen, [konvertieren Sie Ihr Projekt von erweiterungspaketbasiert (Node.js) in NuGet-Paketbasiert (.NET)](create-stateful-stateless-workflows-visual-studio-code.md#enable-built-in-connector-authoring). Weitere Informationen finden Sie unter [Azure Logic Apps Running Anywhere: Built-in connector extensibility](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272) (Azure Logic Apps läuft überall: Erweiterbarkeit integrierter Connectors).
 
   * Sie können die B2B-Aktionen für Liquid- und XML-Vorgänge ohne Integrationskonto verwenden. Um diese Aktionen zu verwenden, benötigen Sie Liquid-Zuordnungen, XML-Zuordnungen oder XML-Schemas, die Sie über die entsprechenden Aktionen im Azure-Portal hochladen können. Sie können sie auch mithilfe der entsprechenden Ordner für **Zuordnungen** und **Schemas** im Ordner für **Artefakte** des Visual Studio Code-Projekts hinzufügen.
 
@@ -143,26 +149,26 @@ Azure Logic Apps (Vorschau) umfasst viele aktuelle und zusätzliche Funktionen, 
 
   * [Netzwerkoptionen von Azure Functions](../azure-functions/functions-networking-options.md)
 
-  * [Azure Logic Apps ohne Grenzen ausführen: Netzwerkoptionen mit Azure Logic Apps (Vorschau)](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)
+  * [Azure Logic Apps ohne Grenzen: Netzwerkoptionen mit Azure Logic Apps (Vorschau)](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)
 
-* Generieren Sie Zugriffsschlüssel für verwaltete Verbindungen erneut, die von einzelnen Workflows in einer **Logik-App (Vorschau)** -Ressource verwendet werden. [Führen Sie die gleichen Schritte wie für die **Logic Apps**-Ressource, aber auf der individuellen Workflowebene](logic-apps-securing-a-logic-app.md#regenerate-access-keys), nicht auf der Logik-App-Ressourcenebene, für diese Aufgabe aus.
+* Generieren Sie Zugriffsschlüssel für verwaltete Verbindungen erneut, die von einzelnen Workflows in einer einzelinstanzenfähigen **Logik-App (Vorschau)** -Ressource verwendet werden. [Führen Sie dieselben Schritte wie für die mehrinstanzenfähige **Logic Apps**-Ressource, aber auf der individuellen Workflowebene](logic-apps-securing-a-logic-app.md#regenerate-access-keys), nicht auf der Logik-App-Ressourcenebene, für diese Aufgabe aus.
 
-* Zum Hinzufügen paralleler Branches im neuen Designer können Sie dieselben Schritte befolgen wie in der Nicht-Vorschauversion des Designers.
- 
+* Zum Hinzufügen paralleler Branches im einzelinstanzenfähigen Designer können Sie dieselben Schritte befolgen wie im mehrinstanzenfähigen Designer.
+
 Weitere Informationen finden Sie unter [Geänderte, eingeschränkte, nicht verfügbare oder nicht unterstützte Funktionen](#limited-unavailable-unsupported) und auf der [GitHub-Seite zu bekannten Problemen bei der öffentlichen Vorschau von Logic Apps](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
 <a name="pricing-model"></a>
 
 ## <a name="pricing-model"></a>Preismodell
 
-Wenn Sie den neuen Logik-App-Typ im Azure-Portal erstellen oder aus Visual Studio Code bereitstellen, müssen Sie als Hostingplan entweder [App Service oder Premium](../azure-functions/functions-scale.md) auswählen, damit Ihre Logik-App verwendet werden kann. Dieser Plan bestimmt das Preismodell für die Ausführung Ihrer Logik-App. Wenn Sie den App Service-Plan auswählen, müssen Sie außerdem einen [Tarif](../app-service/overview-hosting-plans.md) auswählen.
+Wenn Sie den einzelinstanzenfähigen Logik-App-Typ im Azure-Portal erstellen oder aus Visual Studio Code bereitstellen, müssen Sie als Hostingplan entweder [App Service oder Premium](../azure-functions/functions-scale.md) auswählen, damit Ihre Logik-App verwendet werden kann. Dieser Plan bestimmt das Preismodell für die Ausführung Ihrer Logik-App. Wenn Sie den App Service-Plan auswählen, müssen Sie außerdem einen [Tarif](../app-service/overview-hosting-plans.md) auswählen.
 
 *Zustandsbehaftete* Workflows verwenden [externen Speicher](../azure-functions/storage-considerations.md#storage-account-requirements), sodass das [Azure Storage-Preismodell](https://azure.microsoft.com/pricing/details/storage/) auf Speichertransaktionen angewandt wird, die von der Azure Logic Apps-Runtime (Vorschau) ausgeführt werden. Beispielsweise werden Warteschlangen für die Zeitplanung verwendet, während Tabellen und Blobs zum Speichern von Workflowzuständen verwendet werden.
 
 > [!NOTE]
 > Während der öffentlichen Vorschauphase entstehen durch das Ausführen von Logik-Apps in App Service keine *zusätzlichen* Gebühren zum ausgewählten Plan.
 
-Weitere Informationen zu den Preismodellen, die für diesen neuen Ressourcentyp gelten, finden Sie in den folgenden Themen:
+Weitere Informationen zu den Preismodellen, die für diesen einzelinstanzenfähigen Ressourcentyp gelten, finden Sie in den folgenden Themen:
 
 * [Skalierung und Hosting von Azure Functions](../azure-functions/functions-scale.md)
 * [Hochskalieren einer App in Azure App Service](../app-service/manage-scale-up.md)
@@ -193,16 +199,14 @@ Die folgenden Funktionen wurden in der Vorschauversion von Azure Logic Apps geä
 
     * [Lokale Datengateway *trigger*](../connectors/apis-list.md#on-premises-connectors) sind nicht verfügbar, aber Gatewayaktionen *sind* verfügbar.
 
-    * [Benutzerdefinierte Connectors](../connectors/apis-list.md#custom-apis-and-connectors) sind nicht verfügbar.
-
     * Die integrierte Aktion [Azure Functions: Azure-Funktion auswählen](logic-apps-azure-functions.md) heißt nun **Azure Functions-Vorgänge: Azure-Funktion aufrufen**. Diese Aktion funktioniert derzeit nur für Funktionen, die über die Vorlage für **HTTP-Trigger** erstellt werden.
 
       Sie können im Azure-Portal eine HTTP-Triggerfunktion auswählen, auf die Sie Zugriff haben, indem Sie eine Verbindung über die Benutzeroberfläche erstellen. Wenn Sie die JSON-Definition der Funktionsaktion in der Codeansicht oder der Datei **workflow.json** überprüfen, verweist die Aktion über einen `connectionName`-Verweis auf die Funktion. Diese Version abstrahiert die Informationen der Funktion als Verbindung, die Sie in der Datei **connections.json** Ihres Projekts finden, die nach dem Erstellen einer Verbindung verfügbar ist.
 
       > [!NOTE]
-      > In der Vorschauversion unterstützen Funktionsaktionen nur die Authentifizierung über Abfragezeichenfolgen. Azure Logic Apps (Vorschau) ruft den Standardschlüssel beim Herstellen der Verbindung aus der Funktion ab, speichert ihn in den Einstellungen Ihrer App und verwendet ihn beim Aufrufen der Funktion für die Authentifizierung.
+      > In der einzelinstanzenfähigen Version unterstützen Funktionsaktionen nur die Authentifizierung über Abfragezeichenfolgen. Azure Logic Apps (Vorschau) ruft den Standardschlüssel beim Herstellen der Verbindung aus der Funktion ab, speichert ihn in den Einstellungen Ihrer App und verwendet ihn beim Aufrufen der Funktion für die Authentifizierung.
       >
-      > Wie in der ursprünglichen Version gilt auch hier: Wenn Sie diesen Schlüssel erneuern (z. B. über die Azure Functions-Benutzeroberfläche im Portal), funktioniert die Funktionsaktion aufgrund eines ungültigen Schlüssels nicht mehr. Um dieses Problem zu beheben, müssen Sie die Verbindung mit der Funktion, die Sie aufrufen möchten, neu erstellen oder die App-Einstellungen mit dem neuen Schlüssel aktualisieren.
+      > Wie in der mehrinstanzenfähigen Version gilt auch hier: Wenn Sie diesen Schlüssel erneuern (z. B. über die Azure Functions-Benutzeroberfläche im Portal), funktioniert die Funktionsaktion aufgrund eines ungültigen Schlüssels nicht mehr. Um dieses Problem zu beheben, müssen Sie die Verbindung mit der Funktion, die Sie aufrufen möchten, neu erstellen oder die App-Einstellungen mit dem neuen Schlüssel aktualisieren.
 
     * Die integrierte Aktion [Inlinecode: JavaScript-Code ausführen](logic-apps-add-run-inline-code.md) heißt nun **Inlinecodevorgänge: JavaScript inline ausführen**.
 
@@ -218,7 +222,9 @@ Die folgenden Funktionen wurden in der Vorschauversion von Azure Logic Apps geä
 
     * Die integrierte Aktion [Azure Logic Apps: Logik-App-Workflow auswählen](logic-apps-http-endpoint.md) heißt nun **Workflowvorgänge: Workflow in dieser Workflow-App aufrufen**.
 
-* **Verfügbarkeit des Hostingplans:** Unabhängig davon, ob Sie den neuen Ressourcentyp **Logik-App (Vorschau)** im Azure-Portal erstellen oder in Visual Studio Code bereitstellen, benötigen Sie einen Premium- oder App Service-Hostingplan in Azure. Hostingpläne nach Verbrauch sind nicht verfügbar und werden zur Bereitstellung dieses Ressourcentyps nicht unterstützt. Sie können eine Bereitstellung aus Visual Studio Code in einem Docker-Container, jedoch nicht in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) durchführen.
+* [Benutzerdefinierte Connectors](../connectors/apis-list.md#custom-apis-and-connectors) werden derzeit in der Vorschau nicht unterstützt.
+
+* **Verfügbarkeit des Hostingplans**: Unabhängig davon, ob Sie den einzelinstanzenfähigen Ressourcentyp **Logik-App (Vorschau)** im Azure-Portal erstellen oder in Visual Studio Code bereitstellen, benötigen Sie einen Premium- oder App Service-Hostingplan in Azure. Hostingpläne nach Verbrauch sind nicht verfügbar und werden zur Bereitstellung dieses Ressourcentyps nicht unterstützt. Sie können eine Bereitstellung aus Visual Studio Code in einem Docker-Container, jedoch nicht in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) durchführen.
 
 * **Breakpoints für das Debuggen in Visual Studio Code:** Sie können zwar in der Datei **workflow.json** Breakpoints für einen Workflow hinzufügen und verwenden, aber diese Breakpoints werden derzeit nur für Aktionen unterstützt, nicht für Trigger. Weitere Informationen finden Sie unter [Erstellen zustandsbehafteter und zustandsloser Workflows in Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints).
 
@@ -229,6 +235,17 @@ Die folgenden Funktionen wurden in der Vorschauversion von Azure Logic Apps geä
    * Wenn der Ausführungsverlauf angezeigt werden soll, öffnen Sie den Workflow in Ihrer Logik-App. Klicken Sie im Workflowmenü unter **Developer** auf die Option **Überwachen**.
 
    * Wenn Sie den Triggerverlauf überprüfen möchten, öffnen Sie den Workflow in Ihrer Logik-App. Klicken Sie im Workflowmenü unter **Developer** auf **Triggerverlauf**.
+
+<a name="firewall-permissions"></a>
+
+## <a name="permit-traffic-in-strict-network-and-firewall-scenarios"></a>Zulassen von Datenverkehr in strengen Netzwerk- und Firewallszenarien
+
+Wenn in Ihrer Umgebung strenge Netzwerkanforderungen gelten oder Firewalls vorhanden sind, die den Datenverkehr einschränken, müssen Sie den Zugriff für alle Trigger- oder Aktionsverbindungen in Ihren Logik-App-Workflows zulassen.
+
+Informationen zum Auffinden der vollqualifizierten Domänennamen (FQDNs) für diese Verbindungen finden Sie in den entsprechenden Abschnitten in den folgenden Themen:
+
+* [Firewallberechtigungen für Logik-Apps für einzelinstanzenfähige Logik-Apps – Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#firewall-setup)
+* [Firewallberechtigungen für Logik-Apps für einzelinstanzenfähige Logik-Apps – Azure-Portal](create-stateful-stateless-workflows-azure-portal.md#firewall-setup)
 
 <a name="limits"></a>
 

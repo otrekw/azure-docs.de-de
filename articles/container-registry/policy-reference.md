@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Container Registry
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Container Registry. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.topic: reference
 author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 4f3210fb46d5b4a772cdbb125cc5481d7cdd5995
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 7606cd2aaa7f0fce431475b97585161edb43005d
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093001"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102429771"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-container-registry"></a>Integrierte Azure Policy-Definitionen für Azure Container Registry
 
@@ -26,6 +26,7 @@ Die Namen der einzelnen integrierten Richtliniendefinitionen sind Links zur ents
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Anleitungen finden Sie unter [Zuweisen von Richtlinien und Überprüfen der Compliance](container-registry-azure-policy.md).
 - Sehen Sie sich die Integrationen im [Azure Policy-GitHub-Repository](https://github.com/Azure/azure-policy) an.
 - Lesen Sie die Informationen unter [Struktur von Azure Policy-Definitionen](../governance/policy/concepts/definition-structure.md).
 - Lesen Sie [Grundlegendes zu Richtlinienauswirkungen](../governance/policy/concepts/effects.md).

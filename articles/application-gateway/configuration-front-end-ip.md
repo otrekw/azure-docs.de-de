@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: 732054ae2cd8f93d17694e9ea1bdd85680e9c314
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: eff63510f70dd7b4cdd522cc5a2a68096cda7166
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98058649"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548715"
 ---
 # <a name="application-gateway-front-end-ip-address-configuration"></a>Konfigurieren der Front-End-IP-Adresse für Application Gateway
 
@@ -30,7 +30,7 @@ Weitere Informationen finden Sie in den [häufig gestellten Fragen zu Applicatio
 
 Eine öffentliche IP-Adresse ist nicht für einen internen Endpunkt erforderlich, auf den kein Zugriff über das Internet erfolgt. Dieser wird als *Interner Lastenausgleich*-Endpunkt (Internal Load-Balancer, ILB) oder private Front-End-IP bezeichnet. Ein ILB-Application Gateway ist für interne Branchenanwendungen nützlich, die nicht für das Internet verfügbar gemacht werden. Es ist auch hilfreich für Dienste und Ebenen in einer Anwendung mit mehreren Ebenen innerhalb einer Sicherheitsgrenze, die nicht für das Internet verfügbar gemacht werden, aber eine Roundrobin-Lastverteilung, Sitzungspersistenz oder TLS-Beendigung erfordern.
 
-Es werden nur jeweils eine öffentliche oder private IP-Adresse unterstützt. Sie wählen die Front-End-IP beim Erstellen des Application Gateways aus.
+Es werden nur jeweils eine öffentliche und eine private IP-Adresse unterstützt. Sie wählen die Front-End-IP beim Erstellen des Application Gateways aus.
 
 - Für eine öffentliche IP-Adresse können Sie eine neue öffentliche IP-Adresse erstellen oder eine vorhandene öffentliche IP-Adresse am gleichen Standort wie das Anwendungsgateway verwenden. Weitere Informationen finden Sie unter [Statische und dynamische öffentliche IP-Adresse im Vergleich](./application-gateway-components.md#static-versus-dynamic-public-ip-address).
 

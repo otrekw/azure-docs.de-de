@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: d0cc7630a3bea67a99c3cb65d2015e934e8ac2da
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.date: 03/05/2021
+ms.openlocfilehash: 96594d573c308727217f537e5421dcb79f02c2ff
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539093"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433793"
 ---
 # <a name="creating-search-indexes-in-azure-cognitive-search"></a>Erstellen von Suchindizes in Azure Cognitive Search
 
@@ -61,7 +61,7 @@ Weitere Elemente sind aus Gründen der Übersicht reduziert, über die folgenden
 
 ## <a name="choose-a-client"></a>Auswählen eines Clients
 
-Es gibt mehrere Methoden zum Erstellen eines Suchindex. Für die anfängliche Entwicklung sowie für Proof of Concept-Tests empfiehlt sich die Verwendung des Azure-Portals oder der REST-APIs.
+Es gibt mehrere Möglichkeiten, einen Suchindex zu erstellen. Für die anfängliche Entwicklung sowie für Proof of Concept-Tests empfiehlt sich die Verwendung des Microsoft Azure-Portals oder der SDKs.
 
 Planen Sie während der Entwicklung häufige Neuerstellungen ein. Da physische Strukturen im Dienst erstellt werden, ist das [Löschen und Neuerstellen von Indizes](search-howto-reindex.md) bei den meisten Änderungen an einer vorhandenen Felddefinition erforderlich. Sie sollten erwägen, mit einer Teilmenge Ihrer Daten zu arbeiten, damit Neuerstellungen schneller gehen.
 
@@ -110,7 +110,7 @@ Für Cognitive Search werden von den Azure-SDKs allgemein verfügbare Features i
 
 Ein Suchdokument wird durch die `fields`-Sammlung definiert. Sie benötigen Felder für Abfragen und Schlüssel. Sie benötigen wahrscheinlich auch Felder, um Filter, Facets und Sortierungen zu unterstützen. Möglicherweise benötigen Sie auch Felder für Daten, die Benutzern niemals angezeigt werden. Sie können z. B. Felder für Gewinnmargen oder Marketingaktionen verwenden, mit denen Sie den Suchrang anpassen können.
 
-Ein Feld vom Typ „Edm.String“ muss als Dokumentschlüssel angegeben werden. Es wird für die eindeutige Identifizierung der einzelnen Suchdokumente verwendet. Sie können ein Dokument anhand seines Schlüssels abrufen, um eine Detailseite aufzufüllen.  
+Ein Feld vom Typ „Edm.String“ muss als Dokumentschlüssel angegeben werden. Es wird für die eindeutige Identifizierung der einzelnen Suchdokumente verwendet und berücksichtigt Groß-/Kleinschreibung. Sie können ein Dokument anhand seines Schlüssels abrufen, um eine Detailseite aufzufüllen.
 
 Wenn eingehende Daten hierarchisch sind, weisen Sie einen [komplexen Typ](search-howto-complex-data-types.md) zu, um die geschachtelten Strukturen darzustellen. Das integrierte Beispieldataset „Hotels“ veranschaulicht komplexe Typen anhand einer Adresse (enthält mehrere untergeordnete Felder) mit einer 1:1-Beziehung zu den einzelnen Hotels verwenden und einer komplexen Zimmersammlung, wobei jedem Hotel mehrere Zimmer zugeordnet sind. 
 

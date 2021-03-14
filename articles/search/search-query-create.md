@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: b013c66feefade077c85194ba3b1ff04ff4c4aa5
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 5a89e9ae05b0733c865d537ffeb1714d3b3ebef1
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99536831"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489360"
 ---
 # <a name="creating-queries-in-azure-cognitive-search"></a>Erstellen von Abfragen in Azure Cognitive Search
 
@@ -21,18 +21,21 @@ Wenn Sie zum ersten Mal eine Abfrage erstellen, finden Sie in diesem Artikel Ans
 
 ## <a name="whats-a-query-request"></a>Was ist eine Abfrageanforderung?
 
-Eine Abfrage ist eine Nur-Lese-Anforderung an die Dokumentsammlung eines einzelnen Suchindexes. Sie gibt ein queryType-Element und einen Abfrageausdruck durch den search-Parameter an. Der Abfrageausdruck kann Suchbegriffe, einen in Anführungszeichen angegebenen Ausdruck und Operatoren enthalten.
+Eine Abfrage ist eine Nur-Lese-Anforderung an die Dokumentsammlung eines einzelnen Suchindexes. Sie gibt einen search-Parameter an und enthält den Abfrageausdruck, bestehend aus Begriffen, in Anführungszeichen eingeschlossenen Ausdrücken und Operatoren.
 
-Eine Abfrage kann auch ein count-Element enthalten, um die Anzahl der gefundenen Übereinstimmungen im Index zurückzugeben, ein select-Element zum Auswählen der im Suchergebnis zurückgegebenen Felder sowie ein orderby-Element, um die Ergebnisse zu sortieren. Das folgende Beispiel zeigt eine Teilmenge der verfügbaren Parameter, um Ihnen eine allgemeine Vorstellung von einer Abfrageanforderung zu geben. Weitere Informationen zur Abfragekomposition finden Sie unter [Abfragetypen und -kompositionen](search-query-overview.md) sowie [Dokumente durchsuchen (REST)](/rest/api/searchservice/search-documents).
+Abfrage und Antwort können durch zusätzliche Parameter weiter definiert werden. Zum Beispiel begrenzt „searchFields“ die Ausführung der Abfrage auf bestimmte Felder, „select“ gibt an, welche Felder in den Ergebnissen zurückgegeben werden, und „count“ legt die Anzahl der gefundenen Übereinstimmungen im Index fest.
+
+Das folgende Beispiel zeigt eine Teilmenge der verfügbaren Parameter, um Ihnen eine allgemeine Vorstellung von einer Abfrageanforderung zu geben. Weitere Informationen zur Abfragekomposition finden Sie unter [Abfragetypen und -kompositionen](search-query-overview.md) sowie [Dokumente durchsuchen (REST)](/rest/api/searchservice/search-documents).
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-    "queryType": "simple"
-    "search": "`New York` +restaurant",
-    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
-    "count": "true",
-    "orderby": "Rating desc"
+    "search": "NY +view",
+    "queryType": "simple",
+    "searchMode": "all",
+    "searchFields": "HotelName, Description, Address/City, Address/StateProvince, Tags",
+    "select": "HotelName, Description, Address/City, Address/StateProvince, Tags",
+    "count": "true"
 }
 ```
 

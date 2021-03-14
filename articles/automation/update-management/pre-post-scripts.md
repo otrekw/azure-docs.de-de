@@ -3,14 +3,14 @@ title: Verwalten von Pre- und Post-Skripts in der Bereitstellung der Updateverwa
 description: In diesem Artikel erfahren Sie, wie Sie Pre- und Post-Skripts für Updatebereitstellungen konfigurieren und verwalten.
 services: automation
 ms.subservice: update-management
-ms.date: 12/17/2020
+ms.date: 03/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3ca1dec1b6139f3192edb09f8748c8f23a9d399e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ce60c773626d951062de3cc830b898e3b875f3cb
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701500"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485536"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Verwalten von Pre- und Post-Skripts
 
@@ -19,6 +19,8 @@ Pre- und Post-Skripts sind Runbooks, die vor (Pre-Aufgaben) und nach (Post-Aufga
 ## <a name="pre-script-and-post-script-requirements"></a>Anforderungen an Pre- und Post-Skripts
 
 Damit ein Runbook als Pre- oder Post-Skript verwendet werden kann, müssen Sie es in Ihr Automation-Konto importieren und [veröffentlichen](../manage-runbooks.md#publish-a-runbook).
+
+Zurzeit werden als Skripts vor oder nach der Bereitstellung nur PowerShell- und Python 2-Runbooks unterstützt. Andere Runbook-Typen wie Python 3, grafisch, PowerShell-Workflow und grafischer PowerShell-Workflow werden derzeit nicht als Skripts vor oder nach der Bereitstellung unterstützt.
 
 ## <a name="pre-script-and-post-script-parameters"></a>Parameter für Pre- und Post-Skripts
 
@@ -91,9 +93,6 @@ Ein vollständiges Beispiel mit allen Eigenschaften finden Sie unter: [Abrufen d
 > [!NOTE]
 > Das `SoftwareUpdateConfigurationRunContext`-Objekt kann doppelte Einträge für Computer enthalten. Dies kann dazu führen, dass Pre- und Post-Skripts mehrmals auf dem gleichen Computer ausgeführt werden. Verwenden Sie zur Umgehung dieses Verhaltens `Sort-Object -Unique`, um nur eindeutige VM-Namen auszuwählen.
 
-> [!NOTE]
-> Zurzeit werden als Skripts vor oder nach der Bereitstellung nur PowerShell-Runbooks unterstützt. Andere Runbooktypen wie Python, grafisch, PowerShell-Workflow und grafischer PowerShell-Workflow werden derzeit nicht als Skripts vor oder nach der Bereitstellung unterstützt.
-
 ## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>Verwenden eines Pre- oder Post-Skripts in einer Bereitstellung
 
 Wenn Sie ein Pre- oder Post-Skript in einer Updatebereitstellung verwenden möchten, müssen Sie zunächst eine Updatebereitstellung erstellen. Wählen Sie **Vor und nach dem Vorgang auszuführende Skripts** aus. Daraufhin wird die Seite **Vor und nach dem Vorgang auszuführende Skripts auswählen** angezeigt.
@@ -120,7 +119,7 @@ Wenn Sie die Ausführung der Updatebereitstellung auswählen, werden weitere Det
 
 ## <a name="stop-a-deployment"></a>Beenden einer Bereitstellung
 
-Wenn Sie eine Bereitstellung basierend auf einem vorbereitenden Skript beenden möchten, müssen Sie eine Ausnahme [auslösen](../automation-runbook-execution.md#throw). Andernfalls werden die Bereitstellung und das Post-Skript trotzdem ausgeführt. Der folgende Codeausschnitt veranschaulicht das Auslösen einer Ausnahme:
+Wenn Sie eine Bereitstellung basierend auf einem vorbereitenden Skript beenden möchten, müssen Sie eine Ausnahme [auslösen](../automation-runbook-execution.md#throw). Andernfalls werden die Bereitstellung und das Post-Skript trotzdem ausgeführt. Der folgende Codeausschnitt veranschaulicht das Auslösen einer Ausnahme mithilfe von PowerShell.
 
 ```powershell
 #In this case, we want to terminate the patch job if any run fails.
@@ -134,6 +133,8 @@ foreach($summary in $finalStatus)
     }
 }
 ```
+
+In Python 2 wird die Ausnahmebehandlung in einem [try](https://www.python-course.eu/exception_handling.php) -Block verarbeitet.
 
 ## <a name="interact-with-machines"></a>Interagieren mit Computern
 
@@ -169,6 +170,13 @@ if (<My custom error logic>)
     #Throw an error to fail the patch deployment.
     throw "There was an error, abort deployment"
 }
+```
+
+Wenn Sie in Python 2 einen Fehler auslösen möchten, wenn ein bestimmter Zustand eintritt, verwenden Sie eine [raise](https://docs.python.org/2.7/reference/simple_stmts.html#the-raise-statement)-Anweisung.
+
+```python
+If (<My custom error logic>)
+   raise Exception('Something happened.')
 ```
 
 ## <a name="samples"></a>Beispiele

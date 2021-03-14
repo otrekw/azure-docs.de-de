@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 5fa729ae68d091d9810430bdc0ea55ce1c876b25
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 44e18be9d66131ad5f4a3ebcc039621ec9e9dbe6
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586269"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452253"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -116,7 +116,7 @@ In Ihrem Anwendungscode verwenden Sie die üblichen Protokollierungsfunktionen, 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
     ```
 
-- Standardmäßig verwendet ASP.NET Core den Protokollierungsanbieter [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices). Weitere Informationen finden Sie unter [Protokollierung in ASP.NET Core](/aspnet/core/fundamentals/logging/).
+- Standardmäßig verwendet ASP.NET Core den Protokollierungsanbieter [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices). Weitere Informationen finden Sie unter [Protokollierung in ASP.NET Core](/aspnet/core/fundamentals/logging/). Weitere Informationen zur WebJobs SDK-Protokollierung finden Sie unter [Erste Schritte mit dem Azure WebJobs SDK](/azure/app-service/webjobs-sdk-get-started#enable-console-logging).
 
 ## <a name="stream-logs"></a>Streaming von Protokollen
 
@@ -134,19 +134,17 @@ Navigieren Sie zum Streamen von Protokollen im [Azure-Portal](https://portal.azu
 
 Verwenden Sie zum Livestreamen von Protokollen in [Cloud Shell](../cloud-shell/overview.md) den folgenden Befehl:
 
+> [!IMPORTANT]
+> Dieser Befehl funktioniert möglicherweise nicht mit Web-Apps, die in einem App Service-Plan für Linux gehostet werden.
+
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Um bestimmte Ereignisse wie beispielsweise Fehler zu filtern, verwenden Sie den Parameter **--Filter** . Beispiel:
+Um bestimmte Protokolltypen wie HTTP zu filtern, verwenden Sie den Parameter **--Provider**. Beispiel:
 
 ```azurecli-interactive
-az webapp log tail --name appname --resource-group myResourceGroup --filter Error
-```
-Um bestimmte Protokolltypen wie HTTP zu filtern, verwenden Sie den Parameter **--Path** . Beispiel:
-
-```azurecli-interactive
-az webapp log tail --name appname --resource-group myResourceGroup --path http
+az webapp log tail --name appname --resource-group myResourceGroup --provider http
 ```
 
 ### <a name="in-local-terminal"></a>In lokalem Terminal

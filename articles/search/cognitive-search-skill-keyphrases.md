@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2fdebffbf9643febc08cba997b3a5a5fc4bb5998
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 8aafb08ff0ccc9391071f796450e69f87de279ba
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652312"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547831"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Der kognitive Skill „Schlüsselbegriffserkennung“
 
@@ -41,6 +41,7 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 |---------------------|-------------|
 | `defaultLanguageCode` | (Optional) Der Sprachcode, der auf Dokumente angewendet wird, in denen die Sprache nicht explizit angegeben ist.  Wenn kein Standardsprachcode festgelegt ist, wird Englisch (en) als Standardsprachcode verwendet. <br/> Siehe die [vollständige Liste der unterstützten Sprachen](../cognitive-services/text-analytics/language-support.md). |
 | `maxKeyPhraseCount`   | (Optional) Die maximale Anzahl der Schlüsselbegriffe, die erzeugt werden. |
+| `modelVersion`   | (Optional) Die Version des Modells, die beim Aufruf des Textanalysediensts verwendet werden soll. Wenn nichts angegeben ist, wird standardmäßig die neueste verfügbare Version verwendet. Es empfiehlt sich, diesen Wert nur anzugeben, wenn es unbedingt notwendig ist. Weitere Einzelheiten finden Sie unter [Versionsverwaltung der Modelle in der Textanalyse-API](../cognitive-services/text-analytics/concepts/model-versioning.md). |
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
@@ -109,8 +110,8 @@ Im obigen Beispiel wird die Ausgabe Ihres Skills in einen neuen Knoten in der an
 
 Sie können „document/myKeyPhrase“ als Eingabe für andere Skills oder als Quelle für eine [Ausgabefeldzuordnung](cognitive-search-output-field-mapping.md) verwenden.
 
-## <a name="errors-and-warnings"></a>Fehler und Warnungen
-Wenn Sie einen nicht unterstützte Sprachcode bereitstellen, tritt ein Fehler auf, und es werden keine Schlüsselbegriffe extrahiert.
+## <a name="warnings"></a>Warnungen
+Wenn Sie einen nicht unterstützte Sprachcode bereitstellen, wird eine Warnung generiert, und es werden keine Schlüsselbegriffe extrahiert.
 Wenn Ihr Text leer ist, wird eine Warnung angezeigt.
 Wenn Ihre Text mehr als 50.000 Zeichen umfasst, werden nur die ersten 50.000 Zeichen analysiert und eine Warnung ausgegeben.
 

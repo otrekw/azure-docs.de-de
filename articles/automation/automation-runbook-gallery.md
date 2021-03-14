@@ -3,14 +3,14 @@ title: Verwenden von Azure Automation-Runbooks und -Modulen im PowerShell-Katalo
 description: In diesem Artikel wird erläutert, wie Sie Runbooks und Module von Microsoft und der Community im PowerShell-Katalog verwenden.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/08/2021
+ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: 590220782a7f43e785cc7885e68eefa99afb7d1d
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: c38a6236fe3ad9164d11d94e5563a7dddf5b4b32
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049115"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452780"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>Verwenden von Runbooks und Modulen im PowerShell-Katalog
 
@@ -33,7 +33,7 @@ Das direkte Importieren aus dem PowerShell-Katalog ist nur über das Azure-Porta
 
 ## <a name="modules-in-powershell-gallery"></a>Module im PowerShell-Katalog
 
-PowerShell-Module enthalten Cmdlets, die Sie in Ihren Runbooks verwenden können. Vorhandene Module, die Sie in Azure Automation installieren können, sind im [PowerShell-Katalog](https://www.powershellgallery.com) verfügbar. Sie starten diesen Katalog über das Azure-Portal und installieren die Module direkt in Azure Automation. Sie können sie auch herunterladen und manuell installieren.
+PowerShell-Module enthalten Cmdlets, die Sie in Ihren Runbooks verwenden können. Vorhandene Module, die Sie in Azure Automation installieren können, sind im [PowerShell-Katalog](https://www.powershellgallery.com) verfügbar. Sie starten diesen Katalog über das Azure-Portal und installieren die Module direkt in Azure Automation. Sie können sie auch manuell herunterladen und installieren.
 
 ## <a name="common-scenarios-available-in-powershell-gallery"></a>Allgemeine im PowerShell-Katalog verfügbare Szenarien
 
@@ -47,19 +47,34 @@ Die nachstehende Liste enthält einige Runbooks, die gängige Szenarien unterst�
 ## <a name="import-a-powershell-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Importieren eines PowerShell-Runbooks aus dem Runbookkatalog im Azure-Portal
 
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
-2. Wählen Sie unter **Prozessautomatisierung** die Option **Runbookkatalog** aus.
-3. Wählen Sie **Quelle: PowerShell-Katalog** aus.
-4. Suchen Sie das gewünschte Katalogelement, und wählen Sie es zum Anzeigen der Details aus. Auf den linken Seite können Sie weitere Suchparameter für Herausgeber und Typ eingeben.
+1. Wählen Sie unter **Prozessautomatisierung** die Option **Runbookkatalog** aus.
+1. Wählen Sie **Quelle: PowerShell-Katalog** aus. Dadurch wird eine Liste der verfügbaren Runbooks angezeigt, die Sie durchsuchen können.
+1. Sie können das Suchfeld über der Liste verwenden, um die Liste einzugrenzen, oder Sie können die Filter verwenden, um die Anzeige nach Herausgeber, Typ und Sortierung einzuschränken. Suchen Sie das gewünschte Katalogelement, und wählen Sie es zum Anzeigen der Details aus.
 
-   ![Katalog durchsuchen](media/automation-runbook-gallery/browse-gallery.png)
+   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-sm.png" alt-text="Durchsuchen des Runbook-Katalogs." lightbox="media/automation-runbook-gallery/browse-gallery-lg.png":::
 
-5. Klicken Sie auf **Quellprojekt anzeigen**, um den Artikel in der [Azure Automation-GitHub-Organisation](https://github.com/azureautomation) anzuzeigen.
-6. Klicken Sie zum Importieren eines Elements auf das Element, um seine Details anzuzeigen, und anschließend auf **Importieren**.
+1. Um ein Element zu importieren, klicken Sie auf dem Blatt „Details“ auf **Importieren**.
 
-   ![Schaltfläche „Importieren“](media/automation-runbook-gallery/gallery-item-detail.png)
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-detail-sm.png" alt-text="Anzeigen von Details eines Runbook-Katalogelements." lightbox="media/automation-runbook-gallery/gallery-item-detail-lg.png":::
 
-7. Ändern Sie optional den Namen des Runbooks, und klicken Sie zum Importieren des Runbooks auf **OK** .
-8. Das Runbook wird auf der Registerkarte **Runbooks** des Automation-Kontos angezeigt.
+1. Ändern Sie optional den Namen des Runbooks, und klicken Sie zum Importieren des Runbooks auf **OK** .
+1. Das Runbook wird auf der Registerkarte **Runbooks** des Automation-Kontos angezeigt.
+
+## <a name="import-a--powershell-runbook-from-github-with-the-azure-portal"></a>Importieren eines PowerShell-Runbooks von GitHub über das Azure-Portal
+
+1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
+1. Wählen Sie unter **Prozessautomatisierung** die Option **Runbookkatalog** aus.
+1. Wählen Sie **Quelle: GitHub** aus.
+1. Sie können die Filter über der Liste verwenden, um die Anzeige nach Herausgeber, Typ und Sortierung einzuschränken. Suchen Sie das gewünschte Katalogelement, und wählen Sie es zum Anzeigen der Details aus.
+
+   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-github-sm.png" alt-text="Durchsuchen des GitHub-Katalogs." lightbox="media/automation-runbook-gallery/browse-gallery-github-lg.png":::
+
+1. Um ein Element zu importieren, klicken Sie auf dem Blatt „Details“ auf **Importieren**.
+
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-github-sm.png" alt-text="Detaillierte Ansicht eines Runbooks aus dem GitHub-Katalog." lightbox="media/automation-runbook-gallery/gallery-item-details-blade-github-lg.png":::
+
+1. Ändern Sie optional den Namen des Runbooks, und klicken Sie zum Importieren des Runbooks auf **OK** .
+1. Das Runbook wird auf der Registerkarte **Runbooks** des Automation-Kontos angezeigt.
 
 ## <a name="add-a-powershell-runbook-to-the-gallery"></a>Hinzufügen eines PowerShell-Runbooks zum Katalog
 
@@ -68,29 +83,29 @@ Microsoft empfiehlt, Runbooks aus dem PowerShell-Katalog hinzuzufügen, die für
 ## <a name="import-a-module-from-the-module-gallery-with-the-azure-portal"></a>Importieren eines Moduls aus dem Modulkatalog im Azure-Portal
 
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
-2. Wählen Sie **Module** unter **Freigegebene Ressourcen** aus, um die Liste der Module zu öffnen.
-3. Klicken Sie oben auf der Seite auf **Katalog durchsuchen**.
+1. Wählen Sie **Module** unter **Freigegebene Ressourcen** aus, um die Liste der Module zu öffnen.
+1. Klicken Sie oben auf der Seite auf **Katalog durchsuchen**.
 
-   ![Modulkatalog](media/automation-runbook-gallery/modules-blade.png)
+      :::image type="content" source="media/automation-runbook-gallery/modules-blade-sm.png" alt-text="Ansicht des Modulkatalogs." lightbox="media/automation-runbook-gallery/modules-blade-lg.png":::
 
-4. Auf der Seite „Katalog durchsuchen“ können Sie anhand der folgenden Felder suchen:
+1. Auf der Seite „Katalog durchsuchen“ können Sie das Suchfeld verwenden, um Übereinstimmungen in einem der folgenden Felder zu finden:
 
    * Name des Moduls
    * `Tags`
    * Autor
    * Cmdlet-/DSC-Ressourcenname
 
-5. Suchen Sie das gewünschte Modul, und wählen Sie es aus, um seine Details anzuzeigen.
+1. Suchen Sie das gewünschte Modul, und wählen Sie es aus, um seine Details anzuzeigen.
 
    Wenn Sie einen Drilldown in einem bestimmten Modul ausführen, können Sie weitere Informationen anzeigen. Diese Informationen umfassen einen Link zurück zum PowerShell-Katalog, alle erforderlichen Abhängigkeiten und alle Cmdlets oder DSC-Ressourcen, die das Modul enthält.
 
-   ![PowerShell-Moduldetails](media/automation-runbook-gallery/gallery-item-details-blade.png)
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-sm.png" alt-text="Detaillierte Ansicht eines Moduls aus dem Katalog." lightbox="media/automation-runbook-gallery/gallery-item-details-blade-lg.png":::
 
-6. Um das Modul direkt in Azure Automation zu installieren, klicken Sie auf **Importieren**.
-7. Im Bereich „Importieren“ sehen Sie den Namen des zu importierenden Moduls. Wenn alle Abhängigkeiten installiert sind, ist die Schaltfläche **OK** aktiv. Falls Abhängigkeiten fehlen, müssen diese Abhängigkeiten importiert werden, bevor dieses Modul importiert werden kann.
-8. Klicken Sie im Bereich „Importieren“ auf **OK**, um das Modul zu importieren. Wenn Azure Automation ein Modul in Ihr Konto importiert, werden Metadaten zum Modul und den Cmdlets extrahiert. Dieser Vorgang kann einige Minuten dauern, da jede Aktivität extrahiert werden muss.
-9. Sie erhalten jeweils eine Benachrichtigung, wenn das Modul bereitgestellt wird und wenn der Vorgang abgeschlossen ist.
-10. Nachdem das Modul importiert wurde, können Sie die verfügbaren Aktivitäten anzeigen. Sie können Modulressourcen in Ihren Runbooks und DSC-Ressourcen verwenden.
+1. Um das Modul direkt in Azure Automation zu installieren, klicken Sie auf **Importieren**.
+1. Im Bereich „Importieren“ sehen Sie den Namen des zu importierenden Moduls. Wenn alle Abhängigkeiten installiert sind, ist die Schaltfläche **OK** aktiv. Falls Abhängigkeiten fehlen, müssen diese Abhängigkeiten importiert werden, bevor dieses Modul importiert werden kann.
+1. Klicken Sie im Bereich „Importieren“ auf **OK**, um das Modul zu importieren. Wenn Azure Automation ein Modul in Ihr Konto importiert, werden Metadaten zum Modul und den Cmdlets extrahiert. Dieser Vorgang kann einige Minuten dauern, da jede Aktivität extrahiert werden muss.
+1. Sie erhalten jeweils eine Benachrichtigung, wenn das Modul bereitgestellt wird und wenn der Vorgang abgeschlossen ist.
+1. Nachdem das Modul importiert wurde, können Sie die verfügbaren Aktivitäten anzeigen. Sie können Modulressourcen in Ihren Runbooks und DSC-Ressourcen verwenden.
 
 > [!NOTE]
 > Module, die nur PowerShell Core unterstützen, werden in Azure Automation nicht unterstützt und können nicht in das Azure-Portal importiert werden oder direkt über den PowerShell-Katalog bereitgestellt werden.

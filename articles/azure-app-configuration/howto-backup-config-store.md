@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 04edf2eeb231ff1444c732840def2b78b1373e79
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: b3e0bcad7beccc31e1772fbb24ffad7f502b8140
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565924"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454242"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Automatisches Sichern von App Configuration-Speichern
 
@@ -137,7 +137,7 @@ Wir haben [eine Funktion getestet und veröffentlicht](https://github.com/Azure/
 
 Wenn der oben bereitgestellte Beispielcode nicht Ihren Anforderungen entspricht, können Sie auch eine eigene Funktion erstellen. Die Funktion muss die folgenden Aufgaben ausführen können, um die Sicherung abzuschließen:
 - Lesen Sie regelmäßig die Inhalte Ihrer Warteschlange, um zu überprüfen, ob diese Benachrichtigungen von Event Grid enthält. Implementierungsdetails finden Sie unter [Schnellstart: Azure Queue Storage-Clientbibliothek v12 für .NET](../storage/queues/storage-quickstart-queues-dotnet.md).
-- Wenn die Warteschlange [Ereignisbenachrichtigungen von Event Grid](./concept-app-configuration-event.md?branch=pr-en-us-112982#event-schema) enthält, extrahieren Sie alle eindeutigen `<key, label>`-Informationen aus den Ereignisbenachrichtigungen. Die Kombination aus Schlüssel und Bezeichnung ist der eindeutige Bezeichner für Schlüssel-Wert-Änderungen im primären Speicher.
+- Wenn die Warteschlange [Ereignisbenachrichtigungen von Event Grid](./concept-app-configuration-event.md#event-schema) enthält, extrahieren Sie alle eindeutigen `<key, label>`-Informationen aus den Ereignisbenachrichtigungen. Die Kombination aus Schlüssel und Bezeichnung ist der eindeutige Bezeichner für Schlüssel-Wert-Änderungen im primären Speicher.
 - Lesen Sie alle Einstellungen aus dem primären Speicher. Aktualisieren Sie nur die Einstellungen im sekundären Speicher, für die ein entsprechendes Ereignis in der Warteschlange vorliegt. Löschen Sie alle Einstellungen aus dem sekundären Speicher, die in der Warteschlange, aber nicht im primären Speicher vorhanden waren. Sie können das [App Configuration-SDK](https://github.com/Azure/AppConfiguration#sdks) verwenden, um programmgesteuert auf Ihre Konfigurationsspeicher zuzugreifen.
 - Löschen Sie die Benachrichtigungen aus der Warteschlange, wenn bei der Verarbeitung keine Ausnahmen aufgetreten sind.
 - Implementieren Sie die Fehlerbehandlung Ihren Bedürfnissen entsprechend. Im obigen Codebeispiel finden Sie einige häufig auftretende Ausnahmen, die Sie behandeln sollten.
@@ -177,7 +177,7 @@ az functionapp identity assign --name $functionAppName --resource-group $resourc
 ```
 
 > [!NOTE]
-> Ihr Konto muss über die Berechtigung `Owner` für den geeigneten Bereich (Ihr Abonnement oder die Ressourcengruppe) verfügen, um die erforderliche Ressourcenerstellung und eine Rollenverwaltung durchführen zu können. Hilfe zu Rollenzuweisungen finden Sie ggf. unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
+> Ihr Konto muss über die Berechtigung `Owner` für den geeigneten Bereich (Ihr Abonnement oder die Ressourcengruppe) verfügen, um die erforderliche Ressourcenerstellung und eine Rollenverwaltung durchführen zu können. Hilfe zu Rollenzuweisungen finden Sie ggf. unter [Zuweisen von Azure-Rollen mithilfe des Azure-Portals](../role-based-access-control/role-assignments-portal.md).
 
 Gewähren Sie mit den folgenden Befehlen oder über das [Azure-Portal](./howto-integrate-azure-managed-service-identity.md#grant-access-to-app-configuration) der verwalteten Identität Ihrer Funktions-App Zugriff auf Ihre App Configuration-Speicher. Verwenden Sie hierfür die folgenden Rollen:
 - Weisen Sie die `App Configuration Data Reader`-Rolle im primären App Configuration-Speicher zu.

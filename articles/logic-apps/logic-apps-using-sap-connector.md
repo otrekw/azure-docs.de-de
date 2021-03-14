@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 02/01/2021
+ms.date: 03/08/2021
 tags: connectors
-ms.openlocfilehash: e52c4acb4b59414e89e87bf5a6ee2cfae8207cae
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b9238d099c7b33e904c2fc8de3c4fc08369f1f36
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712452"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489836"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
 
@@ -473,6 +473,23 @@ Ihre Logik-App kann jetzt Nachrichten von Ihrem SAP-System empfangen.
 > [!NOTE]
 > Der SAP-Trigger ist kein Abfragetrigger, sondern er basiert auf Webhooks. Bei Verwendung des Datengateways wird der Trigger nur dann vom Datengateway aufgerufen, wenn eine Nachricht vorhanden ist. Abrufe sind daher nicht erforderlich.
 
+Wenn Sie einen Fehler **Ungültiges Gateway (500)** mit einer ähnlichen Meldung wie **Dienst ‚sapgw00‘ unbekannt** erhalten, ersetzen Sie den Namen Ihres Gatewaydiensts in Ihrer API-Verbindung, und lösen Sie die Konfiguration mit seiner Portnummer aus. Im folgenden Beispielfehler muss `sapgw00` durch eine echte Portnummer ersetzt werden, z. B. `3300`. 
+
+```json
+"body": {
+   "error": {
+      "code": 500,
+      "source": "EXAMPLE-FLOW-NAME.eastus.environments.microsoftazurelogicapps.net",
+      "clientRequestId": "00000000-0000-0000-0000-000000000000",
+      "message": "BadGateway",
+      "innerError": {
+         "error": {
+            "code": "UnhandledException",
+            "message": "\nERROR service 'sapgw00' unknown\nTIME Wed Nov 11 19:37:50 2020\nRELEASE 721\nCOMPONENT NI (network interface)\nVERSION 40\nRC -3\nMODULE ninti.c\nLINE 933\nDETAIL NiPGetServByName: 'sapgw00' not found\nSYSTEM CALL getaddrinfo\nCOUNTER 1\n\nRETURN CODE: 20"
+         }
+      }
+```
+
 #### <a name="parameters"></a>Parameter
 
 Neben einfachen Zeichenfolgen- und Zahleneingaben werden vom SAP-Connector auch die folgenden Tabellenparameter (`Type=ITAB`-Eingaben) akzeptiert:
@@ -616,6 +633,14 @@ Um IDocs von SAP an Ihre Logik-App zu senden, benötigen Sie die folgende Mindes
     * Geben Sie für Ihr **RFC-Ziel** einen Namen ein.
     
     * Wählen Sie auf der Registerkarte **Technische Einstellungen** für **Aktivierungstyp** die Option **Registriertes Serverprogramm** aus. Geben Sie für Ihre **Programm-ID** einen Wert ein. Der Triggerwert Ihrer Logik-App wird in SAP mithilfe dieses Bezeichners registriert.
+
+    > [!IMPORTANT]
+    > Die SAP-**Programm-ID** berücksichtigt die Groß-/Kleinschreibung. Stellen Sie sicher, dass Sie beim Konfigurieren ihrer Logik-APP und des SAP-Servers für Ihre **Programm-ID** stets dieselbe Groß-/Kleinschreibung verwenden. Andernfalls erhalten Sie möglicherweise die folgenden Fehler im tRFC-Monitor (T-Code SM58), wenn Sie versuchen, ein IDoc an SAP zu senden:
+    >
+    > * **Funktion IDOC_INBOUND_ASYNCHRONOUS nicht gefunden**
+    > * **Nicht-ABAP-RFC-Client (Partnertyp) nicht unterstützt**
+    >
+    > Weitere Informationen von SAP finden Sie in den folgenden Hinweisen (Anmeldung erforderlich): <https://launchpad.support.sap.com/#/notes/2399329> und <https://launchpad.support.sap.com/#/notes/353597>.
     
     * Wählen Sie auf der Registerkarte **Unicode** für **Kommunikationstyp mit Zielsystem** die Option **Unicode** aus.
 
@@ -727,11 +752,27 @@ Sie können SAP für das [Senden von IDoc-Paketen](https://help.sap.com/viewer/8
 
 Im folgenden Beispiel wird veranschaulicht, wie die einzelnen IDoc-Elemente eines Pakets mithilfe der [`xpath()`-Funktion](./workflow-definition-language-functions-reference.md#xpath) extrahiert werden:
 
-1. Zunächst benötigen Sie eine Logik-App mit einem SAP-Trigger. Wenn Sie diese Logik-App noch nicht besitzen, führen Sie die vorherigen Schritte in diesem Artikel aus, um [eine Logik-App mit einem SAP-Trigger](#receive-message-from-sap) einzurichten.
+1. Zunächst benötigen Sie eine Logik-App mit einem SAP-Trigger. Wenn Sie dies in Ihrer Logik-App noch nicht haben, führen Sie die vorherigen Schritte in diesem Artikel aus, um [eine Logik-App mit einem SAP-Trigger](#receive-message-from-sap) einzurichten.
+
+    > [!IMPORTANT]
+    > Die SAP-**Programm-ID** berücksichtigt die Groß-/Kleinschreibung. Stellen Sie sicher, dass Sie beim Konfigurieren ihrer Logik-APP und des SAP-Servers für Ihre **Programm-ID** stets dieselbe Groß-/Kleinschreibung verwenden. Andernfalls erhalten Sie möglicherweise die folgenden Fehler im tRFC-Monitor (T-Code SM58), wenn Sie versuchen, ein IDoc an SAP zu senden:
+    >
+    > * **Funktion IDOC_INBOUND_ASYNCHRONOUS nicht gefunden**
+    > * **Nicht-ABAP-RFC-Client (Partnertyp) nicht unterstützt**
+    >
+    > Weitere Informationen von SAP finden Sie in den folgenden Hinweisen (Anmeldung erforderlich): <https://launchpad.support.sap.com/#/notes/2399329> und <https://launchpad.support.sap.com/#/notes/353597>.
 
    Beispiel:
 
    ![Hinzufügen eines SAP-Auslösers zur Logik-App](./media/logic-apps-using-sap-connector/first-step-trigger.png)
+
+1. [Fügen Sie Ihrer Logik-App eine Antwortaktion hinzu](/azure/connectors/connectors-native-reqres#add-a-response-action), um sofort mit dem Status Ihrer SAP-Anforderung zu antworten. Es ist eine bewährte Methode, diese Aktion unmittelbar hinter Ihrem Trigger hinzuzufügen, um den Kommunikationskanal mit Ihrem SAP-Server freizugeben. Wählen Sie einen der folgenden Statuscodes (`statusCode`) aus, um ihn in Ihrer Antwortaktion zu verwenden:
+
+    * **202 Akzeptiert**. Dies bedeutet, dass die Anforderung zur Verarbeitung angenommen wurde, die Verarbeitung aber noch nicht abgeschlossen ist.
+
+    * **204 Kein Inhalt**. Dies bedeutet, dass der Server die Anforderung erfolgreich ausgeführt hat und es keinen zusätzlichen Inhalt gibt, der im Text der Antwortnutzlast gesendet werden kann. 
+
+    * **200 OK**. Dieser Statuscode enthält immer eine Nutzlast, auch wenn der Server einen Nutzlasttext der Länge 0 (Null) generiert. 
 
 1. Rufen Sie den Stammnamespace aus dem XML-IDoc-Element ab, das Ihre Logik-App von SAP empfängt. Fügen Sie zum Extrahieren dieses Namespace aus dem XML-Dokument einen Schritt hinzu, der eine lokale Zeichenfolgenvariable erstellt und diesen Namespace mithilfe eines `xpath()`-Ausdrucks speichert:
 
@@ -1296,11 +1337,18 @@ Falls bei Ihnen ein Problem aufgrund des Sendens von doppelten IDocs an SAP übe
 
 ## <a name="known-issues-and-limitations"></a>Einschränkungen und bekannte Probleme
 
-Zurzeit sind für den verwalteten SAP-Connector (Nicht-ISE) folgende Probleme und Einschränkungen bekannt:
+Zurzeit sind für den verwalteten SAP-Connector (Nicht-ISE) folgende Probleme und Einschränkungen bekannt: 
 
-* Der SAP-Trigger unterstützt keine Datengatewaycluster. In einigen Failoverfällen unterscheidet sich der Datengatewayknoten, der mit dem SAP-System kommuniziert, von dem aktiven Knoten. Dies führt zu unerwartetem Verhalten. In Sendeszenarien werden Datengatewaycluster unterstützt.
+* Im allgemeinen unterstützt der SAP-Trigger keine Datengatewaycluster. In einigen Failoverfällen unterscheidet sich der Datengatewayknoten, der mit dem SAP-System kommuniziert, von dem aktiven Knoten. Dies führt zu unerwartetem Verhalten.
+
+  * In Sendeszenarien werden Datengatewaycluster im Failovermodus unterstützt. 
+
+  * Datengatewaycluster im Lastenausgleichsmodus werden von zustandsbehafteten SAP-Aktionen nicht unterstützt. Diese Aktionen umfassen **Zustandsbehaftete Sitzung erstellen**, **BAPI-Transaktion committen**, **Rollback von BAPI-Transaktion**, **Zustandsbehaftete Sitzung schließen** und alle Aktionen, die einen **Sitzungs-ID**-Wert angeben. Zustandsbehaftete Kommunikationen müssen auf demselben Datengatewayclusterknoten verbleiben. 
+
+  * Verwenden Sie für zustandsbehaftete SAP-Aktionen das Datengateway entweder im Nicht-Clustermodus oder in einem Cluster, der nur für Failover eingerichtet ist.
 
 * Der SAP-Connector unterstützt derzeit keine SAP-Router-Zeichenfolgen. Das lokale Datengateway muss in demselben LAN wie das SAP-System vorhanden sein, mit dem eine Verbindung hergestellt werden soll.
+
 
 ## <a name="connector-reference"></a>Connector-Referenz
 

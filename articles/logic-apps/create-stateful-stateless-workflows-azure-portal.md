@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 3cf5047dbb79f6d8b35b0fe089069a20ab4a50a6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/08/2021
+ms.openlocfilehash: ff938d29d998b6fcf0b2cfae72a9a9e685a10dc5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736346"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563948"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>Erstellen zustandsbehafteter und zustandsloser Workflows im Azure-Portal mit „Azure Logic Apps (Vorschau)“
 
@@ -74,7 +74,7 @@ In diesem Artikel erfahren Sie, wie Sie Ihre Logik-App und einen Workflow im Azu
 
 1. Geben Sie auf der Seite **Logik-App erstellen (Vorschau)** auf der Registerkarte **Grundlagen** diese Informationen zu Ihrer Logik-App ein.
 
-   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | Beschreibung |
    |----------|----------|-------|-------------|
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Das für Ihre Logik-App zu verwendende Azure-Abonnement. |
    | **Ressourcengruppe** | Ja | <*Name der Azure-Ressourcengruppe*> | Die Azure-Ressourcengruppe, in der Sie Ihre Logik-App und zugehörige Ressourcen erstellen. Dieser Ressourcenname muss regionsübergreifend eindeutig sein und darf nur Buchstaben, Ziffern, Bindestriche ( **-** ), Unterstriche ( **_** ), Klammern ( **()** ) und Punkte ( **.** ) enthalten. <p><p>In diesem Beispiel wird eine Ressourcengruppe namens `Fabrikam-Workflows-RG` erstellt. |
@@ -89,7 +89,7 @@ In diesem Artikel erfahren Sie, wie Sie Ihre Logik-App und einen Workflow im Azu
 
 1. Geben Sie als Nächstes diese Informationen über die Speicherlösung und den Hostingplan, die für Ihre Logik-App verwendet werden sollen, auf der Registerkarte **Hosting** an.
 
-   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | Beschreibung |
    |----------|----------|-------|-------------|
    | **Speicherkonto** | Ja | <*Azure-storage-account-name*> | Das [Azure Storage-Konto](../storage/common/storage-account-overview.md), das für Speichertransaktionen verwendet werden soll. Dieser Ressourcenname muss regionsübergreifend eindeutig sein und 3-24 Zeichen enthalten (nur Ziffern und Kleinbuchstaben). Wählen Sie entweder ein vorhandenes Konto aus, oder erstellen Sie ein neues Konto. <p><p>In diesem Beispiel wird ein Speicherkonto namens `fabrikamstorageacct` erstellt. |
    | **Plantyp** | Ja | <*Azure-hosting-plan*> | Hierbei handelt es sich um den [Hostingplan](../app-service/overview-hosting-plans.md), der für die Bereitstellung Ihrer Logik-App verwendet werden soll. Dabei handelt es sich entweder um den [**Premium-Tarif für Azure Functions**](../azure-functions/functions-premium-plan.md) oder um einen [**dedizierten App Service-Plan**](../azure-functions/dedicated-plan.md). Die Auswahl wirkt sich hierbei auf die Funktionen und Tarife aus, die später für Sie zur Verfügung stehen. <p><p>In diesem Beispiel wird der **App Service-Plan** verwendet. <p><p>**Hinweis**: Ähnlich wie bei Azure Functions ist für den Ressourcentyp **Logik-App (Vorschau)** ein Hostingplan und Tarif erforderlich. Verbrauchstarife werden weder unterstützt, noch sind sie für diesen Ressourcentyp verfügbar. Weitere Informationen finden Sie in diesen Themen: <p><p>- [Skalierung und Hosting von Azure Functions](../azure-functions/functions-scale.md) <br>- [App Service-Preisdetails](https://azure.microsoft.com/pricing/details/app-service/) <p><p>Der Premium-Tarif für Azure Functions bietet beispielsweise Zugriff auf Netzwerkfunktionen wie das Herstellen einer privaten Verbindung zu virtuellen Azure-Netzwerken und das Integrieren dieser Netzwerke. Diese Funktionen ähneln den Funktionen in Azure Functions für das Erstellen und Bereitstellen Ihrer Logik-Apps. Weitere Informationen finden Sie in diesen Themen: <p><p>- [Azure Functions-Netzwerkoptionen](../azure-functions/functions-networking-options.md) <br>- [Azure Logic Apps ohne Grenzen ausführen: Netzwerkoptionen mit Azure Logic Apps (Vorschau)](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047) |
@@ -236,7 +236,33 @@ Bevor Sie einem leeren Workflow einen Trigger hinzufügen können, stellen Sie s
 
 1. Speichern Sie Ihre Arbeit. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
-Um den Workflow zu testen, lösen Sie als Nächstes eine Ausführung manuell aus.
+1. Wenn in Ihrer Umgebung strenge Netzwerkanforderungen gelten oder Firewalls vorhanden sind, die den Datenverkehr einschränken, müssen Sie die Berechtigungen für alle in Ihrem Workflow vorhandenen Trigger- oder Aktionsverbindungen einrichten. So finden Sie den vollqualifizierten Domänennamen 
+
+   Andernfalls, um Ihren Workflow zu testen, [lösen Sie eine Ausführung manuell aus](#trigger-workflow).
+
+<a name="firewall-setup"></a>
+
+##  <a name="find-domain-names-for-firewall-access"></a>Suchen von Domänennamen für den Firewallzugriff
+
+Bevor Sie Ihre Logik-App bereitstellen und Ihren Workflow im Azure-Portal ausführen, müssen Sie, wenn in Ihrer Umgebung strenge Netzwerkanforderungen gelten oder Firewalls vorhanden sind, die den Datenverkehr einschränken, Netzwerk- oder Firewallberechtigungen für alle Trigger- oder Aktionsverbindungen in den Workflows einrichten, die in Ihrer Logik-App vorhanden sind.
+
+Führen Sie die folgenden Schritte aus, um die vollqualifizierten Domänennamen (FQDNs) für diese Verbindungen zu ermitteln:
+
+1. Wählen Sie im Menü Ihrer Logik-App unter **Workflows** die Option **Verbindungen** aus. Wählen Sie auf der Registerkarte **API-Verbindungen** den Ressourcennamen der Verbindung aus, z. B.:
+
+   ![Screenshot, der das Azure-Portal und das Logik-App-Menü zeigt, in dem „Verbindungen“ und der Verbindungsressourcennamen „offic365“ ausgewählt sind.](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connections.png)
+
+1. Erweitern Sie Ihren Browser so weit, dass in der oberen rechten Ecke des Browsers **JSON-Ansicht** angezeigt wird, und wählen Sie dann **JSON-Ansicht** aus.
+
+   ![Screenshot, der das Azure-Portal und den Bereich „API-Verbindung“ mit ausgewähltem „JSON-Ansicht“ anzeigt.](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connection-view-json.png)
+
+1. Suchen, kopieren und speichern Sie den `connectionRuntimeUrl`-Eigenschaftswert an einem sicheren Ort, damit Sie Ihre Firewall mit diesen Informationen einrichten können.
+
+   ![Screenshot, der den ausgewählten „connectionRuntimeUrl“-Eigenschaftswert zeigt.](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connection-runtime-url.png)
+
+1. Wiederholen Sie für jede Verbindung die relevanten Schritte.
+
+<a name="trigger-workflow"></a>
 
 ## <a name="trigger-the-workflow"></a>Auslösen des Workflows
 

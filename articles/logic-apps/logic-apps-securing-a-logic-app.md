@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 02/12/2021
-ms.openlocfilehash: d7ed3fb268920d6f4d015886c560b2d9fcbdc632
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.date: 03/09/2021
+ms.openlocfilehash: 7b082c226b38633d6c34ee2fe4d5227252b2bfcb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104500"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556382"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -203,20 +203,24 @@ Fügen Sie im [Azure-Portal](https://portal.azure.com) mindestens eine Autorisie
    | Eigenschaft | Erforderlich | BESCHREIBUNG |
    |----------|----------|-------------|
    | **Richtlinienname** | Ja | Der Name, den Sie für die Autorisierungsinstanz verwenden möchten |
-   | **Ansprüche** | Ja | Die Anspruchstypen und -werte, die ihre Logik-App von eingehenden Aufrufen akzeptiert. Der Anspruchswert ist auf eine [maximale Anzahl von Zeichen](logic-apps-limits-and-config.md#authentication-limits) beschränkt. Im Folgenden finden Sie die verfügbaren Anspruchstypen: <p><p>- **Aussteller** <br>- **Zielgruppe** <br>- **Betreff** <br>- **JWT-ID** (JSON Web Token-ID) <p><p>Die Liste der **Ansprüche** muss mindestens den Anspruch **Aussteller** enthalten, dem als Azure AD-Aussteller-ID ein Wert zugeordnet ist, der mit `https://sts.windows.net/` oder `https://login.microsoftonline.com/` beginnt. Weitere Informationen zu diesen Anspruchstypen finden Sie unter [Ansprüche in Sicherheitstoken von Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Sie können auch Ihren eigenen Anspruchstyp und -wert angeben. |
+   | **Ansprüche** | Ja | Die Anspruchstypen und -werte, die ihre Logik-App von eingehenden Aufrufen akzeptiert. Der Anspruchswert ist auf eine [maximale Anzahl von Zeichen](logic-apps-limits-and-config.md#authentication-limits) beschränkt. Im Folgenden finden Sie die verfügbaren Anspruchstypen: <p><p>- **Aussteller** <br>- **Zielgruppe** <br>- **Betreff** <br>- **JWT-ID** (JSON Web Token-Bezeichner) <p><p>Die Liste der **Ansprüche** muss mindestens den Anspruch **Aussteller** enthalten, dem als Azure AD-Aussteller-ID ein Wert zugeordnet ist, der mit `https://sts.windows.net/` oder `https://login.microsoftonline.com/` beginnt. Weitere Informationen zu diesen Anspruchstypen finden Sie unter [Ansprüche in Sicherheitstoken von Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Sie können auch Ihren eigenen Anspruchstyp und -wert angeben. |
    |||
 
 1. Zum Hinzufügen eines weiteren Anspruchs wählen Sie eine der folgenden Optionen aus:
 
    * Um einen weiteren Anspruchstyp hinzuzufügen, wählen Sie **Standardanspruch hinzufügen** aus und geben den Anspruchswert an.
 
-   * Um Ihren eigenen Anspruch hinzuzufügen, wählen Sie **Benutzerdefinierten Anspruch hinzufügen** aus und geben den benutzerdefinierten Anspruchswert an.
+   * Um Ihren eigenen Anspruch hinzuzufügen, wählen Sie **Benutzerdefinierten Anspruch hinzufügen** aus. Weitere Informationen finden Sie unter [Bereitstellen optionaler Ansprüche für Ihre Azure AD-App](../active-directory/develop/active-directory-optional-claims.md). Ihr benutzerdefinierter Anspruch wird dann als Teil ihrer JWT-ID gespeichert. Beispiel: `"tid": "72f988bf-86f1-41af-91ab-2d7cd011db47"`. 
 
 1. Zum Hinzufügen einer weiteren Autorisierungsrichtlinie wählen Sie **Richtlinie hinzufügen** aus. Wiederholen Sie die vorherigen Schritte, um die Richtlinie einzurichten.
 
 1. Klicken Sie auf **Speichern**, wenn Sie fertig sind.
 
 1. Informationen, wie Sie den `Authorization`-Header aus dem Zugriffstoken in die anforderungsbasierten Triggerausgaben aufnehmen, finden Sie unter [Aufnehmen des „Authorization“-Headers in Anforderungstriggerausgaben](#include-auth-header).
+
+
+Workfloweigenschaften wie Richtlinien werden nicht in der Codeansicht Ihrer Logik-App im Azure-Portal angezeigt. Um programmgesteuert auf Ihre Richtlinien zuzugreifen, rufen Sie die folgende API über Azure Resource Manager (ARM) auf: `https://management.azure.com/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group-name}/providers/Microsoft.Logic/workflows/{your-workflow-name}?api-version=2016-10-01&_=1612212851820`. Stellen Sie sicher, dass Sie die Platzhalterwerte für Ihre Azure-Abonnement-ID, den Ressourcengruppennamen und den Workflownamen ersetzen.
+
 
 <a name="define-authorization-policy-template"></a>
 
@@ -349,9 +353,9 @@ Im [Azure-Portal](https://portal.azure.com) wirkt sich dieser Filter sowohl auf 
 
 Geben Sie in Ihrer ARM-Vorlage die zulässigen eingehenden IP-Adressbereiche in der Ressourcendefinition ihrer Logik-App an, indem Sie den Abschnitt `accessControl` verwenden. Verwenden Sie dort die Abschnitte für `triggers`, `actions` und optional `contents`, indem Sie den Abschnitt `allowedCallerIpAddresses` mit der Eigenschaft `addressRange` einschließen und den Eigenschaftswert auf den zulässigen IP-Adressbereich im Format *x.x.x.x/x* oder *x.x.x.x-x.x.x.x* festlegen.
 
-* Wenn Ihre geschachtelte Logik-App die Option **Nur andere Logik-Apps** verwendet, die eingehende Aufrufe nur von anderen Logik-Apps mit der Azure Logic Apps-Aktion zulässt, legen Sie die Eigenschaft `addressRange` auf ein leeres Array fest ( **[]** ).
+* Wenn Ihre geschachtelte Logik-App die Option **Nur andere Logik-Apps** verwendet, die eingehende Aufrufe nur von anderen Logik-Apps mit der integrierten Azure Logic Apps-Aktion zulässt, legen Sie die Eigenschaft `allowedCallerIpAddresses` auf ein leeres Array fest ( **[]** ), und lassen Sie die Eigenschaft `addressRange` *aus*.
 
-* Wenn Ihre geschachtelte Logik-App die Option **Spezifische IP-Bereiche** für andere eingehende Aufrufe verwendet (beispielsweise durch andere Logik-Apps, die die HTTP-Aktion verwenden), legen Sie die Eigenschaft `addressRange` auf den zulässigen IP-Adressbereich fest.
+* Wenn Ihre geschachtelte Logik-App die Option **Spezifische IP-Bereiche** für andere eingehende Aufrufe verwendet (beispielsweise durch andere Logik-Apps, die die HTTP-Aktion verwenden), schließen Sie den Abschnitt `allowedCallerIpAddresses` ein, und legen Sie die Eigenschaft `addressRange` auf den zulässigen IP-Adressbereich fest.
 
 Dieses Beispiel zeigt die Ressourcendefinition für eine geschachtelte Logik-App, die eingehende Aufrufe nur von Logik-Apps zulässt, die die integrierte Azure Logic Apps-Aktion verwenden:
 
@@ -378,18 +382,14 @@ Dieses Beispiel zeigt die Ressourcendefinition für eine geschachtelte Logik-App
             },
             "accessControl": {
                "triggers": {
-                  "allowedCallerIpAddresses": [
-                     {
-                        "addressRange": []
-                     }
-                  ]
+                  "allowedCallerIpAddresses": []
                },
                "actions": {
-                  "allowedCallerIpAddresses": [
-                     {
-                        "addressRange": []
-                     }
-                  ]
+                  "allowedCallerIpAddresses": []
+               },
+               // Optional
+               "contents": {
+                  "allowedCallerIpAddresses": []
                }
             },
             "endpointsConfiguration": {}
@@ -933,7 +933,7 @@ In dieser Tabelle werden die Authentifizierungstypen aufgeführt, die für die T
 | [Clientzertifikat](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, HTTP Webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + Swagger, HTTP Webhook |
 | [Raw](#raw-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + Swagger, HTTP Webhook |
-| [Verwaltete Identität](#managed-identity-authentication) | **Integrierte Trigger und Aktionen** <p><p>Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP-Webhook <p><p>**Verwaltete Connectors** <p><p>Azure AD Identity Protection, Azure Automation, Azure Container Instance, Azure Data Explorer, Azure Data Factory, Azure Data Lake, Azure Event Grid, Azure IoT Central V3, Azure Key Vault, Azure Log Analytics, Azure Monitor-Protokolle, Azure Resource Manager, Azure Sentinel, HTTP mit Azure AD <p><p>**Hinweis**: Die Unterstützung für verwaltete Connectors befindet sich derzeit in der Vorschauphase. |
+| [Verwaltete Identität](#managed-identity-authentication) | **Integrierte Trigger und Aktionen** <p><p>Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP-Webhook <p><p>**Verwaltete Connectors** <p><p>Azure AD Identity Protection, Azure Automation, Azure Container Instance, Azure Data Explorer, Azure Data Factory, Azure Data Lake, Azure Event Grid, Azure IoT Central V3, Azure Key Vault, Azure Resource Manager, Azure Sentinel, HTTP mit Azure AD <p><p>**Hinweis**: Die Unterstützung für verwaltete Connectors befindet sich derzeit in der Vorschauphase. |
 |||
 
 <a name="basic-authentication"></a>
