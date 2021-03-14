@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: c8027b62c0c463e134817f589ba3e1957cea5b39
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a6d099e8d267c9fe03e0bb676276e7a4ab8157ab
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678499"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521525"
 ---
 # <a name="azure-percept-dk-dev-kit-troubleshooting"></a>Problembehandlung für Azure Percept DK (Development Kit)
 
@@ -95,7 +95,7 @@ An der Oberseite des Gehäuses der Trägerplatine befinden sich drei kleine LEDs
 |LED             |State      |BESCHREIBUNG                      |
 |----------------|-----------|---------------------------------|
 |LED 1 (IoT Hub) |An (leuchtet) |Das Gerät ist mit einer IoT Hub-Instanz verbunden. |
-|LED 2 (WLAN)   |Langsames Blinken |Die Geräteauthentifizierung wird durchgeführt. |
+|LED 2 (WLAN)   |Langsames Blinken |Das Gerät ist bereit, von Wi-Fi Easy Connect konfiguriert zu werden und kündigt sich bei einem Konfigurator an. |
 |LED 2 (WLAN)   |Schnelles Blinken |Die Authentifizierung war erfolgreich, und das Gerät wird zugeordnet. |
 |LED 2 (WLAN)   |An (leuchtet) |Authentifizierung und Zuordnung waren erfolgreich. Das Gerät ist mit einem WLAN verbunden. |
 |LED 3           |Nicht verfügbar         |Die LED wird nicht verwendet. |

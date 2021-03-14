@@ -2,18 +2,19 @@
 title: Trennen eines Datenträgers für Daten von einem virtuellen Linux-Computer – Azure
 description: Erfahren Sie, wie Sie einen Datenträger unter Verwendung der Azure CLI oder des Azure-Portals von einem virtuellen Computer in Azure trennen.
 author: roygara
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7e618475d7d0160bce5aee39c267bb191a3a9f0a
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 29a2cbbf2c390b81aa62b064a7cf93decbaa7457
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897138"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565987"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Trennen eines Datenträgers von einem virtuellen Linux-Computer
 
@@ -108,13 +109,10 @@ Der Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuelle
 
 1. Wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer** aus.
 1. Klicken Sie auf dem Blatt für den virtuellen Computer auf **Datenträger**.
-1. Wählen Sie oben auf dem Blatt **Datenträger** die Option **Bearbeiten** aus.
-1. Klicken Sie auf dem Blatt **Datenträger** ganz rechts neben dem Datenträger, den Sie trennen möchten, auf die Schaltfläche „Trennen“ (![Schaltfläche „Trennen“](./media/detach-disk/detach.png)).
-1. Klicken Sie, nachdem der Datenträger entfernt wurde, oben auf dem Blatt auf **Speichern**.
+1. Klicken Sie auf dem Blatt **Datenträger** ganz rechts neben dem Datenträger, den Sie trennen möchten, auf die Schaltfläche **X**, um den Datenträger zu trennen.
+1. Wählen Sie, nachdem der Datenträger entfernt wurde, oben auf dem Blatt die Option **Speichern** aus.
 
-Der Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuellen Computer angefügt.
-
-
+Der Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuellen Computer angefügt. Der Datenträger wird nicht gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Sie den Datenträger wiederverwenden möchten, können Sie ihn einfach [an einen anderen virtuellen Computer anfügen](add-disk.md).

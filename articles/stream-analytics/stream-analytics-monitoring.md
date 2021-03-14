@@ -5,14 +5,14 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 06/21/2018
+ms.date: 03/08/2021
 ms.custom: seodec18
-ms.openlocfilehash: 3356e0bdd45b6a213ef5ef4a814e64585d8e8924
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6d3558511721a91c3a195cb510a1a00d5d8a9a51
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726766"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487877"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Grundlegendes zur Stream Analytics-Auftragsüberwachung und zum Überwachen von Abfragen
 
@@ -30,7 +30,7 @@ Das Fenster wird wie folgt angezeigt:
 | ---------------------- | ---------------------------------------- |
 | Eingabeereignisse im Rückstand       | Anzahl der Eingabeereignisse, die im Rückstand sind. Ein Wert ungleich Null für diese Metrik bedeutet, dass Ihr Auftrag nicht in der Lage ist, mit der Anzahl der eingehenden Ereignisse Schritt zu halten. Wenn dieser Wert langsam ansteigt oder konstant ungleich Null ist, sollten Sie Ihren Auftrag aufskalieren. Weitere Informationen finden Sie unter [Verstehen und Anpassen von Streamingeinheiten](stream-analytics-streaming-unit-consumption.md). |
 | Konvertierungsfehler | Anzahl der Ausgabeereignisse, die nicht in das erwartete Ausgabeschema konvertiert werden konnten. Die Fehlerrichtlinie kann auf „Drop“ geändert werden, um Ereignisse zu löschen, bei denen dieses Szenario auftritt. |
-| CPU-Auslastung in Prozent (Vorschau)       | Hierbei handelt es sich um die CPU-Auslastung Ihres Auftrags in Prozent. Wenn diese Metrik dauerhaft 80 Prozent überschreitet, kann dies darauf hinweisen, dass für Ihren Auftrag ein Engpass bei der CPU-Auslastung besteht. Dies kann dazu führen, dass Eingabeereignisse zu Rückstand führen. Sie können die Anzahl der Ihrem Auftrag zugeordneten SUs erhöhen, um solche Probleme zu lösen. |
+| CPU-Auslastung in Prozent (Vorschau)       | Hierbei handelt es sich um die CPU-Auslastung Ihres Auftrags in Prozent. Selbst wenn dieser Wert sehr hoch ist (90 % oder höher), sollten Sie die Anzahl der SUs nicht allein aufgrund dieser Metrik erhöhen. Wenn die Anzahl der Eingabeereignisse im Rückstand oder die Wasserzeichenverzögerung zunimmt, können Sie diese CPU%-Auslastungsmetrik verwenden, um festzustellen, ob die CPU der Engpass ist. Es ist möglich, dass diese Metrik zeitweilig Spitzenwerte aufweist. Es wird empfohlen, Skalierungstests durchzuführen, um die Obergrenze Ihres Auftrags zu bestimmen, nach der die Eingaben in Rückstand geraten können oder die Wasserzeichenverzögerung aufgrund von CPU-Engpässen zunimmt. |
 | Frühe Eingabeereignisse       | Ereignisse, deren Anwendungszeitstempel mehr als fünf Minuten vor dem Zeitpunkt ihres Eintreffens liegt. |
 | Fehlerhafte Funktionsanforderungen | Anzahl der fehlerhaften Aufrufe an die Azure Machine Learning-Funktion (falls vorhanden) |
 | Funktionsereignisse        | Anzahl der an die Azure Machine Learning-Funktion gesendeten Ereignisse (falls vorhanden) |

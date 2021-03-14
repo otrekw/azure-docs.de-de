@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.date: 12/09/2020
-ms.openlocfilehash: c7a0be6f1d402cc994532ab4bc5a5d0ea39bc8b7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 06586b5bf20619f57b2ad1c3d5de84dd61952261
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599048"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561244"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Planen und Verwalten der Kosten für Azure Synapse Analytics
 
@@ -113,7 +113,12 @@ Weitere Informationen zu den Kosten für den serverlosen SQL-Pool finden Sie unt
 
 Sie können die Kosten für einen dedizierten SQL-Pool steuern, indem Sie die Ressource pausieren, wenn sie nicht verwendet wird. Wenn Sie die Datenbank z.B. nachts oder am Wochenende nicht verwenden, können Sie sie während dieser Zeiträume anhalten und während des Tages wieder fortsetzen. Weitere Informationen finden Sie unter [Anhalten und Fortsetzen von Computeressourcen im dedizierten Synapse-SQL-Pool über das Azure-Portal](./sql-data-warehouse/pause-and-resume-compute-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-<!-- ### Serverless Apache Spark pool -->
+### <a name="serverless-apache-spark-pool"></a>Serverloser Apache Spark-Pool
+
+Um die Kosten für Ihren serverlosen Apache Spark-Pool zu kontrollieren, aktivieren Sie das serverlose Feature „Automatische Pause“ für Apache Spark, und legen Sie den Timeoutwert entsprechend fest.  Wenn Sie Synapse Studio für Ihre Entwicklung verwenden, sendet das Studio eine „Keepalive“-Nachricht, damit die Sitzung aktiv bleibt, was ebenfalls konfigurierbar ist. Legen Sie also einen kurzen Timeoutwert für die automatische Pause fest.  Wenn Sie fertig sind, schließen Sie Ihre Sitzung und der Apache Spark-Pool wird automatisch angehalten, sobald der Timeoutwert erreicht ist.
+ 
+Erstellen Sie während der Entwicklung mehrere Apache Spark-Pooldefinitionen unterschiedlicher Größe.  Das Erstellen von Apache Spark-Pooldefinitionen ist kostenlos und Ihnen wird nur deren Nutzung in Rechnung gestellt.  Die Nutzung von Apache Spark in Azure Synapse wird pro vCore-Stunde und anteilig pro Minute berechnet.  Verwenden Sie z. B. kleine Poolgrößen für die Codeentwicklung und -validierung, während Sie umfangreichere Poolgrößen für Leistungstests verwenden.
+
 
 ### <a name="data-integration---pipelines-and-data-flows"></a>Datenintegration: Pipelines und Datenflüsse 
 

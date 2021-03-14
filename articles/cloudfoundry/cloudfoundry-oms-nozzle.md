@@ -1,7 +1,7 @@
 ---
 title: Bereitstellen von Azure Log Analytics Nozzle zur Überwachung von Cloud Foundry
 description: Enthält eine Schritt-für-Schritt-Anleitung zur Bereitstellung von Cloud Foundry Loggregator Nozzle für Azure Log Analytics. Verwenden Sie Nozzle zum Überwachen der Systemintegrität und Leistungsmetriken von Cloud Foundry.
-services: virtual-machines-linux
+services: virtual-machines
 author: ningk
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: fde0afcd37cd464b0b87e5ccd257d4a7a684eeb0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 54001c47d03b686a8e7c1f59f1e53d405e3bc506
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021587"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557385"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Bereitstellen von Azure Log Analytics Nozzle zur Überwachung des Cloud Foundry-Systems
 
@@ -36,7 +36,7 @@ Die folgenden Schritte sind Voraussetzungen für die Bereitstellung der Nozzle-K
 
 Sie können die Nozzle-Komponente entweder mit einer Open-Source-CF-Bereitstellung (Cloud Foundry) oder mit einer PCF-Bereitstellung (Pivotal Cloud Foundry) verwenden.
 
-* [Deploy Cloud Foundry on Azure](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md) (Bereitstellen von Cloud Foundry in Azure)
+* [Bereitstellen von Cloud Foundry in Azure](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md)
 
 * [Installing Pivotal Cloud Foundry on Azure](https://docs.pivotal.io/pivotalcf/1-11/customizing/azure.html) (Installieren von Pivotal Cloud Foundry in Azure)
 
@@ -61,11 +61,11 @@ Sie können den Log Analytics-Arbeitsbereich manuell oder mit einer Vorlage erst
 1. Durchsuchen Sie im Azure-Portal die Marketplace-Dienstliste, und wählen Sie dann Log Analytics-Arbeitsbereiche aus.
 2. Wählen Sie die Option **Erstellen** und anschließend Optionen für die folgenden Elemente aus:
 
-   * **Log Analytics-Arbeitsbereich**: Geben Sie einen Namen für den Arbeitsbereich ein.
+   * **Log Analytics-Arbeitsbereich**: Geben Sie einen Namen für Ihren Arbeitsbereich ein.
    * **Abonnement**: Wählen Sie das Abonnement aus, das Ihrer CF-Bereitstellung entspricht, falls Sie über mehrere Abonnements verfügen.
    * **Ressourcengruppe**: Sie können eine neue Ressourcengruppe erstellen oder die gleiche wie für Ihre CF-Bereitstellung verwenden.
    * **Standort**: Geben Sie den Standort ein.
-   * **Tarif:** Wählen Sie **OK** aus, um den Vorgang abzuschließen.
+   * **Tarif**: Wählen Sie **OK**, um den Vorgang abzuschließen.
 
 Weitere Informationen finden Sie unter [Erste Schritte mit Azure Monitor-Protokolle](../azure-monitor/overview.md).
 
@@ -78,11 +78,11 @@ Weitere Informationen finden Sie unter [Erste Schritte mit Azure Monitor-Protoko
 1. Geben Sie die erforderlichen Parameter ein:
     * **Abonnement**: Wählen Sie ein Azure-Abonnement für den Log Analytics-Arbeitsbereich aus, in der Regel identisch mit der Cloud Foundry-Bereitstellung.
     * **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe für den Log Analytics-Arbeitsbereich.
-    * **Ressourcengruppenstandort**: Wählen Sie den Standort der Ressourcengruppe aus.
+    * **Resource Group Location**: Wählen Sie den Speicherort der Ressourcengruppe aus.
     * **OMS_Workspace_Name**: Geben Sie einen Arbeitsbereichnamen ein. Wenn der Arbeitsbereich noch nicht vorhanden ist, wird die Vorlage einen neuen erstellen.
-    * **OMS_Workspace_Region**: Wählen Sie den Speicherort für den Arbeitsbereich aus.
-    * **OMS_Workspace_Pricing_Tier**: Wählen Sie das SKU für den Log Analytics-Arbeitsbereich aus. Sie können diese [Preisübersicht](https://azure.microsoft.com/pricing/details/log-analytics/) als Referenz nutzen.
-    * **Rechtliche Bedingungen**: Klicken Sie auf „Rechtliche Bedingungen“ und dann auf „Erstellen“, um die rechtlichen Bedingungen zu akzeptieren.
+    * **OMS_Workspace_Region**: Wählen Sie den Speicherort des Arbeitsbereichs ein.
+    * **OMS_Workspace_Pricing_Tier**: Wählen Sie die Log Analytics-Arbeitsbereich-SKU aus. Sie können diese [Preisübersicht](https://azure.microsoft.com/pricing/details/log-analytics/) als Referenz nutzen.
+    * **Legal terms**: Klicken Sie auf „Rechtliche Bedingungen“ und dann auf „Erstellen“, um die rechtlichen Bedingungen zu akzeptieren.
 1. Wenn Sie alle Parameter angegeben haben, klicken Sie auf „Erstellen“, um die Vorlage bereitzustellen. Wenn die Bereitstellung abgeschlossen ist, wird der Status auf der Registerkarte „Benachrichtigung“ angezeigt.
 
 
@@ -191,9 +191,9 @@ Sie können diese Ansichten über den **Ansicht-Designer** anpassen oder neue An
 
 ### <a name="2-create-alert-rules"></a>2. Erstellen von Warnungsregeln
 
-Sie können [die Warnungen erstellen](../azure-monitor/platform/alerts-overview.md) und die Abfragen und Schwellenwerte nach Bedarf anpassen. Hier sind empfohlene Warnungen angegeben:
+Sie können [die Warnungen erstellen](../azure-monitor/alerts/alerts-overview.md) und die Abfragen und Schwellenwerte nach Bedarf anpassen. Hier sind empfohlene Warnungen angegeben:
 
-| Suchabfrage                                                                  | Warnung generieren basierend auf | BESCHREIBUNG                                                                       |
+| Suchabfrage                                                                  | Warnung generieren basierend auf | Beschreibung                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | Anzahl von Ergebnissen < 1   | **bbs.Domain.cf-apps** gibt an, ob die Domäne „cf-apps“ aktuell ist. Dies bedeutet, dass CF-App-Anforderungen von Cloud Controller für die Ausführung mit „bbs.LRPsDesired“ (von Diego gewünschte KIs) synchronisiert werden. Wenn keine Daten empfangen werden, bedeutet dies, dass die Domäne „cf-apps“ im angegebenen Zeitraum nicht auf dem neuesten Stand ist. |
 | Type=CF_ValueMetric_CL Origin_s=rep Name_s=UnhealthyCell Value_d>1            | Anzahl von Ergebnissen > 0   | Für Diego-Zellen bedeutet der Wert 0 fehlerfrei und der Wert 1 fehlerhaft. Legen Sie die Warnung fest, wenn im angegebenen Zeitfenster mehrere fehlerhafte Diego-Zellen erkannt werden. |
@@ -212,12 +212,12 @@ Sie können die Nozzle-Komponente und den Loggregator skalieren.
 
 Sie sollten mindestens mit zwei Instanzen der Nozzle-Komponente beginnen. Die Firehose-Komponente verteilt die Workload auf alle Instanzen der Nozzle-Komponente.
 Richten Sie die Warnung **slowConsumerAlert** (im vorherigen Abschnitt „Erstellen von Warnungsregeln“ aufgeführt) ein, um sicherzustellen, dass die Nozzle-Komponente den Datenverkehr von der Firehose-Komponente bewältigen kann. Befolgen Sie nach Erhalt der Warnung den [Leitfaden für eine langsame Nozzle-Komponente](https://docs.pivotal.io/pivotalcf/1-11/loggregator/log-ops-guide.html#slow-noz), um zu ermitteln, ob eine Skalierung erforderlich ist.
-Verwenden Sie zum Hochskalieren der Nozzle-Komponente entweder Apps Manager oder die CF-Befehlszeilenschnittstelle, um die Instanzanzahl oder die Arbeitsspeicher- bzw. Datenträgerressourcen für die Nozzle-Komponente zu erhöhen.
+Verwenden Sie zum Skalieren der Nozzle-Komponente entweder Apps Manager oder die CF-Befehlszeilenschnittstelle, um die Instanzanzahl oder die Arbeitsspeicher- bzw. Datenträgerressourcen für die Nozzle-Komponente zu erhöhen.
 
 ### <a name="scale-the-loggregator"></a>Skalieren von Loggregator
 
 Loggregator sendet eine Protokollmeldung **LGR**, um auf Probleme mit dem Protokollierungsprozess hinzuweisen. Sie können die Warnung überwachen, um zu ermitteln, ob Loggregator zentral hochskaliert werden muss.
-Erhöhen Sie zum Hochskalieren von Loggregator entweder die Doppler-Puffergröße, oder fügen Sie im CF-Manifest zusätzliche Doppler-Serverinstanzen hinzu. Weitere Informationen finden Sie im [Leitfaden zum Skalieren von Loggregator](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling).
+Erhöhen Sie zum zentralen Hochskalieren von Loggregator entweder die Doppler-Puffergröße, oder fügen Sie im CF-Manifest zusätzliche Doppler-Serverinstanzen hinzu. Weitere Informationen finden Sie im [Leitfaden zum Skalieren von Loggregator](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling).
 
 ## <a name="update"></a>Aktualisieren
 

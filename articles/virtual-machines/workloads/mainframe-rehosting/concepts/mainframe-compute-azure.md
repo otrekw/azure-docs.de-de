@@ -5,13 +5,13 @@ author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
-ms.service: multiple
-ms.openlocfilehash: 04ec652c6e7ce8de003a464c6427439cf1519eab
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.service: virtual-machines
+ms.openlocfilehash: 32f259f20e0e24b4d5346c598e23fdc2df48dee6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092668"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556433"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>Verschieben von Mainframe-Computing zu Azure
 
@@ -43,7 +43,7 @@ Ein Mainframeprozessor kann als einer der folgenden Typen konfiguriert werden:
 
 ## <a name="scaling-mainframe-compute-up-and-out"></a>Horizontales und zentrales Hochskalieren von Mainframe-Computing
 
-IBM-Mainframes bieten die Möglichkeit, auf bis zu 240 Kerne hochzuskalieren (die aktuelle z14-Größe für ein einzelnes System). Darüber hinaus können IBM-Mainframes durch eine Funktion namens Coupling Facility (CF) aufskaliert werden. CF ermöglicht es, dass mehrere Mainframesysteme gleichzeitig auf dieselben Daten zugreifen. Mit CF gruppiert die Parallel-Sysplex-Technologie des Mainframes Mainframeprozessoren in Clustern. Als dieses Handbuch geschrieben wurde, unterstützte die Parallel-Sysplex-Funktion 32 Gruppierungen von je 64 Prozessoren. Auf diese Weise können bis zu 2.048 Prozessoren gruppiert werden, um die Computingleistung aufzuskalieren.
+IBM-Mainframes bieten die Möglichkeit, bis zu 240 Kerne zu skalieren (die aktuelle z14-Größe für ein einzelnes System). Darüber hinaus können IBM-Mainframes durch eine Funktion namens Coupling Facility (CF) horizontal skaliert werden. CF ermöglicht es, dass mehrere Mainframesysteme gleichzeitig auf dieselben Daten zugreifen. Mit CF gruppiert die Parallel-Sysplex-Technologie des Mainframes Mainframeprozessoren in Clustern. Als dieses Handbuch geschrieben wurde, unterstützte die Parallel-Sysplex-Funktion 32 Gruppierungen von je 64 Prozessoren. Auf diese Weise können bis zu 2.048 Prozessoren gruppiert werden, um die Computingleistung horizontal zu skalieren.
 
 Ein CF ermöglicht es den Computingclustern, Daten mit direktem Zugriff gemeinsam zu nutzen. Er dient zum Sperren von Informationen, Zwischenspeichern von Information und zum Erstellen der Liste der freigegebenen Datenressourcen. Ein Parallel-Sysplex mit einem oder mehreren CFs kann als ein Scale-Out-Computeclusterzum Freigeben aller Komponenten betrachtet werden. Weitere Informationen zu diesen Funktionen finden Sie unter [Parallel Sysplex on IBM Z](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources) auf der IBM-Website.
 
@@ -74,13 +74,13 @@ Im Folgenden finden Sie allgemeine Schätzungen:
 
 -   150 MIPS pro vCPU
 
--   1\.000 MIPS pro Prozessor
+-   1.000 MIPS pro Prozessor
 
 Um die richtige VM-Größe für eine bestimmte Workload in einer LPAR zu ermitteln, optimieren Sie zunächst die VM für die Workload. Ermitteln Sie dann die erforderliche Anzahl von vCPUs. Eine konservative Schätzung wäre 150 MIPS pro vCPU. Basierend auf dieser Schätzung könnte beispielsweise eine VM der F-Serie mit 16 vCPUs leicht eine IBM Db2-Workload von einer LPAR mit 2.400 MIPS unterstützen.
 
 ## <a name="azure-compute-scale-up"></a>Zentrales Hochskalieren von Azure-Computing
 
-Die VMs der M-Serie können auf 128 vCPUs hochskalieren (zum Zeitpunkt der Erstellung dieses Artikels). Bei der konservativen Schätzung von 150 MIPS pro vCPU entspricht die VM der M-Serie etwa 19.000 MIPS. Die allgemeine Regel für das Schätzen von MIPS für einen Mainframe ist 1.000 MIPS pro Prozessor. Ein z14-Mainframe kann bis zu 24 Prozessoren haben und etwa 24.000 MIPS für ein einziges Mainframesystem bereitstellen.
+Die VMs der M-Serie können bis zu 128 vCPUs skalieren (zum Zeitpunkt der Erstellung dieses Artikels). Bei der konservativen Schätzung von 150 MIPS pro vCPU entspricht die VM der M-Serie etwa 19.000 MIPS. Die allgemeine Regel für das Schätzen von MIPS für einen Mainframe ist 1.000 MIPS pro Prozessor. Ein z14-Mainframe kann bis zu 24 Prozessoren haben und etwa 24.000 MIPS für ein einziges Mainframesystem bereitstellen.
 
 Der größte einzelne z14-Mainframe hat etwa 5.000 MIPS mehr als die größte in Azure verfügbare VM. Dennoch ist es wichtig, zu vergleichen, wie Workloads bereitgestellt werden. Wenn ein Mainframesystem sowohl eine Anwendung als auch eine relationale Datenbank hat, werden sie typischerweise auf dem gleichen physischen Mainframe bereitgestellt – jeweils in einer eigenen LPAR. Die gleiche Lösung auf Azure wird oft mit einer VM für die Anwendung und einer separaten, entsprechend großen VM für die Datenbank bereitgestellt.
 
@@ -92,7 +92,7 @@ Bei diesem Ansatz werden LPARs auf einzelne VMs migriert. Dann kann Azure proble
 
 ## <a name="azure-compute-scale-out"></a>Horizontale Skalierung von Azure-Computing
 
-Einer der Vorteile einer Azure-basierten Lösung ist die Möglichkeit der Aufskalierung. Durch die Skalierung steht einer Anwendung eine nahezu unbegrenzte Rechenleistung zur Verfügung. Azure unterstützt mehrere Methoden, um die Rechenleistung aufzuskalieren:
+Einer der Vorteile einer Azure-basierten Lösung ist die Möglichkeit der Aufskalierung. Durch die Skalierung steht einer Anwendung eine nahezu unbegrenzte Rechenleistung zur Verfügung. Azure unterstützt mehrere Methoden, um die Rechenleistung zu skalieren:
 
 - **Lastenausgleich im gesamten Cluster.** In diesem Szenario kann eine Anwendung mit einem [Load Balancer](../../../../load-balancer/load-balancer-overview.md) oder Ressourcenmanager die Workload auf mehrere VMs in einem Cluster verteilen. Wenn Sie mehr Computingkapazität benötigt wird, werden zusätzliche VMs zum Cluster hinzugefügt.
 

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: template-concept
-ms.openlocfilehash: 8a9ed564012e8b530436152d931f5a5f6470ff98
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: d0cdabb3b22d642a7903810181106b09c549e1a2
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098365"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218161"
 ---
 # <a name="azure-percept-ai-models"></a>Azure Percept-KI-Modelle
 
@@ -29,9 +29,9 @@ Azure Percept Studio enthält Beispielmodelle für die folgenden Anwendungen:
 
 Bei vortrainierten Modellen ist keine Codierungs-oder Sammlung von Trainingsdaten erforderlich. Stellen Sie einfach das gewünschte Modell aus dem Portal in Ihrem Azure Percept DK bereit, und öffnen Sie den Videostream Ihres DevKits, um die Modellrückschlüsse in Aktion zu sehen. Sie können auch über das [Azure IoT-Explorer](https://github.com/Azure/azure-iot-explorer/releases)-Tool auf Telemetriedaten der Modellrückschlüsse zugreifen.
 
-## <a name="pre-built-solutions"></a>Vorgefertigte Lösungen
+## <a name="reference-solutions"></a>Referenzlösungen
 
-Eine [vorgefertigte Lösung für räumliche Analysen bei der Personenerkennung](https://github.com/george-moore/Santa-Cruz-AI-App) ist ebenfalls verfügbar. Bei der vorgefertigten Lösung handelt es sich um eine Open-Source-KI-Anwendung, die Edge-basierte Personenzählung bereitstellt, mit benutzerdefinierten Betreten-/Verlassen-Ereignissen für eine Zone. Die Video- und KI-Ausgabe des lokalen Edgegeräts wird an [Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/) ausgegeben, wobei die Benutzeroberfläche als Azure-Website ausgeführt wird. KI-Rückschlüsse werden von einem Open Source-KI-Modell für die Personenerkennung bereitgestellt.
+Eine [Referenzlösung zur Zählung von Personen](https://github.com/microsoft/Azure-Percept-Reference-Solutions/tree/main/people-detection-app) ist ebenfalls verfügbar. Bei dieser Referenzlösung handelt es sich um eine Open-Source-KI-Anwendung, die Edge-basierte Personenzählung bereitstellt, mit benutzerdefinierten Betreten-/Verlassen-Ereignissen für eine Zone. Die Video- und KI-Ausgabe des lokalen Edgegeräts wird an [Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/) ausgegeben, wobei die Benutzeroberfläche als Azure-Website ausgeführt wird. KI-Rückschlüsse werden von einem Open Source-KI-Modell für die Personenerkennung bereitgestellt.
 
 :::image type="content" source="./media/overview-ai-models/people-detector.gif" alt-text="GIF der vorgefertigten Lösung für räumliche Analysen.":::
 

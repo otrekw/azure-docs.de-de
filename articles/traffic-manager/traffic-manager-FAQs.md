@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2019
+ms.date: 03/03/2021
 ms.author: duau
-ms.openlocfilehash: fa8dba12a050e42e258e4224f29e379ff53f09d8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0d4f1ed6bab5775c44b2a745e1edc5fc07e0c06d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576672"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215458"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -306,7 +306,7 @@ Die Preise für die Datenverkehrsansicht basieren auf der Anzahl von Datenpunkte
 
 Die Verwendung von Endpunkten aus mehreren Abonnements ist mit Azure-Web-Apps nicht möglich. Für Azure-Web-Apps dürfen mit Web-Apps verwendete, benutzerdefinierte Domänennamen nur innerhalb eines einzelnen Abonnements genutzt werden. Es ist nicht möglich, Web-Apps aus mehreren Abonnements mit dem gleichen Domänennamen zu verwenden.
 
-Für andere Endpunkttypen kann Traffic Manager mit Endpunkten aus mehreren Abonnements verwendet werden. In Resource Manager können Endpunkte aus jedem Abonnement zu Traffic Manager hinzugefügt werden, solange die Person, die das Traffic Manager-Profil konfiguriert, über Lesezugriff für den Endpunkt verfügt. Diese Berechtigungen können über die [rollenbasierte Zugriffssteuerung von Azure (Role-Based Access Control, RBAC)](../role-based-access-control/role-assignments-portal.md) gewährt werden. Endpunkte aus anderen Abonnements können über [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) oder die [Azure CLI](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) hinzugefügt werden.
+Für andere Endpunkttypen kann Traffic Manager mit Endpunkten aus mehreren Abonnements verwendet werden. In Resource Manager können Endpunkte aus jedem Abonnement zu Traffic Manager hinzugefügt werden, solange die Person, die das Traffic Manager-Profil konfiguriert, über Lesezugriff für den Endpunkt verfügt. Diese Berechtigungen können über die [rollenbasierte Zugriffssteuerung von Azure (Role-Based Access Control, RBAC)](../role-based-access-control/role-assignments-portal.md) gewährt werden. Endpunkte aus anderen Abonnements können über [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) oder die [Azure CLI](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-create) hinzugefügt werden.
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Kann ich Traffic Manager mit „Stagingslots“ des Clouddiensts verwenden?
 
@@ -447,7 +447,18 @@ Wenn keine benutzerdefinierte Hostheadereinstellung angegeben wird, ist der vom 
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Wie lauten die IP-Adressen, von denen die Integritätsüberprüfungen stammen?
 
-Klicken Sie [hier](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json), um die JSON-Datei mit einer Auflistung der IP-Adressen anzuzeigen, aus denen Traffic Manager-Integritätsprüfungen stammen können. Gehen Sie die in dieser JSON-Datei aufgelisteten IP-Adressen durch, um sicherstellen, dass eingehende Verbindungen von diesen IP-Adressen an den Endpunkten zur Überprüfung des Integritätsstatus zugelassen sind.
+Klicken Sie [hier](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview), um zu erfahren, wie Sie die Listen der IP-Adressen abrufen können, von denen Traffic Manager-Integritätsprüfungen ausgehen können. Sie können die REST-API, die Azure CLI oder Azure PowerShell verwenden, um die aktuelle Liste abzurufen. Überprüfen Sie die aufgelisteten IP-Adressen, um sicherzustellen, dass eingehende Verbindungen von diesen IP-Adressen an den Endpunkten zur Überprüfung des Integritätsstatus zugelassen sind.
+
+Beispiel mit Azure PowerShell:
+
+```azurepowershell-interactive
+$serviceTags = Get-AzNetworkServiceTag -Location eastus
+$result = $serviceTags.Values | Where-Object { $_.Name -eq "AzureTrafficManager" }
+$result.Properties.AddressPrefixes
+```
+
+> [!NOTE]
+> Öffentliche IP-Adressen können ohne Ankündigung geändert werden. Stellen Sie sicher, dass Sie die neuesten Informationen über die Diensttagermittlungs-API oder eine herunterladbare JSON-Datei abrufen.
 
 ### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>Wie viele Integritätsprüfungen meines Endpunkts kann ich von Traffic Manager erwarten?
 

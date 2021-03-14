@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 8884663b3f0e861e62f48c3aab680f0f31e74428
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 85eb4ed0832c9384fcd05154833bc21f83f4adf2
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098382"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426347"
 ---
 # <a name="introduction-to-azure-percept-audio"></a>Einführung in Azure Percept-Audio
 
@@ -36,26 +36,13 @@ Azure Percept-Audio übergibt die Audioeingabe über den Spracherkennungsstapel
 
 Die Verarbeitung läuft wie folgt ab: 
 
-- Azure Percept-Audio: Führt die Strahlformung und Echounterdrückung durch und verarbeitet die Audioeingabe, um sie für die Spracherkennung und die Übermittlung an das DK zu optimieren.  
+- Azure Percept-Audio: Erfasst und konvertiert die Audiodaten und sendet sie an den DK und die Audiobuchse.
 
-- Azure Percept DK: Der Spracherkennungsstapel führt die Schlüsselworterkennung durch.  
+- Azure Percept DK: Der Spracherkennungsstapel führt Strahlformung und Echounterdrückung durch und verarbeitet die Audioeingabe zur Optimierung der Spracherkennung. Anschließend wird die Schlüsselworterkennung durchführt.
 
 - Cloud: Verarbeitet Befehle und Ausdrücke in natürlicher Sprache und führt eine Schlüsselwortüberprüfung sowie ein erneutes Training durch. 
 
 - Offline: Wenn das Gerät offline ist, wird das Schlüsselwort erkannt, und es werden Telemetriedaten zum Internetverbindungsstatus erfasst. Da keine Schlüsselwortüberprüfung in der Cloud möglich ist, kann es zu einer erhöhten Falschakzeptanzrate bei der Schlüsselworterkennung kommen. 
-
-<!---
-
-## How it works
-
-Azure Percept Audio passes the audio input to the Azure Percept DK carrier board in a hybrid edge-cloud manner. Specifically,
-
-- The Azure Percept Audio device: processes the incoming speech input to the clearest format by executing beam forming and echo cancellation befor sending the input to the Azure Percept DK. 
-- The Azure Percept DK uses edge processing to perform keyword spotting and then sends the relevant inputs to Azure speech services.
-- Cloud: Processing of natural language commands and phrases, in addition to keyword verification and retraining.
-- Offline: If the device is offline it will detect the keyword and capture telemetry that there is no internet connection at the time of the command. It will not be able to weed out false accepts since it cannot perform keyword verification.
-
--->
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -65,7 +52,7 @@ Azure Percept Audio passes the audio input to the Azure Percept DK carrier board
 
 ## <a name="build-a-no-code-prototype"></a>Erstellen eines Prototyps ohne Code
 
-Erstellen Sie eine [Sprachlösung ohne Code](./tutorial-no-code-speech.md) mithilfe von Azure Percept-Sprach-Assistenten-Vorlagen für Gast-/Hotelgewerbe, Gesundheitswesen, Inventur- und Automobilszenarien.
+Erstellen Sie eine [Sprachlösung ohne Code](./tutorial-no-code-speech.md) in [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) mithilfe von Azure Percept-Sprach-Assistenten-Vorlagen für Gast-/Hotelgewerbe, Gesundheitswesen, Inventur- und Automobilszenarien.
 
 ### <a name="manage-your-no-code-speech-solution"></a>Verwalten Ihrer Sprachlösung ohne Code
 

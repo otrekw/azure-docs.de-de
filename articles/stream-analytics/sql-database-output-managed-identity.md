@@ -6,18 +6,32 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: 7d624f2dd2c0c9b4c7e99d5628a1d47e4303da7f
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: e491c421f4af256b2e74fa61eb442d269bdb9e34
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555592"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487915"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-or-azure-synapse-analytics-from-an-azure-stream-analytics-job-preview"></a>Zugreifen auf Azure SQL-Datenbank oder Azure Synapse Analytics mit verwalteten Identitäten aus einem Azure Stream Analytics-Auftrag (Vorschau)
 
 Azure Stream Analytics unterstützt die [Authentifizierung über verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md) für Ausgabesenken von Azure SQL-Datenbank und Azure Synapse Analytics. Verwaltete Identitäten heben die Einschränkungen benutzerbasierter Authentifizierungsmethoden auf, wie etwa die Notwendigkeit einer erneuten Authentifizierung aufgrund von Kennwortänderungen oder Benutzertoken, die alle 90 Tage ablaufen. Wenn Sie die Notwendigkeit einer manuellen Authentifizierung aufheben, können Ihre Stream Analytics-Bereitstellungen vollständig automatisiert werden.
 
 Bei einer verwalteten Identität handelt es sich um eine in Azure Active Directory registrierte verwaltete Anwendung, die einen bestimmten Stream Analytics-Auftrag repräsentiert. Die verwaltete Anwendung wird zur Authentifizierung bei einer Zielressource verwendet. In diesem Artikel wird gezeigt, wie Sie verwaltete Identitäten für Azure SQL-Datenbank- oder Azure Synapse Analytics-Ausgaben eines Stream Analytics-Auftrags über das Azure-Portal aktivieren.
+
+## <a name="overview"></a>Übersicht
+
+In diesem Artikel werden die erforderlichen Schritte zum Verbinden Ihres Stream Analytics-Auftrags mit Ihrer Azure SQL-Datenbank oder dem Azure Synapse Analytics SQL-Pool mithilfe des Authentifizierungsmodus „Verwaltete Identität“ beschrieben. 
+
+- Sie erstellen zunächst eine dem System zugewiesene verwaltete Identität für Ihren Stream Analytics-Auftrag. Dies ist die Identität Ihres Auftrags in Azure Active Directory.  
+
+- Fügen Sie Ihrem SQL-Server oder Synapse-Arbeitsbereich einen Active Directory-Administrator hinzu, der die Azure AD-Authentifizierung (verwaltete Identität) für diese Ressource aktiviert.
+
+- Als nächstes erstellen Sie einen enthaltenen Benutzer, der die Identität des Stream Analytics-Auftrags in der Datenbank darstellt. Wann immer der Stream Analytics-Auftrag mit Ihrer SQL-Datenbank oder Synapse SQL DB-Ressource interagiert, ist dies die Identität, auf die er sich bezieht, um zu prüfen, über welche Berechtigungen Ihr Stream Analytics-Auftrag verfügt.
+
+- Erteilen Sie Ihrem Stream Analytics-Auftrag die Berechtigung, auf Ihre SQL-Datenbank oder Synapse SQL-Pools zuzugreifen.
+
+- Fügen Sie schließlich Ihre Azure SQL-Datenbank bzw. Azure Synapse Analytics als Ausgabe im Stream Analytics-Auftrag hinzu.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,6 +52,8 @@ Folgendes ist für die Verwendung dieses Features erforderlich:
 - Ein Azure Synapse Analytics-SQL-Pool
 
 - Ein Azure Storage-Konto, das [für Ihren Stream Analytics-Auftrag konfiguriert](azure-synapse-analytics-output.md) ist
+
+- Hinweis: Mit Synapse SQL-MSI integrierter Stream Analytics-Kontospeicher-MSI ist derzeit nicht verfügbar.
 
 ---
 
@@ -63,25 +79,25 @@ Erstellen Sie zuerst eine verwaltete Identität für den Azure Stream Analytics-
 
 Nachdem Sie eine verwaltete Identität erstellt haben, wählen Sie einen Active Directory-Administrator aus.
 
-1. Navigieren Sie zu Ihrer Azure SQL-Datenbank- oder Azure Synapse Analytics-Ressource, und wählen Sie die SQL Server-Instanz aus, unter der sich die Datenbank befindet. Der SQL Server-Name ist auf der Seite mit der Ressourcenübersicht neben *Servername* angegeben.
+1. Navigieren Sie zu Ihrer Azure SQL-Datenbank oder Azure Synapse Analytics SQL-Poolressource, und wählen Sie die SQL Server-Instanz bzw. den Synapse-Arbeitsbereich aus, unter dem sich die Ressource befindet. Den Link zu diesen finden Sie auf der Ressourcenübersichtsseite neben *Servername* oder *Arbeitsplatzname*.
 
-1. Wählen Sie unter **Einstellungen** die Option **Active Directory-Administrator** aus. Wählen Sie dann **Administrator festlegen** aus.
+1. Wählen Sie **Active Directory-Administrator** oder **SQL Active Directory-Administrator** entsprechend für SQL Server und Synapse-Arbeitsbereich unter **Einstellungen** aus. Wählen Sie dann **Administrator festlegen** aus.
 
    ![Seite „Active Directory-Administrator“](./media/sql-db-output-managed-identity/active-directory-admin-page.png)
 
-1. Suchen Sie auf der Seite „Active Directory-Administrator“ nach einem Benutzer oder einer Gruppe, den bzw. die Sie als Administrator für die SQL Server-Instanz festlegen möchten, und klicken Sie auf **Auswählen**.
+1. Suchen Sie auf der Seite „Active Directory-Administrator“ nach einem Benutzer oder einer Gruppe, den bzw. die Sie als Administrator für die SQL Server-Instanz festlegen möchten, und klicken Sie auf **Auswählen**. Dies wird der Benutzer sein, der im nächsten Abschnitt den **Benutzer für eigenständige Datenbank** erstellen kann.
 
    ![Hinzufügen eines Active Directory-Administrators](./media/sql-db-output-managed-identity/add-admin.png)
 
-   Auf der Seite „Active Directory-Administrator“ werden alle Mitglieder und Gruppen in Ihrem Active Directory-Verzeichnis angezeigt. Abgeblendete Benutzer oder Gruppen können nicht ausgewählt werden, da sie nicht als Azure Active Directory-Administratoren unterstützt werden. Siehe die Liste von unterstützten Administratoren im Abschnitt  **Funktionen und Einschränkungen von Azure Active Directory** von  [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit SQL-Datenbank oder Azure Synapse](../azure-sql/database/authentication-aad-overview.md#azure-ad-features-and-limitations). Die rollenbasierte Zugriffssteuerung in Azure (Role-based Access Control, RBAC) gilt nur für das Portal und wird nicht an SQL Server weitergegeben. Der ausgewählte Benutzer bzw. die ausgewählte Gruppe ist außerdem der Benutzer, der den **Benutzer der eigenständigen Datenbank** im nächsten Abschnitt erstellen kann.
+   Auf der Seite „Active Directory-Administrator“ werden alle Mitglieder und Gruppen in Ihrem Active Directory-Verzeichnis angezeigt. Abgeblendete Benutzer oder Gruppen können nicht ausgewählt werden, da sie nicht als Azure Active Directory-Administratoren unterstützt werden. Siehe die Liste von unterstützten Administratoren im Abschnitt  **Funktionen und Einschränkungen von Azure Active Directory** von  [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit SQL-Datenbank oder Azure Synapse](../azure-sql/database/authentication-aad-overview.md#azure-ad-features-and-limitations).
 
 1. Wählen Sie auf der Seite **Active Directory-Administrator** die Option **Speichern** aus. Der Prozess zum Ändern des Administrators dauert einige Minuten.
-
-   Beim Einrichten des Azure Active Directory-Administrators darf der Name des neuen Administrators (Benutzer oder Gruppe) in der virtuellen primären Datenbank nicht als SQL Server-Authentifizierungsbenutzer vorhanden sein. Wenn er vorhanden ist, schlägt die Einrichtung des Azure Active Directory-Administrators fehl. Die Erstellung wird rückgängig gemacht, und es wird angegeben, dass bereits ein Administrator (Name) vorhanden ist. Da der SQL Server-Authentifizierungsbenutzer nicht Teil von Azure Active Directory ist, sind alle Versuche erfolglos, unter der Azure Active Directory-Authentifizierung als dieser Benutzer eine Verbindung mit dem Server herzustellen. 
 
 ## <a name="create-a-contained-database-user"></a>Erstellen eines Benutzers einer eigenständigen Datenbank
 
 Als Nächstes erstellen Sie einen Benutzer einer eigenständigen Datenbank in Ihrer Datenbank in Azure SQL-Datenbank oder Azure Synapse, die der Azure Active Directory-Identität zugeordnet ist. Der Benutzer einer eigenständigen Datenbank verfügt über keine Anmeldung für die primäre Datenbank, ist aber einer Identität im Verzeichnis zugeordnet, die wiederum mit der Datenbank verknüpft ist. Bei der Azure Active Directory-Identität kann es sich um ein einzelnes Benutzerkonto oder eine Gruppe handeln. In diesem Fall möchten Sie einen Benutzer einer eigenständigen Datenbank für den Stream Analytics-Auftrag erstellen. 
+
+Weitere Informationen finden Sie im folgenden Artikel zu Hintergrundinformationen der Azure AD-Integration: [Universelle Authentifizierung bei SQL-Datenbank und Azure Synapse Analytics (SSMS-Unterstützung für MFA)](../azure-sql/database/authentication-mfa-ssms-overview.md).
 
 1. Stellen Sie über SQL Server Management Studio eine Verbindung mit Ihrer Datenbank in Azure SQL-Datenbank oder Azure Synapse her. Der **Benutzername** ist ein Azure Active Directory-Benutzer mit der Berechtigung **ALTER ANY USER**. Der Administrator, den Sie auf dem SQL Server festlegen, ist ein Beispiel dafür. Verwenden Sie die Authentifizierung **Azure Active Directory: universell mit MFA**. 
 
@@ -97,7 +113,7 @@ Als Nächstes erstellen Sie einen Benutzer einer eigenständigen Datenbank in Ih
 
    ![Fenster „Neue Firewallregel“](./media/sql-db-output-managed-identity/new-firewall-rule.png)
 
-   1. Navigieren Sie in diesem Fall im Azure-Portal zu Ihrer SQL Server-Ressource. Öffnen Sie im Abschnitt **Sicherheit** die Seite **Firewalls und virtuelle Netzwerke**. 
+   1. Wenn dies der Fall ist, wechseln Sie zu Ihrer SQL Server/Synapse Workspace-Ressource im Azure-Portal. Öffnen Sie unter dem Abschnitt **Sicherheit** die Seite **Firewalls und virtuelles Netzwerk/Firewalls**. 
    1. Fügen Sie eine neue Regel mit einem beliebigen Regelnamen hinzu.
    1. Verwenden Sie die *Von*-IP-Adresse im Fenster **Neue Firewallregel** als *Start-IP*.
    1. Verwenden Sie die *An*-IP-Adresse im Fenster **Neue Firewallregel** als *End-IP*. 
@@ -108,8 +124,15 @@ Als Nächstes erstellen Sie einen Benutzer einer eigenständigen Datenbank in Ih
    ```sql
    CREATE USER [ASA_JOB_NAME] FROM EXTERNAL PROVIDER; 
    ```
+   
+    Um zu überprüfen, ob Sie den enthaltenen Datenbankbenutzer ordnungsgemäß hinzugefügt haben, führen Sie den folgenden Befehl in SSMS unter der zugehörigen Datenbank aus und überprüfen Sie, ob sich Ihr *ASA_JOB_NAME* unter der Spalte „Name“ befindet.
 
-1. Damit Microsoft Azure Active Directory überprüfen kann, ob der Stream Analytics-Auftrag Zugriff auf die SQL-Datenbank hat, müssen wir Azure Active Directory die Erlaubnis zur Kommunikation mit der Datenbank erteilen. Navigieren Sie hierzu im Azure-Portal erneut zur Seite „Firewalls und virtuelles Netzwerk“, und aktivieren Sie die Option „Azure-Diensten und -Ressourcen den Zugriff auf diesen Server erlauben“. 
+   ```sql
+   SELECT * FROM <SQL_DB_NAME>.sys.database_principals 
+   WHERE type_desc = 'EXTERNAL_USER' 
+   ```
+
+1. Damit Microsoft Azure Active Directory überprüfen kann, ob der Stream Analytics-Auftrag Zugriff auf die SQL-Datenbank hat, müssen wir Azure Active Directory die Erlaubnis zur Kommunikation mit der Datenbank erteilen. Navigieren Sie dazu im Azure-Portal wieder auf die Seite „Firewalls und virtuelles Netzwerk/Firewalls“, und aktivieren Sie „Azure-Diensten und -Ressourcen den Zugriff auf diesen Server/Arbeitsbereich erlauben“.
 
    ![Firewall und virtuelles Netzwerk](./media/sql-db-output-managed-identity/allow-access.png)
 
@@ -117,13 +140,13 @@ Als Nächstes erstellen Sie einen Benutzer einer eigenständigen Datenbank in Ih
 
 #### <a name="azure-sql-database"></a>[Azure SQL-Datenbank](#tab/azure-sql)
 
-Nachdem Sie einen Benutzer einer eigenständigen Datenbank erstellt und Zugriff auf Azure-Dienste erteilt haben, wie im vorherigen Abschnitt beschrieben, hat Ihr Stream Analytics-Auftrag von der verwalteten Identität die Berechtigung **CONNECT**. Damit kann er mithilfe der verwalteten Identität eine Verbindung mit Ihrer Azure SQL-Datenbank-Ressource herstellen. Es empfiehlt sich, dem Stream Analytics-Auftrag die Berechtigungen SELECT und INSERT zu erteilen, da diese später im Stream Analytics-Workflow benötigt werden. Mithilfe der **SELECT**-Berechtigung kann der Auftrag seine Verbindung mit der Tabelle in Azure SQL-Datenbank testen. Die **INSERT**-Berechtigung ermöglicht das Testen von End-to-End-Abfragen in Stream Analytics, nachdem Sie eine Eingabe und die Azure SQL-Datenbank-Ausgabe konfiguriert haben.
+Nachdem Sie einen Benutzer einer eigenständigen Datenbank erstellt und Zugriff auf Azure-Dienste erteilt haben, wie im vorherigen Abschnitt beschrieben, hat Ihr Stream Analytics-Auftrag von der verwalteten Identität die Berechtigung **CONNECT**. Damit kann er mithilfe der verwalteten Identität eine Verbindung mit Ihrer Azure SQL-Datenbank-Ressource herstellen. Es empfiehlt sich, dem Stream Analytics-Auftrag die Berechtigungen **SELECT** und **INSERT** zu erteilen, da diese später im Stream Analytics-Workflow benötigt werden. Mithilfe der **SELECT**-Berechtigung kann der Auftrag seine Verbindung mit der Tabelle in Azure SQL-Datenbank testen. Die **INSERT**-Berechtigung ermöglicht das Testen von End-to-End-Abfragen in Stream Analytics, nachdem Sie eine Eingabe und die Azure SQL-Datenbank-Ausgabe konfiguriert haben.
 
 #### <a name="azure-synapse-analytics"></a>[Azure Synapse Analytics](#tab/azure-synapse)
 
-Nachdem Sie einen Benutzer einer eigenständigen Datenbank erstellt und Zugriff auf Azure-Dienste erteilt haben, wie im vorherigen Abschnitt beschrieben, hat Ihr Stream Analytics-Auftrag von der verwalteten Identität die Berechtigung **CONNECT**. Damit kann er mithilfe der verwalteten Identität eine Verbindung mit Ihrer Azure Synapse-Datenbankressource herstellen. Es empfiehlt sich, dem Stream Analytics-Auftrag außerdem die Berechtigungen SELECT, INSERT und ADMINISTER DATABASE BULK OPERATIONS zu erteilen, da diese später im Stream Analytics-Workflow benötigt werden. Mithilfe der **SELECT**-Berechtigung kann der Auftrag seine Verbindung mit der Tabelle in der Azure Synapse-Datenbank testen. Die Berechtigungen **INSERT** und **ADMINISTER DATABASE BULK OPERATIONS** ermöglichen das Testen von End-to-End-Abfragen in Stream Analytics, nachdem Sie eine Eingabe und die Azure Synapse-Datenbankausgabe konfiguriert haben.
+Nachdem Sie einen Benutzer einer eigenständigen Datenbank erstellt und Zugriff auf Azure-Dienste erteilt haben, wie im vorherigen Abschnitt beschrieben, hat Ihr Stream Analytics-Auftrag von der verwalteten Identität die Berechtigung **CONNECT**. Damit kann er mithilfe der verwalteten Identität eine Verbindung mit Ihrer Azure Synapse-Datenbankressource herstellen. Es empfiehlt sich, dem Stream Analytics-Auftrag außerdem die Berechtigungen **SELECT**, **INSERT** und **ADMINISTER DATABASE BULK OPERATIONS** zu erteilen, da diese später im Stream Analytics-Workflow benötigt werden. Mithilfe der **SELECT**-Berechtigung kann der Auftrag seine Verbindung mit der Tabelle in der Azure Synapse-Datenbank testen. Die Berechtigungen **INSERT** und **ADMINISTER DATABASE BULK OPERATIONS** ermöglichen das Testen von End-to-End-Abfragen in Stream Analytics, nachdem Sie eine Eingabe und die Azure Synapse-Datenbankausgabe konfiguriert haben.
 
-Zum Erteilen der Berechtigung ADMINISTER DATABASE BULK OPERATIONS müssen Sie dem Stream Analytics-Auftrag alle Berechtigungen gewähren, die unter [Impliziert durch Datenbankberechtigung](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest&preserve-view=true#remarks) mit **CONTROL** bezeichnet sind. Sie benötigen diese Berechtigung, da der Stream Analytics-Auftrag die COPY-Anweisung ausführt, für die [ADMINISTER DATABASE BULK OPERATIONS und INSERT](/sql/t-sql/statements/copy-into-transact-sql) erforderlich sind.
+Zum Erteilen der Berechtigung **ADMINISTER DATABASE BULK OPERATIONS** müssen Sie dem Stream Analytics-Auftrag alle Berechtigungen gewähren, die unter [Impliziert durch Datenbankberechtigung](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest&preserve-view=true#remarks) mit **CONTROL** bezeichnet sind. Sie benötigen diese Berechtigung, da der Stream Analytics-Auftrag die **COPY**-Anweisung ausführt, für die [ADMINISTER DATABASE BULK OPERATIONS und INSERT](/sql/t-sql/statements/copy-into-transact-sql) erforderlich sind.
 
 ---
 
@@ -134,18 +157,28 @@ Um nur Berechtigung für eine bestimmte Tabelle oder ein bestimmtes Objekt in de
 #### <a name="azure-sql-database"></a>[Azure SQL-Datenbank](#tab/azure-sql)
 
 ```sql
-GRANT SELECT, INSERT ON OBJECT::TABLE_NAME TO ASA_JOB_NAME;
+GRANT CONNECT, SELECT, INSERT ON OBJECT::TABLE_NAME TO ASA_JOB_NAME;
 ```
 
 #### <a name="azure-synapse-analytics"></a>[Azure Synapse Analytics](#tab/azure-synapse)
 
 ```sql
-GRANT [PERMISSION NAME] OBJECT::TABLE_NAME TO ASA_JOB_NAME;
+GRANT CONNECT, SELECT, INSERT, CONTROL, ADMINISTER DATABASE BULK OPERATIONS OBJECT::TABLE_NAME TO ASA_JOB_NAME;
 ```
 
 ---
 
 Alternativ können Sie in SQL Server Management Studio mit der rechten Maustaste auf Ihre Datenbank in Azure SQL-Datenbank oder Azure Synapse klicken und **Eigenschaften > Berechtigungen** auswählen. Im Berechtigungsmenü wird der zuvor hinzugefügte Stream Analytics-Auftrag angezeigt, und Sie können nach Belieben manuell Berechtigungen erteilen oder verweigern.
+
+Um alle Berechtigungen anzuzeigen, die Sie Ihrem Benutzer *ASA_JOB_NAME* hinzugefügt haben, führen Sie den folgenden Befehl in SSMS unter der zugehörigen Datenbank aus: 
+
+```sql
+SELECT dbprin.name, dbprin.type_desc, dbperm.permission_name, dbperm.state_desc, dbperm.class_desc, object_name(dbperm.major_id) 
+FROM sys.database_principals dbprin 
+LEFT JOIN sys.database_permissions dbperm 
+ON dbperm.grantee_principal_id = dbprin.principal_id 
+WHERE dbprin.name = '<ASA_JOB_NAME>' 
+```
 
 ## <a name="create-an-azure-sql-database-or-azure-synapse-output"></a>Erstellen einer Azure SQL-Datenbank- oder Azure Synapse-Ausgabe
 
@@ -161,6 +194,8 @@ Vergewissern Sie sich, dass Sie in Ihrer SQL-Datenbank eine Tabelle mit dem pass
 
 1. Geben Sie die restlichen Eigenschaften an. Weitere Informationen zum Erstellen einer SQL-Datenbank-Ausgabe finden Sie unter [Erstellen einer SQL-Datenbank-Ausgabe mit Stream Analytics](sql-database-output.md). Wenn Sie fertig sind, wählen Sie **Speichern** aus.
 
+1. Nachdem Sie auf **Speichern** geklickt haben, sollte automatisch ein Verbindungstest zu Ihrer Ressource ausgelöst werden. Sobald dies erfolgreich abgeschlossen ist, haben Sie Ihren Stream Analytics-Auftrag erfolgreich für die Verbindung mit Ihrer Azure SQL-Datenbank oder Synapse SQL-Datenbank unter Verwendung des Authentifizierungsmodus „Verwaltete Identität“ konfiguriert. 
+
 #### <a name="azure-synapse-analytics"></a>[Azure Synapse Analytics](#tab/azure-synapse)
 
 Nachdem die verwaltete Identität und das Speicherkonto konfiguriert wurden, können Sie dem Stream Analytics-Auftrag eine Azure SQL-Datenbank- oder Azure Synapse-Ausgabe hinzufügen.
@@ -172,6 +207,8 @@ Vergewissern Sie sich, dass Sie in Ihrer Azure Synapse-Datenbank eine Tabelle mi
 1. Wählen Sie **Hinzufügen > Azure Synapse Analytics** aus. Wählen Sie im Fenster mit den Ausgabeeigenschaften der SQL-Datenbank-Ausgabesenke in der Dropdownliste mit Authentifizierungsmodi die Option **Verwaltete Identität** aus.
 
 1. Geben Sie die restlichen Eigenschaften an. Weitere Informationen zum Erstellen einer Azure-Synapse-Ausgabe finden Sie unter [Azure Synapse Analytics-Ausgabe für Azure Stream Analytics](azure-synapse-analytics-output.md). Wenn Sie fertig sind, wählen Sie **Speichern** aus.
+
+1. Nachdem Sie auf **Speichern** geklickt haben, sollte automatisch ein Verbindungstest zu Ihrer Ressource ausgelöst werden. Wenn dies erfolgreich abgeschlossen ist, können Sie jetzt mit der Verwendung der verwalteten Identität für Ihre Azure Synapse Analytics-Ressource mit Stream Analytics fortfahren. 
 
 ---
 

@@ -1,25 +1,19 @@
 ---
 title: Azure Disk Encryption für Windows
 description: Stellen Sie Azure Disk Encryption mithilfe einer VM-Erweiterung auf einem virtuellen Windows-Computer bereit.
-services: virtual-machines-windows
-documentationcenter: ''
-author: ejarvi
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
-ms.date: 03/19/2020
+ms.service: virtual-machines
+ms.subservice: disks
+author: ejarvi
 ms.author: ejarvi
-ms.openlocfilehash: e7c7385f6a9b0afb5791299a1244011e6164a0a7
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.collection: windows
+ms.date: 03/19/2020
+ms.openlocfilehash: 10268f8041f21f74e8ebcfaee41d207a53618260
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805252"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566242"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption für Windows (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -43,7 +37,7 @@ Es gibt zwei Versionen des Erweiterungsschemas für Azure Disk Encryption (ADE):
 
 Zum Auswählen eines Zielschemas muss die Eigenschaft `typeHandlerVersion` auf die gewünschte Schemaversion festgelegt werden.
 
-### <a name="schema-v22-no-aad-recommended"></a>Schema v2.2: Kein AAD (empfohlen)
+### <a name="schema-v22-no-aad-recommended"></a>Schema v2.2: ohne AAD (empfohlen)
 
 Das v2.2-Schema wird für alle neuen virtuellen Computer empfohlen und erfordert keine Azure Active Directory-Eigenschaften.
 
@@ -155,7 +149,7 @@ Verwenden von `AADClientCertificate`:
 | KeyVaultResourceId | url | Zeichenfolge |
 | (optional) KeyEncryptionKeyURL | url | Zeichenfolge |
 | (optional) KekVaultResourceId | url | Zeichenfolge |
-| (optional) SequenceVersion | uniqueidentifier | Zeichenfolge |
+| (optional) SequenceVersion | UNIQUEIDENTIFIER | Zeichenfolge |
 | VolumeType | Betriebssystem, Daten, alle | Zeichenfolge |
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen

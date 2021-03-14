@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 156dfd1d9553e369357eb68225e722222a59d847
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a79b0b5b5f21d1c75fec6b062f1ca91cfe9dd1f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91838669"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102219198"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Verwalten von Azure Cache for Redis
 In diesem Thema erfahren Sie, wie Verwaltungsaufgaben wie das [Neustarten](#reboot) und [Planen von Updates](#schedule-updates) für Ihre Azure Cache for Redis-Instanzen erfolgen.
@@ -57,6 +57,8 @@ Ja, wenn Sie den Cache neu starten, werden alle Clientverbindungen gelöscht. Ei
 > 
 > 
 
+
+
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>Gehen beim Neustart Daten aus dem Cache verloren?
 Wenn Sie sowohl den **Master**- als auch den **Replikat**-Knoten neu starten, gehen möglicherweise alle Daten im Cache (oder im jeweiligen Shard, wenn Sie einen Premium-Cache mit aktiviertem Clustering nutzen) verloren, doch dies ist auch nicht sicher. Wenn Sie [Datenpersistenz](cache-how-to-premium-persistence.md) konfiguriert haben, wird die letzte Sicherung wiederhergestellt, sobald der Cache wieder online ist. Allerdings gehen alle Cacheschreibvorgänge verloren, die nach der Sicherung durchgeführt wurden.
 
@@ -69,8 +71,9 @@ Ja. Anweisungen für PowerShell finden Sie unter [So starten Sie einen Azure Cac
 Auf dem Blatt **Updates planen** können Sie ein Wartungsfenster für Ihre Cache-Instanz bestimmen. Mithilfe eines Wartungsfensters können Sie Tage und die Uhrzeiten einer Woche steuern, an denen die VMs, auf denen der Cache gehostet wird, aktualisiert werden können. Azure Cache for Redis versucht nach Möglichkeit, die Redis-Serversoftware innerhalb des definierten Zeitfensters zu starten und zu beenden.
 
 > [!NOTE] 
-> Das Wartungsfenster bezieht sich nur auf Redis-Serverupdates und nicht auf Azure-Updates oder Updates des Betriebssystems der virtuellen Computer, die den Cache hosten.
+> Das Wartungsfenster gilt für Redis-Serverupdates und Updates des Betriebssystems der virtuellen Computer, die den Cache hosten. Das Wartungsfenster gilt nicht für Updates des Hostbetriebssystems auf den Hosts, die die Cache-VMs oder andere Azure-Netzwerkkomponenten hosten. In seltenen Fällen, in denen Caches auf älteren Modellen gehostet werden (Sie können erkennen, ob sich Ihr Cache auf einem älteren Modell befindet, wenn der DNS-Name des Caches in ein Suffix von „cloudapp.net“, „chinacloudapp.cn“, „usgovcloudapi.net“ oder „cloudapi.de“ aufgelöst wird), gilt das Wartungsfenster auch nicht für Gastbetriebssystemupdates.
 >
+
 
 ![Planen von Updates](./media/cache-administration/redis-schedule-updates.png)
 

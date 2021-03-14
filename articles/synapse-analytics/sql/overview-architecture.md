@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: bd911868028825164cdd9627bf6b5c6d56de7164
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 28940272d39a08d790fe2cd913df808b02e7f426
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679617"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441889"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL-Architektur 
 
@@ -37,7 +37,7 @@ Der Azure Synapse SQL-Steuerknoten nutzt eine Engine für verteilte Abfragen, um
 
 Der Steuerknoten des serverlosen SQL-Pools verwendet eine DQP-Engine (Distributed Query Processing) zur Optimierung und Orchestrierung der verteilten Ausführung von Benutzerabfragen, indem er sie in kleinere Abfragen aufteilt, die auf Serverknoten ausgeführt werden. Jede kleine Abfrage wird als Aufgabe bezeichnet und stellt eine verteilte Ausführungseinheit dar. Sie liest Dateien aus dem Speicher, verknüpft Ergebnisse aus anderen Aufgaben, gruppiert oder ordnet Daten an, die aus anderen Aufgaben abgerufen wurden. 
 
-Auf den Serverknoten werden alle Benutzerdaten in Azure Storage gespeichert und die parallelen Abfragen ausgeführt. Der Datenverschiebungsdienst (Data Movement Service, DMS) ist ein interner Dienst auf Systemebene, der Daten nach Bedarf zwischen den Knoten verschiebt, sodass Abfragen parallel ausgeführt und genaue Ergebnisse zurückgegeben werden. 
+Auf den Computeknoten werden alle Benutzerdaten in Azure Storage gespeichert und die parallelen Abfragen ausgeführt. Der Datenverschiebungsdienst (Data Movement Service, DMS) ist ein interner Dienst auf Systemebene, der Daten nach Bedarf zwischen den Knoten verschiebt, sodass Abfragen parallel ausgeführt und genaue Ergebnisse zurückgegeben werden. 
 
 Durch die Entkopplung von Speicherung und Compute profitieren Sie beim Einsatz von Synapse SQL von einer unabhängigen Skalierung der Computeleistung, die unabhängig von Ihrem Speicherbedarf ist. Bei einem serverlosen SQL-Pool erfolgt die Skalierung automatisch, während bei einem dedizierten SQL-Pool Folgendes möglich ist:
 
@@ -49,7 +49,7 @@ Durch die Entkopplung von Speicherung und Compute profitieren Sie beim Einsatz v
 
 Synapse SQL nutzt Azure Storage, um Benutzerdaten zu schützen. Da Ihre Daten von Azure Storage gespeichert und verwaltet werden, werden die Kosten für Ihre Speichernutzung getrennt berechnet. 
 
-Beim serverlosen SQL-Pool können Sie Dateien in Ihrem Data Lake schreibgeschützt abfragen, während Sie beim SQL-Pool auch Daten erfassen können. Wenn Daten im dedizierten SQL-Pool erfasst werden, werden sie zur Optimierung der Systemleistung in **Verteilungen** horizontal partitioniert. Beim Definieren der Tabelle können Sie das Shardingmuster zum Verteilen der Daten auswählen. Folgende Shardingmuster werden unterstützt:
+Mit dem serverlosen SQL-Pool können Sie Ihre Data Lake-Dateien abfragen, während Sie mit dem dedizierten SQL-Pool Daten aus Ihren Data Lake-Dateien abfragen und erfassen können. Wenn Daten im dedizierten SQL-Pool erfasst werden, werden sie zur Optimierung der Systemleistung in **Verteilungen** horizontal partitioniert. Beim Definieren der Tabelle können Sie das Shardingmuster zum Verteilen der Daten auswählen. Folgende Shardingmuster werden unterstützt:
 
 * Hash
 * Roundrobin
@@ -107,7 +107,7 @@ In einer Tabelle mit Roundrobin-Verteilung werden Daten gleichmäßig auf die Ta
 ## <a name="replicated-tables"></a>Replizierte Tabellen
 Eine replizierte Tabelle bietet die schnellste Abfrageleistung für kleine Tabellen.
 
-In einer Tabelle, die repliziert wird, wird eine vollständige Kopie der Tabelle auf jedem Serverknoten zwischengespeichert. Daher müssen beim Replizieren einer Tabelle Daten vor einer Verknüpfung oder Aggregation nicht mehr auf Serverknoten übertragen werden. Replizierte Tabellen werden am besten mit kleinen Tabellen verwendet. Zusätzlicher Speicherplatz ist erforderlich, und beim Schreiben von Daten entsteht zusätzlicher Mehraufwand, sodass dies für große Tabellen nicht praktikabel ist. 
+In einer Tabelle, die repliziert wird, wird eine vollständige Kopie der Tabelle auf jedem Serverknoten zwischengespeichert. Durch das Replizieren einer Tabelle müssen Daten somit vor einem Join oder einer Aggregation nicht mehr auf Computeknoten übertragen werden. Replizierte Tabellen werden am besten mit kleinen Tabellen verwendet. Zusätzlicher Speicherplatz ist erforderlich, und beim Schreiben von Daten entsteht zusätzlicher Mehraufwand, sodass dies für große Tabellen nicht praktikabel ist. 
 
 Das nachstehende Diagramm zeigt eine replizierte Tabelle, die bei der ersten Verteilung auf den einzelnen Serverknoten zwischengespeichert wird. 
 
@@ -115,4 +115,4 @@ Das nachstehende Diagramm zeigt eine replizierte Tabelle, die bei der ersten Ver
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie jetzt etwas über Synapse SQL erfahren haben, informieren Sie sich, wie Sie schnell [einen dedizierten SQL-Pool erstellen](../quickstart-create-sql-pool-portal.md) und [Beispieldaten laden](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) können (./sql-data-warehouse-load-sample-databases.md). Oder Sie beginnen mit der [Verwendung eines serverlosen SQL-Pools](../quickstart-sql-on-demand.md). Falls Sie mit Azure noch nicht vertraut sind und auf neue Terminologie stoßen, ist das [Azure-Glossar](../../azure-glossary-cloud-terminology.md) sehr nützlich. 
+Nachdem Sie jetzt etwas über Synapse SQL erfahren haben, informieren Sie sich, wie Sie schnell [einen dedizierten SQL-Pool erstellen](../quickstart-create-sql-pool-portal.md) und [Beispieldaten laden](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) können (./sql-data-warehouse-load-sample-databases.md). Oder beginnen Sie mit der [Verwendung eines serverlosen SQL-Pools](../quickstart-sql-on-demand.md). Falls Sie mit Azure noch nicht vertraut sind und auf neue Terminologie stoßen, ist das [Azure-Glossar](../../azure-glossary-cloud-terminology.md) sehr nützlich. 

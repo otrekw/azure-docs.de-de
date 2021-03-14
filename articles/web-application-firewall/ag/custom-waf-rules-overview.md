@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: c0f802f5113e38e811c110ee913099e76fa7be0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a5f64687937479d65f94010bbe4f0a5f1cf5ca2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81383811"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548222"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Benutzerdefinierte Regeln für Web Application Firewall v2 in Azure Application Gateway
 
@@ -26,7 +26,7 @@ Benutzerdefinierte Regeln unterstützen die Verwendung von Verknüpfungslogik zu
 
 Verschiedene Abgleichsbedingungen innerhalb der gleichen Regel sind immer durch **und** verknüpft. Beispiel: Blockieren des Datenverkehrs von einer bestimmten IP-Adresse nur bei Verwendung eines bestimmten Browsers.
 
-Wenn Sie zwei Bedingungen mit **oder** verknüpfen möchten, müssen sich diese in unterschiedlichen Regeln befinden. Beispiel: Blockieren des Datenverkehrs von einer bestimmten IP-Adresse oder Blockieren des Datenverkehrs bei Verwendung eines bestimmten Browsers.
+Wenn Sie **oder** zwischen zwei verschiedenen Bedingungen verwenden möchten, dann müssen sich die beiden Bedingungen in verschiedenen Regeln befinden. Beispiel: Blockieren des Datenverkehrs von einer bestimmten IP-Adresse oder Blockieren des Datenverkehrs bei Verwendung eines bestimmten Browsers.
 
 > [!NOTE]
 > Es können maximal 100 benutzerdefinierte WAF-Regeln verwendet werden. Weitere Informationen zu Application Gateway-Grenzwerten finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits).
@@ -73,7 +73,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
               }
             ],
             "operator": "Contains",
-            "negationConditon": false,
+            "negationCondition": false,
             "matchValues": [
               "evilbot"
             ],

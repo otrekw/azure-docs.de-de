@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 01/07/2021
+ms.date: 03/08/2021
 tags: connectors
-ms.openlocfilehash: 388d747da692160ab6d0a89c0c35de348d921486
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 983e0d34692d67302e11c35abac590fefd610b2e
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016761"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449627"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Überwachen, Erstellen und Verwalten von SFTP-Dateien mithilfe von SSH und Azure Logic Apps
 
@@ -103,10 +103,10 @@ Hier sind weitere wesentliche Unterschiede zwischen dem SFTP-SSH-Connector und d
   >
   > * **Fingerabdruck**: MD5
   >
-  > Nach dem Hinzufügen des SFTP-SSH-Triggers oder der gewünschten Aktion zu Ihrer Logik-App müssen Sie Verbindungsinformationen für Ihren SFTP-Server bereitstellen. Wenn Sie Ihren privaten SSH-Schlüssel für diese Verbindung angeben, **_geben Sie den Schlüssel nicht manuell ein, oder bearbeiten Sie ihn manuell_* _, da dies zu einem Fehler bei der Verbindung führen könnte. Stellen Sie stattdessen sicher, dass Sie _*_den Schlüssel aus Ihrer Datei für private SSH-Schlüssel kopieren_*_ und diesen Schlüssel in die Verbindungsdetails _*_einfügen_*_. 
+  > Nach dem Hinzufügen des SFTP-SSH-Triggers oder der gewünschten Aktion zu Ihrer Logik-App müssen Sie Verbindungsinformationen für Ihren SFTP-Server bereitstellen. Wenn Sie Ihren privaten SSH-Schlüssel für diese Verbindung angeben, ***geben Sie den Schlüssel nicht manuell ein, oder bearbeiten Sie ihn manuell***, was zum Fehlschlagen der Verbindung führen könnte. Stellen Sie stattdessen sicher, dass Sie ***den Schlüssel aus Ihrer Datei für private SSH-Schlüssel kopieren*** und diesen Schlüssel in die Verbindungsdetails ***einfügen***. 
   > Weitere Informationen finden Sie im Abschnitt [Herstellen einer Verbindung zu SFTP mit SSH](#connect) weiter unten in diesem Artikel.
 
-_ Grundlegende Kenntnisse zum [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 * Die Logik-App, in der Sie auf Ihr SFTP-Konto zugreifen möchten. Um mit einem SFTP-SSH-Trigger zu beginnen, [erstellen Sie eine leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Um eine SFTP-SSH-Aktion zu verwenden, starten Sie Ihre Logik-App mit einem anderen Trigger, z.B. dem **Wiederholungstrigger**.
 
@@ -130,7 +130,7 @@ Wenn ein Trigger eine neue Datei findet, überprüft er, ob die neue Datei volls
 
 ### <a name="trigger-recurrence-shift-and-drift"></a>Verschiebung und Drift von Triggerwiederholungen
 
-Verbindungsbasierte Trigger, bei denen Sie zuerst eine Verbindung erstellen müssen, z. B. der SFTP-SSH-Trigger, unterscheiden sich von integrierten Triggern, die in Azure Logic Apps nativ ausgeführt werden, z. B der [Wiederholungstrigger](../connectors/connectors-native-recurrence.md). Bei wiederkehrenden, verbindungsbasierten Triggern ist der Wiederholungszeitplan nicht der einzige Faktor, der die Ausführung steuert, und die Zeitzone bestimmt nur die anfängliche Startzeit. Nachfolgende Ausführungen richten sich nach dem Wiederholungszeitplan, der letzten Triggerausführung, *und* anderen Faktoren, die zur Drift der Ausführungszeiten oder zu unerwartetem Verhalten führen können, z. B. Nichteinhaltung des angegebenen Zeitplans, wenn die Sommerzeit beginnt und endet. Um sicherzustellen, dass sich die Wiederholungszeit nicht verschiebt, wenn die Sommerzeit wirksam wird, sollten Sie die Wiederholung manuell so anpassen, dass Ihre Logik-App weiterhin zum erwarteten Zeitpunkt ausgeführt wird. Andernfalls verschiebt sich die Startzeit um eine Stunde nach vorn, wenn die Sommerzeit beginnt, und eine Stunde nach hinten, wenn die Sommerzeit endet. Weitere Informationen finden Sie unter [Wiederholung für verbindungsbasierte Trigger](../connectors/apis-list.md#recurrence-connection-based).
+Verbindungsbasierte Trigger, bei denen Sie zuerst eine Verbindung erstellen müssen, z. B. der SFTP-SSH-Trigger, unterscheiden sich von integrierten Triggern, die in Azure Logic Apps nativ ausgeführt werden, z. B der [Wiederholungstrigger](../connectors/connectors-native-recurrence.md). Bei wiederkehrenden, verbindungsbasierten Triggern ist der Wiederholungszeitplan nicht der einzige Faktor, der die Ausführung steuert, und die Zeitzone bestimmt nur die anfängliche Startzeit. Nachfolgende Ausführungen richten sich nach dem Wiederholungszeitplan, der letzten Triggerausführung, *und* anderen Faktoren, die zur Drift der Ausführungszeiten oder zu unerwartetem Verhalten führen können, z. B. Nichteinhaltung des angegebenen Zeitplans, wenn die Sommerzeit beginnt und endet. Um sicherzustellen, dass sich die Wiederholungszeit nicht verschiebt, wenn die Sommerzeit wirksam wird, passen Sie die Wiederholung manuell so an, dass Ihre Logik-App weiterhin zum erwarteten Zeitpunkt ausgeführt wird. Andernfalls verschiebt sich die Startzeit um eine Stunde nach vorn, wenn die Sommerzeit beginnt, und eine Stunde nach hinten, wenn die Sommerzeit endet. Weitere Informationen finden Sie unter [Wiederholung für verbindungsbasierte Trigger](../connectors/apis-list.md#recurrence-connection-based).
 
 <a name="convert-to-openssh"></a>
 
@@ -170,7 +170,15 @@ Wenn Ihr privater Schlüssel im PuTTY-Format vorliegt das die Dateinamenerweiter
 
 ## <a name="considerations"></a>Überlegungen
 
-In diesem Abschnitt werden Überlegungen zu den Triggern und Aktionen dieses Connectors beschrieben.
+In diesem Abschnitt werden Überlegungen zur Verwendung der Trigger und Aktionen dieses Connectors beschrieben.
+
+<a name="different-folders-trigger-processing-file-storage"></a>
+
+### <a name="use-different-sftp-folders-for-file-upload-and-processing"></a>Verwenden verschiedener SFTP-Ordner zum Hochladen und Verarbeiten von Dateien
+
+Stellen Sie sicher, dass Sie auf Ihrem SFTP-Server separate Ordner verwenden, in denen Sie hochgeladene Dateien speichern und in denen der Trigger diese Dateien zur Verarbeitung überwacht, d. h. Sie benötigen eine Möglichkeit, Dateien zwischen diesen Ordnern zu verschieben. Andernfalls wird der Trigger nicht ausgelöst und verhält sich unvorhersehbar, z. B. wird eine zufällige Anzahl von Dateien übersprungen, die vom Trigger verarbeitet wird.
+
+Wenn dieses Problem auftritt, entfernen Sie die Dateien aus dem Ordner, den der Trigger überwacht, und verwenden Sie einen anderen Ordner zum Speichern der hochgeladenen Dateien.
 
 <a name="create-file"></a>
 
@@ -208,9 +216,9 @@ Zum Erstellen einer Datei auf Ihrem SFTP-Server können Sie die SFTP-SSH-Aktion 
 
    1. Klicken Sie auf **Bearbeiten** > **Kopieren**.
 
-   1. Fügen Sie in den von Ihnen hinzugefügten SFTP-SSH-Trigger oder die von Ihnen hinzugefügte Aktion den kopierter Schlüssel *complete* in die Eigenschaft **SSH private key** ein, die mehrere Zeilen unterstützt.  **_Stellen Sie sicher, dass Sie den Schlüssel einfügen._* _ _*_Sie dürfen den Schlüssel nicht manuell eingeben oder bearbeiten._*_
+   1. Fügen Sie in den von Ihnen hinzugefügten SFTP-SSH-Trigger oder die von Ihnen hinzugefügte Aktion den kopierter Schlüssel *complete* in die Eigenschaft **SSH private key** ein, die mehrere Zeilen unterstützt.  **_Stellen Sie sicher, dass Sie den Schlüssel einfügen_ *_. _* _Der Schlüssel darf nicht manuell eingegeben oder bearbeitet werden_**.
 
-1. Wählen Sie _*Erstellen** aus, nachdem Sie die Verbindungsdetails eingegeben haben.
+1. Wählen Sie **Erstellen** aus, nachdem Sie die Verbindungsdetails eingegeben haben.
 
 1. Geben Sie jetzt die erforderlichen Details für Ihren ausgewählten Trigger oder Ihre ausgewählte Aktion an, und fahren Sie mit dem Erstellen Ihres Logik-App-Workflows fort.
 

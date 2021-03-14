@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 03/09/2021
 ms.author: b-juche
-ms.openlocfilehash: ec6a03673112dfb5397f6fae947f1fbf65fd6791
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 6d9d56a7f6d1e265508081f735e2dbc379f195fb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881417"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552030"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -110,7 +110,7 @@ Azure NetApp Files bietet Metriken zum Messen der Volumeleistung. Sie können au
 
 ### <a name="whats-the-performance-impact-of-kerberos-on-nfsv41"></a>Was sind die Leistungsauswirkungen von Kerberos auf NFSv4.1?
 
-Informationen zu den Sicherheitsoptionen für NFSv4.1, den getesteten Leistungsvektoren und den erwarteten Leistungsauswirkungen finden Sie unter [Leistungsauswirkungen von Kerberos auf NFSv4.1](configure-kerberos-encryption.md#kerberos_performance). 
+Informationen zu den Sicherheitsoptionen für NFSv4.1, den getesteten Leistungsvektoren und den erwarteten Leistungsauswirkungen finden Sie unter [Leistungsauswirkungen von Kerberos auf NFSv4.1-Volumes](performance-impact-kerberos.md). 
 
 ## <a name="nfs-faqs"></a>Häufig gestellte Fragen zu NFS
 
@@ -147,6 +147,16 @@ Stellen Sie sicher, dass `CaseSensitiveLookup` auf dem Windows-Client aktiviert 
 2. Binden Sie das Volume auf dem Windows-Server ein.   
     Beispiel:   
     `Mount -o rsize=1024 -o wsize=1024 -o mtype=hard \\10.x.x.x\testvol X:*`
+
+### <a name="how-does-azure-netapp-files-support-nfsv41-file-locking"></a>Wie unterstützt Azure NetApp Files die Dateisperrung von NFSv4.1? 
+
+Für NFSv4.1-Clients unterstützt Azure NetApp Files den NFSv4.1-Mechanismus für die Dateisperrung, der den Status aller Dateisperren unter einem leasebasierten Modell aufrechterhält. 
+
+Gemäß RFC 3530 definiert Azure NetApp Files eine einzelne Leasedauer für alle Zustände, die ein NFS-Client annimmt. Wenn der Client seine Leasedauer nicht innerhalb des definierten Zeitraums erneuert, werden alle Zustände, die mit der Leasedauer des Clients verbunden sind, vom Server freigegeben.  
+
+Wenn z. B. ein Client, der ein Volume einbinden will, nicht mehr reagiert oder nach Ablauf des Timeouts abstürzt, werden die Sperren freigegeben. Der Client kann seine Leasedauer explizit oder implizit erneuern, indem er Vorgänge wie das Lesen einer Datei durchführt.   
+
+Eine Toleranzperiode definiert einen Zeitraum für eine spezielle Verarbeitung, in dem Clients versuchen können, ihren Sperrstatus während einer Serverwiederherstellung freizugeben. Der Standardtimeout für die Leasedauer beträgt 30 Sekunden mit einer Toleranzperiode von 45 Sekunden. Nach dieser Zeit wird die Leasedauer des Clients freigegeben.   
 
 ## <a name="smb-faqs"></a>Häufig gestellte Fragen zu SMB
 

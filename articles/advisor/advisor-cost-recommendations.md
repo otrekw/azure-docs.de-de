@@ -3,12 +3,12 @@ title: Reduzieren der Dienstkosten mithilfe von Azure Advisor
 description: Nutzen Sie Azure Advisor, um die Kosten Ihrer Azure-Bereitstellungen zu optimieren.
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 767c82c818535304552c1c98ff50a252acc0d08a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 346b790c6970abc8670661e1ec180662957af47d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458519"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503373"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Reduzieren der Dienstkosten mithilfe des Azure Advisors
 
@@ -21,7 +21,7 @@ Obwohl bestimmte Anwendungsszenarien zielgerichtet eine geringe Auslastung bewir
 Es wird empfohlenen, die Ressource, die gerade ausgewertet wird, entweder herunterzufahren oder ihre Größe zu ändern.
 
 Gemäß dem erweiterten Auswertungsmodell im Advisor werden virtuelle Computer (Virtual Machines, VMs) heruntergefahren, wenn alle folgenden Aussagen wahr sind: 
-- Das 95. Perzentil des Maximums des maximalen Werts für die CPU-Auslastung ist kleiner als 3 %. 
+- Das 95. Perzentil des maximalen Werts für die CPU-Auslastung ist kleiner als 3 %. 
 - Die Netzwerkauslastung beträgt innerhalb eines siebentägigen Zeitraums weniger als 2 %.
 - Der Druck auf den Arbeitsspeicher liegt unter den Schwellenwerten.
 

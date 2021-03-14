@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 7cfa7257e64421c30c359bb34044988bbb5af1dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7c70fa2e7131f09f621e992d537e0b120061ef
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87093084"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210732"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Failover und Patching für Azure Cache for Redis
 
@@ -72,6 +72,10 @@ Die meisten Clientbibliotheken versuchen, erneut eine Verbindung mit dem Cache h
 Da Failover nicht vollständig vermieden werden können, müssen Sie Ihre Clientanwendungen so konfigurieren, dass sie für Verbindungsunterbrechungen und fehlerhafte Anforderungen resilient sind. Obwohl die meisten Clientbibliotheken automatisch erneut eine Verbindung mit dem Cacheendpunkt herstellen, versuchen nur wenige, fehlerhafte Anforderungen zu wiederholen. Je nach Anwendungsszenario ist es möglicherweise sinnvoll, Wiederholungslogik mit Backoff zu verwenden.
 
 Verwenden Sie zum Testen der Resilienz einer Clientanwendung einen [Neustart](cache-administration.md#reboot) als manuellen Auslöser für Verbindungsunterbrechungen. Außerdem wird empfohlen, dass Sie [Updates](cache-administration.md#schedule-updates) für einen Cache planen. Legen Sie für den Verwaltungsdienst fest, dass während der angegebenen wöchentlichen Zeitfenster Redis-Laufzeitpatches angewandt werden. Bei diesen Zeitfenstern handelt es sich normalerweise um Zeiträume, in denen der Datenverkehr der Clientanwendung gering ist.
+
+### <a name="can-i-be-notified-in-advance-of-a-planned-maintenance"></a>Kann ich im Voraus über eine geplante Wartung informiert werden?
+
+Azure Cache for Redis veröffentlicht jetzt Benachrichtigungen auf einem Kanal mit Veröffentlichungs- und Abonnementarchitektur namens [AzureRedisEvents](https://github.com/Azure/AzureCacheForRedis/blob/main/AzureRedisEvents.md) etwa 30 Sekunden vor geplanten Aktualisierungen. Dies sind Runtimebenachrichtigungen, die speziell für Anwendungen entwickelt wurden, die Leistungsschutzschalter verwenden können, um den Cache zu umgehen oder Befehle zu puffern, z. B. bei geplanten Updates. Es handelt sich nicht um einen Mechanismus, der Sie Tage oder Stunden im Voraus benachrichtigen kann.
 
 ### <a name="client-network-configuration-changes"></a>Änderungen der Clientnetzwerkkonfiguration
 
