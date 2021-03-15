@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 8e97fe287335837ad79e6446bb7abf196cda6f75
-  ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+  ms.openlocfilehash: be3cbee5bee706bc10036349950c3b128d007a34
+  ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 02/03/2021
-  ms.locfileid: "99508115"
+  ms.lasthandoff: 03/13/2021
+  ms.locfileid: "103419625"
 highlightedContent:
   items:
   - title: Worum handelt es sich beim Speech-Dienst?
@@ -44,7 +44,7 @@ conceptualContent:
       text: Erste Schritte mit der Spracherkennung
       url: get-started-speech-to-text.md
     - itemType: overview
-      text: Informationen zu Custom Speech
+      text: Verbessern der Genauigkeit mit Custom Speech
       url: custom-speech-overview.md
     footerLink:
       text: Weitere Informationen
@@ -60,6 +60,12 @@ conceptualContent:
     - itemType: how-to-guide
       text: Verbessern der Synthese mit SSML
       url: speech-synthesis-markup.md
+    - itemType: overview
+      text: Erstellen einer benutzerdefinierten Stimme
+      url: custom-neural-voice.md
+    - itemType: how-to-guide
+      text: Gestalten von Sprachsynthese, sodass sie natürlich klingt
+      url: how-to-audio-content-creation.md
     footerLink:
       text: Weitere Informationen
       url: index-text-to-speech.yml
@@ -74,20 +80,6 @@ conceptualContent:
     footerLink:
       text: Weitere Informationen
       url: index-speech-translation.yml
-  - title: Absichtserkennung
-    links:
-    - itemType: quickstart
-      text: Erkennen von Sprache, Absichten und Entitäten
-      url: quickstarts/intent-recognition.md
-    - itemType: how-to-guide
-      text: Erkennen von Sprachabsichten mit LUIS und C#
-      url: how-to-recognize-intents-from-speech-csharp.md
-    - itemType: reference
-      text: LUIS-Portal (Language Understanding)
-      url: https://www.luis.ai
-    footerLink:
-      text: Weitere Informationen
-      url: index-intent-recognition.yml
   - title: Sprechererkennung
     links:
     - itemType: overview
@@ -107,6 +99,20 @@ conceptualContent:
     - itemType: quickstart
       text: Erste Schritte mit dem benutzerdefinierten Schlüsselwort
       url: custom-keyword-basics.md
+  - title: Absichtserkennung
+    links:
+    - itemType: quickstart
+      text: Erkennen von Sprache, Absichten und Entitäten
+      url: quickstarts/intent-recognition.md
+    - itemType: how-to-guide
+      text: Erkennen von Sprachabsichten mit LUIS und C#
+      url: how-to-recognize-intents-from-speech-csharp.md
+    - itemType: reference
+      text: LUIS-Portal (Language Understanding)
+      url: https://www.luis.ai
+    footerLink:
+      text: Weitere Informationen
+      url: index-intent-recognition.yml
   - title: Detaillierte Informationen zu Szenarien
     links:
     - itemType: overview

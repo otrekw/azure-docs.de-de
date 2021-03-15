@@ -13,8 +13,12 @@
   items:
     - name: Codieren einer Client-App
       href: tutorial-code.md
-    - name: Untersuchen der Grundlagen mit einer Beispielclient-App
-      href: tutorial-command-line-app.md
+    - name: Erstellen eines Diagramms
+      items:
+        - name: Verwenden einer Beispielclient-App
+          href: tutorial-command-line-app.md
+        - name: "Verwenden der Azure\_CLI-Befehle"
+          href: tutorial-command-line-cli.md
     - name: Verbinden einer End-to-End-Lösung
       href: tutorial-end-to-end.md
 - name: Konzepte
