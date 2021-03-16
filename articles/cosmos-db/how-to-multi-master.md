@@ -5,20 +5,20 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 01/06/2021
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, "seo-nov-2020"
-ms.openlocfilehash: 6f71f4c0ec353f36614ea6dcabf4d698b31baacb
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 08d50b18605fd833e6b0efca987338d0ca1eef8d
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336725"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488510"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Konfigurieren von Schreibvorgängen in mehreren Regionen in Ihren Anwendungen, die Azure Cosmos DB verwenden
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Nachdem ein Konto mit mehreren aktivierten Schreibregionen erstellt wurde, müssen Sie in Ihrer Anwendung in ConnectionPolicy für DocumentClient zwei Änderungen vornehmen, um die Funktionen für Schreibvorgänge in mehreren Regionen und Multihoming in Azure Cosmos DB zu aktivieren. Legen Sie in ConnectionPolicy das UseMultipleWriteLocations-Element auf TRUE fest, und übergeben Sie den Namen der Region, in der die Anwendung bereitgestellt wird, an SetCurrentLocation. Dadurch wird die PreferredLocations-Eigenschaft basierend auf der geografischen Nähe zum eingegebenen Standort aufgefüllt. Wenn dem Konto später eine neue Region hinzugefügt wird, muss die Anwendung nicht aktualisiert oder neu bereitgestellt werden. Sie erkennt automatisch die nähere Region und greift automatisch darauf zurück, wenn ein regionales Ereignis eintritt.
+Nachdem ein Konto mit mehreren aktivierten Schreibregionen erstellt wurde, müssen Sie in Ihrer Anwendung zwei Änderungen an der ConnectionPolicy für den Cosmos-Client vornehmen, um die Funktionen für Schreibvorgänge in mehreren Regionen in Azure Cosmos DB zu aktivieren. Legen Sie in der ConnectionPolicy das „UseMultipleWriteLocations“-Element auf „true“ fest, und übergeben Sie den Namen der Region, in der die Anwendung bereitgestellt wird, an „ApplicationRegion“. Dadurch wird die PreferredLocations-Eigenschaft basierend auf der geografischen Nähe zum eingegebenen Standort aufgefüllt. Wenn dem Konto später eine neue Region hinzugefügt wird, muss die Anwendung nicht aktualisiert oder neu bereitgestellt werden. Sie erkennt automatisch die nähere Region und greift automatisch darauf zurück, wenn ein regionales Ereignis eintritt.
 
 > [!Note]
 > Cosmos-Konten, die ursprünglich mit einer einzelnen Schreibregion konfiguriert wurden, können ohne Ausfallzeiten für die Verwendung mehrerer Schreibregionen konfiguriert werden. Weitere Informationen finden unter [Konfigurieren mehrerer Schreibregionen](how-to-manage-database-account.md#configure-multiple-write-regions).

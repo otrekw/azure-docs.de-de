@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 64d66e1b9eab225b38ee21306fea6f9534a708f3
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 97ccbd0858a7b85c4b5d1e460f67416d8139e49a
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673846"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218603"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Konfigurieren von Netzwerkendpunkten für die Azure-Dateisynchronisierung
 Azure Files und die Azure-Dateisynchronisierung verfügen über zwei Arten von Endpunkten für den Zugriff auf Azure-Dateifreigaben: 
@@ -34,7 +34,7 @@ In diesem Artikel wird Folgendes vorausgesetzt:
 
 Außerdem zu beachten:
 - Falls Sie Azure PowerShell verwenden möchten, [installieren Sie die neueste Version](/powershell/azure/install-az-ps).
-- Falls Sie die Azure CLI verwenden möchten, [installieren Sie die neueste Version](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+- Falls Sie die Azure CLI verwenden möchten, [installieren Sie die neueste Version](/cli/azure/install-azure-cli).
 
 ## <a name="create-the-private-endpoints"></a>Erstellen der privaten Endpunkte
 Beim Erstellen eines privaten Endpunkts für eine Azure-Ressource werden die folgenden Ressourcen bereitgestellt:
@@ -125,7 +125,7 @@ Address: 192.168.0.5
 
 ---
 
-### <a name="create-the-storage-sync-private-endpoint"></a>Erstellen des privaten Endpunkts für die Speichersynchronisierung
+### <a name="create-the-storage-sync-service-private-endpoint"></a>Erstellen des privaten Endpunkts für den Speichersynchronisierungsdienst
 > [!Important]  
 > Um private Endpunkte für die Speichersynchronisierungsdienst-Ressource verwenden zu können, müssen Sie mindestens Version 10.1 des Azure-Dateisynchronisierungs-Agents nutzen. Für Agent-Versionen, die älter als 10.1 sind, werden private Endpunkte unter dem Speichersynchronisierungsdienst nicht unterstützt. Alle früheren Agent-Versionen unterstützen private Endpunkte für die Speicherkontoressource.
 
@@ -597,19 +597,44 @@ Zum Deaktivieren des Zugriffs auf den öffentlichen Endpunkt des Speichersynchro
 $storageSyncServiceResourceGroupName = "<storage-sync-service-resource-group>"
 $storageSyncServiceName = "<storage-sync-service>"
 
-$storageSyncService = Get-AzResource `
-        -ResourceGroupName $storageSyncServiceResourceGroupName `
-        -ResourceName $storageSyncServiceName `
-        -ResourceType "Microsoft.StorageSync/storageSyncServices"
-
-$storageSyncService.Properties.incomingTrafficPolicy = "AllowVirtualNetworksOnly"
-$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force -UsePatchSemantics
+Set-AzStorageSyncService `
+    -ResourceGroupName $storageSyncServiceResourceGroupName `
+    -Name $storageSyncServiceName `
+    -IncomingTrafficPolicy AllowVirtualNetworksOnly
 ```
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 Das Festlegen der `incomingTrafficPolicy`-Eigenschaft für den Speichersynchronisierungsdienst wird von Azure CLI nicht unterstützt. Die Azure PowerShell-Registerkarte enthält Anleitungen zum Deaktivieren des öffentlichen Endpunkts für den Speichersynchronisierungsdienst.
 
 ---
+
+## <a name="azure-policy"></a>Azure Policy
+Azure Policy unterstützt die Durchsetzung von Organisationsstandards und die bedarfsorientierte Einhaltung dieser Standards. Azure Files und Azure-Dateisynchronisierung stellen mehrere hilfreiche Netzwerkrichtlinien zur Überwachung und Wartung zur Verfügung, mit denen Sie Ihre Bereitstellung überwachen und automatisieren können.
+
+Richtlinien überwachen Ihre Umgebung und warnen Sie, wenn Ihre Speicherkonten oder Speichersynchronisierungsdienste vom definierten Verhalten abweichen. Beispiel: Ein öffentlicher Endpunkt ist aktiviert. In Ihrer Richtlinie wurde aber festgelegt, dass die öffentlichen Endpunkte deaktiviert sein sollen. Die Richtlinien zum Ändern und Bereitstellen gehen einen Schritt weiter und ändern eine Ressource proaktiv (z. B. den Speichersynchronisierungsdienst) oder stellen Ressourcen (z. B. private Endpunkte) so bereit, dass sie den Richtlinien entsprechen.
+
+Folgende vordefinierte Richtlinien stehen für Azure Files und die Azure-Dateisynchronisierung zur Verfügung:
+
+| Aktion | Dienst | Bedingung | Richtlinienname |
+|-|-|-|-|
+| Audit | Azure Files | Der öffentliche Endpunkt des Speicherkontos ist aktiviert. Weitere Informationen finden Sie unter [Deaktivieren des Zugriffs auf den öffentlichen Endpunkt des Speicherkontos](#disable-access-to-the-storage-account-public-endpoint). | Netzwerkzugriff auf Speicherkonten einschränken |
+| Audit | Azure-Dateisynchronisierung | Der öffentliche Endpunkt des Speichersynchronisierungsdiensts ist aktiviert. Weitere Informationen finden Sie unter [Deaktivieren des Zugriffs auf den öffentlichen Endpunkt des Speichersynchronisierungsdiensts](#disable-access-to-the-storage-sync-service-public-endpoint). | Für die Azure-Dateisynchronisierung sollte der Zugriff auf öffentliche Netzwerke deaktiviert sein |
+| Audit | Azure Files | Das Speicherkonto benötigt mindestens einen privaten Endpunkt. Weitere Informationen finden Sie unter [Erstellen des privaten Endpunkts für das Speicherkonto](#create-the-storage-account-private-endpoint). | Das Speicherkonto muss eine Private Link-Verbindung verwenden |
+| Audit | Azure-Dateisynchronisierung | Der Speichersynchronisierungsdienst benötigt mindestens einen privaten Endpunkt. Weitere Informationen finden Sie unter [Erstellen des privaten Endpunkts für den Speichersynchronisierungsdienst](#create-the-storage-sync-service-private-endpoint). | Die Azure-Dateisynchronisierung sollte eine private Verbindung verwenden |
+| Ändern | Azure-Dateisynchronisierung | Deaktivieren Sie den öffentlichen Endpunkt für den Speichersynchronisierungsdienst. | Ändern – Azure-Dateisynchronisierung zum Deaktivieren des Zugriffs auf öffentliche Netzwerke konfigurieren |
+| Bereitstellen | Azure-Dateisynchronisierung | Stellen Sie einen privaten Endpunkt für den Speichersynchronisierungsdienst bereit. | Konfigurieren der Azure-Dateisynchronisierung mit privaten Endpunkten |
+| Bereitstellen | Azure-Dateisynchronisierung | Stellen Sie einen A-Eintrag für die DNS-Zone „privatelink.afs.azure.net“ bereit. | Konfigurieren der Azure-Dateisynchronisierung für die Verwendung privater DNS-Zonen |
+
+### <a name="set-up-a-private-endpoint-deployment-policy"></a>Einrichten einer Bereitstellungsrichtlinie für den privaten Endpunkt
+Wenn Sie eine Bereitstellungsrichtlinie für den privaten Endpunkt einrichten möchten, wechseln Sie zum [Azure-Portal](https://portal.azure.com/), und suchen Sie nach **Richtlinie**. Das Azure-Richtliniencenter (Azure Policy Center) sollte ein Topergebnis sein. Navigieren Sie im Inhaltsverzeichnis des Richtliniencenters zu **Erstellung** > **Definitionen**. Der daraufhin angezeigte Bereich **Definitionen** enthält die vordefinierten Richtlinien für alle Azure-Dienste. Wenn Sie die jeweilige Richtlinie suchen möchten, wählen Sie im Kategoriefilter die Kategorie **Speicher** aus, oder suchen Sie nach **Azure-Dateisynchronisierung mit privaten Endpunkten konfigurieren**. Wählen Sie **...** und **Zuweisen** aus, um eine neue Richtlinie aus der Definition zu erstellen.
+
+Auf dem Blatt **Grundlagen** des Assistenten zum **Zuweisen von Richtlinien** können Sie eine Ausschlussliste für einen Bereich, eine Ressource oder Ressourcengruppe festlegen und Ihrer Richtlinie einen Anzeigenamen zuweisen, damit Sie sie einfacher unterscheiden können. Sie müssen diese Elemente nicht ändern, damit die Richtlinie funktioniert, aber Sie können bei Bedarf Änderungen vornehmen. Wählen Sie **Weiter** aus, um die Seite **Parameter** anzuzeigen. 
+
+Wählen Sie auf dem Blatt **Parameter** die **...** neben der Dropdownliste **privateEndpointSubnetId** aus, um das virtuelle Netzwerk und das Subnetz auszuwählen, in dem die privaten Endpunkte für Ihre Speichersynchronisierungsdienst-Ressourcen bereitgestellt werden sollten. Bei dem daraufhin angezeigten Assistenten kann es einige Sekunden dauern, bis die verfügbaren virtuellen Netzwerke in Ihrem Abonnement geladen sind. Wählen Sie das entsprechende virtuelle Netzwerk/Subnetz für Ihre Umgebung aus, und klicken Sie auf **Auswählen**. Wählen Sie **Weiter** aus, um das Blatt **Wartung** anzuzeigen.
+
+Damit der private Endpunkt bereitgestellt werden kann, wenn ein Speichersynchronisierungsdienst ohne einen privaten Endpunkt identifiziert wird, müssen Sie auf der Seite **Wartung** das Kontrollkästchen **Korrekturtask erstellen** aktivieren. Wählen Sie abschließend **Überprüfen und erstellen** aus, um die Richtlinienzuweisung zu überprüfen, und wählen Sie **Erstellen** aus, um sie zu erstellen.
+
+Die daraufhin angezeigte Richtlinienzuweisung wird in regelmäßigen Abständen ausgeführt. Direkt nach der Erstellung wird sie möglicherweise noch nicht ausgeführt.
 
 ## <a name="see-also"></a>Weitere Informationen
 - [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)

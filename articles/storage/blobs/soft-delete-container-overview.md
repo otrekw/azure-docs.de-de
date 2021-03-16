@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 674a336e79f118d543590fb7514b6bebef72cf47
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f157b44e92289d0e9c5b88108550c144344c5206
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390180"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211140"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Vorläufiges Löschen für Container (Vorschau)
 
@@ -27,8 +27,8 @@ Microsoft empfiehlt die Aktivierung der folgenden Datenschutzfeatures, um den vo
 - Blobversionsverwaltung zum automatischen Verwalten früherer Versionen eines Blobs. Wenn Blobversionsverwaltung aktiviert ist, können Sie eine frühere Version eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden. Informationen zum Aktivieren der Blobversionsverwaltung finden Sie unter [Aktivieren und Verwalten der Blobversionsverwaltung (Vorschau)](versioning-enable.md).
 - Vorläufiges Löschen von Blobs, um einen Blob oder eine Version wiederherzustellen, das/die gelöscht wurde. Informationen zum Aktivieren des vorläufigen Löschens von Blobs finden Sie unter [Aktivieren und Verwalten des vorläufigen Löschens von Blobs](soft-delete-blob-enable.md).
 
-> [!WARNING]
-> Das Löschen eines Speicherkontos kann nicht rückgängig gemacht werden. Vorläufiges Löschen schützt bei Containern nicht vor dem Löschen eines Speicherkontos, sondern nur vor dem Löschen von Containern in diesem Konto. Um ein Speicherkonto vor dem Löschen zu schützen, konfigurieren Sie eine Sperre für die Speicherkontoressource. Weitere Informationen zum Sperren von Azure Resource Manager-Ressourcen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).
+> [!IMPORTANT]
+> Das vorläufige Löschen von Containern befindet sich zurzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
 ## <a name="how-container-soft-delete-works"></a>Funktionsweise des vorläufigen Löschens von Containern
 
@@ -46,14 +46,14 @@ Nach Ablauf des Aufbewahrungszeitraums wird der Container endgültig aus Azure S
 
 Das Deaktivieren des vorläufigen Löschens von Containern führt nicht zur endgültigen Löschung der Container, die zuvor vorläufig gelöscht wurden. Vorläufig gelöschte Container werden nach Ablauf des Aufbewahrungszeitraums endgültig gelöscht, der zum Zeitpunkt der Löschung dieser Container festgelegt war.
 
+> [!IMPORTANT]
+> Vorläufiges Löschen schützt bei Containern nicht vor dem Löschen eines Speicherkontos, sondern nur vor dem Löschen von Containern in diesem Konto. Um ein Speicherkonto vor dem Löschen zu schützen, konfigurieren Sie eine Sperre für die Speicherkontoressource. Weitere Informationen zum Sperren von Azure Resource Manager-Ressourcen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).
+
 ## <a name="about-the-preview"></a>Informationen zur Vorschau
 
 Das vorläufige Löschen von Containern ist in allen Azure-Regionen in der Vorschauversion verfügbar.
 
-> [!IMPORTANT]
-> Die Vorschauversion des vorläufigen Löschens für Container ist nur für die Verwendung außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind derzeit nicht verfügbar.
-
-Version 2019-12-12 und höher der Azure Storage-REST-API unterstützt das vorläufige Löschen von Containern.
+Version 2019-12-12 oder höher der Azure Storage-REST-API unterstützt das vorläufige Löschen von Containern.
 
 ### <a name="storage-account-support"></a>Speicherkontounterstützung
 

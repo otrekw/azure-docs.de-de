@@ -11,16 +11,16 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 9e4722933ec224712c8d649c0d9d850a9ee3e322
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 601be8409db22162a410d481e6609d378718a7b4
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98872008"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503588"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Sicherer Datenzugriff in Azure Machine Learning
 
-Azure Machine Learning macht es einfach, eine Verbindung mit Ihren Daten in der Cloud herzustellen.  Es wird eine Abstraktionsschicht über dem zugrunde liegenden Speicherdienst bereitgestellt, sodass Sie sicher auf Ihre Daten zugreifen und diese bearbeiten können, ohne für Ihren Speichertyp spezifischen Code schreiben zu müssen. Azure Machine Learning bietet auch folgende Datenfunktionen:
+Azure Machine Learning macht es einfach, eine Verbindung mit Ihren Daten in der Cloud herzustellen. Es wird eine Abstraktionsschicht über dem zugrunde liegenden Speicherdienst bereitgestellt, sodass Sie sicher auf Ihre Daten zugreifen und diese bearbeiten können, ohne für Ihren Speichertyp spezifischen Code schreiben zu müssen. Azure Machine Learning bietet auch folgende Datenfunktionen:
 
 *    Interoperabilität mit Pandas und Spark DataFrames
 *    Versionsverwaltung und Nachverfolgung der Datenherkunft
@@ -53,7 +53,7 @@ In der folgenden Abbildung ist dieser empfohlene Workflow dargestellt.
 <a name="datastores"></a>
 ## <a name="connect-to-storage-with-datastores"></a>Herstellen einer Verbindung zwischen Speicher und Datenspeichern
 
-Azure Machine Learning-Datenspeicher speichern die Informationen zur Verbindung mit Ihrem Azure-Speicher sicher, sodass Sie sie nicht in Ihren Skripts programmieren müssen. [Registrieren und erstellen Sie einen Datenspeicher](how-to-access-data.md), um auf einfache Weise eine Verbindung mit Ihrem Speicherkonto herzustellen und auf die Daten in Ihrem zugrunde liegenden Azure-Speicherdienst zuzugreifen. 
+Azure Machine Learning-Datenspeicher speichern die Verbindungsinformationen für Ihren Datenspeicher sicher in Azure, sodass Sie sie nicht in Ihren Skripts programmieren müssen. [Registrieren und erstellen Sie einen Datenspeicher](how-to-access-data.md), um auf einfache Weise eine Verbindung mit Ihrem Speicherkonto herstellen und auf die Daten in Ihrem zugrunde liegenden Speicherdienst zugreifen zu können. 
 
 Unterstützte cloudbasierte Speicherdienste in Azure, die als Datenspeicher registriert werden können:
 
@@ -65,6 +65,9 @@ Unterstützte cloudbasierte Speicherdienste in Azure, die als Datenspeicher regi
 + Azure Database for PostgreSQL
 + Databricks-Dateisystem
 + Azure Database for MySQL
+
+>[!TIP]
+> Die allgemein verfügbare Funktion zum Erstellen von Datenspeichern setzt eine auf Anmeldeinformationen basierende Authentifizierung für den Zugriff auf Speicherdienste voraus – beispielsweise einen Dienstprinzipal oder ein SAS-Token (Shared Access Signature). Auf diese Anmeldeinformationen können Benutzer zugreifen, die über *Lesezugriff* auf den Arbeitsbereich verfügen. <br><br>Sollte dies ein Problem darstellen, [erstellen Sie einen Datenspeicher mit identitätsbasiertem Datenzugriff auf Speicherdienste (Vorschau)](how-to-identity-based-data-access.md). Diese Funktion ist eine [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Previewfunktion und kann jederzeit geändert werden.
 
 <a name="datasets"></a>
 ## <a name="reference-data-in-storage-with-datasets"></a>Verweisen auf Daten im Speicher mit Datasets
@@ -83,9 +86,9 @@ Datasets können aus lokalen Dateien, öffentlichen URLs, [Azure Open Datasets](
 
 Die folgenden beiden Datasettypen stehen zur Verfügung: 
 
-+ Ein [FileDataset](/python/api/azureml-core/azureml.data.file_dataset.filedataset?preserve-view=true&view=azure-ml-py) verweist auf eine einzelne Datei oder auf mehrere Dateien in Ihren Datenspeichern oder öffentlichen URLs. Wenn Ihre Daten bereits bereinigt und für Trainingsexperimente bereit sind, können Sie Dateien, auf die von FileDatasets verwiesen wird, auf Ihr Computeziel [herunterladen oder sie einbinden](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets).
++ Ein [FileDataset](/python/api/azureml-core/azureml.data.file_dataset.filedataset) verweist auf eine einzelne Datei oder auf mehrere Dateien in Ihren Datenspeichern oder öffentlichen URLs. Wenn Ihre Daten bereits bereinigt und für Trainingsexperimente bereit sind, können Sie Dateien, auf die von FileDatasets verwiesen wird, auf Ihr Computeziel [herunterladen oder sie einbinden](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets).
 
-+ Ein [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellte Datei oder Liste von Dateien analysiert wird. Sie können ein TabularDataset zur weiteren Verarbeitung oder zur Bereinigung in einen Pandas- oder Spark-Datenrahmen laden. Eine vollständige Liste der Datenformate, aus denen Sie TabularDatasets erstellen können, finden Sie im Artikel über die [TabularDatasetFactory-Klasse](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory).
++ Ein [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellte Datei oder Liste von Dateien analysiert wird. Sie können ein TabularDataset zur weiteren Verarbeitung oder zur Bereinigung in einen Pandas- oder Spark-Datenrahmen laden. Eine vollständige Liste der Datenformate, aus denen Sie TabularDatasets erstellen können, finden Sie im Artikel über die [TabularDatasetFactory-Klasse](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory).
 
 Weitere Funktionalität für Datasets finden Sie in der folgenden Dokumentation:
 

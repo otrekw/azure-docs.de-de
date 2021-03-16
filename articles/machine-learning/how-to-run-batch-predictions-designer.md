@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 09/09/2020
+ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 2ef125f65e13f7a9fa756553b1de148d4849babc
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: dda47d3ff561d4d57045dbb28f8c411e193086d5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553945"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657361"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Ausführen von Batchvorhersagen mit dem Azure Machine Learning-Designer
 
@@ -144,6 +144,22 @@ Wenn Sie eine Pipeline veröffentlichen, können Sie auswählen, dass sie zur ne
 Sie können auch eine neue Standardpipeline auf der Registerkarte **Veröffentlichte Pipelines** Ihres Endpunkts festlegen.
 
 ![Seite zum Festlegen der Standardpipeline in der veröffentlichten Pipeline](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
+
+## <a name="limitations"></a>Einschränkungen
+
+Wenn Sie in Ihrer Trainingspipeline Änderungen vornehmen, müssen Sie die Trainingspipeline erneut übermitteln, die Rückschlusspipeline **aktualisieren** und die Rückschlusspipeline erneut ausführen.
+
+Beachten Sie, dass nur Modelle in der Rückschlusspipeline aktualisiert werden. Die Datentransformation wird dagegen nicht aktualisiert.
+
+Wenn Sie die aktualisierte Transformation in der Rückschlusspipeline verwenden möchten, müssen Sie die Transformationsausgabe des Transformationsmoduls als Dataset registrieren.
+
+![Screenshot: Registrieren des Transformationsdatasets](./media/how-to-run-batch-predictions-designer/register-transformation-dataset.png)
+
+Ersetzen Sie dann manuell das Modul **TD-** in der Rückschlusspipeline durch das registrierte Dataset.
+
+![Screenshot: Ersetzen des Transformationsmoduls](./media/how-to-run-batch-predictions-designer/replace-td-module-batch-inference-pipeline.png)
+
+Anschließend können Sie die Rückschlusspipeline mit dem aktualisierten Modell und der aktualisierten Transformation übermitteln und veröffentlichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

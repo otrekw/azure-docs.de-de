@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ea96e1056e6157cfddbdc2f0b6451ed55a74d1de
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 47531da9c1e508281a57074df7aa10ffffe78810
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756057"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518737"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Überwachen und Anzeigen von ML-Ausführungsprotokollen und -metriken
 
@@ -39,7 +39,7 @@ Allgemeine Informationen zum Verwalten von Experimenten finden Sie unter [Starte
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>Überwachen von Ausführungen mit dem Jupyter Notebook-Widget
 
-Wenn Sie Ausführungen mithilfe der **ScriptRunConfig**-Methode übermitteln, können Sie den Fortschritt der Ausführung mit dem [Jupyter-Widget](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) anzeigen. Ebenso wie die Übermittlung der Ausführung ist das Widget asynchron und stellt alle 10 bis 15 Sekunden Liveupdates bereit, bis der Auftrag abgeschlossen ist.
+Wenn Sie Ausführungen mithilfe der **ScriptRunConfig**-Methode übermitteln, können Sie den Fortschritt der Ausführung mit dem [Jupyter-Widget](/python/api/azureml-widgets/azureml.widgets) anzeigen. Ebenso wie die Übermittlung der Ausführung ist das Widget asynchron und stellt alle 10 bis 15 Sekunden Liveupdates bereit, bis der Auftrag abgeschlossen ist.
 
 Zeigen Sie das Jupyter-Widget an, während Sie darauf warten, dass die Ausführung abgeschlossen wird.
     
@@ -78,9 +78,23 @@ Bei der Verwendung von **ScriptRunConfig** können Sie ```run.wait_for_completio
 
 <a id="queryrunmetrics"></a>
 
-## <a name="query-run-metrics"></a>Metriken der Abfrageausführung
+## <a name="view-run-metrics"></a>Anzeigen von Ausführungsmetriken
 
-Mit ```run.get_metrics()``` können Sie die Metriken eines trainierten Modells anzeigen. Beispielsweise können Sie im obigen Beispiel das beste Modell ermitteln, indem Sie nach dem Modell mit dem niedrigsten mittleren quadratischen Fehlerwert (Mean Square Error, MSE) suchen.
+## <a name="via-the-sdk"></a>Über das SDK
+Mit ```run.get_metrics()``` können Sie die Metriken eines trainierten Modells anzeigen. Betrachten Sie das folgende Beispiel. 
+
+```python
+from azureml.core import Run
+run = Run.get_context()
+run.log('metric-name', metric_value)
+
+metrics = run.get_metrics()
+# metrics is of type Dict[str, List[float]] mapping mertic names
+# to a list of the values for that metric in the given run.
+
+metrics.get('metric-name')
+# list of metrics in the order they were recorded
+```
 
 <a name="view-the-experiment-in-the-web-portal"></a>
 
@@ -95,18 +109,6 @@ Wählen Sie für die Ansicht einzelner Experimente die Registerkarte **Alle Expe
 Sie können auch die Tabelle der Ausführungsliste bearbeiten, um mehrere Ausführungen auszuwählen und den letzten, den minimalen oder den maximalen protokollierten Wert für Ihre Ausführungen anzuzeigen. Passen Sie Ihre Diagramme an, um die protokollierten Metrikwerte und Aggregate über mehrere Ausführungen zu vergleichen. 
 
 ![Ausführungsdetails im Azure Machine Learning-Studio](media/how-to-track-experiments/experimentation-tab.gif)
-
-### <a name="format-charts"></a>Formatieren von Diagrammen 
-
-Verwenden Sie die folgenden Methoden in den Protokollierungs-APIs, um die Visualisierung Ihrer Metriken anzupassen.
-
-|Protokollierter Wert|Beispielcode| Formatieren im Portal|
-|----|----|----|
-|Protokollieren eines Arrays mit numerischen Werten| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Liniendiagramm mit nur einer Variablen|
-|Protokollieren eines einzelnen numerischen Werts mit mehrfacher Verwendung desselben Metriknamens (z.B. in einer for-Schleife)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Liniendiagramm mit nur einer Variablen|
-|Wiederholtes Protokollieren einer Zeile mit zwei numerischen Spalten|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Liniendiagramm mit zwei Variablen|
-|Protokollieren einer Tabelle mit zwei numerischen Spalten|`run.log_table(name='Sine Wave', value=sines)`|Liniendiagramm mit zwei Variablen|
-
 
 ### <a name="view-log-files-for-a-run"></a>Anzeigen der Protokolldateien zu einer Ausführung 
 
