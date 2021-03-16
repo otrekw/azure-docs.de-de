@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 47883c742d77a88adb662e8dded0723f0e105385
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: a38af4c942de280e7b1c094885a1ede6774ead56
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044185"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433215"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Abfragen des Zwillingsdiagramms von Azure Digital Twins
 
@@ -21,7 +21,7 @@ Dieser Artikel bietet Abfragebeispiele und ausführlichere Anleitungen, wie Sie 
 
 Dieser Artikel beginnt mit Beispielabfragen, die die Struktur der Abfragesprache sowie gängige Abfragevorgänge für digitale Zwillinge veranschaulichen. Anschließend wird beschrieben, wie Sie Ihre Abfragen, nachdem Sie sie geschrieben haben. mithilfe der [Abfrage-API](/rest/api/digital-twins/dataplane/query) von Azure Digital Twins oder mit einem [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) ausführen.
 
-> [!TIP]
+> [!NOTE]
 > Wenn Sie die Beispielabfragen unten mit einem API- oder SDK-Aufruf ausführen, müssen Sie den Abfragetext in eine einzelne Zeile zusammenfassen.
 
 ## <a name="show-all-digital-twins"></a>Anzeigen aller digitalen Zwillinge
@@ -36,7 +36,7 @@ Abrufen von digitalen Zwillingen nach **Eigenschaften** (einschließlich ID und 
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty1":::
 
-> [!TIP]
+> [!NOTE]
 > Die ID eines digitalen Zwillings wird mithilfe des Metadatenfelds `$dtId` abgefragt.
 
 Sie können Zwillinge auch auf der Grundlage abrufen, **ob eine bestimmte Eigenschaft definiert ist**. Hier folgt eine Abfrage, die Zwillinge abruft, die eine definierte *Location*-Eigenschaft aufweisen:
@@ -50,6 +50,10 @@ Dies kann Ihnen helfen, Zwillinge anhand ihrer *Tageigenschaften* abzurufen, wie
 Sie können Zwillinge auch auf der Grundlage des **Typs einer Eigenschaft** abrufen. Hier folgt eine Abfrage, die Zwillinge abruft, deren *Temperature*-Eigenschaft eine Zahl ist:
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty3":::
+
+>[!TIP]
+> Wenn es sich bei einer Eigenschaft um eine Eigenschaft vom Typ `Map` handelt, können die Zuordnungsschlüssel und Werte wie im folgenden Beispiel direkt in der Abfrage verwendet werden:
+> :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty4":::
 
 ## <a name="query-by-model"></a>Abfrage nach Modell
 
@@ -216,11 +220,16 @@ Nachdem Sie sich für eine Abfragezeichenfolge entschieden haben, führen Sie si
 
 Sie können die API direkt aufrufen oder eins der [SDKs](how-to-use-apis-sdks.md#overview-data-plane-apis) verwenden, die für Azure Digital Twins verfügbar sind.
 
-Der folgende Codeausschnitt veranschaulicht den [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-Aufruf aus einer Client-App:
+Der folgende Codeausschnitt veranschaulicht den [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)-Aufruf aus einer Client-App:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="RunQuery":::
 
-Dieser Aufruf gibt Abfrageergebnisse in Form eines [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true)-Objekts zurück.
+Durch die in diesem Aufruf verwendete Abfrage wird eine Liste mit digitalen Zwillingen zurückgegeben (im obigen Beispiel durch Objekte vom Typ [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin) dargestellt). Der Rückgabetyp Ihrer Daten für die jeweilige Abfrage hängt von den Begriffen ab, die Sie mit der Anweisung `SELECT` angeben:
+* Bei Abfragen, die mit `SELECT * FROM ...` beginnen, wird eine Liste mit digitalen Zwillingen zurückgegeben. (Diese können als Objekte vom Typ `BasicDigitalTwin` oder als andere benutzerdefinierte Typen für digitale Zwillinge serialisiert werden, die Sie ggf. erstellt haben.)
+* Bei Abfragen, die im Format `SELECT <A>, <B>, <C> FROM ...` beginnen, wird ein Wörterbuch mit den Schlüsseln `<A>`, `<B>` und `<C>` zurückgegeben.
+* Andere Formate von `SELECT`-Anweisungen können für die Rückgabe benutzerdefinierter Daten erstellt werden. Die Erstellung eigener Klassen kann sinnvoll sein, um stark angepasste Resultsets zu behandeln. 
+
+### <a name="query-with-paging"></a>Abfrage mit Paging
 
 Abfrageaufrufe unterstützen Paging. Im Folgenden finden Sie ein vollständiges Beispiel mit `BasicDigitalTwin` als Abfrageergebnistyp mit Fehlerbehandlung und Paging:
 

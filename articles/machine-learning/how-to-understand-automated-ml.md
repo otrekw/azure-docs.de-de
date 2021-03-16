@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: c95a75ef48aa9e3db070c6c237f913fabbe893fa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6d8c56bc306a7ab0bf118d04f64d6523fc385cdd
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388208"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520777"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Auswerten der Ergebnisse von Experimenten des automatisierten maschinellen Lernens
 
@@ -45,7 +45,7 @@ Das automatisierte maschinelle Lernen generiert z. B. die folgenden Diagramme b
 
 Nachdem Ihr Experiment mit automatisiertem maschinellem Lernen abgeschlossen ist, können Sie einen Verlauf der Ausführungen über Folgendes finden:
   - Browser mit [Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md)
-  - Jupyter Notebook mithilfe des [RunDetails Jupyter-Widgets](/python/api/azureml-widgets/azureml.widgets.rundetails?view=azure-ml-py&preserve-view=true)
+  - Jupyter Notebook mithilfe des [RunDetails Jupyter-Widgets](/python/api/azureml-widgets/azureml.widgets.rundetails)
 
 Die folgenden Schritte und das Video zeigen Ihnen, wie Sie den Ausführungsverlauf sowie die Metriken und Diagramme der Modellauswertung im Studio anzeigen:
 
@@ -192,7 +192,7 @@ explained_variance|Die erläuterte Varianz misst das Ausmaß, in dem ein Modell 
 mean_absolute_error|Der mittlere absolute Fehler ist der erwartete Wert des absoluten Differenzwerts zwischen dem Ziel und der Vorhersage.<br><br> **Ziel**: Je näher an 0, desto besser <br> **Bereich:** [0, inf) <br><br> Typen: <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`, mean_absolute_error geteilt durch den Bereich der Daten. | [Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|
 mean_absolute_percentage_error|Der mittlere absolute prozentuale Fehler (Mean Absolute Percentage Error, MAPE) ist ein Maß für die durchschnittliche Differenz zwischen einem vorhergesagten Wert und dem tatsächlichen Wert.<br><br> **Ziel**: Je näher an 0, desto besser <br> **Bereich:** [0, inf) ||
 median_absolute_error|Der mittlere absolute Fehler ist der Median aller absoluten Differenzen zwischen dem Ziel und der Vorhersage. Dieser Verlust ist stabil in Bezug auf Ausreißer.<br><br> **Ziel**: Je näher an 0, desto besser <br> **Bereich:** [0, inf)<br><br>Typen: <br> `median_absolute_error`<br> `normalized_median_absolute_error`: median_absolute_error geteilt durch den Bereich der Daten. |[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|
-r2_score|R^2 ist der Ermittlungskoeffizient bzw. die prozentuale Reduzierung der quadratischen Fehler im Vergleich zu einem Baselinemodell, das den Mittelwert ausgibt. <br> <br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [-1, 1] <br><br> Hinweis: R^2 umfasst häufig den Bereich (-inf, 1], negative Werte werden beim automatisierten maschinellen Lernen aber für sehr schlechte Modelle auf „-1“ beschnitten.|[Berechnung](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
+r2_score|R<sup>2</sup> (der Bestimmungskoeffizient) misst die proportionale Reduzierung der mittleren quadratischen Abweichung (MQA) in Relation zur Gesamtvarianz der betrachteten Daten. <br> <br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [-1, 1]<br><br>Hinweis: R<sup>2</sup> umfasst häufig den Bereich (-inf, 1]. Da die MQA größer als die beobachtete Varianz sein kann, kann R<sup>2</sup> je nach Daten und Modellvorhersagen beliebig große negative Werte haben. Gemeldete R<sup>2</sup>-Scores werden vom automatisierten maschinellen Lernen auf „-1“ beschnitten, sodass der Wert „-1“ für R<sup>2</sup> wahrscheinlich bedeutet, dass der tatsächliche R<sup>2</sup>-Score kleiner als „-1“ ist. Berücksichtigen Sie die anderen Metrikwerte und die Eigenschaften der Daten, wenn Sie einen negativen R<sup>2</sup>-Score interpretieren.|[Berechnung](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
 root_mean_squared_error |Die Wurzel aus dem mittleren quadratischen Fehler (Root Mean Squared Error, RMSE) ist die Quadratwurzel der erwarteten quadratischen Differenz zwischen dem Ziel und der Vorhersage. Für einen ausgewogenen Schätzer ist der RMSE gleich der Standardabweichung.<br> <br> **Ziel**: Je näher an 0, desto besser <br> **Bereich:** [0, inf)<br><br>Typen:<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`: root_mean_squared_error geteilt durch den Bereich der Daten. |[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|
 root_mean_squared_log_error|Die Wurzel aus dem mittleren quadratischen logarithmischen Fehler ist die Quadratwurzel des erwarteten quadratischen logarithmischen Fehlers.<br><br>**Ziel**: Je näher an 0, desto besser <br> **Bereich:** [0, inf) <br> <br>Typen: <br>`root_mean_squared_log_error` <br> `normalized_root_mean_squared_log_error`: root_mean_squared_log_error geteilt durch den Bereich der Daten.  |[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|
 spearman_correlation| Die Spearman-Korrelation ist ein nicht parametrisches Maß für die Monotonie der Beziehung zwischen zwei Datasets. Im Gegensatz zur Pearson-Korrelation geht die Spearman-Korrelation nicht davon aus, dass beide Datasets normal verteilt sind. Wie bei anderen Korrelationskoeffizienten variiert Spearman zwischen -1 und 1, wobei 0 für keine Korrelation steht. Korrelationen von -1 oder 1 implizieren eine exakt monotone Beziehung. <br><br> Bei Spearman handelt es sich um eine Korrelationsmetrik der Rangfolge, was bedeutet, dass Änderungen an vorhergesagten oder tatsächlichen Werten das Spearman-Ergebnis nicht verändern, wenn sie die Rangfolge der vorhergesagten oder tatsächlichen Werte nicht verändern.<br> <br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [-1, 1]|[Berechnung](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|

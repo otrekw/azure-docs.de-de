@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b589f98ee78d0709b2a74ba4e364cec0e486e968
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 81a44d4d0025c841cf56e19d6afee5e95bd44a55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547161"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730506"
 ---
 # <a name="secure-azure-digital-twins"></a>Schützen von Azure Digital Twins
 
@@ -55,7 +55,7 @@ Azure bietet **zwei integrierte Azure-Rollen** für die Autorisierung des Zugrif
 | Azure Digital Twins Data Reader (Azure Digital Twins-Datenleser) | Bietet schreibgeschützten Zugriff auf Azure Digital Twins-Ressourcen | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 
 Rollen können auf zwei Arten zugewiesen werden:
-* Über den Bereich „Zugriffssteuerung (IAM)“ für Azure Digital Twins im Azure-Portal (weitere Informationen finden Sie unter [*Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal*](../role-based-access-control/role-assignments-portal.md))
+* Über den Bereich „Zugriffssteuerung (IAM)“ für Azure Digital Twins im Azure-Portal (siehe [*Zuweisen von Azure-Rollen über das Azure-Portal*](../role-based-access-control/role-assignments-portal.md))
 * Mithilfe von CLI-Befehlen zum Hinzufügen oder Entfernen einer Rolle
 
 Ausführlichere Informationen hierzu finden Sie im [*Azure Digital Twins-Tutorial: Erstellen einer End-to-End-Lösung*](tutorial-end-to-end.md).
@@ -92,7 +92,7 @@ Azure unterstützt zwei Arten von verwalteten Identitäten: systemseitig zugewie
 
 Sie können eine systemseitig zugewiesene verwaltete Identität für Ihre Azure Digital Twins-Instanz für die Authentifizierung bei einem [benutzerdefinierten Endpunkt](concepts-route-events.md#create-an-endpoint) verwenden. Azure Digital Twins unterstützt die systemseitig zugewiesene identitätsbasierte Authentifizierung für Endpunkte für [Event Hub](../event-hubs/event-hubs-about.md)- und  [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)-Ziele sowie für einen Endpunkt für [Azure Storage-Container](../storage/blobs/storage-blobs-introduction.md) für [Ereignisse unzustellbarer Nachrichten](concepts-route-events.md#dead-letter-events). [Event Grid](../event-grid/overview.md)-Endpunkte werden für verwaltete Identitäten aktuell nicht unterstützt.
 
-Eine Anleitung zum Aktivieren einer vom System verwalteten Identität für Azure Digital Twins und ihrer Verwendung zum Weiterleiten von Ereignissen finden Sie unter [*Aktivieren einer verwalteten Identität für die Weiterleitung von Azure Digital Twins-Ereignissen (Vorschau)*](how-to-enable-managed-identities.md).
+Eine Anleitung zum Aktivieren einer vom System verwalteten Identität für Azure Digital Twins und ihrer Verwendung zum Weiterleiten von Ereignissen finden Sie unter [*Aktivieren einer verwalteten Identität für die Weiterleitung von Azure Digital Twins-Ereignissen (Vorschau)*](./how-to-enable-managed-identities-portal.md).
 
 ## <a name="private-network-access-with-azure-private-link-preview"></a>Zugriff auf private Netzwerke mit Azure Private Link (Vorschau)
 
@@ -106,7 +106,7 @@ Der private Endpunkt verwendet eine IP-Adresse aus dem Adressraum Ihrer Azure Vi
 
 Das Konfigurieren eines privaten Endpunkts für Ihre Azure Digital Twins-Instanz ermöglicht es Ihnen, Ihre Azure Digital Twins-Instanz zu schützen und eine öffentliche Offenlegung zu vermeiden. Außerdem ist die Datenexfiltration aus Ihrem virtuellen Netzwerk so auch nicht möglich.
 
-Eine Anleitung zum Einrichten von Private Link für Azure Digital Twins finden Sie unter [*Aktivieren des privaten Zugriffs mit Private Link (Vorschau)*](how-to-enable-private-link.md).
+Eine Anleitung zum Einrichten von Private Link für Azure Digital Twins finden Sie unter [*Aktivieren des privaten Zugriffs mit Private Link (Vorschau)*](./how-to-enable-private-link-portal.md).
 
 ### <a name="design-considerations"></a>Überlegungen zum Entwurf 
 

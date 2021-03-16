@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b53cac6e732fb568ba799534d9ad9168fd65eab1
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 3393856b25040cff603ea2ef51e8adbcba78dc26
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100563349"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034692"
 ---
 # <a name="what-is-an-ontology"></a>Was ist eine Ontologie? 
 
@@ -58,7 +58,7 @@ Unabhängig davon, für welche Strategie zur Integration einer Ontologie in Azur
 
 Danach sollten Sie Ihre Modelle in Ihrer Azure Digital Twins-Instanz verwenden können. 
 
-Sie können sie mit Beispielanwendungen wie [Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) oder [ADT Model Visualizer](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) visualisieren oder [digitale Zwillinge](concepts-twins-graph.md) damit erstellen.
+Sie können sie mit Beispielanwendungen wie dem [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) oder dem [Azure Digital Twins-Modellvisualisierer](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) visualisieren oder [digitale Zwillinge](concepts-twins-graph.md) damit erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

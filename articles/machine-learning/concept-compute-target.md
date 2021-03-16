@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 1ff20ab19390dcdadb9a4aa79822f7ace3d31989
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 3b1e102385f43dd9a1ba6996e657f49d435038a2
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791171"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503611"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning?
 
@@ -101,15 +101,21 @@ In der folgenden Tabelle finden Sie weitere Informationen zu unterstützten Seri
 | **Unterstützte VM-Serie**  | **Einschränkungen** |
 |------------|------------|
 | D | Keine. |
+| DDSv4 | Keine. |
 | Dv2 | Keine. |  
 | Dv3 | Keine.|
 | DSv2 | Keine. | 
 | DSv3 | Keine.|
+| EAv4 | Keine. |
+| Ev3 | Keine. |
 | FSv2 | Keine. | 
+| H | Keine. |
+| HB | Genehmigung erforderlich. |
 | HBv2 | Genehmigung erforderlich. |  
 | HCS | Genehmigung erforderlich. |  
 | M | Genehmigung erforderlich. |
-| NC | Keine. |    
+| NC | Keine. |  
+| NC Promo | Keine. |
 | NCsv2 | Genehmigung erforderlich. |
 | NCsv3 | Genehmigung erforderlich. |  
 | NDs | Genehmigung erforderlich. |
@@ -123,7 +129,7 @@ Obwohl Azure Machine Learning diese VM-Serien unterstützt, sind sie möglicherw
 > [!NOTE]
 > Azure Machine Learning unterstützt nicht alle VM-Größen, die von Azure Compute unterstützt werden. Um alle verfügbaren VM-Größen aufzulisten, verwenden Sie eine der folgenden Methoden:
 > * [REST-API](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2020-08-01/examples/ListVMSizesResult.json)
-> * [Python SDK](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py.md#supported-vmsizes-workspace--location-none-)
+> * [Python SDK](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#supported-vmsizes-workspace--location-none-)
 >
 
 ### <a name="compute-isolation"></a>Computeisolation

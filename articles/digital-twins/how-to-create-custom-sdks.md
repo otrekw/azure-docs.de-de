@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: e0c0d18dbb3596733d02430554fd40ec16180c64
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: e7239bfdca1dc464048c0db08488029b0868deb5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980659"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049796"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Erstellen von benutzerdefinierten SDKs für Azure Digital Twins mit AutoRest
 
@@ -44,10 +44,10 @@ Führen Sie die folgenden Schritte aus, um AutoRest für die Azure Digital Twins
 3. Führen Sie AutoRest mithilfe des folgenden Befehls aus. Ersetzen Sie den `<language>`-Platzhalter durch Ihre bevorzugte Sprache: `python`, `java`, `go` usw. (Die vollständige Liste der Optionen finden Sie in der [AutoRest-Infodatei](https://github.com/Azure/autorest).)
 
 ```cmd/sh
-autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
+autorest --input-file=digitaltwins.json --<language> --output-folder=DigitalTwinsApi --add-credentials --azure-arm --namespace=DigitalTwinsApi
 ```
 
-Daraufhin wird ein neuer Ordner mit dem Namen *ADTApi* in Ihrem Arbeitsverzeichnis angezeigt. Die generierten SDK-Dateien verwenden den Namespace *ADTApi*. Sie verwenden diesen Namespace auch in den restlichen Verwendungsbeispielen in diesem Artikel.
+Daraufhin wird in Ihrem Arbeitsverzeichnis ein neuer Ordner mit dem Namen *DigitalTwinsApi* angezeigt. Die generierten SDK-Dateien haben den Namespace *DigitalTwinsApi*. Sie verwenden diesen Namespace auch in den restlichen Verwendungsbeispielen in diesem Artikel.
 
 AutoRest unterstützt eine breite Palette von Sprachcodegeneratoren.
 
@@ -60,8 +60,8 @@ Dieser Abschnitt enthält Anweisungen zum Erstellen des SDK als Klassenbibliothe
 Im Folgenden werden die Schritte aufgeführt:
 
 1. Erstellen einer neuen Visual Studio-Projektmappe für eine Klassenbibliothek
-2. Verwenden von *ADTApi* als Projektnamen
-3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt *ADTApi* der generierten Lösung, und wählen Sie *Hinzufügen > Vorhandenes Element*.
+2. Verwenden von *DigitalTwinsApi* als Projektname
+3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt *DigitalTwinsApi* der generierten Projektmappe, und wählen Sie *Hinzufügen > Vorhandenes Element...* aus.
 4. Suchen Sie den Ordner, in dem Sie das SDK generiert haben, und wählen Sie die Dateien auf der Stammebene aus.
 5. Klicken Sie auf „OK“.
 6. Fügen Sie dem Projekt einen Ordner hinzu (klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie *Hinzufügen > Neuer Ordner*).

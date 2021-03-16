@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 82c11b913d38695c8738de88f3ce69b198ee099e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5748bf3d428102e296067dc5d1927ba487d575bc
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691874"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518720"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich
 
@@ -115,7 +115,7 @@ Nur Sie können die von Ihnen erstellten Computeinstanzen sehen und verwenden.  
 
 ### <a name="view-logs-and-output"></a>Anzeigen von Protokollen und Ausgaben
 
-Verwenden Sie [Notebook-Widgets](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py), um den Fortschritt der Ausführung und die Protokolle anzuzeigen. Ein Widget ist asynchron und bietet Updates, bis das Training abgeschlossen ist. Azure Machine Learning-Widgets werden auch in Jupyter und JupterLab unterstützt.
+Verwenden Sie [Notebook-Widgets](/python/api/azureml-widgets/azureml.widgets), um den Fortschritt der Ausführung und die Protokolle anzuzeigen. Ein Widget ist asynchron und bietet Updates, bis das Training abgeschlossen ist. Azure Machine Learning-Widgets werden auch in Jupyter und JupterLab unterstützt.
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/jupyter-widget.png" alt-text="Screenshot: Jupyter Notebook-Widget ":::
 
@@ -186,11 +186,94 @@ Ein Indikator neben der **Kernel**-Dropdownliste zeigt seinen Status an.
 
 Hier finden Sie Details zu ihren Computeinstanzen auf der **Compute**-Seite in [Studio](https://ml.azure.com).
 
+## <a name="useful-keyboard-shortcuts"></a>Hilfreiche Tastenkombinationen
+Ähnlich wie Jupyter Notebooks verfügen Azure Machine Learning-Notebooks über eine modale Benutzeroberfläche. Mit der Tastatur werden unterschiedliche Aktionen ausgeführt, je nachdem, in welchem Modus sich die Notebook-Zelle befindet. Azure Machine Learning-Notebooks unterstützen die folgenden zwei Modi für eine bestimmte Codezelle: Befehlsmodus und Bearbeitungsmodus.
+
+### <a name="command-mode-shortcuts"></a>Tastenkombinationen im Befehlsmodus
+
+Eine Zelle befindet sich im Befehlsmodus, wenn Sie kein Textcursor zur Eingabe auffordert. Wenn sich eine Zelle im Befehlsmodus befindet, können Sie das Notebook als Ganzes bearbeiten, aber keine Eingaben in einzelne Zellen vornehmen. Sie wechseln in den Befehlsmodus, indem Sie `ESC` drücken oder mit der Maus außerhalb des Editor-Bereichs einer Zelle klicken.  Der linke Rand der aktiven Zelle ist blau und durchgehend, und die zugehörige Schaltfläche **Ausführen** ist blau.
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="Notebookzelle im Befehlsmodus ":::
+
+| Verknüpfung                      | Beschreibung                          |
+| ----------------------------- | ------------------------------------|
+| EINGABETASTE                         | Aktivieren des Bearbeitungsmodus             |        
+| UMSCHALT + ENTER                 | Zelle ausführen, Zelle darunter auswählen         |     
+| STRG/Befehlstaste + EINGABETASTE       | Run cell (Zelle ausführen)                            |
+| ALT+EINGABETASTE                   | Zelle ausführen, Codezelle unten einfügen    |
+| STRG/Befehlstaste + ALT + EINGABETASTE | Zelle ausführen, Markdownzelle unten einfügen|
+| ALT + R                       | Run all (Alle ausführen)      |                       
+| J                             | Zelle in Code konvertieren    |                         
+| M                             | Zelle in Markdown konvertieren  |                       
+| Nach oben/K                          | Zelle darüber auswählen    |               
+| Nach unten/J                        | Zelle darunter auswählen    |               
+| Ein                             | Codezelle oben einfügen  |            
+| B                             | Codezelle unten einfügen   |           
+| STRG/Befehlstaste + UMSCHALT + A   | Markdownzelle oben einfügen    |      
+| STRG/Befehlstaste + UMSCHALT + B   | Markdownzelle unten einfügen   |       
+| X                             | Ausgewählte Zelle ausschneiden    |               
+| C                             | Ausgewählte Zelle kopieren   |               
+| UMSCHALT + V                     | Ausgewählte Zelle oben einfügen           |
+| V                             | Ausgewählte Zelle unten einfügen    |       
+| D D                           | Ausgewählte Zelle löschen|                
+| O                             | Toggle Output         |              
+| UMSCHALT + O                     | Scrollen der Ausgabe umschalten   |          
+| I I                           | Kernel unterbrechen |                   
+| 0 0                           | Kernel neu starten |                     
+| UMSCHALT + LEERTASTE                 | Bildlauf nach oben  |                         
+| LeerZchn                         | Bildlauf nach unten|
+| Registerkarte                           | Fokus auf das nächste Element ändern, das den Fokus erhalten kann (bei deaktivierter Fokusinitialisierung)|
+| STRG/Befehlstaste + S           | Notebook speichern |                      
+| 1                             | In h1 ändern|                       
+| 2                             | In h2 ändern|                        
+| 3                             | In h3 ändern|                        
+| 4                             | In h4 ändern |                       
+| 5                             | In h5 ändern |                       
+| 6                             | In h6 ändern |                       
+
+### <a name="edit-mode-shortcuts"></a>Tastenkombinationen im Bearbeitungsmodus
+
+Der Bearbeitungsmodus wird durch einen Textcursor angezeigt, der Sie zur Eingabe im Editor-Bereich auffordert. Wenn sich eine Zelle im Bearbeitungsmodus befindet, können Sie etwas in die Zelle eingeben. Sie wechseln in den Bearbeitungsmodus, indem Sie `Enter` drücken oder mit der Maus auf den Editor-Bereich einer Zelle klicken. Der linke Rand der aktiven Zelle ist grün und gestrichelt, und die zugehörige Schaltfläche **Ausführen** ist grün. Außerdem wird im Bearbeitungsmodus der Cursor der Eingabeaufforderung in der Zelle angezeigt.
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/edit-mode.png" alt-text="Notebookzelle im Bearbeitungsmodus":::
+
+Mithilfe der folgenden Tastenkombinationen können Sie in Azure Machine Learning-Notebooks einfacher navigieren und Code ausführen, während sie sich im Bearbeitungsmodus befinden.
+
+| Verknüpfung                      | Beschreibung|                                     
+| ----------------------------- | ----------------------------------------------- |
+| Escape                        | Befehlsmodus aktivieren|  
+| STRG/Befehlstaste + LEERTASTE       | Aktivieren von IntelliSense |
+| UMSCHALT + ENTER                 | Zelle ausführen, Zelle darunter auswählen |                         
+| STRG/Befehlstaste + EINGABETASTE       | Run cell (Zelle ausführen)  |                                      
+| ALT+EINGABETASTE                   | Zelle ausführen, Codezelle unten einfügen  |              
+| STRG/Befehlstaste + ALT + EINGABETASTE | Zelle ausführen, Markdownzelle unten einfügen  |          
+| ALT + R                       | Ausführen aller Zellen     |                              
+| Nach oben                            | Cursor nach oben oder in die vorherige Zelle bewegen    |             
+| Nach unten                          | Cursor nach unten oder in die nächste Zelle bewegen |                  
+| STRG/Befehlstaste + S           | Notebook speichern   |                                
+| STRG/Befehlstaste + Nach-oben          | Zum Anfang der Zelle wechseln   |                             
+| STRG/Befehlstaste + Nach-unten        | Zum Ende der Zelle wechseln |                                 
+| Registerkarte                           | Codevervollständigung oder -einzug (bei aktivierter Fokusinitialisierung) |
+| STRG/Befehlstaste + M           | Fokusinitialisierung aktivieren/deaktivieren  |                       
+| STRG/Befehlstaste + ]           | Einziehen |                                         
+| STRG/Befehlstaste + [           | Einzug entfernen  |                                        
+| STRG/Befehlstaste + A           | Alle auswählen|                                      
+| STRG/Befehlstaste + Z           | Rückgängig |                                           
+| STRG/Befehlstaste + UMSCHALT + Z   | Wiederholen |                                           
+| STRG/Befehlstaste + Y           | Wiederholen |                                           
+| STRG/Befehlstaste + Pos1        | Zum Anfang der Zelle wechseln|                                
+| STRG/Befehlstaste + Ende         | Zum Ende der Zelle wechseln   |                               
+| STRG/Befehlstaste + Nach-links        | Ein Wort nach links wechseln |                               
+| STRG/Befehlstaste + Nach-rechts       | Ein Wort nach rechts wechseln |                              
+| STRG/Befehlstaste + RÜCKTASTE   | Wort davor löschen |                             
+| STRG/Befehlstaste + Entf      | Wort danach löschen |                              
+| STRG/Befehlstaste + /           | Kommentar für Zelle ein-/ausschalten
+
 ## <a name="troubleshooting"></a>Problembehandlung
 
 * Wenn Sie keine Verbindung mit einem Notebook herstellen können, stellen Sie sicher, dass die WebSocket-Kommunikation **nicht** deaktiviert ist. Damit die Jupyter-Funktionen für Compute-Instanzen eingesetzt werden können, muss die WebSocket-Kommunikation aktiviert sein. Stellen Sie sicher, dass Ihr Netzwerk WebSocket-Verbindungen mit *.instances.azureml.net und *.instances.azureml.ms zulässt. 
 
-* Wenn eine Compute-Instanz in einem Private Link-Arbeitsbereich bereitgestellt wird, kann nur [im virtuellen Netzwerk darauf zugegriffen werden](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance). Wenn Sie benutzerdefiniertes DNS oder HOSTS-Dateien verwenden, fügen Sie einen Eintrag für „<Instanzname>.<region>.instances.azureml.ms“ mit der privaten IP-Adresse des privaten Endpunkts des Arbeitsbereichs hinzu. Weitere Informationen finden Sie im Artikel [Benutzerdefiniertes DNS](./how-to-custom-dns.md?tabs=azure-cli).
+* Wenn eine Compute-Instanz in einem Private Link-Arbeitsbereich bereitgestellt wird, kann nur [im virtuellen Netzwerk darauf zugegriffen werden](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance). Wenn Sie benutzerdefiniertes DNS oder HOSTS-Dateien verwenden, fügen Sie einen Eintrag für „<Instanzname>.<Region>.instances.azureml.ms“ mit der privaten IP-Adresse des privaten Endpunkts des Arbeitsbereichs hinzu. Weitere Informationen finden Sie im Artikel [Benutzerdefiniertes DNS](./how-to-custom-dns.md?tabs=azure-cli).
     
 ## <a name="next-steps"></a>Nächste Schritte
 

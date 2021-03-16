@@ -3,12 +3,12 @@ title: Datenmodell „Azure Monitor-Protokolle“
 description: In diesem Artikel werden die Details des Azure Monitor Log Analytics-Datenmodells für Azure Backup-Daten vorgestellt.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 1fcb4eb0c584f792132f19c8c4d66289342aa36e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 004c5a6c0c2c4dcfcf13134bd5a5143ba647048f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020948"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500987"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-Datenmodell für Azure Backup-Daten
 
@@ -18,7 +18,8 @@ Verwenden Sie das Log Analytics-Datenmodell, um benutzerdefinierte Warnungen in 
 
 > [!NOTE]
 >
-> Dieses Datenmodell bezieht sich auf den Azure-Diagnosemodus zum Senden von Diagnoseereignissen an Log Analytics (LA). Weitere Informationen zum Datenmodell für den neuen ressourcenspezifischen Modus finden Sie im folgenden Artikel: [Datenmodell für Azure Backup-Diagnoseereignisse](./backup-azure-reports-data-model.md)
+> * Dieses Datenmodell bezieht sich auf den Azure-Diagnosemodus zum Senden von Diagnoseereignissen an Log Analytics (LA). Weitere Informationen zum Datenmodell für den neuen ressourcenspezifischen Modus finden Sie im folgenden Artikel: [Datenmodell für Azure Backup-Diagnoseereignisse](./backup-azure-reports-data-model.md)
+> * Zum Erstellen von benutzerdefinierten Berichtsansichten wird empfohlen, anstelle der unten aufgeführten Rohtabellen die [Systemfunktionen für Azure Monitor-Protokolle](backup-reports-system-functions.md) zu verwenden.
 
 ## <a name="using-azure-backup-data-model"></a>Verwenden des Azure Backup-Datenmodells
 
@@ -462,7 +463,7 @@ Im folgenden finden Sie einige Beispiele, die Ihnen beim Schreiben von Abfragen 
 
 ## <a name="v1-schema-vs-v2-schema"></a>V1-Schema i. Vgl. mit V2-Schema
 
-Früher wurden Diagnosedaten für Azure Backup-Agent und Azure VM-Sicherungen an die Azure-Diagnosetabelle in einem Schema gesendet, das als ***V1-Schema*** bezeichnet wird. In der Folge wurden jedoch weitere Spalten hinzugefügt, um andere Szenarien und Workloads zu unterstützen, und Diagnosedaten wurden per Push in einem neuen Schema übertragen, das als ***V2-Schema*** bezeichnet wird.  
+Früher wurden Diagnosedaten für Azure Backup-Agent und Azure VM-Sicherungen an die Azure-Diagnosetabelle in einem Schema gesendet, das als ***V1-Schema** _ bezeichnet wird. In der Folge wurden jedoch weitere Spalten hinzugefügt, um andere Szenarien und Workloads zu unterstützen, und Diagnosedaten wurden per Push in einem neuen Schema übertragen, das als _*_V2-Schema_** bezeichnet wird.  
 
 Aus Gründen der Abwärtskompatibilität werden Diagnosedaten für Azure Backup-Agent und Azure VM-Sicherungen aktuell sowohl im V1- als auch im V2-Schema an die Azure-Diagnosetabelle gesendet (wobei das V1-Schema mittlerweile als veralteter Zweig geführt wird). Sie können erkennen, welche Datensätze in der Protokollanalyse dem V1-Schema entsprechen, indem Sie Datensätze in Ihren Protokollabfragen nach „SchemaVersion_s=="V1"“ filtern.
 
@@ -495,4 +496,4 @@ Da das V1-Schema bereits als veraltet gekennzeichnet wurde, empfiehlt es sich, b
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sobald Sie das Datenmodell geprüft haben, können Sie in Azure Monitor-Protokollen damit beginnen [benutzerdefinierte Abfragen zu erstellen](../azure-monitor/learn/tutorial-logs-dashboards.md), um Ihr eigenes Dashboard zu erstellen.
+Sobald Sie das Datenmodell geprüft haben, können Sie in Azure Monitor-Protokollen damit beginnen [benutzerdefinierte Abfragen zu erstellen](../azure-monitor/visualize/tutorial-logs-dashboards.md), um Ihr eigenes Dashboard zu erstellen.
