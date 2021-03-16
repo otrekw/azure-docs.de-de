@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 10/30/2020
-ms.openlocfilehash: 7f053b1984a2d838deb14bacd10cdc071e19d8a1
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: b112506acead01e8dc2bbe72b0d52f47ada326a7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035137"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440410"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopieren einer transaktionskonsistenten Kopie einer Datenbank in Azure SQL-Datenbank
 
@@ -194,7 +194,7 @@ AS COPY OF source_server_name.source_database_name
 > [!IMPORTANT]
 > Falls Sie eine Kopie mit einem deutlich niedrigeren Dienstziel als die Quelle erstellen müssen, verfügt die Zieldatenbank ggf. nicht über genügend Ressourcen für die Durchführung des Seedingprozesses. Möglicherweise schlägt dadurch der Kopiervorgang fehl. Verwenden Sie in diesem Szenario eine Anforderung einer Geowiederherstellung, um eine Kopie auf einem anderen Server bzw. in einer anderen Region zu erstellen. Weitere Informationen finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank mit Datenbanksicherungen](recovery-using-backups.md#geo-restore).
 
-## <a name="azure-roles-to-manage-database-copy"></a>Azure-Rollen zum Verwalten der Datenbankkopie
+## <a name="azure-rbac-roles-and-permissions-to-manage-database-copy"></a>Azure RBAC-Rollen und -Berechtigungen zum Verwalten der Datenbankkopie
 
 Zum Erstellen einer Datenbankkopie müssen Sie über die folgenden Rollen verfügen:
 

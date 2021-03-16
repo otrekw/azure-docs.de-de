@@ -3,12 +3,12 @@ title: Azure Backup-Glossar
 description: In diesem Artikel werden Begriffe vorgestellt, die bei Nutzung von Azure Backup hilfreich sind.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 5b575e0f56c9cf39987e9e77850ab1d9b2e80d93
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: fb46415c8bdb463556d57004e37d741c1b9a9b57
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723913"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502024"
 ---
 # <a name="azure-backup-glossary"></a>Azure Backup-Glossar
 
@@ -299,6 +299,18 @@ Sichert Betriebssystemdateien. Diese Sicherung ermöglicht die Wiederherstellung
 ## <a name="tenant"></a>Tenant
 
 Ein Mandant ist eine Darstellung einer Organisation. Dabei handelt es sich um eine dedizierte Instanz von Azure AD, die eine Organisation oder ein App-Entwickler erhalten, wenn sie eine Beziehung mit Microsoft erstellen, wie z. B. durch eine Anmeldung bei Azure, Microsoft Intune oder Microsoft 365.
+
+## <a name="tier"></a>Tarif
+
+Derzeit unterstützt Azure Backup die folgenden Sicherungsspeicherebenen:
+
+### <a name="snapshot-tier"></a>Momentaufnahmenebene
+
+(Workloadspezifischer Begriff) In der ersten Phase der VM-Sicherung wird die erstellte Momentaufnahme zusammen mit dem Datenträger gespeichert. Diese Form von Speicher wird als Momentaufnahmenebene bezeichnet. Wiederherstellungen auf Momentaufnahmenebene erfolgen schneller (als die Wiederherstellung aus dem Tresor), da sie die Wartezeit für das Kopieren von Momentaufnahmen in den Tresor entfällt, bevor die Wiederherstellung ausgelöst wird.
+
+### <a name="vault-standard-tier"></a>Vault-Standard-Ebene
+
+Sicherungsdaten für alle von Azure Backup unterstützten Workloads werden in Tresoren gespeichert, die Sicherungsspeicher enthalten, eine automatisch skalierende Gruppe von Speicherkonten, die von Azure Backup verwaltet werden. Der Vault-Standard-Ebene ist eine Onlinespeicherebene, mit der Sie eine isolierte Kopie der Sicherungsdaten in einem von Microsoft verwalteten Mandanten speichern und so eine zusätzliche Sicherheitsebene schaffen können. Für Workloads, bei denen die Momentaufnahmenebene unterstützt wird, befindet sich eine Kopie der Sicherungsdaten sowohl in der Momentaufnahmenebene als auch in der Vault-Standard-Ebene. Die Vault-Standard-Ebene stellt sicher, dass die Sicherungsdaten auch dann noch verfügbar sind, wenn die zu sichernde Datenquelle gelöscht wurde oder kompromittiert ist.
 
 ## <a name="unmanaged-disk"></a>Nicht verwalteter Datenträger
 

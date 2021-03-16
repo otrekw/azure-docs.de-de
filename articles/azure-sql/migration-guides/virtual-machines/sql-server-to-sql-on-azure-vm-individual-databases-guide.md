@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: cc2a641cb017edace24db5df69bc4adf3a607524
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: d95da29b732e2d520b3413628c9b4a1c403abed6
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797886"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488228"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Migrationsleitfaden: SQL Server zu SQL Server auf Azure-VMs 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -58,6 +58,8 @@ Weitere Informationen Ermittlungstools finden Sie unter [Dienste und Tools für 
 
 
 ### <a name="assess"></a>Bewerten
+
+[!INCLUDE [assess-estate-with-azure-migrate](../../../../includes/azure-migrate-to-assess-sql-data-estate.md)]
 
 Nachdem Sie alle Datenquellen ermittelt haben, können Sie den [Datenmigrations-Assistenten (DMA)](/sql/dma/dma-overview) verwenden, um lokale SQL Server-Instanzen zu bewerten, die zu einer SQL Server-Instanz auf einer Azure-VM migriert werden, und so Diskrepanzen zwischen Quell- und Zielinstanzen festzustellen. 
 
@@ -123,7 +125,7 @@ Befolgen Sie diese Schritte, wenn Sie eine gewöhnliche Migration mit Sicherung 
 1. Halten Sie alle Anwendungen an, die für die Migration vorgesehene Datenbanken verwenden. 
 1. Sorgen Sie mit dem [Einzelbenutzermodus](/sql/relational-databases/databases/set-a-database-to-single-user-mode) dafür, dass Benutzerdatenbanken inaktiv sind. 
 1. Führen Sie eine vollständige Datenbanksicherung an einem lokalen Speicherort durch.
-1. Kopieren Sie lokale Sicherungsdateien auf Ihre VM, indem Sie einen Remotedesktop, [Azure Data Explorer](/azure/data-explorer/data-explorer-overview) oder das [Befehlszeilentool AzCopy](../../../storage/common/storage-use-azcopy-v10.md) (bei Sicherungen über 2 TB empfohlen) verwenden.
+1. Kopieren Sie Ihre lokalen Sicherungsdateien auf Ihre VM, indem Sie einen Remotedesktop, [Azure Data Explorer](/azure/data-explorer/data-explorer-overview) oder das [Befehlszeilentool AzCopy](../../../storage/common/storage-use-azcopy-v10.md) (bei Sicherungen über 2 TB empfohlen) verwenden.
 1. Stellen Sie die vollständigen Datenbanksicherungen in SQL Server auf der Azure-VM wieder her.
 
 ### <a name="log-shipping--minimize-downtime"></a>Protokollversand (Minimieren der Downtime)
@@ -133,7 +135,7 @@ Befolgen Sie diese Schritte, um eine Migration mit minimaler Downtime mithilfe v
 1. Richten Sie die Konnektivität zur SQL Server-Zielinstanz auf einer Azure-VM Ihren Anforderungen entsprechend ein. Weitere Informationen finden Sie unter [Verbinden mit SQL Server-Instanzen auf virtuellen Azure-Maschinen (Resource Manager)](../../virtual-machines/windows/ways-to-connect-to-sql.md).
 1. Stellen Sie sicher, dass die zu migrierenden Benutzerdatenbanken das vollständige oder massenprotokollierte Wiederherstellungsmodell verwenden.
 1. Führen Sie eine vollständige Datenbanksicherung auf einen lokalen Speicherort durch, und ändern Sie vorhandene Datenbanksicherungsaufträge so, dass das Schlüsselwort [COPY_ONLY](/sql/relational-databases/backup-restore/copy-only-backups-sql-server) verwendet wird, um die Protokollkette aufrechtzuerhalten.
-1. Kopieren Sie lokale Sicherungsdateien auf Ihre VM, indem Sie einen Remotedesktop, [Azure Data Explorer](/azure/data-explorer/data-explorer-overview) oder das [Befehlszeilentool AzCopy](../../../storage/common/storage-use-azcopy-v10.md) (bei Sicherungen über 1 TB empfohlen) verwenden.
+1. Kopieren Sie Ihre lokalen Sicherungsdateien auf Ihre VM, indem Sie einen Remotedesktop, [Azure Data Explorer](/azure/data-explorer/data-explorer-overview) oder das [Befehlszeilentool AzCopy](../../../storage/common/storage-use-azcopy-v10.md) (bei Sicherungen über 1 TB empfohlen) verwenden.
 1. Stellen Sie die vollständigen Datenbanksicherungen in SQL Server auf der Azure-VM wieder her.
 1. Richten Sie den [Protokollversand](/sql/database-engine/log-shipping/configure-log-shipping-sql-server) zwischen der lokalen Datenbank und der SQL Server-Zieldatenbank auf der Azure-VM ein. Initialisieren Sie Ihre Datenbanken nicht erneut, da dieser Vorgang bereits in einem vorherigen Schritt erfolgt ist.
 1. Führen Sie eine **Übernahme** auf den Zielserver durch. 
