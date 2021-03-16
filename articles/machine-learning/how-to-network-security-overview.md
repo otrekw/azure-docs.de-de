@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 10/06/2020
+ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 1a73988b66ba7b47f18ecaaa07df59e9047a933b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fcb678efe29178784c9233e79b307f705c40e3f7
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691823"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518675"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken
 
@@ -69,9 +69,14 @@ In den nächsten fünf Abschnitten wird gezeigt, wie Sie das oben beschriebene N
 Führen Sie die folgenden Schritte aus, um Ihren Arbeitsbereich und zugehörige Ressourcen zu schützen. Danach können Ihre Dienste im virtuellen Netzwerk kommunizieren.
 
 1. Erstellen Sie einen [Arbeitsbereich mit Private Link-Unterstützung](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint), um die Kommunikation zwischen Ihrem VNET und dem Arbeitsbereich zu ermöglichen.
-1. Fügen Sie Azure Key Vault mit einem [Dienstendpunkt](../key-vault/general/overview-vnet-service-endpoints.md) oder einem [privaten Endpunkt](../key-vault/general/private-link-service.md) dem virtuellen Netzwerk hinzu. Legen Sie für Key Vault die Einstellung [„Zulassen, dass vertrauenswürdige Microsoft-Dienste diese Firewall umgehen“](how-to-secure-workspace-vnet.md#secure-azure-key-vault) fest.
-1. Fügen Sie Ihr Azure Storage-Konto mit einem [Dienstendpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) oder einem [privaten Endpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints) dem virtuellen Netzwerk hinzu.
-1. [Konfigurieren Sie Azure Container Registry für die Verwendung eines privaten Endpunkts](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr).
+1. Fügen Sie dem virtuellen Netzwerk die folgenden Dienste hinzu. Verwenden Sie dazu _entweder_ einen __Dienstendpunkt__ oder einen __privaten Endpunkt__. Gewähren Sie außerdem vertrauenswürdigen Microsoft-Diensten Zugriff auf diese Dienste:
+    
+    | Dienst | Endpunktinformationen | Zulassen vertrauenswürdiger Informationen |
+    | ----- | ----- | ----- |
+    | __Azure Key Vault__| [Dienstendpunkt](../key-vault/general/overview-vnet-service-endpoints.md)</br>[Privater Endpunkt](../key-vault/general/private-link-service.md) | [Erlauben der Umgehung dieser Firewall für vertrauenswürdige Microsoft-Dienste](how-to-secure-workspace-vnet.md#secure-azure-key-vault) |
+    | __Azure Storage-Konto__ | [Dienstendpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)</br>[Privater Endpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints) | [Gewähren von Zugriff für vertrauenswürdige Azure-Dienste](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
+    | __Azure Container Registry__ | [Dienstendpunkt](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)</br>[Privater Endpunkt](../container-registry/container-registry-private-link.md) | [Zulassen vertrauenswürdiger Dienste](../container-registry/allow-access-trusted-services.md) |
+
 
 ![Architekturdiagramm, das darstellt, wie der Arbeitsbereich und die zugehörigen Ressourcen über Dienstendpunkte oder private Endpunkte in einem VNET miteinander kommunizieren](./media/how-to-network-security-overview/secure-workspace-resources.png)
 
@@ -106,10 +111,7 @@ In diesem Abschnitt erfahren Sie, wie Azure Machine Learning für eine sichere K
 
 1. Der Azure Batch-Dienst empfängt den Auftrag vom Arbeitsbereich und übergibt den Trainingsauftrag über den öffentlichen Lastenausgleich, der mit der Computeressource bereitgestellt wird, an die Compute-Umgebung. 
 
-1. Die Computeressource erhält den Auftrag und startet das Training. Die Computeressource greift auf sichere Speicherkonten zu, um Trainingsdateien herunter- und die Ausgabe hochzuladen. 
-
-![Architekturdiagramm, das die Übermittlung eines Azure Machine Learning-Trainingsauftrags bei Verwendung eines VNET zeigt](./media/how-to-network-security-overview/secure-training-job-submission.png)
-
+1. Die Computeressource erhält den Auftrag und startet das Training. Die Computeressource greift auf sichere Speicherkonten zu, um Trainingsdateien herunter- und die Ausgabe hochzuladen.
 
 ### <a name="limitations"></a>Einschränkungen
 
@@ -178,9 +180,9 @@ Weitere Informationen zu den erforderlichen Domänennamen und IP-Adressen finden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Dieser Artikel ist der erste Teil einer vierteiligen Serie zu virtuellen Netzwerken. Weitere Informationen zum Schützen eines virtuellen Netzwerks finden Sie in den verbleibenden Artikeln:
+Dieser Artikel ist der erste Teil einer fünfteiligen Serie zu virtuellen Netzwerken. Weitere Informationen zum Schützen eines virtuellen Netzwerks finden Sie in den verbleibenden Artikeln:
 
 * [Teil 2: Virtuelle Netzwerke im Überblick](how-to-secure-workspace-vnet.md)
 * [Teil 3: Schützen der Trainingsumgebung](how-to-secure-training-vnet.md)
 * [Teil 4: Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)
-* [Teil 5: Verwenden von Studio in einem virtuellen Netzwerk](how-to-enable-studio-virtual-network.md)
+* [Teil 5: Verwenden von Studio in einem virtuellen Netzwerk](how-to-enable-studio-virtual-network.md)

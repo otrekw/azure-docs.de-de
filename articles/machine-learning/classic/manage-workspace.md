@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: 1996f4c6c73040fa16a1c5a0468ebcced3ab1641
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: c41c5350e29555a11bb74eeca9af62a6b87cfced
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516480"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094264"
 ---
 # <a name="manage-an-azure-machine-learning-studio-classic-workspace"></a>Verwalten eines Azure Machine Learning Studio-Arbeitsbereichs (klassisch)
 
@@ -48,7 +48,7 @@ Verwenden Sie zum Verwalten der diesem Studio-Arbeitsbereich (klassisch) zugeord
 > [!NOTE]
 > Zum Bereitstellen oder Verwalten neuer Webdienste muss Ihnen in dem Abonnement, für das der Webdienst bereitgestellt wird, eine Teilnehmer- oder Administratorrolle zugewiesen sein. Wenn Sie andere Benutzer in einen Machine Learning Studio-Arbeitsbereich (klassisch) einladen, müssen Sie ihnen eine Teilnehmer- oder Administratorrolle im Abonnement zuweisen, damit sie Webdienste bereitstellen oder verwalten können. 
 > 
->Weitere Informationen zu Festlegen von Zugriffsberechtigungen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
+>Weitere Informationen zum Festlegen von Zugriffsberechtigungen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über das [Bereitstellen von Machine Learning mithilfe von Azure Resource Manager-Vorlagen](deploy-with-resource-manager-template.md).

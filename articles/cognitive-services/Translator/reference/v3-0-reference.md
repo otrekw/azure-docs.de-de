@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
 ms.author: lajanuar
-ms.openlocfilehash: 021a65ba69b9d1909df4a86d92b660c0c1033a3b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 567e28ee7f698565d6ad0020db7abdca0557f053
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895457"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650761"
 ---
 # <a name="translator-v30"></a>Translator v3.0
 
@@ -35,7 +35,7 @@ Der Microsoft Translator wird aus mehreren Rechenzentren unterstützt. Momentan 
 
 * **Amerika**: „USA, Osten“, „USA, Süden-Mitte“, „USA, Westen-Mitte“ und „USA, Westen 2“ 
 * **Asien-Pazifik:** „Südkorea, Süden“, „Japan, Osten“, „Asien, Südosten“ und „Australien, Osten“
-* **Europa:** Europa, Norden und Europa, Westen
+* **Europa:** „Europa, Norden“, „Europa, Westen“, „Schweiz, Norden“<sup>1,2</sup> und „Schweiz, Westen“<sup>1,2</sup>
 
 Anforderungen an Microsoft Translator werden in den meisten Fällen von dem Rechenzentrum bearbeitet, das dem Ursprungsort der Anforderung am nächsten liegt. Bei einem Rechenzentrumsausfall kann die Anforderung außerhalb der Azure-Geografie weitergeleitet werden.
 
@@ -47,6 +47,17 @@ Um zu erzwingen, dass die Anforderung von einer bestimmten Azure-Geografie bearb
 |Azure|USA|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Europa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Asien-Pazifik|    api-apc.cognitive.microsofttranslator.com|
+
+<sup>1</sup> Kunden mit einer Ressource in „Schweiz, Norden“ oder „Schweiz, Westen“ können sicherstellen, dass ihre Text-API-Anforderungen innerhalb der Schweiz verarbeitet werden. Um sicherzustellen, dass Anforderungen in der Schweiz verarbeitet werden, muss die Textübersetzungsressource in der Ressourcenregion „Schweiz, Norden“ oder „Schweiz, Westen“ erstellt und anschließend in den API-Anforderungen der benutzerdefinierte Endpunkt der Ressource verwendet werden. Beispiel: Wenn Sie im Azure-Portal eine Textübersetzungsressource mit der Ressourcenregion „Schweiz, Norden“ erstellen und Ihre Ressource den Namen „my-ch-n“ hat, lautet der benutzerdefinierte Endpunkt „https://my-ch-n.cognitiveservices.azure.com“. Eine Beispielanforderung für die Übersetzung wäre etwa:
+```curl
+// Pass secret key and region using headers to a custom endpoint
+curl -X POST " my-ch-n.cognitiveservices.azure.com/translator/text/v3.0/translate?to=fr" \
+-H "Ocp-Apim-Subscription-Key: xxx" \
+-H "Ocp-Apim-Subscription-Region: switzerlandnorth" \
+-H "Content-Type: application/json" \
+-d "[{'Text':'Hello'}]" -v
+```
+<sup>2</sup> Benutzerdefinierter Translator ist zurzeit in der Schweiz nicht verfügbar.
 
 ## <a name="authentication"></a>Authentifizierung
 
@@ -230,7 +241,7 @@ Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode
 | 503000| Service is temporarily unavailable. (Der Dienst ist vorübergehend nicht verfügbar.) Versuchen Sie es erneut. Wenn der Fehler weiterhin besteht, melden Sie ihn, und geben Sie dabei Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Antwortheader X-RequestId und Clientbezeichner aus dem Anforderungsheader X-ClientTraceId.|
 
 ## <a name="metrics"></a>Metriken 
-Metriken ermöglichen es Ihnen, die Informationen über die Nutzung und Verfügbarkeit des Translator im Azure-Portal im Abschnitt „Metriken“ anzuzeigen, wie im folgenden Screenshot gezeigt. Weitere Informationen finden Sie unter [Daten- und Plattformmetriken](../../../azure-monitor/platform/data-platform-metrics.md).
+Metriken ermöglichen es Ihnen, die Informationen über die Nutzung und Verfügbarkeit des Translator im Azure-Portal im Abschnitt „Metriken“ anzuzeigen, wie im folgenden Screenshot gezeigt. Weitere Informationen finden Sie unter [Daten- und Plattformmetriken](../../../azure-monitor/essentials/data-platform-metrics.md).
 
 ![Translator-Metriken](../media/translatormetrics.png)
 

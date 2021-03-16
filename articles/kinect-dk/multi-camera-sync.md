@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: Azure, Kinect, Spezifikationen, Hardware, DK, Funktionen, Tiefe, Farbe, RGB, IMU, Array, Tiefe, mehrere, Synchronisierung
-ms.openlocfilehash: 30961152b31a659cb27e91a99d6806490998d18d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: eabf77896777f39efcfd61adb3040bca8642716e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592278"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039953"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>Synchronisierung mehrerer Azure Kinect DK-Geräte
 
@@ -36,6 +36,9 @@ Es gibt viele Gründe für die Verwendung mehrerer Azure Kinect DK-Geräte einsc
 ## <a name="plan-your-multi-device-configuration"></a>Planen Ihrer Konfiguration mit mehreren Geräten
 
 Bevor Sie beginnen, lesen Sie unbedingt die Artikel zu [Azure Kinect DK-Hardwarespezifikationen](hardware-specification.md) und zur [Azure Kinect DK-Tiefenkamera](depth-camera.md).
+
+> [!NOTE]  
+> Nehmen Sie die äußere Plastikabdeckung ab, um an den Ein- und Ausgang für die Synchronisierung zu gelangen.
 
 ### <a name="select-a-device-configuration"></a>Auswählen einer Gerätekonfiguration
 
@@ -63,6 +66,9 @@ Die Auslöserquelle muss das Signal über ein 3,5-mm-Audiokabel an den **Sync In
 ![Kabelkonfigurationen für ein externes Auslösersignal](./media/resources/camera-trigger-signal.jpg)
 
 Weitere Informationen zum Arbeiten mit externen Geräten finden Sie unter [Verwenden des Azure Kinect-Rekorders mit externen synchronisierten Geräten](record-external-synchronized-units.md).
+
+> [!NOTE]  
+> Bei dem Synchronisierungsausgang handelt es sich um die vertikale Synchronisierung für die RGB-Kamera. Die Zeitstempel für alle Geräte werden auf Null festgelegt und zählen vorwärts. Die Mindest- und Maximalbreite des Synchronisationsimpulses wurde von Microsoft nicht charakterisiert, und es wird empfohlen, den vom Synchronisierungsausgang eines Azure Kinect DK-Geräts generierten Impuls zu imitieren.
 
 ### <a name="plan-your-camera-settings-and-software-configuration"></a>Planen Ihrer Kameraeinstellungen und Softwarekonfiguration
 
