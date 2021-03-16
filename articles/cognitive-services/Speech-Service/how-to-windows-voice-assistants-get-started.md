@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 77d756bc0c7bbdfa38bb1262638ef85b051fc234
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b50b98095cdfe0e6ec19c89b57887ebc4a0f6317
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026487"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713047"
 ---
 # <a name="getting-started-with-voice-assistants-on-windows"></a>Erste Schritte mit Sprachassistenten unter Windows
 
@@ -34,7 +34,7 @@ Um mit der Entwicklung eines Sprachassistenten für Windows zu beginnen, müssen
 
 Einige Ressourcen, die für einen vollständig angepassten Sprach-Agent unter Windows erforderlich sind, müssen von Microsoft bezogen werden. Das [UWP Voice Assistant-Beispiel](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample) enthält Beispielversionen dieser Ressourcen für den Einstieg in Entwicklung und Testen, dieser Abschnitt muss also für den Einstieg in die Entwicklung nicht beachtet werden.
 
-- **Schlüsselwortmodell:** Für die Sprachaktivierung ist ein Schlüsselwortmodell von Microsoft in Form einer BIN-Datei erforderlich. Die im UWP Voice Assistant-Beispiel zur Verfügung stehende BIN-Datei ist mit dem Schlüsselwort „Contoso“ trainiert.
+- **Schlüsselwortmodell:** Für die Sprachaktivierung ist ein Schlüsselwortmodell von Microsoft in Form einer BIN-Datei erforderlich. Die im UWP Voice Assistant-Beispiel zur Verfügung stehende BIN-Datei ist mit dem Schlüsselwort *Contoso* trainiert.
 - **Token für Features mit eingeschränkten Zugriff:** Da die APIs des ConversationalAgent Zugriff auf Audiosignale von einem Mikrofon bereitstellen, sind sie durch Einschränkungen für Features für eingeschränkten Zugriff geschützt.  Um ein Feature mit eingeschränktem Zugriff zu verwenden, müssen Sie bei Microsoft ein Token für Features mit eingeschränktem Zugriff erwerben, das mit der Paket-ID Ihrer Anwendung verbunden ist.
 
 ## <a name="establish-a-dialog-service"></a>Einrichten eines Dialogdiensts

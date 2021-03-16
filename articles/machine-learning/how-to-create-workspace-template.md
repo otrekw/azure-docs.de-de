@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 06614fc33910eda44bf6bf8369c4ad4b3c0b25fe
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 9df8a67fd3dfbf23986f1cc5ed18392463fc7ecb
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986021"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522205"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für Azure Machine Learning
 
@@ -30,14 +30,9 @@ Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer 
 
 * Ein **Azure-Abonnement**. Wenn Sie keins besitzen, probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
 
-* Um eine Vorlage über eine Befehlszeilenschnittstelle zu verwenden, benötigen Sie entweder [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) oder die [Azure-Befehlszeilenschnittstelle (CLI)](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
+* Um eine Vorlage über eine Befehlszeilenschnittstelle zu verwenden, benötigen Sie entweder [Azure PowerShell](/powershell/azure/) oder die [Azure-Befehlszeilenschnittstelle (CLI)](/cli/azure/install-azure-cli).
 
-* Für einige Szenarien müssen Sie ein Supportticket öffnen. Es handelt sich um folgende Szenarien:
-
-    * __Arbeitsbereich mit aktiviertem Private Link mit einem kundenseitig verwalteten Schlüssel__
-    * __Azure Container Registry für den Arbeitsbereich hinter Ihrem virtuellen Netzwerk__
-
-    Weitere Informationen finden Sie unter [Verwalten und Erhöhen von Kontingenten](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+* Für einige Szenarien müssen Sie ein Supportticket öffnen. Ein Beispiel wäre etwa die Verwendung eines Arbeitsbereichs mit Private Link-Unterstützung und kundenseitig verwaltetem Schlüssel. Weitere Informationen finden Sie unter [Verwalten und Erhöhen von Kontingenten](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -285,7 +280,7 @@ Wenn Sie den `vnetOption`-Parameterwert entweder auf `new` oder `existing`festle
 Wenn sich ihre zugeordneten Ressourcen nicht hinter einem virtuellen Netzwerk befinden, können Sie den Parameter **privateEndpointType** auf `AutoAproval` oder `ManualApproval` festlegen, um den Arbeitsbereich hinter einem privaten Endpunkt bereitzustellen. Dies kann für neue und vorhandene Arbeitsbereiche erfolgen. Wenn Sie einen vorhandenen Arbeitsbereich aktualisieren, geben Sie die Vorlagenparameter anhand der Informationen aus dem vorhandenen Arbeitsbereich ein.
 
 > [!IMPORTANT]
-> Die Verwendung eines Azure Machine Learning-Arbeitsbereichs mit Private Link ist in den Azure Government- und Azure China 21Vianet-Regionen nicht verfügbar.
+> Die Verwendung eines Azure Machine Learning-Arbeitsbereichs mit privater Verbindung ist in den Regionen vom Typ „Azure Government“ nicht verfügbar.
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azcli)
 

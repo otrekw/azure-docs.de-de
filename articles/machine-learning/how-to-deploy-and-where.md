@@ -12,12 +12,12 @@ ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
 adobe-target: true
-ms.openlocfilehash: da47967b719b5ce601d8049f54597c207ea732c8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: fa68db4bd166ebe1acd1ae85fca2d7e51236a4c4
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372033"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522052"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Bereitstellen von Machine Learning-Modellen für Azure
 
@@ -46,7 +46,7 @@ Weitere Informationen zu den Konzepten, die für den Workflow zur Bereitstellung
 
 - Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
 - Ein Modell. Wenn Sie über kein trainiertes Modell verfügen, können Sie die Modell- und Abhängigkeitsdateien verwenden, die in [diesem Tutorial](https://aka.ms/azml-deploy-cloud) bereitgestellt werden.
-- Das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
+- Das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro).
 
 ---
 
@@ -71,7 +71,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config(path=".file-path/ws_config.json")
 ```
 
-Weitere Informationen zur Verwendung des SDKs, um eine Verbindung mit einem Arbeitsbereich herzustellen, finden Sie in der Dokumentation zum [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true#workspace).
+Weitere Informationen zur Verwendung des SDKs, um eine Verbindung mit einem Arbeitsbereich herzustellen, finden Sie in der Dokumentation zum [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro#workspace).
 
 
 ---
@@ -82,7 +82,7 @@ Weitere Informationen zur Verwendung des SDKs, um eine Verbindung mit einem Arbe
 Ein registriertes Modell ist ein logischer Container für eine oder mehrere Dateien, aus denen Ihr Modell besteht. Wenn Sie beispielsweise ein Modell verwenden, das in mehreren Dateien gespeichert ist, können Sie diese als einzelnes Modell im Arbeitsbereich registrieren. Nachdem Sie die Dateien registriert haben, können Sie das registrierte Modell herunterladen oder bereitstellen und alle Dateien empfangen, die Sie registriert haben.
 
 > [!TIP] 
-> Das Registrieren eines Modells für die Versionsverfolgung wird empfohlen, ist jedoch nicht erforderlich. Wenn Sie den Vorgang fortsetzen möchten, ohne ein Modell zu registrieren, müssen Sie in [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) oder [inferenceconfig.json](./reference-azure-machine-learning-cli.md#inference-configuration-schema) ein Quellverzeichnis angeben und sicherstellen, dass sich Ihr Modell innerhalb dieses Quellverzeichnisses befindet.
+> Das Registrieren eines Modells für die Versionsverfolgung wird empfohlen, ist jedoch nicht erforderlich. Wenn Sie den Vorgang fortsetzen möchten, ohne ein Modell zu registrieren, müssen Sie in [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) oder [inferenceconfig.json](./reference-azure-machine-learning-cli.md#inference-configuration-schema) ein Quellverzeichnis angeben und sicherstellen, dass sich Ihr Modell innerhalb dieses Quellverzeichnisses befindet.
 
 > [!TIP]
 > Wenn Sie ein Modell registrieren, geben Sie den Pfad eines Cloudspeicherorts (aus einem Trainingslauf) oder eines lokalen Verzeichnisses an. Dieser Pfad wird lediglich dazu verwendet, die Dateien während des Registrierungsprozesses für das Hochladen zu finden. Er muss nicht mit dem Pfad identisch sein, der im Eingabeskript verwendet wird. Weitere Informationen finden Sie unter [Suchen nach Modelldateien im Eingabeskript](./how-to-deploy-advanced-entry-script.md#load-registered-models).
@@ -118,7 +118,7 @@ Weitere Informationen zu `az ml model register` finden Sie in der [Referenzdokum
 
 ### <a name="register-a-model-from-an-azure-ml-training-run"></a>Registrieren eines Modells aus einer Azure ML-Trainingsausführung
 
-  Wenn Sie das SDK verwenden, um ein Modell zu trainieren, können Sie entweder ein [Run](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py)-Objekt oder ein [AutoMLRun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun)-Objekt empfangen. Dies hängt davon ab, wie Sie das Modell trainiert haben. Jedes Objekt kann verwendet werden, um ein Modell zu registrieren, das von einer Experimentausführung erstellt wurde.
+  Wenn Sie das SDK verwenden, um ein Modell zu trainieren, können Sie entweder ein [Run](/python/api/azureml-core/azureml.core.run.run)-Objekt oder ein [AutoMLRun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun)-Objekt empfangen. Dies hängt davon ab, wie Sie das Modell trainiert haben. Jedes Objekt kann verwendet werden, um ein Modell zu registrieren, das von einer Experimentausführung erstellt wurde.
 
   + Registrieren Sie ein Modell über ein `azureml.core.Run`-Objekt:
  
@@ -129,7 +129,7 @@ Weitere Informationen zu `az ml model register` finden Sie in der [Referenzdokum
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    Der `model_path`-Parameter verweist auf den Cloudspeicherort des Modells. In diesem Beispiel wird der Pfad einer einzelnen Datei verwendet. Um mehrere Dateien in die Modellregistrierung aufzunehmen, legen Sie `model_path` auf den Pfad eines Ordners fest, der die Dateien enthält. Weitere Informationen finden Sie in der Dokumentation zum [Run.register-Modell](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-).
+    Der `model_path`-Parameter verweist auf den Cloudspeicherort des Modells. In diesem Beispiel wird der Pfad einer einzelnen Datei verwendet. Um mehrere Dateien in die Modellregistrierung aufzunehmen, legen Sie `model_path` auf den Pfad eines Ordners fest, der die Dateien enthält. Weitere Informationen finden Sie in der Dokumentation zum [Run.register-Modell](/python/api/azureml-core/azureml.core.run.run#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-).
 
   + Registrieren Sie ein Modell über ein `azureml.train.automl.run.AutoMLRun`-Objekt:
 
@@ -171,7 +171,7 @@ Sie können ein Modell registrieren, indem Sie den lokalen Pfad des Modells bere
 
   Um mehrere Dateien in die Modellregistrierung aufzunehmen, legen Sie `model_path` auf den Pfad eines Ordners fest, der die Dateien enthält.
 
-Weitere Informationen finden Sie in der Dokumentation zur [Model-Klasse](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py).
+Weitere Informationen finden Sie in der Dokumentation zur [Model-Klasse](/python/api/azureml-core/azureml.core.model.model).
 
 Weitere Informationen zur Arbeit mit Modellen, die außerhalb des Azure Machine Learning trainiert wurden, finden Sie unter [Verwenden eines vorhandenen Modells mit Azure Machine Learning](how-to-deploy-existing-model.md).
 
@@ -227,7 +227,7 @@ inference_config = InferenceConfig(entry_script='path-to-score.py',
 
 Weitere Informationen zu Umgebungen finden Sie unter [Erstellen und Verwalten von Umgebungen für Training und Bereitstellung](how-to-use-environments.md).
 
-Weitere Informationen zur Rückschlusskonfiguration finden Sie in der Dokumentation der [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py)-Klasse.
+Weitere Informationen zur Rückschlusskonfiguration finden Sie in der Dokumentation der [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig)-Klasse.
 
 ---
 
@@ -305,7 +305,7 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-Weitere Informationen finden Sie in der Dokumentation zu [LocalWebservice](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py), [Model.deploy()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) und [Webservice](/python/api/azureml-core/azureml.core.webservice.webservice?preserve-view=true&view=azure-ml-py).
+Weitere Informationen finden Sie in der Dokumentation zu [LocalWebservice](/python/api/azureml-core/azureml.core.webservice.local.localwebservice), [Model.deploy()](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) und [Webservice](/python/api/azureml-core/azureml.core.webservice.webservice).
 
 ---
 
@@ -325,6 +325,14 @@ In der folgenden Tabelle werden die verschiedenen Dienstzustände beschrieben:
 
 > [!TIP]
 > Bei der Bereitstellung werden Docker-Images für Computeziele aus Azure Container Registry (ACR) erstellt und geladen. Standardmäßig erstellt Azure Machine Learning eine ACR-Instanz mit der Dienstebene *Basic*. Wenn Sie die ACR-Instanz für Ihren Arbeitsbereich auf einen der Tarife „Standard“ oder „Premium“ umstellen, kann dies die Zeit zum Erstellen und Bereitstellen von Images auf Ihren Computezielen verringern. Weitere Informationen finden Sie unter [Azure Container Registry-Tarife](../container-registry/container-registry-skus.md).
+
+> [!NOTE]
+> Wenn Sie ein Modell in Azure Kubernetes Service (AKS) bereitstellen, empfehlen wir Ihnen, [Azure Monitor](../azure-monitor/containers/container-insights-enable-existing-clusters.md) für diesen Cluster zu aktivieren. Dadurch können Sie die Gesamtintegrität des Clusters sowie die Ressourcennutzung besser nachvollziehen. Folgende Ressourcen sind unter Umständen ebenfalls hilfreich:
+>
+> * [Überprüfung auf Resource Health-Ereignisse, die sich auf Ihren AKS-Cluster auswirken (Vorschau)](../aks/aks-resource-health.md)
+> * [Übersicht über die Azure Kubernetes Service-Diagnose (Vorschau)](../aks/concepts-diagnostics.md)
+>
+> Wenn Sie versuchen, ein Modell in einem fehlerhaften oder überladenen Cluster bereitzustellen, ist davon auszugehen, dass Probleme auftreten. Sollten Sie Hilfe bei der Behandlung von AKS-Clusterproblemen benötigen, wenden Sie sich an den Support.
 
 ### <a name="batch-inference"></a><a id="azuremlcompute"></a> Batchrückschluss
 Azure Machine Learning Compute-Ziele werden von Azure Machine Learning erstellt und verwaltet. Sie können für Batchvorhersagen über Azure Machine Learning-Pipelines verwendet werden.
@@ -349,7 +357,7 @@ Erfahren Sie mehr über das [Löschen eines Webdiensts](/cli/azure/ext/azure-cli
 Verwenden Sie zum Löschen eines bereitgestellten Webdiensts `service.delete()`.
 Verwenden Sie zum Löschen eines registrierten Modells `model.delete()`.
 
-Weitere Informationen finden Sie in der Dokumentation zu [WebService.delete()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) und [Model.delete()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--).
+Weitere Informationen finden Sie in der Dokumentation zu [WebService.delete()](/python/api/azureml-core/azureml.core.webservice%28class%29#delete--) und [Model.delete()](/python/api/azureml-core/azureml.core.model.model#delete--).
 
 ---
 

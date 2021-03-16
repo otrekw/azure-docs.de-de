@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: bonova, sstein, danil
-ms.date: 02/21/2021
-ms.openlocfilehash: 75fc4166614862c5ac48a72bacb6b7b19019d003
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/08/2021
+ms.openlocfilehash: 8c98ce661e7bb753d4e62d1eaf98702de91c5106
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691908"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489768"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Featurevergleich: Azure SQL-Datenbank und Azure SQL Managed Instance
 
@@ -30,7 +30,11 @@ Azure SQL-Datenbank und SQL Managed Instance nutzen eine gemeinsame Codebasis mi
 - Sicherheitsfunktionen: [Anwendungsrollen](/sql/relational-databases/security/authentication-access/application-roles), [Dynamische Datenmaskierung](/sql/relational-databases/security/dynamic-data-masking) ([weitere Informationen im Leitfaden zu den ersten Schritten](dynamic-data-masking-overview.md)), [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security) sowie Bedrohungserkennung. Weitere Informationen finden Sie in den Leitfäden zu den ersten Schritten für [SQL-Datenbank](threat-detection-configure.md) und [SQL Managed Instance](../managed-instance/threat-detection-configure.md).
 - Funktionen für mehrere Modelle: [Graph-Verarbeitung](/sql/relational-databases/graphs/sql-graph-overview), [JSON-Daten](/sql/relational-databases/json/json-data-sql-server) ([weitere Informationen im Leitfaden zu den ersten Schritten](json-features.md)), [OPENXML](/sql/t-sql/functions/openxml-transact-sql), [Spatial](/sql/relational-databases/spatial/spatial-data-sql-server), [OPENJSON](/sql/t-sql/functions/openjson-transact-sql) und [XML-Indizes](/sql/t-sql/statements/create-xml-index-transact-sql).
 
-Azure verwaltet Ihre Datenbanken und garantiert ihre Hochverfügbarkeit. Einige Features, die sich auf die Hochverfügbarkeit auswirken könnten oder nicht in der PaaS-Welt verwendet werden können, weisen eingeschränkte Funktionen in SQL-Datenbank und SQL Managed Instance auf. Diese Funktionen werden in den folgenden Tabellen beschrieben. Wenn Sie weitere Details zu den Unterschieden benötigen, finden Sie diese auf den separaten Seiten für [Azure SQL-Datenbank](../managed-instance/transact-sql-tsql-differences-sql-server.md) sowie [Azure SQL Managed Instance](../managed-instance/transact-sql-tsql-differences-sql-server.md).
+Azure verwaltet Ihre Datenbanken und garantiert ihre Hochverfügbarkeit. Einige Features, die sich auf die Hochverfügbarkeit auswirken könnten oder nicht in der PaaS-Welt verwendet werden können, weisen eingeschränkte Funktionen in SQL-Datenbank und SQL Managed Instance auf. Diese Funktionen werden in den folgenden Tabellen beschrieben.
+
+Wenn Sie weitere Details zu den Unterschieden benötigen, finden Sie diese auf den separaten Seiten:
+- [Unterschiede bei T-SQL zwischen Azure SQL-Datenbank und SQL Server](transact-sql-tsql-differences-sql-server.md)
+- [Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance](../managed-instance/transact-sql-tsql-differences-sql-server.md)
 
 ## <a name="features-of-sql-database-and-sql-managed-instance"></a>Features von SQL-Datenbank und SQL Managed Instance
 

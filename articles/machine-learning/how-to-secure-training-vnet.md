@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 9a937336e1628add54ab5f52cdd6ef475d463f7d
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 2b264da06cf5088da07ec91cfa40c4babfde4c38
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515987"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102219062"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Schützen einer Azure Machine Learning-Trainingsumgebung mit virtuellen Netzwerken
 
@@ -74,7 +74,7 @@ Wenn Sie ein [verwaltetes Azure Machine Learning-__Computeziel__](concept-comput
 > * Ein Lastenausgleichsmodul
 > 
 > Bei Clustern werden diese Ressourcen jedes Mal, wenn der Cluster auf 0 Knoten herunterskaliert wird, gelöscht (und neu erstellt). Die Ressourcen werden jedoch noch einen Moment lang beibehalten, bis die Instanz vollständig gelöscht ist (durch Beenden werden die Ressourcen nicht entfernt). 
-> Diese Ressourcen werden durch die [Ressourcenkontingente](../azure-resource-manager/management/azure-subscription-service-limits.md) des Abonnements beschränkt. Ist die Ressourcengruppe des virtuellen Netzwerks gesperrt, kann der Computecluster/die Compute-Instanz nicht erfolgreich gelöscht werden. Der Lastenausgleich kann erst nach dem Löschen des Computeclusters/der Compute-Instanz gelöscht werden.
+> Diese Ressourcen werden durch die [Ressourcenkontingente](../azure-resource-manager/management/azure-subscription-service-limits.md) des Abonnements beschränkt. Ist die Ressourcengruppe des virtuellen Netzwerks gesperrt, kann der Computecluster/die Compute-Instanz nicht erfolgreich gelöscht werden. Der Lastenausgleich kann erst nach dem Löschen des Computeclusters/der Compute-Instanz gelöscht werden. Stellen Sie außerdem sicher, dass keine Azure-Richtlinie vorhanden ist, die die Erstellung von Netzwerksicherheitsgruppen verhindert.
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a>Erforderliche Ports
@@ -83,7 +83,7 @@ Wenn Sie planen, das virtuelle Netzwerk zu schützen, indem Sie den Netzwerkverk
 
 Der Batch-Dienst fügt Netzwerksicherheitsgruppen (NSG) auf der Ebene der Netzwerkschnittstellen (NIC) hinzu, die an virtuelle Computer angefügt sind. Diese NSGs konfigurieren automatisch Eingangs- und Ausgangsregeln, um folgenden Datenverkehr zuzulassen:
 
-- Eingehender TCP-Datenverkehr an den Ports 29876 und 29877 aus einem __Diensttag__ von __BatchNodeManagement__.
+- Eingehender TCP-Datenverkehr an den Ports 29876 und 29877 aus einem __Diensttag__ von __BatchNodeManagement__. Datenverkehr über diese Ports wird verschlüsselt und von Azure Batch für die Planer-/Knotenkommunikation verwendet.
 
     ![Eine Regel für eingehenden Datenverkehr, die das BatchNodeManagement-Diensttag verwendet.](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
 
@@ -93,7 +93,7 @@ Der Batch-Dienst fügt Netzwerksicherheitsgruppen (NSG) auf der Ebene der Netzwe
 
 - Ausgehender Datenverkehr an allen Ports zum Internet
 
-- Für eingehenden TCP-Datenverkehr für Computeinstanzen an Port 44224 vom __Diensttag__ von __AzureMachineLearning__.
+- Für eingehenden TCP-Datenverkehr für Computeinstanzen an Port 44224 vom __Diensttag__ von __AzureMachineLearning__. Datenverkehr über diesen Port wird verschlüsselt und von Azure Machine Learning für die Kommunikation mit Anwendungen verwendet, die in Compute-Instanzen ausgeführt werden.
 
 > [!IMPORTANT]
 > Seien Sie vorsichtig, wenn Sie Eingangs- und Ausgangsregeln in von Batch konfigurierten NSGs ändern. Wenn eine NSG die Kommunikation mit den Computeknoten blockiert, legt der Compute-Dienst den Zustand der Computeknoten auf „Nicht verwendbar“ fest.
@@ -171,7 +171,7 @@ Es gibt zwei Möglichkeiten, dies zu erreichen:
 
     * Laden Sie die [Azure-IP-Adressbereiche und Diensttags](https://www.microsoft.com/download/details.aspx?id=56519) herunter, und suchen Sie in der Datei nach `BatchNodeManagement.<region>` und `AzureMachineLearning.<region>`, wobei `<region>` Ihre Azure-Region ist.
 
-    * Laden Sie die Informationen mithilfe der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) herunter. Im folgenden Beispiel werden die IP-Adressinformationen heruntergeladen und die Informationen für die Region „USA, Osten 2“ (primär) und „USA, Mitte“ (sekundär) herausgefiltert:
+    * Laden Sie die Informationen mithilfe der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) herunter. Im folgenden Beispiel werden die IP-Adressinformationen heruntergeladen und die Informationen für die Region „USA, Osten 2“ (primär) und „USA, Mitte“ (sekundär) herausgefiltert:
 
         ```azurecli-interactive
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
@@ -321,9 +321,9 @@ Fügen Sie den virtuellen Computer oder den HDInsight-Cluster an Ihren Azure Mac
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Dieser Artikel ist der dritte Teil einer vierteiligen Serie zu virtuellen Netzwerken. Weitere Informationen zum Schützen eines virtuellen Netzwerks finden Sie in den verbleibenden Artikeln:
+Dieser Artikel ist der dritte Teil einer fünfteiligen Serie zu virtuellen Netzwerken. Weitere Informationen zum Schützen eines virtuellen Netzwerks finden Sie in den verbleibenden Artikeln:
 
 * [Teil 1: Virtuelle Netzwerke im Überblick](how-to-network-security-overview.md)
 * [Teil 2: Schützen von Arbeitsbereichsressourcen](how-to-secure-workspace-vnet.md)
 * [Teil 4: Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)
-* [Teil 5: Verwenden von Studio in einem virtuellen Netzwerk](how-to-enable-studio-virtual-network.md)
+* [Teil 5: Verwenden von Studio in einem virtuellen Netzwerk](how-to-enable-studio-virtual-network.md)

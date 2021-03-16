@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Problembehandlung, Update, Bug, Kinect, Feedback, Wiederherstellung, Protokollierung, Tipps
-ms.openlocfilehash: a6e00b6c5e9e4f82bb668769aade8311896bef32
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 5f13815b8f8b26f6a08da28181a4a6164b7b89a3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587280"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038819"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Bekannte Probleme bei Azure Kinect und Problembehandlung
 
@@ -174,6 +174,10 @@ Die Azure Kinect-Tiefenengine unter Linux verwendet OpenGL. OpenGL erfordert ein
 2. Schalten Sie das System aus, trennen Sie den Monitor, und schalten Sie das System ein. Die automatische Anmeldung erzwingt die Erstellung einer X-Server-Sitzung.
 2. Herstellen einer Verbindung über SSH und Festlegen der DISPLAY-Umgebungsvariablen `export DISPLAY=:0`
 3. Starten Sie Ihre Azure Kinect-Anwendung.
+
+Das Hilfsprogramm [xtrlock](http://manpages.ubuntu.com/manpages/xenial/man1/xtrlock.1x.html) kann verwendet werden, um den Bildschirm nach der automatischen Anmeldung sofort zu sperren. Fügen Sie der Startanwendung oder dem systemd-Dienst den folgenden Befehl hinzu:
+
+`bash -c “xtrlock -b”` 
 
 ## <a name="missing-c-documentation"></a>Fehlende C#-Dokumentation
 

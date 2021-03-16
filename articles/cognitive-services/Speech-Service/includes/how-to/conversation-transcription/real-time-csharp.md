@@ -4,26 +4,26 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/20/2020
 ms.author: trbye
-ms.openlocfilehash: bae83ec446263fe8fad2a7dfb6323051838566ff
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b2a26985170febc62c8a72d62faf8c1cf250c6ea
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486781"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444754"
 ---
 ## <a name="install-the-speech-sdk"></a>Installieren des Speech SDK
 
 Zuallererst muss das Speech SDK installiert werden. Verwenden Sie dazu die folgenden plattformspezifischen Anleitungen:
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet&pivots=programming-language-csharp" target="_blank">.NET Framework <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnetcore&pivots=programming-language-csharp" target="_blank">.NET Core <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=unity&pivots=programming-language-csharp" target="_blank">Unity <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=uwps&pivots=programming-language-csharp" target="_blank">UWP <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=xaml&pivots=programming-language-csharp" target="_blank">Xamarin <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet&pivots=programming-language-csharp" target="_blank">.NET Framework </a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnetcore&pivots=programming-language-csharp" target="_blank">.NET Core </a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=unity&pivots=programming-language-csharp" target="_blank">Unity </a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=uwps&pivots=programming-language-csharp" target="_blank">UWP </a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=xaml&pivots=programming-language-csharp" target="_blank">Xamarin </a>
 
 ## <a name="create-voice-signatures"></a>Erstellen von Stimmsignaturen
 
-Der erste Schritt besteht im Erstellen von Stimmsignaturen für die Teilnehmer der Unterhaltung, damit sie eindeutig als Sprecher erkannt werden können. Die `.wav`-Datei für die Audioeingabe zum Erstellen von Stimmsignaturen sollte in 16-Bit, mit 16-kHz-Abtastrate und im Monoformat (einzelner Kanal) vorliegen. Die empfohlene Länge der einzelnen Audiostichproben liegt zwischen 30 Sekunden und zwei Minuten. Bei der `.wav`-Datei sollte es sich um ein Beispiel für die Stimme **einer Person** handeln, damit ein eindeutiges Sprachprofil erstellt wird.
+Der erste Schritt besteht im Erstellen von Stimmsignaturen für die Teilnehmer der Unterhaltung, damit sie eindeutig als Sprecher erkannt werden können. Die Audioeingabedatei `.wav` zum Erstellen von Stimmsignaturen sollte in 16-Bit, mit einer Abtastrate von 16 kHz und im Monoformat (einzelner Kanal) vorliegen. Die empfohlene Länge der einzelnen Audiostichproben liegt zwischen 30 Sekunden und zwei Minuten. Bei der `.wav`-Datei sollte es sich um ein Beispiel für die Stimme **einer Person** handeln, damit ein eindeutiges Sprachprofil erstellt wird.
 
 Das folgende Beispiel zeigt das Erstellen einer Stimmsignatur [mithilfe der REST-API](https://aka.ms/cts/signaturegenservice) in C#. Beachten Sie, dass Sie `subscriptionKey`, `region` und den Pfad der `.wav`-Beispieldatei durch echte Informationen ersetzen müssen.
 

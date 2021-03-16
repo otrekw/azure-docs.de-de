@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 18b70d60ade7cd40f7ed51aa7c219c8c046abfc3
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 1c2b608107beff2a4f34325f8a6e5be3a0551053
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584740"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051904"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Abrufen einer Antwort mit der GenerateAnswer-API und Metadaten
 
@@ -272,6 +272,44 @@ Sie können mit `isTest=false` die veröffentlichte Wissensdatenbank oder mit `i
   "RankerType":"QuestionOnly"
 }
 ```
+
+## <a name="return-precise-answers"></a>Zurückgeben präziser Antworten
+
+### <a name="generate-answer-api"></a>API zum Generieren von Antworten 
+
+Bei Verwendung der verwalteten QnA Maker-Ressource kann der Benutzer [präzise Antworten](../reference-precise-answering.md) aktivieren. Dafür muss der Parameter „answerSpanRequest“ aktualisiert werden.
+
+```json
+{
+    "question": "How long it takes to charge surface pro 4?",
+    "top": 3,
+    "answerSpanRequest": {
+        "enable": true,
+        "topAnswersWithSpan": 1
+    }
+}
+```
+
+Analog dazu können Benutzer präzise Antworten deaktivieren, indem sie den Parameter „answerSpanRequest“ nicht festlegen.
+
+```json
+{
+    "question": "How long it takes to charge surface pro 4?",
+    "top": 3
+}
+```
+### <a name="bot-settings"></a>Boteinstellungen
+
+Wenn Sie für Ihren Botdienst Einstellungen für präzise Antworten konfigurieren möchten, navigieren Sie zur App Service-Ressource für Ihren Bot. Konfigurieren Sie anschließend die Konfigurationen, indem Sie die folgende Einstellung hinzufügen:
+
+- EnablePreciseAnswer
+- DisplayPreciseAnswerOnly
+
+|Anzeigekonfiguration|EnablePreciseAnswer|DisplayPreciseAnswerOnly|
+|:--|--|--|
+|Nur präzise Antworten|true|true|
+|Nur lange Antworten|false|false|
+|Sowohl lange als auch präzise Antworten|true|false|
 
 ## <a name="common-http-errors"></a>Häufige HTTP-Fehler
 

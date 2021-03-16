@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9abf389eb7f8862440f860c53a0dbd8b10315c67
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: d33634c08b85ad633fdad3f709b2b2182571d7de
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558152"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034760"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Grundlegendes zu Zwillingsmodellen in Azure Digital Twins
 
@@ -65,7 +65,7 @@ Zwischen Eigenschaften und Telemetrie für Azure Digital Twins-Modelle gibt es f
 
 Wenn Sie ein Modell in Azure Digital Twins entwerfen, verwenden Sie deshalb in den meisten Fällen wahrscheinlich **Eigenschaften** zum Modellieren Ihrer Zwillinge. Dies erlaubt Ihnen die Nutzung des Sicherungsspeichers und die Möglichkeit zum Lesen und Abfragen der Datenfelder.
 
-Telemetrie und Eigenschaften arbeiten oft zusammen, um den Dateneingang von Geräten zu verarbeiten. Da der gesamte Eingang bei Azure Digital Twins über [APIs](how-to-use-apis-sdks.md) erfolgt, verwenden Sie normalerweise deren Eingangsfunktion zum Lesen der Telemetrie oder der Eigenschaftsereignisse von Geräten und legen als Reaktion darauf eine Eigenschaft in ADT fest. 
+Telemetrie und Eigenschaften arbeiten oft zusammen, um den Dateneingang von Geräten zu verarbeiten. Da der gesamte Eingang bei Azure Digital Twins über [APIs](how-to-use-apis-sdks.md) abgewickelt wird, verwenden Sie normalerweise deren Eingangsfunktion zum Lesen der Telemetrie oder der Eigenschaftsereignisse von Geräten und legen als Reaktion darauf eine Eigenschaft in Azure Digital Twins fest. 
 
 Sie können ein Telemetrieereignis auch über die Azure Digital Twins-API veröffentlichen. Wie bei anderer Telemetrie handelt es sich dabei um ein kurzlebiges Ereignis, das zur Verarbeitung einen Listener benötigt.
 
@@ -154,11 +154,11 @@ Wenn Sie jedoch viele Modelle hochladen müssen oder viele gegenseitige Abhängi
 
 _**Zum Visualisieren von Modellen**_
 
-Nachdem Sie Modelle in Ihre Azure Digital Twins-Instanz hochgeladen haben, können Sie mithilfe des [**ADT-Modellvisualisierers**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) die Modelle in Ihrer Azure Digital Twins-Instanz, einschließlich jeglicher Vererbungen und Modellbeziehungen anzeigen. Dieses Beispiel befindet sich derzeit in der Entwurfsphase. Die Digital Twins-Entwicklercommunity kann das Beispiel erweitern und dazu beitragen. 
+Nachdem Sie Modelle in Ihre Azure Digital Twins-Instanz hochgeladen haben, können Sie mithilfe des [**Azure Digital Twins-Modellvisualisierers**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) die Modelle in Ihrer Azure Digital Twins-Instanz anzeigen (einschließlich ggf. vorhandener Vererbungen und Modellbeziehungen). Dieses Beispiel befindet sich derzeit in der Entwurfsphase. Die Digital Twins-Entwicklercommunity kann das Beispiel erweitern und dazu beitragen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Hier erfahren Sie mehr über das Erstellen von Modellen basierend auf Branchenstandardontologien: [*Konzepte: Was ist eine Ontologie?* ](concepts-ontologies.md)
+* Hier erfahren Sie mehr über das Erstellen von Modellen basierend auf Branchenstandardontologien: [*Konzepte: Was ist eine Ontologie?*](concepts-ontologies.md)
 
 * Ausführliche Informationen zur Verwaltung von Modellen mit API-Vorgängen: [*Vorgehensweise: Verwalten von DTDL-Modellen*](how-to-manage-model.md)
 

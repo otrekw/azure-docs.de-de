@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 849afe54125588cb7664ee221e4f229e83be8f96
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 4c2d1cd1c73b377d85501fd31d0f5a1893df5183
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185477"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487422"
 ---
 # <a name="camera-placement-guide"></a>Leitfaden zur Kameraplatzierung
 
@@ -72,12 +72,12 @@ Ermitteln Sie anhand der folgenden Tabelle den Abstand der Kamera vom Fokuspunkt
 
 | Kamerahöhe | Kameraabstand (min./max.) |  
 | ------------- | ---------------------------------------- |  
-| 8'            | 10'-13'                                  |  
-| 10'           | 7'-13'                                   |  
-| 12'           | 10'-17'                                  |  
-| 14'           | 11'-18'                                  |  
-| 16'           | 12'-22'                                  |  
-| 20'           | 15'-30'                                  |  
+| 8'            | 4,6'–8'                                  |  
+| 10'           | 5,8'–10'                                 |  
+| 12'           | 7'–12'                                   |  
+| 14'           | 8'–14'                                  |  
+| 16'           | 9,2'–16'                                 |  
+| 20'           | 11,5'–20'                                |  
 
 In der folgenden Abbildung wird die Kameraaufnahme mit dem geringsten und höchsten Kameraabstand simuliert.
 
@@ -91,15 +91,9 @@ In diesem Abschnitt werden akzeptable Montagespielräume für den Kamerawinkel b
 
 ### <a name="line-configuration"></a>Linienanordnung
 
-In der folgenden Tabelle sind die Empfehlungen für Kameras aufgeführt, die für den Vorgang **cognitiveservices.vision.spatialanalysis-personcrossingline** konfiguriert werden. Für die Gesichtsmaskenerkennung beträgt der optimale Winkel für die Kameramontage +/- 30 Grad bei einer Kamerahöhe zwischen acht und zwölf Zoll.
+Für den Vorgang **cognitiveservices.vision.spatialanalysis-personcrossingline** beträgt der optimale Winkel für die Kameramontage +/- 5 Grad, um eine möglichst hohe Genauigkeit zu erzielen.
 
-| Kamerahöhe | Kameraabstand | Optimaler Winkel für die Kameramontage (min./max.) |  
-| ------------- | ------------------------------ | ------------------------------------------ |  
-| 8'            | 9'                             | +/-40°                                     |  
-| 10'           | 10'                            | +/-30°                                     |  
-| 12'           | 13'                            | +/-20°                                     |  
-| 16'           | 18'                            | +/-10°                                     |  
-| 20'           | 22'                            | +/-10°                                     |  
+Für die Gesichtsmaskenerkennung beträgt der optimale Winkel für die Kameramontage +/- 30 Grad bei einer Kamerahöhe zwischen acht und zwölf Zoll.
 
 In der folgenden Abbildung werden Kameraaufnahmen mit den Empfehlungen ganz links (-) und rechts (+) für den Kamerawinkel für den Vorgang **cognitiveservices.vision.spatialanalysis-personcrossingline** gezeigt, um die eintretenden Personen zu zählen.
 
