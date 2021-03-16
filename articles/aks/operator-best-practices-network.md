@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices für virtuelle Netzwerkressourcen und
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: f004e0e78d7a626f878ba3651e4c6078f9cd21e8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2bd332dbf9412f5c42e77b14ada3aab67ec8b66a
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366567"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508587"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Best Practices für Netzwerkkonnektivität und Sicherheit in Azure Kubernetes Service (AKS)
 
@@ -43,11 +43,11 @@ Die Container Networking Interface (CNI) ist ein herstellerneutrales Protokoll, 
 
 Ein beachtlicher Vorteil des Azure CNI-Netzwerks besteht darin, dass das Netzwerkmodell eine Trennung von Steuerung und Verwaltung von Ressourcen ermöglicht. Aus Sicherheitssicht möchten Sie diese Ressourcen oft von verschiedenen Teams verwalten und absichern lassen. Mit Azure CNI-Netzwerken können Sie die Verbindung zu vorhandenen Azure-Ressourcen, lokalen Ressourcen oder anderen Diensten direkt über die jedem Pod zugeordneten IP-Adressen herstellen.
 
-Wenn Sie Azure CNI-Netzwerke verwenden, befindet sich die virtuelle Netzwerkressource in einer vom AKS-Cluster getrennten Ressourcengruppe. Delegieren Sie Berechtigungen für den AKS-Dienstprinzipal, um auf diese Ressourcen zuzugreifen und sie zu verwalten. Der vom AKS-Cluster verwendete Dienstprinzipal muss zumindest über Berechtigungen [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md#network-contributor) für das Subnetz in Ihrem virtuellen Netzwerk verfügen. Wenn Sie eine [benutzerdefinierte Rolle](../role-based-access-control/custom-roles.md) anstelle der integrierten Rolle des Netzwerkmitwirkenden definieren möchten, sind die folgenden Berechtigungen erforderlich:
+Wenn Sie Azure CNI-Netzwerke verwenden, befindet sich die virtuelle Netzwerkressource in einer vom AKS-Cluster getrennten Ressourcengruppe. Delegieren Sie Berechtigungen für die AKS-Clusteridentität, um auf diese Ressourcen zugreifen und sie verwalten zu können. Die vom AKS-Cluster verwendete Clusteridentität muss mindestens Berechtigungen [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md#network-contributor) für das Subnetz in Ihrem virtuellen Netzwerk haben. Wenn Sie eine [benutzerdefinierte Rolle](../role-based-access-control/custom-roles.md) anstelle der integrierten Rolle des Netzwerkmitwirkenden definieren möchten, sind die folgenden Berechtigungen erforderlich:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-Weitere Informationen zur AKS-Dienstprinzipaldelegierung finden Sie unter [Delegieren des Zugriffs auf andere Azure-Ressourcen][sp-delegation]. Anstelle eines Dienstprinzipals können Sie für Berechtigungen auch die vom System zugewiesene verwaltete Identität verwenden. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md).
+Standardmäßig verwendet AKS eine verwaltete Identität für seine Clusteridentität, aber Sie haben die Möglichkeit, stattdessen einen Dienstprinzipal zu verwenden. Weitere Informationen zur AKS-Dienstprinzipaldelegierung finden Sie unter [Delegieren des Zugriffs auf andere Azure-Ressourcen][sp-delegation]. Weitere Informationen zu verwalteten Identitäten finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md).
 
 Da jeder Knoten und Pod seine eigene IP-Adresse erhält, planen Sie die Adressbereiche für die AKS-Subnetze. Das Subnetz muss groß genug sein, um IP-Adressen für jeden Knoten, jeden Pod und jede bereitgestellte Netzwerkressource zu bieten. Jeder AKS-Cluster muss in einem eigenen Subnetz platziert werden. Um die Konnektivität zu lokalen oder Peernetzwerken in Azure zu ermöglichen, sollten Sie keine IP-Adressbereiche verwenden, die sich mit bestehenden Netzwerkressourcen überschneiden. Es gibt Standardbegrenzungen für die Anzahl der Pods, die jeder Knoten in einem kubernet- bzw. Azure CNI-Netzwerk ausführen kann. Um Aufskalierungsereignisse oder Clusterupgrades behandeln zu können, benötigen Sie außerdem zusätzliche IP-Adressen, die für die Verwendung im zugewiesenen Subnetz zur Verfügung stehen. Dieser zusätzliche Adressraum ist besonders wichtig, wenn Sie Windows Server-Container verwenden, da diese Knotenpools ein Upgrade erfordern, damit die neuesten Sicherheitspatches angewendet werden. Weitere Informationen zu Windows Server-Knoten finden Sie unter [Durchführen eines Upgrades für einen Knotenpool in AKS][nodepool-upgrade].
 

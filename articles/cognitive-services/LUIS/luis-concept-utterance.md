@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 96b9754908f437ccf81e002e9e9dd17af0bab4e3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 46004d81756809958e359c2a0b72c143599c2853
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019074"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706757"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Grundlegendes zu geeigneten Äußerungen für Ihre LUIS-App
 
@@ -54,7 +54,7 @@ Sehen Sie sich diese Beispieläußerungen an:
 |Ich möchte einen Computer bekommen, wie gehe ich dazu vor?|
 |Wann kann ich einen Computer bekommen?|
 
-Für den zentralen Begriff („Computer“) sind keine Varianten vorhanden. Verwenden Sie Alternativen wie „Desktopcomputer“, „Laptop“, „Arbeitsstation“ oder sogar nur „Maschine“. LUIS kann diese Synonyme auf intelligente Weise vom Kontext ableiten. Wenn Sie jedoch Äußerungen zum Trainieren erstellen, ist es immer besser, diese zu variieren.
+Für den zentralen Begriff *Computer* sind keine Varianten vorhanden. Verwenden Sie Alternativen wie „Desktopcomputer“, „Laptop“, „Arbeitsstation“ oder sogar nur „Maschine“. LUIS kann diese Synonyme auf intelligente Weise vom Kontext ableiten. Wenn Sie jedoch Äußerungen zum Trainieren erstellen, ist es immer besser, diese zu variieren.
 
 ## <a name="example-utterances-in-each-intent"></a>Beispieläußerungen mit jeder Absicht
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b37277c660562721273ff9ae86dd677ee7ac7d55
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4889744347b72603a0f6318f981bc2db4906b835
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050000"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433538"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Verbinden von Funktions-Apps in Azure für die Verarbeitung von Daten
 
@@ -54,31 +54,16 @@ Nachdem Ihre Funktions-App erstellt wurde, generiert Visual Studio ein Codebeisp
 
 ## <a name="write-a-function-with-an-event-grid-trigger"></a>Schreiben einer Funktion mit einem Event Grid-Trigger
 
-Sie können eine Funktion schreiben, indem Sie das SDK zu Ihrer Funktions-App hinzufügen. Die Funktions-App interagiert mit Azure Digital Twins unter Verwendung des [Azure Digital Twins-SDKs für .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true). 
+Sie können eine Funktion schreiben, indem Sie das SDK zu Ihrer Funktions-App hinzufügen. Die Funktions-App interagiert mit Azure Digital Twins unter Verwendung des [Azure Digital Twins-SDKs für .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client). 
 
-Wenn Sie das SDK verwenden möchten, müssen Sie die folgenden Pakete in Ihr Projekt einbinden. Sie können die Pakete entweder mit dem NuGet-Paket-Manager von Visual Studio installieren oder die Pakete mithilfe von `dotnet` in einem Befehlszeilentool hinzufügen. Führen Sie die folgenden Schritte für Ihre bevorzugte Methode aus.
+Wenn Sie das SDK verwenden möchten, müssen Sie die folgenden Pakete in Ihr Projekt einbinden. Sie können die Pakete entweder mit dem NuGet-Paket-Manager von Visual Studio installieren oder die Pakete mithilfe von `dotnet` in einem Befehlszeilentool hinzufügen.
 
-**Option 1. Pakete mithilfe von Visual Studio-Paket-Manager hinzufügen:**
-    
-Wählen Sie mit der rechten Maustaste das Projekt und in der Liste _NuGet-Pakete verwalten_ aus. Wählen Sie dann in dem sich öffnenden Fenster die Registerkarte _Durchsuchen_ aus, und suchen Sie nach den folgenden Paketen. Wählen Sie _Installieren_ aus, und _akzeptieren_ Sie die Lizenzvereinbarung zur Installation der Pakete.
+* [Azure.DigitalTwins.Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core/)
+* [Azure.Identity](https://www.nuget.org/packages/Azure.Identity/)
+* [System.Net.Http](https://www.nuget.org/packages/System.Net.Http/)
+* [Azure.Core](https://www.nuget.org/packages/Azure.Core/)
 
-* `Azure.DigitalTwins.Core`
-* `Azure.Identity`
-* `System.Net.Http`
-* `Azure.Core.Pipeline`
-
-**Option 2. Hinzufügen von Paketen mit dem `dotnet`Befehlszeilentool:**
-
-Alternativ können Sie die folgenden `dotnet add`-Befehle in einem Befehlszeilentool verwenden:
-
-```cmd/sh
-dotnet add package Azure.DigitalTwins.Core
-dotnet add package Azure.Identity
-dotnet add package System.Net.Http
-dotnet add package Azure.Core.Pipeline
-```
-
-Öffnen Sie als Nächstes in Ihrem Visual Studio-Projektmappen-Explorer die Datei _Function1.cs_, die Beispielcode enthält, und fügen Sie die folgenden `using`-Anweisungen zu Ihrer Funktion hinzu. 
+Öffnen Sie als Nächstes in Ihrem Visual Studio-Projektmappen-Explorer die Datei _Function1.cs_, die den Beispielcode enthält, und fügen Sie Ihrer Funktion die folgenden `using`-Anweisungen für diese Pakete hinzu. 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
@@ -86,7 +71,7 @@ dotnet add package Azure.Core.Pipeline
 
 Sie werden jetzt Variablen auf Klassenebene deklarieren und einen Authentifizierungscode hinzufügen, der der Funktion den Zugriff auf Azure Digital Twins ermöglicht. Sie fügen Ihrer Funktion in der Datei _Function1.cs_ Folgendes hinzu.
 
-* Code zum Lesen der Dienst-URL für Azure Digital Twins als Umgebungsvariable. Es ist eine bewährte Methode, die Dienst-URL aus einer Umgebungsvariablen zu lesen, anstatt für diese die Hartcodierung in der Funktion zu verwenden.
+* Code zum Lesen der Dienst-URL für Azure Digital Twins als **Umgebungsvariable**. Es ist eine bewährte Methode, die Dienst-URL aus einer Umgebungsvariablen auszulesen, anstatt dafür die Hartcodierung in der Funktion zu verwenden. Sie legen den Wert dieser Umgebungsvariablen [weiter unten](#set-up-security-access-for-the-function-app) fest. Weitere Informationen zu Umgebungsvariablen finden Sie unter [*Verwalten Ihrer Funktions-App*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal).
 
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ADT_service_URL":::
 
@@ -116,108 +101,118 @@ Nachdem Sie Ihre Anwendung geschrieben haben, können Sie sie mithilfe der Schri
 
 Sie können den Sicherheitszugriff für die Funktions-App mithilfe der Azure CLI oder des Azure-Portals einrichten. Führen Sie die folgenden Schritte für Ihre bevorzugte Option aus.
 
-### <a name="option-1-set-up-security-access-for-the-function-app-using-cli"></a>Option 1: Einrichten des Sicherheitszugriffs für die Funktions-App mithilfe der CLI
+# <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli)
 
-Das Funktionsgerüst aus früheren Beispielen erfordert, dass ihm ein Bearertoken übergeben wird, um sich bei Azure Digital Twins authentifizieren zu können. Um sicherzustellen, dass dieses Bearertoken übergeben wird, müssen Sie die [verwaltete Dienstidentität (MSI)](../active-directory/managed-identities-azure-resources/overview.md) für die Funktions-App einrichten. Dies muss nur einmal für jede Funktions-App durchgeführt werden.
+Sie können diese Befehle in [Azure Cloud Shell](https://shell.azure.com) oder einer [lokalen Azure CLI-Installation](/cli/azure/install-azure-cli) ausführen.
 
-Sie können eine systemseitig verwaltete Identität erstellen und die Identität der Funktions-App der Rolle _**Azure Digital Twins Data Owner**_ (Azure Digital Twins-Datenbesitzer) für Ihre Azure Digital Twins-Instanz zuweisen. Dadurch erhält die Funktions-App die Berechtigung in der Instanz zum Ausführen von Aktivitäten auf Datenebene. Dann gestalten Sie die URL Ihrer Azure Digital Twins-Instanz für Ihre Funktion zugänglich, indem Sie eine Umgebungsvariable festlegen.
+### <a name="assign-access-role"></a>Zuweisen der Zugriffsrolle
 
-Verwenden Sie [Azure Cloud Shell](https://shell.azure.com), um die Befehle auszuführen.
+Das Funktionsgerüst aus früheren Beispielen erfordert, dass ihm ein Bearertoken übergeben wird, um sich bei Azure Digital Twins authentifizieren zu können. Um sicherzustellen, dass dieses Bearertoken übergeben wird, müssen Sie für die Funktions-App Berechtigungen vom Typ [Verwaltete Dienstidentität (Managed Service Identity, MSI)](../active-directory/managed-identities-azure-resources/overview.md) einrichten, damit der Zugriff auf Azure Digital Twins möglich ist. Dies muss nur einmal für jede Funktions-App durchgeführt werden.
 
-Verwenden Sie den folgenden Befehl, um die vom System verwaltete Identität zu erstellen. Beachten Sie in der Ausgabe das Feld _principalId_.
+Sie können die systemseitig verwaltete Identität der Funktions-App verwenden, um ihr die Rolle _**Azure Digital Twins-Datenbesitzer**_ für Ihre Azure Digital Twins-Instanz zuzuweisen. Dadurch erhält die Funktions-App die Berechtigung in der Instanz zum Ausführen von Aktivitäten auf Datenebene. Dann gestalten Sie die URL Ihrer Azure Digital Twins-Instanz für Ihre Funktion zugänglich, indem Sie eine Umgebungsvariable festlegen.
 
-```azurecli-interactive 
-az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>   
-```
-Verwenden Sie den Wert _principalId_ im folgenden Befehl, um die Identität der Funktions-App der Rolle _Azure Digital Twins Data Owner_ (Azure Digital Twins-Datenbesitzer) für Ihre Azure Digital Twins-Instanz zuzuweisen.
+1. Verwenden Sie den folgenden Befehl, um die Details der systemseitig verwalteten Identität für die Funktion anzuzeigen. Beachten Sie in der Ausgabe das Feld _principalId_.
 
-```azurecli-interactive 
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
-```
-Zuletzt können Sie die URL Ihrer Azure Digital Twins-Instanz für Ihre Funktion zugänglich gestalten, indem Sie eine Umgebungsvariable festlegen. Weitere Informationen zum Festlegen von Umgebungsvariablen finden Sie unter [*Umgebungsvariablen*](/sandbox/functions-recipes/environment-variables). 
+    ```azurecli-interactive 
+    az functionapp identity show -g <your-resource-group> -n <your-App-Service-(function-app)-name> 
+    ```
+
+    >[!NOTE]
+    > Falls die Ergebnisanzeige leer ist und die Details einer Identität nicht angezeigt werden, sollten Sie mit diesem Befehl eine neue systemseitig verwaltete Identität erstellen:
+    > 
+    >```azurecli-interactive    
+    >az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>  
+    >```
+    >
+    > In der Ausgabe werden dann Details zur Identität angezeigt, z. B. der für den nächsten Schritt benötigte Wert für _principalId_. 
+
+1. Verwenden Sie den Wert _principalId_ im folgenden Befehl, um die Identität der Funktions-App der Rolle _Azure Digital Twins Data Owner_ (Azure Digital Twins-Datenbesitzer) für Ihre Azure Digital Twins-Instanz zuzuweisen.
+
+    ```azurecli-interactive 
+    az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
+    ```
+
+### <a name="configure-application-settings"></a>Konfigurieren von Anwendungseinstellungen
+
+Machen Sie die URL Ihrer Azure Digital Twins-Instanz abschließend für Ihre Funktion zugänglich, indem Sie dafür eine **Umgebungsvariable** festlegen. Weitere Informationen zu Umgebungsvariablen finden Sie unter [*Verwalten Ihrer Funktions-App*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). 
 
 > [!TIP]
-> Die URL der Azure Digital Twins-Instanz wird durch Hinzufügen von *https://* an den Anfang des *Hostnamens* der Azure Digital Twins-Instanz erstellt. Um den Hostnamen mit allen Eigenschaften der Instanz anzuzeigen, können Sie `az dt show --dt-name <your-Azure-Digital-Twins-instance>` ausführen.
+> Die URL der Azure Digital Twins-Instanz wird durch das Hinzufügen von *https://* am Anfang des *Hostnamens* der Azure Digital Twins-Instanz erstellt. Um den Hostnamen mit allen Eigenschaften der Instanz anzuzeigen, können Sie Folgendes ausführen: `az dt show --dt-name <your-Azure-Digital-Twins-instance>`.
 
 ```azurecli-interactive 
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-host-name>"
 ```
-### <a name="option-2-set-up-security-access-for-the-function-app-using-azure-portal"></a>Option 2: Einrichten des Sicherheitszugriffs für die Funktions-App mithilfe des Azure-Portals
 
-Azure-Ressourcen können über eine systemseitig zugewiesene verwaltete Identität bei Clouddiensten (z. B. Azure Key Vault) authentifiziert werden, ohne dass Anmeldeinformationen im Code gespeichert werden. Einmal aktiviert, können alle erforderlichen Berechtigungen über die rollenbasierte Zugriffskontrolle von Azure erteilt werden. Der Lebenszyklus dieser Art verwalteter Identitäten ist an den Lebenszyklus dieser Ressource gebunden. Zusätzlich kann jede Ressource (z. B. ein virtueller Computer) nur eine systemseitig zugewiesene verwaltete Identität aufweisen.
+# <a name="azure-portal"></a>[Azure-Portal](#tab/portal)
 
-Suchen Sie im [Azure-Portal](https://portal.azure.com/) in der Suchleiste nach _Funktions-App_ mit dem Namen der Funktions-App, die Sie zuvor erstellt haben. Wählen Sie die *Funktions-App* aus der Liste aus. 
+Führen Sie im [Azure-Portal](https://portal.azure.com/) die folgenden Schritte aus.
 
-:::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Screenshot des Azure-Portals: Der Name der Funktions-App wird in der Suchleiste des Portals gesucht, und das Suchergebnis wird hervorgehoben.":::
+### <a name="assign-access-role"></a>Zuweisen der Zugriffsrolle
 
-Wählen Sie im Fenster der Funktions-App _Identität_ in der linken Navigationsleiste aus, um die verwaltete Identität zu aktivieren.
-Wechseln Sie unter der Registerkarte _Vom System zugewiesen_ den _Status_ zu „Ein“ und _speichern_ Sie ihn dann. Es wird ein Popupfenster angezeigt, in dem Sie die _systemseitig zugewiesene verwaltete Identität aktivieren_.
-Wählen Sie die Schaltfläche _Ja_ aus. 
+Azure-Ressourcen können über eine systemseitig zugewiesene verwaltete Identität bei Clouddiensten (z. B. Azure Key Vault) authentifiziert werden, ohne dass Anmeldeinformationen im Code gespeichert werden. Einmal aktiviert, können alle erforderlichen Berechtigungen über die rollenbasierte Zugriffssteuerung von Azure erteilt werden. Der Lebenszyklus dieser Art verwalteter Identitäten ist an den Lebenszyklus dieser Ressource gebunden. Zusätzlich kann jede Ressource nur eine systemseitig zugewiesene verwaltete Identität aufweisen.
 
-:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Screenshot des Azure-Portals: Auf der Identitätsseite der Funktions-App ist die Option zum Aktivieren der systemseitig zugewiesenen verwalteten Identität auf „Ja“ festgelegt. Die Statusoption ist auf „Ein“ festgelegt.":::
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com/) nach Ihrer Funktions-App, indem Sie in der Suchleiste ihren Namen eingeben. Wählen Sie in den Ergebnissen Ihre App aus. 
 
-Sie können in den Benachrichtigungen überprüfen, ob Ihre Funktion erfolgreich in Azure Active Directory registriert wurde.
+    :::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Screenshot des Azure-Portals: Der Name der Funktions-App wird in der Suchleiste des Portals gesucht, und das Suchergebnis wird hervorgehoben.":::
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Screenshot des Azure-Portals: Die Benachrichtigungsliste, die über das glockenförmige Symbol in der oberen Leiste des Portals ausgewählt wurde. Eine Benachrichtigung wird angezeigt, dass der Benutzer die systemseitig zugewiesene verwaltete Identität aktiviert hat.":::
+1. Wählen Sie auf der Seite der Funktions-App links in der Navigationsleiste die Option _Identität_ aus, um eine verwaltete Identität für die Funktion zu verwenden. Vergewissern Sie sich auf der Seite _Systemseitig zugewiesen_, dass der _Status_ auf **Ein** festgelegt ist. (Wenn nicht, sollten Sie dies nun durchführen und *Speichern* auswählen, um die Änderung zu speichern.)
 
-Beachten Sie auch die auf der Seite _Identität_ gezeigte **Objekt-ID**, da sie im nächsten Abschnitt verwendet wird.
+    :::image type="content" source="media/how-to-create-azure-function/verify-system-managed-identity.png" alt-text="Screenshot des Azure-Portals: Seite „Identität“ für die Funktions-App mit Einstellung von „Status“ auf „Ein“" lightbox="media/how-to-create-azure-function/verify-system-managed-identity.png":::
 
-:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="Screenshot des Azure-Portals: Eine Hervorhebung um das Feld „Objekt-ID“ auf der Identitätsseite der Azure-Funktion":::
+1. Wählen Sie die Schaltfläche _Azure-Rollenzuweisungen_ aus, die die Seite mit den *Azure-Rollenzuweisungen* öffnet.
 
-### <a name="assign-access-roles-using-azure-portal"></a>Zuweisen von Zugriffsrollen mithilfe des Azure-Portals
+    :::image type="content" source="media/how-to-create-azure-function/add-role-assignment-1.png" alt-text="Screenshot des Azure-Portals: Eine Hervorhebung um die Schaltfläche „Azure-Rollenzuweisungen“ unter „Berechtigungen“ auf der Identitätsseite der Azure-Funktion" lightbox="media/how-to-create-azure-function/add-role-assignment-1.png":::
 
-Wählen Sie die Schaltfläche _Azure-Rollenzuweisungen_ aus, die die Seite mit den *Azure-Rollenzuweisungen* öffnet. Wählen Sie dann _+ Rollenzuweisung hinzufügen (Vorschau)_ aus.
+    Wählen Sie die Option _+ Rollenzuweisung hinzufügen (Vorschau)_ aus.
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Screenshot des Azure-Portals: Eine Hervorhebung um die Schaltfläche „Azure-Rollenzuweisungen“ unter „Berechtigungen“ auf der Identitätsseite der Azure-Funktion":::
+    :::image type="content" source="media/how-to-create-azure-function/add-role-assignment-2.png" alt-text="Screenshot des Azure-Portals: Hervorhebung von „+ Rollenzuweisung hinzufügen (Vorschau)“ auf der Seite mit den Azure-Rollenzuweisungen" lightbox="media/how-to-create-azure-function/add-role-assignment-2.png":::
 
-Wählen Sie auf der sich öffnenden Seite _Rollenzuweisung hinzufügen (Vorschau)_ Folgendes aus:
+1. Wählen Sie auf der sich öffnenden Seite _Rollenzuweisung hinzufügen (Vorschau)_ die folgenden Werte aus:
 
-* _Bereich:_ Ressourcengruppe
-* _Abonnement_: Wählen Sie Ihr Azure-Abonnement aus.
-* _Ressourcengruppe_: Wählen Sie Ihre Ressourcengruppe aus der Dropdownliste aus.
-* _Rolle_: Wählen Sie im Dropdownmenü _Azure Digital Twins Data Owner_ (Azure Digital Twins-Datenbesitzer) aus.
+    * **Bereich:** Ressourcengruppe
+    * **Abonnement**: Wählen Sie Ihr Azure-Abonnement aus.
+    * **Ressourcengruppe**: Wählen Sie in der Dropdownliste Ihre Ressourcengruppe aus.
+    * **Rolle**: Wählen Sie im Dropdownmenü die Option _Azure Digital Twins-Datenbesitzer_ aus.
 
-Speichern Sie dann Ihre Details, indem Sie auf die Schaltfläche _Speichern_ klicken.
+    Speichern Sie dann Ihre Details, indem Sie auf die Schaltfläche _Speichern_ klicken.
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Screenshot des Azure-Portals: Dialog zum Hinzufügen einer neuen Rollenzuweisung (Vorschau), einschließlich Felder für den Bereich, das Abonnement, die Ressourcengruppe und die Rolle":::
+    :::image type="content" source="media/how-to-create-azure-function/add-role-assignment-3.png" alt-text="Screenshot des Azure-Portals: Dialog zum Hinzufügen einer neuen Rollenzuweisung (Vorschau), einschließlich Felder für den Bereich, das Abonnement, die Ressourcengruppe und die Rolle":::
 
-### <a name="configure-application-settings-using-azure-portal"></a>Konfigurieren von Anwendungseinstellungen mithilfe des Azure-Portals
+### <a name="configure-application-settings"></a>Konfigurieren von Anwendungseinstellungen
 
-Sie können die URL Ihrer Azure Digital Twins-Instanz für Ihre Funktion zugänglich gestalten, indem Sie eine Umgebungsvariable festlegen. Weitere Informationen hierzu finden Sie unter [*Umgebungsvariablen*](/sandbox/functions-recipes/environment-variables). Anwendungseinstellungen werden als Umgebungsvariablen für den Zugriff auf die Instanz der digitalen Zwillinge verfügbar gemacht. 
+Um die URL Ihrer Azure Digital Twins-Instanz für Ihre Funktion zugänglich zu machen, können Sie dafür eine **Umgebungsvariable** festlegen. Weitere Informationen zu Umgebungsvariablen finden Sie unter [*Verwalten Ihrer Funktions-App*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). Anwendungseinstellungen werden als Umgebungsvariablen für den Zugriff auf die Azure Digital Twins-Instanz verfügbar gemacht. 
 
 Rufen Sie zunächst die URL ab, indem Sie den Hostnamen Ihrer Azure Digital Twins-Instanz suchen, um dann eine Umgebungsvariable mit der URL dieser Instanz festzulegen. Suchen Sie nach Ihrer Instanz in der Suchleiste des [Azure-Portals](https://portal.azure.com). Wählen Sie dann _Übersicht_ in der linken Navigationsleiste aus, um den _Hostnamen_ anzuzeigen. Kopieren Sie diesen Wert.
 
-:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Screenshot des Azure-Portals: Hervorgehobener Wert für den Hostnamen auf der Übersichtsseite für die Instanz von Azure Digital Twins":::
+:::image type="content" source="media/how-to-create-azure-function/instance-host-name.png" alt-text="Screenshot des Azure-Portals: Hervorgehobener Wert für den Hostnamen auf der Übersichtsseite für die Instanz von Azure Digital Twins":::
 
-Sie können jetzt eine Anwendung gemäß den folgenden Schritten erstellen:
+Sie können mit diesen Schritten jetzt eine Anwendungseinstellung erstellen:
 
 1. Suchen Sie in der Suchleiste des Portals nach Ihrer Funktions-App, und wählen Sie sie aus den Ergebnissen aus.
-1. Wählen Sie _Konfiguration_ in der Navigationsleiste links aus, um eine neue Anwendungseinstellung zu erstellen.
-1. Wählen Sie auf der Registerkarte _Anwendungseinstellungen_ die Option _+ Neue Anwendungseinstellung_ aus.
 
-:::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Screenshot des Azure-Portals: Der Name der Funktions-App wird in der Suchleiste des Portals gesucht, und das Suchergebnis wird hervorgehoben.":::
+    :::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Screenshot des Azure-Portals: Der Name der Funktions-App wird in der Suchleiste des Portals gesucht, und das Suchergebnis wird hervorgehoben.":::
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Screenshot des Azure-Portals: Hervorgehobene Schaltfläche zum Erstellen einer neuen Anwendungseinstellung auf der Konfigurationsseite für die Funktions-App":::
+1. Wählen Sie links in der Navigationsleiste die Option _Konfiguration_ aus. Wählen Sie auf der Registerkarte _Anwendungseinstellungen_ die Option _+ Neue Anwendungseinstellung_ aus.
 
-Verwenden Sie in dem sich öffnenden Fenster den oben kopierten Hostnamenwert, um eine Anwendung zu erstellen.
-* **Name**: ADT_SERVICE_URL
-* **Value**: https://{your-azure-digital-twins-host-name}
+    :::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Screenshot des Azure-Portals: Hervorgehobene Schaltfläche zum Erstellen einer neuen Anwendungseinstellung auf der Konfigurationsseite für die Funktions-App":::
 
-Wählen Sie _OK_ aus, um eine Anwendungseinstellung zu erstellen.
+1. Verwenden Sie in dem sich öffnenden Fenster den oben kopierten Hostnamenwert, um eine Anwendung zu erstellen.
+    * **Name**: ADT_SERVICE_URL
+    * **Value**: https://{your-azure-digital-twins-host-name}
+    
+    Wählen Sie _OK_ aus, um eine Anwendungseinstellung zu erstellen.
+    
+    :::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Screenshot des Azure-Portals: Hervorgehobene „OK“-Schaltfläche nach Ausfüllen der Felder „Name“ und „Value“ auf der Seite „Hinzufügen/Bearbeiten“ der Anwendungseinstellung":::
 
-:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Screenshot des Azure-Portals: Hervorgehobene „OK“-Schaltfläche nach Ausfüllen der Felder „Name“ und „Value“ auf der Seite „Hinzufügen/Bearbeiten“ der Anwendungseinstellung":::
+1. Nach dem Erstellen der Einstellung sollte diese auf der Registerkarte _Anwendungseinstellungen_ angezeigt werden. Vergewissern Sie sich, dass *ADT_SERVICE_URL* in der Liste angezeigt wird, und speichern Sie anschließend die neue Anwendungseinstellung, indem Sie die Schaltfläche _Speichern_ auswählen.
 
-Sie können Ihre Anwendungseinstellungen mit Anwendungsnamen unter dem Feld _Name_ anzeigen. Speichern Sie dann Ihre Anwendungseinstellungen, indem Sie die Schaltfläche _Speichern_ auswählen.
+    :::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Screenshot des Azure-Portals: Hervorgehobene Anwendungseinstellungsseite mit neuer ADT_SERVICE_URL-Einstellung. Die Schaltfläche „Speichern“ ist ebenfalls hervorgehoben.":::
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Screenshot des Azure-Portals: Hervorgehobene Anwendungseinstellungsseite mit neuer ADT_SERVICE_URL-Einstellung. Die Schaltfläche „Speichern“ ist ebenfalls hervorgehoben.":::
+1. Bei allen Änderungen der Anwendungseinstellungen muss die Anwendung neu gestartet werden, damit diese wirksam werden. Wählen Sie daher _Weiter_ aus, um Ihre Anwendung neu zu starten, wenn die entsprechende Aufforderung angezeigt wird.
 
-Alle Änderungen an den Anwendungseinstellungen erfordern einen Neustart der Anwendung, um wirksam zu werden. Wählen Sie _Fortsetzen_ aus, um Ihre Anwendung neu zu starten.
+    :::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Screenshot des Azure-Portals: Benachrichtigung, dass für Änderungen an Anwendungseinstellungen ein Neustart Ihrer Anwendung vorgenommen wird. Die Schaltfläche „Weiter“ ist hervorgehoben.":::
 
-:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Screenshot des Azure-Portals: Benachrichtigung, dass für Änderungen an Anwendungseinstellungen ein Neustart Ihrer Anwendung vorgenommen wird. Die Schaltfläche „Weiter“ ist hervorgehoben.":::
-
-Sie können sehen, dass die Anwendungseinstellungen aktualisiert werden, indem Sie das Symbol _Benachrichtigungen_ auswählen. Wenn Ihre Anwendungseinstellung nicht erstellt wurde, können Sie das Hinzufügen einer Anwendungseinstellung erneut versuchen, indem Sie dem obigen Prozess folgen.
-
-:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Screenshot des Azure-Portals: Die Benachrichtigungsliste, die über das glockenförmige Symbol in der oberen Leiste des Portals ausgewählt wurde. Es wird eine Benachrichtigung angezeigt, dass die Web-App-Einstellungen erfolgreich aktualisiert wurden.":::
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

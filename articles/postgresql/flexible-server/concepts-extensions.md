@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 7e9268f69b0ec8d06cd86fe5aec19a46b20a3a76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/05/2021
+ms.openlocfilehash: d223d2c6a83b1389cd70344efdb48c357dda4ac4
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710582"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454584"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL Flexible Server
 
@@ -53,6 +53,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Ser
 > |[ltree](https://www.postgresql.org/docs/12/ltree.html)                        | 1.1             | Datentyp für hierarchische baumähnliche Strukturen|
 > |[pageinspect](https://www.postgresql.org/docs/12/pageinspect.html)                        | 1.7             | Überprüft den Inhalt von Datenbankseiten im Detail|
 > |[pg_buffercache](https://www.postgresql.org/docs/12/pgbuffercache.html)               | 1.3             | Untersuchung des freigegebenen Puffercaches|
+> |[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36)                        | 1.2             | Auftragsplaner für PostgreSQL|
 > |[pg_freespacemap](https://www.postgresql.org/docs/12/pgfreespacemap.html)               | 1.2             | Untersucht Free Space Map (FSM)|
 > |[pg_prewarm](https://www.postgresql.org/docs/12/pgprewarm.html)                   | 1.2             | „Vorwärmung“ von Beziehungsdaten|
 > |[pg_stat_statements](https://www.postgresql.org/docs/12/pgstatstatements.html)           | 1.7             | Nachverfolgung von Ausführungsstatistiken aller ausgeführten SQL-Anweisungen|
@@ -102,6 +103,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Ser
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | Datentyp für hierarchische baumähnliche Strukturen|
 > |[pageinspect](https://www.postgresql.org/docs/11/pageinspect.html)                        | 1.7             | Überprüft den Inhalt von Datenbankseiten im Detail|
 > |[pg_buffercache](https://www.postgresql.org/docs/11/pgbuffercache.html)               | 1.3             | Untersuchung des freigegebenen Puffercaches|
+> |[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36)                        | 1.2             | Auftragsplaner für PostgreSQL|
 > |[pg_freespacemap](https://www.postgresql.org/docs/11/pgfreespacemap.html)               | 1.2             | Untersucht Free Space Map (FSM)|
 > |[pg_prewarm](https://www.postgresql.org/docs/11/pgprewarm.html)                   | 1.2             | „Vorwärmung“ von Beziehungsdaten|
 > |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1.6             | Nachverfolgung von Ausführungsstatistiken aller ausgeführten SQL-Anweisungen|
@@ -130,6 +132,27 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Ser
 
 Es wird empfohlen, die Server mit [VNet-Integration](concepts-networking.md) bereitzustellen, wenn Sie beabsichtigen, diese beiden Erweiterungen zu verwenden. Standardmäßig lässt die VNet-Integration Verbindungen zwischen Servern im VNET zu. Sie können auch [VNet-Netzwerksicherheitsgruppen](../../virtual-network/manage-network-security-group.md) verwenden, um den Zugriff anzupassen.
 
+## <a name="pg_cron"></a>pg_cron
+
+[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36) ist ein einfacher, cron-basierter Auftragsplaner für PostgreSQL, der in der Datenbank als Erweiterung ausgeführt wird. Mithilfe der „pg_cron“-Erweiterung können geplante Wartungstasks in einer PostgreSQL-Datenbank ausgeführt werden. Beispielsweise können Sie eine Tabelle regelmäßig mit „vacuum“ bereinigen oder alte Datenaufträge entfernen.
+
+`pg_cron` kann mehrere Aufträge parallel ausführen, aber jeweils höchstens eine Instanz eines Auftrags. Wenn eine zweite Ausführung gestartet werden soll, bevor die erste Ausführung abgeschlossen wurde, wird die zweite Ausführung in die Warteschlange eingereiht und nach Abschluss der ersten Ausführung gestartet. Dadurch wird sichergestellt, dass Aufträge genau so oft wie geplant und nicht gleichzeitig ausgeführt werden.
+
+Einige Beispiele:
+
+So löschen Sie alte Daten am Samstag um 03:30 Uhr (GMT)
+```
+SELECT cron.schedule('30 3 * * 6', $$DELETE FROM events WHERE event_time < now() - interval '1 week'$$);
+```
+So führen Sie „vacuum“ (zum Bereinigen) täglich um 10:00 Uhr (GMT) aus
+```
+SELECT cron.schedule('0 10 * * *', 'VACUUM');
+```
+
+So heben Sie den Zeitplan für alle Tasks aus „pg_cron“ auf
+```
+SELECT cron.unschedule(jobid) FROM cron.job;
+```
 
 ## <a name="pg_prewarm"></a>pg_prewarm
 

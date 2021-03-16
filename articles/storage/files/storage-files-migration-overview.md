@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4a874e6f1e026a1888b9039799be71c95f040ac6
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 27056f39885949d52c9fcc0d1472033cfc8f9aa0
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202347"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554869"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrieren zu Azure-Dateifreigaben
 
@@ -81,13 +81,12 @@ Für ein Szenario ohne Link wurde derzeit noch kein Migrationsleitfaden veröffe
 | `Source` | Ziel: </br>Hybridbereitstellung | Ziel: </br>Reine Cloudbereitstellung |
 |:---|:--|:--|
 | | Toolkombination:| Toolkombination: |
-| Windows Server 2012 R2 und höher | <ul><li>[Azure-Dateisynchronisierung ](storage-sync-files-deployment-guide.md)</li><li>[Azure-Dateisynchronisierung und Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>[Azure-Dateisynchronisierung und vorab per Seeding hinzugefügte Dateien in der Cloud](storage-sync-offline-data-transfer.md#azure-file-sync-and-pre-seeded-files-in-the-cloud)</li><li>Azure-Dateisynchronisierung und Speichermigrationsdienst</li></ul> | <ul><li>Azure-Dateisynchronisierung</li><li>Azure-Dateisynchronisierung und Data Box</li><li>Azure-Dateisynchronisierung und Speichermigrationsdienst</li><li>RoboCopy</li></ul> |
-| Windows Server 2012 und früher | <ul><li>Azure-Dateisynchronisierung und Data Box</li><li>Azure-Dateisynchronisierung und Speichermigrationsdienst</li></ul> | <ul><li>Azure-Dateisynchronisierung und Speichermigrationsdienst</li><li>RoboCopy</li></ul> |
-| Network Attached Storage (NAS) | <ul><li>[Azure-Dateisynchronisierung und RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
-| Linux oder Samba | <ul><li>[Azure-Dateisynchronisierung und RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
-| Microsoft Azure StorSimple Cloud Appliance 8100 oder StorSimple Cloud Appliance 8600 | <ul><li>[Azure-Dateisynchronisierung und StorSimple Cloud Appliance 8020](storage-files-migration-storsimple-8000.md)</li></ul> | |
-| StorSimple Cloud Appliance 1200 | <ul><li>[Azure-Dateisynchronisierung ](storage-files-migration-storsimple-1200.md)</li></ul> | |
-| | | |
+| Windows Server 2012 R2 und höher | <ul><li>[Azure-Dateisynchronisierung ](storage-sync-files-deployment-guide.md)</li><li>[Azure-Dateisynchronisierung und Azure DataBox](storage-sync-offline-data-transfer.md)</li></ul> | <ul><li>Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe</li><li>Über Azure-Dateisynchronisierung</li></ul> |
+| Windows Server 2012 und früher | <ul><li>Über DataBox und Azure-Dateisynchronisierung zum aktuellen Serverbetriebssystem</li><li>Über den Speichermigrationsdienst auf den zuletzt verwendeten Server mit Azure-Dateisynchronisierung, dann Upload</li></ul> | <ul><li>Über den Speichermigrationsdienst auf den zuletzt verwendeten Server mit Azure-Dateisynchronisierung</li><li>Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe</li></ul> |
+| Network Attached Storage (NAS) | <ul><li>[Über Upload von Azure-Dateisynchronisierung](storage-files-migration-nas-hybrid.md)</li><li>[Über DataBox + Azure-Dateisynchronisierung](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe</li></ul> |
+| Linux/Samba | <ul><li>[Azure-Dateisynchronisierung und RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe</li></ul> |
+| Microsoft Azure StorSimple Cloud Appliance 8100 oder StorSimple Cloud Appliance 8600 | <ul><li>[Über den dedizierten Clouddienst für Datenmigration](storage-files-migration-storsimple-8000.md)</li></ul> | |
+| StorSimple Cloud Appliance 1200 | <ul><li>[Über Azure-Dateisynchronisierung](storage-files-migration-storsimple-1200.md)</li></ul> | |
 
 ## <a name="migration-toolbox"></a>Toolbox für die Migration
 
@@ -120,9 +119,9 @@ In der folgenden Tabelle sind Microsoft-Tools und deren aktuelle Eignung für Az
 |![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | Unterstützt. Azure-Dateifreigaben können als Netzwerklaufwerke eingebunden werden. | Vollständige Genauigkeit* |
 |![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure-Dateisynchronisierung | Nativ in Azure-Dateifreigaben integriert. | Vollständige Genauigkeit* |
 |![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| Speichermigrationsdienst | Indirekt unterstützt. Azure-Dateifreigaben können als Netzwerklaufwerke auf SMS-Zielservern eingebunden werden. | Vollständige Genauigkeit* |
-|![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy, Version 10.4 oder höher| Unterstützt. | Vollständige Genauigkeit* |
-|![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | Unterstützt. | DataBox unterstützt Metadaten jetzt vollständig. [Data Box kann auch in Kombination mit der Azure-Dateisynchronisierung verwendet werden](storage-sync-offline-data-transfer.md). |
-|![Nicht vollständig empfohlen](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage-Explorer, Version 1.14 | Unterstützt. | Kopiert keine Zugriffssteuerungslisten (ACLs). Unterstützt Zeitstempel.  |
+|![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy </br>Version 10.6 | Unterstützt. | Unterstützt nicht das Kopieren der Quellstamm-ACL; andernfalls vollständige Genauigkeit.* </br>[Informieren Sie sich, wie AzCopy bei Azure-Dateifreigaben verwendet wird.](../common/storage-use-azcopy-files.md) |
+|![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | Unterstützt. | DataBox unterstützt Metadaten vollständig. |
+|![Nicht vollständig empfohlen](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage-Explorer </br>Version 1.14 | Unterstützt. | Kopiert keine Zugriffssteuerungslisten (ACLs). Unterstützt Zeitstempel.  |
 |![Nicht empfohlen](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Unterstützt. | Kopiert keine Metadaten. |
 |||||
 
@@ -149,7 +148,7 @@ Die getestete Version des Tools ist Version 4.4.1. Es ist kompatibel mit Dateie
 1. Erstellen Sie einen Plan für die gewünschte Bereitstellung von Azure-Dateifreigaben (nur Cloud oder Hybrid).
 1. Suchen Sie in der Liste der verfügbaren Migrationsleitfäden nach der detaillierten Anleitung, die Ihrer Quelle und Bereitstellung von Azure-Dateifreigaben entspricht.
 
-Weitere Informationen zu den in diesem Artikel erwähnten Azure Files-Technologien finden Sie in den folgenden Artikeln:
+Weitere Informationen zu den in diesem Artikel erwähnten Azure Files-Technologien:
 
 * [Übersicht über Azure-Dateifreigaben](storage-files-introduction.md)
 * [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)

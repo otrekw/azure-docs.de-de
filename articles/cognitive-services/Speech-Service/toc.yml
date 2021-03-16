@@ -61,7 +61,9 @@
           href: how-to-custom-speech-continuous-integration-continuous-deployment.md
         - name: Erstellen von menschenmarkierten Transkriptionen
           href: how-to-custom-speech-human-labeled-transcriptions.md
-    - name: Verweis
+        - name: Lebenszyklus von Modell und Endpunkt
+          href: how-to-custom-speech-model-and-endpoint-lifecycle.md
+    - name: Referenz
       items:
         - name: C++
           displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
@@ -529,6 +531,8 @@
           displayName: 'ACI,azure container instances,container instances,containers'
           maintainContext: true
           href: ../containers/azure-container-instance-recipe.md
+        - name: Häufig gestellte Fragen zu Containern
+          href: speech-container-faq.md
         - name: "Dokumentation zu Cognitive\_Services-Containern"
           href: ../containers/index.yml
 - name: Geräte
@@ -584,7 +588,7 @@
       href: sovereign-clouds.md
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: speech-encryption-of-data-at-rest.md

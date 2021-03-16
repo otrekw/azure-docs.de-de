@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 9a20db58846ca48afb4fb256adae58e1fccdff3a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 15df9b38abe35fe3eefad2fa160e1c1f16fe7aa7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875735"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439458"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -58,14 +58,22 @@ Wenn Sie nicht über eine Rolle verfügen, mit der Berechtigungen für die Verwa
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Wie kann ich vorgehen, wenn ich die benötigten Berechtigungen für die Verwaltungsebene nicht von meinem Administrator erhalten kann?
 
-Wenn Sie auf Blobcontainer oder Warteschlangen zugreifen möchten, können Sie diese Ressourcen mithilfe ihrer Azure-Anmeldeinformationen anfügen.
+Wenn Sie auf Blobcontainer, ADLS Gen2-Container oder -Verzeichnisse oder aber Warteschlangen zugreifen möchten, können Sie diese Ressourcen unter Angabe Ihrer Azure-Anmeldeinformationen anfügen.
 
 1. Öffnen Sie das Dialogfeld „Verbinden“.
-2. Wählen Sie „Ressource über Azure Active Directory (Azure AD) hinzufügen“ aus. Klicken Sie auf Weiter.
-3. Wählen Sie das Benutzerkonto und den Mandanten aus, die der Ressource zugeordnet sind, die angefügt werden soll. Klicken Sie auf Weiter.
-4. Wählen Sie den Ressourcentyp aus, geben Sie die URL für die Ressource ein, und geben Sie einen eindeutigen Anzeigenamen für die Verbindung ein. Wählen Sie „Weiter“ und dann „Verbinden“ aus.
+1. Wählen Sie den Ressourcentyp aus, mit dem Sie eine Verbindung herstellen möchten.
+1. Wählen Sie **Über Azure Active Directory anmelden (Azure AD)** aus. Wählen Sie **Weiter** aus.
+1. Wählen Sie das Benutzerkonto und den Mandanten aus, die der Ressource zugeordnet sind, die angefügt werden soll. Wählen Sie **Weiter** aus.
+1. Geben Sie die URL für die Ressource und dann einen eindeutigen Anzeigenamen für die Verbindung ein. Wählen Sie **Weiter** und dann **Verbinden** aus.
 
-Für andere Ressourcentypen verfügen wir derzeit nicht über eine Azure RBAC-bezogene Lösung. Zur Problemumgehung können Sie einen SAS-URI anfordern, um ihn [an Ihre Ressource anzufügen](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#use-a-shared-access-signature-uri).
+Für andere Ressourcentypen verfügen wir derzeit nicht über eine Azure RBAC-bezogene Lösung. Zur Umgehung dieses Problems können Sie eine SAS-URL anfordern und an Ihre Ressource anfügen, indem Sie die folgenden Schritte ausführen:
+
+1. Öffnen Sie das Dialogfeld „Verbinden“.
+1. Wählen Sie den Ressourcentyp aus, mit dem Sie eine Verbindung herstellen möchten.
+1. Wählen Sie **Shared Access Signature (SAS)** aus. Wählen Sie **Weiter** aus.
+1. Geben Sie die empfangene SAS-URL und dann einen eindeutigen Anzeigenamen für die Verbindung ein. Wählen Sie **Weiter** und dann **Verbinden** aus.
+ 
+Weitere Informationen zum Anfügen an Ressourcen finden Sie unter [Anfügen an eine einzelne Ressource](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#attach-to-an-individual-resource).
 
 ### <a name="recommended-azure-built-in-roles"></a>Empfohlene in Azure integrierte Rollen
 

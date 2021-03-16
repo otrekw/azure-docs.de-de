@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 3c720e2b033d07397f3b13c37e1b4e15251b0a17
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 0bfdea6c0bbbe40e4c72ab9da70a1b16d4bc4d3a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519489"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175667"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Deep Learning- und KI-Frameworks für Azure Data Science VM
 Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
@@ -115,9 +115,9 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 
 | Category | Wert |
 | ------------- | ------------- |
-| Unterstützte Versionen | 1.2.0 (Ubuntu 16.04), 1.4.0 (Ubuntu 18.04, Windows 2019) |
+| Unterstützte Versionen | 1.2.0 (Ubuntu 16.04), 1.7.1 (Ubuntu 18.04, Windows 2019) |
 | Unterstützte DSVM-Editionen      | Windows Server 2019<br>Ubuntu 18.04<br> Ubuntu 16.04 |
-| Konfiguration/Installation auf der DSVM  | Installiert in [Python 3.5](dsvm-tools-languages.md#python-linux-edition). Jupyter-Beispielnotebooks sind im Lieferumfang enthalten, und die Beispiele befinden sich unter „/dsvm/samples/pytorch“. |
+| Konfiguration/Installation auf der DSVM  | Installiert in [Python 3.7](dsvm-tools-languages.md#python-linux-edition) unter der Conda-Umgebung „py37_pytorch“. Jupyter-Beispielnotebooks sind im Lieferumfang enthalten, und die Beispiele befinden sich unter „/dsvm/samples/pytorch“. |
 | Zur Ausführung      | Terminal: Aktivieren Sie die richtige Umgebung, und führen Sie dann Python aus.<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine): Stellen Sie eine Verbindung her, und öffnen Sie dann das PyTorch-Verzeichnis für Beispiele.  |
 
 ## <a name="tensorflow"></a>[TensorFlow](https://www.tensorflow.org/)

@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 8b04119f4a9ff702356f942cec5bebed1e23926b
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: d3aea23c816b9d8b32b0563d3116cdc2b92e080f
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515936"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094300"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Verwalten eines Webdiensts im Azure Machine Learning Studio (klassisch) Web Services-Portal
 
@@ -44,7 +44,7 @@ Wenn die Benutzer nicht über die korrekten Berechtigungen verfügen, um auf Res
 
 Weitere Informationen zum Erstellen eines Arbeitsbereichs finden Sie unter [Erstellen und Freigeben eines (klassischen) Azure Machine Learning Studio-Arbeitsbereichs](create-workspace.md).
 
-Weitere Informationen zu Festlegen von Zugriffsberechtigungen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
+Weitere Informationen zum Festlegen von Zugriffsberechtigungen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 
 ## <a name="manage-new-web-services"></a>Verwalten neuer Webdienste

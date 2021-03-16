@@ -3,18 +3,18 @@ title: Verwalten und Finden von Azure-Blobdaten mit Blobindextags (Vorschau)
 description: Erfahren Sie, wie Sie Blobindextags verwenden, um Blobobjekte zu kategorisieren, zu verwalten und abzufragen.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/19/2020
+ms.date: 03/05/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: 4f84c3c2f6fc671a8cb6ac70313361540e3dd815
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bfaee493c25f882b8beeed565a155db93efd0083
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95523279"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431753"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Verwalten und Finden von Azure-Blobdaten mit Blobindextags (Vorschau)
 
@@ -29,6 +29,9 @@ Blobindextags ermöglichen Ihnen Folgendes:
 
 Stellen Sie sich ein Szenario vor, bei dem Sie über Millionen von Blobs in Ihrem Speicherkonto verfügen, auf die von vielen verschiedenen Anwendungen zugegriffen wird. Sie möchten alle zugehörigen Daten eines einzelnen Projekts finden. Sie sind sich nicht sicher, was alles dazugehört, weil die Daten über mehrere Container mit unterschiedlichen Namenskonventionen verteilt sein können. Alle Daten werden von Ihren Anwendungen aber mit projektabhängigen Tags hochgeladen. Anstatt Millionen von Blobs zu durchsuchen, um Namen und Eigenschaften zu vergleichen, können Sie `Project = Contoso` als Kriterium für die Ermittlung verwenden. Per Blobindex werden alle Container innerhalb Ihres gesamten Speicherkontos gefiltert, um in kürzester Zeit nur die 50 Blobs aus `Project = Contoso` zurückzugeben.
 
+> [!IMPORTANT]
+> Blobindextags befinden sich zurzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+
 Beispiele für den Einstieg in die Verwendung des Blobindex finden Sie unter [Verwenden von Blobindextags (Vorschau) zum Verwalten und Suchen von Daten in Azure Blob Storage](storage-blob-index-how-to.md).
 
 ## <a name="blob-index-tags-and-data-management"></a>Blobindextags und Datenverwaltung
@@ -42,7 +45,6 @@ Gehen wir von den folgenden fünf Blobs in Ihrem Speicherkonto aus:
 - *photos/bannerphoto.png*
 - *archives/completed/2019review.pdf*
 - *logs/2020/01/01/logfile.txt*
-
 
 Diese Blobs werden durch ein Präfix getrennt, das aus *Containername/Name des virtuellen Ordners/Blobname* besteht. Sie können das Indextagattribut `Project = Contoso` für diese fünf Blobs festlegen, um sie derselben Kategorie zuzuweisen, ohne die aktuelle Präfixorganisation zu ändern. Durch das Hinzufügen von Indextags müssen Daten nicht mehr verschoben werden, weil sie über den Index gefiltert und gefunden werden können.
 
@@ -145,7 +147,7 @@ In der Tabelle unten sind die zulässigen Operatoren für bedingte Vorgänge auf
 |     =      |     Gleich     | `"Status" = 'In Progress'` |
 |     <>     |   Ungleich   | `"Status" <> 'Done'` |
 |     >      |  Größer als | `"Date" > '2018-06-18'` |
-|     >=     |  Größer oder gleich | `"Priority" >= '5'` |
+|     >=     |  Größer als oder gleich | `"Priority" >= '5'` |
 |     <      |  Kleiner als   | `"Age" < '32'` |
 |     <=     |  Kleiner als oder gleich  | `"Company" <= 'Contoso'` |
 |    AND     |  Logisches AND  | `"Rank" >= '010' AND "Rank" < '100'` |

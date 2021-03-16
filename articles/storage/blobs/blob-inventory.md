@@ -4,18 +4,18 @@ description: Der Azure Storage-Bestand ist ein Tool, mit dem Sie eine Übersicht
 services: storage
 author: mhopkins-msft
 ms.service: storage
-ms.date: 12/03/2020
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: a41966c2b3ba73d7b68399b1b99d14313e220833
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 7972385ba017059407b994029c37f347b919cad3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257810"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435119"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Verwalten von Blobdaten mit dem Azure Storage-Blobbestand (Vorschau)
 
@@ -24,6 +24,9 @@ Die Funktion Azure Storage-Blobbestand bietet Ihnen eine Übersicht über Ihre B
 ## <a name="availability"></a>Verfügbarkeit
 
 Der Blobbestand wird sowohl für die universelle Version 2 (General Purpose Version, GPv2) als auch für Blockblobspeicher mit Premium-Leistung unterstützt. Diese Funktion wird mit oder ohne aktivierte Funktion [hierarchischer Namespace](data-lake-storage-namespace.md) unterstützt.
+
+> [!IMPORTANT]
+> Der Blobbestand befindet sich zurzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
 ### <a name="preview-regions"></a>Vorschauregionen
 

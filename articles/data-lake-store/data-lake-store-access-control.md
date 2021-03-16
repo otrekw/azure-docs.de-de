@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 48ff32655b107958a3e8e42dbd7de0f405a6fffa
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: aa0da5721c577957b101ac8a2d9346c0536f0a88
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094861"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424137"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Zugriffssteuerung in Azure Data Lake Storage Gen1
 
@@ -286,7 +286,11 @@ Navigieren Sie im Azure-Portal zu **Azure Active Directory > Unternehmensanwendu
 
 ### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Unterstützt Data Lake Storage Gen1 die Vererbung von ACLs?
 
-Nein, aber Standard-ACLs können zum Festlegen von ACLs für untergeordnete Dateien und Ordner verwendet werden, die unter dem übergeordneten Ordner neu erstellt wurden.  
+Nein, aber Standard-ACLs können zum Festlegen von ACLs für untergeordnete Dateien und Ordner verwendet werden, die unter dem übergeordneten Ordner neu erstellt wurden.
+
+### <a name="what-are-the-limits-for-acl-entries-on-files-and-folders"></a>Was sind die Grenzwerte für ACL-Einträge in Dateien und Ordnern?
+
+Pro Datei und pro Verzeichnis können 32 ACLs festgelegt werden. Für Zugriffs- und Standard-ACLs gilt jeweils ein eigener Zugriffsgrenzwert von 32 ACLs. Verwenden Sie nach Möglichkeit Sicherheitsgruppen für ACL-Zuweisungen. Durch die Verwendung von Gruppen ist es weniger wahrscheinlich, dass Sie die maximale Anzahl von ACL-Einträgen pro Datei oder Verzeichnis überschreiten.
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Wo finde ich weitere Informationen zum POSIX-Zugriffssteuerungsmodell?
 

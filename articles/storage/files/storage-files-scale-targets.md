@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6ef255d78d3dd3ff6fcc5eba7aad522018185299
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: ffc5f49e357591b41a18ae15c5551c1f447095fb
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518894"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440308"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über die SMB- und NFS-Dateisystemprotokolle zugegriffen werden kann. Dieser Artikel behandelt die Skalierbarkeits- und Leistungsziele für Azure Files und Azure-Dateisynchronisierung.
@@ -126,10 +126,21 @@ Wenn Sie die Bereitstellung für jede der Phasen planen, sehen Sie sich im Folge
 | Durchsatz beim Download von Namespaces | 400 Objekte pro Sekunde |
 
 ### <a name="initial-one-time-provisioning"></a>Erste einmalige Bereitstellung
+
 **Anfängliche Enumeration von Cloudänderungen**: Wenn eine neue Synchronisierungsgruppe erstellt wird, ist die anfängliche Enumeration von Cloudänderungen der erste durchgeführte Schritt. In diesem Prozess listet das System alle Elemente in der Azure-Dateifreigabe auf. Während dieses Prozesses findet keine Synchronisierungsaktivität statt. Es werden also keine Elemente vom Cloudendpunkt auf den Serverendpunkt heruntergeladen und keine Elemente vom Serverendpunkt auf den Cloudendpunkt hochgeladen. Die Synchronisierungsaktivität beginnt erst, wenn die anfängliche Enumeration von Cloudänderungen abgeschlossen ist.
 Der Durchsatz liegt bei 20 Objekten pro Sekunde. Kunden können die Dauer der anfänglichen Enumeration von Cloudänderungen schätzen, indem sie die Anzahl von Elementen in der Cloudfreigabe bestimmen und den Zeitraum (in Tagen) anhand der folgenden Formel berechnen. 
 
    **Zeitraum (in Tagen) für die anfängliche Cloudenumeration = (Anzahl von Objekten am Cloudendpunkt) / (20 × 60 × 60 × 24)**
+
+**Erstsynchronisierung von Daten von Windows Server mit der Azure-Dateifreigabe**: Viele Bereitstellungen einer Azure-Dateisynchronisierung beginnen mit einer leeren Azure-Dateifreigabe, weil alle Daten auf dem Windows-Server gespeichert sind. In diesen Fällen ist die anfängliche Enumeration von Cloudänderungen schnell, und der Großteil der Zeit wird für die Synchronisierung von Änderungen vom Windows-Server in die Azure-Dateifreigabe(n) benötigt. 
+
+Obwohl die Synchronisierung Daten in die Azure-Dateifreigabe hochlädt, gibt es auf dem lokalen Dateiserver keine Ausfallzeiten, und Administratoren können [Netzwerklimits einrichten](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-registration#set-azure-file-sync-network-limits), um die für das Hochladen von Hintergrunddaten beanspruchte Bandbreite einzuschränken.
+
+Die Erstsynchronisierung wird normalerweise durch die anfängliche Uploadrate von 20 Dateien pro Sekunde pro Synchronisierungsgruppe begrenzt. Kunden können die Dauer schätzen, bis alle ihre Daten in Azure hochgeladen sind, und den Zeitraum (in Tagen) anhand der folgenden Formel berechnen:  
+
+   **Zeitraum (in Tagen) zum Hochladen von Dateien in eine Synchronisierungsgruppe = (Anzahl von Objekten am Cloudendpunkt)/(20 * 60 * 60 * 24)**
+
+Wenn Sie Ihre Daten in mehrere Serverendpunkte und Synchronisierungsgruppen aufteilen, kann dieser anfängliche Datenupload beschleunigt werden, weil der Upload für mehrere Synchronisierungsgruppen mit einer Rate von jeweils 20 Elementen pro Sekunde parallel durchgeführt werden kann. Zwei Synchronisierungsgruppen würden also mit einer kombinierten Rate von 40 Elementen pro Sekunde ausgeführt. Die Gesamtzeit bis zum Abschluss wäre die geschätzte Zeit für die Synchronisierungsgruppe mit den meisten Dateien, die synchronisiert werden sollen.
 
 **Durchsatz beim Download von Namespaces**: Wenn einer vorhandenen Synchronisierungsgruppe ein neuer Serverendpunkt hinzugefügt wird, lädt der Azure-Dateisynchronisierungs-Agent keine Dateiinhalte vom Cloudendpunkt herunter. Zuerst synchronisiert er den vollständigen Namespace und löst dann im Hintergrund einen Rückruf aus, um die Dateien herunterzuladen, entweder in ihrer Gesamtheit oder bei aktiviertem Cloudtiering in der Cloudtieringrichtliniengruppe für den Serverendpunkt.
 

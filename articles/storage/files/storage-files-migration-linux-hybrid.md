@@ -7,14 +7,23 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: f95585237bbee743083b855dd78cc850c4daffe8
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: ff26318cafdf493579961fc718643f831ae9efeb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202687"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564253"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migration von Linux zu einer Hybrid-Cloud-Bereitstellung mit der Azure-Dateisynchronisierung
+
+Dieser Artikel zur Migration ist einer von mehreren Artikeln im Zusammenhang mit den Schlüsselwörtern „NFS“ und „Azure-Dateisynchronisierung“. Überprüfen Sie, ob dieser Artikel für Ihr Szenario zutrifft:
+
+> [!div class="checklist"]
+> * Datenquelle: Network Attached Storage (NAS)
+> * Migrationsroute: Linux-Server mit SAMBA &rArr; Windows Server 2012R2 oder höher &rArr;-Synchronisierung mit Azure-Dateifreigabe(n)
+> * Lokales Zwischenspeichern von Dateien: Ja, das endgültige Ziel ist eine Bereitstellung einer Azure-Dateisynchronisierung.
+
+Wenn Ihr Szenario anders ist, sehen Sie sich die [Tabelle mit Migrationsleitfäden](storage-files-migration-overview.md#migration-guides) an.
 
 Die Azure-Dateisynchronisierung arbeitet auf Windows Server-Instanzen mit direkt angeschlossenem Speicher. Die Synchronisierung mit und von Linux-Clients, SMB-Remotefreigaben (Server Message Block) oder NFS-Freigaben (Network File System) wird nicht unterstützt.
 
@@ -22,13 +31,13 @@ Wenn Sie Ihre Dateidienste in eine Hybridbereitstellung umwandeln, wird daher ei
 
 ## <a name="migration-goals"></a>Migrationsziele
 
-Das Ziel besteht darin, Freigaben auf Ihrem Linux-Samba-Server auf eine Windows Server-Instanz zu verschieben. Anschließend soll die Azure-Dateisynchronisierung für eine Hybrid Cloud-Bereitstellung verwendet werden. Diese Migration muss auf eine Weise erfolgen, die die Integrität der Produktionsdaten und die Verfügbarkeit während der Migration gewährleistet. Letzteres erfordert minimale Ausfallzeiten, damit sie in normalen Wartungsfenstern stattfinden kann oder diese nur geringfügig überschreitet.
+Das Ziel besteht darin, Freigaben auf Ihrem Linux-Samba-Server auf eine Windows Server-Instanz zu verschieben. Anschließend soll die Azure-Dateisynchronisierung für eine Hybrid Cloud-Bereitstellung verwendet werden. Diese Migration muss so erfolgen, dass die Integrität der Produktionsdaten und die Verfügbarkeit während der Migration gewährleistet wird. Letzteres erfordert minimale Ausfallzeiten, damit sie in normalen Wartungsfenstern stattfinden kann oder diese nur geringfügig überschreitet.
 
 ## <a name="migration-overview"></a>Übersicht zur Migration
 
 Wie im [Artikel mit der Migrationsübersicht](storage-files-migration-overview.md) zu Azure Files beschrieben wird, ist es wichtig, das richtige Kopiertool und den richtigen Ansatz zu verwenden. Ihr Linux-Samba-Server macht SMB-Freigaben direkt in Ihrem lokalen Netzwerk verfügbar. Das in Windows Server integrierte Tool Robocopy bietet die beste Methode, Ihre Dateien in diesem Migrationsszenario zu verschieben.
 
-Wenn Sie Samba nicht auf Ihrem Linux-Server ausführen und stattdessen Ordner zu einer Hybridbereitstellung unter Windows Server migrieren möchten, können Sie anstelle von Robocopy die Linux-Kopiertools verwenden. In diesem Fall sollten Sie die Genauigkeitsfunktionen Ihres Tools zum Kopieren von Dateien beachten. Lesen Sie den Abschnitt über [Grundlagen zur Migration](storage-files-migration-overview.md#migration-basics) im Artikel zur Übersicht über die Migration, um zu erfahren, worauf Sie bei einem Kopiertool achten müssen.
+Wenn Sie Samba nicht auf Ihrem Linux-Server ausführen und stattdessen Ordner zu einer Hybridbereitstellung unter Windows Server migrieren möchten, können Sie anstelle von Robocopy die Linux-Kopiertools verwenden. Beachten Sie die Genauigkeitsfunktionen Ihres Kopiertools. Lesen Sie den Abschnitt über [Grundlagen zur Migration](storage-files-migration-overview.md#migration-basics) im Artikel zur Übersicht über die Migration, um zu erfahren, worauf Sie bei einem Kopiertool achten müssen.
 
 ## <a name="phase-1-identify-how-many-azure-file-shares-you-need"></a>Phase 1: Ermitteln der Anzahl der benötigten Azure-Dateifreigaben
 
@@ -39,11 +48,13 @@ Wenn Sie Samba nicht auf Ihrem Linux-Server ausführen und stattdessen Ordner zu
 * Erstellen Sie eine Instanz von Windows Server 2019 als virtuellen Computer oder physischen Server. Es ist mindestens Windows Server 2012 R2 erforderlich. Ein Windows Server-Failovercluster wird ebenfalls unterstützt.
 * Stellen Sie einen direkt angeschlossenen Speicher bereit, oder fügen Sie ihn hinzu. Network Attached Storage (NAS) wird nicht unterstützt.
 
-  Die bereitgestellte Speichermenge kann kleiner sein als jene, die Sie zurzeit auf Ihrem Linux-Samba-Server verwenden, wenn Sie das [Cloudtiering](storage-sync-cloud-tiering-overview.md)-Feature der Azure-Dateisynchronisierung verwenden. Wenn Sie jedoch Ihre Dateien in einer späteren Phase aus dem größeren Linux-Samba-Serverbereich in das kleinere Windows Server-Volume kopieren, müssen Sie in Batches arbeiten:
+  Die bereitgestellte Speichermenge kann kleiner sein als jene, die Sie zurzeit auf Ihrem Linux-Samba-Server verwenden, wenn Sie das [Cloudtiering](storage-sync-cloud-tiering-overview.md)-Feature der Azure-Dateisynchronisierung verwenden. 
+
+Die von Ihnen bereitgestellte Speichermenge kann kleiner sein als diejenige, die Sie zurzeit auf Ihrem Linux-Samba-Server verwenden. Diese Konfigurationsoption erfordert, dass Sie auch das Feature [Cloudtiering](storage-sync-cloud-tiering-overview.md) der Azure-Dateisynchronisierung nutzen. Wenn Sie jedoch Ihre Dateien in einer späteren Phase aus dem größeren Linux-Samba-Serverbereich in das kleinere Windows Server-Volume kopieren, müssen Sie in Batches arbeiten:
 
   1. Verschieben Sie eine Dateimenge, die auf den Datenträger passt.
   2. Lassen Sie die Dateisynchronisierung und das Cloudtiering interagieren.
-  3. Wenn mehr freier Speicherplatz auf dem Volume geschaffen wurde, fahren Sie mit dem nächsten Dateibatch fort. 
+  3. Wenn mehr freier Speicherplatz auf dem Volume geschaffen wurde, fahren Sie mit dem nächsten Dateibatch fort. Überprüfen Sie alternativ den RoboCopy-Befehl im [Abschnitt „RoboCopy“](#phase-7-robocopy) weiter unten zur Verwendung des neuen Switches `/LFSM`. Die Verwendung von `/LFSM` kann Ihre RoboCopy-Aufträge erheblich vereinfachen, ist aber mit einigen anderen RoboCopy-Switches nicht kompatibel, von denen Sie möglicherweise abhängig sind.
     
   Sie können diesen Batchverarbeitungsansatz vermeiden, indem Sie auf der Windows Server-Instanz den entsprechenden Speicherplatz bereitstellen, den Ihre Dateien auf dem Linux-Samba-Server belegen. Aktivieren Sie die Deduplizierung unter Windows. Wenn Sie diese große Menge an Speicher nicht dauerhaft auf Ihre Windows Server-Instanz übertragen möchten, können Sie die Volumegröße nach der Migration und vor der Anpassung der Cloudtieringrichtlinien verringern. Dadurch wird ein kleinerer lokaler Cache Ihrer Azure-Dateifreigaben erstellt.
 
@@ -100,78 +111,9 @@ Mit dem folgenden Robocopy-Befehl werden Dateien vom Speicher Ihres Linux-Samba-
 
 Wenn Sie auf Ihrer Windows Server-Instanz weniger Speicher bereitgestellt haben als Ihre Daten auf dem Linux-Samba-Server verwenden, haben Sie Cloudtiering konfiguriert. Wenn das lokale Windows Server-Volume voll ist, beginnt das [Cloudtiering](storage-sync-cloud-tiering-overview.md) für die Dateien, die bereits erfolgreich synchronisiert wurden. Durch das Cloudtiering wird ausreichend Speicherplatz generiert, um mit dem Kopiervorgang vom Linux-Samba-Server fortzufahren. Einmal pro Stunde wird überprüft, was bereits im Cloudtiering synchronisiert wurde, und Speicherplatz freigegeben, um auf dem Volume einen freien Speicherplatz von 99 % zu erreichen.
 
-Robocopy verschiebt die Dateien möglicherweise zu schnell für den Synchronisierungsvorgang mit der Cloud und führt dann ein lokales Tiering durch. Dadurch kann der Speicherplatz auf dem lokalen Datenträger knapp werden. Robocopy führt dann zu einem Fehler. Es wird empfohlen, die Freigaben nacheinander abzuarbeiten, um dieses Problem zu verhindern. Beispielsweise sollten Sie nicht für alle Freigaben gleichzeitig Robocopy-Aufträge starten. Sie können auch Freigaben verschieben, für die der aktuell freie Speicherplatz auf der Windows Server-Instanz ausreicht. Wenn der Robocopy-Auftrag zu einem Fehler führt, können Sie den Befehl jederzeit erneut ausführen, sofern Sie die folgende Option zum Spiegeln/Löschen verwenden:
+Robocopy verschiebt die Dateien möglicherweise zu schnell für den Synchronisierungsvorgang mit der Cloud und führt dann ein lokales Tiering durch. Dadurch kann der Speicherplatz auf dem lokalen Datenträger knapp werden. Robocopy führt dann zu einem Fehler. Es wird empfohlen, die Freigaben nacheinander abzuarbeiten, um dieses Problem zu verhindern. Beispielsweise sollten Sie nicht für alle Freigaben gleichzeitig Robocopy-Aufträge starten. Sie können auch Freigaben verschieben, für die der aktuell freie Speicherplatz auf der Windows Server-Instanz ausreicht. Falls Ihr Robocopy-Auftrag fehlschlägt, können Sie den Befehl jederzeit erneut ausführen, wenn Sie die folgende Option zum Spiegeln/Bereinigen verwenden:
 
-```console
-Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
-```
-
-Hintergrund:
-
-:::row:::
-   :::column span="1":::
-      /MT
-   :::column-end:::
-   :::column span="1":::
-      Ermöglicht Robocopy die Multithread-Ausführung. Der Standardwert ist 8, der Höchstwert ist 128.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /UNILOG:\<file name\>
-   :::column-end:::
-   :::column span="1":::
-      Gibt den Status als Unicode in die Protokolldatei aus (überschreibt das vorhandene Protokoll).
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /TEE
-   :::column-end:::
-   :::column span="1":::
-      Ausgabe an ein Konsolenfenster. Wird in Verbindung mit der Ausgabe in eine Protokolldatei verwendet.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /B
-   :::column-end:::
-   :::column span="1":::
-      Führt Robocopy in dem Modus aus, den auch eine Sicherungsanwendung verwenden würde. Diese Option ermöglicht Robocopy, Dateien zu verschieben, für die der aktuelle Benutzer keine Berechtigungen hat.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /MIR
-   :::column-end:::
-   :::column span="1":::
-      Ermöglicht, diesen Robocopy-Befehl mehrmals auf demselben Ziel auszuführen. Dabei werden die bereits kopierten Daten erkannt und ausgelassen. Es werden nur Änderungen, Ergänzungen und Löschungen verarbeitet, die seit der letzten Ausführung aufgetreten sind. Wenn der Befehl noch nicht ausgeführt wurde, wird nichts ausgelassen. Das Flag **/MIR** ist eine hervorragende Option für Quellspeicherorte, die weiterhin aktiv verwendet werden und Änderungen unterliegen.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPY:Kopierflag[s]
-   :::column-end:::
-   :::column span="1":::
-      Genauigkeit der Dateikopie (Standard: „/COPY:DAT“). Kopierflags: D = Daten, A = Attribute, T = Zeitstempel, S = Sicherheit = NTFS-ACLs, O = Eigentümerinformationen, U = Überprüfungsinformationen
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPYALL
-   :::column-end:::
-   :::column span="1":::
-      Kopieren aller Dateiinformationen (äquivalent zu „/COPY:DATSOU“)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /DCOPY:Kopierflag[s]
-   :::column-end:::
-   :::column span="1":::
-      Genauigkeit für Kopien von Verzeichnissen (Standard: „/DCOPY:DA“). Kopierflags: D = Daten, A = Attribute, T = Zeitstempel
-   :::column-end:::
-:::row-end:::
+[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
 ## <a name="phase-8-user-cut-over"></a>Phase 8: Benutzerübernahme
 

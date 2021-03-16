@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 548d936538a909da10796d0377f119826582c420
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 7d58a8239c728f70efe3584c2649e196dffd791f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616058"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501089"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Kopieren und Verschieben von Custom Vision-Projekten
 
@@ -31,6 +31,7 @@ Wenn Ihre App oder Ihr Unternehmen von der Verwendung eines Custom Vision-Projek
 - Zwei Azure Custom Vision-Ressourcen. Wenn Sie diese nicht haben, wechseln Sie zum Azure-Portal und [erstellen Sie eine neue Custom Vision-Ressource](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true).
 - Die Trainingsschlüssel und Endpunkt-URLs Ihrer Custom Vision-Ressourcen. Sie finden diese Werte im Azure-Portal auf der Registerkarte **Übersicht** für die Ressource.
 - Ein erstelltes Custom Vision-Projekt. Anweisungen dazu finden Sie unter [Erstellen einer Klassifizierung](./getting-started-build-a-classifier.md).
+* [PowerShell ab Version 6.0](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows) oder ein ähnliches Befehlszeilentool
 
 ## <a name="process-overview"></a>Übersicht über den Prozess
 
@@ -139,5 +140,5 @@ Sie erhalten eine `200/OK`-Antwort mit Metadaten zu Ihrem neu importierten Proje
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Anleitung haben Sie erfahren, wie Sie ein Projekt zwischen Custom Vision-Ressourcen kopieren und verschieben. Sehen Sie sich als Nächstes die API-Referenzdokumentation an, um sich über weitere Möglichkeiten bei Verwendung von Custom Vision zu informieren.
+In diesem Leitfaden wurde beschrieben, wie Sie ein Projekt zwischen Custom Vision-Ressourcen kopieren und verschieben. Sehen Sie sich als Nächstes die API-Referenzdokumentation an, um sich über weitere Möglichkeiten bei der Verwendung von Custom Vision zu informieren.
 * [Referenzdokumentation zur Rest-API](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)

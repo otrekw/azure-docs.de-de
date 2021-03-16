@@ -7,21 +7,30 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 2d531edeeae9e0dd7e392cae66d9e4d41c68dfa2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 86e79302716fa502d8562dd563b0a5c5fb220a67
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882262"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547549"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrieren von Network Attached Storage (NAS) zu einer Hybrid Cloud-Bereitstellung mit der Azure-Dateisynchronisierung
+
+Dieser Artikel zur Migration ist einer von mehreren Artikeln im Zusammenhang mit den Schlüsselwörtern „NAS“ und „Azure-Dateisynchronisierung“. Überprüfen Sie, ob dieser Artikel für Ihr Szenario zutrifft:
+
+> [!div class="checklist"]
+> * Datenquelle: Network Attached Storage (NAS)
+> * Migrationsroute: NAS &rArr; Windows-Server&rArr; Upload und-Synchronisierung mit Azure-Dateifreigabe(n)
+> * Lokales Zwischenspeichern von Dateien: Ja, das endgültige Ziel ist eine Bereitstellung einer Azure-Dateisynchronisierung.
+
+Wenn Ihr Szenario anders ist, sehen Sie sich die [Tabelle mit Migrationsleitfäden](storage-files-migration-overview.md#migration-guides) an.
 
 Die Azure-Dateisynchronisierung funktioniert an Standorten mit direkt angeschlossenem Speicher (Direct Attached Storage, DAS) und unterstützt keine Synchronisierung mit Standorten mit netzwerkverbundenem Speicher (Network Attached Storage, NAS).
 Dadurch wird eine Migration Ihrer Dateien notwendig, und dieser Artikel führt Sie durch die Planung und Ausführung einer solchen Migration.
 
 ## <a name="migration-goals"></a>Migrationsziele
 
-Das Ziel besteht darin, Freigaben auf Ihrem NAS-Gerät auf einen Windows-Server zu verschieben. Anschließend soll die Azure-Dateisynchronisierung für eine Hybrid Cloud-Bereitstellung verwendet werden. Diese Migration muss auf eine Weise erfolgen, die die Integrität der Produktionsdaten und die Verfügbarkeit während der Migration gewährleistet. Letzteres erfordert minimale Ausfallzeiten, damit sie in normalen Wartungsfenstern stattfinden kann oder diese nur geringfügig überschreitet.
+Das Ziel besteht darin, Freigaben auf Ihrem NAS-Gerät auf einen Windows-Server zu verschieben. Anschließend soll die Azure-Dateisynchronisierung für eine Hybrid Cloud-Bereitstellung verwendet werden. Migrationen müssen allgemein so durchgeführt werden, dass die Integrität der Produktionsdaten und die Verfügbarkeit während der Migration gewährleistet ist. Letzteres erfordert minimale Ausfallzeiten, damit sie in normalen Wartungsfenstern stattfinden kann oder diese nur geringfügig überschreitet.
 
 ## <a name="migration-overview"></a>Übersicht zur Migration
 
@@ -45,14 +54,14 @@ Wie im [Artikel mit der Migrationsübersicht](storage-files-migration-overview.m
 * Erstellen Sie einen Server mit Windows Server 2019 (oder mindestens 2012 R2) als virtuellen Computer oder physischen Server. Ein Windows Server-Failovercluster wird ebenfalls unterstützt.
 * Stellen Sie direkt angeschlossenen Speicher (DAS, im Gegensatz zum nicht unterstützten NAS) bereit, oder fügen Sie ihn hinzu.
 
-    Die Menge an Speicher, die Sie bereitstellen, kann kleiner sein als jene, die Sie zurzeit auf Ihrer NAS-Appliance verwenden, wenn Sie das [Cloudtiering](storage-sync-cloud-tiering.md)-Feature der Azure-Dateisynchronisierung verwenden.
+    Die von Ihnen bereitgestellte Speichermenge kann kleiner sein als diejenige, die Sie zurzeit auf Ihrer NAS-Appliance verwenden. Diese Konfigurationsoption erfordert, dass Sie auch das Feature [Cloudtiering](storage-sync-cloud-tiering-overview.md) der Azure-Dateisynchronisierung nutzen.
     Wenn Sie jedoch Ihre Dateien aus dem größeren NAS-Bereich in einer späteren Phase auf das kleinere Windows Server-Volume kopieren, müssen Sie in Batches arbeiten:
 
     1. Verschieben Sie einen Satz von Dateien, die auf den Datenträger passen.
     2. Lassen Sie die Datei-Synchronisierung und Cloudtiering interagieren.
-    3. Wenn mehr freier Speicherplatz auf dem Volume erstellt wurde, fahren Sie mit dem nächsten Batch von Dateien fort. 
+    3. Wenn mehr freier Speicherplatz auf dem Volume erstellt wurde, fahren Sie mit dem nächsten Batch von Dateien fort. Überprüfen Sie alternativ den RoboCopy-Befehl im [Abschnitt „RoboCopy“](#phase-7-robocopy) weiter unten zur Verwendung des neuen Switches `/LFSM`. Die Verwendung von `/LFSM` kann Ihre RoboCopy-Aufträge erheblich vereinfachen, ist aber mit einigen anderen RoboCopy-Switches nicht kompatibel, von denen Sie möglicherweise abhängig sind.
     
-    Sie können diesen Batchverarbeitungsansatz vermeiden, indem Sie auf dem Windows-Server den entsprechenden Speicherplatz bereitstellen, den Ihre Dateien auf der NAS-Appliance belegen. Ziehen Sie die Deduplizierung unter NAS/Windows in Betracht. Wenn Sie diese große Menge an Speicher nicht dauerhaft auf Ihren Windows-Server übertragen möchten, können Sie die Volumegröße nach der Migration und vor der Anpassung der Cloudtiering-Richtlinien verringern. Dadurch wird ein kleinerer lokaler Cache Ihrer Azure-Dateifreigaben erstellt.
+    Sie können diesen Batchverarbeitungsansatz vermeiden, indem Sie auf dem Windows-Server den entsprechenden Speicherplatz bereitstellen, den Ihre Dateien auf der NAS-Appliance belegen. Ziehen Sie die Deduplizierung unter NAS/Windows in Betracht. Wenn Sie diese große Menge an Speicher nicht dauerhaft auf Ihren Windows-Server übertragen möchten, können Sie die Volumegröße nach der Migration und vor dem Anpassen der Cloudtieringrichtlinien verringern. Dadurch wird ein kleinerer lokaler Cache Ihrer Azure-Dateifreigaben erstellt.
 
 Die Ressourcenkonfiguration (Compute und RAM) der von Ihnen bereitgestellten Windows Server-Instanz hängt größtenteils von der Anzahl der Elemente (Dateien und Ordner) ab, die synchronisiert werden sollen. Wenn Sie Bedenken haben, empfiehlt es sich, eine leistungsstärkere Konfiguration zu verwenden.
 
@@ -105,79 +114,10 @@ Erstellen Sie die erste lokale Kopie in Ihrem Windows Server-Zielordner:
 
 Mit dem folgenden RoboCopy-Befehl werden Dateien aus Ihrem NAS-Speicher in den Windows Server-Zielordner kopiert. Der Windows-Server synchronisiert diesen Ordner mit den Azure-Dateifreigaben. 
 
-Wenn Sie auf Ihrer Windows Server-Instanz weniger Speicher bereitgestellt haben, als ihre Daten auf der NAS-Appliance verwenden, haben Sie Cloudtiering konfiguriert. Wenn das lokale Windows Server-Volume voll ist, beginnt das [Cloudtiering](storage-sync-cloud-tiering.md) von Dateien, die bereits erfolgreich synchronisiert wurden. Durch das Cloudtiering wird ausreichend Speicherplatz generiert, um mit dem Kopieren von der NAS-Appliance fortzufahren. Einmal pro Stunde wird überprüft, was bereits im Cloudtiering synchronisiert wurde, und Speicherplatz freigegeben, um auf dem Volume einen freien Speicherplatz von 99 % zu erreichen.
+Wenn Sie auf Ihrer Windows Server-Instanz weniger Speicher bereitgestellt haben, als ihre Daten auf der NAS-Appliance verwenden, haben Sie Cloudtiering konfiguriert. Wenn das lokale Windows Server-Volume voll ist, beginnt das [Cloudtiering](storage-sync-cloud-tiering-overview.md) von Dateien, die bereits erfolgreich synchronisiert wurden. Durch das Cloudtiering wird ausreichend Speicherplatz generiert, um mit dem Kopieren von der NAS-Appliance fortzufahren. Einmal pro Stunde wird überprüft, was bereits im Cloudtiering synchronisiert wurde, und Speicherplatz freigegeben, um auf dem Volume einen freien Speicherplatz von 99 % zu erreichen.
 Es ist möglich, dass RoboCopy Dateien schneller verschiebt, als Sie lokal mit der Cloud und der Ebene synchronisieren können. Dann wird der lokale Speicherplatz auf dem Datenträger knapp. RoboCopy schlägt fehl. Es wird empfohlen, dass Sie die Freigaben in einer Sequenz durcharbeiten, die dies verhindert. Beispielsweise können Sie RoboCopy-Aufträge versetzt anstatt gleichzeitig für alle Freigaben starten oder nur Freigaben verschieben, die auf den aktuellen Umfang des freien Speicherplatzes auf dem Windows-Server zugeschnitten sind, um nur einige Möglichkeiten zu nennen.
 
-```console
-Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
-```
-
-Hintergrund:
-
-:::row:::
-   :::column span="1":::
-      /MT
-   :::column-end:::
-   :::column span="1":::
-      Ermöglicht RoboCopy die Multithread-Ausführung. Der Standardwert ist 8, der Höchstwert 128.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /UNILOG:\<file name\>
-   :::column-end:::
-   :::column span="1":::
-      Gibt den Status als UNICODE in die LOG-Datei aus (überschreibt vorhandenes Protokoll).
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /TEE
-   :::column-end:::
-   :::column span="1":::
-      Ausgabe an das Konsolenfenster. Wird in Verbindung mit der Ausgabe in eine Protokolldatei verwendet.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /B
-   :::column-end:::
-   :::column span="1":::
-      Führt RoboCopy in dem Modus aus, den auch eine Sicherungsanwendung verwenden würde. Diese Option ermöglicht RoboCopy, Dateien zu verschieben, für die der aktuelle Benutzer keine Berechtigungen hat.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /MIR
-   :::column-end:::
-   :::column span="1":::
-      Ermöglicht, diesen RoboCopy-Befehl mehrmals auf demselben Ziel auszuführen. Dabei werden die bereits kopierten Daten erkannt und ausgelassen. Es werden nur Änderungen, Ergänzungen und „*Löschungen*“ verarbeitet, die seit der letzten Ausführung aufgetreten sind. Wenn der Befehl noch nicht ausgeführt wurde, wird nichts ausgelassen. Das Flag */MIR* ist eine hervorragende Option für Quellspeicherorte, die weiterhin aktiv verwendet werden und Änderungen unterliegen.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPY:Kopierflag[s]
-   :::column-end:::
-   :::column span="1":::
-      Genauigkeit der Dateikopie (Standard: „/COPY:DAT“), Kopierflags: D = Daten, A = Attribute, T = Zeitstempel, S = Sicherheit = NTFS-ACLs, O = Eigentümerinformationen, U = Überprüfungsinformationen
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPYALL
-   :::column-end:::
-   :::column span="1":::
-      Kopieren aller Dateiinformationen (äquivalent zu „/COPY:DATSOU“)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /DCOPY:Kopierflag[s]
-   :::column-end:::
-   :::column span="1":::
-      Genauigkeit für Kopien von Verzeichnissen (Standard: „/DCOPY:DA“), Kopierflags: D = Daten, A = Attribute, T = Zeitstempel
-   :::column-end:::
-:::row-end:::
+[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
 ## <a name="phase-8-user-cut-over"></a>Phase 8: Benutzerübernahme
 
@@ -196,7 +136,7 @@ Beim zweiten Mal wird der Vorgang schneller abgeschlossen, da nur Änderungen, d
 
 Wiederholen Sie diesen Vorgang, bis Sie der Auffassung sind, dass die bis zum Abschluss eines RoboCopy-Vorgangs für einen bestimmten Speicherort benötigte Zeit ein akzeptables Ausfallzeitfenster darstellt.
 
-Wenn Sie die Ausfallzeit als akzeptabel betrachten und bereit sind, den NAS-Speicherort offline zu schalten: Um den Benutzerzugriff offline zu schalten, haben Sie die Möglichkeit, die ACLs im Freigabestamm so zu ändern, dass Benutzer keinen Zugriff mehr auf den Speicherort haben. Oder Sie führen einen anderen geeigneten Schritt aus können, der das Ändern von Inhalten in diesem Ordner auf Ihrem NAS verhindert.
+Wenn die Ausfallzeit für Sie akzeptabel ist, müssen Sie den Benutzerzugriff auf Ihre NAS-basierten Freigaben aufheben. Dazu können Sie jeden beliebigen Schritt ausführen, mit dem Benutzer daran gehindert werden, die Datei- und Ordnerstruktur sowie den Inhalt zu ändern. Ein Beispiel hierfür: Ihr DFS-Namespace verweist auf einen nicht vorhandenen Speicherort, oder Sie ändern die Stamm-ACLs auf der Freigabe.
 
 Führen Sie einen letzten RoboCopy-Durchgang aus. Dadurch werden alle Änderungen übernommen, die möglicherweise ausgelassen wurden.
 Wie lange dieser letzte Schritt dauert, hängt von der Geschwindigkeit des RoboCopy-Scans ab. Sie können die Zeit (gleich der Ausfallzeit) schätzen, indem Sie messen, wie lange die vorherige Ausführung gedauert hat.
@@ -208,13 +148,13 @@ Sie haben die Migration einer Freigabe/Gruppe von Freigaben zu einem gemeinsamen
 Sie können einige dieser Kopiervorgänge parallel ausführen. Es wird empfohlen, jeweils eine Azure-Dateifreigabe auf einmal zu verarbeiten.
 
 > [!WARNING]
-> Nachdem Sie alle Daten aus NAS auf den Windows-Server verschoben haben und die Migration abgeschlossen ist, gehen Sie wie folgt vor: Kehren Sie zu ***allen** _ Synchronisierungsgruppen im Azure-Portal zurück, und passen Sie den Wert für den freien Speicherplatz auf dem Cloudtieringvolume auf einen Wert an, der für die Cachenutzung besser geeignet ist, z. B. 20 %. 
+> Nachdem Sie alle Daten aus Ihrem NAS auf den Windows-Server verschoben haben und die Migration abgeschlossen ist, gehen Sie wie folgt vor: Kehren Sie zu ***allen*** Synchronisierungsgruppen im Azure-Portal zurück, und passen Sie den Wert für den freien Speicherplatz auf dem Cloudtieringvolume auf einen Wert an, der für die Cachenutzung etwas besser geeignet ist, z. B. „20 %“. 
 
 Die Richtlinie für den freien Speicherplatz für das Cloudtiering wirkt sich auf eine Volumeebene aus, von der aus potenziell mehrere Serverendpunkte synchronisiert werden. Wenn Sie vergessen, den freien Speicherplatz auf einem Serverendpunkt anzupassen, wird für die Synchronisierung weiterhin die restriktivste Regel angewandt, und es wird versucht, 99 % freien Speicherplatz beizubehalten. Der lokale Cache funktioniert in diesem Fall nicht wie erwartet. Dies ist nur dann erstrebenswert, wenn Sie lediglich den Namespace für ein Volume erhalten möchten, das ausschließlich selten genutzte Archivdaten enthält, und Sie den restlichen Speicherplatz für ein anderes Szenario reservieren.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
-Das häufigste Problem, auf das Sie stoßen können, besteht darin, dass der RoboCopy-Befehl mit dem Fehler _„Volume voll“* auf Windows Server-Seite beendet wird. Das Cloudtiering wird einmal stündlich eingesetzt, um Inhalte vom lokalen Windows Server-Datenträger abzurufen, die bereits synchronisiert wurden. Das Ziel besteht darin, den freien Speicherplatz von 99 % auf dem Volume zu erreichen.
+Das häufigste Problem, auf das Sie stoßen können, besteht darin, dass der RoboCopy-Befehl mit dem Fehler *Volume voll* auf Windows Server-Seite beendet wird. Das Cloudtiering wird einmal stündlich eingesetzt, um Inhalte vom lokalen Windows Server-Datenträger abzurufen, die bereits synchronisiert wurden. Das Ziel besteht darin, den freien Speicherplatz von 99 % auf dem Volume zu erreichen.
 
 Warten Sie, bis durch den Synchronisierungsvorgang und das Cloudtiering Speicherplatz freigegeben wurde. Sie können dies im Datei-Explorer auf Ihrem Windows-Server beobachten.
 
@@ -224,7 +164,7 @@ Unter dem Link im folgenden Abschnitt finden Sie Informationen zur Problembehand
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Machen Sie sich weiter mit Azure-Dateifreigaben und der Azure-Dateisynchronisierung vertraut. In den folgenden Artikeln werden erweiterte Optionen, bewährte Methoden und auch Hilfe zur Problembehandlung erläutert. Diese Artikel sind mit der entsprechenden [Dokumentation zur Azure-Dateifreigabe](storage-files-introduction.md) verlinkt.
+Machen Sie sich weiter mit Azure-Dateifreigaben und der Azure-Dateisynchronisierung vertraut. In den folgenden Artikeln werden erweiterte Optionen, bewährte Methoden und auch Ansätze zur Problembehandlung erläutert. Diese Artikel sind mit der entsprechenden [Dokumentation zur Azure-Dateifreigabe](storage-files-introduction.md) verlinkt.
 
 * [AFS-Übersicht](./storage-sync-files-planning.md)
 * [AFS-Bereitstellungshandbuch](./storage-how-to-create-file-share.md)

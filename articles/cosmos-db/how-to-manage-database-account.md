@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 01/06/2021
 ms.author: mjbrown
-ms.openlocfilehash: d8763a794d2fb96d0c464fb1249b9eb400fd23e7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d542e2b4e5db86fd3354514790e718f0694a09a5
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339868"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489751"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Verwalten eines Azure Cosmos-Kontos
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -69,7 +69,7 @@ Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Regionen 
 
 ### <a name="azure-portal"></a><a id="configure-multiple-write-regions-portal"></a>Azure-Portal
 
-Öffnen Sie die Registerkarte **Daten global replizieren** , und wählen Sie **Aktivieren** aus, um Schreibvorgänge für mehrere Regionen zu aktivieren. Nachdem Sie Schreibvorgänge für mehrere Regionen aktiviert haben, werden alle Leseregionen, die aktuell in Ihrem Konto konfiguriert sind, zu Lese- und Schreibregionen.
+Öffnen Sie die Registerkarte **Daten global replizieren**, und wählen Sie **Aktivieren** aus, um Schreibvorgänge für mehrere Regionen zu aktivieren. Nachdem Sie Schreibvorgänge für mehrere Regionen aktiviert haben, werden alle Leseregionen, die aktuell in Ihrem Konto konfiguriert sind, zu Lese- und Schreibregionen.
 
 :::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Screenshot eines Azure Cosmos-Kontos mit Schreibvorgängen in mehreren Regionen":::
 
@@ -153,7 +153,7 @@ Die Option für automatisches Failover ermöglicht Azure Cosmos DB das Failover 
 
    :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menü „Daten global replizieren“":::
 
-3. Vergewissern Sie sich im Bereich **Automatisches Failover** , dass **Automatisches Failover aktivieren** auf **EIN** festgelegt ist. 
+3. Vergewissern Sie sich im Bereich **Automatisches Failover**, dass **Automatisches Failover aktivieren** auf **EIN** festgelegt ist. 
 
 4. Wählen Sie **Speichern** aus.
 
@@ -182,7 +182,7 @@ Nachdem ein Cosmos-Konto für automatisches Failover konfiguriert wurde, kann di
 
    :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menü „Daten global replizieren“":::
 
-3. Vergewissern Sie sich im Bereich **Automatisches Failover** , dass **Automatisches Failover aktivieren** auf **EIN** festgelegt ist.
+3. Vergewissern Sie sich im Bereich **Automatisches Failover**, dass **Automatisches Failover aktivieren** auf **EIN** festgelegt ist.
 
 4. Ziehen Sie zum Ändern der Failoverpriorität die Leseregionen mithilfe der drei Punkte, die auf der linken Seite der Zeile angezeigt werden, wenn Sie darauf zeigen.
 
@@ -206,7 +206,7 @@ Weitere Informationen finden Sie unter [Festlegen der Failoverpriorität mit Pow
 Der Prozess zum Ausführen eines manuellen Failovers beinhaltet das Ändern der Schreibregion des Kontos (Failoverpriorität = 0) in eine andere für das Konto konfigurierte Region.
 
 > [!NOTE]
-> Für Konten mit mehreren Schreibregionen kann kein manuelles Failover ausgeführt werden. Für Anwendungen, die das Azure Cosmos SDK verwenden, erkennt das SDK die eingetretene Nichtverfügbarkeit einer Region und leitet dann automatisch zur nächstgelegenen Region um, wenn die Multi-Homing-API im SDK verwendet wird.
+> Für Konten mit mehreren Schreibregionen kann kein manuelles Failover ausgeführt werden. Bei Anwendungen, die das Azure Cosmos-SDK verwenden, erkennt das SDK die eingetretene Nichtverfügbarkeit einer Region und leitet dann automatisch zur nächstgelegenen Region um.
 
 ### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure-Portal
 

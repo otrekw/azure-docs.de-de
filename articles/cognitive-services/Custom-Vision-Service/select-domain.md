@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 2259d0114d91af2e688df66ff8dc4e8d293c2b03
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 0b1358f67e2b10078e24168bdb779cd708ac2403
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624832"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095662"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Auswählen einer Domäne für ein Custom Vision-Projekt
 
@@ -37,7 +37,7 @@ Auf der Registerkarte „Einstellungen“ Ihres Custom Vision-Projekt können Si
 |Domain|Zweck|
 |---|---|
 |__Allgemein__| Für eine Vielzahl von Aufgaben der Objekterkennung optimiert. Wenn keine der anderen Domänen geeignet erscheint oder Sie unsicher sind, welche Domäne Sie wählen sollen, verwenden Sie die allgemeine Domäne. ID: `da2e3a8a-40a5-4171-82f4-58522f70fbc1`|
-|__General [A1]__ (Allgemein [A1])| Diese ist optimiert für eine bessere Genauigkeit mit vergleichbarer Rückschlusszeit wie die allgemeine Domäne. Sie wird für genauere Anforderungen an die Region, größere Datasets oder schwierigere Benutzerszenarios empfohlen. Diese Domäne erfordert mehr Trainingszeit, und die Ergebnisse sind nicht deterministisch. Sie können einen mAP-Unterschied (Mean Average Precision, Präzision des gewogenen Mittelwerts) von +-1 % mit denselben bereitgestellten Trainingsdaten erwarten. ID: `9c616dff-2e7d-ea11-af59-1866da359ce6`|
+|__General [A1]__ (Allgemein [A1])| Diese ist optimiert für eine bessere Genauigkeit mit vergleichbarer Rückschlusszeit wie die allgemeine Domäne. Sie wird für genauere Anforderungen an die Region, größere Datasets oder schwierigere Benutzerszenarios empfohlen. Diese Domäne erfordert mehr Trainingszeit, und die Ergebnisse sind nicht deterministisch. Bei Verwendung der gleichen Trainingsdaten ist mit einem mAP-Unterschied (Mean Average Precision, Präzision des gewogenen Mittelwerts) von +-1 % zu rechnen. ID: `9c616dff-2e7d-ea11-af59-1866da359ce6`|
 |__Logo__|Für die Suche nach Markenlogos in Bildern optimiert. ID: `1d8ffafe-ec40-4fb2-8f90-72b3b6cecea4`|
 |__Produkte in Regalen__|Für die Erkennung und Klassifizierung von Produkten in Regalen optimiert. ID: `3780a898-81c3-4516-81ae-3a139614e1f3`|
 |__Kompaktdomänen__| Für die Bedingungen der Echtzeitobjekterkennung auf Edgegeräten optimiert.|

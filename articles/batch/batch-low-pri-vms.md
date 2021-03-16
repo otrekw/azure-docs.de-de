@@ -3,14 +3,14 @@ title: Ausführen von Workloads auf kostengünstigen VMs mit niedriger Prioritä
 description: Erfahren Sie, wie Sie VMs mit niedriger Priorität bereitstellen, um die Kosten von Azure Batch-Workloads zu verringern.
 author: mscurrell
 ms.topic: how-to
-ms.date: 02/02/2021
+ms.date: 03/03/2021
 ms.custom: seodec18
-ms.openlocfilehash: 9214ef83ec9b8bef4fb7bc7489aa0ab388f67c0d
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: cafc7216e8112640f823ecee1aea055ab78b3fc6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507271"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098467"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Verwenden von VMs mit niedriger Priorität mit Batch
 
@@ -25,9 +25,9 @@ VMs mit niedriger Priorität werden im Vergleich zu dedizierten VMs zu einem deu
 > [!NOTE]
 > [Spot-VMs](https://azure.microsoft.com/pricing/spot/) sind jetzt für [VMs mit einer einfachen Instanz](../virtual-machines/spot-vms.md) und [VM-Skalierungsgruppen](../virtual-machine-scale-sets/use-spot.md) verfügbar. Spot-VMs sind eine Weiterentwicklung von VMs mit niedriger Priorität, unterscheiden sich aber dadurch, dass die Preise variieren können und bei der Zuweisung von Spot-VMs ein optionaler Maximalpreis festgelegt werden kann.
 >
-> Azure Batch-Pools unterstützen in wenigen Monaten Spot-VMs und sind dann mit neuen Versionen der [Batch-APIs und -Tools](./batch-apis-tools.md) allgemein verfügbar. Sobald die Unterstützt für Spot-VMs verfügbar ist, werden VMs mit niedriger Priorität für mindestens 12 Monate weiterhin unterstützt, indem die aktuellen API- und Toolversionen verwendet werden, damit ausreichend Zeit für die Migration zu Spot-VMs bleibt.
+>Azure Batch-Pools beginnen in Zukunft mit der Unterstützung von Spot-VMs mit neuen Versionen der [Batch-APIs und -Tools](./batch-apis-tools.md). Nachdem die Unterstützung für Spot-VMs verfügbar ist, werden VMs mit niedriger Priorität für mindestens 12 Monate weiterhin unterstützt, indem die aktuellen API- und Toolversionen verwendet werden, damit ausreichend Zeit für die Migration zu Spot-VMs bleibt.
 >
-> Spot-VMs werden für [Clouddienstkonfigurations](/rest/api/batchservice/pool/add#cloudserviceconfiguration)-Pools nicht unterstützt. Um Spot-VMs verwenden zu können, müssen Clouddienstpools zu [VM-Konfigurations](/rest/api/batchservice/pool/add#virtualmachineconfiguration)pools migriert werden.
+> Spot-VMs werden nur für VM-Konfigurationspools unterstützt. Um Spot-VMs verwenden zu können, müssen Clouddienst-Konfigurationspools [zu VM-Konfigurationspools migriert](batch-pool-cloud-service-to-virtual-machine-configuration.md) werden.
 
 ## <a name="batch-support-for-low-priority-vms"></a>Unterstützung von VMs mit niedriger Priorität in Batch
 

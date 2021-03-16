@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 6cb083e823583105f04aaa59a99357b2b2b2426b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 639bed3dcd8f3f443b73f51efb60e7c8aeaa00a0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034053"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504217"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -25,7 +25,7 @@ Dieser Artikel veranschaulicht die Verwendung von *kubenet*-Netzwerken zum Erste
 * Das virtuelle Netzwerk des AKS-Clusters muss ausgehende Internetkonnektivität zulassen.
 * In einem Subnetz sollte nicht mehr als ein AKS-Cluster erstellt werden.
 * AKS-Cluster dürfen für den Adressbereich des Kubernetes-Diensts, den Adressbereich für den Pod oder den Adressbereich für das virtuelle Clusternetzwerk nicht `169.254.0.0/16`, `172.30.0.0/16`, `172.31.0.0/16` oder `192.0.2.0/24` verwenden.
-* Der vom AKS-Cluster verwendete Dienstprinzipal muss zumindest über die Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md#network-contributor) für das Subnetz in Ihrem virtuellen Netzwerk verfügen. Sie müssen auch über die entsprechenden Berechtigungen verfügen (z. B. „Abonnementbesitzer“), um einen Dienstprinzipal zu erstellen und ihm Berechtigungen zuzuweisen. Wenn Sie eine [benutzerdefinierte Rolle](../role-based-access-control/custom-roles.md) anstelle der integrierten Rolle des Netzwerkmitwirkenden definieren möchten, sind die folgenden Berechtigungen erforderlich:
+* Die vom AKS-Cluster verwendete Clusteridentität muss mindestens die Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md#network-contributor) für das Subnetz in Ihrem virtuellen Netzwerk haben. Sie müssen auch die entsprechenden Berechtigungen haben (z. B. „Abonnementbesitzer“), um eine Clusteridentität erstellen und ihr Berechtigungen zuweisen zu können. Wenn Sie eine [benutzerdefinierte Rolle](../role-based-access-control/custom-roles.md) anstelle der integrierten Rolle des Netzwerkmitwirkenden definieren möchten, sind die folgenden Berechtigungen erforderlich:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
@@ -245,10 +245,9 @@ az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Da jetzt ein AKS-Cluster in Ihrem vorhandenen Subnetz des virtuellen Netzwerks bereitgestellt ist, können Sie den Cluster jetzt wie gewohnt verwenden. Steigen Sie ein in das [Erstellen von Apps mithilfe von Azure Dev Spaces][dev-spaces], das [Bereitstellen vorhandener Apps mithilfe von Helm][use-helm] oder in das [Erstellen neuer Apps mithilfe von Helm][develop-helm].
+Da jetzt ein AKS-Cluster in Ihrem vorhandenen Subnetz des virtuellen Netzwerks bereitgestellt ist, können Sie den Cluster jetzt wie gewohnt verwenden. Beginnen Sie mit der [Erstellung neuer Apps mithilfe von Helm][develop-helm], oder[stellen Sie vorhandene Apps mithilfe von Helm bereit][use-helm].
 
 <!-- LINKS - External -->
-[dev-spaces]: ../dev-spaces/index.yml
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
 [Calico-network-policies]: https://docs.projectcalico.org/v3.9/security/calico-network-policy

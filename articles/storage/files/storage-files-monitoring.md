@@ -6,16 +6,16 @@ services: storage
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 3/02/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e872d28063a3e0671558ee4d388cad280b94f45b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0612984afe71c3ae497d16968d2470668cc60ca7
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596918"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504830"
 ---
 # <a name="monitoring-azure-files"></a>Überwachen von Azure Files
 
@@ -105,6 +105,8 @@ Wenn Sie auswählen, dass Ihre Protokolle in einem Speicherkonto archiviert werd
 
 2. Wählen Sie in der Dropdownliste **Speicherkonto** das Speicherkonto aus, in dem Sie Ihre Protokolle archivieren möchten. Klicken Sie auf die Schaltfläche **OK** und dann auf die Schaltfläche **Speichern**.
 
+   [!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
+
    > [!NOTE]
    > Bevor Sie ein Speicherkonto als Exportziel auswählen, informieren Sie sich unter [Archivieren von Azure-Ressourcenprotokollen](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) über die Voraussetzungen für das Speicherkonto.
 
@@ -149,12 +151,14 @@ Wenn Sie auswählen, dass Ihre Protokolle in einem Speicherkonto archiviert werd
 Aktivieren Sie Protokolle mit dem PowerShell-Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) unter Angabe des Parameters `StorageAccountId`.
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log> 
 ```
 
 Ersetzen Sie den Platzhalter `<storage-service-resource--id>` in diesem Codeausschnitt durch die Ressourcen-ID des Azure-Dateidiensts. Sie finden die Ressourcen-ID im Azure-Portal, indem Sie die Seite **Eigenschaften** Ihres Speicherkontos öffnen.
 
 Sie können `StorageRead`, `StorageWrite` und `StorageDelete` als Wert für den Parameter **Category** angeben.
+
+[!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
 
 Hier sehen Sie ein Beispiel:
 
@@ -211,16 +215,18 @@ Wenn Sie auswählen, dass Ihre Protokolle in einem Speicherkonto archiviert werd
 Aktivieren Sie Protokolle mit dem Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
 
 ```azurecli-interactive
-az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
+az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true}]'
 ```
 
 Ersetzen Sie den Platzhalter `<storage-service-resource--id>` in diesem Codeausschnitt durch die Ressourcen-ID des Blobspeicherdiensts. Sie finden die Ressourcen-ID im Azure-Portal, indem Sie die Seite **Eigenschaften** Ihres Speicherkontos öffnen.
 
 Sie können `StorageRead`, `StorageWrite` und `StorageDelete` als Wert für den Parameter **Category** angeben.
 
+[!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
+
 Hier sehen Sie ein Beispiel:
 
-`az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
+`az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true}]'`
 
 Eine Beschreibung der einzelnen Parameter finden Sie unter [Archivieren von Ressourcenprotokollen mithilfe der Azure-Befehlszeilenschnittstelle](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage).
 
@@ -481,21 +487,10 @@ Protokolleinträge werden nur erstellt, wenn Anforderungen für den Dienstendpun
 
 - Erfolgreiche Anforderungen
 - Fehlerhafte Anforderungen, einschließlich Timeout-, Drosselungs-, Netzwerk- und Autorisierungsfehler sowie anderer Fehler
-- Anforderungen, die eine SAS (Shared Access Signature) oder OAuth verwenden, einschließlich fehlerhafter und erfolgreicher Anforderungen
+- Anforderungen, die Kerberos, NTLM oder eine SAS (Shared Access Signature) verwenden, einschließlich fehlerhafter und erfolgreicher Anforderungen
 - Anforderungen an Analysedaten (klassische Protokolldaten im Container **$logs** und klassische Metrikdaten in den **$metric**-Tabellen)
 
 Anforderungen, die durch den Azure Files-Dienst selbst erfolgen, wie z. B. Protokollerstellungs- oder -löschvorgänge, werden nicht protokolliert. Eine vollständige Liste der protokollierten SMB- und REST-Anforderungen finden Sie unter [Storage Analytics: protokollierte Vorgänge und Statusmeldungen](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) und [Überwachungsdatenreferenz zu Azure Files](storage-files-monitoring-reference.md).
-
-### <a name="log-anonymous-requests"></a>Protokollieren anonymer Anforderungen
-
- Die folgenden Typen anonymer Anforderungen werden protokolliert:
-
-- Erfolgreiche Anforderungen
-- Serverfehler
-- Timeoutfehler für Client und Server
-- Mit Fehlercode 304 (nicht geändert) fehlgeschlagene GET-Anforderungen
-
-Alle anderen fehlgeschlagenen, anonymen Anforderungen werden nicht protokolliert. Eine vollständige Liste der protokollierten SMB- und REST-Anforderungen finden Sie unter [Storage Analytics: protokollierte Vorgänge und Statusmeldungen](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) und [Überwachungsdatenreferenz zu Azure Files](storage-files-monitoring-reference.md).
 
 ### <a name="accessing-logs-in-a-storage-account"></a>Zugreifen auf Protokolle in einem Speicherkonto
 
@@ -631,13 +626,12 @@ In der folgenden Tabelle sind einige Beispielszenarios für die Überwachung und
    > [!NOTE]
    > Wenn die Antworttypen nicht in der Dropdownliste **Dimensionswerte** aufgeführt werden, bedeutet dies, dass die Ressource nicht gedrosselt wurde. Wählen Sie zum Hinzufügen der Dimensionswerte neben der Dropdownliste **Dimensionswerte** die Option **Benutzerdefinierten Wert hinzufügen** aus, geben Sie den Typ ein (z. B. **SuccessWithThrottling**), und wählen Sie **OK** aus. Wiederholen Sie diese Schritte zum Hinzufügen aller betreffenden Antworttypen für die Dateifreigabe.
 
-8. Klicken Sie auf die Dropdownliste **Dimensionsname**, und wählen Sie **Dateifreigabe** aus.
-9. Klicken Sie auf die Dropdownliste **Dimensionswerte**, und wählen Sie die Dateifreigaben aus, für die Sie eine Warnung einrichten möchten.
-
+8. Klicken Sie bei **Premium-Dateifreigaben** auf die Dropdownliste **Dimensionsname**, und wählen Sie **Dateifreigabe** aus. Springen Sie bei **Standarddateifreigaben** zu **Schritt #10**.
 
    > [!NOTE]
-   > Handelt es sich bei der Dateifreigabe um eine Standarddateifreigabe, wählen Sie **Alle aktuellen und zukünftigen Werte** aus. Die Dateifreigaben werden in der Dropdownliste mit den Dimensionswerten nicht aufgeführt, da für Standarddateifreigaben keine freigabespezifischen Metriken zur Verfügung stehen. Die Drosselung von Warnungen für Standarddateifreigaben wird ausgelöst, wenn eine Dateifreigabe im Speicherkonto gedrosselt wird und die Warnung nicht identifiziert, welche Freigabe gedrosselt wurde. Da Metriken pro Freigabe für Standarddateifreigaben nicht verfügbar sind, wird empfohlen, dass es eine einzige Dateifreigabe pro Speicherkonto gibt.
+   > Wenn die Dateifreigabe eine Standarddateifreigabe ist, wird/werden die Dateifreigabe(n) in der Dimension **Dateifreigabe** nicht aufgeführt, weil Metriken pro Freigabe für Standarddateifreigaben nicht verfügbar sind. Die Drosselung von Warnungen für Standarddateifreigaben wird ausgelöst, wenn eine Dateifreigabe im Speicherkonto gedrosselt wird und die Warnung nicht identifiziert, welche Freigabe gedrosselt wurde. Da Metriken pro Freigabe für Standarddateifreigaben nicht verfügbar sind, wird empfohlen, dass es eine einzige Dateifreigabe pro Speicherkonto gibt.
 
+9. Klicken Sie auf die Dropdownliste **Dimensionswerte**, und wählen Sie die Dateifreigaben aus, für die Sie eine Warnung einrichten möchten.
 10. Definieren Sie die **Warnungsparameter** (Schwellenwert, Operator, Aggregationsgranularität und Häufigkeit der Auswertung), und klicken Sie auf **Fertig**.
 
     > [!TIP]
@@ -654,12 +648,12 @@ In der folgenden Tabelle sind einige Beispielszenarios für die Überwachung und
 3. Klicken Sie auf **Ressource bearbeiten**, wählen Sie unter **Ressourcentyp** den Ressourcentyp für das Speicherkonto aus, und klicken Sie anschließend auf **Fertig**. Wenn der Name des Speicherkontos beispielsweise `contoso` ist, wählen Sie die `contoso/file`-Ressource aus.
 4. Klicken Sie auf **Bedingung hinzufügen**, um eine Bedingung hinzuzufügen.
 5. Wählen Sie in der daraufhin angezeigten Liste der für das Speicherkonto unterstützten Signale die Metrik **Dateikapazität** aus.
-6. Klicken Sie auf dem Blatt **Signallogik konfigurieren** auf das Dropdownmenü **Dimensionsname**, und wählen Sie **Dateifreigabe** aus.
-7. Klicken Sie auf die Dropdownliste **Dimensionswerte**, und wählen Sie die Dateifreigaben aus, für die Sie eine Warnung einrichten möchten.
+6. Klicken Sie bei **Premium-Dateifreigaben** auf die Dropdownliste **Dimensionsname**, und wählen Sie **Dateifreigabe** aus. Springen Sie bei **Standarddateifreigaben** zu **Schritt #8**.
 
    > [!NOTE]
-   > Handelt es sich bei der Dateifreigabe um eine Standarddateifreigabe, wählen Sie **Alle aktuellen und zukünftigen Werte** aus. Die Dateifreigaben werden in der Dropdownliste mit den Dimensionswerten nicht aufgeführt, da für Standarddateifreigaben keine freigabespezifischen Metriken zur Verfügung stehen. Warnungen für Standarddateifreigaben basieren auf allen Dateifreigaben im Speicherkonto. Da Metriken pro Freigabe für Standarddateifreigaben nicht verfügbar sind, wird empfohlen, dass es eine einzige Dateifreigabe pro Speicherkonto gibt.
+   > Wenn die Dateifreigabe eine Standarddateifreigabe ist, wird/werden die Dateifreigabe(n) in der Dimension **Dateifreigabe** nicht aufgeführt, weil Metriken pro Freigabe für Standarddateifreigaben nicht verfügbar sind. Warnungen für Standarddateifreigaben basieren auf allen Dateifreigaben im Speicherkonto. Da Metriken pro Freigabe für Standarddateifreigaben nicht verfügbar sind, wird empfohlen, dass es eine einzige Dateifreigabe pro Speicherkonto gibt.
 
+7. Klicken Sie auf die Dropdownliste **Dimensionswerte**, und wählen Sie die Dateifreigaben aus, für die Sie eine Warnung einrichten möchten.
 8. Geben Sie den **Schwellenwert** in Bytes ein. Wenn die Größe der Dateifreigabe z. B. 100 TiB beträgt und Sie eine Warnung erhalten möchten, wenn die Größe der Dateifreigabe 80 % der Kapazität beträgt, ist der Schwellenwert in Bytes 87960930222080.
 9. Definieren Sie die übrigen **Warnungsparameter** (Aggregationsgranularität und Häufigkeit der Auswertung), und klicken Sie auf **Fertig**.
 10. Klicken Sie auf **Aktionsgruppe hinzufügen**, und fügen Sie der Warnung eine **Aktionsgruppe** (E-Mail, SMS usw.) hinzu, indem Sie eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
@@ -673,12 +667,12 @@ In der folgenden Tabelle sind einige Beispielszenarios für die Überwachung und
 3. Klicken Sie auf **Ressource bearbeiten**, wählen Sie unter **Ressourcentyp** den Ressourcentyp für das Speicherkonto aus, und klicken Sie anschließend auf **Fertig**. Wenn der Name des Speicherkontos z. B. „contoso“ lautet, wählen Sie die Ressource „contoso/datei“ aus.
 4. Klicken Sie auf **Bedingung hinzufügen**, um eine Bedingung hinzuzufügen.
 5. Wählen Sie in der daraufhin angezeigten Liste der für das Speicherkonto unterstützten Signale die Metrik **Ausgehend** aus.
-6. Klicken Sie auf dem Blatt **Signallogik konfigurieren** auf das Dropdownmenü **Dimensionsname**, und wählen Sie **Dateifreigabe** aus.
-7. Klicken Sie auf die Dropdownliste **Dimensionswerte**, und wählen Sie die Dateifreigaben aus, für die Sie eine Warnung einrichten möchten.
+6. Klicken Sie bei **Premium-Dateifreigaben** auf die Dropdownliste **Dimensionsname**, und wählen Sie **Dateifreigabe** aus. Springen Sie bei **Standarddateifreigaben** zu **Schritt #8**.
 
    > [!NOTE]
-   > Handelt es sich bei der Dateifreigabe um eine Standarddateifreigabe, wählen Sie **Alle aktuellen und zukünftigen Werte** aus. Die Dateifreigaben werden in der Dropdownliste mit den Dimensionswerten nicht aufgeführt, da für Standarddateifreigaben keine freigabespezifischen Metriken zur Verfügung stehen. Warnungen für Standarddateifreigaben basieren auf allen Dateifreigaben im Speicherkonto. Da Metriken pro Freigabe für Standarddateifreigaben nicht verfügbar sind, wird empfohlen, dass es eine einzige Dateifreigabe pro Speicherkonto gibt.
+   > Wenn die Dateifreigabe eine Standarddateifreigabe ist, wird/werden die Dateifreigabe(n) in der Dimension **Dateifreigabe** nicht aufgeführt, weil Metriken pro Freigabe für Standarddateifreigaben nicht verfügbar sind. Warnungen für Standarddateifreigaben basieren auf allen Dateifreigaben im Speicherkonto. Da Metriken pro Freigabe für Standarddateifreigaben nicht verfügbar sind, wird empfohlen, dass es eine einzige Dateifreigabe pro Speicherkonto gibt.
 
+7. Klicken Sie auf die Dropdownliste **Dimensionswerte**, und wählen Sie die Dateifreigaben aus, für die Sie eine Warnung einrichten möchten.
 8. Geben Sie **536870912000** Bytes für den Schwellenwert ein. 
 9. Klicken Sie auf die Dropdownliste **Aggregationsgranularität**, und wählen Sie **24 Stunden** aus.
 10. Wählen Sie die **Häufigkeit der Auswertung** aus, und klicken Sie auf **Fertig**.

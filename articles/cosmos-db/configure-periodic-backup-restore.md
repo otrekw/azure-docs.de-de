@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 185320868c491d98df5fb6e31d9a627157431944
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 69a9f0a82f5c19504564825e47f69ab8414e0909
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527067"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565834"
 ---
 # <a name="configure-azure-cosmos-db-account-with-periodic-backup"></a>Konfigurieren eines Azure Cosmos DB-Kontos mit regelmäßiger Sicherung
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -115,7 +115,7 @@ Wenn Sie den Durchsatz auf Datenbankebene bereitstellen, erfolgen die Sicherungs
 Prinzipale, die zur Rolle [CosmosdbBackupOperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator) gehören, Besitzer oder Mitwirkende dürfen eine Wiederherstellung anfordern oder den Aufbewahrungszeitraum ändern.
 
 ## <a name="understanding-costs-of-extra-backups"></a>Grundlegendes zu den Kosten zusätzlicher Sicherungen
-Zwei Sicherungen werden kostenlos bereitgestellt. Zusätzliche Sicherungen werden zu den regionsbasierten Preisen für den Sicherungsspeicher berechnet, die unter den [Preisen für Sicherungsspeicher](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/) beschrieben werden. Ein Beispiel: Die Aufbewahrungsdauer für Sicherungen ist auf 240 Stunden (10 Tage) und das Sicherungsintervall auf 24 Stunden festgelegt. Dies ergibt zehn Kopien der Sicherungsdaten. Bei 1 TB Daten in der Region „USA, Westen 2“ bedeutet das 1000 * 0,12 ~ 120 USD für den Sicherungsspeicher im Monat. 
+Zwei Sicherungen werden kostenlos bereitgestellt. Zusätzliche Sicherungen werden zu den regionsbasierten Preisen für den Sicherungsspeicher berechnet, die unter den [Preisen für Sicherungsspeicher](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/) beschrieben werden. Ein Beispiel: Die Aufbewahrungsdauer für Sicherungen ist auf 240 Stunden (10 Tage) und das Sicherungsintervall auf 24 Stunden festgelegt. Dies ergibt zehn Kopien der Sicherungsdaten. Bei 1 TB Daten in der Region „USA, Westen 2“ bedeutet das 0,12 * 1.000 * 8 für den Sicherungsspeicher im Monat. 
 
 
 ## <a name="options-to-manage-your-own-backups"></a>Optionen für das Verwalten Ihrer eigenen Sicherungen

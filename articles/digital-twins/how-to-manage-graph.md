@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b713a19cbe572998bb6e5050ab2d7721a844f07a
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: fde473453aa79e0078765df394acdeb54b3c7fe9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530449"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433317"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Verwalten eines Graphen von digitalen Zwillingen mithilfe von Beziehungen
 
 Das Herzstück von Azure Digital Twins ist der [Zwillingsgraph](concepts-twins-graph.md), der Ihre gesamte Umgebung darstellt. Der Zwillingsgraph setzt sich aus einzelnen digitalen Zwillingen zusammen, die über **Beziehungen** verbunden sind. 
 
-Sobald Sie über eine funktionierende [Azure Digital Twins-Instanz](how-to-set-up-instance-portal.md) verfügen und [Authentifizierungscode](how-to-authenticate-client.md) in Ihrer Client-App eingerichtet haben, können Sie die [**DigitalTwins-APIs**](/rest/api/digital-twins/dataplane/twins) verwenden, um digitale Zwillinge und ihre Beziehungen in einer Azure Digital Twins-Instanz zu erstellen, zu ändern und zu löschen. Sie können auch das [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) oder die [Azure Digital Twins-CLI](how-to-use-cli.md) verwenden.
+Sobald Sie über eine funktionierende [Azure Digital Twins-Instanz](how-to-set-up-instance-portal.md) verfügen und [Authentifizierungscode](how-to-authenticate-client.md) in Ihrer Client-App eingerichtet haben, können Sie die [**DigitalTwins-APIs**](/rest/api/digital-twins/dataplane/twins) verwenden, um digitale Zwillinge und ihre Beziehungen in einer Azure Digital Twins-Instanz zu erstellen, zu ändern und zu löschen. Sie können auch das [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) oder die [Azure Digital Twins-CLI](how-to-use-cli.md) verwenden.
 
 Dieser Artikel konzentriert sich auf die Verwaltung von Beziehungen und den Graphen als Ganzes. Für die Arbeit mit einzelnen digitalen Zwillingen finden Sie weitere Informationen unter [ *Verwalten digitaler Zwillinge*](how-to-manage-twin.md).
 
@@ -30,7 +30,7 @@ Dieser Artikel konzentriert sich auf die Verwaltung von Beziehungen und den Grap
 
 [!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
 
-Sie können den Graphen auch mit dem Beispiel „ADT Explorer“ (Azure Digital Twins Explorer) ändern, mit dem Sie Ihre Zwillinge und Graphen visualisieren und das SDK im Hintergrund verwenden können. Im nächsten Abschnitt wird dieses Beispiel ausführlich beschrieben.
+Sie können den Graphen auch unter Verwendung des Beispiels „Azure Digital Twins-Explorer“ ändern. Dieses Beispiel ermöglicht die Visualisierung Ihrer Zwillinge und Graphen und verwendet das SDK im Hintergrund. Im nächsten Abschnitt wird dieses Beispiel ausführlich beschrieben.
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
@@ -97,7 +97,7 @@ Sie können die abgerufenen Beziehungen verwenden, um zu anderen Zwillingen in I
 Azure Digital Twins verfügt auch über eine API, um alle **eingehenden** Beziehungen für einen bestimmten Zwilling zu finden. Dies ist oft nützlich bei der umgekehrten Navigation oder beim Löschen eines Zwillings.
 
 >[!NOTE]
-> `IncomingRelationship`-Aufrufe geben nicht den vollständigen Text der Beziehung zurück. Weitere Informationen finden Sie in der [Referenzdokumentation](/dotnet/api/azure.digitaltwins.core.incomingrelationship?view=azure-dotnet&preserve-view=true) zur `IncomingRelationship`-Klasse.
+> `IncomingRelationship`-Aufrufe geben nicht den vollständigen Text der Beziehung zurück. Weitere Informationen finden Sie in der [Referenzdokumentation](/dotnet/api/azure.digitaltwins.core.incomingrelationship) zur `IncomingRelationship`-Klasse.
 
 Das Codebeispiel oben hat sich auf die Suche nach ausgehenden Beziehungen eines Zwillings konzentriert. Das folgende Beispiel ist ähnlich strukturiert, findet aber stattdessen *eingehende* Beziehungen vom Zwilling. Für dieses Beispiel wird auch der SDK-Aufruf (hervorgehoben) innerhalb einer benutzerdefinierten Methode verwendet, die im Kontext eines größeren Programms angezeigt werden kann.
 
@@ -157,7 +157,7 @@ Der Codeausschnitt verwendet die Modelldefinitionen [*Room.json*](https://github
 Bevor Sie das Beispiel ausführen, gehen Sie wie folgt vor:
 1. Laden Sie die Modelldatei herunter, platzieren Sie sie in Ihrem Projekt, und ersetzen Sie den Platzhalter `<path-to>` im Code unten, um Ihrem Programm mitzuteilen, wo sie zu finden sind.
 2. Ersetzen Sie den Platzhalter `<your-instance-hostname>` durch den Hostnamen Ihrer Azure Digital Twins-Instanz.
-3. Als Nächstes fügen Sie Ihrem Projekt zwei Abhängigkeiten hinzu, die erforderlich sind, um Azure Digital Twins verwenden zu können. Bei der ersten handelt es sich um das Paket für das [Azure Digital Twins-SDK für .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true), die zweite stellt Tools bereit, die die Authentifizierung bei Azure unterstützen.
+3. Als Nächstes fügen Sie Ihrem Projekt zwei Abhängigkeiten hinzu, die erforderlich sind, um Azure Digital Twins verwenden zu können. Bei der ersten handelt es sich um das Paket für das [Azure Digital Twins-SDK für .NET](/dotnet/api/overview/azure/digitaltwins/client), die zweite stellt Tools bereit, die die Authentifizierung bei Azure unterstützen.
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core

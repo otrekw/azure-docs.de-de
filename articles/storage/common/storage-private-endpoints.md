@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 7af2e6794d0d2f37c342a86b2f36b94c9601cc7e
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 4ee0b71b63735d8417c11cba8d2a551c8da8b47f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617254"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564287"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Verwenden privater Endpunkte für Azure Storage
 
@@ -49,9 +49,13 @@ Sie können Ihr Speicherkonto schützen, indem nur Verbindungen über das VNET a
 > [!NOTE]
 > Beim Kopieren von Blobs zwischen Speicherkonten benötigt der Client Netzwerkzugriff auf beide Konten. Wenn Sie also einen privaten Link für ein einziges Konto (Quelle oder Ziel) verwenden möchten, stellen Sie sicher, dass der Client über Netzwerkzugriff auf das andere Konto verfügt. Weitere Informationen zu anderen Möglichkeiten zum Konfigurieren des Netzwerkzugriffs finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](storage-network-security.md?toc=/azure/storage/blobs/toc.json). 
 
-### <a name="private-endpoints-for-azure-storage"></a>Private Endpunkte für Azure Storage
+<a id="private-endpoints-for-azure-storage"></a>
 
-Beim Erstellen des privaten Endpunkts müssen Sie das Speicherkonto und den Speicherdienst angeben, mit dem eine Verbindung hergestellt wird. Sie brauchen einen separaten privaten Endpunkt für jeden Speicherdienst in einem Speicherkonto, auf den Sie zugreifen müssen. Dies sind [Blobs](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md), [Files](../files/storage-files-introduction.md), [Warteschlangen](../queues/storage-queues-introduction.md), [Tabellen](../tables/table-storage-overview.md) oder [statische Websites](../blobs/storage-blob-static-website.md).
+## <a name="creating-a-private-endpoint"></a>Erstellen eines privaten Endpunkts
+
+Wenn Sie einen privaten Endpunkt erstellen, müssen Sie das Speicherkonto und den Speicherdienst angeben, mit dem eine Verbindung hergestellt wird. 
+
+Sie benötigen einen separaten privaten Endpunkt für jede Speicherressource, auf die Sie zugreifen müssen. Dies sind [Blobs](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md), [Dateien](../files/storage-files-introduction.md), [Warteschlangen](../queues/storage-queues-introduction.md), [Tabellen](../tables/table-storage-overview.md) oder [statische Websites](../blobs/storage-blob-static-website.md). Wenn Sie einen privaten Endpunkt für die Speicherressource „Data Lake Storage Gen2“ erstellen, sollten Sie auch einen für die Ressource „Blob Storage“ erstellen. Der Grund: Vorgänge, deren Ziel der Endpunkt „Data Lake Storage Gen2“ ist, werden möglicherweise an den Endpunkt „Blob“ umgeleitet. Durch das Erstellen eines privaten Endpunkts für beide Ressourcen sorgen Sie dafür, dass Vorgänge erfolgreich abgeschlossen werden können.
 
 > [!TIP]
 > Erstellen Sie einen separaten privaten Endpunkt für die sekundäre Instanz des Speicherdiensts, um die Leseleistung für RA-GRS-Konten zu verbessern.
@@ -66,24 +70,26 @@ Ausführlichere Informationen zum Erstellen eines privaten Endpunkts für das Sp
 - [Erstellen eines privaten Endpunkts mit Azure CLI](../../private-link/create-private-endpoint-cli.md)
 - [Erstellen eines privaten Endpunkts mit Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)
 
-### <a name="connecting-to-private-endpoints"></a>Herstellen einer Verbindung mit privaten Endpunkten
+<a id="connecting-to-private-endpoints"></a>
+
+## <a name="connecting-to-a-private-endpoint"></a>Herstellen einer Verbindung mit einem privaten Endpunkt
 
 Clients in einem VNET, die den privaten Endpunkt verwenden, sollten dieselbe Verbindungszeichenfolge für das Speicherkonto verwenden wie Clients, die eine Verbindung mit dem öffentlichen Endpunkt herstellen. Das automatische Weiterleiten der Verbindungen vom VNET zum Speicherkonto über eine private Verbindung basiert auf der DNS-Auflösung.
 
 > [!IMPORTANT]
-> Verwenden Sie zum Herstellen einer Verbindung mit dem Speicherkonto mithilfe privater Endpunkte dieselbe Verbindungszeichenfolge, die Sie auch sonst verwenden würden. Stellen Sie keine Verbindung mit dem Speicherkonto über die URL der Unterdomäne *privatelink* her.
+> Verwenden Sie zum Herstellen einer Verbindung mit dem Speicherkonto mithilfe privater Endpunkte dieselbe Verbindungszeichenfolge, die Sie auch sonst verwenden würden. Stellen Sie keine Verbindung mit dem Speicherkonto über die URL der Unterdomäne `privatelink` her.
 
 Wir erstellen standardmäßig eine [private DNS-Zone](../../dns/private-dns-overview.md), die an das VNET angehängt ist, mit den erforderlichen Updates für die privaten Endpunkte. Wenn Sie jedoch einen eigenen DNS-Server verwenden, müssen Sie möglicherweise zusätzliche Änderungen an Ihrer DNS-Konfiguration vornehmen. Im folgenden Abschnitt zu [DNS-Änderungen](#dns-changes-for-private-endpoints) werden die für private Endpunkte erforderlichen Updates beschrieben.
 
 ## <a name="dns-changes-for-private-endpoints"></a>DNS-Änderungen für private Endpunkte
 
-Wenn Sie einen privaten Endpunkt erstellen, wird der DNS-CNAME-Ressourceneintrag für das Speicherkonto auf einen Alias in einer Unterdomäne mit dem Präfix *privatelink* aktualisiert. Standardmäßig erstellen wir außerdem eine [private DNS-Zone](../../dns/private-dns-overview.md), die der Unterdomäne *privatelink* entspricht, mit den DNS-A-Ressourceneinträgen für die privaten Endpunkte.
+Wenn Sie einen privaten Endpunkt erstellen, wird der DNS-CNAME-Ressourceneintrag für das Speicherkonto auf einen Alias in einer Unterdomäne mit dem Präfix `privatelink` aktualisiert. Standardmäßig erstellen wir außerdem eine [private DNS-Zone](../../dns/private-dns-overview.md), die der Unterdomäne `privatelink` entspricht, mit den DNS-A-Ressourceneinträgen für die privaten Endpunkte.
 
 Wenn Sie die Speicherendpunkt-URL von außerhalb des VNET mit dem privaten Endpunkt auflösen, wird diese in den öffentlichen Endpunkt des Speicherdiensts aufgelöst. Bei Auflösung aus dem VNET, das den privaten Endpunkt hostet, wird die Speicherendpunkt-URL in die IP-Adresse des privaten Endpunkts aufgelöst.
 
 Beim oben gezeigten Beispiel lauten die DNS-Ressourceneinträge für das Speicherkonto „StorageAccountA“ bei Auflösung von außerhalb des VNET, das den privaten Endpunkt hostet, wie folgt:
 
-| Name                                                  | type  | Wert                                                 |
+| Name                                                  | Typ  | Wert                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
@@ -93,7 +99,7 @@ Wie bereits erwähnt, können Sie den Zugriff für Clients außerhalb des VNET �
 
 Die DNS-Ressourceneinträge für „StorageAccountA“ lauten nach dem Auflösen durch einen Client im VNET, das den privaten Endpunkt hostet, wie folgt:
 
-| Name                                                  | type  | Wert                                                 |
+| Name                                                  | Typ  | Wert                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | Ein     | 10.1.1.5                                              |
@@ -103,7 +109,7 @@ Diese Vorgehensweise ermöglicht den Zugriff auf das Speicherkonto **mithilfe de
 Wenn Sie einen benutzerdefinierten DNS-Server in Ihrem Netzwerk verwenden, müssen Clients in der Lage sein, den FQDN für den Speicherkontoendpunkt in die IP-Adresse des privaten Endpunkts aufzulösen. Sie sollten den DNS-Server so konfigurieren, dass die Unterdomäne der privaten Verbindung an die private DNS-Zone für das VNET delegiert wird, oder konfigurieren Sie die A-Einträge für *StorageAccountA.privatelink.blob.core.windows.net* mit der IP-Adresse des privaten Endpunkts.
 
 > [!TIP]
-> Wenn Sie einen benutzerdefinierten oder lokalen DNS-Server verwenden, sollten Sie den DNS-Server so konfigurieren, dass der Speicherkontoname in der Unterdomäne „privatelink“ in die IP-Adresse des privaten Endpunkts aufgelöst wird. Hierzu können Sie die Unterdomäne „privatelink“ an die private DNS-Zone des VNET delegieren oder die DNS-Zone auf dem DNS-Server konfigurieren und die DNS-A-Einträge hinzufügen.
+> Wenn Sie einen benutzerdefinierten oder lokalen DNS-Server verwenden, sollten Sie ihn so konfigurieren, dass der Speicherkontoname in der Unterdomäne `privatelink` in die IP-Adresse des privaten Endpunkts aufgelöst wird. Hierzu können Sie die Unterdomäne `privatelink` an die private DNS-Zone des VNET delegieren oder die DNS-Zone auf dem DNS-Server konfigurieren und die DNS-A-Einträge hinzufügen.
 
 Die empfohlenen DNS-Zonennamen für private Endpunkte für die Speicherdienste lauten wie folgt:
 
@@ -137,7 +143,7 @@ Diese Einschränkung ist die Folge der DNS-Änderungen, die vorgenommen werden, 
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Netzwerksicherheitsgruppen-Regeln für Subnetze mit privaten Endpunkten
 
-Derzeit können keine [Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md)-Regeln und benutzerdefinierten Routen für private Endpunkte konfiguriert werden. Netzwerksicherheitsgruppenregeln, die auf das Subnetz angewendet werden, das den privaten Endpunkt hostet, werden nicht auf den privaten Endpunkt, sondern nur auf andere Endpunkte (z. B. NIC) angewendet. Eine eingeschränkte Umgehung dieses Problems ist das Implementieren Ihrer Zugriffsregeln für private Endpunkte in den Quellsubnetzen, obwohl dieser Ansatz möglicherweise einen höheren Verwaltungsaufwand erfordert.
+Derzeit können keine [Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md)-Regeln und benutzerdefinierten Routen für private Endpunkte konfiguriert werden. Netzwerksicherheitsgruppen-Regeln, die auf das Subnetz angewendet werden, das den privaten Endpunkt hostet, werden nicht auf den privaten Endpunkt angewendet. Sie werden nur auf andere Endpunkte angewendet (z. B. Netzwerkschnittstellencontroller). Eine eingeschränkte Umgehung dieses Problems ist das Implementieren Ihrer Zugriffsregeln für private Endpunkte in den Quellsubnetzen, obwohl dieser Ansatz möglicherweise einen höheren Verwaltungsaufwand erfordert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

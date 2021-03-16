@@ -1,19 +1,18 @@
 ---
 title: Details der Struktur von Richtliniendefinitionen
 description: Beschreibt, wie Richtliniendefinitionen verwendet werden, um Konventionen für Azure-Ressourcen in Ihrer Organisation einzurichten.
-ms.date: 10/22/2020
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 607d1d85dbb370305d0337cc311433c37e36c4c0
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: cebba214671cfab75a3f44720578b51febacdfcd
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493310"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215067"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
-Azure Policy richtet Konventionen für Ressourcen ein. Richtliniendefinitionen beschreiben [Bedingungen](#conditions) für die Ressourcenkonformität und die Maßnahmen, die ergriffen werden, wenn eine Bedingung erfüllt ist. Eine Bedingung vergleicht ein [Feld](#fields) oder einen [Wert](#value) einer Ressourceneigenschaft mit einem erforderlichen Wert. Der Zugriff auf Ressourceneigenschaftsfelder erfolgt über [Aliase](#aliases). Wenn ein Ressourceneigenschaftsfeld ein Array ist, kann ein spezieller [Arrayalias](#understanding-the--alias) verwendet werden, um Werte aus allen Arraymembern auszuwählen und auf jedes eine Bedingung anzuwenden.
-Erfahren Sie mehr über [Bedingungen](#conditions).
+Azure Policy richtet Konventionen für Ressourcen ein. Richtliniendefinitionen beschreiben [Bedingungen](#conditions) für die Ressourcenkonformität und die Maßnahmen, die ergriffen werden, wenn eine Bedingung erfüllt ist. Eine Bedingung vergleicht ein [Feld](#fields) oder einen [Wert](#value) einer Ressourceneigenschaft mit einem erforderlichen Wert. Der Zugriff auf Ressourceneigenschaftsfelder erfolgt über [Aliase](#aliases). Wenn ein Ressourceneigenschaftsfeld ein Array ist, kann ein spezieller [Arrayalias](#understanding-the--alias) verwendet werden, um Werte aus allen Arraymembern auszuwählen und auf jedes eine Bedingung anzuwenden. Erfahren Sie mehr über [Bedingungen](#conditions).
 
 Durch Definieren von Konventionen können Sie Kosten beeinflussen und Ihre Ressourcen einfacher verwalten. Sie können beispielsweise angeben, dass nur bestimmte Typen virtueller Computer zulässig sind. Oder Sie können festlegen, dass Ressourcen ein bestimmtes Tag aufweisen. Richtlinienzuweisungen werden von untergeordneten Ressourcen geerbt. Wenn eine Richtlinienzuweisung auf eine Ressourcengruppe angewandt wird, gilt sie für alle Ressourcen in dieser Ressourcengruppe.
 
@@ -118,7 +117,7 @@ Die folgenden Ressourcenanbietermodi werden derzeit als **Vorschau** unterstütz
 
 ## <a name="metadata"></a>Metadaten
 
-In der optionalen `metadata`-Eigenschaft werden Informationen zur Richtliniendefinition gespeichert. Kunden können alle für ihre Organisation nützlichen Eigenschaften und Werte in `metadata` definieren. Es gibt jedoch einige _allgemeine_ Eigenschaften, die von Azure Policy und integrierten Richtlinien verwendet werden.
+In der optionalen `metadata`-Eigenschaft werden Informationen zur Richtliniendefinition gespeichert. Kunden können alle für ihre Organisation nützlichen Eigenschaften und Werte in `metadata` definieren. Es gibt jedoch einige _allgemeine_ Eigenschaften, die von Azure Policy und integrierten Richtlinien verwendet werden. Jede `metadata`-Eigenschaft ist auf 1.024 Zeichen begrenzt.
 
 ### <a name="common-metadata-properties"></a>Allgemeine Metadateneigenschaften
 
@@ -148,10 +147,10 @@ Ein Parameter hat die folgenden Eigenschaften, die in der Richtliniendefinition 
   - `description`: Die Erläuterung des Zwecks des Parameters. Kann verwendet werden, um Beispiele zulässiger Werte bereitzustellen.
   - `displayName`: Der Anzeigename des Parameters im Portal.
   - `strongType`: (Optional) Wird verwendet, wenn die Richtliniendefinition über das Portal zugewiesen wird. Bietet eine kontextbezogene Liste. Weitere Informationen finden Sie unter [strongType](#strongtype).
-  - `assignPermissions`: (Optional) Legen Sie diesen Wert auf _true_ fest, damit das Azure-Portal während der Richtlinienzuweisung Rollenzuweisungen erstellt. Diese Eigenschaft ist hilfreich, wenn Sie Berechtigungen außerhalb des Zuweisungsbereichs zuweisen möchten. Es gibt eine Rollenzuordnung pro Rollendefinition in der Richtlinie (oder pro Rollendefinition in allen Richtlinien der Initiative). Der Parameterwert muss eine gültige Ressource oder ein gültiger Bereich sein.
+  - `assignPermissions`: (Optional) Legen Sie diesen Wert auf _true_ fest, damit das Azure-Portal während der Richtlinienzuweisung Rollenzuweisungen erstellt. Diese Eigenschaft ist hilfreich, wenn Sie Berechtigungen außerhalb des Zuweisungsbereichs zuweisen möchten. Es gibt eine Rollenzuweisung pro Rollendefinition in der Richtlinie (oder pro Rollendefinition in allen Richtlinien der Initiative). Der Parameterwert muss eine gültige Ressource oder ein gültiger Bereich sein.
 - `defaultValue`: (Optional) Legt den Wert des Parameters in einer Zuweisung fest, wenn kein Wert angegeben ist.
   Erforderlich, wenn eine vorhandene zugewiesene Richtliniendefinition aktualisiert wird.
-- `allowedValues`: (Optional) Stellt ein Array von Werten bereit, die der Parameter bei der Zuweisung akzeptiert.
+- `allowedValues`: (Optional) Stellt ein Array von Werten bereit, die der Parameter bei der Zuweisung akzeptiert. Bei zulässigen Wertvergleichen muss die Groß-/Kleinschreibung beachtet werden. 
 
 Beispielsweise können Sie eine Richtliniendefinition verwenden, um die Speicherorte einzuschränken, an denen Ressourcen bereitgestellt werden können. Ein Parameter für diese Richtliniendefinition kann **allowedLocations** heißen. Dieser Parameter kann bei jeder Zuweisung der Richtliniendefinition verwendet werden, um die akzeptierten Werte zu begrenzen. Die Verwendung von **strongType** bietet erweiterte Möglichkeiten, wenn die Zuweisung über das Portal erfolgt:
 
@@ -286,15 +285,13 @@ Eine Bedingung überprüft, ob ein Wert bestimmte Kriterien erfüllt. Folgende B
 
 Bei **less**, **lessOrEquals**, **greater** und **greaterOrEquals** wird, wenn der Eigenschaftentyp nicht mit dem Bedingungstyp übereinstimmt, ein Fehler ausgelöst. Zeichenfolgenvergleiche werden mit `InvariantCultureIgnoreCase` durchgeführt.
 
-Bei Verwendung der Bedingungen **like** und **notLike** können Sie im Wert den Platzhalter `*` angeben.
-Der Wert darf maximal einen Platzhalter des Typs `*` enthalten.
+Bei Verwendung der Bedingungen **like** und **notLike** können Sie im Wert den Platzhalter `*` angeben. Der Wert darf maximal einen Platzhalter des Typs `*` enthalten.
 
 Geben Sie bei Verwendung der Bedingungen **match** und **notMatch** für eine Ziffer `#`, für einen Buchstaben `?`, für irgendein Zeichen `.` und für ein Zeichen das gewünschte Zeichen ein. Während bei **match** und **notMatch** die Groß-/Kleinschreibung beachtet wird, erfolgt bei allen anderen Bedingungen, die einen _stringValue_ auswerten, keine Berücksichtigung der Groß-/Kleinschreibung. Als Alternativen, bei denen die Groß-/Kleinschreibung nicht beachtet werden muss, stehen **matchInsensitively** und **notMatchInsensitively** zur Verfügung.
 
 ### <a name="fields"></a>Felder
 
-Bedingungen, die auswerten, ob die Werte von Eigenschaften in der Nutzlast der Ressourcenanforderung bestimmte Kriterien erfüllen, können mit einem **Feldausdruck** gebildet werden.
-Folgende Felder werden unterstützt:
+Bedingungen, die auswerten, ob die Werte von Eigenschaften in der Nutzlast der Ressourcenanforderung bestimmte Kriterien erfüllen, können mit einem **Feldausdruck** gebildet werden. Folgende Felder werden unterstützt:
 
 - `name`
 - `fullName`
@@ -324,8 +321,7 @@ Folgende Felder werden unterstützt:
 > `tags.<tagName>`, `tags[tagName]` und `tags[tag.with.dots]` werden weiterhin als Möglichkeiten zum Deklarieren eines Felds für Tags akzeptiert. Die oben aufgeführten Ausdrücke werden jedoch bevorzugt.
 
 > [!NOTE]
-> Bei **Feldausdrücken**, die sich auf den **\[\*\]-Alias** beziehen, wird jedes Element im Array einzeln ausgewertet, wobei die Elemente durch ein logisches **UND** verknüpft werden.
-> Weitere Informationen finden Sie unter [Verweisen auf Arrayeigenschaften in Ressourcen](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
+> Bei **Feldausdrücken**, die sich auf den **\[\*\]-Alias** beziehen, wird jedes Element im Array einzeln ausgewertet, wobei die Elemente durch ein logisches **UND** verknüpft werden. Weitere Informationen finden Sie unter [Verweisen auf Arrayeigenschaften in Ressourcen](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
 #### <a name="use-tags-with-parameters"></a>Verwenden von Tags mit Parametern
 
@@ -472,6 +468,7 @@ Die folgenden Eigenschaften werden bei der **Feldzählung** verwendet:
 Weitere Informationen zur Arbeit mit Arrayeigenschaften in Azure Policy, einschließlich einer detaillierten Erklärung, wie der **Feldzählungsausdruck** ausgewertet wird, finden Sie unter [Verweisen auf Arrayeigenschaften in Ressourcen](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
 #### <a name="value-count"></a>Wertzählung
+
 Zählt, wie viele Member eines Arrays eine Bedingung erfüllen. Das Array kann ein Literalarray oder ein [Verweis auf den Arrayparameter](#using-a-parameter-value) sein. Die Struktur von **Wertzählungsausdrücken** sieht wie folgt aus:
 
 ```json
@@ -490,7 +487,7 @@ Zählt, wie viele Member eines Arrays eine Bedingung erfüllen. Das Array kann e
 Die folgenden Eigenschaften werden bei der **Wertzählung** verwendet:
 
 - **count.value** (erforderlich): Das auszuwertende Array.
-- **count.name** (erforderlich): Der Indexname, der aus Buchstaben des englischen Alphabets und Ziffern besteht. Definiert einen Namen für den Wert des Arraymembers, der in der aktuellen Iteration ausgewertet wird. Der Name wird verwendet, um auf den aktuellen Wert innerhalb der `count.where`-Bedingung zu verweisen. Optional, wenn der **count**-Ausdruck kein untergeordnetes Element eines anderen **count**-Ausdrucks ist. Wenn nicht angegeben, wird der Indexname implizit auf `"default"`festgelegt.
+- **count.name** (erforderlich): Der Indexname, der aus Buchstaben des englischen Alphabets und Ziffern besteht. Definiert einen Namen für den Wert des Arraymembers, der in der aktuellen Iteration ausgewertet wird. Der Name wird verwendet, um auf den aktuellen Wert innerhalb der `count.where`-Bedingung zu verweisen. Optional, wenn der **Zählungsausdruck** nicht in einem untergeordneten Element eines anderen **Zählungsausdrucks** enthalten ist. Wenn nicht angegeben, wird der Indexname implizit auf `"default"`festgelegt.
 - **count.where** (optional): Der Bedingungsausdruck, der individuell für jeden Arraymember von `count.value` ausgewertet wird. Wenn diese Eigenschaft nicht angegeben wird, werden alle Arraymember in _TRUE_ ausgewertet. Innerhalb dieser Eigenschaft kann eine beliebige [Bedingung](../concepts/definition-structure.md#conditions) verwendet werden. Es können [logische Operatoren](#logical-operators) innerhalb dieser Eigenschaft verwendet werden, um komplexe Auswertungsanforderungen zu erstellen. Auf den Wert des aktuell aufgelisteten Arraymembers kann durch Aufrufen der [aktuellen](#the-current-function) Funktion zugegriffen werden.
 - **\<condition\>** (erforderlich): Der Wert wird mit der Anzahl der Elemente verglichen, die dem `count.where`-Bedingungsausdruck entsprachen. Es sollte eine numerische [Bedingung](../concepts/definition-structure.md#conditions) verwendet werden.
 
@@ -500,19 +497,19 @@ Die folgenden Einschränkungen werden erzwungen:
 
 #### <a name="the-current-function"></a>Die current-Funktion
 
-Die `current()`-Funktion ist nur innerhalb der `count.where`-Bedingung verfügbar. Sie gibt den Wert des Arraymembers zurück, der zurzeit von der Auswertung des **Zählungsausdrucks** aufgezählt wird.
+Die `current()`-Funktion ist nur innerhalb der `count.where`-Bedingung verfügbar. Sie gibt den Wert des Arraymembers zurück, das zurzeit von der Auswertung des **Zählungsausdrucks** aufgezählt wird.
 
 **Wertzählung: Syntax**
 
 - `current(<index name defined in count.name>)`. Beispiel: `current('arrayMember')`.
-- `current()`. Nur zulässig, wenn der **Wertzählungsausdruck** kein untergeordnetes Element eines anderen **count**-Ausdrucks ist. Gibt den gleichen Wert wie oben zurück.
+- `current()`. Nur zulässig, wenn der **Wertzählungsausdruck** kein untergeordnetes Element eines anderen **Zählungsausdrucks** ist. Gibt den gleichen Wert wie oben zurück.
 
 Wenn der vom Aufruf zurückgegebene Wert ein Objekt ist, werden Eigenschaftenaccessoren unterstützt. Beispiel: `current('objectArrayMember').property`.
 
 **Feldzählung: Syntax**
 
 - `current(<the array alias defined in count.field>)`. Beispiel: `current('Microsoft.Test/resource/enumeratedArray[*]')`.
-- `current()`. Nur zulässig, wenn der **Feldzählungsausdruck** kein untergeordnetes Element eines anderen **count**-Ausdrucks ist. Gibt den gleichen Wert wie oben zurück.
+- `current()`. Nur zulässig, wenn der **Feldzählungsausdruck** kein untergeordnetes Element eines anderen **Zählungsausdrucks** ist. Gibt den gleichen Wert wie oben zurück.
 - `current(<alias of a property of the array member>)`. Beispiel: `current('Microsoft.Test/resource/enumeratedArray[*].property')`.
 
 #### <a name="field-count-examples"></a>Beispiele für Feldzählung
@@ -600,7 +597,7 @@ Beispiel 5: Überprüfen, ob mindestens ein Arraymember mehreren Eigenschaften i
 }
 ```
 
-Beispiel 6: Verwenden Sie die `current()`-Funktion innerhalb der `where`-Bedingungen, um auf den Wert des aktuell aufgezählten Arraymembers in einer Vorlagenfunktion zuzugreifen. Diese Bedingung überprüft, ob ein virtuelles Netzwerk ein Adresspräfix enthält, das sich nicht im CIDR-Bereich 10.0.0.0/24 befindet.
+Beispiel 6: Verwenden Sie die `current()`-Funktion innerhalb der `where`-Bedingungen, um auf den Wert des aktuell aufgezählten Arraymembers in einer Vorlagenfunktion zuzugreifen. Diese Bedingung überprüft, ob ein virtuelles Netzwerk ein Adresspräfix enthält, das sich nicht im CIDR-Bereich „10.0.0.0/24“ befindet.
 
 ```json
 {
@@ -615,7 +612,7 @@ Beispiel 6: Verwenden Sie die `current()`-Funktion innerhalb der `where`-Bedingu
 }
 ```
 
-Beispiel 7: Verwenden Sie die `field()`-Funktion innerhalb der `where`-Bedingungen, um auf den Wert des aktuell aufgezählten Arraymembers zuzugreifen. Diese Bedingung überprüft, ob ein virtuelles Netzwerk ein Adresspräfix enthält, das sich nicht im CIDR-Bereich 10.0.0.0/24 befindet.
+Beispiel 7: Verwenden Sie die `field()`-Funktion innerhalb der `where`-Bedingungen, um auf den Wert des aktuell aufgezählten Arraymembers zuzugreifen. Diese Bedingung überprüft, ob ein virtuelles Netzwerk ein Adresspräfix enthält, das sich nicht im CIDR-Bereich „10.0.0.0/24“ befindet.
 
 ```json
 {
@@ -648,7 +645,7 @@ Beispiel 1: Überprüfen, ob der Ressourcenname mit einem der angegebenen Namens
 }
 ```
 
-Beispiel 2: Überprüfen, ob der Ressourcenname mit einem der angegebenen Namensmuster übereinstimmt. Die `current()`-Funktion gibt keinen Indexnamen an. Das Ergebnis ist das gleiche wie im vorherigen Beispiel.
+Beispiel 2: Überprüfen, ob der Ressourcenname mit einem der angegebenen Namensmuster übereinstimmt. Die `current()`-Funktion gibt keinen Indexnamen an. Das Ergebnis ist dasselbe wie im vorherigen Beispiel.
 
 ```json
 {
@@ -679,7 +676,7 @@ Beispiel 3: Überprüfen, ob der Ressourcenname mit einem der durch einen Arrayp
 }
 ```
 
-Beispiel 4: Überprüfen, ob sich ein Adresspräfix des virtuellen Netzwerks nicht in der Liste der genehmigten Präfixe befindet.
+Beispiel 4: Überprüfen, ob ein Adresspräfix des virtuellen Netzwerks in der Liste der genehmigten Präfixe nicht aufgeführt wird.
 
 ```json
 {
@@ -769,7 +766,7 @@ Azure Policy unterstützt die folgenden Auswirkungstypen:
 - **Deny** generiert ein Ereignis im Aktivitätsprotokoll und führt zu einem Fehler bei der Anforderung.
 - **DeployIfNotExists** stellt eine verwandte Ressource bereit, falls noch keine vorhanden ist.
 - **Deaktiviert** wertet Ressourcen nicht auf Konformität mit der Richtlinienregel aus.
-- **Modify** fügt die definierten Tags zu einer Ressource hinzu, aktualisiert sie oder entfernt sie aus einer Ressource.
+- **Modify** fügt die definierten Tags zu einer Ressource hinzu, aktualisiert oder entfernt sie aus einer Ressource oder einem Abonnement.
 - **EnforceOPAConstraint** (veraltet) konfiguriert den Open Policy Agent-Zugangscontroller mit Gatekeeper v3 für selbstverwaltete Kubernetes-Cluster in Azure.
 - **EnforceRegoPolicy** (veraltet) konfiguriert den Open Policy Agent-Zugangscontroller mit Gatekeeper v2 in Azure Kubernetes Service.
 
@@ -822,18 +819,18 @@ Die folgenden Funktionen sind nur in Richtlinienregeln verfügbar:
   ```
 
 - `ipRangeContains(range, targetRange)`
-    - **range**: [Erforderlich] Zeichenfolge: Zeichenfolge, die einen Bereich von IP-Adressen angibt
-    - **targetRange**: [Erforderlich] Zeichenfolge: Zeichenfolge, die einen Bereich von IP-Adressen angibt
+  - **range**: [Erforderlich] Zeichenfolge: Zeichenfolge, die einen Bereich von IP-Adressen angibt
+  - **targetRange**: [Erforderlich] Zeichenfolge: Zeichenfolge, die einen Bereich von IP-Adressen angibt
 
-    Gibt zurück, ob der angegebene IP-Adressbereich den Ziel-IP-Adressbereich enthält. Leere Bereiche oder Kombinationen verschiedener IP-Familien sind nicht zulässig und führen zu einem Bewertungsfehler.
+  Gibt zurück, ob der angegebene IP-Adressbereich den Ziel-IP-Adressbereich enthält. Leere Bereiche oder Kombinationen verschiedener IP-Familien sind nicht zulässig und führen zu einem Bewertungsfehler.
 
-    Unterstützte Formate:
-    - Einzelne IP-Adresse (Beispiele: `10.0.0.0`, `2001:0DB8::3:FFFE`)
-    - CIDR-Bereich (Beispiele: `10.0.0.0/24`, `2001:0DB8::/110`)
-    - Durch Start- und End-IP-Adressen definierter Bereich (Beispiele: `192.168.0.1-192.168.0.9`, `2001:0DB8::-2001:0DB8::3:FFFF`)
+  Unterstützte Formate:
+  - Einzelne IP-Adresse (Beispiele: `10.0.0.0`, `2001:0DB8::3:FFFE`)
+  - CIDR-Bereich (Beispiele: `10.0.0.0/24`, `2001:0DB8::/110`)
+  - Durch Start- und End-IP-Adressen definierter Bereich (Beispiele: `192.168.0.1-192.168.0.9`, `2001:0DB8::-2001:0DB8::3:FFFF`)
 
 - `current(indexName)`
-    - Eine spezielle Funktion, die nur innerhalb von [Zählausdrücken](#count) verwendet werden kann.
+  - Eine spezielle Funktion, die nur innerhalb von [Zählungsausdrücken](#count) verwendet werden kann.
 
 #### <a name="policy-function-example"></a>Beispiel für Richtlinienfunktion
 
@@ -918,7 +915,7 @@ Der Alias **\[\*\]** repräsentiert eine Sammlung von Werten, die aus den Elemen
 | `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | Die Elemente des `ipRules`-Arrays. |
 | `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | Die Werte der `action`-Eigenschaft der einzelnen Elemente des `ipRules`-Arrays. |
 
-Bei Verwendung in einer [Feld](#fields)-Bedingung ermöglichen die Arrayaliase den Vergleich der einzelnen Arrayelemente mit einem Zielwert. Bei Verwendung mit dem [count](#count)-Ausdruck ist Folgendes möglich:
+Bei Verwendung in einer [Feld](#fields)-Bedingung ermöglichen die Arrayaliase den Vergleich der einzelnen Arrayelemente mit einem Zielwert. Bei Verwendung in einem [Zählungsausdruck](#count) ist Folgendes möglich:
 
 - Überprüfen der Größe eines Arrays
 - Überprüfen, ob alle\einige\keine Arrayelemente eine komplexe Bedingung erfüllen

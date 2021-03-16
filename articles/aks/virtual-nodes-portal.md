@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 4c67d3608d2128385c273425ea495a02fa5a8c45
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 06a3e7263b2e03cfc37f7ba3c733e07536b5d473
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180903"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501803"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Erstellen und Konfigurieren eines AKS-Clusters zur Verwendung von virtuellen Knoten im Azure-Portal
 
@@ -64,7 +64,7 @@ Wählen Sie auf der Seite **Skalieren** unter **Virtuelle Knoten** die Option *A
 
 ![Erstellen von AKS-Clustern und Aktivieren der virtuellen Knoten](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
-Standardmäßig wird ein Azure Active Directory-Dienstprinzipal erstellt. Dieser Dienstprinzipal wird für die Clusterkommunikation und die Integration in andere Azure-Dienste verwendet. Alternativ können Sie anstelle eines Dienstprinzipals eine verwaltete Identität für Berechtigungen verwenden. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md).
+Standardmäßig wird eine Clusteridentität erstellt. Diese Clusteridentität wird für die Clusterkommunikation und die Integration in andere Azure-Dienste verwendet. Diese Clusteridentität ist standardmäßig eine verwaltete Identität. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md). Sie können auch einen Dienstprinzipal als Ihre Clusteridentität verwenden.
 
 Der Cluster ist auch für den erweiterten Netzwerkbetrieb konfiguriert. Die virtuellen Knoten sind so konfiguriert, dass sie ihr eigenes virtuelles Azure-Netzwerksubnetz verwenden. Dieses Subnetz verfügt über delegierte Berechtigungen, um Azure-Ressourcen zwischen dem AKS-Cluster zu verbinden. Wenn Sie noch kein Subnetz delegiert haben, erstellt und konfiguriert das Azure-Portal das virtuelle Netzwerk und Subnetz von Azure für die Verwendung mit den virtuellen Knoten.
 

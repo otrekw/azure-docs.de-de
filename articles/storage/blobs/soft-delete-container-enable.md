@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4b25458cc934097b5477c174ae7ecc47762e2929
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2097c1743e07b5563bc75d3d1cce48aa11b98e5f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280299"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216342"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>Aktivieren und Verwalten des vorläufigen Löschens für Container (Vorschau)
 
@@ -23,6 +23,10 @@ Das Feature des vorläufigen Löschens von Containern (Vorschau) schützt Ihre D
 Wenn die Möglichkeit besteht, dass Ihre Daten von einer Anwendung oder einem anderen Benutzer des Speicherkontos versehentlich geändert oder gelöscht werden, empfiehlt Microsoft, das vorläufige Löschen für Container zu aktivieren. In diesem Artikel wird gezeigt, wie Sie das vorläufige Löschen für Container aktivieren. Weitere Informationen zum Feature des vorläufigen Löschens für Container sowie zur Registrierung für die Vorschau finden Sie unter [Vorläufiges Löschen für Container (Vorschau)](soft-delete-container-overview.md).
 
 Um einen vollumfänglichen Datenschutz zu erzielen, empfiehlt Microsoft auch die Aktivierung des vorläufigen Löschens für Blobs sowie die Blobversionsverwaltung. Informationen zum Aktivieren des vorläufigen Löschens für Blobs finden Sie unter [Aktivieren und Verwalten des vorläufigen Löschens für Blobs](soft-delete-blob-enable.md). Informationen zum Aktivieren der Blobversionsverwaltung finden Sie unter [Blobversionsverwaltung](versioning-overview.md).
+
+> [!IMPORTANT]
+>
+> Das vorläufige Löschen von Containern befindet sich zurzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
 ## <a name="enable-container-soft-delete"></a>Aktivieren des vorläufigen Löschens von Containern
 
@@ -42,12 +46,12 @@ Um das vorläufige Löschen von Containern für Ihr Speicherkonto im Azure-Porta
 
 # <a name="template"></a>[Vorlage](#tab/template)
 
-Um das vorläufige Löschen von Containern mithilfe einer Azure Resource Manager-Vorlage zu aktivieren, erstellen Sie eine Vorlage, mit der die Eigenschaft **containerDeleteRetentionPolicy** festgelegt wird. Die folgenden Schritte beschreiben, wie eine Vorlage im Azure-Portal erstellt wird.
+Wenn Sie das vorläufige Löschen von Containern mithilfe einer Azure Resource Manager-Vorlage aktivieren möchten, erstellen Sie eine Vorlage, mit der die Eigenschaft **containerDeleteRetentionPolicy** festgelegt wird. Die folgenden Schritte beschreiben, wie eine Vorlage im Azure-Portal erstellt wird.
 
-1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
-1. Geben Sie in **Marketplace durchsuchen** den Begriff **Vorlagenbereitstellung** ein, und drücken Sie die **EINGABETASTE**.
-1. Wählen Sie **Vorlagenbereitstellung** aus, klicken Sie auf **Erstellen**, und wählen Sie dann **Eigene Vorlage im Editor erstellen** aus.
-1. Fügen Sie folgenden JSON-Code im Vorlagen-Editor ein. Ersetzen Sie den Platzhalter `<account-name>`  durch den Namen Ihres Speicherkontos.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
+1. Geben Sie in **Marketplace durchsuchen** den Begriff **Vorlagenbereitstellung** ein, und drücken Sie dann die **EINGABETASTE**.
+1. Wählen Sie **Vorlagenbereitstellung** aus, klicken Sie auf **Erstellen**, und wählen Sie dann **Eigene Vorlage im Editor erstellen** aus.
+1. Fügen Sie folgenden JSON-Code im Vorlagen-Editor ein. Ersetzen Sie den Platzhalter `<account-name>` durch den Namen Ihres Speicherkontos.
 
     ```json
     {
@@ -75,7 +79,7 @@ Um das vorläufige Löschen von Containern mithilfe einer Azure Resource Manager
 
 1. Geben Sie den Aufbewahrungszeitraum an. Der Standardwert ist 7.
 1. Speichern Sie die Vorlage.
-1. Geben Sie die Ressourcengruppe des Kontos an, und wählen Sie dann die Schaltfläche **Überprüfen und erstellen** aus, um die Vorlage bereitzustellen und das vorläufige Löschen für Container zu aktivieren.
+1. Geben Sie die Ressourcengruppe des Kontos an, und wählen Sie die Schaltfläche **Überprüfen und erstellen** aus, um die Vorlage bereitzustellen und das vorläufige Löschen für Container zu aktivieren.
 
 ## <a name="view-soft-deleted-containers"></a>Anzeigen von vorläufig gelöschten Containern
 
@@ -86,7 +90,7 @@ Um vorläufig gelöschte Container im Azure-Portal anzuzeigen, führen Sie die f
 1. Navigieren Sie im Azure-Portal zu Ihrem Speicherkonto, und zeigen Sie die Liste Ihrer Container an.
 1. Legen Sie den Schalter „Gelöschte Container anzeigen“ so fest, dass gelöschte Container in der Liste angezeigt werden.
 
-    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-list.png" alt-text="Screenshot: Aktivieren des vorläufigen Löschens von Containern im Azure-Portal":::
+    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-list.png" alt-text="Screenshot: Anzeigen von vorläufig gelöschten Containern im Azure-Portal":::
 
 ## <a name="restore-a-soft-deleted-container"></a>Wiederherstellen eines vorläufig gelöschten Containers
 
@@ -95,7 +99,7 @@ Sie können einen vorläufig gelöschten Container und dessen Inhalte innerhalb 
 1. Navigieren Sie im Azure-Portal zu Ihrem Speicherkonto, und zeigen Sie die Liste Ihrer Container an.
 1. Öffnen Sie das Kontextmenü für den Container, den Sie wiederherstellen möchten, und wählen Sie die Option **Wiederherstellen** aus.
 
-    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="Screenshot: Aktivieren des vorläufigen Löschens von Containern im Azure-Portal":::
+    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="Screenshot: Wiederherstellen eines vorläufig gelöschten Containers im Azure-Portal":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

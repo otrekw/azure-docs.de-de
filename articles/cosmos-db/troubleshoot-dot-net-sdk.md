@@ -3,25 +3,25 @@ title: Diagnostizieren und Behandeln von Problemen bei Verwendung des .NET SDK f
 description: Verwenden Sie Features wie clientseitige Protokollierung und andere Tools von Drittanbietern, um bei Verwenden des .NET SDK Probleme im Zusammenhang mit Azure Cosmos DB zu erkennen, zu diagnostizieren und zu beheben.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 02/05/2021
+ms.date: 03/05/2021
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 04813b9d70557314e619fded5294644f5f6fadf5
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 1f7548b355353eb77419f4d1760b40ba02eeddda
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831245"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442195"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostizieren und Behandeln von Problemen bei Verwendung des .NET SDK für Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
-> * [Asynchrones Java SDK v2](troubleshoot-java-async-sdk.md)
+> * [Async Java SDK v2](troubleshoot-java-async-sdk.md)
 > * [.NET](troubleshoot-dot-net-sdk.md)
 > 
 
@@ -91,14 +91,49 @@ Wenn Ihre App auf einem [virtuellen Azure-Computer ohne öffentliche IP-Adresse]
 * Weisen Sie Ihrem [virtuellen Azure-Computer eine öffentliche IP-Adresse](../load-balancer/troubleshoot-outbound-connection.md#assignilpip) zu.
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Hohe Netzwerklatenz
-Eine hohe Netzwerklatenz kann mithilfe der [DiagnosticsString](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?preserve-view=true&view=azure-dotnet)-Eigenschaft im V2 SDK oder der [Diagnostics](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics)-Eigenschaft im V3 SDK ermittelt werden.
+Eine hohe Netzwerklatenz kann mithilfe der [DiagnosticsString](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring)-Eigenschaft im V2 SDK oder der [Diagnostics](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics)-Eigenschaft im V3 SDK ermittelt werden.
 
-Wenn keine [Timeouts](troubleshoot-dot-net-sdk-request-timeout.md) vorhanden sind und die Diagnose einzelne Anforderungen zeigt, bei denen die hohe Latenz durch den Unterschied zwischen `ResponseTime` und `RequestStartTime` wie folgt ersichtlich ist (in diesem Beispiel > 300 Millisekunden):
+Wenn keine [Timeouts](troubleshoot-dot-net-sdk-request-timeout.md) vorliegen und die Diagnose einzelne Anforderungen zeigt, in denen die hohe Latenz ersichtlich ist.
+
+# <a name="v3-sdk"></a>[V3 SDK](#tab/diagnostics-v3)
+
+Die Diagnose kann aus jeder beliebigen `ResponseMessage`, `ItemResponse`, `FeedResponse` oder `CosmosException` durch die Eigenschaft `Diagnostics` abgerufen werden:
+
+```csharp
+ItemResponse<MyItem> response = await container.CreateItemAsync<MyItem>(item);
+Console.WriteLine(response.Diagnostics.ToString());
+```
+
+Netzwerkinteraktionen in der Diagnose sind beispielsweise:
+
+```json
+{
+    "name": "Microsoft.Azure.Documents.ServerStoreModel Transport Request",
+    "id": "0e026cca-15d3-4cf6-bb07-48be02e1e82e",
+    "component": "Transport",
+    "start time": "12: 58: 20: 032",
+    "duration in milliseconds": 1638.5957
+}
+```
+
+Gibt an, wo der Wert `duration in milliseconds` die Latenz zeigt.
+
+# <a name="v2-sdk"></a>[V2 SDK](#tab/diagnostics-v2)
+
+Die Diagnose ist verfügbar, wenn der Client im [direkten Modus](sql-sdk-connection-modes.md) über die Eigenschaft `RequestDiagnosticsString` konfiguriert wird:
+
+```csharp
+ResourceResponse<Document> response = await client.ReadDocumentAsync(documentLink, new RequestOptions() { PartitionKey = new PartitionKey(partitionKey) });
+Console.WriteLine(response.RequestDiagnosticsString);
+```
+
+Und die Latenz wäre die Differenz zwischen `ResponseTime` und `RequestStartTime`:
 
 ```bash
 RequestStartTime: 2020-03-09T22:44:49.5373624Z, RequestEndTime: 2020-03-09T22:44:49.9279906Z,  Number of regions attempted:1
 ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: rntbd://..., ...
 ```
+--- 
 
 Diese Latenz kann mehrere Ursachen haben:
 

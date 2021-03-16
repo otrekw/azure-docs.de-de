@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 078118ec793530720a49a19046854e5ea4b7f5c4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b7e4ea586098ea3eb0dfd684650f798d7988e18b
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388939"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634582"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>Bewerten und Verbessern der Custom Speech-Genauigkeit
 
@@ -109,16 +109,17 @@ Audiodaten mit menschenmarkierten Transkripts ermöglichen die größten Verbess
 
 Berücksichtigen Sie Folgendes:
 
+* Das Training mit Audiodaten bietet den größten Nutzen, wenn das Audiomaterial auch für Menschen schwer zu verstehen ist. In den meisten Fällen sollten Sie mit dem Training beginnen, indem Sie nur verwandten Text verwenden.
+* Bei Verwendung einer weit verbreiteten Sprache wie „Englisch (USA)“ ist unter Umständen gar kein Training mit Audiodaten erforderlich. Bei diesen Sprachen liefern die Basismodelle in den meisten Szenarien bereits sehr gute Erkennungsergebnisse, und es reicht wahrscheinlich, sie mit verwandtem Text zu trainieren.
 * Custom Speech kann den Wortkontext nur erfassen, um Ersetzungsfehler zu reduzieren (keine Einfüge- oder Löschfehler).
 * Vermeiden Sie Beispiele, die Transkriptionsfehler enthalten, aber verwenden Sie unterschiedliche Audioqualitäten.
 * Vermeiden Sie Sätze, die sich nicht auf Ihre Problembestellung beziehen. Sätze dieser Art können das Modell beeinträchtigen.
 * Wenn die Qualität von Transkripts variiert, können Sie besonders gute Sätze (z. B. hervorragende Transkriptionen mit wichtigen Ausdrücken) duplizieren, um ihre Gewichtung zu erhöhen.
 * Der Speech-Dienst verwendet die Transkriptionen automatisch, um die Erkennung von themenspezifischen Wörtern und Ausdrücken zu verbessern, als wären sie als verwandter Text hinzugefügt worden.
-* Das Training mit Audiodaten bietet den größten Nutzen, wenn das Audiomaterial auch für Menschen schwer zu verstehen ist. In den meisten Fällen sollten Sie mit dem Training beginnen, indem Sie nur verwandten Text verwenden.
 * Der Abschluss eines Trainingsvorgangs kann mehrere Tage in Anspruch nehmen. Stellen Sie zum Verbessern der Trainingsgeschwindigkeit sicher, dass Sie Ihr Abonnement für den Speech-Dienst in einer [Region mit dedizierter Hardware](custom-speech-overview.md#set-up-your-azure-account) für Training erstellen.
 
 > [!NOTE]
-> Nicht alle Basismodelle unterstützen das Training mit Audiodaten. Wenn es von einem Basismodell nicht unterstützt wird, verwendet der Speech-Dienst nur den Text aus den Transkriptionen und ignoriert die Audiodaten. Eine Liste mit Basismodellen, die das Training mit Audiodaten unterstützen, finden Sie unter [Sprachunterstützung](language-support.md#speech-to-text).
+> Nicht alle Basismodelle unterstützen das Training mit Audiodaten. Wenn es von einem Basismodell nicht unterstützt wird, verwendet der Speech-Dienst nur den Text aus den Transkriptionen und ignoriert die Audiodaten. Eine Liste mit Basismodellen, die das Training mit Audiodaten unterstützen, finden Sie unter [Sprachunterstützung](language-support.md#speech-to-text). Selbst wenn ein Basismodell das Training mit Audiodaten unterstützt, verwendet der Dienst möglicherweise nur einen Teil der Audiodaten. Dennoch werden alle Transkriptionen verwendet.
 
 > [!NOTE]
 > Wenn Sie das für das Training verwendete Basismodell ändern und das Trainingsdataset Audiodaten enthält, überprüfen Sie *immer*, ob das neue ausgewählte Basismodell [das Training mit Audiodaten unterstützt](language-support.md#speech-to-text). Wenn das zuvor verwendete Basismodell kein Training mit Audiodaten unterstützt hat und das Trainingsdataset Audiodaten enthält, verlängert sich die Trainingsdauer mit dem neuen Basismodell **deutlich** und kann schnell einige Stunden oder sogar mehrere Tage und mehr betragen. Dies ist insbesondere dann der Fall, wenn es sich bei der Region Ihres Abonnements für den Speech-Dienst **nicht** um eine [Region mit dedizierter Hardware](custom-speech-overview.md#set-up-your-azure-account) für Training handelt.

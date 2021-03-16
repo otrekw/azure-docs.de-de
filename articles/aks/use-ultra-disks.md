@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Ultra Disks in einem Azure Kubernetes Service
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: d66b806adb7285e0ce2a21d8fe9254b3dbe89bcb
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: c743162ed3f75386287e050443e82069e797ced9
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178846"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502568"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Verwenden von Azure Ultra Disks in Azure Kubernetes Service (Vorschauversion)
 
@@ -84,7 +84,7 @@ Wenn Sie Cluster ohne Unterstützung für Ultra Disks erstellen möchten, lassen
 
 ## <a name="enable-ultra-disks-on-an-existing-cluster"></a>Aktivieren von Ultra Disks in einem vorhandenen Cluster
 
-Sie können Ultra Disks in vorhandenen Clustern aktivieren, indem Sie dem Cluster einen neuen Knotenpool hinzufügen, der Ultra Disks unterstützt. Konfigurieren Sie einen neuen Knotenpool für die Verwendung der hostbasierten Verschlüsselung mit dem `--aks-custom-headers`-Flag.
+Sie können Ultra Disks in vorhandenen Clustern aktivieren, indem Sie dem Cluster einen neuen Knotenpool hinzufügen, der Ultra Disks unterstützt. Konfigurieren Sie einen neuen Knotenpool zur Verwendung mithilfe des Flags `--aks-custom-headers`.
 
 ```azurecli
 az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true

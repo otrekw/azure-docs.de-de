@@ -9,16 +9,16 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: db946dcc0fc8571f7b6aa191909155baccf7d1a2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8ed63a508447104f9073c986debfae73ba7de89f
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878577"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428642"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Einbinden von Azure Blob Storage mithilfe des NFS 3.0-Protokolls (Vorschau)
 
-Sie können einen Container über eine Windows- oder Linux-basierte Azure-VM oder ein lokal ausgeführtes Windows- oder Linux-System in Blob Storage mithilfe des NFS 3.0-Protokolls einbinden. Dieser Artikel bietet eine schrittweise Anleitung. Weitere Informationen zur Unterstützung des NFS 3.0-Protokolls in Blob-Speicher finden Sie unter [Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)](network-file-system-protocol-support.md).
+Sie können einen Container in Blob-Speicher von einem Linux-basierten virtuellen Azure-Computer (VM) oder einem Linux-System aus, das lokal ausgeführt wird, mithilfe des NFS 3.0-Protokolls einbinden. Dieser Artikel bietet eine schrittweise Anleitung. Weitere Informationen zur Unterstützung des NFS 3.0-Protokolls in Blob-Speicher finden Sie unter [Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)](network-file-system-protocol-support.md).
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>Schritt 1: Registrieren des NFS 3.0-Protokollfeatures in Ihrem Abonnement
 
@@ -107,9 +107,7 @@ Erstellen Sie einen Container in Ihrem Speicherkonto, indem Sie eins dieser Tool
 
 ## <a name="step-7-mount-the-container"></a>Schritt 7: Einbinden des Containers
 
-Erstellen Sie ein Verzeichnis auf Ihrem Windows- oder Linux-System, und binden Sie dann ein Container in das Speicherkonto ein.
-
-### <a name="linux"></a>[Linux](#tab/linux)
+Erstellen Sie ein Verzeichnis auf Ihrem Linux-System, und binden Sie dann einen Container in das Speicherkonto ein.
 
 1. Erstellen Sie auf einem Linux-System ein Verzeichnis.
 
@@ -126,32 +124,6 @@ Erstellen Sie ein Verzeichnis auf Ihrem Windows- oder Linux-System, und binden S
    - Ersetzen Sie den Platzhalter `<storage-account-name>`, der in diesem Befehl vorkommt, durch den Namen Ihres Speicherkontos.  
 
    - Ersetzen Sie den Platzhalter `<container-name>` durch den Namen Ihres Containers.
-
-
-### <a name="windows"></a>[Windows](#tab/windows)
-
-1. Öffnen Sie das Dialogfeld **Windows-Features**, und aktivieren Sie dann das Feature **Client für NFS**. 
-
-   ![Feature „Client für NFS“](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
-
-2. Öffnen Sie ein **Eingabeaufforderungsfenster** („cmd.exe“). Binden Sie dann einen Container mithilfe des [mount](/windows-server/administration/windows-commands/mount)-Befehls ein.
-
-   ```
-   mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
-   ```
-
-   - Ersetzen Sie den Platzhalter `<storage-account-name>`, der in diesem Befehl vorkommt, durch den Namen Ihres Speicherkontos.  
-
-   - Ersetzen Sie den Platzhalter `<container-name>` durch den Namen Ihres Containers.
-
-3. Wenn Sie Schreibberechtigungen benötigen, müssen Sie möglicherweise die Standard-UID und die GID ändern, die von Windows zum Herstellen einer Verbindung mit der Freigabe verwendet werden. Führen Sie dazu die folgenden PowerShell-Befehle als Administrator aus:
-
-   ```
-   New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default -Name AnonymousUid -PropertyType DWord -Value 0
-   New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default -Name AnonymousGid -PropertyType DWord -Value 0
-   ```
-   
-   - Starten Sie den NFS-Clientdienst neu, oder starten Sie nach dieser Änderung den Server neu.
 
 ---
 

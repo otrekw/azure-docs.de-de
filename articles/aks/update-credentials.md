@@ -5,16 +5,16 @@ description: Hier erfahren Sie, wie Sie die Dienstprinzipal- oder AAD-Anwendungs
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: ba2c31872ae026cfdfcb7be17d333fb98194dce6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 84cadc54a11c2e57d73fd1f06e98deb3d599d648
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389007"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501174"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Aktualisieren oder Rotieren der Anmeldeinformationen für Azure Kubernetes Service (AKS)
 
-Standardmäßig werden AKS-Cluster mit einem Dienstprinzipal mit einer Ablaufzeit von einem Jahr erstellt. Wenn Sie sich dem Ablaufdatum nähern, können Sie die Anmeldeinformationen zurücksetzen, um den Dienstprinzipal um einen zusätzlichen Zeitraum zu verlängern. Sie können die Anmeldeinformationen auch im Rahmen einer definierten Sicherheitsrichtlinie aktualisieren oder rotieren. Dieser Artikel beschreibt, wie diese Anmeldeinformationen für einen AKS-Cluster aktualisiert werden.
+AKS-Cluster, die mit einem Dienstprinzipal erstellt wurden, haben eine Ablaufzeit von einem Jahr. Wenn Sie sich dem Ablaufdatum nähern, können Sie die Anmeldeinformationen zurücksetzen, um den Dienstprinzipal um einen zusätzlichen Zeitraum zu verlängern. Sie können die Anmeldeinformationen auch im Rahmen einer definierten Sicherheitsrichtlinie aktualisieren oder rotieren. Dieser Artikel beschreibt, wie diese Anmeldeinformationen für einen AKS-Cluster aktualisiert werden.
 
 Möglicherweise haben Sie auch [Ihren AKS-Cluster in Azure Active Directory][aad-integration] integriert und verwenden ihn als Authentifizierungsanbieter für Ihren Cluster. In diesem Fall verfügen Sie über zwei weitere Identitäten, die für Ihren Cluster erstellt wurden: die AAD-Server-App und die AAD-Client-App. Sie können diese Anmeldeinformationen ebenfalls zurücksetzen.
 

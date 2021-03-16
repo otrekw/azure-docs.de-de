@@ -4,17 +4,17 @@ description: Verschlüsselungsbereiche ermöglichen Ihnen die Verwaltung der Ver
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/22/2020
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 881a7fc915ab986577599b85f8412fa8107f7902
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 35395a30f7d58b9edb3aa7622a35e8c4a62dc76f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017388"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211361"
 ---
 # <a name="encryption-scopes-for-blob-storage-preview"></a>Verschlüsselungsbereiche für Blobspeicher (Vorschau)
 
@@ -26,15 +26,14 @@ Sie können entweder von Microsoft verwaltete Schlüssel oder kundenseitig verwa
 
 Nachdem Sie einen Verschlüsselungsbereich erstellt haben, können Sie diesen für eine Anforderung zum Erstellen eines Containers oder Blobs angeben. Weitere Informationen zum Erstellen eines Verschlüsselungsbereichs finden Sie unter [Erstellen und Verwalten von Verschlüsselungsbereichen (Vorschau)](encryption-scope-manage.md).
 
-> [!NOTE]
+> [!IMPORTANT]
+> Verschlüsselungsbereiche befinden sich zurzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+>
+> Achten Sie darauf, alle derzeit nicht benötigten Verschlüsselungsbereiche zu deaktivieren, um unerwartete Kosten zu vermeiden.
+>
 > Verschlüsselungsbereiche werden bei Konten mit Lesezugriff auf georedundanten Speicher (RA-GRS) oder mit Lesezugriff auf geozonenredundanten Speicher (RA-GZRS) während der Vorschau nicht unterstützt.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
-
-> [!IMPORTANT]
-> Die Vorschauversion der Verschlüsselungsbereiche ist nur für die Verwendung außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind derzeit nicht verfügbar.
->
-> Achten Sie darauf, alle derzeit nicht benötigten Verschlüsselungsbereiche zu deaktivieren, um unerwartete Kosten zu vermeiden.
 
 ## <a name="create-a-container-or-blob-with-an-encryption-scope"></a>Erstellen eines Containers oder Blobs mit einem Verschlüsselungsbereich
 

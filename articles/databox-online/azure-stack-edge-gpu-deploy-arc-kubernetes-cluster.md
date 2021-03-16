@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/12/2020
+ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 53ef73c70f5d20133e7b408ad7af91c3778e5568
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 4d75986880075f6eb07aa31b9322bdae15535802
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787450"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437603"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Aktivieren von Azure Arc in einem Kubernetes-Cluster auf einem Azure Stack Edge Pro-GPU-Gerät
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 In diesem Artikel wird beschrieben, wie Sie Azure Arc in einem vorhandenen Kubernetes-Cluster auf Ihrem Azure Stack Edge Pro-Gerät aktivieren. 
 
@@ -29,8 +31,8 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen auf dem Azure Stack Edge 
 ### <a name="for-device"></a>Für das Gerät
 
 1. Sie verfügen über Anmeldeinformationen für ein Azure Stack Edge Pro-Gerät mit einem Knoten.
-    1. Das Gerät ist aktiviert. Siehe [Aktivieren des Geräts](azure-stack-edge-gpu-deploy-activate.md).
-    1. Das Gerät verfügt über die über das Azure-Portal konfigurierte Computerolle und umfasst einen Kubernetes-Cluster. Siehe [Konfigurieren der Computeumgebung](azure-stack-edge-gpu-deploy-configure-compute.md).
+    1. Das Gerät ist aktiviert. Weitere Informationen finden Sie unter [Aktivieren des Geräts](azure-stack-edge-gpu-deploy-activate.md).
+    1. Auf dem Gerät wurde die Computerolle über das Azure-Portal konfiguriert, und es verfügt über einen Kubernetes-Cluster. Siehe [Konfigurieren der Computeumgebung](azure-stack-edge-gpu-deploy-configure-compute.md).
 
 1. Sie haben Besitzerzugriff auf das Abonnement. Diesen Zugriff benötigen Sie beim Schritt der Rollenzuweisung für den Dienstprinzipal.
  
@@ -86,7 +88,7 @@ Sie können Ressourcenanbieter außerdem über `az cli` registrieren. Weitere In
 
 1. Führen Sie den folgenden Befehl über `az cli` aus, um einen Dienstprinzipal zu erstellen.
 
-    `az ad sp create-for-rbac --skip assignment --name "<Informative name for service principal>"`  
+    `az ad sp create-for-rbac --skip-assignment --name "<Informative name for service principal>"`  
 
     Informationen zum Anmelden bei `az cli` finden Sie unter [Starten von Cloud Shell im Azure-Portal](../cloud-shell/quickstart-powershell.md#start-cloud-shell).
 
@@ -228,4 +230,4 @@ Führen Sie die folgenden Schritte aus, um die Azure Arc-Verwaltung zu entfernen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Ausführen einer Azure Arc-Bereitstellung finden Sie unter [Bereitstellen einer zustandslosen PHP Guestbook-Anwendung mit Redis über GitOps auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md).
+Informationen zum Ausführen einer Azure Arc-Bereitstellung finden Sie unter [Bereitstellen einer zustandslosen PHP ](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)-Anwendung mit Redis über GitOps auf einem Azure Stack Edge Pro-Gerät`Guestbook`.

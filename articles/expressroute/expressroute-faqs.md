@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 03/07/2021
 ms.author: duau
-ms.openlocfilehash: 1be7331b0c2309350316d1c88c54e6018400463c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 7819aaa1af588b0a74bb960cf47ea1feeeff8b3b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789346"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522290"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -40,9 +40,9 @@ Preisinformationen finden Sie in der [Preisübersicht](https://azure.microsoft.c
 
 Ja, die Bandbreite für die ExpressRoute-Leitung gilt für beide Richtungen. Beispiel: Wenn Sie eine ExpressRoute-Leitung mit 200 MBit/s erwerben, erhalten Sie 200 MBit/s für eingehenden und 200 MBit/s für ausgehenden Datenverkehr.
 
-### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Wenn ich für eine ExpressRoute-Verbindung mit einer bestimmten Bandbreite bezahle, muss die VPN-Verbindung, die ich von meinem Netzwerkdienstanbieter erworben habe, die gleiche Geschwindigkeit haben?
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-private-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Wenn ich für eine ExpressRoute-Leitung mit einer bestimmten Bandbreite bezahle, muss die private Verbindung, die ich bei meinem Netzwerkdienstanbieter erwerbe, dieselbe Geschwindigkeit haben?
 
-Nein. Sie können eine VPN-Verbindung beliebiger Geschwindigkeit bei Ihrem Dienstanbieter erwerben. Die Verbindung mit Azure ist jedoch auf die von Ihnen erworbene Bandbreite der ExpressRoute-Verbindung begrenzt.
+Nein. Sie können bei Ihrem Dienstanbieter eine private Verbindung mit jeder beliebigen Geschwindigkeit erwerben. Die Verbindung mit Azure ist jedoch auf die von Ihnen erworbene Bandbreite der ExpressRoute-Verbindung begrenzt.
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>Wenn ich für eine ExpressRoute-Leitung mit einer bestimmten Bandbreite zahle, habe ich die Möglichkeit, mehr als die erworbene Bandbreite zu nutzen?
 
@@ -60,7 +60,7 @@ Das ExpressRoute-Gateway kündigt die *Adressräume* des virtuellen Azure-Netzwe
 
 ### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>Wie viele Präfixe können beim privaten Peering in ExpressRoute von einem virtuellen Netzwerk zu den lokalen Standorten angekündigt werden?
 
-Es werden maximal 200 Präfixe für eine einzelne ExpressRoute-Verbindung oder über VNet-Peering mit Gatewaytransit angekündigt. Wenn Sie z. B. über 199 Adressräume in einem einzelnen virtuellen Netzwerk verfügen, die mit einer ExpressRoute-Verbindung verbunden sind, werden alle 199 Präfixe lokal angekündigt. Wenn Sie ein virtuelles Netzwerk aktiviert haben, das den Gatewaytransit mit einem Adressraum zulässt, und 150 virtuelle Spoke-Netzwerke über die Option „Remotegateway zulassen“ aktiviert haben, wird das mit dem Gateway bereitgestellte virtuelle Netzwerk 151 Präfixe für lokale Standorte ankündigen.
+Es werden maximal 1.000 Präfixe für eine einzelne ExpressRoute-Verbindung oder über VNet-Peering mit Gatewaytransit angekündigt. Wenn Sie z. B. über 199 Adressräume in einem einzelnen virtuellen Netzwerk verfügen, die mit einer ExpressRoute-Verbindung verbunden sind, werden alle 199 Präfixe lokal angekündigt. Wenn Sie ein virtuelles Netzwerk aktiviert haben, das den Gatewaytransit mit einem Adressraum zulässt, und 150 virtuelle Spoke-Netzwerke über die Option „Remotegateway zulassen“ aktiviert haben, wird das mit dem Gateway bereitgestellte virtuelle Netzwerk 151 Präfixe für lokale Standorte ankündigen.
 
 ### <a name="what-happens-if-i-exceed-the-prefix-limit-on-an-expressroute-connection"></a>Was passiert, wenn ich das Präfixlimit für eine ExpressRoute-Verbindung überschreite?
 
@@ -258,9 +258,13 @@ Wenn Sie Standardrouten ankündigen, wird der Datenverkehr an Dienste, die über
 
 Ja. Virtuelle Maschinen in virtuellen Netzwerken, die mit der gleichen ExpressRoute-Verbindung verbunden sind, können miteinander kommunizieren. Sie sollten das [Peering virtueller Netzwerke](../virtual-network/virtual-network-peering-overview.md) einrichten, um diese Kommunikation zu vereinfachen.
 
-### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>Kann ich für Virtual Networks Standort-zu-Standort-Konnektivität zusammen mit ExpressRoute verwenden?
+### <a name="can-i-set-up-a-site-to-site-vpn-connection-to-my-virtual-network-in-conjunction-with-expressroute"></a>Kann ich eine Standort-zu-Standort-VPN-Verbindung mit meinem virtuellen Netzwerk zusammen mit ExpressRoute einrichten?
 
 Ja. ExpressRoute kann zusammen mit Standort-zu-Standort-VPNs verwendet werden. Informationen finden Sie unter [Konfigurieren von parallel bestehenden ExpressRoute- und Site-to-Site-Verbindungen](expressroute-howto-coexist-resource-manager.md).
+
+### <a name="how-do-i-enable-routing-between-my-site-to-site-vpn-connection-and-my-expressroute"></a>Wie aktiviere ich das Routing zwischen meiner Standort-zu-Standort-VPN-Verbindung und meinem ExpressRoute?
+
+Wenn Sie das Routing zwischen Ihrer Verzweigung, die mit ExpressRoute verbunden ist, und Ihrer Verzweigung, die mit einer Standort-zu-Standort-VPN-Verbindung verbunden ist, aktivieren möchten, müssen Sie [Azure Route Server](../route-server/expressroute-vpn-support.md)einrichten.
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>Weshalb ist dem ExpressRoute-Gateway in einem virtuellen Netzwerk eine öffentliche IP-Adresse zugeordnet?
 

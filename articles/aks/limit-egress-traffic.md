@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: c6160d36240b59c60fafa955b916fb6167c2648e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 93c8d1392de8f502a829276287a4687476dd36de
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685753"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505057"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Steuern des ausgehenden Datenverkehrs für Clusterknoten in Azure Kubernetes Service (AKS)
 
@@ -28,13 +28,13 @@ Die AKS-Abhängigkeiten für ausgehenden Datenverkehr werden fast ausschließlic
 Standardmäßig haben AKS-Cluster uneingeschränkten ausgehenden Internetzugriff. Diese Ebene des Netzwerkzugriffs ermöglicht, dass ausgeführte Knoten und Dienste nach Bedarf auf externe Ressourcen zugreifen können. Wenn Sie den ausgehenden Datenverkehr einschränken möchten, muss eine begrenzte Anzahl von Ports und Adressen zugänglich sein, um fehlerfreie Clusterwartungsaufgaben verwalten zu können. Die einfachste Lösung zum Schutz ausgehender Adressen besteht in der Verwendung eines Firewallgeräts, das den ausgehenden Datenverkehr auf der Grundlage von Domänennamen kontrolliert. Von Azure Firewall kann beispielsweise ausgehender HTTP- und HTTPS-Datenverkehr auf der Grundlage des FQDN des Ziels eingeschränkt werden. Darüber hinaus können Sie Ihre bevorzugten Firewall- und Sicherheitsregeln konfigurieren, um diese erforderlichen Ports und Adressen zuzulassen.
 
 > [!IMPORTANT]
-> In diesem Dokument wird lediglich erläutert, wie der ausgehende Datenverkehr aus dem AKS-Subnetz gesperrt wird. Für AKS gelten standardmäßig keine Anforderungen für eingehenden Datenverkehr.  Das Blockieren von **internem Datenverkehr im Subnetz** mithilfe von Netzwerksicherheitsgruppen (NSGs) und Firewalls wird nicht unterstützt. Zum Steuern und Blockieren des Datenverkehrs innerhalb des Clusters müssen [**_Netzwerkrichtlinien_* _][network-policy] verwendet werden.
+> In diesem Dokument wird lediglich erläutert, wie der ausgehende Datenverkehr aus dem AKS-Subnetz gesperrt wird. Für AKS gelten standardmäßig keine Anforderungen für eingehenden Datenverkehr.  Das Blockieren von **internem Datenverkehr im Subnetz** mithilfe von Netzwerksicherheitsgruppen (NSGs) und Firewalls wird nicht unterstützt. Zum Steuern und Blockieren des Datenverkehrs innerhalb des Clusters müssen [**_Netzwerkrichtlinien_**][network-policy] verwendet werden.
 
 ## <a name="required-outbound-network-rules-and-fqdns-for-aks-clusters"></a>Erforderliche Netzwerkregeln für ausgehenden Datenverkehr und FQDNs für AKS-Cluster
 
 Die folgenden Netzwerk- und FQDN-/Anwendungsregeln sind für einen AKS-Cluster erforderlich und können verwendet werden, um eine Azure Firewall-fremde Lösung zu konfigurieren.
 
-_ IP-Adressabhängigkeiten gelten für Nicht-HTTP/S-Datenverkehr (TCP- und UDP-Datenverkehr).
+* IP-Adressabhängigkeiten gelten für Nicht-HTTP/S-Datenverkehr (TCP- und UDP-Datenverkehr).
 * FQDN-HTTP/HTTPS-Endpunkte können in Ihrem Firewallgerät bereitgestellt werden.
 * HTTP/HTTPS-Platzhalterendpunkte sind Abhängigkeiten, die sich je nach AKS-Cluster unterscheiden können (basierend auf einer Reihe von Qualifizierern).
 * Von AKS wird ein Zugangscontroller verwendet, um den FQDN als Umgebungsvariable in alle Bereitstellungen unter „kube-system“ und „gatekeeper-system“ einzufügen. Dadurch wird sichergestellt, dass bei der gesamten Systemkommunikation zwischen Knoten und API-Server nicht die IP-Adresse, sondern der FQDN des API-Servers verwendet wird. 
@@ -48,7 +48,7 @@ Folgende Netzwerkregeln und IP-Adressabhängigkeiten werden benötigt:
 
 | Zielendpunkt                                                             | Protokoll | Port    | Zweck  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Oder* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:1194`** <br/> *Oder* <br/> [Regionale CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:1194`** <br/> *Oder* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1\.194      | Getunnelte sichere Kommunikation zwischen den Knoten und der Steuerungsebene Dies ist für [private Cluster](private-clusters.md) nicht erforderlich.|
+| **`*:1194`** <br/> *Oder* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:1194`** <br/> *Oder* <br/> [Regionale CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:1194`** <br/> *Oder* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1.194      | Getunnelte sichere Kommunikation zwischen den Knoten und der Steuerungsebene Dies ist für [private Cluster](private-clusters.md) nicht erforderlich.|
 | **`*:9000`** <br/> *Oder* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureCloud.<Region>:9000`** <br/> *Oder* <br/> [Regionale CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) -  **`RegionCIDRs:9000`** <br/> *Oder* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Getunnelte sichere Kommunikation zwischen den Knoten und der Steuerungsebene Dies ist für [private Cluster](private-clusters.md) nicht erforderlich. |
 | **`*:123`** oder **`ntp.ubuntu.com:123`** (bei Verwendung von Azure Firewall-Netzwerkregeln)  | UDP      | 123     | Erforderlich für die NTP-Zeitsynchronisierung (Network Time Protocol) auf Linux-Knoten                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | Bei Verwendung benutzerdefinierter DNS-Server müssen die Clusterknoten auf diese Server zugreifen können. |
@@ -407,7 +407,7 @@ Jetzt kann ein AKS-Cluster im vorhandenen virtuellen Netzwerk bereitgestellt wer
 
 ### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>Erstellen eines Dienstprinzipals mit Bereitstellungszugriff im vorhandenen virtuellen Netzwerk
 
-AKS verwendet einen Dienstprinzipal zum Erstellen von Clusterressourcen. Mit dem zur Erstellungszeit übergebenen Dienstprinzipal werden zugrunde liegende AKS-Ressourcen wie Speicherressourcen, IP-Adressen und Lastenausgleichsressourcen erstellt, die von AKS verwendet werden. (Alternativ kann auch eine [verwaltete Identität](use-managed-identity.md) verwendet werden.) Ohne Erteilung der entsprechenden Berechtigungen kann der AKS-Cluster nicht bereitgestellt werden.
+Eine Clusteridentität (verwaltete Identität oder Dienstprinzipal) wird von AKS zum Erstellen von Clusterressourcen verwendet. Mit einem zur Erstellungszeit übergebenen Dienstprinzipal werden zugrunde liegende AKS-Ressourcen wie Speicherressourcen, IP-Adressen und Lastenausgleichsressourcen erstellt, die von AKS verwendet werden. (Alternativ können Sie auch eine [verwaltete Identität](use-managed-identity.md) verwenden.) Ohne Erteilung der entsprechenden Berechtigungen kann der AKS-Cluster nicht bereitgestellt werden.
 
 ```azurecli
 # Create SP and Assign Permission to Virtual Network

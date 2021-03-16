@@ -1,6 +1,6 @@
 ---
 title: Planen einer Azure-Dateisynchronisierungsbereitstellung | Microsoft-Dokumentation
-description: Hier finden Sie Informationen zum Planen der Bereitstellung der Azure-Dateisynchronisierung. Azure-Dateisynchronisierung ist ein Dienst, mit dem Sie mehrere Azure-Dateifreigaben auf einem lokalen Computer unter Windows Server oder einer Cloud-VM zwischenspeichern können.
+description: Hier finden Sie Informationen zum Planen einer Bereitstellung der Azure-Dateisynchronisierung – einem Dienst, mit dem Sie mehrere Azure-Dateifreigaben auf einem lokalen Computer unter Windows Server oder einer Cloud-VM zwischenspeichern können.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 65293df5fae523bff36240273afb93c4dd8485df
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 51814ba36eec7b1f7d8b95ce80210d93b4cbec3f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219475"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564219"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 
@@ -22,7 +22,7 @@ ms.locfileid: "99219475"
         [![Interview und Demo von Azure-Dateisynchronisierung. Klicken Sie hierauf, um die Wiedergabe zu starten.](./media/storage-sync-files-planning/azure-file-sync-interview-video-snapshot.png)](https://www.youtube.com/watch?v=nfWLO7F52-s)
     :::column-end:::
     :::column:::
-        Azure-Dateisynchronisierung ist ein Dienst, mit dem Sie mehrere Azure-Dateifreigaben auf einem lokalen Computer mit Windows Server oder einer Cloud-VM zwischenspeichern können. 
+        Azure-Dateisynchronisierung ist ein Dienst, mit dem Sie mehrere Azure-Dateifreigaben auf einem lokalen Computer unter Windows Server oder einer Cloud-VM zwischenspeichern können. 
         
         In diesem Artikel werden die Konzepte und Features von Azure-Dateisynchronisierung vorgestellt. Sobald Sie mit Azure-Dateisynchronisierung vertraut sind, finden Sie im [Bereitstellungsleitfaden für Azure-Dateisynchronisierung](storage-sync-files-deployment-guide.md) eine Anleitung, wie Sie diesen Dienst ausprobieren können.        
     :::column-end:::
@@ -52,16 +52,19 @@ Bevor Sie eine Synchronisierungsgruppe in einem Speichersynchronisierungsdienst 
 Eine Synchronisierungsgruppe enthält einen Cloudendpunkt oder eine Azure-Dateifreigabe und mindestens einen Serverendpunkt. Das Serverendpunktobjekt enthält die Einstellungen, die die **Cloudtieringfunktion** konfigurieren, die die Zwischenspeicherungsfunktion der Azure-Dateisynchronisierung bereitstellt. Um eine Synchronisierung mit einer Azure-Dateifreigabe durchführen zu können, muss sich das Speicherkonto, das die Azure-Dateifreigabe enthält, in der gleichen Azure-Region befinden wie der Speichersynchronisierungsdienst.
 
 > [!Important]  
-> Sie können Änderungen an jedem Cloudendpunkt oder Serverendpunkt in der Synchronisierungsgruppe vornehmen und Ihre Dateien mit den anderen Endpunkten in der Synchronisierungsgruppe synchronisieren. Wenn Sie eine Änderung direkt am Cloudendpunkt (Azure-Dateifreigabe) vornehmen, müssen Änderungen zunächst von einem Azure-Dateisynchronisierungsauftrag zum Erkennen von Änderungen entdeckt werden. Ein Auftrag zum Erkennen von Änderungen für einen Cloudendpunkt wird nur einmal alle 24 Stunden gestartet. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu Azure Files](storage-files-faq.md#afs-change-detection).
+> Sie können Änderungen am Namespace jedes beliebigen Cloud- oder Serverendpunkts in der Synchronisierungsgruppe vornehmen und Ihre Dateien mit den anderen Endpunkten in der Synchronisierungsgruppe synchronisieren lassen. Wenn Sie eine Änderung direkt am Cloudendpunkt (Azure-Dateifreigabe) vornehmen, müssen Änderungen zunächst von einem Azure-Dateisynchronisierungsauftrag zum Erkennen von Änderungen entdeckt werden. Ein Auftrag zum Erkennen von Änderungen für einen Cloudendpunkt wird nur einmal alle 24 Stunden gestartet. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu Azure Files](storage-files-faq.md#afs-change-detection).
 
-### <a name="management-guidance"></a>Leitfaden zur Verwaltung
-Beim Bereitstellen von Azure-Dateisynchronisierung wird Folgendes empfohlen:
+### <a name="consider-the-count-of-storage-sync-services-needed"></a>Berücksichtigen der Anzahl von benötigten Speichersynchronisierungsdiensten
+In einem vorherigen Abschnitt wird die Kernressource erläutert, die für die Azure-Dateisynchronisierung konfiguriert werden soll: ein *Speichersynchronisierungsdienst*. Ein Windows Server kann nur für einen Speichersynchronisierungsdienst registriert sein. Daher ist es oft am besten, nur einen einzigen Speichersynchronisierungsdienst bereitzustellen und alle Server, auf denen er sich befindet, zu registrieren. 
 
-- Bereitstellen von Azure-Dateifreigaben im Verhältnis 1:1 mit Windows-Dateifreigaben. Das Serverendpunktobjekt bietet Ihnen ein hohes Maß an Flexibilität bei der Einrichtung der Synchronisierungstopologie auf der Serverseite der Synchronisierungsbeziehung. Um die Verwaltung zu vereinfachen, sollte der Pfad des Serverendpunkts mit dem Pfad der Windows-Dateifreigabe übereinstimmen. 
+Erstellen Sie mehrere Speichersynchronisierungsdienste nur, wenn Folgendes zutrifft:
+* Sie haben unterschiedliche Gruppen von Servern, die Daten niemals untereinander austauschen dürfen. In diesem Fall sollten Sie das System so entwerfen, dass bestimmte Gruppen von Servern für die Synchronisierung mit einer Azure-Dateifreigabe ausgeschlossen werden, die bereits als Cloudendpunkt in einer Synchronisierungsgruppe in einem anderen Speichersynchronisierungsdienst verwendet wird. Eine andere Möglichkeit, dies zu untersuchen, ist, dass Windows-Server, die für einen anderen Speichersynchronisierungsdienst registriert wurden, nicht mit derselben Azure-Dateifreigabe synchronisiert werden können.
+* Sie benötigen mehr registrierte Server oder Synchronisierungsgruppen, als ein einzelner Speichersynchronisierungsdienst unterstützen kann. Weitere Informationen finden Sie in [Skalierbarkeitsziele für die Azure-Dateisynchronisierung](storage-files-scale-targets.md#azure-file-sync-scale-targets).
 
-- Verwenden von so wenig Speichersynchronisierungsdiensten wie möglich. Dadurch wird die Verwaltung vereinfacht, wenn Synchronisierungsgruppen mehrere Serverendpunkte enthalten, da ein Windows-Server nur jeweils bei einem Speichersynchronisierungsdienst registriert sein kann. 
+## <a name="plan-for-balanced-sync-topologies"></a>Planen von ausgeglichenen Synchronisierungstopologien
+Vor dem Bereitstellen von Ressourcen ist es wichtig zu planen, was Sie auf einem lokalen Server synchronisieren werden, bei dem die Azure-Dateifreigabe verwendet wird. Durch das Erstellen eines Plans können Sie einfacher ermitteln, wie viele Speicherkonten, Azure-Dateifreigaben und Synchronisierungsressourcen Sie benötigen werden. Diese Überlegungen sind selbst dann noch relevant, wenn Ihre Daten zurzeit nicht auf einem Windows-Server oder dem Server gespeichert sind, den Sie langfristig verwenden möchten. Anhand des [Abschnitts „Migration“](#migration) können Sie geeignete Migrationspfade für Ihre Situation ermitteln.
 
-- Beachten Sie beim Bereitstellen von Azure-Dateifreigaben die IOPS-Einschränkungen eines Speicherkontos. Im Idealfall würden Sie Dateifreigaben Speicherkonten im Verhältnis 1:1 zuordnen. Dies ist jedoch ggf. aufgrund verschiedener Beschränkungen und Einschränkungen in Ihrer Organisation oder in Azure nicht immer möglich. Wenn es nicht möglich ist, dass nur eine Dateifreigabe in einem Speicherkonto bereitgestellt wird, sollten Sie berücksichtigen, welche Freigaben sehr aktiv sein werden und welche Freigaben weniger aktiv sind, um sicherzustellen, dass die aktivsten Dateifreigaben nicht zusammen im gleichen Speicherkonto gruppiert werden.
+[!INCLUDE [storage-files-migration-namespace-mapping](../../../includes/storage-files-migration-namespace-mapping.md)]
 
 ## <a name="windows-file-server-considerations"></a>Überlegungen zu Windows-Dateiservern
 Um die Synchronisierungsfunktion unter Windows Server zu aktivieren, müssen Sie den herunterladbaren Azure-Dateisynchronisierungs-Agent installieren. Der Azure-Dateisynchronisierungs-Agent stellt zwei Hauptkomponenten bereit: `FileSyncSvc.exe`, den Windows-Hintergrunddienst, der für die Überwachung von Änderungen an den Serverendpunkten und das Initiieren von Synchronisierungssitzungen zuständig ist, und `StorageSync.sys`, einen Dateisystemfilter, der das Cloudtiering und schnelle Notfallwiederherstellung ermöglicht.  
@@ -203,7 +206,7 @@ Datendeduplizierung und Cloudtiering auf demselben Volume unter Windows Server 2
 - Wenn die Datendeduplizierung nach dem Cloudtiering auf einem Volume aktiviert wird, werden durch den ersten Auftrag zur Optimierung der Deduplizierung Dateien auf dem Volume optimiert, für die noch kein Tiering erfolgt ist. Dies hat folgende Auswirkungen auf das Cloudtiering:
     - Die Richtlinie für die Freigabe von Speicherplatz bewirkt, dass Dateien entsprechend dem freien Speicherplatz auf dem Volume, der anhand des Wärmebilds ermittelt wird, weiterhin umgelagert werden.
     - Die Datumsrichtlinie bewirkt, dass das Tiering für Dateien übersprungen wird, die eigentlich infrage gekommen wären. Dies liegt daran, dass durch den Auftrag zur Optimierung der Deduplizierung auf die Dateien zugegriffen wird.
-- Wenn die Datei nicht bereits umgelagert wurde, wird das Cloudtiering mit Datumsrichtlinie bei laufenden Aufträgen zur Optimierung der Deduplizierung verzögert. Dies liegt an der [MinimumFileAgeDays](/powershell/module/deduplication/set-dedupvolume?view=win10-ps)-Einstellung der Datendeduplizierung. 
+- Wenn die Datei nicht bereits umgelagert wurde, wird das Cloudtiering mit Datumsrichtlinie bei laufenden Aufträgen zur Optimierung der Deduplizierung verzögert. Dies liegt an der [MinimumFileAgeDays](/powershell/module/deduplication/set-dedupvolume)-Einstellung der Datendeduplizierung. 
     - Beispiel: Wenn die MinimumFileAgeDays-Einstellung sieben Tage beträgt und die Datumsrichtlinie für das Cloudtiering 30 Tage vorsieht, werden Dateien gemäß der Datumsrichtlinie nach 37 Tagen umgelagert.
     - Hinweis: Sobald eine Datei von der Azure-Dateisynchronisierung umgelagert wurde, wird sie vom Auftrag zur Optimierung der Deduplizierung übersprungen.
 - Wenn ein Server unter Windows Server 2012 R2 mit installiertem Azure-Dateisynchronisierungs-Agent auf Windows Server 2016 oder Windows Server 2019 aktualisiert wird, sind die folgenden Schritte erforderlich, damit die Datendeduplizierung und das Cloudtiering auf demselben Volume unterstützt werden:  
@@ -239,6 +242,16 @@ Wenn auf einem Serverendpunkt Cloudtiering aktiviert ist, werden Tieringdateien 
 
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Andere Lösungen für hierarchisches Speichermanagement (HSM)
 Es sollten keine anderen HSM-Lösungen in Verbindung mit der Azure-Dateisynchronisierung verwendet werden.
+
+## <a name="performance-and-scalability"></a>Leistung und Skalierbarkeit
+
+Da der Azure-Dateisynchronisierungs-Agent auf einem Windows Server-Computer ausgeführt wird, der mit den Azure-Dateifreigaben verbunden wird, hängt die effektive Synchronisierungsleistung von einer Reihe von Faktoren in Ihrer Infrastruktur ab: von Windows Server und der zugrunde liegenden Datenträgerkonfiguration, der Netzwerkbandbreite zwischen dem Server und Azure Storage, der Dateigröße, der gesamten Datasetgröße und der Aktivität im Dataset. Da die Azure-Dateisynchronisierung auf Dateiebene ausgeführt wird, werden die Leistungsmerkmale einer auf der Azure-Dateisynchronisierung basierenden Lösung besser in der Anzahl von Objekten (Dateien und Verzeichnisse) gemessen, die pro Sekunde verarbeitet werden.
+
+Änderungen, die über das Azure-Portal oder den SMB an der Azure-Dateifreigabe vorgenommen wurden, werden im Gegensatz zu Änderungen am Serverendpunkt nicht sofort erkannt und repliziert. Azure Files verfügt bislang über keine Änderungsmitteilungen oder Journalfunktion, sodass es keine Möglichkeit gibt, eine Synchronisierungssitzung automatisch zu initiieren, sobald Dateien geändert werden. Unter Windows Server verwendet die Azure-Dateisynchronisierung das [Windows-USN-Journaling](https://docs.microsoft.com/windows/win32/fileio/change-journals), um eine Synchronisierungssitzung bei einer Datenänderung automatisch zu starten.
+
+Zur Erkennung von Änderungen an der Azure-Dateifreigabe verfügt die Azure-Dateisynchronisierung über einen geplanten Auftrag: den so genannten Änderungserkennungsauftrag. Ein Änderungserkennungsauftrag zählt jede Datei in der Dateifreigabe auf und vergleicht sie anschließend mit der Synchronisierungsversion für die betreffende Datei. Wenn der Änderungserkennungsauftrag feststellt, dass sich Dateien geändert haben, startet die Azure-Dateisynchronisierung eine Synchronisierungssitzung. Der Änderungserkennungsauftrag wird alle 24 Stunden ausgelöst. Da der Änderungserkennungsauftrag jede Datei in der Dateifreigabe von Azure aufzählt, dauert die Änderungserkennung bei großen Namespaces länger als bei kleineren Namespaces. Bei großen Namespaces dauert die Ermittlung der geänderten Dateien unter Umständen länger als 24 Stunden.
+
+Weitere Informationen finden Sie unter [Leistungsmetriken der Azure-Dateisynchronisierung](storage-files-scale-targets.md#azure-file-sync-performance-metrics) und [Skalierbarkeitsziele für die Azure-Dateisynchronisierung](storage-files-scale-targets.md#azure-file-sync-scale-targets).
 
 ## <a name="identity"></a>Identity
 Die Azure-Dateisynchronisierung funktioniert mit Ihrer AD-basierten Standardidentität, ohne dass ein besonderes Setup über das Einrichten der Synchronisierung hinaus erforderlich ist. Wenn Sie Azure-Dateisynchronisierung verwenden, besteht die allgemeine Erwartung darin, dass die meisten Zugriffe die Azure-Dateisynchronisierungs-Cacheserver und nicht die Azure-Dateifreigabe durchlaufen. Da sich die Serverendpunkte unter Windows Server befinden und Windows Server seit langer Zeit ACLs im AD- und Windows-Stil unterstützt, ist nichts weiter erforderlich, als sicherzustellen, dass die beim Speichersynchronisierungsdienst registrierten Windows-Dateiserver zur Domäne gehören. Die Azure-Dateisynchronisierung speichert ACLs für die Dateien in der Azure-Dateifreigabe und repliziert sie auf alle Serverendpunkte.
@@ -320,15 +333,9 @@ Führen Sie die Anweisungen in [diesem Dokument](https://azure.microsoft.com/glo
 > Georedundanter und geozonenredundanter Speicher können ein manuelles Failover des Speichers in die sekundäre Region durchführen. Es wird empfohlen, so nicht außerhalb eines Notfalls vorzugehen, wenn Sie Azure-Dateisynchronisierung verwenden, weil die Wahrscheinlichkeit von Datenverlusten hoch ist. Bei einem Notfall, bei dem Sie ein manuelles Failover des Speichers initiieren möchten, müssen Sie eine Supportanfrage bei Microsoft öffnen, damit die Azure-Dateisynchronisierung die Synchronisierung mit dem sekundären Endpunkt fortsetzt.
 
 ## <a name="migration"></a>Migration
-Wenn Sie über einen vorhandenen Windows-Dateiserver verfügen, kann die Azure-Dateisynchronisierung direkt installiert werden, ohne dass Daten auf einen neuen Server verschoben werden müssen. Wenn Sie die Migration zu einem neuen Windows-Dateiserver im Rahmen der Einführung von Azure-Dateisynchronisierung planen, gibt es mehrere mögliche Ansätze zum Verschieben von Daten:
+Wenn Sie einen Windows-Dateiserver 2012R2 oder höher haben, kann die Azure-Dateisynchronisierung direkt installiert werden, ohne dass Daten auf einen neuen Server verschoben werden müssen. Wenn Sie die Migration auf einen neuen Windows-Dateiserver im Rahmen der Einführung der Azure-Dateisynchronisierung planen oder wenn Ihre Daten zurzeit im Network Attached Storage (NAS) gespeichert sind, gibt es mehrere mögliche Migrationsansätze für die Azure-Dateisynchronisierung mit diesen Daten. Welche Migrationsmethode Sie wählen sollten, ist abhängig vom derzeitigen Speicherort Ihrer Daten. 
 
-- Erstellen Sie Serverendpunkte für die alte Dateifreigabe und die neue Dateifreigabe, und lassen Sie die Azure-Dateisynchronisierung die Daten zwischen den Serverendpunkten synchronisieren. Der Vorteil dieses Ansatzes besteht darin, dass es sehr einfach ist, den Speicher auf dem neuen Dateiserver zu überschreiben, da die Azure-Dateisynchronisierung Cloudtiering unterstützt. Wenn Sie bereit sind, können Sie Endbenutzer an die Dateifreigabe auf dem neuen Server übergeben und den Serverendpunkt der alten Dateifreigabe entfernen.
-
-- Erstellen Sie einen Serverendpunkt nur auf dem neuen Dateiserver, und kopieren Sie Daten aus der alten Dateifreigabe mithilfe von `robocopy`. Abhängig von der Topologie der Dateifreigaben auf dem neuen Server (wie viele Freigaben auf den einzelnen Volumes vorhanden sind, wie leer die einzelnen Volumes sind usw.) müssen Sie möglicherweise vorübergehend zusätzlichen Speicher bereitstellen, da davon ausgegangen wird, dass `robocopy` von Ihrem alten Server auf Ihren neuen Server in Ihrem lokalen Rechenzentrum schneller ausgeführt wird, als die Azure-Dateisynchronisierung Daten in Azure verschiebt.
-
-Es ist auch möglich, Data Box zum Migrieren von Daten zu einer Azure-Dateisynchronisierungsbereitstellung zu verwenden. Wenn Kunden Data Box zum Erfassen von Daten verwenden möchten, geschieht dies meist, weil sie glauben, dass dies die Geschwindigkeit ihrer Bereitstellung erhöht oder weil es bei Szenarien mit eingeschränkter Bandbreite hilfreich ist. Obwohl die Verwendung einer Data Box zum Erfassen von Daten in Ihrer Azure-Dateisynchronisierungsbereitstellung die Bandbreitenauslastung verringert, ist es wahrscheinlich in den meisten Szenarien schneller, einen Onlinedatenupload über eine der oben beschriebenen Methoden einzusetzen. Weitere Informationen zum Verwenden von Data Box zum Erfassen von Daten in Ihrer Azure-Dateisynchronisierungsbereitstellung finden Sie unter [Migrieren von Daten in die Azure-Dateisynchronisierung mit Azure Data Box](storage-sync-offline-data-transfer.md).
-
-Ein häufiger Fehler, den Kunden beim Migrieren von Daten in ihre neue Azure-Dateisynchronisierungsbereitstellung machen, besteht darin, Daten direkt in die Azure-Dateifreigabe zu kopieren, anstatt auf ihre Windows-Dateiserver. Obwohl die Azure-Dateisynchronisierung alle neuen Dateien in der Azure-Dateifreigabe identifiziert und sie zurück mit Ihren Windows-Dateifreigaben synchronisiert, ist dies im allgemeinen deutlich langsamer als das Laden von Daten über den Windows-Dateiserver. Wenn Sie Azure-Kopiertools wie AzCopy nutzen, ist es wichtig, die neueste Version zu verwenden. Überprüfen Sie die [Tabelle zu den Dateikopiertools](storage-files-migration-overview.md#file-copy-tools), um einen Überblick über die Azure-Kopiertools zu erhalten und sicherzustellen, dass Sie alle wichtigen Metadaten einer Datei (z. B. Zeitstempel und ACLs) kopieren können.
+Im Artikel [Übersicht über die Migration von Azure-Dateisynchronisierung und Azure-Dateifreigaben](storage-files-migration-overview.md) finden Sie ausführliche Anleitungen für Ihr Szenario.
 
 ## <a name="antivirus"></a>Virenschutz
 Da für den Virenschutz Dateien auf bekannte Schadsoftware überprüft werden müssen, kann ein Virenschutzprodukt den Rückruf von Tieringdateien verursachen und damit zu hohen Ausgangsgebühren führen. Ab Version 4.0 der Azure-Dateisynchronisierung-Agents ist für mehrstufige Dateien das sichere Windows-Attribut „FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS“ festgelegt. Es empfiehlt es sich, bei Ihrem Softwareanbieter nachzufragen, wie die Lösung so konfiguriert werden kann, dass das Lesen von Dateien mit diesem festgelegten Attribut übersprungen wird (bei vielen ist dies automatisch der Fall). 
@@ -342,6 +349,9 @@ Die internen Virenschutzlösungen von Microsoft – Windows Defender und System 
 Wenn Cloudtiering aktiviert ist, sollten keine Lösungen verwendet werden, die den Serverendpunkt oder einen virtuellen Computer, auf dem sich der Serverendpunkt befindet, direkt sichern. Cloudtiering bewirkt, dass nur eine Teilmenge der Daten auf dem Serverendpunkt gespeichert wird, während sich das vollständige Dataset in Ihrer Azure-Dateifreigabe befindet. Abhängig von der verwendeten Sicherungslösung werden mehrstufige Dateien entweder übersprungen und nicht gesichert (da für sie das Attribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS festgelegt ist), oder sie werden auf den Datenträger zurückgerufen, sodass hohe Ausgangsgebühren anfallen. Es wird empfohlen, die Azure-Dateifreigabe direkt mithilfe einer Cloudsicherungslösung zu sichern. Weitere Informationen finden Sie unter [Informationen zum Sichern von Azure-Dateifreigaben](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json), oder wenden Sie sich an Ihren Sicherungsanbieter, um zu erfahren, ob dieser das Sichern von Azure-Dateifreigaben unterstützt.
 
 Wenn Sie eine lokale Sicherungslösung bevorzugen, sollten die Sicherungen auf einem Server in der Synchronisierungsgruppe ausgeführt werden, auf dem das Cloudtiering deaktiviert ist. Wenn Sie eine Wiederherstellung durchführen, verwenden Sie die Wiederherstellungsoptionen auf Volume- oder Dateiebene. Mithilfe der Wiederherstellungsoption auf Dateiebene wiederhergestellte Dateien werden auf allen Endpunkten in der Synchronisierungsgruppe synchronisiert. Dabei werden vorhandene Dateien durch die aus der Sicherung wiederhergestellte Version ersetzt.  Bei der Wiederherstellung auf Volumeebene werden die neueren Dateiversionen in der Azure-Dateifreigabe oder auf anderen Serverendpunkten nicht ersetzt.
+
+> [!WARNING]
+> Der Robocopy /B-Switch wird bei der Azure-Dateisynchronisierung nicht unterstützt. Die Verwendung des Robocopy /B-Switches bei einem Serverendpunkt für die Azure-Dateisynchronisierung als Quelle kann zu einer Dateibeschädigung führen.
 
 > [!Note]  
 > Bare-Metal-Recovery (BMR) kann zu unerwarteten Ergebnissen führen und wird derzeit nicht unterstützt.

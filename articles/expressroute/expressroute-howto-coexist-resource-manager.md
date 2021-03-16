@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/11/2019
+ms.date: 03/06/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: edbd36ad3444795ade4b3f8d29d8473b21a2fda8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15ec8417ba5e2858b45176f0a214f6126209f942
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651512"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449746"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen mithilfe von PowerShell
 > [!div class="op_single_selector"]
@@ -36,16 +36,18 @@ Dieser Artikel enthält die Schritte für die Konfiguration beider Szenarien. Di
 >
 
 ## <a name="limits-and-limitations"></a>Grenzwerte und Einschränkungen
-* **Transitrouting wird nicht unterstützt.** Ein Routing (über Azure) zwischen Ihrem lokalen Netzwerk mit Standort-zu-Standort-VPN-Verbindung und Ihrem lokalen Netzwerk mit ExpressRoute-Verbindung ist nicht möglich.
-* **Das einfache SKU-Gateway wird nicht unterstützt.** Sie müssen für das [ExpressRoute-Gateway](expressroute-about-virtual-network-gateways.md) und das [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) jeweils ein anderes Gateway als ein einfaches SKU-Gateway verwenden.
 * **Nur das routenbasierte VPN-Gateway wird unterstützt.** Sie müssen ein routenbasiertes [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) verwenden. Sie können auch ein routenbasiertes VPN-Gateway mit einer VPN-Verbindung verwenden, die für die richtlinienbasierte Datenverkehrsauswahl konfiguriert ist, wie unter [Herstellen einer Verbindung mit mehreren richtlinienbasierten VPN-Geräten](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) beschrieben.
-* **Für das VPN-Gateway sollte eine statische Route konfiguriert werden.** Wenn Ihr lokales Netzwerk mit ExpressRoute und einem Standort-zu-Standort-VPN verbunden ist, müssen Sie eine statische Route in Ihrem lokalen Netzwerk konfiguriert haben, um die Standort-zu-Standort-VPN-Verbindung an das öffentliche Internet weiterzuleiten.
-* **Ohne Angabe verwendet VPN Gateway standardmäßig ASN 65515.** Azure VPN Gateway unterstützt das BGP-Routingprotokoll. Sie können die AS-Nummer (ASN) für ein virtuelles Netzwerk angeben, indem Sie den Switch „-Asn“ hinzufügen. Ohne Angabe dieses Parameters wird standardmäßig die AS-Nummer 65515 verwendet. Sie können eine beliebige ASN für die Konfiguration verwenden. Sollten Sie sich für einen anderen Wert als 65515 entscheiden, müssen Sie allerdings das Gateway zurücksetzen, damit die Einstellung wirksam wird.
+* **Die ASN von Azure VPN Gateway muss auf „65515“ festgelegt werden.** Azure VPN Gateway unterstützt das BGP-Routingprotokoll. Damit ExpressRoute und Azure-VPN zusammenarbeiten können, müssen Sie die autonome Systemnummer (ASN) Ihres Azure VPN-Gateways mit dem Standardwert „65515“ beibehalten. Wenn Sie zuvor eine andere ASN als „65515“ ausgewählt haben und die Einstellung auf „65515“ ändern, müssen Sie das VPN-Gateway zurücksetzen, damit die Einstellung wirksam wird.
 * **Das Gatewaysubnetz muss /27 oder ein kürzeres Präfix sein** (z. B. /26 oder /25), andernfalls erhalten Sie eine Fehlermeldung, wenn Sie das Gateway für das virtuelle ExpressRoute-Netzwerk hinzufügen.
+* **Koexistenz in einem VNET mit dualem Stapel wird nicht unterstützt.** Wenn Sie die IPv6-Unterstützung von ExpressRoute und ein ExpressRoute-Gateway mit dualem Stapel verwenden, ist eine Koexistenz mit VPN Gateway nicht möglich.
 
 ## <a name="configuration-designs"></a>Konfigurationsentwürfe
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Konfigurieren eines Standort-zu-Standort-VPN als Failoverpfad für ExpressRoute
 Sie können eine Standort-zu-Standort-VPN-Verbindung als Sicherung für ExpressRoute konfigurieren. Diese Verbindung gilt nur für virtuelle Netzwerke, die mit dem privaten Azure-Peeringpfad verknüpft sind. Es gibt keine VPN-basierte Failoverlösung für Dienste, auf die per Azure Microsoft-Peering zugegriffen wird. Die ExpressRoute-Verbindung ist immer der primäre Link. Daten durchlaufen den Pfad des Site-to-Site-VPNs nur, wenn bei der ExpressRoute-Verbindung ein Fehler auftritt. Zur Vermeidung des asymmetrischen Routings sollte für die Konfiguration Ihres lokalen Netzwerks auch die ExpressRoute-Verbindung dem Site-to-Site-VPN vorgezogen werden. Sie können dem ExpressRoute-Pfad Vorrang einräumen, indem Sie für die Routen, die über ExpressRoute verlaufen, einen höheren lokalen Präferenzwert festlegen. 
+
+>[!NOTE]
+> Wenn Sie ExpressRoute-Microsoft-Peering aktiviert haben, können Sie die öffentliche IP-Adresse Ihres Azure VPN-Gateways über die ExpressRoute-Verbindung erhalten. Zum Einrichten der Site-to-Site-VPN-Verbindung als Sicherung müssen Sie Ihr lokales Netzwerk so konfigurieren, dass die VPN-Verbindung an das Internet weitergeleitet wird.
+>
 
 > [!NOTE]
 > Die ExpressRoute-Verbindung wird dem Site-to-Site-VPN vorgezogen, doch wenn beide Verbindungen identisch sind, verwendet Azure die längste Präfixübereinstimmung, um die Route zum Ziel des Pakets auszuwählen.
@@ -76,7 +78,7 @@ Sie haben die Wahl zwischen zwei Vorgehensweisen. Welches Konfigurationsverfahre
   
     Wenn Sie Ihr Gateway löschen und neu erstellen, kommt es für Ihre standortübergreifenden Verbindungen zu Ausfallzeiten. Die VMs und Dienste können aber immer noch über den Load Balancer kommunizieren, während Sie Ihr Gateway konfigurieren, wenn sie entsprechend konfiguriert sind.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="before-you-begin"></a>Vorbereitung
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
@@ -260,8 +262,11 @@ Sie können die unten angegebenen Schritte ausführen, um dem VPN-Gateway bei ei
    $p2sCertData = [System.Convert]::ToBase64String($p2sCertToUpload.RawData) 
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $p2sCertFullName -VirtualNetworkGatewayname $azureVpn.Name -ResourceGroupName $resgrp.ResourceGroupName -PublicCertData $p2sCertData
    ```
-
 Weitere Informationen zu Punkt-zu-Standort-VPN-Verbindungen finden Sie unter [Konfigurieren einer Punkt-zu-Standort-Verbindung](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md).
+
+## <a name="to-enable-transit-routing-between-expressroute-and-azure-vpn"></a>So aktivieren Sie das Transitrouting zwischen ExpressRoute und Azure VPN
+Wenn Sie die Konnektivität zwischen einem Ihrer lokalen Netzwerke, das mit ExpressRoute verbunden ist, und einem anderen Ihrer lokalen Netzwerke, das mit einer Site-to-Site-VPN-Verbindung verbunden ist, aktivieren möchten, müssen Sie [Azure Route Server](../route-server/expressroute-vpn-support.md) einrichten.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).

@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie einen internen Lastenausgleich erstellen und 
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: ec8fd1f1b32d5bba6dc4dc756e1f95f4a74f9a96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c2c0866aa9a721a73e1eb8fa230f0022cf6b8ca
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87285882"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505629"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Verwenden eines internen Lastenausgleichs mit Azure Kubernetes Service (AKS)
 
@@ -23,11 +23,11 @@ Zum Einschränken des Zugriffs auf Ihre Anwendungen in Azure Kubernetes Service 
 
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
-Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
-Der AKS-Clusterdienstprinzipal benötigt die Berechtigung zum Verwalten von Netzwerkressourcen, wenn Sie ein bestehendes Subnetz oder eine vorhandene Ressourcengruppe verwenden. Weitere Informationen finden Sie unter [Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)][use-kubenet] oder [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)][advanced-networking]. Wenn Sie Ihren Lastenausgleich so konfigurieren, dass eine [IP-Adresse in einem anderen Subnetz][different-subnet] verwendet wird, stellen Sie sicher, dass der Dienstprinzipal des AKS-Clusters auch Lesezugriff auf dieses Subnetz hat.
+Die AKS-Clusteridentität benötigt die Berechtigung zum Verwalten von Netzwerkressourcen, wenn Sie ein bestehendes Subnetz oder eine vorhandene Ressourcengruppe verwenden. Weitere Informationen finden Sie unter [Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)][use-kubenet] oder [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)][advanced-networking]. Wenn Sie Ihren Lastenausgleich so konfigurieren, dass eine [IP-Adresse in einem anderen Subnetz][different-subnet] verwendet wird, stellen Sie sicher, dass die AKS-Clusteridentität auch Lesezugriff auf dieses Subnetz hat.
 
-Anstelle eines Dienstprinzipals können Sie für Berechtigungen auch die vom System zugewiesene verwaltete Identität verwenden. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md). Weitere Informationen zu Berechtigungen finden Sie unter [Delegieren des Zugriffs auf andere Azure-Ressourcen][aks-sp].
+Weitere Informationen zu Berechtigungen finden Sie unter [Delegieren des Zugriffs auf andere Azure-Ressourcen][aks-sp].
 
 ## <a name="create-an-internal-load-balancer"></a>Erstellen eines internen Load Balancers
 
@@ -110,7 +110,7 @@ internal-app   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
 ```
 
 > [!NOTE]
-> Möglicherweise müssen Sie dem Dienstprinzipal für den AKS-Cluster die Rolle *Netzwerkmitwirkender* für die Ressourcengruppe gewähren, in der die Ressourcen Ihres virtuellen Azure-Netzwerks bereitgestellt werden. Verwenden Sie zum Anzeigen des Dienstprinzipals den Befehl [az aks show][az-aks-show] wie im Beispiel `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"`. Verwenden Sie zum Erstellen einer Rollenzuweisung den Befehl [az role assignment create][az-role-assignment-create].
+> Möglicherweise müssen Sie der Clusteridentität für Ihren AKS-Cluster die Rolle *Netzwerkmitwirkender* für die Ressourcengruppe gewähren, in der die Ressourcen Ihres virtuellen Azure-Netzwerks bereitgestellt werden. Zeigen Sie die Clusteridentität mit [az aks show][az-aks-show] an, z. B. `az aks show --resource-group myResourceGroup --name myAKSCluster --query "identity"`. Verwenden Sie zum Erstellen einer Rollenzuweisung den Befehl [az role assignment create][az-role-assignment-create].
 
 ## <a name="specify-a-different-subnet"></a>Angeben eines anderen Subnetzes
 

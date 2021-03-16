@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: f46a0938ebb8d9fe7e032162120056dca96b9567
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 2427fbdaa497ccb6d9a46330dcc6eb872e1d28ac
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979761"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214166"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-Ressourcen für QnA Maker
 
@@ -126,7 +126,7 @@ Die folgende Tabelle gibt Ihnen einige allgemeine Richtlinien.
 |[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) der App Service-SKU, Überprüfen der Cognitive Search-Dienstebene und [Erstellen von Cognitive Search-Replikaten](../../../search/search-capacity-planning.md)|Ihre Wissensdatenbank muss mehr Anforderungen aus Ihrer Client-App verarbeiten, z.B. einen Chatbot.|
 |[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) des Azure Cognitive Search-Diensts|Sie benötigen voraussichtlich eine Vielzahl von Wissensdatenbanken.|
 
-Rufen Sie die aktuellsten Runtime-Updates ab, indem Sie [Ihren App Service im Azure-Portal aktualisieren](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates).
+Rufen Sie die aktuellsten Runtime-Updates ab, indem Sie [Ihren App Service im Azure-Portal aktualisieren](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates).
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
 
@@ -142,16 +142,16 @@ Ihr QnA Maker-Dienst befasst sich mit zwei Arten von Schlüsseln: **Erstellungss
 
 Verwenden Sie diese Schlüssel, wenn Sie Anforderungen an den Dienst über APIs senden.
 
-![Schlüsselverwaltung](../media/qnamaker-how-to-key-management/key-management.png)
+![Schlüsselverwaltung](../media/authoring-key.png)
 
 |Name|Standort|Zweck|
 |--|--|--|
-|Erstellungs-/Abonnementschlüssel|[Azure portal](https://azure.microsoft.com/free/cognitive-services/)|Diese Schlüssel werden verwendet, um auf die [QnA Maker-Verwaltungsdienst-APIs](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) zuzugreifen. Mit diesen APIs können Sie die Fragen und Antworten in Ihrer Wissensdatenbank bearbeiten und Ihre Wissensdatenbank veröffentlichen. Diese Schlüssel werden erstellt, wenn Sie einen neuen QnA Maker-Dienst erstellen.<br><br>Sie finden diese Schlüssel in der Ressource **Cognitive Services** auf der Seite **Schlüssel**.|
+|Erstellungs-/Abonnementschlüssel|[Azure portal](https://azure.microsoft.com/free/cognitive-services/)|Diese Schlüssel werden verwendet, um auf die [QnA Maker-Verwaltungsdienst-APIs](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) zuzugreifen. Mit diesen APIs können Sie die Fragen und Antworten in Ihrer Wissensdatenbank bearbeiten und Ihre Wissensdatenbank veröffentlichen. Diese Schlüssel werden erstellt, wenn Sie einen neuen QnA Maker-Dienst erstellen.<br><br>Sie finden diese Schlüssel in der Ressource **Cognitive Services** auf der Seite **Schlüssel und Endpunkt**.|
 |Abfrageendpunktschlüssel|[QnA Maker-Portal](https://www.qnamaker.ai)|Diese Schlüssel werden zum Abfragen des Endpunkts der veröffentlichten Wissensdatenbank verwendet, um eine Antwort auf eine Benutzerfrage abzurufen. In der Regel verwenden Sie diesen Abfrageendpunkt in Ihrem Chatbot oder im Clientanwendungscode, der eine Verbindung mit dem QnA Maker-Dienst herstellt. Diese Schlüssel werden erstellt, wenn Sie Ihre QnA Maker-Wissensdatenbank veröffentlichen.<br><br>Sie finden diese Schlüssel auf der Seite **Diensteinstellungen**. Suchen Sie diese Seite im Menü des Benutzers in der oberen rechten Ecke der Seite im Dropdownmenü.|
 
 ### <a name="find-authoring-keys-in-the-azure-portal"></a>Suchen von Erstellungsschlüsseln im Azure-Portal
 
-Sie können Ihre Erstellungsschlüssel in dem Azure-Portal anzeigen und zurücksetzen, in dem Sie die QnA Maker-Ressource erstellt haben. Diese Schlüssel können auch als Abonnementschlüssel bezeichnet werden.
+Sie können Ihre Erstellungsschlüssel in dem Azure-Portal anzeigen und zurücksetzen, in dem Sie die QnA Maker-Ressource erstellt haben.
 
 1. Wechseln Sie im Azure-Portal zur QnA Maker-Ressource, und wählen Sie die Ressource mit dem _Cognitive Services_-Typ aus:
 
@@ -189,12 +189,12 @@ Verwenden Sie diese Schlüssel, wenn Sie Anforderungen an den Dienst über APIs 
 
 |Name|Standort|Zweck|
 |--|--|--|
-|Erstellungs-/Abonnementschlüssel|[Azure portal](https://azure.microsoft.com/free/cognitive-services/)|Diese Schlüssel werden verwendet, um auf die [QnA Maker-Verwaltungsdienst-APIs](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) zuzugreifen. Mit diesen APIs können Sie die Fragen und Antworten in Ihrer Wissensdatenbank bearbeiten und Ihre Wissensdatenbank veröffentlichen. Diese Schlüssel werden erstellt, wenn Sie einen neuen QnA Maker-Dienst erstellen.<br><br>Sie finden diese Schlüssel in der Ressource **Cognitive Services** auf der Seite **Schlüssel**.|
+|Erstellungs-/Abonnementschlüssel|[Azure portal](https://azure.microsoft.com/free/cognitive-services/)|Diese Schlüssel werden verwendet, um auf die [QnA Maker-Verwaltungsdienst-APIs](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) zuzugreifen. Mit diesen APIs können Sie die Fragen und Antworten in Ihrer Wissensdatenbank bearbeiten und Ihre Wissensdatenbank veröffentlichen. Diese Schlüssel werden erstellt, wenn Sie einen neuen QnA Maker-Dienst erstellen.<br><br>Sie finden diese Schlüssel in der Ressource **Cognitive Services** auf der Seite **Schlüssel und Endpunkt**.|
 |Administratorschlüssel von Azure Cognitive Search|[Azure portal](../../../search/search-security-api-keys.md)|Diese Schlüssel werden verwendet, um mit dem Azure Cognitive Search-Dienst zu kommunizieren, der im Azure-Abonnement des Benutzers bereitgestellt wird. Wenn Sie Azure Cognitive Search mit dem QnA Maker verwaltet-Dienst (Vorschau) verknüpfen, wird der Administratorschlüssel automatisch an den QnA Maker-Dienst weitergeleitet. <br><br>Sie finden diese Schlüssel in der **Azure Cognitive Search**-Ressource auf der Seite **Schlüssel**.|
 
 ### <a name="find-authoring-keys-in-the-azure-portal"></a>Suchen von Erstellungsschlüsseln im Azure-Portal
 
-Sie können Ihre Erstellungsschlüssel in dem Azure-Portal anzeigen und zurücksetzen, in dem Sie die QnA Maker verwaltet (Vorschau)-Ressource erstellt haben. Diese Schlüssel können auch als Abonnementschlüssel bezeichnet werden.
+Sie können Ihre Erstellungsschlüssel in dem Azure-Portal anzeigen und zurücksetzen, in dem Sie die QnA Maker verwaltet (Vorschau)-Ressource erstellt haben.
 
 1. Wechseln Sie im Azure-Portal zur QnA Maker verwaltet (Vorschau)-Ressource, und wählen Sie die Ressource mit dem *Cognitive Services*-Typ aus:
 
@@ -307,7 +307,7 @@ Die erste Wissensdatenbank, die in der QnA Maker-Ressource erstellt wird, wird v
 
 Wenn Sie einen QnA-Dienst und dessen Abhängigkeiten (z.B. Search) über das Portal erstellen, wird automatisch ein Suchdienst erstellt und mit dem QnA Maker-Dienst verknüpft. Nachdem diese Ressourcen erstellt wurden, können Sie die App Service-Einstellung aktualisieren, um einen bereits vorhandenen Suchdienst zu nutzen und den soeben erstellten Suchdienst zu entfernen.
 
-Erfahren Sie, wie Sie QnA Maker [so konfigurieren](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource), dass er eine andere Cognitive Service-Ressource als die verwendet, die im Rahmen des Ressourcenerstellungsvorgangs für QnA Maker erstellt wurde.
+Erfahren Sie, wie Sie QnA Maker [so konfigurieren](../How-To/configure-QnA-Maker-resources.md#configure-qna-maker-to-use-different-cognitive-search-resource), dass er eine andere Cognitive Service-Ressource als die verwendet, die im Rahmen des Ressourcenerstellungsvorgangs für QnA Maker erstellt wurde.
 
 ### <a name="app-service-and-app-service-plan"></a>App Service und App Service-Plan
 
@@ -365,6 +365,6 @@ Mit QnA Maker verwaltet (Vorschau) haben Sie die Wahl, Ihren QnA Maker-Dienst f�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über die QnA Maker-[Wissensdatenbank](../index.yml)
+* Erfahren Sie mehr über die QnA Maker-[Wissensdatenbank](../How-To/manage-knowledge-bases.md)
 * Grundlegendes zum [Lebenszyklus von Wissensdatenbanken](development-lifecycle-knowledge-base.md)
 * [Grenzwerte](../limits.md) von Überprüfungsdienst und Wissensdatenbanken

@@ -9,12 +9,12 @@ ms.date: 02/01/2021
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: ad660ee69bb568e1a76d59344cf31fbf044aaae9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8d04d1bd758480ec33a7480e4045d28ed750f22e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581430"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430937"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher
 
@@ -44,13 +44,13 @@ Unveränderlicher Speicher unterstützt folgende Features:
 
 - **Unterstützung für alle Blobebenen**: WORM-Richtlinien sind unabhängig von der Azure-Blobspeicherebene und gelten für alle Ebenen: „Heiß“, „Kalt“ und „Archiv“. Benutzer können Daten in die Ebene überführen, für die die Workloadkosten bestmöglich optimiert sind, während gleichzeitig die Unveränderlichkeit der Daten sichergestellt ist.
 
-- **Konfiguration auf Containerebene**: Benutzer können zeitbasierte Aufbewahrungsrichtlinien und Tags für gesetzliche Aufbewahrungspflichten auf Containerebene konfigurieren. Mit den Einstellungen auf Containerebene können Benutzer zeitbasierte Aufbewahrungsrichtlinien erstellen und sperren, Aufbewahrungszeiträume verlängern, Zeiträume für gesetzliche Aufbewahrungspflichten festlegen und aufheben usw. Diese Richtlinien gelten für alle Blobs im Container (vorhandene und neue).
+- **Konfiguration auf Containerebene**: Benutzer können zeitbasierte Aufbewahrungsrichtlinien und Tags für gesetzliche Aufbewahrungspflichten auf Containerebene konfigurieren. Mit den Einstellungen auf Containerebene können Benutzer zeitbasierte Aufbewahrungsrichtlinien erstellen und sperren, Aufbewahrungszeiträume verlängern, Zeiträume für gesetzliche Aufbewahrungspflichten festlegen und aufheben usw. Diese Richtlinien gelten für alle Blobs im Container (vorhandene und neue). Bei einem Konto mit aktiviertem HNS (hierarchischer Namespace) gelten diese Richtlinien auch für alle Verzeichnisse in einem Container.
 
 - **Unterstützung der Überwachungsprotokollierung**: Jeder Container enthält ein Richtlinien-Überwachungsprotokoll. Es enthält bis zu sieben zeitbasierte Aufbewahrungsbefehle für gesperrte zeitbasierte Aufbewahrungsrichtlinien sowie die Benutzer-ID, den Befehlstyp, Zeitstempel und den Aufbewahrungszeitraum. Für Zeiträume zur gesetzlichen Aufbewahrungspflicht enthält das Protokoll Benutzer-ID, Befehlstyp, Zeitstempel und die entsprechenden Tags. Dieses Protokoll wird für die Lebensdauer der Richtlinie gemäß den SEC 17a-4(f)-Bestimmungsrichtlinien aufbewahrt. Im [Azure-Aktivitätsprotokoll](../../azure-monitor/essentials/platform-logs-overview.md) werden umfassendere Protokolldaten mit allen Aktivitäten auf Steuerungsebene angezeigt. Wenn Sie [Azure-Ressourcenprotokolle](../../azure-monitor/essentials/platform-logs-overview.md) aktivieren, werden dagegen nur Vorgänge auf Datenebene aufbewahrt und angezeigt. Der Benutzer ist für die dauerhafte Speicherung dieser Protokolle verantwortlich, die aus gesetzlichen oder anderen Gründen ggf. erforderlich ist.
 
 ## <a name="how-it-works"></a>Funktionsweise
 
-Unveränderlicher Speicher für Azure-Blobspeicher unterstützt zwei Arten von WORM-Richtlinien bzw. Richtlinien für die unveränderliche Speicherung: zeitbasierte Aufbewahrung und gesetzliche Aufbewahrungspflicht. Wenn eine zeitbasierte Aufbewahrungsrichtlinie oder ein Zeitraum für die gesetzliche Aufbewahrungspflicht auf einen Container angewendet wird, werden alle vorhandenen Blobs innerhalb von weniger als 30 Sekunden in einen unveränderlichen WORM-Zustand versetzt. Alle neuen Blobs, die in den durch die Richtlinie geschützten Container hochgeladen werden, werden ebenfalls in einen unveränderlichen Zustand versetzt. Wenn sich alle Blobs in einem unveränderlichen Zustand befinden, wird die Unveränderlichkeitsrichtlinie bestätigt, und alle Überschreibungs- oder Löschvorgänge im unveränderlichen Container sind unzulässig.
+Unveränderlicher Speicher für Azure-Blobspeicher unterstützt zwei Arten von WORM-Richtlinien bzw. Richtlinien für die unveränderliche Speicherung: zeitbasierte Aufbewahrung und gesetzliche Aufbewahrungspflicht. Wenn eine zeitbasierte Aufbewahrungsrichtlinie oder ein Zeitraum für die gesetzliche Aufbewahrungspflicht auf einen Container angewendet wird, werden alle vorhandenen Blobs innerhalb von weniger als 30 Sekunden in einen unveränderlichen WORM-Zustand versetzt. Alle neuen Blobs, die in den durch die Richtlinie geschützten Container hochgeladen werden, werden ebenfalls in einen unveränderlichen Zustand versetzt. Wenn sich alle Blobs in einem unveränderlichen Zustand befinden, wird die Unveränderlichkeitsrichtlinie bestätigt, und alle Überschreibungs- oder Löschvorgänge im unveränderlichen Container sind unzulässig. Bei einem Konto mit aktiviertem HNS können die Blobs nicht umbenannt oder in ein anderes Verzeichnis verschoben werden.
 
 Container und Speicherkonten können außerdem nicht gelöscht werden, wenn der Container Blobs enthält, die durch eine Richtlinie für die Aufbewahrung für juristische Zwecke oder eine gesperrte zeitbasierte Richtlinie geschützt sind. Eine Richtlinie für die Aufbewahrung für juristische Zwecke schützt vor der Löschung von Blobs, Containern und Speicherkonten. Entsperrte sowie gesperrte zeitbasierte Richtlinien schützen vor der Löschung von Blobs im angegebenen Zeitraum. Entsperrte und gesperrte zeitbasierte Richtlinien schützen nur vor der Löschung von Containern, wenn im entsprechenden Container mindestens ein Blob vorhanden ist. Nur bei einem Container mit einer *gesperrten* zeitbasierten Richtlinie sind Speicherkonten vor der Löschung geschützt. Container mit entsperrten zeitbasierten Richtlinien bieten weder Schutz vor der Löschung von Speicherkonten noch Compliance.
 
@@ -175,6 +175,9 @@ Ja. Wenn eine zeitbasierte Aufbewahrungsrichtlinie erstellt wird, befindet sie s
 **Kann ich neben Richtlinien für unveränderliche Blobs das vorläufige Löschen verwenden?**
 
 Ja, wenn das vorläufige Löschen in Ihren Konformitätsanforderungen aktiviert werden kann. Das [vorläufige Löschen für Azure-Blobspeicher](./soft-delete-blob-overview.md) gilt für alle Container eines Speicherkontos, unabhängig von einer Richtlinie für die gesetzliche Aufbewahrungspflicht oder eine zeitbasierte Aufbewahrungsrichtlinie. Wir empfehlen Ihnen, das vorläufige Löschen als zusätzlichen Schutz zu verwenden, bevor Richtlinien für den unveränderlichen WORM-Zustand angewendet und bestätigt werden.
+
+**Kann ich bei einem Konto mit aktiviertem HNS ein Blob umbenennen oder verschieben, wenn es sich im unveränderlichen Zustand befindet?**
+Nein, sowohl der Name als auch die Verzeichnisstruktur werden als wichtige Daten auf Containerebene betrachtet, die nicht mehr geändert werden können, sobald die unveränderliche Richtlinie vorhanden ist. Umbenennen und Verschieben gibt es nur bei Konten mit aktiviertem HNS allgemein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

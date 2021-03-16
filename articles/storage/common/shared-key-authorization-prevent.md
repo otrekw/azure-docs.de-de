@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 03/05/2021
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: e4a5803b3d04b59316f71e50af24945efc87cb69
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2ed6c0c20869e31c0ef664d15305c5aa85ca4c6c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677562"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215577"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Azure Storage-Konto (Vorschau)
 
@@ -22,12 +22,8 @@ Jede sichere Anforderung an ein Azure Storage-Konto muss autorisiert werden. Sta
 
 Wenn Sie die Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Speicherkonto nicht zulassen, lehnt Azure Storage alle nachfolgenden Anforderungen an dieses Konto ab, die mit den Kontozugriffsschlüsseln autorisiert sind. Nur sichere Anforderungen, die durch Azure AD autorisiert wurden, werden erfolgreich ausgeführt. Weitere Informationen zur Verwendung von Azure AD finden Sie unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](storage-auth-aad.md).
 
-> [!WARNING]
-> Azure Storage unterstützt die Azure AD-Autorisierung nur bei Anforderungen an Blob Storage und Queue Storage. Wenn Sie die Autorisierung mit einem gemeinsam genutzten Schlüssel für ein Speicherkonto nicht mehr zulassen, führen Anforderungen an Azure Files oder Table Storage, die die Autorisierung mit einem gemeinsam verwendeten Schlüssel nutzen, zu einem Fehler. Weil das Azure-Portal für den Zugriff auf Datei- und Tabellendaten immer Autorisierung mit gemeinsam verwendeten Schlüsseln verwendet, können Sie auf diese Daten im Azure-Portal nicht zugreifen, wenn Sie eine solche Autorisierung für das Speicherkonto nicht zulassen.
->
-> Microsoft empfiehlt, entweder alle Daten aus Azure Files oder Table Storage zu einem separaten Speicherkonto zu migrieren, bevor Sie den Zugriff auf das Konto über gemeinsam verwendete Schlüssel verhindern, oder diese Einstellung nicht auf Speicherkonten anzuwenden, die Azure Files- oder Table Storage-Workloads unterstützen.
->
-> Das Verhindern des Zugriffs auf ein Speicherkonto mit gemeinsam verwendeten Schlüsseln wirkt sich nicht auf SMB-Verbindungen mit Azure Files aus.
+> [!IMPORTANT]
+> Das Aufheben der Autorisierung mit einem gemeinsam verwendeten Schlüsseln befindet sich zurzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
 In diesem Artikel wird beschrieben, wie Sie Anforderungen erkennen, die mit einem gemeinsam verwendeten Schlüssel autorisiert wurden, und wie Sie die Autorisierung mit gemeinsam verwendeten Schlüsseln für Ihr Speicherkonto aufheben. Informationen zum Registrieren für die Vorschauversion finden Sie unter [Informationen zur Vorschau](#about-the-preview).
 
@@ -41,7 +37,7 @@ Weitere Informationen zum Interpretieren von Anforderungen, die während der Vor
 
 ### <a name="monitor-how-many-requests-are-authorized-with-shared-key"></a>Überwachen der Anzahl von Anforderungen mit einem gemeinsam verwendeten Schlüssel
 
-Verwenden Sie den Azure-Metrik-Explorer im Azure-Portal, um die Autorisierung von Anforderungen an ein Speicherkonto nachzuverfolgen. Weitere Informationen zum Metrik-Explorer finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md).
+Verwenden Sie den Azure-Metrik-Explorer im Azure-Portal, um die Autorisierung von Anforderungen an ein Speicherkonto nachzuverfolgen. Weitere Informationen zum Metrik-Explorer finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../../azure-monitor/essentials/metrics-getting-started.md).
 
 Gehen Sie wie folgt vor, um eine Metrik zur Nachverfolgung von Anforderungen mit einem gemeinsam verwendeten Schlüssel oder einer Shared Access Signature zu erstellen:
 
@@ -67,7 +63,7 @@ Nachdem Sie die Metrik konfiguriert haben, werden nach und nach Anforderungen an
 
 :::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="Screenshot: aggregierte Anforderungen, die mit einem gemeinsam verwendeten Schlüssel autorisiert wurden":::
 
-Sie können auch eine Warnungsregel konfigurieren, um benachrichtigt zu werden, wenn eine bestimmte Anzahl von Anforderungen an Ihr Speicherkonto gerichtet wird, die mit einem gemeinsam verwendeten Schlüssel autorisiert wurden. Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../../azure-monitor/platform/alerts-metric.md).
+Sie können auch eine Warnungsregel konfigurieren, um benachrichtigt zu werden, wenn eine bestimmte Anzahl von Anforderungen an Ihr Speicherkonto gerichtet wird, die mit einem gemeinsam verwendeten Schlüssel autorisiert wurden. Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../../azure-monitor/alerts/alerts-metric.md).
 
 ### <a name="analyze-logs-to-identify-clients-that-are-authorizing-requests-with-shared-key-or-sas"></a>Analysieren von Protokollen zum Identifizieren von Clients, die Anforderungen mit gemeinsam verwendeten Schlüsseln oder SAS autorisieren
 
@@ -75,14 +71,14 @@ In Azure Storage-Protokollen werden Details zu Anforderungen für das Speicherk
 
 Wenn Sie Anforderungen an Ihr Azure Storage-Konto protokollieren möchten, um deren Autorisierung zu untersuchen, können Sie die Azure Storage-Protokollierung in Azure Monitor (Vorschauversion) verwenden. Weitere Informationen finden Sie unter [Überwachen von Azure Storage](../blobs/monitor-blob-storage.md).
 
-Die Azure Storage-Protokollierung in Azure Monitor unterstützt die Verwendung von Protokollabfragen für die Analyse von Protokolldaten. Für die Abfrage von Protokollen können Sie einen Azure Log Analytics-Arbeitsbereich verwenden. Weitere Informationen zu Protokollabfragen finden Sie unter [Tutorial: Erste Schritte mit Log Analytics-Abfragen](../../azure-monitor/log-query/log-analytics-tutorial.md).
+Die Azure Storage-Protokollierung in Azure Monitor unterstützt die Verwendung von Protokollabfragen für die Analyse von Protokolldaten. Für die Abfrage von Protokollen können Sie einen Azure Log Analytics-Arbeitsbereich verwenden. Weitere Informationen zu Protokollabfragen finden Sie unter [Tutorial: Erste Schritte mit Log Analytics-Abfragen](../../azure-monitor/logs/log-analytics-tutorial.md).
 
 #### <a name="create-a-diagnostic-setting-in-the-azure-portal"></a>Erstellen einer Diagnoseeinstellung im Azure-Portal
 
 Wenn Sie Azure Storage-Daten mit Azure Monitor protokollieren und mit Azure Log Analytics analysieren möchten, müssen Sie zunächst eine Diagnoseeinstellung erstellen, die angibt, welche Anforderungstypen und für welche Speicherdienste Daten protokolliert werden sollen. Führen Sie zum Erstellen einer Diagnoseeinstellung im Azure-Portal die folgenden Schritte aus:
 
 1. Registrieren Sie sich für die [Azure Storage-Protokollierung in Azure Monitor (Vorschauversion)](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u).
-1. Erstellen Sie in dem Abonnement, das Ihr Azure Storage-Konto enthält, einen neuen Log Analytics-Arbeitsbereich, oder verwenden Sie einen vorhandenen. Nachdem Sie die Protokollierung für Ihr Speicherkonto konfiguriert haben, sind die Protokolle im Log Analytics-Arbeitsbereich verfügbar. Weitere Informationen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../../azure-monitor/learn/quick-create-workspace.md).
+1. Erstellen Sie in dem Abonnement, das Ihr Azure Storage-Konto enthält, einen neuen Log Analytics-Arbeitsbereich, oder verwenden Sie einen vorhandenen. Nachdem Sie die Protokollierung für Ihr Speicherkonto konfiguriert haben, sind die Protokolle im Log Analytics-Arbeitsbereich verfügbar. Weitere Informationen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../../azure-monitor/logs/quick-create-workspace.md).
 1. Navigieren Sie zum Speicherkonto im Azure-Portal.
 1. Klicken Sie im Abschnitt „Überwachung“ auf **Diagnoseeinstellungen (Vorschau)** .
 1. Wählen Sie den Azure Storage-Dienst aus, für den Sie Anforderungen protokollieren möchten. Wählen Sie beispielsweise **Blob** aus, um Anforderungen an den Blobspeicher zu protokollieren.
@@ -95,7 +91,7 @@ Wenn Sie Azure Storage-Daten mit Azure Monitor protokollieren und mit Azure Log 
 
 Sie können für jeden Typ von Azure Storage-Ressource in Ihrem Speicherkonto eine Diagnoseeinstellung erstellen.
 
-Nachdem Sie die Diagnoseeinstellung erstellt haben, werden Anforderungen für das Speicherkonto gemäß dieser Einstellung protokolliert. Weitere Informationen finden Sie unter [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../../azure-monitor/platform/diagnostic-settings.md).
+Nachdem Sie die Diagnoseeinstellung erstellt haben, werden Anforderungen für das Speicherkonto gemäß dieser Einstellung protokolliert. Weitere Informationen finden Sie unter [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../../azure-monitor/essentials/diagnostic-settings.md).
 
 Eine Referenz der Felder, die in Azure Storage-Protokollen in Azure Monitor verfügbar sind, finden Sie unter [Ressourcenprotokolle (Vorschau)](../blobs/monitor-blob-storage-reference.md#resource-logs-preview).
 
@@ -110,7 +106,7 @@ StorageBlobLogs
 | top 10 by count_ desc
 ```
 
-Sie können auch eine auf dieser Abfrage basierende Warnungsregel konfigurieren, um über Anforderungen informiert zu werden, die mit einem gemeinsam verwendeten Schlüssel oder einer SAS autorisiert wurden. Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../../azure-monitor/platform/alerts-log.md).
+Sie können auch eine auf dieser Abfrage basierende Warnungsregel konfigurieren, um über Anforderungen informiert zu werden, die mit einem gemeinsam verwendeten Schlüssel oder einer SAS autorisiert wurden. Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../../azure-monitor/alerts/alerts-log.md).
 
 ## <a name="remediate-authorization-via-shared-key"></a>Aufheben der Autorisierung mit gemeinsam verwendeten Schlüsseln
 
@@ -133,11 +129,23 @@ Befolgen Sie diese Schritte, um die Autorisierung mit gemeinsam verwendeten Schl
 
     :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="Screenshot: Verweigern des Zugriffs auf das Konto mit einem gemeinsam verwendeten Schlüssel":::
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Wenn Sie die Autorisierung mit einem gemeinsam verwendeten Schlüssel bei einem Speicherkonto mit PowerShell aufheben möchten, installieren Sie das [Az.Storage PowerShell-Modul](https://www.powershellgallery.com/packages/Az.Storage), Version 3.4.0 oder höher. Konfigurieren Sie als Nächstes die Eigenschaft **AllowSharedKeyAccess** für ein neues oder vorhandenes Speicherkonto.
+
+Das folgende Beispiel zeigt, wie Sie den Zugriff mit einem gemeinsam genutzten Schlüssel bei einem vorhandenen Speicherkonto mit PowerShell nicht zulassen. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
+
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource-group> `
+    -AccountName <storage-account> `
+    -AllowSharedKeyAccess $false
+```
+
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Installieren Sie die Azure-Befehlszeilenschnittstelle Version 2.9.1 oder höher, um die Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Speicherkonto mit der Azure-Befehlszeilenschnittstelle zu verhindern. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli). Konfigurieren Sie als Nächstes die **allowSharedKeyAccess**-Eigenschaft für ein neues oder vorhandenes Speicherkonto.
 
-Im folgenden Beispiel wird gezeigt, wie Sie die **allowSharedKeyAccess**-Eigenschaft mit der Azure-Befehlszeilenschnittstelle festlegen. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
+Das folgende Beispiel zeigt, wie Sie den Zugriff mit einem gemeinsam genutzten Schlüssel bei einem vorhandenen Speicherkonto mit Azure CLI nicht zulassen. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
 
 ```azurecli-interactive
 $storage_account_id=$(az resource show \
@@ -193,13 +201,13 @@ resources
 
 ## <a name="permissions-for-allowing-or-disallowing-shared-key-access"></a>Berechtigungen zum Zulassen oder Ablehnen des Zugriffs mit gemeinsam verwendeten Schlüsseln
 
-Zum Festlegen der Eigenschaft **AllowSharedKeyAccess** für das Speicherkonto muss ein Benutzer Berechtigungen zum Erstellen und Verwalten von Speicherkonten haben. Azure RBAC-Rollen (Role-Based Access Control, Rollenbasierte Zugriffssteuerung), die diese Berechtigungen bieten, enthalten die Aktion **Microsoft.Storage/storageAccounts/write** oder **Microsoft.Storage/storageAccounts/\** _. In diese Aktion sind folgende Rollen integriert:
+Zum Festlegen der Eigenschaft **AllowSharedKeyAccess** für das Speicherkonto muss ein Benutzer Berechtigungen zum Erstellen und Verwalten von Speicherkonten haben. Azure RBAC-Rollen (Role-Based Access Control, rollenbasierte Zugriffssteuerung), die diese Berechtigungen bieten, enthalten die Aktion **Microsoft.Storage/storageAccounts/write** oder **Microsoft.Storage/storageAccounts/\*** . In diese Aktion sind folgende Rollen integriert:
 
 - Die Azure Resource Manager-Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner)
 - Die Azure Resource Manager-Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor)
 - Die Rolle [Speicherkontomitwirkender](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Diese Rollen bieten keinen Zugriff auf Daten in einem Speicherkonto über Azure Active Directory (Azure AD). Sie enthalten jedoch die Aktion „_*Microsoft.Storage/storageAccounts/listkeys/action**“, die Zugriff auf die Kontozugriffsschlüssel gewährt. Bei dieser Berechtigung kann ein Benutzer mithilfe der Kontozugriffsschlüssel auf alle Daten in einem Speicherkonto zuzugreifen.
+Diese Rollen bieten keinen Zugriff auf Daten in einem Speicherkonto über Azure Active Directory (Azure AD). Sie enthalten jedoch die Aktion **Microsoft.Storage/storageAccounts/listkeys/action**, die Zugriff auf die Kontozugriffsschlüssel gewährt. Bei dieser Berechtigung kann ein Benutzer mithilfe der Kontozugriffsschlüssel auf alle Daten in einem Speicherkonto zuzugreifen.
 
 Rollenzuweisungen müssen auf die Ebene des Speicherkontos oder höher eingeschränkt werden, damit ein Benutzer den Zugriff mit gemeinsam verwendeten Schlüsseln für das Speicherkonto zulassen oder ablehnen darf. Weitere Informationen zum Rollenbereich finden Sie unter [Grundlegendes zum Bereich für Azure RBAC](../../role-based-access-control/scope-overview.md).
 
@@ -236,12 +244,17 @@ Einige Azure-Tools bieten die Möglichkeit, die Azure AD-Autorisierung für den
 | Azure IoT Hub | Unterstützt. Weitere Informationen finden Sie unter [IoT Hub-Unterstützung für virtuelle Netzwerke](../../iot-hub/virtual-network-support.md). |
 | Azure Cloud Shell | Azure Cloud Shell ist eine integrierte Shell im Azure-Portal. Azure Cloud Shell hostet Dateien für Persistenz in einer Azure-Dateifreigabe in einem Speicherkonto. Auf diese Dateien kann nicht mehr zugegriffen werden, wenn die Autorisierung mit gemeinsam verwendeten Schlüsseln für dieses Speicherkonto aufgehoben wird. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit dem Microsoft Azure Files-Speicher](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage). <br /><br /> Zum Ausführen von Befehlen in Azure Cloud Shell zur Verwaltung von Speicherkonten, bei denen der Zugriff mit gemeinsam verwendeten Schlüsseln nicht zulässig ist, müssen Sie zuerst sicherstellen, dass Ihnen die erforderlichen Berechtigungen für diese Konten über Azure RBAC erteilt wurden. Weitere Informationen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md). |
 
+## <a name="transition-azure-files-and-table-storage-workloads"></a>Durchführen des Übergangs von Azure Files- und Table Storage-Workloads
+
+Azure Storage unterstützt die Azure AD-Autorisierung nur bei Anforderungen an Blob Storage und Queue Storage. Wenn Sie die Autorisierung mit einem gemeinsam genutzten Schlüssel für ein Speicherkonto nicht mehr zulassen, führen Anforderungen an Azure Files oder Table Storage, die die Autorisierung mit einem gemeinsam verwendeten Schlüssel nutzen, zu einem Fehler. Weil das Azure-Portal für den Zugriff auf Datei- und Tabellendaten immer Autorisierung mit gemeinsam verwendeten Schlüsseln verwendet, können Sie auf diese Daten im Azure-Portal nicht zugreifen, wenn Sie eine solche Autorisierung für das Speicherkonto nicht zulassen.
+
+Microsoft empfiehlt, entweder alle Daten aus Azure Files oder Table Storage zu einem separaten Speicherkonto zu migrieren, bevor Sie den Zugriff auf das Konto über gemeinsam verwendete Schlüssel verhindern, oder diese Einstellung nicht auf Speicherkonten anzuwenden, die Azure Files- oder Table Storage-Workloads unterstützen.
+
+Das Verhindern des Zugriffs auf ein Speicherkonto mit gemeinsam verwendeten Schlüsseln wirkt sich nicht auf SMB-Verbindungen mit Azure Files aus.
+
 ## <a name="about-the-preview"></a>Informationen zur Vorschau
 
 Die Vorschauversion für das Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln ist in der öffentlichen Azure-Cloud verfügbar. Sie ist nur für Speicherkonten verfügbar, die das Azure Resource Manager-Bereitstellungsmodell verwenden. Informationen dazu, welche Speicherkonten das Azure Resource Manager-Bereitstellungsmodell verwenden, finden Sie unter [Typen von Speicherkonten](storage-account-overview.md#types-of-storage-accounts).
-
-> [!IMPORTANT]
-> Diese Vorschau ist nur für die Verwendung außerhalb der Produktion bestimmt.
 
 Für die Vorschau gelten einige Einschränkungen, die in den folgenden Abschnitten beschrieben werden.
 

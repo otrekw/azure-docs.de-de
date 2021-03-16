@@ -6,23 +6,24 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: a655c8c145b4f3812dae9f1a4ec1e5eebbe44809
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: d1021352f3555f49b165eed60214e11b1a8d07d9
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348473"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508179"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Erstellen und Konfigurieren eines AKS-Clusters zur Verwendung von virtuellen Knoten mithilfe der Azure CLI
 
 Dieser Artikel zeigt, wie Sie die virtuellen Netzwerkressourcen und den AKS-Cluster mithilfe der Azure-Befehlszeilenschnittstelle erstellen und konfigurieren und dann die virtuellen Knoten aktivieren.
 
-> [!NOTE]
-> In [diesem Artikel](virtual-nodes.md) erhalten Sie eine Übersicht über die regionale Verfügbarkeit und die Einschränkungen bei der Verwendung virtueller Knoten.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Die virtuellen Knoten ermöglichen die Netzwerkkommunikation zwischen Pods, die in Azure Container Instances (ACI) und dem AKS-Cluster ausgeführt werden. Um diese Kommunikation bereitzustellen, wird ein virtuelles Subnetz erstellt, und delegierte Berechtigungen werden zugewiesen. Virtuelle Knoten funktionieren nur in AKS-Clustern, die mit *erweiterten* Netzwerkfunktionen (Azure CNI) erstellt wurden. Standardmäßig werden AKS-Cluster mit *grundlegenden* Netzwerkfunktionen (kubenet) erstellt. Dieser Artikel zeigt, wie Sie ein virtuelles Netzwerk und virtuelle Subnetze erstellen und dann einen AKS-Cluster bereitstellen, der erweiterte Netzwerkfunktionen verwendet.
+
+> [!IMPORTANT]
+> Bevor Sie virtuelle Knoten bei AKS verwenden, überprüfen Sie sowohl die [Einschränkungen von virtuellen AKS-Knoten][virtual-nodes-aks] als auch die [Einschränkungen des virtuellen Netzwerks von ACI][virtual-nodes-networking-aci]. Diese Einschränkungen wirken sich auf den Speicherort, die Netzwerkkonfiguration und andere Konfigurationsdetails Ihres AKS-Clusters und der virtuellen Knoten aus.
 
 Wenn Sie ACI noch nicht genutzt haben, registrieren Sie den Dienstanbieter mit Ihrem Abonnement. Sie können den Status der ACI-Anbieterregistrierung mit dem Befehl [az provider list][az-provider-list] überprüfen, wie im folgenden Beispiel gezeigt:
 
@@ -48,7 +49,7 @@ az provider register --namespace Microsoft.ContainerInstance
 
 Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert.
 
-Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock die Option **Ausprobieren** aus. Sie können Cloud Shell auch auf einer separaten Browserregisterkarte starten, indem Sie zu [https://shell.azure.com/bash](https://shell.azure.com/bash) navigieren. Wählen Sie **Kopieren** , um die Blöcke mit dem Code zu kopieren. Fügen Sie ihn anschließend in Cloud Shell ein, und drücken Sie die EINGABETASTE, um ihn auszuführen.
+Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock die Option **Ausprobieren** aus. Sie können Cloud Shell auch auf einer separaten Browserregisterkarte starten, indem Sie zu [https://shell.azure.com/bash](https://shell.azure.com/bash) navigieren. Wählen Sie **Kopieren**, um die Blöcke mit dem Code zu kopieren. Fügen Sie ihn anschließend in Cloud Shell ein, und drücken Sie die EINGABETASTE, um ihn auszuführen.
 
 Wenn Sie es vorziehen, die Befehlszeilenschnittstelle lokal zu installieren und zu verwenden, müssen Sie für diesen Artikel die Azure CLI-Version 2.0.49 oder verwenden. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -85,7 +86,7 @@ az network vnet subnet create \
 
 ## <a name="create-a-service-principal-or-use-a-managed-identity"></a>Erstellen eines Dienstprinzipals oder Verwenden einer verwalteten Identität
 
-Damit ein AKS-Cluster mit anderen Azure-Ressourcen interagieren kann, wird ein Azure Active Directory-Dienstprinzipal verwendet. Dieser Dienstprinzipal kann automatisch über die Azure CLI oder das Azure-Portal erstellt werden, oder Sie können vorab einen Dienstprinzipal erstellen und dann weitere Berechtigungen zuweisen. Sie können anstelle eines Dienstprinzipals auch eine verwaltete Identität für Berechtigungen verwenden. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md).
+Eine Clusteridentität wird verwendet, um einem AKS-Cluster die Interaktion mit anderen Azure-Ressourcen zu ermöglichen. Die Clusteridentität kann über die Azure CLI oder das Azure-Portal automatisch erstellt werden, oder Sie können eine solche Identität vorab erstellen und dann weitere Berechtigungen zuweisen. Diese Clusteridentität ist standardmäßig eine verwaltete Identität. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md). Sie können auch einen Dienstprinzipal als Ihre Clusteridentität verwenden. In den folgenden Schritten wird gezeigt, wie Sie den Dienstprinzipal manuell erstellen und Ihrem Cluster zuweisen.
 
 Erstellen Sie mit dem Befehl [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] einen Dienstprinzipal. Mit dem Parameter `--skip-assignment` wird die Zuweisung zusätzlicher Berechtigungen eingeschränkt.
 
@@ -105,7 +106,7 @@ Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 }
 ```
 
-Notieren Sie sich die App-ID ( *appId* ) und das Kennwort ( *password* ). Diese Werte werden in den folgenden Schritten verwendet.
+Notieren Sie sich die App-ID (*appId*) und das Kennwort (*password*). Diese Werte werden in den folgenden Schritten verwendet.
 
 ## <a name="assign-permissions-to-the-virtual-network"></a>Zuweisen von Berechtigungen zum virtuellen Netzwerk
 
@@ -151,7 +152,7 @@ Nach einigen Minuten wird der Befehl abgeschlossen und gibt Informationen über 
 
 ## <a name="enable-virtual-nodes-addon"></a>Virtuelle Knoten aktivieren-Add-On
 
-Um die virtuellen Knoten zu aktivieren, verwenden Sie jetzt den Befehl [az aks enable-addons][az-aks-enable-addons]. Das folgende Beispiel verwendet das Subnetz *myVirtualNodeSubnet* , das in einem vorherigen Schritt erstellt wurde:
+Um die virtuellen Knoten zu aktivieren, verwenden Sie jetzt den Befehl [az aks enable-addons][az-aks-enable-addons]. Das folgende Beispiel verwendet das Subnetz *myVirtualNodeSubnet*, das in einem vorherigen Schritt erstellt wurde:
 
 ```azurecli-interactive
 az aks enable-addons \
@@ -175,7 +176,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-Die folgende Beispielausgabe zeigt den erstellten einzelnen VM-Knoten und dann den virtuellen Knoten für Linux, *virtual-node-aci-linux* :
+Die folgende Beispielausgabe zeigt den erstellten einzelnen VM-Knoten und dann den virtuellen Knoten für Linux, *virtual-node-aci-linux*:
 
 ```output
 NAME                          STATUS    ROLES     AGE       VERSION
@@ -352,3 +353,5 @@ Virtuelle Knoten sind oft eine Komponente einer Skalierungslösung in AKS. Weite
 [aks-basic-ingress]: ingress-basic.md
 [az-provider-list]: /cli/azure/provider#az-provider-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[virtual-nodes-aks]: virtual-nodes.md
+[virtual-nodes-networking-aci]: ../container-instances/container-instances-virtual-network-concepts.md

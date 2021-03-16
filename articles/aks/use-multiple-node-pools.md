@@ -4,12 +4,12 @@ description: Informationen zum Erstellen und Verwalten mehrerer Knotenpools für
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 07c4628a17d2c76e8e4608c9c6d059a81a9c378f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3e029695e9dce79473ada0bae3e7f0bbfd30db89
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182858"
+ms.locfileid: "102218484"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
@@ -130,9 +130,11 @@ Eine Workload erfordert für die logische Isolation möglicherweise das Aufteile
 #### <a name="limitations"></a>Einschränkungen
 
 * Alle Subnetze, die Knotenpools zugewiesen sind, müssen demselben virtuellen Netzwerk angehören.
-* Systempods müssen Zugriff auf alle Knoten im Cluster haben, um wichtige Funktionen wie die DNS-Auflösung über coreDNS bereitstellen zu können.
-* Die Zuweisung eines eindeutigen Subnetzes pro Knotenpool ist nur während der Vorschauphase von Azure CNI möglich.
-* Die Verwendung von Netzwerkrichtlinien mit einem eindeutigen Subnetz pro Knotenpool wird während der Vorschau nicht unterstützt.
+* Systempods müssen Zugriff auf alle Knoten/Pods im Cluster haben, um eine kritische Funktionalität bereitzustellen, z. B. DNS-Auflösung und Tunneln von kubectl-Protokollen/exec/Port-Weiterleitungsproxy.
+* Wenn Sie Ihr VNET nach dem Erstellen Ihres Clusters erweitern, müssen Sie den Cluster aktualisieren (einen beliebigen verwalteten Clustervorgang ausführen, aber Knotenpoolvorgänge werden nicht gezählt), bevor Sie ein Subnetz außerhalb der ursprünglichen CIDR hinzufügen. Wenn der Agentpool hinzugefügt wird, tritt jetzt bei AKS ein Fehler auf, obwohl wir dies ursprünglich zugelassen haben. Falls Sie nicht wissen, wie Sie Ihren Cluster abstimmen können, öffnen Sie ein Supportticket. 
+* Die Calico-Netzwerkrichtlinie wird nicht unterstützt. 
+* Die Azure-Netzwerkrichtlinie wird nicht unterstützt.
+* Kube-Proxy erwartet eine einzelne zusammenhängende CIDR und verwendet sie für drei Optimierungen. Siehe diese [K.E.P.](https://github.com/kubernetes/enhancements/blob/master/keps/sig-network/20191104-iptables-no-cluster-cidr.md ) Einzelheiten zu „Cluster-CIDR“ finden Sie [hier](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/). In Azure CNI wird das Subnetz Ihres ersten Knotenpools an Kube-Proxy übergeben. 
 
 Um einen Knotenpool mit einem dedizierten Subnetz zu erstellen, übergeben Sie beim Erstellen des Knotenpools die Subnetzressourcen-ID als zusätzlichen Parameter.
 

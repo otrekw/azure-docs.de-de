@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 77cc509a9fac2a24b3cd70675c1ee4160ecdb24d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6fdcedd19c02251035a838d34ba51e786595134b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741853"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212448"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Häufig gestellte Fragen zu Azure Front Door
 
@@ -87,6 +87,9 @@ Die Routen für Front Door sind nicht sortiert und eine bestimmte Route wird anh
 
 ### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Wie kann ich den Zugriff auf mein Back-End nur auf Azure Front Door beschränken?
 
+> [!NOTE]
+> Die neue SKU Front Door Premium bietet eine stärker empfohlene Vorgehensweise zum Sperren Ihrer Anwendung über einen privaten Endpunkt. [Weitere Informationen zum privaten Endpunkt](./standard-premium/concept-private-link.md)
+
 Um Ihre Anwendung so zu sperren, dass sie nur Datenverkehr von Ihrer spezifischen Front Door-Ressource akzeptiert, müssen Sie IP-ACLs für Ihr Back-End einrichten und dann den Satz der akzeptierten Werte auf den Header „X-Forwarded-Host“ einschränken, der von Azure Front Door gesendet wird. Diese Schritte werden wie folgt beschrieben:
 
 - Konfigurieren Sie IP-ACLs für Ihre Back-Ends so, dass sie nur Datenverkehr aus dem Back-End-IP-Adressraum von Azure Front Door und den Infrastrukturdiensten von Azure akzeptieren. Lesen Sie die unten stehenden IP-Details, um Ihr Backend mit ACLs zu versehen:
@@ -99,7 +102,7 @@ Um Ihre Anwendung so zu sperren, dass sie nur Datenverkehr von Ihrer spezifische
 
 - Suchen Sie auf der Front Door-Portalseite im Abschnitt „Übersicht“ nach dem Wert `Front Door ID`. Sie können dann nach dem eingehenden Header **X-Azure-FDID** filtern, der von Front Door mit diesem Wert an Ihr Back-End gesendet wurde, um sicherzustellen, dass nur Ihre eigene Front Door-Instanz zulässig ist (weil die vorherigen IP-Adressbereiche mit den Front Door-Instanzen anderer Kunden geteilt werden).
 
-- Wenden Sie Regelfilterung in Ihrem Back-End-Webserver an, um den Datenverkehr basierend auf dem resultierenden „X-Azure-FDID“-Headerwert einzuschränken. Beachten Sie, dass einige Dienste wie Azure App Service diese [headerbasierte Filterfunktion](../app-service/app-service-ip-restrictions#restrict-access-to-a-specific-azure-front-door-instance-preview) bereitstellen, ohne dass Sie Ihre Anwendung oder den Host ändern müssen.
+- Wenden Sie Regelfilterung in Ihrem Back-End-Webserver an, um den Datenverkehr basierend auf dem resultierenden „X-Azure-FDID“-Headerwert einzuschränken. Beachten Sie, dass einige Dienste wie Azure App Service diese [headerbasierte Filterfunktion](../app-service/app-service-ip-restrictions.md#restrict-access-to-a-specific-azure-front-door-instance-preview) bereitstellen, ohne dass Sie Ihre Anwendung oder den Host ändern müssen.
 
   Hier folgt ein Beispiel für [Microsoft-Internetinformationsdienste (IIS)](https://www.iis.net/):
 

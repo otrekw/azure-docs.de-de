@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 03/09/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 50a0894898dcdc817ee253ad326b88a9bb61b9d6
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 85520032e9bc63b6296e40dd1c1055e36762dcc8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357363"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555005"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“
 
@@ -24,6 +24,15 @@ Das Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Universell V2�
 
 > [!IMPORTANT]
 > Ein Upgrade eines Speicherkontos vom Typ „Universell V1“ oder eines Blobspeicherkontos auf „Allgemein v2“ ist endgültig und kann nicht rückgängig gemacht werden.
+
+> [!NOTE]
+> Obwohl Microsoft für die meisten Szenarien Konten vom Typ „Allgemein v2“ empfiehlt, wird Microsoft weiterhin Konten vom Typ „Universell V1“ für neue und vorhandene Kunden unterstützen. Sie können Speicherkonten vom Typ „Universell V1“ in neuen Regionen erstellen, wenn Azure Storage in diesen Regionen zur Verfügung steht. Microsoft hat zurzeit keinen Plan zum Einstellen der Unterstützung für Konten vom Typ „Universell V1“ und wird mindestens ein Jahr im Voraus informieren, bevor ein Azure Storage-Feature als veraltet gekennzeichnet wird. Microsoft wird weiterhin Sicherheitsupdates für Konten vom Typ „Universell V1“ bereitstellen, aber es wird keine neue Featureentwicklung für diesen Kontotyp erwartet.
+>
+> Ab dem 1. Oktober 2020 entsprechen die Preise für Konten vom Typ „Universell V1“ in neuen Azure Storage-Regionen den Preisen für Konten vom Typ „Allgemein v2“ in diesen Regionen. Die Preise in vorhandenen Azure Storage Regionen haben sich nicht geändert. Preisdetails für Konten vom Typ „Universell V1“ in einer bestimmten Region finden Sie auf der Seite mit der Preisübersicht zu Azure Storage. Wählen Sie Ihre Region und dann neben **Preisangebote** die Option **Sonstige** aus.
+
+## <a name="upgrade-an-account"></a>Aktualisieren eines Kontos
+
+Wenn Sie ein Konto vom Typ „Universell V1“ oder ein Blob Storage-Konto auf ein Konto vom Typ „Allgemein v2“ aktualisieren möchten, verwenden Sie dazu das Azure-Portal, PowerShell oder Azure CLI.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -47,6 +56,7 @@ Rufen Sie anschließend den folgenden Befehl auf, um das Konto zu aktualisieren,
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -Name <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
+
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Wenn Sie für ein Konto vom Typ „Allgemein v1“ mit der Azure CLI ein Upgrade auf ein Konto vom Typ „Allgemein v1“ durchführen möchten, installieren Sie zuerst die aktuelle Version der Azure CLI. Informationen zum Installieren der CLI finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli).

@@ -2,17 +2,17 @@
 title: DNS-Konfiguration für private Azure-Endpunkte
 description: Informationen zur DNS-Konfiguration von privaten Azure-Endpunkten
 services: private-link
-author: allensu
+author: asudbring
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: allensu
-ms.openlocfilehash: d0085dc1cd7afa1fd8f557db27d30fd76ca05fac
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 42c5b315c9c3560c400c685448a11dc61bf64eb6
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732733"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215611"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>DNS-Konfiguration für private Azure-Endpunkte
 
@@ -43,8 +43,8 @@ Verwenden Sie für Azure-Dienste die empfohlenen Zonennamen in der folgenden Tab
 | Typ der Private Link-Ressource/Unterressource |Name der privaten DNS-Zone | Weiterleitungen der öffentlichen DNS-Zone |
 |---|---|---|
 | Azure Automation/(Microsoft.Automation/automationAccounts) / Webhook, DSCAndHybridWorker | privatelink.azure-automation.net | azure-automation.net |
-| Azure SQL-Datenbank (Microsoft.Sql/servers)/SQL Server | privatelink.database.windows.net | database.windows.net |
-| Azure Synapse Analytics (Microsoft.Sql/servers)/SQL Server  | privatelink.database.windows.net | database.windows.net |
+| Azure SQL-Datenbank (Microsoft.Sql/servers) / sqlServer | privatelink.database.windows.net | database.windows.net |
+| Azure Synapse Analytics (Microsoft.Sql/servers) / sqlServer  | privatelink.database.windows.net | database.windows.net |
 | Storage-Konto (Microsoft.Storage/storageAccounts)/Blob (blob, blob_secondary) | privatelink.blob.core.windows.net | blob.core.windows.net |
 | Storage-Konto (Microsoft.Storage/storageAccounts)/Tabelle (table, table_secondary) | privatelink.table.core.windows.net | table.core.windows.net |
 | Storage-Konto (Microsoft.Storage/storageAccounts)/Warteschlange (queue, queue_secondary) | privatelink.queue.core.windows.net | queue.core.windows.net |
@@ -73,13 +73,13 @@ Verwenden Sie für Azure-Dienste die empfohlenen Zonennamen in der folgenden Tab
 | Azure Event Grid (Microsoft.EventGrid/topics)/Thema | privatelink.eventgrid.azure.net | eventgrid.azure.net |
 | Azure Event Grid (Microsoft.EventGrid/domains)/Domäne | privatelink.eventgrid.azure.net | eventgrid.azure.net |
 | Azure Web-Apps (Microsoft.Web/sites)/sites | privatelink.azurewebsites.net | azurewebsites.net |
-| Azure Machine Learning (Microsoft.MachineLearningServices/workspaces)/amlworkspace | privatelink.api.azureml.ms<br/>privatelink.notebooks.azure.net | api.azureml.ms<br/>notebooks.azure.net<br/>aznbcontent.net |
+| Azure Machine Learning (Microsoft.MachineLearningServices/workspaces)/amlworkspace | privatelink.api.azureml.ms<br/>privatelink.notebooks.azure.net | api.azureml.ms<br/>notebooks.azure.net<br/>instances.azureml.ms<br/>aznbcontent.net |
 | SignalR (Microsoft.SignalRService/SignalR)/signalR | privatelink.service.signalr.net | service.signalr.net |
 | Azure Monitor (Microsoft.Insights/privateLinkScopes)/azuremonitor | privatelink.monitor.azure.com<br/> privatelink.oms.opinsights.azure.com <br/> privatelink.ods.opinsights.azure.com <br/> privatelink.agentsvc.azure-automation.net | monitor.azure.com<br/> oms.opinsights.azure.com<br/> ods.opinsights.azure.com<br/> agentsvc.azure-automation.net |
 | Cognitive Services (Microsoft.CognitiveServices/accounts)/account | privatelink.cognitiveservices.azure.com  | cognitiveservices.azure.com  |
 | Azure File Sync (Microsoft.StorageSync/storageSyncServices) / afs |  privatelink.afs.azure.net  |  afs.azure.net  |
 | Azure Data Factory (Microsoft.DataFactory/factories)/dataFactory |  privatelink.datafactory.azure.net  |  datafactory.azure.net  |
-| Azure Data Factory (Microsoft.DataFactory/factories)/portal |  privatelink.azure.com  |  azure.com  |
+| Azure Data Factory (Microsoft.DataFactory/factories)/portal |  privatelink.adf.azure.com  |  adf.azure.com  |
 | Azure Cache for Redis (Microsoft.Cache/Redis)/redisCache | privatelink.redis.cache.windows.net | redis.cache.windows.net |
 
 <sup>1</sup> Für die Verwendung mit dem integrierten Event Hub-kompatiblen Endpunkt von IoT Hub. Weitere Informationen finden Sie unter [Integrierter, mit Event Hub kompatibler Endpunkt](../iot-hub/virtual-network-support.md#built-in-event-hub-compatible-endpoint).
@@ -97,7 +97,6 @@ Verwenden Sie für Azure-Dienste die empfohlenen Zonennamen in der folgenden Tab
 | Azure Database for PostgreSQL – Einzelserver (Microsoft.DBforPostgreSQL/servers)/postgresqlServer | privatelink.postgres.database.chinacloudapi.cn | postgres.database.chinacloudapi.cn |
 | Azure Database for MySQL (Microsoft.DBforMySQL/servers)/mysqlServer | privatelink.mysql.database.chinacloudapi.cn  | mysql.database.chinacloudapi.cn  |
 | Azure Database for MariaDB (Microsoft.DBforMariaDB/servers)/mariadbServer | privatelink.mariadb.database.chinacloudapi.cn | mariadb.database.chinacloudapi.cn |
-
 
 ## <a name="dns-configuration-scenarios"></a>Szenarien der DNS-Konfiguration
 

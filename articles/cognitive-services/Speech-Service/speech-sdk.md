@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 597a7c3954912a3a86b5db9f92ba75e8aaee63f6
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4c8ee3a65c26d1eb3acb7b9f4c18f11e870e4b82
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601816"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434453"
 ---
 # <a name="about-the-speech-sdk"></a>Informationen zum Speech SDK
 
@@ -58,13 +58,14 @@ Die [Spracherkennung](speech-to-text.md) (auch als *Speech-to-Text* bezeichnet) 
 
 ### <a name="voice-assistants"></a>Sprachassistenten
 
-[Sprachassistenten](voice-assistants.md), die das Speech SDK verwenden, ermöglichen es Entwicklern, natürliche Konversationsschnittstellen für ihre Anwendungen und Umgebungen zu erstellen, die der menschlichen Sprache nahekommen. Der Sprachassistentendienst ermöglicht die schnelle, zuverlässige Interaktion zwischen einem Gerät und einem Assistenten. Die Implementierung verarbeitet Aufgaben über den Kanal „Direct Line Speech“ von Bot Framework oder den integrierten Dienst „Benutzerdefinierte Befehle“. Darüber hinaus können Sprachassistenten benutzerdefinierte Stimmen verwenden, die über das [Custom Voice-Portal](https://aka.ms/customvoice) erstellt werden, um eine unverwechselbare Sprachausgabe zu erzielen.
+[Sprachassistenten](voice-assistants.md), die das Speech SDK verwenden, ermöglichen es Ihnen, natürliche Konversationsschnittstellen für Ihre Anwendungen und Umgebungen zu erstellen, die der menschlichen Sprache nahekommen. Das Speech SDK bietet eine schnelle, zuverlässige Interaktion mit Spracherkennung, Sprachsynthese und Konversationsdaten über eine einzelne Verbindung. Ihre Implementierung kann für die Durchführung von Aufgaben den Kanal „Direct Line Speech“ von Bot Framework oder den integrierten Dienst „Benutzerdefinierte Befehle“ verwenden. Darüber hinaus können Sprachassistenten benutzerdefinierte Stimmen verwenden, die über das [Custom Voice-Portal](https://aka.ms/customvoice) erstellt werden, um eine unverwechselbare Sprachausgabe zu erzielen.
 
-**Sprach-Assistent** ist auf den folgenden Plattformen verfügbar:
+**Sprach-Assistent** wird auf folgenden Plattformen unterstützt:
 
   - C++/Windows und Linux und macOS
   - C#/Windows
   - Java/Windows und Linux und macOS und Android (Speech Devices SDK)
+  - Go
 
 #### <a name="keyword-spotting"></a>Schlüsselworterkennung
 
@@ -113,7 +114,7 @@ Die [Callcentertranskription](call-center-transcription.md) ist ein häufiges Sz
 
 ### <a name="codec-compressed-audio-input"></a>Per Codec komprimierte Audioeingabe
 
-Einige der Speech SDK-Programmiersprachen unterstützen per Codec komprimierte Audioeingabestreams. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">Verwenden komprimierter Audioeingabeformate<span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Einige der Speech SDK-Programmiersprachen unterstützen per Codec komprimierte Audioeingabestreams. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">Verwenden komprimierter Audioeingabeformate</a>.
 
 **Per Codec komprimierte Audioeingabe** ist auf den folgenden Plattformen verfügbar:
 

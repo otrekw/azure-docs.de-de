@@ -4,12 +4,12 @@ description: Bring Your Own Key(BYOK) zum Verschlüsseln von AKS-Datenträgern f
 services: container-service
 ms.topic: article
 ms.date: 09/01/2020
-ms.openlocfilehash: 60a7e36039500ccb8a46fd1f5998c23c37174689
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4b1c311132cc812ccb2bbbc95c4b7414b108008c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728134"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499202"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Bring Your Own Key (BYOK) mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 
@@ -93,7 +93,7 @@ Wenn dem oben erstellten Cluster neue Knotenpools hinzugefügt werden, wird der 
 Der Verschlüsselungsschlüssel für den Betriebssystem-Datenträger wird zum Verschlüsseln des Datenträgers verwendet, wenn der Schlüssel nicht von v1.17.2 für den Datenträger bereitgestellt wird. Sie können auch AKS-Datenträger mit ihren anderen Schlüsseln verschlüsseln.
 
 > [!IMPORTANT]
-> Stellen Sie sicher, dass Sie über die richtigen AKS-Anmeldeinformationen verfügen. Der Dienstprinzipal benötigt „Mitwirkender“-Zugriff auf die Ressourcengruppe, in der Ihr DiskEncryptionSet bereitgestellt ist. Andernfalls erhalten Sie eine Fehlermeldung, die darauf hinweist, dass der Dienstprinzipal keine Berechtigungen besitzt.
+> Stellen Sie sicher, dass Sie über die richtigen AKS-Anmeldeinformationen verfügen. Die verwaltete Identität benötigt „Mitwirkender“-Zugriff auf die Ressourcengruppe, in der die DiskEncryptionSet-Instanz bereitgestellt wird. Andernfalls werden Sie in einer Fehlermeldung darauf hingewiesen, dass die verwaltete Identität nicht die erforderlichen Berechtigungen hat.
 
 ```azurecli-interactive
 # Retrieve your Azure Subscription Id from id property as shown below

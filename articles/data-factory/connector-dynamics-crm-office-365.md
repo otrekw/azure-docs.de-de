@@ -1,20 +1,20 @@
 ---
 title: Kopieren von Daten in Dynamics (Common Data Service)
-description: In diesem Artikel erfahren Sie, wie mithilfe einer Kopieraktivität in einer Data Factory-Pipeline Daten aus Microsoft Dynamics CRM oder Microsoft Dynamics 365 (Common Data Service) in unterstützte Senkendatenspeicher oder aus unterstützten Quelldatenspeichern nach Dynamics CRM oder Dynamics 365 kopiert werden.
+description: In diesem Artikel erfahren Sie, wie Daten aus Microsoft Dynamics CRM oder Microsoft Dynamics 365 (Common Data Service/Microsoft Dataverse) mithilfe einer Kopieraktivität in einer Data Factory-Pipeline in unterstützte Senkendatenspeicher oder aus unterstützten Quelldatenspeichern nach Dynamics CRM oder Dynamics 365 kopiert werden.
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
-ms.date: 02/02/2021
-ms.openlocfilehash: d238a232d719c75244e6f9b825272957d2a4a4bc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/08/2021
+ms.openlocfilehash: b1e7511f7666455592b6d5f463a316c3354ec76b
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381000"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447434"
 ---
-# <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Dynamics 365 (Common Data Service) oder Dynamics CRM mithilfe von Azure Data Factory
+# <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>Kopieren von Daten aus und in Dynamics 365 (Common Data Service/Microsoft Dataverse) oder Dynamics CRM mithilfe von Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -27,7 +27,7 @@ Dieser Connector wird für die folgenden Aktivitäten unterstützt:
 - [Kopieraktivität](copy-activity-overview.md) mit [unterstützter Quellen- und Senkenmatrix](copy-activity-overview.md)
 - [Lookup-Aktivität](control-flow-lookup-activity.md)
 
-Sie können Daten aus Dynamics 365 (Common Data Service) oder Dynamics CRM in jeden unterstützten Senkendatenspeicher kopieren. Zudem können Sie Daten aus jedem unterstützten Quelldatenspeicher in Dynamics 365 (Common Data Service) oder Dynamics CRM kopieren. Die Datenspeicher, die für eine Kopieraktivität als Quellen und Senken unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
+Sie können Daten aus Dynamics 365 (Common Data Service/Microsoft Dataverse) oder Dynamics CRM in jeden unterstützten Senkendatenspeicher kopieren. Zudem können Sie Daten aus jedem unterstützten Quelldatenspeicher in Dynamics 365 (Common Data Service) oder Dynamics CRM kopieren. Die Datenspeicher, die für eine Kopieraktivität als Quellen und Senken unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Dieser Dynamics-Connector unterstützt die Dynamics-Versionen 7 bis 9 sowohl online als auch lokal. Dies gilt insbesondere in folgenden Fällen:
 
@@ -73,7 +73,7 @@ Die folgenden Eigenschaften werden für den mit Dynamics verknüpften Dienst unt
 
 ### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 und Dynamics CRM Online
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf "Dynamics", "DynamicsCrm" oder "CommonDataServiceForApps" festgelegt werden. | Ja |
 | deploymentType | Der Bereitstellungstyp der Dynamics-Instanz. Für die Onlineversion von Dynamics muss der Wert "Online" lauten. | Ja |
@@ -170,7 +170,7 @@ Die folgenden Eigenschaften werden für den mit Dynamics verknüpften Dienst unt
 
 Die zusätzlichen Eigenschaften im Vergleich zur Onlineversion von Dynamics lauten **hostName** und **port**.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf "Dynamics", "DynamicsCrm" oder "CommonDataServiceForApps" festgelegt werden. | Ja. |
 | deploymentType | Der Bereitstellungstyp der Dynamics-Instanz. Der Wert muss für die lokale Dynamics-Bereitstellung mit IFD "OnPremisesWithIfd" lauten.| Ja. |
@@ -216,7 +216,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Beim Kopieren von Daten aus und nach Dynamics werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf "DynamicsEntity", "DynamicsCrmEntity" oder "CommonDataServiceForAppsEntity" festgelegt werden. |Ja |
 | entityName | Der logische Name der abzurufenden Entität. | Nein für die Quelle, wenn für die Aktivitätsquelle "query" angegeben ist. Ja für die Senke. |
@@ -248,7 +248,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Beim Kopieren von Daten aus Dynamics werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf "DynamicsSource", "DynamicsCrmSource" oder "CommonDataServiceForAppsSource" festgelegt werden. | Ja |
 | Abfrage | FetchXML ist eine proprietäre Abfragesprache, die in Dynamics (online und lokal) verwendet wird. Siehe folgendes Beispiel. Weitere Informationen finden Sie unter [Erstellen von Abfragen mit FetchXML](/previous-versions/dynamicscrm-2016/developers-guide/gg328332(v=crm.8)). | Nein, wenn `entityName` im Dataset angegeben ist |
@@ -316,7 +316,7 @@ Beim Kopieren von Daten aus Dynamics werden die folgenden Eigenschaften im Absch
 
 Beim Kopieren von Daten nach Dynamics werden die folgenden Eigenschaften im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf "DynamicsSink", "DynamicsCrmSink" oder "CommonDataServiceForAppsSink" festgelegt werden. | Ja. |
 | writeBehavior | Das Schreibverhalten des Vorgangs. Der Wert muss "Upsert" lauten. | Ja |
@@ -363,6 +363,32 @@ Die optimale Kombination von **writeBatchSize** und **parallelCopies** hängt vo
         }
     }
 ]
+```
+
+## <a name="retrieving-data-from-views"></a>Abrufen von Daten aus Sichten
+
+Wenn Sie Daten aus Dynamics-Sichten abrufen möchten, müssen Sie die gespeicherte Abfrage der Sicht abrufen und dann die Daten mithilfe der Abfrage abrufen.
+
+Es gibt zwei Entitäten, in denen verschiedene Sichttypen gespeichert werden: „gespeicherte Abfrage“ speichert die Systemsicht, und „Benutzerabfrage“ speichert die Benutzersicht. Informationen zu den Sichten finden Sie in der folgenden FetchXML-Abfrage. Ersetzen Sie darin „TARGETENTITY“ durch `savedquery` oder `userquery`. Jeder Entitätstyp hat mehrere Attribute, die Sie der Abfrage nach Bedarf hinzufügen können. Weitere Informationen dazu finden Sie unter [„savedquery“-Entität](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/savedquery) und [„userquery“-Entität](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/userquery).
+
+```xml
+<fetch top="5000" >
+  <entity name="<TARGETENTITY>">
+    <attribute name="name" />
+    <attribute name="fetchxml" />
+    <attribute name="returnedtypecode" />
+    <attribute name="querytype" />
+  </entity>
+</fetch>
+```
+
+Sie können auch Filter hinzufügen, um die Sichten zu filtern. Fügen Sie beispielsweise den folgenden Filter hinzu, um die Sicht „Meine aktiven Konten“ in der Kontoentität zu erhalten.
+
+```xml
+<filter type="and" >
+    <condition attribute="returnedtypecode" operator="eq" value="1" />
+    <condition attribute="name" operator="eq" value="My Active Accounts" />
+</filter>
 ```
 
 ## <a name="data-type-mapping-for-dynamics"></a>Datentypzuordnung für Dynamics

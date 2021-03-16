@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 742cff544886a1499bccfa575684edef708da7bd
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 9549e6ea30be0cd9eb1a8c200a5af4a4721793a6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028358"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034675"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Abfragesprache für Azure Digital Twins
 
@@ -33,12 +33,17 @@ Sie können die Abfragesprache von Azure Digital Twins verwenden, um digitale Zw
 
 Wenn Sie eine Abfrage aus einer Client-App an den Dienst senden möchten, verwenden Sie die Azure Digital Twins-[**Abfrage-API**](/rest/api/digital-twins/dataplane/query). Eine Möglichkeit, die API zu verwenden, ist durch eins der [SDKs](how-to-use-apis-sdks.md#overview-data-plane-apis) für Azure Digital Twins.
 
+### <a name="considerations-for-querying"></a>Hinweise zur Abfrage
+
+Beachten Sie beim Schreiben von Abfragen für Azure Digital Twins Folgendes:
+* **Denken Sie an die Beachtung der Groß-/Kleinschreibung:** Bei allen Azure Digital Twins-Abfragevorgängen wird die Groß-/Kleinschreibung beachtet. Verwenden Sie daher genau die in den Modellen definierten Namen. Wenn Eigenschaftennamen falsch oder in falscher Groß-/Kleinschreibung geschrieben werden, ist das Resultset leer, und es werden keine Fehler zurückgegeben.
+* **Versehen Sie einfache Anführungszeichen mit Escapezeichen:** Wenn die Daten Ihres Abfragetexts ein einfaches Anführungszeichen enthalten, muss dieses mit dem Escapezeichen `\` versehen werden. Im folgenden Beispiel wird der Umgang mit dem Eigenschaftswert *D'Souza* gezeigt:
+
+  :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="EscapedSingleQuote":::
+
 ## <a name="reference-expressions-and-conditions"></a>Referenz: Ausdrücke und Bedingungen
 
 In diesem Abschnitt werden die Operatoren und Funktionen beschrieben, die beim Schreiben von Azure Digital Twins-Abfragen verfügbar sind. Beispielabfragen, die die Verwendung dieser Features veranschaulichen, finden Sie unter [*Vorgehensweise: Abfragen des Zwillingsdiagramms von Azure Digital Twins*](how-to-query-graph.md).
-
-> [!NOTE]
-> Bei allen Azure Digital Twins-Abfragevorgängen wird die Groß-/Kleinschreibung beachtet. Verwenden Sie daher die genauen in den Modellen definierten Namen. Wenn Eigenschaftennamen falsch oder in falscher Groß-/Kleinschreibung geschrieben werden, ist das Resultset leer, und es werden keine Fehler zurückgegeben.
 
 ### <a name="operators"></a>Operatoren
 

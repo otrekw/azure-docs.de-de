@@ -4,23 +4,28 @@ description: Erfahren Sie, wie Sie einen Verschlüsselungsbereich erstellen, um 
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e77b58f7741af42f00b2a1831157405b12fa24ff
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d5590ff275ce821c81f5751f4d92972c49adaafc
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017405"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209590"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>Erstellen und Verwalten von Verschlüsselungsbereichen (Vorschauversion)
 
 Verschlüsselungsbereiche (Vorschauversion) ermöglichen Ihnen die Verwaltung der Verschlüsselung auf der Ebene einzelner Blobs oder Container. Ein Verschlüsselungsbereich isoliert Blobdaten in einer Secure Enclave innerhalb eines Speicherkontos. Sie können Verschlüsselungsbereiche verwenden, um sichere Grenzen zwischen Daten zu erstellen, die sich im selben Speicherkonto befinden, aber zu unterschiedlichen Kunden gehören. Weitere Informationen zu Verschlüsselungsbereichen finden Sie unter [Verschlüsselungsbereiche für Blobspeicher (Vorschau)](encryption-scope-overview.md).
 
 In diesem Artikel wird gezeigt, wie Sie einen Verschlüsselungsbereich erstellen. Darüber hinaus wird erläutert, wie Sie beim Erstellen eines Blobs oder Containers einen Verschlüsselungsbereich angeben.
+
+> [!IMPORTANT]
+> Verschlüsselungsbereiche befinden sich zurzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+>
+> Achten Sie darauf, alle derzeit nicht benötigten Verschlüsselungsbereiche zu deaktivieren, um unerwartete Kosten zu vermeiden.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 

@@ -3,13 +3,13 @@ title: Aktivieren der hostbasierten Verschlüsselung in Azure Kubernetes Service
 description: Erfahren Sie, wie Sie eine hostbasierte Verschlüsselung in einem Azure Kubernetes Service-Cluster (AKS) konfigurieren.
 services: container-service
 ms.topic: article
-ms.date: 01/27/2021
-ms.openlocfilehash: ac28c698a766f1f3febaff582038906f658d58dd
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.date: 03/03/2021
+ms.openlocfilehash: f4e599ae7aa81c15f86d0e8b1c934824010ea45b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071849"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430154"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Hostbasierte Verschlüsselung in Azure Kubernetes Service (AKS) (Vorschau)
 
@@ -26,6 +26,13 @@ Diese Funktion kann nur bei der Erstellung des Clusters oder bei der Erstellung 
 ### <a name="prerequisites"></a>Voraussetzungen
 
 - Stellen Sie sicher, dass die CLI-Erweiterung `aks-preview` (v0.4.73 oder höher) installiert ist.
+- Stellen Sie sicher, dass das `EnableEncryptionAtHostPreview`-Featureflag unter `Microsoft.ContainerService` aktiviert ist.
+
+Sie müssen das Feature für Ihr Abonnement aktivieren lassen, um die Verschlüsselung auf dem Host für Ihre virtuellen Computer oder VM-Skalierungsgruppen verwenden zu können. Senden Sie eine E-Mail mit Ihren Abonnement-IDs an **encryptionAtHost@microsoft.com** , um das Feature für Ihre Abonnements aktivieren zu lassen. 
+
+> [!IMPORTANT]
+> Sie müssen eine E-Mail mit Ihren Abonnement-IDs an **encryptionAtHost@microsoft.com** senden, damit das Feature für Computeressourcen aktiviert wird. Sie können es für Computeressourcen nicht selbst aktivieren.
+
 
 ### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
 
@@ -41,7 +48,7 @@ az extension update --name aks-preview
 
 ### <a name="limitations"></a>Einschränkungen
 
-- Kann nur in neuen Knotenpools oder neuen Clustern aktiviert werden.
+- Kann nur auf neuen Knoten aktiviert werden.
 - Kann nur in [Azure-Regionen][supported-regions] aktiviert werden, die die serverseitige Verschlüsselung von verwalteten Azure-Datenträgern unterstützen, und nur mit bestimmten [unterstützten VM-Größen][supported-sizes].
 - Erfordert einen AKS-Cluster und einen Knotenpool, der auf VM-Skalierungsgruppen (Virtual Machine Scale Sets, VMSS) als *VM set type* basiert.
 

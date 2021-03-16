@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 708c70a5144e4e38dd5de9524711c80ef28cd839
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 9302bde13a303dda2107900dc0c10cc180669a18
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100092127"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650727"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Aufrufen der Textanalyse-REST-API
 
@@ -37,7 +37,7 @@ Bevor Sie die Textanalyse-API verwenden, müssen Sie eine Azure-Ressource mit ei
 
 ## <a name="change-your-pricing-tier"></a>Ändern des Tarifs 
 
-Wenn Sie über eine Textanalyseressource mit einem der Tarife S0 bis S4 verfügen, können Sie den Tarif so aktualisieren, dass der [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) „Standard (S)“ verwendet wird:
+Wenn Sie über eine Textanalyseressource im Tarifbereich S0 bis S4 verfügen, müssen Sie sie auf den [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) „Standard (S)“ aktualisieren. Die Tarife S0 bis S4 werden eingestellt. So aktualisieren Sie den Preis Ihrer Ressource:
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zur Textanalyseressource.
 2. Klicken Sie im Navigationsmenü auf der linken Seite auf **Tarif**. Die Option befindet sich unter **RESSOURCENVERWALTUNG**. 

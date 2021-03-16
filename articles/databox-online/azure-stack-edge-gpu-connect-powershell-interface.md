@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 27af230f8fa157f76865bd38a48c17640491d7db
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1319f806dd2f32233dcfe7383f5283b67827f16f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896188"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102517560"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Verwalten eines Azure Stack Edge Pro-GPU-Geräts mithilfe von Windows PowerShell
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Azure Stack Edge Pro ist eine Lösung, mit der Sie Daten verarbeiten und über ein Netzwerk an Azure senden können. In diesem Artikel werden einige der Konfigurations- und Verwaltungsaufgaben für Ihr Azure Stack Edge Pro-Gerät beschrieben. Sie können das Azure-Portal, die lokale Webbenutzeroberfläche oder die Windows PowerShell-Schnittstelle verwenden, um Ihr Gerät zu verwalten.
 
@@ -24,30 +26,12 @@ Dieser Artikel befasst sich schwerpunktmäßig damit, wie Sie eine Verbindung mi
 
 ## <a name="connect-to-the-powershell-interface"></a>Herstellen einer Verbindung mit der PowerShell-Schnittstelle
 
-[!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
+[!INCLUDE [Connect to admin runspace](../../includes/azure-stack-edge-gateway-connect-minishell.md)]
 
 ## <a name="create-a-support-package"></a>Unterstützungspaket erstellen
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
-<!--## Upload certificate
-
-[!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
-
-You can also upload IoT Edge certificates to enable a secure connection between your IoT Edge device and the downstream devices that may connect to it. There are three IoT Edge certificates (*.pem* format) that you need to install:
-
-- Root CA certificate or the owner CA
-- Device CA certificate
-- Device key certificate
-
-The following example shows the usage of this cmdlet to install IoT Edge certificates:
-
-```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
-```
-When you run this cmdlet, you will be prompted to provide the password for the network share.
-
-For more information on certificates, go to [Azure IoT Edge certificates](../iot-edge/iot-edge-certs.md) or [Install certificates on a gateway](../iot-edge/how-to-create-transparent-gateway.md).-->
 
 ## <a name="view-device-information"></a>Anzeigen von Geräteinformationen
  
@@ -86,17 +70,8 @@ Wenn die Computerolle auf Ihrem Gerät konfiguriert ist, können Sie die GPU-Tre
 
 Ein Multiprozessdienst (MPS) auf NVIDIA-GPUs bietet einen Mechanismus, bei dem GPUs von mehreren Aufträgen gemeinsam genutzt werden können, wobei jedem Auftrag ein bestimmter Prozentsatz der GPU-Ressourcen zugewiesen wird. MPS ist eine Previewfunktion auf Ihrem Azure Stack Edge Pro-GPU-Gerät. Führen Sie die folgenden Schritte aus, um MPS auf Ihrem Gerät zu aktivieren:
 
-1. Stellen Sie Folgendes sicher, bevor Sie beginnen: 
+[!INCLUDE [Enable MPS](../../includes/azure-stack-edge-gateway-enable-mps.md)]
 
-    1. Sie haben Ihr [Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-deploy-activate.md) mit einer Azure Stack Edge Pro/Data Box Gateway-Ressource in Azure konfiguriert und aktiviert.
-    1. Sie haben [auf diesem Gerät Compute im Azure-Portal konfiguriert](azure-stack-edge-deploy-configure-compute.md#configure-compute).
-    
-1. [Herstellen einer Verbindung mit der PowerShell-Schnittstelle](#connect-to-the-powershell-interface).
-1. Verwenden Sie den folgenden Befehl, um MPS auf Ihrem Gerät zu aktivieren.
-
-    ```powershell
-    Start-HcsGpuMPS
-    ```
 
 ## <a name="reset-your-device"></a>Zurücksetzen Ihres Geräts
 
@@ -148,46 +123,14 @@ Id                                   PodSubnet    ServiceSubnet
 [10.100.10.10]: PS>
 ```
 
-
 ## <a name="debug-kubernetes-issues-related-to-iot-edge"></a>Debuggen von Kubernetes-Problemen im Zusammenhang mit IoT Edge
 
-<!--When the Kubernetes cluster is created, there are two system namespaces created: `iotedge` and `azure-arc`. --> 
+Bevor Sie beginnen, müssen Sie :
 
-<!--### Create config file for system namespace
-
-To troubleshoot, first create the `config` file corresponding to the `iotedge` namespace with `aseuser`.
-
-Run the `Get-HcsKubernetesUserConfig -AseUser` command and save the output as `config` file (no file extension). Save the file in the `.kube` folder of your user profile on the local machine.
-
-Following is the sample output of the `Get-HcsKubernetesUserConfig` command.
-
-```PowerShell
-[10.100.10.10]: PS>Get-HcsKubernetesUserConfig -AseUser
-apiVersion: v1
-clusters:
-- cluster:
-    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN5RENDQWJDZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJd01EVXhNekl4TkRRME5sb1hEVE13TURVeE1USXhORFEwTmxvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS0M1CjlJbzRSU2hudG90QUdxdjNTYmRjOVd4UmJDYlRzWXU5S0RQeU9xanVoZE1UUE9PcmROOGNoa0x4NEFyZkZaU1AKZithUmhpdWZqSE56bWhucnkvZlprRGdqQzQzRmV5UHZzcTZXeVVDV0FEK2JBdi9wSkJDbkg2MldoWGNLZ1BVMApqU1k0ZkpXenNFbzBaREhoeUszSGN3MkxkbmdmaEpEanBQRFJBNkRWb2pIaktPb29OT1J1dURvUHpiOTg2dGhUCkZaQXJMZjRvZXRzTEk1ZzFYRTNzZzM1YVhyU0g3N2JPYVVsTGpYTzFYSnpFZlZWZ3BMWE5xR1ZqTXhBMVU2b1MKMXVJL0d1K1ArY
-===========CUT=========================================CUT===================
-    server: https://compute.myasegpu1.wdshcsso.com:6443
-    name: kubernetes
-contexts:
-- context:
-    cluster: kubernetes
-    user: aseuser
-    name: aseuser@kubernetes
-current-context: aseuser@kubernetes
-kind: Config
-preferences: {}
-users:
-- name: aseuser
-    user:
-    client-certificate-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMwRENDQWJpZ0F3SUJBZ0lJY1hOTXRPU2VwbG93RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TURBMU1UTXlNVFEwTkRaYUZ3MHlNVEExTVRNeU1UVXhNVEphTUJJeApFREFPQmdOVkJBTVRCMkZ6WlhWelpYSXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCCkFRRHVjQ1pKdm9qNFIrc0U3a1EyYmVjNEJkTXdpUEhmU2R2WnNDVVY0aTRRZGY1Yzd0dkE3OVRSZkRLQTY1d08Kd0h0QWdlK3lLK0hIQ1Qyd09RbWtNek1RNjZwVFEzUlE0eVdtRDZHR1cWZWMExBR1hFUUxWWHRuTUdGCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
-
-[10.100.10.10]: PS>
-```
--->
-
-Ein Azure Stack Edge Pro-Gerät, für das die Computerolle konfiguriert ist, können Sie mit zwei verschiedenen Befehlen überwachen oder eine Problembehandlung vornehmen.
+- Das Computenetzwerk konfiguriert haben. Informieren Sie sich dazu im [Tutorial: Konfigurieren des Netzwerks für Azure Stack Edge Pro mit GPU](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
+- Die Computerolle auf Ihrem Gerät konfiguriert haben.
+    
+Ein Azure Stack Edge Pro-Gerät, auf dem die Computerolle konfiguriert wurde, können Sie mit zwei verschiedenen Befehlssätzen überwachen oder eine Problembehandlung vornehmen.
 
 - Unter Verwendung von `iotedge`-Befehlen. Diese Befehle sind für grundlegende Vorgänge auf dem Gerät vorgesehen.
 - Unter Verwendung von `kubectl`-Befehlen. Diese Befehle sind für umfangreiche Vorgänge auf dem Gerät vorgesehen.
@@ -272,7 +215,7 @@ Eine umfassende Liste der `kubectl`-Befehle finden Sie auf dem [`kubectl`Spickze
 
 #### <a name="to-get-ip-of-service-or-module-exposed-outside-of-kubernetes-cluster"></a>So erhalten Sie eine IP-Adresse für Dienste oder Module, die außerhalb von Kubernetes bereitgestellt werden
 
-Führen Sie den folgenden Befehl aus, um die IP-Adresse von Lastenausgleichsdiensten oder -modulen abzurufen, die außerhalb von Kubernetes bereitgestellt werden:
+Führen Sie den folgenden Befehl aus, um die IP-Adresse eines Lastenausgleichsdiensts oder -moduls abzurufen, der/das außerhalb von Kubernetes bereitgestellt wird:
 
 `kubectl get svc -n iotedge`
 
@@ -401,7 +344,7 @@ Führen Sie den folgenden Befehl über die PowerShell-Schnittstelle des Geräts 
 
 `kubectl logs <pod_name> -n <namespace> --all-containers` 
 
-Da das `all-containers`-Flag alle Protokolle für sämtliche Container sichert, lassen sich mit der Option `--tail 10` die zuletzt aufgetretenen Fehler anzeigen.
+Weil das Flag `all-containers` alle Protokolle für sämtliche Container sichert, lassen sich mit der Option `--tail 10` die zuletzt aufgetretenen Fehler anzeigen.
 
 Im Folgenden finden Sie eine Beispielausgabe: 
 
@@ -532,8 +475,8 @@ Beachten Sie beim Ändern der Arbeitsspeicher- und Prozessornutzung die folgende
 
 - Der Standardarbeitsspeicher hat eine Größe von 25 % der Gerätespezifikation.
 - Die standardmäßige Anzahl der Prozessoren beträgt 30 % der Gerätespezifikation.
-- Beim Ändern der Werte für Arbeitsspeicher und Anzahl der Prozessoren empfehlen wir, die Werte zwischen 15 % und 65 % des Arbeitsspeichers des Geräts und der Anzahl der Prozessoren zu variieren. 
-- Wir empfehlen eine Obergrenze von 65 %, damit genügend Ressourcen für Systemkomponenten vorhanden sind. 
+- Beim Ändern der Werte für Arbeitsspeicher und Anzahl der Prozessoren empfehlen wir, die Werte zwischen 15 % und 60 % des Gerätearbeitsspeichers und der Anzahl der Prozessoren zu variieren. 
+- Wir empfehlen eine Obergrenze von 60 %, damit genügend Ressourcen für Systemkomponenten vorhanden sind. 
 
 ## <a name="connect-to-bmc"></a>Verbinden mit dem BMC
 

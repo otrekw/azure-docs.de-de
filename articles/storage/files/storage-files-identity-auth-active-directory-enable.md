@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 2214dbc9dcbd4ba7728065ee45471e9f94b9e513
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 6098497e89ad66fad7659aa64c9a7849380f8c43
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95739994"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547503"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Übersicht – lokale Active Directory Domain Services-Authentifizierung über SMB für Azure-Dateifreigaben
 
@@ -33,10 +33,14 @@ Wenn Sie noch nicht mit Azure-Dateifreigaben vertraut sind, empfiehlt es sich, u
 
 Wenn Sie AD DS für Azure-Dateifreigaben über SMB aktivieren, können Ihre in AD DS eingebundenen Computer Azure-Dateifreigaben mithilfe Ihrer vorhandenen AD DS-Anmeldeinformationen bereitstellen. Diese Funktion kann für eine AD DS-Umgebung aktiviert werden, die entweder mit lokalen Computern oder in Azure gehostet wird.
 
-> [!NOTE]
-> Um Sie beim Einrichten der Azure Files-AD-Authentifizierung für gängige Anwendungsfälle zu unterstützen, haben wir zwei Videos mit Schrittanleitungen für die folgenden Szenarien veröffentlicht:
-> - [Ersetzen lokaler Dateiserver durch Azure Files (einschließlich Einrichtung eines privaten Links für Dateien und AD-Authentifizierung)](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
-> - [Verwenden von Azure Files als Profilcontainer für Windows Virtual Desktop (einschließlich Einrichtung der AD-Authentifizierung und FsLogix-Konfiguration)](https://www.youtube.com/embed/9S5A1IJqfOQ)
+## <a name="videos"></a>Videos
+
+Um Sie beim Einrichten der Azure Files-AD-Authentifizierung für gängige Anwendungsfälle zu unterstützen, haben wir zwei Videos mit Schrittanleitungen für die folgenden Szenarien veröffentlicht:
+
+| Ersetzen lokaler Dateiserver durch Azure Files (einschließlich Einrichtung eines privaten Links für Dateien und AD-Authentifizierung) | Verwenden von Azure Files als Profilcontainer für Windows Virtual Desktop (einschließlich Einrichtung der AD-Authentifizierung und FsLogix-Konfiguration)  |
+|-|-|
+| [![Screencast des Videos zum Thema „Ersetzen von lokalen Dateiservern“ – Zum Wiedergeben klicken.](./media/storage-files-identity-auth-active-directory-enable/replace-on-prem-server-thumbnail.png)](https://www.youtube.com/watch?v=jd49W33DxkQ) | [![Screencast des Videos zum Thema „Verwenden von Azure Files als Profilcontainer“ – Zum Wiedergeben klicken.](./media/storage-files-identity-auth-active-directory-enable/files-ad-ds-fslogix-thumbnail.png)](https://www.youtube.com/watch?v=9S5A1IJqfOQ) |
+
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
