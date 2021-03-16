@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 1/12/2021
+ms.date: 3/5/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: a182ca3ba70b9faa1ba67fdb6c91a4eaf8e766ef
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 014140b9b9832bab3de4f71c0b5f164b564b3fe5
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691194"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212721"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -252,7 +252,7 @@ Einige Dateieigenschaften können nicht festgelegt oder geändert werden:
 Die folgenden Optionen werden standardmäßig festgelegt und können nicht geändert werden:
 
 - `MULTI_USER`
-- `ENABLE_BROKER ON`
+- `ENABLE_BROKER`
 - `AUTO_CLOSE OFF`
 
 Die folgenden Optionen können nicht geändert werden:
@@ -471,6 +471,10 @@ Der instanzübergreifende Service Broker wird nicht unterstützt:
 - `sys.routes`: Als Voraussetzung müssen Sie die Adresse aus „sys.routes“ auswählen. Die Adresse muss für jede Route auf LOCAL festgelegt sein. Informationen hierzu finden Sie unter [sys.routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
 - `CREATE ROUTE`: Sie können `CREATE ROUTE` nicht mit einer anderen `ADDRESS` als `LOCAL` verwenden. Informationen hierzu finden Sie unter [CREATE ROUTE](/sql/t-sql/statements/create-route-transact-sql).
 - `ALTER ROUTE`: Sie können `ALTER ROUTE` nicht mit einer anderen `ADDRESS` als `LOCAL` verwenden. Informationen hierzu finden Sie unter [ALTER ROUTE](/sql/t-sql/statements/alter-route-transact-sql). 
+
+Service Broker ist standardmäßig aktiviert und kann nicht deaktiviert werden. Die folgenden ALTER DATABSE-Optionen werden nicht unterstützt:
+- `ENABLE_BROKER`
+- `DISABLE_BROKER`
 
 ### <a name="stored-procedures-functions-and-triggers"></a>Gespeicherte Prozeduren, Funktionen und Trigger
 

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2d97d02aec84fec92e29e971cd5c667c847b2541
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 733b2375a26b0157f88bc148b52932e2f3e3f2e2
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368046"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488272"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>Migrationsübersicht: SQL Server zu SQL-Datenbank
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -102,8 +102,9 @@ Für die Migration werden die Tools „Datenmigrations-Assistent“ (DMA) und �
 
 In der folgenden Tabelle werden die empfohlenen Migrationstools aufgeführt: 
 
-|Technologie | BESCHREIBUNG|
+|Technologie | Beschreibung|
 |---------|---------|
+| [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | Mit Azure Migrate für Azure SQL können Sie Ihre SQL-Datenressourcen in VMware umfassend ermitteln und bewerten. Dabei erhalten Sie Azure SQL-Bereitstellungsempfehlungen, Zielgrößen und monatliche Schätzungen. | 
 |[Datenmigrations-Assistent (DMA)](/sql/dma/dma-migrateonpremsqltosqldb)|Der Datenmigrations-Assistent ist ein Desktoptool, das nahtlose SQL Server-Bewertungen und Migrationen zu Azure SQL-Datenbank (sowohl Schema als auch Daten) bereitstellt. Das Tool kann lokal auf einem Server oder auf Ihrem lokalen Computer installiert werden, der mit ihren Quelldatenbanken verbunden ist. Bei der Migration handelt es sich um eine logische Datenverschiebung zwischen Objekten in der Quell- und der Zieldatenbank. </br> – Migrieren von Singletons (Schema und Daten)|
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-azure-sql.md)|Ein Erstanbieter-Azure-Dienst, mit dem Ihre SQL Server-Datenbanken über das Azure-Portal oder mit PowerShell zu Azure SQL-Datenbank migriert werden können. In Azure DMS müssen Sie bei der Bereitstellung ein bevorzugtes virtuelles Azure-Netzwerk (VNET) auswählen, um eine Verbindung mit Ihren SQL Server-Quelldatenbanken zu gewährleisten. </br> – Migrieren von Singletons oder im großen Stil. |
 | | |
