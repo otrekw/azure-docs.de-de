@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/22/2021
 ms.author: aahi
-ms.openlocfilehash: 0faa7a6f5a3d2efc8bbef11308b308e3305a00d5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 416ef4ceddbb43e9f1606d44a66ffd5295cee4e6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096320"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699894"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migration zu Version 3 der Textanalyse-API
 
@@ -104,7 +104,7 @@ In der folgenden Tabelle sind die für die NER-Version 2.1 zurückgegebenen Ent
 
 ### <a name="feature-changes"></a>Funktionsänderungen 
 
-Abgesehen von der Endpunktversion wurden in Version 3 keine Änderungen am Sprachenerkennungsfeature vorgenommen. Dennoch enthält die JSON-Antwort `ConfidenceScore` anstelle von `score`. Außerdem wird in Version 3 nur eine einzelne Sprache in der Ausgabe zurückgegeben. 
+Die Ausgabe des Spracherkennungsfeatures hat sich in v3 geändert. Die JSON-Antwort enthält `ConfidenceScore` anstelle von `score`. Außerdem wird in v3 für jedes Dokument nur eine einzelne Sprache in einem Attribut vom Typ `detectedLanguage` zurückgegeben.
 
 ### <a name="steps-to-migrate"></a>Migrationsschritte
 

@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 09e7a39a2d97626dd01a00fdaef9bc4d711d557b
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.custom: references_regions
+ms.openlocfilehash: 22d7c1bbe03d8b3c0e3b6026c9bac039f0651548
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828089"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037250"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>KI-Anreicherung in Azure Cognitive Search
 
@@ -32,6 +33,17 @@ Bei eingebetteten Skills wird zwischen folgenden Kategorien unterschieden:
 Eingebettete Skills in Azure Cognitive Search basieren auf vortrainierten Machine Learning-Modellen in Cognitive Services-APIs: [Maschinelles Sehen](../cognitive-services/computer-vision/index.yml) und [Textanalyse](../cognitive-services/text-analytics/overview.md). Wenn Sie diese Ressourcen während der Inhaltsverarbeitung nutzen möchten, können Sie eine Cognitive Services-Ressource anfügen.
 
 Die Verarbeitung von natürlicher Sprache und Bildern wird während der Phase der Datenerfassung angewendet, wobei die Ergebnisse zu einem Teil einer Dokumentkomposition in einem durchsuchbaren Index in Azure Cognitive Search werden. Daten stammen aus einem Azure-Dataset und werden dann über eine Indizierungspipeline übertragen, indem jeweils die erforderlichen [integrierten Fähigkeiten](cognitive-search-predefined-skills.md) verwendet werden.  
+
+## <a name="feature-availability"></a>Verfügbarkeit von Funktionen
+
+KI-Anreicherung ist in Regionen verfügbar, in denen auch Azure Cognitive Services verfügbar ist.  Auf der Seite [Verfügbare Azure-Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=search) können Sie die aktuelle Verfügbarkeit von KI-Anreicherung überprüfen.  KI-Anreicherung ist in allen unterstützten Regionen mit Ausnahme der folgenden verfügbar:
+
++ Australien, Südosten
++ China, Norden 2
++ Norwegen, Osten
++ Deutschland, Westen-Mitte
+
+Wenn sich Ihr Suchdienst in einer dieser Regionen befindet, können Sie keine Skillsets erstellen und verwenden, aber alle anderen Suchdienstfunktionen sind verfügbar und werden vollständig unterstützt.
 
 ## <a name="when-to-use-ai-enrichment"></a>Einsatzgebiete der KI-Anreicherung
 

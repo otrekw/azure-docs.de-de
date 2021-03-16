@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperf-fy20q4, tracking-python
-ms.openlocfilehash: 3f128b7ee7fa8f690c2097a5d27e274ec1eb2a8a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: ca3957563f7c7a7021ad994cc323823763c2936e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559538"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171543"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Verwenden von Azure Machine Learning Studio in einem virtuellen Netzwerk
 
@@ -38,7 +38,6 @@ Sehen Sie sich auch die anderen Artikel in dieser Reihe an:
 
 > [!IMPORTANT]
 > Wenn sich Ihr Arbeitsbereich in einer __Sovereign Cloud__ befindet, z. B. Azure Government oder Azure China 21Vianet, wird von integrierten Notebooks die Verwendung von Speicher, der sich in einem virtuellen Netzwerk befindet, _nicht_ unterstützt. Stattdessen können Sie Jupyter-Notebooks aus einer Compute-Instanz verwenden. Weitere Informationen finden Sie im Abschnitt [Zugreifen auf Daten auf einem Compute-Instanz-Notebook](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook).
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -95,7 +94,7 @@ Jeder Azure Machine Learning-Arbeitsbereich verfügt über zwei Standardspeicher
 
 In der folgenden Tabelle wird beschrieben, warum Sie die Authentifizierung mit verwalteten Identitäten für die Standardspeicherkonten Ihres Arbeitsbereichs aktivieren müssen.
 
-|Speicherkonto  | Notizen  |
+|Speicherkonto  | Hinweise  |
 |---------|---------|
 |Standardblobspeicher für den Arbeitsbereich| Speichert Modellressourcen vom Designer. Sie müssen die Authentifizierung mit verwalteten Identitäten für dieses Speicherkonto aktivieren, um Modelle im Designer bereitzustellen. <br> <br> Sie können eine Designer-Pipeline visualisieren und ausführen, wenn sie nicht den Standarddatenspeicher verwendet, sondern einen, der für die Verwendung der verwalteten Identität konfiguriert wurde. Wenn Sie jedoch versuchen, ein trainiertes Modell ohne aktivierte verwaltete Identität im Standarddatenspeicher bereitzustellen, tritt dabei ein Fehler auf, unabhängig davon, welche anderen Datenspeicher verwendet werden.|
 |Standarddateispeicher für den Arbeitsbereich| Speichert Experimentressourcen für automatisiertes maschinelles Lernen. Sie müssen die Authentifizierung mit verwalteten Identitäten für dieses Speicherkonto aktivieren, um Experimente für automatisiertes maschinelles Lernen zu übermitteln. |
@@ -106,7 +105,6 @@ In der folgenden Tabelle wird beschrieben, warum Sie die Authentifizierung mit v
 > Sie haben zwei Möglichkeiten, dieses Problem zu vermeiden: 1.) Verwenden Sie den Standarddateispeicher, der bei der Erstellung des Arbeitsbereichs automatisch erstellt wird. 2.) Wenn Sie einen eigenen Dateispeicher verwenden möchten, stellen Sie sicher, dass sich dieser während der Erstellung des Arbeitsbereichs außerhalb des VNet befindet. Nachdem der Arbeitsbereich erstellt wurde, fügen Sie das Speicherkonto dem virtuellen Netzwerk hinzu.
 >
 > Um dieses Problem zu beheben, entfernen Sie das Dateispeicherkonto aus dem virtuellen Netzwerk und fügen es dann dem virtuellen Netzwerk wieder hinzu.
-
 
 ### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Gewähren von __Lesezugriff__ auf die private Speicherverbindung für die vom Arbeitsbereich verwaltete Identität
 
@@ -162,7 +160,7 @@ Sie sollten auch die [Authentifizierung mit verwalteten Identitäten](#configure
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Dieser Artikel ist ein optionaler Teil einer vierteiligen Serie zu virtuellen Netzwerken. Weitere Informationen zum Schützen eines virtuellen Netzwerks finden Sie in den verbleibenden Artikeln:
+Dieser Artikel ist der fünfte Teil einer fünfteiligen Serie zu virtuellen Netzwerken. Weitere Informationen zum Schützen eines virtuellen Netzwerks finden Sie in den verbleibenden Artikeln:
 
 * [Teil 1: Virtuelle Netzwerke im Überblick](how-to-network-security-overview.md)
 * [Teil 2: Schützen von Arbeitsbereichsressourcen](how-to-secure-workspace-vnet.md)
