@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 03/01/2021
-ms.openlocfilehash: d2b899150f0f740349c991319c87ef3a50f839b0
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: b28c4457129985a1d5c47d251873eaa52a253f72
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102491207"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607967"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-mysql---flexible-server"></a>Schnellstart: Verbinden und Abfragen mit der Azure CLI mit Azure Database for MySQL Flexible Server
 
@@ -36,7 +36,7 @@ Das erste, was wir erstellen, ist ein verwalteter MySQL-Server. Führen Sie in [
 az mysql flexible-server create --public-access <your-ip-address>
 ```
 
-Sie können zur Anpassung zusätzliche Argumente für diesen Befehl angeben. Sehen Sie sich alle Argumente für [az mysql flexible-server create](/cli/azure/mysql/flexible-server?view=azure-cli-latest#az_mysql_flexible_server_create) an.
+Sie können zur Anpassung zusätzliche Argumente für diesen Befehl angeben. Sehen Sie sich alle Argumente für [az mysql flexible-server create](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_create) an.
 
 ## <a name="create-a-database"></a>Erstellen einer Datenbank
 Führen Sie den folgenden Befehl aus, um eine Datenbank (**newdatabase**) zu erstellen, wenn Sie noch keine erstellt haben.
