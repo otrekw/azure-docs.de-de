@@ -3,7 +3,7 @@ title: Verwenden von Azure-Webhooks zum Überwachen von Media Services-Auftragsb
 description: Erfahren Sie, wie Sie Media Services-Auftragsbenachrichtigungen mithilfe von Azure-Webhooks überwachen. Das Codebeispiel ist in C# geschrieben und verwendet das Media Services SDK für .NET.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: a61fe157-81b1-45c1-89f2-224b7ef55869
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e99d2c2676d05772106296d8b960dd55fd30501c
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 5ae1bdfeeffdb904ba80ed42919e4f51411871c3
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696471"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016150"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Verwenden von Azure-Webhooks zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET
 

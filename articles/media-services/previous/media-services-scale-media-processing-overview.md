@@ -11,24 +11,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2020
+ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5353cf841663d70f2fce6662964358b7828610d8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: d0692996c27f969ffc90078db2ddcc849ee15ab1
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020894"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012716"
 ---
 # <a name="media-reserved-units"></a>Reservierte Einheiten für Medien
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-Mit Azure Media Services können Sie die Medienverarbeitung skalieren, indem Sie reservierte Einheiten für Medien (Media Reserved Units, MRUs) verwalten. Eine MRU bietet zusätzliche Rechenkapazität, die für die Codierung von Medien erforderlich ist. Die Anzahl der MRUs bestimmt, mit welcher Geschwindigkeit die Medientasks verarbeitet werden und wie viele Medientasks gleichzeitig in einem Konto verarbeitet werden können. Wenn Ihr Konto beispielsweise über fünf MRUs verfügt und Tasks verarbeitet werden müssen, können fünf Medientasks gleichzeitig ausgeführt werden. Die restlichen Tasks werden in eine Warteschlange eingereiht und können nacheinander für die Verarbeitung aufgerufen werden, wenn ein aktiver Task abgeschlossen wird. Für jede von Ihnen bereitgestellte MRU wird zwar Kapazität reserviert, es wird jedoch keine dedizierte Ressource bereitgestellt. In Zeiten mit extrem hoher Nachfrage wird die Verarbeitung aller MRUs möglicherweise nicht umgehend gestartet.
+Mit Azure Media Services können Sie die Medienverarbeitung skalieren, indem Sie reservierte Einheiten für Medien (Media Reserved Units, MRUs) verwalten. Eine MRU bietet zusätzliche Rechenkapazität, die für die Codierung von Medien erforderlich ist. Die Anzahl der MRUs bestimmt, mit welcher Geschwindigkeit die Medientasks verarbeitet werden und wie viele Medientasks gleichzeitig in einem Konto verarbeitet werden können. Wenn Ihr Konto beispielsweise über fünf MRUs verfügt und Tasks verarbeitet werden müssen, können fünf Medientasks gleichzeitig ausgeführt werden. Die restlichen Aufgaben werden in eine Warteschlange eingereiht und können nacheinander für die Verarbeitung aufgerufen werden, wenn ein aktiver Task abgeschlossen wird. Für jede von Ihnen bereitgestellte MRU wird zwar Kapazität reserviert, es wird jedoch keine dedizierte Ressource bereitgestellt. In Zeiten mit extrem hoher Nachfrage wird die Verarbeitung aller MRUs möglicherweise nicht umgehend gestartet.
 
 ## <a name="choosing-between-different-reserved-unit-types"></a>Auswählen zwischen verschiedenen Typen reservierter Einheiten
 
-Die folgende Tabelle hilft Ihnen bei der Entscheidung, wenn Sie zwischen verschiedenen Codierungsgeschwindigkeiten wählen müssen.  Sie zeigt die Dauer der Codierung für ein 7-minütiges Video mit 1080p in Abhängigkeit von der verwendeten MRU an.
+Die folgende Tabelle hilft Ihnen bei der Entscheidung, wenn Sie zwischen verschiedenen Codierungsgeschwindigkeiten wählen müssen.  Es zeigt die Dauer der Codierung für ein 7-minütiges Video mit 1080p in Abhängigkeit von der verwendeten MRU an.
 
 |Art der Anforderungseinheit|Szenario|Beispielergebnisse für das Video, 7 Min., 1080 Px |
 |---|---|---|

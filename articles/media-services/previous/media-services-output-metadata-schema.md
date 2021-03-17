@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services-Ausgabemetadaten-Schema | Microsoft Docs
 description: Dieser Artikel enthält eine Übersicht über das Azure Media Services-Ausgabemetadaten-Schema.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: cd81ef78ecc5ef9cea71adb387597681460d50c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 519aa158d60eae97eb4c1b792bcecfc8a6c066e0
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261324"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008281"
 ---
 # <a name="output-metadata"></a>Ausgeben von Metadaten
 
@@ -48,7 +48,7 @@ Sammlung von „AssetFile“-Einträgen für den Codierauftrag.
 [Hier](#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="attributes"></a>Attributes
-| Name | type | BESCHREIBUNG |
+| Name | Typ | Beschreibung |
 | --- | --- | --- |
 | **Name**<br/><br/> Erforderlich |**xs:string** |Der Name der Medienobjektdatei. |
 | **Größe**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:long** |Größe der Assetdatei in Byte |
@@ -77,7 +77,7 @@ Ein Eingabe-/Quelldatei, die zum Generieren dieses Medienobjekts verwendet wird.
 [Hier](#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="attributes"></a>Attributes
-| Name | type | BESCHREIBUNG |
+| Name | Typ | Beschreibung |
 | --- | --- | --- |
 | **Name**<br/><br/> Erforderlich |**xs:string** |Name der Eingabequelldatei. |
 
@@ -97,7 +97,7 @@ Eine bestimmte Videospur im übergeordneten Mediendateiobjekt.
 [Hier](#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="attributes"></a>Attributes
-| Name | type | BESCHREIBUNG |
+| Name | Typ | Beschreibung |
 | --- | --- | --- |
 | **Id**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Nullbasierter Index dieser Videospur. **Hinweis:**  Diese **ID** ist nicht unbedingt die „TrackID“, die in einer MP4-Datei verwendet wird. |
 | **FourCC**<br/><br/> Erforderlich |**xs:string** |Videocodec-FourCC-Code |
@@ -129,7 +129,7 @@ Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt.
 [Hier](#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="attributes"></a>Attributes
-| Name | type | BESCHREIBUNG |
+| Name | Typ | Beschreibung |
 | --- | --- | --- |
 | **Id**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Nullbasierter Index dieser Audiospur. **Hinweis:**  Dies ist nicht unbedingt die „TrackID“, die in einer MP4-Datei verwendet wird. |
 | **Codec** |**xs:string** |Codec-Zeichenfolge der Audiospur. |
@@ -140,7 +140,7 @@ Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt.
 | **BitsPerSample**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Bits pro Stichprobe für den Formattyp „wFormatTag“. |
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
-| Name | BESCHREIBUNG |
+| Name | Beschreibung |
 | --- | --- |
 | **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |Parameter für das Messergebnis der Lautheit. Weitere Informationen finden Sie unter „LoudnessMeteringResultParameters-Element“. |
 
@@ -150,7 +150,7 @@ Parameter für das Messergebnis der Lautheit.
 [Hier](#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="attributes"></a>Attributes
-| Name | type | BESCHREIBUNG |
+| Name | Typ | Beschreibung |
 | --- | --- | --- |
 | **DPLMVersionInformation** |**xs:string** |Development Kit-Version von **Dolby** Professional Loudness Metering (DPLM). |
 | **DialogNormalization**<br/><br/> minInclusive="-31" maxInclusive="-1"<br/><br/> Erforderlich |**xs:int** |Über DPLM generierte „DialogNormalization“, bei Festlegung von „LoudnessMetering“ erforderlich. |

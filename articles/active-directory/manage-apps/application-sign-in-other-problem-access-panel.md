@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2a0411e97f78104de1356d482e4e43a42701c073
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a54c7d6cc4ccf1d9f42702be030598ad1edfab24
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687623"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225148"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Beheben von Anmeldeproblemen bei einer Anwendung aus „Meine Apps“ in Azure AD
 
@@ -148,7 +148,7 @@ Dies liegt daran, dass im Portal „Meine Apps“ derzeit nur maximal 999 App-Ro
 Führen Sie zum Überprüfen, ob ein Benutzer über mehr als 999 App-Rollenzuweisungen verfügt, die folgenden Schritte aus:
 1. Installieren Sie das PowerShell-Modul von [**Microsoft Graph**](https://github.com/microsoftgraph/msgraph-sdk-powershell).
 2. Führen Sie `Connect-MgGraph -Scopes "User.ReadBasic.All Application.Read.All"` aus.
-3. Führen Sie `(Get-MgUserAppRoleAssignment -UserId "<userId>" -Top 999).Count` aus, um die Anzahl der App-Rollenzuweisungen zu ermitteln, die dem Benutzer derzeit erteilt sind.
+3. Führen Sie `(Get-MgUserAppRoleAssignment -UserId "<user-id>" -PageSize 999).Count` aus, um die Anzahl der App-Rollenzuweisungen zu ermitteln, die dem Benutzer derzeit erteilt sind.
 4. Ist das Ergebnis 999, verfügt der Benutzer wahrscheinlich über mehr als 999 App-Rollenzuweisungen.
 
 ### <a name="check-a-users-assigned-licenses"></a>Überprüfen der zugewiesenen Lizenzen eines Benutzers

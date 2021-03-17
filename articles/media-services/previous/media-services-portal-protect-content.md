@@ -3,7 +3,7 @@ title: Konfigurieren von Content Protection-Richtlinien über das Azure-Portal |
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals Content Protection-Richtlinien konfigurieren. Außerdem erfahren Sie, wie Sie die dynamische Verschlüsselung für Ihre Assets aktivieren.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 270b3272-7411-40a9-ad42-5acdbba31154
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 5ddd31f96ca88a02fa667f8809a00e2a4e3ecc50
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: c6620158965271ba99f80c2fbd36504fdbea7ecf
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695423"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010778"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurieren von Content Protection-Richtlinien über das Azure-Portal
 
@@ -78,7 +78,7 @@ Die Widevine-Lizenzvorlage legt die Funktionen fest, die für Ihre Widevine-Lize
 ### <a name="basic"></a>Basic
 Bei Verwendung der Option **Basic** wird die Vorlage mit allen Standardwerten erstellt.
 
-### <a name="advanced"></a>Erweitert
+### <a name="advanced"></a>Fortgeschrittene
 Weitere Informationen zur Widevine-Rechtevorlage finden Sie in der [Übersicht über die Widevine-Lizenzvorlage](media-services-widevine-license-template-overview.md).
 
 ![Erweiterter Inhaltsschutz](./media/media-services-portal-content-protection/media-services-content-protection005.png)

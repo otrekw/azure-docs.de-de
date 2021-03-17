@@ -2,13 +2,13 @@
 title: Skalierbarkeit – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zum Skalieren von Azure Event Hubs mithilfe von Partitionen und Durchsatzeinheiten.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 4dacb24ace2332f590db54959cbf1f06694b982b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/16/2021
+ms.openlocfilehash: f258ee2a3b4162dabf7a8e615db82b9b889d628b
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86521954"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601276"
 ---
 # <a name="scaling-with-event-hubs"></a>Skalierung mit Event Hubs
 
@@ -39,11 +39,7 @@ Weitere Informationen zum Feature für die automatische Vergrößerung finden Si
 ## <a name="partitions"></a>Partitionen
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-### <a name="partition-key"></a>Partitionsschlüssel
 
-Mit einem [Partitionsschlüssel](event-hubs-programming-guide.md#partition-key) können Sie eingehende Ereignisdaten spezifischen Partitionen zuordnen und die Daten so organisieren. Der Partitionsschlüssel ist ein vom Absender bereitgestellter Wert, der an einen Event Hub übergeben wird. Er wird über eine statische Hashfunktion verarbeitet, die die Partitionszuweisung erstellt. Wenn Sie beim Veröffentlichen eines Ereignisses keinen Partitionsschlüssel angeben, wird eine Roundrobinzuordnung verwendet.
-
-Dem Ereignisherausgeber ist nur der Partitionsschlüssel bekannt, nicht die Partition, auf der die Ereignisse veröffentlicht werden. Dieses Entkoppeln von Schlüssel und Partition entbindet den Absender davon, zu viel über die Downstreamverarbeitung wissen zu müssen. Eine gerätebezogene oder für einen Benutzer eindeutige Identität stellt einen guten Partitionsschlüssel dar, es können aber auch andere Attribute wie z. B. Geografie zum Gruppieren von verwandten Ereignissen in einer einzelnen Partition verwendet werden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

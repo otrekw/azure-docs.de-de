@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 5aaaf2000fb8310a5208447f8eaf8546feda90fb
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 6c29bf87c5f0ecaaeb6d608069791431a949c89b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102509318"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009962"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Erstellen und Verwalten einer Azure Machine Learning-Compute-Instanz
 
@@ -108,7 +108,7 @@ Sie können eine Compute-Instanz auch mit einer [Azure Resource Manager-Vorlage]
 ### <a name="create-on-behalf-of-preview"></a>Erstellen im Namen von (Vorschau)
 
 Als Administrator können Sie im Namen einer wissenschaftlichen Fachkraft für Daten eine Compute-Instanz erstellen und ihr die Instanz mit der folgenden Methode zuweisen:
-* [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  Ausführliche Informationen zum Suchen der in dieser Vorlage benötigten „TenantID“ und „ObjectID“ finden Sie unter [Ermitteln von Identitätsobjekt-IDs für die Authentifizierungskonfiguration](../healthcare-apis/find-identity-object-ids.md).  Sie können diese Werte auch im Azure Active Directory-Portal abrufen.
+* [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  Ausführliche Informationen zum Suchen der in dieser Vorlage benötigten „TenantID“ und „ObjectID“ finden Sie unter [Ermitteln von Identitätsobjekt-IDs für die Authentifizierungskonfiguration](../healthcare-apis/fhir/find-identity-object-ids.md).  Sie können diese Werte auch im Azure Active Directory-Portal abrufen.
 * REST-API
 
 Die wissenschaftliche Fachkraft für Daten, für die Sie die Compute-Instanz erstellen, benötigt die folgenden [Azure RBAC-Berechtigungen](../role-based-access-control/overview.md) (rollenbasierte Zugriffssteuerung in Azure): 

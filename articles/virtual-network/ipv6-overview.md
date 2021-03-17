@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 86e4bb52f2a97bf36dc4be86289bd513a9f05091
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: bb7769298940095900da25e61e13612b92bad00c
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538254"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419098"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Was ist IPv6 für Azure Virtual Network?
 
@@ -77,8 +77,7 @@ Das aktuelle Release von IPv6 für Azure Virtual Network weist die folgenden Ein
 - IPv6 für Azure Virtual Network ist in allen globalen Azure Commercial- und US Government-Regionen unter Verwendung aller Bereitstellungsmethoden verfügbar.  
 - ExpressRoute-Gateways können für reinen IPv4-Datenverkehr in einem VNET mit aktiviertem IPv6 verwendet werden.  Die Unterstützung des IPv6-Datenverkehrs befindet sich in Planung.   
 - VPN-Gateways können in einem VNET mit aktiviertem IPv6 WEDER direkt noch durch Peering mit „UseRemoteGateway“ verwendet werden.
-- Die Azure-Plattform (AKS usw.) unterstützt die IPv6-Kommunikation für Container nicht.  
-- Für IPv6 kann nur ein Lastenausgleich auf die primäre Netzwerkschnittstelle (NIC) auf Azure-VMs ausgeführt werden. Der Lastenausgleich für IPv6-Datenverkehr auf sekundäre NICs wird nicht unterstützt.    
+- Die Azure-Plattform (AKS usw.) unterstützt die IPv6-Kommunikation für Container nicht. 
 - Reine virtuelle IPv6-Computer oder VM-Skalierungsgruppen werden nicht unterstützt. Jede NIC muss mindestens eine IPv4-IP-Konfiguration enthalten. 
 - Beim Hinzufügen von IPv6 zu vorhandenen IPv4-Bereitstellungen können IPv6-Bereiche nicht zu einem VNET hinzugefügt werden, das über vorhandene Ressourcennavigationslinks verfügt.  
 - Das Weiterleiten von DNS für IPv6 wird derzeit für öffentliches Azure-DNS unterstützt, aber Reverse-DNS wird noch nicht unterstützt.   

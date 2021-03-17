@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: b8711b3995c322614c547434850d7c031abfadd5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f3c34526fd4005dbbb0be7e763721e125ed7828e
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094942"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201214"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL
 
@@ -345,8 +345,8 @@ Auf allen Clientcomputern, über die Ihre Anwendungen oder Benutzer unter Verwen
 - .NET Framework 4.6 oder höher aus [https://msdn.microsoft.com/library/5a4x27ek.aspx](/dotnet/framework/install/guide-for-developers).
 - Azure Active Directory-Authentifizierungsbibliothek für SQL Server (*ADAL.DLL*). Nachstehend finden Sie die Downloadlinks zum Installieren der neuesten SSMS-, ODBC-und OLE DB-Treiber, die die Bibliothek *ADAL.DLL* enthalten.
   - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
-  - [ODBC Driver 17 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
-  - [OLE DB Driver 18 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56730)
+  - [ODBC Driver 17 for SQL Server](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)
+  - [OLE DB Driver 18 for SQL Server](/sql/connect/oledb/download-oledb-driver-for-sql-server?view=sql-server-ver15)
 
 Sie können diese Anforderungen folgendermaßen erfüllen:
 

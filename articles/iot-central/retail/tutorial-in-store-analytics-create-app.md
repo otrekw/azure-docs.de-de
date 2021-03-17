@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 112039b9227d5ff34e68b6dc6643597f335fbdb5
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: caa61170504c3ee4b7162cc06db4df16d1232395
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832231"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014365"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Tutorial: Erstellen einer Anwendung für die In-Store-Analyse in Azure IoT Central
 
@@ -228,8 +228,8 @@ Für dieses Tutorial verwenden Sie zum Erstellen der Anwendung den folgenden Sat
 
 Führen Sie die Schritte in den folgenden beiden Artikeln aus, um eine Verbindung mit einem echten Rigado-Gateway und RuuviTag-Sensoren herzustellen. Kehren Sie zu diesem Tutorial zurück, wenn Sie fertig sind. Da Sie in diesem Tutorial bereits Gerätevorlagen erstellt haben, müssen Sie diese in der folgenden Anleitung nicht erneut erstellen.
 
-- Informationen zum Verbinden eines Rigado-Gateways finden Sie in [Verbinden eines Rigado Cascade 500 mit Ihrer Azure IoT Central-Anwendung](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
-- Informationen zum Verbinden eines RuuviTag-Sensors finden Sie in [Verbinden eines RuuviTag-Sensors mit Ihrer Azure IoT Central-Anwendung](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). Mithilfe dieser Anweisungen können Sie bei Bedarf auch zwei simulierte Sensoren erstellen.
+- Informationen zum Verbinden eines Rigado-Gateways finden Sie in [Verbinden eines Rigado Cascade 500 mit Ihrer Azure IoT Central-Anwendung](../core/howto-connect-rigado-cascade-500.md).
+- Informationen zum Verbinden eines RuuviTag-Sensors finden Sie in [Verbinden eines RuuviTag-Sensors mit Ihrer Azure IoT Central-Anwendung](../core/howto-connect-ruuvi.md). Mithilfe dieser Anweisungen können Sie bei Bedarf auch zwei simulierte Sensoren erstellen.
 
 ## <a name="add-rules-and-actions"></a>Hinzufügen von Regeln und Aktionen
 Als Teil der Verwendung von Sensoren in Ihrer Azure IoT Central-Anwendung zur Überwachung von Umgebungsbedingungen können Sie Regeln erstellen, mit denen Aktionen ausgeführt werden, wenn bestimmte Bedingungen erfüllt sind. Eine Regel ist einer Gerätevorlage und einem oder mehreren Geräten zugeordnet und enthält Bedingungen, die aufgrund von Gerätetelemetriedaten oder Ereignissen erfüllt sein müssen. Einer Regel sind zudem eine oder mehrere Aktionen zugeordnet. Die Aktionen können das Senden von E-Mail-Benachrichtigungen oder das Auslösen einer Webhook-Aktion zum Senden von Daten an andere Dienste umfassen. Die Anwendungsvorlage **In-store analytics - checkout** enthält einige vordefinierte Regeln für die in der Anwendung verwendeten Geräte.

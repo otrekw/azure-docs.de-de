@@ -3,7 +3,7 @@ title: Hochladen von Dateien in ein Azure Media Services-Konto mithilfe von REST
 description: Erfahren Sie, wie Sie Medieninhalte in Media Services nutzen können, indem Sie Medienobjekte mithilfe von REST erstellen und hochladen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 49863bec4cbd367b6b309ef5a79e7287cb53ee5b
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 9f27a427df07302840ce719d35c7876f9dc17dbf
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042966"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012937"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Hochladen von Dateien in ein Media Services-Konto mit REST
 
@@ -56,7 +56,7 @@ In diesem Tutorial erfahren Sie, wie Sie eine Datei hochladen und andere damit v
 Die folgenden Überlegungen gelten für die Verwendung der Media Services-REST-API:
  
 * Wenn Sie mithilfe der Media Services-REST-API auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md). <br/>Die in diesem Tutorial verwendete Postman-Sammlung sorgt dafür, dass alle notwendigen Header festgelegt werden.
-* Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der IAssetFile.Name-Eigenschaft (z. B. http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der **Name** -Eigenschaft darf keines der folgenden [für die Prozentcodierung reservierten Zeichen](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) enthalten: ! * '();:@&=+$,/?%#[]". Darüber hinaus wird für die Dateinamenerweiterung nur ein Punkt (.) unterstützt.
+* Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der IAssetFile.Name-Eigenschaft (z. B. http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der **Name**-Eigenschaft darf keines der folgenden [für die Prozentcodierung reservierten Zeichen](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) enthalten: ! * '();:@&=+$,/?%#[]". Darüber hinaus wird für die Dateinamenerweiterung nur ein Punkt (.) unterstützt.
 * Die Länge des Namens darf 260 Zeichen nicht überschreiten.
 * Bei der Verarbeitung in Media Services werden nur Dateien bis zu einer bestimmten Größe unterstützt. Ausführliche Informationen zur Dateigrößenbeschränkung finden Sie in [diesem Artikel](media-services-quotas-and-limitations.md).
 
@@ -68,7 +68,7 @@ Schritte zum Einrichten von Postman für dieses Tutorial finden Sie unter [Konfi
 
 1. Fügen Sie Ihrer Umgebung Verbindungswerte hinzu. 
 
-    Einige Variablen, die Teil der **MediaServices** - [Umgebung](postman-environment.md) sind, müssen manuell festgelegt werden, bevor Sie mit der Ausführung von Vorgängen beginnen können, die in der [Sammlung](postman-collection.md) definiert sind.
+    Einige Variablen, die Teil der **MediaServices**-[Umgebung](postman-environment.md) sind, müssen manuell festgelegt werden, bevor Sie mit der Ausführung von Vorgängen beginnen können, die in der [Sammlung](postman-collection.md) definiert sind.
 
     Informationen zum Abrufen von Werten für die ersten fünf Variablen finden Sie unter [Zugriff auf die Azure Media Services-API mit der Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md). 
 
@@ -128,7 +128,7 @@ Ein [Medienobjekt](/rest/api/media/operations/asset) ist ein Container für mehr
 
 Eine der Eigenschaften, die Sie beim Erstellen eines Medienobjekts hinzufügen können, ist **Options**. Sie können eine der folgenden Verschlüsselungsoptionen angeben: **Keine** (Standardwert, es wird keine Verschlüsselung verwendet), **StorageEncrypted** (für Inhalte, die mit clientseitiger Speicherverschlüsselung vorverschlüsselt wurden), **CommonEncryptionProtected** oder **EnvelopeEncryptionProtected**. Wenn Sie über ein verschlüsseltes Medienobjekt verfügen, müssen Sie eine Übermittlungsrichtlinie konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren von Übermittlungsrichtlinien für Medienobjekte](media-services-rest-configure-asset-delivery-policy.md).
 
-Wenn Ihr Medienobjekt verschlüsselt ist, müssen Sie ein **ContentKey** -Element erstellen und mit Ihrem Medienobjekt verknüpfen, wie im folgenden Artikel beschrieben: [So erstellen Sie einen ContentKey](media-services-rest-create-contentkey.md). Nachdem Sie die Dateien in das Medienobjekt hochgeladen haben, müssen Sie die Verschlüsselungseigenschaften für die **AssetFile** -Entität anhand der Werte aktualisieren, die Sie während der **Asset** -Verschlüsselung erhalten haben. Verwenden Sie dazu die **MERGE** -HTTP-Anforderung. 
+Wenn Ihr Medienobjekt verschlüsselt ist, müssen Sie ein **ContentKey**-Element erstellen und mit Ihrem Medienobjekt verknüpfen, wie im folgenden Artikel beschrieben: [So erstellen Sie einen ContentKey](media-services-rest-create-contentkey.md). Nachdem Sie die Dateien in das Medienobjekt hochgeladen haben, müssen Sie die Verschlüsselungseigenschaften für die **AssetFile**-Entität anhand der Werte aktualisieren, die Sie während der **Asset**-Verschlüsselung erhalten haben. Verwenden Sie dazu die **MERGE**-HTTP-Anforderung. 
 
 In diesem Beispiel erstellen wir ein unverschlüsseltes Medienobjekt. 
 
@@ -186,13 +186,13 @@ Nachdem Sie nun über die Upload-URL verfügen, müssen Sie mithilfe der Azure B
 
 Als Beispiel laden wir eine kleine MP4-Datei mit Postman hoch. Möglicherweise gibt es eine Begrenzung der Dateigröße beim Hochladen von Binärdateien über Postman.
 
-Die Anforderung zum Hochladen ist nicht Teil der **AzureMedia** -Sammlung. 
+Die Anforderung zum Hochladen ist nicht Teil der **AzureMedia**-Sammlung. 
 
 Erstellen Sie eine neue Anforderung, und richten Sie sie ein:
 1. Drücken Sie **+** , um eine neue Anforderungsregisterkarte zu erstellen.
-2. Wählen Sie die **PUT** -Operation aus, und fügen Sie **{{UploadURL}}** in die URL ein.
+2. Wählen Sie die **PUT**-Operation aus, und fügen Sie **{{UploadURL}}** in die URL ein.
 2. Lassen Sie die Registerkarte **Authorization** (Autorisierung) unverändert (legen Sie nicht das **Bearertoken** fest).
-3. Geben Sie auf der Registerkarte **Header** Folgendes an: **Key** : „x-ms-blob-type“ und **Value** : „BlockBlob“.
+3. Geben Sie auf der Registerkarte **Header** Folgendes an: **Key**: „x-ms-blob-type“ und **Value**: „BlockBlob“.
 2. Klicken Sie auf der Registerkarte **Body** (Textkörper) auf **binary** (Binär).
 4. Wählen Sie die Datei mit dem Namen aus, den Sie in der Umgebungsvariablen **MediaFileName** angegeben haben.
 5. Klicken Sie auf **Senden**.
@@ -214,7 +214,7 @@ Die Datei sollte mit festgelegten Metadaten hochgeladen werden.
 
 Um zu überprüfen, ob die Datei erfolgreich hochgeladen wurde, sollten Sie [AssetFile](/rest/api/media/operations/assetfile) abfragen und **ContentFileSize** (oder andere Details) mit dem vergleichen, was Sie im neuen Medienobjekt erwarten. 
 
-Beispielsweise stellt die folgende **GET** -Operation Dateidaten für Ihre Medienobjektdatei (im Falle der Datei „BigBuckBunny.mp4“) bereit. Die Abfrage verwendet die zuvor von Ihnen festgelegten [Umgebungsvariablen](postman-environment.md).
+Beispielsweise stellt die folgende **GET**-Operation Dateidaten für Ihre Medienobjektdatei (im Falle der Datei „BigBuckBunny.mp4“) bereit. Die Abfrage verwendet die zuvor von Ihnen festgelegten [Umgebungsvariablen](postman-environment.md).
 
 `{{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files`
 

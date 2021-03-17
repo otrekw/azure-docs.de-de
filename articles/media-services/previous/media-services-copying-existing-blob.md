@@ -3,7 +3,7 @@ title: Kopieren von Blobs aus einem Speicherkonto in ein Azure Media Services-Me
 description: In diesem Thema wird erläutert, wie ein vorhandener Blob in ein Media Services-Medienobjekt kopiert wird. Im folgenden Beispiel werden Azure Media Services .NET SDK-Erweiterungen verwendet.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8eee17e5ed819365f30cf1b1e0eb2e9ab1557e9d
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 6ee6af8726dbd0a7b564b442242572afec670f4d
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695906"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016745"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>Kopieren vorhandener Blobs in ein Media Services-Medienobjekt
 

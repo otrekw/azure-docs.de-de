@@ -1,18 +1,18 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Database for PostgreSQL
 description: Listet Kontrollen zur Einhaltung gesetzlicher Bestimmungen auf, die in Azure Policy für Azure Database for PostgreSQL verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.topic: sample
 author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 550f4eff5eb73fc71870d9d7c9502447f9d1a2ce
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: c09258333135068918809042be6376a1e85c053b
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102439142"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633739"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-postgresql"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Database for PostgreSQL
 

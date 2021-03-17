@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 5a896d3fbe2d191473b10655ccb19c5759762131
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d28946aad263af635a0139e68d424a77a1eab25
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84803633"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417823"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen mithilfe des Azure-Portals
 
@@ -26,7 +26,6 @@ ms.locfileid: "84803633"
 > * [Portal](load-balancer-multiple-ip.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 > * [BEFEHLSZEILENSCHNITTSTELLE (CLI)](load-balancer-multiple-ip-cli.md)
-
 
 In diesem Artikel wird veranschaulicht, wie Sie Azure Load Balancer mit mehreren IP-Adressen auf einer sekundären Netzwerkschnittstellenkarte (Network Interface Card, NIC) verwenden. Dieses Szenario ist im folgenden Diagramm dargestellt:
 
@@ -140,7 +139,7 @@ Konfigurieren Sie für jede Website (contoso.com und fabrikam.com) den Back-End-
 
 3. Wählen Sie unter **Einstellungen** die Option **Back-End-Pools** aus. Geben Sie einen Namen für den Back-End-Pool ein (z.B. **contosopool** oder **fabrikampool**). Wählen Sie oben im nächsten Bereich die Option **Hinzufügen**. 
 
-4. Wählen Sie als **Verknüpft mit** **Verfügbarkeitsgruppe** aus.
+4. Wählen Sie als **Verknüpft mit****Verfügbarkeitsgruppe** aus.
 
 5. Wählen Sie unter **Verfügbarkeitsgruppe** die Option **meineVerfügbarkeitsgruppe** aus.
 

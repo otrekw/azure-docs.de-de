@@ -2,19 +2,19 @@
 title: Anleitung zur Notfallwiederherstellung für die Azure-Formularerkennung
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die API zum Kopieren von Modellen nutzen können, um Ihre Ressourcen für die Formularerkennung zu sichern.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 05/27/2020
-ms.author: pafarley
-ms.openlocfilehash: 0343402d92498bff56250027086cbf2ceb258f0f
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.date: 03/15/2021
+ms.author: lajanuar
+ms.openlocfilehash: b5eb776a7807f48ae6c1a0e3c5879da1f6823830
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102427163"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466914"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Sichern und Wiederherstellen Ihrer Modelle für die Formularerkennung
 
@@ -39,9 +39,6 @@ Der Vorgang zum Kopieren eines benutzerdefinierten Modells umfasst die folgenden
 1. Zuerst senden Sie eine Autorisierungsanforderung für den Kopiervorgang an die Zielressource – d. h. die Ressource, die das kopierte Modell erhalten soll. Als Antwort erhalten Sie die URL des neu erstellten Zielmodells, das die kopierten Daten erhalten wird.
 1. Als Nächstes senden Sie die Kopieranforderung an die Quellressource – also an die Ressource, die das zu kopierende Modell enthält. Als Antwort erhalten Sie eine URL, mit der Sie den Fortschritt des Vorgangs nachverfolgen können.
 1. Sie verwenden die Anmeldeinformationen für Ihre Quellressource zum Abfragen der URL zum Fortschritt, bis der Vorgang erfolgreich abgeschlossen wurde. Sie können auch die ID des neuen Modells in der Zielressource abfragen, um den Status des neuen Modells abzurufen.
-
-> [!CAUTION]
-> Die Kopier-API unterstützt derzeit keine Modell-IDs für [zusammengesetzte benutzerdefinierte Modelle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/Compose). Das Zusammensetzen von Modellen ist eine Previewfunktion in der Vorschauversion v2.1-preview.2. 
 
 ## <a name="generate-copy-authorization-request"></a>Generieren einer Autorisierungsanforderung für den Kopiervorgang
 
@@ -165,4 +162,4 @@ curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Leitfaden haben Sie erfahren, wie Sie die Kopier-API zum Sichern Ihrer benutzerdefinierten Modelle in einer sekundären Formularerkennungsressource verwenden. Sehen Sie sich als Nächstes die API-Referenzdokumentation an, um sich über weitere Möglichkeiten bei Verwendung der Formularerkennung zu informieren.
-* [Referenzdokumentation zur Rest-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)
+* [Referenzdokumentation zur Rest-API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)

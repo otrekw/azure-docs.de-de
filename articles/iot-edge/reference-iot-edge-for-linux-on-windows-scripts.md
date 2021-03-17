@@ -8,14 +8,17 @@ ms.date: 02/16/2021
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0881363a3f13f0ddf34157a1fffe6c26d0c0b692
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+monikerRange: =iotedge-2018-06
+ms.openlocfilehash: fe04615e234eaf5b006a80e6f584905626c637ba
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122849"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489484"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>PowerShell-Skripts für IoT Edge für Linux unter Windows
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Informieren Sie sich über die PowerShell-Skripts, mit denen Sie Ihr IoT Edge für Linux auf einem virtuellen Windows-Computer bereitstellen und seinen Status abrufen können.
 

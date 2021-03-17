@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/25/2021
 ms.custom: generated
-ms.openlocfilehash: 90c0be8e6df3e489595bdafed1f29d1ed0ef00f8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: baa783d0dfb54e0e606e3f6c6d5397941ae7b7bc
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724505"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011628"
 ---
 # <a name="azure-built-in-roles"></a>Integrierte Azure-Rollen
 
@@ -2471,7 +2471,7 @@ Ermöglicht den Lesezugriff auf Dateien/Verzeichnisse in Azure-Dateifreigaben. D
 Lesen, Schreiben und Löschen von Azure Storage-Warteschlangen und -Warteschlangennachrichten. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Weitere Informationen](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> | Aktionen | BESCHREIBUNG |
+> | Aktionen | Beschreibung |
 > | --- | --- |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/delete | Löschen einer Warteschlange. |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/read | Zurückgeben einer Warteschlange oder Liste mit Warteschlangen. |
@@ -5167,7 +5167,7 @@ Der Datenquellenadministrator für Microsoft Purview kann Datenquellen und -übe
 Lesen, Schreiben und Löschen von Schemaregistrierungsgruppen und Schemas.
 
 > [!div class="mx-tableFixed"]
-> | Aktionen | BESCHREIBUNG |
+> | Aktionen | Beschreibung |
 > | --- | --- |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/namespaces/schemagroups/* |  |
 > | **NotActions** |  |
@@ -6702,7 +6702,7 @@ Ermöglicht das Lesen von EventGrid-Ereignisabonnements. [Weitere Informationen]
 
 ### <a name="fhir-data-contributor"></a>Mitwirkender an FHIR-Daten
 
-Die Rolle ermöglicht dem Benutzer oder Prinzipal vollen Zugriff auf FHIR-Daten. [Weitere Informationen](../healthcare-apis/configure-azure-rbac.md)
+Die Rolle ermöglicht dem Benutzer oder Prinzipal vollen Zugriff auf FHIR-Daten. [Weitere Informationen](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -6741,7 +6741,7 @@ Die Rolle ermöglicht dem Benutzer oder Prinzipal vollen Zugriff auf FHIR-Daten.
 
 ### <a name="fhir-data-exporter"></a>FHIR-Datenexportierer
 
-Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen und Exportieren von FHIR-Daten. [Weitere Informationen](../healthcare-apis/configure-azure-rbac.md)
+Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen und Exportieren von FHIR-Daten. [Weitere Informationen](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -6782,7 +6782,7 @@ Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen und Exportieren von 
 
 ### <a name="fhir-data-reader"></a>FHIR-Datenleser
 
-Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen von FHIR-Daten. [Weitere Informationen](../healthcare-apis/configure-azure-rbac.md)
+Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen von FHIR-Daten. [Weitere Informationen](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -6821,7 +6821,7 @@ Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen von FHIR-Daten. [Wei
 
 ### <a name="fhir-data-writer"></a>FHIR-Datenschreiber
 
-Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen und Schreiben von FHIR-Daten. [Weitere Informationen](../healthcare-apis/configure-azure-rbac.md)
+Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen und Schreiben von FHIR-Daten. [Weitere Informationen](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |

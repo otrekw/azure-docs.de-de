@@ -3,7 +3,7 @@ title: Überwachen des Auftragsfortschritts mit .NET
 description: Erfahren Sie, wie Sie den Fortschritt von Aufträgen mit Ereignishandlern abrufen und Statusupdates senden können. Das Codebeispiel ist in C# geschrieben und verwendet das Media Services SDK für .NET.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ee720ed6-8ce5-4434-b6d6-4df71fca224e
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5a1c45290d07099c1f7d202854284ef638ad638
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 5a32744f7a2385bf9da92a0f9cae5f664b1a18fc
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695974"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016966"
 ---
 # <a name="monitor-job-progress-using-net"></a>Überwachen des Auftragsfortschritts mit .NET
 

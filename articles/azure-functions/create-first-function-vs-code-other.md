@@ -3,12 +3,12 @@ title: 'Erstellen einer Funktion in Go oder Rust mit Visual Studio Code: Azure F
 description: Es wird beschrieben, wie Sie eine Go-Funktion als benutzerdefinierten Azure Functions-Handler erstellen und dann das lokale Projekt für serverloses Hosting in Azure Functions unter Verwendung der Azure Functions-Erweiterung in Visual Studio Code veröffentlichen.
 ms.topic: quickstart
 ms.date: 12/4/2020
-ms.openlocfilehash: 1142ff76425e2e4bff0d3881be1378d9da07806e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8b53031315cce3651a2de581d71da6ef6fe909c1
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704734"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470369"
 ---
 # <a name="quickstart-create-a-go-or-rust-function-in-azure-using-visual-studio-code"></a>Schnellstart: Erstellen einer Go- oder Rust-Funktion in Azure mit Visual Studio Code
 
@@ -141,8 +141,8 @@ Mit der Datei *function.json* im Ordner *HttpExample* wird eine HTTP-Triggerfunk
 
     ```toml
     [dependencies]
-    warp = "0.2"
-    tokio = { version = "0.2", features = ["full"] }
+    warp = "0.3"
+    tokio = { version = "1", features = ["rt", "macros", "rt-multi-thread"] }
     ```
 
 1. Fügen Sie in *src/main.rs* den folgenden Code hinzu, und speichern Sie die Datei. Dies ist Ihr benutzerdefinierter Rust-Handler.

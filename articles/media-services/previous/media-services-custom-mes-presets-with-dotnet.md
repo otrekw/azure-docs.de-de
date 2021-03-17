@@ -3,7 +3,7 @@ title: Anpassen von Media Encoder Standard-Voreinstellungen | Microsoft-Dokument
 description: In diesem Thema wird erläutert, wie Sie die erweiterte Codierung durch Anpassen der Aufgabenvoreinstellungen von Media Encoder Standard ausführen. In diesem Thema wird die Verwendung des Media Services .NET SDK zum Erstellen einer Aufgabe und eines Auftrags für die Codierung erläutert. Darüber hinaus wird veranschaulicht, wie Sie benutzerdefinierte Voreinstellungen für den Codierungsauftrag angeben.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ec95392f-d34a-4c22-a6df-5274eaac445b
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6c1c74f86a9cf0e4bcd73844222f256a715cbfe5
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: c2ec7c8fe312787d153c76b0b0194354e1717db7
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695889"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016711"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Anpassen von Media Encoder Standard-Voreinstellungen
 
@@ -269,7 +269,7 @@ namespace CustomizeMESPresests
 }
 ```
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 - [Codieren einer benutzerdefinierten Transformation mithilfe der Befehlszeilenschnittstelle](../latest/custom-preset-cli-howto.md)
 - [Codierung mit Media Services (v3)](../latest/encoding-concept.md)

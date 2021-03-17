@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 319ab7343792be92005611d26acc382df711bf1e
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: e6d548f4d792d8980e2aa5040b09530eaf7868c4
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565064"
+ms.locfileid: "102609905"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Schützen von Microsoft 365 vor lokalen Angriffen
 
@@ -203,7 +203,7 @@ Verwenden Sie den bedingten Zugriff von Azure AD, um Signale zu interpretieren 
 
 * Verwenden Sie bedingten Zugriff, um [ältere Authentifizierungsprotokolle](../conditional-access/howto-conditional-access-policy-block-legacy.md) wo immer möglich zu blockieren. Deaktivieren Sie darüber hinaus Legacy-Authentifizierungsprotokolle auf Anwendungsebene mithilfe einer anwendungsspezifischen Konfiguration.
 
-   Weitere Informationen finden Sie unter [Ältere Authentifizierungsprotokolle](../fundamentals/auth-sync-overview.md). Mehr dazu finden Sie in den spezifischen Details für [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) und [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps).
+   Weitere Informationen finden Sie unter [Ältere Authentifizierungsprotokolle](../fundamentals/auth-sync-overview.md). Mehr dazu finden Sie in den spezifischen Details für [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) und [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant).
 
 * Implementieren Sie die empfohlenen [Konfigurationen für den Identitäts- und Gerätezugriff](/microsoft-365/security/office-365-security/identity-access-policies).
 

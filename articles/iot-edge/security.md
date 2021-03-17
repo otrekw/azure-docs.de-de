@@ -8,14 +8,16 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3212493963805de3c8845ec494d87fc92d72998a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ff154eee6c6174a8f1a3aa7bea37ef62273bb1a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76760112"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489501"
 ---
 # <a name="security-standards-for-azure-iot-edge"></a>Sicherheitsstandards für Azure IoT Edge
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge deckt die Risikoszenarien ab, die mit dem Verschieben Ihrer Daten und Analysen zu Intelligent Edge verbunden sind. Die IoT Edge-Sicherheitsstandards gleichen die Flexibilität für verschiedene Bereitstellungsszenarien mit dem Schutz aus, den Sie von allen Azure-Diensten erwarten.
 

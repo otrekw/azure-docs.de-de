@@ -10,14 +10,16 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 45df700cc1772250e42a0e007fb4ea91b49471ba
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f4f2f8522f6d3d1039673803d946323deb485db9
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684202"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200265"
 ---
 # <a name="monitor-iot-edge-deployments"></a>Überwachen von IoT Edge-Bereitstellungen
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Mit den Berichterstellungsfunktionen von Azure IoT Edge können Sie die Echtzeitinformationen der Module überwachen, die auf Ihren IoT Edge-Geräten bereitgestellt wurden. Der IoT Hub-Dienst ruft den Status von den Geräten ab und macht diese für den Operator verfügbar. Die Überwachung ist auch für [umfangreiche Bereitstellungen](module-deployment-monitoring.md) wichtig, wie z. B. automatische und mehrstufige Bereitstellungen.
 
@@ -43,7 +45,7 @@ So zeigen Sie ausführliche Informationen zu einer Bereitstellung an und überwa
 1. Wählen Sie die Registerkarte **IoT Edge-Bereitstellungen** aus.
 1. Prüfen Sie die Bereitstellungsliste.  Für jede Bereitstellung können Sie die folgenden Details anzeigen:
 
-    | Column | BESCHREIBUNG |
+    | Column | Beschreibung |
     | --- | --- |
     | id | Der Name der Bereitstellung |
     | type | Der Typ der Bereitstellung – entweder **Bereitstellung** oder **Mehrstufige Bereitstellung**. |

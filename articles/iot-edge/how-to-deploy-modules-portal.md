@@ -8,14 +8,16 @@ ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ef3f09648e0d9101d07c6d8941ee7f79ae97b2b8
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 9248c9578d94b000c04c82b33eeeb089e55a26ef
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048031"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200312"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Bereitstellen von Azure IoT Edge-Modulen über das Azure-Portal
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Nachdem Sie IoT Edge-Module mit Ihrer Geschäftslogik erstellen, sollten Sie sie auf Ihren Geräten für den Betrieb im Edge-Bereich bereitstellen. Wenn bei Ihnen mehrere Module gemeinsam Daten erfassen und verarbeiten, können Sie alle auf einmal bereitstellen und die Routingregeln, mit denen sie verbunden werden, deklarieren.
 
@@ -24,9 +26,9 @@ In diesem Artikel wird gezeigt, wie das Azure-Portal Sie durch das Erstellen ein
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) in Ihrem Azure-Abonnement.
-* Ein IoT Edge-Gerät
+* Ein IoT Edge-Gerät.
 
-  Wenn Sie kein IoT Edge-Gerät eingerichtet haben, können Sie eines in einem virtuellen Azure-Computer erstellen. Führen Sie die Schritte in einem der Schnellstarts zum [Erstellen eines virtuellen Linux-Geräts](quickstart-linux.md) oder [Erstellen eines virtuellen Windows-Geräts](quickstart.md) aus.
+  Wenn Sie kein IoT Edge-Gerät eingerichtet haben, können Sie eines auf einem virtuellen Azure-Computer erstellen. Führen Sie die Schritte in einem der Schnellstarts zum [Erstellen eines virtuellen Linux-Geräts](quickstart-linux.md) oder [Erstellen eines virtuellen Windows-Geräts](quickstart.md) aus.
 
 ## <a name="configure-a-deployment-manifest"></a>Konfigurieren eines Bereitstellungsmanifests
 

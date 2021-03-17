@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2021
-ms.openlocfilehash: 3e12bef7569110084cd059b0dfde8562bd914823
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5b906bdbd07d59d2acc88f6b30f0db6b6cbc961a
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030765"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562245"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Standardspalten in Azure Monitor-Protokollen
 Daten in Azure Monitor-Protokollen werden [als Gruppe von Datensätzen in einem Log Analytics-Arbeitsbereich oder einer Application Insights-Anwendung gespeichert](../logs/data-platform-logs.md). Diese haben jeweils einen bestimmten Datentyp, der über eine eindeutigen Satz von Spalten verfügt. Viele Datentypen weisen Standardspalten auf, die sie mit mehreren Typen gemein haben. In diesem Artikel werden diese Spalten beschrieben, zusammen mit Beispielen für ihre Verwendung in Abfragen.
@@ -132,7 +132,7 @@ Verwenden Sie diese `union withsource = tt *`-Abfragen mit Bedacht, da umfassend
 
 Es ist immer effizienter, die Spalte „\_SubscriptionId“ zu verwenden, als sie durch Analysieren der Spalte „\_ResourceId“ zu extrahieren.
 
-## <a name="_substriptionid"></a>\_SubstriptionId
+## <a name="_subscriptionid"></a>\_SubscriptionId
 Die Spalte **\_SubscriptionId** enthält die Abonnement-ID der Ressource, der der Datensatz zugeordnet ist. Mit dieser Standardspalte können Sie den Bereich Ihrer Abfrage auf Datensätze aus einem bestimmten Abonnement einschränken oder verschiedene Abonnements vergleichen.
 
 Bei Azure-Ressourcen ist der Wert von **__SubscriptionId** der Abonnementteil der [Azure-Ressourcen-ID-URL](../../azure-resource-manager/templates/template-functions-resource.md). Die Spalte ist auf Azure-Ressourcen (einschließlich [Azure Arc-Ressourcen](../../azure-arc/overview.md)) oder auf benutzerdefinierte Protokolle beschränkt, bei denen während der Erfassung die Ressourcen-ID angegeben wurde.

@@ -11,26 +11,26 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9a9115b5400cc6d6c1ecc5740af796d831f5dee3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8ee2cc5473d83eafc2443f3aea7cab6a2e77727c
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023257"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463560"
 ---
 # <a name="send-events-to-an-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>Senden von Ereignissen an eine Azure Time Series Insights Gen1-Umgebung mithilfe eines Event Hubs
 
 > [!CAUTION]
 > Dies ist ein Artikel zu Azure Time Series Insights Gen1.
 
-In diesem Artikel erfahren Sie, wie Sie einen Event Hub in Azure Event Hubs erstellen und konfigurieren. Außerdem erfahren Sie, wie Sie eine Beispielanwendung ausführen, um Ereignisse mithilfe von Push von Event Hubs zu Azure Time Series Insights zu übertragen. Wenn Sie bereits über einen Event Hub mit Ereignissen im JSON-Format verfügen, überspringen Sie dieses Tutorial, und sehen Sie sich Ihre Umgebung in [Azure Time Series Insights](./tutorials-set-up-tsi-environment.md) an.
+In diesem Artikel erfahren Sie, wie Sie einen Event Hub in Azure Event Hubs erstellen und konfigurieren. Außerdem erfahren Sie, wie Sie eine Beispielanwendung ausführen, um Ereignisse mithilfe von Push von Event Hubs zu Azure Time Series Insights zu übertragen. Wenn Sie bereits über einen Event Hub mit Ereignissen im JSON-Format verfügen, überspringen Sie dieses Tutorial, und sehen Sie sich Ihre Umgebung in [Azure Time Series Insights](./tutorial-set-up-environment.md) an.
 
 ## <a name="configure-an-event-hub"></a>Konfigurieren eines Event Hubs
 
 1. Weitere Informationen, wie Sie einen Event Hub erstellen, finden Sie in der [Event Hubs-Dokumentation](../event-hubs/index.yml).
 1. Suchen Sie im Suchfeld nach **Event Hubs**. Wählen Sie in der Liste mit den zurückgegebenen Ergebnissen **Event Hubs** aus.
 1. Wählen Sie Ihren Event Hub aus.
-1. Wenn Sie einen Event Hub erstellen, erstellen Sie einen Event Hub-Namespace. Wenn Sie noch keinen Event Hub innerhalb des Namespace erstellt haben, erstellen Sie in dem Menü unter **Entitäten** einen Event Hub.  
+1. Wenn Sie einen Event Hub erstellen, erstellen Sie einen Event Hub-Namespace. Wenn Sie noch keinen Event Hub innerhalb des Namespace erstellt haben, erstellen Sie in dem Menü unter **Entitäten** einen Event Hub.
 
     [![Liste der Event Hubs](media/send-events/tsi-connect-event-hub-namespace.png)](media/send-events/tsi-connect-event-hub-namespace.png#lightbox)
 
@@ -78,7 +78,7 @@ In Azure Time Series Insights Gen2 können Sie eingehenden Telemetriedaten mithi
 
 1. Gehe zu <https://tsiclientsample.azurewebsites.net/windFarmGen.html>. Über die URL werden simulierte Windenergieanlagen erstellt und ausgeführt.
 1. Fügen Sie in das Feld **Event Hub-Verbindungszeichenfolge** auf der Webseite die Verbindungszeichenfolge ein, die Sie im [Eingabefeld für Windenergieanlagen](#push-events-to-windmills-sample) kopiert haben.
-  
+
     [![Einfügen der Primärschlüssel-Verbindungszeichenfolge in das Feld „Event Hub-Verbindungszeichenfolge“](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
 1. Wählen Sie **Zum Starten klicken** aus.

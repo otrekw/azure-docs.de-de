@@ -8,14 +8,16 @@ ms.date: 08/31/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fa7a56bcad067176d8f9805b418cca45ad144579
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 951111b217b7ace3f12676edf6febfa7266094df
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978695"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489947"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Eigenschaften der Modulzwillinge von IoT Edge-Agent und IoT Edge-Hub
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Der IoT Edge-Agent und der IoT Edge-Hub sind die beiden Module, aus denen sich die IoT Edge-Runtime zusammensetzt. Weitere Informationen zu den Zuständigkeiten der einzelnen Laufzeitmodule finden Sie unter [Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur](iot-edge-runtime.md).
 
@@ -31,7 +33,7 @@ Ein Modulzwilling enthält:
 
 Der Modulzwilling für den IoT Edge-Agent heißt `$edgeAgent` und koordiniert die Kommunikationsvorgänge zwischen dem auf einem Gerät ausgeführten IoT Edge-Agent und IoT Hub. Die gewünschten Eigenschaften werden festgelegt, wenn ein Bereitstellungsmanifest auf einem bestimmten Gerät im Zuge einer Einzelgeräte- oder einer umfassenden Bereitstellung angewendet wird.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | -------- | ----------- | -------- |
 | schemaVersion | Entweder „1.0“ oder „1.1“. Version 1.1 wurde mit IoT Edge Version 1.0.10 eingeführt und wird empfohlen. | Ja |
 | runtime.type | Muss „Docker“ sein. | Ja |

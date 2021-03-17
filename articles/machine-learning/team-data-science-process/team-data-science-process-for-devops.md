@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a84942337b3c8eb5f7509f61f9ba5bcd564d8bb3
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: ceac1e7b5e8efa7e87ecf6e1f4c9dd8286c87e98
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653077"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614070"
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>Team Data Science-Prozess für Entwicklervorgänge
 
@@ -74,7 +74,7 @@ Die folgende Tabelle bietet eine ebenenbasierte Anleitung, um die DevOps-Ziele f
 |  |  | [Unter diesem Verweis wird beschrieben, wie Sie eine Datenpipeline für Ihre Lösung erstellen, die Sie als JSON-Vorlage („Paket“) speichern können](../../data-factory/v1/data-factory-introduction.md). | Azure Data Factory | Fortgeschrittene | Allgemeiner Computing-Hintergrund, Erfahrung mit Datenprojekten |
 |  |  | [In diesem Thema wird die Struktur einer Azure Resource Manager-Vorlage beschrieben](../../azure-resource-manager/templates/template-syntax.md). | Azure Resource Manager | Fortgeschrittene | Vertrautheit mit der Microsoft Azure Platform |
 |  |  | [DSC ist eine Verwaltungsplattform in PowerShell, die Ihnen das Verwalten Ihrer IT- und Entwicklungsinfrastruktur per Konfiguration in Form von Code (als Paket gespeichert) ermöglicht. Dieser Verweis enthält eine Übersicht zu diesem Thema](/powershell/scripting/dsc/overview/overview). | PowerShell Desired State Configuration | Fortgeschrittene | PowerShell-Codierung, Vertrautheit mit Unternehmensarchitekturen, Skripterstellung |
-|  | Release | [Dieser Kopfteilverweis-Artikel enthält Konzepte für die Schritte Build, Test und Release für CI/CD-Umgebungen](/azure/devops/pipelines/?view=azure-devops). | Visual Studio Codespace | Erfahren | Softwareentwicklung, Vertrautheit mit CI/CD-Umgebungen, Vertrautheit mit SDLC |
+|  | Release | [Dieser Kopfteilverweis-Artikel enthält Konzepte für die Schritte Build, Test und Release für CI/CD-Umgebungen](/azure/devops/pipelines/). | Visual Studio Codespace | Erfahren | Softwareentwicklung, Vertrautheit mit CI/CD-Umgebungen, Vertrautheit mit SDLC |
 |  |  | [Verwenden Sie den vorherigen Verweis für Runbooks, um die Releaseverwaltung mit System Center zu automatisieren](/system-center/orchestrator/automate-runbooks). | System Center | Erfahren | Erfahrung mit System Center Orchestrator |
 |  |  | [Dieser Artikel hilft Ihnen beim Ermitteln der besten Option für die Bereitstellung der Dateien für Ihre Web-App, das Back-End der mobilen App oder der API-App in Azure App Service. Er enthält auch Verweise zu den entsprechenden Ressourcen mit Anleitungen für die jeweils bevorzugte Option](../../app-service/deploy-local-git.md). | Microsoft Azure-Bereitstellung | Fortgeschrittene | Softwareentwicklung, Erfahrung mit der Microsoft Azure Platform |
 |  | Überwachen | [Unter diesem Verweis wird beschrieben, wie Sie Application Insights verwenden und Ihren Advanced Analytics-Lösungen hinzufügen können](../../azure-monitor/app/app-insights-overview.md). | Application Insights | Fortgeschrittene | Softwareentwicklung, Vertrautheit mit der Microsoft Azure Platform |

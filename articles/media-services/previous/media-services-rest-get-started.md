@@ -3,7 +3,7 @@ title: Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mithilfe von RE
 description: Dieses Lernprogramm führt Sie durch die Schritte zum Implementieren einer Anwendung zur Übermittlung von Inhalten nach Bedarf mit Azure Media Services mithilfe der REST-API.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 88194b59-e479-43ac-b179-af4f295e3780
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: fe35cd39af9b2fe7d547b463b6432b0b54344794
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: ccf4bc18270dcdbcae02f7b45bea2a05ed663227
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696243"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008874"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mithilfe von REST
 
@@ -869,7 +869,7 @@ Die zurückgegebene **Path** -Eigenschaft enthält die SAS-URL.
 Nachdem Sie AccessPolicy und Locator konfiguriert haben, können Sie Dateien mithilfe der Azure Storage-REST-APIs herunterladen.  
 
 > [!NOTE]
-> Sie müssen den Dateinamen der Downloaddatei in den **Path** -Wert des Locators einfügen, den Sie im vorherigen Abschnitt empfangen haben. Beispiel: `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4` erforderlich. erforderlich. .
+> Sie müssen den Dateinamen der Downloaddatei in den **Path** -Wert des Locators einfügen, den Sie im vorherigen Abschnitt empfangen haben. Beispiel: `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4` . . .
 
 Weitere Informationen zum Arbeiten mit Azure Storage-Blobs finden Sie unter [REST-API für den Blobdienst](/rest/api/storageservices/blob-service-rest-api).
 

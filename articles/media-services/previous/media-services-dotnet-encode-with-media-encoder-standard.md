@@ -3,7 +3,7 @@ title: Codieren eines Medienobjekts mit Media Encoder Standard mit .NET | Micros
 description: In diesem Thema wird veranschaulicht, wie Sie .NET verwenden, um ein Medienobjekt mithilfe von Media Encoder Standard zu codieren.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 03431b64-5518-478a-a1c2-1de345999274
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: anilmur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f49b951473db4b331bc42de3fb72829270822d5
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b94ec0b50182381d2a4e1bca09f4c8bc482d13ee
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014374"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014093"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Codieren eines Medienobjekts mit Media Encoder Standard mit .NET
 
@@ -49,7 +49,7 @@ Media Encoder Standard wird mithilfe von Encoder-Voreinstellungen konfiguriert, 
 ### <a name="input-and-output-metadata"></a>Eingabe- und Ausgabemetadaten
 Wenn Sie Eingabemedienobjekte mithilfe von MES codieren, erhalten Sie bei erfolgreichem Abschluss dieser Codieraufgabe ein Ausgabemedienobjekt. Das Ausgabeasset enthält Video- und Audioinhalte, Miniaturansichten, das Manifest usw. Dies hängt von den verwendeten Codierungsvoreinstellungen ab.
 
-Das Ausgabeasset enthält auch eine Datei mit Metadaten zum Eingabeasset. Der Name der XML-Metadatendatei weist das folgende Format auf: <Medienobjekt-ID>_metadata.xml (z.B. „41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml“), wobei <Medienobjekt-ID> der „AssetId“-Wert des Eingabemedienobjekts ist. Das Schema dieser XML-Eingabemetadaten ist [hier](media-services-input-metadata-schema.md) beschrieben.
+Das Ausgabeobjekt enthält auch eine Datei mit Metadaten zum Eingabeobjekt. Der Name der XML-Metadatendatei weist das folgende Format auf: <Medienobjekt-ID>_metadata.xml (z.B. „41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml“), wobei <Medienobjekt-ID> der „AssetId“-Wert des Eingabemedienobjekts ist. Das Schema dieser XML-Eingabemetadaten ist [hier](media-services-input-metadata-schema.md) beschrieben.
 
 Das Ausgabeasset enthält auch eine Datei mit Metadaten zum Ausgabeasset. Der Name der XML-Metadatendatei weist das folgende Format auf: <Quelldateiname>_manifest.xml (z.B. BigBuckBunny_manifest.xml). Das Schema dieser XML-Ausgabemetadaten ist [hier](media-services-output-metadata-schema.md) beschrieben.
 

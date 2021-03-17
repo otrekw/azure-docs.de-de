@@ -8,14 +8,16 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 444ab8ccfe5a8441a4fd7d280e33d8e929d9387d
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: d9db9997af20fee226214eb12ad32729cab55caa
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435888"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199250"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices"></a>Continuous Integration und Continuous Deployment für Azure IoT Edge-Geräte
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Sie können DevOps mit den integrierten Azure IoT Edge-Aufgaben in Azure Pipelines ganz einfach in Ihren Azure IoT Edge-Anwendungen übernehmen. In diesem Artikel wird gezeigt, wie Sie die Features für Continuous Integration und Continuous Deployment von Azure Pipelines zum schnellen und effizienten Erstellen, Testen und Bereitstellen von Anwendungen in Azure IoT Edge mithilfe von YAML verwenden können. Alternativ können Sie [den klassischen Editor verwenden](how-to-continuous-integration-continuous-deployment-classic.md).
 
@@ -82,7 +84,7 @@ In diesem Abschnitt erstellen Sie eine neue Buildpipeline. Sie konfigurieren die
 
 7. Wenn Sie eine Aufgabe hinzufügen möchten, setzen Sie den Cursor an das Ende der YAML oder an jede beliebige Stelle, an der die Anweisungen für Ihre Aufgabe hinzugefügt werden sollen. Suchen Sie nach der Aufgabe **Azure IoT Edge**, und wählen Sie sie aus. Füllen Sie die Parameter der Aufgabe folgendermaßen aus. Klicken Sie anschließend auf **Hinzufügen**.
 
-   | Parameter | BESCHREIBUNG |
+   | Parameter | Beschreibung |
    | --- | --- |
    | Aktion | Auswählen von **Modulimages erstellen**. |
    | „.template.json“-Datei | Geben Sie den Pfad zur Datei **deployment.template.json** in dem Repository an, das Ihre IoT Edge-Projektmappe enthält. |
@@ -97,7 +99,7 @@ In diesem Abschnitt erstellen Sie eine neue Buildpipeline. Sie konfigurieren die
 
    * Aufgabe: **Azure IoT Edge**
 
-       | Parameter | BESCHREIBUNG |
+       | Parameter | Beschreibung |
        | --- | --- |
        | Aktion | Wählen Sie **Modulimages pushen** aus. |
        | Containerregistrierungstyp | Verwenden Sie den Standardtyp: **Azure Container Registry**: |

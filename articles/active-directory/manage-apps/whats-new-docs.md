@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: ebd8839fd17f79bc53b5093af83d457bb23712d9
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: cd46bb1c6905747ffb98c7e950f66e648c541534
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452049"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601762"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory-Anwendungsverwaltung: Neues
 
@@ -33,7 +33,6 @@ Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Acti
 - [Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung](grant-admin-consent.md)
 - [Verschieben der Anwendungsauthentifizierung von Active Directory-Verbunddiensten (AD FS) in Azure Active Directory](migrate-adfs-apps-to-azure.md)
 - [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](application-proxy-add-on-premises-application.md)
-- [Probleme beim Anmelden bei für SAML-basiertes einmaliges Anmelden konfigurierten Apps](application-sign-in-problem-federated-sso-gallery.md)
 - [Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen](tenant-restrictions.md)
 
 ## <a name="january-2021"></a>Januar 2021
@@ -84,7 +83,6 @@ Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Acti
 
 ### <a name="updated-articles"></a>Aktualisierte Artikel
 - [Azure Active Directory-Anwendungsverwaltung: Neues](whats-new-docs.md)
-- [Probleme beim Anmelden bei für SAML-basiertes einmaliges Anmelden konfigurierten Apps](application-sign-in-problem-federated-sso-gallery.md)
 
 
 ## <a name="october-2020"></a>Oktober 2020
@@ -99,7 +97,6 @@ Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Acti
 
 ### <a name="updated-articles"></a>Aktualisierte Artikel
 
-- [Probleme beim Anmelden bei für SAML-basiertes einmaliges Anmelden konfigurierten Apps](application-sign-in-problem-federated-sso-gallery.md)
 - [Problem beim Installieren des Anwendungsproxy-Agent-Connectors](application-proxy-connector-installation-problem.md)
 - [Verschieben der Anwendungsauthentifizierung von Active Directory-Verbunddiensten (AD FS) in Azure Active Directory](migrate-adfs-apps-to-azure.md)
 - [Konfigurieren der Art und Weise, wie Endbenutzer Anwendungen zustimmen können](configure-user-consent.md)

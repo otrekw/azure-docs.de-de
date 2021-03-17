@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8d518d540e50d96486fa98eea3c3267685776668
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c2c2b57ebf4e2a5cd96efce49da87cf42929e96c
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706281"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472046"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Unterstützung für natürliche Sprachen in Azure Cognitive Services
 
@@ -48,16 +48,6 @@ Die folgenden Cognitive Services-Instanzen sind sprachunabhängig und weisen kei
 * [Speech Services: Spracherkennung](./speech-service/language-support.md#speech-to-text)
 * [Speech-Dienst: Sprachausgabe](./speech-service/language-support.md#text-to-speech)
 * [Speech Services: Sprachübersetzung](./speech-service/language-support.md#speech-translation)
-
-## <a name="search"></a>Suchen,
-
-* [Benutzerdefinierte Bing-Suche](./bing-custom-search/language-support.md)
-* [Bing-Bildersuche](./bing-image-search/language-support.md)
-* [Bing-News-Suche](./bing-news-search/language-support.md)
-* [Bing-Vorschlagssuche](./bing-autosuggest/language-support.md)
-* [Bing-Rechtschreibprüfung](./bing-spell-check/language-support.md)
-* [Visuelle Bing-Suche](./bing-visual-search/language-support.md)
-* [Bing-Websuche](./bing-web-search/language-support.md)
 
 ## <a name="decision"></a>Entscheidung
 

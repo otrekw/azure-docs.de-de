@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 03/15/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 0bbaf5fa4f3404b0e4fdb4dc016b703c58910457
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ee10aa7c461aca65f385c735f6e9aaa28af7f9e5
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652078"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471694"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welche Authentifizierungs- und Prüfmethoden stehen in Azure Active Directory zur Verfügung?
 
@@ -43,7 +43,7 @@ In der folgenden Tabelle sind die Sicherheitsaspekte der verfügbaren Authentifi
 | Windows Hello for Business     | High     | High      | High         |
 | Microsoft Authenticator-App    | High     | High      | High         |
 | FIDO2-Sicherheitsschlüssel             | High     | High      | High         |
-| OATH-Hardwaretoken           | Medium   | Medium    | High         |
+| OATH-Hardwaretoken (Vorschau) | Medium   | Medium    | High         |
 | OATH-Softwaretoken           | Medium   | Medium    | High         |
 | SMS                            | Medium   | High      | Medium       |
 | Sprache                          | Medium   | Medium    | Medium       |
@@ -68,7 +68,7 @@ Aus der folgenden Tabelle geht hervor, wann eine Authentifizierungsmethode bei e
 | Windows Hello for Business     | Ja                    | MFA                       |
 | Microsoft Authenticator-App    | Ja                    | MFA und SSPR              |
 | FIDO2-Sicherheitsschlüssel             | Ja                    | MFA                       |
-| OATH-Hardwaretoken           | Nein                     | MFA                       |
+| OATH-Hardwaretoken (Vorschau) | Nein                     | MFA                       |
 | OATH-Softwaretoken           | Nein                     | MFA                       |
 | SMS                            | Ja                    | MFA und SSPR              |
 | Anruf                     | Nein                     | MFA und SSPR              |
@@ -81,7 +81,7 @@ Weitere Informationen zur Funktionsweise der einzelnen Authentifizierungsmethode
 * [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-overview)
 * [Microsoft Authenticator-App](concept-authentication-authenticator-app.md)
 * [FIDO2-Sicherheitsschlüssel](concept-authentication-passwordless.md#fido2-security-keys)
-* [OATH-Hardwaretoken](concept-authentication-oath-tokens.md#oath-hardware-tokens)
+* [OATH-Hardwaretoken (Vorschau)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
 * [Oath-Softwaretoken](concept-authentication-oath-tokens.md#oath-software-tokens)
 * [SMS-basierte Anmeldung](howto-authentication-sms-signin.md) und [Überprüfung](concept-authentication-phone-options.md#mobile-phone-verification)
 * [Überprüfung mit Sprachanruf](concept-authentication-phone-options.md)
