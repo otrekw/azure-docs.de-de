@@ -3,12 +3,12 @@ title: Neuerungen in Azure Backup
 description: Erfahren Sie mehr über die neuen Features in Azure Backup.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 5343ec2ae04853492abbaace2432cf94c9fb5a07
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 48c8c189d956c4003d24511a54975fe86a982832
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762377"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095713"
 ---
 # <a name="whats-new-in-azure-backup"></a>Neuerungen in Azure Backup
 
@@ -18,6 +18,11 @@ Weitere Informationen zu den neuen Releases erhalten Sie, indem Sie diese Seite 
 
 ## <a name="updates-summary"></a>Übersicht über Updates
 
+- März 2021
+  - [Backup Center ist nun allgemein verfügbar](#backup-center-is-now-generally-available)
+  - [Unterstützung der Zugriffsebene „Archiv“ für Azure Backup (Vorschau)](#archive-tier-support-for-azure-backup-in-preview)
+- Februar 2021
+  - [Sicherung für Azure-Blobs (Vorschau)](#backup-for-azure-blobs-in-preview)
 - Januar 2021
   - [Azure Disk Backup (Vorschau)](#azure-disk-backup-in-preview)
   - [Verschlüsselung ruhender Daten mit von Kunden verwalteten Schlüsseln (allgemeine Verfügbarkeit)](#encryption-at-rest-using-customer-managed-keys)
@@ -34,6 +39,26 @@ Weitere Informationen zu den neuen Releases erhalten Sie, indem Sie diese Seite 
   - [Sichern von SAP HANA in Azure Virtual Machines unter RHEL (in der Vorschau)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [Zonenredundanter Speicher (ZRS) für Sicherungsdaten (in der Vorschau)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Vorläufiges Löschen für SQL Server- und SAP HANA-Workloads auf Azure-VMs](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="backup-center-is-now-generally-available"></a>Backup Center ist nun allgemein verfügbar
+
+Mit Backup Center können Sie den Schutz umfangreicher Datenmengen jetzt einfacher verwalten, weil Sie die Sicherungsverwaltung über eine einzige zentrale Konsole ermitteln, steuern, überwachen, betreiben und optimieren können.
+
+Weitere Informationen finden Sie in der [Übersicht über Backup Center](backup-center-overview.md).
+
+## <a name="archive-tier-support-for-azure-backup-in-preview"></a>Unterstützung der Zugriffsebene „Archiv“ für Azure Backup (Vorschau)
+
+Durch die Verfügbarkeit der Zugriffsebene „Archiv“ für virtuelle Azure-Computer und SQL Server auf virtuellen Azure-Computern können Sie in Azure Backup jetzt die Kosten für Sicherungen mit langfristiger Aufbewahrung verringern.
+
+Weitere Informationen finden Sie unter [Unterstützung der Zugriffsebene „Archiv“ (Vorschau)](archive-tier-support.md).
+
+## <a name="backup-for-azure-blobs-in-preview"></a>Sicherung für Azure-Blobs (Vorschau)
+
+Die operative Sicherung für Blobs ist eine verwaltete, lokale Datensicherungslösung, mit der Sie Ihre Blockblobs vor verschiedenen Datenverlustszenarien wie Beschädigungen, Bloblöschungen und dem versehentlichen Löschen von Speicherkonten schützen können. Die Daten werden lokal im Quellspeicherkonto selbst gespeichert und können bei Bedarf zu einem ausgewählten Zeitpunkt wiederhergestellt werden. Die operative Sicherung bietet also eine einfache, sichere und kostengünstige Möglichkeit, Ihre Blobs zu schützen.
+
+Die operative Sicherung für Blobs lässt sich neben anderen Sicherungsverwaltungsfunktionen in Backup Center integrieren und bietet so eine zentralisierte Benutzeroberfläche, mit der Sie Sicherungen im großen Maßstab steuern, überwachen, betreiben und analysieren können.
+
+Weitere Informationen finden Sie unter [Übersicht über operative Sicherungen für Azure-Blobs (Vorschau)](blob-backup-overview.md).
 
 ## <a name="azure-disk-backup-in-preview"></a>Azure Disk Backup (Vorschau)
 
