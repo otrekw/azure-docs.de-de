@@ -1,5 +1,5 @@
 ---
-title: Partner Center-Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace, Microsoft AppSource und dem Azure Marketplace
+title: Partner Center-Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace | Microsoft AppSource und Azure Marketplace
 description: Erfahren Sie, wie Sie auf Analyseberichte in einem grafischen und herunterladbaren Format zugreifen, die Informationen zu Aufträgen für Ihre Angebote im kommerziellen Marketplace enthalten.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 31216db98cc02724ac3625eb1a8fa18b0f75c6ee
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: ed12e470f3f3d8c1035c1e4e2e0fa7a3b33e2369
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955024"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561380"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace
 
@@ -54,7 +54,7 @@ Oben rechts auf jeder Seite finden Sie eine Monatsbereichsauswahl. Passen Sie di
 
 In diesem Abschnitt finden Sie das Diagramm **Aufträge**, in dem der Trend der aktiven und stornierten Aufträge für den ausgewählten Berechnungszeitraum angezeigt wird. Metriken und Wachstumstrends werden durch ein Liniendiagramm dargestellt und zeigen den Wert für jeden Monat an, wenn Sie den Cursor über die Linie des Diagramms bewegen. Der unter den Aufträgemetriken im Widget angegebene Prozentwert stellt den prozentualen Zuwachs bzw. Rückgang im ausgewählten Berechnungszeitraum dar.
 
-Es gibt zwei Aufträgezähler: _Aktiv_ und _Storniert_.
+Es gibt zwei Auftragszähler: _Aktiv_ und _Storniert_.
 
 - **Aktiv** ist mit der Anzahl der Aufträge identisch, die derzeit während des ausgewählten Datumsbereichs von Kunden erteilt worden und in Bearbeitung sind.
 - **Storniert** entspricht der Anzahl der Aufträge, die zuvor erteilt und dann während des ausgewählten Datumsbereichs storniert wurden.
@@ -111,32 +111,32 @@ In der Tabelle „Auftragsdetails“ wird eine nummerierte Liste der 1.000 beste
 - Wenden Sie Filter auf die Tabelle **Auftragsdetails** an, um nur die Daten anzuzeigen, die für Sie von Interesse sind. Filtern Sie nach Land/Region, Azure-Lizenztyp, Lizenztyp im kommerziellen Marketplace, Angebotstyp, Bestellstatus, kostenlosen Testversionen, Abonnement-ID im kommerziellen Marketplace, Kunden-ID und Unternehmensname.
 - Wenn ein Auftrag von einem geschützten Kunden erworben wird, werden die Informationen in **Detaillierte Auftragsdaten** maskiert (************).
 
-**_Tabelle 1: Wörterbuch mit Datenbegriffen_* _
+***Tabelle 1: Wörterbuch mit Datenbegriffen***
 
-| Spaltenname | Attributname | Definition |
-| ------------ | ------------- | ------------- |
-| Marketplace Subscription Id | Marketplace-Abonnement-ID | Der eindeutige Bezeichner (ID), der mit dem Azure-Abonnement verknüpft ist, über das der Kunde Ihr Angebot im kommerziellen Marketplace erworben hat. Bei Infrastrukturangeboten ist dies die Azure-Abonnement-GUID des Kunden. Bei SaaS-Angeboten werden hier Nullen angezeigt, da für die SaaS-Käufe kein Azure-Abonnement erforderlich ist. |
-| MonthStartDate | Monatsstartdatum | Das Monatsstartdatum steht für den Monat des Kaufs. |
-| Angebotstyp | Angebotstyp | Der Typ des Angebots im kommerziellen Marketplace |
-| Azure-Lizenztyp | Azure-Lizenztyp | Die Art der Lizenzvereinbarung, über die Kunden Azure erwerben. Wird auch als Kanal bezeichnet. Mögliche Werte sind:<ul><li>Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise über Handelspartner</li><li>Nutzungsbasierte Bezahlung</li></ul> |
-| Marketplace-Lizenztyp | Marketplace-Lizenztyp | Die Abrechnungsmethode für das Angebot im kommerziellen Marketplace. Die unterschiedlichen Werte sind:<ul><li>Abrechnung über Azure</li><li>BYOL (Bring Your Own License)</li><li>Kostenlos</li><li>Microsoft als Handelspartner</li></ul> |
-| SKU | SKU | Der dem Angebot zugeordnete Plan |
-| Land des Kunden | Land/Region des Kunden | Der vom Kunden angegebene Name für das Land bzw. die Region. Das Land/die Region kann sich von dem im Azure-Abonnement eines Kunden angegebenen Land bzw. der angegebenen Region unterscheiden. |
-| Vorschau-SKU | Vorschau-SKU | Der Wert gibt an, ob Sie die SKU als „Vorschau“ gekennzeichnet haben. Der Wert ist „Ja“, wenn Sie die SKU entsprechend gekennzeichnet haben und nur von Ihnen autorisierte Azure-Abonnements dieses Image bereitstellen und nutzen können. Der Wert ist „Nein“, wenn die SKU nicht als „Vorschau“ definiert wurde. |
-| Auftrags-ID | Bestell-ID | Der eindeutige Bezeichner (ID) des Kundenauftrags für Ihren Dienst im kommerziellen Marketplace. Nutzungsbasierte Angebote für virtuelle Computer werden keiner Bestellung zugeordnet. |
-| Order Quantity | Order Quantity | Anzahl der Objekte, die der Auftrags-ID für aktive Aufträge zugeordnet sind. |
-| Cloudinstanzname | Cloudinstanzname | Die Microsoft Cloud, in der die Bereitstellung eines virtuellen Computers erfolgt ist. |
-| Neuer Kunde | Neuer Kunde | Der Wert gibt an, ob ein neuer Kunde eines oder mehrere Ihrer Angebote zum ersten Mal erworben hat. Der Wert ist „Ja“, wenn das Erwerbsdatum im gleichen Kalendermonat liegt. Der Wert ist „Nein“, wenn der Kunde eines Ihrer Angebote vor dem berichteten Kalendermonat gekauft hat. |
-| Bestellstatus | Bestellstatus | Der Status eines Auftrags im kommerziellen Marketplace zu dem Zeitpunkt, zu dem die Daten zuletzt aktualisiert wurden. |
-| Stornierungsdatum der Bestellung | Stornierungsdatum der Bestellung | Das Datum, an dem der Auftrag im kommerziellen Marketplace storniert wurde. |
-| Firmenname des Kunden | Firmenname des Kunden | Der vom Kunden angegebene Firmenname. Der Name kann sich von der Angabe im Azure-Abonnement eines Kunden unterscheiden. |
-| Kaufdatum der Bestellung | Kaufdatum der Bestellung | Das Datum, an dem der Auftrag im kommerziellen Marketplace gelöscht wurde. |
-| Angebotsname | Angebotsname | Der Name des Angebots im kommerziellen Marketplace. |
-| Enddatum der Testversion | Enddatum der Testversion | Das Datum, an dem der Testzeitraum für die Bestellung endet oder beendet ist. |
-| Customer Id | Customer ID | Der eindeutige, einem Kunden zugewiesene Bezeichner. Ein Kunde kann keine oder mehrere Azure Marketplace-Abonnements besitzen. |
-| Billing Account Id | ID des Abrechnungskontos | Der Bezeichner des Kontos, für das die Abrechnung generiert wird. Ordnen Sie die _ *ID des Abrechnungskontos** der **customerID** zu, um Ihren Auszahlungstransaktionsbericht mit den Kunden-, Auftrags- und Nutzungsberichten zu verbinden. |
-| AssetCount | Anzahl der Objekte | Die Anzahl der Objekte, die der Auftrags-ID zugeordnet sind. |
-||||
+| Spaltenname auf<br>Benutzeroberfläche | Attributname | Definition | Spaltenname in Berichten zum<br>programmgesteuerten Zugriff |
+| ------------ | ------------- | ------------- | ------------- |
+| Marketplace-Abonnement-ID | Marketplace-Abonnement-ID | Der eindeutige Bezeichner (ID), der mit dem Azure-Abonnement verknüpft ist, über das der Kunde Ihr Angebot im kommerziellen Marketplace erworben hat. Bei Infrastrukturangeboten ist dies die Azure-Abonnement-GUID des Kunden. Bei SaaS-Angeboten werden hier Nullen angezeigt, da für die SaaS-Käufe kein Azure-Abonnement erforderlich ist. | Marketplace-Abonnement-ID |
+| MonthStartDate | Monatsstartdatum | Das Monatsstartdatum steht für den Monat des Kaufs. Das Format ist JJJJ-MM-TT. | MonthStartDate |
+| Angebotstyp | Angebotstyp | Der Typ des Angebots im kommerziellen Marketplace | OfferType |
+| Azure-Lizenztyp | Azure-Lizenztyp | Die Art der Lizenzvereinbarung, über die Kunden Azure erwerben. Wird auch als Kanal bezeichnet. Mögliche Werte sind:<ul><li>Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise über Handelspartner</li><li>Nutzungsbasierte Bezahlung</li></ul> | AzureLicenseType |
+| Marketplace-Lizenztyp | Marketplace-Lizenztyp | Die Abrechnungsmethode für das Angebot im kommerziellen Marketplace. Die unterschiedlichen Werte sind:<ul><li>Abrechnung über Azure</li><li>BYOL (Bring Your Own License)</li><li>Kostenlos</li><li>Microsoft als Handelspartner</li></ul> | MarketplaceLicenseType |
+| SKU | SKU | Der dem Angebot zugeordnete Plan | SKU |
+| Land des Kunden | Land/Region des Kunden | Der vom Kunden angegebene Name für das Land bzw. die Region. Das Land/die Region kann sich von dem im Azure-Abonnement eines Kunden angegebenen Land bzw. der angegebenen Region unterscheiden. | CustomerCountry |
+| Vorschau-SKU | Vorschau-SKU | Der Wert gibt an, ob Sie die SKU als „Vorschau“ gekennzeichnet haben. Der Wert ist „Ja“, wenn Sie die SKU entsprechend gekennzeichnet haben und nur von Ihnen autorisierte Azure-Abonnements dieses Image bereitstellen und nutzen können. Der Wert ist „Nein“, wenn die SKU nicht als „Vorschau“ definiert wurde. | IsPreviewSKU |
+| Bestell-ID | Bestell-ID | Der eindeutige Bezeichner (ID) des Kundenauftrags für Ihren Dienst im kommerziellen Marketplace. Nutzungsbasierte Angebote für virtuelle Computer werden keiner Bestellung zugeordnet. | OrderId |
+| Order Quantity | Order Quantity | Anzahl der Objekte, die der Auftrags-ID für aktive Aufträge zugeordnet sind. | OrderQuantity |
+| Cloudinstanzname | Cloudinstanzname | Die Microsoft Cloud, in der die Bereitstellung eines virtuellen Computers erfolgt ist. | CloudInstanceName |
+| Neuer Kunde | Neuer Kunde | Der Wert gibt an, ob ein neuer Kunde eines oder mehrere Ihrer Angebote zum ersten Mal erworben hat. Der Wert ist „Ja“, wenn das Erwerbsdatum im gleichen Kalendermonat liegt. Der Wert ist „Nein“, wenn der Kunde eines Ihrer Angebote vor dem berichteten Kalendermonat gekauft hat. | IsNewCustomer |
+| Bestellstatus | Bestellstatus | Der Status eines Auftrags im kommerziellen Marketplace zu dem Zeitpunkt, zu dem die Daten zuletzt aktualisiert wurden. | OrderStatus |
+| Stornierungsdatum der Bestellung | Stornierungsdatum der Bestellung | Das Datum, an dem der Auftrag im kommerziellen Marketplace storniert wurde. | OrderCancelDate |
+| Firmenname des Kunden | Firmenname des Kunden | Der vom Kunden angegebene Firmenname. Der Name kann sich von der Angabe im Azure-Abonnement eines Kunden unterscheiden. | CustomerCompanyName |
+| Kaufdatum der Bestellung | Kaufdatum der Bestellung | Das Datum, an dem der Auftrag im kommerziellen Marketplace gelöscht wurde. Das Format ist JJJJ-MM-TT. | OrderPurchaseDate |
+| Angebotsname | Angebotsname | Der Name des Angebots im kommerziellen Marketplace. | OfferName |
+| Enddatum der Testversion | Enddatum der Testversion | Das Datum, an dem der Testzeitraum für die Bestellung endet oder beendet ist. | TrialEndDate |
+| Customer ID | Customer ID | Der eindeutige, einem Kunden zugewiesene Bezeichner. Ein Kunde kann keine oder mehrere Azure Marketplace-Abonnements besitzen. | CustomerId |
+| ID des Abrechnungskontos | ID des Abrechnungskontos | Der Bezeichner des Kontos, für das die Abrechnung generiert wird. Ordnen Sie die **ID des Abrechnungskontos** zu **customerID** zu, um Ihren Auszahlungstransaktionsbericht mit den Kunden-, Bestellungs- und Verbrauchsberichten zu verbinden. | BillingAccountId |
+| AssetCount | Anzahl der Objekte | Die Anzahl der Objekte, die der Auftrags-ID zugeordnet sind. | Als veraltet markiert |
+|||||
 
 ### <a name="orders-page-filters"></a>Filter für die Seite „Aufträge“
 

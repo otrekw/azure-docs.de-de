@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 9f798751065d4889569f4b798ac864342f3e54ef
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 765f4f358d593cd5fcc021fbf4ec2276c422c4d8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934400"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555124"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace
 
@@ -117,46 +117,45 @@ In der Tabelle **Nutzungsdetails** wird eine nummerierte Liste der 1.000 Top-Ve
 
 _**Tabelle 1: Wörterbuch mit Datenbegriffen**_
 
-| Spaltenname | Attributname | Definition |
-| ------------ | ------------- | ------------- |
-| Marketplace Subscription Id | Marketplace-Abonnement-ID | Der eindeutige Bezeichner (ID), der mit dem Azure-Abonnement verknüpft ist, über das der Kunde Ihr Angebot im kommerziellen Marketplace erworben hat. Früher war ID die Azure-Abonnement-GUID. |
-| MonthStartDate | Monatliches Startdatum | Das monatliche Startdatum steht für den Monat des Kaufs. |
-| Angebotstyp | Angebotstyp | Der Typ des Angebots im kommerziellen Marketplace |
-| Azure-Lizenztyp | Azure-Lizenztyp | Die Art der Lizenzvereinbarung, über die Kunden Azure erwerben. Wird auch als „Kanal“ bezeichnet. Mögliche Werte sind:<ui><li>Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise über Handelspartner</li><li>Nutzungsbasierte Bezahlung</li></ul> |
-| Marketplace-Lizenztyp | Marketplace-Lizenztyp | Die Abrechnungsmethode für das Angebot im kommerziellen Marketplace. Mögliche Werte sind:<ul><li>Abrechnung über Azure</li><li>BYOL (Bring Your Own License)</li><li>Kostenlos</li><li>Microsoft als Handelspartner</li></ul> |
-| SKU | SKU | Der dem Angebot zugeordnete Plan |
-| Land des Kunden | Land/Region des Kunden | Der vom Kunden angegebene Name für das Land bzw. die Region. Das Land/die Region kann sich von dem im Azure-Abonnement eines Kunden angegebenen Land bzw. der angegebenen Region unterscheiden. |
-| Vorschau-SKU | Vorschau-SKU | Der Wert gibt an, ob Sie die SKU als „Vorschau“ gekennzeichnet haben. Der Wert ist „Ja“, wenn Sie die SKU entsprechend gekennzeichnet haben und nur von Ihnen autorisierte Azure-Abonnements dieses Image bereitstellen und nutzen können. Der Wert ist „Nein“, wenn die SKU nicht als „Vorschau“ definiert wurde. |
-| SKU-Abrechnungstyp | SKU-Abrechnungstyp | Der Abrechnungstyp, der den einzelnen SKUs im Angebot zugeordnet ist. Mögliche Werte sind:<ul><li>Kostenlos</li><li>Kostenpflichtig</li></ul> |
-| IsInternal | Als veraltet markiert | Als veraltet markiert |
-| Größe des virtuellen Computers | VM-Größe | Bei VM-basierten Angebotstypen gibt diese Entität die Größe des virtuellen Computers an, der der SKU des Angebots zugeordnet ist. |
-| Cloudinstanzname | Cloudinstanzname | Die Microsoft Cloud, in der die Bereitstellung eines virtuellen Computers erfolgt ist. |
-| ServicePlanName | Als veraltet markiert | Veraltet (dieselbe Definition wie „SKU“) |
-| Angebotsname | Angebotsname | Der Name des Angebots im kommerziellen Marketplace. |
-| DeploymentMethod | Als veraltet markiert | Veraltet (dieselbe Definition wie „Angebotstyp“)
- |
-| Firmenname des Kunden | Firmenname des Kunden | Der vom Kunden angegebene Firmenname. Der Name kann sich von der Angabe im Azure-Abonnement eines Kunden unterscheiden. |
-| Usage Date | Usage Date | Das Datum der Generierung von Nutzungsereignissen für verwendungsbasierte Ressourcen |
-| IsMultisolution | Entspricht mehreren Lösungen | Gibt an, ob der Angebotstyp mehrere Lösungen umfasst. |
-| Neuer Kunde | Als veraltet markiert | Als veraltet markiert |
-| Kerngröße | Kerngröße | Die Anzahl der Kerne, die dem VM-basierten Angebot zugeordnet sind. |
-| Nutzungstyp | Nutzungstyp | Gibt an, ob das dem Angebot zugeordnete Nutzungsereignis einem der folgenden Typen entspricht:<ul><li>Normalisierte Nutzung</li><li>Tatsächliche Nutzung</li><li>Nutzungsbezogene Gebühren</li></ul> |
-| Enddatum der Testversion | Enddatum der Testversion | Das Datum, an dem der Testzeitraum für die Bestellung endet oder beendet ist. |
-| Währung des Kunden (Customer Currency, CC) | Währung des Kunden | Die vom Kunden für die Transaktion im kommerziellen Marketplace verwendete Währung |
-| Preis (CC) | Preis | Der Einzelpreis der SKU, der in der Kundenwährung angezeigt wird |
-| Auszahlungswährung (PC) | Auszahlungswährung | Der Herausgeber wird für die Nutzungsereignisse, die der Ressource zugeordnet sind, in der vom Herausgeber konfigurierten Währung bezahlt. |
-| Geschätzter Preis (PC) | Geschätzter Preis | Der Einzelpreis der SKU in der vom Herausgeber konfigurierten Währung |
-| Nutzungsreferenz | Nutzungsreferenz | Eine verkettete GUID, die verwendet wird, um den Nutzungsbericht (in Analysen für den kommerziellen Marketplace) mit dem Bericht für Auszahlungstransaktionen zu verbinden. Die Nutzungsreferenz ist mit „OrderId“ und „LineItemId“ im Bericht für Auszahlungstransaktionen verbunden. |
-| Usage Unit | Nutzungseinheit | Die der SKU zugeordnete Verbrauchseinheit |
-| Customer Id | Customer ID | Der eindeutige, einem Kunden zugewiesene Bezeichner. Ein Kunde kann keine oder mehrere Azure Marketplace-Abonnements besitzen. |
-| Billing Account Id | ID des Abrechnungskontos | Der Bezeichner des Kontos, für das die Abrechnung generiert wird. Ordnen Sie die **ID des Abrechnungskontos** zu **customerID** zu, um Ihren Auszahlungstransaktionsbericht mit den Kunden-, Bestellungs- und Verbrauchsberichten zu verbinden. |
-| Verwendungsmenge | Verwendungsmenge | Die gesamten Nutzungseinheiten, die von der Ressource verbraucht wurden, die vom Kunden bereitgestellt wird.<br>Diese basieren auf dem Element „Nutzungstyp“. Wenn der Nutzungstyp z. B. die normalisierte Nutzung ist, dann entspricht die Verwendungsmenge der normalisierten Nutzung. |
-| NormalizedUsage | Normalisierter Verbrauch | Die gesamten Einheiten für die normalisierte Nutzung, die von der Ressource verbraucht wurden, die vom Kunden bereitgestellt wird.<br>Normalisierte Nutzungsstunden werden als Nutzungsstunden definiert, die normalisiert wurden, um die Anzahl der VM-Kerne ([Anzahl der VM-Kerne] ·x [Stunden der Rohdatennutzung]) zu berücksichtigen. Für VMs, die als „SHAREDCORE“ festgelegt wurden, wird der Multiplikator 1/6 (oder 0,1666) für [Anzahl der VM-Kerne] verwendet. |
-| MeteredUsage | Gemessene Nutzung | Die gesamten Nutzungseinheiten, die von den Verbrauchseinheiten beansprucht werden, die mit dem vom Kunden bereitgestellten Angebot konfiguriert wurden. |
-| RawUsage | Rohnutzung | Die gesamten Einheiten für die tatsächliche Nutzung, die von der Ressource verbraucht wurden, die vom Kunden bereitgestellt wird.<br>Die Stunden für die tatsächliche Nutzung werden als die Zeitspanne (in Nutzungseinheiten) definiert, in der VMs ausgeführt wurden. |
-| Geschätzte erweiterte Gebühren (CC) | Geschätzte erweiterte Gebühren in der Kundenwährung | Gibt die mit der Nutzung verbundenen Gebühren an. Die Spalte entspricht dem rechnerischen Produkt aus Preis (CC) und Verwendungsmenge. |
-| Geschätzte erweiterte Gebühren (PC) | Geschätzte erweiterte Gebühren in der Auszahlungswährung | Gibt die mit der Nutzung verbundenen Gebühren an. Die Spalte entspricht dem rechnerischen Produkt aus geschätztem Preis (PC) und Verwendungsmenge. |
-||||
+| Spaltenname auf<br>Benutzeroberfläche | Attributname | Definition | Spaltenname in Berichten zum<br>programmgesteuerten Zugriff |
+| ------------ | ------------- | ------------- | ------------- |
+| Marketplace-Abonnement-ID | Marketplace-Abonnement-ID | Der eindeutige Bezeichner (ID), der mit dem Azure-Abonnement verknüpft ist, über das der Kunde Ihr Angebot im kommerziellen Marketplace erworben hat. Früher war ID die Azure-Abonnement-GUID. | MarketplaceSubscriptionId |
+| MonthStartDate | Monatliches Startdatum | Das monatliche Startdatum steht für den Monat des Kaufs. | MonthStartDate |
+| Angebotstyp | Angebotstyp | Der Typ des Angebots im kommerziellen Marketplace | OfferType |
+| Azure-Lizenztyp | Azure-Lizenztyp | Die Art der Lizenzvereinbarung, über die Kunden Azure erwerben. Wird auch als „Kanal“ bezeichnet. Mögliche Werte sind:<ui><li>Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise über Handelspartner</li><li>Nutzungsbasierte Bezahlung</li></ul> | AzureLicenseType |
+| Marketplace-Lizenztyp | Marketplace-Lizenztyp | Die Abrechnungsmethode für das Angebot im kommerziellen Marketplace. Mögliche Werte sind:<ul><li>Abrechnung über Azure</li><li>BYOL (Bring Your Own License)</li><li>Kostenlos</li><li>Microsoft als Handelspartner</li></ul> | MarketplaceLicenseType |
+| SKU | SKU | Der dem Angebot zugeordnete Plan | SKU |
+| Land des Kunden | Land/Region des Kunden | Der vom Kunden angegebene Name für das Land bzw. die Region. Das Land/die Region kann sich von dem im Azure-Abonnement eines Kunden angegebenen Land bzw. der angegebenen Region unterscheiden. | CustomerCountry |
+| Vorschau-SKU | Vorschau-SKU | Der Wert gibt an, ob Sie die SKU als „Vorschau“ gekennzeichnet haben. Der Wert ist „Ja“, wenn Sie die SKU entsprechend gekennzeichnet haben und nur von Ihnen autorisierte Azure-Abonnements dieses Image bereitstellen und nutzen können. Der Wert ist „Nein“, wenn die SKU nicht als „Vorschau“ definiert wurde. | IsPreviewSKU |
+| SKU-Abrechnungstyp | SKU-Abrechnungstyp | Der Abrechnungstyp, der den einzelnen SKUs im Angebot zugeordnet ist. Mögliche Werte sind:<ul><li>Kostenlos</li><li>Kostenpflichtig</li></ul> | SKUBillingType |
+| IsInternal | Als veraltet markiert | Als veraltet markiert | Als veraltet markiert |
+| Größe des virtuellen Computers | VM-Größe | Bei VM-basierten Angebotstypen gibt diese Entität die Größe des virtuellen Computers an, der der SKU des Angebots zugeordnet ist. | VMSize |
+| Cloudinstanzname | Cloudinstanzname | Die Microsoft Cloud, in der die Bereitstellung eines virtuellen Computers erfolgt ist. | CloudInstanceName |
+| ServicePlanName | Als veraltet markiert | Veraltet (dieselbe Definition wie „SKU“) | ServicePlanName |
+| Angebotsname | Angebotsname | Der Name des Angebots im kommerziellen Marketplace. | OfferName |
+| DeploymentMethod | Als veraltet markiert | Veraltet (dieselbe Definition wie „Angebotstyp“) | DeploymentMethod |
+| Firmenname des Kunden | Firmenname des Kunden | Der vom Kunden angegebene Firmenname. Der Name kann sich von der Angabe im Azure-Abonnement eines Kunden unterscheiden. | CustomerCompanyName |
+| Usage Date | Usage Date | Das Datum der Generierung von Nutzungsereignissen für verwendungsbasierte Ressourcen | UsageDate |
+| IsMultisolution | Entspricht mehreren Lösungen | Gibt an, ob der Angebotstyp mehrere Lösungen umfasst. | IsMultisolution |
+| Neuer Kunde | Als veraltet markiert | Als veraltet markiert | IsNewCustomer |
+| Kerngröße | Kerngröße | Die Anzahl der Kerne, die dem VM-basierten Angebot zugeordnet sind. | CoreSize |
+| Nutzungstyp | Nutzungstyp | Gibt an, ob das dem Angebot zugeordnete Nutzungsereignis einem der folgenden Typen entspricht:<ul><li>Normalisierte Nutzung</li><li>Tatsächliche Nutzung</li><li>Nutzungsbezogene Gebühren</li></ul> | UsageType |
+| Enddatum der Testversion | Enddatum der Testversion | Das Datum, an dem der Testzeitraum für die Bestellung endet oder beendet ist. | TrialEndDate |
+| Währung des Kunden (Customer Currency, CC) | Währung des Kunden | Die vom Kunden für die Transaktion im kommerziellen Marketplace verwendete Währung | CustomerCurrencyCC |
+| Preis (CC) | Preis | Der Einzelpreis der SKU, der in der Kundenwährung angezeigt wird | PriceCC |
+| Auszahlungswährung (PC) | Auszahlungswährung | Der Herausgeber wird für die Nutzungsereignisse, die der Ressource zugeordnet sind, in der vom Herausgeber konfigurierten Währung bezahlt. | PayoutCurrencyPC |
+| Geschätzter Preis (PC) | Geschätzter Preis | Der Einzelpreis der SKU in der vom Herausgeber konfigurierten Währung | EstimatedPricePC |
+| Nutzungsreferenz | Nutzungsreferenz | Eine verkettete GUID, die verwendet wird, um den Nutzungsbericht (in Analysen für den kommerziellen Marketplace) mit dem Bericht für Auszahlungstransaktionen zu verbinden. Die Nutzungsreferenz ist mit „OrderId“ und „LineItemId“ im Bericht für Auszahlungstransaktionen verbunden. | UsageReference |
+| Usage Unit | Nutzungseinheit | Die der SKU zugeordnete Verbrauchseinheit | UsageUnit |
+| Customer ID | Customer ID | Der eindeutige, einem Kunden zugewiesene Bezeichner. Ein Kunde kann keine oder mehrere Azure Marketplace-Abonnements besitzen. | CustomerId |
+| ID des Abrechnungskontos | ID des Abrechnungskontos | Der Bezeichner des Kontos, für das die Abrechnung generiert wird. Ordnen Sie die **ID des Abrechnungskontos** zu **customerID** zu, um Ihren Auszahlungstransaktionsbericht mit den Kunden-, Bestellungs- und Verbrauchsberichten zu verbinden. | BillingAccountId |
+| Verwendungsmenge | Verwendungsmenge | Die gesamten Nutzungseinheiten, die von der Ressource verbraucht wurden, die vom Kunden bereitgestellt wird.<br>Diese basieren auf dem Element „Nutzungstyp“. Wenn der Nutzungstyp z. B. die normalisierte Nutzung ist, dann entspricht die Verwendungsmenge der normalisierten Nutzung. | UsageQuantity |
+| NormalizedUsage | Normalisierter Verbrauch | Die gesamten Einheiten für die normalisierte Nutzung, die von der Ressource verbraucht wurden, die vom Kunden bereitgestellt wird.<br>Normalisierte Nutzungsstunden werden als Nutzungsstunden definiert, die normalisiert wurden, um die Anzahl der VM-Kerne ([Anzahl der VM-Kerne] ·x [Stunden der Rohdatennutzung]) zu berücksichtigen. Für VMs, die als „SHAREDCORE“ festgelegt wurden, wird der Multiplikator 1/6 (oder 0,1666) für [Anzahl der VM-Kerne] verwendet. | NormalizedUsage |
+| MeteredUsage | Gemessene Nutzung | Die gesamten Nutzungseinheiten, die von den Verbrauchseinheiten beansprucht werden, die mit dem vom Kunden bereitgestellten Angebot konfiguriert wurden. | MeteredUsage |
+| RawUsage | Rohnutzung | Die gesamten Einheiten für die tatsächliche Nutzung, die von der Ressource verbraucht wurden, die vom Kunden bereitgestellt wird.<br>Die Stunden für die tatsächliche Nutzung werden als die Zeitspanne (in Nutzungseinheiten) definiert, in der VMs ausgeführt wurden. | RawUsage |
+| Geschätzte erweiterte Gebühren (CC) | Geschätzte erweiterte Gebühren in der Kundenwährung | Gibt die mit der Nutzung verbundenen Gebühren an. Die Spalte entspricht dem rechnerischen Produkt aus Preis (CC) und Verwendungsmenge. | EstimatedExtendedChargeCC |
+| Geschätzte erweiterte Gebühren (PC) | Geschätzte erweiterte Gebühren in der Auszahlungswährung | Gibt die mit der Nutzung verbundenen Gebühren an. Die Spalte entspricht dem rechnerischen Produkt aus geschätztem Preis (PC) und Verwendungsmenge. | EstimatedExtended ChargePC |
+|||||
 
 ### <a name="usage-page-filters"></a>Filter für die Seite „Nutzung“
 

@@ -6,13 +6,13 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 01/19/2021
-ms.openlocfilehash: b86414758c3b644725e5aa29ca3b314f489508aa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/09/2021
+ms.openlocfilehash: 37ac292acc76c681ea38b2ae881ff8cd2ae5ec3c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693525"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502445"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Automatisches Bezeichnen Ihrer Daten in Azure Purview
 
@@ -114,13 +114,24 @@ Beispiel:
 Nachdem Sie die Bezeichnung auf Ressourcen in Azure Purview erweitert haben, können Sie die Bezeichnungen auswählen, die Sie in Purview zur Verfügung stellen möchten. Weitere Informationen finden Sie unter [Erstellen neuer Vertraulichkeitsbezeichnungen oder Ändern vorhandener Bezeichnungen](#creating-new-sensitivity-labels-or-modifying-existing-labels).
 ### <a name="creating-new-sensitivity-labels-or-modifying-existing-labels"></a>Erstellen neuer Vertraulichkeitsbezeichnungen oder Ändern vorhandener Bezeichnungen
 
+Wenn Sie Vertraulichkeitsbezeichnungen für Office-Apps unter Windows, macOS, iOS und Android verwenden, werden Benutzern neue Bezeichnungen innerhalb von vier Stunden und für Office im Web innerhalb einer Stunde angezeigt. Es kann jedoch bis zu 24 Stunden dauern, bis Änderungen in allen Apps und Diensten repliziert sind.
+
+> [!IMPORTANT]
+> Löschen Sie keine Bezeichnung, es sei denn, Sie kennen die Auswirkung für Ihre Benutzer. Weitere Informationen finden Sie unter [Entfernen und Löschen von Bezeichnungen](/microsoft-365/compliance/create-sensitivity-labels#removing-and-deleting-labels) in der Microsoft 365-Dokumentation.
+>
+
+**Zum Erstellen neuer Vertraulichkeitsbezeichnungen oder Ändern vorhandener Bezeichnungen gehen Sie folgendermaßen vor**:
+
 1. Öffnen Sie das [Microsoft 365 Security and Compliance Center](https://protection.office.com/homepage). 
 
 1. Wählen Sie unter **Lösungen** die Option **Information Protection** und dann **Bezeichnung erstellen** aus. 
 
     :::image type="content" source="media/create-sensitivity-label/create-sensitivity-label-full-small.png" alt-text="Erstellen von Vertraulichkeitsbezeichnungen im Microsoft 365 Security and Compliance Center" lightbox="media/create-sensitivity-label/create-sensitivity-label-full.png":::
 
-1. Benennen Sie die Bezeichnung. Wählen Sie dann unter **Definieren des Bereichs für diese Bezeichnung** die Option **Dateien und E-Mails** und **Azure Purview-Ressourcen** aus.
+1. Benennen Sie die Bezeichnung. Unter **Definieren des Bereichs für diese Bezeichnung** gehen Sie folgendermaßen vor:
+
+    - Wählen Sie in allen Fällen **Azure Purview-Ressourcen** aus.
+    - Zum Bezeichnen von Dateien wählen Sie außerdem **Dateien und E-Mails** aus. Diese Option ist beim ausschließlichen Bezeichnen von Datenbankressourcen nicht erforderlich. 
     
     :::image type="content" source="media/create-sensitivity-label/create-label-scope-small.png" alt-text="Erstellen Ihrer Bezeichnung im Microsoft 365 Security and Compliance Center" lightbox="media/create-sensitivity-label/create-label-scope.png":::
 
@@ -149,10 +160,6 @@ Nachdem Sie die Bezeichnung auf Ressourcen in Azure Purview erweitert haben, kö
 
     Weitere Informationen finden Sie unter [Priorität der Bezeichnungen (Reihenfolge wesentlich)](/microsoft-365/compliance/sensitivity-labels#label-priority-order-matters) in der Microsoft 365-Dokumentation.
 
-> [!IMPORTANT]
-> Löschen Sie keine Bezeichnung, es sei denn, Sie kennen die Auswirkung für Ihre Benutzer. 
->
-> Weitere Informationen finden Sie unter [Entfernen und Löschen von Bezeichnungen](/microsoft-365/compliance/create-sensitivity-labels#removing-and-deleting-labels) in der Microsoft 365-Dokumentation.
 
 Fahren Sie fort, indem Sie [Ihre Daten scannen, um Bezeichnungen automatisch anzuwenden](#scan-your-data-to-apply-labels-automatically), und dann Folgendes ausführen:
 

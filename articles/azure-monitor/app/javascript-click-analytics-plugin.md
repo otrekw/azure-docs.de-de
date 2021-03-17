@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: 5ad3e1a5a4ff47fe3d5fee8b8bc79235838995b8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e48d669321ad8c58681e8a92e68f2089962bdc17
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593635"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102429849"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Plug-In für die automatische Erfassung von Klickanalysen für das Application Insights-JavaScript-SDK
 
@@ -315,4 +315,4 @@ appInsights.loadAppInsights();
 - Sehen Sie sich das [GitHub-Repository](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) und das [npm-Paket](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) für das Plug-In für die automatische Sammlung von Klickanalysen an.
 - Verwenden Sie die [Ereignisanalyse in Nutzungsoberflächen](usage-segmentation.md), um die wichtigsten Klicks zu analysieren und nach verfügbaren Dimensionen aufzuteilen.
 - Suchen Sie Klickdaten in [Log Analytics](../logs/log-analytics-tutorial.md#write-a-query) in der Tabelle „CustomEvents“ unter dem Inhaltsfeld innerhalb des Attributs „customDimensions“. Weitere Anleitungen finden Sie in der [Beispiel-App](https://go.microsoft.com/fwlink/?linkid=2152871).
-- Erstellen Sie eine [Arbeitsmappe](../visualize/workbooks-overview.md), um benutzerdefinierte Visualisierungen von Klickdaten zu erstellen.
+- Erstellen Sie eine [Arbeitsmappe](../visualize/workbooks-overview.md), oder [exportieren Sie Daten in Power BI](../logs/log-powerbi.md#integrating-queries), um benutzerdefinierte Visualisierungen von Klickdaten zu erstellen.

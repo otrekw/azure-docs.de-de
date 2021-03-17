@@ -5,24 +5,24 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 6037ef9c539c3c57f2ba5a19f371237159d1bf69
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 56ef6563982c315d34cfeb87070b9ebfa3d27a30
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030884"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500426"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Protokolldatenerfassungszeit in Azure Monitor
 Azure Monitor ist ein Hochleistungs-Datendienst, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Häufig werden Fragen nach dem Zeitbedarf gestellt, der nach dem Sammeln der Protokolldaten bis zu ihrer Verfügbarkeit zu veranschlagen ist. Dieser Artikel erläutert die verschiedenen Faktoren, die sich auf diese Wartezeit auswirken.
 
 ## <a name="typical-latency"></a>Typische Wartezeit
-Wartezeit bezeichnet hier die Zeitspanne zwischen der Erstellung der Daten auf dem überwachten System und dem Zeitpunkt, zu dem sie für die Analyse in Azure Monitor verfügbar werden. Die typische Wartezeit für die Erfassung von Protokolldaten liegt zwischen 2 und 5 Minuten. Die spezifische Wartezeit für bestimmte Daten hängt von einer Reihe von Faktoren ab, die nachfolgend erläutert werden.
+Wartezeit bezeichnet hier die Zeitspanne zwischen der Erstellung der Daten auf dem überwachten System und dem Zeitpunkt, zu dem sie für die Analyse in Azure Monitor verfügbar werden. Die typische Wartezeit für die Erfassung von Protokolldaten liegt zwischen 20 Sekunden und 3 Minuten. Die spezifische Wartezeit für bestimmte Daten hängt jedoch von einer Reihe von Faktoren ab, die nachfolgend erläutert werden.
 
 
 ## <a name="factors-affecting-latency"></a>Faktoren, die die Wartezeit beeinflussen
 Die gesamte Erfassungszeit für ein bestimmtes Dataset kann in die folgenden allgemeinen Bereiche aufgeteilt werden. 
 
-- Agentzeit: Die Zeit für die Erkennung eines Ereignisses, seine Erfassung und das Senden an den Azure Monitor-Erfassungspunkt als Protokolldatensatz. In den meisten Fällen wird dieser Prozess von einem Agent behandelt.
+- Agentzeit: Die Zeit für die Erkennung eines Ereignisses, seine Erfassung und das Senden an den Erfassungspunkt für Azure Monitor-Protokolle als Protokolldatensatz. In den meisten Fällen wird dieser Prozess von einem Agent behandelt. Zusätzliche Wartezeit kann durch das Netzwerk verursacht werden.
 - Pipelinezeit: Die Zeit, die die Erfassungspipeline für die Verarbeitung des Protokolldatensatzes benötigt. Diese umfasst das Analysieren der Ereigniseigenschaften und potenziell das Hinzufügen berechneter Informationen.
 - Indizierungszeit: Die Zeit für die Erfassung eines Protokolldatensatzes im Big Data-Speicher von Azure Monitor.
 
@@ -36,16 +36,17 @@ Agents und Managementlösungen verwenden verschiedene Strategien, um Daten eines
 - Die Active Directory-Replikationslösung führt ihre Bewertung alle fünf Tage aus, während die Active Directory-Bewertungslösung eine wöchentliche Bewertung Ihrer Active Directory-Infrastruktur ausführt. Der Agent erfasst diese Protokolle nur, wenn die Bewertung abgeschlossen ist.
 
 ### <a name="agent-upload-frequency"></a>Uploadhäufigkeit des Agents
-Um einen schlanken Log Analytics-Agent zu gewährleisten, speichert der Agent Protokolle zwischen und lädt sie in regelmäßigen Abständen nach Azure Monitor hoch. Die Uploadhäufigkeit schwankt zwischen 30 Sekunden und 2 Minuten, abhängig vom Datentyp. Die meisten Daten werden in unter 1 Minute hochgeladen. Die Netzwerkbedingungen können sich für diese Daten nachteilig auf die Wartezeit bis zum Erreichen des Azure Monitor-Erfassungspunkts auswirken.
+Um einen schlanken Log Analytics-Agent zu gewährleisten, speichert der Agent Protokolle zwischen und lädt sie in regelmäßigen Abständen nach Azure Monitor hoch. Die Uploadhäufigkeit schwankt zwischen 30 Sekunden und 2 Minuten, abhängig vom Datentyp. Die meisten Daten werden in unter 1 Minute hochgeladen. 
+
+### <a name="network"></a>Netzwerk
+Die Netzwerkbedingungen können sich für diese Daten nachteilig auf die Wartezeit bis zum Erreichen des Erfassungspunkts für Azure Monitor-Protokolle auswirken.
 
 ### <a name="azure-activity-logs-resource-logs-and-metrics"></a>Azure-Aktivitätsprotokolle, -Ressourcenprotokolle und -Metriken
-Für Azure-Daten ist zusätzliche Zeit erforderlich, bis sie am Log Analytics-Erfassungspunkt zur Verarbeitung verfügbar sind:
+Für Azure-Daten ist zusätzliche Zeit erforderlich, bis sie am Erfassungspunkt für Azure Monitor-Protokolle zur Verarbeitung verfügbar sind:
 
-- Das Senden von Daten aus Ressourcenprotokollen nimmt je nach Azure-Dienst 2 bis 15 Minuten in Anspruch. Mit der [folgenden Abfrage](#checking-ingestion-time) können Sie die Wartezeit in Ihrer Umgebung ermitteln.
-- Das Senden von Metriken der Azure-Plattform an den Log Analytics-Erfassungspunkt nimmt drei Minuten in Anspruch.
-- Das Senden von Daten des Aktivitätsprotokolls an den Log Analytics-Erfassungspunkt nimmt 10 bis 15 Minuten in Anspruch.
-
-Sobald die Daten am Erfassungspunkt verfügbar sind, vergehen weitere zwei bis fünf Minuten, bis die Daten für Abfragen zur Verfügung stehen.
+- Ressourcenprotokolle brauchen je nach Azure-Dienst in der Regel eine zusätzliche Zeit von 30 bis 90 Sekunden. Einige Azure-Dienste (insbesondere Azure SQL-Datenbank und Azure Virtual Network) melden ihre Protokolle derzeit in 5-Minuten-Intervallen. Es wird an einer weiteren Verbesserung gearbeitet. Mit der [folgenden Abfrage](#checking-ingestion-time) können Sie die Wartezeit in Ihrer Umgebung ermitteln.
+- Das Exportieren von Azure-Plattformmetriken an den Erfassungspunkt für Azure Monitor-Protokolle nimmt weitere drei Minuten in Anspruch.
+- Aktivitätsprotokolldaten können weitere 10 bis 15 Minuten in Anspruch nehmen, wenn die Legacy-Integration verwendet wird. Es wird empfohlen, Diagnoseeinstellungen auf Abonnementebene zum Erfassen von Aktivitätsprotokollen in Azure Monitor-Protokollen zu verwenden. Dies führt zu einer zusätzlichen Wartezeit von ungefähr 30 Sekunden.
 
 ### <a name="management-solutions-collection"></a>Sammlung von Verwaltungslösungen
 Einige Lösungen sammeln ihre Daten nicht mithilfe eines Agents, sondern verwenden eine Erfassungsmethode, die zusätzliche Wartezeit mit sich bringt. Einige Lösungen erfassen Daten in regelmäßigen Intervallen, ohne eine Sammlung nahezu in Echtzeit zu versuchen. Dies sind einige spezifische Beispiele:
@@ -56,6 +57,9 @@ Einige Lösungen sammeln ihre Daten nicht mithilfe eines Agents, sondern verwend
 Informationen zur Erfassungshäufigkeit der einzelnen Lösungen finden Sie in der Dokumentation der jeweiligen Lösung.
 
 ### <a name="pipeline-process-time"></a>Pipeline-Verarbeitungszeit
+
+Sobald die Daten am Erfassungspunkt verfügbar sind, vergehen weitere 30 bis 60 Sekunden, bis die Daten für Abfragen zur Verfügung stehen.
+
 Sobald Protokolldatensätze in der Azure Monitor-Pipeline erfasst werden (gemäß Angabe in der Eigenschaft [_TimeReceived](./log-standard-columns.md#_timereceived)), werden sie in einen temporären Speicher geschrieben, um Mandantenisolation und Schutz vor Datenverlust sicherzustellen. Dieser Vorgang wirkt sich normalerweise mit zusätzlichen 5–15 Sekunden aus. Einige Verwaltungslösungen implementieren aufwändigere Algorithmen zum Aggregieren von Daten und Ableiten von Erkenntnissen aus im Datenstrom eingehenden Daten. Beispielsweise aggregiert die Netzwerkleistungsüberwachung Daten über 3-Minuten-Intervalle, wodurch sich die Wartezeit um 3 Minuten verlängert. Ein anderer Prozess, durch den die Latenz erhöht wird, ist der Prozess, der benutzerdefinierte Protokolle verarbeitet. In manchen Fällen kann dieser Prozess eine Latenz von einigen Minuten zu Protokollen hinzufügen, die vom Agent aus Dateien gesammelt werden.
 
 ### <a name="new-custom-data-types-provisioning"></a>Bereitstellung von neuen, benutzerdefinierten Datentypen
@@ -141,4 +145,4 @@ Heartbeat
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Lesen Sie die [Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) für Azure Monitor.
+* Lesen Sie die [Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/en-us/support/legal/sla/monitor/v1_3/) für Azure Monitor.

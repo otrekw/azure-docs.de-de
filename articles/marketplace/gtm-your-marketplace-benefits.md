@@ -4,15 +4,15 @@ description: Go-To-Market-Dienste – Die Microsoft-Ressourcen, die Herausgeber 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 01/13/2021
+ms.date: 03/03/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 07535add495484abae06fc6ac8ac435d84bccc52
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 06f98a8e303d2ff692c0f84314e639c2a51cbcc1
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246246"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489478"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ihre Vorteile des kommerziellen Marketplace
 
@@ -38,7 +38,7 @@ Sie erhalten Unterstützung beim Verständnis der für Sie verfügbaren Ressourc
 
 Ausführliche Beschreibungen aller Programmvorteile finden Sie in der [Präsentation des Marketplace-Prämienprogramms](https://aka.ms/marketplacerewards).
 
-Der Anfang ist denkbar einfach:
+## <a name="getting-started-is-easy"></a>Der Anfang ist denkbar einfach:
 
 1. Veröffentlichen Sie ein Angebot bei Microsoft AppSource oder im Azure Marketplace.
 2. Wechseln Sie im Partner Center zu [Marketplace-Prämien](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace), und wählen Sie **Registrieren für Marketplace-Prämienprogramm**.
@@ -49,19 +49,19 @@ Der Anfang ist denkbar einfach:
     1. Geben Sie die Telefonnummer und die bevorzugte Sprache für diesen Marketingkontakt an. Nachdem Sie diese Informationen eingegeben haben, wählen Sie **Benutzer zuweisen** aus.
     1. Nachdem Sie den Marketingkontakt aktualisiert haben, wählen Sie für den Vorteil, den Sie verwenden möchten, die Option **Aktivieren** aus. Sobald Sie einen Vorteil aktiviert haben, wird Ihr Marketingkontakt innerhalb einer Woche von einem Mitglied des Prämienteams kontaktiert.
 
-### <a name="technical-benefits"></a>Technische Vorteile
+> [!NOTE]
+> Wenn Ihr Angebot seit mehr als vier Wochen aktiv ist und Sie keine Nachricht erhalten haben, überprüfen Sie in Ihrer Organisation, wer der Besitzer des fraglichen Angebots ist, indem Sie in Partner Center nachsehen. Dieser sollte die Kommunikation und die nächsten Schritte erhalten haben.
 
-1. Sie können Ihre technischen Vorteile nutzen, um während der Presales-, Entwurfs-, Bereitstellungs- und App-Entwicklungsphasen Ihrer Cloud- und Hybridlösungen technische Unterstützung anzufordern. Zum Anfordern von Unterstützung füllen Sie das Anforderungsformular aus, und wählen Sie dann **Anforderung übermitteln** aus.
-2. Informationen zur Nutzung der Vorteile von Azure Sponsorship erhalten Sie per E-Mail, sobald Sie diese Vorteile entsperren.
-
->[!NOTE]
->Wenn Ihr Angebot seit mehr als vier Wochen aktiv ist und Sie keine Nachricht erhalten haben, überprüfen Sie in Ihrer Organisation, wer der Besitzer des fraglichen Angebots ist, indem Sie in Partner Center nachsehen. Dieser sollte die Kommunikation und die nächsten Schritte erhalten haben.<br><br>Wenn Sie den Besitzer nicht ermitteln können oder wenn der Besitzer Ihr Unternehmen verlassen hat, können Sie unter [Hilfe und Support](https://aka.ms/marketplacepublishersupport) ein Supportticket erstellen.
+Wenn Sie den Besitzer nicht ermitteln können oder wenn der Besitzer Ihr Unternehmen verlassen hat, können Sie unter [Hilfe und Support](https://aka.ms/marketplacepublishersupport) ein Supportticket erstellen.
 
 Der Umfang der für Sie verfügbaren Aktivitäten erweitert sich mit der Anzahl Ihrer Angebote im kommerziellen Marketplace. Alle Angebote erhalten im Rahmen einer Self-Service-E-Mail mit Ressourcen und bewährten Methoden eine Basisebene von Optimierungsempfehlungen und Werbung.
 
 ## <a name="list-trial-and-consulting-benefits"></a>Vorteile für List, Trial und Consulting
 
-Wenn Sie einen Proof of Concept, eine Implementierung oder einen Workshop der Stufen Trial oder Consulting veröffentlichen, wird Ihnen für drei Monate ein Engagement-Manager zugewiesen, der Sie bei einem erfolgreichen Markteinführungsplan unterstützt. Sie können dieses Dreimonatsengagement bei jeder Veröffentlichung eines neuen Angebots wiederholen, damit jedes Ihrer neuen Angebote mit Erfolg eingeführt wird.
+Jedes Mal, wenn Sie ein Angebot bei Microsoft AppSource oder im Azure Marketplace veröffentlichen, haben Sie Zugriff auf eine neue Gruppe von Vorteilen. Sobald Ihr Angebot live geschaltet ist, wechseln Sie zum [Partner Center](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fpartner.microsoft.com%2Fdashboard%2Fmpn%2Fmembership%2Fbenefits%2Fcommercialmarketplace&data=04%7C01%7Cv-kilieb%40microsoft.com%7C3b13a8a6e41a47d6d96008d8c7cb3b50%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637479022971578374%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=MF1ZlPX9M5JiJZE2e%2B6kXEsRX1klB5hTcSqcHYDjZq8%3D&reserved=0), um die Ihnen zustehenden Marketing-, Verkaufs- und technischen Vorteile zu aktivieren.
+
+> [!NOTE]
+> Alle Vorteile für Trial und Consulting laufen nach drei Monaten ab.
 
 In der folgenden Tabelle sind die Berechtigungsvoraussetzungen für List-, Trial- und Consulting-Angebote zusammengefasst:
 

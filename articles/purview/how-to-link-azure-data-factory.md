@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/22/2020
-ms.openlocfilehash: 010cfc307d2b2c10c31168fce73673fb1fb611b8
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.date: 03/08/2021
+ms.openlocfilehash: 8812806e535e8e34ca07fdb13e6223bfa0c91d6b
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807647"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449610"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Verbinden von Azure Data Factory und Azure Purview
 
@@ -73,7 +73,7 @@ Führen Sie die folgenden Schritte aus, um vorhandene Data Factory-Konten mit Ih
 
 Wenn ein Purview-Benutzer eine Data Factory registriert, auf die er Zugriff hat, erfolgt im Back-End Folgendes:
 
-1. Die **Data Factory-MSI** wird zur RBAC-Rolle für Purview hinzugefügt: **Datenkurator für Purview**.
+1. Die **verwaltete Data Factory-Identität** wird zur RBAC-Rolle für Purview hinzugefügt: **Datenkurator für Purview**.
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="Screenshot, der die Azure Data Factory-MSI zeigt." lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
      
@@ -88,76 +88,92 @@ Um eine Data Factory-Verbindung zu entfernen, gehen Sie folgendermaßen vor:
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="Screenshot: Auswählen der Data Factorys, deren Verbindung entfernt werden soll" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 
-## <a name="configure-a-self-hosted-ir-to-collect-lineage-from-on-prem-sql"></a>Konfigurieren einer selbstgehosteten IR für die Erfassung der Herkunft aus einer lokalen SQL-Datenbank
+## <a name="configure-a-self-hosted-integration-runtime-to-collect-lineage"></a>Konfigurieren einer selbstgehosteten Integration Runtime zum Erfassen der Herkunft
 
-Die Erfassung der Herkunft für die Data Factory-Kopieraktivität ist für lokale SQL-Datenbanken verfügbar. Wenn Sie eine selbstgehostete Integration Runtime (IR) für die Datenverschiebung mit Azure Data Factory ausführen und die Herkunft in Azure Purview erfassen möchten, stellen Sie sicher, dass Sie mindestens Version 4.8.7418.1 verwenden. Weitere Informationen zur selbstgehosteten Integration Runtime finden Sie unter [Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime](../data-factory/create-self-hosted-integration-runtime.md).
+Die Erfassung der Herkunft für die Data Factory-Kopieraktivität ist für lokale Datenspeicher wie SQL-Datenbanken verfügbar. Wenn Sie eine selbstgehostete Integration Runtime (IR) für die Datenverschiebung mit Azure Data Factory ausführen und die Herkunft in Azure Purview erfassen möchten, stellen Sie sicher, dass Sie mindestens Version 5.0 verwenden. Weitere Informationen zur selbstgehosteten Integration Runtime finden Sie unter [Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime](../data-factory/create-self-hosted-integration-runtime.md).
 
 ## <a name="supported-azure-data-factory-activities"></a>Unterstützte Azure Data Factory-Aktivitäten
 
 Azure Purview erfasst die Runtimeherkunft aus den folgenden Azure Data Factory-Aktivitäten:
 
-- Kopieren von Daten
-- Datenfluss
-- Ausführen des SSIS-Pakets
+- [Daten kopieren](../data-factory/copy-activity-overview.md)
+- [Datenfluss](../data-factory/concepts-data-flow-overview.md)
+- [Ausführen des SSIS-Pakets](../data-factory/how-to-invoke-ssis-package-ssis-activity.md)
 
 > [!IMPORTANT]
 > Azure Purview verwirft die Herkunft, wenn die Quelle oder das Ziel ein nicht unterstütztes Datenspeichersystem verwendet.
 
 Die Integration zwischen Data Factory und Purview unterstützt nur eine Teilmenge der Datensysteme, die von Data Factory unterstützt werden. Dies wird in den folgenden Abschnitten beschrieben.
 
-### <a name="data-factory-copy-data-support"></a>Data Factory – Unterstützung für das Kopieren von Daten
+### <a name="data-factory-copy-activity-support"></a>Unterstützung der Data Factory-Kopieraktivität
 
-| Datenspeichersystem | Als Quelle unterstützt | 
+| Datenspeicher | Unterstützt | 
 | ------------------- | ------------------- | 
-| ADLS Gen1 | Ja | 
-| ADLS Gen2 | Ja | 
-| Azure Blob | Ja |
-| Azure Cosmos DB (SQL-API) | Ja | 
-| Azure Cosmos DB (Mongo-API) | Ja |
+| Azure Blob Storage | Ja |
 | Azure Cognitive Search | Ja | 
-| Azure-Daten-Explorer | Ja | 
+| Azure Cosmos DB (SQL-API) \* | Ja | 
+| Azure Cosmos DB-API für MongoDB \* | Ja |
+| Azure Data Explorer \* | Ja | 
+| Azure Data Lake Storage Gen1 | Ja | 
+| Azure Data Lake Storage Gen2 | Ja | 
 | Azure Database for MariaDB \* | Ja | 
-| Azure Database for MYSQL \* | Ja | 
+| Azure Database for MySQL \* | Ja | 
 | Azure Database for PostgreSQL \* | Ja |
 | Azure File Storage | Ja | 
-| Azure Table Storage | Ja |
 | Azure SQL-Datenbank \* | Ja | 
-| Azure SQL MI \* | Ja | 
-| Azure Synapse Analytics (ehemals SQL DW) \* | Ja | 
-| SQL Server lokal \* | Ja | 
+| Azure SQL Managed Instance \* | Ja | 
+| Azure Synapse Analytics \* | Ja | 
+| Azure Table Storage | Ja |
 | Amazon S3 | Ja | 
-| Teradata | Ja | 
-| Connector für SAP-Tabellen | Ja |
-| SAP ECC | Ja | 
-| Hive | Ja | 
+| Hive \* | Ja | 
+| SAP ECC \* | Ja |
+| SAP-Tabelle | Ja |
+| SQL Server \* | Ja | 
+| Teradata \* | Ja |
+
+*\* Azure Purview unterstützt derzeit keine Abfrage oder gespeicherte Prozedur für die Erfassung der Herkunft oder Überprüfung. Die Herkunft ist auf Tabellen- und Ansichtsquellen beschränkt.*
 
 > [!Note]
 > Das Herkunftsfeature verursacht einen gewissen Leistungsoverhead in der Data Factory-Kopieraktivität. Wenn Sie Data Factory-Verbindungen in Purview einrichten, werden Sie möglicherweise feststellen, dass bestimmte Kopieraufträge länger dauern. Die Auswirkungen sind in den meisten Fällen zu vernachlässigen. Wenn Ihre Kopieraufträge deutlich länger dauern als üblich, wenden Sie sich mit einem Zeitvergleich an den Support.
 
+#### <a name="known-limitations-on-copy-activity-lineage"></a>Bekannte Einschränkungen der Herkunftserfassung für die Kopieraktivität
+
+Wenn Sie die folgenden Funktionen der Kopieraktivität verwenden, wird die Erfassung der Herkunft derzeit noch nicht unterstützt:
+
+- Kopieren von Daten in Azure Data Lake Storage Gen1 mithilfe des Binärformats
+- Kopieren von Daten in Azure Synapse Analytics mithilfe von PolyBase oder der COPY-Anweisung
+- Komprimierungseinstellung für Binärdateien, durch Trennzeichen getrennte Textdateien, Excel-, JSON- und XML-Dateien
+- Quellpartitionsoptionen für Azure SQL-Datenbank, Azure SQL Managed Instance, Azure Synapse Analytics, SQL Server und SAP-Tabelle
+- Option zur Quellpartitionsermittlung für dateibasierte Speicher
+- Kopieren von Daten in eine dateibasierte Senke mit Einstellung für maximale Zeilenanzahl pro Datei
+- Hinzufügen zusätzlicher Spalten während des Kopiervorgangs
+
 ### <a name="data-factory-data-flow-support"></a>Data Factory – Unterstützung für Datenflüsse
 
-| Datenspeichersystem | Unterstützt |
+| Datenspeicher | Unterstützt |
 | ------------------- | ------------------- | 
-| ADLS Gen1 | Ja |
-| ADLS Gen2 | Ja |
-| Azure Blob | Ja |
+| Azure Blob Storage | Ja |
+| Azure Data Lake Storage Gen1 | Ja |
+| Azure Data Lake Storage Gen2 | Ja |
 | Azure SQL-Datenbank \* | Ja |
-| Azure Synapse Analytics (ehemals SQL DW) \* | Ja |
+| Azure Synapse Analytics \* | Ja |
+
+*\* Azure Purview unterstützt derzeit keine Abfrage oder gespeicherte Prozedur für die Erfassung der Herkunft oder Überprüfung. Die Herkunft ist auf Tabellen- und Ansichtsquellen beschränkt.*
 
 ### <a name="data-factory-execute-ssis-package-support"></a>Unterstützung für Data Factory-Aktivität zum Ausführen eines SSIS-Pakets
 
-| Datenspeichersystem | Unterstützt |
+| Datenspeicher | Unterstützt |
 | ------------------- | ------------------- |
-| Azure Blob | Ja |
-| ADLS Gen1 | Ja |
-| ADLS Gen2 | Ja |
-| Azure SQL-Datenbank \* | Ja |
-| Azure SQL MI \*| Ja |
-| Azure Synapse Analytics (ehemals SQL DW) \* | Ja |
-| SQL Server lokal \* | Ja |
+| Azure Blob Storage | Ja |
+| Azure Data Lake Storage Gen1 | Ja |
+| Azure Data Lake Storage Gen2 | Ja |
 | Azure File Storage | Ja |
+| Azure SQL-Datenbank \* | Ja |
+| Azure SQL Managed Instance \*| Ja |
+| Azure Synapse Analytics \* | Ja |
+| SQL Server \* | Ja |
 
-*\* In SQL-Szenarien (Azure und lokal) unterstützt Azure Purview keine gespeicherten Prozeduren oder Skripts für Herkunft oder Überprüfung. Die Herkunft ist auf Tabellen- und Ansichtsquellen beschränkt.*
+*\* Azure Purview unterstützt derzeit keine Abfrage oder gespeicherte Prozedur für die Erfassung der Herkunft oder Überprüfung. Die Herkunft ist auf Tabellen- und Ansichtsquellen beschränkt.*
 
 > [!Note]
 > Azure Data Lake Storage Gen2 ist jetzt allgemein verfügbar. Es wird empfohlen, ab sofort diese SKU zu verwenden. Weitere Informationen hierzu finden Sie auf der [Produktseite](https://azure.microsoft.com/en-us/services/storage/data-lake-storage/).
@@ -172,7 +188,7 @@ Es gibt noch weitere Möglichkeiten, Informationen in der Herkunftsansicht zu su
 
 - Zeigen Sie auf der Registerkarte **Herkunft** auf Formen, um in der QuickInfo eine Vorschau zusätzlicher Informationen zur Ressource anzuzeigen.
 - Wählen Sie den Knoten oder Edge aus, um den zugehörigen Ressourcentyp anzuzeigen oder Ressourcen zu wechseln.
-- Auf der linken Seite der Registerkarte **Herkunft** werden die Spalten eines Datasets angezeigt. Weitere Informationen zur Herkunft auf Spaltenebene finden Sie unter [Herkunft auf Spaltenebene](catalog-lineage-user-guide.md#column-level-lineage).
+- Auf der linken Seite der Registerkarte **Herkunft** werden die Spalten eines Datasets angezeigt. Weitere Informationen zur Herkunft auf Spaltenebene finden Sie unter [Spaltenherkunft für Dataset](catalog-lineage-user-guide.md#dataset-column-lineage).
 
 ### <a name="data-lineage-for-11-operations"></a>Datenherkunft für 1:1-Vorgänge
 

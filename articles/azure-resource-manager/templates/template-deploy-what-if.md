@@ -3,14 +3,14 @@ title: Was-wäre-wenn für die Vorlagenbereitstellung
 description: Legen Sie vor der Bereitstellung einer Azure Resource Manager-Vorlage fest, welche Änderungen an Ihren Ressourcen vorgenommen werden.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: 8122fa5c00a61017b5f358a112c94a5299539cee
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 3f35f00e5fcd26c7aa4bb685dc80f48eabb88b6d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591623"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547933"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM-Vorlagenbereitstellung: Was-wäre-wenn-Vorgang
 
@@ -391,8 +391,6 @@ Sie können den Was-wäre-wenn-Vorgang über die Azure-SDKs verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Informationen zum Verwenden des Was-wäre-wenn-Vorgangs in einer Pipeline finden Sie unter [Testen von ARM-Vorlagen mit Was-wäre-wenn-Vorgang in einer Pipeline](https://4bes.nl/2021/03/06/test-arm-templates-with-what-if/).
 - Wenn Sie falsche Ergebnisse von Was-wäre-wenn-Vorgängen bemerken, melden Sie die Probleme unter [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
 - Ein Microsoft Learn-Modul, das die Verwendung von „Was-wäre-wenn“ behandelt, finden Sie unter [Anzeigen einer Vorschau von Änderungen und Überprüfen von Azure-Ressourcen mithilfe von „Was-wäre-wenn“ und dem ARM-Vorlagen-Testtoolkit](/learn/modules/arm-template-test/).
-- Informationen zum Bereitstellen von Vorlagen mit Azure PowerShell finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).
-- Informationen zum Bereitstellen von Vorlagen mit Azure CLI finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure CLI](deploy-cli.md).
-- Informationen zum Bereitstellen von Vorlagen mit REST finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und der Resource Manager-REST-API](deploy-rest.md).
