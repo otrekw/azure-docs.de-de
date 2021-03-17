@@ -9,18 +9,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 03/08/2021
 ms.author: duau
-ms.openlocfilehash: 348f1d779f8ea67860726b8f8b7739921e7ad54a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9b916f9942b0459b41d98b952fad072ae48318b3
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003802"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505431"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Tutorial: Weiterleiten von Datenverkehr an bestimmte Endpunkte mit dem Traffic Manager basierend auf einem Benutzersubnetz
 
-In diesem Artikel wird das Konfigurieren der Routingmethode für Subnetzdatenverkehr beschrieben. Mit der Datenverkehrsrouting-Methode **Subnetz** können Sie IP-Adressbereiche bestimmten Endpunkten zuordnen. Wenn eine Anforderung vom Traffic Manager empfangen wird, wird die Quell-IP-Adresse der Anforderung überprüft und der damit verbundene Endpunkt zurückgegeben.
+In diesem Artikel wird das Konfigurieren der Routingmethode für Subnetzdatenverkehr beschrieben. Mit der Datenverkehrsrouting-Methode **Subnetz** können Sie IP-Adressbereiche bestimmten Endpunkten zuordnen. Wenn eine Anforderung von Traffic Manager empfangen wird, wird die Quell-IP-Adresse der Anforderung überprüft und der damit verbundene Endpunkt zurückgegeben.
 
 In diesem Tutorial wird abhängig von der IP-Adresse der Benutzerabfrage der Datenverkehr unter Verwendung von Subnetzrouting entweder an eine interne Website oder an eine Produktionswebsite geleitet.
 
@@ -38,7 +38,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um den Traffic Manager in Aktion sehen zu können, müssen Sie in diesem Tutorial Folgendes bereitstellen:
+Um Traffic Manager in Aktion sehen zu können, müssen Sie in diesem Tutorial Folgendes bereitstellen:
 
 - Zwei grundlegende Websites, die in verschiedenen Azure-Regionen ausgeführt werden: **USA, Osten** (interne Website) und **Europa, Westen** (Produktionswebsite)
 - zwei Test-VMs zum Testen des Traffic Managers – ein virtueller Computer in **USA, Osten** und der zweite virtuelle Computer in **Europa, Westen**.
@@ -73,7 +73,7 @@ In diesem Abschnitt erstellen Sie die beiden virtuellen Computer *myIISVMEastUS*
 
 3. Wählen Sie die Registerkarte **Verwaltung** oder **Weiter: Datenträger** und anschließend **Weiter: Netzwerk** > **Weiter: Verwaltung** aus. Legen Sie unter **Überwachung** die Option **Startdiagnose** auf **Aus** fest.
 4. Klicken Sie auf **Überprüfen + erstellen**.
-5. Überprüfen Sie die Einstellungen, und klicken Sie dann auf **Erstellen**.  
+5. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.  
 6. Führen Sie die Schritte zum Erstellen eines zweiten virtuellen Computers mit dem Namen *myIISVMWestEurope* aus. Geben Sie der **Ressourcengruppe** den Namen *myResourceGroupTM2*, und verwenden Sie als **Standort** die Option *Europa, Westen*. Legen Sie bei allen anderen Einstellungen die gleichen Optionen fest wie für *myIISVMEastUS*.
 7. Die Erstellung der VMs kann einige Minuten dauern. Fahren Sie mit den restlichen Schritten erst fort, nachdem beide VMs erstellt wurden.
 
@@ -81,11 +81,11 @@ In diesem Abschnitt erstellen Sie die beiden virtuellen Computer *myIISVMEastUS*
 
 In diesem Abschnitt Installieren Sie den IIS-Server auf den beiden virtuellen Computern (*myIISVMEastUS* & *myIISVMWestEurope*) und aktualisieren dann die Standardwebsiteseite. Die benutzerdefinierte Websiteseite zeigt den Namen des virtuellen Computers an, mit dem Sie eine Verbindung herstellen, wenn Sie die Website über einen Webbrowser besuchen.
 
-1. Wählen Sie im linken Menü **Alle Ressourcen** aus, und klicken Sie anschließend in der Ressourcenliste auf *myIISVMEastUS* in der Ressourcengruppe *myResourceGroupTM1*.
-2. Klicken Sie auf der Seite **Übersicht** auf **Verbinden**, und wählen Sie dann in **Herstellen einer Verbindung mit dem virtuellen Computer** die Option **RDP-Datei herunterladen** aus.
+1. Wählen Sie im linken Menü **Alle Ressourcen** und dann in der Ressourcenliste *myIISVMEastUS* in der Ressourcengruppe *myResourceGroupTM1* aus.
+2. Wählen Sie auf der Seite **Übersicht** die Option **Verbinden** und dann unter **Herstellen einer Verbindung mit dem virtuellen Computer** die Option **RDP-Datei herunterladen** aus.
 3. Öffnen Sie die heruntergeladene RDP-Datei. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus. Geben Sie den Benutzernamen und das Kennwort ein, die Sie beim Erstellen des virtuellen Computers festgelegt haben. Unter Umständen müssen Sie auf **Weitere Optionen** und anschließend auf **Anderes Konto verwenden** klicken, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben.
 4. Klicken Sie auf **OK**.
-5. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wenn eine Warnung angezeigt wird, klicken Sie auf **Ja** bzw. **Weiter**, um mit dem Herstellen der Verbindung fortzufahren.
+5. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Sollte eine Warnung angezeigt werden, wählen Sie **Ja** bzw. **Weiter** aus, um mit der Verbindungsherstellung fortzufahren.
 6. Navigieren Sie auf dem Serverdesktop zu **Windows-Verwaltungsprogramme**>**Server-Manager**.
 7. Starten Sie Windows PowerShell auf dem virtuellen Computer *myIISVMEastUS*, und verwenden Sie die folgenden Befehle, um den IIS-Server zu installieren und die HTM-Standarddatei zu aktualisieren.
 
@@ -119,7 +119,7 @@ In diesem Abschnitt Installieren Sie den IIS-Server auf den beiden virtuellen Co
 
 Basierend auf DNS-Namen der Dienstendpunkte leitet Traffic Manager den Benutzerdatenverkehr weiter. In diesem Abschnitt konfigurieren Sie die DNS-Namen für die IIS-Server *myIISVMEastUS* und *myIISVMWestEurope*.
 
-1. Klicken Sie im linken Menü auf **Alle Ressourcen**, und wählen Sie dann in der Ressourcenliste *myIISVMEastUS* in der Ressourcengruppe *myResourceGroupTM1* aus.
+1. Wählen Sie im linken Menü **Alle Ressourcen** und dann in der Ressourcenliste *myIISVMEastUS* in der Ressourcengruppe *myResourceGroupTM1* aus.
 2. Wählen Sie auf der Seite **Übersicht** unter **DNS-Name** die Option **Konfigurieren** aus.
 3. Fügen Sie auf der Seite **Konfiguration** als DNS-Namen einen eindeutigen Namen ein, und wählen Sie dann **Speichern**.
 4. Wiederholen Sie die Schritte 1 bis 3 für den virtuellen Computer mit dem Namen *myIISVMWestEurope*, der sich in der Ressourcengruppe *myResourceGroupTM2* befindet.
@@ -141,7 +141,7 @@ In diesem Abschnitt erstellen Sie je einen virtuellen Computer (*myVMEastUS* und
 
 3. Wählen Sie die Registerkarte **Verwaltung** oder **Weiter: Datenträger** und anschließend **Weiter: Netzwerk** > **Weiter: Verwaltung** aus. Legen Sie unter **Überwachung** die Option **Startdiagnose** auf **Aus** fest.
 4. Klicken Sie auf **Überprüfen + erstellen**.
-5. Überprüfen Sie die Einstellungen, und klicken Sie dann auf **Erstellen**.  
+5. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.  
 6. Führen Sie die Schritte zum Erstellen eines zweiten virtuellen Computers mit dem Namen *myVMWestEurope* aus. Geben Sie der **Ressourcengruppe** den Namen *myResourceGroupTM2*, und verwenden Sie als **Standort** die Option *Europa, Westen*. Legen Sie bei allen anderen Einstellungen die gleichen Optionen fest wie für *myVMEastUS*.
 7. Die Erstellung der VMs kann einige Minuten dauern. Fahren Sie mit den restlichen Schritten erst fort, nachdem beide VMs erstellt wurden.
 
@@ -149,8 +149,10 @@ In diesem Abschnitt erstellen Sie je einen virtuellen Computer (*myVMEastUS* und
 
 Erstellen Sie ein Traffic Manager-Profil, mit dem Sie basierend auf der Quell-IP-Adresse der Anforderung bestimmte Endpunkte zurückgeben können.
 
-1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Traffic Manager-Profil** > **Erstellen**.
-2. Geben Sie unter **Traffic Manager-Profil erstellen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Erstellen**:
+1. Wählen Sie links oben auf dem Bildschirm **Ressource erstellen** aus. Suchen Sie nach *Traffic Manager-Profil*, und wählen Sie **Erstellen** aus.
+2. Geben Sie unter **Traffic Manager-Profil erstellen** die folgenden Informationen ein, bzw. wählen Sie sie aus. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie **Erstellen** aus.
+
+    ![Erstellen eines Traffic Manager-Profils](./media/tutorial-traffic-manager-subnet-routing/create-traffic-manager-profile.png)
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
@@ -158,18 +160,14 @@ Erstellen Sie ein Traffic Manager-Profil, mit dem Sie basierend auf der Quell-IP
     | Routingmethode          | Wählen Sie als Routingmethode **Subnetz** aus.                                       |
     | Subscription            | Wählen Sie Ihr Abonnement aus.                          |
     | Resource group          | Wählen Sie **Vorhanden** aus, und geben Sie *myResourceGroupTM1* ein. |
-    | |                              |
-    |
-
-    ![Erstellen eines Traffic Manager-Profils](./media/tutorial-traffic-manager-subnet-routing/create-traffic-manager-profile.png)
 
 ## <a name="add-traffic-manager-endpoints"></a>Hinzufügen von Traffic Manager-Endpunkten
 
 Fügen Sie die beiden virtuellen Computer mit den IIS-Servern (*myIISVMEastUS* & *myIISVMWestEurope*) hinzu, um Benutzerdatenverkehr basierend auf dem Subnetz der Benutzerabfrage weiterzuleiten.
 
 1. Suchen Sie in der Suchleiste des Portals nach dem Namen des Traffic Manager-Profils, das Sie im vorhergehenden Abschnitt erstellt haben, und wählen Sie in den angezeigten Ergebnissen das Profil aus.
-2. Klicken Sie unter **Traffic Manager-Profil** im Abschnitt **Einstellungen** auf **Endpunkte** und dann auf **Hinzufügen**.
-3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **OK**:
+2. Wählen Sie im **Traffic Manager-Profil** im Abschnitt **Einstellungen** die Option **Endpunkte** und dann **Hinzufügen**.
+3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus. Übernehmen Sie für die verbleibenden Einstellungen die Standardwerte, und wählen Sie **OK** aus.
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
@@ -197,19 +195,19 @@ In diesem Tutorial verwenden Sie der Einfachheit halber den DNS-Namen des Traffi
 
 Sie können den DNS-Namen des Traffic Manager-Profils folgendermaßen bestimmen:
 
-1. Suchen Sie in der Suchleiste des Portals nach dem Namen des **Traffic Manager-Profils**, das Sie im vorhergehenden Abschnitt erstellt haben. Klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
-2. Klicken Sie auf **Overview**.
+1. Suchen Sie in der Suchleiste des Portals nach dem Namen des **Traffic Manager-Profils**, das Sie im vorhergehenden Abschnitt erstellt haben. Wählen Sie in den angezeigten Ergebnissen das Traffic Manager-Profil aus.
+2. Wählen Sie **Übersicht**.
 3. Unter **Traffic Manager-Profil** wird der DNS-Name Ihres neu erstellten Traffic Manager-Profils angezeigt. In Produktionsbereitstellungen konfigurieren Sie mithilfe eines DNS-CNAME-Eintrags einen benutzerdefinierten Domänennamen für den Verweis auf den Traffic Manager-Domänennamen.
 
 ### <a name="view-traffic-manager-in-action"></a>Anzeigen von Traffic Manager in Aktion
 
 In diesem Abschnitt sehen Sie den Traffic Manager in Aktion.
 
-1. Wählen Sie im linken Menü **Alle Ressourcen** aus, und klicken Sie anschließend in der Ressourcenliste auf *myVMEastUS* in der Ressourcengruppe *myResourceGroupTM1*.
-2. Klicken Sie auf der Seite **Übersicht** auf **Verbinden**, und wählen Sie dann in **Herstellen einer Verbindung mit dem virtuellen Computer** die Option **RDP-Datei herunterladen** aus.
+1. Wählen Sie im linken Menü **Alle Ressourcen** und anschließend in der Ressourcenliste *myVMEastUS* in der Ressourcengruppe *myResourceGroupTM1* aus.
+2. Wählen Sie auf der Seite **Übersicht** die Option **Verbinden** und dann unter **Herstellen einer Verbindung mit dem virtuellen Computer** die Option **RDP-Datei herunterladen** aus.
 3. Öffnen Sie die heruntergeladene RDP-Datei. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus. Geben Sie den Benutzernamen und das Kennwort ein, die Sie beim Erstellen des virtuellen Computers festgelegt haben. Unter Umständen müssen Sie auf **Weitere Optionen** und anschließend auf **Anderes Konto verwenden** klicken, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben.
 4. Klicken Sie auf **OK**.
-5. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wenn eine Warnung angezeigt wird, klicken Sie auf **Ja** bzw. **Weiter**, um mit dem Herstellen der Verbindung fortzufahren.
+5. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Sollte eine Warnung angezeigt werden, wählen Sie **Ja** bzw. **Weiter** aus, um mit der Verbindungsherstellung fortzufahren.
 6. Geben Sie in einem Webbrowser auf der VM *myVMEastUS* den DNS-Namen Ihres Traffic Manager-Profils an, um Ihre Website anzuzeigen. Da die IP-Adresse des virtuellen Computers *myVMEastUS* dem Endpunkt *myInternalWebsiteEndpoint* zugeordnet ist, startet der Webbrowser den Testwebsiteserver *myIISVMEastUS*.
 
 7. Stellen Sie dann mit den Schritten 1 bis 5 eine Verbindung mit dem virtuellen Computer *myVMWestEurope* her, der sich in **Europa, Westen** befindet, und browsen Sie von diesem virtuellen Computer aus zu dem Domänennamen des Traffic Manager-Profils. Da die IP-Adresse des virtuellen Computers *myVMWestEurope* dem Endpunkt *myProductionWebsiteEndpoint* zugeordnet ist, startet der Webbrowser den Testwebsiteserver *myIISVMWestEurope*.

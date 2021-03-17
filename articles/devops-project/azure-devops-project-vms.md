@@ -8,18 +8,18 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: ce11fe5b65cd49cc880713eb4e47b081b6f3b44f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3495d0bd2a446b6b3255887d9b4523eb5a70ac53
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855972"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557317"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-to-azure-virtual-machines-by-using-azure-devops-starter"></a>Tutorial: Bereitstellen einer ASP.NET-App auf virtuellen Azure-Computern mithilfe von Azure DevOps Starter
 
 Azure DevOps Starter bietet eine vereinfachte Umgebung, in der Sie Ihren vorhandenen Code und Ihr Git-Repository verwenden oder eine Beispielanwendung auswählen können, um eine Continuous Integration- und Continuous Delivery-Pipeline (CI/CD) für Azure zu erstellen. 
 
-DevOps Starter ermöglicht außerdem Folgendes:
+DevOps Starter ermöglicht außerdem:
 * Automatisches Erstellen von Azure-Ressourcen, etwa eines neuen virtuellen Computers
 * Erstellen und Konfigurieren einer Releasepipeline in Azure DevOps, die eine Buildpipeline für CI enthält
 * Einrichten einer Releasepipeline für CD 
@@ -46,9 +46,9 @@ Mit DevOps Starter wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie kö
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Geben Sie in das Suchfeld **DevOps Starter** ein, und klicken Sie auf die angezeigte Option. Klicken Sie auf **Hinzufügen**, um einen neuen zu erstellen.
+1. Geben Sie in das Suchfeld **DevOps Starter** ein, und wählen sie die Option dann aus. Klicken Sie auf **Hinzufügen**, um einen neuen zu erstellen.
 
-    ![DevOps Starter-Dashboard](_img/azure-devops-starter-aks/search-devops-starter.png)
+    ![Das DevOps Starter-Dashboard](_img/azure-devops-starter-aks/search-devops-starter.png)
 
 1. Wählen Sie **.NET** und anschließend **Weiter** aus.
 
@@ -78,7 +78,7 @@ Mit DevOps Starter werden automatisch ein CI-Build und ein Releasetrigger konfig
  
 Mit DevOps Starter wird automatisch eine CI/CD-Pipeline in Azure Pipelines konfiguriert. Sie können die Pipeline untersuchen und anpassen. Gehen Sie wie folgt vor, um sich mit der Buildpipeline vertraut zu machen:
 
-1. Klicken Sie oben auf dem DevOps Starter-Dashboard auf **Buildpipelines**. Auf einer Browserregisterkarte wird die Buildpipeline für Ihr neues Projekt angezeigt.
+1. Wählen Sie oben im DevOps Starter-Dashboard die Option **Buildpipelines** aus. Auf einer Browserregisterkarte wird die Buildpipeline für Ihr neues Projekt angezeigt.
 
 1. Zeigen Sie auf das Feld **Status**, und wählen Sie dann die Auslassungspunkte (...) aus. In einem Menü werden verschiedene Optionen angezeigt, etwa zum Einreihen eines neuen Builds in die Warteschlange, zum Anhalten eines Builds und zum Bearbeiten der Buildpipeline.
 
@@ -198,4 +198,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Weitere Informationen zur CI/CD-Pipeline finden Sie in folgendem Artikel:
 
 > [!div class="nextstepaction"]
-> [Define your multi-stage continuous deployment (CD) pipeline](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) (Festlegen Ihrer mehrstufigen CD-Pipeline (Continuous Deployment))
+> [Define your multi-stage continuous deployment (CD) pipeline](/azure/devops/pipelines/release/define-multistage-release-process) (Festlegen Ihrer mehrstufigen CD-Pipeline (Continuous Deployment))

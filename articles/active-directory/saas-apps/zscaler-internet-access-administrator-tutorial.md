@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 02/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 8af8d92ca66cfbd3d6223bc9a73125c457164d82
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 70afa0a02f4e303105aec1884b966796854c6f49
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735544"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449322"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>Tutorial: Azure Active Directory-Integration mit Zscaler Internet Access Administrator
 
@@ -28,10 +28,10 @@ In diesem Tutorial erfahren Sie, wie Sie Zscaler Internet Access Administrator i
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Zscaler Internet Access Administrator konfigurieren zu können, benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* Zscaler Internet Access Administrator-Abonnement
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* Ein Abonnement für Zscaler Internet Access Administrator, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 > [!NOTE]
 > Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
@@ -42,7 +42,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Zscaler Internet Access Administrator unterstützt **IDP**-initiiertes SSO.
 
-## <a name="adding-zscaler-internet-access-administrator-from-the-gallery"></a>Hinzufügen von Zscaler Internet Access Administrator aus dem Katalog
+## <a name="add-zscaler-internet-access-administrator-from-the-gallery"></a>Hinzufügen von Zscaler Internet Access Administrator aus dem Katalog
 
 Zum Konfigurieren der Integration von Zscaler Internet Access Administrator in Azure AD müssen Sie Zscaler Internet Access Administrator aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -64,7 +64,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 2. **[Konfigurieren des einmaligen Anmeldens für Zscaler Internet Access Administrator](#configure-zscaler-internet-access-administrator-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
     1. **[Erstellen eines Testbenutzers für Zscaler Internet Access Administrator](#create-zscaler-internet-access-administrator-test-user)** , um eine Entsprechung von Britta Simon in Zscaler Internet Access Administrator zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-6. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
+3. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
@@ -78,7 +78,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL gemäß Ihren Anforderungen ein:
+    a. Geben Sie im Textfeld **Bezeichner** eine der folgenden URLs gemäß Ihren Anforderungen ein:
 
     | Bezeichner |
     |------------|
@@ -89,7 +89,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     | `https://admin.zscloud.net` |
     | `https://admin.zscalerbeta.net` |
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL gemäß Ihren Anforderungen ein:
+    b. Geben Sie im Textfeld **Antwort-URL** eine der folgenden URLs gemäß Ihren Anforderungen ein:
 
     | Antwort-URL |
     |-----------|
@@ -102,7 +102,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 5. Die Zscaler Internet Access Administrator-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute und Ansprüche** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute und Ansprüche** zu öffnen.
 
-    ![Attributlink](./media/zscaler-internet-access-administrator-tutorial/tutorial_zscaler-internet_attribute.png)
+    ![Attributlink](./media/zscaler-internet-access-administrator-tutorial/attributes.png)
 
 6. Konfigurieren Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** das SAML-Tokenattribut wie in der obigen Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
 
@@ -153,14 +153,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn Sie die Rollen wie oben erläutert eingerichtet haben, können Sie sie in der Dropdownliste **Rolle auswählen** auswählen.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-
 ## <a name="configure-zscaler-internet-access-administrator-sso"></a>Konfigurieren des einmaligen Anmeldens für Zscaler Internet Access Administrator
 
 1. Melden Sie sich in einem anderen Webbrowserfenster an Ihrer Zscaler Internet Access Administrator-Benutzeroberfläche an.
 
 2. Navigieren Sie zu **Administration > Administrator Management** (Administration > Administratorverwaltung), und führen Sie die folgenden Schritte aus. Klicken Sie anschließend auf „Speichern“:
 
-    ![Screenshot der Administratorverwaltung mit Optionen zum Aktivieren der SAML-Authentifizierung, Hochladen des SSL-Zertifikats und Angeben eines Ausstellers](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "Verwaltung")
+    ![Screenshot der Administratorverwaltung mit Optionen zum Aktivieren der SAML-Authentifizierung, Hochladen des SSL-Zertifikats und Angeben eines Ausstellers](./media/zscaler-internet-access-administrator-tutorial/management.png "Verwaltung")
 
     a. Aktivieren Sie die Option **SAML-Authentifizierung aktivieren**.
 
@@ -170,7 +169,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 3. Führen Sie auf der Administratorbenutzeroberfläche die folgenden Schritte aus:
 
-    ![Screenshot der Administratorbenutzeroberfläche zum Ausführen der Schritte](./media/zscaler-internet-access-administrator-tutorial/ic800207.png)
+    ![Screenshot der Administratorbenutzeroberfläche zum Ausführen der Schritte](./media/zscaler-internet-access-administrator-tutorial/activation.png)
 
     a. Bewegen Sie den Mauszeiger unten links auf das Menü **Aktivierung**.
 
@@ -183,7 +182,7 @@ Die Schritte zum Erstellen eines Administratorkontos finden Sie in der Zscaler-D
 
 https://help.zscaler.com/zia/adding-admins
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/28/2021
+ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: c5bdab2038f2f41c7240addaff99bd831d29f489
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d4c9d2e290f6a8f07878a019b755c8add2ab69ea
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101643812"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488443"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>Tutorial: Integrieren von Dropbox Business in Azure Active Directory
 
@@ -38,7 +38,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-* In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung. Dropbox Business unterstützt **SP**-initiiertes SSO.
+* In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung. Dropbox Business unterstützt **SP**-initiiertes einmaliges Anmelden.
 
 * Dropbox Business unterstützt die [automatisierte Benutzerbereitstellung und Bereitstellungsaufhebung](dropboxforbusiness-tutorial.md).
 
@@ -82,11 +82,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 1. Geben Sie auf der Seite **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.dropbox.com/sso/<id>`.
-
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** den folgenden Wert ein: `Dropbox`.
-
+    
+     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** den folgenden Wert ein: `Dropbox`.
+    
     > [!NOTE]
-    > Der hier angegebene Wert für die Anmelde-URL ist kein echter Wert. Er muss mit der tatsächlichen Anmelde-URL aktualisiert werden. Dies wird weiter unten in diesem Tutorial beschrieben.
+    > Die **Dropbox-ID für einmaliges Anmelden** finden Sie auf der Dropbox-Website unter „Dropbox“ > „Admin console“ (Administratorkonsole) > „Settings“ (Einstellungen) > „Single sign-on“ (Einmaliges Anmelden) > „SSO sign-in URL“ (Anmelde-URL für SSO).
 
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -137,23 +137,23 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 4. Klicken Sie auf das **Benutzersymbol**, und wählen Sie die Registerkarte **Einstellungen** aus.
 
-    ![Screenshot, auf dem die Aktion „Benutzersymbol“ und „Einstellungen“ ausgewählt sind](./media/dropboxforbusiness-tutorial/configure1.png "Einmaliges Anmelden konfigurieren")
+    ![Screenshot, auf dem die Aktion „Benutzersymbol“ und „Einstellungen“ ausgewählt sind](./media/dropboxforbusiness-tutorial/configure-1.png "Einmaliges Anmelden konfigurieren")
 
 5. Klicken Sie im Navigationsbereich auf der linken Seite auf **Verwaltungskonsole**.
 
-    ![Screenshot, auf dem „Verwaltungskonsole“ ausgewählt ist](./media/dropboxforbusiness-tutorial/configure2.png "Einmaliges Anmelden konfigurieren")
+    ![Screenshot, auf dem „Verwaltungskonsole“ ausgewählt ist](./media/dropboxforbusiness-tutorial/configure-2.png "Einmaliges Anmelden konfigurieren")
 
 6. Klicken Sie in der **Verwaltungskonsole** im linken Navigationsbereich auf **Einstellungen**.
 
-    ![Screenshot, auf dem „Einstellungen“ ausgewählt ist](./media/dropboxforbusiness-tutorial/configure3.png "Einmaliges Anmelden konfigurieren")
+    ![Screenshot, auf dem „Einstellungen“ ausgewählt ist](./media/dropboxforbusiness-tutorial/configure-3.png "Einmaliges Anmelden konfigurieren")
 
 7. Wählen Sie im Abschnitt **Authentifizierung** die Option **Einmaliges Anmelden** aus.
 
-    ![Screenshot des Abschnitts „Authentifizierung“, in dem „Einmaliges Anmelden“ ausgewählt ist](./media/dropboxforbusiness-tutorial/configure4.png "Einmaliges Anmelden konfigurieren")
+    ![Screenshot des Abschnitts „Authentifizierung“, in dem „Einmaliges Anmelden“ ausgewählt ist](./media/dropboxforbusiness-tutorial/configure-4.png "Einmaliges Anmelden konfigurieren")
 
 8. Führen Sie im Abschnitt **Einmaliges Anmelden** die folgenden Schritte aus:  
 
-    ![Screenshot mit den Konfigurationseinstellungen für einmaliges Anmelden](./media/dropboxforbusiness-tutorial/configure5.png "Einmaliges Anmelden konfigurieren")
+    ![Screenshot mit den Konfigurationseinstellungen für einmaliges Anmelden](./media/dropboxforbusiness-tutorial/configure-5.png "Einmaliges Anmelden konfigurieren")
 
     a. Wählen Sie in der Dropdownliste für **Einmaliges Anmelden** die Option **Erforderlich** aus.
 
@@ -174,7 +174,7 @@ In diesem Abschnitt wird in Dropbox Business ein Benutzer namens B.Simon erstell
 >[!Note]
 >Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [Kundensupportteam von Dropbox Business](https://www.dropbox.com/business/contact).
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
@@ -186,4 +186,4 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Dropbox Business können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Dropbox Business können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

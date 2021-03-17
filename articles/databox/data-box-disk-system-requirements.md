@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 02/22/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 6ac1fb1a69433be240e4250ea37835037f0b2ffa
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 750ed8f65db04199ea284e69693bced65a1dc8d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873936"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703132"
 ---
 ::: zone target="docs"
 
@@ -79,6 +79,9 @@ Im Folgenden finden Sie eine Liste der unterstützten Speichertypen für den Dat
 | Klassisch | Standard |
 | Universell  |Standard: sowohl V1 als auch V2 werden unterstützt. Es werden sowohl „heiße“ als auch „kalte“ Ebenen unterstützt. |
 | Blob-Speicherkonto | |
+
+> [!IMPORTANT]
+> Die Unterstützung für das NFS 3.0-Protokoll (Network File System, Netzwerkdateisystem) in Azure Blog Storage wird nicht mit Data Box Disk unterstützt.
 
 ## <a name="supported-storage-types-for-upload"></a>Unterstützte Speichertypen für den Upload
 

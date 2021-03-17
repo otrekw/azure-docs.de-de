@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 683da659dcfa07c0a105382f4cc93d1f4dfb21b5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 54b650d598cf19e061465b3a4fa18d50808e7f29
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219533"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426160"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Analysieren von Daten mit dedizierten SQL-Pools
 
@@ -77,11 +77,12 @@ Azure Synapse Analytics ermöglicht das Analysieren von Daten mit einem dedizier
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Untersuchen der NYC Taxi-Daten im dedizierten SQL-Pool
 
 1. Navigieren Sie in Synapse Studio zum Hub **Daten**.
+1. Eine Datenbank mit dem Namen **SQLPOOL1** sollte angezeigt werden. Wird sie nicht angezeigt, klicken Sie auf **Aktualisieren**.
 1. Navigieren Sie zu **SQLPOOL1** > **Tabellen**. 
-1. Klicken Sie mit der rechten Maustaste auf die Tabelle **dbo.Trip**, und wählen Sie **Neues SQL-Skript** > **OBERSTE 100 Zeilen auswählen** aus.
-1. Warten Sie, während ein neues SQL-Skript erstellt und ausgeführt wird.
-1. Beachten Sie, dass am oberen Rand des SQL-Skripts **Verbinden mit** automatisch auf den SQL-Pool mit dem Namen **SQLPOOL1** festgelegt ist.
-1. Ersetzen Sie den Text des SQL-Skripts durch diesen Code, und führen Sie ihn aus.
+3. Klicken Sie mit der rechten Maustaste auf die Tabelle **dbo.Trip**, und wählen Sie **Neues SQL-Skript** > **OBERSTE 100 Zeilen auswählen** aus.
+4. Warten Sie, während ein neues SQL-Skript erstellt und ausgeführt wird.
+5. Beachten Sie, dass am oberen Rand des SQL-Skripts **Verbinden mit** automatisch auf den SQL-Pool mit dem Namen **SQLPOOL1** festgelegt ist.
+6. Ersetzen Sie den Text des SQL-Skripts durch diesen Code, und führen Sie ihn aus.
 
     ```sql
     SELECT PassengerCount,

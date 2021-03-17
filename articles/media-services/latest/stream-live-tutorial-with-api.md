@@ -28,18 +28,18 @@ Das Tutorial veranschaulicht folgende Vorgehensweisen:
 Für dieses Tutorial benötigen Sie Folgendes:
 
 - Installieren Sie Visual Studio Code oder Visual Studio.
-- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md)<br/>Merken Sie sich die Werte, die Sie für die Namen von Ressourcengruppe und Media Services-Konto verwendet haben.
-- Führen Sie die Schritte unter [Zugreifen auf die Azure Media Services-API mit der Azure CLI](./access-api-howto.md) aus, und speichern Sie die Anmeldeinformationen. Sie benötigen sie für den Zugriff auf die API.
+- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md)<br/>Wichtig: Kopieren Sie die API-Zugriffsdetails im JSON-Format, oder speichern Sie die Werte, die zum Herstellen einer Verbindung mit dem Media Services-Konto benötigt werden, im ENV-Dateiformat, das in diesem Beispiel verwendet wird.
+- Führen Sie die Schritte unter [Zugreifen auf die Azure Media Services-API mit der Azure CLI](./access-api-howto.md) aus, und speichern Sie die Anmeldeinformationen. Sie müssen für den Zugriff auf die API in diesem Beispiel verwendet oder im ENV-Dateiformat eingegeben werden. 
 - Eine Kamera oder ein Gerät (beispielsweise ein Laptop) zum Übertragen eines Ereignisses.
-- Ein lokaler Liveencoder, der Signale der Kamera in Datenströme konvertiert, die an den Media Services-Livestreamingdienst gesendet werden. Weitere Informationen finden Sie unter [Empfohlene Livestreaming-Encoder](recommended-on-premises-live-encoders.md). Der Datenstrom muss das Format **RTMP** oder **Smooth Streaming** haben.  
-- Für dieses Beispiel empfiehlt es sich, mit einem Softwareencoder wie der OSB Studio-Livestreamingsoftware zu beginnen. 
+- Ein lokaler Softwareencoder, der Ihren Kameradatenstrom codiert und unter Verwendung des RTM-Protokolls an den Media Services-Livestreamingdienst sendet (siehe [Überprüfte lokale Livestreamingencoder](recommended-on-premises-live-encoders.md)). Der Datenstrom muss das Format **RTMP** oder **Smooth Streaming** haben.  
+- Für dieses Beispiel empfiehlt es sich, mit einem Softwareencoder wie [Open Broadcast Software OBS Studio](https://obsproject.com/download) (kostenlos) zu beginnen, um den Einstieg zu erleichtern. 
 
 > [!TIP]
 > Lesen Sie [Live streaming with Azure Media Services v3](live-streaming-overview.md) (Livestreaming mit Azure Media Services v3), bevor Sie mit diesem Tutorial fortfahren. 
 
 ## <a name="download-and-configure-the-sample"></a>Herunterladen und Konfigurieren des Beispiels
 
-Klonen Sie ein GitHub-Repository auf Ihren Computer, das das .NET-Streamingbeispiel enthält, indem Sie den folgenden Befehl verwenden:  
+Klonen Sie auf Ihrem Computer das folgende GitHub-Repository mit dem .NET-Streamingbeispiel. Verwenden Sie dazu den folgenden Befehl:  
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet.git
@@ -48,6 +48,9 @@ Klonen Sie ein GitHub-Repository auf Ihren Computer, das das .NET-Streamingbeisp
 Das Livestreamingbeispiel befindet sich im Ordner [Live](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Live).
 
 Öffnen Sie in Ihrem heruntergeladenen Projekt die Datei [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/appsettings.json). Ersetzen Sie die Werte durch die Anmeldeinformationen, die Sie per [API-Zugriff](./access-api-howto.md) abgerufen haben.
+
+Beachten Sie, dass Sie auch das ENV-Dateiformat im Stammverzeichnis des Projekts verwenden können, um Ihre Umgebungsvariablen nur einmal für alle Projekte im .NET-Beispielrepository festzulegen. Kopieren Sie einfach die ENV-Beispieldatei, und geben Sie die über die Media Services-API-Zugriffsseite im Azure-Portal oder über die Azure CLI ermittelten Informationen an.  Benennen Sie die Datei „sample.env“ in „.env“ um, um sie in allen Projekten zu verwenden.
+Die GITIGNORE-Datei ist bereits so konfiguriert, dass die Veröffentlichung der Inhalte dieser Datei in Ihrem geforkten Repository vermieden wird. 
 
 > [!IMPORTANT]
 > In diesem Beispiel wird für jede Ressourcen ein eindeutiges Suffix verwendet. Wenn Sie das Debuggen abbrechen oder die App beenden, ohne das Beispiel vollständig zu durchlaufen, werden in Ihrem Konto mehrere Liveereignisse generiert. <br/>Die aktiven Liveereignisse müssen unbedingt beendet werden. Andernfalls **fallen für die Ereignisse Kosten an**!
@@ -58,27 +61,24 @@ In diesem Abschnitt werden die Funktionen untersucht, die in der Datei [Program.
 
 Das Beispiel erstellt für jede Ressource ein eindeutiges Suffix, damit keine Namenskonflikte auftreten, wenn Sie das Beispiel ohne Bereinigung der Ressourcen mehrmals ausführen.
 
-> [!IMPORTANT]
-> In diesem Beispiel wird für jede Ressourcen ein eindeutiges Suffix verwendet. Wenn Sie das Debuggen abbrechen oder die App beenden, ohne das Beispiel vollständig zu durchlaufen, werden in Ihrem Konto mehrere Liveereignisse generiert. <br/>
-> Die aktiven Liveereignisse müssen unbedingt beendet werden. Andernfalls **fallen für die Ereignisse Kosten an**!
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>Starten der Verwendung von Media Services-APIs mit dem .NET SDK
 
-Um mit der Verwendung von Media Services-APIs in .NET zu beginnen, müssen Sie ein **AzureMediaServicesClient**-Objekt erstellen. Zum Erstellen des Objekts müssen Sie Anmeldeinformationen bereitstellen, die für den Client zum Herstellen einer Verbindung mit Azure mithilfe von Azure AD erforderlich sind. In dem Code, den Sie zu Beginn des Artikels geklont haben, erstellt die Funktion **GetCredentialsAsync** das ServiceClientCredentials-Objekt basierend auf den in der lokalen Konfigurationsdatei angegebenen Anmeldeinformationen. 
+Um mit der Verwendung von Media Services-APIs in .NET zu beginnen, müssen Sie ein **AzureMediaServicesClient**-Objekt erstellen. Zum Erstellen des Objekts müssen Sie Anmeldeinformationen bereitstellen, die für den Client zum Herstellen einer Verbindung mit Azure mithilfe von Azure AD erforderlich sind. In dem Code, den Sie am Anfang des Artikels geklont haben, wird durch die Funktion **GetCredentialsAsync** das Objekt „ServiceClientCredentials“ auf der Grundlage der Anmeldeinformationen erstellt, die in der lokalen Konfigurationsdatei („appsettings.json“) oder über die ENV-Umgebungsvariablendatei im Stammverzeichnis des Repositorys angegeben wurden.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateMediaServicesClient)]
 
 ### <a name="create-a-live-event"></a>Erstellen eines Liveereignisses
 
-In diesem Abschnitt erfahren Sie, wie Sie ein Liveereignis vom Typ **Pass-Through** erstellen. („LiveEventEncodingType“ ist in diesem Fall auf „None“ festgelegt.) Weitere Informationen zu den verfügbaren Typen von Liveereignissen finden Sie unter [Liveereignisse und Liveausgaben](live-events-outputs-concept.md#live-event-types). 
+In diesem Abschnitt erfahren Sie, wie Sie ein Liveereignis vom Typ **Pass-Through** erstellen. („LiveEventEncodingType“ ist in diesem Fall auf „None“ festgelegt.) Weitere Informationen zu den anderen verfügbaren Arten von Liveereignissen finden Sie unter [Liveereignistypen](live-events-outputs-concept.md#live-event-types). Neben Passthrough können Sie ein Liveereignis mit Livetranscodierung für eine Cloudcodierung mit adaptiver Bitrate (720p oder 1080p) verwenden. 
  
 Beim Erstellen des Liveereignisses können Sie folgende Punkte angeben:
 
-* Den Media Services-Standort.
-* Streamingprotokoll für das Liveereignis (momentan unterstützte Protokolle: RTMP und Smooth Streaming).<br/>Die Protokolloption kann nicht geändert werden, während das Liveereignis oder die zugehörigen Liveausgaben aktiv sind. Sollten Sie verschiedene Protokolle benötigen, erstellen Sie für jedes Streamingprotokoll ein separates Liveereignis.  
+* Erfassungsprotokoll für das Liveereignis (aktuell unterstützte Protokolle: RTMP(S) und Smooth Streaming).<br/>Die Protokolloption kann nicht geändert werden, während das Liveereignis oder die zugehörigen Liveausgaben aktiv sind. Sollten Sie verschiedene Protokolle benötigen, erstellen Sie für jedes Streamingprotokoll ein separates Liveereignis.  
 * IP-Einschränkungen für Erfassung und Vorschau. Sie können die IP-Adressen definieren, die ein Video für dieses Liveereignis erfassen dürfen. Zulässige IP-Adressen können als einzelne IP-Adresse (Beispiel: 10.0.0.1), als IP-Adressbereiche mit einer IP-Adresse und einer CIDR-Subnetzmaske (Beispiel: 10.0.0.1/22) oder als IP-Adressbereiche mit einer IP-Adresse und einer Subnetzmaske in Punkt-Dezimalschreibweise (Beispiel: 10.0.0.1(255.255.252.0)) angegeben werden.<br/>Wenn keine IP-Adressen angegeben sind und es keine Regeldefinition gibt, sind keine IP-Adressen zulässig. Um alle IP-Adressen zuzulassen, erstellen Sie eine Regel und legen 0.0.0.0/0 fest.<br/>Die IP-Adressen müssen in einem der folgenden Formate vorliegen: IPv4-Adresse mit vier Ziffern oder CIDR-Adressbereich
 * Bei der Ereigniserstellung können Sie angeben, dass das Ereignis automatisch gestartet werden soll. <br/>Wenn für den automatischen Start „true“ festgelegt ist, wird das Liveereignis nach der Erstellung gestartet. Dies bedeutet, dass die Abrechnung beginnt, sobald das Liveereignis startet. Sie müssen für die Liveereignisressource explizit „Beenden“ auswählen, damit keine Gebühren mehr anfallen. Weitere Informationen finden Sie im Abschnitt [LiveEvent-Zustandswerte und Abrechnung](live-event-states-billing.md).
-* Damit eine Erfassungs-URL vorhersagbar ist, legen Sie den Vanitymodus fest. Ausführliche Informationen finden Sie unter [Erfassungs-URLs für Liveereignisse](live-events-outputs-concept.md#live-event-ingest-urls).
+Es stehen auch Standbymodi zur Verfügung, um das Liveereignis in einem preisgünstigeren „zugeordneten“ Zustand zu starten, der einen schnelleren Wechsel zu einem Ausführungszustand ermöglicht. Dies ist etwa im Falle von Pools der heißen Ebene hilfreich, die schnell Kanäle für Streamer bereitstellen müssen.
+* Legen Sie die Eigenschaft „useStaticHostname“ auf „true“ fest, um eine Erfassungs-URL zu erhalten, die vorhersagbar und in einem hardwarebasierten Liveencoder einfacher zu verwalten ist. Ausführliche Informationen finden Sie unter [Erfassungs-URLs für Liveereignisse](live-events-outputs-concept.md#live-event-ingest-urls).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateLiveEvent)]
 
@@ -101,15 +101,27 @@ Verwenden Sie den Vorschauendpunkt (previewEndpoint), um eine Vorschau anzuzeige
 
 Wenn der Stream an das Liveereignis übertragen wird, können Sie das Streamingereignis starten, indem Sie ein Medienobjekt, eine Liveausgabe und einen Streaminglocator erstellen. Dadurch wird der Datenstrom archiviert und über den Streamingendpunkt für die Zuschauer verfügbar gemacht.
 
+Das Medienobjekt können Sie sich als Videokassette vorstellen, wie sie früher einmal in einen Videorekorder eingelegt wurde. Die Liveausgabe ist der Videorekorder selbst. Das Liveereignis ist das vom Videorekorder ausgegebene Videosignal.
+
+Als Erstes erstellen Sie das Signal, indem Sie das Liveereignis erstellen.  Das Signal wird erst übertragen, wenn Sie dieses Liveereignis starten und Ihren Encoder mit der Eingabe verbinden.
+
+Die Videokassette kann zu einem beliebigen Zeitpunkt erstellt werden. Sie ist lediglich ein leeres Medienobjekt, das an das Objekt für die Liveausgabe (in dieser Analogie: der Videorekorder) übergeben wird.
+
+Der Videorekorder kann zu einem beliebigen Zeitpunkt erstellt werden. Sie können also eine Liveausgabe vor oder nach dem Starten der Signalübertragung erstellen. Wenn es schnell gehen muss, empfiehlt es sich manchmal, sie vor dem Starten der Signalübertragung zu erstellen.
+
+Zum Anhalten des Videorekorders muss „delete“ für die Liveausgabe aufgerufen werden. Der Inhalt des Medienobjekts (also der Videokassette) werden dadurch nicht gelöscht.  Das Medienobjekt bleibt mit dem archivierten Videoinhalt erhalten, bis Sie „delete“ explizit für das Medienobjekt aufrufen.
+
+Im nächsten Abschnitt wird die Erstellung des Medienobjekts (Videokassette) und der Liveausgabe (Videorekorder) durchlaufen.
+
 #### <a name="create-an-asset"></a>Erstellen eines Medienobjekts
 
-Erstellen Sie ein Medienobjekt, das von der Liveausgabe verwendet werden kann.
+Erstellen Sie ein Medienobjekt, das von der Liveausgabe verwendet werden kann. In der oben verwendeten Analogie ist dies die Videokassette zum Aufzeichnen des Livevideosignals. Benutzer können den Inhalt live oder bei Bedarf von dieser virtuellen Videokassette ansehen.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateAsset)]
 
 #### <a name="create-a-live-output"></a>Erstellen einer Liveausgabe
 
-Liveausgaben werden bei der Erstellung gestartet und beim Löschen beendet. Wenn Sie die Liveausgabe löschen, werden das zugrunde liegende Medienobjekt und dessen Inhalt nicht gelöscht.
+Liveausgaben werden bei der Erstellung gestartet und beim Löschen beendet. Hierbei handelt es sich um den Videorekorder für unser Ereignis. Wenn Sie die Liveausgabe löschen, bleiben das zugrunde liegende Medienobjekt und dessen Inhalt erhalten. Der Vorgang ist mit dem Auswerfen der Videokassette vergleichbar. Das Medienobjekt mit der Aufzeichnung kann beliebig lange erhalten bleiben, und nach dem Auswerfen (also nach dem Löschen der Liveausgabe) steht es umgehend für die On-Demand-Wiedergabe zur Verfügung. 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateLiveOutput)]
 
@@ -118,7 +130,7 @@ Liveausgaben werden bei der Erstellung gestartet und beim Löschen beendet. Wenn
 > [!NOTE]
 > Beim Erstellen Ihres Media Services-Kontos wird dem Konto ein **Standard**-Streamingendpunkt im Zustand **Beendet** hinzugefügt. Um mit dem Streamen Ihrer Inhalte zu beginnen und die [dynamische Paketerstellung](dynamic-packaging-overview.md) und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Zustand **Wird ausgeführt** aufweisen.
 
-Wenn Sie das Liveausgabe-Medienobjekt mit einem Streaminglocator veröffentlicht haben, ist das Liveereignis (bis zur DVR-Fensterlänge) weiterhin bis zu Ablauf oder Löschung des Streaminglocators sichtbar, je nachdem, was zuerst eintritt.
+Wenn Sie das Medienobjekt mit einem Streaminglocator veröffentlicht haben, ist das Liveereignis (bis zur DVR-Fensterlänge) weiterhin bis zum Ablauf oder zur Löschung des Streaminglocators sichtbar (je nachdem, was zuerst eintritt). Auf diese Weise können Sie die virtuelle Aufzeichnung so verfügbar machen, dass sie von Ihrer Zielgruppe live und nach Bedarf angesehen werden kann. Die gleiche URL kann verwendet werden, um das Liveereignis, das DVR-Fenster oder das On-Demand-Medienobjekt anzusehen, wenn die Aufzeichnung abgeschlossen ist (nach dem Löschen der Liveausgabe).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateStreamingLocator)]
 

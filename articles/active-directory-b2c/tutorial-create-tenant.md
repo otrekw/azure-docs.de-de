@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cb680221447594b4784f61112655d507397b1c00
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 673e2260f358332de00a15b29729f14d62fe82a4
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101648848"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518006"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten
 
@@ -23,6 +23,8 @@ Bevor Ihre Anwendungen mit Azure Active Directory B2C (Azure AD B2C) interagiere
 
 > [!NOTE]
 > Sie können bis zu 20 Mandanten pro Abonnement erstellen. Diese Beschränkung schützt vor Bedrohungen für Ihre Ressourcen, etwa vor Denial-of-Service-Angriffen, und wird sowohl im Azure-Portal als auch in der zugrunde liegenden Mandantenerstellungs-API erzwungen. Wenn Sie mehr als 20 Mandanten erstellen müssen, wenden Sie sich an den [Microsoft-Support](support-options.md).
+> 
+> Wenn Sie einen Mandantennamen wiederverwenden möchten, den Sie zuvor zu löschen versucht haben, aber bei der Eingabe des Domänennamens der Fehler „Wird bereits von einem anderen Verzeichnis verwendet.“ angezeigt wird, müssen Sie [die folgenden Schritte ausführen, um zuerst den Mandanten vollständig zu löschen](https://docs.microsoft.com/azure/active-directory-b2c/faq?tabs=app-reg-ga#how-do-i-delete-my-azure-ad-b2c-tenant). Es ist mindestens die Rolle „Abonnementadministrator“ erforderlich. Nach dem Löschen des Mandanten müssen Sie sich möglicherweise zudem abmelden und wieder anmelden, bevor Sie den Domänennamen wiederverwenden können.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 

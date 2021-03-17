@@ -6,17 +6,20 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 09/30/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: ef013d97be8a5decbee46d25752ced7bd622a646
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3e0ad6aeb6110d04d9c2a8ff5b3e30726d9de03f
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657773"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490601"
 ---
 # <a name="chat-client-library-overview"></a>Übersicht über die Clientbibliothek für Chats
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 Die Clientbibliotheken für Chats von Azure Communication Services können verwendet werden, um Ihren Anwendungen umfassende Echtzeitchatfunktionen hinzuzufügen.
 

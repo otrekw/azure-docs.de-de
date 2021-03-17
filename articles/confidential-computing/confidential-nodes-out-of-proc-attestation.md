@@ -1,19 +1,19 @@
 ---
-title: Unterstützung des Out-of-Proc-Nachweises mit DaemonSet für Intel SGX-Angebotshilfe in Azure
+title: Unterstützung des Out-of-Proc-Nachweises mit DaemonSet für Intel SGX-Angebotshilfe in Azure (Vorschau)
 description: DaemonSet zum Erstellen des Angebots außerhalb des SGX-Anwendungsprozesses. In diesem Artikel wird beschrieben, wie das Feature für Out-of-Proc-Nachweise für vertrauliche Workloads bereitgestellt wird, die in einem Container ausgeführt werden.
 ms.service: container-service
 author: agowdamsft
 ms.topic: overview
-ms.date: 9/22/2020
+ms.date: 2/12/2021
 ms.author: amgowda
-ms.openlocfilehash: b79b3b40f3fbfe7d70550db3aaf7b365aa455e89
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 5d872032ea5b4e08c3f436dd3bfc202786d8514d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564156"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553254"
 ---
-# <a name="platform-software-management-with-sgx-quote-helper-daemon-set"></a>Plattformsoftwareverwaltung mit DaemonSet für SGX-Angebotshilfe
+# <a name="platform-software-management-with-sgx-quote-helper-daemon-set-preview"></a>Plattformsoftwareverwaltung mit DaemonSet für SGX-Angebotshilfe (Vorschau)
 
 Für [Enklavenanwendungen](confidential-computing-enclaves.md), bei denen ein Remotenachweis durchgeführt wird, muss ein ANGEBOT erstellt werden. Dieses ANGEBOT liefert den kryptografischen Nachweis der Identität und des Status der Anwendung sowie für die Umgebung, in der die Enklave ausgeführt wird. Für die Erstellung des ANGEBOTS müssen vertrauenswürdige Softwarekomponenten verwendet werden, die Teil der Plattformsoftwarekomponenten (PSW) von Intel sind.
 
@@ -27,6 +27,13 @@ Intel unterstützt zwei Nachweismodi zum Ausführen der Angebotserstellung:
 Für SGX-Anwendungen, die mit dem Open Enclave SDK erstellt werden, wird standardmäßig der Modus für den prozessinternen Nachweis (In-Proc) verwendet. Bei SGX-basierten Anwendungen ist auch „Out-of-Proc“ möglich. Hierfür ist ein zusätzliches Hosting erforderlich, und die erforderlichen Komponenten, z. B. Architectural Enclave Service Manager (AESM), müssen außerhalb der Anwendung verfügbar gemacht werden.
 
 Die Nutzung dieses Features wird **dringend empfohlen**, weil hierdurch die Betriebszeit für Ihre Enklaven-Apps bei Updates der Intel-Plattform oder der DCAP-Treiber verbessert wird.
+
+Zur Aktivierung dieses Features für einen AKS-Cluster fügen Sie den Befehl „--enable-sgxquotehelper“ der CLI hinzu, wenn Sie das Confidential Computing-Add-On aktivieren. Ausführliche Anweisungen zur CLI finden Sie [hier](confidential-nodes-aks-get-started.md): 
+
+```azurecli-interactive
+# Create a new AKS cluster with system node pool with Confidential Computing addon enabled and SGX Quote Helper
+az aks create -g myResourceGroup --name myAKSCluster --generate-ssh-keys --enable-addon confcom --enable-sgxquotehelper
+```
 
 ## <a name="why-and-what-are-the-benefits-of-out-of-proc"></a>Welche Vorteile hat „Out-of-Proc“?
 

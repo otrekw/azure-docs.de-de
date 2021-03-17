@@ -3,13 +3,13 @@ author: rothja
 ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
-ms.author: jroth
-ms.openlocfilehash: 71782661fd960cae3248005a8b90944eff9bef45
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.author: msangapu
+ms.openlocfilehash: bcbbd133c71b2917b73c200c4453ea57385fcaf1
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024221"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102532680"
 ---
 | Resource | Kostenlos | Shared | Basic | Standard | Premium (v1-v3) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -24,7 +24,7 @@ ms.locfileid: "98024221"
 | Bandbreite |165 MB |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |
 | Anwendungsarchitektur |32 Bit |32 Bit |32 Bit/64 Bit |32 Bit/64 Bit |32 Bit/64 Bit |32 Bit/64 Bit |
 | Websockets pro Instanz<sup>7</sup> |5 |35 |350 |Unbegrenzt |Unbegrenzt |Unbegrenzt |
-| IP-Verbindungen | 600 | 600 | Hängt von der Instanzgröße ab<sup>8</sup> | Hängt von der Instanzgröße ab<sup>8</sup> | Hängt von der Instanzgröße ab<sup>8</sup> | 16.000 |
+| Ausgehende IP-Verbindungen pro Instanz | 600 | 600 | Hängt von der Instanzgröße ab<sup>8</sup> | Hängt von der Instanzgröße ab<sup>8</sup> | Hängt von der Instanzgröße ab<sup>8</sup> | 16.000 |
 | Gleichzeitige [Debuggerverbindungen](../articles/app-service/troubleshoot-dotnet-visual-studio.md) pro Anwendung |1 |1 |1 |5 |5 |5 |
 | App Service-Zertifikate pro Abonnement<sup>9</sup>| Nicht unterstützt | Nicht unterstützt |10 |10 |10 |10 |
 | Benutzerdefinierte Domänen pro App</a> |0 (nur Unterdomäne azurewebsites.net)|500 |500 |500 |500 |500 |

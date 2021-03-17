@@ -7,14 +7,15 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: allensu
-ms.openlocfilehash: 7448e003771bea1e235d4e0776ebce3cb1beae17
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8668bdb9dc391582234bf5741c0dd287d026defd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544087"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554937"
 ---
-# <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-powershell"></a>Tutorial: Herstellen einer Verbindung mit einem Azure SQL-Server über einen privaten Azure-Endpunkt – Azure PowerShell
+# <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-powershell"></a>Tutorial: Herstellen einer Verbindung mit einem Azure SQL-Server über einen privaten Azure-Endpunkt – Azure PowerShell
 
 Der private Azure-Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren.
 
@@ -337,6 +338,6 @@ In diesem Tutorial haben Sie Folgendes erstellt:
 
 Sie haben den virtuellen Computer verwendet, um die Konnektivität mit dem SQL-Server über den privaten Endpunkt auf sichere Weise zu testen.
 
-Erfahren Sie mehr über den Private Link-Dienst:
+Im nächsten Schritt können Sie sich das Architekturszenario für eine **Web-App mit privater Verbindung mit Azure SQL-Datenbank** ansehen. Darin wird eine Webanwendung außerhalb des virtuellen Netzwerks mit dem privaten Endpunkt einer Datenbank verbunden.
 > [!div class="nextstepaction"]
-> [Erstellen eines Private Link-Diensts](create-private-link-service-portal.md)
+> [Private Konnektivität von Web-Apps mit Azure SQL-Datenbank](/azure/architecture/example-scenario/private-web-app/private-web-app)

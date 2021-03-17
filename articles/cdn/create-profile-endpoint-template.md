@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Erstellen eines Profils und eines Endpunkts – Resource Manager-Vorlage'
 titleSuffix: Azure Content Delivery Network
-description: Informationen zum Erstellen eines Azure Content Delivery Network-Profils und -Endpunkts mithilfe einer Resource Manager-Vorlage
+description: In dieser Schnellstartanleitung erhalten Sie Informationen zum Erstellen eines Azure Content Delivery Network-Profils und -Endpunkts mithilfe einer Resource Manager-Vorlage
 services: cdn
 author: asudbring
 manager: KumudD
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: b215dfff3bf62b67b89aa260b0134381de6edeae
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: a36484bea3a2bc9caadc5cf4482aae3bea84eafa
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695728"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560462"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts – ARM-Vorlage
 
@@ -107,7 +107,7 @@ Wenn die Ressourcengruppe und alle darin enthaltenen Ressourcen nicht mehr benö
 
 ### <a name="powershell"></a>PowerShell
 
-Wenn die Ressourcengruppe und alle darin enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=latest) entfernen.
+Wenn die Ressourcengruppe und alle darin enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) entfernen.
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupCDN
@@ -126,5 +126,5 @@ In dieser Schnellstartanleitung haben Sie Folgendes erstellt:
 
 Weitere Informationen zu Azure CDN und Azure Resource Manager finden Sie in den folgenden Artikeln.
 
-* Lesen Sie die [Übersicht über Azure CDN](cdn-overview.md).
-* Lesen Sie weitere Informationen zu [Azure Resource Manager](../azure-resource-manager/management/overview.md).
+> [!div class="nextstepaction"]
+> [Tutorial: Hinzufügen von Azure CDN zu einer Azure App Service-Web-App](cdn-add-to-web-app.md)

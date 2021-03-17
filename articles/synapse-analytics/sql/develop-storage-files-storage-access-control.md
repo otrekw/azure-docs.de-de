@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1ee631e3e4a13a18bb61ee6237ff67a49f663179
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 545331fdea56aef3d7b9dac8062d4fc2d6891254
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693899"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501566"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Steuern des Speicherkontozugriffs für einen serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -104,14 +104,14 @@ Für den Zugriff auf den mit der Firewall geschützten Speicher über die Benutz
 
 Führen Sie diese Schritte aus, um die Speicherkontofirewall zu konfigurieren und eine Ausnahme für den Synapse-Arbeitsbereich hinzuzufügen.
 
-1. Öffnen Sie PowerShell, oder [installieren Sie PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1).
-2. Installieren Sie das Az.Storage 3.0.1-Modul und Az.Synapse 0.7.0: 
+1. Öffnen Sie PowerShell, oder [installieren Sie PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows).
+2. Installieren Sie das Az.Storage 3.4.0-Modul und Az.Synapse 0.7.0: 
     ```powershell
-    Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    Install-Module -Name Az.Storage -RequiredVersion 3.4.0
     Install-Module -Name Az.Synapse -RequiredVersion 0.7.0
     ```
     > [!IMPORTANT]
-    > Stellen Sie sicher, dass Sie **Version 3.0.1** verwenden. Ihre Az.Storage-Version können Sie mithilfe des folgenden Befehls überprüfen:  
+    > Stellen Sie sicher, dass Sie **Version 3.4.0** verwenden. Ihre Az.Storage-Version können Sie mithilfe des folgenden Befehls überprüfen:  
     > ```powershell 
     > Get-Module -ListAvailable -Name  Az.Storage | select Version
     > ```

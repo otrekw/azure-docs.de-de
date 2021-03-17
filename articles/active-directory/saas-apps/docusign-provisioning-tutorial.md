@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: dc3f307a21b746981a84b1c0747c4b22c448541f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 71f95b08584a46fccb0975cd9285150573ac02d4
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349904"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218518"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von DocuSign für die automatische Benutzerbereitstellung
 
@@ -97,7 +97,7 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 ## <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
 * Rollen oder Berechtigungsprofile für Benutzer können in DocuSign mithilfe eines Ausdrucks in den Attributzuordnungen bereitgestellt werden. Verwenden Sie dafür die Funktionen [switch](../app-provisioning/functions-for-customizing-application-data.md#switch) und [singleAppRoleAssignment](../app-provisioning/functions-for-customizing-application-data.md#singleapproleassignment). Ein Beispiel: Der unten stehende Ausdruck stellt die ID „8032066“ bereit, wenn einem Benutzer in Azure AD die Rolle „DS-Administrator zugewiesen wurde. Ein Berechtigungsprofil wird nicht bereitgestellt, wenn dem Benutzer keine Rolle auf Azure AD-Seite zugewiesen wurde. Die ID kann über das [Portal](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles) von DocuSign abgerufen werden.
 
-Switch(SingleAppRoleAssignment([appRoleAssignments])," ", "8032066", "DS Admin")
+Switch(SingleAppRoleAssignment([appRoleAssignments])," ", "DS Admin", "8032066")
 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen

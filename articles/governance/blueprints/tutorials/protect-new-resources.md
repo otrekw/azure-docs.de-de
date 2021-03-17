@@ -1,25 +1,25 @@
 ---
 title: 'Tutorial: Schützen neuer Ressourcen mit Sperren'
 description: In diesem Tutorial verwenden Sie die Ressourcensperrenoptionen „Schreibgeschützt“ und „Nicht löschen“ von Azure Blueprints, um neu bereitgestellte Ressourcen zu schützen.
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.topic: tutorial
-ms.openlocfilehash: c671d641982ba833b54586c1b33979a97747396b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 87da0f5a1fff2feb103b32533c8d314fb7690f80
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915406"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485740"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Tutorial: Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren
 
-Mit Azure Blueprints-[Ressourcensperren](../concepts/resource-locking.md) können Sie neu bereitgestellte Ressourcen schützen, sodass sie nicht einmal von einem Konto mit der Rolle _Besitzer_ manipuliert werden können. Sie können diesen Schutz in den Blaupausendefinitionen von Ressourcen hinzufügen, die mit einem Artefakt einer Azure Resource Manager-Vorlage (ARM-Vorlage) erstellt wurden.
+Mit Azure Blueprints-[Ressourcensperren](../concepts/resource-locking.md) können Sie neu bereitgestellte Ressourcen schützen, sodass sie nicht einmal von einem Konto mit der Rolle _Besitzer_ manipuliert werden können. Sie können diesen Schutz in den Blaupausendefinitionen von Ressourcen hinzufügen, die mit einem Artefakt einer Azure Resource Manager-Vorlage (ARM-Vorlage) erstellt wurden. Die Blaupausenressourcensperre wird während der Blaupausenzuweisung festgelegt.
 
 Dieses Tutorial umfasst folgende Schritte:
 
 > [!div class="checklist"]
 > - Erstellen einer Blaupausendefinition
 > - Markieren der Blaupausendefinition als **veröffentlicht**
-> - Zuweisen Ihrer Blaupausendefinition zu einem vorhandenen Abonnement
+> - Zuweisen Ihrer Blaupausendefinition zu einem vorhandenen Abonnement (**Festlegen von Ressourcensperren**)
 > - Überprüfen der neuen Ressourcengruppe
 > - Aufheben der Zuweisung der Blaupause zum Entfernen der Sperren
 
@@ -56,6 +56,9 @@ Erstellen Sie zunächst die Blaupausendefinition.
    1. Wählen Sie unter dem Eintrag **RGtoLock** die Zeile **Artefakt hinzufügen** aus.
    1. Wählen Sie unter **Artefakttyp** die Option **Azure Resource Manager-Vorlage** aus, legen Sie für **Anzeigename für Artefakt** die Option **StorageAccount** fest, und lassen Sie **Beschreibung** leer.
    1. Fügen Sie auf der Registerkarte **Vorlage** im Editorfeld die folgende ARM-Vorlage ein. Wählen Sie nach dem Einfügen der Vorlage **Hinzufügen** aus, um das Artefakt zur Blaupause hinzuzufügen.
+
+      > [!NOTE]
+      > In diesem Schritt werden die bereitzustellenden Ressourcen definiert, die von der Blaupausenressourcensperre gesperrt werden, die Blaupausenressourcensperren sind jedoch nicht enthalten. Blaupausenressourcensperren werden als Parameter der Blaupausenzuweisung festgelegt.
 
    ```json
    {
@@ -142,6 +145,9 @@ Nach der Veröffentlichung der Blaupausendefinition können Sie sie einem Abonne
    - **Zuweisung der Sperre**
 
      Wählen Sie den Blaupausensperrmodus **Schreibgeschützt** aus. Weitere Informationen finden Sie unter [Grundlegendes zur Ressourcensperre in Azure Blueprint](../concepts/resource-locking.md).
+
+     > [!NOTE]
+     > In diesem Schritt wird die Blaupausenressourcensperre für die neu bereitgestellten Ressourcen konfiguriert.
 
    - **Verwaltete Identität**
 

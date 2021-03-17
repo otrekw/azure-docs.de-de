@@ -1,17 +1,17 @@
 ---
-title: Erstellen eines AKS-Clusters über das Portal
+title: 'Schnellstart: Bereitstellen eines AKS-Clusters mithilfe des Azure-Portals'
 titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie über das Azure-Portal schnell einen Kubernetes-Cluster erstellen, eine Anwendung bereitstellen und die Leistung in Azure Kubernetes Service (AKS) überwachen können.
 services: container-service
 ms.topic: quickstart
 ms.date: 01/13/2021
-ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 7f59924b2a50f29e01d46e12389e5ca52769225d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.custom: mvc, seo-javascript-october2019, contperfq3
+ms.openlocfilehash: 5f758c0bc50b2d4f22b3dbf0efaa4ecbc3f334cb
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578700"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507805"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über das Azure-Portal
 
@@ -47,13 +47,11 @@ Führen Sie zum Erstellen eines AKS-Clusters die folgenden Schritte aus:
 
 4. Übernehmen Sie auf der Seite **Knotenpools** die Standardoptionen. Klicken Sie im unteren Bildschirmbereich auf **Weiter: Authentifizierung**.
     > [!CAUTION]
-    > Die Verteilung und Bereitstellung neuer AAD-Dienstprinzipale kann mehrere Minuten dauern. Dadurch können im Azure-Portal Fehler vom Typ „Dienstprinzipal nicht gefunden“ sowie Validierungsfehler auftreten. [Hier](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) finden Sie Lösungen für dieses Problem.
+    > Die Verteilung und Bereitstellung einer neuen Clusteridentität kann mehrere Minuten dauern. Dadurch können im Azure-Portal Fehler vom Typ „Dienstprinzipal nicht gefunden“ sowie Validierungsfehler auftreten. In diesem Fall finden Sie weitere Informationen unter [Beim Versuch, einen neuen Cluster zu erstellen, erhalte ich die Fehlermeldung, der Dienstprinzipal sei nicht gefunden worden oder ungültig](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster).
 
 5. Konfigurieren Sie auf der Seite **Authentifizierung** die folgenden Optionen:
-    - Erstellen Sie einen neuen Dienstprinzipal, indem Sie das Feld **Dienstprinzipal** in der Einstellung **(neu) Standarddienstprinzipal** belassen. Alternativ dazu können Sie *Dienstprinzipal konfigurieren* auswählen, um einen vorhandenen zu verwenden. Bei Verwendung eines vorhandenen Dienstprinzipals müssen Sie die SPN-Client-ID und das Geheimnis angeben.
+    - Erstellen Sie eine neue Clusteridentität, indem Sie für das Feld **Authentifizierung** die Option **Systemseitig zugewiesene verwaltete Identität** übernehmen. Alternativ können Sie **Dienstprinzipal** für die Verwendung eines Dienstprinzipals auswählen. Wählen Sie *(Neuer) Standarddienstprinzipal* aus, um einen Standarddienstprinzipal zu erstellen, oder *Dienstprinzipal konfigurieren*, um einen vorhandenen Dienstprinzipal zu verwenden. Bei Verwendung eines vorhandenen Dienstprinzipals müssen Sie die SPN-Client-ID und das Geheimnis angeben.
     - Aktivieren Sie die Option für die rollenbasierte Zugriffssteuerung von Kubernetes (Kubernetes Role-Based Access Control, Kubernetes RBAC). So wird eine präzisere Steuerung des Zugriffs auf die im AKS-Cluster bereitgestellten Kubernetes-Ressourcen ermöglicht.
-
-    Alternativ können Sie anstelle eines Dienstprinzipals eine verwaltete Identität verwenden. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md).
 
 Standardmäßig werden *Basis*-Netzwerke verwendet, und Azure Monitor für Container ist aktiviert. Klicken Sie auf **Überprüfen + erstellen** und danach auf **Erstellen**, wenn die Überprüfung abgeschlossen ist.
 
@@ -78,7 +76,7 @@ Mit dem Befehl [az aks get-credentials][az-aks-get-credentials] können Sie `kub
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Überprüfen Sie die Verbindung mit Ihrem Cluster mithilfe des Befehls [kubectl get][kubectl-get], um eine Liste der Clusterknoten zurückzugeben.
+Überprüfen Sie die Verbindung mit Ihrem Cluster mithilfe des Befehls `kubectl get`, um eine Liste der Clusterknoten zurückzugeben.
 
 ```console
 kubectl get nodes
@@ -93,7 +91,7 @@ aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Eine Kubernetes-Manifestdatei definiert einen gewünschten Zustand (Desired State) für den Cluster – also beispielsweise, welche Containerimages ausgeführt werden sollen. In dieser Schnellstartanleitung wird ein Manifest verwendet, um alle Objekte zu erstellen, die zum Ausführen der Azure Vote-Anwendung benötigt werden. Dieses Manifest umfasst zwei [Kubernetes-Bereitstellungen][kubernetes-deployment]: eine für die Azure Vote-Python-Beispielanwendungen und eine für eine Redis-Instanz. Außerdem werden zwei [Kubernetes-Dienste][kubernetes-service] erstellt: ein interner Dienst für die Redis-Instanz und ein externer Dienst, über den aus dem Internet auf die Azure Vote-Anwendung zugegriffen wird.
+Eine Kubernetes-Manifestdatei definiert einen gewünschten Zustand (Desired State) für den Cluster – also beispielsweise, welche Containerimages ausgeführt werden sollen. In dieser Schnellstartanleitung wird ein Manifest verwendet, um alle Objekte zu erstellen, die zum Ausführen der Azure Vote-Anwendung benötigt werden. Dieses Manifest umfasst zwei Kubernetes-Bereitstellungen: eine für die Azure Vote-Python-Beispielanwendungen und eine für eine Redis-Instanz. Außerdem werden zwei Kubernetes-Dienste erstellt: ein interner Dienst für die Redis-Instanz und ein externer Dienst, über den aus dem Internet auf die Azure Vote-Anwendung zugegriffen wird.
 
 Verwenden Sie in der Cloud Shell einen Editor, um eine Datei namens `azure-vote.yaml` zu erstellen, z. B. `code azure-vote.yaml`, `nano azure-vote.yaml` oder `vi azure-vote.yaml`. Fügen Sie anschließend die folgende YAML-Definition ein:
 
@@ -185,7 +183,7 @@ spec:
     app: azure-vote-front
 ```
 
-Stellen Sie die Anwendung über den Befehl [kubectl apply][kubectl-apply] bereit, und geben Sie den Namen Ihres YAML-Manifests an:
+Stellen Sie die Anwendung über den Befehl `kubectl apply` bereit, und geben Sie den Namen Ihres YAML-Manifests an:
 
 ```console
 kubectl apply -f azure-vote.yaml
@@ -204,7 +202,7 @@ service "azure-vote-front" created
 
 Wenn die Anwendung ausgeführt wird, macht ein Kubernetes-Dienst das Anwendungs-Front-End im Internet verfügbar. Dieser Vorgang kann einige Minuten dauern.
 
-Verwenden Sie zum Überwachen des Fortschritts den Befehl [kubectl get service][kubectl-get] mit dem Argument `--watch`.
+Verwenden Sie zum Überwachen des Fortschritts den Befehl `kubectl get service` mit dem Argument `--watch`.
 
 ```console
 kubectl get service azure-vote-front --watch
@@ -267,7 +265,7 @@ In dieser Schnellstartanleitung wurden vorab erstellte Containerimages verwendet
 
 In dieser Schnellstartanleitung haben Sie einen Kubernetes-Cluster und eine Anwendung mit mehreren Containern dafür bereitgestellt.
 
-Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispiel vom Code bis zur Bereitstellung finden Sie im Kubernetes-Clustertutorial.
+Fahren Sie mit dem Tutorial zu Kubernetes-Clustern fort, um anhand eines vollständigen Beispiels mehr über AKS zu erfahren, u. a. zum Erstellen einer Anwendung, Bereitstellen über Azure Container Registry, Aktualisieren einer ausgeführten Anwendung und Skalieren und Upgraden Ihres Clusters.
 
 > [!div class="nextstepaction"]
 > [AKS-Tutorial][aks-tutorial]
@@ -281,13 +279,10 @@ Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispi
 
 <!-- LINKS - internal -->
 [kubernetes-concepts]: concepts-clusters-workloads.md
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-aks-delete]: /cli/azure/aks#az-aks-delete
 [aks-monitor]: ../azure-monitor/containers/container-insights-overview.md
 [aks-network]: ./concepts-network.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [http-routing]: ./http-application-routing.md
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
-[azure-dev-spaces]: ../dev-spaces/index.yml
-[kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
-[kubernetes-service]: concepts-network.md#services

@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 749dea2d9d46cb69d0c7c8a799a3f82c04d020e8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 567388277f5a68ae23e8c806a8581c177c3fd1dd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936174"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549463"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Erstellen Ihrer ersten dauerhaften Funktion in Python
 
@@ -48,7 +48,7 @@ In diesem Abschnitt wird mithilfe von Visual Studio Code ein lokales Azure Func
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Prompt | Wert | BESCHREIBUNG |
+    | Prompt | Wert | Beschreibung |
     | ------ | ----- | ----------- |
     | Auswählen einer Sprache für Ihr Funktions-App-Projekt | Python | Erstellen Sie ein lokales Python-Functions-Projekt. |
     | „Select a version“ (Wählen Sie eine Version aus.) | Azure Functions v3 | Diese Option wird nur angezeigt, wenn die Core Tools noch nicht installiert sind. In diesem Fall werden die Core Tools beim erstmaligen Ausführen der App installiert. |
@@ -58,22 +58,7 @@ In diesem Abschnitt wird mithilfe von Visual Studio Code ein lokales Azure Func
 
 Von Visual Studio Code werden bei Bedarf die Azure Functions Core Tools installiert. Außerdem wird ein Funktions-App-Projekt in einem Ordner erstellt. Dieses Projekt enthält die Konfigurationsdateien [host.json](../functions-host-json.md) und [local.settings.json](../functions-run-local.md#local-settings-file).
 
-Außerdem wird die Datei „requirements.txt“ im Stammordner erstellt. Darin sind die Python-Pakete angegeben, die zum Ausführen ihrer Funktions-App erforderlich sind.
-
-## <a name="update-azure-functions-extension-bundles-version"></a>Aktualisieren der Version von Azure Functions-Erweiterungsbündeln
-
-Für Python Azure Functions ist Version 2.x der [Azure Functions-Erweiterungsbündel](../functions-bindings-register.md#access-extensions-in-non-net-languages) erforderlich. Erweiterungsbündel werden in *host.json* konfiguriert.
-
-1. Öffnen Sie *host.json* im Projekt. Aktualisieren Sie das `version`-Element des Erweiterungsbündels auf `[2.*, 3.0.0)`. Dadurch wird ein Versionsbereich angegeben, der größer als oder gleich 2.0 und kleiner als 3.0 ist.
-
-    ```json
-    "extensionBundle": {
-        "id": "Microsoft.Azure.Functions.ExtensionBundle",
-        "version": "[2.*, 3.0.0)"
-    }
-    ```
-
-1. VS Code muss erneut geladen werden, damit die aktualisierte Erweiterungsbündelversion angegeben wird. Führen Sie in der Befehlspalette eine Suche nach dem Befehl *Entwickler: Fenster erneut laden* aus, und führen Sie ihn aus.
+Außerdem wird die Datei *requirements.txt* im Stammordner erstellt. Darin sind die Python-Pakete angegeben, die zum Ausführen ihrer Funktions-App erforderlich sind.
 
 ## <a name="install-azure-functions-durable-from-pypi"></a>Installieren von „azure-functions-durable“ aus Pypi
 
@@ -83,7 +68,7 @@ Beim Erstellen des Projekts hat die VS Code-Erweiterung von Azure Functions aut
 
     ```
     azure-functions
-    azure-functions-durable>=1.0.0b12
+    azure-functions-durable
     ```
 
 1. Öffnen Sie das integrierte Terminal des Editors im aktuellen Ordner (<kbd>STRG+UMSCHALT+`</kbd>).
@@ -126,7 +111,7 @@ Sie verwenden eine Vorlage, um den Code Ihrer dauerhaften Funktion in Ihrem Proj
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Prompt | Wert | BESCHREIBUNG |
+    | Prompt | Wert | Beschreibung |
     | ------ | ----- | ----------- |
     | „Select a template for your function“ (Wählen Sie eine Vorlage für Ihre Funktion aus.) | Orchestrator für Durable Functions | Erstellen Sie eine Orchestrierung für Durable Functions. |
     | Angeben eines Funktionsnamens | HelloOrchestrator | Der Name Ihrer dauerhaften Funktion. |
@@ -141,7 +126,7 @@ Fügen Sie als Nächstes die referenzierte Aktivitätsfunktion `Hello` hinzu.
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Prompt | Wert | BESCHREIBUNG |
+    | Prompt | Wert | Beschreibung |
     | ------ | ----- | ----------- |
     | „Select a template for your function“ (Wählen Sie eine Vorlage für Ihre Funktion aus.) | Aktivität für Durable Functions | Erstellen Sie eine Aktivitätsfunktion. |
     | Angeben eines Funktionsnamens | Hallo | Der Name Ihrer Aktivitätsfunktion. |
@@ -156,7 +141,7 @@ Abschließend fügen Sie noch eine per HTTP ausgelöste Funktion hinzu, durch di
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Prompt | Wert | BESCHREIBUNG |
+    | Prompt | Wert | Beschreibung |
     | ------ | ----- | ----------- |
     | „Select a template for your function“ (Wählen Sie eine Vorlage für Ihre Funktion aus.) | HTTP-Starter für Durable Functions | Erstellen Sie eine HTTP-Startfunktion. |
     | Angeben eines Funktionsnamens | DurableFunctionsHttpStart | Der Name Ihrer Aktivitätsfunktion. |
@@ -181,7 +166,7 @@ Mit Azure Functions Core-Tools können Sie ein Azure Functions-Projekt auf dem l
 
 1. Geben Sie bei den Eingabeaufforderungen die folgenden Informationen an, um ein neues Speicherkonto in Azure zu erstellen:
 
-    | Prompt | Wert | BESCHREIBUNG |
+    | Prompt | Wert | Beschreibung |
     | ------ | ----- | ----------- |
     | Auswählen des Abonnements | *Name Ihres Abonnements* | Auswählen des Azure-Abonnements |
     | Auswählen eines Speicherkontos | Erstellen eines neuen Speicherkontos |  |

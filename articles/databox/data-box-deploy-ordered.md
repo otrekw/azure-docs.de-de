@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/13/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: f2bad214045710fe861040514beb3c536664d684
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 281b22db692087f2876b4011563fee8c56bd476e
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201888"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522392"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Tutorial: Bestellen von Azure Data Box
 
@@ -164,7 +164,7 @@ Die folgende Ausgabe wird angezeigt:
     WSManStackVersion              3.0
 ```
 
-Wenn Ihre Version niedriger als 6.2.4 ist, müssen Sie ein Upgrade Ihrer Version von Windows PowerShell durchführen. Informationen zur Installation der neuesten Version von Windows PowerShell finden Sie unter [Installieren von Azure PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7&preserve-view=true).
+Wenn Ihre Version niedriger als 6.2.4 ist, müssen Sie ein Upgrade Ihrer Version von Windows PowerShell durchführen. Informationen zur Installation der neuesten Version von Windows PowerShell finden Sie unter [Installieren von Azure PowerShell](/powershell/scripting/install/installing-powershell).
 
 **Installieren von Azure PowerShell- und Data Box-Modulen**
 
@@ -239,7 +239,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
 
 6. Wechseln Sie in **Bestellung** zur Registerkarte **Grundlagen**. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie anschließend Folgendes aus: **Weiter: Datenziel>** .
 
-    |Einstellung  |value  |
+    |Einstellung  |Wert  |
     |---------|---------|
     |Subscription      | Das Abonnement wird auf der Grundlage Ihrer zuvor getroffenen Auswahl automatisch eingetragen.|
     |Resource group    | Die Ressourcengruppe, die Sie zuvor ausgewählt haben. |
@@ -355,22 +355,34 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
     ![Erweiterte Optionen zur Verwendung eines eigenen Kennworts für einen Data Box-Importauftrag](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
 
    - Wenn Sie für Ihr neues Gerät ein eigenes Kennwort verwenden möchten, wählen Sie unter **Set preference for the device password** (Einstellung für das Gerätekennwort festlegen) die Option **Use your own password** (Eigenes Kennwort verwenden) aus, und geben Sie ein Kennwort ein, das die Sicherheitsanforderungen erfüllt.
+     
+     Das Kennwort muss alphanumerisch und 12 bis 15 Zeichen lang sein und mindestens einen Großbuchstaben, einen Kleinbuchstaben, ein Sonderzeichen und eine Ziffer enthalten. 
+
+     - Zulässige Sonderzeichen: @ # - $ % ^ ! + = ; : _ ( )
+     - Nicht zulässige Zeichen: I i L o O 0
    
      ![Optionen für die Verwendung eines eigenen Gerätekennworts auf dem Bildschirm „Sicherheit“ für einen Data Box-Importauftrag](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
 
  - So verwenden Sie Ihre eigenen Kennwörter für Freigaben:
 
-   - Wählen Sie unter **Set preference for share passwords** (Einstellung für Freigabekennwörter festlegen) die Option **Use your own passwords** (Eigene Kennwörter verwenden) und anschließend **Select passwords for the shares** (Kennwörter für die Freigaben auswählen) aus.
+   1. Wählen Sie unter **Set preference for share passwords** (Einstellung für Freigabekennwörter festlegen) die Option **Use your own passwords** (Eigene Kennwörter verwenden) und anschließend **Select passwords for the shares** (Kennwörter für die Freigaben auswählen) aus.
      
-        ![Optionen für die Verwendung eigener Freigabekennwörter auf dem Bildschirm „Sicherheit“ für einen Data Box-Importauftrag](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
+       ![Optionen für die Verwendung eigener Freigabekennwörter auf dem Bildschirm „Sicherheit“ für einen Data Box-Importauftrag](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
 
-    - Geben Sie ein Kennwort für jedes im Auftrag enthaltene Speicherkonto ein. Das Kennwort wird für alle Freigaben für das Speicherkonto verwendet.
-     
-        Wenn Sie das gleiche Kennwort für alle Speicherkonten verwenden möchten, wählen Sie **In alle kopieren** aus. Wählen Sie abschließend **Speichern** aus.
-     
-        ![Eingabebildschirm für Freigabekennwörter für einen Data Box-Importauftrag](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+    1. Geben Sie ein Kennwort für jedes im Auftrag enthaltene Speicherkonto ein. Das Kennwort wird für alle Freigaben für das Speicherkonto verwendet.
+    
+       Das Kennwort muss alphanumerisch und 12 bis 64 Zeichen lang sein und mindestens einen Großbuchstaben, einen Kleinbuchstaben, ein Sonderzeichen und eine Ziffer enthalten.
 
-       Auf dem Bildschirm **Sicherheit** können Sie mithilfe von **View or change passwords** (Kennwörter anzeigen oder ändern) die Kennwörter ändern.
+       - Zulässige Sonderzeichen: @ # - $ % ^ ! + = ; : _ ( )
+       - Nicht zulässige Zeichen: I i L o O 0
+     
+    1. Wenn Sie das gleiche Kennwort für alle Speicherkonten verwenden möchten, wählen Sie **In alle kopieren** aus. 
+
+    1. Wählen Sie abschließend **Speichern** aus.
+     
+       ![Eingabebildschirm für Freigabekennwörter für einen Data Box-Importauftrag](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+
+    Auf dem Bildschirm **Sicherheit** können Sie mithilfe von **View or change passwords** (Kennwörter anzeigen oder ändern) die Kennwörter ändern.
 
 16. Wenn Sie die softwarebasierte doppelte Verschlüsselung aktivieren möchten, erweitern Sie auf dem Bildschirm **Sicherheit** den Bereich **Double-encryption (for highly secure environments)**  (Doppelte Verschlüsselung (für Hochsicherheitsumgebungen)), und wählen Sie die Option **Doppelte Verschlüsselung für den Auftrag aktivieren** aus.
 

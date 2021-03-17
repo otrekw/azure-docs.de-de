@@ -8,16 +8,18 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8e08c531cd46d5112138a3feedf97b27307e3dca
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6fbc20ec7145a474d9f3aada153f2d012aba34f8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656192"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561346"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionale Verfügbarkeit und Datenresidenz
 
-Azure Communication Services unterstützt Kunden bei der Erfüllung ihrer Anforderungen in puncto Datenschutz und persönliche Daten. Entwickler, die Communication Services mit einer direkten Beziehung zu Benutzern der Anwendung verwenden, fungieren möglicherweise als Datencontroller. Da Azure Communication Services diese Daten in Ihrem Namen speichert, fungieren wir höchstwahrscheinlich als Datenverarbeiter. Hier erfahren Sie, wie Daten durch den Dienst gespeichert werden und wie Sie diese Daten identifizieren, exportieren und löschen können.
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+
+Azure Communication Services unterstützt Kunden bei der Erfüllung ihrer Anforderungen in puncto Datenschutz und persönliche Daten. Entwickler, die Communication Services mit einer direkten Beziehung zu Benutzern der Anwendung verwenden, fungieren möglicherweise als Datencontroller. Da Azure Communication Services diese ruhenden Daten in Ihrem Namen speichert und verschlüsselt, fungieren wir höchstwahrscheinlich als Datenverarbeiter. Hier erfahren Sie, wie Daten durch den Dienst gespeichert werden und wie Sie diese Daten identifizieren, exportieren und löschen können.
 
 ## <a name="data-residency"></a>Datenresidenz
 
@@ -79,6 +81,6 @@ Azure Communication Services wird zum besseren Verständnis der Betriebsintegrit
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Anträge betroffener Personen für Azure im Rahmen der DSGVO und des CCPA](/microsoft-365/compliance/gdpr-dsr-azure?preserve-view=true&view=o365-worldwide)
+- [Anträge betroffener Personen für Azure im Rahmen der DSGVO und des CCPA](/microsoft-365/compliance/gdpr-dsr-azure)
 - [Microsoft Trust Center](https://www.microsoft.com/trust-center/privacy/data-location)
 - [Microsoft Azure: Wo befinden sich meine Kundendaten?](https://azuredatacentermap.azurewebsites.net/)

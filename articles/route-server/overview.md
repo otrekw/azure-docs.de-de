@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: overview
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 099f9b3769179076491c7c2098ec56faff9847dd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d868c064b96f58ab3febc1fd3b7f20b74d507cb0
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039834"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437160"
 ---
 # <a name="what-is-azure-route-server-preview"></a>Was ist Azure Route Server (Vorschau)? 
 
@@ -37,7 +37,7 @@ Azure Route Server vereinfacht die Konfiguration, Verwaltung und Bereitstellung 
 
 * Sie müssen [benutzerdefinierte Routen](../virtual-network/virtual-networks-udr-overview.md) nicht mehr manuell aktualisieren, wenn Ihr NVA neue Routen ankündigt oder alte Routen zurückzieht. 
 
-* Sie müssen aus Gründen der Resilienz oder Leistung keinen Lastenausgleich mehr vor Ihrem NVA konfigurieren. Wenn Sie mehrere Instanzen Ihres NVAs mittels Peering mit Azure Route Server verbinden, können Sie die BGP-Attribute auf Ihrem NVA konfigurieren. Anhand dieser BGP-Attribute erkennt Azure Route Server, welche NVA-Instanz aktiv oder passiv sein soll. 
+* Sie können mehrere Instanzen Ihres NVA mittels Peering mit Azure Route Peering verbinden. Sie können die BGP-Attribute auf Ihrem NVA konfigurieren und in Abhängigkeit von Ihrem Entwurf (z. B. Aktiv/Aktiv für Leistung oder Aktiv/Passiv für Resilienz) Azure Route Server mitteilen, welche NVA-Instanz aktiv oder passiv ist. 
 
 * Die Schnittstelle zwischen dem NVA und Azure Route Server basiert auf einem allgemeinen Standardprotokoll. Solange Ihr NVA BGP unterstützt, können Sie es mittels Peering mit Azure Route Server verbinden. Weitere Informationen finden Sie unter [Von Route Server unterstützte Routingprotokolle](route-server-faq.md#protocol).
 

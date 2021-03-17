@@ -13,12 +13,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40, contperf-fy21q2
-ms.openlocfilehash: 662523b1544fe3ca9e8bda993efa7b578b9f69cc
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: a4ce8242bd3110fee038ac826973e6a134413344
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752574"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426840"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Was ist die Microsoft Identity Platform?
 
@@ -38,6 +38,8 @@ Die Microsoft Identity Platform besteht aus mehreren Komponenten:
 Für Entwickler bietet die Microsoft Identity Platform die Integration moderner Innovationen in den Identitäts- und Sicherheitsbereich. Beispiele dafür sind kennwortlose Authentifizierung, Step-up-Authentifizierung und bedingter Zugriff. Sie müssen diese Funktionalität nicht selbst implementieren: In Microsoft Identity Platform integrierte Anwendungen nutzen solche Innovationen nativ.
 
 Dank der Microsoft Identity Platform müssen Sie Code nur einmal schreiben, um alle Benutzer zu erreichen. Sie können eine App einmalig erstellen und sie plattformübergreifend nutzen lassen, oder eine App erstellen, die sowohl als Client als auch als Ressourcenanwendung (API) fungiert.
+
+Eine Videoübersicht über die Plattform und eine Demo der Authentifizierungsfunktionen finden Sie unter [Was ist Microsoft Identity Platform für Entwickler?](https://youtu.be/uDU1QTSw7Ps).
 
 ## <a name="getting-started"></a>Erste Schritte
 

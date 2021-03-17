@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: 7fc964abf7e6832341ad8b1ad55711b3a9993506
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9107ef6100a3c362eae982412d54a981851bcb42
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712509"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561397"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Tutorial: Erstellen einer regionsübergreifenden Azure Load Balancer-Instanz mithilfe des Azure-Portals
 
@@ -200,9 +200,6 @@ In diesem Tutorial haben Sie:
 * eine Lastenausgleichsregel erstellt
 * den Lastenausgleich getestet
 
-Weitere Informationen zum regionsübergreifenden Lastenausgleich finden Sie unter [Regionsübergreifender Lastenausgleich (Vorschau)](cross-region-overview.md).
-
-
-Fahren Sie mit dem nächsten Artikel mit dem folgenden Inhalt fort:
+Weitere Informationen zum regionsübergreifenden Lastenausgleich finden Sie unter folgendem Link:
 > [!div class="nextstepaction"]
-> [Lastenausgleich für virtuelle Computer über Verfügbarkeitszonen hinweg](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+> [Regionsübergreifender Lastenausgleich (Vorschau)](cross-region-overview.md)

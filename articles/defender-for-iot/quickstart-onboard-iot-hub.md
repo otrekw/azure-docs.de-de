@@ -1,6 +1,6 @@
 ---
-title: Durchführen des Onboardings für eine Agent-basierte Lösung für Azure Defender für IoT
-description: Hier erfahren Sie, wie Sie in Ihrer Azure IoT Hub-Instanz das Onboarding für den Sicherheitsdienst „Defender für IoT“ durchführen und den Dienst aktivieren.
+title: 'Schnellstart: Durchführen des Onboardings für Defender für IoT in einer Agent-basierten Lösung'
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie in Ihrer Azure IoT Hub-Instanz das Onboarding für den Sicherheitsdienst „Defender für IoT“ durchführen und den Dienst aktivieren.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/20/2021
 ms.author: shhazam
-ms.openlocfilehash: 127e439a7740cb97cbe126071aaaa5245cd85782
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: d30a03aa7b7715a8792e7b70a0571270c6ad7b37
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809132"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449678"
 ---
-# <a name="onboard-to-defender-for-iot-agent-based-solution"></a>Durchführen des Onboardings für eine Agent-basierte Lösung für Azure Defender für IoT
+# <a name="quickstart-onboard-defender-for-iot-to-an-agent-based-solution"></a>Schnellstart: Durchführen des Onboardings für Defender für IoT in einer Agent-basierten Lösung
 
 In diesem Artikel erfahren Sie, wie Sie den Dienst „Defender für IoT“ in Ihrer IoT Hub-Instanz aktivieren. Besitzen Sie derzeit keine IoT Hub-Instanz, lesen Sie zum Einstieg die Informationen unter [Erstellen eines IoT Hubs über das Portal](../iot-hub/iot-hub-create-through-portal.md).
 
@@ -35,7 +35,11 @@ Sie können Ihre IoT-Sicherheit über die IoT Hub-Instanz in Defender für IoT 
 > [!NOTE]
 > Von Defender für IoT werden derzeit nur IoT Hub-Instanzen im Standard-Tarif unterstützt.
 
-## <a name="onboard-to-defender-for-iot-in-iot-hub"></a>Durchführen des Onboardings für Defender für IoT in IoT Hub
+## <a name="prerequisites"></a>Voraussetzungen
+
+Keine
+
+## <a name="onboard-defender-for-iot-to-an-iot-hub"></a>Durchführen des Onboardings für Defender für IoT in einer IoT Hub-Instanz
 
 Für alle neuen IoT-Hubs ist Defender für IoT standardmäßig auf **Ein** festgelegt. Sie können überprüfen, ob Defender für IoT während des IoT Hub Erstellungsvorgangs auf **Ein** festgelegt wird.
 
@@ -55,14 +59,23 @@ So überprüfen Sie, ob die Umschaltfläche auf **Ein** festgelegt ist:
 
 ## <a name="onboard-defender-for-iot-to-an-existing-iot-hub"></a>Durchführen des Onboardings für Defender für IoT in eine vorhandene IoT Hub-Instanz
 
-Sie können die Identitätsverwaltung Ihres Geräts und die Kommunikationsmuster zwischen Gerät und Cloud sowie zwischen Cloud und Gerät überwachen. Führen Sie dazu die folgenden Schritte zum Starten des Diensts aus: 
+Sie können das Onboarding für Defender für IoT in einer vorhandenen IoT Hub-Instanz durchführen. Dort können Sie dann die Identitätsverwaltung Ihres Geräts und die Kommunikationsmuster zwischen Gerät und Cloud sowie zwischen Cloud und Gerät überwachen.
 
-1. Navigieren Sie zu IoT Hub. 
+So führen Sie das Onboarding für Defender für IoT in einer vorhandenen IoT Hub-Instanz durch:
 
-1. Wählen Sie das Menü  **Sicherheitsübersicht** aus. 
+1. Navigieren Sie zur Instanz von IoT Hub. 
 
-1. Klicken Sie auf „Schützen Ihrer IoT-Lösung“, und füllen Sie das Formular zum Onboarding aus. 
+1. Wählen Sie die IoT Hub-Instanz für das Onboarding aus.
 
+1. Wählen Sie im Abschnitt **Sicherheit** eine beliebige Option aus.
+
+1. Klicken Sie auf  **IoT-Lösung schützen**, und füllen Sie das Formular zum Onboarding aus. 
+
+    :::image type="content" source="media/quickstart-onboard-iot-hub/secure-your-iot-solution.png" alt-text="Auswählen der Schaltfläche „IoT-Lösung schützen“ zum Schützen Ihrer Lösung":::
+
+Die Schaltfläche **IoT-Lösung schützen** wird nur angezeigt, wenn das Onboarding für die IoT Hub-Instanz noch nicht durchgeführt wurde oder wenn beim Onboarding die Umschaltfläche für Defender für IoT auf **Aus** festgelegt blieb.
+
+:::image type="content" source="media/quickstart-onboard-iot-hub/toggle-is-off.png" alt-text="Umschaltfläche während des Onboardings auf „Aus“ festgelegt":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

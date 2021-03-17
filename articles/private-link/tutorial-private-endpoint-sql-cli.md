@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Herstellen einer Verbindung mit einem Azure SQL-Server über einen privaten Azure-Endpunkt – Azure CLI'
+title: 'Tutorial: Herstellen einer Verbindung mit einem Azure SQL-Server über einen privaten Azure-Endpunkt – Azure CLI'
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe der Azure CLI einen Azure SQL-Server mit einem privaten Endpunkt erstellen.
 services: private-link
 author: asudbring
@@ -7,14 +7,15 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: allensu
-ms.openlocfilehash: 8cfe44b9433ee1daac028253aa45c97804c88ae5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 998b52a23894dcb7fa08b2c0fd42e4ef8e3678ae
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544104"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554988"
 ---
-# <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-cli"></a>Tutorial: Herstellen einer Verbindung mit einem Azure SQL-Server über einen privaten Azure-Endpunkt – Azure CLI
+# <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-cli"></a>Tutorial: Herstellen einer Verbindung mit einem Azure SQL-Server über einen privaten Azure-Endpunkt – Azure CLI
 
 Der private Azure-Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren.
 
@@ -227,8 +228,8 @@ Sie erstellen eine DNS-Zonengruppe mit [az network private-endpoint dns-zone-gro
 * Virtuelles Netzwerk: **myVNet**
 * Ressourcengruppe: **CreateSQLEndpointTutorial-rg**
 * DNS-Link mit dem Namen **myDNSLink**
-* **myPrivateEndpoint** zugeordnet
-* Zonengruppe mit dem Namen **MyZoneGroup**
+* Zugeordnet zu: **myPrivateEndpoint**
+* Zonengruppe: **MyZoneGroup**
 
 ```azurecli-interactive
 az network private-dns zone create \
@@ -327,6 +328,6 @@ In diesem Tutorial haben Sie Folgendes erstellt:
 
 Sie haben den virtuellen Computer verwendet, um die Konnektivität mit dem SQL-Server über den privaten Endpunkt auf sichere Weise zu testen.
 
-Erfahren Sie mehr über den Private Link-Dienst:
+Im nächsten Schritt können Sie sich das Architekturszenario für eine **Web-App mit privater Verbindung mit Azure SQL-Datenbank** ansehen. Darin wird eine Webanwendung außerhalb des virtuellen Netzwerks mit dem privaten Endpunkt einer Datenbank verbunden.
 > [!div class="nextstepaction"]
-> [Erstellen eines Private Link-Diensts](create-private-link-service-portal.md)
+> [Private Konnektivität von Web-Apps mit Azure SQL-Datenbank](/azure/architecture/example-scenario/private-web-app/private-web-app)

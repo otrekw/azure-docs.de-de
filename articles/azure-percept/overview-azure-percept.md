@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: overview
 ms.date: 02/18/2021
 ms.custom: template-overview
-ms.openlocfilehash: 85b7f3a62324bc93cd78649cd39e0f4dc7d0baed
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: fd332ffbbca4987b52ce380c6fd893571e65fb1c
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098195"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435459"
 ---
 # <a name="introduction-to-azure-percept"></a>Einführung in Azure Percept
 
@@ -38,11 +38,11 @@ Die Hauptkomponenten von Azure Percept sind:
 
 3. Dienste und Workflows zum Beschleunigen der Entwicklung bahnbrechender KI-Modelle und -Lösungen.
 
-    - Entwicklungsworkflows und vorgefertigte Modelle, auf die aus Azure Percept Studio zugegriffen werden kann.
+    - Entwicklungsworkflows und vorgefertigte Modelle, auf die aus [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) zugegriffen werden kann
     - Modellentwicklungsdienste
     - Skalierbare Geräteverwaltungsdienste.
     - End-to-End-Sicherheit.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erste Schritte mit [Azure Percept DK](./overview-azure-percept-dk.md).
+Erste Schritte mit [Azure Percept DK](./overview-azure-percept-dk.md). 

@@ -1,17 +1,17 @@
 ---
 title: 'Tutorial: Device Update for Azure IoT Hub unter Verwendung des Raspberry Pi 3 B+ Yocto-Referenzimages | Microsoft-Dokumentation'
 description: Erste Schritte mit Device Update for Azure IoT Hub unter Verwendung des Raspberry Pi 3 B+ Yocto-Referenzimages.
-author: vimeht
-ms.author: vimeht
+author: valls
+ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: bb992e4f33cc833411e7cce560f71adf1dc72076
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ca689df97e7268a5c0f7c0479e6514b98ffda9f2
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658832"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443453"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Device Update for Azure IoT Hub unter Verwendung des Raspberry Pi 3 B+-Referenzimages
 
@@ -143,13 +143,11 @@ Verwenden Sie diese Versionsnummer im nachfolgenden Schritt „Import Update“ 
 
 ## <a name="import-update"></a>Importieren des Updates
 
-1. Wählen Sie in der linken Navigationsleiste unter „Automatic Device Management“ (Automatische Geräteverwaltung) die Option „Device Updates“ aus.
-
-2. Wählen Sie die Registerkarte „Updates“ aus.
-
-3. Wählen Sie „+ Import New Update“ (Neues Update importieren) aus.
-
-4. Wählen Sie das Ordnersymbol oder das Textfeld unter „Select an Import Manifest File“ (Importmanifestdatei auswählen) aus. Es wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie das zuvor heruntergeladene Importmanifest aus. Wählen Sie dann das Ordnersymbol oder das Textfeld unter „Select one or more update files“ (Mindestens eine Updatedatei auswählen) aus. Es wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie die zuvor heruntergeladene apt-Manifestupdatedatei aus.
+1. Erstellen Sie anhand [dieser Anweisungen](import-update.md) ein Importmanifest.
+2. Wählen Sie in der linken Navigationsleiste unter „Automatic Device Management“ (Automatische Geräteverwaltung) die Option „Device Updates“ aus.
+3. Wählen Sie die Registerkarte „Updates“ aus.
+4. Wählen Sie „+ Import New Update“ (Neues Update importieren) aus.
+5. Wählen Sie das Ordnersymbol oder das Textfeld unter „Select an Import Manifest File“ (Importmanifestdatei auswählen) aus. Daraufhin wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie das weiter oben erstellte Importmanifest aus.  Wählen Sie als Nächstes das Ordnersymbol oder das Textfeld unter „Select one or more update files“ (Mindestens eine Updatedatei auswählen) aus. Daraufhin wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie die Updatedatei aus, die Sie auf Ihren IoT-Geräten bereitstellen möchten.
    
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="Screenshot: Auswahl der Updatedatei." lightbox="media/import-update/select-update-files.png":::
 

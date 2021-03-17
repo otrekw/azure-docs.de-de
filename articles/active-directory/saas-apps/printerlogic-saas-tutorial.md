@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 02/25/2021
 ms.author: jeedes
-ms.openlocfilehash: b471e113a7e5ae2277e275d53ff8ac8ca9187d1d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 23b534f1ccbd51b028beeee173e5c3e0accd47a3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731218"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486130"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-printerlogic-saas"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit PrinterLogic SaaS
 
@@ -40,7 +40,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * PrinterLogic SaaS unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
 * PrinterLogic SaaS unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
-## <a name="adding-printerlogic-saas-from-the-gallery"></a>Hinzufügen von PrinterLogic SaaS aus dem Katalog
+## <a name="add-printerlogic-saas-from-the-gallery"></a>Hinzufügen von PrinterLogic SaaS aus dem Katalog
 
 Zum Konfigurieren der Integration von PrinterLogic SaaS in Azure AD müssen Sie PrinterLogic SaaS aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -146,17 +146,16 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 #### <a name="sp-initiated"></a>SP-initiiert:
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Daraufhin werden Sie zur Anmelde-URL für AskYourTeam weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für PrinterLogic SaaS weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
 
-* Navigieren Sie direkt zur Anmelde-URL für AskYourTeam, und initiieren Sie den Anmeldeflow.
+* Rufen Sie direkt die PrinterLogic SaaS-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
 #### <a name="idp-initiated"></a>IDP-initiiert:
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der AskYourTeam-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der PrinterLogic SaaS-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „AskYourTeam“ in „Meine Apps“ geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der AskYourTeam-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
-
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „PrinterLogic SaaS“ in „Meine Apps“ geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der PrinterLogic SaaS-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von PrinterLogic SaaS können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von PrinterLogic SaaS können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

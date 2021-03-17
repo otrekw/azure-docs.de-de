@@ -3,17 +3,17 @@ title: Neuheiten in Windows Virtual Desktop - Azure
 description: Neue Features und Produktupdates für Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: overview
-ms.date: 01/29/2021
+ms.date: 02/23/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 1deec49cfeca65628485ed105e0919f2c2b18b17
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: c0b4ad17c5aefe29a313b9eaf75fc87ce4d88720
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575312"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499882"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Neuheiten in Windows Virtual Desktop
 
@@ -39,6 +39,26 @@ Lesen Sie die folgenden Artikel, um sich über die Updates für unsere Clients f
 ## <a name="fslogix-updates"></a>FSLogix-Updates
 
 Sie sind neugierig auf die neuesten Updates für FSLogix? Informieren Sie sich über die [Neuerungen für FSLogix](/fslogix/whats-new).
+
+## <a name="february-2021"></a>Februar 2021
+
+Hier sind die Änderungen angegeben, die im Februar 2021 vorgenommen wurden.
+
+### <a name="portal-experience"></a>Portalfunktion
+
+Wir haben die Benutzeroberfläche des Azure-Portals wie folgt verbessert:
+
+- Massenausgleichsmodus auf Hosts auf der Registerkarte mit dem Sitzungshostraster. 
+- MSIX-Feature zum Anfügen von Apps ist jetzt für die öffentliche Vorschau verfügbar.
+- Fehler in Hostpoolübersicht für dunklen Modus behoben.
+
+### <a name="eu-metadata-storage-now-in-public-preview"></a>EU-Metadatenspeicher befindet sich jetzt in der öffentlichen Vorschauphase
+
+Wir hosten jetzt eine öffentliche Vorschauversion für Europa (EU) als Speicheroption für Dienstmetadaten in Windows Virtual Desktop. Kunden können beim Erstellen ihrer Dienstobjekte zwischen „Europa, Westen“ und „Europa, Norden“ wählen. Die Dienstobjekte und Metadaten für die Hostpools werden jeweils in der Azure-Geografie gespeichert, die den einzelnen Regionen zugeordnet ist. Weitere Informationen finden Sie in [unserem Blogbeitrag zur Ankündigung der öffentlichen Vorschauversion](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/announcing-public-preview-of-windows-virtual-desktop-service/m-p/2143939).
+
+### <a name="teams-on-windows-virtual-desktop-plugin-updates"></a>Updates des Plug-Ins für Teams in Windows Virtual Desktop
+
+Wie haben die Qualität von Videoanrufen für das Windows Virtual Desktop-Plug-In verbessert, indem wir die am häufigsten gemeldeten Probleme behoben haben. Beispiele hierfür sind die Fälle, in denen der Bildschirm plötzlich dunkel wurde oder das Video und der Ton nicht mehr synchron waren. Aufgrund dieser Verbesserungen sollte bei der Einzelanzeige von Videos mit Wechsel zum jeweils aktiven Sprecher eine höhere Leistung erzielt werden. Wir haben auch ein Problem behoben, bei dem Hardwaregeräte mit Sonderzeichen in Teams nicht verfügbar waren.
 
 ## <a name="january-2021"></a>Januar 2021
 
@@ -228,7 +248,7 @@ Sie können nun den [Qualitätsschätzer](https://azure.microsoft.com/services/v
 
 - Azure Advisor ist jetzt Teil von Windows Virtual Desktop. Wenn Sie über das Azure-Portal auf Windows Virtual Desktop zugreifen, können Sie Empfehlungen zur Optimierung der Windows Virtual Desktop-Umgebung anzeigen. Weitere Informationen zu [Azure Advisor](azure-advisor.md)
 
-- Die Azure CLI unterstützt jetzt Windows Virtual Desktop (`az desktopvirtualization`), um Sie bei der Automatisierung der Windows Virtual Desktop-Bereitstellungen zu unterstützen. Eine Liste der Erweiterungsbefehle finden Sie unter [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest&preserve-view=true).
+- Die Azure CLI unterstützt jetzt Windows Virtual Desktop (`az desktopvirtualization`), um Sie bei der Automatisierung der Windows Virtual Desktop-Bereitstellungen zu unterstützen. Eine Liste der Erweiterungsbefehle finden Sie unter [desktopvirtualization](/cli/azure/ext/desktopvirtualization/).
 
 - Wir haben die Bereitstellungsvorlagen aktualisiert, damit sie vollständig mit den Azure Resource Manager-Schnittstellen von Windows Virtual Desktop kompatibel sind. Die Vorlagen finden Sie auf [GitHub](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates).
 
@@ -299,7 +319,7 @@ Wir haben dem Az-Modul von Azure PowerShell im Rahmen dieses Updates neue AzWvd-
 
 Folgen Sie zum Installieren des Modells den Anleitungen in [Einrichten des PowerShell-Moduls für Windows Virtual Desktop](powershell-module.md).
 
-Eine Liste der verfügbaren Befehle finden Sie auch in der [AzWvd PowerShell-Referenz](/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization&preserve-view=true).
+Eine Liste der verfügbaren Befehle finden Sie auch in der [AzWvd PowerShell-Referenz](/powershell/module/az.desktopvirtualization/#desktopvirtualization).
 
 Weitere Informationen zu den neuen Features finden Sie in [unserem Blogbeitrag](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245).
 

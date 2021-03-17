@@ -6,19 +6,19 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: dac59fb5262cc55acfbabedd304913fc7ac57751
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 11daa548e90aa1906ba87e081fa1e0be6fe6aff8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747685"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430767"
 ---
 # <a name="quickstart-configure-a-hybrid-cluster-with-azure-managed-instance-for-apache-cassandra-preview"></a>Schnellstart: Konfigurieren eines Hybridclusters mit Azure Managed Instance for Apache Cassandra (Vorschauversion)
 
-Azure Managed Instance for Apache Cassandra verfügt über automatisierte Bereitstellungs- und Skalierungsvorgänge für verwaltete Open-Source-basierte Apache Cassandra-Rechenzentren. Dieser Dienst unterstützt Sie dabei, Hybridszenarien zu beschleunigen und den Aufwand für die laufende Wartung zu verringern.
+Azure Managed Instance for Apache Cassandra verfügt über automatisierte Bereitstellungs- und Skalierungsvorgänge für verwaltete Open-Source-basierte Apache Cassandra-Rechenzentren. Dieser Dienst unterstützt Sie dabei, Hybridszenarien zu beschleunigen und die laufende Wartung zu verringern.
 
 > [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra befindet sich derzeit in der öffentlichen Vorschauphase.
+> Azure Managed Instance for Apache Cassandra befindet sich derzeit in der Public Preview-Phase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -39,20 +39,14 @@ In dieser Schnellstartanleitung wird veranschaulicht, wie Sie die Azure CLI-Befe
    :::image type="content" source="./media/configure-hybrid-cluster/subnet.png" alt-text="Hinzufügen eines neuen Subnetzes zu Ihrem virtuellen Netzwerk" lightbox="./media/configure-hybrid-cluster/subnet.png" border="true":::
     <!-- ![image](./media/configure-hybrid-cluster/subnet.png) -->
 
-1. Als Nächstes wenden wir über die Azure CLI einige spezielle Berechtigungen auf das VNET und das Subnetz an, die für die Cassandra Managed Instance benötigt werden. Zunächst müssen wir die `Resource ID` für Ihr vorhandenes VNET ermitteln. Kopieren Sie den von diesem Befehl ausgegebenen Wert zur späteren Verwendung. Dies ist die `Resource ID`.
+1. Als Nächstes wenden wir über die Azure CLI einige spezielle Berechtigungen auf das VNET und das Subnetz an, die für die Cassandra Managed Instance benötigt werden. Verwenden Sie den Befehl `az role assignment create`, und ersetzen Sie `<subscription ID>`, `<resource group name>`, `<VNet name>` und `<subnet name>` durch die entsprechenden Werte:
 
    ```azurecli-interactive
-    # discover the vnet id
-    az network vnet show -n <your VNet name> -g <Resource Group Name> --query "id" --output tsv
+   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>
    ```
 
-1. Nun wenden wir die speziellen Berechtigungen an, indem wir die Ausgabe des vorherigen Befehls als Bereichsparameter (scope) übergeben:
-
-   ```azurecli-interactive
-    az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope <Resource ID>
-   ```
-    > [!NOTE]
-    > Die obigen Werte `assignee` und `role` sind feststehende Dienstprinzipal- bzw. Rollenbezeichner. 
+   > [!NOTE]
+   > Die Werte `assignee` und `role` im vorherigen Befehl sind feste Dienstprinzipal- bzw. Rollenbezeichner.
 
 1. Als Nächstes konfigurieren wir Ressourcen für unseren Hybridcluster. Da Sie bereits über einen Cluster verfügen, dient der Clustername hier nur als logische Ressource zum Identifizieren des Namens Ihres vorhandenen Clusters. Achten Sie darauf, dass Sie den Namen Ihres vorhandenen Clusters verwenden, wenn Sie die Variablen `clusterName` und `clusterNameOverride` im folgenden Skript definieren.
 
@@ -150,7 +144,7 @@ In dieser Schnellstartanleitung wird veranschaulicht, wie Sie die Azure CLI-Befe
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Falls Sie diesen Managed Instance-Cluster nicht weiterverwenden möchten, sollten Sie ihn wie folgt löschen:
+Falls Sie diesen Managed Instance-Cluster nicht mehr benötigen, löschen Sie ihn wie folgt:
 
 1. Wählen Sie im linken Menü des Azure-Portals die Option **Ressourcengruppen** aus.
 1. Wählen Sie in der Liste die Ressourcengruppe aus, die Sie für diesen Schnellstart erstellt haben.

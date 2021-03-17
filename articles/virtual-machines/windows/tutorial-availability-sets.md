@@ -1,22 +1,22 @@
 ---
-title: 'Tutorial: Hochverfügbarkeit für virtuelle Windows-Computer in Azure'
-description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Bereitstellen hoch verfügbarer virtueller Computer in Verfügbarkeitsgruppen verwenden.
-services: virtual-machines-windows
-author: cynthn
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.topic: tutorial
-ms.date: 11/30/2018
-ms.author: cynthn
+title: Bereitstellen von virtuellen Computern in einer Verfügbarkeitsgruppe mithilfe von Azure PowerShell
+description: Hier erfahren Sie, wie Sie Azure PowerShell zum Bereitstellen hochverfügbarer virtueller Computer in Verfügbarkeitsgruppen verwenden.
+services: virtual-machines
+author: mimckitt
+ms.service: virtual-machines
+ms.topic: how-to
+ms.date: 3/8/2021
+ms.author: mimckitt
+ms.reviewer: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e1c9cf0a60446fba6fae5c850231b0805e7ea135
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 178a29ea37195ddd2013ca5220663a75132beb24
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736651"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555906"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Tutorial: Erstellen und Bereitstellen hoch verfügbarer virtueller Computer mit Azure PowerShell
+# <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-powershell"></a>Erstellen und Bereitstellen virtueller Computer in einer Verfügbarkeitsgruppe mithilfe von Azure PowerShell
 
 In diesem Tutorial erfahren Sie, wie Sie die Verfügbarkeit und Zuverlässigkeit Ihrer virtuellen Computer mithilfe von Verfügbarkeitsgruppen erhöhen. Verfügbarkeitsgruppen sorgen dafür, dass die von Ihnen in Azure bereitgestellten virtuellen Computer auf mehrere isolierte Hardwareknoten in einem Cluster verteilt werden. 
 
@@ -28,14 +28,6 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Überprüfen der verfügbaren VM-Größen
 > * Überprüfen des Azure Advisor
 
-
-## <a name="availability-set-overview"></a>Übersicht über Verfügbarkeitsgruppen
-
-Eine Verfügbarkeitsgruppe ist eine Funktion zur logischen Gruppierung, um VM-Ressourcen bei ihrer Bereitstellung voneinander zu isolieren. Azure stellt sicher, dass die virtuellen Computer innerhalb einer Verfügbarkeitsgruppe auf mehrere physische Server, Computeracks, Speichereinheiten und Netzwerkswitches verteilt werden. Bei einem Hardware- oder Softwarefehler ist nur ein Teil der virtuellen Computer betroffen, sodass Ihre Lösung weiterhin verwendet werden kann. Verfügbarkeitsgruppen sind für das Erstellen zuverlässiger Cloudlösungen unverzichtbar.
-
-In einer typischen VM-basierten Lösung gibt es unter Umständen vier Front-End-Webserver und zwei Back-End-VMs. Sie können in Azure zwei Verfügbarkeitsgruppen definieren, bevor Sie Ihre virtuellen Computer bereitstellen: eine für die Webebene und eine für die Back-End-Ebene. Wenn Sie einen neuen virtuellen Computer erstellen, geben Sie die Verfügbarkeitsgruppe als Parameter an. Azure stellt sicher, dass die virtuellen Computer über mehrere physische Hardwareressourcen isoliert werden. Wenn bei der physischen Hardware, auf der einer Ihrer Server ausgeführt wird, ein Problem auftritt, können Sie darauf vertrauen, dass die anderen Instanzen Ihrer Server weiterhin einwandfrei ausgeführt werden, da sie sich auf anderer Hardware befinden.
-
-Verwenden Sie Verfügbarkeitsgruppen, wenn Sie zuverlässige VM-basierte Lösungen in Azure bereitstellen möchten.
 
 ## <a name="launch-azure-cloud-shell"></a>Starten von Azure Cloud Shell
 

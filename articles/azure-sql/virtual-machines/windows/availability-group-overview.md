@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 213b973bfc93cb2237473b6bc4c7f1e138457409
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 8bbd56499c9b62248662fc5e8df0d5b3e1b672d4
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131898"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504166"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always On-Verfügbarkeitsgruppe für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Das folgende Diagramm veranschaulicht eine Verfügbarkeitsgruppe für SQL Server
 
 ## <a name="vm-redundancy"></a>VM-Redundanz 
 
-Zur Verbesserung der Redundanz und Verfügbarkeit sollten sich die virtuellen SQL Server-Computer entweder in der gleichen [Verfügbarkeitsgruppe](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview) oder in unterschiedlichen [Verfügbarkeitszonen](../../../availability-zones/az-overview.md) befinden.
+Zur Verbesserung der Redundanz und Verfügbarkeit sollten sich die virtuellen SQL Server-Computer entweder in der gleichen [Verfügbarkeitsgruppe](../../../virtual-machines/availability-set-overview.md) oder in unterschiedlichen [Verfügbarkeitszonen](../../../availability-zones/az-overview.md) befinden.
 
 Die Platzierung mehrerer virtueller Computer in der gleichen Verfügbarkeitsgruppe dient zum Schutz vor Ausfällen in einem Rechenzentrum infolge von Hardwarefehlern, da virtuelle Computer in einer Verfügbarkeitsgruppe nicht die gleichen Ressourcen verwenden, sowie vor Ausfällen infolge von Updates, da virtuelle Computer innerhalb einer Verfügbarkeitsgruppe nicht gleichzeitig aktualisiert werden. Verfügbarkeitszonen schützen vor dem Ausfall eines gesamten Rechenzentrums. Die einzelnen Zonen stellen jeweils eine Gruppe von Rechenzentren innerhalb einer Region dar.  Durch die Platzierung von Ressourcen in unterschiedlichen Verfügbarkeitszonen wird sichergestellt, dass durch einen Ausfall auf Rechenzentrumsebene nicht alle Ihre virtuellen Computer offline geschaltet werden.
 
@@ -51,6 +51,7 @@ Bei einer herkömmlichen lokalen Bereitstellung stellen Clients über den Namen 
 
 Konfigurieren Sie bei SQL Server auf Azure-VMs einen [Lastenausgleich](availability-group-vnn-azure-load-balancer-configure.md) zum Weiterleiten von Datenverkehr an den Verfügbarkeitsgruppenlistener. Unter SQL Server 2019 CU8 und höher können Sie alternativ einen [DNN-Listener](availability-group-distributed-network-name-dnn-listener-configure.md) (Distributed Network Name, Name des verteilten Netzwerks) konfigurieren, um den herkömmlichen VNN-Verfügbarkeitsgruppenlistener zu ersetzen. 
 
+Weitere Informationen zu den Optionen für Clusterkonnektivität finden Sie unter [Weiterleiten von HADR-Verbindungen an SQL Server auf Azure-VMs](hadr-cluster-best-practices.md#connectivity). 
 
 ### <a name="vnn-listener"></a>VNN-Listener 
 

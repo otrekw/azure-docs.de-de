@@ -7,14 +7,14 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
-ms.openlocfilehash: 50535ab9ac2a3541ade7b9abd8f355bbeaf6d4b3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 63daa7cda2f10448e9a0f8e250412137dc2af892
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365003"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563896"
 ---
-# <a name="quickstart-create-a-redis-enterprise-cache-preview"></a>Schnellstart: Erstellen einer Redis Cache-Instanz im Enterprise-Tarif (Vorschau)
+# <a name="quickstart-create-a-redis-enterprise-cache"></a>Schnellstart: Erstellen einer Redis Cache-Instanz im Enterprise-Tarif
 
 Enterprise-Tarife für Azure Cache for Redis bieten vollständig integrierte und verwaltete Instanzen von [Redis Enterprise](https://redislabs.com/redis-enterprise/) in Azure. Sie sind derzeit als Vorschau verfügbar. In dieser Vorschau stehen zwei neue Tarife zur Verfügung:
 * Enterprise: Bei diesem Tarif wird flüchtiger Speicher (DRAM) auf einem virtuellen Computer als Datenspeicher verwendet.
@@ -22,7 +22,7 @@ Enterprise-Tarife für Azure Cache for Redis bieten vollständig integrierte und
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen ein Azure-Abonnement. Erstellen Sie ein [Konto](https://azure.microsoft.com/), falls Sie noch keines haben. Weitere Informationen finden Sie unter [Anforderungen für den Enterprise-Tarif](cache-overview.md#enterprise-and-enterprise-flash-tier-requirements).
+Sie benötigen ein Azure-Abonnement. Erstellen Sie ein [Konto](https://azure.microsoft.com/), falls Sie noch keines haben. Weitere Informationen finden Sie unter [Spezielle Überlegungen zu Enterprise-Tarifen](cache-overview.md#special-considerations-for-enterprise-tiers).
 
 ## <a name="create-a-cache"></a>Erstellen eines Caches
 1. Melden Sie sich zum Erstellen eines Caches über den Link in Ihrer Vorschaueinladung beim Azure-Portal an, und wählen Sie **Ressource erstellen** aus.
@@ -41,7 +41,7 @@ Sie benötigen ein Azure-Abonnement. Erstellen Sie ein [Konto](https://azure.mic
    | **Standort** | Öffnen Sie die Dropdownliste, und wählen Sie einen Standort aus. | Enterprise-Tarife sind während der Vorschauphase in eingeschränkten Azure-Regionen verfügbar. |
    | **Cachetyp** | Wählen Sie in der Dropdownliste einen Tarif vom Typ *Enterprise* oder *Enterprise Flash* sowie eine Größe aus. |  Der Tarif bestimmt Größe, Leistung und verfügbare Features für den Cache. |
    
-   :::image type="content" source="media/cache-create/enterprise-tier-basics.png" alt-text="Enterprise-Tarif: Grundeinstellungen":::
+   :::image type="content" source="media/cache-create/enterprise-tier-basics.png" alt-text="Enterprise-Tarif: Registerkarte „Grundlagen“":::
 
    > [!NOTE] 
    > Aktivieren Sie das Kontrollkästchen unter „Bestimmungen“, bevor Sie fortfahren.
@@ -49,25 +49,15 @@ Sie benötigen ein Azure-Abonnement. Erstellen Sie ein [Konto](https://azure.mic
 
 1. Wählen Sie **Weiter: Netzwerk** aus, und überspringen Sie den Schritt.
 
-   > [!NOTE] 
-   > Die Option für die private Verbindung wird derzeit eingeführt und ist möglicherweise nicht sofort in Ihrer Region verfügbar.
-   >
+1. Klicken Sie auf **Weiter: Erweitert**, und legen Sie **Clustering policy** (Clusteringrichtlinie) auf **Enterprise** fest. Aktivieren Sie **Nur Nicht-TLS-Zugriff**, wenn Sie beabsichtigen, eine Verbindung mit dem neuen Cache ohne Verwendung von TLS herzustellen. Dies ist wird jedoch nicht empfohlen.
 
-1. Klicken Sie auf **Weiter: Erweitert**, und legen Sie **Clustering policy** (Clusteringrichtlinie) auf **Enterprise** fest.
-   
-   Übernehmen Sie die Standardeinstellungen, oder ändern Sie sie bei Bedarf. Wenn Sie **Nur Zugriff über TLS zulassen** aktivieren, müssen Sie TLS verwenden, um von Ihrer Anwendung aus auf den neuen Cache zuzugreifen.
+   :::image type="content" source="media/cache-create/enterprise-tier-advanced.png" alt-text="Enterprise-Tarif: Registerkarte „Erweitert“":::
 
-   :::image type="content" source="media/cache-create/enterprise-tier-advanced.png" alt-text="Enterprise-Tarif: Erweitert":::
-
-   > [!NOTE] 
-   > Redis-Module werden im Enterprise Flash-Tarif noch nicht unterstützt. Falls Sie ein Redis-Modul verwenden möchten, müssen Sie einen Cache mit Enterprise-Tarif auswählen.
-   >
-   
 1. Wählen Sie **Weiter: Tags** aus, und überspringen Sie den Schritt.
 
 1. Klicken Sie auf **Weiter: Überprüfen + erstellen**.
 
-   :::image type="content" source="media/cache-create/enterprise-tier-summary.png" alt-text="Enterprise-Tarif: Zusammenfassung":::
+   :::image type="content" source="media/cache-create/enterprise-tier-summary.png" alt-text="Enterprise-Tarif: Registerkarte „Überprüfen und erstellen“":::
 
 1. Überprüfen Sie die Einstellungen, und klicken Sie auf **Erstellen**.
    

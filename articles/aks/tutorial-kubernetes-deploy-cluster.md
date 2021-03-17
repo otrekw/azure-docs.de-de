@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a8e0ddcd77c26a00cf784fb8c2372734314dc0bb
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: c39169c0531a73bd00db7de5fe393ef8c51c8c96
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250637"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509420"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Tutorial: Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)
 
@@ -35,7 +35,7 @@ AKS-Cluster können die rollenbasierte Zugriffssteuerung von Kubernetes (Kuberne
 
 Erstellen Sie mit [az aks create][] einen AKS-Cluster. Im folgenden Beispiel wird ein Cluster mit dem Namen *myAKSCluster* in der Ressourcengruppe mit dem Namen *myResourceGroup* erstellt. Diese Ressourcengruppe wurde im [vorherigen Tutorial][aks-tutorial-prepare-acr] in der Region *eastus* erstellt. Im folgenden Beispiel wird keine Region angegeben, sodass der AKS-Cluster auch in der Region *eastus* erstellt wird. Weitere Informationen zu Ressourcenbeschränkungen und regionaler Verfügbarkeit für AKS finden Sie unter [Kontingente, Größeneinschränkungen für virtuelle Computer und regionale Verfügbarkeit in Azure Kubernetes Service (AKS)][quotas-skus-regions].
 
-Damit ein AKS-Cluster mit anderen Azure-Ressourcen interagieren kann, wird automatisch ein Azure Active Directory-Dienstprinzipal erstellt, da Sie keinen angegeben haben. Hier wird diesem Dienstprinzipal die [Berechtigung zum Pullen von Images][container-registry-integration] aus der ACR-Instanz (Azure Container Registry) gewährt, die Sie im vorherigen Tutorial erstellt haben. Damit der Befehl erfolgreich ausgeführt werden kann, müssen Sie über die Rolle **Besitzer** oder **Azure-Kontoadministrator** für das Azure-Abonnement verfügen.
+Damit ein AKS-Cluster mit anderen Azure-Ressourcen interagieren kann, wird automatisch eine Clusteridentität erstellt, da Sie keine angegeben haben. Hier wird dieser Clusteridentität die [Berechtigung zum Pullen von Images][container-registry-integration] aus der ACR-Instanz (Azure Container Registry) gewährt, die Sie im vorherigen Tutorial erstellt haben. Damit der Befehl erfolgreich ausgeführt werden kann, müssen Sie über die Rolle **Besitzer** oder **Azure-Kontoadministrator** für das Azure-Abonnement verfügen.
 
 ```azurecli
 az aks create \

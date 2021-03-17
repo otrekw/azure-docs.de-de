@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/06/2020
+ms.date: 03/04/2021
 ms.author: justinha
-ms.openlocfilehash: 6da1d285440daa5d1d5a230905a77057728d4ae6
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 1619622ad9594f252c3d4cf5551704c6a788f9f8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256541"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564083"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne
 
@@ -110,7 +110,7 @@ Zur Verwendung von Secure LDAP wird der Netzwerkdatenverkehr mithilfe einer Publ
 * Ein **privater** Schlüssel wird auf die verwaltete Domäne angewendet.
     * Mit diesem privaten Schlüssel wird der Datenverkehr über Secure LDAP *entschlüsselt*. Der private Schlüssel sollte nur auf die verwaltete Domäne angewendet und nicht auf Clientcomputer verteilt werden.
     * Ein Zertifikat, das den privaten Schlüssel enthält, verwendet das Dateiformat *PFX*.
-    * Als Verschlüsselungsalgorithmus für das Zertifikat muss *TripleDES-SHA1* verwendet werden.
+    * Beim Exportieren des Zertifikats müssen Sie den Verschlüsselungsalgorithmus *TripleDES-SHA1* angeben. Dies gilt nur für die PFX-Datei und wirkt sich nicht auf den Algorithmus aus, der vom Zertifikat selbst verwendet wird. Beachten Sie, dass die Option *TripleDES-SHA1* erst ab Windows Server 2016 verfügbar ist.
 * Ein **öffentlicher** Schlüssel wird auf die Clientcomputer angewendet.
     * Mit diesem öffentlichen Schlüssel wird der Datenverkehr über Secure LDAP *verschlüsselt*. Der öffentliche Schlüssel kann auf Clientcomputer verteilt werden.
     * Zertifikate ohne privaten Schlüssel verwenden das Dateiformat *CER*.
@@ -151,6 +151,11 @@ Bevor Sie das im vorherigen Schritt erstellte digitale Zertifikat in Ihrer verwa
 1. Da dieses Zertifikat zum Entschlüsseln von Daten verwendet wird, sollten Sie den Zugriff sorgfältig steuern. Zum Schutz des Zertifikats kann ein Kennwort verwendet werden. Ohne das richtige Kennwort kann das Zertifikat nicht auf einen Dienst angewendet werden.
 
     Wählen Sie auf der Seite **Sicherheit** die Option **Kennwort** aus, um die *PFX*-Zertifikatdatei zu schützen. Als Verschlüsselungsalgorithmus muss *TripleDES-SHA1* verwendet werden. Geben Sie ein Kennwort ein, bestätigen Sie es, und klicken Sie auf **Weiter**. Dieses Kennwort wird im nächsten Abschnitt zum Aktivieren von Secure LDAP für Ihre verwaltete Domäne verwendet.
+
+    Wenn Sie für den Export das [PowerShell-Cmdlet „export-pfxcertificate2“](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) verwenden, müssen Sie das Flag *-CryptoAlgorithmOption* unter Verwendung von „TripleDES_SHA1“ übergeben.
+
+    ![Screenshot: Verschlüsseln des Kennworts](./media/tutorial-configure-ldaps/encrypt.png)
+
 1. Geben Sie auf der Seite **Zu exportierende Datei** den Dateinamen und den Speicherort für den Export des Zertifikats an, z. B. *C:\Benutzer\Kontoname\azure-ad-ds.pfx*. Notieren Sie sich das Kennwort und den Speicherort der *PFX*-Datei, da Sie diese Informationen in den nächsten Schritten benötigen.
 1. Klicken Sie auf der Überprüfungsseite auf **Fertig stellen**, um das Zertifikat in eine *PFX*-Zertifikatdatei zu exportieren. Wenn das Zertifikat erfolgreich exportiert wurde, wird ein Bestätigungsdialogfeld angezeigt.
 1. Lassen Sie die MMC für den nächsten Abschnitt geöffnet.
@@ -235,7 +240,7 @@ Erstellen Sie jetzt eine Regel, um eingehenden Secure LDAP-Zugriff über TCP-Por
     | `Source`                            | IP-Adressen |
     | IP-Quelladressen/CIDR-Bereiche | Eine gültige IP-Adresse oder ein gültiger IP-Adressbereich für Ihre Umgebung |
     | Source port ranges                | *            |
-    | Destination                       | Beliebig          |
+    | Destination                       | Any          |
     | Zielportbereiche           | 636          |
     | Protocol                          | TCP          |
     | Aktion                            | Allow        |

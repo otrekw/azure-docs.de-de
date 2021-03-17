@@ -1,28 +1,23 @@
 ---
-title: 'Tutorial: Hochverfügbarkeit für virtuelle Linux-Computer in Azure'
+title: Bereitstellen von virtuellen Computern in einer Verfügbarkeitsgruppe mithilfe der Azure CLI
 description: In diesem Tutorial erfahren Sie, wie Sie Azure CLI zum Bereitstellen hoch verfügbarer virtueller Computer in Verfügbarkeitsgruppen verwenden.
 documentationcenter: ''
-services: virtual-machines-linux
-author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.topic: tutorial
-ms.date: 01/17/2020
-ms.author: cynthn
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4b3817bd33c72ce6d1c3426aa8379101c84f5bc5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+services: virtual-machines
+author: mimckitt
+ms.service: virtual-machines
+ms.topic: how-to
+ms.date: 3/8/2021
+ms.author: mimckitt
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 6a54e0d808ef734a26a0fa309bd7367e73316856
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961509"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507064"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Tutorial: Erstellen und Bereitstellen hochverfügbarer virtueller Computer mit der Azure CLI
+# <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-cli"></a>Erstellen und Bereitstellen virtueller Computer in einer Verfügbarkeitsgruppe mithilfe der Azure CLI
 
 In diesem Tutorial erfahren Sie, wie Sie die Verfügbarkeit und Zuverlässigkeit Ihrer Lösungen für virtuelle Computer in Azure mithilfe von sogenannten Verfügbarkeitsgruppen erhöhen. Verfügbarkeitsgruppen sorgen dafür, dass die von Ihnen in Azure bereitgestellten virtuellen Computer auf mehrere isolierte Hardwarecluster verteilt werden. Hierdurch wird sichergestellt, dass sich Hardware- oder Softwarefehler in Azure nur auf einen Teil Ihrer VMs auswirken und die Lösung insgesamt verfügbar und betriebsbereit bleibt.
 
@@ -36,13 +31,6 @@ In diesem Tutorial lernen Sie Folgendes:
 Dieses Tutorial verwendet die CLI innerhalb des Diensts [Azure Cloud Shell](../../cloud-shell/overview.md), der ständig auf die neueste Version aktualisiert wird. Wählen Sie zum Öffnen von Cloud Shell oben in einem Codeblock die Option **Ausprobieren** aus.
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
-
-## <a name="overview"></a>Übersicht
-
-Eine Verfügbarkeitsgruppe ist eine Funktion zur logischen Gruppierung, mit der Sie in Azure sicherstellen können, dass die darin enthaltenen VM-Ressourcen voneinander isoliert sind, wenn sie in einem Azure-Datencenter bereitgestellt werden. Azure stellt sicher, dass die virtuellen Computer innerhalb einer Verfügbarkeitsgruppe auf mehrere physische Server, Compute-Racks, Speichereinheiten und Netzwerkswitches verteilt werden. Wenn ein Hardware- oder Softwarefehler in Azure auftritt, wird nur ein Teil Ihrer VMs beeinträchtigt, und die Anwendung insgesamt bleibt betriebsbereit und weiterhin für Ihre Kunden verfügbar. Verfügbarkeitsgruppen stellen eine wichtige Funktion für die Erstellung zuverlässiger Cloudlösungen dar.
-
-In einer typischen VM-basierten Lösung gibt es unter Umständen vier Front-End-Webserver und zwei Back-End-VMs, die eine Datenbank hosten. Sie können in Azure zwei Verfügbarkeitsgruppen definieren, bevor Sie Ihre virtuellen Computer bereitstellen: eine Verfügbarkeitsgruppe für die Ebene „Web“ und eine Verfügbarkeitsgruppe für die Ebene „Datenbank“. Bei der Erstellung einer neuen VM können Sie dann die Verfügbarkeitsgruppe als Parameter für den Befehl „az vm create“ angeben, damit Azure automatisch sicherstellt, dass die in der Verfügbarkeitsgruppe erstellten VMs über mehrere physische Hardwareressourcen isoliert werden. Wenn bei der physischen Hardware, auf der Ihre Webserver- oder Datenbankserver-VMs ausgeführt werden, ein Problem auftritt, können Sie darauf vertrauen, dass die anderen Instanzen Ihrer Webserver- und Datenbank-VMs weiterhin einwandfrei ausgeführt werden, da sie sich auf anderer Hardware befinden.
-
 
 ## <a name="create-an-availability-set"></a>Verfügbarkeitsgruppe erstellen
 
@@ -116,5 +104,5 @@ Im nächsten Tutorial erhalten Sie Informationen zu VM-Skalierungsgruppen.
 > [Erstellen einer VM-Skalierungsgruppe](tutorial-create-vmss.md)
 
 * Weitere Informationen zu Verfügbarkeitszonen finden Sie in der [Dokumentation zu Verfügbarkeitszonen](../../availability-zones/az-overview.md).
-* [Hier](../manage-availability.md) finden Sie weitere Dokumentationen zu Verfügbarkeitsgruppen und -zonen.
+* [Hier](../availability.md) finden Sie weitere Dokumentationen zu Verfügbarkeitsgruppen und -zonen.
 * Wenn Sie Verfügbarkeitszonen ausprobieren möchten, sehen Sie sich den Artikel [Erstellen eines virtuellen Linux-Computers in einer Verfügbarkeitszone mit der Azure CLI](./create-cli-availability-zone.md) an.

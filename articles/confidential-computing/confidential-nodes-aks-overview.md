@@ -1,59 +1,54 @@
 ---
-title: 'Confidential Computing-Knoten in Azure Kubernetes Service (AKS): Public Preview'
+title: Confidential Computing-Knoten in Azure Kubernetes Service (AKS)
 description: Confidential Computing-Knoten in AKS
 services: virtual-machines
 author: agowdamsft
 ms.service: container-service
 ms.topic: overview
-ms.date: 9/22/2020
+ms.date: 2/08/2021
 ms.author: amgowda
-ms.openlocfilehash: 1b945ac9f656a227bcc3335cb0ec995626f98f77
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9205513c4eb7e377fee0c5d18577d76a82476cf2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564173"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553390"
 ---
-# <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Confidential Computing-Knoten in Azure Kubernetes Service (Public Preview)
+# <a name="confidential-computing-nodes-on-azure-kubernetes-service"></a>Confidential Computing-Knoten in Azure Kubernetes Service
 
-Mit [Azure Confidential Computing](overview.md) können Sie Ihre vertraulichen Daten während der Nutzung schützen. Die zugrunde liegenden Infrastrukturen schützen diese Daten mit einer hardwaregestützten vertrauenswürdigen Ausführungsumgebung für Container vor anderen Anwendungen, Administratoren und Cloudanbietern.
+Mit [Azure Confidential Computing](overview.md) können Sie Ihre vertraulichen Daten während der Nutzung schützen. Die zugrunde liegende Confidential Computing-Infrastruktur schützt diese Daten mit einer hardwaregestützten vertrauenswürdigen Ausführungsumgebung für Container vor anderen Anwendungen, Administratoren und Cloudanbietern. Das Hinzufügen von Confidential Computing-Knoten ermöglicht es Ihnen, eine Containeranwendung für die Ausführung in einer isolierten, per Hardware geschützten und attestierbaren Umgebung auszuwählen.
 
 ## <a name="overview"></a>Übersicht
 
-Azure Kubernetes Service (AKS) unterstützt das Hinzufügen von [DCsv2 Confidential Computing-Knoten](confidential-computing-enclaves.md) auf der Grundlage von Intel SGX. Auf diesen Knoten können vertrauliche Workloads in einer hardwarebasierten vertrauenswürdigen Ausführungsumgebung (Trusted Execution Environment, TEE) ausgeführt werden, indem für Code auf Benutzerebene das Zuordnen von privaten Arbeitsspeicherregionen zugelassen wird. Diese Regionen des privaten Arbeitsspeichers werden als Enklaven bezeichnet. Enklaven sind dafür ausgelegt, Code und Daten vor Prozessen zu schützen, die mit einer höheren Berechtigungsstufe ausgeführt werden. Mit dem SGX-Ausführungsmodell werden die Zwischenschichten des Gast- und Hostbetriebssystems und von Hypervisor entfernt. Das Modell für die *hardwarebasierte Ausführung mit containerspezifischer Isolierung* ermöglicht Anwendungen die direkte Ausführung mit der CPU, während der spezielle Arbeitsspeicherblock verschlüsselt bleibt. Confidential Computing-Knoten tragen zum allgemeinen Sicherheitsstatus von Containeranwendungen in AKS bei und stellen eine hervorragende Ergänzung der Defense-in-Depth-Strategie für Container dar. 
+Azure Kubernetes Service (AKS) unterstützt das Hinzufügen von [DCsv2 Confidential Computing-Knoten](confidential-computing-enclaves.md) auf der Grundlage von Intel SGX. Auf diesen Knoten können Sie vertrauliche Workloads in einer hardwarebasierten vertrauenswürdigen Ausführungsumgebung (Trusted Execution Environment, TEE) ausführen. In diesen Umgebungen können mit Code auf Benutzerebene aus Containern private Arbeitsspeicherregionen zugeordnet werden, um den Code direkt per CPU auszuführen. Diese privaten Arbeitsspeicherregionen, die direkt per CPU ausgeführt werden, werden als „Enclaves“ (Enklaven) bezeichnet. Enclaves tragen zum Schutz der Datenvertraulichkeit, Datenintegrität und Codeintegrität vor der Beeinträchtigung durch andere Prozesse bei, die auf denselben Knoten ausgeführt werden. Mit dem Intel SGX-Ausführungsmodell werden auch die Zwischenschichten des Gastbetriebssystems, Hostbetriebssystems und von Hypervisor entfernt, um die Angriffsfläche zu verkleinern. Das Modell für die *hardwarebasierte Ausführung mit containerspezifischer Isolierung* auf einem Knoten ermöglicht Anwendungen die direkte Ausführung mit der CPU, während der spezielle Arbeitsspeicherblock pro Container verschlüsselt bleibt. Confidential Computing-Knoten mit vertraulichen Containern sind ein wertvoller Beitrag zu Ihrer Zero-Trust-Sicherheitsplanung und Strategie für die tiefgehende Verteidigung von Containern.
 
 ![Übersicht über SGX-Knoten](./media/confidential-nodes-aks-overview/sgxaksnode.jpg)
 
 ## <a name="aks-confidential-nodes-features"></a>Features von vertraulichen AKS-Knoten
 
-- Hardwarebasierte Containerisolation auf Prozessebene über eine vertrauenswürdige SGX-Ausführungsumgebung (Trusted Execution Environment, TEE) 
+- Hardwarebasierte Containerisolation auf Prozessebene über eine vertrauenswürdige Intel SGX-Ausführungsumgebung (Trusted Execution Environment, TEE) 
 - Heterogene Knotenpoolcluster (Mischung aus vertraulichen und nicht vertraulichen Knotenpools)
-- Arbeitsspeicherbasierte Podplanung mit verschlüsseltem Seitencache (Encrypted Page Cache, EPC)
-- SGX DCAP-Treiber vorinstalliert
-- Intel FSGS-Patch vorinstalliert
-- Unterstützung der auf der CPU-Auslastung basierenden automatischen horizontalen Podskalierung und automatischen Clusterskalierung
-- Hilfsprogramm für Out-of-Proc-Nachweis über AKS-DaemonSet
+- Arbeitsspeicherbasierte Podplanung mit verschlüsseltem Seitencache (Encrypted Page Cache, EPC) (Add-On erforderlich)
+- Intel SGX DCAP-Treiber vorinstalliert
+- Auf CPU-Auslastung basierende horizontale automatische Podskalierung und automatische Clusterskalierung
 - Unterstützung für Linux-Container über Ubuntu 18.04 Gen2-VM-Workerknoten
 
-## <a name="aks-provided-daemon-sets-addon"></a>Von AKS bereitgestellte Daemonsets (Add-On)
+## <a name="confidential-computing-add-on-for-aks"></a>Confidential Computing-Add-On für AKS
+Das Add-On-Feature ermöglicht die Nutzung von zusätzlichen Funktionen in AKS, wenn im Cluster Pools mit Confidential Computing-Knoten ausgeführt werden. Mit diesem Add-On können die unten aufgeführten Features genutzt werden.
 
-#### <a name="sgx-device-plugin"></a>SGX-Geräte-Plug-In <a id="sgx-plugin"></a>
+#### <a name="azure-device-plugin-for-intel-sgx"></a>Azure-Geräte-Plug-In für Intel SGX <a id="sgx-plugin"></a>
 
-Mit dem SGX-Geräte-Plug-In wird die Plug-In-Schnittstelle des Kubernetes-Geräts für den EPC-Arbeitsspeicher implementiert. Mit diesem Plug-In wird der EPC-Arbeitsspeicher quasi zu einem zusätzlichen Ressourcentyp in Kubernetes. Benutzer können Grenzwerte für diese Ressource genauso wie für andere Ressourcen angeben. Neben der Planungsfunktion ermöglicht das Geräte-Plug-In auch die Zuweisung von SGX-Gerätetreiberberechtigungen für vertrauliche Workloadcontainer. Eine Beispielimplementierung der arbeitsspeicherbasierten EPC-Bereitstellung (`kubernetes.azure.com/sgx_epc_mem_in_MiB`) finden Sie [hier](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml).
+Mit dem Geräte-Plug-In wird die Kubernetes-Geräte-Plug-In-Schnittstelle für Arbeitsspeicher vom Typ „Verschlüsselter Seitencache“ (Encrypted Page Cache, EPC) implementiert, und die Gerätetreiber werden über die Knoten verfügbar gemacht. Mit diesem Plug-In wird der EPC-Arbeitsspeicher in Kubernetes quasi zu einem zusätzlichen Ressourcentyp. Benutzer können Grenzwerte für diese Ressource genauso wie für andere Ressourcen angeben. Neben der Planungsfunktion ermöglicht das Geräte-Plug-In auch die Zuweisung von Intel SGX-Gerätetreiberberechtigungen für vertrauliche Workloadcontainer. Mit diesem Plug-In können Entwickler die Einbindung der Intel SGX-Treibervolumes in die Bereitstellungsdateien vermeiden. Eine Beispielimplementierung der arbeitsspeicherbasierten EPC-Bereitstellung (`kubernetes.azure.com/sgx_epc_mem_in_MiB`) finden Sie [hier](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml).
 
-#### <a name="sgx-quote-helper-service"></a>SGX-Angebotshilfsdienst <a id="sgx-quote"></a>
 
-Für Enklavenanwendungen, bei denen ein Remotenachweis durchgeführt wird, muss ein ANGEBOT erstellt werden. Das ANGEBOT liefert den kryptografischen Nachweis der Identität und des Status der Anwendung sowie für die Umgebung, in der die Enklave ausgeführt wird. Die Erstellung des ANGEBOTS basiert auf bestimmten vertrauenswürdigen Softwarekomponenten von Intel, die Teil der SGX-Plattformsoftwarekomponenten (PSW/DCAP) sind. Diese Plattformsoftwarekomponenten werden als DaemonSet verpackt, das pro Knoten ausgeführt wird. Es kann beim Anfordern des ANGEBOTS von Enklaven-Apps zu Nachweiszwecken genutzt werden. Durch die Nutzung des von AKS bereitgestellten Diensts kann die Kompatibilität zwischen den Plattformsoftwarekomponenten und anderen Softwarekomponenten auf dem Host besser verwaltet werden. Lesen Sie die [weiteren Informationen](confidential-nodes-out-of-proc-attestation.md) zur Nutzung und zu den Featuredetails.
-
-## <a name="programming--application-models"></a>Programmier- und Anwendungsmodelle
+## <a name="programming-models"></a>Programmmodelle
 
 ### <a name="confidential-containers"></a>Vertrauliche Container
 
-In [vertraulichen Containern](confidential-containers.md) werden vorhandene Programme und die meisten Runtimes **gängiger Programmiersprachen** (Python, Node, Java usw.) sowie die jeweils vorhandenen Bibliotheksabhängigkeiten ausgeführt, ohne dass Quellcode geändert oder eine erneute Kompilierung durchgeführt werden muss. Dieses Modell ist das schnellste Modell mit aktivierter Vertraulichkeit über Open-Source-Projekte und Azure-Partner. Die Containerimages, die für die Ausführung in den sicheren Enklaven erstellt werden, werden als vertrauliche Container bezeichnet.
+Mit [vertraulichen Containern](confidential-containers.md) können Sie vorhandene unveränderte Containeranwendungen der meisten **gängigen Runtimes von Programmiersprachen** (Python, Node, Java usw.) auf vertrauliche Weise ausführen. Für dieses Paketerstellungsmodell müssen keine Änderungen des Quellcodes oder erneuten Kompilierungen durchgeführt werden. Dies ist der schnellste Weg zur Sicherstellung der Vertraulichkeit. Sie binden hierbei Ihre Docker-Standardcontainer in Pakete mit Open-Source-Projekten oder Azure-Partnerlösungen ein. Bei diesem Paketerstellungs- und Ausführungsmodell werden alle Teile der Containeranwendung in den vertrauenswürdigen Bereich (Enclave) geladen. Dieses Modell funktioniert gut für fertige Containeranwendungen, die auf dem Markt erhältlich sind, oder für benutzerdefinierte Apps, die derzeit auf universellen Knoten ausgeführt werden.
 
 ### <a name="enclave-aware-containers"></a>Für Enklaven geeignete Container
-
-AKS unterstützt Anwendungen, die für die Ausführung auf vertraulichen Knoten programmiert sind und für die **spezielle Anweisungssätze** über die SDKs und Frameworks verfügbar gemacht werden. Dieses Anwendungsmodell ermöglicht die beste Kontrolle über Ihre Anwendungen mit der kleinsten vertrauenswürdigen Computerbasis (Trusted Computing Base, TCB). [Erfahren Sie mehr](enclave-aware-containers.md) zu Containern, die für Enklaven geeignet sind.
+Für Confidential Computing-Knoten unter AKS werden auch Container unterstützt, die für die Ausführung in einer Enclave programmiert sind, um **spezielle Anweisungen** der CPU zu nutzen. Dieses Programmiermodell ermöglicht eine stärkere Kontrolle Ihres Ausführungsablaufs und erfordert die Verwendung von speziellen SDKs und Frameworks. Das Programmiermodell ermöglicht bei einer geringstmöglichen Basis für vertrauenswürdiges Computing (Trusted Computing Base, TCB) die beste Kontrolle über Ihre Anwendungsabläufe. Bei der Entwicklung von Enclave-fähigen Containern werden nicht vertrauenswürdige und vertrauenswürdige Teile einer Containeranwendung genutzt, sodass Sie den regulären Arbeitsspeicher und den EPC-Arbeitsspeicher (Encrypted Page Cache) verwalten können, in dem die Enclave ausgeführt wird. [Erfahren Sie mehr](enclave-aware-containers.md) zu Containern, die für Enklaven geeignet sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -62,6 +57,8 @@ AKS unterstützt Anwendungen, die für die Ausführung auf vertraulichen Knoten 
 [Schnellstart: Beispiele für vertrauliche Container](https://github.com/Azure-Samples/confidential-container-samples)
 
 [DCsv2: SKU-Liste](../virtual-machines/dcv2-series.md)
+
+[Tiefgehende Verteidigung mit vertraulichen Containern: Webinarsitzung](https://www.youtube.com/watch?reload=9&v=FYZxtHI_Or0&feature=youtu.be)
 
 <!-- LINKS - external -->
 [Azure Attestation]: ../attestation/index.yml

@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 476a88e41382842d91859d319a571784bd6e9b49
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ca1308c969227336bfb4970f7c5c77b9f2e0cc22
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742960"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216529"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service
 
-In diesem Tutorial erfahren Sie, wie Sie einen beliebigen <abbr title="Ein Domänenname, den Sie von einer Domänenregistrierungsstelle wie GoDaddy erworben haben, oder eine Unterdomäne Ihrer erworbenen Domäne.">benutzerdefinierten DNS-Domänennamen</abbr> zu <abbr title="Ein HTTP-basierter Dienst zum Hosten von Webanwendungen, REST-APIs und mobilen Back-End-Anwendungen">Azure App Service</abbr>zuordnen.
+In diesem Tutorial erfahren Sie, wie Sie einen beliebigen <abbr title="Ein Domänenname, den Sie von einer Domänenregistrierungsstelle wie GoDaddy erworben haben, oder eine Unterdomäne Ihrer erworbenen Domäne.">benutzerdefinierten DNS-Domänennamen</abbr> zu <abbr title="Ein HTTP-basierter Dienst zum Hosten von Webanwendungen, REST-APIs und mobilen Back-End-Anwendungen">Azure App Service</abbr>.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -27,6 +27,8 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Zuordnen einer Platzhalterdomäne per CNAME-Eintrag
 > * Umleiten der Standard-URL an ein benutzerdefiniertes Verzeichnis
 
+<hr/> 
+
 ## <a name="1-prepare-your-environment"></a>1. Vorbereiten der Umgebung
 
 * [Erstellen Sie eine App Service-App](./index.yml), oder verwenden Sie eine App, die Sie für ein anderes Tutorial erstellt haben.
@@ -34,18 +36,20 @@ In diesem Tutorial lernen Sie Folgendes:
 
     <details>
         <summary>Was benötige ich, um DNS-Einträge bearbeiten zu können?</summary>
-        Sie benötigen Zugriff auf die DNS-Registrierung für Ihren Domänenanbieter (beispielsweise GoDaddy). Wenn Sie also beispielsweise DNS-Einträge für „contoso.com“ und „www.contoso.com“ hinzufügen möchten, müssen Sie die DNS-Einstellungen für die Stammdomäne „contoso.com“ konfigurieren können.
+        Sie benötigen Zugriff auf die DNS-Registrierung für Ihren Domänenanbieter (beispielsweise GoDaddy). Um beispielsweise DNS-Einträge für <code>contoso.com</code> und <code>www.contoso.com</code> hinzuzufügen, müssen Sie die DNS-Einstellungen für die Stammdomäne <code>contoso.com</code> konfigurieren können.
     </details>
+
+<hr/> 
 
 ## <a name="2-prepare-the-app"></a>2. Vorbereiten der App
 
 Wenn Sie einer App einen benutzerdefinierten DNS-Namen zuordnen möchten, muss es sich beim <abbr title="Gibt den Standort, die Größe und die Features der Webserverfarm an, von der Ihre App gehostet wird.">App Service-Plan</abbr> der App um einen kostenpflichtigen Tarif handeln (also nicht um <abbr title="Ein Azure App Service-Tarif, in dem Ihre App auf den gleichen virtuellen Computern ausgeführt wird wie andere Apps (einschließlich Apps anderer Kunden). Dieser Tarif eignet sich für die Entwicklung und zu Testzwecken.">**Free (F1)**</abbr>). Weitere Informationen hierzu finden Sie in der [Übersicht über Azure App Service-Pläne](overview-hosting-plans.md).
 
-### <a name="sign-in-to-azure"></a>Anmelden bei Azure
+#### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Öffnen Sie das [Azure-Portal](https://portal.azure.com), und melden Sie sich mit Ihrem Azure-Konto an.
 
-### <a name="select-the-app-in-the-azure-portal"></a>Auswählen der App im Azure-Portal
+#### <a name="select-the-app-in-the-azure-portal"></a>Auswählen der App im Azure-Portal
 
 1. Suchen Sie nach **App Services**, und wählen Sie diese Option aus.
 
@@ -59,7 +63,7 @@ Wenn Sie einer App einen benutzerdefinierten DNS-Namen zuordnen möchten, muss e
 
 <a name="checkpricing" aria-hidden="true"></a>
 
-### <a name="check-the-pricing-tier"></a>Überprüfen des Tarifs
+#### <a name="check-the-pricing-tier"></a>Überprüfen des Tarifs
 
 1. Scrollen Sie im linken Bereich der App-Seite zum Abschnitt **Einstellungen**, und wählen Sie **Hochskalieren (App Service-Plan)** aus.
 
@@ -73,7 +77,7 @@ Wenn Sie einer App einen benutzerdefinierten DNS-Namen zuordnen möchten, muss e
 
 <a name="scaleup" aria-hidden="true"></a>
 
-### <a name="scale-up-the-app-service-plan"></a>Hochskalieren des App Service-Plans
+#### <a name="scale-up-the-app-service-plan"></a>Hochskalieren des App Service-Plans
 
 1. Wählen Sie einen der kostenpflichtigen Tarife aus (**D1**, **B1**, **B2**, **B3** oder einen beliebigen Tarif aus der Kategorie **Produktion**). Wählen Sie **Alle Optionen anzeigen** aus, um weitere Optionen anzuzeigen.
 
@@ -84,6 +88,8 @@ Wenn Sie einer App einen benutzerdefinierten DNS-Namen zuordnen möchten, muss e
    Wenn die unten angegebene Benachrichtigung angezeigt wird, ist der Skalierungsvorgang abgeschlossen.
 
    ![Screenshot: Bestätigung des Skalierungsvorgangs](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
+
+<hr/> 
 
 <a name="cname" aria-hidden="true"></a>
 
@@ -98,14 +104,16 @@ Wenn Sie Ihrer App eine benutzerdefinierte Domäne hinzufügen möchten, müssen
 
     <details>
         <summary>Warum ist das erforderlich?</summary>
-        Durch das Hinzufügen von Domänenverifizierungs-IDs zu Ihrer benutzerdefinierten Domäne können verwaiste DNS-Einträge und Unterdomänenübernahmen verhindert werden. Benutzerdefinierte Domänen, die Sie zuvor ohne diese Überprüfungs-ID konfiguriert haben, sollten Sie vor dem gleichen Risiko schützen, indem Sie Ihrem DNS-Datensatz die Überprüfungs-ID hinzufügen. Weitere Informationen zu dieser allgemeinen Bedrohung mit hohem Schweregrad finden Sie unter [Verhindern verwaister DNS-Einträge und Vermeiden von Unterdomänenübernahmen](../security/fundamentals/subdomain-takeover.md).
+        Durch das Hinzufügen von Domänenverifizierungs-IDs zu Ihrer benutzerdefinierten Domäne können verwaiste DNS-Einträge und Unterdomänenübernahmen verhindert werden. Benutzerdefinierte Domänen, die Sie zuvor ohne diese Überprüfungs-ID konfiguriert haben, sollten Sie vor dem gleichen Risiko schützen, indem Sie Ihrem DNS-Datensatz die Überprüfungs-ID hinzufügen. Weitere Informationen zu dieser allgemeinen Bedrohung mit hohem Schweregrad finden Sie unter <a href="/azure/security/fundamentals/subdomain-takeover">Verhindern verwaister DNS-Einträge und Vermeiden von Unterdomänenübernahmen</a>.
     </details>
     
 <a name="info"></a>
 
-3. **(Nur A-Eintrag)    ** Um einen <abbr title="Durch einen Adresseintrag im DNS wird ein Hostname einer IP-Adresse zugeordnet.">A-Eintrag</abbr>zuordnen zu können, benötigen Sie die externe IP-Adresse der App. Kopieren Sie auf der Seite **Benutzerdefinierte Domänen** den Wert der **IP-Adresse**.
+3. **(Nur A-Eintrag)** Um einen <abbr title="Durch einen Adresseintrag im DNS wird ein Hostname einer IP-Adresse zugeordnet.">A-Eintrag</abbr>zuordnen zu können, benötigen Sie die externe IP-Adresse der App. Kopieren Sie auf der Seite **Benutzerdefinierte Domänen** den Wert der **IP-Adresse**.
 
    ![Screenshot: Navigation im Portal zu einer Azure-App](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
+
+<hr/> 
 
 ## <a name="4-create-the-dns-records"></a>4. Erstellen der DNS-Einträge
 
@@ -148,52 +156,71 @@ Wenn Sie Ihrer App eine benutzerdefinierte Domäne hinzufügen möchten, müssen
 
 Erstellen Sie für eine Unterdomäne wie `www` in `www.contoso.com` zwei Einträge gemäß der folgenden Tabelle:
 
-    | Eintragstyp | Host | Wert | Kommentare |
-    | - | - | - |
-    | CNAME | `<subdomain>` (z. B. `www`) | `<app-name>.azurewebsites.net` | Die Domänenzuordnung selbst |
-    | TXT | `asuid.<subdomain>` (z. B. `asuid.www`) | [Die zuvor abgerufene Verifizierungs-ID](#3-get-a-domain-verification-id) | App Service greift auf den TXT-Eintrag `asuid.<subdomain>` zu, um den Besitz der benutzerdefinierten Domäne zu überprüfen. |
-    
-    ![Screenshot that shows the portal navigation to an Azure app.](./media/app-service-web-tutorial-custom-domain/cname-record.png)
+| Eintragstyp | Host | Wert | Kommentare |
+| - | - | - |
+| CNAME | `<subdomain>` (z. B. `www`) | `<app-name>.azurewebsites.net` | Die Domänenzuordnung selbst |
+| TXT | `asuid.<subdomain>` (z. B. `asuid.www`) | [Die zuvor abgerufene Verifizierungs-ID](#3-get-a-domain-verification-id) | App Service greift auf den TXT-Eintrag `asuid.<subdomain>` zu, um den Besitz der benutzerdefinierten Domäne zu überprüfen. |
+
+![Screenshot: Navigation im Portal zu einer Azure-App](./media/app-service-web-tutorial-custom-domain/cname-record.png)
     
 # <a name="a"></a>[A](#tab/a)
 
 Erstellen Sie für eine Stammdomäne wie `contoso.com` zwei Einträge gemäß der folgenden Tabelle:
 
-    | Eintragstyp | Host | Wert | Kommentare |
-    | - | - | - |
-    | Ein | `@` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#3-get-a-domain-verification-id) | Die Domänenzuordnung selbst (`@` stellt in der Regel die Stammdomäne dar.) |
-    | TXT | `asuid` | [Die zuvor abgerufene Verifizierungs-ID](#3-get-a-domain-verification-id) | App Service greift auf den TXT-Eintrag `asuid.<subdomain>` zu, um den Besitz der benutzerdefinierten Domäne zu überprüfen. Verwenden Sie für die Stammdomäne `asuid`. |
-    
-    ![Screenshot that shows a DNS records page.](./media/app-service-web-tutorial-custom-domain/a-record.png)
+| Eintragstyp | Host | Wert | Kommentare |
+| - | - | - |
+| Ein | `@` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#3-get-a-domain-verification-id) | Die Domänenzuordnung selbst (`@` stellt in der Regel die Stammdomäne dar.) |
+| TXT | `asuid` | [Die zuvor abgerufene Verifizierungs-ID](#3-get-a-domain-verification-id) | App Service greift auf den TXT-Eintrag `asuid.<subdomain>` zu, um den Besitz der benutzerdefinierten Domäne zu überprüfen. Verwenden Sie für die Stammdomäne `asuid`. |
 
-    <details>
-    <summary>What if I want to map a subdomain with an A record?</summary>
-    To map a subdomain like `www.contoso.com` with an A record instead of a recommended CNAME record, your A record and TXT record should look like the following table instead:
+![Screenshot: Seite mit DNS-Einträgen](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
-    | Eintragstyp | Host | Wert |
-    | - | - | - |
-    | Ein | `<subdomain>` (z. B. `www`) | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
-    | TXT | `asuid.<subdomain>` (z. B. `asuid.www`) | [Die zuvor abgerufene Verifizierungs-ID](#3-get-a-domain-verification-id) |
-    </details>
-    
+<details>
+<summary>Was geschieht, wenn ich eine Unterdomäne einem A-Eintrag zuordnen möchte?</summary>
+Wenn Sie zum Hinzufügen einer Unterdomäne (etwa `www.contoso.com`) einen A-Eintrag anstelle eines empfohlenen CNAME-Eintrags verwenden möchten, sollten Ihr A-Eintrag und TXT-Eintrag stattdessen wie in der folgenden Tabelle aussehen:
+
+<div class="table-scroll-wrapper"><table class="table"><caption class="visually-hidden">Tabelle 3</caption>
+<thead>
+<tr>
+<th>Eintragstyp</th>
+<th>Host</th>
+<th>Wert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ein</td>
+<td><code>&lt;subdomain&gt;</code> (z. B. <code>www</code>)</td>
+<td>IP-Adresse aus dem Schritt <a href="#info" data-linktype="self-bookmark">Kopieren der IP-Adresse der App</a></td>
+</tr>
+<tr>
+<td>TXT</td>
+<td><code>asuid.&lt;subdomain&gt;</code> (z. B. <code>asuid.www</code>)</td>
+<td><a href="#3-get-a-domain-verification-id" data-linktype="self-bookmark">Die zuvor abgerufene Verifizierungs-ID</a></td>
+</tr>
+</tbody>
+</table></div>
+</details>
+
 # <a name="wildcard-cname"></a>[Platzhalter (CNAME)](#tab/wildcard)
 
 Erstellen Sie für eine Platzhalterdomäne wie `*` in `*.contoso.com` zwei Einträge gemäß der folgenden Tabelle:
 
-    | Eintragstyp | Host | Wert | Kommentare |
-    | - | - | - |
-    | CNAME | `*` | `<app-name>.azurewebsites.net` | Die Domänenzuordnung selbst |
-    | TXT | `asuid` | [Die zuvor abgerufene Verifizierungs-ID](#3-get-a-domain-verification-id) | App Service greift auf den TXT-Eintrag `asuid` zu, um den Besitz der benutzerdefinierten Domäne zu überprüfen. |
-    
-    ![Screenshot that shows the navigation to an Azure app.](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
-    
----
+| Eintragstyp | Host | Wert | Kommentare |
+| - | - | - |
+| CNAME | `*` | `<app-name>.azurewebsites.net` | Die Domänenzuordnung selbst |
+| TXT | `asuid` | [Die zuvor abgerufene Verifizierungs-ID](#3-get-a-domain-verification-id) | App Service greift auf den TXT-Eintrag `asuid` zu, um den Besitz der benutzerdefinierten Domäne zu überprüfen. |
 
-    <details>
-        <summary>My changes are erased after I leave the page.</summary>
-        For certain providers, such as GoDaddy, changes to DNS records don't become effective until you select a separate **Save Changes** link.
-    </details>
+![Screenshot: Navigation zu einer Azure-App](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
     
+-----
+
+<details>
+<summary>Meine Änderungen werden gelöscht, nachdem ich die Seite verlassen habe.</summary>
+<p>Bei einigen Anbietern wie GoDaddy werden Änderungen an DNS-Einträgen erst wirksam, wenn Sie einen gesonderten Link <strong>Änderungen speichern</strong> wählen.</p>
+</details>
+
+<hr/>
+
 ## <a name="5-enable-the-mapping-in-your-app"></a>5. Aktivieren der Zuordnung in Ihrer App
 
 1. Wählen Sie im linken Bereich der App-Seite im Azure-Portal die Option **Benutzerdefinierte Domänen** aus.
@@ -273,8 +300,10 @@ Erstellen Sie für eine Platzhalterdomäne wie `*` in `*.contoso.com` zwei Eintr
         Eine Warnbezeichnung für Ihre benutzerdefinierte Domäne bedeutet, dass diese noch nicht an ein TLS-/SSL-Zertifikat gebunden ist. Für alle HTTPS-Anforderungen von einem Browser an Ihre benutzerdefinierte Domäne wird abhängig vom Browser ein Fehler oder eine Warnung angezeigt. Weitere Informationen zum Hinzufügen einer TLS-/SSL-Bindung finden Sie unter <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">Schützen eines benutzerdefinierten DNS-Namens mit einer TLS-/SSL-Bindung in Azure App Service</a>.
     </details>
 
----
-    
+-----
+
+<hr/> 
+
 ## <a name="6-test-in-a-browser"></a>6. Testen in einem Browser
 
 Navigieren Sie zu den DNS-Namen, die Sie zuvor konfiguriert haben.
@@ -290,9 +319,13 @@ Navigieren Sie zu den DNS-Namen, die Sie zuvor konfiguriert haben.
 </ul>
 </details>
 
+<hr/> 
+
 ## <a name="migrate-an-active-domain"></a>Migrieren einer aktiven Domäne
 
 Informationen zum Migrieren einer Livewebsite und ihres DNS-Domänennamens zu App Service ohne Ausfallzeiten finden Sie unter [Migrieren einer aktiven benutzerdefinierten Domäne zu Azure App Service](manage-custom-dns-migrate-domain.md).
+
+<hr/> 
 
 <a name="virtualdir" aria-hidden="true"></a>
 
@@ -313,11 +346,13 @@ Hierbei handelt es sich zwar um ein gängiges Szenario, aber eigentlich nicht um
 
 1. Überprüfen Sie nach Abschluss des Vorgangs das Ergebnis, indem Sie im Browser zum Stammpfad Ihrer App navigieren (beispielsweise zu `http://contoso.com` oder `http://<app-name>.azurewebsites.net`).
 
+<hr/> 
+
 ## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
 
 Durch die [Azure CLI](/cli/azure/install-azure-cli) oder durch [Azure PowerShell](/powershell/azure/) können Sie mithilfe von Skripts die Verwaltung von benutzerdefinierten Domänen automatisieren.
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+#### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 Mit dem folgenden Befehl wird ein konfigurierter benutzerdefinierter DNS-Name zu einer App Service-App hinzugefügt.
 
@@ -330,7 +365,7 @@ az webapp config hostname add \
 
 Weitere Informationen finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einer Web-App](scripts/cli-configure-custom-domain.md).
 
-### <a name="azure-powershell"></a>Azure PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -344,6 +379,8 @@ Set-AzWebApp `
 ```
 
 Weitere Informationen finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einer Web-App](scripts/powershell-configure-custom-domain.md).
+
+<hr/> 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 7410fcbc890780281763a91f33525562e9de1853
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 6b3c1ac2ea3625a768e16a3465230a5386c98ddc
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182484"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423712"
 ---
 # <a name="analyze-with-apache-spark"></a>Analysieren mit Apache Spark
 
@@ -38,7 +38,7 @@ In diesem Tutorial werden die grundlegenden Schritte zum Laden und Analysieren v
     display(df.limit(10))
     ```
 1. Wählen Sie im Notebook im Menü **Anfügen an** den zuvor erstellten serverlosen Spark-Pool **Spark1** aus.
-1. Wählen Sie für die Zelle **Ausführen** aus.
+1. Wählen Sie für die Zelle **Ausführen** aus. Synapse startet bei Bedarf eine neue Spark-Sitzung zur Ausführung dieser Zelle. Ist eine neue Spark-Sitzung erforderlich, dauert ihre Erstellung ungefähr zwei Sekunden. 
 1. Wenn Sie nur das Schema des Datenrahmens anzeigen möchten, führen Sie eine Zelle mit dem folgenden Code aus:
     ```
 

@@ -1,17 +1,17 @@
 ---
 title: 'Device Update for Azure IoT Hub: Tutorial zum Verwenden des Ubuntu (18.04 x64) Simulator Reference Agent | Microsoft-Dokumentation'
 description: Erste Schritte mit Device Update for Azure IoT Hub mit dem Ubuntu (18.04 x64) Simulator Reference Agent.
-author: vimeht
-ms.author: vimeht
+author: valls
+ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 8ca9d03fbeadfaaca06dac49acc7a08f0dd0566d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4740bf02c33314dd7c887356f2ef1ed12bea44cf
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678243"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443810"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-ubuntu-1804-x64-simulator-reference-agent"></a>Device Update for Azure IoT Hub: Tutorial zum Verwenden des Ubuntu (18.04 x64) Simulator Reference Agent
 
@@ -163,29 +163,30 @@ Agent running. [main]
 
 ## <a name="import-update"></a>Importieren des Updates
 
-1. Wählen Sie in der linken Navigationsleiste unter „Automatic Device Management“ (Automatische Geräteverwaltung) die Option „Device Updates“ aus.
+1. Erstellen Sie anhand [dieser Anweisungen](import-update.md) ein Importmanifest.
+2. Wählen Sie in der linken Navigationsleiste unter „Automatic Device Management“ (Automatische Geräteverwaltung) die Option „Device Updates“ aus.
 
-2. Wählen Sie die Registerkarte „Updates“ aus.
+3. Wählen Sie die Registerkarte „Updates“ aus.
 
-3. Wählen Sie „+ Import New Update“ (Neues Update importieren) aus.
+4. Wählen Sie „+ Import New Update“ (Neues Update importieren) aus.
 
-4. Wählen Sie das Ordnersymbol oder das Textfeld unter „Select an Import Manifest File“ (Importmanifestdatei auswählen) aus. Es wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie das zuvor heruntergeladene Importmanifest aus. Wählen Sie dann das Ordnersymbol oder das Textfeld unter „Select one or more update files“ (Mindestens eine Updatedatei auswählen) aus. Es wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie die zuvor heruntergeladene apt-Manifestupdatedatei aus.
-   
+5. Wählen Sie das Ordnersymbol oder das Textfeld unter „Select an Import Manifest File“ (Importmanifestdatei auswählen) aus. Daraufhin wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie das weiter oben erstellte Importmanifest aus.  Wählen Sie als Nächstes das Ordnersymbol oder das Textfeld unter „Select one or more update files“ (Mindestens eine Updatedatei auswählen) aus. Daraufhin wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie das Ubuntu-Updateimage aus, das Sie zuvor heruntergeladen haben. 
+
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="Screenshot: Auswahl der Updatedatei." lightbox="media/import-update/select-update-files.png":::
 
-5. Wählen Sie unter „Select a storage container“ (Speichercontainer auswählen) das Ordnersymbol oder das Textfeld aus. Wählen Sie dann das entsprechende Speicherkonto aus.
+6. Wählen Sie unter „Select a storage container“ (Speichercontainer auswählen) das Ordnersymbol oder das Textfeld aus. Wählen Sie dann das entsprechende Speicherkonto aus.
 
-6. Wenn Sie bereits einen Container erstellt haben, können Sie ihn wiederverwenden. (Wählen Sie andernfalls „+ Container“ aus, um einen neuen Speichercontainer für Updates zu erstellen.)  Wählen Sie den Container aus, den Sie verwenden möchten, und klicken Sie auf „Select“ (Auswählen).
+7. Wenn Sie bereits einen Container erstellt haben, können Sie ihn wiederverwenden. (Wählen Sie andernfalls „+ Container“ aus, um einen neuen Speichercontainer für Updates zu erstellen.)  Wählen Sie den Container aus, den Sie verwenden möchten, und klicken Sie auf „Select“ (Auswählen).
   
   :::image type="content" source="media/import-update/container.png" alt-text="Screenshot: Auswahl des Containers." lightbox="media/import-update/container.png":::
 
-7. Wählen Sie „Submit“ (Übermitteln) aus, um den Importvorgang zu starten.
+8. Wählen Sie „Submit“ (Übermitteln) aus, um den Importvorgang zu starten.
 
-8. Der Importvorgang beginnt, und der Bildschirm ändert sich in den Abschnitt „Import History“ (Importverlauf). Wählen Sie „Refresh“ (Aktualisieren) aus, um den Fortschritt anzuzeigen, bis der Importvorgang abgeschlossen ist. Abhängig von der Größe des Updates kann dieser Vorgang in wenigen Minuten abgeschlossen werden, er kann aber auch länger dauern.
+9. Der Importvorgang beginnt, und der Bildschirm ändert sich in den Abschnitt „Import History“ (Importverlauf). Wählen Sie „Refresh“ (Aktualisieren) aus, um den Fortschritt anzuzeigen, bis der Importvorgang abgeschlossen ist. Abhängig von der Größe des Updates kann dieser Vorgang in wenigen Minuten abgeschlossen werden, er kann aber auch länger dauern.
    
    :::image type="content" source="media/import-update/update-publishing-sequence-2.png" alt-text="Screenshot: Updateimportsequenz." lightbox="media/import-update/update-publishing-sequence-2.png":::
 
-9. Wenn in der Spalte „Status“ angezeigt wird, dass der Import erfolgreich war, wählen Sie den Header „Ready to Deploy“ (Bereit für die Bereitstellung) aus. Ihr importiertes Update sollte nun in der Liste angezeigt werden.
+10. Wenn in der Spalte „Status“ angezeigt wird, dass der Import erfolgreich war, wählen Sie den Header „Ready to Deploy“ (Bereit für die Bereitstellung) aus. Ihr importiertes Update sollte nun in der Liste angezeigt werden.
 
 [Weitere Informationen](import-update.md) zum Importieren von Updates.
 

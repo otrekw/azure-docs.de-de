@@ -1,26 +1,19 @@
 ---
 title: 'Schnellstart: Integrieren eines Azure Storage-Kontos in Azure CDN'
-description: Erfahren Sie, wie Azure Content Delivery Network (CDN) für die Übermittlung breitbandiger Inhalte eingesetzt wird, indem Blobs aus Azure Storage zwischengespeichert werden.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Azure Content Delivery Network (CDN) für die Übermittlung von Inhalten mit hoher Bandbreite eingesetzt wird, indem Blobs aus Azure Storage zwischengespeichert werden.
 services: cdn
-documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: b80437fa1ac41bb240565923eb40e562c8cf8c5b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7cd1c6b0b11ba291a36f49a2a9990a2755cdd74b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018612"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561924"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Schnellstart: Integrieren eines Azure Storage-Kontos in Azure CDN
 
@@ -123,9 +116,6 @@ In den vorherigen Schritten haben Sie ein CDN-Profil und einen Endpunkt in einer
 3. Wenn Sie Ihr Speicherkonto löschen möchten, wählen Sie es über das Dashboard aus, und klicken Sie anschließend im oberen Menü auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-> [!div class="nextstepaction"]
-> [Erstellen eines Azure CDN-Profils und -Endpunkts](cdn-create-new-endpoint.md)
 
 > [!div class="nextstepaction"]
 > [Tutorial: Hinzufügen von Azure CDN zu einer Azure App Service-Web-App](cdn-add-to-web-app.md)

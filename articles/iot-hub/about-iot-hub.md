@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: a460d77a032f36505c8036bc60aa37017f630e55
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 86a373844b370cc9f9ce31dc65b2039a81279803
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501140"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454769"
 ---
 # <a name="what-is-azure-iot-hub"></a>Was ist Azure IoT Hub?
 
@@ -30,7 +30,7 @@ Mit den IoT Hub-Funktionen können Sie skalierbare IoT-Lösungen mit vollem Funk
 
 ## <a name="scale-your-solution"></a>Skalieren Ihrer Lösung
 
-IoT Hub lässt sich auf Millionen von gleichzeitig verbundenen Geräten und Millionen von Ereignissen pro Sekunde skalieren, um Ihre IoT-Workloads zu unterstützen. Weitere Informationen zum Skalieren Ihres IoT-Hubs finden Sie unter [Skalieren von Azure IoT Hub](iot-hub-scaling.md?branch=release-iotbasic). Weitere Informationen zu den verschiedenen Dienstebenen von IoT Hub und der besten Option für Ihre Skalierbarkeitsanforderungen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/iot-hub/).
+IoT Hub lässt sich auf Millionen von gleichzeitig verbundenen Geräten und Millionen von Ereignissen pro Sekunde skalieren, um Ihre IoT-Workloads zu unterstützen. Weitere Informationen zum Skalieren Ihres IoT-Hubs finden Sie unter [Skalieren von Azure IoT Hub](iot-hub-scaling.md). Weitere Informationen zu den verschiedenen Dienstebenen von IoT Hub und der besten Option für Ihre Skalierbarkeitsanforderungen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 ## <a name="secure-your-communications"></a>Sichern der Kommunikation
 
@@ -104,6 +104,8 @@ IoT Hub und die Geräte-SDKs unterstützen die folgenden Protokolle zum Verbinde
 * AMQP über WebSockets
 * MQTT
 * MQTT über WebSockets
+
+IoT Hub und die Geräte-SDKs unterstützen die [Azure IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md)-Konventionen zum Verbinden von Geräten. IoT Plug & Play-Geräte nutzen ein Gerätemodell, um ihre Funktionen für IoT Plug & Play-fähige Anwendungen verfügbar zu machen. Das Gerätemodell ermöglicht es Lösungsentwicklern, intelligente Geräte ohne manuelle Konfiguration in ihre Lösungen zu integrieren.
 
 Falls Ihre Lösung die Gerätebibliotheken nicht nutzen kann, können die Geräte die Protokolle MQTT v3.1.1, HTTPS 1.1 oder AMQP 1.0 verwenden, um nativ eine Verbindung mit Ihrem Hub herzustellen.
 

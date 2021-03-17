@@ -8,23 +8,24 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: tutorial
-ms.date: 05/29/2020
+ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: 8a1f3b5e80152fb0fb9458aef0d3524dd2d6f5eb
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f7761cf011a3a678bb7609e1063ac6ebec90d395
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092328"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499185"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>Importieren von HSM-geschützten Schlüsseln für Key Vault (nCipher)
 
+> [!WARNING]
+> Die in diesem Dokument beschriebene Importmethode für den HSM-Schlüssel ist **veraltet** und wird in Zukunft nicht mehr unterstützt. Dies funktioniert nur mit der nCipher nShield-Familie von HSMs mit Firmware 12.40.2 oder 12.50 mit einem Hotfix. Es wird dringend empfohlen, die [neue Methode zum Importieren von HSM-Schlüsseln](hsm-protected-keys-byok.md) zu verwenden.
+
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Zur Steigerung der Sicherheit können Sie bei Verwendung des Azure-Schlüsseltresors Schlüssel in HSMs (Hardwaresicherheitsmodule) importieren oder darin generieren. Diese Schlüssel verbleiben immer innerhalb der HSM-Grenzen. Dieses Szenario wird häufig als *Bring Your Own Key* (BYOK) bezeichnet. Azure Key Vault verwendet die nCipher nShield-HSM-Produktfamilie (validiert für FIPS 140-2 Level 2) zum Schützen der Schlüssel.
+Zur Steigerung der Sicherheit können Sie bei Verwendung des Azure-Schlüsseltresors Schlüssel in HSMs (Hardwaresicherheitsmodule) importieren oder darin generieren. Diese Schlüssel verbleiben immer innerhalb der HSM-Grenzen. Dieses Szenario wird häufig als *Bring Your Own Key* (BYOK) bezeichnet. Azure Key Vault verwendet die nCipher nShield-HSM-Produktfamilie (validiert für FIPS 140-2 Level 2) zum Schützen der Schlüssel.
 
-> [!NOTE]
-> Die in diesem Dokument beschriebene Methode für den HSM-Schlüsselimport funktioniert nur mit der nCipher nShield-Familie der HSMs. Informationen zum Importieren von HSM-Schlüsseln aus anderen HSMs [finden Sie hier](hsm-protected-keys-byok.md).
 
 Verwenden Sie die Informationen in diesem Thema zum Planen, Generieren und anschließenden Übertragen Ihrer eigenen HSM-geschützten Schlüssel für die Nutzung mit Azure Key Vault. 
 
@@ -62,7 +63,7 @@ Die folgende Tabelle enthält eine Liste mit Voraussetzungen, die beim Azure-Sch
 | Azure-Abonnement |Um eine Azure Key Vault-Instanz erstellen zu können, benötigen Sie ein Azure-Abonnement: [Für kostenlose Testversion registrieren](https://azure.microsoft.com/pricing/free-trial/) |
 | Azure Key Vault-Dienstebene „Premium“ zur Unterstützung von HSM-geschützten Schlüsseln |Weitere Informationen zu den Dienstebenen und Funktionen für Azure Key Vault finden Sie auf der Website [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/). |
 | nCipher nShield-HSMs, Smartcards und Supportsoftware |Sie benötigen Zugriff auf ein nCipher-Hardwaresicherheitsmodul sowie grundlegende Kenntnisse zum Betrieb von nCipher nShield-HSMs. Eine Liste mit kompatiblen Modellen bzw. Informationen zum Kauf eines HSM, für den Fall, dass Sie noch keins besitzen, finden Sie unter [nCipher nShield-Hardwaresicherheitsmodul](https://go.ncipher.com/rs/104-QOX-775/images/nCipher_nShield_Family_Brochure.pdf?_ga=2.106120835.1607422418.1590478092-577009923.1587131206). |
-| Folgende Hardware und Software:<ol><li>Eine x64-Arbeitsstation im Offlinemodus mit einem Windows-Betriebssystem der Mindestversion Windows 7 und nCipher nShield-Software der Mindestversion 11.50.<br/><br/>Wenn auf dieser Arbeitsstation Windows 7 ausgeführt wird, müssen Sie [Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe) installieren.</li><li>Eine Arbeitsstation, die mit dem Internet verbunden ist und auf der mindestens Windows 7 und [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) (**Mindestversion 1.1.0**) installiert ist.</li><li>Ein USB-Laufwerk oder ein anderes tragbares Speichergerät mit mindestens 16 MB freiem Speicherplatz.</li></ol> |Aus Sicherheitsgründen wird empfohlen, die erste Arbeitsstation nicht mit einem Netzwerk zu verbinden. Diese Empfehlung wird jedoch nicht programmgesteuert erzwungen.<br/><br/>Diese Arbeitsstation wird in den folgenden Anleitungen als verbindungslose Arbeitsstation bezeichnet.</p></blockquote><br/>Falls Ihr Mandantenschlüssel für ein Produktionsnetzwerk gilt, empfehlen wir außerdem, eine zweite separate Arbeitsstation zu verwenden, um das Toolset herunterzuladen und den Mandantenschlüssel hochzuladen. Zu Testzwecken können Sie aber auch ein und dieselbe Arbeitsstation verwenden.<br/><br/>Die zweite Arbeitsstation in den folgenden Anleitungen wird als Arbeitsstation mit Internetverbindung bezeichnet.</p></blockquote><br/> |
+| Folgende Hardware und Software:<ol><li>Eine x64-Arbeitsstation im Offlinemodus mit einem Windows-Betriebssystem der Mindestversion Windows 7 und nCipher nShield-Software der Mindestversion 11.50.<br/><br/>Wenn auf dieser Arbeitsstation Windows 7 ausgeführt wird, müssen Sie [Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe) installieren.</li><li>Eine Arbeitsstation, die mit dem Internet verbunden ist und auf der mindestens Windows 7 und [Azure PowerShell](/powershell/azure/) (**Mindestversion 1.1.0**) installiert ist.</li><li>Ein USB-Laufwerk oder ein anderes tragbares Speichergerät mit mindestens 16 MB freiem Speicherplatz.</li></ol> |Aus Sicherheitsgründen wird empfohlen, die erste Arbeitsstation nicht mit einem Netzwerk zu verbinden. Diese Empfehlung wird jedoch nicht programmgesteuert erzwungen.<br/><br/>Diese Arbeitsstation wird in den folgenden Anleitungen als verbindungslose Arbeitsstation bezeichnet.</p></blockquote><br/>Falls Ihr Mandantenschlüssel für ein Produktionsnetzwerk gilt, empfehlen wir außerdem, eine zweite separate Arbeitsstation zu verwenden, um das Toolset herunterzuladen und den Mandantenschlüssel hochzuladen. Zu Testzwecken können Sie aber auch ein und dieselbe Arbeitsstation verwenden.<br/><br/>Die zweite Arbeitsstation in den folgenden Anleitungen wird als Arbeitsstation mit Internetverbindung bezeichnet.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Generieren und Übertragen des Schlüssels an das HSM des Azure-Schlüsseltresors
 

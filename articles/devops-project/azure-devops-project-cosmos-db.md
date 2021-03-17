@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Bereitstellen von auf Azure Cosmos DB basierenden Node.js-Apps mit Azure DevOps Starter'
+title: 'Tutorial: Bereitstellen der von Azure Cosmos DB unterstützten Node.js-Apps mit Azure DevOps Starter'
 description: Azure DevOps Starter erleichtert die ersten Schritte mit Azure. Mit DevOps Starter können Sie Ihre auf Azure Cosmos DB basierende Node.js-App in wenigen Schritten in einer Windows-Web-App bereitstellen.
 ms.author: mlearned
 ms.manager: gwallace
@@ -9,24 +9,24 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-js
-ms.openlocfilehash: de98d9db515e4ed88759efa7f22dddcca06151c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1bdae976d5e5b7d98311d33bb38b5035f2557ca
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854680"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548698"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>Bereitstellen von auf Azure Cosmos DB basierenden Node.js-Apps mit DevOps Starter
 
 Azure DevOps Starter bietet eine optimierte Umgebung, in der Sie eine Continuous Integration- und Continuous Deployment-Pipeline (CI/CD) für Azure erstellen können. Hierzu verwenden Sie den vorhandenen Code und das Git-Repository oder wählen eine Beispielanwendung aus.
 
-DevOps Starter ermöglicht außerdem Folgendes:
+DevOps Starter ermöglicht außerdem:
 
 * Automatisches Erstellen von Azure-Ressourcen wie Azure Cosmos DB, Azure Application Insights, Azure App Service und App Service-Plänen
 
 * Erstellen und Konfigurieren einer CI/CD-Releasepipeline in Azure DevOps
 
-In diesem Lernprogramm lernen Sie Folgendes:
+In diesem Tutorial werden Sie Folgendes durchführen:
 
 > [!div class="checklist"]
 > * Bereitstellen einer auf Azure Cosmos DB basierenden Node.js-App mithilfe von DevOps Starter
@@ -47,9 +47,9 @@ Mit DevOps Starter wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie kö
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Geben Sie in das Suchfeld **DevOps Starter** ein, und klicken Sie auf die angezeigte Option. Klicken Sie auf **Hinzufügen**, um einen neuen zu erstellen.
+1. Geben Sie in das Suchfeld **DevOps Starter** ein, und wählen sie die Option dann aus. Klicken Sie auf **Hinzufügen**, um einen neuen zu erstellen.
 
-    ![DevOps Starter-Dashboard](_img/azure-devops-starter-aks/search-devops-starter.png)
+    ![Das DevOps Starter-Dashboard](_img/azure-devops-starter-aks/search-devops-starter.png)
 
 1. Wählen Sie als Laufzeit **Node.js** und anschließend **Weiter** aus. Wählen Sie unter **Anwendungsframework auswählen** die Option **Express.js** aus.
 
@@ -167,4 +167,4 @@ Diese Build- und Releasepipelines können Sie den Anforderungen Ihres Teams anpa
 > * Committen von Änderungen in Git und automatisches Bereitstellen dieser Änderungen in Azure
 > * Bereinigen von Ressourcen
 
-Weitere Informationen und nächste Schritte finden Sie unter [Define your multi-stage continuous deployment (CD) pipeline](/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) (Definieren einer mehrstufigen CD-Pipeline (Continuous Deployment)).
+Weitere Informationen und nächste Schritte finden Sie unter [Define your multi-stage continuous deployment (CD) pipeline](/azure/devops/pipelines/release/define-multistage-release-process) (Definieren einer mehrstufigen CD-Pipeline (Continuous Deployment)).

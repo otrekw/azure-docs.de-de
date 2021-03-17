@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 81a5f28f0bf2f7f7ea005a4d9fe8d42337f6d0b9
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 02dc2b4e86c9d0bad0c8274967aa4da77440ec01
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103395"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498760"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Windows Desktop-App aus
 
@@ -54,12 +54,12 @@ Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-w
 > 1. Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
 > 1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
 > 1. Wählen Sie **Plattform hinzufügen** > **Mobilgerät- und Desktopanwendungen** aus.
-> 1. Wählen Sie im Abschnitt **Umleitungs-URIs** die Option `https://login.microsoftonline.com/common/oauth2/nativeclient` aus.
+> 1. Wählen Sie im Abschnitt **Umleitungs-URIs** die Option `https://login.microsoftonline.com/common/oauth2/nativeclient` aus, und fügen Sie `ms-appx-web://microsoft.aad.brokerplugin/{client_id}` in **Benutzerdefinierte Umleitungs-URIs** hinzu. Dabei ist `{client_id}` die Anwendungs-ID (Client) Ihrer Anwendung (dieselbe GUID, die im Kontrollkästchen `msal{client_id}://auth` angezeigt wird).
 > 1. Wählen Sie **Konfigurieren** aus.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Schritt 1: Konfigurieren Ihrer Anwendung im Azure-Portal
-> Damit das Codebeispiel in dieser Schnellstartanleitung funktioniert, müssen Sie den **Umleitungs-URI** `https://login.microsoftonline.com/common/oauth2/nativeclient` hinzufügen.
+> Damit das Codebeispiel in dieser Schnellstartanleitung funktioniert, müssen Sie `https://login.microsoftonline.com/common/oauth2/nativeclient` und `ms-appx-web://microsoft.aad.brokerplugin/{client_id}` als **Umleitungs-URI** hinzufügen.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Diese Änderung für mich vornehmen]()
 >

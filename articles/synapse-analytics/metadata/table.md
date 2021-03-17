@@ -10,19 +10,19 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b93addfe659847187dffe61f12f5a2bfac9dca21
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: a8080720480beaeb7bc8692f2dcddddad5da0e3c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209626"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548460"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics: Gemeinsam genutzte Metadatentabellen
 
 
 Azure Synapse Analytics ermöglicht den verschiedenen Berechnungsengines von Arbeitsbereichen die gemeinsame Nutzung von Datenbanken und Parquet-basierten Tabellen zwischen Apache Spark-Pools und einem serverlosen SQL-Pool.
 
-Nach der Erstellung einer Datenbank durch einen Spark-Auftrag können darin Tabellen mit Spark erstellt werden, die Parquet als Speicherformat verwenden. Diese Tabellen stehen umgehend für Abfragen von beliebigen Spark-Pools des Azure Synapse-Arbeitsbereichs zur Verfügung. Darüber hinaus können sie von einem beliebigen Spark-Auftrag verwendet werden (entsprechende Berechtigungen vorausgesetzt).
+Nach der Erstellung einer Datenbank durch einen Spark-Auftrag können darin Tabellen mit Spark erstellt werden, die Parquet als Speicherformat verwenden. Tabellennamen werden in Kleinbuchstaben konvertiert und müssen mit dem Namen in Kleinbuchstaben abgefragt werden. Diese Tabellen stehen umgehend für Abfragen von beliebigen Spark-Pools des Azure Synapse-Arbeitsbereichs zur Verfügung. Darüber hinaus können sie von einem beliebigen Spark-Auftrag verwendet werden (entsprechende Berechtigungen vorausgesetzt).
 
 Die von Spark erstellten, verwalteten und externen Tabellen werden auch als externe Tabellen mit demselben Namen in der entsprechenden synchronisierten Datenbank im serverlosen SQL-Pool verfügbar gemacht. Unter [Verfügbarmachen einer Spark-Tabelle in SQL](#expose-a-spark-table-in-sql) finden Sie weitere Details zur Tabellensynchronisierung.
 
@@ -101,17 +101,17 @@ In diesem Szenario verfügen Sie über eine Spark-Datenbank namens `mytestdb`. I
 Führen Sie den folgenden Befehl aus, um mit SparkSQL eine verwaltete Spark-Tabelle zu erstellen:
 
 ```sql
-    CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
+    CREATE TABLE mytestdb.myparquettable(id int, name string, birthdate date) USING Parquet
 ```
 
-Mit diesem Befehl wird die Tabelle `myParquetTable` in der Datenbank `mytestdb` erstellt. Nach einer kurzen Verzögerung wird die Tabelle aus dem serverlosen SQL-Pool angezeigt. Führen Sie beispielsweise die folgende Anweisung über den serverlosen SQL-Pool aus:
+Mit diesem Befehl wird die Tabelle `myparquettable` in der Datenbank `mytestdb` erstellt. Tabellennamen werden in Kleinbuchstaben konvertiert. Nach einer kurzen Verzögerung wird die Tabelle aus dem serverlosen SQL-Pool angezeigt. Führen Sie beispielsweise die folgende Anweisung über den serverlosen SQL-Pool aus:
 
 ```sql
     USE mytestdb;
     SELECT * FROM sys.tables;
 ```
 
-Vergewissern Sie sich, dass `myParquetTable` in den Ergebnissen enthalten ist.
+Vergewissern Sie sich, dass `myparquettable` in den Ergebnissen enthalten ist.
 
 >[!NOTE]
 >Tabellen mit einem anderen Speicherformat als Parquet werden nicht synchronisiert.
@@ -136,13 +136,13 @@ var schema = new StructType
     );
 
 var df = spark.CreateDataFrame(data, schema);
-df.Write().Mode(SaveMode.Append).InsertInto("mytestdb.myParquetTable");
+df.Write().Mode(SaveMode.Append).InsertInto("mytestdb.myparquettable");
 ```
 
 Nun können Sie die Daten wie folgt aus dem serverlosen SQL-Pool lesen:
 
 ```sql
-SELECT * FROM mytestdb.dbo.myParquetTable WHERE name = 'Alice';
+SELECT * FROM mytestdb.dbo.myparquettable WHERE name = 'Alice';
 ```
 
 Als Ergebnis sollte die folgende Zeile zurückgegeben werden:
@@ -160,26 +160,26 @@ In diesem Beispiel wird eine externe Spark-Tabelle auf der Grundlage der Parquet
 Führen Sie mit SparkSQL beispielsweise Folgendes aus:
 
 ```sql
-CREATE TABLE mytestdb.myExternalParquetTable
+CREATE TABLE mytestdb.myexternalparquettable
     USING Parquet
     LOCATION "abfss://<fs>@arcadialake.dfs.core.windows.net/synapse/workspaces/<synapse_ws>/warehouse/mytestdb.db/myparquettable/"
 ```
 
 Ersetzen Sie den Platzhalter `<fs>` durch den Namen des Standarddateisystems für den Arbeitsbereich und den Platzhalter `<synapse_ws>` durch den Namen des für dieses Beispiel verwendeten Synapse-Arbeitsbereichs.
 
-Im vorherigen Beispiel wurde die Tabelle `myExtneralParquetTable` in der Datenbank `mytestdb` erstellt. Nach einer kurzen Verzögerung wird die Tabelle aus dem serverlosen SQL-Pool angezeigt. Führen Sie beispielsweise die folgende Anweisung über den serverlosen SQL-Pool aus:
+Im vorherigen Beispiel wurde die Tabelle `myextneralparquettable` in der Datenbank `mytestdb` erstellt. Nach einer kurzen Verzögerung wird die Tabelle aus dem serverlosen SQL-Pool angezeigt. Führen Sie beispielsweise die folgende Anweisung über den serverlosen SQL-Pool aus:
 
 ```sql
 USE mytestdb;
 SELECT * FROM sys.tables;
 ```
 
-Vergewissern Sie sich, dass `myExternalParquetTable` in den Ergebnissen enthalten ist.
+Vergewissern Sie sich, dass `myexternalparquettable` in den Ergebnissen enthalten ist.
 
 Nun können Sie die Daten wie folgt aus dem serverlosen SQL-Pool lesen:
 
 ```sql
-SELECT * FROM mytestdb.dbo.myExternalParquetTable WHERE name = 'Alice';
+SELECT * FROM mytestdb.dbo.myexternalparquettable WHERE name = 'Alice';
 ```
 
 Als Ergebnis sollte die folgende Zeile zurückgegeben werden:

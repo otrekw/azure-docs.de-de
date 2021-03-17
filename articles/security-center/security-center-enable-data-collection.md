@@ -1,36 +1,25 @@
 ---
 title: Automatische Bereitstellung von Agents für Azure Security Center | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie die automatische Bereitstellung des Log Analytics-Agents und anderer von Azure Security Center verwendeter Agents einrichten.
-services: security-center
+description: In diesem Artikel wird beschrieben, wie Sie die automatische Bereitstellung des Log Analytics-Agents und anderer von Azure Security Center verwendeter Agents und Erweiterungen einrichten.
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 11/15/2020
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 8fa2a06b1310e7cd825c918e92ea7af9b9b488de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 17f3440df4fa88995f2148680aba926207a0e46b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596166"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561261"
 ---
-# <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Automatische Bereitstellung von Agents und Erweiterungen aus Azure Security Center
+# <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>Konfigurieren der automatischen Bereitstellung für Agents und Erweiterungen aus Azure Security Center
 
-Security Center sammelt Daten von Ihren Azure-VMs, VM-Skalierungsgruppen, IaaS-Containern und Nicht-Azure-Computern (auch lokal), um sie auf Sicherheitsrisiken und Bedrohungen zu überwachen. 
+Azure Security Center erfasst mithilfe des relevanten Agents oder der Erweiterungen für diese Ressource und des von Ihnen aktivierten Datensammlungstyps Daten aus Ihren Ressourcen. Verwenden Sie die folgenden Verfahren, um sicherzustellen, dass Ihre Ressourcen über die erforderlichen Agents und Erweiterungen verfügen, die von Security Center verwendet werden.
 
-Die Datensammlung ist erforderlich, um einen Einblick in fehlende Updates, falsch konfigurierte Sicherheitseinstellungen des Betriebssystems, den Status des Endpunktschutzes sowie Integritäts- und Bedrohungsschutz bereitzustellen. Die Datensammlung ist nur für Computeressourcen (virtuelle Computer, VM-Skalierungsgruppen, IaaS-Container und Azure-fremde Computer) erforderlich. Sie können auch von Azure Security Center profitieren, wenn Sie keine Agents bereitstellen. Allerdings ist dann die Sicherheit eingeschränkt, und die oben aufgeführten Funktionen werden nicht unterstützt.  
-
-Daten werden wie folgt gesammelt:
-
-- Mit dem **Log Analytics-Agent**, der verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer liest und die Daten zur Analyse in Ihren Arbeitsbereich kopiert. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer.
-- Mit **Sicherheitserweiterungen** wie dem [Azure Policy-Add-On für Kubernetes](../governance/policy/concepts/policy-for-kubernetes.md), die auch Daten zu speziellen Ressourcentypen für Security Center bereitstellen können.
-
-> [!TIP]
-> Mit dem Umfang von Security Center hat auch die Anzahl von Ressourcentypen zugenommen, die überwacht werden können. Zudem sind mehr Erweiterungen verfügbar. Die automatische Bereitstellung wurde erweitert, um durch die Nutzung der Funktionen von Azure Policy zusätzliche Ressourcentypen zu unterstützen.
-
-:::image type="content" source="./media/security-center-enable-data-collection/auto-provisioning-options.png" alt-text="Seite mit den Einstellungen für die automatische Bereitstellung in Security Center":::
-
+## <a name="prerequisites"></a>Voraussetzungen
+Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonnement. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 
 ## <a name="availability"></a>Verfügbarkeit
 
@@ -42,6 +31,21 @@ Daten werden wie folgt gesammelt:
 | Clouds:                 | ![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov, China Gov, andere Gov-Clouds                                                                                                      |
 |                         |                                                                                                                                                                                                                              |
 
+## <a name="how-does-security-center-collect-data"></a>Wie werden Daten von Security Center gesammelt?
+
+Security Center sammelt Daten von Ihren Azure-VMs, VM-Skalierungsgruppen, IaaS-Containern und Nicht-Azure-Computern (auch lokal), um sie auf Sicherheitsrisiken und Bedrohungen zu überwachen. 
+
+Die Datensammlung ist erforderlich, um einen Einblick in fehlende Updates, falsch konfigurierte Sicherheitseinstellungen des Betriebssystems, den Status des Endpunktschutzes sowie Integritäts- und Bedrohungsschutz bereitzustellen. Die Datensammlung ist nur für Computeressourcen (etwa virtuelle Computer, VM-Skalierungsgruppen, IaaS-Container und Azure-fremde Computer) erforderlich. 
+
+Sie können auch von Azure Security Center profitieren, wenn Sie keine Agents bereitstellen. Allerdings ist dann die Sicherheit eingeschränkt, und die oben aufgeführten Funktionen werden nicht unterstützt.  
+
+Daten werden wie folgt gesammelt:
+
+- Mit dem **Log Analytics-Agent**, der verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer liest und die Daten zur Analyse in Ihren Arbeitsbereich kopiert. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer.
+- Mit **Sicherheitserweiterungen** wie dem [Azure Policy-Add-On für Kubernetes](../governance/policy/concepts/policy-for-kubernetes.md), die auch Daten zu speziellen Ressourcentypen für Security Center bereitstellen können.
+
+> [!TIP]
+> Mit dem Umfang von Security Center hat auch die Anzahl von Ressourcentypen zugenommen, die überwacht werden können. Zudem sind mehr Erweiterungen verfügbar. Die automatische Bereitstellung wurde erweitert, um durch die Nutzung der Funktionen von Azure Policy zusätzliche Ressourcentypen zu unterstützen.
 
 ## <a name="why-use-auto-provisioning"></a>Gründe für die Verwendung der automatischen Bereitstellung
 Alle Agents und Erweiterungen, die auf dieser Seite beschrieben werden, *können* manuell installiert werden (siehe [Manuelle Installation des Log Analytics-Agents](#manual-agent)). Die **automatische Bereitstellung** verringert jedoch den Verwaltungsaufwand, indem alle erforderlichen Agents und Erweiterungen auf vorhandenen – und neuen – Computern installiert werden, um eine schnellere Sicherheitsabdeckung für alle unterstützten Ressourcen sicherzustellen. 
@@ -49,19 +53,24 @@ Alle Agents und Erweiterungen, die auf dieser Seite beschrieben werden, *können
 Wir empfehlen, die automatische Bereitstellung zu aktivieren, sie ist jedoch standardmäßig deaktiviert.
 
 ## <a name="how-does-auto-provisioning-work"></a>Funktionsweise der automatischen Bereitstellung
-Die Einstellungen für die automatische Bereitstellung von Security Center enthalten eine Umschaltfläche für jeden unterstützten Erweiterungstyp. Wenn Sie die automatische Bereitstellung einer Erweiterung aktivieren, weisen Sie die entsprechende **Richtlinie für Bereitstellung, falls nicht vorhanden** zu, um sicherzustellen, dass die Erweiterung auf allen vorhandenen und zukünftigen Ressourcen dieses Typs bereitgestellt wird.
+Die Einstellungen für die automatische Bereitstellung von Security Center enthalten eine Umschaltfläche für jeden unterstützten Erweiterungstyp. Wenn Sie die automatische Bereitstellung einer Erweiterung aktivieren, weisen Sie die entsprechende Richtlinie vom Typ **Bereitstellung, falls nicht vorhanden** zu. Dieser Richtlinientyp stellt sicher, dass die Erweiterung für alle vorhandenen und zukünftigen Ressourcen dieses Typs bereitgestellt wird.
 
 > [!TIP]
 > Weitere Informationen zu Azure Policy-Auswirkungen, einschließlich „DeployIfNotExists“ (Bereitstellung, falls nicht vorhanden), finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](../governance/policy/concepts/effects.md).
 
-## <a name="enable-auto-provisioning-of-the-log-analytics-agent"></a>Aktivieren der automatischen Bereitstellung des Log Analytics-Agents <a name="auto-provision-mma"></a>
+
+## <a name="enable-auto-provisioning-of-the-log-analytics-agent-and-extensions"></a>Aktivieren der automatischen Bereitstellung des Log Analytics-Agents und der Erweiterungen <a name="auto-provision-mma"></a>
+
 Wenn die automatische Bereitstellung für den Log Analytics-Agent aktiviert ist, stellt Security Center den Agent auf allen unterstützten und neu erstellten Azure-VMs bereit. Die Liste der unterstützten Plattformen finden Sie unter [Unterstützte Plattformen in Azure Security Center](security-center-os-coverage.md).
 
 So aktivieren Sie die automatische Bereitstellung des Log Analytics-Agents:
 
 1. Wählen Sie im Menü von Security Center **Preise und Einstellungen** aus.
 1. Wählen Sie das relevante Abonnement aus.
-1. Legen Sie auf der Seite **Automatische Bereitstellung** den Status des Agents auf **Ein** fest.
+1. Legen Sie auf der Seite **Automatische Bereitstellung** den Status des Log Analytics-Agents auf **Ein** fest.
+
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Aktivieren der automatischen Bereitstellung des Log Analytics-Agents":::
+
 1. Definieren Sie im Bereich mit den Konfigurationsoptionen den zu verwendenden Arbeitsbereich.
 
     :::image type="content" source="./media/security-center-enable-data-collection/log-analytics-agent-deploy-options.png" alt-text="Konfigurationsoptionen für die automatische Bereitstellung von Log Analytics-Agents auf VMs" lightbox="./media/security-center-enable-data-collection/log-analytics-agent-deploy-options.png":::
@@ -104,6 +113,22 @@ So aktivieren Sie die automatische Bereitstellung des Log Analytics-Agents:
 
 1. Klicken Sie im Konfigurationsbereich auf **Übernehmen**.
 
+1. So aktivieren Sie die automatische Bereitstellung einer anderen Erweiterung als den Log Analytics-Agent: 
+
+    1. Wenn Sie die automatische Bereitstellung für den Microsoft Dependency-Agent aktivieren, muss der Log Analytics-Agent auf automatische Bereitstellung eingestellt sein.
+    1. Schalten Sie den Status für die jeweilige Erweiterung auf **Ein** um.
+
+        :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="Umschaltfläche zum Aktivieren der automatischen Bereitstellung für das Azure Policy-Add-On für Kubernetes (K8s)":::
+
+    1. Wählen Sie **Speichern** aus. Die Azure-Richtlinie wird zugewiesen, und ein Wartungstask wird erstellt.
+
+        |Durchwahl  |Policy  |
+        |---------|---------|
+        |Policy-Add-On für Kubernetes|[Azure Policy-Add-On für Azure Kubernetes Service-Cluster bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
+        |Microsoft Dependency-Agent (Vorschauversion) (Windows-VMs)|[Dependency-Agent für Windows-VMs bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |
+        |Microsoft Dependency-Agent (Vorschauversion) (Linux-VMs)|[Dependency-Agent für Linux-VMs bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da21710-ce6f-4e06-8cdb-5cc4c93ffbee)|
+        |||
+
 1. Wählen Sie **Speichern** aus. Wenn ein Arbeitsbereich bereitgestellt werden muss, kann die Installation des Agents bis zu 25 Minuten dauern.
 
 1. Sie werden gefragt, ob Sie überwachte VMs, die zuvor mit einem Standardarbeitsbereich verbunden waren, erneut konfigurieren möchten:
@@ -115,28 +140,6 @@ So aktivieren Sie die automatische Bereitstellung des Log Analytics-Agents:
 
    > [!NOTE]
    > Wenn Sie **Ja** auswählen, löschen Sie die von Security Center erstellten Arbeitsbereiche erst, wenn alle VMs mit dem neuen Zielarbeitsbereich verbunden sind. Dieser Vorgang ist nicht erfolgreich, wenn ein Arbeitsbereich zu früh gelöscht wird.
-
-
-## <a name="enable-auto-provisioning-of-extensions"></a>Aktivieren der automatischen Bereitstellung von Erweiterungen
-
-So aktivieren Sie die automatische Bereitstellung einer anderen Erweiterung als den Log Analytics-Agent: 
-
-1. Wählen Sie im Azure-Portal im Menü von Security Center **Preise & Einstellungen** aus.
-1. Wählen Sie das relevante Abonnement aus.
-1. Wählen Sie **Automatische Bereitstellung** aus.
-1. Wenn Sie die automatische Bereitstellung für den Microsoft Dependency-Agent aktivieren, muss der Log Analytics-Agent ebenfalls auf automatische Bereitstellung eingestellt sein. 
-1. Schalten Sie den Status für die jeweilige Erweiterung auf **Ein** um.
-
-    :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="Umschaltfläche zum Aktivieren der automatischen Bereitstellung für das Azure Policy-Add-On für Kubernetes (K8s)":::
-
-1. Wählen Sie **Speichern** aus. Die Azure-Richtlinie wird zugewiesen, und ein Wartungstask wird erstellt.
-
-    |Durchwahl  |Policy  |
-    |---------|---------|
-    |Policy-Add-On für Kubernetes|[Azure Policy-Add-On für Azure Kubernetes Service-Cluster bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
-    |Microsoft Dependency-Agent (Vorschauversion) (Windows-VMs)|[Dependency-Agent für Windows-VMs bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |
-    |Microsoft Dependency-Agent (Vorschauversion) (Linux-VMs)|[Dependency-Agent für Linux-VMs bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da21710-ce6f-4e06-8cdb-5cc4c93ffbee)|
-
 
 
 ## <a name="windows-security-event-options-for-the-log-analytics-agent"></a>Optionen für sicherheitsrelevante Windows-Ereignisse für den Log Analytics-Agent <a name="data-collection-tier"></a> 
@@ -235,7 +238,7 @@ Die folgenden Anwendungsfälle geben an, wie die automatische Bereitstellung fun
 
 - **Der Log Analytics-Agent ist auf dem Computer installiert, aber nicht als Erweiterung (Direkt-Agent)** : Wenn der Log Analytics-Agent direkt auf der VM installiert ist (also nicht als Azure-Erweiterung), installiert Security Center die Log Analytics-Agent-Erweiterung und aktualisiert den Log Analytics-Agent ggf. auf die aktuelle Version.
 Der installierte Agent erstellt seine Berichte weiterhin für die bereits konfigurierten Arbeitsbereiche und darüber hinaus für den in Security Center konfigurierten Arbeitsbereich (Multi-Homing wird auf Windows-Computern unterstützt).
-Wenn der konfigurierte Arbeitsbereich ein Benutzerarbeitsbereich ist (nicht der Standardarbeitsbereich von Security Center), müssen Sie darin die Lösung „security“ oder „securityFree“ installieren, damit Security Center mit der Verarbeitung von Ereignissen von VMs und Computern, die ihre Berichte in diesem Arbeitsbereich erstellen, beginnen kann.
+Wenn der konfigurierte Arbeitsbereich ein Benutzerarbeitsbereich ist (nicht der Standardarbeitsbereich von Security Center), müssen Sie darin die Lösung „Security“ oder „SecurityCenterFree“ installieren, damit Security Center mit der Verarbeitung von Ereignissen von VMs und Computern, die ihre Berichte in diesem Arbeitsbereich erstellen, beginnen kann.
 
     Auf Linux-Computern wird das Multi-Homing von Agents noch nicht unterstützt, weshalb, wenn eine bestehende Agent-Installation erkannt wird, keine automatische Bereitstellung erfolgt und die Konfiguration des Computers nicht geändert wird.
 
@@ -244,8 +247,8 @@ Wenn der konfigurierte Arbeitsbereich ein Benutzerarbeitsbereich ist (nicht der 
 - **Der System Center Operations Manager-Agent ist auf dem Computer installiert**: Security Center installiert die Log Analytics-Agent-Erweiterung parallel zum vorhandenen Operations Manager. Der vorhandene Operations Manager-Agent sendet weiterhin normal Berichte an den Operations Manager-Server. Der Operations Manager-Agent und der Log Analytics-Agent nutzen gemeinsame Laufzeitbibliotheken, die bei diesem Vorgang auf die neueste Version aktualisiert werden. Wenn die Operations Manager-Agentversion 2012 installiert ist, aktivieren Sie die automatische Bereitstellung **nicht**.
 
 - **Eine VM-Erweiterung ist bereits vorhanden**:
-    - Wenn der Monitoring Agent als Erweiterung installiert ist, erlaubt die Konfiguration der Erweiterung auch Berichte an nur einen einzelnen Arbeitsbereich. Bereits vorhandene Verbindungen mit Benutzerarbeitsbereichen werden von Security Center nicht überschrieben. Security Center speichert Sicherheitsdaten des virtuellen Computers im bereits verbundenen Arbeitsbereich, sofern darin die Lösung „security“ oder „securityFree“ installiert wurde. Security Center kann die Version der Erweiterung während dieses Vorgangs auf die neueste Version aktualisieren.  
-    - Um festzustellen, an welchen Arbeitsbereich die vorhandene Erweiterung Daten sendet, führen Sie den Test zum [Überprüfen der Konnektivität mit Azure Security Center](/archive/blogs/yuridiogenes/validating-connectivity-with-azure-security-center) aus. Alternativ können Sie Log Analytics-Arbeitsbereiche öffnen, einen Arbeitsbereich und den virtuellen Computer auswählen und sich die Log Analytics-Agent-Verbindung ansehen. 
+    - Wenn der Monitoring Agent als Erweiterung installiert ist, erlaubt die Konfiguration der Erweiterung auch Berichte an nur einen einzelnen Arbeitsbereich. Bereits vorhandene Verbindungen mit Benutzerarbeitsbereichen werden von Security Center nicht überschrieben. Security Center speichert Sicherheitsdaten des virtuellen Computers im bereits verbundenen Arbeitsbereich, sofern darin die Lösung „Security“ oder „SecurityCenterFree“ installiert wurde. Security Center kann die Version der Erweiterung während dieses Vorgangs auf die neueste Version aktualisieren.
+    - Um festzustellen, an welchen Arbeitsbereich die vorhandene Erweiterung Daten sendet, führen Sie den Test zum [Überprüfen der Konnektivität mit Azure Security Center](/archive/blogs/yuridiogenes/validating-connectivity-with-azure-security-center) aus. Alternativ können Sie Log Analytics-Arbeitsbereiche öffnen, einen Arbeitsbereich und den virtuellen Computer auswählen und sich die Log Analytics-Agent-Verbindung ansehen.
     - Wenn Sie über eine Umgebung verfügen, in der der Log Analytics-Agent auf Clientarbeitsstationen installiert ist und an einen vorhandenen Log Analytics-Arbeitsbereich berichtet, überprüfen Sie die Liste der [von Azure Security Center unterstützten Betriebssysteme](security-center-os-coverage.md), um sicherzustellen, dass Ihr Betriebssystem unterstützt wird. Weitere Informationen finden Sie unter [Log Analytics-Bestandskunden](./faq-azure-monitor-logs.md).
  
 
@@ -275,24 +278,10 @@ So deaktivieren Sie die automatische Bereitstellung eines Agents:
 ## <a name="troubleshooting"></a>Problembehandlung
 
 -   Informationen zum Identifizieren von Problemen bei der automatischen Bereitstellung finden Sie unter [Integritätsprobleme des Überwachungs-Agents](security-center-troubleshooting-guide.md#mon-agent).
-
 -  Informationen zum Identifizieren von Netzwerkanforderungen für den Überwachungs-Agent finden Sie unter [Beheben von Problemen mit den Netzwerkanforderungen für den Überwachungs-Agent](security-center-troubleshooting-guide.md#mon-network-req).
 -   Informationen zum Identifizieren von Problemen beim manuellen Onboarding finden Sie unter [Behandeln von Problemen beim Operations Management Suite-Onboarding](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
-
-- So identifizieren Sie Probleme mit nicht überwachten VMs und physischen Computern:
-
-    Ein virtueller oder physischer Computer gilt als nicht von Security Center überwacht, wenn auf dem Computer die Log Analytics-Agent-Erweiterung nicht ausgeführt wird. Auf einem Computer kann bereits ein lokaler Agent installiert sein, z.B. der OMS-Direkt-Agent oder der System Center Operations Manager-Agent. Computer mit diesen Agents werden als nicht überwacht angesehen, da diese Agents in Security Center nicht vollständig unterstützt werden. Die Log Analytics-Agent-Erweiterung ist erforderlich, um von allen Security Center-Vorteilen vollständig profitieren zu können.
-
-    Weitere Informationen zu den Gründen, aus denen Security Center VMs und Computer, die für die automatische Bereitstellung initialisiert wurden, nicht erfolgreich überwachen kann, finden Sie unter [Integritätsprobleme von Monitoring Agent](security-center-troubleshooting-guide.md#mon-agent).
-
 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel wurde die Funktionsweise der Datensammlung und der automatischen Bereitstellung in Security Center erläutert. Weitere Informationen zu Security Center finden Sie auf den folgenden Seiten:
-
-- [Azure Security Center – Häufig gestellte Fragen](faq-general.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-- [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-
-In diesem Artikel wird die Installation eines Log Analytics-Agents und das Festlegen eines Log Analytics-Arbeitsbereichs beschrieben, in dem die gesammelten Daten gespeichert werden. Beide Vorgänge sind erforderlich, um die Datensammlung aktivieren. Ganz gleich, ob Sie einen neuen oder vorhandenen Arbeitsbereich verwenden, fallen für das Speichern von Daten in Log Analytics möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
-
+Auf dieser Seite wurde erläutert, wie Sie die automatische Bereitstellung für den Log Analytics-Agent und andere Security Center-Erweiterungen aktivieren. Außerdem wurde beschrieben, wie Sie einen Log Analytics-Arbeitsbereich definieren, in dem die gesammelten Daten gespeichert werden. Beide Vorgänge sind erforderlich, um die Datensammlung aktivieren. Ganz gleich, ob Sie einen neuen oder vorhandenen Arbeitsbereich verwenden, fallen für das Speichern von Daten in Log Analytics möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Preisdetails zu Ihrer bevorzugten Währung und für Ihre Region finden Sie unter [Security Center – Preise](https://azure.microsoft.com/pricing/details/security-center/).

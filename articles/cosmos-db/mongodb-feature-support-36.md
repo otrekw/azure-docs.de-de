@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/02/2021
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: ce79b450e5eaed04150ffafd88528a131417044a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0b6f85a675dc98928309870ea177629203db39e7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692305"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557334"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB-API für MongoDB (Version 3.6): unterstützte Features und Syntax
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -142,7 +142,7 @@ Die API für MongoDB von Azure Cosmos DB unterstützt die folgenden Datenbankbef
 | $limit | Ja |
 | $listLocalSessions | Nein |
 | $listSessions | Nein |
-| $lookup | Ja |
+| $lookup | Teilweise |
 | $match | Ja |
 | $out | Ja |
 | $project | Ja |
@@ -154,6 +154,9 @@ Die API für MongoDB von Azure Cosmos DB unterstützt die folgenden Datenbankbef
 | $sort | Ja |
 | $sortByCount | Ja |
 | $unwind | Ja |
+
+> [!NOTE]
+> Von `$lookup` wird das in der Serverversion 3.6 eingeführte Feature für [nicht korrelierte Unterabfragen](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#join-conditions-and-uncorrelated-sub-queries) nicht unterstützt. Sie erhalten eine Fehlermeldung mit dem Hinweis `let is not supported`, wenn Sie versuchen, den Operator `$lookup` mit den Feldern `let` und `pipeline` zu verwenden.
 
 ### <a name="boolean-expressions"></a>Boolesche Ausdrücke
 

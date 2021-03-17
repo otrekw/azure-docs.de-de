@@ -13,18 +13,18 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 41f2ee9806b8f6818f2b2dd7a48920ac9907ca79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c03ba657ac264b72d035f28956354398421ed2f9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854646"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566599"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>Erstellen einer CI/CD-Pipeline für GitHub-Repositorys mit Azure DevOps Starter
 
 Azure DevOps Starter verfügt über einen vereinfachten Prozess zum Erstellen einer CI- und CD-Pipeline (Continuous Integration, Continuous Delivery) für Azure. Sie können Ihren vorhandenen Code und Ihr Git-Repository nutzen oder eine Beispielanwendung auswählen.
 
-In diesem Tutorial führen Sie folgende Schritte aus:
+Dieses Modul umfasst Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer CI/CD-Pipeline mithilfe von DevOps Starter
@@ -97,7 +97,7 @@ Mit Azure DevOps Starter wird automatisch eine CI/CD-Pipeline in Azure Pipelines
 
    ![Seite „Builds“ in Azure Pipelines](_img/azure-devops-project-github/pipelinesbuildpage.png)
 
-1. Oben rechts auf der Seite **Builds** können Sie die Option **Bearbeiten** auswählen, um den aktuellen Build zu ändern. Mit **Warteschlange** können Sie einen neuen Build hinzufügen, und mit der Schaltfläche mit den vertikalen Auslassungszeichen ( **&#8942;** ) können Sie ein Menü mit weiteren Optionen öffnen. Wählen Sie **Bearbeiten** aus.
+1. Oben rechts auf der Seite **Builds** können Sie die Option **Bearbeiten** auswählen, um den aktuellen Build zu ändern. Mit **Warteschlange** können Sie einen neuen Build hinzufügen, und mit der Schaltfläche mit den vertikalen Auslassungszeichen (**&#8942;**) können Sie ein Menü mit weiteren Optionen öffnen. Wählen Sie **Bearbeiten** aus.
 
 1. Der Build führt verschiedene Aufgaben durch. Beispielsweise werden Quellen aus dem Repository abgerufen, Abhängigkeiten wiederhergestellt und Ausgaben für Bereitstellungen veröffentlicht. Ändern Sie auf der rechten Seite unter **Name** den Namen der Buildpipeline in einen aussagekräftigeren Namen. Wählen Sie **Speichern und in Warteschlange einreihen** und dann **Speichern** aus. Geben Sie einen Kommentar ein, und wählen Sie dann erneut **Speichern** aus.
 
@@ -118,7 +118,7 @@ Als Sie den CI/CD-Prozess in diesem Tutorial konfiguriert haben, haben Sie in Az
 Weitere Informationen zur CI/CD-Pipeline finden Sie in folgendem Artikel:
 
 > [!div class="nextstepaction"]
-> [Define your multi-stage continuous deployment (CD) pipeline](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) (Festlegen Ihrer mehrstufigen CD-Pipeline (Continuous Deployment))
+> [Define your multi-stage continuous deployment (CD) pipeline](/azure/devops/pipelines/release/define-multistage-release-process) (Festlegen Ihrer mehrstufigen CD-Pipeline (Continuous Deployment))
 
 Weitere Informationen zur Anwendungsüberwachung finden Sie hier:
   

@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 02/09/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 432a9dab851bda65ecf8736d725b08c5e726ac16
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a94aa0a0deea14cca2b558c602ff7e35ca0ba81f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659255"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487378"
 ---
 # <a name="sip-interface-infrastructure-requirements"></a>Infrastrukturanforderungen für die SIP-Schnittstelle 
 
@@ -158,12 +158,12 @@ Die folgende Tabelle enthält den Portbereich der Medienprozessoren:
 
 ## <a name="media-traffic-media-processors-geography"></a>Mediendatenverkehr: Geografie von Medienprozessoren
 
-Der Mediendatenverkehr wird über sogenannte Medienprozessoren geleitet. Medienprozessoren werden in den gleichen Rechenzentren platziert wie SIP-Proxys. Außerdem gibt es zusätzliche Medienprozessoren zur Optimierung des Medienflusses. Beispielsweise gibt es derzeit keine SIP-Proxykomponente in Australien (SIP-Datenverkehr wird über Singapur oder Hongkong abgewickelt), der Medienprozessor ist jedoch lokal in Australien vorhanden. Der Bedarf für lokale Medienprozessoren geht auf die Wartezeit zurück, die auftritt, wenn Datenverkehr über weite Strecken gesendet wird (beispielsweise von Australien nach Singapur oder Hongkong). Im Beispiel von Datenverkehr, der von Australien nach Hongkong oder Singapur gesendet wird, lässt sich für SIP-Datenverkehr trotz Wartezeit eine gute Gesprächsqualität erreichen. Für Echtzeit-Mediendatenverkehr ist sie allerdings nicht akzeptabel.
+Der Mediendatenverkehr wird über sogenannte Medienprozessoren geleitet. Medienprozessoren werden in den gleichen Rechenzentren platziert wie SIP-Proxys. Außerdem gibt es zusätzliche Medienprozessoren zur Optimierung des Medienflusses. Beispielsweise gibt es derzeit keine SIP-Proxykomponente in Australien (SIP-Datenverkehr wird über Singapur oder Hongkong SAR abgewickelt), der Medienprozessor ist jedoch lokal in Australien vorhanden. Der Bedarf für lokale Medienprozessoren geht auf die Wartezeit zurück, die auftritt, wenn Datenverkehr über weite Strecken gesendet wird (beispielsweise von Australien nach Singapur oder Hongkong SAR). Im Beispiel von Datenverkehr, der von Australien nach Hongkong SAR oder Singapur gesendet wird, lässt sich für SIP-Datenverkehr trotz Wartezeit eine gute Gesprächsqualität erreichen. Für Echtzeit-Mediendatenverkehr ist sie allerdings nicht akzeptabel.
 
 Standorte, an denen sowohl SIP-Proxy- als auch Medienprozessorkomponenten bereitgestellt werden:
 - USA (zwei in den Rechenzentren der Regionen „USA, Westen“ und „USA, Osten“)
 - Europa (Rechenzentren in Amsterdam und Dublin)
-- Asien (Rechenzentren in Singapur und Hongkong)
+- Asien (Rechenzentren in Singapur und Hongkong SAR)
 - Australien (Rechenzentren in den Regionen „Australien, Osten“ und „Australien, Südosten“)
 
 Standorte, an denen nur Medienprozessoren bereitgestellt werden (SIP-Flows über das nächstgelegene Rechenzentrum):

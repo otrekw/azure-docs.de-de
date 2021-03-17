@@ -10,18 +10,31 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: b7d780ce6362e34c801b4da25332bff90f0b7515
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 380792db21932ed2c6cffb4227df09b27f0cdf5e
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659272"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487480"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Telefonnummerntypen in Azure Communication Services
 
-[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
+
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
+> [!IMPORTANT]
+> Derzeit ist die Verfügbarkeit von Telefonnummern auf kostenpflichtige Azure-Abonnements, für die eine Abrechnungsadresse in den USA festgelegt ist, und auf Communication Services-Ressourcen beschränkt, deren Daten in den USA gespeichert werden. Telefonnummern können nicht mit Testkonten oder kostenlosem Azure-Guthaben erworben werden. Weitere Informationen finden Sie in diesem Dokument im Abschnitt [Abonnementberechtigung](#azure-subscriptions-eligibility).
+
 
 Mit Azure Communication Services können Sie Telefonnummern verwenden, um Sprachanrufe zu tätigen und SMS-Nachrichten über das Telefonfestnetz (Public Switched Telephone Network, PSTN) zu versenden. In diesem Dokument werden die Telefonnummerntypen, Konfigurationsoptionen und die regionale Verfügbarkeit für die Planung Ihrer Telefonie- und SMS-Lösung mithilfe von Communication Services überprüft.
+
+## <a name="azure-subscriptions-eligibility"></a>Berechtigung für Azure-Abonnements
+
+Für den Erhalt einer Telefonnummer müssen Sie ein kostenpflichtiges Azure-Abonnement abgeschlossen haben. Telefonnummern können mit Testkonten oder kostenlosem Azure-Guthaben nicht erworben werden. 
+
+Derzeit ist die Verfügbarkeit von Telefonnummern auf Azure-Abonnements, für die eine Abrechnungsadresse in den USA festgelegt ist, und auf Communication Services-Ressourcen beschränkt, deren Daten in den USA gespeichert werden.
+
 
 ## <a name="number-types-and-features"></a>Typen und Features von Telefonnummern
 Communication Services bietet zwei Arten von Telefonnummern an: **lokale** und **gebührenfreie**.
@@ -69,11 +82,6 @@ In der folgenden Tabelle wird gezeigt, wo Sie verschiedene Telefonnummerntypen s
 
 *Weitere Details zu Anrufzielen und Preisen finden Sie auf der [Seite mit der Preisübersicht](../pricing.md).
 
-## <a name="azure-subscriptions-eligibility"></a>Berechtigung für Azure-Abonnements
-
-Für den Erhalt einer Telefonnummer müssen Sie ein kostenpflichtiges Azure-Abonnement abgeschlossen haben. Telefonnummern können mit Testkonten oder kostenlosem Azure-Guthaben nicht erworben werden.
-
-Derzeit ist die Verfügbarkeit von Telefonnummern auf Azure-Abonnements beschränkt, die über eine Rechnungsadresse in den USA verfügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

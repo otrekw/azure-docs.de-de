@@ -1,19 +1,19 @@
 ---
-title: Erstellen eines privaten Endpunkts in Azure Private Link
+title: 'Schnellstart: Erstellen eines privaten Endpunkts mithilfe einer ARM-Vorlage'
 description: In dieser Schnellstartanleitung erstellen Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) einen privaten Endpunkt.
 services: private-link
-author: mblanco77
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 553d36a86671617417b6b9b1ea47966c3ba3fdf6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e80adc16e08e676ac2daabec01a11c10d537c547
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88705808"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562944"
 ---
 # <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>Schnellstart: Erstellen eines privaten Endpunkts mithilfe einer ARM-Vorlage
 
@@ -137,4 +137,6 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu [Azure Private Link](private-link-overview.md).
+Weitere Informationen zu den Diensten, die einen privaten Endpunkt unterstützen, finden Sie unter:
+> [!div class="nextstepaction"]
+> [Private Link-Verfügbarkeit](private-link-overview.md#availability)

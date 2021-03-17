@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 8c0cdcad9a7803e0d8063362ca62887990045c86
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 7e8525dbebb42e1f387ee8f0c192efd5e64c9453
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209813"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426039"
 ---
 # <a name="monitor-your-synapse-workspace"></a>Überwachen Ihres Synapse-Arbeitsbereichs
 
@@ -30,7 +30,7 @@ In diesem Tutorial erfahren Sie, wie Sie Aktivitäten in Ihrem Synapse-Arbeitsbe
 
 ## <a name="integration"></a>Integration
 
-1. Navigieren Sie zu **Integration > Pipeline**. In dieser Ansicht können Sie alle Ausführungen einer Pipeline in Ihrem Arbeitsbereich anzeigen. 
+1. Navigieren Sie zu **Integration > Pipelineausführungen**. In dieser Ansicht können Sie alle Ausführungen einer Pipeline in Ihrem Arbeitsbereich anzeigen. 
 1. Suchen Sie die Pipeline, die Sie im vorherigen Schritt ausgeführt haben, und klicken Sie auf den **Pipelinenamen**, um Details anzuzeigen.
 1. Klicken Sie am oberen Rand von Synapse Studio auf die **Breadcrumb-Leiste** und dann auf **Alle Pipelineausführungen**, um zur vorherigen Ansicht zurückzukehren.
 
@@ -45,8 +45,7 @@ In diesem Tutorial erfahren Sie, wie Sie Aktivitäten in Ihrem Synapse-Arbeitsbe
 1. Navigieren Sie zu **Aktivitäten > SQL-Anforderungen**.
 1. In dieser Ansicht können Sie SQL-Anforderungen anzeigen.
 1. Wählen Sie mithilfe des **Poolfilters** einen zu überwachenden **Pool** aus. Nun sehen Sie alle SQL-Anforderungen, die in Ihrem Arbeitsbereich in diesem Pool ausgeführt werden oder wurden.
-1. Suchen Sie eine bestimmte SQL-Anforderung, und zeigen Sie mit der Maus auf das betreffende Element. Wenn Sie mit der Maus darauf zeigen, wird ein SQL-Skriptsymbol angezeigt.
-1. Klicken Sie auf das SQL-Skriptsymbol, um den vollständigen Text der SQL-Anforderung anzuzeigen.
+1. Suchen Sie nach einer bestimmten SQL-Anforderungen, und klicken Sie auf den Link **Mehr**, um den vollständigen Text der SQL-Anforderung anzuzeigen.
 
     > [!NOTE] 
     > SQL-Anforderungen, die über Synapse Studio in einem für den Arbeitsbereich aktivierten dedizierten SQL-Pool (vormals SQL DW) übermittelt werden, können im Überwachungshub angezeigt werden. Für alle anderen Überwachungsaktivitäten können Sie die Überwachung von dedizierten SQL-Pools (vormals SQL DW) im Azure-Portal verwenden.

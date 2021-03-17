@@ -6,13 +6,13 @@ ms.author: sunila
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 09/22/2020
-ms.openlocfilehash: b4df91f4654f39780f81e0a27139677431926238
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 03/03/2021
+ms.openlocfilehash: a080a3b536cb6e11a254f15d745334fbf17531e8
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532661"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439560"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL – Flexible Server
 
@@ -56,7 +56,7 @@ Die folgen Abbildung zeigt den Übergang bei VM- und Speicherausfall.
 
 Wenn zonenredundante Hochverfügbarkeit konfiguriert ist, wird vom Dienst ein unmittelbar betriebsbereiter Standbyserver in der Verfügbarkeitszone innerhalb derselben Azure-Region bereitgestellt und verwaltet. Die Datenänderungen auf dem Quellserver werden synchron auf den Standbyserver repliziert, damit kein Datenverlust entsteht. Bei zonenredundanter Hochverfügbarkeit geht der Standbyserver nach dem Auslösen des geplanten oder ungeplanten Failoverereignisses sofort online und steht für die Verarbeitung eingehender Transaktionen zur Verfügung. Dies ermöglicht die Resilienz des Diensts bei Ausfall einer Verfügbarkeitszone innerhalb einer Azure-Region, die mehrere Verfügbarkeitszonen unterstützt, wie in der folgenden Abbildung gezeigt.
 
- :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="Flexible Server-Instanz: VM- und Speicherausfall":::
+ :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="Zonenredundante Hochverfügbarkeit":::
 
  Weitere Informationen finden Sie in der [Dokumentation zur Hochverfügbarkeit](./concepts-high-availability.md).
 
@@ -86,12 +86,40 @@ Flexible Server-Instanzen ermöglichen den vollständigen privaten Zugriff auf d
 
 Der Flexible Server-Dienst verfügt über integrierte Funktionen für Leistungsüberwachung und Warnungen. Alle Azure-Metriken werden im Minutentakt erfasst, und für jede Metrik steht ein Verlauf von 30 Tagen zur Verfügung. Sie können Warnungen für die Metriken konfigurieren. Der Dienst macht Hostservermetriken verfügbar, um die Ressourcenauslastung zu überwachen, und ermöglicht die Konfiguration von Protokollen langsamer Abfragen. Mit diesen Tools können Sie Ihre Workloads schnell optimieren und Ihren Server für optimale Leistung konfigurieren.
 
+## <a name="azure-regions"></a>Azure-Regionen
+
+Ein Vorteil der Ausführung Ihrer Workload in Azure ist die globale Reichweite. Der flexible Server ist derzeit in den folgenden Azure-Regionen verfügbar:
+
+| Region | Verfügbarkeit | Zonenredundante Hochverfügbarkeit | 
+| --- | --- | --- |
+| Europa, Westen | :heavy_check_mark: | :heavy_check_mark: |
+| Nordeuropa | :heavy_check_mark: | :heavy_check_mark: |
+| UK, Süden | :heavy_check_mark: | :heavy_check_mark: | 
+| USA (Ost) 2 | :heavy_check_mark: | :heavy_check_mark: |
+| USA, Westen 2 | :heavy_check_mark: | :heavy_check_mark: |
+| USA (Mitte) | :heavy_check_mark: | :heavy_check_mark: | 
+| East US | :heavy_check_mark: | :heavy_check_mark: | 
+| Asien, Südosten | :heavy_check_mark: | :heavy_check_mark: |
+| Japan, Osten | :heavy_check_mark: | :heavy_check_mark: | 
+
+Es werden auch weiterhin weitere Regionen für flexible Server hinzugefügt.
+
 ## <a name="migration"></a>Migration
 
 Der Dienst führt die Community-Version von PostgreSQL aus. Dies ermöglicht vollständige Anwendungskompatibilität und verursacht minimale Refactoringkosten für die Migration vorhandener Anwendungen, die für die PostgreSQL-Engine entwickelt wurden, zu Flexible Server. 
 
-- **Sichern und Wiederherstellen** : Für Offlinemigrationen, wenn sich Benutzer Ausfallzeiten leisten können, kann das Sichern und Wiederherstellen mit Communitytools wie pg_dump und pg_restore die schnellste Möglichkeit der Migration sein. Ausführliche Informationen finden Sie unter [Migrieren durch Sicherungen und Wiederherstellungen](../howto-migrate-using-dump-and-restore.md).
-- **Azure Database Migration Service** : Für eine nahtlose und einfachere Migration zu Flexible Server mit minimalen Ausfallzeiten können Sie Azure Database Migration Service einsetzen. Weitere Informationen finden Sie unter [DMS über Portal](../../dms/tutorial-postgresql-azure-postgresql-online-portal.md) und [DMS über CLI](../../dms/tutorial-postgresql-azure-postgresql-online.md). Sie können von Azure Database for PostgreSQL-Einzelserver zu Flexible Server migrieren. Weitere Informationen finden Sie in [diesem Artikel zu DMS](../../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md).
+- **Sichern und Wiederherstellen**: Für Offlinemigrationen, wenn sich Benutzer Ausfallzeiten leisten können, kann das Sichern und Wiederherstellen mit Communitytools wie pg_dump und pg_restore die schnellste Möglichkeit der Migration sein. Ausführliche Informationen finden Sie unter [Migrieren durch Sicherungen und Wiederherstellungen](../howto-migrate-using-dump-and-restore.md).
+- **Azure Database Migration Service**: Für eine nahtlose und einfachere Migration zu Flexible Server mit minimalen Ausfallzeiten können Sie Azure Database Migration Service einsetzen. Weitere Informationen finden Sie unter [DMS über Portal](../../dms/tutorial-postgresql-azure-postgresql-online-portal.md) und [DMS über CLI](../../dms/tutorial-postgresql-azure-postgresql-online.md). Sie können von Azure Database for PostgreSQL-Einzelserver zu Flexible Server migrieren. Weitere Informationen finden Sie in [diesem Artikel zu DMS](../../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md).
+
+## <a name="contacts"></a>Kontakte
+Sollten Sie Fragen oder Vorschläge im Zusammenhang mit Azure Database for PostgreSQL Flexible Server haben, senden Sie eine E-Mail an das zuständige Azure Database for PostgreSQL-Team ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Bei dieser E-Mail-Adresse handelt es sich nicht um einen Alias für den technischen Support.
+
+Weitere Kontaktmöglichkeiten:
+
+- Wenn Sie den Azure-Support kontaktieren möchten, [fordern Sie im Azure-Portal ein Ticket an](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Um ein Problem mit Ihrem Konto zu beheben, richten Sie im Azure-Portal eine [Anfrage an den Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+- Wenn Sie Feedback abgeben oder Vorschläge für neue Features einreichen möchten, erstellen Sie einen Eintrag über [UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
+  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

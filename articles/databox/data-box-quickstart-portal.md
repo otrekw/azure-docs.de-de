@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 03/05/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 81dee0c63db711b39ff8fd2123623a16b2b9cb91
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 3359152455df2701d897689a1f177bf63051b94b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122788"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440716"
 ---
 # <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Erste Schritte mit Azure Data Box zum Importieren von Daten in Azure
 
@@ -39,7 +39,7 @@ In diesem Leitfaden wird beschrieben, wie Sie das Azure Data Box-Gerät für den
 Vorbereitungen
 
 - Sie verwenden ein Abonnement der folgenden Typen für den Data Box-Dienst:
-    - Microsoft Enterprise Agreement (EA). Erfahren Sie mehr über [EA-Abonnements](https://azure.microsoft.com/pricing/enterprise-agreement/).
+    - Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) für neue Abonnements oder Microsoft Enterprise Agreement (EA) für vorhandene Abonnements. Informieren Sie sich ausführlicher über die [MCA für neue Abonnements](https://www.microsoft.com/licensing/how-to-buy/microsoft-customer-agreement) und [EA-Abonnements](https://azure.microsoft.com/pricing/enterprise-agreement/).
     - Cloud Solution Provider (CSP). Erfahren Sie mehr über das [Azure CSP-Programm](/azure/cloud-solution-provider/overview/azure-csp-overview).
     - Microsoft Azure Sponsorship. Erfahren Sie mehr über das [Azure Sponsorship-Programm](https://azure.microsoft.com/offers/ms-azr-0036p/). 
 

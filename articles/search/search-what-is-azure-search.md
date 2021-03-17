@@ -7,26 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 01/22/2021
+ms.date: 03/09/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 893bf37a5a4c8a314e5182bf2ac4bc28502b98d9
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: e17d08d09814c135af3e0b4fc299b6e6f42326d4
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98699436"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549888"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Was ist Azure Cognitive Search?
 
 Azure Cognitive Search ([früher „Azure Search“](whats-new.md#new-service-name)) ist ein Cloudsuchdienst, der Entwicklern APIs und Tools zum Erstellen umfangreicher Suchfunktionen für private, heterogene Inhalte in Web- und Unternehmensanwendungen sowie in mobilen Anwendungen bietet. 
 
+Search dient als wichtige Grundlage für jede App, mit der Inhalte für Benutzer angezeigt werden. Häufige Szenarien sind Katalog- oder Dokumentsuche, Suche auf E-Commerce-Websites oder Knowledge Mining für Data Science. Die APIs und die Architektur von Cognitive Search vereinfachen das Hinzufügen einer anspruchsvollen Datenabruffunktion für Lösungen.
+
 Ein Suchdienst verfügt über die folgenden Komponenten:
 
 + Suchmaschine für die Volltextsuche
 + Dauerhafte Speicherung von indizierten Inhalten, die sich im Besitz von Benutzern befinden
-+ APIs für Indizierung und Abfragen
-+ Optionale [KI-basierte Anreicherungen](cognitive-search-concept-intro.md) mit Erstellung von durchsuchbarem Inhalt aus Bildern, unformatiertem Text und Anwendungsdateien
-+ Optionale Integration in andere Azure-Dienste für die Bereiche Daten, Machine Learning/KI und Sicherheit
++ APIs für das Indizieren und Abfragen von Inhalten
++ Optionale [KI-basierte Anreicherungen](cognitive-search-concept-intro.md) mit Erstellung von durchsuchbarem Inhalt aus Bildern, unstrukturiertem Rohtext und Anwendungsdateien
++ Optionale Integration in andere Azure-Dienste für die Bereiche Daten, Machine Learning/KI, Überwachung und Sicherheit
++ Optionale Implementierung der [semantischen Suche (Vorschauversion)](semantic-search-overview.md) zur Verbesserung der Relevanz
 
 Aus architektonischer Sicht befindet sich ein Suchdienst zwischen den externen Datenspeichern, die Ihre nicht indizierten Daten enthalten, und Ihrer Client-App, die Abfrageanforderungen an einen Suchindex sendet und die Antwort verarbeitet.
 
@@ -74,8 +77,9 @@ Mithilfe der folgenden vier Schritte können Sie sich umfassend mit den wichtigs
 
 1. [**Fragen Sie einen Index ab.**](search-query-overview.md) Verwenden Sie dazu den [Suchexplorer](search-explorer.md) im Portal, die [REST-API](search-get-started-rest.md), das [.NET SDK](/dotnet/api/azure.search.documents.searchclient.search) oder ein anderes SDK.
 
-> [!TIP]
-> Minimieren Sie die Schritte, indem Sie mit dem [**Datenimport-Assistenten**](search-get-started-portal.md) und einer Azure-Datenquelle beginnen, um innerhalb weniger Minuten einen Index zu erstellen, zu laden und abzufragen.
+Beginnen Sie als Einstieg mit dem [**Datenimport-Assistenten**](search-get-started-portal.md) und einer integrierten Azure-Datenquelle, um innerhalb weniger Minuten einen Index zu erstellen, zu laden und abzufragen.
+
+[**Wenden Sie sich an einen Partner**](resource-partners-knowledge-mining.md), der sich sehr gut mit der Cognitive Search-Technologie auskennt, um Hilfe zu komplexen oder benutzerdefinierten Lösungen zu erhalten.
 
 ## <a name="compare-search-options"></a>Vergleichen von Suchoptionen
 

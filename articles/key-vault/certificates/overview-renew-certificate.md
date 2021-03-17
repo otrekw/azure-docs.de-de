@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 0720e6b55cec8150eea9d41ca89b2c9b21a0bc94
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c7948230164258aa785f3dd6c1f487c51ece9333
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287680"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487184"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Verlängern Ihrer Azure Key Vault-Zertifikate
 
@@ -73,13 +73,16 @@ Weitere Informationen zum Erstellen einer neuen CSR finden Sie unter [Erstellen 
 Von Azure Key Vault wird auch die automatische Verlängerung von selbstsignierten Zertifikaten durchgeführt. Weitere Informationen zur Änderung der Ausstellungsrichtlinie und Aktualisierung der Lebenszyklusattribute eines Zertifikats finden Sie unter [Konfigurieren der automatischen Zertifikatrotation in Key Vault](./tutorial-rotate-certificates.md#update-lifecycle-attributes-of-a-stored-certificate).
 
 ## <a name="troubleshoot"></a>Problembehandlung
-Falls sich das ausgestellte Zertifikat im Azure-Portal im Status *Deaktiviert* befindet, sollten Sie unter **Zertifikatvorgang** die Fehlermeldung für das Zertifikat anzeigen.
+* Falls sich das ausgestellte Zertifikat im Azure-Portal im Status *Deaktiviert* befindet, sollten Sie unter **Zertifikatvorgang** die Fehlermeldung für das Zertifikat anzeigen.
+* Fehlertyp „The CSR used to get your certificate has already been used. Please try to generate a new certificate with a new CSR.“ (Die zum Abrufen Ihres Zertifikats verwendete CSR wurde bereits verwendet. Versuchen Sie, ein neues Zertifikat mit einer neuen CSR zu generieren.)
+  Navigieren Sie zum Abschnitt „Erweiterte Richtlinie“ des Zertifikats, und überprüfen Sie, ob die Option **Schlüssel beim Erneuern wiederverwenden?** deaktiviert ist.
+
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 **Wie kann ich das Feature für die automatische Rotation des Zertifikats testen?**
 
-Erstellen Sie ein Zertifikat mit einer Gültigkeitsdauer von **1 Monat** , und legen Sie die Lebensdaueraktion für die Rotation dann auf **1 %** fest. Bei dieser Einstellung wird das Zertifikat alle 7,2 Stunden rotiert.
+Erstellen Sie ein Zertifikat mit einer Gültigkeitsdauer von **1 Monat**, und legen Sie die Lebensdaueraktion für die Rotation dann auf **1 %** fest. Bei dieser Einstellung wird das Zertifikat alle 7,2 Stunden rotiert.
   
 **Werden die Tags nach der automatischen Verlängerung des Zertifikats repliziert?**
 

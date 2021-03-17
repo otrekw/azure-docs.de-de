@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d1ac17c93bdf95e36f68af678d2ee38b896ef1e7
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 5712448c8c5248d3c84ce43f8a41c669355f1d43
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979741"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565732"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>Tutorial: Verschieben von Azure-VMs zwischen Regionen
 
@@ -40,6 +40,7 @@ Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](h
 ## <a name="prerequisites"></a>Voraussetzungen
 **Anforderung** | **Beschreibung**
 --- | ---
+**Unterstützung für Resource Mover** | Informationen zu unterstützten Regionen und andere häufige Fragen finden Sie [hier](common-questions.md).
 **Abonnementberechtigungen** | Vergewissern Sie sich, dass Sie *Besitzerzugriff* auf das Abonnement haben, das die zu verschiebenden Ressourcen enthält.<br/><br/> **Warum benötige ich Besitzerzugriff?** Wenn Sie zum ersten Mal eine Ressource für ein bestimmtes Quelle-Ziel-Paar in einem Azure-Abonnement hinzufügen, erstellt Resource Mover eine [vom System zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (früher als Managed Service Identify (MSI) bezeichnet), die vom Abonnement als vertrauenswürdig eingestuft wird. Zum Erstellen der Identität und zum Zuweisen der erforderlichen Rolle (Mitwirkender oder Benutzerzugriffsadministrator im Quellabonnement) benötigt das Konto, das Sie zum Hinzufügen von Ressourcen verwenden, Berechtigungen als *Besitzer* für das Abonnement. Hier [erfahren Sie mehr](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) zu Azure-Rollen.
 **VM-Support** |  Überprüfen Sie, ob die virtuellen Computer unterstützt werden, die Sie verschieben möchten.<br/><br/> - Informationen zu unterstützten virtuellen Windows-Computern finden Sie [hier](support-matrix-move-region-azure-vm.md#windows-vm-support).<br/><br/> - Informationen zu unterstützten virtuellen Linux-Computern und Kernel-Versionen finden Sie [hier](support-matrix-move-region-azure-vm.md#linux-vm-support).<br/><br/> - Überprüfen Sie die unterstützten Einstellungen für [Compute](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings), [Speicher](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings) und [Netzwerk](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings).
 **Zielabonnement** | Das Abonnement in der Zielregion benötigt ein ausreichendes Kontingent zum Erstellen der Ressourcen, die Sie in die Zielregion verschieben. Wenn kein ausreichendes Kontingent vorhanden ist, [fordern Sie eine Heraufsetzung des Kontingents an](../azure-resource-manager/management/azure-subscription-service-limits.md).
