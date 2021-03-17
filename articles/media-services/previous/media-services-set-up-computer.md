@@ -3,7 +3,7 @@ title: Einrichten der Azure Media Services-Entwicklungsumgebung | Microsoft-Doku
 description: In diesem Artikel wird das Einrichten der Umgebung für die Entwicklung mit Azure Media Services beschrieben.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 0258a633-8b42-4853-acc7-3b5162d1d8cd
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.author: juliako
-ms.openlocfilehash: cd3bf913f88de2d9d4757cb44022ca312f0eab07
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 99bab73cabfb0cbe59461c424b5857ace07212dd
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696192"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013090"
 ---
 # <a name="set-up-your-media-services-development-environment"></a>Einrichten der Media Services-Entwicklungsumgebung 
 
@@ -49,7 +49,7 @@ Informationen zum Herstellen einer Verbindung zur Azure Media Services-API finde
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Mehrere Codebeispiele finden Sie im Katalog mit **Azure-Codebeispielen**: [Azure Media Services-Codebeispiele](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
+Im Katalog mit **Azure-Codebeispielen** stehen mehrere Codebeispiele zur Verfügung: [Azure Media Services-Codebeispiele](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

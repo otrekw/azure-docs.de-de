@@ -3,7 +3,7 @@ title: Erstellen von erweiterten Codierungsworkflows mit Workflow-Designer | Mic
 description: Erfahren Sie, wie Sie mit dem Workflow-Designer erweiterte Codierungsworkflows erstellen.
 services: media-services
 documentationcenter: ''
-author: anilmur
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 004815f2-0761-4706-87a1-675ba36e0322
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 3/10/2021
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: a53027ec1f775c240164f67e7ee0473a44690964
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8173da37792948e267aae2078fee9f864bf7bdc9
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262684"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011152"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Erstellen von erweiterten Codierungsworkflows mit Workflow-Designer
 
@@ -28,7 +28,7 @@ ms.locfileid: "89262684"
 
 ## <a name="overview"></a>Übersicht
 Der **Workflow-Designer** ist ein Windows-Desktoptool, das zum Entwerfen und Erstellen benutzerdefinierter Workflows für die Codierung mit dem **Medienencoder-Premium-Workflow** verwendet wird.
-Dank der Leistungsfähigkeit des Workflow-Designer-Tools können Sie komplexe Workflows entwerfen und erstellen, die in **Medienencoder-Premium**ausgeführt werden.  
+Dank der Leistungsfähigkeit des Workflow-Designer-Tools können Sie komplexe Workflows entwerfen und erstellen, die in **Medienencoder-Premium** ausgeführt werden.  
 
 Workflows können Entscheidungsfindungslogik von Kunden und Verzweigungen enthalten, die auf den Eigenschaften der Eingabequelldatei basieren. Sie können Workflows mit überschreibbaren Eigenschaften und dynamischen Werten erstellen, um auch für sehr komplexe Codieraufgaben zu erreichen, dass sie leicht wiederholt und in der Cloud angepasst werden können.
 

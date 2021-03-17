@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie Azure Resource Manager-
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 243316b32d5b0cf62f03ae77d8a9fb919743ace1
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 564a21d565fb80eba605eece95562a809a93246f
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102172829"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471915"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>Bereitstellen von ARM-Vorlagen mithilfe von GitHub Actions
 
@@ -43,7 +43,7 @@ Sie können mit dem Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-
 Erstellen Sie eine Ressourcengruppe, wenn noch keine vorhanden ist:
 
 ```azurecli-interactive
-    az group create -n {MyResourceGroup}
+    az group create -n {MyResourceGroup} -l {location}
 ```
 
 Ersetzen Sie den Platzhalter `myApp` durch den Namen Ihrer Anwendung.

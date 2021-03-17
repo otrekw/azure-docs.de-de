@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: d5a81a56e6b29bb0cad681876b9476809bd9f3cb
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 6e77f983f3600ae7c54d7d88f2ad1a006d7325fa
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203435"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614189"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>Schützen von privaten DNS-Zonen und -Einträgen
 
@@ -204,7 +204,7 @@ Ressourcensperren auf Zonenebene können über das Azure-Portal erstellt werden.
 
 ![Ressourcensperren auf Zonenebene über das Azure-Portal](./media/dns-protect-private-zones-recordsets/locks1.png)
 
-Ressourcensperren auf Zonenebene können auch über [Azure PowerShell](/powershell/module/az.resources/new-azresourcelock?view=latest) erstellt werden:
+Ressourcensperren auf Zonenebene können auch über [Azure PowerShell](/powershell/module/az.resources/new-azresourcelock) erstellt werden:
 
 ```azurepowershell-interactive
 # Lock a DNS zone

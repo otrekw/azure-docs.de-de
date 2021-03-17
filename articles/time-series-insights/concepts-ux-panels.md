@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: 55e102cc7e27cbcd9a65999f590c8264f1ad4434
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 77c6e8790451ef830b37cc5914ce9de8e92174f5
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736851"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464087"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights-Explorer
 
@@ -25,7 +25,7 @@ In diesem Artikel werden die in der Azure Time Series Insights Gen2-[Demoumgebun
 
 Für die ersten Schritte mit dem Azure Time Series Insights-Explorer ist Folgendes erforderlich:
 
-* Bereitstellung einer Azure Time Series Insights Gen2-Umgebung. Weitere Informationen zur Bereitstellung einer Instanz erhalten Sie im Tutorial [Azure Time Series Insights Gen2](./tutorials-set-up-tsi-environment.md).
+* Bereitstellung einer Azure Time Series Insights Gen2-Umgebung. Weitere Informationen zur Bereitstellung einer Instanz erhalten Sie im Tutorial [Azure Time Series Insights Gen2](./tutorial-set-up-environment.md).
 * [Bereitstellung von Datenzugriff](./concepts-access-policies.md) auf die Azure Time Series Insights Gen2-Umgebung, die Sie für das Konto erstellt haben. Außer Ihnen, können Sie auch anderen Zugriff gewähren.
 * Hinzufügen einer Ereignisquelle zur Azure Time Series Insights Gen2-Umgebung zum Übertragen von Daten an die Umgebung mithilfe von Push:
   * Informationen zum [Herstellen einer Verbindung mit einem Event Hub](./how-to-ingest-data-event-hub.md)
@@ -92,7 +92,7 @@ In der Quelle werden Instanzfelder und andere Metadaten angezeigt, die ausgewäh
 
 Sie können bestimmte Datenelemente aus Ihrer aktuellen Datenquelle entfernen, indem Sie auf der linken Seite des Elements auf das rote Steuerelement **Löschen** (Papierkorb) klicken. Über die Quelle können Sie außerdem steuern, wie jedes Element in dem Diagramm angezeigt wird. Sie können auswählen, Mindest-/Höchstwert für Schatten und Datenpunkte hinzufügen, das Element zeitlich zu verschieben und die Instanz auf abgestufte Weise zu visualisieren.
 
-Darüber hinaus können Sie mithilfe des Steuerelements für Erkundungen problemlos Zeitverschiebungen und Punktdiagramme erstellen.  
+Darüber hinaus können Sie mithilfe des Steuerelements für Erkundungen problemlos Zeitverschiebungen und Punktdiagramme erstellen.
 
   [![Quellenlayoutoptionen](media/v2-update-explorer/well-layout-options.png)](media/v2-update-explorer/well-layout-options.png#lightbox)
 

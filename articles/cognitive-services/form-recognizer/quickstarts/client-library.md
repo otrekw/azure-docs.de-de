@@ -3,22 +3,22 @@ title: 'Schnellstart: Clientbibliothek oder REST-API für die Formularerkennung'
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie die Clientbibliothek oder die REST-API für die Formularerkennung, um eine Formularverarbeitungs-App zu erstellen, die Schlüssel-Wert-Paare und Tabellendaten aus Ihren benutzerdefinierten Dokumenten extrahiert.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/29/2021
-ms.author: pafarley
+ms.author: lajanuar
 zone_pivot_groups: programming-languages-set-formre
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: Formularverarbeitung, automatisierte Datenverarbeitung
-ms.openlocfilehash: d468f40d9de7fd7efb4ac7d8021a667e0c6c31f6
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 43182892aa80f6226ffb5177d0be2e24d15ead5c
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584607"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467225"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library-or-rest-api"></a>Schnellstart: Verwenden der Clientbibliothek oder REST-API für die Formularerkennung
 

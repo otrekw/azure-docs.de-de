@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 0c1273f4a2025658520118ed843d90b3378a129f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4cf3709574e2055f40759fd2d7026c93ac9db098
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577882"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608018"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Aktivieren der Ressourcenprotokollierung in Azure Traffic Manager
 
@@ -39,14 +39,14 @@ Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure
 
 2. **Aktivieren der Ressourcenprotokollierung für das Traffic Manager-Profil:**
 
-    Aktivieren Sie mit [Set-AzureDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest) die Ressourcenprotokollierung für das Traffic Manager-Profil, indem Sie die ID verwenden, die Sie im vorherigen Schritt abgerufen haben. Mit dem folgenden Befehl werden ausführliche Protokolle für das Traffic Manager-Profil in einem angegebenen Azure Storage-Konto gespeichert. 
+    Aktivieren Sie mit [Set-AzureDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) die Ressourcenprotokollierung für das Traffic Manager-Profil, indem Sie die ID verwenden, die Sie im vorherigen Schritt abgerufen haben. Mit dem folgenden Befehl werden ausführliche Protokolle für das Traffic Manager-Profil in einem angegebenen Azure Storage-Konto gespeichert. 
 
       ```azurepowershell-interactive
     Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
       ``` 
 3. **Überprüfen von Diagnoseeinstellungen:**
 
-      Überprüfen Sie die Diagnoseeinstellungen für das Traffic Manager-Profil, indem Sie [Get-AzureDiagnosticSetting](/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest) verwenden. Mit dem folgenden Befehl werden die Kategorien angezeigt, die für eine Ressource protokolliert werden.
+      Überprüfen Sie die Diagnoseeinstellungen für das Traffic Manager-Profil, indem Sie [Get-AzureDiagnosticSetting](/powershell/module/az.monitor/get-azdiagnosticsetting) verwenden. Mit dem folgenden Befehl werden die Kategorien angezeigt, die für eine Ressource protokolliert werden.
 
      ```azurepowershell-interactive
      Get-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>

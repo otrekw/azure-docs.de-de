@@ -3,7 +3,7 @@ title: Übermitteln von DRM-Lizenzen oder AES-Schlüsseln mithilfe von Azure Med
 description: In diesem Artikel wird beschrieben, wie Sie Azure Media Services verwenden können, um PlayReady- und/oder Widevine-Lizenzen und AES-Schlüssel zu übermitteln, aber die restlichen Aufgaben (Codierung, Verschlüsselung, Streaming) mithilfe Ihrer lokalen Server auszuführen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 8546c2c1-430b-4254-a88d-4436a83f9192
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e564feadfdb1d3cb6943d76b4b39ba0ec814e0d6
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 10ff568ede601c57369f8c942ed61cb7a39ba703
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693635"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103465707"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Übermitteln von DRM-Lizenzen oder AES-Schlüsseln mithilfe von Media Services
 
@@ -41,9 +41,6 @@ Media Services unterstützt mehrere Möglichkeiten zur Autorisierung von Benutze
 Das folgende Diagramm zeigt die wichtigsten Schritte, die erfolgen müssen, damit Media Services zum Übermitteln von PlayReady- und/oder Widevine-Lizenzen genutzt werden kann, die restlichen Aufgaben aber auf Ihren lokalen Servern erfolgen können:
 
 ![Schützen mit PlayReady](./media/media-services-deliver-keys-and-licenses/media-services-diagram1.png)
-
-## <a name="download-sample"></a>Beispiel herunterladen
-Informationen zum Herunterladen des in diesem Artikel beschriebenen Beispiels finden Sie unter [Verwenden von Azure Media Services zum Bereitstellen von PlayReady- und/oder Widevine-Lizenzen mit .NET](https://github.com/Azure/media-services-dotnet-deliver-drm-licenses).
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Erstellen und Konfigurieren eines Visual Studio-Projekts
 
