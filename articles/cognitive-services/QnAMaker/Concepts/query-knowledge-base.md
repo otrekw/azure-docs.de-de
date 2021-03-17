@@ -3,12 +3,12 @@ title: 'Abfragen der Wissensdatenbank: QnA Maker'
 description: Eine Wissensdatenbank muss veröffentlicht werden. Nach der Veröffentlichung wird die Wissensdatenbank mithilfe der generateAnswer-API am Vorhersageendpunkt der Runtime abgefragt.
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: deefc53fdc94851da0e9e255962fbf85692d1393
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: c723d1446c90290929bc8cad066b4744e284f3f4
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820380"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008670"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>Abfragen der Wissensdatenbank nach Antworten
 
@@ -84,10 +84,9 @@ Eine Benutzerabfrage ist die Frage, die der Benutzer an die Wissensdatenbank ric
     "userId": "sd53lsY="
 }
 ```
+Sie steuern die Antwort, indem Sie Eigenschaften wie [scoreThreshold](./confidence-score.md#choose-a-score-threshold), [top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) und [strictFilters](../how-to/query-knowledge-base-with-metadata.md) festlegen.
 
-Sie steuern die Antwort, indem Sie Eigenschaften wie [scoreThreshold](./confidence-score.md#choose-a-score-threshold), [top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) und [strictFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags) festlegen.
-
-Verwenden Sie [Unterhaltungskontext](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) mit [Mehrfachdurchlauffunktion](../how-to/multiturn-conversation.md), um die Konversation aufrechtzuerhalten und die Fragen und Antworten so zu verfeinern, dass die richtige und abschließende Antwort gefunden wird.
+Verwenden Sie [Unterhaltungskontext](../how-to/query-knowledge-base-with-metadata.md) mit [Mehrfachdurchlauffunktion](../how-to/multiturn-conversation.md), um die Konversation aufrechtzuerhalten und die Fragen und Antworten so zu verfeinern, dass die richtige und abschließende Antwort gefunden wird.
 
 ### <a name="the-response-from-a-call-to-generate-an-answer"></a>Reaktion auf einen Aufruf zum Generieren einer Antwort
 

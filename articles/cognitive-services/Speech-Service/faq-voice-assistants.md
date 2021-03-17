@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 4b0bbb982ed48dc052b1a15514ad36b1d69b62b5
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 511eb12df511fd037fc0b5bec701c0cc5c29bad2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599418"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617776"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Häufig gestellte Fragen zu Sprachassistenten
 
@@ -36,7 +36,7 @@ Wenn Sie in diesem Dokument keine Antworten auf Ihre Fragen finden, sehen Sie si
 **A:** Die beste Möglichkeit, um mit dem Erstellen einer Anwendung für benutzerdefinierte Befehle (Vorschau) oder eines grundlegenden Bot Framework-Bots zu beginnen.
 
 - [Erstellen einer Anwendung für benutzerdefinierte Befehle (Vorschau)](./quickstart-custom-commands-application.md)
-- [Tutorial: Erstellen und Bereitstellen eines Basisbots](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [Tutorial: Erstellen und Bereitstellen eines Basisbots](/azure/bot-service/bot-builder-tutorial-basic-deploy)
 - [Herstellen einer Verbindung mit einem Direct Line Speech-Kanal für einen Bot](/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Debuggen

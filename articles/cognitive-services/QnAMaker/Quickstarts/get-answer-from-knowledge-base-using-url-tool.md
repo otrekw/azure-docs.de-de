@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 zone_pivot_groups: URL-test-interface
 ms.topic: quickstart
 ms.date: 07/16/2020
-ms.openlocfilehash: 4ed4ec7bfaa6a6099d9017f08375698c62faa36c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: eddae69c0946ab135540b77d3cc89937079e6293
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722414"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016252"
 ---
 # <a name="quickstart-get-an-answer-from-knowledge-base"></a>Schnellstart: Abrufen einer Antwort aus einer Wissensdatenbank
 
@@ -39,4 +39,5 @@ ms.locfileid: "101722414"
 
 Weitere Informationen zu Metadaten:
 * [Erstellung: Hinzufügen von Metadaten zu Frage-Antwort-Paaren](../How-To/edit-knowledge-base.md#add-metadata)
-* [Abfragevorhersage: Filtern von Antworten nach Metadaten](../How-To/metadata-generateanswer-usage.md#use-metadata-to-filter-answers-by-custom-metadata-tags)
+* [Abfragevorhersage: Filtern von Antworten nach Metadaten](../How-To/query-knowledge-base-with-metadata.md)
+

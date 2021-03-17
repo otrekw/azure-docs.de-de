@@ -6,19 +6,19 @@ author: metanMSFT
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: metang
-ms.openlocfilehash: 31c1ef8d75b4c12e4dd6a360852feb27857ac412
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 16ecd2166604d29fbc2242229f625b30ffd684e5
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636543"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617691"
 ---
 # <a name="how-to-store-user-preferences"></a>Vorgehensweise: Speichern der Benutzereinstellungen
 
-In diesem Artikel wird veranschaulicht, wie die Einstellungen der Benutzeroberfläche des Benutzers (offiziell bekannt als **Benutzereinstellungen** ) über die Optionen [-preferences](./reference.md#options) und [-onPreferencesChanged](./reference.md#options) des SDK des plastischen Readers gespeichert werden können.
+In diesem Artikel wird veranschaulicht, wie die Einstellungen der Benutzeroberfläche des Benutzers (offiziell bekannt als **Benutzereinstellungen**) über die Optionen [-preferences](./reference.md#options) und [-onPreferencesChanged](./reference.md#options) des SDK des plastischen Readers gespeichert werden können.
 
 Wenn die SDK-Option [CookiePolicy](./reference.md#cookiepolicy-options) auf *Aktiviert* festgelegt ist, speichert die Plastischer Reader-Anwendung die **Benutzereinstellungen** (Textgröße, Farbdesign, Schriftart usw.) in Cookies, die für einen bestimmten Browser und ein bestimmtes Gerät lokal gespeichert sind. Jedes Mal, wenn der Benutzer den plastischen Reader auf demselben Browser und Gerät startet, wird er mit den Einstellungen des Benutzers aus seiner letzten Sitzung auf diesem Gerät geöffnet. Wenn der Benutzer den plastischen Reader jedoch auf einem anderen Browser oder Gerät öffnet, werden die Einstellungen zunächst mit den Standardeinstellungen des plastischen Readers konfiguriert, sodass der Benutzer für jedes Gerät, das er mithilfe des plastischen Readers verwendet, seine Voreinstellungen neu festlegen muss usw. Die SDK-Optionen `-preferences` und `-onPreferencesChanged` des plastischen Readers bieten eine Möglichkeit für Anwendungen, die Voreinstellungen eines Benutzers über verschiedene Browser und Geräte hinweg per Roaming bereitzustellen, sodass der Benutzer eine konsistente Erfahrung hat, egal wo er die Anwendung verwendet.
 

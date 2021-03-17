@@ -3,7 +3,7 @@ title: Generieren von Miniaturansichten mithilfe von Media Encoder Standard mit 
 description: In diesem Thema wird gezeigt, wie Sie .NET verwenden, um mithilfe von Media Encoder Standard gleichzeitig ein Medienobjekt zu codieren und Miniaturansichten zu generieren.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: b8dab73a-1d91-4b6d-9741-a92ad39fc3f7
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c4b17fb5547c1522ec81369f2e362868a3f216a1
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 0159a706bd5f5229a12ab52bc92d240f01a2ed11
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652992"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014042"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Generieren von Miniaturansichten mithilfe von Media Encoder Standard mit .NET
 
@@ -557,15 +557,15 @@ Es gelten die folgenden Bedingungen:
 * Bei der Verwendung von expliziten Zeitstempeln für "Start"/"Step"/"Range" wird davon ausgegangen, dass die Dauer der Eingabequelle mindestens 1 Minute beträgt.
 * Jpg-/Png-/BmpImage-Elemente weisen Start-, Step- und Range-Zeichenfolgenattribute auf, die folgendermaßen interpretiert werden können:
   
-  * Framenummer, wenn es sich nicht um negative ganze Zahlen handelt, z.B. "Start": "120",
-  * Relativ zur Quelldauer bei Ausdrücken mit dem Suffix "%", z.B. "Start": "15%" ODER
-  * Zeitstempel bei Ausdrücken im HH:MM:SS...- Format. Beispiel: "Start" : "00:01:00"
+  * Framenummer, wenn es sich nicht um negative Integers handelt, z.B. "Start": "120",
+  * Relativ zur Quelldauer bei Ausdrücken mit dem Suffix „%“, z.B. "Start": "15%", ODER
+  * Zeitstempel bei Ausdrücken im HH:MM:SS...- akzeptiert. Beispiel: "Start" : "00:01:00"
     
     Sie können die Formate nach Belieben mischen.
     
     "Start" unterstützt darüber hinaus auch das spezielle Makro "{Best}", das versucht, den ersten "interessanten" Frame des Inhalts zu ermitteln. (HINWEIS: "Step" und "Range" werden ignoriert, wenn "Start" auf "{Best}" festgelegt ist.)
-  * Standardwerte: Start:{Best}
-* Das Ausgabeformat muss für jedes Bildformat ausdrücklich bereitgestellt werden: "Jpg"/"Png"/"BmpFormat". Falls vorhanden, ordnet MES „JpgVideo“ zu „JpgFormat“ usw. zu. "OutputFormat" führt ein neues Imagecodec-spezifisches Makro ein: "{Index}". Dieses Makro muss für Bildausgabeformate vorhanden sein (genau einmal).
+  * Standardwerte: Start: {Best}
+* Das Ausgabeformat muss für jedes Bildformat ausdrücklich bereitgestellt werden: „Jpg“/„Png“/„BmpFormat“. Falls vorhanden, ordnet MES „JpgVideo“ zu „JpgFormat“ usw. zu. "OutputFormat" führt ein neues Imagecodec-spezifisches Makro ein: "{Index}". Dieses Makro muss für Bildausgabeformate vorhanden sein (genau einmal).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

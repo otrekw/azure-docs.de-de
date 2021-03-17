@@ -2,19 +2,19 @@
 title: 'Tutorial: Extrahieren von Formulardaten per Massenvorgang mithilfe der Formularerkennung von Azure Data Factory'
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie Azure Data Factory-Aktivitäten einrichten, um das Trainieren und Ausführen von Formularerkennungsmodellen auszulösen und einen umfangreichen Backlog von Dokumenten zu digitalisieren.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/04/2021
-ms.author: pafarley
-ms.openlocfilehash: 5b220652009f54482c757f01232517569596c562
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.author: lajanuar
+ms.openlocfilehash: 0c009a87a5834997cdc489efc75ebb16f9459754
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102423895"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467101"
 ---
 # <a name="tutorial-extract-form-data-in-bulk-by-using-azure-data-factory"></a>Tutorial: Extrahieren von Formulardaten per Massenvorgang mithilfe von Azure Data Factory
 
@@ -511,4 +511,4 @@ Wenn Sie neue Formulare eines neuen Typs hinzufügen, müssen Sie auch ein Train
 
 In diesem Tutorial haben Sie Azure Data Factory-Pipelines eingerichtet, um das Trainieren und Ausführen von Formularerkennungsmodellen auszulösen und einen umfangreichen Backlog von Dateien zu digitalisieren. Im nächsten Artikel finden Sie Informationen zur API für die Formularerkennung sowie zu weiteren Verwendungsmöglichkeiten.
 
-* [REST-API für die Formularerkennung](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)
+* [REST-API für die Formularerkennung](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeBusinessCardAsync)

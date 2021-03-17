@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7c477655dfb24eebab9a2669697d9ef610088198
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 3fe6ee8336872c04e85b732713494adf0fefa28a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592023"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011441"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Akzeptieren von Fragevorschlägen des aktiven Lernens in der Wissensdatenbank
 
@@ -79,25 +79,24 @@ Wenn Sie diese App erneut importieren, erfasst das aktive Lernen weiterhin Infor
 
 Von einem Bot oder einer anderen Clientanwendung muss zur Verwendung des aktiven Lernens der folgende Architekturfluss verwendet werden:
 
-* Der Bot [ruft die Antwort aus der Wissensdatenbank ab](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) (mit der GenerateAnswer-API) und verwendet dabei die Eigenschaft `top`, um eine Reihe von Antworten zu erhalten.
+1. Der Bot [ruft die Antwort aus der Wissensdatenbank ab](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) (mit der GenerateAnswer-API) und verwendet dabei die Eigenschaft `top`, um eine Reihe von Antworten zu erhalten.
 
-    #### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Verwenden der Eigenschaft „top“ in der GenerateAnswer-Anforderung, um mehrere passende Antworten abzurufen
-
-    Wenn Sie eine Frage zur Beantwortung an QnA Maker senden, legt die Eigenschaft `top` im JSON-Text die Anzahl der zurückzugebenden Antworten fest.
-
-    ```json
-    {
-        "question": "wi-fi",
-        "isTest": false,
-        "top": 3
-    }
-    ```
-
-* Der Bot bestimmt explizites Feedback:
+2. Der Bot bestimmt explizites Feedback:
     * Niedrige Bewertungen werden mit Ihrer eigenen [benutzerdefinierten Geschäftslogik](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user) herausgefiltert.
     * Im Bot oder in der Clientanwendung wird dem Benutzer eine Liste mit möglichen Antworten angezeigt und die vom Benutzer ausgewählte Antwort abgerufen.
-* Der Bot [sendet die ausgewählte Antwort an QnA Maker zurück](#bot-framework-sample-code) (mit der [Trainings-API](#train-api)).
+3. Der Bot [sendet die ausgewählte Antwort an QnA Maker zurück](#bot-framework-sample-code) (mit der [Trainings-API](#train-api)).
 
+### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Verwenden der Eigenschaft „top“ in der GenerateAnswer-Anforderung, um mehrere passende Antworten abzurufen
+
+Wenn Sie eine Frage zur Beantwortung an QnA Maker senden, legt die Eigenschaft `top` im JSON-Text die Anzahl der zurückzugebenden Antworten fest.
+
+```json
+{
+    "question": "wi-fi",
+    "isTest": false,
+    "top": 3
+}
+```
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>Verwenden der Eigenschaft „score“ in Kombination mit Geschäftslogik, um eine Liste mit Antworten abzurufen, die dem Benutzer angezeigt werden kann
 
@@ -157,7 +156,7 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP-Anforderungseigenschaft|Name|type|Zweck|
+|HTTP-Anforderungseigenschaft|Name|Typ|Zweck|
 |--|--|--|--|
 |URL-Routenparameter|Wissensdatenbank-ID|Zeichenfolge|GUID der Knowledge Base|
 |Benutzerdefinierte Unterdomäne|Name der QnAMaker-Ressource|Zeichenfolge|Der Ressourcenname wird als benutzerdefinierte Unterdomäne für Ihre QnA Maker verwendet. Dieser Wert ist auf der Seite „Einstellungen“ verfügbar, nachdem Sie die Wissensdatenbank veröffentlicht haben. Sie wird als `host` aufgeführt.|

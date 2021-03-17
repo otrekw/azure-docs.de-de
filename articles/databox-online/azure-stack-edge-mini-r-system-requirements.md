@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 6836777c761fa2cce482cb000b6c86919e6b5613
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 829f89f716a29f09f88a2e02b257aba1b207d072
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834067"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634191"
 ---
 # <a name="azure-stack-edge-mini-r-system-requirements"></a>Azure Stack Edge Mini R: Systemanforderungen
 
@@ -38,7 +38,7 @@ Die Systemanforderungen für Azure Stack Edge Mini R umfassen Folgendes:
 
 ## <a name="supported-edge-storage-accounts"></a>Unterstützte Edge-Speicherkonten
 
-Die folgenden Edge-Speicherkonten werden für die REST-Schnittstelle des Geräts unterstützt. Die Edge-Speicherkonten werden auf dem Gerät erstellt. Weitere Informationen finden Sie unter [Edge-Speicherkonten](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts).
+Die folgenden Edge-Speicherkonten werden für die REST-Schnittstelle des Geräts unterstützt. Die Edge-Speicherkonten werden auf dem Gerät erstellt. Weitere Informationen finden Sie unter [Edge-Speicherkonten](azure-stack-edge-gpu-manage-storage-accounts.md#about-edge-storage-accounts).
 
 |type  |Speicherkonto  |Kommentare  |
 |---------|---------|---------|

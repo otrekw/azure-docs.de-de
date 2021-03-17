@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 763ccd397d8cd704ca161032e65f17979bccb53b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9fa4c678a04342b47601f81ede7c49ab841f42ba
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465757"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630961"
 ---
 # <a name="configure-vpn-on-your-azure-stack-edge-mini-r-device-via-azure-powershell"></a>Konfigurieren von VPN auf Ihrem Azure Stack Edge Mini R-Gerät mithilfe von Azure PowerShell
 
@@ -75,9 +75,9 @@ Details zu diesen Schritten finden Sie in den folgenden Abschnitten.
         
         - Erstellen eines virtuelles Azure-Netzwerks und der folgenden Subnetze: *GatewaySubnet* und *AzureFirewallSubnet*
         - Erstellen und Konfigurieren eines Azure-VPN-Gateways
-        - Erstellen und Konfigurieren eines lokalen Azure-Gateways
+        - Erstellen und Konfigurieren eines lokalen Azure-Netzwerkgateways
         - Erstellen und Konfigurieren einer Azure-VPN-Verbindung zwischen dem Azure-VPN-Gateway und dem lokalen Netzwerkgateway
-        - Einrichten von Azure Firewall und Hinzufügen von Netzwerk- und App-Regeln
+        - Erstellen einer Azure Firewall und Hinzufügen von Netzwerk- und App-Regeln
         - Erstellen einer Azure-Routingtabelle und Hinzufügen von Routen
 
     4. Erstellen Sie im Azure-Portal die Ressourcengruppe, in der die Azure-Ressourcen erstellt werden sollen. Wechseln Sie im Azure-Portal zur Liste der Dienste. Wählen Sie **Ressourcengruppe** und dann **+ Hinzufügen** aus. Geben Sie die Abonnementinformationen und den Namen der Ressourcengruppe an, und wählen Sie dann **Erstellen** aus. Wenn Sie zu dieser Ressourcengruppe wechseln, darf sie zu diesem Zeitpunkt keine Ressourcen enthalten.
@@ -94,7 +94,7 @@ Jeder dieser Schritte wird in den folgenden Abschnitten ausführlich erläutert.
 
 ### <a name="download-service-tags-file"></a>Herunterladen der Datei mit den Diensttags
 
-Möglicherweise verfügen Sie im Ordner, in den Sie das Skript heruntergeladen haben, bereits über die Datei `ServiceTags.json`. Andernfalls können Sie die Datei mit den Diensttags herunterladen.
+Möglicherweise ist die Datei `ServiceTags.json` bereits in dem Ordner enthalten, in den Sie das Skript heruntergeladen haben. Andernfalls können Sie die Datei mit den Diensttags herunterladen.
 
 [!INCLUDE [azure-stack-edge-gateway-download-service-tags](../../includes/azure-stack-edge-gateway-download-service-tags.md)]
 
@@ -109,8 +109,8 @@ Geben Sie für die Azure-Ressourcen, die Sie erstellen, die folgenden Namen an:
 |virtualNetworks_vnet_name    | Name der Azure Virtual Network-Instanz        |
 |azureFirewalls_firewall_name     | Name der Azure Firewall-Instanz        |
 |routeTables_routetable_name     | Name der Azure-Routingtabelle        |
-|publicIPAddresses_VNGW_public_ip_name     | Name der öffentlichen IP-Adresse Ihres Gateways für virtuelle Netzwerke       |
-|virtualNetworkGateways_VNGW_name    | Name des Azure-VPN-Gateways (Name des virtuellen Netzwerks)        |
+|publicIPAddresses_VNGW_public_ip_name     | Name der öffentlichen IP-Adresse Ihres virtuellen Netzwerkgateways       |
+|virtualNetworkGateways_VNGW_name    | Name des Azure-VPN-Gateways (virtuelles Netzwerkgateway)        |
 |publicIPAddresses_firewall_public_ip_name     | Name der öffentlichen IP-Adresse Ihrer Azure Firewall-Instanz         |
 |location     |Dies ist die Region, in der Sie Ihr virtuelles Netzwerk erstellen möchten. Wählen Sie die Region aus, die Ihrem Gerät zugeordnet ist.         |
 |RouteTables_routetable_onprem_name| Dies ist der Name der zusätzlichen Routingtabelle, mit der die Firewall Pakete an das Azure Stack Edge-Gerät zurückleiten kann. Das Skript erstellt zwei weitere Routen und ordnet *Default* und *FirewallSubnet* dieser Routingtabelle zu.|
@@ -120,9 +120,9 @@ Geben Sie die folgenden IP-Adressen und Adressräume für die erstellten Azure-R
 |Parametername  |BESCHREIBUNG  |
 |---------|---------|
 |VnetIPv4AddressSpace    | Dies ist der Ihrem virtuellen Netzwerk zugeordnete Adressraum. Geben Sie den IP-Adressbereich des VNET als privaten IP-Adressbereich (https://en.wikipedia.org/wiki/Private_network#Private_IPv4_addresses) ) ein.     |
-|DefaultSubnetIPv4AddressSpace    |Dies ist der dem Subnetz `Default` in Ihrem virtuellen Netzwerk zugeordnete Adressraum.         |
-|FirewallSubnetIPv4AddressSpace    |Dies ist der dem Subnetz `Firewall` in Ihrem virtuellen Netzwerk zugeordnete Adressraum.          |
-|GatewaySubnetIPv4AddressSpace    |Dies ist der `GatewaySubnet` in Ihrem virtuellen Netzwerk zugeordnete Adressraum.          |
+|DefaultSubnetIPv4AddressSpace    |Dies ist der dem Subnetz `Default` für Ihr virtuelles Netzwerk zugeordnete Adressraum.         |
+|FirewallSubnetIPv4AddressSpace    |Dies ist der dem Subnetz `Firewall` für Ihr virtuelles Netzwerk zugeordnete Adressraum.          |
+|GatewaySubnetIPv4AddressSpace    |Dies ist der Adressraum, der dem `GatewaySubnet` für Ihr virtuelles Netzwerk zugeordnet ist.          |
 |GatewaySubnetIPv4bgpPeeringAddress    | Dies ist die IP-Adresse, die für die BGP-Kommunikation reserviert ist und auf dem Adressraum basiert, der `GatewaySubnet` für Ihr virtuelles Netzwerk zugeordnet ist.          |
 |ClientAddressPool    | Diese IP-Adresse wird für den Adresspool in der P2S-Konfiguration im Azure-Portal verwendet.         |
 |PublicCertData     | Öffentliche Zertifikatdaten werden von der VPN Gateway-Instanz zum Authentifizieren von P2S-Clients verwendet, die eine Verbindung damit herstellen. Installieren Sie das Stammzertifikat, um die Zertifikatdaten zu erhalten. Stellen Sie sicher, dass das Zertifikat Base64-codiert ist und die Erweiterung. „.cer“ hat. Öffnen Sie dieses Zertifikat, und kopieren Sie den Text im Zertifikat zwischen ==BEGIN CERTIFICATE== und ==END CERTIFICATE== in eine fortlaufende Zeile.     |
@@ -303,7 +303,7 @@ Führen Sie auf der lokalen Benutzeroberfläche Ihres Azure Stack Edge-Geräts d
 
 ## <a name="validate-data-transfer-through-vpn"></a>Überprüfen der Datenübertragung über das VPN
 
-Um zu bestätigen, dass das VPN funktioniert, kopieren Sie Daten in eine SMB-Freigabe. Führen Sie auf dem Azure Stack Edge-Gerät die Schritte unter [Hinzufügen einer Freigabe](azure-stack-edge-j-series-manage-shares.md#add-a-share) aus. 
+Um zu bestätigen, dass das VPN funktioniert, kopieren Sie Daten in eine SMB-Freigabe. Führen Sie auf dem Azure Stack Edge-Gerät die Schritte unter [Hinzufügen einer Freigabe](azure-stack-edge-gpu-manage-shares.md#add-a-share) aus. 
 
 1. Kopieren Sie eine Datei, z. B. „\data\pictures\waterfall.jpg“ in die SMB-Freigabe, die Sie auf dem Clientsystem eingebunden haben. 
 2. Gehen Sie wie folgt vor, um zu überprüfen, ob die Daten das VPN durchlaufen, während sie kopiert werden:
