@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: f4b5d4915cd6520edd7a45af85a836c3360eee32
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: ee66e68216933c410092865a1cdb781476a944c6
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696328"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461133"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>Hinzufügen einer Event Hub-Ereignisquelle zu Ihrer Azure Time Series Insights-Umgebung
 
@@ -27,7 +27,7 @@ In diesem Artikel wird beschrieben, wie im Azure-Portal eine Ereignisquelle hinz
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Erstellen Sie eine Azure Time Series Insights-Umgebung, wie im Artikel [Erstellen einer Azure Time Series Insights-Umgebung](./tutorials-set-up-tsi-environment.md) beschrieben.
+- Erstellen Sie eine Azure Time Series Insights-Umgebung, wie im Artikel [Erstellen einer Azure Time Series Insights-Umgebung](./tutorial-set-up-environment.md) beschrieben.
 - Erstellen einer Event Hub-Instanz Weitere Informationen hierzu finden Sie unter [Erstellen eines Event Hubs-Namespace und eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md).
 - An den Event Hub müssen aktive Nachrichtenereignisse gesendet werden. Im Artikel [Senden von Ereignissen an Azure Event Hubs mithilfe von .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md) wird beschrieben, wie Sie hierzu vorgehen.
 - Erstellen Sie eine dedizierte Consumergruppe in dem Event Hub, den die Azure Time Series Insights-Umgebung verwenden kann. Jede Azure Time Series Insights-Ereignisquelle benötigt eine eigene dedizierte Consumergruppe, die nicht mit anderen Consumern gemeinsam genutzt wird. Wenn mehrere Leser Ereignisse aus der gleichen Consumergruppe nutzen, geben alle Leser wahrscheinlich Fehler aus. Es gilt ein Grenzwert von 20 Consumergruppen pro Event Hub. Weitere Informationen finden Sie im [Programmierleitfaden für Event Hubs](../event-hubs/event-hubs-programming-guide.md).
@@ -76,7 +76,7 @@ So fügen Sie Ihrem Event Hub eine neue Consumergruppe hinzu
 
        [![Details zu Abonnements und Event Hub](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png#lightbox)
 
-       | Eigenschaft | BESCHREIBUNG |
+       | Eigenschaft | Beschreibung |
        | --- | --- |
        | Subscription | Das Abonnement, zu dem die gewünschte Event Hub-Instanz und der Namespace gehören. |
        | Event Hub-Namespace | Der Event Hub-Namespace, zu dem die gewünschte Event Hub-Instanz gehört. |

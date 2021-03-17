@@ -8,14 +8,16 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: d07a1d1ab0d3b1f4315c09f1c403126139b34612
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 0388520903e208b3225375d5cee81e8321740a1b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043900"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487733"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Verbinden von ModBus-TCP-Geräten über ein IoT Edge-Gerätegateway
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Wenn Sie IoT-Geräte, für die ModBus-TCP- oder -RTU-Protokolle genutzt werden, mit einem Azure IoT Hub verbinden möchten, können Sie ein IoT Edge-Gerät als Gateway einsetzen. Das Gatewaygerät liest Daten von Ihren ModBus-Geräten und kommuniziert sie dann über ein unterstütztes Protokoll weiter an die Cloud.
 
@@ -58,7 +60,7 @@ Dieser Abschnitt führt Sie durch die Bereitstellung des Modbus-Beispielmoduls v
 
 6. Suchen Sie im JSON-Code nach der Eigenschaft **SlaveConnection**, und legen Sie deren Wert auf die IPv4-Adresse Ihres Modbus-Geräts fest.
 
-7. Wählen Sie **Update** aus.
+7. Wählen Sie **Aktualisieren** aus.
 
 8. Wählen Sie **Überprüfen + erstellen** aus, überprüfen Sie die Bereitstellung, und wählen Sie **Erstellen** aus.
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 99741a412ae02a2d30293e1aa254245f5ca7b662
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b1889a693c08ce78a8bd06b6fe348c0c67bf3812
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171431"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103465673"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren von Saviynt mit Azure Active Directory B2C
 
@@ -54,7 +54,7 @@ Im folgenden Architekturdiagramm ist die Implementierung dargestellt.
 
 ![Abbildung der Saviynt-Architektur](./media/partner-saviynt/saviynt-architecture-diagram.png)
 
-|Schritt | BESCHREIBUNG |
+|Schritt | Beschreibung |
 |:-----| :-----------|
 | 1. | Ein delegierter Administrator beginnt mit der Verwaltung eines Azure AD B2C-Benutzervorgangs über Saviynt.
 | 2. | Die Saviynt-Autorisierungs-Engine überprüft, ob der delegierte Administrator den spezifischen Vorgang ausführen kann.
@@ -69,7 +69,7 @@ Im folgenden Architekturdiagramm ist die Implementierung dargestellt.
 
 1. Kontaktieren Sie [Saviynt](https://saviynt.com/contact-us/), um ein Saviynt-Konto zu erstellen.
 
-2. Erstellen Sie die Richtlinien für die delegierte Verwaltung, und weisen Sie Benutzer als [delegierte Administratoren](../active-directory/roles/concept-delegation.md) mit verschiedenen Rollen zu.
+2. Erstellen Sie die Richtlinien für die delegierte Verwaltung, und weisen Sie Benutzer als delegierte Administratoren mit verschiedenen Rollen zu.
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>Konfigurieren von Azure AD B2C mit Saviynt
 

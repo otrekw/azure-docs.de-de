@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: b9685081c0beacd745a83067b9d9876384933377
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9be90cdac742a581c6346f923f44e769c8a70f76
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131240"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613628"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>Funktionale Überprüfung eines AppSource-Dynamics 365 Finance and Operations-Angebots
 
@@ -56,7 +56,7 @@ Wenden Sie sich für einen Termin für das finale Überprüfungsgespräch an [ap
 
       2. Wechseln Sie zu **LCS** > **Solution Management** > **Test Solution Package** (LCS > Lösungsverwaltung > Lösungspaket testen). Erstellen Sie Screenshots, die die Paketübersicht und die in den folgenden Beispielen gezeigten Inhalte enthalten:
 
-    | Feld | Image <img src="" width="400px">|
+    | Feld | Image |
     | --- | --- |
     | Paketübersicht | [![Screenshot: Fenster „Paketübersicht“](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
     | <ul><li>Lösungsgenehmiger</li></ul> | [![Bildschirm „Paketübersicht“](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |

@@ -1,7 +1,7 @@
 ---
 title: H264 Multiple Bitrate 16x9 SD Audio 5.1 | Microsoft-Dokumentation
 description: Das Thema enthält eine Übersicht über die Aufgabenvoreinstellung **H264 Multiple Bitrate 16x9 SD Audio 5.1**.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 836f3e19340d8009a11f30772d181c8dc17f9655
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 65be949dd83f465097920a59268bc19fe927ddd8
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89257295"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014635"
 ---
 # <a name="h264-multiple-bitrate-16x9-sd-audio-51"></a>H264 Multiple Bitrate 16x9 SD Audio 5.1
 
@@ -32,7 +32,7 @@ ms.locfileid: "89257295"
  Diese Voreinstellung erzeugt einen Satz von fünf MP4-Dateien mit GOP-Ausrichtung mit Werten zwischen 1.900 KBit/s und 400 KBit/s sowie AAC 5.1-Audio. Ausführliche Informationen zu Profil, Bitrate, Samplingrate usw. dieser Voreinstellung finden Sie im unten aufgeführten XML- bzw. JSON-Code. Erläuterungen zur Bedeutung der einzelnen Elemente sowie gültige Werte für jedes Element finden Sie unter [Media Encoder Standard schema](media-services-mes-schema.md) (Media Encoder Standard-Schema).  
   
 > [!NOTE]
->  Stellen Sie bei einer ebenenübergreifenden Änderung der Werte `Width` und `Height` sicher, dass das Seitenverhältnis konsistent bleibt. Beispiel: 1920x1080, 1280x720, 1080x576, 640x360. Sie sollten keine Mischung von Seitenverhältnissen wie etwa 1280x720, 720x480 oder 640x360 verwenden.  
+>  Stellen Sie bei einer ebenenübergreifenden Änderung der Werte `Width` und `Height` sicher, dass das Seitenverhältnis konsistent bleibt. Beispiel: 1.920 × 1.080, 1.280 × 720, 1.080 × 576, 640 × 360. Sie sollten keine Mischung von Seitenverhältnissen wie etwa 1.280 × 720, 720 × 480 oder 640 × 360 verwenden.  
   
  XML  
   

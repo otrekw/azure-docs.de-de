@@ -8,14 +8,16 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4064acd6d2857ebc00a38ea7f6ff5d5e30bbd699
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 517bcdab375db819b0942306df82e7285b9473b1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041381"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487699"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Vorbereiten Ihrer Entwicklungs- und Testumgebung für IoT Edge
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge verschiebt Ihre vorhandene Geschäftslogik auf Geräte, die an der Grenze (Edge) arbeiten. Um Ihre Anwendungen und Workloads für die Ausführung als [IoT Edge-Module](iot-edge-modules.md) vorzubereiten, müssen Sie sie als Container erstellen. Dieser Artikel enthält Anleitungen zur Konfiguration Ihrer Entwicklungsumgebung, damit Sie erfolgreich eine IoT Edge-Lösung erstellen können. Nachdem Sie Ihre Entwicklungsumgebung eingerichtet haben, können Sie lernen, wie Sie beim [Entwickeln Ihrer eigenen IoT Edge-Module](module-development.md) vorgehen.
 

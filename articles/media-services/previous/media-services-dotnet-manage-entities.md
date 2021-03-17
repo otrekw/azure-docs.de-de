@@ -1,7 +1,7 @@
 ---
 title: Verwalten von Medienobjekten und verwandten Entitäten mit dem Media Services .NET SDK
 description: Erfahren Sie, wie Sie Medienobjekte und verwandte Entitäten mit dem Media Services SDK für .NET verwalten.
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d90e48d15e20b21f4c6032547517b3190cb46085
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: b859ff49edb495be15cdf76719c3aaaf1ac72a6e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695610"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013770"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Verwalten von Medienobjekten und verwandten Entitäten mit dem Media Services .NET SDK
 
@@ -358,7 +358,7 @@ Im folgenden Beispiel wird ein Medienobjekt gelöscht.
 ## <a name="delete-a-job"></a>Löschen eines Auftrags
 Um einen Auftrag zu löschen, müssen Sie den Status des Auftrags überprüfen, der in der State-Eigenschaft angegeben ist. Beendete oder abgebrochene Aufträge können gelöscht werden, während Aufträge mit einem bestimmten anderen Status, z. B. in der Warteschlange, geplant oder in Verarbeitung, zunächst abgebrochen werden müssen. Anschließend können sie gelöscht werden.
 
-Das folgende Codebeispiel zeigt eine Methode zum Löschen eines Auftrags, indem der Auftragsstatus überprüft und der Auftrag dann gelöscht wird, wenn er abgeschlossen oder abgebrochen wurde. Für diesen Code werden die Informationen im vorherigen Abschnitt dieses Themas benötigt, um einen Verweis auf einen Auftrag zu erhalten: Abrufen eines Verweises auf einen Auftrag.
+Das folgende Codebeispiel zeigt eine Methode zum Löschen eines Auftrags, indem der Auftragsstatus überprüft und der Auftrag dann gelöscht wird, wenn er abgeschlossen oder abgebrochen wurde. Dieser Code benötigt die Informationen im vorherigen Abschnitt dieses Themas, um einen Verweis auf einen Job zu erhalten: Abrufen eines Verweises auf einen Auftrag.
 
 ```csharp
     static void DeleteJob(string jobId)

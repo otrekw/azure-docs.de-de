@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: da172e9a7605876711e4a4f32bf4fac698b35109
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: be72cae8d109bfeccd60e8c821625f75357568e3
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694800"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232357"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>Hinzufügen der Rechtschreibprüfung zu Abfragen in Azure Cognitive Search
 
@@ -96,7 +96,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 Der für eine Semantikabfrage erforderliche queryLanguage-Parameter muss mit den [Sprachanalysetools](index-add-language-analyzers.md) übereinstimmen, die den Felddefinitionen im Indexschema zugewiesen sind. 
 
-+ queryLanguage bestimmt, welche Lexika für die Rechtschreibprüfung verwendet werden, und dient zudem als Eingabe für den [semantischen Klassifizierungsalgorithmus](semantic-how-to-query-response.md), sofern Sie "queryType=semantic" verwenden.
++ queryLanguage bestimmt, welche Lexika für die Rechtschreibprüfung verwendet werden, und dient zudem als Eingabe für den [semantischen Klassifizierungsalgorithmus](semantic-answers.md), sofern Sie "queryType=semantic" verwenden.
 
 + Sprachanalyzer werden bei der Indizierung und Abfrageausführung übereinstimmender Dokumente im Suchindex eingesetzt. Ein Beispiel für eine Felddefinition mit einem Sprachanalyzer ist `"name": "Description", "type": "Edm.String", "analyzer": "en.microsoft"`.
 

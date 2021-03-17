@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: b32757dddf745e7aaa0ea8276a3527fa464cc0d4
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: b1bfbda007619bf5bd94d47297845881758037bc
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102442161"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636639"
 ---
 # <a name="recover-from-a-failed-azure-stack-edge-pro-gpu-device"></a>Wiederherstellung nach Ausfall eines „Azure Stack Edge Pro mit GPU“-Geräts 
 
@@ -52,10 +52,10 @@ Sie können nun die Workloads bereitstellen, die Sie auf dem alten Gerät ausgef
 
 Führen Sie die folgenden Schritte aus, um die Daten auf den Edge-Cloudfreigaben auf Ihrem Gerät wiederherzustellen:
 
-1. [Fügen Sie Freigaben](azure-stack-edge-j-series-manage-shares.md#add-a-share) mit denselben Freigabenamen hinzu, die zuvor auf dem ausgefallenen Gerät erstellt wurden. Stellen Sie sicher, dass **Blobcontainer auswählen** beim Erstellen von Freigaben auf **Vorhandene verwenden** festgelegt ist, und wählen Sie dann den Container aus, der mit dem vorherigen Gerät verwendet wurde.
-1. [Fügen Sie Benutzer hinzu](azure-stack-edge-j-series-manage-users.md#add-a-user), die Zugriff auf das vorherige Gerät hatten.
-1. [Fügen Sie Speicherkonten hinzu](azure-stack-edge-j-series-manage-storage-accounts.md#add-an-edge-storage-account), die den zuvor auf dem Gerät befindlichen Freigaben zugeordnet sind. Wählen Sie beim Erstellen von Edge-Speicherkonten einen vorhandenen Container aus, und zeigen Sie auf den Container, der auf dem vorherigen Gerät dem Azure Storage-Konto zugeordnet war. Alle Daten des Geräts, die auf dem vorherigen Gerät in das Edge-Speicherkonto geschrieben wurden, wurden in den ausgewählten Speichercontainer im zugeordneten Azure Storage-Konto hochgeladen.
-1. [Aktualisieren Sie die Freigabedaten](azure-stack-edge-j-series-manage-shares.md#refresh-shares) aus Azure. Dadurch werden alle Clouddaten aus dem vorhandenen Container in die Freigaben gepullt.
+1. [Fügen Sie Freigaben](azure-stack-edge-gpu-manage-shares.md#add-a-share) mit denselben Freigabenamen hinzu, die zuvor auf dem ausgefallenen Gerät erstellt wurden. Stellen Sie sicher, dass **Blobcontainer auswählen** beim Erstellen von Freigaben auf **Vorhandene verwenden** festgelegt ist, und wählen Sie dann den Container aus, der mit dem vorherigen Gerät verwendet wurde.
+1. [Fügen Sie Benutzer hinzu](azure-stack-edge-gpu-manage-users.md#add-a-user), die Zugriff auf das vorherige Gerät hatten.
+1. [Fügen Sie Speicherkonten hinzu](azure-stack-edge-gpu-manage-storage-accounts.md#add-an-edge-storage-account), die den zuvor auf dem Gerät befindlichen Freigaben zugeordnet sind. Wählen Sie beim Erstellen von Edge-Speicherkonten einen vorhandenen Container aus, und zeigen Sie auf den Container, der auf dem vorherigen Gerät dem Azure Storage-Konto zugeordnet war. Alle Daten des Geräts, die auf dem vorherigen Gerät in das Edge-Speicherkonto geschrieben wurden, wurden in den ausgewählten Speichercontainer im zugeordneten Azure Storage-Konto hochgeladen.
+1. [Aktualisieren Sie die Freigabedaten](azure-stack-edge-gpu-manage-shares.md#refresh-shares) aus Azure. Dadurch werden alle Clouddaten aus dem vorhandenen Container in die Freigaben gepullt.
 
 ## <a name="restore-edge-local-shares"></a>Wiederherstellen lokaler Edge-Freigaben
 
@@ -73,7 +73,7 @@ Nach vollständiger Konfiguration des Ersatzgeräts aktivieren Sie das Gerät f�
 Führen Sie diese Schritte aus, um die Daten aus lokalen Freigaben wiederherzustellen:
 
 1. [Konfigurieren Sie die Computerolle auf einem Azure Stack Edge Pro-Gerät mit GPU](azure-stack-edge-gpu-deploy-configure-compute.md).
-1. [Fügen Sie wieder eine lokale Freigabe hinzu](azure-stack-edge-j-series-manage-shares.md#add-a-local-share).
+1. [Fügen Sie wieder eine lokale Freigabe hinzu](azure-stack-edge-gpu-manage-shares.md#add-a-local-share).
 1. Führen Sie das Wiederherstellungsverfahren der Datenschutzlösung Ihrer Wahl aus. Beachten Sie die Verweise in der obigen Tabelle.
 
 ## <a name="restore-vm-files-and-folders"></a>Wiederherstellen von VM-Dateien und -Ordnern

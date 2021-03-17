@@ -1,14 +1,14 @@
 ---
 title: Bereitstellen des CAF-Blaupausenbeispiels für die Migrationslandezone
 description: Bereitstellungsschritte für das CAF-Blaupausenbeispiel für die Migrationslandezone, einschließlich Details zum Blaupausenartefaktparameter.
-ms.date: 05/06/2020
+ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: 109c9a2c4c5670d6f5a676498ae1010a4ab0e418
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5aed1d492fea102598a22921d04ed8681c727cb
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82871184"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470114"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Bereitstellen des Microsoft Cloud Adoption Framework-Blaupausenbeispiel für die Azure-Migrationslandezone
 

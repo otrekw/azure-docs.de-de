@@ -8,14 +8,16 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 406420fcd517ceda8ea6eedfc955f54b15541f74
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2e3f1891a786751365a0bea58097e03bd41f85bb
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366601"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489916"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Bereitstellen von Modulen und Einrichten von Routen in IoT Edge
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Jedes IoT Edge-Gerät führt mindestens zwei Module aus, die die IoT Edge-Runtime ausmachen: „$edgeAgent“ und „$edgeHub“. Ein IoT Edge-Gerät kann mehrere zusätzliche Module für eine beliebige Anzahl von Prozessen ausführen. Verwenden Sie ein Bereitstellungsmanifest, um Ihrem Gerät mitzuteilen, welche Module installiert und wie sie für die Zusammenarbeit konfiguriert werden müssen.
 

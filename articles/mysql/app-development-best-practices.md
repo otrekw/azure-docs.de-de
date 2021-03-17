@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: afe14bc03f0d12e56e1512aeb788a77c64151b58
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7f98e14c2eae133941f3fc87247a427198ebcdc2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547247"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611962"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>Bewährte Methoden für die Entwicklung von Anwendungen mit Azure Database for MySQL 
 
@@ -76,7 +76,7 @@ Sie werden eine Verzögerung zwischen Quelle und Replikat feststellen, da die Re
 ## <a name="database-deployment"></a>Datenbankbereitstellung 
 
 ### <a name="configure-an-azure-database-for-mysql-task-in-your-cicd-deployment-pipeline"></a>Konfigurieren einer Azure Database for MySQL-Aufgabe in der CI/CD-Bereitstellungspipeline
-Gelegentlich werden Sie Änderungen in der Datenbank bereitstellen müssen. In solchen Fällen können Sie Continuous Integration (CI) und Continuous Delivery (CD) über [Azure-Pipelines](https://azure.microsoft.com/services/devops/pipelines/) verwenden und eine Aufgabe für [Ihren MySQL-Server](/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment?view=azure-devops&preserve-view=true) verwenden, um die Datenbank durch Ausführung eines benutzerdefinierten Skripts zu aktualisieren.
+Gelegentlich werden Sie Änderungen in der Datenbank bereitstellen müssen. In solchen Fällen können Sie Continuous Integration (CI) und Continuous Delivery (CD) über [Azure-Pipelines](https://azure.microsoft.com/services/devops/pipelines/) verwenden und eine Aufgabe für [Ihren MySQL-Server](/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment) verwenden, um die Datenbank durch Ausführung eines benutzerdefinierten Skripts zu aktualisieren.
 
 ### <a name="use-an-effective-process-for-manual-database-deployment"></a>Effektive Prozesse bei einer manuellen Datenbankbereitstellung 
 Im Folgenden finden Sie Schritte für die manuelle Datenbankbereitstellung, mit denen Sie Ausfallzeiten sowie das Risiko von Bereitstellungsfehlern minimieren können: 

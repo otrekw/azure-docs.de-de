@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: e4de77a8a56ce21511ad099af59a77e10ab1815d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b5e25e9ed25ced96d38994928bcb6275ce79420f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787535"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612795"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -286,7 +286,7 @@ Wenn Sie Azure Bot Service verwenden und das Problem darin besteht, dass der **T
 
 #### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Beheben Sie Probleme beim Debuggen auf dem lokalen Computer mit Bot Framework.
 
-Weitere Informationen zum lokalen Debuggen eines Bots finden Sie unter [Debuggen eines Bots](/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0).
+Weitere Informationen zum lokalen Debuggen eines Bots finden Sie unter [Debuggen eines Bots](/azure/bot-service/bot-service-debug-bot).
 
 ## <a name="integrating-luis"></a>Integrieren von LUIS
 

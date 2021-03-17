@@ -2,13 +2,13 @@
 title: 'Übersicht über die Features: Azure Event Hubs | Microsoft-Dokumentation'
 description: Dieser Artikel enthält Details zu Features und Terminologie von Azure Event Hubs.
 ms.topic: article
-ms.date: 02/19/2021
-ms.openlocfilehash: 8bb63bfdbeb5b875b1e461fbd93fb48dcbb43054
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/15/2021
+ms.openlocfilehash: fbfc2a23a7cde50172b80769558c2dfd6fd5ec84
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739074"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601303"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Features und Terminologie in Azure Event Hubs
 
@@ -53,6 +53,13 @@ Veröffentlichte Ereignisse werden basierend auf einer konfigurierbaren, zeitbas
 - Für Event Hubs **Standard** beträgt der maximale Aufbewahrungszeitraum **sieben Tage**. 
 - Für Event Hubs **Dedicated** beträgt der maximale Aufbewahrungszeitraum **90 Tage**.
 - Wenn Sie den Aufbewahrungszeitraum ändern, gilt dies für alle Nachrichten, einschließlich Nachrichten, die sich bereits im Event Hub befinden. 
+
+Von Event Hubs werden Ereignisse über einen konfigurierten Aufbewahrungszeitraum aufbewahrt, der für alle Partitionen gilt. Ereignisse werden automatisch entfernt, nachdem das Ende des Aufbewahrungszeitraums erreicht wurde. Wenn Sie einen Aufbewahrungszeitraum mit einer Dauer von einem Tag angeben, endet die Verfügbarkeit des Ereignisses genau 24 Stunden nach dem Akzeptierungsvorgang. Sie haben nicht die Möglichkeit, Ereignisse explizit zu löschen. 
+
+Falls Sie Ereignisse über den zulässigen Aufbewahrungszeitraum hinaus archivieren müssen, können Sie die [automatische Speicherung in Azure Storage oder Azure Data Lake nutzen, indem Sie das Feature „Event Hubs Capture“ aktivieren](event-hubs-capture-overview.md). Wenn Sie Deep Archives dieser Art durchsuchen oder analysieren müssen, können Sie sie leicht in [Azure Synapse](store-captured-data-data-warehouse.md) oder ähnliche Speicher und Analyseplattformen importieren. 
+
+Durch die zeitliche Beschränkung der Datenaufbewahrung für Event Hubs soll verhindert werden, dass große Mengen von Verlaufsdaten der Kunden in einem tiefen Speicher, der nur mit einem Zeitstempel indiziert ist und für den nur der sequenzielle Zugriff zulässig ist, quasi gefangen sind. Der Grundgedanke dieser Architektur ist, dass für Verlaufsdaten eine umfassendere Indizierung und eine direktere Zugriffsoption benötigt werden, als dies über die Echtzeitoberfläche für Ereignisse von Event Hubs oder Kafka möglich ist. Ereignisdatenstrom-Engines sind nicht gut geeignet, um die Rolle von Data Lakes oder Langzeitarchiven für die Ereignisherkunftsermittlung zu übernehmen. 
+ 
 
 > [!NOTE]
 > Event Hubs ist eine Engine für das Ereignisstreaming in Echtzeit. Sie ist nicht dafür ausgelegt, anstelle einer Datenbank bzw. als dauerhafter Speicher für Ereignisdatenströme mit unendlich langer Aufbewahrungsdauer verwendet zu werden. 

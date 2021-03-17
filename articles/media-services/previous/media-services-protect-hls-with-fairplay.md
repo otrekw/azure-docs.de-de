@@ -3,7 +3,7 @@ title: Schützen von HLS-Inhalten mit Microsoft PlayReady oder Apple FairPlay �
 description: Dieses Thema bietet einen Überblick und veranschaulicht, wie Sie Azure Media Services verwenden, um Ihre HLS-Inhalte (HTTP Live Streaming) dynamisch mit Apple FairPlay verschlüsseln. Es zeigt auch, wie Sie den Lizenzbereitstellungsdienst von Media Services verwenden, um FairPlay-Lizenzen an Clients zu übermitteln.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7290b5972bc81555bce102446923efd59ed2b34
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 15aab28b7dfbaf305412f1080346b54cc6827437
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695136"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009639"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Schützen von HLS-Inhalten mit Apple FairPlay oder Microsoft PlayReady
 
@@ -62,7 +62,7 @@ Folgendes ist erforderlich, wenn Sie Media Services verwenden, um mit FairPlay v
 
 Folgendes muss seitens der Media Services-Schlüsselbereitstellung festgelegt werden:
 
-  * **App Cert (AC)** : PFX-Datei mit dem privaten Schlüssel. Sie erstellen diese Datei und verschlüsseln sie mit einem Kennwort.
+  * **App Cert (AC)** : Dies ist eine PFX-Datei, die den privaten Schlüssel enthält. Sie erstellen diese Datei und verschlüsseln sie mit einem Kennwort.
 
        Wenn Sie eine Richtlinie für die Schlüsselbereitstellung konfigurieren, müssen Sie dieses Kennwort und die PFX-Datei im Base64-Format bereitstellen.
 
@@ -77,15 +77,15 @@ Folgendes muss seitens der Media Services-Schlüsselbereitstellung festgelegt we
     3. Führen Sie den folgenden Befehl an der Befehlszeile aus: Dadurch wird die PEM-Datei in eine PFX-Datei mit dem privaten Schlüssel konvertiert. Das Kennwort für die PFX-Datei wird dann von OpenSSL angefordert.
 
         „C:\OpenSSL-Win32\bin\openssl.exe“ pkcs12 -export -out FairPlay-out.pfx -inkey privatekey.pem -in FairPlay-out.pem -passin file:privatekey-pem-pass.txt
-  * **App Cert-Kennwort**: Das Kennwort des Kunden zum Erstellen der PFX-Datei.
+  * **App Cert-Kennwort**: Das Kennwort zum Erstellen der PFX-Datei.
   * **Cert-App-Kennwort-ID**: Sie müssen das Kennwort auf die gleiche Weise wie andere Media Services-Schlüssel hochladen. Verwenden Sie den Enumerationswert **ContentKeyType.FairPlayPfxPassword**, um die Media Services-ID abzurufen. Diese werden in der Richtlinienoption für die Schlüsselbereitstellung benötigt.
   * **iv**: Dies ist ein zufälliger Wert von 16 Bytes. Er muss dem iv-Wert in der Richtlinie zur Übermittlung von Medienobjekten entsprechen. Sie generieren den iv-Wert und geben ihn in der Richtlinie zur Übermittlung von Medienobjekten sowie in der Richtlinienoption für die Schlüsselbereitstellung an.
-  * **ASK**: Dieser Schlüssel wird erstellt, wenn Sie das Zertifikat über das Apple Developer-Portal generieren. Jedes Entwicklungsteam erhält einen eindeutigen ASK. Speichern Sie eine Kopie des ASK an einem sicheren Ort. Sie müssen den ASK später als FairPlayAsk für Media Services konfigurieren.
+  * **ASK**: Dieser Schlüssel wird bei der Generierung der Zertifizierung über das Apple Developer-Portal empfangen. Jedes Entwicklungsteam erhält einen eindeutigen ASK. Speichern Sie eine Kopie des ASK an einem sicheren Ort. Sie müssen den ASK später als FairPlayAsk für Media Services konfigurieren.
   * **ASK-ID**: Diese ID wird abgerufen, wenn Sie ASK in Media Services hochladen. Sie müssen ASK mit dem **ContentKeyType.FairPlayAsk**-Enumerationswert hochladen. Dadurch wird die Media Services-ID zurückgegeben, die Sie beim Festlegen der Richtlinienoption für die Schlüsselbereitstellung verwenden sollten.
 
 Folgendes muss seitens des FPS-Clients festgelegt werden:
 
-  * **App Cert (AC)** : CER-/DER-Datei mit dem öffentlichen Schlüssel, den das Betriebssystem zur Verschlüsselung bestimmter Nutzlast verwendet. Media Services muss den Schlüssel kennen, da er vom Player benötigt wird. Der Schlüsselbereitstellungsdienst entschlüsselt den Schlüssel mithilfe des entsprechenden privaten Schlüssels.
+  * **App Cert (AC)** : CER-/DER-Datei mit dem öffentlichen Schlüssel, den das Betriebssystem zur Verschlüsselung bestimmter Nutzlasten verwendet. Media Services muss den Schlüssel kennen, da er vom Player benötigt wird. Der Schlüsselbereitstellungsdienst entschlüsselt den Schlüssel mithilfe des entsprechenden privaten Schlüssels.
 
 Um einen über FairPlay verschlüsselten Stream wiederzugeben, rufen Sie zuerst den echten ASK ab, und generieren Sie dann ein echtes Zertifikat. Dieser Prozess erstellt alle drei Teile:
 
@@ -104,7 +104,7 @@ Die folgenden allgemeinen Schritte dienen zum Schützen Ihrer Medienobjekte mit 
 4. Konfigurieren der Autorisierungsrichtlinie des Inhaltsschlüssels. Geben Sie Folgendes an:
 
    * Die Bereitstellungsmethode (in diesem Fall FairPlay)
-   * Konfiguration der FairPlay-Richtlinienoptionen; Informationen zum Konfigurieren von FairPlay finden Sie im Beispiel weiter unten in der **ConfigureFairPlayPolicyOptions()** -Methode.
+   * Konfiguration der FairPlay-Richtlinienoptionen; Informationen zum Konfigurieren von FairPlay finden Sie im Beispiel weiter unten in der **ConfigureFairPlayPolicyOptions()**-Methode.
 
      > [!NOTE]
      > Üblicherweise sollten Sie FairPlay-Richtlinienoptionen nur einmal konfigurieren, da Sie nur einen Satz aus Zertifikat und ASK haben.

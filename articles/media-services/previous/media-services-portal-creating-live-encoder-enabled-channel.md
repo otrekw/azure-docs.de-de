@@ -3,7 +3,7 @@ title: Livestreaming mit Azure Media Services zum Erstellen von Datenströmen mi
 description: In diesem Lernprogramm werden Sie durch die Schritte zum Erstellen eines Kanals über das Azure-Portal geführt, von dem ein Single-Bitrate-Livedatenstrom empfangen und in einen Multi-Bitrate-Datenstrom codiert wird.
 services: media-services
 documentationcenter: ''
-author: anilmur
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 504f74c2-3103-42a0-897b-9ff52f279e23
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: a02f1fd873c0578bb4ec3a7788a06b10eebec7bd
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 36a4eb2856beb3ae2b0227e92f0db26e01a1b616
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695470"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012750"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Livestreaming mit Media Services zum Erstellen von Datenströmen mit Mehrfachbitrate im Azure-Portal
 

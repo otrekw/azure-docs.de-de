@@ -3,7 +3,7 @@ title: Erstellen von Inhaltsschlüsseln mit REST | Microsoft-Dokumentation
 description: In diesem Artikel wird veranschaulicht, wie Sie Inhaltsschlüssel erstellen, die den sicheren Zugriff auf Medienobjekte ermöglichen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 95e9322b-168e-4a9d-8d5d-d7c946103745
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 5038a6d70f3293dfa1556d72b2f85aa930794949
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: a9960ece05b7cab4ddd26fdac7516f4adbccf5b0
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256972"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017255"
 ---
 # <a name="create-content-keys-with-rest"></a>Erstellen von Inhaltsschlüsseln mit REST
 
@@ -37,7 +37,7 @@ Beim Erstellen eines neuen Medienobjekts (z.B. vor dem [Hochladen von Dateien](m
 
 Wenn Sie Medienobjekte an Ihre Clients übermitteln, können Sie mithilfe einer der beiden folgenden Verschlüsselungen die [dynamische Verschlüsselung von Medienobjekten konfigurieren](media-services-rest-configure-asset-delivery-policy.md): **DynamicEnvelopeEncryption** oder **DynamicCommonEncryption**.
 
-Verschlüsselte Medienobjekte müssen **ContentKeys**zugeordnet werden. In diesem Artikel wird beschrieben, wie ein Inhaltsschlüssel erstellt wird.
+Verschlüsselte Medienobjekte müssen **ContentKeys** zugeordnet werden. In diesem Artikel wird beschrieben, wie ein Inhaltsschlüssel erstellt wird.
 
 Im Folgenden finden Sie allgemeine Schritte zum Generieren von Inhaltsschlüsseln, die Sie den zu verschlüsselnden Medienobjekten zuordnen. 
 

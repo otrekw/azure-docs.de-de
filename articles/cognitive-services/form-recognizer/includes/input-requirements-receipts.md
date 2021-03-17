@@ -1,16 +1,16 @@
 ---
-author: PatrickFarley
+author: laujan
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 08/17/2019
-ms.author: pafarley
-ms.openlocfilehash: 01524c103c420fe719cc68d01e9421a321d05968
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: lajanuar
+ms.openlocfilehash: 5e856b7cf6404a30bf983c4014bd6aa55c4a9cbc
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88944447"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466988"
 ---
 * Unterstützte Dateiformate: JPEG, PNG, PDF und TIFF 
 * In den Formaten PDF und TIFF werden bis zu 2.000 Seiten verarbeitet. Bei Abonnements im Free-Tarif werden nur die ersten beiden Seiten verarbeitet. 

@@ -10,12 +10,12 @@ ms.date: 12/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6d6a152096ce4e16849542c26d1c7a675a972b89
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: baad1a0b173ae89fec9d160572224c6cb0aa615d
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779072"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574627"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung
 
@@ -266,7 +266,7 @@ Aktualisieren Sie die Datei *appsettings.json* wie folgt mit Ihren eigenen Werte
     "Domain": "<azure-ad-domain-name>.onmicrosoft.com",
     "TenantId": "<tenant-id>",
     "ClientId": "<client-id>",
-    "ClientSecret": "<client-secret>"
+    "ClientSecret": "<client-secret>",
     "ClientCertificates": [
     ],
     "CallbackPath": "/signin-oidc"

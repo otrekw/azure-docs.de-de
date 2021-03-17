@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 50df3424892594a6817d481aa4a3d540a342854f
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 25320fb8cde0cc5a38f1edf4019a2f0e07cefe14
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932318"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461095"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Tutorial: Senden von Daten per transparentem Gateway
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 In diesem Artikel verwenden wir wieder die Entwicklungs-VM als simuliertes Gerät. Anstatt Daten direkt an IoT Hub zu senden, sendet das Gerät aber Daten an das IoT Edge-Gerät, das als transparentes Gateway konfiguriert ist.
 

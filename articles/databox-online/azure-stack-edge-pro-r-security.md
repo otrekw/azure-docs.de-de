@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 922ef24bff7d6e60a3ba3b91113003f8206b8177
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: bd90a16c09dce65115cea2f097d18f2e0ced931a
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548640"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632032"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Sicherheit und Schutz von Daten für Azure Stack Edge Pro R und Azure Stack Edge Mini R
 
@@ -133,7 +133,7 @@ Wenn für das Gerät ein Kaltstart erfolgt, wird auf dem Gerät ein geschützter
 
 [!INCLUDE [azure-stack-edge-gateway-data-rest](../../includes/azure-stack-edge-gateway-protect-data-storage-accounts.md)]
 
-- Rotieren und [synchronisieren Sie Ihre Speicherkontoschlüssel](azure-stack-edge-j-series-manage-storage-accounts.md) regelmäßig, um zu vermeiden, dass nicht autorisierte Benutzer auf Ihr Speicherkonto zugreifen können.
+- Rotieren und [synchronisieren Sie Ihre Speicherkontoschlüssel](azure-stack-edge-gpu-manage-storage-accounts.md) regelmäßig, um zu vermeiden, dass nicht autorisierte Benutzer auf Ihr Speicherkonto zugreifen können.
 
 ## <a name="manage-personal-information"></a>Verwalten persönlicher Informationen
 
@@ -141,7 +141,7 @@ Der Azure Stack Edge-Dienst erfasst persönliche Informationen in folgenden Szen
 
 [!INCLUDE [azure-stack-edge-gateway-data-rest](../../includes/azure-stack-edge-gateway-manage-personal-data.md)]
 
-Eine Anleitung zum Anzeigen der Liste mit den Benutzern, die auf eine Freigabe zugreifen oder sie löschen können, finden Sie unter [Verwalten von Freigaben auf der Azure Stack Edge-Ressource](azure-stack-edge-j-series-manage-shares.md).
+Eine Anleitung zum Anzeigen der Liste mit den Benutzern, die auf eine Freigabe zugreifen oder sie löschen können, finden Sie unter [Verwalten von Freigaben auf der Azure Stack Edge-Ressource](azure-stack-edge-gpu-manage-shares.md).
 
 Weitere Informationen finden Sie im [Trust Center in der Microsoft-Datenschutzrichtlinie](https://www.microsoft.com/trustcenter).
 

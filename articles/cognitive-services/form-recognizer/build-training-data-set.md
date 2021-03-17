@@ -2,23 +2,23 @@
 title: Erstellen eines Trainingsdatasets für ein benutzerdefiniertes Modell – Formularerkennung
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie sicherstellen, dass Ihr Trainingsdataset für das Trainieren eines Formularerkennungsmodells optimiert ist.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.author: pafarley
-ms.openlocfilehash: ee57ccb82e771ee8ab93b09e476a94df32278069
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.author: lajanuar
+ms.openlocfilehash: b33ac3cb710a2d2a9d92efadf14dc829cb5da6e8
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585108"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467492"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Erstellen eines Trainingsdatasets für ein benutzerdefiniertes Modell
 
-Wenn Sie das benutzerdefinierte Modell zur Formularerkennung verwenden, stellen Sie dem Vorgang [Trainieren eines benutzerdefinierten Modells](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) Ihre eigenen Trainingsdaten bereit, sodass das Modell mit Ihren branchenspezifischen Formularen trainiert werden kann. Folgen Sie diesem Leitfaden, um zu erfahren, wie Daten für ein effektives Training des Modells gesammelt und vorbereitet werden können.
+Wenn Sie das benutzerdefinierte Modell zur Formularerkennung verwenden, stellen Sie dem Vorgang [Trainieren eines benutzerdefinierten Modells](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync) Ihre eigenen Trainingsdaten bereit, sodass das Modell mit Ihren branchenspezifischen Formularen trainiert werden kann. Folgen Sie diesem Leitfaden, um zu erfahren, wie Daten für ein effektives Training des Modells gesammelt und vorbereitet werden können.
 
 Sie benötigen mindestens fünf ausgefüllte Formulare desselben Typs.
 
@@ -47,7 +47,7 @@ Wenn Sie manuell bezeichnete Daten verwenden möchten, müssen Sie auch die Date
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>Organisieren Ihrer Daten in Unterordnern (optional)
 
-Standardmäßig werden von der [Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)-API nur Formulardokumente verwendet, die sich im Stammverzeichnis Ihres Speichercontainers befinden. Sie können jedoch mit Daten in Unterordnern trainieren, wenn Sie dies im API-Aufruf angeben. Normalerweise hat der Text des [Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)-Aufrufs das folgende Format, wobei `<SAS URL>` die SAS-URL (Shared Access Signature) des Containers ist:
+Standardmäßig werden von der [Train Custom Model](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync)-API nur Formulardokumente verwendet, die sich im Stammverzeichnis Ihres Speichercontainers befinden. Sie können jedoch mit Daten in Unterordnern trainieren, wenn Sie dies im API-Aufruf angeben. Normalerweise hat der Text des [Train Custom Model](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync)-Aufrufs das folgende Format, wobei `<SAS URL>` die SAS-URL (Shared Access Signature) des Containers ist:
 
 ```json
 {

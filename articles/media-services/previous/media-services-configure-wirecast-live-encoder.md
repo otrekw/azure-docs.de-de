@@ -3,7 +3,7 @@ title: Konfigurieren des Telestream Wirecast-Encoders zum Senden eines Single-Bi
 description: 'In diesem Thema wird beschrieben, wie Sie den Wirecast-Liveencoder zum Senden eines Single-Bitrate-Livedatenstroms an AMS-Kanäle konfigurieren, für die Livecodierung aktiviert sind. '
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: ecab0ee67dd1d5cee3fd9927c00c9f9d827b2f47
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a736270919f36cb7d4bbd4e686a98ddc57f402fa
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910048"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016830"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Verwenden des Wirecast-Encoders zum Senden eines Single-Bitrate-Livedatenstroms
 
@@ -49,7 +49,7 @@ In diesem Tutorial wird gezeigt, wie Sie Azure Media Services (AMS) mit dem Tool
 * Bei der Verwendung softwarebasierter Encoder schließen Sie alle nicht benötigten Programme.
 
 ## <a name="create-a-channel"></a>Erstellen eines Kanals
-1. Navigieren Sie im AMSE-Tool zur Registerkarte **Live** , und klicken Sie mit der rechten Maustaste in den Kanalbereich. Wählen Sie im Menü die Option **Kanal erstellen** aus.
+1. Navigieren Sie im AMSE-Tool zur Registerkarte **Live**, und klicken Sie mit der rechten Maustaste in den Kanalbereich. Wählen Sie im Menü die Option **Kanal erstellen** aus.
 
     ![Screenshot mit Auswahl von „Kanal erstellen“ in einem Menü.](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
 
@@ -76,7 +76,7 @@ Während der Kanal gestartet wird, können Sie [den Encoder konfigurieren](media
 ## <a name="configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />Konfigurieren des Telestream Wirecast-Encoders
 In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restlichen Teil dieses Abschnitts werden die Konfigurationsschritte im Detail beschrieben.
 
-**Video** :
+**Video**:
 
 * Codec: H.264
 * Profil: Hoch (Ebene 4.0)
@@ -84,7 +84,7 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
 * Keyframe: 2 Sekunden (60 Sekunden)
 * Bildfrequenz: 30
 
-**Audio** :
+**Audio**:
 
 * Codec: AAC (LC)
 * Bitrate: 192 KBit/s
@@ -128,7 +128,7 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
 
     Navigieren Sie zurück zum AMSE-Tool, und überprüfen Sie den Abschlussstatus des Kanals. Sobald sich der Status von **Wird gestartet** in **Wird ausgeführt** ändert, können Sie die Eingabe-URL abrufen.
 
-    Wenn der Kanal ausgeführt wird, klicken Sie mit der rechten Maustaste auf den Kanalnamen, navigieren Sie nach unten, bewegen Sie den Mauszeiger über **Eingabe-URL in die Zwischenablage kopieren** , und wählen Sie dann **Primäre Eingabe-URL** aus.  
+    Wenn der Kanal ausgeführt wird, klicken Sie mit der rechten Maustaste auf den Kanalnamen, navigieren Sie nach unten, bewegen Sie den Mauszeiger über **Eingabe-URL in die Zwischenablage kopieren**, und wählen Sie dann **Primäre Eingabe-URL** aus.  
 
     ![Screenshot der Option „Eingabe-URL in Zwischenablage kopieren“ für primäre Eingabe-URL.](./media/media-services-wirecast-live-encoder/media-services-wirecast6.png)
 8. Fügen Sie diese Informationen im Wirecast-Fenster **Output Settings** (Ausgabeoptionen) im Ausgabebereich in das Feld **Adresse** ein, und weisen Sie einen Datenstromnamen zu.
@@ -136,7 +136,7 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
     ![Screenshot der Ausgabeeinstellungen.](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
 
 1. Klicken Sie auf **OK**.
-2. Vergewissern Sie sich auf dem **Wirecast** -Hauptbildschirm, dass die Eingabequellen für Video und Audio bereit sind, und klicken Sie dann in der linken oberen Ecke auf **Streamen**.
+2. Vergewissern Sie sich auf dem **Wirecast**-Hauptbildschirm, dass die Eingabequellen für Video und Audio bereit sind, und klicken Sie dann in der linken oberen Ecke auf **Streamen**.
 
     ![Screenshot der Schaltfläche „Wirecast Stream“.](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 

@@ -3,14 +3,14 @@ title: Erstellen eines Windows Server-Containers in einem AKS-Cluster mithilfe 
 description: Hier erfahren Sie, wie Sie mit PowerShell schnell einen Kubernetes-Cluster erstellen und eine Anwendung in einem Windows Server-Container in Azure Kubernetes Service (AKS) bereitstellen.
 services: container-service
 ms.topic: article
-ms.date: 05/26/2020
+ms.date: 03/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 56fc11583bcdd271d0225de90ef7ab06bcf87cbf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b877ecbdca06ff73d152e1b491e993798a99f98a
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625113"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103233513"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Erstellen eines Windows Server-Containers auf einem Azure Kubernetes Service (AKS)-Cluster mit PowerShell
 
@@ -83,8 +83,9 @@ Um einen AKS-Cluster auszuführen, der Knotenpools für Windows Server-Containe
 > Um zu gewährleisten, dass Ihr Cluster zuverlässig funktioniert, sollten Sie mindestens zwei Knoten im Standardknotenpool ausführen.
 
 ```azurepowershell-interactive
-$Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
-New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 2 -KubernetesVersion 1.16.7 -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets -WindowsProfileAdminUserName akswinuser -WindowsProfileAdminUserPassword $Password
+$Username = Read-Host -Prompt 'Please create a username for the administrator credentials on your Windows Server containers: '
+$Password = Read-Host -Prompt 'Please create a password for the administrator credentials on your Windows Server containers: ' -AsSecureString
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 2 -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets -WindowsProfileAdminUserName $Username -WindowsProfileAdminUserPassword $Password
 ```
 
 > [!Note]
@@ -97,7 +98,7 @@ Nach wenigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werde
 Standardmäßig wird ein AKS-Cluster mit einem Knotenpool erstellt, der Linux-Container ausführen kann. Verwenden Sie das Cmdlet `New-AzAksNodePool`, um einen Knotenpool hinzuzufügen, der Windows Server-Container neben dem Linux-Knotenpool ausführen kann.
 
 ```azurepowershell-interactive
-New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -VmSetType VirtualMachineScaleSets -OsType Windows -Name npwin -KubernetesVersion 1.16.7
+New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -VmSetType VirtualMachineScaleSets -OsType Windows -Name npwin
 ```
 
 Der obige Befehl erstellt einen neuen Knotenpool namens **npwin** und fügt ihn dem **myAKSCluster** hinzu. Wenn Sie einen Knotenpool erstellen, um Windows Server-Container auszuführen, hat **VmSize** den Standardwert **Standard_D2s_v3**. Wenn Sie den Parameter **VmSize** festlegen, überprüfen Sie die Liste mit den [eingeschränkten VM-Größen][restricted-vm-sizes]. Die empfohlene Mindestgröße ist **Standard_D2s_v3**. Der vorherige Befehl verwendet auch das Standardsubnetz im Standard-Vnet, das beim Ausführen von `New-AzAks` erstellt wurde.

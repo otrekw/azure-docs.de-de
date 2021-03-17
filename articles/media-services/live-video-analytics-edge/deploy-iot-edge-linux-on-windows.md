@@ -3,16 +3,16 @@ title: 'Bereitstellen für IoT Edge für Linux unter Windows: Azure'
 description: Dieser Artikel enthält eine Anleitung für die Bereitstellung für IoT Edge für Linux auf einem Windows-Gerät.
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: b635070d6a4834da2c6d82cc768684b6cde9cd71
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 9ec28c62ca804137ede3cd60d1980e55fbaa2807
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042180"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618133"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>Bereitstellen für IoT Edge für Linux auf einem Windows-Gerät (EFLOW)
 
-In diesem Artikel wird beschrieben, wie Sie Live Video Analytics auf einem Edgegerät bereitstellen, das über [IoT Edge für Linux unter Windows (EFLOW)](https://docs.microsoft.com/azure/iot-edge/iot-edge-for-linux-on-windows?view=iotedge-2018-06) verfügt. Nachdem Sie die Schritte in diesem Dokument befolgt haben, können Sie einen [Mediengraphen](media-graph-concept.md) ausführen, mit dem Bewegung in einem Video erkannt wird und die entsprechenden Ereignisse an den IoT-Hub in der Cloud ausgegeben werden. Anschließend können Sie den Mediengraphen für erweiterte Szenarien einsetzen und die Leistungsstärke von Live Video Analytics für Ihr Windows-basiertes IoT Edge-Gerät nutzen.
+In diesem Artikel wird beschrieben, wie Sie Live Video Analytics auf einem Edgegerät bereitstellen, das über [IoT Edge für Linux unter Windows (EFLOW)](https://docs.microsoft.com/azure/iot-edge/iot-edge-for-linux-on-windows) verfügt. Nachdem Sie die Schritte in diesem Dokument befolgt haben, können Sie einen [Mediengraphen](media-graph-concept.md) ausführen, mit dem Bewegung in einem Video erkannt wird und die entsprechenden Ereignisse an den IoT-Hub in der Cloud ausgegeben werden. Anschließend können Sie den Mediengraphen für erweiterte Szenarien einsetzen und die Leistungsstärke von Live Video Analytics für Ihr Windows-basiertes IoT Edge-Gerät nutzen.
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 

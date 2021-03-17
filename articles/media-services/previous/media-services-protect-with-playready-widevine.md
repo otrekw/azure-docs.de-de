@@ -3,7 +3,7 @@ title: Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/
 description: Sie können Azure Media Services verwenden, um MPEG-DASH-, Smooth Streaming- und HTTP Live Streaming (HLS)-Streams zu übermitteln, die mit Microsoft PlayReady DRM geschützt sind. Außerdem können Sie sie nutzen, um DASH-Daten bereitzustellen, die mit Widevine DRM verschlüsselt wurden. In diesem Thema wird das dynamische Verschlüsseln mit PlayReady- und Widevine-DRM beschrieben.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 548d1a12-e2cb-45fe-9307-4ec0320567a2
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 58ca7df5a99752f05a4715511685b31a467356f1
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 9a0e8a513023c093157a3f14a64de9f87de543ab
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695051"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009452"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: b8110323afda2ad445ffe279030ee7f3035e2b71
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 3f52dc502233cbab42ae5decff70b77c41c38e0e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455398"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609684"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Unternehmensstrategien für LUIS-Apps
 Lesen Sie die folgenden Entwurfsstrategien für Unternehmens-Apps.
@@ -48,10 +48,10 @@ Wenn Ihre App dafür vorgesehen ist, eine Vielzahl von Benutzeräußerungen vorh
 Planen Sie eine regelmäßige [Überprüfung der Endpunktäußerungen](luis-how-to-review-endpoint-utterances.md) ein (z.B. alle zwei Wochen), um das aktive Lernen zu fördern, und trainieren und veröffentlichen Sie die App dann erneut. 
 
 ## <a name="when-you-need-to-have-more-than-500-intents"></a>Wenn Sie mehr als 500 Absichten benötigen
-Angenommen, Sie entwickeln einen Office-Assistenten, der mehr als 500 Absichten verarbeitet. Wenn sich 200 Absichten auf die Planung von Besprechungen, 200 auf Erinnerungen, 200 auf das Abrufen von Informationen zu Kollegen und 200 auf das Senden von E-Mails beziehen, sollten Sie die Absichten so gruppieren, dass sich jede Gruppe in einer App befindet. Erstellen Sie anschließend eine übergeordnete App, die sämtliche Absichten enthält. Nutzen Sie zum Erstellen der übergeordneten Apps das [Dispatchmodell](#dispatch-tool-and-model). Ändern Sie anschließend Ihren Bot so, dass er einen kaskadierenden Aufruf durchführt, wie im [Tutorial zum Dispatchmodell](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0) gezeigt. 
+Angenommen, Sie entwickeln einen Office-Assistenten, der mehr als 500 Absichten verarbeitet. Wenn sich 200 Absichten auf die Planung von Besprechungen, 200 auf Erinnerungen, 200 auf das Abrufen von Informationen zu Kollegen und 200 auf das Senden von E-Mails beziehen, sollten Sie die Absichten so gruppieren, dass sich jede Gruppe in einer App befindet. Erstellen Sie anschließend eine übergeordnete App, die sämtliche Absichten enthält. Nutzen Sie zum Erstellen der übergeordneten Apps das [Dispatchmodell](#dispatch-tool-and-model). Ändern Sie anschließend Ihren Bot so, dass er einen kaskadierenden Aufruf durchführt, wie im [Tutorial zum Dispatchmodell](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs) gezeigt. 
 
 ## <a name="when-you-need-to-combine-several-luis-and-qna-maker-apps"></a>Kombinieren mehrerer LUIS- und QnA Maker-Apps
-Wenn Sie über mehrere LUIS- und QnA Maker-Apps verfügen, die auf einen Bot reagieren müssen, verwenden Sie das [Dispatchmodell](#dispatch-tool-and-model) zum Erstellen der übergeordneten App.  Ändern Sie anschließend Ihren Bot so, dass er einen kaskadierenden Aufruf durchführt, wie im [Tutorial zum Dispatchmodell](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0) gezeigt. 
+Wenn Sie über mehrere LUIS- und QnA Maker-Apps verfügen, die auf einen Bot reagieren müssen, verwenden Sie das [Dispatchmodell](#dispatch-tool-and-model) zum Erstellen der übergeordneten App.  Ändern Sie anschließend Ihren Bot so, dass er einen kaskadierenden Aufruf durchführt, wie im [Tutorial zum Dispatchmodell](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs) gezeigt. 
 
 ## <a name="dispatch-tool-and-model"></a>Dispatchtool und -modell
 Verwenden Sie das Befehlszeilentool [Dispatch][dispatch-tool] in den [BotBuilder-Tools](https://github.com/Microsoft/botbuilder-tools), um mehrere LUIS- und/oder QnA Maker-Apps in einer übergeordneten LUIS-App zusammenzufassen. Dieser Ansatz ermöglicht es Ihnen, eine übergeordnete Domäne zu verwenden, die alle Themen und die unterschiedlichen untergeordneten Themendomänen in getrennten Apps enthält. 
@@ -62,7 +62,7 @@ Die übergeordnete Domäne ist in LUIS mit einer Version mit dem Namen `Dispatch
 
 Der Chatbot empfängt die Äußerung und sendet sie für die Vorhersage an die übergeordnete LUIS-App. Die bestbewertete Vorhersage der Absicht aus der übergeordneten App bestimmt, welche untergeordnete LUIS-App als Nächstes aufgerufen wird. Der Chatbot sendet die Äußerung an die untergeordnete App, um eine genauere Vorhersage zu erhalten.
 
-Weitere Informationen zur Hierarchie der Aufrufe von Bot Builder v4 finden Sie im [Tutorial zur Dispatcheranwendung](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0).  
+Weitere Informationen zur Hierarchie der Aufrufe von Bot Builder v4 finden Sie im [Tutorial zur Dispatcheranwendung](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs).  
 
 ### <a name="intent-limits-in-dispatch-model"></a>Grenzwerte für Absichten im Dispatchmodell
 Eine Dispatchanwendung hat maximal 500 Dispatchquellen, die 500 Absichten entsprechen. 
@@ -70,7 +70,7 @@ Eine Dispatchanwendung hat maximal 500 Dispatchquellen, die 500 Absichten entspr
 ## <a name="more-information"></a>Weitere Informationen
 
 * [Bot Framework SDK](https://github.com/Microsoft/botframework)
-* [Verwenden von mehreren LUIS- und QnA-Modellen](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0)
+* [Verwenden von mehreren LUIS- und QnA-Modellen](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs)
 * [Dispatch CLI](https://github.com/Microsoft/botbuilder-tools)
 * Botbeispiel für das Dispatchmodell: [.NET](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch), [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
 

@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: bb13df0f87cd10719f33afe4ec080c4c785df720
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 85773ec66dbe567afcfd1afca1d14aa0119fb8f6
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695559"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464019"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-azure-time-series-insight-environment"></a>Hinzufügen einer IoT-Hub-Ereignisquelle zu Ihrer Azure Time Series Insights-Umgebung
 
@@ -27,7 +27,7 @@ In diesem Artikel wird beschrieben, wie im Azure-Portal eine Ereignisquelle hinz
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Erstellen einer [Azure Time Series Insights-Umgebung](./tutorials-set-up-tsi-environment.md).
+* Erstellen einer [Azure Time Series Insights-Umgebung](./tutorial-set-up-environment.md).
 * Erstellen eines [IoT-Hubs über das Azure-Portal](../iot-hub/iot-hub-create-through-portal.md).
 * An den IoT-Hub müssen aktive Nachrichtenereignisse gesendet werden.
 * Erstellen Sie eine dedizierte Consumergruppe in dem IoT-Hub, die die Azure Time Series Insight-Umgebung verwenden kann. Jede Azure Time Series Insights-Ereignisquelle benötigt eine eigene dedizierte Consumergruppe, die nicht mit anderen Consumern gemeinsam genutzt wird. Wenn mehrere Leser Ereignisse aus der gleichen Consumergruppe nutzen, geben alle Leser wahrscheinlich Fehler aus. Weitere Details finden Sie im [Azure IoT Hub-Entwicklerhandbuch](../iot-hub/iot-hub-devguide.md).
@@ -72,7 +72,7 @@ So fügen Sie Ihrem IoT-Hub eine neue Consumergruppe hinzu
 
        [![Bereich „Neue Ereignisquelle“: In der Option „IoT Hub aus verfügbaren Abonnements verwenden“ festzulegende Eigenschaften](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png#lightbox)
 
-       | Eigenschaft | BESCHREIBUNG |
+       | Eigenschaft | Beschreibung |
        | --- | --- |
        | Subscription | Das Abonnement, zu dem der gewünschte IoT-Hub gehört. |
        | IoT Hub-Name | Der Name des ausgewählten IoT-Hubs. |

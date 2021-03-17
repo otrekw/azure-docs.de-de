@@ -9,14 +9,16 @@ ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9d03b6f4a512c22564480405ec0f0e0c0e62a958
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: db27a466ca5f1370e8b43ceb472f5deeaba509f1
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048422"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200331"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Bedarfsgerechtes Bereitstellen von IoT Edge-Modulen mithilfe des Azure-Portals
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Erstellen Sie eine **automatische IoT Edge-Bereitstellung** im Azure-Portal zum gleichzeitigen Verwalten laufender Bereitstellungen vieler Geräte. Automatische Bereitstellungen für IoT Edge sind Teil des Features [Automatische Geräteverwaltung](../iot-hub/iot-hub-automatic-device-management.md) von IoT Hub. Bereitstellungen sind dynamische Prozesse, mit denen Sie mehrere Module auf mehreren Geräten bereitstellen, Status und Integrität der Module nachverfolgen und bei Bedarf Änderungen vornehmen können.
 
@@ -43,7 +45,7 @@ Weitere Informationen zu Gerätezwillingen und Tags finden Sie unter [Verstehen 
 
 ## <a name="create-a-deployment"></a>Erstellen einer Bereitstellung
 
-IoT Edge bietet zwei verschiedene Arten von automatischen Bereitstellungen, die Sie zum Anpassen Ihres Szenarios verwenden können. Sie können eine Standard*bereitstellung* erstellen, die diese Systemlaufzeitmodule und alle zusätzlichen Module und Routen enthält. Jedes Gerät kann nur eine Bereitstellung anwenden. Oder Sie können eine *mehrstufige Bereitstellung* erstellen, die nur benutzerdefinierte Module und Routen (und nicht die Systemlaufzeit) enthält. Viele mehrstufige Bereitstellungen können auf einem Gerät – basierend auf einer Standardbereitstellung – kombiniert werden. Weitere Informationen dazu, wie die beiden Typen automatischer Bereitstellungen zusammenarbeiten, finden Sie unter [Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf](module-deployment-monitoring.md).
+IoT Edge bietet zwei verschiedene Arten von automatischen Bereitstellungen, die Sie zum Anpassen Ihres Szenarios verwenden können. Sie können eine Standard *bereitstellung* erstellen, die diese Systemlaufzeitmodule und alle zusätzlichen Module und Routen enthält. Jedes Gerät kann nur eine Bereitstellung anwenden. Oder Sie können eine *mehrstufige Bereitstellung* erstellen, die nur benutzerdefinierte Module und Routen (und nicht die Systemlaufzeit) enthält. Viele mehrstufige Bereitstellungen können auf einem Gerät – basierend auf einer Standardbereitstellung – kombiniert werden. Weitere Informationen dazu, wie die beiden Typen automatischer Bereitstellungen zusammenarbeiten, finden Sie unter [Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf](module-deployment-monitoring.md).
 
 Die Schritte zum Erstellen einer Bereitstellung und einer mehrstufigen Bereitstellung sind sehr ähnlich. In den folgenden Schritten wird auf eventuelle Unterschiede hingewiesen.
 

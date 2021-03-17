@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3dc7b37c96d2d82ae42d9bce32a97beab2d91e9
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 7a9d80344a31023d174935e7f785e36102e99eba
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740515"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011540"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Hinzufügen und Verwalten von Benutzern in einer Verwaltungseinheit in Azure Active Directory
 
@@ -70,9 +70,9 @@ Sie können Benutzer Verwaltungseinheiten einzeln oder per Massenvorgang zuweise
 Verwenden Sie in PowerShell das Cmdlet `Add-AzureADAdministrativeUnitMember` aus dem folgenden Beispiel, um den Benutzer der Verwaltungseinheit hinzuzufügen. Die Objekt-ID der Verwaltungseinheit, der Sie den Benutzer hinzufügen möchten, und die Objekt-ID des hinzuzufügenden Benutzers werden als Argumente verwendet. Ändern Sie den hervorgehobenen Abschnitt so, wie dies für Ihre jeweilige Umgebung erforderlich ist.
 
 ```powershell
-$administrativeunitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-$UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
-Add-AzureADMSAdministrativeUnitMember -Id $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
+$adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$userObj = Get-AzureADUser -Filter "UserPrincipalName eq 'bill@example.onmicrosoft.com'"
+Add-AzureADMSAdministrativeUnitMember -Id $adminUnitObj.ObjectId -RefObjectId $userObj.ObjectId
 ```
 
 
@@ -80,20 +80,25 @@ Add-AzureADMSAdministrativeUnitMember -Id $administrativeunitObj.ObjectId -RefOb
 
 Ersetzen Sie den Platzhalter durch Testinformationen, und führen Sie den folgenden Befehl aus:
 
+Anforderung
+
 ```http
-Http request
-POST /administrativeUnits/{Admin Unit id}/members/$ref
-Request body
+POST /administrativeUnits/{admin-unit-id}/members/$ref
+```
+
+Text
+
+```http
 {
-  "@odata.id":"https://graph.microsoft.com/v1.0/users/{id}"
+  "@odata.id":"https://graph.microsoft.com/v1.0/users/{user-id}"
 }
 ```
 
-Beispiel:
+Beispiel
 
 ```http
 {
-  "@odata.id":"https://graph.microsoft.com/v1.0/users/johndoe@fabidentity.com"
+  "@odata.id":"https://graph.microsoft.com/v1.0/users/john@example.com"
 }
 ```
 
@@ -118,6 +123,7 @@ Führen Sie den folgenden Befehl aus:
 ```powershell
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -Id $_.ObjectId | where {$_.RefObjectId -eq $userObjId} }
 ```
+
 > [!NOTE]
 > Standardmäßig werden mit `Get-AzureADAdministrativeUnitMember` nur 100 Mitglieder einer Verwaltungseinheit zurückgegeben. Sie können `"-All $true"` hinzufügen, wenn Sie weitere Mitglieder abrufen möchten.
 
@@ -126,7 +132,7 @@ Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember 
 Ersetzen Sie den Platzhalter durch Testinformationen, und führen Sie den folgenden Befehl aus:
 
 ```http
-https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.AdministrativeUnit
+https://graph.microsoft.com/v1.0/users/{user-id}/memberOf/$/Microsoft.Graph.AdministrativeUnit
 ```
 
 ## <a name="remove-a-single-user-from-an-administrative-unit"></a>Entfernen eines einzelnen Benutzers aus einer Verwaltungseinheit
@@ -152,14 +158,16 @@ Es gibt zwei Möglichkeiten, einen Benutzer aus einer Verwaltungseinheit zu entf
 Führen Sie den folgenden Befehl aus:
 
 ```powershell
-Remove-AzureADMSAdministrativeUnitMember -Id $auId -MemberId $memberUserObjId
+Remove-AzureADMSAdministrativeUnitMember -Id $adminUnitId -MemberId $memberUserObjId
 ```
 
 ### <a name="use-microsoft-graph"></a>Verwenden von Microsoft Graph
 
 Ersetzen Sie die Platzhalter durch Testinformationen, und führen Sie den folgenden Befehl aus:
 
-`https://graph.microsoft.com/v1.0/directory/administrativeUnits/{adminunit-id}/members/{user-id}/$ref`
+```http
+https://graph.microsoft.com/v1.0/directory/administrativeUnits/{admin-unit-id}/members/{user-id}/$ref
+```
 
 ## <a name="remove-multiple-users-as-a-bulk-operation"></a>Entfernen mehrerer Benutzer per Massenvorgang
 

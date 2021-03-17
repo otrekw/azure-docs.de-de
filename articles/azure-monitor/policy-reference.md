@@ -1,17 +1,17 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Monitor
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Monitor. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.custom: subject-policy-reference
-ms.openlocfilehash: b2aeb76c24813813ce03075ecac0fd778f838188
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 846d2db5cf59b54cd83a335d693a3278fa9c04fc
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435136"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612965"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-monitor"></a>Integrierte Azure Policy-Definitionen für Azure Monitor
 

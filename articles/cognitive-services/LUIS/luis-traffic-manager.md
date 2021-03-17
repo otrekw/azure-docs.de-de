@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/20/2019
-ms.openlocfilehash: 6fc5bea71909d0e17b4ef0256ab0cad644dacbb3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 37c4bd2af080a76e93bc9599f06e4d502985979f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95993821"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609650"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Verwenden von Microsoft Azure Traffic Manager zum Verwalten von Endpunktkontingenten über mehrere Schlüssel
 Language Understanding Intelligent Service (LUIS) bietet die Möglichkeit, das Endpunkt-Anforderungskontingent über das Kontingent eines einzelnen Schlüssels hinaus zu erhöhen. Dies erfolgt, indem Sie mehrere Schlüssel für LUIS erstellen und diese der LUIS-Anwendung auf der Seite **Veröffentlichen** im Abschnitt **Resources and Keys** (Ressourcen und Schlüssel) hinzuzufügen.
@@ -102,7 +102,7 @@ Das Erstellen des Traffic Manager-Profils für „USA, Osten“ umfasst mehrere 
     |-Type|ExternalEndpoints|Weitere Informationen finden Sie unter [Traffic Manager-Endpunkt][traffic-manager-endpoints]. |
     |-Target|eastus.api.cognitive.microsoft.com|Dies ist die Domäne für den LUIS-Endpunkt.|
     |-EndpointLocation|"eastus"|Region des Endpunkts|
-    |-EndpointStatus|Enabled|Endpunkt beim Erstellen aktivieren|
+    |-EndpointStatus|Aktiviert|Endpunkt beim Erstellen aktivieren|
 
     Eine erfolgreiche Antwort sieht wie folgt aus:
 
@@ -171,7 +171,7 @@ Das Erstellen des Traffic Manager-Profils für „USA, Westen“ umfasst die gle
     |-Type|ExternalEndpoints|Weitere Informationen finden Sie unter [Traffic Manager-Endpunkt][traffic-manager-endpoints]. |
     |-Target|westus.api.cognitive.microsoft.com|Dies ist die Domäne für den LUIS-Endpunkt.|
     |-EndpointLocation|"westus"|Region des Endpunkts|
-    |-EndpointStatus|Enabled|Endpunkt beim Erstellen aktivieren|
+    |-EndpointStatus|Aktiviert|Endpunkt beim Erstellen aktivieren|
 
     Eine erfolgreiche Antwort sieht wie folgt aus:
 
@@ -237,7 +237,7 @@ Erstellen Sie das übergeordnete Traffic Manager-Profil, und verknüpfen Sie zwe
     |-TrafficManagerProfile|$parentprofile|Profil, dem dieser Endpunkt zugewiesen werden soll|
     |-Type|NestedEndpoints|Weitere Informationen finden Sie unter [Add-AzTrafficManagerEndpointConfig](/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig). |
     |-TargetResourceId|$eastprofile.Id|ID des untergeordneten Profils|
-    |-EndpointStatus|Enabled|Endpunktstatus nach dem Hinzufügen zum übergeordneten Element|
+    |-EndpointStatus|Aktiviert|Endpunktstatus nach dem Hinzufügen zum übergeordneten Element|
     |-EndpointLocation|"eastus"|[Name der Azure-Region](https://azure.microsoft.com/global-infrastructure/regions/) der Ressource|
     |-MinChildEndpoints|1|Minimale Anzahl von untergeordneten Endpunkten|
 
@@ -274,7 +274,7 @@ Erstellen Sie das übergeordnete Traffic Manager-Profil, und verknüpfen Sie zwe
     |-TrafficManagerProfile|$parentprofile|Profil, dem dieser Endpunkt zugewiesen werden soll|
     |-Type|NestedEndpoints|Weitere Informationen finden Sie unter [Add-AzTrafficManagerEndpointConfig](/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig). |
     |-TargetResourceId|$westprofile.Id|ID des untergeordneten Profils|
-    |-EndpointStatus|Enabled|Endpunktstatus nach dem Hinzufügen zum übergeordneten Element|
+    |-EndpointStatus|Aktiviert|Endpunktstatus nach dem Hinzufügen zum übergeordneten Element|
     |-EndpointLocation|"westus"|[Name der Azure-Region](https://azure.microsoft.com/global-infrastructure/regions/) der Ressource|
     |-MinChildEndpoints|1|Minimale Anzahl von untergeordneten Endpunkten|
 
@@ -371,7 +371,7 @@ Entfernen Sie die beiden LUIS-Endpunktschlüssel, die drei Traffic Manager-Profi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Überprüfen Sie [Middleware](/azure/bot-service/bot-builder-create-middleware?tabs=csaddmiddleware%252ccsetagoverwrite%252ccsmiddlewareshortcircuit%252ccsfallback%252ccsactivityhandler&view=azure-bot-service-4.0)-Optionen im Bot-Framework v4, um zu verstehen, wie dieser Traffic Manager-Code einem BotFramework-Bot hinzugefügt werden kann.
+Überprüfen Sie [Middleware](/azure/bot-service/bot-builder-create-middleware?tabs=csaddmiddleware%252ccsetagoverwrite%252ccsmiddlewareshortcircuit%252ccsfallback%252ccsactivityhandler)-Optionen im Bot-Framework v4, um zu verstehen, wie dieser Traffic Manager-Code einem BotFramework-Bot hinzugefügt werden kann.
 
 [traffic-manager-marketing]: https://azure.microsoft.com/services/traffic-manager/
 [traffic-manager-docs]: ../../traffic-manager/index.yml

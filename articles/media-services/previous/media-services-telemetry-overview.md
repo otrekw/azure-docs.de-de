@@ -3,7 +3,7 @@ title: Azure Media Services-Telemetrie | Microsoft Docs
 description: Dieser Artikel bietet eine Übersicht über die Microsoft Azure Media Services-Telemetrie.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 95c20ec4-c782-4063-8042-b79f95741d28
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
-ms.author: juliako
-ms.openlocfilehash: 4bf9a96d7ffc3b939abe8cfb889c5bd49fee09cc
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: b17b5901248056f6000710fa25d2ea1e9df2e2a5
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694587"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009088"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services-Telemetrie  
 
@@ -75,12 +75,12 @@ Folgendes sorgt für die Effizienz vieler gängiger Abfragen:
 
 Telemetriedaten werden in aggregierter Form in einer Tabelle „TelemetryMetrics20160321“ gespeichert, wobei „20160321“ das Datum der erstellten Tabelle ist. Das Telemetriesystem erstellt für jeden neuen Tag (Grundlage: 00:00 UTC) eine separate Tabelle. Die Tabelle wird verwendet, um wiederholte Werte wie z.B. Erfassungsbitrate innerhalb eines bestimmten Zeitfensters, gesendete Bytes usw. zu speichern. 
 
-Eigenschaft|value|Beispiele/Hinweise
+Eigenschaft|Wert|Beispiele/Hinweise
 ---|---|---
 PartitionKey|{Konto-ID}_{Entitäts-ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>Die Konto-ID ist im Partitionsschlüssel enthalten, um Workflows zu vereinfachen, in denen mehrere Media Services-Konten in das gleiche Speicherkonto schreiben.
 RowKey|{Sekunden bis Mitternacht}_{Zufallswert}|01688_00199<br/><br/>Der Zeilenschlüssel beginnt mit der Anzahl von Sekunden bis Mitternacht, um Abfragen nach den „oberen n“ innerhalb einer Partition zu ermöglichen. Weitere Informationen dazu finden Sie in [diesem Artikel](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern). 
-Timestamp|Date/Time|Zeitstempel von Azure-Tabelle 2016-09-09T22:43:42.241Z
-type|Der Typ der Entität, die Telemetriedaten liefert|Kanal/StreamingEndpoint/Archiv<br/><br/>Der Ereignistyp ist einfach ein Zeichenfolgenwert.
+Zeitstempel|Date/Time|Zeitstempel von Azure-Tabelle 2016-09-09T22:43:42.241Z
+Typ|Der Typ der Entität, die Telemetriedaten liefert|Kanal/StreamingEndpoint/Archiv<br/><br/>Der Ereignistyp ist einfach ein Zeichenfolgenwert.
 Name|Der Name des Telemetrieereignisses|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|Die Uhrzeit (UTC), zu der das Telemetrieereignis aufgetreten ist.|2016-09-09T22:42:36.924Z<br/><br/>Die beobachtete Zeit wird von der Entität gemeldet, die die Telemetriedaten sendet (z.B. ein Kanal). Da zwischen Komponenten Zeitsynchronisierungsprobleme auftreten können, ist dies ein ungefährer Wert.
 ServiceID|{Service-ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
@@ -96,12 +96,12 @@ Es gibt drei Arten von entitätsspezifischen telemetrischen Dateneinträgen, die
 
 **Streamingendpunkt**
 
-Eigenschaft|value|Beispiele
+Eigenschaft|Wert|Beispiele
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Automatischer Zeitstempel von Azure-Tabelle 2016-09-09T22:43:42.241Z
-type|type|StreamingEndpoint
+Typ|Typ|StreamingEndpoint
 Name|Name|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|Service-ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
@@ -115,12 +115,12 @@ E2ELatency|Durchschnittliche End-to-End-Latenz|250
 
 **Livekanal**
 
-Eigenschaft|value|Beispiele/Hinweise
+Eigenschaft|Wert|Beispiele/Hinweise
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Zeitstempel von Azure-Tabelle 2016-09-09T22:43:42.241Z
-type|type|Channel
+Typ|Typ|Kanal
 Name|Name|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|Service-ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
@@ -133,19 +133,19 @@ OverlapCount|Überlappung bei Erfassung|0
 DiscontinuityCount|Diskontinuität für Nachverfolgung|0
 LastTimestamp|Zeitstempel der letzten erfassten Daten|1800488800
 NonincreasingCount|Anzahl der Fragmente, die verworfen wurden, weil der Zeitstempel nicht heraufgesetzt wurde.|2
-UnalignedKeyFrames|Ob Fragmente (aller Qualitätsstufen) empfangen wurden, deren Keyframes nicht ausgerichtet waren. |True
-UnalignedPresentationTime|Ob Fragmente (aller Qualitätsstufen/Nachverfolgungen) empfangen wurden, deren Präsentationszeit nicht ausgerichtet war.|True
-UnexpectedBitrate|„True“, wenn die berechnete/tatsächliche Bitrate für die Audio-/Videonachverfolgung > 40.000 Bit/s und IncomingBitrate == 0 OR IncomingBitrate und actualBitrate sich um 50% unterscheiden. |True
-Healthy|„True“, wenn <br/>overlapCount, <br/>DiscontinuityCount, <br/>NonIncreasingCount, <br/>UnalignedKeyFrames, <br/>UnalignedPresentationTime, <br/>UnexpectedBitrate<br/> alle 0 sind.|True<br/><br/>„Healthy“ ist eine zusammengesetzte Funktion, die „false“ zurückgibt, wenn eine der folgenden Bedingungen zutrifft:<br/><br/>- OverlapCount > 0<br/>- DiscontinuityCount > 0<br/>- NonincreasingCount > 0<br/>- UnalignedKeyFrames == True<br/>- UnalignedPresentationTime == True<br/>- UnexpectedBitrate == True
+UnalignedKeyFrames|Ob Fragmente (aller Qualitätsstufen) empfangen wurden, deren Keyframes nicht ausgerichtet waren. |Richtig
+UnalignedPresentationTime|Ob Fragmente (aller Qualitätsstufen/Nachverfolgungen) empfangen wurden, deren Präsentationszeit nicht ausgerichtet war.|Richtig
+UnexpectedBitrate|„True“, wenn die berechnete/tatsächliche Bitrate für die Audio-/Videonachverfolgung > 40.000 Bit/s und IncomingBitrate == 0 OR IncomingBitrate und actualBitrate sich um 50% unterscheiden. |Richtig
+Healthy|„True“, wenn <br/>overlapCount, <br/>DiscontinuityCount, <br/>NonIncreasingCount, <br/>UnalignedKeyFrames, <br/>UnalignedPresentationTime, <br/>UnexpectedBitrate<br/> alle 0 sind.|Richtig<br/><br/>„Healthy“ ist eine zusammengesetzte Funktion, die „false“ zurückgibt, wenn eine der folgenden Bedingungen zutrifft:<br/><br/>- OverlapCount > 0<br/>- DiscontinuityCount > 0<br/>- NonincreasingCount > 0<br/>- UnalignedKeyFrames == True<br/>- UnalignedPresentationTime == True<br/>- UnexpectedBitrate == True
 
 **Livearchiv**
 
-Eigenschaft|value|Beispiele/Hinweise
+Eigenschaft|Wert|Beispiele/Hinweise
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Zeitstempel von Azure-Tabelle 2016-09-09T22:43:42.241Z
-type|type|Archivieren
+Typ|Typ|Archivieren
 Name|Name|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|Service-ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e

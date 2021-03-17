@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: b922c25561843d140f1e2b8221f62fad89ea00c8
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 5cc1025528959f8c81aa80703e3fc26d59c5266f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520896"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618099"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Verwenden privater Python-Pakete mit Azure Machine Learning
 
@@ -52,11 +52,11 @@ Intern ersetzt der Azure Machine Learning-Dienst die URL durch eine sichere SAS-
 
 ## <a name="use-a-repository-of-packages-from-azure-devops-feed"></a>Verwenden eines Repositorys von Paketen aus einem Azure DevOps-Feed
 
-Wenn Sie Python-Pakete für Ihre Machine Learning-Anwendung entwickeln, können Sie sie als Artefakte in einem Azure DevOps-Repository hosten und als Feed veröffentlichen. So können Sie den DevOps-Workflow zum Entwickeln von Paketen in Ihren Azure Machine Learning-Arbeitsbereich integrieren. Weitere Informationen zum Einrichten von Python-Feeds mithilfe von Azure DevOps finden Sie unter [Erste Schritte mit Python-Paketen in Azure- Artefakten](/azure/devops/artifacts/quickstarts/python-packages?preserve-view=true&view=azure-devops).
+Wenn Sie Python-Pakete für Ihre Machine Learning-Anwendung entwickeln, können Sie sie als Artefakte in einem Azure DevOps-Repository hosten und als Feed veröffentlichen. So können Sie den DevOps-Workflow zum Entwickeln von Paketen in Ihren Azure Machine Learning-Arbeitsbereich integrieren. Weitere Informationen zum Einrichten von Python-Feeds mithilfe von Azure DevOps finden Sie unter [Erste Schritte mit Python-Paketen in Azure- Artefakten](/azure/devops/artifacts/quickstarts/python-packages).
 
 Bei diesem Ansatz wird ein persönliches Zugriffstoken zum Authentifizieren für das Repository verwendet. Der gleiche Ansatz gilt für andere Repositorys mit tokenbasierter Authentifizierung, z. B. private GitHub-Repositorys. 
 
- 1. [Erstellen Sie ein persönliches Zugriffstoken (Personal Access Token, PAT)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?preserve-view=true&tabs=preview-page&view=azure-devops#create-a-pat) für Ihre Azure DevOps-Instanz. Legen Sie den Gültigkeitsbereich des Tokens auf __Verpacken > Lesen__ fest. 
+ 1. [Erstellen Sie ein persönliches Zugriffstoken (Personal Access Token, PAT)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?tabs=preview-page#create-a-pat) für Ihre Azure DevOps-Instanz. Legen Sie den Gültigkeitsbereich des Tokens auf __Verpacken > Lesen__ fest. 
 
  2. Fügen Sie Azure DevOps-URL und PAT mithilfe der [Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace#set-connection-name--category--target--authtype--value-)-Methode als Arbeitsbereichseigenschaften hinzu.
 
