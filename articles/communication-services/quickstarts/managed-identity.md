@@ -6,16 +6,16 @@ services: azure-communication-services
 author: peiliu
 ms.service: azure-communication-services
 ms.topic: how-to
-ms.date: 2/24/2021
+ms.date: 03/10/2021
 ms.author: peiliu
 ms.reviewer: mikben
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 2aea4daddb9cccbf7f268c596fd121357cc17b6d
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: ffda88da451e25b79112a7adf85026158bd27acc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486627"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492352"
 ---
 # <a name="use-managed-identities"></a>Verwenden verwalteter Identitäten
 Hier erfahren Sie mehr zu den ersten Schritten bei der Verwendung verwalteter Identitäten mit Azure Communication Services. Die Identitäts- und SMS-Clientbibliotheken von Communication Services unterstützen die Azure AD-Authentifizierung (Azure Active Directory) mit [verwalteten Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md).

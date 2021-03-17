@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Ihre Zertifikate in einem Azure Kubernetes Se
 services: container-service
 ms.topic: article
 ms.date: 11/15/2019
-ms.openlocfilehash: 1871a8deed4d189534915a9b46b6ace071c1126c
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fa26762c54ad54835b174b8d814a2e77cb38b885
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181770"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619034"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Rotieren von Zertifikaten in Azure Kubernetes Service (AKS)
 
@@ -28,8 +28,6 @@ AKS generiert und verwendet die folgenden Zertifikate, Zertifizierungsstellen un
 * Der AKS-API-Server erstellt eine Zertifizierungsstelle (CA), die als Clusterzertifizierungsstelle („Cluster CA“) bezeichnet wird.
 * Der API-Server verfügt über eine Clusterzertifizierungsstelle, die Zertifikate für die unidirektionale Kommunikation vom API-Server zu kubelets signiert.
 * Jedes kubelet erstellt außerdem eine Zertifikatsignierungsanforderung (Certificate Signing Request, CSR), die von der Clusterzertifizierungsstelle signiert wird, für die Kommunikation vom kubelet zum API-Server.
-* Der etcd-Schlüsselwertspeicher verfügt über ein Zertifikat, das von der Clusterzertifizierungsstelle für die Kommunikation von etcd zum API-Server signiert wurde.
-* Der etcd-Schlüsselwertspeicher erstellt eine Zertifizierungsstelle, die Zertifikate signiert, um die Datenreplikation zwischen etcd-Replikaten im AKS-Cluster zu authentifizieren und zu autorisieren.
 * Der API-Aggregator verwendet die Clusterzertifizierungsstelle zum Ausstellen von Zertifikaten für die Kommunikation mit anderen APIs. Der API-Aggregator kann auch über eine eigene Zertifizierungsstelle zum Ausstellen dieser Zertifikate verfügen, aber zurzeit verwendet er die Clusterzertifizierungsstelle.
 * Jeder Knoten verwendet ein Dienstkontotoken (SA-Token), das von der Clusterzertifizierungsstelle signiert wurde.
 * Der `kubectl`-Client verfügt über ein Zertifikat für die Kommunikation mit dem AKS-Cluster.

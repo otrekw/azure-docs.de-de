@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
-ms.openlocfilehash: 3fd0cfe644ad78059e25d5386cd1a01f56ad9fba
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 1df132e558421d2ec6e26c3883c89457716dfc42
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216987"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419013"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hinzufügen, Ändern oder Entfernen von IP-Adressen für Azure-Netzwerkschnittstellen
 
@@ -192,8 +192,6 @@ Sie können der sekundären IP-Konfiguration einer Netzwerkschnittstelle null od
 
 > [!NOTE]
 > Sie können über das Portal zwar eine Netzwerkschnittstelle mit einer IPv6-Adresse erstellen, es ist jedoch nicht möglich, einem neuen oder vorhandenen virtuellen Computer über das Portal eine vorhandene Netzwerkschnittstelle hinzuzufügen. Verwenden Sie PowerShell oder die Azure-Befehlszeilenschnittstelle, um eine Netzwerkschnittstelle mit einer privaten IPv6-Adresse zu erstellen, und fügen Sie die Netzwerkschnittstelle dann beim Erstellen eines virtuellen Computers an. Eine Netzwerkschnittstelle mit einer zugewiesenen privaten IPv6-Adresse kann nicht einem vorhandenen virtuellen Computer angefügt werden. Sie können einer IP-Konfiguration für eine beliebige Netzwerkschnittstelle eines virtuellen Computers keine private IPv6-Adresse hinzufügen (egal ob mit Portal, CLI oder PowerShell).
-
-Sie können eine öffentliche IPv6-Adresse nicht einer primären oder sekundären IP-Konfiguration zuweisen.
 
 ## <a name="skus"></a>SKUs
 

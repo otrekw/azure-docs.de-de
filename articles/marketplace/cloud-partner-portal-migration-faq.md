@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 091feacceb510038786ae487c0895f9ff1e47aba
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: e071692a1c6fe423b048dab884164d9b3c98f1fd
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880337"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613611"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Häufig gestellte Fragen zur Umstellung vom Cloud-Partnerportal auf Partner Center
 
@@ -22,7 +22,7 @@ Das Cloud-Partnerportal wurde auf Partner Center umgestellt. Partner Center verf
 
 Sie können im Partner Center weiterarbeiten:
 
-| Bereich<img src="" width=200px> | Änderungen |
+| Bereich | Änderungen |
 | --- | --- |
 | Konto | Sie müssen kein neues Partner Center-Konto erstellen, und Sie können Ihre vorhandenen Anmeldeinformationen für das Cloud-Partnerportal verwenden, um sich an Partner Center anzumelden. In Partner Center verwalten Sie nun Ihr Konto, die Benutzer, die Berechtigungen und die Abrechnung. Der Herausgebervertrag und die Informationen zum Unternehmensprofil werden zu Ihrem neuen Partner Center-Konto migriert. Dies gilt auch für alle Auszahlungsprofilinformationen, Benutzerkonten und Berechtigungen sowie für die aktiven Angebote. Weitere Informationen finden Sie unter [Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center](partner-center-portal/manage-account.md). |
 | Benutzerumgebung für die Veröffentlichung und Verwaltung von Angeboten | Wir haben Ihre Angebotsdaten aus dem Cloud-Partnerportal in Partner Center verschoben. Sie greifen auf Ihre Angebote nun in Partner Center zu und können die verbesserte Benutzerumgebung und eine intuitive Benutzeroberfläche verwenden. Informieren Sie sich über das [Aktualisieren eines bestehenden Angebots im kommerziellen Marketplace](partner-center-portal/update-existing-offer.md). |
@@ -41,7 +41,7 @@ Nein. Ihr Konto wird beibehalten. Dies bedeutet, dass Sie als bestehender Partne
 
 Unten sind Partner Center-Links für Seiten angegeben, die im Cloud-Partnerportal häufig verwendet werden. Wenn Sie die Cloud-Partnerportal-Links als Lesezeichen gespeichert haben, sollten Sie sie aktualisieren.
 
-| Seite mit dem Cloudpartnerportal <img src="" width=100px>| Link auf Cloud-Partnerportal-Seite | Link auf Partner Center-Seite |
+| Seite mit dem Cloudpartnerportal | Link auf Cloud-Partnerportal-Seite | Link auf Partner Center-Seite |
 | --- | --- | --- |
 | Seite „Alle Angebote“ | [https://cloudpartner.azure.com/#alloffers](https://cloudpartner.azure.com/#alloffers) | [https://partner.microsoft.com/dashboard/commercial-marketplace/overview](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) |
 | Seite „Alle Herausgeber“ | [https://cloudpartner.azure.com/#publishers](https://cloudpartner.azure.com/#publishers) | [https://partner.microsoft.com/dashboard/account/v3/publishers/list](https://partner.microsoft.com/dashboard/account/v3/publishers/list) |
@@ -75,7 +75,7 @@ Alle Angebotstypen, die bisher im Cloud-Partnerportal unterstützt wurden, werde
 
 Für die in Partner Center unterstützten Angebotstypen wurden alle Angebote unabhängig von ihrem Status verschoben. Dies gilt auch für Angebote mit dem Status „Entwurf“, „Entfernt“ und „Vorschau“.
 
-| Angebotstyp <img src="" width=150px>| Nach Partner Center verschoben? <img src="" width=100px>| Nächste Schritte |
+| Angebotstyp | Nach Partner Center verschoben? | Nächste Schritte |
 | --- | --- | --- |
 | SaaS | Ja | Melden Sie sich bei Partner Center an, um neue Angebote zu erstellen und Angebote, die im Cloud-Partnerportal erstellt wurden, zu verwalten. Weitere Informationen finden Sie unter [Planen eines SaaS-Angebots im kommerziellen Marketplace](plan-saas-offer.md). |
 | Virtual Machine | Ja | Melden Sie sich bei Partner Center an, um neue Angebote zu erstellen und Angebote, die im Cloud-Partnerportal erstellt wurden, zu verwalten. Weitere Informationen finden Sie unter [Planen eines VM-Angebots](marketplace-virtual-machines.md). |
@@ -181,7 +181,7 @@ Sie können direkt im Partner Center-Portal die [Beendigung des Verkaufs eines A
 
 Die Cloud-Partnerportal-APIs sind in Partner Center integriert und funktionieren auch weiterhin. Bei der Umstellung auf Partner Center wurden kleinere Änderungen vorgenommen. Mit den Informationen in der Tabelle unten können Sie sicherstellen, dass Ihr Code auch in Partner Center funktioniert.
 
-| API <img src="" width=100px>| Beschreibung der Änderung: | Auswirkung |
+| API | Beschreibung der Änderung: | Auswirkung |
 | --- | --- | --- |
 | POST Publish, GoLive, Cancel | Bei migrierten Angeboten weist der Antwortheader ein anderes Format auf. Er funktioniert jedoch weiterhin auf dieselbe Weise und gibt einen relativen Pfad zum Abrufen des Vorgangsstatus an. | Beim Senden der entsprechenden POST-Anforderungen für ein Angebot weist der Adressheader je nach Migrationsstatus des Angebots eins von zwei Formaten auf: <ul><li>Nicht migrierte Angebote: `/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Migrierte Angebote: `/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li></ul>|
 | GET-Vorgang | Für Angebote, für die bisher in der Antwort das Feld „notification-email“ unterstützt wurde, wird dieses Feld entfernt und für migrierte Angebote nicht mehr zurückgegeben. | Bei migrierten Angeboten werden keine Benachrichtigungen mehr an die Liste der in den Anforderungen angegebenen E-Mail-Adressen gesendet. Stattdessen wird der API-Dienst an den Benachrichtigungs-E-Mail-Prozess in Partner Center angepasst, um E-Mails zu senden. Dies bedeutet, dass Benachrichtigungen über den Vorgangsstatus an die E-Mail-Adresse gesendet werden, die in Partner Center in den Kontoeinstellungen im Abschnitt mit den Kontaktinformationen zum Verkäufer festgelegt ist.<br><br>Stellen Sie sicher, dass die E-Mail-Adresse, die in Partner Center in den [Kontoeinstellungen](https://partner.microsoft.com/dashboard/account/management) im Abschnitt mit den Kontaktinformationen zum Verkäufer festgelegt ist, richtig angegeben ist, damit Sie Benachrichtigungen erhalten. |

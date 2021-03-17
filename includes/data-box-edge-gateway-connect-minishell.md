@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 10c1680afd6cd6673efe3fe9d2397a0dc6a04859
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 881d22592e57ef14885eedf2330c71ffa154a136
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738680"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102603362"
 ---
 Je nach Betriebssystem des Clients unterscheiden sich die Verfahren für Remoteverbindungen mit dem Gerät.
 
@@ -60,17 +60,17 @@ Befolgen Sie die folgenden Schritte, um eine Remoteverbindung von einem Windows-
 
 Gehen Sie auf dem Linux-Client, den Sie für die Verbindung verwenden, folgendermaßen vor:
 
-- [Installieren Sie die neueste Version von PowerShell Core für Linux](/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) von GitHub, um das Feature SSH-Remoting zu erhalten. 
+- [Installieren Sie die neueste Version von PowerShell Core für Linux](/powershell/scripting/install/installing-powershell-core-on-linux) von GitHub, um das Feature SSH-Remoting zu erhalten. 
 - [Installieren Sie nur das Paket `gss-ntlmssp` aus dem NTLM-Modul](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). Führen Sie bei Ubuntu-Clients den folgenden Befehl aus:
     - `sudo apt-get install gss-ntlmssp`
 
-Weitere Informationen finden Sie unter [PowerShell-Remoting über SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6).
+Weitere Informationen finden Sie unter [PowerShell-Remoting über SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core).
 
 Befolgen Sie die folgenden Schritte, um eine Remoteverbindung von einem NFS-Client aus herzustellen.
 
 1. Um eine PowerShell-Sitzung zu öffnen, geben Sie Folgendes ein:
 
-    `sudo pwsh`
+    `pwsh`
  
 2. Zum Herstellen einer Verbindung mit dem Remoteclient geben Sie Folgendes ein:
 

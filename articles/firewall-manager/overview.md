@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 01/12/2021
+ms.date: 03/16/2021
 ms.author: victorh
-ms.openlocfilehash: 63e2aac4c12ecc5d832cb037fda91bd2c6ad0bf1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 506799f94676be007cf94320e3958bd305ce85f0
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132442"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573454"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Was ist Azure Firewall Manager?
 
@@ -88,7 +88,6 @@ Für Azure Firewall Manager sind die folgenden Probleme bekannt:
 |Fehler beim Massenhinzufügen von IP-Adressen|Die Firewall des geschützten Hubs wird in einen Fehlerzustand versetzt, wenn Sie eine größere Zahl von öffentlichen IP-Adressen hinzufügen.|Fügen Sie öffentliche IP-Adressen in kleineren Schritten hinzu. Fügen Sie beispielsweise nur zehn gleichzeitig hinzu.|
 |DDoS Protection Standard wird bei geschützten virtuellen Hubs nicht unterstützt.|DDoS Protection Standard ist nicht in vWANs integriert.|Wird untersucht|
 |Aktivitätsprotokolle werden nicht vollständig unterstützt.|Firewallrichtlinie unterstützt derzeit keine Aktivitätsprotokolle.|Wird untersucht|
-|Konfigurieren von privaten SNAT-IP-Adressbereichen|[Einstellungen für den privaten IP-Bereich](../firewall/snat-private-range.md) werden ignoriert, wenn eine Azure Firewall-Richtlinie konfiguriert ist. Es wird das Azure Firewall-Standardverhalten verwendet, d. h., es erfolgt keine SNAT bei Netzwerkregeln, wenn sich die Ziel-IP-Adresse in einem privaten IP-Adressbereich gemäß [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) befindet.|Wird untersucht|
 |Bei der Migration der Firewall zur Verwendung der Firewallrichtlinie werden einige Firewalleinstellungen nicht migriert.|Bei der Migration zur Azure-Firewallrichtlinie werden Verfügbarkeitszonen und private SNAT-Adressen nicht migriert.|Wird untersucht| 
 
 ## <a name="next-steps"></a>Nächste Schritte

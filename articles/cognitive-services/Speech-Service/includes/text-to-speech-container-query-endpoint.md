@@ -8,20 +8,20 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 7e5ea8dcddce31a414d983d14fba483eb388d5d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a29244745b154aa81997813fcf4e1457f599270
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334673"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103622323"
 ---
 Der Container stellt [REST-basierte Endpunkt-APIs](../rest-text-to-speech.md) bereit. Es gibt viele [Beispielquellcodeprojekte](https://github.com/Azure-Samples/Cognitive-Speech-TTS) für Plattform-, Framework- und Sprachvarianten.
 
-Mit den Containern für die Standard- oder Neuronalsprachsynthese sollten Sie sich auf das Gebietsschema und die Sprache des heruntergeladenen Imagetags verlassen. Wenn Sie z. B. das `latest`-Tag heruntergeladen haben, ist das Standardgebietsschema `en-US` und `AriaRUS` die Stimme. Das `{VOICE_NAME}`-Argument wäre dann [`en-US-AriaRUS`](../language-support.md#standard-voices). Betrachten Sie das folgende SSML-Beispiel:
+Mit den Containern für die Standard- oder Neuronalsprachsynthese sollten Sie sich auf das Gebietsschema und die Sprache des heruntergeladenen Imagetags verlassen. Wenn Sie z. B. das `latest`-Tag heruntergeladen haben, ist das Standardgebietsschema `en-US` und `AriaNeural` die Stimme. Das `{VOICE_NAME}`-Argument wäre dann [`en-US-AriaNeural`](../language-support.md#neural-voices). Betrachten Sie das folgende SSML-Beispiel:
 
 ```xml
 <speak version="1.0" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-AriaNeural">
         This text will get converted into synthesized speech.
     </voice>
 </speak>

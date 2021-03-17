@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain-Dienst – Übersicht
 description: Übersicht über Azure Blockchain Service
-ms.date: 01/04/2021
+ms.date: 03/15/2021
 ms.topic: overview
-ms.reviewer: ravastra
-ms.openlocfilehash: 15d1126a98a4d3194a256ed07de3918cb066a4e2
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.reviewer: patricka
+ms.openlocfilehash: 035e2c1df5912f291ad241ade25361f9cc098b22
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963877"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573624"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Was ist der Azure Blockchain-Dienst?
 
@@ -19,7 +19,7 @@ Der Azure Blockchain-Dienst ist ein vollständig verwalteter Ledger-Dienst, der 
 * Integrierte Konsortiumsverwaltung
 * Entwickeln von Smart Contracts mit vertrauten Entwicklungstools
 
-Der Azure Blockchain-Dienst unterstützt mehrere Ledger-Protokolle. Derzeit wird der Ethereum-Ledger [Quorum](https://www.goquorum.com/) mithilfe des [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)-Konsensmechanismus (Istanbul Byzantine Fault Tolerance) unterstützt.
+Der Azure Blockchain-Dienst unterstützt mehrere Ledger-Protokolle. Derzeit wird der Ethereum-Ledger [Quorum](https://www.goquorum.com/) mithilfe des [IBFT](https://docs.goquorum.consensys.net/en/stable/Concepts/Consensus/IBFT/)-Konsensmechanismus (Istanbul Byzantine Fault Tolerance) unterstützt.
 
 Diese Funktionen erfordern fast keine Administration und werden alle ohne zusätzliche Kosten bereitgestellt. Sie können sich auf die Entwicklung von Anwendungen und Geschäftslogik konzentrieren, anstatt Zeit und Ressourcen für die Verwaltung virtueller Computer und Infrastrukturen aufzuwenden. Darüber hinaus können Sie Ihre Anwendung weiterhin mit den Open-Source-Tools und der Plattform Ihrer Wahl entwickeln, um Ihre Lösung bereitzustellen, ohne dass Sie sich dafür neue Fähigkeiten aneignen müssen.
 

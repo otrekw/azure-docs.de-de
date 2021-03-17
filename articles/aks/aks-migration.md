@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 5881d03603002cc8d5bef1680083f6b4145bc77f
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 19de94db517afb2a8eeb855e76f2381096f8d7c0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526686"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609106"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrieren zu Azure Kubernetes Service (AKS)
 
@@ -114,7 +114,7 @@ Die Migration von zustandslosen Anwendung ist der einfachste Fall. Wenden Sie Ih
 Planen Sie die Migration von zustandsbehafteten Anwendungen sorgfältig, um Datenverlust oder eine unerwartete Downtime zu vermeiden.
 
 Wenn Sie Azure Files verwenden, können Sie die Dateifreigabe als Volume in den neuen Cluster einbinden:
-* [Einbinden statischer Azure Files-Instanzen als Volume](./azure-files-volume.md#mount-the-file-share-as-a-volume)
+* [Einbinden statischer Azure Files-Instanzen als Volume](./azure-files-volume.md#mount-file-share-as-an-persistent-volume)
 
 Wenn Sie Azure Managed Disks verwenden, können Sie den Datenträger nur einbinden, wenn er nicht an einen virtuellen Computer angefügt ist:
 * [Einbinden statischer Azure Disk-Instanzen als Volume](./azure-disk-volume.md#mount-disk-as-volume)

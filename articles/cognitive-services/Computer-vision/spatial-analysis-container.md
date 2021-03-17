@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 9989c6ea6b75203d43c37854caef7fdcbc321779
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 1a107f812ceb46649126bdbefcf3b828e1938ff3
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102519026"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612897"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installieren und Ausführen des Containers für räumliche Analyse (Vorschau)
 
@@ -306,7 +306,7 @@ Installieren Sie das Release 1.0.9:
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-Registrieren Sie den Hostcomputer als Nächstes als IoT Edge-Gerät auf Ihrer IoT Hub-Instanz, indem Sie eine [Verbindungszeichenfolge](../../iot-edge/how-to-register-device.md?view=iotedge-2018-06) verwenden.
+Registrieren Sie den Hostcomputer als Nächstes als IoT Edge-Gerät auf Ihrer IoT Hub-Instanz, indem Sie eine [Verbindungszeichenfolge](../../iot-edge/how-to-register-device.md) verwenden.
 
 Sie müssen das IoT Edge-Gerät mit Ihrer Azure IoT Hub-Instanz verbinden. Sie müssen die Verbindungszeichenfolge von dem IoT Edge-Gerät kopieren, das Sie weiter oben erstellt haben. Alternativ können Sie auch den unten angegebenen Befehl über die Azure CLI ausführen.
 
@@ -468,7 +468,7 @@ Installieren Sie das Release 1.0.9:
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-Registrieren Sie die VM als nächstes als IoT Edge-Gerät auf Ihrer IoT Hub-Instanz, indem Sie eine [Verbindungszeichenfolge](../../iot-edge/how-to-register-device.md?view=iotedge-2018-06) verwenden.
+Registrieren Sie die VM als nächstes als IoT Edge-Gerät auf Ihrer IoT Hub-Instanz, indem Sie eine [Verbindungszeichenfolge](../../iot-edge/how-to-register-device.md) verwenden.
 
 Sie müssen das IoT Edge-Gerät mit Ihrer Azure IoT Hub-Instanz verbinden. Sie müssen die Verbindungszeichenfolge von dem IoT Edge-Gerät kopieren, das Sie weiter oben erstellt haben. Alternativ können Sie auch den unten angegebenen Befehl über die Azure CLI ausführen.
 

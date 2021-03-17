@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 05447f41ca891adfe14533a74dfedf153e3c5773
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 0cccf45037320b476b1a44cafa8074bacadacbc8
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102698"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103600948"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
@@ -71,7 +71,7 @@ Wählen Sie die gewünschte Quelle für den Anspruch `NameIdentifier` (oder Name
 |------|-------------|
 | Email | E-Mail-Adresse des Benutzers |
 | userprincipalName | Benutzerprinzipalname (User Principal Name, UPN) des Benutzers |
-| onpremisessamaccount | Der SAM-Kontoname der aus der lokalen Azure AD-Instanz synchronisiert wurde. |
+| onpremisessamaccountname | Der SAM-Kontoname der aus der lokalen Azure AD-Instanz synchronisiert wurde. |
 | objectid | Objekt-ID des Benutzers in Azure AD |
 | employeeid | Mitarbeiter-ID des Benutzers |
 | Verzeichniserweiterungen | Verzeichniserweiterungen, die [über die Azure AD Connect-Synchronisierung aus dem lokalen Active Directory synchronisiert wurden](../hybrid/how-to-connect-sync-feature-directory-extensions.md). |

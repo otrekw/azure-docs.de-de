@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1ca526b7ecbe20a54ec115521cdfbc93c713e0da
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0acb882410d103cf6f6c34bbecf2006094437b04
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360053"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634684"
 ---
 # <a name="input-metadata"></a>Eingabemetadaten
 
@@ -39,9 +39,7 @@ Sie finden das Beispiel eines JSON-Schemas am Ende dieses Artikels.
 Enthält eine Sammlung der AssetFile-Elemente für den Codierungsauftrag.  
 
 > [!NOTE]
-> Die folgenden vier untergeordneten Elemente müssen als Sequenz angezeigt werden.  
-> 
-> 
+> Die folgenden vier untergeordneten Elemente müssen als Sequenz angezeigt werden.
 
 | Name  | BESCHREIBUNG |
 | --- | --- | 
@@ -51,7 +49,7 @@ Enthält eine Sammlung der AssetFile-Elemente für den Codierungsauftrag.
 
 ### <a name="other-child-elements"></a>Andere untergeordnete Elemente
 
-| Name | BESCHREIBUNG |
+| Name | Beschreibung |
 | --- | --- |
 | **Name**<br />Erforderlich |Name der Objektdatei <br /><br />Beispiel: `"Name": "Ignite-short.mp4"` |
 | **URI**<br />Erforderlich |Die URL, unter der sich das Eingabeobjekt befindet. Um das Eingabeobjekt zu bestimmen, zu dem das Ausgabeobjekt gehört, verwenden Sie das Feld `Uri` anstelle der ID.|
@@ -67,7 +65,7 @@ Enthält eine Sammlung der AssetFile-Elemente für den Codierungsauftrag.
 
 | Name | BESCHREIBUNG |
 | --- | --- |
-| **FourCC**<br />Erforderlich |FourCC-Code des Videocodecs, der von ffmpeg gemeldet wird.<br /><br />Beispiel: `"FourCC": "avc1"` |
+| **FourCC**<br />Erforderlich |FourCC-Code des Videocodecs, der von ffmpeg gemeldet wird.<br /><br />Beispiel: `"FourCC": "avc1" | "hev1" | "hvc1"` |
 | **Profil** |Profil der Videospur <br /><br />Beispiel: `"Profile": "Main"`|
 | **Level** |Ebene der Videospur <br /><br />Beispiel: `"Level": "3.2"`|
 | **PixelFormat** |Pixelformat der Videospur <br /><br />Beispiel: `"PixelFormat": "yuv420p"`|
@@ -82,9 +80,9 @@ Enthält eine Sammlung der AssetFile-Elemente für den Codierungsauftrag.
 | **HasBFrames** |Videospuranzahl von B-Bildern <br /><br />Beispiel: `"HasBFrames": 2`|
 | **Metadaten** |Generische Schlüssel-Wert-Zeichenfolgen, die für verschiedene Informationen verwendet werden können. <br />Das vollständige Beispiel finden Sie am Ende des Artikels. |
 | **Id**<br />Erforderlich |Nullbasierter Index dieser Audio- oder Videospur.<br /><br /> Diese **ID** ist nicht unbedingt die „TrackID“, die in einer MP4-Datei verwendet wird. <br /><br />Beispiel: `"Id": 2`|
-| **Codec** |Codeczeichenfolge der Videospur <br /><br />Beispiel: `"Codec": "h264"`|
+| **Codec** |Codeczeichenfolge der Videospur <br /><br />Beispiel: `"Codec": "h264 | hev1"`|
 | **CodecLongName** |Langer Name des Audio- oder Videospurcodecs <br /><br />Beispiel: `"CodecLongName": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"`|
-| **Codec** |Codeczeichenfolge der Videospur <br /><br />Beispiel: `"Codec": "h264"`|
+| **Codec** |Codeczeichenfolge der Videospur <br /><br />Beispiel: `"Codec": "h264 | hev1"`|
 | **TimeBase**<br />Erforderlich |Gibt die Zeitbasis an.<br /><br />Beispiel: `"TimeBase": "1/30000"`|
 | **NumberOfFrames** |Anzahl von Bildern (für Videospuren) <br /><br />Beispiel: `"NumberOfFrames": 2107`|
 | **StartTime** |Gibt die Startzeit des Titels an.<br /><br />Beispiel: `"StartTime": "PT0.033S"` |

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 54b92c24b5a50ef1674dcb47df555b27259a350b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9f858549f36d196c6412aec549d0ab2e2d864145
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393852"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417670"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Problembehandlung bei Leistungsproblemen mit Azure-Dateifreigaben
 
@@ -39,7 +39,8 @@ Wenn Sie überprüfen möchten, ob Ihre Freigabe gerade gedrosselt wird, können
     Bei Standard-Dateifreigaben werden die folgenden Antworttypen protokolliert, wenn eine Anforderung gedrosselt wird:
 
     - SuccessWithThrottling
-    - ClientThrottlingError
+    - SuccessWithShareIopsThrottling
+    - ClientShareIopsThrottlingError
 
     Bei Premium-Dateifreigaben werden die folgenden Antworttypen protokolliert, wenn eine Anforderung gedrosselt wird:
 
@@ -50,7 +51,7 @@ Wenn Sie überprüfen möchten, ob Ihre Freigabe gerade gedrosselt wird, können
     - ClientShareIngressThrottlingError
     - ClientShareIopsThrottlingError
 
-    Weitere Informationen zu den einzelnen Antworttypen finden Sie unter [Metrikdimensionen](https://docs.microsoft.com/azure/storage/files/storage-files-monitoring-reference#metrics-dimensions).
+    Weitere Informationen zu den einzelnen Antworttypen finden Sie unter [Metrikdimensionen](./storage-files-monitoring-reference.md#metrics-dimensions).
 
     ![Der Screenshot der Metrikoptionen für Premium-Dateifreigaben zeigt einen Eigenschaftsfilter „Antworttyp“.](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
@@ -244,7 +245,8 @@ Zur Überprüfung können Sie die Azure-Metriken im Portal folgendermaßen verwe
     Wählen Sie für Standard-Dateifreigaben die folgenden Antworttypen aus:
 
     - SuccessWithThrottling
-    - ClientThrottlingError
+    - SuccessWithShareIopsThrottling
+    - ClientShareIopsThrottlingError
 
     Wählen Sie für Premium-Dateifreigaben die folgenden Antworttypen aus:
 
@@ -258,13 +260,12 @@ Zur Überprüfung können Sie die Azure-Metriken im Portal folgendermaßen verwe
    > [!NOTE]
    > Wenn die Antworttypen nicht in der Dropdownliste **Dimensionswerte** aufgeführt werden, bedeutet dies, dass die Ressource nicht gedrosselt wurde. Wählen Sie zum Hinzufügen der Dimensionswerte neben der Dropdownliste **Dimensionswerte** die Option **Benutzerdefinierten Wert hinzufügen** aus, geben Sie den Typ ein (z. B. **SuccessWithThrottling**), und wählen Sie **OK** aus. Wiederholen Sie diese Schritte zum Hinzufügen aller betreffenden Antworttypen für die Dateifreigabe.
 
-8. Klicken Sie auf die Dropdownliste **Dimensionsname**, und wählen Sie **Dateifreigabe** aus.
-9. Klicken Sie auf die Dropdownliste **Dimensionswerte**, und wählen Sie die Dateifreigaben aus, für die Sie eine Warnung einrichten möchten.
-
+8. Klicken Sie bei **Premium-Dateifreigaben** auf die Dropdownliste **Dimensionsname**, und wählen Sie **Dateifreigabe** aus. Springen Sie bei **Standarddateifreigaben** zu **Schritt #10**.
 
    > [!NOTE]
-   > Handelt es sich bei der Dateifreigabe um eine Standarddateifreigabe, wählen Sie **Alle aktuellen und zukünftigen Werte** aus. Die Dateifreigaben werden in der Dropdownliste mit den Dimensionswerten nicht aufgeführt, da für Standarddateifreigaben keine freigabespezifischen Metriken zur Verfügung stehen. Die Drosselung von Warnungen für Standarddateifreigaben wird ausgelöst, wenn eine Dateifreigabe im Speicherkonto gedrosselt wird und die Warnung nicht identifiziert, welche Freigabe gedrosselt wurde. Da Metriken pro Freigabe für Standarddateifreigaben nicht verfügbar sind, wird empfohlen, dass es eine einzige Dateifreigabe pro Speicherkonto gibt.
+   > Wenn die Dateifreigabe eine Standarddateifreigabe ist, wird/werden die Dateifreigabe(n) in der Dimension **Dateifreigabe** nicht aufgeführt, weil Metriken pro Freigabe für Standarddateifreigaben nicht verfügbar sind. Die Drosselung von Warnungen für Standarddateifreigaben wird ausgelöst, wenn eine Dateifreigabe im Speicherkonto gedrosselt wird und die Warnung nicht identifiziert, welche Freigabe gedrosselt wurde. Da Metriken pro Freigabe für Standarddateifreigaben nicht verfügbar sind, wird empfohlen, dass es eine einzige Dateifreigabe pro Speicherkonto gibt.
 
+9. Klicken Sie auf die Dropdownliste **Dimensionswerte**, und wählen Sie die Dateifreigaben aus, für die Sie eine Warnung einrichten möchten.
 10. Definieren Sie die **Warnungsparameter** (Schwellenwert, Operator, Aggregationsgranularität und Häufigkeit der Auswertung), und klicken Sie auf **Fertig**.
 
     > [!TIP]

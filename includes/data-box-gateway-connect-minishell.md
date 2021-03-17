@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: alkohli
-ms.openlocfilehash: c0ba6aee0e23dc0c68348c59c8ca8acdcd606435
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f9707ab48d64ede2e796675eb3a0a6e7820c7073
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900935"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102603366"
 ---
 Je nach Betriebssystem des Clients unterscheiden sich die Verfahren zum Herstellen von Remoteverbindungen mit dem Gerät.
 
@@ -58,17 +58,17 @@ Befolgen Sie die folgenden Schritte, um eine Remoteverbindung von einem Windows-
 
 Gehen Sie auf dem Linux-Client, den Sie für die Verbindung verwenden, folgendermaßen vor:
 
-- [Installieren Sie die neueste Version von PowerShell Core für Linux](/powershell/scripting/install/installing-powershell-core-on-linux?preserve-view=true&view=powershell-6) von GitHub, um das Feature SSH-Remoting zu erhalten. 
+- [Installieren Sie die neueste Version von PowerShell Core für Linux](/powershell/scripting/install/installing-powershell-core-on-linux) von GitHub, um das Feature SSH-Remoting zu erhalten. 
 - [Installieren Sie nur das Paket `gss-ntlmssp` aus dem NTLM-Modul](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). Führen Sie bei Ubuntu-Clients den folgenden Befehl aus:
     - `sudo apt-get install gss-ntlmssp`
 
-Weitere Informationen finden Sie unter [PowerShell-Remoting über SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?preserve-view=true&view=powershell-6).
+Weitere Informationen finden Sie unter [PowerShell-Remoting über SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core).
 
 Befolgen Sie die folgenden Schritte, um eine Remoteverbindung von einem NFS-Client aus herzustellen.
 
 1. Um eine PowerShell-Sitzung zu öffnen, geben Sie Folgendes ein:
 
-    `sudo pwsh`
+    `pwsh`
  
 2. Zum Herstellen einer Verbindung mit dem Remoteclient geben Sie Folgendes ein:
 

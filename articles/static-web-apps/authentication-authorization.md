@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e95cd313d341844eabf4f5c5feae8a8ca3dc9c2e
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: ab41a336c32a1827c23f4c4619f47dc294a4d2ea
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826548"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419285"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Authentifizierung und Autorisierung für Azure Static Web Apps (Vorschau)
 
@@ -95,7 +95,7 @@ Wenn der Benutzer in der Einladung auf den Link klickt, wird er aufgefordert, si
 1. Klicken Sie unter _Einstellungen_ auf **Rollenverwaltung**.
 1. Suchen Sie in der Liste nach dem Benutzer.
 1. Aktivieren Sie das Kontrollkästchen in der Zeile des Benutzers.
-1. Klicken Sie auf die Schaltfläche **Löschen** .
+1. Klicken Sie auf die Schaltfläche **Löschen**.
 
 Beachten Sie beim Entfernen eines Benutzers Folgendes:
 
@@ -145,19 +145,18 @@ Wenn Sie sich beispielsweise mit GitHub anmelden möchten, können Sie einen Anm
 
 Falls Sie mehr als einen Anbieter unterstützen möchten, müssen Sie auf Ihrer Website dafür jeweils einen anbieterspezifischen Link bereitstellen.
 
-Sie können eine [Routenregel](routes.md) verwenden, um einen Standardanbieter einer benutzerfreundlichen Route zuzuordnen, z. B. _/login_.
+Sie können eine [Routenregel](./configuration.md#routes) verwenden, um einen Standardanbieter einer benutzerfreundlichen Route zuzuordnen, z. B. _/login_.
 
 ```json
 {
   "route": "/login",
-  "serve": "/.auth/login/github"
+  "redirect": "/.auth/login/github"
 }
 ```
 
 ### <a name="post-login-redirect"></a>Umleitung nach der Anmeldung
 
 Wenn ein Benutzer nach der Anmeldung zu einer bestimmten Seite zurückgeleitet werden soll, geben Sie eine URL im `post_login_redirect_uri`-Abfragezeichenfolgenparameter an.
-
 
 ## <a name="logout"></a>Logout
 
@@ -167,12 +166,12 @@ Mit der Route `/.auth/logout` werden Benutzer von der Website abgemeldet. Sie k�
 <a href="/.auth/logout">Log out</a>
 ```
 
-Sie können eine [Routenregel](routes.md) verwenden, um eine benutzerfreundliche Route wie _/logout_ zuzuordnen.
+Sie können eine [Routenregel](./configuration.md#routes) verwenden, um eine benutzerfreundliche Route wie _/logout_ zuzuordnen.
 
 ```json
 {
   "route": "/logout",
-  "serve": "/.auth/logout"
+  "redirect": "/.auth/logout"
 }
 ```
 

@@ -3,7 +3,7 @@ title: Erweiterte Codierung mit dem Media Encoder Premium Workflow | Microsoft D
 description: Erfahren Sie, wie Sie eine Codierung mit dem Media Encoder Premium Workflow durchführen. Die Codebeispiele sind in C# geschrieben und verwenden das Media Services SDK für .NET.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7f3efa23ad0b5e79e84a2436aaf56b67a805d05f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b58a1ae2a20afb357f6363077e70b692256d2ce7
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017232"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013498"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Erweiterte Codierung mit dem Media Encoder Premium Workflow
 
@@ -35,7 +35,7 @@ Microsoft Azure Media Services stellt den **Media Encoder Premium Workflow** -Me
 
 In den folgenden Themen erhalten Sie nähere Informationen zum **Media Encoder Premium Workflow**:
 
-* [Von Media Encoder Premium Workflow unterstützte Formate](./media-services-encode-asset.md) : Erläutert die von **Media Encoder Premium Workflow**unterstützten Formate.
+* [Von Media Encoder Premium Workflow unterstützte Formate](./media-services-encode-asset.md) : Erläutert die von **Media Encoder Premium Workflow** unterstützten Formate.
 * Im Abschnitt [Azure On-Demand Media Encoder – Übersicht und Vergleich](media-services-encode-asset.md) werden die Codierungsfunktionen von **Media Encoder Premium Workflow** und **Media Encoder Standard** verglichen.
 
 Dieser Artikel veranschaulicht die Codierung mit **Media Encoder Premium Workflow** unter Verwendung von .NET.
@@ -52,7 +52,7 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
 
 ## <a name="encoding-example"></a>Codierungsbeispiel
 
-Das folgende Beispiel zeigt, wie Sie mit dem **Media Encoder Premium Workflow**eine Codierung durchführen.
+Das folgende Beispiel zeigt, wie Sie mit dem **Media Encoder Premium Workflow** eine Codierung durchführen.
 
 Es werden folgende Schritte ausgeführt:
 

@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d968fb066e68fe1bb6986c63ce750c5de5c98cf9
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 0b7013979199eefa873a651d99e87dc8b2c47856
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633177"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201601"
 ---
 # <a name="monitor-module-twins"></a>Überwachen von Modulzwillingen
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Modulzwillinge ermöglichen in Azure IoT Hub die Überwachung der Konnektivität und Integrität ihrer IoT Edge-Bereitstellungen. Modulzwillinge speichern nützliche Informationen über die Leistung Ihrer laufenden Module in Ihrem IoT-Hub. Das [IoT Edge-Agent](iot-edge-runtime.md#iot-edge-agent)- und [IoT Edge-Hub](iot-edge-runtime.md#iot-edge-hub)-Runtimemodul verwalten jeweils ihre Modulzwillinge (`$edgeAgent` und `$edgeHub`), genauer:
 

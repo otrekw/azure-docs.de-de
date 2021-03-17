@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 49d9b91df896646da7bf36e077d9f3c9187137dd
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b41bcda7381e5811ef1e1f91c102d8c85f50b3b5
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021795"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103196911"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>Debuggen von Fehlern beim Ausführen einer Anwendung für benutzerdefinierte Befehle
 
@@ -28,7 +28,7 @@ Wenn Sie Ihre Anwendung für benutzerdefinierte Befehle über eine [Clientanwend
 | Fehlercode | Details |
 | ------- | -------- |
 | [401](#error-401) | AuthenticationFailure: Authentifizierungsfehler beim WebSocket-Upgrade. |
-| [1002](#error-1002)] | Vom Server wurde Statuscode '404' zurückgegeben, als Statuscode '101' erwartet wurde. |
+| [1002](#error-1002) | Vom Server wurde Statuscode '404' zurückgegeben, als Statuscode '101' erwartet wurde. |
 
 ### <a name="error-401"></a>Fehler 401
 - Die in der Clientanwendung angegebene Region stimmt nicht mit der Region der Anwendung für benutzerdefinierte Befehle überein.

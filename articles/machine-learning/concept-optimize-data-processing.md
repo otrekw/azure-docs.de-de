@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
 ms.custom: data4ml
-ms.openlocfilehash: 77edac14ef13901725eed656835e1a937d4f4ddf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 5ab7bac635a0b670087800212727b0d2e2b96934
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360818"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472213"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Optimieren der Datenverarbeitung mit Azure Machine Learning
 
@@ -86,8 +86,6 @@ Wenn Sie mit `Pandas` vertraut sind| `Modin`- oder `Dask`-Datenrahmen
 Wenn Sie `Spark` bevorzugen | `PySpark`
 Für Daten kleiner als 1 GB | `Pandas` lokal **oder** eine Azure Machine Learning-Remotecompute-Instanz
 Für Daten größer als 10 GB| Wechsel zu einem Cluster unter Verwendung von `Ray`, `Dask` oder `Spark`
-
-Sie können `Dask`-Cluster in Azure ML-Computeclustern mit dem Paket [dask-cloudprovider](https://cloudprovider.dask.org/en/latest/#azure) erstellen. Oder Sie können `Dask` lokal auf einer Compute-Instanz ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
