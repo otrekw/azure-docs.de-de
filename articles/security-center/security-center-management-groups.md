@@ -1,26 +1,22 @@
 ---
-title: Erzielen der mandantenweiten Sichtbarkeit für Azure Security Center | Microsoft-Dokumentation
-description: In diesem Artikel wird erläutert, wie Sie Ihren Sicherheitsstatus bedarfsorientiert verwalten, indem Sie Richtlinien auf alle Abonnements anwenden, die mit Ihrem Azure Active Directory-Mandanten verknüpft sind.
+title: Organisieren von Abonnements in Verwaltungsgruppen und Zuweisen von Rollen zu Benutzern für Azure Security Center
+description: Erfahren Sie, wie Sie Ihre Azure-Abonnements in Verwaltungsgruppen im Azure Security Center organisieren und Benutzern in Ihrer Organisation Rollen zuweisen
 services: security-center
 documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: b85c0e93-9982-48ad-b23f-53b367f22b10
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/04/2021
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 13cbc2e9451221fef951eb6fac4c6b2772275122
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 3508d508a19d6ce7fba4f3ef3a4fa545a58a167d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556426"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099385"
 ---
-# <a name="organize-management-groups-subscriptions-and-tenant-wide-visibility"></a>Organisieren von Verwaltungsgruppen, Abonnements und mandantenweiter Sichtbarkeit
+# <a name="organize-subscriptions-into-management-groups-and-assign-roles-to-users"></a>Organisieren von Abonnements in Verwaltungsgruppen und Zuweisen von Rollen zu Benutzern
 
 In diesem Artikel wird erläutert, wie Sie den Sicherheitsstatus Ihrer Organisation bedarfsorientiert verwalten, indem Sie Sicherheitsrichtlinien auf alle Azure-Abonnements anwenden, die mit Ihrem Azure Active Directory-Mandanten verknüpft sind.
 
@@ -79,65 +75,6 @@ Sie können Abonnements der von Ihnen erstellten Verwaltungsgruppe hinzufügen.
    > Verwaltungsgruppen können sowohl Abonnements als auch untergeordnete Verwaltungsgruppen enthalten. Wenn Sie einem Benutzer eine Azure-Rolle für die übergeordnete Verwaltungsgruppe zuweisen, wird der Zugriff von den Abonnements der untergeordneten Verwaltungsgruppe geerbt. Richtlinien, die für die übergeordnete Verwaltungsgruppe festgelegt werden, werden ebenfalls von den untergeordneten Elementen geerbt. 
 
 
-## <a name="grant-tenant-wide-permissions-to-yourself"></a>Erteilen von mandantenweiten Berechtigungen an sich selbst
-
-Ein Benutzer mit der Azure Active Directory-Rolle **Globaler Administrator** hat möglicherweise mandantenweite Aufgaben, aber keine Azure-Berechtigungen zum Anzeigen der organisationsweiten Informationen in Azure Security Center. Eine Berechtigungserhöhung ist erforderlich, da Azure AD-Rollenzuweisungen keinen Zugriff auf Azure-Ressourcen gewähren. 
-
-> [!TIP]
-> Weitere Informationen zur Berechtigungserhöhung für die Rolle „Globaler Administrator“ finden Sie unter [Erhöhen des Zugriffs zur Verwaltung aller Azure-Abonnements und Verwaltungsgruppen](../role-based-access-control/elevate-access-global-admin.md).
-
-So weisen Sie sich selbst Berechtigungen auf Mandantenebene zu:
-
-1. Wenn Ihre Organisation den Ressourcenzugriff über [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md) oder ein anderes PIM-Tool verwaltet, muss die Rolle des globalen Administrators für den Benutzer, der nachfolgende Prozedur ausführt, aktiv sein.
-
-1. Öffnen Sie als globaler Administrator ohne Zuweisung in der Stammverwaltungsgruppe des Mandanten die Security Center-Seite **Übersicht**, und klicken Sie im Banner auf den Link **Mandantenweite Sichtbarkeit**. 
-
-    :::image type="content" source="media/security-center-management-groups/enable-tenant-level-permissions-banner.png" alt-text="Aktivieren von mandantenweiten Berechtigungen in Azure Security Center":::
-
-1. Wählen Sie die neue Azure-Rolle aus, die Sie zuweisen möchten. 
-
-    :::image type="content" source="media/security-center-management-groups/enable-tenant-level-permissions-form.png" alt-text="Formular zum Definieren der Berechtigungen auf Mandantenebene, die dem Benutzer zugewiesen werden sollen":::
-
-    > [!TIP]
-    > Im Allgemeinen ist die Rolle „Sicherheitsadministrator“ erforderlich, um Richtlinien auf der Stammebene anzuwenden, während „Sicherheitsleseberechtigter“ ausreicht, um Sichtbarkeit für die Mandantenebene bereitzustellen. Weitere Informationen zu den Berechtigungen, die durch diese Rollen gewährt werden, finden Sie in der [Beschreibung der integrierten Rolle „Sicherheitsadministrator“](../role-based-access-control/built-in-roles.md#security-admin) bzw. in der [Beschreibung der integrierten Rolle „Sicherheitsleseberechtigter“](../role-based-access-control/built-in-roles.md#security-reader).
-    >
-    > Informationen zu den Unterschieden zwischen diesen Rollen in Bezug auf Security Center finden Sie in der Tabelle unter [Rollen und zulässige Aktionen](security-center-permissions.md#roles-and-allowed-actions).
-
-    Eine organisationsweite Ansicht lässt sich erzielen, indem Sie Rollen auf Ebene der Stammverwaltungsgruppe des Mandanten zuweisen.  
-
-1. Melden Sie sich vom Azure-Portal ab und dann wieder an.
-
-1. Wenn Sie erhöhte Zugriffsrechte besitzen, können Sie Azure Security Center öffnen bzw. aktualisieren, um sicherzustellen, dass die Sichtbarkeit für alle Abonnements Ihres Azure AD-Mandanten erzielt wurde. 
-
-
-## <a name="request-tenant-wide-permissions-when-yours-are-insufficient"></a>Anfordern mandantenweiter Berechtigungen, wenn die eigenen Berechtigungen nicht ausreichen
-
-Wenn Sie sich bei Security Center anmelden und ein Banner sehen, das Sie darüber informiert, dass Ihre Ansicht eingeschränkt ist, können Sie durchklicken, um eine Anforderung an den globalen Administrator Ihrer Organisation zu senden. In die Anforderung können Sie die Rolle einschließen, deren Zuweisung Sie wünschen, und der globale Administrator entscheidet, welche Rolle gewährt wird. 
-
-Der globale Administrator entscheidet, ob er diese Anforderungen annimmt oder ablehnt. 
-
-> [!IMPORTANT]
-> Sie können nur alle sieben Tage eine Anforderung übermitteln.
-
-So fordern Sie von ihrem globalen Administrator erhöhte Berechtigungen an:
-
-1. Öffnen Sie Azure Security Center über das Azure-Portal.
-
-1. Wenn das Banner „Sie sehen eingeschränkte Informationen.“ angezeigt wird, wählen Sie es aus.
-
-    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="Banner mit der Information, dass der Benutzer mandantenweite Berechtigungen anfordern kann":::
-
-1. Wählen Sie im ausführlichen Anforderungsformular die gewünschte Rolle und die Begründung aus, warum Sie diese Berechtigungen benötigen.
-
-    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-details.png" alt-text="Detailseite zum Anfordern mandantenweiter Berechtigungen von ihrem globalen Azure-Administrator":::
-
-1. Wählen Sie **Zugriff anfordern** aus.
-
-    Eine E-Mail wird an den globalen Administrator gesendet. Die E-Mail enthält einen Link zu Security Center, wo die Anforderung genehmigt oder abgelehnt werden kann.
-
-    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-email.png" alt-text="Bezüglich neuer Berechtigungen an den globalen Administrator gesendete E-Mail":::
-
-    Sobald der globale Administrator **Anforderung überprüfen** auswählt und den Prozess abschließt, wird die Entscheidung per E-Mail an den anfordernden Benutzer gesendet. 
 
 ## <a name="assign-azure-roles-to-other-users"></a>Zuweisen von Azure-Rollen zu anderen Benutzern
 
@@ -195,6 +132,6 @@ Nachdem den Benutzern die Azure-Rollen zugewiesen wurden, sollte der Mandantenad
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel wurde beschrieben, wie Sie mandantenweite Sichtbarkeit für Azure Security Center erzielen. Verwandte Informationen
+In diesem Artikel haben Sie gelernt, wie Sie Abonnements in Verwaltungsgruppen organisieren und Benutzern Rollen zuweisen. Verwandte Informationen
 
 - [Berechtigungen in Azure Security Center](security-center-permissions.md)

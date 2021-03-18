@@ -2,23 +2,18 @@
 title: Integrieren von Sicherheitslösungen in Azure Security Center | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Partner in Azure Security Center integriert werden, um die allgemeine Sicherheit Ihrer Azure-Ressourcen zu verbessern.
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
 ms.topic: conceptual
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/10/2020
 ms.author: memildin
-ms.openlocfilehash: ecfb4bdbd523dd1514333a2185186eab0a7e4aaa
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ff23a1fa4b631fc10163f22d94ccdbd8cbe657c2
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032676"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099249"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrieren von Sicherheitslösungen in Azure Security Center
 Dieses Dokument unterstützt Sie bei der Verwaltung von bereits mit Azure Security Center verbundenen Sicherheitslösungen sowie beim Hinzufügen neuer Lösungen.
@@ -39,7 +34,7 @@ Weitere Informationen zur Integration von Qualys-Scantools für Sicherheitsrisik
 
 Azure Security Center bietet auch eine Sicherheitsrisikoanalyse für Folgendes:
 
-* SQL-Datenbanken – siehe [Untersuchen der Berichte zur Sicherheitsrisikobewertung im Dashboard „Sicherheitsrisikobewertung“](defender-for-sql-usage.md#explore-vulnerability-assessment-reports)
+* SQL-Datenbanken – siehe [Untersuchen der Berichte zur Sicherheitsrisikobewertung im Dashboard „Sicherheitsrisikobewertung“](defender-for-sql-on-machines-vulnerability-assessment.md#explore-vulnerability-assessment-reports)
 * Azure Container Registry-Images – siehe [Verwenden von Azure Defender für Containerregistrierungen zum Überprüfen Ihrer Images auf Sicherheitsrisiken](defender-for-container-registries-usage.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>Informationen zur Integration von Sicherheitslösungen
@@ -88,8 +83,7 @@ Wählen Sie **ANZEIGEN** aus, um zusätzliche Informationen und Optionen anzuzei
 Security Center erkennt Sicherheitslösungen automatisch, die in Azure ausgeführt werden, aber nicht mit Security Center verbunden sind, und zeigt die Lösungen im Abschnitt **Ermittelte Lösungen** an. Zu diesen Lösungen gehören Azure-Lösungen wie [Azure AD Identity Protection](../active-directory/identity-protection/overview-identity-protection.md) und Partnerlösungen.
 
 > [!NOTE]
-> Aktivieren Sie **Azure Defender-** auf Abonnementebene für das Feature „Ermittelte Lösungen“. Weitere Informationen zu den Tarifen finden Sie unter [Preise](security-center-pricing.md).
->
+> Aktivieren Sie **Azure Defender-** auf Abonnementebene für das Feature „Ermittelte Lösungen“. Erfahren Sie mehr in [Schnellstart: Aktivieren von Azure Defender](enable-azure-defender.md).
 
 Wählen Sie unterhalb einer Lösung die Option **VERBINDEN**, um die Integration in Security Center durchzuführen und über Sicherheitswarnungen benachrichtigt zu werden.
 
@@ -103,7 +97,4 @@ Der Abschnitt **Datenquellen hinzufügen** enthält weitere verfügbare Datenque
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie Partnerlösungen in Security Center integrieren. Weitere Informationen finden Sie in den folgenden Artikeln:
-
-* [Fortlaufendes Exportieren von Security Center-Daten](continuous-export.md). Einrichten einer Integration in Azure Sentinel oder eine andere SIEM.
-* [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
+In diesem Artikel haben Sie erfahren, wie Sie Partnerlösungen in Security Center integrieren. Weitere Informationen dazu, wie Sie eine Integration mit Azure Sentinel oder einem anderen SIEM einrichten, finden Sie unter [Kontinuierlicher Export von Security Center-Daten](continuous-export.md).

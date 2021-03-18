@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
-ms.openlocfilehash: 1af1593074363673ff2e3f8bc804998ddd63d432
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 449eb1d65e0104e6c5c74a78901cf29c5aeb3e57
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564423"
+ms.locfileid: "102609089"
 ---
 # <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Vertrauenswürdiger Start für Azure-VMs (Vorschau)
 
@@ -40,7 +40,6 @@ Azure bietet den vertrauenswürdigen Start als nahtlose Möglichkeit zur Verbess
 
 **Größenunterstützung:** alle VM-Größen der [Generation 2](generation-2.md), mit folgenden Ausnahmen:
 
-- HBv3 
 - Lsv2-Reihe 
 - M-Serie 
 - Mv2-Serie 
