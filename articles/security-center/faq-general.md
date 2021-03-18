@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 061b190af6e66cf0c7e8095251a3ef77d9aaf247
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 3a8429d9dc6820b1f79c49d325872b61833f988d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341684"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095543"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Häufig gestellte Fragen – allgemeine Fragen zu Azure Security Center
 
@@ -46,10 +46,10 @@ Auf der Seite **Security Center – Übersicht** wird der Gesamtsicherheitsstatu
 
 
 
-## <a name="what-is-a-security-policy"></a>Was ist eine Sicherheitsrichtlinie?
-In einer Sicherheitsrichtlinie werden die Sicherheitsmechanismen definiert, die für Ressourcen in dem angegebenen Abonnement zu empfehlen sind. In Azure Security Center definieren Sie Richtlinien für Ihre Azure-Abonnements entsprechend den Sicherheitserfordernissen Ihres Unternehmens sowie dem Typ der Anwendungen oder der Vertraulichkeit der Daten in jedem Abonnement.
+## <a name="what-is-a-security-initiative"></a>Was ist eine Sicherheitsinitiative?
+In einer Sicherheitsinitiative werden die Sicherheitsmechanismen (Richtlinien) definiert, die für Ressourcen in dem angegebenen Abonnement zu empfehlen sind. In Azure Security Center weisen Sie Initiativen für Ihre Azure-Abonnements entsprechend den Sicherheitserfordernissen Ihres Unternehmens sowie dem Typ der Anwendungen oder der Vertraulichkeit der Daten in jedem Abonnement zu.
 
-Die Sicherheitsempfehlungen und -überwachung werden entsprechend den in Azure Security Center aktivierten Sicherheitsrichtlinien umgesetzt. Weitere Informationen zu Sicherheitsrichtlinien finden Sie unter [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md).
+Die Sicherheitsempfehlungen und -überwachung werden entsprechend den in Azure Security Center aktivierten Sicherheitsrichtlinien umgesetzt. Weitere Informationen finden Sie unter [Was sind Sicherheitsrichtlinien, -initiativen und -empfehlungen?](security-policy-concept.md)
 
 
 ## <a name="who-can-modify-a-security-policy"></a>Wie kann ich eine Sicherheitsrichtlinie ändern?

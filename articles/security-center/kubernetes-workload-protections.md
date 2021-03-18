@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: memildin
-ms.openlocfilehash: f024457ed9f20e6bab0852a53ab6a60ac85ed25a
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 6d0e660ecce1d45dab4d6003cdba391ba2eb4ee9
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546260"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095594"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Schützen Ihrer Kubernetes-Workloads
 
@@ -51,7 +51,7 @@ Azure Security Center enthält einige Empfehlungen, die verfügbar sind, wenn Si
 
 Installieren Sie zum Konfigurieren der Empfehlungen das **Azure Policy-Add-On für Kubernetes**. 
 
-- Sie können dieses Add-On auch automatisch bereitstellen, wie unter [Aktivieren der automatischen Bereitstellung von Erweiterungen](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions) erläutert. Wenn die automatische Bereitstellung für das Add-On auf „Ein“ festgelegt ist, wird die Erweiterung standardmäßig in allen vorhandenen und zukünftigen Clustern aktiviert (sofern diese die Add-On-Installationsanforderungen erfüllen).
+- Sie können dieses Add-On auch automatisch bereitstellen, wie unter [Aktivieren der automatischen Bereitstellung von Log Analytics-Agent und -Erweiterungen](security-center-enable-data-collection.md#auto-provision-mma) erläutert. Wenn die automatische Bereitstellung für das Add-On auf „Ein“ festgelegt ist, wird die Erweiterung standardmäßig in allen vorhandenen und zukünftigen Clustern aktiviert (sofern diese die Add-On-Installationsanforderungen erfüllen).
 
     :::image type="content" source="media/defender-for-kubernetes-usage/policy-add-on-auto-provision.png" alt-text="Verwenden des Security Center-Tools zur automatischen Bereitstellung zur Installation des Richtlinien-Add-Ons für Kubernetes":::
 

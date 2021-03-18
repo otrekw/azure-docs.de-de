@@ -1,44 +1,32 @@
 ---
 title: Arbeiten mit Sicherheitsrichtlinien | Microsoft-Dokumentation
 description: In diesem Artikel ist beschrieben, wie Sie mit Sicherheitsrichtlinien in Azure Security Center arbeiten.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
-ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 19128f0372f9a5bda0d16155167a507eccaf436a
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 6ecedc20cf6924a82b6b4640d3caa75bc5958de0
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986598"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101323"
 ---
 # <a name="manage-security-policies"></a>Verwalten von Sicherheitsrichtlinien
 
 In diesem Artikel wird beschrieben, wie Sicherheitsrichtlinien konfiguriert werden und wie Sie sie in Security Center anzeigen. 
 
-## <a name="introduction-to-security-policies"></a>Einführung in Sicherheitsrichtlinien
+## <a name="who-can-edit-security-policies"></a>Wer kann Sicherheitsrichtlinien bearbeiten?
 
-Eine Sicherheitsrichtlinie definiert die gewünschte Konfiguration Ihrer Workloads und trägt zur Erfüllung unternehmensbezogener oder gesetzlicher Sicherheitsanforderungen bei.
+Sie können Sicherheitsrichtlinien über das Azure Policy-Portal, über die REST-API oder über Windows PowerShell bearbeiten.
 
-Azure Security Center erstellt die Sicherheitsempfehlungen auf der Grundlage der ausgewählten Richtlinien. Security Center-Richtlinien basieren auf Richtlinieninitiativen, die in Azure Policy erstellt wurden. Sie können Ihre Richtlinien in [Azure Policy](../governance/policy/overview.md) konfigurieren und übergreifend für Verwaltungsgruppen und mehrere Abonnements festlegen.
+Security Center verwendet die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC). Hierbei werden integrierte Rollen bereitgestellt, die Sie Azure-Benutzern, -Gruppen und -Diensten zuweisen können. In Security Center werden den Benutzern nur Informationen zu den Ressourcen angezeigt, auf die sie Zugriff haben. Dies bedeutet, dass Benutzern die Rolle *Besitzer*, *Mitwirkender* oder *Leser* für das Abonnement der Ressource zugewiesen wird. Darüber hinaus gibt es noch zwei spezifische Security Center-Rollen:
 
-Security Center bietet die folgenden Optionen für die Arbeit mit Sicherheitsrichtlinien:
-
-* **Anzeigen und Bearbeiten der integrierten Standardrichtlinie**: Wenn Sie Security Center aktivieren, wird die Initiative mit dem Namen „Azure Security Benchmark“ (Azure Security-Vergleichstest) automatisch allen in Security Center registrierten Abonnements zugewiesen. Zum Anpassen dieser Initiative können Sie die einzelnen enthaltenen Richtlinien aktivieren bzw. deaktivieren. Sehen Sie sich die Liste der [integrierten Sicherheitsrichtlinien](./policy-reference.md) an, um die standardmäßig verfügbaren Optionen zu verstehen.
-
-* **Hinzufügen eigener benutzerdefinierter Richtlinien:** Wenn Sie die auf Ihr Abonnement angewandten Sicherheitsinitiativen anpassen möchten, können Sie dies in Security Center durchführen. Sie erhalten dann Empfehlungen, wenn Ihre Computer Ihre erstellten Richtlinien nicht einhalten. Anweisungen zum Erstellen und Zuweisen von benutzerdefinierten Richtlinien finden Sie unter [Verwenden von benutzerdefinierten Sicherheitsrichtlinien](custom-security-policies.md).
-
-* **Hinzufügen von Richtlinien für die Einhaltung gesetzlicher Bestimmungen:** Das Security Center-Dashboard für die Einhaltung gesetzlicher Bestimmungen zeigt den Status aller Bewertungen in Ihrer Umgebung im Zusammenhang mit einem bestimmten Standard oder einer Verordnung (z. B. Azure CIS, NIST SP 800-53 R4, SWIFT CSP CSCF-v2020). Weitere Informationen finden Sie unter [Verbessern der Einhaltung gesetzlicher Vorschriften](security-center-compliance-dashboard.md).
-
+- **Sicherheitsleseberechtigter**: Verfügt über Rechte zum Anzeigen von Security Center-Elementen, z. B. Empfehlungen, Warnungen, Richtlinie und Integrität. Änderungen können nicht vorgenommen werden.
+- **Sicherheitsadministrator**: Verfügt über die gleichen Rechte wie *Sicherheitsleseberechtigter*. Kann außerdem die Sicherheitsrichtlinie aktualisieren und Warnungen schließen.
 
 ## <a name="manage-your-security-policies"></a>Verwalten der Sicherheitsrichtlinien
 
@@ -59,14 +47,13 @@ Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
     > [!NOTE]
     > Wenn neben Ihrer Standardrichtlinie die Bezeichnung „Verwaltungsgruppe geerbt“ steht, bedeutet dies, dass die Richtlinie einer Verwaltungsgruppe zugewiesen und vom angezeigten Abonnement geerbt wurde.
 
-
 1. Wählen Sie in den verfügbaren Optionen auf dieser Seite aus:
 
-    1. Wenn Sie mit Branchenrichtlinien arbeiten möchten, wählen Sie **Weitere Standards hinzufügen** aus. Weitere Informationen finden Sie unter [Aktualisieren von dynamischen Compliancepaketen](update-regulatory-compliance-packages.md).
+    1. Wenn Sie mit Branchenstandards arbeiten möchten, wählen Sie **Weitere Standards hinzufügen** aus. Weitere Informationen finden Sie unter [Anpassen der Standards in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen](update-regulatory-compliance-packages.md).
 
-    1. Um benutzerdefinierte Initiativen zuzuweisen und zu verwalten, wählen Sie **Benutzerdefinierte Initiativen hinzufügen** aus. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Sicherheitsrichtlinien](custom-security-policies.md).
+    1. Um benutzerdefinierte Initiativen zuzuweisen und zu verwalten, wählen Sie **Benutzerdefinierte Initiativen hinzufügen** aus. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Sicherheitsinitiativen und -richtlinien](custom-security-policies.md).
 
-    1. Zum Anzeigen und Bearbeiten der Standardrichtlinie wählen Sie **Effektive Richtlinie anzeigen** aus und fahren wie unten beschrieben fort. 
+    1. Zum Anzeigen und Bearbeiten der Standardinitiative wählen Sie **Effektive Richtlinie anzeigen** aus, und fahren wie unten beschrieben fort. 
 
         :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="Anzeige „Effektive Richtlinie“":::
 
@@ -80,16 +67,6 @@ Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
 
        > [!NOTE]
        > Beim Anzeigen von zugewiesenen Richtlinien können Sie mehrere Zuweisungen sehen und die jeweilige Konfiguration der Zuweisungen auch einzeln prüfen.
-
-
-## <a name="who-can-edit-security-policies"></a>Wer kann Sicherheitsrichtlinien bearbeiten?
-
-Sie können Sicherheitsrichtlinien über das Azure Policy-Portal, über die REST-API oder über Windows PowerShell bearbeiten.
-
-Security Center verwendet die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC). Hierbei werden integrierte Rollen bereitgestellt, die Sie Azure-Benutzern, -Gruppen und -Diensten zuweisen können. In Security Center werden den Benutzern nur Informationen zu den Ressourcen angezeigt, auf die sie Zugriff haben. Dies bedeutet, dass Benutzern die Rolle *Besitzer*, *Mitwirkender* oder *Leser* für das Abonnement der Ressource zugewiesen wird. Darüber hinaus gibt es noch zwei spezifische Security Center-Rollen:
-
-- **Sicherheitsleseberechtigter**: Verfügt über Rechte zum Anzeigen von Security Center-Elementen, z. B. Empfehlungen, Warnungen, Richtlinie und Integrität. Änderungen können nicht vorgenommen werden.
-- **Sicherheitsadministrator**: Verfügt über die gleichen Rechte wie *Sicherheitsleseberechtigter*. Kann außerdem die Sicherheitsrichtlinie aktualisieren und Warnungen schließen.
 
 
 ## <a name="disable-security-policies-and-disable-recommendations"></a>Deaktivieren von Sicherheitsrichtlinien und Empfehlungen
@@ -129,7 +106,7 @@ Weitere Informationen zu Empfehlungen finden Sie unter [Verwalten von Sicherheit
 ## <a name="next-steps"></a>Nächste Schritte
 Auf dieser Seite werden die Sicherheitsrichtlinien beschrieben. Zugehörige Informationen finden Sie auf den folgenden Seiten:
 
-- [Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mit Azure PowerShell](../governance/policy/assign-policy-powershell.md) - 
-- [Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md) - 
-- [Was ist Azure Policy?](../governance/policy/overview.md)
+- [Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mit Azure PowerShell](../governance/policy/assign-policy-powershell.md)
+- [Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md)
+- [Weitere Informationen dazu, wie Sie eine Richtlinie für mehrere Abonnements oder Verwaltungsgruppen mit Azure Policy festlegen](../governance/policy/overview.md)
 - [Aktivieren von Security Center in allen Abonnements einer Verwaltungsgruppe](onboard-management-group.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: d76ecc55c2e156199b2db789721946fd1f36de27
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 493a06e85ad6c8260c342cf8167386394835b1c6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922902"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099487"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Mandantenübergreifende Verwaltung in Security Center
 
@@ -51,8 +51,4 @@ Die Ansichten und Aktionen sind im Grunde identisch. Im Folgenden finden Sie ein
 - **Verwalten erweiterter Cloudschutzfeatures und mehr**: Verwalten Sie die verschiedenen Dienste zum Schutz vor Bedrohungen, z. B. [Just-In-Time (JIT)-VM-Zugriff](security-center-just-in-time.md), [adaptive Netzwerkhärtung](security-center-adaptive-network-hardening.md), [adaptive Anwendungssteuerung](security-center-adaptive-application.md) und mehr.
  
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel wird erläutert, wie die mandantenübergreifende Verwaltung in Azure Security Center funktioniert. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
-
-* [Erhöhen Ihres Sicherheitsstatus in Azure Security Center](security-center-monitoring.md): Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-* [Azure Security Center – Häufig gestellte Fragen:](faq-general.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-* [Weitere Informationen zu Azure Lighthouse in Unternehmensszenarien](../lighthouse/concepts/enterprise.md): Erfahren Sie, wie Azure Lighthouse die mandantenübergreifenden Verwaltung in einem Unternehmen, in dem mehrere Azure AD-Mandanten vorhanden sind, vereinfachen kann.
+In diesem Artikel wird erläutert, wie die mandantenübergreifende Verwaltung in Azure Security Center funktioniert. Um zu erfahren Sie, wie Azure Lighthouse die mandantenübergreifenden Verwaltung in einem Unternehmen, in dem mehrere Azure AD-Mandanten vorhanden sind, vereinfachen kann, lesen Sie [Azure Lighthouse in Unternehmensszenarien](../lighthouse/concepts/enterprise.md).

@@ -2,13 +2,13 @@
 title: 'Tutorial: Konfigurieren des Netzwerks für Ihre private VMware-Cloud in Azure'
 description: Hier erfahren Sie, wie Sie das erforderliche Netzwerk zum Bereitstellen Ihrer privaten Cloud in Azure erstellen und konfigurieren.
 ms.topic: tutorial
-ms.date: 03/13/2021
-ms.openlocfilehash: c609d191191cd9de111e83fe62761b149405cccc
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.date: 02/23/2021
+ms.openlocfilehash: 8871e678ba43aa69eb49c02e386bfb47c6871de7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103494355"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044975"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Tutorial: Konfigurieren des Netzwerks für Ihre private VMware-Cloud in Azure
 
@@ -98,7 +98,7 @@ Navigieren Sie zu Ihrer privaten Azure VMware Solution-Cloud, und wählen Sie un
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt werden:
+In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen eines virtuellen Netzwerks

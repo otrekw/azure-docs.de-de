@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 9b8dc635781c96dcbd7aa423c77f60ff0556bd71
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: fc3774a01665b88ccae2e25ae8382497f8010c35
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634061"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096971"
 ---
 # <a name="continuously-export-security-center-data"></a>Fortlaufendes Exportieren von Security Center-Daten
 
@@ -44,7 +44,7 @@ In diesem Artikel wird erläutert, wie Sie den fortlaufenden Export in Log Analy
 |Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
 |Preise:|Kostenlos|
 |Erforderliche Rollen und Berechtigungen:|<ul><li>**Sicherheitsadministrator** oder **Besitzer** für die Ressourcengruppe</li><li>Schreibberechtigungen für die Zielressource</li><li>Wenn Sie die unten beschriebenen „DeployIfNotExist“-Richtlinien von Azure Policy verwenden, benötigen Sie auch die Berechtigungen zum Zuweisen von Richtlinien.</li></ul>|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov, andere Gov<br>![Ja](./media/icons/yes-icon.png) China Gov (an Event Hub)|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov, andere Gov<br>![Ja](./media/icons/yes-icon.png) China Gov|
 |||
 
 
@@ -171,7 +171,7 @@ Wenn Sie Azure Security Center-Daten in einem Log Analytics-Arbeitsbereich anal
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics-Tabellen und -Schemas
 
-Sicherheitswarnungen und -empfehlungen werden in den Tabellen *SecurityAlert* und *SecurityRecommendations* gespeichert. 
+Sicherheitswarnungen und -empfehlungen werden in den Tabellen *SecurityAlert* und *SecurityRecommendation* gespeichert. 
 
 Der Name der Log Analytics-Lösung, in der diese Tabellen enthalten sind, hängt davon ab, ob Sie Azure Defender aktiviert haben: Security („Sicherheit und Überwachung“) oder SecurityCenterFree. 
 

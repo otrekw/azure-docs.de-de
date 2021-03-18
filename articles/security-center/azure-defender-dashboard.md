@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bc54cc8dfc34db8aa88690c03ef0b18991e60776
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 16379380fc35bb2355c496dc857e9de3b41347f9
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797108"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096903"
 ---
 # <a name="the-azure-defender-dashboard"></a>Das Azure Defender-Dashboard
 
@@ -33,11 +33,11 @@ Das Dashboard enthält die folgenden Abschnitte:
 
 1. **Azure Defender-Abdeckung:** Hier sehen Sie die Ressourcentypen, die in Ihrem Abonnement verfügbar und für den Schutz durch Azure Defender geeignet sind. Sofern dies relevant ist, können Sie hier auch ein Upgrade durchführen. Wenn Sie alle möglichen berechtigten Ressourcen aktualisieren möchten, wählen Sie **Alle aktualisieren** aus.
 
-1. **Bereich für Sicherheitswarnungen:** Wenn Azure Defender in einem der Bereiche Ihrer Umgebung eine Bedrohung erkennt, wird eine Warnung generiert. Diese Warnungen beschreiben Details zu den betroffenen Ressourcen, empfohlene Problembehandlungsschritte sowie in einigen Fällen eine Option, mit der eine Logik-App als Reaktion ausgelöst werden kann. Durch Auswählen einer beliebigen Stelle in diesem Diagramm wird die Seite **Sicherheitswarnungen** geöffnet.
+2. **Sicherheitswarnungen:** Wenn Azure Defender in einem der Bereiche Ihrer Umgebung eine Bedrohung erkennt, wird eine Warnung generiert. Diese Warnungen beschreiben Details zu den betroffenen Ressourcen, empfohlene Problembehandlungsschritte sowie in einigen Fällen eine Option, mit der eine Logik-App als Reaktion ausgelöst werden kann. Durch Auswählen einer beliebigen Stelle in diesem Diagramm wird die Seite **Sicherheitswarnungen** geöffnet.
 
-1. **Erweiterter Schutz:** Azure Defender bietet viele Advanced Threat Protection-Funktionen für virtuelle Computer, SQL-Datenbanken, Container, Webanwendungen, Ihr Netzwerk u. v. m. In diesem Abschnitt zum erweiterten Schutz können Sie den Status der Ressourcen in den ausgewählten Abonnements für jede dieser Schutzmaßnahmen einsehen. Wählen Sie eine beliebige Option aus, um direkt zum Konfigurationsbereich für diesen Schutztyp zu wechseln.
+3. **Erweiterter Schutz:** Azure Defender bietet viele Advanced Threat Protection-Funktionen für virtuelle Computer, SQL-Datenbanken, Container, Webanwendungen, Ihr Netzwerk u. v. m. In diesem Abschnitt zum erweiterten Schutz können Sie den Status der Ressourcen in den ausgewählten Abonnements für jede dieser Schutzmaßnahmen einsehen. Wählen Sie eine beliebige Option aus, um direkt zum Konfigurationsbereich für diesen Schutztyp zu wechseln.
 
-1. **Erkenntnisse:** Dieser rollierende Bereich von Nachrichten, empfohlener Lektüre und Warnungen mit hoher Priorität stellt die Erkenntnisse von Security Center zu dringenden Sicherheitsangelegenheiten bereit, die für Sie und Ihr Abonnement relevant sind. Unabhängig davon, ob es sich um eine Liste von CVEs mit hohem Schweregrad handelt, die von einem Tool zur Sicherheitsrisikoanalyse auf Ihren VMs erkannt wurden, oder um einen neuen Blogbeitrag von einem Mitglied des Security Center-Teams, es wird hier im Bereich „Erkenntnisse“ des **Azure Defender-Dashboards** angezeigt.
+4. **Erkenntnisse:** Dieser rollierende Bereich von Nachrichten, empfohlener Lektüre und Warnungen mit hoher Priorität stellt die Erkenntnisse von Security Center zu dringenden Sicherheitsangelegenheiten bereit, die für Sie und Ihr Abonnement relevant sind. Unabhängig davon, ob es sich um eine Liste von CVEs mit hohem Schweregrad handelt, die von einem Tool zur Sicherheitsrisikoanalyse auf Ihren VMs erkannt wurden, oder um einen neuen Blogbeitrag von einem Mitglied des Security Center-Teams, es wird hier im Bereich „Erkenntnisse“ des **Azure Defender-Dashboards** angezeigt.
 
 
 
@@ -49,4 +49,4 @@ In diesem Artikel haben Sie etwas über das Azure Defender-Dashboard erfahren.
 Weitere Informationen zu Azure Defender finden Sie unter [Einführung in Azure Defender](azure-defender.md).
 
 > [!div class="nextstepaction"]
-> [Aktivieren von Azure Defender](security-center-pricing.md#enable-azure-defender)
+> [Aktivieren von Azure Defender](enable-azure-defender.md)
