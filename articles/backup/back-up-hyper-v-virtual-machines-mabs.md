@@ -3,12 +3,12 @@ title: Sichern von virtuellen Hyper-V-Computern mit MABS
 description: Dieser Artikel enthält die Verfahren zum Sichern und Wiederherstellen von virtuellen Computern mit Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: fc4e34e11e2474521082b1c23f600e9a5ca7a9fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a020559229771fff1ecc8fb512a5b2af70240cdd
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89377997"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509505"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Sichern von virtuellen Hyper-V-Computern mit Azure Backup Server
 
@@ -136,10 +136,13 @@ Wenn Sie einen gesicherten virtuellen Computer wiederherstellen können, wählen
 
 4. Wählen Sie auf dem Bildschirm **Wiederherstellungstyp** aus, wo Sie die Daten wieder wiederherstellen möchten, und wählen Sie dann **Weiter** aus.
 
-    - **In ursprünglicher Instanz wiederherstellen**: Wenn die Wiederherstellung in die ursprüngliche Instanz ausgeführt wird, wird die ursprüngliche VHD gelöscht. MABS stellt die VHD und andere Konfigurationsdateien mithilfe von Hyper-V-VSS Writer am ursprünglichen Speicherort wieder her. Am Ende des Wiederherstellungsprozesses sind virtuelle Computer weiterhin hoch verfügbar.
+    - **In ursprünglicher Instanz wiederherstellen:** Wenn die Wiederherstellung in die ursprüngliche Instanz erfolgt, werden die ursprüngliche VHD und alle zugehören Prüfpunkte gelöscht. MABS stellt die VHD und andere Konfigurationsdateien mithilfe von Hyper-V-VSS Writer am ursprünglichen Speicherort wieder her. Am Ende des Wiederherstellungsprozesses sind virtuelle Computer weiterhin hoch verfügbar.
         Die Ressourcengruppe muss für der Wiederherstellung vorhanden sein. Wenn Sie nicht verfügbar ist, führen Sie die Wiederherstellung an einem anderen Speicherort durch, und machen Sie den virtuellen Computer anschließend hoch verfügbar.
 
     - **Als virtuellen Computer für beliebigen Host wiederherstellen**: MABS unterstützt die Wiederherstellung an einem alternativen Speicherort (Alternate Location Recovery, ALR), mit der ein geschützter virtueller Hyper-V-Computer unabhängig von der Prozessorarchitektur nahtlos auf einem anderen Hyper-V-Host wiederhergestellt wird. Virtuelle Hyper-V-Computer, die in einem Clusterknoten wiederhergestellt werden, sind nicht hoch verfügbar. Wenn Sie diese Option auswählen, zeigt der Wiederherstellungs-Assistent einen zusätzlichen Bildschirm zum Angeben des Ziel und des Zielpfads an.
+    
+        >[!NOTE]
+        >Wenn Sie den ursprünglichen Host auswählen, entspricht das Verhalten dem beim **Wiederherstellen in der ursprünglichen Instanz**. Die ursprüngliche VHD und alle zugehörigen Prüfpunkte werden gelöscht.
 
     - **In einen Netzwerkordner kopieren**: MABS unterstützt die Wiederherstellung auf Elementebene (ILR), mit der Sie Dateien, Ordner, Volumes und virtuelle Festplatten (VHDs) auf Elementebene von einer Sicherung auf Hostebene von virtuellen Hyper-V-Computern auf eine Netzwerkfreigabe oder ein Volume auf einem mit MABS geschützten Server wiederherstellen können. Der MABS-Schutz-Agent muss für eine Wiederherstellung auf Elementebene nicht auf dem Gastbetriebssystem installiert sein. Wenn Sie diese Option auswählen, zeigt der Wiederherstellungs-Assistent einen zusätzlichen Bildschirm zum Angeben des Ziel und des Zielpfads an.
 

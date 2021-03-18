@@ -6,12 +6,12 @@ ms.author: lichris
 ms.date: 2/11/2021
 ms.topic: conceptual
 ms.service: iot-hub
-ms.openlocfilehash: cf05d5f93180db91658d0e94a23359edd5b0f7ad
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 86b2dbe6a28d1440f93788eb40e133d9b62d3f0c
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678457"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489428"
 ---
 # <a name="device-update-security-model"></a>Device Update-Sicherheitsmodell
 
@@ -54,7 +54,7 @@ Durch die Verwendung von Stamm- und Signaturschlüsseln kann Microsoft den Signa
 
 ### <a name="json-web-signature-jws"></a>JSON Web Signature (JWS)
 
-`updateManifestSignature` wird verwendet, um sicherzustellen, dass die in `updateManifest` enthaltenen Informationen nicht manipuliert wurden. `updateManifestSignature` wird mithilfe einer JSON Web Signature mit JSON Web Keys generiert und ermöglicht damit Quellüberprüfung. Die Signatur ist eine Base64Url-codierte Zeichenfolge mit drei Abschnitten, die durch „.“ getrennt sind.  Informationen zum Analysieren und Überprüfen von JSON-Schlüsseln und -Token finden Sie in der Hilfsmethode „jws_util.h“.
+`updateManifestSignature` wird verwendet, um sicherzustellen, dass die in `updateManifest` enthaltenen Informationen nicht manipuliert wurden. `updateManifestSignature` wird mithilfe einer JSON Web Signature mit JSON Web Keys generiert und ermöglicht damit Quellüberprüfung. Die Signatur ist eine Base64Url-codierte Zeichenfolge mit drei Abschnitten, die durch „.“ getrennt sind.  Informationen zum Analysieren und Überprüfen von JSON-Schlüsseln und -Token finden Sie unter den [Hilfsmethoden „jws_util.h“](https://github.com/Azure/iot-hub-device-update/tree/main/src/utils/jws_utils).
 
 Die JSON WebSignature ist ein weit verbreiteter [vorgeschlagener IETF-Standard](https://tools.ietf.org/html/rfc7515) zum Signieren von Inhalten mithilfe von JSON-basierten Datenstrukturen. Dies ist eine Möglichkeit, die Integrität von Daten sicherzustellen, indem die Signatur der Daten überprüft wird. Weitere Informationen finden Sie in [RFC 7515](https://www.rfc-editor.org/info/rfc7515) zu JSON Web Signature (JWS).
 

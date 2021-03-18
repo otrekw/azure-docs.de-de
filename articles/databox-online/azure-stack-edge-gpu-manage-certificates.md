@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/29/2020
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 06d3ebae80b34d6b3c7f4a23694fd9fba34e4b76
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 534870e6bd67b7aa5273289f3154a794a2b9bd22
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733498"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519009"
 ---
 # <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Verwenden von Zertifikaten mit einem Azure Stack Edge Pro-GPU-Gerät
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-In diesem Artikel werden die Zertifikattypen beschrieben, die auf Ihrem Azure Stack Edge Pro-Gerät installiert werden können. Der Artikel enthält auch die Details für jeden Zertifikattyp zusammen mit dem Verfahren zum Installieren und Identifizieren des Ablaufdatums. 
+In diesem Artikel werden die Zertifikattypen beschrieben, die auf Ihrem Azure Stack Edge Pro-Gerät installiert werden können. Der Artikel enthält auch die Details für jeden Zertifikattyp zusammen mit dem Verfahren zum Installieren und Identifizieren des Ablaufdatums.  
 
 ## <a name="about-certificates"></a>Informationen zu Zertifikaten
 
@@ -400,7 +400,7 @@ Die Sicherungskopie der PFX-Datei wird jetzt an dem von Ihnen gewählten Ort ges
 
 ## <a name="supported-certificate-algorithms"></a>Unterstützte Zertifikatalgorithmen
 
- Von Ihrem Azure Stack Edge Pro-Gerät werden nur die RSA-Zertifikate (Rivest-Shamir-Adleman) unterstützt. Wenn ECDSA-Zertifikate (Elliptic Curve Digital Signature Algorithm) verwendet werden, ist das Geräteverhalten unbestimmt.
+ Von Ihrem Azure Stack Edge Pro-Gerät werden nur die RSA-Zertifikate (Rivest-Shamir-Adleman) unterstützt. ECDSA-Zertifikate (Elliptic Curve Digital Signature Algorithmus) werden nicht unterstützt.
 
  Zertifikate, die einen öffentlichen RSA-Schlüssel enthalten, werden als RSA-Zertifikate bezeichnet. Zertifikate, die einen öffentlichen ECC-Schlüssel (Elliptic Curve Cryptographic) enthalten, werden als ECDSA-Zertifikate (Elliptic Curve Digital Signature Algorithm) bezeichnet. 
 

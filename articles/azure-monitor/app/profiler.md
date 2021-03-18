@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: b1158a614da9ba32f628aba5dd2ed2cc71b4b455
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2a5ba6cb0778e0c013f150d787d694b23f0497bd
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947041"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218008"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profilerstellung für Live-Azure App Service-Apps mit Application Insights
 
@@ -25,8 +25,12 @@ Befolgen Sie die unten angegebene Anleitung, um Profiler für eine App zu aktivi
 
 Application Insights Profiler ist als Teil der App Services-Runtime bereits vorinstalliert. In den folgenden Schritten wird erläutert, wie Sie das Tool für Ihren App Service aktivieren. Führen Sie diese Schritte aus, auch wenn Sie das App Insights SDK zum Zeitpunkt der Erstellung in Ihrer Anwendung eingefügt haben.
 
+> [!NOTE]
+> Die codefreie Installation von Application Insights Profiler folgt der Richtlinie zur .NET Core-Unterstützung.
+> Weitere Informationen zu unterstützten Runtimes finden Sie in der [.NET Core-Unterstützungsrichtlinie](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
+
 1. Navigieren Sie zur Azure-Systemsteuerung für Ihre App Service-Instanz.
-1. Aktivieren Sie die Einstellung „Always On“ für Ihren App Service. Sie finden diese Einstellung unter **Einstellungen**, Seite **Konfiguration** (siehe Screenshot im nächsten Schritt). Klicken Sie dann auf die Registerkarte **Allgemeine Einstellungen**.
+1. Aktivieren Sie die Einstellung „Always On“ für Ihren App Service. Sie finden diese Einstellung unter **Einstellungen** auf der Seite **Konfiguration** (siehe Screenshot im nächsten Schritt). Wählen Sie dann die Registerkarte **Allgemeine Einstellungen** aus.
 1. Navigieren Sie zur Seite **Einstellungen > Application Insights**.
 
    ![Aktivieren von App Insights im App Services-Portal](./media/profiler/AppInsights-AppServices.png)
@@ -52,18 +56,18 @@ Im Folgenden finden Sie die Einstellungen, die zum Aktivieren von Profiler erfor
 
 Sie können diese Werte mithilfe von [Azure Resource Manager-Vorlagen](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure PowerShell](/powershell/module/az.websites/set-azwebapp) oder der [Azure-Befehlszeilenschnittstelle](/cli/azure/webapp/config/appsettings) festlegen.
 
-### <a name="enabling-profiler-for-other-clouds-manually"></a>Manuelles Aktivieren von Profiler für andere Clouds
+## <a name="enable-profiler-for-other-clouds"></a>Aktivieren von Profiler für andere Clouds
 
-Wenn Sie Profiler für andere Clouds aktivieren möchten, können Sie die folgenden App-Einstellungen verwenden.
+Derzeit sind [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) und [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) die einzigen Regionen, für die Endpunktänderungen erforderlich sind.
 
-|App-Einstellung    | US Government-Werte| China-Cloud |   
+|App-Einstellung    | US Government-Cloud | China-Cloud |   
 |---------------|---------------------|-------------|
 |ApplicationInsightsProfilerEndpoint         | `https://profiler.monitor.azure.us`    | `https://profiler.monitor.azure.cn` |
 |ApplicationInsightsProfilerEndpoint | `https://dc.applicationinsights.us` | `https://dc.applicationinsights.azure.cn` |
 
 ## <a name="disable-profiler"></a>Deaktivieren von Profiler
 
-Wenn Sie Profiler für die Instanz einer einzelnen App beenden oder neu starten möchten, können Sie unter **WebJobs** den Webauftrag mit dem Namen „ApplicationInsightsProfiler3“ beenden. Auch wenn der Profiler wie oben beschrieben mithilfe des Schalters auf der Application Insights-Seite deaktiviert wurde, wird der Profilerprozess weiterhin ausgeführt. Der Profiler prüft, ob er aktiviert ist. Wenn er deaktiviert ist, wechselt er für einen Zeitraum in den Ruhemodus, bevor er erneut geprüft wird. Bei Deaktivierung führt er keinerlei Profilerstellung aus. Wenn Sie diesen Webauftrag deaktivieren, wird der Profilerprozess gar nicht ausgeführt, auch nicht um zu überprüfen, ob er aktiviert ist.
+Wenn Sie Profiler für die Instanz einer einzelnen App beenden oder neu starten möchten, wählen Sie auf der linken Randleiste **WebJobs** aus und beenden den Webauftrag mit dem Namen `ApplicationInsightsProfiler3`.
 
   ![Deaktivieren von Profiler für einen Webauftrag][disable-profiler-webjob]
 

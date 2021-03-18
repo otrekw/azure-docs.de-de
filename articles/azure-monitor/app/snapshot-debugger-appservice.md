@@ -6,16 +6,20 @@ author: cweining
 ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 421f80493a9cb88e8bbbddc06aa9a24042b64b17
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 5a637a6f355be32f82878a52a30c77d020190651
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695470"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211616"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Aktivieren des Momentaufnahmedebuggers für .NET-Apps in Azure App Service
 
-Der Momentaufnahmedebugger kann derzeit für ASP.NET- und ASP.NET Core-Apps verwendet werden, die unter Azure App Service in Windows-Dienstplänen ausgeführt werden. Wenn Sie den Debugger für Momentaufnahmen verwenden, empfehlen wir, Ihre Anwendung auf der Dienstebene „Basic“ oder höher auszuführen. Bei den meisten Anwendungen haben die Dienstebenen „Free“ und „Shared“ nicht genügend Arbeits- oder Festplattenspeicher zum Speichern von Momentaufnahmen.
+Der Momentaufnahmedebugger unterstützt derzeit ASP.NET- und ASP.NET Core-Apps, die unter Azure App Service in Windows-Dienstplänen ausgeführt werden.
+
+Wenn Sie den Momentaufnahmedebugger verwenden, sollten Sie Ihre Anwendung auf der Dienstebene „Basic“ oder höher auszuführen.
+
+Bei den meisten Anwendungen haben die Dienstebenen „Free“ und „Shared“ nicht genügend Arbeits- oder Festplattenspeicher zum Speichern von Momentaufnahmen.
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> Aktivieren des Momentaufnahmedebuggers
 Befolgen Sie die unten angegebenen Anweisungen, um den Momentaufnahmedebugger für eine App zu aktivieren.
@@ -28,7 +32,10 @@ Wenn Sie eine andere Art von Azure-Dienst ausführen, helfen Ihnen diese Anweisu
 * [Lokale virtuelle oder physische Computer](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
 > [!NOTE]
-> Wenn Sie eine Vorschauversion von .NET Core verwenden oder Ihre Anwendung direkt oder indirekt (über eine abhängige Assembly) auf das Application Insights SDK verweist, führen Sie zuerst die Anweisungen unter [Aktivieren des Momentaufnahmedebuggers für andere Umgebungen](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) aus, um das NuGet-Paket [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in die Anwendung zu integrieren, und führen Sie dann die übrigen nachstehenden Anweisungen aus. 
+> Wenn Sie eine Vorschauversion von .NET Core verwenden oder Ihre Anwendung direkt oder indirekt (über eine abhängige Assembly) auf das Application Insights SDK verweist, führen Sie die Anweisungen unter [Aktivieren des Momentaufnahmedebuggers für andere Umgebungen](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) aus, um das NuGet-Paket [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in die Anwendung zu integrieren. Führen Sie danach die übrigen nachstehenden Anweisungen aus. 
+>
+> Die codefreie Installation des Application Insights-Momentaufnahmedebuggers folgt der Richtlinie zur .NET Core-Unterstützung.
+> Weitere Informationen zu unterstützten Runtimes finden Sie in der [.NET Core-Unterstützungsrichtlinie](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
 Der Momentaufnahmedebugger ist als Teil der App Services-Runtime zwar bereits vorinstalliert, muss aber noch aktiviert werden, um Momentaufnahmen für Ihre App Service-Apps zu erhalten.
 
@@ -46,6 +53,16 @@ Nachdem Sie eine App bereitgestellt haben, führen Sie die folgenden Schritte au
 4. Der Momentaufnahmedebugger wurde mithilfe einer App Services-App-Einstellung aktiviert.
 
     ![App-Einstellung für den Momentaufnahmedebugger][snapshot-debugger-app-setting]
+
+## <a name="enable-snapshot-debugger-for-other-clouds"></a>Aktivieren des Momentaufnahmedebuggers für andere Clouds
+
+Derzeit sind [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) und [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) die einzigen Regionen, für die Endpunktänderungen über die Application Insights-Verbindungszeichenfolge erforderlich sind.
+
+|Eigenschaft mit der Verbindungszeichenfolge    | US Government-Cloud | China-Cloud |   
+|---------------|---------------------|-------------|
+|SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
+
+Weitere Informationen zu anderen Verbindungsüberschreibungen finden Sie in der [Application Insights-Dokumentation](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides).
 
 ## <a name="disable-snapshot-debugger"></a>Deaktivieren des Momentaufnahmedebuggers
 

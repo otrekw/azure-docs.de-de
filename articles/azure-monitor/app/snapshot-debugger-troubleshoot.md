@@ -6,17 +6,54 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6e926211a0d86fef55608ede574dca53487f267c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a285f26a406caa88d91da5647b3b79cffc9b614f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732726"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217413"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Behandeln von Problemen beim Aktivieren des Application Insights-Momentaufnahmedebuggers oder Anzeigen von Momentaufnahmen
 Wenn Sie den Application Insights-Momentaufnahmedebugger für Ihre Anwendung aktiviert haben, aber keine Momentaufnahmen für Ausnahmen angezeigt werden, können Sie diese Anweisungen zur Problembehandlung verwenden.
 
 Es kann viele verschiedene Gründe geben, warum keine Momentaufnahmen generiert werden. Sie können zunächst die Integritätsprüfung für Momentaufnahmen ausführen, um einige der möglichen Ursachen zu ermitteln.
+
+## <a name="make-sure-youre-using-the-appropriate-snapshot-debugger-endpoint"></a>Stellen Sie sicher, dass Sie den richtigen Endpunkt für den Momentaufnahmedebugger verwenden.
+
+Derzeit sind [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) und [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) die einzigen Regionen, für die Endpunktänderungen erforderlich sind.
+
+Für App Service und Anwendungen, die das Application Insights SDK verwenden, müssen Sie die Verbindungszeichenfolge mithilfe den unterstützten Überschreibungen für den Momentaufnahmedebugger aktualisieren, wie unten gezeigt:
+
+|Eigenschaft mit der Verbindungszeichenfolge    | US Government-Cloud | China-Cloud |   
+|---------------|---------------------|-------------|
+|SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
+
+Weitere Informationen zu anderen Verbindungsüberschreibungen finden Sie in der [Application Insights-Dokumentation](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides).
+
+Für Funktions-Apps müssen Sie die Datei `host.json` mithilfe der unterstützten Überschreibungen wie unten aktualisieren:
+
+|Eigenschaft    | US Government-Cloud | China-Cloud |   
+|---------------|---------------------|-------------|
+|AgentEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
+
+Im Folgenden finden Sie ein Beispiel für die Datei `host.json`, die mit dem Agent-Endpunkt der US Government-Cloud aktualisiert wurde:
+```json
+{
+  "version": "2.0",
+  "logging": {
+    "applicationInsights": {
+      "samplingExcludedTypes": "Request",
+      "samplingSettings": {
+        "isEnabled": true
+      },
+      "snapshotConfiguration": {
+        "isEnabled": true,
+        "agentEndpoint": "https://snapshot.monitor.azure.us"
+      }
+    }
+  }
+}
+```
 
 ## <a name="use-the-snapshot-health-check"></a>Verwenden der Integritätsprüfung für Momentaufnahmen
 Einige verbreitete Probleme führen dazu, dass „Debugmomentaufnahme öffnen“ nicht angezeigt wird. Beispiele wären etwa die Verwendung eines veralteten Snapshot Collectors, das Erreichen des täglichen Uploadlimits oder ein zeitaufwendiger Uploadvorgang für die Momentaufnahme. Verwenden Sie die Integritätsprüfung für Momentaufnahmen, um verbreitete Probleme zu behandeln.
@@ -35,9 +72,10 @@ Sollte sich das Problem dadurch nicht beheben lassen, lesen Sie die folgenden Sc
 
 Vergewissern Sie sich, dass Sie in Ihrer veröffentlichten Anwendung den richtigen Instrumentierungsschlüssel verwenden. Der Instrumentierungsschlüssel wird in der Regel aus der Datei „ApplicationInsights.config“ gelesen. Vergewissern Sie sich, dass der Wert dem Instrumentierungsschlüssel für die im Portal angezeigte Application Insights-Ressource entspricht.
 
-## <a name="check-ssl-client-settings-aspnet"></a><a id="SSL"></a>Überprüfen der SSL-Clienteinstellungen (ASP.NET)
+## <a name="check-tlsssl-client-settings-aspnet"></a><a id="SSL"></a>Überprüfen der TLS/SSL-Clienteinstellungen (ASP.NET)
 
-Wenn Sie auf einem virtuellen Computer eine ASP.NET-Anwendung haben, die in Azure App Service oder IIS gehostet wird, kann Ihre Anwendung aufgrund eines fehlenden SSL-Sicherheitsprotokolls möglicherweise keine Verbindung mit dem Dienst „Momentaufnahmedebugger“ herstellen.
+Wenn Sie auf einer VM eine ASP.NET-Anwendung haben, die in Azure App Service oder IIS gehostet wird, kann Ihre Anwendung aufgrund eines fehlenden SSL-Sicherheitsprotokolls möglicherweise keine Verbindung mit dem Dienst „Momentaufnahmedebugger“ herstellen.
+
 [Der Endpunkt von Momentaufnahmedebugger erfordert die TLS-Version 1.2](snapshot-debugger-upgrade.md?toc=/azure/azure-monitor/toc.json). Die Gruppe der SSL-Sicherheitsprotokolle ist eine der Tücken, die sich durch den Wert „httpRuntime targetFramework“ im Abschnitt „system.web“ der Datei „web.config“ ergibt. Wenn „httpRuntime targetFramework“ 4.5.2 oder niedriger ist, ist TLS 1.2 nicht standardmäßig inbegriffen.
 
 > [!NOTE]
@@ -64,6 +102,10 @@ Wenn Sie eine Vorschauversion von .NET Core verwenden oder Ihre Anwendung direk
 
 ## <a name="check-the-diagnostic-services-site-extension-status-page"></a>Überprüfen der Seite „Status“ der Websiteerweiterung für Diagnosedienste
 Wenn der Momentaufnahmedebugger über den Bereich [Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) im Portal aktiviert wurde, erfolgte die Aktivierung über die Websiteerweiterung für Diagnosedienste.
+
+> [!NOTE]
+> Die codefreie Installation des Application Insights-Momentaufnahmedebuggers folgt der Richtlinie zur .NET Core-Unterstützung.
+> Weitere Informationen zu unterstützten Runtimes finden Sie in der [.NET Core-Unterstützungsrichtlinie](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
 Sie können die Statusseite dieser Erweiterung unter der folgenden URL überprüfen: `https://{site-name}.scm.azurewebsites.net/DiagnosticServices`.
 

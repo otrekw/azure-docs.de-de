@@ -3,21 +3,25 @@ title: Konfigurieren von Berechtigungen für den Azure VM Image Builder-Dienst m
 description: Konfigurieren von Anforderungen für den Azure VM Image Builder-Dienst einschließlich Berechtigungen und Rechten mithilfe von PowerShell
 author: danielsollondon
 ms.author: danis
-ms.date: 03/02/2021
+ms.date: 03/05/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: 4b9cf3ffdb1fc6db9604098e8e5782317a8eb431
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9f8793b6ea0ba454b66c525c2d53c1de2197d539
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695395"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440206"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-powershell"></a>Konfigurieren von Berechtigungen für den Azure VM Image Builder-Dienst mithilfe von PowerShell
 
-Für den Azure VM Image Builder-Dienst müssen Berechtigungen und Rechte konfiguriert werden, bevor ein Image erstellt wird. In den folgenden Abschnitten erfahren Sie, wie mögliche Szenarios mithilfe von PowerShell konfiguriert werden.
+Wenn Sie sich für die (AIB) registrieren, wird dem AIB-Dienst die Berechtigung zum Erstellen, Verwalten und Löschen einer Stagingressourcengruppe (IT_ *) und zum Hinzufügen von Ressourcen erteilt, die für die Imageerstellung erforderlich sind. Dies erfolgt dadurch, dass im Rahmen einer erfolgreichen Registrierung ein AIB-Dienstprinzipalname (Service Principal Name, SPN) in Ihrem Abonnement verfügbar gemacht wird.
+
+Damit Azure VM Image Builder Images an die verwalteten Images oder an eine Shared Image Gallery verteilen kann, müssen Sie eine benutzerseitig zugewiesene Azure-Identität erstellen, die über Berechtigungen zum Lesen und Schreiben von Images verfügt. Wenn Sie auf Azure Storage zugreifen, sind dafür Berechtigungen zum Lesen privater oder öffentlicher Container erforderlich.
+
+Vor dem Erstellen eines Images müssen Berechtigungen und Rechte eingerichtet werden. In den folgenden Abschnitten erfahren Sie, wie mögliche Szenarios mithilfe von PowerShell konfiguriert werden.
 
 > [!IMPORTANT]
 > Azure Image Builder ist derzeit als öffentliche Vorschauversion verfügbar.

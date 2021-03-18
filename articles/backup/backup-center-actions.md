@@ -1,16 +1,16 @@
 ---
-title: Ausführen von Aktionen mit Backup Center
+title: Ausführen von Aktionen mithilfe von Backup Center
 description: In diesem Artikel erfahren Sie, wie Sie Aktionen mithilfe von Backup Center ausführen.
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 06229eb0b8cb76482035d3dfe1949c3ab8354f17
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 8c21475e5a52cdce7e38bbeb9d00df3c3ac3a752
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98894574"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506448"
 ---
-# <a name="perform-actions-using-backup-center-preview"></a>Ausführen von Aktionen mithilfe von Backup Center (Vorschau)
+# <a name="perform-actions-using-backup-center"></a>Ausführen von Aktionen mithilfe von Backup Center
 
 Backup Center ermöglicht das Ausführen wichtiger sicherungsbezogener Aktionen über eine zentrale Oberfläche, ohne zu einem einzelnen Tresor navigieren zu müssen. Mit Backup Center können unter anderem folgende Aktionen ausgeführt werden:
 
@@ -23,7 +23,7 @@ Backup Center ermöglicht das Ausführen wichtiger sicherungsbezogener Aktionen 
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
 
-* Backup Center wird derzeit für Sicherungen von virtuellen Azure-Computern, für SQL in Azure-VM-Sicherungen, für SAP HANA in Azure-VM-Sicherungen, für Azure Files-Sicherungen und für Azure Database for PostgreSQL-Serversicherungen unterstützt.
+* Backup Center wird derzeit für Sicherungen von Azure-VMs, SQL auf Azure-VMs, SAP HANA auf Azure-VMs sowie für Azure Files-Sicherungen und für Sicherungen von Azure Database for PostgreSQL-Servern unterstützt.
 * Eine ausführliche Liste der unterstützten und nicht unterstützten Szenarien finden Sie in der [Supportmatrix](backup-center-support-matrix.md).
 
 ## <a name="configure-backup"></a>Konfigurieren der Sicherung
@@ -139,5 +139,5 @@ Weitere Informationen zum Beenden der Sicherung für Azure Database for PostgreS
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Überwachen und Betreiben von Sicherungen](backup-center-monitor-operate.md)
-* [Steuern Ihres Sicherungsbestands mit Backup Center](backup-center-govern-environment.md)
+* [Steuern Ihres Sicherungsbestands](backup-center-govern-environment.md)
 * [Gewinnen von Einblicken in Ihre Sicherungen](backup-center-obtain-insights.md)

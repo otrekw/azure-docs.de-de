@@ -2,13 +2,13 @@
 title: Verwaltete Service Fabric-Cluster (Vorschau)
 description: Verwaltete Service Fabric-Cluster sind eine Weiterentwicklung des Azure Service Fabric-Clusterressourcenmodells, das die Bereitstellung und Clusterverwaltung optimiert.
 ms.topic: overview
-ms.date: 09/28/2020
-ms.openlocfilehash: 3d26a92126491662d5c51b3c4e8900ffa547f830
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 02/15/2021
+ms.openlocfilehash: 271852214097ee96ba6b10de7a94904981cd8ef8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91410397"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041228"
 ---
 # <a name="service-fabric-managed-clusters-preview"></a>Verwaltete Service Fabric-Cluster (Vorschau)
 
@@ -62,21 +62,26 @@ Verwaltete Service Fabric-Cluster sind sowohl in der SKU „Basic“ als auch �
 | Hinzufügen/Entfernen von Knotentypen | Nein | Ja |
 | Zonenredundanz | Nein | Ja |
 
-## <a name="service-fabric-managed-cluster-feature-roadmap"></a>Roadmap der Funktion „Verwaltete Service Fabric-Cluster“
-Da dies eine frühe Vorschauversion der verwalteten Service Fabric-Cluster ist, gibt es einige Funktionslücken, die Sie kennen sollten. Diese Funktionen werden in zukünftigen Versionen verfügbar sein. 
+## <a name="whats-new-for-service-fabric-managed-clusters"></a>Neuerungen für verwaltete Service Fabric-Cluster
 
-* Direktes Veröffentlichen von Anwendungen für Cluster aus Visual Studio
-* Verwaltete Identitäten 
-* ARM-Anwendungsbereitstellungen 
-* Verfügbarkeitszonen 
-* Reverse-Proxy 
-* Automatische Skalierung 
-* Aktualisieren von NSG-Regeln 
-* Automatische Betriebssystemupgrades
+Die neuesten Features für die Vorschau verwalteter Service Fabric-Cluster umfassen Unterstützung für:
+
+* [Bereitstellen von Anwendungen mithilfe von ARM-Vorlagen](how-to-managed-cluster-app-deployment-template.md)
+* [Automatische Betriebssystemupgrades](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)
+* [Datenträgerverschlüsselung](how-to-enable-managed-cluster-disk-encryption.md)
+* [Anwenden von NSG-Regeln](how-to-managed-cluster-networking.md)
+
+In zukünftigen Versionen werden u. a. folgende Features hinzugefügt:
+
+* Bereitstellen von Anwendungen mithilfe von Visual Studio
+* Unterstützung für verwaltete Identitäten
+* Verfügbarkeitszonen
+* Reverse-Proxy
+* Automatische Skalierung
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Um erste Schritte mit verwalteten Service Fabric-Clustern auszuführen, probieren Sie den folgenden Schnellstart aus:
+Um erste Schritte mit verwalteten Service Fabric-Clustern auszuführen, probieren Sie den folgenden Schnellstart aus:
 
 > [!div class="nextstepaction"]
 > [Erstellen eines verwalteten Service Fabric-Clusters (Vorschau)](quickstart-managed-cluster-template.md)

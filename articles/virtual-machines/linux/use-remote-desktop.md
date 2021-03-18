@@ -1,27 +1,29 @@
 ---
 title: Verwenden von xrdp mit Linux
 description: Erfahren Sie, wie Sie Remotedesktop (XRDP) zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure mithilfe von Tools mit grafischer Benutzeroberfläche installieren und konfigurieren.
-services: virtual-machines-linux
+services: virtual-machines
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 03/01/2021
+ms.date: 03/03/2021
 ms.author: cynthn
-ms.openlocfilehash: 448e9f6487b5afc51be9b3dee8e07007c8534a0b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1f7eb3b38b4ae04e81839fce2b14c1a84f3f0204
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695174"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564593"
 ---
-# <a name="install-and-configure-xrdp-to-use-remote-desktop-with-a-linux-vm"></a>Installieren und Konfigurieren von xrdp für die Verwendung von Remotedesktop mit einem virtuellen Linux-Computer
+# <a name="install-and-configure-xrdp-to-use-remote-desktop-with-ubuntu"></a>Installieren und Konfigurieren von xrdp für die Verwendung von Remotedesktop mit Ubuntu
 
-Virtuelle Linux-Computer (Linux-VMs) in Azure werden normalerweise von der Befehlszeile aus mithilfe einer SSH-Verbindung (Secure Shell) verwaltet. Wenn Sie erst in Linux einsteigen oder schnell eine Fehlerbehandlung durchführen müssen, ist die Verwendung von Remotedesktop unter Umständen einfacher. Dieser Artikel erläutert im Detail die Installation und Konfiguration von Desktopumgebung ([XFCE](https://www.xfce.org)) und Remotedesktop ([XRDP](http://xrdp.org)) für Ihren virtuellen Linux-Computer mithilfe des Resource Manager-Bereitstellungsmodells.
+Virtuelle Linux-Computer (Linux-VMs) in Azure werden normalerweise von der Befehlszeile aus mithilfe einer SSH-Verbindung (Secure Shell) verwaltet. Wenn Sie erst in Linux einsteigen oder schnell eine Fehlerbehandlung durchführen müssen, ist die Verwendung von Remotedesktop unter Umständen einfacher. Dieser Artikel erläutert im Detail die Installation und Konfiguration von Desktopumgebung ([xfce](https://www.xfce.org)) und Remotedesktop ([xrdp](http://xrdp.org)) für Ihre Linux-VM unter Ubuntu.
 
+Für den Artikel wurde eine VM mit Ubuntu 18.04 verfasst und getestet. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Für diesen Artikel ist ein vorhandener virtueller Ubuntu 18.04 LTS-Computer (VM) in Azure erforderlich. Wenn Sie eine VM erstellen müssen, verwenden Sie eine der folgenden Methoden:
 
 - Die [Azure CLI](quick-create-cli.md)

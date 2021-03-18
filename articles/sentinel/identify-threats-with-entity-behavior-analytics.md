@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 458c801e1434832bf65da669ca89cb5c5eebe2e8
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: bf7a17d96d31fd4214d5465a5739acc9ce9a9d53
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807562"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455500"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Erkennen komplexerer Bedrohungen mit User and Entity Behavior Analytics (UEBA) in Azure Sentinel
 
@@ -68,41 +68,9 @@ Jede Aktivität wird basierend auf dem Verhaltenslernen der Benutzer und der Pee
 
 Ein Beispiel für die Verwendung von Verhaltensanalysen und deren Funktionsweise finden Sie im Artikel über [Microsoft Cloud App Security](https://techcommunity.microsoft.com/t5/microsoft-security-and/prioritize-user-investigations-in-cloud-app-security/ba-p/700136).
 
-## <a name="entities-in-azure-sentinel"></a>Entitäten in Azure Sentinel
+## <a name="entity-pages"></a>Entitätsseiten
 
-### <a name="entity-identifiers"></a>Entitätsbezeichner
-
-Wenn Warnungen an Azure Sentinel gesendet werden, enthalten sie Datenelemente, die Azure Sentinel identifiziert und als Entitäten klassifiziert, z. B. Benutzerkonten, Hosts, IP-Adressen und andere. Gelegentlich kann diese Identifizierung eine Herausforderung darstellen, wenn die Warnung keine ausreichenden Informationen über die Entität enthält.
-
-Benutzerkonten können z. B. auf mehr als eine Weise identifiziert werden: mithilfe des numerischen Bezeichners (GUID) eines Azure AD-Kontos oder des Werts des Benutzerprinzipalnamens (UPN) bzw. alternativ mithilfe einer Kombination aus seinem Benutzernamen und seinem NT-Domänennamen. Verschiedene Datenquellen können denselben Benutzer auf unterschiedliche Weise identifizieren. Deshalb fasst Azure Sentinel, wann immer möglich, diese Bezeichner zu einer einzelnen Entität zusammen, sodass diese ordnungsgemäß identifiziert werden kann.
-
-Es kann jedoch vorkommen, dass einer Ihrer Ressourcenanbieter eine Warnung erstellt, in der eine Entität nicht ausreichend identifiziert wird, z. B. ein Benutzername ohne den Kontext des Domänennamens. In einem solchen Fall kann die Benutzerentität nicht mit anderen Instanzen desselben Benutzerkontos zusammengeführt werden, die dann als separate Entität identifiziert würden. Diese beiden Entitäten würden dann getrennt bleiben anstatt vereinigt zu werden.
-
-Sie sollten sich vergewissern, dass alle Ihre Anbieter von Warnungen die Entitäten in den von ihnen erstellten Warnungen richtig identifizieren, um das Risiko eines solchen Ereignisses zu minimieren. Zusätzlich kann die Synchronisierung von Benutzerkontoentitäten mit Azure Active Directory ein vereinheitlichendes Verzeichnis erstellen, das in der Lage ist, Benutzerkontoentitäten zusammenzuführen.
-
-Die folgenden Arten von Entitäten werden derzeit in Azure Sentinel identifiziert:
-
-- Benutzerkonto (Konto)
-- Host
-- IP-Adresse (IP)
-- Malware
-- Datei
-- Prozess
-- Cloudanwendung (CloudApplication)
-- Domänenname (DNS)
-- Azure-Ressource
-- Datei (FileHash)
-- Registrierungsschlüssel
-- Registrierungswert
-- Sicherheitsgruppe
-- URL
-- IoT-Gerät
-- Mailbox
-- E-Mail-Cluster
-- E-Mail
-- Übermittlungs-E-Mail
-
-### <a name="entity-pages"></a>Entitätsseiten
+Erfahren Sie mehr über [Entitäten in Azure Sentinel](entities-in-azure-sentinel.md), und sehen Sie sich die vollständige Liste der [unterstützten Entitäten und Bezeichner](entities-reference.md) an.
 
 Wenn Sie bei einer Suche, in einer Warnung oder bei einer Untersuchung auf eine Entität (derzeit nur Benutzer und Hosts) stoßen, können Sie die Entität auswählen und gelangen dadurch auf eine **Entitätsseite**. Hierbei handelt es sich um ein Datenblatt mit nützlichen Informationen zu dieser Entität. Zu den Informationen auf dieser Seite gehören grundlegende Fakten über die Entität, eine Zeitachse mit für diese Entität wichtigen Ereignissen sowie Erkenntnisse über das Verhalten der Entität.
  
@@ -131,20 +99,23 @@ Die folgenden Elemente sind auf der Zeitachse enthalten:
  
 ### <a name="entity-insights"></a>Erkenntnisse über Entitäten
  
-Bei Erkenntnissen über Entitäten handelt es sich um Abfragen, die von Microsoft-Sicherheitsexperten definiert werden, um Ihren Analysten eine effizientere und effektivere Untersuchung zu ermöglichen. Die Erkenntnisse werden auf der Entitätsseite angezeigt. Sie stellen wichtige Sicherheitsinformationen über Hosts und Benutzer in Form von Tabellendaten und -diagrammen bereit. Dadurch, dass die Informationen hier angezeigt werden, müssen Sie keinen Umweg über Log Analytics machen. Zu den Erkenntnissen zählen Daten zu Anmeldungen, Gruppenerweiterungen, anomalen Ereignissen und vielem mehr sowie intelligente ML-Algorithmen zur Erkennung von anormalem Verhalten. Die Erkenntnisse basieren auf den folgenden Datentypen:
-- syslog
-- SecurityEvent
-- Überwachungsprotokolle
-- Anmeldeprotokolle
-- Office-Aktivitäten
-- Verhaltensanalyse (UEBA) 
- 
+Bei Erkenntnissen über Entitäten handelt es sich um Abfragen, die von Microsoft-Sicherheitsexperten definiert werden, um Ihren Analysten eine effizientere und effektivere Untersuchung zu ermöglichen. Die Erkenntnisse werden auf der Entitätsseite angezeigt. Sie stellen wichtige Sicherheitsinformationen über Hosts und Benutzer in Form von Tabellendaten und -diagrammen bereit. Dadurch, dass die Informationen hier angezeigt werden, müssen Sie keinen Umweg über Log Analytics machen. Zu den Erkenntnissen zählen Daten zu Anmeldungen, Gruppenerweiterungen, anomalen Ereignissen und vielem mehr sowie intelligente ML-Algorithmen zur Erkennung von anomalem Verhalten. 
+
+Die Erkenntnisse basieren auf den folgenden Datenquellen:
+- Syslog (Linux)
+- SecurityEvent (Windows)
+- AuditLogs (Azure AD)
+- SigninLogs (Azure AD)
+- OfficeActivity (Office 365)
+- BehaviorAnalytics (Azure Sentinel UEBA)
+- Heartbeat (Azure Monitor Agent)
+- CommonSecurityLog (Azure Sentinel)
+
 ### <a name="how-to-use-entity-pages"></a>Verwenden von Entitätsseiten
 
 Entitätsseiten sind Teil von verschiedenen Verwendungsszenarios und können über Incident Management, das Untersuchungsdiagramm, Lesezeichen oder direkt über die Entitätssuchseite unter **User and Entity Behavior Analytics** im Hauptmenü von Azure Sentinel aufgerufen werden.
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="Anwendungsfälle für Entitätsseiten":::
-
 
 ## <a name="data-schema"></a>Datenschema
 

@@ -3,14 +3,14 @@ title: Steuern Ihres Sicherungsbestands mit Backup Center
 description: Erfahren Sie, wie Sie Ihre Azure-Umgebung so steuern, dass sichergestellt ist, dass sämtliche Ihrer Ressourcen aus Sicherungssicht zu Backup Center konform sind.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 67b0591c7d7146d162687018854365d338105d76
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 283c99c4b17683850f71b25fb2006784e43f3b8f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893845"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506208"
 ---
-# <a name="govern-your-backup-estate-using-backup-center-preview"></a>Steuern Ihres Sicherungsbestands mit Backup Center (Vorschau)
+# <a name="govern-your-backup-estate-using-backup-center"></a>Steuern Ihres Sicherungsbestands mit Backup Center
 
 Backup Center unterstützt Sie dabei, Ihre Azure-Umgebung so zu steuern, dass sichergestellt ist, dass sämtliche Ihrer Ressourcen aus Sicherungssicht zu Backup Center konform sind. Nachstehend sind einige der Steuerungsfunktionen von Backup Center aufgeführt:
 

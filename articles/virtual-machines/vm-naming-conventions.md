@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/22/2020
 ms.author: mimckitt
 ms.custom: sttsinar
-ms.openlocfilehash: 13894e534dc8d6dd89baf75ea2bd3b6500b718f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98d35821c884ba25a109f929556087ff6ecba0ca
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88650960"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551013"
 ---
 # <a name="azure-virtual-machine-sizes-naming-conventions"></a>Namenskonventionen für Azure-VM-Größen
 
@@ -21,13 +21,14 @@ Diese Seite gibt einen Überblick über die Namenskonventionen, die für Azure V
 
 ## <a name="naming-convention-explanation"></a>Erläuterung der Namenskonvention
 
-**[Familie]**  +  **[Unterfamilie*]**  +  **[Anzahl der vCPUs]**  +  **[Zusätzliche Features]**  +  **[Beschleunigertyp*]**  +  **[Version]**
+**[Familie]**  +  **[Unterfamilie*]**  +  **[Anzahl der vCPUs]**  +  **[Eingeschränkte vCPUs*]**  +  **[Zusätzliche Features]**  +  **[Beschleunigungstyp*]**  +  **[Version]**
 
 |Wert | Erklärung|
 |---|---|
 | Familie | Gibt die Serie der VM-Familie an| 
 | *Unterfamilie | Wird nur für spezialisierte VM-Differenzierungen verwendet|
 | Anzahl der vCPUs| Gibt die Anzahl der vCPUs des virtuellen Computers an |
+| * Eingeschränkte vCPUs| Werden nur für bestimmte VM-Größen verwendet Gibt die Anzahl der vCPUs für die [eingeschränkte vCPU-fähige Größe](https://docs.microsoft.com/azure/virtual-machines/constrained-vcpu) an |
 | Zusätzliche Features | Mindestens ein Kleinbuchstabe bezeichnet zusätzliche Features. Beispiele: <br> a = AMD-basierter Prozessor <br> d = Datenträger (lokaler temporärer Datenträger ist vorhanden). Dies gilt für neuere Azure-VMS (siehe [Ddv4- und Ddsv4-Serie](./ddv4-ddsv4-series.md)) <br> h = Ruhezustand-fähig <br> i = isolierte Größe <br> l = geringer Arbeitsspeicher; eine niedrigere Arbeitsspeichermenge als die arbeitsspeicherintensive Größe <br> m = arbeitsspeicherintensiv; die höchste Arbeitsspeichermenge einer bestimmten Größe <br> t = sehr geringer Arbeitsspeicher; die kleinste Arbeitsspeichermenge einer bestimmten Größe <br> r = RDMA-fähig <br> s = Storage Premium-fähig, einschließlich der möglichen Verwendung von [SSD Ultra](./disks-types.md#ultra-disk) (Hinweis: einige neuere Größen ohne das Attribut „s“ können noch Storage Premium unterstützen, z. B. M128, M64 usw.)<br> |
 | *Beschleunigertyp | Gibt den Typ des Hardwarebeschleunigers in den spezialisierten/GPU-SKUs an. Nur die neuen spezialisierten/GPU-SKUs, die ab dem 3. Quartal 2020 auf den Markt kommen, werden den Hardwarebeschleuniger im Namen tragen. |
 | Version | Bezeichnet die Version der Serie der VM-Familie |
@@ -65,6 +66,16 @@ Diese Seite gibt einen Überblick über die Namenskonventionen, die für Azure V
 | Zusätzliche Features | a = AMD-basierter Prozessor <br> s = Storage Premium-fähig |
 | Beschleunigertyp | T4 |
 | Version | V3 |
+
+### <a name="example-4-m8-2ms_v2-constrained-vcpu"></a>Beispiel 4: M8-2ms_v2 (eingeschränkte vCPU)
+
+|Wert | Erklärung|
+|---|---|
+| Familie | M | 
+| Anzahl der vCPUs | 8 |
+| Anzahl der eingeschränkten (tatsächlichen) vCPUs | 2 |
+| Zusätzliche Features | m = arbeitsspeicherintensiv <br> s = Storage Premium-fähig |
+| Version | V2 |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

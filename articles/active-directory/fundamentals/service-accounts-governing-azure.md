@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c43125edab0f5ed097b99798ca22e5543e15a2d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4311d0acc7c417bf31c71f46e6c25c65312b894d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692897"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034529"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Steuern von Azure AD-Dienstkonten
 
@@ -40,7 +40,7 @@ Dokumentieren Sie vor der Erstellung eines Dienstkontos oder der Registrierung e
 | CMDB-Link| Link zu den Ressourcen, auf die zugegriffen werden soll, sowie zu Skripts, in denen das Dienstkonto verwendet wird.| Dokumentieren Sie die Ressourcen- und Skriptbesitzer, um alle notwendigen Upstream- und Downstreamauswirkungen von Änderungen kommunizieren zu können. |
 | Risikobewertung| Das Risiko und die geschäftlichen Auswirkungen im Falle einer Kompromittierung des Kontos.| Verwenden Sie diese Informationen, um den Berechtigungsbereich einzugrenzen und zu bestimmen, wer Zugriff auf die Kontoinformationen haben soll. |
 | Überprüfungszeitraum| Der Zeitplan für die Überprüfung des Dienstkontos durch den Besitzer.| Verwenden Sie diese Information, um die Überprüfungskommunikation und Überprüfungen zu planen. Dokumentieren Sie, was geschehen soll, wenn bis zu einem bestimmten Zeitpunkt nach dem geplanten Überprüfungszeitraum keine Überprüfung stattgefunden hat. |
-| Gültigkeitsdauer| Die voraussichtliche maximale Lebensdauer eines Kontos.| Verwenden Sie diese Information, um die Kommunikation mit dem Besitzer zu planen und die Konten letztendlich zu deaktivieren und anschließend zu löschen. Legen Sie nach Möglichkeit ein Ablaufdatum für Anmeldeinformationen fest, sofern kein automatischer Rollover für Anmeldeinformationen möglich ist. |
+| Lebensdauer| Die voraussichtliche maximale Lebensdauer eines Kontos.| Verwenden Sie diese Information, um die Kommunikation mit dem Besitzer zu planen und die Konten letztendlich zu deaktivieren und anschließend zu löschen. Legen Sie nach Möglichkeit ein Ablaufdatum für Anmeldeinformationen fest, sofern kein automatischer Rollover für Anmeldeinformationen möglich ist. |
 | Name| Standardisierter Name des Kontos| Erstellen Sie ein Benennungsschema für alle Dienstkonten, um problemlos nach Dienstkonten suchen, sortieren und filtern zu können. |
 
 
@@ -51,13 +51,13 @@ Für Dienstkontoberechtigungen empfiehlt sich Folgendes:
 
 **Berechtigungen**
 
-* Weisen Sie Dienstkonten keine integrierten Rollen zu. Verwenden Sie stattdessen das [OAuth2-Berechtigungszuweisungsmodell für Microsoft Graph](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0).
+* Weisen Sie Dienstkonten keine integrierten Rollen zu. Verwenden Sie stattdessen das [OAuth2-Berechtigungszuweisungsmodell für Microsoft Graph](/graph/api/resources/oauth2permissiongrant).
 
 * Wenn dem Dienstprinzipal eine privilegierte Rolle zugewiesen werden muss, empfiehlt es sich gegebenenfalls, eine zeitgebundene [benutzerdefinierte Rolle](https://docs.microsoft.com/azure/active-directory/roles/custom-create) mit spezifischen erforderlichen Berechtigungen zuzuweisen.
 
 * Schließen Sie Dienstkonten nicht in Gruppen mit erhöhten Berechtigungen ein. 
 
-* [Verwenden Sie PowerShell, um Mitglieder privilegierter Rollen aufzuzählen](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0) (Beispiel:   
+* [Verwenden Sie PowerShell, um Mitglieder privilegierter Rollen aufzuzählen](/powershell/module/azuread/get-azureaddirectoryrolemember) (Beispiel:   
 ‎`Get-AzureADDirectoryRoleMember`), und filtern Sie nach dem Objekttyp „Dienstprinzipal“.
 
    Oder verwenden Sie Folgendes:  
@@ -117,15 +117,15 @@ Es empfiehlt sich, Azure AD-Anmeldeprotokolle zu exportieren und in Ihre vorhan
 
 Überprüfen Sie regelmäßig die gewährten Berechtigungen und die Bereiche, auf die von Dienstkonten zugegriffen wird, um zu ermitteln, ob sie verringert oder entfernt werden können.
 
-* Verwenden Sie [PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipaloauth2permissiongrant?view=azureadps-2.0) zum [Erstellen einer Automatisierung für die Überprüfung und Dokumentation](https://gist.github.com/psignoret/41793f8c6211d2df5051d77ca3728c09) von Bereichen, für die einem Dienstkonto eine Einwilligung erteilt wurde.
+* Verwenden Sie [PowerShell](/powershell/module/azuread/get-azureadserviceprincipaloauth2permissiongrant) zum [Erstellen einer Automatisierung für die Überprüfung und Dokumentation](https://gist.github.com/psignoret/41793f8c6211d2df5051d77ca3728c09) von Bereichen, für die einem Dienstkonto eine Einwilligung erteilt wurde.
 
 * Verwenden Sie PowerShell zum [Überprüfen der Anmeldeinformationen vorhandener Dienstprinzipale](https://github.com/AzureAD/AzureADAssessment) sowie zum Überprüfen ihrer Gültigkeit.
 
-* Legen Sie für die Anmeldeinformationen des Dienstprinzipals nicht fest, dass sie nicht ablaufen sollen.
+* Legen Sie für die Anmeldeinformationen des Dienstprinzipals die Option „Niemals ablaufen“ fest.
 
 * Verwenden Sie nach Möglichkeit in Azure Key Vault gespeicherte Zertifikate oder Anmeldeinformationen.
 
-Im kostenlosen PowerShell-Beispiel von Microsoft werden die OAuth2-Zuweisungen und die Anmeldeinformationen des Dienstprinzipals in einer CSV-Datei (Datei mit kommagetrennten Werten) erfasst, und es steht ein Power BI-Beispieldashboard zu Verfügung, um die Daten zu interpretieren und zu verwenden. Weitere Informationen finden Sie auf GitHub unter [AzureAD/AzureADAssessment: Tools zum Bewerten von Zustand und Konfiguration eines Azure AD-Mandanten](https://github.com/AzureAD/AzureADAssessment).
+Im kostenlosen PowerShell-Beispiel von Microsoft werden die OAuth2-Zuweisungen und die Anmeldeinformationen des Dienstprinzipals in einer CSV-Datei (Datei mit kommagetrennten Werten) erfasst. Außerdem steht ein Power BI-Beispieldashboard zur Verfügung, um die Daten zu interpretieren und zu verwenden. Weitere Informationen finden Sie auf GitHub unter [AzureAD/AzureADAssessment: Tools zum Bewerten von Zustand und Konfiguration eines Azure AD-Mandanten](https://github.com/AzureAD/AzureADAssessment).
 
 ### <a name="recertify-service-account-use"></a>Neuzertifizieren der Dienstkontoverwendung
 
@@ -172,7 +172,7 @@ Richten Sie einen Überprüfungsprozess ein, um eine regelmäßige Überprüfung
 
 **Die Prozesse für die Aufhebung der Bereitstellung sollten die folgenden Aufgaben umfassen:**
 
-1. [Überwachen Sie die Anmeldungen](../reports-monitoring/concept-all-sign-ins#sign-ins-report.md) und den Ressourcenzugriff durch das Dienstkonto, nachdem die Bereitstellung der zugeordneten Anwendung oder des zugeordneten Skripts aufgehoben wurde.
+1. [Überwachen Sie die Anmeldungen](../reports-monitoring/concept-all-sign-ins.md#sign-ins-report) und den Ressourcenzugriff durch das Dienstkonto, nachdem die Bereitstellung der zugeordneten Anwendung oder des zugeordneten Skripts aufgehoben wurde.
 
    * Ist das Konto weiterhin aktiv, ermitteln Sie, wie es verwendet wird, bevor Sie weitere Schritte ausführen.
  

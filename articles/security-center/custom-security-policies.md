@@ -1,27 +1,32 @@
 ---
 title: Erstellen benutzerdefinierter Sicherheitsrichtlinien in Azure Security Center | Microsoft-Dokumentation
 description: Von Azure Security Center überwachte benutzerdefinierte Azure Policy-Definitionen.
-services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 12/03/2020
+ms.date: 02/25/2021
 ms.author: memildin
-ms.openlocfilehash: 8d2b43ab57ea7a3b1dc1d13bcdea9932ccecb9dc
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+zone_pivot_groups: manage-asc-initiatives
+ms.openlocfilehash: a901e71da640f8413e5714ad59073324f582c1b9
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559030"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441056"
 ---
-# <a name="using-custom-security-policies"></a>Verwenden benutzerdefinierter Sicherheitsrichtlinien
+# <a name="create-custom-security-initiatives-and-policies"></a>Erstellen von benutzerdefinierten Sicherheitsinitiativen und -richtlinien
 
 Um Ihre Systeme und Ihre Umgebung zu sichern, generiert Azure Security Center Sicherheitsempfehlungen. Diese Empfehlungen basieren auf bewährten Methoden der Branche, die in die generische Standardsicherheitsrichtlinie integriert sind, die für alle Kunden bereitgestellt wird. Sie können auch aus Branchenwissen von Security Center und regulatorische Normen stammen.
 
 Mit diesem Feature können Sie eigene *benutzerdefinierte* Initiativen hinzufügen. Sie erhalten dann Empfehlungen, wenn Ihre Umgebung die von Ihnen erstellten Richtlinien nicht einhält. Alle von Ihnen erstellten benutzerdefinierten Initiativen werden neben den integrierten Initiativen im Compliance-Dashboard angezeigt, wie im Tutorial [Verbessern der Einhaltung gesetzlicher Vorschriften](security-center-compliance-dashboard.md) beschrieben wird.
 
 Wie in der [Azure Policy-Dokumentation](../governance/policy/concepts/definition-structure.md#definition-location) erläutert, müsse Sie als Speicherort für Ihre benutzerdefinierte Initiative eine Verwaltungsgruppe oder ein Abonnement angeben. 
+
+> [!TIP]
+> Eine Übersicht über die wichtigsten Konzepte auf dieser Seite finden Sie unter [Was sind Sicherheitsrichtlinien, Initiativen und Empfehlungen?](security-policy-concept.md).
+
+::: zone pivot="azure-portal"
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>So fügen Sie eine benutzerdefinierte Initiative zu Ihrem Abonnement hinzu 
 
@@ -68,6 +73,113 @@ Wie in der [Azure Policy-Dokumentation](../governance/policy/concepts/definition
 1. Um die resultierenden Empfehlungen für Ihre Richtlinie anzuzeigen, klicken Sie in der Randleiste auf **Empfehlungen**, um die Seite „Empfehlungen“ zu öffnen. Die Empfehlungen werden mit der Bezeichnung „Benutzerdefiniert“ angezeigt und sind innerhalb einer Stunde verfügbar.
 
     [![Benutzerdefinierte Empfehlungen](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
+
+::: zone-end
+
+::: zone pivot="rest-api"
+
+## <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Konfigurieren einer Sicherheitsrichtlinie in Azure Policy über die REST-API
+
+Als Teil der nativen Integration in Azure Policy ermöglicht Ihnen Azure Security Center die Nutzung der REST-API von Azure Policy, um Richtlinienzuweisungen zu erstellen. Die folgenden Anweisungen führen Sie durch das Erstellen von Richtlinienzuweisungen sowie durch das Anpassen vorhandener Zuweisungen. 
+
+Wichtige Konzepte in Azure Policy: 
+
+- Eine **Richtliniendefinition** ist eine Regel. 
+
+- Eine **Initiative** ist eine Sammlung von Richtliniendefinitionen (Regeln). 
+
+- Eine **Zuweisung** ist eine Anwendung einer Initiative oder Richtlinie für einen bestimmten Bereich (Verwaltungsgruppe, Abonnement usw.). 
+
+Security Center hat eine integrierte Initiative, die Azure Security Benchmark, die alle eigenen Sicherheitsrichtlinien enthält. Um die Richtlinien von Security Center für Ihre Azure-Ressourcen zu bewerten, sollten Sie eine Zuweisung zur Verwaltungsgruppe oder zum Abonnement erstellen, die oder das Sie bewerten möchten.
+
+In der integrierten Initiative sind alle Richtlinien von Security Center standardmäßig aktiviert. Sie können bestimmte Richtlinien aus der integrierten Initiative deaktivieren. Wenn Sie z.B. alle Security Center-Richtlinien außer der **Webanwendungsfirewall** anwenden möchten, ändern Sie den Wert des effect-Parameters der Richtlinie in **Deaktiviert**.
+
+## <a name="api-examples"></a>API-Beispiele
+
+Ersetzen Sie diese Variablen in den folgenden Beispielen:
+
+- Geben Sie für **{scope}** den Namen der Verwaltungsgruppe oder des Abonnements ein, auf die oder das Sie die Richtlinie anwenden.
+- Geben Sie für **{policyAssignmentName}** den Namen der relevanten Richtlinienzuweisung ein.
+- Geben Sie für **{name}** Ihren Namen oder den Namen des Administrators ein, der die Richtlinienänderung genehmigt hat.
+
+In diesem Beispiel wird gezeigt, wie Sie die integrierte Security Center-Initiative einem Abonnement oder einer Verwaltungsgruppe zuweisen:
+ 
+ ```
+    PUT  
+    https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+
+    Request Body (JSON) 
+
+    { 
+
+      "properties":{ 
+
+    "displayName":"Enable Monitoring in Azure Security Center", 
+
+    "metadata":{ 
+
+    "assignedBy":"{Name}" 
+
+    }, 
+
+    "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
+
+    "parameters":{}, 
+
+    } 
+
+    } 
+ ```
+
+In diesem Beispiel wird gezeigt, wie Sie die integrierte Security Center-Initiative einem Abonnement zuweisen, wobei die folgenden Richtlinien deaktiviert sind: 
+
+- Systemupdates („systemUpdatesMonitoringEffect“) 
+
+- Sicherheitskonfigurationen („systemConfigurationsMonitoringEffect“) 
+
+- Endpunktschutz (Endpoint Protection) („endpointProtectionMonitoringEffect“) 
+
+ ```
+    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+    
+    Request Body (JSON) 
+    
+    { 
+    
+      "properties":{ 
+    
+    "displayName":"Enable Monitoring in Azure Security Center", 
+    
+    "metadata":{ 
+    
+    "assignedBy":"{Name}" 
+    
+    }, 
+    
+    "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
+    
+    "parameters":{ 
+    
+    "systemUpdatesMonitoringEffect":{"value":"Disabled"}, 
+    
+    "systemConfigurationsMonitoringEffect":{"value":"Disabled"}, 
+    
+    "endpointProtectionMonitoringEffect":{"value":"Disabled"}, 
+    
+    }, 
+    
+     } 
+    
+    } 
+ ```
+In diesem Beispiel wird gezeigt, wie Sie eine Zuweisung entfernt wird:
+ ```
+    DELETE   
+    https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+ ```
+
+::: zone-end
+
 
 ## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>Verbessern der benutzerdefinierten Empfehlungen mit ausführlichen Informationen
 

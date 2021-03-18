@@ -3,12 +3,12 @@ title: 'Entwerfen der Application Insights-Bereitstellung: Eine oder mehrere Res
 description: Leiten Sie Telemetriedaten für Entwicklungs-, Test- und Produktionsabläufe an verschiedene Ressourcen.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 3964cddcf27a4b2c7397b508ccb3cc8928bd04ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9a60981e692a45dd3630073300b206289cfd2a30
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589532"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424664"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Wie viele Application Insights-Ressourcen soll ich bereitstellen?
 
@@ -32,6 +32,9 @@ Jede Application Insights-Ressource umfasst Metriken, die standardmäßig verfü
 -   Wenn Sie die Abrechnung/Kontingente zwischen den Komponenten nicht unterschiedlich verwalten müssen.
 -   Wenn es in Ordnung ist, dass ein API-Schlüssel den gleichen Zugriff auf Daten von allen Komponenten hat. und 10 API-Schlüssel für die Anforderungen aller Komponenten ausreichend sind.
 -   Wenn es in Ordnung ist, dass alle Rollen die gleichen Einstellungen für die intelligente Erkennung und Arbeitselementintegration aufweisen.
+
+> [!NOTE]
+> Wenn Sie mehrere Application Insights-Ressourcen konsolidieren möchten, können Sie Ihre vorhandenen Anwendungskomponenten auf eine neue, konsolidierte Application Insights-Ressource verweisen. Die in der alten Ressource gespeicherten Telemetriedaten werden nicht an die neue Ressource übertragen. Löschen Sie die alte Ressource also erst, wenn Sie über genügend Telemetriedaten zur Geschäftskontinuität in der neuen Ressource verfügen.
 
 ### <a name="other-things-to-keep-in-mind"></a>Weitere zu beachtende Punkte
 

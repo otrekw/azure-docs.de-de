@@ -2,18 +2,19 @@
 title: Trennen eines Datenträgers mit Daten von einem virtuellen Windows-Computer – Azure
 description: Trennen eines Datenträgers unter Verwendung des Resource Manager-Bereitstellungsmodells von einem virtuellen Computer in Azure
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: disks
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 03/03/2021
 ms.author: cynthn
-ms.openlocfilehash: a995cd1d02438ae3be7091ba55e945549558829d
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 24c95d486ce77028a2c49917d8f98de23a3a8315
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055194"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552132"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Trennen eines Datenträgers von einem virtuellen Windows-Computer
 
@@ -53,10 +54,10 @@ Sie können einen Datenträger für Daten *im laufenden Betrieb* entfernen. Stel
 1. Wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer** aus.
 1. Wählen Sie den virtuellen Computer mit dem zu trennenden Datenträger aus.
 1. Wählen Sie unter **Einstellungen** die Option **Datenträger** aus.
-1. Klicken Sie im Bereich **Datenträger** ganz rechts neben dem Datenträger, den Sie trennen möchten, auf die Schaltfläche zum Trennen (**X**).
+1. Wählen Sie im Bereich **Datenträger** ganz rechts neben dem Datenträger, den Sie trennen möchten, die Schaltfläche **X** zum Trennen aus.
 1. Wählen Sie oben auf der Seite **Speichern** aus, um Ihre Änderungen zu speichern.
 
-Der Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuellen Computer angefügt.
+Der Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuellen Computer angefügt. Der Datenträger wird nicht gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

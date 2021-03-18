@@ -1,25 +1,19 @@
 ---
 title: Azure Disk Encryption für Linux
 description: Stellen Sie Azure Disk Encryption mithilfe einer VM-Erweiterung auf einem virtuellen Linux-Computer bereit.
-services: virtual-machines-linux
-documentationcenter: ''
-author: ejarvi
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
-ms.date: 03/19/2020
+ms.service: virtual-machines
+ms.subservice: disks
+author: ejarvi
 ms.author: ejarvi
-ms.openlocfilehash: 61f8fd3d671bbd66d2dc5656e9a467b06798d280
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.date: 03/19/2020
+ms.collection: linux
+ms.openlocfilehash: 7c79391e3459804a4b5ce72c2230d17af3269641
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968416"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566259"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption für Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -42,9 +36,9 @@ Es gibt zwei Versionen des Erweiterungsschemas für Azure Disk Encryption (ADE):
 - v1.1 – Ein neueres empfohlenes Schema, das keine Azure Active Directory (AAD)-Eigenschaften verwendet.
 - v0.1 – Ein älteres Schema, für das keine Azure Active Directory (AAD)-Eigenschaften erforderlich sind. 
 
-Um ein Zielschema auszuwählen, muss die `typeHandlerVersion`-Eigenschaft auf die Version des Schemas festgelegt werden, das Sie verwenden möchten.
+Zum Auswählen eines Zielschemas muss die Eigenschaft `typeHandlerVersion` auf die gewünschte Schemaversion festgelegt werden.
 
-### <a name="schema-v11-no-aad-recommended"></a>Schema v1.1: Kein AAD (empfohlen)
+### <a name="schema-v11-no-aad-recommended"></a>Schema v1.1: ohne AAD (empfohlen)
 
 Das v1.1-Schema wird empfohlen und erfordert keine Azure Active Directory (AAD)-Eigenschaften.
 

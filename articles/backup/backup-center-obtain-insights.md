@@ -1,16 +1,16 @@
 ---
-title: Abrufen von Erkenntnissen mithilfe von Backup Center
+title: Gewinnen von Erkenntnissen mithilfe von Backup Center
 description: Erfahren Sie, wie Sie mit Backup Center historische Trends analysieren und tiefere Erkenntnisse aus Ihren Sicherungen gewinnen.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 47158e53e6248b2b9cef4ff6fd6b5da5972786eb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c48173749a9b47be7eeb906e9f8eec716e0cb200
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719456"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506009"
 ---
-# <a name="obtain-insights-using-backup-center"></a>Abrufen von Erkenntnissen mithilfe von Backup Center
+# <a name="obtain-insights-using-backup-center"></a>Gewinnen von Erkenntnissen mithilfe von Backup Center
 
 Zum Analysieren von historischen Trends und Gewinnen von tieferen Erkenntnissen aus Ihren Sicherungen bietet Backup Center eine Schnittstelle zu [Sicherungsberichten](configure-reports.md), die [Azure Monitor-Protokolle](../azure-monitor/logs/data-platform-logs.md) und [Azure-Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md) verwendet. Sicherungsberichte bieten die folgenden Funktionen:
 
@@ -44,20 +44,22 @@ Im Folgenden finden Sie die verfügbaren Ansichten:
 
 1. **Zusammenfassung:** Verwenden Sie diese Registerkarte, um eine allgemeine Übersicht über Ihr Sicherungsumfeld zu erhalten. [Weitere Informationen](./configure-reports.md#summary)
 
-1. **Sicherungselemente:** Auf dieser Registerkarte können Sie Informationen und Trends für Cloudspeicher anzeigen, der auf einer Sicherungselementebene verarbeitet wird. [Weitere Informationen](./configure-reports.md#backup-items)
+2. **Sicherungselemente:** Auf dieser Registerkarte können Sie Informationen und Trends für Cloudspeicher anzeigen, der auf einer Sicherungselementebene verarbeitet wird. [Weitere Informationen](./configure-reports.md#backup-items)
 
-1. **Nutzung:** Verwenden Sie diese Registerkarte zum Anzeigen von wichtigen Abrechnungsparametern für Ihre Sicherungen. [Weitere Informationen](./configure-reports.md#usage)
+3. **Nutzung:** Verwenden Sie diese Registerkarte zum Anzeigen von wichtigen Abrechnungsparametern für Ihre Sicherungen. [Weitere Informationen](./configure-reports.md#usage)
 
-1. **Aufträge:** Verwenden Sie diese Registerkarte zum Anzeigen von langfristigen Trends für Aufträge, z. B. der Anzahl fehlerhafter Aufträge pro Tag und der Hauptgründe für Auftragsfehler. [Weitere Informationen](./configure-reports.md#jobs)
+4. **Aufträge:** Verwenden Sie diese Registerkarte zum Anzeigen von langfristigen Trends für Aufträge, z. B. der Anzahl fehlerhafter Aufträge pro Tag und der Hauptgründe für Auftragsfehler. [Weitere Informationen](./configure-reports.md#jobs)
 
-1. **Richtlinien:** Verwenden Sie diese Registerkarte zum Anzeigen von Informationen zu allen aktiven Richtlinien, z. B. der Anzahl zugeordneter Elemente und des gesamten Cloudspeicherplatzes, der von Elementen verbraucht wird, die im Rahmen einer bestimmten Richtlinie gesichert wurden. [Weitere Informationen](./configure-reports.md#policies)
+5. **Richtlinien:** Verwenden Sie diese Registerkarte zum Anzeigen von Informationen zu allen aktiven Richtlinien, z. B. der Anzahl zugeordneter Elemente und des gesamten Cloudspeicherplatzes, der von Elementen verbraucht wird, die im Rahmen einer bestimmten Richtlinie gesichert wurden. [Weitere Informationen](./configure-reports.md#policies)
 
-1. **Optimieren:** Verwenden Sie diese Registerkarte, um potenzielle Möglichkeiten zur Kostenoptimierung Ihrer Sicherungen anzuzeigen. [Weitere Informationen](./configure-reports.md#optimize)
+6. **Optimieren:** Verwenden Sie diese Registerkarte, um potenzielle Möglichkeiten zur Kostenoptimierung Ihrer Sicherungen anzuzeigen. [Weitere Informationen](./configure-reports.md#optimize)
 
-1. **Einhaltung von Richtlinien**: Verwenden Sie diese Registerkarte, um zu prüfen, ob für jede Sicherungsinstanz mindestens eine erfolgreiche Sicherung pro Tag vorhanden ist.
+7. **Einhaltung von Richtlinien**: Verwenden Sie diese Registerkarte, um zu prüfen, ob für jede Sicherungsinstanz mindestens eine erfolgreiche Sicherung pro Tag vorhanden ist. [Weitere Informationen](./configure-reports.md#policy-adherence)
+
+Sie können auch mithilfe der Funktion [E-Mail-Bericht](backup-reports-email.md) E-Mails zu diesen Berichten konfigurieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Überwachen und Betreiben von Sicherungen](backup-center-monitor-operate.md)
 - [Steuern Ihres Sicherungsbestands](backup-center-govern-environment.md)
-- [Ausführen von Aktionen mithilfe des Backup Centers](backup-center-actions.md)
+- [Ausführen von Aktionen mithilfe von Backup Center](backup-center-actions.md)

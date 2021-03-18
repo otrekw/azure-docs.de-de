@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 03/03/2021
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 6451368baf9c047f0318eb74d53ffac075d4a184
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 8a8aab447007eb574a7a4bc532d8177bd0d8b345
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063449"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122475"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>Überlegungen zur Verwendung der Universellen Windows-Plattform mit MSAL.NET
 Entwickler von Anwendungen, die die UWP (Universelle Windows-Plattform) mit MSAL.NET verwenden, sollten sich mit den Konzepten befassen, die in diesem Artikel vorgestellt werden.
 
 ## <a name="the-usecorporatenetwork-property"></a>UseCorporateNetwork-Eigenschaft
-Auf der WinRT-Plattform (Windows Runtime) hat `PublicClientApplication` die boolesche Eigenschaft `UseCorporateNetwork`. Diese Eigenschaft ermöglicht es Windows 8.1-Anwendungen und UWP-Anwendungen, von der integrierten Windows-Authentifizierung (IWA) zu profitieren, wenn der Benutzer bei einem Konto angemeldet ist, das über einen Azure Active Directory-Verbundmandanten (Azure AD) verfügt. Benutzer, die beim Betriebssystem angemeldet sind, können auch Einmaliges Anmelden (SSO) verwenden. Wenn Sie die `UseCorporateNetwork`-Eigenschaft festlegen, verwendet MSAL.NET einen Webauthentifizierungsbroker (WAB).
+Auf der WinRT-Plattform (Windows Runtime) hat `PublicClientApplication` die boolesche Eigenschaft `UseCorporateNetwork`. Diese Eigenschaft ermöglicht es Windows 10-Anwendungen und UWP-Anwendungen, von der integrierten Windows-Authentifizierung (IWA) zu profitieren, wenn der Benutzer bei einem Konto angemeldet ist, das über einen Azure Active Directory (Azure AD)-Verbundmandanten verfügt. Benutzer, die beim Betriebssystem angemeldet sind, können auch Einmaliges Anmelden (SSO) verwenden. Wenn Sie die `UseCorporateNetwork`-Eigenschaft festlegen, verwendet MSAL.NET einen Webauthentifizierungsbroker (WAB).
 
 > [!IMPORTANT]
 > Wenn die `UseCorporateNetwork`-Eigenschaft auf „true“ festgelegt ist, wird davon ausgegangen, dass der Anwendungsentwickler IWA in der Anwendung aktiviert hat. So aktivieren Sie IWA:

@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5cb7e1521c649be4abc155d9f28a49b43a11e6d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: fea9662b6f5890c6240e91b26cf641d6166d560a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071261"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051190"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegieren von App-Registrierungsberechtigungen in Azure Active Directory
 
@@ -77,7 +77,7 @@ Azure AD umfasst eine Reihe integrierter Administratorrollen zum Gewähren des 
 - Anwendungsadministrator: Benutzer mit dieser Rolle können alle Aspekte von Unternehmensanwendungen, Anwendungsregistrierungen und Anwendungsproxyeinstellungen erstellen und verwalten. Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und Anwendungsberechtigungen, mit Ausnahme von Berechtigungen für Microsoft Graph. Benutzer, denen diese Rolle zugewiesen wurde, werden bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen nicht als Besitzer hinzugefügt.
 - Cloudanwendungsadministrator: Benutzer mit dieser Rolle haben die gleichen Berechtigungen wie die Rolle des Anwendungsadministrators, mit Ausnahme der Möglichkeit, den Anwendungsproxy zu verwalten. Benutzer, denen diese Rolle zugewiesen wurde, werden bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen nicht als Besitzer hinzugefügt.
 
-Weitere Informationen und eine Beschreibung dieser Rollen finden Sie unter [Verfügbare Rollen](permissions-reference.md#available-roles).
+Weitere Informationen und eine Beschreibung dieser Rollen finden Sie unter [Integrierte Rollen in Azure AD](permissions-reference.md).
 
 Befolgen Sie die Anweisungen in der Anleitung zum [Zuweisen von Administrator- und anderen Rollen zu Benutzern mithilfe von Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md), um die Rollen „Anwendungsadministrator“ oder „Cloudanwendungsadministrator“ zuzuweisen.
 

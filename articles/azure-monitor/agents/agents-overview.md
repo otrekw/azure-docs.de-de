@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: b8cfb483f2b06c072707c57ff45b7ad995a22eb4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a2f6023b86b96266be8e625fd5b0d6625500e3fc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034437"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551469"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Übersicht über Azure Monitor-Agents
 
@@ -152,10 +152,10 @@ In der folgenden Tabelle sind die Betriebssysteme aufgeführt, die von den Azure
 
 ### <a name="linux"></a>Linux
 
-| Betriebssystem | Azure Monitor-Agent | Log Analytics-Agent | Abhängigkeits-Agent | Diagnoseerweiterung | 
+| Betriebssystem | Azure Monitor-Agent<sup>1</sup> | Log Analytics-Agent<sup>1</sup> | Abhängigkeits-Agent | Diagnoseerweiterung<sup>2</sup>| 
 |:---|:---:|:---:|:---:|:---:
 | Amazon Linux 2017.09                                        |   | X |   |   |
-| CentOS Linux 8 <sup>1</sup> <sup>2</sup>                    | X | X | X |   |
+| CentOS Linux 8                                              | X<sup>3</sup> | X | X |   |
 | CentOS Linux 7                                              | X | X | X | X |
 | CentOS Linux 6                                              |   | X |   |   |
 | CentOS Linux 6.5+                                           |   | X | X | X |
@@ -164,26 +164,28 @@ In der folgenden Tabelle sind die Betriebssysteme aufgeführt, die von den Azure
 | Debian 8                                                    |   | X | X |   |
 | Debian 7                                                    |   |   |   | X |
 | OpenSUSE 13.1+                                              |   |   |   | X |
-| Oracle Linux 8 <sup>1</sup> <sup>2</sup>                    | X | X |   |   |
+| Oracle Linux 8                                              | X<sup>3</sup> | X |   |   |
 | Oracle Linux 7                                              | X | X |   | X |
 | Oracle Linux 6                                              |   | X |   |   |
 | Oracle Linux 6.4+                                           |   | X |   | X |
-| Red Hat Enterprise Linux Server 8 <sup>1</sup> <sup>2</sup> | X | X | X |   |
+| Red Hat Enterprise Linux Server 8                           | X<sup>3</sup> | X | X |   |
 | Red Hat Enterprise Linux Server 7                           | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                           |   | X | X |   |
 | Red Hat Enterprise Linux Server 6.7+                        |   | X | X | X |
-| SUSE Linux Enterprise Server 15.2 <sup>1</sup> <sup>2</sup> | X |   |   |   |
-| SUSE Linux Enterprise Server 15.1 <sup>1</sup> <sup>2</sup> | X | X |   |   |
+| SUSE Linux Enterprise Server 15.2                           | X<sup>3</sup> |   |   |   |
+| SUSE Linux Enterprise Server 15.1                           | X<sup>3</sup> | X |   |   |
 | SUSE Linux Enterprise Server 15                             | X | X | X |   |
 | SUSE Linux Enterprise Server 12                             | X | X | X | X |
-| Ubuntu 20.04 LTS <sup>1</sup>                               | X | X | X |   |
+| Ubuntu 20.04 LTS                                            | X | X | X |   |
 | Ubuntu 18.04 LTS                                            | X | X | X | X |
 | Ubuntu 16.04 LTS                                            | X | X | X | X |
 | Ubuntu 14.04 LTS                                            |   | X |   | X |
 
-<sup>1</sup> Erfordert die Installation von Python 3 auf dem Computer.
+<sup>1</sup> Erfordert die Installation von Python (2 oder 3) auf dem Computer.
 
-<sup>2</sup> Bekanntes Problem beim Sammeln von Syslog-Ereignissen. Zurzeit werden nur Leistungsdaten unterstützt.
+<sup>2</sup> Erfordert die Installation von Python 2 auf dem Computer.
+
+<sup>3</sup> Bekanntes Problem beim Sammeln von Syslog-Ereignissen. Zurzeit werden nur Leistungsdaten unterstützt.
 #### <a name="dependency-agent-linux-kernel-support"></a>Unterstützung des Linux-Kernels für den Dependency-Agent
 
 Da der Dependency-Agent auf der Kernelebene arbeitet, ist die Unterstützung auch von der Kernelversion abhängig. In der folgenden Tabelle sind die Haupt- und Nebenversionen des Linux-Betriebssystems sowie die unterstützten Kernelversionen für den Dependency-Agent aufgeführt:

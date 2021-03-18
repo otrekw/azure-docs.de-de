@@ -6,19 +6,25 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 05a2eaeb3b716988a8ae1eddcaa5a5a58cc3776a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 622a83c6d91bf2a30c2844e3279d6fd4b89d429f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675695"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213792"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Behandeln von Problemen mit dem Aktivieren oder Anzeigen von Application Insights Profiler
 
-> [!CAUTION]
-> Beim Ausführen des Profilers für ASP.NET Core-Apps in Azure App Service tritt ein Fehler auf. Wir haben eine Korrektur entwickelt, aber es dauert einige Wochen, bis diese weltweit bereitgestellt ist. Sie können den Fehler umgehen, indem Sie das Application Insights SDK zu Ihrer Anwendung hinzufügen. Eine Anleitung dazu finden Sie [hier](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio).
-
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>Allgemeine Problembehandlung
+
+### <a name="make-sure-youre-using-the-appropriate-profiler-endpoint"></a>Stellen Sie sicher, dass Sie den richtigen Profiler-Endpunkt verwenden.
+
+Derzeit sind [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) und [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) die einzigen Regionen, für die Endpunktänderungen erforderlich sind.
+
+|App-Einstellung    | US Government-Cloud | China-Cloud |   
+|---------------|---------------------|-------------|
+|ApplicationInsightsProfilerEndpoint         | `https://profiler.monitor.azure.us`    | `https://profiler.monitor.azure.cn` |
+|ApplicationInsightsProfilerEndpoint | `https://dc.applicationinsights.us` | `https://dc.applicationinsights.azure.cn` |
 
 ### <a name="profiles-are-uploaded-only-if-there-are-requests-to-your-application-while-profiler-is-running"></a>Profile werden nur bei vorhandenen Anforderungen für die Anwendung während der Profiler-Ausführung hochgeladen.
 
@@ -67,6 +73,7 @@ In der Regel wartet der Thread, der schnell in einen Wartezustand wechselt, einf
 Senden Sie ein Supportticket über das Portal. Geben Sie dabei die Korrelations-ID aus der Fehlermeldung an.
 
 ## <a name="troubleshoot-profiler-on-azure-app-service"></a>Problembehandlung für Profiler in Azure App Service
+
 Damit Profiler ordnungsgemäß funktioniert, müssen die folgenden Voraussetzungen erfüllt sein:
 * Für die Web-App muss mindestens ein App Service-Plan mit Basic-Tarif verwendet werden.
 * Für Ihre Web-App muss Application Insights aktiviert sein.
@@ -95,6 +102,10 @@ Wenn Profiler nicht funktioniert, haben Sie die Möglichkeit, das Protokoll heru
 
 ### <a name="check-the-diagnostic-services-site-extension-status-page"></a>Überprüfen der Seite „Status“ der Websiteerweiterung für Diagnosedienste
 Wenn Profiler über den Bereich [Application Insights](profiler.md) im Portal aktiviert wurde, erfolgte die Aktivierung über die Websiteerweiterung für Diagnosedienste.
+
+> [!NOTE]
+> Die codefreie Installation von Application Insights Profiler folgt der Richtlinie zur .NET Core-Unterstützung.
+> Weitere Informationen zu unterstützten Runtimes finden Sie in der [.NET Core-Unterstützungsrichtlinie](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
 Sie können die Statusseite dieser Erweiterung unter der folgenden URL überprüfen: `https://{site-name}.scm.azurewebsites.net/DiagnosticServices`.
 
@@ -140,7 +151,7 @@ Wenn Sie Ihre Web-App erneut für eine Web-Apps-Ressource bereitstellen und Prof
 
 *Verzeichnis nicht leer „D:\\home\\site\\wwwroot\\App_Data\\jobs“*
 
-Dieser Fehler tritt auf, wenn Sie Web Deploy über Skripts oder Azure Pipelines ausführen. Als Lösung fügen Sie die folgenden zusätzlichen Bereitstellungsparameter zum Web Deploy-Task hinzu:
+Dieser Fehler tritt auf, wenn Sie Web Deploy über Skripts oder Azure Pipelines ausführen. Als Lösung fügen Sie die folgenden Bereitstellungsparameter dem Web Deploy-Task hinzu:
 
 ```
 -skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'

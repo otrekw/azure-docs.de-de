@@ -1,24 +1,21 @@
 ---
-title: Zusammenstellen von VMs
-description: Erfahren Sie, wie Sie durch Zusammenstellen von Azure-VM-Ressourcen die Latenz verbessern können.
+title: Näherungsplatzierungsgruppen
+description: Erfahren Sie mehr über die Verwendung von Näherungsplatzierungsgruppen in Azure.
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
+ms.subservice: proximity-placement-groups
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 3/07/2021
 ms.reviewer: zivr
-ms.openlocfilehash: e193b7d084723ad50ddc0d1a40e0b6c8a111af73
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 1a65a1e4ecd989f3a7c4968c424472c3c6dfe472
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924021"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559073"
 ---
-# <a name="co-locate-resources-for-improved-latency"></a>Zusammenstellen von Ressourcen für geringere Latenz
-
-Wenn Sie Ihre Anwendung in Azure bereitstellen und die Instanzen auf Regionen oder Verfügbarkeitszonen verteilen, führt dies zu einer Netzwerklatenz, die sich möglicherweise auf die Gesamtleistung Ihrer Anwendung auswirkt. 
-
-## <a name="proximity-placement-groups"></a>Näherungsplatzierungsgruppen
+# <a name="proximity-placement-groups"></a>Näherungsplatzierungsgruppen
 
 Wenn Sie VMs in einer einzelnen Region anordnen, verringert sich der physische Abstand zwischen den Instanzen. Wenn Sie sie in einer einzelnen Verfügbarkeitszone anordnen, verringert sich ebenfalls ihr physischer Abstand. Wenn jedoch Ihre Ressourcen in Azure zunehmen, kann eine einzige Verfügbarkeitszone auch mehrere physische Rechenzentren umspannen. Dies kann zu Netzwerklatenzen führen, die sich auf die Anwendung auswirken. 
 

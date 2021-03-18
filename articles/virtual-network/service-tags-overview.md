@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 41db671e4ab76dc56dc2c01f4852640acfe3fd83
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 18b79b105bcc4b5b0b65fc6f7d6b602ffff55561
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389738"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455821"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken
 <a name="network-service-tags"></a>
@@ -53,6 +53,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **AzureActiveDirectory** | Azure Active Directory | Ausgehend | Nein | Ja |
 | **AzureActiveDirectoryDomainServices** | Verwaltungsdatenverkehr für dedizierte Azure Active Directory Domain Services-Bereitstellungen. | Beide | Nein | Ja |
 | **AzureAdvancedThreatProtection** | Azure Advanced Threat Protection | Ausgehend | Nein | Nein |
+| **AzureAPIForFHIR** | Azure API für FHIR (Fast Healthcare Interoperability Resources).<br/><br/> *Hinweis: Dieses Tag ist derzeit nicht über das Azure-Portal konfigurierbar.*| Ausgehend | Nein | Nein |
 | **AzureArcInfrastructure** | Azure Arc-fähige Server, Azure Arc-fähiges Kubernetes und Datenverkehr der Gastkonfiguration.<br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit von den Tags **AzureActiveDirectory**,**AzureTrafficManager** und **AzureResourceManager** auf. *Dieses Tag ist derzeit nicht über das Azure-Portal konfigurierbar*.| Ausgehend | Nein | Ja |
 | **AzureBackup** |Azure Backup.<br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit vom Tag **Storage** und **AzureActiveDirectory** auf. | Ausgehend | Nein | Ja |
 | **AzureBotService** | Azure Bot Service | Ausgehend | Nein | Nein |
@@ -130,7 +131,7 @@ Sie können die aktuellen Informationen zu Diensttag und Bereich abrufen und in 
 Sie können die aktuelle Liste der Diensttags zusammen mit Details zum IP-Adressbereich programmgesteuert abrufen:
 
 - [REST](/rest/api/virtualnetwork/servicetags/list)
-- [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag?viewFallbackFrom=azps-2.3.2)
+- [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
 - [Azure-Befehlszeilenschnittstelle](/cli/azure/network#az-network-list-service-tags)
 
 > [!NOTE]
@@ -152,7 +153,7 @@ Die IP-Adressbereiche in diesen Dateien liegen in CIDR-Notation vor.
 
 ### <a name="tips"></a>Tipps 
 - Sie können Updates zwischen verschiedenen Veröffentlichungen anhand der erhöhten *changeNumber*-Werte in der JSON-Datei erkennen. Jeder Teilabschnitt (z. B. **Storage.WestUS**) weist einen eigenen *changeNumber*-Wert auf, der bei Änderungen erhöht wird. Die oberste Ebene des *changeNumber*-Werts einer Datei wird erhöht, wenn einer der Teilabschnitte geändert wird.
-- Beispiele für die Analyse der Diensttaginformationen (z. B. zum Abrufen aller Adressbereiche für „Storage“ in „USA, Westen“) finden Sie in der Dokumentation zur [Diensttagermittlungs-API in PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag?viewFallbackFrom=azps-2.3.2).
+- Beispiele für die Analyse der Diensttaginformationen (z. B. zum Abrufen aller Adressbereiche für „Storage“ in „USA, Westen“) finden Sie in der Dokumentation zur [Diensttagermittlungs-API in PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag).
 - Wenn Diensttags neue IP-Adressen hinzugefügt werden, werden diese frühestens nach einer Woche in Azure verwendet. Dadurch haben Sie Zeit, die Systeme zu aktualisieren, von denen ggf. die den Diensttags zugeordneten IP-Adressen nachverfolgt werden müssen.
 
 ## <a name="next-steps"></a>Nächste Schritte

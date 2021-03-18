@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 02/04/2021
-ms.openlocfilehash: 9136947767bffb7bea800cdd2a735794baf8f329
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.date: 03/08/2021
+ms.openlocfilehash: 88ac8bb1bc804604b96d5c90025b8325a6ce4962
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007362"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503118"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Neuerungen in Azure Sentinel
 
@@ -30,11 +30,125 @@ Entsprechend gekennzeichnete Features sind derzeit als VORSCHAUVERSION verfügba
 > Und auch Sie selbst können sich beteiligen! Werden Sie Teil der [GitHub-Community für Azure Sentinel-Bedrohungsspezialisten](https://github.com/Azure/Azure-Sentinel/wiki).
 > 
 
+## <a name="march-2021"></a>März 2021
+
+- [Microsoft 365 Defender-Vorfallsintegration](#microsoft-365-defender-incident-integration) (öffentliche Vorschau)
+- [Neue Microsoft-Dienstconnectors mit Azure Policy](#new-microsoft-service-connectors-using-azure-policy)
+
+### <a name="microsoft-365-defender-incident-integration"></a>Microsoft 365 Defender-Vorfallsintegration
+
+Die Vorfallsintegration [Microsoft 365 Defender (M365D)](/microsoft-365/security/mtp/microsoft-threat-protection) von Azure Sentinel ermöglicht es Ihnen, alle M365D-Vorfälle in Azure Sentinel zu streamen und sie zwischen beiden Portalen synchron zu halten. Vorfälle aus M365D (früher bekannt als Microsoft Threat Protection oder MTP) enthalten alle zugehörigen Warnungen, Entitäten und relevanten Informationen, die Ihnen genügend Kontext bieten, um Triage und erste Untersuchungen in Azure Sentinel durchzuführen. Sobald sie in Sentinel enthalten sind, bleiben Vorfälle bidirektional mit M365D synchronisiert, sodass Sie die Vorteile beider Portale bei Ihrer Vorfallsuntersuchung nutzen können.
+
+Die gemeinsame Nutzung von Azure Sentinel und Microsoft 365 Defender vereint die Vorteile beider Lösungen. Sie erhalten den Überblick einer SIEM-Lösung über den sämtliche Informationsressourcen in Ihrer Organisation und dazu die Detailtiefe der angepassten und zugeschnittenen Untersuchungsleistung eines XDR zum Schutz Ihrer Microsoft 365-Ressourcen – beide werden für einen nahtlosen SOC-Betrieb koordiniert und synchronisiert.
+
+Weitere Informationen finden Sie unter [Microsoft 365 Defender-Integration in Azure Sentinel](microsoft-365-defender-sentinel-integration.md).
+
+### <a name="new-microsoft-service-connectors-using-azure-policy"></a>Neue Microsoft-Dienstconnectors mit Azure Policy
+
+[Azure Policy](../governance/policy/overview.md) ist ein Azure-Dienst, mit dem Sie mithilfe von Richtlinien die Eigenschaften einer Ressource erzwingen und steuern können. Durch die Verwendung von Richtlinien wird sichergestellt, dass Ressourcen mit Ihren IT-Governancestandards konform bleiben.
+
+Zu den über Richtlinien steuerbaren Eigenschaften gehören die Erstellung und Verarbeitung von Diagnose- und Überwachungsprotokollen. In Azure Sentinel wird jetzt Azure Policy verwendet, um eine allgemeine Gruppe von Diagnoseprotokolleinstellungen auf alle (aktuellen und zukünftigen) Ressourcen eines bestimmten Typs anzuwenden, deren Protokolle in Azure Sentinel erfasst werden sollen. Dank Azure Policy ist es nicht mehr erforderlich, die Diagnoseprotokolleinstellungen einzeln für jede Ressource festzulegen.
+
+Azure Policy-basierte Connectors sind nun für die folgenden Azure-Dienste verfügbar:
+- [Azure Key Vault](connect-azure-key-vault.md) (öffentliche Vorschau)
+- [Azure Kubernetes Service](connect-azure-kubernetes-service.md) (öffentliche Vorschau)
+- Azure SQL-Datenbanken/-Server (allgemeine Verfügbarkeit)
+
+Kunden können die Protokolle weiterhin manuell für bestimmte Instanzen senden, ohne die Richtlinien-Engine zu verwenden.
+
+## <a name="february-2021"></a>Februar 2021
+
+- [Cybersecurity Maturity Model Certification-Arbeitsmappe (CMMC)](#cybersecurity-maturity-model-certification-cmmc-workbook)
+- [Datenconnectors von Drittanbietern](#third-party-data-connectors)
+- [UEBA-Erkenntnisse auf der Entitätsseite](#ueba-insights-in-the-entity-page)
+- [Verbesserte Vorfallsuche](#improved-incident-search)
+
+### <a name="cybersecurity-maturity-model-certification-cmmc-workbook"></a>Cybersecurity Maturity Model Certification-Arbeitsmappe (CMMC)
+
+Die Azure Sentinel-CMMC-Arbeitsmappe umfasst einen Mechanismus zum Anzeigen von Protokollabfragen, die auf CMMC-Steuerelemente im gesamten Microsoft-Portfolio ausgerichtet sind, einschließlich Microsoft-Sicherheitsangebote, Office 365, Teams, Intune, Windows Virtual Desktop und vieles mehr.
+
+Anhand der CMMC-Arbeitsmappe können Sicherheitsarchitekten, Techniker, Security Operations-Analysten, Manager und IT-Experten ein Situationsbewusstsein zum Sicherheitsstatus von Cloudworkloads erhalten. Außerdem gibt es Empfehlungen zum Auswählen, Entwerfen, Bereitstellen und Konfigurieren von Microsoft-Angeboten zur Anpassung an die jeweiligen CMMC-Anforderungen und -Praktiken.
+
+Auch wenn Sie nicht verpflichtet sind, CMMC einzuhalten, ist die CMMC-Arbeitsmappe nützlich für den Aufbau von Security Operations Centern, die Entwicklung von Warnungen, die Visualisierung von Bedrohungen und das Situationsbewusstsein von Workloads.
+
+Auf die CMMC-Arbeitsmappe können Sie im Azure Sentinel-Bereich **Arbeitsmappen** zugreifen. Wählen Sie **Vorlage** aus, und suchen Sie dann nach **CMMC**.
+
+:::image type="content" source="media/whats-new/cmmc-guide-toggle.gif" alt-text="Aktivieren und Deaktivieren der CMMC-Arbeitsmappe" lightbox="media/whats-new/cmmc-guide-toggle.gif":::
+
+
+Weitere Informationen finden Sie in folgenden Quellen:
+
+- [Azure Sentinel Cybersecurity Maturity Model Certification (CMMC) Workbook](https://techcommunity.microsoft.com/t5/public-sector-blog/azure-sentinel-cybersecurity-maturity-model-certification-cmmc/ba-p/2110524) (Azure Sentinel-Cybersecurity Maturity Model Certification-Arbeitsmappe (CMMC))
+- [Tutorial: Visualisieren und Überwachen Ihrer Daten](tutorial-monitor-your-data.md)
+
+
+### <a name="third-party-data-connectors"></a>Datenconnectors von Drittanbietern
+
+In unserer Sammlung werden kontinuierlich Connectors von Drittanbietern integriert. Allein in den letzten zwei Monaten wurden dreißig Connectors hinzugefügt. Hier die Liste:
+
+- [Agari Phishing Defense und Brand Protection](connect-agari-phishing-defense.md)
+- [Sicherheitsrelevante Akamai-Ereignisse](connect-akamai-security-events.md)
+- [Alsid for Active Directory](connect-alsid-active-directory.md)
+- [Apache HTTP Server](connect-apache-http-server.md)
+- [Aruba ClearPass](connect-aruba-clearpass.md)
+- [Blackberry CylancePROTECT](connect-data-sources.md)
+- [Broadcom Symantec DLP](connect-broadcom-symantec-dlp.md)
+- [Cisco Firepower eStreamer](connect-data-sources.md)
+- [Cisco Meraki](connect-cisco-meraki.md)
+- [Cisco Umbrella](connect-cisco-umbrella.md)
+- [Cisco Unified Computing System (UCS)](connect-cisco-ucs.md)
+- [ESET Enterprise Inspector](connect-data-sources.md)
+- [ESET Security Management Center](connect-data-sources.md)
+- [Google Workspace (ehemals G Suite)](connect-google-workspace.md)
+- [Imperva WAF Gateway](connect-imperva-waf-gateway.md)
+- [Juniper SRX](connect-juniper-srx.md)
+- [Netskope](connect-data-sources.md)
+- [NXLog DNS Logs](connect-nxlog-dns.md)
+- [NXLog Linux Audit](connect-nxlog-linuxaudit.md)
+- [Onapsis Platform](connect-data-sources.md)
+- [Proofpoint On Demand Email Security (POD)](connect-proofpoint-pod.md)
+- [Qualys Vulnerability Management Knowledge Base](connect-data-sources.md)
+- [Salesforce Service Cloud](connect-salesforce-service-cloud.md)
+- [SonicWall Firewall](connect-data-sources.md)
+- [Sophos Cloud Optix](connect-sophos-cloud-optix.md)
+- [Squid Proxy](connect-squid-proxy.md)
+- [Symantec Endpoint Protection](connect-data-sources.md)
+- [Thycotic Secret Server](connect-thycotic-secret-server.md)
+- [Trend Micro XDR](connect-data-sources.md)
+- [VMware ESXi](connect-vmware-esxi.md)
+
+### <a name="ueba-insights-in-the-entity-page"></a>UEBA-Erkenntnisse auf der Entitätsseite
+
+Die Entitätsdetailseiten in Azure Sentinel enthalten einen [Erkenntnisbereich](identify-threats-with-entity-behavior-analytics.md#entity-insights), in dem verhaltensrelevante Erkenntnisse zu der Entität angezeigt werden, sodass Sie schnell Anomalien und Sicherheitsbedrohungen ermitteln können.
+
+Wenn Sie [UEBA aktiviert](ueba-enrichments.md) und einen Zeitraum von mindestens vier Tagen ausgewählt haben, enthält dieser Erkenntnisbereich jetzt auch die folgenden neuen Abschnitte für UEBA-Erkenntnisse:
+
+|`Section`  |BESCHREIBUNG  |
+|---------|---------|
+|**UEBA Insights** (UEBA-Erkenntnisse)     | Zusammenfassung anomaler Benutzeraktivitäten: <br>- an verschiedenen geografischen Standorten, auf Geräten und in Umgebungen<br>- in verschiedenen Zeiträumen und mit unterschiedlicher Häufigkeit – im Vergleich zum Verlauf des Benutzer <br>- im Vergleich zum Verhalten von Peers <br>- im Vergleich zum Verhalten der Organisation     |
+|**User Peers Based on Security Group Membership** (Benutzerpeers basierend auf Sicherheitsgruppenmitgliedschaft)     |   Auflistung der Peers des Benutzers basierend auf der Mitgliedschaft in Azure AD-Sicherheitsgruppen. Teams für Sicherheitsvorgänge erhalten so eine Liste anderer Benutzer mit ähnlichen Berechtigungen.  |
+|**User Access Permissions to Azure Subscription** (Benutzerzugriffsberechtigungen für Azure-Abonnement)     |     Anzeige der Zugriffsberechtigungen des Benutzers für die Azure-Abonnements, die direkt oder über Azure AD-Gruppen oder -Dienstprinzipale zugänglich sind.   |
+|**Threat Indicators Related to The User** (Bedrohungsindikatoren in Bezug auf den Benutzer)     |  Eine Sammlung bekannter Bedrohungen in Bezug auf IP-Adressen in den Aktivitäten des Benutzers. Die Bedrohungen sind nach Bedrohungsart und -familie aufgeführt und werden durch den Microsoft Threat Intelligence-Dienst angereichert.       |
+|     |         |
+
+### <a name="improved-incident-search"></a>Verbesserte Vorfallsuche
+
+Die Suchfunktion für Azure Sentinel-Vorfälle wurde verbessert, sodass Sie beim Untersuchen einer spezifischen Bedrohung schneller durch Vorfälle navigieren können.
+
+Bei der Suche nach Vorfällen in Azure Sentinel können Sie nun nach folgenden Vorfallsdetails suchen:
+
+- ID
+- Titel
+- Produkt
+- Besitzer
+- Tag
+
 ## <a name="january-2021"></a>Januar 2021
 
 - [Analyseregel-Assistent: Verbesserte Abfragebearbeitungsfunktionen (öffentliche Vorschau)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
 - [PowerShell-Modul „Az.SecurityInsights“ (Public Preview)](#azsecurityinsights-powershell-module-public-preview)
 - [SQL-Datenbank-Connector](#sql-database-connector)
+- [Dynamics 365-Connector](#dynamics-365-connector)
 - [Verbesserte Incidentkommentare](#improved-incident-comments)
 - [Dedizierte Log Analytics-Cluster](#dedicated-log-analytics-clusters)
 - [Verwaltete Identitäten für Logik-Apps](#logic-apps-managed-identities)
@@ -50,14 +164,14 @@ Der Azure Sentinel-Assistent für geplante Analyseregeln bietet nun die folgende
 -   Erweiterte Unterstützung für AutoVervollständigen
 -   Validierung von Echtzeitabfragen Fehler in Abfragen werden nun auf der Scrollleiste als roter Block und im Registerkartennamen **Regellogik festlegen** als roter Punkt angezeigt. Außerdem kann eine Abfrage mit Fehlern nicht gespeichert werden.
 
-Weitere Informationen finden Sie im [Tutorial: Standardmäßig verfügbare Erkennung von Bedrohungen](tutorial-detect-threats-built-in.md).
+Weitere Informationen finden Sie unter [Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](tutorial-detect-threats-custom.md).
 ### <a name="azsecurityinsights-powershell-module-public-preview"></a>PowerShell-Modul „Az.SecurityInsights“ (Public Preview)
 
 Azure Sentinel unterstützt jetzt das neue PowerShell-Modul [Az.SecurityInsights](https://www.powershellgallery.com/packages/Az.SecurityInsights/).
 
 Das Modul **Az.SecurityInsights** unterstützt gängige Azure Sentinel-Anwendungsfälle wie etwa die Interaktion mit Incidents, um Dinge wie Status, Schweregrad oder Besitzer zu ändern, sowie das Hinzufügen von Kommentaren und Bezeichnungen zu Incidents und das Erstellen von Lesezeichen.
 
-Wir empfehlen zwar die Verwendung von ARM-Vorlagen ([Azure Resource Manager](/azure/azure-resource-manager/templates/)) für Ihre CI/CD-Pipeline, das Modul **Az.SecurityInsights** ist jedoch bei Aufgaben nach der Bereitstellung hilfreich und für die SOC-Automatisierung vorgesehen.  Ihre SOC-Automatisierung kann beispielsweise Schritte zum Konfigurieren von Datenconnectors, zum Erstellen von Analyseregeln oder zum Hinzufügen von Automatisierungsaktionen zu Analyseregeln enthalten.
+Wir empfehlen zwar die Verwendung von ARM-Vorlagen ([Azure Resource Manager](../azure-resource-manager/templates/index.yml)) für Ihre CI/CD-Pipeline, das Modul **Az.SecurityInsights** ist jedoch bei Aufgaben nach der Bereitstellung hilfreich und für die SOC-Automatisierung vorgesehen.  Ihre SOC-Automatisierung kann beispielsweise Schritte zum Konfigurieren von Datenconnectors, zum Erstellen von Analyseregeln oder zum Hinzufügen von Automatisierungsaktionen zu Analyseregeln enthalten.
 
 Weitere Informationen, einschließlich einer vollständigen Liste und einer Beschreibung der verfügbaren Cmdlets, sowie Parameterbeschreibungen und Beispiele finden Sie in der [PowerShell-Dokumentation zu „Az.SecurityInsights“](/powershell/module/az.securityinsights/).
 
@@ -68,6 +182,12 @@ Azure Sentinel bietet jetzt einen Azure SQL-Datenbank-Connector, mit dem Sie di
 Azure SQL ist eine vollständig verwaltete PaaS-Datenbank-Engine (Platform-as-a-Service), bei der die meisten Funktionen für die Datenbankverwaltung ohne Benutzereingriff erfolgen, z. B. Upgrades, Patches, Sicherungen und Überwachung.
 
 Weitere Informationen finden Sie unter [Verbinden von Diagnose- und Überwachungsprotokollen von Azure SQL-Datenbank](connect-azure-sql-logs.md).
+
+### <a name="dynamics-365-connector"></a>Dynamics 365-Connector
+
+Azure Sentinel umfasst nun einen Connector für Microsoft Dynamics 365, über den Sie die Aktivitätsprotokolle für Benutzer, Administratoren und Unterstützung der Dynamics 365-Anwendungen in Azure Sentinel erfassen können. Anhand dieser Daten können Sie die gesamten Datenverarbeitungsaktionen überwachen und auf mögliche Sicherheitsverletzungen prüfen.
+
+Weitere Informationen finden Sie unter [Verbinden von Dynamics 365-Aktivitätsprotokollen mit Azure Sentinel](connect-dynamics-365.md).
 
 ### <a name="improved-incident-comments"></a>Verbesserte Incidentkommentare
 
@@ -85,7 +205,7 @@ Azure Sentinel unterstützt jetzt dedizierte Log Analytics-Cluster als Bereitst
 
 Dedizierte Cluster ermöglichen die Verwendung von Features wie kundenseitig verwalteten Schlüsseln, Lockbox, Mehrfachverschlüsselung und schnelleren arbeitsbereichsübergreifenden Abfragen, wenn sich mehrere Arbeitsbereiche im gleichen Cluster befinden.
 
-Weitere Informationen finden Sie unter [Dedizierte Azure Monitor-Protokollcluster](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters).
+Weitere Informationen finden Sie unter [Dedizierte Azure Monitor-Protokollcluster](../azure-monitor/logs/logs-dedicated-clusters.md).
 
 ### <a name="logic-apps-managed-identities"></a>Verwaltete Identitäten für Logik-Apps
 
@@ -97,7 +217,7 @@ Azure Sentinel unterstützt jetzt verwaltete Identitäten für den Logic Apps-Co
 
 Weitere Informationen finden Sie unter
 
-- [Authentifizieren des Zugriffs auf Azure-Ressourcen mithilfe verwalteter Identitäten in Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
+- [Authentifizieren des Zugriffs auf Azure-Ressourcen mithilfe verwalteter Identitäten in Azure Logic Apps](../logic-apps/create-managed-service-identity.md)
 - [Dokumentation zum Logic Apps-Connector für Azure Sentinel](/connectors/azuresentinel) 
 
 ### <a name="improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview"></a>Verbesserte Regeloptimierung mit den Vorschaudiagrammen für Analyseregeln (Public Preview)
@@ -151,18 +271,17 @@ Azure Sentinel verwendet den Log Analytics-Agent, um Ereignisse wie Windows-Sic
 > Der Log Analytics-Agent wird manchmal auch als OMS-Agent oder als Microsoft Monitoring Agent (MMA) bezeichnet. 
 > 
 
-Weitere Informationen finden Sie in der [Log Analytics-Dokumentation](/azure/azure-monitor/platform/log-analytics-agent) sowie in den [Versionshinweisen zum Log Analytics-Agent](https://github.com/microsoft/OMS-Agent-for-Linux/releases).
+Weitere Informationen finden Sie in der [Log Analytics-Dokumentation](../azure-monitor/agents/log-analytics-agent.md) sowie in den [Versionshinweisen zum Log Analytics-Agent](https://github.com/microsoft/OMS-Agent-for-Linux/releases).
 ## <a name="november-2020"></a>November 2020
 
-- [Überwachen Ihrer Logic Apps-Playbooks in Azure Sentinel](#monitor-your-logic-apps-playbooks-in-azure-sentinel)
+- [Überwachen der Integrität Ihrer Playbooks in Azure Sentinel](#monitor-your-playbooks-health-in-azure-sentinel)
 - [Microsoft 365 Defender-Connector (Public Preview)](#microsoft-365-defender-connector-public-preview)
-### <a name="monitor-your-logic-apps-playbooks-in-azure-sentinel"></a>Überwachen Ihrer Logic Apps-Playbooks in Azure Sentinel
 
-Azure Sentinel ist nun in [Azure Logic Apps](/azure/logic-apps/) integriert. Dieser Clouddienst unterstützt Sie beim Planen, Automatisieren und Orchestrieren von Aufgaben, Geschäftsprozessen und Workflows.
+### <a name="monitor-your-playbooks-health-in-azure-sentinel"></a>Überwachen der Integrität Ihrer Playbooks in Azure Sentinel
 
-Verwenden Sie eine Azure-Logik-App in Azure Sentinel als Playbook, das bei der Erstellung eines Incidents oder bei der Selektierung und Bearbeitung von Incidents automatisch aufgerufen werden kann. 
+Azure Sentinel-Playbooks basieren auf in [Azure Logic Apps](../logic-apps/index.yml) integrierten Workflows. Mit diesem Clouddienst können Sie Aufgaben, Geschäftsprozesse und Workflows planen, automatisieren und orchestrieren. Playbooks können bei der Erstellung eines Vorfalls oder bei der Auswahl und Bearbeitung von Vorfällen automatisch aufgerufen werden. 
 
-Wir haben eine [Azure-Arbeitsmappe](/azure/azure-monitor/platform/workbooks-overview) namens **Überwachung der Playbookintegrität** hinzugefügt, um Einblicke in die Integrität, Leistung und Nutzung Ihrer Playbooks zu geben. Dazu zählen auch Playbooks, die Sie mit Azure Logic Apps hinzufügen. 
+Für Erkenntnisse zur Integrität, Leistung und Nutzung Ihrer Playbooks wurde eine [Arbeitsmappe](../azure-monitor/visualize/workbooks-overview.md) zur **Überwachung der Playbookintegrität** hinzugefügt. 
 
 Verwenden Sie die Arbeitsmappe **Überwachung der Playbookintegrität**, um die Integrität Ihrer Playbooks zu überwachen oder anhand der Menge der erfolgreichen oder nicht erfolgreichen Ausführungen nach Anomalien zu suchen. 
 
@@ -172,9 +291,9 @@ Die Arbeitsmappe **Überwachung der Playbookintegrität** ist ab sofort im Vorla
 
 Weitere Informationen finden Sie unter
 
-- [Logic Apps-Dokumentation](/azure/logic-apps/monitor-logic-apps-log-analytics#set-up-azure-monitor-logs)
+- [Logic Apps-Dokumentation](../logic-apps/monitor-logic-apps-log-analytics.md#set-up-azure-monitor-logs)
 
-- [Azure Monitor-Dokumentation](/azure/azure-monitor/platform/activity-log#send-to-log-analytics-workspace)
+- [Azure Monitor-Dokumentation](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace)
 
 ### <a name="microsoft-365-defender-connector-public-preview"></a>Microsoft 365 Defender-Connector (Public Preview)
  

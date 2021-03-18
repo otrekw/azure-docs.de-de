@@ -4,12 +4,12 @@ description: Dieser Artikel enthält Informationen zum Schreiben von Code für A
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a299813620ee90591d8c9491991237f75f2e9382
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 32c3c05b61d2ee8fc79d7c863ddbe84de5fe7e2b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98623047"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432739"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>.NET-Programmierleitfaden für Azure Event Hubs (Microsoft.Azure.EventHubs-Legacypaket)
 Dieser Artikel erörtert einige gängige Szenarien zum Schreiben von Code mit Azure Event Hubs. Hierbei wird ein grundlegendes Verständnis von Event Hubs vorausgesetzt. Eine konzeptuelle Übersicht über Event Hubs finden Sie unter [Übersicht über Event Hubs](./event-hubs-about.md).
@@ -73,21 +73,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 > [!NOTE]
 > Informationen zu Partitionen finden Sie in [diesem Artikel](event-hubs-features.md#partitions), wenn Sie mit diesen nicht vertraut sind. 
 
-Beim Senden von Daten können Sie einen gehashten Wert angeben, um eine Partitionszuweisung zu generieren. Sie geben die Partition mithilfe der Eigenschaft [PartitionSender.PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) an. Wenn Sie sich für Partitionen entscheiden, müssen Sie jedoch zwischen Verfügbarkeit und Konsistenz wählen. 
-
-### <a name="availability-considerations"></a>Überlegungen zur Verfügbarkeit
-
-Die Verwendung eines Partitionsschlüssels ist optional, und Sie sollten dies sorgfältig abwägen. Wenn Sie beim Veröffentlichen eines Ereignisses keinen Partitionsschlüssel angeben, wird die Last von Event Hubs gleichmäßig auf die Partitionen aufgeteilt. In vielen Fällen ist die Verwendung eines Partitionsschlüssels empfehlenswert, wenn die Ereignisreihenfolge wichtig ist. Wenn Sie einen Partitionsschlüssel verwenden, ist für diese Partitionen die Verfügbarkeit auf einem einzelnen Knoten erforderlich, und mit der Zeit kann es zu Ausfällen kommen, beispielsweise beim Neustart und Patchen von Computeknoten. Wenn Sie daher eine Partitions-ID festlegen und diese Partition aus irgendeinem Grund nicht verfügbar ist, führt der Zugriff auf die Daten in dieser Partition zu einem Fehler. Wenn Hochverfügbarkeit am wichtigsten ist, geben Sie keinen Partitionsschlüssel an. In diesem Fall werden Ereignisse mithilfe eines Algorithmus für den internen Lastenausgleich an die Partitionen gesendet. In diesem Szenario treffen Sie explizit die Wahl zwischen Verfügbarkeit (keine Partitions-ID) und Konsistenz (Anheften von Ereignissen an eine Partitions-ID).
-
-Ein weiterer Aspekt ist der Umgang mit Verzögerungen bei der Ereignisverarbeitung. In einigen Fällen kann es besser sein, Daten zu löschen und den Vorgang zu wiederholen, anstatt zu versuchen, mit der Verarbeitung Schritt zu halten, wodurch möglicherweise weitere Verzögerungen bei der Downstreamverarbeitung verursacht werden. Bei einem Börsenticker ist es z.B. besser, auf vollständige aktuelle Daten zu warten. In einem Livechat oder VOIP-Szenario, möchten Sie die Daten hingegen schnell erhalten, selbst wenn sie nicht vollständig sind.
-
-Vor dem Hintergrund dieser Überlegungen zur Verfügbarkeit können Sie eine der folgenden Strategien zur Fehlerbehandlung wählen:
-
-- Beenden (Auslesen von Event Hubs beenden, bis die Fehler behoben sind)
-- Löschen (Nachrichten sind unwichtig und können gelöscht werden)
-- Wiederholen (Nachrichtenübermittlung angemessen wiederholen)
-
-Weitere Informationen und eine Erläuterung zu den Vor-und Nachteilen zwischen Verfügbarkeit und Konsistenz finden Sie unter [Verfügbarkeit und Konsistenz in Event Hubs](event-hubs-availability-and-consistency.md). 
+Beim Senden von Daten können Sie einen gehashten Wert angeben, um eine Partitionszuweisung zu generieren. Sie geben die Partition mithilfe der Eigenschaft [PartitionSender.PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) an. Wenn Sie sich für Partitionen entscheiden, müssen Sie jedoch zwischen Verfügbarkeit und Konsistenz wählen. Weitere Informationen finden Sie unter [Verfügbarkeit und Konsistenz](event-hubs-availability-and-consistency.md).
 
 ## <a name="batch-event-send-operations"></a>Sendevorgänge für Batchereignisse
 

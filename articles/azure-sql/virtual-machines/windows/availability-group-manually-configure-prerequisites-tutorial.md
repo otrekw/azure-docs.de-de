@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 869c4ac5cde7d1e50be0f2f738d8a0ce6de5e625
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: f5739604537ccc67e2cf57310269369909038d67
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98951714"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508741"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Tutorial: Voraussetzungen für die Erstellung von Verfügbarkeitsgruppen für SQL Server in Azure Virtual Machines
 
@@ -145,7 +145,7 @@ In der folgenden Tabelle sind die Netzwerkkonfigurationseinstellungen zusammenge
 
 ## <a name="create-availability-sets"></a>Erstellen von Verfügbarkeitsgruppen
 
-Vor dem Erstellen virtueller Computer müssen zunächst Verfügbarkeitsgruppen erstellt werden. Verfügbarkeitsgruppen verringern die Ausfallzeit bei geplanten oder ungeplanten Wartungsereignissen. Eine Azure-Verfügbarkeitsgruppe ist eine logische Gruppe von Ressourcen, die Azure in physischen Fehlerdomänen und Updatedomänen platziert. Eine Fehlerdomäne stellt sicher, dass die Mitglieder der Verfügbarkeitsgruppe über eine separate Stromversorgung sowie über separate Netzwerkressourcen verfügen. Eine Updatedomäne stellt sicher, dass die Mitglieder der Verfügbarkeitsgruppe nicht gleichzeitig zu Wartungszwecken heruntergefahren werden. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../../../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Vor dem Erstellen virtueller Computer müssen zunächst Verfügbarkeitsgruppen erstellt werden. Verfügbarkeitsgruppen verringern die Ausfallzeit bei geplanten oder ungeplanten Wartungsereignissen. Eine Azure-Verfügbarkeitsgruppe ist eine logische Gruppe von Ressourcen, die Azure in physischen Fehlerdomänen und Updatedomänen platziert. Eine Fehlerdomäne stellt sicher, dass die Mitglieder der Verfügbarkeitsgruppe über eine separate Stromversorgung sowie über separate Netzwerkressourcen verfügen. Eine Updatedomäne stellt sicher, dass die Mitglieder der Verfügbarkeitsgruppe nicht gleichzeitig zu Wartungszwecken heruntergefahren werden. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../../../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Sie benötigen zwei Verfügbarkeitsgruppen: Eine für die Domänencontroller Eine für die SQL Server-VMs
 
@@ -205,7 +205,7 @@ Die folgende Tabelle enthält die Einstellungen für die beiden Computer:
 | **Diagnosespeicherkonto** |*Automatisch erstellt* |
 
    >[!IMPORTANT]
-   >Sie können einen virtuellen Computer nur bei seiner Erstellung in einer Verfügbarkeitsgruppe platzieren. Die Verfügbarkeitsgruppe für einen virtuellen Computer kann nach dessen Erstellung nicht mehr geändert werden. Siehe [Verwalten der Verfügbarkeit virtueller Computer](../../../virtual-machines/manage-availability.md).
+   >Sie können einen virtuellen Computer nur bei seiner Erstellung in einer Verfügbarkeitsgruppe platzieren. Die Verfügbarkeitsgruppe für einen virtuellen Computer kann nach dessen Erstellung nicht mehr geändert werden. Siehe [Verwalten der Verfügbarkeit virtueller Computer](../../../virtual-machines/availability.md).
 
 Azure erstellt die virtuellen Computer.
 
@@ -383,7 +383,7 @@ Bevor Sie fortfahren, sollten Sie die folgenden Entwurfsentscheidungen treffen.
 
 * **Speicher – Azure Managed Disks**
 
-   Verwenden Sie als Speicher für virtuelle Computer Azure Managed Disks. Microsoft empfiehlt Managed Disks für virtuelle SQL Server-Computer. Managed Disks verwaltet den Speicher im Hintergrund. Wenn sich virtuelle Computer mit verwalteten Datenträgern in derselben Verfügbarkeitsgruppe befinden, verteilt Azure darüber hinaus die Speicherressourcen so, dass eine ausreichende Redundanz bereitgestellt wird. Weitere Informationen finden Sie in der [Übersicht über Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md). Genauere Informationen zu verwalteten Datenträgern in einer Verfügbarkeitsgruppe finden Sie unter [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe](../../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
+   Verwenden Sie als Speicher für virtuelle Computer Azure Managed Disks. Microsoft empfiehlt Managed Disks für virtuelle SQL Server-Computer. Managed Disks verwaltet den Speicher im Hintergrund. Wenn sich virtuelle Computer mit verwalteten Datenträgern in derselben Verfügbarkeitsgruppe befinden, verteilt Azure darüber hinaus die Speicherressourcen so, dass eine ausreichende Redundanz bereitgestellt wird. Weitere Informationen finden Sie in der [Übersicht über Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md). Genauere Informationen zu verwalteten Datenträgern in einer Verfügbarkeitsgruppe finden Sie unter [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe](../../../virtual-machines/availability.md).
 
 * **Netzwerk – private IP-Adressen in der Produktion**
 
@@ -539,7 +539,7 @@ Wiederholen Sie diese Schritte auf dem anderen virtuellen SQL Server-Computer.
 
 ### <a name="tuning-failover-cluster-network-thresholds"></a>Optimieren von Failovercluster-Netzwerkschwellenwerten
 
-Wenn Sie Windows-Failoverclusterknoten auf Azure-VMs mit SQL Server-Verfügbarkeitsgruppen ausführen, ändern Sie die Clustereinstellung in einen weniger strengen Überwachungsstatus.  Dadurch wird der Cluster deutlich stabiler und zuverlässiger.  Weitere Informationen hierzu finden Sie unter [IaaS mit SQL Server: Optimieren der Failovercluster-Netzwerkschwellenwerte](/windows-server/troubleshoot/iaas-sql-failover-cluster).
+Wenn Sie Windows-Failoverclusterknoten auf Azure-VMs mit SQL Server-Verfügbarkeitsgruppen ausführen, ändern Sie die Clustereinstellung in einen weniger strengen Überwachungsstatus.  Dadurch wird der Cluster deutlich stabiler und zuverlässiger.  Weitere Informationen hierzu finden Sie unter [IaaS mit SQL Server: Optimieren der Failovercluster-Netzwerkschwellenwerte](/windows-server/troubleshoot/iaas-sql-failover-cluster).
 
 
 ## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a> Konfigurieren der Firewall auf jeder SQL Server-VM

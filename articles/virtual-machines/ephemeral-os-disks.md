@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 62f89106538ab7f57047e211fc8715878f889af1
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 814824fb6708abaf549bb3de19b4aced4774a244
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684558"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485757"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Kurzlebige Betriebssystemdatenträger für virtuelle Azure-Computer
 
@@ -244,6 +244,11 @@ A: Kurzlebige Datenträger unterstützen nicht:
 - Azure Backup
 - Azure Site Recovery  
 - Austausch des Betriebssystem-Datenträgers 
+
+> [!NOTE]
+> 
+> Auf kurzlebige Datenträger kann nicht über das Portal zugegriffen werden. Beim Zugriff auf einen kurzlebigen Datenträger wird die Fehlermeldung „Ressource nicht gefunden“ oder „404“ angezeigt.
+> 
  
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können einen virtuellen Computer mit einem kurzlebigen Betriebssystemdatenträger über die [Azure-Befehlszeilenschnittstelle](/cli/azure/vm#az-vm-create) erstellen.

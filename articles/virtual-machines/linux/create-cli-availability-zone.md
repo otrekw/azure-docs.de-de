@@ -1,19 +1,19 @@
 ---
-title: Erstellen eines virtuellen Linux-Computers in einer Zone mit der Azure CLI
-description: Erstellen eines virtuellen Linux-Computers in einer Verfügbarkeitszone mit der Azure CLI
+title: Erstellen einer VM in einer Zone mithilfe der Azure-Befehlszeilenschnittstelle
+description: Erstellen einer VM in einer Verfügbarkeitszone mithilfe der Azure-Befehlszeilenschnittstelle
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 04/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 964d2b5d89fd91aca68e9b47b0049529fe284848
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3405468c64a7130bb0d71543403dd4ce5ef9c241
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016402"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558371"
 ---
-# <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Erstellen eines virtuellen Linux-Computers in einer Verfügbarkeitszone mit der Azure CLI
+# <a name="create-a-virtual-machine-in-an-availability-zone-using-azure-cli"></a>Erstellen einer VM in einer Verfügbarkeitszone mithilfe der Azure-Befehlszeilenschnittstelle
 
 In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Linux-Computers in einer Azure-Verfügbarkeitszone mithilfe der Azure CLI erläutert. Eine [Verfügbarkeitszone](../../availability-zones/az-overview.md) ist eine physisch separate Zone in einer Azure-Region. Verwenden Sie Verfügbarkeitszonen, um Ihre Apps und Daten vor einem unwahrscheinlichen Fehler oder Ausfall eines gesamten Rechenzentrums zu schützen.
 

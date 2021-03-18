@@ -3,12 +3,12 @@ title: Azure DevTest Labs-Nutzung für mehrere Labs und Abonnements
 description: Es wird beschrieben, wie Sie die Azure DevTest Labs-Nutzung für mehrere Labs und Abonnements melden.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d789b9849ec798a396e99420649792937422470f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 1e4d1f0abb5596c7fd9d22740bf052827c2ca666
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789937"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452644"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Melden der Azure DevTest Labs-Nutzung für mehrere Labs und Abonnements
 
@@ -25,7 +25,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Ressourcennutzung für ein ein
 Bevor Sie die Ressourcennutzung von DevTest Labs exportieren können, müssen Sie ein Azure Storage-Konto einrichten, damit die unterschiedlichen Dateien mit den Nutzungsdaten gespeichert werden können. Es gibt zwei gängige Möglichkeiten, den Export von Daten durchzuführen:
 
 * [DevTest Labs-REST-API](/rest/api/dtl/labs/exportresourceusage) 
-* Das PowerShell-Az.Resource-Modul [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) mit der Aktion `exportResourceUsage`, der Lab-Ressourcen-ID und den erforderlichen Parametern. 
+* Das PowerShell-Az.Resource-Modul [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) mit der Aktion `exportResourceUsage`, der Lab-Ressourcen-ID und den erforderlichen Parametern. 
 
     Der Artikel [Exportieren oder Löschen personenbezogener Daten aus Azure DevTest Labs](personal-data-delete-export.md) enthält ein PowerShell-Beispielskript mit ausführlichen Informationen zu den Daten, die exportiert werden. 
 
@@ -65,7 +65,7 @@ Der Langzeitspeicher kann verwendet werden, um Textbearbeitungen durchzuführen,
 * Erstellen komplexer Gruppierungen
 * Aggregieren der Daten
 
-Beispiele für gängige Speicherlösungen: [SQL Server](https://azure.microsoft.com/services/sql-database/), [Azure Data Lake](https://azure.microsoft.com/services/storage/data-lake-storage/) und [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Die Entscheidung, welche Langzeitspeicher-Lösung Sie wählen, hängt von Ihren Vorlieben ab. Sie können bei der Auswahl des Tools beispielsweise darauf achten, welche Optionen in Bezug auf die Interaktionsverfügbarkeit beim Visualisieren der Daten vorhanden sind.
+Einige gängige Speicherlösungen sind: [SQL Server](https://azure.microsoft.com/services/sql-database/), [Azure Data Lake](https://azure.microsoft.com/services/storage/data-lake-storage/) und [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Die Entscheidung, welche Langzeitspeicher-Lösung Sie wählen, hängt von Ihren Vorlieben ab. Sie können bei der Auswahl des Tools beispielsweise darauf achten, welche Optionen in Bezug auf die Interaktionsverfügbarkeit beim Visualisieren der Daten vorhanden sind.
 
 ## <a name="visualizing-data-and-gathering-insights"></a>Visualisieren von Daten und Sammeln von Erkenntnissen
 

@@ -5,27 +5,30 @@ description: Sie können Ihren eigenen Verschlüsselungsschlüssel verwenden, um
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/15/2020
+ms.date: 03/09/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9afce964652d2bedbe105a8a750a93d2f37eef85
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 358be21a1f7f13c0c0ce1bf0e57dda53174216b2
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179030"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517530"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Kundenseitig verwaltete Schlüssel für die Azure Storage-Verschlüsselung
 
 Sie können Ihren eigenen Verschlüsselungsschlüssel verwenden, um die Daten Ihres Speicherkontos zu schützen. Wenn Sie einen vom Kunden verwalteten Schlüssel angeben, wird dieser zum Schützen und Steuern des Zugriffs auf den Schlüssel verwendet, mit dem Ihre Daten verschlüsselt werden. Vom Kunden verwaltete Schlüssel ermöglichen eine höhere Flexibilität bei der Verwaltung von Zugriffssteuerungen.
 
-Sie müssen Azure Key Vault oder Azure Key Vault Managed HSM (Hardware Security Module, Vorschau) verwenden, um Ihre kundenseitig verwalteten Schlüssel zu speichern. Sie können entweder Ihre eigenen Schlüssel erstellen und im Schlüsseltresor oder im verwalteten HSM speichern, oder Sie können mit den Azure Key Vault-APIs Schlüssel generieren. Das Speicherkonto und der Schlüsseltresor oder das verwaltete HSM müssen sich in derselben Region und im selben Azure Active Directory-Mandanten (Azure AD) befinden, aber sie können sich in verschiedenen Abonnements befinden.
+Sie müssen Azure Key Vault oder ein verwaltetes Azure Key Vault-HSM (Hardware Security Module, Vorschau) verwenden, um Ihre kundenseitig verwalteten Schlüssel zu speichern. Sie können entweder Ihre eigenen Schlüssel erstellen und im Schlüsseltresor oder im verwalteten HSM speichern, oder Sie können mit den Azure Key Vault-APIs Schlüssel generieren. Das Speicherkonto und der Schlüsseltresor oder das verwaltete HSM müssen sich in derselben Region und im selben Azure Active Directory-Mandanten (Azure AD) befinden, aber sie können sich in verschiedenen Abonnements befinden.
 
 Weitere Informationen zum Azure Key Vault finden Sie unter [What is Azure Key Vault? (Was ist der Azure Key Vault?)](../../key-vault/general/overview.md).
 
-> [!NOTE]
+> [!IMPORTANT]
+>
+> Die Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die im verwalteten Azure Key Vault-HSM gespeichert sind, befindet sich derzeit in der **Vorschau**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+>
 > Azure Key Vault und Azure Key Vault Managed HSM unterstützen dieselben APIs und Verwaltungsschnittstellen für die Konfiguration.
 
 ## <a name="about-customer-managed-keys"></a>Informationen zu kundenseitig verwalteten Schlüsseln

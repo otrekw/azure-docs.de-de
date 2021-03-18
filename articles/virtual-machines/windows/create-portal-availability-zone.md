@@ -1,22 +1,22 @@
 ---
-title: Erstellen eines virtuellen Windows-Computers in einer Zone mit dem Azure-Portal
+title: Erstellen einer VM in einer Zone über das Azure-Portal
 description: Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit dem Azure-Portal
 documentationcenter: virtual-machines
-author: cynthn
-ms.service: virtual-machines-windows
+author: mimckitt
+ms.service: virtual-machines
 ms.topic: conceptual
-ms.workload: infrastructure
-ms.date: 03/27/2018
-ms.author: cynthn
+ms.date: 3/8/2021
+ms.author: mimckitt
+ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 339c093e5444839f9b106cd08980438a864c0474
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c7f135d4033a31f855342c172d73f51478931ab
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87828913"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501684"
 ---
-# <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit dem Azure-Portal
+# <a name="create-a-virtual-machine-in-an-availability-zone-using-the-azure-portal"></a>Erstellen einer VM in einer Verfügbarkeitszone über das Azure-Portal
 
 In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Computers in einer Azure-Verfügbarkeitszone mithilfe des Azure-Portals erläutert. Eine [Verfügbarkeitszone](../../availability-zones/az-overview.md) ist eine physisch separate Zone in einer Azure-Region. Verwenden Sie Verfügbarkeitszonen, um Ihre Apps und Daten vor einem unwahrscheinlichen Fehler oder Ausfall eines gesamten Rechenzentrums zu schützen.
 
@@ -32,7 +32,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 2. Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**. 
 
-3. Geben Sie die Informationen zum virtuellen Computer ein. Der hier eingegebene Benutzername und das Kennwort werden zum Anmelden am virtuellen Computer verwendet. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen. Wählen Sie einen Speicherort wie z.B. „USA, Osten 2“, der Verfügbarkeitszonen unterstützt. Klicken Sie zum Abschluss auf **OK**.
+3. Geben Sie die Informationen zum virtuellen Computer ein. Der hier eingegebene Benutzername und das Kennwort werden zum Anmelden am virtuellen Computer verwendet. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen. Wählen Sie einen Speicherort wie z.B. „USA, Osten 2“, der Verfügbarkeitszonen unterstützt. Klicken Sie abschließend auf **OK**.
 
     ![Eingeben grundlegender Informationen zu Ihrem virtuellen Computer im Portalblatt](./media/create-portal-availability-zone/create-windows-vm-portal-basic-blade.png)
 

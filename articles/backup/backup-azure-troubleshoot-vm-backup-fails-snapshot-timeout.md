@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Symptome, Ursachen und Lösungen von Az
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: dd6f4d7884b120d2f8b5ea3f3ccb8d5385dd0880
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 0313394ad149460f82c98c63cab95b922b4a3da2
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377104"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519604"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -23,7 +23,7 @@ Die häufigsten Sicherungsfehler können mithilfe der unten aufgeführten Schrit
 
 ### <a name="step-1-check-azure-vm-health"></a>Schritt 1: Überprüfen der Integrität der Azure-VM
 
-- **Sicherstellen, dass der Bereitstellungsstatus der Azure-VM „Wird ausgeführt“ ist:** Wenn der [VM-Bereitstellungsstatus](../virtual-machines/states-lifecycle.md#provisioning-states) dem Zustand **„Beendet“, „Zuweisung aufgehoben“ oder „Aktualisiert“** entspricht, wird der Sicherungsvorgang beeinträchtigt. Öffnen Sie das *Azure-Portal > VM > Übersicht*, und überprüfen Sie den VM-Status, um sicherzustellen, dass dieser **Wird ausgeführt** lautet. Wiederholen Sie anschließend den Sicherungsvorgang.
+- **Sicherstellen, dass der Bereitstellungsstatus der Azure-VM „Wird ausgeführt“ ist:** Wenn der [VM-Bereitstellungsstatus](../virtual-machines/states-billing.md) dem Zustand **„Beendet“, „Zuweisung aufgehoben“ oder „Aktualisiert“** entspricht, wird der Sicherungsvorgang beeinträchtigt. Öffnen Sie das *Azure-Portal > VM > Übersicht*, und überprüfen Sie den VM-Status, um sicherzustellen, dass dieser **Wird ausgeführt** lautet. Wiederholen Sie anschließend den Sicherungsvorgang.
 - **Überprüfen ausstehender Betriebssystemupdates oder Neustarts:** Stellen Sie sicher, dass es auf der VM keine ausstehenden Betriebssystemupdates oder Neustarts gibt.
 
 ### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>Schritt 2: Überprüfen der Dienstintegrität des Gast-Agents auf der Azure-VM
@@ -53,11 +53,11 @@ Azure Backup führt mithilfe der VM-Momentaufnahmenerweiterung eine anwendungsko
 
 - **Überprüfen, ob die Erweiterung durch Antivirussoftware blockiert wird:** Die Ausführung von Erweiterungen kann durch bestimmte Antivirussoftware verhindert werden.
   
-  Überprüfen Sie zum Zeitpunkt des Sicherungsfehlers, ob in **_Ereignisanzeige-Anwendungsprotokollen_** Protokolleinträge mit dem _*_fehlerhaften Anwendungsnamen „IaaSBcdrExtension.exe“_*_ vorhanden sind. Wenn Einträge angezeigt werden, kann es sein, dass das auf der VM konfigurierte Antivirenprogramm die Ausführung der Sicherungserweiterung einschränkt. Testen Sie dies, indem Sie die folgenden Verzeichnisse in der Antivirenkonfiguration ausschließen, und wiederholen Sie den Sicherungsvorgang.
+  Überprüfen Sie zum Zeitpunkt des Sicherungsfehlers, ob in ***Ereignisanzeige-Anwendungsprotokollen** _ Protokolleinträge mit dem *_fehlerhaften Anwendungsnamen „IaaSBcdrExtension.exe“_ ** vorhanden sind. Wenn Einträge angezeigt werden, kann es sein, dass das auf der VM konfigurierte Antivirenprogramm die Ausführung der Sicherungserweiterung einschränkt. Testen Sie dies, indem Sie die folgenden Verzeichnisse in der Antivirenkonfiguration ausschließen, und wiederholen Sie den Sicherungsvorgang.
   - `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
   - `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 
-- **Überprüfen, ob Netzwerkzugriff erforderlich ist**: Erweiterungspakete werden aus dem Azure Storage-Erweiterungsrepository heruntergeladen, und Uploads des Erweiterungsstatus werden in Azure Storage gepostet. [Weitere Informationen](../virtual-machines/extensions/features-windows.md#network-access)
+- **Überprüfen, ob Netzwerkzugriff erforderlich ist:** Erweiterungspakete werden aus dem Azure Storage-Erweiterungsrepository heruntergeladen, und Uploads des Erweiterungsstatus werden in Azure Storage gepostet. [Weitere Informationen](../virtual-machines/extensions/features-windows.md#network-access)
   - Wenn Sie eine nicht unterstützte Version des Agents verwenden, müssen Sie in dieser Region den von der VM ausgehenden Zugriff auf Azure Storage zulassen.
   - Wenn Sie den Zugriff auf `168.63.129.16` mit der Gastfirewall oder einem Proxy blockiert haben, treten bei den Erweiterungen unabhängig von den oben beschriebenen Szenarios Fehler auf. Die Ports 80, 443 und 32526 sind erforderlich. [Hier finden Sie weitere Informationen](../virtual-machines/extensions/features-windows.md#network-access).
 
@@ -101,7 +101,7 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 **Fehlercode**: UserErrorVmProvisioningStateFailed<br>
 **Fehlermeldung**: Der VM befindet sich im Zustand „Fehler bei der Bereitstellung“<br>
 
-Dieser Fehler tritt auf, wenn einer der Erweiterungsfehler dazu führt, dass der virtuelle Computer in den Zustand „Fehler bei der Bereitstellung“ versetzt wird.<br>Navigieren Sie im Azure-Portal zu **VM > Einstellungen > Erweiterungen > Status der Erweiterungen**, und überprüfen Sie, ob der Zustand aller Erweiterungen **Bereitstellung erfolgreich** lautet. Weitere Informationen finden Sie unter [Bereitstellungszustände](../virtual-machines/states-lifecycle.md#provisioning-states).
+Dieser Fehler tritt auf, wenn einer der Erweiterungsfehler dazu führt, dass der virtuelle Computer in den Zustand „Fehler bei der Bereitstellung“ versetzt wird.<br>Navigieren Sie im Azure-Portal zu **VM > Einstellungen > Erweiterungen > Status der Erweiterungen**, und überprüfen Sie, ob der Zustand aller Erweiterungen **Bereitstellung erfolgreich** lautet. Weitere Informationen finden Sie unter [Bereitstellungszustände](../virtual-machines/states-billing.md).
 
 - Wenn eine Erweiterung den Status „Fehler“ aufweist, kann die Sicherung beeinträchtigt werden. Stellen Sie sicher, dass diese Erweiterungsprobleme gelöst sind, und wiederholen Sie den Sicherungsvorgang.
 - Wenn der Status der VM-Bereitstellung „Wird aktualisiert“ lautet, kann die Sicherung beeinträchtigt werden. Stellen Sie sicher, dass sie fehlerfrei ist, und wiederholen Sie den Sicherungsvorgang.

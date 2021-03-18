@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
-ms.openlocfilehash: cb4f1ecdada68218c104558a85277417641906f6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2435e4ed16889d9d4701b6047c0a1f602ee7ae91
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033011"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558694"
 ---
 # <a name="azure-resource-logs"></a>Azure-Ressourcenprotokolle
 Azure-Ressourcenprotokolle sind [Plattformprotokolle](../essentials/platform-logs-overview.md), die Einblicke in Vorgänge bereitstellen, die in einer Azure-Ressource ausgeführt wurden. Der Inhalt dieser Protokolle variiert je nach Azure-Dienst und -Ressourcentyp. Ressourcenprotokolle werden standardmäßig nicht erfasst. Sie müssen eine Diagnoseeinstellung für jede Azure-Ressource erstellen, um deren Ressourcenprotokolle an einen Log Analytics-Arbeitsbereich zu senden, damit sie mit [Azure Monitor-Protokollen](../logs/data-platform-logs.md), Azure Event Hubs zur Weiterleitung außerhalb von Azure oder Azure Storage zur Archivierung verwendet werden können.
@@ -28,11 +28,11 @@ Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung finden Sie u
 
 [Erstellen Sie eine Diagnoseeinstellung](../essentials/diagnostic-settings.md), um Ressourcenprotokolle an einen Log Analytics-Arbeitsbereich zu senden. Diese Daten werden in Tabellen gespeichert, wie es unter [Struktur von Azure Monitor-Protokollen](../logs/data-platform-logs.md) beschrieben ist. Welche Tabellen von Ressourcenprotokollen verwendet werden, hängt von dem von der Ressource verwendeten Sammlungstyp ab:
 
-- Azure-Diagnose: Alle Daten werden in die Tabelle _AzureDiagnostics_ geschrieben.
+- Azure-Diagnose: Alle Daten werden in die Tabelle [AzureDiagnostics](/azure/azure-monitor/reference/tables/azurediagnostics) geschrieben.
 - Ressourcenspezifisch: Daten werden für jede Kategorie der Ressource in eine individuelle Tabelle geschrieben.
 
 ### <a name="azure-diagnostics-mode"></a>Modus „Azure-Diagnose“ 
-In diesem Modus werden alle Daten aus einer beliebigen Diagnoseeinstellung in der Tabelle _AzureDiagnostics_ gesammelt. Dies ist die Legacymethode, die heute von den meisten Azure-Diensten genutzt wird. Da mehrere Ressourcentypen Daten an dieselbe Tabelle senden, stellt deren Schema die Obermenge der Schemas aller erfassten einzelnen Datentypen dar.
+In diesem Modus werden alle Daten aus einer beliebigen Diagnoseeinstellung in der Tabelle [AzureDiagnostics](/azure/azure-monitor/reference/tables/azurediagnostics) gesammelt. Dies ist die Legacymethode, die heute von den meisten Azure-Diensten genutzt wird. Da mehrere Ressourcentypen Daten an dieselbe Tabelle senden, stellt deren Schema die Obermenge der Schemas aller erfassten einzelnen Datentypen dar. Ausführliche Informationen zur Struktur dieser Tabelle und ihrer Funktionsweise bei dieser potenziell großen Anzahl von Spalten finden Sie in der [AzureDiagnostics-Referenz](/azure/azure-monitor/reference/tables/azurediagnostics).
 
 Sehen Sie sich das folgende Beispiel an, in dem Diagnoseeinstellungen für die folgenden Datentypen im gleichen Arbeitsbereich gesammelt werden:
 
@@ -95,16 +95,6 @@ Die meisten Azure-Ressourcen schreiben Daten entweder im Modus **Azure-Diagnose*
 Sie können eine vorhandene Diagnoseeinstellung in den Modus „Ressourcenspezifisch“ ändern. In diesem Fall verbleiben Daten, die bereits gesammelt wurden, in der Tabelle _AzureDiagnostics_, bis sie gemäß Ihrer Aufbewahrungseinstellung für den Arbeitsbereich entfernt werden. Neue Daten werden in der dedizierten Tabelle gesammelt. Verwenden Sie den [union](/azure/kusto/query/unionoperator)-Operator, um Daten in beiden Tabellen abzufragen.
 
 Sehen Sie regelmäßig im Blog [Azure-Updates](https://azure.microsoft.com/updates/) nach, ob Ankündigungen für Azure-Dienste vorliegen, die den Modus „Ressourcenspezifisch“ unterstützen.
-
-### <a name="column-limit-in-azurediagnostics"></a>Spaltenlimit in AzureDiagnostics
-Für jede Tabelle in Azure Monitor-Protokollen besteht ein Eigenschaftenlimit von 500. Sobald dieses Limit erreicht ist, werden alle Zeilen, die Daten mit einer Eigenschaft außerhalb der ersten 500 enthalten, zum Zeitpunkt der Erfassung gelöscht. Die Tabelle *AzureDiagnostics* ist besonders anfällig für dieses Limit, da sie Eigenschaften für alle Azure-Dienste enthält, die in diese Tabelle schreiben.
-
-Wenn Sie Ressourcenprotokolle von mehreren Diensten erfassen, kann _AzureDiagnostics_ diesen Grenzwert überschreiten, wodurch Daten fehlen. Bis alle Azure-Dienste den Modus „Ressourcenspezifisch“ unterstützen, sollten Sie Ressourcen so konfigurieren, dass sie in mehrere Arbeitsbereiche schreiben, um die Wahrscheinlichkeit zu verringern, dass das Limit von 500 Spalten erreicht wird.
-
-### <a name="azure-data-factory"></a>Azure Data Factory
-Azure Data Factory ist aufgrund eines detaillierten Satzes von Protokollen ein Dienst, der bekanntermaßen eine große Anzahl von Spalten schreibt und möglicherweise dazu führt, dass _AzureDiagnostics_ den Grenzwert überschreitet. Für alle Diagnoseeinstellungen, die vor dem Aktivieren des Modus „Ressourcenspezifisch“ konfiguriert wurden, wird eine neue Spalte für jeden Benutzerparameter mit eindeutigem Namen zu jeder Aktivität erstellt. Aufgrund der Ausführlichkeit von Aktivitätseingaben und -ausgaben werden weitere Spalten erstellt.
- 
-Sie sollten Ihre Protokolle so schnell wie möglich zum Modus „Ressourcenspezifisch“ migrieren. Wenn Sie dafür nicht sofort eine Gelegenheit finden, können Sie als Zwischenlösung Azure Data Factory-Protokolle in einem eigenen Arbeitsbereich isolieren, um die Wahrscheinlichkeit zu minimieren, dass diese Protokolle Auswirkungen auf andere Protokolltypen haben, die in Ihren Arbeitsbereichen erfasst werden.
 
 
 ## <a name="send-to-azure-event-hubs"></a>Senden an Azure Event Hubs

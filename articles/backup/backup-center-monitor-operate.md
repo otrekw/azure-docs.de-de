@@ -3,20 +3,20 @@ title: Überwachen und Betreiben von Sicherungen mit Backup Center
 description: In diesem Artikel wird erläutert, wie Sie mit Backup Center Sicherungen im gewünschten Umfang überwachen und betreiben.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 1c40f7804a0f0bb7694e6df205648d3ad20ad80e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 86b81110d6abeb1425e18ee45dfe65a96f69687d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719541"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506124"
 ---
-# <a name="monitor-and-operate-backups-using-backup-center"></a>Überwachen und Betreiben von Sicherungen mit Backup Center
+# <a name="monitor-and-operate-backups-using-backup-center"></a>Überwachen und Verwalten von Sicherungen mit Backup Center
 
 Als Sicherungsadministrator können Sie Backup Center als zentrale Benutzeroberfläche zum Überwachen Ihrer Aufträge und täglichen Sichern des Bestands verwenden. Mit Backup Center können Sie auch reguläre Vorgänge ausführen, z. B. auf Anforderungen der bedarfsgesteuerten Sicherung reagieren, Sicherungen wiederherstellen, Sicherungsrichtlinien erstellen usw.
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
+## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
-* Backup Center wird derzeit für Sicherungen folgender Produkte unterstützt: virtuelle Azure-Computer, SQL auf virtuellen Azure-Computern, SAP HANA auf virtuellen Azure-Computern, Azure Files, Azure Blobs, Azure Managed Disks und Azure Database for PostgreSQL-Server.
+* Backup Center wird derzeit für Sicherungen folgender Produkte unterstützt: Azure-VMs, SQL auf Azure-VMs, SAP HANA auf Azure-VMs, Azure Files, Azure Blobs, Azure Managed Disks und Azure Database for PostgreSQL-Server.
 * Eine ausführliche Liste der unterstützten und nicht unterstützten Szenarien finden Sie in der [Supportmatrix](backup-center-support-matrix.md).
 
 ## <a name="backup-instances"></a>Sicherungsinstanzen
@@ -92,5 +92,5 @@ Wenn Sie das Menüelement **Sicherungsrichtlinien** auswählen, können Sie alle
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Steuern Ihres Sicherungsbestands](backup-center-govern-environment.md)
-* [Ausführen von Aktionen mithilfe des Backup Centers](backup-center-actions.md)
+* [Ausführen von Aktionen mithilfe von Backup Center](backup-center-actions.md)
 * [Gewinnen von Einblicken in Ihre Sicherungen](backup-center-obtain-insights.md)

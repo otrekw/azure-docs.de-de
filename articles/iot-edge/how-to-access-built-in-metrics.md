@@ -9,18 +9,20 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7924b06b9056a53fa9861fcd0df516845662b34b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 1a78db821c0fab01ad5d6752216a8f7682fb2c46
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341565"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200497"
 ---
 # <a name="access-built-in-metrics"></a>Zugreifen auf integrierte Metriken
 
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+
 Die IoT Edge Runtimekomponenten, IoT Edge Hub und IoT Edge Agent erzeugen integrierte Metriken im [Prometheus-Offenlegungsformat](https://prometheus.io/docs/instrumenting/exposition_formats/). Fügen Sie diese Metriken remote hinzu, um die Integrität eines IoT Edge-Geräts zu überwachen und zu verstehen.
 
-Ab Version 1.0.10 werden Metriken automatisch standardmäßig an **Port 9600** des **edgeHub** - und des **edgeAgent** -Moduls verfügbar gemacht (`http://edgeHub:9600/metrics` und `http://edgeAgent:9600/metrics`). Standardmäßig sind die Ports auf dem Host nicht zugeordnet.
+Ab Version 1.0.10 werden Metriken automatisch standardmäßig an **Port 9600** des **edgeHub**- und des **edgeAgent**-Moduls verfügbar gemacht (`http://edgeHub:9600/metrics` und `http://edgeAgent:9600/metrics`). Standardmäßig sind die Ports auf dem Host nicht zugeordnet.
 
 Sie können vom Host aus auf die Metriken zugreifen, indem Sie den Metrikport in den `createOptions` des Moduls verfügbar machen und zuordnen. Im Beispiel unten wird der Standardmetrikport dem Port 9601 auf dem Host zugeordnet:
 
@@ -44,13 +46,15 @@ Sie können vom Host aus auf die Metriken zugreifen, indem Sie den Metrikport in
 Wählen Sie verschiedene und eindeutige Hostportnummern, wenn Sie die Metrikendpunkte von edgeHub ebenso wie die auch edgeAgent zuordnen.
 
 > [!NOTE]
-> Wenn Sie die Metriken deaktivieren möchten, legen Sie die Umgebungsvariable `MetricsEnabled` für **edgeAgent** auf `false` fest.
+> Die Umgebungsvariable `httpSettings__enabled` sollte nicht auf `false` festgelegt werden, damit integrierte Metriken für die Sammlung verfügbar sind.
+>
+> Umgebungsvariablen, die zum Deaktivieren von Metriken verwendet werden können, finden Sie in der Dokumentation zum Repository [azure/iotedge](https://github.com/Azure/iotedge/blob/master/doc/EnvironmentVariables.md).
 
 ## <a name="available-metrics"></a>Verfügbare Metriken
 
 Metriken enthalten Tags, um die Art der erfassten Metrik besser erkennbar zu machen. Alle Metriken enthalten die folgenden Tags:
 
-| Tag | BESCHREIBUNG |
+| Tag | Beschreibung |
 |-|-|
 | iothub | Der Hub, mit dem das Gerät kommuniziert |
 | edge_device | Die ID des aktuellen Geräts |
@@ -60,9 +64,9 @@ Im Prometheus-Offenlegungsformat gibt es vier grundlegende Metriktypen: Zähler,
 
 Die für die integrierten Histogramm- und Zusammenfassungsmetriken bereitgestellten Quantile sind 0,1, 0,5, 0,9 und 0,99.
 
-Das **edgeHub** -Modul erzeugt die folgenden Metriken:
+Das **edgeHub**-Modul erzeugt die folgenden Metriken:
 
-| Name | Dimensionen | BESCHREIBUNG |
+| Name | Dimensionen | Beschreibung |
 |-|-|-|
 | `edgehub_gettwin_total` | `source` (Vorgangsquelle)<br> `id` (Modul-ID) | Typ: Zähler<br> Gesamtzahl von GetTwin-Aufrufen |
 | `edgehub_messages_received_total` | `route_output` (Ausgabe, von der die Nachricht gesendet wurde)<br> `id` | Typ: Zähler<br> Gesamtzahl der von Clients empfangenen Nachrichten |
@@ -83,9 +87,9 @@ Das **edgeHub** -Modul erzeugt die folgenden Metriken:
 | `edgehub_operation_retry_total` | `id`<br> `operation` (Vorgangsname) | Typ: Zähler<br> Die Gesamtzahl der Wiederholungen von edgeHub-Vorgängen |
 | `edgehub_client_connect_failed_total` | `id` <br> `reason` (nicht authentifiziert)<br> | Typ: Zähler<br> Gesamtzahl der fehlgeschlagenen Verbindungsversuche von Clients mit edgeHub |
 
-Das **edgeAgent** -Modul erzeugt die folgenden Metriken:
+Das **edgeAgent**-Modul erzeugt die folgenden Metriken:
 
-| Name | Dimensionen | BESCHREIBUNG |
+| Name | Dimensionen | Beschreibung |
 |-|-|-|
 | `edgeAgent_total_time_running_correctly_seconds` | `module_name` | Typ: Messgerät<br> Die Menge der Zeit, für die das Modul in der Bereitstellung angegeben wurde und sich im Ausführungszustand befand |
 | `edgeAgent_total_time_expected_running_seconds` | `module_name` | Typ: Messgerät<br> Der Zeitraum, für den das Modul in der Bereitstellung angegeben wurde |

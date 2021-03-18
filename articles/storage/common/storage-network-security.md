@@ -5,16 +5,16 @@ services: storage
 author: santoshc
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/05/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 4aa4e0566093f01e5f14691158f37c630c753b00
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9e395ce996bf7e6889a27fcb04b0e643cf63c58b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714747"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430886"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -136,7 +136,7 @@ Wenn Sie die Notfallwiederherstellung für einen regionalen Ausfall planen, soll
 
 ### <a name="required-permissions"></a>Erforderliche Berechtigungen
 
-Wenn Sie eine VNET-Regel auf ein Speicherkonto anwenden möchten, muss der Benutzer über geeignete Berechtigungen für die hinzuzufügenden Subnetze verfügen. Die dazu erforderliche Berechtigung *Dienst mit einem Subnetz verknüpfen* ist Teil der integrierten Rolle *Speicherkontomitwirkender*. Sie kann aber auch benutzerdefinierten Rollendefinitionen hinzugefügt werden.
+Wenn Sie eine VNET-Regel auf ein Speicherkonto anwenden möchten, muss der Benutzer über geeignete Berechtigungen für die hinzuzufügenden Subnetze verfügen. Das Anwenden einer Regel kann von einem [Speicherkontomitwirkenden](../../role-based-access-control/built-in-roles.md#storage-account-contributor) oder einem Benutzer ausgeführt werden, dem über eine benutzerdefinierte Azure-Rolle die Berechtigung für den [Azure-Ressourcenanbietervorgang](../../role-based-access-control/resource-provider-operations.md#microsoftnetwork) `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` erteilt wurde.
 
 Das Speicherkonto und die virtuellen Netzwerke, denen Zugriff gewährt wurde, können sich in verschiedenen Abonnements befinden – einschließlich Abonnements, die zu einem anderen Azure AD-Mandanten gehören.
 
