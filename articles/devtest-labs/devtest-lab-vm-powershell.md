@@ -3,12 +3,12 @@ title: Erstellen einer VM in DevTest Labs mit Azure PowerShell
 description: Erfahren Sie, wie Sie in Azure DevTest Labs mithilfe von Azure PowerShell VMs erstellen und verwalten.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6bcc1b8cfe1da7e5eafbee0af008a1defbe6f49d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f79b6ff92d633cf63477cddaabec918df352bec8
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85484110"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499253"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Erstellen einer VM in DevTest Labs mithilfe von Azure PowerShell
 In diesem Artikel wird das Erstellen einer VM in Azure DevTest Labs mithilfe von Azure PowerShell erläutert. Sie können PowerShell-Skripts verwenden, um die Erstellung von VMs in einem Lab in Azure DevTest Labs zu automatisieren. 
@@ -17,10 +17,10 @@ In diesem Artikel wird das Erstellen einer VM in Azure DevTest Labs mithilfe vo
 Vorbereitungen
 
 - [Erstellen Sie ein Lab](devtest-lab-create-lab.md), falls Sie kein vorhandenes Lab zum Testen des Skripts oder der Befehle in diesem Artikel verwenden möchten. 
-- [Installieren Sie Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0), oder verwenden Sie den integrierten Azure Cloud Shell-Dienst im Azure-Portal. 
+- [Installieren Sie Azure PowerShell](/powershell/azure/install-az-ps), oder verwenden Sie den integrierten Azure Cloud Shell-Dienst im Azure-Portal. 
 
 ## <a name="powershell-script"></a>PowerShell-Skript
-Das Beispielskript in diesem Abschnitt verwendet das Cmdlet [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0).  Das Cmdlet erfordert die Ressourcen-ID des Labs, den Namen der auszuführenden Aktion (`createEnvironment`) und die zum Ausführen dieser Aktion erforderlichen Parameter. Die Parameter sind in einer Hashtabelle mit allen VM-Beschreibungseigenschaften enthalten. 
+Das Beispielskript in diesem Abschnitt verwendet das Cmdlet [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction).  Das Cmdlet erfordert die Ressourcen-ID des Labs, den Namen der auszuführenden Aktion (`createEnvironment`) und die zum Ausführen dieser Aktion erforderlichen Parameter. Die Parameter sind in einer Hashtabelle mit allen VM-Beschreibungseigenschaften enthalten. 
 
 ```powershell
 [CmdletBinding()]
@@ -170,7 +170,7 @@ Beim Erstellen einer VM im Azure-Portal können Sie eine Azure Resource Manager-
 Dieses Beispiel zeigt, wie eine Definition für ein Azure Marketplace-Image abgerufen wird. Sie können die Definition eines benutzerdefinierten Images, einer Formel oder Umgebung auf die gleiche Weise abrufen. Fügen Sie die erforderlichen Artefakte für die VM hinzu, und legen Sie alle notwendigen erweiterten Einstellungen fest. Geben Sie Werte für die Pflichtfelder und optionalen Felder an, bevor Sie auf die Schaltfläche **Automation-Optionen** klicken.
 
 ### <a name="use-azure-rest-api"></a>Verwenden der Azure-REST-API
-Im Folgenden wird erläutert, wie Sie die Eigenschaften eines Images mit der REST-API abrufen: Diese Schritte gelten nur für eine vorhandene VM in einem Lab. 
+Mit dem folgenden Verfahren können Sie die Eigenschaften eines Images mithilfe der REST-API abrufen: Diese Schritte funktionieren nur für eine vorhandene VM in einem Lab. 
 
 1. Navigieren Sie zur Seite [Virtuelle Computer – Liste](/rest/api/dtl/virtualmachines/list), und klicken Sie auf die Schaltfläche **Ausprobieren**. 
 2. Wählen Sie Ihr Azure-**Abonnement** aus.
@@ -215,4 +215,4 @@ Set-AzureRmResource -ResourceId $VmResourceId -Properties $VmProperties -Force
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Lesen Sie den folgenden Artikel: [Azure PowerShell documentation for Azure DevTest Labs](/powershell/module/az.devtestlabs/) (Azure PowerShell-Dokumentation für Azure DevTest Labs)
+Weitere Informationen finden Sie in folgendem Inhalt: [Azure PowerShell-Dokumentation zu Azure DevTest Labs](/powershell/module/az.devtestlabs/).

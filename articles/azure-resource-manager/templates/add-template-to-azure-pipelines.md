@@ -2,13 +2,13 @@
 title: CI/CD mit Azure Pipelines und Vorlagen
 description: Beschreibt die Konfiguration von Continuous Integration in Azure Pipelines mithilfe von Azure Resource Manager-Vorlagen. Es wird gezeigt, wie Sie ein PowerShell-Skript verwenden oder Dateien an einen Stagingspeicherort kopieren und von dort aus bereitstellen.
 ms.topic: conceptual
-ms.date: 02/05/2021
-ms.openlocfilehash: ea1ccac00f121bd81fd8b9b1f182b565fc53d214
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.date: 03/09/2021
+ms.openlocfilehash: 4a2f1f15de0abd802f3dce138b2cea33e52e3dfc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594196"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561941"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>Integrieren von ARM-Vorlagen in Azure Pipelines
 
@@ -234,4 +234,5 @@ Bei der Auswahl von **Speichern** wird die Buildpipeline automatisch ausgeführt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Verwendung von ARM-Vorlagen mit GitHub Actions finden Sie unter [Bereitstellen von Azure Resource Manager-Vorlagen mithilfe von GitHub Actions](deploy-github-actions.md).
+* Informationen zum Verwenden des Was-wäre-wenn-Vorgangs in einer Pipeline finden Sie unter [Testen von ARM-Vorlagen mit Was-wäre-wenn-Vorgang in einer Pipeline](https://4bes.nl/2021/03/06/test-arm-templates-with-what-if/).
+* Weitere Informationen zur Verwendung von ARM-Vorlagen mit GitHub Actions finden Sie unter [Bereitstellen von Azure Resource Manager-Vorlagen mithilfe von GitHub Actions](deploy-github-actions.md).

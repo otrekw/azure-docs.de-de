@@ -5,12 +5,12 @@ description: Informationen zum Erstellen und Verwenden einer statischen IP-Adres
 services: container-service
 ms.topic: article
 ms.date: 11/14/2020
-ms.openlocfilehash: 22fd099633556fa9ddce575c2ac238b4950667cb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 102df48ca22fb996e0f4d9c402b8ce8f0fa80f2c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651888"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509471"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Verwenden einer statischen öffentlichen IP-Adresse und einer DNS-Bezeichnung mit dem Lastenausgleich von Azure Kubernetes Service (AKS)
 
@@ -63,16 +63,14 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>Erstellen eines Diensts mithilfe der statischen IP-Adresse
 
-Vergewissern Sie sich vor dem Erstellen eines Diensts, dass der vom AKS-Cluster verwendete Dienstprinzipal über delegierte Berechtigungen für die andere Ressourcengruppe verfügt. Beispiel:
+Vergewissern Sie sich vor dem Erstellen eines Diensts, dass die vom AKS-Cluster verwendete Clusteridentität über delegierte Berechtigungen für die andere Ressourcengruppe verfügt. Beispiel:
 
 ```azurecli-interactive
 az role assignment create \
-    --assignee <SP Client ID> \
+    --assignee <Client ID> \
     --role "Network Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
-
-Alternativ können Sie für Berechtigungen die vom System zugewiesene verwaltete Identität anstelle des Dienstprinzipals verwenden. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md).
 
 > [!IMPORTANT]
 > Wenn Sie Ihre Ausgangs-IP-Adresse angepasst haben, stellen Sie sicher, dass Ihre Clusteridentität sowohl über Berechtigungen für die öffentliche Ausgangs-IP-Adresse als auch die öffentliche Eingangs-IP-Adresse verfügt.

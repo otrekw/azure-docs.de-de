@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect-Cloudsynchronisierung: bedarfsorientierte Bereitstellung'
-description: In diesem Artikel wird die Funktion zur bedarfsorientierten Bereitstellung beschrieben.
+title: Bedarfsorientierte Bereitstellung in der Azure AD Connect-Cloudsynchronisierung
+description: In diesem Artikel wird beschrieben, wie Sie mit der Cloudsynchronisierungsfunktion von Azure AD Connect Konfigurationsänderungen testen können.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,85 +11,87 @@ ms.date: 09/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ac186d4b460165605ccf0fc53bdb0b691348bf3
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 5048b78c7d59b3358dbffe2e3e6eedf41decabb8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622523"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554274"
 ---
-# <a name="azure-ad-connect-cloud-sync-on-demand-provisioning"></a>Azure AD Connect-Cloudsynchronisierung: bedarfsorientierte Bereitstellung
+# <a name="on-demand-provisioning-in-azure-ad-connect-cloud-sync"></a>Bedarfsorientierte Bereitstellung in der Azure AD Connect-Cloudsynchronisierung
 
-Die Azure AD Connect-Cloudsynchronisierung umfasst eine neue Funktion, die Ihnen das Testen von Konfigurationsänderungen ermöglicht, indem diese Änderungen auf einen einzelnen Benutzer angewendet werden.  So können Sie überprüfen, ob die an der Konfiguration vorgenommenen Änderungen richtig angewendet wurden und ordnungsgemäß mit Azure AD synchronisiert werden.  
+Sie können mit der Cloudsynchronisierungsfunktion von Azure Active Directory Connect (Azure AD) Konfigurationsänderungen testen, indem Sie diese Änderungen auf einen einzelnen Benutzer anwenden. Mit dieser bedarfsorientierten Bereitstellung können Sie überprüfen, ob die an der Konfiguration vorgenommenen Änderungen richtig angewendet wurden und ordnungsgemäß mit Azure AD synchronisiert werden.  
 
 > [!IMPORTANT] 
-> Wenn Sie die bedarfsorientierte Bereitstellung verwenden, werden die Bereichsfilter nicht auf den von Ihnen ausgewählten Benutzer angewendet.  Dies bedeutet, dass Sie die bedarfsorientierte Bereitstellung für Benutzer verwenden können, die sich nicht in den Organisationseinheiten befinden, die Sie angegeben haben.
+> Wenn Sie die bedarfsorientierte Bereitstellung verwenden, werden die Bereichsfilter nicht auf den von Ihnen ausgewählten Benutzer angewendet. Sie können die bedarfsorientierte Bereitstellung für Benutzer verwenden, die sich außerhalb der von Ihnen angegebenen Organisationseinheiten befinden.
 
-
-## <a name="using-on-demand-provisioning"></a>Verwenden der bedarfsorientierten Bereitstellung
-Führen Sie die folgenden Schritte aus, um die neue Funktion zu verwenden.
-
+## <a name="validate-a-user"></a>Validieren eines Benutzers
+Führen Sie die folgenden Schritte aus, um die bedarfsorientierte Bereitstellung zu verwenden:
 
 1.  Wählen Sie im Azure-Portal die Option **Azure Active Directory** aus.
 2.  Wählen Sie **Azure AD Connect** aus.
 3.  Wählen Sie **Cloudsynchronisierung verwalten** aus.
 
-    ![Verwalten der Bereitstellung](media/how-to-install/install-6.png)
+    ![Screenshot: Link zum Verwalten der Cloudsynchronisierung](media/how-to-install/install-6.png)
 4. Wählen Sie unter **Konfiguration** Ihre Konfiguration aus.
-5. Klicken Sie unter **Validieren** auf die Schaltfläche **Benutzer bereitstellen**. 
+5. Wählen Sie unter **Validieren** die Schaltfläche **Benutzer bereitstellen** aus. 
 
- ![Bereitstellen eines Benutzers](media/how-to-on-demand-provision/on-demand-2.png)
+   ![Screenshot: Schaltfläche zur Bereitstellung eines Benutzers](media/how-to-on-demand-provision/on-demand-2.png)
 
-6. Führen Sie die folgenden Schritte auf dem Bildschirm für die bedarfsorientierte Bereitstellung aus.  Geben Sie den **Distinguished Name** eines Benutzers ein, und klicken Sie auf die Schaltfläche **Bereitstellen**.  
+6. Geben Sie im Bildschirm **Bedarfsgesteuerte Bereitstellung** den Distinguished Name eines Benutzers ein, und wählen Sie die Schaltfläche **Bereitstellen** aus.  
  
- ![Bedarfsorientierte Bereitstellung](media/how-to-on-demand-provision/on-demand-3.png)
-7. Sobald der Vorgang abgeschlossen ist, sollten ein Erfolgsbildschirm und vier grüne Kontrollkästchen angezeigt werden, die darauf hinweisen, dass die Bereitstellung erfolgreich war.  Fehler werden auf der linken Seite angezeigt.
+   ![Screenshot: Benutzername und Schaltfläche „Bereitstellen“](media/how-to-on-demand-provision/on-demand-3.png)
+7. Nachdem die Bereitstellung abgeschlossen ist, wird für den erfolgreichen Vorgang ein Bildschirm mit vier grünen Häkchen angezeigt. Fehler werden ggf. auf der linken Seite angezeigt.
 
-  ![Erfolg](media/how-to-on-demand-provision/on-demand-4.png)
+   ![Screenshot: Erfolgreich Bereitstellung](media/how-to-on-demand-provision/on-demand-4.png)
 
-Nun können Sie sich den Benutzer ansehen und überprüfen, ob die Änderungen, die Sie an der Konfiguration vorgenommen haben, angewendet wurden.  Im verbleibenden Teil dieses Dokuments werden die einzelnen Abschnitte beschrieben, die in den Details zu einem erfolgreich synchronisierten Benutzer angezeigt werden.
+## <a name="get-details-about-provisioning"></a>Abrufen von Details zur Bereitstellung
+Nun können Sie anhand der Benutzerinformationen überprüfen, ob die Änderungen, die Sie an der Konfiguration vorgenommen haben, angewendet wurden. Im verbleibenden Teil dieses Artikels werden die einzelnen Abschnitte der Details zu einem erfolgreich synchronisierten Benutzer beschrieben.
 
-## <a name="import-user-details"></a>Benutzer importieren – Details
-Dieser Abschnitt enthält Informationen zu dem Benutzer, der aus Active Directory importiert wurde.  Hier sehen Sie den Benutzer vor der Bereitstellung in Azure AD.  Klicken Sie auf den Link **Details anzeigen**, um diese Informationen anzuzeigen.
+### <a name="import-user"></a>Benutzer importieren
+Der Abschnitt **Benutzer importieren** enthält Informationen zu dem Benutzer, der aus Active Directory importiert wurde. Hier sehen Sie den Benutzer vor der Bereitstellung in Azure AD. Wählen Sie den Link **Details anzeigen** aus, um diese Informationen anzuzeigen.
 
-![Benutzer importieren](media/how-to-on-demand-provision/on-demand-5.png)
+![Screenshot: Schaltfläche zum Anzeigen von Details zu einem importierten Benutzer](media/how-to-on-demand-provision/on-demand-5.png)
 
-Mithilfe dieser Informationen können Sie die verschiedenen Attribute und deren Werte sehen, die importiert wurden.  Wenn Sie eine benutzerdefinierte Attributzuordnung erstellt haben, wird der Wert hier angezeigt.
-![Benutzer importieren – Details](media/how-to-on-demand-provision/on-demand-6.png)
+Mithilfe diesen Informationen können Sie die verschiedenen Attribute sehen, die importiert wurden (und deren Werte). Wenn Sie eine benutzerdefinierte Attributzuordnung erstellt haben, wird der Wert hier angezeigt.
 
-## <a name="determine-if-user-is-in-scope-details"></a>Gültigkeitsbereich des Benutzers ermitteln – Details
-Dieser Abschnitt enthält Informationen über den Bereich des in Azure AD importierten Benutzers.  Klicken Sie auf den Link **Details anzeigen**, um diese Informationen anzuzeigen.
+![Screenshot: Benutzerdetails](media/how-to-on-demand-provision/on-demand-6.png)
 
-![Benutzerbereich](media/how-to-on-demand-provision/on-demand-7.png)
+### <a name="determine-if-user-is-in-scope"></a>Gültigkeitsbereich des Benutzers ermitteln
+Der Abschnitt **Gültigkeitsbereich des Benutzers ermitteln** enthält Informationen darüber, ob der Benutzer, der in Azure AD importiert wurde, im Gültigkeitsbereich liegt. Wählen Sie den Link **Details anzeigen** aus, um diese Informationen anzuzeigen.
 
-Anhand dieser Informationen können Sie zusätzliche Informationen über den Bereich Ihrer Benutzer anzeigen.
+![Screenshot: Schaltfläche zum Anzeigen von Details zu einem Benutzerbereich](media/how-to-on-demand-provision/on-demand-7.png)
 
-![Benutzerbereich – Details](media/how-to-on-demand-provision/on-demand-10a.png)
+Mithilfe dieser Informationen können Sie feststellen, ob sich der Benutzer im Gültigkeitsbereich befindet.
 
-## <a name="match-user-between-source-and-target-system-details"></a>Benutzer zwischen Quell- und Zielsystem abgleichen – Details
-In diesem Abschnitt finden Sie Informationen dazu, ob der Benutzer bereits in Azure AD vorhanden ist und ob eine Zusammenführung vorgenommen werden soll, statt einen neuen Benutzer bereitzustellen.  Klicken Sie auf den Link **Details anzeigen**, um diese Informationen anzuzeigen.
-![Details anzeigen](media/how-to-on-demand-provision/on-demand-8.png)
+![Screenshot: Benutzerbereichsdetails](media/how-to-on-demand-provision/on-demand-10a.png)
+
+### <a name="match-user-between-source-and-target-system"></a>Benutzer zwischen Quell- und Zielsystem abgleichen
+Der Abschnitt **Benutzer zwischen Quell- und Zielsystem abgleichen** enthält Informationen darüber, ob der Benutzer bereits in Azure AD vorhanden ist, und ob statt der Bereitstellung eines neuen Benutzers eine Verknüpfung durchgeführt werden sollte. Wählen Sie den Link **Details anzeigen** aus, um diese Informationen anzuzeigen.
+
+![Screenshot: Schaltfläche zum Anzeigen von Details zu einem übereinstimmenden Benutzer](media/how-to-on-demand-provision/on-demand-8.png)
 
 Anhand dieser Informationen können Sie feststellen, ob eine Entsprechung gefunden wurde oder ob ein neuer Benutzer erstellt wird.
 
-![Benutzerinformationen](media/how-to-on-demand-provision/on-demand-11.png)
+![Screenshot: Benutzerinformationen](media/how-to-on-demand-provision/on-demand-11.png)
 
-In den entsprechenden Details wird eine Meldung mit einem der drei folgenden Vorgänge angezeigt.  Sie lauten wie folgt:
-- Erstellen: Ein Benutzer wird in Azure AD erstellt.
-- Aktualisieren: Ein Benutzer wird basierend auf einer an der Konfiguration vorgenommenen Änderung aktualisiert.
-- Löschen: Ein Benutzer wird aus Azure AD entfernt.
+In den entsprechenden Details wird eine Meldung mit einem der drei folgenden Vorgänge angezeigt:
+- **Erstellen**: Ein Benutzer wird in Azure AD erstellt.
+- **Aktualisieren**: Ein Benutzer wird basierend auf einer an der Konfiguration vorgenommenen Änderung aktualisiert.
+- **Löschen**: Ein Benutzer wird aus Azure AD entfernt.
 
 Die genaue Meldung hängt vom Typ des ausgeführten Vorgangs ab.
 
-## <a name="perform-action-details"></a>Aktion ausführen – Details
-Dieser Abschnitt enthält Informationen zu dem Benutzer, der nach dem Anwenden der Konfiguration in Azure AD bereitgestellt oder exportiert wurde.  Hier sehen Sie den Benutzer nach der Bereitstellung in Azure AD.  Klicken Sie auf den Link **Details anzeigen**, um diese Informationen anzuzeigen.
-![Aktion ausführen – Details](media/how-to-on-demand-provision/on-demand-9.png)
+### <a name="perform-action"></a>Aktion ausführen
+Der Abschnitt **Aktion ausführen** enthält Informationen zu dem Benutzer, der nach dem Anwenden der Konfiguration in Azure AD bereitgestellt oder exportiert wurde. Hier sehen Sie den Benutzer nach der Bereitstellung in Azure AD. Wählen Sie den Link **Details anzeigen** aus, um diese Informationen anzuzeigen.
 
-Anhand dieser Informationen können Sie die Werte der Attribute ermitteln, nachdem die Konfiguration angewendet wurde.  Entsprechen Sie den importierten Werten, oder weichen sie ab?  Wird die Konfiguration erfolgreich angewendet?  
+![Screenshot: Schaltfläche zum Anzeigen von Details zu einer ausgeführten Aktion](media/how-to-on-demand-provision/on-demand-9.png)
+
+Anhand dieser Informationen können Sie die Werte der Attribute ermitteln, nachdem die Konfiguration angewendet wurde. Entsprechen sie den importierten Werten, oder weichen sie ab? Wurde die Konfiguration erfolgreich angewendet?  
 
 Mithilfe dieses Prozesses können Sie die Attributtransformation über die Cloud zum Azure AD-Mandanten nachverfolgen.
 
-![Nachverfolgen von Attributen](media/how-to-on-demand-provision/on-demand-12.png)
+![Screenshot: Details zu nachverfolgten Attributen](media/how-to-on-demand-provision/on-demand-12.png)
 
 ## <a name="next-steps"></a>Nächste Schritte 
 

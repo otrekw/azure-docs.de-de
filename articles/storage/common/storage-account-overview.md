@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/08/2021
+ms.date: 03/09/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5cf43310c68c8446b9465a39d85f84c8273a68d8
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 24d955b0d1c53f57f5927f9e893b6ecd75fb3ca8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051223"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561890"
 ---
 # <a name="storage-account-overview"></a>Speicherkontoübersicht
 
@@ -71,7 +71,7 @@ Speicherkonten vom Typ „Allgemein v2“ unterstützen die neuesten Azure Stora
 - Tabellen
 
 > [!NOTE]
-> Microsoft empfiehlt für die meisten Szenarien die Verwendung von Speicherkonten vom Typ „Allgemein v2“. Sie können ganz einfach ein Upgrade von einem Allgemein v1-Konto oder einem Blob Storage-Konto auf ein Allgemein v2-Konto durchführen. Dabei treten keine Ausfallzeiten auf, und Sie müssen keine Daten kopieren.
+> Microsoft empfiehlt für die meisten Szenarien die Verwendung von Speicherkonten vom Typ „Allgemein v2“. Sie können ganz einfach ein Upgrade von einem Allgemein v1-Konto oder einem Blob Storage-Konto auf ein Allgemein v2-Konto durchführen. Dabei treten keine Ausfallzeiten auf, und Sie müssen keine Daten kopieren. Das Upgrade kann jedoch nicht rückgängig gemacht werden.
 >
 > Weitere Informationen zum Upgrade auf ein Allgemein v2-Konto finden Sie unter [Upgrade auf ein Allgemein v2-Speicherkonto](storage-account-upgrade.md).
 
@@ -87,13 +87,18 @@ Speicherkonten vom Typ „Universell v1“ ermöglichen Zugriff auf alle Azure S
 - Warteschlangen
 - Tabellen
 
-Microsoft empfiehlt für die meisten Szenarien Allgemein v2-Konten. Konten vom Typ „Allgemein v1“ können für folgende Szenarien verwendet werden:
+Konten vom Typ „Allgemein v1“ können für folgende Szenarien verwendet werden:
 
 - Ihre Anwendungen erfordern das klassische Azure-Bereitstellungsmodell. Allgemein v2- und Blob Storage-Konten unterstützen nur das Azure Resource Manager-Bereitstellungsmodell.
 
 - Ihre Anwendungen verursachen eine hohe Transaktionslast oder nutzen eine erhebliche Bandbreite für die Georeplikation, erfordern aber keine großen Kapazitäten. In diesem Fall sind Allgemein v1-Konten möglicherweise die wirtschaftlich sinnvollste Wahl.
 
 - Sie verwenden eine ältere Version der [REST-API für Speicherdienste](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) (vor 2014-02-14) oder eine Clientbibliothek mit einer niedrigeren Version als 4.x. Sie können kein Upgrade für Ihre Anwendung durchführen.
+
+> [!NOTE]
+> Obwohl Microsoft für die meisten Szenarien Konten vom Typ „Allgemein v2“ empfiehlt, wird Microsoft weiterhin Konten vom Typ „Universell V1“ für neue und vorhandene Kunden unterstützen. Sie können Speicherkonten vom Typ „Universell V1“ in neuen Regionen erstellen, wenn Azure Storage in diesen Regionen zur Verfügung steht. Microsoft hat zurzeit keinen Plan zum Einstellen der Unterstützung für Konten vom Typ „Universell V1“ und wird mindestens ein Jahr im Voraus informieren, bevor ein Azure Storage-Feature als veraltet gekennzeichnet wird. Microsoft wird weiterhin Sicherheitsupdates für Konten vom Typ „Universell V1“ bereitstellen, aber es wird keine neue Featureentwicklung für diesen Kontotyp erwartet.
+>
+> Ab dem 1. Oktober 2020 entsprechen die Preise für Konten vom Typ „Universell V1“ in neuen Azure Storage-Regionen den Preisen für Konten vom Typ „Allgemein v2“ in diesen Regionen. Die Preise in vorhandenen Azure Storage Regionen haben sich nicht geändert. Preisdetails für Konten vom Typ „Universell V1“ in einer bestimmten Region finden Sie auf der Seite mit der Preisübersicht zu Azure Storage. Wählen Sie Ihre Region und dann neben **Preisangebote** die Option **Sonstige** aus.
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage-Konten
 

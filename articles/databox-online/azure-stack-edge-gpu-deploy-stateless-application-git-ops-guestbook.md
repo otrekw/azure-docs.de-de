@@ -1,21 +1,23 @@
 ---
-title: Bereitstellen einer `PHP Guestbook`-App in einer für Arc aktivierten Kubernetes-Implementierung auf einem Azure Stack Edge Pro-GPU-Gerät | Microsoft-Dokumentation
+title: Bereitstellen einer PHP-`Guestbook`-App in einer Kubernetes-Implementierung mit Arc-Unterstützung auf einem Azure Stack Edge Pro-GPU-Gerät | Microsoft-Dokumentation
 description: Hier wird beschrieben, wie Sie eine zustandslose PHP `Guestbook`-Anwendung mit Redis unter Verwendung von GitOps in einem für Arc aktivierten Kubernetes-Cluster Ihres Azure Stack Edge Pro-Geräts bereitstellen.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: ba72617444a2c7ec30e4d1d25afe1edcda16ff35
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 920f7912a1289fe92618d893b94943784e4a9a3a
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804880"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520726"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Bereitstellen einer zustandslosen PHP `Guestbook`-Anwendung mit Redis in einem für Arc aktivierten Kubernetes-Cluster auf einem Azure Stack Edge Pro-GPU-Gerät
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 In diesem Artikel wird erläutert, wie Sie eine einfache Multi-Tier-Webanwendung unter Verwendung von Kubernetes und Azure Arc erstellen und bereitstellen. Dieses Beispiel umfasst die folgenden Komponenten:
 
@@ -40,8 +42,8 @@ Stellen Sie vor der Bereitstellung der zustandslosen Anwendung sicher, dass die 
 ### <a name="for-device"></a>Für das Gerät
 
 1. Sie verfügen über Anmeldeinformationen für ein Azure Stack Edge Pro-Gerät mit einem Knoten.
-    1. Das Gerät ist aktiviert. Siehe [Aktivieren des Geräts](azure-stack-edge-gpu-deploy-activate.md).
-    1. Das Gerät verfügt über die über das Azure-Portal konfigurierte Computerolle und umfasst einen Kubernetes-Cluster. Siehe [Konfigurieren der Computeumgebung](azure-stack-edge-gpu-deploy-configure-compute.md).
+    1. Das Gerät ist aktiviert. Weitere Informationen finden Sie unter [Aktivieren des Geräts](azure-stack-edge-gpu-deploy-activate.md).
+    1. Auf dem Gerät wurde die Computerolle über das Azure-Portal konfiguriert, und es verfügt über einen Kubernetes-Cluster. Siehe [Konfigurieren der Computeumgebung](azure-stack-edge-gpu-deploy-configure-compute.md).
 
 1. Sie haben Azure Arc im vorhandenen Kubernetes-Cluster auf Ihrem Gerät aktiviert und verfügen im Azure-Portal über eine entsprechende Azure Arc-Ressource. Die ausführlichen Schritte sind unter [Aktivieren von Azure Arc auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md) beschrieben.
 
@@ -49,7 +51,7 @@ Stellen Sie vor der Bereitstellung der zustandslosen Anwendung sicher, dass die 
 
 1. Sie verfügen über ein Windows-Clientsystem, das für den Zugriff auf das Azure Stack Edge Pro-Gerät verwendet wird.
   
-    - Auf dem Client wird Windows PowerShell 5.0 oder höher ausgeführt. Informationen zum Herunterladen der neuesten Version von Windows PowerShell finden Sie unter [Installieren von Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view = true).
+    - Auf dem Client wird Windows PowerShell 5.0 oder höher ausgeführt. Informationen zum Herunterladen der neuesten Version von Windows PowerShell finden Sie unter [Installieren von Windows PowerShell](/powershell/scripting/install/installing-windows-powershell).
     
     - Sie können auch einen anderen Client mit einem [unterstützten Betriebssystem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) verwenden. In diesem Artikel wird die Vorgehensweise bei Verwendung eines Windows-Clients beschrieben. 
     

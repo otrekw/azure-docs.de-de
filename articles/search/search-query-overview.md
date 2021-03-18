@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 234a0137f0a9487a56b3e0343eaea375d2f9a1af
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 97b0a4ca3e4fb94a21cbd30a27a3037f45fed782
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043013"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487116"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Abfragen in Azure Cognitive Search
 
@@ -24,10 +24,11 @@ Ein Abfrage in Cognitive Search ist eine vollständige Spezifikation eines **`se
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-    "queryType": "simple"
-    "search": "`New York` +restaurant",
-    "searchFields": "Description, Address/City, Tags",
-    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
+    "queryType": "simple",
+    "searchMode": "all",
+    "search": "restaurant +view",
+    "searchFields": "HotelName, Description, Address/City, Address/StateProvince, Tags",
+    "select": "HotelName, Description, Address/City, Address/StateProvince, Tags",
     "top": "10",
     "count": "true",
     "orderby": "Rating desc"
@@ -38,9 +39,11 @@ Bei der Abfrageausführung werden u. a. folgende Parameter verwendet:
 
 + **`queryType`** legt den Parser fest. Es kann es sich dabei um den [einfachen Standardabfrageparser](search-query-simple-examples.md) (optimal für die Volltextsuche) handeln oder um den [vollständigen Lucene-Abfrageparser](search-query-lucene-examples.md), der für erweiterte Abfragekonstrukte wie reguläre Ausdrücke, NEAR-Suche, Fuzzy- und Platzhaltersuche usw. verwendet wird.
 
++ **`searchMode`** gibt an, ob Übereinstimmungen auf den Kriterien „all“ oder „any“ im Ausdruck basieren. Der Standardwert ist „any“.
+
 + **`search`** gibt die Übereinstimmungskriterien an – in der Regel ganze Ausdrücke oder Begriffe, mit oder ohne Operatoren. Jedes im Indexschema als *durchsuchbar* (searchable) attributierte Feld ist ein Kandidat für diesen Parameter.
 
-+ **`searchFields`** schränkt die Abfrageausführung auf bestimmte durchsuchbare Felder ein.
++ **`searchFields`** schränkt die Abfrageausführung auf bestimmte durchsuchbare Felder ein. Während der Entwicklung ist es hilfreich, dieselbe Feldliste für „select“ und „search“ zu verwenden. Andernfalls könnte eine Entsprechung auf Feldwerten basieren, die in den Ergebnissen nicht angezeigt werden, sodass ungewiss ist, warum das Dokument zurückgegeben wurde.
 
 Zum Formen der Antwort werden folgende Parameter verwendet:
 

@@ -1,23 +1,18 @@
 ---
 title: Verwenden der in Azure Security Center enthaltenen Lizenz für Microsoft Defender für den Endpunkt
 description: Hier erfahren Sie mehr über Microsoft Defender für den Endpunkt und dessen Bereitstellung aus Azure Security Center.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/15/2021
+ms.date: 03/08/2021
 ms.author: memildin
-ms.openlocfilehash: 5a0fefd91e0aa60f6a3813513aa82a75b3557c7c
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 17e54dfc5c369a8cbb35db50ff2cbab131d34c2d
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526968"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453766"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Schützen Sie Ihre Endpunkte mit der in Security Center integrierten EDR-Lösung: Microsoft Defender für den Endpunkt
 
@@ -41,12 +36,12 @@ Microsoft Defender für den Endpunkt ist eine ganzheitliche, cloudbasierte Lösu
 | Aspekt                          | Details                                                                                                                                                                                                                                                                                                       |
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Status des Release:                  | Allgemein verfügbar (Generally Available, GA)                                                                                                                                                                                                                                                                                      |
-| Preise:                        | Erfordert [Azure Defender für Server](security-center-pricing.md)                                                                                                                                                                                                                                             |
-| Unterstützte Plattformen:            | Azure-Computer unter Windows<br>Azure Arc-Computer unter Windows|
-| Unterstützte Windows-Versionen:  |  • Security Center unterstützt die Erkennung unter Windows Server 2019, 2016, 2012 R2 und 2008 R2 SP1.<br> • Die Serverendpunktüberwachung, die diese Integration verwendet, wurde für Office 365-GCC-Kunden deaktiviert.<br> • [Windows 10 Enterprise Multi-Session](../virtual-desktop/windows-10-multisession-faq.md) (ehemals Enterprise for Virtual Desktops (EVD))<br> • [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)|
+| Preise:                        | Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)                                                                                                                                                                                                                                             |
+| Unterstützte Plattformen:            |  • Azure-Computer unter Windows<br> • Azure Arc-Computer unter Windows|
+| Unterstützte Windows-Versionen:  |  • **Allgemeine Verfügbarkeit (General Availability, GA)** : Erkennung unter Windows Server 2016, 2012 R2 und 2008 R2 SP1<br> • **Vorschau**: Erkennung unter Windows Server 2019, [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md) und [Windows 10 Enterprise Multisession](../virtual-desktop/windows-10-multisession-faq.md) (ehemals Enterprise for Virtual Desktops (EVD))|
 | Nicht unterstützte Betriebssysteme:  |  • Windows 10 (außer EVD und WVD)<br> • Linux|
 | Erforderliche Rollen und Berechtigungen: | So aktivieren/deaktivieren Sie die Integration: **Sicherheitsadministrator** oder **Besitzer**<br>So zeigen Sie MDATP-Warnungen in Security Center an: **Sicherheitsleseberechtigter**, **Leser**, **Ressourcengruppenmitwirkender**, **Ressourcengruppenbesitzer**, **Sicherheitsadministrator**, **Abonnementbesitzer** oder **Abonnementmitwirkender**|
-| Clouds:                         | ![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nein](./media/icons/no-icon.png) China Gov/andere Gov-Clouds<br>![Nein](./media/icons/no-icon.png) GCC-Kunden, die Workloads in globalen Azure-Clouds ausführen                                                        |
+| Clouds:                         | ![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nein](./media/icons/no-icon.png) China Gov/andere Gov-Clouds                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 ## <a name="microsoft-defender-for-endpoint-features-in-security-center"></a>Features von Microsoft Defender für den Endpunkt in Security Center
@@ -76,10 +71,14 @@ Nachdem Sie den Speicherort konfiguriert haben, kann dieser nicht mehr geändert
 
 ## <a name="enabling-the-microsoft-defender-for-endpoint-integration"></a>Aktivieren der Integration von Microsoft Defender für den Endpunkt
 
-1. Aktivieren Sie **Azure Defender für Server**. Weitere Informationen finden Sie unter [Preise für Azure Security Center](security-center-pricing.md#enable-azure-defender).
+1. Vergewissern Sie sich, dass Ihr Computer die erforderlichen Anforderungen für Defender für Endpunkt erfüllt:
 
-    > [!NOTE]
-    > Verwenden Sie zum Schützen Ihrer Computer mit Azure Arc-Unterstützung die Anweisungen unter [Schnellstart: Verbinden eines Hybridcomputers mit Servern mit Azure Arc-Unterstützung](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) aus.
+    - Für **alle Windows-Versionen**:
+        - Konfigurieren der Netzwerkeinstellungen, die unter [Konfigurieren von Geräteproxy- und Internetkonnektivitätseinstellungen](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet) beschrieben werden.
+        - Wenn Sie Defender für Endpunkt für lokale Computer bereitstellen, stellen Sie eine Verbindung mit Azure Arc her, wie in [Verbinden eines Hybridcomputers mit Azure Arc-fähigen Servern](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) erläutert.
+    - Vergewissern Sie sich außerdem bei **Windows Server 2019-Computern**, dass ein gültiger Agent ausgeführt wird und die MicrosoftMonitoringAgent-Erweiterung vorhanden ist.
+
+1. Aktivieren Sie **Azure Defender für Server**. Siehe [Schnellstart: Aktivieren von Azure Defender](enable-azure-defender.md).
 
 1. Wenn Sie Microsoft Defender für den Endpunkt bereits lizenziert und auf Ihren Servern bereitgestellt haben, entfernen Sie diesen mithilfe des unter [Ausschließen von Windows-Servern](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers) beschriebenen Verfahrens.
 1. Wählen Sie im Menü von Security Center **Preise und Einstellungen** aus.
@@ -94,7 +93,7 @@ Nachdem Sie den Speicherort konfiguriert haben, kann dieser nicht mehr geändert
 
 ## <a name="access-the-microsoft-defender-for-endpoint-portal"></a>Zugreifen auf das Portal von Microsoft Defender für den Endpunkt
 
-1. Vergewissern Sie sich, dass das Benutzerkonto über die notwendigen Berechtigungen verfügt. [Weitere Informationen](/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access)
+1. Vergewissern Sie sich, dass das Benutzerkonto über die notwendigen Berechtigungen verfügt. Weitere Informationen finden Sie unter [Zuweisen von Benutzerzugriff auf Microsoft Defender Security Center](/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
 
 1. Überprüfen Sie, ob Sie einen Proxy oder eine Firewall einsetzen, der bzw. die anonymen Datenverkehr blockiert. Der Sensor von Defender für den Endpunkt stellt eine Verbindung aus dem Systemkontext her, daher muss anonymer Datenverkehr zugelassen werden. Um den ungehinderten Zugriff auf das Portal von Defender für den Endpunkt sicherzustellen, befolgen Sie die Anweisungen unter [Aktivieren des Zugriffs auf Dienst-URLs im Proxyserver](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
 

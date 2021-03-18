@@ -2,13 +2,13 @@
 title: Konfigurieren von Azure Red Hat OpenShift (Version 4.x) mit Container Insights | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Überwachung für einen in Azure Red Hat OpenShift (Version 4 oder höher) gehosteten Kubernetes-Cluster mit Azure Monitor konfigurieren können.
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: a9e04818f1a915a853d32b5db408a521cdae9f4c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: 02cb794463b965ebafef0b6861477dbf69227511
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713931"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506411"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-container-insights"></a>Konfigurieren von Azure Red Hat OpenShift (Version 4.x) mit Container Insights
 
@@ -61,21 +61,8 @@ Gehen Sie folgendermaßen vor, um die Überwachung eines in Azure bereitgestellt
 
     `curl -o enable-monitoring.sh -L https://aka.ms/enable-monitoring-bash-script`
 
-1. Führen Sie die folgenden Befehle aus, um den *kubeContext* Ihres Clusters zu identifizieren:
+1. Stellen Sie mithilfe der Anweisungen in [Tutorial: Herstellen einer Verbindung mit einem Azure Red Hat OpenShift 4-Cluster](../../openshift/tutorial-connect-cluster.md) eine Verbindung mit dem ARO v4-Cluster her.
 
-    ```
-    adminUserName=$(az aro list-credentials -g $clusterResourceGroup -n $clusterName --query 'kubeadminUsername' -o tsv)
-    adminPassword=$(az aro list-credentials -g $clusterResourceGroup -n $clusterName --query 'kubeadminPassword' -o tsv)
-    apiServer=$(az aro show -g $clusterResourceGroup -n $clusterName --query apiserverProfile.url -o tsv)
-    oc login $apiServer -u $adminUserName -p $adminPassword
-    # openshift project name for Container insights
-    openshiftProjectName="azure-monitor-for-containers"
-    oc new-project $openshiftProjectName
-    # get the kube config context
-    kubeContext=$(oc config current-context)
-    ```
-
-1. Kopieren Sie den Wert zur späteren Verwendung.
 
 ### <a name="integrate-with-an-existing-workspace"></a>Integrieren in einen vorhandenen Arbeitsbereich
 
@@ -113,17 +100,16 @@ Wenn Sie nicht über einen Arbeitsbereich verfügen, den Sie angeben, fahren Sie
 
 1. Suchen Sie in der Ausgabe nach dem Namen des Arbeitsbereichs, und kopieren Sie dann die vollständige Ressourcen-ID dieses Log Analytics-Arbeitsbereichs unter dem Feld **ID**.
 
-1. Führen Sie den folgenden Befehl aus, um die Überwachung zu aktivieren. Ersetzen Sie die Werte für die Parameter `azureAroV4ClusterResourceId`, `logAnalyticsWorkspaceResourceId` und `kubeContext`.
+1. Führen Sie den folgenden Befehl aus, um die Überwachung zu aktivieren. Ersetzen Sie die Werte für die Parameter `azureAroV4ClusterResourceId` und `logAnalyticsWorkspaceResourceId`.
 
     ```bash
-    export azureAroV4ClusterResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>”
-    export logAnalyticsWorkspaceResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>”
-    export kubeContext="<kubeContext name of your ARO v4 cluster>"  
+    export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
+    export logAnalyticsWorkspaceResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>" 
     ```
 
     Nachfolgend ist der Befehl angegeben, den Sie ausführen müssen, nachdem Sie die drei Variablen mit Exportbefehlen ausgefüllt haben:
 
-    `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext --workspace-id $logAnalyticsWorkspaceResourceId`
+    `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --workspace-id $logAnalyticsWorkspaceResourceId`
 
 Nach dem Aktivieren der Überwachung kann es ca. 15 Minuten dauern, bis Integritätsmetriken für den Cluster angezeigt werden.
 
@@ -135,16 +121,15 @@ In diesem Beispiel müssen Sie keinen Arbeitsbereich vorab erstellen bzw. keinen
 
 Der erstellte Standardarbeitsbereich weist das Format *DefaultWorkspace-\<GUID>-\<Region>* auf.  
 
-Ersetzen Sie die Werte für die Parameter `azureAroV4ClusterResourceId` und `kubeContext`.
+Ersetzen Sie den Wert für den `azureAroV4ClusterResourceId`-Parameter.
 
 ```bash
 export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
-export kubeContext="<kubeContext name of your ARO v4 cluster>"
 ```
 
 Beispiel:
 
-`bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext`
+`bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId 
 
 Nach dem Aktivieren der Überwachung kann es ca. 15 Minuten dauern, bis Integritätsmetriken für den Cluster angezeigt werden.
 

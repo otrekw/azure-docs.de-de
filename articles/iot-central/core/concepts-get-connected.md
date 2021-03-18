@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 4db7c9fdfd439e049ca76fec6f0e66bd4a37fffd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dc0655aba424d29a4055f0d50a20057f22d084ed
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702707"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015454"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Herstellen einer Verbindung mit Azure IoT Central
 
@@ -178,7 +178,7 @@ Dieser Ansatz ist nützlich, wenn Sie mit IoT Central experimentieren oder Gerä
 
 ## <a name="associate-a-device-with-a-device-template"></a>Zuordnen eines Geräts zu einer Gerätevorlage
 
-Wenn das Gerät eine Verbindung herstellt, ordnet IoT Central automatisch einem Gerät eine Gerätevorlage zu. Ein Gerät sendet eine [Modell-ID](../../iot-pnp/iot-plug-and-play-glossary.md#model-id), wenn es eine Verbindung herstellt. IoT Central verwendet die Modell-ID, um die Gerätevorlage für dieses bestimmte Gerätemodell zu identifizieren. Der Ermittlungsvorgang funktioniert wie folgt:
+Wenn das Gerät eine Verbindung herstellt, ordnet IoT Central automatisch einem Gerät eine Gerätevorlage zu. Ein Gerät sendet eine [Modell-ID](../../iot-fundamentals/iot-glossary.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json#model-id), wenn es eine Verbindung herstellt. IoT Central verwendet die Modell-ID, um die Gerätevorlage für dieses bestimmte Gerätemodell zu identifizieren. Der Ermittlungsvorgang funktioniert wie folgt:
 
 1. Wenn die Gerätevorlage bereits in der IoT Central-Anwendung veröffentlicht ist, ist das Gerät der Gerätevorlage zugeordnet.
 1. Wenn die Gerätevorlage nicht bereits in der IoT Central-Anwendung veröffentlicht ist, sucht IoT Central im [öffentlichen Modellrepository](https://github.com/Azure/iot-plugandplay-models) nach dem Gerätemodell. Wenn IoT Central das Modell findet, wird es verwendet, um eine einfache Gerätevorlage zu generieren.
@@ -214,47 +214,6 @@ Wenn ein echtes Gerät eine Verbindung mit Ihrer IoT Central-Anwendung herstellt
     - Ein Geräte wurde auf der Seite **Geräte** manuell hinzugefügt, ohne die Gerätevorlage anzugeben. Das Gerät stellte dann eine Verbindung mit gültigen Anmeldeinformationen her.  
 
     Der Operator kann auf der Seite **Geräte** mithilfe der Schaltfläche **Migrieren** einem Gerät eine Gerätevorlage zuordnen.
-
-## <a name="best-practices"></a>Bewährte Methoden
-
-Diese Empfehlungen unterstützen Sie dabei, Geräte so zu implementieren, dass Sie die Vorteile der integrierten Notfallwiederherstellung und automatischen Skalierung in IoT Central nutzen können.
-
-In der folgenden Liste wird der allgemeine Flow dargestellt, wenn ein Gerät eine Verbindung zu IoT Central herstellt:
-
-1. Verwenden Sie DPS, um das Gerät bereitzustellen und eine Verbindungszeichenfolge für das Gerät abzurufen.
-
-1. Verwenden Sie die Verbindungszeichenfolge, um den internen IoT Hub-Endpunkt von IoT Central zu verbinden. Senden Sie Daten an die IoT Central-Anwendung, und empfangen Sie Daten von der Anwendung.
-
-1. Wenn für das Gerät Verbindungsfehler auftreten, können Sie je nach Fehlertyp entweder versuchen, die Verbindung neu herzustellen oder das Gerät neu bereitzustellen.
-
-### <a name="use-dps-to-provision-the-device"></a>Bereitstellen des Geräts mithilfe von DPS
-
-Wenn Sie ein Gerät mit DPS bereitstellen möchten, verwenden Sie diese Bereichs-ID sowie die Geräte-ID Ihrer IoT Central-Anwendung. Weitere Informationen zu den verschiedenen Typen an Anmeldeinformationen finden Sie unter [Gruppenregistrierung mit X.509](#x509-group-enrollment) und [Gruppenregistrierung mit SAS](#sas-group-enrollment). Weitere Informationen zu Geräte-IDs finden Sie unter [Geräteregistrierung](#device-registration).
-
-Bei Erfolg gibt DPS eine Verbindungszeichenfolge zurück, mit der das Gerät eine Verbindung zu Ihrer IoT Central-Anwendung herstellen kann. Informationen zum Troubleshooting für Bereitstellungsfehler finden Sie unter [Überprüfen des Bereitstellungsstatus Ihres Geräts](troubleshoot-connection.md#check-the-provisioning-status-of-your-device).
-
-Das Gerät kann die Verbindungszeichenfolge zwischenspeichern und für spätere Verbindungen verwenden. Das Gerät muss jedoch darauf vorbereitet sein, [Verbindungsfehler zu verarbeiten](#handle-connection-failures).
-
-### <a name="connect-to-iot-central"></a>Herstellen einer Verbindung zu IoT Central
-
-Verwenden Sie die Verbindungszeichenfolge, um den internen IoT Hub-Endpunkt von IoT Central zu verbinden. Die Verbindung ermöglicht es Ihnen, Telemetriedaten an Ihre IoT Central-Anwendung zu senden, Eigenschaftswerte mit Ihrer IoT Central-Anwendung zu synchronisieren und auf Befehle zu reagieren, die von Ihrer IoT Central-Anwendung gesendet werden.
-
-### <a name="handle-connection-failures"></a>Verarbeiten von Verbindungsfehlern
-
-Zu Skalierungs- oder Notfallwiederherstellungszwecken kann IoT Central den zugrunde liegenden IoT-Hub aktualisieren. Damit die Konnektivität bestehen bleibt, sollte Ihr Gerätecode bestimmte Verbindungsfehler verarbeiten können, indem eine Verbindung zum neuen IoT Hub-Endpunkt hergestellt wird.
-
-Wenn für das Gerät beim Herstellen einer Verbindung einer der folgenden Fehler angezeigt wird, sollte es den Bereitstellungsprozess mit DPS wiederholen, um eine neue Verbindungszeichenfolge abzurufen. Diese Fehler deuten darauf hin, dass die vom Gerät verwendete Verbindungszeichenfolge nicht mehr gültig ist:
-
-- Der IoT Hub-Endpunkt kann nicht erreicht werden.
-- Das Sicherheitstoken ist abgelaufen.
-- Das Gerät wurde in IoT Hub deaktiviert.
-
-Wenn für das Gerät beim Herstellen einer Verbindung einer der folgenden Fehler angezeigt wird, sollte eine Backoffstrategie verwendet werden, um noch mal zu versuchen, die Verbindung herzustellen. Diese Fehler bedeuten, dass die Verbindungszeichenfolge, die das Gerät verwendet, immer noch gültig ist. Vorübergehende Bedingungen verhindern jedoch, dass das Gerät eine Verbindung herstellen kann:
-
-- Der Operator hat das Gerät blockiert.
-- Es wird ein interner Fehler 500 vom Dienst ausgegeben.
-
-Weitere Informationen zu Fehlercodes für Geräte finden Sie unter [Troubleshooting für Geräteverbindungen](troubleshoot-connection.md).
 
 ## <a name="sdk-support"></a>SDK-Unterstützung
 
@@ -304,8 +263,8 @@ Alle Daten, die zwischen Geräten und Azure IoT Central ausgetauscht werden, wer
 
 Wenn Sie ein Geräteentwickler sind, werden einige der folgenden nächsten Schritte empfohlen:
 
+- Informieren Sie sich über [bewährte Methoden](concepts-best-practices.md) zum Entwickeln von Geräten.
 - Beispielcode, der die Verwendung von SAS-Token zeigt, finden Sie in [Tutorial: Erstellen einer Node.js-Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)](tutorial-connect-device.md)
 - Erfahren Sie mehr über [Informationen zum Verbinden von Geräten mit X.509-Zertifikaten mithilfe des Node.js-Geräte-SDK für IoT Central-Anwendung](how-to-connect-devices-x509.md).
 - Informieren Sie sich über [Überwachen der Gerätekonnektivität per Azure CLI](./howto-monitor-devices-azure-cli.md).
-- Informieren Sie sich über [Definieren eines neuen IoT-Gerätetyps in Ihrer Azure IoT Central-Anwendung](./howto-set-up-template.md).
 - Informieren Sie sich über [Azure IoT Edge-Geräte und Azure IoT Central](./concepts-iot-edge.md).

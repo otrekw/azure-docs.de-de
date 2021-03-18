@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 1b62777ec647efc6d5aded573e681cadd6475b47
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 84a6bba390b0f6b101bd8243cf47b79af9618999
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654794"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521644"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Bewährte Methoden für Azure Cache for Redis 
 Durch Befolgen dieser bewährten Methoden sorgen Sie für eine optimale Leistung und kostengünstige Verwendung Ihrer Azure Cache for Redis-Instanz.
@@ -30,6 +30,8 @@ Durch Befolgen dieser bewährten Methoden sorgen Sie für eine optimale Leistung
  * **Platzieren Sie Ihre Cache-Instanz und Ihre Anwendung in der gleichen Region.**  Eine Verbindung mit einem Cache in einer anderen Region herzustellen, kann zu einer beträchtlichen Latenz führen und die Zuverlässigkeit reduzieren.  Sie können zwar von außerhalb von Azure aus eine Verbindung herstellen, dies ist jedoch nicht empfehlenswert, *vor allem bei Verwendung von Redis als Cache*.  Wenn Sie Redis als nur Schlüssel/Wert-Speicher verwenden, ist Latenz möglicherweise kein Hauptaspekt. 
 
  * **Wiederverwenden von Verbindungen**.  Das Erstellen neuer Verbindungen ist teuer und erhöht die Latenz, also verwenden Verbindungen weitestgehend wieder. Wenn Sie sich dazu entscheiden, neue Verbindungen zu erstellen, vergewissern Sie sich, dass alte Verbindungen geschlossen sind, bevor Sie sie freigeben (selbst in Sprachen mit verwaltetem Arbeitsspeicher wie .NET oder Java).
+
+* **Verwenden Sie Pipelining.**  Versuchen Sie, einen Redis-Client auszuwählen, der [Redis-Pipelining](https://redis.io/topics/pipelining) unterstützt, um zum Erzielen des optimalen Durchsatzes das Netzwerk möglichst effizient zu nutzen.
 
  * **Konfigurieren Sie Ihre Clientbibliothek für die Verwendung eines *Verbindungstimeouts* von mindestens 15 Sekunden**, wodurch das System Zeit erhält, die Verbindung auch unter höherer CPU-Auslastung herzustellen.  Bei einem niedrigeren Verbindungstimeoutwert ist nicht sichergestellt, dass die Verbindung in diesem Zeitraum hergestellt werden kann.  Bei Beeinträchtigungen (hohe Client- oder Server-CPU-Auslastung usw.) hat ein niedriger Verbindungstimeoutwert zur Folge, dass der Verbindungsversuch fehlschlägt. Dieses Verhalten macht eine schlechte Situation häufig noch schlimmer.  Statt zu helfen, verschlimmern kürzere Timeouts das Problem, weil sie ein Neustarten des Prozesses der Verbindungsherstellung erzwingen und damit zu einer *Verbinden -> Fehler -> Wiederholen*-Schleife führen können. Im Allgemeinen wird empfohlen, das Verbindungstimeout bei 15 Sekunden oder höher zu lassen. Es ist besser, dass der Verbindungsversuch nach 15 oder 20 Sekunden erfolgreich ist, als dass er schnell fehlschlägt und zu häufigen Wiederholungen führt. Solch eine Wiederholungsschleife kann längere Ausfallzeiten zur Folge haben, als wenn Sie dem System gleich zu Anfang mehr Zeit für die Herstellung der Verbindung einräumen.  
      > [!NOTE]
@@ -51,7 +53,7 @@ Es gibt mehrere Dinge im Zusammenhang mit der Speicherauslastung in Ihrer Redis-
 ## <a name="client-library-specific-guidance"></a>Spezifische Anleitungen für die Clientbibliothek
  * [StackExchange.Redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
  * [Java – Welchen Client soll ich verwenden?](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
- * [Lettuce (Java)](https://gist.github.com/warrenzhu25/181ccac7fa70411f7eb72aff23aa8a6a#file-azure-redis-lettuce-best-practices-md)
+ * [Lettuce (Java)](https://github.com/Azure/AzureCacheForRedis/blob/main/Lettuce%20Best%20Practices.md)
  * [Jedis (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
  * [Node.js](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-node-js-md)
  * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
@@ -73,6 +75,8 @@ Wenn Sie die Funktionsweise Ihres Codes unter Fehlerbedingungen testen möchten,
  * Die für den Test verwendete Client-VM sollte sich **in derselben Region** befinden wie Ihre Redis Cache-Instanz.
  * **Es wird empfohlen, die Dv2-VM-Serie für Ihren Client zu verwenden**, da sie über bessere Hardware verfügt und die besten Ergebnisse liefert.
  * Stellen Sie sicher, dass die verwendete Client-VM über **mindestens so viel Computeleistung und Bandbreite* wie der getestete Cache verfügt. 
+ * **Testen Sie unter Failoverbedingungen** in Ihrem Cache. Sie müssen sicherstellen, dass Sie die Leistung Ihres Caches nicht nur unter den Bedingungen eines stabilen Zustands testen. Testen Sie außerdem unter Failoverbedingungen, und messen Sie währenddessen die CPU-/Serverauslastung Ihres Caches. Sie können ein Failover initiieren, indem Sie [den primären Knoten neu starten](cache-administration.md#reboot). Auf diese Weise können Sie sehen, wie sich Ihre Anwendung während der Failoverbedingungen im Hinblick auf Durchsatz und Latenz verhält (erfolgt während Aktualisierungen und kann während eines ungeplanten Ereignisses auftreten). Idealerweise sollte die CPU-/Serverauslastungsspitze selbst während eines Failovers nicht mehr als 80 % betragen, da dies Auswirkungen auf die Leistung haben kann.
+ * **Einige Cachegrößen** werden auf VMs mit mindestens vier Kernen gehostet. Dies ist nützlich, um die Workloads der TLS-Verschlüsselung/-Entschlüsselung sowie der TLS-Verbindung/-Verbindungstrennung auf mehrere Kerne zu verteilen, um die CPU-Gesamtauslastung der Cache-VMs zu senken.  [Weitere Informationen zu VM-Größen und Kernen finden Sie hier.](cache-planning-faq.md#azure-cache-for-redis-performance)
  * **Aktivieren Sie VRSS** auf dem Clientcomputer, wenn Sie unter Windows arbeiten.  [Ausführliche Informationen finden Sie hier](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11)).  PowerShell-Beispielskript:
      >PowerShell -ExecutionPolicy Unrestricted Enable-NetAdapterRSS -Name (    Get-NetAdapter).Name 
 

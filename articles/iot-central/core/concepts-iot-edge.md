@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 91869614aef03b819a5f7fbb355004f6e802d673
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1a464b9e039f256fae52c32d828b1ec39a20a228
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733011"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123274"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Verbinden eines Azure IoT Edge-Geräts mit einer Azure IoT Central-Anwendung
 
@@ -87,6 +87,20 @@ In IoT Central wird mit [Gerätevorlagen](concepts-device-templates.md) definier
 * Die Befehle, auf die ein Gerät antwortet, damit IoT Central eine Benutzeroberfläche für einen Operator zum Aufrufen der Befehle anzeigen kann
 
 IoT Edge-Geräte können wie Standardgeräte Telemetriedaten senden, Eigenschaftswerte synchronisieren und auf Befehle reagieren. Daher ist für IoT Edge-Geräte eine Gerätevorlage in IoT Central erforderlich.
+
+### <a name="iot-edge-device-templates"></a>IoT Edge-Gerätevorlagen
+
+In IoT Central-Gerätevorlagen werden Modelle zum Beschreiben der Funktionen von Geräten verwendet. Das folgende Diagramm zeigt die Struktur des Modells für ein IoT Edge-Gerät:
+
+:::image type="content" source="media/concepts-iot-edge/iot-edge-model.png" alt-text="Struktur des Modells für ein IoT Edge-Gerät, das mit IoT Central verbunden ist" border="false":::
+
+IoT Central modelliert ein IoT Edge-Gerät wie folgt:
+
+* Jede IoT Edge-Gerätevorlage enthält ein Gerätefunktionsmodell.
+* Für jedes benutzerdefinierte Modul im Bereitstellungsmanifest wird ein Modulfunktionsmodell generiert.
+* Zwischen den einzelnen Modulfunktionsmodellen und einem Gerätemodell wird eine Beziehung eingerichtet.
+* Ein Modulfunktionsmodell implementiert eine oder mehrere Modulschnittstelle(n).
+* Jede Modulschnittstelle enthält Telemetrie, Eigenschaften und Befehle.
 
 ### <a name="iot-edge-deployment-manifests-and-iot-central-device-templates"></a>IoT Edge-Bereitstellungsmanifeste und IoT Central-Gerätevorlagen
 
