@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 04/16/2020
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc, devx-track-python, devx-track-js, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: dfb7e7c7c93a8af2b59f6d3d7049e2c14b8f382a
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 0d597f0742cfc43f1c7fb38568b2a2bbda352beb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611048"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049337"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blobspeicher
 
@@ -39,18 +39,30 @@ Im ersten Teil der Serie lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 * Installieren von [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit der Workload **Azure-Entwicklung**.
 
   ![Azure-Entwicklung (unter Web & Cloud)](media/storage-create-geo-redundant-storage/workloads.png)
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
 * [Installieren Sie Python.](https://www.python.org/downloads/)
 * Laden Sie das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python) herunter, und installieren Sie es.
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 * Installieren Sie [Node.js](https://nodejs.org).
 
@@ -85,7 +97,11 @@ Führen Sie die folgenden Schritte aus, um ein geozonenredundantes Speicherkonto
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 [Laden Sie das Beispielprojekt herunter](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip), und extrahieren (entzippen) Sie die Datei „storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.zip“. Sie können auch [Git](https://git-scm.com/) verwenden, um eine Kopie der Anwendung in Ihre Entwicklungsumgebung herunterzuladen. Das Beispielprojekt enthält eine Konsolenanwendung.
 
@@ -93,7 +109,11 @@ Führen Sie die folgenden Schritte aus, um ein geozonenredundantes Speicherkonto
 git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
 [Laden Sie das Beispielprojekt herunter](https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip), und extrahieren (entzippen) Sie die Datei „storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.zip“. Sie können auch [Git](https://git-scm.com/) verwenden, um eine Kopie der Anwendung in Ihre Entwicklungsumgebung herunterzuladen. Das Beispielprojekt enthält eine einfache Python-Anwendung.
 
@@ -101,7 +121,11 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 [Laden Sie das Beispielprojekt herunter](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs), und entzippen Sie die Datei. Sie können auch [Git](https://git-scm.com/) verwenden, um eine Kopie der Anwendung in Ihre Entwicklungsumgebung herunterzuladen. Das Beispielprojekt enthält eine einfache Node.js-Anwendung.
 
@@ -113,7 +137,11 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 ## <a name="configure-the-sample"></a>Das Beispiel konfigurieren
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Sie müssen in der Anwendung die Verbindungszeichenfolge für das Speicherkonto angeben. Sie können diese Verbindungszeichenfolge in einer Umgebungsvariablen auf dem lokalen Computer speichern, auf dem die Anwendung ausgeführt wird. Befolgen Sie je nach Betriebssystem die Schritte für eines der unten angegebenen Beispiele, um die Umgebungsvariable zu erstellen.
 
@@ -131,7 +159,11 @@ export storageconnectionstring=<yourconnectionstring>
 setx storageconnectionstring "<yourconnectionstring>"
 ```
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
 Sie müssen in der Anwendung Ihre Anmeldeinformationen für das Speicherkonto angeben. Sie können diese Informationen in einer Umgebungsvariablen auf dem lokalen Computer speichern, auf dem die Anwendung ausgeführt wird. Befolgen Sie je nach Betriebssystem die Schritte für eines der unten angegebenen Beispiele, um die Umgebungsvariablen zu erstellen.
 
@@ -151,7 +183,11 @@ setx accountname "<youraccountname>"
 setx accountkey "<youraccountkey>"
 ```
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 Um dieses Beispiel ausführen zu können, müssen Sie Ihre Anmeldeinformationen für das Speicherkonto der `.env.example`-Datei hinzufügen und sie in `.env` umbenennen.
 
@@ -168,7 +204,11 @@ Installieren Sie die erforderlichen Abhängigkeiten. Öffnen Sie hierzu eine Ein
 
 ## <a name="run-the-console-application"></a>Ausführen der Konsolenanwendung
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Drücken Sie in Visual Studio **F5**, oder wählen Sie **Starten** aus, um mit dem Debuggen der Anwendung zu beginnen. Visual Studio stellt fehlende NuGet-Pakete bei entsprechender Konfiguration automatisch wieder her. Weitere Informationen finden Sie unter [Installieren und Neuinstallieren von Paketen mit der Paketwiederherstellung](/nuget/consume-packages/package-restore#package-restore-overview).
 
@@ -178,7 +218,11 @@ Ein Konsolenfenster wird geöffnet, und die Anwendung wird ausgeführt. Die Anwe
 
 Im Beispielcode wird die Aufgabe `RunCircuitBreakerAsync` in der Datei `Program.cs` verwendet, um mit der [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync)-Methode ein Bild aus dem Speicherkonto herunterzuladen. Vor dem Download wird ein [OperationContext](/dotnet/api/microsoft.azure.cosmos.table.operationcontext)-Objekt initialisiert. Der Vorgangskontext definiert Ereignishandler, die aufgerufen werden, wenn ein Download erfolgreich abgeschlossen wurde oder wenn ein Download fehlschlägt und erneut versucht wird, den Download auszuführen.
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
 Navigieren Sie zum Ausführen der Anwendung in einem Terminal oder über eine Eingabeaufforderung zum Verzeichnis **circuitbreaker.py**, und geben Sie `python circuitbreaker.py` ein. Die Anwendung lädt das Bild **HelloWorld.png** Bild aus der Projektmappe in das Speicherkonto hoch. Anschließend wird von der Anwendung überprüft, ob das Bild im sekundären RA-GZRS-Endpunkt repliziert wurde. Das Bild wird dann von der Anwendung maximal 999 Mal heruntergeladen. Jeder Lesevorgang wird dabei durch ein **P** oder ein **S** dargestellt. Während **P** für den primären Endpunkt steht, repräsentiert **S** den sekundären Endpunkt.
 
@@ -190,7 +234,11 @@ Die retry-Funktion des Storage-Objekts wird auf eine lineare Wiederholungsrichtl
 
 Vor dem Herunterladen werden die Funktionen [retry_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient) und [response_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient) für das Dienstobjekt definiert. Mit diesen Funktionen werden die Ereignishandler definiert, die aufgerufen werden, wenn ein Download erfolgreich abgeschlossen wurde oder wenn ein Download fehlschlägt und erneut versucht wird, den Download durchzuführen.
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 Um das Beispiel auszuführen, öffnen Sie eine Eingabeaufforderung, navigieren Sie zum Beispielordner, und geben Sie dann `node index.js` ein.
 
@@ -221,7 +269,11 @@ Deleted container newcontainer1550799840726
 
 ## <a name="understand-the-sample-code"></a>Grundlagen des Beispielcodes
 
-### <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ### <a name="retry-event-handler"></a>Ereignishandler für erneuten Downloadversuch
 
@@ -272,7 +324,11 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-### <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
 ### <a name="retry-event-handler"></a>Ereignishandler für erneuten Downloadversuch
 
@@ -315,7 +371,11 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 Mit dem Node.js V10 SDK sind Rückrufhandler nicht erforderlich. Stattdessen erstellt das Beispiel eine Pipeline, die mit Optionen für Wiederholungsversuche und einem sekundären Endpunkt konfiguriert wird. Dies ermöglicht der Anwendung, automatisch zur sekundären Pipeline zu wechseln, wenn sie Ihre Daten nicht über die primäre Pipeline erreichen kann.
 

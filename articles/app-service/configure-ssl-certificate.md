@@ -3,15 +3,15 @@ title: Hinzufügen und Verwalten von TLS-/SSL-Zertifikaten
 description: Erstellen Sie ein kostenloses Zertifikat, importieren Sie ein App Service-Zertifikat, importieren Sie ein Key Vault-Zertifikat, oder erwerben Sie ein App Service-Zertifikat in Azure App Service.
 tags: buy-ssl-certificates
 ms.topic: tutorial
-ms.date: 10/25/2019
+ms.date: 03/02/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: e563981d3a68375105256aa6015aa94ada91326b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d6f6db34239cf8c77b6e43d4426d889fa12c0690
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711704"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051343"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Hinzufügen eines TLS-/SSL-Zertifikats in Azure App Service
 
@@ -26,7 +26,7 @@ In der folgenden Tabelle sind die Optionen zum Hinzufügen von Zertifikaten in A
 
 |Option|BESCHREIBUNG|
 |-|-|
-| Erstellen eines von App Service verwalteten Zertifikats (Vorschau) | Ein privates Zertifikat, das einfach zu verwenden ist, wenn Sie nur Ihre [benutzerdefinierte `www`-Domäne](app-service-web-tutorial-custom-domain.md) oder eine nicht „nackte“ Domäne in App Service schützen müssen. |
+| Erstellen eines von App Service verwalteten Zertifikats (Vorschau) | Ein privates Zertifikat, das kostenlos und einfach zu verwenden ist, wenn Sie nur Ihre [benutzerdefinierte Domäne](app-service-web-tutorial-custom-domain.md) in App Service schützen müssen |
 | Erwerben eines App Service-Zertifikats | Ein von Azure verwaltetes privates Zertifikat. Es ermöglicht eine einfache automatisierte Zertifikatverwaltung und bietet flexible Verlängerungs- und Exportoptionen. |
 | Importieren eines Zertifikats aus Key Vault | Diese Option ist nützlich, wenn Sie [Azure Key Vault](../key-vault/index.yml) für die Verwaltung Ihrer [PKCS12-Zertifikate](https://wikipedia.org/wiki/PKCS_12) verwenden. Siehe [Anforderungen an private Zertifikate](#private-certificate-requirements) |
 | Hochladen eines privaten Zertifikats | Wenn Sie bereits über ein privates Zertifikat von einem Drittanbieter verfügen, können Sie es hochladen. Siehe [Anforderungen an private Zertifikate](#private-certificate-requirements) |
@@ -34,19 +34,17 @@ In der folgenden Tabelle sind die Optionen zum Hinzufügen von Zertifikaten in A
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Im Rahmen dieser Schrittanleitung müssen Sie folgende Schritte durchführen:
-
 - [Erstellen Sie eine App Service-App](./index.yml).
-- Nur kostenloses Zertifikat: Ordnen Sie App Service eine Unterdomäne (z. B. `www.contoso.com`) mit einem [CNAME-Eintrag](app-service-web-tutorial-custom-domain.md#map-a-cname-record) zu.
+- Stellen Sie bei einem privaten Zertifikat sicher, dass es alle [Anforderungen von App Service](#private-certificate-requirements) erfüllt.
+- **Nur kostenloses Zertifikat:**
+    - Ordnen Sie die Domäne, für die Sie ein Zertifikat benötigen, App Service zu. Weitere Informationen finden Sie unter [Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](app-service-web-tutorial-custom-domain.md).
+    - Stellen Sie bei einer Stammdomäne (z. B. „contoso.com“) sicher, dass für Ihre App keine [IP-Einschränkungen](app-service-ip-restrictions.md) konfiguriert sind. Sowohl die Zertifikaterstellung als auch die regelmäßige Verlängerung für eine Stammdomäne sind davon abhängig, dass Ihre App über das Internet erreichbar ist.
 
 ## <a name="private-certificate-requirements"></a>Anforderungen an private Zertifikate
 
-> [!NOTE]
-> AES256 wird von Azure Web Apps **nicht** unterstützt, und alle PFX-Dateien müssen mit TripleDES verschlüsselt werden.
+Das [von App Service verwaltete kostenlose Zertifikat](#create-a-free-managed-certificate-preview) und das [App Service-Zertifikat](#import-an-app-service-certificate) erfüllen bereits die Anforderungen von App Service. Wenn Sie ein privates Zertifikat in App Service hochladen oder importieren möchten, muss Ihr Zertifikat die folgenden Anforderungen erfüllen:
 
-Das [von App Service verwaltete kostenlose Zertifikat](#create-a-free-certificate-preview) bzw. das [App Service-Zertifikat](#import-an-app-service-certificate) erfüllt bereits die Anforderungen von App Service. Wenn Sie ein privates Zertifikat in App Service hochladen oder importieren möchten, muss Ihr Zertifikat die folgenden Anforderungen erfüllen:
-
-* Als [kennwortgeschützte PFX-Datei](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions) exportiert
+* Exportiert als [kennwortgeschützte PFX-Datei](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions), mit Triple DES verschlüsselt
 * Enthält einen privaten Schlüssel mit mindestens 2048 Bit
 * Enthält alle Zwischenzertifikate in der Zertifikatkette
 
@@ -60,21 +58,21 @@ Zum Schützen einer benutzerdefinierten Domäne in einer TLS-Bindung gelten für
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
-## <a name="create-a-free-certificate-preview"></a>Erstellen eines kostenlosen Zertifikats (Vorschau)
+## <a name="create-a-free-managed-certificate-preview"></a>Erstellen eines kostenlosen verwalteten Zertifikats (Vorschau)
+
+> [!NOTE]
+> Stellen Sie vor dem Erstellen eines kostenlosen verwalteten Zertifikats sicher, dass für Ihre App die [Voraussetzungen erfüllt sind](#prerequisites).
 
 Das von App Service verwaltete kostenlose Zertifikat ist eine vorgefertigte Lösung zum Schützen Ihres benutzerdefinierten DNS-Namens in App Service. Es handelt sich dabei um ein voll funktionsfähiges TLS-/SSL-Zertifikat, das von App Service verwaltet und automatisch verlängert wird. Für das kostenlose Zertifikat gelten die folgenden Einschränkungen:
 
 - Platzhalterzertifikate werden nicht unterstützt.
-- Es unterstützt keine „nackten“ Domänen.
 - Es kann nicht exportiert werden.
-- Es wird in einer App Service-Umgebung (App Service Environment, ASE) nicht unterstützt.
-- A-Einträge werden nicht unterstützt. Beispielsweise funktioniert die automatische Verlängerung für A-Einträge nicht.
+- Es wird in einer App Service-Umgebung (App Service Environment, ASE) nicht unterstützt.
+- Es wird nicht mit Stammdomänen unterstützt, die in Traffic Manager integriert sind.
 
 > [!NOTE]
 > Das kostenlose Zertifikat wird von DigiCert ausgestellt. Bei einigen Domänen der obersten Ebene müssen Sie DigiCert explizit als Zertifikataussteller zulassen, indem Sie einen [CAA-Domäneneintrag](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) (Certification Authority Authorization) mit dem folgenden Wert erstellen: `0 issue digicert.com`.
 > 
-
-So erstellen Sie ein von App Service verwaltetes Zertifikat:
 
 Wählen Sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> im linken Menü **App Services** >  **\<app-name>** aus.
 
@@ -82,7 +80,7 @@ Wählen Sie im linken Navigationsbereich Ihrer App **TLS-/SSL-Einstellungen** > 
 
 ![Erstellen eines kostenlosen Zertifikats in App Service](./media/configure-ssl-certificate/create-free-cert.png)
 
-Im Dialogfeld sind alle nicht „nackten“ Domänen aufgeführt, die Ihrer App ordnungsgemäß mit einem CNAME-Eintrag zugeordnet sind. Wählen Sie die benutzerdefinierte Domäne aus, für die ein kostenloses Zertifikat erstellt werden soll, und wählen Sie dann **Erstellen** aus. Sie können nur ein Zertifikat für jede unterstützte benutzerdefinierte Domäne erstellen.
+Wählen Sie die benutzerdefinierte Domäne aus, für die ein kostenloses Zertifikat erstellt werden soll, und wählen Sie dann **Erstellen** aus. Sie können nur ein Zertifikat für jede unterstützte benutzerdefinierte Domäne erstellen.
 
 Nach Abschluss des Vorgangs wird das Zertifikat in der Liste **Private Schlüsselzertifikate** angezeigt.
 

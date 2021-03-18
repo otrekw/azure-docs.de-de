@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7882fc6a6823a93d09c04a8ae2c19005df4843d8
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 37768b994d4b61ee728e04352f027a6f5a478341
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917092"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031615"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Was ist Azure Synapse Analytics?
 
@@ -64,13 +64,13 @@ Mit Azure Synapse erhalten Unternehmen eine zentrale Lösung für die Verwaltung
 * Differenzierte Zugriffssteuerung für Daten und Code
 * Zentrales Dashboard zum Überwachen von Ressourcen, Nutzung und Benutzern in SQL und Spark
 
-### <a name="synapse-studio"></a>Synapse Studio
+### <a name="unified-experience"></a>Einheitliche Benutzeroberfläche
 
-**Synapse Studio** ist die webbasierte Umgebung, in der sämtliche Funktionen für Dateningenieure zusammengefasst sind. Dadurch können Dateningenieure alle Aufgaben, die für eine umfassende Lösung erforderlich sind, an einem zentralen Ort erledigen.
+**Synapse Studio** ist die Benutzerumgebung, die alles umfasst, was Data Engineers für ihre Arbeit benötigen. Sie ermöglicht Data Engineers die Ausführung sämtlicher Aufgaben, die zum Erstellen einer vollständigen Analyselösung erforderlich sind.
 
-* Erstellung einer End-to-End-Analyselösung an einem zentralen Ort: Erfassung, Erkundung, Aufbereitung, Orchestrierung und Visualisierung
-* Branchenführende Produktivität für Dateningenieure, die SQL- oder Spark-Code schreiben: Erstellung, Debugging und Leistungsoptimierung
-* Integration in Unternehmensprozesse mit CI/CD
+* Wichtige Aufgaben von Data Engineers an einem Ort: Erfassung, Untersuchung, Vorbereitung, Orchestrierung, Visualisierung
+* Branchenführende Produktivität zum Schreiben von SQL- oder Spark-Code: Erstellung, Debugging und Leistungsoptimierung
+* Integration in den Unternehmensprozess mit CI/CD
 
 ## <a name="engage-with-the-synapse-engineering-team"></a>Kontakt mit dem Synapse-Entwicklungsteam aufnehmen
 

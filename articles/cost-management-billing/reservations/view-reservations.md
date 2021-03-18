@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 02/24/2021
 ms.author: banders
-ms.openlocfilehash: 8c69f477f363654b8bd707949f0a5b4c46a4e8df
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 477dff9db28672f8231710af34786ac387f43b71
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561103"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050340"
 ---
 # <a name="view-azure-reservations"></a>Anzeigen von Azure-Reservierungen
 
@@ -47,8 +47,15 @@ Damit andere Personen Reservierungen verwalten können, haben Sie zwei Optionen:
 
 ### <a name="how-billing-administrators-view-or-manage-reservations"></a>Anzeigen oder Verwalten von Reservierungen durch Abrechnungsadministratoren
 
-1. Wechseln Sie zu **Cost Management + Billing*** , und wählen Sie auf der linken Seite **Reservierungstransaktionen** aus.
-2. Wenn Sie die erforderlichen Abrechnungsberechtigungen haben, können Sie Reservierungen anzeigen und verwalten. Wenn keine Reservierungen angezeigt werden, vergewissern Sie sich, dass Sie mit dem Azure AD-Mandanten angemeldet sind, in dem die Reservierungen erstellt wurden.
+Wenn Sie über Azure RBAC Zugriff auf Reservierungen oder Reservierungsaufträge haben, wird unter Umständen nur eine Teilmenge der Reservierungstransaktionen oder keine Reservierungstransaktion angezeigt, wenn Sie zu Reservierungen navigieren. Führen Sie die folgenden Schritte aus, um alle Reservierungen und Reservierungstransaktionen anzuzeigen und zu verwalten:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Kostenverwaltung + Abrechnung**.
+    - Wenn Sie EA-Administrator sind, wählen Sie im Menü auf der linken Seite die Option **Abrechnungsbereiche** und dann in der Liste der Abrechnungsbereiche einen Bereich aus.
+    - Wenn Sie Besitzer eines Abrechnungsprofils für eine Microsoft-Kundenvereinbarung sind, wählen Sie im linken Menü **Abrechnungsprofile** aus. Wählen Sie in der Liste der Abrechnungsprofile ein Profil aus.
+1. Wählen Sie im Menü auf der linken Seite die Option **Reservierungstransaktionen** aus. Die Liste der Reservierungstransaktionen wird angezeigt.
+1. Am oberen Seitenrand wird ein Banner mit folgendem Hinweis angezeigt: *Abrechnungsadministratoren können jetzt Reservierungen verwalten. Klicken Sie hier, um Reservierungen anzuzeigen und zu verwalten.* Wählen Sie das Banner aus.
+1. Die vollständige Liste der Reservierungen für Ihr EA-Registrierungsprofil oder -Abrechnungsprofil wird angezeigt.
+1. Wenn Sie den Besitz einer Reservierung übernehmen möchten, wählen Sie die entsprechende Reservierung aus. Wählen Sie dann auf der Seite „Einrichten von Berechtigungen“ die Option **Zugriff gewähren** aus. Sie erhalten Besitzerzugriff auf die Reservierung und den Reservierungsauftrag.
 
 ## <a name="view-reservation-and-utilization-in-the-azure-portal"></a>Anzeigen der Reservierung und Nutzung im Azure-Portal
 

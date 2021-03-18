@@ -2,13 +2,13 @@
 title: 'Tutorial: Konfigurieren des Netzwerks für Ihre private VMware-Cloud in Azure'
 description: Hier erfahren Sie, wie Sie das erforderliche Netzwerk zum Bereitstellen Ihrer privaten Cloud in Azure erstellen und konfigurieren.
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: 6aff39284f3ea786080055552ac001ac5dd7b394
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/13/2021
+ms.openlocfilehash: c609d191191cd9de111e83fe62761b149405cccc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578348"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494355"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Tutorial: Konfigurieren des Netzwerks für Ihre private VMware-Cloud in Azure
 
@@ -37,7 +37,7 @@ Ein virtuelles Netzwerk, das Sie für eine [private Azure VMware Solution-Clou
 
 1. Geben Sie auf der Seite **Virtuelles Netzwerk erstellen** die Details für Ihr virtuelles Netzwerk ein.
 
-1. Geben Sie auf der Registerkarte **Grundlagen** einen Namen für das virtuelle Netzwerk ein, wählen Sie die entsprechende Region und dann **Weiter: IP-Adressen**.
+1. Geben Sie auf der Registerkarte **Grundlagen** einen Namen für das virtuelle Netzwerk ein, und wählen Sie die entsprechende Region und dann **Weiter: IP-Adressen** aus.
 
 1. Geben Sie auf der Registerkarte **IP-Adressen** unter **IPv4-Adressraum** den Adressraum ein, den Sie im vorherigen Tutorial erstellt haben.
 
@@ -76,7 +76,7 @@ Sie haben ein virtuelles Netzwerk erstellt und erstellen nun ein Gateway für da
    | **Adressbereich für Gatewaysubnetz** | Dieser Wert wird aufgefüllt, wenn Sie das virtuelle Netzwerk auswählen. Lassen Sie den Standardwert unverändert. |
    | **Öffentliche IP-Adresse** | Wählen Sie **Neu erstellen**. |
 
-   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="Auswählen von „Überprüfen + erstellen“" border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="Geben Sie Werte für die Felder an, und wählen Sie anschließend „Überprüfen und erstellen“ aus." border="true":::
 
 1. Überprüfen Sie die Details auf ihre Richtigkeit, und wählen Sie dann **Erstellen** aus, um die Bereitstellung des Gateways für virtuelle Netzwerke zu starten. 
 1. Fahren Sie nach Abschluss der Bereitstellung mit dem nächsten Abschnitt fort, um Ihre ExpressRoute-Verbindung mit dem Gateway für virtuelle Netzwerke zu verbinden, das Ihre private Azure VMware Solution-Cloud enthält.
@@ -94,11 +94,11 @@ Damit Sie sich bei vCenter und NSX Manager anmelden können, benötigen Sie die
 
 Navigieren Sie zu Ihrer privaten Azure VMware Solution-Cloud, und wählen Sie unter **Verwalten** die Option **Identität** aus. Dort finden Sie die benötigten Informationen.
 
-:::image type="content" source="./media/tutorial-configure-networking/locate-urls.png" alt-text="Auswählen von „Überprüfen + erstellen“" border="true":::
+:::image type="content" source="./media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Screenshot: Anmeldeinformationen für vCenter und NSX-T und Webclient-URLs" border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
+In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Erstellen eines virtuellen Netzwerks
