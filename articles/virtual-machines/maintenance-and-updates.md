@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 3cf126caaaa0c518574418aca194ebd82cc4d6b9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 51df72e31acaadc83f4c094b99fa938377e5f023
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972066"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500001"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Wartung für VMs in Azure
 
@@ -23,7 +23,7 @@ Updates wirken sich kaum auf die gehosteten virtuellen Computer aus. Wenn Update
 - Wenn ein Update ohne Neustart möglich ist, wird die VM angehalten, während der Host aktualisiert wird, oder sie wird in Echtzeit zu einem bereits aktualisierten Host migriert. 
 - Wenn die Wartung einen Neustart erfordert, werden Sie über die geplante Wartung informiert. Azure räumt Ihnen außerdem ein Zeitfenster ein, in dem Sie die Wartung zu einem Zeitpunkt Ihrer Wahl selbst starten können. Das Zeitfenster für die selbstständige Wartung umfasst in der Regel 35 Tage, sofern die Wartung nicht dringend ist. Azure setzt sich für Technologien ein, um die Zahl der Fälle zu reduzieren, in denen VMs aus Gründen der planmäßigen Plattformwartung neu gestartet werden müssen. Anweisungen zum Verwalten geplanter Wartungen finden Sie in den Artikeln zur Behandlung von Benachrichtigungen der geplanten Wartung über die [Azure-Befehlszeilenschnittstelle](maintenance-notifications-cli.md), [PowerShell](maintenance-notifications-powershell.md) bzw. das [Portal](maintenance-notifications-portal.md).
 
-Auf dieser Seite erfahren Sie, wie Azure die beiden Wartungsarten durchführt. Weitere Informationen zu ungeplanten Ereignissen (Ausfällen) finden Sie unter  [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](./manage-availability.md) bzw. im entsprechenden Artikel für [Linux](./manage-availability.md).
+Auf dieser Seite erfahren Sie, wie Azure die beiden Wartungsarten durchführt. Weitere Informationen zu ungeplanten Ereignissen (Ausfällen) finden Sie unter [Verfügbarkeitsoptionen für virtuelle Computer in Azure](./availability.md) bzw. im entsprechenden Artikel für [Linux](./availability.md).
 
 In einer VM können Sie [mithilfe von Scheduled Events für Windows](./windows/scheduled-events.md) oder [Linux](./linux/scheduled-events.md) Benachrichtigungen zu bevorstehender Wartung erhalten.
 
@@ -87,7 +87,7 @@ Innerhalb einer Verfügbarkeitsgruppe werden einzelne VMs auf bis zu 20 Updatedo
 
 VM-*Skalierungsgruppen* sind eine Azure-Computeressource, mit der Sie eine Gruppe identischer virtueller Computer als Einzelressource bereitstellen und verwalten können. Die Skalierungsgruppe wird automatisch Updatedomänen übergreifend bereitgestellt – genau wie virtuelle Computer in einer Verfügbarkeitsgruppe. Genau wie bei Verfügbarkeitsgruppen wird auch bei Skalierungsgruppen während einer geplanten Wartung immer nur jeweils eine UD aktualisiert.
 
-Weitere Informationen zur Einrichtung Ihrer VMs für hohe Verfügbarkeit finden Sie unter  [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](./manage-availability.md) bzw. im entsprechenden Artikel für [Linux](./manage-availability.md).
+Weitere Informationen zur Einrichtung Ihrer VMs, Hochverfügbarkeit zu erreichen, finden Sie unter [Verfügbarkeitsoptionen für virtuelle Computer in Azure](./availability.md) bzw. im entsprechenden Artikel für [Linux](./availability.md).
 
 #### <a name="availability-zones"></a>Verfügbarkeitszonen
 

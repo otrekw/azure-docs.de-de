@@ -8,21 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 075b04414c752ce87365d03212fcdabab6eaa7dd
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 43c57950d317de42df666ddd25cbcb2e9a4c9611
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102119823"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488872"
 ---
-# <a name="configure-saml-identity-provider-options-with-azure-active-directory-b2c"></a>Konfigurieren der SAML-Identitätsanbieteroptionen mit Azure Active Directory B2C
+# <a name="configure-saml-identity-provider-options-with-azure-active-directory-b2c"></a>Konfigurieren der SAML-Identitätsanbieteroptionen mit Azure Active Directory B2C
 
-Azure Active Directory B2C (Azure AD B2C) unterstützt den Verbund mit SAML 2.0-Identitätsanbietern. In diesem Artikel werden die Konfigurationsoptionen beschrieben, die beim Aktivieren der Anmeldung mit einem SAML-Identitätsanbieter verfügbar sind.
+Azure Active Directory B2C (Azure AD B2C) unterstützt den Verbund mit SAML 2.0-Identitätsanbietern. In diesem Artikel werden die Konfigurationsoptionen beschrieben, die beim Aktivieren der Anmeldung mit einem SAML-Identitätsanbieter verfügbar sind.
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -36,7 +36,7 @@ Azure Active Directory B2C (Azure AD B2C) unterstützt den Verbund mit SAML 2
 
 ## <a name="claims-mapping"></a>Anspruchszuordnung
 
-Das **OutputClaims**-Element enthält eine Liste von Ansprüchen, die vom SAML-Identitätsanbieter zurückgegeben werden. Sie müssen den Namen des in Ihrer Richtlinie definierten Anspruchs dem Namen zuordnen, der für den Identitätsanbieter definiert wurde. Überprüfen Sie Ihren Identitätsanbieter bezüglich der Liste der Ansprüche (Assertionen). Sie können auch den Inhalt der von Ihrem Identitätsanbieter zurückgegebenen SAML-Antwort überprüfen. Weitere Informationen finden Sie unter [Debuggen der SAML-Nachrichten](#debug-saml-protocol). Wenn Sie einen Anspruch hinzufügen möchten, [definieren Sie zuerst einen Anspruch](claimsschema.md), und fügen Sie ihn dann der Ausgabeanspruchssammlung hinzu.
+Das Element **OutputClaims** enthält eine Liste von Ansprüchen, die vom SAML-Identitätsanbieter zurückgegeben werden. Sie müssen den Namen des in Ihrer Richtlinie definierten Anspruchs dem Namen zuordnen, der für den Identitätsanbieter definiert wurde. Überprüfen Sie Ihren Identitätsanbieter bezüglich der Liste der Ansprüche (Assertionen). Sie können auch den Inhalt der von Ihrem Identitätsanbieter zurückgegebenen SAML-Antwort überprüfen. Weitere Informationen finden Sie unter [Debuggen der SAML-Nachrichten](#debug-saml-protocol). Wenn Sie einen Anspruch hinzufügen möchten, [definieren Sie zuerst einen Anspruch](claimsschema.md), und fügen Sie ihn dann der Ausgabeanspruchssammlung hinzu.
 
 Sie können auch Ansprüche, die nicht vom Identitätsanbieter zurückgegeben wurden, einfügen, sofern Sie das `DefaultValue`-Attribut festlegen. Der Standardwert kann statisch oder dynamisch sein, wobei [Kontextansprüche](#enable-use-of-context-claims) verwendet werden.
 

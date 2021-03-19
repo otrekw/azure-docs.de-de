@@ -6,15 +6,15 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: c83221743e0566d783c38c40aaf92111a0cd80f7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 6502728a14ea825fadfde107e61f235db5619ae0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030731"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507278"
 ---
 # <a name="import-new-update"></a>Importieren eines neuen Updates
-Hier erfahren Sie, wie Sie ein neues Update in Device Update für IoT Hub importieren.
+Hier erfahren Sie, wie Sie ein neues Update in Device Update für IoT Hub importieren. Wenn Sie es noch nicht getan haben, sollten Sie sich mit den grundlegenden [Importkonzepten](import-concepts.md) vertraut machen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -57,11 +57,11 @@ Hier erfahren Sie, wie Sie ein neues Update in Device Update für IoT Hub import
 
     | Parameter | BESCHREIBUNG |
     | --------- | ----------- |
-    | deviceManufacturer | Hersteller des Geräts, mit dem das Update kompatibel ist, z. B. „Contoso“
-    | deviceModel | Modell des Geräts, mit dem das Update kompatibel ist, z. B. „Toaster“
-    | updateProvider | Anbieterteil der Update-Identität, z. B. „Fabrikam“
-    | updateName | Namensteil der Update-Identität, z. B. „imageUpdate“
-    | updateVersion | Updateversion, z. B. „2.0“
+    | deviceManufacturer | Hierbei handelt es sich um den Hersteller des Geräts, mit dem das Update kompatibel ist, z. B. Contoso. Dieser Parameter muss mit der _manufacturer_-[Geräteeigenschaft](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties) übereinstimmen.
+    | deviceModel | Modell des Geräts, mit dem das Update kompatibel ist, z. B. „Toaster“. Dieser Parameter muss mit der _model_-[Geräteeigenschaft](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties) übereinstimmen.
+    | updateProvider | Bei diesem Parameter handelt es sich um die Entität, die das Update erstellt oder verantwortlich für dieses ist. Oft ist dies ein Firmenname.
+    | updateName | Hierbei handelt es sich um einen Bezeichner für eine Klasse von Updates. Die Klasse kann etwas von Ihnen Gewähltes sein. Oft ist es ein Geräte- oder Modellname.
+    | updateVersion | Hierbei handelt es sich um die Versionsnummer, die dieses Update von anderen mit denselben Anbietern und Namen unterscheidet. Diese Versionsnummer kann einer Version einer individuellen Softwarekomponente auf dem Gerät entsprechen.
     | updateType | <ul><li>`microsoft/swupdate:1` für Imageupdate angeben</li><li>`microsoft/apt:1` für Paketupdate angeben</li></ul>
     | installedCriteria | <ul><li>Wert von „SWVersion“ für Updatetyp `microsoft/swupdate:1` angeben</li><li>Geben Sie den empfohlenen Wert für den Updatetyp `microsoft/apt:1` an.
     | updateFilePath(s) | Pfad zu der/den Updatedatei(en) auf Ihrem Computer

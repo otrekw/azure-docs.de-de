@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/25/2021
 ms.custom: generated
-ms.openlocfilehash: 1ee422d4c040e8546135981e0640484acc997b0a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c91172ff110b950335c66f2c0ea9ac59c37e0a76
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718725"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487850"
 ---
 # <a name="azure-resource-provider-operations"></a>Vorgänge für Azure-Ressourcenanbieter
 
@@ -50,6 +50,7 @@ Klicken Sie in der folgenden Tabelle auf den Namen des Ressourcenanbieters, um d
 | [microsoft.storagesync](#microsoftstoragesync) |
 | [Microsoft.StorSimple](#microsoftstorsimple) |
 | **Web** |
+| [Microsoft.AppPlatform](#microsoftappplatform) |
 | [Microsoft.CertificateRegistration](#microsoftcertificateregistration) |
 | [Microsoft.DomainRegistration](#microsoftdomainregistration) |
 | [Microsoft.Maps](#microsoftmaps) |
@@ -2047,6 +2048,62 @@ Azure-Dienst: [StorSimple](../storsimple/index.yml)
 > | Microsoft.StorSimple/operations/read | Listet die Vorgänge auf oder ruft sie ab. |
 
 ## <a name="web"></a>Web
+
+### <a name="microsoftappplatform"></a>Microsoft.AppPlatform
+
+Azure-Dienst: [Azure Spring Cloud](../spring-cloud/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Aktion | Beschreibung |
+> | --- | --- |
+> | Microsoft.AppPlatform/register/action | Registriert das Abonnement für den Ressourcenanbieter Microsoft.AppPlatform |
+> | Microsoft.AppPlatform/unregister/action | Hebt die Registrierung für das Abonnement für den Ressourcenanbieter Microsoft.AppPlatform auf |
+> | Microsoft.AppPlatform/locations/checkNameAvailability/action | Überprüft die Verfügbarkeit des Ressourcennamens |
+> | Microsoft.AppPlatform/locations/operationResults/Spring/read | Liest das Ressorcenvorgangsergebnis |
+> | Microsoft.AppPlatform/locations/operationStatus/operationId/read | Liest den Ressorcenvorgangsstatus |
+> | Microsoft.AppPlatform/operations/read | Listet die verfügbaren Vorgänge von Microsoft Azure Spring Cloud auf |
+> | Microsoft.AppPlatform/skus/read | Listet die verfügbaren SKUs von Microsoft Azure Spring Cloud auf |
+> | Microsoft.AppPlatform/Spring/write | Erstellt oder aktualisiert eine bestimmte Azure Spring Cloud-Dienstinstanz |
+> | Microsoft.AppPlatform/Spring/delete | Löscht eine bestimmte Azure Spring Cloud-Dienstinstanz |
+> | Microsoft.AppPlatform/Spring/read | Ruft Azure Spring Cloud-Dienstinstanzen ab |
+> | Microsoft.AppPlatform/Spring/enableTestEndpoint/action | Aktiviert die Testendpunktfunktion für eine bestimmte Azure Spring Cloud-Dienstinstanz |
+> | Microsoft.AppPlatform/Spring/disableTestEndpoint/action | Deaktiviert die Testendpunktfunktion für eine bestimmte Azure Spring Cloud-Dienstinstanz |
+> | Microsoft.AppPlatform/Spring/listTestKeys/action | Listet Testschlüssel für eine bestimmte Azure Spring Cloud-Dienstinstanz auf |
+> | Microsoft.AppPlatform/Spring/regenerateTestKey/action | Generiert Testschlüssel für eine bestimmte Azure Spring Cloud-Dienstinstanz erneut |
+> | Microsoft.AppPlatform/Spring/apps/write | Erstellt oder aktualisiert die Anwendung für eine bestimmte Azure Spring Cloud-Dienstinstanz |
+> | Microsoft.AppPlatform/Spring/apps/delete | Löscht die Anwendung für eine bestimmte Azure Spring Cloud-Dienstinstanz |
+> | Microsoft.AppPlatform/Spring/apps/read | Ruft die Anwendung für eine bestimmte Azure Spring Cloud-Dienstinstanz ab |
+> | Microsoft.AppPlatform/Spring/apps/getResourceUploadUrl/action | Ruft die Ressourcenupload-URL einer bestimmten Microsoft Azure Spring Cloud-Anwendung ab |
+> | Microsoft.AppPlatform/Spring/apps/validateDomain/action | Überprüft die benutzerdefinierte Domäne für eine bestimmte Anwendung |
+> | Microsoft.AppPlatform/Spring/apps/bindings/write | Erstellt oder aktualisiert die Bindung für eine bestimmte Anwendung |
+> | Microsoft.AppPlatform/Spring/apps/bindings/delete | Löscht die Bindung für eine bestimmte Anwendung |
+> | Microsoft.AppPlatform/Spring/apps/bindings/read | Ruft die Bindung für eine bestimmte Anwendung ab |
+> | Microsoft.AppPlatform/Spring/apps/deployments/write | Erstellt oder aktualisiert die Bereitstellung für eine bestimmte Anwendung |
+> | Microsoft.AppPlatform/Spring/apps/deployments/delete | Löscht die Bereitstellung für eine bestimmte Anwendung |
+> | Microsoft.AppPlatform/Spring/apps/deployments/read | Ruft die Bereitstellung für eine bestimmte Anwendung ab |
+> | Microsoft.AppPlatform/Spring/apps/deployments/start/action | Startet die Bereitstellung für eine bestimmte Anwendung |
+> | Microsoft.AppPlatform/Spring/apps/deployments/stop/action | Beendet die Bereitstellung für eine bestimmte Anwendung |
+> | Microsoft.AppPlatform/Spring/apps/deployments/restart/action | Startet die Bereitstellung für eine bestimmte Anwendung neu |
+> | Microsoft.AppPlatform/Spring/apps/deployments/getLogFileUrl/action | Ruft die Protokolldatei-URL einer bestimmten Microsoft Azure Spring Cloud-Anwendungsbereitstellung ab |
+> | Microsoft.AppPlatform/Spring/apps/deployments/skus/read | Listet verfügbare SKUs einer Anwendungsbereitstellung auf |
+> | Microsoft.AppPlatform/Spring/apps/domains/write | Erstellt oder aktualisiert die benutzerdefinierte Domäne für eine bestimmte Anwendung |
+> | Microsoft.AppPlatform/Spring/apps/domains/delete | Löscht die benutzerdefinierte Domäne für eine bestimmte Anwendung |
+> | Microsoft.AppPlatform/Spring/apps/domains/read | Ruft die benutzerdefinierte Domäne für eine bestimmte Anwendung ab |
+> | Microsoft.AppPlatform/Spring/certificates/write | Erstellt oder aktualisiert das Zertifikat für eine bestimmte Azure Spring Cloud-Dienstinstanz |
+> | Microsoft.AppPlatform/Spring/certificates/delete | Löscht das Zertifikat für eine bestimmte Azure Spring Cloud-Dienstinstanz |
+> | Microsoft.AppPlatform/Spring/certificates/read | Ruft das Zertifikat für eine bestimmte Azure Spring Cloud-Dienstinstanz ab |
+> | Microsoft.AppPlatform/Spring/configServers/read | Ruft den Konfigurationsserver für eine bestimmte Azure Spring Cloud-Dienstinstanz ab |
+> | Microsoft.AppPlatform/Spring/configServers/write | Erstellt oder aktualisiert den Konfigurationsserver für eine bestimmte Azure Spring Cloud-Dienstinstanz |
+> | Microsoft.AppPlatform/Spring/deployments/read | Ruft die Bereitstellungen für eine bestimmte Azure Spring Cloud-Dienstinstanz ab |
+> | Microsoft.AppPlatform/Spring/detectors/read | Ruft die Erkennungen für eine bestimmte Azure Spring Cloud-Dienstinstanz ab |
+> | Microsoft.AppPlatform/Spring/monitoringSettings/read | Ruft die Überwachungseinstellung für eine bestimmte Azure Spring Cloud-Dienstinstanz ab |
+> | Microsoft.AppPlatform/Spring/monitoringSettings/write | Erstellt oder aktualisiert die Überwachungseinstellung für eine bestimmte Azure Spring Cloud-Dienstinstanz |
+> | **DataAction** | **Beschreibung** |
+> | Microsoft.AppPlatform/Spring/configService/read | Liest den Konfigurationsinhalt (z. B. „application.yaml“) für eine bestimmte Azure Spring Cloud-Dienstinstanz |
+> | Microsoft.AppPlatform/Spring/eurekaService/read | Liest die Benutzer-App-Registrierungsinformationen für eine bestimmte Azure Spring Cloud-Dienstinstanz |
+> | Microsoft.AppPlatform/Spring/eurekaService/write | Schreibt die Benutzer-App-Registrierungsinformationen für eine bestimmte Azure Spring Cloud-Dienstinstanz |
+> | Microsoft.AppPlatform/Spring/eurekaService/delete | Löscht die Benutzer-App-Registrierungsinformationen für eine bestimmte Azure Spring Cloud-Dienstinstanz |
+> | Microsoft.AppPlatform/Spring/logstreamService/read | Liest das Streamingprotokoll der Benutzer-App für eine bestimmte Azure Spring Cloud-Dienstinstanz |
 
 ### <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
@@ -4893,7 +4950,7 @@ Azure-Dienst: [Power BI Embedded](/azure/power-bi-embedded/)
 Azure-Dienst: [Azure Purview](../purview/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Aktion | BESCHREIBUNG |
+> | Aktion | Beschreibung |
 > | --- | --- |
 > | Microsoft.Purview/register/action | Registriert das Abonnement für den Microsoft Purview-Anbieter |
 > | Microsoft.Purview/unregister/action | Hebt die Registrierung des Abonnements für den Microsoft Purview-Anbieter auf |

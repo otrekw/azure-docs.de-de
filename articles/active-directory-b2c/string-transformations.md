@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/03/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4e74c33a18baff3e1cb39328ce265f16975ef1b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 85574b7d33af6d9abfe25f5af4d811255f08ce4b
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994841"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452236"
 ---
 # <a name="string-claims-transformations"></a>Transformationen von Zeichenfolgen-Ansprüchen
 
@@ -149,6 +149,42 @@ Mithilfe dieser Anspruchstransformation können Sie den Wert für den Zeichenfol
     - **value:** Contoso-AGB ...
 - Ausgabeansprüche:
     - **createdClaim:** Der Anspruchstyp für Vertragsbedingungen enthält den Wert „Contoso-AGB ...“.
+
+## <a name="copyclaimifpredicatematch"></a>CopyClaimIfPredicateMatch
+
+Kopieren Sie den Wert eines Anspruchs in einen anderen, wenn der Wert des Eingabeanspruchs mit dem Prädikat des Ausgabeanspruchs übereinstimmt. 
+
+| Element | TransformationClaimType | Datentyp | Notizen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | Zeichenfolge | Dies ist der Anspruchstyp, der kopiert werden soll |
+| OutputClaim | outputClaim | Zeichenfolge | Dies ist der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. Der Wert des Eingabeanspruchs wird anhand dieses Anspruchsprädikats überprüft. |
+
+Im folgenden Beispiel wird der Wert des signInName-Anspruchs nur dann in den phoneNumber-Anspruch kopiert, wenn es sich bei signInName um eine Telefonnummer handelt. Das komplette Beispiel finden Sie in der Starter Pack-Richtlinie zur [Anmeldung mit Telefonnummer oder E-Mail-Adresse](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/blob/master/scenarios/phone-number-passwordless/Phone_Email_Base.xml).
+
+```xml
+<ClaimsTransformation Id="SetPhoneNumberIfPredicateMatch" TransformationMethod="CopyClaimIfPredicateMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="signInName" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example-1"></a>Beispiel 1
+
+- Eingabeansprüche:
+    - **inputClaim**: bob@contoso.com
+- Ausgabeansprüche:
+    - **outputClaim:** Der ursprüngliche Wert des Ausgabeanspruchs wird nicht geändert.
+
+### <a name="example-2"></a>Beispiel 2
+
+- Eingabeansprüche:
+    - **inputClaim**: +11234567890
+- Ausgabeansprüche:
+    - **outputClaim**: +11234567890
 
 ## <a name="compareclaims"></a>CompareClaims
 
@@ -290,6 +326,77 @@ Im folgenden Beispiel wird ein ganzzahliger Zufallswert zwischen 0 und 1.000 gen
     - **outputClaim:** OTP_853
 
 
+## <a name="formatlocalizedstring"></a>FormatLocalizedString
+
+Formatieren Sie mehrere Ansprüche entsprechend einer angegebenen lokalisierten Formatzeichenfolge. Bei dieser Transformation wird die C#-Methode `String.Format` verwendet.
+
+
+| Element | TransformationClaimType | Datentyp | Notizen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaims |  |Zeichenfolge | Dies ist die Sammlung von Eingabeansprüchen, die als Parameter {0}, {1}, {2} im Zeichenfolgenformat fungiert. |
+| InputParameter | stringFormatId | Zeichenfolge |  Dies ist der `StringId`-Wert einer [lokalisierten Zeichenfolge](localization.md).   |
+| OutputClaim | outputClaim | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
+
+> [!NOTE]
+> Die maximal zulässige Größe für das Zeichenfolgenformat ist 4000.
+
+So verwenden Sie die FormatLocalizedString-Anspruchstransformation:
+
+1. Definieren Sie eine [Lokalisierungszeichenfolge](localization.md), und ordnen Sie diese einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) zu.
+1. Der `ElementType` des `LocalizedString`-Elements muss auf `FormatLocalizedStringTransformationClaimType` festgelegt sein.
+1. `StringId` ist ein eindeutiger Bezeichner, den Sie definieren und später in Ihrer Anspruchstransformation `stringFormatId` nutzen.
+1. Geben Sie in der Anspruchstransformation die Liste mit den Ansprüchen an, die für die lokalisierte Zeichenfolge festgelegt werden sollen. Legen Sie dann `stringFormatId` auf den `StringId`-Wert der lokalisierten Zeichenfolge fest. 
+1. Verweisen Sie in einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) oder einer Eingabe- oder Ausgabeanspruchstransformation des [Anzeigesteuerelements](display-controls.md) auf Ihre Anspruchstransformation.
+
+
+Im folgenden Beispiel wird eine Fehlermeldung generiert, wenn ein Konto bereits im Verzeichnis vorhanden ist. Das Beispiel definiert lokalisierte Zeichenfolgen für Englisch (Standard) und Spanisch.
+
+```xml
+<Localization Enabled="true">
+  <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+    <SupportedLanguage>en</SupportedLanguage>
+    <SupportedLanguage>es</SupportedLanguage>
+   </SupportedLanguages>
+
+  <LocalizedResources Id="api.localaccountsignup.en">
+    <LocalizedStrings>
+      <LocalizedString ElementType="FormatLocalizedStringTransformationClaimType" StringId="ResponseMessge_EmailExists">The email '{0}' is already an account in this organization. Click Next to sign in with that account.</LocalizedString>
+      </LocalizedStrings>
+    </LocalizedResources>
+  <LocalizedResources Id="api.localaccountsignup.es">
+    <LocalizedStrings>
+      <LocalizedString ElementType="FormatLocalizedStringTransformationClaimType" StringId="ResponseMessge_EmailExists">Este correo electrónico "{0}" ya es una cuenta de esta organización. Haga clic en Siguiente para iniciar sesión con esa cuenta.</LocalizedString>
+    </LocalizedStrings>
+  </LocalizedResources>
+</Localization>
+```
+
+Die Anspruchstransformation erstellt eine Antwortnachricht auf Grundlage der lokalisierten Zeichenfolge. Die Nachricht enthält die in die lokalisierte Zeichenfolge *ResponseMessge_EmailExists* eingebettete E-Mail-Adresse des Benutzers.
+
+```xml
+<ClaimsTransformation Id="SetResponseMessageForEmailAlreadyExists" TransformationMethod="FormatLocalizedString">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="stringFormatId" DataType="string" Value="ResponseMessge_EmailExists" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Beispiel
+
+- Eingabeansprüche:
+    - **inputClaim**: sarah@contoso.com
+- Eingabeparameter:
+    - **stringFormat**: ResponseMessge_EmailExists
+- Ausgabeansprüche:
+  - **outputClaim**: Mit der E-Mail-Adresse „sarah@contoso.com“ ist bereits ein Konto in dieser Organisation vorhanden. Klicken Sie auf „Weiter“, um sich mit diesem Konto anzumelden.
+
+
 ## <a name="formatstringclaim"></a>FormatStringClaim
 
 Formatiert einen Anspruch anhand der angegebenen Formatzeichenfolge. Bei dieser Transformation wird die C#-Methode `String.Format` verwendet.
@@ -299,6 +406,9 @@ Formatiert einen Anspruch anhand der angegebenen Formatzeichenfolge. Bei dieser 
 | InputClaim | inputClaim |Zeichenfolge |Der Anspruchstyp, der als Parameter {0} im Zeichenfolgenformat fungiert. |
 | InputParameter | stringFormat | Zeichenfolge | Das Zeichenfolgenformat, einschließlich des Parameters {0}. Dieser Eingabeparameter unterstützt [Transformationsausdrücke für Zeichenfolgenansprüche](string-transformations.md#string-claim-transformations-expressions).  |
 | OutputClaim | outputClaim | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
+
+> [!NOTE]
+> Die maximal zulässige Größe für das Zeichenfolgenformat ist 4000.
 
 Mithilfe dieser Anspruchstransformation können Sie eine beliebige Zeichenfolge mit dem Parameter {0} formatieren. Im folgenden Beispiel wird ein **userPrincipalName** erstellt. Sämtliche technische Profile sozialer Identitätsanbieter, wie z.B. `Facebook-OAUTH`, rufen den **CreateUserPrincipalName** zum Generieren eines **userPrincipalName** auf.
 
@@ -335,6 +445,9 @@ Formatiert zwei Ansprüche anhand der angegebenen Formatzeichenfolge. Bei dieser
 | InputClaim | inputClaim | Zeichenfolge | Der Anspruchstyp, der als Parameter {1} im Zeichenfolgenformat fungiert. |
 | InputParameter | stringFormat | Zeichenfolge | Das Zeichenfolgenformat, einschließlich der Parameter {0} und {1}. Dieser Eingabeparameter unterstützt [Transformationsausdrücke für Zeichenfolgenansprüche](string-transformations.md#string-claim-transformations-expressions).   |
 | OutputClaim | outputClaim | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
+
+> [!NOTE]
+> Die maximal zulässige Größe für das Zeichenfolgenformat ist 4000.
 
 Mithilfe dieser Anspruchstransformation können Sie eine beliebige Zeichenfolge mit zwei Parametern, {0} und {1}, formatieren. Im folgenden Beispiel wird ein **displayName** mit dem angegebenen Format erstellt:
 
@@ -964,7 +1077,7 @@ Im folgenden Beispiel wird eine Zeichenfolge mit durch Kommas getrennten Benutze
 ## <a name="string-claim-transformations-expressions"></a>Transformationsausdrücke für Zeichenfolgenansprüche
 Anspruchstransformationsausdrücke in benutzerdefinierten Azure AD B2C-Richtlinien liefern Kontextinformationen zur Mandanten-ID und zur ID des technischen Profils.
 
-  | Ausdruck | BESCHREIBUNG | Beispiel |
+  | Ausdruck | Beschreibung | Beispiel |
  | ----- | ----------- | --------|
  | `{TechnicalProfileId}` | Der Name der ID des technischen Profils. | Facebook-OAUTH |
  | `{RelyingPartyTenantId}` | Die Mandanten-ID der Richtlinie für die vertrauende Seite. | Ihr-Mandan.onmicrosoft.com |

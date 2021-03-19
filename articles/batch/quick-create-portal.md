@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung wird gezeigt, wie Sie das Azure-Por
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc
-ms.openlocfilehash: d8584ecea8ddd5934771dbe5945a6172a28c801c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 1234a932a732cdb6fda1c412a423ae0b1ea089e9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106474"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184014"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags im Azure-Portal
 
@@ -69,7 +69,7 @@ Nach einigen Minuten ändert sich der Zuordnungsstatus in **Bereit**, und die Kn
 
 ## <a name="create-a-job"></a>Erstellen eines Auftrags
 
-Da Sie jetzt über einen Pool verfügen, können Sie einen Auftrag erstellen, um ihn darin auszuführen. Ein Batch-Auftrag ist eine logische Gruppe für eine oder mehrere Aufgaben. Ein Auftrag enthält gemeinsame Einstellungen für Aufgaben, z.B. die Priorität und den Pool zum Ausführen von Aufgaben. Der Auftrag enthält ursprünglich keine Aufgaben.
+Da Sie jetzt über einen Pool verfügen, können Sie einen Auftrag erstellen, um ihn darin auszuführen. Ein Batchauftrag ist eine logische Gruppe für einen oder mehrere Tasks. Ein Auftrag enthält gemeinsame Einstellungen für Aufgaben, z.B. die Priorität und den Pool zum Ausführen von Aufgaben. Der Auftrag enthält ursprünglich keine Aufgaben.
 
 1. Klicken Sie in der Batch-Kontoansicht auf **Aufträge** > **Hinzufügen**.
 

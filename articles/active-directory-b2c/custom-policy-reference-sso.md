@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 453042766c427b05ec1ee1090a0702f64065542d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: f690f4a416e86b02de0d35fc673849c1293df577
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508049"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095764"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Sitzungsverwaltung für einmaliges Anmelden in Azure Active Directory B2C
 
@@ -135,7 +135,7 @@ Dieser Anbieter wird zum Verwalten der Azure AD B2C-Sitzungen zwischen einer ve
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Dieser Anbieter wird in Azure AD B2C zum Verwalten der SAML-Sitzungen zwischen einer Anwendung der vertrauenden Seite oder einem SAML-Verbundidentitätsanbieter verwendet. Wenn der SSO-Anbieter zum Speichern einer SAML-Identitätsanbietersitzung verwendet wird, muss `RegisterServiceProviders` auf `false` eingestellt sein. Das folgende technische `SM-Saml-idp`-Profil wird vom [technischen Profil des SAML-Identitätsanbieters](saml-identity-provider-technical-profile.md) verwendet.
+Dieser Anbieter wird in Azure AD B2C zum Verwalten der SAML-Sitzungen zwischen einer Anwendung der vertrauenden Seite oder einem SAML-Verbundidentitätsanbieter verwendet. Wenn der SSO-Anbieter zum Speichern einer SAML-Identitätsanbietersitzung verwendet wird, muss `RegisterServiceProviders` auf `false` eingestellt sein. Das folgende technische `SM-Saml-idp`-Profil wird vom [SAML-Identitätsanbieter](identity-provider-generic-saml.md) verwendet.
 
 ```xml
 <TechnicalProfile Id="SM-Saml-idp">
@@ -149,7 +149,7 @@ Dieser Anbieter wird in Azure AD B2C zum Verwalten der SAML-Sitzungen zwischen e
 
 Wenn der Anbieter zum Speichern der B2C-SAML-Sitzung verwendet wird, muss `RegisterServiceProviders` auf `true` eingestellt sein. Für die Abmeldung von der SAML-Sitzung ist erforderlich, dass `SessionIndex` und `NameID` abgeschlossen sind.
 
-Das folgende technische `SM-Saml-issuer`-Profil wird vom [technischen Profil des SAML-Ausstellers](saml-issuer-technical-profile.md) verwendet.
+Das folgende technische `SM-Saml-issuer`-Profil wird vom [technischen Profil des SAML-Ausstellers](saml-service-provider.md) verwendet.
 
 ```xml
 <TechnicalProfile Id="SM-Saml-issuer">

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 6625cd5ad91826ac5cdf8ec63382e9f94d8a2c08
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 3ba0abe8510291351c10ba085ba7e42b8197d886
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895938"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553237"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Beheben von häufigen Fehler und Warnungen bei Suchindexern in Azure Cognitive Search
 
@@ -32,7 +32,7 @@ Die Indizierung wird von Warnungen nicht beendet, aber Warnungen weisen auf Bedi
 
 Ab API-Version `2019-05-06` sind Indexerfehler und -warnungen auf der Elementebene strukturiert, sodass Ursachen und weiterführende Schritte besser verständlich sind. Sie enthalten die folgenden Eigenschaften:
 
-| Eigenschaft | BESCHREIBUNG | Beispiel |
+| Eigenschaft | Beschreibung | Beispiel |
 | --- | --- | --- |
 | Schlüssel | Die Dokument-ID des Dokuments, das von dem Fehler oder der Warnung betroffen ist. | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | name | Der Vorgangsname, der beschreibt, wo der Fehler oder die Warnung aufgetreten ist. Dies wird durch die folgende Struktur generiert: [category].[subcategory].[resourceType].[resourceName] | DocumentExtraction.azureblob.myBlobContainerName Enrichment.WebApiSkill.mySkillName Projection.SearchIndex.OutputFieldMapping.myOutputFieldName Projection.SearchIndex.MergeOrUpload.myIndexName Projection.KnowledgeStore.Table.myTableName |
@@ -236,6 +236,8 @@ Wenn Sie einen Standardwert für fehlende Eingaben angeben möchten, können Sie
 
 ## <a name="warning--skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>Warnung:  Qualifikationseingabe „languageCode“ enthält die Sprachcodes „X, Y, Z“, wovon mindestens einer ungültig ist.
 Mindestens einer der an die optionale `languageCode`-Eingabe einer Downstreamqualifikation übergebenen Werte wird nicht unterstützt. Dies kann vorkommen, wenn Sie die Ausgabe von [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) an nachfolgende Qualifikationen übergeben und die Ausgabe aus mehr Sprachen besteht, als in diesen Downstreamqualifikationen unterstützt werden.
+
+Beachten Sie, dass Ihnen möglicherweise eine ähnliche Warnung wie diese angezeigt wird, wenn eine ungültige `countryHint`-Eingabe an LanguageDetectionSkill übergeben wird. Wenn dies der Fall ist, stellen Sie sicher, dass das Feld, das Sie aus der Datenquelle für diese Eingabe verwenden, gültige Alpha-2-Ländercodes nach ISO 3166-1 enthält. Wenn einige gültig und einige ungültig sind, fahren Sie mit dem folgenden Leitfaden fort, ersetzen Sie jedoch `languageCode` durch `countryHint` und `defaultLanguageCode` durch `defaultCountryHint`, um die Eingabe an Ihren Anwendungsfall anzupassen.
 
 Wenn Sie wissen, dass Ihr Dataset nur eine einzige Sprache enthält, sollten Sie die [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) und die `languageCode`-Qualifikationseingabe entfernen und stattdessen den Qualifikationsparameter `defaultLanguageCode` für diese Qualifikation verwenden, vorausgesetzt, die Sprache wird für diese Qualifikation unterstützt.
 
