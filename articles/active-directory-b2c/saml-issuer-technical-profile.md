@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b4fb7c6fb3bbf02e5f1aba25c868e4a44e8507dd
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 54869c14cf7c5a7e43f34102f5c95e37689dfee8
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309629"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095339"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils für einen SAML-Tokenaussteller in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -58,9 +58,9 @@ Die Elemente **InputClaims**, **OutputClaims** und **PersistClaims** sind leer o
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | IssuerUri | Nein | Der Ausstellername, der in der SAML-Antwort angezeigt wird. Der Wert sollte mit dem Namen übereinstimmen, der in der Anwendung der vertrauenden Seite konfiguriert ist. |
-| XmlSignatureAlgorithm | Nein | Die Methode, die Azure AD B2C zur Signierung der SAML-Assertion verwendet. Mögliche Werte: `Sha256`, `Sha384`, `Sha512` oder `Sha1`. Vergewissern Sie sich, dass Sie den Signaturalgorithmus auf beiden Seiten mit demselben Wert konfigurieren. Verwenden Sie nur den Algorithmus, den Ihr Zertifikat unterstützt. Informationen zum Konfigurieren der SAML-Antwort finden Sie unter [SAML-Metadaten der vertrauenden Seite](relyingparty.md#metadata)|
+| XmlSignatureAlgorithm | Nein | Die Methode, die Azure AD B2C zur Signierung der SAML-Assertion verwendet. Mögliche Werte: `Sha256`, `Sha384`, `Sha512` oder `Sha1`. Vergewissern Sie sich, dass Sie den Signaturalgorithmus auf beiden Seiten mit demselben Wert konfigurieren. Verwenden Sie nur den Algorithmus, den Ihr Zertifikat unterstützt. Informationen zum Konfigurieren der SAML-Antwort finden Sie unter [Optionen zum Registrieren einer SAML-Anwendung](saml-service-provider.md).|
 |TokenNotBeforeSkewInSeconds| Nein| Gibt die Neigung, als ganze Zahl, für den Zeitstempel an, der den Anfang des Gültigkeitszeitraums kennzeichnet. Je höher diese Zahl ist, desto später beginnt der Gültigkeitszeitraum im Hinblick auf die Uhrzeit, zu der die Ansprüche für die vertrauende Seite ausgegeben werden. Wenn beispielsweise der Wert für „TokenNotBeforeSkewInSeconds“ auf 60 Sekunden festgelegt wurde und das Token um 13:05:10 Uhr UTC ausgegeben wird, ist es ab 13:04:10 Uhr UTC gültig. Der Standardwert ist 0. Der Höchstwert ist 3.600 (eine Stunde). |
-|TokenLifeTimeInSeconds| Nein| Gibt die Lebensdauer der SAML-Assertion an. Dieser Wert entspricht den Sekunden ab dem zuvor referenzierten Wert NotBefore. Der Standardwert ist 300 s (5 min). |
+|TokenLifeTimeInSeconds| Nein| Gibt die Lebensdauer der SAML-Assertion an. Dieser Wert entspricht den Sekunden ab dem zuvor referenzierten „NotBefore“-Wert. Der Standardwert ist 300 Sekunden (5 Minuten). |
 
 
 ## <a name="cryptographic-keys"></a>Kryptografische Schlüssel
@@ -80,5 +80,5 @@ Zum Konfigurieren der Azure AD B2C-SAML-Sitzungen zwischen einer Anwendung der v
 
 Im folgenden Artikel finden Sie ein Beispiel für die Verwendung eines technischen Profils für einen SAML-Aussteller:
 
-- [Registrieren einer SAML-Anwendung in Azure AD B2C](connect-with-saml-service-providers.md)
+- [Registrieren einer SAML-Anwendung in Azure AD B2C](saml-service-provider.md)
 

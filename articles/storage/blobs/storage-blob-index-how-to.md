@@ -3,25 +3,27 @@ title: Verwenden von Blobindextags zum Verwalten und Suchen von Daten in Azure B
 description: Hier finden Sie Beispiele für die Verwendung von Blobindextags zum Kategorisieren, Verwalten und Abfragen von Daten für Blobobjekte.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/19/2020
+ms.date: 03/05/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 411815ca2f947c47b8dfb0d2e5d61f8ea18f3545
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a820f7efc39af8c6ab66c883d285b507c7bc7368
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95541248"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563267"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Verwenden von Blobindextags (Vorschau) zum Verwalten und Suchen von Daten in Azure Blob Storage
 
 Blobindextags kategorisieren Daten in Ihrem Speicherkonto mithilfe von Schlüssel-Wert-Tagattributen. Diese Tags werden automatisch indiziert und als durchsuchbarer mehrdimensionaler Index verfügbar gemacht, um Daten einfach finden zu können. In diesem Artikel wird erörtert, wie Sie Daten mithilfe von Blobindextags festlegen, abrufen und suchen.
 
-> [!NOTE]
-> Der Blobindex befindet sich in der öffentlichen Vorschauphase und ist in den Regionen **Kanada, Mitte**, **Kanada, Osten**, **Frankreich, Mitte** und **Frankreich, Süden** verfügbar. Weitere Informationen zu diesem Feature sowie zu bekannten Problemen und Einschränkungen finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit Blobindextags (Vorschau)](storage-manage-find-blobs.md).
+> [!IMPORTANT]
+> Blobindextags befinden sich momentan in der **Vorschauphase** und sind in allen öffentlichen Regionen verfügbar. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+
+Weitere Informationen zu diesem Feature sowie zu bekannten Problemen und Einschränkungen finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit Blobindextags (Vorschau)](storage-manage-find-blobs.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

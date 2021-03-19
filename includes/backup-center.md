@@ -4,12 +4,12 @@ ms.service: backup
 ms.topic: include
 ms.date: 10/19/2020
 ms.author: dacurwin
-ms.openlocfilehash: 43f69611554b34e8b8848b44a3361cf7fae62ef3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c6590cb783a3f59abf18abae8f53f9f1553123c4
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002908"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501826"
 ---
 > [!NOTE]
-> Auf die in den folgenden Abschnitten beschriebene Funktionen kann auch über [Backup Center](../articles/backup/backup-center-overview.md) zugegriffen werden. Backup Center ist eine vereinheitlichte Verwaltungsoberfläche in Azure. Backup Center ermöglicht Unternehmen, Sicherungen in großem Maßstab zu verwalten, zu überwachen, zu betreiben und zu analysieren. Mit dieser Lösung können Sie die meisten der wichtigsten Sicherungsverwaltungsvorgänge durchführen, ohne auf den Bereich eines einzelnen Tresors beschränkt zu sein.
+> Auf die in den folgenden Abschnitten beschriebenen Funktionen kann auch über [Backup Center](../articles/backup/backup-center-overview.md) zugegriffen werden. Das Backup Center ist eine einzelne vereinheitlichte Verwaltungsoberfläche in Azure. Backup Center ermöglicht Unternehmen, Sicherungen in großem Maßstab zu verwalten, zu überwachen, zu betreiben und zu analysieren. Mit dieser Lösung können Sie die meisten der wichtigsten Sicherungsverwaltungsvorgänge durchführen, ohne auf den Bereich eines einzelnen Tresors beschränkt zu sein.

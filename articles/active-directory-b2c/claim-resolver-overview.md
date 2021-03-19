@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/28/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 682b83d7016a89b27b5c936853abda1438f59c28
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: b69492dc41786a677043df5e77c9d12aa26893f6
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508015"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102119772"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu Anspruchskonfliktlösern in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
@@ -87,6 +87,7 @@ In den folgenden Abschnitten werden die verfügbaren Anspruchskonfliktlöser auf
 | {Context:CorrelationId} | Die Korrelations-ID.  | 00000000-0000-0000-0000-000000000000 |
 | {Context:DateTimeInUtc} |Datum und Uhrzeit in UTC.  | 10/10/2018 12:00:00 PM |
 | {Context:DeploymentMode} |Die Methode zur Richtlinienbereitstellung.  | Bereitstellung |
+| {Context:HostName} | Der Hostname der aktuellen Anforderung.  | contoso.b2clogin.com |
 | {Context:IPAddress} | Die Benutzer-IP-Adresse. | 11.111.111.11 |
 | {Context:KMSI} | Gibt an, ob das Kontrollkästchen [Angemeldet bleiben](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) aktiviert ist. |  true |
 
@@ -141,7 +142,7 @@ Sie können Anspruchskonfliktlöser mit den folgenden Elementen verwenden:
 |[OpenID Connect](openid-connect-technical-profile.md): technisches Profil| `InputClaim`, `OutputClaim`| 1, 2|
 |[Anspruchstransformation](claims-transformation-technical-profile.md): technisches Profil| `InputClaim`, `OutputClaim`| 1, 2|
 |[RESTful-Anbieter](restful-technical-profile.md): technisches Profil| `InputClaim`| 1, 2|
-|[SAML-Identitätsanbieter](saml-identity-provider-technical-profile.md): technisches Profil| `OutputClaim`| 1, 2|
+|[SAML-Identitätsanbieter](identity-provider-generic-saml.md): technisches Profil| `OutputClaim`| 1, 2|
 |[Selbstbestätigt](self-asserted-technical-profile.md): technisches Profil| `InputClaim`, `OutputClaim`| 1, 2|
 |[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |

@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 11/14/2020
+ms.date: 03/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 8ec0f8cf090b3ae85a8602fb39cb07f03a417133
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 98237efae89e7d88dd23cb7e8fc9f7e9f05bca70
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605597"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521542"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Verwenden von verwalteten Identitäten in Azure API Management
 
@@ -263,6 +263,19 @@ Das folgende Beispiel zeigt eine Azure Resource Manager-Vorlage mit den folgende
 ### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>Authentifizieren beim Back-End mithilfe einer API Management-Identität
 
 Sie können die systemseitig zugewiesene Identität verwenden, um sich über die Richtlinie [authentication-managed-identity](api-management-authentication-policies.md#ManagedIdentity) beim Back-End zu authentifizieren.
+
+### <a name="connect-to-azure-resources-behind-ip-firewall-using-system-assigned-managed-identity"></a><a name="apim-as-trusted-service"></a>Herstellen einer Verbindung mit Azure-Ressourcen hinter der IP-Firewall mithilfe der systemseitig zugewiesenen verwalteten Identität
+
+
+API Management ist ein vertrauenswürdiger Microsoft-Dienst für die folgenden Ressourcen. Daher kann der Dienst hinter einer Firewall eine Verbindung mit den folgenden Ressourcen herstellen. Nachdem der [systemseitig zugewiesenen verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md) explizit die entsprechende Azure-Rolle für diese Ressourceninstanz zugewiesen wurde, entspricht der Zugriffsbereich für diese Instanz der Azure-Rolle, die der verwalteten Identität zugewiesen wurde.
+
+
+|Azure-Dienst | Link|
+|---|---|
+|Azure Storage | [Vertrauenswürdiger Zugriff auf Azure Storage](../storage/common/storage-network-security.md?tabs=azure-portal#trusted-access-based-on-system-assigned-managed-identity)|
+|Azure-Servicebus | [Vertrauenswürdiger Zugriff auf Azure Service Bus](../service-bus-messaging/service-bus-ip-filtering.md#trusted-microsoft-services)|
+|Azure Event Hub | [Vertrauenswürdiger Zugriff auf Azure Event Hub](../event-hubs/event-hubs-ip-filtering.md#trusted-microsoft-services)|
+
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Erstellen einer benutzerseitig zugewiesenen verwalteten Identität
 

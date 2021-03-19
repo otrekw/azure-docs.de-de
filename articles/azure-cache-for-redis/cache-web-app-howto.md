@@ -7,21 +7,25 @@ ms.topic: quickstart
 ms.date: 09/29/2020
 ms.author: yegu
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: b880762d43cd4e105b79613aadb476611228a47e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 342125da35868b2b0f71609c4114cc561821eb1a
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536605"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121132"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Schnellstart: Verwenden von Azure Cache for Redis mit einer ASP.NET-Web-App 
 
 In dieser Schnellstartanleitung erstellen Sie mit Visual Studio 2019 eine ASP.NET-Webanwendung, die sich mit Azure Cache for Redis verbindet, um Daten aus dem Cache zu speichern und abzurufen. Sie stellen die App dann für Azure App Service bereit.
 
+## <a name="skip-to-the-code-on-github"></a>Überspringen und mit dem Code auf GitHub fortfahren
+
+Wenn Sie direkt mit dem Code fortfahren möchten, finden Sie im [ASP.NET-Schnellstart](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/aspnet) auf GitHub weitere Informationen.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/dotnet)
-- [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den Workloads **ASP.NET und Webentwicklung** und **Azure-Entwicklung** .
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den Workloads **ASP.NET und Webentwicklung** und **Azure-Entwicklung**.
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
 
@@ -31,7 +35,7 @@ In dieser Schnellstartanleitung erstellen Sie mit Visual Studio 2019 eine ASP.NE
 
     ![Projekt erstellen](./media/cache-web-app-howto/cache-create-project.png)
 
-    a. Erweitern Sie in der Liste **Vorlagen** den Knoten **Visual C#** .
+    a. Erweitern Sie in der Liste **Vorlagen** den Knoten **Visual C#**.
 
     b. Wählen Sie **Cloud** aus.
 
@@ -41,13 +45,13 @@ In dieser Schnellstartanleitung erstellen Sie mit Visual Studio 2019 eine ASP.NE
 
     e. Geben Sie im Feld **Name** einen Namen für das Projekt ein. In diesem Beispiel haben wir **ContosoTeamStats** verwendet.
 
-    f. Klicken Sie auf **OK** .
+    f. Klicken Sie auf **OK**.
    
 3. Wählen Sie als Projekttyp die Option **MVC** aus.
 
 4. Stellen Sie sicher, dass für die Einstellungen unter **Authentifizierung** die Option **Keine Authentifizierung** angegeben ist. Je nach Ihrer Version von Visual Studio kann die Standardeinstellung für **Authentifizierung** auch anders lauten. Um die Einstellung zu ändern, wählen Sie zunächst **Authentifizierung ändern** und anschließend **Keine Authentifizierung** aus.
 
-5. Klicken Sie auf **OK** , um das Projekt zu erstellen.
+5. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 
 ## <a name="create-a-cache"></a>Erstellen eines Caches
 
@@ -59,9 +63,9 @@ Als Nächstes erstellen Sie den Cache für die App.
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>So bearbeiten Sie die Datei *CacheSecrets.config*
 
-1. Erstellen Sie auf Ihrem Computer eine Datei mit dem Namen *CacheSecrets.config* . Speichern Sie sie an einem Ort, an dem sie nicht mit dem Quellcode Ihrer Beispielanwendung eingecheckt wird. In diesem Schnellstart befindet sich die Datei *CacheSecrets.config* im Verzeichnis *C:\AppSecrets\CacheSecrets.config* .
+1. Erstellen Sie auf Ihrem Computer eine Datei mit dem Namen *CacheSecrets.config*. Speichern Sie sie an einem Ort, an dem sie nicht mit dem Quellcode Ihrer Beispielanwendung eingecheckt wird. In diesem Schnellstart befindet sich die Datei *CacheSecrets.config* im Verzeichnis *C:\AppSecrets\CacheSecrets.config*.
 
-1. Bearbeiten Sie die Datei *CacheSecrets.config* . Fügen Sie anschließend folgenden Inhalt hinzu:
+1. Bearbeiten Sie die Datei *CacheSecrets.config*. Fügen Sie anschließend folgenden Inhalt hinzu:
 
     ```xml
     <appSettings>
@@ -94,7 +98,7 @@ Wenn Sie die Anwendung lokal ausführen, werden die Informationen in der Datei *
 Weil die Datei *CacheSecrets.config* nicht mit Ihrer Anwendung in Azure bereitgestellt wird, verwenden Sie die Datei nur, wenn Sie die Anwendung lokal testen. Speichern Sie diese Informationen so sicher wie möglich, um missbräuchlichen Zugriff auf Ihre Cachedaten zu verhindern.
 
 #### <a name="to-update-the-webconfig-file"></a>So aktualisieren Sie die Datei *web.config*
-1. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei *Web.config* , um sie zu öffnen.
+1. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei *Web.config*, um sie zu öffnen.
 
     ![Web.config](./media/cache-web-app-howto/cache-web-config.png)
 
@@ -119,7 +123,7 @@ Die ASP.NET-Laufzeit führt die Inhalte der externen Datei mit dem Markup im `<a
 
 ### <a name="to-update-the-homecontroller-and-layout"></a>So aktualisieren Sie HomeController und Layout
 
-1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Controller** , und öffnen Sie anschließend die Datei *HomeController.cs* .
+1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Controller**, und öffnen Sie anschließend die Datei *HomeController.cs*.
 
 2. Fügen Sie am Anfang der Datei die folgenden zwei `using`-Anweisungen hinzu, um die Cacheclient- und App-Einstellungen zu unterstützen.
 
@@ -189,7 +193,7 @@ Die ASP.NET-Laufzeit führt die Inhalte der externen Datei mit dem Markup im `<a
 
     ```
 
-4. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten** > **Freigegeben** . Öffnen Sie anschließend die Datei *_Layout.cshtml* .
+4. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten** > **Freigegeben**. Öffnen Sie anschließend die Datei *_Layout.cshtml*.
 
     Ersetzen Sie:
     
@@ -197,7 +201,7 @@ Die ASP.NET-Laufzeit führt die Inhalte der externen Datei mit dem Markup im `<a
     @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
     ```
 
-    durch:
+    Durch:
 
     ```csharp
     @Html.ActionLink("Azure Cache for Redis Test", "RedisCache", "Home", new { area = "" }, new { @class = "navbar-brand" })
@@ -205,9 +209,9 @@ Die ASP.NET-Laufzeit führt die Inhalte der externen Datei mit dem Markup im `<a
 
 ### <a name="to-add-a-new-rediscache-view"></a>So fügen Sie eine neue RedisCache-Ansicht hinzu
 
-1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten** , und klicken Sie dann mit der rechten Maustaste auf den Ordner **Home** . Wählen Sie **Hinzufügen** > **Ansicht...** aus.
+1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten**, und klicken Sie dann mit der rechten Maustaste auf den Ordner **Home**. Wählen Sie **Hinzufügen** > **Ansicht...** aus.
 
-2. Geben Sie im Dialogfeld **Ansicht hinzufügen** den Ansichtsnamen **RedisCache** ein. Wählen Sie anschließend **Hinzufügen** .
+2. Geben Sie im Dialogfeld **Ansicht hinzufügen** den Ansichtsnamen **RedisCache** ein. Wählen Sie anschließend **Hinzufügen**.
 
 3. Ersetzen Sie den Code in der Datei *RedisCache.cshtml* durch den folgenden Code:
 
@@ -270,7 +274,7 @@ Nachdem Sie die App erfolgreich lokal getestet haben, stellen Sie die App für A
 
     ![Veröffentlichen](./media/cache-web-app-howto/cache-publish-app.png)
 
-2. Wählen Sie **Microsoft Azure App Service** , **Neu erstellen** und anschließend **Veröffentlichen** aus.
+2. Wählen Sie **Microsoft Azure App Service**, **Neu erstellen** und anschließend **Veröffentlichen** aus.
 
     ![Veröffentlichen in App Service](./media/cache-web-app-howto/cache-publish-to-app-service.png)
 
@@ -280,14 +284,14 @@ Nachdem Sie die App erfolgreich lokal getestet haben, stellen Sie die App für A
     | ------- | :---------------: | ----------- |
     | **App-Name** | Verwenden Sie den Standardwert. | Bei der Bereitstellung der App für Azure wird der App-Name als Hostname für die App verwendet. Dem Namen kann bei Bedarf ein Zeitstempelsuffix hinzugefügt werden, um ihn eindeutig zu machen. |
     | **Abonnement** | Wählen Sie Ihr Azure-Abonnement aus. | Für dieses Abonnement werden alle damit verbundenen Hostingkosten berechnet. Wenn Sie über mehrere Azure-Abonnements verfügen, stellen Sie sicher, dass das gewünschte Abonnement ausgewählt ist.|
-    | **Ressourcengruppe** | Verwenden Sie die Ressourcengruppe, in der Sie den Cache erstellt haben (z.B. *TestResourceGroup* ). | Die Ressourcengruppe hilft Ihnen, alle Ressourcen als Gruppe zu verwalten. Wenn Sie die App später löschen möchten, können Sie die Gruppe einfach löschen. |
-    | **App Service-Plan** | Wählen Sie **Neu** aus, und erstellen Sie anschließend einen neuen App Service-Plan mit dem Namen *TestingPlan* . <br />Verwenden Sie den gleichen **Speicherort** , den Sie beim Erstellen Ihres Caches verwendet haben. <br />Wählen Sie **Free** für die Größe aus. | Mit einem App Service-Plan wird ein Satz von Computeressourcen für die Ausführung einer Web-App definiert. |
+    | **Ressourcengruppe** | Verwenden Sie die Ressourcengruppe, in der Sie den Cache erstellt haben (z.B. *TestResourceGroup*). | Die Ressourcengruppe hilft Ihnen, alle Ressourcen als Gruppe zu verwalten. Wenn Sie die App später löschen möchten, können Sie die Gruppe einfach löschen. |
+    | **App Service-Plan** | Wählen Sie **Neu** aus, und erstellen Sie anschließend einen neuen App Service-Plan mit dem Namen *TestingPlan*. <br />Verwenden Sie den gleichen **Speicherort**, den Sie beim Erstellen Ihres Caches verwendet haben. <br />Wählen Sie **Free** für die Größe aus. | Mit einem App Service-Plan wird ein Satz von Computeressourcen für die Ausführung einer Web-App definiert. |
 
     ![Dialogfeld „App Service“](./media/cache-web-app-howto/cache-create-app-service-dialog.png)
 
 4. Nachdem Sie die App Service-Hostingeinstellungen konfiguriert haben, wählen Sie **Erstellen** aus.
 
-5. Überwachen Sie in Visual Studio das Fenster **Ausgabe** , um den Veröffentlichungsstatus anzuzeigen. Nach der Veröffentlichung der App wird die URL für die App protokolliert:
+5. Überwachen Sie in Visual Studio das Fenster **Ausgabe**, um den Veröffentlichungsstatus anzuzeigen. Nach der Veröffentlichung der App wird die URL für die App protokolliert:
 
     ![Veröffentlichungsausgabe](./media/cache-web-app-howto/cache-publishing-output.png)
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 9089fee7565633b198043efeed929fc7446437d5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a8a53a54d30df9a2f7079d705f754e554328c3f7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458288"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553934"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Marketplace-Erkenntnisse“ in Analysen für den kommerziellen Marketplace
 
@@ -28,7 +28,7 @@ Das Dashboard „Marketplace-Erkenntnisse“ bietet eine Übersicht über die Ge
 
 - Seitenbesuchstrend
 - Handlungsaufforderungstrend
-- Seitenbesuche und Handlungsaufforderungen im Vergleich zu Angeboten, Empfehlungsdomänen und Kampagnen-IDs
+- Seitenbesuche und Handlungsaufforderungen nach Angeboten, Empfehlungsdomänen und Kampagnen-IDs
 - Marketplace-Erkenntnisse nach Geografie
 - Marketplace-Erkenntnisse – Tabelle „Details“
 
@@ -103,6 +103,19 @@ Diese Tabelle enthält eine Listenansicht der Seitenbesuche und Handlungsaufford
 
 > [!TIP]
 > Sie können das Downloadsymbol in der oberen rechten Ecke eines Widgets verwenden, um die Daten herunterzuladen. Sie können Feedback zu jedem der Widgets geben, indem Sie auf das Symbol „Daumen nach oben“ oder „Daumen nach unten“ klicken.
+
+| Spaltenname auf<br>Benutzeroberfläche | Attributname | Definition | Spaltenname in Berichten zum<br>programmgesteuerten Zugriff |
+| ------------ | ------------- | ------------- | ------------- |
+| Date | Date of Visit | Das Datum des Seitenbesuchs und/oder der Generierung eines CTA-Klickereignisses auf der Angebotsseite im Azure Marketplace und/oder in AppSource | Date |
+| Angebotsname | Angebotsname | Der Name des Angebots im kommerziellen Marketplace. | OfferName |
+| Referral Domain | Referral Domain | Hier wird der Name der Empfehlungsdomäne angegeben, aus der der Seitenbesuch erfolgt ist. Wenn keine Empfehlungsdomänen für den Seitenbesuch erfasst wurden, lautet der entsprechende Eintrag „Referral domain not present“ (Empfehlungsdomäne nicht vorhanden). |  ReferralDomain |
+| Name des Lands | Name des Lands | Der Name des Landes, in dem der Seitenbesuch erfolgt ist | CountryName |
+| Page Visits | Page Visits | Die Anzahl der dem Angebotsnamen für ein bestimmtes Datum zugeordneten Seitenbesuche | PageVisits |
+| Jetzt abrufen | Jetzt abrufen | Die Anzahl der Klicks auf die Handlungsaufforderung „Jetzt herunterladen“ auf der Angebotsseite für ein bestimmtes Datum | GetItNow |
+| Kontaktformular | Kontaktformular | Die Anzahl der Klicks auf die Handlungsaufforderung „Kontakt mit mir aufnehmen“ auf der Angebotsseite für ein bestimmtes Datum | ContactMe |
+| Testversion | Testversion | Die Anzahl der Klicks auf die Handlungsaufforderung „Testlaufwerk“ auf der Angebotsseite für ein bestimmtes Datum | TestDrive |
+| Kostenlose Testversion | Kostenlose Testversion | Die Anzahl der Klicks auf die Handlungsaufforderung „Kostenlose Testversion“ auf der Angebotsseite für ein bestimmtes Datum | FreeTrial |
+|||||
 
 ## <a name="next-steps"></a>Nächste Schritte
 
