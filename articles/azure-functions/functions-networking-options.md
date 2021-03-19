@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: 2c3f207e98f574bb6c43f87d34b0a404e263e83c
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: f826c947b1e47c1c996a8e9102492e85adafa326
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806977"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215152"
 ---
 # <a name="azure-functions-networking-options"></a>Netzwerkoptionen von Azure Functions
 
@@ -87,7 +87,7 @@ Weitere Informationen finden Sie unter [VNET-Dienstendpunkte](../virtual-network
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Einschränken Ihres Speicherkontos auf ein virtuelles Netzwerk 
 
-Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Queue- und Table Storage unterstützt.  Sie können dieses Speicherkonto durch eines ersetzen, das mit Dienstendpunkten oder einem privaten Endpunkt geschützt ist.  Dieses Feature funktioniert zurzeit nur mit Windows Premium-Tarifen.  Einrichten einer Funktion mit einem auf ein privates Netzwerk beschränkten Speicherkonto:
+Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Queue- und Table Storage unterstützt. Sie können dieses Speicherkonto durch eines ersetzen, das mit Dienstendpunkten oder einem privaten Endpunkt geschützt ist. Dieses Feature funktioniert derzeit für alle von virtuellen Netzwerken unterstützten SKUs, d. h. Standard und Premium, mit Ausnahme von flexiblen Zeitstempeln, bei denen virtuelle Netzwerke nur für Premium-SKUs verfügbar sind. Einrichten einer Funktion mit einem auf ein privates Netzwerk beschränkten Speicherkonto:
 
 1. Erstellen Sie eine Funktion mit einem Speicherkonto, für das keine Dienstendpunkte aktiviert sind.
 1. Konfigurieren Sie die Funktion so, dass eine Verbindung zum virtuellen Netzwerk hergestellt wird.
@@ -96,7 +96,7 @@ Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Kon
 1. Aktivieren Sie Dienstendpunkte oder einen privaten Endpunkt für das Speicherkonto.  
     * Bei der Verwendung von Verbindungen mit privaten Endpunkten ist für das Speicherkonto ein privater Endpunkt für die Subressourcen `file` und `blob` erforderlich.  Wenn bestimmte Funktionen wie Durable Functions verwendet werden, muss der Zugriff auf `queue` und `table` außerdem über eine Verbindung mit einem privaten Endpunkt möglich sein.
     * Wenn Sie Dienstendpunkte verwenden, aktivieren Sie das für ihre Funktions-Apps dedizierte Subnetz für Speicherkonten.
-1. Optional: Kopieren Sie die Datei und den Blobinhalt aus dem Speicherkonto der Funktions-App in das geschützte Speicherkonto und die Dateifreigabe.
+1. Kopieren Sie die Datei und den Blobinhalt aus dem Speicherkonto der Funktions-App in das geschützte Speicherkonto und die Dateifreigabe.
 1. Kopieren Sie die Verbindungszeichenfolge für dieses Speicherkonto.
 1. Aktualisieren Sie die **Anwendungseinstellungen** unter **Konfiguration** für die Funktions-App folgendermaßen:
     - Legen Sie `AzureWebJobsStorage` als Verbindungszeichenfolge für das geschützte Speicherkonto fest.
