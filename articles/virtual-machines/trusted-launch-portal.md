@@ -5,16 +5,16 @@ author: khyewei
 ms.author: khwei
 ms.reviewer: cynthn
 ms.service: virtual-machines
-ms.subservice: security
+ms.subservice: trusted-launch
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 4c4ad2a1350632d381cc258049ee85c87766f9b5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f5e361d32cf2ab436f92ce2ca86a054a6dd3337e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694120"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553747"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Bereitstellen eines virtuellen Computers mit aktiviertem vertrauenswürdigem Start (Vorschau)
 
@@ -37,7 +37,7 @@ Erstellen Sie einen virtuellen Computer, für den vertrauenswürdiger Start akti
 1. Wählen Sie auf der Seite **Virtuelle Computer** die Option **Hinzufügen** und dann **Virtueller Computer** aus.
 1. Stellen Sie sicher, dass unter **Projektdetails** das richtige Abonnement ausgewählt ist.
 1. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, und geben Sie einen Namen für Ihre Ressourcengruppe an, oder wählen Sie in der Dropdownliste eine vorhandene Ressourcengruppe aus.
-1. Geben Sie unter **Instanzdetails** einen Namen für den virtuellen Computer ein, und wählen Sie eine Region aus, die den vertrauenswürdigen Start unterstützt.
+1. Geben Sie unter **Details zur Instanz** einen Namen für den virtuellen Computer ein, und wählen Sie eine Region aus, die den [vertrauenswürdigen Start](trusted-launch.md#public-preview-limitations) unterstützt.
 1. Wählen Sie unter **Image** ein [Image aus, das den vertrauenswürdigen Start unterstützt](trusted-launch.md#public-preview-limitations). Sie sehen möglicherweise nur die Gen 1-Version des Images. Das ist OK, fahren Sie mit dem nächsten Schritt fort.
 1. Wechseln Sie zur Registerkarte **Erweitert**, indem Sie sie oben auf der Seite auswählen.
 1. Scrollen Sie nach unten zum Abschnitt **VM-Generierung**, und wählen Sie dann **Gen 2** aus.
@@ -140,7 +140,7 @@ Empfehlungen für vTPM und sicheren Start für VMs für vertrauenswürdigen Star
 
 In einigen Fällen sind möglicherweise Signierungen für den sicheren UEFI-Start erforderlich.  Beispielsweise müssen Sie möglicherweise die Schritte in [How to sign things for Secure Boot](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) (Signierungen für den sicheren Start) für Ubuntu durchführen. In diesen Fällen müssen Sie die Registrierungsschlüssel des MOK-Hilfsprogramms für Ihre VM eingeben. Hierzu müssen Sie über die serielle Azure-Konsole auf das MOK-Hilfsprogramm zugreifen.
 
-1. Aktivieren Sie die serielle Azure-Konsole für Linux. Weitere Informationen finden Sie unter [Serielle Azure-Konsole für Linux](serial-console-linux.md).
+1. Aktivieren Sie die serielle Azure-Konsole für Linux. Weitere Informationen finden Sie unter [Serielle Azure-Konsole für Linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/serial-console-linux).
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 1. Suchen Sie die Option **Virtuelle Computer**, und wählen Sie in der Liste Ihren virtuellen Computer (VM) aus.
 1. Wählen Sie im Menü links unter **Support + Problembehandlung** die Option **Serielle Konsole** aus. Rechts wird eine Seite mit der seriellen Konsole geöffnet.

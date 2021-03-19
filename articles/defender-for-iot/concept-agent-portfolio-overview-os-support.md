@@ -1,5 +1,5 @@
 ---
-title: Agent-Portfolioübersicht und Betriebssystemunterstützung (Vorschau)
+title: Agent-Portfolioübersicht und Betriebssystemunterstützung
 description: Azure Defender für IoT bietet ein umfangreiches Portfolio an gerätetypbasierten Agents.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: f731b034b5d4f795bae51107e9ff4e2e90788d7d
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: e2897018d1695bde665e1d1aca180e5268851a0b
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99810069"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120146"
 ---
-# <a name="agent-portfolio-overview-and-os-support-preview"></a>Agent-Portfolioübersicht und Betriebssystemunterstützung (Vorschau)
+# <a name="agent-portfolio-overview-and-os-support"></a>Agent-Portfolioübersicht und Betriebssystemunterstützung 
 
 Azure Defender für IoT bietet ein umfangreiches Portfolio an gerätetypbasierten Agents. 
 
@@ -38,4 +38,4 @@ Der Micro-Agent für Azure Defender für IoT ist in die Komponente „Azure RTO
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie in der [Übersicht über den eigenständigen Micro-Agent (Vorschau)](concept-standalone-micro-agent-overview.md).
+Weitere Informationen finden Sie in der [Übersicht über den eigenständigen Micro-Agent](concept-standalone-micro-agent-overview.md).

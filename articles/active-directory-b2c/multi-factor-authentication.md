@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d7bc92af31eb179155fd473356c741f365a07a35
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: b7b7f1c5fb0a7991707a26b4a7f54fb3ffaf7bab
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525143"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033519"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Aktivieren der Multi-Factor Authentication in Azure Active Directory B2C
 
@@ -43,7 +43,7 @@ Mithilfe dieses Features können Anwendungen beispielsweise diese Szenarien hand
 1. Wählen Sie im Abschnitt **Mehrstufige Authentifizierung** die gewünschte **MFA-Methode** und anschließend unter **Erzwingung der MFA** die Option **Immer aktiviert** oder **Bedingt (Empfohlen)** aus.
    > [!NOTE]
    >
-   > - Wenn Sie **Bedingt (empfohlen)** auswählen, müssen Sie auch eine [Richtlinie für bedingten Zugriff hinzufügen](conditional-access-identity-protection-setup.md#add-a-conditional-access-policy) und die Apps angeben, für die die Richtlinie gelten soll.
+   > - Wenn Sie **Bedingt (empfohlen)** auswählen, müssen Sie den [Benutzerflows auch eine Richtlinie für bedingten Zugriff hinzufügen](conditional-access-user-flow.md) und die Apps angeben, für die diese Richtlinie gelten soll.
    > - Die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) ist bei Benutzerflows für die Registrierung standardmäßig deaktiviert. In Benutzerflows mit telefonischer Registrierung ist es zwar möglich, MFA zu aktivieren. Als zweiter Authentifizierungsfaktor steht jedoch nur die Einmalkennung per E-Mail zur Verfügung, da die Telefonnummer als primärer Bezeichner verwendet wird.
 
 1. Wählen Sie **Speichern** aus. MFA ist für diesen Benutzerflow jetzt aktiviert.

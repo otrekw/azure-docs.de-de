@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: ab819239572fd99fdf5ff3bf23f81eb3cdff3b9a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 671991a936fd0330c31017dd5f64e7b5eca9b3f4
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940089"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563658"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Szenariobasierter Migrationsleitfaden für die Codierung
 
@@ -41,7 +41,7 @@ Nehmen Sie sich einige Minuten Zeit, und sehen Sie sich die unten aufgeführten 
 
 Klicken Sie auf das Bild unten, um eine größere Version anzuzeigen.
 
-[ ![Codierungsworkflow für V2](./media/migration-guide/V2-pretty.svg) ](./media/migration-guide/V2-pretty.svg#lightbox)
+[![Codierungsworkflow für V2](./media/migration-guide/V2-pretty.svg) ](./media/migration-guide/V2-pretty.svg#lightbox)
 
 1. Einrichtung
     1. Erstellen Sie ein Medienobjekt, oder verwenden Sie ein vorhandenes Objekt. Wenn Sie ein neues Medienobjekt verwenden, laden Sie Inhalt in dieses Medienobjekt hoch. Bei einem vorhandenen Medienobjekt sollten Sie Dateien codieren, die bereits im Medienobjekt vorhanden sind.
@@ -58,10 +58,10 @@ Klicken Sie auf das Bild unten, um eine größere Version anzuzeigen.
 
 ### <a name="v3-encoding-workflow"></a>V3-Codierungsworkflow
 
-[ ![Codierungsworkflow für V3](./media/migration-guide/V3-pretty.svg) ](./media/migration-guide/V3-pretty.svg#lightbox)
+[![Codierungsworkflow für V3](./media/migration-guide/V3-pretty.svg) ](./media/migration-guide/V3-pretty.svg#lightbox)
 
-1. Einrichtung
-    1. Erstellen Sie ein Medienobjekt, oder verwenden Sie ein vorhandenes Objekt. Wenn Sie ein neues Medienobjekt verwenden, laden Sie Inhalt in dieses Medienobjekt hoch. Bei einem vorhandenen Medienobjekt sollten Sie Dateien codieren, die bereits im Medienobjekt vorhanden sind. Sie sollten *keine weiteren Inhalte in das Medienobjekt hochladen*.
+1. Einrichten
+    1. Erstellen Sie ein Objekt, oder verwenden Sie ein bereits vorhandenes Objekt. Wenn Sie ein neues Medienobjekt verwenden, laden Sie Inhalt in dieses Medienobjekt hoch. Bei einem vorhandenen Medienobjekt sollten Sie Dateien codieren, die bereits im Medienobjekt vorhanden sind. Sie sollten *keine weiteren Inhalte in das Medienobjekt hochladen*.
     1. Erstellen eines Ausgabemedienobjekts  Im Ausgabemedienobjekt werden die codierten Dateien sowie die Eingabe- und Ausgabemetadaten gespeichert.
     1. Rufen Sie die Werte für die Transformation ab:
         - Voreinstellungen für den Media Encoder Standard
@@ -84,17 +84,6 @@ Klicken Sie auf das Bild unten, um eine größere Version anzuzeigen.
 Wenn Ihr V2-Code den Media Encoder Standard mit einer benutzerdefinierten Voreinstellung aufgerufen hat, mussten Sie zunächst eine neue Transformation mit der benutzerdefinierten Voreinstellung für den Media Encoder Standard erstellen, bevor Sie einen Auftrag übermitteln konnten.
 
 Die benutzerdefinierten Voreinstellungen basieren nun auf JSON und nicht mehr auf XML. Erstellen Sie Ihre Voreinstellung in JSON neu, und befolgen Sie dabei das Schema für benutzerdefinierte Voreinstellungen gemäß der Definition für die [offene Transform-API (Swagger)](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/examples/transforms-create.json).
-
-
-<!-- removed because this is covered in the tutorials
-Common custom [encoding](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json) scenarios:
-        1. Create a custom Single Bitrate MP4 encode
-        1. Create a custom [Adaptive Bitrate Encoding Ladder](autogen-bitrate-ladder.md)
-        1. Creating Sprite Thumbnails
-        1. Creating Thumbnails (see below for your preferred method)
-        1. [Sub Clipping](subclip-video-rest-howto.md)
-        1. Cropping
--->
 
 ## <a name="input-and-output-metadata-files-from-an-encoding-job"></a>Metadatendateien für Ein- und Ausgabe für einen Codierungsauftrag
 

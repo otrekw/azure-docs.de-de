@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4c654f70af2188264465d97abded9cae95e9275
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9d5671626e05145f79c3ad5fc0ecdb5628ac9421
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364578"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102427129"
 ---
 # <a name="conditional-access-users-and-groups"></a>Bedingter Zugriff: Benutzer und Gruppen
 
-Eine Richtlinie für bedingten Zugriff muss eine Benutzerzuweisung als eines der Signale im Entscheidungsprozess einschließen. Benutzer können in Richtlinien für bedingten Zugriff eingeschlossen oder davon ausgeschlossen werden. Von Azure Active Directory werden alle Richtlinien ausgewertet, und es wird sichergestellt, dass alle Anforderungen erfüllt sind, bevor dem Benutzer der Zugriff gewährt wird.
+Eine Richtlinie für bedingten Zugriff muss eine Benutzerzuweisung als eines der Signale im Entscheidungsprozess einschließen. Benutzer können in Richtlinien für bedingten Zugriff eingeschlossen oder davon ausgeschlossen werden. Von Azure Active Directory werden alle Richtlinien ausgewertet, und es wird sichergestellt, dass alle Anforderungen erfüllt sind, bevor dem Benutzer der Zugriff gewährt wird. Zusätzlich zu diesem Artikel gibt es ein Video über das [Ein- oder Ausschließen von Benutzern in bzw. aus Richtlinien für den bedingten Zugriff](https://www.youtube.com/watch?v=5DsW1hB3Jqs), das Sie durch den nachfolgend erläuterten Prozess führt. 
 
 ![Benutzer als Signal in den Entscheidungen des bedingten Zugriffs](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
 

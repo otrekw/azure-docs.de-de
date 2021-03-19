@@ -4,17 +4,17 @@ description: Hier erfahren Sie, wie Anforderungstimeoutausnahmen im .NET SDK dia
 author: j82w
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 08/06/2020
+ms.date: 03/05/2021
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c8d448cf335f328b5ae55579fd30127ef0e37e9d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: c8d35f7c666562022f503b2777f30f84193d0231
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340497"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440002"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout-exceptions"></a>Diagnose und Troubleshooting bei .NET SDK-Anforderungstimeoutausnahmen in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,6 +41,22 @@ Die folgende Liste enthält bekannte Gründe und Lösungen für Anforderungstime
 
 ### <a name="high-cpu-utilization"></a>Hohe CPU-Auslastung
 Hohe CPU-Auslastung ist der häufigste Fall. Für optimale Latenz sollte die CPU-Auslastung ungefähr 40 Prozent betragen. Verwenden Sie 10 Sekunden als Intervall zur Überwachung der maximalen (nicht durchschnittlichen) CPU-Nutzung. CPU-Spitzenwerte treten bei partitionsübergreifenden Abfragen häufiger auf, wenn es möglicherweise erforderlich ist, mehrere Verbindungen für eine einzelne Abfrage herzustellen.
+
+Wenn der Fehler `TransportException`-Informationen enthält, könnte er auch `CPU History`-Informationen enthalten:
+
+```
+CPU history: 
+(2020-08-28T00:40:09.1769900Z 0.114), 
+(2020-08-28T00:40:19.1763818Z 1.732), 
+(2020-08-28T00:40:29.1759235Z 0.000), 
+(2020-08-28T00:40:39.1763208Z 0.063), 
+(2020-08-28T00:40:49.1767057Z 0.648), 
+(2020-08-28T00:40:59.1689401Z 0.137), 
+CPU count: 8)
+```
+
+* Wenn die Werte für die CPU-Auslastung über 70 % liegen, liegt die Ursache für das Timeout wahrscheinlich bei der zu hohen CPU-Auslastung. In diesem Fall besteht die Lösung darin, die Quelle für die hohe CPU-Auslastung zu ermitteln und für eine Reduzierung zu sorgen oder die Ressourcengröße für den Computer zu erhöhen.
+* Falls die Messungen der CPU-Auslastung nicht alle zehn Sekunden erfolgen (z. B. Auftreten von Lücken bzw. längeren Pausen zwischen den Messungen), ist ein Threadmangel die Ursache. In diesem Fall besteht die Lösung darin, die Ursachen für den Threadmangel (ggf. gesperrte Threads) zu untersuchen oder die Ressourcengröße für die Computer zu erhöhen.
 
 #### <a name="solution"></a>Lösung:
 Die Clientanwendung, die das SDK verwendet, sollte entsprechend skaliert werden.
@@ -91,5 +107,5 @@ Die Anwendung sollte vorübergehende Fehler verarbeiten können und bei Bedarf w
 Wenden Sie sich an den [Azure-Support](https://aka.ms/azure-support).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informieren Sie sich zu [Diagnostizieren und Behandeln](troubleshoot-dot-net-sdk.md) von Problemen bei Verwendung des .NET SDK für Azure Cosmos DB.
-* Informieren Sie sich zu Leistungsrichtlinien für [.NET v3](performance-tips-dotnet-sdk-v3-sql.md) und [.NET v2](performance-tips.md).
+* [Diagnostizieren und Behandeln](troubleshoot-dot-net-sdk.md) von Problemen bei Verwendung des .NET SDK für Azure Cosmos DB
+* Weitere Informationen zu Leistungsrichtlinien für [.NET Version 3](performance-tips-dotnet-sdk-v3-sql.md) und [.NET Version 2](performance-tips.md)

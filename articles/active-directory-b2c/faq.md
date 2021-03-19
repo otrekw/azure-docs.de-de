@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e181b90219f340a29e818801ee2b53f1ccbd9c23
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 722f3158c8eca4cec4dbf23658f9d8d4cb68c3ed
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660283"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517989"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Häufig gestellte Fragen (FAQ)
 
@@ -82,7 +82,10 @@ Die E-Mail-Signatur enthält den Namen des Azure AD B2C-Mandanten, den Sie bei d
 1. Ändern Sie das Feld **Name**.
 1. Klicken Sie oben auf der Seite auf **Speichern**.
 
-Zurzeit besteht keine Möglichkeit, das Feld „Von:“ der E-Mail zu ändern.
+Derzeit können Sie das Feld „Von:“ der E-Mail nicht ändern.
+
+> [!TIP]
+> Mit der [benutzerdefinierten Richtlinie](custom-policy-overview.md) von Azure AD B2C können Sie die E-Mail anpassen, die Azure AD B2C an Benutzer sendet, einschließlich des Felds „Von:“ der E-Mail. Für die benutzerdefinierte E-Mail-Überprüfung ist die Verwendung eines E-Mail-Drittanbieters wie [Mailjet](custom-email-mailjet.md), [SendGrid](custom-email-sendgrid.md) oder [SparkPost](https://sparkpost.com) erforderlich.
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Wie kann ich meine vorhandenen Benutzernamen, Kennwörter und Profile von meiner Datenbank zu Azure AD B2C migrieren?
 
@@ -142,13 +145,13 @@ Sie können die neue einheitliche Benutzeroberfläche für **App-Registrierungen
 1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
 1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
 1. Löschen Sie alle **Benutzerabläufe (Richtlinien)** in Ihrem Azure AD B2C-Mandanten.
+1. Löschen Sie alle **Identitätsanbieter** in Ihrem Azure AD B2C-Mandanten.
 1. Klicken Sie auf **App-Registrierungen** und dann auf die Registerkarte **Alle Anwendungen**.
 1. Löschen Sie alle Anwendungen, die Sie registriert haben.
 1. Löschen Sie **b2c-extensions-app**.
 1. Wählen Sie unter **Verwalten** die Option **Benutzer** aus.
 1. Wählen Sie nacheinander die einzelnen Benutzer aus (mit Ausnahme des *Abonnementadministrator*-Benutzers, als der Sie aktuell angemeldet sind). Wählen Sie unten auf der Seite **Löschen** aus, und klicken Sie auf **Ja**, wenn Sie zur Bestätigung aufgefordert werden.
 1. Wählen Sie im linken Menü **Azure Active Directory** aus.
-1. Wählen Sie unter **Verwalten** die Option **Benutzereinstellungen** aus.
 1. Wählen Sie unter **Verwalten** die Option **Eigenschaften** aus.
 1. Wählen Sie unter **Zugriffsverwaltung für Azure-Ressourcen** die Option **Ja** und dann **Speichern** aus.
 1. Melden Sie sich vom Azure-Portal ab und dann wieder an, um Ihren Zugriff zu aktualisieren.

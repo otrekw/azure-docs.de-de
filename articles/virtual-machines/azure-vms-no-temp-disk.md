@@ -4,15 +4,16 @@ description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen
 author: brbell
 ms.service: virtual-machines
 ms.topic: conceptual
+ms.subservice: sizes
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 30587fac7d7be37d7595a78502b7999adee9a30f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1937b8392ee3a73ed7c268897c532c643a9151eb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665309"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565460"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Azure-VM-Größen ohne lokalen temporären Datenträger 
 In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu Azure-VM-Größen, die nicht über einen lokalen temporären Datenträger verfügen. Weitere Informationen zu diesen VM-Größen finden Sie in den [Spezifikationen für die Dv4- und Dsv4-Serie (universelle Workloads)](dv4-dsv4-series.md) oder den [Spezifikationen für die Ev4- und Esv4-Serie (arbeitsspeicheroptimierte Workloads)](ev4-esv4-series.md).
@@ -40,8 +41,22 @@ Nein. Eine Größenänderung ist nur für die folgenden Kombinationen zulässig:
 1. VM (mit lokalem temporärem Datenträger) -> VM (mit lokalem temporärem Datenträger) und 
 2. VM (ohne lokalen temporären Datenträger) -> VM (ohne lokalen temporären Datenträger) 
 
+Eine Problemumgehungsmöglichkeit finden Sie in der Antwort auf die nächste Frage.
+
 > [!NOTE]
 > Wenn ein Image vom Ressourcendatenträger abhängig ist oder eine Auslagerungsdatei auf dem lokalen temporären Datenträger vorhanden ist, funktionieren die Images ohne Datenträger nicht. Verwenden Sie in diesem Fall stattdessen die Alternative mit Datenträger. 
+
+## <a name="how-do-i-migrate-from-a-vm-size-with-local-temp-disk-to-a-vm-size-with-no-local-temp-disk"></a>Wie migriere ich von einer VM-Größe mit lokalem temporärem Datenträger zu einer ohne?  
+Eine solche Migration kann wie folgt durchgeführt werden: 
+
+1. Stellen Sie als lokaler Administrator eine Verbindung mit dem virtuellen Computer her, der über einen lokalen temporären Datenträger verfügt (z. B. ein Laufwerk D:).
+2. Befolgen Sie die Anweisungen im Abschnitt „Temporäres Verschieben von „pagefile.sys“ zu Laufwerk C“ des Artikels [Verwenden des Laufwerks D: als Datenlaufwerk auf einem virtuellen Windows-Computer](./windows/change-drive-letter.md), um die Auslagerungsdatei vom lokalen temporären Datenträger (Laufwerk D:) auf das Laufwerk C: zu verschieben.
+
+   > [!NOTE]
+   > Befolgen Sie die Anweisungen im Abschnitt „Temporäres Verschieben von „pagefile.sys“ zu Laufwerk C“ des Artikels „Verwenden des Laufwerks D: als Datenlaufwerk auf einem virtuellen Windows-Computer“, um die Auslagerungsdatei vom lokalen temporären Datenträger (Laufwerk D:) auf das Laufwerk C: zu verschieben. **Ein Abweichen von den beschriebenen Schritten führt zu der Fehlermeldung: „Die Größe der VM kann nicht geändert werden, weil der Wechsel von einer VM-Größe mit Ressourcendatenträger zu einer VM-Größe ohne Ressourcendatenträger und umgekehrt unzulässig ist.“**
+
+3. Erstellen Sie eine Momentaufnahme der VM, indem Sie die im Artikel [Erstellen einer Momentaufnahme mit dem Portal oder der Azure CLI](./linux/snapshot-copy-managed-disk.md) beschriebenen Schritte ausführen. 
+4. Verwenden Sie diese Momentaufnahme, um mit den unter [Erstellen eines virtuellen Computers aus einer Momentaufnahme mit der CLI](./scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md) beschriebenen Schritten eine neue datenträgerlose VM zu erstellen (z. B. eine der Dv4-, Dsv4-, Ev4- oder Esv4-Serie). 
 
 ## <a name="do-these-vm-sizes-support-both-linux-and-windows-operating-systems-os"></a>Unterstützen diese VM-Größen sowohl Linux- als auch Windows-Betriebssysteme?
 Ja.

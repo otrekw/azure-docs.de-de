@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 7ab60fb364eb3268a03c04bb4950251ae030f015
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cbedf2212c52d8f1996d3cce0d96d494313ea525
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374047"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608817"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
@@ -253,7 +253,7 @@ Die Konfigurationseinstellung finden Sie in [Bindungen für Durable Functions](d
 
 ## <a name="eventhub"></a>eventHub
 
-Die Konfigurationseinstellung finden Sie in [Event Hub-Trigger und -Bindungen](functions-bindings-event-hubs-trigger.md#host-json). 
+Die Konfigurationseinstellung finden Sie in [Event Hub-Trigger und -Bindungen](functions-bindings-event-hubs.md#host-json). 
 
 ## <a name="extensions"></a>Erweiterungen
 
@@ -345,7 +345,7 @@ Steuert das Protokollierungsverhalten der Funktions-App, einschließlich Applica
 |Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Definiert, welche Stufe der Dateiprotokollierung aktiviert ist.  Optionen sind `never`, `always`, `debugOnly`. |
-|logLevel|–|Objekt, das das Filtern der Protokollkategorie nach Funktionen in der App definiert. Version 2.x oder höher entspricht bei der Filterung der Protokollkategorie dem Layout von ASP.NET Core. Mit dieser Einstellung können Sie die Protokollierung nach bestimmten Funktionen filtern. Weitere Informationen finden Sie unter [Protokollfilterung](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering) in der Dokumentation zu ASP.NET Core. |
+|logLevel|–|Objekt, das das Filtern der Protokollkategorie nach Funktionen in der App definiert. Mit dieser Einstellung können Sie die Protokollierung nach bestimmten Funktionen filtern. Weitere Informationen finden Sie unter [Konfigurieren von Protokollierungsgraden](configure-monitoring.md#configure-log-levels). |
 |console|–| Die [Konsolen](#console)protokollierungseinstellung. |
 |applicationInsights|–| Die [applicationInsights](#applicationinsights)-Einstellung. |
 

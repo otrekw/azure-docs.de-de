@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/28/2021
+ms.date: 03/09/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8635e3590d4196e407dfc591a55ee240806358ed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 82445ce7c1ebfc365459bbeba7e04d660221eaf2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691517"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551653"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Überwachen von Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -58,6 +58,11 @@ Eine Überwachungsrichtlinie kann für eine spezifische Datenbank oder als [Stan
 
 - Wenn die *Serverüberwachung aktiviert ist*, gilt sie *immer für die Datenbank*. Die Datenbank wird unabhängig von den Datenbanküberwachungseinstellungen überwacht.
 
+- Wenn die Richtlinie zur Überwachung auf Datenbankebene mit einem Log Analytics-Arbeitsbereich oder Event Hub als Ziel definiert ist, wird die Richtlinie zur Überwachung auf Ebene der Quelldatenbank für die folgenden Vorgänge nicht beibehalten:
+    - [Datenbankkopie](database-copy.md)
+    - [Point-in-Time-Wiederherstellung](recovery-using-backups.md)
+    - [Georeplikation](active-geo-replication-overview.md) (keine Überwachung auf Datenbankebene für die sekundäre Datenbank)
+
 - Die Aktivierung der Überwachung in der Datenbank sowie auf dem Server hebt die Einstellungen der Serverüberwachung *nicht* auf und ändert sie nicht. Beide Überwachungen existieren nebeneinander. Das heißt, die Datenbank wird zweimal parallel überwacht: einmal anhand der Serverrichtlinie und einmal anhand der Datenbankrichtlinie.
 
    > [!NOTE]
@@ -94,7 +99,8 @@ Die Überwachung von Azure SQL-Datenbank und Azure Synapse speichert 4.000 Date
 Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das Azure-Portal.
 
   > [!NOTE]
-  > Die Überwachung kann bei einem angehaltenen dedizierten SQL-Pool nicht aktiviert werden. Zum Aktivieren der Überwachung setzen Sie den Pool fort. Informieren Sie sich ausführlicher über den [dedizierten SQL-Pool](../..//synapse-analytics/sql/best-practices-sql-pool.md).
+  > - Die Überwachung kann bei einem angehaltenen dedizierten SQL-Pool nicht aktiviert werden. Zum Aktivieren der Überwachung setzen Sie den Pool fort. Informieren Sie sich ausführlicher über den [dedizierten SQL-Pool](../..//synapse-analytics/sql/best-practices-sql-pool.md).
+  > - Wenn die Überwachung mit einem Log Analytics-Arbeitsbereich oder Event Hub als Ziel über das Azure-Portal oder ein PowerShell-Cmdlet konfiguriert wird, wird eine [Diagnoseeinstellung](../../azure-monitor/essentials/diagnostic-settings.md) mit aktivierter Kategorie "SQLSecurityAuditEvents" erstellt.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 2. Navigieren Sie im Bereich für die **SQL-Datenbank** oder den **SQL Server** unter der Überschrift „Sicherheit“ zu **Überwachung**.
@@ -104,18 +110,18 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das A
 
 4. Wenn Sie die Überwachung auf Datenbankebene aktivieren möchten, ändern Sie **Überwachung** in **EIN**. Wenn die Serverüberwachung aktiviert ist, existiert die konfigurierte Datenbanküberwachung parallel zur Serverüberwachung.
 
-5. Sie haben mehrere Optionen zur Auswahl, um zu konfigurieren, wohin Überwachungsprotokolle geschrieben werden sollen. Sie können die Protokolle in ein Azure Storage-Konto, in einen Log Analytics-Arbeitsbereich für die Nutzung durch Azure Monitor-Protokolle (Vorschauversion) oder in einen Event Hub für die Nutzung durch den Event Hub (Vorschauversion) schreiben. Sie können eine beliebige Kombination dieser Optionen konfigurieren, und die Überwachungsprotokolle werden in die jeweils angegebenen Speicherorte geschrieben.
+5. Sie haben mehrere Optionen zur Auswahl, um zu konfigurieren, wohin Überwachungsprotokolle geschrieben werden sollen. Sie können die Protokolle in ein Azure Storage-Konto, in einen Log Analytics-Arbeitsbereich für die Nutzung durch Azure Monitor-Protokolle oder in einen Event Hub für die Nutzung durch den Event Hub schreiben. Sie können eine beliebige Kombination dieser Optionen konfigurieren, und die Überwachungsprotokolle werden in die jeweils angegebenen Speicherorte geschrieben.
   
    ![Speicheroptionen](./media/auditing-overview/auditing-select-destination.png)
 
-### <a name="auditing-of-microsoft-support-operations-preview"></a><a id="auditing-of-microsoft-support-operations"></a>Überwachung von Microsoft-Supportvorgängen (Vorschau)
+### <a name="auditing-of-microsoft-support-operations"></a><a id="auditing-of-microsoft-support-operations"></a>Überwachung von Microsoft-Supportvorgängen
 
-Mit der Überwachung von Microsoft-Supportvorgängen (Vorschau) für Azure SQL Server können Sie die Vorgänge von Microsoft-Supporttechnikern überwachen, wenn diese während einer Supportanfrage auf Ihren Server zugreifen müssen. In Kombination mit der Überwachung sorgt diese Funktion für eine höhere Personaltransparenz und ermöglicht Anomalieerkennung, Trendvisualisierung und die Verhinderung von Datenverlusten.
+Mit der Überwachung von Microsoft-Supportvorgängen für Azure SQL Server können Sie die Vorgänge von Microsoft-Supporttechnikern überwachen, wenn diese während einer Supportanfrage auf Ihren Server zugreifen müssen. In Kombination mit der Überwachung sorgt diese Funktion für eine höhere Personaltransparenz und ermöglicht Anomalieerkennung, Trendvisualisierung und die Verhinderung von Datenverlusten.
 
-Um die Überwachung von Microsoft-Supportvorgängen (Vorschau) zu aktivieren, navigieren Sie im Bereich **Azure SQL Server** unter der Überschrift „Sicherheit“ zu **Überwachung**, und legen Sie **Auditing of Microsoft support operations (Preview)** (Überwachung von Microsoft-Supportvorgängen (Vorschau)) auf **EIN** fest.
+Navigieren Sie zum Aktivieren der Überwachung von Microsoft-Supportvorgängen im Bereich **Azure SQL Server** unter der Überschrift „Sicherheit“ zu **Überwachung**, und legen Sie **Überwachung von Microsoft-Supportvorgängen** auf **EIN** fest.
 
   > [!IMPORTANT]
-  > Die Überwachung von Microsoft-Supportvorgängen (Vorschau) unterstützt keine Speicherkontoziele. Zum Aktivieren der Funktion muss ein Log Analytics-Arbeitsbereich oder ein Event Hub-Ziel konfiguriert werden.
+  > Die Überwachung von Microsoft-Supportvorgängen unterstützt keine Speicherkontoziele. Zum Aktivieren der Funktion muss ein Log Analytics-Arbeitsbereich oder ein Event Hub-Ziel konfiguriert werden.
 
 ![Screenshot: Microsoft-Supportvorgänge](./media/auditing-overview/support-operations.png)
 
@@ -137,7 +143,7 @@ Um das Schreiben von Überwachungsprotokollen in ein Speicherkonto zu konfigurie
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Überwachen in Log Analytics-Ziel
   
-Um das Schreiben von Überwachungsprotokollen in einen Log Analytics-Arbeitsbereich zu konfigurieren, wählen Sie **Log Analytics (Vorschau)** aus und öffnen **Log Analytics-Details**. Wählen Sie den Log Analytics-Arbeitsbereich aus (oder erstellen Sie ihn), in den Protokolle geschrieben werden sollen, und klicken Sie dann auf **OK**.
+Wählen Sie zum Konfigurieren des Schreibens von Überwachungsprotokollen in einen Log Analytics-Arbeitsbereich **Log Analytics** aus, und öffnen Sie **Details zu Log Analytics**. Wählen Sie den Log Analytics-Arbeitsbereich aus (oder erstellen Sie ihn), in den Protokolle geschrieben werden sollen, und klicken Sie dann auf **OK**.
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
@@ -145,7 +151,7 @@ Weitere Informationen zum Azure Monitor Log Analytics-Arbeitsbereich finden Sie 
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Überwachen in Event Hub-Ziel
 
-Um das Schreiben von Überwachungsprotokollen in einen Event Hub zu konfigurieren, wählen Sie **Event Hub (Vorschau)** aus, und öffnen Sie **Event Hub-Details**. Wählen Sie den Event Hub aus, in den die Protokolle geschrieben werden sollen, und klicken Sie dann auf **OK**. Achten Sie darauf, dass sich der Event Hub in derselben Region wie Ihre Datenbank und der Server befindet.
+Wählen Sie zum Konfigurieren des Schreibens von Überwachungsprotokollen in einen Event Hub **Event Hub**  aus, und öffnen Sie **Event Hub-Details**. Wählen Sie den Event Hub aus, in den die Protokolle geschrieben werden sollen, und klicken Sie dann auf **OK**. Achten Sie darauf, dass sich der Event Hub in derselben Region wie Ihre Datenbank und der Server befindet.
 
    ![Eventhub](./media/auditing-overview/auditing_select_event_hub.png)
 
@@ -278,8 +284,8 @@ Erweiterte Richtlinie mit Unterstützung der WHERE-Klausel für zusätzliche Fil
 
 ### <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
-- [Verwalten der Überwachungsrichtlinie eines Servers](/cli/azure/sql/server/audit-policy?view=azure-cli-latest)
-- [Verwalten der Überwachungsrichtlinie einer Datenbank](/cli/azure/sql/db/audit-policy?view=azure-cli-latest)
+- [Verwalten der Überwachungsrichtlinie eines Servers](/cli/azure/sql/server/audit-policy)
+- [Verwalten der Überwachungsrichtlinie einer Datenbank](/cli/azure/sql/db/audit-policy)
 
 ### <a name="using-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
 

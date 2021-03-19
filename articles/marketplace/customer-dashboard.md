@@ -1,5 +1,5 @@
 ---
-title: Dashboard „Kunden“ in Analysen für den kommerziellen Microsoft-Marketplace im Partner Center, im Azure Marketplace und in Microsoft AppSource
+title: Dashboard „Kunden“ in Analysen für den kommerziellen Microsoft-Marketplace in Partner Center, im Azure Marketplace und in Microsoft AppSource
 description: Erfahren Sie, wie Sie mithilfe des Dashboards „Kunden“ in Analysen für den kommerziellen Marketplace auf Informationen zu Ihren Kunden zugreifen, einschließlich Wachstumstrends.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: c98b47507a7543002f00aae82370f5ea0043510d
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: c5c50787ef3e287d164e051ece26da4e83199d47
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954276"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555634"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Kunden“ in Analysen für den kommerziellen Marketplace
 
@@ -142,28 +142,28 @@ Beachten Sie Folgendes:
 
 _**Tabelle 1: Wörterbuch mit Datenbegriffen**_
 
-| Spaltenname | Attributname | Definition |
-| ------------ | ------------- | ------------- |
-| Marketplace Subscription Id | Marketplace-Abonnement-ID | Der eindeutige Bezeichner (ID), der mit dem Azure-Abonnement verknüpft ist, über das der Kunde Ihr Angebot im kommerziellen Marketplace erworben hat. Bei Infrastrukturangeboten ist dies die Azure-Abonnement-GUID des Kunden. Bei SaaS-Angeboten werden hier Nullen angezeigt, da für die SaaS-Käufe kein Azure-Abonnement erforderlich ist. |
-| DateAcquired | Erwerbsdatum | Das erste Datum, an dem der Kunde ein von Ihnen veröffentlichtes Angebot erworben hat. |
-| DateLost | Verlustdatum | Das letzte Datum, an dem der Kunde das letzte aller zuvor erworbenen Angebote storniert hat. |
-| Anbietername | Anbietername | Der Name des Anbieters, der an der Beziehung zwischen Microsoft und dem Kunden beteiligt ist. Beim Lizenztyp „Enterprise über Handelspartner“ ist dies der Handelspartner. Wenn ein Cloud Solution Provider (CSP) beteiligt ist, wird hier der CSP angegeben. |
-| Anbieter-E-Mail | Anbieter-E-Mail | Die E-Mail-Adresse des Anbieters, der an der Beziehung zwischen Microsoft und dem Kunden beteiligt ist. Beim Lizenztyp „Enterprise über Handelspartner“ ist dies der Handelspartner. Wenn ein Cloud Solution Provider (CSP) beteiligt ist, wird hier der CSP angegeben. |
-| FirstName | Vorname des Kunden | Der vom Kunden angegebene Vorname. Der Name kann sich von dem im Azure-Abonnement eines Kunden angegebenen Namen unterscheiden. |
-| LastName | Nachname des Kunden | Der vom Kunden angegebene Nachname. Der Name kann sich von dem im Azure-Abonnement eines Kunden angegebenen Namen unterscheiden. |
-| Email | E-Mail-Adresse des Kunden | Die vom Endkunden angegebene E-Mail-Adresse. Die E-Mail-Adresse kann sich von der im Azure-Abonnement eines Kunden angegebenen E-Mail-Adresse unterscheiden. |
-| Firmenname des Kunden | Firmenname des Kunden | Der vom Kunden angegebene Firmenname. Der Name kann sich von der Angabe im Azure-Abonnement eines Kunden unterscheiden. |
-| CustomerCity | Kundenort | Der Name des vom Kunden angegebenen Orts. Der Ort kann sich von der Angabe im Azure-Abonnement eines Kunden unterscheiden. |
-| Postleitzahl des Kunden | Postleitzahl des Kunden | Die vom Kunden angegebene Postleitzahl. Die Postleitzahl kann sich von der im Azure-Abonnement eines Kunden angegebenen Postleitzahl unterscheiden. |
-| CustomerCommunicationCulture | Kommunikationssprache des Kunden | Die vom Kunden für die Kommunikation bevorzugte Sprache. |
-| CustomerCountryRegion | Land/Region des Kunden | Der vom Kunden angegebene Name für das Land bzw. die Region. Das Land/die Region kann sich von dem im Azure-Abonnement eines Kunden angegebenen Land bzw. der angegebenen Region unterscheiden. |
-| AzureLicenseType | Azure-Lizenztyp | Die Art der Lizenzvereinbarung, über die Kunden Azure erwerben. Wird auch als _Kanal_ bezeichnet. Mögliche Werte sind:<ul><li>Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise über Handelspartner</li><li>Nutzungsbasierte Bezahlung</li></ul> |
-| PromotionalCustomers | Zustimmung zur Kontaktaufnahme zu Werbezwecken | Der Wert gibt an, ob der Kunde proaktiv der Kontaktaufnahme zu Werbezwecken durch die Herausgeber zugestimmt hat. Derzeit wird diese Option für Kunden nicht angezeigt. Daher ist allgemein „Nein“ angegeben. Sobald diese Funktion bereitgestellt wird, wird eine entsprechende Aktualisierung vorgenommen. |
-| CustomerState | Bundesland/Kanton des Kunden | Das vom Kunden als Wohnsitz angegebene Bundesland oder der angegebene Kanton. Das Bundesland bzw. der Kanton kann sich von der Angabe im Azure-Abonnement eines Kunden unterscheiden. |
-| CommerceRootCustomer | Handelsstammkunde | Eine Abrechnungskonto-ID kann mehreren Kunden-IDs zugeordnet werden.<br>Eine Kombination aus Abrechnungskonto-ID und Kunden-ID kann mehreren Abonnements für den kommerziellen Marketplace zugeordnet werden.<br>Der Handelsstammkunde ist der Name des Kunden, der dem Abonnement zugeordnet ist. |
-| Customer Id | Customer ID | Der eindeutige, einem Kunden zugewiesene Bezeichner. Ein Kunde kann keine oder mehrere Azure Marketplace-Abonnements besitzen. |
-| Billing Account Id | ID des Abrechnungskontos | Der Bezeichner des Kontos, für das die Abrechnung generiert wird. Ordnen Sie die **ID des Abrechnungskontos** zu **customerID** zu, um Ihren Auszahlungstransaktionsbericht mit den Kunden-, Bestellungs- und Verbrauchsberichten zu verbinden. |
-||||
+| Spaltenname auf<br>Benutzeroberfläche | Attributname | Definition | Spaltenname in Berichten zum<br>programmgesteuerten Zugriff |
+| ------------ | ------------- | ------------- | ------------- |
+| Marketplace-Abonnement-ID | Marketplace-Abonnement-ID | Der eindeutige Bezeichner (ID), der mit dem Azure-Abonnement verknüpft ist, über das der Kunde Ihr Angebot im kommerziellen Marketplace erworben hat. Bei Infrastrukturangeboten ist dies die Azure-Abonnement-GUID des Kunden. Bei SaaS-Angeboten werden hier Nullen angezeigt, da für die SaaS-Käufe kein Azure-Abonnement erforderlich ist. | MarketplaceSubscriptionId |
+| DateAcquired | Erwerbsdatum | Das erste Datum, an dem der Kunde ein von Ihnen veröffentlichtes Angebot erworben hat. | DateAcquired |
+| DateLost | Verlustdatum | Das letzte Datum, an dem der Kunde das letzte aller zuvor erworbenen Angebote storniert hat. | DateLost |
+| Anbietername | Anbietername | Der Name des Anbieters, der an der Beziehung zwischen Microsoft und dem Kunden beteiligt ist. Beim Lizenztyp „Enterprise über Handelspartner“ ist dies der Handelspartner. Wenn ein Cloud Solution Provider (CSP) beteiligt ist, wird hier der CSP angegeben. | ProviderName |
+| Anbieter-E-Mail | Anbieter-E-Mail | Die E-Mail-Adresse des Anbieters, der an der Beziehung zwischen Microsoft und dem Kunden beteiligt ist. Beim Lizenztyp „Enterprise über Handelspartner“ ist dies der Handelspartner. Wenn ein Cloud Solution Provider (CSP) beteiligt ist, wird hier der CSP angegeben. | ProviderEmail |
+| FirstName | Vorname des Kunden | Der vom Kunden angegebene Vorname. Der Name kann sich von dem im Azure-Abonnement eines Kunden angegebenen Namen unterscheiden. | FirstName |
+| LastName | Nachname des Kunden | Der vom Kunden angegebene Nachname. Der Name kann sich von dem im Azure-Abonnement eines Kunden angegebenen Namen unterscheiden. | LastName |
+| Email | E-Mail-Adresse des Kunden | Die vom Endkunden angegebene E-Mail-Adresse. Die E-Mail-Adresse kann sich von der im Azure-Abonnement eines Kunden angegebenen E-Mail-Adresse unterscheiden. | E-Mail |
+| Firmenname des Kunden | Firmenname des Kunden | Der vom Kunden angegebene Firmenname. Der Name kann sich von der Angabe im Azure-Abonnement eines Kunden unterscheiden. | CustomerCompany Name |
+| CustomerCity | Kundenort | Der Name des vom Kunden angegebenen Orts. Der Ort kann sich von der Angabe im Azure-Abonnement eines Kunden unterscheiden. | CustomerCity |
+| Postleitzahl des Kunden | Postleitzahl des Kunden | Die vom Kunden angegebene Postleitzahl. Die Postleitzahl kann sich von der im Azure-Abonnement eines Kunden angegebenen Postleitzahl unterscheiden. | CustomerPostal Code |
+| CustomerCommunicationCulture | Kommunikationssprache des Kunden | Die vom Kunden für die Kommunikation bevorzugte Sprache. | CustomerCommunicationCulture |
+| CustomerCountryRegion | Land/Region des Kunden | Der vom Kunden angegebene Name für das Land bzw. die Region. Das Land/die Region kann sich von dem im Azure-Abonnement eines Kunden angegebenen Land bzw. der angegebenen Region unterscheiden. | CustomerCountryRegion |
+| AzureLicenseType | Azure-Lizenztyp | Die Art der Lizenzvereinbarung, über die Kunden Azure erwerben. Wird auch als _Kanal_ bezeichnet. Mögliche Werte sind:<ul><li>Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise über Handelspartner</li><li>Nutzungsbasierte Bezahlung</li></ul> | AzureLicenseType |
+| PromotionalCustomers | Zustimmung zur Kontaktaufnahme zu Werbezwecken | Der Wert gibt an, ob der Kunde proaktiv der Kontaktaufnahme zu Werbezwecken durch die Herausgeber zugestimmt hat. Derzeit wird diese Option für Kunden nicht angezeigt. Daher ist allgemein „Nein“ angegeben. Sobald diese Funktion bereitgestellt wird, wird eine entsprechende Aktualisierung vorgenommen. | PromotionalCustomers |
+| CustomerState | Bundesland/Kanton des Kunden | Das vom Kunden als Wohnsitz angegebene Bundesland oder der angegebene Kanton. Das Bundesland bzw. der Kanton kann sich von der Angabe im Azure-Abonnement eines Kunden unterscheiden. | CustomerState |
+| CommerceRootCustomer | Handelsstammkunde | Eine Abrechnungskonto-ID kann mehreren Kunden-IDs zugeordnet werden.<br>Eine Kombination aus Abrechnungskonto-ID und Kunden-ID kann mehreren Abonnements für den kommerziellen Marketplace zugeordnet werden.<br>Der Handelsstammkunde ist der Name des Kunden, der dem Abonnement zugeordnet ist. | CommerceRootCustomer |
+| Customer ID | Customer ID | Der eindeutige, einem Kunden zugewiesene Bezeichner. Ein Kunde kann keine oder mehrere Azure Marketplace-Abonnements besitzen. | CustomerId |
+| ID des Abrechnungskontos | ID des Abrechnungskontos | Der Bezeichner des Kontos, für das die Abrechnung generiert wird. Ordnen Sie die **ID des Abrechnungskontos** zu **customerID** zu, um Ihren Auszahlungstransaktionsbericht mit den Kunden-, Bestellungs- und Verbrauchsberichten zu verbinden. | BillingAccountId |
+|||||
 
 ### <a name="customers-page-filters"></a>Filter auf der Seite „Kunden“
 
