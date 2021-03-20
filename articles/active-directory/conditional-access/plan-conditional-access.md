@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da21359b56b9e5b9d6e971032d06f8bae94efce0
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 13460fad0ed106f5c0590df961ceca54cb04cd7b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682137"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102427180"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Planen einer Bereitstellung für bedingten Zugriff
 
@@ -72,6 +72,7 @@ Die folgenden Ressourcen können nützlich sein, wenn Sie sich über bedingten Z
 * [Was ist bedingter Zugriff?](https://youtu.be/ffMAw2IVO7A)
 * [Wie wird bedingter Zugriff bereitgestellt?](https://youtu.be/c_izIRNJNuk)
 * [Wie werden die Richtlinien für bedingten Zugriff für Endbenutzer umgesetzt?](https://youtu.be/0_Fze7Zpyvc)
+* [Ein- oder Ausschließen von Benutzern in bzw. aus Richtlinien für den bedingten Zugriff](https://youtu.be/5DsW1hB3Jqs)
 * [Bedingter Zugriff mit Gerätesteuerungen](https://youtu.be/NcONUf-jeS4)
 * [Bedingter Zugriff mit Azure AD MFA](https://youtu.be/Tbc-SU97G-w)
 * [Bedingter Zugriff in Enterprise Mobility + Security](https://youtu.be/A7IrxAH87wc)

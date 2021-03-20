@@ -3,14 +3,18 @@ title: Datenmodell für Azure Backup-Diagnoseereignisse
 description: Dieses Datenmodell bezieht sich auf den ressourcenspezifischen Modus zum Senden von Diagnoseereignissen an Log Analytics (LA).
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 52c5c0694ed59aea20453ae7a2bd3209d76df433
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 0d75af6d2b41aad0b5f821dd1f6409b30f7ca531
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173979"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499593"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Datenmodell für Azure Backup-Diagnoseereignisse
+
+> [!NOTE]
+>
+> Zum Erstellen von benutzerdefinierten Berichtsansichten wird empfohlen, anstelle der unten aufgeführten Rohtabellen die [Systemfunktionen für Azure Monitor-Protokolle](backup-reports-system-functions.md) zu verwenden.
 
 ## <a name="coreazurebackup"></a>CoreAzureBackup
 
@@ -236,7 +240,7 @@ Jedem Datensatz in den obigen Tabellen ist ein **Vorgangsname** zugeordnet. Ein 
 | AddonAzureBackupStorage | Storage | Hiermit wird ein Datensatz dargestellt, der alle Details einer bestimmten Speicherentität enthält (z. B. Speichername, Typ usw.) |
 | AddonAzureBackupStorage | StorageAssociation | Hiermit wird eine Zuordnung zwischen einem Sicherungselement und dem gesamten vom Sicherungselement verbrauchten Cloudspeicher dargestellt. |
 | AddonAzureBackupProtectedInstance | ProtectedInstance | Hiermit wird ein Datensatz dargestellt, der die Anzahl der geschützten Instanzen für jeden Container oder jedes Sicherungselement enthält. Bei der Sicherung virtueller Azure-Computer ist die Anzahl geschützter Instanzen auf Sicherungselementebene verfügbar, für andere Workloads auf Ebene des geschützten Containers. |
-| AddonAzureBackupPolicy | Richtlinie |  Hiermit wird ein Datensatz dargestellt, der alle Details einer Sicherung und Aufbewahrungsrichtlinie enthält (z. B. ID, Name, Aufbewahrungseinstellungen usw.). |
+| AddonAzureBackupPolicy | Policy |  Hiermit wird ein Datensatz dargestellt, der alle Details einer Sicherung und Aufbewahrungsrichtlinie enthält (z. B. ID, Name, Aufbewahrungseinstellungen usw.). |
 | AddonAzureBackupPolicy | PolicyAssociation | Hiermit wird eine Zuordnung zwischen einem Sicherungselement und der darauf angewendeten Sicherungsrichtlinie dargestellt. |   
 
 Häufig müssen Sie Joins zwischen verschiedenen Tabellen sowie unterschiedlichen Datensatzgruppen ausführen, die Teil derselben Tabelle sind (unterscheiden sich durch Vorgangsnamen), um alle für die Analyse erforderlichen Felder zu erhalten. Informationen zu den ersten Schritten finden Sie in den [Beispielabfragen](./backup-azure-monitoring-use-azuremonitor.md#sample-kusto-queries). 

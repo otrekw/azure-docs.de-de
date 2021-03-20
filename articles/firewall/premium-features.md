@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 03/08/2021
 ms.author: victorh
-ms.openlocfilehash: ff5c6961e64deddc8e52dc92a7c34b5b369a44ed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a3f72d235d6c52ce91ae351c2606ee6cf4285159
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715563"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453426"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Features der Azure Firewall Premium-Vorschau
 
@@ -39,9 +39,8 @@ Die Vorschauversion von Azure Firewall Premium umfasst die folgenden Features:
 - **URL-Filterung** – Erweitert die FQDN-Filterfunktion von Azure Firewall, um eine gesamte URL zu berücksichtigen. Beispiel: `www.contoso.com/a/c` anstelle von `www.contoso.com`.
 - **Webkategorien** – Administratoren können den Benutzerzugriff auf Websitekategorien wie Gaming- oder Social Media-Websites zulassen oder verweigern.
 
-## <a name="features"></a>Features
 
-### <a name="tls-inspection"></a>TLS-Überprüfung
+## <a name="tls-inspection"></a>TLS-Überprüfung
 
 Azure Firewall Premium terminiert ausgehende und Ost-West-TLS-Verbindungen. Die eingehende TLS-Inspektion wird mit [Azure Application Gateway](../web-application-firewall/ag/ag-overview.md) unterstützt und ermöglicht eine End-to-End-Verschlüsselung. Azure Firewall übernimmt die erforderlichen Mehrwertsicherheitsfunktionen und verschlüsselt den Datenverkehr erneut, der an das ursprüngliche Ziel gesendet wird.
 
@@ -50,23 +49,30 @@ Azure Firewall Premium terminiert ausgehende und Ost-West-TLS-Verbindungen. Die 
 
 Weitere Informationen zu den Anforderungen für das Zertifikat von Zwischenzertifizierungsstellen für die Vorschauversion von Azure Firewall Premium finden Sie unter [Zertifikate der Vorschauversion von Azure Firewall Premium](premium-certificates.md).
 
-### <a name="idps"></a>IDPS
+## <a name="idps"></a>IDPS
 
 Ein System zur Erkennung und Verhinderung von Eindringversuchen in Netzwerke (IDPS) ermöglicht es Ihnen, Ihr Netzwerk auf schädliche Aktivitäten zu überwachen, Informationen über diese Aktivitäten zu protokollieren, sie zu melden und optional zu versuchen, sie zu blockieren. 
 
 Die Vorschauversion von Azure Firewall Premium bietet signaturbasiertes IDPS, um eine schnelle Erkennung von Angriffen zu ermöglichen, indem nach bestimmten Mustern gesucht wird, z. B. nach Bytesequenzen im Netzwerkdatenverkehr oder nach bekannten schädlichen Anweisungssequenzen, die von Malware verwendet werden. Die IDPS-Signaturen werden vollständig verwaltet und fortlaufend aktualisiert.
 
+Die Signaturen/Regelsätze in Azure Firewall bieten Folgendes:
+- Schwerpunkt auf der Erstellung von Fingerabdrücken von tatsächlicher Schadsoftware, Command-and-Control, Exploitkits und schädlichen Aktivitäten in der Praxis, die herkömmliche Präventionsmethoden übersehen
+- Über 35.000 Regeln in mehr als 50 Kategorien
+    - Zu diesen Kategorien gehören unter anderem Schadsoftware, Command-and-Control, DoS-Angriffe, Botnets, Informationsereignisse, Exploits, Sicherheitsrisiken, SCADA-Netzwerkprotokolle und Exploitkitaktivitäten.
+- Jeden Tag werden zwischen 20 und mehr als 40 neue Regeln veröffentlicht.
+- Niedrige False-Positive-Bewertung dank Verwendung einer modernen Sandbox für Schadsoftware und einer globalen Feedbackschleife für das Sensornetzwerk
+
 Mit IDPS können Sie Angriffe auf alle Ports und Protokolle für nicht verschlüsselten Datenverkehr erkennen. Wenn jedoch HTTPS-Datenverkehr überprüft werden muss, kann Azure Firewall seine TLS-Inspektionsfunktion nutzen, um den Datenverkehr zu entschlüsseln und schädliche Aktivitäten besser zu erkennen.  
 
-Mit der IDPS-Umgehungsliste können Sie den Datenverkehr zu den in der Umgehungsliste angegebenen IP-Adressen, Bereichen und Subnetzen nicht filtern.  
+Mit der IDPS-Umgehungsliste können Sie den Datenverkehr zu den in der Umgehungsliste angegebenen IP-Adressen, Bereichen und Subnetzen nicht filtern. 
 
-### <a name="url-filtering"></a>URL-Filterung
+## <a name="url-filtering"></a>URL-Filterung
 
 Die URL-Filterung erweitert die FQDN-Filterfunktion von Azure Firewall, um eine gesamte URL zu berücksichtigen. Beispiel: `www.contoso.com/a/c` anstelle von `www.contoso.com`.  
 
 Die URL-Filterung kann sowohl auf HTTP- als auch auf HTTPS-Datenverkehr angewendet werden. Wenn der HTTPS-Datenverkehr überprüft wird, kann die Vorschauversion von Azure Firewall Premium seine TLS-Inspektionsfunktion nutzen, um den Datenverkehr zu entschlüsseln und die Ziel-URL zu extrahieren, um zu überprüfen, ob der Zugriff gestattet ist. Die TLS-Inspektion erfordert eine Aktivierung auf der Anwendungsregelebene. Sobald diese Funktion aktiviert ist, können Sie URLs für die Filterung mit HTTPS verwenden. 
 
-### <a name="web-categories"></a>Webkategorien
+## <a name="web-categories"></a>Webkategorien
 
 Mithilfe von Webkategorien können Administratoren den Benutzerzugriff auf Websitekategorien, z. B. Glücksspiel- oder Social Media-Websites, zulassen oder verweigern. Webkategorien sind auch in Azure Firewall Standard enthalten, aber in der Vorschauversion von Azure Firewall Premium sind sie noch weiter optimiert. Im Gegensatz zu den Funktionen für Webkategorien in der Standard-SKU, bei denen der Abgleich der Kategorie anhand des FQDN erfolgt, werden die Kategorien bei der Premium-SKU anhand der gesamten URL abgeglichen (sowohl HTTP- als auch HTTPS-Datenverkehr). 
 
@@ -78,15 +84,15 @@ Wenn Azure Firewall z. B. eine HTTPS-Anforderung für `www.google.com/news` abf
 
 Die Kategorien werden basierend auf dem Schweregrad in **Haftung**, **Hohe Bandbreite**, **Geschäftliche Nutzung**, **Produktivitätsverlust**, **Allgemeines Surfen** und **Nicht kategorisiert** unterteilt.
 
-#### <a name="category-exceptions"></a>Kategorieausnahmen
+### <a name="category-exceptions"></a>Kategorieausnahmen
 
 Sie können Ausnahmen für Ihre Webkategorisierungsregeln erstellen. Erstellen Sie innerhalb der Regelsammlungsgruppe eine separate Sammlung mit Zulassungs- oder Verweigerungsregeln mit einer höheren Priorität. Sie können beispielsweise eine Regelsammlung konfigurieren, die `www.linkedin.com` mit Priorität 100 zulässt, und eine Regelsammlung, die **Soziale Netzwerke** mit der Priorität 200 verweigert. Dadurch wird eine Ausnahme für die vordefinierte Webkategorie **Soziale Netzwerke** erstellt.
 
-#### <a name="categorization-change"></a>Kategorisierungsänderung
+### <a name="categorization-change"></a>Kategorisierungsänderung
 
 In folgenden Fällen können Sie eine Kategorisierungsänderung anfordern:
 
- - Wenn Sie glauben, dass sich ein FQDN oder eine URL in einer anderen Kategorie befinden sollte 
+ - Wenn sich ein FQDN oder eine URL in einer anderen Kategorie befinden sollte 
  
 oder 
 

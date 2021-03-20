@@ -1,6 +1,6 @@
 ---
-title: 'Bereitstellen eines Clouddiensts (erweiterter Support): SDK'
-description: Bereitstellen eines Clouddiensts (erweiterter Support) mithilfe des Azure SDK
+title: Bereitstellen von Cloud Services (erweiterter Support) – SDK
+description: Bereitstellen von Cloud Services (erweiterter Support) mithilfe des Azure SDK
 ms.topic: tutorial
 ms.service: cloud-services-extended-support
 author: gachandw
@@ -8,16 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cf8d2696732c2947ce86b9509720898fd63c1e16
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: b63f42ccc0a9d8d138e38a262db528fd36ea701a
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98886969"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123036"
 ---
-# <a name="deploy-a-cloud-services-extended-support-using-sdk"></a>Bereitstellen einer Instanz von Cloud Services (erweiterter Support) per SDK
+# <a name="deploy-cloud-services-extended-support-by-using-the-azure-sdk"></a>Bereitstellen von Cloud Services (erweiterter Support) mithilfe des Azure SDK
 
-In diesem Artikel erfahren Sie, wie Sie das [Azure SDK](https://azure.microsoft.com/downloads/) verwenden, um Cloud Services (erweiterter Support) mit mehreren Rollen („WebRole“ und „WorkerRole“) und mit der Remotedesktoperweiterung bereitzustellen. 
+In diesem Artikel erfahren Sie, wie Sie das [Azure SDK](https://azure.microsoft.com/downloads/) verwenden, um eine Instanz von Cloud Services (erweiterter Support) mit mehreren Rollen (Webrolle und Workerrolle) sowie mit der Remotedesktoperweiterung bereitzustellen. Cloud Services (erweiterter Support) ist ein Bereitstellungsmodell von Azure Cloud Services, das auf dem Azure Resource Manager basiert.
 
 > [!IMPORTANT]
 > Cloud Services (erweiterter Support) befindet sich derzeit in der Public Preview-Phase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -26,7 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie das [Azure SDK](https://azure.microsoft
 
 Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequisite.md) für Cloud Services (erweiterter Support), und erstellen Sie die entsprechenden Ressourcen.
 
-## <a name="deploy-a-cloud-services-extended-support"></a>Bereitstellen einer Instanz von Cloud Services (erweiterter Support)
+## <a name="deploy-cloud-services-extended-support"></a>Bereitstellen von Cloud Services (erweiterter Support)
 1. Installieren Sie das [NuGet-Paket für das Azure Compute SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview), und initialisieren Sie den Client mit einem Standardauthentifizierungsmechanismus.
 
     ```csharp
@@ -73,7 +73,7 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
     resourceGroup = await resourceGroups.CreateOrUpdateAsync(resourceGroupName, resourceGroup);
     ```
 
-3. Erstellen Sie ein Speicherkonto und einen Container zum Speichern der Clouddienstpaket-Datei (.cspkg) und der Dienstkonfigurationsdatei (.cscfg). Installieren Sie das [NuGet-Paket für Azure Storage](https://www.nuget.org/packages/Azure.Storage.Common/). Bei Verwendung eines vorhandenen Speicherkontos ist dieser Schritt optional. Der Name des Speicherkontos muss eindeutig sein.
+3. Erstellen Sie ein Speicherkonto und einen Container zum Speichern der Dienstpaketdatei (.cspkg) und der Dienstkonfigurationsdatei (.cscfg). Installieren Sie das [NuGet-Paket für Azure Storage](https://www.nuget.org/packages/Azure.Storage.Common/). Bei Verwendung eines vorhandenen Speicherkontos ist dieser Schritt optional. Der Name des Speicherkontos muss eindeutig sein.
 
     ```csharp
     string storageAccountName = “ContosoSAS”
@@ -109,7 +109,7 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
     sasConstraints.Permissions = SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Write;
     ```
 
-4. Laden Sie die Clouddienstpaket-Datei (.cspkg) in das Speicherkonto hoch. Bei der Paket-URL kann es sich um einen SAS-URI (Shared Access Signature) aus einem beliebigen Speicherkonto handeln.
+4. Laden Sie die Dienstpaketdatei (.cspkg) in das Speicherkonto hoch. Bei der Paket-URL kann es sich um einen SAS-URI (Shared Access Signature) aus einem beliebigen Speicherkonto handeln.
 
     ```csharp
     CloudBlockBlob cspkgblockBlob = container.GetBlockBlobReference(“ContosoApp.cspkg”);
@@ -122,7 +122,7 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
     string cspkgSASUrl = cspkgblockBlob.Uri + cspkgsasContainerToken;
     ```
 
-5. Laden Sie Ihre Clouddienstkonfiguration (.cscfg) in das Speicherkonto hoch. Die Dienstkonfiguration kann entweder als Zeichenfolge im XML-Format oder im URL-Format angegeben werden.
+5. Laden Sie Ihre Dienstkonfigurationsdatei (.cscfg) in das Speicherkonto hoch. Geben Sie die Dienstkonfiguration im Zeichenfolgen-XML- oder URL-Format an.
 
     ```csharp
     CloudBlockBlob cscfgblockBlob = container.GetBlockBlobReference(“ContosoApp.cscfg”);
@@ -171,7 +171,7 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
     PublicIPAddress publicIpAddress = m_NrpClient.PublicIPAddresses.CreateOrUpdate(resourceGroupName, publicIPAddressName, publicIPAddressParams);
     ```
 
-8. Erstellen Sie das Netzwerkprofilobjekt, und ordnen Sie die öffentliche IP-Adresse dem Front-End des durch die Plattform erstellten Lastenausgleichs zu.
+8. Erstellen Sie ein Netzwerkprofilobjekt, und ordnen Sie die öffentliche IP-Adresse dem Front-End des durch die Plattform erstellten Lastenausgleichs zu.
 
     ```csharp
     LoadBalancerFrontendIPConfiguration feipConfiguration = new LoadBalancerFrontendIPConfiguration() 
@@ -206,32 +206,32 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
     
     ```
 
-9. Erstellen einer Key Vault-Instanz Diese Key Vault-Instanz wird zum Speichern von Zertifikaten verwendet, die den Rollen des Clouddiensts (erweiterter Support) zugeordnet sind. Die Key Vault-Instanz muss in der gleichen Region und im gleichen Abonnement erstellt werden wie der Clouddienst und einen eindeutigen Namen besitzen. Weitere Informationen finden Sie unter [Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)](certificates-and-key-vault.md).
+9. Erstellen eines Schlüsseltresors Dieser Schlüsseltresor wird zum Speichern von Zertifikaten verwendet, die den Rollen von Cloud Services (erweiterter Support) zugeordnet sind. Der Schlüsseltresor muss sich in der gleichen Region und im gleichen Abonnement befinden wie die Instanz von Cloud Services (erweiterter Support) und einen eindeutigen Namen besitzen. Weitere Informationen finden Sie unter [Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)](certificates-and-key-vault.md).
 
     ```powershell
     New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosoOrg” -Location “East US”
     ```
 
-10. Aktualisieren Sie die Key Vault-Zugriffsrichtlinie, und erteilen Sie Ihrem Benutzerkonto Zertifikatberechtigungen.
+10. Aktualisieren Sie die Zugriffsrichtlinie des Schlüsseltresors, und erteilen Sie Ihrem Benutzerkonto Zertifikatberechtigungen.
 
     ```powershell
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosoOrg'      -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete
     ```
 
-    Alternativ können Sie die Zugriffsrichtlinie per Objekt-ID festlegen. (Diese ID kann durch Ausführen von „Get-AzADUser“ abgerufen werden.)
+    Alternativ können Sie die Zugriffsrichtlinie über die Objekt-ID festlegen (die Objekt-ID kann mithilfe von `Get-AzADUser` abgerufen werden).
 
     ```powershell
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosOrg' -     ObjectId 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' -PermissionsToCertificates          create,get,list,delete
     ```
 
-11. In diesem Beispiel fügen wir einer Key Vault-Instanz ein selbstsigniertes Zertifikat hinzu. Der Zertifikatfingerabdruck muss in der Clouddienst-Konfigurationsdatei (.cscfg) für die Bereitstellung in Clouddienstrollen hinzugefügt werden.
+11. In diesem Beispiel fügen wir einem Schlüsseltresor ein selbstsigniertes Zertifikat hinzu. Der Zertifikatfingerabdruck muss in der Dienstkonfigurationsdatei (.cscfg) zur Bereitstellung für Rollen von Cloud Services (erweiterter Support) hinzugefügt werden.
 
     ```powershell
     $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -       SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal 
     Add-AzKeyVaultCertificate -VaultName "ContosKeyVault" -Name "ContosCert" -      CertificatePolicy $Policy
     ```
 
-12. Erstellen Sie ein Betriebssystemprofilobjekt. Das Betriebssystemprofil gibt die Zertifikate an, die Clouddienstrollen zugeordnet sind. Hierbei handelt es sich um das Zertifikat, das im vorherigen Schritt erstellt wurde.
+12. Erstellen Sie ein Betriebssystemprofilobjekt. Im Betriebssystemprofil sind die Zertifikate angegeben, die Rollen von Cloud Services (erweiterter Support) zugeordnet sind. In diesem Fall ist es das Zertifikat, das im vorherigen Schritt erstellt wurde.
 
     ```csharp
     CloudServiceOsProfile cloudServiceOsProfile = 
@@ -247,7 +247,9 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
            };
     ```
 
-13. Erstellen Sie ein Rollenprofilobjekt. Das Rollenprofil definiert SKU-spezifische Eigenschaften einer Rolle wie Name, Kapazität und Ebene. In diesem Beispiel wurden zwei Rollen definiert: „frontendRole“ und „backendRole“. Die Rollenprofilinformationen müssen der Rollenkonfiguration entsprechen, die in der Konfigurationsdatei (.cscfg) und in der Dienstdefinitionsdatei (.csdef) definiert ist.
+13. Erstellen Sie ein Rollenprofilobjekt. Ein Rollenprofil definiert rollenspezifische Eigenschaften für eine SKU wie Name, Kapazität und Ebene. 
+
+    In diesem Beispiel werden zwei Rollen definiert: „ContosoFrontend“ und „ContosoBackend“. Die Rollenprofilinformationen müssen der Rollenkonfiguration entsprechen, die in der Dienstkonfigurationsdatei (.cscfg) und in der Dienstdefinitionsdatei (.csdef) definiert ist.
 
     ```csharp
     CloudServiceRoleProfile cloudServiceRoleProfile = new CloudServiceRoleProfile()
@@ -281,7 +283,7 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
                     }
     ```
 
-14. Optional: Erstellen Sie ein Erweiterungsprofilobjekt, das Sie Ihrem Clouddienst hinzufügen möchten. In diesem Beispiel wird die RDP-Erweiterung hinzugefügt.
+14. Optional: Erstellen Sie ein Erweiterungsprofilobjekt, das Sie Ihrer Instanz von Cloud Services (erweiterter Support) hinzufügen möchten. In diesem Beispiel wird eine RDP-Erweiterung hinzugefügt.
 
     ```csharp
     string rdpExtensionPublicConfig = "<PublicConfig>" +
@@ -313,7 +315,7 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
         };
     ```
 
-15. Erstellen Sie die Clouddienstbereitstellung.
+15. Erstellen Sie die Bereitstellung der Instanz von Cloud Services (erweiterter Support).
 
     ```csharp
     CloudService cloudService = new CloudService
@@ -322,7 +324,7 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
                 {
                     RoleProfile = cloudServiceRoleProfile
                     Configuration = < Add Cscfg xml content here>,
-                    // ConfigurationUrl = <Add you configuration URL here>,
+                    // ConfigurationUrl = <Add your configuration URL here>,
                     PackageUrl = <Add cspkg SAS url here>,
                     ExtensionProfile = cloudServiceExtensionProfile,
                     OsProfile= cloudServiceOsProfile,
@@ -337,5 +339,5 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Sehen Sie sich die [häufig gestellten Fragen](faq.md) zu Cloud Services (erweiterter Support) an.
-- Stellen Sie einen Clouddienst (erweiterter Support) über das [Azure-Portal](deploy-portal.md), per [PowerShell](deploy-powershell.md), per [Vorlage](deploy-template.md) oder mithilfe von [Visual Studio](deploy-visual-studio.md) bereit.
+- Stellen Sie eine Instanz von Cloud Services (erweiterter Support) über das [Azure-Portal](deploy-portal.md), mit [PowerShell](deploy-powershell.md), über eine [Vorlage](deploy-template.md) oder mithilfe von [Visual Studio](deploy-visual-studio.md) bereit.
 - Besuchen Sie das [Beispielrepository zu Cloud Services (erweiterter Support)](https://github.com/Azure-Samples/cloud-services-extended-support).

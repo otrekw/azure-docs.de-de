@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Azure Defender für SQL
-description: Erfahren Sie, wie Sie den optionalen Plan „Azure Defender für SQL“ in Azure Security Center verwenden.
+title: Einrichten von Azure Defender für SQL
+description: Erfahren Sie, wie Sie den optionalen Plan „Azure Defender für SQL“ in Azure Security Center aktivieren.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: 96af34b5b68fca5ab8061c8c99f03bee094dc175
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b82f0ca0624fcbd64f1c23f87f8f21f96d8e4d4c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590380"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100575"
 ---
-# <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender für SQL-Server auf Computern 
+# <a name="enable-azure-defender-for-sql-servers-on-machines"></a>Aktivieren von „Azure Defender für SQL Server-Instanzen auf Computern“ 
 
 Dieser Azure Defender-Plan erkennt anomale Aktivitäten, die auf ungewöhnliche und möglicherweise schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese zu missbrauchen.
 
@@ -31,7 +31,7 @@ Es werden Warnungen angezeigt, wenn verdächtige Datenbankaktivitäten, potenzie
 |Aspekt|Details|
 |----|:----|
 |Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
-|Preise:|**Azure Defender für SQL-Server auf Computern** wird gemäß den Angaben in der [Preisübersicht](security-center-pricing.md) abgerechnet.|
+|Preise:|**Azure Defender für SQL Server-Instanzen auf Computern** wird gemäß den Angaben unter [Security Center – Preise](https://azure.microsoft.com/pricing/details/security-center/) abgerechnet.|
 |Geschützte SQL-Versionen:|Azure SQL Server (alle vom Microsoft-Support abgedeckten Versionen)|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nein](./media/icons/no-icon.png) China Gov/andere Gov-Clouds|
 |||
@@ -40,11 +40,10 @@ Es werden Warnungen angezeigt, wenn verdächtige Datenbankaktivitäten, potenzie
 
 So aktivieren Sie diesen Plan
 
-* Bereitstellen des Log Analytics-Agents auf dem Host Ihrer SQL Server-Instanz. Dies ermöglicht die Verbindung mit Azure.
+[Schritt 1 – Bereitstellen des Log Analytics-Agents auf dem Host Ihrer SQL Server-Instanz:](#step-1-provision-the-log-analytics-agent-on-your-sql-servers-host)
 
-* Aktivieren des optionalen Plans auf der Security Center-Seite „Preise und Einstellungen“.
+[Schritt 2 – Aktivieren des optionalen Plans auf der Security Center-Seite „Preise und Einstellungen“:](#step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page)
 
-Diese beiden Schritte werden nachfolgend beschrieben.
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>Schritt 1: Bereitstellen des Log Analytics-Agents auf dem Host Ihrer SQL Server-Instanz:
 
@@ -81,31 +80,6 @@ Diese beiden Schritte werden nachfolgend beschrieben.
 1. Konfigurieren Sie optional eine E-Mail-Benachrichtigung für Sicherheitswarnungen. 
     Sie können eine Liste von Empfängern festlegen, die eine E-Mail-Benachrichtigung erhalten sollen, wenn Security Center-Warnungen generiert werden. Die E-Mail enthält einen direkten Link zur Warnung in Azure Security Center mit allen relevanten Details. Weitere Informationen finden Sie unter [Einrichten von E-Mail-Benachrichtigungen für Sicherheitswarnungen](security-center-provide-security-contact-details.md).
 
-
-
-## <a name="explore-vulnerability-assessment-reports"></a>Untersuchen der Berichte zur Sicherheitsrisikobewertung
-
-Der Sicherheitsrisikobewertungs-Dienst scannt Ihre Datenbanken einmal pro Woche. Die Scans werden an dem Tag der Woche ausgeführt, an dem Sie den Dienst aktiviert haben.
-
-Das Sicherheitsrisikobewertungs-Dashboard bietet einen Überblick über Ihre Bewertungsergebnisse für alle Ihre Datenbanken, zusammen mit einer Zusammenfassung der fehlerfreien und fehlerhaften Datenbanken sowie einer Gesamtzusammenfassung der fehlgeschlagenen Prüfungen nach Risikoverteilung.
-
-Sie können die Ergebnisse der Sicherheitsrisikobewertung direkt aus Security Center anzeigen.
-
-1. Öffnen Sie in der Security Center-Seitenleiste die Seite **Empfehlungen**, und wählen Sie die Empfehlung **Sicherheitsrisiken für SQL Server-Instanzen auf Ihren Computern müssen entschärft werden (Vorschau)** aus. Weitere Informationen finden Sie unter [Security Center-Empfehlungen](security-center-recommendations.md). 
-
-    :::image type="content" source="./media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png" alt-text="Ergebnisse der Sicherheitsrisikobewertung auf Ihren SQL-Servern auf Computern müssen beseitigt werden. (Vorschau)":::
-
-    Die detaillierte Ansicht für diese Empfehlung wird angezeigt.
-
-    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="Ausführliche Ansicht der Empfehlung":::
-
-1. Für weitere Details führen Sie einen Drilldown aus:
-
-    * Wählen Sie den gewünschten Server aus, um eine Übersicht über gescannte Ressourcen (Datenbanken) und die Liste der getesteten Sicherheitsüberprüfungen zu erhalten.
-
-    * Wählen Sie die gewünschte Datenbank aus, um eine Übersicht über die Sicherheitsrisiken zu erhalten, die nach einer bestimmten SQL-Datenbank gruppiert sind.
-
-    Die Sicherheitsüberprüfungen werden in jeder Ansicht nach **Schweregrad** sortiert. Klicken Sie auf eine bestimmte Sicherheitsüberprüfung, um einen Detailbereich mit einer **Beschreibung** anzuzeigen sowie **Empfehlungen zur Behebung von Problemen** und andere verwandte Informationen wie zur **Auswirkung** oder **Benchmark** zu erhalten.
 
 ## <a name="azure-defender-for-sql-alerts"></a>Azure Defender für SQL – Warnungen
 Warnungen werden bei ungewöhnlichen und potenziell schädlichen Zugriffsversuchen oder Exploitvorgängen für SQL-Computer generiert. Diese Ereignisse können Warnungen auslösen, die auf der [Warnungsreferenzseite](alerts-reference.md#alerts-sql-db-and-warehouse) angezeigt werden.

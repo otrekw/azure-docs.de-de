@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1ad9cc3d6d07c8d744ec667e2fffb035848121b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9104fb4598eb62ed96d0b21734053fa118b5237
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203247"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120281"
 ---
 # <a name="stringcollection-claims-transformations"></a>Transformationen von StringCollection-Ansprüchen
 
@@ -31,7 +31,7 @@ Fügt einen Zeichenfolgenanspruch zu einem neuen stringCollection-Anspruch mit e
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | item | Zeichenfolge | Der Anspruchstyp, der dem Ausgabeanspruch hinzugefügt werden soll. |
-| InputClaim | collection | stringCollection | [Optional] Wenn dieses Element angegeben wird, werden die Elemente aus dieser Sammlung von der Anspruchstransformation kopiert, und das Element wird am Ende des Ausgabensammlungsanspruchs hinzugefügt. |
+| InputClaim | collection | stringCollection | Die Zeichenfolgensammlung, die dem Ausgabeanspruch hinzugefügt werden soll. Wenn die Sammlung Elemente enthält, werden die Elemente von der Anspruchstransformation kopiert, und das Element wird am Ende des Ausgabensammlungsanspruchs hinzugefügt. |
 | OutputClaim | collection | stringCollection | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation ausgelöst wurde, und zwar mit dem Wert, der im Eingabeparameter angegeben wurde. |
 
 Verwenden Sie diese Anspruchstransformation, um eine Zeichenfolge zu einer neuen oder einer vorhandenen Zeichenfolgensammlung hinzuzufügen. Sie wird häufig in einem technischen **AAD-UserWriteUsingAlternativeSecurityId**-Profil verwendet. Bevor ein Social Media-Konto erstellt wird, liest die **CreateOtherMailsFromEmail**-Anspruchstransformation den Anspruchstyp und fügt den Wert zum Anspruchstyp **otherMails** hinzu.
@@ -64,7 +64,7 @@ Fügt einen Zeichenfolgenparameter zu einem neuen stringCollection-Anspruch mit 
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | collection | stringCollection | [Optional] Wenn dieses Element angegeben wird, werden die Elemente aus dieser Sammlung von der Anspruchstransformation kopiert, und das Element wird am Ende des Ausgabensammlungsanspruchs hinzugefügt. |
+| InputClaim | collection | stringCollection | Die Zeichenfolgensammlung, die dem Ausgabeanspruch hinzugefügt werden soll. Wenn die Sammlung Elemente enthält, werden die Elemente von der Anspruchstransformation kopiert, und das Element wird am Ende des Ausgabensammlungsanspruchs hinzugefügt. |
 | InputParameter | item | Zeichenfolge | Der Wert, der dem Ausgabeanspruch hinzugefügt werden soll. |
 | OutputClaim | collection | stringCollection | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation ausgelöst wurde. Es handelt sich um den Wert, der im Eingabeparameter angegeben ist. |
 
@@ -125,7 +125,7 @@ Im folgenden Beispiel wird der Anspruch **otherMails** gelesen, und das erste El
 
 ## <a name="stringcollectioncontains"></a>StringCollectionContains
 
-Überprüft, ob ein StringCollection-Anspruchstyp ein Element enthält
+Überprüft, ob ein StringCollection-Anspruchstyp ein Element enthält.
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
