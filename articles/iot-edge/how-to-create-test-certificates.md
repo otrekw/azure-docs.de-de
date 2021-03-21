@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c5af77da0ed2c579a478c8ebaaa924882d9a15c6
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: d82f1cac6e437663fa0b1c3e21c65036f3c1d4eb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927701"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046039"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Erstellen von Demozertifikaten zum Testen der Features von IoT Edge-Geräten
 
@@ -32,7 +32,7 @@ Führen Sie die folgenden Schritte aus, um Demozertifikate zum Testen Ihres IoT 
 1. [Richten Sie Skripts](#set-up-scripts) für die Generierung von Zertifikaten auf Ihrem Gerät ein.
 2. [Erstellen Sie das Zertifikat der Stammzertifizierungsstelle](#create-root-ca-certificate), mit dem Sie alle anderen Zertifikate für das Szenario signieren.
 3. Generieren Sie die Zertifikate, die Sie für das Szenario benötigen, das Sie testen möchten:
-   * [Erstellen Sie IoT Edge-Geräteidentitätszertifikate](#create-iot-edge-device-identity-certificates) für automatische Bereitstellung mit dem IoT Hub Device Provisioning Service.
+   * [Erstellen Sie IoT Edge-Geräteidentitätszertifikate](#create-iot-edge-device-identity-certificates) für die Bereitstellung von Geräten mit X.509-Zertifikatauthentifizierung – entweder manuell oder mit dem IoT Hub Device-Gerätebereitstellungsdienst (IoT Hub Device Provisioning Service, DPS).
    * [Erstellen Sie IoT Edge-Geräte-Zertifizierungsstellenzertifikate](#create-iot-edge-device-ca-certificates) für IoT Edge-Geräte in Gatewayszenarien.
    * [Erstellen Sie Zertifikate für nachgeschaltete Geräte](#create-downstream-device-certificates) zum Authentifizieren von nachgeschalteten Geräten in einem Gatewayszenario.
 
@@ -183,9 +183,9 @@ Bevor Sie mit den Schritten in diesem Abschnitt fortfahren, führen Sie die Schr
 
 ## <a name="create-iot-edge-device-identity-certificates"></a>Erstellen von Zertifizierungsstellenzertifikaten für IoT Edge-Geräte
 
-Geräteidentitätszertifikate werden zum Bereitstellen von IoT Edge-Geräten über den DPS (Azure IoT Hub Device Provisioning Service) verwendet.
+Geräteidentitätszertifikate werden zum Bereitstellen von IoT Edge-Geräten verwendet, wenn Sie X.509-Zertifikatauthentifizierung wählen. Diese Zertifikate funktionieren unabhängig davon, ob Sie manuelle Bereitstellung oder automatische Bereitstellung über den Azure IoT Hub Device Provisioning Service (DPS) verwenden.
 
-Geräteidentitätszertifikate werden im Abschnitt **Bereitstellung** der config.yaml-Datei auf dem IoT Edge-Gerät gespeichert.
+Geräteidentitätszertifikate werden auf dem IoT Edge-Gerät im Abschnitt **Bereitstellung** der Konfigurationsdatei gespeichert.
 
 Bevor Sie mit den Schritten in diesem Abschnitt fortfahren, befolgen Sie die Schritte in den Abschnitten [Einrichten von Skripts](#set-up-scripts) und [Erstellen des Stammzertifizierungsstellen-Zertifikats](#create-root-ca-certificate).
 
@@ -223,11 +223,19 @@ Das Skript erstellt verschiedene Zertifikats- und Schlüsseldateien, u. a. drei
 
 ## <a name="create-iot-edge-device-ca-certificates"></a>Erstellen von Zertifizierungsstellenzertifikaten für IoT Edge-Geräte
 
-Jedes IoT Edge-Gerät, das in die Produktion versetzt werden soll, benötigt ein Zertifizierungsstellenzertifikat für das Gerät, auf das in der Datei „config.yaml“ verwiesen wird.
+Jedes IoT Edge-Gerät, das in die Produktion übergehen soll, benötigt ein Zertifikat der Gerätezertifizierungsstelle, auf das in der Konfigurationsdatei verwiesen wird.
 Das Zertifizierungsstellenzertifikat ist für das Erstellen von Zertifikaten für Module zuständig, die auf dem Gerät ausgeführt werden.
 Es ist auch für Gatewayszenarien erforderlich, weil das IoT Edge-Gerät damit seine Identität gegenüber Downstreamgeräten nachweist.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Zertifizierungsstellenzertifikate für Geräte werden im Abschnitt **Zertifikate** der config.yaml-Datei auf dem IoT Edge-Gerät gespeichert.
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Zertifikate der Gerätezertifizierungsstelle werden auf dem IoT Edge-Gerät im Abschnitt **Zertifikate** der Datei „config.toml“-gespeichert.
+:::moniker-end
 
 Bevor Sie mit den Schritten in diesem Abschnitt fortfahren, befolgen Sie die Schritte in den Abschnitten [Einrichten von Skripts](#set-up-scripts) und [Erstellen des Stammzertifizierungsstellen-Zertifikats](#create-root-ca-certificate).
 
@@ -241,12 +249,12 @@ Bevor Sie mit den Schritten in diesem Abschnitt fortfahren, befolgen Sie die Sch
    New-CACertsEdgeDevice "<CA cert name>"
    ```
 
-   Mit diesem Befehl werden mehrere Zertifikat- und Schlüsseldateien erstellt. Das folgende Paar aus Zertifikat und Schlüssel muss auf ein IoT Edge Gerät kopiert und in der Datei „config.yaml“ referenziert werden:
+   Mit diesem Befehl werden mehrere Zertifikat- und Schlüsseldateien erstellt. Das folgende Paar aus Zertifikat und Schlüssel muss auf ein IoT Edge-Gerät kopiert und in der Konfigurationsdatei darauf verwiesen werden:
 
    * `<WRKDIR>\certs\iot-edge-device-<CA cert name>-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-edge-device-<CA cert name>.key.pem`
 
-Der an den Befehl **New-CACertsEdgeDevice** übergebene Name sollte nicht mit dem Parameter „hostname“ in der Datei „config.yaml“ oder der ID des Geräts in IoT Hub identisch sein.
+Der an den Befehl **New-CACertsEdgeDevice** übergebene Name sollte mit dem Parameter „hostname“ in der Konfigurationsdatei oder der ID des Geräts in IoT Hub nicht identisch sein.
 
 ### <a name="linux"></a>Linux
 
@@ -258,12 +266,12 @@ Der an den Befehl **New-CACertsEdgeDevice** übergebene Name sollte nicht mit de
    ./certGen.sh create_edge_device_ca_certificate "<CA cert name>"
    ```
 
-   Mit diesem Skriptbefehl werden mehrere Zertifikat- und Schlüsseldateien erstellt. Das folgende Paar aus Zertifikat und Schlüssel muss auf ein IoT Edge Gerät kopiert und in der Datei „config.yaml“ referenziert werden:
+   Mit diesem Skriptbefehl werden mehrere Zertifikat- und Schlüsseldateien erstellt. Das folgende Paar aus Zertifikat und Schlüssel muss auf ein IoT Edge-Gerät kopiert und in der Konfigurationsdatei darauf verwiesen werden:
 
    * `<WRKDIR>/certs/iot-edge-device-<CA cert name>-full-chain.cert.pem`
    * `<WRKDIR>/private/iot-edge-device-<CA cert name>.key.pem`
 
-Der an den Befehl **create_edge_device_ca_certificate** übergebene Name darf nicht mit dem Parameter für den Hostnamen in der Datei „config.yaml“ oder der ID des Geräts in IoT Hub identisch sein.
+Der an den Befehl **create_edge_device_ca_certificate** übergebene Name sollte mit dem Parameter „hostname“ in der Konfigurationsdatei oder der ID des Geräts in IoT Hub nicht identisch sein.
 
 ## <a name="create-downstream-device-certificates"></a>Erstellen von Zertifikaten für nachgeschaltete Geräte
 

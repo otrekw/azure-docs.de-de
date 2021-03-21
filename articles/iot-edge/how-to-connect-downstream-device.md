@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 35bb17a5cdfcc6aff4a513a594a08283ab1f1305
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 44fe128658b90d2327f17f22b2a33aaa1d4da1fc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437030"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046124"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway
 
@@ -214,7 +214,7 @@ Die Ausgabe dieses Befehls ist möglicherweise lang, einschließlich Information
 
 Wenn bei Ihrem Blattgerät eine zeitweilige Verbindung mit dessen Gatewaygerät besteht, probieren Sie die folgenden Schritte zur Lösung aus.
 
-1. Ist der Hostname des Gateways in der Verbindungszeichenfolge mit dem Hostnamenwert in der IoT Edge-Datei „config.yaml“ auf dem Gatewaygerät identisch?
+1. Ist der Hostname des Gateways in der Verbindungszeichenfolge mit dem Hostnamenwert in der IoT Edge-Konfigurationsdatei auf dem Gatewaygerät identisch?
 2. Kann der Hostname des Gateways in eine IP-Adresse aufgelöst werden? Sie können zeitweilige Verbindungen entweder über DNS oder durch Hinzufügen eines Eintrags in die Hostdatei auf dem Blattgerät lösen.
 3. Sind in Ihrer Firewall Kommunikationsports geöffnet? Auf der Grundlage des verwendeten Protokolls (MQTTS:8883/AMQPS:5671/HTTPS:433) muss Kommunikation zwischen dem nachgeschalteten Gerät und dem transparenten IoT Edge möglich sein.
 
