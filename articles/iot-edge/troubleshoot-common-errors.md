@@ -11,14 +11,16 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a3e646f44978e8897c22d579639efcef0fcd2205
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: cc6d7491d9c38f1ddf4aba2adecad4aaee3c344b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045971"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489561"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Häufig auftretende Probleme und Lösungen für Azure IoT Edge
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 In diesem Artikel finden Sie Schritte zur Behebung häufiger Probleme, die bei der Bereitstellung von IoT Edge-Lösungen auftreten können. Wenn Sie erfahren möchten, wie Sie von Ihrem IoT Edge-Gerät stammende Protokolle und Fehler finden, lesen Sie [Behandeln von Problemen bei Ihrem IoT Edge-Gerät](troubleshoot.md).
 

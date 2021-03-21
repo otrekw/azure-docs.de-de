@@ -8,14 +8,16 @@ ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d46ad8238faa42ca657b18b3997407d91a224537
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 7b3b8078a03ef0e891306f056c604545cde71459
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045920"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489456"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Behandeln von Problemen bei Ihrem IoT Edge-Gerät
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 Wenn in Ihrer Umgebung Probleme bei der Ausführung von Azure IoT Edge auftreten, nutzen Sie diesen Artikel als Leitfaden zur Problembehandlung und Diagnose.
 
@@ -276,7 +278,7 @@ Zum Anzeigen von Nachrichten, die den IoT Edge-Hub durchlaufen, legen Sie die `R
 Die Module edgeHub und edgeAgent enthalten diese Laufzeitprotokoll-Umgebungsvariable, bei der der Standardwert auf `info` festgelegt wurde. Diese Umgebungsvariable kann die folgenden Werte haben:
 
 * fatal
-* error
+* Fehler
 * warning
 * info
 * debug
