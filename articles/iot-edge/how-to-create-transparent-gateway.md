@@ -4,21 +4,23 @@ description: Verwenden eines Azure IoT Edge-Geräts als transparentes Gateway, d
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/15/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9ecb1c50fe99cc93417a37e892049e03585945a5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f7f05fb84ff6cbe320e8f479912bdcdefdc41021
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370426"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201658"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurieren eines IoT Edge-Geräts als transparentes Gateway
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 Dieser Artikel enthält detaillierte Anweisungen zur Konfiguration eines IoT Edge-Geräts, das als transparentes Gateway für andere Geräte zur Kommunikation mit IoT Hub dient. In diesem Artikel wird mit dem Begriff *IoT Edge-Gateway* auf ein IoT Edge-Gerät verwiesen, das als transparentes Gateway konfiguriert wurde. Weitere Informationen finden Sie unter [Verwendung eines IoT Edge-Geräts als Gateway](./iot-edge-as-gateway.md).
 
@@ -26,10 +28,9 @@ Dieser Artikel enthält detaillierte Anweisungen zur Konfiguration eines IoT Edg
 ::: moniker range="iotedge-2018-06"
 
 >[!NOTE]
->Derzeit gilt Folgendes:
+>In IoT Edge, Version 1.1 und älter, kann ein IoT Edge-Gerät einem IoT Edge-Gateway nicht nachgeschaltet werden.
 >
-> * Edge-fähige Geräte können keine Verbindung mit IoT Edge-Gateways herstellen.
-> * Nachgeschaltete Geräte können keinen Dateiupload verwenden.
+>Nachgeschaltete Geräte können keinen Dateiupload verwenden.
 
 ::: moniker-end
 
@@ -37,9 +38,7 @@ Dieser Artikel enthält detaillierte Anweisungen zur Konfiguration eines IoT Edg
 ::: moniker range=">=iotedge-2020-11"
 
 >[!NOTE]
->Derzeit gilt Folgendes:
->
-> * Nachgeschaltete Geräte können keinen Dateiupload verwenden.
+>Nachgeschaltete Geräte können keinen Dateiupload verwenden.
 
 ::: moniker-end
 
@@ -51,7 +50,17 @@ Es gibt drei allgemeine Schritte zum Einrichten einer erfolgreichen Verbindung m
 
 Damit ein Gerät als Gateway fungieren kann, muss es sichere Verbindungen mit nachgeschalteten Geräten herstellen können. Mit Azure IoT Edge können Sie mithilfe der Public Key-Infrastruktur sichere Verbindungen zwischen Geräten einrichten. In diesem Fall lassen wir zu, dass ein nachgeschaltetes Gerät eine Verbindung mit einem IoT Edge-Gerät, das als transparentes Gateway fungiert, herstellt. Um eine angemessene Sicherheit zu gewährleisten, sollte das nachgeschaltete Gerät die Identität des Gatewaygeräts bestätigen. Diese Überprüfung der Identität verhindert, dass Ihre Geräte Verbindungen mit potenziell schädlichen Gateways herstellen.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Ein nachgeschaltetes Gerät kann eine beliebige Anwendung oder Plattform sein, deren Identität mit dem [Azure IoT Hub](../iot-hub/index.yml)-Clouddienst erstellt wurde. Diese Anwendungen verwenden häufig das [Azure IoT-Geräte-SDK](../iot-hub/iot-hub-devguide-sdks.md). Ein nachgeschaltetes Gerät kann sogar eine Anwendung sein, die auf dem IoT Edge-Gatewaygerät selbst ausgeführt wird. Allerdings kann ein IoT Edge-Gerät einem IoT Edge-Gateway nicht nachgeschaltet werden.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Ein nachgeschaltetes Gerät kann eine beliebige Anwendung oder Plattform sein, deren Identität mit dem [Azure IoT Hub](../iot-hub/index.yml)-Clouddienst erstellt wurde. Diese Anwendungen verwenden häufig das [Azure IoT-Geräte-SDK](../iot-hub/iot-hub-devguide-sdks.md). Ein nachgeschaltetes Gerät kann sogar eine Anwendung sein, die auf dem IoT Edge-Gatewaygerät selbst ausgeführt wird.
+:::moniker-end
+<!-- end 1.2 -->
 
 Sie können eine beliebige Zertifikatinfrastruktur erstellen, die die für Ihre Gerät-zu-Gateway-Topologie erforderliche Vertrauensstellung ermöglicht. In diesem Artikel wird von der gleichen Zertifikateinrichtung ausgegangen, die Sie auch zum Aktivieren der [X.509-Zertifizierungsstellenzertifikat](../iot-hub/iot-hub-x509ca-overview.md) in IoT Hub verwenden. Hierbei ist ein X.509-Zertifizierungsstellenzertifikat einem bestimmten IoT-Hub zugeordnet (der Stammzertifizierungsstelle von IoT Hub), und es sind eine Reihe von Zertifikaten, die mit dieser Zertifizierungsstelle signiert werden, sowie eine Zertifizierungsstelle für die IoT Edge-Geräte vorhanden.
 
@@ -64,7 +73,7 @@ In den folgenden Schritten werden Sie durch den Prozess zum Erstellen der Zertif
 
 Ein Linux- oder Windows-Gerät, auf dem IoT Edge installiert ist.
 
-Wenn Sie kein Gerät zur Hand haben, können Sie eines in einem virtuellen Azure-Computer erstellen. Führen Sie die Schritte in [Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät](quickstart-linux.md) zum Erstellen eines IoT Hubs, Erstellen eines virtuellen Computers und Konfigurieren der IoT Edge-Runtime aus. 
+Wenn Sie kein Gerät zur Hand haben, können Sie eines in einem virtuellen Azure-Computer erstellen. Führen Sie die Schritte in [Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät](quickstart-linux.md) zum Erstellen eines IoT Hubs, Erstellen eines virtuellen Computers und Konfigurieren der IoT Edge-Runtime aus.
 
 ## <a name="set-up-the-device-ca-certificate"></a>Einrichten des Zertifikats der Gerätezertifizierungsstelle
 
@@ -72,7 +81,7 @@ Für alle IoT Edge-Gateways muss ein Zertifikat der Gerätezertifizierungsstelle
 
 ![Gatewayzertifikateinrichtung](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
-Das Zertifikat der Stammzertifizierungsstelle und das Zertifikat der Gerätezertifizierungsstelle (mit seinem privaten Schlüssel) müssen auf dem IoT-Edge-Gatewaygerät vorhanden und in der IoT Edge-Datei „config.yaml“ konfiguriert sein. Beachten Sie, dass in diesem Fall *Zertifikat der Stammzertifizierungsstelle* die oberste Zertifizierungsstelle für dieses IoT Edge-Szenario ist. Für das Zertifikat der Stammzertifizierungsstelle des Gatewaygeräts und die nachgeschalteten Geräte müssen Sie ein Rollup auf das gleiche Zertifikat der Stammzertifizierungsstelle ausführen.
+Das Zertifikat der Stammzertifizierungsstelle und das Zertifikat der Gerätezertifizierungsstelle (mit seinem privaten Schlüssel) müssen auf dem IoT-Edge-Gatewaygerät vorhanden und in der IoT Edge-Konfigurationsdatei konfiguriert sein. Beachten Sie, dass in diesem Fall *Zertifikat der Stammzertifizierungsstelle* die oberste Zertifizierungsstelle für dieses IoT Edge-Szenario ist. Für das Zertifikat der Stammzertifizierungsstelle des Gatewaygeräts und die nachgeschalteten Geräte müssen Sie ein Rollup auf das gleiche Zertifikat der Stammzertifizierungsstelle ausführen.
 
 >[!TIP]
 >Der Installationsprozess des Zertifikats der Stammzertifizierungsstelle und des Zertifikats der Gerätezertifizierungsstelle auf einem IoT Edge-Gerät wird auch ausführlicher in [Verwalten von Zertifikaten auf einem IoT Edge-Gerät](how-to-manage-device-certificates.md) erläutert.
@@ -85,7 +94,7 @@ Halten Sie die folgenden Dateien bereit:
 
 In Produktionsszenarios sollten diese Dateien mit ihrer eigenen Zertifizierungsstelle generiert werden. Für Entwicklungs- und Testszenarios können Sie Demozertifikate verwenden.
 
-1. Wenn Sie Demozertifikate verwenden, befolgen Sie die Anleitungen in [Erstellen von Demozertifikaten zum Testen der Features von IoT Edge-Geräten](how-to-create-test-certificates.md) zum Erstellen Ihrer Dateien. Auf dieser Seite müssen Sie die folgenden Schritte ausführen:
+Wenn Sie keine eigene Zertifizierungsstelle haben und Demozertifikate verwenden möchten, folgen Sie den Anleitungen unter [Erstellen von Demozertifikaten zum Testen der Features von IoT Edge-Geräten](how-to-create-test-certificates.md) zum Erstellen Ihrer Dateien. Auf dieser Seite müssen Sie die folgenden Schritte ausführen:
 
    1. Richten Sie zuerst die Skripts zum Erstellen von Zertifikaten auf Ihrem Gerät ein.
    2. Erstellen Sie ein Stammzertifikat der Zertifizierungsstelle. Am Ende dieser Anleitungen verfügen Sie über eine Zertifikatdatei der Stammzertifizierungsstelle:
@@ -94,24 +103,55 @@ In Produktionsszenarios sollten diese Dateien mit ihrer eigenen Zertifizierungss
       * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem` und
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
-2. Wenn Sie die Zertifikate auf einem anderen Computer erstellt haben, kopieren Sie sie auf Ihr IoT Edge-Gerät.
+Wenn Sie die Zertifikate auf einem anderen Computer erstellt haben, kopieren Sie sie auf Ihr IoT Edge-Gerät. Führen Sie dann die nächsten Schritte aus.
 
-3. Öffnen Sie die Konfigurationsdatei des Sicherheitsdaemons auf Ihrem IoT Edge-Gerät.
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+1. Öffnen Sie die Konfigurationsdatei des Sicherheitsdaemons auf Ihrem IoT Edge-Gerät.
+
    * Windows: `C:\ProgramData\iotedge\config.yaml`
    * Linux: `/etc/iotedge/config.yaml`
 
-4. Suchen Sie den Abschnitt **Zertifikateinstellungen** der Datei. Heben Sie die Auskommentierung der vier Zeilen ab **Zertifikate:** auf, und geben Sie die Datei-URIs für Ihre drei Dateien als Werte für die folgenden Eigenschaften an:
+1. Suchen Sie den Abschnitt **Zertifikateinstellungen** der Datei. Heben Sie die Auskommentierung der vier Zeilen ab **Zertifikate:** auf, und geben Sie die Datei-URIs für Ihre drei Dateien als Werte für die folgenden Eigenschaften an:
    * **device_ca_cert**: Zertifikat der Gerätezertifizierungsstelle
    * **device_ca_pk**: Privater Schlüssel der Gerätezertifizierungsstelle
    * **trusted_ca_certs**: Zertifikat der Stammzertifizierungsstelle
 
    Sorgen Sie dafür, dass die Zeile **Zertifikate:** kein führendes Leerzeichen enthält und dass die anderen Zeilen um zwei Leerzeichen eingezogen werden.
 
-5. Speichern und schließen Sie die Datei.
+1. Speichern und schließen Sie die Datei.
 
-6. Starten Sie IoT Edge neu.
+1. Starten Sie IoT Edge neu.
    * Windows: `Restart-Service iotedge`
    * Linux: `sudo systemctl restart iotedge`
+:::moniker-end
+<!-- end 1.1 -->
+
+<!--1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Öffnen Sie auf Ihrem IoT Edge-Gerät die Konfigurationsdatei `/etc/aziot/config.toml`.
+
+   >[!TIP]
+   >Wenn die Konfigurationsdatei auf dem Gerät noch nicht vorhanden ist, verwenden Sie `/etc/aziot/config.toml.edge.template` als Vorlage zum Erstellen einer Datei.
+
+1. Suchen Sie den Parameter `trust_bundle_cert`. Heben Sie die Auskommentierung dieser Zeile auf, und geben Sie den Datei-URI zur Datei mit dem Zertifikat der Stammzertifizierungsstelle auf Ihrem Gerät an.
+
+1. Suchen Sie den Abschnitt `[edge_ca]` (Bereitstellung) der Datei. Heben Sie die Auskommentierung der drei Zeilen in diesem Abschnitt auf, und geben Sie die Datei-URIs zu Ihren Zertifikats- und Schlüsseldateien als Werte für die folgenden Eigenschaften an:
+   * **cert**: Zertifikat der Gerätezertifizierungsstelle
+   * **pk**: privater Schlüssel des Zertifikats der Gerätezertifizierungsstelle
+
+1. Speichern und schließen Sie die Datei.
+
+1. Übernehmen Sie Ihre Änderungen.
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="deploy-edgehub-and-route-messages"></a>Bereitstellen von edgeHub und Weiterleiten von Nachrichten
 
