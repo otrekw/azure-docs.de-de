@@ -11,14 +11,16 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 65710047d5d5d1cc6b835144f7778392fb20b797
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1fc229b04ac317578e9e90686496cd081b279afd
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042265"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489754"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 Wenn Sie Ihre IoT Edge-Lösung aus der Entwicklungsumgebung für die Produktion bereitstellen möchten, achten Sie darauf, dass sie für kontinuierliche Leistung konfiguriert ist.
 
