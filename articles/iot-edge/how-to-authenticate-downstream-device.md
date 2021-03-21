@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13ac18abd0a557d02435c3805e1ab86bcbf1ff84
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d9e3e0f96d235829928c1f7c79864b1dc732f9e4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391982"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046345"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub
 
@@ -35,7 +35,7 @@ Führen Sie die Schritte in [Konfigurieren eines IoT Edge-Geräts als transparen
 
 Wenn Sie die X.509-Authentifizierung verwenden, generieren Sie Zertifikate für Ihr nachgeschaltetes Gerät. Halten Sie dasselbe Zertifikat der Stammzertifizierungsstelle und das Zertifikat zum Generieren des Skripts, das Sie für den Artikel zum transparenten Gateway verwendet haben, für erneute Verwendung zur Verfügung.
 
-Im Artikel wird an mehreren Stellen auf den *Gatewayhostnamen* verwiesen. Der Gatewayhostname wird im **hostname**-Parameter der Datei „config.yaml“ auf dem IoT Edge-Gatewaygerät deklariert. In der Verbindungszeichenfolge des nachgeschalteten Geräts wird darauf verwiesen. Der Gatewayhostname muss in eine IP-Adresse aufgelöst werden können – entweder mithilfe von DNS oder einem Eintrag in der Hostdatei auf dem nachgeschalteten Gerät.
+Im Artikel wird an mehreren Stellen auf den *Gatewayhostnamen* verwiesen. Der Gatewayhostname wird in der Konfigurationsdatei im Parameter **hostname** auf dem IoT Edge-Gatewaygerät deklariert. In der Verbindungszeichenfolge des nachgeschalteten Geräts wird darauf verwiesen. Der Gatewayhostname muss in eine IP-Adresse aufgelöst werden können – entweder mithilfe von DNS oder einem Eintrag in der Hostdatei auf dem nachgeschalteten Gerät.
 
 ## <a name="register-device-with-iot-hub"></a>Registrieren des Geräts bei IoT Hub
 
@@ -192,7 +192,7 @@ Verbindungszeichenfolgen für nachgeschaltete Geräte müssen folgende Komponent
 * Die Authentifizierungsmethode (symmetrischer Schlüssel oder X.509-Zertifikate)
   * Wenn Sie die Authentifizierung mit symmetrischem Schlüssel verwenden, geben Sie den Primär- oder Sekundärschlüssel an: `SharedAccessKey={key}`.
   * Bei Verwendung der Authentifizierung mit X.509-Zertifikat geben Sie ein Flag an: `x509=true`.
-* Das Gatewaygerät, über das das Gerät die Verbindung herstellt. Sie finden den Wert für **hostname** in der Datei „config.yaml“ des IoT Edge-Gatewaygeräts: `GatewayHostName={gateway hostname}`
+* Das Gatewaygerät, über das das Gerät die Verbindung herstellt. Sie finden den Wert für **hostname** in der Konfigurationsdatei des IoT Edge-Gatewaygeräts: `GatewayHostName={gateway hostname}`
 
 Insgesamt sieht eine vollständige Verbindungszeichenfolge wie folgt aus:
 
