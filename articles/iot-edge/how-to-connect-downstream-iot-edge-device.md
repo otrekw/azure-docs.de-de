@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie IoT Edge-Geräte für eine Verbindung mi
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
@@ -12,19 +12,23 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 1258fd4b5c69b399b70d1f2db1be63765771e631
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 382cdf87016044748685e5e64ff04ebac53f018d
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629402"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199138"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Verbinden eines nachgeschalteten IoT Edge-Geräts mit einem Azure IoT Edge-Gateway (Vorschau)
+
+[!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 Dieser Artikel enthält Anweisungen zum Herstellen einer vertrauenswürdigen Verbindung zwischen einem IoT Edge-Gateway und einem nachgeschalteten IoT Edge-Gerät.
 
 >[!NOTE]
 >Dieses Feature erfordert eine IoT Edge-Instanz mit Version 1.2, die sich in der öffentlichen Vorschau befindet, auf der Linux-Container ausgeführt werden.
+>
+>In diesem Artikel wird die neueste Vorschauversion von IoT Edge, Version 1.2, beschrieben. Stellen Sie sicher, dass auf Ihrem Gerät Version [1.2.0-RC4](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc4) oder höher ausgeführt wird. Die Schritte zum Ermitteln der aktuellen Vorschauversion auf Ihrem Gerät finden Sie unter [Installieren von Azure IoT Edge für Linux (Version 1.2)](how-to-install-iot-edge.md) oder [Aktualisieren von IoT Edge auf Version 1.2](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12).
 
 In einem Gatewayszenario kann ein IoT Edge-Gerät sowohl ein Gateway als auch ein nachgeschaltetes Gerät sein. Mehrere IoT Edge-Geräte können auf mehreren Ebenen angeordnet werden, um eine Gerätehierarchie zu erstellen. Die nachgeschalteten (oder untergeordneten) Geräte können sich authentifizieren und Nachrichten über das jeweils dazugehörige Gatewaygerät (oder übergeordnete Gerät) senden oder empfangen.
 
@@ -103,9 +107,6 @@ Erstellen Sie die folgenden Zertifikate:
 * Alle **Zwischenzertifikate**, die in die Stammzertifikatkette eingeschlossen werden sollen.
 * Ein **Gerätezertifizierungsstellenzertifikat** und der dazugehörige **private Schlüssel**, die vom Stamm- und den Zwischenzertifikaten erstellt werden. Sie benötigen ein eindeutiges Gerätezertifizierungsstellenzertifikat für jedes einzelne IoT Edge-Gerät in der Gatewayhierarchie.
 
->[!NOTE]
->Derzeit verhindert eine Einschränkung in libiothsm die Verwendung von Zertifikaten, die am oder nach dem 1. Januar 2038 ablaufen.
-
 Sie können entweder eine selbstsignierte Zertifizierungsstelle verwenden oder ein Zertifikat von einer vertrauenswürdigen kommerziellen Zertifizierungsstelle wie Baltimore, Verisign, DigiCert oder GlobalSign erwerben.
 
 Sollten Sie über keine eigenen Zertifikate verfügen, können Sie [Demozertifikate zum Testen von IoT Edge-Gerätefeatures erstellen](how-to-create-test-certificates.md). Befolgen Sie die Schritte in diesem Artikel, um Stamm- und Zwischenzertifikate zu erstellen. Erstellen Sie dann Zertifizierungsstellenzertifikate für IoT Edge-Geräte für Ihre einzelnen Geräte.
@@ -124,7 +125,7 @@ Die Schritte in diesem Abschnitt verweisen auf das **Zertifikat der Stammzertifi
 
 Verwenden Sie die folgenden Schritte zum Konfigurieren von IoT Edge auf Ihrem Gerät.
 
-Stellen Sie unter Linux sicher, dass der Benutzer **iotedge** Leseberechtigungen für das Verzeichnis mit den Zertifikaten und Schlüsseln hat.
+Stellen Sie sicher, dass der Benutzer **iotedge** Leseberechtigungen für das Verzeichnis mit den Zertifikaten und Schlüsseln hat.
 
 1. Installieren Sie das **Stammzertifizierungsstellenzertifikat** auf diesem IoT Edge-Gerät.
 
@@ -140,19 +141,16 @@ Stellen Sie unter Linux sicher, dass der Benutzer **iotedge** Leseberechtigungen
 
    Dieser Befehl sollte als Ausgabe anzeigen, dass ein Zertifikat unter /etc/ssl/certs hinzugefügt wurde.
 
-1. Öffnen Sie die Konfigurationsdatei des IoT Edge-Sicherheitsdaemons.
+1. Öffnen Sie die IoT-Edge-Konfigurationsdatei.
 
    ```bash
-   sudo nano /etc/iotedge/config.yaml
+   sudo nano /etc/aziot/config.toml
    ```
 
-1. Suchen Sie in der Datei „config.yaml“ nach dem Abschnitt **Zertifikate**. Aktualisieren Sie die drei Zertifikatfelder, sodass sie auf Ihre Zertifikate verweisen. Geben Sie die URI-Pfade an, die das folgende Format aufweisen: `file:///<path>/<filename>`.
+   >[!TIP]
+   >Wenn die Konfigurationsdatei auf Ihrem Gerät noch nicht vorhanden ist, verwenden Sie `/etc/aziot/config.toml.edge.template` als Vorlage zum Erstellen einer Datei.
 
-   * **device_ca_cert:** Der URI-Dateipfad zum für das Gerät eindeutigen Gerätezertifikat der Zertifizierungsstelle.
-   * **device_ca_pk:** Der URI-Dateipfad zum für das Gerät eindeutigen privaten Schlüssel für das Gerätezertifikat einer Zertifizierungsstelle.
-   * **trusted_ca_certs:** Der URI-Dateipfad zum von allen Geräten in der Gatewayhierarchie genutzten Stammzertifizierungsstellenzertifikat.
-
-1. Suchen Sie in der Datei „config.yaml“ nach dem **hostname**-Parameter. Aktualisieren Sie den Hostnamen in den vollqualifizierten Domänenname (FQDN) oder die IP-Adresse des IoT Edge-Geräts.
+1. Suchen Sie in der Konfigurationsdatei den Abschnitt **Hostname**. Heben Sie die Auskommentierung der Zeile mit dem Parameter `hostname` auf, und aktualisieren Sie den Wert auf den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) oder die IP-Adresse des IoT Edge-Geräts.
 
    Den Wert dieses Parameters verwenden nachgeschaltete Geräte zum Herstellen einer Verbindung zu diesem Gateway. Der Hostname verwendet den Computernamen standardmäßig, der FQDN oder die IP-Adresse ist jedoch erforderlich, um eine Verbindung zu nachgeschalteten Geräten herstellen zu können.
 
@@ -160,33 +158,38 @@ Stellen Sie unter Linux sicher, dass der Benutzer **iotedge** Leseberechtigungen
 
    Nutzen Sie das Muster des Hostnamens für die gesamte Gatewayhierarchie konsistent. Verwenden Sie entweder FQDNs oder IP-Adressen, nicht beides.
 
-1. **Wenn es sich bei diesem Gerät um ein untergeordnetes Gerät handelt**, suchen Sie nach dem Parameter **parent_hostname**. Aktualisieren Sie das Feld **parent_hostname** in den FQDN oder die IP-Adresse des übergeordneten Geräts. Der Wert muss mit dem Wert übereinstimmen, der als Hostname in der config.yaml-Datei des übergeordneten Geräts angegeben wurde.
+1. *Wenn dieses Gerät ein untergeordnetes Gerät ist*, suchen Sie den Abschnitt **Parent hostname** (Übergeordneter Hostname). Heben Sie die Auskommentierung des Parameters `parent_hostname` auf, und aktualisieren Sie ihn auf den FQDN oder die IP-Adresse des übergeordneten Geräts. Der Wert muss mit dem Wert übereinstimmen, der in der Konfigurationsdatei des übergeordneten Geräts als Hostname angegeben wurde.
+
+1. Suchen Sie den Abschnitt **Trust bundle cert** (Vertrauensstellungszertifikatbündel). Heben Sie die Auskommentierung des Parameters `trust_bundle_cert` auf, und aktualisieren Sie ihn mit dem Datei-URI auf das Zertifikat der Stammzertifizierungsstelle auf Ihrem Gerät.
 
 1. Während sich dieses Feature noch in der öffentlichen Vorschau befindet, müssen Sie Ihr IoT Edge-Gerät beim Start so konfigurieren, dass die öffentliche Vorschauversion des IoT Edge-Agent verwendet wird.
 
-   Suchen Sie in der YAML-Datei nach dem Abschnitt **Agent**, und aktualisieren Sie den Imagewert in den des öffentlichen Vorschauimage:
+   Suchen Sie den Abschnitt **Default Edge Agent** (Standard-Edge-Agent), und aktualisieren Sie den Imagewert auf den des öffentlichen Vorschauimages:
 
-   ```yml
-   agent:
-     name: "edgeAgent"
-     type: "docker"
-     env: {}
-     config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
-       auth: {}
+   ```toml
+   [agent.config]
+   image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4"
    ```
 
-1. Speichern (`Ctrl+O`) und schließen (`Ctrl+X`) Sie die Datei „config.yaml“.
+1. Suchen Sie in der Konfigurationsdatei den Abschnitt **Edge CA certificate** (Edge-Zertifikat der Zertifizierungsstelle). Heben Sie die Auskommentierung der Zeilen in diesem Abschnitt auf, und geben Sie die Datei-URI-Pfade für die Zertifikat- und Schlüsseldateien auf dem IoT Edge Gerät an.
+
+   ```toml
+   [edge_ca]
+   cert = "file:///<path>/<device CA cert>"
+   pk = "file:///<path>/<device CA key>"
+   ```
+
+1. Speichern (`Ctrl+O`) und schließen (`Ctrl+X`) Sie die Konfigurationsdatei.
 
 1. Wenn Sie zuvor bereits andere Zertifikate für IoT Edge verwendet haben, löschen Sie die Dateien in den folgenden beiden Verzeichnissen, um dafür zu sorgen, dass Ihre neuen Zertifikate verwendet werden:
 
-   * `/var/lib/iotedge/hsm/certs`
-   * `/var/lib/iotedge/hsm/cert_keys`
+   * `/var/lib/aziot/certd/certs`
+   * `/var/lib/aziot/keyd/keys`
 
-1. Starten Sie den IoT Edge-Dienst neu, um Ihre Änderungen zu übernehmen.
+1. Übernehmen Sie Ihre Änderungen.
 
    ```bash
-   sudo systemctl restart iotedge
+   sudo iotedge config apply
    ```
 
 1. Überprüfen Sie, ob Fehler in der Konfiguration vorhanden sind.
@@ -202,7 +205,7 @@ Stellen Sie unter Linux sicher, dass der Benutzer **iotedge** Leseberechtigungen
 
 Während sich dieses Feature noch in der öffentlichen Vorschau befindet, müssen Sie Ihr IoT Edge-Gerät so konfigurieren, dass die öffentlichen Vorschauversionen der IoT Edge-Runtimemodule verwendet werden. Im vorherigen Abschnitt finden Sie Schritte für das Konfigurieren von edgeAgent beim Start. Sie müssen auch die Runtimemodule in Bereitstellungen für Ihr Gerät konfigurieren.
 
-1. Konfigurieren Sie das edgeHub-Modul so, dass das öffentliche Vorschauimage verwendet wird: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2`.
+1. Konfigurieren Sie das edgeHub-Modul so, dass das öffentliche Vorschauimage verwendet wird: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`.
 
 1. Konfigurieren Sie die folgenden Umgebungsvariablen für das edgeHub-Modul:
 
@@ -211,7 +214,7 @@ Während sich dieses Feature noch in der öffentlichen Vorschau befindet, müsse
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. Konfigurieren Sie das edgeAgent-Modul so, dass das öffentliche Vorschauimage verwendet wird: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2`.
+1. Konfigurieren Sie das edgeAgent-Modul so, dass das öffentliche Vorschauimage verwendet wird: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`.
 
 ## <a name="network-isolate-downstream-devices"></a>Isolieren von nachgeschalteten Geräten im Netzwerk
 
@@ -356,21 +359,20 @@ Wenn Sie nicht möchten, dass Geräte niedrigerer Ebenen Pull Requests für Modu
 
 Der IoT Edge-Agent ist die erste Runtimekomponente, die auf einem IoT Edge-Gerät gestartet wird. Sie müssen dafür sorgen, dass alle nachgeschalteten IoT Edge-Geräte beim Start auf das edgeAgent-Modulimage zugreifen können. Danach können sie auf Bereitstellungen zugreifen und die restlichen Modulimages starten.
 
-Wenn Sie eine config.yaml-Datei auf einem IoT Edge-Gerät aufrufen, um seine Authentifizierungsinformationen, Zertifikate und den übergeordneten Hostname anzugeben, aktualisieren Sie auch das edgeAgent-Containerimage.
+Wenn Sie die Konfigurationsdatei auf einem IoT Edge-Gerät aufrufen, um dessen Authentifizierungsinformationen, Zertifikate und den übergeordneten Hostnamen anzugeben, aktualisieren Sie auch das edgeAgent-Containerimage.
 
 Wenn das Gatewaygerät der obersten Ebene so konfiguriert ist, Containerimageanforderungen zu verarbeiten, ersetzen Sie `mcr.microsoft.com` durch den übergeordneten Hostname und den API-Proxyport, an dem gelauscht wird. Im Bereitstellungsmanifest können Sie `$upstream` als Verknüpfung verwenden. Dafür ist aber erforderlich, dass das edgeHub-Modul das Routing verarbeitet und dass das Modul zu diesem Zeitpunkt noch nicht gestartet wurde. Zum Beispiel:
 
-```yml
-agent:
-  name: "edgeAgent"
-  type: "docker"
-  env: {}
-  config:
-    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc2"
-    auth: {}
+```toml
+[agent]
+name = "edgeAgent"
+type = "docker"
+
+[agent.config]
+image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc4"
 ```
 
-Wenn Sie eine lokale Containerregistrierung verwenden oder die Containerimages manuell auf dem Gerät bereitstellen, aktualisieren Sie die config.yaml-Datei entsprechend.
+Wenn Sie eine lokale Containerregistrierung verwenden oder die Containerimages auf dem Gerät manuell bereitstellen, aktualisieren Sie die Konfigurationsdatei entsprechend.
 
 #### <a name="configure-runtime-and-deploy-proxy-module"></a>Konfigurieren der Runtime und Bereitstellen des Proxymoduls
 
