@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: f4b33b0156f1a5e27f71509cad637684a0332413
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 44ea6546eb2099165071fd493ec8f890820c0688
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046158"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199832"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mithilfe von X.509-Zertifikaten
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 Mit dem [Azure IoT Hub Device Provisioning-Dienstanbieter (DPS)](../iot-dps/index.yml) können Sie IoT Edge-Geräte mithilfe von X.509-Zertifikaten automatisch bereitstellen. Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Übersicht zur [Bereitstellung](../iot-dps/about-iot-dps.md#provisioning-process), bevor Sie den Vorgang fortsetzen.
 
