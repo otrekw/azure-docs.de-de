@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: jeedes
-ms.openlocfilehash: e1cf12d676de84bc18a123fbdf05b1170725eda8
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 3c1ec38e792987f4bd7208c3bf57a882a05f4f46
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072455"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648049"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsung-knox-and-business-services"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Samsung Knox and Business Services
 
@@ -31,7 +31,7 @@ In diesem Tutorial erfahren Sie, wie Sie Samsung Knox and Business Services in A
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Ein Samsung Knox and Business Services-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+* Ein Samsung Knox-Konto.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -55,7 +55,7 @@ Zum Konfigurieren der Integration von Samsung Knox and Business Services in Azur
 
 ## <a name="configure-and-test-azure-ad-sso-for-samsung-knox-and-business-services"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Samsung Knox and Business Services
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Samsung Knox and Business Services mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Samsung Knox and Business Services eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Samsung Knox and Business Services mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in [SamsungKnox.com](https://samsungknox.com/) eingerichtet werden.
 
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Samsung Knox and Business Services die folgenden Schritte aus:
 
@@ -78,7 +78,10 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://www.samsungknox.com`
+    * Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://www.samsungknox.com`.
+    * Geben Sie im Textfeld **Antwort-URL (Assertionsverbraucherdienst-URL)** die folgende URL ein: `https://central.samsungknox.com/ams/ad/saml/acs`.
+    
+    ![Grundlegende SAML-Konfigurationswerte](https://docs.samsungknox.com/assets/merge/ad-sso/basic-saml-configuration.png)
 
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
@@ -110,7 +113,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-samsung-knox-and-business-services-sso"></a>Konfigurieren des einmaligen Anmeldens für Samsung Knox and Business Services
 
-1. Melden Sie sich in einem anderen Webbrowserfenster bei der Samsung Knox and Business Services-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster als Administrator bei [SamsungKnox.com](https://samsungknox.com/) an.
 
 1. Klicken Sie in der oberen rechten Ecke auf den **Avatar**.
 
@@ -118,7 +121,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie auf der linken Seitenleiste auf **ACTIVE DIRECTORY SETTINGS** (ACTIVE DIRECTORY-EINSTELLUNGEN), und führen Sie die folgenden Schritte aus:
 
-    ![ACTIVE DIRECTORY SETTINGS (ACTIVE DIRECTORY-EINSTELLUNGEN)](./media/samsung-knox-and-business-services-tutorial/sso-settings.png)
+    ![ACTIVE DIRECTORY SETTINGS (ACTIVE DIRECTORY-EINSTELLUNGEN)](https://docs.samsungknox.com/assets/merge/ad-sso/ad-5.png)
 
     a. Geben Sie in das Textfeld **Identifier(entity ID)** (Bezeichner (Entitäts-ID)) den Wert für **Bezeichner** ein, den Sie im Azure-Portal eingegeben haben.
 
@@ -128,21 +131,18 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ### <a name="create-samsung-knox-and-business-services-test-user"></a>Erstellen eines Samsung Knox and Business Services-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Samsung Knox and Business Services einen Benutzer mit dem Namen Britta Simon. Arbeiten Sie mit dem [Samsung Knox and Business Services-Supportteam](mailto:noreplyk.sec@samsung.com) zusammen, um die Benutzer auf der Samsung Knox and Business Services-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Samsung Knox and Business Services einen Benutzer mit dem Namen Britta Simon. Anweisungen dazu, wie Sie einen Unteradministrator oder Testbenutzer in Ihre Samsung Knox-Organisation einladen, finden Sie in den Administratorhandbüchern [Knox Configure](https://docs.samsungknox.com/admin/knox-configure/Administrators.htm) oder [Knox Mobile Enrollment](https://docs.samsungknox.com/admin/knox-mobile-enrollment/kme-add-an-admin.htm). Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Samsung Knox and Business Services weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zu [SamsungKnox.com](https://samsungknox.com/) weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
-* Rufen Sie direkt die Samsung Knox and Business Services-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+* Rufen Sie direkt [SamsungKnox.com](https://samsungknox.com/) auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Samsung Knox and Business Services“ klicken, werden Sie zur Anmelde-URL für Samsung Knox and Business Services umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
-
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Samsung Knox and Business Services“ klicken, werden Sie zu [SamsungKnox.com](https://samsungknox.com/) umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Samsung Knox and Business Services können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
-
-
+Nach dem Konfigurieren von Samsung Knox and Business Services können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

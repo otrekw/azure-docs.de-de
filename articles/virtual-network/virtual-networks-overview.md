@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
-ms.openlocfilehash: e1efd02d60ba874178f24da2b441fc122e4a1912
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 849127ed0846928a77795ac0a1ea3f7a091468b5
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218533"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635947"
 ---
 # <a name="what-is-azure-virtual-network"></a>Was ist Azure Virtual Network?
 
 Azure Virtual Network (VNET) ist der grundlegende Baustein für Ihr privates Netzwerk in Azure. Mit VNET können zahlreiche Arten von Azure-Ressourcen (beispielsweise virtuelle Azure-Computer) sicher untereinander sowie mit dem Internet und mit lokalen Netzwerken kommunizieren. VNET ähnelt einem herkömmlichen Netzwerk, das Sie in Ihrem Rechenzentrum betreiben, bietet jedoch zusätzliche Vorteile der Infrastruktur von Azure, z. B. Skalierbarkeit, Verfügbarkeit und Isolation.
 
 ## <a name="why-use-an-azure-virtual-network"></a>Gründe für die Verwendung eines virtuellen Azure-Netzwerks
-Mit virtuellen Azure-Netzwerken können Azure-Ressourcen sicher untereinander sowie mit dem Internet und mit lokalen Netzwerken kommunizieren. Zu den wichtigsten Szenarien, in denen Sie ein virtuelles Netzwerk realisieren können, gehören die Kommunikation von Azure-Ressourcen mit dem Internet, die Kommunikation zwischen Azure-Ressourcen, die Kommunikation mit lokalen Ressourcen, das Filtern von Netzwerkdatenverkehr, das Routing von Netzwerkdatenverkehr und die Integration mit Azure-Diensten.
+Mit virtuellen Azure-Netzwerken können Azure-Ressourcen sicher untereinander sowie mit dem Internet und mit lokalen Netzwerken kommunizieren. Zu den wichtigsten Szenarien, die Sie mit einem virtuellen Netzwerk realisieren können, gehören die Kommunikation von Azure-Ressourcen mit dem Internet, die Kommunikation zwischen Azure-Ressourcen, die Kommunikation mit lokalen Ressourcen, das Filtern von Netzwerkdatenverkehr, das Routing von Netzwerkdatenverkehr und die Integration mit Azure-Diensten.
 
 ### <a name="communicate-with-the-internet"></a>Kommunikation mit dem Internet
 

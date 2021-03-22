@@ -25,11 +25,34 @@ Bevor Sie beginnen, müssen Sie jedoch einige Werte erfassen bzw. berücksichtig
 
 ## <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli/)
 
-[!INCLUDE [Upload files with the portal](./includes/task-upload-file-to-asset-cli.md)]
+[!INCLUDE [Upload files with the CLI](./includes/task-upload-file-to-asset-cli.md)]
 
-## <a name="rest"></a>[REST](#tab/rest/)
+## <a name="python"></a>[Python](#tab/python)
 
-Nachdem Sie [mithilfe von Postman oder einer anderen REST-Methode ein Medienobjekt erstellt und die SAS-URL für das Medienobjekt abgerufen haben](how-to-create-asset.md?tabs=rest), verwenden Sie die Azure Storage-APIs oder SDKs (etwa die [Storage-REST-API](../../storage/common/storage-rest-api-auth.md) oder das [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)).
+Wenn für Ihren Code bereits eine Authentifizierung eingerichtet ist und Sie bereits eine Eingaberessource erstellt haben, verwenden Sie den folgenden Codeausschnitt, um lokale Dateien in diese Ressource (in_container) hochzuladen.
+
+```python
+#The storage objects
+from azure.storage.blob import BlobServiceClient, BlobClient
+
+#Establish storage variables
+storage_account_name = '<your storage account name'
+storage_account_key = '<your storage account key'
+storage_blob_url = 'https://<your storage account name>.blob.core.windows.net/'
+
+in_container = 'asset-' + inputAsset.asset_id
+
+#The file path of local file you want to upload
+source_file = "ignite.mp4"
+
+# Use the Storage SDK to upload the video
+blob_service_client = BlobServiceClient(account_url=storage_blob_url, credential=storage_account_key)
+blob_client = blob_service_client.get_blob_client(in_container,source_file)
+
+# Upload the video to storage as a block blob
+with open(source_file, "rb") as data:
+    blob_client.upload_blob(data, blob_type="BlockBlob")
+```
 
 ---
 <!-- add these to the tabs when available -->

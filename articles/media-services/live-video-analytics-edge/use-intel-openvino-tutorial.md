@@ -4,12 +4,12 @@ description: In diesem Tutorial wird ein von Intel bereitgestellter KI-Modellser
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: db018c5c8d8f3990fd465f4d586ef4dc70980542
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 68b5b7561cc31e156a745bcfb07e3203de10d425
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955715"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702214"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Tutorial: Analysieren von Livevideos mithilfe der KI-Erweiterung für OpenVINO™ Model Server von Intel 
 
@@ -88,11 +88,11 @@ Als Teil der Voraussetzungen haben Sie den Beispielcode in einen Ordner herunter
 
 1. Navigieren Sie zum Ordner *src/cloud-to-device-console-app*. Darin finden Sie Ihre Datei *appsettings.json* und einige andere Dateien:
 
-    * ***c2d-console-app.csproj** _: Die Projektdatei für Visual Studio Code.
-    _ ***operations.json** _: Eine Liste mit den Vorgängen, die vom Programm ausgeführt werden sollen.
-    _ ***Program.cs** _: Das Beispiel für den Programmcode. Mit diesem Code wird Folgendes durchgeführt:
+    * ***c2d-console-app.csproj***: Die Projektdatei für Visual Studio Code.
+    * ***operations.json***: Eine Liste mit den Vorgängen, die vom Programm ausgeführt werden sollen.
+    * ***Program.cs***: Das Beispiel für den Programmcode. Mit diesem Code wird Folgendes durchgeführt:
 
-        _ Laden der App-Einstellungen
+        * Laden der App-Einstellungen
         * Aufrufen direkter Methoden, die vom Modul „Live Video Analytics in IoT Edge“ verfügbar gemacht werden. Sie können das Modul zum Analysieren von Livevideostreams verwenden, indem Sie die zugehörigen [direkten Methoden](direct-methods.md) aufrufen.
         * Anhalten der Ausführung, sodass Sie die Ausgabe des Programms im **Terminalfenster** und die vom Modul generierten Ereignisse im **Ausgabefenster** untersuchen können
         * Aufrufen direkter Methoden zur Bereinigung der Ressourcen
@@ -117,7 +117,7 @@ Als Teil der Voraussetzungen haben Sie den Beispielcode in einen Ordner herunter
 
     ![Generate IoT Edge Deployment Manifest (IoT Edge-Bereitstellungsmanifest generieren)](./media/use-intel-openvino-tutorial/generate-deployment-manifest.png)  
 
-    Die Manifestdatei *deployment.yolov3.amd64.json* wird im Ordner *src/edge/config* erstellt.
+    Die Manifestdatei *deployment.openvino.amd64.json* wird im Ordner *src/edge/config* erstellt.
 
 1. Überspringen Sie diesen Schritt, wenn Sie die Schnellstartanleitung [Erkennen von Bewegung und Ausgeben von Ereignissen](detect-motion-emit-events-quickstart.md) abgeschlossen haben. 
 

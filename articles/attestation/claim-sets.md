@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: eb08bb262806cb662822a75898196546a5c1058e
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 23bcfcb92a7fa642e111a67bf92c1306a606bb2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762539"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704802"
 ---
 # <a name="claim-sets"></a>Anspruchsätze
 
@@ -26,7 +26,8 @@ Ansprüche, die während der Nachweisgenerierung für Enclaves mit Microsoft Azu
 
 ### <a name="common-incoming-claims-across-all-attestation-types"></a>Häufige eingehende Ansprüche für alle Nachweistypen
 
-Die folgenden Ansprüche werden von Azure Attestation generiert und können zum Definieren von Autorisierungsregeln in einer benutzerdefinierten Richtlinie verwendet werden:
+Die folgenden Ansprüche werden von Azure Attestation generiert und können von Richtlinienautoren zum Definieren von Autorisierungsregeln in einer benutzerdefinierten Richtlinie für alle Nachweistypen verwendet werden.
+
 - **x-ms-ver**: JWT-Schemaversion („1.0“ wird erwartet)
 - **x-ms-attestation-type**: Zeichenfolgenwert für Nachweistyp 
 - **x-ms-policy-hash**: Hash der Azure Attestation-Evaluierungsrichtlinie, Berechnung als BASE64URL(SHA256(UTF8(BASE64URL(UTF8(Richtlinientext)))))
@@ -44,7 +45,9 @@ policy_signer | x-ms-policy-signer
 
 ### <a name="common-outgoing-claims-across-all-attestation-types"></a>Häufige ausgehende Ansprüche für alle Nachweistypen
 
-Die folgenden Ansprüche werden vom [IETF-JWT](https://tools.ietf.org/html/rfc7519) definiert und können von Azure Attestation im Antwortobjekt verwendet werden:
+Die folgenden Ansprüche sind im Nachweistoken für alle Nachweistypen durch den Dienst enthalten.
+
+Quelle: Wie durch [IETF JWT](https://tools.ietf.org/html/rfc7519) definiert
 
 - **Anspruch „jti“ (JWT-ID)**
 - **Anspruch „iss“ (Aussteller)**
@@ -52,10 +55,12 @@ Die folgenden Ansprüche werden vom [IETF-JWT](https://tools.ietf.org/html/rfc75
 - **Anspruch „exp“ (Ablaufzeit)**
 - **Anspruch „nbf“ (Nicht vor)**
 
-Die folgenden Ansprüche werden vom [IETF-EAT](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) definiert und können von Azure Attestation im Antwortobjekt verwendet werden:
+Quelle: Wie durch [IETF EAT](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) definiert
+
 - **Anspruch „Nonce“ (Nonce)**
 
-Folgende Ansprüche werden basierend auf den eingehenden Ansprüchen standardmäßig generiert:
+Die unten aufgeführten Ansprüche werden standardmäßig basierend auf den eingehenden Ansprüchen in das Nachweistoken eingeschlossen:
+
 - **x-ms-ver**: JWT-Schemaversion („1.0“ wird erwartet)
 - **x-ms-attestation-type**: Zeichenfolgenwert für Nachweistyp 
 - **x-ms-policy-hash**: Zeichenfolgenwert, der den SHA256-Hash des Richtlinientexts enthält, der von BASE64URL(SHA256(UTF8(BASE64URL(UTF8(policy text))))) berechnet wurde
@@ -65,7 +70,8 @@ Folgende Ansprüche werden basierend auf den eingehenden Ansprüchen standardmä
 
 ### <a name="incoming-claims-specific-to-sgx-attestation"></a>Spezifische eingehende Ansprüche für SGX-Nachweis
 
-Die folgenden Ansprüche werden vom Dienst für den SGX-Nachweis generiert und können zum Definieren von Autorisierungsregeln in einer benutzerdefinierten Richtlinie verwendet werden:
+Die folgenden Ansprüche werden von Azure Attestation generiert und können von Richtlinienautoren zum Definieren von Autorisierungsregeln in einer benutzerdefinierten Richtlinie für den SGX-Nachweis verwendet werden.
+
 - **x-ms-sgx-is-debuggable**: ein boolescher Wert, der angibt, ob Debugging für die Enclave aktiviert ist oder nicht
 - **x-ms-sgx-product-id**
 - **x-ms-sgx-mrsigner**: Hexadezimal codierter Wert des Felds „mrsigner“ des Angebots
@@ -74,7 +80,8 @@ Die folgenden Ansprüche werden vom Dienst für den SGX-Nachweis generiert und k
 
 ### <a name="outgoing-claims-specific-to-sgx-attestation"></a>Spezifische ausgehende Ansprüche für SGX-Nachweis
 
-Die unten angegebenen Ansprüche werden vom Dienst generiert und in das Antwortobjekt für den SGX-Nachweis eingefügt:
+Die folgenden Ansprüche werden vom Dienst generiert und für den SGX-Nachweis in das Nachweistoken eingefügt.
+
 - **x-ms-sgx-is-debuggable**: ein boolescher Wert, der angibt, ob Debugging für die Enclave aktiviert ist oder nicht
 - **x-ms-sgx-product-id**
 - **x-ms-sgx-mrsigner**: Hexadezimal codierter Wert des Felds „mrsigner“ des Angebots

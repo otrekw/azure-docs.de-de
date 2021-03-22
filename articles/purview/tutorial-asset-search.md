@@ -6,13 +6,13 @@ ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
-ms.date: 12/01/2020
-ms.openlocfilehash: f778a55c206e012884b44c1fea0a63e2de6b481a
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.date: 02/22/2020
+ms.openlocfilehash: 5285d5b2c7cbe6845fb6043fa1096f94254602e7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693334"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677833"
 ---
 # <a name="tutorial-navigate-the-azure-purview-preview-home-page-and-search-for-an-asset"></a>Tutorial: Navigieren auf der Startseite von Azure Purview (Vorschau) und Suchen nach einer Ressource
 
@@ -45,7 +45,7 @@ In den folgenden Schritten machen Sie sich mit der Azure Purview-Startseite ver
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Azure Purview-Ressource, und wählen Sie **Open Purview Studio** (Purview Studio öffnen) aus. Sie werden automatisch zur Startseite von Purview Studio weitergeleitet.
 
-   Oben auf der Startseite werden der Name Ihres Katalogs und verschiedene Kataloganalysen angezeigt. Sie enthalten die Anzahl von Benutzern, Datenressourcen und Glossarbegriffen. In der Zusammenfassung sehen Sie, dass insgesamt mehr als 200 Ressourcen und 113 Glossarbegriffe vorhanden sind. Diese Zahlen werden aktualisiert, wenn Ihre Organisation Überprüfungen durchführt und Azure Purview weitere Begriffe hinzufügt.
+   Oben auf der Startseite werden der Name Ihres Katalogs und verschiedene Kataloganalysen angezeigt. Sie enthalten die Anzahl von Quellen, Datenressourcen und Glossarbegriffen. In der Zusammenfassung sehen Sie, dass insgesamt mehr als 200 Ressourcen und 113 Glossarbegriffe vorhanden sind. Diese Zahlen werden aktualisiert, wenn Ihre Organisation Überprüfungen durchführt und Azure Purview weitere Begriffe hinzufügt.
 
    :::image type="content" source="./media/tutorial-asset-search/purview-home-page.png" alt-text="Screenshot der Azure Purview-Startseite":::
 

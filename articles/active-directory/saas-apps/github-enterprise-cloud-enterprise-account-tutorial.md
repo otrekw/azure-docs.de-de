@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/29/2020
+ms.date: 02/12/2021
 ms.author: jeedes
-ms.openlocfilehash: d88cbb79b42637721412dd0a35c231782a896721
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7360ad5abc7342043152c2da11038b624b0bfadc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029845"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649968"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-cloud---enterprise-account"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit GitHub Enterprise Cloud - Enterprise Account
 
@@ -24,29 +24,27 @@ In diesem Tutorial erfahren Sie, wie Sie GitHub Enterprise Cloud - Enterprise Ac
 
 * Steuern in Azure AD, wer Zugriff auf ein GitHub Enterprise Account und die Organisationen unter dem Enterprise Account hat
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Ein [GitHub Enterprise Account](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-enterprise/about-enterprise-accounts)
+* Einen [GitHub Enterprise Account](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-enterprise/about-enterprise-accounts)
 * Ein GitHub-Benutzerkonto, bei dem es sich um einen Enterprise Account-Besitzer handelt 
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* GitHub Enterprise Cloud - Enterprise Account unterstützt **SP**- und **IDP**-initiiertes einmaliges Anmelden.
-* GitHub Enterprise Cloud - Enterprise Account unterstützt die **Just-In-Time**-Benutzerbereitstellung.
-* Nach dem Konfigurieren von GitHub Enterprise Cloud - Enterprise Account können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+* GitHub Enterprise Cloud: Enterprise Account unterstützt **SP**- und **IDP**-initiiertes einmaliges Anmelden.
+* GitHub Enterprise Cloud: Enterprise Account unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
 ## <a name="adding-github-enterprise-cloud---enterprise-account-from-the-gallery"></a>Hinzufügen von GitHub Enterprise Cloud - Enterprise Account aus dem Katalog
 
 Zum Konfigurieren der Integration von GitHub Enterprise Cloud - Enterprise Account in Azure AD müssen Sie GitHub Enterprise Cloud - Enterprise Account aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
@@ -58,21 +56,21 @@ Zum Konfigurieren der Integration von GitHub Enterprise Cloud - Enterprise Accou
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit GitHub Enterprise Cloud - Enterprise Account mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in GitHub Enterprise Cloud - Enterprise Account eingerichtet werden.
 
-Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit GitHub Enterprise Cloud - Enterprise Account die folgenden Schritte aus:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit GitHub Enterprise Cloud – Enterprise Account die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    1. **[Zuweisen Ihres Azure AD-Benutzers und des Testbenutzerkontos zur GitHub-App](#assign-the-azure-ad-test-user)** , um Ihr Benutzerkonto zu aktivieren und das einmalige Anmelden mit Azure AD für den Testbenutzer `B.Simon` zu testen.
+    1. **[Zuweisen Ihres Azure AD-Benutzers und des Testbenutzerkontos zur GitHub-App](#assign-your-azure-ad-user-and-the-test-user-account-to-the-github-app)** , um Ihr Benutzerkonto zu aktivieren und das einmalige Anmelden mit Azure AD für den Testbenutzer `B.Simon` zu testen.
 1. **[Aktivieren und Testen von SAML für das Enterprise Account und die zugehörigen Organisationen](#enable-and-test-saml-for-the-enterprise-account-and-its-organizations)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-    1. **[Testen des einmaligen Anmeldens mit einem anderen Enterprise Account-Besitzer oder dem Konto eines Mitglieds der Organisation](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert.
+    1. **[Testen des einmaligen Anmeldens mit einem anderen Enterprise Account-Besitzer oder dem Konto eines Mitglieds der Organisation](#test-sso-with-another-enterprise-account-owner-or-organization-member-account)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **GitHub Enterprise Cloud - Enterprise Account** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **GitHub Enterprise Cloud – Enterprise Account** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -118,15 +116,9 @@ In diesem Abschnitt ermöglichen Sie `B.Simon` und Ihrem Benutzerkonto die Verwe
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **GitHub Enterprise Cloud - Enterprise Account** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** und Ihr Benutzerkonto aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="enable-and-test-saml-for-the-enterprise-account-and-its-organizations"></a>Aktivieren und Testen von SAML für das Enterprise Account und die zugehörigen Organisationen
@@ -156,16 +148,6 @@ Gehen Sie wie folgt vor, um den Zugriff auf die GitHub-Organisation unter dem En
 1. Melden Sie sich bei Azure AD an, indem Sie das Benutzerkonto `B.Simon` verwenden.
 1. Navigieren Sie zur GitHub-Organisation. Der Benutzer sollte zur erneuten Authentifizierung per SAML aufgefordert werden. Nach dem erfolgreichen Abschluss der SAML-Authentifizierung sollte `B.Simon` auf die Organisationsressourcen zugreifen können. 
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
-
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
-
-- [GitHub Enterprise Cloud - Enterprise Account mit Azure AD ausprobieren](https://aad.portal.azure.com/)
-
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
-
-- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad)
+Nach dem Konfigurieren von GitHub Enterprise Cloud - Enterprise Account können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

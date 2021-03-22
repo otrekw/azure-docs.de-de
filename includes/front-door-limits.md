@@ -5,15 +5,15 @@ services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: include
-ms.date: 05/09/2019
-ms.author: sharadag
+ms.date: 02/18/2021
+ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 361fb18574e90fc46e45bff8914c51ee1afa2f96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53d837883daefddd5fa3f0f543eae1d116a5e86a
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89411693"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101102936"
 ---
 | Resource | Begrenzung |
 | --- | --- |
@@ -35,6 +35,31 @@ ms.locfileid: "89411693"
 | Web Application Firewall – Länge des Cookienamens | 256 |
 | Web Application Firewall – Größe des überprüften HTTP-Anforderungstexts | 128 KB |
 | Web Application Firewall – Länge des benutzerdefinierten Antworttexts | 2 KB |
+
+### <a name="azure-front-door-standardpremium-preview-service-limits"></a>Diensteinschränkungen von Azure Front Door Standard/Premium (Vorschau)
+
+*** *Maximal **500** Standard- und Premium-Profile pro Abonnement insgesamt.*
+
+| Resource | Standard-SKU-Limit | Premium-SKU-Limit |
+| --- | --- | --- |
+| Maximale Endpunkte pro Profil  | 10 | 25 |
+| Maximale benutzerdefinierte Domänen pro Profil | 100 | 200 |
+| Maximale Ursprungsgruppen pro Profil | 100 | 200 |
+| Maximale Geheimnisse pro Profil | 100 | 200 |
+| Maximale Sicherheitsrichtlinien pro Profil | 100 | 200 |
+| Maximale Regelsätze pro Profil | 100 | 200 |
+| Maximale Regeln pro Regelsatz | 100 | 100 |
+| Maximale Ursprünge pro Ursprungsgruppe | 50 | 50 |
+| Maximale Anzahl von Routen pro Endpunkt | 100 | 200 |
+| Web Application Firewall – Übereinstimmungsbedingungen pro benutzerdefinierter Regel | 10 | 10 |
+| Web Application Firewall – IP-Adressbereiche pro Übereinstimmungsbedingung | 600 | 600 |
+| Web Application Firewall – Zeichenfolgen-Übereinstimmungswerte pro Übereinstimmungsbedingung | 10 | 10 |
+| Web Application Firewall – Länge des Zeichenfolgen-Übereinstimmungswerts | 256 | 256 |
+| Web Application Firewall – Länge des POST-Textparameternamens | 256 | 256 |
+| Web Application Firewall – Länge des HTTP-Headernamens | 256 | 256 |
+| Web Application Firewall – Länge des Cookienamens | 256 | 256|
+| Web Application Firewall – Größe des überprüften HTTP-Anforderungstexts | 128 KB | 128 KB |
+| Web Application Firewall – Länge des benutzerdefinierten Antworttexts | 2 KB | 2 KB |
 
 ### <a name="timeout-values"></a>Timeoutwerte
 #### <a name="client-to-front-door"></a>Client zu Front Door

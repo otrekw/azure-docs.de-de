@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 5561a4cdeef725eba7e48d7767aa0ee5d3c6d9cf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c47092b1488a79805db69308bcb9a8efde1c0d58
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625447"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653031"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Tutorial: Azure Active Directory-Integration in MobileIron
 
@@ -28,10 +28,10 @@ ms.locfileid: "98625447"
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit MobileIron konfigurieren zu können, benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* MobileIron-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* MobileIron-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -131,7 +131,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
     ![Einmaliges Anmelden konfigurieren – Administratormetadatenschaltfläche](./media/MobileIron-tutorial/tutorial_MobileIron_adminmetadata.png)
 
 
-##  <a name="create-mobileiron-test-user"></a>Erstellen eines MobileIron-Testbenutzers
+### <a name="create-mobileiron-test-user"></a>Erstellen eines MobileIron-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei MobileIron anmelden können, müssen sie in MobileIron bereitgestellt werden.  
 Im Fall von MobileIron ist die Bereitstellung eine manuelle Aufgabe.
@@ -157,15 +157,16 @@ Im Fall von MobileIron ist die Bereitstellung eine manuelle Aufgabe.
     d. Klicken Sie auf **Fertig**.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
+
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-## <a name="sp-initiated"></a>SP-initiiert:
+### <a name="sp-initiated"></a>SP-initiiert:
 
 * Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für MobileIron weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
 
 * Rufen Sie direkt die MobileIron-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-##  <a name="idp-initiated"></a>IDP-initiiert:
+### <a name="idp-initiated"></a>IDP-initiiert:
 
 * Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der MobileIron-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 

@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: bd6acc5d3b7cd6e88b56e4a922e777adca031538
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 0b064e8491b5d4fa988e9f476143cc0711e3934a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102562"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651373"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf eine Web-API
 
@@ -110,7 +110,7 @@ Einige Berechtigungen (wie z. B. die Microsoft Graph-Berechtigung *Files.Read.A
 
 ### <a name="configure-client-credentials"></a>Konfigurieren von Clientanmeldeinformationen
 
-Apps, die Anwendungsberechtigungen verwenden, authentifizieren sich mit ihren eigenen Anmeldeinformationen als sie selbst, ohne dass eine Benutzerinteraktion erforderlich ist. Bevor Ihre Anwendung (oder API) auf Microsoft Graph, Ihre eigene Web-API oder eine beliebige andere API mithilfe von Anwendungsberechtigungen zugreifen kann, müssen Sie die Anmeldeinformationen dieser Client-App konfigurieren.
+Apps, die Anwendungsberechtigungen verwenden, authentifizieren sich mit ihren eigenen Anmeldeinformationen als sie selbst, ohne dass eine Benutzerinteraktion erforderlich ist. Bevor Ihre Anwendung (oder API) auf Microsoft Graph, Ihre eigene Web-API oder eine andere API mithilfe von Anwendungsberechtigungen zugreifen kann, müssen Sie die Anmeldeinformationen dieser Client-App konfigurieren.
 
 Weitere Informationen zum Konfigurieren der Anmeldeinformationen einer App finden Sie im Abschnitt [Hinzufügen von Anmeldeinformationen](quickstart-register-app.md#add-credentials) des [Schnellstarts: Registrieren einer Anwendung bei der Microsoft Identity Platform](quickstart-register-app.md).
 

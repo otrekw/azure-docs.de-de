@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/03/2020
+ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 9e5d12bcea1bd7a587568c30b49c8c4ee95f8362
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 8838e3c92a2c7ccc77794973b3cb8e67128e3c71
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937381"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654819"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Akamai
 
@@ -26,13 +26,11 @@ In diesem Tutorial erfahren Sie, wie Sie Akamai in Azure Active Directory (Azure
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Akamai anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
 Die Integration von Azure Active Directory und Akamai Enterprise Application Access ermöglicht den nahtlosen Zugriff auf in der Cloud oder lokal gehostete Legacyanwendungen. Die integrierte Lösung nutzt alle modernen Azure Active Directory-Funktionen wie [bedingten Azure AD-Zugriff](../conditional-access/overview.md), [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) und [Azure AD Identity Governance](../governance/identity-governance-overview.md), um den Zugriff auf Legacyanwendungen ohne App-Änderungen oder Agent-Installation zu ermöglichen.
 
-Die folgende Abbildung zeigt, wie sich Akamai EAA in das allgemeine Szenario für sicheren Hybridzugriff einfügt:
+Die folgende Abbildung zeigt, wie sich Akamai EAA in das allgemeine Szenario für sicheren Hybridzugriff einfügt.
 
-![Akamai EAA fügt sich in das allgemeine Szenario für sicheren Hybridzugriff ein.](./media/header-akamai-tutorial/introduction01.png)
+![Akamai EAA fügt sich in das allgemeine Szenario für sicheren Hybridzugriff ein.](./media/header-akamai-tutorial/introduction-1.png)
 
 ### <a name="key-authentication-scenarios"></a>Wichtige Authentifizierungsszenarien
 
@@ -65,7 +63,7 @@ Akamai EAA wird als einzelne Anwendung in der Azure AD-Instanz konfiguriert. D
 
 * Abdeckung aller Anwendungen durch eine einzelne allgemeine Richtlinie für bedingten Zugriff
 
-![Integrationsszenario 1](./media/header-akamai-tutorial/scenario1.png)
+![Integrationsszenario 1](./media/header-akamai-tutorial/scenario-1.png)
 
 #### <a name="integration-scenario-2"></a>Integrationsszenario 2
 
@@ -82,7 +80,7 @@ Die Akamai EAA-Anwendung wird individuell im Azure AD-Portal eingerichtet. Der
 
 * Sie müssen mehrere IDPs konfigurieren.
 
-![Integrationsszenario 2](./media/header-akamai-tutorial/scenario2.png)
+![Integrationsszenario 2](./media/header-akamai-tutorial/scenario-2.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -103,18 +101,18 @@ Alle unten aufgeführten Einrichtungsschritte gelten sowohl für das **Integrati
 
 ![Screenshot der Registerkarte „Allgemein“ für AZURESSO-SP in Akamai Enterprise Application Access. Das Feld mit der Konfigurations-ID für die Authentifizierung ist hervorgehoben.](./media/header-akamai-tutorial/important.png)
 
-## <a name="adding-akamai-from-the-gallery"></a>Hinzufügen von Akamai über den Katalog
+## <a name="add-akamai-from-the-gallery"></a>Hinzufügen von Akamai über den Katalog
 
 Zum Konfigurieren der Integration von Akamai in Azure AD müssen Sie Akamai aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Akamai** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Akamai** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-akamai"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Akamai
+## <a name="configure-and-test-azure-ad-sso-for-akamai"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Akamai
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Akamai mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Akamai eingerichtet werden.
 
@@ -136,9 +134,9 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Akamai** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Akamai** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -178,15 +176,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Akamai** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-akamai-sso"></a>Konfigurieren des einmaligen Anmeldens für Akamai
@@ -198,11 +190,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Melden Sie sich bei der **Enterprise Application Access-Konsole von Akamai** an.
 1. Wählen Sie in der **EAA-Konsole von Akamai** die Optionen **Identity** > **Identity Providers** (Identität > Identitätsanbieter) aus, und klicken Sie auf **Add Identity Provider** (Identitätsanbieter hinzufügen).
 
-    ![Screenshot des Fensters „Identity Providers“ (Identitätsanbieter) der Akamai EAA-Konsole. Wählen Sie „Identity Providers“ (Identitätsanbieter) im Menü „Identity“ und dann „Add Identity Provider“ (Identitätsanbieter hinzufügen) aus.](./media/header-akamai-tutorial/configure01.png)
+    ![Screenshot des Fensters „Identity Providers“ (Identitätsanbieter) der Akamai EAA-Konsole. Wählen Sie „Identity Providers“ (Identitätsanbieter) im Menü „Identity“ und dann „Add Identity Provider“ (Identitätsanbieter hinzufügen) aus.](./media/header-akamai-tutorial/configure-1.png)
 
 1. Führen Sie im Dialogfeld **Create New Identity Provider** (Neuen Identitätsanbieter erstellen) die folgenden Schritte aus:
 
-    ![Screenshot des Dialogfelds „Create New Identity Providers“ (Neuen Identitätsanbieter erstellen) in der Akamai EAA-Konsole.](./media/header-akamai-tutorial/configure02.png)
+    ![Screenshot des Dialogfelds „Create New Identity Providers“ (Neuen Identitätsanbieter erstellen) in der Akamai EAA-Konsole.](./media/header-akamai-tutorial/configure-2.png)
 
     a. Geben Sie einen **eindeutigen Namen** ein.
 
@@ -216,9 +208,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
     > Sie können eine eigene benutzerdefinierte Domäne verwenden. (Dafür sind ein DNS-Eintrag und ein Zertifikat erforderlich.) In diesem Beispiel verwenden wir die Akamai-Domäne.
 
 1. **Akamai Cloud Zone** (Akamai-Cloudzone): Wählen Sie die entsprechende Cloudzone aus.
-1. **Certificate Validation** (Zertifikatüberprüfung): Lesen Sie die Akamai-Dokumentation. (optional)
+1. **Certificate Validation** (Zertifikatüberprüfung): Lesen Sie die Akamai-Dokumentation (optional).
 
-    ![Screenshot der Registerkarte „General“ (Allgemein) der Akamai EAA-Konsole mit Einstellungen für „Identity Intercept“ (Identität abfangen), „Akamai Cloud Zone“ (Akamai-Cloudzone) und „Certificate Validation“ (Zertifikatüberprüfung).](./media/header-akamai-tutorial/configure03.png)
+    ![Screenshot der Registerkarte „General“ (Allgemein) der Akamai EAA-Konsole mit Einstellungen für „Identity Intercept“ (Identität abfangen), „Akamai Cloud Zone“ (Akamai-Cloudzone) und „Certificate Validation“ (Zertifikatüberprüfung).](./media/header-akamai-tutorial/configure-3.png)
 
 ### <a name="authentication-configuration"></a>Authentifizierungskonfiguration
 
@@ -227,13 +219,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 3. Sign SAML Request (SAML-Anforderung signieren): Diese Option ist standardmäßig deaktiviert.
 4. Fügen Sie für die IDP-Metadatendatei die Anwendung in der Azure AD-Konsole hinzu.
 
-    ![Screenshot der Authentifizierungskonfiguration der Akamai EAA-Konsole mit Einstellungen für „URL“, „Logout URL“ (Abmelde-URL), „Sign SAML Request“ (SAML-Anforderung signieren) und „IDP Metadata File“ (IDP-Metadatendatei).](./media/header-akamai-tutorial/configure04.png)
+    ![Screenshot der Authentifizierungskonfiguration der Akamai EAA-Konsole mit Einstellungen für „URL“, „Logout URL“ (Abmelde-URL), „Sign SAML Request“ (SAML-Anforderung signieren) und „IDP Metadata File“ (IDP-Metadatendatei).](./media/header-akamai-tutorial/configure-4.png)
 
 ### <a name="session-settings"></a>Sitzungseinstellungen
 
 Übernehmen Sie die Standardeinstellungen.
 
-![Screenshot des Dialogfelds „Session Settings“ (Sitzungseinstellungen) der Akamai EAA-Konsole.](./media/header-akamai-tutorial/sessionsettings.png)
+![Screenshot des Dialogfelds „Session Settings“ (Sitzungseinstellungen) der Akamai EAA-Konsole.](./media/header-akamai-tutorial/session-settings.png)
 
 ### <a name="directories"></a>Verzeichnisse
 
@@ -245,13 +237,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 Der IDP kann auf Wunsch angepasst werden.
 
-![Screenshot der Registerkarte „Customization“ (Anpassung) der Akamai EAA-Konsole mit Einstellungen für „Customize UI“ (Benutzeroberfläche anpassen), „Language settings“ (Spracheinstellungen) und „Themes“ (Designs).](./media/header-akamai-tutorial/customizationui.png)
+![Screenshot der Registerkarte „Customization“ (Anpassung) der Akamai EAA-Konsole mit Einstellungen für „Customize UI“ (Benutzeroberfläche anpassen), „Language settings“ (Spracheinstellungen) und „Themes“ (Designs).](./media/header-akamai-tutorial/customization.png)
 
 ### <a name="advanced-settings"></a>Erweiterte Einstellungen
 
 Überspringen Sie die erweiterten Einstellungen. (Weitere Informationen finden Sie in der Akamai-Dokumentation.)
 
-![Screenshot der Registerkarte „Advanced Settings“ (Erweiterte Einstellungen) der Akamai-EAA-Konsole mit Einstellungen für „EAA Client“ (EAA-Client), „Advanced“ (Erweitert) und „OIDC to SAML bridging“ (OIDC zu SAML-Bridging).](./media/header-akamai-tutorial/advancesettings.png)
+![Screenshot der Registerkarte „Advanced Settings“ (Erweiterte Einstellungen) der Akamai-EAA-Konsole mit Einstellungen für „EAA Client“ (EAA-Client), „Advanced“ (Erweitert) und „OIDC to SAML bridging“ (OIDC zu SAML-Bridging).](./media/header-akamai-tutorial/advance-settings.png)
 
 ### <a name="deployment"></a>Bereitstellung
 
@@ -267,115 +259,115 @@ Headerbasierte Authentifizierung von Akamai
 
 1. Wählen Sie im Assistenten zum Hinzufügen von Anwendungen die Option **Custom HTTP** (Benutzerdefiniertes HTTP) aus.
 
-    ![Screenshot des Assistenten zum Hinzufügen von Anwendungen der Akamai-EAA-Konsole mit „Custom HTTP“ (Benutzerdefiniertes HTTP) im Abschnitt „Access Apps“ (Zugriff auf Apps).](./media/header-akamai-tutorial/configure05.png)
+    ![Screenshot des Assistenten zum Hinzufügen von Anwendungen der Akamai-EAA-Konsole mit „Custom HTTP“ (Benutzerdefiniertes HTTP) im Abschnitt „Access Apps“ (Zugriff auf Apps).](./media/header-akamai-tutorial/configure-5.png)
 
 2. Geben Sie unter **Application Name** (Anwendungsname) einen Anwendungsnamen und unter **Description** (Beschreibung) eine Beschreibung ein.
 
-    ![Screenshot des Dialogfelds „Custom HTTP App“ (Benutzerdefiniertes HTTP-App) mit Einstellungen für „Application Name“ (Anwendungsname) und „Description“ (Beschreibung).](./media/header-akamai-tutorial/configure06.png)
+    ![Screenshot des Dialogfelds „Custom HTTP App“ (Benutzerdefiniertes HTTP-App) mit Einstellungen für „Application Name“ (Anwendungsname) und „Description“ (Beschreibung).](./media/header-akamai-tutorial/configure-6.png)
 
-    ![Screenshot der Registerkarte „General“ (Allgemein) der Akamai EAA-Konsole mit allgemeinen Einstellungen für „MYHEADERAPP“.](./media/header-akamai-tutorial/configure07.png)
+    ![Screenshot der Registerkarte „General“ (Allgemein) der Akamai EAA-Konsole mit allgemeinen Einstellungen für „MYHEADERAPP“.](./media/header-akamai-tutorial/configure-7.png)
 
-    ![Screenshot der Akamai-EAA-Konsole mit Einstellungen für „Certificate“ (Zertifikat) und „Location“ (Speicherort).](./media/header-akamai-tutorial/configure08.png)
+    ![Screenshot der Akamai-EAA-Konsole mit Einstellungen für „Certificate“ (Zertifikat) und „Location“ (Speicherort).](./media/header-akamai-tutorial/configure-8.png)
 
 #### <a name="authentication"></a>Authentifizierung
 
 1. Wählen Sie die Registerkarte **Authentication** (Authentifizierung) aus.
 
-    ![Screenshot der Akamai-EAA-Konsole, auf der die Registerkarte „Authentication“ (Authentifizierung) ausgewählt ist.](./media/header-akamai-tutorial/configure09.png)
+    ![Screenshot der Akamai-EAA-Konsole, auf der die Registerkarte „Authentication“ (Authentifizierung) ausgewählt ist.](./media/header-akamai-tutorial/configure-9.png)
 
 2. Weisen Sie den **Identitätsanbieter** zu.
 
-    ![Screenshot der Registerkarte „Authentication“ (Authentifizierung) der Akamai EAA-Konsole für MYHEADERAPP, wobei der Identitätsanbieter auf „Azure AD SSO“ festgelegt ist.](./media/header-akamai-tutorial/configure10.png)
+    ![Screenshot der Registerkarte „Authentication“ (Authentifizierung) der Akamai EAA-Konsole für MYHEADERAPP, wobei der Identitätsanbieter auf „Azure AD SSO“ festgelegt ist.](./media/header-akamai-tutorial/configure-10.png)
 
 #### <a name="services"></a>Dienste
 
 Klicken Sie auf „Save“ (Speichern), und gehen Sie zu „Authentication“ (Authentifizierung).
 
-![Screenshot der Registerkarte „Services“ (Dienste) der Akamai EAA-Konsole für MYHEADERAPP mit der Schaltfläche „Save“ (Speichern) und der Schaltfläche zum Wechseln zu „Advanced Settings“ (Erweiterte Einstellungen) in der unteren rechten Ecke.](./media/header-akamai-tutorial/configure11.png)
+![Screenshot der Registerkarte „Services“ (Dienste) der Akamai EAA-Konsole für MYHEADERAPP mit der Schaltfläche „Save“ (Speichern) und der Schaltfläche zum Wechseln zu „Advanced Settings“ (Erweiterte Einstellungen) in der unteren rechten Ecke.](./media/header-akamai-tutorial/configure-11.png)
 
 #### <a name="advanced-settings"></a>Erweiterte Einstellungen
 
 1. Geben Sie unter **Custom HTTP Headers** (Benutzerdefinierte HTTP-Header) Werte für **Custom Header** (Benutzerdefinierter Header) und **SAML Attribute** (SAML-Attribut) ein.
 
-    ![Screenshot der Registerkarte „Advanced Settings“ (Erweiterte Einstellungen) der Akamai-EAA-Konsole, auf der das Feld „SSO Logged URL“ (SSO-protokollierte URL) unter „Authentication“ (Authentifizierung) hervorgehoben ist.](./media/header-akamai-tutorial/configure12.png)
+    ![Screenshot der Registerkarte „Advanced Settings“ (Erweiterte Einstellungen) der Akamai-EAA-Konsole, auf der das Feld „SSO Logged URL“ (SSO-protokollierte URL) unter „Authentication“ (Authentifizierung) hervorgehoben ist.](./media/header-akamai-tutorial/configure-12.png)
 
 1. Klicken Sie auf die Schaltfläche **Save and go to Deployment** (Speichern und zur Bereitstellung wechseln).
 
-    ![Screenshot der Registerkarte „Advanced Settings“ (Erweiterte Einstellungen) der Akamai EAA-Konsole mit der Schaltfläche „Save“ (Speichern) und der Schaltfläche zum Wechseln zu „Deployment“ (Bereitstellung) in der unteren rechten Ecke.](./media/header-akamai-tutorial/configure13.png)
+    ![Screenshot der Registerkarte „Advanced Settings“ (Erweiterte Einstellungen) der Akamai EAA-Konsole mit der Schaltfläche „Save“ (Speichern) und der Schaltfläche zum Wechseln zu „Deployment“ (Bereitstellung) in der unteren rechten Ecke.](./media/header-akamai-tutorial/configure-13.png)
 
 #### <a name="deploy-the-application"></a>Bereitstellen der Anwendung
 
 1. Klicken Sie auf die Schaltfläche **Deploy Application** (Anwendung bereitstellen).
 
-    ![Screenshot der Registerkarte „Deployment“ (Bereitstellung) der Akamai EAA-Konsole mit der Schaltfläche „Deploy application“ (Anwendung bereitstellen).](./media/header-akamai-tutorial/configure14.png)
+    ![Screenshot der Registerkarte „Deployment“ (Bereitstellung) der Akamai EAA-Konsole mit der Schaltfläche „Deploy application“ (Anwendung bereitstellen).](./media/header-akamai-tutorial/configure-14.png)
 
 1. Vergewissern Sie sich, dass die Anwendung erfolgreich bereitgestellt wurde.
 
-    ![Screenshot der Registerkarte „Deployment“ (Bereitstellung) der Akamai EAA-Konsole mit der Anwendungsstatusmeldung: „Application Successfully Deployed“ (Anwendung erfolgreich bereitgestellt).](./media/header-akamai-tutorial/configure15.png)
+    ![Screenshot der Registerkarte „Deployment“ (Bereitstellung) der Akamai EAA-Konsole mit der Anwendungsstatusmeldung: „Application Successfully Deployed“ (Anwendung erfolgreich bereitgestellt).](./media/header-akamai-tutorial/configure-15.png)
 
 1. Endbenutzererfahrung:
 
-    ![Screenshot des Begrüßungsbildschirms für „myapps.microsoft.com“ mit einem Hintergrundbild und einem Anmeldedialogfeld.](./media/header-akamai-tutorial/enduser01.png)
+    ![Screenshot des Begrüßungsbildschirms für „myapps.microsoft.com“ mit einem Hintergrundbild und einem Anmeldedialogfeld.](./media/header-akamai-tutorial/end-user-1.png)
 
-    ![Screenshot mit einem Teil eines Apps-Fensters mit Symbolen für Add-In, HRWEB, Akamai – CorpApps, Ausgaben, Gruppen und Zugriffsüberprüfungen. ](./media/header-akamai-tutorial/enduser02.png)
+    ![Screenshot mit einem Teil eines Apps-Fensters mit Symbolen für Add-In, HRWEB, Akamai – CorpApps, Ausgaben, Gruppen und Zugriffsüberprüfungen. ](./media/header-akamai-tutorial/end-user-2.png)
 
 1. Bedingter Zugriff:
 
-    ![Screenshot der Meldung: Anmeldeanforderung bestätigen. Wir haben eine Benachrichtigung an Ihr mobiles Gerät gesendet. Bitte antworten Sie, um fortzufahren.](./media/header-akamai-tutorial/conditionalaccess01.png)
+    ![Screenshot der Meldung: Anmeldeanforderung bestätigen. Wir haben eine Benachrichtigung an Ihr mobiles Gerät gesendet. Bitte antworten Sie, um fortzufahren.](./media/header-akamai-tutorial/conditional-access-1.png)
 
-    ![Screenshot des Bildschirms „Anwendungen“ mit einem Symbol für MyHeaderApp.](./media/header-akamai-tutorial/conditionalaccess02.png)
+    ![Screenshot des Bildschirms „Anwendungen“ mit einem Symbol für MyHeaderApp.](./media/header-akamai-tutorial/conditional-access-2.png)
 
 #### <a name="remote-desktop"></a>Remotedesktop
 
 1. Wählen Sie im Assistenten zum Hinzufügen von Anwendungen die Option **RDP** aus.
 
-    ![Screenshot des Assistenten zum Hinzufügen von Anwendungen der Akamai-EAA-Konsole mit „RDP“ in der Liste der Apps im Abschnitt „Access Apps“ (Zugriff auf Apps).](./media/header-akamai-tutorial/configure16.png)
+    ![Screenshot des Assistenten zum Hinzufügen von Anwendungen der Akamai-EAA-Konsole mit „RDP“ in der Liste der Apps im Abschnitt „Access Apps“ (Zugriff auf Apps).](./media/header-akamai-tutorial/configure-16.png)
 
 1. Geben Sie unter **Application Name** (Anwendungsname) einen Anwendungsnamen und unter **Description** (Beschreibung) eine Beschreibung ein.
 
-    ![Screenshot des Dialogfelds „RDP App“ (RDP-App) mit Einstellungen für „Application Name“ (Anwendungsname) und „Description“ (Beschreibung).](./media/header-akamai-tutorial/configure17.png)
+    ![Screenshot des Dialogfelds „RDP App“ (RDP-App) mit Einstellungen für „Application Name“ (Anwendungsname) und „Description“ (Beschreibung).](./media/header-akamai-tutorial/configure-17.png)
 
-    ![Screenshot der Registerkarte „General“ (Allgemein) der Akamai EAA-Konsole mit Anwendungsidentitätseinstellungen für „SECRETRDPAPP“.](./media/header-akamai-tutorial/configure18.png)
+    ![Screenshot der Registerkarte „General“ (Allgemein) der Akamai EAA-Konsole mit Anwendungsidentitätseinstellungen für „SECRETRDPAPP“.](./media/header-akamai-tutorial/configure-18.png)
 
 1. Geben Sie den Connector dafür an.
 
-    ![Screenshot der Akamai-EAA-Konsole mit Einstellungen für „Certificate“ (Zertifikat) und „Location“ (Speicherort). Zugeordnete Connectors sind auf „USWST-CON1“ festgelegt.](./media/header-akamai-tutorial/configure19.png)
+    ![Screenshot der Akamai-EAA-Konsole mit Einstellungen für „Certificate“ (Zertifikat) und „Location“ (Speicherort). Zugeordnete Connectors sind auf „USWST-CON1“ festgelegt.](./media/header-akamai-tutorial/configure-19.png)
 
 #### <a name="authentication"></a>Authentifizierung
 
 Klicken Sie auf **Save and go to Services** (Speichern und zu Diensten wechseln).
 
-![Screenshot der Registerkarte „Authentication“ (Authentifizierung) der Akamai EAA-Konsole für SECRETRDPAPP mit der Schaltfläche „Save“ (Speichern) und der Schaltfläche zum Wechseln zu „Services“ (Dienste) in der unteren rechten Ecke.](./media/header-akamai-tutorial/configure20.png)
+![Screenshot der Registerkarte „Authentication“ (Authentifizierung) der Akamai EAA-Konsole für SECRETRDPAPP mit der Schaltfläche „Save“ (Speichern) und der Schaltfläche zum Wechseln zu „Services“ (Dienste) in der unteren rechten Ecke.](./media/header-akamai-tutorial/configure-20.png)
 
 #### <a name="services"></a>Dienste
 
 Klicken Sie auf **Save and go to Advanced Settings** (Speichern und zu erweiterten Einstellungen wechseln).
 
-![Screenshot der Registerkarte „Services“ (Dienste) der Akamai EAA-Konsole für SECRETRDPAPP mit der Schaltfläche „Save“ (Speichern) und der Schaltfläche zum Wechseln zu „Advanced Settings“ (Erweiterte Einstellungen) in der unteren rechten Ecke.](./media/header-akamai-tutorial/configure21.png)
+![Screenshot der Registerkarte „Services“ (Dienste) der Akamai EAA-Konsole für SECRETRDPAPP mit der Schaltfläche „Save“ (Speichern) und der Schaltfläche zum Wechseln zu „Advanced Settings“ (Erweiterte Einstellungen) in der unteren rechten Ecke.](./media/header-akamai-tutorial/configure-21.png)
 
 #### <a name="advanced-settings"></a>Erweiterte Einstellungen
 
 1. Klicken Sie auf **Save and go to Deployment** (Speichern und zur Bereitstellung wechseln).
 
-    ![Screenshot der Registerkarte „Advanced Settings“ (Erweiterte Einstellungen) der Akamai EAA-Konsole für SECRETRDPAPP mit den Einstellungen für die Konfiguration des Remotedesktops.](./media/header-akamai-tutorial/configure22.png)
+    ![Screenshot der Registerkarte „Advanced Settings“ (Erweiterte Einstellungen) der Akamai EAA-Konsole für SECRETRDPAPP mit den Einstellungen für die Konfiguration des Remotedesktops.](./media/header-akamai-tutorial/configure-22.png)
 
-    ![Screenshot der Registerkarte „Advanced Settings“ (Erweiterte Einstellungen) der Akamai EAA-Konsole für SECRETRDPAPP mit den Einstellungen für „Authentication“ (Authentifizierung) und die Konfiguration der Integritätsüberprüfung.](./media/header-akamai-tutorial/configure23.png)
+    ![Screenshot der Registerkarte „Advanced Settings“ (Erweiterte Einstellungen) der Akamai EAA-Konsole für SECRETRDPAPP mit den Einstellungen für „Authentication“ (Authentifizierung) und die Konfiguration der Integritätsüberprüfung.](./media/header-akamai-tutorial/configure-23.png)
 
-    ![Screenshot der Registerkarte „Custom HTTP headers“ (Benutzerdefinierte HTTP-Header) der Akamai EAA-Konsole für SECRETRDPAPP mit der Schaltfläche „Save“ (Speichern) und der Schaltfläche zum Wechseln zu „Deployment“ (Bereitstellung) in der unteren rechten Ecke.](./media/header-akamai-tutorial/configure24.png)
+    ![Screenshot der Registerkarte „Custom HTTP headers“ (Benutzerdefinierte HTTP-Header) der Akamai EAA-Konsole für SECRETRDPAPP mit der Schaltfläche „Save“ (Speichern) und der Schaltfläche zum Wechseln zu „Deployment“ (Bereitstellung) in der unteren rechten Ecke.](./media/header-akamai-tutorial/configure-24.png)
 
 1. Endbenutzererfahrung
 
-    ![Screenshot eines „myapps.microsoft.com“-Fensters mit einem Hintergrundbild und einem Anmeldedialogfeld.](./media/header-akamai-tutorial/enduser03.png)
+    ![Screenshot eines „myapps.microsoft.com“-Fensters mit einem Hintergrundbild und einem Anmeldedialogfeld.](./media/header-akamai-tutorial/end-user-3.png)
 
-    ![Screenshot des Fensters „Apps“ von „myapps.microsoft.com“ mit Symbolen für Add-In, HRWEB, Akamai – CorpApps, Ausgaben, Gruppen und Zugriffsüberprüfungen.](./media/header-akamai-tutorial/enduser02.png)
+    ![Screenshot des Fensters „Apps“ von „myapps.microsoft.com“ mit Symbolen für Add-In, HRWEB, Akamai – CorpApps, Ausgaben, Gruppen und Zugriffsüberprüfungen.](./media/header-akamai-tutorial/end-user-2.png)
 
 1. Bedingter Zugriff
 
-    ![Screenshot der Meldung über bedingten Zugriff: Anmeldeanforderung bestätigen. Wir haben eine Benachrichtigung an Ihr mobiles Gerät gesendet. Bitte antworten Sie, um fortzufahren.](./media/header-akamai-tutorial/conditionalaccess04.png)
+    ![Screenshot der Meldung über bedingten Zugriff: Anmeldeanforderung bestätigen. Wir haben eine Benachrichtigung an Ihr mobiles Gerät gesendet. Bitte antworten Sie, um fortzufahren.](./media/header-akamai-tutorial/conditional-access-4.png)
 
-    ![Screenshot des Bildschirms „Applications“ (Anwendungen) mit Symbolen für MyHeaderApp und SecretRDPApp.](./media/header-akamai-tutorial/conditionalaccess05.png)
+    ![Screenshot des Bildschirms „Applications“ (Anwendungen) mit Symbolen für MyHeaderApp und SecretRDPApp.](./media/header-akamai-tutorial/conditional-access-5.png)
 
-    ![Screenshot des Windows Server 2012 RS-Bildschirms mit generischen Benutzersymbolen. Die Symbole für „Administrator“, „user0“ und „user1“ zeigen, dass diese Benutzer angemeldet sind.](./media/header-akamai-tutorial/conditionalaccess06.png)
+    ![Screenshot des Windows Server 2012 RS-Bildschirms mit generischen Benutzersymbolen. Die Symbole für „Administrator“, „user0“ und „user1“ zeigen, dass diese Benutzer angemeldet sind.](./media/header-akamai-tutorial/conditional-access-6.png)
 
 1. Alternativ können Sie die RDP-Anwendungs-URL auch direkt eingeben.
 
@@ -383,15 +375,15 @@ Klicken Sie auf **Save and go to Advanced Settings** (Speichern und zu erweitert
 
 1. Navigieren Sie zu „Add Applications“ (Anwendungen hinzufügen), und wählen Sie **SSH** aus.
 
-    ![Screenshot des Assistenten zum Hinzufügen von Anwendungen der Akamai-EAA-Konsole mit „SSH“ in der Liste der Apps im Abschnitt „Access Apps“ (Zugriff auf Apps).](./media/header-akamai-tutorial/configure25.png)
+    ![Screenshot des Assistenten zum Hinzufügen von Anwendungen der Akamai-EAA-Konsole mit „SSH“ in der Liste der Apps im Abschnitt „Access Apps“ (Zugriff auf Apps).](./media/header-akamai-tutorial/configure-25.png)
 
 1. Geben Sie unter **Application Name** (Anwendungsname) einen Anwendungsnamen und unter **Description** (Beschreibung) eine Beschreibung ein.
 
-    ![Screenshot des Dialogfelds „SSH App“ (SSH-App) mit Einstellungen für „Application Name“ (Anwendungsname) und „Description“ (Beschreibung).](./media/header-akamai-tutorial/configure26.png)
+    ![Screenshot des Dialogfelds „SSH App“ (SSH-App) mit Einstellungen für „Application Name“ (Anwendungsname) und „Description“ (Beschreibung).](./media/header-akamai-tutorial/configure-26.png)
 
 1. Konfigurieren Sie die Anwendungsidentität.
 
-    ![Screenshot der Registerkarte „General“ (Allgemein) der Akamai EAA-Konsole mit Anwendungsidentitätseinstellungen für „SSH-SECURE“.](./media/header-akamai-tutorial/configure27.png)
+    ![Screenshot der Registerkarte „General“ (Allgemein) der Akamai EAA-Konsole mit Anwendungsidentitätseinstellungen für „SSH-SECURE“.](./media/header-akamai-tutorial/configure-27.png)
 
     a. Geben Sie einen Namen und eine Beschreibung ein.
 
@@ -407,43 +399,43 @@ Klicken Sie auf **Save and go to Advanced Settings** (Speichern und zu erweitert
 
 Klicken Sie auf **Save and go to Services** (Speichern und zu Diensten wechseln).
 
-![Screenshot der Registerkarte „Authentication“ (Authentifizierung) der Akamai EAA-Konsole für SSH-SECURE mit der Schaltfläche „Save“ (Speichern) und der Schaltfläche zum Wechseln zu „Services“ (Dienste) in der unteren rechten Ecke.](./media/header-akamai-tutorial/configure28.png)
+![Screenshot der Registerkarte „Authentication“ (Authentifizierung) der Akamai EAA-Konsole für SSH-SECURE mit der Schaltfläche „Save“ (Speichern) und der Schaltfläche zum Wechseln zu „Services“ (Dienste) in der unteren rechten Ecke.](./media/header-akamai-tutorial/configure-28.png)
 
 #### <a name="services"></a>Dienste
 
 Klicken Sie auf **Save and go to Advanced Settings** (Speichern und zu erweiterten Einstellungen wechseln).
 
-![Screenshot der Registerkarte „Services“ (Dienste) der Akamai EAA-Konsole für SSH-SECURE mit der Schaltfläche „Save“ (Speichern) und der Schaltfläche zum Wechseln zu „Advanced Settings“ (Erweiterte Einstellungen) in der unteren rechten Ecke.](./media/header-akamai-tutorial/configure29.png)
+![Screenshot der Registerkarte „Services“ (Dienste) der Akamai EAA-Konsole für SSH-SECURE mit der Schaltfläche „Save“ (Speichern) und der Schaltfläche zum Wechseln zu „Advanced Settings“ (Erweiterte Einstellungen) in der unteren rechten Ecke.](./media/header-akamai-tutorial/configure-29.png)
 
 #### <a name="advanced-settings"></a>Erweiterte Einstellungen
 
 Klicken Sie auf „Save and go to Deployment“ (Speichern und zur Bereitstellung wechseln).
 
-![Screenshot der Registerkarte „Advanced Settings“ (Erweiterte Einstellungen) der Akamai EAA-Konsole für SSH-SECURE mit den Einstellungen für „Authentication“ (Authentifizierung) und die Konfiguration der Integritätsüberprüfung.](./media/header-akamai-tutorial/configure30.png)
+![Screenshot der Registerkarte „Advanced Settings“ (Erweiterte Einstellungen) der Akamai EAA-Konsole für SSH-SECURE mit den Einstellungen für „Authentication“ (Authentifizierung) und die Konfiguration der Integritätsüberprüfung.](./media/header-akamai-tutorial/configure-30.png)
 
-![Screenshot der Registerkarte „Custom HTTP headers“ (Benutzerdefinierte HTTP-Header) der Akamai EAA-Konsole für SSH-SECURE mit der Schaltfläche „Save“ (Speichern) und der Schaltfläche zum Wechseln zu „Deployment“ (Bereitstellung) in der unteren rechten Ecke.](./media/header-akamai-tutorial/configure31.png)
+![Screenshot der Registerkarte „Custom HTTP headers“ (Benutzerdefinierte HTTP-Header) der Akamai EAA-Konsole für SSH-SECURE mit der Schaltfläche „Save“ (Speichern) und der Schaltfläche zum Wechseln zu „Deployment“ (Bereitstellung) in der unteren rechten Ecke.](./media/header-akamai-tutorial/configure-31.png)
 
 #### <a name="deployment"></a>Bereitstellung
 
 1. Klicken Sie auf **Deploy Application** (Anwendung bereitstellen).
 
-    ![Screenshot der Registerkarte „Deployment“ (Bereitstellung) der Akamai EAA-Konsole für SSH-SECURE mit der Schaltfläche „Deploy application“ (Anwendung bereitstellen).](./media/header-akamai-tutorial/configure32.png)
+    ![Screenshot der Registerkarte „Deployment“ (Bereitstellung) der Akamai EAA-Konsole für SSH-SECURE mit der Schaltfläche „Deploy application“ (Anwendung bereitstellen).](./media/header-akamai-tutorial/configure-32.png)
 
 1. Endbenutzererfahrung
 
-    ![Screenshot des Anmeldedialogfelds eines myapps.microsoft.com-Fensters.](./media/header-akamai-tutorial/enduser03.png)
+    ![Screenshot des Anmeldedialogfelds eines myapps.microsoft.com-Fensters.](./media/header-akamai-tutorial/end-user-3.png)
 
-    ![Screenshot des Fensters „Apps“ von „myapps.microsoft.com“ mit Symbolen für Add-In, HRWEB, Akamai – CorpApps, Ausgaben, Gruppen und Zugriffsüberprüfungen.](./media/header-akamai-tutorial/enduser04.png)
+    ![Screenshot des Fensters „Apps“ von „myapps.microsoft.com“ mit Symbolen für Add-In, HRWEB, Akamai – CorpApps, Ausgaben, Gruppen und Zugriffsüberprüfungen.](./media/header-akamai-tutorial/end-user-4.png)
 
 1. Bedingter Zugriff
 
-    ![Screenshot der Meldung: Anmeldeanforderung bestätigen. Wir haben eine Benachrichtigung an Ihr mobiles Gerät gesendet. Bitte antworten Sie, um fortzufahren.](./media/header-akamai-tutorial/conditionalaccess04.png)
+    ![Screenshot der Meldung: Anmeldeanforderung bestätigen. Wir haben eine Benachrichtigung an Ihr mobiles Gerät gesendet. Bitte antworten Sie, um fortzufahren.](./media/header-akamai-tutorial/conditional-access-4.png)
 
-    ![Screenshot des Bildschirms „Applications“ (Anwendungen) mit Symbolen für MyHeaderApp, SSH Secure und SecretRDPApp.](./media/header-akamai-tutorial/conditionalaccess07.png)
+    ![Screenshot des Bildschirms „Applications“ (Anwendungen) mit Symbolen für MyHeaderApp, SSH Secure und SecretRDPApp.](./media/header-akamai-tutorial/conditional-access-7.png)
 
-    ![Screenshot eines Befehlsfensters für „ssh-secure-go.akamai-access.com“ mit einer Kennworteingabeaufforderung.](./media/header-akamai-tutorial/conditionalaccess08.png)
+    ![Screenshot eines Befehlsfensters für „ssh-secure-go.akamai-access.com“ mit einer Kennworteingabeaufforderung.](./media/header-akamai-tutorial/conditional-access-8.png)
 
-    ![Screenshot eines Befehlsfensters für „ssh-secure-go.akamai-access.com“ mit Informationen über die Anwendung und einer Eingabeaufforderung für Befehle.](./media/header-akamai-tutorial/conditionalaccess09.png)
+    ![Screenshot eines Befehlsfensters für „ssh-secure-go.akamai-access.com“ mit Informationen über die Anwendung und einer Eingabeaufforderung für Befehle.](./media/header-akamai-tutorial/conditional-access-9.png)
 
 ### <a name="kerberos-authentication"></a>Kerberos-Authentifizierung
 
@@ -451,46 +443,46 @@ Im folgenden Beispiel wird ein interner Webserver (<code>http://frp-app1.superde
 
 #### <a name="general-tab"></a>Registerkarte Allgemein
 
-![Screenshot der Registerkarte „General“ (Allgemein) der Akamai EAA-Konsole für MYKERBOROSAPP.](./media/header-akamai-tutorial/generaltab.png)
+![Screenshot der Registerkarte „General“ (Allgemein) der Akamai EAA-Konsole für MYKERBOROSAPP.](./media/header-akamai-tutorial/general-tab.png)
 
 #### <a name="authentication-tab"></a>Registerkarte „Authentication“ (Authentifizierung)
 
 Weisen Sie den Identitätsanbieter zu.
 
-![Screenshot der Registerkarte „Authentication“ (Authentifizierung) der Akamai EAA-Konsole für MYKERBOROSAPP, wobei „Identity provider“ (Identitätsanbieter) auf „Azure AD SSO“ festgelegt ist.](./media/header-akamai-tutorial/authenticationtab.png)
+![Screenshot der Registerkarte „Authentication“ (Authentifizierung) der Akamai EAA-Konsole für MYKERBOROSAPP, wobei „Identity provider“ (Identitätsanbieter) auf „Azure AD SSO“ festgelegt ist.](./media/header-akamai-tutorial/authentication-tab.png)
 
 #### <a name="services-tab"></a>Registerkarte „Services“ (Dienste)
 
-![Screenshot der Registerkarte „Services“ (Dienste) der Akamai EAA-Konsole für MYKERBOROSAPP.](./media/header-akamai-tutorial/servicestab.png)
+![Screenshot der Registerkarte „Services“ (Dienste) der Akamai EAA-Konsole für MYKERBOROSAPP.](./media/header-akamai-tutorial/services-tab.png)
 
 #### <a name="advanced-settings"></a>Erweiterte Einstellungen
 
-![Screenshot der Registerkarte „Advanced Settings“ (Erweiterte Einstellungen) der Akamai EAA-Konsole für MYKERBOROSAPP mit Einstellungen für „Related Applications“ (Verwandte Anwendungen) und „Authentication“ (Authentifizierung).](./media/header-akamai-tutorial/advancesettings02.png)
+![Screenshot der Registerkarte „Advanced Settings“ (Erweiterte Einstellungen) der Akamai EAA-Konsole für MYKERBOROSAPP mit Einstellungen für „Related Applications“ (Verwandte Anwendungen) und „Authentication“ (Authentifizierung).](./media/header-akamai-tutorial/advance-settings-2.png)
 
 > [!NOTE]
 > Der SPN für den Webserver muss im Format SPN@Domain angegeben werden. (In dieser Demo wird beispielsweise `HTTP/frp-app1.superdemo.live@SUPERDEMO.LIVE` verwendet.) Lassen Sie die restlichen Einstellungen unverändert.
 
 #### <a name="deployment-tab"></a>Registerkarte „Deployment“ (Bereitstellung)
 
-![Screenshot der Registerkarte „Deployment“ (Bereitstellung) der Akamai EAA-Konsole für MYKERBOROSAPP mit der Schaltfläche „Deploy application“ (Anwendung bereitstellen).](./media/header-akamai-tutorial/deploymenttab.png)
+![Screenshot der Registerkarte „Deployment“ (Bereitstellung) der Akamai EAA-Konsole für MYKERBOROSAPP mit der Schaltfläche „Deploy application“ (Anwendung bereitstellen).](./media/header-akamai-tutorial/deployment-tab.png)
 
 #### <a name="adding-directory"></a>Hinzufügen eines Verzeichnisses
 
 1. Wählen Sie in der Dropdownliste die Option **AD** aus.
 
-    ![Screenshot des Fensters „Directories“ (Verzeichnisse) der Akamai EAA-Konsole mit dem Dialogfeld „Create New Directory“ (Neues Verzeichnis erstellen), in dem „AD“ in der Dropdownliste für den Verzeichnistyp ausgewählt ist.](./media/header-akamai-tutorial/configure33.png)
+    ![Screenshot des Fensters „Directories“ (Verzeichnisse) der Akamai EAA-Konsole mit dem Dialogfeld „Create New Directory“ (Neues Verzeichnis erstellen), in dem „AD“ in der Dropdownliste für den Verzeichnistyp ausgewählt ist.](./media/header-akamai-tutorial/configure-33.png)
 
 1. Geben Sie die erforderlichen Daten an.
 
-    ![Screenshot des Fensters „SUPERDEMOLIVE“ der Akamai EAA-Konsole mit Einstellungen für „DirectoryName“ (Verzeichnisname), „Directory Service“ (Verzeichnisdienst), Connector und „Attribute mapping“ (Attributzuordnung).](./media/header-akamai-tutorial/configure34.png)
+    ![Screenshot des Fensters „SUPERDEMOLIVE“ der Akamai EAA-Konsole mit Einstellungen für „DirectoryName“ (Verzeichnisname), „Directory Service“ (Verzeichnisdienst), Connector und „Attribute mapping“ (Attributzuordnung).](./media/header-akamai-tutorial/configure-34.png)
 
 1. Überprüfen Sie die Verzeichniserstellung.
 
-    ![Screenshot des Fensters „Directories“ (Verzeichnisse) der Akamai EAA-Konsole mit dem hinzugefügten Verzeichnis „superdemo.live“.](./media/header-akamai-tutorial/directorydomain.png)
+    ![Screenshot des Fensters „Directories“ (Verzeichnisse) der Akamai EAA-Konsole mit dem hinzugefügten Verzeichnis „superdemo.live“.](./media/header-akamai-tutorial/directory-domain.png)
 
 1. Fügen Sie die Gruppen/Organisationseinheiten hinzu, die Zugriff benötigen.
 
-    ![Screenshot der Einstellungen für das Verzeichnis „superdemo.live“. Das Symbol, das Sie zum Hinzufügen von Gruppen oder Organisationseinheiten auswählen, wird hervorgehoben.](./media/header-akamai-tutorial/addgroup.png)
+    ![Screenshot der Einstellungen für das Verzeichnis „superdemo.live“. Das Symbol, das Sie zum Hinzufügen von Gruppen oder Organisationseinheiten auswählen, wird hervorgehoben.](./media/header-akamai-tutorial/add-group.png)
 
 1. Hier heißt die Gruppe „EAAGroup“ und hat ein einzelnes Mitglied.
 
@@ -498,7 +490,7 @@ Weisen Sie den Identitätsanbieter zu.
 
 1. Fügen Sie das Verzeichnis dem Identitätsanbieter hinzu, indem Sie unter **Identity** > **Identity Providers** (Identität > Identitätsanbieter) auf der Registerkarte **Directories** (Verzeichnisse) auf **Assign directory** (Verzeichnis zuweisen) klicken.
 
-    ![Screenshot der Registerkarte „Directories“ (Verzeichnisse) der Akamai EAA-Konsole für Azure AD SSO, auf der „superdemo.live“ in der Liste der derzeit zugewiesenen Verzeichnisse angezeigt wird.](./media/header-akamai-tutorial/assigndirectory.png)
+    ![Screenshot der Registerkarte „Directories“ (Verzeichnisse) der Akamai EAA-Konsole für Azure AD SSO, auf der „superdemo.live“ in der Liste der derzeit zugewiesenen Verzeichnisse angezeigt wird.](./media/header-akamai-tutorial/assign-directory.png)
 
 ### <a name="configure-kcd-delegation-for-eaa-walkthrough"></a>Konfigurieren der KCD-Delegierung für EAA: Exemplarische Vorgehensweise
 
@@ -506,7 +498,7 @@ Weisen Sie den Identitätsanbieter zu.
 
 1. In dem Beispiel wird ein Konto namens **EAADelegation** verwendet. Sie können hierzu das Snap-In **Active Directory-Benutzer und -Computer** verwenden.
 
-    ![Screenshot der Registerkarte „Directories“ (Verzeichnisse) der Akamai EAA-Konsole für Azure AD SSO. Das Verzeichnis „superdemo.live“ ist unter den derzeit zugewiesenen Verzeichnissen aufgeführt.](./media/header-akamai-tutorial/assigndirectory.png)
+    ![Screenshot der Registerkarte „Directories“ (Verzeichnisse) der Akamai EAA-Konsole für Azure AD SSO. Das Verzeichnis „superdemo.live“ ist unter den derzeit zugewiesenen Verzeichnissen aufgeführt.](./media/header-akamai-tutorial/assign-directory.png)
 
     > [!NOTE]
     > Der Benutzername muss in einem bestimmten Format vorliegen, das auf dem für **Identity Intercept** (Identität abfangen) angegebenen Namen basiert. In Abbildung 1 ist zu sehen, dass dieser **corpapps.login.go.akamai-access.com** lautet.
@@ -561,25 +553,25 @@ Weisen Sie den Identitätsanbieter zu.
 
 1. Wählen Sie als Schlüsseltabellentyp die Option **Kerberos Delegation** (Kerberos-Delegierung) aus.
 
-    ![Screenshot des Bildschirms „EAAKEYTAB“ der Akamai EAA-Konsole mit den Schlüsseltabelleneinstellungen. Der Schlüsseltabellentyp ist auf „Kerberos Delegation (Kerberos-Delegierung) festgelegt.](./media/header-akamai-tutorial/keytabdelegation.png)
+    ![Screenshot des Bildschirms „EAAKEYTAB“ der Akamai EAA-Konsole mit den Schlüsseltabelleneinstellungen. Der Schlüsseltabellentyp ist auf „Kerberos Delegation (Kerberos-Delegierung) festgelegt.](./media/header-akamai-tutorial/keytab-delegation.png)
 
 1. Vergewissern Sie sich, dass die Schlüsseltabelle als bereitgestellt und überprüft angezeigt wird.
 
-    ![Screenshot des KEYTABS-Bildschirms der Akamai EAA-Konsole, auf dem die EAA-Schlüsseltabelle als „Schlüsseltabelle bereitgestellt und verifiziert“ aufgeführt ist.](./media/header-akamai-tutorial/keytabs02.png)
+    ![Screenshot des KEYTABS-Bildschirms der Akamai EAA-Konsole, auf dem die EAA-Schlüsseltabelle als „Schlüsseltabelle bereitgestellt und verifiziert“ aufgeführt ist.](./media/header-akamai-tutorial/keytabs-2.png)
 
 1. Benutzererfahrung
 
-    ![Screenshot des Anmeldedialogfelds unter „myapps.microsoft.com“. ](./media/header-akamai-tutorial/enduser03.png)
+    ![Screenshot des Anmeldedialogfelds unter „myapps.microsoft.com“. ](./media/header-akamai-tutorial/end-user-3.png)
 
-    ![Screenshot des Fensters „Apps“ für „myapps.microsoft.com“ mit App-Symbolen.](./media/header-akamai-tutorial/enduser04.png)
+    ![Screenshot des Fensters „Apps“ für „myapps.microsoft.com“ mit App-Symbolen.](./media/header-akamai-tutorial/end-user-4.png)
 
 1. Bedingter Zugriff
 
-    ![Screenshot mit einer Meldung zum Genehmigen der Anmeldeanforderung. die Nachricht.](./media/header-akamai-tutorial/conditionalaccess04.png)
+    ![Screenshot mit einer Meldung zum Genehmigen der Anmeldeanforderung. die Nachricht.](./media/header-akamai-tutorial/conditional-access-4.png)
 
-    ![Screenshot des Bildschirms „Applications“ (Anwendungen) mit Symbolen für MyHeaderApp, SSH Secure, SecretRDPApp und myKerberosApp.](./media/header-akamai-tutorial/conditionalaccess10.png)
+    ![Screenshot des Bildschirms „Applications“ (Anwendungen) mit Symbolen für MyHeaderApp, SSH Secure, SecretRDPApp und myKerberosApp.](./media/header-akamai-tutorial/conditional-access-10.png)
 
-    ![Screenshot des Begrüßungsbildschirms für „myKerberosApp“. Die Meldung „Welcome superdemo\user1“ wird über einem Hintergrundbild angezeigt.](./media/header-akamai-tutorial/conditionalaccess11.png)
+    ![Screenshot des Begrüßungsbildschirms für „myKerberosApp“. Die Meldung „Welcome superdemo\user1“ wird über einem Hintergrundbild angezeigt.](./media/header-akamai-tutorial/conditional-access-11.png)
 
 ### <a name="create-akamai-test-user"></a>Erstellen eines Akamai-Testbenutzers
 
@@ -587,16 +579,12 @@ In diesem Abschnitt erstellen Sie in Akamai einen Benutzer namens B. Simon. Arb
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Akamai“ klicken, sollten Sie automatisch bei der Akamai-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der Akamai-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Akamai“ klicken, sollten Sie automatisch bei der Akamai-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
-
-- [Akamai mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+Nach dem Konfigurieren von Akamai können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

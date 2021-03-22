@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie die in der Planungsphase gesammelten Inf
 ms.topic: tutorial
 ms.custom: contperf-fy21q3
 ms.date: 02/17/2021
-ms.openlocfilehash: 6f1e587894d51eae2af4e9f76114f53f27ffefe1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 48b6927407a95d41603c3032f298ffc28def9693
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703856"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462455"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Bereitstellen und Konfigurieren von Azure VMware Solution
 
@@ -35,7 +35,7 @@ Nachdem Sie Azure VMware Solution bereitgestellt haben, erstellen Sie die Jumpbo
 
 :::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Die Azure VMware Solution-Jumpbox erstellen" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
-Gehen Sie wie folgt vor, um einen virtuellen Computer (Virtual Machine, VM) in dem virtuellen Netzwerk zu erstellen, das Sie [im Rahmen des Bereitstellungsprozesses bestimmt oder erstellt haben](production-ready-deployment-steps.md#attach-virtual-network-to-azure-vmware-solution): 
+Gehen Sie wie folgt vor, um einen virtuellen Computer (Virtual Machine, VM) in dem virtuellen Netzwerk zu erstellen, das Sie [im Rahmen des Bereitstellungsprozesses bestimmt oder erstellt haben](production-ready-deployment-steps.md#attach-azure-virtual-network-to-azure-vmware-solution): 
 
 [!INCLUDE [create-avs-jump-box-steps](includes/create-jump-box-steps.md)]
 
@@ -52,7 +52,7 @@ Wenn Sie im Bereitstellungsschritt kein virtuelles Netzwerk definiert und die Ab
 
 Die Jumpbox befindet sich in dem virtuellen Netzwerk, in dem Azure VMware Solution über seine ExpressRoute-Leitung eine Verbindung herstellt.  Wechseln Sie in Azure zur Netzwerkschnittstelle der Jumpbox, und [zeigen Sie die effektiven Routen an](../virtual-network/manage-route-table.md#view-effective-routes).
 
-In der Liste der effektive Routen sollten die Netzwerke angezeigt werden, die während der Azure VMware Solution-Bereitstellung erstellt wurden. Sie sehen mehrere Netzwerke, die von dem [`/22`-Netzwerk](production-ready-deployment-steps.md#ip-address-segment) abgeleitet sind, das Sie beim [Erstellen einer privaten Cloud](#create-an-azure-vmware-solution-private-cloud) definiert haben.  
+In der Liste der effektive Routen sollten die Netzwerke angezeigt werden, die während der Azure VMware Solution-Bereitstellung erstellt wurden. Sie sehen mehrere Netzwerke, die von dem [`/22`-Netzwerk](production-ready-deployment-steps.md#ip-address-segment-for-private-cloud-management) abgeleitet sind, das Sie beim [Erstellen einer privaten Cloud](#create-an-azure-vmware-solution-private-cloud) definiert haben.  
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Netzwerkrouten überprüfen, die von Azure VMware Solution zu Azure Virtual Network aufgeführt sind" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 
