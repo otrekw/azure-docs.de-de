@@ -3,15 +3,15 @@ title: 'Schnellstart: Beitreten zu einer Teams-Besprechung von einer Web-App aus
 description: In diesem Tutorial erfahren Sie, wie Sie mit der Clientbibliothek für Telefonie von Azure Communication Services für JavaScript einer Teams-Besprechung beitreten.
 author: chpalm
 ms.author: mikben
-ms.date: 10/10/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: d022d90aa4558ef5a4973668d4966a30f477a1da
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 43f6241f0da0ecc9c68cf60e9f1a0482509374f3
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660060"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487990"
 ---
 In diesem Schnellstart erfahren Sie, wie Sie mit der Clientbibliothek für Telefonie von Azure Communication Services für JavaScript einer Teams-Besprechung beitreten.
 
