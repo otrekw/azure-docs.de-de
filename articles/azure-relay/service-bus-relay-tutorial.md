@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie einen lokalen WCF-REST-Die
 ms.topic: tutorial
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: bb2b9b5ed7c263762cc24b8eb2e6d66215147c4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7669bc07ad91933cd31bd2ccd10eaf830d98de7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935703"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710786"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Tutorial: Verfügbarmachen eines lokalen WCF REST-Diensts für einen externen Client mithilfe von Azure WCF Relay
 
@@ -58,7 +58,7 @@ Im Dienstvertrag ist angegeben, welche Vorgänge vom Dienst unterstützt werden.
 1. Wählen Sie unter **Neues Projekt erstellen** die Option **Konsolen-App (.NET Framework)** für C# und dann **Weiter** aus.
 1. Geben Sie dem Projekt den Namen *EchoService*, und wählen Sie **Erstellen** aus.
 
-   ![Erstellen einer Konsolen-App][2]
+   ![Erstellen einer Konsolenanwendung][2]
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Wählen Sie im **NuGet-Paket-Manager** die Option **Durchsuchen** aus, suchen Sie nach **WindowsAzure.ServiceBus**, und wählen Sie diese Option aus. Wählen Sie **Installieren** aus, und akzeptieren Sie die Nutzungsbedingungen.
 
@@ -91,7 +91,7 @@ Im Dienstvertrag ist angegeben, welche Vorgänge vom Dienst unterstützt werden.
     Der Namespacewert unterscheidet sich von dem Namespace, den Sie im gesamten Codebereich verwenden. Der Namespacewert wird stattdessen als eindeutiger Bezeichner für diesen Vertrag verwendet. Das explizite Angeben des Namespace verhindert, dass der Standardwert für den Namespace dem Vertragsnamen hinzugefügt wird.
 
    > [!NOTE]
-   > In der Regel enthält der Dienstvertragsnamespace ein Benennungsschema, das Versionsinformationen umfasst. Durch das Einbeziehen von Versionsinformationen im Dienstvertragsnamespace können Dienste größere Änderungen isolieren, indem ein neuer Dienstvertrag mit einem neuen Namespace definiert und an einem neuen Endpunkt bereitgestellt wird. Auf diese Weise können Clients weiterhin den alten Dienstvertrag verwenden, ohne dass sie aktualisiert werden müssen. Versionsinformationen können aus einer Datumsangabe oder einer Buildnummer bestehen. Weitere Informationen finden Sie unter [Dienstversionsverwaltung](/dotnet/framework/wcf/service-versioning). In diesem Tutorial umfasst das Benennungsschema des Dienstvertragsnamespace keine Versionsinformationen.
+   > In der Regel enthält der Dienstvertragsnamespace ein Benennungsschema, das Versionsinformationen umfasst. Durch das Einbeziehen von Versionsinformationen im Dienstvertragsnamespace können Dienste größere Änderungen isolieren, indem ein neuer Dienstvertrag mit einem neuen Namespace definiert und an einem neuen Endpunkt bereitgestellt wird.  Auf diese Weise können Clients weiterhin den alten Dienstvertrag verwenden, ohne dass sie aktualisiert werden müssen. Versionsinformationen können aus einer Datumsangabe oder einer Buildnummer bestehen. Weitere Informationen finden Sie unter [Dienstversionsverwaltung](/dotnet/framework/wcf/service-versioning). In diesem Tutorial umfasst das Benennungsschema des Dienstvertragsnamespace keine Versionsinformationen.
    >
 
 1. Deklarieren Sie innerhalb der Schnittstelle `IEchoContract` eine Methode für den einzelnen Vorgang, den der Vertrag `IEchoContract` in der Schnittstelle bereitstellt, und wenden Sie das Attribut `OperationContractAttribute` auf die Methode an, die Sie als Teil des öffentlichen WCF-Relayvertrags bereitstellen möchten:
@@ -185,7 +185,7 @@ Die Konfigurationsdatei ähnelt einer WCF-Konfigurationsdatei. Sie enthält den 
 1. Fügen Sie innerhalb der `<system.serviceModel>`-Tags ein `<services>`-Element hinzu. Sie können mehrere Relayanwendungen in einer einzigen Konfigurationsdatei definieren. In diesem Tutorial wird jedoch nur eine Anwendung definiert.
 
     ```xml
-    <?xmlversion="1.0"encoding="utf-8"?>
+    <?xmlversion="1.0" encoding="utf-8"?>
     <configuration>
       <system.serviceModel>
         <services>
@@ -513,7 +513,7 @@ In diesem Schritt erstellen Sie eine *App.config*-Datei für eine Clientbasisanw
 1. Fügen Sie im `system.serviceModel`-Element ein `<client>`-Element hinzu.
 
     ```xml
-    <?xmlversion="1.0"encoding="utf-8"?>
+    <?xmlversion="1.0" encoding="utf-8"?>
     <configuration>
       <system.serviceModel>
         <client>

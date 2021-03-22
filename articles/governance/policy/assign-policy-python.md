@@ -1,15 +1,15 @@
 ---
 title: 'Schnellstart: Neue Richtlinienzuweisung mit Python'
 description: In dieser Schnellstartanleitung erstellen Sie mithilfe von Python eine Azure Policy-Zuweisung zum Identifizieren nicht konformer Ressourcen.
-ms.date: 10/14/2020
+ms.date: 03/02/2021
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: aa67b3a2bae2beb62daa6e64871411ee760f802b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e600f97dafdd1040c22b6e4d9e333f638334b663
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832195"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742329"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mithilfe von Python
 
@@ -40,7 +40,7 @@ Damit Python mit Azure Policy verwendet werden kann, muss die Bibliothek hinzuge
    az login
    ```
 
-1. Installieren Sie in der Python-Umgebung Ihrer Wahl die erforderlichen Bibliotheken für Azure Resource Graph:
+1. Installieren Sie die erforderlichen Bibliotheken für Azure Policy in der Python-Umgebung Ihrer Wahl:
 
    ```bash
    # Add the Python library for Python

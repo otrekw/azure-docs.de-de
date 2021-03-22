@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie die in der Planungsphase gesammelten Inf
 ms.topic: tutorial
 ms.custom: contperf-fy21q3
 ms.date: 02/17/2021
-ms.openlocfilehash: bfd057a19ebe26a66d11b52ddf17c285a1f9a308
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 6f1e587894d51eae2af4e9f76114f53f27ffefe1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652733"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703856"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Bereitstellen und Konfigurieren von Azure VMware Solution
 
@@ -62,7 +62,14 @@ In diesem Beispiel wird für das 10.74.72.0/22-Netzwerk, das bei der Bereitstell
 
 Melden Sie sich bei der Jumpbox an, die Sie im früheren Schritt erstellt haben. Öffnen Sie nach der Anmeldung einen Webbrowser, navigieren Sie sowohl zu vCenter als auch zu NSX-T Manager, und melden Sie sich bei beiden an.  
 
-Sie können die IP-Adressen und Anmeldeinformationen von vCenter und NSX-T Manager im Azure-Portal ermitteln.  Wählen Sie Ihre private Cloud aus, und navigieren Sie in der Ansicht **Übersicht** zu **Identität > Standard**. 
+Sie können die IP-Adressen und Anmeldeinformationen von vCenter und NSX-T Manager im Azure-Portal ermitteln.  Wählen Sie Ihre private Cloud und dann **Verwalten** > **Identität** aus.
+
+>[!TIP]
+>Wählen Sie **Neues Kennwort generieren** aus, um neue vCenter- und NSX-T-Kennwörter zu generieren.
+
+:::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Anzeigen der URLs und Anmeldeinformationen für vCenter und NSX Manager der privaten Cloud" border="true":::
+
+
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>Erstellen eines Netzwerksegments in Ihrer Azure VMware Solution-Umgebung
 

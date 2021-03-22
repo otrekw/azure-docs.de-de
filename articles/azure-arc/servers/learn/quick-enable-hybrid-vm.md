@@ -3,14 +3,14 @@ title: Verbinden eines Hybridcomputers mit Azure Arc-fähigen Servern
 description: Hier erfahren Sie, wie Sie Ihren Hybridcomputer mit Azure Arc-fähigen Servern verbinden und registrieren.
 ms.topic: quickstart
 ms.date: 12/15/2020
-ms.openlocfilehash: 68869854cbfcf6d7297137e6239b2229a20c04a1
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: c52b8d1f7098a7a2a88a9770a3b768b7fea31775
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516785"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646825"
 ---
-# <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>Schnellstart: Verbinden eines Hybridcomputers mit Azure Arc-fähigen Servern
+# <a name="quickstart-connect-hybrid-machines-with-azure-arc-enabled-servers"></a>Schnellstart: Verbinden von Hybridcomputern mit Servern mit Azure Arc-Unterstützung
 
 Mit [Azure Arc-fähigen Servern](../overview.md) können Sie Ihre Windows- und Linux-Computer, die in lokalen Umgebungen, in Edgeumgebungen und in Multicloudumgebungen gehostet werden, verwalten und steuern. In dieser Schnellstartanleitung wird der Connected Machine-Agent auf Ihrem außerhalb von Azure gehosteten Windows- oder Linux-Computer bereitgestellt und für die Verwaltung durch Azure Arc-fähige Server konfiguriert.
 

@@ -8,23 +8,23 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: overview
-ms.date: 09/15/2020
+ms.date: 02/17/2021
 ms.author: ambapat
-ms.openlocfilehash: 2ae7b28d5e9e7a520ee8cbd090b6681d5ad7015a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 3c4bb61217c7b972220a55a4837c2b3db980f2ca
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422755"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095990"
 ---
 # <a name="about-keys"></a>Informationen zu Schlüsseln
 
-Azure Key Vault bietet zwei Arten von Ressourcen für die Speicherung und Verwaltung kryptografischer Schlüssel:
+Azure Key Vault bietet zwei Arten von Ressourcen für die Speicherung und Verwaltung kryptografischer Schlüssel. Vault-Instanzen unterstützen sowohl durch Software als auch durch HSM (Hardware Security Module, Hardwaresicherheitsmodul) geschützte Schlüssel. Verwaltete HSMs unterstützen nur durch HSM geschützte Schlüssel. 
 
 |Ressourcentyp|Schlüsselschutzmethoden|Basis-URL des Datenebenenendpunkts|
 |--|--|--|
 | **Tresore** | Softwaregeschützt<br/><br/>und<br/><br/>Durch HSM geschützt (mit Premium-SKU)</li></ul> | https://{Tresorname}.vault.azure.net |
-| **Pools verwalteter HSMs** | Durch HSM geschützt | https://{HSM-Name}.managedhsm.azure.net |
+| **Verwaltete HSMs** | Durch HSM geschützt | https://{HSM-Name}.managedhsm.azure.net |
 ||||
 
 - **Tresore:** Tresore bieten eine kostengünstige, leicht bereitzustellende, mehrinstanzenfähige, zonenresiliente (sofern verfügbar) und hochverfügbare Schlüsselverwaltungslösung, die für die meisten gängigen Cloudanwendungsszenarien geeignet ist.
@@ -45,7 +45,7 @@ Die grundlegenden JWK/JWA-Spezifikationen wurden erweitert, um Schlüsseltypen z
 Durch HSM geschützte Schlüssel (auch HSM-Schlüssel genannt) werden in einem HSM (Hardwaresicherheitsmodul) verarbeitet und verlassen nie die HSM-Schutzgrenze. 
 
 - Von Tresoren werden **FIPS 140-2 Level 2**-zertifizierte HSMs verwendet, um HSM-Schlüssel in einer gemeinsam genutzten HSM-Back-End-Infrastruktur zu schützen. 
-- Von Pools verwalteter HSMs werden **FIPS 140-2 Level 3**-zertifizierte HSMs verwendet, um Ihre Schlüssel zu schützen. Jeder HSM-Pool ist eine isolierte Einzelmandanteninstanz mit eigener [Sicherheitsdomäne](../managed-hsm/security-domain.md) und vollständiger kryptografischer Isolation von allen anderen HSM-Pools, die die gleiche Hardwareinfrastruktur nutzen.
+- Verwaltete HSMs verwenden durch **FIPS 140-2 Level 3** überprüfte HSMs zum Schützen Ihrer Schlüssel. Jeder HSM-Pool ist eine isolierte Einzelmandanteninstanz mit eigener [Sicherheitsdomäne](../managed-hsm/security-domain.md), die vollständige kryptografische Isolation von allen anderen HSMs bietet, die die gleiche Hardwareinfrastruktur nutzen.
 
 Diese Schlüssel werden in HSM-Pools mit einem einzelnen Mandanten geschützt. Sie können einen RSA-Schlüssel, einen EC-Schlüssel und einen symmetrischen Schlüssel importieren – in Soft-Form oder durch Exportieren von einem kompatiblen HSM-Gerät. Außerdem können Sie Schlüssel in HSM-Pools generieren. Wenn Sie HSM-Schlüssel unter Verwendung der in der [BYOK-Spezifikation (Bring Your Own Key)](../keys/byok-specification.md) beschriebenen Methode importieren, ermöglicht dies den sicheren Transport von Schlüsselmaterial in Pools verwalteter HSMs. 
 
@@ -53,24 +53,35 @@ Weitere Informationen zu geografischen Grenzen finden Sie unter [Datenschutz](ht
 
 ## <a name="key-types-and-protection-methods"></a>Schlüsseltypen und Schutzmethoden
 
-Von Key Vault werden RSA-Schlüssel, EC-Schlüssel und symmetrische Schlüssel unterstützt. 
+Key Vault unterstützt RSA- und EC-Schlüssel. Verwaltete HSMs unterstützen RSA-Schlüssel, EC-Schlüssel und symmetrische Schlüssel. 
 
 ### <a name="hsm-protected-keys"></a>HSM-geschützte Schlüssel
 
-|Schlüsseltyp|Tresore (nur Premium-SKU)|Pools verwalteter HSMs|
-|--|--|--|--|
-**EC-HSM**: Elliptic Curve-Schlüssel|HSM mit FIPS 140-2 Level 2|HSM mit FIPS 140-2 Level 3
-**RSA-HSM**: RSA-Schlüssel|HSM mit FIPS 140-2 Level 2|HSM mit FIPS 140-2 Level 3
-**oct-HSM**: Symmetrisch|Nicht unterstützt|HSM mit FIPS 140-2 Level 3
-||||
+|Schlüsseltyp|Tresore (nur Premium-SKU)|Verwaltete HSMs|
+|--|--|--|
+|**EC-HSM**: Elliptic Curve-Schlüssel | Unterstützt | Unterstützt|
+|**RSA-HSM**: RSA-Schlüssel|Unterstützt|Unterstützt|
+|**oct-HSM**: symmetrischer Schlüssel|Nicht unterstützt|Unterstützt|
+|||
 
 ### <a name="software-protected-keys"></a>Softwaregeschützte Schlüssel
 
-|Schlüsseltyp|Tresore|Pools verwalteter HSMs|
-|--|--|--|--|
-**RSA**: Softwaregeschützter RSA-Schlüssel|FIPS 140-2 Level 1|Nicht unterstützt
-**EC**: Softwaregeschützter Elliptic Curve-Schlüssel.|FIPS 140-2 Level 1|Nicht unterstützt
-||||
+|Schlüsseltyp|Tresore|Verwaltete HSMs|
+|--|--|--|
+**RSA**: Softwaregeschützter RSA-Schlüssel|Unterstützt|Nicht unterstützt
+**EC**: Softwaregeschützter Elliptic Curve-Schlüssel.|Unterstützt|Nicht unterstützt
+|||
+
+### <a name="compliance"></a>Kompatibilität
+
+|Schlüsseltyp und -ziel|Kompatibilität|
+|---|---|
+|Softwaregeschützte Schlüssel in Tresoren (Premium- und Standard-SKUs) | FIPS 140-2 Level 1|
+|Durch HSM geschützte Schlüssel in Tresoren (Premium-SKU)| FIPS 140-2 Level 2|
+|Durch HSM geschützte Schlüssel in verwalteten HSMs|FIPS 140-2 Level 3|
+|||
+
+
 
 Ausführliche Informationen zu den einzelnen Schlüsseltypen, Algorithmen, Vorgängen, Attributen und Tags finden Sie unter [Schlüsseltypen, Algorithmen und Vorgänge](about-keys-details.md).
 

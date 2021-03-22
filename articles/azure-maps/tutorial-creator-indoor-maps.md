@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: dac5a434d7f7c62d7a20e971294992ea91c79d2b
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 9ac53dab29feddd36a95b8b2b041caaf5c3598d5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625014"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720136"
 ---
 # <a name="tutorial-use-creator-preview-to-create-indoor-maps"></a>Tutorial: Erstellen von Gebäudeplänen mithilfe von Creator (Vorschau)
 
@@ -116,6 +116,7 @@ Bei der Datenupload-API handelt es sich um eine zeitintensive Transaktion, durch
 
     >[!IMPORTANT]
     > Die API-URLs in diesem Dokument müssen möglicherweise entsprechend dem Speicherort der Creator-Ressource angepasst werden. Ausführlichere Informationen finden Sie unter [Zugreifen auf Creator-Dienste](how-to-manage-creator.md#access-to-creator-services).
+    > Wenn Sie den Code `"RequiresCreatorResource"` als Fehlermeldung erhalten, stellen Sie sicher, dass Sie in Ihrem Azure Maps-Konto eine [Azure Maps-Erstellerressource bereitgestellt](how-to-manage-creator.md) haben.
 
 3. Klicken Sie auf die Schaltfläche **Send** (Senden), und warten Sie, bis die Anforderung verarbeitet wurde. Navigieren Sie nach Abschluss der Anforderung zur Registerkarte **Headers** (Header) der Antwort, und suchen Sie nach dem Schlüssel **Location** (Speicherort). Kopieren Sie den Wert des Schlüssels **Location** (Speicherort). Hierbei handelt es sich um die Status-URL (`status URL`) für die Konvertierungsanforderung. Diesen verwenden Sie im nächsten Schritt.
 
@@ -314,7 +315,7 @@ Bei einem Kachelset handelt es sich um eine Gruppe von Vektorkacheln, die auf de
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. Legen Sie in den **Headern** der Anforderung vom Typ **POST** die Option `Content-Type` auf `application/json` fest. Geben Sie im **Text** die unten angegebenen Stile an, um Änderungen an den *Zuständen* `occupied` und `temperature` widerzuspiegeln. Klicken Sie abschließend auf **Send** (Senden).
+3. Legen Sie in den **Headern** der Anforderung vom Typ **POST** die Option `Content-Type` auf `application/json` fest. Geben Sie im **Text** die unten angegebenen Raw JSON-Stile an, um Änderungen an den *Zuständen* `occupied` und `temperature` widerzuspiegeln. Klicken Sie abschließend auf **Send** (Senden).
 
     ```json
     {

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 01/26/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 23e3adad12a726b03f6efe309dde0ec4a93bcd5b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1574149e0587701323cb9ae5ae0c5cfeaccf47c7
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897424"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096416"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Verwalten des Zugriffs auf Abrechnungsinformationen für Azure
 
@@ -40,7 +40,7 @@ Der Kontoadministrator kann anderen Personen Zugriff auf Azure-Abrechnungsinform
 
 Diese Rollen haben Zugriff auf Abrechnungsinformationen im [Azure-Portal](https://portal.azure.com/). Benutzer, denen diese Rollen zugewiesen sind, können auch die [Abrechnungs-APIs](consumption-api-overview.md#usage-details-api) verwenden, um Rechnungen und Nutzungsdetails programmgesteuert abzurufen.
 
-Informationen über das Zuweisen von Rollen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
+Informationen zum Zuweisen von Rollen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ** Wenn Sie EA-Kunde sind, kann ein Kontobesitzer die obige Rolle anderen Benutzern des Teams zuweisen. Damit diese Benutzer Abrechnungsinformationen anzeigen können, muss der Unternehmensadministrator im Enterprise Portal aber die Option „AO-Ansichtsgebühren“ aktivieren.
 
@@ -105,7 +105,7 @@ Das Feature Abrechnungsleser befindet sich in der Vorschauversion und unterstüt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Benutzer in anderen Rollen, z.B. „Besitzer“ oder „Mitwirkender“, können nicht nur auf Abrechnungsinformationen, sondern auch auf Azure-Dienste zugreifen. Informationen über das Verwalten dieser Rollen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
+- Benutzer in anderen Rollen, z.B. „Besitzer“ oder „Mitwirkender“, können nicht nur auf Abrechnungsinformationen, sondern auch auf Azure-Dienste zugreifen. Informationen zum Verwalten dieser Rollen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 - Weitere Informationen zu Rollen finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.

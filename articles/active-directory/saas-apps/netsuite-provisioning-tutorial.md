@@ -10,19 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 294870d3448886b9cea573a0e79b3ac436941f89
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: b1c03bafd6d97dd6a60defee00d4efe854315631
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696488"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648083"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von NetSuite für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte beschrieben, die Sie in NetSuite OneWorld und Azure AD ausführen müssen, um Benutzerkonten von Azure AD automatisch in NetSuite bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben.
 
 > [!WARNING]
-> Diese Bereitstellungsintegration funktioniert ab Februar 2020 aufgrund einer Änderung an den NetSuite-APIs, die von Microsoft zum Bereitstellen von Benutzern in NetSuite verwendet werden, nicht mehr. Infolgedessen werden die Bereitstellungsfunktionen der NetSuite-Anwendung im Azure Active Directory-Katalog für Unternehmens-Apps in Kürze entfernt. Die SSO-Funktionalität der Anwendung bleibt erhalten. Microsoft arbeitet zusammen mit NetSuite an der Entwicklung einer neuen modernisierten Bereitstellungsintegration, derzeit kann jedoch noch keine Aussage zum Bereitstellungszeitpunkt gemacht werden.
+> Diese Bereitstellungsintegration funktioniert ab dem Spring 2021-Update von NetSuite nicht mehr, da die NetSuite-APIs, die von Microsoft zum Bereitstellen von Benutzern in NetSuite verwendet werden, geändert wurden.  Dieses Update wird für NetSuite-Kunden zwischen Februar und April 2021 aufgespielt. Infolgedessen werden die Bereitstellungsfunktionen der NetSuite-Anwendung im Azure Active Directory-Katalog für Unternehmens-Apps in Kürze entfernt. Die SSO-Funktionalität der Anwendung bleibt erhalten. Microsoft arbeitet zusammen mit NetSuite an der Entwicklung einer neuen modernisierten Bereitstellungsintegration, derzeit kann jedoch noch keine Aussage zum Bereitstellungszeitpunkt gemacht werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
