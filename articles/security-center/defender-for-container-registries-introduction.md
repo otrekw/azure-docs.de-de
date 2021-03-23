@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3f358bebc1cc4eb17b8c50b1e3a13366717ae98c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: ab2ad15da9b1676924197d28e734f6baf59a02ef
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100711"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176636"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Einführung in Azure Defender für Containerregistrierungen
 
@@ -68,7 +68,7 @@ Unten ist ein allgemeines Diagramm zu den Komponenten und Vorteilen angegeben, m
 ## <a name="faq-for-azure-container-registry-image-scanning"></a>Häufig gestellte Fragen zum Überprüfen von Azure Container Registry-Images
 
 ### <a name="how-does-security-center-scan-an-image"></a>Wie überprüft Security Center ein Image?
-Das Image wird aus der Registrierung gepullt. Anschließend wird es in einer isolierten Sandbox mit dem Qualys-Scanner ausgeführt, der eine Liste bekannter Sicherheitsrisiken extrahiert.
+Security Center pullt das Image aus der Registrierung und führt es in einer isolierten Sandbox mit dem Qualys-Scanner aus. Der Scanner extrahiert eine Liste bekannter Sicherheitsrisiken.
 
 Security Center filtert und klassifiziert die Ergebnisse des Scanners. Wenn ein Image fehlerfrei ist, markiert Security Center es entsprechend. Security Center generiert Sicherheitsempfehlungen nur für Images, bei denen Probleme behoben werden müssen. Indem Sie nur benachrichtigt werden, wenn Probleme auftreten, reduziert Security Center das Potenzial von unerwünschten Informationswarnungen.
 
@@ -78,7 +78,7 @@ Ja. Die Ergebnisse befinden sich unter [Sub-Assessments Rest API](/rest/api/secu
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>Welche Typen von Registrierungen werden überprüft? Welche Typen werden abgerechnet?
 Eine Liste der Typen von Containerregistrierungen, die von Azure Defender für Containerregistrierungen unterstützt werden, finden Sie unter [Verfügbarkeit](#availability).
 
-Wenn Sie nicht unterstützte Registrierungen mit Ihrem Azure-Abonnement verbinden, werden sie nicht überprüft und Ihnen nicht in Rechnung gestellt.
+Wenn Sie nicht unterstützte Registrierungen mit Ihrem Azure-Abonnement verknüpfen, werden diese von Azure Defender nicht gescannt, und sie werden Ihnen nicht berechnet.
 
 ### <a name="can-i-customize-the-findings-from-the-vulnerability-scanner"></a>Kann ich die Ergebnisse der Überprüfung auf Sicherheitsrisiken anpassen?
 Ja. Wenn in Ihrer Organisation eine Suche ignoriert werden muss, anstatt sie zu beheben, können Sie sie optional deaktivieren. Deaktivierte Ergebnisse haben keine Auswirkung auf Ihre Sicherheitsbewertung und erzeugen kein unerwünschtes Rauschen.

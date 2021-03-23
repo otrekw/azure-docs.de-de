@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: ddc212e99c0e55156f56df6bf77e122408a727f9
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 7ae85fa2559b8313bd35a761945bff946563e935
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624054"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199780"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Tutorial: Verwenden von Azure IoT Hub-Nachrichtenanreicherungen
 
@@ -42,7 +42,7 @@ Hier sind die Aufgaben, die Sie beim Durcharbeiten dieses Tutorials ausführen:
 
 - Installieren Sie [Visual Studio](https://www.visualstudio.com/).
 
-- Stellen Sie sicher, dass Port 8883 in Ihrer Firewall geöffnet ist. Für das Beispielgerät in diesem Tutorial wird das MQTT-Protokoll verwendet, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+- Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Für das Beispielgerät in diesem Tutorial wird das MQTT-Protokoll verwendet, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
@@ -62,7 +62,7 @@ Zusätzlich zum Erstellen der erforderlichen Ressourcen konfiguriert das Azure C
 > Alle Nachrichten werden an beide Endpunkte weitergeleitet, aber nur die Nachrichten, deren Ziel der Endpunkt mit konfigurierten Nachrichtenanreicherungen ist, werden angereichert.
 >
 
-Sie können das nachstehende Skript verwenden oder das Skript im Ordner „/resources“ des heruntergeladenen Repositorys öffnen. Mit diesem Skript werden die folgenden Schritte ausgeführt:
+Sie können das nachstehende Skript verwenden oder das Skript im Ordner „/resources“ des heruntergeladenen Repositorys öffnen. Das Skript führt die folgenden Schritte aus:
 
 * Erstellen Sie einen IoT Hub.
 * Erstellen Sie ein Speicherkonto.
@@ -386,7 +386,7 @@ Wenn Sie alle für dieses Tutorial erstellten Ressourcen entfernen möchten, lö
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Verwenden der Azure CLI zum Bereinigen von Ressourcen
 
-Um die Ressourcengruppe zu entfernen, verwenden Sie den Befehl [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true). Zur Erinnerung: `$resourceGroup` wurde am Anfang dieses Tutorials auf **ContosoResourcesMsgEn** festgelegt.
+Um die Ressourcengruppe zu entfernen, verwenden Sie den Befehl [az group delete](/cli/azure/group#az-group-delete). Zur Erinnerung: `$resourceGroup` wurde am Anfang dieses Tutorials auf **ContosoResourcesMsgEn** festgelegt.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: 3f1e3fd360197310a89a67d43053649d904aeb18
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d125bca5ed67476897eec7cd32a586776d8b1ea8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677614"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176619"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Tutorial: Erstellen einer Apache Spark-Auftragsdefinition in Synapse Studio
 
@@ -34,7 +34,7 @@ Vergewissern Sie sich zunächst, dass die folgenden Anforderungen erfüllt sind 
 
 * Ein Azure Synapse Analytics-Arbeitsbereich. Entsprechende Anweisungen finden Sie unter [Erstellen eines Arbeitsbereichs](../../machine-learning/how-to-manage-workspace.md).
 * Ein serverloser Apache Spark-Pool
-* Ein ADLS Gen2-Speicherkonto. Sie müssen der **Besitzer der Speicherblobdaten** des ADLS Gen2-Dateisystems sein, das Sie verwenden möchten. Andernfalls müssen Sie die Berechtigung manuell hinzufügen.
+* Ein ADLS Gen2-Speicherkonto. Sie müssen der **Mitwirkende der Speicherblobdaten** des ADLS Gen2-Dateisystems sein, das Sie verwenden möchten. Andernfalls müssen Sie die Berechtigung manuell hinzufügen.
 * Wenn Sie nicht den Standardspeicher des Arbeitsbereichs verwenden möchten, verknüpfen Sie das erforderliche ADLS Gen2-Speicherkonto in Synapse Studio. 
 
 ## <a name="create-an-apache-spark-job-definition-for-pyspark-python"></a>Erstellen einer Apache Spark-Auftragsdefinition für PySpark (Python)
@@ -162,7 +162,7 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für .NET
 
 ## <a name="submit-an-apache-spark-job-definition-as-a-batch-job"></a>Übermitteln einer Apache Spark-Auftragsdefinition als Batchauftrag
 
-Nachdem Sie eine Apache Spark-Auftragsdefinition erstellt haben, können Sie sie an einen Apache Spark-Pool übermitteln. Stellen Sie sicher, dass Sie der **Besitzer der Speicherblobdaten** des ADLS Gen2-Dateisystems sind, das Sie verwenden möchten. Andernfalls müssen Sie die Berechtigung manuell hinzufügen.
+Nachdem Sie eine Apache Spark-Auftragsdefinition erstellt haben, können Sie sie an einen Apache Spark-Pool übermitteln. Stellen Sie sicher, dass Sie der **Mitwirkende der Speicherblobdaten** des ADLS Gen2-Dateisystems sind, das Sie verwenden möchten. Andernfalls müssen Sie die Berechtigung manuell hinzufügen.
 
 ### <a name="scenario-1-submit-apache-spark-job-definition"></a>Szenario 1: Übermitteln einer Apache Spark-Auftragsdefinition
  1. Öffnen Sie durch Auswählen ein Apache Spark-Auftragsdefinitionsfenster.

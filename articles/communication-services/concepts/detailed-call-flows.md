@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 12/11/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d2df7255980ca00d405cf80a9fff69ff0511bd17
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5ffc655cebb19b755b990171ab662576ac541793
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659306"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174290"
 ---
 # <a name="call-flow-topologies"></a>Topologien für Anrufabläufe
 Dieser Artikel enthält eine Beschreibung der Topologien für Anrufabläufe in Azure Communication Services. Die Informationen in diesem Artikel sind gut für Sie geeignet, wenn Sie als Unternehmenskunde Communication Services in ein von Ihnen verwaltetes Netzwerk integrieren möchten. Eine Einführung in Communication Services-Anrufabläufe finden Sie in der [Dokumentation zu den Konzepten von Anrufabläufen](./call-flows.md).
@@ -152,7 +152,7 @@ Bei der Signalisierung zwischen dem VPN und dem Kundennetzwerk wird Ablauf 2* v
 
 ### <a name="vpn-user-to-internal-user-direct-media"></a>Von VPN-Benutzer zu internem Benutzer (direkte Medien)
 
-:::image type="content" source="./media/call-flows/vpn-to-internal-direct-media.png" alt-text="Ablauf eines 1:1-Anrufs per VPN mit direkten Medien":::
+:::image type="content" source="./media/call-flows/vpn-to-internal-direct-media.png" alt-text="1:1-Anrufsverlauf (interner Benutzer) mit einem VPN (direkte Medien)":::
 
 *Abbildung 6: Von VPN-Benutzer zu internem Benutzer (direkte Medien)*
 
@@ -162,7 +162,7 @@ Diese Medienübertragung ist bidirektional. Die Richtung von Ablauf 2 für den 
 
 ### <a name="vpn-user-to-external-user-direct-media"></a>Von VPN-Benutzer zu externem Benutzer (direkte Medien)
 
-:::image type="content" source="./media/call-flows/vpn-user-to-external-user.png" alt-text="Ablauf eines 1:1-Anrufs per VPN mit direkten Medien":::
+:::image type="content" source="./media/call-flows/vpn-user-to-external-user.png" alt-text="1:1-Anrufsverlauf (externer Benutzer) mit einem VPN (direkte Medien)":::
 
 *Abbildung 7: Von VPN-Benutzer zu externem Benutzer (direkte Medien)*
 

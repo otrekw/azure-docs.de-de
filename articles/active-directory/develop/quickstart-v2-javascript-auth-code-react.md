@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 3ffd739b12bdda577c3bc302635472768160f50f
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 0bf08c45e82dc6f36d4e179e95e1b58e655b14db
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122662"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224366"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>Schnellstart: Anmelden und Abrufen eines Zugriffstokens in einer React-SPA mithilfe des Autorisierungscodeflows
 
@@ -119,12 +119,18 @@ In dieser Schnellstartanleitung wird MSAL React mit dem Autorisierungscodeflow 
 > Ändern Sie die Werte im Abschnitt `msalConfig`, wie hier beschrieben:
 >
 > - `Enter_the_Application_Id_Here` ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
+>
+>    Den Wert für **Anwendungs-ID (Client)** finden Sie im Azure-Portal auf der Seite **Übersicht** der App-Registrierung.
 > - `Enter_the_Cloud_Instance_Id_Here` ist die Instanz der Azure-Cloud. Geben Sie für die Azure-Hauptcloud oder für die globale Azure-Cloud `https://login.microsoftonline.com/` ein. Informationen zu **nationalen** Clouds (etwa für China) finden Sie unter [Nationale Clouds](authentication-national-cloud.md).
 > - `Enter_the_Tenant_info_here` wird auf eine der folgenden Optionen festgelegt:
 >   - Wenn Ihre Anwendung *Nur Konten in diesem Organisationsverzeichnis* unterstützt, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen**. Beispiel: `contoso.microsoft.com`.
+>
+>    Den Wert für **Verzeichnis-ID (Mandant)** finden Sie im Azure-Portal auf der Seite **Übersicht** der App-Registrierung.
 >   - Falls Ihre Anwendung *Konten in einem beliebigen Organisationsverzeichnis* unterstützt, ersetzen Sie diesen Wert durch `organizations`.
 >   - Unterstützt Ihre Anwendung *Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten*, ersetzen Sie diesen Wert durch `common`. Verwenden Sie **für diesen Schnellstart** `common`.
 >   - Wenn Sie die Unterstützung *ausschließlich auf persönliche Microsoft-Konten* beschränken möchten, ersetzen Sie diesen Wert durch `consumers`.
+>
+>    Den Wert für **Unterstützte Kontotypen** finden Sie im Azure-Portal auf der Seite **Übersicht** der App-Registrierung.
 > - `Enter_the_Redirect_Uri_Here` ist `http://localhost:3000/`
 >
 > Der `authority`-Wert in Ihrer *authConfig.js* sollte ähnlich wie folgt aussehen, wenn Sie die Azure-Hauptcloud (global) verwenden:
@@ -133,9 +139,6 @@ In dieser Schnellstartanleitung wird MSAL React mit dem Autorisierungscodeflow 
 > authority: "https://login.microsoftonline.com/common",
 > ```
 >
-> > [!TIP]
-> > Die Werte für **Anwendungs-ID (Client)** , **Verzeichnis-ID (Mandant)** und **Unterstützte Kontotypen** finden Sie im Azure-Portal auf der Seite **Übersicht** der App-Registrierung.
-
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Schritt 3: Ihre App ist konfiguriert und betriebsbereit
 > Wir haben das Projekt mit Werten der Eigenschaften ihrer App konfiguriert.

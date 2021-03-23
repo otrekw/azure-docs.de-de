@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2021
 ms.author: duau
-ms.openlocfilehash: 09b82eed5ad6a9ad121ca56d197eb9c003d027f5
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 8c8897218b153c8584c89abab98934268ccd555d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624908"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182161"
 ---
 # <a name="what-is-traffic-manager"></a>Was ist Traffic Manager?
 Azure Traffic Manager ist ein auf DNS basierender Lastenausgleichsdienst. Dieser Dienst ermöglicht die Verteilung des Datenverkehrs an Ihre öffentlichen Anwendungen in den globalen Azure-Regionen. Darüber hinaus bietet Traffic Manager Hochverfügbarkeit und kurze Reaktionszeiten für Ihre öffentlichen Endpunkte.
@@ -24,8 +24,12 @@ Azure Traffic Manager ist ein auf DNS basierender Lastenausgleichsdienst. Dieser
 Traffic Manager verwendet DNS, um die Clientanforderungen auf der Grundlage einer Datenverkehrsrouting-Methode an den passenden Dienstendpunkt weiterzuleiten. Des Weiteren bietet Traffic Manager auch eine Integritätsüberwachung für jeden Endpunkt. Der Endpunkt kann ein beliebiger Dienst mit Internetzugriff sein, der innerhalb oder außerhalb von Azure gehostet wird. Traffic Manager bietet eine Reihe von [Datenverkehrsrouting-Methoden](traffic-manager-routing-methods.md) und [Endpunktüberwachungsoptionen](traffic-manager-monitoring.md), die verschiedene Anwendungsanforderungen erfüllen sowie automatisches Failover ermöglichen. Traffic Manager zeichnet sich durch eine geringe Fehleranfälligkeit aus, selbst wenn es zu einem Ausfall einer ganzen Azure-Region kommt.
 
 >[!NOTE]
-> Azure stellt eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen für Ihre Szenarios bereit. Wenn Sie nach Informationen zur Beendigung der Transport Layer Security-Protokollierung oder zur Verarbeitung der Anwendungsschicht pro HTTP/HTTPS-Anforderung suchen, lesen Sie den Artikel [Application Gateway](../application-gateway/overview.md). Informationen zum regionalen Lastenausgleich finden Sie unter [Load Balancer](../load-balancer/load-balancer-overview.md). Für Ihre End-to-End-Szenarios kann es von Vorteil sein, diese Lösungen nach Bedarf zu kombinieren.
->
+> Azure stellt eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen für Ihre Szenarios bereit. 
+> * Wenn Sie Lastenausgleich zwischen den Servern in einer Region auf Anwendungsebene vornehmen möchten, lesen Sie den Artikel zu [Application Gateway](../application-gateway/overview.md).
+> * Wenn Sie das globale Routing Ihres Webdatenverkehrs sowie die Endbenutzerleistung und -zuverlässigkeit auf oberster Ebene mithilfe eines schnellen globalen Failovers optimieren möchten, sehen Sie sich den Artikel zu [Front Door](../frontdoor/front-door-overview.md) an.
+> * Um Lastenausgleich auf Netzwerkebene auszuführen, lesen Sie den Artikel zu [Load Balancer](../load-balancer/load-balancer-overview.md). 
+> 
+> Für Ihre End-to-End-Szenarien kann es vorteilhaft sein, diese Lösungen nach Bedarf zu kombinieren.
 > Einen Vergleich der Azure-Lastenausgleichsoptionen finden Sie unter [Übersicht über Lastenausgleichsoptionen in Azure](/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 Traffic Manager bietet folgende Funktionen:

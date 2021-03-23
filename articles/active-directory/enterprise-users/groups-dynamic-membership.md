@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/02/2020
+ms.date: 02/18/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c60d54a905f460eb5c26c2f183cd22b175a5b3c4
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c25504e3313234ac6b6f80a6e00c77fce28b1400
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860812"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174528"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -279,6 +279,14 @@ Der folgende Ausdruck wählt alle Benutzer aus, die über einen Serviceplan verf
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
+#### <a name="example-3"></a>Beispiel 3
+
+Mit dem folgenden Ausdruck werden alle Benutzer ausgewählt, die über keinen zugewiesenen Dienstplan verfügen:
+
+```
+user.assignedPlans -all (assignedPlan.servicePlanId -eq "")
+```
+
 ### <a name="using-the-underscore-_-syntax"></a>Verwenden den Syntax „Unterstrich“ (\_)
 
 Die Syntax „Unterstrich“ (\_) entspricht dem Vorkommen eines bestimmten Werts in einer mehrwertigen Eigenschaft der Zeichenfolgensammlung, um Benutzer oder Geräte einer dynamischen Gruppe hinzuzufügen. Die Syntax wird mit den Operatoren „-any“ oder „-all“ verwendet.
@@ -378,8 +386,8 @@ Die folgenden Geräteattribute können verwendet werden.
  ----- | ----- | ----------------
  accountEnabled | true false | (device.accountEnabled -eq true)
  displayName | Jeder string-Wert. |(device.displayName -eq "Rob iPhone")
- deviceOSType | Jeder string-Wert. | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")<br>(device.deviceOSType -contains "AndroidEnterprise")<br>(device.deviceOSType -eq "AndroidForWork")
- deviceOSVersion | Jeder string-Wert. | (device.deviceOSVersion -eq "9.1")
+ deviceOSType | Jeder string-Wert. | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")<br>(device.deviceOSType -contains "AndroidEnterprise")<br>(device.deviceOSType -eq "AndroidForWork")<br>(device.deviceOSType -eq "Windows")
+ deviceOSVersion | Jeder string-Wert. | (device.deviceOSVersion -eq "9.1")<br>(device.deviceOSVersion -eq "10.0.17763.0")
  deviceCategory | ein gültiger Gerätekategoriename | (device.deviceCategory -eq "BYOD")
  deviceManufacturer | Jeder string-Wert. | (device.deviceManufacturer -eq "Samsung")
  deviceModel | Jeder string-Wert. | (device.deviceModel -eq "iPad Air")

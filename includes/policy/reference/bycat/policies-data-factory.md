@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 200cfbcaf8da3a2129daa59299f098ce94f5fab2
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: f6e77b69bf85d65bc759aea83c40f1e08c17ebd8
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102429223"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102610849"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Azure Data Factorys müssen mit einem kundenseitig verwalteten Schlüssel verschlüsselt werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4ec52d6d-beb7-40c4-9a9e-fe753254690e) |Verwenden Sie kundenseitig verwaltete Schlüssel, um die Verschlüsselung ruhender Daten für Ihre Azure Data Factory-Instanz zu verwalten. Standardmäßig werden Kundendaten mit dienstseitig verwalteten Schlüsseln verschlüsselt. Kundenseitig verwaltete Schlüssel sind jedoch häufig zur Einhaltung gesetzlicher Bestimmungen erforderlich. Mit kundenseitig verwalteten Schlüsseln können die Daten mit einem Azure Key Vault-Schlüssel verschlüsselt werden, der von Ihnen erstellt wird und sich in Ihrem Besitz befindet. Sie verfügen über die volle Kontrolle über und Verantwortung für den Schlüssellebenszyklus, einschließlich Rotation und Verwaltung. Weitere Informationen finden Sie unter [https://aka.ms/adf-cmk](https://aka.ms/adf-cmk). |Audit, Deny, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/DataFactory_CustomerManagedKey_Audit.json) |
 |[\[Vorschau:\] Azure Data Factory Integration Runtime muss über einen Grenzwert für die Anzahl von Kernen verfügen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F85bb39b5-2f66-49f8-9306-77da3ac5130f) |Begrenzen Sie zur Verbesserung Ihres Ressourcen- und Kostenmanagements die Anzahl von Kernen für eine Integration Runtime. |Audit, Deny, Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/IR_Core_Count_Exceeds_Audit.json) |
@@ -21,3 +21,4 @@ ms.locfileid: "102429223"
 |[\[Vorschau:\] Für verknüpfte Azure Data Factory-Dienste muss die Authentifizierung per systemseitig zugewiesener verwalteter Identität genutzt werden, falls dies unterstützt wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff78ccdb4-7bf4-4106-8647-270491d2978a) |Durch die Nutzung von systemseitig zugewiesener verwalteter Identität bei der Kommunikation mit Datenspeichern über verknüpfte Dienste wird die Verwendung von weniger sicheren Anmeldeinformationen vermieden, z. B. Kennwörter oder Verbindungszeichenfolgen. |Audit, Deny, Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/LinkedService_All_Auth_Audit_except_MSI.json) |
 |[\[Vorschau:\] Für Azure Data Factory muss ein Git-Repository für die Quellcodeverwaltung genutzt werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F77d40665-3120-4348-b539-3192ec808307) |Aktivieren Sie die Quellcodeverwaltung für Data Factorys, um die entsprechenden Funktionen nutzen zu können, z. B. Änderungsnachverfolgung, Zusammenarbeit und Continuous Integration/Deployment. |Audit, Deny, Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/Factory_None_GIT_Audit.json) |
 |[Für Azure Data Factory muss „Öffentlicher Netzwerkzugriff“ deaktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1cf164be-6819-4a50-b8fa-4bcaa4f98fb6) |Das Deaktivieren der Eigenschaft „Öffentlicher Netzwerkzugriff“ verbessert die Sicherheit, indem sichergestellt wird, dass auf Ihre Azure Data Factory-Instanz nur von einem privaten Endpunkt aus zugegriffen werden kann. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/DataFactory_PublicNetworkAccess_Audit.json) |
+|[SQL Server Integration Services Integration Runtime-Instanzen in Azure Data Factory müssen in ein virtuelles Netzwerk eingebunden werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0088bc63-6dee-4a9c-9d29-91cfdc848952) |Eine Azure Virtual Network-Bereitstellung bietet erweiterte Sicherheit und Isolation für Ihre SSIS Integration Runtime-Instanzen (SQL Server Integration Services) in Azure Data Factory und stellt außerdem Subnetze, Zugriffssteuerungsrichtlinien und andere Features zur weiteren Einschränkung des Zugriffs bereit. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/SSISIR_JoinVirtualNetwork_Audit.json) |

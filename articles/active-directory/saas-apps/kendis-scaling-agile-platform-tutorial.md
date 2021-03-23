@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/12/2021
+ms.date: 03/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 9a7e02955d7784feb57d7e9ccc7e337b6a939380
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8409a4d897ea9b20528a5b30273819e6962774cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651551"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184490"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kendis---azure-ad-integration"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Kendis – Azure AD-Integration
 
@@ -123,13 +123,21 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-kendis-azure-ad-integration-sso"></a>Konfigurieren des einmaligen Anmeldens für Kendis – Azure AD-Integration
 
-1. Melden Sie sich in einem anderen Webbrowserfenster bei der Plattform für Kendis – Azure AD-Integration als Administrator an.
+1. Wenn Sie die Konfiguration in Kendis(Azure AD-Integration) automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
 
-1. Navigieren Sie zu **Settings > SAML Configurations** (Einstellungen > SAML-Konfigurationen).
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
+
+2. Wenn Sie dem Browser die Erweiterung hinzugefügt haben, klicken Sie auf **Set up Kendis - Azure AD Integration** (Kendis einrichten – Azure AD-Integration), und Sie werden direkt zur Anwendung „Kendis (Azure AD-Integration)“ weitergeleitet. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Kendis (Azure AD-Integration) anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 5.
+
+    ![Einrichtungskonfiguration](common/setup-sso.png)
+
+3. Wenn Sie Kendis (Azure AD-Integration) manuell einrichten möchten, melden Sie sich in einem anderen Webbrowserfenster bei der Unternehmenswebsite von Kendis (Azure AD-Integration) als Administrator an.
+
+4. Navigieren Sie zu **Settings > SAML Configurations** (Einstellungen > SAML-Konfigurationen).
 
     ![Einstellungen für SAML-Konfigurationen](./media/kendis-scaling-agile-platform-tutorial/settings.png)
 
-1. Klicken Sie unten auf der Seite auf die Schaltfläche **Edit** (Bearbeiten), und führen Sie die folgenden Schritte aus:
+5. Klicken Sie unten auf der Seite auf die Schaltfläche **Edit** (Bearbeiten), und führen Sie die folgenden Schritte aus:
 
     ![SAML-Konfigurationen](./media/kendis-scaling-agile-platform-tutorial/saml-configuration-settings.png)
 

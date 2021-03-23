@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 30b30697750a0b9068cfcde19ea4bf9c474f9ad9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: aec60218774f3f8e293a5e5ab8c03707d117c2a0
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424562"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634973"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Tutorial: Erstellen einer End-to-End-Lösung
 
@@ -120,6 +120,8 @@ Der NuGet-Paket-Manager wird geöffnet. Wählen Sie die Registerkarte *Updates* 
 Kehren Sie zu Ihrem Visual Studio-Fenster zurück, in dem das Projekt _**AdtE2ESample**_ geöffnet ist, und navigieren Sie im Bereich *Projektmappen-Explorer* zum Projekt _**SampleFunctionsApp**_.
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
+
+Damit Ihre Funktions-App auf Azure Digital Twins zugreifen kann, muss sie über eine systemseitig verwaltete Identität mit Zugriffsberechtigungen für Ihre Azure Digital Twins-Instanz verfügen. Dies wird im nächsten Schritt eingerichtet.
 
 ### <a name="assign-permissions-to-the-function-app"></a>Zuweisen von Berechtigungen zur Funktions-App
 
@@ -247,7 +249,7 @@ iotHubConnectionString = <your-hub-connection-string>
 deviceConnectionString = <your-device-connection-string>
 ```
 
-Speichern Sie die Datei .
+Speichern Sie die Datei.
 
 Führen Sie nun das Projekt **DeviceSimulator** mit der folgenden Symbolleistenschaltfläche aus, um die Ergebnisse der von Ihnen eingerichteten Datensimulation anzuzeigen:
 

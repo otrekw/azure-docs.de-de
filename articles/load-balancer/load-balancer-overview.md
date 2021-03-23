@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: a514edef1ef1f67fba3efae883ceb46dee249d6e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 51ceb72d53f78264edcadd2255e20c8fbdac2cae
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705499"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181209"
 ---
 # <a name="what-is-azure-load-balancer"></a>Was versteht man unter Azure Load Balancer?
 
 *Lastenausgleich* bezieht sich auf die gleichmäßige Verteilung von Last (oder eingehendem Netzwerkdatenverkehr) auf eine Gruppe von Back-End-Ressourcen oder Server. 
 
-Azure Load Balancer setzt in der vierten Schicht des OSI-Modells (Open Systems Interconnection) an. Der Dienst ist der zentrale Kontaktpunkt für Clients. Load Balancer verteilt Datenflüsse, die beim Front-End des Lastenausgleichs eingehen, auf die Instanzen des Back-End-Pools. Diese Datenflüsse werden gemäß den konfigurierten Lastenausgleichsregeln und Integritätstests behandelt. Bei den Back-End-Poolinstanzen kann es sich um virtuelle Azure-Computer oder um Instanzen in einer VM-Skalierungsgruppe handeln.
+Azure Load Balancer arbeitet auf der vierten Schicht des OSI-Modells (Open Systems Interconnection). Der Dienst ist der zentrale Kontaktpunkt für Clients. Der Lastenausgleich verteilt Datenflüsse, die beim Front-End des Lastenausgleichs eingehen, auf die Instanzen des Back-End-Pools. Diese Datenflüsse richten sich nach den konfigurierten Lastenausgleichsregeln und Integritätstests. Bei den Back-End-Poolinstanzen kann es sich um virtuelle Azure-Computer oder um Instanzen in einer VM-Skalierungsgruppe handeln.
 
 Ein **[öffentlicher Lastenausgleich](./components.md#frontend-ip-configurations)** kann ausgehende Verbindungen für virtuelle Computer in Ihrem virtuellen Netzwerk bereitstellen. Diese Verbindungen werden durch die Übersetzung der privaten IP-Adressen in öffentliche IP-Adressen hergestellt. Öffentliche Load Balancer-Instanzen werden verwendet, um einen Lastausgleich für den eingehenden Internetdatenverkehr Ihrer virtuellen Computer vorzunehmen.
 
@@ -39,10 +39,20 @@ Ein **[interner (oder privater) Lastenausgleich](./components.md#frontend-ip-con
 
 Weitere Informationen zu den einzelnen Lastenausgleichskomponenten finden Sie unter [Azure Load Balancer-Komponenten](./components.md).
 
-## <a name="why-use-azure-load-balancer"></a>Gründe für die Verwendung von Azure Load Balancer
-Mit Load Balancer Standard können Sie Ihre Anwendungen skalieren und hochverfügbare Dienste erstellen. Der Lastenausgleich unterstützt Szenarien mit eingehenden und ausgehenden Verbindungen. Der Lastenausgleich sorgt für eine niedrige Wartezeit und einen hohen Durchsatz und kann eine zentrale Skalierung auf Millionen von Datenflüssen für alle TCP- und UDP-Anwendungen durchführen.
+>[!NOTE]
+> Azure stellt eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen für Ihre Szenarios bereit. 
+> * Wenn Sie DNS-basiertes globales Routing durchführen möchten und **keine** Anforderungen zur Beendigung der TLS-Protokollierung (Transport Layer Security, „SSL Offloading“) oder zur Verarbeitung der Anwendungsschicht pro HTTP/HTTPS-Anforderung vorliegen, lesen Sie den Artikel zu [Traffic Manager](../traffic-manager/traffic-manager-overview.md). 
+> * Wenn Sie Lastenausgleich zwischen den Servern in einer Region auf Anwendungsebene vornehmen möchten, lesen Sie den Artikel zu [Application Gateway](../application-gateway/overview.md).
+> * Wenn Sie das globale Routing Ihres Webdatenverkehrs sowie die Endbenutzerleistung und -zuverlässigkeit auf oberster Ebene mithilfe eines schnellen globalen Failovers optimieren möchten, sehen Sie sich den Artikel zu [Front Door](../frontdoor/front-door-overview.md) an.
+> 
+> Für Ihre End-to-End-Szenarien kann es vorteilhaft sein, diese Lösungen nach Bedarf zu kombinieren.
+> Einen Vergleich der Azure-Lastenausgleichsoptionen finden Sie unter [Übersicht über Lastenausgleichsoptionen in Azure](/azure/architecture/guide/technology-choices/load-balancing-overview).
 
-Im Anschluss finden Sie einige Schlüsselszenarien für Load Balancer Standard:
+
+## <a name="why-use-azure-load-balancer"></a>Gründe für die Verwendung von Azure Load Balancer
+Mit Azure Load Balancer können Sie Ihre Anwendungen skalieren und hochverfügbare Dienste erstellen. Der Lastenausgleich unterstützt Szenarien mit eingehenden und ausgehenden Verbindungen. Der Lastenausgleich sorgt für eine niedrige Wartezeit und einen hohen Durchsatz und kann eine zentrale Skalierung auf Millionen von Datenflüssen für alle TCP- und UDP-Anwendungen durchführen.
+
+Im Anschluss finden Sie einige Schlüsselszenarios für Azure Load Balancer Standard:
 
 - Vornehmen eines Lastausgleichs für **[internen](./quickstart-load-balancer-standard-internal-portal.md)** und **[externen](./quickstart-load-balancer-standard-public-portal.md)** Datenverkehr auf virtuellen Azure-Computern
 
@@ -66,8 +76,15 @@ Im Anschluss finden Sie einige Schlüsselszenarien für Load Balancer Standard:
 
 ### <a name="secure-by-default"></a><a name="securebydefault"></a>Standardmäßig sicher
 
-Load Balancer Standard basiert auf dem Zero Trust-Netzwerksicherheitsmodell. Load Balancer Standard ist standardmäßig sicher und Bestandteil Ihres virtuellen Netzwerks. Das virtuelle Netzwerk ist ein privates und isoliertes Netzwerk.  Das bedeutet, dass Load Balancer Standard-Instanzen sowie öffentliche Standard-IP-Adressen für eingehende Datenflüsse geschlossen sind, sofern sie nicht durch Netzwerksicherheitsgruppen geöffnet werden. NSGs werden verwendet, um zulässigen Datenverkehr explizit zuzulassen.  Wenn Sie über keine NSG für ein Subnetz oder für eine NIC Ihrer VM-Ressource verfügen, ist diese Ressource für Datenverkehr nicht erreichbar. Weitere Informationen zu NSGs und ihrer Verwendung in Ihrem Szenario finden Sie unter [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md).
-Load Balancer Basic ist standardmäßig für das Internet geöffnet. Außerdem werden von Load Balancer keine Kundendaten gespeichert.
+* Load Balancer Standard basiert auf dem Zero Trust-Netzwerksicherheitsmodell.
+
+* Load Balancer Standard ist standardmäßig sicher und Bestandteil Ihres virtuellen Netzwerks. Das virtuelle Netzwerk ist ein privates und isoliertes Netzwerk.  
+
+* Load Balancer Standard-Instanzen sowie öffentliche Standard-IP-Adressen sind für eingehende Verbindungen geschlossen, sofern sie nicht durch Netzwerksicherheitsgruppen geöffnet werden. NSGs werden verwendet, um zulässigen Datenverkehr explizit zuzulassen.  Wenn Sie über keine NSG für ein Subnetz oder für eine NIC Ihrer VM-Ressource verfügen, ist diese Ressource für Datenverkehr nicht erreichbar. Weitere Informationen zu NSGs und ihrer Verwendung in Ihrem Szenario finden Sie unter [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md).
+
+* Load Balancer Basic ist standardmäßig für das Internet geöffnet. 
+
+* Load Balancer speichert keine Kundendaten.
 
 ## <a name="pricing-and-sla"></a>Preise und SLA
 

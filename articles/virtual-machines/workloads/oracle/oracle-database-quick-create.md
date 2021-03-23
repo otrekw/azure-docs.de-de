@@ -2,18 +2,18 @@
 title: Erstellen einer Oracle-Datenbank auf einem virtuellen Azure-Computern | Microsoft-Dokumentation
 description: Richten Sie in Ihrer Azure-Umgebung schnell eine Oracle Database-12c-Datenbank ein.
 author: dbakevlar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: kegorman
-ms.reviewer: cynthn
-ms.openlocfilehash: a202c8d176d6b9a8893a7bc5aaad6771942dda04
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 8964248bb23b2b615c7e73e26d730fbd79b4e9e7
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063061"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184456"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Erstellen einer Oracle-Datenbank auf einem virtuellem Azure-Computer
 
@@ -188,16 +188,16 @@ Bei dieser Aufgabe müssen Sie einige externe Endpunkte für den Datenbanklisten
    echo "/dev/sdc1               /u02                    ext4    defaults        0 0" >> /etc/fstab
    ```
    
-10. Aktualisieren Sie die Datei * **/etc/hosts** _ mit der öffentlichen IP-Adresse und dem Hostnamen.
+10. Aktualisieren Sie die Datei ***/etc/hosts*** mit der öffentlichen IP-Adresse und dem Hostnamen.
 
-    Ändern Sie _*_öffentliche IP-Adresse und VMname_*_ in Ihre Werte:
+    Ändern Sie ***öffentliche IP-Adresse und VMname*** in Ihre Werte:
   
     ```bash
     echo "<Public IP> <VMname>.eastus.cloudapp.azure.com <VMname>" >> /etc/hosts
     ```
 11. Aktualisieren Sie die Hostnamendatei.
     
-    Verwenden Sie den folgenden Befehl, um den Domänennamen des virtuellen Computers der Datei _ */etc/hostname** hinzuzufügen. Hierbei wird vorausgesetzt, dass Sie Ihre Ressourcengruppe und den virtuellen Computer in der Region **eastus** erstellt haben:
+    Verwenden Sie den folgenden Befehl, um den Domänennamen des virtuellen Computers der Datei **/etc/hostname** hinzuzufügen. Hierbei wird vorausgesetzt, dass Sie Ihre Ressourcengruppe und den virtuellen Computer in der Region **eastus** erstellt haben:
     
     ```bash
     sed -i 's/$/\.eastus\.cloudapp\.azure\.com &/' /etc/hostname
@@ -221,12 +221,12 @@ Die Oracle-Software ist bereits im Marketplace-Image installiert. Erstellen Sie 
 1.  Wechseln Sie zum Benutzer **oracle**:
 
     ```bash
-    $ sudo su - oracle
+    sudo su - oracle
     ```
 2. Starten des Datenbanklisteners
 
    ```bash
-   $ lsnrctl start
+   lsnrctl start
    ```
    Die Ausgabe sieht in etwa wie folgt aus:
   

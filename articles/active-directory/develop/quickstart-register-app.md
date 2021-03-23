@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 027d1bf005ac052bf48e2c0aa3a4a71fc29f36f2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c72ae2a2e6dbd2278bdd78f26c145386be22764e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647437"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175429"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform
 
@@ -40,7 +40,8 @@ Führen Sie die folgenden Schritte aus, um die App-Registrierung zu erstellen:
 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, in dem Sie eine Anwendung registrieren möchten.
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
-1. Geben Sie einen **Namen** für Ihre Anwendung ein. Dieser Name wird Benutzern Ihrer App ggf. angezeigt. Sie können ihn später noch ändern.
+1. Geben Sie einen **Anzeigenamen** für Ihre Anwendung ein. Benutzer Ihrer Anwendung können den Anzeigenamen sehen, wenn sie die App verwenden, z. B. während der Anmeldung.
+    Sie können den Anzeigenamen jederzeit ändern, und mehrere App-Registrierungen können denselben Namen haben. Die automatisch generierte Anwendungs-ID (Client-ID) der App-Registrierung (nicht der Anzeigename) identifiziert Ihre App eindeutig innerhalb der Identitätsplattform.
 1. Geben Sie an, wer die Anwendung verwenden kann (*Zielgruppe für die Anmeldung*).
 
     | Unterstützte Kontotypen | BESCHREIBUNG |

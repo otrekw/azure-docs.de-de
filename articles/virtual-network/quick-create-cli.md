@@ -2,49 +2,48 @@
 title: 'Erstellen eines virtuellen Netzwerks: Schnellstart – Azure CLI'
 titlesuffix: Azure Virtual Network
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie über Azure CLI ein virtuelles Netzwerk erstellen. Ein virtuelles Netzwerk ermöglicht die Kommunikation der Azure-Ressourcen untereinander und mit dem Internet.
-services: virtual-network
-documentationcenter: virtual-network
 author: KumudD
 Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
 ms.service: virtual-network
-ms.devlang: azurecli
 ms.topic: quickstart
-ms.tgt_pltfrm: virtual-network
-ms.workload: infrastructure
-ms.date: 01/22/2019
+ms.date: 03/06/2021
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1feae201738a560c4cdb56f703c4af9a38af86d1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f4cd0a09c64c8c89116bf3a7dec40bae9f05f71
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88056787"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199066"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Schnellstart: Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle
 
-In einem virtuellen Netzwerk können Azure-Ressourcen wie virtuelle Computer (VMs) privat miteinander und mit dem Internet kommunizieren. In dieser Schnellstartanleitung erfahren Sie, wie Sie ein virtuelles Netzwerk erstellen. Nach dem Erstellen eines virtuellen Netzwerks stellen Sie zwei virtuelle Computer im virtuellen Netzwerk bereit. Anschließend stellen Sie über das Internet eine Verbindung mit den VMs her und kommunizieren privat über das neue virtuelle Netzwerk.
-## <a name="prerequisites"></a>Voraussetzungen
-Wenn Sie kein Azure-Abonnement besitzen, können Sie jetzt ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
+In einem virtuellen Netzwerk können Azure-Ressourcen wie virtuelle Computer (VMs) privat miteinander und mit dem Internet kommunizieren. 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+In dieser Schnellstartanleitung erfahren Sie, wie Sie ein virtuelles Netzwerk erstellen. Nach dem Erstellen eines virtuellen Netzwerks stellen Sie zwei virtuelle Computer im virtuellen Netzwerk bereit. Anschließend stellen Sie über das Internet eine Verbindung mit den VMs her und kommunizieren privat über das neue virtuelle Netzwerk.
 
-Wenn Sie stattdessen entscheiden, Azure CLI lokal zu installieren und zu verwenden möchten, müssen Sie für diese Schnellstartanleitung mindestens die Azure CLI-Version 2.0.28 verwenden. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Informationen zum Ausführen einer Installation oder eines Upgrades finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+- Für diesen Schnellstart ist mindestens Version 2.0.28 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>Erstellen einer Ressourcengruppe und eines virtuellen Netzwerks
 
-Bevor Sie ein virtuelles Netzwerk erstellen können, müssen Sie eine Ressourcengruppe zum Hosten des virtuellen Netzwerks erstellen. Erstellen Sie mit [az group create](/cli/azure/group) eine Ressourcengruppe. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Bevor Sie ein virtuelles Netzwerk erstellen können, müssen Sie eine Ressourcengruppe zum Hosten des virtuellen Netzwerks erstellen. Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen **CreateVNetQS-rg** am Standort **eastus** (USA, Osten) erstellt:
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
+az group create \
+    --name CreateVNetQS-rg \
+    --location eastus
 ```
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet) ein virtuelles Netzwerk. In diesem Beispiel wird ein virtuelles Standardnetzwerk mit dem Namen *myVirtualNetwork* und dem Subnetz *default* erstellt:
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) ein virtuelles Netzwerk. In diesem Beispiel wird ein virtuelles Standardnetzwerk namens **myVNet** mit einem einzelnen Subnetz namens **default** (Standard) erstellt:
 
 ```azurecli-interactive
 az network vnet create \
-  --name myVirtualNetwork \
-  --resource-group myResourceGroup \
+  --name myVNet \
+  --resource-group CreateVNetQS-rg \
   --subnet-name default
 ```
 
@@ -54,26 +53,34 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk.
 
 ### <a name="create-the-first-vm"></a>Erstellen des ersten virtuellen Computers
 
-Erstellen Sie mit [az vm create](/cli/azure/vm) einen virtuellen Computer. Wenn SSH-Schlüssel nicht bereits an einem Standardschlüsselspeicherort vorhanden sind, werden sie durch den Befehl erstellt. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`. Mit der Option `--no-wait` wird der virtuelle Computer im Hintergrund erstellt, sodass Sie mit dem nächsten Schritt fortfahren können. In diesem Beispiel wird ein virtueller Computer namens *myVm1* erstellt:
+Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. 
+
+Wenn SSH-Schlüssel nicht bereits an einem Standardschlüsselspeicherort vorhanden sind, werden sie durch den Befehl erstellt. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`. 
+
+Die `--no-wait`-Option erstellt den virtuellen Computer im Hintergrund. Sie können mit dem nächsten Schritt fortfahren. 
+
+In diesem Beispiel wird ein virtueller Computer namens **myVM1** erstellt:
 
 ```azurecli-interactive
 az vm create \
-  --resource-group myResourceGroup \
-  --name myVm1 \
+  --resource-group CreateVNetQS-rg \
+  --name myVM1 \
   --image UbuntuLTS \
   --generate-ssh-keys \
+  --public-ip-address myPublicIP-myVM1 \
   --no-wait
 ```
 
 ### <a name="create-the-second-vm"></a>Erstellen des zweiten virtuellen Computers
 
-Da Sie im vorherigen Schritt die Option `--no-wait` verwendet haben, können Sie fortfahren und den zweiten virtuellen Computer mit dem Namen *myvm2* erstellen.
+Im vorherigen Schritt haben Sie die `--no-wait`-Option verwendet. Sie können fortfahren, und die zweite VM namens **myVM2** erstellen.
 
 ```azurecli-interactive
 az vm create \
-  --resource-group myResourceGroup \
-  --name myVm2 \
+  --resource-group CreateVNetQS-rg \
+  --name myVM2 \
   --image UbuntuLTS \
+  --public-ip-address myPublicIP-myVM2 \
   --generate-ssh-keys
 ```
 
@@ -84,22 +91,32 @@ Die Erstellung der VMs kann einige Minuten dauern. Nachdem Azure die virtuellen 
 ```output
 {
   "fqdns": "",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm2",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/CreateVNetQS-rg/providers/Microsoft.Compute/virtualMachines/myVM2",
   "location": "eastus",
   "macAddress": "00-0D-3A-23-9A-49",
   "powerState": "VM running",
   "privateIpAddress": "10.0.0.5",
   "publicIpAddress": "40.68.254.142",
-  "resourceGroup": "myResourceGroup"
+  "resourceGroup": "CreateVNetQS-rg"
   "zones": ""
 }
 ```
 
-Notieren Sie sich **publicIpAddress**. Sie verwenden diese Adresse im nächsten Schritt zum Herstellen einer Verbindung mit dem virtuellen Computer über das Internet.
+## <a name="vm-public-ip"></a>Öffentliche IP-Adresse für die VM
+
+Verwenden Sie [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show), um die öffentliche IP-Adresse **myVM2** abzurufen.
+
+```azurecli-interactive
+az network public-ip show \
+  --resource-group CreateVNetQS-rg  \
+  --name myPublicIP-myVM2 \
+  --query ipAddress \
+  --output tsv
+```
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Herstellen einer Verbindung mit einem virtuellen Computer über das Internet
 
-Ersetzen Sie in diesem Befehl `<publicIpAddress>` durch die öffentliche IP-Adresse Ihres virtuellen Computers *myVm2*:
+Ersetzen Sie in diesem Befehl `<publicIpAddress>` durch die öffentliche IP-Adresse Ihres virtuellen Computers **myVM2**:
 
 ```bash
 ssh <publicIpAddress>
@@ -107,27 +124,35 @@ ssh <publicIpAddress>
 
 ## <a name="communicate-between-vms"></a>Kommunikation zwischen VMs
 
-Wenn Sie die private Kommunikation zwischen den virtuellen Computern *myVm2* und *myVm1* überprüfen möchten, geben Sie diesen Befehl ein:
+Wenn Sie die private Kommunikation zwischen den virtuellen Computern **myVM2** und **myVM1** überprüfen möchten, geben Sie diesen Befehl ein:
 
 ```bash
-ping myVm1 -c 4
+ping myVM1 -c 4
 ```
 
 Sie erhalten vier Antworten von *10.0.0.4*.
 
-Beenden Sie die SSH-Sitzung mit dem virtuellen Computer *myVm2*.
+Beenden Sie die SSH-Sitzung mit dem virtuellen Computer **myVM2**.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn die Ressourcengruppe und alle enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit [az group delete](/cli/azure/group) entfernen:
+Wenn die Ressourcengruppe und alle enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit [az group delete](/cli/azure/group#az_group_delete) entfernen:
 
 ```azurecli-interactive
-az group delete --name myResourceGroup --yes
+az group delete \
+    --name CreateVNetQS-rg \
+    --yes
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie ein virtuelles Standardnetzwerk und zwei virtuelle Computer erstellt. Sie haben über das Internet eine Verbindung mit einem der virtuellen Computer hergestellt und privat zwischen den beiden virtuellen Computern kommuniziert.
-Azure erlaubt uneingeschränkte private Kommunikation zwischen virtuellen Computern. Standardmäßig ermöglicht Azure nur eingehende Remotedesktopverbindungen mit Windows-VMs über das Internet. Fahren Sie mit dem nächsten Artikel fort, um mehr über das Konfigurieren verschiedener Typen der VM-Netzwerkkommunikation zu erfahren:
+In dieser Schnellstartanleitung gilt: 
+
+* Sie haben ein virtuelles Standardnetzwerk und zwei virtuelle Computer erstellt. 
+* Sie haben über das Internet eine Verbindung mit einem der virtuellen Computer hergestellt und privat zwischen den beiden virtuellen Computern kommuniziert.
+
+Die private Kommunikation zwischen VMs ist in einem virtuellen Netzwerk uneingeschränkt. 
+
+Fahren Sie mit dem nächsten Artikel fort, um mehr über das Konfigurieren verschiedener Typen der VM-Netzwerkkommunikation zu erfahren:
 > [!div class="nextstepaction"]
 > [Erstellen von Netzwerksicherheitsgruppen über das Azure-Portal](tutorial-filter-network-traffic.md)
