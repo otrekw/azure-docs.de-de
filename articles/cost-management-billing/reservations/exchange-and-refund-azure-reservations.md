@@ -5,18 +5,28 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 02/24/2021
 ms.author: banders
-ms.openlocfilehash: 045ab35a35aa4caefb1e1bcbbf7bf78b726c09f7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9015cbcd669665467d3836112b152aa504176f2b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601458"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035992"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen
 
-Mit Azure-Reservierungen können Sie Ihre sich ändernden Anforderungen flexibel erfüllen. Sie können eine Reservierung gegen eine andere Reservierung des gleichen Typs umtauschen. Beispielsweise können Sie die Reservierung für einen virtuellen Computer in eine andere Reservierung für eine andere VM-Größe oder Region umtauschen. Ebenso können Sie eine Reservierung für eine SQL-PaaS-Datenbank in eine Reservierung für einen anderen Typ oder eine andere Region der SQL-PaaS-Datenbank umtauschen. Sie können sich Reservierungen auch zurückerstatten lassen, doch darf die Summe aller stornierten Reservierungen in Ihrem Abrechnungsbereich (z. B. EA, Microsoft-Kundenvereinbarung und Microsoft Partner-Vereinbarung) einen Betrag von 50.000 US-Dollar in einem rollierenden Zeitfenster von zwölf Monaten nicht überschreiten. Reservierte Azure Databricks-Kapazität, Reservierungen für Azure VMware Solution by CloudSimple, Reservierungen für Azure Red Hat Open Shift, Red Hat-Pläne sowie SUSE Linux-Pläne sind nicht erstattungsfähig.
+Mit Azure-Reservierungen können Sie Ihre sich ändernden Anforderungen flexibel erfüllen. Sie können eine Reservierung gegen eine andere Reservierung des gleichen Typs tauschen. Beispielsweise können Sie mehrere Computereservierungen, einschließlich Azure Dedicated Host, Azure VMware Solution und Azure Virtual Machines, gleichzeitig zurückgeben. Mit anderen Worten: Reservierungsprodukte sind untereinander austauschbar, wenn es sich um den gleichen Reservierungstyp handelt. In einem anderen Beispiel können Sie mehrere Reservierungstypen für SQL-Datenbank, darunter „Verwaltete Instanzen“ und „Pool für elastische Datenbanken“, gegeneinander austauschen.
+
+Verschiedenartige Reservierungen lassen sich hingegen nicht austauschen. Beispielsweise können Sie eine Cosmos DB-Reservierung nicht gegen eine für SQL-Datenbank austauschen.
+
+Sie können auch eine Reservierung austauschen, um eine weitere Reservierung eines ähnlichen Typs in einer anderen Region zu erwerben. Sie können z. B. eine Reservierung für „USA, Westen 2“ gegen eine für „Europa, Westen“ austauschen.
+
+Wenn Sie eine Reservierung austauschen, können Sie Ihre Laufzeit von einem Jahr in drei Jahre ändern.
+
+Sie können sich Reservierungen auch zurückerstatten lassen, doch darf die Summe aller stornierten Reservierungen in Ihrem Abrechnungsbereich (z. B. EA, Microsoft-Kundenvereinbarung und Microsoft Partner-Vereinbarung) einen Betrag von 50.000 US-Dollar in einem rollierenden Zeitfenster von zwölf Monaten nicht überschreiten.
+
+Reservierte Azure Databricks-Kapazität, Reservierungen für Azure VMware Solution by CloudSimple, Reservierungen für Azure Red Hat Open Shift, Red Hat-Pläne sowie SUSE Linux-Pläne sind nicht erstattungsfähig.
 
 Die Self-Service-Umtausch- und Stornierungsfunktion steht für US Government Enterprise Agreement-Kunden nicht zur Verfügung. Andere US Government-Abonnementtypen, einschließlich nutzungsbasierter Bezahlung und Cloud Solution Provider (CSP), werden unterstützt.
 
@@ -37,9 +47,26 @@ Sie können Ihre Reservierung über das [Azure-Portal](https://portal.azure.com/
 
 Navigieren Sie zum Erhalten einer Erstattung für eine Reservierung zu **Reservierungsdetails**, und klicken Sie auf **Erstattung**.
 
+## <a name="exchange-multiple-reservations"></a>Austauschen mehrerer Reservierungen
+
+Sie können ähnliche Typen von Reservierungen in einem Vorgang zurückgeben.
+
+Wenn Sie Reservierungen austauschen, muss der neue Währungsbetrag des Kaufs größer sein als der Erstattungsbetrag. Wenn der neue Kaufbetrag kleiner als der Erstattungsbetrag ist, erhalten Sie eine Fehlermeldung. Wenn die Fehlermeldung angezeigt wird, verringern Sie die Menge, die Sie zurückgeben möchten, oder erhöhen Sie die Menge zu kaufender Produkte.
+
+1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu **Reservierungen**.
+1. Aktivieren Sie in der Liste der Reservierungen das Kontrollkästchen für jede Reservierung, die Sie austauschen möchten.
+1. Wählen Sie oben auf der Seite **Austausch** aus.
+1. Korrigieren Sie bei Bedarf die Rückgabemenge für jede Reservierung.
+1. Wenn Sie die automatisch ausgefüllte Rückgabemenge auswählen, können Sie **Alle erstatten** wählen, um die Liste mit der vollen Menge zu füllen, die Sie für jede Reservierung besitzen. Oder Sie können **Für Auslastung optimieren (7 Tage)** wählen, um die Liste mit einer Menge zu füllen, die für die Auslastung basierend auf den letzten sieben Tagen der Nutzung optimiert ist. Klicken Sie auf **Anwenden**.
+1. Wählen Sie unten auf der Seite **Weiter: Kaufen** aus.
+1. Wählen Sie auf der Registerkarte „Kaufen“ die verfügbaren Produkte aus, die Sie austauschen möchten. Sie können mehrere Produkte verschiedener Typen auswählen.
+1. Wählen Sie im Bereich „Wählen Sie das Produkt aus, das Sie erwerben möchten“ die gewünschten Produkte und dann **Zu Warenkorb hinzufügen** aus. Klicken Sie anschließend auf **Schließen**.
+1. Klicken Sie dann auf **Weiter: Prüfen**.
+1. Überprüfen Sie Ihre zurückzugebenden Reservierungen und neuen zu kaufenden Reservierungen, und wählen Sie dann **Austausch bestätigen** aus.
+
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Umtauschen einer Reservierung ohne Storage Premium gegen eine Reservierung mit Storage Premium
 
-Sie können eine erworbene Reservierung für eine VM-Größe, für die Storage Premium nicht unterstützt wird, gegen eine entsprechende VM-Größe umtauschen, für die diese Unterstützung vorhanden ist. Beispiel: _F1_ gegen _F1s_. Navigieren Sie zum Durchführen des Umtauschs zu „Reservierungsdetails“, und klicken Sie auf **Umtausch**. Beim Umtausch wird der Zeitraum der reservierten Instanz nicht zurückgesetzt und auch keine neue Transaktion erstellt. 
+Sie können eine erworbene Reservierung für eine VM-Größe, für die Storage Premium nicht unterstützt wird, gegen eine entsprechende VM-Größe umtauschen, für die diese Unterstützung vorhanden ist. Beispiel: _F1_ gegen _F1s_. Navigieren Sie zum Durchführen des Umtauschs zu „Reservierungsdetails“, und klicken Sie auf **Umtausch**. Beim Umtausch wird der Zeitraum der reservierten Instanz nicht zurückgesetzt und auch keine neue Transaktion erstellt.
 
 ## <a name="how-transactions-are-processed"></a>Verarbeitung von Transaktionen
 

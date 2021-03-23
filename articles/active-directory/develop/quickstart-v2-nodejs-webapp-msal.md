@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: 5ca8c41dc1e6a05975227555abd91f5d6725285a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: d6be9753cbcb2a6be9836b27f82f1b60068570b8
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092185"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224978"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer Node-Web-App mithilfe des Autorisierungscodeflows
 
@@ -48,6 +48,15 @@ In dieser Schnellstartanleitung wird die Microsoft-Authentifizierungsbibliothek 
 > 1. Notieren Sie sich für die spätere Verwendung auf der Seite **Übersicht** den Wert von **Anwendungs-ID (Client)** .
 > 1. Wählen Sie unter **Verwalten** Folgendes aus: **Zertifikate und Geheimnisse** > **Neuer geheimer Clientschlüssel**.  Lassen Sie die Beschreibung und den Standardablauf leer, und wählen Sie **Hinzufügen** aus.
 > 1. Notieren Sie sich den **Wert** des **geheimen Clientschlüssels** zur späteren Verwendung.
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>Schritt 1: Konfigurieren der Anwendung im Azure-Portal
+> Damit das Codebeispiel für diese Schnellstartanleitung funktioniert, müssen Sie ein Clientgeheimnis erstellen und eine Antwort-URL als **http://localhost:3000/redirect** hinzufügen.
+> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
+> > [Diese Änderung für mich vornehmen]()
+>
+> > [!div id="appconfigured" class="alert alert-info"]
+> > ![Bereits konfiguriert](media/quickstart-v2-windows-desktop/green-check.png): Ihre Anwendung ist mit diesen Attributen konfiguriert.
 
 #### <a name="step-2-download-the-project"></a>Schritt 2: Herunterladen des Projekts
 
@@ -91,16 +100,17 @@ In dieser Schnellstartanleitung wird die Microsoft-Authentifizierungsbibliothek 
 > Ändern Sie die Werte im Abschnitt `config`, wie hier beschrieben:
 >
 > - `Enter_the_Application_Id_Here` ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
+>
+>    Den Wert für **Anwendungs-ID (Client)** finden Sie im Azure-Portal auf der Seite **Übersicht** der App-Registrierung.
 > - `Enter_the_Client_Secret_Here` ist der **Wert** des **geheimen Clientschlüssels** für die von Ihnen registrierte Anwendung.
+>
+>    Wählen Sie zum Abrufen oder Generieren eines neuen **geheimen Clientschlüssels** unter **Verwalten** die Option **Zertifikate und Geheimnisse** aus.
 >
 > Der Standardwert `authority` stellt die Azure-Hauptcloud (global) dar:
 >
 > ```javascript
 > authority: "https://login.microsoftonline.com/common",
 > ```
->
-> > [!TIP]
-> > Den Wert für **Anwendungs-ID (Client)** finden Sie im Azure-Portal auf der Seite **Übersicht** der App-Registrierung. Wechseln Sie zu **Zertifikate und Geheimnisse**, um einen neuen **geheimen Clientschlüssel** abzurufen oder zu generieren.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Schritt 3: Ihre App ist konfiguriert und betriebsbereit

@@ -6,22 +6,24 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/09/2020
+ms.date: 03/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 51469c23574f55c102f0c6fb98e5aa5178b59a4a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3973235991a16d118b47d7289f3a1825621a9023
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455734"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574678"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-fpga"></a>Was ist Azure Stack Edge Pro mit FPGA?
 
-[!INCLUDE [data-box-edge-gateway-rename-note](../../includes/data-box-edge-gateway-rename-note.md)]
+[!INCLUDE [Azure Stack Edge Pro FPGA end-of-life](../../includes/azure-stack-edge-fpga-eol.md)]
 
-Azure Stack Edge Pro mit FPGA ist ein KI-fähiges Edgecomputinggerät mit Netzwerkfunktionen für die Datenübertragung. Dieser Artikel bietet Ihnen einen Überblick über die Azure Stack Edge Pro-Lösung mit FPGA. Dabei werden die Vorteile der Lösung, ihre wichtigsten Funktionen und die Szenarien beschrieben, in denen Sie das Gerät bereitstellen können.
+Azure Stack Edge Pro mit FPGA ist ein KI-fähiges Edgecomputinggerät mit Netzwerkfunktionen für die Datenübertragung. Dieser Artikel bietet Ihnen einen Überblick über die Azure Stack Edge Pro-Lösung mit FPGA. Dabei werden die Vorteile der Lösung, ihre wichtigsten Funktionen und die Bereitstellungsszenarien beschrieben.
 
-Azure Stack Edge Pro mit FPGA ist eine HaaS-Lösung (Hardware-as-a-Service). Microsoft liefert Ihnen ein cloudseitig verwaltetes Gerät mit einem integrierten FPGA (Field Programmable Gate Array), das beschleunigte KI-Rückschlüsse ermöglicht und alle Funktionen eines Netzwerkspeichergateways bietet. 
+Azure Stack Edge Pro mit FPGA ist eine HaaS-Lösung (Hardware-as-a-Service). Microsoft liefert Ihnen ein cloudseitig verwaltetes Gerät mit einem integrierten FPGA (Field Programmable Gate Array), das beschleunigte KI-Rückschlüsse ermöglicht und alle Funktionen eines Netzwerkspeichergateways bietet.
+
+Azure Data Box Edge wurde in Azure Stack Edge umbenannt.
 
 ## <a name="use-cases"></a>Anwendungsfälle
 
@@ -46,7 +48,7 @@ Azure Stack Edge Pro bietet die folgenden Funktionen:
 |---------|---------|
 |Beschleunigte KI-Rückschlüsse| Ermöglicht durch das integrierte FPGA.|
 |Computing       |Ermöglicht das Analysieren, Verarbeiten und Filtern von Daten.|
-|Hohe Leistung | Hochleistungscompute und -datenübertragungen.|
+|Hohe Leistung | Hochleistungscompute und -datenübertragungen|
 |Datenzugriff     | Direkter Datenzugriff aus Azure Storage-Blobs und Azure Files über Cloud-APIs zur zusätzlichen Datenverarbeitung in der Cloud. Lokaler Cache auf dem Gerät wird für schnellen Zugriff auf zuletzt verwendete Dateien verwendet.|
 |Von der Cloud verwaltet     |Das Gerät und der Dienst werden über das Azure-Portal verwaltet.  |
 |Hochladen von Daten im Offlinemodus     | Der Modus „Getrennt“ unterstützt Szenarien für das Hochladen von Daten im Offlinemodus.|
@@ -60,13 +62,15 @@ Azure Stack Edge Pro bietet die folgenden Funktionen:
 
 Die Azure Stack Edge Pro-Lösung umfasst die Azure Stack Edge-Ressource, ein physisches Azure Stack Edge Pro-Gerät und eine lokale Webbenutzeroberfläche.
 
-* **Physisches Azure Stack Edge Pro-Gerät**: ein von Microsoft bereitgestellter 1U-Rackserver, der für das Senden von Daten an Azure konfiguriert werden kann.
+* **Physisches Azure Stack Edge Pro-Gerät:** ein von Microsoft bereitgestellter 1U-Rackserver, der für das Senden von Daten an Azure konfiguriert werden kann
     
-* **Azure Stack Edge-Ressource**: eine Ressource im Azure-Portal, mit der Sie ein Azure Stack Edge Pro-Gerät über eine zentrale Webbenutzeroberfläche verwalten können, auf die von verschiedenen geografischen Standorten aus zugegriffen werden kann. Verwenden Sie die Azure Stack Edge-Ressource, um Ressourcen zu erstellen und zu verwalten, Geräte und Warnungen anzuzeigen und zu verwalten sowie Freigaben zu verwalten.  
+* **Azure Stack Edge-Ressource:** eine Ressource im Azure-Portal, mit der Sie ein Azure Stack Edge Pro-Gerät über eine zentrale Webbenutzeroberfläche verwalten können, auf die von verschiedenen geografischen Standorten aus zugegriffen werden kann. Verwenden Sie die Azure Stack Edge-Ressource, um Ressourcen zu erstellen und zu verwalten, Freigaben zu verwalten sowie Geräte und Warnungen anzuzeigen und zu verwalten.
+  
+   <!--[The Azure Stack Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
 
-    <!--![The Azure Stack Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
+   Da sich das Ende der Lebensdauer von Azure Stack Edge Pro nähert, werden keine Aufträge für neue Azure Stack Edge Pro-Geräte ausgeführt. Wenn Sie Neukunde sind, empfehlen wir Ihnen, die Verwendung von Azure Stack Edge Pro-GPU-Geräten für Ihre Workloads in Erwägung zu ziehen. Weitere Informationen finden Sie unter [Was ist Azure Stack Edge Pro mit GPU?](azure-stack-edge-gpu-overview.md). Informationen zum Bestellen eines Azure Stack Edge Pro-GPU-Geräts finden Sie unter [Neue Ressource erstellen](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource).
 
-    Weitere Informationen finden Sie unter [Erstellen eines Auftrags für ein Azure Stack Edge Pro-Gerät](azure-stack-edge-deploy-prep.md#create-a-new-resource).
+   Als Bestandskunde können Sie weiterhin eine neue Azure Stack Edge Pro-Ressource erstellen, wenn Sie Ihr vorhandenes Azure Stack Edge Pro-Gerät ersetzen oder zurücksetzen müssen. Entsprechende Anweisungen finden Sie unter [Erstellen eines Auftrags für ein Azure Stack Edge Pro-Gerät](azure-stack-edge-deploy-prep.md#create-new-resource-for-existing-device).
 
 * **Lokale Webbenutzeroberfläche für Azure Stack Edge Pro**: Mithilfe der lokalen Webbenutzeroberfläche können Sie Diagnosen ausführen, das Azure Stack Edge Pro-Gerät herunterfahren und neu starten, Kopierprotokolle anzeigen und den Microsoft-Support kontaktieren, um eine Serviceanfrage zu stellen.
 

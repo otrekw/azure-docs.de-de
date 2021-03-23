@@ -8,16 +8,20 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: 762fdf0aab0077cfbf8beceeb432dc85695e4176
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ffc5c8ea647d4cadd2d151eb880c794ac5f4ebd4
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002455"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121438"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-framework"></a>Schnellstart: Verwenden von Azure Cache for Redis mit .NET Framework
 
 In dieser Schnellstartanleitung integrieren Sie Azure Cache für Redis in eine .NET Framework-App, um Zugriff auf einen sicheren, dedizierten Cache zu erhalten, der von jeder Anwendung in Azure aus zugänglich ist. Sie verwenden insbesondere den [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis)-Client mit C#-Code in einer .NET-Konsolen-App.
+
+## <a name="skip-to-the-code-on-github"></a>Direktes Navigieren zum Code auf GitHub
+
+Wenn Sie direkt mit dem Code fortfahren möchten, finden Sie im [.NET Framework-Schnellstart](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/dotnet) auf GitHub weitere Informationen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -90,7 +94,7 @@ using StackExchange.Redis;
 using System.Configuration;
 ```
 
-Die Verbindung mit Azure Cache for Redis wird durch die Klasse `ConnectionMultiplexer` verwaltet. Diese Klasse sollte für Ihre gesamte Clientanwendung genutzt und wiederverwendet werden. Erstellen Sie nicht für jeden Vorgang eine neue Verbindung. 
+Die Verbindung mit Azure Cache for Redis wird durch die Klasse `ConnectionMultiplexer` verwaltet. Diese Klasse muss in Ihrer gesamten Clientanwendung freigegeben und wiederverwendet werden. Erstellen Sie nicht für jeden Vorgang eine neue Verbindung. 
 
 Speichern Sie niemals Anmeldeinformationen im Quellcode. Hier wird nur eine externe Konfigurationsdatei für Geheimnisse verwendet, um dieses Beispiel einfach zu halten. Ein besserer Ansatz wäre die Nutzung von [Azure Key Vault mit Zertifikaten](/rest/api/keyvault/certificate-scenarios).
 

@@ -7,19 +7,19 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: a05769c66c4b13de5c7197ef5612d64781574987
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: db3f188cc796642285d9b082b46371879491c632
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747674"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225233"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>Schnellstart: Erstellen einer Azure Managed Instance-Instanz für Apache Cassandra-Cluster im Azure-Portal (Vorschau)
  
 Azure Managed Instance for Apache Cassandra bietet automatisierte Bereitstellungs- und Skalierungsvorgänge für verwaltete Open-Source-Rechenzentren in Apache Cassandra und ermöglicht so schnellere Hybridszenarios und einen geringeren kontinuierlichen Wartungsaufwand.
 
 > [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra ist zurzeit als öffentliche Vorschauversion verfügbar.
+> Azure Managed Instance for Apache Cassandra befindet sich derzeit in der Public Preview-Phase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -63,20 +63,14 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
    :::image type="content" source="./media/create-cluster-portal/networking.png" alt-text="Konfigurieren der Netzwerkdetails" lightbox="./media/create-cluster-portal/networking.png" border="true":::.
 
-1. Wenn Sie im letzten Schritt ein neues VNET erstellt haben, fahren Sie mit Schritt 9 fort. Wenn Sie vor dem Erstellen des Clusters ein vorhandenes VNET ausgewählt haben, müssen Sie einige besondere Berechtigungen für das VNET und das Subnetz anwenden. Zu diesem Zweck müssen Sie die Ressourcen-ID für Ihr vorhandenes VNET abrufen. Führen Sie in der [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) den folgenden Befehl aus:
+1. Wenn Sie im letzten Schritt ein neues VNet erstellt haben, fahren Sie mit Schritt 8 fort. Wenn Sie vor dem Erstellen des Clusters ein vorhandenes VNET ausgewählt haben, müssen Sie einige besondere Berechtigungen für das VNET und das Subnetz anwenden. Verwenden Sie hierzu den Befehl `az role assignment create`, und ersetzen Sie `<subscription ID>`, `<resource group name>`, `<VNet name>` und `<subnet name>` durch die entsprechenden Werte:
 
    ```azurecli-interactive
-   # get the resource ID of the Virtual Network
-   az network vnet show -n <VNet_name> -g <Resource_Group_Name> --query "id" --output tsv
-
-1. Now apply the special permissions by using the `az role assignment create` command. Replace `<Resource ID>` with the output of previous command:
-
-   ```azurecli-interactive
-   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope <Resource ID>
+   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>
    ```
 
    > [!NOTE]
-   > Die Werte `assignee` und `role` im vorherigen Befehl sind feste Dienstprinzipal- bzw. Rollenbezeichner.
+   > Die Werte `assignee` und `role` im vorherigen Befehl sind feste Werte. Geben Sie diese Werte daher genau so ein, wie im Befehl angegeben. Andernfalls treten beim Erstellen des Clusters Fehler auf. Treten beim Ausführen dieses Befehls Fehler auf, verfügen Sie möglicherweise nicht über die Berechtigungen zum Ausführen des Befehls. Wenden Sie sich an Ihren Administrator, um die entsprechenden Berechtigungen zu erhalten.
 
 1. Nachdem Sie nun die Schritte für das Netzwerk abgeschlossen haben, klicken Sie auf **Überprüfen und erstellen** > **Erstellen**.
 
@@ -122,9 +116,9 @@ cqlsh $host 9042 -u cassandra -p cassandra --ssl
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Falls Sie diesen Managed Instance-Cluster nicht weiterverwenden möchten, löschen Sie ihn wie folgt:
+Falls Sie diesen Managed Instance-Cluster nicht mehr benötigen, löschen Sie ihn wie folgt:
 
-1. Wählen Sie im linken Menü des Azure-Portals **Ressourcengruppen** aus.
+1. Wählen Sie im linken Menü des Azure-Portals die Option **Ressourcengruppen** aus.
 1. Wählen Sie in der Liste die Ressourcengruppe aus, die Sie für diesen Schnellstart erstellt haben.
 1. Wählen Sie im Ressourcengruppenbereich **Übersicht** die Option **Ressourcengruppe löschen** aus.
 1. Geben Sie in dem nächsten Fenster den Namen der zu löschenden Ressourcengruppe ein, und wählen Sie dann **Löschen** aus.
@@ -134,4 +128,4 @@ Falls Sie diesen Managed Instance-Cluster nicht weiterverwenden möchten, lösch
 In dieser Schnellstartanleitung haben Sie erfahren, wie Sie mithilfe des Azure-Portals eine Azure Managed Instance-Instanz für einen Apache Cassandra-Cluster erstellen. Sie können jetzt beginnen, mit dem Cluster zu arbeiten.
 
 > [!div class="nextstepaction"]
-> [Bereitstellen eines verwalteten Apache Spark-Clusters mit Azure Databricks](deploy-cluster-databricks.md)
+> [Bereitstellen eines verwalteten Apache Spark-Clusters mit Azure Databricks](deploy-cluster-databricks.md)

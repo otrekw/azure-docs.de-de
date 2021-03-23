@@ -10,12 +10,12 @@ keywords: Cognitive Services, kognitive Intelligenz, kognitive Lösungen, KI-Die
 ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: 95d74601ca912647eadd1bd4e1045108be6b2adb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: c1e8b260f6c06d8f26f5ba99b4fb02edfa5e8656
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050068"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472111"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Schnellstart: Erstellen einer Cognitive Services-Ressource mithilfe der Azure-Befehlszeilenschnittstelle (CLI)
 
@@ -98,16 +98,6 @@ Wenn Sie eine neue Ressource erstellen, müssen Sie die „Art“ des Diensts ke
 | Gesicht                       | `Face`                    |
 | Formularerkennung            | `FormRecognizer`          |
 | Freihanderkennung             | `InkRecognizer`           |
-
-### <a name="search"></a>Suchen,
-
-| Dienst            | Variante                  |
-|--------------------|-----------------------|
-| Bing-Vorschlagssuche   | `Bing.Autosuggest.v7` |
-| Benutzerdefinierte Bing-Suche | `Bing.CustomSearch`   |
-| Bing-Entitätssuche | `Bing.EntitySearch`   |
-| Bing-Suche        | `Bing.Search.v7`      |
-| Bing-Rechtschreibprüfung   | `Bing.SpellCheck.v7`  |
 
 ### <a name="speech"></a>Spracheingabe
 

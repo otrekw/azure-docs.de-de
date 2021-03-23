@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 85585b771d9c0ed7c6fcdba9cfef7b589a987c8c
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 020ba74948a062d23d61272ee912eb3364180f1e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429261"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617997"
 ---
 # <a name="microsoft-azure-attestation"></a>Microsoft Azure Attestation 
 
@@ -78,10 +78,10 @@ Azure Attestation ist die bevorzugte Wahl für den Nachweis von TEEs, da es die 
 Cluster, die in zwei Regionen bereitgestellt werden, werden unter normalen Umständen unabhängig voneinander betrieben. Bei einem Fehler oder einem Ausfall einer Region geschieht Folgendes:
 
 - Azure Attestation BCDR bietet ein nahtloses Failover, bei dem Kunden keine zusätzlichen Schritte zur Wiederherstellung ausführen müssen.
-- Der [Azure Traffic Manager](../traffic-manager/index.yml) für die Region erkennt, dass der Integritätstest beeinträchtigt wird, und schaltet den Endpunkt in eine gekoppelte Region um.
+- Die [Azure Traffic Manager](../traffic-manager/index.yml)-Instanz für die Region erkennt, dass der Integritätstest beeinträchtigt wird, und schaltet den Endpunkt in eine gekoppelte Region um.
 - Vorhandene Verbindungen können nicht verwendet werden, und interne Serverfehler oder Timeoutprobleme werden empfangen.
-- Alle Vorgänge auf Steuerungsebene werden blockiert. Kunden können keine Nachweisanbieter erstellen und Richtlinien in der primären Region aktualisieren.
-- Alle Vorgänge auf Datenebene, einschließlich Nachweisaufrufen, funktionieren weiterhin in der primären Region.
+- Alle Vorgänge auf Steuerungsebene werden blockiert. Kunden können keine Nachweisanbieter in der primären Region erstellen.
+- Alle Vorgänge auf Datenebene, einschließlich der Nachweisaufrufe und der Richtlinienkonfiguration, werden von der sekundären Region behandelt. Kunden können Vorgänge auf Datenebene weiterhin ausführen. Der ursprüngliche URI entspricht dabei der primären Region.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [grundlegende Konzepte von Azure Attestation](basic-concepts.md).

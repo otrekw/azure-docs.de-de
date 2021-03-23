@@ -3,24 +3,19 @@ title: Registrieren des Azure VMware Solution-Ressourcenanbieters
 description: Hier sind die Schritte zum Registrieren des Azure VMware Solution-Ressourcenanbieters erläutert.
 ms.topic: include
 ms.date: 02/17/2021
-ms.openlocfilehash: cd4a6f3003945973f0fe5367eb198823595a412e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d2363ca2672f7f668d8f9b3816447f316d8b7347
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750482"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103555932"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
 Für die Verwendung von Azure VMware Solution müssen Sie zunächst den Ressourcenanbieter für Ihr Abonnement registrieren. Weitere Informationen zu Ressourcenanbietern finden Sie unter [Azure-Ressourcenanbieter und -typen](../../azure-resource-manager/management/resource-providers-and-types.md).
 
-### <a name="azure-cli"></a>Azure CLI 
 
-```azurecli-interactive
-az provider register -n Microsoft.AVS --subscription <your subscription ID>
-```
-
-### <a name="azure-portal"></a>Azure-Portal
+### <a name="portal"></a>[Portal](#tab/azure-portal)
  
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -33,3 +28,22 @@ az provider register -n Microsoft.AVS --subscription <your subscription ID>
 1. Wählen Sie die Option **Ressourcenanbieter** aus, und geben Sie **Microsoft.AVS** als Suchbegriff ein. 
  
 1. Wählen Sie **Registrieren** aus, falls der Ressourcenanbieter nicht registriert ist.
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+So beginnen Sie mit der Verwendung der Azure CLI:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Melden Sie sich über die Azure CLI bei dem Azure-Abonnement an, das Sie für die Azure VMware Solution-Bereitstellung verwenden. Verwenden Sie zum Registrieren des Ressourcenanbieters `Microsoft.AVS` den Befehl [az provider register](/cli/azure/provider#az_provider_register):
+
+```azurecli-interactive
+az provider register -n Microsoft.AVS --subscription <your subscription ID>
+```
+
+Mit dem Befehl [az provider list](/cli/azure/provider#az_provider_list) zeigen Sie alle verfügbaren Anbieter an.
+
+---
+
+
+ 

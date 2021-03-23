@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e0a45bde32fed651c4b38d203b3c75a6d928e7c5
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: f2a33b4011b0bb89ca17010fc787aebe8c17fc92
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327082"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183929"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Übersicht über Schlüssel, Geheimnisse und Zertifikate in Azure Key Vault
 
@@ -44,7 +44,7 @@ Softwaregeschützte Schlüssel|/keys|Unterstützt|Nicht unterstützt
 **Andere Objekttypen**||
 Geheimnisse|/secrets|Unterstützt|Nicht unterstützt
 Zertifikate|/certificates|Unterstützt|Nicht unterstützt
-Speicherkontoschlüssel|/storageaccount|Unterstützt|Nicht unterstützt
+Speicherkontoschlüssel|/storage|Unterstützt|Nicht unterstützt
 |||
 - **Kryptografische Schlüssel:** Unterstützt mehrere Schlüsseltypen und Algorithmen und ermöglicht die Verwendung von softwaregeschützten und durch HSM geschützten Schlüsseln. Weitere Informationen finden Sie unter [Informationen zu Azure Key Vault-Schlüsseln](../keys/about-keys.md).
 - **Geheimnisse:** Bieten einen sicheren Speicher für Geheimnisse wie Kennwörter und Datenbank-Verbindungszeichenfolgen. Weitere Informationen finden Sie unter [Informationen zu Azure Key Vault-Geheimnissen](../secrets/about-secrets.md).

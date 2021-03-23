@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/21/2021
 ms.author: shhazam
-ms.openlocfilehash: 832c8e426b57e6b447ef805f2868a6d42abe3d9d
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: cfd5192a78c34caf5acbe4576f5a00ab314acb61
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449695"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489895"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Schnellstart: Erstellen eines Azure IoT-Sicherheitsmodulzwillings
 
@@ -39,9 +39,9 @@ Weitere Informationen zum allgemeinen Konzept in Bezug auf Modulzwillinge in Azu
 
 Defender für IoT nutzt den Mechanismus für Modulzwillinge und verwendet für jedes Gerät einen Sicherheitsmodulzwilling mit dem Namen _azureiotsecurity_.
 
-Der Sicherheitsmodulzwilling enthält alle Informationen, die für die Gerätesicherheit Ihrer einzelnen Geräte jeweils relevant sind.
+Der Defender-IoT-Micro-Agent-Zwilling enthält alle Informationen, die für die Gerätesicherheit Ihrer einzelnen Geräte relevant sind.
 
-Zur umfassenden Nutzung der Features von Defender für IoT müssen diese Sicherheitsmodulzwillinge für jedes Gerät des Diensts erstellt, konfiguriert und verwendet werden.
+Zur umfassenden Nutzung der Features von Defender für IoT müssen diese Defender-IoT-Micro-Agent-Zwillinge für jedes Gerät des Diensts erstellt, konfiguriert und verwendet werden.
 
 ## <a name="create-azureiotsecurity-module-twin"></a>Erstellen eines azureiotsecurity-Modulzwillings
 

@@ -2,16 +2,16 @@
 title: 'Tutorial: Erstellen und Bereitstellen von Azure Resource Manager-Bicep-Dateien'
 description: Erstellen Sie Ihre erste Bicep-Datei zum Bereitstellen von Azure-Ressourcen. In diesem Tutorial lernen Sie die Syntax der Bicep-Datei kennen und erfahren, wie Sie ein Speicherkonto bereitstellen.
 author: mumian
-ms.date: 03/03/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 6a335b554fa0cfc2e12c8ddbe3e24a50fdedec0f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b04dbb7f708a4019ae70c716d4faa05ca2c28720
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036309"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632576"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>Tutorial: Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Bicep-Datei
 
@@ -76,7 +76,7 @@ Nun sind Sie bereit, mehr über Bicep zu erfahren.
     Die Ressourcendeklaration umfasst vier Komponenten:
 
     - **resource:** Hierbei handelt es sich um das Schlüsselwort.
-    - **symbolic name** (stg): Ein symbolischer Name ist ein Bezeichner zum Referenzieren der Ressource in Ihrer Bicep-Datei. Dabei handelt es sich nicht um den Namen der Ressource, der nach der Bereitstellung verwendet wird. Der Name der Ressource wird von der Eigenschaft **name** definiert.  Weitere Informationen finden Sie in der vierten Komponente in dieser Liste. Damit die Tutorials einfach befolgt werden können, wird **stg** als symbolischer Name für die Speicherkontoressource in dieser Tutorialreihe verwendet.
+    - **symbolic name** (stg): Ein symbolischer Name ist ein Bezeichner zum Referenzieren der Ressource in Ihrer Bicep-Datei. Dabei handelt es sich nicht um den Namen der Ressource, der nach der Bereitstellung verwendet wird. Der Name der Ressource wird von der Eigenschaft **name** definiert.  Weitere Informationen finden Sie in der vierten Komponente in dieser Liste. Damit die Tutorials einfach befolgt werden können, wird **stg** als symbolischer Name für die Speicherkontoressource in dieser Tutorialreihe verwendet. Informationen zum Abrufen einer vollständigen Liste der Objekteigenschaften mithilfe des symbolischen Namens finden Sie unter [Tutorial: Hinzufügen von Ausgaben zur Azure Resource Manager-Bicep-Datei](./bicep-tutorial-add-outputs.md).
     - **resource type** (Microsoft.Storage/storageAccounts@2019-06-01): Diese Komponente besteht aus dem Ressourcenanbieter (Microsoft.Storage), dem Ressourcentyp (storageAccounts) und der API-Version (apiVersion: 2019-06-01). Jeder Ressourcenanbieter veröffentlicht seine eigenen API-Versionen. Dieser Wert unterscheidet sich daher je nach Typ. Weitere Typen und API-Versionen für verschiedene Azure-Ressourcen finden Sie in der [ARM-Vorlagenreferenz](/azure/templates/).
     - **properties** (alles innerhalb von „= {...}“): Dies sind die spezifischen Eigenschaften, die Sie für den angegebenen Ressourcentyp festlegen möchten. Dies sind genau die gleichen Eigenschaften, die Ihnen auch in einer ARM-Vorlage zur Verfügung stehen. Jede Ressource umfasst eine `name`-Eigenschaft. Die meisten Ressourcen verfügen auch über eine `location`-Eigenschaft, mit der die Region festgelegt wird, in der die Ressource bereitgestellt wird. Die anderen Eigenschaften variieren je nach Ressourcentyp und API-Version. Das Verständnis der Beziehung zwischen der API-Version und den verfügbaren Eigenschaften ist wichtig. Wir werden daher ausführlicher darauf eingehen.
 
@@ -93,7 +93,7 @@ Nun sind Sie bereit, mehr über Bicep zu erfahren.
 
     Das Erraten des eindeutigen Namens für ein Speicherkonto ist nicht einfach und keine gute Lösung, wenn Sie umfangreiche Bereitstellungen automatisieren möchten. In einem späteren Teil dieser Tutorialreihe verwenden Sie Bicep-Funktionen, die das Erstellen eines eindeutigen Namens vereinfachen.
 
-1. Speichern Sie die Datei .
+1. Speichern Sie die Datei.
 
 Herzlichen Glückwunsch, Sie haben Ihre erste Bicep-Datei erstellt.
 

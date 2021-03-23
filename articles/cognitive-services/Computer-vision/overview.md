@@ -15,12 +15,12 @@ ms.custom:
 - cog-serv-seo-aug-2020
 - contperf-fy21q2
 keywords: maschinelles Sehen, Anwendungen für maschinelles Sehen, Dienst für maschinelles Sehen
-ms.openlocfilehash: 69edbf558b4bd452c67478bac828bfde26be5a70
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 804dacc4351da9e04ac75b2484b4330901a69271
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575939"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488481"
 ---
 # <a name="what-is-computer-vision"></a>Worum handelt es sich bei maschinellem Sehen?
 
@@ -29,6 +29,12 @@ ms.locfileid: "99575939"
 Über den Azure-Dienst für maschinelles Sehen haben Sie Zugriff auf erweiterte Algorithmen, die Bilder verarbeiten und Informationen anhand der für sie interessanten visuellen Features zurückgeben. Beispielsweise kann durch maschinelles Sehen ermittelt werden, ob ein Bild nicht jugendfreie Inhalte aufweist, oder es können bestimmte Marken oder Objekte oder menschliche Gesichter gesucht werden.
 
 Sie können Anwendungen für maschinelles Sehen über ein [Clientbibliothek-SDK](./quickstarts-sdk/client-library.md) oder durch direktes Aufrufen der [REST-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) nutzen. Auf dieser Seite erfahren Sie ganz allgemein, welche Möglichkeiten maschinelles Sehen bietet.
+
+Diese Dokumentation enthält die folgenden Arten von Artikeln:
+* In den [Schnellstarts](./quickstarts-sdk/client-library.md) finden Sie Schritt-für-Schritt-Anleitungen, mit denen Sie Aufrufe an den Dienst senden können und in kurzer Zeit Ergebnisse erhalten. 
+* Die [Anleitungen](./Vision-API-How-to-Topics/HowToCallVisionAPI.md) enthalten Anweisungen zur spezifischeren oder individuelleren Verwendung des Diensts.
+* Die [konzeptionellen Artikel](concept-recognizing-text.md) enthalten ausführliche Erläuterungen der Funktionen und Features eines Diensts.
+* Die [Tutorials](./tutorials/storage-lab-tutorial.md) sind ausführlichere Leitfäden, in denen die Verwendung dieses Diensts als Komponente in umfassenderen Unternehmenslösungen veranschaulicht wird.
 
 ## <a name="optical-character-recognition-ocr"></a>Optische Zeichenerkennung (OCR)
 

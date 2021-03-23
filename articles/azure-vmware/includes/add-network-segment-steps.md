@@ -2,13 +2,13 @@
 title: Hinzufügen eines NSX-T-Netzwerksegments
 description: Schritte zum Hinzufügen eines NSX-T-Netzwerksegments für Azure VMware Solution
 ms.topic: include
-ms.date: 11/09/2020
-ms.openlocfilehash: 7db45650588d37c39e7d156fa189b3ff7da2239f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/13/2021
+ms.openlocfilehash: 14d698413d31af2dcbbdea5f37ec7f24f65199ad
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "100515133"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462122"
 ---
 <!-- Used in manage-dhcp.md and tutorial-nsx-t-network-segment.md -->
 
@@ -16,7 +16,7 @@ ms.locfileid: "100515133"
 
    :::image type="content" source="../media/nsxt/nsxt-segments-overview.png" alt-text="Screenshot: Hinzufügen eines neuen Segments":::
 
-1. Wählen Sie **Add Segment** (Segment hinzufügen) aus, und geben Sie einen Namen für das Segment ein.
+1. Geben Sie einen Namen für das Segment ein.
 
 1. Wählen Sie unter **Connected Gateway** (Verbundenes Gateway) das T1-Gateway (TNTxx-T1) aus, und übernehmen Sie für **Typ** die Option „Flexible“ (Flexibel).
 

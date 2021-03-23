@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: ef7870363940a0db4ff09ae9ebd82eedb0e60495
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e9d719a29bc9a4b3e0428913e5bc1a91bec16623
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282262"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183164"
 ---
 # <a name="what-is-azure-front-door"></a>Was ist Azure Front Door?
 
@@ -32,7 +32,7 @@ Front Door arbeitet in Schicht 7 (HTTP/HTTPS-Schicht) unter Verwendung des Anyc
 >[!NOTE]
 > Azure stellt eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen für Ihre Szenarios bereit. 
 > * Wenn Sie DNS-basiertes globales Routing durchführen möchten und **keine** Anforderungen zur Beendigung der TLS-Protokollierung (Transport Layer Security, „SSL Offloading“) oder zur Verarbeitung der Anwendungsschicht pro HTTP/HTTPS-Anforderung vorliegen, lesen Sie den Artikel zu [Traffic Manager](../traffic-manager/traffic-manager-overview.md). 
-> * Wenn Sie Lastenausgleich zwischen den Servern in einer Region auf Anwendungsebene durchführen möchten, lesen Sie den Artikel zu [Application Gateway](../application-gateway/overview.md)
+> * Wenn Sie Lastenausgleich zwischen den Servern in einer Region auf Anwendungsebene durchführen möchten, lesen Sie den Artikel zu [Application Gateway](../application-gateway/overview.md).
 > * Um Lastenausgleich auf Netzwerkebene auszuführen, lesen Sie den Artikel zu [Load Balancer](../load-balancer/load-balancer-overview.md). 
 > 
 > Für Ihre End-to-End-Szenarien kann es vorteilhaft sein, diese Lösungen nach Bedarf zu kombinieren.

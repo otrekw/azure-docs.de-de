@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 1d66396b2d97a7f33158f91025f5735c7714cd65
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 537378ef11333bd8942a61ab2bbb4e8a251c2b59
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221047"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103196872"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit GitHub AE
 
@@ -101,9 +101,9 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Klicken Sie auf **Gruppen auswählen**, und suchen Sie nach der **Gruppe**, die Sie in diesen Anspruch einschließen möchten. Ihre Mitglieder müssen Administratoren für GHAE sein.
 
-1. Wählen Sie unter **Quelle** die Option **Attribut** aus, und geben Sie unter **Wert** den Wert **true** ein. 
+1. Wählen Sie unter **Quelle** die Option **Attribut** aus, und geben Sie unter **Wert** den Wert **true** (ohne Anführungszeichen) ein. 
 
-10. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern**.
 
     ![Verwalten des Anspruchs](./media/github-ae-tutorial/administrator.png)
 
@@ -112,7 +112,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
-    ![Downloadlink für das Zertifikat](common/certificateBase64.png)
+    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
 1. Kopieren Sie im Abschnitt **GitHub AE einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 27a2b764ebf420c91c57c6f5f762f656b1040a91
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 2052669d3d1ae2bdb7aa1687c4dc348c9420d126
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594551"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615362"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Schnellstart: Erstellen eines öffentlichen Lastenausgleichs für virtuelle Computer mithilfe von Azure PowerShell
 
@@ -368,7 +368,7 @@ New-AzPublicIpAddress @publicipout
 
 * Erstellen Sie mit [Add-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/add-azloadbalancerfrontendipconfig) eine neue Front-End-IP-Konfiguration.
 
-* Erstellen Sie mit [Add-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/add-azloadbalancerbackendaddresspoolconfig) einen neuen ausgehenden Pool. 
+* Erstellen Sie mit [Add-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/add-azloadbalancerbackendaddresspoolconfig) einen neuen ausgehenden Back-End-Adresspool. 
 
 * Wenden Sie mit [Set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer) den Pool und die Front-End-IP-Adresse auf den Lastenausgleich an.
 *  Erstellen Sie mit [Add-AzLoadBalancerOutboundRuleConfig](/powershell/module/az.network/new-azloadbalanceroutboundruleconfig) eine neue Ausgangsregel für den ausgehenden Back-End-Pool. 

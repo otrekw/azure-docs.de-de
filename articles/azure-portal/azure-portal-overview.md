@@ -2,14 +2,14 @@
 title: Azure-Portal – Übersicht
 description: Das Azure-Portal ist eine grafische Benutzeroberfläche, über die Sie Azure-Dienste verwalten können. Erfahren Sie, wie Sie im Azure-Portal navigieren und Ressourcen suchen können.
 keywords: Portal
-ms.date: 12/20/2019
+ms.date: 03/12/2021
 ms.topic: overview
-ms.openlocfilehash: 1e9cf1a9609b9d4f30e51094f1d0542335ead0e2
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8f61934e6af150c18d1331c2b28e2686641967d1
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745926"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563993"
 ---
 # <a name="azure-portal-overview"></a>Azure-Portal – Übersicht
 
@@ -59,7 +59,7 @@ In der nachstehenden Abbildung sind die Grundelemente des Azure-Portals gekennze
 
 ![Screenshot mit erweitertem Portalmenü](./media/azure-portal-overview/azure-portal-overview-portal-menu-callouts.png)
 
-|Schlüssel|BESCHREIBUNG
+|Schlüssel|Beschreibung
 |:---:|---|
 |1|Kopfzeile. Wird oben auf jeder Portalseite angezeigt und enthält globale Elemente.|
 |2| Globale Suche. Über die Suchleiste können Sie schnell eine bestimmte Ressource, einen Dienst oder Dokumentation finden.|
@@ -75,7 +75,7 @@ In der nachstehenden Abbildung sind die Grundelemente des Azure-Portals gekennze
 
 ## <a name="get-started-with-services"></a>Erste Schritte mit Diensten
 
-Wenn Sie ein neuer Abonnent sind, müssen Sie erst eine Ressource erstellen, ehe es etwas zu verwalten gibt. Wählen Sie **+ Ressource erstellen** aus, um die in Azure Marketplace verfügbaren Dienste anzuzeigen. Hier finden Sie Anwendungen und Dienste von Hunderten von Anbietern, die alle für die Ausführung in Azure zertifiziert sind.
+Wenn Sie ein neuer Abonnent sind, müssen Sie erst eine Ressource erstellen, ehe es etwas zu verwalten gibt. Wählen Sie **+ Ressource erstellen** aus, um die in Azure Marketplace verfügbaren Dienste anzuzeigen. Hier finden Sie Hunderte Anwendungen und Dienste von zahlreichen Anbietern, die alle für die Ausführung in Azure zertifiziert sind.
 
 Wir haben Ihre Favoriten auf der Randleiste vorab mit Links zu häufig genutzten Diensten versehen.  Klicken Sie zum Anzeigen aller verfügbaren Dienste auf der Randleiste auf **Alle Dienste**.
 

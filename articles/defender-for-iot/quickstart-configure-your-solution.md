@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen von Azure-Ressourcen zu Ihrer IoT-Lösung
+title: 'Schnellstart: Hinzufügen von Azure-Ressourcen zu Ihrer IoT-Lösung'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Ihre End-to-End-IoT-Lösung mit Azure Defender für IoT konfigurieren.
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,16 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: shhazam
-ms.openlocfilehash: 8912e8d66ae0cc1b5dba80ee9aabb0fbd288e3c6
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: e6d83dafbe4b7f7013ab32039acaff7d8faa4a91
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809021"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487750"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>Schnellstart: Konfigurieren Ihrer Lösung mit Azure Defender für IoT
 
 In diesem Artikel wird die Erstkonfiguration Ihrer IoT-Sicherheitslösung mit Defender für IoT erläutert.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Keine
 
 ## <a name="what-is-defender-for-iot"></a>Was ist Defender für IoT?
 
@@ -56,7 +60,7 @@ Defender für IoT überwacht nun die neu hinzugefügten Ressourcengruppen und ze
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im nächsten Artikel erfahren Sie, wie Sie Sicherheitsmodule erstellen:
+Fahren Sie mit dem nächsten Artikel fort, um sich über das Erstellen von Defender-IoT-Micro-Agents zu informieren:
 
 > [!div class="nextstepaction"]
-> [Quickstart: Create an azureiotsecurity module twin](quickstart-create-security-twin.md) (Schnellstart: Erstellen eines azureiotsecurity-Modulzwillings)
+> [Erstellen von Defender-IoT-Micro-Agents](quickstart-create-security-twin.md)

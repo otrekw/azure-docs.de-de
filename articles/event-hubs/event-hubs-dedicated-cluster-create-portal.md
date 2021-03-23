@@ -3,12 +3,12 @@ title: Erstellen eines dedizierten Event Hubs-Clusters mithilfe des Azure-Portal
 description: In diesem Schnellstart erfahren Sie, wie Sie einen Azure Event Hubs-Cluster im Azure-Portal erstellen.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 2759d1e25519b69311c369f3f58239cc0889a9a7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ff4ee1f098407ba8b3cd2727410bdfc842db89a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88927764"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040089"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Schnellstart: Erstellen eines dedizierten Event Hubs-Clusters mithilfe des Azure-Portals 
 Event Hubs-Cluster bieten Bereitstellungen mit einem einzelnen Mandanten für Kunden mit äußerst anspruchsvollen Streaminganforderungen. Dieses Angebot umfasst eine SLA mit einer garantierten Verfügbarkeit von 99,99 % und ist nur in unserem Dedicated-Tarif verfügbar. Ein [Event Hubs-Cluster](event-hubs-dedicated-overview.md) kann Millionen Ereignisse pro Sekunde mit garantierter Kapazität und einer Latenz im Sekundenbruchteilbereich erfassen. Namespaces und Event Hubs, die innerhalb eines Clusters erstellt werden, bieten alle Funktionen des Standardangebots und mehr, aber ohne jegliche Einschränkung bei eingehenden Daten. Das Dedicated-Angebot umfasst ferner das beliebte [Event Hubs Capture](event-hubs-capture-overview.md)-Feature ohne zusätzliche Kosten, die es Ihnen ermöglicht, Datenströme zu Batches zusammenzufassen und in [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) oder [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md) zu protokollieren.
@@ -28,9 +28,12 @@ Stellen Sie für diese Schnellstartanleitung sicher, dass Sie über Folgendes ve
 - [Erstellte Ressourcengruppe](../event-hubs/event-hubs-create.md#create-a-resource-group).
 
 ## <a name="create-an-event-hubs-dedicated-cluster"></a>Erstellen eines Event Hubs Dedicated-Clusters
-Ein Event Hubs-Cluster bietet einen Container mit einem eindeutigen Bereich, in dem Sie einen oder mehrere Namespaces erstellen können. In der Vorschauphase für dieses Self-Service-Feature des Portals können Sie in ausgewählten Regionen einen 1-CU-Cluster erstellen. Wenn Sie einen Cluster mit einer Kapazität von mehr als 1 CU benötigen, können Sie eine Azure-Supportanfrage senden, um Ihren Cluster nach der Erstellung hochzuskalieren.
+Ein Event Hubs-Cluster bietet einen Container mit einem eindeutigen Bereich, in dem Sie einen oder mehrere Namespaces erstellen können. In der Vorschauphase für dieses Self-Service-Feature des Portals können Sie in ausgewählten Regionen einen 1-CU-Cluster erstellen. Wenn Sie einen Cluster mit einer Kapazität von mehr als 1 CU benötigen, können Sie eine Azure-Supportanfrage senden, um Ihren Cluster nach der Erstellung zu skalieren.
 
-Führen Sie die folgenden Schritte aus, um über das Azure-Portal einen Cluster in Ihrer Ressourcengruppe zu erstellen:
+> [!IMPORTANT]
+> Sie können den Cluster frühestens 4 Stunden nach seiner Erstellung löschen. Daher werden Ihnen mindestens 4 Stunden für die Nutzung des Clusters in Rechnung gestellt. Weitere Informationen zu Preisen finden Sie unter [Event Hubs – Preise](https://azure.microsoft.com/pricing/details/event-hubs/). 
+
+Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Cluster in Ihrer Ressourcengruppe zu erstellen:
 
 1. Folgen Sie [diesem Link](https://aka.ms/eventhubsclusterquickstart), um einen Cluster im Azure-Portal zu erstellen. Wählen Sie **Alle Dienste** im linken Navigationsbereich aus, geben Sie dann „Event Hubs-Cluster“ in der Suchleiste ein, und wählen Sie „Event Hubs-Cluster“ aus der Ergebnisliste aus.
 2. Konfigurieren Sie auf der Seite **Cluster erstellen** die folgenden Einstellungen:
@@ -55,12 +58,12 @@ Führen Sie die folgenden Schritte aus, um über das Azure-Portal einen Cluster 
 1. Um einen Namespace in einem Cluster zu erstellen, wählen Sie auf der Seite **Event Hubs-Cluster** für Ihren Cluster im oberen Menü **+Namespace** aus.
 
     ![Seite „Clusterverwaltung – Schaltfläche ‚Namespace hinzufügen‘“](./media/event-hubs-dedicated-cluster-create-portal/cluster-management-page-add-namespace-button.png)
-2. Führen Sie auf der Seite zum Erstellen eines Namespace die folgenden Schritte aus:
+2. Führen Sie auf der Seite **Namespace erstellen** die folgenden Schritte aus:
     1. Geben Sie einen **Namen für den Namespace** ein.  Das System überprüft, ob der Name verfügbar ist.
     2. Der Namespace erbt die folgenden Eigenschaften:
         1. Abonnement-ID
         2. Ressourcengruppe
-        3. Position
+        3. Standort
         4. Clustername
     3. Klicken Sie auf **Erstellen**, um den Namespace zu erstellen. Jetzt können Sie Ihren Cluster verwalten.  
 
@@ -70,28 +73,31 @@ Führen Sie die folgenden Schritte aus, um über das Azure-Portal einen Cluster 
 
 ## <a name="submit-a-support-request"></a>Senden Sie eine Supportanfrage.
 
-Wenn Sie die Größe Ihres Clusters nach der Erstellung ändern möchten oder Ihre bevorzugte Region nicht verfügbar ist, senden Sie eine Supportanfrage, indem Sie diese Schritte ausführen:
+Wenn Sie die Größe Ihres Clusters nach der Erstellung ändern möchten oder Ihre bevorzugte Region nicht verfügbar ist, senden Sie über diese Schritte eine Supportanfrage:
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Menü **Hilfe und Support** aus.
 2. Wählen Sie im Menü „Support“ **+ Neue Supportanfrage** aus.
 3. Führen Sie auf der Supportseite diese Schritte aus:
     1. Wählen Sie als **Problemtyp** in der Dropdownliste **Technisch** aus.
     2. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
-    3. Wählen Sie unter **Dienst** **Meine Dienste** und anschließend **Event Hubs** aus.
+    3. Wählen Sie unter **Dienst****Meine Dienste** und anschließend **Event Hubs** aus.
     4. Wählen Sie als **Ressource** Ihren Cluster aus, wenn er bereits vorhanden ist, andernfalls **Allgemeine Frage/Ressource nicht verfügbar**.
-    5. Wählen Sie als **Problemtyp** **Kontingent** aus.
+    5. Wählen Sie als **Problemtyp****Kontingent** aus.
     6. Wählen Sie als **Problemuntertyp** einen der folgenden Werte in der Dropdownliste aus:
         1. Wählen Sie **Request for Dedicated SKU** (Anforderung der Dedicated-SKU) aus, um die Unterstützung der Funktion in Ihrer Region anzufordern.
-        2. Wählen Sie **Anforderung zum Hoch- oder Herunterskalieren eines dedizierten Clusters**, wenn Sie Ihren dedizierten Cluster hoch- oder herunterskalieren möchten. 
+        2. Wählen Sie **Request to Scale Up or Scale Down Dedicated Cluster** (Anforderung von zentralem Hochskalieren oder Herunterskalieren eines Dedicated-Clusters), wenn Sie Ihren dedizierten Cluster zentral hoch- oder herunterskalieren möchten. 
     7. Beschreiben Sie unter **Betreff** das Problem.
 
         ![Seite „Supportticket“](./media/event-hubs-dedicated-cluster-create-portal/support-ticket.png)
 
  ## <a name="delete-a-dedicated-cluster"></a>Löschen eines dedizierten Clusters
  
-1. Um den Cluster zu löschen, wählen Sie im oberen Menü **Löschen** aus. Beachten Sie, dass für Ihren Cluster für mindestens 4 Stunden ab der Erstellung Gebühren anfallen. 
-2. Es wird eine Meldung angezeigt, die Ihren Wunsch, den Cluster zu löschen, bestätigt.
-3. Geben Sie den **Namen des Clusters** ein, und wählen Sie **Löschen** aus, um den Cluster zu löschen.
+1. Um den Cluster zu löschen, wählen Sie im oberen Menü **Löschen** aus. 
+
+    > [!IMPORTANT]
+    > Sie können den Cluster frühestens 4 Stunden nach seiner Erstellung löschen. Daher werden Ihnen mindestens 4 Stunden für die Nutzung des Clusters in Rechnung gestellt. Weitere Informationen zu Preisen finden Sie unter [Event Hubs – Preise](https://azure.microsoft.com/pricing/details/event-hubs/).     
+1. Es wird eine Meldung angezeigt, die Ihren Wunsch, den Cluster zu löschen, bestätigt.
+1. Geben Sie den **Namen des Clusters** ein, und wählen Sie **Löschen** aus, um den Cluster zu löschen.
 
     ![Seite „Cluster löschen“](./media/event-hubs-dedicated-cluster-create-portal/delete-cluster-page.png)
 

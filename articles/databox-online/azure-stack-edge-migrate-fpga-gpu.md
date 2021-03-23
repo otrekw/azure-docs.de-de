@@ -6,36 +6,36 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/10/2021
+ms.date: 03/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 1db6574f8ca22b6fe60899f00700ee19d61eab3b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 24d6528a105d593d1cb4c9c66d981c8787f85633
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382819"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573274"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Migrieren von Workloads von einem Azure Stack Edge Pro-FPGA- zu einem Azure Stack Edge Pro-GPU-Gerät
 
-In diesem Artikel wird beschrieben, wie Sie Workloads und Daten von einem Azure Stack Edge Pro-FPGA-Gerät zu einem Azure Stack Edge Pro-GPU-Gerät migrieren. Im Rahmen der Beschreibung des Migrationsverfahrens können Sie sich einen Überblick über die Migration verschaffen, z. B. Vergleich der beiden Geräte, Migrationsaspekte, ausführliche Schritte sowie Überprüfung mit anschließender Bereinigung.
+In diesem Artikel wird beschrieben, wie Sie Workloads und Daten von einem Azure Stack Edge Pro-FPGA-Gerät zu einem Azure Stack Edge Pro-GPU-Gerät migrieren. Der Migrationsprozess beginnt mit einem Vergleich der beiden Geräte, einem Migrationsplan und einer Überprüfung der Migrationsaspekte. Das Migrationsverfahren bietet ausführliche Schritte und endet mit der Überprüfung und Gerätebereinigung.
 
-<!--Azure Stack Edge Pro FPGA devices will reach end-of-life in February 2024. If you are considering new deployments, we recommend that you explore Azure Stack Edge Pro GPU devices for your workloads.-->
+[!INCLUDE [Azure Stack Edge Pro FPGA end-of-life](../../includes/azure-stack-edge-fpga-eol.md)]
 
 ## <a name="about-migration"></a>Informationen zur Migration
 
 Die Migration ist der Prozess zum Verschieben von Workloads und Anwendungsdaten von einem Speicherort an einen anderen. Hierbei muss eine genaue Kopie der auf einem Speichergerät befindlichen aktuellen Daten einer Organisation auf einem anderen Speichergerät erstellt werden – vorzugsweise ohne Unterbrechung oder Deaktivierung aktiver Anwendungen – und dann die gesamte Eingabe/Ausgabe-Aktivität (E/A) auf das neue Gerät umgeleitet werden. 
 
-Dieser Migrationsleitfaden enthält eine Schritt-für-Schritt-Beschreibung der Vorgehensweise zum Migrieren von Daten von einem Azure Stack Edge Pro-FPGA- zu einem Azure Stack Edge Pro-GPU-Gerät. Dieses Dokument ist für IT-Experten und Wissensarbeiter bestimmt, die für das Betreiben, Bereitstellen und Verwalten von Azure Stack Edge-Geräten im Rechenzentrum verantwortlich sind. 
+Dieser Migrationsleitfaden enthält eine Schritt-für-Schritt-Beschreibung der Vorgehensweise zum Migrieren von Daten von einem Azure Stack Edge Pro-FPGA- zu einem Azure Stack Edge Pro-GPU-Gerät. Dieses Dokument ist für IT-Experten und Wissensarbeiter bestimmt, die für das Betreiben, Bereitstellen und Verwalten von Azure Stack Edge-Geräten im Rechenzentrum verantwortlich sind.
 
 In diesem Artikel wird das Azure Stack Edge Pro-FPGA-Gerät als *Quellgerät* und das Azure Stack Edge Pro-GPU-Gerät als *Zielgerät* bezeichnet. 
 
 ## <a name="comparison-summary"></a>Zusammenfassender Vergleich
 
-Dieser Abschnitt enthält eine vergleichende Zusammenfassung der Funktionen des Azure Stack Edge Pro-GPU- und des Azure Stack Edge Pro-FPGA-Geräts. Die Hardware des Quell- und des Zielgeräts ist größtenteils identisch und unterscheidet sich nur hinsichtlich der Karte für die Hardwarebeschleunigung und die Speicherkapazität. 
+Dieser Abschnitt enthält eine vergleichende Zusammenfassung der Funktionen des Azure Stack Edge Pro-GPU- und des Azure Stack Edge Pro-FPGA-Geräts. Die Hardware des Quell- und des Zielgeräts ist größtenteils identisch. Nur die Karte für die Hardwarebeschleunigung und die Speicherkapazität können sich unterscheiden.<!--Please verify: These components MAY, but need not necessarily, differ?-->
 
 |    Funktion  | Azure Stack Edge Pro-GPU (Zielgerät)  | Azure Stack Edge Pro-FPGA (Quellgerät)|
 |----------------|-----------------------|------------------------|
-| Hardware       | Hardwarebeschleunigung: 1 oder 2 Nvidia T4-GPUs <br> Die Spezifikationen für Compute-Einheit, Arbeitsspeicher, Netzwerkschnittstelle, Netzteil und Netzkabel sind mit FPGA identisch.  | Hardwarebeschleunigung: Intel Arria 10 FPGA <br> Die Spezifikationen für Compute-Einheit, Arbeitsspeicher, Netzwerkschnittstelle, Netzteil und Netzkabel sind mit GPU identisch.          |
+| Hardware       | Hardwarebeschleunigung: 1 oder 2 Nvidia T4-GPUs <br> Die Spezifikationen für Compute-Einheit, Arbeitsspeicher, Netzwerkschnittstelle, Netzteil und Netzkabel sind mit dem Gerät mit FPGA identisch.  | Hardwarebeschleunigung: Intel Arria 10 FPGA <br> Die Spezifikationen für Compute-Einheit, Arbeitsspeicher, Netzwerkschnittstelle, Netzteil und Netzkabel sind mit dem Gerät mit GPU identisch.          |
 | Verwendbarer Speicher | 4,19 TB <br> Nach dem Reservieren von Speicherplatz für Paritätsresilienz und interne Verwendung | 12,5 TB <br> Nach dem Reservieren von Speicherplatz für interne Verwendung |
 | Sicherheit       | Zertifikate |                                                     |
 | Arbeitsauslastungen      | IoT Edge-Workloads <br> VM-Workloads <br> Kubernetes-Workloads| IoT Edge-Workloads |
@@ -55,9 +55,9 @@ Beachten Sie beim Erstellen Ihres Migrationsplans Folgendes:
 
 Beachten Sie Folgendes, bevor Sie mit der Migration beginnen: 
 
-- Ein Azure Stack Edge Pro-GPU-Gerät kann nicht für eine Azure Stack Edge Pro-FPGA-Ressource aktiviert werden. Eine neue Ressource sollte für das Azure Stack Edge Pro-GPU-Gerät erstellt werden. Dies ist unter [Neue Ressource erstellen](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource) beschrieben.
+- Ein Azure Stack Edge Pro-GPU-Gerät kann nicht für eine Azure Stack Edge Pro-FPGA-Ressource aktiviert werden. Sie sollten eine neue Ressource für das Azure Stack Edge Pro-GPU-Gerät erstellen. Dies ist unter [Neue Ressource erstellen](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource) beschrieben.
 - Die auf dem Quellgerät mit FPGA bereitgestellten Machine Learning-Modelle müssen für das Zielgerät mit GPU geändert werden. Wenden Sie sich an den Microsoft-Support, um Hilfe zu den Modellen zu erhalten. Die auf dem Quellgerät ohne FPGA (nur mit Verwendung der CPU) bereitgestellten benutzerdefinierten Modelle sollten auf dem Zielgerät (mit Verwendung der CPU) funktionieren, ohne dass vorherige Änderungen erforderlich sind.
-- Für die auf dem Quellgerät bereitgestellten IoT Edge-Module müssen unter Umständen Änderungen vorgenommen werden, bevor diese auf dem Zielgerät erfolgreich bereitgestellt werden können. 
+- Für die auf dem Quellgerät bereitgestellten IoT Edge-Module müssen unter Umständen Änderungen vorgenommen werden, bevor diese erfolgreich auf dem Zielgerät bereitgestellt werden können. 
 - Das Quellgerät unterstützt NFS 3.0- und 4.1-Protokolle. Das Zielgerät unterstützt nur das NFS 3.0-Protokoll.
 - Das Quellgerät unterstützt SMB- und NFS-Protokolle. Das Zielgerät unterstützt Speicher über das REST-Protokoll, indem Speicherkonten zusätzlich zu SMB- und NFS-Protokollen für Freigaben verwendet werden.
 - Der Freigabezugriff auf dem Quellgerät erfolgt über die IP-Adresse, während für den Freigabezugriff auf dem Zielgerät der Gerätename verwendet wird.
@@ -99,15 +99,15 @@ Edge-Cloudfreigaben lagern Daten von Ihrem Gerät in Azure aus. Führen Sie dies
 
 - Erstellen Sie eine Liste mit allen Edge-Cloudfreigaben und Benutzern auf dem Quellgerät.
 - Erstellen Sie eine Liste mit Ihren gesamten Bandbreitenzeitplänen. Sie erstellen diese Bandbreitenzeitpläne dann auf Ihrem Zielgerät neu.
-- Konfigurieren Sie je nach verfügbarer Netzwerkbandbreite die Bandbreitenzeitpläne auf Ihrem Gerät, um die Datenauslagerung in der Cloud zu erhöhen. Hierdurch wird die Menge der lokalen Daten auf dem Gerät verringert.
-- Stellen Sie sicher, dass für die Freigaben eine vollständige Auslagerung in die Cloud erzielt wird. Sie können dies überprüfen, indem Sie sich im Azure-Portal den Status der Freigabe ansehen.  
+- Konfigurieren Sie je nach verfügbarer Netzwerkbandbreite die Bandbreitenzeitpläne auf Ihrem Gerät, um die Datenauslagerung in der Cloud zu erhöhen. Dadurch werden die lokalen Daten auf dem Gerät minimiert.
+- Stellen Sie sicher, dass für die Freigaben eine vollständige Auslagerung in die Cloud erzielt wird. Die Auslagerung können Sie überprüfen, indem Sie sich im Azure-Portal den Status der Freigabe ansehen.  
 
 #### <a name="data-in-edge-local-shares"></a>Daten auf lokalen Edge-Freigaben
 
 Die Daten auf lokalen Edge-Freigaben verbleiben auf dem Gerät. Führen Sie diese Schritte auf Ihrem *Quellgerät* über das Azure-Portal aus. 
 
-- Erstellen Sie eine Liste mit den lokalen Edge-Freigaben, die auf dem Gerät vorhanden sind.
-- Wenn es sich um eine einmalige Migration der Daten handelt, sollten Sie eine Kopie der Daten der lokalen Edge-Freigabe auf einem anderen lokalen Server erstellen. Sie können Kopiertools wie `robocopy` (SMB) oder `rsync` (NFS) nutzen, um die Daten zu kopieren. Es kann auch sein, dass Sie bereits über die Bereitstellung einer Drittanbieterlösung für den Schutz der Daten verfügen, mit denen die Daten auf Ihren lokalen Freigaben gesichert werden. Die folgenden Drittanbieterlösungen werden für die Nutzung mit Azure Stack Edge Pro-FPGA-Geräten unterstützt:
+- Erstellen Sie eine Liste mit den lokalen Edge-Freigaben auf dem Gerät.
+- Da Sie eine einmalige Migration der Daten ausführen, sollten Sie eine Kopie der Daten der lokalen Edge-Freigabe auf einem anderen lokalen Server erstellen. Sie können Kopiertools wie `robocopy` (SMB) oder `rsync` (NFS) nutzen, um die Daten zu kopieren. Es kann auch sein, dass Sie bereits über die Bereitstellung einer Drittanbieterlösung für den Schutz der Daten verfügen, mit denen die Daten auf Ihren lokalen Freigaben gesichert werden. Die folgenden Drittanbieterlösungen werden für die Nutzung mit Azure Stack Edge Pro-FPGA-Geräten unterstützt:
 
     | Drittanbietersoftware           | Verweis auf die Lösung                               |
     |--------------------------------|---------------------------------------------------------|
@@ -157,9 +157,9 @@ Als Nächstes kopieren Sie Daten vom Quellgerät auf die Edge-Cloudfreigaben und
 
 Führen Sie die folgenden Schritte aus, um die Daten der Edge-Cloudfreigaben mit Ihrem Zielgerät zu synchronisieren:
 
-1. [Fügen Sie Freigaben hinzu](azure-stack-edge-j-series-manage-shares.md#add-a-share), deren Namen den Namen der Freigaben auf dem Quellgerät entsprechen. Stellen Sie sicher, dass **Blobcontainer auswählen** beim Erstellen von Freigaben auf **Vorhandene verwenden** festgelegt ist, und wählen Sie dann den Container aus, der mit dem vorherigen Gerät verwendet wurde.
+1. [Fügen Sie Freigaben hinzu](azure-stack-edge-j-series-manage-shares.md#add-a-share), deren Namen den Namen der Freigaben auf dem Quellgerät entsprechen. Stellen Sie beim Erstellen der Freigaben sicher, dass **Blobcontainer auswählen** auf **Vorhandene verwenden** festgelegt ist, und wählen Sie dann den Container aus, der mit dem vorherigen Gerät verwendet wurde.
 1. [Fügen Sie Benutzer hinzu](azure-stack-edge-j-series-manage-users.md#add-a-user), die Zugriff auf das vorherige Gerät hatten.
-1. [Aktualisieren Sie die Freigabedaten](azure-stack-edge-j-series-manage-shares.md#refresh-shares) aus Azure. Dadurch werden alle Clouddaten aus dem vorhandenen Container in die Freigaben gepullt.
+1. [Aktualisieren Sie die Freigabedaten](azure-stack-edge-j-series-manage-shares.md#refresh-shares) aus Azure. Durch die Aktualisierung der Freigabe werden alle Clouddaten aus dem vorhandenen Container in die Freigaben gepullt.
 1. Erstellen Sie die Bandbreitenzeitpläne neu, die Ihren Freigaben zugeordnet werden sollen. Informationen zu den ausführlichen Schritten finden Sie unter [Hinzufügen eines Zeitplans](azure-stack-edge-j-series-manage-bandwidth-schedules.md#add-a-schedule).
 
 
@@ -172,10 +172,10 @@ Nach vollständiger Konfiguration des Ersatzgeräts aktivieren Sie das Gerät f�
 Führen Sie diese Schritte aus, um die Daten aus lokalen Freigaben wiederherzustellen:
 
 1. [Konfigurieren Sie die Computerolle auf einem Azure Stack Edge Pro-Gerät mit GPU](azure-stack-edge-gpu-deploy-configure-compute.md).
-1. Fügen Sie alle lokalen Freigaben auf dem Zielgerät hinzu. Weitere Informationen finden Sie in den ausführlichen Schritten unter [Hinzufügen einer lokalen Freigabe](azure-stack-edge-j-series-manage-shares.md#add-a-local-share).
+1. Fügen Sie alle lokalen Freigaben auf dem Zielgerät hinzu. Weitere Informationen finden Sie in den ausführlichen Schritten unter [Hinzufügen einer lokalen Freigabe](azure-stack-edge-gpu-manage-shares.md#add-a-local-share).
 1. Beim Zugreifen auf die SMB-Freigaben auf dem Quellgerät werden die IP-Adressen verwendet, während auf dem Zielgerät der Gerätename genutzt wird. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einer SMB-Freigabe](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-smb-share). Zum Herstellen einer Verbindung mit NFS-Freigaben auf dem Zielgerät müssen Sie die neuen IP-Adressen verwenden, die dem Gerät zugeordnet sind. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einer NFS-Freigabe](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-nfs-share). 
 
-    Wenn Sie Ihre Freigabedaten per SMB/NFS auf einen Zwischenserver kopiert haben, können Sie diese Daten auf Freigaben des Zielgeräts kopieren. Auch das direkte Kopieren vom Quellgerät ist möglich, sofern sowohl das Quell- als auch das Zielgerät *online* ist.
+    Wenn Sie Ihre Freigabedaten per SMB oder NFS auf einen Zwischenserver kopiert haben, können Sie die Daten vom Zwischenserver auf Freigaben des Zielgeräts kopieren. Auch das direkte Kopieren vom Quellgerät ist möglich, sofern sowohl das Quell- als auch das Zielgerät *online* ist.
 
     Falls Sie eine Drittanbietersoftware zum Sichern der Daten auf den lokalen Freigaben verwendet haben, müssen Sie das Wiederherstellungsverfahren der gewählten Schutzlösung ausführen. Entsprechende Verweise finden Sie in der folgenden Tabelle.
 

@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66b004a0371b76f82d525972feefab9c89efb2d
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 3fad2c683890776908afbfbf15ee91d46d564783
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742045"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466761"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Übersicht über die rollenbasierte Zugriffssteuerung in Azure Active Directory
 
@@ -60,7 +60,7 @@ Eine Rollenzuweisung ist eine Azure AD-Ressource, die einem *Benutzer* eine *Ro
 - Rollendefinition
 - Ressourcenumfang
 
-Zum [Erstellen von Rollenzuweisungen](custom-create.md) können Sie das Azure-Portal, Azure AD PowerShell oder die Graph-API verwenden. Sie können auch [die Zuweisungen für eine benutzerdefinierte Rolle anzeigen](custom-view-assignments.md#view-the-assignments-of-a-role).
+Zum [Erstellen von Rollenzuweisungen](custom-create.md) können Sie das Azure-Portal, Azure AD PowerShell oder die Graph-API verwenden. Sie können auch [die Rollenzuweisungen auflisten](view-assignments.md).
 
 Das folgende Diagramm zeigt ein Beispiel für eine Rollenzuweisung. In diesem Beispiel wurde Chris Green die benutzerdefinierte Rolle „App-Registrierungsadministrator“ für den Bereich der Contoso Widget Builder-App-Registrierung zugewiesen. Diese Zuweisung erteilt Chris nur für diese spezifische App-Registrierung die Berechtigungen der Rolle „App-Registrierungsadministrator“.
 
@@ -89,4 +89,4 @@ Die Nutzung integrierter Rollen in Azure AD ist kostenlos, während für benutz
 
 - [Grundlegendes zu Rollen in Azure Active Directory](concept-understand-roles.md)
 - Erstellen von benutzerdefinierten Rollenzuweisungen über das [Azure-Portal, Azure AD PowerShell und die Graph-API](custom-create.md)
-- [Anzeigen der Zuweisungen für eine benutzerdefinierte Rolle](custom-view-assignments.md)
+- [Auflisten von Rollenzuweisungen](view-assignments.md)

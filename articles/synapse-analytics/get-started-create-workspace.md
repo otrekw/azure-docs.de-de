@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 3a2636ec73d20f3011d8413c794e68ef41b1829c
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 94d069a283249f2880743ba911c32bf3821d28c8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209184"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171482"
 ---
 # <a name="creating-a-synapse-workspace"></a>Erstellen eines Synapse-Arbeitsbereichs
 
@@ -27,15 +27,21 @@ Um die Schritte dieses Tutorials ausführen zu können, benötigen Sie Zugriff a
 
 ## <a name="create-a-synapse-workspace-in-the-azure-portal"></a>Erstellen eines Synapse-Arbeitsbereichs im Azure-Portal
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und suchen Sie oben nach **Synapse**.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Geben Sie in der Suchleiste **Synapse** ein, und drücken Sie nicht die EINGABETASTE.
 1. Wählen Sie in den Suchergebnissen unter **Dienste** den Eintrag **Azure Synapse Analytics** aus.
 1. Wählen Sie **Hinzufügen** aus, um einen Arbeitsbereich zu erstellen.
-1. Geben Sie auf der Registerkarte **Grundlagen** unter „Projektdetails“ die bevorzugten Werte für **Abonnement**, **Ressourcengruppe** und **Region** ein, und wählen Sie dann einen Arbeitsbereichsnamen aus. In diesem Tutorial wird **myworkspace** verwendet.
-1. Klicken Sie unter **Data Lake Storage Gen 2 auswählen** auf die Schaltfläche für **From subscription** (Aus Abonnement).
-1. Klicken Sie unter **Kontoname** auf **Neu erstellen**, und geben Sie für das neue Speicherkonto den Namen **contosolake** oder einen ähnlichen Namen ein. Dieser Name muss eindeutig sein.
-1. Klicken Sie unter **Dateisystemname** auf **Neu erstellen**, und geben Sie den Namen **Benutzer** ein. Dadurch wird ein Speichercontainer namens **Benutzer** erstellt.
-1. Der Arbeitsbereich verwendet dieses Speicherkonto als primäres Speicherkonto für Spark-Tabellen und Spark-Anwendungsprotokolle.
-1. Aktivieren Sie das Kästchen „Mir die Rolle "Mitwirkender an Storage-Blobdaten" für das Data Lake Storage Gen2-Konto zuweisen“. 
+1. Füllen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** die folgenden Felder aus:
+      1. **Abonnement**: Wählen Sie ein beliebiges Abonnement.
+      2. **Ressourcengruppe**: Wählen Sie eine beliebige Ressourcengruppe.
+      3. **Ressourcengruppe**: Lassen Sie dieses Feld leer.
+1. Füllen Sie auf der Registerkarte **Grundlagen** unter **Arbeitsbereichsdetails** die folgenden Felder aus:
+      1. **Arbeitsbereichsname**: Wählen Sie einen beliebigen global eindeutigen Namen. In diesem Tutorial wird **myworkspace** verwendet.
+      1. **Region**: Wählen Sie eine beliebige Region.
+      1. **Auswählen von Data Lake Storage Gen 2**
+        1. Klicken Sie auf die Schaltfläche **Aus Abonnement**.
+        1. Klicken Sie unter **Kontoname** auf **Neu erstellen**, und geben Sie für das neue Speicherkonto den Namen **contosolake** oder einen ähnlichen Namen ein. Dieser Name muss eindeutig sein.
+        1. Klicken Sie unter **Dateisystemname** auf **Neu erstellen**, und geben Sie den Namen **Benutzer** ein. Dadurch wird ein Speichercontainer namens **Benutzer** erstellt. Der Arbeitsbereich verwendet dieses Speicherkonto als primäres Speicherkonto für Spark-Tabellen und Spark-Anwendungsprotokolle.
+        1. Aktivieren Sie das Kästchen „Mir die Rolle "Mitwirkender an Storage-Blobdaten" für das Data Lake Storage Gen2-Konto zuweisen“. 
 1. Wählen Sie **Bewerten + erstellen** > **Erstellen** aus. Ihr Arbeitsbereich steht nach wenigen Minuten zur Verfügung.
 
 > [!NOTE]

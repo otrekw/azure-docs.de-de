@@ -4,12 +4,12 @@ description: Mit den Azure Container Instances-Dienst lassen sich isolierte Cont
 ms.topic: overview
 ms.date: 08/10/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: bd68fab380754eca38eebf3fd52634508f282cf6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 873f7cc51d1b369503a72501ae000000ff06f805
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88121662"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573012"
 ---
 # <a name="what-is-azure-container-instances"></a>Was ist Azure Container Instances?
 
@@ -21,10 +21,7 @@ Azure Container Instances ist eine großartige Lösung für jedes Szenario, das 
 
 Container bieten im Vergleich zu virtuellen Computern (VMs) erhebliche Vorteile beim Start. Azure Container Instances kann in Sekundenschnelle Container in Azure starten, ohne virtuelle Computer bereitstellen und verwalten zu müssen.
 
-Verwenden Sie Linux- oder Windows-Containerimages aus Docker Hub, aus einer privaten [Azure-Containerregistrierung](../container-registry/index.yml) oder aus einer anderen cloudbasierten Docker-Registrierung. Von Azure Container Instances werden verschiedene gängige Basis-Betriebssystemimages zwischengespeichert, um die Entwicklung Ihrer benutzerdefinierten Anwendungsimages zu beschleunigen.
-
-> [!NOTE]
-> Aktuell ist es nicht möglich, ein Image aus einer lokalen Registrierung in Azure Container Instances bereitzustellen.
+Verwenden Sie Linux- oder Windows-Containerimages aus Docker Hub, aus einer privaten [Azure-Containerregistrierung](../container-registry/index.yml) oder aus einer anderen cloudbasierten Docker-Registrierung. In den [häufig gestellten Fragen](container-instances-faq.md) erfahren Sie, welche Registrierungen von ACI unterstützt werden. Von Azure Container Instances werden verschiedene gängige Basis-Betriebssystemimages zwischengespeichert, um die Entwicklung Ihrer benutzerdefinierten Anwendungsimages zu beschleunigen.
 
 ## <a name="container-access"></a>Containerzugriff
 
@@ -43,7 +40,7 @@ In der Vergangenheit verfügten Container zwar über Anwendungsabhängigkeitsiso
 
 ### <a name="customer-data"></a>Kundendaten
 
-Der ACI-Dienst speichert die Kundendaten, die mindestens erforderlich sind, um sicherzustellen, dass Ihre Containergruppen erwartungsgemäß ausgeführt werden. Das Speichern von Kundendaten in einer einzelnen Region ist derzeit nur in der Region „Asien, Südosten“ (Singapur) des geografischen Raums „Asien-Pazifik“ möglich. Bei allen anderen Regionen werden Kundendaten unter [Geografien](https://azure.microsoft.com/global-infrastructure/geographies/) gespeichert. Weitere Informationen erhalten Sie vom Azure-Support.
+Der ACI-Dienst speichert die Kundendaten, die mindestens erforderlich sind, um sicherzustellen, dass Ihre Containergruppen erwartungsgemäß ausgeführt werden. Die Speicherung von Kundendaten in einer einzelnen Region ist derzeit nur in der Region „Asien, Südosten“ (Singapur) des geografischen Raums „Asien-Pazifik“ und in der Region „Brasilien, Süden“ (São Paulo, Bundesstaat) des geografischen Raums „Brasilien“ verfügbar. Bei allen anderen Regionen werden Kundendaten unter [Geografien](https://azure.microsoft.com/global-infrastructure/geographies/) gespeichert. Weitere Informationen erhalten Sie vom Azure-Support.
 
 ## <a name="custom-sizes"></a>Benutzerdefinierte Größen
 
@@ -68,9 +65,6 @@ Einige Features sind momentan auf Linux-Container beschränkt:
 * [GPU-Ressourcen](container-instances-gpu.md) (Vorschauversion)
 
 Verwenden Sie für Windows-Containerbereitstellungen Images, die auf allgemeinen [Windows-Basisimages](container-instances-faq.md#what-windows-base-os-images-are-supported) beruhen.
-
-> [!NOTE]
-> Die Verwendung von auf Windows Server 2019 basierenden Images in Azure Container Instances befindet sich im Vorschaustadium.
 
 ## <a name="co-scheduled-groups"></a>Gemeinsam geplante Gruppen
 

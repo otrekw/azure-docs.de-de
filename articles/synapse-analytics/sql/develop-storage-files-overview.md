@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 855765648d68756598f2942e0c994fa939bcbda0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 679df881e928825496a03b2fef7c9374d61593f7
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695667"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199982"
 ---
 # <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Zugreifen auf externen Speicher mithilfe eines serverlosen SQL-Pools in Azure Synapse Analytics
 
-In diesem Dokument wird beschrieben, wie Benutzer Daten aus den Dateien lesen können, die in Azure Storage in einem serverlosen SQL-Pool gespeichert sind. Benutzer haben die folgenden Optionen, um auf Speicher zuzugreifen:
+In diesem Artikel wird beschrieben, wie Benutzer Daten aus den Dateien lesen können, die in Azure Storage in einem serverlosen SQL-Pool gespeichert sind. Benutzer haben die folgenden Optionen, um auf Speicher zuzugreifen:
 
 - Funktion [OPENROWSET](develop-openrowset.md) zum Durchführen von Ad-hoc-Abfragen für die Dateien in Azure Storage.
 - [Externe Tabelle](develop-tables-external-tables.md), bei der es sich um eine vordefinierte Datenstruktur handelt, die auf einer Gruppe von externen Dateien basiert.

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erste Schritte mit Visual Studio Code'
+title: 'Schnellstart: Erste Schritte mit Azure Cognitive Search unter Verwendung von Visual Studio Code'
 titleSuffix: Azure Cognitive Search
 description: Es wird beschrieben, wie Sie die Visual Studio Code-Erweiterung für Azure Cognitive Search installieren und verwenden.
 author: dereklegenzoff
@@ -7,21 +7,19 @@ manager: luisca
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/12/2021
-ms.openlocfilehash: 7a613dd6cba55831b02a60f833088b6c34bfc4a7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 03/10/2021
+ms.openlocfilehash: 3237a32a90e3964644ff84958a065656cdf7f3ab
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122689"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015844"
 ---
-# <a name="get-started-with-visual-studio-code-and-azure-cognitive-search"></a>Erste Schritte mit Visual Studio Code und Azure Cognitive Search
+# <a name="get-started-with-azure-cognitive-search-using-visual-studio-code"></a>Erste Schritte mit Azure Cognitive Search unter Verwendung von Visual Studio Code
 
-In diesem Artikel wird erläutert, wie Sie mithilfe der [Azure Cognitive Search REST-APIs](/rest/api/searchservice) und eines API-Clients zum Senden und Empfangen von Anforderungen interaktiv REST-API-Anforderungen formulieren. Mit einem API-Client und dieser Anleitung können Sie vor dem Schreiben von Code Anforderungen senden und Antworten anzeigen.
+In diesem Artikel wird erläutert, wie Sie mithilfe der [Azure Cognitive Search-REST-APIs](/rest/api/searchservice) und [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch) interaktiv REST-API-Anforderungen formulieren. Mit der [Visual Studio Code-Erweiterung für Azure Cognitive Search (Vorschau)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch) und diesen Anweisungen können Sie Anforderungen senden und Antworten anzeigen, bevor Sie Code schreiben.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-In diesem Artikel wird eine Visual Studio Code-Erweiterung (Vorschauversion) für Azure Cognitive Search-REST-APIs verwendet.
 
 > [!IMPORTANT] 
 > Dieses Feature ist zurzeit als öffentliche Preview verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
@@ -35,18 +33,6 @@ Für diesen Schnellstart sind die folgenden Dienste und Tools erforderlich.
 + [Azure Cognitive Search für Visual Studio Code (Vorschauversion)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch)
 
 + [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
-
-## <a name="copy-a-key-and-url"></a>Kopieren eines Schlüssels und einer URL
-
-Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anforderung erforderlich. Ein Suchdienst wird mit beidem erstellt. Gehen Sie daher wie folgt vor, um die erforderlichen Informationen zu erhalten, falls Sie Azure Cognitive Search Ihrem Abonnement hinzugefügt haben:
-
-1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com/), und rufen Sie auf der Seite **Übersicht** Ihres Suchdiensts die URL ab. Ein Beispiel für einen Endpunkt ist `https://mydemo.search.windows.net`.
-
-1. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
-
-![Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels](media/search-get-started-rest/get-url-key.png "Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels")
-
-Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
 ## <a name="install-the-extension"></a>Installieren der Erweiterung
 

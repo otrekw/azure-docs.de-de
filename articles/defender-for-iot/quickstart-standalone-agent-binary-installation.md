@@ -1,27 +1,27 @@
 ---
-title: Installieren eines Micro-Agents für Defender für IoT
+title: Installieren eines Micro-Agents für Defender für IoT (Vorschau)
 titleSuffix: Azure Defender for IoT
 description: Hier erfahren Sie, wie Sie den Micro-Agent für Defender installieren und authentifizieren.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 3/3/2021
+ms.date: 3/9/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: ccf28c47e2e1438a141e2497da70d32c1832ddb9
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 8984b1dbcb9a6aca6d313d8195a75093ae421bbd
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120435"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611674"
 ---
-# <a name="install-defender-for-iot-micro-agent"></a>Installieren eines Micro-Agents für Defender für IoT 
+# <a name="install-defender-for-iot-micro-agent-preview"></a>Installieren eines Micro-Agents für Defender für IoT (Vorschau)
 
 In diesem Artikel erfahren Sie, wie Sie den Micro-Agent für Defender installieren und authentifizieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Vor der Installation des Moduls „Defender für IoT“ muss im IoT Hub eine Modulidentität erstellt werden. Weitere Informationen zum Erstellen einer Modulidentität finden Sie unter [Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender](quickstart-create-micro-agent-module-twin.md).
+Vor der Installation des Moduls „Defender für IoT“ muss in IoT Hub eine Modulkennung erstellt werden. Weitere Informationen zum Erstellen einer Modulkennung finden Sie unter [Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender (Vorschau)](quickstart-create-micro-agent-module-twin.md).
 
 ## <a name="install-the-package"></a>Installieren des Pakets
 
@@ -49,13 +49,37 @@ sudo apt-get install defender-iot-micro-agent
 
 Zur Authentifizierung des Micro-Agents für Defender für IoT werden die beiden folgenden Optionen verwendet: 
 
-- Verbindungszeichenfolge. 
+- Verbindungszeichenfolge für Modulkennung 
 
 - Zertifikat
 
-### <a name="authenticate-using-a-connection-string"></a>Authentifizieren mithilfe einer Verbindungszeichenfolge
+### <a name="authenticate-using-a-module-identity-connection-string"></a>Authentifizierung per Verbindungszeichenfolge für Modulkennung
 
-So verwenden Sie die Authentifizierung per Verbindungszeichenfolge:
+Stellen Sie sicher, dass die [Voraussetzungen](#prerequisites) für diesen Artikel erfüllt sind, und erstellen Sie vor diesen Schritten unbedingt eine Modulkennung. 
+
+#### <a name="get-the-module-identity-connection-string"></a>Abrufen der Verbindungszeichenfolge für die Modulkennung
+
+So rufen Sie die Verbindungszeichenfolge für die Modulkennung aus IoT Hub ab: 
+
+1. Navigieren Sie zu IoT Hub, und wählen Sie Ihren Hub aus.
+
+1. Wählen Sie im Menü auf der linken Seite im Abschnitt **Explorer** die Option **IoT-Geräte** aus.
+
+   :::image type="content" source="media/quickstart-standalone-agent-binary-installation/iot-devices.png" alt-text="Auswählen von „IoT-Geräte“ im linken Menü":::
+
+1. Wählen Sie ein Gerät aus der Liste der Geräte-IDs aus, um die Seite **Details zum Gerät** anzuzeigen.
+
+1. Wählen Sie die Registerkarte **Modulkennungen** und anschließend das Modul **DefenderIotMicroAgent** aus der Liste der Modulkennungen aus, die dem Gerät zugeordnet sind.
+
+   :::image type="content" source="media/quickstart-standalone-agent-binary-installation/module-identities.png" alt-text="Auswählen der Registerkarte „Modulkennungen“":::
+
+1. Kopieren Sie den Primärschlüssel auf der Seite **Details zur Modulkennung**, indem Sie die Schaltfläche **Kopieren** auswählen.
+
+   :::image type="content" source="media/quickstart-standalone-agent-binary-installation/copy-button.png" alt-text="Auswählen der Schaltfläche „Kopieren“ zum Kopieren des Primärschlüssels":::
+
+#### <a name="configure-authentication-using-a-module-identity-connection-string"></a>Konfigurieren der Authentifizierung mithilfe einer Verbindungszeichenfolge für die Modulkennung
+
+So konfigurieren Sie den Agent für die Authentifizierung mithilfe einer Verbindungszeichenfolge für die Modulkennung:
 
 1. Platzieren Sie eine Datei mit dem Namen `connection_string.txt`, die die UTF-8-codierte Verbindungszeichenfolge enthält, im Verzeichnis `/var/defender_iot_micro_agent` des Defender-Agents. Geben Sie hierzu den folgenden Befehl ein:
 
@@ -63,7 +87,7 @@ So verwenden Sie die Authentifizierung per Verbindungszeichenfolge:
     sudo bash -c 'echo "<connection string" > /var/defender_iot_micro_agent/connection_string.txt' 
     ```
 
-    Die Datei `connection_string.txt` sollte sich nun am folgenden Pfad befinden: `/var/defender_iot_micro_agent/connection_string.txt`.
+    Die Datei `connection_string.txt` sollte sich am folgenden Pfad befinden: `/var/defender_iot_micro_agent/connection_string.txt`.
 
 1. Starten Sie den Dienst mithilfe des folgenden Befehls neu:  
 

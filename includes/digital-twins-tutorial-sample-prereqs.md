@@ -5,18 +5,25 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 1/20/2021
 ms.author: baanders
-ms.openlocfilehash: 5a1baf9631f2d30dd14ff16d2d34beda04605c6c
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 43cc3dfc5b425df6d9dd5e2c2f35a792907ccdea
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660520"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103622320"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
+Für dieses Tutorial benötigen Sie Folgendes: 
+
 Wenn Sie kein Azure-Abonnement haben, **erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** , bevor Sie beginnen.
 
-Ehe Sie loslegen, **installieren Sie außerdem mindestens [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/), Version 16.5**, auf dem Entwicklungscomputer. Wenn Sie bereits eine ältere Version installiert haben, können Sie die App *Visual Studio-Installer* auf Ihrem Computer öffnen und die Anweisungen zur Aktualisierung Ihrer Installation befolgen.
+### <a name="get-required-resources"></a>Abrufen der erforderlichen Ressourcen
+
+Für dieses Tutorial müssen Sie auf Ihrem Entwicklungscomputer **mindestens Version 16.5 von [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) installieren**. Wenn Sie bereits eine ältere Version installiert haben, können Sie die App *Visual Studio-Installer* auf Ihrem Computer öffnen und die Anweisungen zur Aktualisierung Ihrer Installation befolgen.
+
+>[!NOTE]
+> Stellen Sie sicher, dass die Installation von Visual Studio 2019 die **[Workload „Azure-Entwicklung“](/dotnet/azure/configure-visual-studio)** umfasst. Diese Workload ermöglicht einer Anwendung die Veröffentlichung von Azure-Funktionen und die Ausführung anderer Azure-Entwicklungsaufgaben.
 
 Grundlage des Tutorials ist ein in C# geschriebenes Beispielprojekt. Das Beispiel finden Sie hier: [End-to-End-Beispiele für Azure Digital Twins](/samples/azure-samples/digital-twins-samples/digital-twins-samples). **Laden Sie das Beispielprojekt auf Ihren Computer herunter**, indem Sie zum Beispiellink navigieren und unter dem Titel die Schaltfläche *Code durchsuchen* auswählen. Dadurch gelangen Sie zum GitHub-Repository für die Beispiele, die Sie als *ZIP-Datei* herunterladen können. Wählen Sie hierzu die Schaltfläche *Code* und anschließend *ZIP herunterladen* aus.
 
@@ -27,5 +34,3 @@ Dadurch wird ein *ZIP*-Ordner als **digital-twins-samples-master.zip** auf Ihren
 ### <a name="prepare-an-azure-digital-twins-instance"></a>Vorbereiten einer Azure Digital Twins-Instanz
 
 [!INCLUDE [Azure Digital Twins: instance prereq](digital-twins-prereq-instance.md)]
-
-[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](digital-twins-local-credentials-outer.md)]

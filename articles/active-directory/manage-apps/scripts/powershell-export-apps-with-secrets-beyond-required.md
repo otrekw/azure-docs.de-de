@@ -11,20 +11,18 @@ ms.topic: sample
 ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 3572f481cc2cbcb1df73b33eb2543e32256ad9fb
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 9c0e5508830343561833785fbce31f547a8a7428
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102583263"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149680"
 ---
 # <a name="export-apps-with-secrets-and-certificates-expiring-beyond-the-required-date"></a>Exportieren von Apps mit Geheimnissen und Zertifikaten, die nach dem erforderlichen Datum ablaufen
 
-Mit diesem PowerShell-Skriptbeispiel werden alle App-Geheimnisse und -Zertifikate, die nach dem erforderlichen Datum für die angegebenen Apps ablaufen, aus Ihrem Verzeichnis in eine CSV-Datei exportiert.
+Mit diesem PowerShell-Skriptbeispiel werden alle App-Registrierungsgeheimnisse und -Zertifikate, die nach einem erforderlichen Zeitraum für die angegebenen Apps ablaufen, nicht interaktiv aus Ihrem Verzeichnis in eine CSV-Datei exportiert.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
-
-Für dieses Beispiel ist das [Azure AD PowerShell V2-Modul für Graph](/powershell/azure/active-directory/install-adv2) (AzureAD) oder das [Azure AD PowerShell V2-Modul in der Vorschauversion für Graph](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) (AzureADPreview) erforderlich.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -32,13 +30,14 @@ Für dieses Beispiel ist das [Azure AD PowerShell V2-Modul für Graph](/powershe
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 
+Dieses Skript funktioniert nicht interaktiv. Der Administrator, der es verwendet, muss die Werte im Abschnitt „#PARAMETERS TO CHANGE“ durch die eigene App-ID, das Anwendungsgeheimnis, den Mandantennamen, den Ablaufzeitraum für die App-Anmeldeinformationen und den Pfad ersetzen, in den die CSV-Datei exportiert wird.
+Dieses Skript verwendet den [OAuth-Flow „Client_Credential“](../../develop/v2-oauth2-client-creds-grant-flow.md). Die Funktion „RefreshToken“ erstellt das Zugriffstoken basierend auf den Werten der Parameter, die vom Administrator geändert wurden.
+
 Mit dem Befehl „Add-Member“ werden die Spalten in der CSV-Datei erstellt.
-Sie können die Variable „$Path“ direkt in PowerShell mit einem CSV-Dateipfad ändern, falls der Export nicht interaktiv sein soll.
 
 | Get-Help | Notizen |
 |---|---|
-| [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0&preserve-view=true) | Ruft eine Anwendung aus Ihrem Verzeichnis ab. |
-| [Get-AzureADApplicationOwner](/powershell/module/azuread/Get-AzureADApplicationOwner?view=azureadps-2.0&preserve-view=true) | Ruft die Besitzer einer Anwendung aus Ihrem Verzeichnis ab. |
+| [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7.1) | Sendet HTTP- und HTTPS-Anforderungen an eine Webseite oder einen Webdienst. Er analysiert die Antwort und gibt Auflistungen von Links, Bildern und anderen wichtigen HTML-Elementen zurück. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

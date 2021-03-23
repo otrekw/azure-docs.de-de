@@ -2,13 +2,13 @@
 title: 'Tutorial: Skalieren einer privaten Cloud'
 description: In diesem Tutorial wird das Azure-Portal verwendet, um eine private Azure VMware Solution-Cloud zu skalieren.
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: d49d973cc6d97280dc0c7ea6681f2602b871e1ba
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 03/13/2021
+ms.openlocfilehash: 2129a3f5d04311883369b7b708689a13f07ec118
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791238"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463601"
 ---
 # <a name="tutorial-scale-an-azure-vmware-solution-private-cloud"></a>Tutorial: Skalieren einer privaten Azure VMware Solution-Cloud
 
@@ -22,7 +22,7 @@ In diesem Tutorial verwenden Sie das Azure-Portal zu folgenden Zwecken:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Eine private Cloud zur Durchführung dieses Tutorials. Wenn Sie noch keine private Cloud erstellt haben, verwenden Sie die Anleitung [Erstellen einer privaten Cloud](tutorial-create-private-cloud.md), um eine private Cloud zu erstellen. Konfigurieren Sie das Netzwerk für Ihre private VMware-Cloud in Azure, um das erforderliche virtuelle Netzwerk einzurichten.
+Sie benötigen eine vorhandene private Cloud für dieses Tutorial. Wenn Sie noch keine private Cloud erstellt haben, verwenden Sie die Anleitung [Erstellen einer privaten Cloud](tutorial-create-private-cloud.md), um eine private Cloud zu erstellen. 
 
 ## <a name="add-a-new-cluster"></a>Hinzufügen eines neuen Clusters
 

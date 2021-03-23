@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: e90a374917239ae1a20d25795757811a12cee80c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e387653d73105911f10bb184f9179e33e22671d4
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84200547"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103021667"
 ---
 ---
 | Grenzwertbezeichner | Begrenzung | Kommentare |
@@ -15,6 +15,6 @@ ms.locfileid: "84200547"
 | Maximale Anzahl von Funktionen pro Auftrag |60 |Es gibt eine harte Grenze von 60 Funktionen pro Stream Analytics-Auftrag. |
 | Maximale Anzahl von Streamingeinheiten pro Auftrag |192 |Es gibt eine harte Grenze von 192 Streamingeinheiten pro Stream Analytics-Auftrag. |
 | Maximale Anzahl von Aufträgen pro Region |1\.500 |Jedes Abonnement kann bis zu 1.500 Aufträge pro geografischer Region haben. |
-| Referenzdatenblob (MB) | 300 | Referenzdatenblobs können jeweils maximal 300MB groß sein. |
+| Referenzdatenblob (MB) | 5 GB | Bis zu 5 GB bei Verwendung von mindestens 6 SUS |
 | Maximale Anzahl von Zeichen in einer Abfrage | 512.000 | In einer Azure Stream Analytics Auftragsabfrage besteht eine feste Grenze von 512.000 Zeichen.|
 

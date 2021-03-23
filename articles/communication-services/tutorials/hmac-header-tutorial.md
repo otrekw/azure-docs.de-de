@@ -1,20 +1,20 @@
 ---
-title: 'Signieren einer HTTP-Anforderung: C#'
+title: Informationen zum Signieren einer HTTP-Anforderung mit C#
 titleSuffix: An Azure Communication Services tutorial
-description: Hier erfahren Sie, wie Sie eine HTTP-Anforderung in Communication Services über C# signieren.
+description: Hier erfahren Sie, wie Sie eine HTTP-Anforderung für Azure Communication Services über C# signieren.
 author: alexandra142
 manager: soricos
 services: azure-communication-services
 ms.author: apistrak
-ms.date: 01/15/2021
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8a9191180dcf4a16f586d109e820e63def566a42
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: e9b24e981e472371e477cd4dd895e976f709b2fb
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488731"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490505"
 ---
 # <a name="sign-an-http-request"></a>Signieren einer HTTP-Anforderung
 
@@ -27,14 +27,14 @@ In diesem Tutorial erfahren Sie, wie Sie eine HTTP-Anforderung mit einer HMAC-Si
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind. Hier finden Sie weitere Informationen zum [Bereinigen von Azure Communication Service-Ressourcen](../quickstarts/create-communication-resource.md#clean-up-resources) und zum [Bereinigen von Azure Functions-Ressourcen](../../azure-functions/create-first-function-vs-code-csharp.md#clean-up-resources).
+Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, löschen Sie die Ressource oder Ressourcengruppe. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind. Hier finden Sie weitere Informationen zum [Bereinigen von Azure Communication Service-Ressourcen](../quickstarts/create-communication-resource.md#clean-up-resources) und zum [Bereinigen von Azure Functions-Ressourcen](../../azure-functions/create-first-function-vs-code-csharp.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Hinzufügen von Sprachanrufen zu Ihrer App](../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
-Das könnte Sie auch interessieren:
+Weitere Möglichkeiten:
 
 - [Hinzufügen von Chatfunktionen zu Ihrer App](../quickstarts/chat/get-started.md)
 - [Erstellen von Benutzerzugriffstoken](../quickstarts/access-tokens.md)

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2020
-ms.openlocfilehash: 37ba5fc7ce118e2e8532ea4db18634265aaacb64
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 9df5c63ef175d0cf736ce16036466158ab6565f9
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556857"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618303"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Willkommen bei Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -19,6 +19,9 @@ ms.locfileid: "99556857"
 Moderne Anwendungen erfordern eine hohe Reaktionsschnelligkeit und müssen immer online sein. Um eine geringe Latenz und Hochverfügbarkeit zu erreichen, müssen Instanzen dieser Anwendungen in Rechenzentren eingesetzt werden, die sich in der Nähe ihrer Benutzer befinden. Anwendungen müssen in Echtzeit auf große Nutzungsänderungen zu Spitzenzeiten reagieren, immer größere Datenmengen speichern und diese den Benutzern innerhalb von Millisekunden zur Verfügung stellen.
 
 Azure Cosmos DB ist eine vollständig verwaltete NoSQL-Datenbank für die moderne App-Entwicklung. Antwortzeiten im einstelligen Millisekundenbereich sowie automatische und sofortige Skalierbarkeit garantieren Geschwindigkeit in jeder Größenordnung. Geschäftskontinuität wird durch [SLA-gestützte](https://azure.microsoft.com/support/legal/sla/cosmos-db) Verfügbarkeit und Sicherheit auf Unternehmensniveau gewährleistet. Sofort einsatzbereite globale Datenverteilung in mehreren Regionen sowie Open-Source-APIs und -SDKs für gängige Sprachen machen die App-Entwicklung schneller und produktiver. Als vollständig verwalteter Dienst nimmt Ihnen Azure Cosmos DB die Datenbankverwaltung durch automatische Verwaltung, Updates und Patches ab. Außerdem übernimmt der Dienst die Kapazitätsverwaltung mit kostengünstigen serverlosen und automatischen Skalierungsoptionen, die auf Anwendungsanforderungen reagieren, um die Kapazität an den Bedarf anzupassen.
+
+> [!NOTE]
+> Möchten Sie zur Verbesserung der Azure Cosmos DB-Dokumentation beitragen, indem Sie an einer Benutzerstudie teilnehmen? Nehmen Sie sich einige Minuten Zeit, um diese 5-minütige [Vorabbefragung ](https://aka.ms/cosmosdb-documentation-screener-survey) auszufüllen. Wenn Sie infrage kommen, werden Sie zu einem Zeitplanungsmodul umgeleitet, in dem Sie ein Zeitfenster für die Teilnahme an einer interaktiven Untersuchung reservieren können. Während dieses Prozesses werden gemäß unseren [Datenschutzbestimmungen](https://go.microsoft.com/fwlink/?LinkId=521839) keine personenbezogenen Daten gesammelt.
 
 Sie können [Azure Cosmos DB kostenlos ohne Azure-Abonnement und ohne Verpflichtungen testen](https://azure.microsoft.com/try/cosmosdb/) oder ein [Azure Cosmos DB-Konto im Tarif „Free“](optimize-dev-test.md#azure-cosmos-db-free-tier) nutzen, bei dem die ersten 400 RU/s und 5 GB Speicher kostenlos sind.
 

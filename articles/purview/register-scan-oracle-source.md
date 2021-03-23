@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 3ae81a9c05f0c88a52db6409bf870ee0427f09db
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 37f6a779e7dd83a6aa61de9850ad3b49b57393f9
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696052"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010442"
 ---
 # <a name="register-and-scan-oracle-source-preview"></a>Oracle-Quelle registrieren und überprüfen (Vorschau)
 
@@ -31,7 +31,7 @@ Die Oracle-Quelle unterstützt die **vollständige Überprüfung**, um Metadaten
 
 3.  Stellen Sie sicher, dass \"Visual C++ Redistributable 2012 Update 4\" auf dem Computer mit der selbstgehosteten Integration Runtime installiert ist. Sollte diese Komponente noch nicht installiert sein, können Sie sie [hier](https://www.microsoft.com/download/details.aspx?id=30679) herunterladen.
 
-4.  Sie müssen manuell einen Oracle-JDBC-Treiber mit dem Namen „oracle.jdbc.driver.OracleDriver“ auf den virtuellen Computer herunterladen, auf dem die selbstgehostete Integration Runtime ausgeführt wird.
+4.  Sie müssen den Oracle JDBC-Treiber [hier](https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html) manuell auf den virtuellen Computer herunterladen, auf dem die selbstgehostete Integration Runtime ausgeführt wird.
 
     > [!Note] 
     > Der Treiber muss für alle Konten des virtuellen Computers zugänglich sein. Installieren Sie ihn nicht in einem Benutzerkonto.

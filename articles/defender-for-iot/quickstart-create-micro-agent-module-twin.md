@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender
+title: Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender (Vorschau)
 titleSuffix: Azure Defender for IoT
 description: Hier erfahren Sie, wie Sie einzelne Modulzwillinge vom Typ „DefenderIotMicroAgent“ für neue Geräte erstellen.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: ea82fea89a9e81e66be6b3060aad067d3ceb8f5f
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: e1c2f4e79b9f0f0ba1ec0da0c5a2a29cdc8bc6d7
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123002"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489878"
 ---
-# <a name="create-a-defender-iot-micro-agent-module-twin"></a>Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender 
+# <a name="create-a-defender-iot-micro-agent-module-twin-preview"></a>Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender (Vorschau)
 
 Sie können einzelne Modulzwillinge vom Typ **DefenderIotMicroAgent** für neue Geräte erstellen. Alternativ können Sie eine Batcherstellung von Modulzwillingen für alle Geräte in einem IoT Hub durchführen. 
 
@@ -27,9 +27,9 @@ Defender für IoT lässt sich vollständig in Ihre vorhandene die IoT-Gerätever
 
 Weitere Informationen zum Konzept von Gerätezwillingen in Azure IoT Hub finden Sie [hier](../iot-hub/iot-hub-devguide-device-twins.md). 
 
-## <a name="security-module-twins"></a>Sicherheitsmodulzwillinge 
+## <a name="defender-iot-micro-agent-twins"></a>Defender-IoT-Micro-Agent-Zwillinge 
 
-Von Defender für IoT wird für jedes Gerät ein Sicherheitsmodulzwilling verwendet. Der Sicherheitsmodulzwilling enthält alle für die Gerätesicherheit relevanten Informationen für jedes einzelne Gerät in Ihrer Lösung. Die Gerätesicherheitseigenschaften werden über einen dedizierten Sicherheitsmodulzwilling konfiguriert, um eine sicherere Kommunikation zu gewährleisten sowie Updates und Wartungsvorgänge zu ermöglichen, die weniger Ressourcen erfordern. 
+Defender für IoT verwendet für jedes Gerät einen Defender-IoT-Micro-Agent-Zwilling. Der Defender-IoT-Micro-Agent-Zwilling enthält alle für die Gerätesicherheit relevanten Informationen für jedes einzelne Gerät in Ihrer Lösung. Die Gerätesicherheitseigenschaften werden über einen dedizierten Defender-IoT-Micro-Agent-Zwilling konfiguriert, um eine sicherere Kommunikation zu gewährleisten sowie Updates und Wartungsvorgänge zu ermöglichen, die weniger Ressourcen erfordern. 
 
 ## <a name="understanding-defenderiotmicroagent-module-twins"></a>Grundlegendes zu Modulzwillingen vom Typ „DefenderIotMicroAgent“ 
 
@@ -39,9 +39,9 @@ Defender für IoT ermöglicht die vollständige Integration Ihrer vorhandenen Io
 
 Weitere Informationen zum allgemeinen Konzept von Modulzwillingen in Azure IoT Hub finden Sie unter  [Verstehen und Verwenden von Modulzwillingen in IoT Hub](../iot-hub/iot-hub-devguide-module-twins.md).
 
-Von Defender für IoT wird der Mechanismus für Modulzwillinge genutzt und für jedes Ihrer Geräte ein Sicherheitsmodulzwilling namens `DefenderIotMicroAgent` verwendet. 
+Defender für IoT nutzt den Mechanismus für Modulzwillinge und verwendet für jedes Ihrer Geräte einen Defender-IoT-Micro-Agent-Zwilling namens `DefenderIotMicroAgent`. 
 
-Die Sicherheitsmodulzwillinge müssen für jedes Gerät im Dienst erstellt, konfiguriert und verwendet werden, um die Features von Defender für IoT in vollem Umfang nutzen zu können. 
+Die Defender-IoT-Micro-Agent-Zwillinge müssen für jedes Gerät im Dienst erstellt, konfiguriert und verwendet werden, um die Features von Defender für IoT in vollem Umfang nutzen zu können. 
 
 ## <a name="create-defenderiotmicroagent-module-twin"></a>Erstellen eines Modulzwillings vom Typ „DefenderIotMicroAgent“ 
 
@@ -49,7 +49,7 @@ Modulzwillinge vom Typ **DefenderIotMicroAgent** können erstellt werden, indem 
 
 So erstellen Sie manuell einen neuen Modellzwilling vom Typ  **DefenderIotMicroAgent** für ein Gerät: 
 
-1. Suchen Sie in Ihrer IoT Hub-Instanz nach dem Gerät, auf dem Sie einen Sicherheitsmodulzwilling erstellen möchten, und wählen Sie es aus. 
+1. Suchen Sie in Ihrer IoT Hub-Instanz nach dem Gerät, auf dem Sie einen Defender-IoT-Micro-Agent-Zwilling erstellen möchten, und wählen Sie es aus. 
 
 1. Wählen Sie  **Modulidentität hinzufügen** aus. 
 
@@ -59,7 +59,7 @@ So erstellen Sie manuell einen neuen Modellzwilling vom Typ  **DefenderIotMicr
 
 ## <a name="verify-the-creation-of-a-module-twin"></a>Überprüfen der Erstellung eines Modulzwillings 
 
-Überprüfen Sie wie folgt, ob für ein bestimmtes Gerät ein Sicherheitsmodulzwilling vorhanden ist: 
+Überprüfen Sie wie folgt, ob für ein bestimmtes Gerät ein Defender-IoT-Micro-Agent-Zwilling vorhanden ist: 
 
 1. Wählen Sie in Ihrer Azure IoT Hub-Instanz im Menü **Explorer** die Option **IoT-Geräte** aus. 
 

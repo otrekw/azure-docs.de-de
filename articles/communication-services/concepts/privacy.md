@@ -5,15 +5,15 @@ author: chpalm
 manager: anvalent
 services: azure-communication-services
 ms.author: chpalm
-ms.date: 10/03/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6fbc20ec7145a474d9f3aada153f2d012aba34f8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 933b5605cf38be90d419673a94e23e4c36f0ef36
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561346"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495707"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionale Verfügbarkeit und Datenresidenz
 
@@ -51,12 +51,14 @@ Durch die Verwendung des Azure-Portals oder der Azure Resource Manager-APIs mi
 
 ### <a name="telephone-number-management"></a>Telefonnummernverwaltung
 
-Von Azure Communication Services wird ein Verzeichnis mit Telefonnummern gepflegt, die einer Communication Services-Ressource zugeordnet sind. Verwenden Sie die folgenden APIs, um Telefonnummern abzurufen und zu löschen:
+Von Azure Communication Services wird ein Verzeichnis mit Telefonnummern gepflegt, die einer Communication Services-Ressource zugeordnet sind. Verwenden Sie die [APIs zur Verwaltung von Telefonnummern](/rest/api/communication/phonenumberadministration), um Telefonnummern abzurufen und zu löschen:
+
+- `Get All Phone Numbers`
 - `Release Phone Number`
 
 ### <a name="chat"></a>Chat
 
-Chatthreads und -nachrichten werden aufbewahrt, bis sie explizit gelöscht werden. Ein vollständig im Leerlauf befindlicher Thread wird nach 30 Tagen automatisch gelöscht. Verwenden Sie [Chat-APIs](/rest/api/communication/chat/deletechatmessage/deletechatmessage), um Nachrichten abzurufen, aufzulisten, zu aktualisieren und zu löschen.
+Chatthreads und -nachrichten werden aufbewahrt, bis sie explizit gelöscht werden. Ein vollständig im Leerlauf befindlicher Thread wird nach 30 Tagen automatisch gelöscht. Verwenden Sie [Chat-APIs](/rest/api/communication/chat/chatthread), um Nachrichten abzurufen, aufzulisten, zu aktualisieren und zu löschen.
 
 - `Get Thread`
 - `Get Message`

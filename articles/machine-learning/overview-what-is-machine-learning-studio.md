@@ -9,12 +9,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
 adobe-target: true
-ms.openlocfilehash: 320840277483776dfc74b98ab70410503008df67
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 48c4b2a73628ab2105e23054d747e28acc105d01
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374234"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563186"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Was ist Azure Machine Learning Studio?
 
@@ -76,31 +76,26 @@ Selbst wenn Sie ein erfahrener Entwickler sind, kann Studio die Verwaltung von A
 
 ## <a name="ml-studio-classic-vs-azure-machine-learning-studio"></a>ML Studio (Classic) und Azure Machine Learning Studio
 
-**ML Studio (Classic)** wurde 2015 veröffentlicht und war der erste Drag & Drop-Generator für maschinelles Lernen. Es handelt sich dabei um einen eigenständigen Dienst, der nur eine visuelle Umgebung bietet. Studio (Classic) funktioniert nicht mit Azure Machine Learning.
+**ML Studio (Classic)** wurde 2015 veröffentlicht und war der erste Drag & Drop-Generator für maschinelles Lernen. 
+
+Bei **ML Studio (Classic)** handelt sich um einen eigenständigen Dienst, der nur eine visuelle Umgebung bietet. Studio (Classic) funktioniert nicht mit Azure Machine Learning.
 
 **Azure Machine Learning** ist ein separater und modernisierter Dienst, der eine umfassende Data Science-Plattform bereitstellt. Er unterstützt sowohl den Code First-Ansatz als auch Umgebungen mit wenig Code.
 
 **Azure Machine Learning Studio** ist ein Webportal *in* Azure Machine Learning, das Optionen mit wenig Code und ohne Code für die Projekterstellung und Ressourcenverwaltung enthält. 
 
-Neuen Benutzern wird empfohlen, **Azure Machine Learning** anstelle von ML Studio (Classic) zu wählen, um die aktuellen Data Science-Tools nutzen zu können.
+Neuen Benutzern wird empfohlen, **Azure Machine Learning** anstelle von ML Studio (Classic) zu wählen, um die aktuellen Data Science-Tools nutzen zu können. Wenn Sie ML Studio (Classic) bereits nutzen, ziehen Sie die [Migration zu Azure Machine Learning](classic/migrate-overview.md) in Erwägung.
+
+Nachfolgend sind einige Vorteile der Umstellung auf Azure Machine Learning aufgeführt:
+
+- Skalierbare Computecluster für umfangreiche Trainings
+- Unternehmenssicherheit und -governance
+- Interoperabilität mit gängigen Open Source-Tools
+- End-to-End-MLOps
 
 ### <a name="feature-comparison"></a>Funktionsvergleiche
 
-In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen ML Studio (Classic) und Azure Machine Learning zusammengefasst:
-
-| Funktion | ML Studio (klassisch) | Azure Machine Learning |
-|---| --- | --- |
-| Drag & Drop-Oberfläche | Klassische Umgebung | Aktualisierte Umgebung – [Azure Machine Learning-Designer](concept-designer.md)| 
-| Code SDKs | Nicht unterstützt | Vollständig integriert in [Azure Machine Learning Python](/python/api/overview/azure/ml/) und [R](https://github.com/Azure/azureml-sdk-for-r) SDKs |
-| Experiment | Skalierbar (Limit für Trainingsdaten: 10 GB) | Skalieren mit Computeziel |
-| Trainieren von Computezielen | Proprietäres Computeziel, nur CPU-Unterstützung | Viele anpassbare [Computeziele für das Training](concept-compute-target.md#train). GPU- und CPU-Unterstützung | 
-| Computeziele für die Bereitstellung | Proprietäres Webdienstformat, nicht anpassbar | Viele anpassbare [Computeziele für die Bereitstellung](concept-compute-target.md#deploy). GPU- und CPU-Unterstützung |
-| ML-Pipeline | Nicht unterstützt | Erstellung von flexiblen modularen [Pipelines](concept-ml-pipelines.md) zum Automatisieren von Workflows |
-| MLOps | Grundlegende Modellverwaltung und Bereitstellung; reine CPU-Bereitstellungen | Entitätsversionierung (Modell, Daten, Workflows), Workflowautomatisierung, Integration in CICD-Tools, CPU- und GPU-Bereitstellungen [und mehr](concept-model-management-and-deployment.md) |
-| Modellformat | Proprietäres Format, nur Studio (klassisch) | Mehrere unterstützte Formate, je nach Typ des Trainingsauftrags |
-| Automatisiertes Modelltraining und Optimieren von Hyperparametern |  Nicht unterstützt | [Unterstützt](concept-automated-ml.md). Code First-Optionen und codefreie Optionen | 
-| Datendrifterkennung | Nicht unterstützt | [Unterstützt](how-to-monitor-datasets.md) |
-| Datenbezeichnungsprojekte | Nicht unterstützt | [Unterstützt](how-to-create-labeling-projects.md) |
+[!INCLUDE [aml-compare-classic](../../includes/machine-learning-compare-classic-aml.md)]
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

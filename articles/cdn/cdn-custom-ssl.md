@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 61ba50f8ec9e1de18238160b23096670753cffd6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 275afc504a5e7b92ae3274c02372eee6b488c782
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367502"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616399"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne
 
@@ -206,7 +206,7 @@ Ihr CNAME-Eintrag muss das folgende Format aufweisen:
 * *Name* ist Ihr benutzerdefinierter Domänenname.
 * *Wert* ist der Hostname Ihres CDN-Endpunkts.
 
-| Name            | type  | Wert                 |
+| Name            | Typ  | Wert                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
@@ -356,6 +356,11 @@ Die folgende Tabelle zeigt den Status des Vorgangs zum Deaktivieren von HTTPS. N
 7. *Wie werden eigene Zertifikate verlängert?*
 
     Laden Sie Ihr neues Zertifikat in Azure Key Vault hoch, um sicherzustellen, dass ein neueres Zertifikat in der PoP-Infrastruktur bereitgestellt wird. Wählen Sie in Azure CDN in Ihren TLS-Einstellungen die neueste Zertifikatversion und anschließend „Speichern“ aus. Azure CDN wird dann Ihr neues aktualisiertes Zertifikat verteilen. 
+
+8. *Muss ich HTTPS nach dem Neustart des Endpunkts erneut aktivieren?*
+
+    Ja. Wenn Sie **Azure CDN von Akamai** verwenden und der Endpunkt beendet und neu gestartet wird, müssen Sie die HTTPS-Einstellung erneut aktivieren, wenn die Einstellung zuvor aktiviert war.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

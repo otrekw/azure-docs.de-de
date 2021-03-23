@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 11/30/2020
-ms.openlocfilehash: 77da3406897c31e48d808541f1f9d579eb0a9cb7
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 3fadfa9d4467209ddbe997afabba27a3752f685d
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401541"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419931"
 ---
 # <a name="what-is-azure-purview"></a>Was ist Azure Purview?
 
@@ -69,6 +69,9 @@ Nachdem Sie eine Datenquelle registriert haben, können Sie deren Metadaten anre
 Das Ermitteln und Verstehen von Datenquellen und ihrer Nutzung sind der Hauptzweck bei der Registrierung von Quellen. Enterprisebenutzer benötigen möglicherweise Daten für Business Intelligence, Anwendungsentwicklung, Data Science oder andere Aufgaben, für die spezifische Daten erforderlich sind. Über die Datenkatalogermittlung können sie schnell die ihren Anforderungen entsprechenden Daten suchen, die Daten verstehen, damit sie ihre Eignung für den jeweiligen Zweck einordnen können, und die Daten nutzen, indem sie die Datenquelle im Tool ihrer Wahl öffnen.
 
 Gleichzeitig können Benutzer Beiträge zum Katalog leisten, indem sie bereits registrierte Datenquellen mit Tags versehen, dokumentieren und kommentieren. Außerdem können sie neue Datenquellen registrieren, die von der Community der Katalogbenutzer gefunden, verstanden und genutzt werden.
+
+## <a name="in-region-data-residency"></a>Data Residency in der Region
+Azure Purview speichert Kundendaten in der Region, in der sie bereitgestellt werden, und verschiebt sie nicht aus dieser Region.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

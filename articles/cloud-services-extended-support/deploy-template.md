@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 71217e6379c02191311f5d93cb439d9da20080bc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a606956483ddb7c7f3a4f3cef8728ade508ab461
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706961"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574270"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Bereitstellen eines Clouddiensts (erweiterter Support) mithilfe von ARM-Vorlagen
 
@@ -44,6 +44,9 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von [ARM-Vorlagen](../azure-re
 
 ## <a name="deploy-a-cloud-service-extended-support"></a>Bereitstellen eines Clouddiensts (erweiterter Support)
 
+> [!NOTE]
+> Alternativ können Sie Ihren Clouddienst (erweiterter Support) über das [Azure-Portal](https://portal.azure.com) bereitstellen. Sie können die generierte ARM-Vorlage über das Portal für Ihre zukünftigen Bereitstellungen herunterladen.
+ 
 1. Erstellen Sie ein virtuelles Netzwerk. Der Name des virtuellen Netzwerks muss den Verweisen in der Dienstkonfigurationsdatei (.cscfg) entsprechen. Sollten Sie ein vorhandenes virtuelles Netzwerk verwenden, überspringen Sie diesen Abschnitt in der ARM-Vorlage.
 
     ```json

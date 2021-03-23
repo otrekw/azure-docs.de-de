@@ -7,14 +7,14 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/29/2021
+ms.date: 03/12/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: eb5de33fd41d3a454f4d0b8d44325ed30f9c5d47
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 8b9c4792fa6dbdc70f657ce3c5f1757473a22fda
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071629"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225216"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebook"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Python mit Jupyter Notebook
 
@@ -271,9 +271,9 @@ Zum Laden von Dokumenten erstellen Sie eine Dokumentsammlung, indem Sie ein [Ind
 
 ## <a name="3---search-an-index"></a>3\. Durchsuchen eines Index
 
-In diesem Schritt wird beschrieben, wie Sie einen Index abfragen, indem Sie [Durchsuchen von Dokumenten (REST)](/rest/api/searchservice/search-documents) verwenden.
+In diesem Schritt wird gezeigt, wie Sie einen Index mit der **search**-Methode der [Klasse „search.client“](/python/api/azure-search-documents/azure.search.documents.searchclient) abfragen.
 
-1. Verwenden Sie für diesen Vorgang „search_client“. Bei dieser Abfrage wird eine leere Suche ausgeführt (`search=*`) und eine unsortierte Liste (search score = 1.0) mit beliebigen Dokumenten zurückgegeben. Da keine einschränkenden Kriterien vorhanden sind, umfasst das Ergebnis alle Dokumente. Bei dieser Abfrage werden nur jeweils zwei der Felder eines Dokuments ausgegeben. Darüber hinaus wird `include_total_count=True` hinzugefügt, um die Anzahl aller Dokumente (4) in den Ergebnissen zu erhalten.
+1. Im folgenden Schritt wird eine leere Suche ausgeführt (`search=*`) und eine unsortierte Liste (search score = 1.0) mit beliebigen Dokumenten zurückgegeben. Da keine einschränkenden Kriterien vorhanden sind, umfasst das Ergebnis alle Dokumente. Bei dieser Abfrage werden nur jeweils zwei der Felder eines Dokuments ausgegeben. Darüber hinaus wird `include_total_count=True` hinzugefügt, um die Anzahl aller Dokumente (4) in den Ergebnissen zu erhalten.
 
     ```python
     results =  search_client.search(search_text="*", include_total_count=True)
@@ -348,7 +348,7 @@ In diesem Schritt wird beschrieben, wie Sie einen Index abfragen, indem Sie [Dur
 
 ## <a name="clean-up"></a>Bereinigung
 
-Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie am Ende eines Projekts prüfen, ob Sie die Ressourcen, die Sie erstellt haben, noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
 Ressourcen können im Portal über den Link **Alle Ressourcen** oder **Ressourcengruppen** im linken Navigationsbereich gesucht und verwaltet werden.
 

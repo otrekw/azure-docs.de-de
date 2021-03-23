@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7164c3dd5c98544f3cb2944cb33cfd0e9703e36d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cec386b798b843a5badc9d52d9c71bd7df54b59a
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90563334"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601932"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure Files – Überlegungen zum Netzwerkbetrieb 
 Sie können auf zwei Arten eine Verbindung mit einer Azure-Dateifreigabe herstellen:
@@ -26,10 +26,19 @@ Die Netzwerkkonfiguration für Azure-Dateifreigaben wird im Azure-Speicherkonto 
 
 Wir empfehlen Ihnen, vor diesem konzeptionellen Leitfaden den Artikel [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md) zu lesen.
 
+:::row:::
+    :::column:::
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/jd49W33DxkQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    :::column-end:::
+    :::column:::
+        Dieses Video ist eine Anleitung und Demo dazu, wie Azure-Dateifreigaben in fünf einfachen Schritte für Information-Worker und Apps auf sichere Weise direkt verfügbar gemacht werden können. In den folgenden Abschnitten finden Sie Links und zusätzlichen Kontext für die Dokumentation, auf die im Video verwiesen wird.
+   :::column-end:::
+:::row-end:::
+
 ## <a name="accessing-your-azure-file-shares"></a>Zugreifen auf Ihre Azure-Dateifreigaben
 Wenn Sie eine Azure-Dateifreigabe innerhalb eines Speicherkontos bereitstellen, kann über den öffentlichen Endpunkt des Speicherkontos sofort auf die Dateifreigabe zugegriffen werden. Das bedeutet, dass authentifizierte Anforderungen (etwa Anforderungen, die durch die Anmeldeidentität eines Benutzers autorisiert wurden) auf sichere Weise verwendet werden können – ganz gleich, ob ihr Ursprung innerhalb oder außerhalb von Azure liegt. 
 
-In vielen Kundenumgebungen ist die Einbindung der Azure-Dateifreigabe in die lokale Arbeitsstation zunächst nicht erfolgreich, obwohl Einbindungen von virtuellen Azure-Computern problemlos funktionieren. Das liegt daran, dass viele Organisationen und Internetdienstanbieter (Internet Service Providers, ISPs) den Port 445 blockieren, der von SMB für die Kommunikation verwendet wird. Für NFS-Freigaben besteht dieses Problem nicht. Diese Praxis geht auf Sicherheitsempfehlungen im Zusammenhang mit alten und veralteten Versionen des SMB-Protokolls zurück. SMB 3.0 ist zwar ein internetsicheres Protokoll, das gilt jedoch nicht für ältere Versionen (insbesondere SMB 1.0). Der externe Zugriff auf Azure-Dateifreigaben über den öffentlichen Endpunkt ist nur über SMB 3.0 und das FileREST-Protokoll (ebenfalls ein internetsicheres Protokoll) zulässig.
+In vielen Kundenumgebungen ist die Einbindung der Azure-Dateifreigabe in die lokale Arbeitsstation zunächst nicht erfolgreich, obwohl Einbindungen von virtuellen Azure-Computern problemlos funktionieren. Dies liegt daran, dass viele Organisationen und Internetdienstanbieter (Internet Service Providers, ISPs) Port 445 blockieren, der von SMB für die Kommunikation verwendet wird. Für NFS-Freigaben besteht dieses Problem nicht. Diese Praxis geht auf Sicherheitsempfehlungen im Zusammenhang mit alten und veralteten Versionen des SMB-Protokolls zurück. SMB 3.0 ist zwar ein internetsicheres Protokoll, das gilt jedoch nicht für ältere Versionen (insbesondere SMB 1.0). Der externe Zugriff auf Azure-Dateifreigaben über den öffentlichen Endpunkt ist nur über SMB 3.0 und das FileREST-Protokoll (ebenfalls ein internetsicheres Protokoll) zulässig.
 
 In der lokalen Umgebung kann am einfachsten auf die SMB-Dateifreigabe in Azure zugegriffen werden, wenn das lokale Netzwerk für den Port 445 geöffnet wird. Daher empfiehlt Microsoft die folgenden Schritte, um SMB 1.0 aus Ihrer Umgebung zu entfernen:
 

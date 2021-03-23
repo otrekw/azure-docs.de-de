@@ -1,26 +1,26 @@
 ---
-title: Blaupausenbeispiel „CIS Microsoft Azure Foundations Benchmark“
-description: Hier finden Sie eine Übersicht über das Blaupausenbeispiel „CIS Microsoft Azure Foundations Benchmark“. Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer Kontrollen.
-ms.date: 01/27/2021
+title: Blaupausenbeispiel „CIS Microsoft Azure Foundations Benchmark v1.1.0“
+description: Übersicht über das Blaupausenbeispiel „CIS Microsoft Azure Foundations Benchmark v1.1.0“ Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer Kontrollen.
+ms.date: 03/11/2021
 ms.topic: sample
-ms.openlocfilehash: fc9e2443cd1e413588487646d6400ae1f2185208
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b6188d96971329a83bc82042a1f840bd893354eb
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918415"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103197800"
 ---
-# <a name="cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Blaupausenbeispiel „CIS Microsoft Azure Foundations Benchmark“
+# <a name="cis-microsoft-azure-foundations-benchmark-v110-blueprint-sample"></a>Blaupausenbeispiel „CIS Microsoft Azure Foundations Benchmark v1.1.0“
 
-Das Blaupausenbeispiel „CIS Microsoft Azure Foundations Benchmark“ bietet mithilfe von [Azure Policy](../../policy/overview.md) Schutzmaßnahmen für Governance, die Ihnen beim Bewerten bestimmter CIS Microsoft Azure Foundations Benchmark-Empfehlungen helfen. Diese Blaupause hilft Kunden bei der Bereitstellung eines Kernsatzes von Richtlinien für jede in Azure bereitgestellte Architektur, die CIS Microsoft Azure Foundations Benchmark-Empfehlungen implementieren muss.
+Das Blaupausenbeispiel „CIS Microsoft Azure Foundations Benchmark v1.1.0“ bietet mithilfe von [Azure Policy](../../policy/overview.md) Schutzmaßnahmen für Governance, die Ihnen beim Bewerten bestimmter CIS Microsoft Azure Foundations Benchmark-Empfehlungen helfen. Diese Blaupause hilft Kunden bei der Bereitstellung eines Kernsatzes von Richtlinien für jede in Azure bereitgestellte Architektur, die CIS Microsoft Azure Foundations Benchmark v1.1.0-Empfehlungen implementieren muss.
 
 ## <a name="recommendation-mapping"></a>Empfehlungszuordnung
 
-In der [Azure Policy-Empfehlungszuordnung](../../policy/samples/cis-azure-1-1-0.md) finden Sie Details zu den in dieser Blaupause enthaltenen Richtliniendefinitionen. Darüber hinaus erfahren Sie, wie diese Richtlinien den **Compliancebereichen** und **Steuerungen** in CIS Microsoft Azure Foundations Benchmark v1.1.0 entsprechen. Bei der Zuweisung zu einer Architektur werden Ressourcen von Azure Policy auf Nichtkonformität mit den zugewiesenen Richtliniendefinitionen überprüft. Weitere Informationen finden Sie unter [Was ist Azure Policy?](../../policy/overview.md).
+In der [Azure Policy-Empfehlungszuordnung](../../policy/samples/cis-azure-1-1-0.md) finden Sie Details zu den in dieser Blaupause enthaltenen Richtliniendefinitionen. Darüber hinaus erfahren Sie, wie diese Richtlinien den **Empfehlungen** in CIS Microsoft Azure Foundations Benchmark v1.1.0 entsprechen. Bei der Zuweisung zu einer Architektur werden Ressourcen von Azure Policy auf Nichtkonformität mit den zugewiesenen Richtliniendefinitionen überprüft. Weitere Informationen finden Sie unter [Was ist Azure Policy?](../../policy/overview.md).
 
 ## <a name="deploy"></a>Bereitstellen
 
-Zum Bereitstellen des Blaupausenbeispiels „CIS Microsoft Azure Foundations Benchmark“ von Azure Blueprints müssen die folgenden Schritte ausgeführt werden:
+Zum Bereitstellen des Blaupausenbeispiels „CIS Microsoft Azure Foundations Benchmark v1.1.0“ von Azure Blueprints müssen die folgenden Schritte ausgeführt werden:
 
 > [!div class="checklist"]
 > - Erstellen einer neuen Blaupause mithilfe des Beispiels
@@ -50,7 +50,7 @@ Implementieren Sie zuerst das Blaupausenbeispiel, indem Sie mithilfe des Beispie
 
 ### <a name="publish-the-sample-copy"></a>Veröffentlichen der Kopie des Beispiels
 
-Ihre Kopie des Blaupausenbeispiels wurde jetzt in Ihrer Umgebung erstellt. Sie wird im Modus **Entwurf** erstellt und muss **veröffentlicht** werden, bevor sie zugewiesen und bereitgestellt werden kann. Die Kopie des Blaupausenbeispiels kann Ihrer Umgebung und Ihren Anforderungen angepasst werden. Durch diese Änderungen ist sie aber möglicherweise nicht mehr mit den Empfehlungen zu „CIS Microsoft Azure Foundations Benchmark“ konform.
+Ihre Kopie des Blaupausenbeispiels wurde jetzt in Ihrer Umgebung erstellt. Sie wird im Modus **Entwurf** erstellt und muss **veröffentlicht** werden, bevor sie zugewiesen und bereitgestellt werden kann. Die Kopie des Blaupausenbeispiels kann Ihrer Umgebung und Ihren Anforderungen angepasst werden. Durch diese Änderungen ist sie aber möglicherweise nicht mehr mit den Empfehlungen zu „CIS Microsoft Azure Foundations Benchmark v1.1.0“ konform.
 
 1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
 
@@ -101,8 +101,8 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 
 |Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
 |-|-|-|-|
-|CIS Microsoft Azure Foundations Benchmark 1.1.0-Empfehlungen überwachen und spezifische unterstützende VM-Erweiterungen bereitstellen|Richtlinienzuweisung|Liste der Regionen, in denen Network Watcher aktiviert werden soll|Eine durch Semikolons getrennte Liste von Regionen. Verwenden Sie Get-AzLocation, um eine vollständige Liste der Regionen abzurufen. Beispiel: eastus; eastus2|
-|CIS Microsoft Azure Foundations Benchmark 1.1.0-Empfehlungen überwachen und spezifische unterstützende VM-Erweiterungen bereitstellen|Richtlinienzuweisung|Liste der zur Verwendung genehmigten VM-Erweiterungen|Eine durch Semikolons getrennte Liste von Erweiterungen. Verwenden Sie „Get-AzVMExtensionImage“, um eine vollständige Liste der VM-Erweiterungen anzuzeigen. Beispiel: AzureDiskEncryption; IaaSAntimalware|
+|CIS Microsoft Azure Foundations Benchmark v1.1.0-Empfehlungen überwachen und spezifische unterstützende VM-Erweiterungen bereitstellen|Richtlinienzuweisung|Liste der Regionen, in denen Network Watcher aktiviert werden soll|Eine durch Semikolons getrennte Liste von Regionen. Verwenden Sie Get-AzLocation, um eine vollständige Liste der Regionen abzurufen. Beispiel: eastus; eastus2|
+|CIS Microsoft Azure Foundations Benchmark v1.1.0-Empfehlungen überwachen und spezifische unterstützende VM-Erweiterungen bereitstellen|Richtlinienzuweisung|Liste der zur Verwendung genehmigten VM-Erweiterungen|Eine durch Semikolons getrennte Liste von Erweiterungen. Verwenden Sie „Get-AzVMExtensionImage“, um eine vollständige Liste der VM-Erweiterungen anzuzeigen. Beispiel: AzureDiskEncryption; IaaSAntimalware|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: aceeaec63eb637002352f5c503f57890033b0381
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: de8c52372b2ef92dcf2abe357a40ef8947439a8a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449236"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493958"
 ---
 # <a name="quickstart-security-agent-reference-architecture"></a>Schnellstart: Sicherheits-Agent-Referenzarchitektur
 
@@ -57,7 +57,7 @@ Defender für IoT bietet verschiedene Installer-Agents für 32-Bit- und 64-Bit-W
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel erhalten Sie eine allgemeine Übersicht über die Architektur des Defender für IoT-Sicherheitsmoduls und die verfügbaren Installationsprogramme.
+In diesem Artikel erhalten Sie eine allgemeine Übersicht über die Architektur des Defender-IoT-Micro-Agents von Defender für IoT und die verfügbaren Installationsprogramme.
 
 Um mit der Defender für IoT-Bereitstellung fortzufahren, lesen Sie die folgenden Artikel:
 

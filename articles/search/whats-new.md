@@ -6,14 +6,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/02/2021
+ms.date: 03/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: 36f10bebfc42ae5e9e75206392e8a5f8ccef563a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b4dc8ab44d341b293c044843e6dff2a3b6d3102c
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694596"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103233547"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
@@ -23,7 +23,7 @@ Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen f
 
 |Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  BESCHREIBUNG | Verfügbarkeit  |
 |------------------------------|---------------|---------------|
-| [Semantische Suche](semantic-search-overview.md) | Eine Sammlung von abfragebezogenen Features, die die Relevanz von Suchergebnissen mit sehr geringem Aufwand verbessern. Mit kleinen Änderungen an einer Suchabfrage können Sie diese Features an bestehenden Indizes ausprobieren.</br></br>Bei der [semantischen Abfrage](semantic-how-to-query-request.md) handelt es sich um einen neuen Abfragetyp, der Verbesserungen bei der Verarbeitung natürlicher Sprache nutzt, um die Rangfolge zu verbessern und die Abfrageabsicht zu verstehen und damit Antworten, Beschriftungen und Semantikhervorhebungen bereitzustellen.</br></br>Die Begriffe [„semantische Klassifizierung“ und „semantische Antworten“ (Antworten, Schlagzeilen und Hervorhebungen)](semantic-how-to-query-response.md) beziehen sich auf das Modell, das die Ergebnisse auswertet, und dessen Fähigkeit, die Antwort zu strukturieren. | Öffentliche Vorschau ([auf Anforderung](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Verwenden Sie [Suchdokumente (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview und [Suchexplorer](search-explorer.md) im Azure-Portal. </br></br>Es gelten Regions- und Tarifeinschränkungen. |
+| [Semantische Suche](semantic-search-overview.md) | Eine Sammlung von abfragebezogenen Features, die die Relevanz von Suchergebnissen mit sehr geringem Aufwand erheblich verbessern. </br></br>Die [semantische Rangfolge](semantic-ranking.md) berechnet Relevanzbewertungen mithilfe der semantischen Bedeutung von Wörtern und Inhalten. </br></br>[Semantische Beschriftungen](semantic-how-to-query-request.md) sind relevante Passagen aus dem Dokument, die das Dokument am besten zusammenfassen. Die wichtigsten Begriffe oder Ausdrücke sind hervorgehoben. </br></br>[Semantische Antworten](semantic-answers.md) sind aus einem Suchdokument extrahierte Schlüsselpassagen, die als direkte Antwort auf eine Abfrage formuliert werden, die wie eine Frage aussieht. | Öffentliche Vorschau ([auf Anforderung](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Verwenden Sie [Suchdokumente (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview und [Suchexplorer](search-explorer.md) im Azure-Portal. </br></br>Es gelten Regions- und Tarifeinschränkungen. |
 | [Rechtschreibprüfung für Abfragebegriffe](speller-how-to-add.md) | Bevor die Abfragebegriffe die Suchmaschine erreichen, können sie auf Rechtschreibfehler überprüft werden. Die Option `speller` kann mit jedem Abfragetyp verwendet werden (einfach, vollständig oder semantisch). |  Öffentliche Vorschau, nur Rest, api-version=2020-06-30-Preview|
 | [SharePoint Online-Indexer](search-howto-index-sharepoint-online.md) | Dieser Indexer verbindet Sie mit einer SharePoint Online-Website, sodass Sie Inhalte aus einer Dokumentbibliothek indizieren können. | Öffentliche Vorschau, nur Rest, api-version=2020-06-30-Preview |
 

@@ -7,16 +7,20 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: cc207522048e3f0491e3aa54f2ae21d2e7e63bc2
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: f50737bdefc9065c9b16633ba3360bda1d028cd6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834033"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043047"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Neuerungen in Azure Migrate
 
 [Azure Migrate](migrate-services-overview.md) unterstützt Sie beim Ermitteln, Bewerten und Migrieren von lokalen Servern, Apps und Daten in die Microsoft Azure Cloud. In diesem Artikel werden die neuen Releases und Features in Azure Migrate zusammengefasst.
+
+## <a name="update-march-2021"></a>Update (März 2021)
+- Unterstützung der Angabe mehrerer Serveranmeldeinformationen für die Azure Migrate-Appliance zur Erkennung installierter Anwendungen (Softwareinventur), Abhängigkeitsanalyse ohne Agent und Erkennung von SQL Server-Instanzen und -Datenbanken in Ihrer VMware-Umgebung. [Weitere Informationen](tutorial-discover-vmware.md#provide-server-credentials)
+- Das Feature zur Ermittlung und Bewertung von SQL Server-Instanzen und -Datenbanken, die in Ihrer VMware-Umgebung ausgeführt werden, befindet sich nun in der Vorschauphase. [Weitere Informationen](concepts-azure-sql-assessment-calculation.md)<br/>Verwenden Sie [diesen Link](https://aka.ms/AzureMigrate/SQL), und erstellen Sie ein Projekt in der Region **Australien, Osten**, um dieses Feature zu testen. Informationen zu den ersten Schritten finden Sie in den Tutorials zur [Ermittlung](tutorial-discover-vmware.md) und [Bewertung](tutorial-assess-sql.md).
 
 ## <a name="update-january-2021"></a>Update (Januar 2021)
 -  Mit dem Tool für die Azure Migrate-Servermigration können Sie nun virtuelle VMware-Computer, physische Server und virtuelle Computer aus anderen Clouds zu virtuellen Azure-Computern migrieren. Dabei werden die Datenträger mit serverseitiger Verschlüsselung und kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMKs) verschlüsselt.
@@ -84,7 +88,7 @@ Azure Migrate wurden einige neue Features hinzugefügt:
 
 Azure Migrate wurden neue Tools zur Bewertung und Migration hinzugefügt:
 
-- **Rackware:** für die Cloudmigration
+- **Rackware**: für die Cloudmigration
 - **Movere:** für die Bewertung
 
 [Hier](migrate-services-overview.md) finden Sie weitere Informationen zur Verwendung von Tools und ISV-Angeboten für die Bewertung und Migration in Azure Migrate.

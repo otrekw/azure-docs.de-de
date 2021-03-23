@@ -8,18 +8,22 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 6424fc0ff49566fad949b3fba4718acb2bad4cd3
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: c3ee643d525cb5394369aba3b0e803bd1a94c852
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362769"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036234"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Organisieren von Kosten durch Anpassen Ihres Abrechnungskontos
 
 Ihr Abrechnungskonto für die Microsoft-Kundenvereinbarung bietet Ihnen die Flexibilität, Ihre Kosten basierend auf Ihren Anforderungen zu organisieren. Dies kann nach Abteilung oder Projekt ebenso wie nach Entwicklungsumgebung erfolgen.
 
 In diesem Artikel wird beschrieben, wie Sie Ihre Kosten im Azure-Portal organisieren können. Er bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-access-to-a-microsoft-customer-agreement)
+
+Im Video zum [Organisieren von Kosten durch Anpassen Ihres Abrechnungskontos für die Microsoft-Kundenvereinbarung](https://www.youtube.com/watch?v=7RxTfShGHwU) erfahren Sie, wie Sie Kosten für Ihr Abrechnungskonto organisieren.
+
+>[!VIDEO https://www.youtube.com/embed/7RxTfShGHwU]
 
 ## <a name="structure-your-account-with-billing-profiles-and-invoice-sections"></a>Strukturieren Ihres Kontos mit Abrechnungsprofilen und Rechnungsabschnitten
 

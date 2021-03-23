@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: 7f267b4909817e89444883403bef6662771332ad
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 6961c0ffc0d5b9c6559d20b00bfb5510f7247adb
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550877"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103600980"
 ---
 # <a name="what-is-azure-sql"></a>Was ist Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -32,11 +32,11 @@ Azure SQL baut auf der vertrauten SQL Server-Engine auf, sodass Sie Anwendungen 
 
 Erfahren Sie, wie jedes Produkt such in die Azure SQL-Datenplattform von Microsoft einfügt, um die richtige Wahl für Ihre Geschäftsanforderungen zu treffen. Ob bei Ihnen Kosteneinsparungen oder minimaler Verwaltungsaufwand Priorität haben – dieser Artikel kann Ihnen dabei helfen, zu entscheiden, welcher Ansatz der richtige ist, um die wichtigsten Anforderungen Ihres Unternehmens zu erfüllen.
 
-
 Wenn Sie noch nicht mit Azure SQL vertraut sind, sehen Sie sich das Video mit den *Infos zu Azure SQL* aus der detaillierten [Azure SQL-Videoserie](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner) an:
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
 
-
+> [!TIP]
+> Wie können wir Azure SQL verbessern? [Nehmen Sie an der Umfrage teil.](https://aka.ms/AzureSQLSurvey)
 
 ## <a name="overview"></a>Übersicht
 

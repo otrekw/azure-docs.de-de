@@ -2,19 +2,19 @@
 title: Planen der Azure VMware Solution-Bereitstellung
 description: In diesem Artikel wird der Workflow für die Bereitstellung einer Azure VMware Solution-Instanz beschrieben.  Das Endergebnis ist eine Umgebung, die für die Erstellung und Migration von virtuellen Computern (VMs) vorbereitet ist.
 ms.topic: tutorial
-ms.date: 02/22/2021
-ms.openlocfilehash: f9d49d7ff8109364c9fc1eee4388b30ccc1a61b6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/13/2021
+ms.openlocfilehash: f1895f14361b7121ae0d78950cdf8eca3cf7eb52
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733658"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462421"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Planen der Azure VMware Solution-Bereitstellung
 
-In diesem Artikel wird der Planungsprozess zum Identifizieren und Sammeln von Daten beschrieben, die während der Bereitstellung verwendet werden. Stellen Sie beim Planen Ihrer Bereitstellung sicher, dass Sie die gesammelten Informationen dokumentieren, damit Sie während des Bereitstellungsvorgangs leicht darauf zugreifen können.
+In diesem Artikel wird der Planungsprozess zum Identifizieren und Sammeln der Daten beschrieben, die im Rahmen der Bereitstellung verwendet werden. Stellen Sie beim Planen Ihrer Bereitstellung sicher, dass Sie die gesammelten Informationen dokumentieren, damit Sie während des Bereitstellungsvorgangs leicht darauf zugreifen können.
 
-Die Prozesse dieser Schnellstartanleitung führen zu einer für die Produktion vorbereiteten Umgebung zum Erstellen von virtuellen Computern (VMs) und Durchführen der Migration. 
+Durch die in dieser Schnellstartanleitung beschriebenen Schritte erhalten Sie eine produktionsbereite Umgebung zum Erstellen von virtuellen Computern (virtual machines, VMs) sowie für die Migration. 
 
 >[!IMPORTANT]
 >Halten Sie sich vor dem Erstellen Ihrer Azure VMware Solution-Ressource an die Informationen im Artikel [Aktivieren einer Azure VMware Solution-Ressource](enable-azure-vmware-solution.md), um ein Supportticket für die Zuordnung Ihrer Hosts zu übermitteln. Nachdem das Supportteam Ihre Anforderung erhalten hat, dauert es bis zu fünf Werktage, bis die Anforderung bestätigt wurde und Ihre Hosts zugewiesen wurden. Wenn Sie über eine vorhandene private Azure VMware Solution-Cloud verfügen und weitere Hosts zugeordnet werden sollen, müssen Sie den gleichen Prozess durchlaufen. 
@@ -46,21 +46,30 @@ Legen Sie den Ressourcennamen fest, den Sie während der Bereitstellung verwende
 
 Identifizieren Sie die Größenhosts, die Sie beim Bereitstellen von Azure VMware Solution verwenden möchten.  Eine vollständige Liste finden Sie in der Dokumentation zu [privaten Clouds und Clustern unter Azure VMware Solution](concepts-private-clouds-clusters.md#hosts).
 
-## <a name="number-of-hosts"></a>Anzahl von Hosts
+## <a name="number-of-clusters-and-hosts"></a>Anzahl von Clustern und Hosts
 
-Definieren Sie die Anzahl von Hosts, die Sie in der privaten Azure VMware Solution-Cloud bereitstellen möchten.  Die Mindestanzahl von Hosts beträgt 3, und der Höchstwert beträgt  16 pro Cluster.  Weitere Informationen finden Sie unter [Azure VMware Solution (Vorschau): Konzepte – Private Clouds und Cluster](concepts-private-clouds-clusters.md#clusters).
+In Azure VMware Solution stellen Sie eine private Cloud bereit und erstellen mehrere Cluster. Für Ihre Bereitstellung müssen Sie die Anzahl von Clustern sowie die Hosts definieren, die Sie in den einzelnen Clustern bereitstellen möchten. Sie können zwischen drei und 16 Cluster (jeweils einschließlich) verwenden. Pro privater Cloud sind maximal vier Cluster möglich. Die maximale Anzahl von Knoten pro privater Cloud beträgt 64.
 
-Sie können den Cluster später jederzeit erweitern, wenn Sie die anfängliche Bereitstellungsanzahl erhöhen möchten.
+Weitere Informationen finden Sie unter [Azure VMware Solution (Vorschau): Konzepte – Private Clouds und Cluster](concepts-private-clouds-clusters.md#clusters).
 
-## <a name="ip-address-segment"></a>IP-Adressensegment
+>[!TIP]
+>Sie können den Cluster später jederzeit erweitern, wenn Sie die anfängliche Bereitstellungsanzahl erhöhen möchten.
 
-Der erste Schritt bei der Planung der Bereitstellung ist das Planen der IP-Segmentierung.  Azure VMware Solution erfasst ein von Ihnen bereitgestelltes Netzwerk vom Typ „/22“. Anschließend wird es in kleinere IP-Segmente unterteilt, die dann für vCenter, VMware HCX, NSX-T und vMotion verwendet werden.
+## <a name="vcenter-admin-password"></a>vCenter admin password (vCenter-Administratorkennwort)
+Definieren Sie das vCenter-Administratorkennwort. Während der Bereitstellung erstellen Sie ein vCenter-Administratorkennwort. Das Kennwort wird dem Administratorkonto cloudadmin@vsphere.local im Rahmen des vCenter-Buildvorgangs zugewiesen. Diese Anmeldeinformationen werden für die Anmeldung bei vCenter verwendet.
 
-Azure VMware Solution stellt über eine interne ExpressRoute-Leitung eine Verbindung mit Ihrer Microsoft Azure Virtual Network-Instanz her. In den meisten Fällen wird eine Verbindung mit Ihrem Rechenzentrum per ExpressRoute Global Reach hergestellt. 
+## <a name="nsx-t-admin-password"></a>NSX-T-Administratorkennwort
+Definieren Sie das NSX-T-Administratorkennwort. Während der Bereitstellung erstellen Sie ein NSX-T-Administratorkennwort. Das Kennwort wird dem Administratorbenutzer im NSX-Konto während des NSX-Buildvorgangs zugewiesen. Diese Anmeldeinformationen werden für die Anmeldung bei NSX-T Manager verwendet.
 
-Azure VMware Solution, Ihre vorhandene Azure-Umgebung und Ihre lokale Umgebung tauschen (normalerweise) untereinander Routen aus. Daher sollte sich der CIDR-Netzwerkadressblock vom Typ „/22“, den Sie in diesem Schritt definieren, nicht mit Komponenten überlappen, die bei Ihnen lokal oder in Azure bereits vorhanden sind.
+## <a name="ip-address-segment-for-private-cloud-management"></a>IP-Adressensegment für die Verwaltung der privaten Cloud
+
+Der erste Schritt bei der Planung der Bereitstellung ist das Planen der IP-Segmentierung. Für Azure VMware Solution wird ein CIDR-Netzwerk vom Typ „/22“ benötigt. Durch diesen Adressraum wird es in kleinere Netzwerksegmente (Subnetze) unterteilt und für vCenter-, VMware HCX-, NSX-T- und vMotion-Funktionen verwendet.
+
+Dieser CIDR-Netzwerkadressblock vom Typ „/22“ darf sich mit keinem Netzwerksegment überschneiden, das ggf. bereits lokal oder in Azure vorhanden ist.
 
 **Beispiel:** 10.0.0.0/22
+
+Azure VMware Solution stellt über eine interne ExpressRoute Global Reach-Leitung (D-MSEE in der Darstellung weiter unten) eine Verbindung mit Ihrer Microsoft Azure Virtual Network-Instanz her. Diese Funktion ist Teil des Azure VMware Solution-Diensts und wird nicht in Rechnung gestellt.
 
 Weitere Informationen finden Sie in der [Checkliste für die Netzwerkplanung](tutorial-network-checklist.md#routing-and-subnet-considerations).
 
@@ -68,12 +77,12 @@ Weitere Informationen finden Sie in der [Checkliste für die Netzwerkplanung](tu
 
 ## <a name="ip-address-segment-for-virtual-machine-workloads"></a>IP-Adressensegment für VM-Workloads
 
-Identifizieren Sie ein IP-Segment, um Ihr erstes Netzwerk (NSX-Segment) in Ihrer privaten Cloud zu erstellen.  Anders ausgedrückt: Sie möchten ein Netzwerksegment in Azure VMware Solution erstellen, damit Sie virtuelle Computer unter Azure VMware Solution bereitstellen können.   
+Identifizieren Sie ein IP-Segment, um Ihr erstes Netzwerk für Workloads (NSX-Segment) in Ihrer privaten Cloud zu erstellen. Anders ausgedrückt: Sie müssen ein Netzwerksegment in Azure VMware Solution erstellen, damit Sie virtuelle Computer in Azure VMware Solution bereitstellen können.
 
-Auch wenn Sie eine Erweiterung von L2-Netzwerken planen, sollten Sie ein Netzwerksegment erstellen, das die Umgebung überprüft.
+Auch wenn Sie planen, lokale Netzwerke in Azure VMware Solution (L2) zu erweitern, müssen Sie ein Netzwerksegment zur Validierung der Umgebung erstellen.
 
-Beachten Sie, dass alle erstellten IP-Segmente in Ihrer Azure- und lokalen Umgebung eindeutig sein müssen.  
-
+Beachten Sie, dass alle erstellten IP-Segmente in Ihrer Azure- und lokalen Umgebung eindeutig sein müssen.
+  
 **Beispiel:** 10.0.4.0/24
 
 :::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="Identifizieren: IP-Adressensegment für VM-Workloads" border="false":::     
@@ -87,9 +96,9 @@ Bedenken Sie Folgendes:
 - Wenn Sie die Erweiterung von Netzwerken aus der lokalen Umgebung planen, muss für diese Netzwerke eine Verbindung mit einem [vSphere Distributed Switch (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) in Ihrer lokalen VMware-Umgebung bestehen.  
 - Falls die zu erweiternden Netzwerke auf einem [vSphere Standard Switch](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html) angeordnet sind, können sie nicht erweitert werden.
 
-## <a name="attach-virtual-network-to-azure-vmware-solution"></a>Anfügen eines virtuellen Netzwerks an Azure VMware Solution
+## <a name="attach-azure-virtual-network-to-azure-vmware-solution"></a>Anfügen von Azure VMware Solution an eine Azure Virtual Network-Instanz
 
-In diesem Schritt identifizieren Sie ein ExpressRoute-Gateway für virtuelle Netzwerke und eine unterstützende Azure Virtual Network-Instanz, die zum Herstellen einer Verbindung mit der ExpressRoute-Leitung von Azure VMware Solution verwendet wird.  Die ExpressRoute-Leitung ermöglicht Konnektivität zwischen der privaten Azure VMware Solution-Cloud und anderen Azure-Diensten, Azure-Ressourcen und lokalen Umgebungen.
+In diesem Schritt identifizieren Sie ein ExpressRoute-Gateway für virtuelle Netzwerke sowie die unterstützende Azure Virtual Network-Instanz, die zum Herstellen einer Verbindung mit der ExpressRoute-Leitung von Azure VMware Solution verwendet wird.  Die ExpressRoute-Leitung ermöglicht Konnektivität zwischen der privaten Azure VMware Solution-Cloud und anderen Azure-Diensten, Azure-Ressourcen und lokalen Umgebungen.
 
 Sie können ein *vorhandenes* ODER ein *neues* ExpressRoute-Gateway für virtuelle Netzwerke verwenden.
 

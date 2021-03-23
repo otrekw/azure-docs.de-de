@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 17d9d3bf787b67716fb2270cd055e30a4fefbe0f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bebc2e629193944c840948c9c573462a43e3032e
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702197"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201701"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrieren von VMware-VMs zu Azure (ohne Agent)
 
@@ -111,7 +111,7 @@ Aktivieren Sie die Replikation:
     > Wenn Sie eine andere Verfügbarkeitsoption für eine Gruppe von virtuellen Computern auswählen möchten, fahren Sie mit Schritt 1 fort, und wiederholen Sie die Schritte, indem Sie nach dem Starten der Replikation für eine Gruppe von virtuellen Computern unterschiedliche Verfügbarkeitsoptionen auswählen.
 
 
- ![VM-Computeeinstellungen](./media/tutorial-migrate-vmware/compute-settings.png)
+
 
 12. Geben Sie unter **Datenträger** an, ob die VM-Datenträger in Azure repliziert werden sollen, und wählen Sie in Azure den Datenträgertyp aus (SSD Standard/HDD Standard oder Managed Disks Premium). Klicken Sie dann auf **Weiter**.
    
@@ -189,7 +189,7 @@ Nachdem Sie sich vergewissert haben, dass die Testmigration wie erwartet funktio
 ## <a name="complete-the-migration"></a>Fertigstellen der Migration
 
 1. Klicken Sie nach Abschluss der Migration mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie **Replikation beenden** aus. Daraufhin wird Replikation für den lokalen Computer beendet, und die Informationen zum Replikationsstatus der VM werden bereinigt.
-2. Installieren Sie den [Linux](../virtual-machines/extensions/agent-linux.md)-Agent der Azure-VM auf den migrierten Computern, wenn der Computer über ein Linux-Betriebssystem verfügt. Der VM-Agent für Windows-VMs wird bei der Migration automatisch installiert.
+2. Der VM-Agent für Windows-VMs und Linux wird bei der Migration automatisch installiert. Überprüfen Sie die [Anforderungen](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) für den Linux-Agent der Azure-VM auf den migrierten Computern, wenn der Computer über ein Linux-Betriebssystem verfügt, um sicherzustellen, dass die Installation des Linux-VM-Agents ordnungsgemäß durchgeführt wurde. 
 3. Führen Sie App-Anpassungen nach der Migration durch, z.B. die Aktualisierung von Datenbankverbindungszeichenfolgen und Webserverkonfigurationen.
 4. Führen Sie endgültige Anwendungs- und Migrationsakzeptanztests für die migrierte Anwendung durch, die nun in Azure ausgeführt wird.
 5. Leiten Sie den Datenverkehr auf die migrierte Instanz der Azure-VM um.

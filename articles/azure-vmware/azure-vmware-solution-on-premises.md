@@ -2,13 +2,13 @@
 title: Verbinden von Azure VMware Solution mit Ihrer lokalen Umgebung
 description: Es wird beschrieben, wie Sie Azure VMware Solution mit Ihrer lokalen Umgebung verbinden.
 ms.topic: tutorial
-ms.date: 12/28/2020
-ms.openlocfilehash: 753835b0206d8bbabe42b057fa40a2d6c4c8c414
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.date: 03/13/2021
+ms.openlocfilehash: 0b26dc4756cb37544c2b2f8c5a75df0ac1a9d629
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809682"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491791"
 ---
 # <a name="connect-azure-vmware-solution-to-your-on-premises-environment"></a>Verbinden von Azure VMware Solution mit Ihrer lokalen Umgebung
 
@@ -17,7 +17,7 @@ In diesem Artikel verwenden Sie weiterhin die [während der Planung gesammelten 
 Zunächst müssen zwei Voraussetzungen für die Verbindungsherstellung zwischen Azure VMware Solution und Ihrer lokalen Umgebung erfüllt werden:
 
 - Eine ExpressRoute-Leitung von Ihrer lokalen Umgebung zu Azure.
-- Ein Netzwerkadressblock vom Typ „/29“ ohne Überschneidungen für das ExpressRoute Global Reach-Peering, das Sie während der [Planungsphase](production-ready-deployment-steps.md) definiert haben.
+- Ein CIDR-Netzwerkadressblock vom Typ „/29“ ohne Überschneidungen für das ExpressRoute Global Reach-Peering, das Sie während der [Planungsphase](production-ready-deployment-steps.md) definiert haben.
 
 >[!NOTE]
 > Sie können auch eine Verbindung per VPN herstellen, aber die Beschreibung der Vorgehensweise würde den Rahmen dieser Schnellstartanleitung sprengen.
@@ -25,6 +25,10 @@ Zunächst müssen zwei Voraussetzungen für die Verbindungsherstellung zwischen 
 ## <a name="establish-an-expressroute-global-reach-connection"></a>Einrichten einer ExpressRoute Global Reach-Verbindung
 
 Befolgen Sie die Anleitung im Tutorial[Zusammenfassen lokaler Umgebungen mittels Peering zu einer privaten Cloud](tutorial-expressroute-global-reach-private-cloud.md), um die lokale Konnektivität mit Ihrer privaten Azure VMware Solution-Cloud per ExpressRoute Global Reach herzustellen.
+
+In diesem Tutorial wird eine Verbindung hergestellt, wie im Diagramm dargestellt:
+
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-on-premises-diagram.png" alt-text="Diagramm: ExpressRoute Global Reach-Netzwerkkonnektivität für die lokale Umgebung" lightbox="media/pre-deployment/azure-vmware-solution-on-premises-diagram.png" border="false":::
 
 ## <a name="verify-on-premises-network-connectivity"></a>Überprüfen der Netzwerkkonnektivität für die lokale Umgebung
 

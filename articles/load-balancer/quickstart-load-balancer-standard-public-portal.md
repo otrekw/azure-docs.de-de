@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/22/2020
+ms.date: 02/22/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 8827171788bd83a202b3607537204c71c34f29e0
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 634f09c7862f6e3e2f147094503f5a574476ef91
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511840"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034386"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen eines öffentlichen Lastenausgleichs für den Lastenausgleich virtueller Computer über das Azure-Portal
 
@@ -49,26 +49,29 @@ In diesem Abschnitt wird ein Lastenausgleich für virtuelle Computer erstellt.
 
 Wenn Sie einen öffentlichen Lastenausgleich erstellen, muss für den Lastenausgleich auch eine neue, als Front-End konfigurierte öffentliche IP-Adresse erstellt werden. Dieses Front-End hat standardmäßig den Namen **LoadBalancerFrontend**.
 
-1. Wählens Sie links oben auf dem Bildschirm die Optionen **Ressource erstellen** > **Netzwerk** > **Lastenausgleich** aus.
-
-2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, bzw. wählen Sie sie aus: 
+1. Wählen Sie **Ressource erstellen**. 
+2. Geben Sie im Suchfeld **Load Balancer** ein. Wählen Sie in den Suchergebnissen **Load Balancer** aus.
+3. Wählen Sie auf der Seite **Load Balancer** die Option **Erstellen** aus.
+4. Geben Sie auf der Seite **Lastenausgleich erstellen** die folgenden Informationen ein, bzw. wählen Sie sie aus: 
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group         | Wählen Sie die Option **Neu erstellen** aus, und geben Sie im Textfeld **CreatePubLBQS-rg** ein.|
     | Name                   | Geben Sie **myLoadBalancer** ein.                                   |
-    | Region         | Wählen Sie **Europa, Westen** aus.                                        |
+    | Region         | Wählen Sie **(Europa) Europa, Westen** aus.                                        |
     | type          | Wählen Sie **Öffentlich** aus.                                        |
-    | SKU           | Wählen Sie **Standard** aus. |
+    | SKU           | Übernehmen Sie den Standardwert **Standard**. |
+    | Tarif          | Übernehmen Sie den Standardwert für **Region**. |
     | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. Wenn Sie über eine vorhandene öffentliche IP-Adresse verfügen, die Sie verwenden möchten, wählen Sie **Vorhandene verwenden** aus. |
     | Name der öffentlichen IP-Adresse | Geben Sie **myPublicIP** in das Textfeld ein.|
     | Verfügbarkeitszone | Wählen Sie **Zonenredundant** aus, um einen resilienten Lastenausgleich zu erstellen. Wählen Sie zum Erstellen eines zonalen Lastenausgleichs eine bestimmte Zone aus 1, 2 oder 3 aus. |
     | Öffentliche IPv6-Adresse hinzufügen | Wählen Sie **Nein** aus. </br> Weitere Informationen zu IPv6-Adressen und zum Lastenausgleich finden Sie unter [Was ist IPv6 für Azure Virtual Network?](../virtual-network/ipv6-overview.md).  |
+    | Routingpräferenz | Übernehmen Sie die Standardeinstellung **Microsoft-Netzwerk**. </br> Weitere Informationen zu den Routingpräferenzen finden Sie unter [Was ist Routingpräferenz (Vorschau)?](../virtual-network/routing-preference-overview.md) |
 
-3. Übernehmen Sie bei den anderen Einstellungen die Standardwerte, und wählen Sie **Überprüfen + erstellen** aus.
+5. Übernehmen Sie bei den anderen Einstellungen die Standardwerte, und wählen Sie **Überprüfen + erstellen** aus.
 
-4. Wählen Sie auf der Registerkarte **Bewerten + erstellen** die Option **Erstellen** aus.   
+6. Wählen Sie auf der Registerkarte **Bewerten + erstellen** die Option **Erstellen** aus.   
     
     :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-standard-load-balancer.png" alt-text="Erstellen einer Load Balancer Standard-Instanz" border="true":::
  
@@ -334,9 +337,10 @@ In diesem Abschnitt wird ein Lastenausgleich für virtuelle Computer erstellt.
 
 Wenn Sie einen öffentlichen Lastenausgleich erstellen, muss für den Lastenausgleich auch eine neue, als Front-End konfigurierte öffentliche IP-Adresse erstellt werden. Dieses Front-End hat standardmäßig den Namen **LoadBalancerFrontend**.
 
-1. Wählens Sie links oben auf dem Bildschirm die Optionen **Ressource erstellen** > **Netzwerk** > **Lastenausgleich** aus.
-
-2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, bzw. wählen Sie sie aus: 
+1. Wählen Sie **Ressource erstellen**. 
+2. Geben Sie im Suchfeld **Load Balancer** ein. Wählen Sie in den Suchergebnissen **Load Balancer** aus.
+3. Wählen Sie auf der Seite **Load Balancer** die Option **Erstellen** aus.
+4. Geben Sie auf der Seite **Lastenausgleich erstellen** die folgenden Informationen ein, bzw. wählen Sie sie aus: 
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
@@ -351,9 +355,9 @@ Wenn Sie einen öffentlichen Lastenausgleich erstellen, muss für den Lastenausg
     | Zuweisung | Wählen Sie **Dynamisch** aus. |
     | Öffentliche IPv6-Adresse hinzufügen | Wählen Sie **Nein** aus. </br> Weitere Informationen zu IPv6-Adressen und zum Lastenausgleich finden Sie unter [Was ist IPv6 für Azure Virtual Network?](../virtual-network/ipv6-overview.md).  |
 
-3. Übernehmen Sie bei den anderen Einstellungen die Standardwerte, und wählen Sie **Überprüfen + erstellen** aus.
+5. Übernehmen Sie bei den anderen Einstellungen die Standardwerte, und wählen Sie **Überprüfen + erstellen** aus.
 
-4. Wählen Sie auf der Registerkarte **Bewerten + erstellen** die Option **Erstellen** aus.   
+6. Wählen Sie auf der Registerkarte **Bewerten + erstellen** die Option **Erstellen** aus.   
 
     :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-basic-load-balancer.png" alt-text="Erstellen eines Lastenausgleichs im Basic-Tarif" border="true":::
 

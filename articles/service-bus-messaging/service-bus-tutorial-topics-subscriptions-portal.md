@@ -6,12 +6,12 @@ ms.author: spelluru
 ms.date: 10/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2c8d107c6de4965472c3fb04ff626841fb1f6ea
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d0a94f346f9d3cf7a05a1ca6e1b37d4d008f3e75
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810734"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179662"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Tutorial: Aktualisieren des Bestands mit dem Azure-Portal und mit Themen/Abonnements
 
@@ -97,7 +97,7 @@ Gehen Sie wie folgt vor, um den Code auszuführen:
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Sie können den Namespace und die Warteschlange löschen, wenn diese Elemente nicht mehr benötigt werden. Wählen Sie diese Ressourcen hierzu im Portal aus, und klicken Sie auf **Löschen**.
+Sie können Namespace und Thema löschen, wenn diese Elemente nicht mehr benötigt werden. Wählen Sie diese Ressourcen hierzu im Portal aus, und klicken Sie auf **Löschen**.
 
 ## <a name="understand-the-sample-code"></a>Grundlagen des Beispielcodes
 

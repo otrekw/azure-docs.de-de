@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.topic: quickstart
 ms.workload: infrastructure
-ms.date: 11/05/2019
+ms.date: 03/15/2021
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5e52fab081a94ad58e91c629f4092ae889d38e7a
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0ba28d003f359af12de6242c6d2444fb8adab0d7
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102560921"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562754"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Schnellstart: Erstellen einer virtuellen Windows-Maschine im Azure-Portal
 
@@ -30,12 +30,12 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 1. Geben Sie in das Suchfeld **virtuelle Computer** ein.
 1. Wählen Sie unter **Dienste** die Option **Virtuelle Computer** aus.
-1. Wählen Sie auf der Seite **Virtuelle Computer** die Option **Hinzufügen** aus. 
+1. Wählen Sie auf der Seite **Virtuelle Computer** die Option **Hinzufügen** und dann **Virtueller Computer** aus. 
 1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann **Neu erstellen** für „Ressourcengruppe“ aus. Geben Sie als Namen *myResourceGroup* ein. 
 
     ![Screenshot: Abschnitt „Projektdetails“, der zeigt, wo Sie das Azure-Abonnement und die Ressourcengruppe für den virtuellen Computer auswählen](./media/quick-create-portal/project-details.png)
 
-1. Geben Sie unter **Instanzdetails** die Zeichenfolge *myVM* als **Namen des virtuellen Computers** ein, wählen Sie *USA, Osten* als Ihre **Region** aus, und wählen Sie dann *Windows Server 2019 Datacenter* als **Image** aus. Behalten Sie die restlichen Standardwerte bei.
+1. Geben Sie unter **Instanzdetails***myVM* als **Namen des virtuellen Computers** ein, und wählen Sie *USA, Osten* als Ihre **Region** aus. Wählen Sie unter **Image** die Option *Windows Server 2019 Datacenter* und unter **Größe** die Option *Standard_DS1_v2* aus. Behalten Sie die restlichen Standardwerte bei.
 
     ![Screenshot: Abschnitt „Instanzdetails“, in dem Sie einen Namen für den virtuellen Computer angeben und Region, Image und Größe für ihn auswählen](./media/quick-create-portal/instance-details.png)
 
@@ -51,20 +51,25 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
     ![Screenshot: Schaltfläche „Überprüfen + erstellen“ am unteren Rand der Seite](./media/quick-create-portal/review-create.png)
 
+1. Wählen Sie nach der Überprüfung unten auf der Seite die Schaltfläche **Erstellen** aus.
+
+1. Wenn Ihre Bereitstellung abgeschlossen ist, wählen Sie **Go to resource** (Zu Ressource wechseln) aus.
+
+    ![Screenshot: Nächster Schritt zum Navigieren zur Ressource](./media/quick-create-portal/next-steps.png)
 
 ## <a name="connect-to-virtual-machine"></a>Herstellen der Verbindung mit dem virtuellen Computer
 
 Erstellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer. In dieser Anleitung wird erläutert, wie Sie über einen Windows-Computer eine Verbindung mit Ihrem virtuellen Computer herstellen. Auf einem Macintosh benötigen Sie einen RDP-Client, z. B. diesen [Remotedesktopclien](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)t aus dem Mac App Store.
 
-1. Wählen Sie auf der Seite „Übersicht“ des virtuellen Computers die Schaltfläche **Verbinden** aus. 
+1. Wählen Sie auf der Seite „Übersicht“ des virtuellen Computers die Schaltfläche **Verbinden** und dann **RDP** aus. 
 
     ![Screenshot: Übersichtsseite des virtuellen Computers mit der Position der Schaltfläche „Verbinden“](./media/quick-create-portal/portal-quick-start-9.png)
     
-2. Übernehmen Sie auf der Seite **Verbindung mit virtuellem Computer herstellen** die Standardoptionen, um basierend auf der IP-Adresse eine Verbindung über Port 3389 herzustellen. Klicken Sie anschließend auf **RDP-Datei herunterladen**.
+2. Übernehmen Sie auf der Seite **Verbindung mit RDP herstellen** die Standardoptionen, um basierend auf der IP-Adresse eine Verbindung über Port 3389 herzustellen. Klicken Sie anschließend auf **RDP-Datei herunterladen**.
 
 2. Öffnen Sie die heruntergeladene RDP-Datei, und klicken Sie auf **Verbinden**, wenn Sie dazu aufgefordert werden. 
 
-3. Wählen Sie im Fenster **Windows-Sicherheit** die Option **Weitere Optionen** und dann **Anderes Konto verwenden** aus. Geben Sie den Benutzernamen im Format **localhost**\\*Benutzername* sowie das Kennwort ein, das Sie für die VM erstellt haben, und klicken Sie dann auf **OK**.
+3. Wählen Sie im Fenster **Windows-Sicherheit** die Option **Weitere Optionen** und dann **Anderes Konto verwenden** aus. Geben Sie den Benutzernamen im Format **localhost**\\*Benutzername* sowie das Kennwort ein, das Sie für den virtuellen Computer erstellt haben, und klicken Sie dann auf **OK**.
 
 4. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Klicken Sie auf **Ja** oder **Weiter**, um die Verbindung zu erstellen.
 
@@ -81,7 +86,7 @@ Beenden Sie anschließend die RDP-Verbindung mit dem virtuellen Computer.
 
 ## <a name="view-the-iis-welcome-page"></a>Anzeigen der IIS-Willkommensseite
 
-Wählen Sie im Portal die VM aus, und verwenden Sie in der Übersicht der VM die Schaltfläche **Klicken Sie zum Kopieren** rechts von der IP-Adresse, um sie zu kopieren und in eine Browserregisterkarte einzufügen. Die Standardbegrüßungsseite für IIS wird geöffnet und sollte wie folgt aussehen:
+Wählen Sie im Portal den virtuellen Computer aus, und zeigen Sie in der Übersicht des virtuellen Computers auf die IP-Adresse, um die Option **In Zwischenablage kopieren** anzuzeigen. Kopieren Sie die IP-Adresse, und fügen Sie sie in eine Browserregisterkarte ein. Die Standardbegrüßungsseite für IIS wird geöffnet und sollte wie folgt aussehen:
 
 ![Screenshot: Standardwebsite für IIS in einem Browser](./media/quick-create-powershell/default-iis-website.png)
 
@@ -89,7 +94,7 @@ Wählen Sie im Portal die VM aus, und verwenden Sie in der Übersicht der VM die
 
 Wenn Ressourcengruppe, virtueller Computer und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie löschen. 
 
-Wählen Sie die Ressourcengruppe für den virtuellen Computer und dann **Löschen** aus. Bestätigen Sie dann den Namen der Ressourcengruppe, um das Löschen der Ressourcen abzuschließen.
+Navigieren Sie zu der Ressourcengruppe für den virtuellen Computer, und wählen Sie dann **Ressourcengruppe löschen** aus. Bestätigen Sie dann den Namen der Ressourcengruppe, um das Löschen der Ressourcen abzuschließen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

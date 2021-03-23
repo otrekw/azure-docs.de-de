@@ -10,14 +10,16 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: a00e5d262724f4799f8b7b91a54e4b2710f4ce2b
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: aa8c4abf57308ca3da05db6ecede7a330af04bdb
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008067"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463543"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>Schnellstart: Bereitstellen Ihres ersten IoT Edge-Moduls auf einem Windows-Gerät (Vorschauversion)
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 In dieser Schnellstartanleitung können Sie Azure IoT Edge ausprobieren, indem Sie Code in Containern auf einem IoT Edge-Gerät für Linux unter Windows bereitstellen. IoT Edge ermöglicht Ihnen die Remoteverwaltung von Code auf Ihren Geräten, damit Sie noch mehr Workloads an den Edgebereich senden können. In dieser Schnellstartanleitung empfiehlt es sich, ein eigenes Gerät zu verwenden, um zu sehen, wie einfach es ist, Azure IoT Edge für Linux unter Windows zu verwenden.
 
@@ -51,9 +53,16 @@ Erstellen Sie eine Cloudressourcengruppe zum Verwalten aller Ressourcen, die Sie
 
 Stellen Sie sicher, dass Ihr IoT Edge-Gerät die folgenden Anforderungen erfüllt:
 
-* Windows-PC oder -Server, Version 1809 oder höher
-* Mindestens 4 GB Arbeitsspeicher (empfohlen: 8 GB)
-* 10 GB freier Festplattenspeicher
+* Editionen
+  * Windows 10 ab Version 1809, Build 17763 oder höher
+    * Professional, Enterprise, IoT Enterprise
+  * Windows Server 2019, Build 17763 oder höher
+
+  
+* Hardwareanforderungen
+  * Mindestens erforderlicher freier Arbeitsspeicher: 2 GB
+  * Mindestens erforderlicher freier Speicherplatz: 10 GB
+
 
 >[!NOTE]
 >In dieser Schnellstartanleitung wird Windows Admin Center verwendet, um eine Bereitstellung von IoT Edge für Linux unter Windows zu erstellen. Sie können auch PowerShell verwenden. Führen Sie die Schritte in der Schrittanleitung zum [Installieren und Bereitstellen von Azure IoT Edge für Linux auf einem Windows-Gerät](how-to-install-iot-edge-on-windows.md) aus, falls Sie Ihre Bereitstellung mit PowerShell erstellen möchten.
@@ -108,7 +117,7 @@ Installieren Sie IoT Edge für Linux unter Windows auf Ihrem Gerät, und konfig
 
 ![Diagramm: Schritt zum Starten der IoT Edge-Runtime](./media/quickstart/start-runtime.png)
 
-1. [Laden Sie Windows Admin Center herunter.](https://aka.ms/WACDownloadEFLOW)
+1. [Laden Sie Windows Admin Center herunter.](https://aka.ms/wacdownload)
 
 1. Befolgen Sie die Aufforderungen im Installations-Assistenten, um Windows Admin Center auf Ihrem Gerät einzurichten.
 

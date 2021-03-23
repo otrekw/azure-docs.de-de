@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/27/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: d09d69db33cadee1b5a214e9cb2f09a508f37242
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 01e62685fa73a7f547ef5246b28fdfdf659e7afa
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102431844"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623275"
 ---
 |Sprache                                 |1.x         |2.x| 3.x |
 |-----------------------------------------|------------|---| --- |
 |[C#](../articles/azure-functions/functions-reference-csharp.md)|Allgemeine Verfügbarkeit (.NET Framework 4.7)|Allgemeine Verfügbarkeit (.NET Core 2.2<sup>1</sup>)| Allgemeine Verfügbarkeit (.NET Core 3.1)<br/>[Vorschau (.NET 5.0)](../articles/azure-functions/dotnet-isolated-process-guide.md) |
-|[JavaScript](../articles/azure-functions/functions-reference-node.md#node-version)|Allgemeine Verfügbarkeit (Node 6)|Allgemeine Verfügbarkeit (Node 10 und 8)| Allgemeine Verfügbarkeit (Node 12 und 10)<br />Vorschau (Node 14) |
+|[JavaScript](../articles/azure-functions/functions-reference-node.md#node-version)|Allgemeine Verfügbarkeit (Node 6)|Allgemeine Verfügbarkeit (Node 10 und 8)| Allgemeine Verfügbarkeit (Node 14, 12 und 10) |
 |[F#](../articles/azure-functions/functions-reference-fsharp.md)|Allgemeine Verfügbarkeit (.NET Framework 4.7)|Allgemeine Verfügbarkeit (.NET Core 2.2<sup>1</sup>)| Allgemeine Verfügbarkeit (.NET Core 3.1) |
 |[Java](../articles/azure-functions/functions-reference-java.md)|–|Allgemeine Verfügbarkeit (Java 8)| Allgemeine Verfügbarkeit (Java 11 und 8)|
 |[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |–|Allgemeine Verfügbarkeit (PowerShell Core 6)| Allgemeine Verfügbarkeit (PowerShell 7 und Core 6)|

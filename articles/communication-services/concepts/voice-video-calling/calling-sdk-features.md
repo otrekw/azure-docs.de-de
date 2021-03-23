@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fe1e08434a9137fced3dc8aa061affc2d6580b67
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 110607e9da68cf131a43651b97c599873ce33cb8
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102489275"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495265"
 ---
 # <a name="calling-client-library-overview"></a>Übersicht über die Clientbibliothek für Telefonie
 
@@ -80,13 +80,13 @@ Die folgende Tabelle enthält die unterstützten Browser, die derzeit verfügbar
 
 |                                  | Chrome | Safari*  | Edge (Chromium) | 
 | -------------------------------- | -------| ------  | --------------  |
-| Android                          |  ✔️    | ❌     | ❌             |
+| Android-                          |  ✔️    | ❌     | ❌             |
 | iOS                              |  ❌    | ✔️**** | ❌             |
 | macOS***                         |  ✔️    | ✔️**   | ❌             |
 | Windows***                       |  ✔️    | ❌     | ✔️             |
 | Ubuntu/Linux                     |  ✔️    | ❌     | ❌             |
 
-\* Safari wird ab Version 13.1 unterstützt. 
+*Safari wird ab Version 13.1 unterstützt, 1:1-Anrufe werden in Safari nicht unterstützt. 
 
 ** Safari 14+/macOS 11+ erforderlich für die Unterstützung von ausgehenden Videos. 
 

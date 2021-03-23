@@ -2,13 +2,13 @@
 title: 'Tutorial: Checkliste für die Netzwerkplanung'
 description: Hier erfahren Sie mehr über die Netzwerkanforderungen für Netzwerkkonnektivität und -ports in Azure VMware Solution.
 ms.topic: tutorial
-ms.date: 01/27/2021
-ms.openlocfilehash: f493443da617f5f76771e5d1b2b3b190b37f9b5d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.date: 03/13/2021
+ms.openlocfilehash: 8cee5fa24aab8bd7fe6a9527f9c8e7cdff997511
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918584"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462064"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Checkliste für die Netzwerkplanung für Azure VMware Solution 
 
@@ -47,7 +47,7 @@ Beispiel für einen CIDR-Netzwerkadressblock vom Typ `/22`: `10.10.0.0/22`
 
 Subnetze:
 
-| Verwendung des Netzwerks             | Subnetz | Beispiel          |
+| Verwendung des Netzwerks             | Subnet | Beispiel          |
 | ------------------------- | ------ | ---------------- |
 | Verwaltung von privaten Clouds  | `/26`  | `10.10.0.0/26`   |
 | HCX-Verwaltungsmigrationen       | `/26`  | `10.10.0.64/26`  |
@@ -89,13 +89,12 @@ Anwendungen und Workloads, die in einer privaten Cloudumgebung ausgeführt werde
 
 Verwenden Sie den in NSX integrierten DHCP-Dienst oder einen lokalen DHCP-Server in der privaten Cloud, anstatt DHCP-Broadcastdatenverkehr über das WAN in die lokale Umgebung zurückzuleiten.
 
+Ausführlichere Informationen finden Sie im Artikel [(Optional) Bereitstellen von DHCP-Diensten für das NSX-T-Netzwerksegment](deploy-azure-vmware-solution.md#optional-provide-dhcp-services-to-nsx-t-network-segment).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie mehr über die Überlegungen und Anforderungen im Zusammenhang mit der Bereitstellung einer privaten Azure VMware Solution-Cloud erfahren. 
-
-
-Nach der ordnungsgemäßen Einrichtung des Netzwerks können Sie im nächsten Tutorial Ihre private Azure VMware Solution-Cloud erstellen.
+In diesem Tutorial haben Sie mehr über die Überlegungen und Anforderungen im Zusammenhang mit der Bereitstellung einer privaten Azure VMware Solution-Cloud erfahren. Nach der ordnungsgemäßen Einrichtung des Netzwerks können Sie im nächsten Tutorial Ihre private Azure VMware Solution-Cloud erstellen.
 
 > [!div class="nextstepaction"]
 > [Erstellen einer privaten Cloud von Azure VMware Solution](tutorial-create-private-cloud.md)

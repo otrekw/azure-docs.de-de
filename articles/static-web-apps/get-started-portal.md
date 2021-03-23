@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: c54a56843be5121e16449d95fb18c24901a95a8d
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b19c37a45131e3689fdc9726d186f220ab5ba9fe
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650563"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149527"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>Schnellstart: Erstellen Ihrer ersten statischen Website im Azure-Portal
 
@@ -117,7 +117,7 @@ Falls Sie diese Anwendung nicht weiter nutzen möchten, können Sie die Azure St
 1. Suchen Sie in der oberen Suchleiste nach **my-first-web-static-app**.
 1. Wählen Sie den App-Namen aus.
 1. Wählen Sie die Schaltfläche **Löschen** aus.
-1. Wählen Sie zum Bestätigen des Löschvorgangs **Ja** aus.
+1. Wählen Sie **Ja** aus, um die Löschaktion zu bestätigen (diese Aktion kann einige Minuten dauern).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

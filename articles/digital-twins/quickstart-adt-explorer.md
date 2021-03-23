@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: f1b25b853977b3a1f4871e232a562d6a3cfd2fae
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: feeb3e63375e918498e704add6dac672d6a46de3
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102434201"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574576"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>Schnellstart: Untersuchen eines Azure Digital Twins-Beispielszenarios mit Azure Digital Twins-Explorer
 
@@ -93,13 +93,15 @@ Führen Sie als Nächstes die Azure Digital Twins-Explorer-Anwendung aus, und ko
 
 1. Geben Sie die URL der Azure Digital Twins-Instanz, die Sie zuvor im Abschnitt [Einrichten einer Azure Digital Twins-Instanz](#set-up-an-azure-digital-twins-instance) erfasst haben, im Format *https://{Hostname der Instanz}* ein.
 
->[!NOTE]
-> Sie können jederzeit zu diesen Informationen zurückkehren oder sie bearbeiten. Wählen Sie dazu das gleiche Symbol aus, um das Feld **Sign In** (Anmelden) erneut zu öffnen. Die von Ihnen übergebenen Werte werden gespeichert.
-
 > [!TIP]
 > Wenn eine `SignalRService.subscribe`-Fehlermeldung angezeigt wird, wenn Sie eine Verbindung herstellen, stellen Sie sicher, dass Ihre Azure Digital Twins-URL mit *https://* beginnt.
+>
+> Wird ein Authentifizierungsfehler angezeigt, können Sie die **Umgebungsvariablen** überprüfen, um sicherzustellen, dass alle darin enthaltenen Anmeldeinformationen für Azure Digital Twins gültig sind. `DefaultAzureCredential` versucht, die Authentifizierung für Anmeldeinformationstypen in einer [bestimmten Reihenfolge](/dotnet/api/overview/azure/identity-readme#defaultazurecredential) durchzuführen, und die Umgebungsvariablen werden zuerst ausgewertet.
 
 Sollte von Microsoft ein Popupfenster vom Typ **Angeforderte Berechtigungen** angezeigt werden, erteilen Sie Ihre Einwilligung für diese Anwendung, und akzeptieren Sie die Konfiguration, um fortzufahren.
+
+>[!NOTE]
+> Sie können jederzeit zu diesen Informationen zurückkehren oder sie bearbeiten. Wählen Sie dazu das gleiche Symbol aus, um das Feld **Sign In** (Anmelden) erneut zu öffnen. Die von Ihnen übergebenen Werte werden gespeichert.
 
 ## <a name="add-the-sample-data"></a>Hinzufügen der Beispieldaten
 

@@ -1,17 +1,23 @@
 ---
-author: rothja
+author: amitbapat
 ms.service: key-vault
 ms.topic: include
-ms.date: 04/21/2020
-ms.author: jroth
-ms.openlocfilehash: e4abbeadb0d30911d99fff57c0e99a3e427a6d8d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 03/09/2021
+ms.author: ambapat
+ms.openlocfilehash: d934d40cad5f4eec929cfd273b6e30ea291e48d5
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96028387"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010954"
 ---
-### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Schlüsseltransaktionen (maximale Transaktionen innerhalb von 10 Sekunden pro Tresor und Region<sup>1</sup>):
+Der Azure Key Vault-Dienst unterstützt zwei Arten von Ressourcen: Tresore und verwaltete HSMs. In den beiden folgenden Abschnitten werden jeweils die entsprechenden Diensteinschränkungen beschrieben.
+
+### <a name="resource-type-vault"></a>Ressourcentyp: Tresor
+
+In diesem Abschnitt werden die Diensteinschränkungen für den Ressourcentyp `vaults` beschrieben.
+
+#### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Schlüsseltransaktionen (maximale Transaktionen innerhalb von 10 Sekunden pro Tresor und Region<sup>1</sup>):
 
 |Schlüsseltyp|HSM-Schlüssel<br>Erstellungsschlüssel|HSM-Schlüssel<br>Alle anderen Transaktionen|Softwareschlüssel<br>Erstellungsschlüssel|Softwareschlüssel<br>Alle anderen Transaktionen|
 |:---|---:|---:|---:|---:|
@@ -22,6 +28,7 @@ ms.locfileid: "96028387"
 |ECC P-384|5|1\.000|10|2\.000|
 |ECC P-521|5|1\.000|10|2\.000|
 |ECC SECP256K1|5|1\.000|10|2\.000|
+||||||
 
 > [!NOTE]
 > In der vorstehenden Tabelle ist zu erkennen, dass für RSA-Softwareschlüssel mit 2.048 Bit 2.000 GET-Transaktionen pro 10 Sekunden zulässig sind. Für RSA-HSM-Schlüssel mit 2.048 Bit sind 1.000 GET-Transaktionen pro 10 Sekunden zulässig.
@@ -34,7 +41,7 @@ ms.locfileid: "96028387"
 > - 125 GET-Transaktionen für RSA 4.096-Bit-HSM-Schlüssel
 > - 124 GET-Transaktionen für RSA 4.096-Bit-HSM-Schlüssel und 8 GET-Transaktionen für RSA 2.048-Bit-HSM-Schlüssel
 
-### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Geheimnisse, Schlüssel für verwaltete Speicherkonten und Tresortransaktionen:
+#### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Geheimnisse, Schlüssel für verwaltete Speicherkonten und Tresortransaktionen:
 
 | Transaktionstyp | Maximal zulässige Transaktionen innerhalb von 10 Sekunden pro Tresor und Region<sup>1</sup> |
 | --- | --- |
@@ -44,12 +51,93 @@ Informationen zur Handhabung der Drosselung bei Überschreiten dieser Grenzwerte
 
 <sup>1</sup> Für alle Transaktionsarten gilt als abonnementweiter Grenzwert das Fünffache des Schlüsseltresorlimits. „HSM – andere Transaktionen“ pro Abonnement ist beispielsweise auf 5.000 Transaktionen in 10 Sekunden pro Abonnent beschränkt.
 
-### <a name="azure-private-link-integration"></a>Azure Private Link-Integration
+#### <a name="azure-private-link-integration"></a>Azure Private Link-Integration
 
 > [!NOTE]
 > Die Anzahl der Schlüsseltresore mit den pro Abonnement aktivierten privaten Endpunkten ist ein anpassbarer Grenzwert. Der gezeigte Grenzwert ist der Standardwert. Wenn Sie eine Erhöhung des Grenzwerts für Ihren Dienst beantragen möchten, senden Sie eine E-Mail an akv-privatelink@microsoft.com. Wir genehmigen diese Anträge je nach Fall.
 
 | Resource | Begrenzung |
-| -------- | ----- |
+| -------- | -----:|
 | Private Endpunkte pro Schlüsseltresor | 64 |
 | Schlüsseltresore mit privaten Endpunkten pro Abonnement | 400 |
+
+### <a name="resource-type-managed-hsm-preview"></a>Ressourcentyp: verwaltetes HSM (Vorschau)
+
+In diesem Abschnitt werden die Diensteinschränkungen für den Ressourcentyp `managed HSM` beschrieben.
+
+#### <a name="object-limits"></a>Objektgrenzwerte
+
+|Element|Grenzwerte|
+|----|------:|
+Anzahl von HSM-Instanzen pro Abonnement und Region|1 (während der Vorschau)
+Anzahl von Schlüsseln pro HSM-Pool|5.000
+Anzahl von Versionen pro Schlüssel|100
+Anzahl benutzerdefinierter Rollendefinitionen pro HSM|50
+Anzahl von Rollenzuweisungen im HSM-Bereich|50
+Anzahl von Rollenzuweisungen in jedem einzelnen Schlüsselbereich|10
+|||
+
+#### <a name="transaction-limits-for-administrative-operations-number-of-operations-per-second-per-hsm-instance"></a>Transaktionsgrenzwerte für administrative Vorgänge (Anzahl von Vorgängen pro Sekunde und HSM-Instanz)
+|Vorgang |Anzahl von Vorgängen pro Sekunde|
+|----|------:|
+Alle RBAC-Vorgänge<br/>(einschließlich aller CRUD-Vorgänge für Rollendefinitionen und -zuweisungen)|5
+Vollständige HSM-Sicherung/-Wiederherstellung<br/>(nur ein gleichzeitiger Sicherungs- oder Wiederherstellungsvorgang pro HSM-Instanz wird unterstützt)|1
+
+#### <a name="transaction-limits-for-cryptographic-operations-number-of-operations-per-second-per-hsm-instance"></a>Transaktionsgrenzwerte für kryptografische Vorgänge (Anzahl von Vorgängen pro Sekunde und HSM-Instanz)
+
+- Jede verwaltete HSM-Instanz umfasst drei HSM-Partitionen mit Lastenausgleich. Bei den Durchsatzgrenzwerten handelt es sich um eine Funktion der zugrunde liegenden Hardwarekapazität, die der jeweiligen Partition zugeordnet ist. Die folgenden Tabellen geben Aufschluss über den maximalen Durchsatz mit mindestens einer verfügbaren Partition. Der tatsächliche Durchsatz kann bis zu dreimal höher sein, wenn alle drei Partitionen verfügbar sind.
+- Bei den angegebenen Durchsatzgrenzwerten wird von der Verwendung eines einzelnen Schlüssels ausgegangen, um maximalen Durchsatz zu erzielen. Bei Verwendung eines einzelnen RSA-2048-Schlüssels liegt der maximale Durchsatz beispielsweise bei 1.100 Signierungsvorgängen. Wenn Sie 1.100 unterschiedliche Schlüssel mit jeweils einer Transaktion pro Sekunde verwenden, kann dieser Durchsatz nicht erreicht werden.
+
+##### <a name="rsa-key-operations-number-of-operations-per-second-per-hsm-instance"></a>RSA-Schlüsselvorgänge (Anzahl von Vorgängen pro Sekunde und HSM-Instanz)
+
+|Vorgang|2\.048 Bit|3\.072 Bit|4\.096 Bit|
+|--|--:|--:|--:|
+Schlüssel erstellen|1| 1| 1
+Schlüssel löschen (vorläufiges Löschen)|10|10|10 
+Schlüssel endgültig löschen|10|10|10 
+Sichern eines Schlüssels|10|10|10 
+Schlüssel wiederherstellen|10|10|10 
+Schlüsselinformationen abrufen|1100|1100|1100
+Verschlüsseln|10000|10000|6000
+Entschlüsseln|1100|360|160
+Umschließen|10000|10000|6000
+Aufheben der Umschließung|1100|360|160
+Signieren|1100|360|160
+Überprüfung|10000|10000|6000
+|||||
+
+##### <a name="ec-key-operations-number-of-operations-per-second-per-hsm-instance"></a>EC-Schlüsselvorgänge (Anzahl von Vorgängen pro Sekunde und HSM-Instanz)
+
+Die folgende Tabelle gibt Aufschluss über die Anzahl von Vorgängen pro Sekunde für die einzelnen Kurventypen:
+
+|Vorgang|P-256|P-256K|P-384|P-521|
+|---|---:|---:|---:|---:|
+Schlüssel erstellen| 1| 1| 1| 1
+Schlüssel löschen (vorläufiges Löschen)|10|10|10|10
+Schlüssel endgültig löschen|10|10|10|10
+Sichern eines Schlüssels|10|10|10|10
+Schlüssel wiederherstellen|10|10|10|10
+Schlüsselinformationen abrufen|1100|1100|1100|1100
+Signieren|260|260|165|56
+Überprüfung|130|130|82|28
+||||||
+
+
+##### <a name="aes-key-operations-number-of-operations-per-second-per-hsm-instance"></a>AES-Schlüsselvorgänge (Anzahl von Vorgängen pro Sekunde und HSM-Instanz)
+- Bei Verschlüsselungs- und Entschlüsselungsvorgängen wird von einer Paketgröße von 4 KB ausgegangen.
+- Durchsatzgrenzwerte für Verschlüsseln/Entschlüsseln gelten für AES-CBC- und AES-GCM-Algorithmen.
+- Durchsatzgrenzwerte für Umschließen/Aufheben der Umschließung gelten für den AES-KW-Algorithmus.
+
+|Vorgang|128 Bit|192 Bit|256 Bit|
+|--|--:|--:|--:|
+Schlüssel erstellen|1| 1| 1
+Schlüssel löschen (vorläufiges Löschen)|10|10|10
+Schlüssel endgültig löschen|10|10|10
+Sichern eines Schlüssels|10|10|10
+Schlüssel wiederherstellen|10|10|10
+Schlüsselinformationen abrufen|1100|1100|1100
+Verschlüsseln|8.000|8.000 |8.000 
+Entschlüsseln|8.000|8.000|8.000
+Umschließen|9000|9000|9000
+Aufheben der Umschließung|9000|9000|9000
+

@@ -6,16 +6,16 @@ author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 9/1/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 18282bbe902599c471775a853704e459ea44bac1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9f62f262e1baa70982e667379a9bf4357197ecb4
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661641"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495409"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
@@ -140,22 +140,22 @@ Verwenden Sie die `createThread`-Methode, um einen Chatthread zu erstellen.
 - Verwenden Sie `topic`, um für diesen Chat ein Thema anzugeben. Themen können nach der Erstellung des Chatthreads mit der Funktion `UpdateThread` aktualisiert werden.
 - Verwenden Sie `participants`, um die Teilnehmer aufzulisten, die dem Chatthread hinzugefügt werden sollen.
 
-Nach der Auflösung wird von der Methode `createChatThread` eine Antwort vom Typ `CreateChatThreadResponse` zurückgegeben. Dieses Modell enthält eine Eigenschaft vom Typ `chatThread`. Dort können Sie auf die ID (`id`) des neu erstellten Threads zugreifen. Mithilfe der ID (`id`) können Sie anschließend eine Instanz eines Chatthreadclients (`ChatThreadClient`) abrufen. Mit dem Chatthreadclient (`ChatThreadClient`) können dann innerhalb des Threads Vorgänge wie das Senden von Nachrichten oder das Auflisten von Teilnehmer ausgeführt werden.
+Nach der Auflösung wird von der Methode `createChatThread` eine Antwort vom Typ `CreateChatThreadResult` zurückgegeben. Dieses Modell enthält eine Eigenschaft vom Typ `chatThread`. Dort können Sie auf die ID (`id`) des neu erstellten Threads zugreifen. Mithilfe der ID (`id`) können Sie anschließend eine Instanz eines Chatthreadclients (`ChatThreadClient`) abrufen. Mit dem Chatthreadclient (`ChatThreadClient`) können dann innerhalb des Threads Vorgänge wie das Senden von Nachrichten oder das Auflisten von Teilnehmer ausgeführt werden.
 
 ```JavaScript
 async function createChatThread() {
     let createThreadRequest = {
         topic: 'Preparation for London conference',
         participants: [{
-                    user: { communicationUserId: '<USER_ID_FOR_JACK>' },
+                    id: { communicationUserId: '<USER_ID_FOR_JACK>' },
                     displayName: 'Jack'
                 }, {
-                    user: { communicationUserId: '<USER_ID_FOR_GEETA>' },
+                    id: { communicationUserId: '<USER_ID_FOR_GEETA>' },
                     displayName: 'Geeta'
                 }]
     };
-    let createThreadResponse = await chatClient.createChatThread(createThreadRequest);
-    let threadId = createThreadResponse.chatThread.id;
+    let createChatThreadResult = await chatClient.createChatThread(createThreadRequest);
+    let threadId = createChatThreadResult.chatThread.id;
     return threadId;
     }
 
@@ -184,7 +184,7 @@ Thread created: <thread_id>
 Die `getChatThreadClient`-Methode gibt einen `chatThreadClient` für einen bereits vorhandenen Thread zurück. Er kann verwendet werden, um Vorgänge wie das Hinzufügen von Teilnehmern oder das Senden einer Nachricht im erstellten Thread auszuführen. „threadId“ ist die eindeutige ID des vorhandenen Chatthreads.
 
 ```JavaScript
-let chatThreadClient = await chatClient.getChatThreadClient(threadId);
+let chatThreadClient = chatClient.getChatThreadClient(threadId);
 console.log(`Chat Thread client for threadId:${threadId}`);
 
 ```
@@ -195,35 +195,33 @@ Chat Thread client for threadId: <threadId>
 
 ## <a name="send-a-message-to-a-chat-thread"></a>Senden einer Nachricht an einen Chatthread
 
-Verwenden Sie die `sendMessage`-Methode zum Senden einer Chatnachricht an den Thread, den Sie gerade erstellt haben und der anhand der „threadId“ identifiziert wird.
+Verwenden Sie die `sendMessage`-Methode, um eine Nachricht an einen Thread zu senden, der anhand von „threadId“ identifiziert wird.
 
-Mit `sendMessageRequest` werden die erforderlichen Felder der Anforderung für die Chatnachricht beschrieben:
+`sendMessageRequest` wird verwendet, um die Nachrichtenanforderung zu beschreiben:
 
 - Verwenden Sie `content`, um den Inhalt der Chatnachricht anzugeben.
 
-Mit `sendMessageOptions` werden die optionalen Felder der Anforderung für die Chatnachricht beschrieben:
+`sendMessageOptions` wird verwendet, um die optionalen Vorgangsparameter zu beschreiben:
 
-- Verwenden Sie `priority`, um die Prioritätsstufe der Chatnachricht anzugeben, z. B. „Normal“ oder „High“ (Hoch). Diese Eigenschaft kann verwendet werden, um für den empfangenden Benutzer in Ihrer App einen Hinweis auf der Benutzeroberfläche anzuzeigen, auf die Nachricht aufmerksam zu machen oder benutzerdefinierte Geschäftslogik auszuführen.
 - Verwenden Sie `senderDisplayName`, um den Anzeigenamen des Absenders anzugeben.
+- Verwenden Sie `type`, um den Nachrichtentyp anzugeben, etwa Text oder HTML.
 
-Die Antwort `sendChatMessageResult` enthält eine ID, bei der es sich um die eindeutige ID der Nachricht handelt.
+`SendChatMessageResult` ist die Antwort, die nach dem Senden einer Nachricht zurückgegeben wird. Sie enthält eine ID, bei der es sich um die eindeutige ID der Nachricht handelt.
 
 ```JavaScript
-
 let sendMessageRequest =
 {
     content: 'Hello Geeta! Can you share the deck for the conference?'
 };
 let sendMessageOptions =
 {
-    priority: 'Normal',
-    senderDisplayName : 'Jack'
+    senderDisplayName : 'Jack',
+    type: 'text'
 };
 let sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
 let messageId = sendChatMessageResult.id;
-console.log(`Message sent!, message id:${messageId}`);
-
 ```
+
 Fügen Sie diesen Code anstelle des Kommentars `<SEND MESSAGE TO A CHAT THREAD>` in **client.js** hinzu, aktualisieren Sie Ihre Browserregisterkarte, und sehen Sie in Ihrer Konsole nach.
 ```console
 Message sent!, message id:<number>
@@ -286,7 +284,7 @@ Nach der Erstellung eines Chatthreads können Sie dafür Benutzer hinzufügen un
 Vergewissern Sie sich vor dem Aufrufen der Methode `addParticipants`, dass Sie über ein neues Zugriffstoken und über eine Identität für den Benutzer verfügen. Der Benutzer benötigt dieses Zugriffstoken, um den Chatclient initialisieren zu können.
 
 `addParticipantsRequest` dient zum Beschreiben des Anforderungsobjekts, und darin wird `participants` verwendet, um die hinzuzufügenden Teilnehmer für den Chatthread aufzulisten.
-- `user` (erforderlich) ist der Kommunikationsbenutzer, der dem Chatthread hinzugefügt werden soll.
+- `id` (erforderlich) ist der Kommunikationsbezeichner, der dem Chatthread hinzugefügt werden soll.
 - `displayName` (optional) ist der Anzeigename für den Threadteilnehmer.
 - `shareHistoryTime` (optional) ist der Zeitpunkt, ab dem der Chatverlauf für den Teilnehmer freigegeben wird. Sie können den Verlauf seit dem Beginn des Chatthreads freigeben, indem Sie diese Eigenschaft auf das Datum der Threaderstellung (oder früher) festlegen. Soll der Verlauf vor dem Hinzufügezeitpunkt des Teilnehmers nicht freigegeben werden, geben Sie das aktuelle Datum an. Geben Sie ein Datum Ihrer Wahl an, um einen Teil des Verlaufs freizugeben.
 
@@ -296,7 +294,7 @@ let addParticipantsRequest =
 {
     participants: [
         {
-            user: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
+            id: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
             displayName: 'Jane'
         }
     ]

@@ -8,16 +8,21 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b23324a7226d4b3de4908bd78a8f19c799e59f06
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 67cc470b4f7f119b7f5b86bcb82ea284ab662dfe
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932182"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463237"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Tutorial: End-to-End-Lösung mit Azure Machine Learning und IoT Edge
 
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
 Bei IoT-Anwendungen ist häufig die Nutzung der intelligenten Cloud sowie von Intelligent Edge wünschenswert. In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie ein Machine Learning-Modell mit Daten trainieren, die von IoT-Geräten in der Cloud gesammelt wurden, wie Sie dieses Modell in IoT Edge bereitstellen und wie Sie das Modell pflegen und regelmäßig optimieren.
+
+>[!NOTE]
+>Die Konzepte in diesen Tutorials gelten für alle Versionen von IoT Edge. Auf dem Beispielgerät, das Sie zum Ausprobieren des Szenarios erstellen, wird jedoch Version 1.1. von IoT Edge ausgeführt.
 
 Dieses Tutorial ist in erster Linie als Einführung in die Verarbeitung von IoT-Daten mit maschinellem Lernen (insbesondere im Edgebereich) gedacht. Es werden zwar auch zahlreiche andere Aspekte eines allgemeinen Machine Learning-Workflows angesprochen, bei diesem Tutorial handelt es sich jedoch nicht um eine detaillierte Einführung in maschinelles Lernen. So versuchen wir hier beispielsweise nicht, ein stark optimiertes Modell für den Anwendungsfall zu erstellen, sondern führen lediglich die Schritte aus, die die Erstellung und Verwendung eines funktionsfähigen Modells für die IoT-Datenverarbeitung veranschaulichen.
 
@@ -69,9 +74,9 @@ Die in diesem Tutorial verwendeten Daten stammen aus dem [Turbofan Engine Degrad
 
 Aus der Infodatei:
 
-***Experimentelles Szenario** _
+***Experimentelles Szenario***
 
-_Die Datasets bestehen aus mehreren multivariaten Zeitreihen. Jedes Dataset ist außerdem in Trainings- und Testbereiche unterteilt. Die einzelnen Zeitreihen stammen jeweils von einem anderen Triebwerk. Das heißt: Die Daten stammen von einer Gruppe von Triebwerken gleichen Typs. Bei den einzelnen Triebwerken wird jeweils von einem unterschiedlich hohen Anfangsverschleiß sowie von unterschiedlichen Fertigungsschwankungen ausgegangen, die dem Benutzer nicht bekannt sind. Verschleiß und Schwankungen dieser Art sind normal und gelten nicht als Fehlerbedingung. Es gibt drei Betriebseinstellungen, die sich erheblich auf die Triebwerksleistung auswirken. Diese Einstellungen sind ebenfalls in den Daten enthalten. Darüber hinaus enthalten die Daten Sensorstörungen.*
+*Die Datasets bestehen aus mehreren multivariaten Zeitreihen. Jedes Dataset ist außerdem in Trainings- und Testbereiche unterteilt. Die einzelnen Zeitreihen stammen jeweils von einem anderen Triebwerk. Das heißt: Die Daten stammen von einer Gruppe von Triebwerken gleichen Typs. Bei den einzelnen Triebwerken wird jeweils von einem unterschiedlich hohen Anfangsverschleiß sowie von unterschiedlichen Fertigungsschwankungen ausgegangen, die dem Benutzer nicht bekannt sind. Verschleiß und Schwankungen dieser Art sind normal und gelten nicht als Fehlerbedingung. Es gibt drei Betriebseinstellungen, die sich erheblich auf die Triebwerksleistung auswirken. Diese Einstellungen sind ebenfalls in den Daten enthalten. Darüber hinaus enthalten die Daten auch Sensorstörungen.*
 
 *Zu Beginn der jeweiligen Zeitreihe funktioniert das Triebwerk noch ordnungsgemäß. Im Laufe der Zeit tritt jedoch ein Problem auf. Im Trainingssatz nimmt das Problem immer größere Ausmaße an, bis es schließlich zu einem Systemausfall kommt. Im Testsatz endet die Zeitreihe einige Zeit vor dem Systemausfall. Das Ziel des Wettbewerbs besteht darin, die Anzahl der verbleibenden Betriebszyklen bis zum Ausfall im Testsatz zu prognostizieren (also die Anzahl von Betriebszyklen ab dem letzten Zyklus, in denen das Triebwerk noch funktioniert). Für die Testdaten wurde außerdem ein Vektor mit echten RUL-Werten (Remaining Useful Life, Restnutzungsdauer) bereitgestellt.*
 

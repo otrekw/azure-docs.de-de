@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie Sie einen Windows Virtual Desktop-Hostpool 
 author: Heidilohr
 ms.topic: tutorial
 ms.custom: references_regions
-ms.date: 02/17/2021
+ms.date: 03/10/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 46a029a3b803428d6250b74059190f66183be452
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 60566b95447c1b69fb257435f45a11524ac5d8b2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651458"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617341"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Tutorial: Erstellen eines Hostpools mit dem Azure-Portal
 
@@ -101,18 +101,16 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein
 
 1. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe aus, in der Sie die virtuellen Computer erstellen möchten. Dabei kann es sich um eine andere Ressourcengruppe als die für den Hostpool handeln.
 
-2. Wählen Sie den **VM-Standort** aus, in dem Sie die virtuellen Computer erstellen möchten. Sie können die für den Hostpool ausgewählte Region oder eine andere Region verwenden.
+2. Geben Sie anschließend ein **Namenspräfix** für die Benennung der VMs an, die beim Einrichtungsprozess erstellt werden. Das Suffix ist `-` mit Zahlen ab 0.
 
-3. Wählen Sie als Nächstes die **VM-Größe** aus. Sie können entweder die Standardgröße übernehmen oder **Größe ändern** auswählen, um die Größe zu ändern. Wenn Sie auf **Größe ändern** klicken, wählen Sie im angezeigten Fenster die passende VM-Größe für Ihre Workload aus.
+3. Wählen Sie den **VM-Standort** aus, in dem Sie die virtuellen Computer erstellen möchten. Sie können die für den Hostpool ausgewählte Region oder eine andere Region verwenden.
+   
+4. Wählen Sie als Nächstes die Verfügbarkeitsoption aus, die Ihren Anforderungen am ehesten entspricht. Weitere Informationen dazu, welche Option für Sie geeignet ist, finden Sie unter [Verfügbarkeitsoptionen für virtuelle Computer in Azure](../virtual-machines/availability.md) und in den [häufig gestellten Fragen](faq.md#which-availability-option-is-best-for-me).
+   
+   > [!div class="mx-imgBorder"]
+   > [Screenshot: Dropdownmenü für Verfügbarkeitszonen. Die Option „Verfügbarkeitszone“ ist hervorgehoben.](media/availability-zone.png)
 
-4. Geben Sie unter **Anzahl von VMs** die Anzahl von virtuellen Computern an, die Sie für Ihren Hostpool erstellen möchten.
-
-    >[!NOTE]
-    >Sie können während der Einrichtung Ihres Hostpools bis zu 400 VMs erstellen, und bei jedem VM-Einrichtungsprozess werden vier Objekte in Ihrer Ressourcengruppe erstellt. Ihr Abonnementkontingent wird bei der Erstellung nicht überprüft. Achten Sie daher darauf, dass die von Ihnen angegebene Anzahl virtueller Computer den Azure-VM- und API-Grenzwerten für Ihre Ressourcengruppe und Ihr Abonnement entspricht. Sie können nach der Erstellung des Hostpools weitere VMs hinzufügen.
-
-5. Geben Sie anschließend ein **Namenspräfix** für die Benennung der VMs an, die beim Einrichtungsprozess erstellt werden. Das Suffix ist `-` mit Zahlen ab 0.
-
-6. Wählen Sie nun das Image aus, das zum Erstellen der VM verwendet werden muss. Sie können **Katalog** oder **Speicherblob** auswählen.
+5. Wählen Sie nun das Image aus, das zum Erstellen der VM verwendet werden muss. Sie können **Katalog** oder **Speicherblob** auswählen.
 
     - Wählen Sie bei Auswahl von **Katalog** im Dropdownmenü eines der empfohlenen Images aus:
 
@@ -122,23 +120,30 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein
       - Windows 10 Enterprise (mehrere Sitzungen), Version 2004
       - Windows 10 Enterprise (mehrere Sitzungen), Version 2004 + Microsoft 365 Apps
 
-     Falls das gewünschte Image nicht angezeigt wird, wählen Sie **Alle Images und Datenträger durchsuchen** aus. Sie können dann ein anderes Image in Ihrem Katalog oder ein von Microsoft und anderen Herausgebern bereitgestelltes Image auswählen. Wählen Sie unbedingt eines der [unterstützten Betriebssystemimages](overview.md#supported-virtual-machine-os-images) aus.
+      Falls das gewünschte Image nicht angezeigt wird, wählen Sie **Alle Images anzeigen** aus. Sie können dann ein anderes Image in Ihrem Katalog oder ein von Microsoft und anderen Herausgebern bereitgestelltes Image auswählen. Wählen Sie unbedingt eines der [unterstützten Betriebssystemimages](overview.md#supported-virtual-machine-os-images) aus.
 
-     > [!div class="mx-imgBorder"]
-     > ![Screenshot des Marketplace mit einer Liste von Images von Microsoft.](media/marketplace-images.png)
+      > [!div class="mx-imgBorder"]
+      > ![Screenshot des Marketplace mit einer Liste von Images von Microsoft.](media/marketplace-images.png)
 
-     Sie können auch zu **Meine Elemente** wechseln und ein benutzerdefiniertes Image auswählen, das Sie bereits hochgeladen haben.
+      Sie können auch zu **Meine Elemente** wechseln und ein benutzerdefiniertes Image auswählen, das Sie bereits hochgeladen haben.
 
-     > [!div class="mx-imgBorder"]
-     > ![Screenshot der Registerkarte „Meine Elemente“.](media/my-items.png)
+      > [!div class="mx-imgBorder"]
+      > ![Screenshot der Registerkarte „Meine Elemente“.](media/my-items.png)
 
     - Bei Auswahl von **Speicherblob** können Sie Ihren eigenen Imagebuild über Hyper-V oder auf einer Azure-VM nutzen. Sie müssen lediglich im Speicherblob den Speicherort des Images als URI eingeben.
+   
+   Der Speicherort des Images ist unabhängig von der Verfügbarkeitsoption. Die Zonenresilienz des Images bestimmt jedoch, ob das Image mit einer Verfügbarkeitszone verwendet werden kann. Wenn Sie beim Erstellen des Images eine Verfügbarkeitszone auswählen, stellen Sie sicher, dass Sie ein Image aus dem Katalog mit aktivierter Zonenresilienz verwenden. Weitere Informationen dazu, welche Zonenresilienzoption Sie verwenden sollten, finden Sie in den [häufig gestellten Fragen](faq.md#which-availability-option-is-best-for-me).
 
-7. Wählen Sie den gewünschten Typ für die Betriebssystemdatenträger Ihrer VMs aus: „SSD Standard“, „SSD Premium“ oder „HDD Standard“.
+6. Wählen Sie anschließend die **VM-Größe** aus. Sie können entweder die Standardgröße übernehmen oder **Größe ändern** auswählen, um die Größe zu ändern. Wenn Sie auf **Größe ändern** klicken, wählen Sie im angezeigten Fenster die passende VM-Größe für Ihre Workload aus.
 
-8. Wählen Sie unter „Netzwerk und Sicherheit“ das **virtuelle Netzwerk** und das **Subnetz** aus, in dem Sie die von Ihnen erstellten virtuellen Computer platzieren möchten. Stellen Sie sicher, dass das virtuelle Netzwerk eine Verbindung mit dem Domänencontroller herstellen kann, da Sie die VMs im virtuellen Netzwerk der Domäne hinzufügen müssen. Die DNS-Server des virtuellen Netzwerks, das Sie ausgewählt haben, sollten für die Verwendung der IP-Adresse des Domänencontrollers konfiguriert werden.
+7. Geben Sie unter **Anzahl von VMs** die Anzahl von virtuellen Computern an, die Sie für Ihren Hostpool erstellen möchten.
 
-9. Wählen Sie als Nächstes aus, ob die VMs eine öffentliche IP-Adresse haben sollen. Sie sollten **Nein** auswählen, weil eine private IP-Adresse sicherer ist.
+    >[!NOTE]
+    >Sie können während der Einrichtung Ihres Hostpools bis zu 400 VMs erstellen, und bei jedem VM-Einrichtungsprozess werden vier Objekte in Ihrer Ressourcengruppe erstellt. Ihr Abonnementkontingent wird bei der Erstellung nicht überprüft. Achten Sie daher darauf, dass die von Ihnen angegebene Anzahl virtueller Computer den Azure-VM- und API-Grenzwerten für Ihre Ressourcengruppe und Ihr Abonnement entspricht. Sie können nach der Erstellung des Hostpools weitere VMs hinzufügen.
+
+8. Wählen Sie den gewünschten Typ für die Betriebssystemdatenträger Ihrer VMs aus: „SSD Standard“, „SSD Premium“ oder „HDD Standard“.
+
+9. Wählen Sie unter „Netzwerk und Sicherheit“ das **virtuelle Netzwerk** und das **Subnetz** aus, in dem Sie die von Ihnen erstellten virtuellen Computer platzieren möchten. Stellen Sie sicher, dass das virtuelle Netzwerk eine Verbindung mit dem Domänencontroller herstellen kann, da Sie die VMs im virtuellen Netzwerk der Domäne hinzufügen müssen. Die DNS-Server des virtuellen Netzwerks, das Sie ausgewählt haben, sollten für die Verwendung der IP-Adresse des Domänencontrollers konfiguriert werden.
 
 10. Wählen Sie den gewünschten Sicherheitsgruppentyp aus: **Basic**, **Erweitert** oder **Keine**.
 
@@ -154,9 +159,9 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein
 
 11. Wählen Sie anschließend aus, ob die VMs einer bestimmten Domäne und Organisationseinheit beitreten sollen. Geben Sie bei Auswahl von **Ja** die jeweilige Domäne an. Sie können optional eine spezifische Organisationseinheit hinzufügen, in der die virtuellen Computer enthalten sein sollen. Wenn Sie **Nein** auswählen, werden die virtuellen Computer mit der Domäne verknüpft, die dem Suffix des **UPN für AD-Domänenbeitritt** entspricht.
 
-  - Stellen Sie beim Angeben einer Organisationseinheit sicher, dass Sie den vollständigen Pfad (Distinguished Name) ohne Anführungszeichen verwenden.
+    - Stellen Sie beim Angeben einer Organisationseinheit sicher, dass Sie den vollständigen Pfad (Distinguished Name) ohne Anführungszeichen verwenden.
 
-12. Geben Sie unter „Administratorkonto“ die Anmeldeinformationen für den Active Directory-Domänenadministrator des virtuellen Netzwerks an, das Sie ausgewählt haben. Für dieses Konto kann die mehrstufige Authentifizierung(MFA) nicht aktiviert werden. Bei der Einbindung in eine Azure Active Directory Domain Services-Domäne (Azure AD DS) muss das Konto Teil der Gruppe „Azure AD DC-Administratoren“ sein, und das Kontokennwort muss in Azure AD DS gültig sein.
+12. Geben Sie unter „Domänenadministratorkonto“ die Anmeldeinformationen für den Active Directory-Domänenadministrator des virtuellen Netzwerks an, das Sie ausgewählt haben. Für dieses Konto kann die mehrstufige Authentifizierung(MFA) nicht aktiviert werden. Bei der Einbindung in eine Azure Active Directory Domain Services-Domäne (Azure AD DS) muss das Konto Teil der Gruppe „Azure AD DC-Administratoren“ sein, und das Kontokennwort muss in Azure AD DS gültig sein.
 
 13. Klicken Sie auf **Weiter: Arbeitsbereich >** .
 

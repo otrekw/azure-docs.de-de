@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/12/2020
+ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: f9e4af3330ecf5fbe161f7ba92ddf96eb04880a1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1996024d163a4bf7cfa741110038bb8db5b883e8
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728023"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632741"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit BeyondTrust Remote Support
 
@@ -51,7 +51,7 @@ Zum Konfigurieren der Integration von BeyondTrust Remote Support in Azure AD mü
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **BeyondTrust Remote Support** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **BeyondTrust Remote Support** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-beyondtrust-remote-support"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für BeyondTrust Remote Support
+## <a name="configure-and-test-azure-ad-sso-for-beyondtrust-remote-support"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für BeyondTrust Remote Support
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit BeyondTrust Remote Support mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in BeyondTrust Remote Support eingerichtet werden.
 
@@ -76,14 +76,14 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<HOSTNAME>.bomgar.com/saml`
+    a. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: `https://<HOSTNAME>.bomgar.com`.
 
-    b. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: `https://<HOSTNAME>.bomgar.com`.
-
-    c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<HOSTNAME>.bomgar.com/saml/sso`
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<HOSTNAME>.bomgar.com/saml/sso`
+    
+    c. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<HOSTNAME>.bomgar.com/saml`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Diese Werte werden später in diesem Tutorial erklärt.
+    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Diese Werte werden später in diesem Tutorial erklärt.
 
 1. BeyondTrust Remote Support erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
@@ -167,6 +167,10 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ### <a name="create-beyondtrust-remote-support-test-user"></a>Erstellen eines Testbenutzers für BeyondTrust Remote Support
 
+In diesem Abschnitt wird in BeyondTrust Remote Support ein Benutzer mit dem Namen Britta Simon erstellt. BeyondTrust Remote Support unterstützt die Just-In-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in BeyondTrust Remote Support vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+
+Befolgen Sie das unten beschriebene Verfahren, das für die Konfiguration von BeyondTrust Remote Support erforderlich ist.
+
 Hier werden die Einstellungen für die Benutzerbereitstellung konfiguriert. Auf die in diesem Abschnitt verwendeten Werte wird vom Abschnitt **Benutzerattribute und Ansprüche** im Azure-Portal verwiesen. Wir haben diese als Standardwerte konfiguriert, die zum Zeitpunkt der Erstellung bereits importiert werden. Der Wert kann jedoch bei Bedarf angepasst werden.
 
 ![Screenshot: Einstellungen für die Benutzerbereitstellung, in denen Sie Benutzerwerte konfigurieren können](./media/bomgarremotesupport-tutorial/user-attribute.png)
@@ -174,7 +178,7 @@ Hier werden die Einstellungen für die Benutzerbereitstellung konfiguriert. Auf 
 > [!NOTE]
 > Die Gruppen- und E-Mail-Attribute sind für diese Implementierung nicht erforderlich. Wenn Sie Azure AD-Gruppen verwenden und diese den BeyondTrust Remote Support-Gruppenrichtlinien für Berechtigungen zuweisen, muss über die Eigenschaften im Azure-Portal auf die Objekt-ID der Gruppe verwiesen werden, und sie muss im Abschnitt „Verfügbare Gruppen“ abgelegt werden. Nachdem dieser Vorgang abgeschlossen ist, ist die Objekt-ID/AD-Gruppe für die Zuweisung zu einer Gruppenrichtlinie für Berechtigungen verfügbar.
 
-![Screenshot: IT-Abschnitt mit „Membership type“ (Mitgliedschaftstyp), „Source“ (Quelle), „Type“ (Typ) und „Object ID“ (Objekt-ID)](./media/bomgarremotesupport-tutorial/config-user2.png)
+![Screenshot: IT-Abschnitt mit „Membership type“ (Mitgliedschaftstyp), „Source“ (Quelle), „Type“ (Typ) und „Object ID“ (Objekt-ID)](./media/bomgarremotesupport-tutorial/config-user-2.png)
 
 ![Screenshot: Seite „Basic Settings“ (Grundeinstellungen) für eine Gruppenrichtlinie](./media/bomgarremotesupport-tutorial/group-policy.png)
 
