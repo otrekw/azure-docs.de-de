@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 03/03/2021
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b17706f908613336714bb7daf08fdf3bfd5eaf64
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e2ec8af824d573493d1da743923956e587ded62e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928391"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033825"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Identity Protection und bedingter Zugriff für Azure AD B2C
 
@@ -49,21 +49,21 @@ Identity Protection und bedingter Zugriff in Azure AD B2C funktionieren weitge
 
 - In Azure AD B2C-Mandanten sind Identity Protection-Risikoerkennungen nur für lokale B2C-Konten, aber nicht für soziale Identitäten wie Google oder Facebook verfügbar.
 
-- In Azure AD B2C-Mandanten steht nur ein Teil der Identity Protection-Risikoerkennungen zur Verfügung. Weitere Informationen finden Sie unter [Einrichten von Identity Protection](conditional-access-identity-protection-setup.md#set-up-identity-protection).
+- In Azure AD B2C-Mandanten steht nur ein Teil der Identity Protection-Risikoerkennungen zur Verfügung. Weitere Informationen finden Sie unter [Untersuchen eines Risikos mit Identity Protection](identity-protection-investigate-risk.md)und [Hinzufügen von bedingtem Zugriff zu Benutzerflows in Azure Active Directory B2C](conditional-access-user-flow.md).
 
 - Das Gerätekompatibilitätsfeature des bedingten Zugriffs ist in Azure AD B2C-Mandanten nicht verfügbar.
 
 
 ## <a name="integrate-conditional-access-with-user-flows-and-custom-policies"></a>Integrieren von bedingtem Zugriff in Benutzerflows und benutzerdefinierte Richtlinien
 
-In Azure AD B2C können Bedingungen für bedingten Zugriff über integrierte Benutzerflows ausgelöst werden. Des Weiteren können Sie bedingten Zugriff in benutzerdefinierte Richtlinien integrieren. Das Messaging der Endbenutzererfahrung kann genau wie andere Aspekte des B2C-Benutzerflows an die Sprache, Marke und Abhilfealternativen Ihrer Organisation angepasst werden. Weitere Informationen finden Sie unter [Definieren eines technischen Profils für den bedingten Zugriff in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C](conditional-access-technical-profile.md).
+In Azure AD B2C können Bedingungen für bedingten Zugriff über integrierte Benutzerflows ausgelöst werden. Des Weiteren können Sie bedingten Zugriff in benutzerdefinierte Richtlinien integrieren. Das Messaging der Endbenutzererfahrung kann genau wie andere Aspekte des B2C-Benutzerflows an die Sprache, Marke und Abhilfealternativen Ihrer Organisation angepasst werden. Weitere Informationen finden Sie unter [Hinzufügen von bedingtem Zugriff zu Benutzerflows in Azure Active Directory B2C](conditional-access-user-flow.md).
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
-Richtlinien für bedingten Zugriff in Azure AD B2C können auch mit der Microsoft Graph-API verwaltet werden. Ausführliche Informationen finden Sie unter [Was ist bedingter Zugriff?](../active-directory/conditional-access/overview.md) und in der [Microsoft Graph-Referenz](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta).
+Richtlinien für bedingten Zugriff in Azure AD B2C können auch mit der Microsoft Graph-API verwaltet werden. Ausführliche Informationen finden Sie unter [Was ist bedingter Zugriff?](../active-directory/conditional-access/overview.md) und in der [Microsoft Graph-Referenz](microsoft-graph-operations.md#conditional-access).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Einrichten von Identity Protection und bedingtem Zugriff in Azure AD B2C](conditional-access-identity-protection-setup.md)
+- [Hinzufügen von bedingtem Zugriff zu Benutzerflows in Azure Active Directory B2C](conditional-access-user-flow.md)
 - [Was ist Identity Protection?](../active-directory/identity-protection/overview-identity-protection.md)
 - [Was ist bedingter Zugriff?](../active-directory/conditional-access/overview.md)

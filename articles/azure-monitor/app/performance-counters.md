@@ -4,12 +4,12 @@ description: Überwachen Sie systemeigene und benutzerdefinierte .NET-Leistungsi
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f1bd3ac4542dcce0d41f69a9c1664b747214554
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 423e17ef2b44286c28b464836075284929d8644c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100583886"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031360"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Systemleistungsindikatoren in Application Insights
 
@@ -21,7 +21,7 @@ Im Bereich „Metriken“ wird der Standardsatz von Leistungsindikatoren angezei
 
 ![In Application Insights gemeldete Leistungsindikatoren](./media/performance-counters/performance-counters.png)
 
-Hier sind die Standardleistungsindikatoren angegeben, für die derzeit die Erfassung für ASP.NET/ASP.NET Core-Webanwendungen konfiguriert ist:
+Nachfolgend sind die Standardleistungsindikatoren angegeben, für die derzeit die Erfassung für ASP.NET-Webanwendungen konfiguriert ist:
 - % Process\\Processor Time
 - % Process\\Processor Time Normalized
 - Memory\\Available Bytes
@@ -31,6 +31,14 @@ Hier sind die Standardleistungsindikatoren angegeben, für die derzeit die Erfas
 - Process\\Private Bytes
 - Process\\IO Data Bytes/sec
 - ASP.NET Applications\\Requests In Application Queue
+- Processor(_Total)\\% Processor Time
+
+Nachfolgend sind die Standardleistungsindikatoren angegeben, für die derzeit die Erfassung für ASP.NET Core-Webanwendungen konfiguriert ist:
+- % Process\\Processor Time
+- % Process\\Processor Time Normalized
+- Memory\\Available Bytes
+- Process\\Private Bytes
+- Process\\IO Data Bytes/sec
 - Processor(_Total)\\% Processor Time
 
 ## <a name="add-counters"></a>Hinzufügen von Leistungsindikatoren

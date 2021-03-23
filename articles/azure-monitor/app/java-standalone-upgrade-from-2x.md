@@ -6,12 +6,12 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: e9208e617eb73786bcb003dc1b55d0d77ca6650f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6e1c7e15ff77fd75ff2fb70a6741ea2dd9a4cab8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704428"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040242"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>Upgrade des Application Insights Java 2.x SDK
 
@@ -219,11 +219,24 @@ Auch hier bevorzugen Sie bei einigen Anwendungen möglicherweise immer noch die 
 
 Zuvor wurde im 2.x SDK der Vorgangsname aus der Anforderungstelemetrie auch für die Abhängigkeitstelemetrie festgelegt.
 In Application Insights Java 3.0 wird der Vorgangsname für die Abhängigkeitstelemetrie nicht mehr aufgefüllt.
-Wenn Sie den Vorgangsnamen für die Anforderung anzeigen möchten, die der Abhängigkeitstelemetrie übergeordnet ist, können Sie eine Protokollabfrage (Kusto) zur Verknüpfung der Abhängigkeitstabelle mit der Anforderungstabelle schreiben.
+Wenn Sie den Vorgangsnamen für die Anforderung anzeigen möchten, die der Abhängigkeitstelemetrie übergeordnet ist, können Sie eine Protokollabfrage (Kusto) zur Verknüpfung der Abhängigkeitstabelle mit der Anforderungstabelle schreiben. Hier ein Beispiel:
+
+```
+let start = datetime('...');
+let end = datetime('...');
+dependencies
+| where timestamp between (start .. end)
+| project timestamp, type, name, operation_Id
+| join (requests
+    | where timestamp between (start .. end)
+    | project operation_Name, operation_Id)
+    on $left.operation_Id == $right.operation_Id
+| summarize count() by operation_Name, type, name
+```
 
 ## <a name="2x-sdk-logging-appenders"></a>2.x SDK-Protokollierungs-Appender
 
-Der 3.0-Agent [erfasst die Protokollierung automatisch](./java-standalone-config#auto-collected-logging), ohne dass Protokollierungs-Appender konfiguriert werden müssen.
+Der 3.0-Agent [erfasst die Protokollierung automatisch](./java-standalone-config.md#auto-collected-logging), ohne dass Protokollierungs-Appender konfiguriert werden müssen.
 Wenn Sie 2.x SDK-Protokollierungs-Appender verwenden, können Sie diese entfernen, da sie vom 3.0-Agent ohnehin unterdrückt werden.
 
 ## <a name="2x-sdk-spring-boot-starter"></a>2.x SDK Spring Boot Starter

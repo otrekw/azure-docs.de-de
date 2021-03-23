@@ -10,17 +10,16 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 12/03/2019
-ms.openlocfilehash: 35e2a73b0cfae104cee417e7d4a159e7fd169a17
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 03/03/2021
+ms.openlocfilehash: d60810c291984e0f57df1968f69678de8179273c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500902"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042520"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Aktivieren der automatischen Optimierung im Azure-Portal zum Überwachen von Abfragen und Verbessern der Workloadleistung
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
-
 
 Azure SQL-Datenbank verwaltet Datendienste automatisch, die kontinuierlich Ihre Abfragen überwachen, und teilt Ihnen mit, wie Sie die Leistung Ihrer Workload verbessern können. Sie können Empfehlungen prüfen und manuell anwenden oder Azure SQL-Datenbank die Maßnahmen automatisch anwenden lassen. Letzteres wird als **automatischer Optimierungsmodus** bezeichnet.
 
@@ -111,11 +110,26 @@ Wenn Sie eine Optimierungsoption auf „ON“ festlegen, werden gegebenenfalls g
 
 Informationen zu den T-SQL-Optionen für die Konfiguration der automatischen Optimierung finden Sie unter [ALTER DATABASE SET-Optionen (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true).
 
-## <a name="disabled-by-the-system"></a>Vom System deaktiviert
+## <a name="troubleshooting"></a>Problembehandlung
 
-Die automatische Optimierung überwacht alle Aktionen, die sie für die Datenbank ausführt, und stellt manchmal unter Umständen fest, dass die automatische Optimierung für die Datenbank nicht ordnungsgemäß funktioniert. In diesem Fall wird die Optimierungsoption vom System deaktiviert. Das liegt meistens daran, dass der Abfragespeicher nicht aktiviert oder für eine bestimmte Datenbank schreibgeschützt ist.
+### <a name="automated-recommendation-management-is-disabled"></a>Automatisierte Empfehlungsverwaltung ist deaktiviert
 
-## <a name="permissions"></a>Berechtigungen
+Für Fehlermeldungen, dass die automatisierte Empfehlungsverwaltung deaktiviert oder einfach vom System deaktiviert wurde, sind die häufigsten Gründe:
+- Abfragespeicher ist nicht aktiviert, oder
+- Abfragespeicher befindet sich für eine angegebene Datenbank im schreibgeschützten Modus, oder
+- Abfragespeicher wird nicht mehr ausgeführt, da der zugewiesene Speicherplatz verwendet wurde.
+
+Die folgenden Schritte können in Erwägung gezogen werden, um dieses Problem zu beheben:
+- Bereinigen Sie den Abfragespeicher, oder ändern Sie die Beibehaltungsdauer der Daten mithilfe von T-SQL in „Auto“. Weitere Informationen finden Sie unter [Konfigurieren der empfohlenen Beibehaltungs- und Erfassungsrichtlinie für Abfragespeicher](/azure/azure-sql/database/query-performance-insight-use#recommended-retention-and-capture-policy).
+- Verwenden Sie SQL Server Management Studio (SSMS) und führen Sie die folgenden Schritte aus:
+  - Stellen Sie eine Verbindung zur Azure SQL-Datenbank her
+  - Klicken Sie mit der rechten Maustaste auf die Datenbank
+  - Wechseln Sie zu Eigenschaften und klicken Sie auf Abfragespeicher
+  - Ändern Sie den Betriebsmodus in Lesen/Schreiben
+  - Ändern Sie den Speichererfassungsmodus in „Auto“
+  - Ändern Sie den größenbasierten Bereinigungsmodus in „Auto“
+
+### <a name="permissions"></a>Berechtigungen
 
 Da die automatische Optimierung ein Azure-Feature ist, müssen Sie für deren Nutzung die integrierten Rollen von Azure verwenden. Die ausschließliche Verwendung der SQL-Authentifizierung reicht nicht aus, um das Feature über das Azure-Portal zu nutzen.
 
@@ -123,7 +137,7 @@ Zur Verwendung der automatischen Optimierung muss dem Benutzer mindestens die Be
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>Konfigurieren der automatischen Optimierung von E-Mail-Benachrichtigungen
 
-Weitere Informationen hierzu finden Sie im Leitfaden [E-Mail-Benachrichtigungen zur automatischen Optimierung](automatic-tuning-email-notifications-configure.md).
+Informationen zu automatisierten E-Mail-Benachrichtigungen zu Empfehlungen von der automatischen Optimierung finden Sie im Handbuch zur [automatischen Optimierung von E-Mail-Benachrichtigungen](automatic-tuning-email-notifications-configure.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
