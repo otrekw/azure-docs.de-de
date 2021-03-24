@@ -3,18 +3,18 @@ title: Grundlegendes zu Azure Cost Management-Daten
 description: In diesem Artikel erfahren Sie mehr über die Daten, die in Azure Cost Management enthalten sind, und wie häufig diese verarbeitet, gesammelt, angezeigt und geschlossen werden.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/06/2021
+ms.date: 01/17/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e6096c259ec1870a711a515bf02d5d00b4f75345
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 568f3d811876073dc899204cb8ca4d1753d9cfd0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964149"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499294"
 ---
 # <a name="understand-cost-management-data"></a>Grundlegendes zu Cost Management-Daten
 
@@ -31,6 +31,7 @@ Die folgenden Informationen zeigen die derzeit unterstützten [Microsoft Azure-A
 | **Kategorie**  | **Angebotsname** | **Kontingent-ID** | **Angebotsnummer** | **Daten verfügbar ab** |
 | --- | --- | --- | --- | --- |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | Mai 2014<sup>1</sup> |
+| **Azure Government** | Azure Government – nutzungsbasierte Bezahlung | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P | 2\. Oktober 2018<sup>2</sup> |
 | **Enterprise Agreement (EA)** | Enterprise Dev/Test                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | Mai 2014<sup>1</sup> |
 | **Enterprise Agreement (EA)** | Microsoft Azure Enterprise | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | Mai 2014<sup>1</sup> |
 | **Microsoft-Kundenvereinbarung** | Microsoft Azure-Plan | EnterpriseAgreement_2014-09-01 | – | März 2019<sup>3</sup> |
@@ -51,7 +52,7 @@ Die folgenden Informationen zeigen die derzeit unterstützten [Microsoft Azure-A
 
 _<sup>**1**</sup> Daten vor Mai 2014 finden Sie im [Azure Enterprise Portal](https://ea.azure.com)._
 
-_<sup>**2**</sup> Daten vor dem 2. Oktober 2018 finden Sie im [Azure-Kontocenter](https://account.azure.com/subscriptions)._
+_<sup>**2**</sup> Daten vor dem 2. Oktober 2018 für globale Konten finden Sie im [Azure-Kontocenter](https://account.azure.com/subscriptions), und Daten vor dem 2. Oktober 2018 für Azure Government-Konten finden Sie im [Azure Government-Kontocenter](https://account.windowsazure.us/subscriptions)._
 
 _<sup>**3**</sup> Microsoft-Kundenvereinbarungen wurden ab März 2019 abgeschlossen und weisen keine Verlaufsdaten vor diesem Zeitpunkt auf._
 
@@ -62,7 +63,6 @@ Folgende Angebote werden noch nicht unterstützt:
 | Category  | **Angebotsname** | **Kontingent-ID** | **Angebotsnummer** |
 | --- | --- | --- | --- |
 | **Azure Deutschland** | Azure Deutschland – nutzungsbasierte Bezahlung | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
-| **Azure Government** | Azure Government – nutzungsbasierte Bezahlung | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P |
 | **Cloud Solution Provider (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **Cloud Solution Provider (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
 | **Cloud Solution Provider (CSP)** | Azure Deutschland in CSP für die Microsoft Cloud Deutschland   | CSP_2015-05-01 | MS-AZR-DE-0145P |
@@ -130,6 +130,7 @@ Sollte in Cost Management ein bestimmtes Tag nicht angezeigt werden, überprüfe
     - Data Factory
     - Databricks
     - Load Balancer
+    - Compute-Instanzen für Machine Learning-Arbeitsbereich
     - Network Watcher
     - Notification Hubs
     - Service Bus
@@ -161,7 +162,7 @@ Wenn die Kosten- und Nutzungsdaten in Cost Management and Billing verfügbar sin
 
 ### <a name="rerated-data"></a>Neu bewertete Daten
 
-Unabhängig davon, ob Sie die Cost Management-APIs, Power BI oder das Azure-Portal zum Abrufen von Daten verwenden, ist zu erwarten, dass die Gebühren des aktuellen Abrechnungszeitraums neu bewertet werden und sich somit ändern, bis die Rechnung geschlossen ist.
+Unabhängig davon, ob Sie die Cost Management-APIs, Power BI oder das Azure-Portal zum Abrufen von Daten verwenden, ist zu erwarten, dass die Gebühren des aktuellen Abrechnungszeitraums neu bewertet werden. Die Gebühren können sich ändern, bis die Rechnung geschlossen wird.
 
 ## <a name="cost-rounding"></a>Runden von Kosten
 
@@ -175,7 +176,7 @@ Die in Cost Management angezeigten Kosten sind gerundet. Von der Abfrage-API zur
 
 ## <a name="historical-data-might-not-match-invoice"></a>Verlaufsdaten stimmen möglicherweise nicht mit Rechnung überein
 
-Verlaufsdaten für Angebote, die auf Guthaben oder Vorauszahlung basieren, stimmen möglicherweise nicht mit Ihrer Rechnung überein. Bei einigen Azure-Angeboten der Kategorien „Nutzungsbasierte Bezahlung“, „MSDN“ und „Visual Studio“ können Azure-Guthaben und Vorauszahlungen auf die Rechnung angewendet werden. Die in Cost Management angezeigten Verlaufsdaten basieren allerdings nur auf den geschätzten Nutzungsgebühren. Cost Management-Verlaufsdaten enthalten keine Zahlungen und Guthaben. Daher stimmen die Verlaufsdaten, die für die folgenden Angebote angezeigt werden, möglicherweise nicht genau mit Ihrer Rechnung überein.
+Verlaufsdaten für Angebote, die auf Guthaben oder Vorauszahlung basieren, stimmen möglicherweise nicht mit Ihrer Rechnung überein. Bei einigen Azure-Angeboten der Kategorien „Nutzungsbasierte Bezahlung“, „MSDN“ und „Visual Studio“ können Azure-Guthaben und Vorauszahlungen auf die Rechnung angewendet werden. Die in Cost Management angezeigten Verlaufsdaten basieren nur auf den geschätzten Nutzungsgebühren. Cost Management-Verlaufsdaten enthalten keine Zahlungen und Guthaben. Die Verlaufsdaten, die für die folgenden Angebote angezeigt werden, stimmen möglicherweise nicht genau mit Ihrer Rechnung überein.
 
 - Azure for Students (MS-AZR-0170P)
 - Azure in Open (MS-AZR-0111P)

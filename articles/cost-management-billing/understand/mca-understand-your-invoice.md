@@ -9,18 +9,22 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 766136731cb92b1bd4f0965d4929b1ac5eda14dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 996c974473c53833dd26abae2fb61585999f33b4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690492"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050442"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Bestimmungen auf der Rechnung Ihrer Microsoft-Kundenvereinbarung
 
 Dieser Artikel bezieht sich auf ein Azure-Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-access-to-a-microsoft-customer-agreement)
 
 Die Rechnung enthält eine Zusammenfassung der Gebühren sowie Zahlungsanweisungen. Die Rechnung steht im [Azure-Portal](https://portal.azure.com/) im PDF-Format (Portable Document Format) zum Download bereit oder kann per E-Mail gesendet werden. Weitere Informationen finden Sie unter [Anzeigen und Herunterladen der Microsoft Azure-Rechnung](download-azure-invoice.md).
+
+Sehen Sie sich das Video [Understand your Microsoft Customer Agreement invoice](https://www.youtube.com/watch?v=e2LGZZ7GubA) (Grundlegendes zur Rechnung für Ihre Microsoft-Kundenvereinbarung) an, um mehr über Ihre Rechnung zu erfahren und wie Sie die darin enthaltenen Gebühren analysieren können.
+
+>[!VIDEO https://www.youtube.com/embed/e2LGZZ7GubA]
 
 ## <a name="billing-period"></a>Abrechnungszeitraum
 
@@ -44,7 +48,7 @@ Den Abschnitt **Rechnungszusammenfassung** finden Sie oben auf der ersten Seite.
 | P.O. number |Eine optionale Bestellnummer, die Ihnen zur Nachverfolgung zugewiesen wird |
 | Invoice number (Rechnungsnummer) |Eine eindeutige, von Microsoft generierte Rechnungsnummer, die für Nachverfolgungszwecke verwendet wird |
 | Invoice Date |Datum, an dem die Rechnung generiert wurde, in der Regel fünf bis zwölf Tage nach dem Ende des Abrechnungszyklus. Sie können das Rechnungsdatum auch in den Angaben des Abrechnungsprofils überprüfen.|
-| Zahlungsbestimmungen |Die Zahlungsbedingungen Ihrer Microsoft-Rechnung. *Net 30 days* (Zahlbar in 30 Tagen netto) bedeutet, das die Zahlung innerhalb von 30 Tage nach dem Rechnungsdatum getätigt werden muss. |
+| Zahlungsbedingungen |Die Zahlungsbedingungen Ihrer Microsoft-Rechnung. *Net 30 days* (Zahlbar in 30 Tagen netto) bedeutet, das die Zahlung innerhalb von 30 Tage nach dem Rechnungsdatum getätigt werden muss. |
 
 ### <a name="billing-summary"></a>Billing summary (Abrechnungsübersicht)
 
@@ -55,7 +59,7 @@ Im Abschnitt **Billing summary** (Abrechnungsübersicht) werden alle in Rechnung
 | Begriff | BESCHREIBUNG |
 | --- | --- |
 | Charges|Microsoft-Gesamtgebühren für dieses Abrechnungsprofil seit dem letzten Abrechnungszeitraum |
-| Guthaben |Gutschriften durch Rückgaben |
+| Mitwirkende |Gutschriften durch Rückgaben |
 | Azure credits applied (Angewendete Azure-Gutschriften) | Azure-Gutschriften, die in jedem Abrechnungszeitraum automatisch mit den Azure-Gebühren verrechnet werden |
 | Subtotal (Zwischensumme) |Der fällige Betrag ohne Steuern |
 | Tax (Steuern) |Art und Menge der berechneten Steuer, abhängig vom Land bzw. der Region des Abrechnungsprofils. Wenn Sie keine Steuern zahlen müssen, werden auf Ihrer Rechnung keine Steuern aufgeführt. |
@@ -106,4 +110,4 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
 - [Grundlegendes zu den Gebühren auf der Rechnung für Ihr Abrechnungsprofil](review-customer-agreement-bill.md)
 - [Abrufen von Azure-Rechnungen und täglichen Nutzungsdaten](../manage/download-azure-invoice-daily-usage-date.md)
 - [Anzeigen der Azure Enterprise Agreement-Preise für Ihre Organisation](../manage/ea-pricing.md)
-- [Anzeigen der Steuerdokumente für Ihre Microsoft-Kundenvereinbarung](mca-download-tax-document.md)
+- [Anzeigen der Steuerdokumente für Ihr Abrechnungsprofil](mca-download-tax-document.md)

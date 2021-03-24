@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 21fdd85c2b2a73ed5fd0bf65c5d745ac0cc97c9c
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: de1183c1364fcb7e5483559899c2939df15d26b6
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102200545"
+ms.locfileid: "102215781"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-partner-agreement-with-the-latest-apis"></a>Programmgesteuertes Erstellen von Azure-Abonnements für eine Microsoft Partner-Vereinbarung mit den neuesten APIs
 
@@ -76,11 +76,37 @@ Verwenden Sie die `displayName`-Eigenschaft, um das Abrechnungskonto zu identifi
 we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
 -->
 
-<!--
-### [Azure CLI](#tab/azure-cli-getBillingAccounts-MPA)
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli-getBillingAccounts-MPA)
 
-we're still working on enabling CLI SDK for billing APIs. Check back soon.
--->
+```azurecli
+> az billing account list
+```
+Sie erhalten eine Liste aller Abrechnungskonten, auf die Sie Zugriff haben. 
+
+```json
+[
+  {
+    "accountStatus": "Active",
+    "accountType": "Partner",
+    "agreementType": "MicrosoftPartnerAgreement",
+    "billingProfiles": {
+      "hasMoreResults": false,
+      "value": null
+    },
+    "departments": null,
+    "displayName": "Contoso",
+    "enrollmentAccounts": null,
+    "enrollmentDetails": null,
+    "hasReadAccess": true,
+    "id": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx",
+    "name": "99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx",
+    "soldTo": null,
+    "type": "Microsoft.Billing/billingAccounts"
+  }
+]
+```
+
+Verwenden Sie die displayName-Eigenschaft, um das Abrechnungskonto zu identifizieren, für das Sie Abonnements erstellen möchten. Vergewissern Sie sich, dass als „agreementType“ des Kontos die Option MicrosoftPartnerAgreement festgelegt ist. Kopieren Sie den Namen für das Konto. Wenn Sie z. B. ein Abonnement für das Abrechnungskonto „Contoso“ erstellen möchten, kopieren Sie „99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx“. Halten Sie den Wert für den nächsten Schritt bereit.
 
 ---
 
@@ -133,11 +159,40 @@ Verwenden Sie die `displayName`-Eigenschaft, um den Kunden zu identifizieren, f�
 we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
 -->
 
-<!--
-### [Azure CLI](#tab/azure-cli-getCustomers)
 
-we're still working on enabling CLI SDK for billing APIs. Check back soon.
--->
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli-getCustomers)
+
+```json
+> az billing customer list --account-name 99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx
+```
+
+In der API-Antwort sind die Kunden des Abrechnungskontos aufgelistet, die über Azure-Pläne verfügen. Sie können Abonnements für diese Kunden erstellen.
+
+```json
+[
+  {
+    "billingProfileDisplayName": "Fabrikam toys Billing Profile",
+    "billingProfileId": "providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/7d15644f-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "displayName": "Fabrikam toys",
+    "id": "providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/7d15644f-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "name": "acba85c9-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "resellers": null,
+    "type": "Microsoft.Billing/billingAccounts/customers"
+  },
+  {
+    "billingProfileDisplayName": "Contoso toys Billing Profile",
+    "billingProfileId": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/acba85c9-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "displayName": "Contoso toys",
+    "id": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/acba85c9-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "name": "d49c364c-f866-4cc2-a284-d89f369b7951",
+    "resellers": null,
+    "type": "Microsoft.Billing/billingAccounts/customers"
+  }
+]
+
+```
+
+Verwenden Sie die `displayName`-Eigenschaft, um den Kunden zu identifizieren, für den Sie Abonnements erstellen möchten. Kopieren Sie die `id` für den Kunden. Wenn Sie beispielsweise ein Abonnement für `Fabrikam toys` erstellen möchten, kopieren Sie `/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/7d15644f-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. Halten Sie diesen Wert für spätere Schritte bereit.
 
 ---
 
@@ -147,9 +202,9 @@ Dieser Abschnitt ist nur für indirekte Anbieter optional.
 
 Falls Sie im Rahmen des zweistufigen Cloudlösungsanbieter-Modells als indirekter Anbieter fungieren, können Sie einen Handelspartner angeben, während Sie Abonnements für Kunden erstellen.
 
-Senden Sie die folgende Anforderung mit dem im zweiten Schritt (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) kopierten `id`-Element, um alle Handelspartner aufzulisten, die für einen Kunden verfügbar sind.
-
 ### <a name="rest"></a>[REST](#tab/rest-getIndirectResellers)
+
+Senden Sie die folgende Anforderung mit dem im zweiten Schritt (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) kopierten `id`-Element, um alle Handelspartner aufzulisten, die für einen Kunden verfügbar sind.
 
 ```json
 GET "https://management.azure.com/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx?$expand=resellers&api-version=2020-05-01"
@@ -185,11 +240,41 @@ Verwenden Sie die `description`-Eigenschaft, um den Handelspartner zu identifizi
 we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
 -->
 
-<!--
-### [Azure CLI](#tab/azure-cli-getIndirectResellers)
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli-getIndirectResellers)
 
-we're still working on enabling CLI SDK for billing APIs. Check back soon.
--->
+Führen Sie die folgende Anforderung mit dem aus dem ersten Schritt kopierten `name` (```99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx```) und dem aus dem vorherigen Schritt kopierten `name` des Kunden (```acba85c9-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) aus.
+
+```azurecli-interactive
+ > az billing customer show --expand "enabledAzurePlans,resellers" --account-name "99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx" --name "acba85c9-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+```
+
+In der API-Antwort sind die Handelspartner für den Kunden aufgeführt:
+
+```json
+{
+  "billingProfileDisplayName": "Fabrikam toys Billing Profile",
+  "billingProfileId": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/YL4M-xxxx-xxx-xxx",
+  "displayName": "Fabrikam toys",
+  "enabledAzurePlans": [
+    {
+      "skuDescription": "Microsoft Azure Plan",
+      "skuId": "0001"
+    }
+  ],
+  "id": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2ed2c490-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "2ed2c490-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "resellers": [
+    {
+      "description": "Wingtip",
+      "resellerId": "3xxxxx"
+    }
+  ],
+  "type": "Microsoft.Billing/billingAccounts/customers"
+}
+
+```
+
+Verwenden Sie die `description`-Eigenschaft, um den Handelspartner zu identifizieren, der dem Abonnement zugeordnet ist. Kopieren Sie die `resellerId` für den Handelspartner. Kopieren Sie `3xxxxx`, um beispielsweise `Wingtip` zuzuordnen. Halten Sie den Wert für den nächsten Schritt bereit.
 
 ---
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/16/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: 1e8d13e7cf302c486bab291ef6482216122b62a3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 10aa9b06af439fe701c53ef736ec691167560f95
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681219"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109196"
 ---
 Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardgrenzwerten, die sicherstellen sollen, dass Kundenabonnements vor anderen Workloads geschützt sind. Wenden Sie sich an den Support, um die Grenzwerte bis zum Höchstwert für Ihr Abonnement zu erhöhen.
 
@@ -56,9 +56,9 @@ Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standa
 
 | Regionsgruppe | Regions |
 | -------- | ------ |
-| Regionsgruppe 1 | „USA, Mitte“, „USA, Osten“, „USA, Osten 2“, „Europa, Norden“, „Europa, Westen“ „USA, Westen“, „USA, Westen 2“ |
+| Regionsgruppe 1 | „USA, Mitte“, „USA, Osten“, „USA, Osten 2“, „Europa, Norden“, „Europa, Westen“, „USA, Westen“, „USA, Westen 2“ |
 | Regionsgruppe 2 | „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Indien, Mitte“, „Japan, Osten“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „Asien, Südosten“, „USA, Westen-Mitte“ |
-| Regionsgruppe 3 | „Kanada, Mitte“, „Asien, Osten“, „Frankreich, Mitte“, „Südkorea Mitte“, „Vereinigtes Königreich, Süden“ |
+| Regionsgruppe 3 | Andere Regionen |
 
 <sup>3</sup> Objekte für Pipelines, Datasets und verknüpfte Dienste stellen eine logische Gruppierung Ihrer Workload dar. Die Grenzwerte für diese Objekte beziehen sich nicht auf die Datenmenge, die Sie mit Azure Data Factory verschieben und verarbeiten können. Data Factory kann so skaliert werden, dass Petabytes an Daten verarbeitet werden können.
 

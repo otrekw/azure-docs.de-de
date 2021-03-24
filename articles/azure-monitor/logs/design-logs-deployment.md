@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: ed9690a750ad6e1167ba0a0ae4a87b603c4a1f15
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a889275782388781eadffb7cf0a24771bf6e9e4f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717399"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030833"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Entwerfen Ihrer Azure Monitor-Protokollbereitstellung
 
@@ -87,9 +87,9 @@ Benutzer haben zwei Möglichkeiten, auf die Daten zuzugreifen:
 
     > [!NOTE]
     > Protokolle sind für Abfragen im Ressourcenkontext nur dann verfügbar, wenn sie der jeweiligen Ressource ordnungsgemäß zugeordnet wurden. Zurzeit gelten für die folgenden Ressourcen Einschränkungen:
-    > - Computer außerhalb von Azure
+    > - Computer außerhalb von Azure: Werden nur über [Azure Arc für Server](../../azure-arc/servers/index.yml) für den Ressourcenkontext unterstützt.
     > - Service Fabric
-    > - Application Insights
+    > - Application Insights: Wird nur bei Verwendung der [arbeitsbereichsbasierten Application Insights-Ressource](../app/create-workspace-resource.md) für den Ressourcenkontext unterstützt.
     >
     > Sie können testen, ob Protokolle ordnungsgemäß ihrer Ressource zugeordnet wurden, indem Sie eine Abfrage ausführen und die Datensätze überprüfen, an denen Sie interessiert sind. Wenn sich die richtige Ressourcen-ID in der Eigenschaft [_ResourceId](./log-standard-columns.md#_resourceid) befindet, stehen Daten für ressourcenbezogene Abfragen zur Verfügung.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: eb70a31d0fa5f231bd0db8ca27517ce43fe1db28
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 3b5204f1d390388c2dc9a10ac2ca0234f6b0499b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007811"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101340"
 ---
 # <a name="container-security-in-security-center"></a>Containersicherheit in Security Center
 
@@ -42,7 +42,7 @@ Sie erfahren, wie Security Center diese Kernaspekte der Containersicherheit unte
 
 Der folgende Screenshot zeigt die Seite mit dem Ressourcenbestand (Asset Inventory) und die verschiedenen Containerressourcentypen, die mit Security Center geschützt werden.
 
-:::image type="content" source="./media/container-security/container-security-tab.png" alt-text="Containerbezogene Ressourcen auf der Seite mit dem Ressourcenbestand von Security Center" lightbox="./media/container-security/container-security-tab.png":::
+:::image type="content" source="./media/container-security/inventory-container-resources.png" alt-text="Containerbezogene Ressourcen auf der Seite mit dem Ressourcenbestand von Security Center" lightbox="./media/container-security/inventory-container-resources.png":::
 
 ## <a name="vulnerability-management---scanning-container-images"></a>Verwaltung von Sicherheitsrisiken: Scannen von Containerimages
 
@@ -92,7 +92,7 @@ Ausführliche Informationen zu den möglichen relevanten Security Center-Empfehl
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>Bewährte Methoden zum Schutz von Workloads mithilfe der Kubernetes-Zugangssteuerung
 
-Installieren Sie das **Azure Policy-Add-On für Kubernetes**, um verschiedene Empfehlungen zum Schutz der Workloads Ihrer Kubernetes-Container zu erhalten. Dieses Add-On kann auch automatisch bereitgestellt werden, wie unter [Aktivieren der automatischen Bereitstellung von Erweiterungen](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions) erläutert. Wenn die automatische Bereitstellung für das Add-On auf „Ein“ festgelegt ist, wird die Erweiterung standardmäßig in allen vorhandenen und zukünftigen Clustern aktiviert (sofern diese die Add-On-Installationsanforderungen erfüllen).
+Installieren Sie das **Azure Policy-Add-On für Kubernetes**, um verschiedene Empfehlungen zum Schutz der Workloads Ihrer Kubernetes-Container zu erhalten. Dieses Add-On kann auch automatisch bereitgestellt werden, wie unter [Aktivieren der automatischen Bereitstellung des Log Analytics-Agents und der Erweiterungen](security-center-enable-data-collection.md#auto-provision-mma) erläutert. Wenn die automatische Bereitstellung für das Add-On auf „Ein“ festgelegt ist, wird die Erweiterung standardmäßig in allen vorhandenen und zukünftigen Clustern aktiviert (sofern diese die Add-On-Installationsanforderungen erfüllen).
 
 Wie auf [dieser Azure Policy-Seite für Kubernetes](../governance/policy/concepts/policy-for-kubernetes.md) erläutert, erweitert das Add-On den Open-Source-Webhook für den Zugangscontroller [Gatekeeper v3](https://github.com/open-policy-agent/gatekeeper) für den  [Open Policy-Agent](https://www.openpolicyagent.org/). Kubernetes-Zugangscontroller sind Plug-Ins, die die Art der Verwendung Ihrer Cluster erzwingen. Das Add-On registriert sich als Webhook bei der Kubernetes-Zugangssteuerung und ermöglicht das zentrale, konsistente Anwenden von Skalierungs- und Sicherheitsvorkehrungen in Ihren Clustern. 
 

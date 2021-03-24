@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Azure Blob Storage-Bibliothek v12: .NET'
-description: In dieser Schnellstartanleitung wird beschrieben, wie Sie mit der Azure Blob Storage-Clientbibliothek Version 12 für .NET einen Container und ein Blob in Blob Storage (Objektspeicher) erstellen. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Container auflisten.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit der Azure Blob Storage-Clientbibliothek Version 12 für .NET einen Container und ein Blob in Blob Storage (Objektspeicher) erstellen. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Container auflisten.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 03/03/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8f27743d8680f5e73e1f7bb7a3f7bd6ff2e0464
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: bb26a865ab8b8beba99fcba51e2d05e166b1e84b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054719"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095356"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v12 für .NET
 
@@ -78,32 +78,16 @@ dotnet add package Azure.Storage.Blobs
 
 ### <a name="set-up-the-app-framework"></a>Einrichten des App-Frameworks
 
-Über das Projektverzeichnis:
+Im Projektverzeichnis:
 
-1. Öffnen Sie die Datei *Program.cs* im Editor.
+1. Öffnen Sie die Datei *Program.cs* in Ihrem Editor.
 1. Entfernen Sie die Anweisung `Console.WriteLine("Hello World!");`.
-1. Fügen Sie Anweisungen vom Typ `using` hinzu.
-1. Aktualisieren der `Main`-Methodendeklaration zur Unterstützung von asynchronem Code
+1. Fügen Sie Anweisungen des Typs `using` hinzu.
+1. Ändern Sie die Deklaration der `Main`-Methode so, dass asynchroner Code unterstützt wird.
 
-Der Code lautet wie folgt:
+    Der Code lautet wie folgt:
 
-```csharp
-using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
-using System;
-using System.IO;
-using System.Threading.Tasks;
-
-namespace BlobQuickstartV12
-{
-    class Program
-    {
-        static async Task Main()
-        {
-        }
-    }
-}
-```
+    :::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/app_framework.cs":::
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
@@ -143,17 +127,7 @@ Der folgende Code ruft die Verbindungszeichenfolge für das Speicherkonto aus de
 
 Fügen Sie diesen Code in der `Main`-Methode hinzu:
 
-```csharp
-Console.WriteLine("Azure Blob Storage v12 - .NET quickstart sample\n");
-
-// Retrieve the connection string for use with the application. The storage
-// connection string is stored in an environment variable on the machine
-// running the application called AZURE_STORAGE_CONNECTION_STRING. If the
-// environment variable is created after the application is launched in a
-// console or with Visual Studio, the shell or application needs to be closed
-// and reloaded to take the environment variable into account.
-string connectionString = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONNECTION_STRING");
-```
+:::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/Program.cs" id="Snippet_ConnectionString":::
 
 ### <a name="create-a-container"></a>Erstellen eines Containers
 
@@ -166,16 +140,7 @@ Erstellen Sie eine Instanz der [BlobServiceClient](/dotnet/api/azure.storage.blo
 
 Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 
-```csharp
-// Create a BlobServiceClient object which will be used to create a container client
-BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
-
-//Create a unique name for the container
-string containerName = "quickstartblobs" + Guid.NewGuid().ToString();
-
-// Create the container and return a container client object
-BlobContainerClient containerClient = await blobServiceClient.CreateBlobContainerAsync(containerName);
-```
+:::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/Program.cs" id="Snippet_CreateContainer":::
 
 ### <a name="upload-blobs-to-a-container"></a>Hochladen von Blobs in einen Container
 
@@ -187,25 +152,7 @@ Der folgende Codeausschnitt führt folgende Aktionen durch:
 
 Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 
-```csharp
-// Create a local file in the ./data/ directory for uploading and downloading
-string localPath = "./data/";
-string fileName = "quickstart" + Guid.NewGuid().ToString() + ".txt";
-string localFilePath = Path.Combine(localPath, fileName);
-
-// Write text to the file
-await File.WriteAllTextAsync(localFilePath, "Hello, World!");
-
-// Get a reference to a blob
-BlobClient blobClient = containerClient.GetBlobClient(fileName);
-
-Console.WriteLine("Uploading to Blob storage as blob:\n\t {0}\n", blobClient.Uri);
-
-// Open the file and upload its data
-using FileStream uploadFileStream = File.OpenRead(localFilePath);
-await blobClient.UploadAsync(uploadFileStream, true);
-uploadFileStream.Close();
-```
+:::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/Program.cs" id="Snippet_UploadBlobs":::
 
 ### <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
 
@@ -213,15 +160,7 @@ Listen Sie die Blobs im Container auf, indem Sie die [GetBlobsAsync](/dotnet/api
 
 Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 
-```csharp
-Console.WriteLine("Listing blobs...");
-
-// List all blobs in the container
-await foreach (BlobItem blobItem in containerClient.GetBlobsAsync())
-{
-    Console.WriteLine("\t" + blobItem.Name);
-}
-```
+:::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/Program.cs" id="Snippet_ListBlobs":::
 
 ### <a name="download-blobs"></a>Herunterladen von Blobs
 
@@ -229,46 +168,17 @@ Laden Sie das zuvor erstellte Blob herunter, indem Sie die [DownloadAsync](/dotn
 
 Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 
-```csharp
-// Download the blob to a local file
-// Append the string "DOWNLOADED" before the .txt extension 
-// so you can compare the files in the data directory
-string downloadFilePath = localFilePath.Replace(".txt", "DOWNLOADED.txt");
-
-Console.WriteLine("\nDownloading blob to\n\t{0}\n", downloadFilePath);
-
-// Download the blob's contents and save it to a file
-BlobDownloadInfo download = await blobClient.DownloadAsync();
-
-using (FileStream downloadFileStream = File.OpenWrite(downloadFilePath))
-{
-    await download.Content.CopyToAsync(downloadFileStream);
-    downloadFileStream.Close();
-}
-```
+:::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/Program.cs" id="Snippet_DownloadBlobs":::
 
 ### <a name="delete-a-container"></a>Löschen eines Containers
 
-Im folgenden Code werden die von der App erstellten Ressourcen bereinigt, indem der gesamte Container mithilfe von [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync) gelöscht wird. Außerdem werden die von der App erstellten lokalen Dateien gelöscht.
+Im folgenden Code werden die von der App erstellten Ressourcen bereinigt, indem der gesamte Container mithilfe von [DeleteAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.deleteasync) gelöscht wird. Außerdem werden die von der App erstellten lokalen Dateien gelöscht.
 
 Die App wird unterbrochen, um auf Benutzereingaben zu warten, indem `Console.ReadLine` aufgerufen wird, bevor Blob, Container und lokale Dateien gelöscht werden. Dies ist eine gute Möglichkeit, um zu überprüfen, ob die Ressourcen tatsächlich ordnungsgemäß erstellt wurden, bevor sie gelöscht werden.
 
 Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 
-```csharp
-// Clean up
-Console.Write("Press any key to begin clean up");
-Console.ReadLine();
-
-Console.WriteLine("Deleting blob container...");
-await containerClient.DeleteAsync();
-
-Console.WriteLine("Deleting the local source and downloaded files...");
-File.Delete(localFilePath);
-File.Delete(downloadFilePath);
-
-Console.WriteLine("Done");
-```
+:::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/Program.cs" id="Snippet_DeleteContainer":::
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 
