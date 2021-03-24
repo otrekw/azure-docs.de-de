@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 0e2e4beebedb93524da43c5a3fad750b0295f5cd
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 1f2c767d45bb08e25a057c7db1f380ceb250f607
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632138"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864906"
 ---
 # <a name="delete-using-azure-application-consistent-snapshot-tool-preview"></a>Löschen mithilfe des Tools für konsistente Momentaufnahmen in Azure-Anwendungen (Vorschau)
 
@@ -36,11 +36,11 @@ Der Befehl `azacsnap -c delete` ermöglicht das Löschen von Volumemomentaufnahm
 
 Der Befehl `-c delete` verfügt über folgende Optionen:
 
-- `--delete hana`: Bei Verwendung mit den Optionen `--hanasid <SID>` und `--hanabackupid <HANA backup id>` werden Einträge aus dem SAP HANA-Sicherungskatalog gelöscht, der den Kriterien entsprechen.
+- `--delete hana`: Bei Verwendung mit den Optionen `--dbsid <SID>` und `--hanabackupid <HANA backup id>` werden Einträge aus dem SAP HANA-Sicherungskatalog gelöscht, der den Kriterien entsprechen.
 
 - `--delete storage`: Bei Verwendung mit der Option `--snapshot <snapshot name>` wird die Momentaufnahme aus dem Back-End-Speichersystem löschen.
 
-- `--delete sync`: Bei Verwendung mit den Optionen `--hanasid <SID>` und `--hanabackupid <HANA backup id>` wird der Name der Speichermomentaufnahme aus dem Sicherungskatalog für die HANA-Sicherungs-ID (`<HANA backup id>`) abgerufen. Anschließend werden der Eintrag im Sicherungskatalog _und_ die Momentaufnahme aus allen Volumes mit der genannten Momentaufnahme gelöscht.
+- `--delete sync`: Bei Verwendung mit den Optionen `--dbsid <SID>` und `--hanabackupid <HANA backup id>` wird der Name der Speichermomentaufnahme aus dem Sicherungskatalog für die HANA-Sicherungs-ID (`<HANA backup id>`) abgerufen. Anschließend werden der Eintrag im Sicherungskatalog _und_ die Momentaufnahme aus allen Volumes mit der genannten Momentaufnahme gelöscht.
 
 - `--delete sync`: Bei Verwendung mit `--snapshot <snapshot name>` wird im Sicherungskatalog nach Einträgen für den Namen der Momentaufnahme (`<snapshot name>`) gesucht und die SAP HANA-Sicherungs-ID abgerufen. Anschließend werden der Eintrag im Sicherungskatalog _und_ die Momentaufnahme aus allen Volumes mit der genannten Momentaufnahme gelöscht.
 
@@ -51,7 +51,7 @@ Der Befehl `-c delete` verfügt über folgende Optionen:
 ### <a name="delete-a-snapshot-using-sync-option"></a>Löschen einer Momentaufnahme mit der Option `sync`
 
 ```bash
-azacsnap -c delete --delete sync --hanasid H80 --hanabackupid 157979797979
+azacsnap -c delete --delete sync --dbsid H80 --hanabackupid 157979797979
 ```
 
 > [!NOTE]
@@ -67,7 +67,7 @@ azacsnap -c delete --delete sync --snapshot hana_hourly.2020-01-22_2358
 ### <a name="delete-a-snapshot-using-hana-option"></a>Löschen einer Momentaufnahme mit der Option `hana`
 
 ```bash
-azacsnap -c delete --delete hana --hanasid H80 --hanabackupid 157979797979
+azacsnap -c delete --delete hana --dbsid H80 --hanabackupid 157979797979
 ```
 
 > [!NOTE]
@@ -109,5 +109,5 @@ Snapshot deletion completed
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Abrufen von Momentaufnahmendetails](azacsnap-cmd-ref-details.md)
+- [Abrufen von Momentaufnahmedetails](azacsnap-cmd-ref-details.md)
 - [Erstellen einer Sicherung](azacsnap-cmd-ref-backup.md)

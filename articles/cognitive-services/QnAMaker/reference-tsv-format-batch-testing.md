@@ -9,10 +9,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 10/24/2019
 ms.openlocfilehash: 0ed948b4bf69fc672a59a7825279a12868d10521
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87132125"
 ---
 # <a name="batch-testing-tsv-format"></a>TSV-Format für Batchtests
@@ -52,7 +52,7 @@ Verwenden Sie die folgenden Informationen, um das TSV-Format für Batchtests zu 
 |Frage|Die Frage, wie sie aus der Eingabedatei eingegeben wird.|
 |Antwort|Oberste Antwort aus Ihrer Wissensdatenbank.|
 |Antwort-ID|Antwort-ID|
-|Ergebnis|Vorhersagepunktzahl für die Antwort. |
+|Score|Vorhersagepunktzahl für die Antwort. |
 |Metadatentags|Der zurückgegebenen Antwort zugeordnet|
 |Erwartete Antwort-ID|optional (nur wenn die erwartete Antwort-ID angegeben ist)|
 |Urteilsbezeichnung|Optional, es können diese Werte angenommen werden: „richtig“ oder „falsch“ (nur, wenn die erwartete Antwort angegeben ist)|

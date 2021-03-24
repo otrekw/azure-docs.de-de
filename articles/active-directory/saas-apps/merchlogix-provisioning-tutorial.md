@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: zhchia
 ms.openlocfilehash: 4d0a52f06a751fba57a00615e2d57485ff740d04
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359696"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von MerchLogix für die automatische Benutzerbereitstellung
@@ -47,13 +47,13 @@ Bevor Sie MerchLogix für die automatische Benutzerbereitstellung mit Azure AD k
 
     ![Der Abschnitt „Unternehmensanwendungen“][2]
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung** , um MerchLogix hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um MerchLogix hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
 4. Geben Sie im Suchfeld als Suchbegriff **MerchLogix** ein.
 
-5. Wählen Sie im Ergebnisbereich **MerchLogix** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um MerchLogix der Liste der SaaS-Anwendungen hinzuzufügen.
+5. Wählen Sie im Ergebnisbereich **MerchLogix** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um MerchLogix der Liste der SaaS-Anwendungen hinzuzufügen.
 
     ![Screenshot des Abschnitts „Aus dem Katalog hinzufügen“ mit dem aufgerufenen Textfeld „Name eingeben“][4]
 
@@ -96,7 +96,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     * Geben Sie im Feld **Geheimes Token** das geheime Token ein, das Ihnen von der technischen Kontaktperson bei MerchLogix zur Verfügung gestellt wurde.
 
-6. Klicken Sie nach dem Auffüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit MerchLogix herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr MerchLogix-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+6. Klicken Sie nach dem Auffüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit MerchLogix herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr MerchLogix-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
 7. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
@@ -104,11 +104,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Wählen Sie im Abschnitt **Zuordnungen** die Option **Synchronize Azure Active Directory Users to MerchLogix** (Azure Active Directory-Benutzer mit MerchLogix synchronisieren) aus.
 
-10. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit MerchLogix synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in MerchLogix für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+10. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit MerchLogix synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in MerchLogix für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
 11. Wählen Sie im Abschnitt **Zuordnungen** die Option **Synchronize Azure Active Directory Groups to MerchLogix** (Azure Active Directory-Gruppen mit MerchLogix synchronisieren) aus.
 
-12. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit MerchLogix synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in MerchLogix für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+12. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit MerchLogix synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in MerchLogix für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
 13. Wenn Sie den Azure AD-Bereitstellungsdienst für MerchLogix aktivieren möchten, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 

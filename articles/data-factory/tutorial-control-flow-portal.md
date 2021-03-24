@@ -3,17 +3,17 @@ title: Verzweigen und Verketten von Aktivitäten in einer Pipeline mithilfe des 
 description: Hier erfahren Sie, wie Sie den Datenfluss in einer Azure Data Factory-Pipeline über das Azure-Portal steuern.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 9d8d9af4892001ff1f8f60a92f28aedad14c17cf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 034b0400190cadd750e7420ab37800783afa050c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378603"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783420"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Verzweigen und Verketten von Aktivitäten in einer Azure Data Factory-Pipeline mithilfe des Azure-Portals
 

@@ -9,12 +9,13 @@ ms.topic: quickstart
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7462c78ecad718c30980a98ff7659a2a4d2ea020
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.custom: cosmos-db
+ms.openlocfilehash: ddeac8477246ae2b5d2f07e495d4721f9508afed
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222155"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864923"
 ---
 # <a name="quickstart-connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Schnellstart: Herstellen einer Verbindung mit Azure Synapse Link für Azure Cosmos DB
 
@@ -41,16 +42,16 @@ Die Verbindung mit einer Azure Cosmos DB-Datenbank wird über einen verknüpften
 
 Über den Datenobjekt-Explorer können Sie mithilfe der folgenden Schritte direkt eine Verbindung für eine Azure Cosmos DB-Datenbank herstellen:
 
-1. Wählen Sie neben „Daten“ das Symbol **_+_* _ aus
-2. Wählen Sie _ *Verbindung mit externen Daten herstellen** aus.
+1. Wählen Sie neben „Daten“ das Symbol ***+*** aus.
+2. Wählen Sie **Connect to external data** (Verbindung mit externen Daten herstellen) aus.
 3. Wählen Sie die API aus, mit der Sie eine Verbindung herstellen möchten: SQL oder MongoDB
-4. Wählen Sie **_Weiter_* _ aus.
+4. Wählen Sie ***Weiter***.
 5. Geben Sie einen Namen für den verknüpften Dienst ein. Der Name wird im Objekt-Explorer angezeigt und von Synapse-Laufzeiten verwendet, um eine Verbindung mit der Datenbank und den Containern herzustellen. Es wird empfohlen, einen Anzeigenamen zu verwenden.
-6. Wählen Sie den _ *Cosmos DB-Kontonamen** und den **Datenbanknamen** aus.
+6. Wählen Sie den **Cosmos DB-Kontonamen** und den **Datenbanknamen** aus.
 7. (Optional) Wird keine Region angegeben, werden Synapse-Laufzeitvorgänge an die nächstgelegene Region weitergeleitet, in der der Analysespeicher aktiviert ist. Sie können jedoch manuell festlegen, in welcher Region Benutzer auf den Cosmos DB-Analysespeicher zugreifen sollen. Wählen Sie **Additional connection properties** (Zusätzliche Verbindungseigenschaften) und dann **Neu** aus. Geben Sie unter **Eigenschaftenname** den Namen **_PreferredRegions_ *_ ein, und legen Sie unter _* Wert** die gewünschte Region fest (etwa „WestUS2“, ohne Leerstelle zwischen Wort und Zahl).
-8. Wählen Sie **_Erstellen_* _ aus.
+8. Klicken Sie auf ***Erstellen***
 
-Azure Cosmos DB-Datenbanken werden im Azure Cosmos DB-Abschnitt auf der Registerkarte _ *Verknüpft** angezeigt. Anhand der folgenden Symbole können Sie einen HTAP-fähigen Azure Cosmos DB-Container von einem reinen OLTP-Container unterscheiden:
+Azure Cosmos DB-Datenbanken werden im Azure Cosmos DB-Abschnitt auf der Registerkarte **Verknüpft** angezeigt. Anhand der folgenden Symbole können Sie einen HTAP-fähigen Azure Cosmos DB-Container von einem reinen OLTP-Container unterscheiden:
 
 **Synapse-Container:**
 

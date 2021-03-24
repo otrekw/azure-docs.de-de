@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 05/11/2018
 ms.custom: mvc
 ms.openlocfilehash: c7a18b0dcdc04bdf66ac4b36ce7376ee018eb238
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91842902"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Tutorial: Erstellen der AWS-Infrastruktur zum Hosten eines Service Fabric-Clusters
@@ -69,7 +69,7 @@ Klicken Sie abschließend auf **Launch Instances** (Instanzen starten) und dann 
 
 Für Service Fabric müssen einige Ports zwischen den Hosts in Ihrem Cluster geöffnet sein. Um diese Ports in der AWS-Infrastruktur zu öffnen, wählen Sie eine der erstellten Instanzen aus. Wählen Sie den Namen der Sicherheitsgruppe aus (beispielsweise **launch-wizard-1**). Klicken Sie auf die Registerkarte **Inbound** (Eingehend).
 
-Öffnen Sie diese Ports nur für Hosts in der gleichen Sicherheitsgruppe, um sie nicht zugänglich zu machen. Notieren Sie sich die Sicherheitsgruppen-ID (**sg-c4fb1eba** in diesem Beispiel).  Klicken Sie anschließend auf **Edit** (Bearbeiten).
+Öffnen Sie diese Ports nur für Hosts in der gleichen Sicherheitsgruppe, um sie nicht zugänglich zu machen. Notieren Sie sich die Sicherheitsgruppen-ID (**sg-c4fb1eba** in diesem Beispiel).  Klicken Sie dann auf **Bearbeiten**.
 
 Fügen Sie der Sicherheitsgruppe als Nächstes vier Regeln für Dienstabhängigkeiten und anschließend drei weitere für Service Fabric selbst hinzu. Die erste Regel dient zum Zulassen von ICMP-Datenverkehr für grundlegende Konnektivitätsprüfungen. Die anderen Regeln öffnen die erforderlichen Ports für SMB und Remoteregistrierung.
 

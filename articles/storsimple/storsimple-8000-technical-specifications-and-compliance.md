@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68965289"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technische Spezifikationen und Kompatibilität des StorSimple-Geräts
@@ -39,11 +39,11 @@ Das EBOD-Gehäuse enthält ein PCM mit 580 W, und das primäre Gehäuse wird mi
 | --- | --- | --- |
 | Maximale Ausgangsleistung |580 W |764 |
 | Häufigkeit |50/60 Hz |50/60 Hz |
-| Spannungsbereichsauswahl |Automatischer Spannungsbereich: 90–264 V Wechselstrom, 47/63 Hz |Automatischer Spannungsbereich: 90–264 V Wechselstrom, 47/63 Hz |
+| Spannungsbereichsauswahl |Automatischer Spannungsbereich: 90–264 V AC, 47/63 Hz |Automatischer Spannungsbereich: 90–264 V AC, 47/63 Hz |
 | Maximaler Eingangsstrom |20 A |20 A |
 | Leistungsfaktorkorrektur |> 95 % Nenneingangsspannung |> 95 % Nenneingangsspannung |
 | Oberschwingungen |Erfüllt EN61000-3-2 |Erfüllt EN61000-3-2 |
-| Output |5 V Standbyspannung \@ 2,0 A |5 V Standbyspannung \@ 2,7 A |
+| Ausgabe |5 V Standbyspannung \@ 2,0 A |5 V Standbyspannung \@ 2,7 A |
 | +5 V \@ 42 A |+5 V \@ 40 A | |
 | +12 V \@ 38 A |+12 V \@ 38 A | |
 | Hot-Plug-fähig |Ja |Ja |
@@ -162,8 +162,8 @@ Ihr Microsoft Azure StorSimple-Gerät erfüllt die folgenden EMC-Standards:
 
 Das Gerät ist EMC-konform für Leitungs- und Strahlungsemissionswerte.
 
-* Leitungsemissions-Grenzwerte: CFR 47 Teil 15B Klasse A EN55022 Klasse A CISPR Klasse A
-* Strahlungsemissions-Grenzwerte: CFR 47 Teil 15B Klasse A EN55022 Klasse A CISPR Klasse A
+* Leitungsemissions-Grenzwerte: CFR 47 Part 15B Klasse A EN55022 Klasse A CISPR Klasse A
+* Strahlungsemissions-Grenzwerte: CFR 47 Part 15B Klasse A EN55022 Klasse A CISPR Klasse A
 
 ### <a name="harmonics-and-flicker"></a>Oberschwingungen und Flicker
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84689986"
 ---
 # <a name="azure-api-management-template-resources"></a>Ressourcen von Azure API Management-Vorlagen
@@ -122,7 +122,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |Name|Text|  
 |----------|----------|  
 |WebApplicationsDetailsTitle|Application preview (Anwendungsvorschau)|  
-|WebApplicationsRequirementsHeader|Requirements (Anforderungen)|  
+|WebApplicationsRequirementsHeader|Anforderungen|  
 |WebApplicationsScreenshotAlt|Screenshot|  
 |WebApplicationsScreenshotsHeader|Screenshots|  
   
@@ -136,17 +136,17 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |WebDevelopersAppTableCategoryHeader|Category|  
 |WebDevelopersAppTableNameHeader|Name|  
 |WebDevelopersAppTableStateHeader|State|  
-|WebDevelopersEditLink|Edit (Bearbeiten)|  
+|WebDevelopersEditLink|Bearbeiten|  
 |WebDevelopersRegisterAppLink|Register application (Anwendung registrieren)|  
-|WebDevelopersRemoveLink|Remove (Entfernen)|  
-|WebDevelopersSubmitLink|Submit (Senden)|  
+|WebDevelopersRemoveLink|Entfernen|  
+|WebDevelopersSubmitLink|Übermitteln|  
 |WebDevelopersYourApplicationsHeader|Your applications (Ihre Anwendungen)|  
   
 ###  <a name="appstrings"></a><a name="AppStrings"></a> AppStrings  
   
 |Name|Text|  
 |----------|----------|  
-|WebApplicationsHeader|Anwendungen|  
+|WebApplicationsHeader|Applications|  
   
 ###  <a name="commonresources"></a><a name="CommonResources"></a> CommonResources  
   
@@ -167,9 +167,9 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |ButtonLabelSave|Speichern|  
 |GeneralExceptionMessage|Something is not right. (Ein Problem ist aufgetreten.) It could be a temporary glitch or a bug. (Es kann ein vorübergehender oder dauerhafter Fehler sein.) Please, try again. (Wiederholen Sie den Vorgang.)|  
 |NoItemsToDisplay|There are no items to display. (Es sind keine Elemente vorhanden, die angezeigt werden können.)|  
-|PagerButtonLabelFirst|First (Erster)|  
-|PagerButtonLabelLast|Last (Letzter)|  
-|PagerButtonLabelNext|Next (Weiter)|  
+|PagerButtonLabelFirst|First|  
+|PagerButtonLabelLast|Letzter|  
+|PagerButtonLabelNext|Nächste|  
 |PagerButtonLabelPrevious|Prev (Vorheriger)|  
 |PagerLabelPageNOfM|Seite {0} von {1}|  
 |PasswordTooShort|The Password is too short (Das Kennwort ist zu kurz.)|  
@@ -179,9 +179,9 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |PasswordTooManyRepetitions|Too many repetitions (Zu viele Wiederholungen)|  
 |PasswordSequenceFound|Your password contains sequences (Ihr Kennwort enthält Sequenzen.)|  
 |PagerLabelPageSize|Page size (Seitengröße)|  
-|CurtainLabelLoading|Loading... (Wird geladen...)|  
+|CurtainLabelLoading|Wird geladen...|  
 |TablePlaceholderNothingToDisplay|There is no data for the selected period and scope (Es sind keine Daten für den ausgewählten Zeitraum und Bereich vorhanden.)|  
-|ButtonLabelClose|Close (Schließen)|  
+|ButtonLabelClose|Schließen|  
   
 ###  <a name="documentation"></a><a name="Documentation"></a> Documentation  
   
@@ -302,8 +302,8 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |OAuth2UnsupportedTokenType|Tokentyp '{0}' wird nicht unterstützt.|  
 |OAuth2InvalidState|Invalid response from authorization server (Ungültige Antwort vom Autorisierungsserver)|  
 |OAuth2GrantType_AuthorizationCode|Authorization code (Autorisierungscode)|  
-|OAuth2GrantType_Implicit|Implicit (Implizit)|  
-|OAuth2GrantType_ClientCredentials|Client credentials (Clientanmeldeinformationen)|  
+|OAuth2GrantType_Implicit|Implizit|  
+|OAuth2GrantType_ClientCredentials|Clientanmeldeinformationen|  
 |OAuth2GrantType_ResourceOwnerPassword|Resource owner password (Kennwort des Ressourcenbesitzers)|  
 |WebDocumentation302Code|302 Found (302 Gefunden)|  
 |WebDocumentation400Code|400 (Bad request) (400 (Ungültige Anforderung))|  
@@ -324,10 +324,10 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |ButtonLinkOpenConsole|Ausprobieren|  
 |SectionHeadingRequestBody|Anforderungstext|  
 |SectionHeadingRequestParameters|Anforderungsparameter|  
-|SectionHeadingRequestUrl|Anfrage-URL|  
+|SectionHeadingRequestUrl|Anforderungs-URL|  
 |SectionHeadingResponse|Antwort|  
 |SectionHeadingRequestHeaders|Anforderungsheader|  
-|FormLabelSubtextOptional|optional|  
+|FormLabelSubtextOptional|Optional|  
 |SectionHeadingCodeSamples|Codebeispiele|  
 |TextblockOpenidConnectHeaderDescription|OpenID Connect-ID-Token erhalten von <i\>{0}</i\>. Unterstützte Gewährungstypen: <i\>{1}</i\>.|  
   
@@ -380,9 +380,9 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |Name|Text|  
 |----------|----------|  
 |WebProductsAgreement|Indem ich das Produkt {0} abonniere, stimme ich den `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>` zu.|  
-|WebProductsLegalTermsLink|Terms of Use (Nutzungsbedingungen)|  
+|WebProductsLegalTermsLink|Nutzungsbedingungen|  
 |WebProductsSubscribeButton|Abonnieren|  
-|WebProductsUsageLimitsHeader|Usage limits (Nutzungseinschränkungen)|  
+|WebProductsUsageLimitsHeader|Nutzungslimits|  
 |WebProductsYouAreNotSubscribed|You are subscribed to this product. (Sie haben dieses Produkt abonniert.)|  
 |WebProductsYouRequestedSubscription|You requested subscription to this product. (Sie haben ein Abonnement dieses Produkts angefordert.)|  
 |ErrorYouNeedtoAgreeWithLegalTerms|You must agree to the Terms of Use before you can proceed. (Sie müssen den Nutzungsbedingungen zustimmen, bevor Sie fortfahren können.)|  
@@ -423,7 +423,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |ValidationErrorSpecificEmailInvalid|E-Mail-Adresse {0} ist ungültig.|  
 |ValidationErrorPasswordInvalid|Password is invalid. (Kennwort ist ungültig.) Please correct the errors and try again. (Beheben Sie die Fehler, und wiederholen Sie den Vorgang.)|  
 |PropertyTooShort|{0} ist zu kurz|  
-|WebAuthenticationAddresserEmailInvalidErrorMessage|Invalid email address. (Ungültige E-Mail-Adresse.)|  
+|WebAuthenticationAddresserEmailInvalidErrorMessage|Ungültige E-Mail-Adresse.|  
 |ValidationMessageNewPasswordConfirmationRequired|Confirm new password (Neues Kennwort bestätigen)|  
 |ValidationErrorPasswordConfirmationRequired|Confirm password is empty (Bestätigungskennwort ist leer)|  
 |WebAuthenticationEmailChangeNotice|Die E-Mail mit der Änderungsbestätigung wurde an {0} gesendet. Please follow instructions within it to confirm your new email address. (Befolgen Sie die darin enthaltenen Anweisungen, um Ihre neue E-Mail-Adresse zu bestätigen.) If the email does not arrive to your inbox in the next few minutes, please check your junk email folder. (Überprüfen Sie Ihren Junk-E-Mail-Ordner, falls die E-Mail nicht in den nächsten Minuten in Ihrem Posteingang eintrifft.)|  
@@ -433,7 +433,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |ValidationErrorEmailAlreadyExists|Email already exist (E-Mail-Adresse ist bereits vorhanden.)|  
 |ValidationErrorEmailInvalid|Invalid e-mail address (Ungültige E-Mail-Adresse)|  
 |TextboxLabelEmail|Email|  
-|ValidationErrorEmailRequired|Email is required. (E-Mail-Adresse ist erforderlich.)|  
+|ValidationErrorEmailRequired|E-Mail-Adresse ist erforderlich.|  
 |WebAuthenticationErrorNoticeHeader|Fehler|  
 |WebAuthenticationFieldLengthErrorMessage|{0} darf maximal eine Länge von {1} haben|  
 |TextboxLabelEmailFirstName|Vorname|  
@@ -451,7 +451,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |WebAuthenticationNewPasswordLabel|Neues Kennwort|  
 |ValidationMessageNewPasswordRequired|New password is required. (Neues Kennwort erforderlich.)|  
 |TextboxLabelNotificationsSenderEmail|Notifications sender email (E-Mail-Adresse Benachrichtigungsabsender)|  
-|TextboxLabelOrganizationName|Organization name (Name der Organisation)|  
+|TextboxLabelOrganizationName|Name der Organisation|  
 |WebAuthenticationOrganizationRequiredErrorMessage|Organization name is empty (Name der Organisation ist leer)|  
 |WebAuthenticationPasswordChangedNotice|Your password was successfully updated (Ihr Kennwort wurde aktualisiert)|  
 |WebAuthenticationPasswordChangedNoticeTitle|Password updated (Kennwort aktualisiert)|  
@@ -459,7 +459,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |WebAuthenticationPasswordConfirmLabel|Kennwort bestätigen|  
 |ValidationErrorPasswordInvalidDetailed|Password is too weak. (Kennwort ist nicht sicher genug.)|  
 |WebAuthenticationPasswordLabel|Kennwort|  
-|ValidationErrorPasswordRequired|Password is required. (Kennwort erforderlich.)|  
+|ValidationErrorPasswordRequired|Das Kennwort ist erforderlich.|  
 |WebAuthenticationPasswordResetSendNotice|Die E-Mail mit der Bestätigung der Kennwortänderung wurde an {0} gesendet. Please follow the instructions within the email to continue your password change process. (Befolgen Sie die Anweisungen in der E-Mail, um den Prozess zum Ändern des Kennworts fortzusetzen.)|  
 |WebAuthenticationPasswordResetSendNoticeHeader|Your password reset request was successfully processed (Ihre Anforderung zur Zurücksetzung des Kennworts wurde verarbeitet)|  
 |WebAuthenticationPasswordResetSendNoticeTitle|Password reset requested (Kennwortzurücksetzung angefordert)|  
@@ -477,7 +477,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |ButtonLabelChangePassword|Kennwort ändern|  
 |ButtonLabelChangeAccountInfo|Change account information (Kontoinformationen ändern)|  
 |ButtonLabelCloseAccount|Close account (Konto schließen)|  
-|WebAuthenticationInvalidCaptchaErrorMessage|Text entered doesn't match text on the picture. (Der eingegebene Text stimmt nicht mit dem Text im Bild überein.) Wiederholen Sie den Vorgang.|  
+|WebAuthenticationInvalidCaptchaErrorMessage|Text entered doesn't match text on the picture. (Der eingegebene Text stimmt nicht mit dem Text im Bild überein.) Versuchen Sie es erneut.|  
 |ValidationErrorCredentialsInvalid|Email or password is invalid. (E-Mail-Adresse oder Kennwort ist ungültig.) Please correct the errors and try again. (Beheben Sie die Fehler, und wiederholen Sie den Vorgang.)|  
 |WebAuthenticationRequestIsNotValid|Request is not valid (Anforderung ist ungültig)|  
 |WebAuthenticationUserIsNotConfirm|Please confirm your registration before attempting to sign in. (Bestätigen Sie Ihre Registrierung, bevor Sie versuchen, sich anzumelden.)|  
@@ -504,7 +504,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |WebAuthenticationNoAadTenantConfigured|No Azure Active Directory tenant configured for the service. (Für den Dienst wurde kein Azure Active Directory-Mandant konfiguriert.)|  
 |CheckboxLabelUserRegistrationTermsConsentRequired|I agree to the `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use</a\>`. (Ich stimme den `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use</a\>` zu.)|  
 |TextblockUserRegistrationTermsProvided|Please review `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use.</a\>` (Lesen Sie die `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use.</a\>`.)|  
-|DialogHeadingTermsOfUse|Terms of Use (Nutzungsbedingungen)|  
+|DialogHeadingTermsOfUse|Nutzungsbedingungen|  
 |ValidationMessageConsentNotAccepted|You must agree to the Terms of Use before you can proceed. (Sie müssen den Nutzungsbedingungen zustimmen, bevor Sie fortfahren können.)|  
   
 ###  <a name="signinstrings"></a><a name="SigninStrings"></a> SigninStrings  
@@ -539,7 +539,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |WebDevelopersPrimaryKey|Primary key (Primärschlüssel)|  
 |WebDevelopersRegenerateLink|Regenerate (Neu generieren)|  
 |WebDevelopersSecondaryKey|Secondary key (Sekundärschlüssel)|  
-|ButtonLabelShowKey|Show (Anzeigen)|  
+|ButtonLabelShowKey|Anzeigen|  
 |ButtonLabelRenewSubscription|Erneuern|  
 |WebDevelopersSubscriptionRequested|Angefordert am {0}|  
 |WebDevelopersSubscriptionRequestedState|Requested (Angefordert)|  
@@ -558,10 +558,10 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |----------|----------|  
 |SectionHeadingCloseAccount|Looking to close your account? (Möchten Sie Ihr Konto schließen?)|  
 |PageTitleDeveloperProfile|Profil|  
-|ButtonLabelHideKey|Hide (Ausblenden)|  
+|ButtonLabelHideKey|Ausblenden|  
 |ButtonLabelRegenerateKey|Regenerate (Neu generieren)|  
 |InformationMessageKeyWasRegenerated|Are you sure that you want to regenerate this key? (Sind Sie sicher, dass Sie diesen Schlüssel neu generieren möchten?)|  
-|ButtonLabelShowKey|Show (Anzeigen)|  
+|ButtonLabelShowKey|Anzeigen|  
   
 ###  <a name="updateprofilestrings"></a><a name="UpdateProfileStrings"></a> UpdateProfileStrings  
   
@@ -581,7 +581,7 @@ Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
 |TextboxLabelEmailFirstName|Vorname|  
 |TextboxLabelEmailLastName|Nachname|  
 |TextboxLabelNotificationsSenderEmail|Notifications sender email (E-Mail-Adresse Benachrichtigungsabsender)|  
-|TextboxLabelOrganizationName|Organization name (Name der Organisation)|  
+|TextboxLabelOrganizationName|Name der Organisation|  
 |SubscriptionStateActive|Aktiv|  
 |SubscriptionStateCancelled|Abgebrochen|  
 |SubscriptionStateExpired|Abgelaufen|  

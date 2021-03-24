@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/29/2020
 ms.author: yelevin
 ms.openlocfilehash: 011ddb883c028a954a8b0683c220bf6341eddb66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91578144"
 ---
 # <a name="manage-multiple-tenants-in-azure-sentinel-as-an-mssp"></a>Verwalten mehrerer Mandanten in Azure Sentinel als MSSP
@@ -43,7 +43,7 @@ Wenn Sie Dienstanbieter für verwaltete Sicherheit (MSSP) sind und [Azure Lighth
 
 1. Wählen Sie unter **Verzeichnis + Abonnement** die delegierten Verzeichnisse (Verzeichnis = Mandant) und die Abonnements aus, in denen sich die Azure Sentinel-Arbeitsbereiche Ihres Kunden befinden.
 
-    :::image type="content" source="media/multiple-tenants-service-providers/directory-subscription.png" alt-text="Überprüfen von Ressourcenanbietern":::
+    :::image type="content" source="media/multiple-tenants-service-providers/directory-subscription.png" alt-text="Auswählen von Mandanten und Abonnements":::
 
 1. Öffnen Sie Azure Sentinel. Es werden alle Arbeitsbereiche in den ausgewählten Abonnements angezeigt, und Sie können problemlos wie in jedem anderen Arbeitsbereich Ihres eigenen Mandanten damit arbeiten.
 

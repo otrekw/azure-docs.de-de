@@ -12,10 +12,10 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 3838234f9f65fcf91f8de33e3d7196aa13f2b903
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83741723"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Manuelles Hinzufügen eines Kontos zur App
@@ -93,7 +93,7 @@ Sie können Ihr Amazon-Konto hinzufügen, indem Sie die zweistufige Überprüfun
 
 5. Geben Sie auf Ihrem Computer auf der Seite **Sicherungsmethode hinzufügen** den von der Sicherungsmethode für Ihr Amazon-Konto angegebenen sechsstelligen Prüfcode ein, und wählen Sie dann **Code verifizieren und fortfahren** aus.
 
-6. Entscheiden Sie auf der Seite „Fast fertig“, ob Ihr Computer als vertrauenswürdiges Gerät gespeichert werden soll, und klicken Sie dann auf **OK. Aktivieren der zweistufigen Überprüfung** aus.
+6. Entscheiden Sie auf der Seite Fast fertig, ob Ihr Computer als vertrauenswürdiges Gerät gespeichert werden soll, und wählen Sie dann **OK. Aktivieren der zweistufigen Überprüfung** aus.
 
     Die Seite **Erweiterte Sicherheitseinstellungen** wird mit Ihren aktualisierten Details der zweistufigen Überprüfung (Zwei-Schritt-Verifizierung) angezeigt.
 

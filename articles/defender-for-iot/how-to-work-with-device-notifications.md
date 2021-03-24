@@ -1,18 +1,14 @@
 ---
 title: Arbeiten mit Gerätebenachrichtigungen
 description: Benachrichtigungen enthalten Informationen zu Netzwerkaktivitäten, die möglicherweise Ihre Aufmerksamkeit erfordern, sowie Empfehlungen zum Umgang mit diesen Aktivitäten.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 2083da329c41afbe95ff570194a1c3ad5c2661be
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: c0c2fc5a4c01a8a31512cd43c340bf3fadc259b1
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523565"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781329"
 ---
 # <a name="work-with-device-notifications"></a>Arbeiten mit Gerätebenachrichtigungen
 
@@ -24,11 +20,7 @@ Benachrichtigungen enthalten Informationen zu Netzwerkaktivitäten, die möglich
 
 Das Reagieren auf Benachrichtigungen verbessert die Informationen in Gerätezuordnungen, dem Gerätebestand und Data-Mining-Abfragen und -Berichten. Darüber hinaus erhalten Sie dadurch Einblicke in legitime Netzwerkänderungen und potenzielle Netzwerkfehlkonfigurationen.
 
-So greifen Sie auf Benachrichtigungen zu:
-
-- Klicken Sie auf **Systemeinstellungen** und dann auf **Data Enhancement** (Datenverbesserung).
-
-## <a name="notifications-vs-alerts"></a>Benachrichtigungen vs. Warnungen
+**Benachrichtigungen vs. Warnungen**
 
 Neben Benachrichtigungen zur Netzwerkaktivität erhalten Sie möglicherweise auch *Warnungen*. Benachrichtigungen enthalten Informationen zu Netzwerkänderungen oder nicht aufgelösten Geräteeigenschaften, die keine Bedrohung darstellen. Warnungen hingegen enthalten Informationen zu Netzwerkabweichungen und -änderungen, die möglicherweise eine Bedrohung für das Netzwerk darstellen.
 
@@ -86,18 +78,6 @@ So zeigen Sie Benachrichtigungen an und reagieren darauf:
 
 Die Ereignisse **New IPs** (Neue IP-Adressen) und **No Subnets configured** (Keine Subnetze konfiguriert) können nicht gleichzeitig verarbeitet werden. Sie müssen manuell bestätigt werden.
 
-## <a name="improve-device-os-classification-data-enhancement"></a>Verbessern der Gerätebetriebssystem-Klassifizierung: Datenverbesserung 
-
-Der Sensor ermittelt fortlaufend automatisch neue OT-Geräte. Außerdem erkennt er automatisch Änderungen an zuvor ermittelten Geräten, einschließlich des Betriebssystemtyps.
-
-Unter bestimmten Umständen werden möglicherweise Konflikte bei ermittelten Betriebssystemen erkannt. Der Grund hierfür kann sein, dass Sie über eine Betriebssystemversion für Desktop- oder Serversysteme verfügen. Wenn ein solcher Konflikt erkannt wird, erhalten Sie eine Benachrichtigung mit optionalen Betriebssystemklassifizierungen.
-
-:::image type="content" source="media/how-to-enrich-asset-information/enhance-data-screen.png" alt-text="Enhance Data (Daten verbessern)":::
-
-Sehen Sie sich die Empfehlungen an, um die Betriebssystemklassifizierung anzureichern. Diese Informationen werden unter anderem im Gerätebestand und in Data-Mining-Berichten angezeigt. Mit ihnen kann auch die Genauigkeit von Warnungen, Bedrohungen und Risikoanalysen verbessert werden.
-
-Wenn Sie eine Empfehlung akzeptieren, werden die Informationen zum Betriebssystemtyp im Sensor aktualisiert.
-
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Weitere Informationen
 
 [Anzeigen von Warnungen](how-to-view-alerts.md)

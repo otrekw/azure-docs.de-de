@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 32aa64a9343a8e3c62af4322b3320b28ce805064
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97369190"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Einführung zum Azure Security-Vergleichstest
@@ -46,7 +46,7 @@ Der Azure-Sicherheitsvergleichstest wird häufig verwendet, um die folgenden fü
 Die Begriffe „Kontrollelement“, „Vergleichstest“ und „Grundwerte“ kommen in der Dokumentation des Azure-Sicherheitsvergleichstests häufig vor, und es ist wichtig, zu verstehen, wie Azure diese Begriffe verwendet.
 
 
-| Begriff | Beschreibung | Beispiel |
+| Begriff | BESCHREIBUNG | Beispiel |
 |--|--|--|
 | Control | Ein Kontrollelement ist eine allgemeine Beschreibung eines Features oder einer Aktivität, das bzw. die berücksichtigt werden muss, und ist nicht spezifisch für eine Technologie oder Implementierung. | Datenschutz ist eines dieser Sicherheitskontrollelemente. Dieses Kontrollelement enthält spezifische Maßnahmen, die zur Gewährleistung des Datenschutzes erforderlich sind. |
 | Vergleichstest | Ein Vergleichstest enthält Sicherheitsempfehlungen für eine bestimmte Technologie, wie z. B. Azure. Die Empfehlungen werden nach dem Kontrollelement kategorisiert, zu dem sie gehören. | Der Azure-Sicherheitsvergleichstest umfasst die für die Azure-Plattform spezifischen Sicherheitsempfehlungen. |

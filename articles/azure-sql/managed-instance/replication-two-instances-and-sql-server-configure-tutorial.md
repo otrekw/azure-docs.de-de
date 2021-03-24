@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/21/2019
 ms.openlocfilehash: d2b45f5b51f4656294632aa46f679a7a09c06ed3
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94593925"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Tutorial: Konfigurieren der Transaktionsreplikation zwischen verwalteten Azure SQL-Instanzen und SQL Server
@@ -22,7 +22,7 @@ ms.locfileid: "94593925"
 
 Mithilfe der Transaktionsreplikation können Sie Daten von einer Datenbank auf eine andere replizieren, die in SQL Server oder [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) gehostet wird. SQL Managed Instance kann in der Replikationstopologie ein Verleger, Verteiler oder Abonnent sein. Unter [Konfigurationen für die Transaktionsreplikation](replication-transactional-overview.md#common-configurations) finden Sie die verfügbaren Konfigurationen. 
 
-Die Transaktionsreplikation ist zurzeit als öffentliche Vorschau für SQL Managed Instance verfügbar. 
+Die Transaktionsreplikation befindet sich zurzeit in der öffentlichen Vorschau für SQL Managed Instance. 
 
 In diesem Tutorial lernen Sie Folgendes:
 

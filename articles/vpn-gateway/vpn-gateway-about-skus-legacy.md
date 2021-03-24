@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84687785"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Arbeiten mit SKUs für virtuelle Netzwerkgateways (Legacy-SKUs)
@@ -22,7 +22,7 @@ Dieser Artikel enthält Informationen über die Legacy-SKUs (alte SKUs) für vir
 
 [!INCLUDE [Legacy gateway SKUs](../../includes/vpn-gateway-gwsku-legacy-include.md)]
 
-Sie können die Preise für ältere Gateways im Abschnitt **Gateways für virtuelle Netzwerke** anzeigen, der sich auf der Seite [ExpressRoute – Preise ](https://azure.microsoft.com/pricing/details/expressroute) befindet.
+Sie können die Preise für ältere Gateways im Abschnitt **Gateways für virtuelle Netzwerke** anzeigen, der sich auf der Seite [ExpressRoute – Preise](https://azure.microsoft.com/pricing/details/expressroute) befindet.
 
 ## <a name="estimated-aggregate-throughput-by-sku"></a><a name="agg"></a>Voraussichtlicher aggregierter Durchsatz nach SKU
 

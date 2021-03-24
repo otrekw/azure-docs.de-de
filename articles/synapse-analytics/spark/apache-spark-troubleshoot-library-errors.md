@@ -9,10 +9,10 @@ ms.subservice: spark
 ms.topic: conceptual
 ms.date: 01/04/2021
 ms.openlocfilehash: 57e9d0c584600a8fac90499d72cfac1620052603
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101694919"
 ---
 # <a name="troubleshoot-library-installation-errors"></a>Beheben von Fehlern bei der Bibliotheksinstallation 
@@ -37,7 +37,7 @@ Darüber hinaus können Benutzer auch die Installationsprotokolle überprüfen, 
 So zeigen Sie diese Protokolle an
 1. Navigieren Sie auf der Registerkarte **Überwachen** zur Liste der Spark-Anwendungen. 
 2. Wählen Sie den Spark-Systemanwendungsauftrag aus, der Ihrem Poolupdate entspricht. Diese Systemaufträge werden unter dem Titel *SystemReservedJob-LibraryManagement* ausgeführt.
-   ![Screenshot mit vom System reserviertem Bibliotheksauftrag](./media/apache-spark-azure-portal-add-libraries/system-reserved-library-job.png "Anzeigen eines Systembibliotheksauftrags")
+   ![Screenshot mit vom System reservierten Bibliotheksauftrag.](./media/apache-spark-azure-portal-add-libraries/system-reserved-library-job.png "Anzeigen eines Systembibliotheksauftrags")
 3. Wechseln Sie zur Anzeige der Protokolle **driver** und **stdout**. 
 4. Innerhalb der Ergebnisse werden die Protokolle angezeigt, die sich auf die Installation Ihrer Pakete beziehen.
     ![Screenshot mit Ergebnissen des vom System reservierten Bibliotheksauftrags](./media/apache-spark-azure-portal-add-libraries/system-reserved-library-job-results.png "Anzeigen des Status eines Systembibliotheksauftrags")

@@ -1,21 +1,16 @@
 ---
-title: Problembehandlung für den Defender-IoT-Micro-Agent
-titleSuffix: Azure Defender for IoT
+title: Problembehandlung für den Defender-IoT-Micro-Agent (Vorschau)
 description: Erfahren Sie, wie Sie unerwartete oder unerklärliche Fehler behandeln.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/24/2021
 ms.topic: reference
-ms.service: azure
-ms.openlocfilehash: dade0d0d5dc4d690ea94f20deaf956b1e079bad7
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 51550a4d3e5042fed7cadc4eac10a0074e954f19
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124175"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782451"
 ---
-# <a name="defender-iot-micro-agent-troubleshooting"></a>Problembehandlung für den Defender-IoT-Micro-Agent 
+# <a name="defender-iot-micro-agent-troubleshooting-preview"></a>Problembehandlung für den Defender-IoT-Micro-Agent (Vorschau)
 
 Verwenden Sie die folgenden Methoden zur Problembehandlung, um unerwartete oder unerklärliche Fehler zu beheben. Sie können sich bei Bedarf auch an das Produktteam von Azure Defender für IoT wenden, um Unterstützung zu erhalten.   
 

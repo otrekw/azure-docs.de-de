@@ -4,12 +4,12 @@ description: Verwenden Sie die Apache Ambari-Webbenutzeroberfläche zum Konfigur
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 02/01/2021
-ms.openlocfilehash: 60c9916bc7d7b3b380a332f41924ee744002fd66
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 7e54b1347e4c67b99ba87b15c2c15d9d28244ce7
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428199"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864770"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>Optimieren von Apache HBase mit Apache Ambari in Azure HDInsight
 
@@ -28,7 +28,7 @@ Mit der HBase-Heapgröße wird die maximale Heapmenge in MB angegeben, die von S
 
 1. Ändern Sie den Standardwert in 5.000 MB.
 
-    ![Apache Ambari – Heapsize von HBase-Speicher](./media/optimize-hbase-ambari/ambari-hbase-heapsize.png)
+    :::image type="content" source="./media/optimize-hbase-ambari/ambari-hbase-heapsize.png" alt-text="Apache Ambari – Heapsize von HBase-Speicher" border="true":::
 
 ## <a name="optimize-read-heavy-workloads"></a>Optimieren von Workloads mit vielen Lesevorgängen
 
@@ -40,7 +40,7 @@ Der Blockcache ist der Lesecache. Seine Größe wird mit dem Parameter `hfile.bl
 
 1. Navigieren Sie zum Ändern dieses Parameters auf der HBase-Registerkarte **Configs** (Konfigurationen) zur Registerkarte **Settings** (Einstellungen), und suchen Sie nach **% of RegionServer Allocated to Read Buffers** (RegionServer-Zuteilung für Lesepuffer in Prozent).
 
-    ![Apache HBase – Speicherblock-Cachegröße](./media/optimize-hbase-ambari/hbase-block-cache-size.png)
+    :::image type="content" source="./media/optimize-hbase-ambari/hbase-block-cache-size.png" alt-text="Apache HBase – Speicherblock-Cachegröße" border="true":::
 
 1. Wählen Sie das Symbol **Bearbeiten**, um den Wert zu ändern.
 
@@ -58,7 +58,7 @@ Sie können den oberen und unteren Grenzwert für Memstore reduzieren, um eine O
 
 Mit der Einstellung `hbase.client.scanner.caching` wird die Anzahl von Zeilen definiert, die vom Datenträger gelesen werden, wenn für einen Scanner die `next`-Methode aufgerufen wird.  Der Standardwert ist 100. Je höher der Wert ist, desto weniger Remoteaufrufe werden vom Client an den Regionsserver gesendet, sodass für die Scans weniger Zeit benötigt wird. Durch diese Einstellung wird aber auch die Arbeitsspeicherauslastung des Clients erhöht.
 
-![Apache HBase – Anzahl abgerufener Zeilen](./media/optimize-hbase-ambari/hbase-num-rows-fetched.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-num-rows-fetched.png" alt-text="Apache HBase – Anzahl abgerufener Zeilen" border="true":::
 
 > [!IMPORTANT]  
 > Legen Sie den Wert nicht so fest, dass der Zeitraum zwischen dem Aufruf der nächsten Methode auf einem Scanner größer als der Zeitraum für den Scanner-Timeout ist. Die Dauer bis zum Scanner-Timeout wird mit der Eigenschaft `hbase.regionserver.lease.period` definiert.
@@ -71,7 +71,7 @@ Die folgenden Konfigurationen sind wichtig, um die Leistung von Workloads mit vi
 
 HBase speichert Daten in einem internen Dateiformat (*HFile*). Mit der Eigenschaft `hbase.hregion.max.filesize` wird die Größe einer einzelnen HFile für eine Region definiert.  Eine Region wird in zwei Regionen unterteilt, wenn die Summe aller HFiles in einer Region diese Einstellung übersteigt.
 
-![Apache HBase – Maximale Dateigröße für HRegion](./media/optimize-hbase-ambari/hbase-hregion-max-filesize.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-hregion-max-filesize.png" alt-text="Apache HBase – Maximale Dateigröße für HRegion" border="true":::
 
 Je größer die Regionsdatei ist, desto kleiner ist die Anzahl von Unterteilungen. Sie können die Dateigröße erhöhen, um einen Wert zu ermitteln, der zur maximalen Schreibleistung führt.
 
@@ -85,7 +85,7 @@ Je größer die Regionsdatei ist, desto kleiner ist die Anzahl von Unterteilunge
 
     Bei den Standardwerten für die Flushgröße und den Blockmultiplikator werden Updates blockiert, wenn die Größe für den Memstore 128 * 4 = 512 MB beträgt. Erhöhen Sie den Wert von `hbase.hregion.memstore.block.multiplier`, um die Anzahl für die Updateblockierung zu reduzieren.
 
-![Apache HBase – Blockmultiplikator für Region](./media/optimize-hbase-ambari/hbase-hregion-memstore-block-multiplier.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-hregion-memstore-block-multiplier.png" alt-text="Apache HBase – Blockmultiplikator für Region" border="true":::
 
 ## <a name="define-memstore-size"></a>Definieren der Memstore-Größe
 
@@ -95,7 +95,7 @@ Die Memstore-Größe wird mit den Parametern `hbase.regionserver.global.memstore
 
 Die Nutzung des lokalen Memstore-Zuteilungspuffers wird mit der Eigenschaft `hbase.hregion.memstore.mslab.enabled` ermittelt. Wenn die Einstellung aktiviert ist (TRUE), wird die Heapfragmentierung bei einer hohen Zahl von Schreibvorgängen verhindert. Der Standardwert lautet „true“.
 
-![hbase.hregion.memstore.mslab.enabled](./media/optimize-hbase-ambari/hbase-hregion-memstore-mslab-enabled.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-hregion-memstore-mslab-enabled.png" alt-text="hbase.hregion.memstore.mslab.enabled" border="true":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

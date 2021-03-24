@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/07/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0b9b8ba555cddd56c49c750709e69ec180291c95
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91827217"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Informationen zu Point-to-Site-VPN-Routing
@@ -56,7 +56,7 @@ In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. Für
 
 Clients, die Windows verwenden, können auf VNets mit direktem Peering zugreifen, aber der VPN-Client muss erneut heruntergeladen werden, wenn Änderungen am VNet-Peering oder an der Netzwerktopologie vorgenommen werden. Nicht-Windows-Clients können auf VNets mit direktem Peering zugreifen. Der Zugriff ist nicht transitiv und nur auf VNets mit direktem Peering beschränkt.
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple.jpg" alt-text="Weiterleitung in einem isolierten VNET" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple.jpg" alt-text="Mehrere VNETs mit Peering" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple.jpg":::
 
 ### <a name="address-space"></a>Adressraum:
 
@@ -86,7 +86,7 @@ In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. VNet
 
 Clients, die Windows oder ein anderes unterstütztes Betriebssystem verwenden, können nur auf VNet1 zugreifen. Um auf zusätzliche VNets zugreifen zu können, muss BGP verwendet werden.
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple-s2s.jpg" alt-text="Weiterleitung in einem isolierten VNET" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple-s2s.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple-s2s.jpg" alt-text="Mehrere VNETs und S2S" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple-s2s.jpg":::
 
 ### <a name="address-space"></a>Adressraum
 
@@ -114,7 +114,7 @@ In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. VNet
 
 Clients, die Windows oder ein anderes unterstütztes Betriebssystem verwenden, können auf alle VNets zugreifen, die über eine Site-to-Site-VPN-Verbindung verbunden sind, aber Routen zu verbundenen VNets müssen den Windows-Clients manuell hinzugefügt werden.
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple-bgp.jpg" alt-text="Weiterleitung in einem isolierten VNET" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple-bgp.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple-bgp.jpg" alt-text="Mehrere VNETs und S2S (BGP)" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple-bgp.jpg":::
 
 ### <a name="address-space"></a>Adressraum
 
@@ -142,7 +142,7 @@ In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. Für
 
 Windows-Clients und Nicht-Windows-Clients können nur auf VNet1 zugreifen.
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/branch-office.jpg" alt-text="Weiterleitung in einem isolierten VNET" lightbox="./media/vpn-gateway-about-point-to-site-routing/branch-office.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/branch-office.jpg" alt-text="Weiterleitung mit einem VNET und einer Filiale" lightbox="./media/vpn-gateway-about-point-to-site-routing/branch-office.jpg":::
 
 ### <a name="address-space"></a>Adressraum
 
@@ -168,7 +168,7 @@ In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. Für
 
 Windows-Clients können auf das VNet und die Filiale (Site1) zugreifen, die Routen zu Site1 müssen dem Client aber manuell hinzugefügt werden. Nicht-Windows-Clients können ebenfalls auf das VNet sowie die lokale Filiale zugreifen.
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/branch-bgp.jpg" alt-text="Weiterleitung in einem isolierten VNET" lightbox="./media/vpn-gateway-about-point-to-site-routing/branch-bgp.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/branch-bgp.jpg" alt-text="Weiterleitung mit einem VNET und einer Filiale – BGP" lightbox="./media/vpn-gateway-about-point-to-site-routing/branch-bgp.jpg":::
 
 ### <a name="address-space"></a>Adressraum
 
@@ -195,7 +195,7 @@ In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. VNet
 
 Alle Clients können nur auf VNet1 zugreifen.
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multi-branch.jpg" alt-text="Weiterleitung in einem isolierten VNET" lightbox="./media/vpn-gateway-about-point-to-site-routing/multi-branch.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multi-branch.jpg" alt-text="Abbildung, die ein multi-VNet S2S und eine Filiale zeigt." lightbox="./media/vpn-gateway-about-point-to-site-routing/multi-branch.jpg":::
 
 ### <a name="address-space"></a>Adressraum
 
@@ -225,7 +225,7 @@ In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. VNet
 
 Clients mit Windows können auf VNets und Standorte zugreifen, die über eine Site-to-Site-VPN-Verbindung verbunden sind, die Routen zu VNet2, VNet3 und Site1 müssen dem Client aber manuell hinzugefügt werden. Nicht-Windows-Clients können ohne manuelle Eingriffe auf VNets und Standorte zugreifen, die über eine Site-to-Site-VPN-Verbindung verbunden sind. Der Zugriff ist transitiv, und Clients besitzen Zugriff auf Ressourcen in allen verbundenen VNets und Standorten (lokal).
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multi-branch-bgp.jpg" alt-text="Weiterleitung in einem isolierten VNET" lightbox="./media/vpn-gateway-about-point-to-site-routing/multi-branch-bgp.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multi-branch-bgp.jpg" alt-text="S2S mit mehreren VNETs und einer Filiale" lightbox="./media/vpn-gateway-about-point-to-site-routing/multi-branch-bgp.jpg":::
 
 ### <a name="address-space"></a>Adressraum
 
