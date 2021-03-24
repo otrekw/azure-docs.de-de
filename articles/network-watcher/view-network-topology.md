@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
 ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84737528"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Anzeigen der Topologie eines virtuellen Azure-Netzwerks
@@ -31,7 +31,7 @@ Sie können die Topologie mithilfe des [Azure-Portals](#azure-portal), der [Azur
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, dem die erforderlichen [Berechtigungen](required-rbac-permissions.md) zugewiesen sind.
 2. Wählen Sie links oben im Portal die Option **Alle Dienste** aus.
 3. Geben Sie im Filterfeld **Alle Dienste** die Zeichenfolge *Network Watcher* ein. Wenn **Network Watcher** in den Ergebnissen angezeigt wird, wählen Sie ihn aus.
-4. Wählen Sie **Topologie** aus. Zum Generieren einer Topologie muss sich ein Network Watcher in derselben Region befinden wie das virtuelle Netzwerk, für das Sie die Topologie generieren möchten. Wenn in der Region, in der sich das virtuelle Netzwerk befindet, für das Sie eine Topologie generieren möchten, kein Network Watcher befindet, werden automatisch in allen Regionen Network Watcher erstellt. Die Network Watcher werden in einer Ressourcengruppe namens **NetworkWatcherRG** erstellt.
+4. Klicken Sie auf **Topologie**. Zum Generieren einer Topologie muss sich ein Network Watcher in derselben Region befinden wie das virtuelle Netzwerk, für das Sie die Topologie generieren möchten. Wenn in der Region, in der sich das virtuelle Netzwerk befindet, für das Sie eine Topologie generieren möchten, kein Network Watcher befindet, werden automatisch in allen Regionen Network Watcher erstellt. Die Network Watcher werden in einer Ressourcengruppe namens **NetworkWatcherRG** erstellt.
 5. Wählen Sie ein Abonnement, die Ressourcengruppe eines virtuellen Netzwerks, dessen Topologie Sie anzeigen möchten, und dann das virtuelle Netzwerk aus. In der folgenden Abbildung ist eine Topologie für ein virtuelles Netzwerk mit dem Namen *myVnet* in der Ressourcengruppe mit dem Namen *MyResourceGroup* dargestellt:
 
     ![Topologie anzeigen](./media/view-network-topology/view-topology.png)

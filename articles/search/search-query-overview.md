@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 97b0a4ca3e4fb94a21cbd30a27a3037f45fed782
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: c088625528190ad116676fbb51cec9f8de4b1578
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487116"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600801"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Abfragen in Azure Cognitive Search
 
@@ -71,7 +71,7 @@ In Cognitive Search basiert die Volltextsuche auf der Abfrage-Engine Apache Luce
 
 Wenn übereinstimmende Begriffe gefunden werden, setzt die Abfrage-Engine unter Verwendung des Dokumentschlüssels oder der Dokument-ID ein Suchdokument mit der Übereinstimmung ein, um Feldwerte zusammenzustellen. Anschließend ordnet die Engine die Dokumente in der Reihenfolge ihrer Relevanz an und gibt (standardmäßig) die wichtigsten 50 Dokumente (oder bei Angabe von **`top`** die gewünschte Anzahl) zurück.
 
-Wenn Sie eine Volltextsuche implementieren, sollten Sie wissen, wie die Inhalte mit Token versehen werden, damit Sie Abfrageanomalien debuggen können. Abfragen für Zeichenfolgen mit Bindestrichen oder Sonderzeichen erfordern möglicherweise ein anderes Analysetool als die Lucene-Standardversion, um sicherzustellen, dass der Index die richtigen Token enthält. Sie können die Standardeinstellung außer Kraft setzen und stattdessen [Sprachanalysetools](index-add-language-analyzers.md#language-analyzer-list) oder [spezielle Analysetools](index-add-custom-analyzers.md#AnalyzerTable) verwenden, die die lexikalische Analyse ändern. Ein Beispiel hierfür ist ein [Schlüsselwort](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html), durch das der gesamte Inhalt eines Felds als ein einzelnes Token behandelt wird. Dies ist nützlich für Daten wie Postleitzahlen, IDs und einige Produktnamen. Weitere Informationen finden Sie unter [Suche nach Teilausdrücken und Mustern mit Sonderzeichen (Bindestriche, Platzhalter, reguläre Ausdrücke, Muster)](search-query-partial-matching.md).
+Wenn Sie eine Volltextsuche implementieren, sollten Sie wissen, wie die Inhalte mit Token versehen werden, damit Sie Abfrageanomalien debuggen können. Abfragen für Zeichenfolgen mit Bindestrichen oder Sonderzeichen erfordern möglicherweise ein anderes Analysetool als die Lucene-Standardversion, um sicherzustellen, dass der Index die richtigen Token enthält. Sie können die Standardeinstellung außer Kraft setzen und stattdessen [Sprachanalysetools](index-add-language-analyzers.md#language-analyzer-list) oder [spezielle Analysetools](index-add-custom-analyzers.md#built-in-analyzers) verwenden, die die lexikalische Analyse ändern. Ein Beispiel hierfür ist ein [Schlüsselwort](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html), durch das der gesamte Inhalt eines Felds als ein einzelnes Token behandelt wird. Dies ist nützlich für Daten wie Postleitzahlen, IDs und einige Produktnamen. Weitere Informationen finden Sie unter [Suche nach Teilausdrücken und Mustern mit Sonderzeichen (Bindestriche, Platzhalter, reguläre Ausdrücke, Muster)](search-query-partial-matching.md).
 
 Wenn Sie mit einem vermehrten Einsatz boolescher Operatoren rechnen – was in Indizes mit großen Textblöcken wie Inhaltsfeldern oder langen Beschreibungen recht wahrscheinlich ist –, stellen Sie sicher, dass Sie Abfragen mit dem Parameter **`searchMode=Any|All`** testen, um die Auswirkung dieser Einstellung auf eine boolesche Suche zu ermitteln.
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84711900"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Einrichten der Notfallwiederherstellung für lokale virtuelle VMware-Computer oder physische Server an einem sekundären Standort
@@ -118,14 +118,14 @@ Laden Sie die ZIP-Datei des [Updates](https://aka.ms/asr-scout-update7) sowie di
 - InMage_UA_8.0.7.0_SLES11-SP3-64_GA_03Dec2018_release.tar.gz
 - InMage_UA_8.0.7.0_SLES11-SP4-64_GA_03Dec2018_release.tar.gz
   1. Extrahieren Sie die ZIP-Dateien.
-  2. **RX-Server**: Kopieren Sie **RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz** auf den RX-Server, und extrahieren Sie die Datei. Führen Sie im extrahierten Ordner **/Install**aus.
+  2. **RX-Server**: Kopieren Sie **RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz** auf den RX-Server, und extrahieren Sie die Datei. Führen Sie im extrahierten Ordner **/Install** aus.
   3. **Konfigurationsserver und Prozessserver**: Kopieren Sie **CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe** auf den Konfigurationsserver und den Prozessserver. Doppelklicken Sie auf die Datei, um sie auszuführen.<br>
   4. **Windows-Masterzielserver**: Um den vereinheitlichten Agent zu aktualisieren, kopieren Sie **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** auf den Server. Doppelklicken Sie auf die Datei, um sie auszuführen. Dieselbe Datei kann auch für eine Neuinstallation verwendet werden. Das gleiche Update für den vereinheitlichten Agent ist auch für den Quellserver anwendbar.
   Das Update muss nicht für das mit **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** vorbereitete Masterziel gültig sein, da es sich dabei um einen allgemein verfügbaren Installer mit allen aktuellen Änderungen handelt.
   5. **vContinuum-Server**:  Kopieren Sie **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** auf den Server.  Stellen Sie sicher, dass Sie den vContinuum-Assistenten geschlossen haben. Doppelklicken Sie auf die Datei, um sie auszuführen.
-  6. **Linux-Masterzielserver**: Um den vereinheitlichten Agent zu aktualisieren, kopieren Sie **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** auf den Linux-Masterzielserver, und extrahieren Sie die Datei. Führen Sie im extrahierten Ordner **/Install**aus.
+  6. **Linux-Masterzielserver**: Um den vereinheitlichten Agent zu aktualisieren, kopieren Sie **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** auf den Linux-Masterzielserver, und extrahieren Sie die Datei. Führen Sie im extrahierten Ordner **/Install** aus.
   7. **Windows-Quellserver**: Um den vereinheitlichten Agent zu aktualisieren, kopieren Sie **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** auf den Quellserver. Doppelklicken Sie auf die Datei, um sie auszuführen. 
-  8. **Linux-Quellserver**: Um den vereinheitlichten Agent zu aktualisieren, kopieren Sie die entsprechende Version der Datei des vereinheitlichten Agent auf den Linux-Server, und extrahieren Sie sie. Führen Sie im extrahierten Ordner **/Install**aus.  Beispiel: Für einen RHEL 6.7 64-Bit-Server kopieren Sie **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** auf den Server, und extrahieren Sie die Datei. Führen Sie im extrahierten Ordner **/Install**aus.
+  8. **Linux-Quellserver**: Um den vereinheitlichten Agent zu aktualisieren, kopieren Sie die entsprechende Version der Datei des vereinheitlichten Agent auf den Linux-Server, und extrahieren Sie sie. Führen Sie im extrahierten Ordner **/Install** aus.  Beispiel: Für einen RHEL 6.7 64-Bit-Server kopieren Sie **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** auf den Server, und extrahieren Sie die Datei. Führen Sie im extrahierten Ordner **/Install** aus.
   9. Nach dem Upgrade des Konfigurationsservers, Prozessservers und RX-Servers mit der oben genannten Installationsprogrammen muss ein Upgrade der PHP- und MySQL-Bibliotheken manuell mit den in Abschnitt 7.4 der [Schnellinstallationsanleitung](https://aka.ms/asr-scout-quick-install-guide) vorgenommen werden.
 
 ## <a name="enable-replication"></a>Aktivieren der Replikation
@@ -190,16 +190,16 @@ Laden Sie die ZIP-Datei für das [Update](https://aka.ms/asr-scout-update6) heru
 - vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
 - UA update4-Bits für RHEL5, OL5, OL6, SUSE 10, SUSE 11: UA_\<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
   1. Extrahieren Sie die ZIP-Dateien.
-  2. **RX-Server**: Kopieren Sie **RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz** auf den RX-Server, und extrahieren Sie die Datei. Führen Sie im extrahierten Ordner **/Install**aus.
+  2. **RX-Server**: Kopieren Sie **RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz** auf den RX-Server, und extrahieren Sie die Datei. Führen Sie im extrahierten Ordner **/Install** aus.
   3. **Konfigurationsserver und Prozessserver**: Kopieren Sie **CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe** auf den Konfigurationsserver und den Prozessserver. Doppelklicken Sie auf die Datei, um sie auszuführen.<br>
   4. **Windows-Masterzielserver**: Um den vereinheitlichten Agent zu aktualisieren, kopieren Sie **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** auf den Server. Doppelklicken Sie auf die Datei, um sie auszuführen. Das gleiche Update für den vereinheitlichten Agent ist auch für den Quellserver anwendbar. Wenn die Quelle nicht auf Update 4 aktualisiert wurde, müssen Sie den vereinheitlichten Agent aktualisieren.
   Das Update muss nicht auf das mit **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** vorbereitete Masterziel angewendet werden, da es sich dabei um einen allgemein verfügbaren Installer mit allen aktuellen Änderungen handelt.
   5. **vContinuum-Server**:  Kopieren Sie **vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe** auf den Server.  Stellen Sie sicher, dass Sie den vContinuum-Assistenten geschlossen haben. Doppelklicken Sie auf die Datei, um sie auszuführen.
   Das Update muss nicht auf das mit **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** vorbereitete Masterziel angewendet werden, da es sich dabei um einen allgemein verfügbaren Installer mit allen aktuellen Änderungen handelt.
-  6. **Linux-Masterzielserver**: Um den vereinheitlichten Agent zu aktualisieren, kopieren Sie **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** auf den Masterzielserver, und extrahieren Sie die Datei. Führen Sie im extrahierten Ordner **/Install**aus.
+  6. **Linux-Masterzielserver**: Um den vereinheitlichten Agent zu aktualisieren, kopieren Sie **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** auf den Masterzielserver, und extrahieren Sie die Datei. Führen Sie im extrahierten Ordner **/Install** aus.
   7. **Windows-Quellserver**: Um den einheitlichen Agent zu aktualisieren, kopieren Sie **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** auf den Quellserver. Doppelklicken Sie auf die Datei, um sie auszuführen. 
   Der Update 5-Agent muss nicht auf dem Quellserver installiert werden, wenn dieser bereits auf Update 4 aktualisiert wurde oder wenn der Quell-Agent mit dem aktuellen Base Installer **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe** installiert wird.
-  8. **Linux-Quellserver**: Um den vereinheitlichten Agent zu aktualisieren, kopieren Sie die entsprechende Version der Datei des vereinheitlichten Agent auf den Linux-Server, und extrahieren Sie sie. Führen Sie im extrahierten Ordner **/Install**aus.  Beispiel: Kopieren Sie für den RHEL 6.7 64-Bit-Server die Datei **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** auf den Server, und extrahieren Sie sie. Führen Sie im extrahierten Ordner **/Install**aus.
+  8. **Linux-Quellserver**: Um den vereinheitlichten Agent zu aktualisieren, kopieren Sie die entsprechende Version der Datei des vereinheitlichten Agent auf den Linux-Server, und extrahieren Sie sie. Führen Sie im extrahierten Ordner **/Install** aus.  Beispiel: Kopieren Sie für den RHEL 6.7 64-Bit-Server die Datei **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** auf den Server, und extrahieren Sie sie. Führen Sie im extrahierten Ordner **/Install** aus.
 
 
 > [!NOTE]
@@ -236,7 +236,7 @@ Scout Update 5 ist ein kumulatives Update. Es enthält sämtliche Fixes aus Upda
 > [!NOTE]
 > * Die P2V-Cluster-Fixes sind nur auf physische MSCS-Cluster anwendbar, die kürzlich mit Site Recovery Scout Update 5 geschützt wurden. Befolgen Sie beim Installieren der Cluster-Fixes auf geschützten P2V MSCS-Clustern mit älteren Updates die Upgrade-Schritte, die in Abschnitt 12 der [Versionshinweise zu Site Recovery Scout](https://aka.ms/asr-scout-release-notes) beschrieben sind.
 > * Wenn beim erneuten Schützen dieselben Datenträger auf den einzelnen Datenknoten aktiv sind wie zum Zeitpunkt des ursprünglichen Schützens, können beim erneuten Schützen eines physischen MSCS-Clusters nur vorhandene Zieldatenträger verwendet werden. Andernfalls müssen Sie die Abschnitt 12 der [Versionshinweise zu Site Recovery Scout](https://aka.ms/asr-scout-release-notes) beschriebenen Schritte ausführen, um die Zieldatenträger in den korrekten Datenspeicherpfad zu verschieben und sie während des erneuten Schützens erneut verwenden zu können. Wenn Sie den MSCS-Cluster im P2V-Modus ohne Befolgen der Upgrade-Schritte erneut schützen, wird auf dem ESXi-Zielserver ein neuer Datenträger erstellt. Die alten Datenträger müssen manuell aus dem Datenspeicher gelöscht werden.
-> * Wenn ein SLES11- oder SLES11-Quellserver (mit einem beliebigen Service Pack) ordnungsgemäß neu gestartet wird, markieren Sie die Replikationspaare des **Stammdatenträgers** manuell für die erneute Synchronisierung. Es erfolgt keine Benachrichtigung über die CX-Schnittstelle. Wenn Sie den Stammdatenträger nicht für die erneute Synchronisierung markieren, treten u.U. Probleme mit der Datenintegrität auf.
+> * Wenn ein SLES11- oder SLES11-Quellserver (mit einem beliebigen Service Pack) ordnungsgemäß neu gestartet wird, markieren Sie die Replikationspaare des **Stammdatenträgers** manuell für die erneute Synchronisierung. Es erfolgt keine Benachrichtigung über die CX-Schnittstelle.  Wenn Sie den Stammdatenträger nicht für die erneute Synchronisierung markieren, treten u.U. Probleme mit der Datenintegrität auf.
 
 
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 Update 4

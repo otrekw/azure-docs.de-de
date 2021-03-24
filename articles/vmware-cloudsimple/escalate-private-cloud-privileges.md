@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: c2215bd9a60fdcf76077c3a1f2a91631dc0dbe88
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97895821"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Ausweiten von Berechtigungen für das vCenter Ihrer privaten Cloud über das CloudSimple-Portal
@@ -49,7 +49,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 7. Klicken Sie auf **OK**.
 
-8. Der Ausweitungsvorgang kann einige Minuten dauern. Klicken Sie zum Abschluss auf **OK**.
+8. Der Ausweitungsvorgang kann einige Minuten dauern. Klicken Sie abschließend auf **OK**.
 
 Die Rechteausweitung beginnt und dauert bis zum Ende des ausgewählten Intervalls.  Sie können sich beim vCenter Ihrer privaten Cloud anmelden, um administrative Aufgaben zu erledigen.
 
@@ -88,5 +88,5 @@ Nachdem Sie Ihre administrativen Aufgaben abgeschlossen haben, sollten Sie Ihre 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Set up vCenter identity sources to use Active Directory (Einrichten von vCenter-Identitätsquellen für die Verwendung von Active Directory)](./set-vcenter-identity.md)
+* [Einrichten von vCenter-Identitätsquellen für die Verwendung von Active Directory](./set-vcenter-identity.md)
 * Installieren einer Sicherungslösung zum [Sichern von Workload-VMs](./backup-workloads-veeam.md)

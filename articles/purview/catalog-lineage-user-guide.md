@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/29/2020
-ms.openlocfilehash: 47c5ad18f50bd25dd3bf351090ffc9ef5d54f0b2
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 8b08a60d484aa3d52600b8aef2f53d6ca8a04f9b
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202908"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952166"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Azure Purview: Leitfaden zur Datenkatalogherkunft
 
@@ -50,7 +50,7 @@ Datensysteme wie Azure ML und Power BI melden die Informationen zur Herkunft an 
 
 ## <a name="get-started-with-lineage"></a>Erste Schritte für Herkunft
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE1XVQS]
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWxTAK]
 
 Die Herkunft in Purview umfasst Datasets und Prozesse. Datasets werden auch als Knoten bezeichnet, während für Prozesse auch die Bezeichnung „Edges“ verwendet wird:
 

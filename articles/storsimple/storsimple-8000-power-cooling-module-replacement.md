@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 045cec85174a88d1d608a4adc679461008852768
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85514585"
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Austauschen eines Moduls für Stromversorgung und Kühlung eines StorSimple-Geräts
@@ -55,7 +55,7 @@ Gehen Sie entsprechend der folgenden Anleitung vor, wenn Sie ein Modul für Stro
    * Ist eine Stromversorgung in PCM 0 ausgefallen, leuchtet die Status-LED für **Stromversorgung in PCM 0** rot.
    * Ist eine Stromversorgung in PCM 1 ausgefallen, leuchtet die Status-LED für **Stromversorgung in PCM 1** rot.
    * Ist ein Lüfter in PCM 1 ausgefallen, leuchtet die Status-LED von **Kühlung 0 für PCM 0** oder **Kühlung 1 für PCM 0** rot.
-2. Suchen Sie auf der Rückseite des primären Gehäuses nach dem ausgefallenen PCM. Ist das Gerät ein Modell 8600, ermitteln Sie das primäre Gehäuse anhand der Systemidentifikationsnummer, die in der LED-Anzeige auf dem vorderen Bedienfeld angezeigt wird. Die auf dem primären Gehäuse angezeigte Standardgerätekennung lautet **00**, während die auf dem EBOD-Gehäuse angezeigte Standardgerätekennung **01** lautet. In der folgenden Abbildung und Tabelle wird das vordere Bedienfeld der LED-Anzeige erläutert.
+2. Suchen Sie auf der Rückseite des primären Gehäuses nach dem ausgefallenen PCM. Ist das Gerät ein Modell 8600, ermitteln Sie das primäre Gehäuse anhand der Systemidentifikationsnummer, die in der LED-Anzeige auf dem vorderen Bedienfeld angezeigt wird. Die auf dem primären Gehäuse angezeigte Standard-Einheit-ID ist gleich **00**, während die auf dem EBOD-Gehäuse angezeigte Standard-Einheit-ID gleich **01** ist. In der folgenden Abbildung und Tabelle wird das vordere Bedienfeld der LED-Anzeige erläutert.
    
     ![Gerätekennung auf dem Bedienfeld auf der Vorderseite](./media/storsimple-power-cooling-module-replacement/IC740991.png)
    
@@ -68,7 +68,7 @@ Gehen Sie entsprechend der folgenden Anleitung vor, wenn Sie ein Modul für Stro
    | 3 |Modulfehler |
    | 4 |Logischer Fehler |
    | 5 |Anzeige der Gerätekennung |
-3. Das ausgefallene PCM kann auch über die Überwachungs-LEDs auf der Rückseite des primären Gehäuses ermittelt werden. Sehen Sie sich die folgende Abbildung und Tabelle an, um zu verstehen, wie Sie anhand der LEDs das ausgefallene PCM finden. Beispiel: Wenn die LED für einen **Lüfterausfall** leuchtet, ist der Lüfter ausgefallen. Leuchtet die LED, die einen **Stromausfall** anzeigt, ist die Stromversorgung ausgefallen. 
+3. Das ausgefallene PCM kann auch über die Überwachungs-LEDs auf der Rückseite des primären Gehäuses ermittelt werden. Sehen Sie sich die folgende Abbildung und Tabelle an, um zu verstehen, wie Sie anhand der LEDs das ausgefallene PCM finden. Wenn beispielsweise die LED leuchtet, die einem **Lüfterfehler** entspricht, ist der Lüfter ausgefallen. Leuchtet dagegen die LED, die einem **Stromausfall** entspricht, ist die Stromversorgung ausgefallen. 
    
     ![Rückwand des Geräts – PCM-Überwachungs-LEDs](./media/storsimple-power-cooling-module-replacement/IC740992.png)
    

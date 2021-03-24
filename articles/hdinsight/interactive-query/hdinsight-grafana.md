@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mit Apache Hadoop-Clustern in Azure HDInsight
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: cd2a09b6c3196302dcb74fd363481706021a4d4d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 81fd3b368f9405192c164ed7a0638caad0cd75fc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940892"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869751"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Zugreifen auf Grafana in Azure HDInsight
 
@@ -31,7 +31,7 @@ Siehe [Erstellen von Apache Hadoop-Clustern im Azure-Portal](../hdinsight-hadoop
 
 1. Das Grafana-Dashboard wird angezeigt und sieht wie in diesem Beispiel aus:
 
-    ![HDInsight Grafana-Webdashboard](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana-Dashboard")
+    :::image type="content" source="./media/hdinsight-grafana/hdinsight-grafana-dashboard.png " alt-text="HDInsight Grafana-Webdashboard" border="true":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -43,7 +43,7 @@ Wenn Sie diese Anwendung nicht mehr benötigen, gehen Sie wie folgt vor, um den 
 
 1. Wählen Sie unter **Dienste** die Option **HDInsight-Cluster** aus.
 
-1. Klicken Sie in der daraufhin angezeigten Liste mit den HDInsight-Clustern neben dem von Ihnen erstellten Cluster auf die Auslassungspunkte ( **...** ).
+1. Klicken Sie in der daraufhin angezeigten Liste mit den HDInsight-Clustern neben dem von Ihnen erstellten Cluster auf die Auslassungspunkte (**...**).
 
 1. Klicken Sie auf **Löschen**. Wählen Sie **Ja** aus.
 

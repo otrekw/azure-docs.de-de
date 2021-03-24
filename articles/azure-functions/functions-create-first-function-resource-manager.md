@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
 ms.openlocfilehash: 1e623405faa89ff41eccdaa57578bc8ac94cd78c
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422823"
 ---
 # <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>Schnellstart: Erstellen und Bereitstellen von Azure Functions-Ressourcen aus einer ARM-Vorlage
@@ -123,7 +123,7 @@ Kopieren Sie in der Ausgabe die URL des HTTP-Triggers. Mit dieser testen Sie die
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Veröffentlichen** aus.
 
-1. Wählen Sie in **Veröffentlichungsziel auswählen** die Option **Azure Functions-Verbrauch** mit **Vorhandenen auswählen** , und wählen Sie dann **Profil erstellen** aus.
+1. Wählen Sie in **Veröffentlichungsziel auswählen** die Option **Azure Functions-Verbrauch** mit **Vorhandenen auswählen**, und wählen Sie dann **Profil erstellen** aus.
 
     :::image type="content" source="media/functions-create-first-function-arm/choose-publish-target-visual-studio.png" alt-text="Vorhandenes Veröffentlichungsziel auswählen":::
 

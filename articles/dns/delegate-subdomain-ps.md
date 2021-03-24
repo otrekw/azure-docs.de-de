@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 2/7/2019
 ms.author: rohink
 ms.openlocfilehash: 9b37d313aa5d8c2255b4e3be69831dfcb50238ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84712546"
 ---
 # <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Delegieren einer Azure DNS-Unterdomäne mithilfe von Azure PowerShell
@@ -47,7 +47,7 @@ Notieren Sie sich als Nächstes die vier Namenserver für die engineering-Unterd
 
 Erstellen Sie einen **A**-Eintrag in der engineering-Zone, den Sie zum Testen verwenden.
 
-   [https://login.microsoftonline.com/consumers/](`New-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -Name www -RecordType A -ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address 10.10.10.10)`).
+   `New-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -Name www -RecordType A -ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address 10.10.10.10)`.
 
 ## <a name="create-an-ns-record"></a>Erstellen eines NS-Eintrags
 

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: a4140a0b22f7ca8164d50cf60fe57c861f826eb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86132502"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Einrichten der Notfallwiederherstellung in Azure für Hyper-V-VMs mithilfe von PowerShell und Azure Resource Manager
@@ -244,7 +244,7 @@ Bevor Sie beginnen, muss sich das angegebene Speicherkonto in derselben Azure-Re
 > 1. Erstellen Sie mit dem Cmdlet `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` ein Wörterbuchobjekt, das die Zuordnung der Datenträger-ID zum Datenträgerverschlüsselungssatz enthalten soll. Diese Datenträgerverschlüsselungssätze müssen von Ihnen in der Zielregion vorab erstellt werden.
 > 1. Aktualisieren Sie die VM-Eigenschaften mithilfe des Cmdlets `Set-AzRecoveryServicesAsrReplicationProtectedItem`, indem Sie das Wörterbuchobjekt im Parameter **DiskIdToDiskEncryptionSetMap** übergeben.
 
-## <a name="step-8-run-a-test-failover"></a>Schritt 8: Ausführen eines Testfailovers
+## <a name="step-8-run-a-test-failover"></a>Schritt 8: Ausführen eines Testfailovers
 
 1. Führen Sie ein Testfailover wie folgt aus:
 

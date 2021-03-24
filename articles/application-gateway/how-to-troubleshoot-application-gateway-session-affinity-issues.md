@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
 ms.openlocfilehash: 548bda36ed2b167c159d32a575b63ecbf10b16dd
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397568"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Behandeln von Problemen mit der Azure Application Gateway-Sitzungsaffinität
@@ -46,7 +46,7 @@ Manchmal sind die Probleme mit der Sitzungsaffinität darauf zurückzuführen, d
 
    ![Ein Screenshot, der „EINSTELLUNGEN“ mit ausgewählten „H T T P“-Einstellungen zeigt.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-1.png)
 
-4. Klicken Sie auf der rechten Seite auf **appGatewayBackendHttpSettings** , um zu überprüfen, ob Sie **Aktiviert** für „Cookiebasierte Affinität“ ausgewählt haben.
+4. Klicken Sie auf der rechten Seite auf **appGatewayBackendHttpSettings**, um zu überprüfen, ob Sie **Aktiviert** für „Cookiebasierte Affinität“ ausgewählt haben.
 
    ![Ein Screenshot, der die Gatewayeinstellungen für ein App-Gateway zeigt, einschließlich, ob cookiebasierte Affinität ausgewählt ist.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-2.jpg)
 
@@ -82,7 +82,7 @@ Gehen Sie zum Beheben dieses Problems wie folgt vor:
 1. Erstellen Sie eine Webdebugger-Ablaufverfolgung für den „Client“, über den hinter dem Anwendungsgateway eine Verbindung mit der Anwendung hergestellt wird. (In diesem Beispiel wird Fiddler verwendet.)
     **Tipp:** Wenn Sie mit der Verwendung von Fiddler nicht vertraut sind, aktivieren Sie die Option **I want to collect network traffic and analyze it using web debugger** (Ich möchte Netzwerkdatenverkehr mithilfe des Webdebuggers erfassen und analysieren) am unteren Rand.
 
-2. Überprüfen und analysieren Sie die Sitzungsprotokolle, um zu ermitteln, ob die vom Client bereitgestellten Cookies die ARRAffinity-Details enthalten. Wenn Sie die ARRAffinity-Details, z. B. **ARRAffinity=** *ARRAffinityValue* , im festgelegten Cookie nicht finden, bedeutet das, dass der Client nicht mit dem ARRA-Cookie antwortet, das vom Anwendungsgateway bereitgestellt wird.
+2. Überprüfen und analysieren Sie die Sitzungsprotokolle, um zu ermitteln, ob die vom Client bereitgestellten Cookies die ARRAffinity-Details enthalten. Wenn Sie die ARRAffinity-Details, z. B. **ARRAffinity=** *ARRAffinityValue*, im festgelegten Cookie nicht finden, bedeutet das, dass der Client nicht mit dem ARRA-Cookie antwortet, das vom Anwendungsgateway bereitgestellt wird.
     Beispiel:
 
     ![Ein Screenshot, der ein Sitzungsprotokoll mit einem einzelnen hervorgehobenen Eintrag zeigt.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
@@ -113,11 +113,11 @@ Ermöglichen der Protokollierung über das Azure-Portal
 
    Für Application Gateway sind drei Protokolle verfügbar: Zugriffsprotokolle, Leistungsprotokolle und Firewallprotokolle
 
-2. Klicken Sie auf **Diagnose aktivieren** , um mit der Erfassung von Daten zu beginnen.
+2. Klicken Sie auf **Diagnose aktivieren**, um mit der Erfassung von Daten zu beginnen.
 
    ![Ein Screenshot, der ein Anwendungsgateway mit ausgewählten Diagnoseprotokollen zeigt.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-5.png)
 
-3. Auf dem Blatt **Diagnoseeinstellungen** werden die Einstellungen für die Diagnoseprotokolle angegeben. In diesem Beispiel werden die Protokolle in Log Analytics gespeichert. Klicken Sie unter **Log Analytics** auf **Konfigurieren** , um den Arbeitsbereich festzulegen. Sie können auch Event Hubs und ein Speicherkonto verwenden, um die Diagnoseprotokolle zu speichern.
+3. Auf dem Blatt **Diagnoseeinstellungen** werden die Einstellungen für die Diagnoseprotokolle angegeben. In diesem Beispiel werden die Protokolle in Log Analytics gespeichert. Klicken Sie unter **Log Analytics** auf **Konfigurieren**, um den Arbeitsbereich festzulegen. Sie können auch Event Hubs und ein Speicherkonto verwenden, um die Diagnoseprotokolle zu speichern.
 
    ![Ein Screenshot, der den Bereich „Diagnoseeinstellungen“ mit ausgewähltem „Log Analytics konfigurieren“ zeigt.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-6.png)
 

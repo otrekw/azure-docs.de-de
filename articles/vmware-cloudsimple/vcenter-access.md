@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 2e62042a84f7ac2615762e3d9b036e4340bd8c73
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97899115"
 ---
 # <a name="access-your-private-cloud-vcenter-portal"></a>Zugreifen auf das vCenter-Portal Ihrer privaten Cloud
@@ -23,8 +23,8 @@ Sie können das vCenter-Portal Ihrer privaten Cloud über das Azure-Portal oder 
 
 Für den Zugriff auf das vCenter-Portal muss eine Netzwerkverbindung hergestellt und eine DNS-Namensauflösung aktiviert werden.  Sie können eine der folgenden Optionen verwenden, um eine Netzwerkverbindung mit Ihrer privaten Cloud herzustellen.
 
-* [Herstellen einer Verbindung von lokalen Standorten mit CloudSimple mithilfe von ExpressRoute](on-premises-connection.md)
-* [Konfigurieren einer VPN-Verbindung mit Ihrer privaten CloudSimple-Cloud](set-up-vpn.md)
+* [Herstellen einer Verbindung aus der lokalen Umgebung mit CloudSimple mithilfe von ExpressRoute](on-premises-connection.md)
+* [Konfigurieren einer VPN-Verbindung mit ihrer privaten CloudSimple-Cloud](set-up-vpn.md)
 
 Informationen zum Einrichten der DNS-Namensauflösung für die VMware-Infrastrukturkomponenten der privaten Cloud finden Sie unter [Konfigurieren von DNS für die Namensauflösung für den vCenter-Zugriff in der privaten Cloud über lokale Arbeitsstationen](on-premises-dns-setup.md)
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 70e91ff8fa3666a2dfc5aaad07be7927852b08bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85357697"
 ---
 # <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Bewährte Methoden zum Ändern der Standardkonfiguration
@@ -63,7 +63,7 @@ In der Abbildung oben wurde mit dem Installations-Assistenten ein altes Exchange
 ### <a name="change-an-out-of-box-rule"></a>Ändern einer standardmäßigen Regel
 Ändern Sie eine standardmäßige Regel nur dann, wenn Sie die Verknüpfungsregel ändern müssen. Wenn Sie einen Attributfluss ändern müssen, sollten Sie eine Synchronisierungsregel erstellen, die Vorrang vor den standardmäßigen Regeln hat. Die einzige Regel, die Sie im Grunde klonen müssen, ist die Regel **In from AD - User Join**. Alle anderen Regeln können Sie mit einer Regel mit höherer Priorität außer Kraft setzen.
 
-Wenn Sie Änderungen an einer standardmäßigen Regel vornehmen müssen, erstellen Sie eine Kopie der standardmäßigen Regel und deaktivieren Sie die ursprüngliche Regel. Nehmen Sie an der geklonten Regel dann die gewünschten Änderungen vor. Der Synchronisierungsregel-Editor unterstützt Sie bei diesen Schritten. Wenn Sie eine standardmäßige Regel öffnen, wird dieses Dialogfeld angezeigt:  
+Wenn Sie Änderungen an einer standardmäßigen Regel vornehmen müssen, erstellen Sie eine Kopie der standardmäßigen Regel und deaktivieren Sie die ursprüngliche Regel. Nehmen Sie an der geklonten Regel dann die gewünschten Änderungen vor. Der Synchronisierungsregel-Editor unterstützt Sie bei diesen Schritten. Wenn Sie eine standardmäßige Regel öffnen, wird dieses Dialogfeld angezeigt:   
 ![Warnung für standardmäßige Regel](./media/how-to-connect-sync-best-practices-changing-default-configuration/warningoutofboxrule.png)
 
 Wählen Sie **Ja** , um eine Kopie der Regel zu erstellen. Die geklonte Regel wird geöffnet.  

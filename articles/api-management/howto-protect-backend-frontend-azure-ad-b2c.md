@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/18/2021
 ms.author: wieastbu
 ms.custom: fasttrack-new, fasttrack-update, devx-track-js
-ms.openlocfilehash: 812b54d10ea3cc3c405f534e36ac66abf3466808
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: baa6a0a6995e206924d14de25b98700e450f3a0c
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449287"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954920"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Schützen des SPA-Back-Ends mit OAuth 2.0, Azure Active Directory B2C und Azure API Management
 
@@ -193,7 +193,7 @@ Hier sehen Sie eine kurze Übersicht der Schritte:
 1. Fügen Sie den bekannten OpenID-Konfigurationsendpunkt aus der Registrierungs- und Anmeldungsrichtlinie in das Feld „Aussteller-URL“ ein (Sie haben diese Konfiguration zuvor notiert).
 1. Klicken Sie auf „Geheimnis anzeigen“, und fügen Sie den geheimen Clientschlüssel der Back-End-Anwendung in das entsprechende Feld ein.
 1. Wählen Sie „OK“ aus, wodurch Sie wieder zurück zum Auswahlblatt/-bildschirm für den Identitätsanbieter gelangen.
-1. Lassen Sie [Tokenspeicher](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#token-store) unter „Erweiterte Einstellungen“ aktiviert (Standard).
+1. Lassen Sie [Tokenspeicher](../app-service/overview-authentication-authorization.md#token-store) unter „Erweiterte Einstellungen“ aktiviert (Standard).
 1. Klicken Sie auf „Speichern“ (oben links auf dem Blatt).
 
    > [!IMPORTANT]

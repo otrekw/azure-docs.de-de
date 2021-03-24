@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/04/2021
+ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: 5d172a73674195e7f64f5ef02322e2bd2d6314df
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: fabbd255f64e5614ae052c9d7c8d65fc35d45856
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102439526"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600495"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>Verhindern von Fehlkonfigurationen mit den Optionen zum Erzwingen/Ablehnen für Empfehlungen
 
@@ -68,6 +68,7 @@ Diese Empfehlungen können mit der Option **Erzwingen** verwendet werden:
 - Die Überwachung in SQL Server muss aktiviert werden.
 - Azure Backup sollte für virtuelle Computer aktiviert sein
 - Auf Ihren SQL-Server sollte Azure Defender für SQL aktiviert sein
+- Azure Policy-Add-On für Kubernetes muss auf Ihren Clustern installiert und aktiviert sein
 - Diagnoseprotokolle in Azure Stream Analytics sollten aktiviert werden.
 - Diagnoseprotokolle in Batch-Konten sollten aktiviert sein.
 - In Data Lake Analytics sollten Diagnoseprotokolle aktiviert sein.

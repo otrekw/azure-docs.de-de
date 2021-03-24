@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 11/10/2020
 ms.openlocfilehash: 7733a6211363b4f1c9e9006f757b4d152c7af7f5
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94489555"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Konfigurieren von Serverparametern auf flexiblen Azure Database for MySQL-Servern über das Azure-Portal
@@ -28,9 +28,9 @@ In diesem Artikel wird beschrieben, wie diese Serverparameter mithilfe des Azure
 ## <a name="configure-server-parameters"></a>Konfigurieren von Serverparametern
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und suchen Sie dann nach Ihrem flexiblen Azure Database for MySQL-Server.
-2. Klicken Sie im Abschnitt **EINSTELLUNGEN** auf **Serverparameter** , um die Seite „Serverparameter“ für den flexiblen Azure Database for MySQL-Server zu öffnen.
+2. Klicken Sie im Abschnitt **EINSTELLUNGEN** auf **Serverparameter**, um die Seite „Serverparameter“ für den flexiblen Azure Database for MySQL-Server zu öffnen.
 [:::image type="content" source="./media/how-to-server-parameters/azure-portal-server-parameters.png" alt-text="Seite „Serverparameter“ im Azure-Portal":::](./media/how-to-server-parameters/azure-portal-server-parameters.png#lightbox)
-3. Suchen Sie nach einem Serverparameter, den Sie anpassen möchten. Überprüfen Sie die Spalte **Beschreibung** , um den Zweck und die zulässigen Werte zu verstehen.
+3. Suchen Sie nach einem Serverparameter, den Sie anpassen möchten. Überprüfen Sie die Spalte **Beschreibung**, um den Zweck und die zulässigen Werte zu verstehen.
 [:::image type="content" source="./media/how-to-server-parameters/3-toggle-parameter.png" alt-text="Dropdownliste für Enumerierung":::](./media/how-to-server-parameters/3-toggle-parameter.png#lightbox)
 4. Klicken Sie zum Speichern der Änderungen auf **Speichern**.
 [:::image type="content" source="./media/how-to-server-parameters/4-save-parameters.png" alt-text="Änderungen speichern oder verwerfen":::](./media/how-to-server-parameters/4-save-parameters.png#lightbox)
@@ -43,7 +43,7 @@ In diesem Artikel wird beschrieben, wie diese Serverparameter mithilfe des Azure
 
 Wenn der Serverparameter, den Sie aktualisieren möchten, nicht geändert werden kann, können Sie den Parameter optional mithilfe von `init_connect` auf Verbindungsebene festlegen. Damit werden die Serverparameter für jeden Client, der mit dem Server verbinden wird, festgelegt. 
 
-1. Klicken Sie im Abschnitt **EINSTELLUNGEN** auf **Serverparameter** , um die Seite „Serverparameter“ für den Server mit Azure Database for MySQL zu öffnen.
+1. Klicken Sie im Abschnitt **EINSTELLUNGEN** auf **Serverparameter**, um die Seite „Serverparameter“ für den Server mit Azure Database for MySQL zu öffnen.
 2. Suchen Sie nach `init_connect`.
 3. Fügen Sie die Serverparameter im folgenden Format hinzu: `SET parameter_name=YOUR_DESIRED_VALUE` als Wert der Wertspalte.
 

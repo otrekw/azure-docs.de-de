@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.openlocfilehash: 12ef895c8b16fe18ed02ebf01d17624ac71c2f3e
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97861451"
 ---
 # <a name="multi-site-and-multi-region-federation"></a>Verbund: mehrere Standorte und mehrere Regionen
@@ -194,7 +194,7 @@ Als nächstes sollten Sie sich darüber informieren, wie Sie eine Replikatoranwe
 - [Muster für Ereignisreplikationstasks][10]
 - [Verarbeiten von Daten mit Azure Stream Analytics][9]
 - [Ereignisreplikatoranwendungen in Azure Functions][1]
-- [Replizieren von Ereignissen zwischen Event Hubs][2]
+- [Replizieren von Ereignissen zwischen Event Hub-Instanzen][2]
 - [Replizieren von Ereignissen in Azure Service Bus][3]
 - [Verwenden von Apache Kafka MirrorMaker mit Event Hubs][11] 
 

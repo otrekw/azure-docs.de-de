@@ -10,15 +10,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.openlocfilehash: 04e4801c26b0ac8ef91af0b028d9dc2bb9a3cd1c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358625"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Verbinden und Indizieren von Azure SQL-Inhalten mithilfe eines Azure Cognitive Search-Indexers
 
-Bevor Sie einen [Index der kognitiven Azure-Suche](search-what-is-an-index.md) abfragen können, müssen Sie ihn mit Daten auffüllen. Wenn sich die Daten in Azure SQL-Datenbank oder SQL Managed Instance befinden, können Sie mit einem **Azure Cognitive Search-Indexer für Azure SQL-Datenbank** (oder kurz **Azure SQL-Indexer** ) den Indizierungsprozess automatisieren. Dadurch müssen Sie weniger Code schreiben und sich um weniger Infrastruktur kümmern.
+Bevor Sie einen [Index der kognitiven Azure-Suche](search-what-is-an-index.md) abfragen können, müssen Sie ihn mit Daten auffüllen. Wenn sich die Daten in Azure SQL-Datenbank oder SQL Managed Instance befinden, können Sie mit einem **Azure Cognitive Search-Indexer für Azure SQL-Datenbank** (oder kurz **Azure SQL-Indexer**) den Indizierungsprozess automatisieren. Dadurch müssen Sie weniger Code schreiben und sich um weniger Infrastruktur kümmern.
 
 In diesem Artikel erfahren Sie mehr über die Funktionsweise von [Indexern](search-indexer-overview.md) sowie über Funktionen, die nur für Azure SQL-Datenbank oder SQL Managed Instance verfügbar sind (wie etwa die integrierte Änderungsnachverfolgung). 
 
@@ -151,7 +151,7 @@ Der Ausführungsverlauf enthält bis zu 50 der zuletzt abgeschlossenen Ausführu
 Weitere Informationen zur Antwort finden Sie unter [Abrufen des Indexerstatus](/rest/api/searchservice/get-indexer-status).
 
 ## <a name="run-indexers-on-a-schedule"></a>Ausführen von Indexern nach einem Zeitplan
-Sie können den Indexer auch so konfigurieren, dass er regelmäßig nach einem Zeitplan ausgeführt wird. Dazu fügen Sie die **schedule** -Eigenschaft beim Erstellen oder Aktualisieren des Indexers hinzu. Das folgende Beispiel zeigt eine PUT-Anforderung den Indexer, um den zu aktualisieren:
+Sie können den Indexer auch so konfigurieren, dass er regelmäßig nach einem Zeitplan ausgeführt wird. Dazu fügen Sie die **schedule**-Eigenschaft beim Erstellen oder Aktualisieren des Indexers hinzu. Das folgende Beispiel zeigt eine PUT-Anforderung den Indexer, um den zu aktualisieren:
 
 ```
     PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2020-06-30

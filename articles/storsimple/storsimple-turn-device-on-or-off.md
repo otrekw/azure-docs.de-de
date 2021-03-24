@@ -9,10 +9,10 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c8f4269235c494ff9dd8d1bf8e0ef940562f8927
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85515274"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Ein- und Ausschalten von Geräten der StorSimple 8000-Serie
@@ -131,7 +131,7 @@ Wenn beide SAS-Kabel (Serial Attached SCSI) entfernt werden oder die Verbindung 
 10. Stellen Sie sicher, dass eine gute Verbindung zwischen dem EBOD- und dem primären Gehäuse besteht, indem Sie überprüfen, ob alle SAS-Leitungs-LEDs (vier pro EBOD-Controller) leuchten.
 
 > [!IMPORTANT]
-> Wenn Sie das System einschalten und die SAS-Kabel beschädigt sind oder keine gute Verbindung zwischen dem EBOD- und dem primären Gehäuse besteht, wechselt das System in den Wiederherstellungsmodus. [Kontaktieren Sie den Microsoft-Support](storsimple-8000-contact-microsoft-support.md) , falls dies eintritt.
+> Wenn Sie das System einschalten und die SAS-Kabel beschädigt sind oder keine gute Verbindung zwischen dem EBOD- und dem primären Gehäuse besteht, wechselt das System in den Wiederherstellungsmodus. Wenden Sie sich in diesem Fall an den [Microsoft-Support](storsimple-8000-contact-microsoft-support.md).
 
 
 ## <a name="turn-off-a-running-device"></a>Ausschalten eines ausgeführten Geräts
@@ -146,7 +146,7 @@ Ordnungsgemäß und kontrolliert herunterfahren können Sie das Gerät über das
 > [!IMPORTANT]
 > Schalten Sie ein ausgeführtes Gerät nicht über den Netzschalter auf der Geräterückseite aus.
 > 
-> Bevor Sie das Gerät herunterfahren, vergewissern Sie sich, dass alle Gerätekomponenten fehlerfrei funktionieren. Navigieren Sie im Azure-Portal zu **Geräte** > **Überwachung** > **Hardwareintegrität**, und vergewissern Sie sich, dass der Status aller Komponenten in Grün angezeigt wird. Dies ist nur der Fall, wenn das System einwandfrei funktioniert. Wenn das System heruntergefahren wird, um eine fehlerhafte Komponente auszutauschen, wird für die jeweilige Komponente unter **Hardwarestatus**der Fehlerstatus (rot) oder der heruntergestufte Status (gelb) angezeigt.
+> Bevor Sie das Gerät herunterfahren, vergewissern Sie sich, dass alle Gerätekomponenten fehlerfrei funktionieren. Navigieren Sie im Azure-Portal zu **Geräte** > **Überwachung** > **Hardwareintegrität**, und vergewissern Sie sich, dass der Status aller Komponenten in Grün angezeigt wird. Dies ist nur der Fall, wenn das System einwandfrei funktioniert. Wenn das System heruntergefahren wird, um eine gestörte Komponente auszutauschen, wird im **Hardwarestatus** ein Fehler- (rot) oder Beeinträchtigungsstatus (gelb) für die entsprechende Komponente angezeigt.
 > 
 > 
 

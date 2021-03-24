@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 1f2dbef014f1b48b554e6bc30af83b936fe532a7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 87a4d3960937450713747fa16bd473b4c34eff0e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944877"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867864"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Verwenden der Apache Ambari-Hive-Ansicht mit Apache Hadoop in HDInsight
 
@@ -30,11 +30,11 @@ Ein Hadoop-Cluster in HDInsight. Weitere Informationen finden Sie unter [Erste S
 
 1. Wählen Sie aus der Liste der Ansichten die __Hive-Ansicht__ aus.
 
-    ![Apache Ambari – Auswahl der Apache Hive-Ansicht](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png" alt-text="Apache Ambari – Auswahl der Apache Hive-Ansicht" border="true":::
 
     Die Seite „Hive-Ansicht“ ähnelt der folgenden Abbildung:
 
-    ![Abbildung des Arbeitsblatts „Abfragen“ für die Hive-Ansicht](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png" alt-text="Abbildung des Arbeitsblatts „Abfragen“ für die Hive-Ansicht" border="true":::
 
 1. Kopieren Sie folgende HiveQL-Anweisungen aus der Registerkarte __Query__ (Abfrage) in das Arbeitsblatt:
 
@@ -99,19 +99,19 @@ Klicken Sie auf die Registerkarte **Tez UI** unter dem Arbeitsblatt, um die Tez-
 
 Die Registerkarte __Jobs__ (Aufträge) zeigt einen Verlauf der Hive-Abfragen an.
 
-![Apache Hive-Ansicht mit Verlauf auf der Registerkarte für Aufträge](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png" alt-text="Apache Hive-Ansicht mit Verlauf auf der Registerkarte für Aufträge" border="true":::
 
 ## <a name="database-tables"></a>Datenbanktabellen
 
 Sie können die Registerkarte __Tables__ (Tabellen) verwenden, um innerhalb einer Hive-Datenbank mit Tabellen zu arbeiten.
 
-![Abbildung der Registerkarte mit Apache Hive-Tabellen](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png" alt-text="Abbildung der Registerkarte mit Apache Hive-Tabellen" border="true":::
 
 ## <a name="saved-queries"></a>Gespeicherte Abfragen
 
 In der Registerkarte **Query** können Sie optional auch Abfragen speichern. Nachdem Sie eine Abfrage gespeichert haben, können Sie diese von der Registerkarte __Saved Queries__ aus wiederverwenden.
 
-![Registerkarte für gespeicherte Abfragen in Apache Hive](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png" alt-text="Registerkarte für gespeicherte Abfragen in Apache Hive" border="true":::
 
 > [!TIP]  
 > Gespeicherte Abfragen werden im Standard-Clusterspeicher gespeichert. Sie finden die gespeicherten Abfragen im Pfad `/user/<username>/hive/scripts`. Diese werden als Textdateien vom Typ `.hql` gespeichert.
@@ -124,7 +124,7 @@ Sie können Hive über benutzerdefinierte Funktionen (UDF) erweitern. Mit einer 
 
 Deklarieren und speichern Sie eine Gruppe von UDFs mit der Registerkarte **UDF** ganz oben in der Hive-Ansicht. Diese UDFs können im **Abfrage-Editor** verwendet werden.
 
-![Apache Hive-Ansicht mit Anzeige der UDF-Registerkarte](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png" alt-text="Apache Hive-Ansicht mit Anzeige der UDF-Registerkarte" border="true":::
 
 Am unteren Rand des **Abfrage-Editors** wird die Schaltfläche **UDFs einfügen** angezeigt. Durch diesen Eintrag wird eine Dropdownliste mit den UDFs angezeigt, die in der Hive-Ansicht definiert sind. Durch das Auswählen einer UDF werden Ihrer Abfrage HiveQL-Anweisungen hinzugefügt, um die UDF zu aktivieren.
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 148ba2ce256b11b623bf28cf7723dbb0cce60830
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 25ff8611cc988c9777b52a313cfd74d4ee0a638c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929747"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870295"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurieren von Apache Spark-Einstellungen
 
@@ -18,7 +18,7 @@ Ein HDInsight Spark-Cluster enthält eine Installation der Apache Spark-Biblioth
 
 Der HDInsight Apache Spark-Standardcluster umfasst die folgenden Knoten: drei Apache ZooKeeper-Knoten, zwei Hauptknoten und mindestens einen Workerknoten.
 
-![Spark HDInsight-Architektur](./media/apache-spark-settings/spark-hdinsight-arch.png)
+:::image type="content" source="./media/apache-spark-settings/spark-hdinsight-arch.png" alt-text="Spark HDInsight-Architektur" border="false":::
 
 Die Anzahl der VMs und die VM-Größen für die Knoten in Ihrem HDInsight-Cluster können sich auf die Spark-Konfiguration auswirken. Nicht standardmäßige HDInsight-Konfigurationswerte machen häufig nicht standardmäßige Spark-Konfigurationswerte erforderlich. Wenn Sie einen HDInsight Spark-Cluster erstellen, werden für die einzelnen Komponenten jeweils empfohlene VM-Größen angezeigt. Derzeit sind die [arbeitsspeicheroptimierten Größen virtueller Linux-Computer](../../virtual-machines/sizes-memory.md) für Azure D12 v2 oder höher.
 
@@ -59,7 +59,7 @@ Die Apache Ambari-Webbenutzeroberfläche wird mit einem Dashboard mit den wichti
 
 Zum Anzeigen der Konfigurationswerte für Apache Spark wählen Sie **Config History** (Konfigurationsverlauf) und dann **Spark2** aus.  Wählen Sie die Registerkarte **Configs** (Konfigurationen) und dann in der Liste der Dienste den Link `Spark` (oder `Spark2`, abhängig von der verwendeten Version) aus.  Eine Liste der Konfigurationswerte für Ihren Cluster wird angezeigt:
 
-![Spark-Konfigurationen](./media/apache-spark-settings/spark-configurations.png)
+:::image type="content" source="./media/apache-spark-settings/spark-configurations.png" alt-text="Spark-Konfigurationen" border="true":::
 
 Zum Anzeigen und Ändern einzelner Spark-Konfigurationswerte wählen Sie einen beliebigen Link mit „spark“ im Titel aus.  Konfigurationen für Spark umfassen sowohl benutzerdefinierte als auch erweiterte Konfigurationswerte in den folgenden Kategorien:
 
@@ -78,7 +78,7 @@ Wenn Sie eine nicht standardmäßige Gruppe von Konfigurationswerten erstellen, 
 
 In der folgenden Abbildung sind wichtige Spark-Objekte dargestellt: das Treiberprogramm und der zugeordnete Spark-Kontext sowie der Cluster-Manager und die zugehörigen *n* Workerknoten.  Jeder Workerknoten enthält einen Executor, einen Cache und *n* Aufgabeninstanzen.
 
-![Clusterobjekte](./media/apache-spark-settings/hdi-spark-architecture.png)
+:::image type="content" source="./media/apache-spark-settings/hdi-spark-architecture.png" alt-text="Clusterobjekte" border="false":::
 
 Spark-Aufträge verwenden Workerressourcen, insbesondere Arbeitsspeicher. Daher werden Spark-Konfigurationswerte für Executors von Workerknoten häufig angepasst.
 
@@ -89,7 +89,7 @@ Dabei werden die folgenden drei Schlüsselparameter zur Optimierung von Spark-Ko
 
 Die Spark-Anwendungsbenutzeroberfläche stellt eine weitere Informationsquelle zu den von Spark-Executors verwendeten Ressourcen dar.  Auf der Benutzeroberfläche werden unter **Executors** Zusammenfassungs- und Detailansichten der Konfiguration und der beanspruchten Ressourcen gezeigt.  Bestimmen Sie, ob die Executorwerte für den gesamten Cluster oder eine bestimmte Gruppe von Auftragsausführungen geändert werden sollen.
 
-![Spark-Executors](./media/apache-spark-settings/apache-spark-executors.png)
+:::image type="content" source="./media/apache-spark-settings/apache-spark-executors.png" alt-text="Spark-Executors" border="true":::
 
 Sie können auch über die Ambari-REST-API die Konfigurationseinstellungen von HDInsight- und Spark-Clustern programmgesteuert ändern.  Weitere Informationen stehen in der [Apache Ambari-API-Referenz auf GitHub](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) zur Verfügung.
 
@@ -103,7 +103,7 @@ Je nach Größe Ihrer Spark-Workload stellen Sie möglicherweise fest, dass Sie 
 
 Beispiel für zwei Workerknoten mit unterschiedlichen Konfigurationswerten:
 
-![Konfigurationen mit zwei Knoten](./media/apache-spark-settings/executor-configuration.png)
+:::image type="content" source="./media/apache-spark-settings/executor-configuration.png" alt-text="Konfigurationen mit zwei Knoten" border="false":::
 
 In der folgenden Liste sind wichtige Arbeitsspeicherparameter für Spark-Executors aufgeführt.
 
@@ -116,7 +116,7 @@ In der folgenden Liste sind wichtige Arbeitsspeicherparameter für Spark-Executo
 
 YARN steuert den maximal von den Containern auf jedem Spark-Knoten verwendeten Gesamtarbeitsspeicher. In der folgenden Abbildung sind die Beziehungen pro Knoten zwischen YARN-Konfigurationsobjekten und Spark-Objekten dargestellt.
 
-![Übersicht über die YARN-Spark-Arbeitsspeicherverwaltung](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
+:::image type="content" source="./media/apache-spark-settings/hdi-yarn-spark-memory.png" alt-text="Übersicht über die YARN-Spark-Arbeitsspeicherverwaltung" border="false":::
 
 ## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Ändern der Parameter für eine in Jupyter Notebook ausgeführte Anwendung
 

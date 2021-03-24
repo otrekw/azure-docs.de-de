@@ -9,10 +9,10 @@ ms.date: 05/2/2020
 ms.author: derekol
 Customer intent: With Azure Peering service enhancing the customer connectivity to Microsoft cloud services .
 ms.openlocfilehash: f8f0ee71a8dd00498d868bb6dc11b3fa083df766
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021094"
 ---
 # <a name="tutorial-create-a-peering-service-connection"></a>Tutorial: Erstellen einer Peering Service-Verbindung
@@ -71,8 +71,8 @@ Wählen Sie neben dem aufgeführten Präfix die Auslassungspunkte (...) und dann
 Aktivieren Sie auf der Seite **Alle Ressourcen** das Kontrollkästchen für den Peering Service, und wählen Sie oben auf der Seite die Option **Löschen** aus.
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zur Peering Service-Verbindung finden Sie unter [Peering Service-Verbindung](connection.md).
-- Informationen zur Peering Service-Verbindungstelemetrie finden Sie unter [Peering Service-Verbindungstelemetrie](connection-telemetry.md).
+- Informationen zur Peering Service-Verbindung finden Sie unter [Peering Service-Verbindung](connection.md).
+- Informationen zur Peering Service-Verbindungstelemetrie finden Sie unter [Peering Service-Verbindungstelemetrie](connection-telemetry.md).
 - Informationen zum Messen der Telemetrie finden Sie unter [Messen der Verbindungstelemetrie](measure-connection-telemetry.md).
 - Informationen zum Registrieren der Verbindung mithilfe von Azure PowerShell finden Sie unter [Registrieren einer Peering Service-Verbindung – Azure PowerShell](powershell.md).
 - Informationen zum Registrieren der Verbindung über die Azure CLI finden Sie unter [Registrieren einer Peering Service-Verbindung – Azure CLI](cli.md).

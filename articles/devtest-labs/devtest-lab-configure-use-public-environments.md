@@ -4,10 +4,10 @@ description: In diesem Artikel erfahren Sie, wie Sie öffentliche Umgebungen (Az
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 61cabdb296c3fff75137c7ce7e87652241fd2926
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85482665"
 ---
 # <a name="configure-and-use-public-environments-in-azure-devtest-labs"></a>Konfigurieren und Verwenden von Umgebungen in Azure DevTest Labs
@@ -24,7 +24,7 @@ Für bereits vorhandene Labs ist das Repository für öffentliche Umgebungen nic
 Sie können öffentliche Umgebungen für Ihr Lab aktivieren/deaktivieren und mit den folgenden Schritten auch nur bestimmte Umgebungen für Lab-Benutzer zur Verfügung stellen: 
 
 1. Wählen Sie **Konfiguration und Richtlinien** für Ihr Lab aus. 
-2. Wählen Sie im Abschnitt **BASEN VIRTUELLER COMPUTER** **Öffentliche Umgebungen** aus.
+2. Wählen Sie im Abschnitt **BASEN VIRTUELLER COMPUTER****Öffentliche Umgebungen** aus.
 3. Klicken Sie auf **Ja**, um öffentliche Umgebungen für das Lab zu aktivieren. Klicken Sie andernfalls auf **Nein**. 
 4. Wenn Sie öffentliche Umgebungen aktiviert haben, werden alle Umgebungen im Repository standardmäßig aktiviert. Sie können die Auswahl für eine Umgebung aufheben, um diese für Lab-Benutzer nicht verfügbar zu machen. 
 

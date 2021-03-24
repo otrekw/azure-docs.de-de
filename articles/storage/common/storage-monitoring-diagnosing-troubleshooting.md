@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: d28cfd533caaef3fb80a63aea932e6418dff7e55
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5943a65d61dee4fcf610b8cc45139674362995cb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724250"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600716"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -59,8 +59,8 @@ Um solche Anwendungen erfolgreich zu verwalten, sollten Sie sie proaktiv überwa
   * [Ihre Probleme entstehen aus der Verwendung des Speicheremulators für Entwicklung oder Test]
   * [Sie stoßen bei der Installation von Azure SDK für .NET auf Probleme]
   * [Sie haben ein anderes Problem mit einem Speicherdienst]
-  * [Troubleshoot attached VHDs on Azure Windows virtual machines](../../virtual-machines/troubleshooting/index.yml) (Problembehandlung für angefügte VHDs auf virtuellen Windows-Computern)   
-  * [Troubleshoot attached VHDs on Azure Linux virtual machines](../../virtual-machines/troubleshooting/index.yml) (Problembehandlung für angefügte VHDs auf virtuellen Linux-Computern)
+  * [Troubleshoot attached VHDs on Azure Windows virtual machines](/troubleshoot/azure/virtual-machines/welcome-virtual-machines) (Problembehandlung für angefügte VHDs auf virtuellen Windows-Computern)   
+  * [Troubleshoot attached VHDs on Azure Linux virtual machines](/troubleshoot/azure/virtual-machines/welcome-virtual-machines) (Problembehandlung für angefügte VHDs auf virtuellen Linux-Computern)
   * [Behandlung von Problemen in Azure Files in Windows](../files/storage-troubleshoot-windows-file-connection-problems.md)   
   * [Beheben von Problemen mit Azure Files unter Linux](../files/storage-troubleshoot-linux-file-connection-problems.md)
 * [Anhänge]

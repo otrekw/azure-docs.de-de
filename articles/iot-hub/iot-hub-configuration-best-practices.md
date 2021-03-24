@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
 ms.openlocfilehash: 8a39c2b06ca8a0f852891acb60ba199fc2c6db5c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96024128"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Bewährte Methoden für die Gerätekonfiguration innerhalb einer IoT-Lösung
 
 Mit der automatischen Geräteverwaltung in Azure IoT Hub werden viele häufig wiederkehrende und komplexe Aufgaben im Zusammenhang mit der Verwaltung eines umfangreichen Gerätebestands über den gesamten Lebenszyklus automatisiert. In diesem Artikel werden viele bewährte Methoden für die unterschiedlichen Rollen definiert, die an der Entwicklung und dem Betrieb einer IoT-Lösung beteiligt sind.
 
-* **IoT-Hardwarehersteller/-integrator:** Hersteller von IoT-Hardware, Integratoren, die Hardware von verschiedenen Herstellern zusammenstellen, oder Lieferanten, die Hardware für eine von anderen Lieferanten hergestellte oder integrierte IoT-Bereitstellung bereitstellen. Beteiligt an der Entwicklung und Integration von Firmware, eingebetteten Betriebssystemen und eingebetteter Software.
+* **IoT-Hardwarehersteller/-integrator:** Hersteller von IoT-Hardware, Integratoren, die Hardware von verschiedenen Herstellern zusammenstellen, oder die Lieferanten, die Hardware für eine von anderen Lieferanten hergestellte oder integrierte IoT-Bereitstellung liefern. Beteiligt an der Entwicklung und Integration von Firmware, eingebetteten Betriebssystemen und eingebetteter Software.
 
 * **IoT-Lösungsentwickler:** IoT-Lösungen werden normalerweise von einem Lösungsentwickler entwickelt. Dieser Entwickler kann zu einem internen Team oder zu einem auf diese Aktivität spezialisierten Systemintegrator gehören. Der IoT-Lösungsentwickler kann verschiedene Komponenten der IoT-Lösung von Grund auf neu entwickeln, verschiedene Standard- oder Open Source-Komponenten integrieren oder Anpassungen an einem [IoT Solution Accelerator](../iot-accelerators/index.yml) vornehmen.
 
@@ -38,7 +38,7 @@ Die automatische Geräteverwaltung enthält die vielen Vorteile von [Gerätezwil
 
 Im Folgenden sind die bewährten Methoden für Hardwarehersteller und -integratoren aufgeführt, die sich mit der Entwicklung von eingebetteter Software beschäftigen:
 
-* **Implementieren von [Gerätezwillingen](iot-hub-devguide-device-twins.md):** Gerätezwillinge ermöglichen das Synchronisieren der gewünschten Konfiguration über die Cloud und das Melden der aktuellen Konfiguration und der Geräteeigenschaften. Die beste Möglichkeit zum Implementieren von Gerätezwillingen in eingebetteten Anwendungen sind die [Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks). Gerätezwillinge eignen sich aus den folgenden Gründen am besten für die Konfiguration:
+* **Implementieren von [Gerätezwillingen](iot-hub-devguide-device-twins.md):** Gerätezwillinge ermöglichen das Synchronisieren der gewünschten Konfiguration aus der Cloud und das Melden der aktuellen Konfiguration und der Geräteeigenschaften. Die beste Möglichkeit zum Implementieren von Gerätezwillingen in eingebetteten Anwendungen sind die [Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks). Gerätezwillinge eignen sich aus den folgenden Gründen am besten für die Konfiguration:
 
     * Sie unterstützen die bidirektionale Kommunikation.
     * Sie ermöglichen sowohl den verbundenen als auch den nicht verbundenen Gerätezustand.
@@ -55,14 +55,14 @@ Im Folgenden sind die bewährten Methoden für Hardwarehersteller und -integrato
 
 Hier sind die bewährten Methoden für IoT-Lösungsentwickler angegeben, die in Azure angeordnete Systeme erstellen:
 
-* **Implementieren von [Gerätezwillingen](iot-hub-devguide-device-twins.md):** Gerätezwillinge ermöglichen das Synchronisieren der gewünschten Konfiguration über die Cloud und das Melden der aktuellen Konfiguration und der Geräteeigenschaften. Die beste Möglichkeit zum Implementieren von Gerätezwillingen in Cloudanwendungen sind die [Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks). Gerätezwillinge eignen sich aus den folgenden Gründen am besten für die Konfiguration:
+* **Implementieren von [Gerätezwillingen](iot-hub-devguide-device-twins.md):** Gerätezwillinge ermöglichen das Synchronisieren der gewünschten Konfiguration aus der Cloud und das Melden der aktuellen Konfiguration und der Geräteeigenschaften. Die beste Möglichkeit zum Implementieren von Gerätezwillingen in Cloudanwendungen sind die [Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks). Gerätezwillinge eignen sich aus den folgenden Gründen am besten für die Konfiguration:
 
     * Sie unterstützen die bidirektionale Kommunikation.
     * Sie ermöglichen sowohl den verbundenen als auch den nicht verbundenen Gerätezustand.
     * Sie basieren auf dem Prinzip der letztlichen Konsistenz.
     * Sie können in der Cloud vollständig abgefragt werden.
 
-* **Organisieren von Geräten mithilfe von Gerätezwillingstags:** Die Lösung sollte es dem Operator ermöglichen, Qualitätsringe oder andere Gerätegruppen basierend auf verschiedenen Bereitstellungsstrategien, z. B. Canary, zu definieren. Die Geräteorganisation kann in Ihrer Lösung mit Gerätezwillingstags und [Abfragen](iot-hub-devguide-query-language.md) implementiert werden. Die Geräteorganisation ist erforderlich, damit Rollouts für Konfigurationen sicher und präzise durchgeführt werden können.
+* **Organisieren von Geräten mithilfe von Gerätezwillingstags:** Die Lösung sollte es dem Operator ermöglichen, Qualitätsringe oder andere Gerätegruppen basierend auf verschiedenen Bereitstellungsstrategien zu definieren, z.B. Canary. Die Geräteorganisation kann in Ihrer Lösung mit Gerätezwillingstags und [Abfragen](iot-hub-devguide-query-language.md) implementiert werden. Die Geräteorganisation ist erforderlich, damit Rollouts für Konfigurationen sicher und präzise durchgeführt werden können.
 
 * **Implementieren von [automatischen Gerätekonfigurationen](./iot-hub-automatic-device-management.md):** Bei automatischen Gerätekonfigurationen werden Konfigurationsänderungen für große Gruppen von IoT-Geräten über Gerätezwillinge bereitgestellt und überwacht.
 
@@ -76,13 +76,13 @@ Hier sind die bewährten Methoden für IoT-Lösungsentwickler angegeben, die in 
 
 Hier sind bewährte Methoden für IoT-Lösungsoperatoren aufgeführt, die eine unter Azure erstellte IoT-Lösung verwenden:
 
-* **Organisieren von Geräten für die Verwaltung:** Die IoT-Lösung sollte die Erstellung von Qualitätsringen oder anderen Gruppen von Geräten basierend auf unterschiedlichen Bereitstellungsstrategien, z. B. Canary, definieren bzw. zulassen. Die Gruppen mit den Geräten werden verwendet, um den Rollout für Konfigurationsänderungen und andere bedarfsabhängige Vorgänge für die Geräteverwaltung durchzuführen.
+* **Organisieren von Geräten für die Verwaltung:** Die IoT-Lösung sollte die Erstellung von Qualitätsringen oder anderen Gruppen von Geräten basierend auf unterschiedlichen Bereitstellungsstrategien, z.B. Canary, definieren bzw. zulassen. Die Gruppen mit den Geräten werden verwendet, um den Rollout für Konfigurationsänderungen und andere bedarfsabhängige Vorgänge für die Geräteverwaltung durchzuführen.
 
-* **Durchführen von Konfigurationsänderungen mithilfe eines Rollouts in mehreren Phasen:**  Ein Rollout in mehreren Phasen ist ein allgemeiner Prozess, bei dem ein Operator Änderungen für eine größere Gruppe von IoT-Geräten bereitstellt. Hierbei werden Änderungen nach und nach vorgenommen, um das Risiko durch umfangreiche wichtige Änderungen zu reduzieren.    Der Operator sollte die Oberfläche der Lösung verwenden, um eine [automatische Gerätekonfiguration](./iot-hub-automatic-device-management.md) zu erstellen, und die Zielbedingung sollte auf eine anfängliche Gruppe von Geräten ausgerichtet sein (z.B. eine Canary-Gruppe). Der Operator sollte die Konfigurationsänderung dann in der anfänglichen Gruppe von Geräten überprüfen.
+* **Durchführen von Konfigurationsänderungen mithilfe eines Rollouts in mehreren Phasen:** Ein Rollout in mehreren Phasen ist ein allgemeiner Prozess, bei dem ein Operator Änderungen für eine größere Gruppe von IoT-Geräten bereitstellt. Hierbei werden Änderungen nach und nach vorgenommen, um das Risiko durch umfangreiche wichtige Änderungen zu reduzieren.  Der Operator sollte die Oberfläche der Lösung verwenden, um eine [automatische Gerätekonfiguration](./iot-hub-automatic-device-management.md) zu erstellen, und die Zielbedingung sollte auf eine anfängliche Gruppe von Geräten ausgerichtet sein (z.B. eine Canary-Gruppe). Der Operator sollte die Konfigurationsänderung dann in der anfänglichen Gruppe von Geräten überprüfen.
 
    Nachdem die Überprüfung abgeschlossen ist, aktualisiert der Operator die automatische Gerätekonfiguration auf eine größere Gruppe von Geräten. Darüber hinaus sollte der Operator die Priorität für die Konfiguration höher als für andere Konfigurationen festlegen, die derzeit auf diese Geräte ausgerichtet sind. Der Rollout kann über die Metriken überwacht werden, die von der automatischen Gerätekonfiguration gemeldet werden.
 
-* **Durchführen von Rollbacks bei Fehlern oder Fehlkonfigurationen:**  Für eine automatische Gerätekonfiguration, die Fehler oder Fehlkonfigurationen verursacht, kann ein Rollback ausgeführt werden. Hierzu wird die **Zielbedingung** geändert, damit die Geräte die Zielbedingung nicht mehr erfüllen. Stellen Sie sicher, dass eine andere automatische Gerätekonfiguration mit einer geringeren Priorität weiterhin auf diese Geräte ausgerichtet ist. Überprüfen der erfolgreichen Ausführung des Rollbacks, indem die Metriken angezeigt werden: Die Konfiguration, für die der Rollback ausgeführt wurde, sollte den Status für herausgenommene Geräte nicht mehr anzeigen, und die Metriken der zweiten Konfiguration sollten nun die Anzahl für die Geräte enthalten, die der Ausrichtung weiterhin unterliegen.
+* **Durchführen von Rollbacks bei Fehlern oder Fehlkonfigurationen:** Für eine automatische Gerätekonfiguration, die Fehler oder Fehlkonfigurationen verursacht, kann ein Rollback durchgeführt werden. Hierzu wird die **Zielbedingung** geändert, damit die Geräte die Zielbedingung nicht mehr erfüllen. Stellen Sie sicher, dass eine andere automatische Gerätekonfiguration mit einer geringeren Priorität weiterhin auf diese Geräte ausgerichtet ist. Überprüfen der erfolgreichen Durchführung des Rollbacks, indem die Metriken angezeigt werden: Die Konfiguration, für die der Rollback durchgeführt wurde, sollte den Status für herausgenommene Geräte nicht mehr anzeigen, und die Metriken der zweiten Konfiguration sollten nun die Anzahl für die Geräte enthalten, die der Ausrichtung weiterhin unterliegen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

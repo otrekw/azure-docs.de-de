@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
 ms.openlocfilehash: 5f77e99dc5c34867fef2b0ac47c709824fa4477d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102096002"
 ---
 # <a name="view-your-azure-percept-dks-rtsp-video-stream"></a>Anzeigen des RTSP-Videostreams von Azure Percept DK
@@ -20,7 +20,7 @@ In dieser Anleitung erfahren Sie, wie Sie den RTSP-Videostream von Azure Percept
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Azure Percept DK (DevKit)
+- Azure Percept DK (DevKit)
 - [Azure-Abonnement](https://azure.microsoft.com/free/)
 - [Azure Percept DK-Setup:](./quickstart-percept-dk-set-up.md) Sie haben Ihr DevKit mit einem WLAN verbunden, eine IoT Hub-Instanz erstellt und das DevKit mit der IoT Hub-Instanz verbunden.
 

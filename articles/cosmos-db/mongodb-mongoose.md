@@ -10,10 +10,10 @@ author: timsander1
 ms.author: tisande
 ms.custom: seodec18, devx-track-js
 ms.openlocfilehash: 8958699ae279d2613f8dbadca802ee2137407e75
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94442394"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Verbinden einer Node.js Mongoose-Anwendung mit Azure Cosmos DB
@@ -39,11 +39,11 @@ Erstellen Sie ein Cosmos-Konto. Wenn Sie bereits über ein Konto verfügen, das 
 
 ### <a name="create-a-database"></a>Erstellen einer Datenbank 
 In dieser Anwendung werden zwei Möglichkeiten zum Erstellen von Sammlungen in Azure Cosmos DB behandelt: 
-- **Speichern jedes Objektmodells in einer separaten Sammlung** : Es wird empfohlen, [eine Datenbank mit dediziertem Durchsatz zu erstellen](set-throughput.md#set-throughput-on-a-database). Mit diesem Kapazitätsmodell erhalten Sie bessere Kosteneffizienz.
+- **Speichern jedes Objektmodells in einer separaten Sammlung**: Es wird empfohlen, [eine Datenbank mit dediziertem Durchsatz zu erstellen](set-throughput.md#set-throughput-on-a-database). Mit diesem Kapazitätsmodell erhalten Sie bessere Kosteneffizienz.
 
     :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node.js-Tutorial: Screenshot des Azure-Portals, der zeigt, wie eine Datenbank in Data Explorer für ein Azure Cosmos DB-Konto für die Verwendung mit dem Mongoose-Knotenmodul erstellt wird":::
 
-- **Speichern aller Objektmodelle in einer einzigen Cosmos DB-Sammlung** : Wenn Sie lieber alle Modelle in einer Sammlung speichern möchten, können Sie einfach eine neue Datenbank erstellen, ohne die Option für Durchsatzbereitstellung auszuwählen. Durch die Verwendung dieses Kapazitätsmodells wird jede Sammlung mit eigener Durchsatzkapazität für jedes Objektmodell erstellt.
+- **Speichern aller Objektmodelle in einer einzigen Cosmos DB-Sammlung**: Wenn Sie lieber alle Modelle in einer Sammlung speichern möchten, können Sie einfach eine neue Datenbank erstellen, ohne die Option für Durchsatzbereitstellung auszuwählen. Durch die Verwendung dieses Kapazitätsmodells wird jede Sammlung mit eigener Durchsatzkapazität für jedes Objektmodell erstellt.
 
 Nachdem Sie die Datenbank erstellt haben, verwenden Sie den Namen in der unten gezeigten Umgebungsvariablen `COSMOSDB_DBNAME`.
 

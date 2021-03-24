@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8bc8846d546faec194617ccb753cdbd105e16bf9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85513626"
 ---
 # <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>Ändern des StorSimple Virtual Array-Geräteadministratorkennworts mit dem StorSimple-Geräte-Manager
@@ -63,8 +63,8 @@ Führen Sie die folgenden Schritte aus, um das Geräteadministratorkennwort übe
 1. Klicken Sie auf der lokalen Webbenutzeroberfläche für Ihr Gerät auf **Wartung** > **Kennwortänderung**.
    
     ![password1 ändern](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
-2. Geben Sie das **aktuelle Kennwort**ein.
-3. Geben Sie ein **neues Kennwort**ein. Das Kennwort muss mindestens 8 Zeichen umfassen. Das Kennwort muss drei der vier folgenden Elemente enthalten: Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen.
+2. Geben Sie das **aktuelle Kennwort** ein.
+3. Geben Sie ein **neues Kennwort** ein. Das Kennwort muss mindestens 8 Zeichen umfassen. Das Kennwort muss drei der vier folgenden Elemente enthalten: Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen.
    
     Hinweis: Ihr Kennwort muss sich von den letzten 24 Kennwörtern unterscheiden.
 4. Geben Sie das Kennwort erneut ein, um es zu bestätigen.

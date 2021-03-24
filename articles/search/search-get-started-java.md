@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 03/04/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: f833c0539d4aa28033cd6f76c1ca7cec7f11f6b5
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: f52aaa0636c453c0def7cb97c203f17f0b11a221
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124566"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955294"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Java
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "102124566"
 > * [Python](search-get-started-python.md)
 > * [REST](search-get-started-rest.md)
 
-Erstellen Sie eine Java-Konsolenanwendung, mit der ein Suchindex erstellt, geladen und abgefragt wird, indem [IntelliJ](https://www.jetbrains.com/idea/), das [Java 11 SDK](/java/azure/jdk/) und die [Azure Cognitive Search-REST-API](/rest/api/searchservice/) verwendet werden. Dieser Artikel enthält eine Schritt-für-Schritt-Anleitung zum Erstellen der Anwendung. Alternativ können Sie [die vollständige Anwendung herunterladen und ausführen](hhttps://github.com/Azure-Samples/azure-search-java-samples).
+Erstellen Sie eine Java-Konsolenanwendung, mit der ein Suchindex erstellt, geladen und abgefragt wird, indem [IntelliJ](https://www.jetbrains.com/idea/), das [Java 11 SDK](/java/azure/jdk/) und die [Azure Cognitive Search-REST-API](/rest/api/searchservice/) verwendet werden. Dieser Artikel enthält eine Schritt-für-Schritt-Anleitung zum Erstellen der Anwendung. Alternativ können Sie [die vollständige Anwendung herunterladen und ausführen](https://github.com/Azure-Samples/azure-search-java-samples).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
