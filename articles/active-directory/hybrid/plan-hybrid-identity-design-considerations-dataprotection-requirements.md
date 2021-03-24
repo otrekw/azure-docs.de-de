@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 056d0caf2bfc6e99d5d659a2561bc41844feb79a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "64918777"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>Planen einer Verbesserung der Datensicherheit mit einer starken Identitätslösung
@@ -72,7 +72,7 @@ Daten, die zwischen dem Gerät und dem Rechenzentrum oder dem Gerät und der Clo
   * Wenn ja: Kann die Hybrid-Identitätslösung in sichere Kontrollmechanismen integriert werden, z. B. SSL/TLS?
 * Sorgt die Cloud-Identitätsverwaltung dafür, dass der Datenverkehr an den Verzeichnisspeicher bzw. im Verzeichnisspeicher (innerhalb und zwischen Rechenzentren) immer signiert ist?
 
-## <a name="compliance"></a>Kompatibilität
+## <a name="compliance"></a>Compliance
 Vorschriften, Gesetze und regulierende Compliance-Anforderungen hängen von der Branche ab, in der Ihr Unternehmen tätig ist. Unternehmen aus Branchen mit starker Regulierung müssen sich um die Aspekte der Identitätsverwaltung kümmern, die mit Compliance-Problemen verbunden sind. Vorschriften wie „Sarbanes-Oxley“ (SOX), „Health Insurance Portability and Accountability Act“ (HIPAA), „Gramm-Leach-Bliley Act“ (GLBA) und der „Payment Card Industry Data Security Standard“ (PCI DSS) sind sehr streng, was die Identität und den Zugriff betrifft. Die Hybrid-Identitätslösung, die von Ihrem Unternehmen eingeführt wird, muss über die Kernfunktionen verfügen, mit denen eine oder mehrere dieser Vorschriften erfüllt werden. Stellen Sie für diesen Bereich sicher, dass die folgenden Fragen gestellt werden:
 
 * Ist die Hybrid-Identitätslösung mit den gesetzlichen Vorschriften für Ihr Unternehmen kompatibel?

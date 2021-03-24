@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: apimpm
-ms.openlocfilehash: f6ea02c32ec7fcb694d63f29c63c3880a7cfff9e
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: dc3d3b4658bd9a26363b6d41377d448059e30c0f
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546651"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889670"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>Tutorial: Veröffentlichen mehrerer Versionen Ihrer API 
 
@@ -33,7 +33,7 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 + Machen Sie sich mit der [Azure API Management-Terminologie](api-management-terminology.md) vertraut.
-+ Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
++ Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 + Schließen Sie darüber hinaus das folgende Tutorial ab: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
 ## <a name="add-a-new-version"></a>Hinzufügen einer neuen Version
@@ -60,7 +60,7 @@ Geben Sie die Werte aus der folgenden Tabelle ein. Wählen Sie anschließend **E
 
 
 
-|Einstellung   |Wert  |Beschreibung  |
+|Einstellung   |Wert  |BESCHREIBUNG  |
 |---------|---------|---------|
 |**Name**     |  *demo-conference-api-v1*       |  Eindeutiger Name in Ihrer API Management-Instanz<br/><br/>Da eine Version eigentlich eine neue API ist, die auf der [Revision](api-management-get-started-revise-api.md) einer API basiert, wird mit dieser Einstellung der Name der neuen API angegeben.   |
 |**Versionsverwaltungsschema**     |  **Pfad**       |  Die Art und Weise, wie Aufrufer die API-Version angeben     |
@@ -105,7 +105,7 @@ az apim api versionset list --resource-group apim-hello-word-resource-group \
 
 Wird vom Azure-Portal eine Versionsgruppe für Sie erstellt, wird dabei ein alphanumerischer Name zugewiesen. Dieser wird in der Spalte **Name** der Liste angezeigt. Verwenden Sie diesen Namen in anderen Azure CLI-Befehlen.
 
-Führen Sie den Befehl [az apim api versionset show](/api/versionset#az_apim_api_versionset_show) aus, um Details zu einer Versionsgruppe anzuzeigen:
+Führen Sie den Befehl [az apim api versionset show](/cli/azure/apim/api/versionset#az_apim_api_versionset_show) aus, um Details zu einer Versionsgruppe anzuzeigen:
 
 ```azurecli
 az apim api versionset show --resource-group apim-hello-word-resource-group \

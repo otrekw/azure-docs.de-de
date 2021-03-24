@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 03/04/2021
-ms.openlocfilehash: c41dc65b920c80d25a81a09f4550e76a8fd1095a
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 83efb428a94d49b77ecd923d4868afe034374b5f
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204200"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225182"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-cli"></a>Tutorial: Erstellen einer regionsübergreifenden Azure Load Balancer-Instanz mit der Azure CLI
 
@@ -81,23 +81,6 @@ Erstellen Sie einen regionsübergreifenden Lastenausgleich mit [az network cross
     --backend-pool-name myBackEndPool-CR     
 ```
 
-### <a name="create-the-health-probe"></a>Erstellen des Integritätstests
-
-Erstellen Sie einen Integritätstest für einen regionsübergreifenden Lastenausgleich mit [az network cross-region lb probe create](/cli/azure/network/cross-region-lb/probe#az_network_cross_region_lb_probe_create):
-
-* Name: **myHealthProbe**
-* Protokoll: **TCP**
-* Port: **80**
-
-```azurecli-interactive
-  az network cross-region lb probe create \
-    --lb-name myLoadBalancer-CR \
-    --name myHealthProbe-CR \
-    --port 80 \
-    --protocol Tcp \
-    --resource-group myResourceGroupLB-CR
-```
-
 ### <a name="create-the-load-balancer-rule"></a>Erstellen der Lastenausgleichsregel
 
 Durch eine Lastenausgleichsregel wird Folgendes definiert:
@@ -122,8 +105,7 @@ Erstellen Sie mit [az network lb rule create](/cli/azure/network/cross-region-lb
     --protocol tcp \
     --resource-group myResourceGroupLB-CR \
     --backend-pool-name myBackEndPool-CR \
-    --frontend-ip-name myFrontEnd-CR \
-    --probe-name myHealthProbe-CR
+    --frontend-ip-name myFrontEnd-CR
 ```
 
 ## <a name="create-backend-pool"></a>Erstellen eines Back-End-Pools
@@ -204,7 +186,6 @@ Verwenden Sie den Befehl [az group delete](/cli/azure/group#az-group-delete), um
 In diesem Tutorial haben Sie:
 
 * einen regionsübergreifenden Lastenausgleich erstellt
-* einen Integritätstest erstellt
 * eine Lastenausgleichsregel erstellt
 * dem Back-End-Pool des regionsübergreifenden Lastenausgleichs regionale Lastenausgleichsmodule hinzugefügt
 * Testen des Lastenausgleichs
