@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 2343800f8801105ca75f285972b441ecb027d1a0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793244"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Bereitstellen und Katalogisieren neuer Mandanten mithilfe des SaaS-Musters für eine Anwendung pro Mandant
@@ -45,7 +45,7 @@ Der Mandantenkatalog enthält eine Zuordnung zwischen einer Mandanten-ID und ein
 
 ## <a name="elastic-database-client-library"></a>Clientbibliothek für elastische Datenbanken
 
-In der Wingtip-Beispielanwendung wird der Katalog durch die Shardverwaltungsfeatures der [Clientbibliothek für elastische Datenbanken (Elastic Database Client Library, EDCL)](elastic-database-client-library.md) implementiert.  Die Bibliothek ermöglicht einer Anwendung die Erstellung, Verwaltung und Verwendung einer Shardzuordnung, die in einer Datenbank gespeichert wird. Im Wingtip Tickets-Beispiel wird der Katalog in der Datenbank *Mandantenkatalog* gespeichert.  Der Shard ordnet einen Mandantenschlüssel dem Shard (Datenbank) zu, in dem die Daten dieses Mandanten gespeichert werden.  EDCL-Funktionen verwalten eine *globale Shardzuordnung* , die in Tabellen in der Datenbank *Mandantenkatalog* gespeichert ist, und eine *lokale Shardzuordnung* , die in jedem Shard gespeichert ist.
+In der Wingtip-Beispielanwendung wird der Katalog durch die Shardverwaltungsfeatures der [Clientbibliothek für elastische Datenbanken (Elastic Database Client Library, EDCL)](elastic-database-client-library.md) implementiert.  Die Bibliothek ermöglicht einer Anwendung die Erstellung, Verwaltung und Verwendung einer Shardzuordnung, die in einer Datenbank gespeichert wird. Im Wingtip Tickets-Beispiel wird der Katalog in der Datenbank *Mandantenkatalog* gespeichert.  Der Shard ordnet einen Mandantenschlüssel dem Shard (Datenbank) zu, in dem die Daten dieses Mandanten gespeichert werden.  EDCL-Funktionen verwalten eine *globale Shardzuordnung*, die in Tabellen in der Datenbank *Mandantenkatalog* gespeichert ist, und eine *lokale Shardzuordnung*, die in jedem Shard gespeichert ist.
 
 EDCL-Funktionen können aus Anwendungen oder PowerShell-Skripts aufgerufen werden, um Einträge in der Shardzuordnung zu erstellen und zu verwalten. Andere EDCL-Funktionen können zum Abrufen der Gruppe von Shards oder zum Herstellen einer Verbindung mit der richtigen Datenbank für den angegebenen Mandantenschlüssel verwendet werden.
 
@@ -80,17 +80,17 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 In dieser Aufgabe erfahren Sie, wie Sie den Katalog bereitstellen, der zum Registrieren aller Mandantendatenbanken verwendet wird. In diesem Tutorial führen Sie folgende Schritte aus:
 
 * **Bereitstellen der Katalogdatenbank** mithilfe einer Azure Resource Manager-Vorlage. Die Datenbank wird durch Importieren einer BACPAC-Datei initialisiert.
-* **Registrieren der Beispielmandantenanwendungen** , die Sie zuvor bereitgestellt haben.  Jeder Mandant wird mithilfe eines Schlüssels registriert, der aus einem Hash des Mandantennamens erstellt wird.  Der Mandantenname wird auch in einer Erweiterungstabelle im Katalog gespeichert.
+* **Registrieren der Beispielmandantenanwendungen**, die Sie zuvor bereitgestellt haben.  Jeder Mandant wird mithilfe eines Schlüssels registriert, der aus einem Hash des Mandantennamens erstellt wird.  Der Mandantenname wird auch in einer Erweiterungstabelle im Katalog gespeichert.
 
-1. Öffnen Sie in der PowerShell ISE *...\Learning Modules\UserConfig.psm* , und aktualisieren Sie den Wert **\<user\>** in den Wert, den Sie bei der Bereitstellung der drei Beispielanwendungen verwendet haben.  **Speichern Sie die Datei** .
-1. Öffnen Sie in PowerShell ISE *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* , und legen Sie **$Scenario = 1** fest. Stellen Sie den Mandantenkatalog bereit, und registrieren Sie die vordefinierten Mandanten.
+1. Öffnen Sie in der PowerShell ISE *...\Learning Modules\UserConfig.psm*, und aktualisieren Sie den Wert **\<user\>** in den Wert, den Sie bei der Bereitstellung der drei Beispielanwendungen verwendet haben.  **Speichern Sie die Datei**.
+1. Öffnen Sie in PowerShell ISE *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1*, und legen Sie **$Scenario = 1** fest. Stellen Sie den Mandantenkatalog bereit, und registrieren Sie die vordefinierten Mandanten.
 
 1. Fügen Sie einen Haltepunkt hinzu, indem Sie den Cursor an eine beliebige Stelle in der Zeile mit `& $PSScriptRoot\New-Catalog.ps1` setzen und dann **F9** drücken.
 
     ![Festlegen eines Haltepunkts für die Ablaufverfolgung](./media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
 
 1. Führen Sie das Skript durch Drücken von **F5** aus.
-1.  Nachdem die Skriptausführung am Haltepunkt beendet wurde, drücken Sie **F11** , um das Skript „New-Catalog.ps1“ schrittweise auszuführen.
+1.  Nachdem die Skriptausführung am Haltepunkt beendet wurde, drücken Sie **F11**, um das Skript „New-Catalog.ps1“ schrittweise auszuführen.
 1.  Verfolgen Sie die Ausführung des Skripts mit den Optionen (F10 und F11) im Menü „Debug“ nach, um aufgerufene Funktionen zu überspringen oder einzeln auszuführen.
     *   Weitere Informationen zum Debuggen von PowerShell-Skripts finden Sie unter [Tipps zum Arbeiten mit und Debuggen von PowerShell-Skripts](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
@@ -120,14 +120,14 @@ In dieser Aufgabe erfahren Sie, wie Sie eine einzelne Mandantenanwendung bereits
 
 * **Erstellen einer neuen Ressourcengruppe** für den Mandanten.
 * **Bereitstellen der Anwendung und der Datenbank** in der neuen Ressourcengruppe mithilfe einer Azure Resource Manager-Vorlage.  Diese Aktion umfasst das Initialisieren der Datenbank mit einem gemeinsamen Schema und das Verweisen auf Daten durch Importieren einer BACPAC-Datei.
-* **Initialisieren der Datenbank mit grundlegenden Mandanteninformationen** . Diese Aktion umfasst das Angeben des Veranstaltungsorttyps, durch den bestimmt wird, welches Foto als Hintergrund auf der Website mit den jeweiligen Veranstaltungen verwendet wird.
-* **Registrieren der Datenbank in der Katalogdatenbank** .
+* **Initialisieren der Datenbank mit grundlegenden Mandanteninformationen**. Diese Aktion umfasst das Angeben des Veranstaltungsorttyps, durch den bestimmt wird, welches Foto als Hintergrund auf der Website mit den jeweiligen Veranstaltungen verwendet wird.
+* **Registrieren der Datenbank in der Katalogdatenbank**.
 
-1. Öffnen Sie in PowerShell ISE *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* , und legen Sie **$Scenario = 2** fest. Stellen Sie den Mandantenkatalog bereit, und registrieren Sie die vordefinierten Mandanten.
+1. Öffnen Sie in PowerShell ISE *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1*, und legen Sie **$Scenario = 2** fest. Stellen Sie den Mandantenkatalog bereit, und registrieren Sie die vordefinierten Mandanten.
 
 1. Fügen Sie einen Haltepunkt im Skript hinzu, indem Sie den Cursor an eine beliebige Stelle in Zeile 49 mit `& $PSScriptRoot\New-TenantApp.ps1` setzen und dann **F9** drücken.
 1. Führen Sie das Skript durch Drücken von **F5** aus.
-1.  Nachdem die Skriptausführung am Haltepunkt beendet wurde, drücken Sie **F11** , um das Skript „New-Catalog.ps1“ schrittweise auszuführen.
+1.  Nachdem die Skriptausführung am Haltepunkt beendet wurde, drücken Sie **F11**, um das Skript „New-Catalog.ps1“ schrittweise auszuführen.
 1.  Verfolgen Sie die Ausführung des Skripts mit den Optionen (F10 und F11) im Menü „Debug“ nach, um aufgerufene Funktionen zu überspringen oder einzeln auszuführen.
 
 Nachdem der Mandant bereitgestellt wurde, wird die Website mit den Veranstaltungen des neuen Mandanten geöffnet.

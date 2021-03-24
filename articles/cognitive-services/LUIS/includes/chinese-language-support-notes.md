@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 12/29/2020
 ms.author: aahi
 ms.openlocfilehash: e244fe23cb2a5c352c3ab776ee14a26141777465
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97820626"
 ---
-### <a name="chinese-support-notes"></a>\* Hinweise zur Unterstützung von Chinesisch
+### <a name="chinese-support-notes"></a>* Hinweise zur Unterstützung von Chinesisch
 
  - In der Kultur `zh-CN` erwartet LUIS den vereinfachten chinesischen Zeichensatz anstelle des traditionellen.
  - Die Namen der Absichten, Entitäten, Features und regulären Ausdrücke können in chinesischen oder lateinischen Zeichen vorliegen.

@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 5ce98c785700301bba92926d7d5a243b614eca7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87504227"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
@@ -124,7 +124,7 @@ Site Recovery prüft, ob Sie über ein oder mehrere kompatible Azure-Speicherkon
 ## <a name="set-up-a-replication-policy"></a>Einrichten einer Replikationsrichtlinie
 
 1. Wählen Sie **Infrastruktur vorbereiten** > **Replikationseinstellungen** >  **+Erstellen und zuordnen** aus.
-2. Geben Sie unter **Richtlinie erstellen und zuordnen**einen Richtliniennamen an. Hier wird **ContosoReplicationPolicy** verwendet.
+2. Geben Sie unter **Richtlinie erstellen und zuordnen** einen Richtliniennamen an. Hier wird **ContosoReplicationPolicy** verwendet.
 3. In diesem Tutorial behalten wir die Standardwerte bei:
     - **Kopierhäufigkeit** gibt an, wie oft Deltadaten nach der ersten Replikation repliziert werden. Die Standardhäufigkeit ist alle fünf Minuten.
     - **Aufbewahrungszeitraum des Wiederherstellungspunkts** gibt an, dass Wiederherstellungspunkte zwei Stunden lang aufbewahrt werden. Der maximal zulässige Wert für die Aufbewahrung beim Schutz virtueller Computer, die auf Hyper-V-Hosts gehostet werden, beträgt 24 Stunden.

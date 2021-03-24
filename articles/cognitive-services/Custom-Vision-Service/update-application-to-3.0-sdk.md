@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: areddish
 ms.openlocfilehash: c134f30b124113a23df0e73cd1bbc8209e335183
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73647496"
 ---
 # <a name="update-to-the-30-api"></a>Aktualisieren zur 3.0 API
@@ -32,8 +32,8 @@ In diesem Leitfaden erfahren Sie, wie Sie Ihre Projekte aktualisieren können, u
 
 Die APIs der Version 2.x verwendeten denselben Vorhersageaufruf sowohl für Bildklassifizierer als auch für Objekterkennungsprojekte. Beide Projekttypen waren für die Aufrufe **PredictImage** und **PredictImageUrl** zulässig. Ab 3.0 wurde diese API aufgeteilt, sodass Sie den Projekttyp an den Aufruf anpassen müssen:
 
-* Verwenden Sie **[ClassifyImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)** und **[ClassifyImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c14)** , um Vorhersagen für Bildklassifizierungsprojekte zu erhalten.
-* Verwenden Sie **[DetectImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c19)** und **[DetectImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c18)** , um Vorhersagen für Objekterkennungsprojekte zu erhalten.
+* Verwenden Sie **[ClassifyImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)** und **[ClassifyImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c14)**, um Vorhersagen für Bildklassifizierungsprojekte zu erhalten.
+* Verwenden Sie **[DetectImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c19)** und **[DetectImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c18)**, um Vorhersagen für Objekterkennungsprojekte zu erhalten.
 
 ## <a name="use-the-new-iteration-publishing-workflow"></a>Verwenden des neuen Workflows zur Iterationsveröffentlichung
 
@@ -51,7 +51,7 @@ Sobald eine Iteration trainiert wurde, können Sie sie mit der Methode **[Publis
 > [!TIP]
 > Sie können diese Informationen auch über das [Azur-Portal](https://portal.azure.com) abrufen, indem Sie zur Custom Vision-Vorhersageressource wechseln und **Eigenschaften** auswählen.
 
-Nachdem Ihre Iteration veröffentlicht wurde, kann sie von Apps zur Vorhersage verwendet werden, indem sie den Namen in ihrem Aufruf der Vorhersage-API angeben. Verwenden Sie die API **[UnpublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b81a)** , um eine Iteration für Vorhersageaufrufe nicht verfügbar zu machen.
+Nachdem Ihre Iteration veröffentlicht wurde, kann sie von Apps zur Vorhersage verwendet werden, indem sie den Namen in ihrem Aufruf der Vorhersage-API angeben. Verwenden Sie die API **[UnpublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b81a)**, um eine Iteration für Vorhersageaufrufe nicht verfügbar zu machen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

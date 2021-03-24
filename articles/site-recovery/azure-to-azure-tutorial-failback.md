@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 11/05/2020
 ms.custom: mvc
 ms.openlocfilehash: 5c127010a7988bf08c77340a4fc10bb32dc76f87
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93393886"
 ---
 # <a name="tutorial-fail-back-azure-vm-to-the-primary-region"></a>Tutorial: Ausführen des Failbacks einer Azure-VM in die primäre Region
@@ -49,17 +49,17 @@ Nachdem virtuelle Computer erneut geschützt wurden, können Sie bei Bedarf ein 
     [Seite, auf der Sie bestätigen, dass ein Failover ohne Testfailover ausgeführt werden soll](./media/azure-to-azure-tutorial-failback/no-test.png)
 
 4. Beachten Sie unter **Failover** die Richtung von der sekundären zur primären Region, und wählen Sie einen Wiederherstellungspunkt aus. Der virtuelle Azure-Computer im Ziel (primäre Region) wird anhand der Daten aus diesem Punkt erstellt.
-   - **Letzte Verarbeitung** : Verwendet den letzten Wiederherstellungspunkt, der von Site Recovery verarbeitet wurde. Der Zeitstempel wird angezeigt. Es wird keine Zeit für die Verarbeitung von Daten aufgewendet, und der RTO-Wert (Recovery Time Objective) wird niedrig gehalten.
-   -  **Aktuell** : Verarbeitet alle Daten, die an Site Recovery gesendet wurden, um einen Wiederherstellungspunkt für jeden virtuellen Computer zu erstellen, bevor das Failover auf diesen erfolgt. Stellt die niedrigste RPO (Recovery Point Objective) bereit, da bei Auslösung des Failovers alle Daten zu Site Recovery repliziert werden.
-   - **Letzter anwendungskonsistenter Zeitpunkt** : Diese Option führt ein Failover der virtuellen Computer auf den letzten App-konsistenten Wiederherstellungspunkt aus. Der Zeitstempel wird angezeigt.
-   - **Benutzerdefiniert** : Dient zum Ausführen eines Failovers auf einen bestimmten Wiederherstellungspunkt. Die Option „Benutzerdefiniert“ ist nur verfügbar, wenn Sie ein Failover für einen einzelnen virtuellen Computer ausführen und keinen Wiederherstellungsplan verwenden.
+   - **Letzte Verarbeitung**: Verwendet den letzten Wiederherstellungspunkt, der von Site Recovery verarbeitet wurde. Der Zeitstempel wird angezeigt. Es wird keine Zeit für die Verarbeitung von Daten aufgewendet, und der RTO-Wert (Recovery Time Objective) wird niedrig gehalten.
+   -  **Aktuell**: Verarbeitet alle Daten, die an Site Recovery gesendet wurden, um einen Wiederherstellungspunkt für jeden virtuellen Computer zu erstellen, bevor das Failover auf diesen erfolgt. Stellt die niedrigste RPO (Recovery Point Objective) bereit, da bei Auslösung des Failovers alle Daten zu Site Recovery repliziert werden.
+   - **Letzter anwendungskonsistenter Zeitpunkt**: Diese Option führt ein Failover der virtuellen Computer auf den letzten App-konsistenten Wiederherstellungspunkt aus. Der Zeitstempel wird angezeigt.
+   - **Benutzerdefiniert**: Dient zum Ausführen eines Failovers auf einen bestimmten Wiederherstellungspunkt. Die Option „Benutzerdefiniert“ ist nur verfügbar, wenn Sie ein Failover für einen einzelnen virtuellen Computer ausführen und keinen Wiederherstellungsplan verwenden.
 
     > [!NOTE]
     > Wenn Sie ein Failover für einen virtuellen Computer ausführen, dem Sie einen Datenträger hinzugefügt haben, nachdem die Replikation für diesen virtuellen Computer aktiviert haben, zeigen die Replikationspunkte die Datenträger an, die zur Wiederherstellung zur Verfügung stehen. Beispielsweise wird ein Replikationspunkt, der erstellt wurde, bevor Sie einen zweiten Datenträger hinzugefügt haben, als „1 von 2 Datenträgern“ angezeigt.
 
 4. Wählen Sie **Der Computer wird vor Beginn des Failovers heruntergefahren** aus, wenn Site Recovery versuchen soll, den Quellcomputer herunterzufahren, bevor das Failover gestartet wird. Mit dem Herunterfahren können Sie sicherzustellen, dass keine Daten verloren gehen. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist. 
 
-    ![Seite der Failovereinstellungen](./media/azure-to-azure-tutorial-failback/failover.png)    
+    ![Seite mit Failovereinstellungen](./media/azure-to-azure-tutorial-failback/failover.png)    
 
 3. Wählen Sie **OK** aus, um das Failover zu starten.
 4. Überwachen Sie das Failover mit Benachrichtigungen.

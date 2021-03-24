@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: alkohli
 ms.openlocfilehash: 64bb5e94c4b18626d1f85d7e61252aae74202eb9
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97680616"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-nfs"></a>Tutorial: Kopieren von Daten aus Azure Data Box über NFS
@@ -35,7 +35,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
     - Weitere Informationen zu Importbestellungen finden Sie unter [Tutorial: Bestellen von Azure Data Box](data-box-deploy-ordered.md).
     - Weitere Informationen zu Exportbestellungen finden Sie unter [Tutorial: Bestellen von Azure Data Box](data-box-deploy-export-ordered.md).
 2. Sie haben Ihre Data Box erhalten, und die Bestellung wird im Portal mit dem Status **Übermittelt** angezeigt.
-3. Sie verfügen über einen Hostcomputer, auf den Sie die Daten aus Ihrer Data Box kopieren möchten. Für Ihren Hostcomputer müssen die folgenden Bedingungen erfüllt sein:
+3. Sie verfügen über einen Hostcomputer, auf den Sie die Daten von Ihrer Data Box kopieren möchten. Für Ihren Hostcomputer müssen die folgenden Bedingungen erfüllt sein:
    * Es muss ein [unterstütztes Betriebssystem](data-box-system-requirements.md) ausgeführt werden.
    * Er muss mit einem Hochgeschwindigkeitsnetzwerk verbunden sein. Mindestens eine 10-GbE-Verbindung wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, verwenden Sie eine 1-GbE-Datenverbindung, die Geschwindigkeit der Kopiervorgänge wird dadurch jedoch beeinträchtigt.
 

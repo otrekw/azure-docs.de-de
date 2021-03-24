@@ -5,10 +5,10 @@ ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a9517ffc1e37d50f7c0e57b9ed53fb8bcf55fd70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89180574"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Verwenden des Azure-Portals zum Sichern mehrerer virtueller Computer
@@ -154,7 +154,7 @@ So führen Sie einen bedarfsgesteuerten Sicherungsauftrag aus
 
 Wenn Sie planen, mit den nachfolgenden Tutorials fortzufahren, sollten Sie die in diesem Tutorial erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die folgenden Schritte durchführen, um alle in diesem Tutorial erstellten Ressourcen im Azure-Portal zu löschen.
 
-1. Wählen Sie im Dashboard von **myRecoveryServicesVault** die Angabe **3** unter **Sicherungselemente**aus, um das Menü „Sicherungselemente“ zu öffnen.
+1. Wählen Sie im Dashboard von **myRecoveryServicesVault** die Angabe **3** unter **Sicherungselemente** aus, um das Menü „Sicherungselemente“ zu öffnen.
 
     ![Öffnen des Menüs „Sicherungselemente“](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 

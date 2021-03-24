@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 11/05/2020
 ms.custom: mvc
 ms.openlocfilehash: 99263c83d25542073d63c1cba394a147bd5b2170
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392777"
 ---
 # <a name="tutorial-fail-over-azure-vms-to-a-secondary-region"></a>Tutorial: Ausführen eines Failovers in eine sekundäre Region für Azure-VMs
@@ -58,7 +58,7 @@ Bevor Sie mit diesem Tutorial beginnen, sollten Sie die folgenden Schritte ausge
 3. Wählen Sie unter **Failover** einen Wiederherstellungspunkt aus. Der virtuelle Azure-Computer in der Zielregion wird anhand der Daten dieses Wiederherstellungspunkts erstellt.
   
    - **Letzte Verarbeitung**: Verwendet den letzten Wiederherstellungspunkt, der von Site Recovery verarbeitet wurde. Der Zeitstempel wird angezeigt. Es wird keine Zeit für die Verarbeitung von Daten aufgewendet, und der RTO-Wert (Recovery Time Objective) wird niedrig gehalten.
-   -  **Aktuell**: Verarbeitet alle Daten, die an Site Recovery gesendet wurden, um einen Wiederherstellungspunkt für jeden virtuellen Computer zu erstellen, bevor das Failover dafür ausgeführt wird. Ist mit dem niedrigsten RPO-Wert (Recovery Point Objective) verbunden, da bei Auslösung des Failovers alle Daten in Site Recovery repliziert werden.
+   -  **Aktuell**: Verarbeitet alle Daten, die an Site Recovery gesendet wurden, um einen Wiederherstellungspunkt für jeden virtuellen Computer zu erstellen, bevor das Failover auf diesen erfolgt. Stellt die niedrigste RPO (Recovery Point Objective) bereit, da bei Auslösung des Failovers alle Daten zu Site Recovery repliziert werden.
    - **Letzter anwendungskonsistenter Zeitpunkt**: Diese Option führt ein Failover der virtuellen Computer auf den letzten App-konsistenten Wiederherstellungspunkt aus. Der Zeitstempel wird angezeigt.
    - **Benutzerdefiniert**: Dient zum Ausführen eines Failovers auf einen bestimmten Wiederherstellungspunkt. Die Option „Benutzerdefiniert“ ist nur verfügbar, wenn Sie ein Failover für einen einzelnen virtuellen Computer ausführen und keinen Wiederherstellungsplan verwenden.
 

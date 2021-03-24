@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/05/2021
 ms.author: juliako
 ms.openlocfilehash: 12d23ec471329bd4e0ecb502750198e946e58872
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100530228"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Was ist Azure Media Services Video Indexer?
@@ -120,7 +120,7 @@ Wenn Sie die Website nutzen, werden die Erkenntnisse als Metadaten hinzugefügt 
 
 Die folgende Liste zeigt die unterstützten Browser, die Sie für die Video Indexer-Website und für Ihre Apps, die die Widgets einbetten, verwenden können. Außerdem wird in der Liste die unterstützte Browserversion angezeigt:
 
-- Edge, Version: 16
+- Microsoft Edge, Version: 16
 - Firefox, Version: 54
 - Chrome, Version: 58
 - Safari, Version: 11

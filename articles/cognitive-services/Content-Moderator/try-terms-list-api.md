@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: f1dfe88741a304da92901d3997c746654336ef54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85800039"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Moderieren von Text mit benutzerdefinierten Benennungslisten in der API-Konsole
@@ -91,7 +91,7 @@ Nachdem Sie eine Benennungsliste geändert haben, müssen Sie den zugehörigen I
 
    Fügen Sie Metadaten als Schlüssel-Wert-Paare und nicht als tatsächliche Benennungen zur Liste hinzu.
  
-6. Wählen Sie **Senden** aus. Ihre Liste wird erstellt. Beachten Sie den **ID**-Wert, der der neuen Liste zugeordnet ist. Sie benötigen diese ID für andere Funktionen zur Verwaltung von Benennungslisten.
+6. Wählen Sie **Send** (Senden) aus. Ihre Liste wird erstellt. Beachten Sie den **ID**-Wert, der der neuen Liste zugeordnet ist. Sie benötigen diese ID für andere Funktionen zur Verwaltung von Benennungslisten.
 
    ![Feld „Antwortinhalt“ in der Konsole „Benennungslisten – Erstellen“ mit Anzeige der Listen-ID](images/try-terms-list-create-2.png)
  
@@ -113,7 +113,7 @@ Nachdem Sie eine Benennungsliste geändert haben, müssen Sie den zugehörigen I
 
     Die API-Konsole **Benennung – Alle Benennungen abrufen** wird geöffnet.
 
-11. Geben Sie in das Feld **listId** die Listen-ID und dann Ihren Abonnementschlüssel ein. Wählen Sie **Senden** aus.
+11. Geben Sie in das Feld **listId** die Listen-ID und dann Ihren Abonnementschlüssel ein. Wählen Sie **Send** (Senden) aus.
 
 12. Überprüfen sie im Feld **Antwortinhalt** die Benennungen, die Sie eingegeben haben.
 

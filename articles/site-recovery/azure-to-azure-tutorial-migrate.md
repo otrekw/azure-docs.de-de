@@ -9,10 +9,10 @@ ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
 ms.openlocfilehash: 076adbfd4cecf7dae9ffc490e911fcb7ffce48e6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93394831"
 ---
 # <a name="move-vms-to-another-azure-region"></a>Verschieben von VMs in eine andere Azure-Region
@@ -35,10 +35,10 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!IMPORTANT]
 > Zum Verschieben von Azure-VMs in eine andere Region empfehlen wir den Einsatz von [Azure Resource Mover](../resource-mover/tutorial-move-region-virtual-machines.md). Resource Mover befindet sich derzeit in der öffentlichen Vorschau und bietet folgende Features:
 > - Eine einzelne Anlaufstelle für das regionsübergreifende Verschieben von Ressourcen.
-> - Kürzere Verschiebungszeit und verringerte Komplexität. Alles Nötige ist an einem einzelnen Ort.
-> - Ein einfaches und konsistentes Verfahren zum Verschieben verschiedener Arten von Azure-Ressourcen.
-> - Eine einfache Möglichkeit zum Erkennen von Abhängigkeiten zwischen Ressourcen, die Sie verschieben möchten. Dies hilft Ihnen, zusammenhängende Ressourcen gemeinsam zu verschieben, damit nach der Verschiebung in der Zielregion alles wie erwartet funktioniert.
-> - Automatische Bereinigung der Ressourcen in der Quellregion, falls Sie sie nach dem Verschieben löschen möchten.
+> - Kürzere Verschiebungszeit und verringerte Komplexität Alle erforderlichen Komponenten an einem einzelnen Ort
+> - Ein einfaches und konsistentes Verfahren zum Verschieben verschiedener Arten von Azure-Ressourcen
+> - Eine einfache Möglichkeit zum Erkennen von Abhängigkeiten zwischen den zu verschiebenden Ressourcen. Dies hilft Ihnen, zusammenhängende Ressourcen gemeinsam zu verschieben, damit nach der Verschiebung in der Zielregion alles wie erwartet funktioniert.
+> - Automatische Bereinigung der Ressourcen in der Quellregion, falls Sie sie nach dem Verschieben löschen möchten
 > - Tests. Sie können eine Verschiebung ausprobieren und sie dann verwerfen, wenn Sie keine vollständige Verschiebung durchführen möchten.
 
 
@@ -104,7 +104,7 @@ Die folgenden Schritte zeigen, wie Sie den virtuellen Computer mithilfe von Azur
 1. Wählen Sie in der Dropdownliste **Azure Virtual Machines** aus.
 1. Wählen Sie unter **Quellstandort** die Azure-Quellregion aus, in der Ihre VMs derzeit ausgeführt werden.
 1. Wählen Sie das Ressourcen-Manager-Bereitstellungsmodell. Wählen Sie dann das **Quellabonnement** und die **Quellressourcengruppe** aus.
-1. Wählen Sie **OK** , um die Einstellungen zu speichern.
+1. Wählen Sie **OK**, um die Einstellungen zu speichern.
 
 ### <a name="enable-replication-for-azure-vms-and-start-copying-the-data"></a>Aktivieren der Replikation für Azure-VMs und Starten des Kopiervorgangs für die Daten
 

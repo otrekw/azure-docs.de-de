@@ -10,10 +10,10 @@ ms.date: 04/20/2020
 ms.author: dech
 ms.custom: devx-track-js
 ms.openlocfilehash: 1115d7bb0d6857aa39f246743df54a6cf3fd3676
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93098656"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Tutorial: Erstellen einer Node.js-Konsolen-App mit dem JavaScript SDK zum Verwalten von Daten der Azure Cosmos DB-SQL-API
@@ -104,7 +104,7 @@ Das JavaScript SDK verwendet die generischen Begriffe *Container* und *Element*.
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/data/databaseContext.js" id="createDatabaseAndContainer":::
 
-   Eine Datenbank ist ein logischer Container für Elemente, die auf Container aufgeteilt sind. Sie erstellen eine Datenbank mithilfe der Funktion `createIfNotExists` oder „create“ der **Databases** -Klasse. Ein Container besteht aus Elementen. Im Falle der SQL-API sind dies JSON-Dokumente. Sie erstellen einen Container mithilfe der Funktion `createIfNotExists` oder „create“ der **Containers** -Klasse. Nachdem Sie einen Container erstellt haben, können Sie die Daten speichern und abfragen.
+   Eine Datenbank ist ein logischer Container für Elemente, die auf Container aufgeteilt sind. Sie erstellen eine Datenbank mithilfe der Funktion `createIfNotExists` oder „create“ der **Databases**-Klasse. Ein Container besteht aus Elementen. Im Falle der SQL-API sind dies JSON-Dokumente. Sie erstellen einen Container mithilfe der Funktion `createIfNotExists` oder „create“ der **Containers**-Klasse. Nachdem Sie einen Container erstellt haben, können Sie die Daten speichern und abfragen.
 
    > [!WARNING]
    > Die Erstellung eines Containers hat Auswirkungen auf die Preise. Auf der Seite mit den [Preisen](https://azure.microsoft.com/pricing/details/cosmos-db/) finden Sie weitere Informationen.
